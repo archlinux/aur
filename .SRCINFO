@@ -1,0 +1,25 @@
+pkgbase = taskd-git
+	pkgdesc = A lightweight secure server providing multi-user, multi-client access to task data
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://tasktools.org/projects/taskd.html
+	install = taskd.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = libutil-linux
+	depends = gnutls
+	provides = taskd
+	backup = etc/conf.d/taskd
+	source = taskd-git::git+https://git.tasktools.org/scm/tm/taskd.git#branch=1.1.0
+	source = taskd.conf
+	source = taskd.notes
+	sha256sums = SKIP
+	sha256sums = 5e518f8dda08c8b8d564f2a52452227924ebb15ec8182e7af83cc1f82cfa4cf1
+	sha256sums = a84693eb0f6e9d4565fe6c6312ef337ba0049ce577751a68d835f8e46124427c
+
+pkgname = taskd-git
+
