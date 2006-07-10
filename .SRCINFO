@@ -1,0 +1,22 @@
+pkgbase = dwm-hidpi-git
+	pkgdesc = dwm fork intended for 4K displays
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/abdalazizrashid/dwm-HiDPI
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = demenu
+	depends = nerd-fonts-dejavu-complete
+	provides = dwm
+	conflicts = dwm
+	source = git://github.com/Baitinq/dwm-HiDPI.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dwm-hidpi-git
+
