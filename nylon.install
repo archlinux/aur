@@ -1,0 +1,28 @@
+post_install() {
+  echo "downloading latest Nylon sources... "
+  cd /opt/nylon-build-stable
+  wget --no-parent -nv -N -r -nd -P sources http://meshcube.org/nylon/stable/sources
+  echo -n "adding nylon system group... "
+  groupadd nylon && echo "done."
+  chgrp -R nylon /opt/nylon-build-stable
+  chmod -R g+rw /opt/nylon-build-stable
+  cat << 'EOM'
+==> To allow users to build Nylon packages, add them to the nylon group.
+EOM
+}
+
+pre_remove() {
+  # pre_remove gets called whenever post_remove is defined.
+  true
+}
+
+post_remove() {
+  # post_remove doesn't start at a newline like the other post_* functions,
+  # so we'll have to make one for ourselves.
+  echo -n -e "\nremoving nylon system group... "
+  groupdel nylon && echo "done."
+}
+
+op=$1
+shift
+$op $*

@@ -1,0 +1,27 @@
+pkgbase = nylon-build-stable
+	pkgdesc = OpenEmbedded developpement environment for 4GCubes
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.meshcube.org
+	install = nylon.install
+	depends = python
+	depends = ccache
+	depends = patch
+	depends = m4
+	depends = docbook-xml
+	depends = docbook-xsl
+	depends = bison
+	depends = make
+	depends = jade
+	depends = subversion
+	depends = psyco
+	depends = bzip2
+	depends = cvs
+	depends = gawk
+	depends = gcc
+	depends = sharutils
+	source = http://meshcube.org/nylon/stable/nylon-build-stable-1.0.tar.gz
+	md5sums = 4f9edec77ee925b1e24a13c55f4dbb99
+
+pkgname = nylon-build-stable
+
