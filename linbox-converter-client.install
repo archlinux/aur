@@ -1,5 +1,13 @@
 post_install() {
-echo "==> You can set the address and port of your Linbox Converter Server in /etc/lbx-converter.conf"
+	cat << 'EOM'
+==> You can set the address and port of your Linbox Converter Server in /etc/lbx-converter.conf"
+==> In order to use the lbx-view program, you will need to install the xpdf...
+==> In order to use the lbx-view-web program, you will need to install the
+firefox package...
+
+... or hack the scripts (;
+
+EOM
 }
 
 post_upgrade() {

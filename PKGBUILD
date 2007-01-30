@@ -20,4 +20,7 @@ build() {
   
   install -m 0755 -d ${startdir}/pkg/usr/bin
   install -m 0755 lbx-converter lbx-view lbx-view-web ${startdir}/pkg/usr/bin
+
+  sed -i "s/^PDFVIEWER=.*/PDFVIEWER=xpdf/g" ${startdir}/pkg/usr/bin/lbx-view
+  sed -i "s/netscape/firefox/g" ${startdir}/pkg/usr/bin/lbx-view-web 
 }
