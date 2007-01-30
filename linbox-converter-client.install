@@ -1,0 +1,16 @@
+post_install() {
+echo "==> You can set the address and port of your Linbox Converter Server in /etc/lbx-converter.conf"
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

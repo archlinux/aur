@@ -1,0 +1,23 @@
+# Contributor: Olivier Mehani <olivier.mehani@inria.fr>
+# $Id$
+
+pkgname=linbox-converter-client
+pkgver=1.0.3
+pkgrel=1
+pkgdesc="Linbox (Microsoft Office documents to PDF) Converter commandline client"
+url="http://www.linbox.com/converter"
+depends=('python')
+source=(http://adullact.net/frs/download.php/468/linbox-converter-${pkgver}.tar.gz)
+md5sums=('ab5f4f96d723cf6e86da82764beb8eaf')
+backup=('etc/lbx-converter.conf')
+install=('linbox-converter-client.install')
+
+build() {
+  cd ${startdir}/src/linbox-converter-${pkgver}/client
+
+  install -m 0755 -d ${startdir}/pkg/etc
+  install -m 0644 lbx-converter.conf ${startdir}/pkg/etc/lbx-converter.conf
+  
+  install -m 0755 -d ${startdir}/pkg/usr/bin
+  install -m 0755 lbx-converter lbx-view lbx-view-web ${startdir}/pkg/usr/bin
+}
