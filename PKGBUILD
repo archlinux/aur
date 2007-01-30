@@ -16,7 +16,7 @@ build() {
   cd ${startdir}/src/linbox-converter-${pkgver}/client
 
   install -m 0755 -d ${startdir}/pkg/etc
-  install -m 0644 lbx-converter.conf ${startdir}/pkg/etc/lbx-converter.conf
+  install -m 0644 lbx-converter.conf ${startdir}/mailcap.lbx-converter ${startdir}/pkg/etc
   
   install -m 0755 -d ${startdir}/pkg/usr/bin
   install -m 0755 lbx-converter lbx-view lbx-view-web ${startdir}/pkg/usr/bin

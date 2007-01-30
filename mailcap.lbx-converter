@@ -1,0 +1,10 @@
+# display MSOffice using the Linbox Converter
+application/msword;lbx-view %s
+application/excel;lbx-view %s
+application/msexcel;lbx-view %s
+application/vnd.ms-excel;lbx-view %s
+application/x-msexcel;-lbx-view %s
+application/powerpoint;lbx-view %s
+application/mspowerpoint;lbx-view %s
+application/vnd.ms-powerpoint;lbx-view %s
+application/x-mspowerpoint;lbx-view %s
