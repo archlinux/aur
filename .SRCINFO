@@ -1,0 +1,19 @@
+pkgbase = gnuplot-cvs-pdflib
+	pkgdesc = A command-line driven interactive function and data plotting utility with many output formats.
+	pkgver = 20060827
+	pkgrel = 1
+	url = http://www.gnuplot.info/
+	license = custom
+	makedepends = sed
+	makedepends = cvs
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = pdflib
+	depends = gd
+	depends = wxgtk
+	depends = pdflib
+	provides = gnuplot
+	conflicts = gnuplot
+
+pkgname = gnuplot-cvs-pdflib
+
