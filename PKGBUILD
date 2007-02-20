@@ -1,4 +1,5 @@
-# Contributor: Stephen Caraher <moskvax@gmail.com>
+# Contributor: Stephen Caraher <moskvax@gmail.com>, Olivier Mehani <olivier.mehani@inria.fr>
+# $Id$
 
 pkgname=gnuplot-cvs-pdflib
 pkgver=20060827
