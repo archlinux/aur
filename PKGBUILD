@@ -3,10 +3,10 @@
 
 pkgname=linbox-converter-client
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Linbox (Microsoft Office documents to PDF) Converter commandline client"
 url="http://www.linbox.com/converter"
-depends=('python')
+depends=('python' 'tk')
 source=(http://adullact.net/frs/download.php/468/linbox-converter-${pkgver}.tar.gz)
 md5sums=('ab5f4f96d723cf6e86da82764beb8eaf')
 backup=('etc/lbx-converter.conf')
