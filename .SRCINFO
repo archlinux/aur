@@ -1,0 +1,12 @@
+pkgbase = olsrd-plugins
+	pkgdesc = OLSR daemon is an implementation of the Optimized Link State Routing protocol. The plugins allow to add or extend some of its functionnalities.
+	pkgver = 0.4.10
+	pkgrel = 1
+	url = http://www.olsr.org
+	depends = glibc
+	depends = olsrd
+	source = http://www.olsr.org/releases/0.4/olsrd-0.4.10.tar.gz
+	md5sums = cb6313649d19b05e5d8d5eaf866bb98d
+
+pkgname = olsrd-plugins
+
