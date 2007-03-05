@@ -19,6 +19,6 @@ build() {
 	export BBPATH=${OEBASE}:${OEBASE}/openembedded
 	export LANG=C
 	cd $OEBASE
-	bitbake -b openembedded/packages/patcher/patcher-native_20040913.bb
+	bitbake -b openembedded/packages/patcher/patcher-native_20040913.bb || return 1
 	install -D -m 0755 $startdir/src/$_nylonpkgname-$_nylonpkgver/tmp/staging/i686-linux/bin/patcher $startdir/pkg/usr/bin/patcher
 }
