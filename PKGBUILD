@@ -11,9 +11,12 @@ url="http://www.meshcube.org"
 depends=(python)
 source=(http://meshcube.org/nylon/stable/$_nylonpkgname-$_nylonpkgver.tar.gz)
 md5sums=('4f9edec77ee925b1e24a13c55f4dbb99')
+install=(bitbake.install)
 
 build() {
 	cd $startdir/src/$_nylonpkgname-$_nylonpkgver/bitbake/
-	./setup.py build --prefix /usr/ 
-	./setup.py install --root $startdir/pkg/
+	./setup.py build
+	./setup.py install --prefix /usr/ --root $startdir/pkg/
+	mkdir -p $startdir/pkg/usr/share
+	mv $startdir/pkg/usr/bitbake $startdir/pkg/usr/share
 }

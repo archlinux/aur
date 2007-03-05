@@ -1,0 +1,19 @@
+post_install() {
+	cat << 'EOM'
+==> Example configuration file and script are located in /usr/share/bitbake.
+
+EOM
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

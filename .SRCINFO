@@ -3,6 +3,7 @@ pkgbase = nylon-bitbake
 	pkgver = 1.2
 	pkgrel = 1
 	url = http://www.meshcube.org
+	install = bitbake.install
 	depends = python
 	source = http://meshcube.org/nylon/stable/nylon-build-stable-1.0.tar.gz
 	md5sums = 4f9edec77ee925b1e24a13c55f4dbb99
