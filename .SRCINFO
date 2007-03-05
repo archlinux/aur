@@ -1,0 +1,13 @@
+pkgbase = nylon-patcher
+	pkgdesc = Patching tool from Nylon
+	pkgver = 20040913
+	pkgrel = 1
+	url = http://www.meshcube.org
+	makedepends = bitbake
+	depends = python
+	provides = patcher
+	source = http://meshcube.org/nylon/stable/nylon-build-stable-1.0.tar.gz
+	md5sums = 4f9edec77ee925b1e24a13c55f4dbb99
+
+pkgname = nylon-patcher
+
