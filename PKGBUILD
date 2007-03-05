@@ -9,6 +9,7 @@ pkgrel=1
 pkgdesc="BitBake packaging tool from Nylon"
 url="http://www.meshcube.org"
 depends=(python)
+provides=(bitbake)
 source=(http://meshcube.org/nylon/stable/$_nylonpkgname-$_nylonpkgver.tar.gz)
 md5sums=('4f9edec77ee925b1e24a13c55f4dbb99')
 install=(bitbake.install)
