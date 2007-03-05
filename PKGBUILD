@@ -16,8 +16,8 @@ install=(bitbake.install)
 
 build() {
 	cd $startdir/src/$_nylonpkgname-$_nylonpkgver/bitbake/
-	./setup.py build
-	./setup.py install --prefix /usr/ --root $startdir/pkg/
+	./setup.py build || return 1
+	./setup.py install --prefix /usr/ --root $startdir/pkg/ || return 1
 	mkdir -p $startdir/pkg/usr/share
 	mv $startdir/pkg/usr/bitbake $startdir/pkg/usr/share
 }
