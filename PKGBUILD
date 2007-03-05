@@ -22,7 +22,8 @@ build() {
 		    -e 's,@autom4te_perllibdir@,/usr/share/autoconf,' > $startdir/pkg/usr/bin/gnu-configize
 	chmod 755 $startdir/pkg/usr/bin/gnu-configize
 	wget -q http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess \
-	 http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub
+	 http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub \
+	 || return 1
 	 install -d $startdir/pkg/usr/share/gnu-config/
 	 install -m 0644 config.guess config.sub  $startdir/pkg/usr/share/gnu-config/
 }
