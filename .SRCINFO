@@ -1,0 +1,13 @@
+pkgbase = mipsel-linux-binutils
+	pkgdesc = mipsel-linux binary manipulation programs
+	pkgver = 2.15
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	license = GPL
+	depends = glibc
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.15.tar.bz2
+	md5sums = 624e6b74983ac6b2960edaf2d522ca58
+
+pkgname = mipsel-linux-binutils
+
