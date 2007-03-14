@@ -1,0 +1,18 @@
+pkgbase = mipsel-linux-glibc
+	pkgdesc = mipsel-linux GNU C Library
+	pkgver = 2.3.3
+	pkgrel = 3
+	url = http://www.gnu.org/software/glibc/
+	makedepends = mipsel-linux-binutils
+	makedepends = mipsel-linux-gcc3
+	makedepends = kernel26
+	options = NOSTRIP
+	source = ftp://ftp.gnu.org/gnu/glibc/glibc-2.3.3.tar.bz2
+	source = ftp://ftp.gnu.org/gnu/glibc/glibc-linuxthreads-2.3.3.tar.bz2
+	source = ftp://ftp.kernel.org/pub/linux/kernel/v2.4/linux-2.4.27.tar.bz2
+	md5sums = e825807b98042f807799ccc9dd96d31b
+	md5sums = 8149ea62922e75bd692bc3b92e5e766b
+	md5sums = 59a2e6fde1d110e2ffa20351ac8b4d9e
+
+pkgname = mipsel-linux-glibc
+
