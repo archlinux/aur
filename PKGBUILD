@@ -3,7 +3,7 @@
 
 pkgname=gnuplot-cvs-pdflib
 pkgver=20060827
-pkgrel=1
+pkgrel=2gtk28
 pkgdesc="A command-line driven interactive function and data plotting utility with many output formats."
 url="http://www.gnuplot.info/"
 license="custom"
