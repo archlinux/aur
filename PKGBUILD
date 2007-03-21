@@ -5,7 +5,7 @@ _archivename=binutils
 _target=mipsel-linux
 pkgname=$_target-$_archivename
 pkgver=2.14
-pkgrel=2
+pkgrel=3
 pkgdesc="mipsel-linux binary manipulation programs"
 url="http://www.gnu.org/software/$_archivename/"
 depends=(glibc)
@@ -14,12 +14,8 @@ md5sums=('2da8def15d28af3ec6af0982709ae90a')
 
 build() {
 	cd $startdir/src/$_archivename-$pkgver
-	./configure --target=$_target --prefix=/usr || return 1
-	make || return 2
+	./configure --target=$_target --prefix=/usr \
+		--libdir=/usr/$_target/$CHOST/lib || return 1
+	make -j 2 || return 2
 	make DESTDIR=$startdir/pkg install || return 3
-
-	# we will keep libiberty from mipsel-linux-gcc3
-	#mv $startdir/pkg/usr/lib/libiberty.a $startdir/pkg/usr/$_target/lib/
-	#rmdir $startdir/pkg/usr/lib
-	rm -rf $startdir/pkg/usr/lib
 }
