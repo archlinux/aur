@@ -16,6 +16,6 @@ build() {
 	cd $startdir/src/$_archivename-$pkgver
 	./configure --target=$_target --prefix=/usr \
 		--libdir=/usr/$_target/$CHOST/lib || return 1
-	make -j 2 || return 2
+	make || return 2
 	make DESTDIR=$startdir/pkg install || return 3
 }
