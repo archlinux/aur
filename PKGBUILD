@@ -40,16 +40,17 @@ build() {
 	export CFLAGS="-O2"
 	#$startdir/src/$_archivename-$pkgver/configure \
 	$startdir/src/$_archivename-$pkgver/configure --build=${CHOST} \
-		--host=$_target --prefix=/ \
+		--host=$_target --prefix=/usr/$_target \
 		--with-headers=$startdir/src/linux-$_linuxversion/include \
 		--enable-add-ons=linuxthreads || return 1
 	make || return 2
 	#make install_root=/usr/$_target install || return 3
-	make install_root=$startdir/pkg/usr/$_target install || return 3
+	make install_root=$startdir/pkg install || return 3
 
 	# target arch's binaries are unneeded here as they wouldn't work
-	rm -rf $startdir/pkg/usr/$_target/bin $startdir/pkg/usr/$_target/sbin
+	rm -rf $startdir/pkg/usr/$_target/bin $startdir/pkg/usr/$_target/sbin $startdir/pkg/usr/$_target/libexec
 
 	# the locales and other data are also unnecessary
 	rm -rf $startdir/pkg/usr/$_target/share
+	rm -rf $startdir/pkg/usr/$_target/info
 }
