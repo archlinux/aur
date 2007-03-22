@@ -1,0 +1,13 @@
+pkgbase = ipkg
+	pkgdesc = The Itsy Package Management System
+	pkgver = 0.99.163
+	pkgrel = 2
+	url = http://handhelds.org/moin/moin.cgi/Ipkg
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.handhelds.org/download/packages/ipkg/ipkg-0.99.163.tar.gz
+	md5sums = 0b10ad2924611bccaea8ddf98481a192
+
+pkgname = ipkg
+
