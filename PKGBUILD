@@ -5,7 +5,7 @@ _archivename=binutils
 _target=mipsel-linux
 pkgname=$_target-$_archivename
 pkgver=2.14
-pkgrel=3
+pkgrel=4
 pkgdesc="mipsel-linux binary manipulation programs"
 url="http://www.gnu.org/software/$_archivename/"
 depends=(glibc)
@@ -14,8 +14,11 @@ md5sums=('2da8def15d28af3ec6af0982709ae90a')
 
 build() {
 	cd $startdir/src/$_archivename-$pkgver
-	./configure --target=$_target --prefix=/usr \
-		--libdir=/usr/$_target/$CHOST/lib || return 1
+
+	./configure --target=$_target --prefix=/usr || return 1
 	make || return 2
 	make DESTDIR=$startdir/pkg install || return 3
+
+	# We just don't want libiberty for x86
+	rm -rf $startdir/pkg/usr/lib
 }
