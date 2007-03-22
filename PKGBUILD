@@ -18,10 +18,11 @@ md5sums=('e825807b98042f807799ccc9dd96d31b'
 '8149ea62922e75bd692bc3b92e5e766b'
 '59a2e6fde1d110e2ffa20351ac8b4d9e'
 '69c0bd2f573f94bc645f57f42387b8dd')
+options=(NOSTRIP)
 
 build() {
  	cd $startdir/src/linux-$_linuxversion
-	# FIXME: should be automatic...
+	# FIXME: should not require user interaction
 	make ARCH=mips menuconfig
 
  	cd $startdir/src/$_archivename-$pkgver 
@@ -39,10 +40,16 @@ build() {
 	export CFLAGS="-O2"
 	#$startdir/src/$_archivename-$pkgver/configure \
 	$startdir/src/$_archivename-$pkgver/configure --build=${CHOST} \
-		--host=$_target --prefix=/usr \
+		--host=$_target --prefix=/ \
 		--with-headers=$startdir/src/linux-$_linuxversion/include \
-		--enable-add-ons=linuxthreads --disable-shared || return 1
+		--enable-add-ons=linuxthreads || return 1
 	make || return 2
 	#make install_root=/usr/$_target install || return 3
 	make install_root=$startdir/pkg/usr/$_target install || return 3
+
+	# target arch's binaries are unneeded here as they wouldn't work
+	rm -rf $startdir/pkg/usr/$_target/bin $startdir/pkg/usr/$_target/sbin
+
+	# the locales and other data are also unnecessary
+	rm -rf $startdir/pkg/usr/$_target/share
 }
