@@ -1,0 +1,24 @@
+diff -urN ipkg-utils-050831.orig/Makefile ipkg-utils-050831/Makefile
+--- ipkg-utils-050831.orig/Makefile	2004-12-28 16:32:11.000000000 +0100
++++ ipkg-utils-050831/Makefile	2007-03-22 18:09:00.000000000 +0100
+@@ -1,4 +1,5 @@
+ UTILS = ipkg-build ipkg-upload
++DESTDIR=
+ 
+ PREFIX=/usr/local
+ 
+@@ -11,10 +12,11 @@
+ 	$(CC) $(CFLAGS) -o ipkg-compare-versions ipkg-compare-versions.c
+ 
+ install: ${UTILS}
+-	cp ${UTILS} $(PREFIX)/bin
+-	python setup.py install
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	cp ${UTILS} $(DESTDIR)$(PREFIX)/bin
++	python setup.py install --root=$(DESTDIR)
+ 	chmod agu+rx ipkg-make-index
+-	cp -f ipkg-make-index $(PREFIX)/bin
++	cp -f ipkg-make-index $(DESTDIR)$(PREFIX)/bin
+ 
+ binary: build
+ 	mkdir -p ipkg-build-binary/usr/bin

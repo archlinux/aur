@@ -1,0 +1,13 @@
+pkgbase = ipkg-utils
+	pkgdesc = The Itsy Package Management System utils
+	pkgver = 050831
+	pkgrel = 1
+	url = http://handhelds.org/moin/moin.cgi/Ipkg
+	makedepends = python
+	source = http://www.handhelds.org/download/packages/ipkg-utils/ipkg-utils-050831.tar.gz
+	source = ipkg-utils-050831.destdir.patch
+	md5sums = 4ede7edd4bcb69d9a0b74af2f68fd6da
+	md5sums = f53ad35c8ea36dd42aeb2edf0c81df34
+
+pkgname = ipkg-utils
+
