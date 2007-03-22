@@ -21,7 +21,8 @@ md5sums=('e825807b98042f807799ccc9dd96d31b'
 
 build() {
  	cd $startdir/src/linux-$_linuxversion
-	make ARCH=mips dep
+	# FIXME: should be automatic...
+	make ARCH=mips menuconfig
 
  	cd $startdir/src/$_archivename-$pkgver 
  	# FIXME: not the cleanest way to proceed... 
@@ -40,7 +41,8 @@ build() {
 	$startdir/src/$_archivename-$pkgver/configure --build=${CHOST} \
 		--host=$_target --prefix=/usr \
 		--with-headers=$startdir/src/linux-$_linuxversion/include \
-		--enable-add-ons=linuxthreads || return 1
+		--enable-add-ons=linuxthreads --disable-shared || return 1
 	make || return 2
-	make install_root=/usr/$_target install || return 3
+	#make install_root=/usr/$_target install || return 3
+	make install_root=$startdir/pkg/usr/$_target install || return 3
 }
