@@ -28,14 +28,8 @@ build() {
 	make ARCH=$CARCH menuconfig
 
  	cd $startdir/src/$_archivename-$pkgver 
- 	# FIXME: not the cleanest way to proceed... 
- 	#rm -rf nptl 
 	mv ../linuxthreads .
 	mv ../linuxthreads_db .
-
-	# MIPS patch, see http://www.linux-mips.org/archives/linux-mips/2004-10/msg00068.html
-	# Okay... It finally seems not to be needed
-	#patch -Np1 < $startdir/glibc-2.3.3-mips.diff
 
 	mkdir -p $startdir/src/$_archivename-build
 	cd $startdir/src/$_archivename-build
