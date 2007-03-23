@@ -6,7 +6,7 @@ _target=mipsel-linux
 _linuxversion=2.4.27
 pkgname=$_target-${_archivename}
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="mipsel-linux GNU C Library"
 url="http://www.gnu.org/software/$_archivename/"
 makedepends=($_target-binutils $_target-gcc3 kernel26)
@@ -21,9 +21,11 @@ md5sums=('e825807b98042f807799ccc9dd96d31b'
 options=(NOSTRIP)
 
 build() {
+	export CARCH=mips
+
  	cd $startdir/src/linux-$_linuxversion
 	# FIXME: should not require user interaction
-	make ARCH=mips menuconfig
+	make ARCH=$CARCH menuconfig
 
  	cd $startdir/src/$_archivename-$pkgver 
  	# FIXME: not the cleanest way to proceed... 
@@ -54,4 +56,8 @@ build() {
 	# the locales and other data are also unnecessary
 	rm -rf $startdir/pkg/usr/$_target/share
 	rm -rf $startdir/pkg/usr/$_target/info
+
+	# copy the needed kernel headers
+	cp -R $startdir/src/linux-$_linuxversion/include/linux/ $startdir/pkg/usr/$_target/include/
+	cp -R $startdir/src/linux-$_linuxversion/include/asm-$CARCH/ $startdir/pkg/usr/$_target/include/asm
 }
