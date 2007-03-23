@@ -6,7 +6,7 @@ _target=mipsel-linux
 _linuxversion=2.4.27
 pkgname=$_target-${_archivename}
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="mipsel-linux GNU C Library"
 url="http://www.gnu.org/software/$_archivename/"
 makedepends=($_target-binutils $_target-gcc3 kernel26)
@@ -32,7 +32,8 @@ build() {
 	mv ../linuxthreads_db .
 
 	# MIPS patch, see http://www.linux-mips.org/archives/linux-mips/2004-10/msg00068.html
-	patch -Np1 < $startdir/glibc-2.3.3-mips.diff
+	# Okay... It finally seems not to be needed
+	#patch -Np1 < $startdir/glibc-2.3.3-mips.diff
 
 	mkdir -p $startdir/src/$_archivename-build
 	cd $startdir/src/$_archivename-build
