@@ -3,9 +3,9 @@
 
 [GdmGreeterTheme]
 Encoding=UTF-8
-Greeter=arch.xml
-Name=Archlinux
-Description=Arch Linux GDM Theme with face browser
-Author=Lukas Kropatschek <lukas.krop@gmail.com
+Greeter=arch-list.xml
+Name=Archlinux with Browser
+Description=Arch Linux GDM Theme with a Face Browser
+Author=Lukas Kropatschek <lukas.krop@gmail.com>
 Copyright=(c) 2006 Lukas Kropatschek
 Screenshot=screenshot-list.png

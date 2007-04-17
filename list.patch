@@ -1,6 +1,6 @@
---- arch.xml	2007-02-02 19:23:52.000000000 +0100
-+++ arch-list.xml	2007-02-02 19:23:52.000000000 +0100
-@@ -33,7 +33,7 @@
+--- arch.xml	2007-04-17 14:29:44.000000000 +0200
++++ arch-list.xml	2007-04-17 14:45:30.000000000 +0200
+@@ -49,7 +49,7 @@
  
    <item type="rect" id="caps-lock-warning">
      <normal color="#FFFFFF" alpha="0.5"/>
@@ -9,7 +9,7 @@
      <box orientation="vertical" min-width="400" xpadding="10" ypadding="5" spacing="0">
        <item type="label">
          <normal color="#000000" font="Sans 12"/>
-@@ -47,7 +47,7 @@
+@@ -63,7 +63,7 @@
    <item type="rect">
      <show type="timed"/>
      <normal color="#FFFFFF" alpha="0.5"/>
@@ -18,7 +18,7 @@
      <box orientation="vertical" min-width="400" xpadding="10" ypadding="5" spacing="0">
        <item type="label" id="timed-label">
          <normal color="#000000" font="Sans 12"/>
-@@ -58,13 +58,24 @@
+@@ -74,13 +74,24 @@
      </box>
    </item>
  

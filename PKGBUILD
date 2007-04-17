@@ -22,12 +22,13 @@ build() {
 	mkdir -p $startdir/pkg/opt/gnome/share/gdm/themes/arch-list
 	for FILE in $startdir/pkg/opt/gnome/share/gdm/themes/arch/* ; do 
 		BASENAME=${FILE/*\/}
-		ln -s /opt/gnome/share/gdm/themes/arch/${BASENAME} $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/${BASENAME}
+		#ln -s /opt/gnome/share/gdm/themes/arch/${BASENAME} $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/${BASENAME}
+		cp $startdir/pkg/opt/gnome/share/gdm/themes/arch/${BASENAME} $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/${BASENAME}
 	done
 	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch.xml
 	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/screenshot.jpg
 	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
-	cp $startdir/arch-list.xml $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/
+	patch $startdir/arch.xml $startdir/list.patch -o $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch-list.xml
 	cp $startdir/screenshot-list.jpg $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/
 	cp $startdir/GdmGreeterTheme-list.desktop $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
 }
