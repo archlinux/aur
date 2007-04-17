@@ -49,7 +49,7 @@
 
   <item type="rect" id="caps-lock-warning">
     <normal color="#FFFFFF" alpha="0.5"/>
-    <pos anchor="c" x="50%" y="75%" width="box" height="box"/>
+    <pos anchor="c" x="75%" y="75%" width="box" height="box"/>
     <box orientation="vertical" min-width="400" xpadding="10" ypadding="5" spacing="0">
       <item type="label">
         <normal color="#000000" font="Sans 12"/>
@@ -63,7 +63,7 @@
   <item type="rect">
     <show type="timed"/>
     <normal color="#FFFFFF" alpha="0.5"/>
-    <pos anchor="c" x="50%" y="25%" width="box" height="box"/>
+    <pos anchor="c" x="75%" y="25%" width="box" height="box"/>
     <box orientation="vertical" min-width="400" xpadding="10" ypadding="5" spacing="0">
       <item type="label" id="timed-label">
         <normal color="#000000" font="Sans 12"/>
@@ -74,13 +74,24 @@
     </box>
   </item>
 
+  <item type="rect" id="userlist-rect">
+    <normal color="#FFFFFF" alpha="0.5" font="Sans 14"/>
+    <pos anchor="c" x="25%" y="50%" width="box" height="box"/>
+    <box orientation="vertical" min-width="440" max-width="440" min-height="100" xpadding="4" ypadding="4" spacing="0">
+      <item type="list" id="userlist">
+        <pos anchor="nw" x="0" y="0" height="550" width="440"/>
+        <color iconcolor="#ACBFDD" labelcolor="#ACBFDD"/>
+      </item>
+    </box>
+  </item>
+
   <item type="rect">
     <normal color="#FFFFFF" alpha="0.5"/>
-    <pos anchor="c" x="50%" y="50%" width="box" height="box"/>
+    <pos anchor="c" x="75%" y="50%" width="box" height="box"/>
     <box orientation="vertical" min-width="340" xpadding="30" ypadding="30" spacing="10">
       <item type="label">
         <pos anchor="n" x="50%"/>
-        <normal color="#000000" font="Sans 14"/>
+        <normal color="#000000" font="Sans 18"/>
 	<!-- Stock label for: Welcome to %h -->
 	<stock type="welcome-label"/>
       </item>
