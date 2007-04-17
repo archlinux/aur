@@ -28,7 +28,8 @@ build() {
 	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch.xml
 	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/screenshot.jpg
 	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
-	patch $startdir/arch.xml $startdir/list.patch -o $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch-list.xml
+	patch -o $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch-list.xml $startdir/arch.xml $startdir/list.patch 
+	chmod a+r $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch-list.xml 
 	cp $startdir/screenshot-list.jpg $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/
 	cp $startdir/GdmGreeterTheme-list.desktop $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
 }
