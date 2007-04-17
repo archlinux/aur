@@ -1,0 +1,11 @@
+# This is not really a .desktop file like the rest, but it's useful to treat
+# it as such
+
+[GdmGreeterTheme]
+Encoding=UTF-8
+Greeter=arch.xml
+Name=Archlinux
+Description=Arch Linux GDM Theme with face browser
+Author=Lukas Kropatschek <lukas.krop@gmail.com
+Copyright=(c) 2006 Lukas Kropatschek
+Screenshot=screenshot-list.png

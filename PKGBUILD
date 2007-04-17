@@ -24,5 +24,10 @@ build() {
 		BASENAME=${FILE/*\/}
 		ln -s /opt/gnome/share/gdm/themes/arch/${BASENAME} $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/${BASENAME}
 	done
-	rm /opt/gnome/share/gdm/themes/arch/arch.xml
+	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch.xml
+	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/screenshot.jpg
+	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
+	cp $startdir/arch-list.xml $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/
+	cp $startdir/screenshot-list.jpg $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/
+	cp $startdir/GdmGreeterTheme-list.desktop $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
 }
