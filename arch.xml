@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE greeter SYSTEM "greeter.dtd">
+<greeter>
+  <item type="svg">
+    <normal file="background.png"/>
+    <pos x="0" y="0" width="100%" height="100%"/>
+  </item>
+  <item type="rect">
+    <normal color="#000000"/>
+    <pos x="0" y="-75" width="100%" height="75"/>
+    <fixed>
+      <item type="rect">
+        <normal color="#ffffff"/>
+        <pos x="0" y="4" width="100%" height="100%"/>
+        <box orientation="horizontal" spacing="10" xpadding="10">
+          <item type="rect" id="options_button" button="true">
+            <normal color="#ffffff"/>
+	    <pos y="50%" anchor="w" width="box" height="box"/>
+            <box orientation="horizontal" spacing="10" xpadding="10">
+	      <item type="pixmap">
+	        <normal file="options.png" tint="#dddddd"/>
+	        <prelight file="options.png"/>
+	        <active file="options.png" tint="#ff0000"/>
+	        <pos y="50%" anchor="w"/>
+	      </item>
+	      <item type="label">
+	        <normal color="#000000" font="Sans 12"/>
+		<prelight color="#666666" font="Sans 12"/>
+		<active color="#ff0000" font="Sans 12"/>
+	        <pos y="50%" anchor="w"/>
+		<!-- Stock label for: _Options -->
+		<stock type="options"/>
+	      </item>
+            </box>
+          </item>
+        </box>
+      </item>
+    </fixed>
+  </item>
+  <item type="pixmap">
+    <normal file="nvidia-arch.png"/>
+    <pos x="100%" y="100%" anchor="se"/>
+  </item>
+  <item type="label" id="clock">
+    <normal color="#000000" font="Sans 12"/>
+    <pos x="-20" y="-37" anchor="e"/>
+    <text>%c</text>
+  </item>
+
+  <item type="rect" id="caps-lock-warning">
+    <normal color="#FFFFFF" alpha="0.5"/>
+    <pos anchor="c" x="50%" y="75%" width="box" height="box"/>
+    <box orientation="vertical" min-width="400" xpadding="10" ypadding="5" spacing="0">
+      <item type="label">
+        <normal color="#000000" font="Sans 12"/>
+        <pos x="50%" anchor="n"/>
+	<!-- Stock label for: You've got capslock on! -->
+	<stock type="caps-lock-warning"/>
+      </item>
+    </box>
+  </item>
+
+  <item type="rect">
+    <show type="timed"/>
+    <normal color="#FFFFFF" alpha="0.5"/>
+    <pos anchor="c" x="50%" y="25%" width="box" height="box"/>
+    <box orientation="vertical" min-width="400" xpadding="10" ypadding="5" spacing="0">
+      <item type="label" id="timed-label">
+        <normal color="#000000" font="Sans 12"/>
+        <pos x="50%" anchor="n"/>
+	<!-- Stock label for: User %s will login in %d seconds -->
+	<stock type="timed-label"/>
+      </item>
+    </box>
+  </item>
+
+  <item type="rect">
+    <normal color="#FFFFFF" alpha="0.5"/>
+    <pos anchor="c" x="50%" y="50%" width="box" height="box"/>
+    <box orientation="vertical" min-width="340" xpadding="30" ypadding="30" spacing="10">
+      <item type="label">
+        <pos anchor="n" x="50%"/>
+        <normal color="#000000" font="Sans 14"/>
+	<!-- Stock label for: Welcome to %h -->
+	<stock type="welcome-label"/>
+      </item>
+      <item type="label" id="pam-prompt">
+        <pos anchor="nw" x="10%"/>
+        <normal color="#000000" font="Sans 12"/>
+	<!-- Stock label for: Username: -->
+	<stock type="username-label"/>
+      </item>
+      <item type="rect">
+	<normal color="#000000"/>
+        <pos anchor="n" x="50%" height="24" width="80%"/>
+	<fixed>
+	  <item type="entry" id="user-pw-entry">
+            <normal color="#000000" font="Sans 12"/>
+            <pos anchor="nw" x="1" y="1" height="-2" width="-2"/>
+	  </item>
+	</fixed>
+      </item>
+      <item type="rect" id="ok_button" button="true">
+        <normal color="#ffffff"/>
+        <pos anchor="n" x="50%" width="50%" height="20"/>
+        <box orientation="vertical" spacing="10" xpadding="10">
+          <item type="label">
+            <normal color="#000000" font="Sans 12"/>
+            <prelight color="#666666" font="Sans 12"/>
+            <active color="#ff0000" font="Sans 12"/>
+            <pos anchor="n" x="50%" height="24" width="50%"/>
+            <!-- Stock label for: _OK -->
+            <stock type="ok"/>
+          </item>
+        </box>
+      </item>
+      <item type="rect" id="cancel_button" button="true">
+        <normal color="#ffffff"/>
+        <pos anchor="n" x="50%" width="50%" height="20"/>
+        <box orientation="vertical" spacing="10" xpadding="10">
+          <item type="label">
+            <normal color="#000000" font="Sans 12"/>
+            <prelight color="#666666" font="Sans 12"/>
+            <active color="#ff0000" font="Sans 12"/>
+            <pos anchor="n" x="50%" height="24" width="50%"/>
+            <!-- Stock label for: _Cancel -->
+            <stock type="cancel"/>
+          </item>
+        </box>
+      </item>
+      <item type="label" id="pam-message">
+        <pos anchor="n" x="50%"/>
+        <normal color="#000000" font="Sans 12"/>
+	<text></text>
+      </item>
+    </box>
+    <fixed>
+      <item type="label" id="pam-error">
+        <pos anchor="n" x="50%" y="110%"/>
+        <normal color="#000000" font="Sans 12"/>
+        <text></text>
+      </item>
+    </fixed>
+  </item>
+</greeter>
+
+
