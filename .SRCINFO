@@ -3,6 +3,7 @@ pkgbase = gnuplot-cvs-pdflib
 	pkgver = 20060827
 	pkgrel = 2gtk28
 	url = http://www.gnuplot.info/
+	arch = i686
 	license = custom
 	makedepends = sed
 	makedepends = cvs
