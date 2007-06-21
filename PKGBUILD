@@ -3,33 +3,36 @@
 
 pkgname=arch-gdm-theme-list
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Arch Linux Theme for GDM, also with the face browser version"
 makedepends=('bash')
 depends=('gdm')
+arch=('i686')
 source=()
 
-build() {
-	mkdir -p $startdir/pkg/opt/gnome/share/gdm/themes/arch/
-	cp $startdir/arch.xml $startdir/pkg/opt/gnome/share/gdm/themes/arch/
-	cp $startdir/background.png $startdir/pkg/opt/gnome/share/gdm/themes/arch/
-	cp $startdir/options.png $startdir/pkg/opt/gnome/share/gdm/themes/arch/
-	cp $startdir/help.png $startdir/pkg/opt/gnome/share/gdm/themes/arch/
-	cp $startdir/screenshot.jpg $startdir/pkg/opt/gnome/share/gdm/themes/arch/
-	cp $startdir/GdmGreeterTheme.desktop $startdir/pkg/opt/gnome/share/gdm/themes/arch/
-	cp $startdir/nvidia-arch.png $startdir/pkg/opt/gnome/share/gdm/themes/arch/
+_gdmthemesdir=usr/share/gdm/themes
 
-	mkdir -p $startdir/pkg/opt/gnome/share/gdm/themes/arch-list
-	for FILE in $startdir/pkg/opt/gnome/share/gdm/themes/arch/* ; do 
+build() {
+	mkdir -p $startdir/pkg/$_gdmthemesdir/arch/
+	cp $startdir/arch.xml $startdir/pkg/$_gdmthemesdir/arch/
+	cp $startdir/background.png $startdir/pkg/$_gdmthemesdir/arch/
+	cp $startdir/options.png $startdir/pkg/$_gdmthemesdir/arch/
+	cp $startdir/help.png $startdir/pkg/$_gdmthemesdir/arch/
+	cp $startdir/screenshot.jpg $startdir/pkg/$_gdmthemesdir/arch/
+	cp $startdir/GdmGreeterTheme.desktop $startdir/pkg/$_gdmthemesdir/arch/
+	cp $startdir/nvidia-arch.png $startdir/pkg/$_gdmthemesdir/arch/
+
+	mkdir -p $startdir/pkg/$_gdmthemesdir/arch-list
+	for FILE in $startdir/pkg/$_gdmthemesdir/arch/* ; do 
 		BASENAME=${FILE/*\/}
-		#ln -s /opt/gnome/share/gdm/themes/arch/${BASENAME} $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/${BASENAME}
-		cp $startdir/pkg/opt/gnome/share/gdm/themes/arch/${BASENAME} $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/${BASENAME}
+		#ln -s /$_gdmthemesdir/arch/${BASENAME} $startdir/pkg/$_gdmthemesdir/arch-list/${BASENAME}
+		cp $startdir/pkg/$_gdmthemesdir/arch/${BASENAME} $startdir/pkg/$_gdmthemesdir/arch-list/${BASENAME}
 	done
-	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch.xml
-	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/screenshot.jpg
-	rm $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
-	patch -o $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch-list.xml $startdir/arch.xml $startdir/list.patch 
-	chmod a+r $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/arch-list.xml 
-	cp $startdir/screenshot-list.jpg $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/
-	cp $startdir/GdmGreeterTheme-list.desktop $startdir/pkg/opt/gnome/share/gdm/themes/arch-list/GdmGreeterTheme.desktop
+	rm $startdir/pkg/$_gdmthemesdir/arch-list/arch.xml
+	rm $startdir/pkg/$_gdmthemesdir/arch-list/screenshot.jpg
+	rm $startdir/pkg/$_gdmthemesdir/arch-list/GdmGreeterTheme.desktop
+	patch -o $startdir/pkg/$_gdmthemesdir/arch-list/arch-list.xml $startdir/arch.xml $startdir/list.patch 
+	chmod a+r $startdir/pkg/$_gdmthemesdir/arch-list/arch-list.xml 
+	cp $startdir/screenshot-list.jpg $startdir/pkg/$_gdmthemesdir/arch-list/
+	cp $startdir/GdmGreeterTheme-list.desktop $startdir/pkg/$_gdmthemesdir/arch-list/GdmGreeterTheme.desktop
 }

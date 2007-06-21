@@ -1,7 +1,8 @@
 pkgbase = arch-gdm-theme-list
 	pkgdesc = An Arch Linux Theme for GDM, also with the face browser version
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
+	arch = i686
 	makedepends = bash
 	depends = gdm
 
