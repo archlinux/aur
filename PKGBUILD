@@ -4,13 +4,15 @@
 _archivename=binutils
 _target=mipsel-linux
 pkgname=$_target-$_archivename
-pkgver=2.14
-pkgrel=4
+pkgver=2.15
+pkgrel=1
 pkgdesc="mipsel-linux binary manipulation programs"
 url="http://www.gnu.org/software/$_archivename/"
 depends=(glibc)
+arch=(i686)
+license=(GPL)
 source=(ftp://ftp.gnu.org/gnu/$_archivename/$_archivename-$pkgver.tar.bz2)
-md5sums=('2da8def15d28af3ec6af0982709ae90a')
+md5sums=('624e6b74983ac6b2960edaf2d522ca58')
 
 build() {
 	cd $startdir/src/$_archivename-$pkgver
