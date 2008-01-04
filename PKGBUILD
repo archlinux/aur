@@ -16,5 +16,5 @@ build() {
 	cd $startdir/src/jtag-$pkgver
 	./configure --prefix=/usr || exit 1
 	make || exit 2
-	make DESTDIR=$startdir/pkg install || return 3
+	make DESTDIR=$startdir/pkg install || exit 3
 }
