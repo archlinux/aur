@@ -10,7 +10,7 @@ source=(http://downloads.sourceforge.net/openwince/jtag-${pkgver}.tar.bz2)
 md5sums=('3171d51fec40e9f338ea2d388544fd66')
 depends=('readline' 'openwince-include<=0.4')
 arch=('i686')
-license=('GPL2')
+license=('GPL')
 
 build() {
 	cd $startdir/src/jtag-$pkgver
