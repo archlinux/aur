@@ -6,7 +6,7 @@ pkgver=20060827
 pkgrel=2gtk28
 pkgdesc="A command-line driven interactive function and data plotting utility with many output formats."
 url="http://www.gnuplot.info/"
-license="custom"
+license=
 arch=('i686')
 depends=('gd' 'wxgtk' 'pdflib') 
 makedepends=('sed' 'cvs' 'automake' 'autoconf' 'pdflib')
@@ -14,6 +14,7 @@ conflicts=('gnuplot')
 provides=('gnuplot')
 source=()
 md5sums=()
+arch=('i686')
 
 _cvsmod="gnuplot"
 _cvsroot=":pserver:anonymous:@gnuplot.cvs.sourceforge.net:/cvsroot/$_cvsmod"
