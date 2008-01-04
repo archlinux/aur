@@ -13,6 +13,8 @@ ipkg-utils-050831.destdir.patch)
 makedepends=(python)
 md5sums=('4ede7edd4bcb69d9a0b74af2f68fd6da'
 'f53ad35c8ea36dd42aeb2edf0c81df34')
+arch=('i686')
+license=('GPL')
 
 build() {
 	cd $startdir/src/$pkgname-$pkgver
