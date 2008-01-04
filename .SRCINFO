@@ -1,0 +1,14 @@
+pkgbase = openwince-jtag
+	pkgdesc = Software package to work with JTAG-aware hardware devices, from the OpenWinCE project
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://openwince.sourceforge.net/jtag/
+	arch = i686
+	license = GPL
+	depends = readline
+	depends = openwince-include<=0.4
+	source = http://downloads.sourceforge.net/openwince/jtag-0.5.1.tar.bz2
+	md5sums = 3171d51fec40e9f338ea2d388544fd66
+
+pkgname = openwince-jtag
+
