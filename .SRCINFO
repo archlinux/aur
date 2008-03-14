@@ -1,9 +1,10 @@
 pkgbase = gnuplot-cvs-pdflib
 	pkgdesc = A command-line driven interactive function and data plotting utility with many output formats.
-	pkgver = 20060827
+	pkgver = 20080314
 	pkgrel = 2gtk28
 	url = http://www.gnuplot.info/
 	arch = i686
+	arch = x86_64
 	makedepends = sed
 	makedepends = cvs
 	makedepends = automake
