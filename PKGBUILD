@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="An Arch Linux Theme for GDM, also with the face browser version"
 makedepends=('bash')
 depends=('gdm')
-arch=('i686')
+arch=(any)
 source=()
 
 _gdmthemesdir=usr/share/gdm/themes
