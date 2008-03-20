@@ -12,6 +12,8 @@ depends=('gd' 'wxgtk' 'pdflib')
 makedepends=('sed' 'cvs' 'automake' 'autoconf' 'pdflib')
 conflicts=('gnuplot')
 provides=('gnuplot')
+source=()
+md5sums=()
 
 _cvsmod="gnuplot"
 _cvsroot=":pserver:anonymous:@gnuplot.cvs.sourceforge.net:/cvsroot/$_cvsmod"
