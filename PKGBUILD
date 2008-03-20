@@ -1,9 +1,9 @@
-# Contributor: Stephen Caraher <moskvax@gmail.com>, Olivier Mehani <olivier.mehani@inria.fr>
+# Contributor: Stephen Caraher <moskvax@gmail.com>, Olivier Mehani <shtrom-arch@ssji.net>
 # $Id$
 
 pkgname=gnuplot-cvs-pdflib
 pkgver=20080320
-pkgrel=2gtk28
+pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility with many output formats."
 url="http://www.gnuplot.info/"
 license=(custom:gnuplot)
