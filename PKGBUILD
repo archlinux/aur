@@ -4,7 +4,7 @@
 pkgname=gnuplot-cvs-pdflib
 pkgver=20080320
 pkgrel=1
-pkgdesc="A command-line driven interactive function and data plotting utility with many output formats."
+pkgdesc="A command-line driven interactive function and data plotting utility with many output formats (incl. PDF)."
 url="http://www.gnuplot.info/"
 license=(custom:gnuplot)
 arch=(i686 x86_64)
