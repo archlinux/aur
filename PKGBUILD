@@ -2,7 +2,7 @@
 # $Id$
 
 pkgname=gnuplot-cvs-pdflib
-pkgver=20080320
+pkgver=20080402
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility with many output formats (incl. PDF)."
 url="http://www.gnuplot.info/"
@@ -10,10 +10,11 @@ license=(custom:gnuplot)
 arch=(i686 x86_64)
 depends=('gd' 'wxgtk' 'pdflib') 
 makedepends=('sed' 'cvs' 'automake' 'autoconf' 'pdflib')
-conflicts=('gnuplot')
-provides=('gnuplot')
+conflicts=('gnuplot' 'gnuplot-mode')
+provides=('gnuplot' 'gnuplot-mode')
 source=()
 md5sums=()
+install=(gnuplot.install)
 
 _cvsmod="gnuplot"
 _cvsroot=":pserver:anonymous:@gnuplot.cvs.sourceforge.net:/cvsroot/$_cvsmod"
@@ -42,6 +43,8 @@ build() {
 		pkgdatadir=$startdir/pkg/usr/share/gnuplot \
       datadir=$startdir/pkg/usr/share/gnuplot install
   install -D ../$_cvsmod/Copyright $startdir/pkg/usr/share/licenses/custom/gnuplot/Copyright
+  rm $startdir/pkg/usr/share/info/dir
+  gzip $startdir/pkg/usr/share/info/gnuplot.info
 
   rm -r  $startdir/src/$_cvsmod-build
 }

@@ -1,0 +1,27 @@
+pre_install() {
+  /bin/true
+}
+
+post_install() {
+  install-info /usr/share/info/gnuplot.info.gz /usr/share/info/dir
+}
+
+pre_upgrade() {
+  /bin/true
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  /bin/true
+}
+
+post_remove() {
+  install-info --delete /usr/share/info/gnuplot.info.gz /usr/share/info/dir
+}
+
+op=$1
+shift
+$op $*
