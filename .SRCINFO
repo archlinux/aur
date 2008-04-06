@@ -1,0 +1,41 @@
+pkgbase = boost-python2
+	pkgdesc = Free peer-reviewed portable C++ source libraries
+	pkgver = 1.74.0
+	pkgrel = 2
+	url = https://www.boost.org/
+	arch = x86_64
+	license = custom
+	makedepends = icu
+	makedepends = python
+	makedepends = python2
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = bzip2
+	makedepends = zlib
+	makedepends = openmpi
+	makedepends = zstd
+	makedepends = findutils
+	source = https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.bz2
+	source = boost-ublas-c++20-allocator-patch1.patch::https://github.com/boostorg/ublas/commit/47a314dd01d1.patch
+	source = boost-ublas-c++20-allocator-patch2.patch::https://github.com/boostorg/ublas/commit/a23a903f9a36.patch
+	source = boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch
+	sha256sums = 83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1
+	sha256sums = 3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7
+	sha256sums = 67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903
+	sha256sums = aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee
+	b2sums = 2982f64fccf6fdb3b4b74452e603f459242d7abb42df4162278d9b558b637786a2eb97442126967b19088d591777c64ced8f60a23e71eaa0b7545e80f800de63
+	b2sums = 2375711ebfa084fbf91171c326c3219daa2038c803338340528ff873932c2cf3a49531ed72af1be9fc7af0440e311772ee1f4c44669eb551a81476b1d65f6ca0
+	b2sums = cef20c446636a2d68746537bdbe8d2821ae9d7f56c26dc1ef5d60ce7815c133debd616617f0f5db708d5365511f176e32f863f14bf69bc5a25e72def0a6cf147
+	b2sums = e5f6d4884eaa557d5547e7e079c2edb4ed9f2f4cd8579aa32a2150f824a5d04413f2a91e79b3139d5b915da6a46f7835f1438ad53f33096973f1a99f378ec1d3
+
+pkgname = boost-python2-libs
+	pkgdesc = Free peer-reviewed portable C++ source libraries - runtime libraries
+	optdepends = openmpi: for mpi support
+	provides = libboost_python27.so
+
+pkgname = boost-python2
+	pkgdesc = Free peer-reviewed portable C++ source libraries - development headers
+	depends = python2
+	depends = boost-python2-libs=1.74.0
+	options = staticlibs
+
