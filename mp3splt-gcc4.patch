@@ -1,0 +1,12 @@
+diff -urN ../tmp-orig/mp3splt-2.1/splt.h ./splt.h
+--- ../tmp-orig/mp3splt-2.1/splt.h	2004-07-17 16:16:05.000000000 +0200
++++ ./splt.h	2005-03-18 17:59:51.278527346 +0100
+@@ -96,8 +96,6 @@
+ 
+ char *zero_pad_float (float f, char *out);
+ 
+-int parse_outformat(char *s, char format[][], int cddboption);
+-
+ unsigned char *cleanstring (unsigned char *s);
+ 
+ int parse_arg(char *arg, float *th, int *gap, int *nt, float *off, int *rm, float *min);
