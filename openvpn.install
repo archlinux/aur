@@ -1,0 +1,32 @@
+
+
+post_install() {
+  cat << 'EOM'
+  
+  ==>
+  ==> PLEASE NOTE:
+  ==> Config file examples are provided in /etc/openvpn/examples.
+  ==> 
+  ==> The "easy-rsa" key management scripts are available in
+  ==> /usr/share/openvpn/easy-rsa.
+  ==>
+
+EOM
+}
+
+post_upgrade() {
+  cat << 'EOM'
+  
+  ==>
+  ==> PLEASE NOTE:
+  ==> The openvpn package now includes the "easy-rsa" key
+  ==> management scripts, which are installed in 
+  ==> /use/share/openvpn/easy-rsa.
+  ==>
+
+EOM
+}
+      
+op=$1
+shift
+$op $*
