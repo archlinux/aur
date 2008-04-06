@@ -1,0 +1,18 @@
+--- faac/frontend/main.c	2004-12-08 11:07:17.000000000 +0000
++++ faac-patched/frontend/main.c	2007-01-29 19:17:26.000000000 +0000
+@@ -918,7 +918,14 @@
+     {
+ #endif
+         /* open the aac output file */
+-        outfile = fopen(aacFileName, "wb");
++	if (aacFileName[0] == '-')
++	{
++		outfile = stdout;
++	}
++	else
++	{
++		outfile = fopen(aacFileName, "wb");
++	}
+         if (!outfile)
+         {
+             fprintf(stderr, "Couldn't create output file %s\n", aacFileName);
