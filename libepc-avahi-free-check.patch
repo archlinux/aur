@@ -1,0 +1,14 @@
+--- libepc/service-monitor.c.orig	2008-03-21 22:03:38.000000000 +0000
++++ libepc/service-monitor.c	2008-03-21 22:04:44.000000000 +0000
+@@ -307,7 +307,10 @@
+ 
+   while (self->priv->browsers)
+     {
+-      avahi_service_browser_free (self->priv->browsers->data);
++      if (self->priv->browsers->data != NULL)
++        {
++          avahi_service_browser_free (self->priv->browsers->data);
++	}
+       self->priv->browsers = g_slist_delete_link (self->priv->browsers, self->priv->browsers);
+     }
+ 
