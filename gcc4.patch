@@ -1,0 +1,11 @@
+--- ots-0.4.2/src/article.c.orig	2005-11-08 08:53:13.000000000 +0000
++++ ots-0.4.2/src/article.c	2005-11-08 08:53:18.000000000 +0000
+@@ -35,7 +35,7 @@
+ ots_new_sentence (void)
+ {
+   OtsSentence *aLine = g_new0 (OtsSentence, 1);
+-  (GList *) aLine->words = NULL;
++  aLine->words = NULL;
+   aLine->wc = 0;
+   aLine->selected = 0;
+   aLine->score = 0;
