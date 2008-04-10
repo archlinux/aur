@@ -1,0 +1,16 @@
+pkgbase = sobby
+	pkgdesc = Standalone obby server
+	pkgver = 0.4.4
+	pkgrel = 2
+	url = http://gobby.0x539.de/trac/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = obby
+	depends = glibmm
+	depends = libxml++2
+	source = http://releases.0x539.de/sobby/sobby-0.4.4.tar.gz
+	md5sums = 805f37a544567e649e1dcbb385683486
+
+pkgname = sobby
+
