@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.10 2008/03/30 20:48:41 eric Exp $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
