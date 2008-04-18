@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.35 2008/01/15 03:53:47 kevin Exp $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
