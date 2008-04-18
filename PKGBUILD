@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.10 2007/03/24 13:20:11 jgc Exp $
 # Maintainer: dorphell <dorphell@archlinux.org>
 # Contributer: Ben <ben@benmazer.net>
 pkgname=gtkspell
