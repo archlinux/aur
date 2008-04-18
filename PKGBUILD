@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.5 2008/02/02 18:17:03 damir Exp $
 # Maintainer: damir <damir@archlinux.org>
 # Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
