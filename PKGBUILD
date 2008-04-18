@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.1 2007/03/11 09:02:44 tpowa Exp $
 # Mantainer: Tobias Powalowski <tpowa@archlinux.org>
 pkgname=libofa
 pkgver=0.9.3
