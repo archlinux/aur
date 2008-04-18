@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.1 2005/11/08 09:39:49 jgc Exp $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=aiksaurus
