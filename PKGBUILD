@@ -1,4 +1,4 @@
-# $Id: PKGBUILD,v 1.7 2007/04/22 08:30:24 tpowa Exp $
+# $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=jasper
