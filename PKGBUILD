@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.16 2007/07/17 05:37:03 eric Exp $
 # Maintainer: dorphell <dorphell@archlinux.org>
 # Committer: Judd Vinet <jvinet@zeroflux.org>
 pkgname=gv
