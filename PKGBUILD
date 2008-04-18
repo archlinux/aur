@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.18 2007/12/04 07:56:58 tobias Exp $
 # Maintainer: aurelien <aurelien@archlinux.org>
 
 pkgname=xfwm4-themes
