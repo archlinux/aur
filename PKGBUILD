@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.22 2008/03/23 15:41:51 jgc Exp $
 # Maintainer: kevin <kevin@archlinux.org>
 # TU: Kritoke <kritoke@gamebox.net>
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
