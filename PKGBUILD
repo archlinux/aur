@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.18 2007/11/16 00:02:36 daniel Exp $
 # Maintainer: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=openvpn
