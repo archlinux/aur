@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.3 2006/02/19 23:47:01 simo Exp $
 # Maintainer: Simo Leone <simo@archlinux.org>
 
 pkgname=trayer
