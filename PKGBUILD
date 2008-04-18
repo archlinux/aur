@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.9 2008/01/29 09:57:46 james Exp $
 # Maintainer: James Rayner <james@archlinux.org>
 # Contributor: Sebastian Sareyko <public@nooms.de>
 pkgname=nitrogen
