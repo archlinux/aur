@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.3 2008/03/23 17:36:22 jgc Exp $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
