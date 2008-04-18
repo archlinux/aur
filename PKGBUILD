@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.18 2008/03/27 20:02:25 daniel Exp $
 # Maintainer: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Brice Carpentier <brice@dlfp.org>
 
