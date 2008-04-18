@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.40 2007/11/16 00:02:36 daniel Exp $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 pkgname=openssl
 pkgver=0.9.8g
