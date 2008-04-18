@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.14 2007/08/19 11:57:37 jgc Exp $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
