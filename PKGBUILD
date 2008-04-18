@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.46 2008/02/04 22:05:57 jgc Exp $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 
