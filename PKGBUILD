@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.7 2005/07/16 10:35:41 tpowa Exp $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=mp3splt
