@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.7 2007/11/15 23:53:12 daniel Exp $
 # Maintainer: Judd Vinet <judd@archlinux.org>
 pkgname=bridge-utils
 pkgver=1.2
