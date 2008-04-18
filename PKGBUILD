@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.2 2007/03/16 21:11:46 tom Exp $
 # Maintainer: Tom K <tomk@runbox.com>
 
 pkgname=gnu-netcat
