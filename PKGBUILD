@@ -3,17 +3,17 @@
 
 pkgname=gtk2-perl
 _realname=Gtk2
-pkgver=1.162
+pkgver=1.182
 pkgrel=1
 pkgdesc="Gtk2-Perl allows Perl developers to write GTK+ 2.x applications."
 arch=(i686 x86_64)
 license=('LGPL')
 url="http://gtk2-perl.sourceforge.net/"
 makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends')
-depends=('gtk2>=2.12.0' 'glib-perl>=1.160' 'cairo-perl>=1.041' 'perl>=5.10.0')
-options=(!emptydirs)
+depends=('gtk2>=2.12.9-2' 'glib-perl>=1.182' 'cairo-perl>=1.060' 'perl>=5.10.0')
+options=('!emptydirs')
 source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/${_realname}-${pkgver}.tar.gz)
-md5sums=('752b81dcdd0db326e2b0af7c702fc66f')
+md5sums=('4ebd8fd38e551c319ddb638d26b525e3')
 
 build() {
   cd ${startdir}/src/${_realname}-${pkgver}
