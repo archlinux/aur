@@ -1,0 +1,20 @@
+pkgbase = st-hidpi-git
+	pkgdesc = st fork intended for 4K displays
+	pkgver = 0.r1090.8890fdf
+	pkgrel = 1
+	url = https://github.com/abdalazizrashid/st-HiDPI
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ncurses
+	depends = libxext
+	depends = git
+	provides = st
+	conflicts = st
+	source = git://github.com/abdalazizrashid/st-HiDPI.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = st-hidpi-git
+
