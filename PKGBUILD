@@ -3,7 +3,7 @@
 
 pkgname=slim-themes
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Themes Pack for Simple Login Manager"
 arch=(i686 x86_64)
 url='http://slim.berlios.de'
@@ -11,7 +11,6 @@ depends=('slim')
 license=('GPL')
 source=(http://download.berlios.de/slim/slim-$pkgver-themepack1a.tar.gz \
         http://download.berlios.de/slim/slim-lake.tar.gz \
-        http://download.berlios.de/slim/slim-archlinux.tar.gz \
         http://download.berlios.de/slim/slim-fingerprint.tar.gz \
         http://download.berlios.de/slim/slim-flat.tar.gz \
         http://download.berlios.de/slim/slim-lunar-0.4.tar.bz2 \
@@ -25,12 +24,13 @@ source=(http://download.berlios.de/slim/slim-$pkgver-themepack1a.tar.gz \
         http://download.berlios.de/slim/slim-debian-moreblue.tar.bz2)
 
 md5sums=('fd1295d3a260849790dc17081da4a34f' 'c0cef9e7b95bdf2df3fb303d155f8476'
-         'e3f5b90f502bbcc01ff1b3319e2b4f5d' '2981627a5822a535f3ebd0e21dba9f76'
-         '34696aef39fad7092c80ccf7a38886a5' '6fe38013c6eed67dead507616667ae9a'
-         '6e846e8adafa70a7bd0e22d5bd06dc5f' '631a00eb27c09b0daa50b88bd9606d07'
-         '337876e05b2bdf4bd657d114464ad46a' 'fde18fb892bccc383c93fb7ed07fbe84'
-         '8417022e369be012f1b7a4ee04edf0f9' 'c727aab888dde774acc04403c84b5b3b'
-         '7a0bd7a0736794e638668769b9c4c745')
+         '2981627a5822a535f3ebd0e21dba9f76' '34696aef39fad7092c80ccf7a38886a5'
+         '6fe38013c6eed67dead507616667ae9a' '6e846e8adafa70a7bd0e22d5bd06dc5f'
+         '631a00eb27c09b0daa50b88bd9606d07' '337876e05b2bdf4bd657d114464ad46a'
+         'fde18fb892bccc383c93fb7ed07fbe84' '8417022e369be012f1b7a4ee04edf0f9'
+         'c727aab888dde774acc04403c84b5b3b' '7a0bd7a0736794e638668769b9c4c745'
+         '5f3818e01b0593d0e576fcd7e2c6bafa')
+
 options=(force)
 
 build() {
@@ -46,7 +46,6 @@ build() {
   mv subway $startdir/pkg/usr/share/slim/themes
   mv wave $startdir/pkg/usr/share/slim/themes
   mv slim-lunar-0.4 $startdir/pkg/usr/share/slim/themes/lunar
-  mv slim-archlinux $startdir/pkg/usr/share/slim/themes/archlinux
   mv Zenwalk $startdir/pkg/usr/share/slim/themes/zenwalk
   mv parallel-dimensions $startdir/pkg/usr/share/slim/themes
   mv capernoited $startdir/pkg/usr/share/slim/themes
