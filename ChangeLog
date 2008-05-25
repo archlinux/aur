@@ -1,4 +1,8 @@
-2008-05-12 Thayer Williams <thayer@archlinux.org>
+2008-05-25 Thayer Williams <thayer@archlinux.org>
+
+	* 1.1-1 :
+	Updated existing themes with legal info.
+	archlinux-simple-black is now archlinux-simplyblack
 
 	* 1.0-1 :
 	Initial release.
