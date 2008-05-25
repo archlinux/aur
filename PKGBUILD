@@ -1,26 +1,20 @@
-# Maintainer: dorphell <dorphell@archlinux.org>
+# Maintainer: Roman Kyrylych <roman@archlinux.org>
 # Contributer: Ben <ben@benmazer.net>
+
 pkgname=gtkspell
-pkgver=2.0.11
-pkgrel=2
+pkgver=2.0.13
+pkgrel=1
 url="http://gtkspell.sourceforge.net/"
-pkgdesc="GtkSpell provides MSWord-style highlighting and replacement of misspelled words in a GtkText widget"
-arch=(i686 x86_64)
+pkgdesc="GtkSpell provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
+arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'enchant')
-makedepends=('pkgconfig')
-options=('nolibtool')
-source=(http://gtkspell.sourceforge.net/download/${pkgname}-${pkgver}.tar.gz
-        gtkspell-2.0.11-enchant.patch)
-md5sums=('494869f67146a12a3f17a958f51aeb05' '56272bca2bff7fda0bfe8be7ff9808b5')
-
+options=('!libtool')
+source=(http://gtkspell.sourceforge.net/download/${pkgname}-${pkgver}.tar.gz)
+md5sums=('f4e21418d2e53bcf4c7affcdae8a213e')
 
 build() {
   cd ${startdir}/src/${pkgname}-${pkgver}
-  patch -Np1 -i ${startdir}/src/gtkspell-2.0.11-enchant.patch || return 1
-  aclocal
-  autoconf
-  automake
   ./configure --prefix=/usr --disable-gtk-doc
   make || return 1
   make DESTDIR=${startdir}/pkg install
