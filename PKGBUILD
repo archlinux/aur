@@ -9,6 +9,7 @@ pkgdesc="GtkSpell provides word-processor-style highlighting and replacement of 
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'enchant')
+makedepends=('perlxml')
 options=('!libtool')
 source=(http://gtkspell.sourceforge.net/download/${pkgname}-${pkgver}.tar.gz)
 md5sums=('f4e21418d2e53bcf4c7affcdae8a213e')
