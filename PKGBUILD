@@ -5,6 +5,7 @@ pkgrel=3
 pkgdesc="xinetd is a secure replacement for inetd"
 arch=(i686 x86_64)
 url="http://www.xinetd.org/"
+license=('custom')
 depends=('glibc' 'tcp_wrappers')
 backup=('etc/xinetd.conf' 'etc/xinetd.d/servers' 'etc/xinetd.d/services')
 source=(http://www.xinetd.org/xinetd-$pkgver.tar.gz xinetd.conf xinetd \
@@ -22,4 +23,7 @@ build() {
   install -D -m644 ../xinetd.conf $startdir/pkg/etc/xinetd.conf
   install -D -m644 ../servers $startdir/pkg/etc/xinetd.d/servers
   install -D -m644 ../services $startdir/pkg/etc/xinetd.d/services
+
+  # install license
+  install -D -m644 COPYRIGHT $startdir/pkg/usr/share/licenses/$pkgname/COPYRIGHT
 }
