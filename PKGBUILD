@@ -5,6 +5,7 @@ pkgrel=2
 pkgdesc="Layer2 ethernet bridging for Linux"
 arch=(i686 x86_64)
 url="http://bridge.sourceforge.net/"
+license=('GPL2')
 backup=('etc/conf.d/bridges')
 depends=('glibc')
 source=(http://heanet.dl.sourceforge.net/sourceforge/bridge/bridge-utils-$pkgver.tar.gz bridges.conf.d)
