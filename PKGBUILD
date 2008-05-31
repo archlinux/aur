@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 pkgname=openssl
 pkgver=0.9.8h
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='http://www.openssl.org'
@@ -21,7 +21,7 @@ build() {
 	./config --prefix=/usr --openssldir=/etc/ssl shared
 
 	make || return 1
-	make INSTALL_PREFIX=$startdir/pkg MANDIR=/usr/man install
+	make INSTALL_PREFIX=$startdir/pkg MANDIR=/usr/share/man install
 
 	install -D -m644 LICENSE $startdir/pkg/usr/share/licenses/$pkgname/LICENSE
 }
