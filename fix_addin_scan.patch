@@ -1,0 +1,12 @@
+diff -urNad mono-addins~/Mono.Addins/Mono.Addins.Database/AddinDatabase.cs mono-addins/Mono.Addins/Mono.Addins.Database/AddinDatabase.cs
+--- mono-addins~/Mono.Addins/Mono.Addins.Database/AddinDatabase.cs	2008-01-30 22:37:53.000000000 +0000
++++ mono-addins/Mono.Addins/Mono.Addins.Database/AddinDatabase.cs	2008-03-20 16:46:40.000000000 +0000
+@@ -512,6 +512,8 @@
+ 						string dir = Path.GetDirectoryName (mp);
+ 						string pat = Path.GetFileName (mp);
+ 						foreach (string fmp in fileDatabase.GetDirectoryFiles (dir, pat)) {
++							if (files.Contains (fmp))
++								continue;
+ 							files.Add (fmp);
+ 							string an = Path.GetFileNameWithoutExtension (fmp);
+ 							changedAddins [an] = an;

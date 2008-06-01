@@ -3,22 +3,24 @@
 
 pkgname=mono-addins
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a generic framework for creating extensible applications and for creating libraries which extend those applications"
 arch=('i686' 'x86_64')
 url="http://www.mono-project.com/Mono.Addins"
 license=('custom:MIT')
 depends=('gtk-sharp-2>=2.12.0')
 makedepends=('pkgconfig')
-source=(http://go-mono.com/sources/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('bae5e01ba61bd261de2335ab0dfe999f')
+source=(http://go-mono.com/sources/${pkgname}/${pkgname}-${pkgver}.tar.bz2
+	fix_addin_scan.patch)
+md5sums=('bae5e01ba61bd261de2335ab0dfe999f' '48ebe49e04810791613f76da442e2766')
 
 build() {
   export MONO_SHARED_DIR="${startdir}/src/.wabi"
   mkdir -p "${MONO_SHARED_DIR}"
   cd ${startdir}/src/${pkgname}-${pkgver}
 
-  ./configure --prefix=/usr --enable-gui
+  patch -Np1 -i ${startdir}/src/fix_addin_scan.patch || return 1
+  ./configure --prefix=/usr --enable-gui || return 1
   make || return 1
   make GACUTIL="/usr/bin/gacutil -root $startdir/pkg/usr/lib"  DESTDIR=${startdir}/pkg install || return 1
 
