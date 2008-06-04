@@ -1,13 +1,13 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 pkgname=openssl
 pkgver=0.9.8h
-pkgrel=2
+pkgrel=3
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='http://www.openssl.org'
 license=('custom:BSD')
 groups=('base')
-depends=('glibc')
+depends=('glibc' 'ca-certificates')
 options=('!makeflags')
 source=("http://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz" \
         'http://www.linuxfromscratch.org/patches/blfs/svn/openssl-0.9.8g-fix_manpages-1.patch')
