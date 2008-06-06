@@ -2,7 +2,7 @@
 # Maintainer: Dan McGee <dan@archlinux.org>
 
 pkgname=pidgin
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="A GTK+-based messaging client"
 arch=(i686 x86_64)
@@ -15,16 +15,10 @@ conflicts=('gaim')
 provides=('gaim')
 options=(!libtool)
 install=pidgin.install
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
-        iconv-fix.patch)
-md5sums=('ff015bb8bbdcc6a9b4ac954c355179d7'
-         'de084bf1e2f345eada74671787256b74')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
 
 build() {
   cd ${startdir}/src/${pkgname}-${pkgver}
-
-  # fix some weird autoconf substitution bug, should report this upstream
-  patch -p0 < ../iconv-fix.patch || return 1
 
   # gconf won't die with the --disable-schemas-install option
   sed -i -e 's/gconftool-2/no/g' configure.ac
@@ -35,7 +29,7 @@ build() {
   libtoolize --force --copy || return 1
   aclocal || return 1
   autoconf || return 1
-  automake || return 1
+  automake --add-missing || return 1
 
   ./configure --prefix=/usr --sysconfdir=/etc \
               --disable-perl --disable-cap \
@@ -43,7 +37,10 @@ build() {
               --enable-gtkspell --enable-gnutls=yes \
               --enable-nss=no --disable-gevolution \
               --enable-dbus --disable-mono \
+              --disable-meanwhile --disable-nm \
               --disable-debug
   make || return 1
   make DESTDIR=${startdir}/pkg install
 }
+
+md5sums=('2d10f9b6a5f0162cf88016ea2ca0a36d')
