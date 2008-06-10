@@ -1,0 +1,323 @@
+-- tspc-2.1.1.orig/src/tsp/tsp_client.c
++++ tspc-2.1.1/src/tsp/tsp_client.c
+@@ -275,7 +275,7 @@
+ 
+ start_show:
+ 
+-	Display(0, ELInfo, "tspSetupTunnel", "Got tunnel parameters from server, setting up local tunnel");
++	Display(1, ELInfo, "tspSetupTunnel", "Got tunnel parameters from server, setting up local tunnel");
+ 
+ 	/* and start the show */
+ 	ret = tspStartLocal(socket, conf, &t, nt[conf->transport]);
+@@ -337,8 +337,8 @@
+ 	LogInit("tspc", LogFile);
+ 
+ 	Display( 1, ELInfo, "tspMain", "----- TSP Client Version %s Initializing -------------------------", TSP_CLIENT_VERSION);
+-	Display( 0, ELInfo, "tspMain", IDENTIFICATION);
+-	Display( 0, ELInfo, "tspMain", "Initializing (use -h for help)\n");
++	Display( 1, ELInfo, "tspMain", IDENTIFICATION);
++	Display( 1, ELInfo, "tspMain", "Initializing (use -h for help)\n");
+ 
+ 	if((status = tspInitialize(argc, argv, &c)) != 0) {	// *** we have no uninitialize
+ 		if (status == -1) {
+@@ -361,12 +361,12 @@
+ 
+ 	/* first try with RUDP */
+ 	c.transport = NET_TOOLS_T_RUDP;
+-	Display( 0, ELInfo, "tspMain", "\nConnecting to server with reliable udp");
++	Display( 1, ELInfo, "tspMain", "\nConnecting to server with reliable udp");
+ 
+ try_server:
+ 
+ 	if (c.transport == NET_TOOLS_T_TCP)
+-		Display( 0, ELInfo, "tspMain", "\nConnecting to server with tcp");
++		Display( 1, ELInfo, "tspMain", "\nConnecting to server with tcp");
+ 
+ 	Display( 1, ELInfo, "tspMain", "Using TSP protocol version %s",
+ 		TspProtocolVersionStrings[version_index]); 
+--- tspc-2.1.1.orig/src/lib/log.c
++++ tspc-2.1.1/src/lib/log.c
+@@ -193,6 +193,9 @@
+     fflush(Logfp);
+   }
+ 
++  /* only syslog errors */
++  if (ErrorLevel>ELError) return 0;
++
+   snprintf(str, sizeof str,  " %s: %s", FunctionName, fmt);  
+ 
+   SYSLOG(prio[ErrorLevel], str);
+@@ -231,6 +234,9 @@
+     fflush(Logfp);
+   }
+ 
++  /* only syslog errors */
++  if (ErrorLevel>ELError) return 0;
++
+   snprintf(str, sizeof str, "%s : %s", FunctionName, Format);  
+ 
+   SYSLOG(prio[ErrorLevel], str);
+--- tspc-2.1.1.orig/src/lib/config.c
++++ tspc-2.1.1/src/lib/config.c
+@@ -474,14 +474,17 @@
+   if(IsPresent(Conf->dns_server)) {
+      char *Server;
+      char *dns = strdup(Conf->dns_server);
++     struct addrinfo *contact;
+      if (eq(Conf->host_type, "host")) {
+        Display(1,ELError, "tspVerifyConfig", "DNS delegation is not supported for host_type=host");
+        status = 1;
+      }
+      for(Server = strtok(dns, ":");Server; Server = strtok(NULL, ":")) {
+-        if(gethostbyname(Server) == NULL) {
++        if(getaddrinfo(Server, "domain", 0, &contact)!=0) {
+            Display(1,ELError, "tspVerifyConfig", "DNS server name %s is not resolving.", Server);
+            status = 1;
++        } else {
++           freeaddrinfo(contact);
+         }
+      }
+      free(dns);
+-- tspc-2.1.1.orig/platform/linux/tsp_local.c
++++ tspc-2.1.1/platform/linux/tsp_local.c
+@@ -59,13 +59,13 @@
+ 
+ /* these globals are defined by US used by alot of things in  */
+ 
+-char *FileName  = "tspc.conf";
+-char *LogFile   = "tspc.log";
++char *FileName  = "/etc/tsp/tspc.conf";
++char *LogFile   = "/var/log/tspc.log";
+ char *LogFileName = NULL;
+-char *ScriptInterpretor = "/bin/sh";
++char *ScriptInterpretor = "";
+ char *ScriptExtension = "sh";
+ char *ScriptDir = NULL;
+-char *TspHomeDir = "/usr/local/etc/tsp";
++char *TspHomeDir = "/etc/tsp";
+ char DirSeparator = '/';
+ 
+ int Verbose = 0;
+@@ -143,7 +143,7 @@
+ 	{
+ 		  int tunfd;
+ 
+-		  Display(0, ELInfo, "tspStartLocal", "Going daemon, check %s for tunnel creation status", LogFile);
++		  Display(1, ELInfo, "tspStartLocal", "Going daemon, check %s for tunnel creation status", LogFile);
+ 
+ 		  if (daemon(0,0) == -1) {
+ 			  Display(1, ELError, "tspStartLocal", "Unable to fork.");
+--- tspc-2.1.1.orig/setup.diff
++++ tspc-2.1.1/setup.diff
+@@ -0,0 +1,65 @@
++--- tspc-2.1.1.orig/template/linux.sh
+++++ tspc-2.1.1/template/linux.sh
++@@ -149,7 +149,7 @@
++       #Better way on linux to avoid loop with the remaining /48?
++       $route -A inet6 add $TSP_PREFIX::/$TSP_PREFIXLEN dev $TSP_HOME_INTERFACE 2>/dev/null
++    fi
++-   Exec $sysctl -w net.ipv6.conf.all.forwarding=1 # ipv6_forwarding enabled
+++   Exec $sysctl -w net.ipv6.conf.all.forwarding=1 >/dev/null
++    Display 1 "Adding prefix to $TSP_HOME_INTERFACE"
++    OLDADDR=`$ifconfig $TSP_HOME_INTERFACE | grep "inet6.* $PREF" | sed -e "s/^.*inet6 addr: //" -e "s/ Scope.*\$//"`
++    if [ ! -z $OLDADDR ]; then
++@@ -158,27 +158,33 @@
++    fi
++    Exec $ifconfig $TSP_HOME_INTERFACE add $TSP_PREFIX::1/64
++    # Router advertisement configuration 
++-   Display 1 "Create new $rtadvdconfigfile"
++-   echo "##### rtadvd.conf made by TSP ####" > "$rtadvdconfigfile"
++-   echo "interface $TSP_HOME_INTERFACE" >> "$rtadvdconfigfile"
++-   echo "{" >> "$rtadvdconfigfile"
++-   echo " AdvSendAdvert on;" >> "$rtadvdconfigfile"
++-   echo " prefix $TSP_PREFIX::/64" >> "$rtadvdconfigfile"
++-   echo " {" >> "$rtadvdconfigfile"
++-   echo " AdvOnLink on;" >> "$rtadvdconfigfile"
++-   echo " AdvAutonomous on;" >> "$rtadvdconfigfile"
++-   echo " };" >> "$rtadvdconfigfile"
++-   echo "};" >> "$rtadvdconfigfile"
++-   echo "" >> "$rtadvdconfigfile"
++-   /etc/init.d/radvd stop
++-   if [ -f $rtadvdconfigfile ]; then
++-      KillProcess $rtadvdconfigfile
++-      Exec $rtadvd -u radvd -C $rtadvdconfigfile
++-      Display 1 "Starting radvd: $rtadvd -u radvd -C $rtadvdconfigfile"
++-   else
++-      echo "Error : file $rtadvdconfigfile not found"
++-      exit 1
++-   fi
+++###
+++### The ArchLinux package does not want to mess with your radvd configuration.
+++### If you run an IPv6 router, please configure radvd on your own or
+++### reactivate the part below on your own.
+++### (From the Debian package)
+++### 
+++#   Display 1 "Create new $rtadvdconfigfile"
+++#   echo "##### rtadvd.conf made by TSP ####" > "$rtadvdconfigfile"
+++#   echo "interface $TSP_HOME_INTERFACE" >> "$rtadvdconfigfile"
+++#   echo "{" >> "$rtadvdconfigfile"
+++#   echo " AdvSendAdvert on;" >> "$rtadvdconfigfile"
+++#   echo " prefix $TSP_PREFIX::/64" >> "$rtadvdconfigfile"
+++#   echo " {" >> "$rtadvdconfigfile"
+++#   echo " AdvOnLink on;" >> "$rtadvdconfigfile"
+++#   echo " AdvAutonomous on;" >> "$rtadvdconfigfile"
+++#   echo " };" >> "$rtadvdconfigfile"
+++#   echo "};" >> "$rtadvdconfigfile"
+++#   echo "" >> "$rtadvdconfigfile"
+++#   /etc/init.d/radvd stop
+++#   if [ -f $rtadvdconfigfile ]; then
+++#      KillProcess $rtadvdconfigfile
+++#      Exec $rtadvd -u radvd -C $rtadvdconfigfile
+++#      Display 1 "Starting radvd: $rtadvd -u radvd -C $rtadvdconfigfile"
+++#   else
+++#      echo "Error : file $rtadvdconfigfile not found"
+++#      exit 1
+++#   fi
++ fi
++ 
++ Display 1 "--- End of configuration script. ---"
+--- tspc-2.1.1.orig/template/linux.sh
++++ tspc-2.1.1/template/linux.sh
+@@ -135,9 +135,7 @@
+    # 
+    # Default route  
+    Display 1 "Adding default route"
+-   ExecNoCheck $route -A inet6 del ::/0 2>/dev/null # delete old default route
+    ExecNoCheck $route -A inet6 del 2000::/3 2>/dev/null  # delete old gw route
+-   Exec $route -A inet6 add ::/0 dev $TSP_TUNNEL_INTERFACE
+    Exec $route -A inet6 add 2000::/3 dev $TSP_TUNNEL_INTERFACE
+ fi
+ 
+@@ -147,9 +145,10 @@
+    Display 1 "Kernel setup"
+    if [ X"${TSP_PREFIXLEN}" != X"64" ]; then
+       #Better way on linux to avoid loop with the remaining /48?
+-      $route -A inet6 add $TSP_PREFIX::/$TSP_PREFIXLEN dev $TSP_HOME_INTERFACE 2>/dev/null
++      ExecNoCheck $route -A inet6 del $TSP_PREFIX::/$TSP_PREFIXLEN dev $TSP_HOME_INTERFACE 2>/dev/null
++      Exec $route -A inet6 add $TSP_PREFIX::/$TSP_PREFIXLEN dev $TSP_HOME_INTERFACE
+    fi
+-   Exec $sysctl -w net.ipv6.conf.all.forwarding=1 # ipv6_forwarding enabled
++   Exec $sysctl -q -w net.ipv6.conf.all.forwarding=1 # ipv6_forwarding enabled
+    Display 1 "Adding prefix to $TSP_HOME_INTERFACE"
+    OLDADDR=`$ifconfig $TSP_HOME_INTERFACE | grep "inet6.* $PREF" | sed -e "s/^.*inet6 addr: //" -e "s/ Scope.*\$//"`
+    if [ ! -z $OLDADDR ]; then
+@@ -157,28 +156,28 @@
+       Exec $ifconfig $TSP_HOME_INTERFACE inet6 del $OLDADDR
+    fi
+    Exec $ifconfig $TSP_HOME_INTERFACE add $TSP_PREFIX::1/64
+-   # Router advertisement configuration 
+-   Display 1 "Create new $rtadvdconfigfile"
+-   echo "##### rtadvd.conf made by TSP ####" > "$rtadvdconfigfile"
+-   echo "interface $TSP_HOME_INTERFACE" >> "$rtadvdconfigfile"
+-   echo "{" >> "$rtadvdconfigfile"
+-   echo " AdvSendAdvert on;" >> "$rtadvdconfigfile"
+-   echo " prefix $TSP_PREFIX::/64" >> "$rtadvdconfigfile"
+-   echo " {" >> "$rtadvdconfigfile"
+-   echo " AdvOnLink on;" >> "$rtadvdconfigfile"
+-   echo " AdvAutonomous on;" >> "$rtadvdconfigfile"
+-   echo " };" >> "$rtadvdconfigfile"
+-   echo "};" >> "$rtadvdconfigfile"
+-   echo "" >> "$rtadvdconfigfile"
+-   /etc/init.d/radvd stop
+-   if [ -f $rtadvdconfigfile ]; then
+-      KillProcess $rtadvdconfigfile
+-      Exec $rtadvd -u radvd -C $rtadvdconfigfile
+-      Display 1 "Starting radvd: $rtadvd -u radvd -C $rtadvdconfigfile"
+-   else
+-      echo "Error : file $rtadvdconfigfile not found"
+-      exit 1
+-   fi
++#   # Router advertisement configuration 
++#   Display 1 "Create new $rtadvdconfigfile"
++#   echo "##### rtadvd.conf made by TSP ####" > "$rtadvdconfigfile"
++#   echo "interface $TSP_HOME_INTERFACE" >> "$rtadvdconfigfile"
++#   echo "{" >> "$rtadvdconfigfile"
++#   echo " AdvSendAdvert on;" >> "$rtadvdconfigfile"
++#   echo " prefix $TSP_PREFIX::/64" >> "$rtadvdconfigfile"
++#   echo " {" >> "$rtadvdconfigfile"
++#   echo " AdvOnLink on;" >> "$rtadvdconfigfile"
++#   echo " AdvAutonomous on;" >> "$rtadvdconfigfile"
++#   echo " };" >> "$rtadvdconfigfile"
++#   echo "};" >> "$rtadvdconfigfile"
++#   echo "" >> "$rtadvdconfigfile"
++#   /etc/init.d/radvd stop
++#   if [ -f $rtadvdconfigfile ]; then
++#      KillProcess $rtadvdconfigfile
++#      Exec $rtadvd -u radvd -C $rtadvdconfigfile
++#      Display 1 "Starting radvd: $rtadvd -u radvd -C $rtadvdconfigfile"
++#   else
++#      echo "Error : file $rtadvdconfigfile not found"
++#      exit 1
++#   fi
+ fi
+ 
+ Display 1 "--- End of configuration script. ---"
+--- tspc-2.1.1.orig/debian/tspc.init
++++ tspc-2.1.1/debian/tspc.init
+@@ -0,0 +1,66 @@
++#! /bin/sh
++### BEGIN INIT INFO
++# Provides:          tspc
++# Required-Start:    $remote_fs
++# Required-Stop:     $remote_fs
++# Default-Start:     S
++# Default-Stop:      0 6
++# Short-Description: Script to configure the IPv6 tunnel to tspc
++### END INIT INFO
++#
++#	Written by Martin Waitz <tali@debian.org>
++
++PATH=/sbin:/bin:/usr/sbin:/usr/bin
++TSPC=/usr/sbin/tspc
++
++test -f $TSPC || exit 0
++
++
++# read tsp client config, to get the interface used
++. /etc/tsp/tspc.conf
++
++start() {
++	start-stop-daemon --start --quiet --exec $TSPC || exit 1
++}
++
++stop() {
++	start-stop-daemon --stop --quiet --exec $TSPC || exit 1
++	ip tunnel del $if_tunnel_v6v4 2>/dev/null
++	ip tunnel del $if_tunnel_v6udpv6 2>/dev/null
++}
++
++
++case "$1" in
++  start)
++	echo -n "Setting up IPv6 tunnel: "
++	start
++	if test "$?" = 0; then
++		echo "done.";
++	else
++		echo "failed."
++		exit 1
++	fi
++	;;
++  stop)
++	echo -n "Shutting down IPv6 tunnel: "
++	stop
++	echo "done."
++	;;
++  restart|force-reload)
++	echo -n "Restarting IPv6 tunnel: "
++	stop
++	start
++	if test "$?" = 0; then
++		echo "done.";
++	else
++		echo "failed."
++		exit 1
++	fi
++	;;
++  *)
++	echo "Usage: $0 {start|stop|restart|force-reload}" >&2
++	exit 1
++	;;
++esac
++
++exit 0

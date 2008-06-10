@@ -8,9 +8,13 @@ pkgbase = tspc
 	license = BSD
 	depends = openssl
 	source = http://go6.net/4105/file.asp?file_id=150
+	source = debian.patch
 	source = fix_missing_headers.patch
+	source = tspc
 	md5sums = 5c5205dc58e82454a5d55a3efb4bf786
-	md5sums = 0c7aa95083375dfdfb3cff6772a2987b
+	md5sums = deb1833e122c6ccbc02e04eeec9d200a
+	md5sums = ea98bbce3ba371e45db7b9535e352363
+	md5sums = 2694da554049281765d05104c6f3dfea
 
 pkgname = tspc
 

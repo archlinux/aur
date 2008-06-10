@@ -1,0 +1,59 @@
+#! /bin/sh
+# $Id$
+# Startup script from the Debian tspc package
+#	Written by Martin Waitz <tali@debian.org>
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+TSPC=/usr/sbin/tspc
+
+test -f $TSPC || exit 0
+
+
+# read tsp client config, to get the interface used
+. /etc/tsp/tspc.conf
+
+start() {
+	$TSPC || exit 1
+}
+
+stop() {
+	killall $TSPC || exit 1
+	ip tunnel del $if_tunnel_v6v4 2>/dev/null
+	ip tunnel del $if_tunnel_v6udpv6 2>/dev/null
+}
+
+
+case "$1" in
+  start)
+	echo -n "Setting up IPv6 tunnel: "
+	start
+	if test "$?" = 0; then
+		echo "done.";
+	else
+		echo "failed."
+		exit 1
+	fi
+	;;
+  stop)
+	echo -n "Shutting down IPv6 tunnel: "
+	stop
+	echo "done."
+	;;
+  restart|force-reload)
+	echo -n "Restarting IPv6 tunnel: "
+	stop
+	start
+	if test "$?" = 0; then
+		echo "done.";
+	else
+		echo "failed."
+		exit 1
+	fi
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+	exit 1
+	;;
+esac
+
+exit 0
