@@ -1,0 +1,16 @@
+pkgbase = tspc
+	pkgdesc = Gateway6 client implementation of the Tunnel Setup Protocol from Hexago
+	pkgver = 5.1
+	pkgrel = 1
+	url = http://go6.net/4105/download.asp
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = openssl
+	source = http://go6.net/4105/file.asp?file_id=150
+	source = fix_missing_headers.patch
+	md5sums = 5c5205dc58e82454a5d55a3efb4bf786
+	md5sums = 0c7aa95083375dfdfb3cff6772a2987b
+
+pkgname = tspc
+

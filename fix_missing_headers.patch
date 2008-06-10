@@ -1,0 +1,95 @@
+$Id$
+Include headers for missing prototypes due to the C++ header cleanup in GCC 4.3.
+====
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-config/src/gw6c_c_wrapper.cc gw6c-5_1-RELEASE-src/gw6c-config/src/gw6c_c_wrapper.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-config/src/gw6c_c_wrapper.cc	2008-06-10 12:03:32.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-config/src/gw6c_c_wrapper.cc	2008-06-10 12:07:47.000000000 +1000
+@@ -22,6 +22,8 @@
+ #include <gw6cconfig/gw6cuistrings.h>
+ using namespace gw6cconfig;
+ #include <assert.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #ifdef WIN32
+ #define strcasecmp      _stricmp
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-config/src/gw6cconfig.cc gw6c-5_1-RELEASE-src/gw6c-config/src/gw6cconfig.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-config/src/gw6cconfig.cc	2008-06-10 12:03:32.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-config/src/gw6cconfig.cc	2008-06-10 12:07:17.000000000 +1000
+@@ -25,6 +25,8 @@
+ #include <gw6cconfig/gw6cuistrings.h>
+ #include <assert.h>
+ #include <string>
++#include <stdlib.h>
++#include <string.h>
+ 
+ 
+ // Configuration data variable NAMES
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-config/src/gw6cvalidation.cc gw6c-5_1-RELEASE-src/gw6c-config/src/gw6cvalidation.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-config/src/gw6cvalidation.cc	2008-06-10 12:03:32.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-config/src/gw6cvalidation.cc	2008-06-10 12:06:17.000000000 +1000
+@@ -34,6 +34,8 @@
+ #include <arpa/inet.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#include <stdlib.h>
++#include <string.h>
+ #define INET_PTON(A, B, C)                inet_pton(A,B,C)
+ #endif
+ 
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-config/src/hap6_devmap_c_wrap.cc gw6c-5_1-RELEASE-src/gw6c-config/src/hap6_devmap_c_wrap.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-config/src/hap6_devmap_c_wrap.cc	2008-06-10 12:03:32.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-config/src/hap6_devmap_c_wrap.cc	2008-06-10 12:08:33.000000000 +1000
+@@ -22,6 +22,8 @@
+ #include <gw6cconfig/gw6cuistrings.h>
+ using namespace gw6cconfig;
+ #include <assert.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #ifdef WIN32
+ #define strcasecmp      _stricmp
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-config/src/hap6devicemappingconfig.cc gw6c-5_1-RELEASE-src/gw6c-config/src/hap6devicemappingconfig.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-config/src/hap6devicemappingconfig.cc	2008-06-10 12:03:32.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-config/src/hap6devicemappingconfig.cc	2008-06-10 12:08:08.000000000 +1000
+@@ -22,6 +22,7 @@
+ #include <gw6cconfig/hap6devicemappingconfig.h>
+ #include <gw6cconfig/gw6cuistrings.h>
+ #include <assert.h>
++#include <string.h>
+ 
+ 
+ #ifdef WIN32
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-config/src/namevalueparser.cc gw6c-5_1-RELEASE-src/gw6c-config/src/namevalueparser.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-config/src/namevalueparser.cc	2008-06-10 12:03:32.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-config/src/namevalueparser.cc	2008-06-10 12:05:14.000000000 +1000
+@@ -25,6 +25,7 @@
+ #include <fstream>
+ #include <time.h>
+ #include <assert.h>
++#include <string.h>
+ 
+ 
+ #define NV_SEPARATOR          "="                   // Name=value separator
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-messaging/src/clientmsgsender.cc gw6c-5_1-RELEASE-src/gw6c-messaging/src/clientmsgsender.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-messaging/src/clientmsgsender.cc	2008-06-10 12:03:41.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-messaging/src/clientmsgsender.cc	2008-06-10 12:08:56.000000000 +1000
+@@ -19,6 +19,7 @@
+ // **************************************************************************
+ #include <gw6cmessaging/clientmsgsender.h>
+ #include <assert.h>
++#include <string.h>
+ 
+ 
+ namespace gw6cmessaging
+diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-messaging/src/servermsgsender.cc gw6c-5_1-RELEASE-src/gw6c-messaging/src/servermsgsender.cc
+--- gw6c-5_1-RELEASE-src.orig/gw6c-messaging/src/servermsgsender.cc	2008-06-10 12:03:41.000000000 +1000
++++ gw6c-5_1-RELEASE-src/gw6c-messaging/src/servermsgsender.cc	2008-06-10 12:09:13.000000000 +1000
+@@ -19,6 +19,7 @@
+ // **************************************************************************
+ #include <gw6cmessaging/servermsgsender.h>
+ #include <assert.h>
++#include <string.h>
+ 
+ 
+ #ifdef WIN32
