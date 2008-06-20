@@ -3,11 +3,11 @@ pkgname=libofa
 pkgver=0.9.3
 pkgrel=1
 pkgdesc="Open Fingerprint Architecture"
-arch=(i686 x64_86)
+arch=(i686 x86_64)
 url="http://www.musicdns.org/"
 depends=('expat' 'curl' 'fftw')
 makedepends=(pkgconfig)
-options=(NOLIBTOOL)
+options=(!LIBTOOL)
 source=(http://www.musicip.com/dns/files/$pkgname-$pkgver.tar.gz
 	gcc-4.patch)
 
