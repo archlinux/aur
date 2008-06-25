@@ -2,7 +2,7 @@
 # Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
 
 pkgname=p7zip
-pkgver=4.57
+pkgver=4.58
 pkgrel=1
 pkgdesc="A command-line port of the 7zip compression utility"
 arch=(i686 x86_64)
@@ -12,7 +12,6 @@ depends=(gcc-libs bash)
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/${pkgname}_${pkgver}_src_all.tar.bz2)
 install=p7zip.install
 options=(!emptydirs)
-md5sums=('773f78d8b297eb858626667d4dfa93c7')
 
 build() {
   cd $startdir/src/${pkgname}_${pkgver}
@@ -39,3 +38,4 @@ build() {
   install -m644 -D contrib/VirtualFileSystemForMidnightCommander/u7z \
     $startdir/pkg/usr/share/mc/extfs/u7z
 }
+md5sums=('315b184102c17c4956f53218d973222d')
