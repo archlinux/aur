@@ -3,30 +3,20 @@
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
  
 pkgname=boost
-pkgver=1.34.1
-_boostver=1_34_1
-pkgrel=2
+pkgver=1.35.0
+_boostver=1_35_0
+pkgrel=1
 pkgdesc="Boost provides free peer-reviewed portable C++ source libraries."
 arch=(i686 x86_64)
-url="http://boost.sourceforge.net/"
+url="http://www.boost.org/"
 depends=('python>=2.5' 'bzip2' 'zlib')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/${pkgname}_${_boostver}.tar.gz
-	05_all_1.34.1-function.patch
-	07_all_1.34.1-CVE-2008-0171_and_0172.patch
-	gcc-4.3.patch)
+source=(http://downloads.sourceforge.net/sourceforge/$pkgname/${pkgname}_${_boostver}.tar.gz)
 license=('custom')
-md5sums=('5290a2a565d7d15a31bb1136a7c308d7'
-         'bfa69fba1bc46e2e4c7d316f0c2e6c99'
-         'da137f9c745601d6e723285e7e92d0dc'
-         '7b4d72595cca0db01b9f6b3a336daa14')
+md5sums=('a6b7d92c335c83e69a968a7a7926c933')
  
 build() {
   cd $startdir/src/${pkgname}_${_boostver}
   export CFLAGS="${CFLAGS} -fno-strict-aliasing"
-
-  patch -Np1 -i ${startdir}/src/05_all_1.34.1-function.patch || return 1
-  patch -Np1 -i ${startdir}/src/gcc-4.3.patch || return 1
-  patch -Np0 -i ${startdir}/src/07_all_1.34.1-CVE-2008-0171_and_0172.patch || return 1
 
   # build bjam
   cd $startdir/src/${pkgname}_${_boostver}/tools/jam/src
