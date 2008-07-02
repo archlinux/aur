@@ -1,0 +1,13 @@
+--- libpurple/certificate.c.old	2008-06-06 18:35:03.000000000 -0500
++++ libpurple/certificate.c	2008-06-06 18:58:32.000000000 -0500
+@@ -745,8 +745,8 @@
+ 		x509_ca_paths = g_list_append(NULL, g_build_filename(DATADIR,
+ 						   "ca-certs", NULL));
+ #else
+-		x509_ca_paths = g_list_append(NULL, g_build_filename(DATADIR,
+-						   "purple", "ca-certs", NULL));
++		x509_ca_paths = g_list_append(NULL, g_build_filename("/etc",
++						   "ssl", "certs", NULL));
+ #endif
+ 	}
+ 

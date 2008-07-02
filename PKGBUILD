@@ -2,23 +2,28 @@
 # Maintainer: Dan McGee <dan@archlinux.org>
 
 pkgname=pidgin
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="A GTK+-based messaging client"
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://pidgin.im"
-depends=('startup-notification' 'gtkspell' 'libxss' 'gstreamer0.10' 'dbus-glib>=0.73')
+depends=('startup-notification' 'gtkspell' 'libxss' 'gstreamer0.10'
+         'dbus-glib>=0.73' 'ca-certificates')
 makedepends=('pkgconfig' 'tk' 'avahi' 'intltool')
 replaces=('gaim')
 conflicts=('gaim')
 provides=('gaim')
 options=(!libtool)
 install=pidgin.install
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
+        certificate-location.patch)
 
 build() {
-  cd ${startdir}/src/${pkgname}-${pkgver}
+  cd $srcdir/$pkgname-$pkgver
+
+  # patch to use system SSL certs
+  patch -Np0 < $srcdir/certificate-location.patch
 
   # gconf won't die with the --disable-schemas-install option
   sed -i -e 's/gconftool-2/no/g' configure.ac
@@ -40,7 +45,8 @@ build() {
               --disable-meanwhile --disable-nm \
               --disable-debug
   make || return 1
-  make DESTDIR=${startdir}/pkg install
+  make DESTDIR=$pkgdir install
 }
 
-md5sums=('2d10f9b6a5f0162cf88016ea2ca0a36d')
+md5sums=('9e4a5f4ebda16a51fe91ec610286810a'
+         '773d1b944077d88a89bedc595d5f86b0')
