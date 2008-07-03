@@ -10,20 +10,21 @@ pkgdesc="Boost provides free peer-reviewed portable C++ source libraries."
 arch=(i686 x86_64)
 url="http://www.boost.org/"
 depends=('python>=2.5' 'bzip2' 'zlib')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/${pkgname}_${_boostver}.tar.gz)
+source=(http://downloads.sourceforge.net/sourceforge/$pkgname/${pkgname}_${_boostver}.tar.gz serialization_gcc43.patch)
+md5sums=('a6b7d92c335c83e69a968a7a7926c933' '43b88598f62485295301f75b94972b81')
 license=('custom')
-md5sums=('a6b7d92c335c83e69a968a7a7926c933')
  
 build() {
   cd $startdir/src/${pkgname}_${_boostver}
   export CFLAGS="${CFLAGS} -fno-strict-aliasing"
+  patch -p5 < ../serialization_gcc43.patch || return 1
 
   # build bjam
   cd $startdir/src/${pkgname}_${_boostver}/tools/jam/src
   ./build.sh cc || return 1
 
   _bindir="bin.linuxx86"
-  [ "${CARCH}" = "x86_64" ] && _bindir="bin.linux"
+  [ "${CARCH}" = "x86_64" ] && _bindir="bin.linuxx86_64"
 
   install -m755 -d ${startdir}/pkg/usr/bin
   install -m755 ${_bindir}/bjam ${startdir}/pkg/usr/bin/bjam || return 1
