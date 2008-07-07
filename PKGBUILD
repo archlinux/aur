@@ -10,7 +10,7 @@ depends=('libgnomeui>=2.22.1' 'gstreamer0.10-base-plugins>=0.10.20' 'evolution-d
 makedepends=('perlxml' 'gnome-doc-utils>=0.12.2')
 groups=('gnome-extra')
 options=('!libtool' '!emptydirs')
-url="http://www.gnome.org"
+url="http://www.gnome.org/projects/cheese/"
 install=cheese.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.22/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('21c23e289b1c8a1ae014704d615a9540')
