@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.sourceforge.net/"
@@ -15,9 +15,9 @@ install=openvpn.install
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-password-save
   make || return 1
-  make DESTDIR=$startdir/pkg install
+  make DESTDIR=$startdir/pkg install || return 1
   mkdir -p $startdir/pkg/etc/openvpn
   cp -a sample-config-files $startdir/pkg/etc/openvpn/examples
   chmod 755 $startdir/pkg/etc/openvpn/examples
