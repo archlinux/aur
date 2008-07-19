@@ -2,7 +2,7 @@
 
 pkgname=cheese
 pkgver=2.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cheese uses your webcam to take photos and videos, applies fancy special effects and lets you share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
