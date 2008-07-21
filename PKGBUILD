@@ -2,14 +2,14 @@
 # Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
 pkgname=cmake
-pkgver=2.4.8
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="CMake is a cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
-depends=('gcc-libs>=4.0.3' 'glibc' 'ncurses')
-source=("http://www.cmake.org/files/v2.4/$pkgname-$pkgver.tar.gz")
+depends=('gcc-libs>=4.0.3' 'libidn' 'openssl')
+source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
@@ -22,4 +22,4 @@ build() {
   # Correct permissions
   #find $startdir/pkg/usr/share/CMake/Modules -type f -exec chmod 644 "{}" ";"
 }
-md5sums=('f5dd061c31765a49dc17ae8bdc986779')
+md5sums=('e95ae003672dfc6c8151a1ee49a0d4a6')
