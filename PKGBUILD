@@ -2,7 +2,7 @@
 
 pkgname=digikam
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for kde"
 arch=(i686 x86_64)
 license=('GPL')
@@ -18,8 +18,8 @@ build() {
    
    #Optimisations which work for i686 only
    if [ "$CARCH" = "i686" ]; 
-   then ./configure --prefix=/opt/kde --disable-debug --enable-gcc-hidden-visibility --without-included-sqlite3
-   else ./configure --prefix=/opt/kde --disable-debug --without-included-sqlite3
+   then ./configure --prefix=/opt/kde --disable-debug --enable-gcc-hidden-visibility --without-included-sqlite3 --without-arts
+   else ./configure --prefix=/opt/kde --disable-debug --without-included-sqlite3 --without-arts
    fi
    
    make || return 1
