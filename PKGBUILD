@@ -2,12 +2,12 @@
 
 pkgname=libepc
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy Publish and Consume Library"
 arch=(i686 x86_64)
 license=('LGPL')
 url="http://live.gnome.org/libepc"
-depends=('gtk2>=2.12.9' 'avahi>=0.6.20' 'libsoup>=2.4.1')
+depends=('gtk2>=2.12.9' 'avahi>=0.6.20' 'libsoup>=2.4.1-2' 'gnutls>=2.4.1')
 options=('!libtool' '!makeflags')
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.3/${pkgname}-${pkgver}.tar.bz2
 	libepc-avahi-free-check.patch)
