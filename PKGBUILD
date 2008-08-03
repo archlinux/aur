@@ -3,13 +3,13 @@
 
 pkgname=pidgin
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+-based messaging client"
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://pidgin.im"
 depends=('startup-notification' 'gtkspell' 'libxss' 'gstreamer0.10'
-         'dbus-glib>=0.73' 'ca-certificates')
+         'dbus-glib>=0.73' 'ca-certificates' 'gnutls>=2.4.1')
 makedepends=('pkgconfig' 'tk' 'avahi' 'intltool')
 replaces=('gaim')
 conflicts=('gaim')
@@ -18,6 +18,8 @@ options=(!libtool)
 install=pidgin.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
         certificate-location.patch)
+md5sums=('9e4a5f4ebda16a51fe91ec610286810a'
+         '773d1b944077d88a89bedc595d5f86b0')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -26,7 +28,7 @@ build() {
   patch -Np0 < $srcdir/certificate-location.patch
 
   # gconf won't die with the --disable-schemas-install option
-  sed -i -e 's/gconftool-2/no/g' configure.ac
+  sed -i -e 's/gconftool-2/no/g' configure.ac || return 1
 
   # ugly hack to support building with new libtool
   # http://developer.pidgin.im/ticket/5346
@@ -43,10 +45,7 @@ build() {
               --enable-nss=no --disable-gevolution \
               --enable-dbus --disable-mono \
               --disable-meanwhile --disable-nm \
-              --disable-debug
+              --disable-debug || return 1
   make || return 1
-  make DESTDIR=$pkgdir install
+  make DESTDIR=$pkgdir install || return 1
 }
-
-md5sums=('9e4a5f4ebda16a51fe91ec610286810a'
-         '773d1b944077d88a89bedc595d5f86b0')
