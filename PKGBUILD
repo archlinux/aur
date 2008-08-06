@@ -1,28 +1,23 @@
 # Maintainer: James Rayner <james@archlinux.org>
+# Maintainer: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Sebastian Sareyko <public@nooms.de>
+
 pkgname=nitrogen
-pkgver=1.3
-# author has habit of using -rc and things for version. left here for future use.
-_pkgver=1.3
+pkgver=1.4
 pkgrel=1
-pkgdesc="A background browser and setter for X windows"
+pkgdesc="Background browser and setter for X windows"
 arch=('i686' 'x86_64')
-url="http://l3ib.org/nitrogen/"
-license=("GPL")
-depends=('gtkmm')
-source=(http://projects.l3ib.org/nitrogen/files/nitrogen-${_pkgver}.tar.gz)
+url="http://projects.l3ib.org/nitrogen/"
+license=('GPL')
+depends=('gtkmm' 'hicolor-icon-theme')
+install=nitrogen.install
+source=(http://projects.l3ib.org/nitrogen/files/nitrogen-$pkgver.tar.gz)
+md5sums=('7097983bd0c2c79adee75eff7f174cb1')
 
 build() {
-  cd $startdir/src/nitrogen-${pkgver}
-  ./configure --prefix=/usr
+  cd "$srcdir/nitrogen-$pkgver"
+
+  ./configure --prefix=/usr || return 1
   make || return 1
-  make DESTDIR=$startdir/pkg install
+  make DESTDIR="$pkgdir" install || return 1
 }
-
-
-
-
-
-
-
-md5sums=('1f2b0b40ac286d0b185b23f234b237dd')
