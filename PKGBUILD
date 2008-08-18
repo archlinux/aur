@@ -8,7 +8,7 @@ pkgdesc="CMake is a cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
-depends=('gcc-libs>=4.0.3' 'libidn' 'openssl')
+depends=('gcc-libs>=4.0.3' 'libidn' 'openssl' 'ncurses>=5.6-7')
 source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
 
 build() {
