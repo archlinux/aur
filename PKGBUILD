@@ -3,7 +3,7 @@
 
 pkgname=cmake
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CMake is a cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -13,7 +13,7 @@ source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
-  ./bootstrap --prefix=/usr
+  ./bootstrap --prefix=/usr --mandir=/share/man --docdir=/share/cmake-2.6/doc
   make || return 1
   make DESTDIR=$startdir/pkg install
 
