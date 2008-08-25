@@ -1,0 +1,18 @@
+2008-08-25  Alexander Fehr  <pizzapunk gmail com>
+
+  * pidgin-2.5.0-2:
+  New upstream release.
+  New maintainer.
+  Changed license to GPL.
+  Use NSS instead of GnuTLS for SSL.
+  Added dependency on hicolor-icon-theme.
+  Added make dependency on perlxml.
+  Removed make dependency on intltool.
+  Replaced install message with optdepends.
+  Added optional dependency on tk.
+  Made dependency on ca-certificates optional.
+  Removed provides and conflicts gaim.
+  Removed libtool hack.
+  Corrected configure option for certificates directory.
+  Added --disable-doxygen configure option.
+  Added ChangeLog.

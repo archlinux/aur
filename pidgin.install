@@ -1,7 +1,5 @@
 post_install() {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-  echo ">> The bonjour plugin is now included in pidgin. If you wish to use"
-  echo ">> it, please install avahi."
 }
 
 post_upgrade() {
@@ -9,10 +7,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  post_install
 }
-
-op=$1
-shift
-
-$op $*
