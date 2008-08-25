@@ -1,0 +1,10 @@
+2008-08-16  Alexander Fehr  <pizzapunk gmail com>
+
+  * purple-plugin-pack-2.4.0-1:
+  New upstream release.
+  New maintainer.
+  Changed license to GPL.
+  Added make dependencies on intltool and python.
+  Removed make dependency on perlxml.
+  Cleaned up build function.
+  Added ChangeLog.
