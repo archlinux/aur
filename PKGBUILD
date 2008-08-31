@@ -10,7 +10,7 @@ license=('custom')
 url="http://www.openchrome.org"
 depends=('unichrome-dri>=7.1')
 makedepends=('pkgconfig' 'xorg-server>=1.4.99.906' 'xf86driproto' 'xorg-util-macros' 'libxvmc' 'glproto' 'mesa>=7.1')
-replaces=('openchrome')
+replaces=('openchrome' 'xf86-video-via')
 options=('!libtool' 'force' '!makeflags')
 conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.4.99.906')
 source=(http://xorg.freedesktop.org/releases/individual/driver/${pkgname}-${pkgver}.tar.gz
