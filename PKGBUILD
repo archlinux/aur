@@ -2,8 +2,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=pidgin
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Multi-protocol instant messaging client"
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -17,7 +17,7 @@ replaces=('gaim')
 options=('!libtool')
 install=pidgin.install
 source=(http://downloads.sourceforge.net/pidgin/pidgin-$pkgver.tar.bz2)
-md5sums=('71df6633794de30e57827848cfb61996')
+md5sums=('f76c269c02fafee9b45cc2a50b43b1f3')
 
 build() {
   cd "$srcdir/pidgin-$pkgver"
