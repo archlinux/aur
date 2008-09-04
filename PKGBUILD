@@ -4,15 +4,16 @@
 # Maintainer: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=django
-pkgver=0.96.2
+pkgver=1.0
 pkgrel=1
 pkgdesc="A high-level Python Web framework."
 arch=('i686' 'x86_64')
 license=('BSD')
 url="http://www.djangoproject.com"
 depends=('setuptools')
-source=(http://media.djangoproject.com/releases/0.96/Django-0.96.2.tar.gz)
-md5sums=('2e39a43b93b50c2ca90bcade26010878')
+source=(http://media.djangoproject.com/releases/1.0/Django-$pkgver.tar.gz)
+
+md5sums=('84d0490e4126f31d1c23f640e1e86f2f')
 
 build() {
     cd $startdir/src/Django-$pkgver
