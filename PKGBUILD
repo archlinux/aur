@@ -32,7 +32,7 @@ build() {
   sed -i "s|DEST_HOME=|DEST_HOME=${pkgdir}/usr # |g" install.sh
   sed -i 's|${DEST_HOME}/man|${DEST_HOME}/share/man|' install.sh
 
-  sed -i 's|{DEST_SHARE_DOC}|/usr/share/doc/p7zip/DOCS|' man1/*
+  sed -i "s|DEST_SHARE_DOC=|DEST_SHARE_DOC=http://www.bugaco.com/7zip # |g" install.sh
 
   echo "creatind dir"
   mkdir -p ${pkgdir}/usr/share/doc/p7zip/DOCS
