@@ -11,8 +11,8 @@ arch=(i686 x86_64)
 url="http://www.boost.org/"
 depends=('python>=2.5' 'bzip2' 'zlib')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/${pkgname}_${_boostver}.tar.gz serialization_gcc43.patch)
+md5sums=('550b9157a596f9095aaafd683c4bccf8' '43b88598f62485295301f75b94972b81')
 license=('custom')
-md5sums=('550b9157a596f9095aaafd683c4bccf8')
  
 build() {
   cd $startdir/src/${pkgname}_${_boostver}
