@@ -1,22 +1,25 @@
-# Maintainer: Judd Vinet <judd@archlinux.org>
+# Maintainer:
+# Contributor: Judd Vinet <judd@archlinux.org>
 pkgname=bridge-utils
-pkgver=1.2
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Layer2 ethernet bridging for Linux"
 arch=(i686 x86_64)
-url="http://bridge.sourceforge.net/"
+url="http://www.linuxfoundation.org/en/Net:Bridge"
 license=('GPL2')
 backup=('etc/conf.d/bridges')
 depends=('glibc')
-source=(http://heanet.dl.sourceforge.net/sourceforge/bridge/bridge-utils-$pkgver.tar.gz bridges.conf.d)
-md5sums=('1e6cff57ac90d7ab984d9512fdd9f2dd' 'f5d691282653580dd5fd4a1092ef365b')
+source=(http://downloads.sourceforge.net/bridge/bridge-utils-$pkgver.tar.gz \
+	bridges.conf.d)
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
+  cd $srcdir/$pkgname-$pkgver
   aclocal
   autoconf
   ./configure --prefix=/usr --sysconfdir=/etc
   make || return 1
-  make DESTDIR=$startdir/pkg install
+  make DESTDIR=$pkgdir install || return 1
+   
+  # install config file
   install -D -m644 ../bridges.conf.d $startdir/pkg/etc/conf.d/bridges
 }
