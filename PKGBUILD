@@ -2,7 +2,7 @@
 # Contributor: Judd Vinet <judd@archlinux.org>
 pkgname=bridge-utils
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Layer2 ethernet bridging for Linux"
 arch=(i686 x86_64)
 url="http://www.linuxfoundation.org/en/Net:Bridge"
@@ -16,7 +16,7 @@ build() {
   cd $srcdir/$pkgname-$pkgver
   aclocal
   autoconf
-  ./configure --prefix=/usr --sysconfdir=/etc
+  ./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man
   make || return 1
   make DESTDIR=$pkgdir install || return 1
    
