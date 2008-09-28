@@ -9,7 +9,7 @@ license=('GPL')
 url="http://digikam.sourceforge.net"
 depends=('sqlite3' 'libkipi>=0.1.6' 'libgphoto2' 'exiv2>=0.17.1' 'lcms' 'dcraw' 'libkexiv2>=0.1.7' 'jasper>=1.900.1' 'lcms' 'libkdcraw>=0.1.4')
 makedepends=('pkgconfig')
-source=(http://garr.dl.sourceforge.net/sourceforge/digikam/${pkgname}-${pkgver}.tar.bz2)
+source=(http://downloads.sourceforge.net/sourceforge/digikam/${pkgname}-${pkgver}.tar.bz2)
 replaces=('digikamimageplugins')
 md5sums=('b0f3fa00bd054b0497146e6ce24dab7c')
 
