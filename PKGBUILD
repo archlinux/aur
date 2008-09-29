@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="SWIG is a compiler that makes it easy to integrate C and C++ code with scripting languages"
 arch=('i686' 'x86_64')
 license=('custom')
-source=("http://puzzle.dl.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 url="http://www.swig.org/"
 depends=('gcc' 'guile')
 
