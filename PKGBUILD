@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Comandline tool for splitting mp3 and ogg files without decoding"
 url="http://mp3splt.sourceforge.net"
 depends=('libmad' 'libvorbis')
-source=(http://belnet.dl.sourceforge.net/sourceforge/mp3splt/mp3splt-$pkgver-src.tar.gz mp3splt-gcc4.patch)
+source=(http://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt-$pkgver-src.tar.gz mp3splt-gcc4.patch)
 
 build() {
   cd $startdir/src/mp3splt-$pkgver
