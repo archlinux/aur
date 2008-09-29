@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Tool for wrapping mp3 files --- free independent alternative to AlbumWrap"
 url="http://mp3wrap.sourceforge.net"
 depends=('glibc')
-source=(http://belnet.dl.sourceforge.net/sourceforge/mp3wrap/mp3wrap-$pkgver-src.tar.gz)
+source=(http://downloads.sourceforge.net/sourceforge/mp3wrap/mp3wrap-$pkgver-src.tar.gz)
 
 build() {
   cd $startdir/src/mp3wrap-$pkgver
