@@ -3,7 +3,7 @@
 pkgname=bridge-utils
 pkgver=1.4
 pkgrel=2
-pkgdesc="Layer2 ethernet bridging for Linux"
+pkgdesc="Utilities for configuring the Linux ethernet bridge"
 arch=(i686 x86_64)
 url="http://www.linuxfoundation.org/en/Net:Bridge"
 license=('GPL2')
