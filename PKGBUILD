@@ -12,6 +12,7 @@ url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
 depends=('gnome-keyring>=2.24.0' 'gtk-vnc>=0.3.5' 'avahi>=0.6.23')
 makedepends=('gnome-doc-utils>=0.14.0' 'intltool' 'gnome-panel>=2.24.0')
+groups=('gnome-extra')
 options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.24/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('db396e9f4e008771468c34824196c8fc')
