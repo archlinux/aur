@@ -9,17 +9,17 @@
 # properly.
 
 pkgname=mono-tools
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.mono-project.com/"
-depends=('monodoc>=1.9' 'desktop-file-utils' 'gnome-desktop-sharp>=2.20.1')
+depends=('monodoc>=2.0' 'desktop-file-utils' 'gnome-desktop-sharp>=2.20.1')
 makedepends=('gecko-sharp-2.0>=0.13')
 install=$pkgname.install
 source=(http://www.go-mono.com/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('f00eb74bd0f467f81fad3ab62e215e1a')
+md5sums=('955025ab9b25bc58058facc39ab88aae')
 
 build() {
  # get rid of that .wapi errors; thanks to brice
