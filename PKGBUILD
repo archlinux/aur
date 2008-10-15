@@ -3,7 +3,7 @@
 
 pkgname=mono-addins
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="a generic framework for creating extensible applications and for creating libraries which extend those applications"
 arch=('i686' 'x86_64')
 url="http://www.mono-project.com/Mono.Addins"
