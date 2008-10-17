@@ -3,9 +3,9 @@
 
 pkgname=trayer
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Swallows GTK 1.2/2.x application docklets, and KDE docklets."
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://fvwm-crystal.org"
 license=('GPL' 'custom')
 depends=('gtk2')
