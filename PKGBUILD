@@ -2,12 +2,11 @@
 
 pkgname=openssl
 pkgver=0.9.8i
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='http://www.openssl.org'
 license=('custom:BSD')
-groups=('base')
 depends=('glibc')
 options=('!makeflags')
 source=("http://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz" \
