@@ -1,13 +1,12 @@
 # Maintainer: Thayer Williams <thayer@archlinux.org>
-# Contributor: Unknown
 
 pkgname=trayer
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Swallows GTK 1.2/2.x application docklets, and KDE docklets."
 arch=('i686' 'x86_64')
 url="https://gna.org/projects/fvwm-crystal/"
-license=('GPL' 'custom')
+license=('GPL' 'MIT')
 depends=('gtk2' 'libxmu')
 options=('!makeflags')
 source=(http://download.gna.org/fvwm-crystal/trayer/$pkgver/$pkgname-$pkgver.tar.gz
@@ -19,4 +18,5 @@ build() {
   patch -Np0 -i ${startdir}/src/trayer.diff || return 1
   make || return 1
   make PREFIX=$startdir/pkg/usr install
+  install -D -m644 COPYING $startdir/pkg/usr/share/licenses/$pkgname/LICENSE
 }
