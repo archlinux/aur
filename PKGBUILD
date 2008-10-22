@@ -3,12 +3,12 @@
 
 pkgname=libxml2
 pkgver=2.6.32
-pkgrel=4
+pkgrel=5
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('custom')
 depends=('zlib>=1.2.3.3' 'readline>=5.2-8' 'ncurses>=5.6-7')
-makedepends=('python>=2.5')
+makedepends=('python')
 options=('!libtool')
 source=(ftp://ftp.xmlsoft.org/${pkgname}/${pkgname}-${pkgver}.tar.gz
 	largefile64.patch
