@@ -5,7 +5,7 @@
 
 pkgname=django
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level Python Web framework."
 arch=('i686' 'x86_64')
 license=('BSD')
