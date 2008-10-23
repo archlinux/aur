@@ -3,7 +3,7 @@
 
 pkgname=p7zip
 pkgver=4.58
-pkgrel=3
+pkgrel=4
 pkgdesc="A command-line port of the 7zip compression utility"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -25,19 +25,14 @@ build() {
   fi
 
   sed -i "s|usr/local|usr|g" makefile
-  sed -i "s|-O1|$CXXFLAGS|g" makefile.machine
 
-  make all3 || return 1
+  make all3 OPTFLAGS="${CXXFLAGS}" || return 1
+  make install DEST_HOME="${pkgdir}/usr" \
+	DEST_MAN="${pkgdir}/usr/share/man" \
+	DEST_SHARE_DOC="http://www.bugaco.com/7zip"
 
-  sed -i "s|DEST_HOME=|DEST_HOME=${pkgdir}/usr # |g" install.sh
-  sed -i 's|${DEST_HOME}/man|${DEST_HOME}/share/man|' install.sh
-
-  sed -i "s|DEST_SHARE_DOC=|DEST_SHARE_DOC=http://www.bugaco.com/7zip # |g" install.sh
-
-  echo "creatind dir"
+  echo "creating dir"
   mkdir -p ${pkgdir}/usr/share/doc/p7zip/DOCS
-
-  ./install.sh 
   install -m555 bin/7z.so ${pkgdir}/usr/lib/p7zip/
 
   sed -i "s|${pkgdir}/usr|/usr|g" ${pkgdir}/usr/bin/7z
