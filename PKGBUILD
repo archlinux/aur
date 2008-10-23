@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="http://download.gnome.org/sources/nautilus-sendto/"
 license=('GPL')
 depends=('evolution-data-server>=1.2' 'nautilus>=2.20')
-makedepends=('pidgin' 'gajim' 'gettext' 'perlxml')
+makedepends=('pidgin' 'gajim' 'gettext' 'perlxml' 'intltool')
 options=('!libtool')
 install=nautilus-sendto.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2)
