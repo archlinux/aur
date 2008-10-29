@@ -13,8 +13,9 @@ options=('!libtool')
 source=(ftp://ftp.xmlsoft.org/${pkgname}/${pkgname}-${pkgver}.tar.gz
 	largefile64.patch
 	libxml2-2.6.32.entities.patch)
+md5sums=('2621d322c16f0257e30f0ff2b13384de' '5ad4915665608ebfa5b89f7908467a72'\
+         'dce576490467042fabff0a659ae3678b')
 url="http://www.xmlsoft.org/"
-md5sums=('2621d322c16f0257e30f0ff2b13384de' '5ad4915665608ebfa5b89f7908467a72')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
