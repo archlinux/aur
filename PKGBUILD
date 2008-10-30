@@ -3,7 +3,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=2.24.0
+pkgver=2.24.1
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ makedepends=('gnome-doc-utils>=0.14.0' 'intltool' 'gnome-panel>=2.24.0')
 groups=('gnome-extra')
 options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.24/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('db396e9f4e008771468c34824196c8fc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,3 +28,4 @@ build() {
   		     ${pkgdir}/etc/gconf/schemas/*.schemas || return 1
   rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
 }
+md5sums=('8eb630b3740793765f0d7eb4fd70894b')
