@@ -15,6 +15,7 @@ makedepends=('gnome-doc-utils>=0.14.0' 'intltool' 'gnome-panel>=2.24.0')
 groups=('gnome-extra')
 options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.24/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('8eb630b3740793765f0d7eb4fd70894b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -28,4 +29,3 @@ build() {
   		     ${pkgdir}/etc/gconf/schemas/*.schemas || return 1
   rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
 }
-md5sums=('8eb630b3740793765f0d7eb4fd70894b')
