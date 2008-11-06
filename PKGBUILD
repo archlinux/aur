@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Cheese uses your webcam to take photos and videos, applies fancy special effects and lets you share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('libgnomeui>=2.24.0' 'gstreamer0.10-base-plugins>=0.10.21' 'evolution-data-server>=2.24.1' 'librsvg>=2.22.3')
+depends=('libgnomeui>=2.24.0' 'gstreamer0.10-base-plugins>=0.10.21' 'evolution-data-server>=2.24.1' 'librsvg>=2.22.3' 'gnome-icon-theme>=2.24.0')
 makedepends=('perlxml' 'gnome-doc-utils>=0.14.0' 'intltool')
 groups=('gnome-extra')
 options=('!libtool' '!emptydirs')
