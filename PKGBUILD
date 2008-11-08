@@ -3,7 +3,7 @@
 
 pkgname=t1lib
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for generating character- and string-glyphs from Adobe Type 1 fonts"
 arch=(i686 x86_64)
 license=("GPL")
@@ -14,8 +14,8 @@ source=(http://www.ibiblio.org/pub/Linux/libs/graphics/${pkgname}-${pkgver}.tar.
 md5sums=('a5629b56b93134377718009df1435f3c')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make without_doc || return 1
-  make prefix=$startdir/pkg/usr install
+  make DESTDIR="${pkgdir}" install || return 1
 }
