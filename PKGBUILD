@@ -2,7 +2,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 
 pkgname=leafpad
-pkgver=0.8.14
+pkgver=0.8.15
 pkgrel=1
 pkgdesc="A notepad clone for GTK+ 2.0"
 arch=(i686 x86_64)
@@ -11,7 +11,6 @@ license=('GPL')
 depends=(gtk2)
 makedepends=(perlxml)
 source=(http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('5f2abed8c880886e8aeb7e1a8d302e4c')
 
 build()
 {
