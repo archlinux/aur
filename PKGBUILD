@@ -1,4 +1,4 @@
-# $Id: $
+# $Id$
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=crda
