@@ -1,0 +1,19 @@
+pkgbase = crda
+	pkgdesc = Central Regulatory Domain Agent
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://wireless.kernel.org/en/developers/Regulatory/CRDA
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python-m2crypto
+	depends = libnl
+	depends = libgcrypt
+	depends = udev
+	source = http://wireless.kernel.org/download/crda/crda-0.9.4.tar.bz2
+	source = http://wireless.kernel.org/download/wireless-regdb/wireless-regdb-master-2008-11-17.tar.bz2
+	md5sums = dddd9c0f08e7e447a29fc5b8eed5179f
+	md5sums = 107aba5bb47c776bf7682bf0553f46e2
+
+pkgname = crda
+
