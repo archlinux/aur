@@ -2,15 +2,15 @@
 # Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
 
 pkgname=p7zip
-pkgver=4.58
-pkgrel=4
+pkgver=4.61
+pkgrel=1
 pkgdesc="A command-line port of the 7zip compression utility"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://p7zip.sourceforge.net"
 depends=('gcc-libs' 'bash')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/${pkgname}_${pkgver}_src_all.tar.bz2)
-md5sums=('315b184102c17c4956f53218d973222d')
+md5sums=('a01408ac4ef496270ff936db21309b92')
 install=p7zip.install
 options=(!emptydirs)
 
