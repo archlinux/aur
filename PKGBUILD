@@ -2,7 +2,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=crda
-pkgver=0.9.4
+pkgver=0.9.5
 _regdbver=2008-11-17
 pkgrel=1
 pkgdesc="Central Regulatory Domain Agent"
@@ -13,7 +13,7 @@ depends=('libnl' 'libgcrypt' 'udev')
 makedepends=('python-m2crypto')
 source=(http://wireless.kernel.org/download/crda/$pkgname-$pkgver.tar.bz2
         http://wireless.kernel.org/download/wireless-regdb/wireless-regdb-master-${_regdbver}.tar.bz2)
-md5sums=('dddd9c0f08e7e447a29fc5b8eed5179f'
+md5sums=('cee459e588441f713a96ae2fb0472d7f'
          '107aba5bb47c776bf7682bf0553f46e2')
 
 build() {
