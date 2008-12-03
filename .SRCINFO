@@ -1,0 +1,32 @@
+pkgbase = flv2mpeg4-svn
+	pkgdesc = Adobe(R) Flash(R) Video format (FLV) to MPEG4 Transcoder from vixy.net.
+	pkgver = 3
+	pkgrel = 1
+	url = http://vixynet.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = subversion
+	depends = a52dec
+	depends = bzip2
+	depends = faac
+	depends = faad2
+	depends = ffmpeg
+	depends = lame
+	depends = libogg
+	depends = libtheora
+	depends = libvorbis
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = x264
+	depends = xvidcore
+	depends = zlib
+	provides = flv2mpeg4
+	conflicts = flv2mpeg4
+	source = Makefile
+	md5sums = f649789cef4a4e703aa95b4b393c24fc
+
+pkgname = flv2mpeg4-svn
+
