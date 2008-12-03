@@ -12,6 +12,7 @@ depends=('a52dec' 'bzip2' 'faac' 'faad2' 'ffmpeg' 'lame' 'libogg' 'libtheora' 'l
 provides=('flv2mpeg4')
 conflicts=('flv2mpeg4')
 makedepends=('subversion')
+source=()
 
 _svntrunk=https://vixynet.svn.sourceforge.net/svnroot/vixynet/trunk/flv2mpeg4
 _svnmod=flv2mpeg4
