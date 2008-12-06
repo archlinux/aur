@@ -3,7 +3,7 @@
 
 pkgname=nautilus-sendto
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nautilus context menu for sending files."
 arch=(i686 x86_64)
 url="http://download.gnome.org/sources/nautilus-sendto/"
