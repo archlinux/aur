@@ -3,12 +3,12 @@
 
 pkgname=gv
 pkgver=3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to view PostScript and PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gv/"
 license=('GPL')
-depends=('xaw3d' 'ghostscript')
+depends=('xaw3d>=1.5E' 'ghostscript')
 install=gv.install
 source=(http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz gv.desktop gv.png)
 md5sums=('0b9c02724af876d9e5556c4e957b6343' 'cf04652952f2d0903bc7578b4826f50c'\
