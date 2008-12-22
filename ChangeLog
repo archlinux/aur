@@ -1,3 +1,11 @@
+2008-12-21  Alexander Fehr  <pizzapunk gmail com>
+
+  * pidgin-2.5.3-1:
+  New upstream release.
+  Enabled Cyrus SASL support.
+  Added dependency on python.
+  Replaced make dependency on perlxml with intltool.
+
 2008-10-25  Andreas Radke  <andyrtr@archlinux.org>
 
   * pidgin-2.5.2-1:
