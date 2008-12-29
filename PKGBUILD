@@ -9,13 +9,18 @@ pkgdesc="Central Regulatory Domain Agent"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
 license=('custom')
-depends=('libnl' 'libgcrypt' 'udev')
+depends=('libnl' 'libgcrypt' 'udev' 'iw')
 makedepends=('python-m2crypto')
 source=(http://wireless.kernel.org/download/crda/$pkgname-$pkgver.tar.bz2
-        http://wireless.kernel.org/download/wireless-regdb/wireless-regdb-master-${_regdbver}.tar.bz2)
+        http://wireless.kernel.org/download/wireless-regdb/wireless-regdb-master-${_regdbver}.tar.bz2
+        crda.rc
+        crda.conf.d)
+backup=(etc/conf.d/wireless-regdom)
 md5sums=('cee459e588441f713a96ae2fb0472d7f'
-         '107aba5bb47c776bf7682bf0553f46e2')
-
+         '107aba5bb47c776bf7682bf0553f46e2'
+         '014eef3f8655e9a130064ec6891317fc'
+         '2374dcf1c6530332f375e5362b80169b')
+                  
 build() {
   # Install crda, regdbdump and udev rules
   msg "Compiling and installing crda ..."
@@ -35,4 +40,11 @@ build() {
   
   msg "Installing license ..."
   install -D -m644 $srcdir/$pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/crda/LICENSE || return 1
+  
+  msg "Installing boot scripts ..."
+  install -D -m755 $srcdir/crda.rc $pkgdir/etc/rc.d/wireless-regdom || return 1
+  install -D -m644 $srcdir/crda.conf.d $pkgdir/etc/conf.d/wireless-regdom || return 1
+  for dom in $($pkgdir/sbin/regdbdump $pkgdir/usr/lib/crda/regulatory.bin | grep ^country | cut -d' ' -f2 | sed 's|:||g'); do
+    echo "#WIRELESS_REGDOM=\"${dom}\"" >> $pkgdir/etc/conf.d/wireless-regdom || return 1
+  done
 }
