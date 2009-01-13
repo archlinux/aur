@@ -1,22 +1,25 @@
-# Maintainer: damir <damir@archlinux.org>
+# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: damir <damir@archlinux.org>
 # Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
 pkgname=cmake
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CMake is a cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
-depends=('gcc-libs>=4.0.3' 'libidn' 'openssl' 'ncurses>=5.6-7')
+depends=('libidn' 'openssl' 'qt')
 source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
 md5sums=('9e82aa3beb991aa8e5797cf330618d42')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  ./bootstrap --prefix=/usr --mandir=/share/man --docdir=/share/cmake-2.6/doc
-  make || return 1
-  make DESTDIR=$startdir/pkg install
+	cd $srcdir/$pkgname-$pkgver
+	./bootstrap --prefix=/usr \
+		--mandir=/share/man --docdir=/share/doc/cmake \
+		--qt-gui
+	make || return 1
+	make DESTDIR=$pkgdir install
 
-  install -Dm644 $startdir/src/$pkgname-$pkgver/Copyright.txt $startdir/pkg/usr/share/licenses/$pkgname/Copyright.txt
+	install -Dm644 Copyright.txt $pkgdir/usr/share/licenses/$pkgname/Copyright.txt
 }
