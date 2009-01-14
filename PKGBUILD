@@ -4,22 +4,29 @@
 
 pkgname=cmake
 pkgver=2.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="CMake is a cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
-depends=('libidn' 'openssl' 'qt')
+depends=('expat' 'xmlrpc-c')
+makedepends=('qt')
+optdepends=('qt: cmake-gui')
 source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
 md5sums=('9e82aa3beb991aa8e5797cf330618d42')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
 	./bootstrap --prefix=/usr \
-		--mandir=/share/man --docdir=/share/doc/cmake \
+		--mandir=/share/man \
+		--docdir=/share/doc/cmake \
+		--system-libs \
 		--qt-gui
 	make || return 1
 	make DESTDIR=$pkgdir install
 
-	install -Dm644 Copyright.txt $pkgdir/usr/share/licenses/$pkgname/Copyright.txt
+	install -D -m644 Docs/cmake-indent.vim $pkgdir/usr/share/vim/indent/cmake-indent.vim
+	install -D -m644 Docs/cmake-syntax.vim $pkgdir/usr/share/vim/syntax/cmake-syntax.vim
+	install -D -m644 Docs/cmake-mode.el $pkgdir/usr/share/emacs/site-lisp/cmake-mode.el
+	install -D -m644 Copyright.txt $pkgdir/usr/share/licenses/$pkgname/Copyright.txt	
 }
