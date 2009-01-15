@@ -1,19 +1,19 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=2.24.2
-pkgrel=2
-pkgdesc="Cheese uses your webcam to take photos and videos, applies fancy special effects and lets you share the fun with others"
+pkgver=2.24.3
+pkgrel=1
+pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('libgnomeui>=2.24.0' 'gstreamer0.10-base-plugins>=0.10.21' 'gstreamer0.10-good-plugins>=0.10.11' 'evolution-data-server>=2.24.2' 'librsvg>=2.22.3' 'gnome-icon-theme>=2.24.0')
-makedepends=('perlxml' 'gnome-doc-utils>=0.14.0' 'intltool')
+depends=('libgnomeui>=2.24.0' 'gstreamer0.10-base-plugins>=0.10.21' 'gstreamer0.10-good-plugins>=0.10.11' 'evolution-data-server>=2.24.3' 'librsvg>=2.22.3' 'gnome-icon-theme>=2.24.0')
+makedepends=('perlxml' 'gnome-doc-utils>=0.14.2' 'intltool')
 groups=('gnome-extra')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org/projects/cheese/"
 install=cheese.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.24/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('82de87c881c45e6ef965b71fdad21bda')
+md5sums=('833d580c2dd2f1b9a0702b6e5c864e2a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
