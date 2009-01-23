@@ -1,0 +1,13 @@
+pkgbase = disper
+	pkgdesc = An on-the-fly display switch utility, intended to be used on laptops, especially with nVidia cards.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://willem.engen.nl/projects/disper/
+	arch = any
+	license = GPL
+	depends = python
+	source = https://launchpad.net/~wvengen/+archive/+files/disper_0.2.0.tar.gz
+	md5sums = 906c1c2ac1e99c23c70eea4d14c15771
+
+pkgname = disper
+
