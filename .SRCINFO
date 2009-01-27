@@ -1,0 +1,18 @@
+pkgbase = iperf-dccp-tcpcc-cbr
+	pkgdesc = A tool to measure maximum TCP bandwidth, with support for DCCP, TCP pluggable congestion control and continuous runs
+	pkgver = 2.0.2
+	pkgrel = 3
+	url = http://www.erg.abdn.ac.uk/users/gerrit/dccp/apps/#iperf
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	source = http://www.erg.abdn.ac.uk/users/gerrit/dccp/apps/iperf/zip/iperf-2.0.2_DCCP-patched-CBR-continuous.tar.bz2
+	source = license
+	source = http://www.erg.abdn.ac.uk/users/gerrit/dccp/apps/iperf/doc/README
+	md5sums = fd3627f47bd1667d9fd095799b649224
+	md5sums = a2879f900b76668b28a1cc922909db18
+	md5sums = 8952b2cbcdbcecc9a8972255c1f1a210
+
+pkgname = iperf-dccp-tcpcc-cbr
+
