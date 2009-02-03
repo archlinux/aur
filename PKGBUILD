@@ -3,12 +3,12 @@
 
 pkgname=psiconv
 pkgver=0.9.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Converts Psion 5(MX) files to more commonly used file formats"
 arch=(i686 x86_64)
 url="http://software.frodo.looijaard.name/psiconv/"
 license=('GPL')
-depends=('imagemagick>=6.4.0.0')
+depends=('imagemagick>=6.4.8.10')
 makedepends=('bc')
 backup=('etc/psiconv/psiconv.conf')
 options=('!libtool')
