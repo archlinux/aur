@@ -2,21 +2,20 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('custom')
-depends=('zlib>=1.2.3.3' 'readline>=5.2-8' 'ncurses>=5.6-7')
+depends=('zlib>=1.2.3.3' 'readline>=5.2.013' 'ncurses>=5.7')
 makedepends=('python')
 options=('!libtool')
 url="http://www.xmlsoft.org/"
-source=(ftp://ftp.xmlsoft.org/${pkgname}/${pkgname}-${pkgver}.tar.gz
-	largefile64.patch)
+source=(ftp://ftp.xmlsoft.org/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+md5sums=('8f4fda3969237c2a33bdb1583b5d06b2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i ${srcdir}/largefile64.patch || return 1
   ./configure --prefix=/usr --with-threads --with-history || return 1
   make || return 1
   make DESTDIR="${pkgdir}" install || return 1
