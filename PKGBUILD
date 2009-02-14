@@ -1,19 +1,20 @@
-# Maintainer: dorphell <dorphell@archlinux.org>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
 pkgname=libcroco
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="GNOME CSS2 parsing and manipulation toolkit"
-depends=('glib2>=2.10.1' 'libxml2')
-makedepends=(intltool pkgconfig)
-source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/0.6/$pkgname-$pkgver.tar.bz2)
+arch=('x86_64' 'i686')
+depends=('glib2>=2.18.4' 'libxml2>=2.7.3')
+makedepends=('intltool' 'pkgconfig')
+license=('LGPL')
+options=('!libtool')
+source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.6/${pkgname}-${pkgver}.tar.bz2)
 url="http://www.gnome.org"
-md5sums=(b0975bd01eb11964f1b3f254f267a43d)
+md5sums=('1429c597aa4b75fc610ab3a542c99209')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  ./configure --prefix=/usr
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --disable-static || return 1
   make || return 1
-  make DESTDIR=$startdir/pkg install
-  rm -rf $startdir/pkg/usr/share/gtk-doc
-  find $startdir/pkg -name '*.la' -exec rm {} \;
+  make DESTDIR="${pkgdir}" install || return 1
 }
