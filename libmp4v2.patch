@@ -1,5 +1,5 @@
---- faac/configure.in	2008-03-02 17:27:47.000000000 +0100
-+++ faac/configure.in	2008-03-02 17:30:15.000000000 +0100
+--- faac/configure.in   2008-03-02 17:27:47.000000000 +0100
++++ faac/configure.in   2008-03-02 17:30:15.000000000 +0100
 @@ -36,6 +36,8 @@
  
  if test x$external_mp4v2 = xyes; then
