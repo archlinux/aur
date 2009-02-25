@@ -1,24 +1,19 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
-
 pkgname=mp3wrap
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for wrapping mp3 files --- free independent alternative to AlbumWrap"
+arch=('i686' 'x86_64')
 url="http://mp3wrap.sourceforge.net"
+license=('LGPL')
 depends=('glibc')
 source=(http://downloads.sourceforge.net/sourceforge/mp3wrap/mp3wrap-$pkgver-src.tar.gz)
-
-build() {
-  cd $startdir/src/mp3wrap-$pkgver
-  ./configure --prefix=/usr
-  make || return 1
-  mkdir -p $startdir/pkg/usr/bin
-        for bin in mp3wrap; do
-                install -D -m755 $bin $startdir/pkg/usr/bin/$bin
-        done
-        install -D -m644 mp3wrap.1 $startdir/pkg/usr/man/man1/mp3wrap.1
-
-}
 md5sums=('096b46295cbe3ee2f02ca7792517dc36')
 
+build() {
+  cd $srcdir/mp3wrap-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man || return 1
+  make || return 1
+  make DESTDIR=$pkgdir install || return 1
+}
