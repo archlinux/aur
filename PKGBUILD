@@ -1,22 +1,22 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libots
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Open Text Summarizer"
+arch=('i686' 'x86_64')
 url="http://libots.sourceforge.net/"
-license="GPL"
+license=('GPL')
 depends=('libxml2' 'glib2' 'popt')
-source=(http://dl.sourceforge.net/sourceforge/${pkgname}/ots-${pkgver}.tar.gz
-        gcc4.patch)
-md5sums=('bb02a56a3bf2d5ebf9ffd064992d0ae4' 'bbb6ab67f37fb6193ec9cf204b4d5d5a')
+options=('!libtool' '!makeflags')
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/ots-${pkgver}.tar.gz)
+md5sums=('1e140a4bf9d720b4339a5c2bdf4976e8')
 
 build() {
-  cd ${startdir}/src/ots-${pkgver}
-  patch -Np1 -i ${startdir}/src/gcc4.patch || return 1
-  ./configure --prefix=/usr
+  cd ${srcdir}/ots-${pkgver}
+  touch gtk-doc.make
+  sed -i 's/0.4.2/0.5.0/' configure || return 1
+  ./configure --prefix=/usr || return 1
   make || return 1
-  make DESTDIR=${startdir}/pkg install
-  #libtoolslay
-  find ${startdir}/pkg -name '*.la' -exec rm {} \;
+  make DESTDIR=${pkgdir} install || return 1
 }
