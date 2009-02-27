@@ -10,8 +10,9 @@ license=('custom:BSD')
 depends=('zlib' 'perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
+# patch from http://www.linuxfromscratch.org/patches/blfs/svn/
 source=("http://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz" \
-        'http://www.linuxfromscratch.org/patches/blfs/svn/openssl-0.9.8j-fix_manpages-1.patch')
+        'openssl-0.9.8j-fix_manpages-1.patch')
 md5sums=('a5cb5f6c3d11affb387ecf7a997cac0c'
          '04a6a88c2ee4badd4f8649792b73eaf3')
 
