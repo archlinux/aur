@@ -2,9 +2,9 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=crda
-pkgver=0.9.5
-_regdbver=2009-01-15
-pkgrel=2
+pkgver=1.0.1
+_regdbver=2009.01.30
+pkgrel=1
 pkgdesc="Central Regulatory Domain Agent"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
@@ -16,8 +16,8 @@ source=(http://wireless.kernel.org/download/crda/$pkgname-$pkgver.tar.bz2
         crda.rc
         crda.conf.d)
 backup=(etc/conf.d/wireless-regdom)
-md5sums=('cee459e588441f713a96ae2fb0472d7f'
-         'a0db99e5385c876b6da7e2869546f6e2'
+md5sums=('03554b71eef2626795befa17eb1d8b9e'
+         '2515a1d6ba52f5acef255cf702a6c77d'
          '014eef3f8655e9a130064ec6891317fc'
          '2374dcf1c6530332f375e5362b80169b')
                   
