@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('libgnomeui>=2.24.1' 'gstreamer0.10-base-plugins>=0.10.22' 'gstreamer0.10-good-plugins>=0.10.14' 'evolution-data-server>=2.26.0' 'librsvg>=2.26.0' 'gnome-icon-theme>=2.26.0')
+depends=('libgnomeui>=2.24.1' 'gstreamer0.10-base-plugins>=0.10.22' 'gstreamer0.10-good-plugins>=0.10.14' 'evolution-data-server>=2.26.0' 'librsvg>=2.26.0' 'gnome-icon-theme>=2.26.0' 'gconf>=2.26.0-2')
 makedepends=('pkgconfig' 'gnome-doc-utils>=0.16.0' 'intltool')
 groups=('gnome-extra')
 options=('!libtool' '!emptydirs')
