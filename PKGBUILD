@@ -4,12 +4,12 @@
 
 pkgname=nitrogen
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Background browser and setter for X windows"
 arch=('i686' 'x86_64')
 url="http://projects.l3ib.org/nitrogen/"
 license=('GPL')
-depends=('gtkmm' 'hicolor-icon-theme')
+depends=('gtkmm' 'hicolor-icon-theme' 'librsvg')
 install=nitrogen.install
 source=(http://projects.l3ib.org/nitrogen/files/nitrogen-$pkgver.tar.gz)
 md5sums=('7097983bd0c2c79adee75eff7f174cb1')
