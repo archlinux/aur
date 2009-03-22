@@ -3,19 +3,20 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=2.24.2
+pkgver=2.26.0
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('gnome-keyring>=2.24.0' 'gtk-vnc>=0.3.5' 'avahi>=0.6.23')
-makedepends=('gnome-doc-utils>=0.14.0' 'intltool' 'gnome-panel>=2.24.0')
+depends=('gnome-keyring>=2.26.0' 'gtk-vnc>=0.3.8' 'avahi>=0.6.24')
+makedepends=('gnome-doc-utils>=0.16.0' 'intltool' 'gnome-panel>=2.26.0')
+optdepends=('gnome-panel')
 groups=('gnome-extra')
 options=('!emptydirs')
-source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.24/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('330a65e0277a2c8fe746e2091c3198ce')
+source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.26/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('6930bec2968c96dfb3407d6492ae42d4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -25,7 +26,6 @@ build() {
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install || return 1
 
   install -d -m755 "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" \
-  		     ${pkgdir}/etc/gconf/schemas/*.schemas || return 1
+  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain vinagre ${pkgdir}/etc/gconf/schemas/*.schemas || return 1
   rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
 }
