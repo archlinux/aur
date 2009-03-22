@@ -2,16 +2,16 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtkmm
-pkgver=2.14.3
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Gtk-- (gtkmm) is a C++ interface for the popular GUI library gtk+"
 arch=(i686 x86_64)
-depends=('gtk2>=2.14.6' 'pangomm>=2.14.1')
+depends=('gtk2>=2.16.0' 'pangomm>=2.24.0')
 license=('LGPL')
 options=('!libtool' '!emptydirs')
 url="http://gtkmm.sourceforge.net/"
-source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.14/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('10039f35d7f815d47f926a13cefe65d6')
+source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.16/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('a82e3b5b93008421ff67df16d1e51ec2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
