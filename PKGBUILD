@@ -1,9 +1,9 @@
 # Maintainer:  Judd <jvinet@zeroflux.org>
 pkgname=xinetd
 pkgver=2.3.14
-pkgrel=3
+pkgrel=4
 pkgdesc="xinetd is a secure replacement for inetd"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
 license=('custom')
 depends=('glibc' 'tcp_wrappers')
@@ -15,15 +15,15 @@ md5sums=('567382d7972613090215c6c54f9b82d9' 'f109f699a07bc8cfb5791060f5e87f9e'\
          '9fa2061dc7dd738c8424251deb86f81e')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
+  cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr --with-libwrap
   make || return 1
-  make prefix=$startdir/pkg/usr install
-  install -D -m755 ../xinetd $startdir/pkg/etc/rc.d/xinetd
-  install -D -m644 ../xinetd.conf $startdir/pkg/etc/xinetd.conf
-  install -D -m644 ../servers $startdir/pkg/etc/xinetd.d/servers
-  install -D -m644 ../services $startdir/pkg/etc/xinetd.d/services
+  make prefix=$pkgdir/usr install
+  install -D -m755 ../xinetd $pkgdir/etc/rc.d/xinetd
+  install -D -m644 ../xinetd.conf $pkgdir/etc/xinetd.conf
+  install -D -m644 ../servers $pkgdir/etc/xinetd.d/servers
+  install -D -m644 ../services $pkgdir/etc/xinetd.d/services
 
   # install license
-  install -D -m644 COPYRIGHT $startdir/pkg/usr/share/licenses/$pkgname/COPYRIGHT
+  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
 }
