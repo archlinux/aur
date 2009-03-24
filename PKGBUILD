@@ -1,12 +1,13 @@
 # Maintainer:  Judd <jvinet@zeroflux.org>
 pkgname=xinetd
 pkgver=2.3.14
-pkgrel=4
+pkgrel=5
 pkgdesc="xinetd is a secure replacement for inetd"
 arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
 license=('custom')
-depends=('glibc' 'tcp_wrappers')
+depends=('tcp_wrappers')
+optdepends=('perl: for xconv.pl script')
 backup=('etc/xinetd.conf' 'etc/xinetd.d/servers' 'etc/xinetd.d/services')
 source=(http://www.xinetd.org/xinetd-$pkgver.tar.gz xinetd.conf xinetd \
         servers services)
@@ -16,6 +17,7 @@ md5sums=('567382d7972613090215c6c54f9b82d9' 'f109f699a07bc8cfb5791060f5e87f9e'\
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  sed -i "s#${prefix}/man#${prefix}/share/man#" configure
   ./configure --prefix=/usr --with-libwrap
   make || return 1
   make prefix=$pkgdir/usr install
