@@ -1,0 +1,16 @@
+pkgbase = wireless-regdb
+	pkgdesc = Central Regulatory Domain Database
+	pkgver = 2009.03.09
+	pkgrel = 1
+	url = http://wireless.kernel.org/en/developers/Regulatory/CRDA
+	install = wireless-regdb.install
+	arch = i686
+	arch = x86_64
+	backup = etc/conf.d/wireless-regdom
+	source = http://wireless.kernel.org/download/wireless-regdb/wireless-regdb-2009.03.09.tar.bz2
+	source = crda.conf.d
+	md5sums = 09d423911584e6580efb8af366775d5f
+	md5sums = 2374dcf1c6530332f375e5362b80169b
+
+pkgname = wireless-regdb
+
