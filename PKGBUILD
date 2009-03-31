@@ -9,17 +9,16 @@
 # properly.
 
 pkgname=mono-tools
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.mono-project.com/"
-depends=('mono>=2.2' 'desktop-file-utils' 'gnome-desktop-sharp>=2.20.1')
+depends=('mono>=2.4' 'desktop-file-utils' 'gnome-desktop-sharp>=2.20.1')
 makedepends=('gecko-sharp-2.0>=0.13')
 install=$pkgname.install
-source=(http://www.go-mono.com/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('b15d41429ebaf5289378604e1e100552')
+source=(http://ftp.novell.com/pub/mono/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
 
 build() {
  # get rid of that .wapi errors; thanks to brice
@@ -35,3 +34,4 @@ build() {
   make || return 1
   make GACUTIL="/usr/bin/gacutil /root ${startdir}/pkg/usr/lib" DESTDIR=${startdir}/pkg install || return 1
 }
+md5sums=('6379a7aa220de807f118dbab32741206')
