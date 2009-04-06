@@ -2,7 +2,7 @@
 # Maintainer: Jason Chu <jason@archlinux.org>
 
 pkgname=swig
-pkgver=1.3.38
+pkgver=1.3.39
 pkgrel=1
 pkgdesc="SWIG is a compiler that makes it easy to integrate C and C++ code with scripting languages"
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ url="http://www.swig.org/"
 depends=('guile' 'gcc-libs' 'zlib')
 
 build() {
-	cd $startdir/src/$pkgname-$pkgver
+	cd ${srcdir}/$pkgname-$pkgver
 	./configure --prefix=/usr
 	make || return 1
 	make DESTDIR=$startdir/pkg install
-	install -D -m644 LICENSE ${startdir}/pkg/usr/share/licenses/swig/license.txt
+	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('650c774917be49c526a4f8a3e733c898')
+md5sums=('ac201d1b87f8659584534f9540d7ad24')
