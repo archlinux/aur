@@ -18,7 +18,8 @@ md5sums=('09d423911584e6580efb8af366775d5f'
 build() {
   # Install and verify regulatory.bin file
   msg "Installing and verifying the regulatory.bin file ..."
-  install -D -m444 ${srcdir}/${pkgname}-${pkgver}/regulatory.bin ${pkgdir}/usr/lib/crda/regulatory.bin || return 1
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install || return 1
   # If crda is installed, the wireless regdb can be verified using regdbdump
   # Keep this step optional so no depend/makedepend loop is created
   if [ -x /sbin/regdbdump ]; then
