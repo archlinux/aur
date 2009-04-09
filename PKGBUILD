@@ -1,6 +1,6 @@
 # Contributor: Schnouki <thomas.jost@gmail.com>
 pkgname=disper
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An on-the-fly display switch utility, intended to be used on laptops, especially with nVidia cards."
 arch=('any')
@@ -8,7 +8,7 @@ url="http://willem.engen.nl/projects/disper/"
 license=('GPL')
 depends=('python')
 source=(https://launchpad.net/~wvengen/+archive/ppa/+files/${pkgname}_${pkgver}.tar.gz)
-md5sums=('4d7125c01530eae6ead22da3bc334959')
+md5sums=('d2d397db52a35fc2f9db78f6747239be')
 
 build() {
   cd "$srcdir/trunk"
