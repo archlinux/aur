@@ -21,3 +21,4 @@ build() {
   rm ${pkgdir}/usr/share/info/dir
   gzip ${pkgdir}/usr/share/info/*
 }
+md5sums=('1f500e7b4e81fcc76b901f1249ec09fc')
