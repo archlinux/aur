@@ -3,8 +3,8 @@
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname=python-numpy
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -23,5 +23,5 @@ build() {
 
     install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('1bc6dbddaf4b48ded8a619c6438fff37'
+md5sums=('3f7773ff0971a5ebb8591536d8ec7bd6'
          'fd9035cc359d43ca78c488738213b8fe')
