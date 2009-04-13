@@ -3,20 +3,20 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=2.26.0
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('gnome-keyring>=2.26.0' 'gtk-vnc>=0.3.8' 'avahi>=0.6.24')
+depends=('gnome-keyring>=2.26.1' 'gtk-vnc>=0.3.8' 'avahi>=0.6.24')
 makedepends=('gnome-doc-utils>=0.16.0' 'intltool' 'gnome-panel>=2.26.0')
 optdepends=('gnome-panel')
 groups=('gnome-extra')
 options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.26/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('6930bec2968c96dfb3407d6492ae42d4')
+md5sums=('1ff7756444f85320565c606c9c8aa5d5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
