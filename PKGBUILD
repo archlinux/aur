@@ -3,19 +3,20 @@
 
 pkgname=libsidplay
 pkgver=1.36.59
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for playing SID music files."
-# url="http://sidplay2.sourceforge.net/"
-url="http://www.geocities.com/SiliconValley/Lakes/5147/sidplay/linux.html"
-depends=('glibc' 'gcc')
-pkgurl="http://www.geocities.com/SiliconValley/Lakes/5147/sidplay/packages"
-source=($pkgurl/$pkgname-$pkgver.tgz)
-md5sums=('37c51ba4bd57164b1b0bb7b43b9adece')
+arch=('i686' 'x86_64')
+url="http://critical.ch/distfiles/"
+license=('GPL')
+depends=('gcc-libs')
+options=('!libtool')
+source=(http://critical.ch/distfiles/$pkgname-$pkgver.tgz libsidplay-1.36.59-gcc43.patch)
+md5sums=('37c51ba4bd57164b1b0bb7b43b9adece' 'c24d7bca2639f4fee03c40c7dcaadfee')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  ./configure --prefix=/usr
+  cd $srcdir/$pkgname-$pkgver
+  patch -p1 < ../libsidplay-1.36.59-gcc43.patch || return 1
+  ./configure --prefix=/usr || return 1
   make || return 1
-  make DESTDIR=$startdir/pkg install
-  find $startdir/pkg -name '*.la' -exec rm {} \;
+  make DESTDIR=$pkgdir install || return 1
 }
