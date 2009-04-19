@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 13857 2008-09-29 03:24:40Z allan $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libmp3splt
