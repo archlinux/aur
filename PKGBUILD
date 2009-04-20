@@ -12,7 +12,7 @@ depends=('evolution-data-server>=2.26.1.1' 'nautilus>=2.26.2')
 makedepends=('pidgin' 'gajim' 'gettext' 'intltool')
 options=('!libtool' '!emptydirs')
 install=nautilus-sendto.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2)
+source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/1.1/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('c4b66eb6fd24eff0b2240b832085a20e')
 
 build() {
