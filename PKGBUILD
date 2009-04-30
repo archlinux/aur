@@ -52,14 +52,10 @@ md5sums=('ae11eddebdf6d30071a8cfac0c8984fb'
          '08c2fa4df6473c2f1bb150797f82f448')
 
 build() {
-  cd "$pkgdir"
-  mkdir -p usr/share/texmf-dist/tex/latex/
-  cd usr/share/texmf-dist/tex/latex/
-  mkdir sigproc sigplan
-  cp $srcdir/{acm_proc_article-sp,sigproc,flies,fly,rosette,sig-alternate}* \
-    sigproc
-  cp $srcdir/sigplanconf* \
-    sigplan
+  mkdir -p ${pkgdir}usr/share/texmf-dist/tex/latex/{sigproc,sigplan}
+  cp ${srcdir}/{acm_proc_article-sp,sigproc,flies,fly,rosette,sig-alternate}* \
+    ${pkgdir}usr/share/texmf-dist/tex/latex/sigproc
+  cp ${srcdir}/sigplanconf* ${pkgdir}usr/share/texmf-dist/tex/latex/sigplan
 }
 
 # vim:set ts=2 sw=2 et:
