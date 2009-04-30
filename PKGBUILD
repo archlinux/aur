@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc="The official ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4 and sigplanconf v1.8)"
 arch=('any')
 url="http://www.acm.org/sigs/publications/proceedings-templates, http://sigplan.acm.org/authorInformation.htm"
-_sigproc_url="http://www.acm.org/sigs/publications/"
-_sigplan_url="http://sigplan.acm.org/"
+_sigproc_url="http://www.acm.org/sigs/publications"
+_sigplan_url="http://sigplan.acm.org"
 license=('')
 groups=()
 depends=('texlive-latex3')
@@ -20,21 +20,21 @@ replaces=()
 backup=()
 options=()
 install=texlive.install
-source=(${_sigproc_url}sigproc-sp.pdf
-${_sigproc_url}acm_proc_article-sp.cls
-${_sigproc_url}sigproc-sp.tex
-${_sigproc_url}sigproc.bib
-${_sigproc_url}flies.eps
-${_sigproc_url}fly.eps
-${_sigproc_url}rosette.ps
-${_sigproc_url}sig-alternate.pdf
-${_sigproc_url}sig-alternate.cls
-${_sigproc_url}sig-alternate.tex
-${_sigplan_url}sigplanconf.cls
-${_sigplan_url}sigplanconf-template.tex
-${_sigplan_url}sigplanconf-template10.tex
-${_sigplan_url}sigplanconf-template11.tex
-${_sigplan_url}sigplanconf-guide.pdf)
+source=(${_sigproc_url}/sigproc-sp.pdf
+${_sigproc_url}/acm_proc_article-sp.cls
+${_sigproc_url}/sigproc-sp.tex
+${_sigproc_url}/sigproc.bib
+${_sigproc_url}/flies.eps
+${_sigproc_url}/fly.eps
+${_sigproc_url}/rosette.ps
+${_sigproc_url}/sig-alternate.pdf
+${_sigproc_url}/sig-alternate.cls
+${_sigproc_url}/sig-alternate.tex
+${_sigplan_url}/sigplanconf.cls
+${_sigplan_url}/sigplanconf-template.tex
+${_sigplan_url}/sigplanconf-template10.tex
+${_sigplan_url}/sigplanconf-template11.tex
+${_sigplan_url}/sigplanconf-guide.pdf)
 md5sums=('ae11eddebdf6d30071a8cfac0c8984fb'
          '49fc14f68a73f326183ff0d766bec0c2'
          '0ac6b024a088e6d6f1cdfbdfe68f85e1'
@@ -52,10 +52,10 @@ md5sums=('ae11eddebdf6d30071a8cfac0c8984fb'
          '08c2fa4df6473c2f1bb150797f82f448')
 
 build() {
-  mkdir -p ${pkgdir}usr/share/texmf-dist/tex/latex/{sigproc,sigplan}
+  mkdir -p ${pkgdir}/usr/share/texmf-dist/tex/latex/{sigproc,sigplan}
   cp ${srcdir}/{acm_proc_article-sp,sigproc,flies,fly,rosette,sig-alternate}* \
-    ${pkgdir}usr/share/texmf-dist/tex/latex/sigproc
-  cp ${srcdir}/sigplanconf* ${pkgdir}usr/share/texmf-dist/tex/latex/sigplan
+    ${pkgdir}/usr/share/texmf-dist/tex/latex/sigproc
+  cp ${srcdir}/sigplanconf* ${pkgdir}/usr/share/texmf-dist/tex/latex/sigplan
 }
 
 # vim:set ts=2 sw=2 et:
