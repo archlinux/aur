@@ -3,8 +3,8 @@
 
 pkgname=latex-template-acm
 pkgver=200904
-pkgrel=1
-pkgdesc="The official ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4 and sigplanconf v1.8)"
+pkgrel=2
+pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4, sigplanconf v1.8 and the unofficial sigplan-proc-varsize)"
 arch=('any')
 url="http://www.acm.org/sigs/publications/proceedings-templates, http://sigplan.acm.org/authorInformation.htm"
 _sigproc_url="http://www.acm.org/sigs/publications"
@@ -34,7 +34,9 @@ ${_sigplan_url}/sigplanconf.cls
 ${_sigplan_url}/sigplanconf-template.tex
 ${_sigplan_url}/sigplanconf-template10.tex
 ${_sigplan_url}/sigplanconf-template11.tex
-${_sigplan_url}/sigplanconf-guide.pdf)
+${_sigplan_url}/sigplanconf-guide.pdf
+http://www.isi.edu/~johnh/SOFTWARE/LATEX/sigplan-proc-varsize-package.tar.gz
+)
 md5sums=('ae11eddebdf6d30071a8cfac0c8984fb'
          '49fc14f68a73f326183ff0d766bec0c2'
          '0ac6b024a088e6d6f1cdfbdfe68f85e1'
@@ -49,13 +51,16 @@ md5sums=('ae11eddebdf6d30071a8cfac0c8984fb'
          '60b41a8463ae87374ae99dfdfa04ee6c'
          '4e94835d0b432831e54701ec2fa0800f'
          '7db95b194a770fa2ee90fce0f80d9cd7'
-         '08c2fa4df6473c2f1bb150797f82f448')
+         '08c2fa4df6473c2f1bb150797f82f448'
+         '216c50b96e931516e9c3fba2567d5838')
 
 build() {
-  mkdir -p ${pkgdir}/usr/share/texmf-dist/tex/latex/{sigproc,sigplan}
+  mkdir -p ${pkgdir}/usr/share/texmf-dist/tex/latex/{sigproc,sigplan,sigplan-proc-varsize}
   cp ${srcdir}/{acm_proc_article-sp,sigproc,flies,fly,rosette,sig-alternate}* \
     ${pkgdir}/usr/share/texmf-dist/tex/latex/sigproc
   cp ${srcdir}/sigplanconf* ${pkgdir}/usr/share/texmf-dist/tex/latex/sigplan
+  tar xzvf ${srcdir}/sigplan-proc-varsize-package.tar.gz \
+    -C ${pkgdir}/usr/share/texmf-dist/tex/latex/sigplan-proc-varsize
 }
 
 # vim:set ts=2 sw=2 et:
