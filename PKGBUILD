@@ -3,17 +3,17 @@
 
 pkgname=wireless-regdb
 pkgver=2009.04.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Central Regulatory Domain Database"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
+license=('custom')
 depends=()
 install=wireless-regdb.install
 source=(http://wireless.kernel.org/download/${pkgname}/${pkgname}-${pkgver}.tar.bz2
         crda.conf.d)
+md5sums=('544e3c504026a558d34db685dd1903cb' '2374dcf1c6530332f375e5362b80169b')
 backup=(etc/conf.d/wireless-regdom)
-md5sums=('544e3c504026a558d34db685dd1903cb'
-         '2374dcf1c6530332f375e5362b80169b')
                   
 build() {
   # Install and verify regulatory.bin file
@@ -40,4 +40,5 @@ build() {
   done
   sort -u ${pkgdir}/etc/conf.d/wireless-regdom.tmp >> ${pkgdir}/etc/conf.d/wireless-regdom || return 1
   rm -f ${pkgdir}/etc/conf.d/wireless-regdom.tmp || return 1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" || return 1
 }
