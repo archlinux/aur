@@ -3,13 +3,13 @@
 
 pkgname=gtkspell
 pkgver=2.0.15
-pkgrel=1
+pkgrel=1.1
 url="http://gtkspell.sourceforge.net/"
 pkgdesc="GtkSpell provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gtk2>=2.14.6' 'enchant>=1.4.2')
-makedepends=('intltool')
+depends=('gtk2>=2.16.1' 'enchant>=1.4.2')
+makedepends=('intltool' 'gtk-doc')
 options=('!libtool')
 source=(http://gtkspell.sourceforge.net/download/${pkgname}-${pkgver}.tar.gz)
 md5sums=('d90a7fe883f29caca149f04f31e2f0f9')
