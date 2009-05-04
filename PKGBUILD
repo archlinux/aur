@@ -4,12 +4,12 @@
 
 pkgname=cmake
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CMake is a cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
-depends=('expat' 'xmlrpc-c')
+depends=('expat' 'xmlrpc-c' 'gcc-libs')
 makedepends=('qt')
 optdepends=('qt: cmake-gui')
 source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
