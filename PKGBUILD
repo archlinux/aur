@@ -3,7 +3,7 @@
 # Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
 pkgname=cmake
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="CMake is a cross-platform open-source make system"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('expat' 'xmlrpc-c')
 makedepends=('qt')
 optdepends=('qt: cmake-gui')
 source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
-md5sums=('5ba47a94ce276f326abca1fd72a7e7c6')
+md5sums=('50f387d0436696c4a68b5512a72c9cde')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
