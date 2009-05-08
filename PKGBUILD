@@ -2,7 +2,7 @@
 # $Id$
 
 pkgname=latex-template-springer
-pkgver=200904
+pkgver=200905
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings and other multiauthor volumes (llncs), monographs (svmono) and journals (svjour3)"
 arch=('any')
@@ -37,7 +37,7 @@ build() {
   unzip ${srcdir}/llncs2e.zip -d ${pkgdir}/usr/share/texmf-dist/tex/latex/llncs
   cp -R ${srcdir}/pub/tex/latex/mathegl/mono/ \
     ${pkgdir}/usr/share/texmf-dist/tex/latex
-  unzip ${srcdir}/llncs2e.zip -d \
+  unzip ${srcdir}/global.zip -d \
     ${pkgdir}/usr/share/texmf-dist/tex/latex/svjour3
   cp ${srcdir}/{spbasic,spmpsci,spphys}.bst ${pkgdir}/usr/share/texmf-dist/bst/svjour3
 }
