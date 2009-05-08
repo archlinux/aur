@@ -33,13 +33,13 @@ md5sums=('d8d23fccf1e8d546e3da41a13aeb6d2c'
 
 build() {
   mkdir -p ${pkgdir}/usr/share/texmf-dist/tex/latex/{llncs,svjour3}
-  mkdir -p ${pkgdir}/usr/share/texmf-dist/bst/svjour3
   unzip ${srcdir}/llncs2e.zip -d ${pkgdir}/usr/share/texmf-dist/tex/latex/llncs
   cp -R ${srcdir}/pub/tex/latex/mathegl/mono/ \
     ${pkgdir}/usr/share/texmf-dist/tex/latex
   unzip ${srcdir}/global.zip -d \
     ${pkgdir}/usr/share/texmf-dist/tex/latex/svjour3
-  cp ${srcdir}/{spbasic,spmpsci,spphys}.bst ${pkgdir}/usr/share/texmf-dist/bst/svjour3
+  cp ${srcdir}/{spbasic,spmpsci,spphys}.bst \
+    ${pkgdir}/usr/share/texmf-dist/tex/latex/svjour3
 }
 
 # vim:set ts=2 sw=2 et:
