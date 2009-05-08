@@ -2,7 +2,7 @@
 # Contributor: Tor Krill <tor@krill.nu>
 
 pkgname=nautilus-sendto
-pkgver=1.1.4.1
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Nautilus context menu for sending files."
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=('pidgin' 'gajim' 'gettext' 'intltool')
 options=('!libtool' '!emptydirs')
 install=nautilus-sendto.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/1.1/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('c4b66eb6fd24eff0b2240b832085a20e')
+md5sums=('8a5b342850bb84b63c7df033ef478654')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
