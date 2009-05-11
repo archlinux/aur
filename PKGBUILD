@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.0.9
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.sourceforge.net/"
@@ -14,15 +14,15 @@ md5sums=('60745008b90b7dbe25fe8337c550fec6')
 install=openvpn.install
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  ./configure --prefix=/usr --enable-password-save
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr --enable-password-save --mandir=/usr/share/man
   make || return 1
-  make DESTDIR=$startdir/pkg install || return 1
-  mkdir -p $startdir/pkg/etc/openvpn
-  cp -a sample-config-files $startdir/pkg/etc/openvpn/examples
-  chmod 755 $startdir/pkg/etc/openvpn/examples
-  install -D -m644 COPYING $startdir/pkg/usr/share/licenses/$pkgname/COPYING
+  make DESTDIR=$pkgdir install || return 1
+  mkdir -p $pkgdir/etc/openvpn
+  cp -a sample-config-files $pkgdir/etc/openvpn/examples
+  chmod 755 $pkgdir/etc/openvpn/examples
+  install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 
   # Install easy-rsa
-  make -C easy-rsa/2.0 install DESTDIR=$startdir/pkg PREFIX=usr/share/openvpn/easy-rsa
+  make -C easy-rsa/2.0 install DESTDIR=$pkgdir PREFIX=usr/share/openvpn/easy-rsa
 }
