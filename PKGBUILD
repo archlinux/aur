@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
-pkgver=2.26.0
+pkgver=2.26.2
 pkgrel=1
 pkgdesc="Gnome Devtool Libraries"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=('libglade>=2.6.4')
 makedepends=('pkgconfig')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/gdl/2.26/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('8915b8808d88e12c1bb53e84f50e6707')
+md5sums=('461b077f33ee7a447964f521e5455fd1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
