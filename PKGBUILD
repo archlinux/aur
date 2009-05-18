@@ -1,7 +1,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libmp3splt
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
@@ -14,9 +14,9 @@ options=(!libtool)
 build() {
   cd $srcdir/$pkgname-$pkgver
   libtoolize --copy --force
+  ./autogen.sh
   ./configure --prefix=/usr
   make || return 1
   make DESTDIR=$pkgdir/ install || return 1
 }
-
-md5sums=('f5a4ef059efec8188ca7924649c80b24')
+md5sums=('1c982db15bba4efb42a5a227ce87a575')
