@@ -1,4 +1,0 @@
-154c154
-<         default_x11_lib_dirs = ['/usr/lib64']
----
->         default_x11_lib_dirs = ['/usr/lib']

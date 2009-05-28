@@ -1,3 +1,9 @@
+2009-05-28  Jan de Groot  <jgc@archlinux.org>
+
+	* Remove dependency on python-nose
+	* Force disable Atlas to avoid linking to it
+	* Remove patch, it does not apply and should not be needed
+
 2009-01-26  Angel 'angvp' Velasquez    <angvp@archlinux.com.ve>
 
 	* Added a patch to fix FS#12869
