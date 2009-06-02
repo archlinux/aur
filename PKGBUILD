@@ -5,7 +5,7 @@
 pkgname=cmake
 pkgver=2.6.4
 pkgrel=2
-pkgdesc="CMake is a cross-platform open-source make system"
+pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
@@ -25,8 +25,9 @@ build() {
 	make || return 1
 	make DESTDIR=$pkgdir install
 
-	install -D -m644 Docs/cmake-indent.vim $pkgdir/usr/share/vim/indent/cmake-indent.vim
-	install -D -m644 Docs/cmake-syntax.vim $pkgdir/usr/share/vim/syntax/cmake-syntax.vim
+	vimpath="$pkgdir/usr/share/vim/vim72"
+	install -D -m644 Docs/cmake-indent.vim $vimpath/indent/cmake-indent.vim
+	install -D -m644 Docs/cmake-syntax.vim $vimpath/syntax/cmake-syntax.vim
 	install -D -m644 Docs/cmake-mode.el $pkgdir/usr/share/emacs/site-lisp/cmake-mode.el
 	install -D -m644 Copyright.txt $pkgdir/usr/share/licenses/$pkgname/Copyright.txt	
 }
