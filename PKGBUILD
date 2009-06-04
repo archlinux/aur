@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 license=('GPL')
 url="http://www.gnome.org/"
 depends=('libglade>=2.6.4')
-makedepends=('pkgconfig')
+makedepends=('pkgconfig' 'intltool')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/gdl/2.26/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('461b077f33ee7a447964f521e5455fd1')
