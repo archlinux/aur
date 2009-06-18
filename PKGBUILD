@@ -3,11 +3,11 @@
 
 pkgname=libxml2
 pkgver=2.7.3
-pkgrel=1.1
+pkgrel=2
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('custom')
-depends=('zlib>=1.2.3.3' 'readline>=5.2.013' 'ncurses>=5.7')
+depends=('zlib>=1.2.3.3' 'readline>=6.0' 'ncurses>=5.7')
 makedepends=('python')
 options=('!libtool')
 url="http://www.xmlsoft.org/"
