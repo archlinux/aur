@@ -3,20 +3,22 @@
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
  
 pkgname=boost
-pkgver=1.37.0
-_boostver=1_37_0
+pkgver=1.39.0
+_boostver=1_39_0
 pkgrel=1
 pkgdesc="Boost provides free peer-reviewed portable C++ source libraries."
 arch=(i686 x86_64)
 url="http://www.boost.org/"
 depends=('python>=2.5' 'bzip2' 'zlib')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz 0001-date_time-gcc-4.3-fix.patch)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz layout-tagged.patch)
 license=('custom')
+options=(!ccache)
  
 build() {
   cd ${srcdir}/${pkgname}_${_boostver}
-  export CFLAGS="${CFLAGS} -fno-strict-aliasing"
-  #patch -Np1 -i ${srcdir}/0001-date_time-gcc-4.3-fix.patch || return 1
+  #export CFLAGS="${CFLAGS} -fno-strict-aliasing"
+  #export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
+  patch -Np0 -i ${srcdir}/layout-tagged.patch || return 1
 
   # build bjam
   cd ${srcdir}/${pkgname}_${_boostver}/tools/jam/src
@@ -36,18 +38,23 @@ build() {
 
   # build libs
   cd ${srcdir}/${pkgname}_${_boostver}
-  # default "debug release <runtime-link>static/dynamic <threading>single/multi"
-  # --layout=system removes the -gcc suffix from libraries and installs
-  # includes in /usr/include/boost.
+  # default "minimal" install: "release link=shared,static
+  #      runtime-link=shared threading=multi"
+  # --layout=tagged will add the "-mt" suffix for multithreaded libraries
+  # and installs includes in /usr/include/boost.
+  # --layout=system no longer adds the -mt suffix for multi-threaded libs.
   ./tools/jam/src/${_bindir}/bjam \
             release debug-symbols=off threading=single,multi \
-			runtime-link=shared link=shared,static \
+            runtime-link=shared link=shared,static \
+            cflags=-fno-strict-aliasing \
             --prefix=${pkgdir}/usr \
             -sPYTHON_ROOT=/usr \
-            -sPYTHON_VERSION=2.5 \
+            -sPYTHON_VERSION=2.6 \
             -sTOOLS=gcc \
-            --layout=system \
+            --layout=tagged \
             install || return 1
+#            --with-wave install || return 1
+#            -d2 <- debug  cflags=-fno-strict-aliasing \
 
   # build pyste
   cd ${srcdir}/${pkgname}_${_boostver}/libs/python/pyste/install
@@ -58,5 +65,5 @@ build() {
   install -m644 ${srcdir}/${pkgname}_${_boostver}/LICENSE_1_0.txt \
                 ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
 }
-md5sums=('c38b88bb4ebc6d0d9193f432842273d2'
-         'd7f821056540ef08eb1d5ebd5ed017f1')
+md5sums=('fcc6df1160753d0b8c835d17fdeeb0a7'
+         '1f085180881155fbb85be0cb9f7d8f35')
