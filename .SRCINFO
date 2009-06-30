@@ -3,13 +3,13 @@
 pkgbase = jasper
 	pkgdesc = A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard
 	pkgver = 1.900.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ece.uvic.ca/~mdadams/jasper/
 	arch = i686
 	arch = x86_64
 	license = custom:JasPer2.0
 	makedepends = unzip
-	depends = libjpeg
+	depends = libjpeg>=7
 	depends = glut
 	depends = libxi
 	depends = libxmu
