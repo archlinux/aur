@@ -1,17 +1,17 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libepc
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Easy Publish and Consume Library"
 arch=(i686 x86_64)
 license=('LGPL')
 url="http://live.gnome.org/libepc"
-depends=('gtk2>=2.14.7' 'avahi>=0.6.24' 'libsoup>=2.24.3' 'gnutls>=2.6.4')
+depends=('gtk2>=2.16.2' 'avahi>=0.6.25' 'libsoup>=2.26.3' 'gnutls>=2.8.1')
 makedepends=('intltool')
 options=('!libtool' '!makeflags')
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.3/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('42aa1fcbfc0a020b9731aadd79961ccb')
+md5sums=('d5c07dd755305ccdbda9c2b4a2a95d33')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
