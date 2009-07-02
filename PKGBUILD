@@ -2,12 +2,12 @@
 
 pkgname=digikam
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital photo management application for kde"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://digikam.sourceforge.net"
-depends=('libgphoto2' 'lcms' 'kdegraphics' 'kdepimlibs' 'jasper>=1.900.1' 'lensfun')
+depends=('libgphoto2' 'lcms' 'kdegraphics' 'kdepimlibs' 'jasper>=1.900.1' 'lensfun' 'libjpeg>=7')
 makedepends=('pkgconfig' 'cmake')
 source=(http://downloads.sourceforge.net/digikam/${pkgname}-0.10.0.tar.bz2)
 replaces=('digikamimageplugins')
