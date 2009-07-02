@@ -1,19 +1,19 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=2.26.2
+pkgver=2.26.3
 pkgrel=1
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('gnome-desktop>=2.26.0' 'gstreamer0.10-base-plugins>=0.10.23' 'gstreamer0.10-good-plugins>=0.10.14' 'evolution-data-server>=2.26.2' 'librsvg>=2.26.0' 'gnome-icon-theme>=2.26.0' 'gconf>=2.26.0-2')
+depends=('gnome-desktop>=2.26.3' 'gstreamer0.10-base-plugins>=0.10.23' 'gstreamer0.10-good-plugins>=0.10.14' 'evolution-data-server>=2.26.3' 'librsvg>=2.26.0' 'gnome-icon-theme>=2.26.0' 'gconf>=2.26.0-2')
 makedepends=('pkgconfig' 'gnome-doc-utils>=0.16.0' 'intltool')
 groups=('gnome-extra')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org/projects/cheese/"
 install=cheese.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.26/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('9dee43671f0660e73524724174569331')
+md5sums=('c00fbf9e79e39cb95af57c0a6cf9ce88')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
