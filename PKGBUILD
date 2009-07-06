@@ -3,12 +3,12 @@
 
 pkgname=mono-addins
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="a generic framework for creating extensible applications and for creating libraries which extend those applications"
 arch=('i686' 'x86_64')
 url="http://www.mono-project.com/Mono.Addins"
 license=('custom:MIT')
-depends=('gtk-sharp-2>=2.12.0' 'mono>=2.4')
+depends=('gtk-sharp-2>=2.12.8' 'mono>=2.4.2')
 makedepends=('pkgconfig')
 source=(http://ftp.novell.com/pub/mono/sources/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('3b7f3f6e55c95413df184d0e4c9233e4')
