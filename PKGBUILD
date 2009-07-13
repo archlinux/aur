@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=0.9.8k
-pkgrel=3
+pkgrel=4
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='http://www.openssl.org'
@@ -10,6 +10,7 @@ license=('custom:BSD')
 depends=('zlib' 'perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
+backup=('etc/ssl/openssl.cnf')
 # fix_manpages.patch from http://www.linuxfromscratch.org/patches/blfs/svn/
 # other patches from http://cvs.fedoraproject.org/viewvc/rpms/openssl/devel/
 source=("http://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"
