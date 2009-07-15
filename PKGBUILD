@@ -10,7 +10,7 @@ depends=('openssl' 'lzo2')
 license=('custom')
 backup=(usr/share/openvpn/easy-rsa/vars usr/share/openvpn/easy-rsa/openssl.cnf)
 source=(http://openvpn.net/release/openvpn-$pkgver.tar.gz)
-md5sums=()
+md5sums=('af330c94da5200df94c4e84798ea39be')
 install=openvpn.install
 
 build() {
