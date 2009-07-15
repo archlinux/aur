@@ -1,8 +1,8 @@
 # Maintainer: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=openvpn
-pkgver=2.0.9
-pkgrel=6
+pkgver=2.1_rc18
+pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.sourceforge.net/"
@@ -10,7 +10,7 @@ depends=('openssl' 'lzo2')
 license=('custom')
 backup=(usr/share/openvpn/easy-rsa/vars usr/share/openvpn/easy-rsa/openssl.cnf)
 source=(http://openvpn.net/release/openvpn-$pkgver.tar.gz)
-md5sums=('60745008b90b7dbe25fe8337c550fec6')
+md5sums=()
 install=openvpn.install
 
 build() {
