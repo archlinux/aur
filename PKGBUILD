@@ -7,7 +7,7 @@ pkgdesc="Freedesktop.org Shared MIME Info"
 arch=(i686 x86_64)
 license=('GPL')
 depends=('libxml2>=2.7.3' 'glib2>=2.20.0')
-makedepends=('perlxml' 'pkgconfig')
+makedepends=('intltool' 'pkgconfig')
 install=shared-mime-info.install
 url="http://freedesktop.org/Software/shared-mime-info"
 source=(http://freedesktop.org/~hadess/${pkgname}-${pkgver}.tar.bz2)
