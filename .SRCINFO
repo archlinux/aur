@@ -1,0 +1,18 @@
+pkgbase = python-sphinx
+	pkgdesc = Python documentation generator
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://sphinx.pocoo.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = setuptools
+	depends = python>=2.4
+	depends = pygments
+	depends = docutils
+	depends = python-jinja
+	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.1.tar.gz
+	md5sums = fa1a32c406232a96a776de7dfae15032
+
+pkgname = python-sphinx
+
