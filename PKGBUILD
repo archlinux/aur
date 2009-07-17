@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.5 2009/06/01 09:23:43 sergej Exp $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Maxim Vuets <maxim.vuets@gmail.com>
 
