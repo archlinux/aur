@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.7 2008/12/04 10:51:32 pressh Exp $
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: cs-cam - me.at.camdaniel.com
 # Contributor: Sebastien Piccand <sebcactus gmail com>
