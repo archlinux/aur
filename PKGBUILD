@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.22 2009/06/23 12:49:29 wonder Exp $
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Maintainer: Mikko Seppälä <t-r-a-y@mbnet.fi>
 _pkgsourcename=gtk2
