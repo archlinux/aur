@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.22 2009/04/03 18:46:54 BaSh Exp $
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
 # Contributor: detto <detto-brumm@freenet.de>
