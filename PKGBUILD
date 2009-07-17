@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.7 2009/06/23 13:11:45 wonder Exp $
 # Maintainer: Mikko Seppälä <t-r-a-y@mbnet.fi>
 _pkgsourcename=openal
 pkgname=lib32-$_pkgsourcename
