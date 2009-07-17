@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.4 2009/03/29 20:11:38 BaSh Exp $
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
 
