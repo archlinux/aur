@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.22 2009/07/13 19:16:06 rvanharen Exp $
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
