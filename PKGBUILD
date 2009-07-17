@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.3 2009/04/09 09:51:56 sergej Exp $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Wagner <a.wagner@stud.uni-frankfurt.de>
 
