@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.2 2007/06/28 15:08:10 tardo Exp $
 # Maintainer: Jeff Mickey <j@codemac.net>
 # Contributor: Woody Gilk aka Shadowhand <woody.gilk@gmail.com>
 
