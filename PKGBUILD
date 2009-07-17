@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.9 2008/12/11 08:38:19 BaSh Exp $
 # Maintainer: Andrea Scarpino <bash.lnx@gmail.com>
 # Contributor: Bjorn Lindeijer <bjorn@lindeijer.nl>
 # Contributor: kritoke <kritoke@nospam.gmail.com>
