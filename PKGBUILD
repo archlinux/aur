@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.8 2009/07/15 12:08:00 cprimier Exp $
 # Maintainer: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: sickhate <sickhate@tux-linux.net>
 
