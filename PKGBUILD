@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.2 2009/04/09 09:51:55 sergej Exp $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=flyspray
