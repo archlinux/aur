@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.5 2009/02/05 12:23:03 abhidg Exp $
 # Maintainer : Tom Killian <tom@archlinux.org>
 # Contributor: Nikos Kouremenos (zeppelin) kourem at gmail dot com
 
