@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.4 2009/05/31 04:07:09 ghost1227 Exp $
 # Maintainer: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 # Contributor: Suat SARIALP <muhendis.suat@gmail.com>
 
