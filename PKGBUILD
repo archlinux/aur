@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.8 2009/02/06 09:36:20 partition Exp $
 # Maintainer Mateusz Herych <heniekk@gmail.com>
 # Contributor sysrq
 
