@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.1 2007/11/04 02:49:41 Snowman Exp $
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=gtk2+extra
