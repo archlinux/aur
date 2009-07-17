@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.3 2008/05/20 16:29:19 BaSh Exp $
 # Maintainer: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
 pkgname=gtk2fontsel
