@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.10 2009/04/24 15:22:24 sergej Exp $
 # Maintainer: JJDaNiMoTh <jjdanimoth@gmail.com>
 
 pkgname=qmc2
