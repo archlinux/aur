@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.17 2009/06/01 01:34:06 ghost1227 Exp $
 # Maintainer: Roman Kyrylych <Roman.Kyrylych@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
