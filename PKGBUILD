@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.4 2008/05/20 16:34:03 BaSh Exp $
 # Maintainer: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
 pkgname=gtk-chtheme
