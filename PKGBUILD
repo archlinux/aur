@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.3 2009/02/09 00:33:30 angvp Exp $
 # Maintainer: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 # Contributor: Francis Carroll (franciscarroll at gmail dot com)
 pkgname=splix 
