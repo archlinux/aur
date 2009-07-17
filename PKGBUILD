@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.10 2008/11/13 16:52:33 dtw Exp $
 # Contributor: Matt Smith (Majik) <darkknight@helpdesk.zaz.net>
 # Maintainer: dorphell <dorphell@archlinux.org>
 
