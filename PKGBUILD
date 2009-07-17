@@ -1,4 +1,4 @@
-#$Id: PKGBUILD,v 1.5 2009/02/05 12:36:03 abhidg Exp $
+#$Id$
 # Maintainer: Jeff Mickey <j@codemac.net>
 # Maintainer: tardo <tardo@nagi-fanboi.net>
 
