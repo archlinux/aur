@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.1 2008/08/23 05:01:01 allan Exp $
 # Maintainer: Allan McRae <allan@archlinux.org>
 # Contributor: Bug <Bug2000@gmail.com>
 # Contributor: Marcel Wysocki <maci@satgnu.net>
