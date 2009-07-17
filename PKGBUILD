@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.13 2009/05/22 10:24:30 abhidg Exp $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
