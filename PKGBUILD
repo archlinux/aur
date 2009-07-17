@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.15 2009/04/30 20:04:34 dragonlord Exp $
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
