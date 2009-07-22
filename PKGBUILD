@@ -5,7 +5,7 @@
 
 pkgname=ruby-atk
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby bindings for ATK"
 arch=('i686' 'x86_64')
 url="http://ruby-gnome2.sourceforge.jp"
@@ -16,7 +16,7 @@ md5sums=('a8f8dac03008d7c6397a3fe225ef5929')
 
 build() {
   cd "$srcdir/ruby-gtk2-$pkgver"
-  ruby extconf.rb atk
+  ruby extconf.rb atk || return 1
   make || return 1
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install || return 1
 }
