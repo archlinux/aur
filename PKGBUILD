@@ -2,12 +2,12 @@
 
 pkgname=digikam
 pkgver=0.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Digital photo management application for kde"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://digikam.sourceforge.net"
-depends=('libgphoto2' 'lcms' 'kdegraphics' 'kdepimlibs' 'jasper>=1.900.1' 'lensfun' 'libjpeg>=7')
+depends=('kdebase-runtime' 'kdegraphics-libs' 'kdepimlibs' 'lensfun')
 makedepends=('pkgconfig' 'cmake' 'automoc4')
 source=(http://downloads.sourceforge.net/digikam/${pkgname}-0.10.0.tar.bz2)
 replaces=('digikamimageplugins')
@@ -16,7 +16,9 @@ md5sums=('6c6daf958ff4fe93974f1074ba967cd9')
 
 build() {
   cd ${srcdir}/${pkgname}-0.10.0
-   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_MARBLEWIDGET=no -DWITH_MarbleWidget=no
+   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_MARBLEWIDGET=no -DWITH_MarbleWidget=no \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_{SHARED,MODULE,EXE}_LINKER_FLAGS='-Wl,--no-undefined -Wl,--as-needed'
    make all|| return 1
    make DESTDIR=${pkgdir} install || return 1
  }
