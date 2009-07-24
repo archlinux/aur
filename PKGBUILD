@@ -16,7 +16,7 @@ source=(http://openvpn.net/release/openvpn-$pkgver.tar.gz
         openvpn-tapdev.rc
         openvpn-tapdev.conf)
 md5sums=('ba2ee667a8b7606b125b7d32f47ca578'
-         '90f37d4338cfc28d7a4e2d47a15bde54'
+         '89cdee83283cb51c08ef6c1404d98efc'
          '7576704ea86a781589e0b5eef469b693'
          '722f483c9e3ce2ec66d3301aaf7cf3d5')
 

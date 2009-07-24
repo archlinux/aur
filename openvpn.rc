@@ -25,7 +25,7 @@ case "$1" in
   stop)
     stat_busy "Stopping OpenVPN ..."
     for pidfile in "${STATEDIR}"/*.pid; do
-      stat_append "$(basename "${cfg}" .conf) "
+      stat_append "$(basename "${pidfile}" .pid) "
       kill $(cat "${pidfile}" 2>/dev/null) 2>/dev/null
       rm -f "${pidfile}"
     done
