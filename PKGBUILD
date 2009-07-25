@@ -5,12 +5,12 @@
 pkgname=boost
 pkgver=1.39.0
 _boostver=1_39_0
-pkgrel=1
+pkgrel=2
 pkgdesc="Boost provides free peer-reviewed portable C++ source libraries."
 arch=(i686 x86_64)
 url="http://www.boost.org/"
 depends=('python>=2.5' 'bzip2' 'zlib')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz layout-tagged.patch)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz layout-tagged.patch translate_exception.patch)
 license=('custom')
 options=(!ccache)
  
@@ -19,6 +19,7 @@ build() {
   #export CFLAGS="${CFLAGS} -fno-strict-aliasing"
   #export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
   patch -Np0 -i ${srcdir}/layout-tagged.patch || return 1
+  patch -Np1 -i ${srcdir}/translate_exception.patch || return 1
 
   # build bjam
   cd ${srcdir}/${pkgname}_${_boostver}/tools/jam/src
@@ -66,4 +67,5 @@ build() {
                 ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
 }
 md5sums=('fcc6df1160753d0b8c835d17fdeeb0a7'
-         '1f085180881155fbb85be0cb9f7d8f35')
+         '1f085180881155fbb85be0cb9f7d8f35'
+         '1785bd2f958de7649b4e378680c44d16')
