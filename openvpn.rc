@@ -13,7 +13,7 @@ case "$1" in
     mkdir -p "${STATEDIR}"
     for cfg in "${CFGDIR}"/*.conf; do
       stat_append "$(basename "${cfg}" .conf) "
-      /usr/sbin/openvpn --daemon --writepid "${STATEDIR}"/"$(basename "${cfg}" .conf)".pid --cd "${CFGDIR}" --config "${cfg}" || success = $!
+      /usr/sbin/openvpn --daemon --writepid "${STATEDIR}"/"$(basename "${cfg}" .conf)".pid --cd "${CFGDIR}" --config "${cfg}" || success=$!
     done
     if [ $success -eq 0 ]; then
       add_daemon openvpn
