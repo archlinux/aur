@@ -2,9 +2,9 @@
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
-pkgver=4.0
-pkgrel=3
-pkgdesc="A .chm files (MS HTML help file format) viewer."
+pkgver=4.1
+pkgrel=1
+pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
@@ -14,7 +14,7 @@ options=('libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 #source=(http://www.kchmviewer.net/files/$pkgname-$pkgver.tar.gz)
 
-md5sums=('5e6b853b00f17f69a3368ce78355aba9')
+md5sums=('d64b99f63e8cda78c4c2ab8595925151')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
@@ -24,10 +24,10 @@ build() {
   make DESTDIR=${pkgdir} install
 
 #fixing icon path FS#12349
-  mv "${pkgdir}/usr/share/icons/crystalsvg" "${pkgdir}/usr/share/icons/hicolor"
+  mv ${pkgdir}/usr/share/icons/crystalsvg ${pkgdir}/usr/share/icons/hicolor
 
 #msits.protocol file provided by kdegraphics package
-  rm -rf "${pkgdir}/usr/share/kde4" || retur 1
+  rm -rf ${pkgdir}/usr/share/kde4 || retur 1
 #kio_msits.so file provided by kdegraphics package - FS#14376
-  rm -rf "${pkgdir}/usr/lib"
+  rm -rf ${pkgdir}/usr/lib
 }
