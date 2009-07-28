@@ -3,7 +3,7 @@
 
 pkgname=latex2rtf
 pkgver=1.9.19
-pkgrel=1
+pkgrel=2
 pkgdesc="LaTeX to RTF converter"
 arch=('i686' 'x86_64')
 url="http://latex2rtf.sourceforge.net/"
@@ -15,6 +15,6 @@ md5sums=('8a3b920d59f6b38736aa256c26374472')
 build() {
   cd $startdir/src/$pkgname-$pkgver
   make PREFIX=/usr || return 1
-  make PREFIX=$startdir/pkg/usr MAN_INSTALL=$startdir/pkg/usr/share/man/man1   install
+  make PREFIX=$startdir/pkg/usr MAN_INSTALL=$startdir/pkg/usr/share/man/man1 install
   sed -i -e 's|error "no input file specified"| echo "error: no input file specified"|' $startdir/pkg/usr/bin/latex2png
 }
