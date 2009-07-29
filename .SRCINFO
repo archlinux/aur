@@ -2,15 +2,15 @@
 # Wed Dec 30 18:02:46 UTC 2015
 pkgbase = django
 	pkgdesc = A high-level Python Web framework.
-	pkgver = 1.0.2
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.djangoproject.com
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = setuptools
-	source = http://media.djangoproject.com/releases/1.0.2/Django-1.0.2-final.tar.gz
-	md5sums = 89353e3749668778f1370d2e444f3adc
+	source = http://media.djangoproject.com/releases/1.1/Django-1.1.tar.gz
+	md5sums = b2d75b4457a39c405fa2b36bf826bf6b
 
 pkgname = django
 
