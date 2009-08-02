@@ -2,19 +2,19 @@
 # Maintainer: Kevin Piche <kevin@archlinux.org>
 
 pkgname=gob2
-pkgver=2.0.15
+pkgver=2.0.16
 pkgrel=1
 pkgdesc="GTK Object Builder (GOB) is a simple preprocessor for easily creating GTK objects"
 arch=(i686 x86_64)
 license=('GPL')
 depends=('glib2')
-source=(http://ftp.5z.com/pub/gob/${pkgname}-${pkgver}.tar.gz)
 url="http://www.5z.com/jirka/gob.html"
-md5sums=('0c5ab18305fc37902d202a253fdb28b1')
+source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.0/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('aa5a15754d34b73bf39a77e482811461')
 
 build() {
-  cd ${startdir}/src/${pkgname}-${pkgver}
-  ./configure --prefix=/usr
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr || return 1
   make || return 1
-  make DESTDIR=${startdir}/pkg install
+  make DESTDIR="${pkgdir}" install || return 1
 }
