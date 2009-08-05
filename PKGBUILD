@@ -2,7 +2,7 @@
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
 pkgname=python-sphinx
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Python documentation generator"
 arch=('i686' 'x86_64')
@@ -18,4 +18,4 @@ build() {
     python setup.py build
     python setup.py install --root=$pkgdir
 }
-md5sums=('fa1a32c406232a96a776de7dfae15032')
+md5sums=('c8f79e171addc73342cc2e775dc78880')
