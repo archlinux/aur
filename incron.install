@@ -13,7 +13,3 @@ pre_remove() {
   usr/sbin/groupdel incron >& /dev/null
 }
 
-op=$1
-shift
-
-$op $*
