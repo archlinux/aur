@@ -3,12 +3,12 @@
 
 pkgname=solfege
 pkgver=3.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A free music education software to train rhythm, interval, scale and chord skills"
 arch=('i686' 'x86_64')
 url="http://www.solfege.org/"
 license=('GPL')
-depends=('gnome-python' 'libgtkhtml')
+depends=('pygtk' 'libgtkhtml')
 makedepends=('ghostscript' 'gnome-doc-utils' 'librsvg' 'libxslt' 'lilypond' 'pkgconfig'
              'swig' 'texinfo' 'txt2man')
 optdepends=('timidity: midi software output'
