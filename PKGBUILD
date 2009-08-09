@@ -1,18 +1,19 @@
-# $Id: PKGBUILD 28298 2009-02-28 18:22:27Z thomas $
+# $Id$
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=wireless-regdb
-pkgver=2009.04.17
-pkgrel=2
+pkgver=2009.08.05
+pkgrel=1
 pkgdesc="Central Regulatory Domain Database"
-arch=(i686 x86_64)
+arch=(any)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
 license=('custom')
 depends=()
 install=wireless-regdb.install
 source=(http://wireless.kernel.org/download/${pkgname}/${pkgname}-${pkgver}.tar.bz2
         crda.conf.d)
-md5sums=('544e3c504026a558d34db685dd1903cb' '2374dcf1c6530332f375e5362b80169b')
+md5sums=('1dc83ef1222c0dbb0be63e8e5698273a'
+         '2374dcf1c6530332f375e5362b80169b')
 backup=(etc/conf.d/wireless-regdom)
                   
 build() {
