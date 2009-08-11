@@ -1,0 +1,23 @@
+pkgbase = rox-thumbnailers
+	pkgdesc = ROX-thumbnailers generate thumbnails for ROX-Filer using various thumbnailers.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://yuri.bongiorno.googlepages.com/
+	arch = i686
+	arch = x86_64
+	groups = rox
+	license = GPL
+	depends = rox
+	depends = rox-lib
+	optdepends = ffmpegthumbnailer: for video thumbnails using ffmpeg
+	optdepends = totem: for video thumbnails using GStreamer
+	optdepends = totem-xine: for video thumbnails using Xine
+	optdepends = evince: for PDF/PS/DVI documents
+	optdepends = raw-thumbnailer: for raw images
+	optdepends = comix: for comic book archives
+	optdepends = thunar-thumbnailers: for TeX, Grace and OpenDocument thumbnails
+	source = http://denver.sociol.unimi.it/~yuri/rox/ROX-thumbnailers_1.0.0.tgz
+	md5sums = c53e7eb42e54fc8a0673dbf78456d441
+
+pkgname = rox-thumbnailers
+
