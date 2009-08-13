@@ -1,0 +1,21 @@
+pkgbase = quake4-demo
+	pkgdesc = Quake 4 demo
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.quake4game.com/
+	install = quake4-demo.install
+	arch = i686
+	license = custom:"Quake 4 Demo"
+	depends = alsa-lib
+	depends = sdl
+	depends = libxext
+	depends = libgl
+	source = ftp://ftp.idsoftware.com/idstuff/quake4/demo/quake4-linux-1.0-demo.x86.run
+	source = quake4-demo.sh
+	source = quake4-demo-dedicated.sh
+	md5sums = 98ebbb835cc71ea29062cd2b4a139a46
+	md5sums = e1eeb0067b02dc43315b43e69b6d681c
+	md5sums = 966f6b8dd0166ddd305ae905f6958354
+
+pkgname = quake4-demo
+

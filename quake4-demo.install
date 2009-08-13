@@ -1,0 +1,15 @@
+post_install() {
+cat << EOF
+IMPORTANT
+==> In order to use the software, you have to agree to ID Software's license 
+==> located in /opt/quake4-demo/License.txt
+==> If you don't, please remove this package (pacman -R quake4-demo)
+EOF
+
+  /bin/true
+}
+
+
+op=$1
+shift
+$op $*
