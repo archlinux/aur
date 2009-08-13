@@ -1,0 +1,16 @@
+pkgbase = quake3-cpma
+	pkgdesc = Challenge ProMode Arena (CPMA) is a Quake3 modification which adds features aimed towards professional gamers and competitive enviroments.
+	pkgver = 1.47
+	pkgrel = 1
+	url = http://www.promode.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = quake3
+	source = quake3-cpma.launcher
+	source = http://www.promode.ru/files/cpma147-nomaps.zip
+	md5sums = ba3def87863a0199824902e271ae4968
+	md5sums = 922e7b4346bb2af990ac92eb2975cfea
+
+pkgname = quake3-cpma
+
