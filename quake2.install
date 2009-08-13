@@ -1,0 +1,30 @@
+post_install() {
+cat << EOF
+==> DATA FILES
+To play Quake 2, you need the following files from the disc:
+copy <cdromdir>/Install/Data/baseq2/pak0.pak to /opt/quake2/baseq2/
+copy <cdromdir>/Install/Data/baseq2/video/ to /opt/quake2/baseq2/
+
+To play The Reckoning, you need the following files from the disc:
+copy <cdromdir>/Data/all/pak0.pak to /opt/quake2/xatrix/
+copy <cdromdir>/Data/max/xatrix/video/ to /opt/quake2/xatrix/
+
+To play Ground Zero, you need the following files from the disc:
+copy <cdromdir>/Data/all/pak0.pak to /opt/quake2/rogue/
+copy <cdromdir>/Data/max/Rogue/video/ to /opt/quake2/rogue/ (optional)
+
+==> QUAKE2 BINARY
+You can control switch between the quake2 and sdlquake2 binaries by changing 
+the q2 symlink.  If you want to use sdlquake2, then as root type:
+# ln -sf ./sdlquake2 /opt/quake2/q2
+
+sdlquake2 uses sdl for audio, and quake2 uses oss for audio.  Alsa does not 
+work well in the current version, so it is not built.
+EOF
+  /bin/true
+}
+
+
+op=$1
+shift
+$op $*

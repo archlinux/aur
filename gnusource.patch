@@ -1,0 +1,13 @@
+diff -Naur quake2-r0.16.1/src/linux/q_shlinux.c quake2-r0.16.1-modified/src/linux/q_shlinux.c
+--- quake2-r0.16.1/src/linux/q_shlinux.c	2002-02-09 17:09:23.000000000 -0500
++++ quake2-r0.16.1-modified/src/linux/q_shlinux.c	2007-06-26 13:40:25.000000000 -0400
+@@ -17,6 +17,9 @@
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
+ */
++#if !defined(_GNU_SOURCE)
++	#define _GNU_SOURCE
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <errno.h>
