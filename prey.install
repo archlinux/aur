@@ -1,0 +1,23 @@
+
+post_install() {
+    echo ">>> You must read and agree to the terms in the EULAs found"
+    echo ">>> in /usr/share/licenses/prey/ before using this software!"
+    echo ">>>";
+    echo ">>> Prey requires pak000.pk4, pak001.pk4, pak002.pk4, pak003.pk4,"
+    echo ">>> and pak004.pk4 from the retail game in order to play."
+    echo ">>> Place these files in /opt/prey/base/"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    /bin/true
+}
+
+op=$1
+shift
+
+$op $*
+

@@ -1,0 +1,21 @@
+pkgbase = prey
+	pkgdesc = Prey is a first person shooter based on the id Tech 4 engine using portals and variable gravity. You need the retail game files to play.
+	pkgver = 02192009
+	pkgrel = 1
+	url = http://icculus.org/prey/
+	install = prey.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = libstdc++5
+	depends = libxext
+	source = prey.desktop
+	source = prey.launcher
+	source = http://icculus.org/prey/downloads/prey-installer-02192009.bin
+	md5sums = e0fc6542975fd67f2cb43a2a19f2e605
+	md5sums = 23e6e301fa851b58b6d4b1a5f7eb3b5f
+	md5sums = f2d8ec21b5d082b516774f62a8bb6e97
+
+pkgname = prey
+
