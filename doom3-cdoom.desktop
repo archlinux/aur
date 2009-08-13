@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Doom 3: Classic Doom
+GenericName=Doom 3: Classic Doom
+Comment=Classic Doom mod for Doom 3
+Icon=/usr/share/pixmaps/doom3-cdoom.ico
+Exec=/usr/bin/doom3-cdoom
+Terminal=false
+Type=Application
+Categories=Application;Game
+StartupNotify=false
