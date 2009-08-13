@@ -1,0 +1,30 @@
+
+post_install() {
+    echo ">>> You must read and agree to the terms in the EULAs found"
+    echo ">>> in /usr/share/licenses/etqw/ before using this software!"
+    echo ">>>"
+    echo ">>> Copy the following files off your retail DVD:"
+    echo ">>>"
+    echo ">>>    Setup/Data/base/pak*.pk4       to /opt/etqw/base/"
+    echo ">>>    Setup/Data/base/zpak*.pk4      to /opt/etqw/base/"
+    echo ">>>    Setup/Data/base/megatextures/* to /opt/etqw/base/megatextures"
+    echo ">>>    Setup/Data/base/video/*        to /opt/etqw/base/video"
+    echo ">>>"
+    echo ">>> When you have the data files installed, start the game:"
+    echo ">>>   Client: etqw"
+    echo ">>>   Server: etqw-dedicated"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    /bin/true
+}
+
+op=$1
+shift
+
+$op $*
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Enemy Territory: Quake Wars
+GenericName=ET: Quake Wars
+Comment=Enemy Territory: Quake Wars
+Exec=/usr/bin/etqw
+Icon=/usr/share/pixmaps/etqw.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Qt;KDE;GNOME;Application;Game;
+
