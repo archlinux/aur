@@ -1,0 +1,16 @@
+pkgbase = quake3-threewave
+	pkgdesc = Threewave is a modification for Quake 3 that features Capture the Flag (CTF) gameplay.
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://www.threewavesoftware.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = quake3
+	source = http://games.mirrors.tds.net/pub/planetquake3/modifications/threewavectf/threewave_16_full.zip
+	source = http://games.mirrors.tds.net/pub/planetquake3/modifications/threewavectf/threewave_17_update.zip
+	md5sums = 9a5751ab2901e65d95b8134fc78c9bab
+	md5sums = c8bdda7722716f18f45a8b2e50f4d020
+
+pkgname = quake3-threewave
+
