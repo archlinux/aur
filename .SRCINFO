@@ -1,0 +1,21 @@
+pkgbase = prey-demo
+	pkgdesc = Prey is a first person shooter based on the id Tech 4 engine using portals and variable gravity (Demo Version).
+	pkgver = 02192009
+	pkgrel = 1
+	url = http://icculus.org/prey/
+	install = prey-demo.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = libstdc++5
+	depends = libxext
+	source = prey-demo.desktop
+	source = prey-demo.launcher
+	source = http://icculus.org/prey/downloads/prey-demo-installer-02192009.bin
+	md5sums = 076b4092529d9cc7d092c4630fced700
+	md5sums = 637b319535afb902d4645030153acfbe
+	md5sums = dded67270bc59248f2b8fedd7d51156d
+
+pkgname = prey-demo
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Prey (Demo)
+GenericName=Prey (Demo)
+Comment=Single and Multiplayer First Person Shooter
+Exec=/usr/bin/prey-demo
+Icon=/opt/prey-demo/prey.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
