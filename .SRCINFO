@@ -1,0 +1,12 @@
+pkgbase = quake-par
+	pkgdesc = Quake PAK archiving utility.
+	pkgver = 0.03.01
+	pkgrel = 1
+	url = ftp://ibiblio.org/pub/linux/games/quake/
+	license = GPL
+	depends = glibc
+	source = ftp://ibiblio.org/pub/linux/games/quake/par-0.03.01.tar.gz
+	md5sums = 39a73b5b95b04067dfc9acb8ef6bc9ff
+
+pkgname = quake-par
+
