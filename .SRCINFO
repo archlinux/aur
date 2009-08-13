@@ -1,0 +1,33 @@
+pkgbase = quake3-defrag
+	pkgdesc = DeFRaG is a Quake3 modification made specifically for speedruns and trickjumps.
+	pkgver = 1.91.08
+	pkgrel = 1
+	url = http://defrag.planetquake.gamespy.com/
+	depends = quake3
+	source = http://cgg0.free.fr/defrag/defrag_1.91.08.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak1.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak2.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak3.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak4.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak5.zip
+	source = http://www.german-defrag.de/files/defrag/defragcpmpak01.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak7.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak8.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak9.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak10.zip
+	source = http://www.german-defrag.de/files/defrag/defragpak11.zip
+	md5sums = 5746aa833311e65e143f0505f19b3996
+	md5sums = a3f16d49be8db65b57fb061cbef42a82
+	md5sums = 18526ac48731eecf3d7c690e20814302
+	md5sums = a166584ff79e0d1d76094b085c02fe5f
+	md5sums = d970eb150fccd1c09b3cadc6d4acb421
+	md5sums = 4a818919a1e06b1173722ffe65cc0b41
+	md5sums = ee2d4820b2bd8f615e7be542affe1e1b
+	md5sums = f4c7dbc856c20f9a90702d341d6335c4
+	md5sums = 9dec1f8497a386f9afa2e101d74d8883
+	md5sums = 0afbcffa260d6c1c83dd467a01b86131
+	md5sums = 363edf0eae93de429a4577307ffec0fd
+	md5sums = fdb9687cbbb5507259c089dfbb3349f0
+
+pkgname = quake3-defrag
+
