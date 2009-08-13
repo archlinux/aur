@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Return To Castle Wolfenstein MP
+Comment=Return To Castle Wolfenstein (Multi Player)
+Exec=/usr/bin/wolfmp
+Icon=/usr/share/pixmaps/WolfMP.xpm
+Terminal=false
+Categories=Game
+

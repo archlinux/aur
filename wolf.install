@@ -1,0 +1,24 @@
+
+post_install() {
+    echo ">>> Copy the following files off a Windows installation or CD-ROM to the"
+    echo ">>> /opt/wolf/main/ directory in order to play:"
+    echo ">>>"
+    echo ">>>    pak0.pk3"
+    echo ">>>    sp_pak1.pk3"
+    echo ">>>    mp_pak0.pk3"
+    echo ">>>"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    /bin/true
+}
+
+op=$1
+shift
+
+$op $*
+
