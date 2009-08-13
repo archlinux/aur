@@ -1,0 +1,26 @@
+pkgbase = quake4
+	pkgdesc = Quake 4 Engine. You need the retail .pk4 files to play.
+	pkgver = 1.4.2
+	pkgrel = 2
+	url = http://www.quake4game.com/
+	install = quake4.install
+	arch = i686
+	license = custom:"Quake 4"
+	license = custom:"PunkBuster"
+	depends = gcc-libs
+	depends = libgl
+	depends = sdl
+	depends = zlib
+	source = quake4.desktop
+	source = quake4.launcher
+	source = quake4-dedicated.launcher
+	source = quake4-smp.launcher
+	source = http://www.1337-server.net/quake4/quake4-linux-1.4.2.x86.run.gz
+	md5sums = c05b4551aa7cc8728eee9e3f94fcea1e
+	md5sums = ece76fd2e52d2eec7584ab1e8832410b
+	md5sums = b479a067fdf376384e39cbff41911327
+	md5sums = 19acb4c06f9c8e7bf03aa021c56e4242
+	md5sums = b186954ab5fbadd57f7ca9519b5b0503
+
+pkgname = quake4
+
