@@ -1,0 +1,11 @@
+pkgbase = quake3-reactionq3
+	pkgdesc = Reaction Quake 3 is modification for Quake 3 modeled after games like ActionQ2 and ActionHL, that recreate an action movie atmosphere.
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://www.rq3.com/
+	depends = quake3
+	source = http://www.rq3.com/ReactionQuake3-v3.2-Full.zip
+	md5sums = 9d376db7be9c2990953b93fae075458b
+
+pkgname = quake3-reactionq3
+
