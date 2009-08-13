@@ -1,0 +1,31 @@
+pkgbase = btrl
+	pkgdesc = Beyond the Red Line is a completely free stand-alone conversion of Freespace 2 based on the TV show Battlestar Galactica
+	pkgver = demo
+	pkgrel = 2
+	url = http://www.beyondtheredline.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libgl
+	depends = libtheora
+	depends = libvorbis
+	depends = mesa
+	depends = openal
+	depends = sdl
+	source = btrl.desktop
+	source = btrl.launcher
+	source = ftp://ftp.unreal.ie/unreal.ie/non-unreal/BtRLDemoInstaller.run
+	source = http://www.fsoinstaller.com/files/btrl/btrlpatch_linux.tar.gz
+	source = http://www.fsoinstaller.com/files/btrl/w_patch2.vp
+	source = http://www.fsoinstaller.com/files/btrl/x_patch1.vp
+	source = http://www.fsoinstaller.com/files/btrl/y_patch1.vp
+	md5sums = 3acd39a97465576bbb28855c025b987a
+	md5sums = b4988100342221dacdc9e011db07a57e
+	md5sums = f11b425f3aeb9acba9a180cfc4dafcf0
+	md5sums = 048d91174c0ede75cf428406a444db56
+	md5sums = b656b65b3832e5cbb6f87afb7280f1d5
+	md5sums = 3c6f15f5e21da5fa89a656993f919ac7
+	md5sums = 22602aa184842d80812aba04ca51cbaa
+
+pkgname = btrl
+

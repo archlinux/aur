@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BtRL
+GenericName=BtRL
+Comment=Beyond the Red Line
+Exec=/usr/bin/btrl
+Icon=/usr/share/pixmaps/btrl.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Qt;KDE;GNOME;Application;Game;
+
