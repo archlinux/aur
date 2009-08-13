@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Savage: The Battle for Newerth
+GenericName=Savage
+Comment=Online Multiplayer Team-Based FPS/RTS Hybrid
+Icon=/usr/share/pixmaps/savage.xpm
+Exec=/usr/bin/savage
+Terminal=false
+Type=Application
+Categories=Application;Game
+StartupNotify=true

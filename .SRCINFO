@@ -1,0 +1,35 @@
+pkgbase = savage
+	pkgdesc = Savage: The Battle for Newerth is an online multiplayer team-based FPS/RTS hybrid. Completely free as of September 2006. (Includes SFE Patches)
+	pkgver = 2.00e
+	pkgrel = 8
+	url = http://s2games.com/savage
+	install = savage.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = libgl
+	depends = sdl
+	depends = glib2
+	depends = mesa
+	depends = libjpeg6
+	depends = libpng
+	depends = libidn
+	depends = e2fsprogs
+	depends = curl
+	depends = openssl
+	source = savage.i686.launcher
+	source = savage.x86_64.launcher
+	source = savage.desktop
+	source = icon.xpm
+	source = http://mnky.newerth.com/lin-client-auth-patch.zip
+	source = http://www.notforidiots.com/SFE/SFE-Standalone.tar.gz
+	md5sums = 1588610be6fe7c52eda37fee65ca16c4
+	md5sums = 2129b16867cd875ce05a8f5f400ca967
+	md5sums = 1fcb84c031b22b73fd803a6e2a611aca
+	md5sums = a73f68e3620382860b08e88c1125f55d
+	md5sums = 7fb1e0b31e838ea335a35c769c4549d8
+	md5sums = 3ce0c50e3d5e4ff6789122c5076fb66b
+
+pkgname = savage
+
