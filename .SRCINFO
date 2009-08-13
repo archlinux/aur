@@ -1,0 +1,11 @@
+pkgbase = quake-rocketarena
+	pkgdesc = The popular Rocket Arena modification for QuakeWorld
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://rocketarena.planetquake.gamespy.com/
+	depends = ezquake
+	source = http://quake.addicts.nl/files/farena12.zip
+	md5sums = 6447224a2ac55cefa8a04e6b70888cd7
+
+pkgname = quake-rocketarena
+
