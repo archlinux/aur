@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Neverwinter Nights Diamond
+GenericName=Neverwinter Nights
+Comment=Play Neverwinter Nights Diamond
+Exec=/usr/bin/nwn
+Icon=/usr/share/pixmaps/nwn.ico
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Qt;KDE;GNOME;Application;Game;
+

@@ -1,0 +1,22 @@
+diff -uNr a/nwlogger/nwlogger_cookie.c b/nwlogger/nwlogger_cookie.c
+--- a/nwlogger/nwlogger_cookie.c	2004-03-09 14:40:36.000000000 -0500
++++ b/nwlogger/nwlogger_cookie.c	2009-01-03 23:12:46.732146888 -0500
+@@ -16,7 +16,6 @@
+ #include <elf.h>
+ #include <libelf.h>
+ 
+-#include <linux/user.h>
+ #include <link.h>
+ 
+ #include "libdis.h"
+diff -uNr a/nwmouse/nwmouse_cookie.c b/nwmouse/nwmouse_cookie.c
+--- a/nwmouse/nwmouse_cookie.c	2004-09-24 14:17:42.000000000 -0400
++++ b/nwmouse/nwmouse_cookie.c	2009-01-03 23:12:19.165487280 -0500
+@@ -16,7 +16,6 @@
+ #include <elf.h>
+ #include <libelf.h>
+ 
+-#include <linux/user.h>
+ #include <link.h>
+ 
+ #include "libdis.h"
