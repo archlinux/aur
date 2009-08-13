@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd "/opt/quake3"
+./q3ded $*
+exit $?
+
