@@ -1,0 +1,11 @@
+pkgbase = quake3-excessiveplus
+	pkgdesc = Excessive Plus is a modification for Quake 3 where all weapons are 'excessive'.
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://www.excessiveplus.net/
+	depends = quake3
+	source = http://www.excessiveplus.net/downloads/xp-1.03-full.zip
+	md5sums = 878cf3994734e790dc6c98354d1fa3e5
+
+pkgname = quake3-excessiveplus
+
