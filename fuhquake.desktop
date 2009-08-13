@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=FuhQuake
+GenericName=FuhQuake
+Comment=A QuakeWorld Client for Win32/Linux.
+Exec=/usr/bin/fuhquake
+Icon=/usr/share/pixmaps/fuhquake.ico
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game

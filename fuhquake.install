@@ -1,0 +1,33 @@
+ 
+post_install() {
+    echo ">>> You need the retail pak0.pak and pak1.pak in order to play."
+    echo ">>>   Copy or symlink them to /opt/quake/id/"
+	echo ">>>"
+	echo ">>> You must also add your user to the 'games' group."
+	echo ">>>"
+	echo ">>>	# gpasswd -a USERNAME games"
+	echo ">>>"
+	echo ">>> After configuring your keys and settings, save your config with"
+	echo ">>>   the following command in the console: "
+	echo ">>>"
+	echo ">>>	/cfg_save USERNAME"
+	echo ">>>"
+	echo ">>> Where USERNAME is what 'whoami' returns in a terminal. Everytime "
+	echo ">>>   fuhQuake starts it will attempt to automatically load USERNAME.cfg"
+	echo ">>>"
+	echo ">>> You can play on any QuakeWorld servers with fuhQuake. Use a server"
+	echo ">>>   browser to find games, such as XQF."
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+pre_remove() {
+	/bin/true
+}
+
+op=$1
+shift
+
+$op $*
