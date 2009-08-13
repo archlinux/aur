@@ -1,0 +1,23 @@
+pkgbase = doom3-lms
+	pkgdesc = Doom 3 Last Man Standing. A coop mod for Doom 3.
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://lms.d3files.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = doom3
+	backup = opt/doom3/lms/cdoomcoopserver.cfg
+	backup = opt/doom3/lms/lmsmodserver.cfg
+	backup = opt/doom3/lms/roecoopserver.cfg
+	backup = opt/doom3/lms/spcoopserver.cfg
+	source = doom3-lms.desktop
+	source = doom3-lms.xpm
+	source = http://www.slashbunny.com/aur/doom3-lms/lastmanstandingcoop4multiplatform.zip
+	md5sums = 44c655cf6989c68e746fb14b64ce30c6
+	md5sums = 25eaeb025c83690190712ecbc5377ca5
+	md5sums = 47a070f004ae6a9199bbd876a52cc7b0
+
+pkgname = doom3-lms
+

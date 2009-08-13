@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Doom 3: Last Man Standing
+Comment=Coop Mod for Doom 3
+Icon=doom3-lms.xpm
+Exec=/usr/bin/doom3-lms
+Terminal=true
+Type=Application
+Categories=Application;Game
+StartupNotify=false
