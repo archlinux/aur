@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=StereoQuake
+Comment=Stereogram Quake 3 mod
+Exec=/usr/bin/stereoquake
+Terminal=false
+Type=Application
+Categories=Application;Game
+StartupNotify=false
+Encoding=UTF-8
