@@ -2,20 +2,21 @@
 
 pkgname=gnu-netcat
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU rewrite of netcat, the network piping application"
-depends=('glibc')
-source=(http://dl.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2)
-md5sums=('0a29eff1736ddb5effd0b1ec1f6fe0ef')
+depends=('glibc' 'texinfo')
+arch=('i686' 'x86_64')
 url="http://netcat.sourceforge.net/"
-license="GPL"
+license=('GPL')
 replaces=('netcat')
 provides=('netcat')
-arch=(i686)
+install=gnu-netcat.install
+source=(http://dl.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2)
+md5sums=('0a29eff1736ddb5effd0b1ec1f6fe0ef')
 
 build() {
-  cd $startdir/src/netcat-$pkgver
-  ./configure --prefix=/usr
+  cd "${srcdir}/netcat-${pkgver}"
+  ./configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info || return 1
   make || return 1
-  make DESTDIR=$startdir/pkg install
+  make DESTDIR="${pkgdir}" install || return 1
 }
