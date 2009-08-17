@@ -1,0 +1,23 @@
+post_install() {
+# Update runpath
+   cd /opt/Savage2
+   ./savage2_update.bin --update-runpath    
+
+}
+
+post_upgrade() {
+    post_install $1
+
+}
+
+post_remove() {
+# Remove updates
+if [ -d /opt/Savage2 ]; then
+   rm -r /opt/Savage2
+fi
+
+}
+
+op=$1
+shift
+$op $*

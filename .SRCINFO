@@ -1,0 +1,25 @@
+pkgbase = savage2
+	pkgdesc = Savage 2 is a fantasy themed action RPG, that combines elements of FPS and RTS.
+	pkgver = 2.1.0
+	pkgrel = 3
+	url = http://savage2.com/en/main.php
+	install = savage2.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = mesa
+	depends = libjpeg
+	depends = libjpeg6
+	depends = libxml2
+	source = http://savage.s2galactica.com/Savage2Install-2.1.0-.bin
+	source = s2game.desktop
+	source = s2editor.desktop
+	source = s2mviewer.desktop
+	md5sums = 85b76a8e1ab22f147bb6eef98465c0ba
+	md5sums = e599528405e47b699cdf8ca5ea09be6e
+	md5sums = 0b1bcd48feb45e5e155d2cdcedc18a2d
+	md5sums = 74703e46ace651f5a668568b5f7b1ea0
+
+pkgname = savage2
+

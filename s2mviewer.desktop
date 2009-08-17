@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Savage 2 Model Viewer
+GenericName=Model Viewer
+Comment=Model viewer for Savage 2 - A Tortured Soul
+Icon=/usr/share/pixmaps/s2icon.png
+Exec=/opt/Savage2/savage2.bin "PushMod modelviewer; Set host_autoExec StartClient"
+Categories=Game
+
