@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=DOOM III
+Exec=/usr/bin/doom3
+Categories=Game;ArcadeGame;
+Icon=doom3
