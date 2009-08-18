@@ -1,49 +1,90 @@
+# Contributor: Slash <demodevil5 [at] yahoo [dot] com>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 # Contributor: teddy_beer_maniac <teddy_beer_maniac@wp.pl>
+# Contributor: Babets <babetz [at] gmail [dot] com>
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=2
-pkgdesc="Doom 3 Engine. You need the retail .pk4 files to play."
-url="http://www.doom3.com/"
-license=('custom:"DOOM 3"' \
-         'custom:"PunkBuster"')
-[ "$CARCH" = "i686" ] && depends=('libxext' 'libgl' 'alsa-lib>=1.0.6')
+pkgrel=3
+pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
+url='http://www.doom3.com/'
+license=('custom:"DOOM 3"' 'custom:"PunkBuster"')
+[ "$CARCH" = "i686"   ] && depends=('libxext' 'libgl' 'alsa-lib>=1.0.6')
 [ "$CARCH" = "x86_64" ] && depends=('lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6')
 arch=('i686' 'x86_64')
-install="doom3.install"
-source=(http://www.1337-server.net/doom3/$pkgname-linux-$pkgver.x86.run \
-        $pkgname.sh $pkgname-dedicated.sh $pkgname"_64.sh" $pkgname-dedicated_64.sh
-	doom3.png doom3.desktop)
-md5sums=('6325f0936f59420d33668754032141cb'
-	 '18c6802eee15ad499e2fd3ae03d641a6'
-	 'da4e827e7ddec2209bf832db5cd3ab74'
-	 'b8e0aa217e4df414f009fe99448b49bb'
-	 'f7c57e01b2c97b6e808add668c68ef36'
-	 'f99eb141eecc4b9dd188d6819d741546'
-	 'a8a6c7b7befff52cbb6c766466ee4ce9')
+install=doom3.install
+source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
+'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
+"http://www.1337-server.net/doom3/$pkgname-linux-$pkgver.x86.run")
+md5sums=('29335683bcc2c3063bd9af015025cc38'
+         'a13dc5cdb4b0f6ead3344673b185c53d'
+         'facb0291279621d997f9504924d7e9b1'
+         '15d33c9f7e1b1c3d2f8cb01c9e68ed97'
+         'bfeb2be83024d60ccda658e4d60b6e13'
+         'f99eb141eecc4b9dd188d6819d741546'
+         '6325f0936f59420d33668754032141cb')
 
 build() {
-  cd $startdir/src
-  chmod +x $pkgname-linux-$pkgver.x86.run
-  mkdir -p $startdir/pkg/opt/$pkgname $startdir/pkg/usr/bin $startdir/pkg/usr/share/licenses/$pkgname
-  ./$pkgname-linux-$pkgver.x86.run -- -i $startdir/pkg/opt/$pkgname -b $startdir/pkg/usr/bin
-  # ncurses & gtk installers don't return 1 when canceled, so check that files are installed
-  ls $startdir/pkg/opt/$pkgname/base || return 1
-  if [ "$CARCH" == "i686" ]; then
-	  install -m755 -D $pkgname.sh           $startdir/pkg/opt/$pkgname/$pkgname
-	  install -m755 -D $pkgname-dedicated.sh $startdir/pkg/opt/$pkgname/$pkgname-dedicated
-  else
-	  install -m755 -D $pkgname"_64.sh"           $startdir/pkg/opt/$pkgname/$pkgname
-	  install -m755 -D $pkgname-dedicated_64.sh $startdir/pkg/opt/$pkgname/$pkgname-dedicated
-  fi
-  
-  ln -sf /opt/$pkgname/$pkgname           $startdir/pkg/usr/bin/$pkgname
-  ln -sf /opt/$pkgname/$pkgname-dedicated $startdir/pkg/usr/bin/$pkgname-dedicated
-  ln -sf /opt/$pkgname/License.txt        $startdir/pkg/usr/share/licenses/$pkgname/License.txt
-  ln -sf /opt/$pkgname/pb/PB_EULA.txt     $startdir/pkg/usr/share/licenses/$pkgname/PB_EULA.txt
+    cd $srcdir
 
-  mkdir -p $startdir/pkg/usr/share/pixmaps $startdir/pkg/usr/share/applications
-  install -m644 -D doom3.png $startdir/pkg/usr/share/pixmaps
-  install -m644 -D doom3.desktop $startdir/pkg/usr/share/applications
+    # Create Destination Directories
+    install -d $pkgdir/opt/doom3/{base,d3xp,pb/htm}
+
+    # Make Installer Executable
+    chmod +x $srcdir/doom3-linux-$pkgver.x86.run
+
+    # Extract Game Files
+    ./doom3-linux-$pkgver.x86.run --tar xf
+
+    # Install Game Files
+    install -m 644 base/*   $pkgdir/opt/doom3/base
+    install -m 644 d3xp/*   $pkgdir/opt/doom3/d3xp
+    install -m 644 pb/htm/* $pkgdir/opt/doom3/pb/htm
+    install -m 644 {CHANGES,README,version.info} $pkgdir/opt/doom3
+
+    # Install Game Libraries
+    install -m 755 $srcdir/{libgcc_s.so.1,libstdc++.so.6} \
+        $pkgdir/opt/doom3
+
+    # Install Punkbuster Libraries
+    install -m 755 $srcdir/pb/{pbag.so,pbags.so,pbcl.so,pbcls.so,pbsv.so} \
+        $pkgdir/opt/doom3/pb
+
+    # Install Game Binaries
+    install -m 755 $srcdir/bin/Linux/x86/{doom.x86,doomded.x86} \
+        $pkgdir/opt/doom3
+
+    if [ "$CARCH" == "i686" ]; then
+        # Install Game Launcher (Client)
+        install -D -m 755 $srcdir/doom3.launcher \
+            $pkgdir/usr/bin/doom3
+
+        # Install Game Launcher (Server)
+        install -D -m 755 $srcdir/doom3-dedicated.launcher \
+            $pkgdir/usr/bin/doom3-dedicated
+    else
+        # Install Game Launcher (Client)
+        install -D -m 755 $srcdir/doom3.launcher64 \
+            $pkgdir/usr/bin/doom3
+
+        # Install Game Launcher (Server)
+        install -D -m 755 $srcdir/doom3-dedicated.launcher64 \
+            $pkgdir/usr/bin/doom3-dedicated
+    fi
+
+    # Install License (DOOM 3)
+    install -D -m 644 $srcdir/License.txt \
+        $pkgdir/usr/share/licenses/$pkgname/license.txt
+
+    # Install License (Punkbuster)
+    install -D -m 644 $srcdir/pb/PB_EULA.txt \
+        $pkgdir/usr/share/licenses/$pkgname/PB_EULA.txt
+
+    # Install Icon
+    install -D -m 644 $srcdir/doom3.png \
+        $pkgdir/usr/share/pixmaps/doom3.png
+
+    # Install Desktop File
+    install -D -m 644 $srcdir/doom3.desktop \
+        $pkgdir/usr/share/applications/doom3.desktop
 }
