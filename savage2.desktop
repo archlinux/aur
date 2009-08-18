@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Savage 2
+GenericName=Savage 2
+Comment=Savage 2: A Tortured Soul
+Exec=/usr/bin/savage2
+Icon=/usr/share/pixmaps/savage2.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game

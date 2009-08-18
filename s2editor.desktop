@@ -1,11 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
-Version=1.0
+Name=Savage 2 Map Editor
+GenericName=Savage 2 Map Editor
+Comment=Map Editor for Savage 2: A Tortured Soul
+Exec=/usr/bin/savage2 "PushMod editor; Set host_autoExec StartClient"
+Icon=/usr/share/pixmaps/savage2.png
+StartupNotify=true
+Terminal=false
 Type=Application
-Name=Savage 2 Editor
-GenericName=Map Editor
-Comment=Map editor for Savage 2 - A Tortured Soul
-Icon=/usr/share/pixmaps/s2icon.png
-Exec=/opt/Savage2/savage2.bin "PushMod editor; Set host_autoExec StartClient"
-Categories=Game
-
+Categories=Application;Game
