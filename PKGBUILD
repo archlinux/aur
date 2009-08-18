@@ -1,7 +1,7 @@
 # Contributor: Slash <demodevil5 [at] yahoo [dot] com>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 # Contributor: teddy_beer_maniac <teddy_beer_maniac@wp.pl>
-# Contributor: Babets <babetz [at] gmail [dot] com>
+# Contributor: Babets
 
 pkgname=doom3
 pkgver=1.3.1.1304
