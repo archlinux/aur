@@ -2,8 +2,8 @@
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
-pkgver=3.14.5
-pkgrel=2
+pkgver=3.14.7
+pkgrel=1
 pkgdesc="A free music education software to train rhythm, interval, scale and chord skills"
 arch=('i686' 'x86_64')
 url="http://www.solfege.org/"
@@ -15,8 +15,7 @@ optdepends=('timidity: midi software output'
             'timidity-freepats: midi sound patches')
 source=(http://downloads.sourceforge.net/sourceforge/solfege/${pkgname}-${pkgver}.tar.gz
         solfege.desktop)
-md5sums=('2155e29de39862c5bffeae32093533ed' '73e7282bd9415769acbf2a492ca202a1')
-
+md5sums=('404dff8fddb0b8325f02e922620222a3' '73e7282bd9415769acbf2a492ca202a1')
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc
