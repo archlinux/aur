@@ -2,7 +2,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 # Contributor: scj <scj(at)archlinux(dot)us>
 pkgname=incron
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('i686' 'x86_64')
@@ -13,15 +13,17 @@ install=incron.install
 source=(http://inotify.aiken.cz/download/incron/$pkgname-$pkgver.tar.gz \
 	incron.init)
 options=(emptydirs)
-md5sums=('d8feb245b839b1b8855cf471f84c7588'
+md5sums=('a285b9e14af7bf9f9524fe051a06255f'
          '648e1ca1a4b1e624401d9d71aa3756b3')
-
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
   
   install -D -m 755 $startdir/incron.init $startdir/pkg/etc/rc.d/incrond
   mkdir -p $startdir/pkg/usr/share/man $startdir/pkg/usr/bin $startdir/pkg/usr/sbin
+
+  sed -i '1,1i#include <stdio.h>' icd-main.cpp inotify-cxx.cpp usertable.cpp appargs.cpp
+  sed -i 's|strchr(s,|(char*)strchr(s,|' incroncfg.cpp
 
   make || return 1
 
