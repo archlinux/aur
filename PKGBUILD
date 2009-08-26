@@ -2,20 +2,22 @@
 # Contributor: Link Dupont <link@subpop.net>
 
 pkgname=leafpad
-pkgver=0.8.15
+pkgver=0.8.16
 pkgrel=1
 pkgdesc="A notepad clone for GTK+ 2.0"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://tarot.freeshell.org/leafpad/"
 license=('GPL')
-depends=(gtk2)
-makedepends=(perlxml)
+depends=('gtk2')
+makedepends=('perlxml')
+install=leafpad.install
 source=(http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('65c17a9ed866b059856b5513f5eaae17')
 
 build()
 {
-	cd $startdir/src/$pkgname-$pkgver
-	./configure --prefix=/usr --enable-chooser || return 1
-	make || return 1
-	make DESTDIR=$startdir/pkg install || return 1
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr --enable-chooser || return 1
+  make || return 1
+  make DESTDIR=$pkgdir install || return 1
 }
