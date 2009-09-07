@@ -2,7 +2,8 @@
 # Contributor: Maxim Vuets <maxim.vuets@gmail.com>
 
 pkgname=cuneiform
-pkgver=0.7
+pkgver=0.8.0
+_dpkgver=0.8
 pkgrel=1
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages."
 arch=('i686' 'x86_64')
@@ -10,9 +11,9 @@ url="https://launchpad.net/cuneiform-linux"
 license=('BSD')
 depends=(imagemagick)
 makedepends=(cmake)
-source=(http://launchpad.net/cuneiform-linux/$pkgver/$pkgver/+download/$pkgname-linux-$pkgver.tar.bz2 \
+source=(http://launchpad.net/cuneiform-linux/${_dpkgver}/${_dpkgver}/+download/$pkgname-linux-$pkgver.tar.bz2 \
         cuneiform.patch)
-md5sums=('a13c91a4c2f88b7573e1b3d3306436e2'
+md5sums=('271c1adae56bf8b977bf7326f8a8a0bc'
          'ad3e40904a50ea68e87017f1c0248aa0')
 
 build() {
