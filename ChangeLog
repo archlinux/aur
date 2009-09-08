@@ -1,3 +1,9 @@
+2009-09-08  Corrado Primier  <bardo@aur.archlinux.org>
+
+	* Version bump: 3.15.2
+
+	* PKGBUILD: fixed timidity++ dependency
+
 2009-07-15  Corrado Primier  <bardo@aur.archlinux.org>
 
 	* Version bump: 3.14.5
