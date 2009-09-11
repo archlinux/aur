@@ -15,7 +15,7 @@ fi
 makedepends=('unzip')
 install=savage.install
 source=('savage.i686.launcher' 'savage.x86_64.launcher' 'savage.desktop' 'icon.xpm' \
-'http://mnky.newerth.com/lin-client-auth-patch.zip' \
+'http://newerth.com/downloads/lin-client-auth-patch.zip' \
 'http://www.notforidiots.com/SFE/SFE-Standalone.tar.gz')
 md5sums=('1588610be6fe7c52eda37fee65ca16c4'
          '2129b16867cd875ce05a8f5f400ca967'
