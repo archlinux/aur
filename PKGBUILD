@@ -4,14 +4,15 @@
 
 pkgname=cmake
 pkgver=2.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
-depends=('expat' 'xmlrpc-c' 'gcc-libs')
+depends=('expat' 'xmlrpc-c' 'gcc-libs' 'shared-mime-info')
 makedepends=('qt')
 optdepends=('qt: cmake-gui')
+install=cmake.install
 source=("http://www.cmake.org/files/v2.6/$pkgname-$pkgver.tar.gz")
 md5sums=('50f387d0436696c4a68b5512a72c9cde')
 
