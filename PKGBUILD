@@ -1,6 +1,7 @@
 # $Id$
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Olivier Mehani <shtrom-arch@ssji.net>
 #pkgname=kernel26                # Build stock -ARCH kernel
 pkgname=kernel26-mipl       # Build kernel with a different name
 _kernelname=${pkgname#kernel26}
