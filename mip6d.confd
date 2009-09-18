@@ -1,0 +1,5 @@
+# If >0, mip6d doesn't detach from the terminal
+DEBUG_LEVEL=0
+
+# Default location of configuration file
+MIP6D_ARGS="-c /etc/mip6d/mip6d.conf"

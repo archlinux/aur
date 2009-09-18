@@ -1,0 +1,28 @@
+pkgbase = mip6d-mcoa
+	pkgdesc = UMIP userland with NEPL and MCoA patches for Mobile IPv6/NEMO operation with multihoming
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.nautilus6.org/doc/nepl-howto/nepl-howto.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = indent
+	depends = kernel26-mipl
+	optdepends = radvd: to act as a NEMO Mobile Router advertising a MNP on the mobile link
+	provides = mip6d
+	backup = etc/mip6d/mip6d.conf
+	backup = etc/conf.d/mip6d.conf
+	source = ftp://ftp.linux-ipv6.org/pub/usagi/patch/mipv6/umip-0.4/daemon/tarball/mipv6-daemon-umip-0.4.tar.gz
+	source = http://www.nautilus6.org/doc/nepl-howto/umip-nepl/mipv6-daemon-umip-0.4-nepl-20090624.patch
+	source = http://www.nautilus6.org/doc/nepl-howto/umip-nepl/mipv6-daemon-umip-0.4-nepl-mcoa-20090624.patch
+	source = mip6d.init
+	source = mip6d.confd
+	md5sums = a8ebeb4f41ceed71037d0f5596ccc11d
+	md5sums = 501861f2d537377dc0f52f7a3e1b7314
+	md5sums = d387155494f5224b780c41c0e1acd588
+	md5sums = 6995ae716fc0f66040ee528c291f08df
+	md5sums = efbe23915c7dcf018ce70bcf72d18be7
+
+pkgname = mip6d-mcoa
+
