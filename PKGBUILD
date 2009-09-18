@@ -15,6 +15,7 @@ groups=('base')
 url="http://www.kernel.org"
 backup=(etc/mkinitcpio.d/${pkgname}.preset)
 depends=('coreutils' "kernel26-firmware>=${_basekernel}" 'module-init-tools' 'mkinitcpio>=0.5.20')
+makedepends=('quilt')
 # pwc, ieee80211 and hostap-driver26 modules are included in kernel26 now
 # nforce package support was abandoned by nvidia, kernel modules should cover everything now.
 # kernel24 support is dropped since glibc24
@@ -28,6 +29,12 @@ provides=('kernel26-nemo')
 install=kernel26.install
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
+	dsmip-patches/dsmip-2.6.30_01_dsmip-encap-udp.patch
+	dsmip-patches/dsmip-2.6.30_02_TLV.patch
+	dsmip-patches/dsmip-2.6.30_03_Autoload-Module.patch
+	dsmip-patches/dsmip-2.6.30_04_NATT-report-UDP-info-on-raw-socket.patch
+	dsmip-patches/dsmip-2.6.30_05_check_input_encap.patch
+	dsmip-patches/series
 	# the main kernel config files
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
@@ -36,14 +43,22 @@ optdepends=('crda: to set the correct wireless channels of your country'
 	    'umip: UMIP daemon to support mobility features')
 md5sums=('7a80058a6382e5108cdb5554d1609615'
          'f15446b016865f6bd5d91ca800ea91bd'
-         '4c642e4fc9e8dbf90276599cf7d39821'
-         '8a7e6e4157d33bd34ba31049a55e9777'
+         'fdff6ecf6121135f9ff257ba5313873d'
+         'aa9c294063c5e9d421546d4e035ee34e'
+         'bcd54286aec43c70d3b57f06394a9c7a'
+         '5d9c139a34e316f7c77eb3f856ffe406'
+         'd765b6ec7feba168064ac87d39f80749'
+         '45ed8db1f31591924f0db38f54d2a3a2'
+         'ef86c52d94bea96adcabbc6893d565d4'
+         'a13fbd32a5c961a025b321e6ac9fba0a'
          '25584700a0a679542929c4bed31433b6')
 
 build() {
   KARCH=x86
 
   cd ${srcdir}/linux-$_basekernel
+  ln -s ${startdir}/dsmip-patches patches
+  quilt push -a
   # Add -ARCH patches
   # See http://projects.archlinux.org/git/?p=linux-2.6-ARCH.git;a=summary
   patch -Np1 -i ${srcdir}/${_patchname} || return 1
