@@ -1,20 +1,20 @@
 # $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
-pkgname=kernel26                # Build stock -ARCH kernel
-# pkgname=kernel26-custom       # Build kernel with a different name
+#pkgname=kernel26                # Build stock -ARCH kernel
+pkgname=kernel26-mipl       # Build kernel with a different name
 _kernelname=${pkgname#kernel26}
 _basekernel=2.6.30
 pkgver=${_basekernel}.6
 pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
-pkgdesc="The Linux Kernel and modules"
+pkgdesc="The Linux Kernel and modules, with patches and options to support IPv6 mobility (MIPv6, NEMO, MCoA, DSMIP)"
 arch=(i686 x86_64)
 license=('GPL2')
 groups=('base')
 url="http://www.kernel.org"
 backup=(etc/mkinitcpio.d/${pkgname}.preset)
-depends=('coreutils' 'kernel26-firmware>=2.6.30' 'module-init-tools' 'mkinitcpio>=0.5.20')
+depends=('coreutils' "kernel26-firmware>=${_basekernel}" 'module-init-tools' 'mkinitcpio>=0.5.20')
 # pwc, ieee80211 and hostap-driver26 modules are included in kernel26 now
 # nforce package support was abandoned by nvidia, kernel modules should cover everything now.
 # kernel24 support is dropped since glibc24
@@ -22,7 +22,9 @@ replaces=('kernel24' 'kernel24-scsi' 'kernel26-scsi'
           'alsa-driver' 'ieee80211' 'hostap-driver26'
           'pwc' 'nforce' 'squashfs' 'unionfs' 'ivtv'
           'zd1211' 'kvm-modules' 'iwlwifi' 'rt2x00-cvs'
-          'gspcav1' 'atl2' 'wlan-ng26' 'aufs' 'rt2500')
+          'gspcav1' 'atl2' 'wlan-ng26' 'aufs' 'rt2500'
+	  'kernel26-nemo')
+provides=('kernel26-nemo')
 install=kernel26.install
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
@@ -30,7 +32,8 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
         kernel26.preset)
-optdepends=('crda: to set the correct wireless channels of your country')
+optdepends=('crda: to set the correct wireless channels of your country'
+	    'umip: UMIP daemon to support mobility features')
 md5sums=('7a80058a6382e5108cdb5554d1609615'
          'f15446b016865f6bd5d91ca800ea91bd'
          '4c642e4fc9e8dbf90276599cf7d39821'

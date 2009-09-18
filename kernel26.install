@@ -1,8 +1,8 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
-KERNEL_NAME=
-KERNEL_VERSION=2.6.30-ARCH
+KERNEL_NAME=-mipl
+KERNEL_VERSION=2.6.30-mipl
 
 post_install () {
   # updating module dependencies
