@@ -1,0 +1,52 @@
+pkgbase = kernel26-mipl
+	pkgver = 2.6.35.7
+	pkgrel = 1
+	url = http://www.kernel.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion quilt
+	source = ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-2.6.35.tar.bz2
+	source = ftp://ftp.archlinux.org/other/kernel26/patch-2.6.35.7-1-ARCH.bz2
+	source = config
+	source = config.x86_64
+	source = kernel26.preset
+	md5sums = 091abeb4684ce03d1d936851618687b6
+	md5sums = df30e2eb9755e45993ddc7e679ab52d8
+	md5sums = c4f06913cc98e315ca97de032ae3f46a
+	md5sums = ac647b1c30eb84430bff61c8f6d19f47
+	md5sums = 25584700a0a679542929c4bed31433b6
+
+pkgname = kernel26-mipl
+	pkgdesc = The Linux Kernel and modules with IPv6 mobility extensions
+	install = kernel26.install
+	groups = base
+	depends = coreutils
+	depends = kernel26-firmware>=2.6.32
+	depends = module-init-tools
+	depends = mkinitcpio>=0.5.20
+	optdepends = crda: to set the correct wireless channels of your country
+	replaces = kernel24
+	replaces = kernel24-scsi
+	replaces = kernel26-scsi
+	replaces = alsa-driver
+	replaces = ieee80211
+	replaces = hostap-driver26
+	replaces = pwc
+	replaces = nforce
+	replaces = squashfs
+	replaces = unionfs
+	replaces = ivtv
+	replaces = zd1211
+	replaces = kvm-modules
+	replaces = iwlwifi
+	replaces = rt2x00-cvs
+	replaces = gspcav1
+	replaces = atl2
+	replaces = wlan-ng26
+	replaces = rt2500
+	backup = etc/mkinitcpio.d/kernel26-mipl.preset
+
+pkgname = kernel26-mipl-headers
+	pkgdesc = Header files and scripts for building modules for kernel26-mipl
+
