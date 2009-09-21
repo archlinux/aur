@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.1_rc19
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
@@ -16,8 +16,8 @@ source=(http://openvpn.net/release/openvpn-$pkgver.tar.gz
         openvpn-tapdev.rc
         openvpn-tapdev.conf)
 md5sums=('ba2ee667a8b7606b125b7d32f47ca578'
-         '49fea9a53343546a2256853256af510a'
-         '7576704ea86a781589e0b5eef469b693'
+         'a3809b9727f0c2af2d0770f5c7442db2'
+         '4ab886467fdcfa469e9f4ee8af517456'
          '722f483c9e3ce2ec66d3301aaf7cf3d5')
 
 build() {
