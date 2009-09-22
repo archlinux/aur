@@ -11,7 +11,7 @@ case "$1" in
     success=0
     for tapdev in ${TAPDEVS}; do
       stat_append "${tapdev} "
-      /usr/sbin/openvpn --mktun --dev-type tap --dev ${tapdev} >/dev/null 2>&1 || success = $?
+      /usr/sbin/openvpn --mktun --dev-type tap --dev ${tapdev} >/dev/null 2>&1 || success=$?
     done
     if [ $success -eq 0 ]; then
       add_daemon openvpn-tapdev
@@ -24,7 +24,7 @@ case "$1" in
     stat_busy "Destroying tap devices for OpenVPN ..."
     for tapdev in ${TAPDEVS}; do
       stat_append "${tapdev} "
-      /usr/sbin/openvpn --rmtun --dev-type tap --dev ${tapdev} >/dev/null 2>&1 || success = $?
+      /usr/sbin/openvpn --rmtun --dev-type tap --dev ${tapdev} >/dev/null 2>&1 || success=$?
     done
     rm_daemon openvpn-tapdev
     stat_done
