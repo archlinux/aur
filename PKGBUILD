@@ -2,13 +2,19 @@
 
 pkgname=quake4
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Quake 4 Engine. You need the retail .pk4 files to play."
 url="http://www.quake4game.com/"
 license=('custom:"Quake 4"' \
          'custom:"PunkBuster"')
-depends=('gcc-libs' 'libgl' 'sdl' 'zlib')
-arch=('i686')
+if [ "$CARCH" = "x86_64" ]; then
+    depends=('lib32-glibc' 'lib32-sdl' 'lib32-libx11' 'lib32-libxext' 'lib32-zlib')
+    optdepends=('lib32-nvidia-utils: Accelerated 3D with the NVIDIA binary blob video driver'
+                'lib32-catalyst-utils: Accelerated 3D with the AMD/ATI binary blob video driver')
+else
+    depends=('gcc-libs' 'libgl' 'sdl' 'zlib')
+fi
+arch=('i686' 'x86_64')
 install=quake4.install
 source=('quake4.desktop' 'quake4.launcher' 'quake4-dedicated.launcher' 'quake4-smp.launcher' \
 "http://www.1337-server.net/quake4/quake4-linux-${pkgver}.x86.run.gz")
