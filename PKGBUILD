@@ -3,12 +3,12 @@
 
 pkgname=pidgin
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-protocol instant messaging client"
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-depends=('startup-notification' 'gtkspell' 'gstreamer0.10-base'
+depends=('startup-notification' 'gtkspell' 'libxss' 'gstreamer0.10-base'
          'nss' 'libsasl' 'python' 'hicolor-icon-theme' 'silc-toolkit')
 makedepends=('avahi' 'tk' 'ca-certificates' 'intltool')
 optdepends=('avahi: Bonjour protocol support'
