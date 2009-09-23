@@ -3,7 +3,7 @@
 
 pkgname=pidgin
 pkgver=2.6.2
-pkgrel=2
+pkgrel=2.1
 pkgdesc="Multi-protocol instant messaging client"
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
