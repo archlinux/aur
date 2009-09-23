@@ -2,7 +2,7 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=purple-plugin-pack
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Plugin pack for Pidgin"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('pidgin')
 makedepends=('intltool' 'python')
 replaces=('gaim-plugin-pack')
 options=('!libtool')
-source=(http://plugins.guifications.org/trac/downloads/22)
-md5sums=('c7026ed4e9fd3d1de4bed783aa1d9e00')
+source=(http://plugins.guifications.org/trac/downloads/31)
+md5sums=('60c6b30c983e7c7b521126cdc8ce1605')
 
 build() {
   cd "$srcdir/purple-plugin_pack-$pkgver"
