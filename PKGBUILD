@@ -2,13 +2,13 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=pidgin
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Multi-protocol instant messaging client"
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-depends=('startup-notification' 'gtkspell' 'libxss' 'gstreamer0.10'
+depends=('startup-notification' 'gtkspell' 'gstreamer0.10-base'
          'nss' 'libsasl' 'python' 'hicolor-icon-theme' 'silc-toolkit')
 makedepends=('avahi' 'tk' 'ca-certificates' 'intltool')
 optdepends=('avahi: Bonjour protocol support'
@@ -17,15 +17,23 @@ optdepends=('avahi: Bonjour protocol support'
 replaces=('gaim')
 options=('!libtool')
 install=pidgin.install
-source=(http://downloads.sourceforge.net/pidgin/pidgin-$pkgver.tar.bz2)
-md5sums=('306b6b60aefa9c5d5bffb08c576aa955')
+source=(http://downloads.sourceforge.net/project/pidgin/Pidgin/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('a1bbb3c9be7d4ee1f53590d319cbfa72')
 
 build() {
   cd "$srcdir/pidgin-$pkgver"
 
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-schemas-install --disable-meanwhile \
-    --disable-nm --disable-perl --disable-gnutls --enable-cyrus-sasl --disable-doxygen \
-    --with-system-ssl-certs=/etc/ssl/certs || return 1
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --disable-schemas-install \
+              --disable-meanwhile \
+              --disable-vv \
+              --disable-nm \
+              --disable-perl \
+              --disable-gnutls \
+              --enable-cyrus-sasl \
+              --disable-doxygen \
+              --with-system-ssl-certs=/etc/ssl/certs || return 1
   make || return 1
   make DESTDIR="$pkgdir" install || return 1
 
