@@ -12,13 +12,13 @@ groups=('xfce4-goodies')
 depends=('xfdesktop')
 makedepends=('pkgconfig')
 options=('!libtool')
-source=(http://ftp.berlios.de/pub/xfce4-goodies/artwork/${pkgname}-${pkgver}.tar.gz)
+source=(http://download2.berlios.de/xfce-goodies/${pkgname}-${pkgver}.tar.gz)
 md5sums=('b7612ee950fcf052e5acfacd0fda729f')
 
 build() {
-  cd ${startdir}/src/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/xfce4 \
-    --localstatedir=/var --disable-static
+    --localstatedir=/var --disable-static || return 1
   make || return 1
-  make DESTDIR=${startdir}/pkg/ install
+  make DESTDIR="${pkgdir}" install || return 1
 }
