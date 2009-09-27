@@ -2,16 +2,16 @@
 # Contributor: Mihai Militaru <mihai.militaru@gmx.com>
 # Contributor: scippio <scippio@berounet.cz>
 pkgname=freeimage
-pkgver=3.12.0
-pkgrel=2
+pkgver=3.13.0
+pkgrel=1
 pkgdesc="Library project for developers who would like to support popular graphics image formats."
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:FIPL')
 url="http://freeimage.sourceforge.net/"
 depends=('gcc-libs')
 makedepends=('hd2u')
-source=(http://dfn.dl.sourceforge.net/sourceforge/freeimage/FreeImage3120.zip)
-md5sums=('47b259102f776a4bcd7affc00942f3b4')
+source=(http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage3130.zip)
+md5sums=('5f64fd50ce18833edc27cf55d90c12c3')
 
 build() {
   cd ${srcdir}/FreeImage
