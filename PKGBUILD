@@ -12,8 +12,7 @@ license=('GPL')
 depends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
 	'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2')
 makedepends=('avahi' 'tk' 'ca-certificates' 'intltool')
-optdepends=('gstreamer0.10-base-plugins: to play sounds'
-	'gstreamer0.10-good: to play sounds'
+optdepends=('gstreamer0.10-good: to play sounds'
 	'avahi: Bonjour protocol support'
 	'tk: Tcl/Tk scripting support'
 	'ca-certificates: SSL CA certificates'
