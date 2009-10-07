@@ -17,7 +17,7 @@ source=('ezquake.launcher' 'ezquake.install' 'ezquake.desktop' \
 "http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_source_$pkgver.zip")
 noextract=("ezquake_linux-x86_$pkgver.tar.gz")
 md5sums=('a61707a154bc97723f9a4fad65327df3'
-         '596ab08b5514671eb1dbf72a5deeea3e'
+         'b56e6329253ffdccdab303f80771c347'
          '75cfa823bf495fe4cdb755c6b5546f2a'
          '25cad2fa8f695b18b2e6cab313a7a8be'
          '966922142bb577d7dd1a0512e3a1ff7a')
