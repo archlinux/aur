@@ -4,7 +4,7 @@
 # Maintainer: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=django
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A high-level Python Web framework."
 arch=('i686' 'x86_64')
@@ -18,4 +18,4 @@ build() {
     python setup.py install --root=$startdir/pkg || return 1
     install -D -m644 LICENSE $startdir/pkg/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('b2d75b4457a39c405fa2b36bf826bf6b')
+md5sums=('d7839c192e115f9c4dd8777de24dc21c')
