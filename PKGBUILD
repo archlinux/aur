@@ -11,7 +11,7 @@ license=('GPL')
 replaces=('netcat')
 provides=('netcat')
 install=gnu-netcat.install
-source=(http://dl.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2)
+source=(http://downloads.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2)
 md5sums=('0a29eff1736ddb5effd0b1ec1f6fe0ef')
 
 build() {
