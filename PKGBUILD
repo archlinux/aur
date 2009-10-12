@@ -2,23 +2,23 @@
 # Contributor: Tor Krill <tor@krill.nu>
 
 pkgname=nautilus-sendto
-pkgver=1.1.5
+pkgver=2.28.0
 pkgrel=1
 pkgdesc="Nautilus context menu for sending files."
 arch=(i686 x86_64)
 url="http://download.gnome.org/sources/nautilus-sendto/"
 license=('GPL')
-depends=('evolution-data-server>=2.26.1.1' 'nautilus>=2.26.2')
+depends=('evolution-data-server>=2.28.0' 'nautilus>=2.27.92')
 makedepends=('pidgin' 'gajim' 'gettext' 'intltool')
 options=('!libtool' '!emptydirs')
 install=nautilus-sendto.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/1.1/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('8a5b342850bb84b63c7df033ef478654')
+source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('3f15fbe5c1cfc5bcadc39d47048ddae0dd0581a7494f365c5e531a2f3e77193c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc \
-              --localstatedir=/var || return 1
+      --localstatedir=/var || return 1
   make || return 1
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install || return 1
  
