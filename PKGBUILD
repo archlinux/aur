@@ -10,7 +10,7 @@ pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"' 'custom:"PunkBuster"')
 [ "$CARCH" = "i686"   ] && depends=('libxext' 'libgl' 'alsa-lib>=1.0.6')
-[ "$CARCH" = "x86_64" ] && depends=('lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6')
+[ "$CARCH" = "x86_64" ] && depends=('lib32-libxdamage' 'lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6')
 arch=('i686' 'x86_64')
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
