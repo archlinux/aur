@@ -10,12 +10,12 @@
 
 pkgname=mono-tools
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.mono-project.com/"
-depends=('mono>=2.4.2' 'desktop-file-utils' 'gnome-desktop-sharp>=2.26.0')
+depends=('mono>=2.4.2' 'desktop-file-utils' 'gnome-desktop-sharp>=2.26.0' 'gluezilla')
 makedepends=('gecko-sharp-2.0>=0.13')
 install=$pkgname.install
 source=(http://ftp.novell.com/pub/mono/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
