@@ -3,20 +3,20 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=2.28.0.1
+pkgver=2.28.1
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('gnome-keyring>=2.27.92' 'gtk-vnc>=0.3.9' 'avahi>=0.6.25' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('gnome-doc-utils>=0.17.5' 'intltool' 'gnome-panel>=2.27.92')
+depends=('gnome-keyring>=2.28.1' 'gtk-vnc>=0.3.9' 'avahi>=0.6.25' 'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('gnome-doc-utils>=0.18.0' 'intltool' 'gnome-panel>=2.28.0')
 optdepends=('gnome-panel')
 groups=('gnome-extra')
 options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.28/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('2187d45fac3122cee746d12b4db45f9bf1d06c2b525cb685f3e21636f410c089')
+sha256sums=('774276784b3f097faf165dff37d1e9372098db5570421f4e213fa3c8e9808ad4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
