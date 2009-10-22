@@ -2,22 +2,28 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=glom
-pkgver=1.10.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org"
 license=('GPL')
-depends=('bakery' 'libgdamm' 'pygtk' 'gnome-python-extras' 'libgtksourceviewmm2' 'goocanvasmm' 'libepc' 'iso-codes' 'postgresql')
-makedepends=('intltool')
+depends=('libgdamm>=3.99.17' 'libxml++>=2.26.0' 'gconfmm>=2.28' 'pygtk' 'gnome-python-extras' 'libgtksourceviewmm2'
+	 'goocanvasmm' 'libepc' 'iso-codes' 'postgresql')
+makedepends=('intltool' 'gnome-doc-utils>=0.18')
 options=('!libtool')
-source=(http://ftp.gnome.org/pub/GNOME/sources/glom/1.10/glom-$pkgver.tar.bz2)
-md5sums=('8c46a5e087771a0bc45c71d7dd74ec7f')
+install=glom.install
+source=(http://ftp.gnome.org/pub/GNOME/sources/glom/1.12/$pkgname-$pkgver.tar.bz2)
 
 build() {
-  cd $startdir/src/glom-$pkgver
-  ./configure --prefix=/usr --with-postgres-utils=/usr/bin \
-    --disable-scrollkeeper --disable-update-mime-database
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr \
+  	--with-postgres-utils=/usr/bin \
+    	--disable-scrollkeeper \
+	--disable-update-mime-database \
+	--disable-static 
   make || return 1
-  make DESTDIR=$startdir/pkg install
+  make DESTDIR=$pkgdir install
 }
+
+md5sums=('8f4de116f28501decc0df956ee003809')
