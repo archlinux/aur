@@ -32,7 +32,7 @@ build() {
               --disable-meanwhile \
               --disable-nm \
               --disable-perl \
-              --disable-gnutls \
+              --enable-gnutls=no \
               --enable-cyrus-sasl \
               --disable-doxygen \
               --with-system-ssl-certs=/etc/ssl/certs || return 1
