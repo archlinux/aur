@@ -1,0 +1,14 @@
+pkgbase = blktrace
+	pkgdesc = Userspace utilities for tracing Linux block layer I/O
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://brick.kernel.dk/snaps/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libaio
+	source = http://brick.kernel.dk/snaps/blktrace-1.0.5.tar.bz2
+	md5sums = 02914c0b51fd16f36095436374e14cc7
+
+pkgname = blktrace
+
