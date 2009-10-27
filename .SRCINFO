@@ -1,0 +1,19 @@
+pkgbase = seekwatcher-hg
+	pkgdesc = Generates graphs from blktrace runs to help visualize IO patterns and performance
+	pkgver = 104
+	pkgrel = 1
+	url = http://oss.oracle.com/~mason/seekwatcher/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = python2
+	depends = python2-matplotlib
+	depends = python2-numpy
+	optdepends = blktrace: for tracing the local system
+	optdepends = pyqt3: enable interactive mode
+	optdepends = mencoder: enable video output
+	conflicts = seekwatcher
+
+pkgname = seekwatcher-hg
+
