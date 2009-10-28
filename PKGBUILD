@@ -1,4 +1,3 @@
-# $Id: $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
