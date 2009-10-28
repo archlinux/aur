@@ -1,0 +1,28 @@
+pkgbase = postgresql-testing
+	pkgdesc = Testing versions of the PostgreSQL database (includes both server and libs)
+	pkgver = 8.5alpha2
+	pkgrel = 1
+	url = http://www.postgresql.org/developer/alpha
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libxml2
+	depends = readline>=6.0
+	provides = postgresql-libs
+	provides = postgresql
+	conflicts = postgresql-libs
+	conflicts = postgresql
+	options = !strip
+	backup = etc/conf.d/postgresql
+	backup = etc/pam.d/postgresql
+	source = ftp://ftp.postgresql.org/pub/source/8.5alpha2/postgresql-8.5alpha2.tar.gz
+	source = postgresql.rc
+	source = postgresql.confd
+	source = postgresql.pam
+	md5sums = 7ea98afddf6b7a2180cae5713f960c03
+	md5sums = 86e0161343ce80e544aba999f284bc88
+	md5sums = df6ddf9e2ab4700a3415f17c0f4f4172
+	md5sums = 96f82c38f3f540b53f3e5144900acf17
+
+pkgname = postgresql-testing
+
