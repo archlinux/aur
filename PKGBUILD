@@ -1,3 +1,4 @@
+$Id$
 # Maintainer: Douglas Soares de Andrade <douglas@archlinux.org>
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
