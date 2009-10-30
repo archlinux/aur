@@ -1,0 +1,5 @@
+# Put this file in /etc/udev/rules.d
+
+# Allows users in 'users' group access SAM-BA USB devices (part of sam7utils)
+# Atmel Corp. at91sam SAMBA bootloader
+ATTR{idVendor}=="03eb", ATTR{idProduct}=="6124", MODE="660", GROUP="users"

@@ -1,0 +1,19 @@
+pkgbase = sam7utils
+	pkgdesc = A utility for programming AT91SAM7 series microcontrollers over USB
+	pkgver = 0.2.1
+	pkgrel = 3
+	url = https://bitbucket.org/intgr/sam7utils
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	depends = readline
+	depends = udev
+	options = buildflags
+	source = https://bitbucket.org/intgr/sam7utils/downloads/sam7utils-0.2.1.tar.gz
+	source = 50-atmel-samba.rules
+	md5sums = 4027a3d06500b9e4911b3f548ad7b138
+	md5sums = b3753f3577784190fd4e0ef5d6075323
+
+pkgname = sam7utils
+
