@@ -1,6 +1,6 @@
 pkgbase = gmameui
 	pkgdesc = SDLMAME/XMAME frontend designed to look like MAME32 (fork of GXMAME)
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = http://gmameui.sourceforge.net/
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = gmameui
 	depends = gnome-doc-utils
 	depends = libarchive
 	depends = libglade
-	source = http://downloads.sourceforge.net/sourceforge/gmameui/gmameui-0.2.11.tar.gz
-	md5sums = 06c3b2fd51ee6fa0c0f36881168102c7
+	depends = vte
+	source = http://downloads.sourceforge.net/sourceforge/gmameui/gmameui-0.2.12.tar.gz
+	md5sums = e1f36731b0007501cf4c169aaee2ccc8
 
 pkgname = gmameui
 
