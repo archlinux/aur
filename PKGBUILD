@@ -1,20 +1,25 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Hugo Doria <hugodoria at gmail.com>
 
 pkgname=translate-toolkit
-pkgver=1.3.0
+pkgver=2.2.4
 pkgrel=1
-pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations."
-arch=('i686' 'x86_64')
-url="http://translate.sourceforge.net"
+pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
+arch=('any')
+url="http://toolkit.translatehouse.org/"
 license=('GPL')
-depends=('python-lxml')
-source=(http://downloads.sourceforge.net/sourceforge/translate/${pkgname}-${pkgver}.tar.bz2)
+depends=('bash' 'python-lxml' 'python-six')
+makedepends=('python-setuptools')
+optdepends=('python-iniparse: for ini2po'
+            'gaupol: for po2sub')
+source=("https://github.com/translate/translate/releases/download/$pkgver/${pkgname}-${pkgver}.tar.gz")
+md5sums=('4ff21c47bf16e0855b913246ae397a58')
 
-md5sums=('b21e7b1e382c03ecfeece6eab295840c')
+package() {
+  cd "${pkgname}-${pkgver}"
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  python setup.py install --root="${pkgdir}" || return 1
+  python -s setup.py install --root="${pkgdir}" --optimize=1
+  python -m compileall "${pkgdir}"/usr/lib/python3.6/site-packages/translate
 }
