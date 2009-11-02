@@ -2,7 +2,7 @@
 # Contributor sysrq
 
 pkgname=picard
-pkgver=0.12
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Next generation MusicBrainz tagging application (QT4 interface)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://musicbrainz.org/doc/PicardQt"
 license=('GPL')
 depends=('python' 'pyqt' 'qt' 'mutagen' 'libofa' 'ffmpeg')
 source=(http://ftp.musicbrainz.org/pub/musicbrainz/$pkgname/picard-$pkgver.tar.gz)
-md5sums=('88284fb378462a091a092e03387f0da9')
+md5sums=('cfe594d68924afbc0704888130295c85')
 
 build() {
   cd $srcdir/picard-$pkgver
