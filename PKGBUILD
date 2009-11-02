@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="http://musicbrainz.org/doc/PicardQt"
 license=('GPL')
 depends=('python' 'pyqt' 'qt' 'mutagen' 'libofa' 'ffmpeg')
+install=picard.install
 source=(http://ftp.musicbrainz.org/pub/musicbrainz/$pkgname/picard-$pkgver.tar.gz)
 md5sums=('cfe594d68924afbc0704888130295c85')
 
