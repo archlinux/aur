@@ -4,13 +4,13 @@
 
 pkgname=vinagre
 pkgver=2.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('gnome-keyring>=2.28.1' 'gtk-vnc>=0.3.9' 'avahi>=0.6.25' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('gnome-keyring>=2.28.1' 'gtk-vnc>=0.3.9' 'avahi>=0.6.25' 'desktop-file-utils' 'hicolor-icon-theme' 'telepathy-glib>=0.9.1')
 makedepends=('gnome-doc-utils>=0.18.0' 'intltool' 'gnome-panel>=2.28.0')
 optdepends=('gnome-panel')
 groups=('gnome-extra')
