@@ -1,8 +1,8 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-pkgver=0.9.8k
-pkgrel=4
+pkgver=0.9.8l
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='http://www.openssl.org'
@@ -19,7 +19,7 @@ source=("http://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"
         'openssl-0.9.8b-aliasing-bug.patch'
         'openssl-0.9.8g-no-extssl.patch'
         'openssl-0.9.8j-ca-dir.patch')
-md5sums=('e555c6d58d276aec7fdc53363e338ab3'
+md5sums=('05a0ece1372392a2cf310ebb96333025'
          '04a6a88c2ee4badd4f8649792b73eaf3'
          '4738d1eaff4e9975e9a26e4f76e48318'
          'b18e77cbe01bcff8f1c66ac46d139af4'
@@ -43,13 +43,13 @@ build() {
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./config --prefix=/usr --openssldir=/etc/ssl shared zlib -Wa,--noexecstack
 
-	make
+	make || return 1
 	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man install
 
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
 	# patch -p1 -R -i $srcdir/openssl-0.9.8j-ca-dir.patch
-	# make test
+	# make test || return 1
 
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
