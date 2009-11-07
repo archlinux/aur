@@ -3,14 +3,15 @@
 
 pkgname=kchmviewer
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
-depends=('kdelibs' 'chmlib')
-makedepends=('automoc4')
+depends=('kdelibs' 'chmlib' 'xdg-utils' 'qt')
+makedepends=('automoc4' 'cmake')
 options=('libtool')
+install=kchmviewer.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 #source=(http://www.kchmviewer.net/files/$pkgname-$pkgver.tar.gz)
 
