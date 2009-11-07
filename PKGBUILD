@@ -5,7 +5,7 @@
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=3
+pkgrel=4
 pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"' 'custom:"PunkBuster"')
@@ -87,4 +87,7 @@ build() {
     # Install Desktop File
     install -D -m 644 $srcdir/doom3.desktop \
         $pkgdir/usr/share/applications/doom3.desktop
+
+    # Remove Bundled Libraries (Doom3 will use the System Libraries)
+    rm $pkgdir/opt/doom3/{libgcc_s.so.1,libstdc++.so.6}
 }
