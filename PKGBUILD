@@ -18,7 +18,4 @@ build() {
   ruby extconf.rb glib || return 1
   make || return 1
   make DESTDIR="$pkgdir" install || return 1
-  mv $pkgdir/usr/lib/pkgconfig $pkgdir/usr/lib/pkgconfig.orig
-  install -d $pkgdir/usr/lib/pkgconfig
-  mv $pkgdir/usr/lib/pkgconfig.orig  $pkgdir/usr/lib/pkgconfig/$pkgname.pc
 }
