@@ -2,7 +2,7 @@
 # Mon Sep 26 02:32:33 UTC 2016
 pkgbase = directfb
 	pkgdesc = A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://www.directfb.org
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = directfb
 	depends = libpng
 	depends = freetype2
 	options = !libtool
-	source = http://www.directfb.org/downloads/Core/DirectFB-1.4/DirectFB-1.4.1.tar.gz
-	md5sums = e7df079ff44ec98187c24a00500e597a
-	sha1sums = 98f3c46789fa599367037654ee35b71f453b68b3
+	source = http://www.directfb.org/downloads/Core/DirectFB-1.4/DirectFB-1.4.2.tar.gz
+	md5sums = e4376c6c5b8e27d735edb7f62a7a8e86
+	sha1sums = 29a5e5a82b1a9e2cbfe31af127a54767fffae975
 
 pkgname = directfb
 
