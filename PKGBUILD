@@ -4,7 +4,7 @@
 
 pkgname=ruby-pango
 pkgver=0.19.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby language bindings for Pango"
 arch=('i686' 'x86_64')
 url="http://ruby-gnome2.sourceforge.jp"
