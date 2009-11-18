@@ -2,8 +2,8 @@
 # Contributor: Tor Krill <tor@krill.nu>
 
 pkgname=nautilus-sendto
-pkgver=2.28.0
-pkgrel=2
+pkgver=2.28.2
+pkgrel=1
 pkgdesc="Nautilus context menu for sending files."
 arch=('i686' 'x86_64')
 url="http://download.gnome.org/sources/nautilus-sendto/"
@@ -13,7 +13,7 @@ makedepends=('pidgin' 'gajim' 'gettext' 'intltool' 'empathy')
 options=('!libtool' '!emptydirs')
 install=nautilus-sendto.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('3f15fbe5c1cfc5bcadc39d47048ddae0dd0581a7494f365c5e531a2f3e77193c')
+sha256sums=('0fa992b9a4489b712465e82eb182db3eaea9280397871f9d95849c25d1c33893')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
