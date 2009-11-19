@@ -1,17 +1,16 @@
 # Maintainer: JJDaNiMoTh <jjdanimoth@gmail.com>
 
 pkgname=qmc2
-pkgver=0.2.b11
+pkgver=0.2.b12
 pkgrel=1
 pkgdesc="Qt 4 based UNIX MAME frontend supporting SDLMAME."
-#url="http://www.mameworld.net/mamecat/"
 url="http://qmc2.arcadehits.net"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('qt' 'phonon')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
         'qmamecat.desktop')
-md5sums=('0ee553277bb67b20003debf4f9496b35'
+md5sums=('6200d84f0855aed54c1a56f1ea865448'
          'bf2a7898e6fff196fb99b5bcc4128a79')
 
 build() {
