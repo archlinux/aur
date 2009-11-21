@@ -8,8 +8,8 @@ pkgbase = postgresql-testing
 	license = BSD
 	depends = libxml2
 	depends = readline>=6.0
-	provides = postgresql-libs
-	provides = postgresql
+	provides = postgresql-libs=8.5alpha2
+	provides = postgresql=8.5alpha2
 	conflicts = postgresql-libs
 	conflicts = postgresql
 	options = !strip
