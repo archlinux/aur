@@ -1,10 +1,10 @@
 # Maintainer: Mikko Seppälä <t-r-a-y@mbnet.fi>
 _pkgsourcename=openal
 pkgname=lib32-$_pkgsourcename
-pkgver=1.9.563
+pkgver=1.10.622
 pkgrel=1
 pkgdesc="OpenAL audio library for use with opengl"
-url=("http://www.openal.org")
+url="http://www.openal.org"
 license=('LGPL')
 arch=('x86_64')
 groups=('lib32')
@@ -16,4 +16,4 @@ build() {
 	mkdir -p $pkgdir/opt/lib32/usr/lib
 	cp -dp usr/lib/*.so* $pkgdir/opt/lib32/usr/lib
 }
-md5sums=('47b2e351cc15751b80de1f9156cf2d82')
+sha256sums=('52c9c4043c2bc8a96d60e4dc295df483fb81cec0f6f3b7f6b5cdddfd44e7fc9c')
