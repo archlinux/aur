@@ -1,0 +1,33 @@
+--- gtkextra/gtksheet.c	2009-11-23 09:37:31.000000000 -0800
++++ gtkextra/gtksheet.c.mod	2009-11-23 09:36:13.000000000 -0800
+@@ -2738,7 +2738,7 @@
+   gdk_window_destroy (sheet->row_title_window);
+ 
+   if (sheet->pixmap){
+-    g_free (sheet->pixmap);
++    g_object_unref (sheet->pixmap);
+     sheet->pixmap = NULL;
+   }
+ 
+@@ -4149,7 +4149,7 @@
+ 			   &pixmap_width, &pixmap_height);
+       if ((pixmap_width != width) || (pixmap_height != height))
+ 	{
+-          g_free(sheet->pixmap);
++          g_object_unref(sheet->pixmap);
+ 	  sheet->pixmap = gdk_pixmap_new (sheet->sheet_window,
+ 					       width, height,
+ 					       -1);
+@@ -7956,11 +7956,11 @@
+     }
+ 
+     tbl->maxallocrow-=MIN(nrows,tbl->maxallocrow-row+1);
+-    tbl->maxallocrow = MIN(tbl->maxallocrow, tbl->maxrow);
+ 
+   }
+ 
+   tbl->maxrow-=nrows;
++  tbl->maxallocrow = MIN(tbl->maxallocrow, tbl->maxrow);
+   gtk_sheet_recalc_top_ypixels(tbl, 0);
+   return TRUE;
+ } 
