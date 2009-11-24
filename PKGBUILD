@@ -1,0 +1,23 @@
+# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Contributor: Giuseppe Grilli <giugrilli at gmail.com>
+# Contributor: Lasagna Davide <lasagnadavide at gmail.com> 
+# Contributor: Artem Stepanov <timofei1394@itsecure.in>
+
+pkgname=minitube
+pkgver=0.8.1
+pkgrel=1
+pkgdesc="A native YouTube client in QT. Watch YouTube videos without Flash Player"
+arch=('i686' 'x86_64')
+url="http://flavio.tordini.org/minitube"
+license=('GPL')
+depends=('qt')
+optdepends=('gstreamer0.10-plugins: to get all videos to play')
+install=minitube.install
+source=(http://flavio.tordini.org/files/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+md5sums=('2fe6fb2ee1d54f637e5458e315de2836')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  qmake PREFIX="/usr" || return 1
+  make install INSTALL_ROOT="$pkgdir" || return 1
+} 
