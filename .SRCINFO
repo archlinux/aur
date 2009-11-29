@@ -1,7 +1,7 @@
 pkgbase = teamspeak2
 	pkgdesc = TeamSpeak is software for quality voice communication via the Internet
 	pkgver = rc2_2032
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.goteamspeak.com/
 	arch = i686
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = teamspeak2
 	depends = libsm
 	source = teamspeak.desktop
 	source = ftp://ftp.freenet.de/pub/4players/teamspeak.org/releases/ts2_client_rc2_2032.tar.bz2
-	md5sums = 14308ce2787df7b6673259b86179f319
+	md5sums = 2c2f5358bb058a47ab9422ba2331de7e
 	md5sums = e93d17a25e07b1cbe400e4eb028ca8f8
 
 pkgname = teamspeak2

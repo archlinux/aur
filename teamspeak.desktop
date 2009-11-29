@@ -8,4 +8,4 @@ Icon=teamspeak.xpm
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Application
+Categories=Network;Application
