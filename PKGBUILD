@@ -2,7 +2,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=wireless-regdb
-pkgver=2009.11.10
+pkgver=2009.11.25
 pkgrel=1
 pkgdesc="Central Regulatory Domain Database"
 arch=(any)
@@ -12,7 +12,7 @@ depends=()
 install=wireless-regdb.install
 source=(http://wireless.kernel.org/download/${pkgname}/${pkgname}-${pkgver}.tar.bz2
         crda.conf.d)
-sha256sums=('50b47f49e6b499c752a32c0ba0b0dd948abd17dde737467ef9c0c8663556902c'
+sha256sums=('b9d569a41f66323339b7aa203db6e2d8f39c98192f134b5eef2135cf09cd943f'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b')
 backup=(etc/conf.d/wireless-regdom)
 
