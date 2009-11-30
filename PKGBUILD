@@ -5,8 +5,8 @@
 
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
-pkgver=2.6.3
-pkgrel=2
+pkgver=2.6.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -15,7 +15,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
 	'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2)
-md5sums=('8d0ff6215b2d023eaa8efef59097ef83')
+sha256sums=('fa907ace507708e4a4bae32cc81a6271fb6da8bc0458fd8fc97cc4429ec8be11')
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
