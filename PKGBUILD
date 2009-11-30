@@ -5,12 +5,12 @@
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=5
+pkgrel=6
 pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"' 'custom:"PunkBuster"')
 [ "$CARCH" = "i686"   ] && depends=('libxext' 'libgl' 'alsa-lib>=1.0.6')
-[ "$CARCH" = "x86_64" ] && depends=('lib32-libxdamage' 'lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6')
+[ "$CARCH" = "x86_64" ] && depends=('lib32-gcc-libs' 'lib32-libxdamage' 'lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6')
 arch=('i686' 'x86_64')
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
@@ -88,8 +88,6 @@ build() {
     install -D -m 644 $srcdir/doom3.desktop \
         $pkgdir/usr/share/applications/doom3.desktop
 
-    # Remove Bundled Libraries for x86 (Doom3 will use the System Libraries)
-    if [ "$CARCH" == "i686" ]; then
-        rm $pkgdir/opt/doom3/{libgcc_s.so.1,libstdc++.so.6}
-    fi
+    # Remove Bundled Libraries (Doom3 will use the System Libraries)
+    rm $pkgdir/opt/doom3/{libgcc_s.so.1,libstdc++.so.6}
 }
