@@ -2,13 +2,14 @@
 
 pkgname=networkmanager-openvpn
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/NetworkManager/"
-makedepends=('intltool')
-depends=('network-manager-applet>=0.7.2' 'openvpn')
+depends=('networkmanager>=0.7.2' 'openvpn')
+makedepends=('intltool' 'gtk2' 'libglade' 'gconf' 'gnome-keyring')
+optdepends=('network-manager-applet: GNOME frontends to NetWorkmanager')
 install=networkmanager-openvpn.install
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.7/NetworkManager-openvpn-${pkgver}.tar.bz2)
