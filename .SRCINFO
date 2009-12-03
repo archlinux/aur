@@ -1,6 +1,6 @@
 pkgbase = mpc-git
 	pkgdesc = A minimalist command line interface to MPD
-	pkgver = 20091025
+	pkgver = 20091202
 	pkgrel = 1
 	url = http://mpd.wikia.com
 	arch = i686

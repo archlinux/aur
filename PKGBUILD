@@ -1,7 +1,7 @@
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=mpc-git
-pkgver=20091025
+pkgver=20091202
 pkgrel=1
 pkgdesc="A minimalist command line interface to MPD"
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ build() {
 	make prefix=${pkgdir}/usr install || return 1
 
     # Install Bash Completion File
-    install -D -m 644 ${srcdir}/$_gitname/doc/mpc-bashrc \
+    install -D -m 644 ${srcdir}/$_gitname/doc/mpc-completion.bash \
         ${pkgdir}/etc/bash_completion.d/mpc
 }
 	
