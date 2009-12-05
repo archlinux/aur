@@ -10,7 +10,7 @@ license=('BSD')
 backup=('etc/conf.d/postgresql' 'etc/pam.d/postgresql')
 url="http://www.postgresql.org/developer/alpha"
 options=(!strip) # to facilitate debugging of testing builds
-depends=('libxml2' 'readline>=6.0')
+depends=('libxml2' 'readline>=6.0' 'openssl' 'bash')
 conflicts=('postgresql-libs' 'postgresql')
 provides=("postgresql-libs=$pkgver" "postgresql=$pkgver")
 source=(ftp://ftp.postgresql.org/pub/source/$pkgver/postgresql-$pkgver.tar.gz
