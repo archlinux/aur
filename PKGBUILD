@@ -1,4 +1,5 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
+
 pkgname=seekwatcher-hg
 pkgver=104
 pkgrel=1
@@ -8,7 +9,8 @@ url="http://oss.oracle.com/~mason/seekwatcher/"
 license=('GPL')
 makedepends=('mercurial' 'python')
 depends=('python-matplotlib' 'python-numpy')
-optdepends=('blktrace: for tracing the local system')
+optdepends=('blktrace: for tracing the local system'
+            'pyqt3: enable interactive mode')
 conflicts=('seekwatcher')
 md5sums=()
 
