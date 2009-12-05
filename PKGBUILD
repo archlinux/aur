@@ -1,25 +1,25 @@
 # Maintainer: kevin <kevin@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # TU: Kritoke <kritoke@gamebox.net>
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
  
 pkgname=boost
-pkgver=1.39.0
-_boostver=1_39_0
-pkgrel=2
-pkgdesc="Boost provides free peer-reviewed portable C++ source libraries."
-arch=(i686 x86_64)
+pkgver=1.41.0
+_boostver=1_41_0
+pkgrel=1
+pkgdesc="Free peer-reviewed portable C++ source libraries"
+arch=('i686' 'x86_64')
 url="http://www.boost.org/"
-depends=('python>=2.5' 'bzip2' 'zlib')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz layout-tagged.patch translate_exception.patch)
+depends=('bzip2' 'zlib')
+makedepends=('python>=2.6')
+optdepends=('python: for python bindings')
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz)
 license=('custom')
 options=(!ccache)
- 
+md5sums=('ddb04c9b9164a36a91dcf36819666dd9')
+
 build() {
-  cd ${srcdir}/${pkgname}_${_boostver}
-  #export CFLAGS="${CFLAGS} -fno-strict-aliasing"
-  #export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-  patch -Np0 -i ${srcdir}/layout-tagged.patch || return 1
-  patch -Np1 -i ${srcdir}/translate_exception.patch || return 1
+  cd "${srcdir}/${pkgname}_${_boostver}"
 
   # build bjam
   cd ${srcdir}/${pkgname}_${_boostver}/tools/jam/src
@@ -40,7 +40,7 @@ build() {
   # build libs
   cd ${srcdir}/${pkgname}_${_boostver}
   # default "minimal" install: "release link=shared,static
-  #      runtime-link=shared threading=multi"
+  # runtime-link=shared threading=multi"
   # --layout=tagged will add the "-mt" suffix for multithreaded libraries
   # and installs includes in /usr/include/boost.
   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
@@ -54,8 +54,6 @@ build() {
             -sTOOLS=gcc \
             --layout=tagged \
             install || return 1
-#            --with-wave install || return 1
-#            -d2 <- debug  cflags=-fno-strict-aliasing \
 
   # build pyste
   cd ${srcdir}/${pkgname}_${_boostver}/libs/python/pyste/install
@@ -66,6 +64,3 @@ build() {
   install -m644 ${srcdir}/${pkgname}_${_boostver}/LICENSE_1_0.txt \
                 ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
 }
-md5sums=('fcc6df1160753d0b8c835d17fdeeb0a7'
-         '1f085180881155fbb85be0cb9f7d8f35'
-         '1785bd2f958de7649b4e378680c44d16')
