@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://splix.ap2c.org/"
 license=('GPL')
 depends=('libcups' 'gcc')
-makedepends=('cupsddk' 'libcups' 'jbigkit')
+makedepends=('libcups' 'jbigkit')
 source=(http://downloads.sourceforge.net/splix/$pkgname-$pkgver.tar.bz2)
 md5sums=('f3aa735c22a926818b3d8b26c9964186')
 
