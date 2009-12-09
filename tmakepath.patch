@@ -1,0 +1,11 @@
+--- tmake-2.12/bin/tmake	2004-02-29 19:20:41.000000000 +0100
++++ tmake-2.12/bin/tmake	2009-03-01 04:18:16.000000000 +0100
+@@ -100,7 +100,7 @@
+                            . $ENV{"HOME"} . "/.tmake/;"
+                            . $tmake_dir . "lib/$ENV{'TMAKEPATH'};"
+                            . $tmake_dir . "lib/$gcc_platform;"
+-                           . $tmake_dir . "/usr/lib/tmake-$TMAKE_VERSION/$gcc_platform;";
++                           . "/usr/lib/tmake-$TMAKE_VERSION/$gcc_platform;";
+ 
+    my $tmake_conf_path = &find_template("tmake.conf");
+    my $tmake_dir = $tmake_conf_path;
