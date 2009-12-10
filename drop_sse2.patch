@@ -1,0 +1,44 @@
+---
+ build/common.gypi |   19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+Index: src/build/common.gypi
+===================================================================
+--- src.orig/build/common.gypi
++++ src/build/common.gypi
+@@ -386,25 +386,26 @@
+             #
+             # -mfpmath=sse -msse2 makes the compiler use SSE instructions
+             # which keep floating-point values in SSE registers in its
+             # native precision (32-bit for single precision, and 64-bit for
+             # double precision values). This means the floating-point value
+             # used during computation does not change depending on how the
+             # compiler optimized the code, since the value is always kept
+             # in its specified precision.
+-            'conditions': [
+-              ['branding=="Chromium"', {
+-                'cflags': [
+-                  '-march=pentium4',
+-                  '-msse2',
+-                  '-mfpmath=sse',
+-                ],
+-              }],
+-            ],
++            # Disabled: see http://code.google.com/p/chromium/issues/detail?id=9007
++            # 'conditions': [
++            #   ['branding=="Chromium"', {
++            #     'cflags': [
++            #       '-march=pentium4',
++            #       '-msse2',
++            #       '-mfpmath=sse',
++            #     ],
++            #   }],
++            # ],
+             'cflags': [
+               '-m32',
+             ],
+             'ldflags': [
+               '-m32',
+             ],
+           }],
+         ],

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Chromium
+GenericName=Web Browser
+Exec=chromium %U
+Terminal=false
+Icon=chromium
+Type=Application
+Categories=Application;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;
