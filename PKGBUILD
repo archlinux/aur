@@ -3,7 +3,7 @@
 
 pkgname=chromium
 pkgver=4.0.267.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
@@ -25,7 +25,7 @@ build() {
 
 	export GYP_GENERATORS="make"
 	export BUILDTYPE="Release"
-	export GYP_DEFINES='linux_sandbox_path=/usr/lib/chromium/chromium-sandbox linux_sandbox_chrome_path=/usr/lib/chromium/chromium'
+	export GYP_DEFINES='gcc_version=44 no_strict_aliasing=1 linux_sandbox_path=/usr/lib/chromium/chromium-sandbox'
 
 	# i686 does not include SSE2
 	# see http://code.google.com/p/chromium/issues/detail?id=9007
