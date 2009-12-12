@@ -2,8 +2,8 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=chromium
-pkgver=4.0.267.0
-pkgrel=2
+pkgver=4.0.249.30
+pkgrel=1
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
@@ -13,11 +13,13 @@ makedepends=('python' 'perl' 'gperf')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install='chromium.install'
+# downgrade from 4.0.267.0-2
+options=('force')
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
-        'chromium.desktop'
-        'drop_sse2.patch')
-md5sums=('c6498cf5586205981dedf244460dea50'
+        'chromium.desktop' 'chromium.sh' 'drop_sse2.patch')
+md5sums=('59d316bd0f319178e1faffce7b2c81d2'
          '312df68330d6e288cbb2260bad620a32'
+         'a2fbdd2744e2dd92d3fa480815485725'
          'a4a920d7b198c0a2f6e39d60ec75abd5')
 
 build() {
@@ -63,8 +65,7 @@ package() {
 			src/chrome/app/theme/chromium/product_logo_${size}.png \
 										${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png
 	done
-	install -m 0755 -d 							${pkgdir}/usr/bin
-	ln -sf /usr/lib/chromium/chromium 					${pkgdir}/usr/bin/chromium
+	install -m 0755 -D ${srcdir}/chromium.sh				${pkgdir}/usr/bin/chromium
 
 	install -m 0644 -D src/LICENSE						${pkgdir}/usr/share/licenses/chromium/LICENSE
 }
@@ -90,29 +91,34 @@ _source() {
 
 	local _current=$(pwd)
 	local _tmp=$(mktemp -d)
-	local _target=$(mktemp -d)
-
-	cd $_tmp
+	mkdir -p $_tmp/chromium-$pkgver
+	cd $_tmp/chromium-$pkgver
 
 	svn co http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
 
 	export PATH=./depot_tools/:$PATH
-	gclient config http://src.chromium.org/svn/releases/$pkgver/src
-	sed -i '15i\      "src/third_party/WebKit/LayoutTests": None,' .gclient
-	gclient sync --nohooks
+	gclient config http://src.chromium.org/svn/releases/$pkgver
+	sed -e '15i\      "src/third_party/WebKit/LayoutTests": None,' \
+	    -e '15i\      "src/chrome/tools/test/reference_build": None,' \
+	    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/ia32": None,' \
+	    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/ia32_dbg": None,' \
+	    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/x64": None,' \
+	    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/x64_dbg": None,' \
+	    -i .gclient
+	gclient sync --force --nohooks
 
-	mkdir -p $_target/chromium-$pkgver
-	cp -a .gclient $_target/chromium-$pkgver
-	svn export depot_tools $_target/chromium-$pkgver/depot_tools
-	gclient export $_target/chromium-$pkgver
+	svnversion src > src/build/LASTCHANGE.in
 
 	for i in ${_nonessential_dirs[@]}; do
-		rm -rf $_target/chromium-$pkgver/$i
+		rm -rf $i
 	done
+	find . -name '.svn' -type d -exec rm -rf {} \;
+	find . -iname '*.dll' -delete
+	find . -iname '*.exe' -delete
 
-	cd $_target
-	tar -cvJf $_current/chromium-$pkgver.tar.xz chromium-$pkgver
+	cd ..
+	bsdtar cvJf $_current/chromium-$pkgver.tar.xz chromium-$pkgver
 	cd $_current
 
-	rm -rf $_target $_tmp
+	rm -rf $_tmp
 }
