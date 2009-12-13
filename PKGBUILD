@@ -1,9 +1,8 @@
-# $Id: $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=chromium
 pkgver=4.0.249.30
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
@@ -16,26 +15,31 @@ install='chromium.install'
 # downgrade from 4.0.267.0-2
 options=('force')
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
-        'chromium.desktop' 'chromium.sh' 'drop_sse2.patch')
+        'chromium.desktop' 'chromium.sh'
+        'drop_sse2.patch' 'ffmpeg_branding_mime.patch')
 md5sums=('59d316bd0f319178e1faffce7b2c81d2'
          '312df68330d6e288cbb2260bad620a32'
-         'a2fbdd2744e2dd92d3fa480815485725'
-         'a4a920d7b198c0a2f6e39d60ec75abd5')
+         '2689154f4a41511e136d9594a0086aa0'
+         'a4a920d7b198c0a2f6e39d60ec75abd5'
+         '5e36845dd9e053da3bf5fc814e502d68')
 
 build() {
 	cd ${srcdir}/chromium-${pkgver}
 
-	export GYP_GENERATORS="make"
-	export BUILDTYPE="Release"
-	export GYP_DEFINES='gcc_version=44 no_strict_aliasing=1 linux_sandbox_path=/usr/lib/chromium/chromium-sandbox'
+	export GYP_GENERATORS='make'
+	export BUILDTYPE='Release'
+	export GYP_DEFINES="gcc_version=44 \
+		no_strict_aliasing=1 \
+		linux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
+		linux_strip_binary=1 \
+		release_extra_cflags='${CFLAGS}' \
+		ffmpeg_branding=Chrome"
+
+	patch -p0 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
 
 	# i686 does not include SSE2
 	# see http://code.google.com/p/chromium/issues/detail?id=9007
 	patch -p0 -i ${srcdir}/drop_sse2.patch || return 1
-
-	if [ "${CARCH}" = 'x86_64' ]; then
-		GYP_DEFINES="${GYP_DEFINES} target_arch=x64"
-	fi
 
 	export PATH=./depot_tools/:$PATH
 	gclient runhooks --force || return 1
@@ -115,6 +119,8 @@ _source() {
 	find . -name '.svn' -type d -exec rm -rf {} \;
 	find . -iname '*.dll' -delete
 	find . -iname '*.exe' -delete
+	find . -iname '*.o' -delete
+	find . -iname '*.nexe' -delete
 
 	cd ..
 	bsdtar cvJf $_current/chromium-$pkgver.tar.xz chromium-$pkgver
