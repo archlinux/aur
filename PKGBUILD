@@ -18,8 +18,8 @@ source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
         'drop_sse2.patch' 'ffmpeg_branding_mime.patch')
 md5sums=('59d316bd0f319178e1faffce7b2c81d2'
-         '312df68330d6e288cbb2260bad620a32'
-         '2689154f4a41511e136d9594a0086aa0'
+         '897de25e9c25a01f8b1b67abe554a6b7'
+         '93cd6f5f53b15546dc9d3de49118534c'
          'a4a920d7b198c0a2f6e39d60ec75abd5'
          '5e36845dd9e053da3bf5fc814e502d68')
 
@@ -55,8 +55,6 @@ package() {
 	install -m 4555 -o root -g root -D src/out/Release/chrome_sandbox	${pkgdir}/usr/lib/chromium/chromium-sandbox
 	install -m 0644 -D src/out/Release/chrome.pak				${pkgdir}/usr/lib/chromium/chrome.pak
 	install -m 0644 -D src/out/Release/libffmpegsumo.so			${pkgdir}/usr/lib/chromium/libffmpegsumo.so
-	install -m 0644 -D src/out/Release/product_logo_48.png			${pkgdir}/usr/lib/chromium/product_logo_48.png
-	install -m 0755 -D src/out/Release/xdg-settings				${pkgdir}/usr/lib/chromium/xdg-settings
 
 	cp -a src/out/Release/locales src/out/Release/resources			${pkgdir}/usr/lib/chromium/
 	find ${pkgdir}/usr/lib/chromium/ -name '*.d' -type f -delete
