@@ -1,8 +1,9 @@
-# Maintainer: Alexander Fehr <pizzapunk gmail com>
+# Maintainer : Ionut Biru <ionut@archlinux.ro>
+# Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=purple-plugin-pack
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Plugin pack for Pidgin"
 arch=('i686' 'x86_64')
@@ -10,10 +11,8 @@ url="http://plugins.guifications.org/trac/wiki/PluginPack"
 license=('GPL')
 depends=('pidgin')
 makedepends=('intltool' 'python')
-replaces=('gaim-plugin-pack')
 options=('!libtool')
-source=(http://plugins.guifications.org/trac/downloads/31)
-md5sums=('60c6b30c983e7c7b521126cdc8ce1605')
+source=(http://plugins.guifications.org/trac/downloads/33)
 
 build() {
   cd "$srcdir/purple-plugin_pack-$pkgver"
@@ -22,3 +21,4 @@ build() {
   make || return 1
   make DESTDIR="$pkgdir" install || return 1
 }
+md5sums=('ea7b35fc926a7090887ea653a1140dce')
