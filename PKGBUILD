@@ -1,13 +1,13 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=chromium
-pkgver=4.0.249.30
-pkgrel=2
+pkgver=4.0.249.43
+pkgrel=1
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme')
+depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt')
 makedepends=('python' 'perl' 'gperf')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
@@ -17,11 +17,11 @@ options=('force')
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
         'drop_sse2.patch' 'ffmpeg_branding_mime.patch')
-md5sums=('59d316bd0f319178e1faffce7b2c81d2'
+md5sums=('c8a5b5f918a0ea8a56f9c74bce2524f2'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '93cd6f5f53b15546dc9d3de49118534c'
-         'a4a920d7b198c0a2f6e39d60ec75abd5'
-         '5e36845dd9e053da3bf5fc814e502d68')
+         'ddc1d741d50e8d46765a6b76e8faad32'
+         '95567a364197237dcefa3fabb5631822')
 
 build() {
 	cd ${srcdir}/chromium-${pkgver}
@@ -33,7 +33,12 @@ build() {
 		linux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
 		linux_strip_binary=1 \
 		release_extra_cflags='${CFLAGS}' \
-		ffmpeg_branding=Chrome"
+		ffmpeg_branding=Chrome \
+		use_system_libjpeg=1 \
+		use_system_libxml=1 \
+		use_system_libxslt=1 \
+		use_system_bzip2=1 \
+		use_system_libpng=1"
 
 	patch -p0 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
 
