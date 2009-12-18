@@ -1,0 +1,18 @@
+pkgbase = xkeyboard-config-gitshtrom
+	pkgdesc = X keyboard configuration files
+	pkgver = 20100413
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/XKeyboardConfig
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = intltool
+	makedepends = pkgconfig
+	depends = xorg-xkb-utils
+	provides = xkbdata
+	provides = xkeyboard-config=1.6.1
+	conflicts = xkbdata
+	conflicts = xkeyboard-config
+
+pkgname = xkeyboard-config-gitshtrom
+
