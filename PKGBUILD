@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 pkgname=xkeyboard-config-gitshtrom
-pkgver=20091218
+pkgver=20091219
 pkgrel=1
 pkgdesc="X keyboard configuration files"
 arch=(i686 x86_64)
@@ -41,7 +41,6 @@ build() {
 
   msg "GIT checkout done or server timeout"
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh --prefix=/usr \
               --with-xkb-base=/usr/share/X11/xkb \
               --with-xkb-rules-symlink=xorg \
