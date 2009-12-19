@@ -2,33 +2,33 @@
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
-pkgver=4.1
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
-depends=('kdelibs' 'chmlib' 'xdg-utils' 'qt')
+depends=('chmlib' 'kdelibs' 'qt' 'xdg-utils')
 makedepends=('automoc4' 'cmake')
 options=('libtool')
-install=kchmviewer.install
+install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-#source=(http://www.kchmviewer.net/files/$pkgname-$pkgver.tar.gz)
 
-md5sums=('d64b99f63e8cda78c4c2ab8595925151')
+md5sums=('9b68c3e233fe3d8e16251ba95526a493')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/build-$pkgver
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make || return 1
   make DESTDIR=${pkgdir} install
 
-#fixing icon path FS#12349
-  mv ${pkgdir}/usr/share/icons/crystalsvg ${pkgdir}/usr/share/icons/hicolor
+#icon file
+  install -D -m644 ${srcdir}/build-$pkgver/packages/$pkgname.png \
+    ${pkgdir}/usr/share/pixmaps/$pkgname.png || return 1
 
 #msits.protocol file provided by kdegraphics package
-  rm -rf ${pkgdir}/usr/share/kde4 || retur 1
+  rm -rf ${pkgdir}/usr/share/kde4 || return 1
 #kio_msits.so file provided by kdegraphics package - FS#14376
-  rm -rf ${pkgdir}/usr/lib
+  rm -rf ${pkgdir}/usr/lib || return 1
 }
