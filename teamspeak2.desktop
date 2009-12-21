@@ -1,10 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=TeamSpeak
+Name=TeamSpeak 2
 GenericName=TeamSpeak
 Comment=TeamSpeak is software for quality voice communication via the Internet
-Exec=/usr/bin/TeamSpeak
-Icon=teamspeak.xpm
+Exec=/usr/bin/teamspeak2
+Icon=/usr/share/pixmaps/teamspeak2.xpm
 StartupNotify=true
 Terminal=false
 Type=Application
