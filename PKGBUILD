@@ -5,7 +5,7 @@
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=6
+pkgrel=7
 pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"' 'custom:"PunkBuster"')
