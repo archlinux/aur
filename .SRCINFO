@@ -1,29 +1,26 @@
 pkgbase = ezquake
 	pkgdesc = One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ezquake.sourceforge.net/
 	install = ezquake.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
-	makedepends = wget
 	depends = libgl
 	depends = libxxf86dga
 	provides = fuhquake
 	conflicts = fuhquake
 	noextract = ezquake_linux-x86_2.0.tar.gz
-	source = ezquake.launcher
-	source = ezquake.install
-	source = ezquake.desktop
 	source = http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux-x86_2.0.tar.gz
-	source = http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_source_2.0.zip
-	md5sums = a61707a154bc97723f9a4fad65327df3
-	md5sums = b56e6329253ffdccdab303f80771c347
-	md5sums = 75cfa823bf495fe4cdb755c6b5546f2a
+	source = ezquake.launcher
+	source = ezquake.desktop
+	source = ezquake.ico
 	md5sums = 25cad2fa8f695b18b2e6cab313a7a8be
-	md5sums = 966922142bb577d7dd1a0512e3a1ff7a
+	md5sums = bad99b7adc7c238f1df2fc4973c00ae6
+	md5sums = 75cfa823bf495fe4cdb755c6b5546f2a
+	md5sums = b3fd62bf6f56f139257544cab74ba71e
 
 pkgname = ezquake
 
