@@ -16,11 +16,11 @@ install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
 'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
 "http://www.1337-server.net/doom3/$pkgname-linux-$pkgver.x86.run")
-md5sums=('29335683bcc2c3063bd9af015025cc38'
-         'a13dc5cdb4b0f6ead3344673b185c53d'
+md5sums=('da5f33feaa929c2c588a5a773c777e0f'
+         '6bdef1e111e5f450bca3f1c043caf4a2'
          'facb0291279621d997f9504924d7e9b1'
-         '15d33c9f7e1b1c3d2f8cb01c9e68ed97'
-         'bfeb2be83024d60ccda658e4d60b6e13'
+         '7ccbdd8f07672c6c34b2fe1de131e57c'
+         'aca58ca787ac3c2c44eea46b08a5a3c1'
          'f99eb141eecc4b9dd188d6819d741546'
          '6325f0936f59420d33668754032141cb')
 
