@@ -2,7 +2,7 @@
 
 pkgname=ezquake
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play."
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
@@ -21,8 +21,8 @@ md5sums=('25cad2fa8f695b18b2e6cab313a7a8be'
          'b3fd62bf6f56f139257544cab74ba71e')
 
 if [ $CARCH = 'x86_64' ]; then
-    source[0] = "http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux-x86_64_${pkgver}.tar.gz"
-    md5sums[0] = 'db2e5f97152fe11b026a2814f0f30f12'
+    source[0]="http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux-x86_64_${pkgver}.tar.gz"
+    md5sums[0]='db2e5f97152fe11b026a2814f0f30f12'
     noextract=("ezquake_linux-x86_64_$pkgver.tar.gz")
 fi
 
