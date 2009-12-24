@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 pkgname=xkeyboard-config-gitshtrom
-pkgver=20091219
+pkgver=20091224
 pkgrel=1
 pkgdesc="X keyboard configuration files"
 arch=(i686 x86_64)
@@ -21,13 +21,16 @@ build() {
   msg "Connecting to GIT server...."
 
   if [ -d ${srcdir}/$_gitname ] ; then
-          git --git-dir=${srcdir}/$_gitname/.git pull origin ${_gitbranch}|| exit 1
-          msg "The local files are updated to ${_gitbranch}."
+	  cd ${srcdir}/$_gitname
+          git ${_gitbranch} || exit 1
   else
-          git clone $_gitroot || exit 1
-          git --git-dir=${srcdir}/$_gitname/.git checkout -b ${_gitbranch} \
-                origin/${_gitbranch} || exit 2
+          git clone $_gitroot ${srcdir}/$_gitname || exit 1
+	  cd ${srcdir}/$_gitname
+          git checkout --track origin/${_gitbranch}  || exit 2
   fi
+
+  git pull || exit 1
+  msg "GIT checkout done or server timeout"
 
   # Speed up: only create the build tree if it didn't existe before
   # src/$_gitname-build should be manually removed before final builds
@@ -38,8 +41,6 @@ build() {
   else
           cd $_gitname-build
   fi
-
-  msg "GIT checkout done or server timeout"
 
   ./autogen.sh --prefix=/usr \
               --with-xkb-base=/usr/share/X11/xkb \
