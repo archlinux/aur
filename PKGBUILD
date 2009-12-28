@@ -4,12 +4,12 @@
 
 pkgname=savage2
 pkgver=2.1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('i686' 'x86_64')
 url='http://savage2.com/'
 license=('custom: "Savage 2"')
-depends=('curl' 'mesa' 'libjpeg6' 'libpng' 'libxml2' 'speex')
+depends=('mesa' 'libxml2')
 makedepends=('unzip')
 install=savage2.install
 source=("http://dl.heroesofnewerth.com/Savage2Install-$pkgver-$CARCH.bin" \

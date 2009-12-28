@@ -1,7 +1,7 @@
 post_install() {
     # Update runpath
     cd /opt/savage2
-    ./savage2_update.bin --update-runpath    
+    ./savage2_update.bin --update-runpath
 }
 
 post_upgrade() {
