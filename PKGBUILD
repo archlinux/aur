@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 pkgname=xkeyboard-config-gitshtrom
-pkgver=20091224
+pkgver=20100104
 pkgrel=1
 pkgdesc="X keyboard configuration files"
 arch=(i686 x86_64)
@@ -9,8 +9,7 @@ license=('custom')
 url="http://www.freedesktop.org/wiki/Software/XKeyboardConfig"
 depends=('xorg-xkb-utils')
 makedepends=('intltool' 'pkgconfig')
-provides=('xkbdata' 'xkeyboard-config')
-replaces=('xkbdata' 'xkeyboard-config')
+provides=('xkbdata' 'xkeyboard-config=1.6.1')
 conflicts=('xkbdata' 'xkeyboard-config')
 
 _gitname="xkeyboard-config" 
@@ -22,7 +21,7 @@ build() {
 
   if [ -d ${srcdir}/$_gitname ] ; then
 	  cd ${srcdir}/$_gitname
-          git ${_gitbranch} || exit 1
+          git checkout ${_gitbranch} || exit 1
   else
           git clone $_gitroot ${srcdir}/$_gitname || exit 1
 	  cd ${srcdir}/$_gitname
@@ -31,6 +30,7 @@ build() {
 
   git pull || exit 1
   msg "GIT checkout done or server timeout"
+  cd ..
 
   # Speed up: only create the build tree if it didn't existe before
   # src/$_gitname-build should be manually removed before final builds
