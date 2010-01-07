@@ -1,0 +1,54 @@
+pkgbase = kernel26-web100
+	pkgver = 2.6.35.7
+	pkgrel = 1
+	url = http://www.kernel.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-2.6.35.tar.bz2
+	source = ftp://ftp.archlinux.org/other/kernel26/patch-2.6.35.7-1-ARCH.bz2
+	source = http://www.web100.org/download/kernel/2.5.30/web100-2.5.30-201008181640.tar.gz
+	source = config
+	source = config.x86_64
+	source = kernel26.preset
+	md5sums = 091abeb4684ce03d1d936851618687b6
+	md5sums = df30e2eb9755e45993ddc7e679ab52d8
+	md5sums = 6e7dd954e9816fb658706ad01fd97870
+	md5sums = 40552e98261623134816d01255c9e78d
+	md5sums = 9c48d518fbe02a2fb2dbee535c1635ae
+	md5sums = 25584700a0a679542929c4bed31433b6
+
+pkgname = kernel26-web100
+	pkgdesc = The Linux Kernel and modules with Web100 patchset
+	install = kernel26.install
+	groups = base
+	depends = coreutils
+	depends = kernel26-firmware>=2.6.32
+	depends = module-init-tools
+	depends = mkinitcpio>=0.5.20
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = web100-utils: to benefit from the Web100 extensions
+	replaces = kernel24
+	replaces = kernel24-scsi
+	replaces = kernel26-scsi
+	replaces = alsa-driver
+	replaces = ieee80211
+	replaces = hostap-driver26
+	replaces = pwc
+	replaces = nforce
+	replaces = squashfs
+	replaces = unionfs
+	replaces = ivtv
+	replaces = zd1211
+	replaces = kvm-modules
+	replaces = iwlwifi
+	replaces = rt2x00-cvs
+	replaces = gspcav1
+	replaces = atl2
+	replaces = wlan-ng26
+	replaces = rt2500
+	backup = etc/mkinitcpio.d/kernel26-web100.preset
+
+pkgname = kernel26-web100-headers
+	pkgdesc = Header files and scripts for building modules for kernel26-web100
+
