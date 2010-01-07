@@ -13,7 +13,7 @@ pkgdesc="The Linux Kernel and modules, with patches and options to support IPv6 
 arch=(i686 x86_64)
 license=('GPL2')
 groups=('base')
-url="http://www.kernel.org"
+url="http://www.kernel.org, http://www.nautilus6.org"
 backup=(etc/mkinitcpio.d/${pkgname}.preset)
 depends=('coreutils' "kernel26-firmware>=${_basekernel}" 'module-init-tools' 'mkinitcpio>=0.5.20')
 makedepends=('quilt')
@@ -41,7 +41,8 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         # standard config files for mkinitcpio ramdisk
         kernel26.preset)
 optdepends=('crda: to set the correct wireless channels of your country'
-	    'umip: UMIP daemon to support mobility features')
+	    'umip: UMIP daemon to support mobility features'
+	    'kernel-headers-mipl: (DS)MIP-patched kernel headers, needed to compile userland')
 md5sums=('7a80058a6382e5108cdb5554d1609615'
          'f15446b016865f6bd5d91ca800ea91bd'
          'fdff6ecf6121135f9ff257ba5313873d'
