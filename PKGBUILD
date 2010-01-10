@@ -24,7 +24,6 @@ build() {
                 --sysconfdir=/etc \
                 --disable-schemas-install \
                 --disable-meanwhile \
-                --disable-nm \
                 --disable-perl \
                 --disable-gnutls \
                 --enable-cyrus-sasl \
