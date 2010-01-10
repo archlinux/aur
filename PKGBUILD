@@ -47,7 +47,7 @@ build() {
 	patch -p0 -i ${srcdir}/drop_sse2.patch || return 1
 
 	export PATH=./depot_tools/:$PATH
-	gclient runhooks --force || return 1
+	gclient.py runhooks --force || return 1
 
 	cd src
 	make chrome chrome_sandbox || return 1
