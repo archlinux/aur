@@ -101,10 +101,10 @@ _source() {
 	mkdir -p $_tmp/chromium-$pkgver
 	cd $_tmp/chromium-$pkgver
 
-	svn co http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
+	svn co -r34500 http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
 
 	export PATH=./depot_tools/:$PATH
-	gclient config http://src.chromium.org/svn/releases/$pkgver
+	gclient.py config http://src.chromium.org/svn/releases/$pkgver
 	sed -e '15i\      "src/third_party/WebKit/LayoutTests": None,' \
 	    -e '15i\      "src/chrome/tools/test/reference_build": None,' \
 	    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/ia32": None,' \
@@ -112,7 +112,7 @@ _source() {
 	    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/x64": None,' \
 	    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/x64_dbg": None,' \
 	    -i .gclient
-	gclient sync --force --nohooks
+	gclient.py sync --force --nohooks
 
 	svnversion src > src/build/LASTCHANGE.in
 
