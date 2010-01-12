@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=chromium
-pkgver=4.0.249.43
+pkgver=4.0.249.64
 pkgrel=1
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ options=('force')
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
         'drop_sse2.patch' 'ffmpeg_branding_mime.patch')
-md5sums=('c8a5b5f918a0ea8a56f9c74bce2524f2'
+md5sums=('04c397ba565e64c592bc5d3034576c6c'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '93cd6f5f53b15546dc9d3de49118534c'
          'ddc1d741d50e8d46765a6b76e8faad32'
