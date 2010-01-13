@@ -1,0 +1,27 @@
+pkgbase = reconnoiter-svn
+	pkgdesc = Software for monitoring, trending and fault analysis of servers or data centers
+	pkgver = 1275
+	pkgrel = 1
+	url = https://labs.omniti.com/trac/reconnoiter
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = re2c
+	makedepends = jdk
+	makedepends = perl
+	depends = ncurses
+	depends = libxml2
+	depends = libxslt
+	depends = apr
+	depends = pcre
+	optdepends = libssh2
+	optdepends = net-snmp
+	optdepends = jre
+	optdepends = libmysqlclient
+	optdepends = postgresql-libs
+	provides = reconnoiter
+	conflicts = reconnoiter
+
+pkgname = reconnoiter-svn
+
