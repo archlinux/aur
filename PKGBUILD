@@ -3,7 +3,7 @@
 
 pkgname=picard
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation MusicBrainz tagging application (QT4 interface)"
 arch=('i686' 'x86_64')
 url="http://musicbrainz.org/doc/PicardQt"
