@@ -4,12 +4,12 @@
 
 pkgname=jasper
 pkgver=1.900.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard"
 arch=('i686' 'x86_64')
 url="http://www.ece.uvic.ca/~mdadams/jasper/"
 license=('custom:JasPer2.0')
-depends=('libjpeg>=7' 'glut' 'libxi' 'libxmu' 'mesa')
+depends=('libjpeg>=8' 'freeglut' 'libxi' 'libxmu' 'mesa')
 makedepends=('unzip')
 options=('!libtool')
 source=(http://www.ece.uvic.ca/~mdadams/${pkgname}/software/${pkgname}-${pkgver}.zip)
