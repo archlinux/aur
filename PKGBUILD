@@ -9,17 +9,20 @@ license=('GPL')
 url="http://digikam.sourceforge.net"
 depends=('kdebase-runtime' 'kdegraphics-libs' 'kdepimlibs' 'lensfun' 'kdeedu-marble' 'liblqr')
 makedepends=('pkgconfig' 'cmake' 'automoc4')
-source=(http://downloads.sourceforge.net/digikam/${pkgname}-${pkgver}.tar.bz2)
+source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 replaces=('digikamimageplugins')
 install=digikam.install
 optdepends=('kipi-plugins: for more extras and plugins')
 
 build() {
+   cd ${srcdir}
    mkdir build
    cd build
-   cmake ../${pkgname}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_MARBLEWIDGET=yes -DWITH_MarbleWidget=yes \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_{SHARED,MODULE,EXE}_LINKER_FLAGS='-Wl,--no-undefined -Wl,--as-needed'
+   cmake ../${pkgname}-${pkgver} \
+     -DCMAKE_INSTALL_PREFIX=/usr \
+     -DENABLE_MARBLEWIDGET=yes \
+     -DWITH_MarbleWidget=yes \
+     -DCMAKE_SKIP_RPATH=ON
    make all|| return 1
    make DESTDIR=${pkgdir} install || return 1
  }
