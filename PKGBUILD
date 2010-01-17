@@ -23,7 +23,6 @@ build() {
   cmake ../${pkgname}-${pkgver}-kde${_kdever} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_{SHARED,MODULE,EXE}_LINKER_FLAGS='-Wl,--no-undefined -Wl,--as-needed' \
     -DCMAKE_INSTALL_PREFIX=/usr
   make || return 1
   make DESTDIR=${pkgdir} install || return 1
