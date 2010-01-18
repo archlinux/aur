@@ -2,7 +2,7 @@
 
 pkgname=chromium
 pkgver=4.0.249.64
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
@@ -16,12 +16,13 @@ install='chromium.install'
 options=('force')
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
-        'drop_sse2.patch' 'ffmpeg_branding_mime.patch')
+        'drop_sse2.patch' 'ffmpeg_branding_mime.patch' 'libpng-1.4.patch')
 md5sums=('04c397ba565e64c592bc5d3034576c6c'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '93cd6f5f53b15546dc9d3de49118534c'
          'ddc1d741d50e8d46765a6b76e8faad32'
-         '95567a364197237dcefa3fabb5631822')
+         '95567a364197237dcefa3fabb5631822'
+         'ac1da2e538ed1e16235b206ff9ba9407')
 
 build() {
 	cd ${srcdir}/chromium-${pkgver}
@@ -38,13 +39,16 @@ build() {
 		use_system_libxml=1 \
 		use_system_libxslt=1 \
 		use_system_bzip2=1 \
-		use_system_libpng=1"
+		use_system_libpng=1 \
+		werror="
 
 	patch -p0 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
 
 	# i686 does not include SSE2
 	# see http://code.google.com/p/chromium/issues/detail?id=9007
 	patch -p0 -i ${srcdir}/drop_sse2.patch || return 1
+
+	patch -p0 -i ${srcdir}/libpng-1.4.patch || return 1
 
 	export PATH=./depot_tools/:$PATH
 	gclient.py runhooks --force || return 1
