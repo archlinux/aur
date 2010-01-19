@@ -4,7 +4,7 @@
 
 _pkgsourcename=gtk2
 pkgname=lib32-$_pkgsourcename
-pkgver=2.18.5
+pkgver=2.18.6
 pkgrel=1
 pkgdesc="The GTK+ Toolkit (v2)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ build() {
 	cp -RP usr/lib/gtk-2.0/2.* $pkgdir/opt/lib32/usr/lib/gtk-2.0/
 	install -D -m644 $startdir/gdk-pixbuf.loaders $pkgdir/opt/lib32/config/gdk/gdk-pixbuf.loaders
 }
-md5sums=('91480d3c85c571c8ec474281c68f0afb'
-         'a27d18250ece707c802d49ee652175e3')
-md5sums=('91480d3c85c571c8ec474281c68f0afb'
-         'a27d18250ece707c802d49ee652175e3')
+md5sums=('a6041e6bff3f1dd3161543ac417e5401'
+         'b7275968c207facfd6d4edfd330b6224')
+sha256sums=('2f051b26cf5de6223373564072140f2b0c2141299086ff46c3daa966711bdb4c'
+            '81c21ce1a13cf15765afff84f8b5e519916bd701b2d252ac7196b773db5d1d5d')
