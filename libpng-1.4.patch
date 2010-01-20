@@ -1,0 +1,42 @@
+diff -Naur DirectFB-1.4.3-orig/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c DirectFB-1.4.3/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c
+--- DirectFB-1.4.3-orig/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2010-01-20 00:22:27.000000000 -0500
++++ DirectFB-1.4.3/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2010-01-20 00:24:55.000000000 -0500
+@@ -168,7 +168,7 @@
+ static DFBResult
+ Probe( IDirectFBImageProvider_ProbeContext *ctx )
+ {
+-     if (png_check_sig( ctx->header, 8 ))
++  if (!png_sig_cmp( ctx->header, 0, 8 ))
+           return DFB_OK;
+ 
+      return DFB_UNSUPPORTED;
+diff -Naur DirectFB-1.4.3-orig/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c DirectFB-1.4.3/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c
+--- DirectFB-1.4.3-orig/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2010-01-20 00:48:44.000000000 -0500
++++ DirectFB-1.4.3/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2010-01-20 00:50:27.000000000 -0500
+@@ -653,7 +653,7 @@
+           if (data->color_type == PNG_COLOR_TYPE_PALETTE) {
+                u32        key;
+                png_colorp palette    = data->info_ptr->palette;
+-               png_bytep  trans      = data->info_ptr->trans;
++               png_bytep  trans      = data->info_ptr->trans_alpha;
+                int        num_colors = MIN( MAXCOLORMAPSIZE,
+                                             data->info_ptr->num_palette );
+                u8         cmap[3][num_colors];
+@@ -678,7 +678,7 @@
+           }
+           else {
+                /* ...or based on trans rgb value */
+-               png_color_16p trans = &data->info_ptr->trans_values;
++               png_color_16p trans = &data->info_ptr->trans_color;
+ 
+                data->color_key = (((trans->red & 0xff00) << 8) |
+                                   ((trans->green & 0xff00)) |
+@@ -689,7 +689,7 @@
+      switch (data->color_type) {
+           case PNG_COLOR_TYPE_PALETTE: {
+                png_colorp palette    = data->info_ptr->palette;
+-               png_bytep  trans      = data->info_ptr->trans;
++               png_bytep  trans      = data->info_ptr->trans_alpha;
+                int        num_trans  = data->info_ptr->num_trans;
+                int        num_colors = MIN( MAXCOLORMAPSIZE, data->info_ptr->num_palette );
+ 
