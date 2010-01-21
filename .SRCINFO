@@ -1,0 +1,18 @@
+pkgbase = udev-browse-git
+	pkgdesc = Graphical browser for the Linux sysfs device tree
+	pkgver = 20110324
+	pkgrel = 1
+	url = http://0pointer.de/blog/projects/udev-browse.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = vala
+	makedepends = git
+	depends = udev
+	depends = libgee
+	depends = gtk2
+	provides = udev-browse
+	conflicts = udev-browse
+
+pkgname = udev-browse-git
+
