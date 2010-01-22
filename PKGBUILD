@@ -3,7 +3,7 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=purple-plugin-pack
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Plugin pack for Pidgin"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('pidgin')
 makedepends=('intltool' 'python')
 options=('!libtool')
-source=(http://plugins.guifications.org/trac/downloads/33)
+source=(http://plugins.guifications.org/trac/downloads/39)
 
 build() {
   cd "$srcdir/purple-plugin_pack-$pkgver"
@@ -21,4 +21,4 @@ build() {
   make || return 1
   make DESTDIR="$pkgdir" install || return 1
 }
-md5sums=('ea7b35fc926a7090887ea653a1140dce')
+md5sums=('57b9381954706729cfb11409b984cff4')
