@@ -1,0 +1,53 @@
+#!/bin/bash
+
+. PKGBUILD
+
+# see http://src.chromium.org/svn/trunk/src/tools/export_tarball/export_tarball.py
+nonessential_dirs=(
+	'src/chrome/test/data'
+	'src/chrome/tools/test/reference_build'
+	'src/gears/binaries'
+	'src/net/data/cache_tests'
+	'src/o3d/documentation'
+	'src/o3d/samples'
+	'src/third_party/lighttpd'
+	'src/third_party/WebKit/LayoutTests'
+	'src/webkit/data/layout_tests'
+	'src/webkit/tools/test/reference_build'
+)
+
+current=$(pwd)
+tmp=$(mktemp -d)
+mkdir -p $tmp/chromium-$pkgver
+cd $tmp/chromium-$pkgver
+
+svn co -r34500 http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
+
+export PATH=./depot_tools/:$PATH
+gclient.py config http://src.chromium.org/svn/releases/$pkgver
+sed -e '15i\      "src/third_party/WebKit/LayoutTests": None,' \
+    -e '15i\      "src/chrome/tools/test/reference_build": None,' \
+    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/ia32": None,' \
+    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/ia32_dbg": None,' \
+    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/x64": None,' \
+    -e '15i\      "src/third_party/ffmpeg/binaries/chromium/linux/x64_dbg": None,' \
+    -i .gclient
+gclient.py sync --force --nohooks
+
+svnversion src > src/build/LASTCHANGE.in
+
+for i in ${nonessential_dirs[@]}; do
+	rm -rf $i
+done
+
+find . -name '.svn' -type d -exec rm -rf {} \;
+find . -iname '*.dll' -delete
+find . -iname '*.exe' -delete
+find . -iname '*.o' -delete
+find . -iname '*.nexe' -delete
+
+cd ..
+bsdtar cvJf $current/chromium-$pkgver.tar.xz chromium-$pkgver
+cd $current
+
+rm -rf $tmp
