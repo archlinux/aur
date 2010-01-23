@@ -4,8 +4,8 @@
 # Contributor: Artem Stepanov <timofei1394@itsecure.in>
 
 pkgname=minitube
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="A native YouTube client in QT. Watch YouTube videos without Flash Player"
 arch=('i686' 'x86_64')
 url="http://flavio.tordini.org/minitube"
@@ -14,7 +14,7 @@ depends=('phonon-xine' 'gstreamer0.10-good-plugins')
 optdepends=('gstreamer0.10-plugins: to get all videos to play')
 install=minitube.install
 source=(http://flavio.tordini.org/files/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('2fe6fb2ee1d54f637e5458e315de2836')
+md5sums=('525b4f75fa883633124183ae9015b6ed')
 
 build() {
   cd "${srcdir}/${pkgname}"
