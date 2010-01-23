@@ -3,19 +3,19 @@
 # Contributor: Sebastian Sareyko <public@nooms.de>
 
 pkgname=nitrogen
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Background browser and setter for X windows"
 arch=('i686' 'x86_64')
 url="http://projects.l3ib.org/nitrogen/"
 license=('GPL')
-depends=('gtkmm' 'hicolor-icon-theme' 'librsvg')
+depends=('gtkmm' 'hicolor-icon-theme' 'librsvg>=2.26.0-2')
 install=nitrogen.install
 source=(http://projects.l3ib.org/nitrogen/files/nitrogen-$pkgver.tar.gz)
-md5sums=('7097983bd0c2c79adee75eff7f174cb1')
+md5sums=('a62543bb22bbc68ef5b0011471597a63')
 
 build() {
-  cd "$srcdir/nitrogen-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr || return 1
   make || return 1
