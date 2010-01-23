@@ -1,14 +1,14 @@
 pkgbase = davtools
 	pkgdesc = Disk Allocation Viewer(DAV) tools for Linux that can obtain the state of fragmentation on disk and visualize it.
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/davtools/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = e2fsprogs
 	depends = gtk2
-	source = http://dl.sourceforge.net/sourceforge/davtools/davl-1.2.0.tar.bz2
+	source = http://downloads.sourceforge.net/project/davtools/davtools/Release 1.2.0/davl-1.2.0.tar.bz2
 	md5sums = 2c58b1f484b0197903f4cf4ee1fc3464
 
 pkgname = davtools
