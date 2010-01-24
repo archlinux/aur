@@ -1,0 +1,27 @@
+post_install() {
+ echo "*************************************************************"
+ echo "To use ConTeXt minimals run"
+ echo "    source /opt/context-minimals/setuptex"
+ echo "from your shell (as a normal user)"
+ echo ""
+ echo "To use MkIV run"
+ echo "    luatools --generate"
+ echo "from your shell (as a normal user)"
+ echo "*************************************************************"
+}
+
+post_upgrade() {
+ echo "*************************************************************"
+ echo "To use ConTeXt minimals run"
+ echo "    source /opt/context-minimals/setuptex"
+ echo "from your shell (as a normal user)"
+ echo ""
+ echo "To use MkIV run"
+ echo "    luatools --generate"
+ echo "from your shell (as a normal user)"
+ echo "*************************************************************"
+}
+
+pre_remove() {
+  /bin/true
+}

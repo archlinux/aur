@@ -1,0 +1,21 @@
+pkgbase = context-minimals-git
+	pkgdesc = A standalone ConTeXt distribution
+	pkgver = 2016.03.04
+	pkgrel = 1
+	url = http://www.contextgarden.net
+	install = context-minimals-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = rsync
+	optdepends = fontconfig: xetex support
+	optdepends = ruby: pdftex support
+	optdepends = ghostscript: support for PS and EPS images
+	optdepends = graphicmagic: support for GIF and TIFF images
+	optdepends = inkscape: support for SVG images
+	optdepends = pstoedit: support for metapost outlines for fonts
+	optdepends = zint: support for barcodes
+	optdepends = curl: loading remote content
+
+pkgname = context-minimals-git
+
