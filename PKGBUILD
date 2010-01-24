@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20100122
+pkgver=20100124
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -54,8 +54,7 @@ build() {
  echo "TEXMFOS=${_dest}/texmf-${_platform}"   > $srcdir/tex/setuptex
  echo "export TEXMFOS"                       >> $srcdir/tex/setuptex
  echo ""                                     >> $srcdir/tex/setuptex
- echo "TEXMFCACHE=\$HOME/texmf-cache:${_dest}/texmf-cache" \
-                                             >> $srcdir/tex/setuptex
+ echo "TEXMFCACHE=\$HOME/texmf-cache"        >> $srcdir/tex/setuptex
  echo "export TEXMFCACHE"                    >> $srcdir/tex/setuptex
  echo ""                                     >> $srcdir/tex/setuptex
  echo "unset TEXINPUTS MPINPUTS MFINPUTS"    >> $srcdir/tex/setuptex
@@ -70,7 +69,11 @@ build() {
  if [ -d $_texlivefontdir ]
  then
    mkdir -p $srcdir/tex/texmf-fonts
-   ln -s -f $_texlivefontdir $srcdir/tex/texmf-fonts/fonts
+   if [ -L $srcdir/tex/texmf-fonts/fonts ]
+   then 
+     rm $srcdir/tex/texmf-fonts/fonts
+   fi
+   ln -s $_texlivefontdir $srcdir/tex/texmf-fonts/fonts
  fi
 
 
