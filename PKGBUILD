@@ -5,7 +5,7 @@
 
 pkgname=minitube
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A native YouTube client in QT. Watch YouTube videos without Flash Player"
 arch=('i686' 'x86_64')
 url="http://flavio.tordini.org/minitube"
