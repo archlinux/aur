@@ -6,13 +6,13 @@
 pkgname=linux-api-headers
 pkgver=2.6.32.5
 _basever=2.6.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libc"
 license=('GPL')
 groups=('base')
-provides=('kernel-headers')
+provides=("kernel-headers=${pkgver}")
 conflicts=("glibc<=2.10.1-4" 'kernel-headers')
 replaces=('kernel-headers')
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-${_basever}.tar.bz2
