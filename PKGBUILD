@@ -2,12 +2,12 @@
 
 pkgname=chromium
 pkgver=4.0.249.78
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt')
+depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt' 'ffmpeg')
 makedepends=('python' 'perl' 'gperf')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
@@ -40,6 +40,7 @@ build() {
 		use_system_libxslt=1 \
 		use_system_bzip2=1 \
 		use_system_libpng=1 \
+		use_system_ffmpeg=1 \
 		werror="
 
 	patch -p0 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
@@ -64,8 +65,9 @@ package() {
 		${pkgdir}/usr/lib/chromium/chromium-sandbox
 	install -m 0644 -D src/out/Release/chrome.pak \
 		${pkgdir}/usr/lib/chromium/chrome.pak
-	install -m 0644 -D src/out/Release/libffmpegsumo.so \
-		${pkgdir}/usr/lib/chromium/libffmpegsumo.so
+	ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/libavcodec.so.52
+	ln -s /usr/lib/libavformat.so.52 ${pkgdir}/usr/lib/chromium/libavformat.so.52
+	ln -s /usr/lib/libavutil.so.50 ${pkgdir}/usr/lib/chromium/libavutil.so.50
 	cp -a src/out/Release/locales src/out/Release/resources \
 		${pkgdir}/usr/lib/chromium/
 	find ${pkgdir}/usr/lib/chromium/ -name '*.d' -type f -delete
