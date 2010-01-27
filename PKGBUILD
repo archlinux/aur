@@ -1,7 +1,7 @@
 # Maintainer: Evangelos Foutras <foutrelis@gmail.com>
 
 pkgname=php-memcache
-pkgver=2.2.5
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Memcache module for PHP"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('php')
 backup=('etc/php/conf.d/memcache.ini')
 install=php-memcache.install
 source=(http://pecl.php.net/get/memcache-$pkgver.tgz)
-md5sums=('72e56a3e4ab5742c4877fd4b6563e9bf')
+md5sums=('07933ce0191274201ea6905cd509c5b0')
 
 build() {
   cd "$srcdir/memcache-$pkgver"
