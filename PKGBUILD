@@ -6,7 +6,7 @@
 
 pkgname=django
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A high-level Python Web framework."
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -22,6 +22,10 @@ md5sums=('d7839c192e115f9c4dd8777de24dc21c')
 
 build() {
   cd ${srcdir}/Django-$pkgver
-  python setup.py install --root=${pkgdir} || return 1
+  python setup.py install --root=${pkgdir} --optimize=1 || return 1
+
+  install -Dm644 extras/django_bash_completion \
+    ${pkgdir}/etc/bash_completion.d/django || return 1
+
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE || return 1
 }
