@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn
-pkgver=2.1_rc20
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ source=(http://openvpn.net/release/openvpn-$pkgver.tar.gz
         openvpn.rc
         openvpn-tapdev.rc
         openvpn-tapdev.conf)
-md5sums=('8187f8f21507faac5e320e32747203b8'
+md5sums=('b273ed2b5ec8616fb9834cde8634bce7'
          'a3809b9727f0c2af2d0770f5c7442db2'
          'd2c48e970088d679dd3c2afd914ff731'
          '722f483c9e3ce2ec66d3301aaf7cf3d5')
