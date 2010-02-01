@@ -1,6 +1,6 @@
-diff -Nur digikam-1.0.0.orig/libs/dimg/loaders/pngloader.cpp digikam-1.0.0/libs/dimg/loaders/pngloader.cpp
---- digikam-1.0.0.orig/libs/dimg/loaders/pngloader.cpp	2009-12-21 11:20:36.000000000 +0200
-+++ digikam-1.0.0/libs/dimg/loaders/pngloader.cpp	2010-01-20 20:18:51.000000000 +0200
+diff -Nur digikam-1.1.0.orig/libs/dimg/loaders/pngloader.cpp digikam-1.1.0/libs/dimg/loaders/pngloader.cpp
+--- digikam-1.1.0.orig/libs/dimg/loaders/pngloader.cpp	2009-12-21 11:20:36.000000000 +0200
++++ digikam-1.1.0/libs/dimg/loaders/pngloader.cpp	2010-01-20 20:18:51.000000000 +0200
 @@ -105,7 +105,7 @@
      unsigned char buf[PNG_BYTES_TO_CHECK];
  
@@ -19,9 +19,9 @@ diff -Nur digikam-1.0.0.orig/libs/dimg/loaders/pngloader.cpp digikam-1.0.0/libs/
                      png_set_gray_to_rgb(png_ptr);
  
                      if (QSysInfo::ByteOrder == QSysInfo::LittleEndian)           // Intel
-diff -Nur digikam-1.0.0.orig/libs/threadimageio/thumbnailbasic.cpp digikam-1.0.0/libs/threadimageio/thumbnailbasic.cpp
---- digikam-1.0.0.orig/libs/threadimageio/thumbnailbasic.cpp	2009-12-21 11:20:45.000000000 +0200
-+++ digikam-1.0.0/libs/threadimageio/thumbnailbasic.cpp	2010-01-20 20:19:20.000000000 +0200
+diff -Nur digikam-1.1.0.orig/libs/threadimageio/thumbnailbasic.cpp digikam-1.1.0/libs/threadimageio/thumbnailbasic.cpp
+--- digikam-1.1.0.orig/libs/threadimageio/thumbnailbasic.cpp	2009-12-21 11:20:45.000000000 +0200
++++ digikam-1.1.0/libs/threadimageio/thumbnailbasic.cpp	2010-01-20 20:19:20.000000000 +0200
 @@ -137,7 +137,7 @@
      unsigned char buf[PNG_BYTES_TO_CHECK];
  
