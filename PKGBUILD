@@ -2,19 +2,20 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=latex2rtf
-pkgver=1.9.19
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="LaTeX to RTF converter"
 arch=('i686' 'x86_64')
 url="http://latex2rtf.sourceforge.net/"
 license=('GPL')
 depends=('glibc' 'imagemagick' 'ghostscript')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('8a3b920d59f6b38736aa256c26374472')
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+md5sums=('39611b6dbb5ce78b48c7695f3fcafb88')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   make PREFIX=/usr || return 1
-  make PREFIX=$startdir/pkg/usr MAN_INSTALL=$startdir/pkg/usr/share/man/man1 install
-  sed -i -e 's|error "no input file specified"| echo "error: no input file specified"|' $startdir/pkg/usr/bin/latex2png
+  make PREFIX=${pkgdir}/usr MAN_INSTALL=${pkgdir}/usr/share/man/man1 install || return 1
+  sed -i -e 's|error "no input file specified"| echo "error: no input file specified"|' ${pkgdir}/usr/bin/latex2png
 }
