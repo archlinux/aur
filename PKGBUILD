@@ -1,3 +1,4 @@
+# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 # Maintainer: Jeff Mickey <j@codemac.net>
 # Contributor: Woody Gilk aka Shadowhand <woody.gilk@gmail.com>
 
