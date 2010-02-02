@@ -21,5 +21,10 @@ build() {
 	patch -p0 < ${srcdir}/gcc43.patch
 	./configure --prefix=/usr
 	make || return 1
+}
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+
 	make DESTDIR=${pkgdir} install
 } 
