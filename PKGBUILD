@@ -1,6 +1,6 @@
-# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
-# Maintainer: Jeff Mickey <j@codemac.net>
+# Contributor: Jeff Mickey <j@codemac.net>
 # Contributor: Woody Gilk aka Shadowhand <woody.gilk@gmail.com>
+# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gmrun
 pkgver=0.9.2
@@ -16,9 +16,10 @@ md5sums=('6cef37a968006d9496fc56a7099c603c'
 	 '3a0b69d8c2cac6cfb551b9d235441ecb')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  patch -p0 < $srcdir/gcc43.patch
-  ./configure --prefix=/usr
-  make || return 1
-  make DESTDIR=$startdir/pkg install
+	cd ${srcdir}/${pkgname}-${pkgver}
+
+	patch -p0 < ${srcdir}/gcc43.patch
+	./configure --prefix=/usr
+	make || return 1
+	make DESTDIR=${pkgdir} install
 } 
