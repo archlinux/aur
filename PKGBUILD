@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 pkgname=xkeyboard-config-gitshtrom
-pkgver=20100104
+pkgver=20100126
 pkgrel=1
 pkgdesc="X keyboard configuration files"
 arch=(i686 x86_64)
