@@ -24,9 +24,9 @@ ftp://ftp.springer.de/pub/tex/latex/svjour3/global.zip
 ftp://ftp.springer.de/pub/tex/latex/svjour3/bibtex/spbasic.bst
 ftp://ftp.springer.de/pub/tex/latex/svjour3/bibtex/spmpsci.bst
 ftp://ftp.springer.de/pub/tex/latex/svjour3/bibtex/spphys.bst)
-md5sums=('d8d23fccf1e8d546e3da41a13aeb6d2c'
-         '150c62216a841d3bb7a98c96fed71827'
-         '246d532d4b641a60bc9900432c836b92'
+md5sums=('b3fa2f22801466e3182203213fc4eba4'
+         'f17923388e06a268f214ecb59a65747d'
+         'eb6d2ed284bc2e970d70aa6e642b20c4'
          'b27924137faccbc3d13ebae5a7538c63'
          'f2e974a27cc4fa86625973055f231000'
          '1a2e9515055a3f496c0942d26adea55d')
