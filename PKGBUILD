@@ -47,11 +47,11 @@ md5sums=('ae11eddebdf6d30071a8cfac0c8984fb'
          '239175bb1c14c0ee1288e2b1bac694e6'
          '0043b85d599385e40b673bc3325248f8'
          'dba56cd52fbb4fba62d9fa0585b6e0ca'
-         '0ff75357bcf9b5b25962f3c7bc18146f'
-         '60b41a8463ae87374ae99dfdfa04ee6c'
+         '9946f571cb31cc6bfb45e1281c042f79'
+         '00ffefdab78bb8eb9039a8d2d5a31a94'
          '4e94835d0b432831e54701ec2fa0800f'
          '7db95b194a770fa2ee90fce0f80d9cd7'
-         '08c2fa4df6473c2f1bb150797f82f448'
+         '85b8aa489fa4f227f290fb16bb17f4c7'
          '216c50b96e931516e9c3fba2567d5838')
 
 build() {
