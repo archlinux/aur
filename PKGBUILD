@@ -1,4 +1,5 @@
-# Maintainer: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
+# Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
+# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gtk-chtheme
 pkgver=0.3.1
@@ -8,12 +9,15 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://plasmasturm.org/programs/gtk-chtheme/"
 depends=('gtk2')
-source=(http://plasmasturm.org/programs/gtk-chtheme/$pkgname-$pkgver.tar.bz2)
+source=(http://plasmasturm.org/programs/gtk-chtheme/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('f688053bf26dd6c4f1cd0bf2ee33de2a')
 
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  make || return 1
-  mkdir -p $startdir/pkg/usr/bin
-  install -m755 gtk-chtheme $startdir/pkg/usr/bin/ || return 1
+	cd ${srcdir}/${pkgname}-${pkgver}
+	make || return 1
+}
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	install -Dm755 gtk-chtheme ${pkgdir}/usr/bin/gtk-chtheme || return 1
 }
