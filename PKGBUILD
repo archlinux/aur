@@ -2,7 +2,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 pkgbase="kernel26"
-pkgname=('kernel26' 'kernel26-firmware' 'kernel26-headers') # Build stock -ARCH kernel
+pkgname=('kernel26-web100' 'kernel26-web100-headers') # Build stock -ARCH kernel
 # pkgname=kernel26-custom       # Build kernel with a different name
 _kernelname=${pkgname#kernel26}
 _basekernel=2.6.32
@@ -14,12 +14,14 @@ license=('GPL2')
 url="http://www.kernel.org"
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
+	http://www.web100.org/download/kernel/2.5.27/web100-2.5.27-201001301335.tar.gz
         # the main kernel config files
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
         kernel26.preset)
 md5sums=('260551284ac224c3a43c4adac7df4879'
          '57d123b271851aeee1b71a5f7f8245d5'
+	 '0542d2a7a8462c9614c9e9bb9c863a67'
          '8f2c9b66c60ab48082c8fdcc7ab7efc8'
          'd2d438a3c950ef33d8e7655c1f3cca4b'
          '25584700a0a679542929c4bed31433b6')
@@ -29,6 +31,9 @@ build() {
   # Add -ARCH patches
   # See http://projects.archlinux.org/linux-2.6-ARCH.git/
   patch -Np1 -i ${srcdir}/${_patchname} || return 1
+
+  sed -i 's/EXTRAVERSION = /EXTRAVERSION =/' Makefile
+  patch -Np1 -i ${srcdir}/web100/web100-2.6.32-2.5.27-201001301335.patch || return 1
 
   if [ "$CARCH" = "x86_64" ]; then
     cat ../config.x86_64 >./.config
@@ -57,8 +62,8 @@ build() {
   make bzImage modules || return 1
 }
 
-package_kernel26() {
-  pkgdesc="The Linux Kernel and modules"
+package_kernel26-web100() {
+  pkgdesc="The Linux Kernel and modules with Web100 patchset"
   groups=('base')
   backup=(etc/mkinitcpio.d/${pkgname}.preset)
   depends=('coreutils' 'kernel26-firmware>=2.6.32' 'module-init-tools' 'mkinitcpio>=0.5.20')
@@ -71,7 +76,7 @@ package_kernel26() {
             'zd1211' 'kvm-modules' 'iwlwifi' 'rt2x00-cvs'
             'gspcav1' 'atl2' 'wlan-ng26' 'rt2500')
   install=kernel26.install
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country' 'web100-utils: to benefit from the Web100 extensions')
 
   KARCH=x86
   cd ${srcdir}/linux-$_basekernel
@@ -104,8 +109,8 @@ package_kernel26() {
   rm -rf ${pkgdir}/lib/firmware
 }
 
-package_kernel26-headers() {
-  pkgdesc="Header files and scripts for building modules for kernel26"
+package_kernel26-web100-headers() {
+  pkgdesc="Header files and scripts for building modules for kernel26-web100"
   mkdir -p ${pkgdir}/lib/modules/${_kernver}
   cd ${pkgdir}/lib/modules/${_kernver}
   ln -sf ../../../usr/src/linux-${_kernver} build
@@ -202,13 +207,4 @@ package_kernel26-headers() {
   find ${pkgdir}/usr/src/linux-${_kernver} -type d -exec chmod 755 {} \;
   # remove unneeded architectures
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
-}
-
-package_kernel26-firmware() {
-  pkgdesc="The included firmware files of the Linux Kernel"
-  groups=('base')
-
-  cd ${srcdir}/linux-$_basekernel
-  make firmware || return 1
-  make INSTALL_MOD_PATH=${pkgdir} firmware_install || return 1
 }
