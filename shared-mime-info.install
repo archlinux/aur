@@ -1,5 +1,5 @@
 post_install() {
-  update-mime-database /usr/share/mime > /dev/null 2>&1
+  update-mime-database usr/share/mime > /dev/null 2>&1
 }
 
 post_upgrade() {

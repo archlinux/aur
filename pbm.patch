@@ -1,0 +1,49 @@
+diff -Naur shared-mime-info-0.70-orig/freedesktop.org.xml shared-mime-info-0.70/freedesktop.org.xml
+--- shared-mime-info-0.70-orig/freedesktop.org.xml	2010-02-06 02:39:24.000000000 -0500
++++ shared-mime-info-0.70/freedesktop.org.xml	2010-02-06 02:48:01.000000000 -0500
+@@ -17025,12 +17025,10 @@
+     <magic priority="50">
+       <match value="P1" type="string" offset="0">
+         <match value="0x0a" type="byte" offset="2">
+-	  <match value="#" type="string" offset="3"/>
+         </match>
+       </match>
+       <match value="P4" type="string" offset="0">
+         <match value="0x0a" type="byte" offset="2">
+-	  <match value="#" type="string" offset="3"/>
+         </match>
+       </match>
+     </magic>
+@@ -17074,12 +17072,10 @@
+     <magic priority="50">
+       <match value="P2" type="string" offset="0">
+         <match value="0x0a" type="byte" offset="2">
+-	  <match value="#" type="string" offset="3"/>
+         </match>
+       </match>
+       <match value="P5" type="string" offset="0">
+         <match value="0x0a" type="byte" offset="2">
+-	  <match value="#" type="string" offset="3"/>
+         </match>
+       </match>
+     </magic>
+@@ -17123,12 +17119,10 @@
+     <magic priority="50">
+       <match value="P3" type="string" offset="0">
+         <match value="0x0a" type="byte" offset="2">
+-	  <match value="#" type="string" offset="3"/>
+         </match>
+       </match>
+       <match value="P6" type="string" offset="0">
+         <match value="0x0a" type="byte" offset="2">
+-	  <match value="#" type="string" offset="3"/>
+ 	</match>
+       </match>
+     </magic>
+@@ -23926,4 +23920,4 @@
+     </treemagic>
+   </mime-type>
+ 
+-</mime-info>
+\ No newline at end of file
++</mime-info>
