@@ -2,7 +2,7 @@
 
 pkgname=chromium
 pkgver=4.0.249.78
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
