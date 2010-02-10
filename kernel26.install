@@ -1,8 +1,8 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
-KERNEL_NAME=
-KERNEL_VERSION=2.6.32-ARCH
+KERNEL_NAME=-web100
+KERNEL_VERSION=2.6.32-web100-web100
 
 post_install () {
   # updating module dependencies
