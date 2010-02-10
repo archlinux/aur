@@ -1,11 +1,11 @@
 # $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
-pkgbase="kernel26"
-pkgname=('kernel26-mipl' 'kernel26-mipl-headers') # Build stock -ARCH kernel
+pkgbase="kernel26-mipl"
+pkgname=('kernel26-mipl' 'kernel26-mipl-headers')
 _kernelname=${pkgname#kernel26}
 _basekernel=2.6.32
-pkgver=${_basekernel}.7
+pkgver=${_basekernel}.8
 pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ license=('GPL2')
 url="http://www.kernel.org"
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
-	dsmip-patches/dsmip-2.6.30_01_dsmip-encap-udp.patch
+	dsmip-patches/dsmip-2.6.32_01_dsmip-encap-udp.patch
 	dsmip-patches/dsmip-2.6.30_02_TLV.patch
 	dsmip-patches/dsmip-2.6.30_03_Autoload-Module.patch
 	dsmip-patches/dsmip-2.6.30_04_NATT-report-UDP-info-on-raw-socket.patch
@@ -23,23 +23,15 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
         kernel26.preset)
-md5sums=('260551284ac224c3a43c4adac7df4879'
-         'b746d6d8f3609f9dfb73803ea22d7983'
-         'fdff6ecf6121135f9ff257ba5313873d'
-         'aa9c294063c5e9d421546d4e035ee34e'
-         'bcd54286aec43c70d3b57f06394a9c7a'
-         '5d9c139a34e316f7c77eb3f856ffe406'
-         'd765b6ec7feba168064ac87d39f80749'
-         '45ed8db1f31591924f0db38f54d2a3a2'
-         'c114c5d89622a93165bb948d62d966b5'
-         '5c91374d56f115ba4324978d5b002711'
-         '25584700a0a679542929c4bed31433b6')
 
 build() {
   cd ${srcdir}/linux-$_basekernel
   # Add -ARCH patches
   # See http://projects.archlinux.org/linux-2.6-ARCH.git/
   patch -Np1 -i ${srcdir}/${_patchname} || return 1
+
+  ln -s ${startdir}/dsmip-patches patches
+  quilt push -a || exit 1
 
   if [ "$CARCH" = "x86_64" ]; then
     cat ../config.x86_64 >./.config
@@ -214,3 +206,15 @@ package_kernel26-mipl-headers() {
   # remove unneeded architectures
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
+
+md5sums=('260551284ac224c3a43c4adac7df4879'
+         '908f38fc5ba77b9bf691ae83e501b8e4'
+         '3de4853fee795c240688a035f3e561d0'
+         'aa9c294063c5e9d421546d4e035ee34e'
+         'bcd54286aec43c70d3b57f06394a9c7a'
+         '5d9c139a34e316f7c77eb3f856ffe406'
+         'd765b6ec7feba168064ac87d39f80749'
+         '13834128986ee7f5163f44084d1d708a'
+         '6458065646494471f4ed7e1428b683be'
+         '6daf672e34889e2194f3b5dffd873f2e'
+         '25584700a0a679542929c4bed31433b6')
