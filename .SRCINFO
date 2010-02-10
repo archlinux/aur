@@ -1,12 +1,11 @@
 pkgbase = python-sphinx
 	pkgdesc = Python documentation generator
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = GPL
-	makedepends = setuptools
-	depends = python>=2.4
+	depends = setuptools
 	depends = pygments
 	depends = docutils
 	depends = python-jinja
