@@ -1,6 +1,7 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
 # Contributor: detto <detto-brumm@freenet.de>
+# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gtk-engine-murrine
 pkgver=0.90.3
@@ -12,15 +13,20 @@ license=('GPL')
 depends=('gtk2')
 makedepends=('intltool' 'perl')
 optdepends=('murrine-themes-collection: themes for Murrine engine')
-install=gtk-engine-murrine.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/murrine/0.90/murrine-$pkgver.tar.bz2)
-md5sums=('58a10b5c7b5e114a8a7ff5705fe274f5')
 options=('!libtool')
+install=gtk-engine-murrine.install
+source=(http://ftp.gnome.org/pub/GNOME/sources/murrine/0.90/murrine-${pkgver}.tar.bz2)
+md5sums=('58a10b5c7b5e114a8a7ff5705fe274f5')
 
 build() {
-  cd ${srcdir}/murrine-$pkgver
+	cd ${srcdir}/murrine-${pkgver}
 
-  ./configure --prefix=/usr --enable-animation
-  make || return 1
-  make DESTDIR=${pkgdir} install
+	./configure --prefix=/usr --enable-animation
+	make || return 1
+}
+
+package() {
+	cd ${srcdir}/murrine-${pkgver}
+
+	make DESTDIR=${pkgdir} install
 }
