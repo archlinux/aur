@@ -1,13 +1,12 @@
 # $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
-pkgbase="kernel26"
-pkgname=('kernel26-web100' 'kernel26-web100-headers') # Build stock -ARCH kernel
-# pkgname=kernel26-custom       # Build kernel with a different name
+pkgbase="kernel26-web100"
+pkgname=('kernel26-web100' 'kernel26-web100-headers')
 _kernelname=${pkgname#kernel26}
 _basekernel=2.6.32
-pkgver=${_basekernel}.2
-pkgrel=2
+pkgver=${_basekernel}.8
+pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -19,12 +18,6 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
         kernel26.preset)
-md5sums=('260551284ac224c3a43c4adac7df4879'
-         '57d123b271851aeee1b71a5f7f8245d5'
-	 '0542d2a7a8462c9614c9e9bb9c863a67'
-         '8f2c9b66c60ab48082c8fdcc7ab7efc8'
-         'd2d438a3c950ef33d8e7655c1f3cca4b'
-         '25584700a0a679542929c4bed31433b6')
 
 build() {
   cd ${srcdir}/linux-$_basekernel
@@ -208,3 +201,10 @@ package_kernel26-web100-headers() {
   # remove unneeded architectures
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
+
+md5sums=('260551284ac224c3a43c4adac7df4879'
+         '908f38fc5ba77b9bf691ae83e501b8e4'
+         '0542d2a7a8462c9614c9e9bb9c863a67'
+         '302a660e52cecb134f84e9d8bc69ece3'
+         '81fa51251ef9de969cfd7f3f48b95e58'
+         '25584700a0a679542929c4bed31433b6')
