@@ -1,33 +1,16 @@
 # $Id$
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
-# Maintainer: Olivier Mehani <shtrom-arch@ssji.net>
-#pkgname=kernel26                # Build stock -ARCH kernel
-pkgname=kernel26-mipl       # Build kernel with a different name
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Thomas Baechler <thomas@archlinux.org>
+pkgbase="kernel26"
+pkgname=('kernel26-mipl' 'kernel26-mipl-headers') # Build stock -ARCH kernel
 _kernelname=${pkgname#kernel26}
-_basekernel=2.6.30
-pkgver=${_basekernel}.6
+_basekernel=2.6.32
+pkgver=${_basekernel}.7
 pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
-pkgdesc="The Linux Kernel and modules, with patches and options to support IPv6 mobility (MIPv6, NEMO, MCoA, DSMIP)"
 arch=(i686 x86_64)
 license=('GPL2')
-groups=('base')
-url="http://www.kernel.org, http://www.nautilus6.org"
-backup=(etc/mkinitcpio.d/${pkgname}.preset)
-depends=('coreutils' "kernel26-firmware>=${_basekernel}" 'module-init-tools' 'mkinitcpio>=0.5.20')
-makedepends=('quilt')
-# pwc, ieee80211 and hostap-driver26 modules are included in kernel26 now
-# nforce package support was abandoned by nvidia, kernel modules should cover everything now.
-# kernel24 support is dropped since glibc24
-replaces=('kernel24' 'kernel24-scsi' 'kernel26-scsi'
-          'alsa-driver' 'ieee80211' 'hostap-driver26'
-          'pwc' 'nforce' 'squashfs' 'unionfs' 'ivtv'
-          'zd1211' 'kvm-modules' 'iwlwifi' 'rt2x00-cvs'
-          'gspcav1' 'atl2' 'wlan-ng26' 'aufs' 'rt2500'
-	  'kernel26-nemo')
-provides=('kernel26-nemo')
-install=kernel26.install
+url="http://www.kernel.org"
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
 	dsmip-patches/dsmip-2.6.30_01_dsmip-encap-udp.patch
@@ -36,33 +19,26 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
 	dsmip-patches/dsmip-2.6.30_04_NATT-report-UDP-info-on-raw-socket.patch
 	dsmip-patches/dsmip-2.6.30_05_check_input_encap.patch
 	dsmip-patches/series
-	# the main kernel config files
+        # the main kernel config files
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
         kernel26.preset)
-optdepends=('crda: to set the correct wireless channels of your country'
-	    'umip: UMIP daemon to support mobility features'
-	    'kernel-headers-mipl: (DS)MIP-patched kernel headers, needed to compile userland')
-md5sums=('7a80058a6382e5108cdb5554d1609615'
-         'f15446b016865f6bd5d91ca800ea91bd'
+md5sums=('260551284ac224c3a43c4adac7df4879'
+         'b746d6d8f3609f9dfb73803ea22d7983'
          'fdff6ecf6121135f9ff257ba5313873d'
          'aa9c294063c5e9d421546d4e035ee34e'
          'bcd54286aec43c70d3b57f06394a9c7a'
          '5d9c139a34e316f7c77eb3f856ffe406'
          'd765b6ec7feba168064ac87d39f80749'
          '45ed8db1f31591924f0db38f54d2a3a2'
-         'ef86c52d94bea96adcabbc6893d565d4'
-         'a13fbd32a5c961a025b321e6ac9fba0a'
+         'c114c5d89622a93165bb948d62d966b5'
+         '5c91374d56f115ba4324978d5b002711'
          '25584700a0a679542929c4bed31433b6')
 
 build() {
-  KARCH=x86
-
   cd ${srcdir}/linux-$_basekernel
-  ln -s ${startdir}/dsmip-patches patches
-  quilt push -a
   # Add -ARCH patches
-  # See http://projects.archlinux.org/git/?p=linux-2.6-ARCH.git;a=summary
+  # See http://projects.archlinux.org/linux-2.6-ARCH.git/
   patch -Np1 -i ${srcdir}/${_patchname} || return 1
 
   if [ "$CARCH" = "x86_64" ]; then
@@ -75,7 +51,6 @@ build() {
   fi
   # get kernel version  
   make prepare
-  _kernver="$(make kernelrelease)"
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
@@ -91,10 +66,61 @@ build() {
   yes "" | make config
   # build!
   make bzImage modules || return 1
+}
+
+package_kernel26-mipl() {
+  pkgdesc="The Linux Kernel and modules with IPv6 mobility extensions"
+  groups=('base')
+  backup=(etc/mkinitcpio.d/${pkgname}.preset)
+  depends=('coreutils' 'kernel26-firmware>=2.6.32' 'module-init-tools' 'mkinitcpio>=0.5.20')
+  # pwc, ieee80211 and hostap-driver26 modules are included in kernel26 now
+  # nforce package support was abandoned by nvidia, kernel modules should cover everything now.
+  # kernel24 support is dropped since glibc24
+  replaces=('kernel24' 'kernel24-scsi' 'kernel26-scsi'
+            'alsa-driver' 'ieee80211' 'hostap-driver26'
+            'pwc' 'nforce' 'squashfs' 'unionfs' 'ivtv'
+            'zd1211' 'kvm-modules' 'iwlwifi' 'rt2x00-cvs'
+            'gspcav1' 'atl2' 'wlan-ng26' 'rt2500')
+  install=kernel26.install
+  optdepends=('crda: to set the correct wireless channels of your country')
+
+  KARCH=x86
+  cd ${srcdir}/linux-$_basekernel
+  # get kernel version
+  _kernver="$(make kernelrelease)"
   mkdir -p ${pkgdir}/{lib/modules,boot}
   make INSTALL_MOD_PATH=${pkgdir} modules_install || return 1
   cp System.map ${pkgdir}/boot/System.map26${_kernelname}
   cp arch/$KARCH/boot/bzImage ${pkgdir}/boot/vmlinuz26${_kernelname}
+  #  # add vmlinux
+  install -m644 -D vmlinux ${pkgdir}/usr/src/linux-${_kernver}/vmlinux
+
+  # install fallback mkinitcpio.conf file and preset file for kernel
+  install -m644 -D ${srcdir}/kernel26.preset ${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset || return 1
+  # set correct depmod command for install
+  sed \
+    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/g" \
+    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
+    -i $startdir/kernel26.install
+  sed \
+    -e "s|source .*|source /etc/mkinitcpio.d/kernel26${_kernelname}.kver|g" \
+    -e "s|default_image=.*|default_image=\"/boot/${pkgname}.img\"|g" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/${pkgname}-fallback.img\"|g" \
+    -i ${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset
+
+  echo -e "# DO NOT EDIT THIS FILE\nALL_kver='${_kernver}'" > ${pkgdir}/etc/mkinitcpio.d/${pkgname}.kver
+  # remove build and source links
+  rm -f ${pkgdir}/lib/modules/${_kernver}/{source,build}
+  # remove the firmware
+  rm -rf ${pkgdir}/lib/firmware
+}
+
+package_kernel26-mipl-headers() {
+  pkgdesc="Header files and scripts for building modules for kernel26-mipl"
+  mkdir -p ${pkgdir}/lib/modules/${_kernver}
+  cd ${pkgdir}/lib/modules/${_kernver}
+  ln -sf ../../../usr/src/linux-${_kernver} build
+  cd ${srcdir}/linux-$_basekernel
   install -D -m644 Makefile \
     ${pkgdir}/usr/src/linux-${_kernver}/Makefile
   install -D -m644 kernel/Makefile \
@@ -116,7 +142,7 @@ build() {
   cp -a scripts ${pkgdir}/usr/src/linux-${_kernver}
   # fix permissions on scripts dir
   chmod og-w -R ${pkgdir}/usr/src/linux-${_kernver}/scripts
-  #mkdir -p ${pkgdir}/usr/src/linux-${_kernver}/.tmp_versions
+  mkdir -p ${pkgdir}/usr/src/linux-${_kernver}/.tmp_versions
 
   mkdir -p ${pkgdir}/usr/src/linux-${_kernver}/arch/$KARCH/kernel
 
@@ -173,8 +199,6 @@ build() {
   # in reference to:
   # http://bugs.archlinux.org/task/14568
   cp -a include/trace $pkgdir/usr/src/linux-${_kernver}/include/
-  # add vmlinux
-  cp vmlinux ${pkgdir}/usr/src/linux-${_kernver}
   # copy in Kconfig files
   for i in `find . -name "Kconfig*"`; do 
     mkdir -p ${pkgdir}/usr/src/linux-${_kernver}/`echo $i | sed 's|/Kconfig.*||'`
@@ -182,27 +206,11 @@ build() {
   done
 
   cd ${pkgdir}/usr/src/linux-${_kernver}/include && ln -s asm-$KARCH asm
+  # add header for aufs2-util
+  cp -a ${srcdir}/linux-$_basekernel/include/asm-generic/bitsperlong.h ${pkgdir}/usr/src/linux-${_kernver}/include/asm/
 
   chown -R root.root ${pkgdir}/usr/src/linux-${_kernver}
   find ${pkgdir}/usr/src/linux-${_kernver} -type d -exec chmod 755 {} \;
-  cd ${pkgdir}/lib/modules/${_kernver} && \
-    (rm -f source build; ln -sf ../../../usr/src/linux-${_kernver} build)
-  # install fallback mkinitcpio.conf file and preset file for kernel
-  install -m644 -D ${srcdir}/kernel26.preset ${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset || return 1
-  # set correct depmod command for install
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/g" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
-    -i $startdir/kernel26.install
-  sed \
-    -e "s|source .*|source /etc/mkinitcpio.d/kernel26${_kernelname}.kver|g" \
-    -e "s|default_image=.*|default_image=\"/boot/${pkgname}.img\"|g" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/${pkgname}-fallback.img\"|g" \
-    -i ${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset
-
-  echo -e "# DO NOT EDIT THIS FILE\nALL_kver='${_kernver}'" > ${startdir}/pkg/etc/mkinitcpio.d/${pkgname}.kver
   # remove unneeded architectures
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
-  # remove the firmware
-  rm -rf ${pkgdir}/lib/firmware
 }

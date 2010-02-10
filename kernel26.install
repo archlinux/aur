@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-mipl
-KERNEL_VERSION=2.6.30-mipl
+KERNEL_VERSION=2.6.32-mipl
 
 post_install () {
   # updating module dependencies
@@ -39,7 +39,7 @@ post_upgrade() {
     echo ">>>"
   fi
 
-  if grep "/boot" /etc/fstab 2>&1 >/dev/null; then
+  if grep "^[^#]*/boot" /etc/fstab 2>&1 >/dev/null; then
     if ! grep "/boot" /etc/mtab 2>&1 >/dev/null; then
       echo "WARNING: /boot appears to be a seperate partition but is not mounted"
       echo "         This is most likely not what you want.  Please mount your /boot"
@@ -139,4 +139,9 @@ if [ "`vercmp $2 2.6.21`" -lt 0 ]; then
   echo ">>> For more information about ACPI modules check this wiki page:"
   echo ">>> 'http://wiki.archlinux.org/index.php/ACPI_modules'"
 fi
+}
+
+post_remove() {
+  rm -f /boot/kernel26${KERNEL_NAME}.img
+  rm -f /boot/kernel26${KERNEL_NAME}-fallback.img
 }
