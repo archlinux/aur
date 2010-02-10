@@ -35,6 +35,7 @@ build() {
 package_libpurple(){
     pkgdesc="IM library extracted from Pidgin"
     depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss')
+    optdepends=('cyrus-sasl-plugins: needed for facebook xmpp authentication')
     cd "$srcdir/$pkgbase-$pkgver"
 
     for dir in libpurple share/sounds share/ca-certs m4macros po
