@@ -1,28 +1,27 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=chromium
-pkgver=4.0.249.78
-pkgrel=3
+pkgver=5.0.307.7
+pkgrel=1
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt' 'ffmpeg')
-makedepends=('python' 'perl' 'gperf')
+depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt' 'ffmpeg'
+         'libevent' 'libxss')
+makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install='chromium.install'
-# downgrade from 4.0.267.0-2
-options=('force')
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
         'drop_sse2.patch' 'ffmpeg_branding_mime.patch' 'libpng-1.4.patch')
-md5sums=('15d2cdc31d1c41eebf02eab3323dab3c'
+md5sums=('916fa2a672086ab105dc7acacfb96987'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '93cd6f5f53b15546dc9d3de49118534c'
-         'ddc1d741d50e8d46765a6b76e8faad32'
-         '95567a364197237dcefa3fabb5631822'
-         'ac1da2e538ed1e16235b206ff9ba9407')
+         'dfbc18bb26dffa2dc6d4d3a857730902'
+         'ae9e26e6c2d164e6af0e513dae2273a3'
+         'e3b482665b179e06ff852c58463706a8')
 
 build() {
 	cd ${srcdir}/chromium-${pkgver}
@@ -41,12 +40,15 @@ build() {
 		use_system_bzip2=1 \
 		use_system_libpng=1 \
 		use_system_ffmpeg=1 \
-		werror="
+		use_system_yasm=1 \
+		use_system_libevent=1 \
+		use_system_ssl=1"
 
 	patch -p0 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
 	# i686 does not include SSE2
 	# see http://code.google.com/p/chromium/issues/detail?id=9007
 	patch -p0 -i ${srcdir}/drop_sse2.patch || return 1
+	# see http://codereview.chromium.org/569009/show
 	patch -p0 -i ${srcdir}/libpng-1.4.patch || return 1
 
 	export PATH=./depot_tools/:$PATH

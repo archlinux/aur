@@ -1,6 +1,6 @@
---- src/build/common.gypi	2009-12-17 01:57:20.000000000 +0100
-+++ src/build/common.gypi	2009-12-17 02:37:05.663568345 +0100
-@@ -652,15 +652,6 @@
+--- src/build/common.gypi	2010-02-11 19:30:43.000000000 +0100
++++ src/build/common.gypi	2010-02-11 21:07:58.505011143 +0100
+@@ -759,15 +759,6 @@
              # used during computation does not change depending on how the
              # compiler optimized the code, since the value is always kept
              # in its specified precision.

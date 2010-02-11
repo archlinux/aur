@@ -21,7 +21,8 @@ tmp=$(mktemp -d)
 mkdir -p $tmp/chromium-$pkgver
 cd $tmp/chromium-$pkgver
 
-svn co -r34500 http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
+# this should be updated to a more recent revision on major updates
+svn co -r38382 -q http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
 
 export PATH=./depot_tools/:$PATH
 gclient.py config http://src.chromium.org/svn/releases/$pkgver
@@ -47,7 +48,7 @@ find . -iname '*.o' -delete
 find . -iname '*.nexe' -delete
 
 cd ..
-bsdtar cvJf $current/chromium-$pkgver.tar.xz chromium-$pkgver
+bsdtar cJf $current/chromium-$pkgver.tar.xz chromium-$pkgver
 cd $current
 
 rm -rf $tmp

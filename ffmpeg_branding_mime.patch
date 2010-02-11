@@ -1,5 +1,5 @@
---- src/net/base/mime_util.cc	2009-12-13 19:09:26.467781732 +0100
-+++ src/net/base/mime_util.cc	2009-12-13 19:10:14.967931404 +0100
+--- src/net/base/mime_util.cc	2010-02-11 20:07:33.939537145 +0100
++++ src/net/base/mime_util.cc	2010-02-11 20:07:33.955373468 +0100
 @@ -188,7 +188,6 @@
    "audio/ogg",
    "application/ogg",
@@ -8,15 +8,15 @@
    // MPEG-4.
    "video/mp4",
    "video/x-m4v",
-@@ -198,7 +197,6 @@
-   // MP3.
+@@ -199,7 +198,6 @@
    "audio/mp3",
    "audio/x-mp3",
+   "audio/mpeg",
 -#endif
  };
  
  // List of supported codecs when passed in with <source type="...">.
-@@ -206,10 +204,8 @@
+@@ -207,10 +205,8 @@
  // Refer to http://wiki.whatwg.org/wiki/Video_type_parameters#Browser_Support
  // for more information.
  static const char* const supported_media_codecs[] = {

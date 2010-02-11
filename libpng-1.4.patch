@@ -1,28 +1,43 @@
---- src/app/gfx/codec/orig/png_codec.cc	2009-11-19 12:14:46.000000000 -0800
-+++ src/app/gfx/codec/png_codec.cc	2009-11-19 12:15:56.000000000 -0800
-@@ -350,9 +350,9 @@
+--- src/app/gfx/codec/png_codec.cc
++++ src/app/gfx/codec/png_codec.cc
+@@ -190,7 +190,7 @@ void DecodeInfoCallback(png_struct* png_ptr, png_info* info_ptr) {
+   unsigned long long total_size =
+       static_cast<unsigned long long>(w) * static_cast<unsigned long long>(h);
+   if (total_size > ((1 << 29) - 1))
+-    longjmp(png_ptr->jmpbuf, 1);
++    longjmp(png_jmpbuf(png_ptr), 1);
+   state->width = static_cast<int>(w);
+   state->height = static_cast<int>(h);
+ 
+@@ -279,7 +279,7 @@ void DecodeInfoCallback(png_struct* png_ptr, png_info* info_ptr) {
+     }
+   } else {
+     NOTREACHED() << "Unknown input channels";
+-    longjmp(png_ptr->jmpbuf, 1);
++    longjmp(png_jmpbuf(png_ptr), 1);
+   }
+ 
+   if (state->bitmap) {
+@@ -349,10 +349,7 @@ bool BuildPNGStruct(const unsigned char* input, size_t input_size,
+   if (png_sig_cmp(const_cast<unsigned char*>(input), 0, 8) != 0)
      return false;
  
-   *png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,
+-  *png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,
 -                                    png_voidp_NULL,
 -                                    png_error_ptr_NULL,
 -                                    png_error_ptr_NULL);
-+                                    0,
-+                                    0,
-+                                    0);
++  *png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
    if (!*png_ptr)
      return false;
  
-@@ -574,9 +574,9 @@
+@@ -574,9 +571,7 @@ bool PNGCodec::Encode(const unsigned char* input, ColorFormat format,
    DCHECK(input_color_components * w <= row_byte_width);
  
    png_struct* png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
 -                                                png_voidp_NULL,
 -                                                png_error_ptr_NULL,
 -                                                png_error_ptr_NULL);
-+                                                0,
-+                                                0,
-+                                                0);
++                                                NULL, NULL, NULL);
    if (!png_ptr)
      return false;
    png_info* info_ptr = png_create_info_struct(png_ptr);
@@ -35,9 +50,9 @@
 -                                                 png_voidp_NULL,
 -                                                 png_error_ptr_NULL,
 -                                                 png_error_ptr_NULL);
-+                                                 0,
-+                                                 0,
-+                                                 0);
++                                                 NULL,
++                                                 NULL,
++                                                 NULL);
      if (!pngPtr)
          return false;
  
