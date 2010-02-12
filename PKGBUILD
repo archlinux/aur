@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="GNOME keyring client library"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
-depends=('eggdbus' 'libgcrypt')
+depends=('eggdbus' 'libgcrypt' 'gnome-keyring>=2.29.90')
 makedepends=('intltool' 'pkgconfig' 'python')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
