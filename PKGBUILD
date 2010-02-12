@@ -13,14 +13,19 @@ source=()
 md5sums=()
 
 _svntrunk="http://svn.ruby-lang.org/repos/ruby/trunk/"
-_svnmod="trunk"
+_svnmod="ruby"
 _suffix="-svn"
 _version="svn"
 
 build() {
 	cd $startdir/src/
-	svn co $_svntrunk $_svnmod
- 	cd $_svnmod
+	if [ -d $_svnmod ]; then
+		cd $_svnmod
+		svn update -r $pkgver
+	else
+		svn co $_svntrunk $_svnmod
+ 		cd $_svnmod
+	fi
 	autoconf
 
 	./configure --prefix=/usr --enable-shared --enable-pthread \
