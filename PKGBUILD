@@ -1,15 +1,17 @@
-# Maintainer: Eduardo Romero <eduardo@archlinux.org>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Tor Krill <tor@krill.nu>
 
 pkgname=nautilus-sendto
 pkgver=2.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Nautilus context menu for sending files."
 arch=('i686' 'x86_64')
 url="http://download.gnome.org/sources/nautilus-sendto/"
 license=('GPL')
-depends=('evolution-data-server>=2.28.0' 'nautilus>=2.28.1')
-makedepends=('pidgin' 'gajim' 'gettext' 'intltool' 'empathy')
+groups=('gnome-extra')
+depends=('evolution-data-server>=2.29.90' 'nautilus>=2.29.90')
+makedepends=('pidgin' 'gajim' 'gettext' 'intltool')
 options=('!libtool' '!emptydirs')
 install=nautilus-sendto.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/nautilus-sendto/2.28/${pkgname}-${pkgver}.tar.bz2)
