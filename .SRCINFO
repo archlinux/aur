@@ -3,6 +3,7 @@ pkgbase = iscan-plugin-gt-s600
 	pkgver = 2.1.0_3.c2
 	pkgrel = 1
 	url = http://www.avasys.jp/lx-bin2/linux_e/spc/DL2.do
+	install = gt-s600.install
 	arch = i686
 	license = GPL
 	license = LGPL

@@ -11,6 +11,7 @@ depends=('iscan')
 makedepends=('rpmextract')
 source=(http://linux.avasys.jp/drivers/scanner-plugins/GT-S600/$pkgname-${pkgver//_/-}.i386.rpm)
 md5sums=('62e48226b0cf2661f3cb3f59a6a6a50e')
+install=gt-s600.install
 
 build() {
 	cd "$startdir"
