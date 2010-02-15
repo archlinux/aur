@@ -1,0 +1,12 @@
+pkgbase = smartbg-git
+	pkgdesc = A smart wallpaper setter for multi-head X displays
+	pkgver = 20100215
+	pkgrel = 1
+	url = http://code.schnouki.net/p/smartbg/
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = pygtk
+
+pkgname = smartbg-git
+
