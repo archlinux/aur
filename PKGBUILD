@@ -1,4 +1,5 @@
 # Contributor: Vain
+# Based on PKGBUILD for iscan-plugin-gt-x770.
 
 pkgname=iscan-plugin-gt-s600
 pkgver=2.1.0_3.c2
