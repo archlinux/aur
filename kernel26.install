@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-web100
-KERNEL_VERSION=2.6.32-web100-web100
+KERNEL_VERSION=2.6.32-web100
 
 post_install () {
   # updating module dependencies
@@ -139,4 +139,9 @@ if [ "`vercmp $2 2.6.21`" -lt 0 ]; then
   echo ">>> For more information about ACPI modules check this wiki page:"
   echo ">>> 'http://wiki.archlinux.org/index.php/ACPI_modules'"
 fi
+}
+
+post_remove() {
+  rm -f /boot/kernel26${KERNEL_NAME}.img
+  rm -f /boot/kernel26${KERNEL_NAME}-fallback.img
 }

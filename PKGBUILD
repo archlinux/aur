@@ -27,6 +27,7 @@ build() {
 
   sed -i 's/EXTRAVERSION = /EXTRAVERSION =/' Makefile
   patch -Np1 -i ${srcdir}/web100/web100-2.6.32-2.5.27-201001301335.patch || return 1
+  sed -i 's/EXTRAVERSION = /EXTRAVERSION =/' Makefile
 
   if [ "$CARCH" = "x86_64" ]; then
     cat ../config.x86_64 >./.config
