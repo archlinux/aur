@@ -1,0 +1,13 @@
+pkgbase = jopenchart
+	pkgdesc = JOpenChart is a Java Toolkit and library for embedding charts into applications
+	pkgver = 0.94
+	pkgrel = 1
+	url = http://jopenchart.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = java-environment
+	source = charting-0.94.jar::http://sourceforge.net/projects/jopenchart/files/JOpenChart/0.94/charting-0.94.jar/download
+	md5sums = 8ed82e81da2383e9cde66dbd0500e9e7
+
+pkgname = jopenchart
+
