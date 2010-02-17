@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=chromium
-pkgver=5.0.307.7
+pkgver=5.0.307.9
 pkgrel=1
 pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ install='chromium.install'
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
         'drop_sse2.patch' 'ffmpeg_branding_mime.patch' 'libpng-1.4.patch')
-md5sums=('916fa2a672086ab105dc7acacfb96987'
+md5sums=('f667c4242f51d753e4be72ea895ad82e'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '93cd6f5f53b15546dc9d3de49118534c'
          'dfbc18bb26dffa2dc6d4d3a857730902'
@@ -35,7 +35,6 @@ build() {
 		release_extra_cflags='${CFLAGS}' \
 		ffmpeg_branding=Chrome \
 		use_system_libjpeg=1 \
-		use_system_libxml=1 \
 		use_system_libxslt=1 \
 		use_system_bzip2=1 \
 		use_system_libpng=1 \
