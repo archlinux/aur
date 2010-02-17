@@ -1,0 +1,13 @@
+Index: janalyze/Makefile.in
+===================================================================
+--- ndt-3.6.0/janalyze.orig/Makefile.in
++++ ndt-3.6.0/janalyze/Makefile.in
+@@ -715,7 +715,7 @@ distdir: $(DISTFILES)
+ 	done
+ check-am: all-am
+ check: check-am
+-all-am: Makefile $(PROGRAMS) classJAnalyze.stamp $(DATA)
++all-am: Makefile $(PROGRAMS) $(DATA)
+ installdirs:
+ 	for dir in "$(DESTDIR)$(JAnalyzedir)" "$(DESTDIR)$(ndtdir)"; do \
+ 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \

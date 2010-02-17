@@ -1,0 +1,22 @@
+Index: ndt-3.6.0/configure
+===================================================================
+--- ndt-3.6.0.orig/configure
++++ ndt-3.6.0/configure
+@@ -3063,7 +3063,7 @@ echo "${ECHO_T}$ac_cv_lib_web100_web100_
+ if test $ac_cv_lib_web100_web100_snap = yes; then
+ 
+               LINKED_WEB100LIB="-lweb100"
+-              INCLUDED_WEB100LIB="-I/usr/local/include/web100"
++              INCLUDED_WEB100LIB="-I/usr/include/web100"
+ 
+ cat >>confdefs.h <<\_ACEOF
+ #define HAVE_LIBWEB100 1
+@@ -4197,7 +4197,7 @@ fi
+ 
+ 
+ NDTINCDIR='$(INCLUDED_WEB100LIB) $(INCLUDED_PCAPLIB)'
+-NDTLIBDIR=/usr/local/lib
++NDTLIBDIR=/usr/lib
+ NDTLDFLAGS='-L$(NDTLIBDIR) -Wl,-rpath,$(NDTLIBDIR)'
+ NDTLIBS='$(LINKED_WEB100LIB) $(LINKED_PCAPLIB) $(LINKED_ODBCLIB) -lm'
+ NDTINCS='-I$(NDTINCDIR)'
