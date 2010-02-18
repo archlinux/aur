@@ -1,11 +1,11 @@
-# Maintainer : Biru Ionut <ionut@archlinux.ro>
+# Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -15,7 +15,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
 	'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2)
-sha256sums=('3c459e4093fca679591e35ea34da4a0e45b15f2bb7ca00314a1486dc022f3d0e')
+sha256sums=('6ebbe9d339246dfebb244e4c855c4feb678f120d1024ef2ee269e2fde77b2ad9')
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
