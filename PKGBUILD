@@ -1,8 +1,8 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-vmware
-pkgver=10.16.8
-pkgrel=2
+pkgver=10.16.9
+pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
@@ -15,7 +15,7 @@ options=('!libtool')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
         abi2.patch
         LICENSE)
-md5sums=('25287a202c986b33bd79fbe379c96a16'
+md5sums=('3b3d38abfa1f8be4b1e26dcd236bc94f'
          'cbc8e0bef13ccec7ceac233cd09233da'
          'f846374287a2bae21570ae8de883fb4d')
 
