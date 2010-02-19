@@ -2,13 +2,14 @@
 
 pkgname=clutter-gtk
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK clutter widget"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
 options=('!libtool')
 license=('LGPL')
-depends=('clutter>=1.0.4')
+depends=('clutter>=1.0.10' 'gtk2>=2.19.5-2')
+makedepends=('gobject-introspection')
 source=(http://www.clutter-project.org/sources/${pkgname}/0.10/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('bb275b07f722631ff1764dd212843d11')
 
