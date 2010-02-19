@@ -4,7 +4,7 @@
 
 pkgname=nautilus-sendto
 pkgver=2.28.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Nautilus context menu for sending files."
 arch=('i686' 'x86_64')
 url="http://download.gnome.org/sources/nautilus-sendto/"
@@ -23,6 +23,8 @@ build() {
       --localstatedir=/var || return 1
   make || return 1
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install || return 1
+
+  rm -f "${pkgdir}//usr/lib/nautilus-sendto/plugins/libnstbluetooth.so"
 
   install -m755 -d "${pkgdir}/usr/share/gconf/schemas"
   gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain nautilus-sendto ${pkgdir}/etc/gconf/schemas/*.schemas || return 1
