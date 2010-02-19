@@ -1,0 +1,22 @@
+pkgbase = mip6d-umip.org-git
+	pkgdesc = UMIP userland with NEPL and MCoA patches for Mobile IPv6/NEMO operation with multihoming
+	pkgver = 20100219
+	pkgrel = 1
+	url = http://www.umip.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = indent
+	depends = kernel26-mipl
+	optdepends = radvd: to act as a NEMO Mobile Router advertising a MNP on the mobile link
+	provides = mip6d
+	backup = etc/mip6d/mip6d.conf
+	backup = etc/conf.d/mip6d.conf
+	source = mip6d.init
+	source = mip6d.confd
+	md5sums = 6995ae716fc0f66040ee528c291f08df
+	md5sums = efbe23915c7dcf018ce70bcf72d18be7
+
+pkgname = mip6d-umip.org-git
+
