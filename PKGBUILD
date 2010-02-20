@@ -3,7 +3,7 @@
 pkgname=chromium
 pkgver=5.0.307.9
 pkgrel=1
-pkgdesc='An open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web'
+pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
