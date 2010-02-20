@@ -1,24 +1,19 @@
-# Maintainer: aurelien <aurelien@archlinux.org>
+# Maintainer:
 # Contributor: Ben <contrasutra@myrealbox.com>
 
 pkgname=xfce4-artwork
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Backdrops for the Xfce4 desktop"
-arch=(i686 x86_64)
-license=("GPL2")
+arch=('any')
+license=('GPL2')
 url="http://xfce-goodies.berlios.de/"
 groups=('xfce4-goodies')
-depends=('xfdesktop')
-makedepends=('pkgconfig')
-options=('!libtool')
 source=(http://download2.berlios.de/xfce-goodies/${pkgname}-${pkgver}.tar.gz)
 md5sums=('b7612ee950fcf052e5acfacd0fda729f')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/xfce4 \
-    --localstatedir=/var --disable-static || return 1
-  make || return 1
-  make DESTDIR="${pkgdir}" install || return 1
+  cd "${srcdir}"/${pkgname}-${pkgver}/backdrops/
+  install -d "${pkgdir}"/usr/share/xfce4/backdrops
+  install -t "${pkgdir}"/usr/share/xfce4/backdrops *.{png,jpg}
 }
