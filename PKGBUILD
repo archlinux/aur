@@ -4,25 +4,22 @@
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
  
 pkgname=boost
-pkgver=1.41.0
-_boostver=1_41_0
-pkgrel=2
+pkgver=1.42.0
+_boostver=1_42_0
+pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 depends=('bzip2' 'zlib')
 makedepends=('python>=2.6')
 optdepends=('python: for python bindings')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz
-	fix-gzip-crc.patch
-	serialization_fix.patch)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${_boostver}.tar.gz)
 license=('custom')
 options=(!ccache)
+md5sums=('f822f01dc4eb00f5af000cf633961a23')
 
 build() {
   cd "${srcdir}/${pkgname}_${_boostver}"
-  patch -Np1 -i $srcdir/fix-gzip-crc.patch || return 1
-  patch -Np1 -i $srcdir/serialization_fix.patch || return 1
 
   # build bjam
   cd ${srcdir}/${pkgname}_${_boostver}/tools/jam/src
@@ -67,6 +64,3 @@ build() {
   install -m644 ${srcdir}/${pkgname}_${_boostver}/LICENSE_1_0.txt \
                 ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
 }
-md5sums=('ddb04c9b9164a36a91dcf36819666dd9'
-         '682f124a765b2935c7352f38c08848cc'
-         '01337211d40a4a4c9b83c481baade701')
