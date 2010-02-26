@@ -1,4 +1,5 @@
-# Maintainer: Hugo Doria <hugo@archlinux.org>
+# Maintainer: Thayer Williams <thayer@archlinux.org>
+# Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
 
 pkgname=p7zip
@@ -29,7 +30,6 @@ build() {
 	DEST_MAN="${pkgdir}/usr/share/man" \
 	DEST_SHARE_DOC="http://www.bugaco.com/7zip"
 
-  echo "creating dir"
   mkdir -p ${pkgdir}/usr/share/doc/p7zip/DOCS
   install -m555 bin/7z.so ${pkgdir}/usr/lib/p7zip/
 
