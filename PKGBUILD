@@ -11,7 +11,6 @@ pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libc"
 license=('GPL')
-groups=('base')
 provides=("kernel-headers=${pkgver}")
 conflicts=("glibc<=2.10.1-4" 'kernel-headers')
 replaces=('kernel-headers')
