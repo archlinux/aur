@@ -1,0 +1,1447 @@
+diff -ruN xf86-video-openchrome-0.2.904/ChangeLog ../openchrome/xf86-video-openchrome-0.2.904/ChangeLog
+--- xf86-video-openchrome-0.2.904/ChangeLog	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/ChangeLog	2010-03-07 01:09:00.000000000 +0100
+@@ -1,3 +1,52 @@
++2010-02-10  Bartosz Kosiorek  <gang65@poczta.onet.pl>
++
++	Fix bug with suspend and VT switch on VX800 and 64bit systems
++
++	* src/via_driver.h:
++	* src/via_video.c: (viaResetVideo), (viaSaveVideo),
++	(viaRestoreVideo), (viaExitVideo):
++	* src/via_video.h:
++
++2010-01-24  Bartosz Kosiorek  <gang65@poczta.onet.pl>
++
++	Fix starting address restore and save (initial 64-bit support)
++
++	* src/via_crtc.c: (ViaFirstCRTCSetMode),
++	(ViaFirstCRTCSetStartingAddress):
++	* src/via_dri.c: (VIADRIAgpInit):
++	* src/via_driver.c: (VIASave), (VIARestore):
++	* src/via_driver.h:
++
++2009-12-04  Bartosz Kosiorek  <gang65@poczta.onet.pl>
++
++	Enable new mode switch for VM800 chipsets
++
++	* src/via_driver.c: (VIASetupDefaultOptions):
++
++2009-11-21  Bartosz Kosiorek  <gang65@poczta.onet.pl>
++
++	Add option to enable unaccelerated RandR rotation ("SWRandR").
++        The accelerated option "HWRandR" is currently not implemented.
++
++	* src/openchrome.man:
++	* src/via_driver.c: (VIAPreInit):
++
++2009-11-20  Bartosz Kosiorek  <gang65@poczta.onet.pl>
++
++	Enabled new mode switch for PM800 chipset, 
++        to resolve many bugs with resolution detecting and changing
++        (eg. switching to console)
++
++	* src/via_driver.c: (VIASetupDefaultOptions), (VIAPreInit):
++
++2009-11-07  Bartosz Kosiorek  <gang65@poczta.onet.pl>
++
++	Add more comments to ViaSetSecondaryFIFO, add panel scale support for 
++ 	CLE266 and KM400, fix bug with malloc.
++
++	* src/via_bandwidth.c: (ViaSetSecondaryFIFO):
++	* src/via_panel.c: (ViaPanelScale), (ViaPanelGetNativeDisplayMode):
++
+ 2009-09-26  Bartosz Kosiorek  <gang65@poczta.onet.pl>
+ 
+ 	Save/restore ECK Clock Synthesizer
+diff -ruN xf86-video-openchrome-0.2.904/man/openchrome.man ../openchrome/xf86-video-openchrome-0.2.904/man/openchrome.man
+--- xf86-video-openchrome-0.2.904/man/openchrome.man	2009-10-09 01:12:41.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/man/openchrome.man	2010-03-07 01:09:00.000000000 +0100
+@@ -59,7 +59,7 @@
+ .BI "Option \*qAccelMethod\*q  \*q" string \*q
+ The driver supports "XAA" and "EXA" acceleration methods.  The default
+ method is XAA, since EXA is still experimental.  Contrary to XAA, EXA
+-implements acceleration for screen uploads and downlads (if DRI is
++implements acceleration for screen uploads and downloads (if DRI is
+ enabled) and for the Render/Composite extension.
+ .TP
+ .BI "Option \*qActiveDevice\*q  \*q" string \*q
+@@ -81,7 +81,7 @@
+ no room for DRI textures, they will be allocated from the DRI part of
+ VRAM (see the option "MaxDRIMem").  The default amount of AGP is
+ 32768 kB.  Note that the AGP aperture set in the BIOS must be able
+-to accomodate the amount of AGP memory specified here.  Otherwise no
++to accommodate the amount of AGP memory specified here.  Otherwise no
+ AGP memory will be available.  It is safe to set a very large AGP
+ aperture in the BIOS.
+ .TP
+@@ -159,9 +159,16 @@
+ system.  The sizes 640x480, 800x600, 1024x768, 1280x1024, and 1400x1050
+ are supported.
+ .TP
++.BI "Option \*qRotationType\*q  \*q" string \*q
++Enabled rotation by using RandR. The driver only support unaccelerated
++RandR rotations "SWRandR". Hardware rotations "HWRandR" is currently 
++unimplemented.
++.TP
+ .BI "Option \*qRotate\*q  \*q" string \*q
+ Rotates the display either clockwise ("CW"), counterclockwise ("CCW") and
+-upside-down ("UD"). Rotation is only supported unaccelerated.
++upside-down ("UD"). Rotation is only supported unaccelerated.  Adding 
++option "Rotate", enables RandR rotation feature.  The RandR allows 
++clients to dynamically change X screens.
+ .TP
+ .BI "Option \*qShadowFB\*q  \*q" boolean \*q
+ Enables the use of a shadow frame buffer.  This is required when
+diff -ruN xf86-video-openchrome-0.2.904/src/svnversion.h ../openchrome/xf86-video-openchrome-0.2.904/src/svnversion.h
+--- xf86-video-openchrome-0.2.904/src/svnversion.h	2009-10-09 01:19:04.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/svnversion.h	2010-03-07 01:09:15.000000000 +0100
+@@ -1 +1 @@
+-#define BUILDCOMMENT "(openchrome 0.2.904 release)"
++#define BUILDCOMMENT "(development build, at svn revision 839)"
+diff -ruN xf86-video-openchrome-0.2.904/src/via_accel.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_accel.c
+--- xf86-video-openchrome-0.2.904/src/via_accel.c	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_accel.c	2010-03-07 01:09:00.000000000 +0100
+@@ -1210,7 +1210,8 @@
+ 
+     /* General acceleration flags. */
+     xaaptr->Flags = (PIXMAP_CACHE |
+-                     OFFSCREEN_PIXMAPS | LINEAR_FRAMEBUFFER |
++                     OFFSCREEN_PIXMAPS | 
++                     LINEAR_FRAMEBUFFER |
+                      MICROSOFT_ZERO_LINE_BIAS | 0);
+ 
+     if (pScrn->bitsPerPixel == 8)
+@@ -1228,14 +1229,17 @@
+ 
+     xaaptr->Sync = viaAccelSync;
+ 
++    /* ScreenToScreen copies */
+     xaaptr->SetupForScreenToScreenCopy = viaSetupForScreenToScreenCopy;
+     xaaptr->SubsequentScreenToScreenCopy = viaSubsequentScreenToScreenCopy;
+     xaaptr->ScreenToScreenCopyFlags = NO_PLANEMASK | ROP_NEEDS_SOURCE;
+ 
++    /* Solid filled rectangles */
+     xaaptr->SetupForSolidFill = viaSetupForSolidFill;
+     xaaptr->SubsequentSolidFillRect = viaSubsequentSolidFillRect;
+     xaaptr->SolidFillFlags = NO_PLANEMASK | ROP_NEEDS_SOURCE;
+ 
++    /* Mono 8x8 pattern fills */
+     xaaptr->SetupForMono8x8PatternFill = viaSetupForMono8x8PatternFill;
+     xaaptr->SubsequentMono8x8PatternFillRect =
+             viaSubsequentMono8x8PatternFillRect;
+@@ -1244,6 +1248,7 @@
+                                        HARDWARE_PATTERN_PROGRAMMED_ORIGIN |
+                                        BIT_ORDER_IN_BYTE_MSBFIRST | 0);
+ 
++    /* Color 8x8 pattern fills */
+     xaaptr->SetupForColor8x8PatternFill = viaSetupForColor8x8PatternFill;
+     xaaptr->SubsequentColor8x8PatternFillRect =
+             viaSubsequentColor8x8PatternFillRect;
+@@ -1252,12 +1257,14 @@
+                                         HARDWARE_PATTERN_PROGRAMMED_BITS |
+                                         HARDWARE_PATTERN_PROGRAMMED_ORIGIN | 0);
+ 
++    /* Solid lines */
+     xaaptr->SetupForSolidLine = viaSetupForSolidLine;
+     xaaptr->SubsequentSolidTwoPointLine = viaSubsequentSolidTwoPointLine;
+     xaaptr->SubsequentSolidHorVertLine = viaSubsequentSolidHorVertLine;
+     xaaptr->SolidBresenhamLineErrorTermBits = 14;
+     xaaptr->SolidLineFlags = NO_PLANEMASK | ROP_NEEDS_SOURCE;
+ 
++    /* Dashed line */
+     xaaptr->SetupForDashedLine = viaSetupForDashedLine;
+     xaaptr->SubsequentDashedTwoPointLine = viaSubsequentDashedTwoPointLine;
+     xaaptr->DashPatternMaxLength = 8;
+@@ -1266,35 +1273,42 @@
+                                LINE_PATTERN_POWER_OF_2_ONLY |
+                                LINE_PATTERN_MSBFIRST_LSBJUSTIFIED | 0);
+ 
++    /* CPU to Screen color expansion */
+     xaaptr->ScanlineCPUToScreenColorExpandFillFlags = NO_PLANEMASK |
+-            CPU_TRANSFER_PAD_DWORD |
+-            SCANLINE_PAD_DWORD |
+-            BIT_ORDER_IN_BYTE_MSBFIRST |
+-            LEFT_EDGE_CLIPPING | ROP_NEEDS_SOURCE | 0;
++           				 	CPU_TRANSFER_PAD_DWORD |
++						SCANLINE_PAD_DWORD |
++            					BIT_ORDER_IN_BYTE_MSBFIRST |
++            					LEFT_EDGE_CLIPPING | 
++            					ROP_NEEDS_SOURCE | 0;
+ 
+     xaaptr->SetupForScanlineCPUToScreenColorExpandFill =
+             viaSetupForCPUToScreenColorExpandFill;
+     xaaptr->SubsequentScanlineCPUToScreenColorExpandFill =
+             viaSubsequentScanlineCPUToScreenColorExpandFill;
+     xaaptr->ColorExpandBase = pVia->BltBase;
+-    xaaptr->ColorExpandRange = VIA_MMIO_BLTSIZE;
++    if (pVia->Chipset == VIA_VX800 || pVia->Chipset == VIA_VX855)
++        xaaptr->ColorExpandRange = VIA_MMIO_BLTSIZE;
++    else
++        xaaptr->ColorExpandRange = (64 * 1024);
+ 
++    /* ImageWrite */
+     xaaptr->ImageWriteFlags = (NO_PLANEMASK |
+                                CPU_TRANSFER_PAD_DWORD |
+                                SCANLINE_PAD_DWORD |
+                                BIT_ORDER_IN_BYTE_MSBFIRST |
+-                               LEFT_EDGE_CLIPPING | ROP_NEEDS_SOURCE | 0);
++                               LEFT_EDGE_CLIPPING | 
++			       ROP_NEEDS_SOURCE | 0);
+                                // SYNC_AFTER_IMAGE_WRITE | 0);
+ 
+     /*
+      * Most Unichromes are much faster using processor-to-framebuffer writes
+      * than when using the 2D engine for this.
+-     * test with x11perf -shmput500!
++     * test with "x11perf -shmput500"
++     * Example: K8M890 chipset; with GPU=86.3/sec; without GPU=132.0/sec
++     * TODO Check speed for other chipsets
+      */
+ 
+     switch (pVia->Chipset) {
+-        case VIA_K8M800:
+-        case VIA_K8M890:
+         case VIA_P4M900:
+         case VIA_VX800:
+         case VIA_VX855:
+diff -ruN xf86-video-openchrome-0.2.904/src/via_bandwidth.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_bandwidth.c
+--- xf86-video-openchrome-0.2.904/src/via_bandwidth.c	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_bandwidth.c	2010-03-07 01:09:00.000000000 +0100
+@@ -194,6 +194,7 @@
+             else
+                 ViaSeqMask(hwp, 0x22, 0x00, 0x1F);  /* 128/4 = overflow = 0 */
+             break;
++        /* PM800/PM880/CN400 */
+         case VIA_PM800:
+             hwp->writeSeq(hwp, 0x17, 0x5F);     /* 95 */
+             ViaSeqMask(hwp, 0x16, 0x20, 0xBF);  /* 32 */
+@@ -204,9 +205,10 @@
+             else
+                 ViaSeqMask(hwp, 0x22, 0x1F, 0x1F);  /* 31 */
+             break;
++        /* P4M800Pro/VN800/CN700 */ 
+         case VIA_VM800:
+             hwp->writeSeq(hwp, 0x17, 0x2F);
+-            ViaSeqMask(hwp, 0x16, 0x14, 0xBF);
++            ViaSeqMask(hwp, 0x16, 0x14, 0xBF);  /* 80/4    = 20  = 0x14 */
+             ViaSeqMask(hwp, 0x18, 0x08, 0xBF);
+ 
+             if ((mode->HDisplay >= 1400) && (pScrn->bitsPerPixel == 32))
+@@ -215,40 +217,51 @@
+                 ViaSeqMask(hwp, 0x22, 0x00, 0x1F);
+             break;
+         case VIA_K8M890:
+-            hwp->writeSeq(hwp, 0x16, 0x92);
+-            hwp->writeSeq(hwp, 0x17, 0xB3);
+-            hwp->writeSeq(hwp, 0x18, 0x8A);
++            /* depth location: {SR17,0,7} */
++            hwp->writeSeq(hwp, 0x17, 0xB3);    /* 360/2-1 = 179 = 0xB3 */
++            /* Formula (x & 0x3F) | ((x & 0x40) << 1) */
++            /* threshold location: {SR16,0,5},{SR16,7,7} */
++            ViaSeqMask(hwp, 0x16, 0x92, 0xBF); /* 328/4   = 82  = 0x52 */
++            /* high threshold location: {SR18,0,5},{SR18,7,7} */
++            ViaSeqMask(hwp, 0x18, 0x8A, 0xBF); /* 296/4   = 74  = 0x4A */
++            /* display queue expire num location: {SR22,0,4}. */
++            ViaSeqMask(hwp, 0x22, 0x1F, 0x1F); /* 124/4   = 31  = 0x1F */
+             break;
+         case VIA_P4M900:
+-            ViaSeqMask(hwp, 0x17, 0x2F, 0xFF);
+-            ViaSeqMask(hwp, 0x16, 0x13, 0x3F);
+-            ViaSeqMask(hwp, 0x16, 0x00, 0x80);
+-            ViaSeqMask(hwp, 0x18, 0x13, 0x3F);
+-            ViaSeqMask(hwp, 0x18, 0x00, 0x80);
++            /* location: {SR17,0,7} */
++            hwp->writeSeq(hwp, 0x17, 0x2F);    /* 96/2-1  = 47  = 0x2F */
++            /* location: {SR16,0,5},{SR16,7,7} */
++            ViaSeqMask(hwp, 0x16, 0x13, 0xBF); /* 76/4    = 19  = 0x13 */
++            /* location: {SR18,0,5},{SR18,7,7} */
++            ViaSeqMask(hwp, 0x18, 0x13, 0xBF); /* 76/4    = 19  = 0x13 */
++            /* location: {SR22,0,4}. */
++            ViaSeqMask(hwp, 0x22, 0x08, 0x1F); /* 32/4    = 8   = 0x08 */
+             break;
+         case VIA_P4M890:
+-            hwp->writeSeq(hwp, 0x16, 0x13);
+-            hwp->writeSeq(hwp, 0x17, 0x2F);
+-            hwp->writeSeq(hwp, 0x18, 0x53);
+-            hwp->writeSeq(hwp, 0x22, 0x10);
++            hwp->writeSeq(hwp, 0x17, 0x2F);      /* 96/2-1  = 47  = 0x2F */
++            ViaSeqMask(hwp, 0x16, 0x13, 0xBF);   /* 76/4    = 19  = 0x13 */
++            ViaSeqMask(hwp, 0x18, 0x10, 0xBF);   /* 64/4    = 16  = 0x10 */
++            ViaSeqMask(hwp, 0x22, 0x08, 0x1F);   /* 32/4    = 8   = 0x08 */
+             break;
+         case VIA_CX700:
+-            hwp->writeSeq(hwp, 0x16, 0x26);
+             hwp->writeSeq(hwp, 0x17, 0x5F);
+-            hwp->writeSeq(hwp, 0x18, 0x66);
+-            hwp->writeSeq(hwp, 0x22, 0x1F);
++            ViaSeqMask(hwp, 0x16, 0x20, 0xBF);   /* 128/4  = 32  = 0x20 */
++            ViaSeqMask(hwp, 0x18, 0x20, 0xBF);   /* 128/4  = 32  = 0x20 */
++            ViaSeqMask(hwp, 0x22, 0x1F, 0x1F);   /* 124/4  = 31  = 0x1F */
+             break;
+         case VIA_VX800:
+-            hwp->writeSeq(hwp, 0x16, 0x26); /* 152/4   = 38 */
+-            hwp->writeSeq(hwp, 0x17, 0x5F); /* 192/2-1 = 95 */
++            hwp->writeSeq(hwp, 0x17, 0x5F); /* 192/2-1 = 95   = 0x5F */
++            hwp->writeSeq(hwp, 0x16, 0x26); /* 152/4   = 38   = 0x26 */
+             hwp->writeSeq(hwp, 0x18, 0x26); /* 152/4   = 38 */ 
+             hwp->writeSeq(hwp, 0x22, 0x10); /*  64/4   = 16 */
+             break;
+         case VIA_VX855:
+-              hwp->writeSeq(hwp, 0x16, 0x50); /* 320/4   = 80 */
+-              hwp->writeSeq(hwp, 0x17, 0xC7); /* 400/2-1 = 199 */
+-              hwp->writeSeq(hwp, 0x18, 0x50); /* 320/4   = 80 */
+-              hwp->writeSeq(hwp, 0x22, 0x28); /* 160/4   = 40 */
++            hwp->writeSeq(hwp, 0x17, 0xC7); /* 400/2-1 = 199  = 0xC7 */
++            /* TODO Formula for SR16 is: (0x50 & 0x3F) | ((0x50 & 0x40) << 1) = 0x90 */
++            hwp->writeSeq(hwp, 0x16, 0x50); /* 320/4   = 80   = 0x50 */
++            hwp->writeSeq(hwp, 0x18, 0x50); /* 320/4   = 80   = 0x50 */
++            hwp->writeSeq(hwp, 0x22, 0x28); /* 160/4   = 40   = 0x28 */
++            break;
+         default:
+             xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "ViaSetPrimaryFIFO: "
+                        "Chipset %d not implemented\n", pVia->Chipset);
+@@ -371,7 +384,38 @@
+                 ViaCrtcMask(hwp, 0x94, 0x20, 0x7F);
+             break;
+         case VIA_P4M890:
++            /* depth location: {CR68,4,7},{CR94,7,7},{CR95,7,7} */
++            ViaCrtcMask(hwp, 0x68, 0xB0, 0xF0); /* 96/8-1 = 11  = 0x0B */
++            ViaCrtcMask(hwp, 0x94, 0x00, 0x80);
++            ViaCrtcMask(hwp, 0x95, 0x00, 0x80);
++
++            /* location: {CR68,0,3},{CR95,4,6} */
++            ViaCrtcMask(hwp, 0x68, 0x03, 0x0F); /* 76/4   = 19  = 0x13 */
++            ViaCrtcMask(hwp, 0x95, 0x10, 0x70);
++
++            /* location: {CR92,0,3},{CR95,0,2} */
++            ViaCrtcMask(hwp, 0x92, 0x00, 0x0F); /* 64/4   = 16  = 0x10 */
++            ViaCrtcMask(hwp, 0x95, 0x01, 0x07);
++
++            /* location: {CR94,0,6} */
++            ViaCrtcMask(hwp, 0x94, 0x08, 0x7F); /* 32/4   = 8   = 0x08 */
++            break;
+         case VIA_K8M890:
++            /* Display Queue Depth, location: {CR68,4,7},{CR94,7,7},{CR95,7,7} */
++            ViaCrtcMask(hwp, 0x68, 0xC0, 0xF0); /* 360/8-1 = 44  = 0x2C; 0x2C << 4 = 0xC0 */
++            ViaCrtcMask(hwp, 0x94, 0x00, 0x80); /* 0x2C << 3 = 0x00 */
++            ViaCrtcMask(hwp, 0x95, 0x80, 0x80); /* 0x2C << 2 = 0x80 */
++
++            /* Display Queue Read Threshold 1, location: {CR68,0,3},{CR95,4,6} */
++            ViaCrtcMask(hwp, 0x68, 0x02, 0x0F); /* 328/4   = 82  = 0x52 */
++            ViaCrtcMask(hwp, 0x95, 0x50, 0x70);
++
++            /* location: {CR92,0,3},{CR95,0,2} */
++            ViaCrtcMask(hwp, 0x92, 0x0A, 0x0F); /* 296/4   = 74  = 0x4A */
++            ViaCrtcMask(hwp, 0x95, 0x04, 0x07); /* 0x4A >> 4 = 0x04 */
++
++            /* Display Expire Number Bits, location: {CR94,0,6} */
++            ViaCrtcMask(hwp, 0x94, 0x1F, 0x7F); /* 124/4   = 31  = 0x1F */
+             break;
+         case VIA_P4M900:
+             ViaCrtcMask(hwp, 0x68, 0xB0, 0xF0);
+diff -ruN xf86-video-openchrome-0.2.904/src/via_crtc.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_crtc.c
+--- xf86-video-openchrome-0.2.904/src/via_crtc.c	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_crtc.c	2010-03-07 01:09:00.000000000 +0100
+@@ -234,8 +234,8 @@
+     /* Primary starting address -> 0x00, adjustframe does the rest */
+     hwp->writeCrtc(hwp, 0x0C, 0x00);
+     hwp->writeCrtc(hwp, 0x0D, 0x00);
+-    hwp->writeCrtc(hwp, 0x34, 0x00);
+     ViaCrtcMask(hwp, 0x48, 0x00, 0x03); /* is this even possible on CLE266A ? */
++    hwp->writeCrtc(hwp, 0x34, 0x00);
+ 
+     /* vertical sync start : 2047 */
+     temp = mode->CrtcVSyncStart;
+@@ -331,15 +331,20 @@
+     CARD32 Base;
+     CARD32 tmp;
+ 
++    DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "ViaFirstCRTCSetStartingAddress\n"));
++
+     Base = (y * pScrn->displayWidth + x) * (pScrn->bitsPerPixel / 8);
+     Base = Base >> 1;
+ 
+     hwp->writeCrtc(hwp, 0x0C, (Base & 0xFF00) >> 8);
+     hwp->writeCrtc(hwp, 0x0D, Base & 0xFF);
+-    hwp->writeCrtc(hwp, 0x34, (Base & 0xFF0000) >> 16);
+-
++    /* FIXME The proper starting address for CR48 is 0x1F - Bits[28:24] */
+     if (!(pVia->Chipset == VIA_CLE266 && CLE266_REV_IS_AX(pVia->ChipRev)))
+         ViaCrtcMask(hwp, 0x48, Base >> 24, 0x0F);
++    /* CR34 are fire bits. Must be writed after CR0C CR0D CR48.  */
++    hwp->writeCrtc(hwp, 0x34, (Base & 0xFF0000) >> 16);
++
++
+ }
+ 
+ void
+diff -ruN xf86-video-openchrome-0.2.904/src/via_cursor.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_cursor.c
+--- xf86-video-openchrome-0.2.904/src/via_cursor.c	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_cursor.c	2010-03-07 01:09:00.000000000 +0100
+@@ -145,9 +145,12 @@
+     infoPtr->ShowCursor = viaShowCursor;
+     infoPtr->UseHWCursor = viaUseHWCursor;
+ 
++    /* ARGB Cursor init */
+     infoPtr->UseHWCursorARGB = viaUseHWCursorARGB;
+-	if (pVia->CursorARGBSupported)
++    if (pVia->CursorARGBSupported) {
++        DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "HWCursor ARGB enabled\n"));
+     	infoPtr->LoadCursorARGB = viaLoadCursorARGB;
++    }
+ 
+     /* Set cursor location in frame buffer. */
+     VIASETREG(VIA_REG_CURSOR_MODE, pVia->cursorOffset);
+@@ -284,7 +287,7 @@
+ }
+ 
+ /*
+- * ARGB Cursor
++ * display the current cursor
+  */
+ 
+ void
+@@ -319,13 +322,19 @@
+             */
+ 
+             /* Duoview */
+-	    if (pVia->CursorPipe)
++	    if (pVia->CursorPipe) {
++                /* Mono Cursor Display Path [bit31]: Secondary */
++                /* FIXME For CLE266 nad KM400 try to enable 32x32 cursor size [bit1] */
+                 VIASETREG(VIA_REG_ALPHA_CONTROL, 0xF6000005);
+-            else
++            } else {
++                /* Mono Cursor Display Path [bit31]: Primary */
+                 VIASETREG(VIA_REG_ALPHA_CONTROL, 0x76000005);
++            }
+     }
+ }
+ 
++
++/* hide the current cursor */
+ void
+ viaHideCursor(ScrnInfoPtr pScrn)
+ {
+@@ -350,10 +359,16 @@
+         
+         default:
+              temp = VIAGETREG(VIA_REG_ALPHA_CONTROL);
++             /* Hardware cursor disable [bit0] */
+              VIASETREG(VIA_REG_ALPHA_CONTROL, temp & 0xFFFFFFFA);
+     }
+ }
+ 
++/*
++    Set the cursor position to (x,y).  X and/or y may be negative
++    indicating that the cursor image is partially offscreen on
++    the left and/or top edges of the screen.
++*/
+ static void
+ viaSetCursorPosition(ScrnInfoPtr pScrn, int x, int y)
+ {
+@@ -409,6 +424,15 @@
+             && pCurs->bits->height <= pVia->CursorMaxHeight);
+ }
+ 
++/*
++    If the driver is unable to use a hardware cursor for reasons
++    other than the cursor being larger than the maximum specified
++    in the MaxWidth or MaxHeight field below, it can supply the
++    UseHWCursor function.  If UseHWCursor is provided by the driver,
++    it will be called whenever the cursor shape changes or the video
++    mode changes.  This is useful for when the hardware cursor cannot
++    be used in interlaced or doublescan modes.
++*/
+ static Bool
+ viaUseHWCursor(ScreenPtr pScreen, CursorPtr pCurs)
+ {
+@@ -423,8 +447,11 @@
+             && pCurs->bits->height <= pVia->CursorMaxHeight);
+ }
+ 
++/*
++    Load Mono Cursor Image 
++*/
+ static void
+-viaLoadCursorImage(ScrnInfoPtr pScrn, unsigned char *s)
++viaLoadCursorImage(ScrnInfoPtr pScrn, unsigned char *src)
+ {
+     VIAPtr pVia = VIAPTR(pScrn);
+     CARD32 temp;
+@@ -439,7 +466,7 @@
+     if (pVia->CursorARGBSupported) {
+ #define ARGB_PER_CHUNK	(8 * sizeof (chunk) / 2)
+ 		for (i = 0; i < (pVia->CursorMaxWidth * pVia->CursorMaxHeight / ARGB_PER_CHUNK); i++) {
+-		    chunk = *s++;
++		    chunk = *src++;
+ 		    for (j = 0; j < ARGB_PER_CHUNK; j++, chunk >>= 2)
+ 			*dst++ = mono_cursor_color[chunk & 3];
+ 		}
+@@ -447,7 +474,7 @@
+ 		pVia->CursorFG = mono_cursor_color[3];
+ 		pVia->CursorBG = mono_cursor_color[2];
+     } else {
+-	memcpy(dst, (CARD8*)s, pVia->CursorSize);
++	memcpy(dst, (CARD8*)src, pVia->CursorSize);
+     }
+     switch(pVia->Chipset) {
+         case VIA_CX700:
+@@ -471,11 +498,17 @@
+     }
+ }
+ 
++/*
++    Set the cursor foreground and background colors.  In 8bpp, fg and
++    bg are indicies into the current colormap unless the 
++    HARDWARE_CURSOR_TRUECOLOR_AT_8BPP flag is set.  In that case
++    and in all other bpps the fg and bg are in 8-8-8 RGB format.
++*/
++
+ static void
+ viaSetCursorColors(ScrnInfoPtr pScrn, int bg, int fg)
+ {
+     VIAPtr pVia = VIAPTR(pScrn);
+-    CARD32 control = pVia->CursorRegControl;
+     CARD32 pixel;
+     CARD32 temp;
+     CARD32 *dst;
+@@ -487,12 +520,10 @@
+     fg |= 0xff000000;
+     bg |= 0xff000000;
+ 
++    /* Don't recolour the image if we don't have to. */
+     if (fg == pVia->CursorFG && bg == pVia->CursorBG)
+ 	return;
+ 
+-    temp = VIAGETREG(control);
+-    VIASETREG(control, temp & 0xFFFFFFFE);
+-
+     dst = (CARD32*)pVia->cursorMap;
+     for (i = 0; i < pVia->CursorMaxWidth * pVia->CursorMaxHeight; i++, dst++)
+ 	if ((pixel = *dst))
+@@ -517,7 +548,8 @@
+              }
+              break;        
+         default:
+-             VIASETREG(control, temp);
++             temp = VIAGETREG(VIA_REG_ALPHA_CONTROL);
++             VIASETREG(VIA_REG_ALPHA_CONTROL, temp & 0xFFFFFFFE);
+     }
+ }
+ 
+diff -ruN xf86-video-openchrome-0.2.904/src/via_dri.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_dri.c
+--- xf86-video-openchrome-0.2.904/src/via_dri.c	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_dri.c	2010-03-07 01:09:00.000000000 +0100
+@@ -267,6 +267,11 @@
+     pVIADRI = pDRIInfo->devPrivate;
+     pVia->agpSize = 0;
+ 
++/* For AMD64 */
++#ifdef __x86_64__
++    return FALSE;
++#endif
++
+     if (drmAgpAcquire(pVia->drmFD) < 0) {
+         xf86DrvMsg(pScreen->myNum, X_ERROR, "[drm] drmAgpAcquire failed %d\n",
+                    errno);
+diff -ruN xf86-video-openchrome-0.2.904/src/via_driver.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_driver.c
+--- xf86-video-openchrome-0.2.904/src/via_driver.c	2009-10-09 00:46:15.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_driver.c	2010-03-07 01:09:00.000000000 +0100
+@@ -178,8 +178,8 @@
+     {VIA_P4M900,   "P4M900/VN896/CN896"},
+     {VIA_CX700,    "CX700/VX700"},
+     {VIA_P4M890,   "P4M890"},
+-    {VIA_VX800,    "VX800"},
+-    {VIA_VX855,    "VX855"},
++    {VIA_VX800,    "VX800/VX820"},
++    {VIA_VX855,    "VX855/VX875"},
+     {-1,            NULL }
+ };
+ 
+@@ -215,6 +215,7 @@
+     OPTION_EXA_SCRATCH_SIZE,
+     OPTION_SWCURSOR,
+     OPTION_SHADOW_FB,
++    OPTION_ROTATION_TYPE,
+     OPTION_ROTATE,
+     OPTION_VIDEORAM,
+     OPTION_ACTIVEDEVICE,
+@@ -253,6 +254,7 @@
+     {OPTION_EXA_SCRATCH_SIZE,    "ExaScratchSize",   OPTV_INTEGER, {0}, FALSE},
+     {OPTION_SWCURSOR,            "SWCursor",         OPTV_BOOLEAN, {0}, FALSE},
+     {OPTION_SHADOW_FB,           "ShadowFB",         OPTV_BOOLEAN, {0}, FALSE},
++    {OPTION_ROTATION_TYPE,       "RotationType",     OPTV_ANYSTR,  {0}, FALSE},
+     {OPTION_ROTATE,              "Rotate",           OPTV_ANYSTR,  {0}, FALSE},
+     {OPTION_VIDEORAM,            "VideoRAM",         OPTV_INTEGER, {0}, FALSE},
+     {OPTION_ACTIVEDEVICE,        "ActiveDevice",     OPTV_ANYSTR,  {0}, FALSE},
+@@ -307,6 +309,7 @@
+ {
+     static Bool setupDone = FALSE;
+ 
++    /* Only be loaded once */
+     if (!setupDone) {
+         setupDone = TRUE;
+         xf86AddDriver(&VIA, module,
+@@ -339,6 +342,7 @@
+     if (pScrn->driverPrivate)
+         return TRUE;
+ 
++    /* allocate VIARec */
+     pScrn->driverPrivate = xnfcalloc(sizeof(VIARec), 1);
+     VIAPtr pVia = ((VIARec *) (pScrn->driverPrivate));
+ 
+@@ -455,7 +459,6 @@
+ {
+     ScrnInfoPtr scrn = NULL;
+     EntityInfoPtr entity;
+-    DevUnion *private;
+ 
+     scrn = xf86ConfigPciEntity(scrn, 0, entity_num, VIAPciChipsets,
+                                NULL, NULL, NULL, NULL, NULL);
+@@ -652,6 +655,12 @@
+     vbeInfoPtr pVbe;
+ 
+     if (xf86LoadSubModule(pScrn, "vbe")) {
++        /* FIXME This line should be replaced to:
++
++           pVbe = VBEExtendedInit(NULL, index, 0);
++
++           for XF86 version > 4.2.99
++        */
+         pVbe = VBEInit(NULL, index);
+         ConfiguredMonitor = vbeDoEDID(pVbe, NULL);
+         vbeFree(pVbe);
+@@ -664,7 +673,7 @@
+     VIAPtr pVia = VIAPTR(pScrn);
+     VIABIOSInfoPtr pBIOSInfo = pVia->pBIOSInfo;
+ 
+-    DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "VIASetupDefaultOptions\n"));
++    DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "VIASetupDefaultOptions - Setting up default chipset options.\n"));
+ 
+     pVia->shadowFB = FALSE;
+     pVia->NoAccel = FALSE;
+@@ -688,6 +697,9 @@
+ #ifdef HAVE_DEBUG
+     pVia->PrintVGARegs = FALSE;
+ #endif
++
++    /* Disable vertical interpolation because the size of */
++    /* line buffer (limited to 800) is too small to do interpolation. */
+     pVia->swov.maxWInterp = 800;
+     pVia->swov.maxHInterp = 600;
+     pVia->useLegacyVBE = TRUE;
+@@ -713,11 +725,14 @@
+             pVia->UseLegacyModeSwitch = TRUE;
+             break;
+         case VIA_PM800:
++            /* Use new mode switch to resolve many resolution and display bugs (switch to console) */
++            /* FIXME The video playing (XV) is not working correctly after turn on new mode switch */
+             pVia->VideoEngine = VIDEO_ENGINE_CME;
+-            pVia->UseLegacyModeSwitch = TRUE;
+             break;
+         case VIA_VM800:
+-            pVia->UseLegacyModeSwitch = TRUE;
++            /* New mode switch resolve bug with gamma set #282 */
++            /* and with Xv after hibernate #240                */
++            /* FIXME Add panel support for this chipset        */
+             break;
+         case VIA_K8M890:
+             pVia->VideoEngine = VIDEO_ENGINE_CME;
+@@ -1050,19 +1065,13 @@
+         xf86DrvMsg(pScrn->scrnIndex, from,
+                    "Probed amount of VideoRAM = %d kB\n", pScrn->videoRam);
+ 
+-    xf86DrvMsg(pScrn->scrnIndex, X_INFO,
+-               "Setting up default chipset options.\n");
+     if (!VIASetupDefaultOptions(pScrn)) {
+         VIAFreeRec(pScrn);
+         return FALSE;
+     }
+ 
+-    xf86DrvMsg(pScrn->scrnIndex, X_INFO, "Reading config file...\n");
+     xf86ProcessOptions(pScrn->scrnIndex, pScrn->options, VIAOptions);
+ 
+-    xf86DrvMsg(pScrn->scrnIndex, X_INFO,
+-               "Starting to parse config file options...\n");
+-
+     if (xf86GetOptValInteger(VIAOptions, OPTION_VIDEORAM, &pScrn->videoRam))
+         xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
+                    "Setting amount of VideoRAM to %d kB\n", pScrn->videoRam);
+@@ -1100,6 +1109,31 @@
+     }
+ 
+     /* When rotating, switch shadow framebuffer on and acceleration off. */
++    if ((s = xf86GetOptValString(VIAOptions, OPTION_ROTATION_TYPE))) {
++        if (!xf86NameCmp(s, "SWRandR")) {
++            pVia->shadowFB = TRUE;
++            pVia->NoAccel = TRUE;
++            pVia->RandRRotation = TRUE;
++            pVia->rotate = RR_Rotate_0;
++            xf86DrvMsg(pScrn->scrnIndex, X_CONFIG, "Rotating screen "
++                       "RandR enabled, acceleration disabled\n");
++        } else if (!xf86NameCmp(s, "HWRandR")) {
++            pVia->shadowFB = TRUE;
++            pVia->NoAccel = TRUE;
++            pVia->RandRRotation = TRUE;
++            pVia->rotate = RR_Rotate_0;
++            xf86DrvMsg(pScrn->scrnIndex, X_CONFIG, "Hardware accelerated "
++                       "rotating screen is not implemented. Using SW RandR.\n");
++        } else {
++            xf86DrvMsg(pScrn->scrnIndex, X_CONFIG, "\"%s\" is not a valid"
++                       "value for Option \"RotationType\".\n", s);
++            xf86DrvMsg(pScrn->scrnIndex, X_INFO,
++                       "Valid options are \"SWRandR\" and \"HWRandR\".\n");
++        }
++    }
++
++
++    /* When rotating, switch shadow framebuffer on and acceleration off. */
+     if ((s = xf86GetOptValString(VIAOptions, OPTION_ROTATE))) {
+         if (!xf86NameCmp(s, "CW")) {
+             pVia->shadowFB = TRUE;
+@@ -1498,6 +1532,7 @@
+         }
+     }
+ 
++    /* Initialize the colormap */
+     Gamma zeros = { 0.0, 0.0, 0.0 };
+     if (!xf86SetGamma(pScrn, zeros)) {
+         VIAFreeRec(pScrn);
+@@ -1561,9 +1596,8 @@
+ 
+     if (pBIOSInfo->Panel->IsActive &&
+         ((pVia->Chipset == VIA_K8M800) ||
+-         (pVia->Chipset == VIA_PM800) ||
+          (pVia->Chipset == VIA_VM800))) {
+-        xf86DrvMsg(pScrn->scrnIndex, X_WARNING, "Panel on K8M800, PM800 and "
++        xf86DrvMsg(pScrn->scrnIndex, X_WARNING, "Panel on K8M800 and "
+                    "VM800 is currently not supported.\n");
+         xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+                    "Using VBE to set modes to work around this.\n");
+@@ -1621,7 +1655,7 @@
+          *
+          * CLE266A: primary AdjustFrame can use only 24 bits, so we are limited
+          * to 12x11 bits; 4080x2048 (~2:1), 3344x2508 (4:3), or 2896x2896 (1:1).
+-         * Test CLE266Cx, KM400, KM400A, K8M800, PM800, CN400 please.
++         * TODO Test CLE266Cx, KM400, KM400A, K8M800, CN400 please.
+          *
+          * We should be able to limit the memory available for a mode to 32 MB,
+          * but xf86ValidateModes (or miScanLineWidth) fails to catch this
+@@ -1629,13 +1663,14 @@
+          */
+ 
+         /* Select valid modes from those available. */
+-        i = xf86ValidateModes(pScrn, pScrn->monitor->Modes,     /* availModes */
+-                              pScrn->display->modes,    /* modeNames */
+-                              clockRanges,      /* list of clock ranges */
++        i = xf86ValidateModes(pScrn, 
++			      pScrn->monitor->Modes,     /* List of modes available for the monitor */
++                              pScrn->display->modes,     /* List of mode names that the screen is requesting */
++                              clockRanges,               /* list of clock ranges */
+                               NULL,     /* list of line pitches */
+                               256,      /* minimum line pitch */
+                               3344,     /* maximum line pitch */
+-                              32 * 8,   /* pitch inc (bits) */
++                              16 * 8,   /* pitch increment (in bits), we just want 16 bytes alignment */
+                               128,      /* min height */
+                               2508,     /* max height */
+                               pScrn->display->virtualX, /* virtual width */
+@@ -1650,6 +1685,7 @@
+             return FALSE;
+         }
+ 
++        /* This function deletes modes in the modes field of the ScrnInfoRec that have been marked as invalid. */
+         xf86PruneDriverModes(pScrn);
+ 
+         if (i == 0 || pScrn->modes == NULL) {
+@@ -1662,9 +1698,17 @@
+     /* Set up screen parameters. */
+     pVia->Bpp = pScrn->bitsPerPixel >> 3;
+     pVia->Bpl = pScrn->displayWidth * pVia->Bpp;
++
++    /* This function fills in the Crtc fields for all the modes in the modes field of the ScrnInfoRec. */
+     xf86SetCrtcForModes(pScrn, INTERLACE_HALVE_V);
++
++    /* Set the current mode to the first in the list */
+     pScrn->currentMode = pScrn->modes;
++
++    /* Print the list of modes being used */    
+     xf86PrintModes(pScrn);
++
++    /* Set display resolution */
+     xf86SetDpi(pScrn, 0, 0);
+ 
+ #ifdef USE_FB
+@@ -1935,7 +1979,9 @@
+         Regs->SR17 = hwp->readSeq(hwp, 0x17);
+         Regs->SR18 = hwp->readSeq(hwp, 0x18);
+         Regs->SR19 = hwp->readSeq(hwp, 0x19);
++        /* PCI Bus Control */
+         Regs->SR1A = hwp->readSeq(hwp, 0x1A);
++
+         Regs->SR1B = hwp->readSeq(hwp, 0x1B);
+         Regs->SR1C = hwp->readSeq(hwp, 0x1C);
+         Regs->SR1D = hwp->readSeq(hwp, 0x1D);
+@@ -1977,40 +2023,56 @@
+                 Regs->SR4C = hwp->readSeq(hwp, 0x4C);
+                 break;
+         }
+-        DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO,
+-              "Non-Primary Adapter! saving VGA_SR_MODE only !!\n"));
+         DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "Crtc...\n"));
+ 
+         Regs->CR13 = hwp->readCrtc(hwp, 0x13);
+ 
+         Regs->CR32 = hwp->readCrtc(hwp, 0x32);
+         Regs->CR33 = hwp->readCrtc(hwp, 0x33);
+-        Regs->CR34 = hwp->readCrtc(hwp, 0x34);
++
+         Regs->CR35 = hwp->readCrtc(hwp, 0x35);
+         Regs->CR36 = hwp->readCrtc(hwp, 0x36);
+ 
++
++
++        /* Starting Address */
++        /* Start Address High */
++        Regs->CR0C = hwp->readCrtc(hwp, 0x0C);
++        /* Start Address Low */
++        Regs->CR0D = hwp->readCrtc(hwp, 0x0D);
++        /* Starting Address Overflow Bits[28:24] */
+         Regs->CR48 = hwp->readCrtc(hwp, 0x48);
++        /* CR34 are fire bits. Must be writed after CR0C CR0D CR48.  */
++        /* Starting Address Overflow Bits[23:16] */
++        Regs->CR34 = hwp->readCrtc(hwp, 0x34);
++
++
+         Regs->CR49 = hwp->readCrtc(hwp, 0x49);
+ 
+         DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "TVSave...\n"));
+         if (pBIOSInfo->TVI2CDev)
+             ViaTVSave(pScrn);
+ 
+-        /* Save LCD control registers. */
++        /* Save LCD control registers (from CR 0x50 to 0x93). */
+         for (i = 0; i < 68; i++)
+             Regs->CRTCRegs[i] = hwp->readCrtc(hwp, i + 0x50);
+ 
+         if (pVia->Chipset != VIA_CLE266 && pVia->Chipset != VIA_KM400) {
+-
+-            Regs->CRA0 = hwp->readCrtc(hwp, 0xA0);
+-            Regs->CRA1 = hwp->readCrtc(hwp, 0xA1);
+-            Regs->CRA2 = hwp->readCrtc(hwp, 0xA2);
+-
++            /* LVDS Channel 2 Function Select 0 / DVI Function Select */ 
+             Regs->CR97 = hwp->readCrtc(hwp, 0x97);
++            /* LVDS Channel 1 Function Select 0 */
+             Regs->CR99 = hwp->readCrtc(hwp, 0x99);
++            /* Digital Video Port 1 Function Select 0 */
+             Regs->CR9B = hwp->readCrtc(hwp, 0x9B);
++            /* Power Now Control 4 */
+             Regs->CR9F = hwp->readCrtc(hwp, 0x9F);
+ 
++            /* Horizontal Scaling Initial Value */
++            Regs->CRA0 = hwp->readCrtc(hwp, 0xA0);
++            /* Vertical Scaling Initial Value */
++            Regs->CRA1 = hwp->readCrtc(hwp, 0xA1);
++            /* Scaling Enable Bit */
++            Regs->CRA2 = hwp->readCrtc(hwp, 0xA2);
+         }
+ 
+         /* Save TMDS status */
+@@ -2098,11 +2160,19 @@
+     hwp->writeSeq(hwp, 0x45, Regs->SR45);
+     hwp->writeSeq(hwp, 0x46, Regs->SR46);
+ 
++    /* Reset VCK PLL */
++    hwp->writeSeq(hwp, 0x40, hwp->readSeq(hwp, 0x40) | 0x02); /* Set SR40[1] to 1 */
++    hwp->writeSeq(hwp, 0x40, hwp->readSeq(hwp, 0x40) & 0xFD); /* Set SR40[1] to 0 */
++
+     /* ECK Clock Synthesizer: */
+     hwp->writeSeq(hwp, 0x47, Regs->SR47);
+     hwp->writeSeq(hwp, 0x48, Regs->SR48);
+     hwp->writeSeq(hwp, 0x49, Regs->SR49);
+ 
++    /* Reset ECK PLL */
++    hwp->writeSeq(hwp, 0x40, hwp->readSeq(hwp, 0x40) | 0x01); /* Set SR40[0] to 1 */
++    hwp->writeSeq(hwp, 0x40, hwp->readSeq(hwp, 0x40) & 0xFE); /* Set SR40[0] to 0 */
++
+     switch (pVia->Chipset) {
+         case VIA_CLE266:
+         case VIA_KM400:
+@@ -2112,6 +2182,10 @@
+             hwp->writeSeq(hwp, 0x4A, Regs->SR4A);
+             hwp->writeSeq(hwp, 0x4B, Regs->SR4B);
+             hwp->writeSeq(hwp, 0x4C, Regs->SR4C);
++
++            /* Reset LCK PLL */
++            hwp->writeSeq(hwp, 0x40, hwp->readSeq(hwp, 0x40) | 0x04); /* Set SR40[2] to 1 */
++            hwp->writeSeq(hwp, 0x40, hwp->readSeq(hwp, 0x40) & 0xFB); /* Set SR40[2] to 0 */
+             break;
+     }
+ 
+@@ -2127,14 +2201,23 @@
+     hwp->writeCrtc(hwp, 0x32, Regs->CR32);
+     /* HSYNCH Adjuster */
+     hwp->writeCrtc(hwp, 0x33, Regs->CR33);
+-    /* Starting Address Overflow */
+-    hwp->writeCrtc(hwp, 0x34, Regs->CR34);
+     /* Extended Overflow */
+     hwp->writeCrtc(hwp, 0x35, Regs->CR35);
+     /*Power Management 3 (Monitor Control) */
+     hwp->writeCrtc(hwp, 0x36, Regs->CR36);
+ 
++    /* Starting Address */
++    /* Start Address High */
++    hwp->writeCrtc(hwp, 0x0C, Regs->CR0C);
++    /* Start Address Low */
++    hwp->writeCrtc(hwp, 0x0D, Regs->CR0D);
++    /* Starting Address Overflow Bits[28:24] */
+     hwp->writeCrtc(hwp, 0x48, Regs->CR48);
++    /* CR34 are fire bits. Must be writed after CR0C CR0D CR48.  */
++    /* Starting Address Overflow Bits[23:16] */
++    hwp->writeCrtc(hwp, 0x34, Regs->CR34);
++    
++
+     hwp->writeCrtc(hwp, 0x49, Regs->CR49);
+ 
+     /* Restore LCD control registers. */
+@@ -2453,7 +2536,6 @@
+ VIALoadRgbLut(ScrnInfoPtr pScrn, int numColors, int *indices, LOCO *colors,
+               VisualPtr pVisual)
+ {
+-    VIAPtr pVia = VIAPTR(pScrn);
+     vgaHWPtr hwp = VGAHWPTR(pScrn);
+ 
+     int i, j, index;
+@@ -2880,7 +2962,6 @@
+ VIAWriteMode(ScrnInfoPtr pScrn, DisplayModePtr mode)
+ {
+     VIAPtr pVia = VIAPTR(pScrn);
+-    VIABIOSInfoPtr pBIOSInfo = pVia->pBIOSInfo;
+ 
+     DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "VIAWriteMode\n"));
+ 
+@@ -3033,9 +3114,7 @@
+ VIAAdjustFrame(int scrnIndex, int x, int y, int flags)
+ {
+     ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+-    vgaHWPtr hwp = VGAHWPTR(pScrn);
+     VIAPtr pVia = VIAPTR(pScrn);
+-    CARD32 Base;
+ 
+     DEBUG(xf86DrvMsg(scrnIndex, X_INFO, "VIAAdjustFrame %dx%d\n", x, y));
+ 
+@@ -3173,7 +3252,6 @@
+ static void
+ VIADPMS(ScrnInfoPtr pScrn, int mode, int flags)
+ {
+-    vgaHWPtr hwp = VGAHWPTR(pScrn);
+     VIAPtr pVia = VIAPTR(pScrn);
+     VIABIOSInfoPtr pBIOSInfo = pVia->pBIOSInfo;
+ 
+diff -ruN xf86-video-openchrome-0.2.904/src/via_driver.h ../openchrome/xf86-video-openchrome-0.2.904/src/via_driver.h
+--- xf86-video-openchrome-0.2.904/src/via_driver.h	2009-10-09 01:09:22.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_driver.h	2010-03-07 01:09:00.000000000 +0100
+@@ -130,6 +130,7 @@
+     CARD8   SR4A, SR4B, SR4C;
+ 
+     /*   extended CRTC registers */
++    CARD8   CR0C, CR0D;
+     CARD8   CR13, CR30, CR31, CR32, CR33, CR34, CR35, CR36;
+     CARD8   CR37, CR38, CR39, CR3A, CR40, CR41, CR42, CR43;
+     CARD8   CR44, CR45, CR46, CR47, CR48, CR49, CR4A;
+@@ -418,10 +419,10 @@
+     Bool                PrintVGARegs;
+     Bool                PrintTVRegs;
+     Bool                I2CScan;
++#endif /* HAVE_DEBUG */
+     
+     Bool                UseLegacyModeSwitch ;
+     video_via_regs*     VideoRegs ;
+-#endif /* HAVE_DEBUG */
+ } VIARec, *VIAPtr;
+ 
+ #define VIAPTR(p) ((VIAPtr)((p)->driverPrivate))
+diff -ruN xf86-video-openchrome-0.2.904/src/via_id.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_id.c
+--- xf86-video-openchrome-0.2.904/src/via_id.c	2009-10-07 23:30:39.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_id.c	2010-03-07 01:09:00.000000000 +0100
+@@ -152,6 +152,7 @@
+     {"MSI PM8PM",                             VIA_VM800,   0x1462, 0x7222, VIA_DEVICE_CRT},
+     {"Twinhead M6",                           VIA_VM800,   0x14FF, 0xA007, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"RoverBook Partner W500",                VIA_VM800,   0x1509, 0x4330, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
++    {"FIC PTM800Pro LF",                      VIA_VM800,   0x1509, 0x601A, VIA_DEVICE_CRT},
+     {"Clevo/RoverBook Voyager V511L",         VIA_VM800,   0x1558, 0x0662, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"Clevo M5xxS",                           VIA_VM800,   0x1558, 0x5406, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"Biostar P4M80-M4 / P4VMA-M",            VIA_VM800,   0x1565, 0x1202, VIA_DEVICE_CRT},
+@@ -170,6 +171,7 @@
+     {"Asustek M2V-MX SE",                     VIA_K8M890,  0x1043, 0x8297, VIA_DEVICE_CRT},
+     {"Foxconn K8M890M2MA-RS2H",               VIA_K8M890,  0x105B, 0x0C84, VIA_DEVICE_CRT},
+     {"Shuttle FX22V1",                        VIA_K8M890,  0x1297, 0x3080, VIA_DEVICE_CRT},
++    {"MSI K8M890M2-V",                        VIA_K8M890,  0x1462, 0x7139, VIA_DEVICE_CRT},
+     {"MSI K9VGM-V",                           VIA_K8M890,  0x1462, 0x7253, VIA_DEVICE_CRT},
+     {"Averatec 226x",                         VIA_K8M890,  0x14FF, 0xA002, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"Fujitsu/Siemens Amilo La 1703",         VIA_K8M890,  0x1734, 0x10D9, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+@@ -189,6 +191,7 @@
+     {"MSI P4M900M / P4M900M2-F/L",            VIA_P4M900,  0x1462, 0x7255, VIA_DEVICE_CRT},
+     {"MSI P4M900M3-L",                        VIA_P4M900,  0x1462, 0x7387, VIA_DEVICE_CRT},
+     {"Twinhead H12V",                         VIA_P4M900,  0x14FF, 0xA00F, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
++    {"Twinhead K15V",                         VIA_P4M900,  0x14FF, 0xA012, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"Everex NC1501/NC1503",                  VIA_P4M900,  0x1509, 0x1E30, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"Clevo M660SE",                          VIA_P4M900,  0x1558, 0x0664, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"Clevo M660SR",                          VIA_P4M900,  0x1558, 0x0669, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+@@ -224,6 +227,7 @@
+ 
+     /*** VX800 ***/
+     {"VIA Epia M700",                         VIA_VX800,   0x1106, 0x1122, VIA_DEVICE_CRT},
++    {"Guillemot-Hercules ECafe EC900B",       VIA_VX800,   0x1106, 0x3349, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"VIA OpenBook",                          VIA_VX800,   0x1170, 0x0311, VIA_DEVICE_CRT | VIA_DEVICE_LCD}, /* VIA OpenBook eNote VBE8910 */
+     {"Samsung NC20",                          VIA_VX800,   0x144d, 0xc04e, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+     {"Quanta DreamBook Light IL1",            VIA_VX800,   0x152d, 0x0771, VIA_DEVICE_CRT | VIA_DEVICE_LCD},
+@@ -231,6 +235,7 @@
+ 
+     /*** VX855 ***/
+     {"VIA VT8562C",                           VIA_VX855,   0x1106, 0x5122, VIA_DEVICE_CRT},
++    {"OLPC XO 1.5",                           VIA_VX855,   0x152D, 0x0833, VIA_DEVICE_LCD},
+ 
+     /* keep this */
+     {NULL,                                    VIA_UNKNOWN, 0x0000, 0x0000, VIA_DEVICE_NONE}
+diff -ruN xf86-video-openchrome-0.2.904/src/via_mode.h ../openchrome/xf86-video-openchrome-0.2.904/src/via_mode.h
+--- xf86-video-openchrome-0.2.904/src/via_mode.h	2009-10-07 23:31:47.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_mode.h	2010-03-07 01:09:00.000000000 +0100
+@@ -54,50 +54,50 @@
+     CARD16 UniChrome;
+     union pllparams UniChromePro;
+ } ViaDotClocks[] = {
+-    {  25200, 0x513C, /* 0xa79004 */ { 1, 4, 6, 169 } },
+-    {  25312, 0xC763, /* 0xc49005 */ { 1, 4, 7, 198 } },
+-    {  26591, 0x471A, /* 0xce9005 */ { 1, 4, 7, 208 } },
+-    {  31500, 0xC558, /* 0xae9003 */ { 1, 4, 5, 176 } },
+-    {  31704, 0x471F, /* 0xaf9002 */ { 1, 4, 4, 177 } },
+-    {  32663, 0xC449, /* 0x479000 */ { 1, 4, 2,  73 } },
+-    {  33750, 0x4721, /* 0x959002 */ { 1, 4, 4, 151 } },
+-    {  35500, 0x5877, /* 0x759001 */ { 1, 4, 3, 119 } },
+-    {  36000, 0x5879, /* 0x9f9002 */ { 1, 4, 4, 161 } },
+-    {  39822, 0xC459, /* 0x578c02 */ { 1, 3, 4,  89 } },
+-    {  40000, 0x515F, /* 0x848c04 */ { 1, 3, 6, 134 } },
+-    {  41164, 0x4417, /* 0x2c8c00 */ { 1, 3, 2,  46 } },
+-    {  46981, 0x5069, /* 0x678c02 */ { 1, 3, 4, 105 } },
+-    {  49500, 0xC353, /* 0xa48c04 */ { 3, 3, 5, 138 } },
+-    {  50000, 0xC354, /* 0x368c00 */ { 1, 3, 2,  56 } },
+-    {  56300, 0x4F76, /* 0x3d8c00 */ { 1, 3, 2,  63 } },
+-    {  57275,      0, /* 0x3e8c00 */ { 1, 3, 5, 157 } }, /* For XO 1.5 no need for a unichrome clock */
+-    {  57284, 0x4E70, /* 0x3e8c00 */ { 1, 3, 2,  64 } },
+-    {  64995, 0x0D3B, /* 0x6b8c01 */ { 1, 3, 3, 109 } },
+-    {  65000, 0x0D3B, /* 0x6b8c01 */ { 1, 3, 3, 109 } }, /* Slightly unstable on PM800 */
+-    {  65028, 0x866D, /* 0x6b8c01 */ { 1, 3, 3, 109 } },
+-    {  74480, 0x156E, /* 0x288800 */ { 1, 2, 2,  42 } },
+-    {  75000, 0x156E, /* 0x288800 */ { 1, 2, 2,  42 } },
+-    {  78800, 0x442C, /* 0x2a8800 */ { 1, 2, 2,  44 } },
+-    {  81135, 0x0622, /* 0x428801 */ { 1, 2, 3,  68 } },
+-    {  81613, 0x4539, /* 0x708803 */ { 1, 2, 5, 114 } },
+-    {  94500, 0x4542, /* 0x4d8801 */ { 1, 2, 3,  79 } },
+-    { 108000, 0x0B53, /* 0x778802 */ { 1, 2, 4, 121 } },
+-    { 108280, 0x4879, /* 0x778802 */ { 1, 2, 4, 121 } },
+-    { 122000, 0x0D6F, /* 0x428800 */ { 1, 2, 2,  68 } },
+-    { 122726, 0x073C, /* 0x878802 */ { 1, 2, 4, 137 } },
+-    { 135000, 0x0742, /* 0x6f8801 */ { 1, 2, 3, 113 } },
+-    { 148500, 0x0853, /* 0x518800 */ { 1, 2, 2,  83 } },
+-    { 155800, 0x0857, /* 0x558402 */ { 1, 1, 4,  87 } }, 
+-    { 157500, 0x422C, /* 0x2a8400 */ { 1, 1, 2,  44 } },
+-    { 161793, 0x4571, /* 0x6f8403 */ { 1, 1, 5, 113 } }, 
+-    { 162000, 0x0A71, /* 0x6f8403 */ { 1, 1, 5, 113 } },
+-    { 175500, 0x4231, /* 0x2f8400 */ { 1, 1, 2,  49 } },
+-    { 189000, 0x0542, /* 0x4d8401 */ { 1, 1, 3,  79 } },
+-    { 202500, 0x0763, /* 0x6F8402 */ { 1, 1, 4, 113 } },
+-    { 204800, 0x0764, /* 0x548401 */ { 1, 1, 3,  86 } },
+-    { 218300, 0x043D, /* 0x3b8400 */ { 1, 1, 2,  61 } },
+-    { 229500, 0x0660, /* 0x3e8400 */ { 1, 1, 2,  64 } }, /* Not tested on Pro } */
+-    {      0,      0,                { 0, 0, 0,   0 } }
++    {  25200, 0x513C, /* 0xa79004 */ { { 1, 4, 6, 169 } } },
++    {  25312, 0xC763, /* 0xc49005 */ { { 1, 4, 7, 198 } } },
++    {  26591, 0x471A, /* 0xce9005 */ { { 1, 4, 7, 208 } } },
++    {  31500, 0xC558, /* 0xae9003 */ { { 1, 4, 5, 176 } } },
++    {  31704, 0x471F, /* 0xaf9002 */ { { 1, 4, 4, 177 } } },
++    {  32663, 0xC449, /* 0x479000 */ { { 1, 4, 2,  73 } } },
++    {  33750, 0x4721, /* 0x959002 */ { { 1, 4, 4, 151 } } },
++    {  35500, 0x5877, /* 0x759001 */ { { 1, 4, 3, 119 } } },
++    {  36000, 0x5879, /* 0x9f9002 */ { { 1, 4, 4, 161 } } },
++    {  39822, 0xC459, /* 0x578c02 */ { { 1, 3, 4,  89 } } },
++    {  40000, 0x515F, /* 0x848c04 */ { { 1, 3, 6, 134 } } },
++    {  41164, 0x4417, /* 0x2c8c00 */ { { 1, 3, 2,  46 } } },
++    {  46981, 0x5069, /* 0x678c02 */ { { 1, 3, 4, 105 } } },
++    {  49500, 0xC353, /* 0xa48c04 */ { { 3, 3, 5, 138 } } },
++    {  50000, 0xC354, /* 0x368c00 */ { { 1, 3, 2,  56 } } },
++    {  56300, 0x4F76, /* 0x3d8c00 */ { { 1, 3, 2,  63 } } },
++    {  57275,      0, /* 0x3e8c00 */ { { 1, 3, 5, 157 } } }, /* For XO 1.5 no need for a unichrome clock */
++    {  57284, 0x4E70, /* 0x3e8c00 */ { { 1, 3, 2,  64 } } },
++    {  64995, 0x0D3B, /* 0x6b8c01 */ { { 1, 3, 3, 109 } } },
++    {  65000, 0x0D3B, /* 0x6b8c01 */ { { 1, 3, 3, 109 } } }, /* Slightly unstable on PM800 */
++    {  65028, 0x866D, /* 0x6b8c01 */ { { 1, 3, 3, 109 } } },
++    {  74480, 0x156E, /* 0x288800 */ { { 1, 2, 2,  42 } } },
++    {  75000, 0x156E, /* 0x288800 */ { { 1, 2, 2,  42 } } },
++    {  78800, 0x442C, /* 0x2a8800 */ { { 1, 2, 2,  44 } } },
++    {  81135, 0x0622, /* 0x428801 */ { { 1, 2, 3,  68 } } },
++    {  81613, 0x4539, /* 0x708803 */ { { 1, 2, 5, 114 } } },
++    {  94500, 0x4542, /* 0x4d8801 */ { { 1, 2, 3,  79 } } },
++    { 108000, 0x0B53, /* 0x778802 */ { { 1, 2, 4, 121 } } },
++    { 108280, 0x4879, /* 0x778802 */ { { 1, 2, 4, 121 } } },
++    { 122000, 0x0D6F, /* 0x428800 */ { { 1, 2, 2,  68 } } },
++    { 122726, 0x073C, /* 0x878802 */ { { 1, 2, 4, 137 } } },
++    { 135000, 0x0742, /* 0x6f8801 */ { { 1, 2, 3, 113 } } },
++    { 148500, 0x0853, /* 0x518800 */ { { 1, 2, 2,  83 } } },
++    { 155800, 0x0857, /* 0x558402 */ { { 1, 1, 4,  87 } } }, 
++    { 157500, 0x422C, /* 0x2a8400 */ { { 1, 1, 2,  44 } } },
++    { 161793, 0x4571, /* 0x6f8403 */ { { 1, 1, 5, 113 } } }, 
++    { 162000, 0x0A71, /* 0x6f8403 */ { { 1, 1, 5, 113 } } },
++    { 175500, 0x4231, /* 0x2f8400 */ { { 1, 1, 2,  49 } } },
++    { 189000, 0x0542, /* 0x4d8401 */ { { 1, 1, 3,  79 } } },
++    { 202500, 0x0763, /* 0x6F8402 */ { { 1, 1, 4, 113 } } },
++    { 204800, 0x0764, /* 0x548401 */ { { 1, 1, 3,  86 } } },
++    { 218300, 0x043D, /* 0x3b8400 */ { { 1, 1, 2,  61 } } },
++    { 229500, 0x0660, /* 0x3e8400 */ { { 1, 1, 2,  64 } } }, /* Not tested on Pro } */
++    {      0,      0,                { { 0, 0, 0,   0 } } }
+ };
+ 
+ /*
+diff -ruN xf86-video-openchrome-0.2.904/src/via_panel.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_panel.c
+--- xf86-video-openchrome-0.2.904/src/via_panel.c	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_panel.c	2010-03-07 01:09:00.000000000 +0100
+@@ -171,12 +171,18 @@
+                      resWidth, resHeight, panelWidth, panelHeight));
+ 
+     if (resWidth < panelWidth) {
+-        /* FIXME: It is different for chipset < K8M800 */
+-        horScalingFactor = ((resWidth - 1) * 4096) / (panelWidth - 1);
++        /* Load Horizontal Scaling Factor */
++        if (pVia->Chipset != VIA_CLE266 && pVia->Chipset != VIA_KM400) {
++            horScalingFactor = ((resWidth - 1) * 4096) / (panelWidth - 1);
++            
++            /* Horizontal scaling enabled */
++            cra2 = 0xC0;
++            cr9f = horScalingFactor & 0x0003;          /* HSCaleFactor[1:0] at CR9F[1:0] */
++	} else {
++            /* TODO: Need testing */
++            horScalingFactor = ((resWidth - 1) * 1024) / (panelWidth - 1);
++        }
+ 
+-        /* Horizontal scaling enabled */
+-        cra2 = 0xC0;
+-        cr9f = horScalingFactor & 0x0003;          /* HSCaleFactor[1:0] at CR9F[1:0] */
+         cr77 = (horScalingFactor & 0x03FC) >> 2;   /* HSCaleFactor[9:2] at CR77[7:0] */
+         cr79 = (horScalingFactor & 0x0C00) >> 10;  /* HSCaleFactor[11:10] at CR79[5:4] */
+         cr79 <<= 4;
+@@ -184,11 +190,18 @@
+     }
+ 
+     if (resHeight < panelHeight) {
+-        verScalingFactor = ((resHeight - 1) * 2048) / (panelHeight - 1);
++        /* Load Vertical Scaling Factor */
++        if (pVia->Chipset != VIA_CLE266 && pVia->Chipset != VIA_KM400) {
++            verScalingFactor = ((resHeight - 1) * 2048) / (panelHeight - 1);
++
++            /* Vertical scaling enabled */
++            cra2 |= 0x08;
++            cr79 |= ((verScalingFactor & 0x0001) << 3);       /* VSCaleFactor[0] at CR79[3] */
++        } else {
++            /* TODO: Need testing */
++            verScalingFactor = ((resHeight - 1) * 1024) / (panelHeight - 1);
++        }
+ 
+-        /* Vertical scaling enabled */
+-        cra2 |= 0x08;
+-        cr79 |= ((verScalingFactor & 0x0001) << 3);       /* VSCaleFactor[0] at CR79[3] */
+         cr78 |= (verScalingFactor & 0x01FE) >> 1;         /* VSCaleFactor[8:1] at CR78[7:0] */
+         cr79 |= ((verScalingFactor & 0x0600) >> 9) << 6;  /* VSCaleFactor[10:9] at CR79[7:6] */
+         scaling = TRUE;
+@@ -203,12 +216,18 @@
+         ViaCrtcMask(hwp, 0x77, cr77, 0xFF);
+         ViaCrtcMask(hwp, 0x78, cr78, 0xFF);
+         ViaCrtcMask(hwp, 0x79, cr79, 0xF8);
+-        ViaCrtcMask(hwp, 0x9F, cr9f, 0x03);
++        if (pVia->Chipset != VIA_CLE266 && pVia->Chipset != VIA_KM400) {
++            ViaCrtcMask(hwp, 0x9F, cr9f, 0x03);
++        }
+         ViaCrtcMask(hwp, 0x79, 0x03, 0x03);
+-    } else
++    } else {
++        /*  Disable panel scale */
+         ViaCrtcMask(hwp, 0x79, 0x00, 0x01);
+-
+-    ViaCrtcMask(hwp, 0xA2, cra2, 0xC8);
++    }
++    
++    if (pVia->Chipset != VIA_CLE266 && pVia->Chipset != VIA_KM400) {
++        ViaCrtcMask(hwp, 0xA2, cra2, 0xC8);
++    }
+ 
+     /* Horizontal scaling selection: interpolation */
+     // ViaCrtcMask(hwp, 0x79, 0x02, 0x02);
+@@ -233,14 +252,14 @@
+ 
+     if (panelMode->Width && panelMode->Height) {
+ 
+-        /* TODO: fix refresh rate and check malloc */
++        /* TODO: fix refresh rate */
+         DisplayModePtr p = malloc( sizeof(DisplayModeRec) ) ;
+-        memset(p, 0, sizeof(DisplayModeRec));
++        if (p) {
++            memset(p, 0, sizeof(DisplayModeRec));
+ 
+-        float refresh = 60.0f ;
++            float refresh = 60.0f ;
+ 
+-        /* The following code is borrowed from xf86SetModeCrtc. */
+-        if (p) {
++            /* The following code is borrowed from xf86SetModeCrtc. */
+             viaTimingCvt(p, panelMode->Width, panelMode->Height, refresh, FALSE, TRUE);
+             p->CrtcHDisplay = p->HDisplay;
+             p->CrtcHSyncStart = p->HSyncStart;
+@@ -256,9 +275,13 @@
+             p->CrtcVBlankEnd = max(p->CrtcVSyncEnd, p->CrtcVTotal);
+             p->CrtcHBlankStart = min(p->CrtcHSyncStart, p->CrtcHDisplay);
+             p->CrtcHBlankEnd = max(p->CrtcHSyncEnd, p->CrtcHTotal);
+-
++            
++            pVia->pBIOSInfo->Panel->NativeDisplayMode = p;
++        } else {
++            xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
++                     "Out of memory. Size: %d bytes\n", sizeof(DisplayModeRec));
+         }
+-        pVia->pBIOSInfo->Panel->NativeDisplayMode = p;
++        
+     } else {
+         xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+                    "Invalid panel dimension (%dx%d)\n", panelMode->Width,
+@@ -339,22 +362,22 @@
+ ViaPanelGetSizeFromEDID(ScrnInfoPtr pScrn, xf86MonPtr pMon,
+                         int *width, int *height)
+ {
+-    int i, max = 0, vsize;
++    int i, max_hsize = 0, vsize = 0;
+ 
+     DEBUG(xf86DrvMsg(pScrn->scrnIndex, X_INFO, "VIAGetPanelSizeFromEDID\n"));
+ 
+     /* !!! Why are we not checking VESA modes? */
+ 
+     /* checking standard timings */
+-    for (i = 0; i < 8; i++)
++    for (i = 0; i < STD_TIMINGS; i++)
+         if ((pMon->timings2[i].hsize > 256)
+-            && (pMon->timings2[i].hsize > max)) {
+-            max = pMon->timings2[i].hsize;
++            && (pMon->timings2[i].hsize > max_hsize)) {
++            max_hsize = pMon->timings2[i].hsize;
+             vsize = pMon->timings2[i].vsize;
+         }
+ 
+-    if (max != 0) {
+-        *width = max;
++    if (max_hsize != 0) {
++        *width = max_hsize;
+         *height = vsize;
+         return TRUE;
+     }
+@@ -369,14 +392,14 @@
+             struct detailed_timings timing = pMon->det_mon[i].section.d_timings;
+ 
+             /* ignore v_active for now */
+-            if ((timing.clock > 15000000) && (timing.h_active > max)) {
+-                max = timing.h_active;
++            if ((timing.clock > 15000000) && (timing.h_active > max_hsize)) {
++                max_hsize = timing.h_active;
+                 vsize = timing.v_active;
+             }
+         }
+ 
+-    if (max != 0) {
+-        *width = max;
++    if (max_hsize != 0) {
++        *width = max_hsize;
+         *height = vsize;
+         return TRUE;
+     }
+diff -ruN xf86-video-openchrome-0.2.904/src/via_video.c ../openchrome/xf86-video-openchrome-0.2.904/src/via_video.c
+--- xf86-video-openchrome-0.2.904/src/via_video.c	2009-10-08 01:39:13.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_video.c	2010-03-07 01:09:00.000000000 +0100
+@@ -466,8 +466,8 @@
+ 
+     viaVidEng->video1_ctl = 0;
+     viaVidEng->video3_ctl = 0;
+-    viaVidEng->compose = 0x80000000;
+-    viaVidEng->compose = 0x40000000;
++    viaVidEng->compose = V1_COMMAND_FIRE;
++    viaVidEng->compose = V3_COMMAND_FIRE;
+     viaVidEng->color_key = 0x821;
+     viaVidEng->snd_color_key = 0x821;
+ 
+@@ -479,16 +479,16 @@
+     VIAPtr pVia = VIAPTR(pScrn);
+     vmmtr viaVidEng = (vmmtr) pVia->VidMapBase;
+     
++    DBG_DD(ErrorF(" via_video.c : viaSaveVideo : \n"));
+     /* Save video registers */
+-    /* TODO: Identify which registers should be saved and restored */
+     memcpy(pVia->VideoRegs, (void*)viaVidEng, sizeof(video_via_regs));
+ 
+     pVia->dwV1 = ((vmmtr) viaVidEng)->video1_ctl;
+     pVia->dwV3 = ((vmmtr) viaVidEng)->video3_ctl;
+     viaVidEng->video1_ctl = 0;
+     viaVidEng->video3_ctl = 0;
+-    viaVidEng->compose = 0x80000000;
+-    viaVidEng->compose = 0x40000000;
++    viaVidEng->compose = V1_COMMAND_FIRE;
++    viaVidEng->compose = V3_COMMAND_FIRE;
+ }
+ 
+ void
+@@ -496,16 +496,65 @@
+ {
+     VIAPtr pVia = VIAPTR(pScrn);
+     vmmtr viaVidEng = (vmmtr) pVia->VidMapBase;
++    video_via_regs  *localVidEng = pVia->VideoRegs;
++
+     
++    DBG_DD(ErrorF(" via_video.c : viaRestoreVideo : \n"));
+     /* Restore video registers */
+-    /* TODO: Identify which registers should be saved and restored */
+-    memcpy((void*)viaVidEng, pVia->VideoRegs, sizeof(video_via_regs));
+-
++    /* flush restored video engines' setting to VidMapBase */
++    
++    viaVidEng->alphawin_hvstart = localVidEng->alphawin_hvstart;
++    viaVidEng->alphawin_size   = localVidEng->alphawin_size;
++    viaVidEng->alphawin_ctl    = localVidEng->alphawin_ctl;
++    viaVidEng->alphafb_stride  = localVidEng->alphafb_stride;
++    viaVidEng->color_key       = localVidEng->color_key;
++    viaVidEng->alphafb_addr    = localVidEng->alphafb_addr;
++    viaVidEng->chroma_low      = localVidEng->chroma_low;
++    viaVidEng->chroma_up       = localVidEng->chroma_up;
++
++    if (pVia->ChipId != PCI_CHIP_VT3314)
++    {
++        /*VT3314 only has V3*/
++        viaVidEng->video1_ctl      = localVidEng->video1_ctl;
++        viaVidEng->video1_fetch    = localVidEng->video1_fetch;
++        viaVidEng->video1y_addr1   = localVidEng->video1y_addr1;
++        viaVidEng->video1_stride   = localVidEng->video1_stride;
++        viaVidEng->video1_hvstart  = localVidEng->video1_hvstart;
++        viaVidEng->video1_size     = localVidEng->video1_size;
++        viaVidEng->video1y_addr2   = localVidEng->video1y_addr2;
++        viaVidEng->video1_zoom     = localVidEng->video1_zoom;
++        viaVidEng->video1_mictl    = localVidEng->video1_mictl;
++        viaVidEng->video1y_addr0   = localVidEng->video1y_addr0;
++        viaVidEng->video1_fifo     = localVidEng->video1_fifo;
++        viaVidEng->video1y_addr3   = localVidEng->video1y_addr3;
++        viaVidEng->v1_source_w_h   = localVidEng->v1_source_w_h ;
++        viaVidEng->video1_CSC1     = localVidEng->video1_CSC1;
++        viaVidEng->video1_CSC2     = localVidEng->video1_CSC2;
++    }
++    viaVidEng->snd_color_key   = localVidEng->snd_color_key;
++    viaVidEng->v3alpha_prefifo = localVidEng->v3alpha_prefifo;
++    viaVidEng->v3alpha_fifo    = localVidEng->v3alpha_fifo;
++    viaVidEng->video3_CSC2     = localVidEng->video3_CSC2;
++    viaVidEng->video3_CSC2     = localVidEng->video3_CSC2;
++    viaVidEng->v3_source_width = localVidEng->v3_source_width;
++    viaVidEng->video3_ctl      = localVidEng->video3_ctl;
++    viaVidEng->video3_addr0    = localVidEng->video3_addr0;
++    viaVidEng->video3_addr1    = localVidEng->video3_addr1;
++    viaVidEng->video3_stride   = localVidEng->video3_stride;
++    viaVidEng->video3_hvstart  = localVidEng->video3_hvstart;
++    viaVidEng->video3_size     = localVidEng->video3_size;
++    viaVidEng->v3alpha_fetch   = localVidEng->v3alpha_fetch;
++    viaVidEng->video3_zoom     = localVidEng->video3_zoom;
++    viaVidEng->video3_mictl    = localVidEng->video3_mictl;
++    viaVidEng->video3_CSC1     = localVidEng->video3_CSC1;
++    viaVidEng->video3_CSC2     = localVidEng->video3_CSC2;    
++    viaVidEng->compose         = localVidEng->compose;
++    
+     viaVidEng->video1_ctl = pVia->dwV1;
+     viaVidEng->video3_ctl = pVia->dwV3;
+-    viaVidEng->compose = 0x80000000;
+-    viaVidEng->compose = 0x40000000;
+-
++    if (pVia->ChipId != PCI_CHIP_VT3314)
++        viaVidEng->compose = V1_COMMAND_FIRE;
++    viaVidEng->compose = V3_COMMAND_FIRE;
+ }
+ 
+ void
+@@ -524,8 +573,8 @@
+ 
+     viaVidEng->video1_ctl = 0;
+     viaVidEng->video3_ctl = 0;
+-    viaVidEng->compose = 0x80000000;
+-    viaVidEng->compose = 0x40000000;
++    viaVidEng->compose = V1_COMMAND_FIRE;
++    viaVidEng->compose = V3_COMMAND_FIRE;
+ 
+     /*
+      * Free all adaptor info allocated in viaInitVideo.
+@@ -561,7 +610,7 @@
+     XF86VideoAdaptorPtr *adaptors, *newAdaptors;
+     int num_adaptors, num_new;
+ 
+-    DBG_DD(ErrorF(" via_video.c : viaInitVideo : \n"));
++    DBG_DD(ErrorF(" via_video.c : viaInitVideo, Screen[%d]\n", pScrn->scrnIndex));
+ 
+     allAdaptors = NULL;
+     newAdaptors = NULL;
+@@ -832,7 +881,7 @@
+     DevUnion *pdevUnion;
+     int i, j, usedPorts, numPorts;
+ 
+-    DBG_DD(ErrorF(" via_video.c : viaSetupImageVideo: \n"));
++    DBG_DD(ErrorF(" via_video.c : viaSetupAdaptors (viaSetupImageVideo): \n"));
+ 
+     xvBrightness = MAKE_ATOM("XV_BRIGHTNESS");
+     xvContrast = MAKE_ATOM("XV_CONTRAST");
+@@ -1042,6 +1091,8 @@
+         }
+ 
+     } else {
++        DBG_DD(ErrorF(" via_video.c : viaGetPortAttribute : is not supported the attribute\n"));
++        
+         /*return BadMatch */;
+     }
+     return Success;
+@@ -1498,6 +1549,7 @@
+ 
+     DBG_DD(ErrorF(" via_video.c : viaQueryImageAttributes : FourCC=0x%x, ",
+             id));
++    DBG_DD(ErrorF(" via_video.c : Screen[%d],  w=%d, h=%d\n", pScrn->scrnIndex, *w, *h));
+ 
+     if ((!w) || (!h))
+         return 0;
+@@ -1513,6 +1565,7 @@
+ 
+     switch (id) {
+         case FOURCC_YV12: /*Planar format : YV12 -4:2:0 */
++        case FOURCC_I420:
+             *h = (*h + 1) & ~1;
+             size = *w;
+             if (pVia->useDmaBlit)
+diff -ruN xf86-video-openchrome-0.2.904/src/via_video.h ../openchrome/xf86-video-openchrome-0.2.904/src/via_video.h
+--- xf86-video-openchrome-0.2.904/src/via_video.h	2009-10-03 22:48:55.000000000 +0200
++++ ../openchrome/xf86-video-openchrome-0.2.904/src/via_video.h	2010-03-07 01:09:00.000000000 +0100
+@@ -44,6 +44,10 @@
+ 
+ #define VIDEO_BPP 2
+ 
++
++#define V1_COMMAND_FIRE               0x80000000  /* V1 commands fire */
++#define V3_COMMAND_FIRE               0x40000000  /* V3 commands fire */
++
+ typedef struct
+ {
+     CARD32 interruptflag;	       /* 200 */
+@@ -89,7 +93,7 @@
+     CARD32 video3_ctl;		       /* 2a0 */
+     CARD32 video3_addr0;	       /* 2a4 */
+     CARD32 video3_addr1;	       /* 2a8 */
+-    CARD32 video3_stribe;	       /* 2ac */
++    CARD32 video3_stride;	       /* 2ac */
+     CARD32 video3_hvstart;	       /* 2b0 */
+     CARD32 video3_size;		       /* 2b4 */
+     CARD32 v3alpha_fetch;	       /* 2b8 */

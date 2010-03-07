@@ -1,0 +1,10 @@
+--- src/via_xvmc.h.orig	2010-03-07 01:46:34.000000000 +0100
++++ src/via_xvmc.h	2010-03-07 01:46:45.000000000 +0100
+@@ -26,6 +26,7 @@
+ #ifndef _VIA_XVMC_H
+ #define _VIA_XVMC_H 1
+ 
++#include <stdint.h>
+ #include "via_drm.h"
+ 
+ /*

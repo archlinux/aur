@@ -3,7 +3,7 @@
 
 pkgname=xf86-video-openchrome
 pkgver=0.2.904
-pkgrel=1
+pkgrel=2
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
@@ -14,12 +14,18 @@ replaces=('openchrome' 'xf86-video-via')
 options=('!libtool' 'force' '!makeflags')
 conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.7.0')
 source=(http://xorg.freedesktop.org/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
+        drm_stdint.patch
+        svn-r839.patch
         LICENSE.txt)
 md5sums=('f2481d98ef54febf5bffbb88a2a2426d'
+         'bc516400ffc3df5d0dfe604f6245dd32'
+         '5aed4aa44dd5a6d3e2da9baad73ac0ab'
          'addb3cf2671f4cf7e91156952de1627f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || return 1
+  patch -Np1 -i "${srcdir}/svn-r839.patch" || return 1
+  patch -Np0 -i "${srcdir}/drm_stdint.patch" || return 1
   ./configure --prefix=/usr || return 1
   make || return 1
   make DESTDIR="${pkgdir}" install || return 1
