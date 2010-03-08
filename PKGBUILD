@@ -1,4 +1,5 @@
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
 pkgver=5.0.307.11
@@ -7,9 +8,10 @@ pkgdesc='The open-source project behind Google Chrome, an attempt at creating a 
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt' 'ffmpeg'
+depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt'
          'libevent' 'libxss')
-makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
+makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa' 'ffmpeg')
+optdepends=('ffmpeg: needed to play HTML5 video')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install='chromium.install'
