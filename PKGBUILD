@@ -2,24 +2,22 @@
 # Contributor: Maxim Vuets <maxim.vuets@gmail.com>
 
 pkgname=cuneiform
-pkgver=0.8.0
-_dpkgver=0.8
-pkgrel=2.1
+pkgver=0.9.0
+_dpkgver=0.9
+pkgrel=1
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/cuneiform-linux"
 license=('BSD')
 depends=(imagemagick)
 makedepends=(cmake)
-source=(http://launchpad.net/cuneiform-linux/${_dpkgver}/${_dpkgver}/+download/${pkgname}-linux-${pkgver}.tar.bz2 \
-        cuneiform.patch)
-md5sums=('271c1adae56bf8b977bf7326f8a8a0bc'
-         'ad3e40904a50ea68e87017f1c0248aa0')
+source=(http://launchpad.net/cuneiform-linux/${_dpkgver}/cuneiform-linux-${_dpkgver}/+download/${pkgname}-linux-${pkgver}.tar.bz2)
+md5sums=('93f2061560ed19add5ba9d26d10d2bb4')
 
 build() {
   _SRC_ROOT="${srcdir}/${pkgname}-linux-${pkgver}"
   cd "${_SRC_ROOT}"
-  sed -i 's#lib64#lib#' install_files.cmake 
+  sed -i 's#lib64#lib#' install_files.cmake
   mkdir builddir
   cd builddir
 
