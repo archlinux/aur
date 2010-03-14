@@ -1,0 +1,13 @@
+post_install() {
+    echo "Creating INDEX. Please wait..."
+    cd /usr/share/ibus-pinyin/db
+    echo "Creating index for android.db..."
+    sqlite3 android.db '.read create_index.sql'
+    echo "Creating index for open-phrase.db..."
+    sqlite3 open-phrase.db '.read create_index.sql'
+    echo "Done."
+}
+
+post_upgrade() {
+    post_install $1
+}
