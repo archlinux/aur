@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://ibus.googlecode.com"
 depends=('ibus' 'python-pysqlite' 'aspell-en' 'python-pyenchant' 'libsigc++2.0')
+makedepends=('intltool')
 provides=('ibus-pinyin=1.2.0')
 install=ibus-pinyin.install
 source=(http://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz
