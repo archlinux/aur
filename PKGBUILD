@@ -1,14 +1,15 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
+# vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-acm
-pkgver=200904
-pkgrel=2
-pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4, sigplanconf v1.8 and the unofficial sigplan-proc-varsize)"
+pkgver=201003
+pkgrel=1
+pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4, sigplanconf v2.3 and the unofficial sigplan-proc-varsize v1.4)"
 arch=('any')
 url="http://www.acm.org/sigs/publications/proceedings-templates, http://sigplan.acm.org/authorInformation.htm, http://www.isi.edu/~johnh/SOFTWARE/LATEX/"
 _sigproc_url="http://www.acm.org/sigs/publications"
-_sigplan_url="http://sigplan.acm.org"
+_sigplan_url="http://www.sigplan.org"
 license=('')
 groups=()
 depends=('texlive-latex3')
@@ -37,22 +38,6 @@ ${_sigplan_url}/sigplanconf-template11.tex
 ${_sigplan_url}/sigplanconf-guide.pdf
 http://www.isi.edu/~johnh/SOFTWARE/LATEX/sigplan-proc-varsize-package.tar.gz
 )
-md5sums=('ae11eddebdf6d30071a8cfac0c8984fb'
-         '49fc14f68a73f326183ff0d766bec0c2'
-         '0ac6b024a088e6d6f1cdfbdfe68f85e1'
-         '045cff45096bc53833df7eca105d1ace'
-         'c6a1b19bf288f26bc2dba4b72ac7d457'
-         '557a5283c73690acc0ef2d5a1adc5e61'
-         'da992183e40385e6cab3e7d4feece0f4'
-         '239175bb1c14c0ee1288e2b1bac694e6'
-         '0043b85d599385e40b673bc3325248f8'
-         'dba56cd52fbb4fba62d9fa0585b6e0ca'
-         '9946f571cb31cc6bfb45e1281c042f79'
-         '00ffefdab78bb8eb9039a8d2d5a31a94'
-         '4e94835d0b432831e54701ec2fa0800f'
-         '7db95b194a770fa2ee90fce0f80d9cd7'
-         '85b8aa489fa4f227f290fb16bb17f4c7'
-         '216c50b96e931516e9c3fba2567d5838')
 
 build() {
   mkdir -p ${pkgdir}/usr/share/texmf-dist/tex/latex/{sigproc,sigplan,sigplan-proc-varsize}
@@ -63,4 +48,19 @@ build() {
     -C ${pkgdir}/usr/share/texmf-dist/tex/latex/sigplan-proc-varsize
 }
 
-# vim:set ts=2 sw=2 et:
+md5sums=('77a0365d2aefcff5ba5a2673f9ea8e5b'
+         '49fc14f68a73f326183ff0d766bec0c2'
+         '67858fe744bc76972e689a01d2a4415b'
+         '045cff45096bc53833df7eca105d1ace'
+         'c6a1b19bf288f26bc2dba4b72ac7d457'
+         '557a5283c73690acc0ef2d5a1adc5e61'
+         'da992183e40385e6cab3e7d4feece0f4'
+         '400600fe9911a1256ab40406d8085c5b'
+         '8753848f67f8203fc161e28be692156e'
+         'c95cf4562f95e7bf533143ef1c37e678'
+         '9946f571cb31cc6bfb45e1281c042f79'
+         '00ffefdab78bb8eb9039a8d2d5a31a94'
+         '4e94835d0b432831e54701ec2fa0800f'
+         '7db95b194a770fa2ee90fce0f80d9cd7'
+         '85b8aa489fa4f227f290fb16bb17f4c7'
+         '216c50b96e931516e9c3fba2567d5838')
