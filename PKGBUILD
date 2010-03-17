@@ -4,12 +4,12 @@
 
 pkgname=asunder
 pkgver=1.9.1
-pkgrel=1
-pkgdesc="Asunder is a graphical CD ripper and encoder"
+pkgrel=2
+pkgdesc="a graphical CD ripper and encoder"
 arch=('i686' 'x86_64')
 url="http://littlesvr.ca/asunder/"
 license=('GPL2')
-depends=('gtk2' 'libcddb')
+depends=('gtk2' 'libcddb' 'cdparanoia')
 makedepends=('pkgconfig')
 optdepends=('lame: for mp3 support' 'vorbis-tools: for ogg support' \
 	'flac: for flac support')
