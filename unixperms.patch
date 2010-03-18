@@ -1,0 +1,47 @@
+diff -ur libvirt-0.7.4-orig/daemon/libvirtd.conf libvirt-0.7.4-patched/daemon/libvirtd.conf
+--- libvirt-0.7.4-orig/daemon/libvirtd.conf	2009-11-23 03:10:33.398655655 -0800
++++ libvirt-0.7.4-patched/daemon/libvirtd.conf	2009-11-23 03:09:37.831189671 -0800
+@@ -78,14 +78,14 @@
+ # without becoming root.
+ #
+ # This is restricted to 'root' by default.
+-#unix_sock_group = "libvirt"
++unix_sock_group = "libvirt"
+ 
+ # Set the UNIX socket permissions for the R/O socket. This is used
+ # for monitoring VM status only
+ #
+ # Default allows any user. If setting group ownership may want to
+ # restrict this to:
+-#unix_sock_ro_perms = "0777"
++unix_sock_ro_perms = "0770"
+ 
+ # Set the UNIX socket permissions for the R/W socket. This is used
+ # for full management of VMs
+@@ -95,7 +95,7 @@
+ #
+ # If not using PolicyKit and setting group ownership for access
+ # control then you may want to relax this to:
+-#unix_sock_rw_perms = "0770"
++unix_sock_rw_perms = "0770"
+ 
+ # Set the name of the directory in which sockets will be found/created.
+ #unix_sock_dir = "/var/run/libvirt"
+@@ -126,7 +126,7 @@
+ #
+ # To restrict monitoring of domains you may wish to enable
+ # an authentication mechanism here
+-#auth_unix_ro = "none"
++auth_unix_ro = "none"
+ 
+ # Set an authentication scheme for UNIX read-write sockets
+ # By default socket permissions only allow root. If PolicyKit
+@@ -135,7 +135,7 @@
+ #
+ # If the unix_sock_rw_perms are changed you may wish to enable
+ # an authentication mechanism here
+-#auth_unix_rw = "none"
++auth_unix_rw = "none"
+ 
+ # Change the authentication scheme for TCP sockets.
+ #
