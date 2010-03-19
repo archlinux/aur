@@ -4,9 +4,9 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=2.6.32.5
-_basever=2.6.32
-pkgrel=2
+pkgver=2.6.33.1
+_basever=2.6.33
+pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libc"
@@ -17,8 +17,8 @@ replaces=('kernel-headers')
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-${_basever}.tar.bz2
 	http://www.kernel.org/pub/linux/kernel/v2.6/patch-${pkgver}.bz2
 	scsi.patch)
-md5sums=('260551284ac224c3a43c4adac7df4879'
-         '49e6bc73c7a7f690fe7ddf09fe2b5d06'
+md5sums=('c3883760b18d50e8d78819c54d579b00'
+         '745fd1355c630e163e40c40d4c9b79f9'
          'b6d05566fcfe07770d9386f0588f8758')
 
 build() {
