@@ -4,7 +4,7 @@
 
 pkgname=gkrellm
 pkgver=2.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="System monitor package for GTK2"
 arch=('i686' 'x86_64')
 url="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html"
