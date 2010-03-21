@@ -1,7 +1,7 @@
 # Maintainer: tobias <tobias@archlinux.org>
 
 pkgname=gtk-sharp-2
-pkgver=2.12.9
+pkgver=2.12.10
 pkgrel=1
 pkgdesc="gtk2 bindings for C#"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=('pkgconfig' 'monodoc')
 conflicts=('gtk#')
 options=('!libtool' '!makeflags')
 source=(http://ftp.gnome.org/pub/GNOME/sources/gtk-sharp/2.12/gtk-sharp-${pkgver}.tar.bz2)
-sha256sums=('d580bd03246b7885de8d4271ea736eb0925153a08a396d6b382c8193a0ed7beb')
+sha256sums=('aaa53f7916f25f0f83760b6ffbf0d465d13ecfa55aa645603f1ca876b7d0f770')
 
 build() {
  # get rid of that .wapi errors; thanks to brice
