@@ -3,7 +3,7 @@
 # Maintainer: Daenyth
 
 pkgname=youtube-dl
-pkgver=2010.02.13
+pkgver=2010.03.13
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://bitbucket.org/rg3/youtube-dl/"
 license=('MIT')
 depends=('python')
 source=(http://bitbucket.org/rg3/$pkgname/raw/${pkgver}/$pkgname)
-md5sums=('276e8142b4c271b249cbd11fdabd4677')
+md5sums=('b4e1d9801191853d399ea34c7a13e9ce')
 
 build()  {
    install -Dm755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
