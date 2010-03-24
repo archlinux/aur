@@ -4,12 +4,12 @@
 
 pkgname=ibus-pinyin
 pkgver=1.2.99.20100318
-pkgrel=1
+pkgrel=2
 pkgdesc="The PinYin Engine for IBus Input Framework"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://ibus.googlecode.com"
-depends=('ibus' 'python-pysqlite' 'aspell-en' 'python-pyenchant' 'libsigc++2.0')
+depends=('ibus' 'aspell-en' 'libsigc++2.0')
 makedepends=('intltool')
 provides=('ibus-pinyin=1.2.0')
 install=ibus-pinyin.install
