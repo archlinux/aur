@@ -1,8 +1,8 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-pkgver=0.9.8m
-pkgrel=2
+pkgver=0.9.8n
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='http://www.openssl.org'
@@ -14,13 +14,11 @@ backup=('etc/ssl/openssl.cnf')
 source=("http://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"
         'openssl-0.9.8l-fix_manpages-1.patch'
         'openssl-0.9.8a-no-rpath.patch'
-        'openssl-0.9.8m-ca-dir.patch'
-        'openssl-0.9.8m-cfb.patch')
-md5sums=('898bf125370926d5f692a2201124f8ec'
+        'openssl-0.9.8m-ca-dir.patch')
+md5sums=('076d8efc3ed93646bd01f04e23c07066'
          '04a6a88c2ee4badd4f8649792b73eaf3'
          '4738d1eaff4e9975e9a26e4f76e48318'
-         '1216688f46de6948ed2175e58e75c043'
-         'd7ead9cc459e5d0233d5b1e1d24380a7')
+         '1216688f46de6948ed2175e58e75c043')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
@@ -33,11 +31,6 @@ build() {
 	patch -p1 -i $srcdir/openssl-0.9.8m-ca-dir.patch
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./config --prefix=/usr --openssldir=/etc/ssl shared zlib -Wa,--noexecstack
-
-	# see http://bugs.archlinux.org/task/18564
-	# and http://cvs.openssl.org/chngview?cn=19336
-	# will be in 0.9.8n
-	patch -p0 -i $srcdir/openssl-0.9.8m-cfb.patch || return 1
 
 	make || return 1
 
