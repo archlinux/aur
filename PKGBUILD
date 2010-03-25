@@ -2,7 +2,7 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=5.0.307.11
+pkgver=5.0.342.7
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
@@ -18,18 +18,21 @@ install='chromium.install'
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
         'drop_sse2.patch' 'ffmpeg_branding_mime.patch' 'libpng-1.4.patch')
-md5sums=('74fb683dcb999086d8cf2e59da968319'
+md5sums=('3f06dfaaaba42a48fc765b358a618ca2'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '93cd6f5f53b15546dc9d3de49118534c'
          'dfbc18bb26dffa2dc6d4d3a857730902'
          'ae9e26e6c2d164e6af0e513dae2273a3'
-         'e3b482665b179e06ff852c58463706a8')
+         'bb75bfdfe85db26639abbea9054b85f9')
 
 build() {
 	cd ${srcdir}/chromium-${pkgver}
 
 	export GYP_GENERATORS='make'
 	export BUILDTYPE='Release'
+	# we need to disable system_ssl until "next protocol negotiation" support
+	# is available in our nss package
+	# see https://bugzilla.mozilla.org/show_bug.cgi?id=547312
 	export GYP_DEFINES="gcc_version=44 \
 		no_strict_aliasing=1 \
 		linux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
@@ -39,11 +42,12 @@ build() {
 		use_system_libjpeg=1 \
 		use_system_libxslt=1 \
 		use_system_bzip2=1 \
+		use_system_zlib=1 \
 		use_system_libpng=1 \
 		use_system_ffmpeg=1 \
 		use_system_yasm=1 \
 		use_system_libevent=1 \
-		use_system_ssl=1"
+		use_system_ssl=0"
 
 	patch -p0 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
 	# i686 does not include SSE2
