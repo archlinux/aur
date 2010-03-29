@@ -2,7 +2,7 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=5.0.342.7
+pkgver=5.0.342.8
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
@@ -10,15 +10,14 @@ url='http://www.chromium.org/'
 license=('BSD')
 depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt'
          'libevent' 'libxss')
-makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa' 'ffmpeg')
-optdepends=('ffmpeg: needed to play HTML5 video')
+makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install='chromium.install'
 source=("ftp://ftp.archlinux.org/other/chromium/chromium-${pkgver}.tar.xz"
         'chromium.desktop' 'chromium.sh'
         'drop_sse2.patch' 'ffmpeg_branding_mime.patch' 'libpng-1.4.patch')
-md5sums=('3f06dfaaaba42a48fc765b358a618ca2'
+md5sums=('66d6ff274b7a2d0a8e66ad2621a950cb'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '93cd6f5f53b15546dc9d3de49118534c'
          'dfbc18bb26dffa2dc6d4d3a857730902'
@@ -44,7 +43,7 @@ build() {
 		use_system_bzip2=1 \
 		use_system_zlib=1 \
 		use_system_libpng=1 \
-		use_system_ffmpeg=1 \
+		use_system_ffmpeg=0 \
 		use_system_yasm=1 \
 		use_system_libevent=1 \
 		use_system_ssl=0"
@@ -72,9 +71,8 @@ package() {
 		${pkgdir}/usr/lib/chromium/chromium-sandbox
 	install -m 0644 -D src/out/Release/chrome.pak \
 		${pkgdir}/usr/lib/chromium/chrome.pak
-	ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/libavcodec.so.52
-	ln -s /usr/lib/libavformat.so.52 ${pkgdir}/usr/lib/chromium/libavformat.so.52
-	ln -s /usr/lib/libavutil.so.50 ${pkgdir}/usr/lib/chromium/libavutil.so.50
+	install -m 0644 -D src/out/Release/libffmpegsumo.so \
+		${pkgdir}/usr/lib/chromium/libffmpegsumo.so
 	cp -a src/out/Release/locales src/out/Release/resources \
 		${pkgdir}/usr/lib/chromium/
 	find ${pkgdir}/usr/lib/chromium/ -name '*.d' -type f -delete

@@ -22,7 +22,7 @@ mkdir -p $tmp/chromium-$pkgver
 cd $tmp/chromium-$pkgver
 
 # this should be updated to a more recent revision on major updates
-svn co -r42572 -q http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
+svn co -r42797 -q http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
 
 export PATH=./depot_tools/:$PATH
 chmod +x ./depot_tools/gclient.py
