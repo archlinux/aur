@@ -1,17 +1,17 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
-pkgver=2.28.1
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="Gnome Devtool Libraries"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.gnome.org/"
-depends=('gtk2>=2.18.2')
+depends=('gtk2>=2.20.0')
 makedepends=('pkgconfig' 'intltool')
 options=('!libtool')
-source=(http://ftp.gnome.org/pub/GNOME/sources/gdl/2.28/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('f856ea09ac79f909c45111543ac0928a2a95174873de1a919533ede46aa3aff1')
+source=(http://ftp.gnome.org/pub/GNOME/sources/gdl/2.30/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('c3ca19831384ae8570f1e6fc0e6be9b2a5ba0f14592b9f2bbb629be113791453')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
