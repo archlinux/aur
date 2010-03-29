@@ -3,15 +3,15 @@
 
 pkgbase=gtkmm
 pkgname=('gtkmm' 'gtkmm-docs')
-pkgver=2.19.7
+pkgver=2.20.0
 pkgrel=1
 arch=('i686' 'x86_64')
-makedepends=('gtk2>=2.19.6' 'pangomm>=2.26.0' 'glibmm>=2.22.1')
+makedepends=('gtk2>=2.20.0' 'pangomm>=2.26.0' 'glibmm>=2.24.0')
 license=('LGPL')
 options=('!libtool' '!emptydirs')
 url="http://gtkmm.sourceforge.net/"
-source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/2.19/${pkgbase}-${pkgver}.tar.bz2)
-sha256sums=('32b5bd2935303037810c40178419421892d8665cac599e4eaf0a6b516787774f')
+source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/2.20/${pkgbase}-${pkgver}.tar.bz2)
+sha256sums=('c1199bbee423d6f0ef9b5e88973c5620a1e1c52f9f1298dffcfa36284a7fd91a')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
