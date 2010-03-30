@@ -2,17 +2,17 @@
 #Maintainer: Jan De Groot <jgc@archlinux.org>
 
 pkgname=libgnome-keyring
-pkgver=2.29.4
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="GNOME keyring client library"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
-depends=('eggdbus' 'libgcrypt' 'gnome-keyring>=2.29.90')
+depends=('eggdbus' 'libgcrypt' 'gnome-keyring>=2.30.0')
 makedepends=('intltool' 'pkgconfig' 'python')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
-source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.29/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('6f15c1839a95628ee85293b5ae0873a8a71204d570dc15d84dd59adff928b82a')
+source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('11e64445537a8fab367875d1ae4aa00db9227c4db384c5d019cfa85c977b40ec')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
