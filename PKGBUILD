@@ -1,44 +1,46 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-pkgver=0.9.8n
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
-url='http://www.openssl.org'
+url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
-source=("http://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"
-        'openssl-0.9.8l-fix_manpages-1.patch'
-        'openssl-0.9.8a-no-rpath.patch'
-        'openssl-0.9.8m-ca-dir.patch')
-md5sums=('076d8efc3ed93646bd01f04e23c07066'
-         '04a6a88c2ee4badd4f8649792b73eaf3'
-         '4738d1eaff4e9975e9a26e4f76e48318'
-         '1216688f46de6948ed2175e58e75c043')
+source=("https://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"
+        'fix-manpages.patch'
+        'no-rpath.patch'
+        'ca-dir.patch')
+md5sums=('89eaa86e25b2845f920ec00ae4c864ed'
+         'f540cd9e0e3047d589d0581fe7a2d0f2'
+         'dc78d3d06baffc16217519242ce92478'
+         '3bf51be3a1bbd262be46dc619f92aa90')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
 
-	# avoid conflicts with other man pages: http://www.linuxfromscratch.org/patches/blfs/svn/
-	patch -p1 -i $srcdir/openssl-0.9.8l-fix_manpages-1.patch
+	# avoid conflicts with other man pages
+	# see http://www.linuxfromscratch.org/patches/downloads/openssl/
+	patch -p0 -i $srcdir/fix-manpages.patch || return 1
 	# remove rpath: http://bugs.archlinux.org/task/14367
-	patch -p1 -i $srcdir/openssl-0.9.8a-no-rpath.patch
+	patch -p0 -i $srcdir/no-rpath.patch || return 1
 	# set ca dir to /etc/ssl by default
-	patch -p1 -i $srcdir/openssl-0.9.8m-ca-dir.patch
+	patch -p0 -i $srcdir/ca-dir.patch || return 1
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
-	./config --prefix=/usr --openssldir=/etc/ssl shared zlib -Wa,--noexecstack
+	./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
+		shared zlib -Wa,--noexecstack || return 1
 
 	make || return 1
 
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
-	# patch -p1 -R -i $srcdir/openssl-0.9.8m-ca-dir.patch
+	#patch -p0 -R -i $srcdir/ca-dir.patch
 	# make test || return 1
-	# patch -p1 -i $srcdir/openssl-0.9.8m-ca-dir.patch
+	#patch -p0 -i $srcdir/ca-dir.patch
 }
 
 package() {
