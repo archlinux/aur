@@ -3,7 +3,7 @@
 
 pkgname=chromium
 pkgver=5.0.342.8
-pkgrel=1
+pkgrel=2
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
@@ -40,6 +40,7 @@ build() {
 		ffmpeg_branding=Chrome \
 		use_system_libjpeg=1 \
 		use_system_libxslt=1 \
+		use_system_libxml=1 \
 		use_system_bzip2=1 \
 		use_system_zlib=1 \
 		use_system_libpng=1 \
