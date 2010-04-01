@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -19,6 +19,9 @@ md5sums=('89eaa86e25b2845f920ec00ae4c864ed'
          'f540cd9e0e3047d589d0581fe7a2d0f2'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90')
+
+# keep an upgrade path for older installations
+PKGEXT='.pkg.tar.gz'
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
