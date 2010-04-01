@@ -4,7 +4,7 @@
 
 pkgname=libgadu
 pkgver=1.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Gadu-Gadu protocol libraries"
 arch=('i686' 'x86_64')
 url="http://toxygen.net/libgadu/"
@@ -15,11 +15,15 @@ md5sums=('1090f82f8a1bb99e9cdf5853188f625f')
 options=('!libtool')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./configure --prefix=/usr \
  	 --disable-static \
 	 --enable-shared \
 	 --with-pthread
   make || return 1
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install || return 1
 }
