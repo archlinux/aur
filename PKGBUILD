@@ -1,9 +1,9 @@
-# Maintainer: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
+# Maintainer: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 # Contributor: Francis Carroll (franciscarroll at gmail dot com)
 
 pkgname=splix
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('i686' 'x86_64')
 url="http://splix.ap2c.org/"
