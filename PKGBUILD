@@ -32,7 +32,7 @@ build() {
 	patch -p0 -i $srcdir/ca-dir.patch || return 1
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared zlib -Wa,--noexecstack || return 1
+		shared zlib enable-md2 -Wa,--noexecstack || return 1
 
 	make || return 1
 
