@@ -3,13 +3,12 @@
 
 pkgname=chromium
 pkgver=5.0.342.8
-pkgrel=2
+pkgrel=3
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libxslt'
-         'libevent' 'libxss')
+depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss')
 makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
@@ -39,8 +38,8 @@ build() {
 		release_extra_cflags='${CFLAGS}' \
 		ffmpeg_branding=Chrome \
 		use_system_libjpeg=1 \
-		use_system_libxslt=1 \
-		use_system_libxml=1 \
+		use_system_libxslt=0 \
+		use_system_libxml=0 \
 		use_system_bzip2=1 \
 		use_system_zlib=1 \
 		use_system_libpng=1 \
