@@ -1,27 +1,24 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-vmware
-pkgver=10.16.9
+pkgver=11.0.1
 pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
-makedepends=('pkgconfig' 'xorg-server>=1.7.0' 'randrproto' 'renderproto' 'xextproto' 'xineramaproto' 'videoproto')
-conflicts=('xorg-server<1.7.0')
+makedepends=('pkgconfig' 'xorg-server>=1.8.0' 'randrproto' 'renderproto' 'xextproto' 'xineramaproto' 'videoproto')
+conflicts=('xorg-server<1.8.0')
 groups=('xorg-video-drivers')
 options=('!libtool')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
-        abi2.patch
         LICENSE)
-md5sums=('3b3d38abfa1f8be4b1e26dcd236bc94f'
-         'cbc8e0bef13ccec7ceac233cd09233da'
-         'f846374287a2bae21570ae8de883fb4d')
+sha1sums=('cc82cbacaa90c28b42440f6a197f5167595c8417'
+          'f7fad008ca63b6862056f9d1123a81aef053d586')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/abi2.patch" || return 1
   ./configure --prefix=/usr || return 1
   make || return 1
   make DESTDIR="${pkgdir}" install || return 1
