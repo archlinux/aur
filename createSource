@@ -22,7 +22,7 @@ mkdir -p $tmp/chromium-$pkgver
 cd $tmp/chromium-$pkgver
 
 # this should be updated to a more recent revision on major updates
-svn co -r42797 -q http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
+svn co -r43113 -q http://src.chromium.org/svn/trunk/tools/depot_tools/ depot_tools
 
 export PATH=./depot_tools/:$PATH
 chmod +x ./depot_tools/gclient.py
@@ -39,7 +39,7 @@ gclient.py sync --force --nohooks
 svnversion src > src/build/LASTCHANGE.in
 
 for i in ${nonessential_dirs[@]}; do
-	rm -rf $i
+	[ -d "$i" ] && rm -rf "$i"
 done
 
 find . -name '.svn' -type d -exec rm -rf {} \;
@@ -49,7 +49,7 @@ find . -iname '*.o' -delete
 find . -iname '*.nexe' -delete
 
 cd ..
-bsdtar cJf $current/chromium-$pkgver.tar.xz chromium-$pkgver
+bsdtar cJvf $current/chromium-$pkgver.tar.xz chromium-$pkgver
 cd $current
 
 rm -rf $tmp
