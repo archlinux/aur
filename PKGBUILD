@@ -3,7 +3,7 @@
 # Maintainer: Daenyth
 
 pkgname=youtube-dl
-pkgver=2010.04.03
+pkgver=2010.04.04
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com"
 arch=('any')
