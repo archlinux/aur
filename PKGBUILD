@@ -1,8 +1,9 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
+# vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=200905
+pkgver=201003
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings and other multiauthor volumes (llncs), monographs (svmono) and journals (svjour3)"
 arch=('any')
@@ -41,5 +42,9 @@ build() {
   cp ${srcdir}/{spbasic,spmpsci,spphys}.bst \
     ${pkgdir}/usr/share/texmf-dist/tex/latex/svjour3
 }
-
-# vim:set ts=2 sw=2 et:
+md5sums=('b3fa2f22801466e3182203213fc4eba4'
+         '7e74a3efdde7e08c9aa463a786a93209'
+         'eb6d2ed284bc2e970d70aa6e642b20c4'
+         'b27924137faccbc3d13ebae5a7538c63'
+         'f2e974a27cc4fa86625973055f231000'
+         '1a2e9515055a3f496c0942d26adea55d')
