@@ -1,18 +1,20 @@
 pkgbase = ndt
 	pkgdesc = The Network Diagnostic Tool (NDT) is a client/server program that provides network configuration and performance testing
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = http://www.internet2.edu/performance/ndt/index.html
 	arch = x86_64
 	license = BSD
 	depends = web100-utils
 	depends = jopenchart
-	source = http://software.internet2.edu/sources/ndt/ndt-3.6.0.tar.gz
+	source = http://software.internet2.edu/sources/ndt/ndt-3.6.1.tar.gz
 	source = fix_configure_include_paths.patch
 	source = fix_JAnalyze_Makefile_target.patch
-	md5sums = 93230f7e6ef94a19b6f1fbd8219794ad
+	source = fix_I2util_configure_mandir.patch
+	md5sums = 94258e22353f59c75a32e2c715f1b4b1
 	md5sums = ec3e388b9a54094216af62cab7bb07d7
 	md5sums = 90838b71a45f9e7e8432c4077b0259ca
+	md5sums = 6d36f6e8f81f9f79b6a24bb4958529c9
 
 pkgname = ndt
 
