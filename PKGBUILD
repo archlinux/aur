@@ -15,7 +15,7 @@ makedepends=('qt')
 optdepends=('qt: cmake-gui')
 install=${pkgname}.install
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a92ad653f9ccc1595d16cd9707f49acc')
+md5sums=('feadc2e5ebbfed0efc90178583503725')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
