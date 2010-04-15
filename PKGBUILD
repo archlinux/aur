@@ -1,9 +1,9 @@
-# Maintainer : Ionut Biru <ionut@archlinux.ro>
+# Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=purple-plugin-pack
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Plugin pack for Pidgin"
 arch=('i686' 'x86_64')
@@ -12,7 +12,8 @@ license=('GPL')
 depends=('pidgin')
 makedepends=('intltool' 'python')
 options=('!libtool')
-source=(http://plugins.guifications.org/trac/downloads/39)
+source=(http://plugins.guifications.org/trac/downloads/48)
+md5sums=('2dccee28f087c7e81cef07ee845399bb')
 
 build() {
   cd "$srcdir/purple-plugin_pack-$pkgver"
@@ -21,4 +22,3 @@ build() {
   make || return 1
   make DESTDIR="$pkgdir" install || return 1
 }
-md5sums=('57b9381954706729cfb11409b984cff4')
