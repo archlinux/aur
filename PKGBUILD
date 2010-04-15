@@ -3,7 +3,7 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ibus-pinyin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="The PinYin Engine for IBus Input Framework"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('ibus-pinyin=1.3.2')
 install=ibus-pinyin.install
 source=(http://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz
         http://ibus.googlecode.com/files/pinyin-database-1.2.99.tar.bz2)
-md5sums=('66bdcc923c0d5f3625d72c851b0a082f'
+md5sums=('d9c118610d24fb4259d94863e7c5904b'
          'd0951b8daa7f56a2cbd3b6b4e42532e0')
 
 build() {
