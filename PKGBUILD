@@ -1,11 +1,12 @@
 # $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Olivier Mehani <shtrom-arch@ssj.net>
 pkgbase="kernel26-mipl"
 pkgname=('kernel26-mipl' 'kernel26-mipl-headers')
 _kernelname=${pkgname#kernel26}
-_basekernel=2.6.32
-pkgver=${_basekernel}.8
+_basekernel=2.6.33
+pkgver=${_basekernel}.2
 pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
 arch=(i686 x86_64)
@@ -121,7 +122,7 @@ package_kernel26-mipl-headers() {
     ${pkgdir}/usr/src/linux-${_kernver}/.config
   mkdir -p ${pkgdir}/usr/src/linux-${_kernver}/include
 
-  for i in acpi asm-{generic,x86} config linux math-emu media net pcmcia scsi sound trace video; do
+  for i in acpi asm-generic config generated linux math-emu media net pcmcia scsi sound trace video; do
     cp -a include/$i ${pkgdir}/usr/src/linux-${_kernver}/include/
   done
 
@@ -197,24 +198,20 @@ package_kernel26-mipl-headers() {
     cp $i ${pkgdir}/usr/src/linux-${_kernver}/$i
   done
 
-  cd ${pkgdir}/usr/src/linux-${_kernver}/include && ln -s asm-$KARCH asm
-  # add header for aufs2-util
-  cp -a ${srcdir}/linux-$_basekernel/include/asm-generic/bitsperlong.h ${pkgdir}/usr/src/linux-${_kernver}/include/asm/
-
   chown -R root.root ${pkgdir}/usr/src/linux-${_kernver}
   find ${pkgdir}/usr/src/linux-${_kernver} -type d -exec chmod 755 {} \;
   # remove unneeded architectures
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
 
-md5sums=('260551284ac224c3a43c4adac7df4879'
-         '908f38fc5ba77b9bf691ae83e501b8e4'
+md5sums=('c3883760b18d50e8d78819c54d579b00'
+         '702d845eba5c5c50ede848137552048d'
          '3de4853fee795c240688a035f3e561d0'
          'aa9c294063c5e9d421546d4e035ee34e'
          'bcd54286aec43c70d3b57f06394a9c7a'
          '5d9c139a34e316f7c77eb3f856ffe406'
          'd765b6ec7feba168064ac87d39f80749'
          '13834128986ee7f5163f44084d1d708a'
-         '2d0d4d29700d39ead89a852e78c92068'
-         'e06889055e79004b5f60631815c2d8bd'
+         'c4f06913cc98e315ca97de032ae3f46a'
+         'ed4966e8ed28f3e2bb62b2e99971af4a'
          '25584700a0a679542929c4bed31433b6')
