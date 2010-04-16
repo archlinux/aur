@@ -4,7 +4,7 @@
 
 pkgname=vinagre
 pkgver=2.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,11 +15,14 @@ makedepends=('gnome-doc-utils>=0.19.5' 'intltool' 'gnome-panel>=2.29.92')
 optdepends=('gnome-panel')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
-source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.30/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('776de79919d7a4420e5fa3575111f9be86f4503d05eab9217e258985fad34825')
+source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.30/${pkgname}-${pkgver}.tar.bz2
+        vinagre-ssh-connect.patch)
+sha256sums=('776de79919d7a4420e5fa3575111f9be86f4503d05eab9217e258985fad34825'
+            'a4227c1c18bdbb7f0c77b73f70dee273adbcb69c435e953c4c564eb74c45728c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/vinagre-ssh-connect.patch" || return 1
   ./configure --prefix=/usr --sysconfdir=/etc --disable-scrollkeeper \
       --libexecdir=/usr/lib/vinagre || return 1
   make || return 1
