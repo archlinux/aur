@@ -4,7 +4,7 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=2.6.33.1
+pkgver=2.6.33.2
 _basever=2.6.33
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
@@ -18,7 +18,7 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-${_basever}.tar.bz2
 	http://www.kernel.org/pub/linux/kernel/v2.6/patch-${pkgver}.bz2
 	scsi.patch)
 md5sums=('c3883760b18d50e8d78819c54d579b00'
-         '745fd1355c630e163e40c40d4c9b79f9'
+         '617be5b4c92be6e4f2ed66349c77d3c2'
          'b6d05566fcfe07770d9386f0588f8758')
 
 build() {
@@ -30,6 +30,10 @@ build() {
 
   make mrproper
   make headers_check || return 1
+}
+
+package() {
+  cd ${srcdir}/linux-${_basever}
   make INSTALL_HDR_PATH=${pkgdir}/usr headers_install
 
   rm -rf ${pkgdir}/usr/include/drm
