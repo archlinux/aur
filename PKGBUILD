@@ -1,14 +1,14 @@
-# Contributor: Thayer Williams <thayer@archlinux.org>
 # Maintainer: Thayer Williams <thayer@archlinux.org>
+# Contributor: Thayer Williams <thayer@archlinux.org>
 
 pkgname=archlinux-themes-slim
 pkgver=1.2
-pkgrel=1
-pkgdesc="Arch Linux themes for the SLiM login manager"
-arch=(i686 x86_64)
+pkgrel=2
+pkgdesc="Arch Linux branded themes for the SLiM login manager"
+arch=('any')
 url="http://www.archlinux.org/"
 license=('CCPL:cc-by-sa')
-depends=('slim')
+optdepends=('slim: login manager providing theme support')
 source=(ftp://ftp.archlinux.org/other/artwork/${pkgname}-${pkgver}.tar.gz)
 md5sums=('f9b7c231ec26c93fc89ecadfa2d0e250')
 
