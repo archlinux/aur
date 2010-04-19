@@ -3,20 +3,20 @@
 
 pkgname=libsidplay
 pkgver=1.36.59
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for playing SID music files."
 arch=('i686' 'x86_64')
 url="http://critical.ch/distfiles/"
 license=('GPL')
 depends=('gcc-libs')
 options=('!libtool')
-source=(http://critical.ch/distfiles/$pkgname-$pkgver.tgz libsidplay-1.36.59-gcc43.patch)
+source=(http://critical.ch/distfiles/${pkgname}-${pkgver}.tgz libsidplay-1.36.59-gcc43.patch)
 md5sums=('37c51ba4bd57164b1b0bb7b43b9adece' 'c24d7bca2639f4fee03c40c7dcaadfee')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
   patch -p1 < ../libsidplay-1.36.59-gcc43.patch || return 1
   ./configure --prefix=/usr || return 1
   make || return 1
-  make DESTDIR=$pkgdir install || return 1
+  make DESTDIR=${pkgdir} install || return 1
 }
