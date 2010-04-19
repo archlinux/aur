@@ -1,0 +1,10 @@
+post_install() {
+  echo "==> To get sound out of MIDI-based components like Rhythm:"
+  echo
+  echo "Preferences > Sound Setup > Use external MIDI player"
+  echo
+  echo "==> And make sure you have timidity++ installed and configured,"
+  echo "==> otherwise you need a capable hardware MIDI player to use"
+  echo "==> the ALSA/OSS MIDI devices."
+}
+# vim:set ts=2 sw=2 et:

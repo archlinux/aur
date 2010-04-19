@@ -4,4 +4,4 @@ Exec=solfege
 Terminal=false
 Type=Application
 Icon=solfege
-Categories=GNOME;AudioVideo;Audio;Education;
+Categories=AudioVideo;Audio;Education;

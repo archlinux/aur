@@ -1,29 +1,33 @@
-# Maintainer: Corrado Primier <bardo@aur.archlinux.org>
+# Maintainer: Ray Rashif <schivmeister@gmail.com>
+# Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
-pkgver=3.15.4
+pkgver=3.16.1
 pkgrel=1
-pkgdesc="A free music education software to train rhythm, interval, scale and chord skills"
-arch=('i686' 'x86_64')
+pkgdesc="Music education and ear training software"
+arch=(i686 x86_64)
 url="http://www.solfege.org/"
-license=('GPL')
+license=('GPL3')
 depends=('pygtk' 'libgtkhtml')
-makedepends=('ghostscript' 'gnome-doc-utils' 'librsvg' 'libxslt' 'lilypond' 'pkgconfig'
-             'swig' 'texinfo' 'txt2man')
-optdepends=('timidity++: midi software output'
-            'timidity-freepats: midi sound patches')
-source=(http://downloads.sourceforge.net/sourceforge/solfege/${pkgname}-${pkgver}.tar.gz
+makedepends=('ghostscript' 'gnome-doc-utils' 'librsvg' 'libxslt'
+             'lilypond' 'swig' 'texinfo' 'txt2man' 'pkgconfig')
+optdepends=('timidity++: Software MIDI support')
+install=$pkgname.install
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         solfege.desktop)
-md5sums=('66f164650dab1648b681df51f001586d'
-         '73e7282bd9415769acbf2a492ca202a1')
+
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc
+  cd "$srcdir/$pkgname-$pkgver"
+
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc
+
   make || return 1
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="$pkgdir" install
 
-  install -Dm644 ${srcdir}/solfege.desktop ${pkgdir}/usr/share/applications/solfege.desktop
+  install -Dm644 ../$pkgname.desktop \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-
-# vim:set ts=2 sw=2 et:
+md5sums=('de52eb26fa463ac46071e10eae43f739'
+         '5bdd11173ead87fc4a42aff96535e961')
