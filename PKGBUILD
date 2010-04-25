@@ -2,13 +2,14 @@
 
 pkgname=libvirt
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
-depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python')
-makedepends=('avahi' 'libsasl' 'pkgconfig')
+depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python'
+	 'avahi' 'yajl' 'libpciaccess')
+makedepends=('avahi' 'libsasl' 'pkgconfig' 'lvm2')
 optdepends=('avahi: for network discovery'
 	    'bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
@@ -44,7 +45,7 @@ build() {
 
   export LDFLAGS=-lX11
   ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
-	--without-xen || return 1
+	--with-storage-lvm --without-xen || return 1
   find -name Makefile -exec sed -i 's#-L /usr#-L/usr#' {} \;
   make || return 1
   make DESTDIR="$pkgdir" install || return 1
