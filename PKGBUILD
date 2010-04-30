@@ -1,10 +1,10 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=flyspray
-pkgver=0.9.9.5.1
+pkgver=0.9.9.6
 pkgrel=1
 pkgdesc="A PHP web-based bug tracker"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.flyspray.org/"
 license=('GPL')
 depends=('php')
@@ -12,7 +12,7 @@ makedepends=(unzip)
 backup=(srv/http/flyspray/.htaccess)
 source=(http://flyspray.org/flyspray-$pkgver.zip)
 noextract=(flyspray-$pkgver.zip)
-md5sums=('d2844e01d90bffeaba4645ba10db9510')
+md5sums=('095b46b08881554790830edab51970ed')
 
 build() {
   mkdir $srcdir/flyspray-${pkgver}
