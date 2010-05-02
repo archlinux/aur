@@ -3,19 +3,19 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ibus-pinyin
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="The PinYin Engine for IBus Input Framework"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://ibus.googlecode.com"
-depends=('ibus' 'libsigc++2.0')
+depends=('ibus' 'libsigc++2.0' 'boost')
 makedepends=('intltool')
 provides=('ibus-pinyin=1.3.2')
 install=ibus-pinyin.install
 source=(http://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz
         http://ibus.googlecode.com/files/pinyin-database-1.2.99.tar.bz2)
-md5sums=('d9c118610d24fb4259d94863e7c5904b'
+md5sums=('a5a289420a6a2b29c09de7dfc1beebfa'
          'd0951b8daa7f56a2cbd3b6b4e42532e0')
 
 build() {
