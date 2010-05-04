@@ -1,8 +1,8 @@
 pkgbase = postgresql-testing
 	pkgdesc = Testing versions of the PostgreSQL database (includes both server and libs)
-	pkgver = 9.0alpha4
+	pkgver = 9.0beta1
 	pkgrel = 1
-	url = http://www.postgresql.org/developer/alpha
+	url = http://www.postgresql.org/developer/beta
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -10,18 +10,18 @@ pkgbase = postgresql-testing
 	depends = readline>=6.0
 	depends = openssl
 	depends = bash
-	provides = postgresql-libs=9.0alpha4
-	provides = postgresql=9.0alpha4
+	provides = postgresql-libs=9.0beta1
+	provides = postgresql=9.0beta1
 	conflicts = postgresql-libs
 	conflicts = postgresql
 	options = !strip
 	backup = etc/conf.d/postgresql
 	backup = etc/pam.d/postgresql
-	source = ftp://ftp.postgresql.org/pub/source/9.0alpha4/postgresql-9.0alpha4.tar.gz
+	source = ftp://ftp.postgresql.org/pub/source/v9.0beta1/postgresql-9.0beta1.tar.gz
 	source = postgresql.rc
 	source = postgresql.confd
 	source = postgresql.pam
-	md5sums = 053d3233f4fad963a95a7ae343dd8f7a
+	md5sums = acaa0852b970524b91ea9a2fd0fa61c8
 	md5sums = 86e0161343ce80e544aba999f284bc88
 	md5sums = df6ddf9e2ab4700a3415f17c0f4f4172
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
