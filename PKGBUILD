@@ -3,26 +3,23 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=2.30.0
-pkgrel=2
+pkgver=2.30.1
+pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('libgnome-keyring>=2.29.4' 'gtk-vnc>=0.3.10' 'avahi>=0.6.25' 'desktop-file-utils' 'hicolor-icon-theme' 'telepathy-glib>=0.10.0')
-makedepends=('gnome-doc-utils>=0.19.5' 'intltool' 'gnome-panel>=2.29.92')
+depends=('libgnome-keyring>=2.30.1' 'gtk-vnc>=0.3.10' 'avahi>=0.6.25' 'desktop-file-utils' 'hicolor-icon-theme' 'telepathy-glib>=0.10.5')
+makedepends=('gnome-doc-utils>=0.19.5' 'intltool' 'gnome-panel>=2.30.0')
 optdepends=('gnome-panel')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
-source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.30/${pkgname}-${pkgver}.tar.bz2
-        vinagre-ssh-connect.patch)
-sha256sums=('776de79919d7a4420e5fa3575111f9be86f4503d05eab9217e258985fad34825'
-            'a4227c1c18bdbb7f0c77b73f70dee273adbcb69c435e953c4c564eb74c45728c')
+source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.30/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('cbe5bff8e6f7a81e46fde5b1d8a53a7dbdd66d13d998c24508cae08de657f2cf')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/vinagre-ssh-connect.patch" || return 1
   ./configure --prefix=/usr --sysconfdir=/etc --disable-scrollkeeper \
       --libexecdir=/usr/lib/vinagre || return 1
   make || return 1
