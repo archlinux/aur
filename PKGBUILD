@@ -3,15 +3,15 @@
 
 pkgbase=gtkmm
 pkgname=('gtkmm' 'gtkmm-docs')
-pkgver=2.20.2
+pkgver=2.20.3
 pkgrel=1
 arch=('i686' 'x86_64')
-makedepends=('gtk2>=2.20.0' 'pangomm>=2.26.0' 'glibmm>=2.24.0')
+makedepends=('gtk2>=2.20.1' 'pangomm>=2.26.2' 'glibmm>=2.24.2' 'glibmm-docs>=2.24.2')
 license=('LGPL')
 options=('!libtool' '!emptydirs')
 url="http://gtkmm.sourceforge.net/"
 source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/2.20/${pkgbase}-${pkgver}.tar.bz2)
-sha256sums=('5e8f3848b1eaf84ff397f3f2a978233deb043412ce47522672b253549c855cf1')
+sha256sums=('311d2156f15cdbdce22cb2af6e606a3f621d7dfebea6f7b1be0132e81af90585')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -21,7 +21,7 @@ build() {
 
 package_gtkmm() {
   pkgdesc="C++ bindings for gtk2"
-  depends=('gtk2>=2.20.0' 'pangomm>=2.26.0' 'glibmm>=2.22.1')
+  depends=('gtk2>=2.20.1' 'pangomm>=2.26.2' 'glibmm>=2.24.2')
   cd "${srcdir}/${pkgbase}-${pkgver}"
   sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile
   make DESTDIR="${pkgdir}" install || return 1
