@@ -3,19 +3,20 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 
 pkgname=libgadu
-pkgver=1.8.2
-pkgrel=4
+pkgver=1.9.0rc3
+_pkgver=1.9.0-rc3
+pkgrel=1
 pkgdesc="Gadu-Gadu protocol libraries"
 arch=('i686' 'x86_64')
 url="http://toxygen.net/libgadu/"
 license=('GPL')
 depends=('openssl')
-source=(http://toxygen.net/libgadu/files/$pkgname-$pkgver.tar.gz)
-md5sums=('1090f82f8a1bb99e9cdf5853188f625f')
+source=("http://toxygen.net/${pkgname}/files/${pkgname}-${_pkgver}.tar.gz")
+md5sums=('b13337fd1beaf98056bc7bfa27ff5d31')
 options=('!libtool')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${_pkgver}
   ./configure --prefix=/usr \
  	 --disable-static \
 	 --enable-shared \
@@ -24,6 +25,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${_pkgver}
   make DESTDIR=${pkgdir} install || return 1
 }
