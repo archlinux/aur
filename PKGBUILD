@@ -2,7 +2,7 @@
 
 pkgname=mp3splt
 pkgver=2.2.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Comandline tool for splitting mp3 and ogg files without decoding"
 license=('GPL')
@@ -13,7 +13,7 @@ options=(!libtool)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --with-mp3splt-includes=/usr/include/libmp3splt
+  ./configure --prefix=/usr --with-mp3splt-includes=/usr/include/libmp3splt --enable-oggsplt_symlink
   make || return 1
   make DESTDIR=$pkgdir/ install || return 1
 }
