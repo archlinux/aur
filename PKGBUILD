@@ -2,7 +2,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=crda
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Central Regulatory Domain Agent"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=('python-m2crypto')
 install=crda.install
 source=(http://wireless.kernel.org/download/crda/${pkgname}-${pkgver}.tar.bz2
         crda.rc)
-md5sums=('6004584d2e39e899f7642b141dd72028'
+md5sums=('5fc77af68b3e21736b8ef2f8b061c810'
          '014eef3f8655e9a130064ec6891317fc')
                   
 build() {
