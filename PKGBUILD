@@ -1,7 +1,7 @@
-# Contributor: Marti Raudsepp <marti@juffo.org>
+# Maintainer: Marti Raudsepp <marti@juffo.org>
 
 pkgname=reconnoiter-svn
-pkgver=1160
+pkgver=1275
 pkgrel=1
 pkgdesc="Software for monitoring, trending and fault analysis of servers or data centers"
 arch=(i686 x86_64)
