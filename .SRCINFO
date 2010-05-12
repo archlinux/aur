@@ -1,0 +1,13 @@
+pkgbase = dbmeasure-git
+	pkgdesc = ALSA volume control verification/measurement tool
+	pkgver = 20100512
+	pkgrel = 1
+	url = http://git.0pointer.de/?p=dbmeasure.git;a=summary
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = alsa-lib
+
+pkgname = dbmeasure-git
+
