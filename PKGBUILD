@@ -5,7 +5,7 @@
 
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
-pkgver=2.6.6
+pkgver=2.7.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -14,12 +14,15 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
 	'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2' 'avahi'
 	'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2)
-sha256sums=('6ebbe9d339246dfebb244e4c855c4feb678f120d1024ef2ee269e2fde77b2ad9')
+source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2
+	msn_fix.patch)
+sha256sums=('dc59cbae75db8ecf2850c35e82fc11ac33bbf2542e901e6e1e4525688635783d'
+	    '1910ea7dd816d3e9b123fa9dc204ad586396a820ae3c870a6aa15dd1eff0ad49')
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
 
+    patch -Np0 -i "${srcdir}/msn_fix.patch" || return 1
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --disable-schemas-install \
@@ -34,8 +37,7 @@ build() {
 }
 package_libpurple(){
     pkgdesc="IM library extracted from Pidgin"
-    depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss')
-    optdepends=('cyrus-sasl-plugins: needed for facebook xmpp authentication')
+    depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss' 'cyrus-sasl-plugins')
     cd "$srcdir/$pkgbase-$pkgver"
 
     for dir in libpurple share/sounds share/ca-certs m4macros po
@@ -72,7 +74,7 @@ package_pidgin(){
 }
 package_finch(){
     pkgdesc="A ncurses-based messaging client"
-    depends=("libpurple=$pkgver" 'libidn')
+    depends=("libpurple=$pkgver" 'python')
     optdepends=('avahi: Bonjour protocol support'
     		'tk: Tcl/Tk scripting support'
 		'ca-certificates: SSL CA certificates')
