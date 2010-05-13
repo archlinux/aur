@@ -17,6 +17,9 @@ backup=()
 install=context-minimals-git.install
 
 # ConTeXt minimals uses a different naming convention for architectures
+
+declare -A _platform_map
+
 _platform_map['i686']='linux'
 _platform_map['x86_64']='linux-64'
 
