@@ -1,4 +1,6 @@
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+
 pkgname=libofa
 pkgver=0.9.3
 pkgrel=2
@@ -9,17 +11,27 @@ license=('GPL2' 'custom')
 depends=('expat' 'curl' 'fftw' 'gcc-libs')
 makedepends=('pkgconfig')
 options=('!libtool')
-source=(http://www.musicip.com/dns/files/$pkgname-$pkgver.tar.gz
-	gcc-4.patch libofa-0.9.3-gcc-4.3.patch)
-md5sums=('51507d2c4b432bd2755f48d58471696e' 'a6f78b90bd0f4354d022a71c3e58ef6c'\
-         'dd57db13770b8f8d196e8a3d3a50e713')
+source=("http://musicip-libofa.googlecode.com/files/$pkgname-$pkgver.tar.gz"
+	'gcc-4.patch'
+	'gcc4.3.patch'
+	'gcc4.5.patch')
+sha1sums=('3dec8e1dcea937f74b4165e9ffd4d4f355e4594a'
+          'cb19377d0634c03d2a49cfc61915cec918c341f7'
+          'cae08bdc12de923d5e032696702a0530ae6eafc1'
+	  '754d69d66ab46219035ccafeeb3ff62433cca4f2')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -Np0 -i ../gcc-4.patch || return 1
-  patch -Np1 -i ../libofa-0.9.3-gcc-4.3.patch || return 1
+  patch -Np0 -i ${srcdir}/gcc-4.patch || return 1
+  patch -Np1 -i ${srcdir}/gcc4.3.patch || return 1
+  patch -Np1 -i ${srcdir}/gcc4.5.patch || return 1
   ./configure --prefix=/usr || return 1
   make || return 1
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install || return 1
+
   install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
