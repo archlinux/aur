@@ -1,29 +1,25 @@
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake3-excessiveplus
-pkgver=1.03
+pkgver=2.0a
 pkgrel=1
 pkgdesc="Excessive Plus is a modification for Quake 3 where all weapons are 'excessive'."
 url="http://www.excessiveplus.net/"
-license=""
+arch=('i686' 'x86_64')
+license=('custom')
 depends=('quake3')
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-install=
-source=('http://www.excessiveplus.net/downloads/xp-1.03-full.zip')
-md5sums=('878cf3994734e790dc6c98354d1fa3e5')
+source=("http://www.excessiveplus.net/files/release/xp-${pkgver}.zip")
+md5sums=('234052d4ee31b0871cb8b1d9a896d1b2')
 
 build() {
-	cd $startdir/src/
+	cd $srcdir
 
 	# Base Excessive Plus Files
-	install -d $startdir/pkg/opt/quake3/
-	unzip xp-1.03-full.zip -d $startdir/pkg/opt/quake3/
+	install -d $pkgdir/opt/quake3/
+	unzip xp-${pkgver}.zip -d $pkgdir/opt/quake3/
 
 	# Cleanup unneeded files
-	cd $startdir/pkg/opt/quake3/
+	cd $pkgdir/opt/quake3/
 	rm xp_dedicated.bat xp_server.bat xp_singleplayer.bat
 	cd excessiveplus/
 	rm -r tools/
