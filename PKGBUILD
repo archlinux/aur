@@ -3,7 +3,7 @@
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
-pkgver=3.16.2
+pkgver=3.16.3
 pkgrel=1
 pkgdesc="Music education and ear training software"
 arch=(i686 x86_64)
@@ -29,3 +29,6 @@ build() {
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
+
+md5sums=('f8faabc581747582e37dea2bf14313f6'
+         '5bdd11173ead87fc4a42aff96535e961')
