@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20100124
+pkgver=20100523
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -23,7 +23,7 @@ declare -A _platform_map
 _platform_map['i686']='linux'
 _platform_map['x86_64']='linux-64'
 
-_platform=${_platform_map[$arch]}
+_platform=${_platform_map[$CARCH]}
 
 _rsyncurl=rsync://contextgarden.net/minimals/setup/${_platform}/bin
 _dest=/opt/context-minimals
