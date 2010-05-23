@@ -26,7 +26,7 @@ To run mkIV for the first time, you need to run
 
     luatools --generate
 
-a normal user (*and not as root*). You need to rerun this command as a
+as a normal user (*and not as root*). You need to rerun this command as a
 normal user each time you upgrade.
 
 All bugs can be reported at the ConTeXt mailing list
