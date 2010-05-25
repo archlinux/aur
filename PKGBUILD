@@ -1,7 +1,7 @@
 # Contributor: kamu <mr.kamu@gmail.com>
 pkgname=ruby-svn
 pkgver=26652
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic, open source programming language with a focus on simplicity and productivity."
 arch=(i686 x86_64)
 url="http://www.ruby-lang.org/en/"
