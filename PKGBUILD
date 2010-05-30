@@ -15,14 +15,11 @@ provides=('chromium-browser')
 conflicts=('chromium-browser')
 install='chromium.install'
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
-        'chromium.desktop' 'chromium.sh'
-        'drop_sse2.patch' 'ffmpeg_branding_mime.patch' 'libpng-1.4.patch')
+        'chromium.desktop' 'chromium.sh' 'ffmpeg_branding_mime.patch')
 md5sums=('1ca0f15f3bbf39bc298228d9abfcbe1b'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '096a46ef386817988250d2d7bddd1b34'
-         '2003a31e2968768fadcea368e7b8b17a'
-         'ae9e26e6c2d164e6af0e513dae2273a3'
-         'bb75bfdfe85db26639abbea9054b85f9')
+         'ae9e26e6c2d164e6af0e513dae2273a3')
 
 build() {
   cd ${srcdir}/chromium-${pkgver}
@@ -30,13 +27,6 @@ build() {
 ### Patch
 
   patch -p1 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
-
-  # i686 does not include SSE2
-  # see http://code.google.com/p/chromium/issues/detail?id=9007
-  # patch -p1 -i ${srcdir}/drop_sse2.patch || return 1
-
-  # see http://codereview.chromium.org/569009/show
-  # patch -p1 -i ${srcdir}/libpng-1.4.patch || return 1
 
 ### Configure
 
