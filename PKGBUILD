@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
 depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss')
-makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
+makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa' 'gcc<4.5')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 options=('force')
@@ -29,7 +29,6 @@ build() {
   cd ${srcdir}/chromium-${pkgver}
 
 ### Patch
-  export CFLAGS="${CFLAGS/-O2/-O3} -fno-ipa-cp"
   patch -p1 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
   patch -p1 -i ${srcdir}/drop_sse2.patch || return 1
   patch -p1 -i ${srcdir}/libpng-1.4.patch || return 1
