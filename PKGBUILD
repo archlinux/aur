@@ -3,7 +3,7 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=5.0.396.0
+pkgver=5.0.375.55
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
@@ -13,20 +13,26 @@ depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libe
 makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
+options=('force')
 install='chromium.install'
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
-        'chromium.desktop' 'chromium.sh' 'ffmpeg_branding_mime.patch')
-md5sums=('1ca0f15f3bbf39bc298228d9abfcbe1b'
+        'chromium.desktop' 'chromium.sh'
+        'ffmpeg_branding_mime.patch' 'drop_sse2.patch' 'libpng-1.4.patch')
+md5sums=('a5ee0492b518bdbb29a51d3d17b818a7'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '096a46ef386817988250d2d7bddd1b34'
-         'ae9e26e6c2d164e6af0e513dae2273a3')
+         'ae1b32473c74b39e3f64b32d71574170'
+         '4fc27c2df43d5df342b26290928b009d'
+         'bb75bfdfe85db26639abbea9054b85f9')
 
 build() {
   cd ${srcdir}/chromium-${pkgver}
 
 ### Patch
-
+  export CFLAGS="${CFLAGS/-O2/-O3} -fno-ipa-cp"
   patch -p1 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
+  patch -p1 -i ${srcdir}/drop_sse2.patch || return 1
+  patch -p1 -i ${srcdir}/libpng-1.4.patch || return 1
 
 ### Configure
 
@@ -35,7 +41,7 @@ build() {
   # see https://bugzilla.mozilla.org/show_bug.cgi?id=547312
 
   build/gyp_chromium -f make build/all.gyp --depth=. \
-    -Dgcc_version=45 \
+    -Dgcc_version=44 \
     -Dno_strict_aliasing=1 \
     -Dwerror= \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
@@ -51,8 +57,7 @@ build() {
     -Duse_system_ffmpeg=0 \
     -Duse_system_yasm=1 \
     -Duse_system_libevent=1 \
-    -Duse_system_ssl=0 
-#-Ddisable_sse2=1
+    -Duse_system_ssl=0
 
 ### Build
 
@@ -73,9 +78,10 @@ package() {
   install -m 0755 -D out/Release/libffmpegsumo.so \
     ${pkgdir}/usr/lib/chromium/libffmpegsumo.so
 
-  ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/
-  ln -s /usr/lib/libavformat.so.52 ${pkgdir}/usr/lib/chromium/
-  ln -s /usr/lib/libavutil.so.50 ${pkgdir}/usr/lib/chromium/
+# these links are only needed when building with system ffmpeg
+#  ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/
+#  ln -s /usr/lib/libavformat.so.52 ${pkgdir}/usr/lib/chromium/
+#  ln -s /usr/lib/libavutil.so.50 ${pkgdir}/usr/lib/chromium/
 
   cp -a out/Release/locales out/Release/resources \
     ${pkgdir}/usr/lib/chromium/
