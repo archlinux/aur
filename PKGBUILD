@@ -51,8 +51,8 @@ build() {
     -Duse_system_ffmpeg=0 \
     -Duse_system_yasm=1 \
     -Duse_system_libevent=1 \
-    -Duse_system_ssl=0 \
-    -Ddisable_sse2=1
+    -Duse_system_ssl=0 
+#-Ddisable_sse2=1
 
 ### Build
 
