@@ -16,6 +16,8 @@ backup=()
 
 install=context-minimals-git.install
 
+PKGEXT=".pkg.tar.gz"
+
 # ConTeXt minimals uses a different naming convention for architectures
 
 declare -A _platform_map
