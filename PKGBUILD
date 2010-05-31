@@ -5,7 +5,7 @@
 
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -15,14 +15,15 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
 	'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2
-	msn_fix.patch)
-sha256sums=('dc59cbae75db8ecf2850c35e82fc11ac33bbf2542e901e6e1e4525688635783d'
-	    '1910ea7dd816d3e9b123fa9dc204ad586396a820ae3c870a6aa15dd1eff0ad49')
+	icq_fix.patch)
+sha256sums=('f412a5a7389ad553229743b49399f968278095c8258dc0f89f766a6cd0ba95d1'
+            '9f5de2d1441f8369f3f13733dc4ffe14e1be9395507b79703b1c849c02602f93')
 
 build() {
-    cd "$srcdir/$pkgbase-$pkgver"
+    cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    patch -Np0 -i "${srcdir}/msn_fix.patch" || return 1
+    patch -Np0 -i "${srcdir}/icq_fix.patch" || return 1
+
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --disable-schemas-install \
@@ -38,11 +39,11 @@ build() {
 package_libpurple(){
     pkgdesc="IM library extracted from Pidgin"
     depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss' 'cyrus-sasl-plugins')
-    cd "$srcdir/$pkgbase-$pkgver"
+    cd "${srcdir}/${pkgbase}-${pkgver}"
 
     for dir in libpurple share/sounds share/ca-certs m4macros po
     do
-	make -C "$dir" DESTDIR="$pkgdir" install || return 1
+	make -C "${dir}" DESTDIR="${pkgdir}" install || return 1
     done
 #    rm -rf "$pkgdir/etc" || return 1
 }
@@ -58,19 +59,19 @@ package_pidgin(){
                 'aspell: for spelling correction')
 
     install=pidgin.install
-    cd "$srcdir/$pkgbase-$pkgver"
+    cd "${srcdir}/${pkgbase}-${pkgver}"
     #for linking
-    make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES || return 1
+    make -C libpurple DESTDIR="${pkgdir}" install-libLTLIBRARIES || return 1
 
-    make -C pidgin DESTDIR="$pkgdir" install || return 1
-    make -C doc DESTDIR="$pkgdir" install || return 1
+    make -C pidgin DESTDIR="${pkgdir}" install || return 1
+    make -C doc DESTDIR="${pkgdir}" install || return 1
 
     #clean up libpurple
-    make -C libpurple DESTDIR="$pkgdir" uninstall-libLTLIBRARIES || return 1
+    make -C libpurple DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES || return 1
 
-    install -D -m 0644 pidgin.desktop "$pkgdir"/usr/share/applications/pidgin.desktop || return 1
+    install -D -m 0644 pidgin.desktop "${pkgdir}"/usr/share/applications/pidgin.desktop || return 1
 
-    rm -f "$pkgdir"/usr/share/man/man1/finch.1 || return 1
+    rm -f "${pkgdir}"/usr/share/man/man1/finch.1 || return 1
 }
 package_finch(){
     pkgdesc="A ncurses-based messaging client"
@@ -79,14 +80,14 @@ package_finch(){
     		'tk: Tcl/Tk scripting support'
 		'ca-certificates: SSL CA certificates')
 
-    cd "$srcdir/$pkgbase-$pkgver"
+    cd "${srcdir}/${pkgbase}-${pkgver}"
     #for linking
-    make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES || return 1
+    make -C libpurple DESTDIR="${pkgdir}" install-libLTLIBRARIES || return 1
 
-    make -C finch DESTDIR="$pkgdir" install || return 1
-    make -C doc DESTDIR="$pkgdir" install || return 1
+    make -C finch DESTDIR="${pkgdir}" install || return 1
+    make -C doc DESTDIR="${pkgdir}" install || return 1
 
     #clean up libpurple
-    make -C libpurple DESTDIR="$pkgdir" uninstall-libLTLIBRARIES || return 1
-    rm -f "$pkgdir"/usr/share/man/man1/pidgin.1 || return 1
+    make -C libpurple DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES || return 1
+    rm -f "${pkgdir}"/usr/share/man/man1/pidgin.1 || return 1
 }
