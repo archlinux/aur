@@ -1,21 +1,21 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.0a
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('perl')
 optdepends=('ca-certificates')
-options=('!makeflags')
+options=('!makeflags' 'force')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"
         'fix-manpages.patch'
         'no-rpath.patch'
         'ca-dir.patch')
-md5sums=('89eaa86e25b2845f920ec00ae4c864ed'
+md5sums=('e3873edfffc783624cfbdb65e2249cbd'
          'f540cd9e0e3047d589d0581fe7a2d0f2'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90')
@@ -42,7 +42,7 @@ build() {
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
 	#patch -p0 -R -i $srcdir/ca-dir.patch
-	# make test || return 1
+	#make test || return 1
 	#patch -p0 -i $srcdir/ca-dir.patch
 }
 
