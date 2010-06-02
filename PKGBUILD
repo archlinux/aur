@@ -3,7 +3,7 @@
 pkgname=openssl
 _ver=1.0.0a
 # use a pacman compatible version scheme
-pkgver=$(echo $_ver|sed -E 's/([a-z])$/.\1/')
+pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
