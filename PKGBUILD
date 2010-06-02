@@ -1,17 +1,19 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-pkgver=1.0.0a
-pkgrel=1
+_ver=1.0.0a
+# use a pacman compatible version scheme
+pkgver=$(echo $_ver|sed -E 's/([a-z])$/.\1/')
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('perl')
 optdepends=('ca-certificates')
-options=('!makeflags' 'force')
+options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
-source=("https://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"
+source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         'fix-manpages.patch'
         'no-rpath.patch'
         'ca-dir.patch')
@@ -24,7 +26,7 @@ md5sums=('e3873edfffc783624cfbdb65e2249cbd'
 PKGEXT='.pkg.tar.gz'
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$_ver
 
 	# avoid conflicts with other man pages
 	# see http://www.linuxfromscratch.org/patches/downloads/openssl/
@@ -47,7 +49,7 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$_ver
 	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man install
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
