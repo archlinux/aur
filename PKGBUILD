@@ -4,7 +4,7 @@
 
 pkgname=chromium
 pkgver=5.0.375.55
-pkgrel=2
+pkgrel=3
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
@@ -29,6 +29,9 @@ build() {
   cd ${srcdir}/chromium-${pkgver}
 
 ### Patch
+  # workaround for gcc 4.5
+  # see http://code.google.com/p/chromium/issues/detail?id=41887
+  export CFLAGS="${CFLAGS/-O2/-O3} -fno-ipa-cp"
   patch -p1 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
   [ "${CARCH}" == 'i686' ] && (patch -p1 -i ${srcdir}/drop_sse2.patch || return 1)
   patch -p1 -i ${srcdir}/libpng-1.4.patch || return 1
