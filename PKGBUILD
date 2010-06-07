@@ -3,17 +3,17 @@
 
 pkgname=gtk2-perl
 _realname=Gtk2
-pkgver=1.221
+pkgver=1.222
 pkgrel=1
 pkgdesc="Gtk2-Perl allows Perl developers to write GTK+ 2.x applications."
 arch=(i686 x86_64)
 license=('LGPL')
 url="http://gtk2-perl.sourceforge.net/"
 makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends')
-depends=('gtk2>=2.16.5' 'pango-perl>=1.220')
+depends=('gtk2>=2.20.1' 'pango-perl>=1.221')
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/${_realname}-${pkgver}.tar.gz)
-md5sums=('ba412049d10978ed802b98976f6adaa9')
+md5sums=('8f8a170b33dc2cf4e69769e97c05185a')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
@@ -21,8 +21,4 @@ build() {
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
   make || return 1
   make install DESTDIR="${pkgdir}" || return 1
-
-  # remove perllocal.pod and .packlist
-  find "${pkgdir}" -name perllocal.pod -delete
-  find "${pkgdir}" -name .packlist -delete
 }
