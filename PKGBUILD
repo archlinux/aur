@@ -1,3 +1,4 @@
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
@@ -17,7 +18,8 @@ optdepends=('avahi: for network discovery'
 	    'kernel26-ovz24: for openvz guests'
 	    'kvm'
 	    'libsasl: for sasl support'
-	    'lxc' 'openbsd-netcat: for remote management over ssh'
+	    'lxc'
+	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
 	    'user-mode-linux'
 	    'virtualbox_bin'
