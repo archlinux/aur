@@ -4,13 +4,13 @@
 
 pkgname=chromium
 pkgver=5.0.375.55
-pkgrel=1
+pkgrel=2
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
 depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss')
-makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa' 'gcc<4.5')
+makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 options=('force')
@@ -18,7 +18,7 @@ install='chromium.install'
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
         'chromium.desktop' 'chromium.sh'
         'ffmpeg_branding_mime.patch' 'drop_sse2.patch' 'libpng-1.4.patch')
-md5sums=('a5ee0492b518bdbb29a51d3d17b818a7'
+md5sums=('0c8acec246ad0d8b7991218969f872aa'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '096a46ef386817988250d2d7bddd1b34'
          'ae1b32473c74b39e3f64b32d71574170'
@@ -30,7 +30,7 @@ build() {
 
 ### Patch
   patch -p1 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
-  patch -p1 -i ${srcdir}/drop_sse2.patch || return 1
+  [ "${CARCH}" == 'i686' ] && (patch -p1 -i ${srcdir}/drop_sse2.patch || return 1)
   patch -p1 -i ${srcdir}/libpng-1.4.patch || return 1
 
 ### Configure
