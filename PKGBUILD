@@ -1,7 +1,7 @@
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=mpc-git
-pkgver=20091202
+pkgver=20100616
 pkgrel=1
 pkgdesc="A minimalist command line interface to MPD"
 arch=('i686' 'x86_64')
