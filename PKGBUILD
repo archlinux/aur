@@ -4,13 +4,13 @@
 
 pkgname=nautilus-sendto
 pkgver=2.28.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Nautilus context menu for sending files."
 arch=('i686' 'x86_64')
 url="http://download.gnome.org/sources/nautilus-sendto/"
 license=('GPL')
 groups=('gnome-extra')
-depends=('evolution-data-server>=2.29.92' 'nautilus>=2.30.0')
+depends=('evolution-data-server>=2.30.2.1' 'nautilus>=2.30.1')
 makedepends=('pidgin' 'gajim' 'gettext' 'intltool')
 options=('!libtool' '!emptydirs')
 install=nautilus-sendto.install
