@@ -3,7 +3,7 @@
 # Contributor: scippio <scippio@berounet.cz>
 pkgname=freeimage
 pkgver=3.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library project for developers who would like to support popular graphics image formats."
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:FIPL')
@@ -24,4 +24,7 @@ package() {
   make -f Makefile.fip DESTDIR=${pkgdir} install || return 1
   install -Dm644 $srcdir/FreeImage/license-fi.txt \
     $pkgdir/usr/share/licenses/$pkgname/license-fi.txt
+  cd $pkgdir/usr/lib
+  ln -s libfreeimage-$pkgver.so libfreeimage.so
+  ln -s libfreeimageplus-$pkgver.so libfreeimageplus.so
 }
