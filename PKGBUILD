@@ -3,7 +3,7 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=5.0.375.70
+pkgver=5.0.375.86
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ install='chromium.install'
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
         'chromium.desktop' 'chromium.sh'
         'ffmpeg_branding_mime.patch' 'drop_sse2.patch' 'libpng-1.4.patch')
-md5sums=('14827f7f23d32456785083386fb966a4'
+md5sums=('69ea9afd082c9f83d2d55e8b4e2ad0d2'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '096a46ef386817988250d2d7bddd1b34'
          'ae1b32473c74b39e3f64b32d71574170'
@@ -31,7 +31,7 @@ build() {
 ### Patch
   # workaround for gcc 4.5
   # see http://code.google.com/p/chromium/issues/detail?id=41887
-  export CFLAGS="${CFLAGS/-O2/-O3} -fno-ipa-cp"
+  export CFLAGS="${CFLAGS} -fno-ipa-cp"
   patch -p1 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
   [ "${CARCH}" == 'i686' ] && (patch -p1 -i ${srcdir}/drop_sse2.patch || return 1)
   patch -p1 -i ${srcdir}/libpng-1.4.patch || return 1
