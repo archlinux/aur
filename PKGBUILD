@@ -4,15 +4,15 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=p7zip
-pkgver=9.04
-pkgrel=2
+pkgver=9.13
+pkgrel=1
 pkgdesc="A command-line port of the 7zip compression utility"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://p7zip.sourceforge.net"
 depends=('gcc-libs' 'bash')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver}_src_all.tar.bz2)
-md5sums=('be9109370447eae23f6f3f8527bb1a67')
+md5sums=('8ddb5053db3b1f2696407d01be145779')
 options=(!emptydirs)
 
 build() {
