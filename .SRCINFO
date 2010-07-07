@@ -1,6 +1,6 @@
 pkgbase = python-sphinx
 	pkgdesc = Python documentation generator
-	pkgver = 0.6.5
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-sphinx
 	depends = pygments
 	depends = docutils
 	depends = python-jinja
-	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.5.tar.gz
-	md5sums = 86dd5dbd55cb44d1f8091a4a1c3743b2
+	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.7.tar.gz
+	md5sums = 54c3e4045ee4a4997a50c225f36e92fd
 
 pkgname = python-sphinx
 
