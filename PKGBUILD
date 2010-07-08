@@ -3,25 +3,22 @@
 # Contributor: Premysl Janouch <warriant@gmail.com>
 
 pkgname=quake2
-pkgver=r0.16.1
-pkgrel=8
+pkgver=r0.16.2
+pkgrel=1
 pkgdesc="Quake 2 engine. You need the retail .pak files to play."
 url="http://www.icculus.org/quake2/"
+arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libjpeg' 'sdl' 'libxxf86vm' 'libxxf86dga')
 makedepends=('patch' 'unzip')
-conflicts=()
-replaces=()
-backup=()
 install="quake2.install"
-arch=('i686' 'x86_64')
 source=("http://www.icculus.org/quake2/files/quake2-$pkgver.tar.gz" \
 'http://www.icculus.org/quake2/files/maxpak.pak' \
 'http://cesium.di.uminho.pt/pub/games/quake2/source/xatrixsrc320.shar.Z' \
 'http://cesium.di.uminho.pt/pub/games/quake2/source/roguesrc320.shar.Z' \
 'ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full-ctf.exe' \
 'quake2.sh' 'q2ded.sh' 'xatrix.sh' 'rogue.sh' 'ctf.sh' 'snd_alsa.c' 'gnusource.patch')
-md5sums=('6b0e3fff324a5db58a8f8309dcabb47a'
+md5sums=('872fee27fb13a2a4c8876d5973c3c691'
          '04d3f1fb7fb4dada7175a41f4595c7eb'
          '41fc4ecc4f25c068e7d1f488bd4a1e1a'
          '7d5e052839c9e629bad0a6570aa70554'
@@ -68,7 +65,7 @@ build() {
     patch -p1 < $srcdir/gnusource.patch
 
     # Compile Quake 2
-    make -s BUILD_XATRIX=YES BUILD_ROGUE=YES BUILD_DEDICATED=YES BUILD_CTF=YES BUILD_QMAX=YES build_release || return 1
+    make -s BUILD_XATRIX=YES BUILD_ROGUE=YES BUILD_DEDICATED=YES BUILD_CTF=YES BUILD_QMAX=YES build_release
 
     [ "$CARCH" = "i686" ] && _dirarch=i386
     [ "$CARCH" = "x86_64" ] && _dirarch=x86_64
