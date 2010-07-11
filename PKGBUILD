@@ -11,11 +11,11 @@ arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
-	'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2' 'avahi'
-	'tk' 'ca-certificates' 'intltool' 'networkmanager')
+             'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2' 'avahi'
+             'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2
-	icq_fix.patch)
+        icq_fix.patch)
 sha256sums=('f412a5a7389ad553229743b49399f968278095c8258dc0f89f766a6cd0ba95d1'
             '9f5de2d1441f8369f3f13733dc4ffe14e1be9395507b79703b1c849c02602f93')
 
@@ -32,18 +32,19 @@ build() {
                 --disable-gnutls \
                 --enable-cyrus-sasl \
                 --disable-doxygen \
-		--enable-nm \
+                --enable-nm \
                 --with-system-ssl-certs=/etc/ssl/certs || return 1
     make || return 1
 }
 package_libpurple(){
     pkgdesc="IM library extracted from Pidgin"
     depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss' 'cyrus-sasl-plugins')
+    optdepends=('dbus-python: for purple-remote and purple-url-handler')
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
     for dir in libpurple share/sounds share/ca-certs m4macros po
     do
-	make -C "${dir}" DESTDIR="${pkgdir}" install || return 1
+        make -C "${dir}" DESTDIR="${pkgdir}" install || return 1
     done
 #    rm -rf "$pkgdir/etc" || return 1
 }
@@ -52,11 +53,11 @@ package_pidgin(){
     pkgdesc="Multi-protocol instant messaging client"
     depends=("libpurple=$pkgver" 'startup-notification' 'gtkspell' 'libxss' 'python'
             'hicolor-icon-theme' 'gstreamer0.10-base')
-    optdepends=('gstreamer0.10-good: to play sounds'
+    optdepends=('aspell: for spelling correction'
                 'avahi: Bonjour protocol support'
-                'tk: Tcl/Tk scripting support'
                 'ca-certificates: SSL CA certificates'
-                'aspell: for spelling correction')
+                'gstreamer0.10-good-plugins: video and voice support'
+                'tk: Tcl/Tk scripting support')
 
     install=pidgin.install
     cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -77,8 +78,8 @@ package_finch(){
     pkgdesc="A ncurses-based messaging client"
     depends=("libpurple=$pkgver" 'python')
     optdepends=('avahi: Bonjour protocol support'
-    		'tk: Tcl/Tk scripting support'
-		'ca-certificates: SSL CA certificates')
+                'ca-certificates: SSL CA certificates'
+                'tk: Tcl/Tk scripting support')
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
     #for linking
