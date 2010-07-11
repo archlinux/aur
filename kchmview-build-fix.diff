@@ -1,0 +1,22 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0374a16..b25dad2 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -12,6 +12,8 @@ SET( kchmviewerSources
+ 	main.cpp
+ 	mainwindow.cpp
+ 	navigationpanel.cpp
++	toolbareditor.cpp
++	toolbarmanager.cpp
+ 	recentfiles.cpp
+ 	settings.cpp
+ 	tab_bookmarks.cpp
+@@ -30,6 +32,7 @@ KDE4_ADD_UI_FILES( kchmviewerSources
+ 	dialog_about.ui
+ 	dialog_setup.ui
+ 	dialog_topicselector.ui
++	toolbareditor.ui
+ 	mainwindow.ui
+ 	navigatorpanel.ui
+ 	tab_bookmarks.ui
+
