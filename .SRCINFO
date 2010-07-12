@@ -1,6 +1,6 @@
 pkgbase = magickthumbnail
 	pkgdesc = Helper program for ROX-Filer that provides thumbnails for image and font files
-	pkgver = 1.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://roxos.sunsite.dk/dev-contrib/guido/
 	install = magickthumbnail.install
@@ -9,8 +9,12 @@ pkgbase = magickthumbnail
 	license = GPL2
 	depends = rox
 	depends = rox-lib
-	source = http://roxos.sunsite.dk/dev-contrib/guido/MagickThumbnail.tar.bz2
-	md5sums = 7407cd73f085d13682ac82516988c37c
+	source = http://www.mirrorservice.org/sites/www.ibiblio.org/gentoo/distfiles/MagickThumbnail-0.5.2.tar.bz2
+	source = magickthumb.py_PDF-FirstPage.patch
+	source = Python-Replace-MD5-Hashlib.patch
+	md5sums = 6cd87e393c860a6ce8e6f16164221815
+	md5sums = f6101f1f5fc0420d3ed00683e4863c91
+	md5sums = e17bc8ed4420de7ddfb779f044f4f30f
 
 pkgname = magickthumbnail
 

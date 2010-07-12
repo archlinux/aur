@@ -1,0 +1,44 @@
+Index: MagickThumbnail/magickthumb.py
+===================================================================
+--- MagickThumbnail.orig/magickthumb.py
++++ MagickThumbnail/magickthumb.py
+@@ -14,7 +14,7 @@ To use this in ROX-Filer, get a recent v
+ click on "Install handlers".  """
+ 
+ import os, sys
+-import md5
++import hashlib
+ import rox
+ 
+ import thumb
+@@ -111,7 +111,7 @@ def main(argv):
+     # Out file name is based on MD5 hash of the URI
+     if not outname:
+         uri='file://'+inname
+-        tmp=md5.new(uri).digest()
++        tmp=hashlib.md5(uri).digest()
+         leaf=''
+         for c in tmp:
+             leaf+='%02x' % ord(c)
+Index: MagickThumbnail/thumb.py
+===================================================================
+--- MagickThumbnail.orig/thumb.py
++++ MagickThumbnail/thumb.py
+@@ -9,7 +9,7 @@ useful implemetation is VideoThumbnail.
+ """
+ 
+ import os, sys
+-import md5
++import hashlib
+ 
+ import rox
+ 
+@@ -38,7 +38,7 @@ class Thumbnailler:
+         """
+         if not outname:
+             uri='file://'+inname
+-            tmp=md5.new(uri).digest()
++            tmp=hashlib.md5(uri).digest()
+             leaf=''
+             for c in tmp:
+                 leaf+='%02x' % ord(c)

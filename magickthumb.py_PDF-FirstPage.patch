@@ -1,0 +1,11 @@
+--- MagickThumbnail.orig/magickthumb.py	2010-07-12 16:30:00.766803546 +1000
++++ MagickThumbnail/magickthumb.py	2010-07-12 16:34:50.893416657 +1000
+@@ -55,7 +55,7 @@
+ 	
+ 	#cmd='convert -mattecolor %s -frame "%s"x"%s" -size "%s"x"%s" "%s" -resize "%s"x"%s" +profile "*" "%s"'  % (bcolor, bwidth, bwidth, rsize, rsize, inname, rsize, rsize, frfname)
+ 	if frameit:
+-		cmd='convert -flatten -mattecolor "%s" -frame %sx%s+%s+%s -size %sx%s "%s" -resize %sx%s +profile "*" "%s"'  % (bcolor, frame_width, frame_width, outer_bevel, inner_bevel, rsize, rsize, inname, rsize, rsize, frfname)
++		cmd='convert -flatten -mattecolor "%s" -frame %sx%s+%s+%s -size %sx%s "%s[0]" -resize %sx%s +profile "*" "%s"'  % (bcolor, frame_width, frame_width, outer_bevel, inner_bevel, rsize, rsize, inname, rsize, rsize, frfname)
+ 		#cmd='convert -mattecolor "#697B8F" -frame 6x6+2+4 -size %sx%s %s -resize %sx%s +profile "*" %s'  % (rsize, rsize, inname, rsize, rsize, frfname)
+ 	else:
+ 		if '.xcf' in inname:
