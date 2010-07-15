@@ -1,0 +1,2 @@
+#!/bin/sh
+exec factor-bin -i=/usr/lib/factor/factor.image $@
