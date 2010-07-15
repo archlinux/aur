@@ -1,7 +1,7 @@
 # Maintainer: Leonidas <marek@xivilization.net>
 pkgname=factor
 pkgver=0.93
-pkgrel=1
+pkgrel=3
 pkgdesc="Factor is a general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
 url="http://factorcode.org"
@@ -11,9 +11,11 @@ conflicts=(factor-git)
 depends=(pango cairo glib2 freetype2 mesa libgl)
 options=(!strip)
 source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zip
-        factor-vm)
+        factor-vm
+        factor.desktop)
 md5sums=('d5507d193e3b8c22e4d0be1a4a213934'
-         '172985592832c63157888bce652c273c')
+         '172985592832c63157888bce652c273c'
+         '14d41133811f4f9359c76bbdc6902e03')
 
 build() {
     # thanks to qx from #concatenative for the proper SSE settings:
@@ -27,7 +29,7 @@ build() {
     # build the VM
     make || return 1
     # bootstrap factor with the minimum supported SSE
-    #./factor -i=$_bootimg -sse-version=$_sseversion
+    ./factor -i=$_bootimg -sse-version=$_sseversion
 
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/lib/factor
@@ -47,4 +49,7 @@ build() {
     # copy over the license (as defined in Arch Packaging Standards)
     chmod -x license.txt
     cp license.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
+
+    # add the desktop entry
+    install -D "$srcdir/factor.desktop" "$pkgdir/usr/share/applications/factor.desktop"
 }

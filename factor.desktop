@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Factor
+Comment=Factor is a general purpose, dynamically typed, stack-based programming language
+#Icon=
+Exec=factor-vm
