@@ -16,7 +16,7 @@ source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zi
         factor.png)
 md5sums=('d5507d193e3b8c22e4d0be1a4a213934'
          '172985592832c63157888bce652c273c'
-         '7150b393c02c0b5ba62876464186c027'
+         '59242ddb19a9be927915e489e2bfca27'
          '74512251d922434c3a973f06800d6181')
 
 build() {
