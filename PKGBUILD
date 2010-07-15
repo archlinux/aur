@@ -12,10 +12,12 @@ depends=(pango cairo glib2 freetype2 mesa libgl)
 options=(!strip)
 source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zip
         factor-vm
-        factor.desktop)
+        factor.desktop
+        factor.png)
 md5sums=('d5507d193e3b8c22e4d0be1a4a213934'
          '172985592832c63157888bce652c273c'
-         '14d41133811f4f9359c76bbdc6902e03')
+         '7150b393c02c0b5ba62876464186c027'
+         '74512251d922434c3a973f06800d6181')
 
 build() {
     # thanks to qx from #concatenative for the proper SSE settings:
@@ -52,4 +54,5 @@ build() {
 
     # add the desktop entry
     install -D "$srcdir/factor.desktop" "$pkgdir/usr/share/applications/factor.desktop"
+    install -D "$srcdir/factor.png" "$pkgdir/usr/share/pixmaps/factor.png"
 }
