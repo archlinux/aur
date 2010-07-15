@@ -16,10 +16,13 @@ optdepends=('timidity++: Software MIDI support')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         solfege.desktop)
+md5sums=('f8faabc581747582e37dea2bf14313f6' '22b89dcfd9e7c98ab238942139b8a970')
+sha1sums=('3cc6937b5c2a418fcbac5202228b31a7f42710e0' '13699f1c3fc5f460951a6b75312dbd56219efb97')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  sed -i 's/SWIG_VERSION="unknown"/SWIG_VERSION="1.3"/' configure
   ./configure --prefix=/usr \
               --sysconfdir=/etc
 
@@ -29,6 +32,3 @@ build() {
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-
-md5sums=('f8faabc581747582e37dea2bf14313f6'
-         '5bdd11173ead87fc4a42aff96535e961')
