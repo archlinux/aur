@@ -1,5 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: scj <scj archlinux us>
+
 pkgname=sfml
 pkgver=1.6
 pkgrel=1
@@ -57,6 +58,5 @@ build() {
 
   install -Dm 644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" || return 1
   find "${pkgdir}/usr/share/${pkgname}/samples" -name "*.o" -delete
-
 }
 # vim:set ts=2 sw=2 et:
