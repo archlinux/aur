@@ -7,8 +7,7 @@ pkgdesc="A simple, fast, cross-platform and object-oriented multimedia API."
 arch=('i686' 'x86_64')
 url="http://www.sfml-dev.org"
 license=('zlib')
-depends=('libsndfile' 'openal' 'glew' 'libjpeg' 'libpng' 'soil' 'zlib' 'freetype2')
-makedepends=('xz-utils')
+depends=('libxrandr' 'libsndfile' 'openal' 'glew' 'libjpeg' 'libpng' 'soil' 'zlib' 'freetype2')
 optdepends=('qt: build qt-sample' 'wxgtk: build wxwidgets-sample')
 source=(http://downloads.sourceforge.net/${pkgname}/SFML-${pkgver}-sdk-linux-64.tar.gz
         use-system-libs.patch)
@@ -20,7 +19,6 @@ build() {
            ${pkgdir}/usr/include \
            ${pkgdir}/usr/share/sfml
   msg "Applying patches..."
-  #xz -d ../sfml-libjpeg-libpng-update.patch.xz || return 1
   patch -Np0 < ../use-system-libs.patch || return 1
 
   msg "Building libraries"
