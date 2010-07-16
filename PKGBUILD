@@ -6,7 +6,7 @@
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -15,14 +15,16 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
              'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2
-        icq_fix.patch)
-sha256sums=('f412a5a7389ad553229743b49399f968278095c8258dc0f89f766a6cd0ba95d1'
-            '9f5de2d1441f8369f3f13733dc4ffe14e1be9395507b79703b1c849c02602f93')
+        icq_fix.patch oscar_xstatus_remote_crash_fix_2_for_pidgin_2.7.1.diff)
+md5sums=('0dd2adb9e8214ac960f956823c84e7e2'
+         '2ce887cf36e698282b9241832850defd'
+         '29cb9bb0e74db8bf6c18c048e935a60a')
 
 build() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    patch -Np0 -i "${srcdir}/icq_fix.patch" || return 1
+    patch -Np0 -i "${srcdir}/icq_fix.patch"
+    patch -Np0 -i "${srcdir}/oscar_xstatus_remote_crash_fix_2_for_pidgin_2.7.1.diff"
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
@@ -33,8 +35,8 @@ build() {
                 --enable-cyrus-sasl \
                 --disable-doxygen \
                 --enable-nm \
-                --with-system-ssl-certs=/etc/ssl/certs || return 1
-    make || return 1
+                --with-system-ssl-certs=/etc/ssl/certs
+    make
 }
 package_libpurple(){
     pkgdesc="IM library extracted from Pidgin"
@@ -44,7 +46,7 @@ package_libpurple(){
 
     for dir in libpurple share/sounds share/ca-certs m4macros po
     do
-        make -C "${dir}" DESTDIR="${pkgdir}" install || return 1
+        make -C "${dir}" DESTDIR="${pkgdir}" install
     done
 #    rm -rf "$pkgdir/etc" || return 1
 }
@@ -62,17 +64,17 @@ package_pidgin(){
     install=pidgin.install
     cd "${srcdir}/${pkgbase}-${pkgver}"
     #for linking
-    make -C libpurple DESTDIR="${pkgdir}" install-libLTLIBRARIES || return 1
+    make -C libpurple DESTDIR="${pkgdir}" install-libLTLIBRARIES
 
-    make -C pidgin DESTDIR="${pkgdir}" install || return 1
-    make -C doc DESTDIR="${pkgdir}" install || return 1
+    make -C pidgin DESTDIR="${pkgdir}" install
+    make -C doc DESTDIR="${pkgdir}" install
 
     #clean up libpurple
-    make -C libpurple DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES || return 1
+    make -C libpurple DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES
 
-    install -D -m 0644 pidgin.desktop "${pkgdir}"/usr/share/applications/pidgin.desktop || return 1
+    install -D -m 0644 pidgin.desktop "${pkgdir}"/usr/share/applications/pidgin.desktop
 
-    rm -f "${pkgdir}"/usr/share/man/man1/finch.1 || return 1
+    rm -f "${pkgdir}"/usr/share/man/man1/finch.1
 }
 package_finch(){
     pkgdesc="A ncurses-based messaging client"
@@ -83,12 +85,12 @@ package_finch(){
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
     #for linking
-    make -C libpurple DESTDIR="${pkgdir}" install-libLTLIBRARIES || return 1
+    make -C libpurple DESTDIR="${pkgdir}" install-libLTLIBRARIES
 
-    make -C finch DESTDIR="${pkgdir}" install || return 1
-    make -C doc DESTDIR="${pkgdir}" install || return 1
+    make -C finch DESTDIR="${pkgdir}" install
+    make -C doc DESTDIR="${pkgdir}" install
 
     #clean up libpurple
-    make -C libpurple DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES || return 1
-    rm -f "${pkgdir}"/usr/share/man/man1/pidgin.1 || return 1
+    make -C libpurple DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES
+    rm -f "${pkgdir}"/usr/share/man/man1/pidgin.1
 }

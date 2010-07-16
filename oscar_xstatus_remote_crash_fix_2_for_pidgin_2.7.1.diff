@@ -1,0 +1,84 @@
+#
+# old_revision [915eb72db575b96b63275f0f1d857378adbf3420]
+#
+# patch "libpurple/protocols/oscar/family_icbm.c"
+#  from [52688bc864209fd4471193bfce81c4547ba8ae51]
+#    to [2a3a9ef76a6fd25b6e58b0e527df49bf8f83f2fb]
+#
+============================================================
+--- libpurple/protocols/oscar/family_icbm.c	52688bc864209fd4471193bfce81c4547ba8ae51
++++ libpurple/protocols/oscar/family_icbm.c	2a3a9ef76a6fd25b6e58b0e527df49bf8f83f2fb
+@@ -2687,7 +2687,6 @@ static int clientautoresp(OscarData *od,
+ 	int hdrlen;
+ 	int curpos;
+ 	int num1,num2;
+-	char *desc, *title, *temp;
+ 	PurpleAccount *account;
+ 	PurpleBuddy *buddy;
+ 	PurplePresence *presence;
+@@ -2714,31 +2713,41 @@ static int clientautoresp(OscarData *od,
+ 		 		xml = byte_stream_getstr(bs, bs->len - curpos);
+ 		 		purple_debug_misc("oscar", "X-Status: Received XML reply\n");
+ 		 		if(xml) {
+- 				/* purple_debug_misc("oscar", "X-Status: XML reply: %s\n", (const char*) xml); */
+- 					if ((desc=strstr(xml,"&lt;desc&gt;")) != NULL) {
+- 						temp=strstr(xml,"&lt;/desc&gt;");
+- 						temp[0]=0;
+- 						desc=desc+12;
+- 					}
+- 					if ((title=strstr(xml,"&lt;title&gt;")) != NULL) {
+- 						temp=strstr(xml,"&lt;/title&gt;");
+- 						temp[0]=0;
+- 						title=title+13;
+- 					} else {
+- 						title="";
+- 					}
+- 					strcpy(xml,title);
+-					if (desc) {
+- 						strcat(xml, " - ");
+- 						strcat(xml, desc);
++					GString *xstatus;
++					char *tmp1, *tmp2;
++
++					/* purple_debug_misc("oscar", "X-Status: XML reply: %s\n", xml); */
++
++					xstatus = g_string_new(NULL);
++
++					tmp1 = strstr(xml, "&lt;title&gt;");
++					if (tmp1 != NULL) {
++						tmp1 += 13;
++						tmp2 = strstr(tmp1, "&lt;/title&gt;");
++						if (tmp2 != NULL)
++							g_string_append_len(xstatus, tmp1, tmp2 - tmp1);
+ 					}
+- 					purple_debug_misc("oscar", "X-Status reply: %s\n", (const char*)xml);
+- 					account = purple_connection_get_account(od->gc);
+- 					buddy = purple_find_buddy(account, bn);
+- 					presence = purple_buddy_get_presence(buddy);
+- 					status = purple_presence_get_active_status(presence);
+- 					purple_prpl_got_user_status(account, bn,
+-  					    purple_status_get_id(status), "message", xml, NULL);
++					tmp1 = strstr(xml, "&lt;desc&gt;");
++					if (tmp1 != NULL) {
++						tmp1 += 12;
++						tmp2 = strstr(tmp1, "&lt;/desc&gt;");
++						if (tmp2 != NULL) {
++							if (xstatus->len > 0)
++								g_string_append(xstatus, " - ");
++							g_string_append_len(xstatus, tmp1, tmp2 - tmp1);
++						}
++					}
++					if (xstatus->len > 0) {
++						purple_debug_misc("oscar", "X-Status reply: %s\n", xstatus->str);
++						account = purple_connection_get_account(od->gc);
++						buddy = purple_find_buddy(account, bn);
++						presence = purple_buddy_get_presence(buddy);
++						status = purple_presence_get_active_status(presence);
++						purple_prpl_got_user_status(account, bn,
++								purple_status_get_id(status),
++								"message", xstatus->str, NULL);
++					}
++					g_string_free(xstatus, TRUE);
+ 		   		} else {
+ 			 		purple_debug_misc("oscar", "X-Status: Can't get XML reply string\n");
+ 				}
