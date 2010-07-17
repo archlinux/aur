@@ -5,7 +5,7 @@
 
 pkgname=gtk-engine-murrine
 pkgver=0.90.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK2 engine to make your desktop look like a 'murrina', an italian word meaning the art glass works done by Venicians glass blowers."
 arch=('i686' 'x86_64')
 url="http://cimitan.com/murrine/project/murrine"
