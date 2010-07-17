@@ -3,12 +3,12 @@
 
 pkgname=goocanvasmm
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ wrappers for goocanvas"
 arch=('i686' 'x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/goocanvasmm/"
 license=('GPL')
-depends=('gegl' 'goocanvas')
+depends=('gegl' 'goocanvas' 'glibmm' 'gtkmm')
 source=(http://ftp.gnome.org/pub/gnome/sources/goocanvasmm/0.14/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('12ade6affd1c25b33ece61dac9d366e6')
 
