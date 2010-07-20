@@ -1,6 +1,6 @@
 pkgbase = drobo-utils
 	pkgdesc = A library, GUI and CLI script for managing Data Robotics storage units on Linux
-	pkgver = 0.6.2
+	pkgver = 0.6.2.2
 	pkgrel = 1
 	url = http://drobo-utils.sourceforge.net/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = drobo-utils
 	depends = python
 	depends = pyqt
 	depends = parted
-	source = http://downloads.sourceforge.net/project/drobo-utils/drobo-utils/r0_6_2/drobo-utils-0.6.2.1.tgz
-	md5sums = ea1d43aeeabe203f38546bbc8ed97156
-	sha1sums = 596e6337d95cd992a8cf0711287bb7ac16384fc8
+	source = http://downloads.sourceforge.net/project/drobo-utils/drobo-utils/r0_6_2/drobo-utils-0.6.2.2.tgz
+	md5sums = 7e181580a9051f4c87b567692d9ec094
+	sha1sums = c6518b49c8304e3cbad7b39d9cfc2b3ab3c7484b
 
 pkgname = drobo-utils
 
