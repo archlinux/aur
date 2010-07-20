@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Herych <heniekk@gmail.com>
 pkgname=libident
 pkgver=0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="New libident C library"
 arch=('i686' 'x86_64')
 url="http://www.remlab.net/libident/"
