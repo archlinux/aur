@@ -5,8 +5,8 @@
 
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.7.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -14,17 +14,11 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
              'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2' 'avahi'
              'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2
-        icq_fix.patch oscar_xstatus_remote_crash_fix_2_for_pidgin_2.7.1.diff)
-md5sums=('0dd2adb9e8214ac960f956823c84e7e2'
-         '2ce887cf36e698282b9241832850defd'
-         '29cb9bb0e74db8bf6c18c048e935a60a')
+source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2)
+md5sums=('c23d85bb6a197dd841d1b5585148327d')
 
 build() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
-
-    patch -Np0 -i "${srcdir}/icq_fix.patch"
-    patch -Np0 -i "${srcdir}/oscar_xstatus_remote_crash_fix_2_for_pidgin_2.7.1.diff"
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
