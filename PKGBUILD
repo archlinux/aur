@@ -5,7 +5,7 @@
 
 pkgname=p7zip
 pkgver=9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line port of the 7zip compression utility"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -46,5 +46,5 @@ package() {
 
 	# Install mc's virtual filesystem
 	install -Dm755 contrib/VirtualFileSystemForMidnightCommander/u7z \
-		${pkgdir}/usr/share/mc/extfs/u7z
+		${pkgdir}/usr/lib/mc/extfs.d/u7z
 }
