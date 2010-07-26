@@ -27,8 +27,7 @@ build() {
 
 package_frogatto() {
   pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
-  depends=("frogatto-data=${pkgver}")
-  arch=('i686' 'x86_64')
+  depends=('libgl' 'mesa' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
 
   cd "$srcdir/$pkgbase-$pkgver"
 
@@ -45,6 +44,7 @@ package_frogatto() {
 package_frogatto-data() {
   pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog (data files)"
   arch=('any')
+  depends=()
 
   cd "$srcdir/$pkgbase-$pkgver"
 
