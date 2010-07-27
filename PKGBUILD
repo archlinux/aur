@@ -2,21 +2,21 @@
 
 pkgname=digikam
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for kde"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://digikam.sourceforge.net"
 depends=('kdebase-runtime' 'kdegraphics-libs' 'kdepimlibs' 'lensfun' 'kdeedu-marble' 'liblqr')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'doxygen')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 replaces=('digikamimageplugins')
 install=digikam.install
 optdepends=('kipi-plugins: for more extras and plugins')
+source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('25d09fdab2b2450c6c6075aab3377fce')
 
 build() {
    cd ${srcdir}
-
    mkdir build
    cd build
    cmake ../${pkgname}-${pkgver} \
@@ -24,7 +24,10 @@ build() {
      -DENABLE_MARBLEWIDGET=yes \
      -DWITH_MarbleWidget=yes \
      -DCMAKE_SKIP_RPATH=ON
-   make all || return 1
-   make DESTDIR="${pkgdir}" install || return 1
- }
-md5sums=('25d09fdab2b2450c6c6075aab3377fce')
+   make all
+}
+
+package() {
+  cd ${srcdir}/build
+  make DESTDIR="${pkgdir}" install
+}
