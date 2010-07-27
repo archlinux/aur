@@ -1,14 +1,14 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Tom Wambold <tom5760@gmail.com
+# Contributor: Tom Wambold <tom5760@gmail.com>
 
-pkgbase=frogatto
-pkgname=('frogatto' 'frogatto-data')
+pkgname='frogatto'
 arch=('i686' 'x86_64')
 pkgver=1.0
 pkgrel=3
+pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
-depends=('libgl' 'mesa' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs')
+depends=('libgl' 'mesa' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
 makedepends=('boost')
 source=(http://www.frogatto.com/files/$pkgbase-$pkgver.tar.bz2
         frogatto
@@ -25,10 +25,7 @@ build() {
   make game server
 }
 
-package_frogatto() {
-  pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
-  depends=('libgl' 'mesa' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
-
+package() {
   cd "$srcdir/$pkgbase-$pkgver"
 
   install -D -m755 game $pkgdir/opt/frogatto/game
@@ -41,7 +38,7 @@ package_frogatto() {
   install -D -m644 frogatto.desktop $pkgdir/usr/share/applications/frogatto.desktop
 }
 
-package_frogatto-data() {
+package() {
   pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog (data files)"
   arch=('any')
   depends=()
