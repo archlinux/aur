@@ -1,2 +1,6 @@
-#!/bin/sh
-exec /opt/quake2/quake2 +set basedir /opt/quake2 +set game rogue $*
+#!/bin/bash
+
+cd "/opt/quake2"
+./sdlquake2 +set basedir /opt/quake2 +set game rouge $*
+exit $?
+
