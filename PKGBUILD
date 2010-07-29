@@ -13,8 +13,8 @@ arch=('x86_64')
 license=('MIT')
 depends=('lib32-libx11' 'lib32-libsm')
 options=()
-source=(ftp://ftp.archlinux.org/core/os/i686/giflib-${pkgver}-${pkgrel}-i686.pkg.tar.xz)
-md5sums=('7125644155ae6ad33dbc9fc15a14735f')
+source=(ftp://ftp.archlinux.org/extra/os/i686/giflib-${pkgver}-${pkgrel}-i686.pkg.tar.gz)
+md5sums=('c998c3e334f0f295a1d6e1439ae6f893')
 
 build() {
   mkdir -p $pkgdir/opt/lib32/usr/lib/
