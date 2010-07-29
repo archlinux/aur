@@ -3,9 +3,9 @@
 
 pkgname=lib32-mpg123
 pkgname32=${pkgname/lib32-/}
-license=('LGPL2' 'GPL2')
+license=('LGPL' 'GPL2')
 pkgver=1.12.3
-pkgrel=
+pkgrel=1
 pkgrel32=1
 pkgdesc="A console based real time MPEG Audio Player for Layer 1, 2 and 3"
 arch=(x86_64)
@@ -16,8 +16,8 @@ source=(ftp://ftp.archlinux.org/extra/os/i686/${pkgname32}-${pkgver}-${pkgrel32}
 md5sums=('60521fe9183c3bd09df5b85e97910cd9')
 
 build() {
- install -dm755 ${pkgdir}/opt/lib32/usr || return 1
-	cp -Rpf ${srcdir}/usr/* ${pkgdir}/opt/lib32/usr || return 1
-
+  install -dm755 ${pkgdir}/opt/lib32/usr || return 1
+  cp -Rpf ${srcdir}/usr/* ${pkgdir}/opt/lib32/usr || return 1
 }
 
+# vim: sw=2:ts=2
