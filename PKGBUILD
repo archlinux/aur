@@ -16,8 +16,8 @@ source=(ftp://ftp.archlinux.org/extra/os/i686/${pkgname32}-${pkgver}-${pkgrel32}
 md5sums=('60521fe9183c3bd09df5b85e97910cd9')
 
 build() {
-  install -dm755 ${pkgdir}/opt/lib32/usr || return 1
-  cp -Rpf ${srcdir}/usr/* ${pkgdir}/opt/lib32/usr || return 1
+  install -dm755 ${pkgdir}/opt/lib32/usr/ || return 1
+  cp -Rpf ${srcdir}/usr/lib ${pkgdir}/opt/lib32/usr/|| return 1
 }
 
 # vim: sw=2:ts=2
