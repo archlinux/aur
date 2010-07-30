@@ -1,7 +1,8 @@
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: JJDaNiMoTh <jjdanimoth@gmail.com>
 
 pkgname=qmc2
-pkgver=0.2.b15
+pkgver=0.2.b16
 pkgrel=1
 pkgdesc="Qt 4 based UNIX MAME frontend supporting SDLMAME."
 url="http://qmc2.arcadehits.net"
@@ -11,7 +12,7 @@ depends=('qt' 'phonon' 'sdl' 'libxmu')
 makedepends=('rsync' 'mesa')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
         'qmamecat.desktop')
-md5sums=('b98caae651a1ad1518c5906148e9ded0'
+md5sums=('e43de45a6a8e07dfea0504264ab19e04'
          'bf2a7898e6fff196fb99b5bcc4128a79')
 
 build() {
