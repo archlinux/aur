@@ -10,6 +10,7 @@ url="http://www.sfml-dev.org"
 license=('custom:zlib')
 depends=('libxrandr' 'libsndfile' 'openal' 'glew' 'libjpeg' 'libpng' 'soil' 'zlib' 'freetype2')
 optdepends=('qt: build qt-sample' 'wxgtk: build wxwidgets-sample')
+install=sfml.install
 source=(http://downloads.sourceforge.net/${pkgname}/SFML-${pkgver}-sdk-linux-64.tar.gz
         use-system-libs.patch)
 md5sums=('7a9b3a1ef6d14cd25090e440ccdbb3a8'
