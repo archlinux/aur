@@ -1,0 +1,35 @@
+diff -Naur FreeImage.orig//Makefile.gnu FreeImage.new//Makefile.gnu
+--- FreeImage.orig//Makefile.gnu	2010-08-10 19:15:20.000000000 +0200
++++ FreeImage.new//Makefile.gnu	2010-08-10 21:47:12.000000000 +0200
+@@ -65,9 +65,6 @@
+ 	install -m 644 -o root -g root $(HEADER) $(INCDIR)
+ 	install -m 644 -o root -g root $(STATICLIB) $(INSTALLDIR)
+ 	install -m 755 -o root -g root $(SHAREDLIB) $(INSTALLDIR)
+-	ln -sf $(SHAREDLIB) $(INSTALLDIR)/$(VERLIBNAME)
+-	ln -sf $(VERLIBNAME) $(INSTALLDIR)/$(LIBNAME)	
+-	ldconfig
+ 
+ clean:
+ 	rm -f core Dist/*.* u2dtmp* $(MODULES) $(STATICLIB) $(SHAREDLIB) $(LIBNAME)
+diff -Naur FreeImage.orig//Source/FreeImageToolkit/Background.cpp FreeImage.new//Source/FreeImageToolkit/Background.cpp
+--- FreeImage.orig//Source/FreeImageToolkit/Background.cpp	2010-08-10 19:15:20.000000000 +0200
++++ FreeImage.new//Source/FreeImageToolkit/Background.cpp	2010-08-10 19:16:12.000000000 +0200
+@@ -21,6 +21,7 @@
+ 
+ #include "FreeImage.h"
+ #include "Utilities.h"
++#include <limits.h>
+ 
+ /** @brief Determines, whether a palletized image is visually greyscale or not.
+  
+diff -Naur FreeImage.orig//Source/OpenEXR/Imath/ImathMatrix.h FreeImage.new//Source/OpenEXR/Imath/ImathMatrix.h
+--- FreeImage.orig//Source/OpenEXR/Imath/ImathMatrix.h	2010-08-10 19:15:20.000000000 +0200
++++ FreeImage.new//Source/OpenEXR/Imath/ImathMatrix.h	2010-08-10 21:43:26.000000000 +0200
+@@ -51,6 +51,7 @@
+ 
+ #include <iostream>
+ #include <iomanip>
++#include <cstring>
+ 
+ #if (defined _WIN32 || defined _WIN64) && defined _MSC_VER
+ // suppress exception specification warnings
