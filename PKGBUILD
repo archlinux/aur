@@ -14,7 +14,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
              'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2' 'avahi'
              'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.bz2)
+source=(http://sourceforge.net/projects/${pkgbase}/files/Pidgin/${pkgver}/${pkgbase}-${pkgver}.tar.bz2/download)
 md5sums=('e4bbadadae85e5e008690b52dd51f102')
 
 build() {
