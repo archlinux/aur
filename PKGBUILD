@@ -2,7 +2,7 @@
 # Contributor: Mihai Militaru <mihai.militaru@gmx.com>
 # Contributor: scippio <scippio@berounet.cz>
 pkgname=freeimage
-pkgver=3.14.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="Library project for developers who would like to support popular graphics image formats."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL' 'custom:FIPL')
 url="http://freeimage.sourceforge.net/"
 depends=('gcc-libs')
 makedepends=('hd2u')
-source=(http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage3140.zip gcc4.5_ln.patch)
-md5sums=('780f21d5eeea0c368eff2cc215e264ce'
+source=(http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage3141.zip gcc4.5_ln.patch)
+md5sums=('4b43112aa199d8a439e0535b9c25d8a4'
          '16a79453aa54fae54245191afb1d2f69')
 
 build() {
