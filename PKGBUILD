@@ -3,7 +3,7 @@
 
 pkgname=sfml
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, fast, cross-platform and object-oriented multimedia API."
 arch=('i686' 'x86_64')
 url="http://www.sfml-dev.org"
@@ -14,13 +14,13 @@ install=sfml.install
 source=(http://downloads.sourceforge.net/${pkgname}/SFML-${pkgver}-sdk-linux-64.tar.gz
         use-system-libs.patch)
 md5sums=('7a9b3a1ef6d14cd25090e440ccdbb3a8'
-         '97f26f224ac1a443d91046358002385e')
+         '505ea908fb6e4b9359061d8d55373963')
 
 build() {
   cd "${srcdir}/SFML-${pkgver}"
 
   # apply patch to use system libs in favor of included ones (fixes many problems)
-  patch -Np0 < ../use-system-libs.patch
+  patch -Np1 < ../use-system-libs.patch
 
   # compile sfml
   make
