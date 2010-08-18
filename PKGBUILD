@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-vmware
-pkgver=11.0.1
+pkgver=11.0.2
 pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
@@ -12,16 +12,14 @@ makedepends=('pkgconfig' 'xorg-server>=1.8.0' 'randrproto' 'renderproto' 'xextpr
 conflicts=('xorg-server<1.8.0')
 groups=('xorg-video-drivers')
 options=('!libtool')
-source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
-        LICENSE)
-sha1sums=('cc82cbacaa90c28b42440f6a197f5167595c8417'
-          'f7fad008ca63b6862056f9d1123a81aef053d586')
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('7598145097971437cf0bfc0445e4435602159b41')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr || return 1
-  make || return 1
-  make DESTDIR="${pkgdir}" install || return 1
+  ./configure --prefix=/usr
+  make
+  make DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/" || return 1
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/"
 }
