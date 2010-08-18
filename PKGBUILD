@@ -4,7 +4,7 @@
 
 pkgname=python-soappy
 pkgver=0.12.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A module which implements a high-level interface to SOAP functions"
 arch=('any')
 url="http://pywebsvcs.sourceforge.net/"
@@ -17,7 +17,12 @@ md5sums=('d0d29f9b6fb27bfadc69b64a36321e20')
 build() {
   cd "${srcdir}/SOAPpy-${pkgver}"
   sed -i "s/from __future__ import nested_scopes/#\0/g" SOAPpy/*.py
-  python setup.py build || return 1
-  python setup.py install --root="${pkgdir}" || return 1
+  python2 setup.py build
+  python2 setup.py install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  for f in c14n.py Namespaces.py logging.py __init__.py; do
+      sed -e 's|#! /usr/bin/env python|#!/usr/bin/env python2|' \
+          -i ${pkgdir}/usr/lib/python2.7/site-packages/SOAPpy/wstools/${f}
+  done
 }
