@@ -2,9 +2,9 @@
 
 pkgname=wolf
 pkgver=1.41b
-pkgrel=4
+pkgrel=5
 pkgdesc="Return to Castle Wolfenstein is a single and multiplayer first person shooter. You need the retail game files to play."
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://zerowing.idsoftware.com/linux/wolf/"
 license=('custom')
 [ "${CARCH}" = "i686" ] && depends=('libgl' 'libxext')
@@ -67,7 +67,7 @@ build() {
         $pkgdir/usr/bin/wolfded
 
     # Install old libstdc++ library needed for Wolf to run
-    install -D -m 755 $srcdir/libstdc++-libc6.2-2.so.3  \
+    install -D -m 644 $srcdir/libstdc++-libc6.2-2.so.3  \
         $pkgdir/opt/wolf/libstdc++-libc6.2-2.so.3 
 
     # Install License (Return to Castle Wolfenstein)
