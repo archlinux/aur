@@ -1,13 +1,13 @@
 pkgbase = wolf
 	pkgdesc = Return to Castle Wolfenstein is a single and multiplayer first person shooter. You need the retail game files to play.
 	pkgver = 1.41b
-	pkgrel = 3
+	pkgrel = 4
 	url = http://zerowing.idsoftware.com/linux/wolf/
 	install = wolf.install
 	arch = i686
 	license = custom
-	depends = libgl
-	depends = libxext
+	optdepends = xdg-utils: for opening urls
+	optdepends = et-sdl-sound: for sdl/alsa support
 	source = wolfsp.desktop
 	source = wolfmp.desktop
 	source = wolf.launcher

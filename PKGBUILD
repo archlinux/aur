@@ -2,13 +2,15 @@
 
 pkgname=wolf
 pkgver=1.41b
-pkgrel=3
+pkgrel=4
 pkgdesc="Return to Castle Wolfenstein is a single and multiplayer first person shooter. You need the retail game files to play."
 arch=('i686')
 url="http://zerowing.idsoftware.com/linux/wolf/"
 license=('custom')
-depends=('libgl' 'libxext')
-makedepends=()
+[ "${CARCH}" = "i686" ] && depends=('libgl' 'libxext')
+[ "${CARCH}" = "x86_64" ] && depends=('lib32-libgl' 'lib32-libxext')
+optdepends=('xdg-utils: for opening urls'
+            'et-sdl-sound: for sdl/alsa support')
 install='wolf.install'
 source=('wolfsp.desktop' 'wolfmp.desktop' \
 'wolf.launcher' 'wolfsp.launcher' 'wolfmp.launcher' 'wolfded.launcher' \
@@ -91,5 +93,12 @@ build() {
     # Install Icon File (Multi Player)
     install -D -m 644 $pkgdir/opt/wolf/WolfMP.xpm \
         $pkgdir/usr/share/pixmaps/WolfMP.xpm
-}
 
+    # Remove Licenses from Data Directory
+    rm $pkgdir/opt/wolf/Docs/License.txt
+    rm $pkgdir/opt/wolf/pb/PB_EULA.txt
+
+    # Use a more modern way for opening urls
+    rm $pkgdir/opt/wolf/openurl.sh
+    ln -s /usr/bin/xdg-open $pkgdir/opt/wolf/openurl.sh
+}
