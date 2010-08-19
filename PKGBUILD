@@ -3,11 +3,11 @@
 
 pkgname=libgnome-keyring
 pkgver=2.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME keyring client library"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
-depends=('eggdbus>=0.6' 'libgcrypt>=1.4.5' 'gnome-keyring>=2.30.1')
+depends=('eggdbus>=0.6' 'libgcrypt>=1.4.6')
 makedepends=('intltool' 'pkgconfig' 'python')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
@@ -18,7 +18,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
-      --libexecdir=/usr/lib/gnome-keyring || return 1
-  make || return 1
-  make -j1 DESTDIR="${pkgdir}" install || return 1
+      --libexecdir=/usr/lib/gnome-keyring
+  make
+  make -j1 DESTDIR="${pkgdir}" install
 }
