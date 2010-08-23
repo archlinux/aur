@@ -1,7 +1,7 @@
 # Maintainer: Leonidas <marek@xivilization.net>
 pkgname=factor
 pkgver=0.93
-pkgrel=3
+pkgrel=4
 pkgdesc="Factor is a general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
 url="http://factorcode.org"
@@ -13,11 +13,13 @@ options=(!strip)
 source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zip
         factor-vm
         factor.desktop
-        factor.png)
+        factor.png
+        fuel-factor-vm.patch)
 md5sums=('d5507d193e3b8c22e4d0be1a4a213934'
          '172985592832c63157888bce652c273c'
          '59242ddb19a9be927915e489e2bfca27'
-         '74512251d922434c3a973f06800d6181')
+         '74512251d922434c3a973f06800d6181'
+         '642c6aeafe3d8e6c41df8a12d4b42f44')
 
 build() {
     # thanks to qx from #concatenative for the proper SSE settings:
@@ -28,6 +30,9 @@ build() {
     [ $CARCH = x86_64 ] && _bootimg="boot.unix-x86.64.image" && _sseversion=20
 
     cd $srcdir/$pkgname
+    # apply patches
+    patch -p1 < $srcdir/fuel-factor-vm.patch
+
     # build the VM
     make || return 1
     # bootstrap factor with the minimum supported SSE
