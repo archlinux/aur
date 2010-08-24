@@ -2,14 +2,14 @@
 
 pkgname=xf86-video-vmware
 pkgver=11.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
-depends=('glibc')
-makedepends=('pkgconfig' 'xorg-server>=1.8.0' 'randrproto' 'renderproto' 'xextproto' 'xineramaproto' 'videoproto')
-conflicts=('xorg-server<1.8.0')
+depends=('libdrm')
+makedepends=('pkgconfig' 'xorg-server-devel' 'libdrm')
+conflicts=('xorg-server<1.9.0')
 groups=('xorg-video-drivers')
 options=('!libtool')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
@@ -21,5 +21,5 @@ build() {
   make
   make DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
