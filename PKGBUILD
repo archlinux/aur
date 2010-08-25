@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 87580 2010-08-17 07:10:11Z jgc $
 #Maintainer: Jan de Groot <jgc@archlinux.org>
 
 _pkgbasename=libxvmc
