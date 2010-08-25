@@ -1,19 +1,36 @@
-# Maintainer: Mikko Seppälä <t-r-a-y@mbnet.fi>
-_pkgsourcename=libxslt
-pkgname=lib32-$_pkgsourcename
+# Maintainer: Eric Belanger <eric@archlinux.org>
+# Contributor: John Proctor <jproctor@prium.net>
+
+_pkgbasename=libxslt
+pkgname=lib32-$_pkgbasename
 pkgver=1.1.26
-pkgrel=1
-pkgdesc="XML stylesheet transformation library"
-url="http://www.xmlsoft.org/XSLT/"
-license=('custom')
+pkgrel=4
+pkgdesc="XML stylesheet transformation library (32-bit)"
 arch=('x86_64')
-groups=('lib32')
-depends=('lib32-glibc')
-source=(ftp://ftp.archlinux.org/extra/os/i686/$_pkgsourcename-$pkgver-$pkgrel-i686.pkg.tar.gz)
+url="http://xmlsoft.org/XSLT/"
+license=('custom')
+depends=('lib32-libxml2>=2.7.7' 'lib32-libgcrypt>=1.4.4' $_pkgbasename)
+makedepends=(gcc-multilib)
+options=('!libtool')
+source=(ftp://xmlsoft.org/libxslt/${_pkgbasename}-${pkgver}.tar.gz)
+md5sums=('e61d0364a30146aaa3001296f853b2b9')
 
 build() {
-	cd $srcdir
-	mkdir -p $pkgdir/opt/lib32/usr/lib
-	cp -dp usr/lib/*.so* $pkgdir/opt/lib32/usr/lib
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  ./configure --prefix=/usr --libdir=/usr/lib32 --without-python
+  make
 }
-md5sums=('46134e42cba96503dd35262f8d4cd87c')
+
+package() {
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
+
+  rm -rf "${pkgdir}"/usr/{include,share,bin}
+  mkdir -p "$pkgdir/usr/share/licenses"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+}
