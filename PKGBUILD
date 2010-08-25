@@ -1,20 +1,35 @@
-# Maintainer: Mikko Seppälä <t-r-a-y@mbnet.fi>
-_pkgsourcename=openal
-pkgname=lib32-$_pkgsourcename
+# Maintainer: Allan McRae <allan@archlinux.org>
+# Contributer: Jason Chu <jchu@xentac.net>
+
+_pkgbasename=openal
+pkgname=lib32-$_pkgbasename
 pkgver=1.12.854
-pkgrel=1
-pkgdesc="OpenAL audio library for use with opengl"
-url="http://www.openal.org"
-license=('LGPL')
+pkgrel=2
+pkgdesc="OpenAL audio library for use with opengl (32-bit)"
 arch=('x86_64')
-groups=('lib32')
-depends=('lib32-glibc')
-source=(http://mir.archlinux.fr/extra/os/i686/$_pkgsourcename-$pkgver-$pkgrel-i686.pkg.tar.xz)
+url="http://www.openal.org/"
+license=('LGPL')
+depends=('lib32-glibc' $_pkgbasename)
+makedepends=('lib32-alsa-lib' 'lib32-sdl' 'pkgconfig' 'cmake' gcc-multilib)
+options=('!libtool')
+source=(http://kcat.strangesoft.net/openal-releases/openal-soft-${pkgver}.tar.bz2)
+md5sums=('fbf36451fdebd6466edbdc0ee7db9603')
 
 build() {
-	cd $srcdir
-	mkdir -p $pkgdir/opt/lib32/usr/lib
-	cp -dp usr/lib/*.so* $pkgdir/opt/lib32/usr/lib
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+  cd ${srcdir}/${_pkgbasename}-soft-${pkgver}/build
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D LIB_INSTALL_DIR=/usr/lib32 ..
+  make
 }
-md5sums=('acf8e2a2bba4edde4268f89370e71d00')
-sha256sums=('19de8f895a849d6d2ed19a707db8c7f623b4f3616ed1cb84ee47fe372626ce33')
+
+package() {
+  cd ${srcdir}/${_pkgbasename}-soft-${pkgver}/build
+  make DESTDIR=${pkgdir}/ install 
+
+  rm -rf "${pkgdir}"/usr/{include,share,bin}
+  mkdir -p "$pkgdir/usr/share/licenses"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+}
