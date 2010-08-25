@@ -1,23 +1,35 @@
-# Maintainer: Ionut Biru <ionut@archlinux.ro>
-# Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
-# Licence in pcre pkg
+# Maintainer: Ionut Biru <ibiru@archlinux.org>
 
-_pkgsourcename=pcre
-pkgname=lib32-$_pkgsourcename
-pkgver=8.02
+_pkgbasename=pcre
+pkgname=lib32-$_pkgbasename
+pkgver=8.10
 pkgrel=1
-pkgdesc="A library that implements Perl 5-style regular expressions"
+pkgdesc="A library that implements Perl 5-style regular expressions (32-bit)"
 arch=('x86_64')
 url="http://pcre.sourceforge.net"
 license=('custom')
-groups=('lib32')
-depends=('lib32-gcc')
-source=(ftp://ftp.archlinux.org/core/os/i686/$_pkgsourcename-$pkgver-$pkgrel-i686.pkg.tar.xz)
+depends=('gcc-libs-multilib' $_pkgbasename)
+makedepends=('gcc-multilib')
+options=('!libtool')
+source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${_pkgbasename}-${pkgver}.tar.bz2)
+md5sums=('780867a700e9d4e4b9cb47aa5453e4b2')
 
 build() {
-        cd $srcdir
-        mkdir -p $pkgdir/opt/lib32/lib
-        cp -dp lib/*.so* $pkgdir/opt/lib32/lib
+  cd "${srcdir}"/${_pkgbasename}-${pkgver}
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+  ./configure --prefix=/usr --libdir=/usr/lib32 \
+    --enable-utf8 --enable-unicode-properties
+  make
 }
-md5sums=('899f78dd52e907d38062bc0dbf4ea6e9')
-sha256sums=('cf4a1a5b22007870979b42c543053efee50d49dc1718928f79e4887763d9bce0')
+
+package() {
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  rm -rf "${pkgdir}"/usr/{include,share,bin}
+  mkdir -p "$pkgdir/usr/share/licenses"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+}
