@@ -1,20 +1,34 @@
-# Maintainer : Biru Ionut <ionut@archlinux.ro>
-# Contributor: mightyjaym <jm.ambrosino@free.fr>
-# Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
+# Maintainer : Ionut Biru <ibiru@archlinux.org>
 
+_pkgbasename=xcb-util
 pkgname=lib32-xcb-util
 pkgver=0.3.6
-pkgrel=1
-pkgdesc="Utility libraries for XC Binding"
+pkgrel=2
+pkgdesc="Utility libraries for XC Binding (32-bit)"
 arch=('x86_64')
-license=('GPL')
-groups=('lib32')
-depends=('lib32-glibc' 'lib32-libxcb')
 url="http://xcb.freedesktop.org"
-source=(http://mir.archlinux.fr/extra/os/i686/${pkgname/lib32-/}-${pkgver}-${pkgrel}-i686.pkg.tar.gz)
+license=('custom')
+depends=('lib32-glibc' 'lib32-libxcb' $_pkgbasename)
+makedepends=('gperf' 'gcc-multilib')
+options=('!libtool')
+source=(http://xcb.freedesktop.org/dist/${_pkgbasename}-${pkgver}.tar.bz2)
+md5sums=('dd8968b8ee613cb027a8ef1fcbdc8fc9')
 
 build() {
-  mkdir -p $pkgdir/opt/lib32/usr/lib/
-  cp -R $srcdir/usr/lib/*.so* $pkgdir/opt/lib32/usr/lib
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  ./configure --prefix=/usr --libdir=/usr/lib32 --disable-static
+  make
 }
-md5sums=('4bfca93cee96f5b825f8eb4e82c395b9')
+
+package() {
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  rm -rf "${pkgdir}"/usr/{include,share}
+  mkdir -p "$pkgdir/usr/share/licenses"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+}
