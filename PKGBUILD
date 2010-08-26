@@ -8,10 +8,11 @@ pkgdesc="A Trivia Database similar to GDBM but allows simultaneous commits (32-b
 arch=(x86_64)
 license=('GPL3')
 url="http://tdb.samba.org/"
-source=(http://samba.org/ftp/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz)
 depends=(lib32-glibc $_pkgbasename)
-makedepends=(gcc-multilib)
+makedepends=(gcc-multilib libxslt)
 options=(force)
+source=(http://samba.org/ftp/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz)
+md5sums=('73ea81282a82e5c959d9c082af2d0215')
 
 build() {
   export CC="gcc -m32"
@@ -21,19 +22,14 @@ build() {
    cd "${srcdir}/${_pkgbasename}-${pkgver}"
    ./configure --prefix=/usr \
                --localstatedir=/var \
-               --sysconfdir=/etc/samba --libdir=/usr/lib32
+               --sysconfdir=/etc/samba \
+               --libdir=/usr/lib32 \
+               --disable-python
    make
 }
 
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-
-  install -D libtdb.so.$pkgver "$pkgdir/usr/lib32/libtdb.so.$pkgver"
-  ln -s "libtdb.so.$pkgver" "$pkgdir/usr/lib32/libtdb.so.1"
-  ln -s "libtdb.so.$pkgver" "$pkgdir/usr/lib32/libtdb.so"
-  install -D tdb.pc /build/pkg/usr/lib32/pkgconfig/tdb.pc
-# broken
-# make -j1  DESTDIR="$pkgdir" install
+  make -j1  DESTDIR="$pkgdir" install
   rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
-md5sums=('73ea81282a82e5c959d9c082af2d0215')
