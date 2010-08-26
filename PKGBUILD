@@ -10,9 +10,8 @@ pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
 install=gtk2.install
-depends=(lib32-{atk,pango,libxcursor,libxinerama}
-         lib32-libx{randr,i,composite,damage}
-         lib32-{heimdal,gnutls,cairo,libtiff,libcups}
+depends=(lib32-{atk,pango,cairo,heimdal,gnutls}
+         lib32-lib{tiff,cups,xcursor,xrandr,xi,xinerama,xcomposite,xdamage}
          $_pkgbasename)
 makedepends=('gcc-multilib')
 options=('!libtool' '!docs')
