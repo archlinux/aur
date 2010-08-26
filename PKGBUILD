@@ -1,8 +1,8 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Digital photo management application for kde"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,6 @@ replaces=('digikamimageplugins')
 install=digikam.install
 optdepends=('kipi-plugins: for more extras and plugins')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('25d09fdab2b2450c6c6075aab3377fce')
 
 build() {
    cd ${srcdir}
@@ -31,3 +30,4 @@ package() {
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 }
+md5sums=('748518d6b24cc2c44acad5cb9df8d21a')
