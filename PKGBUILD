@@ -12,7 +12,7 @@ replaces=('lib32-libv4l')
 conflicts=('lib32-libv4l')
 license=('LGPL')
 makedepends=('gcc-multilib')
-depends=('lib32-gcc-libs' 'lib32-sysfsutils' $_pkgbasename)
+depends=('gcc-libs-multilib' $_pkgbasename)
 source=(http://linuxtv.org/downloads/v4l-utils//${_pkgbasename}-${pkgver}.tar.bz2)
 sha256sums=('aca1f3afdc64b0bff80af0644a1e146f64d7d276229bd8c296d01cab311473fc')
 
@@ -22,6 +22,7 @@ build() {
   sed -i 's|CFLAGS :=|CFLAGS ?=|' Make.rules
 
   export CC="gcc -m32"
+  export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   make PREFIX=/usr LIBDIR=/usr/lib32
@@ -30,5 +31,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
   make install PREFIX=/usr LIBDIR=/usr/lib32 DESTDIR="${pkgdir}/"
-#  rm -rf "${pkgdir}"/usr/{include,share,bin,sbin}
+  rm -rf "${pkgdir}"/usr/{include,share,bin,sbin}
 }
