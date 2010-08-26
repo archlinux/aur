@@ -1,5 +1,4 @@
-# Contributer: Jason Chu <jason@archlinux.org>
-# Maintainer: Jason Chu <jason@archlinux.org>
+# Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 _pkgbasename=speex
 pkgname=lib32-$_pkgbasename
