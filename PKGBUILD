@@ -1,21 +1,27 @@
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
-# Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
-# Contributor: schnouki <thomas.jost@gmail.com>
+#$Id: PKGBUILD 64614 2010-01-21 11:40:53Z allan $
+# Maintainer: Hugo Doria <hugo@archlinux.org>
 
-pkgname=lib32-libcap
-pkgname32=libcap
+_pkgbasename=libcap
+pkgname=lib32-$_pkgbasename
 pkgver=2.19
-pkgrel=1
-pkgdesc="POSIX 1003.1e capabilities - 32bit version"
-arch=('x86_64')
+pkgrel=2
+pkgdesc="POSIX 1003.1e capabilities (32-bit)"
+arch=(x86_64)
 url="http://www.kernel.org/pub/linux/libs/security/linux-privs/"
 license=('GPL')
-depends=('lib32-glibc')
-source=("ftp://ftp.archlinux.org/core/os/i686/$pkgname32-$pkgver-$pkgrel-i686.pkg.tar.gz")
+depends=('lib32-attr' $_pkgbasename)
+makedepends=('gcc-multilib')
+source=(http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/${_pkgbasename}-${pkgver}.tar.gz)
+md5sums=('9caa6dafc9e3db4cbaecdb8e48f23fa2')
 
 build() {
-  mkdir -p $pkgdir/opt/lib32/lib
-  cp -a $srcdir/lib/libcap* $pkgdir/opt/lib32/lib
+  cd ${srcdir}/${_pkgbasename}-${pkgver}
+
+  export CC="gcc -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+  make prefix=/usr lib=lib32 DESTDIR=${pkgdir} install
+  chmod 755 ${pkgdir}/usr/lib32/libcap.so.${pkgver}
+
+  rm -rf "${pkgdir}"/usr/{include,share,sbin,lib32/security}
 }
-md5sums=('52aec2d36cb4b7a527ed5b7025fd0e4b')
-sha256sums=('0233c25d755b68da6c8fa45f3772ab42aee3598f69c3cccedf6994fd972d7993')
