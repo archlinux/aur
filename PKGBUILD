@@ -1,12 +1,12 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
 arch=('x86_64')
 url="http://freshmeat.net/projects/nspluginwrapper/"
 license=('GPL')
-depends=('curl' 'lib32-libxt' 'gcc-libs-multilib' 'gtk2' 'lib32-gtk2')
+depends=('curl' 'lib32-libxt' 'lib32-gcc-libs' 'gtk2' 'lib32-gtk2')
 makedepends=('gcc-multilib')
 source=(ftp://ftp.archlinux.org/other/nspluginwrapper/$pkgname-$pkgver.tar.gz
         npw-viewer.c.patch)
