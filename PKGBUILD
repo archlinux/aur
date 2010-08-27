@@ -3,12 +3,12 @@
 _pkgbasename=pcre
 pkgname=lib32-$_pkgbasename
 pkgver=8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that implements Perl 5-style regular expressions (32-bit)"
 arch=('x86_64')
 url="http://pcre.sourceforge.net"
 license=('custom')
-depends=('gcc-libs-multilib' $_pkgbasename)
+depends=('lib32-gcc-libs' $_pkgbasename)
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${_pkgbasename}-${pkgver}.tar.bz2)
