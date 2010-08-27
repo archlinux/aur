@@ -1,0 +1,14 @@
+--- src/npw-viewer.sh
++++ src/npw-viewer.sh
+@@ -5,6 +5,11 @@
+ OS="`uname -s | tr '[A-Z]' '[a-z]'`"
+ ARCH="`uname -m`"
+ 
++# Adobe Flash can be confised by by a recent GTK+ that may use custom
++# window structure instead of native X Window. Revert to the old dumb
++# behavior and use native X window for all objects. (bnc#537788)
++export GDK_NATIVE_WINDOWS=1
++
+ if test -z "$TARGET_OS"; then
+     echo "*** NSPlugin Viewer *** error, TARGET_OS not initialized"
+     exit 1
