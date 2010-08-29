@@ -1,8 +1,9 @@
 # Maintainer: Aaron Schaefer <aaron@elasticdog.com>
+
 pkgname=vim-pastie
 pkgver=2.0
 _scriptid=10260
-pkgrel=3
+pkgrel=4
 pkgdesc='A Vim plugin that lets you read and create pastes at http://pastie.org/'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=1624'
@@ -17,6 +18,6 @@ build() {
 
   installpath="$pkgdir/usr/share/vim/vimfiles"
 
-  install -D -m644 "pastie-$pkgver.vim" "$installpath/plugin/pastie.vim" || return 1
-  install -Dm644 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
+  install -D -m644 "pastie-$pkgver.vim" "$installpath/plugin/pastie.vim"
+  install -D -m644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
