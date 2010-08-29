@@ -14,10 +14,8 @@ md5sums=('4ba364a003903ace6fd51ccbe6b86d78' 'cd49910a3dde6fe0a7e24ebe8cbf7066')
 
 build() {
   cd "$srcdir"
-  mv "download_script.php?src_id=$_scriptid" "pastie-$pkgver.vim"
+  local installpath="$pkgdir/usr/share/vim/vimfiles"
 
-  installpath="$pkgdir/usr/share/vim/vimfiles"
-
-  install -D -m644 "pastie-$pkgver.vim" "$installpath/plugin/pastie.vim"
+  install -D -m644 "download_script.php?src_id=$_scriptid" "$installpath/plugin/pastie.vim"
   install -D -m644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
