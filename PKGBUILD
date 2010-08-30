@@ -7,10 +7,10 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.43.0
 _boostver=1_43_0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
-makedepends=('python>=2.6' 'bzip2' 'zlib')
+makedepends=('python2' 'bzip2' 'zlib')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz)
 license=('custom')
 options=('!ccache')
@@ -19,6 +19,10 @@ md5sums=('734565ca4819bf04bd8e903e116c3fb1')
 _stagedir="${srcdir}/stagedir"
 
 build() {
+  # set python path for bjam
+  cd "${srcdir}/${pkgbase}_${_boostver}/tools"
+  echo "using python : 2.7 : /usr/bin/python2 ;" >> build/v2/user-config.jam
+
   # build bjam
   cd "${srcdir}/${pkgbase}_${_boostver}/tools/jam/src"
   ./build.sh cc || return 1
@@ -50,21 +54,19 @@ build() {
             cflags=-fno-strict-aliasing \
             toolset=gcc \
             --prefix="${_stagedir}" \
-            -sPYTHON_ROOT=/usr \
-            -sPYTHON_VERSION=2.6 \
             -sTOOLS=gcc \
             --layout=tagged \
             install || return 1
 
   # build pyste
   cd "${srcdir}/${pkgbase}_${_boostver}/libs/python/pyste/install"
-  python setup.py install --root=${_stagedir} || return 1
+  python2 setup.py install --root=${_stagedir} || return 1
 }
 
 package_boost() {
     pkgdesc="Free peer-reviewed portable C++ source libraries - Development"
     depends=("boost-libs=${pkgver}")
-    optdepends=('python: for python bindings')
+    optdepends=('python2: for python bindings')
 
     install -dm 755 "${pkgdir}"/usr/{include,lib}
     # headers/source files
@@ -77,7 +79,7 @@ package_boost() {
     cp -r "${_stagedir}"/usr/* "${pkgdir}"/usr/
 
     # license
-    install -D -m644" ${srcdir}/${pkgbase}_${_boostver}/LICENSE_1_0.txt" \
+    install -D -m644 "${srcdir}/${pkgbase}_${_boostver}/LICENSE_1_0.txt" \
         "${pkgdir}"/usr/share/licenses/boost/LICENSE_1_0.txt || return 1
 }
 
