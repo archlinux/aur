@@ -2,7 +2,7 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=postgresql-testing
-pkgver=9.0beta4
+pkgver=9.0rc1
 pkgrel=1
 pkgdesc="Testing versions of the PostgreSQL database (includes both server and libs)"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ conflicts=('postgresql-libs' 'postgresql')
 provides=("postgresql-libs=$pkgver" "postgresql=$pkgver")
 source=(ftp://ftp.postgresql.org/pub/source/v$pkgver/postgresql-$pkgver.tar.gz
         postgresql.rc postgresql.confd postgresql.pam)
-md5sums=('de71603f41d72e4d4eee3bcffbdaaf26'
+md5sums=('b9d735bfca6d50cf0a091e6c453b61ed'
          '86e0161343ce80e544aba999f284bc88'
          'df6ddf9e2ab4700a3415f17c0f4f4172'
          '96f82c38f3f540b53f3e5144900acf17')
@@ -30,7 +30,7 @@ build() {
   make || return 1
   make DESTDIR=$pkgdir install || return 1
 
-  # adminpack contains functions used by pgAdminIII
+  # adminpack contains functions used by pgAdmin III
   (
     cd contrib/adminpack;
     make || return 1;
