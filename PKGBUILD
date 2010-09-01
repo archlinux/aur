@@ -13,7 +13,7 @@ options=(!strip) # to facilitate debugging of testing builds
 depends=('libxml2' 'readline>=6.0' 'openssl' 'bash')
 conflicts=('postgresql-libs' 'postgresql')
 provides=("postgresql-libs=$pkgver" "postgresql=$pkgver")
-source=(ftp://ftp.postgresql.org/pub/source/v$pkgver/postgresql-$pkgver.tar.gz
+source=(http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v$pkgver/postgresql-$pkgver.tar.gz
         postgresql.rc postgresql.confd postgresql.pam)
 md5sums=('b9d735bfca6d50cf0a091e6c453b61ed'
          '86e0161343ce80e544aba999f284bc88'
