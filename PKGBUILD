@@ -3,26 +3,24 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=5.0.375.127
+pkgver=6.0.472.53
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
 depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss')
-makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa')
+makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
         'chromium.desktop' 'chromium.sh'
-        'ffmpeg_branding_mime.patch' 'drop_sse2.patch' 'libpng-1.4.patch')
-md5sums=('8e10809ea7f592290b033a8539babd10'
+        'gyp-make.patch')
+md5sums=('9701952b8625d9d690c602839ca4a92c'
          '897de25e9c25a01f8b1b67abe554a6b7'
          '096a46ef386817988250d2d7bddd1b34'
-         'ae1b32473c74b39e3f64b32d71574170'
-         '4fc27c2df43d5df342b26290928b009d'
-         'bb75bfdfe85db26639abbea9054b85f9')
+         '6ac578c512c6a75357d7532211213a92')
 
 build() {
   cd ${srcdir}/chromium-${pkgver}
@@ -31,11 +29,10 @@ build() {
   # workaround for gcc 4.5
   # see http://code.google.com/p/chromium/issues/detail?id=41887
   export CFLAGS="${CFLAGS} -fno-ipa-cp"
-  patch -p1 -i ${srcdir}/ffmpeg_branding_mime.patch || return 1
-  [ "${CARCH}" == 'i686' ] && (patch -p1 -i ${srcdir}/drop_sse2.patch || return 1)
-  patch -p1 -i ${srcdir}/libpng-1.4.patch || return 1
 
 ### Configure
+
+  patch -p0 -i ${srcdir}/gyp-make.patch
 
   # we need to disable system_ssl until "next protocol negotiation" support
   # is available in our nss package
@@ -49,6 +46,7 @@ build() {
     -Dlinux_strip_binary=1 \
     -Drelease_extra_cflags="${CFLAGS}" \
     -Dffmpeg_branding=Chrome \
+    -Dproprietary_codecs=1 \
     -Duse_system_libjpeg=1 \
     -Duse_system_libxslt=0 \
     -Duse_system_libxml=0 \
@@ -58,11 +56,12 @@ build() {
     -Duse_system_ffmpeg=0 \
     -Duse_system_yasm=1 \
     -Duse_system_libevent=1 \
-    -Duse_system_ssl=0
+    -Duse_system_ssl=0 \
+    $([ "${CARCH}" == 'i686' ] && echo '-Ddisable_sse2=1')
 
 ### Build
 
-  make chrome chrome_sandbox BUILDTYPE=Release || return 1
+  make chrome chrome_sandbox BUILDTYPE=Release
 }
 
 package() {
