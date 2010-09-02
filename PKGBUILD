@@ -75,6 +75,9 @@ package() {
   install -m 0644 -D out/Release/chrome.pak \
     ${pkgdir}/usr/lib/chromium/chrome.pak
 
+  install -m 0644 -D out/Release/resources.pak \
+    ${pkgdir}/usr/lib/chromium/resources.pak
+
   install -m 0755 -D out/Release/libffmpegsumo.so \
     ${pkgdir}/usr/lib/chromium/libffmpegsumo.so
 
