@@ -1,7 +1,7 @@
 pkgbase = nwn-diamond
 	pkgdesc = Neverwinter Nights is an RPG from Bioware. This requires the Diamond Collection DVD Release.
 	pkgver = 1.69
-	pkgrel = 3
+	pkgrel = 4
 	url = http://nwn.bioware.com/
 	install = nwn.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = nwn-diamond
 	makedepends = p7zip
 	makedepends = perl
 	depends = binkplayer
-	depends = libelf
+	depends = elfutils
 	depends = libgl
 	depends = libstdc++5
 	depends = libxcursor
@@ -30,7 +30,6 @@ pkgbase = nwn-diamond
 	source = http://home.roadrunner.com/~nwmovies/cursors.tar.gz
 	source = nwn.launcher
 	source = nwn.desktop
-	source = nwmouse.nwlogger.patch
 	md5sums = 0a059d55225fc32f905e86191d88a11f
 	md5sums = 376cdece07106ea058d42b531f3146bb
 	md5sums = b021f0da3b3e00848521926716fdf487
@@ -41,7 +40,6 @@ pkgbase = nwn-diamond
 	md5sums = 7be935418f0ececb5660f53b7a902b38
 	md5sums = d28e09031cc8f56406f6878e36683e36
 	md5sums = bd7f80f5faa5ee1203371b4e8ec40638
-	md5sums = 95d96bf43557405586c7dab01ffc8d8c
 
 pkgname = nwn-diamond
 

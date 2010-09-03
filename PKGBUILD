@@ -3,15 +3,15 @@
 
 pkgname=nwn-diamond
 pkgver=1.69
-pkgrel=3
+pkgrel=4
 pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the Diamond Collection DVD Release."
 url="http://nwn.bioware.com/"
 license=('custom')
 arch=('i686' 'x86_64')
 if [ "$CARCH" = "x86_64" ]; then
-    depends=('binkplayer' 'lib32-libelf' 'lib32-libgl' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-mesa' 'perl' 'lib32-sdl_mixer')
+    depends=('binkplayer' 'lib32-elfutils' 'lib32-libgl' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-mesa' 'perl' 'lib32-sdl_mixer')
 else
-    depends=('binkplayer' 'libelf' 'libgl' 'libstdc++5' 'libxcursor' 'mesa' 'perl' 'sdl_mixer')
+    depends=('binkplayer' 'elfutils' 'libgl' 'libstdc++5' 'libxcursor' 'mesa' 'perl' 'sdl_mixer')
 fi
 makedepends=('unzip' 'p7zip' 'perl')
 provides=('nwn')
@@ -25,7 +25,7 @@ source=("http://nwdownloads.bioware.com/neverwinternights/linux/gold/nwclientgol
 "http://home.roadrunner.com/~nwmovies/nwmouse/nwmouse-latest.tar.gz" \
 "http://home.roadrunner.com/~nwmovies/nwlogger/nwlogger-latest.tar.gz" \
 "http://home.roadrunner.com/~nwmovies/cursors.tar.gz" \
-"nwn.launcher" "nwn.desktop" "nwmouse.nwlogger.patch")
+"nwn.launcher" "nwn.desktop")
 md5sums=('0a059d55225fc32f905e86191d88a11f'
          '376cdece07106ea058d42b531f3146bb'
          'b021f0da3b3e00848521926716fdf487'
@@ -35,8 +35,7 @@ md5sums=('0a059d55225fc32f905e86191d88a11f'
          '981d5cd5ec13aa888e4c0a2ba7f9a231'
          '7be935418f0ececb5660f53b7a902b38'
          'd28e09031cc8f56406f6878e36683e36'
-         'bd7f80f5faa5ee1203371b4e8ec40638'
-         '95d96bf43557405586c7dab01ffc8d8c')
+         'bd7f80f5faa5ee1203371b4e8ec40638')
 
 # Directory where the NWN Diamond DVD is Mounted
 _dvdpath=/media/dvd
@@ -94,9 +93,6 @@ Key1=$_key_nwn
 EOF
 
     cd $srcdir/
-
-    # Patch nwmouse and nwlogger so they build properly
-    patch -p1 < $srcdir/nwmouse.nwlogger.patch
 
     # Movies in Linux Client Support for NWN
     ./nwmovies_install.pl /usr/lib/libSDL.so
