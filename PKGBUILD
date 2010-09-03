@@ -6,20 +6,21 @@
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python'
+makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python2'
              'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2' 'avahi'
              'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
-source=(http://sourceforge.net/projects/${pkgbase}/files/Pidgin/${pkgver}/${pkgbase}-${pkgver}.tar.bz2/download)
+source=(${pkgbase}-${pkgver}.tar.bz2::http://sourceforge.net/projects/${pkgbase}/files/Pidgin/${pkgver}/${pkgbase}-${pkgver}.tar.bz2/download)
 md5sums=('e4bbadadae85e5e008690b52dd51f102')
 
 build() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
-
+    sed -i "s#env python#env python2#" */plugins/*.py
+    sed -i "s#env python#env python2#" libpurple/purple-{remote,notifications-example,url-handler}
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --disable-schemas-install \
@@ -29,6 +30,7 @@ build() {
                 --enable-cyrus-sasl \
                 --disable-doxygen \
                 --enable-nm \
+		--with-python=/usr/bin/python2 \
                 --with-system-ssl-certs=/etc/ssl/certs
     make
 }
@@ -47,7 +49,7 @@ package_libpurple(){
 
 package_pidgin(){
     pkgdesc="Multi-protocol instant messaging client"
-    depends=("libpurple=$pkgver" 'startup-notification' 'gtkspell' 'libxss' 'python'
+    depends=("libpurple=$pkgver" 'startup-notification' 'gtkspell' 'libxss' 'python2'
             'hicolor-icon-theme' 'gstreamer0.10-base')
     optdepends=('aspell: for spelling correction'
                 'avahi: Bonjour protocol support'
@@ -72,7 +74,7 @@ package_pidgin(){
 }
 package_finch(){
     pkgdesc="A ncurses-based messaging client"
-    depends=("libpurple=$pkgver" 'python')
+    depends=("libpurple=$pkgver" 'python2')
     optdepends=('avahi: Bonjour protocol support'
                 'ca-certificates: SSL CA certificates'
                 'tk: Tcl/Tk scripting support')
