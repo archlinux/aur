@@ -3,7 +3,7 @@
 
 pkgname=dev86
 pkgver=0.16.17
-pkgrel=5
+pkgrel=5.1
 pkgdesc="Simple C compiler to generate 8086 code"
 arch=('i686' 'x86_64')
 url="http://homepage.ntlworld.com/robert.debath/dev86"
@@ -18,8 +18,7 @@ build() {
   patch -Np0 -i ${startdir}/src/dev86-pic.patch
   if [ "${CARCH}" = "x86_64" ]; then
     # x86_64 fix
-    sed -i.orig \
-    	-e 's,alt-libs elksemu,alt-libs,' \
+    sed -i.orig -e 's,alt-libs elksemu,alt-libs,' \
 		-e 's,install-lib install-emu,install-lib,' \
 		$startdir/src/$pkgname-$pkgver/makefile.in
   fi
@@ -34,6 +33,4 @@ build() {
   # remove all the stuff supplied by bin86
   rm $startdir/pkg/usr/bin/{as,ld,nm,objdump,size}86
   rm $startdir/pkg/usr/share/man/man1/{as,ld}86.1
-
 }
-
