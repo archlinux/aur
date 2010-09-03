@@ -4,7 +4,7 @@
 
 pkgname=savage2
 pkgver=2.1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('i686' 'x86_64')
 url='http://savage2.com/'
@@ -12,7 +12,7 @@ license=('custom: "Savage 2"')
 depends=('mesa' 'libxml2')
 makedepends=('unzip')
 install=savage2.install
-source=("http://dl.heroesofnewerth.com/Savage2Install-$pkgver-$CARCH.bin" \
+source=("http://see.aur.thread/Savage2Install-$pkgver-$CARCH.bin" \
 'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop')
 md5sums=('1ff815b9e864862d6d2cf6c635278b80'
          'fb03853628775f66689852a4125044e8'
@@ -28,10 +28,10 @@ build() {
     install -d $pkgdir/opt/savage2
 
     # Extract Game Data from Installer
-    unzip -o $srcdir/Savage2Install-$pkgver-$CARCH.bin 
+    unzip -o $srcdir/Savage2Install-$pkgver-$CARCH.bin && return 0
 
     # Install Savage 2 Data
-    cp -r $srcdir/data/* $pkgdir/opt/savage2 
+    cp -r $srcdir/data/* $pkgdir/opt/savage2
 
     # Install Game Launcher
     install -D -m 755 $srcdir/savage2.launcher \
