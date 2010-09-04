@@ -6,12 +6,12 @@
 
 pkgname=django
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level Python Web framework."
 arch=('any')
 license=('BSD')
 url="http://www.djangoproject.com"
-depends=('python')
+depends=('python2')
 makedepends=('setuptools')
 optdepends=('mysql-python: for MySQL backend'
             'python-psycopg2: for PostgreSQL backend'
@@ -22,7 +22,7 @@ sha256sums=('eaa29f2344568cc871c4517a348de0d5c39fbd055b4c998cd4a80601bb51e7b9')
 
 build() {
   cd ${srcdir}/Django-$pkgver
-  python setup.py install --root=${pkgdir} --optimize=1 || return 1
+  python2 setup.py install --root=${pkgdir} --optimize=1 || return 1
 
   install -Dm644 extras/django_bash_completion \
     ${pkgdir}/etc/bash_completion.d/django || return 1

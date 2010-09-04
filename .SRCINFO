@@ -3,12 +3,12 @@
 pkgbase = django
 	pkgdesc = A high-level Python Web framework.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.djangoproject.com
 	arch = any
 	license = BSD
 	makedepends = setuptools
-	depends = python
+	depends = python2
 	optdepends = mysql-python: for MySQL backend
 	optdepends = python-psycopg2: for PostgreSQL backend
 	optdepends = python-pysqlite: for SQlite backend
