@@ -22,7 +22,7 @@ md5sums=('e0fc6542975fd67f2cb43a2a19f2e605'
 
 build() {
   # Extract Files
-  unzip $srcdir/$pkgname-installer-$pkgver.bin
+  unzip $srcdir/$pkgname-installer-$pkgver.bin && true
 
   # Create Destination Directory
   install -d $pkgdir/opt/prey/
