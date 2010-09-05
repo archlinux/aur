@@ -5,7 +5,7 @@
 
 pkgname=cmake
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -32,7 +32,7 @@ package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	make DESTDIR=${pkgdir} install
 
-	vimpath="$pkgdir/usr/share/vim/vim72"
+	vimpath="$pkgdir/usr/share/vim/vimfiles"
 	install -Dm644 Docs/cmake-indent.vim $vimpath/indent/cmake-indent.vim
 	install -Dm644 Docs/cmake-syntax.vim $vimpath/syntax/cmake-syntax.vim
 	install -Dm644 Docs/cmake-mode.el $pkgdir/usr/share/emacs/site-lisp/cmake-mode.el
