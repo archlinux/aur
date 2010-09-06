@@ -25,7 +25,4 @@ package() {
   cd "$srcdir/${_pkgname}-$pkgver"
 
   make install DESTDIR="$pkgdir"
-
-  find "$pkgdir" -name perllocal.pod -delete
-  find "$pkgdir" -name .packlist -delete
 }
