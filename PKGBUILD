@@ -3,12 +3,12 @@
 
 pkgname=buildbot
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A system to automate the compile/test cycle required by most software projects"
 arch=('any')
 url="http://buildbot.net"
 license=("GPL")
-depends=('twisted')
+depends=('twisted' 'python-jinja' 'python-simplejson' 'python-pysqlite')
 source=(http://downloads.sourceforge.net/buildbot/buildbot-$pkgver.tar.gz)
 md5sums=('53b7defb3f8919413907990269b7566d')
 
