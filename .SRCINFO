@@ -1,0 +1,15 @@
+pkgbase = ruby-tmail
+	pkgdesc = Ruby Mail Handler
+	pkgver = 1.2.7.1
+	pkgrel = 1
+	url = http://tmail.rubyforge.org
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = tmail-1.2.7.1.gem
+	source = http://gems.rubyforge.org/gems/tmail-1.2.7.1.gem
+	md5sums = 443692ec927ea28c15f66baf9e0ac550
+
+pkgname = ruby-tmail
+
