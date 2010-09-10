@@ -1,0 +1,12 @@
+diff -ur cmake-2.8.2/Modules/FindPythonLibs.cmake cmake-2.8.2-python27/Modules/FindPythonLibs.cmake
+--- cmake-2.8.2/Modules/FindPythonLibs.cmake	2010-06-28 17:15:57.000000000 +0200
++++ cmake-2.8.2-python27/Modules/FindPythonLibs.cmake	2010-07-23 20:42:29.000000000 +0200
+@@ -27,7 +27,7 @@
+ # Search for the python framework on Apple.
+ CMAKE_FIND_FRAMEWORKS(Python)
+ 
+-FOREACH(_CURRENT_VERSION 2.6 2.5 2.4 2.3 2.2 2.1 2.0 1.6 1.5)
++FOREACH(_CURRENT_VERSION 2.7 2.6 2.5 2.4 2.3 2.2 2.1 2.0 1.6 1.5)
+   STRING(REPLACE "." "" _CURRENT_VERSION_NO_DOTS ${_CURRENT_VERSION})
+   IF(WIN32)
+     FIND_LIBRARY(PYTHON_DEBUG_LIBRARY
