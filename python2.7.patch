@@ -1,6 +1,5 @@
-diff -ur cmake-2.8.2/Modules/FindPythonLibs.cmake cmake-2.8.2-python27/Modules/FindPythonLibs.cmake
---- cmake-2.8.2/Modules/FindPythonLibs.cmake	2010-06-28 17:15:57.000000000 +0200
-+++ cmake-2.8.2-python27/Modules/FindPythonLibs.cmake	2010-07-23 20:42:29.000000000 +0200
+--- cmake-2.8.2/Modules/FindPythonLibs.cmake~	2010-09-10 23:34:55.733333338 +0200
++++ cmake-2.8.2/Modules/FindPythonLibs.cmake	2010-09-10 23:35:15.980000004 +0200
 @@ -27,7 +27,7 @@
  # Search for the python framework on Apple.
  CMAKE_FIND_FRAMEWORKS(Python)
@@ -10,3 +9,14 @@ diff -ur cmake-2.8.2/Modules/FindPythonLibs.cmake cmake-2.8.2-python27/Modules/F
    STRING(REPLACE "." "" _CURRENT_VERSION_NO_DOTS ${_CURRENT_VERSION})
    IF(WIN32)
      FIND_LIBRARY(PYTHON_DEBUG_LIBRARY
+--- cmake-2.8.2/Modules/FindPythonInterp.cmake~	2010-09-10 23:35:01.346666671 +0200
++++ cmake-2.8.2/Modules/FindPythonInterp.cmake	2010-09-10 23:35:34.210000005 +0200
+@@ -20,7 +20,7 @@
+ #  License text for the above reference.)
+ 
+ FIND_PROGRAM(PYTHON_EXECUTABLE
+-  NAMES python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5 python
++  NAMES python2.7 python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5 python
+   PATHS
+   [HKEY_LOCAL_MACHINE\\SOFTWARE\\Python\\PythonCore\\2.6\\InstallPath]
+   [HKEY_LOCAL_MACHINE\\SOFTWARE\\Python\\PythonCore\\2.5\\InstallPath]
