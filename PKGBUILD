@@ -17,7 +17,7 @@ install=${pkgname}.install
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
 	'python2.7.patch')
 md5sums=('8c967d5264657a798f22ee23976ff0d9'
-	'26a39133ec6fe1abe215cd74236f18d3')
+	'61e1cc4373ee577d277dab0857b883e4')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
