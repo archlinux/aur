@@ -1,4 +1,4 @@
-# Maintainer: Brad Fanella <bradfanella@gmail.com>
+# Maintainer: Brad Fanella <bradfanella@archlinux.us>
 # Contributor: Bjorn Lindeijer <bjorn@lindeijer.nl>
 # Contributor: kritoke <kritoke@nospam.gmail.com>
 
