@@ -3,7 +3,7 @@
 
 pkgname=python-virtualenvwrapper
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 url="http://www.doughellmann.com/projects/virtualenvwrapper/"
 arch=('any')
@@ -15,7 +15,10 @@ md5sums=('c2dd3e95f07b283c0a65a81c447898e9')
 build() {
   cd "$srcdir/virtualenvwrapper-$pkgver"
 
-  python setup.py install --root="$pkgdir" -O1
+  python2 setup.py install --root="$pkgdir" -O1
+
+  # Point Python scripts to the python2 binary
+  sed -i 's/which python/which python2/' "$pkgdir/usr/bin/virtualenvwrapper.sh"
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   # Extract the license from README.txt
