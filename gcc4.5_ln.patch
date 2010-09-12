@@ -1,6 +1,33 @@
+diff -Naur FreeImage.orig//Makefile.fip FreeImage.new//Makefile.fip
+--- FreeImage.orig//Makefile.fip	2010-08-10 19:15:20.000000000 +0200
++++ FreeImage.new//Makefile.fip	2010-09-12 23:29:36.000000000 +0200
+@@ -15,9 +15,9 @@
+ 
+ MODULES = $(SRCS:.c=.o)
+ MODULES := $(MODULES:.cpp=.o)
+-CFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS
++CFLAGS += -O3 -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS
+ CFLAGS += $(INCLUDE)
+-CXXFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
++CXXFLAGS += -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
+ CXXFLAGS += $(INCLUDE)
+ 
+ ifeq ($(shell sh -c 'uname -m 2>/dev/null || echo not'),x86_64)
 diff -Naur FreeImage.orig//Makefile.gnu FreeImage.new//Makefile.gnu
 --- FreeImage.orig//Makefile.gnu	2010-08-10 19:15:20.000000000 +0200
-+++ FreeImage.new//Makefile.gnu	2010-08-10 21:47:12.000000000 +0200
++++ FreeImage.new//Makefile.gnu	2010-09-12 23:01:57.000000000 +0200
+@@ -15,9 +15,9 @@
+ 
+ MODULES = $(SRCS:.c=.o)
+ MODULES := $(MODULES:.cpp=.o)
+-CFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS
++CFLAGS += -O3 -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS
+ CFLAGS += $(INCLUDE)
+-CXXFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
++CXXFLAGS += -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
+ CXXFLAGS += $(INCLUDE)
+ 
+ ifeq ($(shell sh -c 'uname -m 2>/dev/null || echo not'),x86_64)
 @@ -65,9 +65,6 @@
  	install -m 644 -o root -g root $(HEADER) $(INCDIR)
  	install -m 644 -o root -g root $(STATICLIB) $(INSTALLDIR)
