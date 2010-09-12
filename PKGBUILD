@@ -14,7 +14,8 @@ source=("http://bitbucket.org/rg3/${pkgname}/raw/${pkgver}/${pkgname}")
 md5sums=('8b1b8b922b758aae28f6c158e9a1baba')
 
 package() {
-  install -Dm755 ${srcdir}/$pkgname $pkgdir/usr/bin/$pkgname
+  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' ${srcdir}/${pkgname}
+  install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # install MIT license
   install -d ${pkgdir}/usr/share/licenses/$pkgname
