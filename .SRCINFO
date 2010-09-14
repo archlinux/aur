@@ -1,7 +1,7 @@
 pkgbase = python-sphinx
 	pkgdesc = Python documentation generator
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = GPL
