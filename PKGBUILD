@@ -4,7 +4,7 @@
 _pkgbasename=libxslt
 pkgname=lib32-$_pkgbasename
 pkgver=1.1.26
-pkgrel=4
+pkgrel=5
 pkgdesc="XML stylesheet transformation library (32-bit)"
 arch=('x86_64')
 url="http://xmlsoft.org/XSLT/"
