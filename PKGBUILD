@@ -4,7 +4,7 @@
 _pkgbasename=mpg123
 pkgname=lib32-$_pkgbasename
 pkgver=1.12.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A console based real time MPEG Audio Player for Layer 1, 2 and 3 (32-bit)"
 arch=('x86_64')
 url="http://sourceforge.net/projects/mpg123"
