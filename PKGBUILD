@@ -3,7 +3,7 @@
 _pkgbasename=pcre
 pkgname=lib32-$_pkgbasename
 pkgver=8.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A library that implements Perl 5-style regular expressions (32-bit)"
 arch=('x86_64')
 url="http://pcre.sourceforge.net"
