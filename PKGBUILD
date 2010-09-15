@@ -5,7 +5,7 @@
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
 pkgver=2.20.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
