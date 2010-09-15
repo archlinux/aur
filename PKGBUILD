@@ -3,7 +3,7 @@
 _pkgbasename=tdb
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Trivia Database similar to GDBM but allows simultaneous commits (32-bit)"
 arch=(x86_64)
 license=('GPL3')
