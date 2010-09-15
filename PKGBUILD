@@ -3,7 +3,7 @@
 _pkgbasename=libcanberra
 pkgname=lib32-$_pkgbasename
 pkgver=0.23
-pkgrel=3
+pkgrel=4
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 arch=(x86_64)
 license=('LGPL')
