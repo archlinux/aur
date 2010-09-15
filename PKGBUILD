@@ -3,7 +3,7 @@
 _pkgbasename=alsa-oss
 pkgname=lib32-${_pkgbasename}
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="OSS compatibility library (32 bit)"
 arch=(x86_64)
 license=('GPL')
