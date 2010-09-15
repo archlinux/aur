@@ -3,7 +3,7 @@
 _pkgbasename=libxvmc
 pkgname=lib32-$_pkgbasename
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 Video Motion Compensation extension library (32-bit)"
 arch=(x86_64)
 url="http://xorg.freedesktop.org/"
