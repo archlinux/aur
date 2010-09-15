@@ -4,7 +4,7 @@
 _pkgbasename=libcap
 pkgname=lib32-$_pkgbasename
 pkgver=2.19
-pkgrel=2
+pkgrel=3
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="http://www.kernel.org/pub/linux/libs/security/linux-privs/"
