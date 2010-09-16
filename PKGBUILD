@@ -4,7 +4,7 @@
 
 pkgname=glom
 pkgver=1.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
@@ -19,10 +19,10 @@ md5sums=('f9705a548675a5d9ae3f29b49d14e9e8')
 build() {
   cd ${srcdir}/$pkgname-$pkgver
   ./configure --prefix=/usr \
-  	--with-postgres-utils=/usr/bin \
-    	--disable-scrollkeeper \
-	--disable-update-mime-database \
-	--disable-static 
-  make || return 1
+    --with-postgres-utils=/usr/bin \
+    --disable-scrollkeeper \
+    --disable-update-mime-database \
+    --disable-static 
+  make
   make DESTDIR=${pkgdir} install
 }
