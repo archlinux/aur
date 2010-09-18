@@ -2,7 +2,7 @@
 
 pkgname=openshot
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
 url="http://www.openshotvideo.com/"
@@ -17,6 +17,13 @@ md5sums=('2c6285d2aa6356a90da48b9944a0174c')
 build() {
 	mkdir -p $pkgdir/usr/share/openshot/
 	cd $srcdir/$pkgname-$pkgver
+
+    # python2 fix
+    for file in $(find . -name '*.py' -print) bin/openshot; do
+        sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
+        sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
+    done
+
 	install -Dm644 bin/openshot $pkgdir/usr/bin/openshot
 	install -Dm644 xdg/openshot.png $pkgdir/usr/share/pixmaps/openshot.png
 	install -Dm644 xdg/openshot.desktop $pkgdir/usr/share/applications/openshot.desktop
