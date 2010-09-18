@@ -3,7 +3,7 @@
 
 pkgname=buildbot
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A system to automate the compile/test cycle required by most software projects"
 arch=('any')
 url="http://buildbot.net"
@@ -14,5 +14,5 @@ md5sums=('53b7defb3f8919413907990269b7566d')
 
 build() {
   cd $srcdir/buildbot-$pkgver
-  python setup.py install --root=$pkgdir
+  python2 setup.py install --root=$pkgdir
 }
