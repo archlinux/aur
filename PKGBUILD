@@ -4,7 +4,7 @@
 
 pkgname=solfege
 pkgver=3.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Music education and ear training software"
 arch=(i686 x86_64)
 url="http://www.solfege.org/"
@@ -22,11 +22,17 @@ sha1sums=('3cc6937b5c2a418fcbac5202228b31a7f42710e0' '13699f1c3fc5f460951a6b7531
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  # python2 fix
+  for file in $(find . -name '*.py' -print); do
+    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
+    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
+  done
+
   sed -i 's/SWIG_VERSION="unknown"/SWIG_VERSION="1.3"/' configure
   ./configure --prefix=/usr \
               --sysconfdir=/etc
 
-  make || return 1
+  make
   make DESTDIR="$pkgdir" install
 
   install -Dm644 ../$pkgname.desktop \
