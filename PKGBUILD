@@ -1,7 +1,7 @@
 # Maintainer: Leonidas <marek@xivilization.net>
 pkgname=factor
 pkgver=0.94
-pkgrel=1
+pkgrel=2
 pkgdesc="Factor is a general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
 url="http://factorcode.org"
@@ -17,14 +17,16 @@ source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zi
 md5sums=('6c89c27ed3127f9b0f308f3b3dba34a2'
          '59242ddb19a9be927915e489e2bfca27'
          '74512251d922434c3a973f06800d6181'
-         '642c6aeafe3d8e6c41df8a12d4b42f44')
+         '9d297a5b9dd60ec51d91068e82939474')
 
 build() {
     # thanks to qx from #concatenative for the proper SSE settings:
-    # i686: no SSE, x87 floating point
-    # x86_64: SSE2
+    # i686: no SSE, x87 floating point => _sseversion=0
+    # x86_64: SSE2 => _sseversion=20
     _bootimg="boot.unix-x86.32.image"
-    _sseversion=0
+    # unfortunately, factor 0.94 needs SSE2 to run, so this needs to be
+    # set (temporarily?) to SSE2
+    _sseversion=20
     [ $CARCH = x86_64 ] && _bootimg="boot.unix-x86.64.image" && _sseversion=20
 
     cd $srcdir/$pkgname

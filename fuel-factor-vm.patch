@@ -1,6 +1,6 @@
 --- factor-old/misc/fuel/fuel-listener.el	2010-08-23 23:36:18.160000006 +0200
 +++ factor/misc/fuel/fuel-listener.el	2010-08-23 23:37:44.653333434 +0200
-@@ -35,7 +35,7 @@
+@@ -36,7 +36,7 @@
                             "factor.com")
                            ((eq system-type 'darwin)
                             "Factor.app/Contents/MacOS/factor")

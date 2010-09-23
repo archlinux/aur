@@ -1,7 +1,7 @@
 pkgbase = factor
 	pkgdesc = Factor is a general purpose, dynamically typed, stack-based programming language.
 	pkgver = 0.94
-	pkgrel = 1
+	pkgrel = 2
 	url = http://factorcode.org
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = factor
 	md5sums = 6c89c27ed3127f9b0f308f3b3dba34a2
 	md5sums = 59242ddb19a9be927915e489e2bfca27
 	md5sums = 74512251d922434c3a973f06800d6181
-	md5sums = 642c6aeafe3d8e6c41df8a12d4b42f44
+	md5sums = 9d297a5b9dd60ec51d91068e82939474
 
 pkgname = factor
 
