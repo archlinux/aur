@@ -3,8 +3,8 @@
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
-pkgver=3.17.0
-pkgrel=0
+pkgver=3.16.4
+pkgrel=1
 pkgdesc="Music education and ear training software"
 arch=(i686 x86_64)
 url="http://www.solfege.org/"
@@ -17,7 +17,7 @@ changelog=$pkgname.changelog
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         solfege.desktop)
-md5sums=('267fae9d16699761701c25529c65f440'
+md5sums=('3c7c4ca1774260ae18e6346d0d1f3c82'
          '22b89dcfd9e7c98ab238942139b8a970')
 
 build() {
@@ -39,7 +39,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"

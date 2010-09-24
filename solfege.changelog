@@ -1,7 +1,10 @@
 2010-09-23 Ray Rashif <schiv@archlinux.org>
 
-	* Version bump: 3.17.0
+	* Version bump: 3.16.4
+	3.17.0 does not build; upstream issue [1]
 	rebuilt for python(2)
+
+	[1] http://code.google.com/p/solfege/issues/detail?id=197
 
 2010-05-20 Ray Rashif <schiv@archlinux.org>
 
