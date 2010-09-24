@@ -1,10 +1,15 @@
-2010-05-20 Ray Rashif <schivmeister@gmail.com>
+2010-09-23 Ray Rashif <schiv@archlinux.org>
+
+	* Version bump: 3.17.0
+	rebuilt for python(2)
+
+2010-05-20 Ray Rashif <schiv@archlinux.org>
 
 	* Version bump: 3.16.3
 
 	* solfege.desktop: fixed categories for better fit
 
-2010-04-20 Ray Rashif <schivmeister@gmail.com>
+2010-04-20 Ray Rashif <schiv@archlinux.org>
 
 	* Version bump: 3.16.1
 
