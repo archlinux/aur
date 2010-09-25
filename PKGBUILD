@@ -2,20 +2,21 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=postgresql-testing
-pkgver=9.0rc1
+pkgver=9.1alpha1
 pkgrel=1
-pkgdesc="Testing versions of the PostgreSQL database (includes both server and libs)"
+pkgdesc="Alpha version of the PostgreSQL database (includes both server and libs)"
 arch=(i686 x86_64)
-license=('BSD')
+license=('custom:PostgreSQL')
 backup=('etc/conf.d/postgresql' 'etc/pam.d/postgresql')
-url="http://www.postgresql.org/developer/beta"
+url="http://www.postgresql.org/developer/alpha"
 options=(!strip) # to facilitate debugging of testing builds
 depends=('libxml2' 'readline>=6.0' 'openssl' 'bash')
+makedepends=('python2' 'perl')
 conflicts=('postgresql-libs' 'postgresql')
 provides=("postgresql-libs=$pkgver" "postgresql=$pkgver")
 source=(http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v$pkgver/postgresql-$pkgver.tar.gz
         postgresql.rc postgresql.confd postgresql.pam)
-md5sums=('b9d735bfca6d50cf0a091e6c453b61ed'
+md5sums=('f0cb5135f53fdf7a1b4bdfe87be687ae'
          '86e0161343ce80e544aba999f284bc88'
          'df6ddf9e2ab4700a3415f17c0f4f4172'
          '96f82c38f3f540b53f3e5144900acf17')
