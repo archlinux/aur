@@ -4,7 +4,7 @@
 
 pkgname=ruby-atk
 pkgver=0.90.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby bindings for atk."
 arch=('i686' 'x86_64')
 url="http://ruby-gnome2.sourceforge.jp"
