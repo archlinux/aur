@@ -3,7 +3,7 @@
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
-pkgver=3.16.4
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="Music education and ear training software"
 arch=(i686 x86_64)
@@ -30,6 +30,8 @@ build() {
   done
 
   sed -i 's/SWIG_VERSION="unknown"/SWIG_VERSION="1.3"/' configure
+  sed -i 's:/usr/src/linux/include:/usr/src/linux-2.6.35-ARCH64/include:' \
+    solfege/soundcard/Makefile
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc
