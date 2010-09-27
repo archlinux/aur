@@ -17,7 +17,7 @@ changelog=$pkgname.changelog
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         solfege.desktop)
-md5sums=('3c7c4ca1774260ae18e6346d0d1f3c82'
+md5sums=('267fae9d16699761701c25529c65f440'
          '22b89dcfd9e7c98ab238942139b8a970')
 
 build() {
@@ -29,13 +29,16 @@ build() {
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
-  sed -i 's/SWIG_VERSION="unknown"/SWIG_VERSION="1.3"/' configure
-  sed -i 's:/usr/src/linux/include:/usr/src/linux-2.6.35-ARCH64/include:' \
-    solfege/soundcard/Makefile
-
   ./configure --prefix=/usr \
               --sysconfdir=/etc
   make
+
+  #-- debug --#
+  if ! test -f solfege/soundcard/_solfege_c_midi.so; then
+    error "MIDI module not built"
+    return 1
+  fi
+  #-- debug --#
 }
 
 package() {
