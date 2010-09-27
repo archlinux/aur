@@ -16,6 +16,6 @@ source=(http://launchpad.net/openshot/1.2/$pkgver/+download/$pkgname-$pkgver.tar
 build() {
 	cd $srcdir/$pkgname-$pkgver
 
-  python setup.py install --root=$pkgdir/ --optimize=1
+  python2 setup.py install --root=$pkgdir/ --optimize=1
 }
 md5sums=('36648c67c845bc7407abd55703a777be')
