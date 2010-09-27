@@ -3,7 +3,7 @@
 
 pkgname='frogatto'
 arch=('i686' 'x86_64')
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
@@ -13,7 +13,7 @@ makedepends=('boost')
 source=(http://www.frogatto.com/files/$pkgname-$pkgver.tar.bz2
         frogatto
         frogatto.desktop)
-md5sums=('811a45a2493e6a425ed9d0826cffab04'
+md5sums=('1e9ffe729c78c88d1e29147694299531'
          '9ed2c9ea59e95fe3c0b3ad49e58f8890'
          'e31563b04748a39292a59aaad633ff58')
 
