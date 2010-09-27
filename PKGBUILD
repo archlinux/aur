@@ -1,8 +1,8 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
 url="http://www.openshotvideo.com/"
@@ -11,25 +11,11 @@ depends=('mlt-python-bindings' 'pygoocanvas' 'sdl' 'librsvg' 'pyxdg')
 optdepends=('dvgrab: for IEEE digital sources'
 	    'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack' 'ladspa')
 install=openshot.install
-source=(http://launchpad.net/openshot/1.1/$pkgver/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('2c6285d2aa6356a90da48b9944a0174c')
+source=(http://launchpad.net/openshot/1.2/$pkgver/+download/$pkgname-$pkgver.tar.gz)
 
 build() {
-	mkdir -p $pkgdir/usr/share/openshot/
 	cd $srcdir/$pkgname-$pkgver
 
-    # python2 fix
-    for file in $(find . -name '*.py' -print) bin/openshot; do
-        sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-        sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-    done
-
-	install -Dm644 bin/openshot $pkgdir/usr/bin/openshot
-	install -Dm644 xdg/openshot.png $pkgdir/usr/share/pixmaps/openshot.png
-	install -Dm644 xdg/openshot.desktop $pkgdir/usr/share/applications/openshot.desktop
-	install -Dm644 xdg/openshot.xml $pkgdir/usr/share/mime/packages/openshot.xml
-	install -Dm644 xdg/openshot $pkgdir/usr/lib/mime/packages/openshot
-	install -Dm644 docs/openshot.1 $pkgdir/usr/share/man/man1
-	cp -r  openshot/* $pkgdir/usr/share/openshot/
-	chmod +x $pkgdir/usr/bin/openshot
+  python setup.py install --root=$pkgdir/ --optimize=1
 }
+md5sums=('36648c67c845bc7407abd55703a777be')
