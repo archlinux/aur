@@ -1,19 +1,19 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=2.31.92
+pkgver=2.32.0
 pkgrel=1
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('gnome-desktop>=2.31.92' 'gstreamer0.10-base-plugins>=0.10.30' 'gstreamer0.10-good-plugins>=0.10.24' 'librsvg>=2.31.0' 'gnome-icon-theme>=2.31.0' 'libcanberra>=0.25')
+depends=('gnome-desktop>=2.32.0' 'gstreamer0.10-base-plugins>=0.10.30' 'gstreamer0.10-good-plugins>=0.10.24' 'librsvg>=2.32.0' 'gnome-icon-theme>=2.31.0' 'libcanberra>=0.25')
 makedepends=('pkgconfig' 'gnome-doc-utils>=0.20.1' 'intltool')
 groups=('gnome-extra')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org/projects/cheese/"
 install=cheese.install
-source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.31/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('e23f75a68dc9fe814eaf747b7905eb5c137188f309cc8c960e7e59d03a8c2fc6')
+source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.32/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('8debc47113d9889247f411d256a8eca0d8da49e5ab5909c200923945b8d5e087')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
