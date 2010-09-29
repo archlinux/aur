@@ -10,12 +10,8 @@ url="http://gtkextra.sourceforge.net/"
 depends=('gtk2')
 license=('LGPL')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/project/gtkextra/$pkgver/gtk%2Bextra-$pkgver.tar.gz
-	gtksheet_unref.patch
-	gtk2-2.18.3-build-fix.patch)
-md5sums=('10779394f39d39115fa3fd0f3dea4436'
-         '1de26cb2b3cda627639ab30d3f8a4669'
-         '3f6275dc5345338084ab53a56bd8a8fc')
+source=(http://downloads.sourceforge.net/project/gtkextra/$pkgver/gtk%2Bextra-$pkgver.tar.gz)
+md5sums=('10779394f39d39115fa3fd0f3dea4436')
 
 build() {
   cd $srcdir/gtk+extra-$pkgver
