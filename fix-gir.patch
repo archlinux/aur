@@ -1,0 +1,93 @@
+From 4de105a2bbd201c8e60f3e8777794a4cd532afdc Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@linux.intel.com>
+Date: Tue, 28 Sep 2010 13:52:25 +0000
+Subject: build: Add common CFLAGS to the introspection scanner
+
+---
+diff --git a/clutter-gtk/Makefile.am b/clutter-gtk/Makefile.am
+index 6e267b4..cec5cce 100644
+--- a/clutter-gtk/Makefile.am
++++ b/clutter-gtk/Makefile.am
+@@ -15,6 +15,8 @@ AM_CPPFLAGS = \
+ 	-DCLUTTER_DISABLE_DEPRECATED		\
+ 	$(CLUTTER_GTK_DEBUG_CFLAGS)
+ 
++common_cflags = $(CLUTTER_CFLAGS) $(GTK_CFLAGS)
++
+ # please, keep these lists sorted alphabetically
+ sources_c = \
+ 	$(srcdir)/gtk-clutter-embed.c 		\
+@@ -36,7 +38,7 @@ lib_LTLIBRARIES = libclutter-gtk-@CLUTTER_GTK_API_VERSION@.la
+ libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_SOURCES = $(sources_c)
+ libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_LIBADD = $(CLUTTER_LIBS) $(GTK_LIBS)
+ libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_LDFLAGS = $(CLUTTER_LT_LDFLAGS)
+-libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_CFLAGS = $(MAINTAINER_CFLAGS) $(GTK_CFLAGS) $(CLUTTER_CFLAGS) 
++libclutter_gtk_@CLUTTER_GTK_API_VERSION@_la_CFLAGS = $(common_cflags) $(MAINTAINER_CFLAGS)
+ 
+ cluttergtkheadersdir = $(includedir)/clutter-1.0/clutter-gtk
+ cluttergtkheaders_HEADERS = $(sources_h) $(srcdir)/clutter-gtk.h
+@@ -48,7 +50,7 @@ GtkClutter-@CLUTTER_GTK_API_VERSION@.gir: $(INTROSPECTION_SCANNER) Makefile libc
+ 	$(AM_V_GEN)$(INTROSPECTION_SCANNER) -v \
+ 		--namespace GtkClutter --nsversion=@CLUTTER_GTK_API_VERSION@ \
+ 		--strip-prefix=GtkClutter \
+-		$(INCLUDES) $(AM_CPPFLAGS) \
++		$(INCLUDES) $(AM_CPPFLAGS) $(common_cflags) \
+ 		--add-include-path=$(srcdir) --add-include=path=. \
+ 		--include=Clutter-1.0 \
+ 		--include=GdkPixbuf-2.0 \
+--
+cgit v0.8.3.1-30-gff3a
+From 0d77c7c965dcebcec0dae6b6244c3a057b398b59 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@linux.intel.com>
+Date: Tue, 28 Sep 2010 13:58:17 +0000
+Subject: Add introspection annotations for gtk_clutter_init*
+
+---
+diff --git a/clutter-gtk/gtk-clutter-util.c b/clutter-gtk/gtk-clutter-util.c
+index 8cf4116..50bca6b 100644
+--- a/clutter-gtk/gtk-clutter-util.c
++++ b/clutter-gtk/gtk-clutter-util.c
+@@ -603,8 +603,9 @@ gtk_clutter_texture_set_from_icon_name (ClutterTexture *texture,
+ 
+ /**
+  * gtk_clutter_init:
+- * @argc: pointer to the arguments count, or %NULL
+- * @argv: pointer to the arguments vector, or %NULL
++ * @argc: (inout): pointer to the arguments count, or %NULL
++ * @argv: (array length=argc) (inout) (allow-none): pointer to the
++ *   arguments vector, or %NULL
+  *
+  * This function should be called instead of clutter_init() and
+  * gtk_init().
+@@ -633,17 +634,18 @@ gtk_clutter_init (int    *argc,
+ 
+ /**
+  * gtk_clutter_init_with_args:
+- * @argc: a pointer to the number of command line arguments.
+- * @argv: a pointer to the array of command line arguments.
+- * @parameter_string: a string which is displayed in
+- *    the first line of <option>--help</option> output, after
+- *    <literal><replaceable>programname</replaceable> [OPTION...]</literal>
+- * @entries: a %NULL-terminated array of #GOptionEntry<!-- -->s
+- *    describing the options of your program
+- * @translation_domain: a translation domain to use for translating
+- *    the <option>--help</option> output for the options in @entries
+- *    with gettext(), or %NULL
+- * @error: a return location for errors
++ * @argc: (inout): a pointer to the number of command line arguments.
++ * @argv: (array length=argc) (inout) (allow-none): a pointer to the array
++ *   of command line arguments.
++ * @parameter_string: (allow-none): a string which is displayed in
++ *   the first line of <option>--help</option> output, after
++ *   <literal><replaceable>programname</replaceable> [OPTION...]</literal>
++ * @entries: (allow-none): a %NULL-terminated array of #GOptionEntry<!-- -->s
++ *   describing the options of your program, or %NULL
++ * @translation_domain: (allow-none): a translation domain to use for
++ *   translating the <option>--help</option> output for the options
++ *   in @entries with gettext(), or %NULL
++ * @error: (allow-none): a return location for errors, or %NULL
+  *
+  * This function should be called instead of clutter_init() and
+  * gtk_init_with_args().
+--
+cgit v0.8.3.1-30-gff3a
