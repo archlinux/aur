@@ -4,26 +4,24 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.20.1
-pkgrel=4
+pkgver=2.22.0
+pkgrel=1
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
 install=gtk2.install
-depends=(lib32-{atk,pango,cairo,heimdal,gnutls}
-         lib32-lib{tiff,cups,xcursor,xrandr,xi,xinerama,xcomposite,xdamage}
+depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','heimdal>=1.3.2','gnutls>=2.8.6','gdk-pixbuf2>=2.21.7'}
+         lib32-lib{'cups>=1.4.4',xcursor,'xrandr>=1.3','xi>=1.3',xinerama,xcomposite,xdamage}
          $_pkgbasename)
-makedepends=('gcc-multilib')
+makedepends=('pkgconfig' 'gcc-multilib')
 options=('!libtool' '!docs')
 license=('LGPL')
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.20/gtk+-${pkgver}.tar.bz2
+source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.22/gtk+-${pkgver}.tar.bz2
         xid-collision-debug.patch
-	revert_64bit_fix.patch
         gtk-modules-32.patch)
-sha256sums=('0e081731d21e34ff45c82199490c2889504fa8b3c7e117c043e82ababaec0f65'
+sha256sums=('d9522c80d4b8a954f7474e32bd5a99ba3051996f1c4681426db5f79a1c1b4602'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
-	    '20f3a03760f765b68b85b614810e5df4a689b609da1ae200aa30072475121b4c'
-            'fac0262cfc26d9e437854fac97bfa2a79f449160ba63963c7282cf160b548fcc')
+            '2effb13404442ae266d4c663347e88cd1ca19e9a83b452da1743bac16af9c7b0')
 
 build() {
   export CC="gcc -m32"
@@ -32,14 +30,13 @@ build() {
 
   cd "${srcdir}/gtk+-${pkgver}"
   patch -Np1 -i "${srcdir}/xid-collision-debug.patch"
-  patch -RNp1 -i ${srcdir}/revert_64bit_fix.patch
   patch -p1 -i ${srcdir}/gtk-modules-32.patch
 
-  CXX=/bin/false ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --libdir=/usr/lib32 \
-      --with-xinput=yes \
-      --without-libjasper \
-      --with-included-loaders=png
+  CXX=/bin/false ./configure --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --libdir=/usr/lib32 \
+      --with-xinput=yes
   make
 }
 
@@ -51,6 +48,5 @@ package() {
 
   cd "${pkgdir}"/usr/bin
   mv gtk-query-immodules-2.0 gtk-query-immodules-2.0-32
-  mv gdk-pixbuf-query-loaders gdk-pixbuf-query-loaders-32
-  rm -f gdk-pixbuf-csource gtk-builder-convert gtk-demo gtk-update-icon-cache
+  rm -f gtk-builder-convert gtk-demo gtk-update-icon-cache
 }

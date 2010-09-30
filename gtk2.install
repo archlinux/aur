@@ -1,6 +1,5 @@
 post_install() {
   usr/bin/gtk-query-immodules-2.0-32 > etc/gtk-2.0/gtk.immodules-32
-  usr/bin/gdk-pixbuf-query-loaders-32 > etc/gtk-2.0/gdk-pixbuf.loaders-32
 }
 
 post_upgrade() {
@@ -9,5 +8,7 @@ post_upgrade() {
 
 pre_remove() {
   rm -f etc/gtk-2.0/gtk.immodules-32 &>/dev/null
-  rm -f etc/gtk-2.0/gdk-pixbuf.loaders-32 &>/dev/null
+  if [ $2 == "2.20.1-4" ]; then
+    rm -f etc/gtk-2.0/gdk-pixbuf.loaders-32 &>/dev/null
+  fi
 }
