@@ -33,13 +33,9 @@ build() {
               --sysconfdir=/etc
   make
 
-  #-- debug --#
+  # workaround for make bug not building a module
   # see http://code.google.com/p/solfege/issues/detail?id=197
-  if ! test -f solfege/soundcard/_solfege_c_midi.so; then
-    error "MIDI module not built"
-    return 1
-  fi
-  #-- debug --#
+  make ./solfege/soundcard/_solfege_c_midi.so
 }
 
 package() {
