@@ -3,7 +3,7 @@
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 pkgname=python-sphinx
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python documentation generator"
 arch=('any')
 url="http://sphinx.pocoo.org/"
