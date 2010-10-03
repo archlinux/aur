@@ -3,7 +3,7 @@
 pkgbase = django
 	pkgdesc = A high-level Python Web framework.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.djangoproject.com
 	arch = any
 	license = BSD

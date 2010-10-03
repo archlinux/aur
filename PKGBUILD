@@ -6,7 +6,7 @@
 
 pkgname=django
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level Python Web framework."
 arch=('any')
 license=('BSD')
@@ -22,10 +22,14 @@ sha256sums=('cb830f6038b78037647150d977f6cd5cf2bfd731f1788ecf8758a03c213a0f84')
 
 build() {
   cd ${srcdir}/Django-$pkgver
-  python2 setup.py install --root=${pkgdir} --optimize=1 || return 1
+  python2 setup.py install --root=${pkgdir} --optimize=1
 
   install -Dm644 extras/django_bash_completion \
-    ${pkgdir}/etc/bash_completion.d/django || return 1
+    ${pkgdir}/etc/bash_completion.d/django
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE || return 1
+  find $pkgdir/usr/lib/python2.7/site-packages/django/ -name '*.py' | \
+    xargs sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|"
+  
+
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 }
