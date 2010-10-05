@@ -1,6 +1,6 @@
 pkgbase = smartbg-git
 	pkgdesc = A smart wallpaper setter for multi-head X displays
-	pkgver = 20100215
+	pkgver = 20101006
 	pkgrel = 1
 	url = http://code.schnouki.net/p/smartbg/
 	arch = any
