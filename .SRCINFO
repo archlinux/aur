@@ -1,0 +1,27 @@
+pkgbase = msva-perl-git
+	pkgdesc = Perl Monkeysphere Validation Agent
+	pkgver = 20110926
+	pkgrel = 1
+	url = http://web.monkeysphere.info/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = monkeysphere
+	depends = gtk2-perl
+	depends = perl-http-server-simple
+	depends = perl-regexp-common
+	depends = perl-json
+	depends = perl-gnupg-interface
+	depends = perl-any-moose
+	depends = perl-net-server
+	depends = perl-convert-asn1
+	depends = perl-crypt-x509
+	depends = perl-file-homedir
+	depends = perl-config-general
+	provides = msva-pearl
+	provides = monkeysphere-validation-agent
+	conflicts = msva-perl
+
+pkgname = msva-perl-git
+
