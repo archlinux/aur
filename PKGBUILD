@@ -3,7 +3,7 @@
 # Contributor: kritoke <kritoke@nospam.gmail.com>
 
 pkgname=ruby-glib2
-pkgver=0.90.1
+pkgver=0.90.2
 pkgrel=1
 pkgdesc="Ruby bindings for glib2."
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ url="http://ruby-gnome2.sourceforge.jp"
 license=('LGPL')
 depends=('ruby')
 source=(http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-$pkgver.tar.gz)
-md5sums=('8b0fa2bc166f85287a4c94e3b193472c')
+md5sums=('5b65b2560f13246c71013d043435d39a')
 
 build() {
 	cd "$srcdir/ruby-gtk2-$pkgver"
-	ruby extconf.rb glib --topdir=$pkgdir
+	ruby extconf.rb glib2 --topdir=$pkgdir
 	make
 }
 package() {
