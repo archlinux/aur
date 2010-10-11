@@ -1,7 +1,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Digital photo management application for kde"
 arch=('i686' 'x86_64')
@@ -30,4 +30,4 @@ package() {
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 }
-md5sums=('748518d6b24cc2c44acad5cb9df8d21a')
+md5sums=('eb3097836fe032d0031578d5b93223f3')
