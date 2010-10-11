@@ -1,0 +1,16 @@
+diff -ur solfege-3.18.3.orig/solfege/soundcard/Makefile solfege-3.18.3/solfege/soundcard/Makefile
+--- solfege-3.18.3.orig/solfege/soundcard/Makefile	2010-10-08 02:31:36.000000000 -0700
++++ solfege-3.18.3/solfege/soundcard/Makefile	2010-10-10 12:29:39.636698327 -0700
+@@ -30,11 +30,7 @@
+  ifdef SWIG
+   ifeq ($(SWIG_VERSION),1.1)
+    TARGETS += solfege/soundcard/solfege_c_midimodule.so
+-  endif
+-  ifeq ($(SWIG_VERSION),1.3)
+-   TARGETS += solfege/soundcard/_solfege_c_midi.so
+-  endif
+-  ifeq ($(SWIG_VERSION),unknown)
++  else
+    TARGETS += solfege/soundcard/_solfege_c_midi.so
+   endif
+  endif
