@@ -3,20 +3,20 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=2.30.2
+pkgver=2.30.3
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('libgnome-keyring>=2.30.1' 'gtk-vnc>=0.3.10' 'avahi>=0.6.25' 'desktop-file-utils' 'hicolor-icon-theme' 'telepathy-glib>=0.10.5')
-makedepends=('gnome-doc-utils>=0.20.1' 'intltool' 'gnome-panel>=2.30.0')
-optdepends=('gnome-panel')
+depends=('libgnome-keyring>=2.32.0' 'gtk-vnc>=0.3.10' 'avahi>=0.6.27' 'desktop-file-utils' 'hicolor-icon-theme' 'telepathy-glib>=0.12.0' 'gconf>=2.32.0')
+makedepends=('gnome-doc-utils>=0.20.1' 'intltool' 'gnome-panel-bonobo')
+optdepends=('gnome-panel-bonobo: Remote desktop viewer applet')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/vinagre/2.30/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('478b58ad9eb4a02fad45134bdddc29dc986d8c14e203a47b88aa7f3e6d1bf388')
+sha256sums=('28bfc70a816bc3f1e71ada82e260c39ee2dac693cb7859323b06c8b1452a39f4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
