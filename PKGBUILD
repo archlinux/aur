@@ -1,11 +1,10 @@
-# $Id: PKGBUILD,v 1.20 2009/01/26 17:07:33 angvp Exp $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname=python-numpy
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,7 +13,7 @@ depends=('lapack' 'python2')
 makedepends=('python-nose' 'gcc-fortran')
 optdepends=('python-nose: test suite')
 source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz)
-md5sums=('5c7b5349dc3161763f7f366ceb96516b')
+md5sums=('3a8bfdc434df782d647161c48943ee09')
 
 build() {
   cd "${srcdir}/numpy-${pkgver}"
