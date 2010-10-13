@@ -3,7 +3,7 @@
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
-pkgver=3.18.3
+pkgver=3.18.4
 pkgrel=1
 pkgdesc="Music education and ear training software"
 arch=(i686 x86_64)
@@ -16,11 +16,9 @@ optdepends=('timidity++: Software MIDI support')
 changelog=$pkgname.changelog
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-        solfege.desktop
-        make_swig2.patch)
-md5sums=('c5d1f63db2a2a506d46108713e49a516'
-         '22b89dcfd9e7c98ab238942139b8a970'
-         'fd5866e4c1272bcd0aa3432a9dbe2e3e')
+        solfege.desktop)
+md5sums=('6a8fcd93809755d5eab23cc74191fb51'
+         '22b89dcfd9e7c98ab238942139b8a970')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -30,10 +28,6 @@ build() {
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-
-  # fix for make bug
-  # see http://code.google.com/p/solfege/issues/detail?id=197
-  patch -Np1 -i ../make_swig2.patch
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc
