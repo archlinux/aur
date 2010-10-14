@@ -22,7 +22,6 @@ build() {
   cd ${srcdir}/SDL_image-${pkgver}
 
   ./configure --prefix=/usr --libdir=/usr/lib32
-
   make
 }
 
@@ -32,3 +31,5 @@ package() {
   make DESTDIR=$pkgdir install
   rm -rf $pkgdir/usr/include
 }
+
+# vim: sw=2:ts=2 et:
