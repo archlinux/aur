@@ -3,7 +3,7 @@
 
 pkgname=buildbot
 pkgver=0.8.1p1
-pkgrel=1
+pkgrel=2
 pkgdesc="A system to automate the compile/test cycle required by most software projects"
 arch=('any')
 url="http://buildbot.net"
