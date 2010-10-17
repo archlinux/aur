@@ -4,7 +4,7 @@
 
 pkgname=python-numpy
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -17,17 +17,19 @@ md5sums=('3a8bfdc434df782d647161c48943ee09')
 
 build() {
   cd "${srcdir}/numpy-${pkgver}"
+
   export Atlas=None
   export LDFLAGS="$LDFLAGS -shared"
-  python2 setup.py config_fc --fcompiler=gnu95 build || return 1
+  python2 setup.py config_fc --fcompiler=gnu95 build
 }
 
 package() {
   cd "${srcdir}/numpy-${pkgver}"
-  python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" || return 1
-  sed -i 's@env python@env python2@' "${pkgdir}"/usr/lib/python2.7/site-packages/numpy/{*.py,*/*.py,*/*/*.py,*/*/*/*.py}
-  sed -i 's@/usr/bin/python@/usr/bin/python2@' "${pkgdir}"/usr/lib/python2.7/site-packages/numpy/distutils/{from,conv}_template.py
-  sed -i 's@#! python@#!/usr/bin/python2@' "${pkgdir}"/usr/lib/python2.7/site-packages/numpy/ma/bench.py
+  python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}"
 
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" || return 1
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+             -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+             $(find $pkgdir -name '*.py')
 }
