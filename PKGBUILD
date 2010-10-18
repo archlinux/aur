@@ -8,7 +8,7 @@ pkgdesc="an open-source, non-linear video editor for Linux based on MLT framewor
 arch=('any')
 url="http://www.openshotvideo.com/"
 license=('GPL')
-depends=('mlt-python-bindings' 'pygoocanvas' 'sdl' 'librsvg' 'pyxdg')
+depends=('mlt-python-bindings' 'pygoocanvas' 'sdl' 'librsvg' 'pyxdg' 'pygtk')
 optdepends=('dvgrab: for IEEE digital sources'
 	    'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack' 'ladspa')
 install=openshot.install
