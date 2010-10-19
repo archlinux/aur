@@ -1,19 +1,22 @@
 # $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Olivier Mehani <shtrom-arch@ssj.net>
 pkgbase="kernel26-web100"
 pkgname=('kernel26-web100' 'kernel26-web100-headers')
 _kernelname=${pkgname#kernel26}
-_basekernel=2.6.32
-pkgver=${_basekernel}.8
+_basekernel=2.6.35
+pkgver=${_basekernel}.7
 pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
+_web100patchversion=2.5.30
+_web100patchdate=201008181640
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://www.kernel.org"
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
-	http://www.web100.org/download/kernel/2.5.27/web100-2.5.27-201001301335.tar.gz
+	http://www.web100.org/download/kernel/${_web100patchversion}/web100-${_web100patchversion}-${_web100patchdate}.tar.gz
         # the main kernel config files
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
@@ -25,9 +28,9 @@ build() {
   # See http://projects.archlinux.org/linux-2.6-ARCH.git/
   patch -Np1 -i ${srcdir}/${_patchname} || return 1
 
-  sed -i 's/EXTRAVERSION = /EXTRAVERSION =/' Makefile
-  patch -Np1 -i ${srcdir}/web100/web100-2.6.32-2.5.27-201001301335.patch || return 1
-  sed -i 's/EXTRAVERSION = /EXTRAVERSION =/' Makefile
+  sed -i 's/^EXTRAVERSION = .*/EXTRAVERSION =/;s/^NAME = .*/NAME = Sheep on Meth/' Makefile
+  patch -Np1 -i ${srcdir}/web100/web100-${_basekernel}-${_web100patchversion}-${_web100patchdate}.patch || return 1
+  sed -i 's/^EXTRAVERSION = .*/EXTRAVERSION =/' Makefile
 
   if [ "$CARCH" = "x86_64" ]; then
     cat ../config.x86_64 >./.config
@@ -117,7 +120,7 @@ package_kernel26-web100-headers() {
     ${pkgdir}/usr/src/linux-${_kernver}/.config
   mkdir -p ${pkgdir}/usr/src/linux-${_kernver}/include
 
-  for i in acpi asm-{generic,x86} config linux math-emu media net pcmcia scsi sound trace video; do
+  for i in acpi asm-generic config generated linux math-emu media net pcmcia scsi sound trace video; do
     cp -a include/$i ${pkgdir}/usr/src/linux-${_kernver}/include/
   done
 
@@ -193,19 +196,15 @@ package_kernel26-web100-headers() {
     cp $i ${pkgdir}/usr/src/linux-${_kernver}/$i
   done
 
-  cd ${pkgdir}/usr/src/linux-${_kernver}/include && ln -s asm-$KARCH asm
-  # add header for aufs2-util
-  cp -a ${srcdir}/linux-$_basekernel/include/asm-generic/bitsperlong.h ${pkgdir}/usr/src/linux-${_kernver}/include/asm/
-
   chown -R root.root ${pkgdir}/usr/src/linux-${_kernver}
   find ${pkgdir}/usr/src/linux-${_kernver} -type d -exec chmod 755 {} \;
   # remove unneeded architectures
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
 
-md5sums=('260551284ac224c3a43c4adac7df4879'
-         '908f38fc5ba77b9bf691ae83e501b8e4'
-         '0542d2a7a8462c9614c9e9bb9c863a67'
-         '302a660e52cecb134f84e9d8bc69ece3'
-         '81fa51251ef9de969cfd7f3f48b95e58'
+md5sums=('091abeb4684ce03d1d936851618687b6'
+         'df30e2eb9755e45993ddc7e679ab52d8'
+         '6e7dd954e9816fb658706ad01fd97870'
+         '40552e98261623134816d01255c9e78d'
+         '9c48d518fbe02a2fb2dbee535c1635ae'
          '25584700a0a679542929c4bed31433b6')
