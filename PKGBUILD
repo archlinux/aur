@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -41,6 +41,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # python2 fix
+  export PYTHON=`which python2`
   for file in $(find . -name '*.py' -print); do
     sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
