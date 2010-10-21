@@ -5,17 +5,16 @@
 
 pkgbase=('pidgin')
 pkgname=('libpurple' 'pidgin' 'finch')
-pkgver=2.7.3
-pkgrel=2
+pkgver=2.7.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python2'
-             'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10-base' 'farsight2' 'avahi'
-             'tk' 'ca-certificates' 'intltool' 'networkmanager')
+makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'python2' 'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10'
+             'farsight2' 'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
 source=(${pkgbase}-${pkgver}.tar.bz2::http://sourceforge.net/projects/${pkgbase}/files/Pidgin/${pkgver}/${pkgbase}-${pkgver}.tar.bz2/download)
-md5sums=('e4bbadadae85e5e008690b52dd51f102')
+md5sums=('2960d3e78e50d5bbcf4533c09ba467d8')
 
 build() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -49,8 +48,7 @@ package_libpurple(){
 
 package_pidgin(){
     pkgdesc="Multi-protocol instant messaging client"
-    depends=("libpurple=$pkgver" 'startup-notification' 'gtkspell' 'libxss' 'python2'
-            'hicolor-icon-theme' 'gstreamer0.10-base')
+    depends=("libpurple=$pkgver" 'startup-notification' 'gtkspell' 'libxss' 'hicolor-icon-theme' 'gstreamer0.10')
     optdepends=('aspell: for spelling correction'
                 'avahi: Bonjour protocol support'
                 'ca-certificates: SSL CA certificates'
@@ -74,7 +72,7 @@ package_pidgin(){
 }
 package_finch(){
     pkgdesc="A ncurses-based messaging client"
-    depends=("libpurple=$pkgver" 'python2')
+    depends=("libpurple=$pkgver" 'python2' 'gstreamer0.10')
     optdepends=('avahi: Bonjour protocol support'
                 'ca-certificates: SSL CA certificates'
                 'tk: Tcl/Tk scripting support')
