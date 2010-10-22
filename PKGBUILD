@@ -2,7 +2,7 @@
 # Maintainer: JJDaNiMoTh <jjdanimoth@gmail.com>
 
 pkgname=qmc2
-pkgver=0.2.b16
+pkgver=0.2.b17
 pkgrel=1
 pkgdesc="Qt 4 based UNIX MAME frontend supporting SDLMAME."
 url="http://qmc2.arcadehits.net"
@@ -12,7 +12,7 @@ depends=('qt' 'phonon' 'sdl' 'libxmu')
 makedepends=('rsync' 'mesa')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
         'qmamecat.desktop')
-md5sums=('e43de45a6a8e07dfea0504264ab19e04'
+md5sums=('9b124627a77acaaf896fa328359beb8a'
          'bf2a7898e6fff196fb99b5bcc4128a79')
 
 build() {
@@ -20,8 +20,8 @@ build() {
 
   export CTIME=0
 
-  make PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc QTDIR=/usr || return 1
-  make PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc QTDIR=/usr DESTDIR=$pkgdir install || return 1
+  make PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc QTDIR=/usr
+  make PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc QTDIR=/usr DESTDIR=$pkgdir install
 
   mkdir -p $pkgdir/usr/share/{applications,pixmaps}
 
