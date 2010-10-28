@@ -3,24 +3,22 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=6.0.472.62
+pkgver=7.0.517.43
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
 depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss')
-makedepends=('python' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
+makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
-        'chromium.desktop' 'chromium.sh'
-        'gyp-make.patch')
-md5sums=('0618d3f2f5460aa2a68f6b28f2d63a9a'
+        'chromium.desktop' 'chromium.sh')
+md5sums=('48bad976fb375e117ace6b1c7cf69044'
          'c5e849fcb1101149977355c99d8ff78f'
-         '096a46ef386817988250d2d7bddd1b34'
-         '6ac578c512c6a75357d7532211213a92')
+         '096a46ef386817988250d2d7bddd1b34')
 
 build() {
   cd ${srcdir}/chromium-${pkgver}
@@ -32,7 +30,13 @@ build() {
 
 ### Configure
 
-  patch -p0 -i ${srcdir}/gyp-make.patch
+  echo 'Use python2 instead of python...'
+  find . -type f -exec \
+	sed -E 's#(/usr/bin/python)$#\12#g;s#(/usr/bin/python2)\.4$#\1#g' -i {} \;
+  # There are still a lot of relative calls which need a workaround
+  mkdir ${srcdir}/python2-path
+  ln -s /usr/bin/python2 ${srcdir}/python2-path/python
+  export PATH="${srcdir}/python2-path/:${PATH}"
 
   # we need to disable system_ssl until "next protocol negotiation" support
   # is available in our nss package
