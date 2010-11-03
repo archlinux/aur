@@ -1,0 +1,11 @@
+diff -ur poldi-0.4-orig/src/util/support.c poldi-0.4/src/util/support.c
+--- poldi-0.4-orig/src/util/support.c	2008-11-10 11:10:19.000000000 +0000
++++ poldi-0.4/src/util/support.c	2008-11-10 11:10:38.000000000 +0000
+@@ -20,6 +20,7 @@
+ 
+ #include "util-local.h"
+ 
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <assert.h>
