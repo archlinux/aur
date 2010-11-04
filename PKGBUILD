@@ -4,8 +4,8 @@
 # Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
 pkgname=cmake
-pkgver=2.8.2
-pkgrel=3
+pkgver=2.8.3
+pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -13,15 +13,12 @@ url="http://www.cmake.org"
 depends=('expat' 'curl' 'gcc-libs' 'shared-mime-info')
 makedepends=('qt')
 optdepends=('qt: cmake-gui')
-install=${pkgname}.install
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
-	'python2.7.patch')
-md5sums=('8c967d5264657a798f22ee23976ff0d9'
-	'308304c7a8f48ccfc86d6d1e4b2cdf91')
+install="${pkgname}.install"
+source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
+md5sums=('8c967d5264657a798f22ee23976ff0d9')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -Np1 -i ${srcdir}/python2.7.patch
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
@@ -42,3 +39,4 @@ package() {
   install -Dm644 Docs/cmake-mode.el ${pkgdir}/usr/share/emacs/site-lisp/cmake-mode.el
   install -Dm644 Copyright.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
+md5sums=('a76a44b93acf5e3badda9de111385921')
