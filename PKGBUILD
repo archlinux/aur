@@ -15,7 +15,7 @@ makedepends=('qt')
 optdepends=('qt: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('8c967d5264657a798f22ee23976ff0d9')
+md5sums=('a76a44b93acf5e3badda9de111385921')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -39,4 +39,3 @@ package() {
   install -Dm644 Docs/cmake-mode.el ${pkgdir}/usr/share/emacs/site-lisp/cmake-mode.el
   install -Dm644 Copyright.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-md5sums=('a76a44b93acf5e3badda9de111385921')
