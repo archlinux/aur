@@ -4,7 +4,7 @@
 
 pkgname=ibus-pinyin
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='The PinYin Engine for IBus Input Framework.'
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -23,7 +23,10 @@ build() {
 
   cd ${pkgname}-${pkgver}
 
-  ./configure \
+  sed -i -e "s|python|python2|" data/db/android/create_db.py \
+      setup/ibus-setup-pinyin.in
+
+  PYTHON=python2 ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib/ibus \
     --enable-db-open-phrase
