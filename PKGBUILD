@@ -4,13 +4,13 @@
 
 pkgname=ruby-atk
 pkgver=0.90.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby bindings for atk."
 arch=('i686' 'x86_64')
 url="http://ruby-gnome2.sourceforge.jp"
 license=('LGPL')
 depends=('ruby-glib2')
-makedepends=('ruby-glib2' 'atk')
+makedepends=('ruby-glib2' 'atk' 'ruby-pkgconfig')
 source=(http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-$pkgver.tar.gz)
 md5sums=('bcff0d668694a6491eeee73b68884d93')
 
