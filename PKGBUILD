@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://ruby-gnome2.sourceforge.jp"
 license=('LGPL')
 depends=('ruby')
-makedepends=('ruby-pkgconfig' 'ruby-cairo')
+makedepends=('ruby-pkgconfig')
 source=(http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-$pkgver.tar.gz)
 md5sums=('bcff0d668694a6491eeee73b68884d93')
 
