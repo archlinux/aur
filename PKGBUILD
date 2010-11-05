@@ -2,7 +2,7 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=postgresql-testing
-pkgver=9.1alpha1
+pkgver=9.1alpha2
 pkgrel=1
 pkgdesc="Alpha version of the PostgreSQL database (includes both server and libs)"
 arch=(i686 x86_64)
@@ -16,10 +16,6 @@ conflicts=('postgresql-libs' 'postgresql')
 provides=("postgresql-libs=$pkgver" "postgresql=$pkgver")
 source=(http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v$pkgver/postgresql-$pkgver.tar.gz
         postgresql.rc postgresql.confd postgresql.pam)
-md5sums=('f0cb5135f53fdf7a1b4bdfe87be687ae'
-         '86e0161343ce80e544aba999f284bc88'
-         'df6ddf9e2ab4700a3415f17c0f4f4172'
-         '96f82c38f3f540b53f3e5144900acf17')
 
 build() {
   cd $srcdir/postgresql-$pkgver || return 1
@@ -43,3 +39,7 @@ build() {
   install -D -m644 $srcdir/postgresql.confd $pkgdir/etc/conf.d/postgresql || return 1
   install -D -m644 $srcdir/postgresql.pam $pkgdir/etc/pam.d/postgresql || return 1
 }
+md5sums=('28e94e1ad47cb2cd66ade1e7d214b27c'
+         '86e0161343ce80e544aba999f284bc88'
+         'df6ddf9e2ab4700a3415f17c0f4f4172'
+         '96f82c38f3f540b53f3e5144900acf17')
