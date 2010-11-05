@@ -18,26 +18,26 @@ source=(http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v$pkgv
         postgresql.rc postgresql.confd postgresql.pam)
 
 build() {
-  cd $srcdir/postgresql-$pkgver || return 1
+  cd $srcdir/postgresql-$pkgver
 
   ./configure --prefix=/usr --mandir=/usr/share/man \
     --with-docdir=/usr/share/doc --with-openssl \
-    --datadir=/usr/share/postgresql --with-pam --with-libxml || return 1
+    --datadir=/usr/share/postgresql --with-pam --with-libxml
 
-  make || return 1
-  make DESTDIR=$pkgdir install || return 1
+  make
+  make DESTDIR=$pkgdir install
 
   # adminpack contains functions used by pgAdmin III
   (
-    cd contrib/adminpack;
-    make || return 1;
-    make DESTDIR=$pkgdir install || return 1
+    cd contrib/adminpack
+    make
+    make DESTDIR=$pkgdir install
   )
 
-  install -D -m755 $srcdir/postgresql.rc $pkgdir/etc/rc.d/postgresql || return 1
-  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/postgresql/LICENSE || return 1
-  install -D -m644 $srcdir/postgresql.confd $pkgdir/etc/conf.d/postgresql || return 1
-  install -D -m644 $srcdir/postgresql.pam $pkgdir/etc/pam.d/postgresql || return 1
+  install -D -m755 $srcdir/postgresql.rc $pkgdir/etc/rc.d/postgresql
+  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/postgresql/LICENSE
+  install -D -m644 $srcdir/postgresql.confd $pkgdir/etc/conf.d/postgresql
+  install -D -m644 $srcdir/postgresql.pam $pkgdir/etc/pam.d/postgresql
 }
 md5sums=('28e94e1ad47cb2cd66ade1e7d214b27c'
          '86e0161343ce80e544aba999f284bc88'
