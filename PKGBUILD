@@ -3,7 +3,7 @@
 
 pkgname=postgresql-testing
 pkgver=9.1alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="Alpha version of the PostgreSQL database (includes both server and libs)"
 arch=(i686 x86_64)
 license=('custom:PostgreSQL')
@@ -20,19 +20,18 @@ source=(http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v$pkgv
 build() {
   cd $srcdir/postgresql-$pkgver
 
-  ./configure --prefix=/usr --mandir=/usr/share/man \
-    --with-docdir=/usr/share/doc --with-openssl \
-    --datadir=/usr/share/postgresql --with-pam --with-libxml
+  ./configure --prefix=/usr --mandir=/usr/share/man --with-libxml \
+	--with-openssl --with-perl \
+	--with-python PYTHON=/usr/bin/python2 --with-pam \
+	--with-system-tzdata=/usr/share/zoneinfo --enable-nls \
+	--datadir=/usr/share/postgresql --enable-thread-safety
 
   make
   make DESTDIR=$pkgdir install
 
-  # adminpack contains functions used by pgAdmin III
-  (
-    cd contrib/adminpack
-    make
-    make DESTDIR=$pkgdir install
-  )
+  # build all contrib modules
+  make -C contrib
+  make -C contrib DESTDIR=$pkgdir install
 
   install -D -m755 $srcdir/postgresql.rc $pkgdir/etc/rc.d/postgresql
   install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/postgresql/LICENSE
