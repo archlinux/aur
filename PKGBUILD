@@ -4,7 +4,7 @@
 _pkgbasename=libcap
 pkgname=lib32-$_pkgbasename
 pkgver=2.19
-pkgrel=3
+pkgrel=4
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="http://www.kernel.org/pub/linux/libs/security/linux-privs/"
@@ -17,11 +17,10 @@ md5sums=('9caa6dafc9e3db4cbaecdb8e48f23fa2')
 build() {
   cd ${srcdir}/${_pkgbasename}-${pkgver}
 
-  export CC="gcc -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  make prefix=/usr lib=lib32 DESTDIR=${pkgdir} install
+  make -C libcap CC="gcc -m32" prefix=/usr lib=lib32 DESTDIR=${pkgdir} install
   chmod 755 ${pkgdir}/usr/lib32/libcap.so.${pkgver}
 
-  rm -rf "${pkgdir}"/usr/{include,share,sbin,lib32/security}
+  rm -rf "${pkgdir}/usr/include"
 }
