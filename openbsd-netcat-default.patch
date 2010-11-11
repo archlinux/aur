@@ -1,0 +1,42 @@
+diff -wbBur libvirt-0.8.5/src/qemu/qemu_driver.c libvirt-0.8.5.my/src/qemu/qemu_driver.c
+--- libvirt-0.8.5/src/qemu/qemu_driver.c	2010-10-29 12:20:20.000000000 +0000
++++ libvirt-0.8.5.my/src/qemu/qemu_driver.c	2010-11-11 15:59:22.000000000 +0000
+@@ -11066,7 +11066,7 @@
+     if (qemuCmdFlags & QEMUD_CMD_FLAG_MIGRATE_QEMU_UNIX)
+         internalret = virAsprintf(&migrateFrom, "unix:%s", unixfile);
+     else if (qemuCmdFlags & QEMUD_CMD_FLAG_MIGRATE_QEMU_EXEC)
+-        internalret = virAsprintf(&migrateFrom, "exec:nc -U -l %s", unixfile);
++        internalret = virAsprintf(&migrateFrom, "exec:nc.openbsd -U -l %s", unixfile);
+     else {
+         qemuReportError(VIR_ERR_OPERATION_FAILED,
+                         "%s", _("Destination qemu is too old to support tunnelled migration"));
+@@ -11077,7 +11077,7 @@
+         goto endjob;
+     }
+     /* Start the QEMU daemon, with the same command-line arguments plus
+-     * -incoming unix:/path/to/file or exec:nc -U /path/to/file
++     * -incoming unix:/path/to/file or exec:nc.openbsd -U /path/to/file
+      */
+     internalret = qemudStartVMDaemon(dconn, driver, vm, migrateFrom, true,
+                                      -1, NULL);
+@@ -11624,7 +11624,7 @@
+                                                unixfile);
+     }
+     else if (qemuCmdFlags & QEMUD_CMD_FLAG_MIGRATE_QEMU_EXEC) {
+-        const char *args[] = { "nc", "-U", unixfile, NULL };
++        const char *args[] = { "nc.openbsd", "-U", unixfile, NULL };
+         internalret = qemuMonitorMigrateToCommand(priv->mon, QEMU_MONITOR_MIGRATE_BACKGROUND, args);
+     } else {
+         internalret = -1;
+diff -wbBur libvirt-0.8.5/src/remote/remote_driver.c libvirt-0.8.5.my/src/remote/remote_driver.c
+--- libvirt-0.8.5/src/remote/remote_driver.c	2010-10-22 15:27:38.000000000 +0000
++++ libvirt-0.8.5.my/src/remote/remote_driver.c	2010-11-11 15:58:49.000000000 +0000
+@@ -763,7 +763,7 @@
+             cmd_argv[j++] = strdup ("none");
+         }
+         cmd_argv[j++] = strdup (priv->hostname);
+-        cmd_argv[j++] = strdup (netcat ? netcat : "nc");
++        cmd_argv[j++] = strdup (netcat ? netcat : "nc.openbsd");
+         cmd_argv[j++] = strdup ("-U");
+         cmd_argv[j++] = strdup (sockname ? sockname :
+                                 (flags & VIR_CONNECT_RO

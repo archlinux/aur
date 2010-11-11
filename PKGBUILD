@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -25,16 +25,21 @@ optdepends=('avahi: for network discovery'
 	    'virtualbox_bin'
 	    'virtualbox-ose'
 	    'xen')
-options=("emptydirs")
-backup=('etc/conf.d/libvirtd' 'etc/libvirt/libvirtd.conf' 'etc/libvirt/qemu.conf' 'etc/sasl2/libvirt.conf')
+options=('emptydirs' '!libtool')
+backup=('etc/conf.d/libvirtd'
+	'etc/libvirt/libvirtd.conf'
+	'etc/libvirt/qemu.conf'
+	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
 source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.rc.d
 	libvirtd.conf.d
+	openbsd-netcat-default.patch
 	unixperms.patch)
 md5sums=('92a96b3e534209a6103fa7a4bee9fbc1'
          '5ffe22be0f43ed7c6468b79cd1a9f114'
          'cb4e9bc6b209c1f3077d3698bf1d4437'
+         '15bbe9f56644929cee41b8faec0b8d80'
          'db95aecdf2ccf3693fef5821cdcb7eba')
 
 build() {
@@ -51,6 +56,8 @@ build() {
 #  If you wish to have unix-permissions based access rather than only polkit
 #  access, create a group called libvirt and uncomment the line below:
 #  patch -Np1 -i "$srcdir"/unixperms.patch
+
+  patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
 
   export LDFLAGS=-lX11
   ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
