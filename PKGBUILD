@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
@@ -11,40 +11,50 @@ license=('custom')
 backup=(usr/share/openvpn/easy-rsa/vars
         usr/share/openvpn/easy-rsa/openssl.cnf
         etc/conf.d/openvpn-tapdev)
-source=(http://openvpn.net/release/openvpn-$pkgver.tar.gz
+source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
         openvpn.rc
         openvpn-tapdev.rc
         openvpn-tapdev.conf)
-md5sums=('7486d3e270ba4b033e311d3e022a0ad7'
+md5sums=('96a11868082685802489254f03ff3bde'
          'a3809b9727f0c2af2d0770f5c7442db2'
          'd2c48e970088d679dd3c2afd914ff731'
          '722f483c9e3ce2ec66d3301aaf7cf3d5')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  # Build and install openvpn
+  # Build openvpn
   CFLAGS="$CFLAGS -DPLUGIN_LIBDIR=\\\"/usr/lib/openvpn\\\"" ./configure --prefix=/usr --enable-password-save --mandir=/usr/share/man
-  make || return 1
-  make DESTDIR=$pkgdir install || return 1
+  make
+
+  # Build plugins
+  for plug in auth-pam down-root; do
+    cd $srcdir/$pkgname-$pkgver/plugin/$plug
+    make
+  done
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  # Install openvpn
+  make DESTDIR=$pkgdir install
   install -d -m755 $pkgdir/etc/openvpn
   # Install examples
   install -d -m755 $pkgdir/usr/share/openvpn
-  cp -r sample-config-files $pkgdir/usr/share/openvpn/examples || return 1
+  cp -r sample-config-files $pkgdir/usr/share/openvpn/examples
   find $pkgdir/usr/share/openvpn -type f -exec chmod 644 {} \;
   find $pkgdir/usr/share/openvpn -type d -exec chmod 755 {} \;
   # Install license
-  install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING || return 1
-  # Build and install plugins
+  install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  # Install plugins
   for plug in auth-pam down-root; do
     cd $srcdir/$pkgname-$pkgver/plugin/$plug
-    make || return 1 
-    install -D -m755 openvpn-$plug.so $pkgdir/usr/lib/openvpn/openvpn-$plug.so || return 1
+    install -D -m755 openvpn-$plug.so $pkgdir/usr/lib/openvpn/openvpn-$plug.so
   done
   # Install easy-rsa
   cd $srcdir/$pkgname-$pkgver
-  make -C easy-rsa/2.0 install DESTDIR=$pkgdir PREFIX=usr/share/openvpn/easy-rsa || return 1
+  make -C easy-rsa/2.0 install DESTDIR=$pkgdir PREFIX=usr/share/openvpn/easy-rsa
   # Install rc scripts
-  install -D -m755 $srcdir/openvpn.rc $pkgdir/etc/rc.d/openvpn || return 1
-  install -D -m755 $srcdir/openvpn-tapdev.rc $pkgdir/etc/rc.d/openvpn-tapdev || return 1
-  install -D -m644 $srcdir/openvpn-tapdev.conf $pkgdir/etc/conf.d/openvpn-tapdev || return 1
+  install -D -m755 $srcdir/openvpn.rc $pkgdir/etc/rc.d/openvpn
+  install -D -m755 $srcdir/openvpn-tapdev.rc $pkgdir/etc/rc.d/openvpn-tapdev
+  install -D -m644 $srcdir/openvpn-tapdev.conf $pkgdir/etc/conf.d/openvpn-tapdev
 }
