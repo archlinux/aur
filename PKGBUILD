@@ -17,7 +17,7 @@ build() {
 
   python2 setup.py install --root="$pkgdir" -O1
 
-  # Point Python scripts to the python2 binary
+  # Use Python 2
   sed -i 's/which python/which python2/' "$pkgdir/usr/bin/virtualenvwrapper.sh"
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
