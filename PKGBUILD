@@ -4,7 +4,7 @@ pkgname=openssl
 _ver=1.0.0b
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -16,11 +16,13 @@ backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         'fix-manpages.patch'
         'no-rpath.patch'
-        'ca-dir.patch')
+        'ca-dir.patch'
+        'fix-t1_lib.patch')
 md5sums=('104deb3b7e6820cae6de3f49ba0ff2b0'
          '5bbc0655bda2af95bc8eb568963ce8ba'
          'dc78d3d06baffc16217519242ce92478'
-         '3bf51be3a1bbd262be46dc619f92aa90')
+         '3bf51be3a1bbd262be46dc619f92aa90'
+         'e2fd8f26386defadc7d93d11c9b90e05')
 
 # keep an upgrade path for older installations
 PKGEXT='.pkg.tar.gz'
@@ -35,6 +37,8 @@ build() {
 	patch -p0 -i $srcdir/no-rpath.patch
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
+	# See http://cvs.openssl.org/chngview?cn=19998
+	patch -p1 -i $srcdir/fix-t1_lib.patch
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
 		shared zlib enable-md2 -Wa,--noexecstack
