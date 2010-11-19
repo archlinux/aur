@@ -11,6 +11,7 @@ pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
 _web100patchversion=2.5.30
 _web100patchdate=201008181640
+makedepends=('subversion quilt')
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://www.kernel.org"
