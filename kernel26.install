@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-mipl
-KERNEL_VERSION=2.6.33-mipl
+KERNEL_VERSION=2.6.35-mipl
 
 post_install () {
   # updating module dependencies

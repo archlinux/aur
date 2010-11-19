@@ -5,21 +5,16 @@
 pkgbase="kernel26-mipl"
 pkgname=('kernel26-mipl' 'kernel26-mipl-headers')
 _kernelname=${pkgname#kernel26}
-_basekernel=2.6.33
-pkgver=${_basekernel}.2
+_basekernel=2.6.35
+pkgver=${_basekernel}.7
 pkgrel=1
 _patchname="patch-${pkgver}-${pkgrel}-ARCH"
+makedepends=('subversion quilt')
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://www.kernel.org"
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-$_basekernel.tar.bz2
         ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
-	dsmip-patches/dsmip-2.6.32_01_dsmip-encap-udp.patch
-	dsmip-patches/dsmip-2.6.30_02_TLV.patch
-	dsmip-patches/dsmip-2.6.30_03_Autoload-Module.patch
-	dsmip-patches/dsmip-2.6.30_04_NATT-report-UDP-info-on-raw-socket.patch
-	dsmip-patches/dsmip-2.6.30_05_check_input_encap.patch
-	dsmip-patches/series
         # the main kernel config files
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
@@ -31,7 +26,7 @@ build() {
   # See http://projects.archlinux.org/linux-2.6-ARCH.git/
   patch -Np1 -i ${srcdir}/${_patchname} || return 1
 
-  ln -s ${startdir}/dsmip-patches patches
+  svn checkout --username anonsvn --password anonsvn https://scm.gforge.inria.fr/svn/mehani/ipv6/dsmip/patches-linux patches 
   quilt push -a || exit 1
 
   if [ "$CARCH" = "x86_64" ]; then
@@ -204,14 +199,8 @@ package_kernel26-mipl-headers() {
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
 
-md5sums=('c3883760b18d50e8d78819c54d579b00'
-         '702d845eba5c5c50ede848137552048d'
-         '3de4853fee795c240688a035f3e561d0'
-         'aa9c294063c5e9d421546d4e035ee34e'
-         'bcd54286aec43c70d3b57f06394a9c7a'
-         '5d9c139a34e316f7c77eb3f856ffe406'
-         'd765b6ec7feba168064ac87d39f80749'
-         '13834128986ee7f5163f44084d1d708a'
+md5sums=('091abeb4684ce03d1d936851618687b6'
+         'df30e2eb9755e45993ddc7e679ab52d8'
          'c4f06913cc98e315ca97de032ae3f46a'
-         'ed4966e8ed28f3e2bb62b2e99971af4a'
+         'ac647b1c30eb84430bff61c8f6d19f47'
          '25584700a0a679542929c4bed31433b6')
