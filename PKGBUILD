@@ -5,16 +5,16 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.43.0
-_boostver=1_43_0
-pkgrel=2
+pkgver=1.45.0
+_boostver=${pkgver//./_}
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('python2' 'bzip2' 'zlib')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz)
 license=('custom')
 options=('!ccache')
-md5sums=('734565ca4819bf04bd8e903e116c3fb1')
+md5sums=('739792c98fafb95e7a6b5da23a30062c')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -24,20 +24,20 @@ build() {
   echo "using python : 2.7 : /usr/bin/python2 ;" >> build/v2/user-config.jam
 
   # build bjam
-  cd "${srcdir}/${pkgbase}_${_boostver}/tools/jam/src"
-  ./build.sh cc || return 1
+  cd "${srcdir}/${pkgbase}_${_boostver}/tools/build/v2/engine/src"
+  ./build.sh cc
 
   _bindir="bin.linuxx86"
   [ "${CARCH}" = "x86_64" ] && _bindir="bin.linuxx86_64"
 
   install -m755 -d "${_stagedir}"/usr/bin
-  install -m755 ${_bindir}/bjam "${_stagedir}"/usr/bin/bjam || return 1
+  install -m755 ${_bindir}/bjam "${_stagedir}"/usr/bin/bjam
 
   # build bcp
   cd "${srcdir}/${pkgbase}_${_boostver}/tools/bcp"
-  ../jam/src/${_bindir}/bjam --toolset=gcc || return 1
+  ../build/v2/engine/src/${_bindir}/bjam --toolset=gcc
   install -m755 "${srcdir}/${pkgbase}_${_boostver}/dist/bin/bcp" \
-                ${_stagedir}/usr/bin/bcp || return 1
+                ${_stagedir}/usr/bin/bcp
 
   # build libs
   cd "${srcdir}/${pkgbase}_${_boostver}"
@@ -48,19 +48,20 @@ build() {
   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
   # install to ${_stagedir} in preparation for split packaging
 
-  ./tools/jam/src/${_bindir}/bjam \
-            release debug-symbols=off threading=single,multi \
-            runtime-link=shared link=shared,static \
-            cflags=-fno-strict-aliasing \
-            toolset=gcc \
-            --prefix="${_stagedir}" \
-            -sTOOLS=gcc \
-            --layout=tagged \
-            install || return 1
+  ./tools/build/v2/engine/src/${_bindir}/bjam \
+      release debug-symbols=off threading=single,multi \
+      runtime-link=shared link=shared,static \
+      cflags=-fno-strict-aliasing \
+      toolset=gcc \
+      --prefix="${_stagedir}" \
+      -sTOOLS=gcc \
+      --layout=tagged \
+      ${MAKEFLAGS} \
+      install
 
   # build pyste
   cd "${srcdir}/${pkgbase}_${_boostver}/libs/python/pyste/install"
-  python2 setup.py install --root=${_stagedir} || return 1
+  python2 setup.py install --root=${_stagedir}
 }
 
 package_boost() {
@@ -80,7 +81,7 @@ package_boost() {
 
     # license
     install -D -m644 "${srcdir}/${pkgbase}_${_boostver}/LICENSE_1_0.txt" \
-        "${pkgdir}"/usr/share/licenses/boost/LICENSE_1_0.txt || return 1
+        "${pkgdir}"/usr/share/licenses/boost/LICENSE_1_0.txt
 }
 
 package_boost-libs() {
@@ -93,5 +94,5 @@ package_boost-libs() {
 
     # license
     install -D -m644 "${srcdir}/${pkgbase}_${_boostver}/LICENSE_1_0.txt" \
-        "${pkgdir}"/usr/share/licenses/boost-libs/LICENSE_1_0.txt || return 1
+        "${pkgdir}"/usr/share/licenses/boost-libs/LICENSE_1_0.txt
 }
