@@ -1,33 +1,30 @@
-# $Id: $
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=kuickshow
 pkgver=0.9.1
-pkgrel=2
-_kdever=4.4.0
+pkgrel=3
 pkgdesc="A very fast and convenient image viewer"
 url="http://userbase.kde.org/KuickShow"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('kdelibs' 'imlib' 'hicolor-icon-theme')
-makedepends=('pkgconfig' 'cmake' 'automoc4')
+makedepends=('pkgconfig' 'cmake' 'automoc4' 'docbook-xsl')
 install=${pkgname}.install
-source=(http://download.kde.org/stable/${_kdever}/src/extragear/${pkgname}-${pkgver}-kde${_kdever}.tar.bz2)
-md5sums=('b98453a9498e4e4142eb07dd93bd107a')
+source=("http://hosti.leonde.de/~gis/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('ac8a7b411445fa91a3fbce76e32ee063')
 
 build() {
   cd ${srcdir}
   mkdir build
   cd build
-  cmake ../${pkgname}-${pkgver}-kde${_kdever} \
+  cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make || return 1
+  make
 }
 
 package(){
   cd ${srcdir}/build
-  make DESTDIR=${pkgdir} install || return 1
+  make DESTDIR=${pkgdir} install
 }
