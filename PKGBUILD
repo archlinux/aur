@@ -2,12 +2,12 @@
 
 pkgname=digikam
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for kde"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://digikam.sourceforge.net"
-depends=('kdebase-runtime' 'kdegraphics-libs' 'kdepimlibs' 'lensfun' 'kdeedu-marble' 'liblqr')
+depends=('kdebase-runtime' 'kdegraphics-libs' 'kdepimlibs' 'kdeedu-marble' 'liblqr')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'doxygen')
 replaces=('digikamimageplugins')
 install=digikam.install
@@ -18,7 +18,10 @@ build() {
    cd ${srcdir}
    mkdir build
    cd build
+   # use internel lensfun packages
    cmake ../${pkgname}-${pkgver} \
+     -DLENSFUN_LIBRARY="" \
+     -DLENSFUN_INCLUDE_DIR="" \
      -DCMAKE_INSTALL_PREFIX=/usr \
      -DENABLE_MARBLEWIDGET=yes \
      -DWITH_MarbleWidget=yes \
