@@ -10,9 +10,9 @@ license=("GPL")
 arch=('i686' 'x86_64')
 depends=('qt' 'phonon' 'sdl' 'libxmu')
 makedepends=('rsync' 'mesa')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        'qmamecat.desktop')
-md5sums=('9b124627a77acaaf896fa328359beb8a'
+source=("http://downloads.sourceforge.net/project/qmc2/qmc2/$pkgver/qmc2-$pkgver.tar.bz2"
+	"qmamecat.desktop")
+md5sums=('e4f8515ac85c44b98948642c98efa69b'
          'bf2a7898e6fff196fb99b5bcc4128a79')
 
 build() {
@@ -25,6 +25,6 @@ build() {
 
   mkdir -p $pkgdir/usr/share/{applications,pixmaps}
 
-  install -D -m644 "$srcdir/qmamecat.desktop" "$pkgdir/usr/share/applications" && \
+  install -D -m644 "$srcdir/qmamecat.desktop" "$pkgdir/usr/share/applications"
   install -D -m644 "$srcdir/qmc2/data/img/mame.png" "$pkgdir/usr/share/pixmaps"
 }
