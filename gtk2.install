@@ -1,5 +1,5 @@
 post_install() {
-  usr/bin/gtk-query-immodules-2.0-32 > etc/gtk-2.0/gtk.immodules-32
+  GTK_PATH=/usr/lib32/gtk-2.0 usr/bin/gtk-query-immodules-2.0-32 > etc/gtk-2.0/gtk.immodules-32
 }
 
 pre_upgrade() {
