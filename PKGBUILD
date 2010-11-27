@@ -5,7 +5,7 @@
 _pkgbasename=openal
 pkgname=lib32-$_pkgbasename
 pkgver=1.12.854
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenAL audio library for use with opengl (32-bit)"
 arch=('x86_64')
 url="http://www.openal.org/"
