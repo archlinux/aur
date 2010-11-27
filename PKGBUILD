@@ -1,5 +1,6 @@
-# Maintainer: Allan McRae <allan@archlinux.org>
-# Contributer: Jason Chu <jchu@xentac.net>
+# Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Jason Chu <jchu@xentac.net>
 
 _pkgbasename=openal
 pkgname=lib32-$_pkgbasename
@@ -10,7 +11,7 @@ arch=('x86_64')
 url="http://www.openal.org/"
 license=('LGPL')
 depends=('lib32-glibc' $_pkgbasename)
-makedepends=('lib32-alsa-lib' 'lib32-sdl' 'pkgconfig' 'cmake' gcc-multilib)
+makedepends=('lib32-alsa-lib' 'lib32-sdl' 'lib32-libpulse' 'pkgconfig' 'cmake' gcc-multilib)
 options=('!libtool')
 source=(http://kcat.strangesoft.net/openal-releases/openal-soft-${pkgver}.tar.bz2)
 md5sums=('fbf36451fdebd6466edbdc0ee7db9603')
