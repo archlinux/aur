@@ -3,21 +3,19 @@
 
 pkgname=libvirt
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
-	 'avahi' 'yajl' 'libpciaccess')
-makedepends=('avahi' 'libsasl' 'pkgconfig' 'lvm2')
-optdepends=('avahi: for network discovery'
-	    'bridge-utils: for briged networking (default)'
+	 'avahi' 'yajl' 'libpciaccess' 'hal' 'dbus-core' 'libxau' 'libxdmcp' 'libpcap'
+	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs')
+makedepends=('pkgconfig' 'lvm2')
+optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
-	    'hal'
 	    'kernel26-ovz24: for openvz guests'
 	    'kvm'
-	    'libsasl: for sasl support'
 	    'lxc'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
