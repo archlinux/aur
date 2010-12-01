@@ -4,7 +4,7 @@
 pkgname=xinetd
 pkgver=2.3.14
 pkgrel=6
-pkgdesc="a secure replacement for inetd"
+pkgdesc="A secure replacement for inetd"
 arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
 license=('custom')
