@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=smartbg-git
-pkgver=20101006
+pkgver=20101203
 pkgrel=1
 pkgdesc="A smart wallpaper setter for multi-head X displays"
 arch=(any)
@@ -39,10 +39,4 @@ build() {
 
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING || return 1
   install -Dm755 smartbg $pkgdir/usr/bin/smartbg
-
-  # Patch to use python2
-  find $pkgdir -type f \( -name '*.py' -or -executable \) -exec \
-    sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-           -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-    \{\} +
 } 
