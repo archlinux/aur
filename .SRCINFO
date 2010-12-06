@@ -1,7 +1,7 @@
 pkgbase = homesick
 	pkgdesc = A man's home is his castle. Never leave your dotfiles behind.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/technicalpickles/homesick
 	arch = any
 	license = MIT

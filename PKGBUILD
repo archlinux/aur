@@ -1,7 +1,7 @@
 # Contributor: Leonidas <marek@xivilization.net>
 pkgname=homesick
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A man's home is his castle. Never leave your dotfiles behind."
 arch=(any)
 url="http://github.com/technicalpickles/homesick"
@@ -18,6 +18,12 @@ build() {
   # _gemdir is defined inside build() because if ruby[gems] is not installed on the system
   #  makepkg will barf when sourcing the PKGBUILD
   local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  # we want to write the 'homesick' binary to the $PATH
+  local _bindir="$pkgdir/usr/bin"
 
-  gem install --ignore-dependencies -i "$pkgdir$_gemdir" homesick-$pkgver.gem
+  gem install \
+    --ignore-dependencies \
+    --install-dir "$pkgdir$_gemdir" \
+    --bindir "$_bindir" \
+    homesick-$pkgver.gem
 }
