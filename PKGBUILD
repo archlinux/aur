@@ -1,4 +1,4 @@
-# Maintainer: Schnouki <thomas.jost@gmail.com>
+# Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=sobby
 pkgver=0.4.7
 pkgrel=1
@@ -15,6 +15,6 @@ sha1sums=('ca20369eabce1657d090b310d78d4a35d697f28b')
 build() {
   cd $srcdir/sobby-$pkgver
   ./configure --prefix=/usr
-  make || return 1
+  make
   make DESTDIR=$pkgdir install
 }
