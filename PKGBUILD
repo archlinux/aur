@@ -3,18 +3,18 @@
 
 _pkgbasename=libcanberra
 pkgname=lib32-$_pkgbasename
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 arch=(x86_64)
 license=('LGPL')
-depends=('lib32-libvorbis>=1.2.1rc1' 'lib32-libtool>=2.2.6a' 'lib32-gtk2>=2.18.2' 'lib32-alsa-lib>=1.0.20' 'lib32-tdb' $_pkgbasename)
+depends=('lib32-libvorbis>=1.3.2' 'lib32-libtool>=2.2.6a' 'lib32-gtk2>=2.20.1' 'lib32-alsa-lib>=1.0.20' 'lib32-tdb' $_pkgbasename)
 makedepends=('gtk-doc' lib32-pulseaudio gcc-multilib libtool-multilib)
 optdepends=('lib32-pulseaudio: PulseAudio support')
 options=(!emptydirs)
 url=http://0pointer.de/lennart/projects/libcanberra
 source=("$url/$_pkgbasename-$pkgver.tar.gz")
-md5sums=('d7a158d22d0b44fb2a67aadae74e28ab')
+md5sums=('ee2c66ada7c851a4e7b6eb1682285a24')
 
 build() {
   export CC="gcc -m32"
