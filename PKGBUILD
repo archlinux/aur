@@ -3,20 +3,20 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=8.0.552.215
+pkgver=9.0.600.0
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss')
+depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss' 'libxtst')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
         'chromium.desktop' 'chromium.sh')
-md5sums=('db600a75c23bb5bfdea0de4a86be9212'
+md5sums=('593691e36e016dc7ae8a76c2f9ac437e'
          'c5e849fcb1101149977355c99d8ff78f'
          '096a46ef386817988250d2d7bddd1b34')
 
