@@ -3,15 +3,15 @@
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
 pkgname=youtube-dl
-pkgver=2010.08.04
-pkgrel=2
+pkgver=2010.12.09
+pkgrel=1
 pkgdesc='A small command-line program to download videos from YouTube.com'
 arch=('any')
-url='http://bitbucket.org/rg3/youtube-dl/'
+url='http://rg3.github.com/youtube-dl/'
 license=('MIT')
 depends=('python2')
-source=("http://bitbucket.org/rg3/${pkgname}/raw/${pkgver}/${pkgname}")
-md5sums=('8b1b8b922b758aae28f6c158e9a1baba')
+source=("https://github.com/rg3/${pkgname}/raw/${pkgver}/${pkgname}")
+md5sums=('3f30efd79e00d104296b0bf80c732d3d')
 
 package() {
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' ${srcdir}/${pkgname}
