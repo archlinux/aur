@@ -1,0 +1,11 @@
+diff -ur a/src/gv_misc_res.dat b/src/gv_misc_res.dat
+--- a/src/gv_misc_res.dat	2010-10-15 09:21:36.000000000 +0200
++++ b/src/gv_misc_res.dat	2010-10-15 09:21:48.000000000 +0200
+@@ -476,7 +476,6 @@
+  <Key>BackSpace:	GV_Page(up,left-bottom,!page-1,bottom-rightedge)\n\
+  <Key>Insert:		GV_Page(page-5)		\n\
+  <Key>Delete:		GV_Page(page+5)		\n\
+- <Key>apLineDel:	GV_Page(page+5)		\n\
+  <Key>Home:		GV_Page(page=0)		\n\
+  <Key>End:		GV_Page(page=99999)	\n\
+  <Key>Prior:		GV_Page(page-1)		\n\
