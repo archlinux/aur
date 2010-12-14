@@ -2,15 +2,15 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=buildbot
-pkgver=0.8.1p1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="A system to automate the compile/test cycle required by most software projects"
 arch=('any')
 url="http://buildbot.net"
 license=("GPL")
 depends=('twisted' 'python-jinja' 'python-simplejson' 'python-pysqlite')
 source=(http://downloads.sourceforge.net/buildbot/buildbot-$pkgver.tar.gz)
-md5sums=('fc12c0e94e246b9b12c80a0baf72de08')
+md5sums=('a377f79b8e59c29891886eb980dc8703')
 
 build() {
   cd $srcdir/buildbot-$pkgver
