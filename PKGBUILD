@@ -12,7 +12,7 @@ license=('custom: "Savage 2"')
 depends=('mesa' 'libxml2')
 makedepends=('unzip')
 install=savage2.install
-source=("http://see.aur.thread/Savage2Install-$pkgver-$CARCH.bin" \
+source=("http://188.40.92.72/Savage2Install-$pkgver-$CARCH.bin" \
 'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop')
 md5sums=('1ff815b9e864862d6d2cf6c635278b80'
          'fb03853628775f66689852a4125044e8'
