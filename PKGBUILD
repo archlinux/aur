@@ -1,31 +1,26 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=2.6.34
-_basever=2.6.34
+pkgver=2.6.36.2
+_basever=2.6.36
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
 provides=("kernel-headers=${pkgver}")
-conflicts=("glibc<=2.10.1-4" 'kernel-headers')
+conflicts=('kernel-headers')
 replaces=('kernel-headers')
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-${_basever}.tar.bz2
-	#http://www.kernel.org/pub/linux/kernel/v2.6/patch-${pkgver}.bz2
-	scsi.patch)
-md5sums=('10eebcb0178fb4540e2165bfd7efc7ad'
-         'b6d05566fcfe07770d9386f0588f8758')
+	http://www.kernel.org/pub/linux/kernel/v2.6/patch-${pkgver}.bz2)
+md5sums=('61f3739a73afb6914cb007f37fb09b62'
+         '4b01c5f9657a9587b262df5f8d784116')
 
 build() {
   cd ${srcdir}/linux-${_basever}
-  #patch -Np1 -i ${srcdir}/patch-${pkgver}
-  
-  # fix issues with transition of scsi.h from glibc
-  patch -Np1 -i ${srcdir}/scsi.patch
+  patch -Np1 -i ${srcdir}/patch-${pkgver}
 
   make mrproper
   make headers_check
@@ -38,5 +33,6 @@ package() {
   # use headers from libdrm
   rm -rf ${pkgdir}/usr/include/drm
   
+  # clean-up unnecessary files generated during install
   rm -f $(find ${pkgdir} -name .install -or -name ..install.cmd)
 }
