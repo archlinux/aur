@@ -31,6 +31,4 @@ package() {
   make DESTDIR=${pkgdir}/ install 
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
 }
