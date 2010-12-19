@@ -1,16 +1,14 @@
 pkgbase = univga
 	pkgdesc = Unicode VGA font
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.inp.nsk.su/~bolkhov/files/fonts/univga/
 	install = univga.install
 	arch = any
 	license = MIT
 	makedepends = xorg-font-utils
 	source = http://www.inp.nsk.su/~bolkhov/files/fonts/univga/uni-vga.tgz
-	source = http://ftp.de.debian.org/debian/pool/main/c/console-setup/bdf2psf_1.63_all.deb
 	md5sums = 60fbba53cb0efec1363fcc5fb8c244d9
-	md5sums = 83cfa34b14b8b280c9026ee304277d1c
 
 pkgname = univga
 
