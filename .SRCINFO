@@ -1,7 +1,7 @@
 pkgbase = univga
 	pkgdesc = Unicode VGA font
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.inp.nsk.su/~bolkhov/files/fonts/univga/
 	install = univga.install
 	arch = any
