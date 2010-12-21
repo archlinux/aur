@@ -1,18 +1,17 @@
-# $Id: $
 # Maintainer:
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 
 pkgname=python-nose
-pkgver=0.11.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url="http://www.somethingaboutorange.com/mrl/projects/nose/"
 license=('LGPL2')
-depends=('setuptools')
+depends=('python2-distribute')
 source=("http://www.somethingaboutorange.com/mrl/projects/nose/nose-${pkgver}.tar.gz")
-md5sums=('7f1dc53750811f78bedef9e14a4bc5a5')
+md5sums=('9542d4c66e04880d8144990de76e0b88')
 
 build() {
   cd "$srcdir/nose-$pkgver"
@@ -21,5 +20,5 @@ build() {
 
 package() {
   cd "$srcdir/nose-$pkgver"
-  python2 setup.py install --prefix=/usr --root=${pkgdir} || return 1
+  python2 setup.py install --prefix=/usr --root=${pkgdir}
 }
