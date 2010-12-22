@@ -1,0 +1,15 @@
+pkgbase = perl-config-properties
+	pkgdesc = Config::Properties is a near implementation of the java.util.Properties API.
+	pkgver = 1.71
+	pkgrel = 1
+	url = http://search.cpan.org/~salva/Config-Properties/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Config-Properties-1.71.tar.gz
+	md5sums = b8b8457f3b07f5e4b342353fed43f93b
+
+pkgname = perl-config-properties
+
