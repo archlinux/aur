@@ -1,0 +1,16 @@
+pkgbase = perl-rpsl-parser
+	pkgdesc = Router Policy Specification Language (RFC2622) Parser
+	pkgver = 0.04000
+	pkgrel = 1
+	url = http://search.cpan.org/~lmc/RPSL-Parser/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0,
+	depends = perl-class-accessor>=0.31
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LM/LMC/RPSL-Parser-0.04000.tar.gz
+	md5sums = f4344b0258b7d55dd5e0923a1fcda33d
+
+pkgname = perl-rpsl-parser
+
