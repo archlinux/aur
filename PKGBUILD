@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 77041 2010-04-10 14:42:02Z andrea $
 # Maintainer:
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
