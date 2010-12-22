@@ -1,0 +1,23 @@
+pkgbase = gmpc-plugins
+	pkgdesc = official plugins for GMPC
+	pkgver = 0.20.0
+	pkgrel = 2
+	url = http://gmpc.wikia.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gob2
+	makedepends = intltool
+	depends = libmpd>=0.19.0
+	depends = gmpc>=0.19.0
+	depends = lirc
+	depends = xosd
+	depends = libwebkit
+	depends = libmicrohttpd
+	depends = taglib
+	options = !libtool
+	source = http://download.sarine.nl/Programs/gmpc/0.20.0/gmpc-plugins-0.20.0.tar.gz
+	md5sums = e8c47c7cfeb8aab8995beef45d1c95ce
+
+pkgname = gmpc-plugins
+
