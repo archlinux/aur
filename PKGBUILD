@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 79020 2010-04-30 01:30:58Z dgriffiths $
 # Maintainer : James Rayner <iphitus@gmail.com>
 # Contributor: Roberto Salas <ro0xito@gmail.com>
 
