@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 50423 2009-08-26 10:46:55Z allan $
 # Maintainer: 
 # Contributor: damir <damir@archlinux.org>
 
