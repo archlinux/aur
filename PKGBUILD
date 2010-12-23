@@ -31,6 +31,8 @@ build() {
 }
 
 package_lib32-libcanberra() {
+  optdepends=("$pkgbase-pulse: PulseAudio driver")
+
   cd "$srcdir/$_pkgbasename-$pkgver"
 
   make -j1 DESTDIR="${pkgdir}" install
