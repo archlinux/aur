@@ -1,0 +1,15 @@
+pkgbase = gscanbus
+	pkgdesc = gscanbus is a little bus scanning, testing and topology visualizing tool for the Linux IEEE1394 subsystem
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://gscanbus.berlios.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libraw1394>=1.2.0
+	depends = gtk2
+	source = http://download.berlios.de/gscanbus/gscanbus-0.8.tar.gz
+	md5sums = 086bed2bcfb43f2ae892a12de699630e
+
+pkgname = gscanbus
+
