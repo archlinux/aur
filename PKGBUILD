@@ -3,7 +3,7 @@
 
 pkgname=perl-crypt-ssleay
 pkgver=0.58
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSSL glue that provides LWP https support"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Crypt-SSLeay"
@@ -16,9 +16,14 @@ md5sums=('fbf3d12e58462cee00ea63239c0b13c7')
 build() {
   cd  "${srcdir}/Crypt-SSLeay-${pkgver}"
 
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1 
-  make || return 1
-  make install DESTDIR="${pkgdir}" || return 1
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make test
+}
+
+package() {
+  cd  "${srcdir}/Crypt-SSLeay-${pkgver}"
+  make install DESTDIR="${pkgdir}"
 
   find ${pkgdir} -name '.packlist' -delete
   find ${pkgdir} -name '*.pod' -delete
