@@ -27,8 +27,4 @@ post_remove() {
   update-desktop-database -q
 }
 
-op=$1
-shift
-$op $*
-
 # vim: ft=sh
