@@ -3,7 +3,7 @@
 pkgname=setcd
 _basever=1.5
 _extver=6
-pkgver=${_basever}.${_extver}
+pkgver=${_basever}_${_extver}
 pkgrel=2
 pkgdesc="Control the behaviour of your cdrom device"
 arch=('i686' 'x86_64')
