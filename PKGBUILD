@@ -16,6 +16,7 @@ md5sums=('9882ba9a93fcb18ab704a10da80c228c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  [ $CARCH == "x86_64" ] && export CFLAGS=-fPIC
   ./configure --prefix=/usr --mandir=/usr/share/man --libdir=/usr/lib
   make -j1 all libs
 }
