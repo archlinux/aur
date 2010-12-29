@@ -1,9 +1,10 @@
-# Maintainer: 
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer:
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=gocr
 pkgver=0.48
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source character recognition (OCR)"
 arch=("i686" "x86_64")
 url="http://jocr.sourceforge.net/index.html"
@@ -15,8 +16,17 @@ md5sums=('9882ba9a93fcb18ab704a10da80c228c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --mandir=/usr/share/man || return 1
-  make || return 1
-  make DESTDIR=$pkgdir bindir=/usr/bin install || return 1
+  ./configure --prefix=/usr --mandir=/usr/share/man --libdir=/usr/lib
+  make -j1 all libs
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  mkdir -p $pkgdir/usr/lib
+  make DESTDIR=$pkgdir libdir=/usr/lib/ bindir=/usr/bin install
+  (cd $pkgdir/usr/lib/ && rm -f libPgm2asc.so && ln -s `echo libPgm2asc*.so` libPgm2asc.so)
   install -D -m644 doc/gocr.html $pkgdir/usr/share/doc/gocr/gocr.html
+  for i in pgm2asc.h gocr.h; do
+    install -D -m644 src/$i $pkgdir/usr/include/gocr/$i
+  done
 }
