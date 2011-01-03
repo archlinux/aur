@@ -1,8 +1,9 @@
 pkgbase = gmpc-plugins
 	pkgdesc = official plugins for GMPC
 	pkgver = 0.20.0
-	pkgrel = 2
-	url = http://gmpc.wikia.com/
+	pkgrel = 3
+	url = http://gmpclient.org/
+	changelog = gmpc-plugins.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL

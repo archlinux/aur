@@ -2,22 +2,27 @@
 # Contributor: Dmitrij D. Czarkoff <czarkoff@gmail.com>
 pkgname=gmpc-plugins
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="official plugins for GMPC"
 arch=(i686 x86_64)
-url="http://gmpc.wikia.com/"
+url="http://gmpclient.org/"
 license="GPL"
 depends=('libmpd>=0.19.0' 'gmpc>=0.19.0' 'lirc' 'xosd' 'libwebkit' 'libmicrohttpd' 'taglib')
 makedepends=('gob2' 'intltool')
 source=(http://download.sarine.nl/Programs/gmpc/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('e8c47c7cfeb8aab8995beef45d1c95ce')
 options=(!libtool)
+changelog=$pkgname.changelog
 
 build() {
-  cd ${startdir}/src
-  tar xzf ${pkgname}-${pkgver}.tar.gz 
-  cd $startdir/src/$pkgname-$pkgver
+  cd ${srcdir}/$pkgname-$pkgver
   ./configure --prefix=/usr
-  make || return 1
-  make DESTDIR=$startdir/pkg install
+  make
 }
+
+package(){
+  cd ${srcdir}/$pkgname-$pkgver
+  make install DESTDIR=${pkgdir}
+}
+
+# vim:set ts=2 sw=2 et:
