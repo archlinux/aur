@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=0.8.6
-pkgrel=2
+pkgver=0.8.7
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -34,7 +34,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	openbsd-netcat-default.patch
 	unixperms.patch)
-md5sums=('9ed61a02983dc42d0ea0224711ace025'
+md5sums=('596bafb53bb6c079a0703f1726cb2305'
          '5ffe22be0f43ed7c6468b79cd1a9f114'
          'cb4e9bc6b209c1f3077d3698bf1d4437'
          '15bbe9f56644929cee41b8faec0b8d80'
@@ -55,10 +55,10 @@ build() {
 #  access, create a group called libvirt and uncomment the line below:
 #  patch -Np1 -i "$srcdir"/unixperms.patch
 
-  patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
+  [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
 
   export LDFLAGS=-lX11
-  ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
+  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
 	--with-storage-lvm --without-xen
   find -name Makefile -exec sed -i 's#-L /usr#-L/usr#' {} \;
   make -j1
