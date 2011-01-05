@@ -1,11 +1,11 @@
-# Maintainer : Aaron Griffin <aaron@archlinux.org>
+# Maintainer:
 # Contributor : Aaron Griffin <aaron@archlinux.org>
 
 pkgname=slim-themes
 pkgver=1.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Themes Pack for Simple Login Manager"
-arch=(i686 x86_64)
+arch=('any')
 url='http://slim.berlios.de'
 depends=('slim')
 license=('GPL')
@@ -31,29 +31,28 @@ md5sums=('fd1295d3a260849790dc17081da4a34f' 'c0cef9e7b95bdf2df3fb303d155f8476'
          'c727aab888dde774acc04403c84b5b3b' '7a0bd7a0736794e638668769b9c4c745'
          '5f3818e01b0593d0e576fcd7e2c6bafa')
 
-options=(force)
+package() {
+  cd ${srcdir}
 
-build() {
-  mkdir -p $startdir/pkg/usr/share/slim/themes
-  cd $startdir/src/
-  mv fingerprint $startdir/pkg/usr/share/slim/themes
-  mv flat $startdir/pkg/usr/share/slim/themes
-  mv previous $startdir/pkg/usr/share/slim/themes
-  mv lake $startdir/pkg/usr/share/slim/themes
-  mv rainbow $startdir/pkg/usr/share/slim/themes
-  mv rear-window $startdir/pkg/usr/share/slim/themes
-  mv scotland-road $startdir/pkg/usr/share/slim/themes
-  mv subway $startdir/pkg/usr/share/slim/themes
-  mv wave $startdir/pkg/usr/share/slim/themes
-  mv slim-lunar-0.4 $startdir/pkg/usr/share/slim/themes/lunar
-  mv Zenwalk $startdir/pkg/usr/share/slim/themes/zenwalk
-  mv parallel-dimensions $startdir/pkg/usr/share/slim/themes
-  mv capernoited $startdir/pkg/usr/share/slim/themes
-  mv mindlock $startdir/pkg/usr/share/slim/themes
-  mv flower2 $startdir/pkg/usr/share/slim/themes
-  mv debian-moreblue $startdir/pkg/usr/share/slim/themes
+  install -d ${pkgdir}/usr/share/slim/themes
+  mv fingerprint ${pkgdir}/usr/share/slim/themes
+  mv flat ${pkgdir}/usr/share/slim/themes
+  mv previous ${pkgdir}/usr/share/slim/themes
+  mv lake ${pkgdir}/usr/share/slim/themes
+  mv rainbow ${pkgdir}/usr/share/slim/themes
+  mv rear-window ${pkgdir}/usr/share/slim/themes
+  mv scotland-road ${pkgdir}/usr/share/slim/themes
+  mv subway ${pkgdir}/usr/share/slim/themes
+  mv wave ${pkgdir}/usr/share/slim/themes
+  mv slim-lunar-0.4 ${pkgdir}/usr/share/slim/themes/lunar
+  mv Zenwalk ${pkgdir}/usr/share/slim/themes/zenwalk
+  mv parallel-dimensions ${pkgdir}/usr/share/slim/themes
+  mv capernoited ${pkgdir}/usr/share/slim/themes
+  mv mindlock ${pkgdir}/usr/share/slim/themes
+  mv flower2 ${pkgdir}/usr/share/slim/themes
+  mv debian-moreblue ${pkgdir}/usr/share/slim/themes
 
   # Some of these don't have the right permissions
-  cd $startdir/pkg/usr/share/slim/themes
+  cd ${pkgdir}/usr/share/slim/themes
   find . -type f -exec chmod 644 {} \;
 }
