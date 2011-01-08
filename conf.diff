@@ -1,0 +1,13 @@
+--- tenshi_2011-01-01_194405.conf	2011-01-01 19:44:05.000000000 +0100
++++ tenshi.conf	2011-01-01 19:44:23.000000000 +0100
+@@ -7,8 +7,8 @@
+ set uid tenshi
+ set gid tenshi
+ 
+-set pidfile /var/run/tenshi.pid
+-set logfile /var/log/messages
++set pidfile /var/lib/tenshi/tenshi.pid
++set logfile /var/log/everything.log
+ set logfile /var/log/mail.log
+ # set fifo   /var/log/tenshi.fifo
+ # set listen 127.0.0.1:514

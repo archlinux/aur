@@ -1,0 +1,25 @@
+post_install() {
+    # create tenshi user
+    if [ -z "`grep '^tenshi:' /etc/group`" ]; then
+        groupadd tenshi
+    fi
+    if [ -z "`grep '^tenshi:' /etc/passwd`" ]; then
+        useradd -d /var/lib/tenshi -g tenshi -s /bin/false tenshi
+    else
+        usermod -s /bin/false tenshi
+    fi
+
+    # set more secure permissions on config files, etc
+    chown -R tenshi:tenshi /etc/tenshi
+    chown -R tenshi:tenshi /var/lib/tenshi
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    userdel tenshi &> /dev/null
+    groupdel tenshi &> /dev/null
+}
+
