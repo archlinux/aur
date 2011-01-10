@@ -1,0 +1,17 @@
+pkgbase = efibootmgr-git
+	pkgdesc = Tool to modify (U)EFI Runtime Variables - GIT version. Needs kernel module 'efivars' to be loaded.
+	pkgver = 20110110
+	pkgrel = 1
+	url = http://linux.dell.com/efibootmgr/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = zlib
+	provides = efibootmgr
+	conflicts = efibootmgr
+	source = efibootmgr_default_to_grub2.patch
+	sha256sums = a6450ce3be0e87d047febf761ca90f3298996811ae2b7ff9428f3d5dd45afa8f
+
+pkgname = efibootmgr-git
+
