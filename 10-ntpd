@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -e "/etc/rc.d/ntpd" ]; then
+	case "$2" in
+		up)
+			/etc/rc.d/ntpd start
+		;;
+		vpn-up)
+			/etc/rc.d/ntpd start
+		;;
+		down)
+			/etc/rc.d/ntpd stop
+		;;
+		vpn-down)
+			/etc/rc.d/ntpd stop
+		;;
+	esac
+fi
+
