@@ -3,12 +3,12 @@
 
 pkgname=ccid
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver"
 arch=('i686' 'x86_64')
 url="http://pcsclite.alioth.debian.org/ccid.html"
 license=('LGPL')
-depends=('pcsclite')
+depends=('pcsclite' 'libusb')
 makedepends=('pkgconfig')
 source=(https://alioth.debian.org/frs/download.php/3475/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('fef5f950dc35202df2fed832498986b9')
