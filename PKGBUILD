@@ -4,7 +4,7 @@
 _pkgname="efibootmgr"
 
 pkgname="${_pkgname}-git"
-pkgver=20110110
+pkgver=20110111
 pkgrel=1
 pkgdesc="Tool to modify (U)EFI Runtime Variables - GIT version. Needs kernel module 'efivars' to be loaded."
 arch=('i686' 'x86_64')
@@ -16,11 +16,12 @@ conflicts=('efibootmgr')
 provides=('efibootmgr')
 source=('efibootmgr_default_to_grub2.patch')
 
-sha256sums=('a6450ce3be0e87d047febf761ca90f3298996811ae2b7ff9428f3d5dd45afa8f')
+sha256sums=('db7f0819071a452b434f81baf5b231af87fd9eaaf6c84b9af13d60b81c33881f')
 
 _gitroot="http://linux.dell.com/git/efibootmgr.git"
 _gitname="${_pkgname}"
 
+DESTARCH="i686"
 
 update_git() {
     
@@ -66,5 +67,7 @@ package() {
   
   install -D -m755 ${srcdir}/${_gitname}_1/src/efibootmgr/efibootmgr ${pkgdir}/usr/sbin/${_pkgname}
   install -D -m644 ${srcdir}/${_gitname}_1/src/man/man8/efibootmgr.8 ${pkgdir}/usr/share/man/man8/${_pkgname}.8
+  
+  export CARCH=${DESTARCH}
 
 }

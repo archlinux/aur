@@ -1,5 +1,5 @@
 diff --git a/src/efibootmgr/efibootmgr.c b/src/efibootmgr/efibootmgr.c
-index 199af39..15bdaf5 100644
+index 199af39..3826e03 100644
 --- a/src/efibootmgr/efibootmgr.c
 +++ b/src/efibootmgr/efibootmgr.c
 @@ -18,7 +18,7 @@
@@ -20,15 +20,17 @@ index 199af39..15bdaf5 100644
  
  */
  
-@@ -780,7 +780,7 @@ usage()
+@@ -780,8 +780,8 @@ usage()
  	printf("\t-g | --gpt            force disk with invalid PMBR to be treated as GPT\n");
  	printf("\t-H | --acpi_hid XXXX  set the ACPI HID (used with -i)\n");
  	printf("\t-i | --iface name     create a netboot entry for the named interface\n");
 -	printf("\t-l | --loader name     (defaults to \\elilo.efi)\n");
+-	printf("\t-L | --label label     Boot manager display label (defaults to \"Linux\")\n");
 +	printf("\t-l | --loader name     (defaults to \\EFI\\grub2\\grub.efi)\n");
- 	printf("\t-L | --label label     Boot manager display label (defaults to \"Linux\")\n");
++	printf("\t-L | --label label     Boot manager display label (defaults to \"GRUB2\")\n");
  	printf("\t-n | --bootnext XXXX   set BootNext to XXXX (hex)\n");
  	printf("\t-N | --delete-bootnext delete BootNext\n");
+ 	printf("\t-o | --bootorder XXXX,YYYY,ZZZZ,...     explicitly set BootOrder (hex)\n");
 @@ -808,8 +808,8 @@ set_default_opts()
  	opts.active          = -1;   /* Don't set it */
  	opts.timeout         = -1;   /* Don't set it */
