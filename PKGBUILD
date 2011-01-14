@@ -1,10 +1,9 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer:
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=gocr
-pkgver=0.48
-pkgrel=2
+pkgver=0.49
+pkgrel=1
 pkgdesc="Open-source character recognition (OCR)"
 arch=("i686" "x86_64")
 url="http://jocr.sourceforge.net/index.html"
@@ -12,7 +11,7 @@ license=('GPL')
 depends=('glibc' 'netpbm')
 optdepends=('tk: to use the tk frontend')
 source=(http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-${pkgver}.tar.gz)
-md5sums=('9882ba9a93fcb18ab704a10da80c228c')
+md5sums=('4e527bc4bdd97c2be15fdd818857507f')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
