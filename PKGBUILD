@@ -2,7 +2,7 @@
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
@@ -11,34 +11,29 @@ license=('GPL')
 depends=('chmlib' 'kdelibs' 'qt' 'xdg-utils')
 makedepends=('automoc4' 'cmake')
 options=('libtool')
-install=${pkgname}.install
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        'kchmview-build-fix.diff')
-md5sums=('9798c7f949d1137949e69a8c226415f9'
-         '555b08c8aca9883e7916dc1fe11a8aea')
+install=$pkgname.install
+changelog=$pkgname.changelog
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+sha256sums=('a8666e63358d20d6ead6b9f309434bdfcbd7b869ed7fb425ca8e0a2f7166af22')
 
 build() {
-  cd build-${pkgver}
-
-  # got patch from http://bugs.gentoo.org/320191
-  patch -Np1 -i ${srcdir}/kchmview-build-fix.diff
+  cd $pkgname-$pkgver
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
-
   make
 }
 
 package() {
-  cd build-${pkgver}
+  cd $pkgname-$pkgver
 
   make DESTDIR=${pkgdir} install
 
-  #icon file
-  install -D -m644 ${srcdir}/build-${pkgver}/packages/${pkgname}.png \
-    ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+#icon file
+  install -D -m644 ${srcdir}/$pkgname-$pkgver/packages/$pkgname.png \
+    ${pkgdir}/usr/share/pixmaps/$pkgname.png
 
-  #msits.protocol file provided by kdegraphics package
+#msits.protocol file provided by kdegraphics package
   rm -rf ${pkgdir}/usr/share/kde4
-  #kio_msits.so file provided by kdegraphics package - FS#14376
+#kio_msits.so file provided by kdegraphics package - FS#14376
   rm -rf ${pkgdir}/usr/lib
 }
