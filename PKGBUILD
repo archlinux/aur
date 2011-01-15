@@ -3,8 +3,8 @@
 # Contributor: clarence <catchfire at gmail dot com>
 
 pkgname=patchage
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A modular patch bay for audio and MIDI systems"
 arch=(i686 x86_64)
 url="http://drobilla.net/software/patchage"
@@ -14,22 +14,19 @@ depends=('dbus-glib' 'libglademm' 'hicolor-icon-theme'
 makedepends=('boost' 'python2')
 install=$pkgname.install
 source=(http://download.drobilla.net/$pkgname-$pkgver.tar.bz2)
-md5sums=('77b92342db348e8edd5cc157c135d193')
+md5sums=('3f1c297c8c6b998563d1a2fbc215cf85')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # fix for python 2.7
-  sed -i 's:^#!.*bin/env python:#!/usr/bin/env python2:' waf
-
-  ./waf configure --prefix=/usr
-  ./waf build $MAKEFLAGS
+  python2 waf configure --prefix=/usr
+  python2 waf build $MAKEFLAGS
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./waf --destdir="$pkgdir" install
+  python2 waf --destdir="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
