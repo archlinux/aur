@@ -1,0 +1,16 @@
+pkgbase = python-psycopg2-git
+	pkgdesc = A PostgreSQL database adapter for the Python programming language.
+	pkgver = 20101209
+	pkgrel = 1
+	url = http://initd.org/projects/psycopg2
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = python2
+	depends = postgresql-libs>=8.4.1
+	provides = python-psycopg2=2.3.2
+	conflicts = python-psycopg2
+	options = !strip
+
+pkgname = python-psycopg2-git
+
