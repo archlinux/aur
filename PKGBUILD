@@ -4,13 +4,13 @@
 
 pkgname=glom
 pkgver=1.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
 license=('GPL')
 depends=('libgdamm>=3.99.21' 'libxml++>=2.30.1' 'gconfmm>=2.28.2' 'pygtk'
-         'gnome-python-extras' 'libgtksourceviewmm2' 'goocanvasmm' 'libepc' 
+         'python2-gda' 'libgtksourceviewmm2' 'goocanvasmm' 'libepc' 
          'iso-codes' 'postgresql' 'hicolor-icon-theme' 'shared-mime-info'
          'gtkmm>=2.22.0' 'boost-libs>=1.45' 'gettext')
 makedepends=('intltool' 'gnome-doc-utils>=0.20.2' 'boost>=1.45' 'python-sphinx' 'glibmm-docs')
