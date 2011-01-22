@@ -4,7 +4,7 @@
 _pkgname="efibootmgr"
 
 pkgname="${_pkgname}-git"
-pkgver=20110111
+pkgver=20110122
 pkgrel=1
 pkgdesc="Tool to modify (U)EFI Runtime Variables - GIT version. Needs kernel module 'efivars' to be loaded."
 arch=('i686' 'x86_64')
@@ -23,20 +23,24 @@ _gitname="${_pkgname}"
 
 
 update_git() {
-    
+  
   cd "${srcdir}"
   msg "Connecting to GIT server...."
-
+  
   if [ -d ${srcdir}/${_gitname}/ ]
   then
-      cd ${_gitname} && git fetch && git checkout origin/master && git reset --hard
-      msg "The local files are updated."
+      cd ${srcdir}/${_gitname}/
+      git reset --hard
+      git fetch
+      git checkout master
+      git merge remotes/origin/master
+      msg "The local GIT repo has been updated."
   else
       git clone ${_gitroot} ${_gitname}
   fi
-
+  
   msg "GIT checkout done or server timeout"
-
+  
 }
 
 
