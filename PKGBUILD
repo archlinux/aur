@@ -6,7 +6,7 @@ _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 pkgver=20110122
 pkgrel=1
-pkgdesc="Tool to modify (U)EFI Runtime Variables - GIT version. Needs kernel module 'efivars' to be loaded."
+pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables. Needs the kernel module 'efivars'."
 arch=('i686' 'x86_64')
 url="http://linux.dell.com/efibootmgr/"
 license=('GPL2')
@@ -14,6 +14,8 @@ depends=('zlib')
 makedepends=('git')
 conflicts=('efibootmgr')
 provides=('efibootmgr')
+options=(strip purge docs zipman !emptydirs)
+
 source=('efibootmgr_default_to_grub2.patch')
 
 sha256sums=('db7f0819071a452b434f81baf5b231af87fd9eaaf6c84b9af13d60b81c33881f')
@@ -48,16 +50,18 @@ build() {
   
   update_git
   
-  rm -rf ${srcdir}/${_gitname}_1/ || true
+  rm -rf ${srcdir}/${_gitname}_build/ || true
 
-  cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}_1
+  cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}_build
 
-  cd ${srcdir}/${_gitname}_1/
+  cd ${srcdir}/${_gitname}_build/
   
   patch -Np1 -i ${srcdir}/efibootmgr_default_to_grub2.patch
+  echo
   
-  make || return 1
-
+  CFLAGS= make
+  echo
+  
 }
 
 
@@ -66,9 +70,9 @@ package() {
   mkdir -p ${pkgdir}/usr/sbin/
   mkdir -p ${pkgdir}/usr/share/man/man8/
   
-  cd ${srcdir}/${_gitname}_1/
+  cd ${srcdir}/${_gitname}_build/
   
-  install -D -m755 ${srcdir}/${_gitname}_1/src/efibootmgr/efibootmgr ${pkgdir}/usr/sbin/${_pkgname}
-  install -D -m644 ${srcdir}/${_gitname}_1/src/man/man8/efibootmgr.8 ${pkgdir}/usr/share/man/man8/${_pkgname}.8
+  install -D -m755 ${srcdir}/${_gitname}_build/src/efibootmgr/efibootmgr ${pkgdir}/usr/sbin/efibootmgr
+  install -D -m644 ${srcdir}/${_gitname}_build/src/man/man8/efibootmgr.8 ${pkgdir}/usr/share/man/man8/efibootmgr.8
 
 }
