@@ -4,7 +4,7 @@
 _pkgname="efibootmgr"
 
 pkgname="${_pkgname}-git"
-pkgver=20110122
+pkgver=20110123
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables. Needs the kernel module 'efivars'."
 arch=('i686' 'x86_64')
