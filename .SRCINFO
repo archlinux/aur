@@ -1,7 +1,7 @@
 pkgbase = gmpc-plugins
 	pkgdesc = official plugins for GMPC
 	pkgver = 0.20.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gmpclient.org/
 	changelog = gmpc-plugins.changelog
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = gmpc-plugins
 	makedepends = intltool
 	depends = libmpd>=0.19.0
 	depends = gmpc>=0.19.0
-	depends = lirc
+	depends = lirc-utils
 	depends = xosd
 	depends = libwebkit
 	depends = libmicrohttpd

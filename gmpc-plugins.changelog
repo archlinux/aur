@@ -1,3 +1,8 @@
+2011-01-24 Cedric Girard <girard.cedric@gmail.com>
+
+        * 0.20.0-4 :
+        Corrected lirc dependency to lirc-utils
+
 2011-01-03 Cedric Girard <girard.cedric@gmail.com>
 
 	* 0.20.0-3 :
