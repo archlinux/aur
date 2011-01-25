@@ -4,11 +4,11 @@
 pkgname=vim-align
 pkgver=35.41
 _scriptid='10110'
-pkgrel=5
+pkgrel=6
 pkgdesc='Lets you align lines using regular expressions'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=294'
-license=('GPL')
+license=('custom')
 depends=('vim')
 install=vimdoc.install
 source=("$pkgname.vbz.gz::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
