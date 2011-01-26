@@ -1,0 +1,13 @@
+pkgbase = ledmon
+	pkgdesc = Monitor your keyboard LED [C] (unmaintained)
+	pkgver = 20110126
+	pkgrel = 1
+	url = http://github.com/jgoerzen/ledmon
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libx11
+
+pkgname = ledmon
+
