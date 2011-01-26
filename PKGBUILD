@@ -6,8 +6,8 @@
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
 pkgname=opera
 pkgver=11.00
-_buildver=1156
-pkgrel=1
+_buildver=1176
+pkgrel=2
 pkgdesc="A fast and secure web browser and Internet suite."
 url="http://www.opera.com/browser/"
 depends=('gcc-libs' 'libxt' 'freetype2' 'libxext')
