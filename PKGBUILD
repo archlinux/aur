@@ -18,7 +18,7 @@ options=(strip purge docs zipman !emptydirs)
 
 source=('efibootmgr_default_to_grub2.patch')
 
-sha256sums=('db7f0819071a452b434f81baf5b231af87fd9eaaf6c84b9af13d60b81c33881f')
+sha256sums=('5306a6f952d17215b129392953ae6551df0e4cf1960a959ab98c60f27fab9b90')
 
 _gitroot="http://linux.dell.com/git/efibootmgr.git"
 _gitname="${_pkgname}"
