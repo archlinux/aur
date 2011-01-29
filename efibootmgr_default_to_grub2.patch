@@ -7,7 +7,7 @@ index 199af39..3826e03 100644
  
  
 -  This must tie the EFI_DEVICE_PATH to /boot/efi/elilo.efi
-+  This must tie the EFI_DEVICE_PATH to /boot/efi/EFI/grub2/grub.efi
++  This must tie the EFI_DEVICE_PATH to /boot/efi/EFI/grub/grub.efi
    The  EFI_DEVICE_PATH will look something like:
      ACPI device path, length 12 bytes
      Hardware Device Path, PCI, length 6 bytes
@@ -26,7 +26,7 @@ index 199af39..3826e03 100644
  	printf("\t-i | --iface name     create a netboot entry for the named interface\n");
 -	printf("\t-l | --loader name     (defaults to \\elilo.efi)\n");
 -	printf("\t-L | --label label     Boot manager display label (defaults to \"Linux\")\n");
-+	printf("\t-l | --loader name     (defaults to \\EFI\\grub2\\grub.efi)\n");
++	printf("\t-l | --loader name     (defaults to \\EFI\\grub\\grub.efi)\n");
 +	printf("\t-L | --label label     Boot manager display label (defaults to \"GRUB2\")\n");
  	printf("\t-n | --bootnext XXXX   set BootNext to XXXX (hex)\n");
  	printf("\t-N | --delete-bootnext delete BootNext\n");
@@ -37,7 +37,7 @@ index 199af39..3826e03 100644
  	opts.edd10_devicenum = 0x80;
 -	opts.loader          = "\\elilo.efi";
 -	opts.label           = "Linux";
-+	opts.loader          = "\\EFI\\grub2\\grub.efi";
++	opts.loader          = "\\EFI\\grub\\grub.efi";
 +	opts.label           = "GRUB2";
  	opts.disk            = "/dev/sda";
  	opts.iface           = NULL;
