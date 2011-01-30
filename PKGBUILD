@@ -25,54 +25,54 @@ _gitname="${_pkgname}"
 
 
 update_git() {
-  
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
-  
-  if [ -d ${srcdir}/${_gitname}/ ]
-  then
-      cd ${srcdir}/${_gitname}/
-      git reset --hard
-      git fetch
-      git checkout master
-      git merge remotes/origin/master
-      msg "The local GIT repo has been updated."
-  else
-      git clone ${_gitroot} ${_gitname}
-  fi
-  
-  msg "GIT checkout done or server timeout"
-  
+	
+	cd "${srcdir}"
+	msg "Connecting to GIT server...."
+	
+	if [ -d ${srcdir}/${_gitname}/ ]
+	then
+		cd ${srcdir}/${_gitname}/
+		git reset --hard
+		git fetch
+		git checkout master
+		git merge remotes/origin/master
+		msg "The local GIT repo has been updated."
+	else
+		git clone ${_gitroot} ${_gitname}
+	fi
+	
+	msg "GIT checkout done or server timeout"
+	
 }
 
 
 build() {
-  
-  update_git
-  
-  rm -rf ${srcdir}/${_gitname}_build/ || true
-
-  cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}_build
-
-  cd ${srcdir}/${_gitname}_build/
-  
-  patch -Np1 -i ${srcdir}/efibootmgr_default_to_grub2.patch
-  echo
-  
-  CFLAGS= make
-  echo
-  
+	
+	update_git
+	
+	rm -rf ${srcdir}/${_gitname}_build/ || true
+	
+	cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}_build
+	
+	cd ${srcdir}/${_gitname}_build/
+	
+	patch -Np1 -i ${srcdir}/efibootmgr_default_to_grub2.patch
+	echo
+	
+	CFLAGS= make
+	echo
+	
 }
 
 
 package() {
-  
-  mkdir -p ${pkgdir}/usr/sbin/
-  mkdir -p ${pkgdir}/usr/share/man/man8/
-  
-  cd ${srcdir}/${_gitname}_build/
-  
-  install -D -m755 ${srcdir}/${_gitname}_build/src/efibootmgr/efibootmgr ${pkgdir}/usr/sbin/efibootmgr
-  install -D -m644 ${srcdir}/${_gitname}_build/src/man/man8/efibootmgr.8 ${pkgdir}/usr/share/man/man8/efibootmgr.8
-
+	
+	mkdir -p ${pkgdir}/usr/sbin/
+	mkdir -p ${pkgdir}/usr/share/man/man8/
+	
+	cd ${srcdir}/${_gitname}_build/
+	
+	install -D -m755 ${srcdir}/${_gitname}_build/src/efibootmgr/efibootmgr ${pkgdir}/usr/sbin/efibootmgr
+	install -D -m644 ${srcdir}/${_gitname}_build/src/man/man8/efibootmgr.8 ${pkgdir}/usr/share/man/man8/efibootmgr.8
+	
 }
