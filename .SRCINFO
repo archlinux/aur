@@ -1,0 +1,13 @@
+pkgbase = gnuclad
+	pkgdesc = A cladogram tree generator mainly used by GNU/Linux distro timeline project
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://launchpad.net/gnuclad
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://launchpad.net/gnuclad/trunk/0.2/+download/gnuclad-0.2.4.tar.gz
+	md5sums = 5ca520333ee496a1d2e49f14d0b9549e
+
+pkgname = gnuclad
+
