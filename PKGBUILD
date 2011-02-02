@@ -3,13 +3,13 @@
 
 pkgname=libvirt
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
-	 'avahi' 'yajl' 'libpciaccess' 'hal' 'dbus-core' 'libxau' 'libxdmcp' 'libpcap'
+	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus-core' 'libxau' 'libxdmcp' 'libpcap'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
 	 'iproute2')
 makedepends=('pkgconfig' 'lvm2')
@@ -60,7 +60,7 @@ build() {
 
   export LDFLAGS=-lX11
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
-	--with-storage-lvm --without-xen
+	--with-storage-lvm --without-xen --with-udev --without-hal
   find -name Makefile -exec sed -i 's#-L /usr#-L/usr#' {} \;
   make -j1
   make DESTDIR="$pkgdir" install
