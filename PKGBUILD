@@ -4,7 +4,7 @@
 
 pkgname=chromium
 pkgver=9.0.597.84
-pkgrel=1
+pkgrel=2
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
@@ -23,11 +23,6 @@ md5sums=('d8d9abc7df185602f7d78c447b5e0298'
 build() {
   cd ${srcdir}/chromium-${pkgver}
 
-### Patch
-  # workaround for gcc 4.5
-  # see http://code.google.com/p/chromium/issues/detail?id=41887
-  export CFLAGS="${CFLAGS} -fno-ipa-cp"
-
 ### Configure
 
   echo 'Use python2 instead of python...'
@@ -43,7 +38,7 @@ build() {
   # see https://bugzilla.mozilla.org/show_bug.cgi?id=547312
 
   build/gyp_chromium -f make build/all.gyp --depth=. \
-    -Dgcc_version=44 \
+    -Dgcc_version=45 \
     -Dno_strict_aliasing=1 \
     -Dwerror= \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
