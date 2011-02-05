@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20110131
+pkgver=20110205
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -48,6 +48,7 @@ build() {
  mkdir -p $srcdir/tex/texmf-cache
 
  msg "Starting download or update of ConTeXt distribution"
+ PATH=$scrdir/tex/texmf-$platform/bin:$PATH \
  $srcdir/bin/texlua $srcdir/bin/mtxrun --script $srcdir/bin/mtx-update.lua  \
       --platform=$_platform --texroot=$srcdir/tex --engine=all --extras=all \
       --context=beta  --update  --force --make || return 1

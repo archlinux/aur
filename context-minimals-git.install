@@ -5,7 +5,7 @@ post_install() {
  echo "from your shell (as a normal user)"
  echo ""
  echo "To use MkIV run"
- echo "    luatools --generate"
+ echo "    mtxrun --generate"
  echo "from your shell (as a normal user)"
  echo "*************************************************************"
 }
@@ -17,7 +17,7 @@ post_upgrade() {
  echo "from your shell (as a normal user)"
  echo ""
  echo "To use MkIV run"
- echo "    luatools --generate"
+ echo "    mtxrun --generate"
  echo "from your shell (as a normal user)"
  echo "*************************************************************"
 }
