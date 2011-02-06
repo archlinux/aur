@@ -1,0 +1,16 @@
+pkgbase = lwjgl
+	pkgdesc = The Lightweight Java Game Library. Binary install.
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://lwjgl.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = unzip
+	depends = java-runtime>=6
+	depends = openal
+	source = http://downloads.sourceforge.net/project/java-game-lib/Official%20Releases/LWJGL%202.6/lwjgl-2.6.zip
+	md5sums = a5317ff0eb2e63804d6e355f7f2107a1
+
+pkgname = lwjgl
+
