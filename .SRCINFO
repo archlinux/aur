@@ -1,0 +1,18 @@
+pkgbase = mcskinedit
+	pkgdesc = Minecraft Skin Editor
+	pkgver = alpha3pre5
+	pkgrel = 1
+	url = http://www.minecraft.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	source = 2010_06_03_MCSkinEdit_a3_pre5.zip
+	source = mcskinedit
+	source = http://minecraft.net/skin/skintest2.jar
+	md5sums = 83b9e96dac43508f2ea221144ee3c243
+	md5sums = 17bb5327778e4dd64a4acedc2b95677f
+	md5sums = ec418807008ad3f14d55db6457a693b8
+
+pkgname = mcskinedit
+
