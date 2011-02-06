@@ -1,0 +1,20 @@
+pkgbase = trash-cli
+	pkgdesc = Command line trashcan (recycle bin) interface
+	pkgver = 0.11.3_r315
+	pkgrel = 4
+	url = http://code.google.com/p/trash-cli/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python-unipath>=0.2.0
+	depends = python2-distribute
+	source = http://trash-cli.googlecode.com/files/trash-cli-0.11.3-r315.tar.gz
+	source = python2.patch
+	source = empty_days.patch
+	md5sums = 00654c149108fc4c522b5b008e9b8468
+	md5sums = a187680f9f1c3f6e8730cabfff6fc9c8
+	md5sums = 60d9034aff7159ff9220a9fa890a6a9d
+
+pkgname = trash-cli
+
