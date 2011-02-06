@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Njam
+
+Comment=Pacman Clone
+
+Type=Application
+Categories=ArcadeGame;Game;
+
+TryExec=njam
+Exec=njam
+
+Icon=/usr/share/pixmaps/njamicon.ico
+Terminal=false
+
+GenericName=Pacman Clone
+Categories=Application;Game;
