@@ -1,0 +1,15 @@
+pkgbase = virtualenv-commands
+	pkgdesc = Additional commands for virtualenv
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://thisismedium.com/labs/virtualenv-commands/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python
+	depends = setuptools
+	source = http://pypi.python.org/packages/source/v/virtualenv-commands/virtualenv-commands-0.2.3.tar.gz
+	md5sums = 4ee0d64d5e8992a9cac1abf3657abb49
+
+pkgname = virtualenv-commands
+
