@@ -4,7 +4,7 @@
 
 pkgname=chromium
 pkgver=9.0.597.84
-pkgrel=2
+pkgrel=3
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
