@@ -7,17 +7,6 @@ post_install() {
     echo ">>>   they start. You may have to restart nwn a few times for it"
     echo ">>>   load successfully. This is normal. Run 'nwn' from a terminal the"
     echo ">>>   first few times until the game starts running correctly."
-    echo ">>>"
-    echo ">>> If something throws an error saying it cannot create the .ini file, "
-    echo ">>>   try modifying the export LD_PRELOAD line in /usr/bin/nwn to"
-    echo ">>>   include just one additional library at a time. For example:"
-    echo ">>>"
-    echo ">>>      export LD_PRELOAD=./nwuser.so  (start nwn)"
-    echo ">>>      export LD_PRELOAD=./nwuser.so:./nwmouse.so (start nwn)"
-    echo ">>>      export LD_PRELOAD=./nwuser.so:./nwmouse.so:./nwmovies.so (start nwn)"
-    echo ">>>      ... etc"
-    echo ">>>"
-    echo ">>>   Now when you start NWN again, all the extra modules should load successfully."
 }
 
 post_upgrade() {

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Create user directory if it doesn't exist
+if [ ! -d "$HOME/.nwn/" ]; then
+    mkdir $HOME/.nwn/
+fi
+
 cd "/opt/nwn"
 
 # Uncomment to make SDL Sound work on Software Mixers
@@ -20,7 +25,7 @@ export __GL_FSAA_MODE=4
 export LD_LIBRARY_PATH=./miles:$LD_LIBRARY_PATH
 
 # Per-User Settings Support, Hardware Mouse Cursor Support, Linux Movies Support, Client Side Chat Logging Support
-export LD_PRELOAD=./nwuser.so:./nwmouse.so:./nwmovies.so:./nwlogger.so
+export LD_PRELOAD=./nwuser.so:./nwuser64.so:./nwmouse.so:./nwmovies.so:./nwlogger.so
 
 # Run Neverwinter Nights
 ./nwmain $*

@@ -3,7 +3,7 @@
 
 pkgname=nwn-diamond
 pkgver=1.69
-pkgrel=4
+pkgrel=6
 pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the Diamond Collection DVD Release."
 url="http://nwn.bioware.com/"
 license=('custom')
@@ -20,22 +20,18 @@ install=nwn.install
 source=("http://nwdownloads.bioware.com/neverwinternights/linux/gold/nwclientgold.tar.gz" \
 "http://nwdownloads.bioware.com/neverwinternights/linux/161/nwclienthotu.tar.gz" \
 "http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp2.tar.gz" \
-"http://home.roadrunner.com/~nwmovies/nwuser/nwuser-latest.tar.gz" \
-"http://home.roadrunner.com/~nwmovies/nwmovies/nwmovies-latest.tar.gz" \
-"http://home.roadrunner.com/~nwmovies/nwmouse/nwmouse-latest.tar.gz" \
-"http://home.roadrunner.com/~nwmovies/nwlogger/nwlogger-latest.tar.gz" \
+"http://home.roadrunner.com/~nwmovies/nwlinux-beta.tar.bz2" \
 "http://home.roadrunner.com/~nwmovies/cursors.tar.gz" \
 "nwn.launcher" "nwn.desktop")
+noextract=('nwclientgold.tar.gz' 'nwclienthotu.tar.gz' 'English_linuxclient169_xp2.tar.gz')
 md5sums=('0a059d55225fc32f905e86191d88a11f'
          '376cdece07106ea058d42b531f3146bb'
          'b021f0da3b3e00848521926716fdf487'
-         '0ff1296e4afb43844b6eb2544e40cab9'
-         '1698a83bce2050174670e30c42b9d673'
-         '02bf7f5610c928a5910d1cab4bf3f87a'
-         '981d5cd5ec13aa888e4c0a2ba7f9a231'
+         '3961f7464d3d5b7ac9f097aa9aa2f4d3'
          '7be935418f0ececb5660f53b7a902b38'
-         'd28e09031cc8f56406f6878e36683e36'
+         '7fd0497f55856edf50480b5acd3136d3'
          'bd7f80f5faa5ee1203371b4e8ec40638')
+PKGEXT='.pkg.tar'
 
 # Directory where the NWN Diamond DVD is Mounted
 _dvdpath=/media/dvd
@@ -94,36 +90,102 @@ EOF
 
     cd $srcdir/
 
-    # Movies in Linux Client Support for NWN
-    ./nwmovies_install.pl /usr/lib/libSDL.so
+    ###########################################################################
+    #
+    # nwmovies:
+    #
+    #     Movies in Linux Client Support for NWN
+    #
+    ###########################################################################
+
+    # Compile nwmovies using the appropriate SDL library
+    if [ "$CARCH" = "x86_64" ]; then
+        ./nwmovies_install.pl /usr/lib32/libSDL-1.2.so.0
+    else
+        ./nwmovies_install.pl /usr/lib/libSDL-1.2.so.0
+    fi
+
+    # Install nwmovies binaries
     install -D -m 755 -t $pkgdir/opt/nwn/ \
         $srcdir/nwmovies/{nwmovies.so,nwmovies.pl}
+
+    # Install binkplayer binaries
     install -D -m 755 $srcdir/nwmovies/binklib.so \
         $pkgdir/opt/nwn/nwmovies/binklib.so
+
+    # Install libdis binaries
     install -D -m 755 $srcdir/nwmovies/libdis/libdisasm.so \
         $pkgdir/opt/nwn/nwmovies/libdis/libdisasm.so
 
     # SymLink BinkPlayer to the NWN Directory so the Movie Launcher (nwmovies.pl) can find it
     ln -s /usr/bin/binkplayer $pkgdir/opt/nwn/BinkPlayer
 
-    # Per-User Settings Support for NWN
+    ###########################################################################
+    #
+    # nwuser:
+    #
+    #     Per-User Settings Support for NWN
+    #
+    ###########################################################################
+
+    # Compile nwuser
     ./nwuser_install.pl
+
+    # Install nwuser binaries
     install -D -m 755 $srcdir/nwuser/nwuser.so \
         $pkgdir/opt/nwn/nwuser.so
 
-    # Hardware Mouse Cursors Support for NWN
+    # Install 64bit binaries if Arch64
+    if [ "$CARCH" = "x86_64" ]; then
+        install -D -m 755 $srcdir/nwuser/nwuser64.so \
+            $pkgdir/opt/nwn/nwuser64.so
+    fi
+
+    ###########################################################################
+    #
+    # nwmouse:
+    #
+    #     Hardware Mouse Cursors Support for NWN
+    #
+    ###########################################################################
+
+    # Patch file so it can find user.h
+    /bin/sed -i 's|linux/user.h|sys/user.h|1' $srcdir/nwmouse/nwmouse_cookie.c
+
+    # Compile nwmouse
     ./nwmouse_install.pl
+
+    # Install nwmouse binaries
     install -D -m 755 $srcdir/nwmouse/nwmouse.so \
         $pkgdir/opt/nwn/nwmouse.so
+
+    # Install libdis binaries
     install -D -m 755 $srcdir/nwmouse/libdis/libdisasm.so \
         $pkgdir/opt/nwn/nwmouse/libdis/libdisasm.so
 
-    # Client-Side Chat Window Logging Support for NWN
+    ###########################################################################
+    #
+    # nwlogger:
+    #
+    #     Client-Side Chat Window Logging Support for NWN
+    #
+    ###########################################################################
+
+    # Patch file so it can find user.h
+    /bin/sed -i 's|linux/user.h|sys/user.h|1' $srcdir/nwlogger/nwlogger_cookie.c
+
+    # Compile nwlogger
     ./nwlogger_install.pl
+
+    # Install nwlogger binaries
     install -D -m 755 $srcdir/nwlogger/nwlogger.so \
         $pkgdir/opt/nwn/nwlogger.so
+
+    # Install libdis binaries
     install -D -m 755 $srcdir/nwlogger/libdis/libdisasm.so \
         $pkgdir/opt/nwn/nwlogger/libdis/libdisasm.so
+
+    ###########################################################################
 
     # Install Cursors
     install -d $pkgdir/opt/nwn/nwmouse/cursors/
@@ -134,7 +196,7 @@ EOF
         $pkgdir/usr/share/licenses/$pkgname/EULA.txt
 
     # Install Launcher (Client)
-    install -D -m 755 $startdir/nwn.launcher \
+    install -D -m 755 $srcdir/nwn.launcher \
         $pkgdir/usr/bin/nwn
 
     # Install Desktop File
