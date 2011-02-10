@@ -3,7 +3,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=201003
+pkgver=201102
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings and other multiauthor volumes (llncs), monographs (svmono) and journals (svjour3)"
 arch=('any')
