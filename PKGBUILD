@@ -19,7 +19,7 @@ replaces=(latex-template-lncs)
 backup=()
 options=()
 install=texlive.install
-source=(ftp://ftp.springer.de/pub/tex/latex/llncs/llncs2e.zip
+source=(ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e/llncs2e.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip
 ftp://ftp.springer.de/pub/tex/latex/svjour3/global.zip)
 
@@ -41,6 +41,6 @@ build() {
   mv ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/*.bst \
     ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
 }
-md5sums=('b3fa2f22801466e3182203213fc4eba4'
-         'dd75af3f4bc865cd0e33b20d186699a8'
+md5sums=('d534148be975055ec332f4cdcd1087d5'
+         '150c62216a841d3bb7a98c96fed71827'
          'c020d70fa6ce887d9a3b70d72c518c85')
