@@ -2,7 +2,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 _pkgbasename=v4l-utils
 pkgname=lib32-$_pkgbasename
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('LGPL')
 makedepends=('gcc-multilib')
 depends=('lib32-gcc-libs' $_pkgbasename)
 source=(http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2)
-sha256sums=('2b03003f1e081c5c98d1fe287c0d88a6c720ca972c4d80a1782146bbde1ac5ea')
+sha256sums=('525ebed7ef6e0f6a4bb68fe10403a3725eb1ec31a4c557c68256079b00e283b5')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
@@ -31,5 +31,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
   make install PREFIX=/usr LIBDIR=/usr/lib32 DESTDIR="${pkgdir}/"
-  rm -rf "${pkgdir}"/usr/{include,share,bin,sbin}
+  rm -rf "${pkgdir}"/{usr/{include,share,bin,sbin},etc}
 }
