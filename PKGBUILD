@@ -1,11 +1,9 @@
 # $Id$
-# Maintainer:
+# Maintainer: Dan McGee <dan@archlinux.org>
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
-# Contributor: simo <simo@archlinux.org>
-# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=django
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A high-level Python Web framework."
 arch=('any')
@@ -16,8 +14,8 @@ makedepends=('setuptools')
 optdepends=('mysql-python: for MySQL backend'
             'python-psycopg2: for PostgreSQL backend')
 source=("http://media.djangoproject.com/releases/1.2/Django-$pkgver.tar.gz")
-md5sums=('b0e67d3d6447f7eb1ce6392b9465a183')
-sha256sums=('0f06cccd4ca92173b958dd80edff35035888f15554be425e5d6d55c7f94a8381')
+md5sums=('e031ea3d00996035e49e4bfa86e07c40')
+sha256sums=('649387248296386b589c4a8bf91d34590b43f93b6ebfe6cefbea0ddf4641ccd6')
 
 build() {
   cd ${srcdir}/Django-$pkgver
