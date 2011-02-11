@@ -1,26 +1,25 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=clutter-gtk
-pkgver=0.10.8
-pkgrel=2
+pkgver=0.91.8
+pkgrel=1
 pkgdesc="GTK clutter widget"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
 options=('!libtool')
 license=('LGPL')
-depends=('clutter>=1.4.0' 'gtk2>=2.22.0')
+depends=('clutter' 'gtk3')
 makedepends=('gobject-introspection' 'gtk-doc')
-source=(http://www.clutter-project.org/sources/${pkgname}/0.10/${pkgname}-${pkgver}.tar.bz2
-       fix-gir.patch)
-sha256sums=('7867f951568871d9f68cbe8a3644fd53d2138f725b7ba61ffc0053eb64e80814'
-            'a134d7154f71c995ae09cd606dcf811e1d317818c13a1167b3850c3104dadbd4')
+source=(http://www.clutter-project.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('1516ac98b9f0436d7806f02153810fae31f961446311e06805f574ac1aaa969e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/fix-gir.patch"
-  gtkdocize
-  autoreconf -vi
   ./configure --prefix=/usr
   make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
