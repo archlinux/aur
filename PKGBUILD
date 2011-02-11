@@ -9,6 +9,7 @@ license=('GPL2')
 depends=('glib2' 'libproxy' 'gnutls' 'ca-certificates')
 makedepends=('intltool')
 options=('!libtool')
+install=glib-networking.install
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.bz2)
 sha256sums=('828b7d13d14f401b849bde5c31e92e7ecd7c7db9c4ce4ec47b7025fb63600469')
 
