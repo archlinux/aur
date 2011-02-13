@@ -7,8 +7,8 @@ pkgdesc="Generates graphs from blktrace runs to help visualize IO patterns and p
 arch=(i686 x86_64)
 url="http://oss.oracle.com/~mason/seekwatcher/"
 license=('GPL')
-makedepends=('mercurial' 'python')
-depends=('python-matplotlib' 'python-numpy')
+makedepends=('mercurial' 'python2')
+depends=('python2-matplotlib' 'python2-numpy')
 optdepends=('blktrace: for tracing the local system'
             'pyqt3: enable interactive mode')
 conflicts=('seekwatcher')
@@ -40,8 +40,8 @@ build() {
   cd $srcdir/$_hgrepo-build
 
   msg "Running setup.py"
-  python setup.py build || return 1
-  python setup.py install --root=$pkgdir || return 1
+  python2 setup.py build || return 1
+  python2 setup.py install --root=$pkgdir || return 1
 
   msg "Installing documentation"
   install -dm 755 $pkgdir/usr/share/doc/$pkgname
