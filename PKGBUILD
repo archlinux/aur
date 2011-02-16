@@ -4,7 +4,7 @@
 # Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
 pkgname=cmake
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('qt')
 optdepends=('qt: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a76a44b93acf5e3badda9de111385921')
+md5sums=('209b7d1d04b2e00986538d74ba764fcf')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
