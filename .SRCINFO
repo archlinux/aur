@@ -1,0 +1,14 @@
+pkgbase = apgdiff
+	pkgdesc = Another PostgreSQL Diff Tool for schema comparison and migration
+	pkgver = 2.4
+	pkgrel = 2
+	url = http://www.apgdiff.com/
+	arch = any
+	license = MIT
+	depends = java-environment
+	depends = bash
+	source = http://www.apgdiff.com/download/apgdiff-2.4-bin.zip
+	md5sums = 4e4c248fd041b6e58cc5d1e2e3d9ce37
+
+pkgname = apgdiff
+
