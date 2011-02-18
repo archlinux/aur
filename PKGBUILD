@@ -3,8 +3,8 @@
 # Contributor: kritoke <kritoke@nospam.gmail.com>
 
 pkgname=ruby-pango
-pkgver=0.90.5
-pkgrel=3
+pkgver=0.90.7
+pkgrel=1
 pkgdesc="Ruby bindings for pango."
 arch=('i686' 'x86_64')
 url="http://ruby-gnome2.sourceforge.jp"
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('ruby-glib2' 'ruby-cairo')
 makedepends=('ruby-glib2' 'pango' 'ruby-pkgconfig' 'ruby-cairo')
 source=(http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-$pkgver.tar.gz)
-md5sums=('bcff0d668694a6491eeee73b68884d93')
+md5sums=('82ebea3ebb6fa51ffc5ec631b31d519a')
 
 build() {
 	cd "$srcdir/ruby-gtk2-$pkgver"
