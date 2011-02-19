@@ -4,12 +4,12 @@
 
 pkgname=chromium
 pkgver=9.0.597.94
-pkgrel=1
+pkgrel=2
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss' 'libxtst' 'ttf-dejavu')
+depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss' 'libxtst' 'ttf-dejavu' 'desktop-file-utils')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
@@ -17,7 +17,7 @@ install=chromium.install
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
         'chromium.desktop' 'chromium.sh')
 md5sums=('41386b3df743575f2325c4c64d6d7bc7'
-         'c5e849fcb1101149977355c99d8ff78f'
+         '075c3c2fa5902e16b8547dd31d437191'
          '096a46ef386817988250d2d7bddd1b34')
 
 build() {
