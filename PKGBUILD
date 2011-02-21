@@ -5,7 +5,7 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python3-numpy')
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -38,7 +38,7 @@ package_python2-numpy() {
   optdepends=('python-nose: testsuite')
 
   cd "${srcdir}/numpy-py2-${pkgver}"
-  python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}"
+  python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
@@ -53,7 +53,7 @@ package_python3-numpy() {
   depends=('lapack' 'python')
 
   cd "${srcdir}/numpy-${pkgver}"
-  python setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}"
+  python setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python3-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python3-numpy/"
