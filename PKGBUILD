@@ -1,8 +1,8 @@
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.swig.org/"
 license=('custom')
 depends=('gcc-libs' 'zlib')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('da5a1e396597be683a62d349d71802c33fb0f644')
+sha1sums=('1fc5a7b42ae41c51772d7268ba0f987e9514d110')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,5 +24,3 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 LICENSE-UNIVERSITIES "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-UNIVERSITIES"
 }
-
-# vim: set noexpandtab tabstop=8 shiftwidth=8 textwidth=132 autoindent
