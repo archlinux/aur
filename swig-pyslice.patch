@@ -1,0 +1,45 @@
+diff -up swig-2.0.1/Lib/python/pycontainer.swg.rh666429 swig-2.0.1/Lib/python/pycontainer.swg
+--- swig-2.0.1/Lib/python/pycontainer.swg.rh666429	2010-02-28 00:26:02.000000000 +0100
++++ swig-2.0.1/Lib/python/pycontainer.swg	2011-01-03 13:02:29.303515695 +0100
+@@ -631,14 +631,6 @@ namespace swig
+       return x;
+     }
+
+-    /* typemap for slice object support */
+-    %typemap(in) PySliceObject* {
+-      $1 = (PySliceObject *) $input;
+-    }
+-    %typemap(typecheck,precedence=SWIG_TYPECHECK_POINTER) PySliceObject* {
+-      $1 = PySlice_Check($input);
+-    }
+-
+     Sequence* __getslice__(difference_type i, difference_type j) throw (std::out_of_range) {
+       return swig::getslice(self, i, j);
+     }
+@@ -660,7 +652,7 @@ namespace swig
+     /* Overloaded methods for Python 3 compatibility
+      * (Also useful in Python 2.x)
+      */
+-    Sequence* __getitem__(PySliceObject *slice) throw (std::out_of_range) {
++    Sequence* __getitem__(PyObject *slice) throw (std::out_of_range) {
+       Py_ssize_t i, j, step;
+       if( !PySlice_Check(slice) ) {
+         SWIG_Error(SWIG_TypeError, "Slice object expected.");
+@@ -670,7 +662,7 @@ namespace swig
+       return swig::getslice(self, i, j);
+     }
+
+-    void __setitem__(PySliceObject *slice, const Sequence& v)
++    void __setitem__(PyObject *slice, const Sequence& v)
+       throw (std::out_of_range, std::invalid_argument) {
+       Py_ssize_t i, j, step;
+       if( !PySlice_Check(slice) ) {
+@@ -681,7 +673,7 @@ namespace swig
+       swig::setslice(self, i, j, v);
+     }
+
+-    void __delitem__(PySliceObject *slice)
++    void __delitem__(PyObject *slice)
+       throw (std::out_of_range) {
+       Py_ssize_t i, j, step;
+       if( !PySlice_Check(slice) ) {
