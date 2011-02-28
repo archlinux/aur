@@ -3,7 +3,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=2.91.7
+pkgver=2.91.8
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
@@ -18,13 +18,14 @@ makedepends=('gtk-doc' 'intltool' 'rdesktop')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('32c5d76c7a6eed63c096db24d9885f9e07ad9bf606d450694064af74ed9716ad')
+sha256sums=('c4a2948928a248d0328b6ec6b11ddb3656821a99c91ed879aa0b5ed30f2b3f16')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # Disable Spice until someone cares (file a bug!)
   ./configure --prefix=/usr --sysconfdir=/etc --disable-scrollkeeper \
       --libexecdir=/usr/lib/vinagre --disable-applet --enable-ssh \
-      --enable-rdp --disable-introspection
+      --enable-rdp --disable-spice --disable-introspection
   make
 }
 
