@@ -3,12 +3,12 @@
 
 pkgname=swig
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
 url="http://www.swig.org/"
 license=('custom')
-depends=('gcc-libs' 'zlib')
+depends=('gcc-libs' 'zlib' 'pcre')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz 
         swig-deprecated-pycobject.patch
         swig-pyslice.patch)
