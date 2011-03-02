@@ -7,10 +7,10 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.46.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
-makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
+makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi' 'namcap')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
         4994-compile-fix-for-Python32-v2.patch)
 license=('custom')
@@ -95,7 +95,7 @@ package_boost() {
 
 package_boost-libs() {
     pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime"
-    depends=('gcc-libs' 'bzip2' 'zlib')
+    depends=('gcc-libs' 'bzip2' 'zlib' 'icu')
     optdepends=('openmpi: for mpi support')
 
     install -d "${pkgdir}/usr/lib"
