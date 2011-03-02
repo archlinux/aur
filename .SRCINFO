@@ -1,17 +1,15 @@
 pkgbase = gdatafs
 	pkgdesc = Gdatafs is a FUSE implemtation that mount picassa web and youtube to your filesystem
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = http://gdatafs.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = fuse
 	depends = jdk
-	source = http://voxel.dl.sourceforge.net/sourceforge/gdatafs/gdatafs_1.0.1.tar.gz
-	source = http://gdatafs.svn.sourceforge.net/viewvc/gdatafs/trunk/jni/i686/libjavafs.so?revision=25
-	md5sums = e838aff1f3fddb275015aff0905d962c
-	md5sums = fa641cfd6b9ef75a06dae8ee565d0a1d
+	source = http://sourceforge.net/projects/gdatafs/files/gdatafs%201.0.2.tar.gz
+	md5sums = 77e5207f1b2cfb72307087ebceb7b801
 
 pkgname = gdatafs
 
