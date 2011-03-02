@@ -5,16 +5,17 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.45.0
+pkgver=1.46.0
 _boostver=${pkgver//./_}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
-makedepends=('python2' 'bzip2' 'zlib')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz)
+makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
+source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
+        4994-compile-fix-for-Python32-v2.patch)
 license=('custom')
-options=('!ccache')
-md5sums=('739792c98fafb95e7a6b5da23a30062c')
+md5sums=('820393d5746553c192db7b81ba0e53fe'
+         'cb59e8adbf2a45ef9264a2f4ab92b849')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -22,6 +23,8 @@ build() {
   # set python path for bjam
   cd "${srcdir}/${pkgbase}_${_boostver}/tools"
   echo "using python : 2.7 : /usr/bin/python2 ;" >> build/v2/user-config.jam
+  echo "using python : 3.2 : /usr/bin/python : /usr/include/python3.2mu : /usr/lib ;" >> build/v2/user-config.jam
+  echo "using mpi ;" >> build/v2/user-config.jam
 
   # build bjam
   cd "${srcdir}/${pkgbase}_${_boostver}/tools/build/v2/engine/src"
@@ -30,8 +33,8 @@ build() {
   _bindir="bin.linuxx86"
   [ "${CARCH}" = "x86_64" ] && _bindir="bin.linuxx86_64"
 
-  install -m755 -d "${_stagedir}"/usr/bin
-  install -m755 ${_bindir}/bjam "${_stagedir}"/usr/bin/bjam
+  install -d "${_stagedir}"/usr/bin
+  install ${_bindir}/bjam "${_stagedir}"/usr/bin/bjam
 
   # build bcp
   cd "${srcdir}/${pkgbase}_${_boostver}/tools/bcp"
@@ -41,35 +44,41 @@ build() {
 
   # build libs
   cd "${srcdir}/${pkgbase}_${_boostver}"
+  #python 3.2 support
+  #https://svn.boost.org/trac/boost/ticket/4994
+  patch -Np0 -i "${srcdir}/4994-compile-fix-for-Python32-v2.patch"
+
   # default "minimal" install: "release link=shared,static
-  # runtime-link=shared threading=multi"
+  # runtime-link=shared threading=single,multi"
   # --layout=tagged will add the "-mt" suffix for multithreaded libraries
   # and installs includes in /usr/include/boost.
   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
   # install to ${_stagedir} in preparation for split packaging
 
   ./tools/build/v2/engine/src/${_bindir}/bjam \
-      release debug-symbols=off threading=single,multi \
+      release debug-symbols=off threading=multi \
       runtime-link=shared link=shared,static \
       cflags=-fno-strict-aliasing \
       toolset=gcc \
       --prefix="${_stagedir}" \
       -sTOOLS=gcc \
-      --layout=tagged \
+      --layout=system \
       ${MAKEFLAGS} \
       install
 
+  # pyste is unmaintained: http://www.boost.org/doc/libs/1_46_0/libs/python/doc/index.html
   # build pyste
-  cd "${srcdir}/${pkgbase}_${_boostver}/libs/python/pyste/install"
-  python2 setup.py install --root=${_stagedir}
+  #cd "${srcdir}/${pkgbase}_${_boostver}/libs/python/pyste/install"
+  #python2 setup.py install --root=${_stagedir} --optimize=1
 }
 
 package_boost() {
     pkgdesc="Free peer-reviewed portable C++ source libraries - Development"
     depends=("boost-libs=${pkgver}")
-    optdepends=('python2: for python bindings')
+    optdepends=('python: for python bindings'
+                'python2: for python2 bindings')
 
-    install -dm 755 "${pkgdir}"/usr/{include,lib}
+    install -d "${pkgdir}"/usr/{include,lib}
     # headers/source files
     cp -r "${_stagedir}"/include/ "${pkgdir}"/usr/
 
@@ -87,8 +96,9 @@ package_boost() {
 package_boost-libs() {
     pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime"
     depends=('gcc-libs' 'bzip2' 'zlib')
+    optdepends=('openmpi: for mpi support')
 
-    install -dm 755 "${pkgdir}/usr/lib"
+    install -d "${pkgdir}/usr/lib"
     #shared libs
     cp -r "${_stagedir}"/lib/*.so{,.*} "${pkgdir}/usr/lib/"
 
