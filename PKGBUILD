@@ -22,8 +22,5 @@ build() {
 package() {
     cd ${srcdir}/$pkgname-$pkgver
     make DESTDIR=${pkgdir} install
-    #mkdir -p ${pkgdir}/etc/gscanbus
-    #mv ${pkgdir}/usr/etc/* ${pkgdir}/etc/gscanbus/
-    #rmdir ${pkgdir}/usr/etc
 }
 
