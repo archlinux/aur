@@ -10,7 +10,7 @@ _boostver=${pkgver//./_}
 pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
-makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi' 'namcap')
+makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
         4994-compile-fix-for-Python32-v2.patch)
 license=('custom')
