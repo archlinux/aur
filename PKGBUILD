@@ -7,15 +7,17 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.46.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
-        4994-compile-fix-for-Python32-v2.patch)
+        4994-compile-fix-for-Python32-v2.patch
+        boost-1.46.0-spirit.patch)
 license=('custom')
 md5sums=('820393d5746553c192db7b81ba0e53fe'
-         'cb59e8adbf2a45ef9264a2f4ab92b849')
+         'cb59e8adbf2a45ef9264a2f4ab92b849'
+         '9d6e2f13fef23bf27d7bdddc104e182a')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -47,6 +49,7 @@ build() {
   #python 3.2 support
   #https://svn.boost.org/trac/boost/ticket/4994
   patch -Np0 -i "${srcdir}/4994-compile-fix-for-Python32-v2.patch"
+  patch -Np0 -i "${srcdir}/boost-1.46.0-spirit.patch"
 
   # default "minimal" install: "release link=shared,static
   # runtime-link=shared threading=single,multi"
