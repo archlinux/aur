@@ -4,7 +4,7 @@
 pkgname='frogatto'
 arch=('i686' 'x86_64')
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
@@ -22,6 +22,10 @@ build() {
 
   sed -i 's/ccache //g' Makefile
   sed -i 's/-lprofiler//g' Makefile
+  sed -i 's/-lboost_regex-mt/-lboost_regex/g' Makefile
+  sed -i 's/-lboost_system-mt/-lboost_system/g' Makefile
+  sed -i 's/-lboost_thread-mt/-lboost_thread/g' Makefile
+  sed -i 's/-lboost_iostreams-mt/-lboost_iostreams/g' Makefile
   make game server
 }
 
