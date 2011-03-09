@@ -3,25 +3,29 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=9.0.597.107
+pkgver=10.0.648.127
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
 depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss' 'libxtst' 'ttf-dejavu' 'desktop-file-utils')
-makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
+makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring' 'namcap')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
-        'chromium.desktop' 'chromium.sh')
-md5sums=('4541f2b84df581618262efe158901b2f'
+        'chromium.desktop' 'chromium.sh' chromium-webkit-version.patch)
+md5sums=('71fd72aced3df932b7b3cecc7bb6c64b'
          '075c3c2fa5902e16b8547dd31d437191'
-         '096a46ef386817988250d2d7bddd1b34')
+         '096a46ef386817988250d2d7bddd1b34'
+         'dee3e8798f8916d23fce203478094822')
 
 build() {
   cd ${srcdir}/chromium-${pkgver}
+
+  #http://code.google.com/p/chromium/issues/detail?id=70537
+  patch -Np1 -i ${srcdir}/chromium-webkit-version.patch
 
 ### Configure
 
