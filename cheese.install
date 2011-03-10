@@ -7,7 +7,7 @@ post_install() {
 
 pre_upgrade() {
    if [ -f usr/share/gconf/schemas/$pkgname.schemas ]; then
-       usr/sbin/gconfpkg --uninstall gedit
+       usr/sbin/gconfpkg --uninstall $pkgname
    fi
 }
 
