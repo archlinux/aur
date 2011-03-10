@@ -1,6 +1,6 @@
 pkgbase = postgresql-testing
 	pkgdesc = Alpha version of the PostgreSQL database (includes both server and libs)
-	pkgver = 9.1alpha3
+	pkgver = 9.1alpha4
 	pkgrel = 1
 	url = http://www.postgresql.org/developer/alpha
 	arch = i686
@@ -12,18 +12,18 @@ pkgbase = postgresql-testing
 	depends = readline>=6.0
 	depends = openssl
 	depends = bash
-	provides = postgresql-libs=9.1alpha3
-	provides = postgresql=9.1alpha3
+	provides = postgresql-libs=9.1alpha4
+	provides = postgresql=9.1alpha4
 	conflicts = postgresql-libs
 	conflicts = postgresql
 	options = !strip
 	backup = etc/conf.d/postgresql
 	backup = etc/pam.d/postgresql
-	source = http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v9.1alpha3/postgresql-9.1alpha3.tar.bz2
+	source = http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v9.1alpha4/postgresql-9.1alpha4.tar.bz2
 	source = postgresql.rc
 	source = postgresql.confd
 	source = postgresql.pam
-	md5sums = 529fdc127f0d36c0e76189164c2ed694
+	md5sums = 133464cc3ec1b0a71a5833e2820ab6e6
 	md5sums = 86e0161343ce80e544aba999f284bc88
 	md5sums = df6ddf9e2ab4700a3415f17c0f4f4172
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
