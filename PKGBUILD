@@ -2,7 +2,7 @@
 #Maintainer: Jan De Groot <jgc@archlinux.org>
 
 pkgname=libgnome-keyring
-pkgver=2.32.0
+pkgver=2.91.92
 pkgrel=1
 pkgdesc="GNOME keyring client library"
 arch=(i686 x86_64)
@@ -11,8 +11,8 @@ depends=('dbus-core>=1.4.0' 'libgcrypt>=1.4.6' 'glib2>=2.26.0')
 makedepends=('intltool' 'pkgconfig' 'python2' 'gtk-doc')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
-source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.32/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('56388c0d81ddfdb57d30e4963c83ecc1c18498aab99395420e0fff69929a0f0c')
+source=(http://ftp.gnome.org/pub/gnome/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('858717c6d4deae35d48767b313defdbd82ae57e62c17ae26fa5fd72df086a3d8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -20,5 +20,9 @@ build() {
       --localstatedir=/var --disable-static \
       --libexecdir=/usr/lib/gnome-keyring
   make
-  make -j1 DESTDIR="${pkgdir}" install
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
