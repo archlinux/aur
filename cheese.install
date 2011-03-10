@@ -1,22 +1,20 @@
 pkgname=cheese
 
 post_install() {
-  usr/sbin/gconfpkg --install ${pkgname}
+  glib-compile-schemas usr/share/glib-2.0/schemas
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 pre_upgrade() {
-  pre_remove $1
+   if [ -f usr/share/gconf/schemas/$pkgname.schemas ]; then
+       usr/sbin/gconfpkg --uninstall gedit
+   fi
 }
 
 post_upgrade() {
   post_install $1
 }
 
-pre_remove() {
-  usr/sbin/gconfpkg --uninstall ${pkgname}
-}
-
 post_remove() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  post_install $1
 }
