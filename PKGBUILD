@@ -1,50 +1,40 @@
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
-# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=p7zip
-pkgver=9.13
-pkgrel=2
-pkgdesc="A command-line port of the 7zip compression utility"
+pkgver=9.20
+pkgrel=1
+pkgdesc='Command-line version of the 7zip compressed file archiver'
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://p7zip.sourceforge.net"
-depends=('gcc-libs' 'bash')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver}_src_all.tar.bz2)
-md5sums=('8ddb5053db3b1f2696407d01be145779')
-options=(!emptydirs)
+url='http://p7zip.sourceforge.net/'
+makedepends=('yasm' 'nasm')
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver}_src_all.tar.bz2")
+sha1sums=('c976df4543ea946a65bc3f5e3d4e9baa417e5f12')
 
 build() {
-	cd ${srcdir}/${pkgname}_${pkgver}
+	cd "${srcdir}/${pkgname}_${pkgver}"
 
-	#Arch64 fix
-	if [ "$CARCH" == "x86_64" ]; then
-		cp makefile.linux_amd64 makefile.machine
-	else
-		cp makefile.linux_x86_ppc_alpha_gcc_4.X makefile.machine
-	fi
-
+	[[ $CARCH = x86_64 ]] \
+	&& cp makefile.linux_amd64_asm makefile.machine \
+	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
 	sed -i "s|usr/local|usr|g" makefile
 
-	make all3 OPTFLAGS="${CXXFLAGS}" || return 1
+	make all3 OPTFLAGS="${CXXFLAGS}"
 }
 
 package() {
-	cd ${srcdir}/${pkgname}_${pkgver}
+	cd "${srcdir}/${pkgname}_${pkgver}"
 
-	make install DEST_HOME="${pkgdir}/usr" \
+	make install \
+		DEST_HOME="${pkgdir}/usr" \
 		DEST_MAN="${pkgdir}/usr/share/man" \
 		DEST_SHARE_DOC="http://www.bugaco.com/7zip"
 
-	mkdir -p ${pkgdir}/usr/share/doc/p7zip/DOCS
 	install -m555 bin/7z.so ${pkgdir}/usr/lib/p7zip/
-
-	sed -i "s|${pkgdir}/usr|/usr|g" ${pkgdir}/usr/bin/7z
-	sed -i "s|${pkgdir}/usr|/usr|g" ${pkgdir}/usr/bin/7za
-	sed -i "s|${pkgdir}/usr|/usr|g" ${pkgdir}/usr/bin/7zr
-
-	# Install mc's virtual filesystem
-	install -Dm755 contrib/VirtualFileSystemForMidnightCommander/u7z \
-		${pkgdir}/usr/lib/mc/extfs.d/u7z
+	sed "s|${pkgdir}/usr|/usr|g" -i "${pkgdir}"/usr/bin/7z{,a,r}
+	install -Dm755 contrib/VirtualFileSystemForMidnightCommander/u7z "${pkgdir}"/usr/lib/mc/extfs.d/u7z
 }
