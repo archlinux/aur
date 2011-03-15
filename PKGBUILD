@@ -1,13 +1,13 @@
 # Maintainer: kevin <kevin@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
-# TU: Kritoke <kritoke@gamebox.net>
+# Contributor: Kritoke <kritoke@gamebox.net>
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.46.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
