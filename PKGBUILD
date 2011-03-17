@@ -3,7 +3,7 @@
 
 pkgname=swig
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
 url="http://www.swig.org/"
@@ -14,7 +14,7 @@ source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         swig-pyslice.patch)
 sha1sums=('1fc5a7b42ae41c51772d7268ba0f987e9514d110'
           'add71330c5d839d9a27b1ca688e6c5e31f1edb7b'
-          'a12b59f0415d3a48bad97824861ecfd316a07c3e')
+          '7248b34032db7cb84143a6cefae425b222ce43a6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,6 +34,6 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 LICENSE-UNIVERSITIES "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-UNIVERSITIES"
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 LICENSE-UNIVERSITIES "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-UNIVERSITIES
 }
