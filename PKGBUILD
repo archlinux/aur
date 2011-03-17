@@ -2,14 +2,14 @@
 
 pkgname=xf86-video-vmware
 pkgver=11.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('libdrm')
 makedepends=('pkgconfig' 'xorg-server-devel' 'libdrm' 'libx11' 'libxext')
-conflicts=('xorg-server<1.9.0')
+conflicts=('xorg-server<1.10.0')
 groups=('xorg-drivers' 'xorg')
 options=('!libtool')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
