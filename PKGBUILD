@@ -3,7 +3,7 @@
 
 pkgname=xf86-video-openchrome
 pkgver=0.2.904
-pkgrel=4
+pkgrel=5
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
@@ -11,8 +11,8 @@ url="http://www.openchrome.org"
 depends=('libdrm' 'libxvmc' 'unichrome-dri')
 makedepends=('xorg-server-devel' 'libdrm' 'xf86driproto' 'mesa' 'libxvmc')
 replaces=('openchrome' 'xf86-video-via')
-options=('!libtool' 'force' '!makeflags')
-conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.9.0')
+options=('!libtool' '!makeflags')
+conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.10.0')
 source=(http://xorg.freedesktop.org/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
         drm_stdint.patch
         svn-r839.patch
