@@ -2,7 +2,7 @@
 # $Id$
 # Generator  : CPANPLUS::Dist::Arch 1.06
 pkgname='perl-crypt-x509'
-pkgver='0.40'
+pkgver='0.50'
 pkgrel='1'
 pkgdesc="Pure Perl X.509 Parser"
 arch=('any')
