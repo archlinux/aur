@@ -1,7 +1,7 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
@@ -23,6 +23,8 @@ build() {
                --enable-mpi-threads \
                --enable-smp-locks \
                --with-valgrind \
+               --enable-memchecker \
+               --enable-debug \
                --enable-pretty-print-stacktrace \
                --without-slurm \
                --with-hwloc=external \
