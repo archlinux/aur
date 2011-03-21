@@ -4,14 +4,14 @@
 
 pkgname=vinagre
 pkgver=2.91.91
-pkgrel=1
+pkgrel=2
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
 depends=('libgnome-keyring' 'gtk-vnc' 'avahi' 'desktop-file-utils'
-         'hicolor-icon-theme' 'telepathy-glib' 'gconf' 'libpeas'
+         'hicolor-icon-theme' 'telepathy-glib' 'dconf' 'libpeas'
          'shared-mime-info')
 optdepends=('rdesktop: RDP plugin')
 makedepends=('gtk-doc' 'intltool' 'rdesktop')
@@ -30,9 +30,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
-
-  install -d -m755 "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain vinagre ${pkgdir}/etc/gconf/schemas/*.schemas
-  rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
+  make DESTDIR="${pkgdir}" install
 }
