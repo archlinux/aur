@@ -5,7 +5,7 @@
 _pkgbasename=openal
 pkgname=lib32-$_pkgbasename
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAL audio library for use with opengl (32-bit)"
 arch=('x86_64')
 url="http://www.openal.org/"
@@ -22,7 +22,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd ${srcdir}/${_pkgbasename}-soft-${pkgver}/build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D LIB_INSTALL_DIR=/usr/lib32 ..
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D LIB_SUFFIX=32 ..
   make
 }
 
