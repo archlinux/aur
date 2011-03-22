@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
-pkgver=2.91.90
+pkgver=2.91.92
 pkgrel=1
 pkgdesc="Gnome Devtool Libraries"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=('gtk3')
 makedepends=('pkgconfig' 'intltool' 'gobject-introspection')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/gdl/2.91/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('792575d0eeb8fd14820ab88bce708f16e68e6be584bbef61a1d42deb2c96d1e5')
+sha256sums=('aba74b97ac0013babff4acda3eb662a86c372a6a1b76e5ade95126b18e740be6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
