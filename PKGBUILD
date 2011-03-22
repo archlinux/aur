@@ -4,8 +4,8 @@
 
 _pkgbasename=openal
 pkgname=lib32-$_pkgbasename
-pkgver=1.12.854
-pkgrel=4
+pkgver=1.13
+pkgrel=1
 pkgdesc="OpenAL audio library for use with opengl (32-bit)"
 arch=('x86_64')
 url="http://www.openal.org/"
@@ -14,7 +14,7 @@ depends=('lib32-glibc' $_pkgbasename)
 makedepends=('lib32-alsa-lib' 'lib32-sdl' 'lib32-libpulse' 'pkgconfig' 'cmake' gcc-multilib)
 options=('!libtool')
 source=(http://kcat.strangesoft.net/openal-releases/openal-soft-${pkgver}.tar.bz2)
-md5sums=('fbf36451fdebd6466edbdc0ee7db9603')
+md5sums=('58b7d2809790c70681b825644c5f3614')
 
 build() {
   export CC="gcc -m32"
