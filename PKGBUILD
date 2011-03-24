@@ -1,7 +1,7 @@
 # Contributor: Marti Raudsepp <marti@juffo.org>
 
 pkgname=udev-browse-git
-pkgver=20100121
+pkgver=20110324
 pkgrel=1
 pkgdesc="Graphical browser for the Linux sysfs device tree"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://0pointer.de/blog/projects/udev-browse.html"
 license=('LGPL')
 depends=('udev' 'libgee' 'gtk2')
 options=()
-makedepends=('vala')
+makedepends=('vala' 'git')
 replaces=()
 provides=('udev-browse')
 conflicts=('udev-browse')
@@ -36,7 +36,7 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  make || return 1
+  make
   install -d $pkgdir/usr/bin
   install -m 755 udev-browse $pkgdir/usr/bin
 }
