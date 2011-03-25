@@ -13,7 +13,7 @@ optdepends=('dbus-python: made GTimeLog a single instance application')
 source=(http://pypi.python.org/packages/source/g/gtimelog/gtimelog-${pkgver}.tar.gz)
 md5sums=('b87ee06eaefc6762d17e6380b163c755')
 
-build() {
+package() {
     cd ${pkgname}-${pkgver}
     python2 setup.py install --root=${pkgdir}
 }
