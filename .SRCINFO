@@ -1,7 +1,7 @@
 pkgbase = cacti-spine
 	pkgdesc = Faster poller for Cacti.
 	pkgver = 0.8.7g
-	pkgrel = 3
+	pkgrel = 4
 	url = http://cacti.net/spine_info.php
 	arch = i686
 	arch = x86_64

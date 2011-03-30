@@ -2,7 +2,7 @@
 # Contributor: Tom <tomgparchaur@gmail.com>
 pkgname=cacti-spine
 pkgver=0.8.7g
-pkgrel=3
+pkgrel=4
 pkgdesc="Faster poller for Cacti."
 arch=('i686' 'x86_64')
 url="http://cacti.net/spine_info.php"
