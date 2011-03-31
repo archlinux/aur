@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
 license=('GPL')
 url="http://mp3splt.sourceforge.net"
+makedepends=('git')
 depends=('libmad' 'libvorbis' 'libid3tag' 'libtool')
 source=(http://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz)
 options=(!libtool)
