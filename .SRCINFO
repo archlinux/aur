@@ -1,0 +1,15 @@
+pkgbase = bmdcapture
+	pkgdesc = BlackMagic Design DeckLink capture utility
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://smorgasbork.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = libgl
+	source = http://smorgasbork.com/bmdcapture/bmdcapture-0.9.6.tar.gz
+	md5sums = 4dec7596cfa6c9e7d835e312a6136c8d
+
+pkgname = bmdcapture
+
