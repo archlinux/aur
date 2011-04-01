@@ -1,0 +1,23 @@
+# Contributor: 
+# Maintainer: 
+pkgname=ruby-colored
+_gemname=colored
+pkgver=1.2
+pkgrel=1
+pkgdesc=">> puts 'this is red'.red >> puts 'this is red with a blue background (read: ugly)'.red_on_blue..."
+arch=(any)
+url="http://github.com/defunkt/colored"
+license=('GPL2')
+depends=('ruby')
+makedepends=('rubygems')
+source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
+noextract=(${_gemname}-${pkgver}.gem)
+
+build() {
+  cd "${srcdir}"
+  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+
+  gem install --ignore-dependencies -i "${pkgdir}${_gemdir}" ${_gemname}-${pkgver}.gem
+}
+
+md5sums=('1b1a0f16f7c6ab57d1a2d6de53b13c42')
