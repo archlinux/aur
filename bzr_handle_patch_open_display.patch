@@ -1,0 +1,12 @@
+--- src/bzr-gtk-0.100.0/bzr-handle-patch	2011-03-02 15:47:00.000000000 +0100
++++ src/bzr-gtk-0.100.0/bzr-handle-patchNew	2011-04-02 11:32:51.000000000 +0200
+@@ -2,7 +2,8 @@
+ 
+ from bzrlib import errors, merge_directive
+ from bzrlib.plugin import load_plugins
+-from bzrlib.plugins.gtk import open_display
++from bzrlib.plugins.gtk.commands import open_display
++
+ load_plugins()
+ 
+ import sys
