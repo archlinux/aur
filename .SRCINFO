@@ -1,7 +1,7 @@
 pkgbase = quake3-urbanterror
 	pkgdesc = Urban Terror is a team-based tactical shooter based on the Quake 3 Engine (Quake3 Mod Version)
-	pkgver = 4.1
-	pkgrel = 2
+	pkgver = 4.1.1
+	pkgrel = 1
 	url = http://www.urbanterror.net/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = quake3-urbanterror
 	makedepends = unzip
 	depends = quake3
 	depends = curl
-	source = ftp://ftp.snt.utwente.nl/pub/games/urbanterror/UrbanTerror_41_FULL.zip
-	md5sums = 1370306ea236f65f595e7ca70765e469
+	source = ftp://ftp.snt.utwente.nl/pub/games/urbanterror/full_install/linux_or_mac/UrbanTerror411.zip
+	md5sums = 722c1fea9936593c9ef039bb068cc33b
 
 pkgname = quake3-urbanterror
 
