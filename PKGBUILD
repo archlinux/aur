@@ -3,8 +3,8 @@
 
 pkgname=crda
 pkgver=1.1.1
-pkgrel=2
-pkgdesc="Central Regulatory Domain Agent"
+pkgrel=3
+pkgdesc="Central Regulatory Domain Agent for wireless networks"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
 license=('custom')
@@ -26,14 +26,14 @@ build() {
 package() {
   # Install crda, regdbdump and udev rules
   msg "Installing crda ..."
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}"/${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
   # This rule automatically sets the regulatory domain when cfg80211 is loaded
-  echo 'ACTION=="add" SUBSYSTEM=="module", DEVPATH=="/module/cfg80211", RUN+="/etc/rc.d/wireless-regdom start >/dev/null"' >> ${pkgdir}/lib/udev/rules.d/85-regulatory.rules
+  echo 'ACTION=="add" SUBSYSTEM=="module", DEVPATH=="/module/cfg80211", RUN+="/etc/rc.d/wireless-regdom start >/dev/null"' >> "${pkgdir}"/lib/udev/rules.d/85-regulatory.rules
 
   msg "Installing license ..."
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/crda/LICENSE
+  install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/crda/LICENSE
   
   msg "Installing boot script ..."
-  install -D -m755 ${srcdir}/crda.rc ${pkgdir}/etc/rc.d/wireless-regdom
+  install -D -m755 "${srcdir}"/crda.rc "${pkgdir}"/etc/rc.d/wireless-regdom
 }
