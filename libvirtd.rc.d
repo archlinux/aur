@@ -14,6 +14,9 @@ PID=`pidof -o %PPID /usr/sbin/libvirtd`
 case "$1" in
     start)
 	stat_busy "Starting libvirtd"
+	for i in /var/run/libvirt/qemu /var/run/libvirt/lxc /var/run/libvirt/uml /var/run/libvirt/network; do
+		[ -d $i ] || mkdir -p $i
+	done
 	[ -z "$PID" ] && (
 		mkdir -p /var/{cache,run}/libvirt
 		rm -rf /var/cache/libvirt/*

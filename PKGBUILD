@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -36,7 +36,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	openbsd-netcat-default.patch
 	unixperms.patch)
 md5sums=('ac9235576352b84b8cb17df7456bbdfc'
-         '5ffe22be0f43ed7c6468b79cd1a9f114'
+         '26005f9fe6085e2858f855d94eace5f4'
          'cb4e9bc6b209c1f3077d3698bf1d4437'
          '15bbe9f56644929cee41b8faec0b8d80'
          'db95aecdf2ccf3693fef5821cdcb7eba')
@@ -66,4 +66,5 @@ build() {
   make DESTDIR="$pkgdir" install
   install -D -m755 "$srcdir"/libvirtd.rc.d "$pkgdir"/etc/rc.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
+  rm -rf $pkgdir/var/run
 }
