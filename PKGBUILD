@@ -1,7 +1,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 pkgname=glib-networking
 pkgver=2.28.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Network-related giomodules for glib"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
@@ -16,8 +16,8 @@ sha256sums=('959ffeb91fee17c1b0fb2aa82872c3daae0230de93708b2ebabeb92b747d7876')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
+    --prefix=/usr  --sysconfdir=/etc \
+    --libexecdir=/usr/lib/glib-networking --disable-static
   make
 }
 
