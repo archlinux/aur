@@ -2,8 +2,8 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=2.0.2
-pkgrel=4
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
 url="http://www.swig.org/"
@@ -12,9 +12,9 @@ depends=('gcc-libs' 'zlib' 'pcre')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz 
         swig-deprecated-pycobject.patch
         swig-pyslice.patch)
-sha1sums=('1fc5a7b42ae41c51772d7268ba0f987e9514d110'
+sha1sums=('da09610f0b925fae40b40186d262c46e3e1f2bf0'
           'add71330c5d839d9a27b1ca688e6c5e31f1edb7b'
-          '7248b34032db7cb84143a6cefae425b222ce43a6')
+          'b8e28148fcef01f24a9acc6218dc090dbde03c37')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
