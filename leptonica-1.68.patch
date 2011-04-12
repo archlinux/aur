@@ -1,0 +1,12 @@
+diff -urN jbig2enc/jbig2.cc jbig2enc.new/jbig2.cc
+--- jbig2enc/jbig2.cc	2011-04-12 15:13:55.112243731 +0200
++++ jbig2enc.new/jbig2.cc	2011-04-12 15:17:26.123135262 +0200
+@@ -349,7 +349,7 @@
+         return 1;
+       }
+       l_int32 filetype;
+-      findFileFormat(fp, &filetype);
++      findFileFormatStream(fp, &filetype);
+       if (filetype==IFF_TIFF && tiffGetCount(fp, &numsubimages)) {
+         return 1;
+       }

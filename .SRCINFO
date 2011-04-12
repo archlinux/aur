@@ -1,0 +1,19 @@
+pkgbase = jbig2enc-git
+	pkgdesc = A JBIG2 image encoder
+	pkgver = 20110412
+	pkgrel = 1
+	url = https://github.com/agl/jbig2enc
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = gcc-libs
+	depends = leptonica>=1.68
+	depends = libpng
+	depends = libjpeg
+	depends = libtiff
+	source = leptonica-1.68.patch
+	md5sums = 1cf0013d040b9682a977960023c2680b
+
+pkgname = jbig2enc-git
+
