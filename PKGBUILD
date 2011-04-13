@@ -4,12 +4,13 @@
 
 pkgname=autocutsel
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="synchronizes the two copy/paste buffers mainly used by X applications"
 arch=('i686' 'x86_64')
-depends=('libxaw')
-source=(http://lepton.fr/tools/autocutsel/autocutsel-$pkgver.tar.gz)
-md5sums=('ba4a6f632cb4815ae4e5c3027c24cfc5')
+depends=('libxaw' 'sh')
+source=(http://lepton.fr/tools/$pkgname/$pkgname-$pkgver.tar.gz $pkgname.sh)
+md5sums=('ba4a6f632cb4815ae4e5c3027c24cfc5'
+         '27a15ab10e2988a8a479e3f015cabd00')
 url="http://lepton.fr/tools/autocutsel/"
 license=('GPL')
 build() {
@@ -19,5 +20,6 @@ build() {
 }
 package() {
   cd $srcdir/$pkgname-$pkgver
-  make prefix=$pkgdir/usr install
+  make prefix=$pkgdir/usr install 
+  install -Dm755 $srcdir/$pkgname.sh $pkgdir/etc/X11/xinit/xinitrc.d/40-$pkgname
 }
