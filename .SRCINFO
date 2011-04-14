@@ -1,11 +1,11 @@
 pkgbase = tla-tools
 	pkgdesc = Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html
 	arch = any
 	license = custom:MSR-EULA
-	depends = jre
+	depends = java-runtime
 	options = !strip
 	source = http://ftp.research.microsoft.com/downloads/41b4a0aa-5fad-4118-916a-45ed9fd48bf0/tla.zip
 	source = pcal2tla

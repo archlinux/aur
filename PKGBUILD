@@ -2,12 +2,12 @@
 
 pkgname=tla-tools
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)"
 arch=('any')
 url="http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html"
 license=('custom:MSR-EULA')
-depends=('jre')
+depends=('java-runtime')
 options=(!strip)
 source=(
   'http://ftp.research.microsoft.com/downloads/41b4a0aa-5fad-4118-916a-45ed9fd48bf0/tla.zip'
@@ -23,11 +23,6 @@ md5sums=(
   'cdb96d780f764111ec60cf67d1d158f2'
   'b89d785e2b264d0f32a69adcabb4e7d8'
 )
-
-#build() {
-#  cd "$srcdir/tla"
-#  find -name *.java -exec rm {} \;
-#}
 
 package() {
   mkdir -p "$pkgdir/usr/share/java" "$pkgdir/usr/bin" "$pkgdir/usr/share/licences/$pkgname"
