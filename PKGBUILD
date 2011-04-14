@@ -25,10 +25,10 @@ md5sums=(
 )
 
 package() {
-  mkdir -p "$pkgdir/usr/share/java" "$pkgdir/usr/bin" "$pkgdir/usr/share/licences/$pkgname"
+  mkdir -p "$pkgdir/usr/share/java" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname"
   cp -a "$srcdir/tla" "$pkgdir/usr/share/java/$pkgname"
   install -D -m 0755 {pcal2tla,sany,tla2tex,tlc} "$pkgdir/usr/bin"
-  install -D -m 0644 "$srcdir/tla/License.txt" "$pkgdir/usr/share/licences/$pkgname/LICENSE"
+  install -D -m 0644 "$srcdir/tla/License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
