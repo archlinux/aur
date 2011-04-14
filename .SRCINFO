@@ -1,0 +1,22 @@
+pkgbase = tla-tools
+	pkgdesc = Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)
+	pkgver = 2
+	pkgrel = 1
+	url = http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html
+	arch = any
+	license = custom:MSR-EULA
+	depends = jre
+	options = !strip
+	source = http://ftp.research.microsoft.com/downloads/41b4a0aa-5fad-4118-916a-45ed9fd48bf0/tla.zip
+	source = pcal2tla
+	source = sany
+	source = tla2tex
+	source = tlc
+	md5sums = c5931a7ec9426dd17795543a1d911a48
+	md5sums = 389c14cadf763d5ae2b5b9719b19e5ba
+	md5sums = 142d348ca24b7a7b0999d670908030a7
+	md5sums = cdb96d780f764111ec60cf67d1d158f2
+	md5sums = b89d785e2b264d0f32a69adcabb4e7d8
+
+pkgname = tla-tools
+
