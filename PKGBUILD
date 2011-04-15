@@ -3,20 +3,20 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=10.0.648.204
+pkgver=10.0.648.205
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
 url='http://www.chromium.org/'
 license=('BSD')
-depends=('nss' 'gconf' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss' 'libxtst' 'ttf-dejavu' 'desktop-file-utils')
+depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'bzip2' 'libevent' 'libxss' 'libxtst' 'ttf-dejavu' 'desktop-file-utils')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
         'chromium.desktop' 'chromium.sh' chromium-webkit-version.patch)
-md5sums=('b2c33448327f77e0e3a9457be2ea719a'
+md5sums=('4ec08f2718d43038b88487034a96c8f5'
          '075c3c2fa5902e16b8547dd31d437191'
          '096a46ef386817988250d2d7bddd1b34'
          'dee3e8798f8916d23fce203478094822')
@@ -60,6 +60,7 @@ build() {
     -Duse_system_yasm=1 \
     -Duse_system_libevent=1 \
     -Duse_system_ssl=0 \
+    -Duse_gconf=0 \
     $([ "${CARCH}" == 'i686' ] && echo '-Ddisable_sse2=1')
 
 ### Build
