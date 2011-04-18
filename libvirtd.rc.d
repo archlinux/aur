@@ -40,7 +40,7 @@ case "$1" in
 	if [ $? -gt 0 ]; then
 		stat_fail
 	else
-		rm_daemon acpid
+		rm_daemon libvirtd
 		stat_done
 	fi
 	;;
