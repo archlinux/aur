@@ -2,7 +2,7 @@
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
 pkgname=ccid
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver"
 arch=('i686' 'x86_64')
@@ -11,18 +11,22 @@ license=('LGPL' 'GPL')
 depends=('pcsclite')
 makedepends=('pkgconfig')
 backup=(etc/reader.conf.d/libccidtwin)
-source=(https://alioth.debian.org/frs/download.php/3518/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('4a8f954c0aef48e8e5ab5d458cf819e8')
+source=("https://alioth.debian.org/frs/download.php/3535/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('a269baa572be6f93ec57da279c7ec276')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
-              --enable-twinserial || return 1
+              --enable-twinserial
 
-  make || return 1
-  make DESTDIR="${pkgdir}" install || return 1
+  make
+}
 
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
   install -D -m644 src/92_pcscd_ccid.rules  "${pkgdir}/lib/udev/rules.d/85-pcscd-ccid.rules" || return 1 
 }
