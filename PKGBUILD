@@ -2,8 +2,8 @@
 # Contributor: Maxim Vuets <maxim.vuets@gmail.com>
 
 pkgname=cuneiform
-pkgver=1.0.0
-_dpkgver=1.0
+pkgver=1.1.0
+_dpkgver=1.1
 pkgrel=1
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=(imagemagick)
 makedepends=(cmake)
 source=(http://launchpad.net/cuneiform-linux/${_dpkgver}/${_dpkgver}/+download/cuneiform-linux-${pkgver}.tar.bz2)
-md5sums=('785232ffffad7d82446fbac08a1c3ef9')
+md5sums=('09fd160cdfc512f26442a7e91246598d')
 
 build() {
   _SRC_ROOT="${srcdir}/${pkgname}-linux-${pkgver}"
@@ -21,9 +21,9 @@ build() {
   mkdir builddir
   cd builddir
 
-  cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr .. || return 1
-  make || return 1
-  make DESTDIR="${pkgdir}" install || return 1
+  cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
+  make DESTDIR="${pkgdir}" install
 
   mkdir -p "${pkgdir}/usr/share/licenses/cuneiform"
   cp "${_SRC_ROOT}/cuneiform_src/Kern/license.txt" \
