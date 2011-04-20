@@ -3,7 +3,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-acm
-pkgver=201003
+pkgver=201104
 pkgrel=1
 pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4, sigplanconf v2.3 and the unofficial sigplan-proc-varsize v1.4)"
 arch=('any')
