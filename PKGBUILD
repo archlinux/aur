@@ -48,19 +48,19 @@ build() {
     -C ${pkgdir}/usr/share/texmf-dist/tex/latex/sigplan-proc-varsize
 }
 
-md5sums=('77a0365d2aefcff5ba5a2673f9ea8e5b'
+md5sums=('d0f0b981aafbbc5ecaec202bd7623414'
          '49fc14f68a73f326183ff0d766bec0c2'
-         '67858fe744bc76972e689a01d2a4415b'
+         '33f9dffef2394f245e8774bd6b640567'
          '045cff45096bc53833df7eca105d1ace'
          'c6a1b19bf288f26bc2dba4b72ac7d457'
          '557a5283c73690acc0ef2d5a1adc5e61'
          'da992183e40385e6cab3e7d4feece0f4'
-         '400600fe9911a1256ab40406d8085c5b'
+         'ceb632f99579d805c2e4472ac878480c'
          '8753848f67f8203fc161e28be692156e'
-         'c95cf4562f95e7bf533143ef1c37e678'
-         '9946f571cb31cc6bfb45e1281c042f79'
+         'f9528cc0463ce2ffe2a892591db58c72'
+         '652f1bb45af746b1bc523c261c4eff71'
          '00ffefdab78bb8eb9039a8d2d5a31a94'
          '4e94835d0b432831e54701ec2fa0800f'
          '7db95b194a770fa2ee90fce0f80d9cd7'
-         '85b8aa489fa4f227f290fb16bb17f4c7'
+         'c478dda106062e67298ebbce24379f15'
          '216c50b96e931516e9c3fba2567d5838')
