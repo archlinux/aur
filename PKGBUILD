@@ -1,6 +1,6 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 pkgname=rest
-pkgver=0.7.8
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="rest"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('glib2' 'libxml2' 'libsoup-gnome')
 makedepends=('gobject-introspection' 'gtk-doc')
 options=('!libtool')
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.bz2)
-sha256sums=('39b53ef984e90636afeda05c38d238f2371c83a55fdbb3f699f878a7afb879c4')
+sha256sums=('2908f974ae6cc71af1152d419209f307bcce8ca2dfe0b4b55b3fad8ba4a646a5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
