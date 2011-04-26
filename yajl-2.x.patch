@@ -1,0 +1,66 @@
+--- a/src/util/json.c	2011-03-24 03:10:26.000000000 -0400
++++ b/src/util/json.c	2011-04-25 20:01:29.354939116 -0400
+@@ -709,7 +709,7 @@
+ 
+ static int virJSONParserHandleNumber(void * ctx,
+                                      const char * s,
+-                                     unsigned int l)
++                                     size_t l)
+ {
+     virJSONParserPtr parser = ctx;
+     char *str = strndup(s, l);
+@@ -735,7 +735,7 @@
+ 
+ static int virJSONParserHandleString(void * ctx,
+                                      const unsigned char * stringVal,
+-                                     unsigned int stringLen)
++                                     size_t stringLen)
+ {
+     virJSONParserPtr parser = ctx;
+     virJSONValuePtr value = virJSONValueNewStringLen((const char *)stringVal,
+@@ -756,7 +756,7 @@
+ 
+ static int virJSONParserHandleMapKey(void * ctx,
+                                      const unsigned char * stringVal,
+-                                     unsigned int stringLen)
++                                     size_t stringLen)
+ {
+     virJSONParserPtr parser = ctx;
+     virJSONParserStatePtr state;
+@@ -894,14 +894,14 @@
+ /* XXX add an incremental streaming parser - yajl trivially supports it */
+ virJSONValuePtr virJSONValueFromString(const char *jsonstring)
+ {
+-    yajl_parser_config cfg = { 1, 1 };
+     yajl_handle hand;
+     virJSONParser parser = { NULL, NULL, 0 };
+     virJSONValuePtr ret = NULL;
+ 
+     VIR_DEBUG("string=%s", jsonstring);
+ 
+-    hand = yajl_alloc(&parserCallbacks, &cfg, NULL, &parser);
++    hand = yajl_alloc(&parserCallbacks, NULL, &parser);
++    yajl_config(hand, yajl_allow_comments, 1);
+ 
+     if (yajl_parse(hand,
+                    (const unsigned char *)jsonstring,
+@@ -1002,15 +1002,16 @@
+ 
+ char *virJSONValueToString(virJSONValuePtr object)
+ {
+-    yajl_gen_config conf = { 0, " " }; /* Turns off pretty printing since QEMU can't cope */
+     yajl_gen g;
+     const unsigned char *str;
+     char *ret = NULL;
+-    unsigned int len;
++    size_t len;
+ 
+     VIR_DEBUG("object=%p", object);
+ 
+-    g = yajl_gen_alloc(&conf, NULL);
++    g = yajl_gen_alloc(NULL);
++    yajl_gen_config(g, yajl_gen_beautify, 0);
++    yajl_gen_config(g, yajl_gen_indent_string, " ");
+ 
+     if (virJSONValueToStringOne(object, g) < 0) {
+         virReportOOMError();

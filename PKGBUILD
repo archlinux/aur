@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -34,12 +34,14 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.rc.d
 	libvirtd.conf.d
 	openbsd-netcat-default.patch
-	unixperms.patch)
+	unixperms.patch
+	yajl-2.x.patch)
 md5sums=('53d005e6f3732aba1fd6b2718f9cec99'
          '018d97dafc0049075fba6f2850f17a12'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '7d5a841d51321be56ad3c4f93d112fb0'
-         'db95aecdf2ccf3693fef5821cdcb7eba')
+         'db95aecdf2ccf3693fef5821cdcb7eba'
+         '5745bb8d0b254abb7a3528c66e03b0f9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -57,6 +59,9 @@ build() {
 #  patch -Np1 -i "$srcdir"/unixperms.patch
 
   [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
+
+  # fixes for yajl 2.0 API changes
+  [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir/yajl-2.x.patch"
 
   export LDFLAGS=-lX11
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
