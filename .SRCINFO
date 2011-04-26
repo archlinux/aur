@@ -1,6 +1,6 @@
 pkgbase = lib32-boost-libs
 	pkgdesc = Free peer-reviewed portable C++ source libraries - Runtime (32 bit)
-	pkgver = 1.45.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = http://www.boost.org
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lib32-boost-libs
 	depends = lib32-bzip2
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
-	source = ftp://mirrors.kernel.org/archlinux/extra/os/i686/boost-libs-1.45.0-1-i686.pkg.tar.xz
-	md5sums = 58297e01e296e6a95f9058c3582f5517
+	source = ftp://mirrors.kernel.org/archlinux/extra/os/i686/boost-libs-1.46.0-4-i686.pkg.tar.xz
+	md5sums = befd0fbe78ced94f0f7c6493697e8b9c
 
 pkgname = lib32-boost-libs
 
