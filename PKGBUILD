@@ -4,8 +4,8 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.22.1
-pkgrel=2
+pkgver=2.24.4
+pkgrel=1
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
@@ -16,10 +16,10 @@ depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','heimdal>=1.3.2','
 makedepends=('pkgconfig' 'gcc-multilib')
 options=('!libtool' '!docs')
 license=('LGPL')
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.22/gtk+-${pkgver}.tar.bz2
+source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.bz2
         xid-collision-debug.patch
         gtk-modules-32.patch)
-sha256sums=('965bc124f0d25087c4cb2a64cbfd7e4f896e05be8d560fbba68dd8685ba24d07'
+sha256sums=('7d3033ad83647079977466d3e8f1a7533f47abd5cc693f01b8797ff43dd407a5'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
             '2effb13404442ae266d4c663347e88cd1ca19e9a83b452da1743bac16af9c7b0')
 
