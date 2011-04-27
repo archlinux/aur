@@ -1,6 +1,6 @@
 pkgbase = unarchiver
 	pkgdesc = An Objective-C application for uncompressing archive files
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = http://wakaba.c3.cx/s/apps/unarchiver.html
 	arch = x86_64
@@ -13,10 +13,8 @@ pkgbase = unarchiver
 	depends = icu
 	depends = gcc-libs
 	depends = zlib
-	source = http://theunarchiver.googlecode.com/files/TheUnarchiver2.6_src.zip
-	source = unarchiver-makefile.patch
-	md5sums = 91144dcaf1d41ac5b38ae39eb6c3fea4
-	md5sums = 974025c5a7489409fbd101ee598f8dfd
+	source = http://theunarchiver.googlecode.com/files/TheUnarchiver2.7_src.zip
+	md5sums = c6aed2fcb2b68d86a9d9d4fc39c4ea41
 
 pkgname = unarchiver
 
