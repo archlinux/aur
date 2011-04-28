@@ -1,14 +1,16 @@
+# Maintainer: Kaiting Chen <kaitocracy@gmail.com>
 # Maintainer: Aaron Schaefer <aaron@elasticdog.com>
+
 pkgname=python-boto
-pkgver=1.9b
-pkgrel=2
+pkgver=2.0b4
+pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
 url='http://code.google.com/p/boto/'
 license=('MIT')
 depends=('python2')
 source=("http://boto.googlecode.com/files/boto-$pkgver.tar.gz" 'LICENSE')
-md5sums=('4fc2fd7b70a971b1363f8465aafe7091'
+md5sums=('f00ccf9167fee01d6a415bd4ab156171'
          '35ebd993c05c79ba78e9f4fb3e65e547')
 
 build() {
