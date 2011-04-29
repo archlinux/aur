@@ -1,0 +1,26 @@
+pkgbase = tomahawk
+	pkgdesc = A Music Player App written in C++/Qt
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://tomahawk-player.org/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake>=2.8.0
+	depends = taglib>=1.6.2
+	depends = boost>=1.30
+	depends = clucene-git
+	depends = libmad>=0.15.1b
+	depends = libechonest-git
+	depends = liblastfm>=0.3.3
+	depends = gloox>=1.0
+	provides = tomahawk
+	conflicts = tomahawk-git
+	options = !strip
+	source = http://download.tomahawk-player.org/tomahawk-0.0.3.tar.bz2
+	md5sums = a2716c41c7c7720e4dd8336c6b73609c
+
+pkgname = tomahawk
+

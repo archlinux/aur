@@ -1,0 +1,4 @@
+0.2 (0.0.1-2):
+* Don't bundle tarball, link to it
+0.1 (0.0.1-1):
+* Initial version
