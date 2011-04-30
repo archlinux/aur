@@ -3,7 +3,7 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=10.0.648.205
+pkgver=11.0.696.57
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser.'
 arch=('i686' 'x86_64')
@@ -15,17 +15,20 @@ provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=("http://build.chromium.org/buildbot/official/chromium-${pkgver}.tar.bz2"
-        'chromium.desktop' 'chromium.sh' chromium-webkit-version.patch)
-md5sums=('4ec08f2718d43038b88487034a96c8f5'
+        'chromium.desktop' 'chromium.sh' 'gcc-4.6.patch')
+md5sums=('f17a37a2d4a2f344f0a11288600e296c'
          '075c3c2fa5902e16b8547dd31d437191'
          '096a46ef386817988250d2d7bddd1b34'
-         'dee3e8798f8916d23fce203478094822')
+         'ab7934b4a57206707cca69be0d18638e')
 
 build() {
   cd ${srcdir}/chromium-${pkgver}
 
-  #http://code.google.com/p/chromium/issues/detail?id=70537
-  patch -Np1 -i ${srcdir}/chromium-webkit-version.patch
+  # patches to fix gcc 4.6 compilation from 
+  # http://code.google.com/p/chromium/issues/detail?id=80071
+  # http://code.google.com/p/chromium/issues/detail?id=70746
+  # http://code.google.com/p/chromium/issues/detail?id=46411
+  patch -p0 -i ${srcdir}/gcc-4.6.patch
 
 ### Configure
 
