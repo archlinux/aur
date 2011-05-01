@@ -1,0 +1,11 @@
+post_install() {
+	echo "Running iscan-registry to register plugins and firmware with iscan"
+	iscan-registry -a interpreter usb 0x04b8 0x012d \
+	/usr/lib64/iscan/libesint66 /usr/share/iscan/esfw66.bin
+}
+
+pre_remove() {
+	echo "Unregistering gt-s600 plugins/firmware"
+	iscan-registry -r interpreter usb 0x04b8 0x012d \
+	/usr/lib64/iscan/libesint66 /usr/share/iscan/esfw66.bin
+}
