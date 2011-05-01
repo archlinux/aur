@@ -1,17 +1,18 @@
 pkgbase = iscan-plugin-gt-s600
 	pkgdesc = iscan plugin for Epson Perfection V10.
-	pkgver = 2.1.0_3.c2
+	pkgver = 2.1.2_1
 	pkgrel = 1
 	url = http://www.avasys.jp/lx-bin2/linux_e/spc/DL2.do
 	install = gt-s600.install
 	arch = i686
+	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = EAPL
 	makedepends = rpmextract
 	depends = iscan
-	source = http://linux.avasys.jp/drivers/scanner-plugins/GT-S600/iscan-plugin-gt-s600-2.1.0-3.c2.i386.rpm
-	md5sums = 62e48226b0cf2661f3cb3f59a6a6a50e
+	source = http://linux.avasys.jp/drivers/iscan-plugins/iscan-plugin-gt-s600/2.1.2/iscan-plugin-gt-s600-2.1.2-1.i386.rpm
+	md5sums = 0a3a83dbbb2630c5e9453cc78983ab81
 
 pkgname = iscan-plugin-gt-s600
 

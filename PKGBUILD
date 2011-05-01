@@ -1,21 +1,29 @@
 # Contributor: Vain
 # Based on PKGBUILD for iscan-plugin-gt-x770.
 
+if [ "$CARCH" = "x86_64" ]
+then
+	march="x86_64"
+	md5sums=('9e36fd80b1f8ffa3f658b6a025d5e186')
+else
+	march="i386"
+	md5sums=('0a3a83dbbb2630c5e9453cc78983ab81')
+fi
+
 pkgname=iscan-plugin-gt-s600
-pkgver=2.1.0_3.c2
+pkgver=2.1.2_1
 pkgrel=1
 pkgdesc="iscan plugin for Epson Perfection V10."
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://www.avasys.jp/lx-bin2/linux_e/spc/DL2.do"
 license=('GPL' 'LGPL' 'EAPL')
 depends=('iscan')
 makedepends=('rpmextract')
-source=(http://linux.avasys.jp/drivers/scanner-plugins/GT-S600/$pkgname-${pkgver//_/-}.i386.rpm)
-md5sums=('62e48226b0cf2661f3cb3f59a6a6a50e')
+source=(http://linux.avasys.jp/drivers/iscan-plugins/$pkgname/${pkgver%_*}/$pkgname-${pkgver//_/-}.$march.rpm)
 install=gt-s600.install
 
 build() {
 	cd "$startdir"
-	rpmextract.sh "$pkgname-${pkgver//_/-}.i386.rpm"
+	rpmextract.sh "$pkgname-${pkgver//_/-}.$march.rpm"
 	mv usr "$pkgdir"
 }
