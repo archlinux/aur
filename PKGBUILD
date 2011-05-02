@@ -3,12 +3,7 @@
 ##############################################################
 #### The section below can be adjusted to suit your needs ####
 ##############################################################
-# How many jobs should 'make' use (for multicore CPUs)?
-# Value is 2 by default because it doesn't hurt but can help.
 
-_jobcount="2"
-
-##############
 # Do we build with jreen? Otherwise gloox will be used.
 # Don't use jreen unless gloox plugin doesn't want to co-operate!
 # Possible values: on, off
@@ -77,7 +72,7 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_JREEN=${_enablejreen} -DCMAKE_BUILD_TYPE=${_buildtype}
-  make -j ${_jobcount}
+  make
 }
 
 package() {
