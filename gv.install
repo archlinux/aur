@@ -1,7 +1,8 @@
-infodir=/usr/share/info
+infodir=usr/share/info
 file=gv.info.gz
 
 post_install() {
+  update-desktop-database -q
   [ -x usr/bin/install-info ] || return 0
     install-info $infodir/$file $infodir/dir 2> /dev/null
 }
@@ -11,6 +12,7 @@ post_upgrade() {
 }
 
 pre_remove() {
+  update-desktop-database -q
   [ -x usr/bin/install-info ] || return 0
     install-info --delete $infodir/$file $infodir/dir 2> /dev/null
 }
