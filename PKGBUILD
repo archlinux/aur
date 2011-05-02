@@ -2,9 +2,9 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=postgresql-testing
-pkgver=9.1alpha5
+pkgver=9.1beta1
 pkgrel=1
-pkgdesc="Alpha version of the PostgreSQL database (includes both server and libs)"
+pkgdesc="Beta version of the PostgreSQL database (includes both server and libs)"
 arch=(i686 x86_64)
 license=('custom:PostgreSQL')
 backup=('etc/conf.d/postgresql' 'etc/pam.d/postgresql')
@@ -38,7 +38,7 @@ build() {
   install -D -m644 $srcdir/postgresql.confd $pkgdir/etc/conf.d/postgresql
   install -D -m644 $srcdir/postgresql.pam $pkgdir/etc/pam.d/postgresql
 }
-md5sums=('abbd441563ff7c03399aa44046b91fba'
+md5sums=('3c48bf29e0d4acfecec9fdf50ca193d1'
          '86e0161343ce80e544aba999f284bc88'
          'df6ddf9e2ab4700a3415f17c0f4f4172'
          '96f82c38f3f540b53f3e5144900acf17')
