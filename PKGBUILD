@@ -26,7 +26,7 @@ _buildtype="RelWithDebInfo"
 
 pkgname=tomahawk
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -65,7 +65,8 @@ build() {
       git submodule init && git submodule update
     else
       msg "Updating jreen..."
-      git pull origin
+      cd ../
+      git submodule update
     fi
   fi
 
