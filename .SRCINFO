@@ -1,0 +1,15 @@
+pkgbase = pgxnclient
+	pkgdesc = Command line tool to interact with the PostgreSQL Extension Network
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://pgxn.org/
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	conflicts = pgxn-client
+	source = http://pypi.python.org/packages/source/p/pgxnclient/pgxnclient-1.2.1.tar.gz
+	md5sums = fd66748b32c3153140ec189aee556762
+
+pkgname = pgxnclient
+
