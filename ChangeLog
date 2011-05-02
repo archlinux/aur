@@ -1,3 +1,7 @@
+0.4 (0.0.3-2):
+* Remove multicore shit to not interfere with makepkg.conf
+0.3 (0.0.3-1):
+* Bump version
 0.2 (0.0.1-2):
 * Don't bundle tarball, link to it
 0.1 (0.0.1-1):
