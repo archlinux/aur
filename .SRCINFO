@@ -1,0 +1,15 @@
+pkgbase = dmon
+	pkgdesc = Toolset for daemonizing and supervising processes
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = http://gitorious.org/dmon
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = glibc
+	source = http://furi-ku.org/+/cgit/code/dmon/snapshot/dmon-0.3.7.tar.gz
+	md5sums = 84274ef9cfbc2cca827e0b8e19b6d35e
+
+pkgname = dmon
+
