@@ -4,17 +4,18 @@
 _pkgbasename=libcanberra
 pkgbase=lib32-$_pkgbasename
 pkgname=(lib32-libcanberra lib32-libcanberra-pulse)
-pkgver=0.26
-pkgrel=3
+pkgver=0.28
+pkgrel=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 arch=(x86_64)
 license=('LGPL')
-depends=('lib32-libvorbis>=1.3.1' 'lib32-libtool>=2.2.10' 'lib32-gtk2>=2.21.8' 'lib32-alsa-lib>=1.0.23' 'lib32-tdb>=1.2.1' $_pkgbasename)
+depends=('lib32-libvorbis' 'lib32-libtool' 'lib32-gtk2' 'lib32-alsa-lib' 'lib32-tdb'
+         $_pkgbasename)
 makedepends=('gtk-doc' lib32-libpulse gcc-multilib libtool-multilib)
 options=(!emptydirs)
 url=http://0pointer.de/lennart/projects/libcanberra
 source=("$url/$_pkgbasename-$pkgver.tar.gz")
-md5sums=('ee2c66ada7c851a4e7b6eb1682285a24')
+md5sums=('c198b4811598c4c161ff505e4531b02c')
 
 build() {
   cd "$srcdir/$_pkgbasename-$pkgver"
@@ -25,7 +26,7 @@ build() {
 
   ./configure --sysconfdir=/etc --prefix=/usr --localstatedir=/var \
       --disable-static --with-builtin=dso --enable-null --disable-oss \
-      --enable-alsa --disable-gstreamer --enable-pulse \
+      --enable-alsa --disable-gstreamer --enable-pulse --disable-udev \
       --libdir=/usr/lib32
   make
 }
@@ -44,7 +45,7 @@ package_lib32-libcanberra() {
   mkdir pulse-plugin
   mv "${pkgdir}"/usr/lib32/${_pkgbasename}-${pkgver}/${_pkgbasename}-pulse.* pulse-plugin
 
-  rm -rf "${pkgdir}"/{etc,usr/{include,share,bin}}
+  rm -rf "${pkgdir}"/{etc,usr/{include,share,bin,lib32/gnome-settings-daemon-3.0}}
 }
 
 package_lib32-libcanberra-pulse() {
