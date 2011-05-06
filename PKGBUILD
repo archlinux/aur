@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -36,7 +36,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	openbsd-netcat-default.patch
 	unixperms.patch
 	yajl-2.x.patch)
-md5sums=('53d005e6f3732aba1fd6b2718f9cec99'
+md5sums=('4182dbe290cca4344a5387950dc06433'
          '018d97dafc0049075fba6f2850f17a12'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '7d5a841d51321be56ad3c4f93d112fb0'
@@ -68,6 +68,10 @@ build() {
 	--with-storage-lvm --without-xen --with-udev --without-hal
   find -name Makefile -exec sed -i 's#-L /usr#-L/usr#' {} \;
   make -j1
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -D -m755 "$srcdir"/libvirtd.rc.d "$pkgdir"/etc/rc.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
