@@ -28,6 +28,12 @@ PKGEXT='.pkg.tar.gz'
 build() {
 	cd $srcdir/$pkgname-$_ver
 
+	if [ "${CARCH}" == 'x86_64' ]; then
+		openssltarget='linux-x86_64'
+	elif [ "${CARCH}" == 'i686' ]; then
+		openssltarget='linux-elf'
+	fi
+
 	# avoid conflicts with other man pages
 	# see http://www.linuxfromscratch.org/patches/downloads/openssl/
 	patch -p1 -i $srcdir/fix-manpages.patch
@@ -36,16 +42,22 @@ build() {
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
-	./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared zlib enable-md2 -Wa,--noexecstack
+	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
+		shared zlib enable-md2 \
+		"${openssltarget}" \
+		-Wa,--noexecstack "${CFLAGS}" "${LDFLAGS}"
 
+ 	make depend
 	make
+}
 
+check() {
+	cd $srcdir/$pkgname-$_ver
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
-	#patch -p0 -R -i $srcdir/ca-dir.patch
-	#make test
-	#patch -p0 -i $srcdir/ca-dir.patch
+	patch -p0 -R -i $srcdir/ca-dir.patch
+	make test
+	patch -p0 -i $srcdir/ca-dir.patch
 }
 
 package() {
