@@ -50,7 +50,7 @@ package_pidgin(){
   install=pidgin.install
 
   cd "$srcdir/pidgin-$pkgver"
-  
+
   # For linking
   make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES
 
@@ -71,7 +71,7 @@ package_libpurple(){
            'cyrus-sasl-plugins')
   optdepends=('avahi: Bonjour protocol support'
               'dbus-python: for purple-remote and purple-url-handler')
-  
+
   cd "$srcdir/pidgin-$pkgver"
 
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
