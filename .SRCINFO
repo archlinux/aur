@@ -1,0 +1,19 @@
+pkgbase = jreen-git
+	pkgdesc = Qt XMPP library
+	pkgver = 20110508
+	pkgrel = 1
+	url = http://gitorious.org/jreen
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake>=2.6
+	depends = libidn
+	depends = qca
+	depends = zlib
+	provides = jreen
+	conflicts = jreen
+	options = !strip
+
+pkgname = jreen-git
+
