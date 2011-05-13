@@ -1,0 +1,18 @@
+pkgbase = python-gtkglext
+	pkgdesc = Python language bindings for GtkGLExt
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = http://gtkglext.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = libxmu
+	depends = gtkglext
+	depends = mesa
+	depends = python-opengl
+	depends = pygtk
+	source = http://downloads.sourceforge.net/gtkglext/pygtkglext-1.1.0.tar.bz2
+	md5sums = 720b421d3b8514a40189b285dd91de57
+
+pkgname = python-gtkglext
+
