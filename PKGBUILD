@@ -6,7 +6,7 @@
 
 pkgname=p7zip
 pkgver=9.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line version of the 7zip compressed file archiver'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -21,7 +21,6 @@ build() {
 	[[ $CARCH = x86_64 ]] \
 	&& cp makefile.linux_amd64_asm makefile.machine \
 	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
-	sed -i "s|usr/local|usr|g" makefile
 
 	make all3 OPTFLAGS="${CXXFLAGS}"
 }
@@ -30,10 +29,10 @@ package() {
 	cd "${srcdir}/${pkgname}_${pkgver}"
 
 	make install \
-		DEST_HOME="${pkgdir}/usr" \
-		DEST_MAN="${pkgdir}/usr/share/man" \
-		DEST_SHARE_DOC="http://www.bugaco.com/7zip"
+		DEST_DIR="${pkgdir}" \
+		DEST_HOME="/usr" \
+		DEST_MAN="/usr/share/man"
 
-	sed "s|${pkgdir}/usr|/usr|g" -i "${pkgdir}"/usr/bin/7z{,a,r}
+	chmod -R u+w "${pkgdir}"/usr/share/doc/
 	install -Dm755 contrib/VirtualFileSystemForMidnightCommander/u7z "${pkgdir}"/usr/lib/mc/extfs.d/u7z
 }
