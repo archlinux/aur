@@ -1,16 +1,16 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
 arch=('x86_64')
-url="http://freshmeat.net/projects/nspluginwrapper/"
+url="http://nspluginwrapper.davidben.net/"
 license=('GPL')
 depends=('curl' 'lib32-libxt' 'lib32-gcc-libs' 'gtk2' 'lib32-gtk2')
 makedepends=('gcc-multilib')
 source=(http://web.mit.edu/davidben/Public/$pkgname/$pkgname-$pkgver.tar.gz
         nspluginwrapper-native-windows.patch)
-sha256sums=('f3a40d160601520d36b6f5c342e1e9751b2bdc70dff5e2e880e1d18ed8830201'
+sha256sums=('39b9034dc840ac6a21701406d96449e578b787aad7f6a09d97113776cf8251b3'
             '3796b66f53448f4668e70aec97a3d74db2b2fcd308b36f87373405547cae38b1')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
