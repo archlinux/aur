@@ -1,5 +1,5 @@
 post_upgrade() {
-  for i in /usr/lib32/mozilla/plugins/*; do
-    /usr/bin/nspluginwrapper -i "$i"
+  for i in `nspluginwrapper -l | grep -v "^ "`; do
+    /usr/bin/nspluginwrapper -u "$i"
   done
 }
