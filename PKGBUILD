@@ -2,7 +2,7 @@
 # Contributor: Dmitrij D. Czarkoff <czarkoff@gmail.com>
 pkgname=gmpc-plugins
 pkgver=0.20.0
-pkgrel=4
+pkgrel=5
 pkgdesc="official plugins for GMPC"
 arch=(i686 x86_64)
 url="http://gmpclient.org/"

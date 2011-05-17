@@ -1,7 +1,7 @@
 pkgbase = gmpc-plugins
 	pkgdesc = official plugins for GMPC
 	pkgver = 0.20.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gmpclient.org/
 	changelog = gmpc-plugins.changelog
 	arch = i686
