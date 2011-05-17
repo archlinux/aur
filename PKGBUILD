@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
 arch=('x86_64')
 url="http://nspluginwrapper.davidben.net/"
@@ -27,8 +27,6 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   make -j1 DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir"/usr/lib/mozilla/plugins/
-  ln -s /usr/lib/nspluginwrapper/x86_64/linux/npwrapper.so "$pkgdir"/usr/lib/mozilla/plugins/
 }
 
 # vim:set ts=2 sw=2 et:
