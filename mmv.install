@@ -1,0 +1,19 @@
+# arg 1: the new package version
+post_install() {
+  echo ">>>"
+  echo ">>>" 
+  echo ">>>"
+  echo ">>> many thanks to the debian people who provide the sources"
+  echo ">>>"
+}
+
+# arg 1:  the old package version
+post_remove() {
+  echo ">>>"
+  echo ">>>"
+  echo ">>>"
+}
+
+op=$1
+shift
+$op $*
