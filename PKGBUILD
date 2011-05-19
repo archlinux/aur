@@ -13,11 +13,11 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=jreen-git
-pkgver=20110508
+pkgver=20110519
 pkgrel=1
 pkgdesc="Qt XMPP library"
 arch=('i686' 'x86_64')
-url="http://gitorious.org/jreen"
+url="https://github.com/euroelessar/jreen"
 license=('GPL2')
 depends=('libidn' 'qca' 'zlib')
 makedepends=('git' 'cmake>=2.6')
@@ -25,7 +25,7 @@ provides=('jreen')
 conflicts=('jreen')
 options=(!strip)
 
-_gitroot="git://gitorious.org/jreen/jreen.git"
+_gitroot="git://github.com/euroelessar/jreen.git"
 _gitname="jreen"
 
 build() {
