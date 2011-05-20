@@ -7,7 +7,7 @@ pkgdesc='A utility for browsing pacman databases and the AUR'
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/pkgbrowser/'
 license=('GPL2')
-depends=('python2-qt')
+depends=('python2-pyqt')
 install="$pkgname.install"
 source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz")
 

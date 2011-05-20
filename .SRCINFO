@@ -7,7 +7,7 @@ pkgbase = pkgbrowser
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = python2-qt
+	depends = python2-pyqt
 	source = http://pkgbrowser.googlecode.com/files/pkgbrowser-0.2.tar.gz
 	md5sums = e05d4ca774d3be8f5309da01f8b4069c
 
