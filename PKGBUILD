@@ -3,13 +3,13 @@
 pkgname=bmdcapture
 pkgver=0.9.6
 pkgrel=1
-pkgdesc="BlackMagic Design DeckLink capture utility"
+pkgdesc="A capture utility for BlackMagic Design DeckLink cards"
 arch=('i686' 'x86_64')
 url="http://smorgasbork.com/"
 license=('GPL3')
-depends=('gcc-libs' 'libgl')
+depends=('decklink' 'gcc-libs' 'libgl')
 source=("http://smorgasbork.com/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('4dec7596cfa6c9e7d835e312a6136c8d')
+sha256sums=('f7eca44c702cc2ebd9afcb435bea800f1c73e4beeac7b0c337680dff0372fe64')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
