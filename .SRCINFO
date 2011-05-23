@@ -1,0 +1,21 @@
+pkgbase = sqlantaresia-git
+	pkgdesc = SQL Antaresia is a MySQL administrative tool aimed at developers and sysadmins
+	pkgver = v0.5.59.g895e631
+	pkgrel = 1
+	url = https://github.com/mtorromeo/sqlantaresia
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = git
+	depends = python2-pyqt
+	depends = python2-setproctitle
+	depends = mysql-python
+	depends = python2-dbutils
+	depends = python2-qscintilla
+	optdepends = python-paramiko: for automatic ssh tunnelling
+	optdepends = pycrypto: for automatic ssh tunnelling
+	source = git://github.com/mtorromeo/sqlantaresia.git
+	md5sums = SKIP
+
+pkgname = sqlantaresia-git
+
