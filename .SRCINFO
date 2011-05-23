@@ -1,0 +1,15 @@
+pkgbase = expressioneditor-git
+	pkgdesc = Application intended to help in testing and writing regular expressions
+	pkgver = 20130301
+	pkgrel = 1
+	url = http://alex-elliott.co.uk/projects/expression-editor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt4
+	depends = icu
+
+pkgname = expressioneditor-git
+
