@@ -1,0 +1,15 @@
+pkgbase = php-ioncube_loader
+	pkgdesc = Loader for PHP files encoded with ionCube PHP Encoder
+	pkgver = 4.7.2
+	pkgrel = 1
+	url = http://www.ioncube.com/
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	depends = php
+	backup = etc/php/conf.d/00-ioncube_loader.ini
+	source = ioncube_loader--4.7.2.tar.bz2::http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.bz2
+	sha256sums = 5673fd523b9a16aeb558743d980d11d6c3c0149451706829e575ba3e3c3be7b5
+
+pkgname = php-ioncube_loader
+
