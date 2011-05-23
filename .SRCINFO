@@ -1,0 +1,14 @@
+pkgbase = morbid
+	pkgdesc = A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
+	pkgver = 0.8.7.3
+	pkgrel = 3
+	url = http://pypi.python.org/pypi/morbid/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://pypi.python.org/packages/source/m/morbid/morbid-0.8.7.3.tar.gz
+	sha256sums = 71a9c88cee81dc473645e8568985dddd92437ca5e0bfc4558677573f8cad9fce
+
+pkgname = morbid
+
