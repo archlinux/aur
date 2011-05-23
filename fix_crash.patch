@@ -1,0 +1,35 @@
+From 9bcac748b54e00836715b0f70be26b7cbdc8c888 Mon Sep 17 00:00:00 2001
+From: Martin Pitt <martin.pitt@ubuntu.com>
+Date: Mon, 23 May 2011 08:58:49 +0000
+Subject: Fix crash from recent memleak fix (b49e32b)
+
+make_attribute_list_va() statically copies the caller's method arguments into
+the GnomeKeyringAttributeList, so we must only free the array itself, not the
+GnomeKeyringAttribute strings.
+
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=650840
+---
+diff --git a/library/gnome-keyring.c b/library/gnome-keyring.c
+index dc271dd..4febf47 100644
+--- a/library/gnome-keyring.c
++++ b/library/gnome-keyring.c
+@@ -2443,7 +2443,7 @@ gnome_keyring_find_itemsv (GnomeKeyringItemType                  type,
+ 	va_end (args);
+ 
+ 	ret = gnome_keyring_find_items (type, attributes, callback, data, destroy_data);
+-	gnome_keyring_attribute_list_free (attributes);
++	g_array_free (attributes, TRUE);
+ 	return ret;
+ }
+ 
+@@ -2520,7 +2520,7 @@ gnome_keyring_find_itemsv_sync  (GnomeKeyringItemType        type,
+ 	va_end (args);
+ 
+ 	ret = gnome_keyring_find_items_sync (type, attributes, found);
+-	gnome_keyring_attribute_list_free (attributes);
++	g_array_free (attributes, TRUE);
+ 	return ret;
+ }
+ 
+--
+cgit v0.9
