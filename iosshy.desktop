@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=IOSSHy
+GenericName=SSH Tunnel Spawner
+Exec=/usr/bin/iosshy
+Icon=network-server
+Terminal=false
+Type=Application
+Categories=Network;

@@ -1,0 +1,21 @@
+pkgbase = iosshy
+	pkgdesc = An easy to use desktop tool to quickly create and destroy SSH tunnels and launch commands based on a preconfigured setup.
+	pkgver = 1.6
+	pkgrel = 5
+	url = http://kde-apps.org/content/show.php/IOSSHy?content=119689
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-pyqt
+	depends = python2-setproctitle
+	depends = python2-paramiko
+	depends = python2-keyring
+	depends = pycrypto
+	optdepends = kdebindings-python: KDE integration
+	source = iosshy-1.6.tar.gz::https://github.com/mtorromeo/iosshy/tarball/v1.6
+	source = iosshy.desktop
+	sha256sums = ec774f07e698141a37c4144e3adafa1d0af98c51f517c20e3cccffd360b323a3
+	sha256sums = 9090d95bb9aa655cc94feecec931a80c8e51efe9d8e6a45c66acf25efa054843
+
+pkgname = iosshy
+
