@@ -1,0 +1,15 @@
+pkgbase = php-txforward
+	pkgdesc = PHP extension that makes reverse-proxing totally invisible for php applications.
+	pkgver = 1.0.7
+	pkgrel = 2
+	url = http://fcartegnie.free.fr/patchs/txforward.html
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	backup = etc/php/conf.d/txforward.ini
+	source = http://pecl.php.net/get/txforward-1.0.7.tgz
+	sha256sums = 9a6293245984e99a60f1f9d7290a897c86c9c952581d60e137f7d12806e637ba
+
+pkgname = php-txforward
+
