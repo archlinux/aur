@@ -5,9 +5,9 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.46.0
+pkgver=1.46.1
 _boostver=${pkgver//./_}
-pkgrel=4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
@@ -15,7 +15,7 @@ source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_bo
         4994-compile-fix-for-Python32-v2.patch
         boost-1.46.0-spirit.patch)
 license=('custom')
-md5sums=('820393d5746553c192db7b81ba0e53fe'
+md5sums=('341e5d993b19d099bf1a548495ea91ec'
          'cb59e8adbf2a45ef9264a2f4ab92b849'
          '9d6e2f13fef23bf27d7bdddc104e182a')
 
