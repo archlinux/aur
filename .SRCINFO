@@ -1,0 +1,17 @@
+pkgbase = qtweetlib-git
+	pkgdesc = C++ Qt based Twitter library
+	pkgver = 20110524
+	pkgrel = 1
+	url = https://github.com/dschmidt/QTweetLib
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake>=2.8
+	depends = qjson
+	provides = qtweetlib
+	conflicts = qtweetlib
+	options = !strip
+
+pkgname = qtweetlib-git
+
