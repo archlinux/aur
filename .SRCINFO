@@ -1,0 +1,16 @@
+pkgbase = php-yaml
+	pkgdesc = Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://code.google.com/p/php-yaml/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = php
+	depends = libyaml
+	backup = etc/php/conf.d/yaml.ini
+	source = http://pecl.php.net/get/yaml-1.1.1.tgz
+	sha256sums = 762ec3d9eb163ac0d063118df8c5e2ee6746dbe8566d32055e7e066e590937c3
+
+pkgname = php-yaml
+
