@@ -1,0 +1,17 @@
+pkgbase = decklink-sdk
+	pkgdesc = BlackMagic Design DeckLink SDK
+	pkgver = 8.0
+	pkgrel = 1
+	url = http://www.blackmagic-design.com/support/sdks/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = mesa
+	depends = qt
+	options = !strip
+	source = http://www.blackmagic-design.com/media/983433/decklink_sdk_8.0.zip
+	sha256sums = 4462f0bb83a549f34d4c0a3a65b3751de905b608ab5b8f7e0597626d74e47c0a
+
+pkgname = decklink-sdk
+
