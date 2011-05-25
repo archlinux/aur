@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.7.11
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
