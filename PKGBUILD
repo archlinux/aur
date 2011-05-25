@@ -4,7 +4,7 @@
 pkgname=gtk2-perl
 _realname=Gtk2
 pkgver=1.222
-pkgrel=2
+pkgrel=3
 pkgdesc="Gtk2-Perl allows Perl developers to write GTK+ 2.x applications."
 arch=(i686 x86_64)
 license=('LGPL')
