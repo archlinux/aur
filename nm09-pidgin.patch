@@ -1,0 +1,38 @@
+diff -up pidgin-2.7.10/libpurple/network.c.foo pidgin-2.7.10/libpurple/network.c
+--- pidgin-2.7.10/libpurple/network.c.foo	2011-03-10 02:21:43.920933267 -0600
++++ pidgin-2.7.10/libpurple/network.c	2011-03-10 02:23:11.466838793 -0600
+@@ -71,6 +71,10 @@
+ #include <dbus/dbus-glib.h>
+ #include <NetworkManager.h>
+ 
++#if !defined(NM_CHECK_VERSION)
++#define NM_CHECK_VERSION(x,y,z) 0
++#endif
++
+ static DBusGConnection *nm_conn = NULL;
+ static DBusGProxy *nm_proxy = NULL;
+ static DBusGProxy *dbus_proxy = NULL;
+@@ -863,7 +867,13 @@ nm_update_state(NMState state)
+ 
+ 	switch(state)
+ 	{
++#if NM_CHECK_VERSION(0,8,992)
++		case NM_STATE_CONNECTED_LOCAL:
++		case NM_STATE_CONNECTED_SITE:
++		case NM_STATE_CONNECTED_GLOBAL:
++#else
+ 		case NM_STATE_CONNECTED:
++#endif
+ 			/* Call res_init in case DNS servers have changed */
+ 			res_init();
+ 			/* update STUN IP in case we it changed (theoretically we could
+@@ -880,6 +890,9 @@ nm_update_state(NMState state)
+ 		case NM_STATE_ASLEEP:
+ 		case NM_STATE_CONNECTING:
+ 		case NM_STATE_DISCONNECTED:
++#if NM_CHECK_VERSION(0,8,992)
++		case NM_STATE_DISCONNECTING:
++#endif
+ 			if (prev != NM_STATE_CONNECTED && prev != NM_STATE_UNKNOWN)
+ 				break;
+ 			if (ui_ops != NULL && ui_ops->network_disconnected != NULL)
