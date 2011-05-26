@@ -2,7 +2,13 @@
 # Contributor: Ondrej Martinak <omartinak@gmail.com>
 
 pkgname=sfml
-pkgver=20110417
+
+_git=true
+
+if [[ "${_git}" = "true" ]]; then
+    pkgver=1.99.git20110526
+fi
+
 pkgrel=1
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
