@@ -2,11 +2,11 @@
 
 pkgname=cheese
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('gnome-desktop' 'gtk3' 'libcanberra' 'librsvg' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins' 'clutter-gst'
+depends=('gnome-desktop' 'gtk3' 'libcanberra' 'librsvg' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins' 'gstreamer0.10-bad' 'clutter-gst'
          'clutter-gtk' 'mx' 'libgee' 'gnome-video-effects' 'hicolor-icon-theme')
 makedepends=('pkgconfig' 'gnome-doc-utils' 'intltool' 'gobject-introspection')
 groups=('gnome-extra')
