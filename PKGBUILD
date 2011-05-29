@@ -3,7 +3,7 @@
 pkgname=xfwm4-themes
 pkgver=4.6.0
 pkgrel=1
-pkgdesc="A set of additionnal themes for the Xfce window manager"
+pkgdesc="A set of additional themes for the Xfce window manager"
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://www.xfce.org/"
