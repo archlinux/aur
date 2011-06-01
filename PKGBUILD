@@ -4,13 +4,6 @@
 #### The section below can be adjusted to suit your needs ####
 ##############################################################
 
-# Do we build with jreen? Otherwise gloox will be used.
-# Don't use jreen unless gloox plugin doesn't want to co-operate!
-# Possible values: on, off
-
-_enablejreen="off"
-
-##############
 # What type of build do you want?
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
 # Default is DebugFull to help with debugging.
@@ -20,29 +13,20 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=tomahawk
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.1
+pkgrel=1
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
 license=('GPL3')
-##############################################################
-# Attention! Add new depends entries at the beginning of the array to not break gloox/jreen auto-switch
-#############################################################
-depends=('taglib>=1.6.2' 'boost>=1.30' 'clucene-git' 'libmad>=0.15.1b' 'libechonest-git' 'liblastfm>=0.3.3' 'gloox>=1.0')
+depends=('phonon>=4.5.0' 'taglib>=1.6.2' 'boost>=1.30' 'clucene-git' 'libechonest-git' 'jreen-git' 'qtweetlib-git')
 makedepends=('git' 'cmake>=2.8.0')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
 options=(!strip)
-changelog=ChangeLog
 source=(http://download.tomahawk-player.org/tomahawk-${pkgver}.tar.bz2)
 md5sums=('a2716c41c7c7720e4dd8336c6b73609c')
-
-# Swap last entry in depends array to match jreen's deps
-if [[ ${_enablejreen} == "on" ]]; then
-  depends[${#depends[@]}-1]='qca'
-  depends+=('libidn')
-fi
+install=tomahawk.install
 
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
@@ -50,28 +34,14 @@ if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
 fi
 
 build() {
-
-  # Get/update jreen if enabled. May be unneeded for a release version!
-  if [[ ${_enablejreen} == "on" ]]; then
-    cd ${srcdir}/${pkgname}/thirdparty
-    if [[ $(find -type d -empty|grep jreen|wc -l) -eq 1 ]]; then
-      msg "Obtaining jreen..."
-      cd ${srcdir}/${pkgname}
-      git submodule init && git submodule update
-    else
-      msg "Updating jreen..."
-      cd ../
-      git submodule update
-    fi
-  fi
-
+  
   msg "Starting build..."
 
   rm -rf ${srcdir}/${pkgname}-${pkgver}-build
   cp -r ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_JREEN=${_enablejreen} -DCMAKE_BUILD_TYPE=${_buildtype}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype}
   make
 }
 
