@@ -129,17 +129,6 @@ diff -u -r ui/gfx/codec/jpeg_codec.h ui/gfx/codec/jpeg_codec.h
  #include <vector>
  
  #include "ppapi/cpp/point.h"
-Index: Source/WebCore/dom/make_names.pl
-===================================================================
---- third_party/WebKit/Source/WebCore/dom/make_names.pl	(revision 73989)
-+++ third_party/WebKit/Source/WebCore/dom/make_names.pl	(revision 84123)
-@@ -66,5 +66,5 @@
-     $gccLocation = "/usr/bin/gcc";
- }
--my $preprocessor = $gccLocation . " -E -P -x c++";
-+my $preprocessor = $gccLocation . " -E -x c++";
- 
- GetOptions(
 Index: Source/WebCore/ChangeLog
 ===================================================================
 --- third_party/WebKit/Source/WebCore/ChangeLog	(revision 84120)
