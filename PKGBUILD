@@ -1,0 +1,50 @@
+# Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
+# Contributor: Rick W. Chen <stuffcorpse@archlinux.us>
+
+##############################################################
+#### The section below can be adjusted to suit your needs ####
+##############################################################
+
+# What type of build do you want?
+# See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
+# You can change it to for example RelWithDebInfo to help with debugging.
+
+_buildtype="Release"
+
+##############################################################
+
+pkgname=libechonest
+pkgver=1.1.8
+pkgrel=1
+pkgdesc="C++ library for interfacing with Echo Nest"
+arch=('i686' 'x86_64')
+url="https://projects.kde.org/projects/playground/libs/libechonest"
+license=('GPL')
+depends=('qjson')
+makedepends=('git' 'cmake>=2.8.0')
+provides=('libechonest')
+conflicts=('libechonest-git')
+options=(!strip)
+source=(http://pwsp.cleinias.com/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('1d2751b90bd7914b4e7869c1bbbae0c0')
+
+# Clean options array to strip pkg if release buildtype is chosen
+if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
+  options=()
+fi
+
+build() {
+  msg "Starting build..."
+
+  rm -rf ${srcdir}/${pkgname}-${pkgver}-build
+  cp -r ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}-${pkgver}-build
+  cd ${srcdir}/${pkgname}-${pkgver}-build
+
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype}
+  make
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}-build
+  make DESTDIR=${pkgdir} install
+}
