@@ -6,8 +6,7 @@ pkgbase = libechonest
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
-	makedepends = cmake>=2.8.0
+	makedepends = cmake
 	depends = qjson
 	provides = libechonest
 	conflicts = libechonest-git

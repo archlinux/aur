@@ -21,7 +21,7 @@ arch=('i686' 'x86_64')
 url="https://projects.kde.org/projects/playground/libs/libechonest"
 license=('GPL')
 depends=('qjson')
-makedepends=('git' 'cmake>=2.8.0')
+makedepends=('cmake')
 provides=('libechonest')
 conflicts=('libechonest-git')
 options=(!strip)
