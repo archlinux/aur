@@ -1,7 +1,7 @@
 pkgbase = tomahawk
 	pkgdesc = A Music Player App written in C++/Qt
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
 	arch = i686
@@ -13,14 +13,16 @@ pkgbase = tomahawk
 	depends = taglib>=1.6.2
 	depends = boost>=1.30
 	depends = clucene-git
-	depends = libechonest-git
-	depends = jreen-git
+	depends = libechonest>=1.1.8
+	depends = jreen-git>=20110605
 	depends = qtweetlib-git
 	provides = tomahawk
 	conflicts = tomahawk-git
 	options = !strip
 	source = http://download.tomahawk-player.org/tomahawk-0.1.0.tar.bz2
+	source = 0001-Fixes-due-to-changed-Jreen-API.patch
 	md5sums = e7c06eac747db2f6f9f04cbb0fd5024a
+	md5sums = d67cc8bbd35fcbd4a5429b2abad25a48
 
 pkgname = tomahawk
 

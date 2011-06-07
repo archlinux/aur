@@ -1,0 +1,297 @@
+From 2d3f712f957588c5389692f0a47ba4e2fb7c3811 Mon Sep 17 00:00:00 2001
+From: Ruslan Nigmatullin <euroelessar@yandex.ru>
+Date: Sat, 4 Jun 2011 23:48:27 +0600
+Subject: [PATCH] Fixes due to changed Jreen API
+
+---
+ src/sip/jabber/avatarmanager.cpp             |   16 ++++++-----
+ src/sip/jabber/avatarmanager.h               |    2 +-
+ src/sip/jabber/jabber.cpp                    |   37 ++++++++++++++++----------
+ src/sip/jabber/jabber.h                      |    2 +-
+ src/sip/jabber/tomahawksipmessage.h          |    4 +-
+ src/sip/jabber/tomahawksipmessagefactory.cpp |    8 +++---
+ src/sip/jabber/tomahawksipmessagefactory.h   |    6 ++--
+ 7 files changed, 43 insertions(+), 32 deletions(-)
+
+diff --git a/src/sip/jabber/avatarmanager.cpp b/src/sip/jabber/avatarmanager.cpp
+index 204ba8c..b1abde9 100644
+--- a/src/sip/jabber/avatarmanager.cpp
++++ b/src/sip/jabber/avatarmanager.cpp
+@@ -6,6 +6,7 @@
+ #include <jreen/vcard.h>
+ #include <jreen/vcardupdate.h>
+ #include <jreen/presence.h>
++#include <jreen/iqreply.h>
+ 
+ #include <QDir>
+ #include <QDebug>
+@@ -20,8 +21,8 @@ AvatarManager::AvatarManager(Jreen::Client *client) :
+     m_cachedAvatars = m_cacheDir.entryList();
+ 
+     connect(m_client, SIGNAL(serverFeaturesReceived(QSet<QString>)), SLOT(onNewConnection()));
+-    connect(m_client, SIGNAL(newPresence(Jreen::Presence)), SLOT(onNewPresence(Jreen::Presence)));
+-    connect(m_client, SIGNAL(newIQ(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
++    connect(m_client, SIGNAL(presenceReceived(Jreen::Presence)), SLOT(onNewPresence(Jreen::Presence)));
++    connect(m_client, SIGNAL(iqReceived(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
+ 
+     connect(this, SIGNAL(newAvatar(QString)), SLOT(onNewAvatar(QString)));
+ }
+@@ -42,12 +43,13 @@ void AvatarManager::fetchVCard(const QString &jid)
+ 
+     Jreen::IQ iq(Jreen::IQ::Get, jid );
+     iq.addExtension(new Jreen::VCard());
+-    m_client->send( iq, this, SLOT( onNewIq( Jreen::IQ, int ) ), 0 );
++    Jreen::IQReply *reply = m_client->send(iq);
++    connect(reply, SIGNAL(received(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
+ }
+ 
+ void AvatarManager::onNewPresence(const Jreen::Presence& presence)
+ {
+-    Jreen::VCardUpdate::Ptr update = presence.findExtension<Jreen::VCardUpdate>();
++    Jreen::VCardUpdate::Ptr update = presence.payload<Jreen::VCardUpdate>();
+     if(update)
+     {
+ //        qDebug() << "vcard: found update for" << presence.from().full();
+@@ -74,9 +76,9 @@ void AvatarManager::onNewPresence(const Jreen::Presence& presence)
+     }
+ }
+ 
+-void AvatarManager::onNewIq(const Jreen::IQ& iq, int context)
++void AvatarManager::onNewIq(const Jreen::IQ& iq)
+ {
+-    Jreen::VCard *vcard = iq.findExtension<Jreen::VCard>().data();
++    Jreen::VCard::Ptr vcard = iq.payload<Jreen::VCard>();
+     if(vcard)
+     {
+         iq.accept();
+@@ -119,7 +121,7 @@ void AvatarManager::onNewIq(const Jreen::IQ& iq, int context)
+ //            qDebug() << Q_FUNC_INFO << "got own vcard";
+ 
+             Jreen::Presence presence = m_client->presence();
+-            Jreen::VCardUpdate::Ptr update = presence.findExtension<Jreen::VCardUpdate>();
++            Jreen::VCardUpdate::Ptr update = presence.payload<Jreen::VCardUpdate>();
+             if (update->photoHash() != avatarHash)
+             {
+                 qDebug() << Q_FUNC_INFO << "Updating own presence...";
+diff --git a/src/sip/jabber/avatarmanager.h b/src/sip/jabber/avatarmanager.h
+index a1a43d4..fc022f1 100644
+--- a/src/sip/jabber/avatarmanager.h
++++ b/src/sip/jabber/avatarmanager.h
+@@ -23,7 +23,7 @@ signals:
+ 
+ private slots:
+     void onNewPresence( const Jreen::Presence& presence );
+-    void onNewIq(const Jreen::IQ &iq, int context = 0 );
++    void onNewIq(const Jreen::IQ &iq);
+     void onNewConnection();
+     void onNewAvatar( const QString &jid );
+ 
+diff --git a/src/sip/jabber/jabber.cpp b/src/sip/jabber/jabber.cpp
+index 94fafa7..eece626 100644
+--- a/src/sip/jabber/jabber.cpp
++++ b/src/sip/jabber/jabber.cpp
+@@ -35,6 +35,7 @@
+ #include <jreen/directconnection.h>
+ #include <jreen/tcpconnection.h>
+ #include <jreen/softwareversion.h>
++#include <jreen/iqreply.h>
+ 
+ #include <qjson/parser.h>
+ #include <qjson/serializer.h>
+@@ -91,7 +92,7 @@ JabberPlugin::JabberPlugin( const QString& pluginId )
+     m_client = new Jreen::Client( jid, m_currentPassword );
+     setupClientHelper();
+ 
+-    m_client->registerStanzaExtension(new TomahawkSipMessageFactory);
++    m_client->registerPayload(new TomahawkSipMessageFactory);
+     m_currentResource = QString::fromAscii( "tomahawk%1" ).arg( QString::number( qrand() % 10000 ) );
+     m_client->setResource( m_currentResource );
+ 
+@@ -117,7 +118,7 @@ JabberPlugin::JabberPlugin( const QString& pluginId )
+     m_client->disco()->addFeature( TOMAHAWK_FEATURE );
+ 
+     // setup caps node, legacy peer detection - used before 0.1
+-    Jreen::Capabilities::Ptr caps = m_client->presence().findExtension<Jreen::Capabilities>();
++    Jreen::Capabilities::Ptr caps = m_client->presence().payload<Jreen::Capabilities>();
+     caps->setNode( TOMAHAWK_CAP_NODE_NAME );
+     //FIXME: caps->setVersion( TOMAHAWK_VERSION );
+ 
+@@ -129,9 +130,9 @@ JabberPlugin::JabberPlugin( const QString& pluginId )
+     // setup slots
+     connect(m_client, SIGNAL(serverFeaturesReceived(QSet<QString>)), SLOT(onConnect()));
+     connect(m_client, SIGNAL(disconnected(Jreen::Client::DisconnectReason)), SLOT(onDisconnect(Jreen::Client::DisconnectReason)));
+-    connect(m_client, SIGNAL(newMessage(Jreen::Message)), SLOT(onNewMessage(Jreen::Message)));
++    connect(m_client, SIGNAL(messageReceived(Jreen::Message)), SLOT(onNewMessage(Jreen::Message)));
+ 
+-    connect(m_client, SIGNAL(newIQ(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
++    connect(m_client, SIGNAL(iqReceived(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
+ 
+     connect(m_roster, SIGNAL(presenceReceived(Jreen::RosterItem::Ptr,Jreen::Presence)),
+                       SLOT(onPresenceReceived(Jreen::RosterItem::Ptr,Jreen::Presence)));
+@@ -445,8 +446,9 @@ JabberPlugin::sendMsg(const QString& to, const QString& msg)
+     qDebug() << "Send sip messsage to " << to;
+     Jreen::IQ iq( Jreen::IQ::Set, to );
+     iq.addExtension( sipMessage );
+-
+-    m_client->send( iq, this, SLOT( onNewIq( Jreen::IQ, int ) ), SipMessageSent );
++    Jreen::IQReply *reply = m_client->send(iq);
++    reply->setData(SipMessageSent);
++    connect(reply, SIGNAL(received(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
+ }
+ 
+ void
+@@ -648,7 +650,7 @@ void JabberPlugin::onPresenceReceived( const Jreen::RosterItem::Ptr &item, const
+     }
+ 
+     // ignore anyone not Running tomahawk:
+-    Jreen::Capabilities::Ptr caps = presence.findExtension<Jreen::Capabilities>();
++    Jreen::Capabilities::Ptr caps = presence.payload<Jreen::Capabilities>();
+     /* Disabled this, because it's somewhat ugly and we should rely on nothing but the features
+     if ( caps && ( caps->node() == TOMAHAWK_CAP_NODE_NAME ) )
+     {
+@@ -666,8 +668,10 @@ void JabberPlugin::onPresenceReceived( const Jreen::RosterItem::Ptr &item, const
+ 
+         Jreen::IQ featuresIq( Jreen::IQ::Get, jid );
+         featuresIq.addExtension( new Jreen::Disco::Info( node ) );
+-
+-        m_client->send( featuresIq, this, SLOT( onNewIq( Jreen::IQ, int ) ), RequestDisco );
++        
++        Jreen::IQReply *reply = m_client->send(featuresIq);
++        reply->setData(RequestDisco);
++        connect(reply, SIGNAL(received(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
+     }
+     else if( !caps )
+     {
+@@ -761,15 +765,18 @@ JabberPlugin::onSubscriptionRequestConfirmed( int result )
+     m_roster->allowSubscription( jid, allowSubscription == QMessageBox::Yes );
+ }
+ 
+-void JabberPlugin::onNewIq(const Jreen::IQ& iq, int context)
++void JabberPlugin::onNewIq(const Jreen::IQ& iq)
+ {
+     if ( m_state != Connected )
+         return;
+ 
++    Jreen::IQReply *reply = qobject_cast<Jreen::IQReply*>(sender());
++    int context = reply ? reply->data().toInt() : NoContext;
++
+     if( context == RequestDisco )
+     {
+ //        qDebug() << Q_FUNC_INFO << "Received disco IQ...";
+-        Jreen::Disco::Info *discoInfo = iq.findExtension<Jreen::Disco::Info>().data();
++        Jreen::Disco::Info *discoInfo = iq.payload<Jreen::Disco::Info>().data();
+         if(!discoInfo)
+             return;
+         iq.accept();
+@@ -803,7 +810,7 @@ void JabberPlugin::onNewIq(const Jreen::IQ& iq, int context)
+     }
+     else if(context == RequestVersion)
+     {
+-        Jreen::SoftwareVersion* softwareVersion = iq.findExtension<Jreen::SoftwareVersion>().data();
++        Jreen::SoftwareVersion::Ptr softwareVersion = iq.payload<Jreen::SoftwareVersion>();
+         if( softwareVersion )
+         {
+             QString versionString = QString("%1 %2 %3").arg( softwareVersion->name(), softwareVersion->os(), softwareVersion->version() );
+@@ -825,7 +832,7 @@ void JabberPlugin::onNewIq(const Jreen::IQ& iq, int context)
+     }*/
+     else
+     {
+-        TomahawkSipMessage *sipMessage = iq.findExtension<TomahawkSipMessage>().data();
++        TomahawkSipMessage::Ptr sipMessage = iq.payload<TomahawkSipMessage>();
+         if(sipMessage)
+         {
+             iq.accept();
+@@ -910,7 +917,9 @@ void JabberPlugin::handlePeerStatus(const Jreen::JID& jid, Jreen::Presence::Type
+         // request software version
+         Jreen::IQ versionIq( Jreen::IQ::Get, jid );
+         versionIq.addExtension( new Jreen::SoftwareVersion() );
+-        m_client->send( versionIq, this, SLOT( onNewIq( Jreen::IQ, int ) ), RequestVersion );
++        Jreen::IQReply *reply = m_client->send(versionIq);
++        reply->setData(RequestVersion);
++        connect(reply, SIGNAL(received(Jreen::IQ)), SLOT(onNewIq(Jreen::IQ)));
+ 
+         return;
+     }
+diff --git a/src/sip/jabber/jabber.h b/src/sip/jabber/jabber.h
+index 89b0675..9d25ff2 100644
+--- a/src/sip/jabber/jabber.h
++++ b/src/sip/jabber/jabber.h
+@@ -113,7 +113,7 @@ private slots:
+     {
+         qDebug() << e;
+     }
+-    void onNewIq( const Jreen::IQ &iq, int context = NoContext );
++    void onNewIq( const Jreen::IQ &iq );
+     void onNewAvatar( const QString &jid );
+ 
+ private:
+diff --git a/src/sip/jabber/tomahawksipmessage.h b/src/sip/jabber/tomahawksipmessage.h
+index 7028975..bf1fb73 100644
+--- a/src/sip/jabber/tomahawksipmessage.h
++++ b/src/sip/jabber/tomahawksipmessage.h
+@@ -8,9 +8,9 @@
+ #include "../sipdllmacro.h"
+ 
+ class TomahawkSipMessagePrivate;
+-class SIPDLLEXPORT TomahawkSipMessage : public Jreen::StanzaExtension
++class SIPDLLEXPORT TomahawkSipMessage : public Jreen::Payload
+ {
+-    J_EXTENSION(TomahawkSipMessage, "")
++    J_PAYLOAD(TomahawkSipMessage)
+     Q_DECLARE_PRIVATE(TomahawkSipMessage)
+     public:
+         // sets visible to true
+diff --git a/src/sip/jabber/tomahawksipmessagefactory.cpp b/src/sip/jabber/tomahawksipmessagefactory.cpp
+index 5c21edf..1c39d37 100644
+--- a/src/sip/jabber/tomahawksipmessagefactory.cpp
++++ b/src/sip/jabber/tomahawksipmessagefactory.cpp
+@@ -86,7 +86,7 @@ void TomahawkSipMessageFactory::handleCharacterData(const QStringRef &text)
+     Q_UNUSED(text);
+ }
+ 
+-void TomahawkSipMessageFactory::serialize(StanzaExtension *extension, QXmlStreamWriter *writer)
++void TomahawkSipMessageFactory::serialize(Payload *extension, QXmlStreamWriter *writer)
+ {
+     TomahawkSipMessage *sipMessage = se_cast<TomahawkSipMessage*>(extension);
+ 
+@@ -118,10 +118,10 @@ void TomahawkSipMessageFactory::serialize(StanzaExtension *extension, QXmlStream
+         writer->writeEndElement();
+ }
+ 
+-StanzaExtension::Ptr TomahawkSipMessageFactory::createExtension()
++Payload::Ptr TomahawkSipMessageFactory::createPayload()
+ {
+     if(m_visible)
+-        return StanzaExtension::Ptr(new TomahawkSipMessage(m_ip, m_port, m_uniqname, m_key));
++        return Payload::Ptr(new TomahawkSipMessage(m_ip, m_port, m_uniqname, m_key));
+     else
+-        return StanzaExtension::Ptr(new TomahawkSipMessage());
++        return Payload::Ptr(new TomahawkSipMessage());
+ }
+diff --git a/src/sip/jabber/tomahawksipmessagefactory.h b/src/sip/jabber/tomahawksipmessagefactory.h
+index a89027c..626eefd 100644
+--- a/src/sip/jabber/tomahawksipmessagefactory.h
++++ b/src/sip/jabber/tomahawksipmessagefactory.h
+@@ -23,7 +23,7 @@
+ 
+ #include "../sipdllmacro.h"
+ 
+-class SIPDLLEXPORT TomahawkSipMessageFactory : public Jreen::StanzaExtensionFactory<TomahawkSipMessage>
++class SIPDLLEXPORT TomahawkSipMessageFactory : public Jreen::PayloadFactory<TomahawkSipMessage>
+ {
+ public:
+     TomahawkSipMessageFactory();
+@@ -33,8 +33,8 @@ public:
+     void handleStartElement(const QStringRef &name, const QStringRef &uri, const QXmlStreamAttributes &attributes);
+     void handleEndElement(const QStringRef &name, const QStringRef &uri);
+     void handleCharacterData(const QStringRef &text);
+-    void serialize(Jreen::StanzaExtension *extension, QXmlStreamWriter *writer);
+-    Jreen::StanzaExtension::Ptr createExtension();
++    void serialize(Jreen::Payload *extension, QXmlStreamWriter *writer);
++    Jreen::Payload::Ptr createPayload();
+ private:
+     enum State { AtNowhere, AtTransport, AtCandidate } m_state;
+     int m_depth;
+-- 
+1.7.5.2
+
