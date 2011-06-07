@@ -5,8 +5,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.7.11
-pkgrel=6
+pkgver=2.8.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -16,19 +16,15 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        nm09-pidgin.patch
         nm09-more.patch)
-md5sums=('07c2a2535b4d7436b5ec7685fe063fec'
-         '744a21b4dbaf949dba7cd3b75b12b4fe'
+md5sums=('d1656c443a5d91f4aa0d95915f1f50c3'
          'a673659d86c7a65aa710f7c8c7feda82')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Update for NetworkManager 0.9 connection states
-  # (http://developer.pidgin.im/ticket/13505)
+  # Further fixes for NetworkManager 0.9
   # (http://developer.pidgin.im/ticket/13859)
-  patch -Np1 -i "$srcdir/nm09-pidgin.patch"
   patch -Np1 -i "$srcdir/nm09-more.patch"
 
   # Use Python 2
