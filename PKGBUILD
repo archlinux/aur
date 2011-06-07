@@ -36,7 +36,6 @@ if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
 fi
 
 build() {
- 
   cd ${srcdir}/${pkgname}-${pkgver}
   patch -p1 -i ${srcdir}/0001-Fixes-due-to-changed-Jreen-API.patch
 
