@@ -7,7 +7,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.46.1
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
@@ -38,11 +38,19 @@ build() {
   install -d "${_stagedir}"/usr/bin
   install ${_bindir}/bjam "${_stagedir}"/usr/bin/bjam
 
-  # build bcp
-  cd "${srcdir}/${pkgbase}_${_boostver}/tools/bcp"
-  ../build/v2/engine/src/${_bindir}/bjam --toolset=gcc
-  install -m755 "${srcdir}/${pkgbase}_${_boostver}/dist/bin/bcp" \
-                ${_stagedir}/usr/bin/bcp
+  # build tools
+  cd "${srcdir}/${pkgbase}_${_boostver}/tools/"
+  "${_stagedir}"/usr/bin/bjam --toolset=gcc
+
+  # copy the tools
+  cd "${srcdir}/${pkgbase}_${_boostver}/dist/bin"
+  for i in *;do
+      install -m755 "${i}" "${_stagedir}/usr/bin/${i}"
+  done
+
+  #boostbook needed by quickbook
+  cd "${srcdir}/${pkgbase}_${_boostver}/dist/"
+  cp -r share "${_stagedir}"
 
   # build libs
   cd "${srcdir}/${pkgbase}_${_boostver}"
@@ -58,7 +66,7 @@ build() {
   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
   # install to ${_stagedir} in preparation for split packaging
 
-  ./tools/build/v2/engine/src/${_bindir}/bjam \
+  "${_stagedir}"/usr/bin/bjam \
       release debug-symbols=off threading=multi \
       runtime-link=shared link=shared,static \
       cflags=-fno-strict-aliasing \
@@ -81,7 +89,7 @@ package_boost() {
     optdepends=('python: for python bindings'
                 'python2: for python2 bindings')
 
-    install -d "${pkgdir}"/usr/{include,lib}
+    install -d "${pkgdir}"/usr/{include,lib,share}
     # headers/source files
     cp -r "${_stagedir}"/include/ "${pkgdir}"/usr/
 
@@ -90,6 +98,9 @@ package_boost() {
 
     # utilities (bjam, bcp, pyste)
     cp -r "${_stagedir}"/usr/* "${pkgdir}"/usr/
+
+    #boostbook
+    cp -r "${_stagedir}"/share/* "${pkgdir}"/usr/share
 
     # license
     install -D -m644 "${srcdir}/${pkgbase}_${_boostver}/LICENSE_1_0.txt" \
