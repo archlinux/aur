@@ -3,10 +3,10 @@
 # Contributor: sickhate <sickhate@tux-linux.net>
 
 pkgname=solfege
-pkgver=3.18.7
+pkgver=3.18.8
 pkgrel=1
 pkgdesc="Music education and ear training software"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://www.solfege.org/"
 license=('GPL3')
 depends=('pygtk' 'libgtkhtml')
@@ -15,9 +15,9 @@ makedepends=('ghostscript' 'gnome-doc-utils' 'librsvg' 'libxslt'
 optdepends=('timidity++: Software MIDI support')
 changelog=$pkgname.changelog
 install=$pkgname.install
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-        solfege.desktop)
-md5sums=('c65df6e0eb7a724b8a81e41d23344e02'
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
+        'solfege.desktop')
+md5sums=('5e166de37f223b79e78c656661828e5d'
          '22b89dcfd9e7c98ab238942139b8a970')
 
 build() {
