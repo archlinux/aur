@@ -3,7 +3,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=201102
+pkgver=201106
 pkgrel=2
 pkgdesc="Springer templates for LNCS proceedings and other multiauthor volumes (llncs), monographs (svmono) and journals (svjour3)"
 arch=('any')
@@ -29,7 +29,8 @@ build() {
   done
 
   for _SVMONO in instruct.pdf quickstart.pdf refguide.pdf styles/* templates/*; do
-    install -m 0644 -D ${srcdir}/${_SVMONO} ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/${_SVMONO#*/}
+    [[ ${_SVMONO} == *"/*" ]] && install -m 755 -d ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/${_SVMONO#/*}
+    install -m 0644 -D ${srcdir}/pub/tex/latex/mathegl/mono/${_SVMONO} ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/${_SVMONO%\*}
   done
 
   for _LLNCS in readme.txt llncs.cls llncs.dem llncs.doc llncsdoc.pdf llncsdoc.sty llncs.ind subjidx.ind sprmindx.sty; do
@@ -38,9 +39,10 @@ build() {
 
   install -m 0644 -D ${srcdir}/spphys.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/spphys.bst
   install -m 0644 -D ${srcdir}/splncs03.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/splncs03.bst
-  mv ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/*.bst \
-    ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
+  # XXX: BSTs have disappeared from the latest version of svmono... Go figure...
+  #mv ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/*.bst \
+  #  ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
 }
 md5sums=('d534148be975055ec332f4cdcd1087d5'
-         '7e74a3efdde7e08c9aa463a786a93209'
+         '150c62216a841d3bb7a98c96fed71827'
          'c020d70fa6ce887d9a3b70d72c518c85')
