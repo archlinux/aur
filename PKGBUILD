@@ -13,7 +13,7 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=jreen-git
-pkgver=20110519
+pkgver=20110610
 pkgrel=1
 pkgdesc="Qt XMPP library"
 arch=('i686' 'x86_64')
