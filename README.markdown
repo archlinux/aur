@@ -2,34 +2,28 @@ PKGBUILD for context-minimals
 =============================
 
 The ConTeXt Minimal <http://wiki.contextgarden.net/ConTeXt_Minimals> is
-a complete, up-to-date ConTeXt distribution which can be upgraded
-efficiently. It can be used to install either the stable or the beta
-version of ConTeXt. It can also be used in parallel with existing TeX
-installtions such as MikTeX, TeXLive, or older minimal installation. It
-is aimed towards ConTeXt users, so it does not include LaTeX specific
-packages and binaries.
+a complete, up-to-date ConTeXt distribution. It's main feature is that, unlike
+Texlive, it provides an isolated installation of ConTeXt that is easy to update.
+The Minimals target ConTeXt users and does not include LaTeX specific packages
+and binaries.
 
-This PKGBUILD installs the ConTeXt related files at 
+This PKGBUILD provides an easy way to install the Minimals at
 
     /opt/context-minimals
 
-To use the minimals distribution, you need to run
+To use the Minimals, initialize `$PATH` and some TeX related
+variables by executing
 
     source /opt/context-minimals/setuptex
 
-in the shell from which you want to invoke context. After sourcing
-setuptex, you can run ConTeXt mkII using
+To run MkIV for the first time after installation or update, first source
+`setuptex` and then run
 
-    texexec filename
+    mtxrun --generate
 
-To run mkIV for the first time, you need to run 
+as a normal user (**and not as root**). 
 
-    luatools --generate
-
-as a normal user (*and not as root*). You need to rerun this command as a
-normal user each time you upgrade.
-
-All bugs can be reported at the ConTeXt mailing list
+Report any bugs at the ConTeXt mailing list
 <http://wiki.contextgarden.net/ConTeXt_Mailing_Lists>
 
 

@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20110517
+pkgver=20110527
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
