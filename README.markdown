@@ -1,7 +1,7 @@
 PKGBUILD for context-minimals
 =============================
 
-The ConTeXt Minimal <http://wiki.contextgarden.net/ConTeXt_Minimals> is
+[The ConTeXt Minimal](http://wiki.contextgarden.net/ConTeXt_Minimals) is
 a complete, up-to-date ConTeXt distribution. It's main feature is that, unlike
 Texlive, it provides an isolated installation of ConTeXt that is easy to update.
 The Minimals target ConTeXt users and does not include LaTeX specific packages
@@ -23,8 +23,7 @@ To run MkIV for the first time after installation or update, first source
 
 as a normal user (**and not as root**). 
 
-Report any bugs at the ConTeXt mailing list
-<http://wiki.contextgarden.net/ConTeXt_Mailing_Lists>
+Report any bugs at the ConTeXt [mailing list](http://wiki.contextgarden.net/ConTeXt_Mailing_Lists).
 
 
 
