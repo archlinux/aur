@@ -9,7 +9,7 @@ url="http://nwn.bioware.com/"
 license=('custom')
 arch=('i686' 'x86_64')
 if [ "$CARCH" = "x86_64" ]; then
-    depends=('binkplayer' 'lib32-elfutils' 'lib32-libgl' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-mesa' 'perl' 'lib32-sdl_mixer')
+    depends=('binkplayer' 'elfutils' 'lib32-elfutils' 'lib32-libgl' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-mesa' 'perl' 'lib32-sdl_mixer')
 else
     depends=('binkplayer' 'elfutils' 'libgl' 'libstdc++5' 'libxcursor' 'mesa' 'perl' 'sdl_mixer')
 fi
