@@ -1,7 +1,7 @@
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=ezquake
-pkgver=2.0.1
+pkgver=2.1
 pkgrel=1
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play."
 url="http://ezquake.sourceforge.net/"
@@ -12,22 +12,18 @@ conflicts=('fuhquake')
 provides=('quake' 'fuhquake')
 arch=('i686' 'x86_64')
 install=ezquake.install
-source=("http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux-x86_2.0.tar.gz" \
-"http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux-x86_${pkgver}_update.tar.gz" \
+source=("http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux32_${pkgver}.tar.gz" \
 'ezquake.launcher' 'ezquake.desktop' 'ezquake.ico')
-md5sums=('25cad2fa8f695b18b2e6cab313a7a8be'
-         '3d60d2f3ea0a50a3781e6c0dd70b72a6'
+md5sums=('e238c2c0985a96598bd26a6ee116bee3'
          'bad99b7adc7c238f1df2fc4973c00ae6'
          '75cfa823bf495fe4cdb755c6b5546f2a'
          'b3fd62bf6f56f139257544cab74ba71e')
-noextract=("ezquake_linux-x86_2.0.tar.gz ezquake_linux-x86_${pkgver}_update.tar.gz")
+noextract=("ezquake_linux32_${pkgver}.tar.gz")
 
 if [ $CARCH = 'x86_64' ]; then
-    source[0]="http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux-x86_64_2.0.tar.gz"
-    source[1]="http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux-x86_64_${pkgver}_update.tar.gz"
-    md5sums[0]='db2e5f97152fe11b026a2814f0f30f12'
-    md5sums[1]='f6829d05f44bd127f4cc4267dde30a31'
-    noextract=("ezquake_linux-x86_64_2.0.tar.gz ezquake_linux-x86_64_${pkgver}_update.tar.gz")
+    source[0]="http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux64_${pkgver}.tar.gz"
+    md5sums[0]='00dc037b8f0442ae816025ef88c06c5e'
+    noextract=("ezquake_linux64_${pkgver}.tar.gz")
 fi
 
 build() {
@@ -38,11 +34,9 @@ build() {
 
     # Unpack ezQuake
     if [ $CARCH = 'x86_64' ]; then
-        bsdtar -x -o -C ${pkgdir}/opt/quake -f ${srcdir}/ezquake_linux-x86_64_2.0.tar.gz
-        bsdtar -x -o -C ${pkgdir}/opt/quake -f ${srcdir}/ezquake_linux-x86_64_${pkgver}_update.tar.gz
+        bsdtar -x -o -C ${pkgdir}/opt/quake -f ${srcdir}/ezquake_linux64_${pkgver}.tar.gz
     else
-        bsdtar -x -o -C ${pkgdir}/opt/quake -f ${srcdir}/ezquake_linux-x86_2.0.tar.gz
-        bsdtar -x -o -C ${pkgdir}/opt/quake -f ${srcdir}/ezquake_linux-x86_${pkgver}_update.tar.gz
+        bsdtar -x -o -C ${pkgdir}/opt/quake -f ${srcdir}/ezquake_linux32_${pkgver}.tar.gz
     fi
 
     # Make id1 Directory for pak0.pak and pak1.pak files
