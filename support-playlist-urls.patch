@@ -1,0 +1,25 @@
+From a509c7efcf9b6a0dd7dcb3c6d431c262c2985a93 Mon Sep 17 00:00:00 2001
+From: Ori Avtalion <ori@avtalion.name>
+Date: Tue, 17 May 2011 21:48:21 +0300
+Subject: [PATCH] Support youtube.com/playlist?p= URLs
+
+---
+ youtube-dl |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/youtube-dl b/youtube-dl
+index 3ac27a8..382fb98 100755
+--- a/youtube-dl
++++ b/youtube-dl
+@@ -2097,7 +2097,7 @@ class YahooSearchIE(InfoExtractor):
+ class YoutubePlaylistIE(InfoExtractor):
+ 	"""Information Extractor for YouTube playlists."""
+ 
+-	_VALID_URL = r'(?:http://)?(?:\w+\.)?youtube.com/(?:(?:view_play_list|my_playlists|artist)\?.*?(p|a)=|user/.*?/user/|p/|user/.*?#[pg]/c/)([0-9A-Za-z]+)(?:/.*?/([0-9A-Za-z_-]+))?.*'
++	_VALID_URL = r'(?:http://)?(?:\w+\.)?youtube.com/(?:(?:view_play_list|playlist|my_playlists|artist)\?.*?(p|a)=|user/.*?/user/|p/|user/.*?#[pg]/c/)([0-9A-Za-z]+)(?:/.*?/([0-9A-Za-z_-]+))?.*'
+ 	_TEMPLATE_URL = 'http://www.youtube.com/%s?%s=%s&page=%s&gl=US&hl=en'
+ 	_VIDEO_INDICATOR = r'/watch\?v=(.+?)&'
+ 	_MORE_PAGES_INDICATOR = r'(?m)>\s*Next\s*</a>'
+-- 
+1.7.5.4
+
