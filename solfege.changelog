@@ -1,3 +1,14 @@
+2011-06-17 Ray Rashif <schiv@archlinux.org>
+
+	* 3.20.0-1:
+	Upstream release
+	Added some optional dependencies
+	Removed install file;
+		timidity is now the default synthesizer
+		users should be able to figure stuff out
+	Removed desktop file;
+		already included in upstream tarball
+
 2010-10-02 Ray Rashif <schiv@archlinux.org>
 
 	* Version bump: 3.17.0

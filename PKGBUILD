@@ -2,8 +2,11 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: sickhate <sickhate@tux-linux.net>
 
+# TODO:
+#   bring in pyalsa, csound, mma
+
 pkgname=solfege
-pkgver=3.18.8
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Music education and ear training software"
 arch=('i686' 'x86_64')
@@ -12,22 +15,24 @@ license=('GPL3')
 depends=('pygtk' 'libgtkhtml')
 makedepends=('ghostscript' 'gnome-doc-utils' 'librsvg' 'libxslt'
              'lilypond' 'swig' 'texinfo' 'txt2man' 'pkg-config')
-optdepends=('timidity++: Software MIDI support')
+optdepends=('timidity++: or any MIDI player & MIDI-WAV converter'
+            'mpg123: or any MP3 player'
+            'lame: or any WAV-MP3 converter'
+            'vorbis-tools: or any OGG player & WAV-OGG converter'
+            'lilypond: for generating print-outs & score sheets'
+            'texlive-bin: use LaTeX to replace HTML reports with DVI')
 changelog=$pkgname.changelog
-install=$pkgname.install
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-        'solfege.desktop')
-md5sums=('5e166de37f223b79e78c656661828e5d'
-         '22b89dcfd9e7c98ab238942139b8a970')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+md5sums=('3deb355d57f009201f2c5486b93c5950')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # python2 fix
-  for file in $(find . -name '*.py' -print); do
-    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-  done
+  # python2 fix for entire build
+  export PYTHON=/usr/bin/python2
+
+  # python2 fix for rogue Makefile
+  sed -i 's/shell python/shell python2/g' help/Makefile
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc
@@ -37,10 +42,13 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir/" install
+  # python2 fix for runtime
+  for i in $(find "$pkgdir" -name '*.py'); do
+    sed -i 's:^#!.*bin/python$:#!/usr/bin/python2:' "$i"
+    sed -i 's:^#!.*bin/env python$:#!/usr/bin/env python2:' "$i"
+  done
 
-  install -Dm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
