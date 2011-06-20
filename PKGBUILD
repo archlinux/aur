@@ -3,16 +3,22 @@
 
 pkgname=python-virtualenvwrapper
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
 url="http://www.doughellmann.com/projects/virtualenvwrapper/"
 license=('BSD')
-depends=('python-virtualenv')
+depends=('python-virtualenv' 'python2-virtualenv')
 source=(http://pypi.python.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
 md5sums=('b01930b245b2beb9fe2ce69a4b0e0f25')
 
 build() {
+  cd "$srcdir/virtualenvwrapper-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
   cd "$srcdir/virtualenvwrapper-$pkgver"
 
   python2 setup.py install --root="$pkgdir" -O1
