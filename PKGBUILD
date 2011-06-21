@@ -14,12 +14,12 @@ _buildtype="RelWithDebInfo"
 
 pkgname=tomahawk
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
 license=('GPL3')
-depends=('phonon>=4.5.0' 'taglib>=1.6.2' 'boost>=1.30' 'clucene-git' 'libechonest>=1.1.8' 'jreen-git>=20110605' 'qtweetlib-git')
+depends=('phonon>=4.5.0' 'taglib>=1.6.2' 'boost>=1.30' 'clucene>=2.3.3.4' 'libechonest>=1.1.8' 'jreen-git>=20110605' 'qtweetlib-git')
 makedepends=('git' 'cmake>=2.8.0')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
