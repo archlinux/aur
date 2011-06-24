@@ -5,8 +5,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.8.0
-pkgrel=3
+pkgver=2.9.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -17,7 +17,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
         nm09-more.patch)
-md5sums=('d1656c443a5d91f4aa0d95915f1f50c3'
+md5sums=('2cd285c7a40f93b7a51bfe733971d3a6'
          'a673659d86c7a65aa710f7c8c7feda82')
 
 build() {
