@@ -1,21 +1,26 @@
-# Maintainer Mateusz Herych <heniekk@gmail.com>
-# Contributor sysrq
+# Maintainer: Mateusz Herych <heniekk@gmail.com>
+# Contributor: sysrq
 
 pkgname=picard
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
-pkgdesc="Next generation MusicBrainz tagging application (QT4 interface)"
-arch=('i686' 'x86_64')
-url="http://musicbrainz.org/doc/PicardQt"
+pkgdesc='Official MusicBrainz tagger'
+url='http://musicbrainz.org/doc/MusicBrainz_Picard'
 license=('GPL')
+arch=('i686' 'x86_64')
 depends=('python2-qt' 'mutagen' 'libofa' 'ffmpeg')
 optdepends=('libdiscid: CD-Lookup feature')
-install=picard.install
-source=(http://ftp.musicbrainz.org/pub/musicbrainz/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('bc8dc9109de218b544204669119d10c5')
+source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('bbc6aee61e779153b77e381e8cd2ba08')
+
+install=install
 
 build() {
-  cd $srcdir/picard-$pkgver
-  python2 setup.py config
-  python2 setup.py install --root=$pkgdir
+	cd "${srcdir}/picard-${pkgver}"
+	python2 setup.py config
+}
+
+package() {
+	cd "${srcdir}/picard-${pkgver}"
+	python2 setup.py install --root="${pkgdir}"
 }
