@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dmon
-pkgver=0.3.7
+pkgver=0.4
 pkgrel=1
 pkgdesc="Toolset for daemonizing and supervising processes"
-arch=(any)
+arch=(i386 x86_64)
 url="http://gitorious.org/dmon"
 license=(MIT)
 depends=(glibc)
 makedepends=(make)
-source=(http://furi-ku.org/+/cgit/code/dmon/snapshot/${pkgname}-${pkgver}.tar.gz)
-md5sums=(84274ef9cfbc2cca827e0b8e19b6d35e)
+source=(http://furi-ku.org/files/${pkgname}-${pkgver}.tar.gz)
+md5sums=(5289df806ed83b4292e5d08474f18bba)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
