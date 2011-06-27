@@ -1,22 +1,27 @@
+# Maintainer: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
+
 pkgname=htmlcxx
-pkgver=0.84
+pkgver=0.85
 pkgrel=1
 pkgdesc="A simple non-validating css1 and html parser for C++."
 arch=('i686' 'x86_64')
 url="http://htmlcxx.sourceforge.net/"
 license=('LGPL')
 depends=()
-makedepends=('subversion')
+makedepends=()
 conflicts=('htmlcxx' 'libhtmlcxx' 'libcss_parser')
 provides=('htmlcxx' 'libhtmlcxx' 'libcss_parser')
-source=(http://kent.dl.sourceforge.net/project/htmlcxx/htmlcxx/0.84/htmlcxx-0.84.tar.gz)
-md5sums=(d2e0e6f4c509ef1809d90dd21c3ba3e8)
+source=("http://kent.dl.sourceforge.net/project/htmlcxx/htmlcxx/$pkgver/htmlcxx-$pkgver.tar.gz")
+md5sums=(dbe13c25b5846eb7cbbfa63d85f00f74)
 
 build() {
-	cd $startdir/src/htmlcxx-0.84
+	cd "$srcdir/htmlcxx-$pkgver"
 	
 	./configure --prefix=/usr
-	
-	make || return 1
-	make DESTDIR="$pkgdir" install || return 1
+	make
+}
+
+package() {
+	cd "$srcdir/htmlcxx-$pkgver"
+	make DESTDIR="$pkgdir" install
 }
