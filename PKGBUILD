@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=12.0.742.100
+pkgver=12.0.742.112
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -20,11 +20,13 @@ install=chromium.install
 source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
         chromium.desktop
         chromium.sh
-        gcc-4.6.patch)
-md5sums=('b4df4771c79e1ce2fa704bde2d501037'
+        gcc-4.6.patch
+        glibc-2.14.patch)
+md5sums=('8a5b7b4b30f5fe8de10fcf7d984321b8'
          '075c3c2fa5902e16b8547dd31d437191'
          '096a46ef386817988250d2d7bddd1b34'
-         'fb4b7b6871876a9180215c580fcf2cf5')
+         'fb4b7b6871876a9180215c580fcf2cf5'
+         '543a32b09f138fd47858b9a4a7c82dfb')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
@@ -34,6 +36,10 @@ build() {
   # http://code.google.com/p/chromium/issues/detail?id=70746
   # http://code.google.com/p/chromium/issues/detail?id=46411
   patch -Np0 -i "$srcdir/gcc-4.6.patch"
+  
+  # Fix build with glibc 2.14
+  # http://code.google.com/p/chromium/issues/detail?id=86646
+  patch -Np2 -i "$srcdir/glibc-2.14.patch"
 
 ### Configure
 
