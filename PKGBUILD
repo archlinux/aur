@@ -5,14 +5,13 @@
 _pkgbasename=libao
 pkgname=lib32-$_pkgbasename
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform audio output library and plugins (32-bit)"
 url="http://www.xiph.org/ao/"
 arch=('x86_64')
 license=('GPL')
 depends=($_pkgbasename 'lib32-glibc' 'lib32-alsa-lib' 'lib32-libpulse')
 makedepends=('gcc-multilib')
-groups=('lib32')
 options=('!libtool')
 source=("http://downloads.xiph.org/releases/ao/$_pkgbasename-$pkgver.tar.gz")
 md5sums=('2b2508c29bc97e4dc218fa162cf883c8')
