@@ -1,6 +1,6 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('curl' 'lib32-libxt' 'lib32-gcc-libs' 'gtk2' 'lib32-gtk2')
 makedepends=('gcc-multilib')
 install="install"
 source=(http://nspluginwrapper.davidben.net/download/$pkgname-$pkgver.tar.gz)
-md5sums=('2f87c5af9aafe99e474aac548bc40705')
+md5sums=('36f3e290fc4ce56f65ee695078961188')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
