@@ -1,5 +1,7 @@
 # $Id: PKGBUILD 89694 2010-09-03 10:37:56Z remy $
-# Maintainer: simo <simo@archlinux.org>
+# Old contributor: simo <simo@archlinux.org>
+# Contributor: twa022 <twa022 at gmail dot com>
+
 pkgname=python-gtkglext
 pkgver=1.1.0
 pkgrel=4
@@ -14,7 +16,7 @@ md5sums=('720b421d3b8514a40189b285dd91de57')
  
 build() {
   cd $startdir/src/pygtkglext-$pkgver
-  ./configure --prefix=/usr
+  PYTHON='/usr/bin/python2' ./configure --prefix=/usr
   make || return 1
   make DESTDIR=$startdir/pkg install
   find $startdir/pkg -name '*.la' -exec rm {} \; 
