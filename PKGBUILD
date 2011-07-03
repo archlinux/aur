@@ -3,12 +3,12 @@
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 pkgname=python-sphinx
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Python documentation generator"
 arch=('any')
 url="http://sphinx.pocoo.org/"
 license=('GPL')
-depends=('python2-distribute' 'python2-pygments' 'docutils' 'python-jinja')
+depends=('python2-distribute' 'python2-pygments' 'docutils' 'python2-jinja')
 optdepends=('texlive-latexextra: for generation of PDF documentation'
             'texlive-latex3: for generation of PDF documentation')
 source=(http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz)
