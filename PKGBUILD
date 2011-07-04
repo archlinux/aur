@@ -4,7 +4,7 @@
 
 pkgname=splix
 pkgver=2.0.0
-pkgrel=9
+pkgrel=10
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('i686' 'x86_64')
 url="http://splix.ap2c.org/"
@@ -17,17 +17,14 @@ md5sums=('f3aa735c22a926818b3d8b26c9964186')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
   sed -i 's#const PPDFile::Value::Value #const PPDFile::Value #' src/ppdfile.cpp
-
-  make PSTORASTER=gstoraster 
+  make PSTORASTER=gstoraster
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
   install -d "$pkgdir/usr/lib/cups/filter"
   install -d "$pkgdir/usr/share/cups/model/samsung"
-
   make DESTDIR="$pkgdir" install
+  ln -s gstoraster $pkgdir/usr/lib/cups/filter/pstoraster
 }
