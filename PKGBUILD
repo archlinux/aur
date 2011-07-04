@@ -5,8 +5,8 @@
 # Contributor: dorphell <dorphell AT archlinux DOT org>
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
 pkgname=opera
-pkgver=11.11
-_buildver=2109
+pkgver=11.50
+_buildver=1074
 pkgrel=1
 pkgdesc="A fast and secure web browser and Internet suite."
 url="http://www.opera.com/browser/"
@@ -24,8 +24,8 @@ arch=('i686' 'x86_64')
 _arch=i386
 [ "$CARCH" = "x86_64" ] && _arch=x86_64
 source=(http://ftp.opera.com/pub/opera/linux/${pkgver/./}/opera-${pkgver}-${_buildver}.${_arch}.linux.tar.xz)
-sha256sums=('16b738b5b83cbcb5d2a72efeceaa5ef11122b7c0c6cc2988e13ec0fb97d671a0')
-[ "$CARCH" = "x86_64" ] && sha256sums=('b5b2157315b9af6a41d0fef6d6b8d671d138105e694b8041c5ae9df89bc6edbb')
+sha256sums=('d936881411db5cca320e3eb4b921d0f99a32c5bb100278183533be0e8fda8f86')
+[ "$CARCH" = "x86_64" ] && sha256sums=('17681e7f6e01fba6c29c3ca1474e7df779a0b5db1834a334557fafbafa5cc753')
 
 build() {
 	opera-${pkgver}-${_buildver}.${_arch}.linux/install --prefix /usr --repackage ${pkgdir}/usr
