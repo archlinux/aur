@@ -4,15 +4,15 @@
 
 pkgname='frogatto-data'
 arch=('any')
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog (data files)"
 url="http://www.frogatto.com"
 license=('GPL')
 depends=()
 makedepends=()
 source=(http://www.frogatto.com/files/frogatto-$pkgver.tar.bz2)
-md5sums=('8c01c8a1d7ecf820a682eb684d8bf739')
+md5sums=('bf5a2ee4c3254a424766895ff250758b')
 
 build() {
   cd "$srcdir/frogatto-$pkgver"
