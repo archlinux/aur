@@ -1,29 +1,29 @@
-# Maintainer : Keshav P R <skodabenz at rocketmail dot com>
+# Maintainer : Keshav P R <(skodabenz) (aatt) (rocketmail) (ddoott) (ccoomm)>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
 _pkgname="efibootmgr"
-
 pkgname="${_pkgname}-git"
-pkgver=20110611
+
+pkgver=20110705
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables. Needs the kernel module 'efivars'."
 arch=('i686' 'x86_64')
 url="http://linux.dell.com/efibootmgr/"
 license=('GPL2')
-depends=('zlib')
 makedepends=('git')
-conflicts=('efibootmgr')
-provides=('efibootmgr')
-options=(strip purge docs zipman !emptydirs)
+depends=('pciutils')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+options=(strip purge docs zipman !emptydirs !libtool)
 
 source=('efibootmgr_default_to_grub2.patch')
 sha256sums=('5306a6f952d17215b129392953ae6551df0e4cf1960a959ab98c60f27fab9b90')
 
-_gitroot="http://linux.dell.com/git/efibootmgr.git"
+_gitroot="http://linux.dell.com/git/${_pkgname}.git"
 _gitname="${_pkgname}"
 
 
-update_git() {
+_update_git() {
 	
 	cd "${srcdir}"
 	msg "Connecting to GIT server...."
@@ -38,19 +38,19 @@ update_git() {
 		msg "The local GIT repo has been updated."
 	else
 		git clone "${_gitroot}" "${_gitname}"
+		msg "GIT checkout done or server timeout"
 	fi
 	
-	msg "GIT checkout done or server timeout"
+	echo
 	
 }
 
 
 build() {
 	
-	update_git
+	_update_git
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
-	
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build/"
@@ -58,7 +58,7 @@ build() {
 	patch -Np1 -i "${srcdir}/efibootmgr_default_to_grub2.patch"
 	echo
 	
-	CFLAGS= make
+	CFLAGS="" make
 	echo
 	
 }
@@ -66,10 +66,10 @@ build() {
 
 package() {
 	
-	mkdir -p "${pkgdir}/usr/sbin/"
-	mkdir -p "${pkgdir}/usr/share/man/man8/"
-	
 	cd "${srcdir}/${_gitname}_build/"
+	
+	install -d "${pkgdir}/usr/sbin/"
+	install -d "${pkgdir}/usr/share/man/man8/"
 	
 	install -D -m755 "${srcdir}/${_gitname}_build/src/efibootmgr/efibootmgr" "${pkgdir}/usr/sbin/efibootmgr"
 	install -D -m644 "${srcdir}/${_gitname}_build/src/man/man8/efibootmgr.8" "${pkgdir}/usr/share/man/man8/efibootmgr.8"
