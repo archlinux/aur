@@ -1,7 +1,7 @@
 pkgbase = quake2
 	pkgdesc = Quake 2 engine. You need the retail .pak files to play.
 	pkgver = r0.16.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.icculus.org/quake2/
 	install = quake2.install
 	arch = i686

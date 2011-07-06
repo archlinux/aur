@@ -4,7 +4,7 @@
 
 pkgname=quake2
 pkgver=r0.16.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Quake 2 engine. You need the retail .pak files to play."
 url="http://www.icculus.org/quake2/"
 arch=('i686' 'x86_64')
@@ -132,7 +132,7 @@ build() {
     install -m 755 rogue/game$_dirarch.so $pkgdir/opt/quake2/rogue/
 
     # Install Additional Libraries
-    cp ref_*.so $pkgdir/opt/quake2/baseq2/
+    cp ref_*.so $pkgdir/opt/quake2/
 
     cd $srcdir
 
