@@ -1,12 +1,13 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
 pkgver=1.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
 license=('custom')
 depends=('gcc' 'gcc-fortran' 'openssh' 'valgrind' 'libtool' 'hwloc')
+makedepends=('net-tools')
 options=(!libtool)
 source=(http://www.open-mpi.org/software/ompi/v1.5/downloads/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('669565c708deab82ad4069d82675b2020eb0e0c6')
