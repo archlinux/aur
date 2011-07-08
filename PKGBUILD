@@ -3,7 +3,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
@@ -15,12 +15,11 @@ optdepends=('rdesktop: RDP plugin')
 makedepends=('gtk-doc' 'intltool' 'rdesktop')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('a4c2ec5935c0cea0da1958e7f27a925a03867854cdcaf904ce8c7e405ebe2e5b')
+source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('cddc604ca6b2e45aaa5af55306eb29fc4910b29e1273c4915b7f60fd78da264e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # Disable Spice until someone cares (file a bug!)
   ./configure --prefix=/usr --sysconfdir=/etc --disable-scrollkeeper \
       --libexecdir=/usr/lib/vinagre --enable-rdp --disable-spice
   make
