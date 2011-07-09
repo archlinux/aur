@@ -4,21 +4,21 @@
 # Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
 pkgname=cmake
-pkgver=2.8.4
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cmake.org"
-depends=('expat' 'curl' 'gcc-libs' 'shared-mime-info')
+depends=('curl' 'libarchive' 'shared-mime-info')
 makedepends=('qt')
 optdepends=('qt: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('209b7d1d04b2e00986538d74ba764fcf')
+md5sums=('3c5d32cec0f4c2dc45f4c2e84f4a20c5')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}"/${pkgname}-${pkgver}
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
@@ -30,8 +30,8 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}"/${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 
   vimpath="$pkgdir/usr/share/vim/vimfiles"
   install -Dm644 Docs/cmake-indent.vim ${vimpath}/indent/cmake-indent.vim
