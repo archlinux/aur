@@ -1,0 +1,17 @@
+pkgbase = ruby-posix-spawn
+	pkgdesc = posix-spawn uses posix_spawnp(2) for faster process spawning
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/rtomayko/posix-spawn
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = posix-spawn-0.3.6.gem
+	source = http://rubygems.org/downloads/posix-spawn-0.3.6.gem
+	source = LICENSE
+	md5sums = fd3903ab505d19aadbec5d3baa0d9449
+	md5sums = 0c1a6d29e061ff630dc8294b815f28c3
+
+pkgname = ruby-posix-spawn
+
