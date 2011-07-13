@@ -3,16 +3,16 @@
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgbase=python-numpy
-pkgname=('python2-numpy' 'python3-numpy')
-pkgver=1.5.1
-pkgrel=2
+pkgname=('python2-numpy' 'python-numpy')
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://numpy.scipy.org/"
 makedepends=('lapack' 'python' 'python2' 'python-distribute' 'python2-distribute' 'gcc-fortran' 'python-nose')
 source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz)
-md5sums=('376ef150df41b5353944ab742145352d')
+md5sums=('e0993c74cb8e83292e560eac1a9be8e9')
 
 build() {
   cd "${srcdir}"
@@ -32,9 +32,6 @@ build() {
 
 package_python2-numpy() {
   depends=('lapack' 'python2')
-  provides=("python-numpy=${pkgver}")
-  replaces=('python-numpy')
-  conflicts=('python-numpy')
   optdepends=('python-nose: testsuite')
 
   cd "${srcdir}/numpy-py2-${pkgver}"
@@ -49,8 +46,11 @@ package_python2-numpy() {
              $(find ${pkgdir} -name '*.py')
 }
 
-package_python3-numpy() {
+package_python-numpy() {
   depends=('lapack' 'python')
+  provides=("python3-numpy=${pkgver}")
+  replaces=('python3-numpy')
+  conflicts=('python3-numpy')
 
   cd "${srcdir}/numpy-${pkgver}"
   python setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
