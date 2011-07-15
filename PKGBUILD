@@ -1,25 +1,26 @@
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer : James Rayner <iphitus@gmail.com>
 # Contributor: Roberto Salas <ro0xito@gmail.com>
 
 pkgname=alltray
-pkgver=0.7.4dev
-pkgrel=2
+pkgver=0.7.5dev
+pkgrel=1
 pkgdesc="Drops any app in the tray."
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://alltray.trausch.us/"
-depends=('gconf' 'libgtop' 'libwnck')
-options=('!libtool' 'force')
+depends=('libxpm' 'libgtop' 'libwnck')
+options=('!libtool')
 source=(https://code.launchpad.net/alltray/trunk/${pkgver}/+download/alltray-${pkgver}.tar.gz)
-md5sums=('646d6d751f815e6aeb8a58a9e5d17db9')
+md5sums=('faef46b14a3f9c14d4e5efd65245796e')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	./configure --prefix=/usr || return 1
-	make || return 1
+	./configure --prefix=/usr
+	make
 }
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	make DESTDIR=${pkgdir} install || return 1
+	make DESTDIR=${pkgdir} install
 }
