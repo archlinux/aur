@@ -3,12 +3,11 @@
 
 pkgname=xinetd
 pkgver=2.3.14
-pkgrel=6
+pkgrel=7
 pkgdesc="A secure replacement for inetd"
 arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
 license=('custom')
-depends=('tcp_wrappers')
 optdepends=('perl: for xconv.pl script')
 backup=('etc/xinetd.conf' 'etc/xinetd.d/servers' 'etc/xinetd.d/services')
 source=(http://www.xinetd.org/xinetd-$pkgver.tar.gz
@@ -25,7 +24,7 @@ md5sums=('567382d7972613090215c6c54f9b82d9'
 build() {
   cd $srcdir/$pkgname-$pkgver
   sed -i "s#${prefix}/man#${prefix}/share/man#" configure
-  ./configure --prefix=/usr --with-libwrap
+  ./configure --prefix=/usr --without-libwrap
   make
 }
 
