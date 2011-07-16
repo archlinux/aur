@@ -1,7 +1,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libmp3splt
-pkgver=0.6.1a
+pkgver=0.7
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
@@ -23,4 +23,4 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir/ install
 }
-md5sums=('a6a00d83e49adf27abb7a0cb0ea384a4')
+md5sums=('dadb166361e2a28955032a1b9f10ed38')
