@@ -1,8 +1,8 @@
 # Author: Thomas Vander Stichele <thomas at apestaart dot org>
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri
-pkgver=0.1.1
-pkgrel=5
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
 url="https://thomas.apestaart.org/morituri/trac/"
@@ -11,7 +11,7 @@ depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
 	"python-musicbrainz2")
 optdepends=("python2-pycdio: for 'rip drive list'")
 source=("http://thomas.apestaart.org/download/morituri/$pkgname-$pkgver.tar.bz2")
-md5sums=('c201e8d14a7b809503ac1a767722daee')
+sha1sums=('e09b559ced4a0aeeb49c44b0dce1dcf2f7de50a8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

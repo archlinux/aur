@@ -1,7 +1,7 @@
 pkgbase = morituri
 	pkgdesc = a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy
-	pkgver = 0.1.1
-	pkgrel = 5
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://thomas.apestaart.org/morituri/trac/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = morituri
 	depends = gstreamer0.10-python
 	depends = python-musicbrainz2
 	optdepends = python2-pycdio: for 'rip drive list'
-	source = http://thomas.apestaart.org/download/morituri/morituri-0.1.1.tar.bz2
-	md5sums = c201e8d14a7b809503ac1a767722daee
+	source = http://thomas.apestaart.org/download/morituri/morituri-0.1.2.tar.bz2
+	sha1sums = e09b559ced4a0aeeb49c44b0dce1dcf2f7de50a8
 
 pkgname = morituri
 
