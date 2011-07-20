@@ -1,15 +1,15 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname=perl-config-properties
-pkgver=1.71
+pkgver=1.72
 pkgrel=1
-pkgdesc="Config::Properties is a near implementation of the java.util.Properties API."
+pkgdesc="A near implementation of the java.util.Properties API."
 arch=(any)
 url="http://search.cpan.org/~salva/Config-Properties/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=(http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Config-Properties-$pkgver.tar.gz)
-md5sums=(b8b8457f3b07f5e4b342353fed43f93b)
+md5sums=('9c56128f173593cf0c7a1c1e474d9dec')
 
 build() {
   cd "$srcdir/Config-Properties-$pkgver"
