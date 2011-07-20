@@ -6,14 +6,19 @@
 
 pkgname=p7zip
 pkgver=9.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line version of the 7zip compressed file archiver'
-arch=('i686' 'x86_64')
-license=('GPL')
 url='http://p7zip.sourceforge.net/'
-makedepends=('yasm' 'nasm')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_${pkgver}_src_all.tar.bz2")
-sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7')
+license=('GPL')
+arch=('i686' 'x86_64')
+optdepends=('wxgtk: GUI')
+makedepends=('yasm' 'nasm' 'wxgtk')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}_src_all.tar.bz2"
+        '7zFM.desktop')
+sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7'
+          'f2c370d6f1b286b7ce9a2804e22541b755616a40')
+
+install=install
 
 build() {
 	cd "${srcdir}/${pkgname}_${pkgver}"
@@ -22,7 +27,7 @@ build() {
 	&& cp makefile.linux_amd64_asm makefile.machine \
 	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
 
-	make all3 OPTFLAGS="${CXXFLAGS}"
+	make all4 OPTFLAGS="${CXXFLAGS}"
 }
 
 package() {
@@ -33,6 +38,16 @@ package() {
 		DEST_HOME="/usr" \
 		DEST_MAN="/usr/share/man"
 
-	chmod -R u+w "${pkgdir}"/usr/share/doc/
-	install -Dm755 contrib/VirtualFileSystemForMidnightCommander/u7z "${pkgdir}"/usr/lib/mc/extfs.d/u7z
+	# Integration with stuff...
+	install -D contrib/VirtualFileSystemForMidnightCommander/u7z "${pkgdir}"/usr/lib/mc/extfs.d/u7z
+	install -D GUI/p7zip_32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/p7zip.png
+	install -d "${pkgdir}"/usr/share/{applications,kde4/services/ServiceMenus}
+	cp GUI/kde4/* "${pkgdir}"/usr/share/kde4/services/ServiceMenus/
+	cp ../7zFM.desktop "${pkgdir}"/usr/share/applications/
+	ln -s 7zCon.sfx "${pkgdir}"/usr/lib/p7zip/7z.sfx
+
+	find GUI/help -type d -exec chmod 755 {} \;
+	cp -r GUI/help "${pkgdir}"/usr/lib/p7zip/
+
+	chmod -R u+w "${pkgdir}/usr"
 }
