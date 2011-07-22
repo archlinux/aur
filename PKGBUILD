@@ -16,7 +16,7 @@ license=('GPL2')
 url="http://www.kernel.org"
 options=(!strip)
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
-        ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.bz2
+        #ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.bz2
         #ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
         # the main kernel config files
         config config.x86_64
@@ -26,7 +26,7 @@ sha256sums=()
 
 build() {
   cd ${srcdir}/linux-$_basekernel
-  patch -p1 -i ${srcdir}/patch-${pkgver}
+  #patch -p1 -i ${srcdir}/patch-${pkgver}
   # Add -ARCH patches (obsolete??)
   # See http://projects.archlinux.org/linux-2.6-ARCH.git/
   #patch -Np1 -i ${srcdir}/${_patchname}
