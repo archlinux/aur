@@ -1,0 +1,16 @@
+pkgbase = rxp
+	pkgdesc = a validating XML parser written in C
+	pkgver = 1.5.0
+	pkgrel = 2
+	url = http://www.cogsci.ed.ac.uk/~richard/rxp.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	options = !libtool
+	source = http://ftp.fortunaty.net/distfiles/rxp-1.5.0.tar.gz
+	source = LICENSE
+	md5sums = 5f6c4cd741bbeaf77b5a5918cb26df2f
+	md5sums = 2a5223a66826f1d1e39eb9c77af9ea88
+
+pkgname = rxp
+
