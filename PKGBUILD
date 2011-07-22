@@ -109,6 +109,7 @@ package_linux() {
 
 package_linux-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel"
+  replaces=('kernel26-headers')
   mkdir -p ${pkgdir}/lib/modules/${_kernver}
   cd ${pkgdir}/lib/modules/${_kernver}
   ln -sf ../../../usr/src/linux-${_kernver} build
@@ -217,13 +218,13 @@ package_linux-headers() {
 }
 
 package_linux-docs() {
-pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel."
-
-cd ${srcdir}/linux-$_basekernel
-mkdir -p $pkgdir/usr/src/linux-$_kernver
-mv Documentation $pkgdir/usr/src/linux-$_kernver
-find $pkgdir -type f -exec chmod 444 {} \;
-find $pkgdir -type d -exec chmod 755 {} \;
-# remove a file already in linux package
-rm -f $pkgdir/usr/src/linux-$_kernver/Documentation/DocBook/Makefile
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel."
+  replaces=('kernel26-doccs')
+  cd ${srcdir}/linux-$_basekernel
+  mkdir -p $pkgdir/usr/src/linux-$_kernver
+  mv Documentation $pkgdir/usr/src/linux-$_kernver
+  find $pkgdir -type f -exec chmod 444 {} \;
+  find $pkgdir -type d -exec chmod 755 {} \;
+  # remove a file already in linux package
+  rm -f $pkgdir/usr/src/linux-$_kernver/Documentation/DocBook/Makefile
 }
