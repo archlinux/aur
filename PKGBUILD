@@ -3,7 +3,7 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 pkgbase="linux"
 pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
-# pkgname=kernel26-custom       # Build kernel with a different name
+# pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.0
 pkgver=${_basekernel}
@@ -17,7 +17,6 @@ url="http://www.kernel.org"
 options=(!strip)
 source=(ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         #ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.bz2
-        #ftp://ftp.archlinux.org/other/kernel26/${_patchname}.bz2
         # the main kernel config files
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
@@ -27,9 +26,6 @@ sha256sums=()
 build() {
   cd ${srcdir}/linux-$_basekernel
   #patch -p1 -i ${srcdir}/patch-${pkgver}
-  # Add -ARCH patches (obsolete??)
-  # See http://projects.archlinux.org/linux-2.6-ARCH.git/
-  #patch -Np1 -i ${srcdir}/${_patchname}
 
   if [ "$CARCH" = "x86_64" ]; then
     cat ../config.x86_64 >./.config
@@ -64,12 +60,12 @@ build() {
   make ${MAKEFLAGS} bzImage modules
 }
 
-package_kernel26() {
+package_linux() {
   pkgdesc="The Linux Kernel and modules"
   groups=('base')
   backup=(etc/mkinitcpio.d/${pkgname}.preset)
   depends=('coreutils' 'linux-firmware' 'module-init-tools>=3.16' 'mkinitcpio>=0.7')
-  # pwc, ieee80211 and hostap-driver26 modules are included in kernel26 now
+  # pwc, ieee80211 and hostap-driver26 modules are included in linux kernel now
   # nforce package support was abandoned by nvidia, kernel modules should cover everything now.
   # kernel24 support is dropped since glibc24
   replaces=('kernel24' 'kernel24-scsi' 'kernel26-scsi'
@@ -111,8 +107,8 @@ package_kernel26() {
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
 }
 
-package_kernel26-headers() {
-  pkgdesc="Header files and scripts for building modules for kernel26"
+package_linux-headers() {
+  pkgdesc="Header files and scripts for building modules for linux kernel"
   mkdir -p ${pkgdir}/lib/modules/${_kernver}
   cd ${pkgdir}/lib/modules/${_kernver}
   ln -sf ../../../usr/src/linux-${_kernver} build
@@ -220,7 +216,7 @@ package_kernel26-headers() {
   rm -rf ${pkgdir}/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
 
-package_kernel26-docs() {
+package_linux-docs() {
 pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel."
 
 cd ${srcdir}/linux-$_basekernel
@@ -228,6 +224,6 @@ mkdir -p $pkgdir/usr/src/linux-$_kernver
 mv Documentation $pkgdir/usr/src/linux-$_kernver
 find $pkgdir -type f -exec chmod 444 {} \;
 find $pkgdir -type d -exec chmod 755 {} \;
-# remove a file already in kernel26 package
+# remove a file already in linux package
 rm -f $pkgdir/usr/src/linux-$_kernver/Documentation/DocBook/Makefile
 }
