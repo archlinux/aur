@@ -83,7 +83,7 @@ package_linux() {
   _kernver="$(make kernelrelease)"
   mkdir -p ${pkgdir}/{lib/modules,lib/firmware,boot}
   make INSTALL_MOD_PATH=${pkgdir} modules_install
-  cp arch/$KARCH/boot/bzImage ${pkgdir}/boot/vmlinuz-${pkgname}
+  cp arch/$KARCH/boot/bzImage ${pkgdir}/boot/vmlinuz-ARCH
   # add vmlinux
   install -m644 -D vmlinux ${pkgdir}/usr/src/linux-${_kernver}/vmlinux
 
