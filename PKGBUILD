@@ -106,7 +106,7 @@ package_linux() {
   # remove build and source links
   rm -f ${pkgdir}/lib/modules/${_kernver}/{source,build}
   # add compat symlink for the kernel image
-  ln -sf vmlinuz-${pkgname} ${pkgdir}/boot/vmlinuz26
+  ln -sf vmlinuz-${pkgname} ${pkgdir}/boot/vmlinuz26${_kernelname}
   # remove the firmware
   rm -rf ${pkgdir}/lib/firmware
   # gzip -9 all modules to safe 100MB of space
