@@ -10,6 +10,12 @@ post_install () {
   /sbin/depmod ${KERNEL_VERSION} 
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   /sbin/mkinitcpio -p linux${KERNEL_NAME}
+
+  # add compat symlinks for the initramfs images
+  ln -sf initramfs-linux${KERNEL_NAME}.img \
+  	  ${pkgdir}/boot/kernel26${KERNEL_NAME}.img
+  ln -sf initramfs-linux${KERNEL_NAME}-fallback.img \
+  	  ${pkgdir}/boot/kernel26${KERNEL_NAME}-fallback.img
 }
 
 post_upgrade() {
@@ -47,6 +53,7 @@ post_upgrade() {
 }
 
 post_remove() {
- rm -f /boot/initramfs-linux${KERNEL_NAME}.img
- rm -f /boot/initramfs-linux${KERNEL_NAME}-fallback.img
+  # also remove the compat symlinks
+  rm -f /boot/{initramfs-linux,kernel26}${KERNEL_NAME}.img
+  rm -f /boot/{initramfs-linux,kernel26}${KERNEL_NAME}-fallback.img
 }

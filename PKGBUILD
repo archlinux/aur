@@ -75,6 +75,8 @@ package_linux() {
   groups=('base')
   backup=(etc/mkinitcpio.d/${pkgname}.preset)
   depends=('coreutils' 'linux-firmware' 'module-init-tools>=3.16' 'mkinitcpio>=0.7')
+  provides=('kernel26')
+  conflicts=('kernel26')
   replaces=('kernel26')
   install=${pkgname}.install
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -103,10 +105,8 @@ package_linux() {
 
   # remove build and source links
   rm -f ${pkgdir}/lib/modules/${_kernver}/{source,build}
-  # add compat symlinks
-  ln -sf /boot/initramfs-${pkgname}.img ${pkgdir}/boot/kernel26.img
-  ln -sf /boot/vmlinuz-${pkgname} ${pkgdir}/boot/vmlinuz26
-  ln -sf /boot/initramfs-${pkgname}-fallback.img ${pkgdir}/boot/kernel26-fallback.img
+  # add compat symlink for the kernel image
+  ln -sf vmlinuz-${pkgname} ${pkgdir}/boot/vmlinuz26
   # remove the firmware
   rm -rf ${pkgdir}/lib/firmware
   # gzip -9 all modules to safe 100MB of space
@@ -115,6 +115,8 @@ package_linux() {
 
 package_linux-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel"
+  provides=('kernel26-headers')
+  conflicts=('kernel26-headers')
   replaces=('kernel26-headers')
   mkdir -p ${pkgdir}/lib/modules/${_kernver}
   cd ${pkgdir}/lib/modules/${_kernver}
@@ -225,6 +227,8 @@ package_linux-headers() {
 
 package_linux-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel."
+  provides=('kernel26-docs')
+  conflicts=('kernel26-docs')
   replaces=('kernel26-docs')
   cd ${srcdir}/linux-$_basekernel
   mkdir -p $pkgdir/usr/src/linux-$_kernver
