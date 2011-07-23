@@ -7,7 +7,7 @@ KERNEL_VERSION=3.0.0-ARCH
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  /sbin/depmod $KERNEL_VERSION 
+  /sbin/depmod ${KERNEL_VERSION} 
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   /sbin/mkinitcpio -p linux${KERNEL_NAME}
 }
@@ -41,7 +41,7 @@ post_upgrade() {
 
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  /sbin/depmod $KERNEL_VERSION
+  /sbin/depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   /sbin/mkinitcpio -p linux${KERNEL_NAME}
 }
