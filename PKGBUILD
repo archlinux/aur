@@ -9,8 +9,6 @@ _basekernel=3.0
 pkgver=${_basekernel}
 pkgrel=1
 makedepends=('xmlto' 'docbook-xsl')
-#_patchname="patch-${pkgver}-${pkgrel}-ARCH"
-#_patchname="patch-${pkgver}-1-ARCH"
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://www.kernel.org"
@@ -20,16 +18,24 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         # the main kernel config files
         config config.x86_64
         # standard config files for mkinitcpio ramdisk
-        ${pkgname}.preset)
-sha256sums=()
+        ${pkgname}.preset
+        fix-i915.patch)
 md5sums=('398e95866794def22b12dfbc15ce89c0'
          'fc6aae0fb4d70feff92ec762d29dee45'
          'fd5a1712ddea696eee5255de2d854218'
-         'be30b7266d85e8baed3b37574bc52b98')
+         'be30b7266d85e8baed3b37574bc52b98'
+         '263725f20c0b9eb9c353040792d644e5')
 
 build() {
+
   cd ${srcdir}/linux-$_basekernel
   #patch -p1 -i ${srcdir}/patch-${pkgver}
+  
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+  
+  # fix #19234 i1915 display size
+  patch -Np1 -i ${srcdir}/fix-i915.patch
 
   if [ "$CARCH" = "x86_64" ]; then
     cat ../config.x86_64 >./.config
@@ -69,9 +75,6 @@ package_linux() {
   groups=('base')
   backup=(etc/mkinitcpio.d/${pkgname}.preset)
   depends=('coreutils' 'linux-firmware' 'module-init-tools>=3.16' 'mkinitcpio>=0.7')
-  # pwc, ieee80211 and hostap-driver26 modules are included in linux kernel now
-  # nforce package support was abandoned by nvidia, kernel modules should cover everything now.
-  # kernel24 support is dropped since glibc24
   replaces=('kernel26')
   install=${pkgname}.install
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -82,7 +85,7 @@ package_linux() {
   _kernver="$(make kernelrelease)"
   mkdir -p ${pkgdir}/{lib/modules,lib/firmware,boot}
   make INSTALL_MOD_PATH=${pkgdir} modules_install
-  cp arch/$KARCH/boot/bzImage ${pkgdir}/boot/vmlinuz-ARCH
+  cp arch/$KARCH/boot/bzImage ${pkgdir}/boot/vmlinuz-${pkgname}
   # add vmlinux
   install -m644 -D vmlinux ${pkgdir}/usr/src/linux-${_kernver}/vmlinux
 
@@ -94,12 +97,16 @@ package_linux() {
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
     -i $startdir/${pkgname}.install
   sed \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-ARCH.img\"|g" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-ARCH-fallback.img\"|g" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|g" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|g" \
     -i ${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset
 
   # remove build and source links
   rm -f ${pkgdir}/lib/modules/${_kernver}/{source,build}
+  # add compat symlinks
+  ln -sf /boot/initramfs-${pkgname}.img ${pkgdir}/boot/kernel26.img
+  ln -sf /boot/vmlinuz-${pkgname} ${pkgdir}/boot/vmlinuz26
+  ln -sf /boot/initramfs-${pkgname}-fallback.img ${pkgdir}/boot/kernel26-fallback.img
   # remove the firmware
   rm -rf ${pkgdir}/lib/firmware
   # gzip -9 all modules to safe 100MB of space
@@ -227,4 +234,3 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f $pkgdir/usr/src/linux-$_kernver/Documentation/DocBook/Makefile
 }
-

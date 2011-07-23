@@ -8,24 +8,8 @@ post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   /sbin/depmod $KERNEL_VERSION 
-  # generate init ramdisks
-  echo ">>> MKINITCPIO SETUP"
-  echo ">>> ----------------"
-  echo ">>> If you use LVM2, Encrypted root or software RAID,"
-  echo ">>> Ensure you enable support in /etc/mkinitcpio.conf ."
-  echo ">>> More information about mkinitcpio setup can be found here:"
-  echo ">>> http://wiki.archlinux.org/index.php/Mkinitcpio"
-  echo ""
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   /sbin/mkinitcpio -p linux${KERNEL_NAME}
-  # compat symlinks
-  loaders="$(find /boot -name syslinux.cfg -or -name extlinux.conf -or -name grub.cfg -or -name menu.lst)"
-  [ -f /etc/lilo.conf ] && loaders="$loaders /etc/lilo.conf"
-  if grep -q -e vmlinuz26 -e kernel26.img -e kernel26-fallback.img $loaders; then
-    ln -sf /boot/initramfs-ARCH.img /boot/kernel26.img
-    ln -sf /boot/vmlinuz-ARCH /boot/vmlinuz26
-    ln -sf /boot/initramfs-ARCH-fallback.img /boot/kernel26-fallback.img
-  fi
 }
 
 post_upgrade() {
@@ -58,13 +42,6 @@ post_upgrade() {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   /sbin/depmod $KERNEL_VERSION
-  echo ">>> MKINITCPIO SETUP"
-  echo ">>> ----------------"
-  echo ">>> If you use LVM2, Encrypted root or software RAID,"
-  echo ">>> Ensure you enable support in /etc/mkinitcpio.conf ."
-  echo ">>> More information about mkinitcpio setup can be found here:"
-  echo ">>> http://wiki.archlinux.org/index.php/Mkinitcpio"
-  echo ""
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   /sbin/mkinitcpio -p linux${KERNEL_NAME}
 }
