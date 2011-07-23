@@ -22,6 +22,10 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         # standard config files for mkinitcpio ramdisk
         ${pkgname}.preset)
 sha256sums=()
+md5sums=('398e95866794def22b12dfbc15ce89c0'
+         'fc6aae0fb4d70feff92ec762d29dee45'
+         'fd5a1712ddea696eee5255de2d854218'
+         'be30b7266d85e8baed3b37574bc52b98')
 
 build() {
   cd ${srcdir}/linux-$_basekernel
@@ -68,12 +72,7 @@ package_linux() {
   # pwc, ieee80211 and hostap-driver26 modules are included in linux kernel now
   # nforce package support was abandoned by nvidia, kernel modules should cover everything now.
   # kernel24 support is dropped since glibc24
-  replaces=('kernel24' 'kernel24-scsi' 'kernel26-scsi'
-            'alsa-driver' 'ieee80211' 'hostap-driver26'
-            'pwc' 'nforce' 'squashfs' 'unionfs' 'ivtv'
-            'zd1211' 'kvm-modules' 'iwlwifi' 'rt2x00-cvs'
-            'gspcav1' 'atl2' 'wlan-ng26' 'rt2500' 'nouveau-drm'
-            'kernel26')
+  replaces=('kernel26')
   install=${pkgname}.install
   optdepends=('crda: to set the correct wireless channels of your country')
 
@@ -95,8 +94,8 @@ package_linux() {
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
     -i $startdir/${pkgname}.install
   sed \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|g" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|g" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-ARCH.img\"|g" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-ARCH-fallback.img\"|g" \
     -i ${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset
 
   # remove build and source links
@@ -219,7 +218,7 @@ package_linux-headers() {
 
 package_linux-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel."
-  replaces=('kernel26-doccs')
+  replaces=('kernel26-docs')
   cd ${srcdir}/linux-$_basekernel
   mkdir -p $pkgdir/usr/src/linux-$_kernver
   mv Documentation $pkgdir/usr/src/linux-$_kernver
@@ -228,3 +227,4 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f $pkgdir/usr/src/linux-$_kernver/Documentation/DocBook/Makefile
 }
+
