@@ -23,7 +23,7 @@ source=(ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
 md5sums=('398e95866794def22b12dfbc15ce89c0'
          'fc6aae0fb4d70feff92ec762d29dee45'
          'fd5a1712ddea696eee5255de2d854218'
-         'be30b7266d85e8baed3b37574bc52b98'
+         'eb14dcfd80c00852ef81ded6e826826a'
          '263725f20c0b9eb9c353040792d644e5')
 
 build() {
