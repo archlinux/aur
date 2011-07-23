@@ -7,15 +7,14 @@ KERNEL_VERSION=3.0.0-ARCH
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  /sbin/depmod ${KERNEL_VERSION} 
+  depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  /sbin/mkinitcpio -p linux${KERNEL_NAME}
+  mkinitcpio -p linux${KERNEL_NAME}
 
   # add compat symlinks for the initramfs images
-  ln -sf initramfs-linux${KERNEL_NAME}.img \
-  	  ${pkgdir}/boot/kernel26${KERNEL_NAME}.img
+  ln -sf initramfs-linux${KERNEL_NAME}.img boot/kernel26${KERNEL_NAME}.img
   ln -sf initramfs-linux${KERNEL_NAME}-fallback.img \
-  	  ${pkgdir}/boot/kernel26${KERNEL_NAME}-fallback.img
+    boot/kernel26${KERNEL_NAME}-fallback.img
 }
 
 post_upgrade() {
@@ -37,8 +36,8 @@ post_upgrade() {
     echo ">>>"
   fi
 
-  if grep "^[^#]*[[:space:]]/boot" /etc/fstab 2>&1 >/dev/null; then
-    if ! grep "[[:space:]]/boot" /etc/mtab 2>&1 >/dev/null; then
+  if grep "^[^#]*[[:space:]]/boot" etc/fstab 2>&1 >/dev/null; then
+    if ! grep "[[:space:]]/boot" etc/mtab 2>&1 >/dev/null; then
       echo "WARNING: /boot appears to be a seperate partition but is not mounted"
       echo "         This is most likely not what you want.  Please mount your /boot"
       echo "         partition and reinstall the kernel unless you are sure this is OK"
@@ -47,13 +46,13 @@ post_upgrade() {
 
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  /sbin/depmod ${KERNEL_VERSION}
+  depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  /sbin/mkinitcpio -p linux${KERNEL_NAME}
+  mkinitcpio -p linux${KERNEL_NAME}
 }
 
 post_remove() {
   # also remove the compat symlinks
-  rm -f /boot/{initramfs-linux,kernel26}${KERNEL_NAME}.img
-  rm -f /boot/{initramfs-linux,kernel26}${KERNEL_NAME}-fallback.img
+  rm -f boot/{initramfs-linux,kernel26}${KERNEL_NAME}.img
+  rm -f boot/{initramfs-linux,kernel26}${KERNEL_NAME}-fallback.img
 }
