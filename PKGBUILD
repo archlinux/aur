@@ -3,27 +3,24 @@
 # Contributor: nathan owe ndowens04 at gmail dot com
 
 pkgname=cclive
-pkgver=0.7.3.1
-pkgrel=3
+pkgver=0.7.4.1
+pkgrel=1
 pkgdesc='Commandline downloader for popular video websites.'
 arch=('i686' 'x86_64')
 url='http://cclive.sourceforge.net/'
 license=('GPL3')
 depends=('boost-libs' 'quvi')
-makedepends=('cmake' 'boost')
+makedepends=('boost')
 source=("http://downloads.sourceforge.net/project/${pkgname}/0.7/${pkgname}-${pkgver}.tar.gz")
-md5sums=('de25297e9f34677d4d1920078d9cf254')
+md5sums=('5416049225c45c20e4ebe9a6e90a5a58')
 
 build() {
-  cd ${pkgname}-${pkgver}
-
-  cmake \
-    -DCMAKE_BUILD_TYPE=debug \
-    -DCMAKE_INSTALL_PREFIX=/usr
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-
-  make DESTDIR="${pkgdir}" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
