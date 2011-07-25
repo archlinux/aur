@@ -48,11 +48,11 @@ build() {
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
   fi
 
-  # remove the extraversion from Makefile
+  # remove the sublevel from Makefile
   # this ensures our kernel version is always 3.X-ARCH
   # this way, minor kernel updates will not break external modules
   # we need to change this soon, see FS#16702
-  sed -i 's|^EXTRAVERSION = .*$|EXTRAVERSION = |g' Makefile
+  sed -ri 's|^(SUBLEVEL =).*|\1|' Makefile
 
   # get kernel version
   make prepare
