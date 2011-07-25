@@ -28,7 +28,7 @@ md5sums=('398e95866794def22b12dfbc15ce89c0'
          '263725f20c0b9eb9c353040792d644e5')
 
 build() {
-  cd "${srcdir}/linux-$_basekernel"
+  cd "${srcdir}/linux-${_basekernel}"
 
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
@@ -38,7 +38,7 @@ build() {
   # fix #19234 i1915 display size
   patch -Np1 -i "${srcdir}/fix-i915.patch"
 
-  if [ "$CARCH" = "x86_64" ]; then
+  if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
     cat "${srcdir}/config" > ./.config
@@ -137,7 +137,7 @@ package_linux-headers() {
   cd "${pkgdir}/lib/modules/${_kernver}"
   ln -sf ../../../usr/src/linux-${_kernver} build
 
-  cd "${srcdir}/linux-$_basekernel"
+  cd "${srcdir}/linux-${_basekernel}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/src/linux-${_kernver}/Makefile"
   install -D -m644 kernel/Makefile \
@@ -149,7 +149,7 @@ package_linux-headers() {
 
   for i in acpi asm-generic config crypto drm generated linux math-emu \
     media net pcmcia scsi sound trace video xen; do
-    cp -a include/$i "${pkgdir}/usr/src/linux-${_kernver}/include/"
+    cp -a include/${i} "${pkgdir}/usr/src/linux-${_kernver}/include/"
   done
 
   # copy arch includes for external modules
@@ -164,15 +164,15 @@ package_linux-headers() {
   chmod og-w -R "${pkgdir}/usr/src/linux-${_kernver}/scripts"
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/.tmp_versions"
 
-  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/arch/$KARCH/kernel"
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/arch/${KARCH}/kernel"
 
-  cp arch/$KARCH/Makefile "${pkgdir}/usr/src/linux-${_kernver}/arch/$KARCH/"
+  cp arch/${KARCH}/Makefile "${pkgdir}/usr/src/linux-${_kernver}/arch/${KARCH}/"
 
-  if [ "$CARCH" = "i686" ]; then
-    cp arch/$KARCH/Makefile_32.cpu "${pkgdir}/usr/src/linux-${_kernver}/arch/$KARCH/"
+  if [ "${CARCH}" = "i686" ]; then
+    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/src/linux-${_kernver}/arch/${KARCH}/"
   fi
 
-  cp arch/$KARCH/kernel/asm-offsets.s "${pkgdir}/usr/src/linux-${_kernver}/arch/$KARCH/kernel/"
+  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/src/linux-${_kernver}/arch/${KARCH}/kernel/"
 
   # add headers for lirc package
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video"
@@ -180,8 +180,8 @@ package_linux-headers() {
   cp drivers/media/video/*.h  "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/"
 
   for i in bt8xx cpia2 cx25840 cx88 em28xx et61x251 pwc saa7134 sn9c102; do
-    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/$i"
-    cp -a drivers/media/video/$i/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/$i"
+    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/${i}"
+    cp -a drivers/media/video/${i}/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/${i}"
   done
 
   # add docbook makefile
@@ -234,8 +234,8 @@ package_linux-headers() {
 
   # copy in Kconfig files
   for i in `find . -name "Kconfig*"`; do
-    mkdir -p "${pkgdir}"/usr/src/linux-${_kernver}/`echo $i | sed 's|/Kconfig.*||'`
-    cp $i "${pkgdir}/usr/src/linux-${_kernver}/$i"
+    mkdir -p "${pkgdir}"/usr/src/linux-${_kernver}/`echo ${i} | sed 's|/Kconfig.*||'`
+    cp ${i} "${pkgdir}/usr/src/linux-${_kernver}/${i}"
   done
 
   chown -R root.root "${pkgdir}/usr/src/linux-${_kernver}"
@@ -243,13 +243,13 @@ package_linux-headers() {
 
   # strip scripts directory
   find "${pkgdir}/usr/src/linux-${_kernver}/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "$binary")" in
+    case "$(file -bi "${binary}")" in
       *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip $STRIP_SHARED "$binary";;
+        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
       *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip $STRIP_STATIC "$binary";;
+        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
       *application/x-executable*) # Binaries
-        /usr/bin/strip $STRIP_BINARIES "$binary";;
+        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
     esac
   done
 
@@ -263,15 +263,15 @@ package_linux-docs() {
   conflicts=('kernel26-docs')
   replaces=('kernel26-docs')
 
-  cd "${srcdir}/linux-$_basekernel"
+  cd "${srcdir}/linux-${_basekernel}"
 
-  mkdir -p "$pkgdir/usr/src/linux-$_kernver"
-  mv Documentation "$pkgdir/usr/src/linux-$_kernver"
-  find "$pkgdir" -type f -exec chmod 444 {} \;
-  find "$pkgdir" -type d -exec chmod 755 {} \;
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}"
+  mv Documentation "${pkgdir}/usr/src/linux-${_kernver}"
+  find "${pkgdir}" -type f -exec chmod 444 {} \;
+  find "${pkgdir}" -type d -exec chmod 755 {} \;
 
   # remove a file already in linux package
-  rm -f "$pkgdir/usr/src/linux-$_kernver/Documentation/DocBook/Makefile"
+  rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
 
 # vim:set ts=2 sw=2 et:
