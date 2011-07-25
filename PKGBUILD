@@ -5,19 +5,15 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.46.1
+pkgver=1.47.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
-        4994-compile-fix-for-Python32-v2.patch
-        boost-1.46.0-spirit.patch)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz)
 license=('custom')
-md5sums=('341e5d993b19d099bf1a548495ea91ec'
-         'cb59e8adbf2a45ef9264a2f4ab92b849'
-         '9d6e2f13fef23bf27d7bdddc104e182a')
+md5sums=('ff180a5276bec773a7625cac7e2288e8')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -29,7 +25,7 @@ build() {
   echo "using mpi ;" >> build/v2/user-config.jam
 
   # build bjam
-  cd "${srcdir}/${pkgbase}_${_boostver}/tools/build/v2/engine/src"
+  cd "${srcdir}/${pkgbase}_${_boostver}/tools/build/v2/engine"
   ./build.sh cc
 
   _bindir="bin.linuxx86"
@@ -54,10 +50,6 @@ build() {
 
   # build libs
   cd "${srcdir}/${pkgbase}_${_boostver}"
-  #python 3.2 support
-  #https://svn.boost.org/trac/boost/ticket/4994
-  patch -Np0 -i "${srcdir}/4994-compile-fix-for-Python32-v2.patch"
-  patch -Np0 -i "${srcdir}/boost-1.46.0-spirit.patch"
 
   # default "minimal" install: "release link=shared,static
   # runtime-link=shared threading=single,multi"
@@ -76,11 +68,6 @@ build() {
       --layout=system \
       ${MAKEFLAGS} \
       install
-
-  # pyste is unmaintained: http://www.boost.org/doc/libs/1_46_0/libs/python/doc/index.html
-  # build pyste
-  #cd "${srcdir}/${pkgbase}_${_boostver}/libs/python/pyste/install"
-  #python2 setup.py install --root=${_stagedir} --optimize=1
 }
 
 package_boost() {
