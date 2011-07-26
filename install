@@ -1,6 +1,6 @@
 post_install() {
-	update-desktop-database -q
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	[[ -x usr/bin/update-desktop-database ]] && update-desktop-database -q || true
+	[[ -x usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q -t -f usr/share/icons/hicolor || true
 }
 
 post_upgrade() {
