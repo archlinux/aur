@@ -20,12 +20,14 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
-        'fix-i915.patch')
+        'fix-i915.patch'
+        'change-default-console-loglevel.patch')
 md5sums=('398e95866794def22b12dfbc15ce89c0'
          'fc6aae0fb4d70feff92ec762d29dee45'
          'fd5a1712ddea696eee5255de2d854218'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '263725f20c0b9eb9c353040792d644e5')
+         '263725f20c0b9eb9c353040792d644e5'
+         '9d3c56a4b999c8bfbd4018089a62f662')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -37,6 +39,11 @@ build() {
 
   # fix #19234 i1915 display size
   patch -Np1 -i "${srcdir}/fix-i915.patch"
+
+  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
+  # remove this when a Kconfig knob is made available by upstream
+  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
+  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
