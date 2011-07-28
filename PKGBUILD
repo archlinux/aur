@@ -1,6 +1,6 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 pkgname=jbig2enc-git
-pkgver=20110412
+pkgver=20110728
 pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
@@ -8,8 +8,6 @@ url="https://github.com/agl/jbig2enc"
 license=('Apache')
 depends=('gcc-libs' 'leptonica>=1.68' 'libpng' 'libjpeg' 'libtiff')
 makedepends=('git')
-source=('leptonica-1.68.patch')
-md5sums=('1cf0013d040b9682a977960023c2680b')
 
 _gitroot="https://github.com/agl/jbig2enc.git"
 _gitname="jbig2enc"
@@ -34,7 +32,6 @@ build() {
   msg "Patching sources..."
   sed -i 's@-I${LEPTONICA}/src@-I/usr/include/leptonica@' Makefile
   sed -i 's@${LEPTONICA}/src/.libs/liblept.a@-llept@' Makefile
-  patch -p1 < ../leptonica-1.68.patch
 
   msg "Starting make..."
   make
