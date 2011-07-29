@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <foutrelis@gmail.com>
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=python-virtualenvwrapper
