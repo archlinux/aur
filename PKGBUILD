@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <foutrelis@gmail.com>
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
