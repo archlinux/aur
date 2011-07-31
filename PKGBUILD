@@ -1,8 +1,8 @@
 # Maintainer  : andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.46.1
-pkgrel=3
+pkgver=1.47.0
+pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime (32 bit)"
 arch=('x86_64')
 url="http://www.boost.org"
@@ -10,7 +10,7 @@ license=('custom')
 groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-gcc-libs')
 source=(ftp://mirrors.kernel.org/archlinux/extra/os/i686/boost-libs-${pkgver}-${pkgrel}-i686.pkg.tar.xz)
-sha512sums=('3b4e1a9d894b21911bb25f6e40f0b8305d2f35cbb680d82dc935d45b69b519a38be2433199d06755300f2d3de8892583c6c7a07267743222981f9cb11b328311')
+sha512sums=('5bdc8fc997c44371d6beadc80316c3971d81c1816df5b88337389e71c16b60674ddd4825fcb5980b288a276c8d797df3896cb595e993f67860863090fc0e12dd')
 
 
 package() 
