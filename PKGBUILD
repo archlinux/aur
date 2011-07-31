@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
-             'lensfun' 'kdeedu-marble' 'opencv' 'boost' 'cmake' 'automoc4' 'doxygen')
+             'kdeedu-marble' 'opencv' 'boost' 'cmake' 'automoc4' 'doxygen')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('7b1ab69fc2fb36a45dc3ca38b01d42d8')
 
@@ -18,10 +18,12 @@ build() {
    cd "${srcdir}"
    mkdir build
    cd build
+   # Use internal lensfun (FS#21816)
    cmake ../${pkgname}-${pkgver} \
      -DCMAKE_INSTALL_PREFIX=/usr \
      -DCMAKE_BUILD_TYPE=Release \
-     -DCMAKE_SKIP_RPATH=ON
+     -DCMAKE_SKIP_RPATH=ON \
+     -DWITH_LensFun=OFF
    make
 }
 
