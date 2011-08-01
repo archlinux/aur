@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
-             'kdeedu-marble' 'opencv' 'boost' 'cmake' 'automoc4' 'doxygen')
+             'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin'
+             'cmake' 'automoc4' 'doxygen')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('7b1ab69fc2fb36a45dc3ca38b01d42d8')
 
@@ -70,9 +71,11 @@ package_libmediawiki() {
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
   depends=('kdebase-runtime' 'kdepimlibs' 'libkdcraw' 'libkipi' 'libksane'
-           'opencv')
+           'opencv' 'qjson')
   optdepends=('libkgeomap'
-              'libmediawiki')
+              'libmediawiki'
+              'libgpod'
+              'hugin')
   install=kipi-plugins.install
 
   cd "${srcdir}"/build/extra/kipi-plugins
