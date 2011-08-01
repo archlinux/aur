@@ -4,7 +4,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libmediawiki')
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -31,12 +31,15 @@ build() {
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
   depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr'
-           'libkipi' 'libkexiv2' 'libkdcraw')
-  optdepends=('kipi-plugins: for more extras and plugins'
-              'libkface')
+           'libkipi' 'libkexiv2' 'libkdcraw' 'libkface' 'libkgeomap')
+  optdepends=('kipi-plugins: for more extras and plugins')
   install=digikam.install
 
-  cd "${srcdir}"/build
+  cd "${srcdir}"/build/core
+  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}"/build/doc
+  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}"/build/po
   make DESTDIR="${pkgdir}" install
 }
 
