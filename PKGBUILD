@@ -15,21 +15,24 @@ source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz
 md5sums=('7b1ab69fc2fb36a45dc3ca38b01d42d8')
 
 build() {
-   cd "${srcdir}"
-   mkdir build
-   cd build
-   # Use internal lensfun (FS#21816)
-   cmake ../${pkgname}-${pkgver} \
-     -DCMAKE_INSTALL_PREFIX=/usr \
-     -DCMAKE_BUILD_TYPE=Release \
-     -DCMAKE_SKIP_RPATH=ON \
-     -DWITH_LensFun=OFF
-   make
+  cd "${srcdir}"
+  mkdir build
+  cd build
+  # Use internal lensfun (FS#21816)
+  cmake ../${pkgname}-${pkgver} \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DLENSFUN_LIBRARY="" \
+    -DLENSFUN_INCLUDE_DIR=""
+  make
 }
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
-  depends=('kdebase-runtime' 'kdepimlibs' 'libkface' 'libkgeomap' 'libmediawiki')
+  depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr')
+  optdepends=('kipi-plugins: for more extras and plugins'
+              'libkface')
   install=digikam.install
 
   cd "${srcdir}"/build
@@ -63,7 +66,9 @@ package_libmediawiki() {
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
   depends=('kdebase-runtime' 'kdepimlibs' 'libkdcraw' 'libkipi' 'libksane'
-           'libkgeomap' 'opencv')
+           'opencv')
+  optdepends=('libkgeomap'
+              'libmediawiki')
   install=kipi-plugins.install
 
   cd "${srcdir}"/build/extra/kipi-plugins
