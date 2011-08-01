@@ -30,7 +30,8 @@ build() {
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
-  depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr')
+  depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr'
+           'libkipi' 'libkexiv2' 'libkdcraw')
   optdepends=('kipi-plugins: for more extras and plugins'
               'libkface')
   install=digikam.install
