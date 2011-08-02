@@ -1,8 +1,9 @@
+# Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Maintainer: Mateusz Herych <heniekk@gmail.com>
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=0.15
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='http://musicbrainz.org/doc/MusicBrainz_Picard'
@@ -11,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('python2-qt' 'mutagen' 'libofa' 'ffmpeg')
 optdepends=('libdiscid: CD-Lookup feature')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0e8d8afa6f9e493d494a3e9c746834e0')
+md5sums=('21b51e229c246e2d17b746649bfa370f')
 
 install=install
 
