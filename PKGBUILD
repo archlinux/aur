@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -23,7 +23,8 @@ optdepends=('bridge-utils: for briged networking (default)'
 	    'user-mode-linux'
 	    'virtualbox_bin'
 	    'virtualbox-ose'
-	    'xen')
+	    'xen'
+	    'radvd')
 options=('emptydirs' '!libtool')
 backup=('etc/conf.d/libvirtd'
 	'etc/libvirt/libvirtd.conf'
@@ -37,7 +38,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	unixperms.patch
 	yajl-2.x.patch)
 md5sums=('04f47fad7d0c614af9dcc5d1351c2148'
-         '018d97dafc0049075fba6f2850f17a12'
+         'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          'ebb78cda893ca7991e0c22588a63132b'
          'db95aecdf2ccf3693fef5821cdcb7eba'
