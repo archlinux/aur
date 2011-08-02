@@ -4,14 +4,14 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=12.0.742.124
+pkgver=13.0.782.107
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
-         'libxss' 'libxtst' 'ttf-dejavu' 'desktop-file-utils'
+         'libxss' 'libgcrypt' 'ttf-dejavu' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
 provides=('chromium-browser')
@@ -23,20 +23,18 @@ source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
         gcc-4.6.patch
         glibc-2.14.patch
         make-hash-tools-use-if-instead-of-switch.patch)
-md5sums=('37a53e0dd2ba031c508cdd4f94b4912e'
+md5sums=('21b510e818d6943e20cfd114e9319d27'
          '075c3c2fa5902e16b8547dd31d437191'
          '096a46ef386817988250d2d7bddd1b34'
-         'ec0b4e4ca4cf970a18a080ec2776c252'
+         '690f2be42bf2a31755753a466653eb33'
          '543a32b09f138fd47858b9a4a7c82dfb'
          '9d9e66c8365d7333e55305796b49fd77')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
 
-  # Patches to fix gcc 4.6 compilation from
+  # Fix build with gcc 4.6
   # http://code.google.com/p/chromium/issues/detail?id=80071
-  # http://code.google.com/p/chromium/issues/detail?id=70746
-  # http://code.google.com/p/chromium/issues/detail?id=46411
   patch -Np0 -i "$srcdir/gcc-4.6.patch"
 
   # Fix build with glibc 2.14
@@ -46,8 +44,6 @@ build() {
   # Fix build with Perl 5.14
   patch -d third_party/WebKit -Np2 -i \
     "$srcdir/make-hash-tools-use-if-instead-of-switch.patch"
-
-### Configure
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -64,7 +60,6 @@ build() {
   # (See https://bugzilla.mozilla.org/show_bug.cgi?id=547312)
 
   build/gyp_chromium -f make build/all.gyp --depth=. \
-    -Dgcc_version=45 \
     -Dno_strict_aliasing=1 \
     -Dwerror= \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
@@ -72,20 +67,18 @@ build() {
     -Drelease_extra_cflags="$CFLAGS" \
     -Dffmpeg_branding=Chrome \
     -Dproprietary_codecs=1 \
-    -Duse_system_libjpeg=1 \
-    -Duse_system_libxslt=0 \
-    -Duse_system_libxml=0 \
     -Duse_system_bzip2=1 \
-    -Duse_system_zlib=1 \
-    -Duse_system_libpng=1 \
     -Duse_system_ffmpeg=0 \
-    -Duse_system_yasm=1 \
     -Duse_system_libevent=1 \
+    -Duse_system_libjpeg=1 \
+    -Duse_system_libpng=1 \
+    -Duse_system_libxml=0 \
     -Duse_system_ssl=0 \
+    -Duse_system_yasm=1 \
+    -Duse_system_zlib=1 \
     -Duse_gconf=0 \
+    -Ddisable_sse2=1 \
     $([[ $CARCH == i686 ]] && echo '-Ddisable_sse2=1')
-
-### Build
 
   make chrome chrome_sandbox BUILDTYPE=Release
 }
@@ -98,13 +91,9 @@ package() {
   install -Dm4755 -o root -g root out/Release/chrome_sandbox \
     "$pkgdir/usr/lib/chromium/chromium-sandbox"
 
-  install -Dm644 out/Release/chrome.pak "$pkgdir/usr/lib/chromium/chrome.pak"
-
-  install -Dm644 out/Release/resources.pak \
-    "$pkgdir/usr/lib/chromium/resources.pak"
-
-  install -D out/Release/libffmpegsumo.so \
-    "$pkgdir/usr/lib/chromium/libffmpegsumo.so"
+  cp out/Release/{{chrome,resources}.pak,libffmpegsumo.so} \
+    out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_x86_*.nexe} \
+    "$pkgdir/usr/lib/chromium/"
 
   # These links are only needed when building with system ffmpeg
   #ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/

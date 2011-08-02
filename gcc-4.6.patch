@@ -31,17 +31,6 @@ diff -u -r ppapi/cpp/paint_aggregator.h ppapi/cpp/paint_aggregator.h
  
  namespace pp {
  
-diff -u -r third_party/libjingle/source/talk/base/sigslot.h third_party/libjingle/source/talk/base/sigslot.h
---- third_party/libjingle/source/talk/base/sigslot.h	2011-04-13 13:25:41.000000000 +0400
-+++ third_party/libjingle/source/talk/base/sigslot.h	2011-04-20 20:00:43.000000000 +0400
-@@ -80,6 +80,7 @@
- 
- #include <set>
- #include <list>
-+#include <cstddef>
- 
- // On our copy of sigslot.h, we force single threading
- #define SIGSLOT_PURE_ISO
 diff -u -r third_party/ots/src/os2.cc third_party/ots/src/os2.cc
 --- third_party/ots/src/os2.cc	2011-04-13 13:24:06.000000000 +0400
 +++ third_party/ots/src/os2.cc	2011-04-20 19:45:44.000000000 +0400
@@ -119,13 +108,3 @@ diff -u -r ui/gfx/codec/jpeg_codec.h ui/gfx/codec/jpeg_codec.h
  
  class SkBitmap;
  
---- ppapi/cpp/paint_aggregator.h	2010-12-23 18:10:27.000000000 -0600
-+++ ppapi/cpp/paint_aggregator.h~	2011-04-19 05:34:56.085582885 -0500
-@@ -5,6 +5,7 @@
- #ifndef PPAPI_CPP_PAINT_AGGREGATOR_H_
- #define PPAPI_CPP_PAINT_AGGREGATOR_H_
- 
-+#include <cstddef>
- #include <vector>
- 
- #include "ppapi/cpp/point.h"
