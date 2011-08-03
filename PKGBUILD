@@ -39,8 +39,8 @@ sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
 
 
 #set destination architecture here
-#DESTARCH="i686"
-DESTARCH="x86_64"
+DESTARCH="i686"
+#DESTARCH="x86_64"
 
 
 build() {
