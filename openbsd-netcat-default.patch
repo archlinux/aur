@@ -1,7 +1,7 @@
-diff -wbBur libvirt-0.9.3/src/qemu/qemu_migration.c libvirt-0.9.3.my/src/qemu/qemu_migration.c
---- libvirt-0.9.3/src/qemu/qemu_migration.c	2011-07-04 06:45:14.000000000 +0400
-+++ libvirt-0.9.3.my/src/qemu/qemu_migration.c	2011-07-04 15:03:15.000000000 +0400
-@@ -1763,7 +1763,7 @@
+diff -wbBur libvirt-0.9.4.org/src/qemu/qemu_migration.c libvirt-0.9.4/src/qemu/qemu_migration.c
+--- libvirt-0.9.4.org/src/qemu/qemu_migration.c	2011-08-03 05:36:34.000000000 +0400
++++ libvirt-0.9.4/src/qemu/qemu_migration.c	2011-08-03 13:29:56.000000000 +0400
+@@ -1612,7 +1612,7 @@
          ret = qemuMonitorMigrateToUnix(priv->mon, background_flags,
                                                 unixfile);
      } else if (qemuCapsGet(priv->qemuCaps, QEMU_CAPS_MIGRATE_QEMU_EXEC)) {
@@ -10,24 +10,24 @@ diff -wbBur libvirt-0.9.3/src/qemu/qemu_migration.c libvirt-0.9.3.my/src/qemu/qe
          ret = qemuMonitorMigrateToCommand(priv->mon, QEMU_MONITOR_MIGRATE_BACKGROUND, args);
      } else {
          ret = -1;
-diff -wbBur libvirt-0.9.3/src/remote/remote_driver.c libvirt-0.9.3.my/src/remote/remote_driver.c
---- libvirt-0.9.3/src/remote/remote_driver.c	2011-07-01 10:59:10.000000000 +0400
-+++ libvirt-0.9.3.my/src/remote/remote_driver.c	2011-07-04 15:03:32.000000000 +0400
-@@ -571,7 +571,7 @@
-                                                 command,
+diff -wbBur libvirt-0.9.4.org/src/remote/remote_driver.c libvirt-0.9.4/src/remote/remote_driver.c
+--- libvirt-0.9.4.org/src/remote/remote_driver.c	2011-07-29 09:14:03.000000000 +0400
++++ libvirt-0.9.4/src/remote/remote_driver.c	2011-08-03 13:30:05.000000000 +0400
+@@ -588,7 +588,7 @@
                                                  username,
-                                                 no_tty,
+                                                 !tty,
+                                                 !verify,
 -                                                netcat ? netcat : "nc",
 +                                                netcat ? netcat : "nc.openbsd",
+                                                 keyfile,
                                                  sockname)))
              goto failed;
- 
-diff -wbBur libvirt-0.9.3/src/rpc/virnetsocket.c libvirt-0.9.3.my/src/rpc/virnetsocket.c
---- libvirt-0.9.3/src/rpc/virnetsocket.c	2011-07-01 10:59:10.000000000 +0400
-+++ libvirt-0.9.3.my/src/rpc/virnetsocket.c	2011-07-04 15:03:00.000000000 +0400
-@@ -597,7 +597,7 @@
-         virCommandAddArgList(cmd, "-T", "-o", "BatchMode=yes",
-                              "-e", "none", NULL);
+diff -wbBur libvirt-0.9.4.org/src/rpc/virnetsocket.c libvirt-0.9.4/src/rpc/virnetsocket.c
+--- libvirt-0.9.4.org/src/rpc/virnetsocket.c	2011-08-01 05:32:35.000000000 +0400
++++ libvirt-0.9.4/src/rpc/virnetsocket.c	2011-08-03 13:29:46.000000000 +0400
+@@ -629,7 +629,7 @@
+     if (noVerify)
+         virCommandAddArgList(cmd, "-o", "StrictHostKeyChecking=no", NULL);
      virCommandAddArgList(cmd, nodename,
 -                         netcat ? netcat : "nc",
 +                         netcat ? netcat : "nc.openbsd",
