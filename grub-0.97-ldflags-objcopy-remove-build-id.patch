@@ -1,0 +1,196 @@
+diff --git a/Makefile.in b/Makefile.in
+index 6652366..ba058eb 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -112,6 +112,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+diff --git a/acinclude.m4 b/acinclude.m4
+index 368839c..32b3fa6 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -57,7 +57,7 @@ else
+ fi
+ grub_cv_prog_objcopy_absolute=yes
+ for link_addr in 2000 8000 7C00; do
+-  if AC_TRY_COMMAND([${CC-cc} ${CFLAGS} -nostdlib -Wl,-N -Wl,-Ttext -Wl,$link_addr conftest.o -o conftest.exec]); then :
++  if AC_TRY_COMMAND([${CC-cc} ${CFLAGS} -nostdlib -Wl,-N -Wl,-Ttext -Wl,$link_addr -Wl,--build-id=none conftest.o -o conftest.exec]); then :
+   else
+     AC_MSG_ERROR([${CC-cc} cannot link at address $link_addr])
+   fi
+diff --git a/configure.ac b/configure.ac
+index bb9e1d9..9ac5c9f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -115,6 +115,9 @@ if test "x$ac_cv_prog_gcc" = xyes; then
+   fi
+ fi
+ 
++LOADER_LDFLAGS="-Wl,--build-id=none"
++AC_SUBST(LOADER_LDFLAGS)
++
+ AC_SUBST(STAGE1_CFLAGS)
+ AC_SUBST(STAGE2_CFLAGS)
+ AC_SUBST(GRUB_CFLAGS)
+diff --git a/docs/Makefile.in b/docs/Makefile.in
+index 3e2de4b..7b2c94d 100644
+--- a/docs/Makefile.in
++++ b/docs/Makefile.in
+@@ -131,6 +131,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+diff --git a/grub/Makefile.in b/grub/Makefile.in
+index 136c38f..7c23ebe 100644
+--- a/grub/Makefile.in
++++ b/grub/Makefile.in
+@@ -108,6 +108,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+diff --git a/lib/Makefile.in b/lib/Makefile.in
+index 3dae206..449e126 100644
+--- a/lib/Makefile.in
++++ b/lib/Makefile.in
+@@ -107,6 +107,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+diff --git a/netboot/Makefile.in b/netboot/Makefile.in
+index 75ac299..0275768 100644
+--- a/netboot/Makefile.in
++++ b/netboot/Makefile.in
+@@ -108,6 +108,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+diff --git a/stage1/Makefile.am b/stage1/Makefile.am
+index 0afc285..3d83356 100644
+--- a/stage1/Makefile.am
++++ b/stage1/Makefile.am
+@@ -5,7 +5,7 @@ CLEANFILES = $(nodist_pkglib_DATA)
+ 
+ # We can't use builtins or standard includes.
+ AM_CCASFLAGS = $(STAGE1_CFLAGS) -fno-builtin -nostdinc
+-LDFLAGS = -nostdlib -Wl,-N,-Ttext,7C00
++LDFLAGS = $(LOADER_LDFLAGS) -nostdlib -Wl,-N,-Ttext,7C00
+ 
+ noinst_PROGRAMS = stage1.exec
+ stage1_exec_SOURCES = stage1.S stage1.h
+diff --git a/stage1/Makefile.in b/stage1/Makefile.in
+index 7134bdf..ee4477f 100644
+--- a/stage1/Makefile.in
++++ b/stage1/Makefile.in
+@@ -110,9 +110,10 @@ INSTALL_DATA = @INSTALL_DATA@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_SCRIPT = @INSTALL_SCRIPT@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+-LDFLAGS = -nostdlib -Wl,-N,-Ttext,7C00
++LDFLAGS = $(LOADER_LDFLAGS) -nostdlib -Wl,-N,-Ttext,7C00
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+diff --git a/stage2/Makefile.am b/stage2/Makefile.am
+index f8e6d42..ff6f347 100644
+--- a/stage2/Makefile.am
++++ b/stage2/Makefile.am
+@@ -55,11 +55,11 @@ noinst_PROGRAMS = pre_stage2.exec start.exec start_eltorito.exec \
+ endif
+ MOSTLYCLEANFILES = $(noinst_PROGRAMS)
+ 
+-PRE_STAGE2_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8200
+-START_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8000
+-NBLOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,0
+-PXELOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00
+-START_ELTORITO_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00
++PRE_STAGE2_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8200 $(LOADER_LDFLAGS)
++START_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8000 $(LOADER_LDFLAGS)
++NBLOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,0 $(LOADER_LDFLAGS)
++PXELOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00 $(LOADER_LDFLAGS)
++START_ELTORITO_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00 $(LOADER_LDFLAGS)
+ 
+ if NETBOOT_SUPPORT
+ NETBOOT_FLAGS = -I$(top_srcdir)/netboot -DSUPPORT_NETBOOT=1
+@@ -82,7 +82,7 @@ endif
+ STAGE2_COMPILE = $(STAGE2_CFLAGS) -fno-builtin -nostdinc \
+ 	$(NETBOOT_FLAGS) $(SERIAL_FLAGS) $(HERCULES_FLAGS)
+ 
+-STAGE1_5_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,2000
++STAGE1_5_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,2000 $(LOADER_LDFLAGS)
+ STAGE1_5_COMPILE = $(STAGE2_COMPILE) -DNO_DECOMPRESSION=1 -DSTAGE1_5=1
+ 
+ # For stage2 target.
+diff --git a/stage2/Makefile.in b/stage2/Makefile.in
+index d0062bd..88b2038 100644
+--- a/stage2/Makefile.in
++++ b/stage2/Makefile.in
+@@ -355,6 +355,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+@@ -468,11 +469,11 @@ libgrub_a_CFLAGS = $(GRUB_CFLAGS) -I$(top_srcdir)/lib \
+ @DISKLESS_SUPPORT_FALSE@noinst_DATA = pre_stage2 start start_eltorito
+ @DISKLESS_SUPPORT_TRUE@noinst_DATA = pre_stage2 start start_eltorito nbloader pxeloader diskless
+ MOSTLYCLEANFILES = $(noinst_PROGRAMS)
+-PRE_STAGE2_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8200
+-START_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8000
+-NBLOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,0
+-PXELOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00
+-START_ELTORITO_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00
++PRE_STAGE2_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8200 $(LOADER_LDFLAGS)
++START_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,8000 $(LOADER_LDFLAGS)
++NBLOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,0 $(LOADER_LDFLAGS)
++PXELOADER_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00 $(LOADER_LDFLAGS)
++START_ELTORITO_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00 $(LOADER_LDFLAGS)
+ @NETBOOT_SUPPORT_FALSE@NETBOOT_FLAGS = 
+ @NETBOOT_SUPPORT_TRUE@NETBOOT_FLAGS = -I$(top_srcdir)/netboot -DSUPPORT_NETBOOT=1
+ @SERIAL_SUPPORT_FALSE@SERIAL_FLAGS = 
+@@ -482,7 +483,7 @@ START_ELTORITO_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,7C00
+ STAGE2_COMPILE = $(STAGE2_CFLAGS) -fno-builtin -nostdinc \
+ 	$(NETBOOT_FLAGS) $(SERIAL_FLAGS) $(HERCULES_FLAGS)
+ 
+-STAGE1_5_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,2000
++STAGE1_5_LINK = -nostdlib -Wl,-N -Wl,-Ttext -Wl,2000 $(LOADER_LDFLAGS)
+ STAGE1_5_COMPILE = $(STAGE2_COMPILE) -DNO_DECOMPRESSION=1 -DSTAGE1_5=1
+ 
+ # For stage2 target.
+diff --git a/util/Makefile.in b/util/Makefile.in
+index e700cf7..cd3bf51 100644
+--- a/util/Makefile.in
++++ b/util/Makefile.in
+@@ -113,6 +113,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
++LOADER_LDFLAGS = @LOADER_LDFLAGS@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
