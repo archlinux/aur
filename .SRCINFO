@@ -11,7 +11,7 @@ pkgbase = gmameui
 	depends = libarchive
 	depends = libglade
 	depends = vte
-	source = http://downloads.sourceforge.net/sourceforge/gmameui/gmameui-0.2.12.tar.gz
+	source = http://sourceforge.net/projects/gmameui/files/gmameui/0.2.12/gmameui-0.2.12.tar.gz
 	md5sums = e1f36731b0007501cf4c169aaee2ccc8
 
 pkgname = gmameui
