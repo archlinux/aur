@@ -1,7 +1,7 @@
 pkgname=linux-linode
 _kernelname=-linode
 pkgver=3.0
-pkgrel=2-1
+pkgrel=201
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -13,9 +13,9 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${pkgver}.tar.bz2"
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('398e95866794def22b12dfbc15ce89c0'
-         'fd5a1712ddea696eee5255de2d854218'
-			''
-         'eb14dcfd80c00852ef81ded6e826826a'
+         'd41d8cd98f00b204e9800998ecf8427e'
+			'4f57cec4177ff365dfdf5457b3ed3136'
+         'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="The Linux Kernel and modules"
 depends=('coreutils' 'linux-firmware' 'module-init-tools>=3.16' 'mkinitcpio>=0.7')
