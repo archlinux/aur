@@ -1,0 +1,24 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+
+KERNEL_NAME=
+KERNEL_VERSION=3.0-ARCH
+
+post_install () {
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+  mkinitcpio -p linux${KERNEL_NAME}
+}
+
+post_upgrade() {
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+  mkinitcpio -p linux${KERNEL_NAME}
+}
+
+post_remove() {
+  rm -f boot/initramfs-linux${KERNEL_NAME}.img
+  rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
+}
