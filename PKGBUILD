@@ -1,7 +1,7 @@
 pkgname=linux-linode
 _kernelname=-linode
 pkgver=3.0
-pkgrel=201
+pkgrel=202
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -13,7 +13,7 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${pkgver}.tar.bz2"
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('398e95866794def22b12dfbc15ce89c0'
-         'd41d8cd98f00b204e9800998ecf8427e'
+         '911895d4819d6a5be14897a294a42877'
 			'4f57cec4177ff365dfdf5457b3ed3136'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
@@ -42,7 +42,7 @@ build() {
   # ... or manually edit .config
 
   #msg "Stopping build"
-  return 1
+#  return 1
 
 #  yes "" | make config
   CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
@@ -50,7 +50,7 @@ build() {
   ionice -c 3 nice -n 19 make ${MAKEFLAGS} bzImage modules
 }
 
-package_linux() {
+package_linux-linode() {
   KARCH=x86
   cd "${srcdir}/linux-${pkgver}"
   _kernver="$(make kernelrelease)"
