@@ -3,7 +3,7 @@
 
 pkgname=grub
 pkgver=0.97
-pkgrel=18
+pkgrel=19
 pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -25,7 +25,7 @@ source=(ftp://alpha.gnu.org/gnu/grub/grub-$pkgver.tar.gz
 backup=('boot/grub/menu.lst')
 install=grub.install
 sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
-          '734fa37ebe1657bf1f8f74ee4866953ff96f2604'
+          '33d43d48000b2027f9baec8fc99d33e0c4500c96'
           'e88a68204c9c9d4bd0b50fa11cab789df4ac55f8'
           '157b81dbad3576536b08642242accfa1aeb093a9'
           'adbb4685c98797ffb4dc83561ec75698991dddbd'

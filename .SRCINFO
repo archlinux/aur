@@ -1,7 +1,7 @@
 pkgbase = grub
 	pkgdesc = A GNU multiboot boot loader
 	pkgver = 0.97
-	pkgrel = 18
+	pkgrel = 19
 	url = http://www.gnu.org/software/grub/
 	install = grub.install
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = grub
 	source = ext4.patch
 	source = grub-0.97-ldflags-objcopy-remove-build-id.patch
 	sha1sums = 2580626c4579bd99336d3af4482c346c95dac4fb
-	sha1sums = 734fa37ebe1657bf1f8f74ee4866953ff96f2604
+	sha1sums = 33d43d48000b2027f9baec8fc99d33e0c4500c96
 	sha1sums = e88a68204c9c9d4bd0b50fa11cab789df4ac55f8
 	sha1sums = 157b81dbad3576536b08642242accfa1aeb093a9
 	sha1sums = adbb4685c98797ffb4dc83561ec75698991dddbd

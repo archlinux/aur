@@ -36,10 +36,10 @@ color light-blue/black light-cyan/blue
 #-*
 
 # (0) Arch Linux
-title  Arch Linux  [/boot/vmlinuz26]
+title  Arch Linux  [/boot/vmlinuz-linux]
 root   (hd0,0)
-kernel /vmlinuz26 root=/dev/sda3 ro
-initrd /kernel26.img
+kernel /vmlinuz-linux root=/dev/sda3 ro
+initrd /initramfs-linux.img
 
 # (1) Windows
 #title Windows
