@@ -1,18 +1,21 @@
 pkgname=linux-linode
 _kernelname=-linode
-pkgver=3.0
-pkgrel=202
+_basekernel=3.0
+pkgver=${_basekernel}.1
+pkgrel=1
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
-source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${pkgver}.tar.bz2"
+source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2"
+        "ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.bz2"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('398e95866794def22b12dfbc15ce89c0'
+         'ac49f7907f1fc85fbab92d0f1aa1552a'
          '0311732db24607c503ed192c105e956d'
 			'4f57cec4177ff365dfdf5457b3ed3136'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
@@ -26,7 +29,8 @@ backup=(etc/mkinitcpio.d/${pkgname}.preset)
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/linux-${pkgver}"
+  cd "${srcdir}/linux-${_basekernel}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   cp "${srcdir}/config.x86_64" ./.config
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -52,7 +56,7 @@ build() {
 
 package_linux-linode() {
   KARCH=x86
-  cd "${srcdir}/linux-${pkgver}"
+  cd "${srcdir}/linux-${_basekernel}"
   _kernver="$(make kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make INSTALL_MOD_PATH="${pkgdir}" modules_install

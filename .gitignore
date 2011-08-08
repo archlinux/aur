@@ -2,4 +2,4 @@ src
 pkg
 *.pkg.tar.*
 *~
-*.tar.bz2
+*.bz2
