@@ -1,0 +1,31 @@
+Linode (http://www.linode.com) is a VPS host with very neat, 
+very scriptable server-managing software, which supports 
+Arch Linux servers and custom kernels. This project maintains 
+the PKGBUILD for an Arch package (installable with pacman) 
+containing a kernel that is super-optimized for running on a 
+Linode instance, and also the grub menu to boot from it.
+
+Optimizations include compiling for Linode's exact cpu type and 
+stripping out all code for hardware that does not exist on Linode, 
+i.e. almost everything but the virtual xen block devices, NICs and 
+console. I also removed almost all filesystem support as 99% of 
+you will just be using their ext3 image and the other 1% will want 
+to tweak things anyway.
+
+To build this package on any arch linux machine, just do this:
+
+* git clone git@github.com:twomen/linux-linode.git ~/linux-linode
+* cd ~/linux-linode
+* makepkg -c
+
+This will give you a file like: linux-linode-3.0.1-1-x86_64.pkg.tar.xz
+
+In order to use this super-optimized kernel on your linode, just do this:
+
+* Make sure you have the 64-bit Arch image (2010-05 at time of writing)
+* pacman -Syu (just to make sure, the image is really old...)
+* Upload pkg file to server
+* sudo pacman -U /path/to/linux-linode-*.pkg.tar.xz
+* set your linode kernel to pv-grub-64
+* reboot
+* tell me about any bugs that were my fault :D
