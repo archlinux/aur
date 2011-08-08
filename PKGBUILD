@@ -46,7 +46,7 @@ build() {
   # ... or manually edit .config
 
   #msg "Stopping build"
-  return 1
+#  return 1
 
 #  yes "" | make config
   CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
