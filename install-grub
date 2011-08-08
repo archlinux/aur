@@ -160,8 +160,8 @@ dogrub() {
 
   # freeze xfs filesystems to enable grub installation on xfs filesystems
   if [ -x /usr/sbin/xfs_freeze ]; then
-    /usr/sbin/xfs_freeze -f /boot > /dev/null 2>&1
-    /usr/sbin/xfs_freeze -f / > /dev/null 2>&1
+    [ "$(stat -fLc %T /boot)" == "xfs" ] && /usr/sbin/xfs_freeze -f /boot > /dev/null 2>&1
+    [ "$(stat -fLc %T /)" == "xfs" ] && /usr/sbin/xfs_freeze -f / > /dev/null 2>&1
   fi
 
   # look for a separately-mounted /boot partition
@@ -187,8 +187,8 @@ EOF
 
   # unfreeze xfs filesystems
   if [ -x /usr/sbin/xfs_freeze ]; then
-    /usr/sbin/xfs_freeze -u /boot > /dev/null 2>&1
-    /usr/sbin/xfs_freeze -u / > /dev/null 2>&1
+    [ "$(stat -fLc %T /boot)" == "xfs" ] && /usr/sbin/xfs_freeze -u /boot > /dev/null 2>&1
+    [ "$(stat -fLc %T /)" == "xfs" ] && /usr/sbin/xfs_freeze -u / > /dev/null 2>&1
   fi
   if grep "Error [0-9]*: " /tmp/grub.log >/dev/null; then
     echo "Error installing GRUB. (see /tmp/grub.log for output)"
