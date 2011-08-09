@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=13.0.782.107
+pkgver=13.0.782.112
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
         gcc-4.6.patch
         glibc-2.14.patch
         make-hash-tools-use-if-instead-of-switch.patch)
-md5sums=('21b510e818d6943e20cfd114e9319d27'
+md5sums=('a0ddccb65b0075419d089087a9de785c'
          '075c3c2fa5902e16b8547dd31d437191'
          '096a46ef386817988250d2d7bddd1b34'
          '690f2be42bf2a31755753a466653eb33'
