@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=13.0.782.112
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -22,13 +22,15 @@ source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
         chromium.sh
         gcc-4.6.patch
         glibc-2.14.patch
-        make-hash-tools-use-if-instead-of-switch.patch)
+        make-hash-tools-use-if-instead-of-switch.patch
+        v8-r8472-crbug-77625-huge-number-of-cpu-wakeups.patch)
 md5sums=('a0ddccb65b0075419d089087a9de785c'
          '075c3c2fa5902e16b8547dd31d437191'
          '096a46ef386817988250d2d7bddd1b34'
          '690f2be42bf2a31755753a466653eb33'
          '543a32b09f138fd47858b9a4a7c82dfb'
-         '9d9e66c8365d7333e55305796b49fd77')
+         '9d9e66c8365d7333e55305796b49fd77'
+         '19c08d35303be15e414f2e881000140d')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
@@ -44,6 +46,13 @@ build() {
   # Fix build with Perl 5.14
   patch -d third_party/WebKit -Np2 -i \
     "$srcdir/make-hash-tools-use-if-instead-of-switch.patch"
+
+  # Fix upstream issue #77625: Chromium Generates HUGE numbers of CPU wakeups
+  # and uses massive amounts of power
+  # http://code.google.com/p/chromium/issues/detail?id=77625
+  # Patch from: http://code.google.com/p/v8/source/detail?r=8472
+  patch -d v8/src -Np0 -i \
+    "$srcdir/v8-r8472-crbug-77625-huge-number-of-cpu-wakeups.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
