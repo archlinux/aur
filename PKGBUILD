@@ -17,7 +17,7 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
 md5sums=('398e95866794def22b12dfbc15ce89c0'
          'ac49f7907f1fc85fbab92d0f1aa1552a'
          'a4ebddd66e0697c30e223ab5040243f1'
-			'846d5c4777361ac67414fe1fae4346fa'
+			'7fc8bdda8379469552523e9296dc3799'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="The Linux Kernel and modules"

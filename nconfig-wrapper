@@ -14,6 +14,7 @@ makepkg -oecd
 mold=($(md5sum config.x86_64))
 sed -i 's/^[#]*\s*\(return\s*1\)$/\1/ig' PKGBUILD
 makepkg -cd
+askyn "continue?" || exit
 cd $ldir
 make nconfig
 cd ../..
