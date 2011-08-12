@@ -6,7 +6,7 @@ pkgname=sfml
 _git=true
 
 if [[ "${_git}" = "true" ]]; then
-    pkgver=1.99.git20110728
+    pkgver=1.99.git20110812
 fi
 
 pkgrel=1
