@@ -3,10 +3,10 @@ timeout 10
 
 title Arch Linux Linode Xen kernel %VER%
 root (hd0)
-kernel /boot/vmlinuz-linux-linode root=/dev/xvda ro verbose
+kernel /boot/vmlinuz-linux-linode root=/dev/xvda ro quiet
 initrd /boot/initramfs-linux-linode.img
 
 title Arch Linux Linode Xen kernel %VER% Fallback
 root (hd0)
-kernel /boot/vmlinuz-linux-linode root=/dev/xvda ro verbose
+kernel /boot/vmlinuz-linux-linode root=/dev/xvda ro quiet
 initrd /boot/initramfs-linux-linode-fallback.img

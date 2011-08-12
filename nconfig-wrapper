@@ -17,10 +17,10 @@ makepkg -cd
 cd $ldir
 make nconfig
 cd ../..
-diff $ldir/.config config.x86_64
+diff config.x86_64 $ldir/.config
 
 askyn "update package?" && {
-	 cat $ldir/.config > config.x86_64
+	 cat config.x86_64 > $ldir/.config
 	 mnew=($(md5sum config.x86_64))
 	 sed -i s_${mold[0]}_${mnew[0]}_ig PKGBUILD
 	 pkgrel=0
