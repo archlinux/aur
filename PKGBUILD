@@ -73,8 +73,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss'
-           'cyrus-sasl-plugins')
+  depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'dbus-python: for purple-remote and purple-url-handler')
 
