@@ -1,7 +1,7 @@
 pkgbase = linux-linode
 	pkgdesc = The Linux Kernel and modules
 	pkgver = 3.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.kernel.org/
 	install = linux-linode.install
 	arch = x86_64
