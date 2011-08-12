@@ -1,0 +1,17 @@
+pkgbase = gkrellm-snmp
+	pkgdesc = A GKrellM plugin to read SNMP agents
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://triq.net/plugin/gkrellm-snmp
+	arch = x86
+	arch = x86_64
+	license = GPL
+	depends = gtk
+	depends = openssl
+	depends = gkrellm
+	depends = net-snmp
+	source = http://triq.net/files/gkrellm_snmp-1.1.tar.gz
+	md5sums = 59ecb86bc925e852709206f9d1b0aaa7
+
+pkgname = gkrellm-snmp
+
