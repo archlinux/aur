@@ -1,12 +1,18 @@
 #!/bin/bash
+[ -a ./package-this ] || {
+    echo "You have to run this from the same directory!"
+    exit 1
+}
 [ -f /etc/bash.functions ] && . /etc/bash.functions
 [ -f /usr/share/ppz/bash.functions ] && . /usr/share/ppz/bash.functions
-
+[ "$1" ] && REPO="$1" || croak USAGE: ./package-this [repo-directory]
+[ -d ${REPO} ] || croak ${REPO} not mounted!
 ldir=src/linux-3.0
-makepkg -oec
+
+makepkg -oecd
 mold=($(md5sum config.x86_64))
 sed -i 's/^[#]*\s*\(return\s*1\)$/\1/ig' PKGBUILD
-makepkg -c
+makepkg -cd
 cd $ldir
 make nconfig
 cd ../..
@@ -21,11 +27,14 @@ askyn "update package?" && {
 	 let pkgrel++
 	 sed -i 's/^pkgrel=.*$/pkgrel='$pkgrel'/i' PKGBUILD
 	 sed -i 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
-	 makepkg -oec
-	 makepkg -c
+	 makepkg -oecd
+	 makepkg -cd
+	 PF=$(ls -1tr *.pkg.tar.xz | tail -n 1)
+	 mv $PF ${REPO}
+	 repo-add ${REPO}/hir.db.tar.gz ${REPO}/$PF
 } || {
 	 sed -i 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
-	 makepkg -oec
+	 makepkg -oecd
 }
 
 git diff --color=auto
