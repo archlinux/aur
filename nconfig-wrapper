@@ -20,11 +20,11 @@ askyn "update package?" && {
 	 eval  $(sed 's/^pkgrel=/\0/i;t;d;' PKGBUILD)
 	 let pkgrel++
 	 sed -i 's/^pkgrel=.*$/pkgrel='$pkgrel'/i' PKGBUILD
-	 sed 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
+	 sed -i 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
 	 makepkg -oec
 	 makepkg -c
 } || {
-	 sed 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
+	 sed -i 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
 	 makepkg -oec
 }
 
