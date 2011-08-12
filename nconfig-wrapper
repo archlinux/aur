@@ -1,5 +1,5 @@
 #!/bin/bash
-[-f /etc/bash.functions ] && . /etc/bash.functions
+[ -f /etc/bash.functions ] && . /etc/bash.functions
 [ -f /usr/share/ppz/bash.functions ] && . /usr/share/ppz/bash.functions
 
 ldir=src/linux-3.0
