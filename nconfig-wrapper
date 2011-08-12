@@ -1,0 +1,31 @@
+#!/bin/bash
+[-f /etc/bash.functions ] && . /etc/bash.functions
+[ -f /usr/share/ppz/bash.functions ] && . /usr/share/ppz/bash.functions
+
+ldir=src/linux-3.0
+makepkg -oec
+mold=($(md5sum config.x86_64))
+sed -i 's/^[#]*\s*\(return\s*1\)$/\1/ig' PKGBUILD
+makepkg -c
+cd $ldir
+make nconfig
+cd ../..
+diff $ldir/.config config.x86_64
+
+askyn "update package?" && {
+	 cat $ldir/.config > config.x86_64
+	 mnew=($(md5sum config.x86_64))
+	 sed -i s_${mold[0]}_${mnew[0]}_ig PKGBUILD
+	 pkgrel=0
+	 eval  $(sed 's/^pkgrel=/\0/i;t;d;' PKGBUILD)
+	 let pkgrel++
+	 sed -i 's/^pkgrel=.*$/pkgrel='$pkgrel'/i' PKGBUILD
+	 sed 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
+	 makepkg -oec
+	 makepkg -c
+} || {
+	 sed 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD
+	 makepkg -oec
+}
+
+git diff --color=auto

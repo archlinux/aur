@@ -2,7 +2,7 @@ pkgname=linux-linode
 _kernelname=-linode
 _basekernel=3.0
 pkgver=${_basekernel}.1
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -16,7 +16,7 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         'change-default-console-loglevel.patch')
 md5sums=('398e95866794def22b12dfbc15ce89c0'
          'ac49f7907f1fc85fbab92d0f1aa1552a'
-         '12d743a3a5495597c883ace98609e09d'
+         'bca869ad467d5ae0e849c75e5703ee40'
 			'4f57cec4177ff365dfdf5457b3ed3136'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
