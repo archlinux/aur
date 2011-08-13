@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -16,16 +16,22 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        nm09-more.patch)
+        nm09-more.patch
+        ticket-14351-multiple-display-of-room-members.patch)
 md5sums=('2cd285c7a40f93b7a51bfe733971d3a6'
-         'a673659d86c7a65aa710f7c8c7feda82')
+         'a673659d86c7a65aa710f7c8c7feda82'
+         '47f16f838b741cfdeda18d7b08a7b816')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Further fixes for NetworkManager 0.9
-  # (http://developer.pidgin.im/ticket/13859)
+  # http://developer.pidgin.im/ticket/13859
   patch -Np1 -i "$srcdir/nm09-more.patch"
+
+  # Fix upstream issue #14351: multiple display of room members
+  # http://developer.pidgin.im/ticket/14351
+  patch -Np0 -i "$srcdir/ticket-14351-multiple-display-of-room-members.patch"
 
   # Use Python 2
   sed -i 's/env python$/\02/' */plugins/*.py \
