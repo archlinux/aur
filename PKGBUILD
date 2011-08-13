@@ -15,14 +15,11 @@ depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 makedepends=('pkgconfig' 'lvm2')
 optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
-	    'kernel26-ovz24: for openvz guests'
 	    'kvm'
 	    'lxc'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
 	    'user-mode-linux'
-	    'virtualbox_bin'
-	    'virtualbox-ose'
 	    'xen'
 	    'radvd')
 options=('emptydirs' '!libtool')
