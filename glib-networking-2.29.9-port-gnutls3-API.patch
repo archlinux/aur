@@ -1,0 +1,17 @@
+Index: tls/gnutls/gtlsconnection-gnutls.c
+===================================================================
+--- tls/gnutls/gtlsconnection-gnutls.c
++++ tls/gnutls/gtlsconnection-gnutls.c	2011-08-04 00:40:33.194189789 +0200
+@@ -860,9 +860,10 @@
+ 
+   if (peer_certificate)
+     {
+-      int status;
++      int verify_ret;
++      unsigned int status;
+ 
+-      status = gnutls_certificate_verify_peers (gnutls->priv->session);
++      verify_ret = gnutls_certificate_verify_peers2 (gnutls->priv->session, &status); 
+       peer_certificate_errors = g_tls_certificate_gnutls_convert_flags (status);
+       if (peer_certificate_errors)
+ 	{
