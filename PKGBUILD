@@ -16,11 +16,8 @@ makedepends=('pkgconfig' 'lvm2')
 optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
 	    'kvm'
-	    'lxc'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
-	    'user-mode-linux'
-	    'xen'
 	    'radvd')
 options=('emptydirs' '!libtool')
 backup=('etc/conf.d/libvirtd'
