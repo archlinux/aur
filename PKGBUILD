@@ -2,15 +2,15 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=python-virtualenvwrapper
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
 url="http://www.doughellmann.com/projects/virtualenvwrapper/"
 license=('BSD')
 depends=('python-virtualenv' 'python2-virtualenv')
 source=(http://pypi.python.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
-md5sums=('b01930b245b2beb9fe2ce69a4b0e0f25')
+md5sums=('4998181c67fad05a6429e1ca84d638b1')
 
 build() {
   cd "$srcdir/virtualenvwrapper-$pkgver"
