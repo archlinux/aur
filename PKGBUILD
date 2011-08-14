@@ -3,8 +3,8 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=2.6.39.1
-_basever=2.6.39
+pkgver=3.0.1
+_basever=3.0
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ license=('GPL2')
 provides=("kernel-headers=${pkgver}")
 conflicts=('kernel-headers')
 replaces=('kernel-headers')
-source=(http://www.kernel.org/pub/linux/kernel/v2.6/linux-${_basever}.tar.bz2
-	http://www.kernel.org/pub/linux/kernel/v2.6/patch-${pkgver}.bz2)
-md5sums=('1aab7a741abe08d42e8eccf20de61e05'
-         '215f7ebaafe1175dbc5d1e439c9a96d5')
+source=(http://www.kernel.org/pub/linux/kernel/v${_basever}/linux-${_basever}.tar.bz2
+	http://www.kernel.org/pub/linux/kernel/v${_basever}/patch-${pkgver}.bz2)
+md5sums=('398e95866794def22b12dfbc15ce89c0'
+         'ac49f7907f1fc85fbab92d0f1aa1552a')
 
 build() {
   cd ${srcdir}/linux-${_basever}
