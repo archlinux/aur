@@ -2,12 +2,12 @@
 
 pkgname=pgxnclient
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to interact with the PostgreSQL Extension Network"
 arch=(any)
 url="http://pgxn.org/"
 license=('BSD')
-depends=('python2')
+depends=('python2' 'python2-distribute')
 conflicts=('pgxn-client')
 source=(http://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz)
 
