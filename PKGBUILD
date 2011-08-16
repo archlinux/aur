@@ -22,6 +22,13 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         "${pkgname}.preset"
         'fix-i915.patch'
         'change-default-console-loglevel.patch')
+md5sums=('398e95866794def22b12dfbc15ce89c0'
+         'd4ff10b7c9a5d8d0aa4c97579c81b7f9'
+         'fc6aae0fb4d70feff92ec762d29dee45'
+         'fd5a1712ddea696eee5255de2d854218'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '263725f20c0b9eb9c353040792d644e5'
+         '9d3c56a4b999c8bfbd4018089a62f662')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -274,11 +281,3 @@ package_linux-docs() {
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
 
-# vim:set ts=2 sw=2 et:
-md5sums=('398e95866794def22b12dfbc15ce89c0'
-         'd4ff10b7c9a5d8d0aa4c97579c81b7f9'
-         'fc6aae0fb4d70feff92ec762d29dee45'
-         'fd5a1712ddea696eee5255de2d854218'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '263725f20c0b9eb9c353040792d644e5'
-         '9d3c56a4b999c8bfbd4018089a62f662')
