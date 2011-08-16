@@ -13,8 +13,8 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=tomahawk
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -24,10 +24,8 @@ makedepends=('git' 'cmake>=2.8.0')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
 options=(!strip)
-source=(http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2
-        0001-Fixes-due-to-changed-Jreen-API.patch)
-md5sums=('e7c06eac747db2f6f9f04cbb0fd5024a'
-         'd67cc8bbd35fcbd4a5429b2abad25a48')
+source=(http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('4915b1da999bbb204714feb274b29526')
 install=tomahawk.install
 
 # Clean options array to strip pkg if release buildtype is chosen
@@ -37,7 +35,6 @@ fi
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 -i ${srcdir}/0001-Fixes-due-to-changed-Jreen-API.patch
 
   msg "Starting build..."
 
