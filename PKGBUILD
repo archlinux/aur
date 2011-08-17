@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=obconf
-pkgver=2.0.3git20100309
+pkgver=2.0.3.git20100309
 pkgrel=1
 pkgdesc="A GTK2 based configuration tool for the Openbox windowmanager"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('openbox' 'gtk2' 'libglade' 'desktop-file-utils' 'libsm')
 install=${pkgname}.install
 source=("ftp://ftp.archlinux.org/other/community/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('122f2c46a2843175e4c3a27c3e6b8ed5')
+md5sums=('d45a1eab18aa25c18280821118368b97')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
