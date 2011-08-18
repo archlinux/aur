@@ -35,7 +35,9 @@ build() {
   if [ -d ${_gitname} ]; then
     cd ${_gitname} && git pull origin
   else
-    git clone --depth 1 ${_gitroot}
+    git clone ${_gitroot}
+    cd jreen
+    git checkout 2957d0ff03d9561af8afc4bd3a45947392868875 
   fi
 
   msg "GIT checkout done or server timeout"
