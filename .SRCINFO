@@ -1,0 +1,14 @@
+pkgbase = python2-pg8000
+	pkgdesc = Pure-Python PostgreSQL database driver, DB-API compatible
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://pybrary.net/pg8000/
+	arch = any
+	license = BSD
+	makedepends = setuptools
+	depends = python2
+	source = http://pybrary.net/pg8000/dist/pg8000-1.08.tar.gz
+	md5sums = 2e8317a22d0e09a6f12e98ddf3bb75fd
+
+pkgname = python2-pg8000
+
