@@ -4,7 +4,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libmediawiki')
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -12,10 +12,14 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin'
              'cmake' 'automoc4' 'doxygen')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+        'fix-libusb-linkage.patch')
 md5sums=('7b1ab69fc2fb36a45dc3ca38b01d42d8')
 
 build() {
+  cd "${srcdir}"/${pkgname}-${pkgver}
+  patch -p1 -i "${srcdir}"/fix-libusb-linkage.patch
+
   cd "${srcdir}"
   mkdir build
   cd build
