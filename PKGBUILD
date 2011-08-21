@@ -47,8 +47,8 @@ build() {
 
 package_pidgin(){
   pkgdesc="Multi-protocol instant messaging client"
-  depends=("libpurple=$pkgver-$pkgrel" 'startup-notification' 'gtkspell'
-           'libxss' 'libsm' 'gstreamer0.10' 'hicolor-icon-theme')
+  depends=('libpurple' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
+           'gstreamer0.10' 'hicolor-icon-theme')
   optdepends=('aspell: for spelling correction'
               'ca-certificates: SSL CA certificates'
               'gstreamer0.10-good-plugins: video and voice support'
