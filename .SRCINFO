@@ -1,7 +1,7 @@
 pkgbase = pkgbrowser
 	pkgdesc = A utility for browsing pacman databases and the AUR
-	pkgver = 0.5
-	pkgrel = 2
+	pkgver = 0.6
+	pkgrel = 1
 	url = http://code.google.com/p/pkgbrowser/
 	install = pkgbrowser.install
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = pkgbrowser
 	license = GPL2
 	depends = pacman<4
 	depends = python2-pyqt
-	source = http://pkgbrowser.googlecode.com/files/pkgbrowser-0.5.tar.gz
-	md5sums = 2406646442ecf44d710f36e2069e4bfb
+	source = http://pkgbrowser.googlecode.com/files/pkgbrowser-0.6.tar.gz
+	md5sums = 178595f988573a1e8ebc815f8e4c38c2
 
 pkgname = pkgbrowser
 
