@@ -1,7 +1,7 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 pkgname=telepathy-logger
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Telepathy framework logging daemon"
 arch=(i686 x86_64)
 url="http://telepathy.freedesktop.org/wiki/Logger"
@@ -18,6 +18,7 @@ build() {
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib/telepathy \
+    --enable-call \
     --disable-static \
     --disable-scrollkeeper \
     --disable-schemas-compile
