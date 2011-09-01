@@ -14,7 +14,8 @@ makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'cmake' 'automoc4' 'doxygen')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
         'fix-libusb-linkage.patch')
-md5sums=('7b1ab69fc2fb36a45dc3ca38b01d42d8')
+md5sums=('7b1ab69fc2fb36a45dc3ca38b01d42d8'
+         'e0e4f2ab6c6e8f00470ef893f62c4231')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
