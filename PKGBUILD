@@ -3,20 +3,20 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.0.2
+pkgver=3.1.91
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('libgnome-keyring' 'gtk-vnc' 'avahi' 'desktop-file-utils' 'hicolor-icon-theme' 'telepathy-glib' 'dconf' 'libpeas' 'shared-mime-info' 'gnome-icon-theme')
+depends=('libgnome-keyring' 'gtk-vnc' 'avahi' 'desktop-file-utils' 'dconf' 'shared-mime-info' 'gnome-icon-theme')
 optdepends=('rdesktop: RDP plugin')
 makedepends=('gtk-doc' 'intltool' 'rdesktop')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('cddc604ca6b2e45aaa5af55306eb29fc4910b29e1273c4915b7f60fd78da264e')
+sha256sums=('6e62ce78e0fb867444f4403668684c05394f55d1f3468f725297431b1a14fbc8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
