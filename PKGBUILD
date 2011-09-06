@@ -7,13 +7,15 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.47.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}_${_boostver}.tar.gz)
+source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
+        exceptions.patch)
 license=('custom')
-md5sums=('ff180a5276bec773a7625cac7e2288e8')
+md5sums=('ff180a5276bec773a7625cac7e2288e8'
+         '9b44c28b36303152050c8c82469569c5')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -23,6 +25,10 @@ build() {
   echo "using python : 2.7 : /usr/bin/python2 ;" >> build/v2/user-config.jam
   echo "using python : 3.2 : /usr/bin/python : /usr/include/python3.2mu : /usr/lib ;" >> build/v2/user-config.jam
   echo "using mpi ;" >> build/v2/user-config.jam
+
+  # http://web.archiveorange.com/archive/v/Q0J4VE5bwsy3zxRXqUgd
+  cd "${srcdir}"/${pkgbase}_${_boostver}
+  patch -p0 -i "${srcdir}"/exceptions.patch
 
   # build bjam
   cd "${srcdir}/${pkgbase}_${_boostver}/tools/build/v2/engine"
