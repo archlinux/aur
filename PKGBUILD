@@ -1,15 +1,14 @@
 # Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=cloudprint-git
-pkgver=20110429
-pkgrel=2
+pkgver=20110907
+pkgrel=1
 pkgdesc="Google cloudprint proxy for CUPS"
 arch=('any')
 url="https://github.com/armooo/cloudprint"
 license=('GPL3')
-depends=('pycups' 'python2-distribute')
+depends=('pycups' 'python2-distribute' 'python-daemon')
 makedepends=('git')
-optdepends=('python-pip: to "pip install daemon" to run as daemon')
 provides=('cloudprint')
 conflicts=('cloudprint')
 
