@@ -2,16 +2,16 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=mono-addins
-pkgver=0.5
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A generic framework for creating extensible applications and for creating libraries which extend those applications"
 arch=('i686' 'x86_64')
 url="http://www.mono-project.com/Mono.Addins"
 license=('custom:MIT')
-depends=('gtk-sharp-2>=2.12.8' 'mono>=2.6.4')
+depends=('gtk-sharp-2>=2.12.8' 'mono>=2.10.5')
 makedepends=('pkgconfig')
-source=(http://ftp.novell.com/pub/mono/sources/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('22c8dd470caed090b3c77c9423e5b3c6')
+source=(http://download.mono-project.com/sources/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('afbbe5e9fdf9b03911bc8e6b94feb60b')
 
 build() {
   export MONO_SHARED_DIR="${srcdir}/.wabi"
