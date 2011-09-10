@@ -28,7 +28,7 @@ build() {
   patch -Np1 -i "$srcdir/nm09-more.patch"
 
   # Use Python 2
-  sed -i 's/env python$/\02/' */plugins/*.py \
+  sed -i 's/env python$/&2/' */plugins/*.py \
     libpurple/purple-{remote,notifications-example,url-handler}
 
   ./configure \
