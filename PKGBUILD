@@ -60,7 +60,7 @@ build() {
 
   # Use Python 2
   find . -type f -exec sed -i -r \
-    -e 's|/usr/bin/python$|\02|g' \
+    -e 's|/usr/bin/python$|&2|g' \
     -e 's|(/usr/bin/python2)\.4$|\1|g' \
     {} +
   # There are still a lot of relative calls which need a workaround
