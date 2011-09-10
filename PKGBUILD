@@ -24,7 +24,7 @@ package() {
   python2 setup.py install --root="$pkgdir" -O1
 
   # Use Python 2
-  sed -i 's/which python/\02/' "$pkgdir/usr/bin/virtualenvwrapper.sh"
+  sed -i 's/which python/&2/' "$pkgdir/usr/bin/virtualenvwrapper.sh"
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   # Extract the license from README.txt
