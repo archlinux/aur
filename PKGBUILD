@@ -3,15 +3,15 @@
 
 pkgname=aiksaurus
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform, open-source thesaurus"
 url="http://aiksaurus.sourceforge.net/"
 license=('GPL')
 arch=('i686' 'x86_64')
 options=('!libtool')
 depends=('gtk2')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
-	'aiksaurus-gcc44.patch')
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        'aiksaurus-gcc44.patch')
 md5sums=('3eae03b7c49843ccc9262e52846ea6b4'
          '7f94749172116b1529fc21b718ee7636')
 
@@ -19,9 +19,13 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   # gcc44 build patch
-  patch -Np0 -i ${srcdir}/aiksaurus-gcc44.patch || return 1
+  patch -Np0 -i ${srcdir}/aiksaurus-gcc44.patch
 
   ./configure --prefix=/usr --with-gtk
-  make || return 1
+  make
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
