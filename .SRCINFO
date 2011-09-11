@@ -1,0 +1,23 @@
+pkgbase = pgadmin3-git
+	pkgdesc = A comprehensive design and management interface for PostgreSQL database
+	pkgver = 20110912
+	pkgrel = 1
+	url = http://www.pgadmin.org/
+	arch = i686
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = libpqxx
+	makedepends = postgresql
+	makedepends = git
+	depends = wxgtk
+	depends = postgresql-libs
+	depends = libxslt
+	provides = pgadmin3
+	conflicts = pgadmin3
+	conflicts = pgadmin3-svn
+	conflicts = pgadmin3-testing
+	source = pgadmin3.desktop
+	md5sums = d07ba4df54baead30b66d19d7450bcad
+
+pkgname = pgadmin3-git
+
