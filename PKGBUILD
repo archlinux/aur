@@ -3,19 +3,19 @@
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
 pkgname=django
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A high-level Python Web framework."
 arch=('any')
 license=('BSD')
 url="http://www.djangoproject.com/"
 depends=('python2')
-makedepends=('setuptools')
+makedepends=('python2-distribute')
 optdepends=('mysql-python: for MySQL backend'
             'python2-psycopg2: for PostgreSQL backend')
 source=("http://media.djangoproject.com/releases/1.3/Django-$pkgver.tar.gz")
-md5sums=('1b8f76e91c27564708649671f329551f')
-sha256sums=('7aeee5c80002ab81d4ebf5416292949ff46e1448d183a183fe05ff6344771c83')
+md5sums=('62d8642fd06b9a0bf8544178f8500767')
+sha256sums=('af9118c4e8a063deb0b8cda901fcff2b805e7cf496c93fd43507163f3cde156b')
 
 build() {
   cd ${srcdir}/Django-$pkgver
