@@ -5,12 +5,12 @@
 # Contributor: bekks <eduard.warkentin@gmx.de>
 
 pkgname=pgadmin3-testing
-pkgver=1.14.0beta1
-_realver=1.14.0-beta1
+pkgver=1.14.0rc1
+_realver=1.14.0-rc1
 pkgrel=1
 pkgdesc="A comprehensive design and management interface for PostgreSQL database"
 arch=('i686' 'x86_64')
-url="http://www.pgadmin.org/visualtour12.php"
+url="http://www.pgadmin.org/"
 license=('custom:PostgreSQL')
 depends=('wxgtk' 'postgresql-libs' 'libxslt')
 makedepends=('libpqxx')
@@ -21,9 +21,13 @@ source=(http://ftp.de.postgresql.org/packages/databases/PostgreSQL/pgadmin3/rele
 
 build() {
     cd $srcdir/pgadmin3-${_realver}
-
+    unset LDFLAGS
     [ $NOEXTRACT -eq 1 ] || ./configure --prefix=/usr
     make
+}
+
+package() {
+    cd $srcdir/pgadmin3-${_realver}
     make DESTDIR=$pkgdir/ install
 
     install -D -m 644 i18n/pgadmin3.lng $pkgdir/usr/share/pgadmin3/i18n
@@ -35,5 +39,5 @@ build() {
     install -D -m 644 pgadmin/include/images/pgAdmin3.ico $pkgdir/usr/share/pgadmin3/pixmaps/pgAdmin3.ico
     install -D -m 644 $srcdir/pgadmin3.desktop $pkgdir/usr/share/applications/
 }
-md5sums=('abd04341e3a62fd467f4b9eeeb430383'
+md5sums=('b43bbedaacd8677f35825c66c31475cb'
          'd07ba4df54baead30b66d19d7450bcad')
