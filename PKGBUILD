@@ -3,18 +3,17 @@
 
 pkgname=archlinux-themes-slim
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Arch Linux branded themes for the SLiM login manager"
 arch=('any')
 url="http://www.archlinux.org/"
 license=('CCPL:cc-by-sa')
 optdepends=('slim: login manager providing theme support')
-source=(ftp://ftp.archlinux.org/other/artwork/${pkgname}-${pkgver}.tar.gz)
+source=("ftp://ftp.archlinux.org/other/artwork/${pkgname}-${pkgver}.tar.gz")
 md5sums=('f9b7c231ec26c93fc89ecadfa2d0e250')
 
-build() {
+package() {
   cd $srcdir/$pkgname-$pkgver
   mkdir -p $pkgdir/usr/share/slim/themes
-  mv archlinux-*/ $pkgdir/usr/share/slim/themes
+  cp -a archlinux-*/ $pkgdir/usr/share/slim/themes
 }
-
