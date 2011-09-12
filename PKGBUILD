@@ -3,7 +3,7 @@
 
 pkgname=psiconv
 pkgver=0.9.8
-pkgrel=7
+pkgrel=8
 pkgdesc="Converts Psion 5(MX) files to more commonly used file formats"
 arch=('i686' 'x86_64')
 url="http://software.frodo.looijaard.name/psiconv/"
@@ -20,6 +20,10 @@ build() {
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --mandir=/usr/share/man
-  make || return 1
+  make
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
