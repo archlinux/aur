@@ -13,7 +13,7 @@ pkgbase = tomahawk
 	depends = taglib>=1.6.2
 	depends = boost>=1.30
 	depends = clucene>=2.3.3.4
-	depends = libechonest>=1.1.8
+	depends = libechonest>=1.1.9
 	depends = jreen-git>=20110605
 	depends = qtweetlib-git
 	optdepends = tomahawk-spotify-git: spotify resolver
