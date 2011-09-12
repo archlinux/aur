@@ -5,14 +5,14 @@
 # Contributor: bekks <eduard.warkentin@gmx.de>
 
 pkgname=pgadmin3-git
-pkgver=20110911
+pkgver=20110912
 pkgrel=1
 pkgdesc="A comprehensive design and management interface for PostgreSQL database"
 arch=('i686' 'x86_64')
 url="http://www.pgadmin.org/"
 license=('custom:PostgreSQL')
 depends=('wxgtk' 'postgresql-libs' 'libxslt')
-makedepends=('libpqxx' 'git')
+makedepends=('libpqxx' 'postgresql' 'git')
 provides=('pgadmin3')
 conflicts=('pgadmin3' 'pgadmin3-svn' 'pgadmin3-testing')
 source=(pgadmin3.desktop)
