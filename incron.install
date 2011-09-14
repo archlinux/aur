@@ -12,4 +12,3 @@ pre_remove() {
   usr/sbin/userdel incron >& /dev/null
   usr/sbin/groupdel incron >& /dev/null
 }
-
