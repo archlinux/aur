@@ -1,10 +1,16 @@
 #!/bin/sh
 
-. /etc/rc.d/functions
 . /etc/conf.d/libvirtd-guests
 . /etc/rc.conf
+. /etc/rc.d/functions
 
 LIBVIRTD_LISTFILE="/var/state/libvirtd/vm-list"
+
+# get guest state by name
+libvirt_get_guest_state()
+{
+	virsh $LIBVIRTD_URI dominfo "$1" | grep -E '^State:' | awk '{print $2}'
+}
 
 # list IDs of running guests
 libvirt_list()
@@ -16,12 +22,28 @@ libvirt_list()
 libvirt_suspend()
 {
 	virsh $LIBVIRTD_URI $LIBVIRTD_BYPASS_CACHE managedsave "$1" >/dev/null
+	timeout=$LIBVIRTD_SHUTDOWN_TIMEOUT
+	while [ "$timeout" -gt 0 ]; do
+		sleep 1
+		timeout=$((timeout - 1))
+		state=`libvirt_get_guest_state "$1"`
+		[ "x$state" == "xshut" ] && return 0
+	done
+	return 1
 }
 
 # shutdown guest by name
 libvirt_shutdown()
 {
 	virsh $LIBVIRTD_URI shutdown "$1" >/dev/null
+	timeout=$LIBVIRTD_SHUTDOWN_TIMEOUT
+	while [ "$timeout" -gt 0 ]; do
+		sleep 1
+		timeout=$((timeout - 1))
+		state=`libvirt_get_guest_state "$1"`
+		[ "x$state" != "xshut" ] && return 0
+	done
+	return 1
 }
 
 # start guest by name
@@ -44,7 +66,6 @@ libvirt_stop_all()
 			libvirt_shutdown "$i"
 		fi
 		[ $? -eq 0 ] && stat_done || stat_fail
-		# TODO: check if it does not running
 		echo $i >>$LIBVIRTD_LISTFILE
 	done
 }
@@ -63,16 +84,16 @@ libvirt_start_all()
 }
 
 # main
+LC_ALL=C
+LANG=C
 case "$1" in
     start)
 		libvirt_start_all
 		add_daemon libvirtd-guests
-	fi
 	;;
     stop)
 		libvirt_stop_all
 		rm_daemon libvirtd-guests
-	fi
 	;;
     restart)
 	$0 stop
