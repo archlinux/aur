@@ -2,8 +2,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
-pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libmediawiki')
-pkgver=2.1.0
+pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin'
              'cmake' 'automoc4' 'doxygen')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('3e5228a60ae916c530a7a87e081862b6')
+md5sums=('8cd3f5f2141bbb54ba2fd80371582c2c')
 
 build() {
   cd "${srcdir}"
@@ -60,6 +60,14 @@ package_libkgeomap() {
   make DESTDIR="${pkgdir}" install
 }
 
+package_libkvkontakte() {
+  pkgdesc="KDE C++ library for asynchronous interaction with vkontakte.rusocial network"
+  depends=('kdelibs')
+
+  cd "${srcdir}"/build/extra/libkvkontakte
+  make DESTDIR="${pkgdir}" install
+}
+
 package_libmediawiki() {
   pkgdesc="A KDE C++ interface for MediaWiki based web service as wikipedia.org"
   depends=('kdelibs')
@@ -71,7 +79,7 @@ package_libmediawiki() {
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
   depends=('kdebase-runtime' 'kdepimlibs' 'libkdcraw' 'libkipi' 'libksane'
-           'opencv' 'qjson')
+           'opencv' 'qjson' 'libkvkontakte')
   optdepends=('libkgeomap'
               'libmediawiki'
               'libgpod'
