@@ -21,6 +21,7 @@ optdepends=('bridge-utils: for briged networking (default)'
 	    'radvd')
 options=('emptydirs' '!libtool')
 backup=('etc/conf.d/libvirtd'
+	'etc/conf.d/libvirtd-guests'
 	'etc/libvirt/libvirtd.conf'
 	'etc/libvirt/qemu.conf'
 	'etc/sasl2/libvirt.conf')
@@ -28,6 +29,8 @@ install="libvirt.install"
 source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.rc.d
 	libvirtd.conf.d
+	libvirtd-guests.rc.d
+	libvirtd-guests.conf.d
 	openbsd-netcat-default.patch
 	unixperms.patch
 	yajl-2.x.patch)
@@ -67,8 +70,14 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
+
   make DESTDIR="$pkgdir" install
+
   install -D -m755 "$srcdir"/libvirtd.rc.d "$pkgdir"/etc/rc.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
+
+  install -D -m755 "$srcdir"/libvirtd-guests.rc.d "$pkgdir"/etc/rc.d/libvirtd-guests
+  install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirtd-guests
+
   rm -rf $pkgdir/var/run
 }
