@@ -1,8 +1,8 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=glib-networking
-pkgver=2.29.18
-pkgrel=2
+pkgver=2.29.92
+pkgrel=1
 pkgdesc="Network-related giomodules for glib"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
@@ -11,14 +11,11 @@ depends=('glib2' 'libproxy' 'gnutls' 'libgcrypt' 'ca-certificates' 'gsettings-de
 makedepends=('intltool')
 options=('!libtool')
 install=glib-networking.install
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.xz
-        fix_G_TLS_ERROR_EOF_handling.patch)
-sha256sums=('87d77d9bf184398cd8b7f709e6de42f11b2badf9df1bd96a9ab69c0c8a0766f0'
-            '286d64a121cb987866b51af70f55d47bafc5bf60e813aa1412dce51e426cc553')
+source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.xz)
+sha256sums=('65b3785e02ffae1cf5e3f25985ac428d6d17e69355947ed831e1a6d1e852948a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i "$srcdir/fix_G_TLS_ERROR_EOF_handling.patch"
   ./configure \
     --prefix=/usr --sysconfdir=/etc \
     --libexecdir=/usr/lib/glib-networking --disable-static
