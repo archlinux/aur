@@ -8,10 +8,10 @@ arch=(i686 x86_64)
 license=('custom')
 url="http://www.minecraft.net/"
 depends=('java-runtime')
-source=('2010_06_03_MCSkinEdit_a3_pre5.zip'
+source=('http://solidcdn.com/files/27e8/SkinEdit_alpha3_pre7_fix.zip'
         'mcskinedit'
         'http://minecraft.net/skin/skintest2.jar')
-md5sums=('83b9e96dac43508f2ea221144ee3c243'
+md5sums=('82a1afca96026e3c5bfc5a690f1a8275'
          '17bb5327778e4dd64a4acedc2b95677f'
          'ec418807008ad3f14d55db6457a693b8')
 
