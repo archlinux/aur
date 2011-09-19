@@ -11,7 +11,7 @@ url="http://www.minecraft.net/"
 depends=('java-runtime')
 source=('http://solidcdn.com/files/27e8/SkinEdit_alpha3_pre7_fix.zip'
         'mcskinedit'
-        'http://minecraft.net/skin/skintest2.jar')
+        'http://dl.dropbox.com/u/15956363/skintest2.jar')
 md5sums=('82a1afca96026e3c5bfc5a690f1a8275'
          '17bb5327778e4dd64a4acedc2b95677f'
          'ec418807008ad3f14d55db6457a693b8')
