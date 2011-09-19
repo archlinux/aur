@@ -4,7 +4,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=201108
+pkgver=201109
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult) and journals (svjour3)"
 arch=('any')
@@ -53,6 +53,6 @@ build() {
 }
 
 md5sums=('d534148be975055ec332f4cdcd1087d5'
-         'f6a4252d498efa775c0c32451f3a4701'
-         'f17923388e06a268f214ecb59a65747d'
+         '9d5bf25a905806ed4297138062afaf71'
+         '7e74a3efdde7e08c9aa463a786a93209'
          'c020d70fa6ce887d9a3b70d72c518c85')
