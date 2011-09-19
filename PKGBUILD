@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Minecraft Skin Editor"
 arch=(any)
 license=(unknown)
-url="http://www.minecraft.net/"
+url="http://www.minecraftforum.net/topic/3796-skinedit-new-version-13-april-alpha-3-pre-7/page__view__findpost__p__49969"
 depends=('java-runtime')
 source=('http://solidcdn.com/files/27e8/SkinEdit_alpha3_pre7_fix.zip'
         'mcskinedit'
