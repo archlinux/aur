@@ -1,0 +1,9 @@
+# makepkg created directories and packages
+pkg/
+src/
+*.pkg.tar.xz
+*.src.tar.gz
+
+# source files
+SkinEdit_alpha3_pre7_fix.zip
+skintest2.jar
