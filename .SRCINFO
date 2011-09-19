@@ -1,0 +1,18 @@
+pkgbase = iceberg-git
+	pkgver = 20150114
+	pkgrel = 2
+	url = https://github.com/hugopl/Iceberg
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake>=2.8.10.2
+	makedepends = icecream
+	makedepends = qt5-base
+	depends = gcc
+	depends = qt5-base
+	depends = icecream
+	provides = iceberg
+
+pkgname = iceberg-git
+
