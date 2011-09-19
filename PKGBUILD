@@ -26,6 +26,8 @@ build() {
   install -m644 -t $pkgdir/usr/share/$pkgname/parts parts/*
   install -d $pkgdir/usr/share/$pkgname/backgrounds
   install -m644 -t $pkgdir/usr/share/$pkgname/backgrounds backgrounds/*
+  install -d $pkgdir/usr/share/doc/$pkgname
+  install -m644 -t $pkgdir/usr/share/doc/$pkgname readme.txt
 }
 
 # vim:set ts=4 sw=4 et:
