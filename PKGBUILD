@@ -1,4 +1,5 @@
-# Maintainer: Lakota Morris <lakota.james@gmail.com>
+# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+# Original maintainer: Lakota Morris <lakota.james@gmail.com>
 
 pkgname=mcskinedit
 pkgver=alpha3pre5
