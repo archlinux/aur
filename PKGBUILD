@@ -20,12 +20,12 @@ build() {
 
   install -d $pkgdir/usr/bin
   install -m755 -t $pkgdir/usr/bin mcskinedit
-  install -d $pkgdir/usr/share/mcskinedit
-  install -m644 -t $pkgdir/usr/share/mcskinedit MCSkinEdit.jar skintest2.jar
-  install -d $pkgdir/usr/share/mcskinedit/parts
-  install -m644 -t $pkgdir/usr/share/mcskinedit/parts parts/*
-  install -d $pkgdir/usr/share/mcskinedit/backgrounds
-  install -m644 -t $pkgdir/usr/share/mcskinedit/backgrounds backgrounds/*
+  install -d $pkgdir/usr/share/$pkgname
+  install -m644 -t $pkgdir/usr/share/$pkgname MCSkinEdit.jar skintest2.jar
+  install -d $pkgdir/usr/share/$pkgname/parts
+  install -m644 -t $pkgdir/usr/share/$pkgname/parts parts/*
+  install -d $pkgdir/usr/share/$pkgname/backgrounds
+  install -m644 -t $pkgdir/usr/share/$pkgname/backgrounds backgrounds/*
 }
 
 # vim:set ts=4 sw=4 et:
