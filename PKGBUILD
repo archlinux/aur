@@ -18,13 +18,14 @@ md5sums=('82a1afca96026e3c5bfc5a690f1a8275'
 build() {
   cd "$srcdir" || return 1
 
-  mkdir -p $pkgdir/usr/bin
-  cp mcskinedit $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/mcskinedit
-  cp MCSkinEdit.jar $pkgdir/usr/share/mcskinedit
-  cp skintest2.jar $pkgdir/usr/share/mcskinedit
-  cp -r parts $pkgdir/usr/share/mcskinedit
-  cp -r backgrounds $pkgdir/usr/share/mcskinedit
+  install -d $pkgdir/usr/bin
+  install -m755 -t $pkgdir/usr/bin mcskinedit
+  install -d $pkgdir/usr/share/mcskinedit
+  install -m644 -t $pkgdir/usr/share/mcskinedit MCSkinEdit.jar skintest2.jar
+  install -d $pkgdir/usr/share/mcskinedit/parts
+  install -m644 -t $pkgdir/usr/share/mcskinedit/parts parts/*
+  install -d $pkgdir/usr/share/mcskinedit/backgrounds
+  install -m644 -t $pkgdir/usr/share/mcskinedit/backgrounds backgrounds/*
 }
 
 # vim:set ts=4 sw=4 et:
