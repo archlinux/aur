@@ -1,11 +1,12 @@
 pkgbase = morituri
 	pkgdesc = a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thomas.apestaart.org/morituri/trac/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	depends = cddb-py
 	depends = cdparanoia
 	depends = cdrdao
 	depends = gstreamer0.10
