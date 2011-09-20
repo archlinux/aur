@@ -1,19 +1,19 @@
-diff -wbBur libvirt-0.9.4.org/src/qemu/qemu_migration.c libvirt-0.9.4/src/qemu/qemu_migration.c
---- libvirt-0.9.4.org/src/qemu/qemu_migration.c	2011-08-03 05:36:34.000000000 +0400
-+++ libvirt-0.9.4/src/qemu/qemu_migration.c	2011-08-03 13:29:56.000000000 +0400
-@@ -1612,7 +1612,7 @@
-         ret = qemuMonitorMigrateToUnix(priv->mon, background_flags,
-                                                unixfile);
-     } else if (qemuCapsGet(priv->qemuCaps, QEMU_CAPS_MIGRATE_QEMU_EXEC)) {
--        const char *args[] = { "nc", "-U", unixfile, NULL };
-+        const char *args[] = { "nc.openbsd", "-U", unixfile, NULL };
-         ret = qemuMonitorMigrateToCommand(priv->mon, QEMU_MONITOR_MIGRATE_BACKGROUND, args);
-     } else {
-         ret = -1;
-diff -wbBur libvirt-0.9.4.org/src/remote/remote_driver.c libvirt-0.9.4/src/remote/remote_driver.c
---- libvirt-0.9.4.org/src/remote/remote_driver.c	2011-07-29 09:14:03.000000000 +0400
-+++ libvirt-0.9.4/src/remote/remote_driver.c	2011-08-03 13:30:05.000000000 +0400
-@@ -588,7 +588,7 @@
+diff -wbBur libvirt-0.9.5/src/qemu/qemu_migration.c libvirt-0.9.5.my/src/qemu/qemu_migration.c
+--- libvirt-0.9.5/src/qemu/qemu_migration.c	2011-09-16 16:37:07.000000000 +0400
++++ libvirt-0.9.5.my/src/qemu/qemu_migration.c	2011-09-20 20:44:39.000000000 +0400
+@@ -1497,7 +1497,7 @@
+                                            spec->dest.unix_socket.file);
+         } else {
+             const char *args[] = {
+-                "nc", "-U", spec->dest.unix_socket.file, NULL
++                "nc.openbsd", "-U", spec->dest.unix_socket.file, NULL
+             };
+             ret = qemuMonitorMigrateToCommand(priv->mon, migrate_flags, args);
+         }
+diff -wbBur libvirt-0.9.5/src/remote/remote_driver.c libvirt-0.9.5.my/src/remote/remote_driver.c
+--- libvirt-0.9.5/src/remote/remote_driver.c	2011-09-20 07:00:44.000000000 +0400
++++ libvirt-0.9.5.my/src/remote/remote_driver.c	2011-09-20 20:44:43.000000000 +0400
+@@ -596,7 +596,7 @@
                                                  username,
                                                  !tty,
                                                  !verify,
@@ -22,10 +22,10 @@ diff -wbBur libvirt-0.9.4.org/src/remote/remote_driver.c libvirt-0.9.4/src/remot
                                                  keyfile,
                                                  sockname)))
              goto failed;
-diff -wbBur libvirt-0.9.4.org/src/rpc/virnetsocket.c libvirt-0.9.4/src/rpc/virnetsocket.c
---- libvirt-0.9.4.org/src/rpc/virnetsocket.c	2011-08-01 05:32:35.000000000 +0400
-+++ libvirt-0.9.4/src/rpc/virnetsocket.c	2011-08-03 13:29:46.000000000 +0400
-@@ -629,7 +629,7 @@
+diff -wbBur libvirt-0.9.5/src/rpc/virnetsocket.c libvirt-0.9.5.my/src/rpc/virnetsocket.c
+--- libvirt-0.9.5/src/rpc/virnetsocket.c	2011-09-14 06:11:44.000000000 +0400
++++ libvirt-0.9.5.my/src/rpc/virnetsocket.c	2011-09-20 20:44:33.000000000 +0400
+@@ -633,7 +633,7 @@
      if (noVerify)
          virCommandAddArgList(cmd, "-o", "StrictHostKeyChecking=no", NULL);
      virCommandAddArgList(cmd, nodename,
