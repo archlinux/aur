@@ -1,22 +1,19 @@
 pkgname=linux-linode
 _kernelname=-linode
-_basekernel=3.0
-pkgver=${_basekernel}.1
-pkgrel=8
+pkgver=3.0.4
+pkgrel=1
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
-source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2"
-        "ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.bz2"
+source=("https://nodeload.github.com/torvalds/linux/tarball/v3.1-rc4"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
-md5sums=('398e95866794def22b12dfbc15ce89c0'
-         'ac49f7907f1fc85fbab92d0f1aa1552a'
-         'a4ebddd66e0697c30e223ab5040243f1'
+md5sums=('208b27841d8674a352bc70f2032b3cc4'
+         '52745e61e39672edfe6861bcee6e5f86'
 			'7fc8bdda8379469552523e9296dc3799'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
@@ -29,8 +26,7 @@ backup=(etc/mkinitcpio.d/${pkgname}.preset)
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/linux-${_basekernel}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  cd "${srcdir}/torvalds-linux-897e5ed"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   cp "${srcdir}/config.x86_64" ./.config
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -56,7 +52,7 @@ build() {
 
 package_linux-linode() {
   KARCH=x86
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/torvalds-linux-897e5ed"
   _kernver="$(make kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make INSTALL_MOD_PATH="${pkgdir}" modules_install
@@ -68,6 +64,7 @@ package_linux-linode() {
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
     -i "${startdir}/${pkgname}.install"
   sed \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgname}\"|g" \
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|g" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|g" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"

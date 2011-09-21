@@ -3,3 +3,5 @@ pkg
 *.pkg.tar.*
 *~
 *.bz2
+*.part
+v3.1-rc4

@@ -8,7 +8,7 @@ croak()        { echo "ERROR: $@"; exit; }
 [ -f /usr/share/ppz/bash.functions ] && . /usr/share/ppz/bash.functions
 [ "$1" ] && REPO="$1" || croak USAGE: ./package-this [repo-directory]
 [ -d ${REPO} ] || croak ${REPO} not mounted!
-ldir=src/linux-3.0
+ldir=src/torvalds-linux-897e5ed
 
 makepkg -oecd
 mold=($(md5sum config.x86_64))
