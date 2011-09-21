@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-linode
-KERNEL_VERSION=3.1-rc4-linode
+KERNEL_VERSION=3.0-linode
 
 post_install () {
   echo ">>> Updating module dependencies. Please wait ..."

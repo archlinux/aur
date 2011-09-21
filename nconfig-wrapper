@@ -8,7 +8,9 @@ croak()        { echo "ERROR: $@"; exit; }
 [ -f /usr/share/ppz/bash.functions ] && . /usr/share/ppz/bash.functions
 [ "$1" ] && REPO="$1" || croak USAGE: ./package-this [repo-directory]
 [ -d ${REPO} ] || croak ${REPO} not mounted!
-ldir=src/torvalds-linux-897e5ed
+
+eval $(awk '/^(pkgver|_basekernel)=/ {print}' PKGBUILD)
+ldir=src/linux-$pkgver
 
 makepkg -oecd
 mold=($(md5sum config.x86_64))
@@ -21,7 +23,7 @@ cd ../..
 diff config.x86_64 $ldir/.config
 
 askyn "update package?" && {
-	 cat config.x86_64 > $ldir/.config
+	 cat $ldir/.config > config.x86_64
 	 mnew=($(md5sum config.x86_64))
 	 sed -i s_${mold[0]}_${mnew[0]}_ig PKGBUILD
 	 pkgrel=0

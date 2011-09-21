@@ -1,19 +1,20 @@
 pkgname=linux-linode
 _kernelname=-linode
-pkgver=3.0.4
-pkgrel=1
+_basekernel=3.0
+pkgver=${_basekernel}.4
+pkgrel=2
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
-source=("https://nodeload.github.com/torvalds/linux/tarball/v3.1-rc4"
+source=("http://ftp.nluug.nl/pub/os/Linux/system/kernel/v3.0/linux-${pkgver}.tar.bz2"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
-md5sums=('208b27841d8674a352bc70f2032b3cc4'
-         '52745e61e39672edfe6861bcee6e5f86'
+md5sums=('dff86c657cabe813bda84c72bfb93ae8'
+         'a4ebddd66e0697c30e223ab5040243f1'
 			'7fc8bdda8379469552523e9296dc3799'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
@@ -26,7 +27,7 @@ backup=(etc/mkinitcpio.d/${pkgname}.preset)
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/torvalds-linux-897e5ed"
+  cd "${srcdir}/linux-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   cp "${srcdir}/config.x86_64" ./.config
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -52,7 +53,7 @@ build() {
 
 package_linux-linode() {
   KARCH=x86
-  cd "${srcdir}/torvalds-linux-897e5ed"
+  cd "${srcdir}/linux-${pkgver}"
   _kernver="$(make kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make INSTALL_MOD_PATH="${pkgdir}" modules_install
