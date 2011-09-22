@@ -1,32 +1,53 @@
-# Author: Thomas Vander Stichele <thomas at apestaart dot org>
-# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
-pkgname=morituri
-pkgver=0.1.2
-pkgrel=2
+# Maintainer: Caleb Reach <jtxx000@gmail.com>
+# Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
+pkgname=morituri-svn
+pkgver=545
+pkgrel=1
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
 url="https://thomas.apestaart.org/morituri/trac/"
 license=("GPL3")
-depends=("cddb-py" "cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
-         "python-musicbrainz2")
-optdepends=("python2-pycdio: for 'rip drive list'")
-source=("http://thomas.apestaart.org/download/morituri/$pkgname-$pkgver.tar.bz2")
-sha1sums=('e09b559ced4a0aeeb49c44b0dce1dcf2f7de50a8')
+depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
+	"python-musicbrainz2" "python2-pycdio")
+conflicts=("morituri")
+
+_svntrunk=http://thomas.apestaart.org/morituri/svn/trunk/
+_svnmod=morituri
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  export PYTHON="python2"
+  cd "$srcdir"
+  msg "Connecting to SVN server...."
+
+  if [[ -d "$_svnmod/.svn" ]]; then
+    (cd "$_svnmod" && svn up -r "$pkgver")
+  else
+    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
+  fi
+
+  msg "SVN checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_svnmod-build"
+  cp -r "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
+  cd "$srcdir/$_svnmod-build"
+
+  #
+  # BUILD HERE
+  #
   sed -i '27s/\<python\>/&2/' doc/Makefile.am
+  ./autogen.sh
+
   sed -i '1s/\<python\>/&2/' bin/rip.in etc/bash_completion.d/bash-compgen
-  automake
+
+  export PYTHON="python2"
   ./configure --prefix=/usr --sysconfdir=/etc 
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "$srcdir/$_svnmod-build"
+  make DESTDIR="$pkgdir" install || return 1
   install -Dm 0644 "README" "$pkgdir/usr/share/doc/morituri/README"
 }
 
-# vim: ft=sh:ts=2:sw=2:et
+# vim:set ts=2 sw=2 et:
