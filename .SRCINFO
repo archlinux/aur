@@ -1,0 +1,24 @@
+pkgbase = openmw-git
+	pkgdesc = OpenMW is a open-source engine reimplementation for the role-playing game Morrowind.
+	pkgver = 20110922
+	pkgrel = 1
+	url = http://www.openmw.org
+	install = openmw-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = openal
+	depends = ogre
+	depends = bullet
+	depends = ffmpeg
+	depends = mygui
+	depends = mpg123
+	depends = libsndfile
+	depends = qt
+	conflicts = openmw
+
+pkgname = openmw-git
+
