@@ -2,8 +2,8 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
 url="http://www.openshotvideo.com/"
@@ -13,8 +13,8 @@ depends=('mlt-python-bindings' 'pygoocanvas' 'sdl' 'librsvg' 'mplayer'
 optdepends=('dvgrab: for IEEE digital sources'
 	    'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack' 'ladspa')
 install=openshot.install
-source=(http://launchpad.net/openshot/1.3/$pkgver/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('8feb9f9745ea155980558547e124cc3c')
+source=(http://launchpad.net/openshot/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.gz)
+md5sums=('3061a49af6d1cbd9b1558b9f2b0ba8e2')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
