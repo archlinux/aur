@@ -3,7 +3,7 @@
 # Contributor: nathan owe ndowens04 at gmail dot com
 
 pkgname=cclive
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='Commandline downloader for popular video websites.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('boost-libs' 'quvi')
 makedepends=('boost')
 source=("http://downloads.sourceforge.net/project/${pkgname}/0.7/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7d727db64bcf490b7ecd192ec0f6a7fa')
+md5sums=('714ecd9952f79ac9d2c954e5e84fb843')
 
 build() {
   cd "$pkgname-$pkgver"
