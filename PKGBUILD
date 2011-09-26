@@ -1,13 +1,13 @@
 # Contributor: Olivier Mehani <shtrom-arch@ssji.net>
 # $Id$
 pkgname=msva-perl-git
-pkgver=20110203
+pkgver=20110926
 pkgrel=1
 pkgdesc="Perl Monkeysphere Validation Agent"
 arch=(i686 x86_64)
 url="http://web.monkeysphere.info/"
 license=('GPL3')
-depends=(monkeysphere perl-gtk2 perl-http-server-simple perl-regexp-common perl-json perl-gnupg-interface perl-any-moose perl-any-moose perl-net-server perl-convert-asn1 perl-crypt-x509 perl-file-homedir perl-config-general)
+depends=(monkeysphere gtk2-perl perl-http-server-simple perl-regexp-common perl-json perl-gnupg-interface perl-any-moose perl-any-moose perl-net-server perl-convert-asn1 perl-crypt-x509 perl-file-homedir perl-config-general)
 makedepends=('git')
 provides=(msva-pearl monkeysphere-validation-agent)
 conflicts=(msva-perl)
