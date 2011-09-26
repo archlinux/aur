@@ -1,4 +1,0 @@
-post_upgrade() {
-  echo "  lilypond support has been removed"
-  echo "  see http://code.google.com/p/solfege/issues/detail?id=242"
-}
