@@ -2,8 +2,8 @@
 # Maintainer: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 pkgname=python-sphinx
-pkgver=1.0.7
-pkgrel=3
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="Python documentation generator"
 arch=('any')
 url="http://sphinx.pocoo.org/"
@@ -12,7 +12,7 @@ depends=('python2-distribute' 'python2-pygments' 'docutils' 'python2-jinja')
 optdepends=('texlive-latexextra: for generation of PDF documentation'
             'texlive-latex3: for generation of PDF documentation')
 source=(http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz)
-md5sums=('42c722d48e52d4888193965dd473adb5')
+md5sums=('6f9aace3f7e523ce55514eafa2764c6f')
 
 build() {
     cd "$srcdir/Sphinx-$pkgver"
