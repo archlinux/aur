@@ -4,13 +4,13 @@
 
 pkgname=patchage
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular patch bay for audio and MIDI systems"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://drobilla.net/software/patchage"
 license=('GPL')
 depends=('dbus-glib' 'libglademm' 'hicolor-icon-theme'
-         'raul' 'flowcanvas' 'jack')
+         'raul' 'flowcanvas<1.0.0' 'jack')
 makedepends=('boost' 'python2')
 install=$pkgname.install
 source=(http://download.drobilla.net/$pkgname-$pkgver.tar.bz2)
