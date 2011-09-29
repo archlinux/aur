@@ -1,6 +1,6 @@
 pkgbase = libechonest
 	pkgdesc = C++ library for interfacing with Echo Nest
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://projects.kde.org/projects/playground/libs/libechonest
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = libechonest
 	depends = qjson
 	provides = libechonest
 	conflicts = libechonest-git
-	source = http://pwsp.cleinias.com/libechonest-1.1.9.tar.bz2
-	md5sums = 28c88ffdbe648f130d7fdcee86b54a9c
+	source = http://pwsp.cleinias.com/libechonest-1.1.10.tar.bz2
+	md5sums = a19e862d268a5e206fd9044c47c12d28
 
 pkgname = libechonest
 
