@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -16,9 +16,11 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        nm09-more.patch)
-md5sums=('e1453c9093c4f32beec19abd14069a3f'
-         'a673659d86c7a65aa710f7c8c7feda82')
+        nm09-more.patch
+        pidgin-2.10.0-silc-remote-crash-fix.diff)
+sha1sums=('859c6d9c9795c1adcf762b73e072e04a3a85a78d'
+          '0676b26f092fac3ee4bbea2261042b3f433c7751'
+          '8c7fc96abeca0f76d895bb33a530bf49e12f5bc6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -26,6 +28,10 @@ build() {
   # Further fixes for NetworkManager 0.9
   # http://developer.pidgin.im/ticket/13859
   patch -Np1 -i "$srcdir/nm09-more.patch"
+
+  # Fix remote crash in SILC plugin
+  # http://developer.pidgin.im/ticket/14636
+  patch -Np0 -i "$srcdir/pidgin-2.10.0-silc-remote-crash-fix.diff"
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
