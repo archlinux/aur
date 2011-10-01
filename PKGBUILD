@@ -6,10 +6,10 @@
 
 pkgname=p7zip
 pkgver=9.20.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Command-line version of the 7zip compressed file archiver'
 url='http://p7zip.sourceforge.net/'
-license=('GPL')
+license=('GPL' 'custom')
 arch=('i686' 'x86_64')
 optdepends=('wxgtk: GUI'
             'desktop-file-utils: desktop entries')
@@ -38,6 +38,12 @@ package() {
 		DEST_DIR="${pkgdir}" \
 		DEST_HOME="/usr" \
 		DEST_MAN="/usr/share/man"
+
+	# Licenses
+	install -d "${pkgdir}"/usr/share/licenses/p7zip
+	ln -s -t "${pkgdir}"/usr/share/licenses/p7zip \
+		/usr/share/doc/p7zip/DOCS/License.txt \
+		/usr/share/doc/p7zip/DOCS/unRarLicense.txt
 
 	# Integration with stuff...
 	install -D contrib/VirtualFileSystemForMidnightCommander/u7z "${pkgdir}"/usr/lib/mc/extfs.d/u7z
