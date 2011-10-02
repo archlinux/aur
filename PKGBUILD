@@ -3,7 +3,7 @@
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ibus-m17n
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='M17N engine for IBus'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='http://code.google.com/p/ibus/'
 license=('LGPL')
 depends=('python-pyenchant' 'ibus' 'm17n-db' 'm17n-lib')
 source=("http://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4c406147318f94e5e805c408c4be075e')
+md5sums=('8fa050df5b2d25095d0e2df51946b0de')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
