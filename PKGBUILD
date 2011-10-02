@@ -4,12 +4,12 @@
 
 pkgname=glom
 pkgver=1.19.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
 license=('GPL')
-depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject' 'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince')
+depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject' 'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql')
 makedepends=('intltool' 'gnome-doc-utils' 'python-sphinx' 'boost')
 options=('!libtool')
 install=$pkgname.install
