@@ -1,0 +1,17 @@
+pkgbase = python2-dbutils
+	pkgdesc = DBUtils is a suite of Python modules allowing to connect in a safe and efficient way between a threaded Python application and a database.
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.webwareforpython.org/DBUtils
+	arch = any
+	license = Open
+	license = Software
+	license = License
+	depends = python2
+	source = http://www.w4py.org/downloads/DBUtils/DBUtils-1.1.tar.gz
+	source = LICENSE
+	sha256sums = d62d1abaafdbd9245a53e9c901f4162125d0258ef8a489233dba4689cea0bff7
+	sha256sums = 4eeb837027209bbf68895f1461cafe1fb1817a8d1b5702dbee3b8c6ea42a9b9b
+
+pkgname = python2-dbutils
+
