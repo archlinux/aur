@@ -1,0 +1,15 @@
+pkgbase = python2-oursql
+	pkgdesc = Set of MySQL bindings for python with real parameterization and real server-side cursors.
+	pkgver = 0.9.3.1
+	pkgrel = 1
+	url = https://launchpad.net/oursql
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	depends = libmysqlclient
+	source = http://pypi.python.org/packages/source/o/oursql/oursql-0.9.3.1.tar.bz2
+	sha256sums = 9440ec2aacda8d32d5400ab3cdb2ac27a0a3aff68919ce7fbdbc66934c0120ab
+
+pkgname = python2-oursql
+
