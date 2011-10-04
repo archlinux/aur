@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=14.0.835.186
+pkgver=14.0.835.202
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
         chromium.sh
         gcc-4.6.patch
         webrtc-r240-r242-make-pulseaudio-optional.patch)
-sha1sums=('898ac584fd5b50705864e84afa80aa407f25609b'
+sha1sums=('e1c2d7cacaa256b1d343ee012d07170dbb3beb2f'
           '7d97535ec0ed124e95888de84b2c6a3654a27d4a'
           '427ecf06cae11f28f59b1912d659ad5541391682'
           '39999918746524fff30e73dc656754733df5c2c2'
