@@ -1,0 +1,27 @@
+pkgbase = polly
+	pkgdesc = Linux Twitter client designed for multiple columns of multiple accounts
+	pkgver = 0.93.12
+	pkgrel = 2
+	url = https://launchpad.net/polly
+	install = polly.install
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	depends = python2-notify
+	depends = python2-httplib2
+	depends = pyxdg
+	depends = python2-gconf
+	depends = python2-pycurl
+	depends = python2-socks
+	depends = python2-gtkspell
+	depends = hspell
+	depends = python2-keyring
+	depends = python2-oauth2
+	depends = python2-numpy
+	depends = librsvg
+	depends = python2-dbus
+	source = http://launchpad.net/polly/1.0/pre-alpha-2/+download/Polly-0.93.12.tar.gz
+	sha256sums = 376ae60067b192bc5d5147203f9116e207599f73929dfb8b6343be9f250ba410
+
+pkgname = polly
+
