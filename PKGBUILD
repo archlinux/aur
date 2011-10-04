@@ -1,4 +1,4 @@
-# Maintainer : Keshav P R <(skodabenz) (aatt) (rocketmail) (ddoott) (ccoomm)>
+# Maintainer : Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
 _pkgname="efibootmgr"
