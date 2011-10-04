@@ -8,8 +8,8 @@ url="http://www.ruby-lang.org/en/"
 license="Ruby"
 depends=('glibc' 'gdbm' 'db' 'openssl' 'zlib' 'readline')
 makedepends=('subversion' 'autoconf')
-conflicts=('ruby')
-provides=('ruby=1.9.2')
+#conflicts=('ruby')
+#provides=('ruby=1.9.2')
 
 source=()
 md5sums=()
@@ -30,10 +30,10 @@ build() {
 	fi
 	autoconf
 
-	./configure --prefix=/usr --enable-shared --enable-pthread
-	#./configure --prefix=/usr --enable-shared --enable-pthread \
-	#--program-suffix=${_suffix} --with-ruby-version=${_version} \
-	#--with-soname=ruby${_suffix}
+	#./configure --prefix=/usr --enable-shared --enable-pthread
+	./configure --prefix=/usr --enable-shared --enable-pthread \
+	--program-suffix=${_suffix} --with-ruby-version=${_version} \
+	--with-soname=ruby${_suffix}
 	make || return 1
 	make DESTDIR=${startdir}/pkg install || return 1
 	make DESTDIR=${startdir}/pkg install-doc || return 1

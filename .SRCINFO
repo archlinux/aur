@@ -14,8 +14,6 @@ pkgbase = ruby-svn
 	depends = openssl
 	depends = zlib
 	depends = readline
-	provides = ruby=1.9.2
-	conflicts = ruby
 
 pkgname = ruby-svn
 
