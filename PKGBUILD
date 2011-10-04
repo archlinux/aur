@@ -15,7 +15,8 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
 source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2"
-        "ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.gz"
+        #"ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.gz"
+        "ftp://ftp.archlinux.org/other/linux/patch-${pkgver}.gz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
