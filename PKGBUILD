@@ -2,7 +2,7 @@
 
 pkgname=python2-oauth2
 pkgver=1.5.170
-pkgrel=1
+pkgrel=2
 _libname=${pkgname/python2-/}
 pkgdesc="A fully tested, abstract interface to creating OAuth clients and servers"
 arch=(any)
@@ -15,4 +15,5 @@ md5sums=(5cca4f4ce2225781c2d91e19aad207f5)
 build() {
 	cd "$srcdir/$_libname-$pkgver"
 	python2 setup.py install --root=$pkgdir
+	rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests
 }
