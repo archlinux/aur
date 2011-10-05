@@ -1,16 +1,16 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
-pkgver=1.5.3
-pkgrel=4
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
 license=('custom')
 depends=('gcc' 'gcc-fortran' 'openssh' 'valgrind' 'libtool' 'hwloc')
-makedepends=('net-tools')
+makedepends=('inetutils')
 options=(!libtool)
 source=(http://www.open-mpi.org/software/ompi/v1.5/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('669565c708deab82ad4069d82675b2020eb0e0c6')
+sha1sums=('81f7736a83b2134ba20c2e5c380b4d267cfd9d9c')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,7 +21,6 @@ build() {
                --enable-mpi-f90 \
                --libdir=/usr/lib/${pkgname} \
                --with-threads=posix \
-               --enable-mpi-threads \
                --enable-smp-locks \
                --with-valgrind \
                --enable-memchecker \
@@ -31,7 +30,7 @@ build() {
                --with-hwloc=external \
                --with-libltdl=/usr \
                FC=/usr/bin/gfortran \
-               LDFLAGS='-Wl,-z,noexecstack'
+               LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
 
    make
 }
