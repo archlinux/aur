@@ -1,10 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer:
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
-# Contributor: damir <damir@archlinux.org>
-# Contributor: Konstantinos Pachnis <kpachnis@mes-direct.com>
 
 pkgname=cmake
-pkgver=2.8.5
+pkgver=2.8.6
 pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
@@ -15,7 +14,7 @@ makedepends=('qt')
 optdepends=('qt: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('3c5d32cec0f4c2dc45f4c2e84f4a20c5')
+md5sums=('2147da452fd9212bb9b4542a9eee9d5b')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
