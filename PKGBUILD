@@ -4,7 +4,7 @@
 pkgbase=python-nose
 pkgname=('python-nose' 'python2-nose')
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url="http://www.somethingaboutorange.com/mrl/projects/nose/"
@@ -29,5 +29,5 @@ package_python-nose() {
 package_python2-nose() {
   depends=('python2')
   cd "$srcdir/nose2-$pkgver"
-  python setup.py install --prefix=/usr --root=${pkgdir}
+  python2 setup.py install --prefix=/usr --root=${pkgdir}
 }
