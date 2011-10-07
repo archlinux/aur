@@ -8,7 +8,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 _kernelname=${pkgname#linux}
 _basekernel=3.0
 pkgver=${_basekernel}.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,8 +25,8 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         'change-default-console-loglevel.patch')
 md5sums=('398e95866794def22b12dfbc15ce89c0'
          '792f01cc8874d03a84e47fd0e7065df8'
-         '3565fb177244f965ba04bd116c6e33ab'
-         '14f0e5ef7b5111e5ed1d93479bb3fa29'
+         '750c90895c49a3f42a33bcbc8d1d70f5'
+         '272092c6fb09dd503a4d70d26dbcd214'
          'eb14dcfd80c00852ef81ded6e826826a'
          '263725f20c0b9eb9c353040792d644e5'
          '9d3c56a4b999c8bfbd4018089a62f662')
@@ -281,4 +281,3 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
-
