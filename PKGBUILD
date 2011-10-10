@@ -3,7 +3,7 @@
 # Contributor: Laurent Meunier <laurent@deltalima.net>
 
 pkgname=goocanvasmm
-pkgver=1.90.5
+pkgver=1.90.6
 pkgrel=1
 pkgdesc='C++ wrappers for goocanvas'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('goocanvas' 'gtkmm3')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/goocanvasmm/1.90/goocanvasmm-${pkgver}.tar.xz)
-sha256sums=('9648e6fc6c41fceea348571b7db4421748bab7fbd7799700245890b63ae1b4b6')
+sha256sums=('2d63cff0ea1a20cb0ebb9b91fbefe2a80f8972b1dbcda018ba4f10fbfda5c699')
 
 build() {
   cd ${pkgname}-${pkgver}
