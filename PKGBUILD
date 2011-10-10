@@ -1,19 +1,19 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-pkgver=0.90
+pkgver=0.91
 pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libxml2>=2.7.7' 'glib2>=2.26.0')
+depends=('libxml2' 'glib2')
 makedepends=('intltool' 'pkgconfig')
 install=shared-mime-info.install
 url="http://freedesktop.org/Software/shared-mime-info"
-source=(http://freedesktop.org/~hadess/${pkgname}-${pkgver}.tar.bz2
+source=(http://freedesktop.org/~hadess/${pkgname}-${pkgver}.tar.xz
         pbm.patch)
-md5sums=('967d68d3890ba3994cfce3adf5b8f15b'
-         '39fcc08fbd33145684ba97f1f64644c2')
+md5sums=('982a211560ba4c47dc791ccff34e8fbc'
+         '3ec0e21a746f75a890716eb83d73e754')
 options=(!makeflags)
 
 build() {

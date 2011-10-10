@@ -40,10 +40,3 @@ diff -Naur shared-mime-info-0.70-orig/freedesktop.org.xml shared-mime-info-0.70/
  	</match>
        </match>
      </magic>
-@@ -23926,4 +23920,4 @@
-     </treemagic>
-   </mime-type>
- 
--</mime-info>
-\ No newline at end of file
-+</mime-info>
