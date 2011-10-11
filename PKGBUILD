@@ -8,8 +8,8 @@ pkgrel=4
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
-depends=('libgl' 'mesa' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
-makedepends=('boost')
+depends=('libgl' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
+makedepends=('mesa' 'boost')
 source=(http://www.frogatto.com/files/$pkgname-$pkgver.tar.bz2
         frogatto
         frogatto.desktop)
