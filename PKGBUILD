@@ -2,24 +2,24 @@
 # Contributor: Judd Vinet <judd@archlinux.org>
 
 pkgname=bridge-utils
-pkgver=1.4
-pkgrel=4
+pkgver=1.5
+pkgrel=1
 pkgdesc="Utilities for configuring the Linux ethernet bridge"
 arch=('i686' 'x86_64')
-url="http://www.linuxfoundation.org/en/Net:Bridge"
-license=('GPL2')
-backup=('etc/conf.d/bridges')
+url="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge"
+license=('GPL')
 depends=('glibc')
+backup=('etc/conf.d/bridges')
 source=(http://downloads.sourceforge.net/bridge/bridge-utils-$pkgver.tar.gz
         bridges.conf.d)
-md5sums=('0182fcac3a2b307113bbec34e5f1c673'
+md5sums=('ec7b381160b340648dede58c31bb2238'
          'f5d691282653580dd5fd4a1092ef365b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   aclocal
   autoconf
-  ./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
