@@ -1,0 +1,15 @@
+pkgbase = chipmunk
+	pkgdesc = A high-performance 2D rigid body physics library
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://chipmunk-physics.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	source = http://files.slembcke.net/chipmunk/release/Chipmunk-7.x/Chipmunk-7.0.0.tgz
+	sha256sums = 14ab380396a96b15951c42a2d7ca259a53ecab4e550a71857d13dcfd388a51cd
+
+pkgname = chipmunk
+
