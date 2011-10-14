@@ -1,23 +1,32 @@
+# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 pkgname=lwjgl
 pkgver=2.8.0
 pkgrel=1
-pkgdesc="The Lightweight Java Game Library. Binary install."
-arch=(i686 x86_64)
-url="http://lwjgl.org"
+pkgdesc="Lightweight Java Game Library - for use in game projects in Java."
+arch=(any)
+url="http://lwjgl.org/"
 license=('BSD')
-source=(http://downloads.sourceforge.net/project/java-game-lib/Official%20Releases/LWJGL%20$pkgver/$pkgname-$pkgver.zip)
-depends=('java-runtime>=6' 'openal')
-makedepends=('unzip')
+changelog=ChangeLog
+source=(http://downloads.sourceforge.net/java-game-lib/$pkgname-$pkgver.zip)
 md5sums=('9e701c32a5301f61468a7a41574edaec')
+sha1sums=('7705aa87f93fe07233f32f7573c4681e6c497aa6')
 
-build() {
-	cd $srcdir/$pkgname-$pkgver
-	#unzip -q $pkgname-$pkgver.zip
-	#cd $pkgname-$pkgver
-	install -d $pkgdir/usr/lib/ $pkgdir/usr/share/java/
-	
-	[ "${CARCH}" = "x86_64" ] && cp native/linux/liblwjgl64.so native/linux/libjinput-linux64.so $pkgdir/usr/lib/
-	[ "${CARCH}" = "i686" ] && cp native/linux/liblwjgl.so native/linux/libjinput-linux.so $pkgdir/usr/share/java/
-	cp jar/* $pkgdir/usr/share/java/
+package() {
+  _srcdir="$srcdir/$pkgname-$pkgver"
+  cd "$_srcdir"
+  _sharedir="$pkgdir/usr/share"
+  # Install licenses
+  install -d $_sharedir/licenses/$pkgname/3rdparty
+  install -m644 -t $_sharedir/licenses/$pkgname/3rdparty doc/3rdparty/*
+  install -m644 -t $_sharedir/licenses/$pkgname doc/LICENSE
+  rm -rf doc/LICENSE doc/3rdparty
+  # Install docs
+  install -d $_sharedir/doc/$pkgname
+  install -m644 -t $_sharedir/doc/$pkgname doc/*
+  rm -rf doc
+  # Install library files
+  install -d $_sharedir/$pkgname
+  mv * $_sharedir/$pkgname
 }
 
+# vim:set ts=2 sw=2 et:
