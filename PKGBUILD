@@ -1,5 +1,5 @@
 pkgname=lwjgl
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="The Lightweight Java Game Library. Binary install."
 arch=(i686 x86_64)
@@ -8,7 +8,7 @@ license=('BSD')
 source=(http://downloads.sourceforge.net/project/java-game-lib/Official%20Releases/LWJGL%20$pkgver/$pkgname-$pkgver.zip)
 depends=('java-runtime>=6' 'openal')
 makedepends=('unzip')
-md5sums=('3d5c8b60659cfa8f8f8ce4a4e63368e1')
+md5sums=('9e701c32a5301f61468a7a41574edaec')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
