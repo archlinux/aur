@@ -1,0 +1,16 @@
+pkgbase = pyrseas
+	pkgdesc = Framework and utilities to upgrade and maintain a relational database
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://www.pyrseas.org/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-distribute
+	depends = python2-psycopg2
+	depends = python2-yaml
+	source = http://pypi.python.org/packages/source/P/Pyrseas/Pyrseas-0.4.0.tar.gz
+	md5sums = 2673f3561d71397c1c57a9beabb58c04
+
+pkgname = pyrseas
+
