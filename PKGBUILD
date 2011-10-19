@@ -7,8 +7,8 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.0
-pkgver=${_basekernel}.6
-pkgrel=2
+pkgver=${_basekernel}.7
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,8 +24,8 @@ source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2
         'fix-i915.patch'
         'change-default-console-loglevel.patch')
 md5sums=('398e95866794def22b12dfbc15ce89c0'
-         '792f01cc8874d03a84e47fd0e7065df8'
-         '750c90895c49a3f42a33bcbc8d1d70f5'
+         '9d003f28c02ed5625693693cd9f6004b'
+         'f62665b212eb32309e0fd11b9b1c5b67'
          '272092c6fb09dd503a4d70d26dbcd214'
          'eb14dcfd80c00852ef81ded6e826826a'
          '263725f20c0b9eb9c353040792d644e5'
