@@ -79,7 +79,7 @@ package_libmediawiki() {
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
   depends=('kdebase-runtime' 'kdepimlibs' 'libkdcraw' 'libkipi' 'libksane'
-           'opencv' 'qjson' 'libkvkontakte')
+           'opencv' 'qjson' 'libkvkontakte' 'libkexiv2')
   optdepends=('libkgeomap'
               'libmediawiki'
               'libgpod'
