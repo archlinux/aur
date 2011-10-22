@@ -12,8 +12,7 @@ md5sums=('9e701c32a5301f61468a7a41574edaec')
 sha1sums=('7705aa87f93fe07233f32f7573c4681e6c497aa6')
 
 package() {
-  _srcdir="$srcdir/$pkgname-$pkgver"
-  cd "$_srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
   _sharedir="$pkgdir/usr/share"
   # Install licenses
   install -d $_sharedir/licenses/$pkgname/3rdparty
