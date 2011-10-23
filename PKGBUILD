@@ -3,7 +3,7 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=0.15.1
+pkgver=0.16
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='http://musicbrainz.org/doc/MusicBrainz_Picard'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('python2-qt' 'mutagen' 'libofa' 'ffmpeg')
 optdepends=('libdiscid: CD-Lookup feature')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('21b51e229c246e2d17b746649bfa370f')
+sha1sums=('274071410550ee29051bb0137d72602921a015f9')
 
 install=install
 
