@@ -6,41 +6,35 @@ pkgbase=linux
 pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
-_basekernel=3.0
-pkgver=${_basekernel}.7
+_basekernel=3.1
+pkgver=${_basekernel}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
-source=("ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-${_basekernel}.tar.bz2"
-        #"ftp://ftp.kernel.org/pub/linux/kernel/v3.0/patch-${pkgver}.gz"
-        "ftp://ftp.archlinux.org/other/linux/patch-${pkgver}.gz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
-        'fix-i915.patch'
         'change-default-console-loglevel.patch')
-md5sums=('398e95866794def22b12dfbc15ce89c0'
-         '9d003f28c02ed5625693693cd9f6004b'
+md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
          'f62665b212eb32309e0fd11b9b1c5b67'
          '272092c6fb09dd503a4d70d26dbcd214'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '263725f20c0b9eb9c353040792d644e5'
          '9d3c56a4b999c8bfbd4018089a62f662')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
 
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # add upstream patch
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix #19234 i1915 display size
-  patch -Np1 -i "${srcdir}/fix-i915.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -57,11 +51,8 @@ build() {
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
   fi
 
-  # remove the sublevel from Makefile
-  # this ensures our kernel version is always 3.X-ARCH
-  # this way, minor kernel updates will not break external modules
-  # we need to change this soon, see FS#16702
-  sed -ri 's|^(SUBLEVEL =).*|\1|' Makefile
+  # set extraversion to pkgrel
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # get kernel version
   make prepare
@@ -130,8 +121,11 @@ package_linux() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to safe 100MB of space
+  # gzip -9 all modules to save 100MB of space
   find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
+  # make room for external modules
+  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}-${_kernelname:-ARCH}"
+  ln -s "../extramodules-${_basekernel}-${_kernelname:-ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
 }
 
 package_linux-headers() {
@@ -263,6 +257,10 @@ package_linux-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
+
+  # add real version for building the kernel
+  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}-${_kernelname:-ARCH}"
+  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}-${_kernelname:-ARCH}/version"
 }
 
 package_linux-docs() {
