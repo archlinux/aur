@@ -22,8 +22,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
-         '973014c6d1f408a2a4133219b9ec5f02'
-         'f4c09a8b2acdf9fc939227881576137c'
+         'b88bbe3ed780441dbe1e385f4beae1e4'
+         '08774980ad31da185e7f7379596b9001'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662')
 
@@ -124,7 +124,6 @@ package_linux() {
   # gzip -9 all modules to save 100MB of space
   find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
-  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}-${_kernelname:-ARCH}"
   ln -s "../extramodules-${_basekernel}-${_kernelname:-ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
 }
 
@@ -272,7 +271,7 @@ package_linux-docs() {
   cd "${srcdir}/linux-${_basekernel}"
 
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}"
-  mv Documentation "${pkgdir}/usr/src/linux-${_kernver}"
+  cp -al Documentation "${pkgdir}/usr/src/linux-${_kernver}"
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
