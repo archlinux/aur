@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=14.0.835.202
+pkgver=15.0.874.102
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -21,15 +21,18 @@ source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
         chromium.desktop
         chromium.sh
         gcc-4.6.patch
-        webrtc-r240-r242-make-pulseaudio-optional.patch)
-sha1sums=('e1c2d7cacaa256b1d343ee012d07170dbb3beb2f'
+        nacl.gypi)
+sha1sums=('d8dd8c5f57099ee879e8bd3ab53419f10339762c'
           '7d97535ec0ed124e95888de84b2c6a3654a27d4a'
           '427ecf06cae11f28f59b1912d659ad5541391682'
           '39999918746524fff30e73dc656754733df5c2c2'
-          'db66921c9801ad5930920faf87bd5c313a3fc702')
+          'df4cee39e1d49e10f9c075f5e6e9db28e8260926')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
+
+  # NaCL build remains faily
+  cp "$srcdir/nacl.gypi" chrome/
 
   # Fix build with gcc 4.6
   # http://code.google.com/p/chromium/issues/detail?id=80071
@@ -38,10 +41,6 @@ build() {
   # Fix build with CUPS 1.5
   sed -i '/#include <cups\/cups.h>/ a #include <cups/ppd.h>' \
     chrome/browser/ui/webui/print_preview_handler.cc
-
-  # Make PulseAudio optional in WebRTC
-  patch -d third_party/webrtc -Np1 -i \
-    "$srcdir/webrtc-r240-r242-make-pulseaudio-optional.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
