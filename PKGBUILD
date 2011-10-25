@@ -22,8 +22,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
-         'f62665b212eb32309e0fd11b9b1c5b67'
-         '272092c6fb09dd503a4d70d26dbcd214'
+         '973014c6d1f408a2a4133219b9ec5f02'
+         'f4c09a8b2acdf9fc939227881576137c'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662')
 
@@ -279,8 +279,3 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
-md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
-         'de5c2ad6a01bce38345d17d6da76948f'
-         '2f7d055e52c1d7c5c651a168a0e1f1ad'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662')
