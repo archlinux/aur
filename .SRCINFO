@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-profile
+	pkgdesc = Displays a random fortune on interactive shells
+	pkgver = 1
+	pkgrel = 1
+	url = http://localhost/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = fortune-mod
+	source = fortune.sh
+	md5sums = 67de8fac2af4c5c3050670a3219cb990
+
+pkgname = fortune-mod-profile
+
