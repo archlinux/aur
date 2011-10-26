@@ -8,6 +8,7 @@ license=('GPL')
 depends=(fortune-mod)
 source=(fortune.sh)
 md5sums=('67de8fac2af4c5c3050670a3219cb990')
+url=(http://localhost/)
 
 package() {
   install -Dm 755 $srcdir/fortune.sh $pkgdir/etc/profile.d/fortune.sh
