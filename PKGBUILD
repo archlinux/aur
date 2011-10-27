@@ -4,9 +4,8 @@
 
 # TODO:
 #   bring in pyalsa, csound, mma
-options=('!makeflags')
 pkgname=solfege
-pkgver=3.20.3
+pkgver=3.20.4
 pkgrel=1
 pkgdesc="Music education and ear training software"
 arch=('i686' 'x86_64')
@@ -14,16 +13,15 @@ url="http://www.solfege.org/"
 license=('GPL3')
 depends=('pygtk' 'libgtkhtml')
 makedepends=('ghostscript' 'gnome-doc-utils' 'librsvg' 'libxslt'
-             'swig' 'texinfo' 'txt2man' 'pkg-config')
+             'swig' 'texinfo' 'txt2man')
 optdepends=('timidity++: or any MIDI player & MIDI-WAV converter'
             'mpg123: or any MP3 player'
             'lame: or any WAV-MP3 converter'
             'vorbis-tools: or any OGG player & WAV-OGG converter'
-            #'lilypond: for generating print-outs & score sheets'
+            'lilypond: for generating print-outs & score sheets'
             'texlive-bin: use LaTeX to replace HTML reports with DVI')
-changelog=$pkgname.changelog
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('b6546691d0e34595e3c87c0e38a8ae15')
+md5sums=('3a1914158ad218ad5b119ee4f719b567')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
