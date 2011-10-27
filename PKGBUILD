@@ -13,11 +13,11 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=qtweetlib-git
-pkgver=20110524
+pkgver=20111027
 pkgrel=1
 pkgdesc="C++ Qt based Twitter library"
 arch=('i686' 'x86_64')
-url="https://github.com/dschmidt/QTweetLib"
+url="https://github.com/minimoog/QTweetLib"
 license=('GPL2')
 depends=('qjson')
 makedepends=('git' 'cmake>=2.8')
@@ -25,7 +25,7 @@ provides=('qtweetlib')
 conflicts=('qtweetlib')
 options=(!strip)
 
-_gitroot="git://github.com/dschmidt/QTweetLib.git"
+_gitroot="git://github.com/minimoog/QTweetLib.git"
 _gitname="QTweetLib"
 
 build() {
