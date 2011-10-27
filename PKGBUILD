@@ -1,16 +1,17 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
+
 pkgname=rest
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
-pkgdesc="rest"
+pkgdesc="A helper library for RESTful services."
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('GPL2')
 depends=('glib2' 'libxml2' 'libsoup-gnome')
-makedepends=('gobject-introspection' 'gtk-doc')
+makedepends=('gobject-introspection')
 options=('!libtool')
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.bz2)
-sha256sums=('2908f974ae6cc71af1152d419209f307bcce8ca2dfe0b4b55b3fad8ba4a646a5')
+source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.xz)
+sha256sums=('3a57a56433761c87ccdbfe6d57119361dc004286356c12815dc7a22b7b315490')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
