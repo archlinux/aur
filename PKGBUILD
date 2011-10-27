@@ -1,24 +1,21 @@
-# $Id: PKGBUILD 31087 2010-10-27 01:37:14Z bfanella $
-# Maintainer: Brad Fanella <bradfanella@archlinux.us>
+# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
-pkgname=ruby-gio2
-pkgver=1.0.0
+_gemname=gio2
+pkgname=ruby-$_gemname
+pkgver=3.0.9
 pkgrel=1
-pkgdesc="Ruby bindings for gio2."
-arch=('i686' 'x86_64')
-url="http://ruby-gnome2.sourceforge.jp"
-license=('LGPL')
-depends=('ruby-glib2')
-makedepends=('ruby-pkgconfig')
-source=(http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-$pkgver.tar.gz)
-md5sums=('e9711eb5bd88debda90a920deb96d7d0')
+pkgdesc='Ruby/GIO2 is a Ruby binding of gio-2.x.'
+arch=(i686 x86_64)
+url='http://ruby-gnome2.sourceforge.jp/'
+license=(LGPL2.1)
+depends=(ruby ruby-glib2=$pkgver ruby-gobject-introspection=$pkgver)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('9750becb22b6a719cd39f8f54f37c0b41fd46c77')
 
-build() {
-	cd "$srcdir/ruby-gtk2-$pkgver"
-	ruby extconf.rb gio2 --topdir=$pkgdir
-	make
-}
 package() {
-	cd "$srcdir/ruby-gtk2-$pkgver"
-	make DESTDIR="$pkgdir" install
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
