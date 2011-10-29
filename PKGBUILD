@@ -12,18 +12,23 @@ license=('GPL')
 depends=('libgpg-error' 'pth' 'gnupg' 'gnupg2')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
-source=(ftp://ftp.gnupg.org/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
+source=(ftp://ftp.gnupg.org/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2{,.sig})
+sha1sums=('7d19a95a2239da13764dad7f97541be884ec5a37'
+          '93316a81a8f903c5b604716b6937884ea7b0917a')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr
-  make || return 1
+  ./configure --prefix=/usr --disable-static
+  make
+}
+
+check() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make check
 }
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install || return 1
-  rm ${pkgdir}/usr/share/info/dir
-  gzip ${pkgdir}/usr/share/info/*
+  make DESTDIR=${pkgdir} install
 }
 md5sums=('90afa8436ce2b2683c001c824bd22601')
