@@ -1,11 +1,11 @@
 2011-10-29 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
-	* lwjgl-2.8.1 :
+	* lwjgl-2.8.1-1 :
 	Simple version bump.
 
 2011-10-14 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
-	* lwjgl-2.8.0 :
+	* lwjgl-2.8.0-1 :
 	First PKGBUILD for the library.
 	The reason we install it all in /usr/share/ and not in Java's library path, is
 	that this is not recommended by the LWJGL developers. The libraries should
