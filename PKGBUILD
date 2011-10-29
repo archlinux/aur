@@ -14,10 +14,12 @@ optdepends=('ca-certificates')
 options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
+        "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
         'fix-manpages.patch'
         'no-rpath.patch'
         'ca-dir.patch')
 md5sums=('7040b89c4c58c7a1016c0dfa6e821c86'
+         '5ff2e5da38aae454d7bae060c1e3fb67'
          '5bbc0655bda2af95bc8eb568963ce8ba'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90')
