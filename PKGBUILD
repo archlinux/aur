@@ -14,7 +14,7 @@ _buildtype="RelWithDebInfo"
 
 pkgname=tomahawk
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
