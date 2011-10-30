@@ -6,11 +6,12 @@
 
 pkgname=p7zip
 pkgver=9.20.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Command-line version of the 7zip compressed file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
 arch=('i686' 'x86_64')
+depends=('gcc-libs' 'bash')
 optdepends=('wxgtk: GUI'
             'desktop-file-utils: desktop entries')
 makedepends=('yasm' 'nasm' 'wxgtk')
@@ -46,7 +47,6 @@ package() {
 		/usr/share/doc/p7zip/DOCS/unRarLicense.txt
 
 	# Integration with stuff...
-	install -D contrib/VirtualFileSystemForMidnightCommander/u7z "${pkgdir}"/usr/lib/mc/extfs.d/u7z
 	install -D GUI/p7zip_32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/p7zip.png
 	install -d "${pkgdir}"/usr/share/{applications,kde4/services/ServiceMenus}
 	cp GUI/kde4/* "${pkgdir}"/usr/share/kde4/services/ServiceMenus/
