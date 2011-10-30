@@ -14,7 +14,7 @@ _buildtype="RelWithDebInfo"
 
 pkgname=qtweetlib
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 _rev=f0442f6
 pkgdesc="C++ Qt based Twitter library"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ makedepends=('cmake>=2.8')
 provides=('qtweetlib')
 conflicts=('qtweetlib-git')
 options=(!strip)
-source=(https://github.com/minimoog/QTweetLib/tarball/0.3)
+source=(https://github.com/downloads/minimoog/QTweetLib/QTweetLib-0.3.0.tar.gz)
 md5sums=('a37055e7c081049294efb42126933cef')
 
 # Clean options array to strip pkg if release buildtype is chosen
