@@ -6,21 +6,19 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
-             'python2' 'hicolor-icon-theme' 'silc-toolkit' 'gstreamer0.10'
+             'libidn' 'python2' 'hicolor-icon-theme' 'gstreamer0.10'
              'farsight2' 'avahi' 'tk' 'ca-certificates' 'intltool'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        nm09-more.patch
-        pidgin-2.10.0-silc-remote-crash-fix.diff)
-sha1sums=('859c6d9c9795c1adcf762b73e072e04a3a85a78d'
-          '0676b26f092fac3ee4bbea2261042b3f433c7751'
-          '8c7fc96abeca0f76d895bb33a530bf49e12f5bc6')
+        nm09-more.patch)
+sha256sums=('f31f6a32c03e870a1774c827b8cee47ae8edd2c1ba8db98e8d58d9911cbaafcd'
+            '7e173ea37b86b604284da18ea015ee03ccd444f3e980f440c201957d37ee820e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,10 +26,6 @@ build() {
   # Further fixes for NetworkManager 0.9
   # http://developer.pidgin.im/ticket/13859
   patch -Np1 -i "$srcdir/nm09-more.patch"
-
-  # Fix remote crash in SILC plugin
-  # http://developer.pidgin.im/ticket/14636
-  patch -Np0 -i "$srcdir/pidgin-2.10.0-silc-remote-crash-fix.diff"
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
@@ -79,7 +73,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farsight2' 'libsasl' 'dbus-glib' 'silc-toolkit' 'nss')
+  depends=('farsight2' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'dbus-python: for purple-remote and purple-url-handler')
 
