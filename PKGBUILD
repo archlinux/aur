@@ -19,7 +19,7 @@ pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
 license=('GPL3')
-depends=('phonon>=4.5' 'taglib>=1.6.2' 'boost>=1.30' 'clucene>=2.3.3.4' 'libechonest>=1.1.10' 'jreen-git>=20110605' 'qtweetlib-git')
+depends=('phonon>=4.5' 'taglib>=1.6.2' 'boost>=1.30' 'clucene>=2.3.3.4' 'libechonest>=1.1.10' 'jreen-git>=20110605' 'qtweetlib')
 makedepends=('git' 'cmake>=2.8')
 optdepends=('tomahawk-spotify-git: spotify resolver')
 provides=('tomahawk')

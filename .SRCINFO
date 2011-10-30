@@ -15,7 +15,7 @@ pkgbase = tomahawk
 	depends = clucene>=2.3.3.4
 	depends = libechonest>=1.1.10
 	depends = jreen-git>=20110605
-	depends = qtweetlib-git
+	depends = qtweetlib
 	optdepends = tomahawk-spotify-git: spotify resolver
 	provides = tomahawk
 	conflicts = tomahawk-git
