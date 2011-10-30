@@ -7,9 +7,9 @@ arch=(any)
 license=('BSD')
 url="http://www.gnome.org/projects/NetworkManager"
 depends=('networkmanager' 'ntp')
-source=("10-ntpd")
+source=("10-chrony")
 md5sums=('634640886979278dc3a74dbae342d3e7')
 
 package() {
-  install -Dm700 $srcdir/10-ntpd $pkgdir/etc/NetworkManager/dispatcher.d/10-ntpd
+  install -Dm700 $srcdir/10-chrony $pkgdir/etc/NetworkManager/dispatcher.d/10-chrony
 }

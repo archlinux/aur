@@ -7,7 +7,7 @@ pkgbase = networkmanager-dispatcher-ntpd
 	license = BSD
 	depends = networkmanager
 	depends = ntp
-	source = 10-ntpd
+	source = 10-chrony
 	md5sums = 634640886979278dc3a74dbae342d3e7
 
 pkgname = networkmanager-dispatcher-ntpd
