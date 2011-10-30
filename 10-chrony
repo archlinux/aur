@@ -1,18 +1,18 @@
 #!/bin/bash
 
-if [ -e "/etc/rc.d/ntpd" ]; then
+if [ -e "/etc/rc.d/chrony" ]; then
 	case "$2" in
 		up)
-			/etc/rc.d/ntpd start
+			/etc/rc.d/chrony start
 		;;
 		vpn-up)
-			/etc/rc.d/ntpd start
+			/etc/rc.d/chrony start
 		;;
 		down)
-			/etc/rc.d/ntpd stop
+			/etc/rc.d/chrony stop
 		;;
 		vpn-down)
-			/etc/rc.d/ntpd stop
+			/etc/rc.d/chrony stop
 		;;
 	esac
 fi

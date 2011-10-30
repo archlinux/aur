@@ -1,14 +1,14 @@
-pkgbase = networkmanager-dispatcher-ntpd
-	pkgdesc = Dispatcher Script for ntpd
+pkgbase = networkmanager-dispatcher-chrony
+	pkgdesc = Dispatcher Script for chrony
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager
 	arch = any
 	license = BSD
 	depends = networkmanager
-	depends = ntp
+	depends = chrony
 	source = 10-chrony
 	md5sums = 634640886979278dc3a74dbae342d3e7
 
-pkgname = networkmanager-dispatcher-ntpd
+pkgname = networkmanager-dispatcher-chrony
 
