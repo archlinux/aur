@@ -8,7 +8,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 _kernelname=${pkgname#linux}
 _basekernel=3.1
 pkgver=${_basekernel}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,12 +20,22 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        'i915-fix-ghost-tv-output.patch'
+        'i915-fix-incorrect-error-message.patch'
+        'iwlagn-fix-NULL-pointer-dereference.patch'
+        'dib0700-fix.patch'
+        'usb-add-reset-resume-quirk-for-several-webcams.patch')
 md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
          'b88bbe3ed780441dbe1e385f4beae1e4'
          '08774980ad31da185e7f7379596b9001'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662')
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '263725f20c0b9eb9c353040792d644e5'
+         'a50c9076012cb2dda49952dc6ec3e9c1'
+         '61a6be40e8e1e9eae5f23f241e7a0779'
+         '442334d777475e2a37db92d199672a28'
+         '52d41fa61e80277ace2b994412a0c856')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -35,6 +45,35 @@ build() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # Some chips detect a ghost TV output
+  # mailing list discussion: http://lists.freedesktop.org/archives/intel-gfx/2011-April/010371.html
+  # Arch Linux bug report: FS#19234
+  #
+  # It is unclear why this patch wasn't merged upstream, it was accepted,
+  # then dropped because the reasoning was unclear. However, it is clearly
+  # needed.
+  patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
+
+  # In 3.1.0, a DRM_DEBUG message is falsely declared as DRM_ERROR. This
+  # worries users, as this message is displayed even at loglevel 4. Fix
+  # this.
+  patch -Np1 -i "${srcdir}/i915-fix-incorrect-error-message.patch"
+
+  # iwlagn has a critical bug that hangs the system on 3.1.0. A patch
+  # was posted, but didn't make it into the tree in time.
+  # http://marc.info/?l=linux-wireless&m=131840748927629&w=2
+  # FS#26674
+  patch -Np1 -i "${srcdir}/iwlagn-fix-NULL-pointer-dereference.patch"
+
+  # Fix dib0700 driver
+  # http://git.linuxtv.org/pb/media_tree.git/shortlog/refs/heads/for_v3.0
+  # FS#25939
+  patch -Np1 -i "${srcdir}/dib0700-fix.patch"
+
+  # Add the USB_QUIRK_RESET_RESUME for several webcams
+  # FS#26528
+  patch -Np1 -i "${srcdir}/usb-add-reset-resume-quirk-for-several-webcams.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
