@@ -1,4 +1,5 @@
-# Maintainer: Jelle van der Waa <jelle vdwaa nl>
+# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+# Based on package by Jelle van der Waa <jelle vdwaa nl>.
 pkgname=networkmanager-dispatcher-chrony
 pkgver=1.0
 pkgrel=1
