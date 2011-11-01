@@ -3,6 +3,7 @@ pkgbase = networkmanager-dispatcher-chrony
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager
+	changelog = ChangeLog
 	arch = any
 	license = BSD
 	depends = networkmanager

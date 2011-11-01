@@ -8,6 +8,7 @@ arch=(any)
 license=('BSD')
 url="http://www.gnome.org/projects/NetworkManager"
 depends=('networkmanager' 'chrony')
+changelog=ChangeLog
 source=("10-chrony")
 sha256sums=('2d6d9a47d19cd26255afc1d5bd8699ba8d21f4184d4ab919ae5e3d4bc9545e13')
 

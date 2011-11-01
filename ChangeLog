@@ -1,0 +1,8 @@
+2011-11-01 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+	* 1.0-1 :
+	Initial release of networkmanager-dispatcher-chrony.
+	The PKGBUILD (and to some degree the script), was based on the
+	networkmanager-dispatcher-ntpd package and script.
+
+	Development happens at GitHub: https://github.com/Freso/PKGBUILDs
