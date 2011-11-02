@@ -1,7 +1,7 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 pkgname=telepathy-logger
-pkgver=0.2.10
-pkgrel=2
+pkgver=0.2.12
+pkgrel=1
 pkgdesc="Telepathy framework logging daemon"
 arch=(i686 x86_64)
 url="http://telepathy.freedesktop.org/wiki/Logger"
@@ -10,7 +10,7 @@ depends=('telepathy-glib' 'sqlite3' 'libxml2' 'dconf')
 makedepends=('intltool' 'gnome-doc-utils' 'gobject-introspection')
 options=('!libtool')
 source=(http://telepathy.freedesktop.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('ec01a8f99fc11406e85153095433c155')
+md5sums=('102a622855a3e20a191b0812ae7c9b8e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
