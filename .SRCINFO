@@ -1,7 +1,7 @@
 pkgbase = grub
 	pkgdesc = A GNU multiboot boot loader
 	pkgver = 0.97
-	pkgrel = 20
+	pkgrel = 21
 	url = http://www.gnu.org/software/grub/
 	install = grub.install
 	arch = i686

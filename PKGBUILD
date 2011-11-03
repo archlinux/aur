@@ -3,7 +3,7 @@
 
 pkgname=grub
 pkgver=0.97
-pkgrel=20
+pkgrel=21
 pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,8 +39,8 @@ sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
           '61c4b58d2eaa3c1561d8e9d8fc41341ce8882869')
 
 #set destination architecture here
-DESTARCH="i686"
-#DESTARCH="x86_64"
+#DESTARCH="i686"
+DESTARCH="x86_64"
 
 
 build() {
