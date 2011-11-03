@@ -3,7 +3,7 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=synergy
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
@@ -36,5 +36,5 @@ package() {
   install -Dm644 $srcdir/$pkgname-$pkgver-Source/doc/${pkgname}.conf.example "${pkgdir}/etc" 
   install -Dm755 $srcdir/${pkgname}s.rc "${pkgdir}/etc/rc.d/${pkgname}s" 
 }
-md5sums=('27842f45f8ab6923eb702f9cc4858194'
+md5sums=('3534c65ecfa6e47d7899c57975442f03'
          '8f8c01add9bf6e3ae9f37a36ca6345b6')
