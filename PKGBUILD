@@ -1,7 +1,8 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer:
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=grantlee
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A string template engine based on the Django template system and written in Qt"
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ license=('LGPL3')
 depends=('qt')
 makedepends=('cmake')
 source=("http://downloads.grantlee.org/${pkgname}-${pkgver}.tar.gz")
-md5sums=('3d93b5312814ebee373fba5509d88bdb')
+md5sums=('0622ed30630a44b5fac0bfa7e176d3fe')
 
 build() {
   cd "${srcdir}"
