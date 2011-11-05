@@ -1,6 +1,5 @@
 #!/bin/bash
 
 cd "/opt/quake3"
-./IOQ3_BINARY $*
-exit $?
+exec ./IOQ3_BINARY $*
 

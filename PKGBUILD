@@ -2,7 +2,7 @@
 
 pkgname=ioquake3
 pkgver=1.36
-pkgrel=1
+pkgrel=2
 pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 files to play."
 url="http://ioquake3.org/"
 license='GPL'
@@ -13,15 +13,16 @@ conflicts=('quake3' 'quake3-icculus-svn' 'quake3-svn' 'ioquake3-svn')
 provides=('quake3')
 replaces=('quake3')
 install=quake3.install
-source=('quake3.install' 'quake3.desktop' 'quake3.launcher' 'quake3ded.launcher' \
+source=('quake3.desktop' 'quake3.launcher' 'quake3ded.launcher' \
 "http://www.ioquake3.org/files/${pkgver}/${pkgname}-${pkgver}.tar.bz2" \
-'ftp://ftp.musicbrainz.org/.1/gentoo/distfiles/linuxq3apoint-1.32b-3.x86.run')
-md5sums=('a4363cd27cba4027bd309bee6e48aaf2'
-         '9eca51e2b3ee3e0100944cba436a2a4c'
-         '37dbc85b482ee5c5b5063a31482bd083'
-         '37dbc85b482ee5c5b5063a31482bd083'
+'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run' \
+'botlib.patch::http://bugzilla-attachments.icculus.org/attachment.cgi?id=2196')
+md5sums=('9eca51e2b3ee3e0100944cba436a2a4c'
+         'ea5d99df80b41269523b34229fdf854d'
+         'ea5d99df80b41269523b34229fdf854d'
          'f938379a4a519ae32f6ffaacaf866cde'
-         'c71fdddccb20e8fc393d846e9c61d685')
+         'c71fdddccb20e8fc393d846e9c61d685'
+         '4485f84a4a9bc9a25f2737ee1744febd')
 
 build() {
     cd $srcdir/$pkgname-$pkgver/
@@ -29,11 +30,14 @@ build() {
     # Modify Makefile to correct install path
     /bin/sed -i "s:/usr/local/games/quake3:$pkgdir/opt/quake3:" Makefile
 
+    # Patch botlib so bots work on 64bit
+    patch -p1 < $srcdir/botlib.patch || return 1
+
     # Compile ioQuake3
     make || return 1
 
     # Install Files
-    make copyfiles || return 1 
+    make copyfiles || return 1
 
     # Extract Patch Files
     cd $srcdir
