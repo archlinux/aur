@@ -1,7 +1,7 @@
 pkgbase = tomahawk
 	pkgdesc = A Music Player App written in C++/Qt
 	pkgver = 0.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tomahawk
 	depends = taglib>=1.6.2
 	depends = boost>=1.30
 	depends = clucene>=2.3.3.4
-	depends = libechonest>=1.1.10
+	depends = libechonest>=1.2
 	depends = jreen-git>=20110605
 	depends = qtweetlib
 	optdepends = tomahawk-spotify-git: spotify resolver
