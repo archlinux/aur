@@ -8,7 +8,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 _kernelname=${pkgname#linux}
 _basekernel=3.1
 pkgver=${_basekernel}
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
         'i915-fix-incorrect-error-message.patch'
         'iwlagn-fix-NULL-pointer-dereference.patch'
         'dib0700-fix.patch'
-        'usb-add-reset-resume-quirk-for-several-webcams.patch')
+        'usb-add-reset-resume-quirk-for-several-webcams.patch'
+        'md-raid10-fix-bug-when-activating-a-hot-spare.patch')
 md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
          'b88bbe3ed780441dbe1e385f4beae1e4'
          '08774980ad31da185e7f7379596b9001'
@@ -35,7 +36,8 @@ md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
          'a50c9076012cb2dda49952dc6ec3e9c1'
          '61a6be40e8e1e9eae5f23f241e7a0779'
          '442334d777475e2a37db92d199672a28'
-         '52d41fa61e80277ace2b994412a0c856')
+         '52d41fa61e80277ace2b994412a0c856'
+         'de12ec5c342f945a95b2f12c2b85e6bf')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -74,6 +76,11 @@ build() {
   # Add the USB_QUIRK_RESET_RESUME for several webcams
   # FS#26528
   patch -Np1 -i "${srcdir}/usb-add-reset-resume-quirk-for-several-webcams.patch"
+
+  # Fix RAID10 hot spare activation (critical)
+  # https://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git;a=blob_plain;f=queue-3.1/md-raid10-fix-bug-when-activating-a-hot-spare.patch;h=880849db5b7089b523f72c4d67a473e5330037fc;hb=HEAD
+  # FS#26767
+  patch -Np1 -i "${srcdir}/md-raid10-fix-bug-when-activating-a-hot-spare.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
