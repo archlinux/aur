@@ -5,12 +5,12 @@
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
 pkgver=2.24.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
 install=gtk2.install
-depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','gnutls>=2.8.6','gdk-pixbuf2>=2.22.1'}
+depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','gdk-pixbuf2>=2.22.1'}
          lib32-lib{'cups>=1.4.4',xcursor,'xrandr>=1.3','xi>=1.3',xinerama,xcomposite,xdamage}
          $_pkgbasename)
 makedepends=('pkgconfig' 'gcc-multilib')
@@ -37,6 +37,10 @@ build() {
       --localstatedir=/var \
       --libdir=/usr/lib32 \
       --with-xinput=yes
+
+  #https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
