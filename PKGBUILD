@@ -2,7 +2,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ options=('emptydirs' '!libtool')
 backup=('etc/conf.d/libvirtd'
 	'etc/conf.d/libvirtd-guests'
 	'etc/libvirt/libvirtd.conf'
+	'etc/libvirt/libvirt.conf'
 	'etc/libvirt/qemu.conf'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
@@ -34,12 +35,12 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	openbsd-netcat-default.patch
 	unixperms.patch
 	yajl-2.x.patch)
-md5sums=('b74df374b524d00a22a6c89cfc23099f'
+md5sums=('4308b3f4d23f5b0c5196260a9a22a38b'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '6f36bf189ef0e5847038787d13535420'
          'bc2971dacdbac967fc3474e50affc345'
-         '4a2659d0e06a7af742f71a0a36c7cea3'
+         'b0be50eb9dfe4d133decf23b60880f7d'
          'db95aecdf2ccf3693fef5821cdcb7eba'
          '5745bb8d0b254abb7a3528c66e03b0f9')
 
