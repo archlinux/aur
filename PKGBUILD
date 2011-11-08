@@ -2,13 +2,13 @@
 # Mantainer: iosonofabio Fabio Zanini <fabio.zanini@fastmail.fm>
 pkgname=bzr-gtk
 pkgver=0.100.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Bazaar that aims to provide GTK+ interfaces to most Bazaar operations."
 arch=('i686' 'x86_64')
 url="http://bazaar-vcs.org/bzr-gtk"
 license=('GPL')
 depends=('pygtk' 'bzr' 'pycairo' 'libglade')
-source=("http://edge.launchpad.net/bzr-gtk/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
+source=("https://launchpad.net/bzr-gtk/gtk2/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
 md5sums=('a7c2f27072bcacdcf8983ca6a2426dbd')
 
 build() {
