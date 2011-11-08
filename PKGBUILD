@@ -3,7 +3,7 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=glom
-pkgver=1.19.15
+pkgver=1.19.19
 pkgrel=1
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('intltool' 'gnome-doc-utils' 'python-sphinx' 'boost')
 options=('!libtool')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/glom/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('882519d634861567746d1f923d8437e24d01d917610dad2d9ae08a2cc1ec52d3')
+sha256sums=('de7fa6cf6868afee670a37b5ec8462ee82ab99bdb372d52a71cfc7f060755582')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
