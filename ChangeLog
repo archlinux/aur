@@ -1,3 +1,8 @@
+2011-11-09 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+	* 1.0-2 :
+	Added the dispatcher script to backup=(), to enable local modifications.
+
 2011-11-01 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 1.0-1 :
