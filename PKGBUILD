@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=15.0.874.106
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -21,12 +21,14 @@ source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
         chromium.desktop
         chromium.sh
         gcc-4.6.patch
-        nacl.gypi)
-sha1sums=('ddf41ebb6f4a050e2dafc97d7b333675fced8d68'
-          '7d97535ec0ed124e95888de84b2c6a3654a27d4a'
-          '427ecf06cae11f28f59b1912d659ad5541391682'
-          '39999918746524fff30e73dc656754733df5c2c2'
-          'df4cee39e1d49e10f9c075f5e6e9db28e8260926')
+        nacl.gypi
+        fix-downloads-on-ntfs.patch)
+sha256sums=('d203de54fad4737434fc60c62406dd7548afb590e138defbfa5609ee8d91965c'
+            '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
+            'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
+            '9c5e0803904d1a0e71ab7444c92a7046a34a9518eeba7a70f2eec7abecb8bf4e'
+            '25bddd2eee7821e18ddda06f6e69552c359e1c04a10971ac3985556c3d8ef059'
+            '6364c464d1885b2ec21076f01f993725925ccc066805f1ecbbeaf6f79b93c209')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
@@ -41,6 +43,10 @@ build() {
   # Fix build with CUPS 1.5
   sed -i '/#include <cups\/cups.h>/ a #include <cups/ppd.h>' \
     chrome/browser/ui/webui/print_preview_handler.cc
+
+  # Fix downloading on NTFS partitions
+  # http://code.google.com/p/chromium/issues/detail?id=102200
+  patch -Np2 -i "$srcdir/fix-downloads-on-ntfs.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \

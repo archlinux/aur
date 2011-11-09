@@ -1,0 +1,26 @@
+--- trunk/src/content/browser/download/base_file.cc	2011/11/03 00:57:14	108379
++++ trunk/src/content/browser/download/base_file.cc	2011/11/03 00:57:22	108380
+@@ -332,16 +332,19 @@
+     int stat_error = stat(new_path.value().c_str(), &st);
+     bool stat_succeeded = (stat_error == 0);
+     if (!stat_succeeded)
+-      return LOG_ERROR("stat", net::MapSystemError(errno));
++      LOG_ERROR("stat", net::MapSystemError(errno));
+ 
+     // TODO(estade): Move() falls back to copying and deleting when a simple
+     // rename fails. Copying sucks for large downloads. crbug.com/8737
+     if (!file_util::Move(full_path_, new_path))
+       return LOG_ERROR("Move", net::MapSystemError(errno));
+ 
+-    int chmod_error = chmod(new_path.value().c_str(), st.st_mode);
+-    if (chmod_error < 0)
+-      return LOG_ERROR("chmod", net::MapSystemError(errno));
++    if (stat_succeeded) {
++      // On Windows file systems (FAT, NTFS), chmod fails.  This is OK.
++      int chmod_error = chmod(new_path.value().c_str(), st.st_mode);
++      if (chmod_error < 0)
++        LOG_ERROR("chmod", net::MapSystemError(errno));
++    }
+   }
+ #endif
+ 
