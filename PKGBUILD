@@ -1,7 +1,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=rest
-pkgver=0.7.11
+pkgver=0.7.12
 pkgrel=1
 pkgdesc="A helper library for RESTful services."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glib2' 'libxml2' 'libsoup-gnome')
 makedepends=('gobject-introspection')
 options=('!libtool')
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.xz)
-sha256sums=('3a57a56433761c87ccdbfe6d57119361dc004286356c12815dc7a22b7b315490')
+sha256sums=('16ffa4929078dabfcfac31f9ce942072ebab67e3339ce9f378127457b03baf3a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
