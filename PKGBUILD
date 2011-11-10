@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=15.0.874.106
-pkgrel=2
+pkgver=15.0.874.120
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -17,13 +17,13 @@ makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
-source=(http://build.chromium.org/official/chromium-$pkgver.tar.bz2
+source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.bz2
         chromium.desktop
         chromium.sh
         gcc-4.6.patch
         nacl.gypi
         fix-downloads-on-ntfs.patch)
-sha256sums=('d203de54fad4737434fc60c62406dd7548afb590e138defbfa5609ee8d91965c'
+sha256sums=('bdfc4533708249b50743acaae4f49772e56c8070ea2fc4af114694c40d8ed929'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             '9c5e0803904d1a0e71ab7444c92a7046a34a9518eeba7a70f2eec7abecb8bf4e'
