@@ -1,0 +1,14 @@
+pkgbase = xe
+	pkgdesc = a Python library module designed to make it easy to work with XML
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = http://home.avvanta.com/~steveha/pyfeed.html
+	arch = any
+	license = BSD
+	makedepends = python2
+	depends = python2
+	source = http://www.blarg.net/~steveha/xe-0.7.4.tar.gz
+	md5sums = eff507b7a3700c93bd5ba756d4a6f457
+
+pkgname = xe
+
