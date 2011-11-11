@@ -1,0 +1,17 @@
+pkgbase = python-pigment
+	pkgdesc = Pigment Python library and bindings
+	pkgver = 0.3.12
+	pkgrel = 2
+	url = https://code.fluendo.com/pigment/trac
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = pigment>=0.3.15
+	depends = pygobject
+	options = !libtool
+	source = http://elisa.fluendo.com/static/download/pigment/pigment-python-0.3.12.tar.gz
+	md5sums = dd42ce291be4d37d9a933c9e3cd71590
+
+pkgname = python-pigment
+
