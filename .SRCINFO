@@ -1,0 +1,17 @@
+pkgbase = python-pigment-svn
+	pkgdesc = Development version of Pigment Python library and bindings.
+	pkgver = 1557
+	pkgrel = 1
+	url = https://code.fluendo.com/pigment/trac
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = pigment-svn
+	depends = python
+	depends = pygobject
+	conflicts = python-pigment
+	conflicts = pigment-python-svn
+	options = !libtool
+
+pkgname = python-pigment-svn
+
