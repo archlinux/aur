@@ -1,0 +1,15 @@
+pkgbase = pyfeed
+	pkgdesc = modules contain tools for working with syndication feeds.
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = http://home.avvanta.com/~steveha/pyfeed.html
+	arch = any
+	license = BSD
+	makedepends = python2
+	depends = python2
+	depends = xe
+	source = http://www.blarg.net/~steveha/pyfeed-0.7.4.tar.gz
+	md5sums = 07fda8dba48367d63bfc12ba01e90ec8
+
+pkgname = pyfeed
+
