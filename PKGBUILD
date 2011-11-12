@@ -36,7 +36,7 @@ fi
 build() {
   msg "Starting build..."
 
-  rm -rf ${srcdir}/${pkgname}-${pkgver}-build
+  if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   cp -r ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
