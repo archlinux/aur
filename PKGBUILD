@@ -36,8 +36,8 @@ fi
 build(){
   msg "Starting build..."
 
-  rm -rf ${srcdir}/${pkgname}-build
-  mv ${srcdir}/minimoog-QTweetLib-${_rev} ${srcdir}/${pkgname}-build
+  if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
+  mv ${srcdir}/minimoog-QTweetLib-${_rev} ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype}
