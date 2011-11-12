@@ -13,7 +13,7 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=jreen-git
-pkgver=20110818
+pkgver=20111112
 pkgrel=1
 pkgdesc="Qt XMPP library"
 arch=('i686' 'x86_64')
@@ -35,9 +35,7 @@ build() {
   if [ -d ${_gitname} ]; then
     cd ${_gitname} && git pull origin
   else
-    git clone ${_gitroot}
-    cd jreen
-    git checkout 2957d0ff03d9561af8afc4bd3a45947392868875 
+    git clone --depth 1 ${_gitroot}
   fi
 
   msg "GIT checkout done or server timeout"
