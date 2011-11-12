@@ -41,7 +41,7 @@ build() {
   msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf ${srcdir}/${_gitname}-build
+  if [[ -e ${srcdir}/${_gitname}-build ]]; then rm -rf ${srcdir}/${_gitname}-build; fi
   cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
   cd ${srcdir}/${_gitname}-build
 
