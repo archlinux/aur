@@ -20,7 +20,7 @@ package() {
   msg "Connecting to GIT server..."
 
   if [ -d ${_gitname} ]; then
-    cd ${_gitname} && git pull origin
+    cd ${_gitname} && git pull origin master
   else
     git clone --depth 1 ${_gitroot}
   fi
