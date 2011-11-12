@@ -42,10 +42,10 @@ build() {
   msg "Starting build..."
 
   if [[ -e ${srcdir}/${_gitname}-build ]]; then rm -rf ${srcdir}/${_gitname}-build; fi
-  cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
+  mkdir ${srcdir}/${_gitname}-build
   cd ${srcdir}/${_gitname}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${_gitname}
   make
 }
 
