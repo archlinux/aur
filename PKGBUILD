@@ -39,13 +39,13 @@ build(){
   if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mv ${srcdir}/minimoog-QTweetLib-${_rev} ${srcdir}/${pkgname}-${pkgver}
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
-  cd ${srcdir}/${pkgname}-build
+  cd ${srcdir}/${pkgname}-${pkgver}-build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${pkgname}-${pkgver}
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-build
+  cd ${srcdir}/${pkgname}-${pkgver}-build
   make DESTDIR=${pkgdir} install
 }
