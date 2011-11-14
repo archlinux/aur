@@ -1,5 +1,5 @@
 pkgbase = jreen-git
-	pkgdesc = Qt XMPP library
+	pkgdesc = Qt XMPP library - development version
 	pkgver = 20111112
 	pkgrel = 1
 	url = https://github.com/euroelessar/jreen
