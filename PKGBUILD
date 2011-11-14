@@ -24,8 +24,8 @@ makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
 options=(!strip)
-source=(${url}/tarball/v${pkgver})
-md5sums=()
+source=(https://github.com/downloads/zizzfizzix/pkgbuilds/${pkgname}-${pkgver}.tar.bz2)
+md5sums=(26ba6636879e82b452bf8e0f3fa2f397)
  
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then

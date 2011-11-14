@@ -13,7 +13,8 @@ pkgbase = jreen
 	provides = jreen
 	conflicts = jreen-git
 	options = !strip
-	source = https://github.com/euroelessar/jreen/tarball/v1.0.1
+	source = https://github.com/downloads/zizzfizzix/pkgbuilds/jreen-1.0.1.tar.bz2
+	md5sums = 26ba6636879e82b452bf8e0f3fa2f397
 
 pkgname = jreen
 
