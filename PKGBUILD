@@ -3,7 +3,7 @@
 pkgname=cloudprint-git
 pkgver=20110907
 pkgrel=1
-pkgdesc="Google cloudprint proxy for CUPS"
+pkgdesc="Google cloudprint proxy for CUPS - development version"
 arch=('any')
 url="https://github.com/armooo/cloudprint"
 license=('GPL3')

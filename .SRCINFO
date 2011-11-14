@@ -1,5 +1,5 @@
 pkgbase = cloudprint-git
-	pkgdesc = Google cloudprint proxy for CUPS
+	pkgdesc = Google cloudprint proxy for CUPS - development version
 	pkgver = 20110907
 	pkgrel = 1
 	url = https://github.com/armooo/cloudprint
