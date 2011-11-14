@@ -3,7 +3,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ optdepends=('openssh: SSH plugin'
 makedepends=('gnome-doc-utils' 'intltool' 'rdesktop' 'openssh')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('077dc011d048e9ed7a683ed74dc027c5c7e47d0b95b99acb493bf99fff22369c')
+source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+sha256sums=('1533cc447177f8d6c9cfe45d61b05904efbf66c86b86b4c332e972ff965d76bd')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname-$pkgver"
 
   #building with as-needed breaks rdp
   #https://bugzilla.gnome.org/show_bug.cgi?id=653558
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
