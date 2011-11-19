@@ -1,25 +1,32 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=decklink-sdk
-pkgver=8.0
+pkgver=9.0
+_dlid=2432866
 pkgrel=1
-pkgdesc="BlackMagic Design DeckLink SDK"
+pkgdesc="Blackmagic Design DeckLink SDK"
 arch=('i686' 'x86_64')
 url="http://www.blackmagic-design.com/support/sdks/"
 license=('custom')
 depends=('decklink' 'gcc-libs' 'mesa' 'qt')
-options=(!strip)
-source=("http://www.blackmagic-design.com/media/983433/decklink_sdk_$pkgver.zip")
-sha256sums=('4462f0bb83a549f34d4c0a3a65b3751de905b608ab5b8f7e0597626d74e47c0a')
+makedepends=('unzip')
+options=('!strip')
+source=("http://www.blackmagic-design.com/media/${_dlid}/DeckLink_SDK_$pkgver.zip")
+noextract=("DeckLink_SDK_$pkgver.zip")
+sha256sums=('5b9bbc1e781235f5a071b014d2875ef3a2c94d410eb95f3983d90c9b397766b7')
 
 package() {
+  cd "$srcdir"
+  unzip -o "DeckLink_SDK_$pkgver.zip"
+
   mkdir -p "$pkgdir/usr/src" "$pkgdir/usr/bin"
   cp -a "$srcdir/Blackmagic DeckLink SDK $pkgver/Linux/include" "$pkgdir/usr/src/decklink-sdk"
-  [ "$CARCH" = "i686" ] && arch='i386'
-  [ "$CARCH" = "x86_64" ] && arch='x86_64'
+  [ "$CARCH" = "i686" ] && _arch='i386'
+  [ "$CARCH" = "x86_64" ] && _arch='x86_64'
+  cd "$srcdir/Blackmagic DeckLink SDK $pkgver/Linux/Samples/bin/${_arch}"
   for util in Capture DeviceList OpenGLOutput SignalGenerator TestPattern
   do
-    install -D -m 0755 "$srcdir/Blackmagic DeckLink SDK $pkgver/Linux/Samples/bin/$arch/$util" "$pkgdir/usr/bin/$util"
+    install -D $util "$pkgdir/usr/bin/$util"
   done
 }
 
