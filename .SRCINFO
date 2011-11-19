@@ -7,7 +7,7 @@ pkgbase = qtweetlib-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = cmake>=2.8
+	makedepends = cmake
 	depends = qjson
 	provides = qtweetlib
 	conflicts = qtweetlib
