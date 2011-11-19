@@ -8,12 +8,12 @@ pkgbase = tomahawk
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = cmake>=2.8
-	depends = phonon>=4.5
-	depends = taglib>=1.6.2
-	depends = boost>=1.30
-	depends = clucene>=2.3.3.4
-	depends = libechonest>=1.2
+	makedepends = cmake
+	depends = phonon
+	depends = taglib
+	depends = boost
+	depends = clucene
+	depends = libechonest
 	depends = jreen
 	depends = qtweetlib
 	depends = quazip
