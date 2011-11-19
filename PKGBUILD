@@ -21,7 +21,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/minimoog/QTweetLib"
 license=('GPL2')
 depends=('qjson')
-makedepends=('cmake>=2.8')
+makedepends=('cmake')
 provides=('qtweetlib')
 conflicts=('qtweetlib-git')
 options=(!strip)
