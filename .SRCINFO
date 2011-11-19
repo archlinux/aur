@@ -7,7 +7,7 @@ pkgbase = jreen-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = cmake>=2.6
+	makedepends = cmake
 	depends = libidn
 	depends = qca-ossl
 	depends = zlib

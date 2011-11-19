@@ -20,7 +20,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/euroelessar/jreen"
 license=('GPL2')
 depends=('libidn' 'qca-ossl' 'zlib')
-makedepends=('git' 'cmake>=2.6')
+makedepends=('git' 'cmake')
 provides=('jreen')
 conflicts=('jreen')
 options=(!strip)
