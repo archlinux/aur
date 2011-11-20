@@ -1,37 +1,58 @@
-# Based on the official webalizer PKGBUILD Maintained by: Travis Willard <travisw@wmpub.ca>
-# Webalizer Xtended PKGBUILD maintanier: Jeff Anderson <jefferya@programmerq.net>
+# Contributor: megadriver <megadriver at gmx dot com>
+# Contributor: Jamie Nguyen <jamie AT tomoyolinux.co.uk>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=webalizer-xtended
-pkgver=2.01
-pkgrel=2
-pkgdesc="A web statistics generator patched to report 404 errors as well."
-url="http://www.patrickfrei.ch/webalizer/"
-license="GPL"
+_geodbver=20111101
+pkgver=2.23.05.${_geodbver}
+_pkgver=2.23-05
+_patchver=29
+pkgrel=1
+pkgdesc="A web server log file analysis program producing HTML reports, xtended"
 arch=('i686' 'x86_64')
-depends=('gd' 'geoip')
-makedepends=()
-replaces=(webalizer)
-conflicts=(webalizer)
-source=(ftp://ftp.mrunix.net/pub/webalizer/old/webalizer-$pkgver-10-src.tgz \
-	http://www.patrickfrei.ch/webalizer/rb24/webalizer-$pkgver-10-RB24-patch.tar.gz)
-md5sums=('9217595005aec46a505e1fb349052a8e'
-         'd73c08c94f1e4bbbfa0be9e3c1de089c')
-
+#url="http://www.webalizer.com/"
+url="http://www.patricfrei.ch/webalizer/"
+license=('GPL')
+depends=('db' 'gd' 'geoip')
+provides=('webalizer')
+conflicts=('webalizer')
+install=webalizer.install
+source=("ftp://ftp.mrunix.net/pub/webalizer/webalizer-${_pkgver}-src.tgz"
+	"http://www.patrickfrei.ch/webalizer/rb${_patchver}/webalizer-${_pkgver}-RB${_patchver}-patch.tar.gz"
+        "ftp://ftp.mrunix.net/pub/webalizer/geodb/webalizer-geodb-${_geodbver}.tgz"
+        "ftp://ftp.mrunix.net/pub/webalizer/webalizer-flags.tgz")
+md5sums=('304338cf3b1e9389123380d5f7d88d58'
+         'd9d7b686f4a7791437fce33a6f0c47e5'
+         '1a00df39f7c1f25ed0f8962e5bbd5874'
+         '2605387b6076b8bdc0ec41b8655095c1')
+        
 build() {
-  cd $startdir/src/webalizer-$pkgver-10
-  patch -p1 < $startdir/src/webalizer-$pkgver-10-RB24-patch
-  ./configure --prefix=/usr --enable-geoip
-  make || return 1
+  cd "${srcdir}/webalizer-${_pkgver}"
+  patch -p1 < ${srcdir}/webalizer-${_pkgver}-RB${_patchver}-patch
 
-  # Set up our directory structure
-  install -d -m755 $startdir/pkg/usr/bin $startdir/pkg/usr/share/man/man1 \
-                   $startdir/pkg/etc
-
-  make prefix=$startdir/pkg/usr datarootdir=$startdir/pkg/usr/share \
-       ETCDIR=$startdir/pkg/etc install
-
-  cd $startdir/pkg/usr/bin
-  rm -fr webazolver
-  ln -s webalizer webazolver
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --datarootdir=/usr/share \
+    --enable-bz2 \
+    --enable-geoip
+  make
 }
 
+package() {
+  cd "${srcdir}/webalizer-${_pkgver}"
+
+  # install webalizer
+  make DESTDIR="${pkgdir}" install
+
+  # install geolocation database (GeoDB)
+  install -m755 -d "${pkgdir}/usr/share/GeoDB"
+  install -m644 "${srcdir}/GeoDB.dat" "${pkgdir}/usr/share/GeoDB/GeoDB.dat"
+
+  # install flags
+  cd "${srcdir}/flags"
+  install -m755 -d "${pkgdir}/usr/share/webalizer/flags"
+  for i in *.png; do
+    install -m644 ${i} "${pkgdir}/usr/share/webalizer/flags/${i}"
+  done
+}
