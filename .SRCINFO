@@ -1,0 +1,19 @@
+pkgbase = webalizer-xtended
+	pkgdesc = A web statistics generator patched to report 404 errors as well.
+	pkgver = 2.01
+	pkgrel = 2
+	url = http://www.patrickfrei.ch/webalizer/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gd
+	depends = geoip
+	conflicts = webalizer
+	replaces = webalizer
+	source = ftp://ftp.mrunix.net/pub/webalizer/old/webalizer-2.01-10-src.tgz
+	source = http://www.patrickfrei.ch/webalizer/rb24/webalizer-2.01-10-RB24-patch.tar.gz
+	md5sums = 9217595005aec46a505e1fb349052a8e
+	md5sums = d73c08c94f1e4bbbfa0be9e3c1de089c
+
+pkgname = webalizer-xtended
+
