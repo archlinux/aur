@@ -1,0 +1,85 @@
+diff -ur gtk+extra-2.1.2/gtkextra/gtkextra-marshal.list gtk+extra-2.1.2.my/gtkextra/gtkextra-marshal.list
+--- gtk+extra-2.1.2/gtkextra/gtkextra-marshal.list	2002-06-14 22:36:36.000000000 +0400
++++ gtk+extra-2.1.2.my/gtkextra/gtkextra-marshal.list	2011-11-21 15:30:00.000000000 +0400
+@@ -10,6 +10,7 @@
+ BOOL:BOXED
+ BOOL:INT,INT
+ VOID:INT
++VOID:INT,BOXED
+ VOID:INT,STRING
+ VOID:BOXED
+ VOID:VOID
+diff -ur gtk+extra-2.1.2/gtkextra/gtkitementry.c gtk+extra-2.1.2.my/gtkextra/gtkitementry.c
+--- gtk+extra-2.1.2/gtkextra/gtkitementry.c	2010-03-13 08:49:00.000000000 +0300
++++ gtk+extra-2.1.2.my/gtkextra/gtkitementry.c	2011-11-21 15:25:18.000000000 +0400
+@@ -131,7 +131,6 @@
+ static PangoLayout *gtk_entry_ensure_layout            (GtkEntry       *entry,
+                                                         gboolean        include_preedit);
+ static void         gtk_entry_queue_draw               (GtkEntry       *entry);
+-static void         gtk_entry_reset_im_context         (GtkEntry       *entry);
+ static void         gtk_entry_recompute                (GtkEntry       *entry);
+ static void         gtk_entry_get_cursor_locations     (GtkEntry       *entry,
+ 							CursorType      type,
+@@ -1755,16 +1754,6 @@
+ }
+ 
+ static void
+-gtk_entry_reset_im_context (GtkEntry *entry)
+-{
+-  if (entry->need_im_reset)
+-    {
+-      entry->need_im_reset = 0;
+-      gtk_im_context_reset (entry->im_context);
+-    }
+-}
+-
+-static void
+ gtk_entry_get_cursor_locations (GtkEntry   *entry,
+ 				CursorType  type,
+ 				gint       *strong_x,
+diff -ur gtk+extra-2.1.2/gtkextra/Makefile.am gtk+extra-2.1.2.my/gtkextra/Makefile.am
+--- gtk+extra-2.1.2/gtkextra/Makefile.am	2005-06-16 02:54:34.000000000 +0400
++++ gtk+extra-2.1.2.my/gtkextra/Makefile.am	2011-11-21 15:25:18.000000000 +0400
+@@ -197,13 +197,13 @@
+ $(libgtkextra_x11_2_0_la_OBJECTS) $(libgtkextra_linux_fb_2_0_la_OBJECTS) $(libgtkextra_win32_2_0_la_OBJECTS): ${gtkextra_built_public_sources} ${gtkextra_built_private_headers}
+ 
+ $(srcdir)/gtkextra-marshal.h: gtkextra-marshal.list
+-        ( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --header > gtkextra-marshal.tmp \
+-        && mv gtkextra-marshal.tmp gtkextra-marshal.h ) \
+-        || ( rm -f gtkextra-marshal.tmp && exit 1 )
++	( glib-genmarshal --prefix=gtkextra gtkextra-marshal.list --header > gtkextra-marshal.tmp \
++	&& mv gtkextra-marshal.tmp gtkextra-marshal.h ) \
++	|| ( rm -f gtkextra-marshal.tmp && exit 1 )
+ $(srcdir)/gtkextra-marshal.c: gtkextra-marshal.h
+-        ( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --body > gtkextra-marshal.tmp \
+-        && mv gtkextra-marshal.tmp gtkextra-marshal.c ) \
+-        || ( rm -f gtkextra-marshal.tmp && exit 1 )
++	( glib-genmarshal --prefix=gtkextra gtkextra-marshal.list --body > gtkextra-marshal.tmp \
++	&& mv gtkextra-marshal.tmp gtkextra-marshal.c ) \
++	|| ( rm -f gtkextra-marshal.tmp && exit 1 )
+ 
+ 
+ $(srcdir)/gtkextratypebuiltins.h: $(gtkextra_public_h_sources)
+diff -ur gtk+extra-2.1.2/gtkextra/Makefile.in gtk+extra-2.1.2.my/gtkextra/Makefile.in
+--- gtk+extra-2.1.2/gtkextra/Makefile.in	2010-03-21 03:05:56.000000000 +0300
++++ gtk+extra-2.1.2.my/gtkextra/Makefile.in	2011-11-21 15:25:18.000000000 +0400
+@@ -1028,13 +1028,13 @@
+ $(libgtkextra_x11_2_0_la_OBJECTS) $(libgtkextra_linux_fb_2_0_la_OBJECTS) $(libgtkextra_win32_2_0_la_OBJECTS): ${gtkextra_built_public_sources} ${gtkextra_built_private_headers}
+ 
+ $(srcdir)/gtkextra-marshal.h: gtkextra-marshal.list
+-        ( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --header > gtkextra-marshal.tmp \
+-        && mv gtkextra-marshal.tmp gtkextra-marshal.h ) \
+-        || ( rm -f gtkextra-marshal.tmp && exit 1 )
++	( glib-genmarshal --prefix=gtkextra gtkextra-marshal.list --header > gtkextra-marshal.tmp \
++	&& mv gtkextra-marshal.tmp gtkextra-marshal.h ) \
++	|| ( rm -f gtkextra-marshal.tmp && exit 1 )
+ $(srcdir)/gtkextra-marshal.c: gtkextra-marshal.h
+-        ( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --body > gtkextra-marshal.tmp \
+-        && mv gtkextra-marshal.tmp gtkextra-marshal.c ) \
+-        || ( rm -f gtkextra-marshal.tmp && exit 1 )
++	( glib-genmarshal --prefix=gtkextra gtkextra-marshal.list --body > gtkextra-marshal.tmp \
++	&& mv gtkextra-marshal.tmp gtkextra-marshal.c ) \
++	|| ( rm -f gtkextra-marshal.tmp && exit 1 )
+ 
+ $(srcdir)/gtkextratypebuiltins.h: $(gtkextra_public_h_sources)
+ 	( cd $(srcdir) && glib-mkenums \
