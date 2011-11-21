@@ -1,8 +1,8 @@
 pkgbase = webalizer-xtended
 	pkgdesc = A web server log file analysis program producing HTML reports, xtended
 	pkgver = 2.23.05.20111101
-	pkgrel = 1
-	url = http://www.patricfrei.ch/webalizer/
+	pkgrel = 2
+	url = http://www.patrickfrei.ch/webalizer/
 	install = webalizer.install
 	arch = i686
 	arch = x86_64
