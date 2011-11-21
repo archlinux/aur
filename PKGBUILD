@@ -3,7 +3,7 @@
 
 pkgname=ccid
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver"
 arch=('i686' 'x86_64')
 url="http://pcsclite.alioth.debian.org/ccid.html"
@@ -28,5 +28,4 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
-  install -D -m644 src/92_pcscd_ccid.rules  "${pkgdir}/lib/udev/rules.d/85-pcscd-ccid.rules"
 }
