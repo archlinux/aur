@@ -14,7 +14,7 @@ _buildtype="Release"
 ##############################################################
 
 pkgname=libechonest
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="C++ library for interfacing with Echo Nest"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ provides=('libechonest')
 conflicts=('libechonest-git')
 options=(!strip)
 source=(http://pwsp.cleinias.com/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('fe8554bf2776a68611c1a5b145d23a1e')
+md5sums=('038c4e390651b207575a12315ed3e687')
 
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
