@@ -1,0 +1,17 @@
+pkgbase = php-proctitle
+	pkgdesc = PHP extension that allows changing the current process' name
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://pecl.php.net/package/proctitle
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	backup = etc/php/conf.d/proctitle.ini
+	source = http://pecl.php.net/get/proctitle-0.1.2.tgz
+	source = proctitle.ini
+	md5sums = 5ebf52449f50013383f052271b0dc21a
+	md5sums = e1daa35d26f0fbc2aefa33412eb24718
+
+pkgname = php-proctitle
+
