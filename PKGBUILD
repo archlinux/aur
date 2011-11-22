@@ -7,7 +7,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.1
-pkgver=${_basekernel}.1
+pkgver=${_basekernel}.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.1.tar.xz"
         'i915-fix-incorrect-error-message.patch'
         'usb-add-reset-resume-quirk-for-several-webcams.patch')
 md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
-         '2bf7eb28a58238e1a062fa7393bf7824'
+         '7ac42443a734c9102143944828ea6715'
          'cbaaa923f00c1935055273ccc1630144'
          '93687a4b7e1e6bcd4e7417d6e5079bc4'
          'eb14dcfd80c00852ef81ded6e826826a'
