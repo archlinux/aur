@@ -5,16 +5,16 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.47.0
+pkgver=1.48.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
         exceptions.patch)
 license=('custom')
-md5sums=('ff180a5276bec773a7625cac7e2288e8'
+md5sums=('313a11e97eb56eb7efd18325354631be'
          '9b44c28b36303152050c8c82469569c5')
 
 _stagedir="${srcdir}/stagedir"
