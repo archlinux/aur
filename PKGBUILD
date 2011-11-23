@@ -31,7 +31,7 @@ build() {
   # use our CFLAGS
   sed -i -e "s/-O2 -g/${CFLAGS}/" makefile.in
 
-  make PREFIX=/usr DIST="$pkgdir" || return 1
+  make PREFIX=/usr DIST="$pkgdir"
   make install-all DIST="$pkgdir"
   mkdir -p $pkgdir/usr/share
   mv $pkgdir/usr/man $pkgdir/usr/share
