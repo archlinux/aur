@@ -3,7 +3,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-acm
-pkgver=201104
+pkgver=201111
 pkgrel=1
 pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4, sigplanconf v2.3 and the unofficial sigplan-proc-varsize v1.4)"
 arch=('any')
@@ -58,9 +58,9 @@ md5sums=('d0f0b981aafbbc5ecaec202bd7623414'
          'ceb632f99579d805c2e4472ac878480c'
          '8753848f67f8203fc161e28be692156e'
          'f9528cc0463ce2ffe2a892591db58c72'
-         '652f1bb45af746b1bc523c261c4eff71'
-         '00ffefdab78bb8eb9039a8d2d5a31a94'
+         '0c12d497dc34512c8e5e055d3afe7ade'
+         '309f0d83e52e6e70b9608f8f4b0e9ced'
          '4e94835d0b432831e54701ec2fa0800f'
          '7db95b194a770fa2ee90fce0f80d9cd7'
-         'c478dda106062e67298ebbce24379f15'
+         '4a6f87c61d9c7fca4b94c892e4742867'
          '216c50b96e931516e9c3fba2567d5838')
