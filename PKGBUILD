@@ -2,23 +2,33 @@
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
 pkgname=gtk2-perl
-_realname=Gtk2
-pkgver=1.222
-pkgrel=3
-pkgdesc="Gtk2-Perl allows Perl developers to write GTK+ 2.x applications."
+pkgver=1.241
+pkgrel=1
+pkgdesc="Perl bindings for GTK+ 2.x"
 arch=(i686 x86_64)
 license=('LGPL')
 url="http://gtk2-perl.sourceforge.net/"
 makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends')
 depends=('gtk2' 'pango-perl')
+checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
 options=('!emptydirs')
-source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/${_realname}-${pkgver}.tar.gz)
-md5sums=('8f8a170b33dc2cf4e69769e97c05185a')
+source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gtk2-${pkgver}.tar.gz)
+md5sums=('82ee2af46ef9ab7b560601e3ae6f8f7a')
 
 build() {
-  cd "${srcdir}/${_realname}-${pkgver}"
-  # install module in vendor directories.
+  cd "${srcdir}/Gtk2-${pkgver}"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
+}
+
+check() {
+  cd "${srcdir}/Gtk2-${pkgver}"
+  LD_PRELOAD="" Xvfb -nolisten tcp -extension GLX -screen 0 1280x1024x24 :99 &
+  LD_PRELOAD="" DISPLAY=:99 make test
+  kill $!
+}
+
+package() {
+  cd "${srcdir}/Gtk2-${pkgver}"
   make install DESTDIR="${pkgdir}"
 }
