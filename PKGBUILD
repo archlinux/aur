@@ -1,13 +1,13 @@
 # Maintainer: Rickard Nilsson <rickard.nilsson@telia.com>
 
 pkgname=mopidy-git
-pkgver=20110405
+pkgver=20111128
 pkgrel=1
 pkgdesc="A music server which can play music from Spotify"
 arch=(any)
 url="http://www.mopidy.com"
 license=('APACHE')
-depends=('python2' 'gstreamer0.10-python' 'python-pyalsaaudio' 'pyspotify-git' 'gawk' 'python2-pykka')
+depends=('python2' 'gstreamer0.10-python' 'pyspotify-git' 'gawk' 'python2-pykka' 'gstreamer0.10-good')
 makedepends=('python2')
 source=('mopidy.rc' 'mopidy.conf')
 provides=('mopidy')
