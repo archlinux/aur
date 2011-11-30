@@ -3,7 +3,7 @@
 
 pkgname=psiconv
 pkgver=0.9.8
-pkgrel=8
+pkgrel=9
 pkgdesc="Converts Psion 5(MX) files to more commonly used file formats"
 arch=('i686' 'x86_64')
 url="http://software.frodo.looijaard.name/psiconv/"
@@ -12,7 +12,7 @@ depends=('imagemagick')
 makedepends=('bc')
 backup=('etc/psiconv/psiconv.conf')
 options=('!libtool')
-source=(http://software.frodo.looijaard.name/${pkgname}/files/${pkgname}-${pkgver}.tar.gz)
+source=("http://software.frodo.looijaard.name/${pkgname}/files/${pkgname}-${pkgver}.tar.gz")
 md5sums=('8d7548e3c6b9cd408544736133728acd')
 
 build() {
