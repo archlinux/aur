@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . /etc/conf.d/libvirtd-guests
 . /etc/rc.conf

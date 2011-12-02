@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -38,7 +38,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 md5sums=('4308b3f4d23f5b0c5196260a9a22a38b'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
-         '6f36bf189ef0e5847038787d13535420'
+         '737ec24aa56871fbabfa892789457db4'
          'bc2971dacdbac967fc3474e50affc345'
          'b0be50eb9dfe4d133decf23b60880f7d'
          'db95aecdf2ccf3693fef5821cdcb7eba'
