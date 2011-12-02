@@ -3,8 +3,8 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=3.0.1
-_basever=3.0
+pkgver=3.1.4
+_basever=3.1
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
@@ -13,10 +13,13 @@ license=('GPL2')
 provides=("kernel-headers=${pkgver}")
 conflicts=('kernel-headers')
 replaces=('kernel-headers')
-source=(http://www.kernel.org/pub/linux/kernel/v${_basever}/linux-${_basever}.tar.bz2
-	http://www.kernel.org/pub/linux/kernel/v${_basever}/patch-${pkgver}.bz2)
-md5sums=('398e95866794def22b12dfbc15ce89c0'
-         'ac49f7907f1fc85fbab92d0f1aa1552a')
+source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.xz
+	http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz)
+# NOTE: signatures are not automatically verified by makepkg
+        #http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.sign
+	#http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign
+md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
+         'ffb768bb3c42c94876f3f84aa6f779e5')
 
 build() {
   cd ${srcdir}/linux-${_basever}
