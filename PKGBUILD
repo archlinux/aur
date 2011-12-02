@@ -10,8 +10,12 @@ pkgdesc="Simple C compiler to generate 8086 code"
 arch=('i686' 'x86_64')
 url="http://www.debath.co.uk/dev86/"
 license=(GPL)
-[ "${CARCH}" == "x86_64" ] && depends=('lib32-glibc')
-makedepends=('bin86')
+if [ "${CARCH}" == "x86_64" ]; then
+  depends=('lib32-glibc')
+  makedepends=('bin86' 'gcc-multilib')
+else
+  makedepends=('bin86')
+fi
 options=('!libtool' '!strip' '!makeflags')
 source=(http://www.debath.co.uk/dev86/Dev86src-$pkgver.tar.gz
 	dev86-pic.patch
