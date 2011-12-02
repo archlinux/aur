@@ -3,12 +3,13 @@
 _pkgbasename=gettext
 pkgname=lib32-$_pkgbasename
 pkgver=0.18.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU internationalization library (32-bit)"
 arch=('x86_64')
 url="http://www.gnu.org/software/gettext/"
 license=('GPL')
-depends=('gcc-multilib' 'lib32-acl' $_pkgbasename)
+depends=('lib32-acl' $_pkgbasename)
+makedepends=(gcc-multilib)
 optdepends=('cvs: for autopoint tool')
 options=(!libtool !docs)
 source=(ftp://ftp.gnu.org/pub/gnu/gettext/${_pkgbasename}-${pkgver}.tar.gz)
