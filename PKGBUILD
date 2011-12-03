@@ -18,7 +18,8 @@ optdepends=('bridge-utils: for briged networking (default)'
 	    'kvm'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
-	    'radvd')
+	    'radvd'
+	    'dmidecode')
 options=('emptydirs' '!libtool')
 backup=('etc/conf.d/libvirtd'
 	'etc/conf.d/libvirtd-guests'
