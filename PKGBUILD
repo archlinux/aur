@@ -1,20 +1,39 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://nspluginwrapper.davidben.net/"
 license=('GPL')
-depends=('curl' 'lib32-libxt' 'lib32-gcc-libs' 'gtk2' 'lib32-gtk2')
+depends=(
+  'curl'
+  'libxt' 'lib32-libxt'
+  'gcc-libs' 'lib32-gcc-libs'
+  'gtk2' 'lib32-gtk2'
+)
 makedepends=('gcc-multilib')
 install="install"
 source=(http://nspluginwrapper.davidben.net/download/$pkgname-$pkgver.tar.gz)
 md5sums=('36f3e290fc4ce56f65ee695078961188')
+
+if [[ $CARCH == i686 ]]; then
+  # Strip lib32 etc. on i686
+  depends=(${depends[@]/*32-*/})
+  makedepends=(${makedepends[@]/*32-*/})
+  makedepends=(${makedepends[@]/*-multilib*/})
+  optdepends=(${optdepends[@]/*32-*/})
+fi
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./configure --with-lib32=lib32 --with-lib64=lib
+  configure_args=""
+  if [[ $CARCH == x86_64 ]]; then
+    configure_args="$configure_args --with-lib32=lib32 --with-lib64=lib"
+  fi
+
+  ./configure $configure_args
   make -j1
 }
 
