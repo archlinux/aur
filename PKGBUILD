@@ -4,7 +4,7 @@
 # Contributor: scippio <scippio@berounet.cz>
 
 pkgname=freeimage
-pkgver=3.15.0
+pkgver=3.15.1
 pkgrel=1
 pkgdesc="Library project for developers who would like to support popular graphics image formats."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('gcc-libs')
 makedepends=('hd2u')
 source=("http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip"
         'gcc4.5_ln.patch')
-md5sums=('3b4f08e4985b269beb29a2fced1ef888'
+md5sums=('450d2ff278690b0d1d7d7d58fad083cc'
          'f85279b2572a0a9e03775909cd9cd759')
 
 build() {
