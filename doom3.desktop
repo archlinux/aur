@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DOOM III
+GenericName=DOOM III
+Comment=
+Exec=/usr/bin/doom3
+Icon=/usr/share/pixmaps/doom3.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
