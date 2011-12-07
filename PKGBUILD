@@ -13,7 +13,7 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=tomahawk
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ provides=('tomahawk')
 conflicts=('tomahawk-git')
 options=(!strip)
 source=(http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('81803d6daed1afacbb185fea406ff111')
+md5sums=('0ee6ff7cd7fcf2dd01db6772902efbb4')
 install=tomahawk.install
 
 # Clean options array to strip pkg if release buildtype is chosen

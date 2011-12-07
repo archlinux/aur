@@ -1,6 +1,6 @@
 pkgbase = tomahawk
 	pkgdesc = A Music Player App written in C++/Qt
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
@@ -22,8 +22,8 @@ pkgbase = tomahawk
 	provides = tomahawk
 	conflicts = tomahawk-git
 	options = !strip
-	source = http://download.tomahawk-player.org/tomahawk-0.3.2.tar.bz2
-	md5sums = 81803d6daed1afacbb185fea406ff111
+	source = http://download.tomahawk-player.org/tomahawk-0.3.3.tar.bz2
+	md5sums = 0ee6ff7cd7fcf2dd01db6772902efbb4
 
 pkgname = tomahawk
 
