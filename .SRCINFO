@@ -1,0 +1,15 @@
+pkgbase = perl-tie-hash-sorted
+	pkgdesc = Presents hashes in sorted order
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/~JGATCOMB/Tie-Hash-Sorted-0.10/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-authors/id/J/JG/JGATCOMB/Tie-Hash-Sorted-0.10.tar.gz
+	md5sums = 56dbe4aebd74937096acc963ef5c3872
+
+pkgname = perl-tie-hash-sorted
+
