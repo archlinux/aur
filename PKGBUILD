@@ -2,8 +2,8 @@
 
 _pkgbasename=xcb-util
 pkgname=lib32-xcb-util
-pkgver=0.3.6
-pkgrel=3
+pkgver=0.3.8
+pkgrel=1
 pkgdesc="Utility libraries for XC Binding (32-bit)"
 arch=('x86_64')
 url="http://xcb.freedesktop.org"
@@ -12,7 +12,7 @@ depends=('lib32-glibc' 'lib32-libxcb' $_pkgbasename)
 makedepends=('gperf' 'gcc-multilib')
 options=('!libtool')
 source=(http://xcb.freedesktop.org/dist/${_pkgbasename}-${pkgver}.tar.bz2)
-md5sums=('dd8968b8ee613cb027a8ef1fcbdc8fc9')
+md5sums=('8ce019c4bbf20dce246b98f177cfccff')
 
 build() {
   export CC="gcc -m32"
