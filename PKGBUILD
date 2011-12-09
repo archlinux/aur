@@ -3,11 +3,11 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=webalizer-xtended
-_geodbver=20111101
+_geodbver=20111201
 pkgver=2.23.05.${_geodbver}
 _pkgver=2.23-05
 _patchver=29
-pkgrel=2
+pkgrel=1
 pkgdesc="A web server log file analysis program producing HTML reports, xtended"
 arch=('i686' 'x86_64')
 #url="http://www.webalizer.com/"
@@ -23,7 +23,7 @@ source=("ftp://ftp.mrunix.net/pub/webalizer/webalizer-${_pkgver}-src.tgz"
         "ftp://ftp.mrunix.net/pub/webalizer/webalizer-flags.tgz")
 md5sums=('304338cf3b1e9389123380d5f7d88d58'
          'd9d7b686f4a7791437fce33a6f0c47e5'
-         '1a00df39f7c1f25ed0f8962e5bbd5874'
+         'a211c0d37acdb5d2b7578fc0d9aaa63e'
          '2605387b6076b8bdc0ec41b8655095c1')
         
 build() {
