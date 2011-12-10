@@ -31,6 +31,9 @@ build() {
   sed -i 's/env python$/&2/' */plugins/*.py \
     libpurple/purple-{remote,notifications-example,url-handler}
 
+  # Pidgin doesn't explicitly link to libm
+  LDFLAGS+=' -Wl,--copy-dt-needed-entries'
+
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
