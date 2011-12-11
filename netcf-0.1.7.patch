@@ -1,0 +1,426 @@
+diff -ur netcf-0.1.7.ori//data/xml/initscripts-get.xsl netcf-0.1.7/data/xml/initscripts-get.xsl
+--- netcf-0.1.7.ori//data/xml/initscripts-get.xsl	2009-10-04 08:18:41.000000000 +0200
++++ netcf-0.1.7/data/xml/initscripts-get.xsl	2010-12-08 14:54:28.891813397 +0100
+@@ -47,9 +47,12 @@
+   <xsl:template name="vlan-interface-common">
+     <xsl:variable name="iface" select="concat(vlan/interface/@name, '.', vlan/@tag)"/>
+ 
+-    <xsl:attribute name="path">/files/etc/sysconfig/network-scripts/ifcfg-<xsl:value-of select="$iface"/></xsl:attribute>
+-    <node label="DEVICE" value="{$iface}"/>
+-    <node label="VLAN" value="yes"/>
++    <xsl:attribute name="path">/files/etc/network.d/ifcfg-<xsl:value-of select="$iface"/></xsl:attribute>
++    <node label="INTERFACE" value="{$iface}"/>
++    <node label="PHYS_INTERFACE" value="{vlan/interface/@name}"/>
++    <node label="VLAN" value="{vlan/@tag}"/>
++    <node label="CONNECTION" value="ethernet-iproute-vlan"/>
++    <node label="FLAG" value="false"/>
+   </xsl:template>
+ 
+   <xsl:template name='bare-vlan-interface'>
+@@ -68,6 +71,7 @@
+       <xsl:call-template name="startmode"/>
+       <xsl:call-template name="mtu"/>
+       <node label="TYPE" value="Bridge"/>
++      <node label="CONNECTION" value="bridge"/>
+       <xsl:call-template name="interface-addressing"/>
+       <xsl:if test="bridge/@stp">
+         <node label="STP" value="{bridge/@stp}"/>
+@@ -75,7 +79,11 @@
+       <xsl:if test="bridge/@delay">
+         <node label="DELAY" value="{bridge/@delay}"/>
+       </xsl:if>
++      <node label="DHCP_TIMEOUT" value="0"/>
++    <!--
++    We don't have to define interfaces separately
+     </tree>
++    
+     <xsl:for-each select='bridge/interface'>
+       <tree>
+         <xsl:if test="@type = 'ethernet'">
+@@ -87,12 +95,29 @@
+         <xsl:if test="@type = 'bond'">
+           <xsl:call-template name="bare-bond-interface"/>
+         </xsl:if>
++
++        BRIDGE_INTERFACES= is defined with all interfaces
+         <node label="BRIDGE" value="{../../@name}"/>
++
++        <xsl:variable name="bridgeifaces" select="concat($bridgeifaces, '.', @name)"/>
+       </tree>
+       <xsl:if test="@type = 'bond'">
+         <xsl:call-template name="bond-slaves"/>
+       </xsl:if>
+     </xsl:for-each>
++    -->
++    <!-- <xsl:if test="count(ip) > 1"> -->
++    <node label="BRIDGE_INTERFACES">
++    <xsl:attribute name="value">
++      <xsl:text></xsl:text>
++      <xsl:for-each select="bridge/interface">
++        <xsl:value-of select="@name"/><xsl:value-of select="string(' ')"/>
++      </xsl:for-each>
++      <xsl:text></xsl:text>
++    </xsl:attribute>
++    </node>
++    <!-- </xsl:if> -->
++    </tree>
+   </xsl:template>
+ 
+   <!--
+@@ -138,8 +163,8 @@
+        Named templates, following the Relax NG syntax
+   -->
+   <xsl:template name="name-attr">
+-    <xsl:attribute name="path">/files/etc/sysconfig/network-scripts/ifcfg-<xsl:value-of select="@name"/></xsl:attribute>
+-    <node label="DEVICE" value="{@name}"/>
++    <xsl:attribute name="path">/files/etc/network.d/ifcfg-<xsl:value-of select="@name"/></xsl:attribute>
++    <node label="INTERFACE" value="{@name}"/>
+   </xsl:template>
+ 
+   <xsl:template name="mtu">
+@@ -153,6 +178,7 @@
+     <xsl:if test="mac">
+       <node label="HWADDR" value="{mac/@address}"/>
+     </xsl:if>
++    <node label="CONNECTION" value="{@type}"/>
+     <xsl:call-template name="startmode"/>
+     <xsl:call-template name="mtu"/>
+   </xsl:template>
+@@ -184,14 +210,14 @@
+   <xsl:template name="protocol-ipv4">
+     <xsl:choose>
+       <xsl:when test="dhcp">
+-        <node label="BOOTPROTO" value="dhcp"/>
++        <node label="IP" value="dhcp"/>
+         <xsl:if test="dhcp/@peerdns">
+           <node label="PEERDNS" value="{dhcp/@peerdns}"/>
+         </xsl:if>
+       </xsl:when>
+       <xsl:when test="ip">
+-        <node label="BOOTPROTO" value="none"/>
+-        <node label="IPADDR" value="{ip/@address}"/>
++        <node label="IP" value="static"/>
++        <node label="ADDR" value="{ip/@address}"/>
+         <xsl:if test="ip/@prefix">
+           <node label="NETMASK" value="{ipcalc:netmask(ip/@prefix)}"/>
+         </xsl:if>
+diff -ur netcf-0.1.7.ori//data/xml/initscripts-put.xsl netcf-0.1.7/data/xml/initscripts-put.xsl
+--- netcf-0.1.7.ori//data/xml/initscripts-put.xsl	2009-10-04 08:18:41.000000000 +0200
++++ netcf-0.1.7/data/xml/initscripts-put.xsl	2010-11-26 10:44:46.133757628 +0100
+@@ -47,7 +47,7 @@
+   </xsl:template>
+ 
+   <xsl:template name="bare-vlan-interface">
+-    <xsl:variable name="name" select="node[@label = 'DEVICE']/@value"/>
++    <xsl:variable name="name" select="node[@label = 'INTERFACE']/@value"/>
+     <interface type="vlan">
+       <xsl:call-template name="name-attr"/>
+       <xsl:call-template name="vlan-device"/>
+@@ -55,7 +55,7 @@
+   </xsl:template>
+ 
+   <xsl:template name="vlan-device">
+-    <xsl:variable name="name" select="node[@label = 'DEVICE']/@value"/>
++    <xsl:variable name="name" select="node[@label = 'INTERFACE']/@value"/>
+     <xsl:variable name="device" select="substring-before($name, '.')"/>
+     <xsl:variable name="tag" select="substring-after($name, '.')"/>
+     <vlan tag="{$tag}">
+@@ -70,7 +70,7 @@
+                 match="tree[node[@label = 'TYPE' and @value = 'Bridge']]">
+     <interface type="bridge">
+       <!-- the bridge node itself -->
+-      <xsl:variable name="iface" select="node[@label= 'DEVICE']/@value"/>
++      <xsl:variable name="iface" select="node[@label= 'INTERFACE']/@value"/>
+       <xsl:call-template name="name-attr"/>
+       <xsl:call-template name="startmode"/>
+       <xsl:call-template name="mtu"/>
+@@ -101,17 +101,17 @@
+       Bond
+   -->
+   <xsl:template name="bond-element">
+-    <xsl:variable name="iface" select="node[@label= 'DEVICE']/@value"/>
++    <xsl:variable name="iface" select="node[@label= 'INTERFACE']/@value"/>
+     <bond>
+       <xsl:variable name="opts" select="node[@label = 'BONDING_OPTS']/@value"/>
+       <xsl:call-template name="bonding-opts">
+         <xsl:with-param name="opts" select="$opts"/>
+       </xsl:call-template>
+       <xsl:variable name="primary" select="bond:option($opts, 'primary')"/>
+-      <xsl:for-each select="/descendant-or-self::*[node[@label = 'MASTER' and @value = $iface]][node[@label = 'DEVICE' and @value = $primary]]">
++      <xsl:for-each select="/descendant-or-self::*[node[@label = 'MASTER' and @value = $iface]][node[@label = 'INTERFACE' and @value = $primary]]">
+         <xsl:call-template name='bare-ethernet-interface'/>
+       </xsl:for-each>
+-      <xsl:for-each select="/descendant-or-self::*[node[@label = 'MASTER' and @value = $iface]][node[@label = 'DEVICE' and @value != $primary]]">
++      <xsl:for-each select="/descendant-or-self::*[node[@label = 'MASTER' and @value = $iface]][node[@label = 'INTERFACE' and @value != $primary]]">
+         <xsl:call-template name='bare-ethernet-interface'/>
+       </xsl:for-each>
+     </bond>
+@@ -125,7 +125,7 @@
+   </xsl:template>
+ 
+   <xsl:template name="bond-interface"
+-                match="tree[node[@label = 'DEVICE'][@value = //tree/node[@label = 'MASTER']/@value]][count(node[@label = 'BRIDGE']) = 0]">
++                match="tree[node[@label = 'INTERFACE'][@value = //tree/node[@label = 'MASTER']/@value]][count(node[@label = 'BRIDGE']) = 0]">
+     <interface type="bond">
+       <xsl:call-template name="name-attr"/>
+       <xsl:call-template name="startmode"/>
+@@ -154,7 +154,7 @@
+ 
+   <xsl:template name="name-attr">
+     <xsl:attribute name="name">
+-      <xsl:value-of select="node[@label= 'DEVICE']/@value"/>
++      <xsl:value-of select="node[@label= 'INTERFACE']/@value"/>
+     </xsl:attribute>
+   </xsl:template>
+ 
+@@ -173,7 +173,7 @@
+     <xsl:variable name="uses_dhcp"
+                   select="node[@label = 'BOOTPROTO']/@value = 'dhcp'"/>
+     <xsl:variable name="uses_static"
+-                  select="count(node[@label = 'IPADDR']) > 0"/>
++                  select="count(node[@label = 'ADDR']) > 0"/>
+     <xsl:variable name="uses_ipv4" select="$uses_dhcp or $uses_static"/>
+     <xsl:if test="$uses_ipv4">
+     <protocol family="ipv4">
+@@ -186,7 +186,7 @@
+           </dhcp>
+         </xsl:when>
+         <xsl:when test="$uses_static">
+-          <ip address="{node[@label = 'IPADDR']/@value}">
++          <ip address="{node[@label = 'ADDR']/@value}">
+             <xsl:choose>
+               <xsl:when test="node[@label = 'PREFIX']">
+                 <xsl:attribute name="prefix"><xsl:value-of select="node[@label = 'PREFIX']/@value"/></xsl:attribute>
+diff -ur netcf-0.1.7.ori//src/drv_initscripts.c netcf-0.1.7/src/drv_initscripts.c
+--- netcf-0.1.7.ori//src/drv_initscripts.c	2010-09-23 14:13:13.000000000 +0200
++++ netcf-0.1.7/src/drv_initscripts.c	2010-12-08 13:57:02.027361706 +0100
+@@ -49,17 +49,20 @@
+ #include <libexslt/exslt.h>
+ 
+ static const char *const network_scripts_path =
+-    "/files/etc/sysconfig/network-scripts";
++    //"/files/etc/sysconfig/network-scripts";
++    "/files/etc/network.d/*";
+ 
+ static const char *const ifcfg_path =
+-    "/files/etc/sysconfig/network-scripts/*";
++    //"/files/etc/sysconfig/network-scripts/*";
++    "/files/etc/network.d/*";
+ 
+ /* Augeas should only load the files we are interested in */
+ static const struct augeas_pv augeas_xfm_common_pv[] = {
+     /* Ifcfg files */
+     { "/augeas/load/Ifcfg/lens", "Sysconfig.lns" },
+     { "/augeas/load/Ifcfg/incl",
+-      "/etc/sysconfig/network-scripts/ifcfg-*" },
++      "/etc/network.d/ifcfg-*" },
++      //"/etc/sysconfig/network-scripts/ifcfg-*" },
+     { "/augeas/load/Ifcfg/excl[1]", "*~" },
+     { "/augeas/load/Ifcfg/excl[2]", "*.bak" },
+     { "/augeas/load/Ifcfg/excl[3]", "*.orig" },
+@@ -107,10 +110,10 @@
+     int nmatches;
+ 
+     nmatches = aug_fmt_match(ncf, NULL,
+-                             "%s[ DEVICE = '%s'"
++                             "%s[ INTERFACE = '%s'"
+                              "    or BRIDGE = '%s'"
+                              "    or MASTER = '%s'"
+-                             "    or MASTER = ../*[BRIDGE = '%s']/DEVICE ]/DEVICE",
++                             "    or MASTER = ../*[BRIDGE = '%s']/INTERFACE ]/INTERFACE",
+                              ifcfg_path, name, name, name, name);
+     return nmatches > 0;
+ }
+@@ -173,7 +176,7 @@
+     aug = get_augeas(ncf);
+     ERR_BAIL(ncf);
+ 
+-    ndevs = aug_fmt_match(ncf, &devs, "%s[DEVICE = '%s']",
++    ndevs = aug_fmt_match(ncf, &devs, "%s[INTERFACE = '%s']",
+                           ifcfg_path, name);
+     ERR_COND_BAIL(ndevs < 0, ncf, EOTHER);
+ 
+@@ -296,7 +299,8 @@
+     int result = 0, ndevs;
+     char **devs = NULL;
+ 
+-    ndevs = aug_fmt_match(ncf, &devs, "%s/DEVICE", ifcfg_path);
++    ndevs = aug_fmt_match(ncf, &devs, "%s/INTERFACE", ifcfg_path);
++    printf("%i\n", ndevs);
+     ERR_COND_BAIL(ndevs < 0, ncf, EOTHER);
+ 
+     result = uniq_ifcfg_paths(ncf, ndevs, devs, intf);
+@@ -453,11 +457,11 @@
+ 
+ int drv_list_interfaces(struct netcf *ncf, int maxnames, char **names,
+         unsigned int flags) {
+-    return list_interface_ids(ncf, maxnames, names, flags, "DEVICE");
++    return list_interface_ids(ncf, maxnames, names, flags, "INTERFACE");
+ }
+ 
+ int drv_num_of_interfaces(struct netcf *ncf, unsigned int flags) {
+-    return list_interface_ids(ncf, 0, NULL, flags, "DEVICE");
++    return list_interface_ids(ncf, 0, NULL, flags, "INTERFACE");
+ }
+ 
+ struct netcf_if *drv_lookup_by_name(struct netcf *ncf, const char *name) {
+@@ -599,8 +603,8 @@
+ 
+     ncf = nif->ncf;
+     ndevs = aug_fmt_match(ncf, &devs,
+-              "%s[ DEVICE = '%s' or BRIDGE = '%s' or MASTER = '%s'"
+-              "    or MASTER = ../*[BRIDGE = '%s']/DEVICE ]/DEVICE",
++              "%s[ INTERFACE = '%s' or BRIDGE = '%s' or MASTER = '%s'"
++              "    or MASTER = ../*[BRIDGE = '%s']/INTERFACE ]/INTERFACE",
+               ifcfg_path, nif->name, nif->name, nif->name, nif->name);
+     ERR_BAIL(ncf);
+ 
+@@ -745,7 +749,7 @@
+     int nmatches = 0;
+ 
+     nmatches = aug_fmt_match(ncf, NULL,
+-                             "%s[ DEVICE = '%s' and TYPE = 'Bridge']",
++                             "%s[ INTERFACE = '%s' and TYPE = 'Bridge']",
+                              ifcfg_path, name);
+     return nmatches > 0;
+ }
+@@ -758,7 +762,7 @@
+     ERR_BAIL(ncf);
+ 
+     nslaves = aug_fmt_match(ncf, slaves,
+-                            "%s[ BRIDGE = '%s' ]/DEVICE", ifcfg_path, name);
++                            "%s[ BRIDGE = '%s' ]/INTERFACE", ifcfg_path, name);
+     ERR_BAIL(ncf);
+     for (int i=0; i < nslaves; i++) {
+         char *p = (*slaves)[i];
+@@ -790,8 +794,8 @@
+     /* The last or clause catches slaves of a bond that are enslaved to
+      * a bridge NAME */
+     r = xasprintf(&path,
+-          "%s[ DEVICE = '%s' or BRIDGE = '%s' or MASTER = '%s' "
+-          "    or MASTER = ../*[BRIDGE = '%s']/DEVICE ]",
++          "%s[ INTERFACE = '%s' or BRIDGE = '%s' or MASTER = '%s' "
++          "    or MASTER = ../*[BRIDGE = '%s']/INTERFACE ]",
+                   ifcfg_path, name, name, name, name);
+     ERR_NOMEM(r < 0, ncf);
+ 
+@@ -967,7 +971,7 @@
+     for (int i = 0; i < nmatches; i++) {
+         if (!has_ifcfg_file(ncf, matches[i]))
+             continue;
+-        r = xasprintf(&ifcfg, "%s[DEVICE = '%s']", ifcfg_path, matches[i]);
++        r = xasprintf(&ifcfg, "%s[INTERFACE = '%s']", ifcfg_path, matches[i]);
+         ERR_NOMEM(r < 0, ncf);
+ 
+         if (! is_slave(ncf, ifcfg))
+@@ -1023,7 +1027,10 @@
+  */
+ 
+ int drv_if_up(struct netcf_if *nif) {
+-    static const char *const ifup = "ifup";
++    //static const char *const ifup = "ifup";
++    static const char *const ifup = "netcfg";
++    static const char *const ifprefix = "ifcfg-";
++    char ifname[strlen(nif->name) + sizeof(ifprefix)];
+     struct netcf *ncf = nif->ncf;
+     char **slaves = NULL;
+     int nslaves = 0;
+@@ -1035,11 +1042,24 @@
+         ERR_BAIL(ncf);
+ 
+         for (int i=0; i < nslaves; i++) {
+-            run1(ncf, ifup, slaves[i]);
++            //run1(ncf, ifup, slaves[i]);
++            const char *const argv[] = {
++                ifup, "-u", slaves[i], NULL
++            };
++
++            run_program(ncf, argv);
+             ERR_BAIL(ncf);
+         }
+     }
+-    run1(ncf, ifup, nif->name);
++    //run1(ncf, ifup, nif->name);
++    /* Interfaces name have to be equal to script under /etc/network.d */
++    strcpy(ifname, ifprefix);
++    strcat(ifname, nif->name);
++    const char *const argv[] = {
++                ifup, "-u", ifname, NULL
++            };
++
++    run_program(ncf, argv);
+     ERR_BAIL(ncf);
+     result = 0;
+  error:
+@@ -1048,13 +1068,23 @@
+ }
+ 
+ int drv_if_down(struct netcf_if *nif) {
+-    static const char *const ifdown = "ifdown";
++    //static const char *const ifdown = "ifdown";
++    static const char *const ifdown = "netcfg";
++    static const char *const ifprefix = "ifcfg-";
++    char ifname[strlen(nif->name) + sizeof(ifprefix)];
+     struct netcf *ncf = nif->ncf;
+     char **slaves = NULL;
+     int nslaves = 0;
+     int result = -1;
+ 
+-    run1(ncf, ifdown, nif->name);
++    //run1(ncf, ifdown, nif->name);
++    strcpy(ifname, ifprefix);
++    strcat(ifname, nif->name);
++    const char *const argv[] = {
++        ifdown, "-d", ifname, NULL
++    };
++
++    run_program(ncf, argv);
+     ERR_BAIL(ncf);
+     if (is_bridge(ncf, nif->name)) {
+         /* Bring up bridge slaves after the bridge */
+@@ -1062,7 +1092,12 @@
+         ERR_BAIL(ncf);
+ 
+         for (int i=0; i < nslaves; i++) {
+-            run1(ncf, ifdown, slaves[i]);
++            //run1(ncf, ifdown, slaves[i]);
++            const char *const argvs[] = {
++                ifdown, "-d", slaves[i], NULL
++            };
++
++            run_program(ncf, argvs);
+             ERR_BAIL(ncf);
+         }
+     }
+diff -ur netcf-0.1.7.ori//tests/interface/bridge.xml~ netcf-0.1.7/tests/interface/bridge.xml~
+--- netcf-0.1.7.ori//tests/interface/bridge.xml~	2009-10-13 19:14:53.000000000 +0200
++++ netcf-0.1.7/tests/interface/bridge.xml~	2009-10-14 05:09:05.000000000 +0200
+@@ -2,10 +2,12 @@
+   <start mode="onboot"/>
+   <mtu size="1500"/>
+   <protocol family="ipv4">
+-    <ip address="192.168.80.5" prefix="24"/>
++    <dhcp/>
+   </protocol>
+   <bridge stp="off" delay="0.01">
+     <interface type="ethernet" name="eth0">
++      <mac address="ab:bb:cc:dd:ee:ff"/>
+     </interface>
++    <interface type="ethernet" name="eth1"/>
+   </bridge>
+ </interface>
+diff -ur netcf-0.1.7.ori//tests/interface/vlan.xml~ netcf-0.1.7/tests/interface/vlan.xml~
+--- netcf-0.1.7.ori//tests/interface/vlan.xml~	2010-07-30 06:02:39.000000000 +0200
++++ netcf-0.1.7/tests/interface/vlan.xml~	2010-09-07 18:26:22.000000000 +0200
+@@ -1,9 +1,9 @@
+-<interface type="vlan" name="eth1.42">
++<interface type="vlan" name="eth0.42">
+   <start mode="onboot"/>
+   <protocol family="ipv4">
+     <dhcp peerdns="no"/>
+   </protocol>
+   <vlan tag="42">
+-    <interface name="eth1"/>
++    <interface name="eth0"/>
+   </vlan>
+ </interface>
