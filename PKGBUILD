@@ -1,3 +1,4 @@
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Aurélien Wailly <aurelien.wailly@gmail.com>
 
 pkgname=netcf
