@@ -1,7 +1,8 @@
 # Contributor: Andreas Boehler <andy dot boehler at gmx dot at> 
+# Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 
 pkgname=mbm-gpsd-git
-pkgver=20091116
+pkgver=20111214
 pkgrel=1
 pkgdesc="GPS support files for Ericsson F3507g that provide an easy interface to gpsd"
 arch=('i686' 'x86_64')
