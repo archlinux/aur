@@ -1,7 +1,8 @@
 # Contributor: Andreas Boehler <andy dot boehler at gmx dot at> 
+# Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 
 pkgname=mbm-gps-control-git
-pkgver=20091116
+pkgver=20111213
 pkgrel=1
 pkgdesc="Graphical interface to mbm-gpsd"
 arch=('i686' 'x86_64')

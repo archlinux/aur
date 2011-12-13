@@ -1,6 +1,6 @@
 pkgbase = mbm-gps-control-git
 	pkgdesc = Graphical interface to mbm-gpsd
-	pkgver = 20091116
+	pkgver = 20111213
 	pkgrel = 1
 	url = http://mbm.sourceforge.net/
 	arch = i686
