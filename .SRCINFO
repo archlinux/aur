@@ -1,0 +1,16 @@
+pkgbase = mbm-gps-control-git
+	pkgdesc = Graphical interface to mbm-gpsd
+	pkgver = 20091116
+	pkgrel = 1
+	url = http://mbm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = networkmanager
+	depends = network-manager-applet
+	depends = intltool
+	provides = mbm-gps-control
+
+pkgname = mbm-gps-control-git
+
