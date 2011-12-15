@@ -1,7 +1,7 @@
 # Contributor: Massimiliano Torromeo <Massimiliano DOT Torromeo AT gmail DOT com>
 pkgname=trojita-git
 _pkgname=trojita
-pkgver=20100712
+pkgver=20111215
 pkgrel=1
 pkgdesc="A QT IMAP email client"
 arch=(i686 x86_64)
@@ -35,4 +35,6 @@ build() {
 	make
 
 	install -D -m755 src/Gui/trojita "$pkgdir/usr/bin/trojita"
+	install -D -m644 src/Gui/trojita.desktop "$pkgdir/usr/share/applications/trojita.desktop"
+	install -D -m644 src/icons/trojita.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/trojita.svg"
 }
