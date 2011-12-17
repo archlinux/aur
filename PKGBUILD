@@ -36,7 +36,7 @@ package() {
   install -D -m755 game $pkgdir/opt/frogatto/game
   install -D -m755 server $pkgdir/opt/frogatto/server
 
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/frogatto/LICENSE
+  install -D -m644 src/LICENSE $pkgdir/usr/share/licenses/frogatto/LICENSE
 
   cd $srcdir
   install -DT -m755 frogatto $pkgdir/usr/bin/frogatto
