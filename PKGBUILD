@@ -3,14 +3,14 @@
 
 pkgname=qmc2
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 4 based UNIX MAME frontend supporting SDLMAME"
 url="http://qmc2.arcadehits.net"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('qt' 'phonon' 'sdl' 'libxmu')
+depends=('qtwebkit' 'phonon' 'sdl')
 makedepends=('rsync' 'mesa')
-source=("http://downloads.sourceforge.net/project/qmc2/qmc2/$pkgver/qmc2-$pkgver.tar.bz2")
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-$pkgver.tar.bz2")
 md5sums=('3439fb62c95ff702e3c4194c05353169')
 
 build() {
