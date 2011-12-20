@@ -2,7 +2,7 @@
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
-pkgver=5.3
+pkgver=6.0
 pkgrel=1
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('libtool')
 install=$pkgname.install
 changelog=$pkgname.changelog
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('a8666e63358d20d6ead6b9f309434bdfcbd7b869ed7fb425ca8e0a2f7166af22')
+sha256sums=('81c856434a86977039c36cb10f2427cc8cb1ea29a778f24fff2285d49c717979')
 
 build() {
   cd $pkgname-$pkgver
