@@ -10,28 +10,28 @@
 
 pkgname=mono-tools
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.mono-project.com/"
-depends=('mono>=2.10.1' 'desktop-file-utils' 'gnome-desktop-sharp>=2.26.0' 'gluezilla')
-makedepends=('gecko-sharp-2.0>=0.13')
+depends=('libgnome-sharp' 'gtkhtml-sharp')
+makedepends=('gconf-sharp')
 install=$pkgname.install
-source=(http://ftp.novell.com/pub/mono/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
+source=(http://download.mono-project.com/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('da178df2c119c696c08c09dc9eb01994')
 
 build() {
  # get rid of that .wapi errors; thanks to brice
   export MONO_SHARED_DIR="${startdir}/src/weird"
   mkdir -p "${MONO_SHARED_DIR}"
-
-  cd ${startdir}/src/${pkgname}-${pkgver}
-  aclocal || return 1
-  autoconf || return 1
-  automake || return 1
-  #sed -i 's:^Exec=.*$:Exec=/usr/bin/monodoc:' docbrowser/monodoc.desktop.in
-  ./configure --prefix=/usr || return 1
-  make || return 1
-  make GACUTIL="/usr/bin/gacutil /root ${startdir}/pkg/usr/lib" DESTDIR=${startdir}/pkg install || return 1
+  cd "$srcdir/$pkgname-$pkgver"
+  autoreconf -fi 
+  ./configure --prefix=/usr
+  make
 }
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make GACUTIL="/usr/bin/gacutil /root $pkgdir/usr/lib" DESTDIR="$pkgdir" install
+ }

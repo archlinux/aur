@@ -1,9 +1,6 @@
 post_install() {
-  # diable for a while maybe we can implement something in pacman to make it faster
-  #echo "creating index ... this could take a up to several minutes ..."
-  #monodoc --make-search-index > /dev/null  2>&1
-  echo "update desktop mime database..."
-  update-desktop-database -q
+  echo "update icon cache..." 
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 
@@ -23,8 +20,8 @@ post_remove() {
   echo "removing index..."
   rm -f  /usr/lib/monodoc/monodoc.index
   rm -rf /usr/lib/monodoc/search_index
-  echo "update desktop mime database..."
-  update-desktop-database -q
+  echo "update icon cache..."
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 # vim: ft=sh
