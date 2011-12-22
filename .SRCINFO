@@ -18,6 +18,7 @@ pkgbase = tomahawk
 	depends = qtweetlib
 	depends = quazip
 	depends = attica
+	depends = qtwebkit
 	optdepends = tomahawk-spotify-git: spotify resolver
 	provides = tomahawk
 	conflicts = tomahawk-git
