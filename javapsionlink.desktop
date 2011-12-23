@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Java Psion Link
+GenericName=Psion data transfer
+GenericName[de]=Psion Datentransfer
+Comment=Data transfer between Psion EPOC PDA and PC via RS-232; PsiWin clone
+Comment[de]=Datentransfer zwischen Psion EPOC PDA und PC über RS-232; PsiWin-Klon
+Icon=/usr/share/pixmaps/javapsionlink.gif
+Exec=jpl2
+Categories=Utility;FileTools;Java;

@@ -1,0 +1,7 @@
+diff --git a/jpl.mf.orig b/jpl.mf
+index 2edb880..ba16f64 100644
+--- a/jpl.mf.orig
++++ b/jpl.mf
+@@ -1,2 +1 @@
+ Main-class: jpl2.PsionLink
+-Class-Path: lib/bsh-core-2.0b2.jar

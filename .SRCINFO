@@ -1,0 +1,24 @@
+pkgbase = javapsionlink-cvs
+	pkgdesc = Data transfer between Psion EPOC PDA and PC via RS-232; PsiWin clone
+	pkgver = 2.0_beta1
+	pkgrel = 1
+	url = http://littlespikeyland.com/psionlink/
+	install = javapsionlink.install
+	arch = any
+	license = LGPL
+	makedepends = java-environment
+	makedepends = cvs
+	makedepends = apache-ant
+	depends = java-runtime
+	depends = rxtx
+	source = replace-javax.comm.patch
+	source = remove-beanshell-classpath.patch
+	source = javapsionlink.desktop
+	source = javapsionlink.sh
+	md5sums = 29ac8e314bc13e912f74ebeee340ac88
+	md5sums = 9c1f3669a4ed6ef1ee0a6940be7f2cf2
+	md5sums = 20581709a51cbad21029bc8b829ae1df
+	md5sums = 8d8ec03c8acf71f12b70794187286c94
+
+pkgname = javapsionlink-cvs
+

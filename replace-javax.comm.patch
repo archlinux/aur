@@ -1,0 +1,39 @@
+From 89420355a7231b2501bb4a06629d9f7bc7f02f11 Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Mon, 19 Dec 2011 23:01:09 +0100
+Subject: [PATCH] Use gnu.io instead of javax.comm for Java Communications API
+
+---
+ jpl2/link/layers/PhysicalLayer.java          |    2 +-
+ jpl2/link/layers/SerialEventInputStream.java |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/jpl2/link/layers/PhysicalLayer.java b/jpl2/link/layers/PhysicalLayer.java
+index 93dbe64..9563180 100644
+--- a/jpl2/link/layers/PhysicalLayer.java
++++ b/jpl2/link/layers/PhysicalLayer.java
+@@ -24,7 +24,7 @@ import jpl2.common.Resources;
+ import jpl2.link.Link;
+ import jpl2.PsionLink;
+ 
+-import javax.comm.*;
++import gnu.io.*; // was javax.comm.*
+ import java.io.*;
+ import java.util.*;
+ 
+diff --git a/jpl2/link/layers/SerialEventInputStream.java b/jpl2/link/layers/SerialEventInputStream.java
+index 79dc60b..66f28d1 100644
+--- a/jpl2/link/layers/SerialEventInputStream.java
++++ b/jpl2/link/layers/SerialEventInputStream.java
+@@ -20,7 +20,7 @@
+ package jpl2.link.layers;
+ 
+ import java.io.*;
+-import javax.comm.*;
++import gnu.io.*; // was javax.comm.*
+ 
+ 
+ public class SerialEventInputStream extends InputStream implements SerialPortEventListener {
+-- 
+1.7.8
+
