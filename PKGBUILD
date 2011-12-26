@@ -14,7 +14,7 @@ _buildtype="RelWithDebInfo"
 
 pkgname=tomahawk
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -50,4 +50,7 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}-build
   make DESTDIR=${pkgdir} install
+  # move everything from /usr/libexec per Arch's policy
+  mkdir ${pkgdir}/usr/lib/tomahawk
+  mv ${pkgdir}/usr/libexec/* ${pkgdir}/usr/lib/tomahawk/
 }
