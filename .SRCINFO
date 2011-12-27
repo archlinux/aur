@@ -1,0 +1,17 @@
+pkgbase = clunc
+	pkgdesc = Client for LaCie U-Boot NetConsole
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://lacie-nas.org/doku.php?id=clunc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = sh
+	depends = netcat
+	source = ftp://lacie-nas.org/tools/clunc-1.1.tar.gz
+	md5sums = 2b9d7ac203dfc3b939d5fe1ae0a723be
+	sha1sums = 813c54e8df5735bfcd306a9da2c9f3a991df180d
+
+pkgname = clunc
+
