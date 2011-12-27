@@ -3,7 +3,7 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=3.1.4
+pkgver=3.1.6
 _basever=3.1
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
@@ -19,7 +19,7 @@ source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.xz
         #http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.sign
 	#http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign
 md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
-         'ffb768bb3c42c94876f3f84aa6f779e5')
+         'b59adeac6d593fe993e964ea9e259c42')
 
 build() {
   cd ${srcdir}/linux-${_basever}
