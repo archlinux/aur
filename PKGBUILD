@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail · com>
 pkgname=clunc
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Client for LaCie U-Boot NetConsole"
 arch=('i686' 'x86_64')
 url="http://lacie-nas.org/doku.php?id=clunc"
@@ -24,6 +24,8 @@ package() {
   install -d "$pkgdir/usr/bin"
   install clunc "$pkgdir/usr/bin/clunc"
   install build/clunc-open "$pkgdir/usr/bin/clunc-open"
+
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
 }
 
 # vim:set ts=2 sw=2 et:

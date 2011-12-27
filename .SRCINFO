@@ -1,7 +1,7 @@
 pkgbase = clunc
 	pkgdesc = Client for LaCie U-Boot NetConsole
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lacie-nas.org/doku.php?id=clunc
 	arch = i686
 	arch = x86_64
