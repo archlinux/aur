@@ -1,7 +1,7 @@
 pkgbase = tomahawk
 	pkgdesc = A Music Player App written in C++/Qt
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
 	arch = i686
