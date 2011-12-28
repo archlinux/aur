@@ -1,0 +1,11 @@
+--- src/chromium-16.0.912.63/chrome/nacl.gypi.orig	2011-12-28 19:10:42.000000000 +0200
++++ src/chromium-16.0.912.63/chrome/nacl.gypi	2011-12-28 19:11:09.000000000 +0200
+@@ -275,6 +275,8 @@
+               'cflags!': [
+                 '-fasan',
+                 '-w',
++                '-fstack-protector',
++                '-fstack-protector-all',
+               ],
+               'conditions': [
+                 ['clang==1', {

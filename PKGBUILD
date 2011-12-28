@@ -9,7 +9,7 @@
 
 pkgname=chromium
 pkgver=16.0.912.63
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -23,20 +23,21 @@ makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
 [[ $CARCH == x86_64 ]] && makedepends+=('lib32-zlib')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
-options=('!buildflags')
 install=chromium.install
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.bz2
         http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/nacl_sdk.zip
         chromium.desktop
         chromium.sh
         gcc-4.6.patch
-        fix-downloads-on-ntfs.patch)
+        fix-downloads-on-ntfs.patch
+        nacl-cflags-remove-fstack-protector.patch)
 sha256sums=('da806829adee04c0701444b1842975eec2e4b745956933d760153a414b53c588'
             '964fe3a5ec56f2505649aba00f900abe4205674b7fdaa16772647d347173bb01'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             '9c5e0803904d1a0e71ab7444c92a7046a34a9518eeba7a70f2eec7abecb8bf4e'
-            '6364c464d1885b2ec21076f01f993725925ccc066805f1ecbbeaf6f79b93c209')
+            '6364c464d1885b2ec21076f01f993725925ccc066805f1ecbbeaf6f79b93c209'
+            '406f06a1a18fad4ba9e5d4e142509f1ac1512d176cc36c1744a7abf949991e2e')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
@@ -52,6 +53,10 @@ build() {
   # Fix downloading on NTFS partitions
   # http://code.google.com/p/chromium/issues/detail?id=102200
   patch -Np2 -i "$srcdir/fix-downloads-on-ntfs.patch"
+
+  # Filter -fstack-protector out of cflags for nacl_helper_bootstrap
+  # http://code.google.com/p/chromium/issues/detail?id=104569
+  patch -Np2 -i "$srcdir/nacl-cflags-remove-fstack-protector.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -73,6 +78,9 @@ build() {
   # We need to disable system_ssl until "next protocol negotiation" support is
   # available in our nss package.
   # (See https://bugzilla.mozilla.org/show_bug.cgi?id=547312)
+
+  # CFLAGS are passed through release_extra_cflags below
+  export -n CFLAGS CXXFLAGS
 
   build/gyp_chromium -f make build/all.gyp --depth=. \
     -Dno_strict_aliasing=1 \
