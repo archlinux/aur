@@ -2,15 +2,15 @@
 # Contributor: Testuser_01 <mail@nico-siebler.de>
 
 pkgname=swaks
-pkgver=20100211.0
-pkgrel=2
+pkgver=20111230.0
+pkgrel=1
 pkgdesc='Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH'
 arch=('any')
 url="http://jetmore.org/john/code/${pkgname}/"
 license=('GPL')
 depends=('perl-net-dns')
 source=("http://jetmore.org/john/code/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('b2ad29237f54208989a738c9a39a95f2')
+md5sums=('ab6f139e78b3a88d5cd284f8dd7c36e6')
 
 package() {
   cd "${pkgname}-${pkgver}"
