@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SynologyAssistant
+Comment=Program for maintaining Synology NAS
+GenericName=Synology DS Assistant
+Icon=dsassistant.png
+Exec=dsassistant
+Type=Application
+Terminal=false
+Categories=Office;Network;

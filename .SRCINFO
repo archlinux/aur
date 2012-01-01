@@ -1,0 +1,23 @@
+pkgbase = dsassistant
+	pkgdesc = Disk Station Assistant - An app to setup Synology DiskStations
+	pkgver = 1920
+	pkgrel = 1
+	url = http://www.synology.com/releaseNote_enu/Assistant.php
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	depends = lib32-glib2
+	depends = lib32-libxt
+	depends = lib32-libxext
+	depends = lib32-fontconfig
+	depends = lib32-libxrender
+	source = http://download.synology.com/download/ds/DSAssistant/dsassistant_Linux_1920.zip
+	source = SynologyAssistant.desktop
+	source = dsassistant.png
+	md5sums = 99905396e2ee844f4a90e7c38a9199c6
+	md5sums = 73e2c353c541bc79db01d40117d92133
+	md5sums = 6b447bfb0e43256e2bf1d388a1b022d3
+
+pkgname = dsassistant
+
