@@ -1,13 +1,13 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 # Based on package by Jelle van der Waa <jelle vdwaa nl>.
-pkgname=networkmanager-dispatcher-chrony
+pkgname=networkmanager-dispatcher-pdnsd
 pkgver=1.0
-pkgrel=2
-pkgdesc="Dispatcher Script for chrony"
+pkgrel=1
+pkgdesc="Dispatcher Script for pDNSd"
 arch=(any)
 license=('BSD')
 url="http://projects.gnome.org/NetworkManager/"
-depends=('networkmanager' 'chrony')
+depends=('networkmanager' 'pdnsd')
 backup=(etc/NetworkManager/dispatcher.d/00-pdnsd)
 changelog=ChangeLog
 source=("00-pdnsd")

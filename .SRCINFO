@@ -1,16 +1,16 @@
-pkgbase = networkmanager-dispatcher-chrony
-	pkgdesc = Dispatcher Script for chrony
+pkgbase = networkmanager-dispatcher-pdnsd
+	pkgdesc = Dispatcher Script for pDNSd
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 1
 	url = http://projects.gnome.org/NetworkManager/
 	changelog = ChangeLog
 	arch = any
 	license = BSD
 	depends = networkmanager
-	depends = chrony
+	depends = pdnsd
 	backup = etc/NetworkManager/dispatcher.d/00-pdnsd
 	source = 00-pdnsd
 	sha256sums = 2d6d9a47d19cd26255afc1d5bd8699ba8d21f4184d4ab919ae5e3d4bc9545e13
 
-pkgname = networkmanager-dispatcher-chrony
+pkgname = networkmanager-dispatcher-pdnsd
 
