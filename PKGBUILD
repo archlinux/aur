@@ -69,9 +69,9 @@ package() {
 	cd "${srcdir}/${_gitname}_build/"
 	
 	install -d "${pkgdir}/usr/sbin/"
-	install -D -m755 "${srcdir}/${_gitname}_build/src/efibootmgr/efibootmgr" "${pkgdir}/usr/sbin/efibootmgr"
+	install -D -m0755 "${srcdir}/${_gitname}_build/src/efibootmgr/efibootmgr" "${pkgdir}/usr/sbin/efibootmgr"
 	
 	install -d "${pkgdir}/usr/share/man/man8/"
-	install -D -m644 "${srcdir}/${_gitname}_build/src/man/man8/efibootmgr.8" "${pkgdir}/usr/share/man/man8/efibootmgr.8"
+	install -D -m0644 "${srcdir}/${_gitname}_build/src/man/man8/efibootmgr.8" "${pkgdir}/usr/share/man/man8/efibootmgr.8"
 	
 }
