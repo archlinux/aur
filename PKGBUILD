@@ -21,30 +21,32 @@ sha256sums=('5306a6f952d17215b129392953ae6551df0e4cf1960a959ab98c60f27fab9b90')
 
 _gitroot="http://linux.dell.com/git/${_pkgname}.git"
 _gitname="${_pkgname}"
-
+_gitbranch="master"
 
 _update_git() {
 	
-	cd "${srcdir}"
+	cd "${srcdir}/"
+	
 	msg "Connecting to GIT server...."
 	
-	if [ -d "${srcdir}/${_gitname}/" ]
+	if [[ -d "${srcdir}/${_gitname}/" ]]
 	then
 		cd "${srcdir}/${_gitname}/"
 		git reset --hard
 		git fetch
-		git checkout master
-		git merge remotes/origin/master
+		git checkout "${_gitbranch}"
+		git merge "remotes/origin/${_gitbranch}"
 		msg "The local GIT repo has been updated."
 	else
 		git clone "${_gitroot}" "${_gitname}"
+		cd "${srcdir}/${_gitname}/"
+		git checkout "${_gitbranch}"
 		msg "GIT checkout done or server timeout"
 	fi
 	
 	echo
 	
 }
-
 
 build() {
 	
