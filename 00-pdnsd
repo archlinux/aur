@@ -3,38 +3,37 @@
 INTERFACE=$1
 STATUS=$2
 
-# Chrony set-up
-CHRONY=/usr/bin/chronyc
-CONFIG=/etc/chrony.conf
-KEYFILE=`grep ^keyfile $CONFIG | sed 's/[^ ]* //' -`
-COMMANDKEY=`grep ^commandkey $CONFIG | sed 's/[^ ]* //' -`
-PASSWORD=`grep ^$COMMANDKEY $KEYFILE | sed 's/[^ ]* //' -`
+pdnsd_going_up() {
+  # Check whether pDNSd is already running before starting it.
+  if [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` == 'STOPPED' ]; then
+    rc.d start
+  else
+    rc.d restart
+  fi
+}
 
-chrony_cmd() {
-	echo Chrony going $1.
-	exec $CHRONY <<EOF
-password $PASSWORD
-$1
-EOF
+pdnsd_going_down() {
+  # Check for active interface, take offline if none is active
+  if [ ! `nm-tool|grep State|cut -f2 -d' '` = 'connected' ]; then
+    rc.d stop pdnsd
+  else
+    # If another interface is active, restart so we're sure we're using
+    # the active connection.
+    rc.d restart pdnsd
+  fi
 }
 
 case "$STATUS" in
   up)
-    chrony_cmd online
+    pdnsd_going_up
   ;;
   vpn-up)
-    chrony_cmd online
+    pdnsd_going_up
   ;;
   down)
-    # Check for active interface, take offline if none is active
-    if [ ! `nm-tool|grep State|cut -f2 -d' '` = 'connected' ]; then
-      chrony_cmd offline
-    fi
+    pdnsd_going_down
   ;;
   vpn-down)
-    # Check for active interface, take offline if none is active
-    if [ ! `nm-tool|grep State|cut -f2 -d' '` = 'connected' ]; then
-      chrony_cmd offline
-    fi
+    pdnsd_going_down
   ;;
 esac

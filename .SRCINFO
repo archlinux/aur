@@ -10,7 +10,7 @@ pkgbase = networkmanager-dispatcher-pdnsd
 	depends = pdnsd
 	backup = etc/NetworkManager/dispatcher.d/00-pdnsd
 	source = 00-pdnsd
-	sha256sums = 2d6d9a47d19cd26255afc1d5bd8699ba8d21f4184d4ab919ae5e3d4bc9545e13
+	sha256sums = b158e54d240a5f553a22b503a392bb59bc061f871d55c5625b0483dc7ad1302c
 
 pkgname = networkmanager-dispatcher-pdnsd
 
