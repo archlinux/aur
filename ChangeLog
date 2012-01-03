@@ -1,18 +1,8 @@
-2011-11-?? Frederik "Freso" S. Olesen <freso.dk@gmail.com>
-
-	* ?-? :
-	Changed the URL to point to the current NetworkManager site.
-
-2011-11-09 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
-
-	* 1.0-2 :
-	Added the dispatcher script to backup=(), to enable local modifications.
-
-2011-11-01 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+2012-01-?? Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 1.0-1 :
-	Initial release of networkmanager-dispatcher-chrony.
+	Initial release of networkmanager-dispatcher-pdnsd.
 	The PKGBUILD (and to some degree the script), was based on the
-	networkmanager-dispatcher-ntpd package and script.
+	networkmanager-dispatcher-chrony package and script.
 
 	Development happens at GitHub: https://github.com/Freso/PKGBUILDs
