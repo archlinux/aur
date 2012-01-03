@@ -2,8 +2,8 @@
 # Maintainer  : andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.47.0
-_boostver=1_47_0
+pkgver=1.48.0
+_boostver=1_48_0
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime (32
 bit)"
@@ -12,9 +12,10 @@ url="http://www.boost.org"
 license=('custom')
 groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-gcc-libs')
-makedepends=('icu' 'python' 'python2' 'bzip2' 'lib32-zlib' 'openmpi' 'gcc-multilib')
+makedepends=('icu' 'bzip2' 'lib32-zlib' 'openmpi' 'gcc-multilib')
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
-md5sums=('ff180a5276bec773a7625cac7e2288e8')
+md5sums=('313a11e97eb56eb7efd18325354631be')
+sha1sums=('2199cc3e745a61d45e292ec33af9847252101a46')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -28,10 +29,10 @@ build()
 
   # set python path for bjam
   cd "${srcdir}/boost_${_boostver}/tools"
-  echo "using python : 2.7 : /usr/bin/python2 ;" >> build/v2/user-config.jam
-  echo "using python : 3.2 : /usr/bin/python3.2 : /usr/include/python3.2mu :
-  /usr/lib32 ;" >> build/v2/user-config.jam
-  echo "using mpi ;" >> build/v2/user-config.jam
+#  echo "using python : 2.7 : /usr/bin/python2 ;" >> build/v2/user-config.jam
+#  echo "using python : 3.2 : /usr/bin/python3.2 : /usr/include/python3.2mu :
+#  /usr/lib32 ;" >> build/v2/user-config.jam
+#  echo "using mpi ;" >> build/v2/user-config.jam
 
   # build bjam
   cd "${srcdir}/boost_${_boostver}/tools/build/v2/engine"
@@ -63,6 +64,9 @@ build()
       runtime-link=shared link=shared,static \
       cflags=-fno-strict-aliasing \
       toolset=gcc \
+	  address-model=32 \
+	  --without-python
+      --without-mpi
       --prefix="${_stagedir}" \
       -sTOOLS=gcc \
       --layout=system \
