@@ -6,6 +6,7 @@ pkgdesc="C++ bindings for the gdl library"
 arch=('x86_64' 'i686')
 url="http://git.gnome.org/browse/gdlmm/"
 depends=('gdl' 'gtkmm3')
+options=(!libtool !emptydirs)
 license=('LGPL')
 source=("http://ftp.gnome.org/pub/GNOME/sources/gdlmm/3.3/$pkgname-$pkgver.tar.xz")
 sha256sums=('cf3253be052737332b2b6e9dbd6f62d79cbc3f3398497158c0099dbc45741a46')
