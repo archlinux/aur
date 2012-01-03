@@ -29,8 +29,7 @@ _update_git() {
 	
 	msg "Connecting to GIT server...."
 	
-	if [[ -d "${srcdir}/${_gitname}/" ]]
-	then
+	if [[ -d "${srcdir}/${_gitname}/" ]]; then
 		cd "${srcdir}/${_gitname}/"
 		git reset --hard
 		git fetch
