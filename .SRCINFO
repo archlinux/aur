@@ -1,0 +1,20 @@
+pkgbase = stopmotion
+	pkgdesc = Stop motion animation creation program
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://stopmotion.bjoernen.com
+	arch = i686
+	license = GPL
+	makedepends = pkgconfig
+	depends = qt
+	depends = libtar
+	depends = sdl_image
+	depends = libxml2
+	depends = libvorbis
+	depends = fam
+	depends = inotify-tools
+	source = http://developer.skolelinux.no/info/studentgrupper/2005-hig-stopmotion/project_management/webpage/releases/stopmotion-0.6.2.tar.gz
+	md5sums = a139f036286f31bba21effb2b6553d1e
+
+pkgname = stopmotion
+
