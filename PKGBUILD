@@ -41,4 +41,4 @@ build() {
 	install -D LICENSE "$pkgdir/usr/share/licenses/sqlantaresia/COPYING"
 }
 
-md5sums=('e943216b91352debf3a13fe8834701d5')
+md5sums=('2d85132c362462e0a628e345ae48710e')
