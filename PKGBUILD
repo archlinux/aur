@@ -17,14 +17,13 @@ source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz
 	"boost148.patch" "libkipi140.patch")
 sha1sums=('6cadb838669d1bdcbd6abb677889f7d68d696383'
           '93853084905b21309c46ce7d585021e76283d429'
-          '3447ce950948d1871cf69be4eadfc95168df7c86')
-
+          '8a8f624fd0ca768a9dcd706405eb6e4944892d87')
 build() {
   cd "${srcdir}"
 
   pushd ${pkgname}-${pkgver}/core
   patch -Np0 -i ${srcdir}/boost148.patch
-  patch -Np0 -i ${srcdir}/libkipi140.patch
+  patch -Np1 -i ${srcdir}/libkipi140.patch
   popd
 
   mkdir build
