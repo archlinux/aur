@@ -6,39 +6,36 @@ pkgbase=linux
 pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
-_basekernel=3.1
-pkgver=${_basekernel}.7
+_basekernel=3.2
+pkgver=${_basekernel}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.1.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
         'change-default-console-loglevel.patch'
         'i915-fix-ghost-tv-output.patch'
-        'i915-fix-incorrect-error-message.patch'
         'usb-add-reset-resume-quirk-for-several-webcams.patch')
-md5sums=('edbdc798f23ae0f8045c82f6fa22c536'
-         '499626638e433ffc77f938d0bc63a041'
-         '1e92ea598ca58ef8d73b92863cfef43c'
-         'a5936cb535409a37f31a8f1882454770'
+md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
+         '52a4972b75e5e083cadd1dfa3e034d79'
+         'caa5cd741b48e62d535c6b41149a3903'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '263725f20c0b9eb9c353040792d644e5'
-         'a50c9076012cb2dda49952dc6ec3e9c1'
          '52d41fa61e80277ace2b994412a0c856')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -51,11 +48,6 @@ build() {
   # then dropped because the reasoning was unclear. However, it is clearly
   # needed.
   patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
-
-  # In 3.1.1, a DRM_DEBUG message is falsely declared as DRM_ERROR. This
-  # worries users, as this message is displayed even at loglevel 4. Fix
-  # this.
-  patch -Np1 -i "${srcdir}/i915-fix-incorrect-error-message.patch"
 
   # Add the USB_QUIRK_RESET_RESUME for several webcams
   # FS#26528
@@ -302,3 +294,4 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
+
