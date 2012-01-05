@@ -1,11 +1,11 @@
-# Maintainer: Andrea Scarpino <ronald@archlinux.org>
+# Maintainer: Ronald van Haren <ronald@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,11 +13,20 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin'
              'cmake' 'automoc4' 'doxygen')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('15b8b16d7cce6ac50fb958d30166214f2f2b83ee')
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+	"boost148.patch" "libkipi140.patch")
+sha1sums=('6cadb838669d1bdcbd6abb677889f7d68d696383'
+          '93853084905b21309c46ce7d585021e76283d429'
+          '3447ce950948d1871cf69be4eadfc95168df7c86')
 
 build() {
   cd "${srcdir}"
+
+  pushd ${pkgname}-${pkgver}/core
+  patch -Np0 -i ${srcdir}/boost148.patch
+  patch -Np0 -i ${srcdir}/libkipi140.patch
+  popd
+
   mkdir build
   cd build
   # Use internal lensfun (FS#21816)

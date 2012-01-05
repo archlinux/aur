@@ -1,0 +1,99 @@
+diff --git a/utilities/setup/setupplugins.cpp b/utilities/setup/setupplugins.cpp
+index 0f4030a..b8efb35 100644
+--- a/utilities/setup/setupplugins.cpp
++++ b/utilities/setup/setupplugins.cpp
+@@ -6,8 +6,8 @@
+  * Date        : 2004-01-02
+  * Description : setup Kipi plugins tab.
+  *
+- * Copyright (C) 2004-2011 by Gilles Caulier <caulier dot gilles at gmail dot com>
+- * Copyright (C) 2011 by Andi Clemens <andi dot clemens at googlemail dot com>
++ * Copyright (C) 2004-2012 by Gilles Caulier <caulier dot gilles at gmail dot com>
++ * Copyright (C) 2011-2012 by Andi Clemens <andi dot clemens at googlemail dot com>
+  *
+  * This program is free software; you can redistribute it
+  * and/or modify it under the terms of the GNU General
+@@ -100,6 +100,11 @@ SetupPlugins::SetupPlugins(QWidget* parent)
+ 
+     panel->setLayout(mainLayout);
+ 
++#if KIPI_VERSION < 0x010400
++    d->checkAllBtn->setVisible(false);
++    d->clearBtn->setVisible(false);
++#endif
++
+     initPlugins();
+ 
+     // --------------------------------------------------------
+@@ -158,14 +163,18 @@ void SetupPlugins::applyPlugins()
+ void SetupPlugins::slotCheckAll()
+ {
+     QApplication::setOverrideCursor(Qt::WaitCursor);
++#if KIPI_VERSION >= 0x010400
+     d->kipiConfig->slotCheckAll();
++#endif
+     QApplication::restoreOverrideCursor();
+ }
+ 
+ void SetupPlugins::slotClear()
+ {
+     QApplication::setOverrideCursor(Qt::WaitCursor);
++#if KIPI_VERSION >= 0x010400
+     d->kipiConfig->slotClear();
++#endif
+     QApplication::restoreOverrideCursor();
+ }
+ 
+diff --git a/utilities/setup/setupplugins.h b/utilities/setup/setupplugins.h
+index 271a569..114e0fa 100644
+--- a/utilities/setup/setupplugins.h
++++ b/utilities/setup/setupplugins.h
+@@ -6,8 +6,8 @@
+  * Date        : 2004-01-02
+  * Description : setup Kipi plugins tab.
+  *
+- * Copyright (C) 2004-2011 by Gilles Caulier <caulier dot gilles at gmail dot com>
+- * Copyright (C) 2011 by Andi Clemens <andi dot clemens at googlemail dot com>
++ * Copyright (C) 2004-2012 by Gilles Caulier <caulier dot gilles at gmail dot com>
++ * Copyright (C) 2011-2012 by Andi Clemens <andi dot clemens at googlemail dot com>
+  *
+  * This program is free software; you can redistribute it
+  * and/or modify it under the terms of the GNU General
+
+  
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f09b85c..9d07415 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ # @date   2004-02-01
+ # @brief  KDE Image Plugin Interface
+ #
+-# @author Copyright (C) 2004-2011 by Gilles Caulier
++# @author Copyright (C) 2004-2012 by Gilles Caulier
+ #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
+ #
+ # This program is free software; you can redistribute it
+@@ -61,10 +61,11 @@ ADD_DEFINITIONS(-DKDE_DEFAULT_DEBUG_AREA=${LIBKIPI_AREA_CODE_GENERAL})
+ # 1.1.0 => 7.1.0  (released with KDE 4.5.0)
+ # 1.2.0 => 8.0.0  (released with KDE 4.6.0)
+ # 1.3.0 => 8.0.1  (released with KDE 4.7.1 - Set deprecated ImageInfo::title() and ImageInfo::setTitle(). Add ImageInfo::name() and ImageInfo::setName().
++# 1.4.0 => 8.0.2  (released with KDE 4.8.0 - Add 2 new slots in ConfigWidget class).
+ 
+ # Library API version
+ SET(KIPI_LIB_MAJOR_VERSION "1")
+-SET(KIPI_LIB_MINOR_VERSION "3")
++SET(KIPI_LIB_MINOR_VERSION "4")
+ SET(KIPI_LIB_PATCH_VERSION "0")
+ 
+ # Suffix to add at end of version string. Usual values are:
+@@ -80,7 +81,7 @@ SET(KIPI_LIB_SUFFIX_VERSION "")
+ # For details : http://www.gnu.org/software/libtool/manual/libtool.html#Updating-version-info
+ SET(KIPI_LIB_SO_CUR_VERSION "8")
+ SET(KIPI_LIB_SO_REV_VERSION "0")
+-SET(KIPI_LIB_SO_AGE_VERSION "1")
++SET(KIPI_LIB_SO_AGE_VERSION "2")
+ 
+ # =======================================================
+ # Set env. variables accordinly.
+  
