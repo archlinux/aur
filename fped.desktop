@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Education;Science;
+Comment=KiCad PCB footprint editor.
+Exec=fped
+GenericName=Footprint Editor
+Icon=fped
+MimeType=application/x-fped-footprint;
+Name=Fped
+Type=Application
+
