@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-ioncube_loader
-pkgver=4.0.10
+pkgver=4.0.12
 pkgrel=1
 pkgdesc="Loader for PHP files encoded with ionCube PHP Encoder"
 arch=(i686 x86_64)
@@ -11,10 +11,10 @@ depends=(php)
 
 if [[ $CARCH == "x86_64" ]]; then
 	source=(http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.bz2)
-	md5sums=('d269a1214606fda6c921af5af5f2aa9d')
+	md5sums=('41bf4b1edf88d951f07f06854f6f548f')
 else
 	source=(http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.bz2)
-	md5sums=('80fad9596d3638dc401a5682b95ffb08')
+	md5sums=('65e2191288699b682a1e594284e3d0cc')
 fi
 
 build() {
