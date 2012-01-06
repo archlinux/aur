@@ -1,16 +1,16 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=smartbg-git
-pkgver=20101203
+pkgver=20120106
 pkgrel=1
 pkgdesc="A smart wallpaper setter for multi-head X displays"
 arch=(any)
 url="http://code.schnouki.net/p/smartbg/"
 license=('custom:WTFPL')
-depends=('pygtk')
+depends=('pygtk' 'python-xlib')
 makedepends=('git')
 source=()
 md5sums=()
-sha1sums=()
+sha256sums=()
 
 _gitroot="git://code.schnouki.net/smartbg.git"
 _gitname="smartbg"
