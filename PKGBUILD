@@ -21,15 +21,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
         'change-default-console-loglevel.patch'
-        'i915-fix-ghost-tv-output.patch'
-        'usb-add-reset-resume-quirk-for-several-webcams.patch')
+        'i915-fix-ghost-tv-output.patch')
 md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
          '52a4972b75e5e083cadd1dfa3e034d79'
          'caa5cd741b48e62d535c6b41149a3903'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '52d41fa61e80277ace2b994412a0c856')
+         '263725f20c0b9eb9c353040792d644e5')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -48,10 +46,6 @@ build() {
   # then dropped because the reasoning was unclear. However, it is clearly
   # needed.
   patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
-
-  # Add the USB_QUIRK_RESET_RESUME for several webcams
-  # FS#26528
-  patch -Np1 -i "${srcdir}/usb-add-reset-resume-quirk-for-several-webcams.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
