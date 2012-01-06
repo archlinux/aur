@@ -65,8 +65,8 @@ build()
       cflags=-fno-strict-aliasing \
       toolset=gcc \
 	  address-model=32 \
-	  --without-python
-      --without-mpi
+	  --without-python \
+      --without-mpi \
       --prefix="${_stagedir}" \
       -sTOOLS=gcc \
       --layout=system \
