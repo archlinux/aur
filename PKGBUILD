@@ -1,7 +1,6 @@
-# Maintainer: Brad Fanella <bradfanella@archlinux.us>
-
+# Maintiner: Alexander Rødseth <rodseth@gmail.com>
+# Contributor: Brad Fanella <bradfanella@archlinux.us>
 pkgname=ruby-cairo
-_pkgname=rcairo
 pkgver=1.10.0
 pkgrel=2
 pkgdesc="Ruby bindings for cairo"
@@ -10,15 +9,20 @@ url="http://cairographics.org/rcairo/"
 license=('GPL')
 depends=('ruby' 'cairo>=1.2.0')
 makedepends=('ruby-pkgconfig')
-source=(http://cairographics.org/releases/$_pkgname-$pkgver.tar.gz)
-md5sums=('4fe76f1069d0d1ccfdf7848e3e928d9f')
+source=("http://cairographics.org/releases/rcairo-$pkgver.tar.gz")
+sha256sums=('70e2df4fe0bcd2875d7512279058b116e964ca91d152cf9eb2f05b5c7774f118')
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	ruby extconf.rb
-	make
+  cd "$srcdir/rcairo-$pkgver"
+
+  ruby extconf.rb
+  make
 }
+
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+  cd "$srcdir/rcairo-$pkgver"
+
+  make DESTDIR="$pkgdir" install
 }
+
+# vim:set ts=2 sw=2 et:
