@@ -8,7 +8,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 _kernelname=${pkgname#linux}
 _basekernel=3.2
 pkgver=${_basekernel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,8 +23,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         'change-default-console-loglevel.patch'
         'i915-fix-ghost-tv-output.patch')
 md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
-         '52a4972b75e5e083cadd1dfa3e034d79'
-         'caa5cd741b48e62d535c6b41149a3903'
+         '4a6567864c49c5bb0f7d76d1a638912e'
+         'd9efdc5f471a4082caf2f61afede6302'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '263725f20c0b9eb9c353040792d644e5')
@@ -288,4 +288,3 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
-
