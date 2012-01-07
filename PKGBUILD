@@ -4,7 +4,7 @@
 pkgbase="python-sphinx"
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python documentation generator"
 arch=('any')
 url="http://sphinx.pocoo.org/"
@@ -21,14 +21,14 @@ build() {
  
 package_python-sphinx() {
     depends=('python-distribute' 'python-jinja' 'python-pygments' 'docutils')
-    conflicts=('python2-sphinix')
+    conflicts=('python2-sphinx')
     cd "$srcdir/Sphinx-$pkgver"
     python setup.py install --root="$pkgdir" -O1
 }
  
 package_python2-sphinx() {
     depends=('python2-distribute' 'python2-jinja' 'python2-pygments' 'docutils')
-    conflicts=('python-sphinix')
+    conflicts=('python-sphinx')
     cd "$srcdir/Sphinx2-$pkgver"
     # python2 fix
     sed -i 's_#! /usr/bin/env python_#! /usr/bin/env python2_' sphinx/pycode/pgen2/token.py

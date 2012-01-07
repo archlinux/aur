@@ -1,7 +1,7 @@
 pkgbase = python-sphinx
 	pkgdesc = Python documentation generator
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = GPL
@@ -22,12 +22,12 @@ pkgname = python-sphinx
 	depends = python-jinja
 	depends = python-pygments
 	depends = docutils
-	conflicts = python2-sphinix
+	conflicts = python2-sphinx
 
 pkgname = python2-sphinx
 	depends = python2-distribute
 	depends = python2-jinja
 	depends = python2-pygments
 	depends = docutils
-	conflicts = python-sphinix
+	conflicts = python-sphinx
 
