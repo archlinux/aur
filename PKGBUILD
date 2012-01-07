@@ -1,19 +1,18 @@
-# Maintainer: Eric Belanger <eric@archlinux.org>
-# Contributor: John Proctor <jproctor@prium.net>
+# Sven-Hendrik Haase <sh@lutzhaase.com>
 
 _pkgbasename=libxslt
-pkgname=lib32-$_pkgbasename
-pkgver=1.1.26
-pkgrel=5
+pkgname=lib32-libxslt
+pkgver=1.1.28
+pkgrel=1
 pkgdesc="XML stylesheet transformation library (32-bit)"
 arch=('x86_64')
 url="http://xmlsoft.org/XSLT/"
 license=('custom')
-depends=('lib32-libxml2>=2.7.7' 'lib32-libgcrypt>=1.4.4' $_pkgbasename)
+depends=('lib32-libxml2' 'lib32-libgcrypt')
 makedepends=(gcc-multilib)
-options=('!libtool')
+options=(!libtool)
 source=(ftp://xmlsoft.org/libxslt/${_pkgbasename}-${pkgver}.tar.gz)
-md5sums=('e61d0364a30146aaa3001296f853b2b9')
+md5sums=('9667bf6f9310b957254fdcf6596600b7')
 
 build() {
   export CC="gcc -m32"
@@ -21,16 +20,18 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  sed -e 's|/usr/bin/python -u|/usr/bin/python2 -u|g' -e 's|/usr/bin/python$|/usr/bin/python2|g' -i python/tests/*.py
   ./configure --prefix=/usr --libdir=/usr/lib32 --without-python
   make
 }
 
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-
   make DESTDIR="${pkgdir}" install
 
+  install -d "${pkgdir}"/usr/share/licenses
+  ln -s ${_pkgbasename} "${pkgdir}"/usr/share/licenses/${pkgname}
+
   rm -rf "${pkgdir}"/usr/{include,share,bin}
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  rm -f "${pkgdir}"/usr/lib/python*/site-packages/*.a
 }
