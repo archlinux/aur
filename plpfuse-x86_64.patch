@@ -1,0 +1,50 @@
+Fix build of plpfuse on x86_64
+
+/usr/include/fuse/fuse_common.h:32:2: error: #error Please add -D_FILE_OFFSET_BITS=64 to your compile flags!
+
+See plptools bug ID 3081337
+
+When looking at this workaround patch, maybe i686 is also affected from this bug?
+
+diff --git a/plpfuse/Makefile.in.orig b/plpfuse/Makefile.in
+index 172ce02..ff2629a 100644
+--- a/plpfuse/Makefile.in.orig
++++ b/plpfuse/Makefile.in
+@@ -74,22 +74,22 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
+ am__depfiles_maybe = depfiles
+ am__mv = mv -f
+ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
++	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) $(FUSE_CFLAGS)
+ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+ 	--mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
++	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) $(FUSE_CFLAGS)
+ CCLD = $(CC)
+ LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
++	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(FUSE_CFLAGS) $(AM_LDFLAGS) \
+ 	$(LDFLAGS) -o $@
+ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
++	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) $(FUSE_CFLAGS)
+ LTCXXCOMPILE = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+ 	--mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
++	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) $(FUSE_CFLAGS)
+ CXXLD = $(CXX)
+ CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+-	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
++	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(FUSE_CFLAGS) $(AM_LDFLAGS) \
+ 	$(LDFLAGS) -o $@
+ SOURCES = $(plpfuse_SOURCES)
+ DIST_SOURCES = $(plpfuse_SOURCES)
+@@ -354,7 +354,7 @@ clean-sbinPROGRAMS:
+ 	rm -f $$list
+ plpfuse$(EXEEXT): $(plpfuse_OBJECTS) $(plpfuse_DEPENDENCIES) 
+ 	@rm -f plpfuse$(EXEEXT)
+-	$(CXXLINK) $(plpfuse_OBJECTS) $(plpfuse_LDADD) $(LIBS)
++	$(CXXLINK) $(plpfuse_OBJECTS) $(plpfuse_LDADD) $(LIBS) $(FUSE_LIBS)
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)

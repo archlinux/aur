@@ -1,0 +1,11 @@
+# configure the plptools services
+
+#START_NCPD="yes"
+NCPD_ARGS=""
+
+#START_PLPFUSE="yes"
+PLPFUSE_ARGS=""
+PLPFUSE_MOUNTPOINT="/mnt/epoc"
+
+#START_PLPPRINTD="yes"
+PLPPRINTD_ARGS=""
