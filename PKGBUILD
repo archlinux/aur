@@ -1,8 +1,8 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=tla-tools
-pkgver=2
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)"
 arch=('any')
 url="http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html"
@@ -16,13 +16,11 @@ source=(
   'tla2tex'
   'tlc'
 )
-md5sums=(
-  'c5931a7ec9426dd17795543a1d911a48'
-  '389c14cadf763d5ae2b5b9719b19e5ba'
-  '142d348ca24b7a7b0999d670908030a7'
-  'cdb96d780f764111ec60cf67d1d158f2'
-  'b89d785e2b264d0f32a69adcabb4e7d8'
-)
+sha256sums=('cc7efd6b9798f2962a16e894571edb65621aed3d3376f4829145a08e996ab86d'
+            '6b807b8d022564cb1e1a2407915bcbcb8914775f8216653c98730cbf35ff7da8'
+            '67001aa90cd3000e8ae00cdd064d594531d44b76f0c6141be6d3f0e85944008a'
+            '9b5152e04f56ae8fe307609fd2509ea200d0b699da58a2cb9a779f7bde1c358d'
+            '65959359b44562da7263e449bbeae33ede3a0a647f6044a01a0babf10ca0bd19')
 
 package() {
   mkdir -p "$pkgdir/usr/share/java" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname"
