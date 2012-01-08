@@ -4,7 +4,7 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 
 pkgname=dmenu
-pkgver=4.4.1
+pkgver=4.5
 pkgrel=1
 pkgdesc="A generic menu for X"
 url="http://tools.suckless.org/dmenu/"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('sh' 'libxinerama')
 source=("http://dl.suckless.org/tools/$pkgname-$pkgver.tar.gz")
-md5sums=('d18aaa9ac3265f92ec34a0df0cb6ebd4')
+md5sums=('9c46169ed703732ec52ed946c27d84b4')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
