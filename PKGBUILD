@@ -2,7 +2,7 @@
 
 pkgname=patator
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-purpose bruteforcer"
 arch=('any')
 url="http://code.google.com/p/patator/"
@@ -21,6 +21,7 @@ optdepends=(
   'pysnmp: SNMP'
   'python2-ipy: NETx keywords'
   'java-runtime: keystore files'
+  'unzip: zip archives'
 )
 source=("http://patator.googlecode.com/files/patator_v$pkgver.py")
 sha256sums=('04d67703d07d6304a50ace799e5784300b90ddaac6f446d3a216caa1d2e51e88')
@@ -31,6 +32,7 @@ build() {
 
 package() {
   install -D -m 0755 "$srcdir/${pkgname}_v$pkgver.py" "$pkgdir/usr/bin/patator"
+
   _modules=(
     'ftp_login'
     'ssh_login'
@@ -53,7 +55,6 @@ package() {
     'unzip_pass'
     'keystore_pass'
   )
-
   for module in ${_modules[@]}; do
     ln -s /usr/bin/patator "$pkgdir/usr/bin/$module"
   done
