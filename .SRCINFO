@@ -1,0 +1,25 @@
+pkgbase = patator
+	pkgdesc = A multi-purpose bruteforcer
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://code.google.com/p/patator/
+	arch = any
+	license = GPL2
+	depends = python2
+	optdepends = python-paramiko: SSH
+	optdepends = python-pycurl: HTTP
+	optdepends = openldap: LDAP
+	optdepends = impacket: SMB
+	optdepends = cx_oracle: Oracle
+	optdepends = mysql-python: MySQL
+	optdepends = python2-psycopg2: PostgreSQL
+	optdepends = pycrypto: VNC
+	optdepends = python-pydns: DNS
+	optdepends = pysnmp: SNMP
+	optdepends = python2-ipy: NETx keywords
+	optdepends = java-runtime: keystore files
+	source = http://patator.googlecode.com/files/patator_v0.3.py
+	sha256sums = 04d67703d07d6304a50ace799e5784300b90ddaac6f446d3a216caa1d2e51e88
+
+pkgname = patator
+
