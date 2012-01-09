@@ -3,19 +3,32 @@
 # Contributor: Urist <9362773 at gmail.com>
 
 pkgname=bti
-pkgver=031
+pkgver=032
 pkgrel=1
 pkgdesc='Console client for Twitter and identi.ca'
 arch=('i686' 'x86_64')
 url='http://gregkh.github.com/bti/'
 license=('GPL')
 depends=('pcre' 'libxml2' 'curl' 'liboauth')
-
-md5sums=('9f79fcd398fe1df5bdffeb28b42f3433')
-source=("http://www.kernel.org/pub/software/web/bti/$pkgname-$pkgver.tar.gz")
+makedepends=('git')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
-  make; make DESTDIR=$pkgdir install
+  local _gitroot='git://github.com/gregkh/bti.git'
+  git clone ${_gitroot}
+
+  cd bti
+  git checkout ${pkgver}
+
+  ./autogen.sh
+
+  ./configure \
+    --prefix=/usr
+
+  make
+}
+
+package() {
+  cd bti
+  
+  make DESTDIR=${pkgdir} install
 }
