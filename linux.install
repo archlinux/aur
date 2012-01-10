@@ -46,7 +46,6 @@ post_upgrade() {
 
   if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
     echo "WARNING: /boot appears to be a separate partition but is not mounted."
-    echo "         You probably just broke your system. Congratulations."
   fi
 
   # updating module dependencies
