@@ -8,7 +8,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 _kernelname=${pkgname#linux}
 _basekernel=3.2
 pkgver=${_basekernel}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,13 +21,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
         'change-default-console-loglevel.patch'
-        'i915-fix-ghost-tv-output.patch')
+        'i915-fix-ghost-tv-output.patch'
+        'i915-gpu-finish.patch')
 md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
-         '4a6567864c49c5bb0f7d76d1a638912e'
-         'd9efdc5f471a4082caf2f61afede6302'
+         '4079a2ae3e2ee308e6db188f7bc04959'
+         '875b121a32a619e0ee262c541f330427'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5')
+         '263725f20c0b9eb9c353040792d644e5'
+         '4cd79aa147825837dc8bc9f6b736c0a0')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -37,6 +39,10 @@ build() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # fix FS#27883
+  # drm/i915: Only clear the GPU domains upon a successful finish
+  patch -Np1 -i "${srcdir}/i915-gpu-finish.patch"
 
   # Some chips detect a ghost TV output
   # mailing list discussion: http://lists.freedesktop.org/archives/intel-gfx/2011-April/010371.html
