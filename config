@@ -3316,7 +3316,7 @@ CONFIG_BCMA_POSSIBLE=y
 #
 # Broadcom specific AMBA
 #
-# CONFIC_BCMA is not set
+# CONFIG_BCMA is not set
 
 #
 # Multifunction device drivers
