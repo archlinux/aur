@@ -25,7 +25,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         'i915-gpu-finish.patch')
 md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
          '62ac6ac9b870162f693ecf5e8606423a'
-         '4079a2ae3e2ee308e6db188f7bc04959'
+         'cbd469a1ba0bc8caa765caa42d429ea9'
          '875b121a32a619e0ee262c541f330427'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
