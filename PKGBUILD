@@ -19,6 +19,7 @@ depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
          'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
              'elfutils')
+optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 # Needed for the NaCl toolchain
 [[ $CARCH == x86_64 ]] && makedepends+=('lib32-zlib')
 provides=('chromium-browser')
