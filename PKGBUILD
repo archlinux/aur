@@ -44,6 +44,7 @@ build() {
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib/${pkgname} \
         -DCMAKE_BUILD_TYPE=${_buildtype} \
         ../${pkgname}-${pkgver}
