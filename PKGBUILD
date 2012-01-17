@@ -1,7 +1,7 @@
 # Maintainer: kachelaqa <kachelaqa at gmail dot com>
 
 pkgname='pkgbrowser'
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc='A utility for browsing pacman databases and the AUR'
 arch=('i686' 'x86_64')
@@ -21,4 +21,4 @@ package() {
     make DESTDIR="$pkgdir" install || return 1
 }
 
-md5sums=('e1d0af5222ac8defcae27069ce45edf7')
+md5sums=('aa2a34a7ef4049363357c5b88b4106f7')
