@@ -7,7 +7,7 @@ pkgbase = pkgbrowser
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = pacman<4
+	depends = pacman>=4
 	depends = python2-pyqt
 	source = http://pkgbrowser.googlecode.com/files/pkgbrowser-0.7.tar.gz
 	md5sums = e1d0af5222ac8defcae27069ce45edf7
