@@ -1,0 +1,36 @@
+Index: pdfsizeopt.py
+===================================================================
+--- pdfsizeopt.py	(revision 171)
++++ pdfsizeopt.py	(working copy)
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python2
+ #
+ # pdfsizeopt.py: do various PDF size optimizations
+ # by pts@fazekas.hu at Sun Mar 29 13:42:05 CEST 2009
+@@ -6712,7 +6712,11 @@
+       Pathname to Multivalent.jar or None.
+     """
+     assert os.sep not in file_name
+-    multivalent_jar = FindOnPath(file_name)
++    # XXX ArchLinux packaging-specific
++    multivalent_jar = "/usr/share/java/multivalent/%s" % file_name
++    if not os.path.isfile(multivalent_jar):
++    # XXX resume normal operation
++      multivalent_jar = FindOnPath(file_name)
+     if multivalent_jar is None:
+       slash_file_name = os.sep + file_name
+       for item in os.getenv('CLASSPATH', '').split(os.pathsep):
+@@ -6865,9 +6869,9 @@
+     argv.append('--help')
+ 
+   try:
+-    use_pngout = True
+-    use_jbig2 = True
+-    use_multivalent = True
++    use_pngout = False
++    use_jbig2 = False
++    use_multivalent = False
+     do_optimize_images = True
+     do_optimize_objs = True
+     do_unify_fonts = True

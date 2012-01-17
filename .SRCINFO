@@ -1,0 +1,20 @@
+pkgbase = pdfsizeopt-svn
+	pkgdesc = PDF file size optimizer
+	pkgver = 221
+	pkgrel = 2
+	url = https://code.google.com/p/pdfsizeopt
+	arch = any
+	license = GPL2
+	makedepends = subversion
+	depends = python2>=2.4
+	depends = ghostscript>=8.61
+	depends = sam2p
+	depends = tif22pnm
+	optdepends = multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]
+	optdepends = pngout: to optimise the size of PNG parts [use --use-jbig2=true]
+	optdepends = jbig2enc: to manage JBIG2 parts [use --use-pngout=true]
+	source = archpackage.patch
+	md5sums = ee0d8cd8232c42592791f470301252a1
+
+pkgname = pdfsizeopt-svn
+
