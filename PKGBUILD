@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dmon
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Toolset for daemonizing and supervising processes"
 arch=(i386 x86_64)
@@ -9,7 +9,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(make)
 source=(http://people.igalia.com/aperez/files/${pkgname}-${pkgver}.tar.gz)
-md5sums=(c9fb6c34211ec9941b43d51b88c9cc18)
+sha1sums=(81c7139862ba8b40996f618cad839628300b97bc)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

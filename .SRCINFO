@@ -1,6 +1,6 @@
 pkgbase = dmon
 	pkgdesc = Toolset for daemonizing and supervising processes
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://gitorious.org/dmon
 	arch = i386
@@ -8,8 +8,8 @@ pkgbase = dmon
 	license = MIT
 	makedepends = make
 	depends = glibc
-	source = http://people.igalia.com/aperez/files/dmon-0.4.1.tar.gz
-	md5sums = c9fb6c34211ec9941b43d51b88c9cc18
+	source = http://people.igalia.com/aperez/files/dmon-0.4.2.tar.gz
+	sha1sums = 81c7139862ba8b40996f618cad839628300b97bc
 
 pkgname = dmon
 
