@@ -3,8 +3,8 @@
 
 _pkgbasename=sdl_ttf
 pkgname=lib32-$_pkgbasename
-pkgver=2.0.10
-pkgrel=3
+pkgver=2.0.11
+pkgrel=1
 pkgdesc="A library that allows you to use TrueType fonts in your SDL applications (32-bit)"
 arch=('x86_64')
 url="http://www.libsdl.org/projects/SDL_ttf/"
@@ -13,7 +13,7 @@ options=('!libtool')
 depends=('lib32-sdl' 'lib32-freetype2' $_pkgbasename)
 makedepends=('gcc-multilib')
 source=(http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-$pkgver.tar.gz)
-sha256sums=('7d38704bcc7c34029c2dcb73b2d4857e8ad76341c6e0faed279eb9f743c66c6a')
+md5sums=('61e29bd9da8d245bc2471d1b2ce591aa')
 
 build() {
   cd "${srcdir}"/SDL_ttf-${pkgver}
