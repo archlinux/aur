@@ -1,0 +1,16 @@
+pkgbase = dwt
+	pkgdesc = Simple no-frills terminal emulator based on VTE
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = vte3
+	depends = terminus-font
+	options = strip
+	options = zipman
+	source = http://people.igalia.com/aperez/files/dwt-0.1.tar.xz
+	sha1sums = 34edf979a79f916226d503386080bbfeb6915657
+
+pkgname = dwt
+
