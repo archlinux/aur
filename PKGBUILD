@@ -11,7 +11,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('python2-pyqt' 'mutagen' 'libofa' 'ffmpeg')
 optdepends=('libdiscid: CD lookup'
-            'chromaprnt: fingerprinting')
+            'chromaprint: fingerprinting')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha1sums=('274071410550ee29051bb0137d72602921a015f9')
 
