@@ -60,4 +60,6 @@ check() {
 package() {
 	cd ${_gitname}-build
 	make DESTDIR=$startdir/pkg install
+
+	git show | grep -m 1 commit | sed 's/commit //' > ${startdir}/.githash_${CARCH}
 }
