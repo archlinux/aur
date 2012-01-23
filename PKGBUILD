@@ -3,7 +3,7 @@
 
 _pkgbasename=sdl_image
 pkgname=lib32-$_pkgbasename
-pkgver=1.2.11
+pkgver=1.2.12
 pkgrel=1
 pkgdesc="A simple library to load images of various formats as SDL surfaces (32-bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-sdl' 'lib32-libpng' 'lib32-libjpeg' 'lib32-libtiff' 'lib32-zlib'
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=(http://www.libsdl.org/projects/SDL_image/release/SDL_image-${pkgver}.tar.gz)
-md5sums=('1210d7a7e87ab95abebb4f3e79a0fd31')
+md5sums=('a0f9098ebe5400f0bdc9b62e60797ecb')
 
 build() {
   export CC='gcc -m32'
