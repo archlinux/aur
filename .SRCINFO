@@ -1,0 +1,14 @@
+pkgbase = gophcatch-git
+	pkgdesc = Watch gopher holes and catch updates
+	pkgver = 20111106
+	pkgrel = 1
+	url = https://github.com/vain/gophcatch
+	arch = any
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = curl
+	optdepends = lynx: Needed if you want to dump new items
+	optdepends = cron: Recommended if you want to regularly run gophcatch
+
+pkgname = gophcatch-git
+
