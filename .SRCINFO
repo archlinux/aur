@@ -1,0 +1,14 @@
+pkgbase = sgopherd-git
+	pkgdesc = A gopher server written in Bash
+	pkgver = 20111105
+	pkgrel = 1
+	url = https://github.com/vain/sgopherd
+	arch = any
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = bash
+	depends = xinetd
+	backup = etc/xinetd.d/sgopherd
+
+pkgname = sgopherd-git
+
