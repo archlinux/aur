@@ -3,6 +3,7 @@ pkgver='0.1'
 pkgrel='1'
 pkgdesc='Simple no-frills terminal emulator based on VTE'
 license='MIT'
+url='https://github.com/aperezdc/dwt'
 source=( "http://people.igalia.com/aperez/files/${pkgname}-${pkgver}.tar.xz" )
 sha1sums=('34edf979a79f916226d503386080bbfeb6915657')
 arch=('i686' 'x86_64')
