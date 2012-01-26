@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -75,7 +75,7 @@ package_libkgeomap() {
 
 package_libkvkontakte() {
   pkgdesc="KDE C++ library for asynchronous interaction with vkontakte.rusocial network"
-  depends=('kdelibs')
+  depends=('kdelibs' 'qjson')
 
   cd "${srcdir}"/build/extra/libkvkontakte
   make DESTDIR="${pkgdir}" install
