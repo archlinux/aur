@@ -1,7 +1,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=openocd-git-libftdi
-pkgver=20110424
+pkgver=20120126
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices -using libftdi instead of ftd2xx"
 arch=('i686' 'x86_64')
@@ -50,19 +50,22 @@ build() {
 	--disable-werror \
 	--prefix=/usr \
 	--enable-maintainer-mode \
-	--enable-usbprog \
-	--enable-jlink \
-	--enable-rlink \
-	--enable-vsllink \
-	--enable-arm-jtag-ew \
+	--enable-parport \
+	--enable-ft2232_libftdi \
 	--enable-amtjtagaccel \
 	--enable-ep93xx \
 	--enable-at91rm9200 \
 	--enable-gw16012 \
+	--enable-presto_libftdi \
+	--enable-usbprog \
 	--enable-oocd_trace \
+	--enable-jlink \
+	--enable-vsllink \
+	--enable-rlink \
+	--enable-arm-jtag-ew \
+	--enable-buspirate \
 	--enable-usb_flaster_libftdi \
-	--enable-ft2232_libftdi \
-	--enable-parport
+	--enable-stlink
   make
   make DESTDIR=${pkgdir}/ install 
   rm -rf ${srcdir}/$_gitname-build
