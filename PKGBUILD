@@ -10,13 +10,7 @@ pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
 url="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html"
 license=('GPL3')
-if [ "$CARCH" = "i686" ]
-then
-  depends=('lib32-gtk2' 'lib32-libsm' 'lm_sensors')
-else
-  depends=('gtk2' 'libsm' 'lm_sensors')
-fi
-
+depends=('gtk2' 'libsm' 'lm_sensors')
 makedepends=('gettext')
 backup=('etc/gkrellmd.conf')
 source=("http://members.dslextreme.com/users/billw/$pkgname/$pkgname-$pkgver.tar.bz2"
