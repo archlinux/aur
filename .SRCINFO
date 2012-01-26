@@ -7,7 +7,7 @@ pkgbase = openocd-git-libftdi
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = automake>=1.9
+	makedepends = automake1.10
 	makedepends = tcl
 	depends = libftdi
 	provides = openocd
