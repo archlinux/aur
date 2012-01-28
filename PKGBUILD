@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -54,7 +54,6 @@ package_digikam() {
 
   # these are in oxygen-icons
   rm -rf ${pkgdir}/usr/share/icons
-
 }
 
 package_libkface() {
