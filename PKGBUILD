@@ -6,19 +6,32 @@
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=9
+pkgrel=10
 pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"')
-[ "$CARCH" = "i686"   ] && depends=('libxext' 'libgl' 'alsa-lib>=1.0.6', 'openal')
-[ "$CARCH" = "x86_64" ] && depends=('lib32-gcc-libs' 'lib32-libxdamage' 'lib32-libxext' 'lib32-libgl' 'lib32-alsa-lib>=1.0.6' 'lib32-libstdc++5' 'lib32-openal')
-makedepends=('scons')
 arch=('i686' 'x86_64')
+if [ "$CARCH" = "i686"   ]; then
+    depends=('libgl' 'alsa-lib' 'openal' 'libxxf86vm' 'libstdc++5')
+    makedepends=('scons')
+    optdepends=(
+        'alsa-plugins: pulseaudio-support'
+        'libpulse: pulseaudio support'
+    )
+fi
+if [ "$CARCH" = "x86_64" ]; then
+    depends=('lib32-libgl' 'lib32-alsa-lib' 'lib32-openal' 'lib32-libxxf86vm' 'lib32-libstdc++5')
+    makedepends=('scons' 'gcc-multilib')
+    optdepends=(
+        'lib32-alsa-plugins: pulseaudio-support'
+        'lib32-libpulse: pulseaudio support'
+    )
+fi
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
-'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
-"ftp://ftp.idsoftware.com/idstuff/source/idtech4-$pkgname-source-GPL.zip" \
-"http://www.1337-server.net/doom3/$pkgname-linux-$pkgver.x86.run")
+    'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
+    "ftp://ftp.idsoftware.com/idstuff/source/idtech4-$pkgname-source-GPL.zip" \
+    "http://www.1337-server.net/doom3/$pkgname-linux-$pkgver.x86.run")
 provides=('doom3')
 conflicts=('doom3-bin')
 md5sums=('da5f33feaa929c2c588a5a773c777e0f'
@@ -49,7 +62,7 @@ package() {
     cd $srcdir
 
     # Create Destination Directories
-    install -d $pkgdir/opt/doom3/{base,d3xp,pb/htm}
+    install -d $pkgdir/opt/doom3/{base,d3xp}
 
     # Install Game Binaries
     install -m 755 $srcdir/doom3.gpl/neo/doom.x86 \
