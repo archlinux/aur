@@ -3,23 +3,20 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=clutter
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.4
+pkgrel=1
 pkgdesc="A GObject based library for creating fast, visually rich graphical user interfaces"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
 options=('!libtool')
 license=('LGPL')
-depends=('cogl>=1.8.0' 'mesa' 'json-glib' 'atk' 'libxi')
+depends=('cogl' 'mesa' 'json-glib' 'atk' 'libxi')
 makedepends=('gobject-introspection' 'mesa')
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz
-        fallback.patch::http://git.gnome.org/browse/clutter/patch/?id=f05432d57e5e980d0841fd6c13a7f886a46107fe)
-sha256sums=('dc899f26448f31cb31e72d80650b8c8ae05acacd5b5d5a44798eabaca0ddfa2f'
-            '30c3c1dfdf1c74e8a7dc2cc6eac305127b7441504cb7040b7cf8d46a4b67fdd9')
+source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+sha256sums=('6fedb4c344b4cab37e249b8a5ffeccff2f384f11335dee25c6466927461e1345')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i $srcdir/fallback.patch
   ./configure --prefix=/usr --enable-introspection
   make
 }
