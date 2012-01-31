@@ -1,14 +1,14 @@
 
 # Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
 pkgname=openmw-git
-pkgver=20110922
+pkgver=20120131
 pkgrel=1
 pkgdesc="OpenMW is a open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3')
 
-depends=('openal' 'ogre' 'bullet' 'ffmpeg' 'mygui' 'mpg123' 'libsndfile' 'qt')
+depends=('openal' 'ogre-1.7.2' 'bullet' 'ffmpeg' 'mpg123' 'libsndfile' 'qt')
 
 makedepends=('git' 'cmake' 'boost')
 install=$pkgname.install
