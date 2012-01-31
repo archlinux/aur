@@ -1,26 +1,28 @@
 #$Id$
 # Maintainer: Chris Brannon <cmbrannon79@gmail.com>
 # Contributor: Jeff Mickey <j@codemac.net>
-# Maintainer: tardo <tardo@nagi-fanboi.net>
+# Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=cxxtest
-pkgver=3.10.1
-pkgrel=4
+pkgver=4.0.3
+pkgrel=1
 pkgdesc="A JUnit/CppUnit/xUnit-like framework for C++."
 arch=(any)
 url="http://cxxtest.sourceforge.net"
 license=("LGPL")
-depends=('perl' 'gcc')
+depends=('python' 'gcc')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('ec7d089b6b5d67048e7db84c3231a35c')
+md5sums=('d65068ba20ce42176c9fb33dde16b727')
 
-build() {
+package() {
   cd "$srcdir/$pkgname"
-  install -m 755 -d "$pkgdir/usr/bin" "$pkgdir/usr/include/cxxtest" || return 1
-  install -m 755 cxxtestgen.pl "$pkgdir/usr/bin/" || return 1
-  install -m 644 cxxtest/* "$pkgdir/usr/include/cxxtest/" || return 1
-  install -dm755 "$pkgdir"/usr/share/doc/$pkgname/{docs,sample} || return 1
-  install -m644 README "$pkgdir/usr/share/doc/$pkgname" || return 1
-  install -m644 docs/* "$pkgdir/usr/share/doc/$pkgname/docs" || return 1
+  install -m 755 -d "$pkgdir/usr/bin" "$pkgdir/usr/include/cxxtest"
+  install -m 755 bin/cxxtestgen "$pkgdir/usr/bin/"
+  install -m 644 cxxtest/* "$pkgdir/usr/include/cxxtest/"
+  install -dm755 "$pkgdir"/usr/share/doc/$pkgname/{docs,sample}
+  install -m644 README "$pkgdir/usr/share/doc/$pkgname"
+  install -m644 doc/guide.{html,txt} "$pkgdir/usr/share/doc/$pkgname"
   cp -Rf sample/* "$pkgdir/usr/share/doc/$pkgname/sample"
+  cd python
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
