@@ -1,0 +1,14 @@
+pkgbase = brightmare
+	pkgdesc = A tool that translates LaTeX equations to ASCII/UTF-8 text
+	pkgver = 0.34.2
+	pkgrel = 1
+	url = http://jwilk.net/software/brightmare
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	source = http://jwilk.net/pool/brightmare_0.34.2.tar.gz
+	sha256sums = 55b40685fabbf2bd05ec7667f2077e0bd9f0a51c665d9ac2bdd4f949bf1795c4
+
+pkgname = brightmare
+
