@@ -6,7 +6,7 @@
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=10
+pkgrel=11
 pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"')
@@ -33,7 +33,7 @@ source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
     "ftp://ftp.idsoftware.com/idstuff/source/idtech4-$pkgname-source-GPL.zip" \
     "http://www.1337-server.net/doom3/$pkgname-linux-$pkgver.x86.run")
 provides=('doom3')
-conflicts=('doom3-bin')
+conflicts=('doom3-bin' 'iodoom3' 'iodoom3-git' 'iodoom3-bin')
 md5sums=('da5f33feaa929c2c588a5a773c777e0f'
          '6bdef1e111e5f450bca3f1c043caf4a2'
          'facb0291279621d997f9504924d7e9b1'
@@ -69,8 +69,8 @@ package() {
         $pkgdir/opt/doom3
 
     # Install Game Files
-    install -m 644 base/* $pkgdir/opt/doom3/base
-    install -m 644 d3xp/* $pkgdir/opt/doom3/d3xp
+    install -m 644 base/pak00*.pk4 $pkgdir/opt/doom3/base
+    install -m 644 d3xp/pak00*.pk4 $pkgdir/opt/doom3/d3xp
     install -m 644 {CHANGES,README,version.info} $pkgdir/opt/doom3
     install -m 644 $srcdir/doom3.gpl/neo/game01-base.pk4 \
         $pkgdir/opt/doom3/base/game01.pk4
