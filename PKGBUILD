@@ -6,14 +6,14 @@
 
 pkgname=doom3
 pkgver=1.3.1.1304
-pkgrel=11
+pkgrel=12
 pkgdesc='Doom 3 Engine. You need the retail .pk4 files to play.'
 url='http://www.doom3.com/'
 license=('custom:"DOOM 3"')
 arch=('i686' 'x86_64')
 if [ "$CARCH" = "i686"   ]; then
     depends=('libgl' 'alsa-lib' 'openal' 'libxxf86vm' 'libstdc++5')
-    makedepends=('scons')
+    makedepends=('scons' 'zip')
     optdepends=(
         'alsa-plugins: pulseaudio-support'
         'libpulse: pulseaudio support'
@@ -21,7 +21,7 @@ if [ "$CARCH" = "i686"   ]; then
 fi
 if [ "$CARCH" = "x86_64" ]; then
     depends=('lib32-libgl' 'lib32-alsa-lib' 'lib32-openal' 'lib32-libxxf86vm' 'lib32-libstdc++5')
-    makedepends=('scons' 'gcc-multilib')
+    makedepends=('scons' 'gcc-multilib' 'zip')
     optdepends=(
         'lib32-alsa-plugins: pulseaudio-support'
         'lib32-libpulse: pulseaudio support'
