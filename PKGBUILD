@@ -7,7 +7,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.2
-pkgver=${_basekernel}.2
+pkgver=${_basekernel}.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,14 +23,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         'change-default-console-loglevel.patch'
         'i915-fix-ghost-tv-output.patch'
         'i915-gpu-finish.patch')
-md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
-         '5e53edbf75fcaa3a8d1697f3a053102d'
-         'cbd469a1ba0bc8caa765caa42d429ea9'
-         '875b121a32a619e0ee262c541f330427'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -295,3 +287,11 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
+md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
+         '3032ebbde1d19fc4c4c982bec51b0fb8'
+         'cbd469a1ba0bc8caa765caa42d429ea9'
+         '875b121a32a619e0ee262c541f330427'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '263725f20c0b9eb9c353040792d644e5'
+         '4cd79aa147825837dc8bc9f6b736c0a0')
