@@ -1,0 +1,1575 @@
+Index: django/http/__init__.py
+===================================================================
+--- django/http/__init__.py	(revision 16771)
++++ django/http/__init__.py	(revision 17460)
+@@ -92,7 +92,7 @@
+         if not _cookie_allows_colon_in_names:
+             def load(self, rawdata, ignore_parse_errors=False):
+                 if ignore_parse_errors:
+-                    self.bad_cookies = []
++                    self.bad_cookies = set()
+                     self._BaseCookie__set = self._loose_set
+                 super(SimpleCookie, self).load(rawdata)
+                 if ignore_parse_errors:
+@@ -106,8 +106,8 @@
+                 try:
+                     self._strict_set(key, real_value, coded_value)
+                 except Cookie.CookieError:
+-                    self.bad_cookies.append(key)
+-                    dict.__setitem__(self, key, None)
++                    self.bad_cookies.add(key)
++                    dict.__setitem__(self, key, Cookie.Morsel())
+ 
+ 
+ class CompatCookie(SimpleCookie):
+Index: django/http/utils.py
+===================================================================
+--- django/http/utils.py	(revision 16771)
++++ django/http/utils.py	(revision 17460)
+@@ -76,7 +76,8 @@
+ 
+     # The first part of the Content-Type field will be the MIME type,
+     # everything after ';', such as character-set, can be ignored.
+-    if response['Content-Type'].split(';')[0] not in safe_mime_types:
++    mime_type = response.get('Content-Type', '').partition(';')[0]
++    if mime_type not in safe_mime_types:
+         try:
+             del response['Vary']
+         except KeyError:
+Index: django/db/backends/creation.py
+===================================================================
+--- django/db/backends/creation.py	(revision 16771)
++++ django/db/backends/creation.py	(revision 17460)
+@@ -374,15 +374,6 @@
+             verbosity=max(verbosity - 1, 0),
+             interactive=False,
+             database=self.connection.alias)
+-        
+-        # One effect of calling syncdb followed by flush is that the id of the
+-        # default site may or may not be 1, depending on how the sequence was
+-        # reset.  If the sites app is loaded, then we coerce it.
+-        from django.db.models import get_model
+-        if 'django.contrib.sites' in settings.INSTALLED_APPS:
+-            Site = get_model('sites', 'Site')
+-            if Site is not None and Site.objects.using(self.connection.alias).count() == 1:
+-                Site.objects.using(self.connection.alias).update(id=settings.SITE_ID)
+ 
+         from django.core.cache import get_cache
+         from django.core.cache.backends.db import BaseDatabaseCache
+Index: django/core/validators.py
+===================================================================
+--- django/core/validators.py	(revision 16771)
++++ django/core/validators.py	(revision 17460)
+@@ -147,7 +147,8 @@
+ 
+ email_re = re.compile(
+     r"(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*"  # dot-atom
+-    r'|^"([\001-\010\013\014\016-\037!#-\[\]-\177]|\\[\001-011\013\014\016-\177])*"' # quoted-string
++    # quoted-string, see also http://tools.ietf.org/html/rfc2822#section-3.2.5
++    r'|^"([\001-\010\013\014\016-\037!#-\[\]-\177]|\\[\001-\011\013\014\016-\177])*"'
+     r')@(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?$', re.IGNORECASE)  # domain
+ validate_email = EmailValidator(email_re, _(u'Enter a valid e-mail address.'), 'invalid')
+ 
+Index: django/core/management/commands/shell.py
+===================================================================
+--- django/core/management/commands/shell.py	(revision 16771)
++++ django/core/management/commands/shell.py	(revision 17460)
+@@ -13,9 +13,8 @@
+ 
+     def ipython(self):
+         try:
+-            from IPython.frontend.terminal.embed import TerminalInteractiveShell
+-            shell = TerminalInteractiveShell()
+-            shell.mainloop()
++            from IPython import embed
++            embed()
+         except ImportError:
+             # IPython < 0.11
+             # Explicitly pass an empty list as arguments, because otherwise
+Index: django/contrib/gis/db/models/sql/compiler.py
+===================================================================
+--- django/contrib/gis/db/models/sql/compiler.py	(revision 16771)
++++ django/contrib/gis/db/models/sql/compiler.py	(revision 17460)
+@@ -1,7 +1,7 @@
+ from itertools import izip
+-from django.db.backends.util import truncate_name
++from django.db.backends.util import truncate_name, typecast_timestamp
+ from django.db.models.sql import compiler
+-from django.db.models.sql.constants import TABLE_NAME
++from django.db.models.sql.constants import TABLE_NAME, MULTI
+ from django.db.models.sql.query import get_proxied_model
+ 
+ SQLCompiler = compiler.SQLCompiler
+@@ -194,7 +194,7 @@
+             # We resolve the rest of the columns if we're on Oracle or if
+             # the `geo_values` attribute is defined.
+             for value, field in map(None, row[index_start:], fields):
+-                values.append(self.query.convert_values(value, field, connection=self.connection))
++                values.append(self.query.convert_values(value, field, self.connection))
+         else:
+             values.extend(row[index_start:])
+         return tuple(values)
+@@ -275,4 +275,24 @@
+     pass
+ 
+ class SQLDateCompiler(compiler.SQLDateCompiler, GeoSQLCompiler):
+-    pass
++    """
++    This is overridden for GeoDjango to properly cast date columns, since
++    `GeoQuery.resolve_columns` is used for spatial values.
++    See #14648, #16757.
++    """
++    def results_iter(self):
++        if self.connection.ops.oracle:
++            from django.db.models.fields import DateTimeField
++            fields = [DateTimeField()]
++        else:
++            needs_string_cast = self.connection.features.needs_datetime_string_cast
++
++        offset = len(self.query.extra_select)
++        for rows in self.execute_sql(MULTI):
++            for row in rows:
++                date = row[offset]
++                if self.connection.ops.oracle:
++                    date = self.resolve_columns(row, fields)[offset]
++                elif needs_string_cast:
++                    date = typecast_timestamp(str(date))
++                yield date
+Index: django/contrib/gis/db/backends/spatialite/compiler.py
+===================================================================
+--- django/contrib/gis/db/backends/spatialite/compiler.py	(revision 16771)
++++ django/contrib/gis/db/backends/spatialite/compiler.py	(revision 17460)
+@@ -1,32 +0,0 @@
+-from django.db.backends.util import typecast_timestamp
+-from django.db.models.sql import compiler
+-from django.db.models.sql.constants import MULTI
+-from django.contrib.gis.db.models.sql.compiler import GeoSQLCompiler as BaseGeoSQLCompiler
+-
+-SQLCompiler = compiler.SQLCompiler
+-
+-class GeoSQLCompiler(BaseGeoSQLCompiler, SQLCompiler):
+-    pass
+-
+-class SQLInsertCompiler(compiler.SQLInsertCompiler, GeoSQLCompiler):
+-    pass
+-
+-class SQLDeleteCompiler(compiler.SQLDeleteCompiler, GeoSQLCompiler):
+-    pass
+-
+-class SQLUpdateCompiler(compiler.SQLUpdateCompiler, GeoSQLCompiler):
+-    pass
+-
+-class SQLAggregateCompiler(compiler.SQLAggregateCompiler, GeoSQLCompiler):
+-    pass
+-
+-class SQLDateCompiler(compiler.SQLDateCompiler, GeoSQLCompiler):
+-    """
+-    This is overridden for GeoDjango to properly cast date columns, see #16757.
+-    """
+-    def results_iter(self):
+-        offset = len(self.query.extra_select)
+-        for rows in self.execute_sql(MULTI):
+-            for row in rows:
+-                date = typecast_timestamp(str(row[offset]))
+-                yield date
+Index: django/contrib/gis/db/backends/spatialite/operations.py
+===================================================================
+--- django/contrib/gis/db/backends/spatialite/operations.py	(revision 16771)
++++ django/contrib/gis/db/backends/spatialite/operations.py	(revision 17460)
+@@ -48,7 +48,7 @@
+     return (SpatiaLiteDistance(operator),)
+ 
+ class SpatiaLiteOperations(DatabaseOperations, BaseSpatialOperations):
+-    compiler_module = 'django.contrib.gis.db.backends.spatialite.compiler'
++    compiler_module = 'django.contrib.gis.db.models.sql.compiler'
+     name = 'spatialite'
+     spatialite = True
+     version_regex = re.compile(r'^(?P<major>\d)\.(?P<minor1>\d)\.(?P<minor2>\d+)')
+Index: django/contrib/gis/db/backends/spatialite/creation.py
+===================================================================
+--- django/contrib/gis/db/backends/spatialite/creation.py	(revision 16771)
++++ django/contrib/gis/db/backends/spatialite/creation.py	(revision 17460)
+@@ -56,14 +56,6 @@
+             interactive=False,
+             database=self.connection.alias)
+ 
+-        # One effect of calling syncdb followed by flush is that the id of the
+-        # default site may or may not be 1, depending on how the sequence was
+-        # reset.  If the sites app is loaded, then we coerce it.
+-        from django.db.models import get_model
+-        Site = get_model('sites', 'Site')
+-        if Site is not None and Site.objects.using(self.connection.alias).count() == 1:
+-            Site.objects.using(self.connection.alias).update(id=settings.SITE_ID)
+-
+         from django.core.cache import get_cache
+         from django.core.cache.backends.db import BaseDatabaseCache
+         for cache_alias in settings.CACHES:
+Index: django/contrib/gis/tests/relatedapp/fixtures/initial_data.json.gz
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: django/contrib/gis/tests/relatedapp/tests.py
+===================================================================
+--- django/contrib/gis/tests/relatedapp/tests.py	(revision 16771)
++++ django/contrib/gis/tests/relatedapp/tests.py	(revision 17460)
+@@ -1,3 +1,4 @@
++from datetime import date
+ from django.test import TestCase
+ 
+ from django.contrib.gis.geos import GEOSGeometry, Point, MultiPoint
+@@ -281,4 +282,11 @@
+         # evaluated as list generation swallows TypeError in CPython.
+         sql = str(qs.query)
+ 
++    def test16_annotated_date_queryset(self):
++        "Ensure annotated date querysets work if spatial backend is used.  See #14648."
++        birth_years = [dt.year for dt in 
++                       list(Author.objects.annotate(num_books=Count('books')).dates('dob', 'year'))]
++        birth_years.sort()
++        self.assertEqual([1950, 1974], birth_years)
++
+     # TODO: Related tests for KML, GML, and distance lookups.
+Index: django/contrib/gis/tests/relatedapp/models.py
+===================================================================
+--- django/contrib/gis/tests/relatedapp/models.py	(revision 16771)
++++ django/contrib/gis/tests/relatedapp/models.py	(revision 17460)
+@@ -36,6 +36,7 @@
+ # These use the GeoManager but do not have any geographic fields.
+ class Author(models.Model):
+     name = models.CharField(max_length=100)
++    dob = models.DateField()
+     objects = models.GeoManager()
+ 
+ class Article(models.Model):
+Index: django/contrib/sites/management.py
+===================================================================
+--- django/contrib/sites/management.py	(revision 16771)
++++ django/contrib/sites/management.py	(revision 17460)
+@@ -3,15 +3,34 @@
+ """
+ 
+ from django.db.models import signals
++from django.db import connections
++from django.db import router
+ from django.contrib.sites.models import Site
+ from django.contrib.sites import models as site_app
++from django.core.management.color import no_style
+ 
+ def create_default_site(app, created_models, verbosity, db, **kwargs):
+-    if Site in created_models:
++    # Only create the default sites in databases where Django created the table
++    if Site in created_models and router.allow_syncdb(db, Site) :
++        # The default settings set SITE_ID = 1, and some tests in Django's test
++        # suite rely on this value. However, if database sequences are reused
++        # (e.g. in the test suite after flush/syncdb), it isn't guaranteed that
++        # the next id will be 1, so we coerce it. See #15573 and #16353. This
++        # can also crop up outside of tests - see #15346.
+         if verbosity >= 2:
+             print "Creating example.com Site object"
+-        s = Site(domain="example.com", name="example.com")
+-        s.save(using=db)
++        Site(pk=1, domain="example.com", name="example.com").save(using=db)
++
++        # We set an explicit pk instead of relying on auto-incrementation,
++        # so we need to reset the database sequence.
++        sequence_sql = connections[db].ops.sequence_reset_sql(no_style(), [Site])
++        if sequence_sql:
++            if verbosity >= 2:
++                print "Resetting sequence"
++            cursor = connections[db].cursor()
++            for command in sequence_sql:
++                cursor.execute(command)
++
+     Site.objects.clear_cache()
+ 
+ signals.post_syncdb.connect(create_default_site, sender=site_app)
+Index: django/contrib/sites/tests.py
+===================================================================
+--- django/contrib/sites/tests.py	(revision 16771)
++++ django/contrib/sites/tests.py	(revision 17460)
+@@ -15,6 +15,12 @@
+     def tearDown(self):
+         Site._meta.installed = self.old_Site_meta_installed
+ 
++    def test_save_another(self):
++        # Regression for #17415
++        # On some backends the sequence needs reset after save with explicit ID.
++        # Test that there is no sequence collisions by saving another site.
++        Site(domain="example2.com", name="example2.com").save()
++
+     def test_site_manager(self):
+         # Make sure that get_current() does not return a deleted Site object.
+         s = Site.objects.get_current()
+Index: django/contrib/admin/media/css/forms.css
+===================================================================
+--- django/contrib/admin/media/css/forms.css	(revision 16771)
++++ django/contrib/admin/media/css/forms.css	(revision 17460)
+@@ -352,9 +352,3 @@
+ .empty-form {
+     display: none;
+ }
+-
+-/* IE7 specific bug fixes */
+-
+-.submit-row input {
+-    float: right;
+-}
+\ No newline at end of file
+Index: tests/modeltests/validators/tests.py
+===================================================================
+--- tests/modeltests/validators/tests.py	(revision 16771)
++++ tests/modeltests/validators/tests.py	(revision 17460)
+@@ -28,6 +28,9 @@
+     (validate_email, 'abc', ValidationError),
+     (validate_email, 'a @x.cz', ValidationError),
+     (validate_email, 'something@@somewhere.com', ValidationError),
++    # Quoted-string format (CR not allowed)
++    (validate_email, '"\\\011"@here.com', None),
++    (validate_email, '"\\\012"@here.com', ValidationError),
+ 
+     (validate_slug, 'slug-ok', None),
+     (validate_slug, 'longer-slug-still-ok', None),
+Index: tests/regressiontests/utils/http.py
+===================================================================
+--- tests/regressiontests/utils/http.py	(revision 16771)
++++ tests/regressiontests/utils/http.py	(revision 17460)
+@@ -1,5 +1,7 @@
+ from django.utils import http
+ from django.utils import unittest
++from django.http import HttpResponse, utils
++from django.test import RequestFactory
+ 
+ class TestUtilsHttp(unittest.TestCase):
+ 
+@@ -21,3 +23,49 @@
+         self.assertFalse(http.same_origin('http://foo.com', 'http://foo.com.evil.com'))
+         # Different port
+         self.assertFalse(http.same_origin('http://foo.com:8000', 'http://foo.com:8001'))
++
++    def test_fix_IE_for_vary(self):
++        """
++        Regression for #16632.
++
++        `fix_IE_for_vary` shouldn't crash when there's no Content-Type header.
++        """
++
++        # functions to generate responses
++        def response_with_unsafe_content_type():
++            r = HttpResponse(content_type="text/unsafe")
++            r['Vary'] = 'Cookie'
++            return r
++
++        def no_content_response_with_unsafe_content_type():
++            # 'Content-Type' always defaulted, so delete it
++            r = response_with_unsafe_content_type()
++            del r['Content-Type']
++            return r
++
++        # request with & without IE user agent
++        rf = RequestFactory()
++        request = rf.get('/')
++        ie_request = rf.get('/', HTTP_USER_AGENT='MSIE')
++
++        # not IE, unsafe_content_type
++        response = response_with_unsafe_content_type()
++        utils.fix_IE_for_vary(request, response)
++        self.assertTrue('Vary' in response)
++
++        # IE, unsafe_content_type
++        response = response_with_unsafe_content_type()
++        utils.fix_IE_for_vary(ie_request, response)
++        self.assertFalse('Vary' in response)
++
++        # not IE, no_content
++        response = no_content_response_with_unsafe_content_type()
++        utils.fix_IE_for_vary(request, response)
++        self.assertTrue('Vary' in response)
++
++        # IE, no_content
++        response = no_content_response_with_unsafe_content_type()
++        utils.fix_IE_for_vary(ie_request, response)
++        self.assertFalse('Vary' in response)
++
++
+Index: tests/regressiontests/httpwrappers/tests.py
+===================================================================
+--- tests/regressiontests/httpwrappers/tests.py	(revision 16771)
++++ tests/regressiontests/httpwrappers/tests.py	(revision 17460)
+@@ -281,3 +281,9 @@
+         Test that a single non-standard cookie name doesn't affect all cookies. Ticket #13007.
+         """
+         self.assertTrue('good_cookie' in parse_cookie('good_cookie=yes;bad:cookie=yes').keys())
++
++    def test_repeated_nonstandard_keys(self):
++        """
++        Test that a repeated non-standard name doesn't affect all cookies. Ticket #15852
++        """
++        self.assertTrue('good_cookie' in parse_cookie('a,=b; a,=c; good_cookie=yes').keys())
+Index: docs/index.txt
+===================================================================
+--- docs/index.txt	(revision 16771)
++++ docs/index.txt	(revision 17460)
+@@ -28,7 +28,7 @@
+ .. _archives of the django-users mailing list: http://groups.google.com/group/django-users/
+ .. _post a question: http://groups.google.com/group/django-users/
+ .. _#django IRC channel: irc://irc.freenode.net/django
+-.. _IRC logs: http://botland.oebfare.com/logger/django/
++.. _IRC logs: http://django-irc-logs.com/
+ .. _ticket tracker: http://code.djangoproject.com/
+ 
+ First steps
+Index: docs/intro/tutorial01.txt
+===================================================================
+--- docs/intro/tutorial01.txt	(revision 16771)
++++ docs/intro/tutorial01.txt	(revision 17460)
+@@ -59,7 +59,7 @@
+    can be run as a program. To do this, open Terminal.app and navigate (using
+    the ``cd`` command) to the directory where :doc:`django-admin.py
+    </ref/django-admin>` is installed, then run the command
+-   ``chmod +x django-admin.py``.
++   ``sudo chmod +x django-admin.py``.
+ 
+ .. note::
+ 
+@@ -692,10 +692,9 @@
+ 
+ For more information on model relations, see :doc:`Accessing related objects
+ </ref/models/relations>`. For more on how to use double underscores to perform
+-field lookups via the API, see `Field lookups`__. For full details on the
+-database API, see our :doc:`Database API reference </topics/db/queries>`.
++field lookups via the API, see :ref:`Field lookups <field-lookups-intro>`. For
++full details on the database API, see our :doc:`Database API reference
++</topics/db/queries>`.
+ 
+-__ http://docs.djangoproject.com/en/1.2/topics/db/queries/#field-lookups
+-
+ When you're comfortable with the API, read :doc:`part 2 of this tutorial
+ </intro/tutorial02>` to get Django's automatic admin working.
+Index: docs/intro/tutorial02.txt
+===================================================================
+--- docs/intro/tutorial02.txt	(revision 16771)
++++ docs/intro/tutorial02.txt	(revision 17460)
+@@ -40,22 +40,22 @@
+ 
+       .. parsed-literal::
+ 
+-          from django.conf.urls.defaults import *
++          from django.conf.urls.defaults import patterns, include, url
+ 
+           # Uncomment the next two lines to enable the admin:
+           **from django.contrib import admin**
+           **admin.autodiscover()**
+ 
+           urlpatterns = patterns('',
+-              # Example:
+-              # (r'^mysite/', include('mysite.foo.urls')),
++              # Examples:
++              # url(r'^$', 'mysite.views.home', name='home'),
++              # url(r'^mysite/', include('mysite.foo.urls')),
+ 
+-              # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
+-              # to INSTALLED_APPS to enable admin documentation:
+-              # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
++              # Uncomment the admin/doc line below to enable admin documentation:
++              # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+ 
+               # Uncomment the next line to enable the admin:
+-              **(r'^admin/', include(admin.site.urls)),**
++              **url(r'^admin/', include(admin.site.urls)),**
+           )
+ 
+       (The bold lines are the ones that needed to be uncommented.)
+Index: docs/intro/tutorial03.txt
+===================================================================
+--- docs/intro/tutorial03.txt	(revision 16771)
++++ docs/intro/tutorial03.txt	(revision 17460)
+@@ -78,17 +78,17 @@
+ 
+ Time for an example. Edit ``mysite/urls.py`` so it looks like this::
+ 
+-    from django.conf.urls.defaults import *
++    from django.conf.urls.defaults import patterns, include, url
+ 
+     from django.contrib import admin
+     admin.autodiscover()
+ 
+     urlpatterns = patterns('',
+-        (r'^polls/$', 'polls.views.index'),
+-        (r'^polls/(?P<poll_id>\d+)/$', 'polls.views.detail'),
+-        (r'^polls/(?P<poll_id>\d+)/results/$', 'polls.views.results'),
+-        (r'^polls/(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
+-        (r'^admin/', include(admin.site.urls)),
++        url(r'^polls/$', 'polls.views.index'),
++        url(r'^polls/(?P<poll_id>\d+)/$', 'polls.views.detail'),
++        url(r'^polls/(?P<poll_id>\d+)/results/$', 'polls.views.results'),
++        url(r'^polls/(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
++        url(r'^admin/', include(admin.site.urls)),
+     )
+ 
+ This is worth a review. When somebody requests a page from your Web site -- say,
+@@ -112,7 +112,7 @@
+ -- unless you have a sick sense of humor, in which case you can do something
+ like this::
+ 
+-    (r'^polls/latest\.php$', 'polls.views.index'),
++    url(r'^polls/latest\.php$', 'polls.views.index'),
+ 
+ But, don't do that. It's silly.
+ 
+@@ -357,23 +357,24 @@
+ Write a 404 (page not found) view
+ =================================
+ 
+-When you raise :exc:`~django.http.Http404` from within a view, Django will load
+-a special view devoted to handling 404 errors. It finds it by looking for the
+-variable ``handler404``, which is a string in Python dotted syntax -- the same
+-format the normal URLconf callbacks use. A 404 view itself has nothing special:
+-It's just a normal view.
++When you raise :exc:`~django.http.Http404` from within a view, Django
++will load a special view devoted to handling 404 errors. It finds it
++by looking for the variable ``handler404`` in your root URLconf (and
++only in your root URLconf; setting ``handler404`` anywhere else will
++have no effect), which is a string in Python dotted syntax -- the same
++format the normal URLconf callbacks use. A 404 view itself has nothing
++special: It's just a normal view.
+ 
+-You normally won't have to bother with writing 404 views. By default, URLconfs
+-have the following line up top::
++You normally won't have to bother with writing 404 views. If you don't set
++``handler404``, the built-in view :func:`django.views.defaults.page_not_found`
++is used by default. In this case, you still have one obligation: To create a
++``404.html`` template in the root of your template directory. The default 404
++view will use that template for all 404 errors. If :setting:`DEBUG` is set to
++``False`` (in your settings module) and if you didn't create a ``404.html``
++file, an ``Http500`` is raised instead.  So remember to create a ``404.html``.
+ 
+-    from django.conf.urls.defaults import *
++A couple more things to note about 404 views:
+ 
+-That takes care of setting ``handler404`` in the current module. As you can see
+-in ``django/conf/urls/defaults.py``, ``handler404`` is set to
+-:func:`django.views.defaults.page_not_found` by default.
+-
+-Four more things to note about 404 views:
+-
+     * If :setting:`DEBUG` is set to ``True`` (in your settings module) then your
+       404 view will never be used (and thus the ``404.html`` template will never
+       be rendered) because the traceback will be displayed instead.
+@@ -381,21 +382,12 @@
+     * The 404 view is also called if Django doesn't find a match after checking
+       every regular expression in the URLconf.
+ 
+-    * If you don't define your own 404 view -- and simply use the default, which
+-      is recommended -- you still have one obligation: To create a ``404.html``
+-      template in the root of your template directory. The default 404 view will
+-      use that template for all 404 errors.
+-
+-    * If :setting:`DEBUG` is set to ``False`` (in your settings module) and if
+-      you didn't create a ``404.html`` file, an ``Http500`` is raised instead.
+-      So remember to create a ``404.html``.
+-
+ Write a 500 (server error) view
+ ===============================
+ 
+-Similarly, URLconfs may define a ``handler500``, which points to a view to call
+-in case of server errors. Server errors happen when you have runtime errors in
+-view code.
++Similarly, your root URLconf may define a ``handler500``, which points
++to a view to call in case of server errors. Server errors happen when
++you have runtime errors in view code.
+ 
+ Use the template system
+ =======================
+@@ -432,10 +424,10 @@
+ the URLconf, you may notice there's a fair bit of redundancy in it::
+ 
+     urlpatterns = patterns('',
+-        (r'^polls/$', 'polls.views.index'),
+-        (r'^polls/(?P<poll_id>\d+)/$', 'polls.views.detail'),
+-        (r'^polls/(?P<poll_id>\d+)/results/$', 'polls.views.results'),
+-        (r'^polls/(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
++        url(r'^polls/$', 'polls.views.index'),
++        url(r'^polls/(?P<poll_id>\d+)/$', 'polls.views.detail'),
++        url(r'^polls/(?P<poll_id>\d+)/results/$', 'polls.views.results'),
++        url(r'^polls/(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
+     )
+ 
+ Namely, ``polls.views`` is in every callback.
+@@ -445,10 +437,10 @@
+ first argument to :func:`~django.conf.urls.defaults.patterns`, like so::
+ 
+     urlpatterns = patterns('polls.views',
+-        (r'^polls/$', 'index'),
+-        (r'^polls/(?P<poll_id>\d+)/$', 'detail'),
+-        (r'^polls/(?P<poll_id>\d+)/results/$', 'results'),
+-        (r'^polls/(?P<poll_id>\d+)/vote/$', 'vote'),
++        url(r'^polls/$', 'index'),
++        url(r'^polls/(?P<poll_id>\d+)/$', 'detail'),
++        url(r'^polls/(?P<poll_id>\d+)/results/$', 'results'),
++        url(r'^polls/(?P<poll_id>\d+)/vote/$', 'vote'),
+     )
+ 
+ This is functionally identical to the previous formatting. It's just a bit
+@@ -459,20 +451,20 @@
+ :func:`~django.conf.urls.defaults.patterns`. Your full ``mysite/urls.py`` might
+ now look like this::
+ 
+-    from django.conf.urls.defaults import *
++    from django.conf.urls.defaults import patterns, include, url
+ 
+     from django.contrib import admin
+     admin.autodiscover()
+     
+     urlpatterns = patterns('polls.views',
+-        (r'^polls/$', 'index'),
+-        (r'^polls/(?P<poll_id>\d+)/$', 'detail'),
+-        (r'^polls/(?P<poll_id>\d+)/results/$', 'results'),
+-        (r'^polls/(?P<poll_id>\d+)/vote/$', 'vote'),
++        url(r'^polls/$', 'index'),
++        url(r'^polls/(?P<poll_id>\d+)/$', 'detail'),
++        url(r'^polls/(?P<poll_id>\d+)/results/$', 'results'),
++        url(r'^polls/(?P<poll_id>\d+)/vote/$', 'vote'),
+     )
+     
+     urlpatterns += patterns('',
+-        (r'^admin/', include(admin.site.urls)),
++        url(r'^admin/', include(admin.site.urls)),
+     )
+ 
+ Decoupling the URLconfs
+@@ -502,8 +494,8 @@
+     admin.autodiscover()
+     
+     urlpatterns = patterns('',
+-        (r'^polls/', include('polls.urls')),
+-        (r'^admin/', include(admin.site.urls)),
++        url(r'^polls/', include('polls.urls')),
++        url(r'^admin/', include(admin.site.urls)),
+     )
+ 
+ :func:`~django.conf.urls.defaults.include` simply references another URLconf.
+@@ -526,13 +518,13 @@
+ lines registering the admin site. Your ``polls/urls.py`` file should now look like
+ this::
+ 
+-    from django.conf.urls.defaults import *
++    from django.conf.urls.defaults import patterns, include, url
+ 
+     urlpatterns = patterns('polls.views',
+-        (r'^$', 'index'),
+-        (r'^(?P<poll_id>\d+)/$', 'detail'),
+-        (r'^(?P<poll_id>\d+)/results/$', 'results'),
+-        (r'^(?P<poll_id>\d+)/vote/$', 'vote'),
++        url(r'^$', 'index'),
++        url(r'^(?P<poll_id>\d+)/$', 'detail'),
++        url(r'^(?P<poll_id>\d+)/results/$', 'results'),
++        url(r'^(?P<poll_id>\d+)/vote/$', 'vote'),
+     )
+ 
+ The idea behind :func:`~django.conf.urls.defaults.include` and URLconf
+Index: docs/intro/index.txt
+===================================================================
+--- docs/intro/index.txt	(revision 16771)
++++ docs/intro/index.txt	(revision 17460)
+@@ -31,6 +31,6 @@
+     
+     .. _python: http://python.org/
+     .. _list of Python resources for non-programmers: http://wiki.python.org/moin/BeginnersGuide/NonProgrammers
+-    .. _dive into python: http://diveintopython.org/
++    .. _dive into python: http://diveintopython.net/
+     .. _dead-tree version: http://www.amazon.com/exec/obidos/ASIN/1590593561/ref=nosim/jacobian20
+     .. _books about Python: http://wiki.python.org/moin/PythonBooks
+\ No newline at end of file
+Index: docs/intro/tutorial04.txt
+===================================================================
+--- docs/intro/tutorial04.txt	(revision 16771)
++++ docs/intro/tutorial04.txt	(revision 17460)
+@@ -218,13 +218,13 @@
+ First, open the ``polls/urls.py`` URLconf. It looks like this, according to the
+ tutorial so far::
+ 
+-    from django.conf.urls.defaults import *
++    from django.conf.urls.defaults import patterns, include, url
+ 
+     urlpatterns = patterns('polls.views',
+-        (r'^$', 'index'),
+-        (r'^(?P<poll_id>\d+)/$', 'detail'),
+-        (r'^(?P<poll_id>\d+)/results/$', 'results'),
+-        (r'^(?P<poll_id>\d+)/vote/$', 'vote'),
++        url(r'^$', 'index'),
++        url(r'^(?P<poll_id>\d+)/$', 'detail'),
++        url(r'^(?P<poll_id>\d+)/results/$', 'results'),
++        url(r'^(?P<poll_id>\d+)/vote/$', 'vote'),
+     )
+ 
+ Change it like so::
+@@ -234,12 +234,12 @@
+     from polls.models import Poll
+ 
+     urlpatterns = patterns('',
+-        (r'^$',
++        url(r'^$',
+             ListView.as_view(
+                 queryset=Poll.objects.order_by('-pub_date')[:5],
+                 context_object_name='latest_poll_list',
+                 template_name='polls/index.html')),
+-        (r'^(?P<pk>\d+)/$',
++        url(r'^(?P<pk>\d+)/$',
+             DetailView.as_view(
+                 model=Poll,
+                 template_name='polls/detail.html')),
+@@ -248,7 +248,7 @@
+                 model=Poll,
+                 template_name='polls/results.html'),
+             name='poll_results'),
+-        (r'^(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
++        url(r'^(?P<poll_id>\d+)/vote/$', 'polls.views.vote'),
+     )
+ 
+ We're using two generic views here:
+Index: docs/internals/release-process.txt
+===================================================================
+--- docs/internals/release-process.txt	(revision 16771)
++++ docs/internals/release-process.txt	(revision 17460)
+@@ -99,6 +99,13 @@
+     * Security fixes will be applied to the current trunk and the previous two
+       minor releases.
+ 
++* Documentation fixes will generally be more freely backported to the last
++  release branch (at the discretion of the committer), and don't need to meet
++  the "critical fixes only" bar as it's highly advantageous to have the docs
++  for the last release be up-to-date and correct, and the downside of
++  backporting (risk of introducing regressions) is much less of a concern
++  with doc fixes.
++
+ As a concrete example, consider a moment in time halfway between the release of
+ Django 1.3 and 1.4. At this point in time:
+ 
+@@ -111,6 +118,9 @@
+       ``1.2.X`` branch. Security fixes will trigger the release of ``1.3.1``,
+       ``1.2.1``, etc.
+ 
++* Documentation fixes will be applied to trunk, and if easily backported, to
++  the ``1.3.X`` branch.
++
+ .. _release-process:
+ 
+ Release process
+Index: docs/internals/deprecation.txt
+===================================================================
+--- docs/internals/deprecation.txt	(revision 16771)
++++ docs/internals/deprecation.txt	(revision 17460)
+@@ -177,6 +177,12 @@
+           required to end with a trailing slash to ensure there is a consistent
+           way to combine paths in templates.
+ 
++        * Translations located under the so-called *project path* will be
++          ignored during the translation building process performed at runtime.
++          The :setting:`LOCALE_PATHS` setting can be used for the same task by
++          including the filesystem path to a ``locale`` directory containing
++          non-app-specific translations in its value.
++
+     * 2.0
+         * ``django.views.defaults.shortcut()``. This function has been moved
+           to ``django.contrib.contenttypes.views.shortcut()`` as part of the
+Index: docs/howto/deployment/modpython.txt
+===================================================================
+--- docs/howto/deployment/modpython.txt	(revision 16771)
++++ docs/howto/deployment/modpython.txt	(revision 17460)
+@@ -293,11 +293,14 @@
+ arrangement. You're responsible for setting up Apache, or whichever media
+ server you're using, to serve the admin files.
+ 
+-The admin files live in (:file:`django/contrib/admin/static/admin`) of the
++The admin files live in (:file:`django/contrib/admin/media/admin`) of the
+ Django distribution.
+ 
+-We **strongly** recommend using :mod:`django.contrib.staticfiles` to handle
+-the admin files, but here are two other approaches:
++We **strongly** recommend using :mod:`django.contrib.staticfiles` to handle the
++admin files (this means using the :djadmin:`collectstatic` management command
++to collect the static files in :setting:`STATIC_ROOT`, and then configuring
++your webserver to serve :setting:`STATIC_ROOT` at :setting:`STATIC_URL`), but
++here are two other approaches:
+ 
+     1. Create a symbolic link to the admin static files from within your
+        document root.
+Index: docs/howto/deployment/modwsgi.txt
+===================================================================
+--- docs/howto/deployment/modwsgi.txt	(revision 16771)
++++ docs/howto/deployment/modwsgi.txt	(revision 17460)
+@@ -127,11 +127,14 @@
+ arrangement. You're responsible for setting up Apache, or whichever media
+ server you're using, to serve the admin files.
+ 
+-The admin files live in (:file:`django/contrib/admin/static/admin`) of the
++The admin files live in (:file:`django/contrib/admin/media/admin`) of the
+ Django distribution.
+ 
+-We **strongly** recommend using :mod:`django.contrib.staticfiles` to handle
+-the admin files, but here are two other approaches:
++We **strongly** recommend using :mod:`django.contrib.staticfiles` to handle the
++admin files (this means using the :djadmin:`collectstatic` management command
++to collect the static files in :setting:`STATIC_ROOT`, and then configuring
++your webserver to serve :setting:`STATIC_ROOT` at :setting:`STATIC_URL`), but
++here are two other approaches:
+ 
+     1. Create a symbolic link to the admin static files from within your
+        document root.
+Index: docs/topics/auth.txt
+===================================================================
+--- docs/topics/auth.txt	(revision 16771)
++++ docs/topics/auth.txt	(revision 17460)
+@@ -1251,17 +1251,20 @@
+         ...
+         class Meta:
+             permissions = (
+-                ("can_view", "Can see available tasks"),
+-                ("can_change_status", "Can change the status of tasks"),
+-                ("can_close", "Can remove a task by setting its status as closed"),
++                ("view_task", "Can see available tasks"),
++                ("change_task_status", "Can change the status of tasks"),
++                ("close_task", "Can remove a task by setting its status as closed"),
+             )
+ 
+ The only thing this does is create those extra permissions when you run
+ :djadmin:`manage.py syncdb <syncdb>`. Your code is in charge of checking the
+ value of these permissions when an user is trying to access the functionality
+ provided by the application (viewing tasks, changing the status of tasks,
+-closing tasks.)
++closing tasks.) Continuing the above example, the following checks if a user may
++view tasks::
+ 
++    user.has_perm('app.view_task')
++
+ API reference
+ -------------
+ 
+Index: docs/topics/http/urls.txt
+===================================================================
+--- docs/topics/http/urls.txt	(revision 16771)
++++ docs/topics/http/urls.txt	(revision 17460)
+@@ -54,6 +54,10 @@
+        :class:`~django.http.HttpRequest` as its first argument and any values
+        captured in the regex as remaining arguments.
+ 
++    5. If no regex matches, or if an exception is raised during any
++       point in this process, Django invokes an appropriate
++       error-handling view. See `Error handling`_ below.
++
+ Example
+ =======
+ 
+@@ -99,10 +103,10 @@
+     * ``/articles/2003`` would not match any of these patterns, because each
+       pattern requires that the URL end with a slash.
+ 
+-    * ``/articles/2003/03/3/`` would match the final pattern. Django would call
+-      the function ``news.views.article_detail(request, '2003', '03', '3')``.
++    * ``/articles/2003/03/03/`` would match the final pattern. Django would call
++      the function ``news.views.article_detail(request, '2003', '03', '03')``.
+ 
+-.. _Dive Into Python's explanation: http://diveintopython.org/regular_expressions/street_addresses.html#re.matching.2.3
++.. _Dive Into Python's explanation: http://diveintopython.net/regular_expressions/street_addresses.html#re.matching.2.3
+ 
+ Named groups
+ ============
+@@ -123,7 +127,7 @@
+         (r'^articles/2003/$', 'news.views.special_case_2003'),
+         (r'^articles/(?P<year>\d{4})/$', 'news.views.year_archive'),
+         (r'^articles/(?P<year>\d{4})/(?P<month>\d{2})/$', 'news.views.month_archive'),
+-        (r'^articles/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d+)/$', 'news.views.article_detail'),
++        (r'^articles/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', 'news.views.article_detail'),
+     )
+ 
+ This accomplishes exactly the same thing as the previous example, with one
+@@ -134,8 +138,8 @@
+       ``news.views.month_archive(request, year='2005', month='03')``, instead
+       of ``news.views.month_archive(request, '2005', '03')``.
+ 
+-    * A request to ``/articles/2003/03/3/`` would call the function
+-      ``news.views.article_detail(request, year='2003', month='03', day='3')``.
++    * A request to ``/articles/2003/03/03/`` would call the function
++      ``news.views.article_detail(request, year='2003', month='03', day='03')``.
+ 
+ In practice, this means your URLconfs are slightly more explicit and less prone
+ to argument-order bugs -- and you can reorder the arguments in your views'
+@@ -246,6 +250,31 @@
+ ``patterns()`` and is only relevant when you're passing a string as the
+ ``view`` parameter.
+ 
++include
++-------
++
++.. function:: include(<module or pattern_list>)
++
++A function that takes a full Python import path to another URLconf module that
++should be "included" in this place.
++
++:func:`include` also accepts as an argument an iterable that returns URL
++patterns.
++
++See `Including other URLconfs`_ below.
++
++Error handling
++==============
++
++When Django can't find a regex matching the requested URL, or when an
++exception is raised, Django will invoke an error-handling view. The
++views to use for these cases are specified by two variables which can
++be set in your root URLconf. Setting these variables in any other
++URLconf will have no effect.
++
++See the documentation on :ref:`customizing error views
++<customizing-error-views>` for more details.
++
+ handler404
+ ----------
+ 
+@@ -275,19 +304,6 @@
+ .. versionchanged:: 1.2
+     Previous versions of Django only accepted strings representing import paths.
+ 
+-include
+--------
+-
+-.. function:: include(<module or pattern_list>)
+-
+-A function that takes a full Python import path to another URLconf module that
+-should be "included" in this place.
+-
+-:func:`include` also accepts as an argument an iterable that returns URL
+-patterns.
+-
+-See `Including other URLconfs`_ below.
+-
+ Notes on capturing text in URLs
+ ===============================
+ 
+@@ -420,8 +436,8 @@
+     from django.conf.urls.defaults import *
+ 
+     extra_patterns = patterns('',
+-        url(r'reports/(?P<id>\d+)/$', 'credit.views.report', name='credit-reports'),
+-        url(r'charge/$', 'credit.views.charge', name='credit-charge'),
++        url(r'^reports/(?P<id>\d+)/$', 'credit.views.report', name='credit-reports'),
++        url(r'^charge/$', 'credit.views.charge', name='credit-charge'),
+     )
+ 
+     urlpatterns = patterns('',
+Index: docs/topics/http/views.txt
+===================================================================
+--- docs/topics/http/views.txt	(revision 16771)
++++ docs/topics/http/views.txt	(revision 17460)
+@@ -122,6 +122,8 @@
+ template that is displayed when a 404 error is raised. This template should be
+ called ``404.html`` and located in the top level of your template tree.
+ 
++.. _customizing-error-views:
++
+ Customizing error views
+ =======================
+ 
+Index: docs/topics/i18n/internationalization.txt
+===================================================================
+--- docs/topics/i18n/internationalization.txt	(revision 16771)
++++ docs/topics/i18n/internationalization.txt	(revision 17460)
+@@ -477,7 +477,7 @@
+ 
+ You can use multiple expressions inside a single ``blocktrans`` tag::
+ 
+-    {% blocktrans with book_t=book|title and author_t=author|title %}
++    {% blocktrans with book_t=book|title author_t=author|title %}
+     This is {{ book_t }} by {{ author_t }}
+     {% endblocktrans %}
+ 
+Index: docs/topics/cache.txt
+===================================================================
+--- docs/topics/cache.txt	(revision 16771)
++++ docs/topics/cache.txt	(revision 17460)
+@@ -99,8 +99,9 @@
+       on your chosen memcached binding)
+ 
+     * Set :setting:`LOCATION <CACHES-LOCATION>` to ``ip:port`` values,
+-      where ``ip`` is the IP address of the Memcached daemon and
+-      ``port`` is the port on which Memcached is running.
++      where ``ip`` is the IP address of the Memcached daemon and ``port`` is the
++      port on which Memcached is running, or to a ``unix:path`` value, where
++      ``path`` is the path to a Memcached Unix socket file.
+ 
+ In this example, Memcached is running on localhost (127.0.0.1) port 11211, using
+ the ``python-memcached`` binding::
+@@ -112,6 +113,16 @@
+         }
+     }
+ 
++In this example, Memcached is available through a local Unix socket file
++:file:`/tmp/memcached.sock` using the ``python-memcached`` binding::
++
++    CACHES = {
++        'default': {
++            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
++            'LOCATION': 'unix:/tmp/memcached.sock',
++        }
++    }
++
+ One excellent feature of Memcached is its ability to share cache over multiple
+ servers. This means you can run Memcached daemons on multiple machines, and the
+ program will treat the group of machines as a *single* cache, without the need
+@@ -526,9 +537,10 @@
+ requested, subsequent requests to that URL will use the cache.
+ 
+ ``cache_page`` can also take an optional keyword argument, ``cache``,
+-which directs the decorator to use a specific cache alias when caching view
+-results. By default, the ``default`` alias will be used, but you can specify
+-any cache alias you want::
++which directs the decorator to use a specific cache (from your
++:setting:`CACHES` setting) when caching view results. By default, the
++``default`` cache will be used, but you can specify any cache you
++want::
+ 
+     @cache_page(60 * 15, cache="special_cache")
+     def my_view(request):
+Index: docs/topics/db/models.txt
+===================================================================
+--- docs/topics/db/models.txt	(revision 16771)
++++ docs/topics/db/models.txt	(revision 17460)
+@@ -324,11 +324,10 @@
+     should work; all are optional.
+ 
+     For details on accessing backwards-related objects, see the
+-    `Following relationships backward example`_.
+-    
++    :ref:`Following relationships backward example <backwards-related-objects>`.
++
+     For sample code, see the `Many-to-one relationship model tests`_.
+ 
+-    .. _Following relationships backward example: http://docs.djangoproject.com/en/dev/topics/db/queries/#backwards-related-objects
+     .. _Many-to-one relationship model tests: http://code.djangoproject.com/browser/django/trunk/tests/modeltests/many_to_one
+ 
+ Many-to-many relationships
+Index: docs/topics/db/sql.txt
+===================================================================
+--- docs/topics/db/sql.txt	(revision 16771)
++++ docs/topics/db/sql.txt	(revision 17460)
+@@ -236,6 +236,30 @@
+     # Your code here...
+     transaction.commit_unless_managed(using='my_db_alias')
+ 
++By default, the Python DB API will return results without their field
++names, which means you end up with a ``list`` of values, rather than a
++``dict``. At a small performance cost, you can return results as a
++``dict`` by using something like this::
++    
++    def dictfetchall(cursor):
++        "Returns all rows from a cursor as a dict"
++        desc = cursor.description
++        return [
++            dict(zip([col[0] for col in desc], row))
++            for row in cursor.fetchall()
++        ]
++
++Here is an example of the difference between the two::
++
++    >>> cursor.execute("SELECT id, parent_id from test LIMIT 2");
++    >>> cursor.fetchall()
++    ((54360982L, None), (54360880L, None))
++    
++    >>> cursor.execute("SELECT id, parent_id from test LIMIT 2");
++    >>> dictfetchall(cursor)
++    [{'parent_id': None, 'id': 54360982L}, {'parent_id': None, 'id': 54360880L}]
++
++
+ .. _transactions-and-raw-sql:
+ 
+ Transactions and raw SQL
+Index: docs/topics/forms/modelforms.txt
+===================================================================
+--- docs/topics/forms/modelforms.txt	(revision 16771)
++++ docs/topics/forms/modelforms.txt	(revision 17460)
+@@ -332,14 +332,18 @@
+ .. note::
+ 
+     If you specify ``fields`` or ``exclude`` when creating a form with
+-    ``ModelForm``, then the fields that are not in the resulting form will not
+-    be set by the form's ``save()`` method. Django will prevent any attempt to
+-    save an incomplete model, so if the model does not allow the missing fields
+-    to be empty, and does not provide a default value for the missing fields,
+-    any attempt to ``save()`` a ``ModelForm`` with missing fields will fail.
+-    To avoid this failure, you must instantiate your model with initial values
+-    for the missing, but required fields::
++    ``ModelForm``, then the fields that are not in the resulting form
++    will not be set by the form's ``save()`` method. Also, if you
++    manually add the excluded fields back to the form, they will not
++    be initialized from the model instance.
+ 
++    Django will prevent any attempt to save an incomplete model, so if
++    the model does not allow the missing fields to be empty, and does
++    not provide a default value for the missing fields, any attempt to
++    ``save()`` a ``ModelForm`` with missing fields will fail.  To
++    avoid this failure, you must instantiate your model with initial
++    values for the missing, but required fields::
++
+         author = Author(title='Mr')
+         form = PartialAuthorForm(request.POST, instance=author)
+         form.save()
+@@ -633,6 +637,12 @@
+ instance won't be saved to the database and won't be included in the return
+ value (``instances``, in the above example).
+ 
++When fields are missing from the form (for example because they have
++been excluded), these fields will not be set by the ``save()``
++method. You can find more information about this restriction, which
++also holds for regular ``ModelForms``, in `Using a subset of fields on
++the form`_.
++
+ Pass ``commit=False`` to return the unsaved model instances::
+ 
+     # don't save to the database
+Index: docs/topics/class-based-views.txt
+===================================================================
+--- docs/topics/class-based-views.txt	(revision 16771)
++++ docs/topics/class-based-views.txt	(revision 17460)
+@@ -380,7 +380,7 @@
+     class PublisherBookListView(ListView):
+ 
+         context_object_name = "book_list"
+-        template_name = "books/books_by_publisher.html",
++        template_name = "books/books_by_publisher.html"
+ 
+         def get_queryset(self):
+             publisher = get_object_or_404(Publisher, name__iexact=self.args[0])
+@@ -396,7 +396,7 @@
+     class PublisherBookListView(ListView):
+ 
+         context_object_name = "book_list"
+-        template_name = "books/books_by_publisher.html",
++        template_name = "books/books_by_publisher.html"
+ 
+         def get_queryset(self):
+             self.publisher = get_object_or_404(Publisher, name__iexact=self.args[0])
+Index: docs/topics/testing.txt
+===================================================================
+--- docs/topics/testing.txt	(revision 16771)
++++ docs/topics/testing.txt	(revision 17460)
+@@ -1586,7 +1586,7 @@
+ Skip the decorated test if the named database feature is *not*
+ supported.
+ 
+-For example, the following test will not be executed if the database
++For example, the following test will only be executed if the database
+ supports transactions (e.g., it would run under PostgreSQL, but *not*
+ under MySQL with MyISAM tables)::
+ 
+Index: docs/topics/templates.txt
+===================================================================
+--- docs/topics/templates.txt	(revision 16771)
++++ docs/topics/templates.txt	(revision 17460)
+@@ -555,6 +555,8 @@
+ the ``escape`` filter *double-escaping* data -- the ``escape`` filter does not
+ affect auto-escaped variables.
+ 
++.. _string-literals-and-automatic-escaping:
++
+ String literals and automatic escaping
+ --------------------------------------
+ 
+Index: docs/topics/settings.txt
+===================================================================
+--- docs/topics/settings.txt	(revision 16771)
++++ docs/topics/settings.txt	(revision 17460)
+@@ -39,7 +39,7 @@
+ ``mysite.settings``. Note that the settings module should be on the
+ Python `import search path`_.
+ 
+-.. _import search path: http://diveintopython.org/getting_to_know_python/everything_is_an_object.html
++.. _import search path: http://diveintopython.net/getting_to_know_python/everything_is_an_object.html
+ 
+ The django-admin.py utility
+ ---------------------------
+Index: docs/releases/1.2.6.txt
+===================================================================
+--- docs/releases/1.2.6.txt	(revision 0)
++++ docs/releases/1.2.6.txt	(revision 17460)
+@@ -0,0 +1,16 @@
++==========================
++Django 1.2.6 release notes
++==========================
++
++*September 9, 2011*
++
++Welcome to Django 1.2.6!
++
++This is the sixth bugfix/security release in the Django 1.2 series, fixing
++several security issues present in Django 1.2.5.  Django 1.2.6 is a
++recommended upgrade for all users of any Django release in the 1.2.X series.
++
++For a full list of issues addressed in this release, see the `security
++advisory`_.
++
++.. _security advisory: https://www.djangoproject.com/weblog/2011/sep/09/security-releases-issued/
+Index: docs/releases/1.2.7.txt
+===================================================================
+--- docs/releases/1.2.7.txt	(revision 0)
++++ docs/releases/1.2.7.txt	(revision 17460)
+@@ -0,0 +1,16 @@
++==========================
++Django 1.2.7 release notes
++==========================
++
++*September 10, 2011*
++
++Welcome to Django 1.2.7!
++
++This is the seventh bugfix/security release in the Django 1.2 series. It
++replaces Django 1.2.6 due to problems with the 1.2.6 release tarball. 
++Django 1.2.7 is a recommended upgrade for all users of any Django release in
++the 1.2.X series.
++
++For more information, see the `release advisory`_.
++
++.. _release advisory: https://www.djangoproject.com/weblog/2011/sep/10/127/
+Index: docs/releases/index.txt
+===================================================================
+--- docs/releases/index.txt	(revision 16771)
++++ docs/releases/index.txt	(revision 17460)
+@@ -19,6 +19,7 @@
+ .. toctree::
+    :maxdepth: 1
+ 
++   1.3.1
+    1.3
+ 
+ 1.2 release
+@@ -26,6 +27,8 @@
+ .. toctree::
+    :maxdepth: 1
+ 
++   1.2.7
++   1.2.6
+    1.2.5
+    1.2.4
+    1.2.2
+Index: docs/releases/0.95.txt
+===================================================================
+--- docs/releases/0.95.txt	(revision 16771)
++++ docs/releases/0.95.txt	(revision 17460)
+@@ -92,15 +92,15 @@
+ easy checklist_ for reference when undertaking the porting operation.
+ 
+ .. _Removing The Magic: http://code.djangoproject.com/wiki/RemovingTheMagic
+-.. _checklist: http://code.djangoproject.com/wiki/MagicRemovalCheatSheet1
++.. _checklist: http://code.djangoproject.com/wiki/MagicRemovalCheatSheet
+ 
+ Problem reports and getting help
+ ================================
+ 
+-Need help resolving a problem with Django? The documentation in the distribution
+-is also available online_ at the `Django Web site`_. The :doc:`FAQ </faq/index>`
+-document is especially recommended, as it contains a number of issues that come
+-up time and again.
++Need help resolving a problem with Django? The documentation in the
++distribution is also available :doc:`online </index>` at the `Django Web
++site`_. The :doc:`FAQ </faq/index>` document is especially recommended, as it
++contains a number of issues that come up time and again.
+ 
+ For more personalized help, the `django-users`_ mailing list is a very active
+ list, with more than 2,000 subscribers who can help you solve any sort of
+@@ -113,7 +113,6 @@
+ Django users and developers from around the world. Friendly people are usually
+ available at any hour of the day -- to help, or just to chat.
+ 
+-.. _online: http://www.djangoproject.com/documentation/0.95/
+ .. _Django Web site: http://www.djangoproject.com/
+ .. _django-users: http://groups.google.com/group/django-users
+ 
+Index: docs/releases/0.96.txt
+===================================================================
+--- docs/releases/0.96.txt	(revision 16771)
++++ docs/releases/0.96.txt	(revision 17460)
+@@ -50,12 +50,10 @@
+ maintained, and it will be removed in a future release of Django.
+ 
+ Also, note that some features, like the new :setting:`DATABASE_OPTIONS`
+-setting (see the `databases documentation`_ for details), are only
+-available on the "mysql" backend, and will not be made available for
++setting (see the :doc:`databases documentation </ref/databases>` for details),
++are only available on the "mysql" backend, and will not be made available for
+ "mysql_old".
+ 
+-.. _databases documentation: http://www.djangoproject.com/documentation/0.96/databases/
+-
+ Database constraint names changed
+ ---------------------------------
+ 
+@@ -164,11 +162,9 @@
+ for most common cases. We recommend that anyone new to form handling skip the
+ old forms system and start with the new.
+ 
+-For more information about ``django.newforms``, read the `newforms
+-documentation`_.
++For more information about ``django.newforms``, read the :doc:`newforms
++documentation </topics/forms/index>`.
+ 
+-.. _newforms documentation: http://www.djangoproject.com/documentation/0.96/newforms/
+-
+ URLconf improvements
+ --------------------
+ 
+@@ -216,20 +212,16 @@
+ ------------------
+ 
+ Django now includes a test framework so you can start transmuting fear into
+-boredom (with apologies to Kent Beck). You can write tests based on doctest_
+-or unittest_ and test your views with a simple test client.
++boredom (with apologies to Kent Beck). You can write tests based on
++:mod:`doctest` or :mod:`unittest` and test your views with a simple test client.
+ 
+ There is also new support for "fixtures" -- initial data, stored in any of the
+-supported `serialization formats`_, that will be loaded into your database at the
+-start of your tests. This makes testing with real data much easier.
++supported :doc:`serialization formats </topics/serialization>`, that will be
++loaded into your database at the start of your tests. This makes testing with
++real data much easier.
+ 
+-See `the testing documentation`_ for the full details.
++See :doc:`the testing documentation </topics/testing>` for the full details.
+ 
+-.. _doctest: http://docs.python.org/library/doctest.html
+-.. _unittest: http://docs.python.org/library/unittest.html
+-.. _the testing documentation: http://www.djangoproject.com/documentation/0.96/testing/
+-.. _serialization formats: http://www.djangoproject.com/documentation/0.96/serialization/
+-
+ Improvements to the admin interface
+ -----------------------------------
+ 
+Index: docs/releases/1.0.1.txt
+===================================================================
+--- docs/releases/1.0.1.txt	(revision 16771)
++++ docs/releases/1.0.1.txt	(revision 17460)
+@@ -6,10 +6,10 @@
+ 
+ This is the first "bugfix" release in the Django 1.0 series, improving
+ the stability and performance of the Django 1.0 codebase. As such,
+-Django 1.0.1 contains no new features (and, pursuant to `our
+-compatibility policy`_, maintains backwards compatibility with Django
+-1.0), but does contain a number of fixes and other
+-improvements. Django 1.0.1 is a recommended upgrade for any
++Django 1.0.1 contains no new features (and, pursuant to :doc:`our
++compatibility policy </misc/api-stability/>`, maintains backwards
++compatibility with Django 1.0), but does contain a number of fixes
++and other improvements. Django 1.0.1 is a recommended upgrade for any
+ development or deployment currently using or targeting Django 1.0.
+ 
+ 
+@@ -46,8 +46,9 @@
+ 
+ * A fix to the application of autoescaping for literal strings passed
+   to the ``join`` template filter. Previously, literal strings passed
+-  to ``join`` were automatically escaped, contrary to `the documented
+-  behavior for autoescaping and literal strings`_. Literal strings
++  to ``join`` were automatically escaped, contrary to :ref:`the
++  documented behavior for autoescaping and literal strings
++  <string-literals-and-automatic-escaping>`. Literal strings
+   passed to ``join`` are no longer automatically escaped, meaning you
+   must now manually escape them; this is an incompatibility if you
+   were relying on this bug, but not if you were relying on escaping
+@@ -60,6 +61,4 @@
+   documentation, including both corrections to existing documents and
+   expanded and new documentation.
+ 
+-.. _our compatibility policy: http://docs.djangoproject.com/en/dev/misc/api-stability/
+ .. _the Subversion log of the 1.0.X branch: http://code.djangoproject.com/log/django/branches/releases/1.0.X
+-.. _the documented behavior for autoescaping and literal strings: http://docs.djangoproject.com/en/dev/topics/templates/#string-literals-and-automatic-escaping
+Index: docs/releases/1.3.1.txt
+===================================================================
+--- docs/releases/1.3.1.txt	(revision 0)
++++ docs/releases/1.3.1.txt	(revision 17460)
+@@ -0,0 +1,16 @@
++==========================
++Django 1.3.1 release notes
++==========================
++
++*September 9, 2011*
++
++Welcome to Django 1.3.1!
++
++This is the first security release in the Django 1.3 series, fixing several
++security issues in Django 1.3.  Django 1.3.1 is a recommended upgrade for
++all users of Django 1.3.
++
++For a full list of issues addressed in this release, see the `security
++advisory`_.
++
++.. _security advisory: https://www.djangoproject.com/weblog/2011/sep/09/security-releases-issued/
+Index: docs/ref/models/instances.txt
+===================================================================
+--- docs/ref/models/instances.txt	(revision 16771)
++++ docs/ref/models/instances.txt	(revision 17460)
+@@ -470,7 +470,7 @@
+ 
+ Similarly, if you had a URLconf entry that looked like::
+ 
+-    (r'/archive/(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$', archive_view)
++    (r'/archive/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', archive_view)
+ 
+ ...you could reference this using ``permalink()`` as follows::
+ 
+@@ -478,8 +478,8 @@
+     def get_absolute_url(self):
+         return ('archive_view', (), {
+             'year': self.created.year,
+-            'month': self.created.month,
+-            'day': self.created.day})
++            'month': self.created.strftime('%m'),
++            'day': self.created.strftime('%d')})
+ 
+ Notice that we specify an empty sequence for the second parameter in this case,
+ because we only want to pass keyword parameters, not positional ones.
+Index: docs/ref/models/options.txt
+===================================================================
+--- docs/ref/models/options.txt	(revision 16771)
++++ docs/ref/models/options.txt	(revision 17460)
+@@ -166,6 +166,13 @@
+         >>> answer.get_previous_in_order()
+         <Answer: 1>
+ 
++.. admonition:: Changing order_with_respect_to
++
++        ``order_with_respect_to`` adds an additional field/database column
++        named ``_order``, so be sure to handle that as you would any other
++        change to your models if you add or change ``order_with_respect_to``
++        after your initial :djadmin:`syncdb`.
++
+ ``ordering``
+ ------------
+ 
+@@ -238,6 +245,12 @@
+ 
+         unique_together = ("driver", "restaurant")
+ 
++    A :class:`~django.db.models.ManyToManyField` cannot be included in
++    unique_together (it's not even clear what that would mean). If you
++    need to validate uniqueness related to a
++    :class:`~django.db.models.ManyToManyField`, look at signals or
++    using an explicit :attr:`through <ManyToManyField.through>` model.
++
+ ``verbose_name``
+ ----------------
+ 
+Index: docs/ref/templates/builtins.txt
+===================================================================
+--- docs/ref/templates/builtins.txt	(revision 16771)
++++ docs/ref/templates/builtins.txt	(revision 17460)
+@@ -1868,7 +1868,7 @@
+ Returns a slice of the list.
+ 
+ Uses the same syntax as Python's list slicing. See
+-http://diveintopython.org/native_data_types/lists.html#odbchelper.list.slice
++http://diveintopython.net/native_data_types/lists.html#odbchelper.list.slice
+ for an introduction.
+ 
+ Example::
+Index: docs/ref/contrib/gis/geoip.txt
+===================================================================
+--- docs/ref/contrib/gis/geoip.txt	(revision 16771)
++++ docs/ref/contrib/gis/geoip.txt	(revision 17460)
+@@ -144,7 +144,7 @@
+ Returns a dictionary of city information for the given query.  Some
+ of the values in the dictionary may be undefined (``None``).
+ 
+-.. method:: GeoIPcountry(query)
++.. method:: GeoIP.country(query)
+ 
+ Returns a dictionary with the country code and country for the given 
+ query.
+Index: docs/ref/contrib/messages.txt
+===================================================================
+--- docs/ref/contrib/messages.txt	(revision 16771)
++++ docs/ref/contrib/messages.txt	(revision 17460)
+@@ -210,6 +210,10 @@
+ ``RequestContext``. Otherwise, ensure ``messages`` is available to
+ the template context.
+ 
++Even if you know there is only just one message, you should still iterate over
++the ``messages`` sequence, because otherwise the message storage will not be cleared
++for the next request.
++
+ Creating custom message levels
+ ------------------------------
+ 
+Index: docs/ref/contrib/admin/index.txt
+===================================================================
+--- docs/ref/contrib/admin/index.txt	(revision 16771)
++++ docs/ref/contrib/admin/index.txt	(revision 17460)
+@@ -19,8 +19,10 @@
+     1. Add ``'django.contrib.admin'`` to your :setting:`INSTALLED_APPS`
+        setting.
+ 
+-    2. Admin has two dependencies - :mod:`django.contrib.auth` and
+-       :mod:`django.contrib.contenttypes`. If these applications are not
++    2. The admin has four dependencies - :mod:`django.contrib.auth`,
++       :mod:`django.contrib.contenttypes`,
++       :mod:`django.contrib.messages` and
++       :mod:`django.contrib.sessions`.  If these applications are not
+        in your :setting:`INSTALLED_APPS` list, add them.
+ 
+     3. Determine which of your application's models should be editable in the
+@@ -542,7 +544,7 @@
+     Fields in ``list_filter`` can also span relations using the ``__`` lookup::
+ 
+         class UserAdminWithLookup(UserAdmin):
+-            list_filter = ('groups__name')
++            list_filter = ('groups__name',)
+ 
+ .. attribute:: ModelAdmin.list_per_page
+ 
+Index: docs/ref/django-admin.txt
+===================================================================
+--- docs/ref/django-admin.txt	(revision 16771)
++++ docs/ref/django-admin.txt	(revision 17460)
+@@ -1156,7 +1156,7 @@
+ Note that this option is unnecessary in ``manage.py``, because it takes care of
+ setting the Python path for you.
+ 
+-.. _import search path: http://diveintopython.org/getting_to_know_python/everything_is_an_object.html
++.. _import search path: http://diveintopython.net/getting_to_know_python/everything_is_an_object.html
+ 
+ .. django-admin-option:: --settings
+ 
+Index: docs/ref/signals.txt
+===================================================================
+--- docs/ref/signals.txt	(revision 16771)
++++ docs/ref/signals.txt	(revision 17460)
+@@ -352,12 +352,16 @@
+ .. data:: django.db.models.signals.post_syncdb
+    :module:
+ 
+-Sent by :djadmin:`syncdb` after it installs an application.
++Sent by :djadmin:`syncdb` command after it installs an application, and
++:djadmin:`flush` command.
+ 
+ Any handlers that listen to this signal need to be written in a particular
+ place: a ``management`` module in one of your :setting:`INSTALLED_APPS`. If
+ handlers are registered anywhere else they may not be loaded by
+-:djadmin:`syncdb`.
++:djadmin:`syncdb`. It is important that handlers of this signal perform
++idempotent changes (e.g. no database alterations) as this may cause the
++:djadmin:`flush` management command to fail if it also ran during the
++:djadmin:`syncdb` command.
+ 
+ Arguments sent with this signal:
+ 
+Index: README
+===================================================================
+--- README	(revision 16771)
++++ README	(revision 17460)
+@@ -28,7 +28,7 @@
+ To get more help:
+ 
+     * Join the #django channel on irc.freenode.net. Lots of helpful people
+-      hang out there. Read the archives at http://botland.oebfare.com/logger/django/.
++      hang out there. Read the archives at http://django-irc-logs.com/.
+ 
+     * Join the django-users mailing list, or read the archives, at
+       http://groups.google.com/group/django-users.
