@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Liganic <liganic-aur@gmx.net>
 pkgname=opencollada
-pkgver=864
+pkgver=867
 pkgrel=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
