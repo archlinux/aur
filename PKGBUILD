@@ -1,9 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=polly
-pkgver=0.93.0
-_prealphaver=3.0
-pkgrel=2
+pkgver=0.93.2
+_prealphaver=3.2
+pkgrel=1
 epoch=
 pkgdesc="Linux Twitter client designed for multiple columns of multiple accounts"
 arch=(any)
@@ -14,14 +14,9 @@ makedepends=(python2-distribute)
 install=$pkgname.install
 source=(http://launchpad.net/$pkgname/1.0/pre-alpha-2/+download/Polly-$pkgver%20%28pre-alpha%20$_prealphaver%29.tar.gz)
 
-build() {
+package() {
 	cd "$srcdir/Polly-$pkgver (pre-alpha $_prealphaver)"
 	python2 setup.py install --root="$pkgdir" --prefix=/usr
 }
 
-package() {
-	cd "$srcdir/Polly-$pkgver (pre-alpha $_prealphaver)"
-	make DESTDIR="$pkgdir/" install
-}
-
-md5sums=('c489162ba53c309a1bcd1aa7768e3e9e')
+md5sums=('6e152c612891214f6a2383973a9483e3')
