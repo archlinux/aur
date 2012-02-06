@@ -3,7 +3,7 @@
 
 pkgname=xfce4-artwork
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Backdrops for the Xfce4 desktop"
 arch=('any')
 license=('GPL2')
