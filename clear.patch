@@ -1,0 +1,21 @@
+diff -r 4399ffb6a87c src/command.C
+--- a/src/command.C	Sat Jan 21 13:57:22 2012 +0100
++++ b/src/command.C	Sat Jan 21 14:03:49 2012 +0100
+@@ -2932,6 +2932,17 @@
+ 
+       case CSI_CUP:		/* 8.3.21: (1,1) CURSOR POSITION */
+       case CSI_HVP:		/* 8.3.64: (1,1) CHARACTER AND LINE POSITION */
++        if (nargs == 1 && current_screen == 0)
++          {
++            // This is usually followed with clear screen so add some extra
++            // lines to avoid deleting the lines already on screen. If we are
++            // already at the top, add an extra screen height of lines.
++            int extra_lines = nrow-1;
++            if (screen.cur.row == 0)
++              extra_lines += nrow;
++            for (int i = 0; i < extra_lines; ++i)
++              scr_add_lines (L"\r\n", 2);
++          }
+         scr_gotorc (arg[0] - 1, nargs < 2 ? 0 : (arg[1] - 1), 0);
+         break;
+ 
