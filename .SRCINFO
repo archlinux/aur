@@ -1,0 +1,19 @@
+pkgbase = xlsh-without-x
+	pkgdesc = eXtended Login Shell - fast, minimalistic login replacement (without X support)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Nadrin/xlsh/wiki
+	install = xlsh.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pam
+	depends = readline
+	provides = xlsh=0.2.2
+	source = https://github.com/Nadrin/xlsh/tarball/master
+	source = patch
+	md5sums = cf78ceec269cc3e35797fe6e8631c3b3
+	md5sums = bf4e6b42787da0988ae56456d1246937
+
+pkgname = xlsh-without-x
+
