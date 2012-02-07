@@ -1,0 +1,1320 @@
+diff -r 97fe1772e5c4 src/Makefile.am
+--- a/src/Makefile.am	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/Makefile.am	Mon Nov 21 15:00:50 2011 +0100
+@@ -2,11 +2,12 @@
+ 
+ noinst_LIBRARIES = libpmount-util.a
+ libpmount_util_a_SOURCES = \
+-	fs.c     \
+-	luks.c   \
+-	policy.c \
+-	utils.c  \
+-	realpath.c
++	fs.c       \
++	luks.c     \
++	policy.c   \
++	utils.c    \
++	realpath.c \
++	conf.c
+ 
+ if PMOUNT_HAL
+ EXTRABIN=pmount-hal
+@@ -25,11 +26,12 @@
+ pumount_LDADD = libpmount-util.a
+ 
+ EXTRA_DIST = \
+-	fs.h     \
+-	luks.h   \
+-	policy.h \
+-	utils.h  \
+-	realpath.h
++	fs.h       \
++	luks.h     \
++	policy.h   \
++	utils.h    \
++	realpath.h \
++	conf.h
+ 
+ INSTALL_DIR = $(DESTDIR)/$(prefix)/bin
+ INSTALL_SRC = $(top_builddir)/src
+diff -r 97fe1772e5c4 src/Makefile.in
+--- a/src/Makefile.in	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/Makefile.in	Mon Nov 21 15:00:50 2011 +0100
+@@ -52,7 +52,8 @@
+ libpmount_util_a_AR = $(AR) $(ARFLAGS)
+ libpmount_util_a_LIBADD =
+ am_libpmount_util_a_OBJECTS = fs.$(OBJEXT) luks.$(OBJEXT) \
+-	policy.$(OBJEXT) utils.$(OBJEXT) realpath.$(OBJEXT)
++	policy.$(OBJEXT) utils.$(OBJEXT) realpath.$(OBJEXT) \
++	conf.$(OBJEXT)
+ libpmount_util_a_OBJECTS = $(am_libpmount_util_a_OBJECTS)
+ @PMOUNT_HAL_TRUE@am__EXEEXT_1 = pmount-hal$(EXEEXT)
+ am__installdirs = "$(DESTDIR)$(bindir)"
+@@ -106,6 +107,7 @@
+ DATADIRNAME = @DATADIRNAME@
+ DEFS = @DEFS@
+ DEPDIR = @DEPDIR@
++DLLTOOL = @DLLTOOL@
+ DSYMUTIL = @DSYMUTIL@
+ DUMPBIN = @DUMPBIN@
+ ECHO_C = @ECHO_C@
+@@ -141,6 +143,7 @@
+ LTLIBOBJS = @LTLIBOBJS@
+ MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
++MANIFEST_TOOL = @MANIFEST_TOOL@
+ MKDIR_P = @MKDIR_P@
+ MKINSTALLDIRS = @MKINSTALLDIRS@
+ MSGFMT = @MSGFMT@
+@@ -179,6 +182,7 @@
+ abs_srcdir = @abs_srcdir@
+ abs_top_builddir = @abs_top_builddir@
+ abs_top_srcdir = @abs_top_srcdir@
++ac_ct_AR = @ac_ct_AR@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
+ am__include = @am__include@
+@@ -211,7 +215,6 @@
+ libexecdir = @libexecdir@
+ localedir = @localedir@
+ localstatedir = @localstatedir@
+-lt_ECHO = @lt_ECHO@
+ mandir = @mandir@
+ mkdir_p = @mkdir_p@
+ oldincludedir = @oldincludedir@
+@@ -230,11 +233,12 @@
+ INCLUDES = $(HAL_CFLAGS)
+ noinst_LIBRARIES = libpmount-util.a
+ libpmount_util_a_SOURCES = \
+-	fs.c     \
+-	luks.c   \
+-	policy.c \
+-	utils.c  \
+-	realpath.c
++	fs.c       \
++	luks.c     \
++	policy.c   \
++	utils.c    \
++	realpath.c \
++	conf.c
+ 
+ @PMOUNT_HAL_TRUE@EXTRABIN = pmount-hal
+ pmount_SOURCES = pmount.c
+@@ -244,11 +248,12 @@
+ pumount_SOURCES = pumount.c
+ pumount_LDADD = libpmount-util.a
+ EXTRA_DIST = \
+-	fs.h     \
+-	luks.h   \
+-	policy.h \
+-	utils.h  \
+-	realpath.h
++	fs.h       \
++	luks.h     \
++	policy.h   \
++	utils.h    \
++	realpath.h \
++	conf.h
+ 
+ INSTALL_DIR = $(DESTDIR)/$(prefix)/bin
+ INSTALL_SRC = $(top_builddir)/src
+@@ -361,6 +366,7 @@
+ distclean-compile:
+ 	-rm -f *.tab.c
+ 
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/conf.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fs.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/luks.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pmount-hal.Po@am__quote@
+diff -r 97fe1772e5c4 src/conf.c
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/src/conf.c	Mon Nov 21 15:00:50 2011 +0100
+@@ -0,0 +1,137 @@
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <limits.h>
++#include <string.h>
++
++#include "conf.h"
++#include "utils.h"
++#include "realpath.h"
++
++#define BUFLEN                  1024
++
++int
++get_conf_for_device(const char *device, char **fs, char **charset,
++        char **passphrase, char **mntpt, char **options)
++{
++    FILE *f;
++    char buffer[BUFLEN], section[PATH_MAX];
++    char *buf, *sec, *s;
++    int skip_section = 0;
++    int in_section = 0;
++    int len;
++
++    if( NULL == ( f = fopen( CONF_FILE, "r" ) ) ) {
++        debug( "unable to open conf file %s\n", CONF_FILE );
++        return 1;
++    }
++    sec = NULL;
++    while( !feof( f ) ) {
++        if( fgets( buffer, BUFLEN, f ) ) {
++            /* skip spaces & tabs */
++            for ( buf = buffer; *buf == ' ' || *buf == '\t'; ++buf )
++                ;
++            /* ignore commented & empty lines */
++            if( *buf == ';' || *buf == '#' || *buf == '\n' ) {
++                continue;
++            }
++            /* new section? */
++            if( *buf == '[' ) {
++                /* if we were in section, we're done */
++                if( in_section ) {
++                    break;
++                }
++                ++buf;
++                if( NULL == ( s = strchr( buf, ']' ) ) ) {
++                    fclose( f );
++                    fprintf( stderr, "invalid syntax in %s: %s\n", CONF_FILE, buf );
++                    return 2;
++                }
++                if( s - buf >= PATH_MAX ) {
++                    fclose( f );
++                    fprintf( stderr, "invalid section name in %s: %s\n", CONF_FILE, buf );
++                    return 3;
++                }
++                strncpy( section, buf, s - buf );
++                /* NULL-terminate the string */
++                s = section + (s - buf);
++                *s = 0;
++                debug( "found section for %s\n", section );
++                /* try to resolve, might be e.g. a /dev/disk/by-uuid/... */
++                if( !realpath( section, section ) ) {
++                    if( !is_block( section ) ) {
++                        /* probably section for a device not plugged in */
++                        debug( "unable to resolve, not a block, skipping section\n" );
++                        skip_section = 1;
++                        continue;
++                    }
++                } else {
++                    debug( "resolved to %s\n", section );
++                }
++                /* is this the device we're looking for? */
++                if( strcmp( device, section ) ) {
++                    debug( "no match, skipping section\n" );
++                    skip_section = 1;
++                    continue;
++                }
++                debug( "match found!\n" );
++                sec = section;
++                skip_section = 0;
++                in_section = 1;
++                continue;
++            } else if( skip_section ) {
++                continue;
++            } else if( NULL == sec ) {
++                fclose( f );
++                debug( "no matching section found\n" );
++                return -1;
++            }
++            /* we're in a section, must be a name=value */
++            if ( NULL == ( s = strchr( buf, '=' ) ) ) {
++                fprintf( stderr, "invalid syntax in %s: %s\n", CONF_FILE, buf );
++                continue;
++            }
++            /* ignore spaces & tabs */
++            for ( --s; *s == ' ' || *s == '\t'; --s )
++                ;
++            ++s;
++            len = s - buf;
++            if( NULL != fs && !strncmp( buf, "fs", len ) ) {
++                conf_set_value( buf, fs );
++                debug( "file system set to %s\n", *fs );
++            } else if( NULL != charset && !strncmp( buf, "charset", len )) {
++                conf_set_value( buf, charset );
++                debug( "charset set to %s\n", *charset );
++            } else if( NULL != passphrase && !strncmp( buf, "passphrase", len )) {
++                conf_set_value( buf, passphrase );
++                debug( "passphrase set to %s\n", *passphrase );
++            } else if( NULL != mntpt && !strncmp( buf, "mntpt", len )) {
++                conf_set_value( buf, mntpt );
++                debug( "mount point set to %s\n", *mntpt );
++            } else if( NULL != options && !strncmp( buf, "options", len )) {
++                conf_set_value( buf, options );
++                debug( "options set to %s\n", *options );
++            } else {
++                debug( "ignoring: %s", buf );
++            }
++        }
++    }
++    fclose( f );
++    return !in_section;
++}
++
++void
++conf_set_value( char *buf, char **dest )
++{
++    char *s;
++    /* position to beginning of value */
++    buf = strchr( buf, '=' );
++    /* skip spaces & tabs */
++    for( ++buf; *buf == ' ' || *buf == '\t'; ++buf)
++        ;
++    /* find end position */
++    for( s = buf; *s != ' ' && *s != ';' && *s != '#' && *s != '\n' && *s != 0; ++s)
++        ;
++    /* set value */
++    *dest = strndup( buf, s - buf );
++}
+diff -r 97fe1772e5c4 src/conf.h
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/src/conf.h	Mon Nov 21 15:00:50 2011 +0100
+@@ -0,0 +1,17 @@
++
++#ifndef CONF_H
++#define	CONF_H
++
++#define CONF_FILE               "/etc/pmount.conf"
++
++
++int
++get_conf_for_device(const char *device, char **fs, char **charset,
++        char **passphrase, char **mntpt, char **options);
++
++void
++conf_set_value( char *buf, char **dest );
++
++
++#endif	/* CONF_H */
++
+diff -r 97fe1772e5c4 src/luks.c
+--- a/src/luks.c	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/luks.c	Mon Nov 21 15:00:50 2011 +0100
+@@ -82,7 +82,7 @@
+     else if( status == 1 )
+         result = DECRYPT_FAILED;
+     else {
+-        fprintf( stderr, "Internal error: cryptsetup luksOpen failed" );
++        fprintf( stderr, "Internal error: cryptsetup luksOpen failed\n" );
+         exit( 100 );
+     }
+ 
+diff -r 97fe1772e5c4 src/pmount.c
+--- a/src/pmount.c	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/pmount.c	Mon Nov 21 15:00:50 2011 +0100
+@@ -28,6 +28,7 @@
+ #include "policy.h"
+ #include "utils.h"
+ #include "luks.h"
++#include "conf.h"
+ #include "config.h"
+ 
+ /* Enable autodetection if possible */
+@@ -82,6 +83,7 @@
+     "  -s, --sync  : mount <device> with the 'sync' option (default: 'async')\n"
+     "  -A, --noatime\n"
+     "                mount <device> with the 'noatime' option (default: 'atime')\n"
++    "  -D          : mount all partitions of <device> (or its parent, if a partition)\n"
+     "  -e, --exec  : mount <device> with the 'exec' option (default: 'noexec')\n"
+     "  -t <fs>     : mount as file system type <fs> (default: autodetected)\n"
+     "  -c <charset>: use given I/O character set (default: 'utf8' if called\n"
+@@ -223,6 +225,7 @@
+  * @param fmask User specified fmask (NULL for umask)
+  * @param dmask User specified dmask (NULL for umask)
+  * @param suppress_errors: if true, stderr is redirected to /dev/null
++ * @param fs_options Options to use instead of the default from FS (if not NULL)
+  * @return exit status of mount, or -1 on failure.
+  */
+ int
+@@ -230,7 +233,8 @@
+ 	  int noatime, int exec, int force_write, const char* iocharset, 
+ 	  int utf8, 
+ 	  const char* umask, const char *fmask, const char *dmask, 
+-	  int suppress_errors )
++	  int suppress_errors,
++          const char *fs_options )
+ {
+     const struct FS* fs;
+     char ugid_opt[100];
+@@ -370,9 +374,13 @@
+       snprintf( iocharset_opt, sizeof( iocharset_opt ), 
+ 		fs->iocharset_format, "iso8859-1");
+     }
++    
++    if( NULL == fs_options ) {
++        fs_options = fs->options;
++    }
+ 
+     snprintf( options, sizeof( options ), "%s%s%s%s%s%s%s%s%s", 
+-            fs->options, sync_opt, atime_opt, exec_opt, access_opt, ugid_opt,
++            fs_options, sync_opt, atime_opt, exec_opt, access_opt, ugid_opt,
+             umask_opt, fdmask_opt, iocharset_opt );
+ 
+     /* go for it */
+@@ -397,13 +405,15 @@
+  * @param umask User specified umask (NULL for default)
+  * @param fmask User specified fmask (NULL for umask)
+  * @param dmask User specified dmask (NULL for umask)
++ * @param fs_options Options to use instead of the default from FS (if not NULL)
+  * @return last return value of do_mount (i. e. 0 on success, != 0 on error)
+  */
+ int
+ do_mount_auto( const char* device, const char* mntpt, int async, 
+ 	       int noatime, int exec, int force_write, const char* iocharset, 
+ 	       int utf8, 
+-	       const char* umask, const char *fmask, const char *dmask )
++	       const char* umask, const char *fmask, const char *dmask,
++               const char *fs_options )
+ {
+     const struct FS* fs;
+     int nostderr = 1;
+@@ -424,7 +434,7 @@
+       }
+       result = do_mount( device, mntpt, tp, async, noatime, exec, 
+ 			 force_write, iocharset, utf8, umask, fmask, 
+-			 dmask, nostderr );
++			 dmask, nostderr, fs_options );
+       if(result == 0)
+ 	return result;
+       debug("blkid-detected FS failed, trying manually \n");
+@@ -445,14 +455,16 @@
+       if( (fs+1)->fsname == NULL )
+ 	nostderr = 0;
+       result = do_mount( device, mntpt, fs->fsname, async, noatime, exec,
+-			 force_write, iocharset, utf8, umask, fmask, dmask, nostderr );
++			 force_write, iocharset, utf8, umask, fmask, dmask, nostderr,
++                          fs_options );
+       if( result == 0 )
+ 	break;
+ 
+       /* sometimes VFAT fails when using iocharset; try again without */
+       if( iocharset )
+ 	result = do_mount( device, mntpt, fs->fsname, async, noatime, exec,
+-			   force_write, NULL, utf8, umask, fmask, dmask, nostderr );
++			   force_write, NULL, utf8, umask, fmask, dmask, nostderr,
++                           fs_options );
+       if( result <= 0 )
+ 	break;
+     }
+@@ -602,33 +614,207 @@
+     drop_root();
+ }
+ 
++
++static char *devarg = NULL, *arg2 = NULL;
++static char mntpt[MEDIA_STRING_SIZE];
++static char device[PATH_MAX], mntptdev[PATH_MAX];
++static int async = 1;
++static int noatime = 0;
++static int exec = 0;
++static int force_write = -1; /* 0: ro, 1: rw, -1: default */
++static const char* use_fstype = NULL;
++static const char* iocharset = NULL;
++static const char* _umask = NULL;
++static const char* _fmask = NULL;
++static const char* _dmask = NULL;
++static const char* passphrase = NULL;
++
++static enum { MOUNT, LOCK, UNLOCK } mode = MOUNT;
++
++int
++mount_device( void )
++{
++    char decrypted_device[PATH_MAX];
++    int utf8 = -1; 		/* Whether we live in a UTF-8 world or not */
++    int result;
++    
++    static const char *l_use_fstype;
++    static const char *l_iocharset;
++    static const char *l_passphrase;
++    
++    char *o_fs = NULL;
++    char *o_charset = NULL;
++    char *o_passphrase = NULL;
++    char *o_mntpt = NULL;
++    char *o_options = NULL;
++    
++    l_use_fstype = use_fstype;
++    l_iocharset = iocharset;
++    l_passphrase = passphrase;
++
++    switch( mode ) {
++        case MOUNT:
++            /* let's see if there are options in CONF_FILE */
++            if( !get_conf_for_device( device, &o_fs, &o_charset, &o_passphrase,
++                    &o_mntpt, &o_options ) ) {
++                if( NULL != o_fs ) {
++                    l_use_fstype = (const char *) o_fs;
++                }
++                if( NULL != o_charset ) {
++                    l_iocharset = (const char *) o_charset;
++                }
++                if( NULL != o_passphrase ) {
++                    l_passphrase = (const char *) o_passphrase;
++                }
++                if( NULL != o_mntpt ) {
++                    snprintf( mntpt, sizeof (mntpt ), "%s", o_mntpt );
++                }
++            }
++            
++            /* determine mount point name; note that we use devarg instead of
++             * device to preserve symlink names (like '/dev/usbflash' instead
++             * of '/dev/sda1') */
++            if( NULL == o_mntpt && make_mountpoint_name( devarg, arg2, mntpt,
++                    sizeof( mntpt ) ) )
++                return E_MNTPT;
++
++            /* if no charset was set explicitly, autodetect UTF-8 */
++            if( !l_iocharset ) {
++                const char* codeset;
++                codeset = nl_langinfo( CODESET );
++
++                debug( "no iocharset given, current locale encoding is %s\n", codeset );
++
++                if( codeset && !strcmp( codeset, "UTF-8" ) ) {
++                    debug( "locale encoding uses UTF-8, setting iocharset to 'utf8'\n" );
++                    l_iocharset = "utf8";
++                }
++            }
++	    /* If user did not choose explicitly for or against utf8 */
++	    if( utf8 == -1 ) {
++	      const char* codeset;
++	      codeset = nl_langinfo( CODESET );
++	      if( codeset && !strcmp( codeset, "UTF-8" ) ) {
++		debug( "locale encoding uses UTF-8: will mount FAT with utf8 option" );
++		utf8 = 1;
++	      } else {
++		utf8 = 0;
++	      }
++	    }
++
++            /* clean stale locks */
++            clean_lock_dir( device );
++
++            if( check_mount_policy( device, mntpt )  )
++                return E_POLICY;
++
++            /* check for encrypted device */
++            enum decrypt_status decrypt = luks_decrypt( device,
++                    decrypted_device, sizeof( decrypted_device ), l_passphrase,
++                    force_write == 0 ? 1 : 0 ); 
++
++            switch (decrypt) {
++                case DECRYPT_FAILED:
++                    fprintf( stderr, _("Error: could not decrypt device (wrong passphrase?)\n") );
++                    return E_POLICY;
++                case DECRYPT_EXISTS:
++                    fprintf( stderr, _("Error: mapped device already exists\n") );
++                    return E_POLICY;
++                case DECRYPT_OK:
++		  /* We create a luks lockfile _on the decrypted device !_*/
++		  if(! luks_create_lockfile(decrypted_device))
++		    fprintf(stderr, _("Warning: could not create luks lockfile\n"));
++                case DECRYPT_NOTENCRYPTED:
++                    break;
++                default:
++                    fprintf( stderr, "Internal error: unhandled decrypt_status %i\n", 
++                        (int) decrypt);
++                    return E_INTERNAL;
++            }
++
++            /* lock the mount directory */
++            debug( "locking mount point directory\n" );
++            if( lock_dir( mntpt ) < 0) {
++                fprintf( stderr, _("Error: could not lock the mount directory. Another pmount is probably running for this mount point.\n"));
++                return E_LOCKED;
++            }
++            debug( "mount point directory locked\n" );
++
++            /* off we go */
++            if( l_use_fstype )
++                result = do_mount( decrypted_device, mntpt, l_use_fstype, async, noatime,
++				   exec, force_write, l_iocharset, utf8, _umask, _fmask, _dmask, 0,
++                                   o_options);
++            else
++                result = do_mount_auto( decrypted_device, mntpt, async, noatime, exec,
++                        force_write, l_iocharset, utf8, _umask, _fmask, _dmask, o_options ); 
++
++            /* unlock the mount point again */
++            debug( "unlocking mount point directory\n" );
++            unlock_dir( mntpt );
++            debug( "mount point directory unlocked\n" );
++            
++            if( NULL != o_fs ) {
++               free( o_fs ); 
++            }
++            if( NULL != o_charset ) {
++               free( o_charset ); 
++            }
++            if( NULL != o_passphrase ) {
++               free( o_passphrase ); 
++            }
++            if( NULL != o_mntpt ) {
++               free( o_mntpt ); 
++            }
++            if( NULL != o_options ) {
++               free( o_options ); 
++            }
++
++            if( result ) {
++                if( decrypt == DECRYPT_OK )
++                    luks_release( decrypted_device, 0 ); 
++
++                /* mount failed, delete the mount point again */
++                if( remove_pmount_mntpt( mntpt ) ) {
++                    perror( _("Error: could not delete mount point") );
++                    return -1;
++                }
++                return E_EXECMOUNT;
++            }
++
++            return 0;
++
++        case LOCK:
++            if( device_valid( device ) )
++                if( do_lock( device, parse_unsigned( arg2, E_PID ) ) )
++                    return E_INTERNAL;
++            return 0;
++
++        case UNLOCK:
++            if( device_valid( device ) )
++                if( do_unlock( device, parse_unsigned( arg2, E_PID ) ) )
++                    return E_UNLOCK;
++            return 0;
++    }
++
++    fprintf( stderr, _("Internal error: mode %i not handled.\n"), (int) mode );
++    return E_INTERNAL;
++}
++
++
++
+ /**
+  * Entry point.
+  */
+ int
+ main( int argc, char** argv )
+ {
+-    char *devarg = NULL, *arg2 = NULL;
+-    char mntpt[MEDIA_STRING_SIZE];
+-    char device[PATH_MAX], mntptdev[PATH_MAX];
+-    char decrypted_device[PATH_MAX];
+     const char* fstab_device;
+     int is_real_path = 0;
+-    int async = 1;
+-    int noatime = 0;
+-    int exec = 0;
+-    int force_write = -1; /* 0: ro, 1: rw, -1: default */
+-    const char* use_fstype = NULL;
+-    const char* iocharset = NULL;
+-    const char* umask = NULL;
+-    const char* fmask = NULL;
+-    const char* dmask = NULL;
+-    const char* passphrase = NULL;
+-    int utf8 = -1; 		/* Whether we live in a UTF-8 world or not */
+-    int result;
++    int full_device = 0;
+ 
+-    enum { MOUNT, LOCK, UNLOCK } mode = MOUNT;
+-
++    int result, error_occurred = 0;
++    
+     int  option;
+     static struct option long_opts[] = {
+         { "help", 0, NULL, 'h'},
+@@ -647,6 +833,7 @@
+         { "read-only", 0, NULL, 'r' },
+         { "read-write", 0, NULL, 'w' },
+         { "version", 0, NULL, 'V' },
++        { "full-device", 0, NULL, 'D' },
+         { NULL, 0, NULL, 0}
+     };
+ 
+@@ -678,7 +865,7 @@
+ 
+     /* parse command line options */
+     do {
+-        switch( option = getopt_long( argc, argv, "+hdelLsArwp:t:c:u:V", long_opts, NULL ) ) {
++        switch( option = getopt_long( argc, argv, "+hdelLsArwp:t:c:u:DV", long_opts, NULL ) ) {
+             case -1:  break;          /* end of arguments */
+             case ':':
+             case '?': return E_ARGS;  /* unknown argument */
+@@ -701,17 +888,19 @@
+ 
+             case 'c': iocharset = optarg; break;
+ 
+-            case 'u': umask = optarg; break;
++            case 'u': _umask = optarg; break;
+ 	    
+-	    case OPT_FMASK: fmask = optarg; break;
++	    case OPT_FMASK: _fmask = optarg; break;
+ 	    
+-	    case OPT_DMASK: dmask = optarg; break;
++	    case OPT_DMASK: _dmask = optarg; break;
+ 
+             case 'p': passphrase = optarg; break;
+ 
+             case 'r': force_write = 0; break;
+ 
+             case 'w': force_write = 1; break;
++            
++            case 'D': full_device = 1; break;
+ 
+             case 'V': puts(VERSION); return 0;
+ 
+@@ -793,117 +982,76 @@
+         fprintf( stderr, _("Error: invalid device %s (must be in /dev/)\n"), device ); 
+         return E_DEVICE;
+     }
++    
++    /* we need to get the full device name (e.g. /dev/sde), get list of all its
++     partitions, and try to mount them all... */
++    if( full_device ) {
++        char devdirname[MEDIA_STRING_SIZE];
++        if( !find_sysfs_device( device, devdirname, MEDIA_STRING_SIZE) ) {
++            fprintf( stderr, _("Warning: unable to find device path for %s,"
++                    " full-device mode disabled\n"), device );
++            full_device = 0;
++        } else {
++            debug( "device path for %s is %s\n", device, devdirname );
++            
++            DIR *partdir;
++            struct dirent *partdirent;
++            char partdirname[MEDIA_STRING_SIZE];
++            struct stat stat_info;
++            
++            partdir = opendir( devdirname );
++            if( !partdir ) {
++                perror( _("Error: could not open <sysfs dir>/block/<device>/") );
++                exit( -1 );
++            }
++            while( ( partdirent = readdir( partdir ) ) != NULL ) {
++                if( partdirent->d_type != DT_DIR
++                        || !strcmp( partdirent->d_name, "." )
++                        || !strcmp( partdirent->d_name, ".." ) )
++                    continue;
++                
++                /* construct /sys/block/<device>/<partition>/dev */
++                snprintf( partdirname, sizeof( partdirname ), "%s/%s/%s",
++                        devdirname, partdirent->d_name, "dev" );
+ 
+-    switch( mode ) {
+-        case MOUNT:
+-            /* determine mount point name; note that we use devarg instead of
+-             * device to preserve symlink names (like '/dev/usbflash' instead
+-             * of '/dev/sda1') */
+-            if( make_mountpoint_name( devarg, arg2, mntpt, sizeof( mntpt ) ) )
+-                return E_MNTPT;
++                /* make sure it is a device, i.e has a file dev */
++                if( 0 != stat( partdirname, &stat_info ) ) {
++                    /* ENOENT (does not exist) is "okay" we just ignore this one */
++                    if( ENOENT != errno ) {
++                        perror( _("Error: could not stat <sysfs dir>/block/<device>/<part>/dev") );
++                        exit( -1 );
++                    }
++                    continue;
++                }
++                /* must be a file */
++                if( !S_ISREG( stat_info.st_mode ) ) {
++                    continue;
++                }
+ 
+-            /* if no charset was set explicitly, autodetect UTF-8 */
+-            if( !iocharset ) {
+-                const char* codeset;
+-                codeset = nl_langinfo( CODESET );
+-
+-                debug( "no iocharset given, current locale encoding is %s\n", codeset );
+-
+-                if( codeset && !strcmp( codeset, "UTF-8" ) ) {
+-                    debug( "locale encoding uses UTF-8, setting iocharset to 'utf8'\n" );
+-                    iocharset = "utf8";
++                /* construct /dev/<partition> */
++                snprintf( device, sizeof( device ), "%s%s", DEVDIR, partdirent->d_name );
++                debug( "processing found partition: %s\n", device );
++                
++                /* We need to lookup again in fstab: */
++                fstab_device = fstab_has_device( "/etc/fstab", device, NULL, NULL );
++                if( mode == MOUNT && fstab_device ) {
++                  fprintf( stderr, _("Error: device %s handled by fstab\n"), fstab_device );
++                  exit( -1 );
++                }
++                
++                devarg = device;
++                result = mount_device();
++                if( result != 0 ) {
++                    fprintf( stderr, _("Failed to mount device %s : error %d\n"), device, result );
++                    error_occurred = -1;
++                } else {
++                    printf( _("Device %s mounted\n"), device );
+                 }
+             }
+-	    /* If user did not choose explicitly for or against utf8 */
+-	    if( utf8 == -1 ) {
+-	      const char* codeset;
+-	      codeset = nl_langinfo( CODESET );
+-	      if( codeset && !strcmp( codeset, "UTF-8" ) ) {
+-		debug( "locale encoding uses UTF-8: will mount FAT with utf8 option" );
+-		utf8 = 1;
+-	      } else {
+-		utf8 = 0;
+-	      }
+-	    }
+-
+-            /* clean stale locks */
+-            clean_lock_dir( device );
+-
+-            if( check_mount_policy( device, mntpt )  )
+-                return E_POLICY;
+-
+-            /* check for encrypted device */
+-            enum decrypt_status decrypt = luks_decrypt( device,
+-                    decrypted_device, sizeof( decrypted_device ), passphrase,
+-                    force_write == 0 ? 1 : 0 ); 
+-
+-            switch (decrypt) {
+-                case DECRYPT_FAILED:
+-                    fprintf( stderr, _("Error: could not decrypt device (wrong passphrase?)\n") );
+-                    exit( E_POLICY );
+-                case DECRYPT_EXISTS:
+-                    fprintf( stderr, _("Error: mapped device already exists\n") );
+-                    exit( E_POLICY );
+-                case DECRYPT_OK:
+-		  /* We create a luks lockfile _on the decrypted device !_*/
+-		  if(! luks_create_lockfile(decrypted_device))
+-		    fprintf(stderr, _("Warning: could not create luks lockfile\n"));
+-                case DECRYPT_NOTENCRYPTED:
+-                    break;
+-                default:
+-                    fprintf( stderr, "Internal error: unhandled decrypt_status %i\n", 
+-                        (int) decrypt);
+-                    exit( E_INTERNAL );
+-            }
+-
+-            /* lock the mount directory */
+-            debug( "locking mount point directory\n" );
+-            if( lock_dir( mntpt ) < 0) {
+-                fprintf( stderr, _("Error: could not lock the mount directory. Another pmount is probably running for this mount point.\n"));
+-                exit( E_LOCKED );
+-            }
+-            debug( "mount point directory locked\n" );
+-
+-            /* off we go */
+-            if( use_fstype )
+-                result = do_mount( decrypted_device, mntpt, use_fstype, async, noatime,
+-				   exec, force_write, iocharset, utf8, umask, fmask, dmask, 0 );
+-            else
+-                result = do_mount_auto( decrypted_device, mntpt, async, noatime, exec,
+-                        force_write, iocharset, utf8, umask, fmask, dmask ); 
+-
+-            /* unlock the mount point again */
+-            debug( "unlocking mount point directory\n" );
+-            unlock_dir( mntpt );
+-            debug( "mount point directory unlocked\n" );
+-
+-            if( result ) {
+-                if( decrypt == DECRYPT_OK )
+-                    luks_release( decrypted_device, 0 ); 
+-
+-                /* mount failed, delete the mount point again */
+-                if( remove_pmount_mntpt( mntpt ) ) {
+-                    perror( _("Error: could not delete mount point") );
+-                    return -1;
+-                }
+-                return E_EXECMOUNT;
+-            }
+-
+-            return 0;
+-
+-        case LOCK:
+-            if( device_valid( device ) )
+-                if( do_lock( device, parse_unsigned( arg2, E_PID ) ) )
+-                    return E_INTERNAL;
+-            return 0;
+-
+-        case UNLOCK:
+-            if( device_valid( device ) )
+-                if( do_unlock( device, parse_unsigned( arg2, E_PID ) ) )
+-                    return E_UNLOCK;
+-            return 0;
++            closedir( partdir );
++            return error_occurred;
++        }
+     }
+-
+-    fprintf( stderr, _("Internal error: mode %i not handled.\n"), (int) mode );
+-    return E_INTERNAL;
++    
++    return mount_device();
+ }
+diff -r 97fe1772e5c4 src/policy.c
+--- a/src/policy.c	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/policy.c	Mon Nov 21 15:00:50 2011 +0100
+@@ -164,7 +164,9 @@
+                     exit( -1 );
+                 }
+                 while( ( partdirent = readdir( partdir ) ) != NULL ) {
+-                    if( partdirent->d_type != DT_DIR )
++                    if( partdirent->d_type != DT_DIR
++                            || !strcmp( partdirent->d_name, "." )
++                            || !strcmp( partdirent->d_name, ".." ) )
+                         continue;
+ 
+                     /* construct /sys/block/<device>/<partition>/dev */
+@@ -549,7 +551,7 @@
+ 	    blockdevpath, whitelisted_bus);
+     }
+     else
+-      debug("Device %s does not belong to any whitelisted bus\n");
++      debug("Device %s does not belong to any whitelisted bus\n", blockdevpath);
+   } 
+   return removable;
+ }
+diff -r 97fe1772e5c4 src/pumount.c
+--- a/src/pumount.c	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/pumount.c	Mon Nov 21 15:00:50 2011 +0100
+@@ -19,10 +19,14 @@
+ #include <getopt.h>
+ #include <libintl.h>
+ #include <locale.h>
++#include <sys/stat.h>
++#include <errno.h>
++#include <dirent.h>
+ 
+ #include "policy.h"
+ #include "utils.h"
+ #include "luks.h"
++#include "conf.h"
+ #include "config.h"
+ 
+ /* error codes */
+@@ -46,11 +50,12 @@
+     "  are met (see pumount(1) for details). The mount point directory is removed\n"
+     "  afterwards.\n\n"
+     "Options:\n"
+-    "  -l, --lazy   : umount lazily, see umount(8)\n"
+-    "  --luks-force : luksClose devices pmount didn't open\n"
+-    "  -d, --debug  : enable debug output (very verbose)\n"
+-    "  -h, --help   : print help message and exit successfuly\n"
+-    "  --version    : print version number and exit successfully\n"),
++    "  -l, --lazy    : umount lazily, see umount(8)\n"
++    "  --luks-force  : luksClose devices pmount didn't open\n"
++    "  -D            : umount all partitions of the device, then stops it for safe removal\n"
++    "  -d, --debug   : enable debug output (very verbose)\n"
++    "  -h, --help    : print help message and exit successfuly\n"
++    "  -V, --version : print version number and exit successfully\n"),
+         exename, MEDIADIR );
+ }
+ 
+@@ -88,9 +93,23 @@
+ 
+     /* mount point must be below MEDIADIR */
+     if( strncmp( mntpt, mediadir, strlen( mediadir ) ) ) {
+-        fprintf( stderr, _("Error: mount point %s is not below %s\n"), mntpt,
+-                MEDIADIR );
+-        return -1;
++        /* check CONF_FILE, it might be okay */
++        char *o_mntpt = NULL;
++        int passed = 0;
++        if( !get_conf_for_device( device, NULL, NULL, NULL, &o_mntpt, NULL ) ) {
++            if( NULL != o_mntpt ) {
++                if( !strcmp( mntpt, o_mntpt ) ) {
++                    debug( "mount point allowed from config: %s\n", mntpt );
++                    passed = 1;
++                }
++                free( o_mntpt );
++            }
++        }
++        if( !passed ) {
++            fprintf( stderr, _("Error: mount point %s is not below %s\n"), mntpt,
++                    MEDIADIR );
++            return -1;
++        }
+     }
+ 
+     debug( "policy check passed\n" );
+@@ -98,13 +117,15 @@
+ }
+ 
+ /**
+- * Drop all privileges and exec 'umount device'. Does not return on success, if
+- * it returns, UMOUNTPROG could not be executed.
++ * Drop all privileges and exec 'umount device'.
+  * @param lazy 0 for normal umount, 1 for lazy umount
++ * @return 0 on success, E_EXECUMOUNT if UMOUNTPROG could not be executed.
+  */
+-void
++int
+ do_umount_fstab( const char* device, int lazy, const char * fstab_mntpt )
+ {
++    int status;
++    
+     /* drop all privileges */
+     get_root();
+     if( setuid( getuid() ) ) {
+@@ -120,10 +141,16 @@
+     }
+ 
+     if( lazy )
+-        execl( UMOUNTPROG, UMOUNTPROG, "-l", device, NULL );
++        status = spawnl( 0, UMOUNTPROG, UMOUNTPROG, "-l", device, NULL );
+     else
+-        execl( UMOUNTPROG, UMOUNTPROG, device, NULL );
+-    perror( _("Error: could not execute umount") );
++        status = spawnl( 0, UMOUNTPROG, UMOUNTPROG, device, NULL );
++    
++    if( status != 0 ) {
++        perror( _("Error: could not execute umount") );
++        return E_EXECUMOUNT;
++    }
++    
++    return 0;
+ }
+ 
+ /**
+@@ -152,6 +179,41 @@
+     return 0;
+ }
+ 
++int
++umount_device( const char* device, size_t devicesize, const char* mntpt,
++        int do_lazy, int full_device )
++{
++    const char* fstab_device;
++    char fstab_mntpt[MEDIA_STRING_SIZE];
++
++    /* in full device mode, we need to check is the device is handled by fstab */
++    if( full_device ) {
++        fstab_device = fstab_has_device( "/etc/fstab", device, fstab_mntpt, NULL );
++        if( fstab_device && device_mounted( device, 1, NULL ) ) {
++            return do_umount_fstab( fstab_device, do_lazy, fstab_mntpt );
++        }
++    /* in regular mode, we check if we have a dmcrypt device */
++    } else if( luks_get_mapped_device( device, (char *) device, devicesize ) ) {
++        debug( "Unmounting mapped device %s instead.\n", device );
++    }
++
++    /* Now, we accept when devices have gone missing */
++    if( check_umount_policy( device, 1 ) )
++        return E_POLICY;
++
++    /* go for it */
++    if( do_umount( device, do_lazy ) )
++        return E_EXECUMOUNT;
++
++    /* release LUKS device, if appropriate */
++    luks_release( device, 1 );
++
++    /* delete mount point */
++    remove_pmount_mntpt( mntpt );
++    
++    return 0;
++}
++
+ /**
+  * Entry point.
+  *
+@@ -165,6 +227,10 @@
+     int is_real_path = 0;
+     int do_lazy = 0;
+     int luks_force = 0;
++    int full_device = 0;
++    
++    int error_occurred = 0;
++    int result;
+ 
+     int  option;
+     static struct option long_opts[] = {
+@@ -173,6 +239,7 @@
+         { "lazy", 0, NULL, 'l'},
+         { "yes-I-really-want-lazy-unmount", 0, NULL, 'R'},
+         { "luks-force", 0, NULL, 'L'},
++        { "full-device", 0, NULL, 'D'},
+         { "version", 0, NULL, 'V' },
+         { NULL, 0, NULL, 0}
+     };
+@@ -193,7 +260,7 @@
+ 
+     /* parse command line options */
+     do {
+-        switch( option = getopt_long( argc, argv, "+hdluV", long_opts, NULL ) ) {
++        switch( option = getopt_long( argc, argv, "+hdluDV", long_opts, NULL ) ) {
+             case -1:        break;          /* end of arguments */
+             case '?':        return E_ARGS;  /* unknown argument */
+ 
+@@ -212,6 +279,8 @@
+ 	      do_lazy = 1; break;
+ 
+             case 'L':        luks_force = 1; break;
++            
++            case 'D':   full_device = 1; break;
+ 
+             case 'V': puts(VERSION); return 0;
+ 
+@@ -251,11 +320,17 @@
+         snprintf( device, sizeof( device ), "%s", argv[optind] );
+     }
+ 
+-    /* is the device already handled by fstab? */
+-    fstab_device = fstab_has_device( "/etc/fstab", device, fstab_mntpt, NULL );
+-    if( fstab_device ) {
+-        do_umount_fstab( fstab_device, do_lazy, fstab_mntpt );
+-        return E_EXECUMOUNT;
++    /* in full_device mode, we'll deal with all partitions anyways */
++    if( !full_device ) {
++        /* is the device already handled by fstab? */
++        fstab_device = fstab_has_device( "/etc/fstab", device, fstab_mntpt, NULL );
++        if( fstab_device ) {
++            if( device_mounted( device, 1, NULL ) ) {
++                return do_umount_fstab( fstab_device, do_lazy, fstab_mntpt );
++            } else {
++                return 0;
++            }
++        }
+     }
+ 
+     /* we cannot really check the real path when unmounting lazily since the
+@@ -271,13 +346,18 @@
+             }
+             debug( "trying to prepend '" DEVDIR 
+ 		   "' to device argument, now '%s'\n", device );
+-	    /* We need to lookup again in fstab: */
+-	    fstab_device = fstab_has_device( "/etc/fstab", device, 
+-					     fstab_mntpt, NULL );
+-	    if( fstab_device ) {
+-	      do_umount_fstab( fstab_device, do_lazy, fstab_mntpt );
+-	      return E_EXECUMOUNT;
+-	    }
++            if( !full_device ) {
++                /* We need to lookup again in fstab: */
++                fstab_device = fstab_has_device( "/etc/fstab", device, 
++                                                 fstab_mntpt, NULL );
++                if( fstab_device ) {
++                  if( device_mounted( device, 1, NULL ) ) {
++                      return do_umount_fstab( fstab_device, do_lazy, fstab_mntpt );
++                  } else {
++                      return 0;
++                  }
++                }
++            }
+ 	}
+     }
+ 
+@@ -286,24 +366,151 @@
+         fprintf( stderr, _("Error: invalid device %s (must be in /dev/)\n"), device );
+         return E_DEVICE;
+     }
++    
++    /* we need to get the full device name (e.g. /dev/sde), get list of all its
++     partitions, and try to unmount them all... */
++    if( full_device ) {
++        char devdirname[MEDIA_STRING_SIZE];
++        if( !find_sysfs_device( device, devdirname, MEDIA_STRING_SIZE) ) {
++            fprintf( stderr, _("Warning: unable to find device path for %s, "
++                    "full-device mode disabled\n"),
++                    device );
++            full_device = 0;
++        } else {
++            debug( "device path for %s is %s\n", device, devdirname );
++            
++            DIR *partdir;
++            struct dirent *partdirent;
++            char partdirname[MEDIA_STRING_SIZE];
++            struct stat stat_info;
++            
++            partdir = opendir( devdirname );
++            if( !partdir ) {
++                perror( _("Error: could not open <sysfs dir>/block/<device>/") );
++                exit( -1 );
++            }
++            while( ( partdirent = readdir( partdir ) ) != NULL ) {
++                if( partdirent->d_type != DT_DIR
++                        || !strcmp( partdirent->d_name, "." )
++                        || !strcmp( partdirent->d_name, ".." ) )
++                    continue;
++                
++                /* construct /sys/block/<device>/<partition>/dev */
++                snprintf( partdirname, sizeof( partdirname ), "%s/%s/%s",
++                        devdirname, partdirent->d_name, "dev" );
+ 
+-    /* check if we have a dmcrypt device */
+-    if( luks_get_mapped_device( device, device, sizeof( device ) ) )
+-        debug( "Unmounting mapped device %s instead.\n", device );
++                /* make sure it is a device, i.e has a file dev */
++                if( 0 != stat( partdirname, &stat_info ) ) {
++                    /* ENOENT (does not exist) is "okay" we just ignore this one */
++                    if( ENOENT != errno ) {
++                        perror( _("Error: could not stat <sysfs dir>/block/<device>/<part>/dev") );
++                        exit( -1 );
++                    }
++                    continue;
++                }
++                /* must be a file */
++                if( !S_ISREG( stat_info.st_mode ) ) {
++                    continue;
++                }
+ 
+-    /* Now, we accept when devices have gone missing */
+-    if( check_umount_policy( device, 1 ) )
+-        return E_POLICY;
++                /* construct /dev/<partition> */
++                snprintf( device, sizeof( device ), "%s%s", DEVDIR, partdirent->d_name );
++                debug( "processing found partition: %s\n", device );
++                
++                /* check if we have a dmcrypt device */
++                if( luks_get_mapped_device( device, device, sizeof( device ) ) )
++                    debug( "Using mapped device %s instead.\n", device );
+ 
+-    /* go for it */
+-    if( do_umount( device, do_lazy ) )
+-        return E_EXECUMOUNT;
++                if( device_mounted( device, 1, mntpt ) ) {
++                    debug( "device %s mounted, unmounting\n", device );
++                    result = umount_device( device, sizeof( device ), mntpt,
++                            do_lazy, full_device );
++                    if( result != 0 ) {
++                        fprintf( stderr, _("Failed to umount device %s : error %d\n"),
++                                device, result );
++                        error_occurred = -1;
++                    } else {
++                        printf( _("Device %s umounted\n"), device );
++                    }
++                }
++            }
++            closedir( partdir );
++            
++            /* no errors: let's stop the device completely, for safe removal */
++            if ( !error_occurred ) {
++                char *c;
++                FILE *f;
+ 
+-    /* release LUKS device, if appropriate */
+-    luks_release( device, 1 );
++                /* flush buffers */
++                sync();
++                
++                /* resolve devdirname (<sysfs>/block/<device> to something like:
++                 * /sys/devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.0/host5/target5:0:0/5:0:0:0/block/sdd */
++                if( !realpath( devdirname, device ) ) {
++                    debug( "unable to resolve %s\n", device );
++                    goto err_stop;
++                }
++                debug( "device %s resolved to %s\n", devdirname, device );
++                
++                /* now extract the part we want, up to the grand-parent of the host
++                 e.g: /sys/devices/pci0000:00/0000:00:06.0/usb1/1-2 */
++                while( c = strrchr( device, '/' ) ) {
++                    /* end the string there, to move back */
++                    *c = 0;
++                    /* found the host part? */
++                    if( !strncmp( c + 1, "host", 4 ) ) {
++                        break;
++                    }
++                }
++                if( c == NULL ) {
++                    debug( "unable to find host for %s\n", device );
++                    goto err_stop;
++                }
++                /* we need to move back one more time */
++                if( NULL == ( c = strrchr( device, '/' ) ) ) {
++                    debug( "cannot move back one last time in %s\n", device );
++                    goto err_stop;
++                }
++                /* end the string there */
++                *c = 0;
++                debug( "full name is %s\n", device );
++                /* now we need the last component, aka the bus id */
++                if( NULL == ( c = strrchr( device, '/' ) ) ) {
++                    debug( "cannot extract last component of %s\n", device );
++                    goto err_stop;
++                }
++                /* move up, so this points to the name only, e.g. 1-2 */
++                ++c;
++                
++                /* unbind driver: write the bus id to <device>/driver/unbind */
++                snprintf( path, sizeof( path ), "%s/driver/unbind", device );
++                if ( root_write_to_file( path, c ) ) {
++                    goto err_stop;
++                }
++                
++                /* suspend device. step 1: write "0" to <device>/power/autosuspend */
++                snprintf( path, sizeof( path ), "%s/power/autosuspend", device );
++                if ( root_write_to_file( path, "0" ) ) {
++                    goto err_stop;
++                }
++                /* step 2: write "auto" to <device>/power/control */
++                snprintf( path, sizeof( path ), "%s/power/control", device );
++                if ( root_write_to_file( path, "auto" ) ) {
++                    goto err_stop;
++                }
++                
++                c = strrchr( devdirname, '/' );
++                printf( _("Device %s%s stopped, you should now be able to safely unplug it\n"),
++                        DEVDIR, c + 1);
++            }
++            
++            return error_occurred;
+ 
+-    /* delete mount point */
+-    remove_pmount_mntpt( mntpt );
++err_stop:
++            fputs( _("Error: Unable to stop device\n"), stderr );
++            return -1;
++        }
++    }
+ 
+-    return 0; 
++    return umount_device( device, sizeof( device ), mntpt, do_lazy, full_device );
+ }
+diff -r 97fe1772e5c4 src/utils.c
+--- a/src/utils.c	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/utils.c	Mon Nov 21 15:00:50 2011 +0100
+@@ -439,3 +439,27 @@
+     drop_root();
+ }
+ 
++int
++root_write_to_file( const char* path, const char* data )
++{
++    FILE *f;
++    size_t expected, actual;
++    
++    get_root();
++    f = fopen( path, "w" );
++    drop_root();
++    if( !f ) {
++        debug( "could not open %s\n", path );
++        return -1;
++    }
++    expected = sizeof( char ) * strlen( data );
++    actual = fwrite( data, sizeof( char ), strlen( data ), f );
++    if( actual != expected ) {
++        fclose( f );
++        debug( "error when writing to %s; expected %d bytes, only %d written\n",
++                path, expected, actual );
++        return -1;
++    }
++    fclose( f );
++    return 0;
++}
+diff -r 97fe1772e5c4 src/utils.h
+--- a/src/utils.h	Sun Nov 20 20:46:53 2011 +0100
++++ b/src/utils.h	Mon Nov 21 15:00:50 2011 +0100
+@@ -90,6 +90,16 @@
+ int read_number_colon_number( const char* file, unsigned char* first, unsigned char* second );
+ 
+ /**
++ * Writes given data to the specified, opening it as root
++ * (this is used to unbind driver, etc)
++ * @param path path/file to write to
++ * @param data data to write
++ * @return 0 on success, else -1
++ */
++int
++root_write_to_file( const char* path, const char* data );
++
++/**
+  * Parse s as nonnegative number. Exits the program immediately if s cannot be
+  * parsed as a number.
+  * @param s string to parse as a number
