@@ -1,0 +1,27 @@
+pkgbase = xfwm4-hover-inactive
+	pkgdesc = Xfce window manager w/ hover effect for inactive windows
+	pkgver = 4.8.3
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfwm4-hover-inactive.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = libxfce4ui
+	depends = libwnck
+	depends = hicolor-icon-theme
+	provides = xfwm4=4.8.3
+	conflicts = xfwm4
+	options = !libtool
+	source = http://archive.xfce.org/src/xfce/xfwm4/4.8/xfwm4-4.8.3.tar.bz2
+	source = hover-inactive.patch
+	md5sums = 66cb65797cea8a62563f69b833c7888b
+	md5sums = 2a64105b4db589ecc8cdfee29ff68851
+	sha1sums = 6d27deca383e0c2fba0cede0bbe0e9aee18e9257
+	sha1sums = b14eb1286dc618b8ffcb0bf2995c16bc1d4f9e6f
+
+pkgname = xfwm4-hover-inactive
+
