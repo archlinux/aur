@@ -2,15 +2,16 @@
 
 pkgname=libmp3splt
 pkgver=0.7
-pkgrel=1
-arch=('i686' 'x86_64')
+pkgrel=2
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
-license=('GPL')
+arch=('i686' 'x86_64')
 url="http://mp3splt.sourceforge.net"
-makedepends=('git')
+license=('GPL')
 depends=('libmad' 'libvorbis' 'libid3tag' 'libtool')
-source=(http://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz)
+makedepends=('git')
 options=(!libtool)
+source=(http://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz)
+md5sums=('dadb166361e2a28955032a1b9f10ed38')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -19,8 +20,8 @@ build() {
   ./configure --prefix=/usr
   make
 }
+
 package() { 
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir/ install
 }
-md5sums=('dadb166361e2a28955032a1b9f10ed38')
