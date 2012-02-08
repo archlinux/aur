@@ -8,8 +8,8 @@
 # build time.
 
 pkgname=chromium
-pkgver=16.0.912.77
-pkgrel=2
+pkgver=17.0.963.46
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -30,15 +30,15 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.desktop
         chromium.sh
         gcc-4.6.patch
-        fix-downloads-on-ntfs.patch
-        nacl-cflags-remove-fstack-protector.patch)
-sha256sums=('fc84e9a96d00a95c44beb6539b9ffe7224dc3ca51afef6486e0e7ad705445a32'
+        nacl-cflags-remove-fstack-protector.patch
+        chromium-media-no-sse-r0.patch)
+sha256sums=('9f9a3799dee3f998b8e629edeb686976567fc145d659e5bb744af8a425d26879'
             '964fe3a5ec56f2505649aba00f900abe4205674b7fdaa16772647d347173bb01'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             '9c5e0803904d1a0e71ab7444c92a7046a34a9518eeba7a70f2eec7abecb8bf4e'
-            '6364c464d1885b2ec21076f01f993725925ccc066805f1ecbbeaf6f79b93c209'
-            '406f06a1a18fad4ba9e5d4e142509f1ac1512d176cc36c1744a7abf949991e2e')
+            '59e732880314333d6e9acf6ac99de467c98e8a92aa5c5292ae808a805e0f8d76'
+            '71751bf5913da1eec3c88c433044224c869b0abd5a29172cf239bddbb4eff761')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
@@ -47,17 +47,13 @@ build() {
   # http://code.google.com/p/chromium/issues/detail?id=80071
   patch -Np0 -i "$srcdir/gcc-4.6.patch"
 
-  # Fix build with CUPS 1.5
-  sed -i '/#include <cups\/cups.h>/ a #include <cups/ppd.h>' \
-    chrome/browser/ui/webui/print_preview_handler.cc
-
-  # Fix downloading on NTFS partitions
-  # http://code.google.com/p/chromium/issues/detail?id=102200
-  patch -Np2 -i "$srcdir/fix-downloads-on-ntfs.patch"
-
   # Filter -fstack-protector out of cflags for nacl_helper_bootstrap
   # http://code.google.com/p/chromium/issues/detail?id=104569
-  patch -Np2 -i "$srcdir/nacl-cflags-remove-fstack-protector.patch"
+  patch -d native_client -Np1 -i \
+    "$srcdir/nacl-cflags-remove-fstack-protector.patch"
+
+  # Remove unconditional use of SSE3 (patch from Gentoo)
+  patch -Np0 -i "$srcdir/chromium-media-no-sse-r0.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -70,10 +66,10 @@ build() {
   export PATH="$srcdir/python2-path:$PATH"
 
   pushd "$srcdir/nacl_sdk"
-  ./naclsdk update pepper_15
+  ./naclsdk update pepper_16
   popd
 
-  ln -s "$srcdir/nacl_sdk/pepper_15/toolchain/linux_x86_newlib" \
+  ln -s "$srcdir/nacl_sdk/pepper_16/toolchain/linux_x86_newlib" \
     native_client/toolchain/linux_x86_newlib
 
   # We need to disable system_ssl until "next protocol negotiation" support is
@@ -94,7 +90,7 @@ build() {
     -Duse_system_bzip2=1 \
     -Duse_system_ffmpeg=0 \
     -Duse_system_libevent=1 \
-    -Duse_system_libjpeg=1 \
+    -Duse_system_libjpeg=0 \
     -Duse_system_libpng=1 \
     -Duse_system_libxml=0 \
     -Duse_system_ssl=0 \
