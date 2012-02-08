@@ -4,7 +4,7 @@
 
 pkgname=bti
 pkgver=032
-pkgrel=1
+pkgrel=2
 pkgdesc='Console client for Twitter and identi.ca'
 arch=('i686' 'x86_64')
 url='http://gregkh.github.com/bti/'
