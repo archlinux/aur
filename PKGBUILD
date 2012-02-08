@@ -1,10 +1,9 @@
-# $Id $
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=libical
 pkgver=0.46
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/freeassociation/'
