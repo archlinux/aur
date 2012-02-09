@@ -1,0 +1,12 @@
+diff -u -r crda-1.1.2/Makefile crda-1.1.2-libnl32/Makefile
+--- crda-1.1.2/Makefile	2011-08-10 01:36:19.000000000 +0200
++++ crda-1.1.2-libnl32/Makefile	2012-02-09 18:53:33.376430180 +0100
+@@ -51,7 +51,7 @@
+ 
+ ifeq ($(NL3FOUND),Y)
+ CFLAGS += -DCONFIG_LIBNL30
+-NLLIBS += -lnl-genl
++NLLIBS += $(shell pkg-config --libs libnl-genl-3.0)
+ NLLIBNAME = libnl-3.0
+ else
+ 	ifeq ($(NL2FOUND),Y)
