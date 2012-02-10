@@ -8,17 +8,17 @@ pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
 url="http://www.openchrome.org"
-depends=('libdrm' 'libxvmc' 'unichrome-dri')
-makedepends=('xorg-server-devel>=1.11.99.902' 'libdrm' 'xf86driproto' 'mesa' 'libxvmc' 'glproto')
+depends=('libdrm' 'libxvmc')
+makedepends=('xorg-server-devel>=1.11.99.902' 'libx11' 'xf86driproto' 'mesa') #'glproto' 'libgl')
 replaces=('openchrome' 'xf86-video-via')
-options=('!libtool' '!emptydirs') # '!makeflags')
-conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.11.99.902')
+options=('!libtool' '!emptydirs' '!makeflags')
+conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.11.99.902' 'unichrome-dri')
 source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('51871431a4a9204ab8ec79335c0cc041')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr # --disable-dri
   make
 }
 
