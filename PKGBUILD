@@ -2,25 +2,28 @@
 # Maintainer: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-pkgver=0.2.904
-_svnver=r933
-pkgrel=6
+pkgver=0.2.905
+pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
 url="http://www.openchrome.org"
 depends=('libdrm' 'libxvmc' 'unichrome-dri')
-makedepends=('xorg-server-devel>=1.11.0' 'libdrm' 'xf86driproto' 'mesa' 'libxvmc' 'glproto')
+makedepends=('xorg-server-devel>=1.11.99.902' 'libdrm' 'xf86driproto' 'mesa' 'libxvmc' 'glproto')
 replaces=('openchrome' 'xf86-video-via')
-options=('!libtool' '!makeflags')
-conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.11.0')
-source=(ftp://ftp.archlinux.org/other/${pkgname}/${pkgname}-${pkgver}-${_svnver}.tar.bz2)
-md5sums=('d661460276a31d3d012d8cdb1a0a73c1')
+options=('!libtool' '!emptydirs') # '!makeflags')
+conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.11.99.902')
+source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('51871431a4a9204ab8ec79335c0cc041')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
