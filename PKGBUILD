@@ -3,12 +3,12 @@
 
 pkgname=netcf
 pkgver=0.1.7
-pkgrel=3
+pkgrel=2
 pkgdesc="A library for configuring network interfaces"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="https://fedorahosted.org/netcf/"
-depends=('augeas>=0.7.4' 'netcfg' 'libxslt' 'libxml2' 'libnl1')
+depends=('augeas>=0.7.4' 'netcfg' 'libxslt' 'libxml2' 'libnl')
 makedepends=('gcc')
 options=(!libtool)
 source=("https://fedorahosted.org/released/netcf/$pkgname-$pkgver.tar.gz"
