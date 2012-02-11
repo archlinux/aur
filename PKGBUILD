@@ -67,7 +67,7 @@ build() {
 
   export LDFLAGS=-lX11
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
-	--with-storage-lvm --without-xen --with-udev --without-hal
+	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static
   find -name Makefile -exec sed -i 's#-L /usr#-L/usr#' {} \;
   make -j1
 }
