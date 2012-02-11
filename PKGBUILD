@@ -19,7 +19,7 @@ md5sums=('8e313b623c907eb035cf3948b71fecc2'
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i ${srcdir}/netcf-0.1.7.patch
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-static
   make
 }
 
