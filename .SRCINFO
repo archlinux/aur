@@ -1,0 +1,18 @@
+pkgbase = evd-git
+	pkgdesc = eventdance, a peer-to-peer inter-process communication library.
+	pkgver = 20111031
+	pkgrel = 1
+	url = https://gitorious.org/eventdance/eventdance
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = json-glib
+	depends = gjs
+	depends = libsoup
+	depends = util-linux
+	optdepends = gtkdocise: generating api docs
+	provides = evd
+
+pkgname = evd-git
+
