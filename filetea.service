@@ -1,0 +1,8 @@
+[Unit]
+Description="Low friction, one-click anonymous file sharing."
+
+[Service]
+ExecStart=/usr/sbin/filetea
+
+[Install]
+WantedBy=multi-user.target
