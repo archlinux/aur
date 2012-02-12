@@ -1,0 +1,14 @@
+pkgbase = batctl
+	pkgdesc = B.A.T.M.A.N. advanced control and management tool
+	pkgver = 2012.0.0
+	pkgrel = 1
+	url = http://www.open-mesh.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2012.0.0/batctl-2012.0.0.tar.gz
+	sha1sums = 9a4959f9418f9bf9485d2f7be26223d3418c4f0c
+
+pkgname = batctl
+
