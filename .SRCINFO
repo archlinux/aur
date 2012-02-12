@@ -1,0 +1,18 @@
+pkgbase = evilvte
+	pkgdesc = VTE based, highly customizable terminal emulator
+	pkgver = 0.5.1~pre2
+	pkgrel = 1
+	url = http://www.calno.com/evilvte/
+	install = evilvte.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkg-config
+	depends = vte3
+	depends = hicolor-icon-theme
+	provides = evilvte
+	source = http://www.calno.com/evilvte/evilvte-0.5.1~pre2.tar.xz
+	sha1sums = e48eb96d24dd5c5ab315c7b489684a7ec7ef0422
+
+pkgname = evilvte
+
