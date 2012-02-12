@@ -1,0 +1,17 @@
+pkgbase = hsqldb2-java
+	pkgdesc = HSQLDB Java libraries, Version 2
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = http://hsqldb.org/
+	arch = any
+	license = custom
+	makedepends = java-runtime
+	makedepends = unzip
+	makedepends = apache-ant
+	depends = java-environment
+	conflicts = hsqldb-java
+	source = http://downloads.sourceforge.net/project/hsqldb/hsqldb/hsqldb_2_2/hsqldb-2.2.8.zip
+	sha1sums = 08762cf53e41f07f68de3a1904ad16aca0471858
+
+pkgname = hsqldb2-java
+
