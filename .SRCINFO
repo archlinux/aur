@@ -1,0 +1,12 @@
+pkgbase = stacktrace
+	pkgdesc = Javalike stacktrace for ELF binaries
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.nopcode.org/wk.php/stacktrace
+	arch = any
+	license = GPL
+	source = http://kung-foo.net/killabyte/code/stacktrace/stacktrace-1.2.1.tar.gz
+	sha1sums = 9e6e632dfe72baa95d95e2aa9c32054b673cec2a
+
+pkgname = stacktrace
+
