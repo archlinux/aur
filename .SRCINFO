@@ -1,0 +1,22 @@
+pkgbase = palm-sdk
+	pkgdesc = WebOS SDK: emulator-image, cmd-line tools, framework, samples, etc.
+	pkgver = 3.0.5
+	pkgrel = 2
+	url = http://developer.palm.com/index.php
+	install = palm-sdk.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-environment>=6
+	optdepends = palm-novacom=1.0.80
+	optdepends = virtualbox<=4.1
+	optdepends = virtualbox>=4.0: for emulator usage
+	optdepends = palm-sdk-oldimages: for emulator support of older phones
+	options = !strip
+	source = http://cdn.downloads.palm.com/sdkdownloads/3.0.5.676/sdkBinaries/palm-sdk_3.0.5-svn528736-pho676_i386.deb
+	source = palm-sdk.install
+	sha1sums = 97b862a07e4631f60a28a2bdb4ff9f343be22e07
+	sha1sums = 4e4a352b78d887fce1d195604a434b9bd1d0ba0b
+
+pkgname = palm-sdk
+
