@@ -1,0 +1,20 @@
+pkgbase = kraft-svn
+	pkgdesc = A program suitable for all trades or crafts
+	pkgver = 1255047
+	pkgrel = 1
+	url = http://kraft.sourceforge.net/index.php?lang=en
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	makedepends = subversion
+	depends = kdepimlibs
+	depends = ctemplate
+	depends = python-reportlab
+	provides = kraft
+	conflicts = kraft
+
+pkgname = kraft-svn
+
