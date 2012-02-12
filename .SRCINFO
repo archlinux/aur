@@ -1,0 +1,28 @@
+pkgbase = palm-sdk-oldimages
+	pkgdesc = Emulator images no longer included in palm-sdk
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://developer.palm.com/index.php
+	arch = any
+	license = custom:palm-sdk
+	depends = palm-sdk
+	noextract = SDK%201.3.5.368.vmdk.zip
+	noextract = SDK%201.4.0.420.vmdk.zip
+	noextract = SDK%201.4.1.427.vmdk.zip
+	noextract = SDK%201.4.5.465.vmdk.zip
+	noextract = SDK%202.1.0.519.vmdk.zip
+	noextract = SDK-2210.vmdk.zip
+	source = https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.3.5.368.vmdk.zip
+	source = https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.0.420.vmdk.zip
+	source = https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.1.427.vmdk.zip
+	source = https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.5.465.vmdk.zip
+	source = https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%202.1.0.519.vmdk.zip
+	source = https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK-2210.vmdk.zip
+	sha1sums = 77985e7f63a7f7455e5fa2037e70e517ab352a15
+	sha1sums = 5a844dd6377e03ac602731bf230fda651c84a74f
+	sha1sums = deb2813927f19f73ed1f89ea5f032f6a89e0ad13
+	sha1sums = d4b884e6f155cc2a5baf6e1bfe77f4e4c9faa32f
+	sha1sums = 2db241a11dabc892c5aaf9ed7dce06ab444a2fa7
+
+pkgname = palm-sdk-oldimages
+
