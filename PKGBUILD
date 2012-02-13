@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=polly
-pkgver=0.93.2
-_prealphaver=3.2
+pkgver=0.93.3
+_prealphaver=3.3
 pkgrel=1
 epoch=
 pkgdesc="Linux Twitter client designed for multiple columns of multiple accounts"
@@ -19,4 +19,4 @@ package() {
 	python2 setup.py install --root="$pkgdir" --prefix=/usr
 }
 
-md5sums=('6e152c612891214f6a2383973a9483e3')
+md5sums=('53ad29cdac30cd5cd15eb9cd9607c676')
