@@ -1,5 +1,5 @@
 pkgbase = kalu
-	pkgdesc = Keep Arch Linux Up-to-date -- an upgrade notifier for Arch Linux
+	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://bitbucket.org/jjacky/kalu
