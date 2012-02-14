@@ -2,7 +2,7 @@
 pkgname=kalu
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="Keep Arch Linux Up-to-date -- an upgrade notifer for Arch Linux"
+pkgdesc="Keep Arch Linux Up-to-date -- an upgrade notifier for Arch Linux"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/jjacky/kalu"
 license=('GPL3+')
