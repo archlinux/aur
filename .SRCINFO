@@ -1,0 +1,20 @@
+pkgbase = kalu
+	pkgdesc = Keep Arch Linux Up-to-date -- an upgrade notifer for Arch Linux
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://bitbucket.org/jjacky/kalu
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = pkg-config
+	depends = dbus
+	depends = polkit
+	depends = gtk3
+	depends = pacman>=4.0.1
+	depends = curl
+	depends = libnotify
+	source = https://bitbucket.org/jjacky/kalu/get/tip.tar.gz
+	md5sums = 6b0a05da61492e7957d728cbce695ec8
+
+pkgname = kalu
+
