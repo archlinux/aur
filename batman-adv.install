@@ -1,9 +1,9 @@
 post_install() {
-  /sbin/depmod -a
+  depmod -a
 }
 
 post_upgrade() {
-  /sbin/depmod -a
+  depmod -a
 }
 
 
