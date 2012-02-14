@@ -2,7 +2,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus-core' 'libxau' 'libxdmcp' 'libpcap'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-	 'iproute2' 'netcf')
+	 'iproute2' 'netcf' 'libnl1')
 makedepends=('pkgconfig' 'lvm2')
 optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
@@ -36,7 +36,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	openbsd-netcat-default.patch
 	unixperms.patch
 	yajl-2.x.patch)
-md5sums=('37c4bf8cdd4c76150bc0c1d249945d27'
+md5sums=('a424bb793521e637349da47e93dd5fff'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '737ec24aa56871fbabfa892789457db4'
