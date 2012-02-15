@@ -2,12 +2,6 @@ post_install() {
     # Update runpath
     cd /opt/savage2
     ./savage2_update.bin --update-runpath
-
-    echo "==> To disable automatic updates (they do not work), run the game once, then open"
-    echo "==>  ~/.savage2/game/startup.cfg and change the following line:"
-    echo '==>       SetSave upd_checkForUpdates "true"'
-    echo "==>  to:"
-    echo '==>       SetSave upd_checkForUpdates "false"'
 }
 
 post_upgrade() {

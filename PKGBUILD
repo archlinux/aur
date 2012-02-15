@@ -3,8 +3,8 @@
 # Contributor: Xavier <shiningxc[at]gmail[dot]com>
 
 pkgname=savage2
-pkgver=2.1.0.1
-pkgrel=4
+pkgver=2.1.0.5
+pkgrel=1
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('i686' 'x86_64')
 url='http://savage2.com/'
@@ -12,26 +12,38 @@ license=('custom: "Savage 2"')
 depends=('mesa' 'libxml2')
 makedepends=('unzip')
 install=savage2.install
-source=("http://188.40.92.72/Savage2Install-$pkgver-$CARCH.bin" \
+source=("http://188.40.92.72/Savage2-${pkgver}-linux-installer.run" \
 'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop')
-md5sums=('1ff815b9e864862d6d2cf6c635278b80'
-         'fb03853628775f66689852a4125044e8'
+md5sums=('044398c71197478031f5c2c894323c50'
+         'f08e9499ff5f10b5e5e98454aa595db5'
          'a6957bb87da35d58df86d84a6dca1479'
          'b082a33fd1a580d3c70d80bbbfb0bffe'
          '177155e2c2c4e1382ce9b1343e26b5c7')
-[ "$CARCH" = "x86_64" ] && md5sums[0]='78a5df8adc008e2c7493bab9f66a3092'
+[ "$CARCH" = "x86_64" ] && source[0]="http://188.40.92.72/Savage2-${pkgver}-linux-x64-installer.run"
+[ "$CARCH" = "x86_64" ] && md5sums[0]='e6abef6bf1c4bce05719584e0f6b1900'
+PKGEXT='.pkg.tar'
 
 build() {
     cd $srcdir
 
+    # Installer name varies between architectures
+    if [ "$CARCH" = "i686" ]; then
+        _installer_name=Savage2-${pkgver}-linux-installer.run
+    else
+        _installer_name=Savage2-${pkgver}-linux-x64-installer.run
+    fi
+
     # Create Destination Directory
     install -d $pkgdir/opt/savage2
 
-    # Extract Game Data from Installer
-    unzip -o $srcdir/Savage2Install-$pkgver-$CARCH.bin && return 0
+    # Make Installer Executable
+    chmod +x $srcdir/$_installer_name
 
-    # Install Savage 2 Data
-    cp -r $srcdir/data/* $pkgdir/opt/savage2
+    # Run Installer
+    $srcdir/$_installer_name --mode unattended --prefix $pkgdir/opt/savage2/
+
+    # Remove tree of empty directories in rollback folder
+    rm -r $pkgdir/opt/savage2/rollbackBackupDirectory/home/
 
     # Install Game Launcher
     install -D -m 755 $srcdir/savage2.launcher \
@@ -50,10 +62,10 @@ build() {
         $pkgdir/usr/share/applications/s2mviewer.desktop
 
     # Install Icon
-    install -D -m 644 $srcdir/data/s2icon.png \
+    install -D -m 644 $pkgdir/opt/savage2/s2icon.png \
         $pkgdir/usr/share/pixmaps/savage2.png
 
     # Install License
-    install -D -m 644 $srcdir/data/license.txt \
+    install -D -m 644 $pkgdir/opt/savage2/license.txt \
         $pkgdir/usr/share/licenses/$pkgname/license.txt
 }
