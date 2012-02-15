@@ -13,9 +13,8 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=qtweetlib
-pkgver=0.3
-pkgrel=2
-_rev=f0442f6
+pkgver=0.4
+pkgrel=1
 pkgdesc="C++ Qt based Twitter library"
 arch=('i686' 'x86_64')
 url="https://github.com/minimoog/QTweetLib"
@@ -25,8 +24,8 @@ makedepends=('cmake')
 provides=('qtweetlib')
 conflicts=('qtweetlib-git')
 options=(!strip)
-source=(https://github.com/downloads/minimoog/QTweetLib/QTweetLib-0.3.0.tar.gz)
-md5sums=('a37055e7c081049294efb42126933cef')
+source=(https://github.com/downloads/minimoog/QTweetLib/QTweetLib-${pkgver}.tar.gz)
+md5sums=('cb22883c3d82e4932f50831a4b856caf')
 
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
@@ -37,7 +36,7 @@ build(){
   msg "Starting build..."
 
   if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
-  mv ${srcdir}/minimoog-QTweetLib-${_rev} ${srcdir}/${pkgname}-${pkgver}
+  mv ${srcdir}/QTweetLib-${pkgver} ${srcdir}/${pkgname}-${pkgver}
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
