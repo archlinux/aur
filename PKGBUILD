@@ -4,8 +4,8 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=201111
-pkgrel=1
+pkgver=201202
+pkgrel=2
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult) and journals (svjour3)"
 arch=('any')
 url="http://www.springer.com/computer/lncs?SGWID=0-164-7-72376-0"
@@ -52,7 +52,7 @@ build() {
   # ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
 }
 
-md5sums=('d534148be975055ec332f4cdcd1087d5'
+md5sums=('b520710dd75773dd8bfbaea214386559'
          '9d5bf25a905806ed4297138062afaf71'
-         'dd75af3f4bc865cd0e33b20d186699a8'
+         '7e74a3efdde7e08c9aa463a786a93209'
          'c020d70fa6ce887d9a3b70d72c518c85')
