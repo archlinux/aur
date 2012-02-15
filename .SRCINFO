@@ -1,7 +1,7 @@
 pkgbase = gmameui
 	pkgdesc = SDLMAME/XMAME frontend designed to look like MAME32 (fork of GXMAME)
 	pkgver = 0.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gmameui.sourceforge.net/
 	arch = i686
 	arch = x86_64

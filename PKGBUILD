@@ -2,7 +2,7 @@
 
 pkgname=gmameui
 pkgver=0.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc='SDLMAME/XMAME frontend designed to look like MAME32 (fork of GXMAME)'
 arch=('i686' 'x86_64')
 url='http://gmameui.sourceforge.net/'
@@ -15,7 +15,15 @@ md5sums=('e1f36731b0007501cf4c169aaee2ccc8')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    ./configure --prefix=/usr --disable-libgnome --enable-joystick
+    # archive_read_data_into_buffer() is deprecated in libarchive
+    /bin/sed -i 's/archive_read_data_into_buffer/archive_read_data/' src/gmameui-zip-utils.c
+
+    ./configure --prefix=/usr --disable-libgnome --enable-joystick --enable-debug
     make
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+
     make DESTDIR="$pkgdir" install
 }
