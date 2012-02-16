@@ -2,16 +2,16 @@
 # Maintainer: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=python-boto
-pkgver=2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
-url='http://code.google.com/p/boto/'
+url='https://github.com/boto/boto'
 license=('MIT')
 depends=('python2')
-source=("http://boto.googlecode.com/files/boto-$pkgver.tar.gz"
+source=("http://github.com/downloads/boto/boto/boto-$pkgver.tar.gz"
         'LICENSE')
-md5sums=('e238262c5ff417a2b59a8b24ae06b9ce'
+md5sums=('b23b9137abd7286615236ed03929d282'
          '35ebd993c05c79ba78e9f4fb3e65e547')
 
 build() {
@@ -19,6 +19,9 @@ build() {
 
   # python2 fix
   for file in boto/{pyami,services}/*.py; do
+    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
+  done
+  for file in tests/{,s3,devpay}/*.py; do
     sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
   done
 
