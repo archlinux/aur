@@ -1,7 +1,7 @@
 # Maintainer: Constantin Schomburg <me@xconstruct.net>
 
 pkgname=mcpatcher
-pkgver='2.3.2'
+pkgver='2.3.2_01'
 pkgrel=1
 pkgdesc="Minecraft patcher to fix textures with higher than default resolution"
 arch=('any')
@@ -13,7 +13,7 @@ noextract=("$pkgname-$pkgver.jar")
 source=(mcpatcher
         https://github.com/downloads/pclewis/mcpatcher/$pkgname-$pkgver.jar)
 md5sums=('38358254be76dc84676509f43be44938'
-         'df0b1b29fa0c8b7f4d15c684983f264d')
+         '9fd977106c5733bebe266b33ec994660')
 
 build() {
     cd "$srcdir"
