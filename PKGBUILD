@@ -2,7 +2,7 @@
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
 pkgname=ruby-cairo
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ruby bindings for cairo"
 arch=('i686' 'x86_64')
 url="http://cairographics.org/rcairo/"
@@ -15,7 +15,7 @@ sha256sums=('70e2df4fe0bcd2875d7512279058b116e964ca91d152cf9eb2f05b5c7774f118')
 build() {
   cd "$srcdir/rcairo-$pkgver"
 
-  ruby extconf.rb
+  ruby extconf.rb --vendor
   make
 }
 
