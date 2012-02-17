@@ -1,5 +1,5 @@
 pkgbase = elilo-x86_64
-	pkgdesc = UEFI version of LILO Boot Loader
+	pkgdesc = x86_64 UEFI version of LILO Boot Loader
 	pkgver = 3.14
 	pkgrel = 1
 	url = http://sourceforge.net/projects/elilo/

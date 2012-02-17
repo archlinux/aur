@@ -5,7 +5,7 @@ pkgname="${_pkgname}-x86_64"
 
 pkgver="3.14"
 pkgrel="1"
-pkgdesc="UEFI version of LILO Boot Loader"
+pkgdesc="x86_64 UEFI version of LILO Boot Loader"
 arch=('any')
 url="http://sourceforge.net/projects/elilo/"
 license=('GPL')
