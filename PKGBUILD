@@ -4,7 +4,7 @@
 
 pkgname=gmrun
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple program which provides a run program window"
 arch=('i686' 'x86_64')
 url="http://sf.net/projects/gmrun"
@@ -16,15 +16,15 @@ md5sums=('6cef37a968006d9496fc56a7099c603c'
 	 '3a0b69d8c2cac6cfb551b9d235441ecb')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	patch -p0 < ${srcdir}/gcc43.patch
+	patch -p0 -i "$srcdir/gcc43.patch"
 	./configure --prefix=/usr
-	make || return 1
+	make
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make DESTDIR=${pkgdir} install
+	make DESTDIR="${pkgdir}" install
 } 
