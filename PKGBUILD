@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
 pkgname='perl-io-bufferedselect'
-pkgver='1.0'
-pkgrel='1'
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="Line-buffered select interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
