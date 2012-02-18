@@ -3,7 +3,7 @@
 
 pkgname=liblqr
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A seam-carving C/C++ library called Liquid Rescale"
 arch=('i686' 'x86_64')
 url="http://liblqr.wikidot.com/"
@@ -12,6 +12,7 @@ depends=('glib2')
 makedepends=('pkgconfig')
 options=('!libtool' '!emptydirs')
 source=("http://liblqr.wikidot.com/local--files/en:download-page/$pkgname-1-$pkgver.tar.bz2")
+md5sums=('0e24ed3c9fcdcb111062640764d7b87a')
 
 build() {
   cd "$srcdir/$pkgname-1-$pkgver"
@@ -23,4 +24,3 @@ package() {
   cd "$srcdir/$pkgname-1-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
-md5sums=('0e24ed3c9fcdcb111062640764d7b87a')
