@@ -3,28 +3,31 @@
 
 pkgname=libofa
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source audio fingerprint by MusicIP"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/musicip-libofa/"
 license=('GPL2' 'custom')
-depends=('expat' 'curl' 'fftw' 'gcc-libs')
+depends=('expat' 'curl' 'fftw')
 makedepends=('pkgconfig')
 options=('!libtool')
 source=("http://musicip-libofa.googlecode.com/files/$pkgname-$pkgver.tar.gz"
-	    'gcc-4.patch'
-	    'gcc4.3.patch'
-	    'gcc4.5.patch')
-sha1sums=('3dec8e1dcea937f74b4165e9ffd4d4f355e4594a'
-          'cb19377d0634c03d2a49cfc61915cec918c341f7'
-          'cae08bdc12de923d5e032696702a0530ae6eafc1'
-          '754d69d66ab46219035ccafeeb3ff62433cca4f2')
+        'gcc-4.patch'
+        'gcc4.3.patch'
+        'gcc4.5.patch'
+        'libofa-0.9.3-curl-7.21.patch')
+md5sums=('51507d2c4b432bd2755f48d58471696e'
+         'a6f78b90bd0f4354d022a71c3e58ef6c'
+         'dd57db13770b8f8d196e8a3d3a50e713'
+         'c245363368d0e6fa2b4676364b81b74f'
+         '2e1579d74613cfbb1799d0ab5f1a4cba')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p0 -i ${srcdir}/gcc-4.patch
   patch -p1 -i ${srcdir}/gcc4.3.patch
   patch -p1 -i ${srcdir}/gcc4.5.patch
+  patch -p1 -i ${srcdir}/libofa-0.9.3-curl-7.21.patch
   ./configure --prefix=/usr
   make
 }
