@@ -6,7 +6,7 @@ pkgname=sfml
 _git=true
 
 if [[ "${_git}" = "true" ]]; then
-    pkgver=1.99.git20120118
+    pkgver=1.99.git20120219
 fi
 
 pkgrel=1
@@ -50,10 +50,12 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname-build/build"
+
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 ../license.txt \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "$pkgdir/usr/share/SFML/cmake/Modules/FindSFML.cmake" "$pkgdir/usr/share/cmake-2.8/Modules/FindSFML.cmake"
+
+  install -Dm644 ../license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   make clean
 }
