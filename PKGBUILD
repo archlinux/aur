@@ -1,7 +1,7 @@
 # Maintainer: Jelle van der Waa <jelle vdwaa nl>
 pkgname=networkmanager-dispatcher-ntpd
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dispatcher Script for ntpd"
 arch=(any)
 license=('BSD')
