@@ -1,6 +1,6 @@
 pkgbase = sobby
 	pkgdesc = Standalone obby server
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = http://gobby.0x539.de/trac/
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = sobby
 	license = GPL
 	makedepends = pkgconfig
 	makedepends = net6>=1.3.12
-	depends = obby>=0.4.7
+	depends = obby>=0.4.8
 	depends = libxml++
-	source = http://releases.0x539.de/sobby/sobby-0.4.7.tar.gz
-	md5sums = 816ac9e2ecf2ac79306f9bbb80699464
-	sha1sums = ca20369eabce1657d090b310d78d4a35d697f28b
+	source = http://releases.0x539.de/sobby/sobby-0.4.8.tar.gz
+	md5sums = 1f7cf8c09cdeddbf2152843b28f73ce1
+	sha256sums = a711762c0722e9e7e01934c115dbffc7a233c033d66dbc5d58025af438516f48
 
 pkgname = sobby
 
