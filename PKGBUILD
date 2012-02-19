@@ -3,7 +3,7 @@
 pkgname=vim-pastie
 pkgver=2.0
 _scriptid=10260
-pkgrel=4
+pkgrel=5
 pkgdesc='A Vim plugin that lets you read and create pastes at http://pastie.org/'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=1624'
