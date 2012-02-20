@@ -3,8 +3,8 @@
 # Contributor: Roberto Salas <ro0xito@gmail.com>
 
 pkgname=alltray
-pkgver=0.7.5dev
-pkgrel=2
+pkgver=0.7.5.1dev
+pkgrel=1
 pkgdesc="Drops any app in the tray."
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://alltray.trausch.us/"
 depends=('libxpm' 'libgtop' 'libwnck')
 options=('!libtool')
 source=(https://code.launchpad.net/alltray/trunk/${pkgver}/+download/alltray-${pkgver}.tar.gz)
-md5sums=('faef46b14a3f9c14d4e5efd65245796e')
+md5sums=('5842253b89a5943031b5a02bbd8fd4fb')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
