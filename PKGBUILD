@@ -4,7 +4,7 @@
 
 pkgname=alltray
 pkgver=0.7.5dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Drops any app in the tray."
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -15,12 +15,12 @@ source=(https://code.launchpad.net/alltray/trunk/${pkgver}/+download/alltray-${p
 md5sums=('faef46b14a3f9c14d4e5efd65245796e')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	./configure --prefix=/usr
-	make
+  cd ${srcdir}/${pkgname}-${pkgver}
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	make DESTDIR=${pkgdir} install
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install
 }
