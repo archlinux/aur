@@ -2,7 +2,7 @@
 
 pkgname=flyspray
 pkgver=0.9.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A PHP web-based bug tracker"
 arch=('any')
 url="http://www.flyspray.org/"
