@@ -4,7 +4,7 @@
 
 pkgname=xdialog
 pkgver=2.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A drop-in replacement for the 'dialog' or 'cdialog' programs"
 url="http://xdialog.dyns.net/"
 arch=('i686' 'x86_64')
@@ -17,16 +17,12 @@ md5sums=('0671f8353717513bf1f0ebc80e9710f6'
 
 build() {
   cd $srcdir/Xdialog-$pkgver
-
   patch -p1 <../xdialog-$pkgver-gtk2.patch
-
   ./configure --prefix=/usr \
     --mandir=${pkgdir}/usr/share/man --with-gtk2
-
   # Fix bugs in automake - see Xdialog.spec
-  /bin/sed -i -e "s:RANLIB = @RANLIB@:RANLIB = /usr/bin/ranlib:" lib/Makefile
-  /bin/sed -i -e "s;XGETTEXT = :;XGETTEXT = /usr/bin/xgettext;" po/Makefile
-
+  sed -i -e "s:RANLIB = @RANLIB@:RANLIB = /usr/bin/ranlib:" lib/Makefile
+  sed -i -e "s;XGETTEXT = :;XGETTEXT = /usr/bin/xgettext;" po/Makefile
   make
 }
 
