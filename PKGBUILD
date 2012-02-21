@@ -3,7 +3,7 @@
 
 pkgname=gtk2+extra
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GtkExtra is a useful set of widgets for creating GUI's for the Xwindows system using GTK+"
 arch=(i686 x86_64)
 url="http://gtkextra.sourceforge.net/"
