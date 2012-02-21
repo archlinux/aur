@@ -7,6 +7,7 @@ arch=(any)
 url="http://lwjgl.org/"
 license=('BSD')
 changelog=ChangeLog
+options=(!strip)
 source=(http://downloads.sourceforge.net/java-game-lib/$pkgname-$pkgver.zip)
 md5sums=('c23a4c90e898caff00c19e5e27d8c82c')
 sha1sums=('3cc6f2ddb3be1b01d2a7736dd33a52d7fdfcd7c9')
