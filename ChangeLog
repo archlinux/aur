@@ -1,3 +1,10 @@
+2012-02-21 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+        * lwjgl-2.8.3-1 :
+        Version bump.
+        No longer runs binary files through strip, to avoid breaking
+        cross-platform compatibility.
+
 2011-11-22 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* lwjgl-2.8.2-1 :
