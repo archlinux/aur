@@ -1,7 +1,7 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
 pkgver=1.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
@@ -39,13 +39,19 @@ package() {
    cd "${srcdir}/${pkgname}-${pkgver}"
    make DESTDIR="${pkgdir}" install
 
+   # FS#28583
+   install -d -m 755 "${pkgdir}"/usr/lib/pkgconfig
+   for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
+      ln -sf /usr/lib/openmpi/pkgconfig/$i "${pkgdir}"/usr/lib/pkgconfig/
+   done
+
    # Openmpi's otfinfo conflicts with the one from texlive
-   mv "${pkgdir}"/usr/bin/otfinfo "${pkgdir}"/usr/bin/otfinfompi
+   mv "${pkgdir}"/usr/bin/otfinfo{,mpi}
 
    # Openmpi's otfdump conflicts with the one from libotf
-   mv "${pkgdir}"/usr/bin/otfdump "${pkgdir}"/usr/bin/otfdumpompi
+   mv "${pkgdir}"/usr/bin/otfdump{,ompi} 
 
-   # Symlink points to non-existing ortec++.1
+   # Remove dangling symlink
    rm "${pkgdir}"/usr/share/man/man1/orteCC.1
 
    install -d -m 755 "${pkgdir}"/etc/ld.so.conf.d
