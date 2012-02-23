@@ -3,7 +3,7 @@
 
 pkgname=mp3info
 pkgver=0.8.5a
-pkgrel=3
+pkgrel=4
 pkgdesc="An MP3 technical info viewer and ID3 1.x tag editor"
 arch=('i686' 'x86_64')
 url="http://ibiblio.org/mp3info/"
@@ -16,9 +16,9 @@ build() {
   cd ${srcdir}/$pkgname-$pkgver
 
   sed -i "s:-O2:${CFLAGS}:" Makefile
-  sed -i "s:/usr/bin/install:/bin/install:" Makefile 
+  sed -i "s:/usr/bin/install:/bin/install:" Makefile
 
-  make || return 1
+  make
 
   install -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/man/man1
   make prefix=${pkgdir}/usr mandir=${pkgdir}/usr/share/man/man1 install
