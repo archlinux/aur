@@ -24,9 +24,6 @@ md5sums=('07ecbe4324f140d157478637d6beccf1'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90')
 
-# keep an upgrade path for older installations
-PKGEXT='.pkg.tar.gz'
-
 build() {
 	cd $srcdir/$pkgname-$_ver
 
