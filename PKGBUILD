@@ -1,17 +1,17 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libmp3splt
-pkgver=0.7
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
 arch=('i686' 'x86_64')
 url="http://mp3splt.sourceforge.net"
 license=('GPL')
-depends=('libmad' 'libvorbis' 'libid3tag' 'libtool')
-makedepends=('git')
-options=(!libtool)
-source=(http://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz)
-md5sums=('dadb166361e2a28955032a1b9f10ed38')
+depends=('libmad' 'libvorbis' 'libid3tag' 'pcre' 'libltdl')
+makedepends=('libtool')
+options=('!libtool')
+source=("http://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz")
+md5sums=('62025951f483334f14f1b9be58162094')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
