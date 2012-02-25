@@ -3,7 +3,7 @@
 
 pkgname=slim-themes
 pkgver=1.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Themes Pack for Simple Login Manager"
 arch=('any')
 url='http://slim.berlios.de'
@@ -34,25 +34,18 @@ md5sums=('fd1295d3a260849790dc17081da4a34f' 'c0cef9e7b95bdf2df3fb303d155f8476'
 package() {
   cd ${srcdir}
 
-  install -d ${pkgdir}/usr/share/slim/themes
-  mv fingerprint ${pkgdir}/usr/share/slim/themes
-  mv flat ${pkgdir}/usr/share/slim/themes
-  mv previous ${pkgdir}/usr/share/slim/themes
-  mv lake ${pkgdir}/usr/share/slim/themes
-  mv rainbow ${pkgdir}/usr/share/slim/themes
-  mv rear-window ${pkgdir}/usr/share/slim/themes
-  mv scotland-road ${pkgdir}/usr/share/slim/themes
-  mv subway ${pkgdir}/usr/share/slim/themes
-  mv wave ${pkgdir}/usr/share/slim/themes
-  mv slim-lunar-0.4 ${pkgdir}/usr/share/slim/themes/lunar
-  mv Zenwalk ${pkgdir}/usr/share/slim/themes/zenwalk
-  mv parallel-dimensions ${pkgdir}/usr/share/slim/themes
-  mv capernoited ${pkgdir}/usr/share/slim/themes
-  mv mindlock ${pkgdir}/usr/share/slim/themes
-  mv flower2 ${pkgdir}/usr/share/slim/themes
-  mv debian-moreblue ${pkgdir}/usr/share/slim/themes
+  install -dm755 ${pkgdir}/usr/share/slim/themes
 
-  # Some of these don't have the right permissions
-  cd ${pkgdir}/usr/share/slim/themes
-  find . -type f -exec chmod 644 {} \;
+  for t in capernoited debian-moreblue fingerprint flat flower2 isolated lake \
+           lotus-midnight lotus-sage mindlock parallel-dimensions previous \
+           rainbow rear-window scotland-road subway wave; do
+    install -dm755 ${pkgdir}/usr/share/slim/themes/$t
+    install -m644 $t/* ${pkgdir}/usr/share/slim/themes/$t
+  done
+  
+  install -dm755 ${pkgdir}/usr/share/slim/themes/lunar
+  install -m644 slim-lunar-0.4/* ${pkgdir}/usr/share/slim/themes/lunar
+
+  install -dm755 ${pkgdir}/usr/share/slim/themes/zenwalk
+  install -m644 Zenwalk/* ${pkgdir}/usr/share/slim/themes/zenwalk
 }
