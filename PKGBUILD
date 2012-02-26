@@ -8,7 +8,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 _kernelname=${pkgname#linux}
 _basekernel=3.2
 pkgver=${_basekernel}.7
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,15 +22,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         "${pkgname}.preset"
         'change-default-console-loglevel.patch'
         'i915-fix-ghost-tv-output.patch'
-        'i915-gpu-finish.patch')
+        'i915-gpu-finish.patch'
+        'ext4-options.patch')
 md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
          'e507fce2c266549df9565172196c912d'
-         'd23c3442fa462d2dfcfb20e2e6b10b1c'
-         '48c7c341662c213a94fecc4e60353099'
+         'a6913ef2a39541f18bd610cbb8f360ea'
+         '2182f8e0de70498130f7d9d770092c73'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0')
+         '4cd79aa147825837dc8bc9f6b736c0a0'
+         'c8299cf750a84e12d60b372c8ca7e1e8')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -58,6 +60,10 @@ build() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix ext4 module to mount ext3/2 correct
+  # https://bugs.archlinux.org/task/28653
+  patch -Np1 -i "${srcdir}/ext4-options.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -295,3 +301,4 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
+
