@@ -85,7 +85,8 @@ package_boost() {
     pkgdesc="Free peer-reviewed portable C++ source libraries - Development"
     depends=("boost-libs=${pkgver}")
     optdepends=('python: for python bindings'
-                'python2: for python2 bindings')
+                'python2: for python2 bindings'
+		'boost-build: to use boost jam for building your project.')
 
     install -d "${pkgdir}"/usr/{include,lib,share}
     # headers/source files
