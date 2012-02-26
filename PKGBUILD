@@ -1,7 +1,7 @@
 
 # Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
 pkgname=openmw-git
-pkgver=20120207
+pkgver=20120220
 pkgrel=1
 pkgdesc="OpenMW is a open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -29,18 +29,18 @@ build() {
     git clone "$_gitroot" "$_gitname"
     cd "$_gitname"
     git submodule update --init
-    cd "$srcdir"
   fi
 
   msg "GIT checkout done or server timeout"
   msg "Starting make..."
-  
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo
   make
-  
+
   # Install
   # There is currently no make install so we do this manually
- 
+
   # Binaries
   install -d -m755 "$pkgdir"/usr/bin
   install -m755 openmw "$pkgdir"/usr/bin/
@@ -66,10 +66,10 @@ build() {
   install -d -m755 "$pkgdir"/usr/share/pixmaps
   install -m644 apps/launcher/resources/images/openmw.png "$pkgdir"/usr/share/pixmaps/
 
-  # Resources 
+  # Resources
   install -d -m755 "$pkgdir"/usr/share/openmw
   cp -r resources "$pkgdir"/usr/share/openmw/ || exit 1
-    
+
 }
 
 
