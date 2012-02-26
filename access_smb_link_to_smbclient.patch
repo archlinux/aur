@@ -1,0 +1,15 @@
+X-Git-Url: http://git.videolan.org/?p=vlc.git;a=blobdiff_plain;f=modules%2Faccess%2FModules.am;h=be8c47b8fee03e5f4fc42c61b8e13f2d6ad587df;hp=81d8e78edc214026ceff3b17996b7bdbc47b3c26;hb=718b1f9901e5077b50c2189604afba883ca87bf7;hpb=84a1a3461adf901ff134a09eb4341cc301fdc6dd
+
+diff --git a/modules/access/Modules.am b/modules/access/Modules.am
+index 81d8e78..be8c47b 100644
+--- a/modules/access/Modules.am
++++ b/modules/access/Modules.am
+@@ -36,7 +36,7 @@ libsdp_plugin_la_DEPENDENCIES =
+ 
+ libaccess_smb_plugin_la_SOURCES = smb.c
+ libaccess_smb_plugin_la_CFLAGS = $(AM_CFLAGS)
+-libaccess_smb_plugin_la_LIBADD = $(AM_LIBADD)
++libaccess_smb_plugin_la_LIBADD = $(AM_LIBADD) $(LIBS_access_smb)
+ if HAVE_WIN32
+ libaccess_smb_plugin_la_LIBADD += -lmpr
+ endif
