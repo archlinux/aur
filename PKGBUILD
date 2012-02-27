@@ -7,8 +7,8 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.2
-pkgver=${_basekernel}.7
-pkgrel=2
+pkgver=${_basekernel}.8
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         'i915-gpu-finish.patch'
         'ext4-options.patch')
 md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
-         'e507fce2c266549df9565172196c912d'
+         '417b97cdd9e8b2664eb31260dbbcdc72'
          'a6913ef2a39541f18bd610cbb8f360ea'
          '2182f8e0de70498130f7d9d770092c73'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -301,4 +301,3 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
-
