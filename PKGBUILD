@@ -1,9 +1,10 @@
+# Maintainer  : Jan Was < janek.jan AT gmail DOT com >
 # Contributor : Dan Vratil <dan@progdan.cz>
-# Maintainer  : andy123 < ajs AT online DOT de >
+# Contributor  : andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.48.0
-_boostver=1_48_0
+pkgver=1.49.0
+_boostver=1_49_0
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime (32
 bit)"
@@ -14,8 +15,9 @@ groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('icu' 'bzip2' 'lib32-zlib' 'openmpi' 'gcc-multilib')
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
-md5sums=('313a11e97eb56eb7efd18325354631be')
-sha1sums=('2199cc3e745a61d45e292ec33af9847252101a46')
+md5sums=('e0defc8c818e4f1c5bbb29d0292b76ca')
+sha1sums=('fce1a7d8d9866e39e4797975b5132d33ad919511')
+
 
 _stagedir="${srcdir}/stagedir"
 
