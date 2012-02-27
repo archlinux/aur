@@ -5,19 +5,17 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.48.0
+pkgver=1.49.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
-        exceptions.patch
-        BOOST_FOREACH.patch)
+        exceptions.patch)
 license=('custom')
-md5sums=('313a11e97eb56eb7efd18325354631be'
-         '9b44c28b36303152050c8c82469569c5'
-         '2db6098a1a39bced4c6162eb46418320')
+md5sums=('e0defc8c818e4f1c5bbb29d0292b76ca'
+         '9b44c28b36303152050c8c82469569c5')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -31,8 +29,6 @@ build() {
   cd "${srcdir}"/${pkgbase}_${_boostver}
   # https://svn.boost.org/trac/boost/ticket/5731
   patch -p0 -i "${srcdir}/exceptions.patch"
-  # https://svn.boost.org/trac/boost/ticket/6131
-  patch -p2 -i "${srcdir}/BOOST_FOREACH.patch"
 
 
   # build bjam
