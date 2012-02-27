@@ -1,4 +1,4 @@
-#$Id: PKGBUILD 64614 2010-01-21 11:40:53Z allan $
+#$Id$
 # Maintainer: Hugo Doria <hugo@archlinux.org>
 
 _pkgbasename=libcap
@@ -11,7 +11,7 @@ url="http://www.kernel.org/pub/linux/libs/security/linux-privs/"
 license=('GPL2')
 depends=('lib32-attr' $_pkgbasename)
 makedepends=('gcc-multilib')
-source=(http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/${_pkgbasename}-${pkgver}.tar.gz{,.asc})
+source=(ftp://ftp.archlinux.org/other/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz{,.asc})
 md5sums=('b4896816b626bea445f0b3849bdd4077'
          '9d0983e25e5a251d098507f9561d2b27')
 
