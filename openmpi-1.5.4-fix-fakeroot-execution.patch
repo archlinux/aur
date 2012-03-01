@@ -1,0 +1,43 @@
+Description: If running under Debian fakeroot then its important
+ that this hook is disabled; a new stat check was introduced in
+ 1.5.x which preceeds the FAKEROOT check resulting in a SEGFAULT.
+Author: James Page <james.page@ubuntu.com>
+Origin: https://svn.open-mpi.org/trac/ompi/changeset/21489
+
+Index: openmpi-1.5.4/opal/mca/memory/linux/hooks.c
+===================================================================
+--- openmpi-1.5.4.orig/opal/mca/memory/linux/hooks.c    2012-02-15 12:59:39.986314651 +0000
++++ openmpi-1.5.4/opal/mca/memory/linux/hooks.c 2012-02-15 13:14:57.744722517 +0000
+@@ -738,15 +738,6 @@
+     check_result_t r1, r2, lp, lpp;
+     bool want_rcache = false, found_driver = false;
+ 
+-    /* First, check if ummunotify is present on the system. If it is,
+-       then we don't need to do the following ptmalloc2 hacks.
+-       open/mmap on the device may fail during init, but if /dev/ummunotify
+-       exists, we assume that the user/administrator *wants* to use
+-       ummunotify. */
+-    if (stat("/dev/ummunotify", &st) == 0) {
+-        return;
+-    }
+-
+     /* Yes, checking for an MPI MCA parameter here is an abstraction
+        violation.  Cope.  Yes, even checking for *any* MCA parameter
+        here (without going through the MCA param API) is an
+@@ -769,6 +760,15 @@
+         return;
+     }
+ 
++    /* Next, check if ummunotify is present on the system. If it is,
++       then we don't need to do the following ptmalloc2 hacks.
++       open/mmap on the device may fail during init, but if /dev/ummunotify
++       exists, we assume that the user/administrator *wants* to use
++       ummunotify. */
++    if (stat("/dev/ummunotify", &st) == 0) {
++        return;
++    }
++
+     /* Look for sentinel files (directories) to see if various network
+        drivers are loaded (yes, I know, further abstraction
+        violations...).
+

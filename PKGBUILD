@@ -1,7 +1,7 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
 pkgver=1.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
@@ -9,11 +9,16 @@ license=('custom')
 depends=('gcc' 'gcc-fortran' 'openssh' 'valgrind' 'libtool' 'hwloc')
 makedepends=('inetutils')
 options=(!libtool)
-source=(http://www.open-mpi.org/software/ompi/v1.5/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('81f7736a83b2134ba20c2e5c380b4d267cfd9d9c')
+source=(http://www.open-mpi.org/software/ompi/v1.5/downloads/${pkgname}-${pkgver}.tar.bz2
+        openmpi-1.5.4-fix-fakeroot-execution.patch)
+sha1sums=('81f7736a83b2134ba20c2e5c380b4d267cfd9d9c'
+          'ec46abb6f9e01daca910e4079b9abc036db9ed20')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
+
+   # Fix fakeroot problem (FS#28644)
+   patch -Np1 -i ../openmpi-1.5.4-fix-fakeroot-execution.patch
 
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
@@ -49,7 +54,7 @@ package() {
    mv "${pkgdir}"/usr/bin/otfinfo{,mpi}
 
    # Openmpi's otfdump conflicts with the one from libotf
-   mv "${pkgdir}"/usr/bin/otfdump{,ompi} 
+   mv "${pkgdir}"/usr/bin/otfdump{,ompi}
 
    # Remove dangling symlink
    rm "${pkgdir}"/usr/share/man/man1/orteCC.1
