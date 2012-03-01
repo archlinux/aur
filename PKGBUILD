@@ -3,7 +3,7 @@
 
 pkgname=nwn-diamond
 pkgver=1.69
-pkgrel=6
+pkgrel=7
 pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the Diamond Collection DVD Release."
 url="http://nwn.bioware.com/"
 license=('custom')
@@ -22,13 +22,15 @@ source=("http://nwdownloads.bioware.com/neverwinternights/linux/gold/nwclientgol
 "http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp2.tar.gz" \
 "http://home.roadrunner.com/~nwmovies/nwlinux-beta.tar.bz2" \
 "http://home.roadrunner.com/~nwmovies/cursors.tar.gz" \
+"http://home.roadrunner.com/~nwmovies/nwmovies/nwmovies-latest.tar.gz" \
 "nwn.launcher" "nwn.desktop")
-noextract=('nwclientgold.tar.gz' 'nwclienthotu.tar.gz' 'English_linuxclient169_xp2.tar.gz')
+noextract=('nwclientgold.tar.gz' 'nwclienthotu.tar.gz' 'English_linuxclient169_xp2.tar.gz' 'nwmovies-latest.tar.gz')
 md5sums=('0a059d55225fc32f905e86191d88a11f'
          '376cdece07106ea058d42b531f3146bb'
          'b021f0da3b3e00848521926716fdf487'
          '3961f7464d3d5b7ac9f097aa9aa2f4d3'
          '7be935418f0ececb5660f53b7a902b38'
+         '1698a83bce2050174670e30c42b9d673'
          '7fd0497f55856edf50480b5acd3136d3'
          'bd7f80f5faa5ee1203371b4e8ec40638')
 PKGEXT='.pkg.tar'
@@ -47,6 +49,10 @@ build()
 
     # Create Destination Directory
     install -d $pkgdir/opt/nwn
+
+    # Remove nwmovies which ships with the beta code; Replace with latest
+    rm -rf nwmovies
+    tar --overwrite -zxvf $srcdir/nwmovies-latest.tar.gz -C $srcdir/
 
     # Extract Data Files from DVD ROM
     unzip $_dvdpath/Data_Shared.zip -d $pkgdir/opt/nwn/ || return 1
