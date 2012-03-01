@@ -4,7 +4,7 @@
 
 pkgname=savage2
 pkgver=2.1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('i686' 'x86_64')
 url='http://savage2.com/'
@@ -43,7 +43,7 @@ build() {
     $srcdir/$_installer_name --mode unattended --prefix $pkgdir/opt/savage2/
 
     # Remove tree of empty directories in rollback folder
-    rm -r $pkgdir/opt/savage2/rollbackBackupDirectory/home/
+    rm -r $pkgdir/opt/savage2/rollbackBackupDirectory/*
 
     # Install Game Launcher
     install -D -m 755 $srcdir/savage2.launcher \
