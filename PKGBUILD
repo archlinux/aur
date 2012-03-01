@@ -7,7 +7,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.2
-pkgver=${_basekernel}.8
+pkgver=${_basekernel}.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
         'i915-gpu-finish.patch'
         'ext4-options.patch')
 md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
-         '417b97cdd9e8b2664eb31260dbbcdc72'
+         '3916159a999ee49cd6bd002556c629ad'
          'a6913ef2a39541f18bd610cbb8f360ea'
          '2182f8e0de70498130f7d9d770092c73'
          'eb14dcfd80c00852ef81ded6e826826a'
