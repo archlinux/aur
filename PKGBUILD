@@ -1,6 +1,6 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=explain-git
-pkgver=20111105
+pkgver=20120302
 pkgrel=1
 pkgdesc="Annotate commands using a simple markup language"
 arch=('any')
@@ -34,8 +34,8 @@ build() {
 package() {
   cd "$srcdir/$_gitname-build"
   install -Dm755 explain.py "$pkgdir"/usr/bin/explain.py
-  install -Dm644 README.md \
-    "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 man1/explain.py.1 "$pkgdir"/usr/share/man/man1/explain.py.1
+  install -Dm644 man1/explain.1 "$pkgdir"/usr/share/man/man1/explain.1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
