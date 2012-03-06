@@ -1,7 +1,7 @@
 
 # Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
 pkgname=openmw-git
-pkgver=20120220
+pkgver=20120306
 pkgrel=1
 pkgdesc="OpenMW is a open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -49,15 +49,12 @@ build() {
 
   # Config files
   # Replace resources location
-  sed -i 's,resources=resources,resources=/usr/share/openmw/resources,' openmw.cfg.install || exit 1
+  sed -i 's,resources=resources,resources=/usr/share/games/openmw/resources,' openmw.cfg.install || exit 1
 
   install -d -m755 "$pkgdir"/etc/openmw
   install -m644 openmw.cfg.install "$pkgdir"/etc/openmw/openmw.cfg
   install -m644 plugins.cfg "$pkgdir"/etc/openmw/
-
-  # Stylesheet
-  install -m644 launcher.qss "$pkgdir"/etc/openmw/
-  ln -s -T /etc/openmw/launcher.qss "$pkgdir"/usr/bin/launcher.qss || exit 1
+  install -m644 launcher.cfg "$pkgdir"/etc/openmw/
 
   # Desktop file and icon
   install -d -m755  "$pkgdir"/usr/share/applications
@@ -67,9 +64,9 @@ build() {
   install -m644 apps/launcher/resources/images/openmw.png "$pkgdir"/usr/share/pixmaps/
 
   # Resources
-  install -d -m755 "$pkgdir"/usr/share/openmw
-  cp -r resources "$pkgdir"/usr/share/openmw/ || exit 1
-
+  install -d -m755 "$pkgdir"/usr/share/games/openmw
+  cp -r resources "$pkgdir"/usr/share/games/openmw/ || exit 1
+  install -m644 launcher.qss "$pkgdir"/usr/share/games/openmw/resources
 }
 
 
