@@ -8,7 +8,7 @@
 # build time.
 
 pkgname=chromium
-pkgver=17.0.963.65
+pkgver=17.0.963.66
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         gcc-4.6.patch
         nacl-cflags-remove-fstack-protector.patch
         chromium-media-no-sse-r0.patch)
-sha256sums=('ddfc9e380357d095ccc38d8b157087fa42fd2c08f7fe02c006200f8535b2aa1a'
+sha256sums=('34dc897a64a2bd9be234536232c2649e95d3b2623f5ea715472a78a1bdf14801'
             '964fe3a5ec56f2505649aba00f900abe4205674b7fdaa16772647d347173bb01'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
@@ -105,7 +105,7 @@ build() {
 package() {
   cd "$srcdir/chromium-$pkgver"
 
-  install -D out/Release/chrome ${pkgdir}/usr/lib/chromium/chromium
+  install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
 
   install -Dm4755 -o root -g root out/Release/chrome_sandbox \
     "$pkgdir/usr/lib/chromium/chromium-sandbox"
@@ -116,9 +116,9 @@ package() {
     "$pkgdir/usr/lib/chromium/"
 
   # These links are only needed when building with system ffmpeg
-  #ln -s /usr/lib/libavcodec.so.52 ${pkgdir}/usr/lib/chromium/
-  #ln -s /usr/lib/libavformat.so.52 ${pkgdir}/usr/lib/chromium/
-  #ln -s /usr/lib/libavutil.so.50 ${pkgdir}/usr/lib/chromium/
+  #ln -s /usr/lib/libavcodec.so.52 "$pkgdir/usr/lib/chromium/"
+  #ln -s /usr/lib/libavformat.so.52 "$pkgdir/usr/lib/chromium/"
+  #ln -s /usr/lib/libavutil.so.50 "$pkgdir/usr/lib/chromium/"
 
   cp -a out/Release/locales out/Release/resources "$pkgdir/usr/lib/chromium/"
 
