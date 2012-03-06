@@ -1,7 +1,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=glib-networking
-pkgver=2.30.2
+pkgver=2.31.20
 pkgrel=1
 pkgdesc="Network-related giomodules for glib"
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ makedepends=('intltool')
 options=('!libtool')
 install=glib-networking.install
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('9f7542500939ca25896f0a74955cd3889758524583f6a15d02e00c9b815559bc')
+sha256sums=('82015c3601840b733d3f79298b49cce3708c064c3139975d56a44017cf162b5f')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   ./configure \
     --prefix=/usr --sysconfdir=/etc \
     --libexecdir=/usr/lib/glib-networking --disable-static
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 

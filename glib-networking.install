@@ -1,5 +1,5 @@
 post_install() {
-  usr/bin/gio-querymodules usr/lib/gio/modules
+  /usr/bin/gio-querymodules /usr/lib/gio/modules
 }
 
 post_upgrade() {
