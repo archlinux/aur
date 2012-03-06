@@ -3,13 +3,13 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=chipmunk
-pkgver=6.0.1
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="A high-performance 2D rigid body physics library"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/chipmunk-physics/"
 license=('MIT')
-depends=('mesa' 'freeglut' 'libxmu' 'libxext')
+depends=('glibc')
 makedepends=('cmake')
 source=(http://files.slembcke.net/chipmunk/release/Chipmunk-${pkgver%%.*}.x/Chipmunk-$pkgver.tgz)
 
@@ -27,4 +27,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-md5sums=('ba7ed00e32176152040801ad0b0c44f3')
+md5sums=('c5fb7d1ea529a0180e32456980f8f4a7')
