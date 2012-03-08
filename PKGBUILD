@@ -1,7 +1,7 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 
 pkgname=gnuclad
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A cladogram tree generator mainly used by GNU/Linux distro timeline project"
 arch=('i686' 'x86_64')
@@ -17,4 +17,4 @@ build() {
   make
   make DESTDIR=$pkgdir install
 }
-md5sums=('9dd89264a44fd37c45e58a9133475fc2')
+md5sums=('5ca520333ee496a1d2e49f14d0b9549e')
