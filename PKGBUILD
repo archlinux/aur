@@ -14,12 +14,12 @@ url="http://www.gnome.org"
 sha256sums=('c816bad3406c52a98d84a2222c0e4a7b70ee0640b49cde4a236deaa02c4232ea')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --disable-static
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
