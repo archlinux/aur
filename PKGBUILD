@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-vmware
-pkgver=11.99.901
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ conflicts=('xorg-server<1.11.99.903')
 groups=('xorg-drivers' 'xorg')
 options=('!libtool' '!emptydirs')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('b3583d024834cb2622c4cd92cbd5e566d733b193')
+sha1sums=('a0dc242481452ed69a5406b146827f4946c94316')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
