@@ -1,7 +1,7 @@
 pkgbase = tomahawk
 	pkgdesc = A Music Player App written in C++/Qt
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
 	arch = i686
@@ -24,7 +24,9 @@ pkgbase = tomahawk
 	conflicts = tomahawk-git
 	options = !strip
 	source = http://download.tomahawk-player.org/tomahawk-0.4.0.tar.bz2
+	source = 0001-Use-new-QTweetLib-0.5-API-for-PIN-values-so-leading-.patch
 	md5sums = 444f610e432281025bcac00aad0b0a90
+	md5sums = 25605d9c899601c3e2e71537cfdafcd6
 
 pkgname = tomahawk
 

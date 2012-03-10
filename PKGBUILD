@@ -14,7 +14,7 @@ _buildtype="RelWithDebInfo"
 
 pkgname=tomahawk
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -25,8 +25,10 @@ optdepends=('tomahawk-spotify-git: spotify resolver')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
 options=(!strip)
-source=(http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('444f610e432281025bcac00aad0b0a90')
+source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2"
+	'0001-Use-new-QTweetLib-0.5-API-for-PIN-values-so-leading-.patch')
+md5sums=('444f610e432281025bcac00aad0b0a90'
+	'25605d9c899601c3e2e71537cfdafcd6')
 install=tomahawk.install
 
 # Clean options array to strip pkg if release buildtype is chosen
@@ -36,6 +38,8 @@ fi
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+
+  patch -p3 -d src/sip -i ${startdir}/0001-Use-new-QTweetLib-0.5-API-for-PIN-values-so-leading-.patch
 
   msg "Starting build..."
 
