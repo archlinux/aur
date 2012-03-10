@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 # Based on package by Jelle van der Waa <jelle vdwaa nl>.
 pkgname=networkmanager-dispatcher-pdnsd
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Dispatcher Script for pDNSd'
 arch=(any)
@@ -11,7 +11,7 @@ depends=('networkmanager' 'pdnsd')
 backup=(etc/NetworkManager/dispatcher.d/00-pdnsd)
 changelog=ChangeLog
 source=('00-pdnsd')
-sha256sums=('b158e54d240a5f553a22b503a392bb59bc061f871d55c5625b0483dc7ad1302c')
+sha256sums=('8a5e4a4299fca6bde33b7b7b2b92eb34584f0cce25a7b4825500b623d92aa2b9')
 
 package() {
   install -Dm700 $srcdir/00-pdnsd $pkgdir/etc/NetworkManager/dispatcher.d/00-pdnsd
