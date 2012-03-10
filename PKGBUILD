@@ -8,7 +8,7 @@
 # build time.
 
 pkgname=chromium
-pkgver=17.0.963.78
+pkgver=17.0.963.79
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         gcc-4.6.patch
         nacl-cflags-remove-fstack-protector.patch
         chromium-media-no-sse-r0.patch)
-sha256sums=('2956cfeab05def5ab9b21c05a3a49e5d8efadadd4f27c212dd1c185ef05518c9'
+sha256sums=('a11192dbd21aad9c01def003314b5b7ed9d282b6aff8352b4eec4c4bc0293c36'
             '964fe3a5ec56f2505649aba00f900abe4205674b7fdaa16772647d347173bb01'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
