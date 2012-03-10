@@ -1,6 +1,6 @@
 pkgbase = qtweetlib
 	pkgdesc = C++ Qt based Twitter library
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/minimoog/QTweetLib
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = qtweetlib
 	provides = qtweetlib
 	conflicts = qtweetlib-git
 	options = !strip
-	source = https://github.com/downloads/minimoog/QTweetLib/QTweetLib-0.4.tar.gz
-	md5sums = cb22883c3d82e4932f50831a4b856caf
+	source = https://github.com/downloads/minimoog/QTweetLib/QTweetLib-0.5.tar.gz
+	md5sums = bf1a7cf45eb63479bf5d81d807b0d518
 
 pkgname = qtweetlib
 
