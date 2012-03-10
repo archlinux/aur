@@ -6,9 +6,9 @@ STATUS=$2
 pdnsd_going_up() {
   # Check whether pDNSd is already running before starting it.
   if [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` == 'STOPPED' ]; then
-    rc.d start
+    rc.d start pdnsd
   else
-    rc.d restart
+    rc.d restart pdnsd
   fi
 }
 
