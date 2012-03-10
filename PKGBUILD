@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -85,7 +85,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farsight2' 'libsasl' 'libidn' 'dbus-glib' 'nss')
+  depends=('farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'dbus-python: for purple-remote and purple-url-handler')
 
