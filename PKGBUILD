@@ -32,7 +32,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         gcc-4.6.patch
         nacl-cflags-remove-fstack-protector.patch
         chromium-media-no-sse-r0.patch)
-sha256sums=('a11192dbd21aad9c01def003314b5b7ed9d282b6aff8352b4eec4c4bc0293c36'
+sha256sums=('060ced63d5047f74549556d5a8c5f39df05e08bc8e2c9d7b6d0f269bb4e4353e'
             '964fe3a5ec56f2505649aba00f900abe4205674b7fdaa16772647d347173bb01'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
