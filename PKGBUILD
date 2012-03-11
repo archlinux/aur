@@ -4,7 +4,7 @@
 
 pkgname=clusterssh
 pkgver=3.28
-pkgrel=2
+pkgrel=3
 pkgdesc="Cluster SSH opens terminal windows with connections to specified hosts and an administration console."
 arch=('i686' 'x86_64')
 url="http://clusterssh.sourceforge.net/"
@@ -17,6 +17,11 @@ build() {
   cd ${srcdir}/$pkgname-$pkgver
 
   ./configure --prefix=/usr
-  make || return 1
+  make
+}
+
+package() {
+  cd ${srcdir}/$pkgname-$pkgver
+
   make DESTDIR=${pkgdir} install
 }
