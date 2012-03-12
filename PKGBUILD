@@ -13,7 +13,8 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=jreen
-pkgver=1.0.1
+_name=lib${pkgname}
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Qt XMPP library"
 arch=('i686' 'x86_64')
@@ -24,8 +25,8 @@ makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
 options=(!strip)
-source=(https://github.com/downloads/zizzfizzix/pkgbuilds/${pkgname}-${pkgver}.tar.bz2)
-md5sums=(26ba6636879e82b452bf8e0f3fa2f397)
+source=(http://qutim.org/dwnl/28/${_name}-${pkgver}.tar.bz2)
+md5sums=('ac1e7b1a07610d1b0ed751939a9e88e0')
  
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
@@ -35,15 +36,15 @@ fi
 build() {
   msg "Starting build..."
 
-  if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
-  mkdir ${srcdir}/${pkgname}-${pkgver}-build
-  cd ${srcdir}/${pkgname}-${pkgver}-build
+  if [[ -e ${srcdir}/${_name}-${pkgver}-build ]]; then rm -rf ${srcdir}/${_name}-${pkgver}-build; fi
+  mkdir ${srcdir}/${_name}-${pkgver}-build
+  cd ${srcdir}/${_name}-${pkgver}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${pkgname}-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${_name}-${pkgver}
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}-build
+  cd ${srcdir}/${_name}-${pkgver}-build
   make DESTDIR=${pkgdir} install
 }
