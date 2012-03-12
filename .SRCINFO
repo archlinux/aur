@@ -1,0 +1,15 @@
+pkgbase = python-setproctitle
+	pkgdesc = Allows a python process to change its process title
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = http://code.google.com/p/py-setproctitle/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/s/setproctitle/setproctitle-1.1.8.tar.gz
+	sha256sums = b564cf6488217c7a4632a9fe646fc3a3bea2f9712b4e667e9632b870d1a58211
+
+pkgname = python-setproctitle
+
