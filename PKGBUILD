@@ -13,7 +13,7 @@ depends=('libgcrypt' 'libgpg-error' 'libksba' 'pam')
 makedepends=()
 options=()
 backup=()
-install=('poldi.install')
+install=poldi.install
 source=("ftp://ftp.gnupg.org/gcrypt/alpha/poldi/$pkgname-$pkgver.tar.bz2" "poldi-arch.patch")
 
 build() {
