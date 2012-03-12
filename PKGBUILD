@@ -1,18 +1,19 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=kuickshow
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A very fast and convenient image viewer"
 url="http://userbase.kde.org/KuickShow"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('kdelibs' 'imlib' 'hicolor-icon-theme')
+depends=('kdebase-runtime' 'imlib')
 makedepends=('pkgconfig' 'cmake' 'automoc4' 'docbook-xsl')
 install=${pkgname}.install
 source=("http://hosti.leonde.de/~gis/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('ac8a7b411445fa91a3fbce76e32ee063')
+md5sums=('6866128ee3ef3d0dde809cd5b23d2472')
 
 build() {
   cd ${srcdir}
