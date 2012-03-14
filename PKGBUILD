@@ -39,7 +39,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 md5sums=('a424bb793521e637349da47e93dd5fff'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
-         '737ec24aa56871fbabfa892789457db4'
+         '4091cf082b1b743f5e7af060b3760276'
          'bc2971dacdbac967fc3474e50affc345'
          'b0be50eb9dfe4d133decf23b60880f7d'
          'db95aecdf2ccf3693fef5821cdcb7eba'
