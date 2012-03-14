@@ -41,7 +41,7 @@ libvirt_shutdown()
 		sleep 1
 		timeout=$((timeout - 1))
 		state=`libvirt_get_guest_state "$1"`
-		[ "x$state" != "xshut" ] && return 0
+		[ "x$state" == "xshut" ] && return 0
 	done
 	return 1
 }

@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
