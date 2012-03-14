@@ -1,9 +1,10 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.0.0h
+_ver=1.0.1
 # use a pacman compatible version scheme
-pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
+# pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
+pkgver=$_ver
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
@@ -18,8 +19,8 @@ source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         'fix-manpages.patch'
         'no-rpath.patch'
         'ca-dir.patch')
-md5sums=('a5bc483c570f2ac3758ce5c19b667fab'
-         'ed51bb7b3ed58f5e1e1b642050bdd7c1'
+md5sums=('134f168bc2a8333f19f81d684841710b'
+         'efbe93c11747fed52e60567819409d8a'
          '5bbc0655bda2af95bc8eb568963ce8ba'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90')
@@ -29,8 +30,10 @@ build() {
 
 	if [ "${CARCH}" == 'x86_64' ]; then
 		openssltarget='linux-x86_64'
+		optflags='enable-ec_nistp_64_gcc_128'
 	elif [ "${CARCH}" == 'i686' ]; then
 		openssltarget='linux-elf'
+		optflags=''
 	fi
 
 	# avoid conflicts with other man pages
@@ -42,7 +45,7 @@ build() {
 	patch -p0 -i $srcdir/ca-dir.patch
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared zlib enable-md2 \
+		shared zlib enable-md2 ${optflags} \
 		"${openssltarget}" \
 		-Wa,--noexecstack "${CFLAGS}" "${LDFLAGS}"
 
