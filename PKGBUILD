@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.10
-pkgrel=3
+pkgrel=4
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -62,10 +62,8 @@ build() {
 
   [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
 
-  # fixes for yajl 2.0 API changes
-#  [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir/yajl-2.x.patch"
-
   export LDFLAGS=-lX11
+  export RADVD=/usr/sbin/radvd
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static
   find -name Makefile -exec sed -i 's#-L /usr#-L/usr#' {} \;
