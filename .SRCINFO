@@ -1,6 +1,6 @@
 pkgbase = jreen
 	pkgdesc = Qt XMPP library
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/euroelessar/jreen
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = jreen
 	provides = jreen
 	conflicts = jreen-git
 	options = !strip
-	source = http://qutim.org/dwnl/28/libjreen-1.0.2.tar.bz2
-	md5sums = ac1e7b1a07610d1b0ed751939a9e88e0
+	source = http://qutim.org/dwnl/29/libjreen-1.0.3.tar.bz2
+	md5sums = d60c85473352feff10cecc7bfbf0f49e
 
 pkgname = jreen
 

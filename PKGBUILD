@@ -14,7 +14,7 @@ _buildtype="RelWithDebInfo"
 
 pkgname=jreen
 _name=lib${pkgname}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Qt XMPP library"
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
 options=(!strip)
-source=(http://qutim.org/dwnl/28/${_name}-${pkgver}.tar.bz2)
-md5sums=('ac1e7b1a07610d1b0ed751939a9e88e0')
+source=(http://qutim.org/dwnl/29/${_name}-${pkgver}.tar.bz2)
+md5sums=('d60c85473352feff10cecc7bfbf0f49e')
  
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
