@@ -5,43 +5,34 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.10.1
-pkgrel=3
+pkgver=2.10.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'python2' 'hicolor-icon-theme' 'gstreamer0.10'
-             'farstream' 'avahi' 'tk' 'ca-certificates' 'intltool'
+             'farsight2' 'avahi' 'tk' 'ca-certificates' 'intltool'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        nm09-more.patch
         port-to-farstream-v2.patch)
-sha256sums=('2f28bddc5edcd714d607d74126c8958ae7c258602b3929e3e6e783d3cb1beac8'
-            '7e173ea37b86b604284da18ea015ee03ccd444f3e980f440c201957d37ee820e'
+sha256sums=('e5cdd29056d36677cb81225c3b36b1bcde64605e201492f6e2fdf27ff24d32b8'
             '03ba48e0da1331a976efc28a66810be4f51599a2b8065ac449965e0aefca4482')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Further fixes for NetworkManager 0.9
-  # http://developer.pidgin.im/ticket/13859
-  patch -Np1 -i "$srcdir/nm09-more.patch"
-
   # Apply patch for farsight -> farstream transition
   # http://developer.pidgin.im/ticket/14936
-  patch -Np1 -i "$srcdir/port-to-farstream-v2.patch"
+  #patch -Np1 -i "$srcdir/port-to-farstream-v2.patch"
 
   # The farstream patch changes configure.ac
-  autoreconf -vi
+  #autoreconf -vi
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
     libpurple/purple-{remote,notifications-example,url-handler}
-
-  # Pidgin doesn't explicitly link to libm
-  LDFLAGS+=' -Wl,--copy-dt-needed-entries'
 
   ./configure \
     --prefix=/usr \
@@ -85,7 +76,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss')
+  depends=('farsight2' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'dbus-python: for purple-remote and purple-url-handler')
 
