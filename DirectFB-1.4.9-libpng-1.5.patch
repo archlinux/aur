@@ -115,39 +115,7 @@ index 6d65ea3..7d82c5c 100644
                      if (!trans[i]) {
                           palette[i].red   = (key & 0xff0000) >> 16;
                           palette[i].green = (key & 0x00ff00) >>  8;
-@@ -625,20 +636,23 @@ png_info_callback( png_structp png_read_ptr,
-           }
-           else {
-                /* ...or based on trans rgb value */
--               png_color_16p trans = &data->info_ptr->trans_color;
--
--               data->color_key = (((trans->red & 0xff00) << 8) |
--                                  ((trans->green & 0xff00)) |
--                                  ((trans->blue & 0xff00) >> 8));
-+               data->color_key = (((trans_color->red & 0xff00) << 8) |
-+                                  ((trans_color->green & 0xff00)) |
-+                                  ((trans_color->blue & 0xff00) >> 8));
-           }
-      }
- 
-      switch (data->color_type) {
-           case PNG_COLOR_TYPE_PALETTE: {
--               png_colorp palette    = data->info_ptr->palette;
--               png_bytep  trans      = data->info_ptr->trans_alpha;
--               int        num_trans  = data->info_ptr->num_trans;
--               int        num_colors = MIN( MAXCOLORMAPSIZE, data->info_ptr->num_palette );
-+               png_colorp    palette;
-+               png_bytep     trans;
-+               png_color_16p trans_color;
-+               int           num_trans;
-+               int           num_colors;
-+
-+               png_get_PLTE( data->png_ptr, data->info_ptr, &palette, &num_colors );
-+               num_colors = MIN( MAXCOLORMAPSIZE, num_colors );
-+               png_get_tRNS( data->png_ptr, data->info_ptr, &trans, &num_trans, &trans_color );
- 
-                for (i=0; i<num_colors; i++) {
-                     data->colors[i].a = (i < num_trans) ? trans[i] : 0xff;
+
 -- 
 1.7.4.1
 
@@ -242,3 +210,43 @@ index 96e4220..d4b6bf4 100644
 -- 
 1.7.4.1
 
+--- a/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2012-02-14 19:04:52.000000000 -0500
++++ b/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2012-02-14 19:07:18.000000000 -0500
+@@ -710,10 +709,15 @@
+ 
+      switch (data->color_type) {
+           case PNG_COLOR_TYPE_PALETTE: {
+-               png_colorp palette    = data->info_ptr->palette;
+-               png_bytep  trans      = data->info_ptr->trans_alpha;
+-               int        num_trans  = data->info_ptr->num_trans;
+-               int        num_colors = MIN( MAXCOLORMAPSIZE, data->info_ptr->num_palette );
++               png_colorp    palette;
++               png_bytep     trans;
++               png_color_16p trans_color;
++               int           num_trans;
++               int           num_colors;
++
++               png_get_PLTE( data->png_ptr, data->info_ptr, &palette, &num_colors );
++               num_colors = MIN( MAXCOLORMAPSIZE, num_colors );
++               png_get_tRNS( data->png_ptr, data->info_ptr, &trans, &num_trans, &trans_color );
+ 
+                for (i=0; i<num_colors; i++) {
+                     data->colors[i].a = (i < num_trans) ? trans[i] : 0xff;
+--- a/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c.old	2012-02-14 22:40:30.000000000 -0500
++++ b/interfaces/IDirectFBImageProvider/idirectfbimageprovider_png.c	2012-02-14 23:37:19.000000000 -0500
+@@ -638,12 +638,10 @@
+                data->color_key = key;
+           }
+           else {
+-               /* ...or based on trans rgb value */
+-               png_color_16p trans = &data->info_ptr->trans_color;
+ 
+-               data->color_key = (((trans->red & 0xff00) << 8) |
+-                                  ((trans->green & 0xff00)) |
+-                                  ((trans->blue & 0xff00) >> 8));
++               data->color_key = (((trans_color->red & 0xff00) << 8) |
++                                  ((trans_color->green & 0xff00)) |
++                                  ((trans_color->blue & 0xff00) >> 8));
+           }
+      }
+ 
