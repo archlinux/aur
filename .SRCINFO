@@ -1,0 +1,22 @@
+pkgbase = refind-x86_64
+	pkgdesc = Rod Smith's fork of rEFIt (U)EFI Boot Manager
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.rodsbooks.com/refind/index.html
+	arch = any
+	license = GPL3
+	license = custom
+	makedepends = gnu-efi
+	depends = dosfstools
+	depends = efibootmgr
+	optdepends = mactel-boot: For bless command in Apple Mac systems
+	provides = refit
+	replaces = refit
+	options = !strip
+	options = docs
+	backup = boot/efi/efi/arch_refind/refind.conf
+	source = http://downloads.sourceforge.net/refind/refind-src-0.2.0.zip
+	sha256sums = f527993f4c333b4cab8b588842a0658b148d310931df458a2f32dd88ceab1841
+
+pkgname = refind-x86_64
+
