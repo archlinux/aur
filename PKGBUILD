@@ -4,8 +4,8 @@
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
 pkgname=python-sphinx
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.1.3
+pkgrel=1
 pkgdesc='Python 3 documentation generator'
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -14,7 +14,7 @@ depends=('python-distribute' 'python-jinja' 'python-pygments' 'python-docutils')
 conflicts=('python2-sphinx')
 optdepends=('texlive-latexextra: for generation of PDF documentation')
 source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
-md5sums=('b65a5d5d6172f3dcfefb4770ec63926e')
+md5sums=('8f55a6d4f87fc6d528120c5d1f983e98')
  
 build() {
   cd Sphinx-$pkgver

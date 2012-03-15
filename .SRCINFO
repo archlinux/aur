@@ -1,7 +1,7 @@
 pkgbase = python-sphinx
 	pkgdesc = Python 3 documentation generator
-	pkgver = 1.1.2
-	pkgrel = 3
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = python-sphinx
 	depends = python-docutils
 	optdepends = texlive-latexextra: for generation of PDF documentation
 	conflicts = python2-sphinx
-	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.1.2.tar.gz
-	md5sums = b65a5d5d6172f3dcfefb4770ec63926e
+	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.1.3.tar.gz
+	md5sums = 8f55a6d4f87fc6d528120c5d1f983e98
 
 pkgname = python-sphinx
 
