@@ -1,4 +1,5 @@
 # Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
+# https://github.com/zizzfizzix/pkgbuilds
 # Contributor: Rick W. Chen <stuffcorpse@archlinux.us>
 
 ##############################################################
