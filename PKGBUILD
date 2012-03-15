@@ -1,18 +1,19 @@
-# Maintainer: Dominik Mayer <dominik.mayer@gmail.com>
-# Contributor: Lee.MaRS <leemars@gmail.com>
+# Maintainer: Anuj More <anujmorex@gmail.com>
+# Contributor 2: Dominik Mayer <dominik.mayer@gmail.com>
+# Contributor 1: Lee.MaRS <leemars@gmail.com>
 
 pkgname=google-appengine-java
-pkgver=1.5.2
+pkgver=1.6.3
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Google App Engine SDK for Java."
 url="http://code.google.com/appengine/"
 license="('Apache 2')"
-depends=('jre')
+depends=()
 options=('!strip')
 source=(http://googleappengine.googlecode.com/files/appengine-java-sdk-${pkgver}.zip
         profile.appengine-java-sdk)
-sha1sums=('a92ba4ed26696584d927e72e0b5bf746f8988741'
+sha1sums=('fd89346a1760bec603b39c5d68996fdfb3cf3c3d'
           '9d6e6c6bd7f3ec53dc08cdfacaac931cfa1cf2f3')
 
 build() {
