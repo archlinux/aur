@@ -1,4 +1,5 @@
 # Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
+# https://github.com/zizzfizzix/pkgbuilds
 
 ##############################################################
 #### The section below can be adjusted to suit your needs ####
