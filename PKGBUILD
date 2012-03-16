@@ -3,7 +3,7 @@
 
 pkgname=gtk2fontsel
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Font selection and preview tool"
 arch=('i686' 'x86_64')
 url="http://gtk2fontsel.sourceforge.net/"
@@ -16,6 +16,11 @@ build() {
   cd ${srcdir}/$pkgname-$pkgver
 
   ./configure --prefix=/usr
-  make || return 1
+  make
+}
+
+package() {
+  cd ${srcdir}/$pkgname-$pkgver
+
   make prefix=${pkgdir}/usr install
 }
