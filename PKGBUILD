@@ -10,7 +10,8 @@ license=('GPL')
 makedepends=('mercurial' 'python2')
 depends=('python2-matplotlib' 'python2-numpy')
 optdepends=('blktrace: for tracing the local system'
-            'pyqt3: enable interactive mode')
+            'pyqt3: enable interactive mode'
+            'mencoder: enable video output')
 conflicts=('seekwatcher')
 md5sums=()
 
