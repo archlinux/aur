@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20120125
+pkgver=20120317
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -22,7 +22,7 @@ backup=()
 
 install=context-minimals-git.install
 
-PKGEXT=".pkg.tar.gz"
+PKGEXT=".pkg.tar"
 
 # ConTeXt minimals uses a different naming convention for architectures
 
