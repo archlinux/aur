@@ -6,7 +6,7 @@
 #   bring in pyalsa, csound, mma
 pkgname=solfege
 pkgver=3.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Music education and ear training software"
 arch=('i686' 'x86_64')
 url="http://www.solfege.org/"
