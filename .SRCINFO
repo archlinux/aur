@@ -1,18 +1,34 @@
 pkgbase = python-sphinx
-	pkgdesc = Python 3 documentation generator
 	pkgver = 1.1.3
 	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = GPL
-	depends = python-distribute
-	depends = python-jinja
-	depends = python-pygments
-	depends = python-docutils
-	optdepends = texlive-latexextra: for generation of PDF documentation
-	conflicts = python2-sphinx
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	checkdepends = texlive-latexextra
+	makedepends = python-distribute
+	makedepends = python-docutils
+	makedepends = python-jinja
+	makedepends = python-pygments
+	makedepends = python2-distribute
+	makedepends = python2-docutils
+	makedepends = python2-jinja
+	makedepends = python2-pygments
 	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.1.3.tar.gz
 	md5sums = 8f55a6d4f87fc6d528120c5d1f983e98
 
 pkgname = python-sphinx
+	pkgdesc = Python3 documentation generator
+	depends = python-jinja
+	depends = python-pygments
+	depends = python-docutils
+	optdepends = texlive-latexextra: for generation of PDF documentation
+
+pkgname = python2-sphinx
+	pkgdesc = Python2 documentation generator
+	depends = python2-jinja
+	depends = python2-pygments
+	depends = python2-docutils
+	optdepends = texlive-latexextra: for generation of PDF documentation
 
