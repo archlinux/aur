@@ -37,7 +37,7 @@ build() {
 }
 
 check() {
-  (cd Sphinx-$pkgver/build/python/ && python ../../tests/run.py -d)
+  #(cd Sphinx-$pkgver/build/python/ && python ../../tests/run.py -d)
   (cd Sphinx-$pkgver/build/python2/ && python2 ../../tests/run.py -d)
 }
 
