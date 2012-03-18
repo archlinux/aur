@@ -1,8 +1,8 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=dsassistant
-pkgver=1920
-pkgrel=2
+pkgver=2196
+pkgrel=1
 pkgdesc="Disk Station Assistant - An app to setup Synology DiskStations"
 arch=('i686' 'x86_64')
 url="http://www.synology.com/releaseNote_enu/Assistant.php"
@@ -15,7 +15,7 @@ makedepends=(unzip)
 source=(http://download.synology.com/download/ds/DSAssistant/${pkgname}_Linux_${pkgver}.zip
         SynologyAssistant.desktop
         dsassistant.png)
-md5sums=('99905396e2ee844f4a90e7c38a9199c6'
+md5sums=('ca67613807c59fdf1fd45ce8dd21ccb8'
          '73e2c353c541bc79db01d40117d92133'
          '6b447bfb0e43256e2bf1d388a1b022d3')
 
@@ -24,7 +24,7 @@ build() {
 
   mkdir -p ${pkgdir}/opt/dsassistant
   unzip -o dsassistant_Linux_${pkgver}.zip -d ${srcdir}
-  tar zxvf ${srcdir}/linux/SynologyAssistant-3.2-${pkgver}.tar.gz -C ${pkgdir}/opt/dsassistant
+  tar zxvf ${srcdir}/linux/SynologyAssistant-4.0-${pkgver}.tar.gz -C ${pkgdir}/opt/dsassistant
 
   mkdir -p ${pkgdir}/usr/bin
   ln -sf /opt/dsassistant/SynologyAssistant/SynologyAssistant ${pkgdir}/usr/bin/SynologyAssistant
