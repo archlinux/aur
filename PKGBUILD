@@ -2,12 +2,15 @@
 
 pkgname=dsassistant
 pkgver=1920
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk Station Assistant - An app to setup Synology DiskStations"
 arch=('i686' 'x86_64')
 url="http://www.synology.com/releaseNote_enu/Assistant.php"
 license=('unknown')
-depends=('lib32-glib2' 'lib32-libxt'  'lib32-libxext' 'lib32-fontconfig' 'lib32-libxrender') # Some Ubuntu 32bit libs ~ "ia32-libs" see HowToInstallAssistant.txt
+depends=()
+if test "$CARCH" == x86_64; then
+	depends=("${depends[@]}" lib32-glibc lib32-glib2 lib32-libxt  lib32-libxext lib32-fontconfig lib32-libxrender)
+fi
 makedepends=(unzip)
 source=(http://download.synology.com/download/ds/DSAssistant/${pkgname}_Linux_${pkgver}.zip
         SynologyAssistant.desktop
