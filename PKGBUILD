@@ -30,10 +30,17 @@ md5sums=('8f55a6d4f87fc6d528120c5d1f983e98')
  
 build() {
   cd Sphinx-$pkgver
+  # remove build directory (avoid sed issues)
+  [[ -e build ]] && rm -rf build
+  # python builds
   python setup.py build --build-lib=build/python
   python2 setup.py build --build-lib=build/python2
+  # change python2 interpreter
   find build/python2 -type f -exec \
     sed -i '1s,^#! \?/usr/bin/\(env \|\)python$,#!/usr/bin/python2,' {} \;
+  # change sphinx-binaries name in source code
+  find build/python2 -type f -name '*.py' -exec \
+    sed -ri 's,(sphinx-(:?build|apidoc|autogen|quickstart)),\12,' {} \;
 }
 
 check() {
