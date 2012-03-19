@@ -20,8 +20,11 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems')
 backup=('boot/efi/efi/arch_refind/refind.conf')
 options=('!strip' 'docs')
 
-source=("http://downloads.sourceforge.net/refind/refind-src-${pkgver}.zip")
-sha256sums=('135f41278ef562831cb022689e17467d2780fd2fa08cf35ff15ecd2241900414')
+source=("http://downloads.sourceforge.net/refind/refind-src-${pkgver}.zip"
+        'linux.conf')
+
+sha256sums=('135f41278ef562831cb022689e17467d2780fd2fa08cf35ff15ecd2241900414'
+            '7ca14bd8cca670201ce3f5e9bb5d1a8610a9d8f05c2260eb29aaad08e652e5c8')
 
 build() {
 	
@@ -46,6 +49,7 @@ package() {
 	
 	## install the rEFInd config file
 	install -D -m0644 "${srcdir}/refind-${pkgver}/refind.conf-sample" "${pkgdir}/boot/efi/efi/arch_refind/refind.conf"
+	install -D -m0644 "${srcdir}/linux.conf" "${pkgdir}/boot/efi/efi/arch_refind/linux.conf"
 	
 	## install the rEFInd icons
 	install -d "${pkgdir}/boot/efi/efi/arch_refind/icons/"

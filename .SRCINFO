@@ -14,7 +14,9 @@ pkgbase = refind-x86_64
 	options = docs
 	backup = boot/efi/efi/arch_refind/refind.conf
 	source = http://downloads.sourceforge.net/refind/refind-src-0.2.1.zip
+	source = linux.conf
 	sha256sums = 135f41278ef562831cb022689e17467d2780fd2fa08cf35ff15ecd2241900414
+	sha256sums = 7ca14bd8cca670201ce3f5e9bb5d1a8610a9d8f05c2260eb29aaad08e652e5c8
 
 pkgname = refind-x86_64
 
