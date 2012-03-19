@@ -1,0 +1,17 @@
+pkgbase = lamson
+	pkgdesc = Modern Pythonic mail server built like a web application server
+	pkgver = 1.3.4
+	pkgrel = 2
+	url = http://lamsonproject.org/
+	arch = any
+	license = BSD
+	depends = python2-jinja
+	depends = python2-sqlalchemy
+	depends = python2-nose
+	depends = python2-daemon
+	depends = python2-chardet
+	source = http://pypi.python.org/packages/source/l/lamson/lamson-1.3.4.tar.gz
+	sha256sums = 253edf385ae54606579b6b717adf5edcd9df47f9a1d488aa61b9e9f42587d37d
+
+pkgname = lamson
+
