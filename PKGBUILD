@@ -1,20 +1,23 @@
+pkgbase=linux
 pkgname=linux-linode
-_kernelname=-linode
-_basekernel=3.0
-pkgver=${_basekernel}.4
+_kernelname=${pkgname#linux}
+_basekernel=3.2
+pkgver=${_basekernel}.5
 pkgrel=2
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
-source=("http://ftp.nluug.nl/pub/os/Linux/system/kernel/v3.0/linux-${pkgver}.tar.bz2"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
-md5sums=('dff86c657cabe813bda84c72bfb93ae8'
-         'a4ebddd66e0697c30e223ab5040243f1'
+md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
+         '89cb9fb7ed01dccb15510435fb1e5024'
+         '12eac810a451951eb7b48b2c76f5f489'
 			'7fc8bdda8379469552523e9296dc3799'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
@@ -27,25 +30,14 @@ backup=(etc/mkinitcpio.d/${pkgname}.preset)
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/linux-${pkgver}"
+  cd "${srcdir}/linux-${_basekernel}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   cp "${srcdir}/config.x86_64" ./.config
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-  sed -ri 's|^(SUBLEVEL =).*|\1|' Makefile
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
   make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
-
-  #msg "Stopping build"
 #  return 1
-
-#  yes "" | make config
   CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   CXXFLAGS=${CXXFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   ionice -c 3 nice -n 19 make ${MAKEFLAGS} bzImage modules
@@ -53,7 +45,7 @@ build() {
 
 package_linux-linode() {
   KARCH=x86
-  cd "${srcdir}/linux-${pkgver}"
+  cd "${srcdir}/linux-${_basekernel}"
   _kernver="$(make kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make INSTALL_MOD_PATH="${pkgdir}" modules_install
@@ -72,6 +64,12 @@ package_linux-linode() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   rm -rf "${pkgdir}/lib/firmware"
   find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
+
+  emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  mkdir -p "${pkgdir}/lib/modules/${emdir}"
+  ln -s "../${emdir}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  echo "${_kernver}" >| "${pkgdir}/lib/modules/${emdir}/version"
+
   mkdir -p ${pkgdir}/boot/grub
   sed "s/%VER%/${pkgver}-${pkgrel}/ig" ${srcdir}/menu.lst > ${pkgdir}/boot/grub/menu.lst
 }

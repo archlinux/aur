@@ -5,3 +5,5 @@ pkg
 *.bz2
 *.part
 v3.1-rc4
+linux-*.tar.xz
+patch-*.xz
