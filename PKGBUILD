@@ -17,7 +17,9 @@ makedepends=('gnu-efi')
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
-backup=('boot/efi/efi/arch_refind/refind.conf')
+backup=('boot/efi/efi/arch_refind/refind.conf'
+        'boot/efi/efi/arch_refind/linux.conf')
+
 options=('!strip' 'docs')
 
 source=("http://downloads.sourceforge.net/refind/refind-src-${pkgver}.zip"
