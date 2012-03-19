@@ -6,7 +6,7 @@ _actualname="refind"
 _pkgname="${_actualname}-x86_64"
 pkgname="${_pkgname}"
 
-pkgver="0.2.0"
+pkgver="0.2.1"
 pkgrel="1"
 pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -17,14 +17,11 @@ makedepends=('gnu-efi')
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
-provides=('refit')
-replaces=('refit')
-
 backup=('boot/efi/efi/arch_refind/refind.conf')
 options=('!strip' 'docs')
 
 source=("http://downloads.sourceforge.net/refind/refind-src-${pkgver}.zip")
-sha256sums=('f527993f4c333b4cab8b588842a0658b148d310931df458a2f32dd88ceab1841')
+sha256sums=('135f41278ef562831cb022689e17467d2780fd2fa08cf35ff15ecd2241900414')
 
 build() {
 	
