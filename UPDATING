@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# How to update this package!
+
+# Don't actually run this as a shell script - it's part pseudocode
+exit
+
+# Check https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
+# Bump pkgver, pkgrel
+# Sync any new PKGBUILD logic, important patches, configs or other changes
+
+# Cleans things up
+makepkg -oecd
+
+# uncomment "return 1"
+sed -i 's/^[#]*\s*\(return\s*1\)$/\1/ig' PKGBUILD
+
+# sources are ready
+makepkg -cd
+
+# will probably fail for hashes, reset hashes & redo
+
+# may prompt for oldconfig
+
+# do a checkup
+cd src/linux-${pkgver}
+make nconfig
+# save as .config, then quit
+
+# last check
+diff ../../config.x86_64 .config
+
+# move it back
+cd ../..
+cp src/linux-${pkgver}/.config config.x86_64
+
+# update md5s
+# re-comment "return 1"
+sed -i 's/^[#]*\s*\(return\s*1\)$/#  \1/ig' PKGBUILD

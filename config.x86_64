@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 3.2.5-1 Kernel Configuration
+# Linux/x86_64 3.2.11-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 # CONFIG_X86_32 is not set
@@ -825,32 +825,32 @@ CONFIG_DM_MULTIPATH=y
 # CONFIG_DM_FLAKEY is not set
 # CONFIG_MACINTOSH_DRIVERS is not set
 CONFIG_NETDEVICES=y
-CONFIG_DUMMY=y
 CONFIG_NET_CORE=y
 CONFIG_BONDING=m
-# CONFIG_MACVLAN is not set
+CONFIG_DUMMY=y
 # CONFIG_EQUALIZER is not set
+# CONFIG_MII is not set
+# CONFIG_MACVLAN is not set
+# CONFIG_NETCONSOLE is not set
+# CONFIG_NETPOLL is not set
+# CONFIG_NET_POLL_CONTROLLER is not set
 CONFIG_TUN=m
 # CONFIG_VETH is not set
-# CONFIG_MII is not set
+
+#
+# CAIF transport drivers
+#
 # CONFIG_ETHERNET is not set
 # CONFIG_PHYLIB is not set
+# CONFIG_PPP is not set
+# CONFIG_SLIP is not set
 # CONFIG_WLAN is not set
 
 #
 # Enable WiMAX (Networking options) to see the WiMAX drivers
 #
 # CONFIG_WAN is not set
-
-#
-# CAIF transport drivers
-#
 CONFIG_XEN_NETDEV_FRONTEND=y
-# CONFIG_PPP is not set
-# CONFIG_SLIP is not set
-# CONFIG_NETCONSOLE is not set
-# CONFIG_NETPOLL is not set
-# CONFIG_NET_POLL_CONTROLLER is not set
 # CONFIG_ISDN is not set
 # CONFIG_PHONE is not set
 
