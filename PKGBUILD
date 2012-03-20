@@ -2,13 +2,13 @@
 # https://github.com/zizzfizzix/pkgbuilds
 
 pkgname=cloudprint-git
-pkgver=20110907
+pkgver=20120320
 pkgrel=1
 pkgdesc="Google cloudprint proxy for CUPS - development version"
 arch=('any')
 url="https://github.com/armooo/cloudprint"
 license=('GPL3')
-depends=('pycups' 'python2-distribute' 'python-daemon')
+depends=('pycups' 'python2-distribute' 'python2-daemon')
 makedepends=('git')
 provides=('cloudprint')
 conflicts=('cloudprint')
@@ -27,11 +27,11 @@ package() {
   fi
 
   msg "GIT checkout done or server timeout"
-  msg "Starting build..."
+  msg "Starting packaging..."
 
-  if [[ -e ${srcdir}/${_gitname}-build ]]; then rm -rf ${srcdir}/${_gitname}-build; fi
-  cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
-  cd ${srcdir}/${_gitname}-build
+  if [[ -e ${srcdir}/${_gitname}-pkg ]]; then rm -rf ${srcdir}/${_gitname}-pkg; fi
+  cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}-pkg
+  cd ${srcdir}/${_gitname}-pkg
 
   python2 setup.py install --root=$pkgdir/ --optimize=1 
 }

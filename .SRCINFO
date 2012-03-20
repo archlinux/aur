@@ -1,6 +1,6 @@
 pkgbase = cloudprint-git
 	pkgdesc = Google cloudprint proxy for CUPS - development version
-	pkgver = 20110907
+	pkgver = 20120320
 	pkgrel = 1
 	url = https://github.com/armooo/cloudprint
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = cloudprint-git
 	makedepends = git
 	depends = pycups
 	depends = python2-distribute
-	depends = python-daemon
+	depends = python2-daemon
 	provides = cloudprint
 	conflicts = cloudprint
 
