@@ -2,7 +2,7 @@
 
 pkgname=python2-daemon
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to implement a well-behaved Unix daemon process"
 license=("PSF-2+")
 url="http://pypi.python.org/pypi/python-daemon"
