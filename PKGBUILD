@@ -26,14 +26,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
         'i915-gpu-finish.patch'
         'ext4-options.patch')
 md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'e20b15a7b6cf9db86788f06816b27ddb'
-         '938a150ce9c1aa99b16302409ecbc274'
+         '09dd5682e1bc3239cf8ec4d7c949648f'
+         '9e2fd1e2971be242ca5527bea062fb29'
          'eb14dcfd80c00852ef81ded6e826826a'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '263725f20c0b9eb9c353040792d644e5'
          '4cd79aa147825837dc8bc9f6b736c0a0'
-         'c8299cf750a84e12d60b372c8ca7e1e8')
+         'bb7fd1aa23016c8057046b84fd4eb528')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -288,7 +288,7 @@ package_linux-headers() {
   done
 
   # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
+  rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
 package_linux-docs() {
@@ -307,12 +307,3 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'e20b15a7b6cf9db86788f06816b27ddb'
-         '938a150ce9c1aa99b16302409ecbc274'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
