@@ -5,7 +5,7 @@
 
 pkgname=latex-template-springer
 pkgver=201203
-pkgrel=2
+pkgrel=3
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult) and journals (svjour3)"
 arch=('any')
 url="http://www.springer.com/computer/lncs?SGWID=0-164-7-72376-0"
@@ -40,13 +40,13 @@ build() {
     install -m 0644 -D ${srcdir}/${_SVMULT} ${pkgdir}/usr/share/texmf-dist/tex/latex/svmult/${_SVMULT%\*}
   done
 
-
   for _LLNCS in readme.txt llncs.cls llncs.dem llncs.doc llncsdoc.pdf llncsdoc.sty llncs.ind subjidx.ind sprmindx.sty; do
     install -m 0644 -D ${srcdir}/${_LLNCS} ${pkgdir}/usr/share/texmf-dist/tex/latex/llncs/${_LLNCS}
   done
 
   install -m 0644 -D ${srcdir}/spphys.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/spphys.bst
   install -m 0644 -D ${srcdir}/splncs03.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/splncs03.bst
+  find ${pkgdir}/usr/share/texmf-dist/tex/latex/ -name \*.bst -exec mv {} ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/ \;
   # XXX: BSTs have disappeared from the latest version of svmono... Go figure...
   #mv ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/*.bst \
   # ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
