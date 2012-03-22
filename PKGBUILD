@@ -307,3 +307,21 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
+md5sums=('7133f5a2086a7d7ef97abac610c094f5'
+         'bea531114020fe11ee3665b6c35865d7'
+         'e6dcd1ce19834ad4c69140771a7171dc'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '38c1fd4a1f303f1f6c38e7f082727e2f'
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '263725f20c0b9eb9c353040792d644e5'
+         '4cd79aa147825837dc8bc9f6b736c0a0'
+         'bb7fd1aa23016c8057046b84fd4eb528')
+md5sums=('7133f5a2086a7d7ef97abac610c094f5'
+         'bea531114020fe11ee3665b6c35865d7'
+         '75c6551c724658beb349897c2e39413a'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '38c1fd4a1f303f1f6c38e7f082727e2f'
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '263725f20c0b9eb9c353040792d644e5'
+         '4cd79aa147825837dc8bc9f6b736c0a0'
+         'bb7fd1aa23016c8057046b84fd4eb528')
