@@ -1,0 +1,15 @@
+pkgbase = php-markdown
+	pkgdesc = Support for the markdown language through a modified port of the discount markdown processor
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://pecl.php.net/package/markdown
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = php
+	backup = etc/php/conf.d/discount.ini
+	source = http://pecl.php.net/get/markdown-1.0.0.tgz
+	md5sums = cc8e4575f63c5809dcb62d146a9d04eb
+
+pkgname = php-markdown
+
