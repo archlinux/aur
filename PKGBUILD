@@ -5,7 +5,7 @@
 
 pkgname=latex-template-springer
 pkgver=201203
-pkgrel=3
+pkgrel=4
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult) and journals (svjour3)"
 arch=('any')
 url="http://www.springer.com/computer/lncs?SGWID=0-164-7-72376-0"
@@ -54,5 +54,5 @@ build() {
 
 md5sums=('b520710dd75773dd8bfbaea214386559'
          '9d5bf25a905806ed4297138062afaf71'
-         'dd75af3f4bc865cd0e33b20d186699a8'
+         'f17923388e06a268f214ecb59a65747d'
          'c020d70fa6ce887d9a3b70d72c518c85')
