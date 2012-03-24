@@ -1,0 +1,35 @@
+post_install() {
+  cd /opt/addon-sdk-git
+  . bin/activate
+  DISPLAY= cfx docs
+  deactivate
+
+  /bin/cat <<EOF
+Tip: you should add this alias in your bash or zsh rc, to easily activate
+the Addon SDK:
+    alias addon-sdk="cd /opt/addon-sdk-git && source bin/activate; cd -"
+EOF
+}
+
+post_upgrade() {
+  cd /opt/addon-sdk-git
+  . bin/activate
+  DISPLAY= cfx docs
+  deactivate
+
+  /bin/cat <<EOF
+Tip: you should add this alias in your bash or zsh rc, to easily activate
+the Addon SDK:
+    alias addon-sdk="cd /opt/addon-sdk-git && source bin/activate; cd -"
+EOF
+}
+
+pre_remove() {
+  cd /opt/addon-sdk-git/python-lib
+  rm -f *.pyc */*.pyc cuddlefish/docs/*.pyc
+  cd /opt/addon-sdk-git/doc
+  rm -f index.html status.md5
+  rm -rf dev-guide packages
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

@@ -1,0 +1,16 @@
+pkgbase = addon-sdk-git
+	pkgdesc = addon-sdk/jetpack development (master) branch
+	pkgver = 20120324
+	pkgrel = 1
+	url = http://blog.mozilla.com/addons/
+	install = addon-sdk.install
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = python2
+	optdepends = firefox
+	optdepends = firefox-nightly
+	md5sums = 8b73ef94708c5a3729636e662b6e0fd0
+
+pkgname = addon-sdk-git
+
