@@ -1,0 +1,14 @@
+pkgbase = lio-snmp
+	pkgdesc = snmp module for LIO Target and iSCSI
+	pkgver = 4.1
+	pkgrel = 1
+	url = http://linux-iscsi.org/wiki/Lio-utils
+	install = lio-snmp.install
+	arch = i386
+	arch = x86_64
+	license = GPL2
+	depends = net-snmp
+	depends = lio-utils
+
+pkgname = lio-snmp
+

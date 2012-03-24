@@ -1,0 +1,9 @@
+post_install() {
+  /usr/sbin/lio_setup_snmpd install
+}
+
+pre_remove() {
+  /usr/sbin/lio_setup_snmpd uninstall
+}
+
+# vim:set ts=2 sw=2 et:
