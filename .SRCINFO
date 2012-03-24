@@ -1,0 +1,17 @@
+pkgbase = lio-utils
+	pkgdesc = a simple low-level configuration tool set for LIO (Target and iSCSI)
+	pkgver = 4.1
+	pkgrel = 7
+	url = http://linux-iscsi.org/wiki/Lio-utils
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	conflicts = targetcli-fb
+	backup = etc/target/tcm_start.sh
+	backup = etc/target/lio_start.sh
+	source = rc-arch.patch
+	md5sums = 1afad3e324d0bdde01d0383b482fac5f
+
+pkgname = lio-utils
+
