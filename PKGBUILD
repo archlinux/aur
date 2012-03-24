@@ -4,12 +4,12 @@
 
 pkgname=gpgme
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A C wrapper library for GnuPG"
 arch=('i686' 'x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
 license=('GPL')
-depends=('libgpg-error' 'pth' 'gnupg')
+depends=('libgpg-error' 'pth' 'gnupg>=2')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
 source=(ftp://ftp.gnupg.org/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2{,.sig})
