@@ -26,8 +26,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
         'i915-gpu-finish.patch'
         'ext4-options.patch')
 md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'bc76907bcce23d0ed5c00770537c7b28'
-         '9e2fd1e2971be242ca5527bea062fb29'
+         '212f78ea8702c42fa86e282ab6a70a69'
+         'e9b1fac2ac5449816e085661a16387e6'
          'eb14dcfd80c00852ef81ded6e826826a'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
@@ -182,7 +182,7 @@ package_linux-headers() {
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include"
 
   for i in acpi asm-generic config crypto drm generated linux math-emu \
-    media net pcmcia scsi sound trace video xen; do
+    media mtd net pcmcia scsi sound trace video xen; do
     cp -a include/${i} "${pkgdir}/usr/src/linux-${_kernver}/include/"
   done
 
@@ -307,66 +307,3 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'b77595dd2dac4735507dd2bb50f54b95'
-         '81916f6067beb40185170449f9a25f2f'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'b77595dd2dac4735507dd2bb50f54b95'
-         'd142596bd1bd65d12b1195e32d567a09'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'b77595dd2dac4735507dd2bb50f54b95'
-         '57a2d30d7ef8032312a85501fe979629'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'fa5c61c4c8e904698bb0c5d42fc45608'
-         '2e950f25c8992369cacfd9f2c873bf87'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         '97358657b9b55c39607fd610aa1d69c5'
-         '2e950f25c8992369cacfd9f2c873bf87'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         '2a71fcbd91ac2c41864540e0ef627cc0'
-         'e7ea14f381b1bacddbf6edbf9119373c'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         '2a71fcbd91ac2c41864540e0ef627cc0'
-         'c4d354d6fc0b2576435fa3fde01e1522'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '38c1fd4a1f303f1f6c38e7f082727e2f'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '4cd79aa147825837dc8bc9f6b736c0a0'
-         'bb7fd1aa23016c8057046b84fd4eb528')
