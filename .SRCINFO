@@ -1,0 +1,13 @@
+pkgbase = python2-configshell
+	pkgdesc = python framework for building simple CLI-based applications
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://www.risingtidesystems.com/git/?p=configshell.git;a=summary
+	arch = any
+	license = AGPL3
+	depends = python2-simpleparse
+	depends = python2-urwid
+	depends = epydoc
+
+pkgname = python2-configshell
+
