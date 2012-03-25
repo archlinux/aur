@@ -1,7 +1,7 @@
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=fped-git
-pkgver=20120118
+pkgver=20120325
 pkgrel=1
 pkgdesc="Footprint Editor for KiCad used by Qi Hardware developers"
 arch=('i686' 'x86_64')
@@ -49,10 +49,8 @@ package() {
   cd "$srcdir/$_gitname-build"
   make  PREFIX=$pkgdir/usr install
 
-  mkdir -p ${pkgdir}/usr/share/applications/
-  install -m644 ${srcdir}/fped.desktop ${pkgdir}/usr/share/applications/fped.desktop
-  mkdir -p ${pkgdir}/usr/share/pixmaps/
-  install -m644 ${srcdir}/fped.png ${pkgdir}/usr/share/pixmaps/fped.png
+  install -Dm644 ${srcdir}/fped.desktop ${pkgdir}/usr/share/applications/fped.desktop
+  install -Dm644 ${srcdir}/fped.png ${pkgdir}/usr/share/pixmaps/fped.png
 
 }
 
