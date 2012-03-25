@@ -13,15 +13,15 @@ and http://www.rodsbooks.com/efi-bootloaders/efistub.html
 Eg:- Kernel file [UEFISYS]/efi/linux_kernels/vmlinuz-linux.efi
      Initramfs file [UEFISYS]/efi/linux_kernels/initramfs-linux.img
      
-     Then copy /boot/efi/efi/arch_refind/linux.conf to [UEFISYS]/efi/linux_kernels/linux.conf ,
+     Then copy /boot/efi/efi/arch_refind/refind_linux.conf to [UEFISYS]/efi/linux_kernels/refind_linux.conf ,
      and modify the kernel parameters according to your requirements.
 
-In any case "boot/efi/efi/arch_refind/linux.conf" is always backed-up (pacnew or pacsave).
+In any case "boot/efi/efi/arch_refind/refind_linux.conf" is always backed-up (pacnew or pacsave).
 
 NOTE: rEFInd requires the kernel file(s) to be present as [UEFISYS]/efi/[SOME_DIRECTORY]/[FILENAME].efi
       and the initramfs file in the same directory, for autodetection to work.
 
-NOTE: linux.conf should be in the same directory as the kernel file(s), not the directory where refind.efi or refindx64.efi resides.
+NOTE: refind_linux.conf should be in the same directory as the kernel file(s), not the directory where refind.efi or refindx64.efi resides.
 
 EOF
 	

@@ -18,13 +18,13 @@ depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 backup=('boot/efi/efi/arch_refind/refind.conf'
-        'boot/efi/efi/arch_refind/linux.conf')
+        'boot/efi/efi/arch_refind/refind_linux.conf')
 
 options=('!strip' 'docs')
 install="${_pkgname}.install"
 
 source=("http://downloads.sourceforge.net/refind/refind-src-${pkgver}.zip"
-        'linux.conf')
+        'refind_linux.conf')
 
 sha256sums=('45071370d083f3eb46add92c45463d42e444d07d85e320bb675bae04d1ccb0e6'
             '9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f')
@@ -37,6 +37,9 @@ build() {
 	fi
 	
 	cd "${srcdir}/refind-${pkgver}/"
+	
+	## rename linux.conf to refind_linux.conf
+	sed 's|linux.conf|refind_linux.conf|g' -i "${srcdir}/refind-${pkgver}/refind/config.c"
 	
 	make
 	
@@ -64,7 +67,12 @@ package() {
 	install -D -m0644 "${srcdir}/refind-${pkgver}/docs/refind"/* "${pkgdir}/usr/share/refind/docs/html/"
 	install -D -m0644 "${srcdir}/refind-${pkgver}/docs/Styles"/* "${pkgdir}/usr/share/refind/docs/Styles/"
 	install -D -m0644 "${srcdir}/refind-${pkgver}/README.txt" "${pkgdir}/usr/share/refind/docs/README.txt"
+	install -D -m0644 "${srcdir}/refind-${pkgver}/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS.txt"
 	rm -f "${pkgdir}/usr/share/refind/docs/html/.DS_Store" || true
+	
+	## rename linux.conf to refind_linux.conf
+	sed 's|linux.conf|refind_linux.conf|g' -i "${pkgdir}/usr/share/refind/docs/html"/*.html
+	sed 's|linux.conf|refind_linux.conf|g' -i "${pkgdir}/usr/share/refind/docs"/*.txt
 	
 	## install the rEFIt license file, since rEFInd is a fork of rEFIt
 	install -d "${pkgdir}/usr/share/licenses/refind-x86_64/"
