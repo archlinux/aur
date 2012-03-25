@@ -7,7 +7,7 @@ _pkgname="${_actualname}-x86_64"
 pkgname="${_pkgname}"
 
 pkgver="0.2.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager"
 url="http://www.rodsbooks.com/refind/index.html"
 arch=('any')
@@ -21,12 +21,13 @@ backup=('boot/efi/efi/arch_refind/refind.conf'
         'boot/efi/efi/arch_refind/linux.conf')
 
 options=('!strip' 'docs')
+install="${_pkgname}.install"
 
 source=("http://downloads.sourceforge.net/refind/refind-src-${pkgver}.zip"
         'linux.conf')
 
 sha256sums=('45071370d083f3eb46add92c45463d42e444d07d85e320bb675bae04d1ccb0e6'
-            '7ca14bd8cca670201ce3f5e9bb5d1a8610a9d8f05c2260eb29aaad08e652e5c8')
+            '9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f')
 
 build() {
 	

@@ -1,8 +1,9 @@
 pkgbase = refind-x86_64
 	pkgdesc = Rod Smith's fork of rEFIt (U)EFI Boot Manager
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rodsbooks.com/refind/index.html
+	install = refind-x86_64.install
 	arch = any
 	license = GPL3
 	license = custom
@@ -17,7 +18,7 @@ pkgbase = refind-x86_64
 	source = http://downloads.sourceforge.net/refind/refind-src-0.2.2.zip
 	source = linux.conf
 	sha256sums = 45071370d083f3eb46add92c45463d42e444d07d85e320bb675bae04d1ccb0e6
-	sha256sums = 7ca14bd8cca670201ce3f5e9bb5d1a8610a9d8f05c2260eb29aaad08e652e5c8
+	sha256sums = 9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f
 
 pkgname = refind-x86_64
 
