@@ -1,23 +1,22 @@
 pkgbase=linux
 pkgname=linux-linode
 _kernelname=${pkgname#linux}
-_basekernel=3.2
-pkgver=${_basekernel}.11
+_basekernel=3.3
+pkgver=${_basekernel}
 pkgrel=1
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
-md5sums=('364066fa18767ec0ae5f4e4abcf9dc51'
-         '39b3efb92f23130c3fd9c3cbdcd9ecb1'
-         'd44738cf084b5d58e6fc8b8a78127ad3'
+md5sums=('7133f5a2086a7d7ef97abac610c094f5'
+         '17cb4a818ff04d88fc7ec759afc963f5'
 			'7fc8bdda8379469552523e9296dc3799'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
@@ -31,7 +30,7 @@ install=${pkgname}.install
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   cp "${srcdir}/config.x86_64" ./.config
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
