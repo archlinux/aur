@@ -55,7 +55,7 @@ package() {
 	
 	## install the rEFInd config file
 	install -D -m0644 "${srcdir}/refind-${pkgver}/refind.conf-sample" "${pkgdir}/boot/efi/efi/arch_refind/refind.conf"
-	install -D -m0644 "${srcdir}/linux.conf" "${pkgdir}/boot/efi/efi/arch_refind/linux.conf"
+	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/boot/efi/efi/arch_refind/refind_linux.conf"
 	
 	## install the rEFInd icons
 	install -d "${pkgdir}/boot/efi/efi/arch_refind/icons/"
