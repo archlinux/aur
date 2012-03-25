@@ -30,10 +30,8 @@ build() {
   ln -sf /opt/dsassistant/SynologyAssistant/SynologyAssistant ${pkgdir}/usr/bin/SynologyAssistant
   ln -sf /opt/dsassistant/SynologyAssistant/SynologyAssistant ${pkgdir}/usr/bin/dsassistant
 
-  mkdir -p ${pkgdir}/usr/share/applications/
-  install -m644 ${srcdir}/SynologyAssistant.desktop ${pkgdir}/usr/share/applications/SynologyAssistant.desktop
-  mkdir -p ${pkgdir}/usr/share/pixmaps/
-  install -m644 ${srcdir}/dsassistant.png ${pkgdir}/usr/share/pixmaps/dsassistant.png
+  install -Dm644 ${srcdir}/SynologyAssistant.desktop ${pkgdir}/usr/share/applications/SynologyAssistant.desktop
+  install -Dm644 ${srcdir}/dsassistant.png ${pkgdir}/usr/share/pixmaps/dsassistant.png
 
   msg2 "Run it by 'SynologyAssistant' or 'dsassistant' when installed"
 }
