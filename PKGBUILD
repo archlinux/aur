@@ -3,7 +3,7 @@ pkgname=linux-linode
 _kernelname=${pkgname#linux}
 _basekernel=3.3
 pkgver=${_basekernel}
-pkgrel=1
+pkgrel=3
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -17,7 +17,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
         'change-default-console-loglevel.patch')
 md5sums=('7133f5a2086a7d7ef97abac610c094f5'
          '17cb4a818ff04d88fc7ec759afc963f5'
-			'7fc8bdda8379469552523e9296dc3799'
+         '4c45d442db6239f0b3d0008c0a17c76c'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="The Linux Kernel and modules"

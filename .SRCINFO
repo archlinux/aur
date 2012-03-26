@@ -1,7 +1,7 @@
 pkgbase = linux
 	pkgdesc = The Linux Kernel and modules
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.kernel.org/
 	install = linux-linode.install
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = linux
 	source = change-default-console-loglevel.patch
 	md5sums = 7133f5a2086a7d7ef97abac610c094f5
 	md5sums = 17cb4a818ff04d88fc7ec759afc963f5
-	md5sums = 7fc8bdda8379469552523e9296dc3799
+	md5sums = 4c45d442db6239f0b3d0008c0a17c76c
 	md5sums = ee66f3cd0c5bc0ba0f65499784d19f30
 	md5sums = 9d3c56a4b999c8bfbd4018089a62f662
 
