@@ -13,7 +13,7 @@ url="http://www.rodsbooks.com/refind/index.html"
 arch=('any')
 license=('GPL3' 'custom')
 
-makedepends=('gnu-efi')
+makedepends=('git' 'gnu-efi')
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
