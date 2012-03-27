@@ -6,7 +6,7 @@ _actualname="refind"
 _pkgname="${_actualname}-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver="20120326"
+pkgver="20120327"
 pkgrel="1"
 pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -102,10 +102,6 @@ package() {
 	install -D -m0644 "${srcdir}/${_gitname}_build/README.txt" "${pkgdir}/usr/share/refind/docs/README.txt"
 	install -D -m0644 "${srcdir}/${_gitname}_build/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS.txt"
 	rm -f "${pkgdir}/usr/share/refind/docs/html/.DS_Store" || true
-	
-	## rename linux.conf to refind_linux.conf
-	sed 's|linux.conf|refind_linux.conf|g' -i "${pkgdir}/usr/share/refind/docs/html"/*.html
-	sed 's|linux.conf|refind_linux.conf|g' -i "${pkgdir}/usr/share/refind/docs"/*.txt
 	
 	## install the rEFIt license file, since rEFInd is a fork of rEFIt
 	install -d "${pkgdir}/usr/share/licenses/refind/"
