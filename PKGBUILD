@@ -6,29 +6,29 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'python2' 'hicolor-icon-theme' 'gstreamer0.10'
-             'farsight2' 'avahi' 'tk' 'ca-certificates' 'intltool'
+             'farstream' 'avahi' 'tk' 'ca-certificates' 'intltool'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        port-to-farstream-v2.patch)
+        port-to-farstream-v3.patch)
 sha256sums=('0f67d96231fea3945c2735e6a3b4bd92590ef489fa1511fa69aa6a543cb4168b'
-            '03ba48e0da1331a976efc28a66810be4f51599a2b8065ac449965e0aefca4482')
+            '4c11c10da01855afe865408f29f514672b736830105523fe48aa74676d5052ca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Apply patch for farsight -> farstream transition
   # http://developer.pidgin.im/ticket/14936
-  #patch -Np1 -i "$srcdir/port-to-farstream-v2.patch"
+  patch -Np1 -i "$srcdir/port-to-farstream-v3.patch"
 
   # The farstream patch changes configure.ac
-  #autoreconf -vi
+  autoreconf -vi
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
@@ -76,7 +76,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farsight2' 'libsasl' 'libidn' 'dbus-glib' 'nss')
+  depends=('farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'dbus-python: for purple-remote and purple-url-handler')
 

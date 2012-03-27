@@ -299,7 +299,7 @@ diff -upr pidgin-2.10.1.orig/libpurple/media/backend-fs2.c pidgin-2.10.1/libpurp
  
 +	if (g_object_class_find_property(G_OBJECT_GET_CLASS(participant),
 +					 "cname")) {
-+	  g_object_set(participant, "cname", &name, NULL);
++	  g_object_set(participant, "cname", name, NULL);
 +	}
 +
 +
