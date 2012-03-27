@@ -1,0 +1,22 @@
+pkgbase = zenbound2
+	pkgdesc = Puzzle game of wrapping rope around wooden sculptures (Humble Android 2 Bundle)
+	pkgver = 20120325
+	pkgrel = 1
+	url = http://zenbound.com/
+	arch = i686
+	arch = x86_64
+	groups = humbleandroid2bundle
+	groups = humblebundles
+	license = custom: "proprietary"
+	depends = bash
+	depends = libvorbis
+	depends = libxinerama
+	depends = libxft
+	depends = openal
+	depends = sdl
+	depends = mesa
+	depends = gcc-libs
+	options = !strip
+
+pkgname = zenbound2
+
