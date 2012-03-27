@@ -4,7 +4,7 @@
 # Contributor: Pardi Tommaso <homer.j.simson.bis at gmail dot com>
 
 pkgname=evilvte
-pkgver=0.5.1~pre2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='VTE based, highly customizable terminal emulator'
 arch=('i686' 'x86_64')
@@ -41,4 +41,4 @@ package(){
     cd ${srcdir}/evilvte-${pkgver}
     make DESTDIR=${pkgdir} install
 }
-sha1sums=('e48eb96d24dd5c5ab315c7b489684a7ec7ef0422')
+sha1sums=('3ceef90d835b291b7ec994746231da7d047ed1fb')
