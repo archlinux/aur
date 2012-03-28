@@ -2,7 +2,7 @@
 #Maintainer: Jan De Groot <jgc@archlinux.org>
 
 pkgname=libgnome-keyring
-pkgver=3.3.92
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="GNOME keyring client library"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=('intltool' 'gobject-introspection')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('a7afee6e76318b965b8f105ebe633f5678868d9dbd2d6a8af67e80db0f00b2c9')
+sha256sums=('60cc0728fd9c1c10c62b05abec24037ca616931e167b658ed78ec93ede2d3f7a')
 
 build() {
   cd "$pkgname-$pkgver"
