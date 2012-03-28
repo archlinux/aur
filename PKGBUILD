@@ -1,17 +1,16 @@
 
 # Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
 pkgname=openmw-git
-pkgver=20120306
+pkgver=20120328
 pkgrel=1
 pkgdesc="OpenMW is a open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3')
 
-depends=('openal' 'ogre-1.7.2' 'bullet-svn' 'ffmpeg' 'mpg123' 'libsndfile' 'qt')
+depends=('openal' 'ogre' 'mygui' 'bullet-svn' 'mpg123' 'libsndfile' 'qt')
 
 makedepends=('git' 'cmake' 'boost')
-install=$pkgname.install
 conflicts=('openmw')
 
 _gitroot="git://github.com/zinnschlag/openmw.git"
@@ -28,7 +27,6 @@ build() {
     cd "$srcdir"
     git clone "$_gitroot" "$_gitname"
     cd "$_gitname"
-    git submodule update --init
   fi
 
   msg "GIT checkout done or server timeout"
@@ -54,7 +52,7 @@ build() {
   install -d -m755 "$pkgdir"/etc/openmw
   install -m644 openmw.cfg.install "$pkgdir"/etc/openmw/openmw.cfg
   install -m644 plugins.cfg "$pkgdir"/etc/openmw/
-  install -m644 launcher.cfg "$pkgdir"/etc/openmw/
+  install -m644 files/launcher.cfg "$pkgdir"/etc/openmw/
 
   # Desktop file and icon
   install -d -m755  "$pkgdir"/usr/share/applications
