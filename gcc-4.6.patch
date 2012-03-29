@@ -20,17 +20,6 @@ diff -u -r gpu/command_buffer/common/types.h gpu/command_buffer/common/types.h
  
  typedef signed char         schar;
  typedef signed char         int8;
-diff -u -r ppapi/cpp/paint_aggregator.h ppapi/cpp/paint_aggregator.h
---- ppapi/cpp/paint_aggregator.h	2011-04-13 13:22:58.000000000 +0400
-+++ ppapi/cpp/paint_aggregator.h	2011-04-20 20:11:44.000000000 +0400
-@@ -9,6 +9,7 @@
- 
- #include "ppapi/cpp/point.h"
- #include "ppapi/cpp/rect.h"
-+#include <cstddef>
- 
- namespace pp {
- 
 diff -u -r third_party/ots/src/os2.cc third_party/ots/src/os2.cc
 --- third_party/ots/src/os2.cc	2011-04-13 13:24:06.000000000 +0400
 +++ third_party/ots/src/os2.cc	2011-04-20 19:45:44.000000000 +0400

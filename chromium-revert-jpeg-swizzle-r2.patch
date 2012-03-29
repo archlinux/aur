@@ -1,0 +1,61 @@
+This reverts http://trac.webkit.org/changeset/101286
+to fix Gentoo bug https://bugs.gentoo.org/show_bug.cgi?id=393471
+
+Index: third_party/WebKit/Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp
+===================================================================
+--- third_party/WebKit/Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp	(revision 96970)
++++ third_party/WebKit/Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp	(revision 101286)
+@@ -67,24 +67,6 @@
+ 
+ #include <setjmp.h>
+ 
+-#if CPU(BIG_ENDIAN) || CPU(MIDDLE_ENDIAN)
+-#define ASSUME_LITTLE_ENDIAN 0
+-#else
+-#define ASSUME_LITTLE_ENDIAN 1
+-#endif
+-
+-#if defined(JCS_ALPHA_EXTENSIONS) && ASSUME_LITTLE_ENDIAN
+-#define TURBO_JPEG_RGB_SWIZZLE
+-#if USE(SKIA) && (!SK_R32_SHIFT && SK_G32_SHIFT == 8 && SK_B32_SHIFT == 16)
+-inline J_COLOR_SPACE rgbOutputColorSpace() { return JCS_EXT_RGBA; }
+-#else
+-inline J_COLOR_SPACE rgbOutputColorSpace() { return JCS_EXT_BGRA; }
+-#endif
+-inline bool turboSwizzled(J_COLOR_SPACE colorSpace) { return colorSpace == rgbOutputColorSpace(); }
+-#else
+-inline J_COLOR_SPACE rgbOutputColorSpace() { return JCS_RGB; }
+-#endif
+-
+ namespace WebCore {
+ 
+ struct decoder_error_mgr {
+@@ -270,7 +252,7 @@
+             case JCS_RGB:
+             case JCS_YCbCr:
+                 // libjpeg can convert GRAYSCALE and YCbCr image pixels to RGB.
+-                m_info.out_color_space = rgbOutputColorSpace();
++                m_info.out_color_space = JCS_RGB;
+                 break;
+             case JCS_CMYK:
+             case JCS_YCCK:
+@@ -525,19 +507,6 @@
+     }
+ 
+     jpeg_decompress_struct* info = m_reader->info();
+-
+-#if !ENABLE(IMAGE_DECODER_DOWN_SAMPLING) && defined(TURBO_JPEG_RGB_SWIZZLE)
+-    if (turboSwizzled(info->out_color_space)) {
+-         ASSERT(!m_scaled);
+-         while (info->output_scanline < info->output_height) {
+-             unsigned char* row = reinterpret_cast<unsigned char*>(buffer.getAddr(0, info->output_scanline));
+-             if (jpeg_read_scanlines(info, &row, 1) != 1)
+-                  return false;
+-         }
+-         return true;
+-     }
+-#endif
+-
+     JSAMPARRAY samples = m_reader->samples();
+ 
+     while (info->output_scanline < info->output_height) {

@@ -8,7 +8,7 @@
 # build time.
 
 pkgname=chromium
-pkgver=17.0.963.83
+pkgver=18.0.1025.142
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -30,15 +30,15 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.desktop
         chromium.sh
         gcc-4.6.patch
-        nacl-cflags-remove-fstack-protector.patch
-        chromium-media-no-sse-r0.patch)
-sha256sums=('fa1f684c3605b70243e337a98c4bf6e227da268cb0b8e2ebd42b6fccb798d93f'
-            '964fe3a5ec56f2505649aba00f900abe4205674b7fdaa16772647d347173bb01'
+        chromium-media-no-sse-r0.patch
+        chromium-revert-jpeg-swizzle-r2.patch)
+sha256sums=('911a4ee2e30ed617c4148c84dcddfd1affa4b2fc02dc5e95ac4a4afeeda24b1d'
+            '8cf762587e547588b9461686f7d2655d5a23d09e1260b5f97137fa7d41c767a9'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
-            '9c5e0803904d1a0e71ab7444c92a7046a34a9518eeba7a70f2eec7abecb8bf4e'
-            '59e732880314333d6e9acf6ac99de467c98e8a92aa5c5292ae808a805e0f8d76'
-            '71751bf5913da1eec3c88c433044224c869b0abd5a29172cf239bddbb4eff761')
+            '50268dafd436813f846ea174d19c447c64d198c3937bd56910d87c5206306977'
+            '71751bf5913da1eec3c88c433044224c869b0abd5a29172cf239bddbb4eff761'
+            'd99162aa6bae562f116a42347254bbec3752464f0a3e4d8675e2b287b2a838a2')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
@@ -47,13 +47,11 @@ build() {
   # http://code.google.com/p/chromium/issues/detail?id=80071
   patch -Np0 -i "$srcdir/gcc-4.6.patch"
 
-  # Filter -fstack-protector out of cflags for nacl_helper_bootstrap
-  # http://code.google.com/p/chromium/issues/detail?id=104569
-  patch -d native_client -Np1 -i \
-    "$srcdir/nacl-cflags-remove-fstack-protector.patch"
-
   # Remove unconditional use of SSE3 (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-media-no-sse-r0.patch"
+
+  # Fix JPEG image rendering problem (patch from Gentoo bug #393471)
+  patch -Np0 -i "$srcdir/chromium-revert-jpeg-swizzle-r2.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -66,10 +64,10 @@ build() {
   export PATH="$srcdir/python2-path:$PATH"
 
   pushd "$srcdir/nacl_sdk"
-  ./naclsdk update pepper_16
+  ./naclsdk update pepper_18
   popd
 
-  ln -s "$srcdir/nacl_sdk/pepper_16/toolchain/linux_x86_newlib" \
+  ln -s "$srcdir/nacl_sdk/pepper_18/toolchain/linux_x86_newlib" \
     native_client/toolchain/linux_x86_newlib
 
   # We need to disable system_ssl until "next protocol negotiation" support is
@@ -90,7 +88,7 @@ build() {
     -Duse_system_bzip2=1 \
     -Duse_system_ffmpeg=0 \
     -Duse_system_libevent=1 \
-    -Duse_system_libjpeg=0 \
+    -Duse_system_libjpeg=1 \
     -Duse_system_libpng=1 \
     -Duse_system_libxml=0 \
     -Duse_system_ssl=0 \
