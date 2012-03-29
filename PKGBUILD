@@ -1,7 +1,7 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
-pkgver=1.5.4
-pkgrel=5
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
@@ -11,7 +11,7 @@ makedepends=('inetutils')
 options=(!libtool)
 source=(http://www.open-mpi.org/software/ompi/v1.5/downloads/${pkgname}-${pkgver}.tar.bz2
         openmpi-1.5.4-fix-fakeroot-execution.patch)
-sha1sums=('81f7736a83b2134ba20c2e5c380b4d267cfd9d9c'
+sha1sums=('206e555f6d376443f2342f721d944e67dd1a04ef'
           'ec46abb6f9e01daca910e4079b9abc036db9ed20')
 
 build() {
@@ -32,7 +32,7 @@ build() {
                --enable-debug \
                --enable-pretty-print-stacktrace \
                --without-slurm \
-               --with-hwloc=external \
+               --with-hwloc=/usr \
                --with-libltdl=/usr \
                FC=/usr/bin/gfortran \
                LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
