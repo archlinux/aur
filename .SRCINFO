@@ -9,7 +9,7 @@ pkgbase = wings3d
 	license = GPL
 	makedepends = setconf
 	makedepends = gendesk
-	depends = esdl
+	depends = esdl>=1.2-2
 	optdepends = povray: rendering support via POV-Ray
 	optdepends = kerkythea: rendering support via Kerkythea
 	replaces = wings
