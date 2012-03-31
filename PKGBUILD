@@ -4,8 +4,8 @@
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.0
-pkgrel=8
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -20,7 +20,7 @@ makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'libcaca' 'librsvg' 'portaudio' 'oss' 'libgme' 'xosd'
              'projectm' 'twolame' 'aalib' 'libmtp' 'libdvdcss'
              'gnome-vfs' 'libgoom2' 'libtar' 'vcdimager'
-			 'decklink-sdk')
+             'decklink-sdk')
 optdepends=('avahi: for service discovery using bonjour protocol'
             'libnotify: for notification plugin'
             'ncurses: for ncurses interface support'
@@ -55,10 +55,8 @@ backup=('usr/share/vlc/lua/http/.hosts'
         'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!libtool' '!emptydirs')
 install=vlc.install
-source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        'access_smb_link_to_smbclient.patch')
-md5sums=('8806bff2ea9c76791123d444a92f708c'
-         '5f510fdea99cdb7941423eb40045968a')
+source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
+md5sums=('5ad114755670e4881a2b35354e2f79bc')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -68,9 +66,6 @@ build() {
   ln -sf /usr/src/decklink-sdk decklink-sdk/include
 
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
-
-  patch -Np1 -i "${srcdir}/access_smb_link_to_smbclient.patch"
-  autoreconf -fi
 
   ./configure --prefix=/usr \
               --disable-rpath \
