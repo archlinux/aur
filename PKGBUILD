@@ -10,17 +10,17 @@ pkgdesc="3D modeling program"
 arch=('x86_64' 'i686')
 url="http://www.wings3d.com/"
 license=('GPL')
-depends=('esdl>=1.0.1')
+depends=('esdl')
 optdepends=('povray: rendering support via POV-Ray'
             'kerkythea: rendering support via Kerkythea')
 replaces=('wings' 'wings-devel')
-install=wings3d.install
-source=(http://downloads.sourceforge.net/wings/${_pkgname}-${pkgver}.tar.bz2
-        wings3d wings3d.png wings3d.install)
-md5sums=('f62a06acdbf2d4ef09ce2bf55e8cec0f'
-         '62fd2b01d06b88b64d6ea4f043c6cc48'
-         '150ee5b1b9b44e20862210c9b01e53f4'
-         'fe97a01e5f683b08eb8079120117d94e')
+install=$pkgname.install
+source=("http://downloads.sourceforge.net/wings/$_pkgname-$pkgver.tar.bz2"
+        "$pkgname"
+        "$pkgname.png")
+sha256sums=('51aea431e18935e5634ea673caa945f586db2203855554d8dcab5e9545f2789a'
+            '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e'
+            'ad49fded5e503131ee0e2e03a6db0974aa60f50e1ec6cd697fcacef126c40f52')
 _genericname=('3D Modeler')
 
 build() {

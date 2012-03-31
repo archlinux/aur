@@ -1,23 +1,14 @@
-post_install() {
-  echo "update desktop mime database..."
-  update-desktop-database
-}
-
 post_upgrade() {
-  echo "update desktop mime database..."
-  update-desktop-database
+  #gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
+  update-desktop-database -q
 }
 
-pre_remove() {
-  /bin/true
+post_install() {
+  post_upgrade
 }
 
 post_remove() {
-  echo "update desktop mime database..."
-  update-desktop-database
+  post_upgrade
 }
 
-op=$1
-shift
-
-$op "$@"
+# vim:set ts=2 sw=2 et:
