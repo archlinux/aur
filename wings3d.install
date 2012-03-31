@@ -1,0 +1,23 @@
+post_install() {
+  echo "update desktop mime database..."
+  update-desktop-database
+}
+
+post_upgrade() {
+  echo "update desktop mime database..."
+  update-desktop-database
+}
+
+pre_remove() {
+  /bin/true
+}
+
+post_remove() {
+  echo "update desktop mime database..."
+  update-desktop-database
+}
+
+op=$1
+shift
+
+$op "$@"
