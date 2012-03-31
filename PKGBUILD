@@ -11,6 +11,7 @@ arch=('x86_64' 'i686')
 url="http://www.wings3d.com/"
 license=('GPL')
 depends=('esdl')
+makedepends=('setconf' 'gendesk')
 optdepends=('povray: rendering support via POV-Ray'
             'kerkythea: rendering support via Kerkythea')
 replaces=('wings' 'wings-devel')
@@ -26,6 +27,7 @@ _genericname=('3D Modeler')
 build() {
   cd "$srcdir"
   gendesk
+  setconf "$pkgname.desktop" Categories "Graphics;3DGraphics;"
 
   cd "$_pkgname-$pkgver"
   export ESDL_PATH=$(echo /usr/lib/erlang/lib/esdl-*)
