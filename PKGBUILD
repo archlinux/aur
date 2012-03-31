@@ -1,15 +1,14 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=openocd-git-libftdi
-pkgver=20120126
+pkgver=20120331
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices -using libftdi instead of ftd2xx"
 arch=('i686' 'x86_64')
 url="http://openocd.berlios.de/web/"
 license=('GPL')
 depends=('libftdi')
-#makedepends=('git' 'automake>=1.9' 'tcl')
-makedepends=('git' 'automake1.10' 'tcl') # This is a temporary hax, see further down
+makedepends=('git' 'automake>=1.11' 'tcl')
 provides=('openocd')
 conflicts=('openocd')
 source=()
@@ -33,24 +32,9 @@ build() {
   msg "GIT checkout done or server timeout"
 
   #
-  # Build Jim Tcl
-  #
-
-  git submodule init
-  git submodule update
-  cd jimtcl
-  ./configure --prefix=/usr --with-jim-ext=nvp
-  make
-  make DESTDIR=${pkgdir}/ install
-  
-  #
   # Build OpenOCD
 	#
   cd $srcdir/$pkgname-$pkgver
-
-	# This is the hax that makes it build, since automake 1.11.2 is not working properly
-	sed -i s/^aclocal/aclocal-1.10/g bootstrap
-	sed -i s/^automake/automake-1.10/g bootstrap
 
   ./bootstrap
   ./configure \
@@ -73,7 +57,8 @@ build() {
 	--enable-arm-jtag-ew \
 	--enable-buspirate \
 	--enable-usb_flaster_libftdi \
-	--enable-stlink
+	--enable-osbdm
+
   make
   make DESTDIR=${pkgdir}/ install 
   rm -rf ${srcdir}/$_gitname-build
