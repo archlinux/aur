@@ -10,7 +10,7 @@ pkgdesc="3D modeling program"
 arch=('x86_64' 'i686')
 url="http://www.wings3d.com/"
 license=('GPL')
-depends=('esdl>=1.2-2')
+depends=('esdl' 'bash')
 makedepends=('setconf' 'gendesk')
 optdepends=('povray: rendering support via POV-Ray'
             'kerkythea: rendering support via Kerkythea')
