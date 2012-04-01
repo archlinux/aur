@@ -51,9 +51,6 @@ package_digikam() {
   make DESTDIR="${pkgdir}" install
   cd "${srcdir}"/build/po
   make DESTDIR="${pkgdir}" install
-
-  # these are in oxygen-icons
-  rm -rf ${pkgdir}/usr/share/icons
 }
 
 package_libkface() {
