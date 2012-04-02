@@ -1,7 +1,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=sqlantaresia-git
-pkgver=20111003
+pkgver=20120402
 pkgrel=1
 pkgdesc="SQL Antaresia is a MySQL administrative tool aimed at developers and sysadmins"
 arch=(any)
@@ -36,7 +36,11 @@ build() {
 	find . -type f -name .gitignore -delete
 
 	sh build.sh
-	python2 setup.py install --root="$pkgdir"
+}
+
+package() {
+	cd "$srcdir/$_gitname-build/"
+	python2 setup.py install -O2 --root="$pkgdir"
 	install -m0644 -D "$srcdir/sqlantaresia.desktop" "$pkgdir/usr/share/applications/sqlantaresia.desktop"
 	install -D LICENSE "$pkgdir/usr/share/licenses/sqlantaresia/COPYING"
 }
