@@ -11,6 +11,7 @@ pkgbase = wings3d
 	makedepends = gendesk
 	depends = esdl
 	depends = bash
+	depends = desktop-file-utils
 	optdepends = povray: rendering support via POV-Ray
 	optdepends = kerkythea: rendering support via Kerkythea
 	replaces = wings
