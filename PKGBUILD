@@ -1,7 +1,7 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 
 pkgname=zenbound2
-pkgver=20120313
+pkgver=20120325
 pkgrel=1
 pkgdesc="Puzzle game of wrapping rope around wooden sculptures (Humble Android 2 Bundle)"
 url="http://zenbound.com/"
@@ -16,10 +16,10 @@ depends=(bash libvorbis libxinerama libxft openal sdl mesa gcc-libs)
 
 if [[ $CARCH == x86_64 ]]; then
   _archive="$pkgname-$pkgver-amd64.tar.gz"
-  _archive_md5="3cd5f8f6f88a7a72c8a3b08f44491d25"
+  _archive_md5="a9de765573750498f7d4e1de749c4122"
 else
   _archive="$pkgname-$pkgver-i386.tar.gz"
-  _archive_md5="0bd563d3c4f8855ccc43e9b1a4701410"
+  _archive_md5="e8ece37f5f5009afdb47633b1903b25e"
 fi
 
 build() {
