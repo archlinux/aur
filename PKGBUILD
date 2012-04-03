@@ -27,7 +27,9 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm644 extras/django_bash_completion \
-    "$pkgdir"/usr/share/bash-completion/completions/django
+    "$pkgdir"/usr/share/bash-completion/completions/django-admin.py
+  ln -s django-admin.py \
+    "$pkgdir"/usr/share/bash-completion/completions/manage.py
 
   find "$pkgdir"/usr/lib/python2.7/site-packages/django/ -name '*.py' | \
     xargs sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|"
