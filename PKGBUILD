@@ -5,15 +5,15 @@
 pkgname=wings3d
 _pkgname=wings
 pkgver=1.4.1
-pkgrel=5
+pkgrel=6
 pkgdesc="3D modeling program"
 arch=('x86_64' 'i686')
 url="http://www.wings3d.com/"
 license=('GPL')
 depends=('esdl' 'bash' 'desktop-file-utils')
 makedepends=('setconf' 'gendesk')
-optdepends=('povray: rendering support via POV-Ray'
-            'kerkythea: rendering support via Kerkythea')
+optdepends=('povray: rendering support via POV-Ray')
+#            'kerkythea: rendering support via Kerkythea'
 replaces=('wings' 'wings-devel')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/wings/$_pkgname-$pkgver.tar.bz2"

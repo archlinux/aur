@@ -1,7 +1,7 @@
 pkgbase = wings3d
 	pkgdesc = 3D modeling program
 	pkgver = 1.4.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.wings3d.com/
 	install = wings3d.install
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = wings3d
 	depends = bash
 	depends = desktop-file-utils
 	optdepends = povray: rendering support via POV-Ray
-	optdepends = kerkythea: rendering support via Kerkythea
 	replaces = wings
 	replaces = wings-devel
 	source = http://downloads.sourceforge.net/wings/wings-1.4.1.tar.bz2
