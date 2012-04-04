@@ -35,8 +35,6 @@ if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
 fi
 
 build() {
-  msg "Starting build..."
-
   if [[ -e ${srcdir}/${_name}-${pkgver}-build ]]; then rm -rf ${srcdir}/${_name}-${pkgver}-build; fi
   mkdir ${srcdir}/${_name}-${pkgver}-build
   cd ${srcdir}/${_name}-${pkgver}-build
