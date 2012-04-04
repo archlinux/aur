@@ -27,7 +27,6 @@ package() {
   fi
 
   msg "GIT checkout done or server timeout"
-  msg "Starting packaging..."
 
   if [[ -e ${srcdir}/${_gitname}-pkg ]]; then rm -rf ${srcdir}/${_gitname}-pkg; fi
   cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}-pkg
