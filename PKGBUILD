@@ -34,10 +34,8 @@ if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
 fi
 
 build(){
-  msg "Starting build..."
-
-  if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mv ${srcdir}/QTweetLib-${pkgver} ${srcdir}/${pkgname}-${pkgver}
+  if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
