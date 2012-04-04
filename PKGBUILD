@@ -40,7 +40,6 @@ build() {
   fi
 
   msg "GIT checkout done or server timeout"
-  msg "Starting build..."
 
   if [[ -e ${srcdir}/${_gitname}-build ]]; then rm -rf ${srcdir}/${_gitname}-build; fi
   mkdir ${srcdir}/${_gitname}-build
