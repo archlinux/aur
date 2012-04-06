@@ -1,0 +1,19 @@
+pkgbase = openrtm-aist-java
+	pkgdesc = Java bindings for OpenRTM-aist
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.openrtm.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = apache-ant
+	depends = java-environment
+	source = http://www.openrtm.org/pub/OpenRTM-aist/java/1.0.0/OpenRTM-aist-Java-1.0.0-RELEASE.tar.gz
+	source = http://www.openrtm.org/pub/OpenRTM-aist/java/1.0.0/OpenRTM-aist-Java-1.0.0-jar.zip
+	source = openrtm-aist.profile
+	md5sums = 5a0fd25eb9ce87d72f0b377b3d24a43a
+	md5sums = b1c538b3baa390a895e90e033e6d0d87
+	md5sums = fca4ed195d35b56ac4172a1027f7eaf0
+
+pkgname = openrtm-aist-java
+
