@@ -1,0 +1,17 @@
+pkgbase = python2-oger
+	pkgdesc = OrGanic Environment for Reservoir computing (Oger) is a Python toolbox for building, training and evaluating modular learning architectures
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://organic.elis.ugent.be/organic/engine
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-matplotlib
+	depends = python2-mdp
+	source = http://organic.elis.ugent.be/sites/organic.elis.ugent.be/files/Oger-1.1.2.tar.gz
+	md5sums = fe02dc000c8ce2a3049f7ec36f70d4cb
+
+pkgname = python2-oger
+
