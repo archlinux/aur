@@ -1,0 +1,217 @@
+diff -Nur RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/core/include/opencv2/core/core.hpp RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/core/include/opencv2/core/core.hpp
+--- RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/core/include/opencv2/core/core.hpp	2011-02-05 01:48:42.000000000 +0100
++++ RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/core/include/opencv2/core/core.hpp	2011-12-27 02:34:39.000000000 +0100
+@@ -56,6 +56,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <complex>
++#include <cstddef>
+ #include <map>
+ #include <new>
+ #include <string>
+diff -Nur RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/features2d/src/matchers.cpp RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/features2d/src/matchers.cpp
+--- RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/features2d/src/matchers.cpp	2011-02-05 01:48:41.000000000 +0100
++++ RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/features2d/src/matchers.cpp	2011-12-27 02:54:45.000000000 +0100
+@@ -42,7 +42,7 @@
+ #include "precomp.hpp"
+ 
+ #ifdef HAVE_EIGEN2
+-#include <Eigen/Array>
++#include <Eigen/Core>
+ #endif
+ 
+ using namespace std;
+diff -Nur RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/highgui/src/cap.cpp RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/highgui/src/cap.cpp
+--- RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/highgui/src/cap.cpp	2011-02-05 01:48:42.000000000 +0100
++++ RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/highgui/src/cap.cpp	2011-12-27 03:00:54.000000000 +0100
+@@ -171,7 +171,7 @@
+             if (capture)
+                 return capture;
+         #endif
+-        #if defined (HAVE_CAMV4L) || defined (HAVE_CAMV4L2)
++        #if defined (HAVE_CAMV4L)
+             capture = cvCreateCameraCapture_V4L (index);
+             if (capture)
+                 return capture;
+diff -Nur RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/highgui/src/cap_ffmpeg.cpp RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/highgui/src/cap_ffmpeg.cpp
+--- RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/highgui/src/cap_ffmpeg.cpp	2011-02-05 01:48:42.000000000 +0100
++++ RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/highgui/src/cap_ffmpeg.cpp	2011-12-27 02:52:46.000000000 +0100
+@@ -466,7 +466,7 @@
+         AVCodecContext *enc = &ic->streams[i]->codec;
+ #endif
+ 
+-        if( CODEC_TYPE_VIDEO == enc->codec_type && video_stream < 0) {
++        if( AVMEDIA_TYPE_VIDEO == enc->codec_type && video_stream < 0) {
+             AVCodec *codec = avcodec_find_decoder(enc->codec_id);
+             if (!codec ||
+             avcodec_open(enc, codec) < 0)
+@@ -550,15 +550,27 @@
+ 		        continue;
+     		}
+ 
+-#if LIBAVFORMAT_BUILD > 4628
+-        avcodec_decode_video(video_st->codec,
+-                             picture, &got_picture,
+-                             packet.data, packet.size);
+-#else
+-        avcodec_decode_video(&video_st->codec,
+-                             picture, &got_picture,
+-                             packet.data, packet.size);
+-#endif
++
++		AVPacket avpkt;
++		av_init_packet(&avpkt);
++		avpkt.data = packet.data;
++		avpkt.size = packet.size;
++		//
++		// HACK for CorePNG to decode as normal PNG by default
++		// same method used by ffmpeg
++		avpkt.flags = AV_PKT_FLAG_KEY;
++		avcodec_decode_video2(video_st->codec,
++                              picture, &got_picture, &avpkt);
++//Functions Removed from ffmpeg on 4/19/11
++//#if LIBAVFORMAT_BUILD > 4628
++//        avcodec_decode_video(video_st->codec,
++//                             picture, &got_picture,
++//                             packet.data, packet.size);
++//#else
++//        avcodec_decode_video(&video_st->codec,
++//                             picture, &got_picture,
++//                             packet.data, packet.size);
++//#endif
+ 
+         if (got_picture) {
+             // we have a new picture, so memorize it
+@@ -803,24 +815,25 @@
+ #endif
+ };
+ 
+-static const char * icvFFMPEGErrStr(int err)
+-{
+-    switch(err) {
+-    case AVERROR_NUMEXPECTED:
+-		return "Incorrect filename syntax";
+-    case AVERROR_INVALIDDATA:
+-		return "Invalid data in header";
+-    case AVERROR_NOFMT:
+-		return "Unknown format";
+-    case AVERROR_IO:
+-		return "I/O error occurred";
+-    case AVERROR_NOMEM:
+-		return "Memory allocation error";
+-    default:
+-		break;
+-    }
+-  	return "Unspecified error";
+-}
++//Deprecated Errors, should be using AVERROR(EINVAL) to return error strings
++//static const char * icvFFMPEGErrStr(int err)
++//{
++//    switch(err) {
++//    case AVERROR_NUMEXPECTED:
++//		return "Incorrect filename syntax";
++//    case AVERROR_INVALIDDATA:
++//		return "Invalid data in header";
++//    case AVERROR_NOFMT:
++//		return "Unknown format";
++//    case AVERROR_IO:
++//		return "I/O error occurred";
++//    case AVERROR_NOMEM:
++//		return "Memory allocation error";
++//    default:
++//		break;
++//    }
++//  	return "Unspecified error";
++//}
+ 
+ /* function internal to FFMPEG (libavformat/riff.c) to lookup codec id by fourcc tag*/
+ extern "C" {
+@@ -899,7 +912,7 @@
+ #endif
+ 
+ #if LIBAVFORMAT_BUILD > 4621
+-	c->codec_id = av_guess_codec(oc->oformat, NULL, oc->filename, NULL, CODEC_TYPE_VIDEO);
++	c->codec_id = av_guess_codec(oc->oformat, NULL, oc->filename, NULL, AVMEDIA_TYPE_VIDEO);
+ #else
+ 	c->codec_id = oc->oformat->video_codec;
+ #endif
+@@ -911,7 +924,7 @@
+     //if(codec_tag) c->codec_tag=codec_tag;
+ 	codec = avcodec_find_encoder(c->codec_id);
+ 
+-	c->codec_type = CODEC_TYPE_VIDEO;
++	c->codec_type = AVMEDIA_TYPE_VIDEO;
+ 
+ 	/* put sample parameters */
+ 	c->bit_rate = bitrate;
+@@ -998,7 +1011,7 @@
+         AVPacket pkt;
+         av_init_packet(&pkt);
+ 
+-        pkt.flags |= PKT_FLAG_KEY;
++        pkt.flags |= AV_PKT_FLAG_KEY;
+         pkt.stream_index= video_st->index;
+         pkt.data= (uint8_t *)picture;
+         pkt.size= sizeof(AVPicture);
+@@ -1018,7 +1031,7 @@
+ 			pkt.pts = c->coded_frame->pts;
+ #endif
+             if(c->coded_frame->key_frame)
+-                pkt.flags |= PKT_FLAG_KEY;
++                pkt.flags |= AV_PKT_FLAG_KEY;
+             pkt.stream_index= video_st->index;
+             pkt.data= outbuf;
+             pkt.size= out_size;
+@@ -1215,7 +1228,7 @@
+ 	av_register_all ();
+ 
+ 	/* auto detect the output format from the name and fourcc code. */
+-	fmt = guess_format(NULL, filename, NULL);
++	fmt = av_guess_format(NULL, filename, NULL);
+ 	if (!fmt)
+         return false;
+ 
+@@ -1238,7 +1251,7 @@
+ #endif
+ 
+     // alloc memory for context
+-	oc = av_alloc_format_context();
++	oc = avformat_alloc_context();
+ 	assert (oc);
+ 
+ 	/* set file name */
+@@ -1310,7 +1323,7 @@
+     /* open the codec */
+     if ( (err=avcodec_open(c, codec)) < 0) {
+ 		char errtext[256];
+-		sprintf(errtext, "Could not open codec '%s': %s", codec->name, icvFFMPEGErrStr(err));
++		sprintf(errtext, "Could not open codec '%s': %s", codec->name, AVERROR(EINVAL));
+ 		CV_Error(CV_StsBadArg, errtext);
+     }
+ 
+diff -Nur RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/highgui/src/cap_libv4l.cpp RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/highgui/src/cap_libv4l.cpp
+--- RGBDemo-0.4.0-Source.orig/nestk/deps/opencv/modules/highgui/src/cap_libv4l.cpp	2011-02-05 01:48:42.000000000 +0100
++++ RGBDemo-0.4.0-Source/nestk/deps/opencv/modules/highgui/src/cap_libv4l.cpp	2011-12-27 03:00:29.000000000 +0100
+@@ -241,8 +241,10 @@
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ 
++#ifdef HAVE_CAMV4L
+ #include <linux/videodev.h>
+ #include <linux/videodev2.h>
++#endif
+ 
+ #include <libv4l1.h>
+ #include <libv4l2.h>
+diff -Nur RGBDemo-0.4.0-Source.orig/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp RGBDemo-0.4.0-Source/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp
+--- RGBDemo-0.4.0-Source.orig/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp	2011-02-05 01:49:08.000000000 +0100
++++ RGBDemo-0.4.0-Source/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp	2011-12-27 03:03:37.000000000 +0100
+@@ -63,7 +63,7 @@
+   }
+ 
+ private:
+-  mutable CostFunction& m_cost_function;
++  CostFunction& m_cost_function;
+   mutable std::vector<double> m_current_input;
+   mutable std::vector<double> m_current_output;
+   int m_input_dimension;

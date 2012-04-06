@@ -1,0 +1,29 @@
+pkgbase = rgbdemo
+	pkgdesc = The Internet Communications Engine Embedded (IceE) is a modern distributed computing platform
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://nicolas.burrus.name/index.php/Research/KinectRgbDemoV6
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = libfreenect
+	depends = opencv
+	depends = eigen3
+	depends = libflann
+	depends = boost
+	depends = pcl
+	depends = freeglut
+	depends = glew
+	depends = qt
+	depends = cminpack
+	depends = qhull
+	source = http://downloads.sourceforge.net/project/roboticslab/RGBDemo-0.6.1-Source.tar.gz
+	source = ntk.patch
+	source = rgb_demo.patch
+	md5sums = 0954c58abb183431c43f0019dd2e3f3a
+	md5sums = bd4edd6c94853edfae5b239a7be5dde2
+	md5sums = 661a085eb1b8b4b02954d2478cebd8fb
+
+pkgname = rgbdemo
+

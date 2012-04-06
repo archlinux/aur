@@ -1,0 +1,12 @@
+diff -Nur RGBDemo-0.4.0-Source.orig/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp RGBDemo-0.4.0-Source/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp
+--- RGBDemo-0.4.0-Source.orig/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp	2011-02-05 01:49:08.000000000 +0100
++++ RGBDemo-0.4.0-Source/nestk/ntk/numeric/levenberg_marquart_minimizer.cpp	2011-12-27 03:03:37.000000000 +0100
+@@ -63,7 +63,7 @@
+   }
+ 
+ private:
+-  mutable CostFunction& m_cost_function;
++  CostFunction& m_cost_function;
+   mutable std::vector<double> m_current_input;
+   mutable std::vector<double> m_current_output;
+   int m_input_dimension;
