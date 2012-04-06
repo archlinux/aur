@@ -1,0 +1,17 @@
+post_install() {
+	echo "Note: The driver is still in development"
+	echo ""
+	echo "Load the driver manually via 'modprobe linect'"
+	echo "Add it to the MODULES array in /etc/rc.conf for automatic loading on system startup"
+	echo ""
+
+	/sbin/depmod -a
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	/sbin/depmod -a
+}

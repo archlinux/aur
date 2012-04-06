@@ -1,0 +1,16 @@
+pkgbase = linect-git
+	pkgdesc = An Open Source Kinect Linux module driver compatible with Video4Linux 2
+	pkgver = 20101209
+	pkgrel = 1
+	url = https://github.com/berfenger/linect
+	install = linect-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = kernel26-headers
+	makedepends = git
+	provides = linect
+	conflicts = linect
+
+pkgname = linect-git
+
