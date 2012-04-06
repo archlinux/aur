@@ -1,0 +1,17 @@
+pkgbase = orocos-ocl
+	pkgdesc = OROCOS Components for Control
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = http://www.orocos.org/ocl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = orocos-rtt
+	depends = orocos-bfl
+	depends = orocos-kdl
+	source = http://people.mech.kuleuven.be/~orocos/pub/stable/ocl/v1.10.2/orocos-ocl-1.10.2-src.tar.bz2
+	md5sums = 6965c4b010beedbe591eb80f0d003ae2
+
+pkgname = orocos-ocl
+
