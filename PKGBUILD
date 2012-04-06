@@ -14,8 +14,8 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=tomahawk
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -26,10 +26,9 @@ optdepends=('tomahawk-spotify-git: spotify resolver')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
 options=(!strip)
-source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2"
-	'0001-Use-new-QTweetLib-0.5-API-for-PIN-values-so-leading-.patch')
-md5sums=('444f610e432281025bcac00aad0b0a90'
-	'25605d9c899601c3e2e71537cfdafcd6')
+source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('e0e761cd7be70bbbb11cfc770427392b')
+
 install=tomahawk.install
 
 # Clean options array to strip pkg if release buildtype is chosen
@@ -38,12 +37,6 @@ if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
 fi
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-
-  patch -p3 -d src/sip -i ${startdir}/0001-Use-new-QTweetLib-0.5-API-for-PIN-values-so-leading-.patch
-
-  msg "Starting build..."
-
   if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
