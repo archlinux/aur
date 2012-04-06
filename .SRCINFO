@@ -1,0 +1,15 @@
+pkgbase = orocos-bfl
+	pkgdesc = The Bayesian Filtering Library provides a framework for inference in Dynamic Bayesian Networks
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://www.orocos.org/bfl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = boost
+	source = http://people.mech.kuleuven.be/~tdelaet/bfl_tar/orocos-bfl-0.7.0-src.tar.bz2
+	md5sums = 8dc24bfc17b4ab6e12d88cc6b53ce705
+
+pkgname = orocos-bfl
+
