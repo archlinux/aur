@@ -8,7 +8,7 @@
 # build time.
 
 pkgname=chromium
-pkgver=18.0.1025.142
+pkgver=18.0.1025.151
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -29,14 +29,16 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/nacl_sdk.zip
         chromium.desktop
         chromium.sh
-        gcc-4.6.patch
+        chromium-gcc46.patch
+        chromium-gcc47.patch
         chromium-media-no-sse-r0.patch
         chromium-revert-jpeg-swizzle-r2.patch)
-sha256sums=('911a4ee2e30ed617c4148c84dcddfd1affa4b2fc02dc5e95ac4a4afeeda24b1d'
+sha256sums=('d920a0e70eaae9496e6f6499fcf0f8e5d8bdae8ce4a6f38a969946355fb73387'
             '8cf762587e547588b9461686f7d2655d5a23d09e1260b5f97137fa7d41c767a9'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             '50268dafd436813f846ea174d19c447c64d198c3937bd56910d87c5206306977'
+            'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
             '71751bf5913da1eec3c88c433044224c869b0abd5a29172cf239bddbb4eff761'
             'd99162aa6bae562f116a42347254bbec3752464f0a3e4d8675e2b287b2a838a2')
 
@@ -45,7 +47,14 @@ build() {
 
   # Fix build with gcc 4.6
   # http://code.google.com/p/chromium/issues/detail?id=80071
-  patch -Np0 -i "$srcdir/gcc-4.6.patch"
+  patch -Np0 -i "$srcdir/chromium-gcc46.patch"
+
+  # Fix build with gcc 4.7 (patch from openSUSE)
+  patch -Np2 -i "$srcdir/chromium-gcc47.patch"
+  # Add missing include that defines OS_POSIX
+  sed -i '1 i\
+    #include "build/build_config.h"' \
+    chrome/browser/diagnostics/diagnostics_main.cc
 
   # Remove unconditional use of SSE3 (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-media-no-sse-r0.patch"
