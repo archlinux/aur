@@ -1,0 +1,15 @@
+pkgbase = orocos-rtt
+	pkgdesc = The RealTime Toolkit is a C++ framework for the implementation of control systems
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = http://www.orocos.org/rtt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = boost
+	source = http://people.mech.kuleuven.be/~orocos/pub/stable/rtt/v1.10.4/orocos-rtt-1.10.4-src.tar.bz2
+	md5sums = c82b577966ec79c7f6b9d9d70a187ef6
+
+pkgname = orocos-rtt
+
