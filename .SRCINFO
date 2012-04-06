@@ -1,0 +1,18 @@
+pkgbase = eclipse-rtmtools
+	pkgdesc = OpenRTM-aist tools to manipulate RT components in real-time using a graphical interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.openrtm.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = eclipse-emf
+	depends = eclipse-gef
+	optdepends = openrtm-aist: Compilation of C++ components
+	optdepends = openrtm-aist-java: Compilation of Java components
+	optdepends = openrtm-aist-python: Compilation of Python components
+	source = http://www.openrtm.org/pub/OpenRTM-aist/tools/1.0.0/rtmtools100release_en.zip
+	md5sums = e1051282f79dd8a2618ad993e92063ce
+
+pkgname = eclipse-rtmtools
+
