@@ -1,0 +1,15 @@
+pkgbase = openrtm-aist
+	pkgdesc = The RT-Middleware provides a common platform for Robot Technology (RT)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.openrtm.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = omniorb
+	depends = ace
+	source = http://www.openrtm.org/pub/OpenRTM-aist/cxx/1.0.0/OpenRTM-aist-1.0.0-RELEASE.tar.bz2
+	md5sums = 950b5726e87f29d1c3abe6a85ef0d4cb
+
+pkgname = openrtm-aist
+
