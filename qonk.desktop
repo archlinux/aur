@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/qonk/qonk.png
+Exec=/usr/bin/qonk
+Terminal=false
+StartupNotify=false
+
+Name=Qonk
+GenericName=Space Game
+Comment=A small space build-and-conquer strategy game.
+
+Categories=Game;

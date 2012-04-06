@@ -1,0 +1,22 @@
+pkgbase = qonk
+	pkgdesc = A small space build-and-conquer strategy game.
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = http://qonk.sf.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_ttf
+	depends = sdl_gfx
+	depends = sdl_image
+	source = http://downloads.sourceforge.net/qonk/qonk-0.3.1.tar.gz
+	source = qonk.desktop
+	source = qonk.png
+	source = qonk.patch
+	md5sums = 9491980477ac5beb5bba6b8234d2ddfd
+	md5sums = ecce69a75740e0cac5e39cb59198f354
+	md5sums = 8f8d7b7d06111b102f6c1ad1aad290c0
+	md5sums = d479f49309f864e1db8e487fe062fc0d
+
+pkgname = qonk
+
