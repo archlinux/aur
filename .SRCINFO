@@ -1,0 +1,13 @@
+pkgbase = cmakeed
+	pkgdesc = CMake plugin for Eclipse
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = http://www.cthing.com/CMakeEd.asp
+	arch = any
+	license = CPL
+	depends = eclipse
+	source = http://downloads.sourceforge.net/cmakeed/CMakeEd-1.1.6.zip
+	md5sums = 25599c51944ac11b42a90bf6559474ff
+
+pkgname = cmakeed
+
