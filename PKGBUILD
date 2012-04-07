@@ -1,30 +1,22 @@
 # Maintainer: Thomas Jost <schnouki+aur@schnouki.net>
 pkgname=git-extras
-pkgver=0.9.0
-_pkgtag=948308b
+pkgver=1.5.1
+_pkgtag=bbd32d8
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, commit counting, repl, changelog population and more"
 arch=(any)
 url="http://github.com/visionmedia/git-extras"
-license=('unknown')
+license=('custom:MIT')
 depends=('git' 'bash')
-makedepends=('ronn')
-source=(git-extras-$pkgver.tar.gz::https://github.com/visionmedia/${pkgname}/tarball/${pkgver})
-md5sums=('b27235c1a3eaa18ba2f91e4a56a6c527')
-sha256sums=('926ec2c50930e01f461a11eac13a16fd9fb91b852b67d7766810a5c5a986e00e')
-
-build() {
-  cd "$srcdir/visionmedia-$pkgname-$_pkgtag"
-  sed -i 's! /etc! $(PREFIX)/etc!g' Makefile
-
-  make docs
-
-}
+source=(git-extras-$pkgver.tar.gz::https://github.com/visionmedia/${pkgname}/tarball/${_pkgtag})
+md5sums=('e7034197d57f31e9c5d6a081587ec9e1')
+sha256sums=('9061144559c4293f1b4a6eabe625e43f119cb17665382388634f210a304e822d')
 
 package() {
   cd "$srcdir/visionmedia-$pkgname-$_pkgtag"
 
-  make PREFIX="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

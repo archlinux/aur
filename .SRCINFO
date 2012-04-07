@@ -1,16 +1,15 @@
 pkgbase = git-extras
 	pkgdesc = GIT utilities -- repo summary, commit counting, repl, changelog population and more
-	pkgver = 0.9.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = http://github.com/visionmedia/git-extras
 	arch = any
-	license = unknown
-	makedepends = ronn
+	license = custom:MIT
 	depends = git
 	depends = bash
-	source = git-extras-0.9.0.tar.gz::https://github.com/visionmedia/git-extras/tarball/0.9.0
-	md5sums = b27235c1a3eaa18ba2f91e4a56a6c527
-	sha256sums = 926ec2c50930e01f461a11eac13a16fd9fb91b852b67d7766810a5c5a986e00e
+	source = git-extras-1.5.1.tar.gz::https://github.com/visionmedia/git-extras/tarball/bbd32d8
+	md5sums = e7034197d57f31e9c5d6a081587ec9e1
+	sha256sums = 9061144559c4293f1b4a6eabe625e43f119cb17665382388634f210a304e822d
 
 pkgname = git-extras
 
