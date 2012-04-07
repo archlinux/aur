@@ -1,0 +1,15 @@
+pkgbase = intercourse
+	pkgdesc = GTK+ GUI elements for scripts
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://bitbucket.org/jjacky/intercourse
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = pkg-config
+	depends = gtk3
+	source = https://bitbucket.org/jjacky/intercourse/get/0.0.1.tar.gz
+	md5sums = 2d197273005aca5e2e64c304392c0636
+
+pkgname = intercourse
+
