@@ -26,6 +26,11 @@ provides=('qtweetlib')
 conflicts=('qtweetlib')
 options=(!strip)
 
+# Clean options array to strip pkg if release buildtype is chosen
+if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
+  options=()
+fi
+
 _gitroot="git://github.com/minimoog/QTweetLib.git"
 _gitname="QTweetLib"
 
