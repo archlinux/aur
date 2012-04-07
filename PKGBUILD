@@ -26,6 +26,11 @@ provides=('jreen')
 conflicts=('jreen')
 options=(!strip)
 
+# Clean options array to strip pkg if release buildtype is chosen
+if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
+  options=()
+fi
+
 _gitroot="git://github.com/euroelessar/jreen.git"
 _gitname="jreen"
 
