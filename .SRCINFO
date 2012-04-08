@@ -17,7 +17,7 @@ pkgbase = efibootmgr-git
 	options = !emptydirs
 	options = !libtool
 	source = efibootmgr_default_to_rEFInd.patch
-	sha256sums = 4b32c855a7d9cb0485b5e50128b8f36ebe770ec8b175f418d4e682e434f3c3c5
+	sha256sums = 0fb3053f74bb083f50e7fd9fd0820fc90682a3c9986aaf5dfadf1e3f59b01039
 
 pkgname = efibootmgr-git
 
