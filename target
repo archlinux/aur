@@ -50,7 +50,7 @@ case "$1" in
 	status)
 		stat_busy "Checking status of lio targets";
 		ck_status $daemon_name
-		ck_daemon $daemon_name || /usr/bin/targetstatus
+		ck_daemon $daemon_name || /usr/bin/targetcli sessions
 		;;
 
 	*)
