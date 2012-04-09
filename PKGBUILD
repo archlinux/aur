@@ -4,7 +4,7 @@
 
 pkgname=perl-alien-wxwidgets
 _pkgname=Alien-wxWidgets
-pkgver=0.56
+pkgver=0.57
 pkgrel=1
 pkgdesc="Building, finding and using wxWidgets binaries"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
 source=(http://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/${_pkgname}-$pkgver.tar.gz)
-md5sums=('40d437f4cd3719470d5b2a78769b3902')
+md5sums=('5b3b09701b1668b354c11e8bcfedc682')
 
 build() {
   cd $srcdir/${_pkgname}-$pkgver
