@@ -3,8 +3,8 @@
 # Contributor: scj <scj(at)archlinux(dot)us>
 
 pkgname=incron
-pkgver=0.5.9
-pkgrel=2
+pkgver=0.5.10
+pkgrel=1
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('i686' 'x86_64')
 url="http://incron.aiken.cz/"
@@ -14,7 +14,7 @@ install=incron.install
 source=("http://inotify.aiken.cz/download/incron/$pkgname-$pkgver.tar.gz"
     	'incron.init')
 options=('emptydirs')
-md5sums=('a285b9e14af7bf9f9524fe051a06255f'
+md5sums=('67f8b671db8169edccc8ef11c7d2c8be'
          '648e1ca1a4b1e624401d9d71aa3756b3')
 
 build() {
