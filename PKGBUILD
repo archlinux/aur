@@ -20,8 +20,8 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
-backup=('boot/efi/efi/arch_refind/refind.conf'
-        'boot/efi/efi/arch_refind/refind_linux.conf')
+backup=('boot/efi/efi/arch/refind/refind.conf'
+        'boot/efi/efi/arch/refind/refind_linux.conf')
 
 options=('!strip' 'docs')
 install="${_pkgname}.install"
@@ -90,16 +90,16 @@ package() {
 	cd "${srcdir}/${_gitname}_build"
 	
 	## install the rEFInd x86_64 UEFI app
-	install -d "${pkgdir}/boot/efi/efi/arch_refind/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/refind/refind.efi" "${pkgdir}/boot/efi/efi/arch_refind/refindx64.efi"
+	install -d "${pkgdir}/boot/efi/efi/arch/refind/"
+	install -D -m0644 "${srcdir}/${_gitname}_build/refind/refind.efi" "${pkgdir}/boot/efi/efi/arch/refind/refindx64.efi"
 	
 	## install the rEFInd config file
-	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/boot/efi/efi/arch_refind/refind.conf"
-	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/boot/efi/efi/arch_refind/refind_linux.conf"
+	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/boot/efi/efi/arch/refind/refind.conf"
+	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/boot/efi/efi/arch/refind/refind_linux.conf"
 	
 	## install the rEFInd icons
-	install -d "${pkgdir}/boot/efi/efi/arch_refind/icons/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/icons"/* "${pkgdir}/boot/efi/efi/arch_refind/icons/"
+	install -d "${pkgdir}/boot/efi/efi/arch/refind/icons/"
+	install -D -m0644 "${srcdir}/${_gitname}_build/icons"/* "${pkgdir}/boot/efi/efi/arch/refind/icons/"
 	
 	## install the rEFInd docs
 	install -d "${pkgdir}/usr/share/refind/docs/html/"
