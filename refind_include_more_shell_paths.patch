@@ -1,0 +1,19 @@
+diff --git a/refind/main.c b/refind/main.c
+index 6959a05..cb5cf82 100644
+--- a/refind/main.c
++++ b/refind/main.c
+@@ -56,11 +56,11 @@
+ 
+ #define MACOSX_LOADER_PATH      L"\\System\\Library\\CoreServices\\boot.efi"
+ #if defined (EFIX64)
+-#define SHELL_NAMES             L"\\EFI\\tools\\shell.efi,\\shellx64.efi"
++#define SHELL_NAMES             L"\\EFI\\tools\\shellx64.efi,\\EFI\\tools\\shell.efi,\\shellx64.efi"
+ #elif defined (EFI32)
+-#define SHELL_NAMES             L"\\EFI\\tools\\shell.efi,\\shellia32.efi"
++#define SHELL_NAMES             L"\\EFI\\tools\\shellia32.efi,\\EFI\\tools\\shell.efi,\\shellia32.efi"
+ #else
+-#define SHELL_NAMES             L"\\EFI\\tools\\shell.efi"
++#define SHELL_NAMES             L"\\EFI\\tools\\shell.efi,\\shell.efi"
+ #endif
+ 
+ static REFIT_MENU_ENTRY MenuEntryAbout    = { L"About rEFInd", TAG_ABOUT, 1, 0, 'A', NULL, NULL, NULL };

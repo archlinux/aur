@@ -6,7 +6,7 @@ _actualname="refind"
 _pkgname="${_actualname}-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120405
+pkgver=20120410
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -26,9 +26,11 @@ backup=('boot/efi/efi/arch_refind/refind.conf'
 options=('!strip' 'docs')
 install="${_pkgname}.install"
 
-source=('refind_linux.conf')
+source=('refind_include_more_shell_paths.patch'
+        'refind_linux.conf')
 
-sha256sums=('9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f')
+sha256sums=('a46ef102eadfd1cf9e43527ed8409d3d9f69e96c8136132b3448c4524ed9ea89'
+            '9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f')
 
 _gitroot="git://git.code.sf.net/p/refind/code"
 _gitname="${_actualname}"
@@ -73,8 +75,13 @@ build() {
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build"
+	echo
+	
+	patch -Np1 -i "${srcdir}/refind_include_more_shell_paths.patch"
+	echo
 	
 	make
+	echo
 	
 }
 
