@@ -15,7 +15,7 @@ depends=('dosfstools' 'efibootmgr')
 options=('!strip' 'purge' '!libtool' '!emptydirs')
 
 install="${pkgname}.install"
-backup=("boot/efi/efi/arch_elilo/elilo.conf")
+backup=("boot/efi/efi/arch/elilo/elilo.conf")
 
 source=("http://downloads.sourceforge.net/project/elilo/elilo/elilo-${pkgver}/elilo-${pkgver}-all.tar.gz"
         "elilo.conf.example")
@@ -56,9 +56,9 @@ package() {
 	
 	cd "${srcdir}/elilo/"
 	
-	install -d "${pkgdir}/boot/efi/efi/arch_elilo/"
-	install -D -m0644 "${srcdir}/elilo/elilo.efi" "${pkgdir}/boot/efi/efi/arch_elilo/elilox64.efi"
-	install -D -m0644 "${srcdir}/elilo.conf.example" "${pkgdir}/boot/efi/efi/arch_elilo/elilo.conf"
+	install -d "${pkgdir}/boot/efi/efi/arch/elilo/"
+	install -D -m0644 "${srcdir}/elilo/elilo.efi" "${pkgdir}/boot/efi/efi/arch/elilo/elilox64.efi"
+	install -D -m0644 "${srcdir}/elilo.conf.example" "${pkgdir}/boot/efi/efi/arch/elilo/elilo.conf"
 	
 	# install -d "${pkgdir}/usr/sbin/"
 	# install -D -m0755 "${srcdir}/elilo/tools/eliloalt" "${pkgdir}/usr/sbin/eliloalt"

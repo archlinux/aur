@@ -4,11 +4,11 @@ post_install() {
 
 Important instructions :-
 
-ELILO is installed at /boot/efi/efi/arch_elilo/elilox64.efi
+ELILO is installed at /boot/efi/efi/arch/elilo/elilox64.efi
 
-An example config file has been provided at /boot/efi/efi/arch_elilo/elilo.conf
+An example config file has been provided at /boot/efi/efi/arch/elilo/elilo.conf
 
-Edit this file according to your system and rename it as /boot/efi/efi/arch_elilo/elilo.conf 
+Edit this file according to your system and rename it as /boot/efi/efi/arch/elilo/elilo.conf 
 Copy your kernel(s) and initramfs files from /boot to /boot/efi
 Reboot and launch elilox64.efi from the UEFI shell or add an entry using efibootmgr
 
