@@ -3,7 +3,7 @@
 # Contributor: Renchi Raju <renchi@green.tam.uiuc.edu>
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=24.0.94
+pkgver=24.0.95
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ provides=("emacs=$pkgver")
 conflicts=("emacs" "emacs-nox" "emacs-bzr" "emacs-git" "emacs-cvs")
 install=emacs.install
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.gz emacs.desktop)
-md5sums=('17e22339c4881368e6f96660f9c07393'
+md5sums=('8c2d24773bc68c2b263ef16370b9448b'
          '8af038d2ba4561271e935bb444ceb4e3')
-sha256sums=('238dacb608e74fce088cde61b82907ba6ae5d975e88f38a0b199dbdbdb28feb5'
+sha256sums=('434b8e4a27d376257a6fe93b35936466985ac45c90310e6041e0a0577752df64'
             'dba3652cdfd4193d264cf9ebafcef3e6be4af3f83bdf187d421f8e4c07f94b39')
 
 build() {
