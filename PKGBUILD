@@ -28,7 +28,7 @@ conflicts=('jreen-git')
 options=(!strip)
 source=(http://qutim.org/dwnl/33/${_name}-${pkgver}.tar.bz2)
 md5sums=('f74492bbdf8e238e281aa1778725e714')
- 
+
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
   options=()
