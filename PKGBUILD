@@ -30,7 +30,7 @@ provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.bz2
-        http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/nacl_sdk.zip
+        nacl_sdk-$pkgver.zip::http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/nacl_sdk.zip
         chromium.desktop
         chromium.sh
         chromium-gcc47.patch
