@@ -1,14 +1,14 @@
 pkgbase = wiki2beamer
 	pkgdesc = wiki2beamer is a small tool to create LaTeX Beamer presentations from text files with a wiki-like syntax. Thus, it enables the user to create beamer presentations in a less time-consuming way.
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = http://wiki2beamer.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = python
-	source = http://downloads.sourceforge.net/project/wiki2beamer/wiki2beamer/wiki2beamer-0.9.4/wiki2beamer-0.9.4.zip
-	sha1sums = c21bacd0d3f84a1bd2ded7d37e9f44d4abeab954
+	source = http://downloads.sourceforge.net/project/wiki2beamer/wiki2beamer/wiki2beamer-0.9.5/wiki2beamer-0.9.5.zip
+	sha1sums = 7fb3f480a8f26ca05b3709713b0f67b1b2e90653
 
 pkgname = wiki2beamer
 

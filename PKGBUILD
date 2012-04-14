@@ -1,7 +1,8 @@
 # Maintainer: Thomas Weißschuh <thomas_weissschuh || lavabit.com>
 # Contributor: Daniel Kaes (daniel.kaes@web.de)
+
 pkgname=wiki2beamer
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="wiki2beamer is a small tool to create LaTeX Beamer presentations from text files with a wiki-like syntax. Thus, it enables the user to create beamer presentations in a less time-consuming way."
 url="http://wiki2beamer.sourceforge.net"
@@ -17,4 +18,4 @@ build() {
 
 }
 
-sha1sums=('c21bacd0d3f84a1bd2ded7d37e9f44d4abeab954')
+sha1sums=('7fb3f480a8f26ca05b3709713b0f67b1b2e90653')
