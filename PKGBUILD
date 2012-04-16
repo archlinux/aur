@@ -19,21 +19,22 @@ md5sums=('67f8b671db8169edccc8ef11c7d2c8be'
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
-  
-  install -D -m 755 "${srcdir}"/incron.init "${pkgdir}"/etc/rc.d/incrond
-  install -d "${pkgdir}"/usr/share/man "${pkgdir}"/usr/{s,}bin
-
+  sed -i '1,1i#include <unistd.h>' inotify-cxx.cpp icd-main.cpp
   sed -i '1,1i#include <stdio.h>' icd-main.cpp inotify-cxx.cpp usertable.cpp appargs.cpp
   sed -i 's|strchr(s,|(char*)strchr(s,|' incroncfg.cpp
-
   make
 }
 
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
+
+  install -d "${pkgdir}"/usr/share/man "${pkgdir}"/usr/{s,}bin
+
   make PREFIX="${pkgdir}"/usr \
     MANPATH="${pkgdir}"/usr/share/man \
     USERDATADIR="${pkgdir}"/var/spool/incron \
     CFGDIR="${pkgdir}"/etc \
     SYSDATADIR="${pkgdir}"/etc/incron.d install
+
+  install -Dm0755 "${srcdir}"/incron.init "${pkgdir}"/etc/rc.d/incrond
 }
