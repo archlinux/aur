@@ -3,7 +3,7 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=3.3
+pkgver=3.3.2
 _basever=3.3
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
@@ -13,16 +13,17 @@ license=('GPL2')
 provides=("kernel-headers=${pkgver}")
 conflicts=('kernel-headers')
 replaces=('kernel-headers')
-source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.xz)
-	#http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz)
+source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.xz
+	http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz)
 # NOTE: signatures are not automatically verified by makepkg
         #http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.sign
 	#http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign
-md5sums=('7133f5a2086a7d7ef97abac610c094f5')
+md5sums=('7133f5a2086a7d7ef97abac610c094f5'
+         '68907107b0f62a19608588bdb6b29e20')
 
 build() {
   cd ${srcdir}/linux-${_basever}
-  [[ $pkgver != $_basever ]] && patch -Np1 -i ${srcdir}/patch-${pkgver}
+  [[ $pkgver != $_basever ]] && patch -p1 -i ${srcdir}/patch-${pkgver}
 
   make mrproper
   make headers_check
