@@ -15,7 +15,34 @@ libvirt_get_guest_state()
 # list IDs of running guests
 libvirt_list()
 {
-	virsh $LIBVIRTD_URI list | awk 'NR > 2 {print $2}'
+
+	list=$(virsh $LIBVIRTD_URI list)
+
+	if [ $? -ne 0 ]; then
+		RETVAL=1
+		return 1
+	fi
+
+	uuids=
+	for id in $(echo "$list" | awk 'NR > 2 {print $1}'); do
+		uuid=$(virsh $LIBVIRTD_UTI dominfo $id | awk '/^UUID:/{print $2}')
+		if [ -z "$uuid" ]; then
+			RETVAL=1
+			return 1
+		fi
+		uuids="$uuids $uuid"
+	done
+
+	echo $uuids
+
+}
+
+libvirt_domname()
+{
+	uuid=$1
+	name=$(virsh $LIBVIRTD_URI dominfo $uuid | awk 'NR == 2 {$1=""; print}')
+
+	echo $name
 }
 
 # suspend guest by name
@@ -57,9 +84,11 @@ libvirt_stop_all()
 {
 	mkdir -p `dirname $LIBVIRTD_LISTFILE`
 	echo -n >$LIBVIRTD_LISTFILE
+
 	for i in `libvirt_list`; do
+		name=`libvirt_domname $i`
 		if [ "x$LIBVIRTD_STOP_ACTION" == "xsuspend" ]; then
-			stat_busy "Suspending libvirtd/$i guest"
+			stat_busy "Suspending libvirtd/$name guest"
 			libvirt_suspend "$i"
 		else
 			stat_busy "Shutting libvirtd/$i guest down"
@@ -75,7 +104,8 @@ libvirt_start_all()
 {
 	if [ -f $LIBVIRTD_LISTFILE ]; then
 		for i in `cat $LIBVIRTD_LISTFILE`; do
-			stat_busy "Starting/resuming libvirtd/$i guest"
+			name='libvirt_domname $i'
+			stat_busy "Starting/resuming libvirtd/$name guest"
 			libvirt_start "$i"
 			[ $? -eq 0 ] && { sleep $LIBVIRTD_START_DELAY; stat_done; } || stat_fail
 		done
@@ -101,7 +131,7 @@ case "$1" in
 	$0 start
 	;;
     *)
-        echo $"Usage: $0 {start|stop|restart}"
-        ;;
+	echo $"Usage: $0 {start|stop|restart}"
+	;;
 esac
 exit 0
