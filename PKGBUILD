@@ -4,7 +4,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
@@ -18,11 +18,10 @@ makedepends=('gnome-doc-utils' 'intltool' 'rdesktop' 'openssh' 'itstool')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('0379e679204e9ddf63670acc9a902e70d7c3d26eb5070ceb5826a6fbbfdf1489')
+sha256sums=('5b79bbdafe57e1ceaeddfc1091a9f02aa6e3a54e55ffd2517be512d35e89654f')
 
 build() {
   cd $pkgname-$pkgver
-
   ./configure --prefix=/usr --sysconfdir=/etc \
       --libexecdir=/usr/lib/vinagre --enable-rdp --disable-spice
   make
