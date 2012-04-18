@@ -1,6 +1,6 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=percona-nagions-plugins
+pkgname=percona-nagios-plugins
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Enterprise-grade MySQL monitoring plugins for nagios"
