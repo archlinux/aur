@@ -1,0 +1,12 @@
+pkgbase = percona-nagios-plugins
+	pkgdesc = Enterprise-grade MySQL monitoring plugins for nagios
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = http://www.percona.com/software/percona-monitoring-plugins/
+	arch = any
+	license = GPL
+	source = http://www.percona.com/downloads/percona-monitoring-plugins/1.1.4/percona-monitoring-plugins-1.1.4.tar.gz
+	sha256sums = ce6b6f19ac6d6c0cbeead5bd3a54adcc91dc51bc14e81c4f0e5109cc5ee8a495
+
+pkgname = percona-nagios-plugins
+
