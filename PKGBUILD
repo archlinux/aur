@@ -4,7 +4,7 @@ pkgname=percona-nagions-plugins
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Enterprise-grade MySQL monitoring plugins for nagios"
-arch=("i686" "x86_64")
+arch=("any")
 url="http://www.percona.com/software/percona-monitoring-plugins/"
 license=('GPL')
 
