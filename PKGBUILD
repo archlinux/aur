@@ -1,6 +1,6 @@
 # Contributor: Massimiliano Torromeo <Massimiliano DOT Torromeo AT gmail DOT com>
 pkgname=expressioneditor-git
-pkgver=20110414
+pkgver=20120418
 pkgrel=1
 pkgdesc="Application intended to help in testing and writing regular expressions"
 arch=(i686 x86_64)
@@ -21,22 +21,27 @@ build() {
 		msg "The local files are updated."
 	else
 		git clone --depth=0 $_gitroot
+		cd $_gitname
 	fi
 
 	msg "GIT checkout done or server timeout"
 	msg "Starting make..."
 
-	rm -rf "$srcdir/$_gitname-build"
-	git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-	cd "$srcdir/$_gitname-build"
+	rm -rf build
+	mkdir build
+	cd build
 
-	cmake . \
+	cmake .. \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
+
+	# Fix weird cmake bug
+	sed -i 's|;--std=|--std=|' CMakeFiles/expressioneditor.dir/flags.make CMakeFiles/expressioneditor.dir/link.txt
+
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname-build"
+	cd "$srcdir/$_gitname/build"
 	make DESTDIR="$pkgdir" install
 }
