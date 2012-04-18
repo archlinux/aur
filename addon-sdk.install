@@ -1,7 +1,7 @@
 post_install() {
   cd /opt/addon-sdk-git
   . bin/activate
-  DISPLAY= cfx docs
+  BROWSER=true cfx docs
   deactivate
 
   /bin/cat <<EOF
@@ -14,7 +14,7 @@ EOF
 post_upgrade() {
   cd /opt/addon-sdk-git
   . bin/activate
-  DISPLAY= cfx docs
+  BROWSER=true cfx docs
   deactivate
 
   /bin/cat <<EOF

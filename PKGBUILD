@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  < arch at JonnyJD dot net >
 
 pkgname=addon-sdk-git
-pkgver=20120324
+pkgver=20120418
 pkgrel=1
 pkgdesc="addon-sdk/jetpack development (master) branch"
 url="http://blog.mozilla.com/addons/"
