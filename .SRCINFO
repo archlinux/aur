@@ -1,6 +1,6 @@
 pkgbase = refind-x86_64-git
 	pkgdesc = Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version
-	pkgver = 20120416
+	pkgver = 20120418
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/index.html
 	install = refind-x86_64.install

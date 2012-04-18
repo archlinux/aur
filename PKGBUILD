@@ -6,7 +6,7 @@ _actualname="refind"
 _pkgname="${_actualname}-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120416
+pkgver=20120418
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
