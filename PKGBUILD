@@ -30,14 +30,14 @@ provides=('chromium-browser')
 conflicts=('chromium-browser')
 install=chromium.install
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.bz2
-        nacl_sdk-$pkgver.zip::http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/nacl_sdk.zip
+        naclsdk_linux-$pkgver.tar.bz2::https://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/$pkgver/naclsdk_linux.bz2
         chromium.desktop
         chromium.sh
         chromium-gcc47.patch
         chromium-media-no-sse-r0.patch
         chromium-revert-jpeg-swizzle-r2.patch)
 sha256sums=('c85875188c40c41225977eef58f3b04def16cae9877d32ced8e13a75207c73cd'
-            '8cf762587e547588b9461686f7d2655d5a23d09e1260b5f97137fa7d41c767a9'
+            '811f6cc6c99a73cbd864d551c1254aa4c943da05454165e8963966a07d30c4ef'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
@@ -70,11 +70,7 @@ build() {
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
   export PATH="$srcdir/python2-path:$PATH"
 
-  pushd "$srcdir/nacl_sdk"
-  ./naclsdk update pepper_18
-  popd
-
-  ln -s "$srcdir/nacl_sdk/pepper_18/toolchain/linux_x86_newlib" \
+  ln -s "$srcdir/pepper_${pkgver%%.*}/toolchain/linux_x86_newlib" \
     native_client/toolchain/linux_x86_newlib
 
   # We need to disable system_ssl until "next protocol negotiation" support is
