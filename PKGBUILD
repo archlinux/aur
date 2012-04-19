@@ -4,9 +4,9 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=201203
-pkgrel=4
-pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult) and journals (svjour3)"
+pkgver=201204
+pkgrel=1
+pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult), journals (svjour3), and other lecture notes (svmultln)"
 arch=('any')
 url="http://www.springer.com/computer/lncs?SGWID=0-164-7-72376-0"
 license=('')
@@ -23,7 +23,10 @@ install=texlive.install
 source=(ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e/llncs2e.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmult.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip
-ftp://ftp.springer.de/pub/tex/latex/svjour3/global.zip)
+ftp://ftp.springer.de/pub/tex/latex/svjour3/global.zip
+ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/sprmindx.sty
+ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/svlnicst.clo
+ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/svmultln.cls)
 
 build() {
   for _SVJOUR3 in readme.txt svjour3.cls usrguid3.pdf svglov3.clo template.tex; do
@@ -44,6 +47,11 @@ build() {
     install -m 0644 -D ${srcdir}/${_LLNCS} ${pkgdir}/usr/share/texmf-dist/tex/latex/llncs/${_LLNCS}
   done
 
+  # SVMULTLN
+  for _SVMULTLN in sprmindx.sty svlnicst.clo svmultln.cls; do
+    install -m 0644 -D ${srcdir}/${_SVMULTLN} ${pkgdir}/usr/share/texmf-dist/tex/latex/svmultln/${_SVMULTLN}
+  done
+
   install -m 0644 -D ${srcdir}/spphys.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/spphys.bst
   install -m 0644 -D ${srcdir}/splncs03.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/splncs03.bst
   find ${pkgdir}/usr/share/texmf-dist/tex/latex/ -name \*.bst -exec mv {} ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/ \;
@@ -53,6 +61,9 @@ build() {
 }
 
 md5sums=('b520710dd75773dd8bfbaea214386559'
-         '9d5bf25a905806ed4297138062afaf71'
-         'f17923388e06a268f214ecb59a65747d'
-         'c020d70fa6ce887d9a3b70d72c518c85')
+         'f6a4252d498efa775c0c32451f3a4701'
+         'dd75af3f4bc865cd0e33b20d186699a8'
+         'c020d70fa6ce887d9a3b70d72c518c85'
+         '455d20873d808d1eeb01df84f3084f5a'
+         '7760044a7e514f0721af0c41747c9d75'
+         'c93dab93e1aeb07fa25f61ee0d043caf')
