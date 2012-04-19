@@ -6,7 +6,7 @@ _actualname="refind"
 _pkgname="${_actualname}-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120418
+pkgver=20120419
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -70,7 +70,6 @@ build() {
 		echo
 	fi
 	
-	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
@@ -78,6 +77,10 @@ build() {
 	echo
 	
 	patch -Np1 -i "${srcdir}/refind_include_more_shell_paths.patch"
+	echo
+	
+	sed 's|/usr/local/include/efi|/usr/include/efi|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
+	sed 's|/usr/local/lib|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
 	echo
 	
 	make
