@@ -85,7 +85,6 @@ build() {
   export -n CFLAGS CXXFLAGS
 
   build/gyp_chromium -f make build/all.gyp --depth=. \
-    -Dno_strict_aliasing=1 \
     -Dwerror= \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
     -Dlinux_strip_binary=1 \
