@@ -44,6 +44,7 @@ build() {
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
+	# workaround for PR#2771: OPENSSL_NO_TLS1_2_CLIENT
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
 		shared zlib enable-md2 ${optflags} \
 		"${openssltarget}" \
