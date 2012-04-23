@@ -7,7 +7,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.3
-pkgver=${_basekernel}.2
+pkgver=${_basekernel}.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,15 +23,19 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
         'fix-acerhdf-1810T-bios.patch'
         'change-default-console-loglevel.patch'
         'i915-fix-ghost-tv-output.patch'
+        'fix-memblock-3.3.x.patch'
+        'fix-r8712u-3.3.2.patch'
         'ext4-options.patch')
 md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         '68907107b0f62a19608588bdb6b29e20'
-         '611384eca31001757d23a689f47fa318'
-         '81d48b91797c895fff5a36c17eae6320'
+         '634a088d3789870885dc6ee1eb9627d4'
+         '24f0949ec8d43588f4421df60f39e811'
+         'a8b420d03eb7282b234c1aee13a054a5'
          'eb14dcfd80c00852ef81ded6e826826a'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '263725f20c0b9eb9c353040792d644e5'
+         'ecf75895eddc92efcc797dea367ca692'
+         '4be6f77e4c1533c4587dd48cfd50759e'
          'bb7fd1aa23016c8057046b84fd4eb528')
 
 build() {
@@ -51,6 +55,16 @@ build() {
   # then dropped because the reasoning was unclear. However, it is clearly
   # needed.
   patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
+
+  # Patch submitted upstream, waiting for inclusion:
+  # fix https://bugzilla.kernel.org/show_bug.cgi?id=43098
+  # Arch Linux bug report #29351
+  patch -Np1 -i  "${srcdir}/fix-memblock-3.3.x.patch"
+
+  # Patch submitted upstream, waiting for inclusion:
+  # Arch Linux bug report #29339
+  # probably 3.3.4 will include it
+  patch -Np1 -i "${srcdir}/fix-r8712u-3.3.2.patch"
 
   # Patch submitted upstream, waiting for inclusion:
   # https://lkml.org/lkml/2012/2/19/51
