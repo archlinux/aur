@@ -2,18 +2,18 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=unarchiver
-pkgver=2.7.1
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="An Objective-C application for uncompressing archive files"
 arch=('x86_64' 'i686')
-url="http://wakaba.c3.cx/s/apps/unarchiver.html"
+url="http://unarchiver.c3.cx/"
 license=('LGPL2.1')
 depends=('gnustep-base' 'openssl' 'bzip2' 'icu' 'gcc-libs' 'zlib')
 makedepends=('gcc-objc')
 source=("http://theunarchiver.googlecode.com/files/TheUnarchiver${pkgver}_src.zip"
         "native_obj_exceptions.patch"
         "libz.patch")
-sha1sums=('dba7a5aee159435a7ad6d1879443ab66a809c970'
+sha1sums=('a8a28e3372a8811689c39871f5de86c64c8c466c'
           'b8024026607dc2de758479b73d8b01ca6f692b59'
           '003d114a0ba9a919af602881ef5e04cdba2e4c50')
 
@@ -32,6 +32,11 @@ package() {
   cd "$srcdir/The Unarchiver/XADMaster"
   install -d "$pkgdir/usr/bin/"
   install -m755 unar lsar "$pkgdir/usr/bin/"
+
+  cd "$srcdir/The Unarchiver/Extra"
+  install -d "$pkgdir/usr/share/man/man1"
+  gzip -c lsar.1 > "$pkgdir/usr/share/man/man1"/lsar.1.gz
+  gzip -c unar.1 > "$pkgdir/usr/share/man/man1"/unar.1.gz
 }
 
 # vim:set ts=2 sw=2 et:
