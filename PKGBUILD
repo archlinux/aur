@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas_weissschuh@lavabit.com>
 
 pkgname=taterm
-pkgver=8
+pkgver=10
 pkgrel=1
 pkgdesc="Terminal emulator for tiling window managers"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
 
 }
 # vim:set ts=2 sw=2 et:
-sha1sums=('431a2c6966a6ba728d3bc5fe4d777c9c8752c849')
+sha1sums=('e31e52b08e48562837641c788140adc77579bdf0')
