@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2012.0.0
-pkgrel=2
+pkgver=2012.1.0
+pkgrel=1
 pkgdesc="batman kernel module, (included upstream since .38)"
 arch=('i686' 'x86_64')
 url="http://www.open-mesh.net/"
@@ -24,5 +24,5 @@ package() {
   install -D -m644 batman-adv.ko ${pkgdir}/lib/modules/$(uname -r)/updates/net/batman-adv/batman_adv.ko
   install -D -m644 README ${pkgdir}/usr/share/doc/batman-adv/README
 }
-sha1sums=('98d8bf162d43ed398cadfa821f32d6940f6dee4f'
+sha1sums=('e0a320c1f90396edf61f4da7d911c3d2d6f75e66'
           '53cebfa79c3a6c659ea5f7ea96c86561c7cd6a3b')
