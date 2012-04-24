@@ -1,7 +1,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 # Maintainer: Thomas Weißschuh <thomas_weissschuh@lavabit.com>
 pkgname=batctl
-pkgver=2012.0.0
+pkgver=2012.1.0
 pkgrel=1
 pkgdesc="B.A.T.M.A.N. advanced control and management tool"
 arch=('i686' 'x86_64')
@@ -21,4 +21,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('9a4959f9418f9bf9485d2f7be26223d3418c4f0c')
+sha1sums=('90074bad59b711a1d4560df29150ccf7916fe49e')
