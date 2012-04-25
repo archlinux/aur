@@ -1,17 +1,18 @@
-# Maintainer: Angel Velasquez <angvp@archlinux.org>
+# Maintainer:
+# Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 
 pkgbase=python-nose
 pkgname=('python-nose' 'python2-nose' 'python-nose-doc')
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
-url="http://www.somethingaboutorange.com/mrl/projects/nose/"
-license=('LGPL2')
+url='http://readthedocs.org/docs/nose/'
+license=('LGPL2.1')
 makedepends=('python' 'python-distribute' 'python2' 'python2-distribute' 'python-sphinx')
-source=(http://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz{,.asc})
+source=("http://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz"{,.asc})
 md5sums=('144f237b615e23f21f6a50b2183aa817'
          'b3ea70c42347d9ca8b1c248bd6b128c5')
 
