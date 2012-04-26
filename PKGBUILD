@@ -2,7 +2,7 @@
 
 pkgname=php-geoip
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="GeoIP module for PHP"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/geoip"
@@ -10,7 +10,7 @@ license=('PHP')
 depends=('php' 'geoip')
 backup=('etc/php/conf.d/geoip.ini')
 source=(http://pecl.php.net/get/geoip-$pkgver.tgz)
-sha1sums=('f8d17da3e192002332ab54b9b4ab0f5deeaf9f15')
+sha256sums=('08beeb2cbe9ab729d06b026795f5b9084aead6a1762493b0be53c4393d68d08a')
 
 build() {
   cd "$srcdir/geoip-$pkgver"
