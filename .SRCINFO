@@ -1,0 +1,13 @@
+pkgbase = python2-stompy
+	pkgdesc = Python STOMP client library
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = http://packages.python.org/stompy/introduction.html
+	arch = any
+	license = BSD
+	depends = python2
+	source = http://pypi.python.org/packages/source/s/stompy/stompy-0.2.9.tar.gz
+	md5sums = aca5be1a264bfeb4de1d268b69f73a3c
+
+pkgname = python2-stompy
+
