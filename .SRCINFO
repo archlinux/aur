@@ -1,10 +1,10 @@
 pkgbase = ruby-colored
 	pkgdesc = >> puts 'this is red'.red >> puts 'this is red with a blue background (read: ugly)'.red_on_blue...
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/defunkt/colored
 	arch = any
-	license = GPL2
+	license = MIT
 	makedepends = rubygems
 	depends = ruby
 	noextract = colored-1.2.gem
