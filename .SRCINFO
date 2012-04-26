@@ -1,0 +1,15 @@
+pkgbase = php-stomp
+	pkgdesc = PHP stomp client extension
+	pkgver = 1.0.5
+	pkgrel = 3
+	url = http://www.php.net/manual/en/book.stomp.php
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	backup = etc/php/conf.d/stomp.ini
+	source = http://pecl.php.net/get/stomp-1.0.5.tgz
+	sha256sums = 87f7c1d6c187c1d2fbee92f73e41cfa1af07c9b17bdd435ad446223038f36ea4
+
+pkgname = php-stomp
+
