@@ -1,4 +1,5 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+
 pkgname=python2-pika
 pkgver=0.9.5
 pkgrel=1
