@@ -1,0 +1,41 @@
+pkgbase = thunderbird-nightly
+	pkgdesc = Standalone Mail/News reader - Nightly build
+	pkgver = 15.0a1
+	pkgrel = 1
+	url = http://www.mozilla.org/thunderbird
+	install = thunderbird-nightly.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = alsa-lib
+	depends = cairo
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = fontconfig
+	depends = freetype2
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = hunspell
+	depends = libevent
+	depends = libjpeg
+	depends = libmng
+	depends = libpng
+	depends = libvpx
+	depends = libxt
+	depends = mozilla-common
+	depends = nspr
+	depends = nss
+	depends = shared-mime-info
+	depends = sqlite3
+	depends = startup-notification
+	optdepends = libcanberra: for sound support
+	provides = thunderbird=15.0a1
+	source = thunderbird-nightly.desktop
+	source = vendor.js
+	sha1sums = 9373c6b8e57692f62bac9f738351407ff27aa6f3
+	sha1sums = 4243393daf5bd5a68644034001f512178cad09cc
+
+pkgname = thunderbird-nightly
+
