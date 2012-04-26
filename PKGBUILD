@@ -1,4 +1,4 @@
-# Maintainer: Kevin Whitaker <eyecreate at gmail dot com>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-stomp.py
 pkgver=3.1.1
