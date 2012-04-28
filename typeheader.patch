@@ -1,0 +1,25 @@
+diff -Naur old/picard/webservice.py new/picard/webservice.py
+--- old/picard/webservice.py	2011-10-23 19:15:29.000000000 +0200
++++ new/picard/webservice.py	2012-04-28 17:43:17.562422696 +0200
+@@ -149,8 +149,11 @@
+             url.setPassword(self.config.setting["password"])
+         request = QtNetwork.QNetworkRequest(url)
+         request.setRawHeader("User-Agent", "MusicBrainz-Picard/%s" % version_string)
+-        if method == "POST" and host == self.config.setting["server_host"]:
+-            request.setHeader(QtNetwork.QNetworkRequest.ContentTypeHeader, "application/xml; charset=utf-8")
++        if data is not None:
++            if method == "POST" and host == self.config.setting["server_host"]:
++                request.setHeader(QtNetwork.QNetworkRequest.ContentTypeHeader, "application/xml; charset=utf-8")
++            else:
++                request.setHeader(QtNetwork.QNetworkRequest.ContentTypeHeader, "application/x-www-form-urlencoded")
+         send = self._request_methods[method]
+         reply = send(request, data) if data is not None else send(request)
+         key = (host, port)
+@@ -370,6 +373,7 @@
+     def _encode_acoustid_args(self, args):
+         filters = []
+         args['client'] = ACOUSTID_KEY
++        args['clientversion'] = version_string
+         args['format'] = 'xml'
+         for name, value in args.items():
+             value = str(QUrl.toPercentEncoding(value))
