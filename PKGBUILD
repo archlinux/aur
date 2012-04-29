@@ -76,6 +76,9 @@ build() {
 	cd "${srcdir}/${_gitname}_build"
 	echo
 	
+	make clean || true
+	echo
+	
 	patch -Np1 -i "${srcdir}/refind_include_more_shell_paths.patch"
 	echo
 	
