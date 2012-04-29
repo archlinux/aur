@@ -13,12 +13,12 @@ source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    make || return 1
+    make PREFIX='/usr' || return 1
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install || return 1
+    make PREFIX='/usr' DESTDIR="$pkgdir" install || return 1
 }
 
 md5sums=('509abc89a35dceddd00137d3aeec5fa9')
