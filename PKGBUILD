@@ -3,7 +3,7 @@
 
 pkgname=crda
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Central Regulatory Domain Agent for wireless networks"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
@@ -18,7 +18,6 @@ md5sums=('5226f65aebacf94baaf820f8b4e06df4'
          'c1f7aff29f15a0364ae6f7905a1d4ae6')
                   
 build() {
-  msg "Compiling crda ..."
   cd "${srcdir}"/${pkgname}-${pkgver}
   patch -Np1 -i "$srcdir/libnl32.patch"
   sed 's|^#!/usr/bin/env python|#!/usr/bin/python2|' -i utils/key2pub.py
@@ -27,15 +26,12 @@ build() {
 
 package() {
   # Install crda, regdbdump and udev rules
-  msg "Installing crda ..."
   cd "${srcdir}"/${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" UDEV_RULE_DIR=/usr/lib/udev/rules.d/ install
   # This rule automatically sets the regulatory domain when cfg80211 is loaded
-  echo 'ACTION=="add" SUBSYSTEM=="module", DEVPATH=="/module/cfg80211", RUN+="/etc/rc.d/wireless-regdom start >/dev/null"' >> "${pkgdir}"/lib/udev/rules.d/85-regulatory.rules
+  echo 'ACTION=="add" SUBSYSTEM=="module", DEVPATH=="/module/cfg80211", RUN+="/etc/rc.d/wireless-regdom start >/dev/null"' >> "${pkgdir}"/usr/lib/udev/rules.d/85-regulatory.rules
 
-  msg "Installing license ..."
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/crda/LICENSE
   
-  msg "Installing boot script ..."
   install -D -m755 "${srcdir}"/crda.rc "${pkgdir}"/etc/rc.d/wireless-regdom
 }
