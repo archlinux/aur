@@ -3,7 +3,7 @@
 
 pkgname=xfce4-datetime-plugin
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A date and time display plugin for the Xfce panel"
 arch=('i686' 'x86_64')
 license=('GPL2')
