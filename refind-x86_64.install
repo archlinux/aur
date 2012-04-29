@@ -2,7 +2,7 @@ post_install() {
 	
 	cat << EOF 
 
-rEFInd is installed at /boot/efi/efi/arch/refind/refindx64.efi
+rEFInd is installed at /boot/efi/EFI/arch/refind/refindx64.efi
 
 Usage instructions at /usr/share/refind/docs/html/index.html
 refind.conf info at /usr/share/refind/docs/html/configfile.html
@@ -10,15 +10,15 @@ refind.conf info at /usr/share/refind/docs/html/configfile.html
 Linux Kernel specific instructions at /usr/share/refind/docs/html/linux.html
 and http://www.rodsbooks.com/efi-bootloaders/efistub.html
 
-Eg:- Kernel file [UEFISYS]/efi/arch/vmlinuz-linux.efi
-     Initramfs file [UEFISYS]/efi/arch/initramfs-linux.img
+Eg:- Kernel file [UEFISYS]/EFI/arch/vmlinuz-linux.efi
+     Initramfs file [UEFISYS]/EFI/arch/initramfs-linux.img
      
-     Then copy /boot/efi/efi/arch/refind/refind_linux.conf to [UEFISYS]/efi/arch/refind_linux.conf ,
+     Then copy /boot/efi/EFI/arch/refind/refind_linux.conf to [UEFISYS]/EFI/arch/refind_linux.conf ,
      and modify the kernel parameters according to your requirements.
 
-In any case "boot/efi/efi/arch/refind/refind_linux.conf" is always backed-up (pacnew or pacsave).
+In any case "boot/efi/EFI/arch/refind/refind_linux.conf" is always backed-up (pacnew or pacsave).
 
-NOTE: rEFInd requires the kernel file(s) to be present as [UEFISYS]/efi/[SOME_DIRECTORY]/[FILENAME].efi
+NOTE: rEFInd requires the kernel file(s) to be present as [UEFISYS]/EFI/[SOME_DIRECTORY]/[FILENAME].efi
       and the initramfs file in the same directory, for autodetection to work.
 
 NOTE: refind_linux.conf should be in the same directory as the kernel file(s), not the directory where refind.efi or refindx64.efi resides.
