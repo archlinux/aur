@@ -15,13 +15,13 @@ depends=('dosfstools' 'efibootmgr')
 options=('!strip' 'purge' '!libtool' '!emptydirs')
 
 install="${pkgname}.install"
-backup=("boot/efi/efi/arch/elilo/elilo.conf")
+backup=("boot/efi/EFI/arch/elilo/elilo.conf")
 
 source=("http://downloads.sourceforge.net/project/elilo/elilo/elilo-${pkgver}/elilo-${pkgver}-all.tar.gz"
         "elilo.conf.example")
 
 sha1sums=('631fdf211627510b270f0759c26587edb8d30001'
-          'f38e5194ec100e6c5163a4db570b240e19b37da0')
+          '37cf9c4c94a4571863864fe60804f04d24ed1a1e')
 
 _extract_source() {
 	
@@ -42,6 +42,9 @@ build() {
 	
 	cd "${srcdir}/elilo/"
 	
+	make clean || true
+	echo
+	
 	## Enable ext2 drivers - build fails for now 
 	# sed 's|CONFIG_ext2fs=n|CONFIG_ext2fs=y|g' -i "${srcdir}/elilo/Make.defaults" || true
 	sed 's|DEBUGFLAGS = -Wall|DEBUGFLAGS = -Wall -Wno-error|g' -i "${srcdir}/elilo/Make.defaults" || true
@@ -56,9 +59,9 @@ package() {
 	
 	cd "${srcdir}/elilo/"
 	
-	install -d "${pkgdir}/boot/efi/efi/arch/elilo/"
-	install -D -m0644 "${srcdir}/elilo/elilo.efi" "${pkgdir}/boot/efi/efi/arch/elilo/elilox64.efi"
-	install -D -m0644 "${srcdir}/elilo.conf.example" "${pkgdir}/boot/efi/efi/arch/elilo/elilo.conf"
+	install -d "${pkgdir}/boot/efi/EFI/arch/elilo/"
+	install -D -m0644 "${srcdir}/elilo/elilo.efi" "${pkgdir}/boot/efi/EFI/arch/elilo/elilox64.efi"
+	install -D -m0644 "${srcdir}/elilo.conf.example" "${pkgdir}/boot/efi/EFI/arch/elilo/elilo.conf"
 	
 	# install -d "${pkgdir}/usr/sbin/"
 	# install -D -m0755 "${srcdir}/elilo/tools/eliloalt" "${pkgdir}/usr/sbin/eliloalt"
