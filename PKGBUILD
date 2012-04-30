@@ -2,18 +2,27 @@
 # Contributor: Ben <contrasutra@myrealbox.com>
 
 pkgname=xfce4-artwork
-pkgver=0.1
-pkgrel=7
+pkgver=0.1.1a_git20110420
+_debian_pkgver=0.1.1a~git+20110420
+pkgrel=1
 pkgdesc="Backdrops for the Xfce4 desktop"
 arch=('any')
-license=('GPL2')
 url="http://xfce-goodies.berlios.de/"
+license=('GPL2')
 groups=('xfce4-goodies')
-source=(http://download2.berlios.de/xfce-goodies/${pkgname}-${pkgver}.tar.gz)
-md5sums=('b7612ee950fcf052e5acfacd0fda729f')
+source=(http://ftp.debian.org/debian/pool/main/x/$pkgname/${pkgname}_$_debian_pkgver.orig.tar.gz)
+sha256sums=('7a97c0acd0ed67ebb871866cc79c2925bea45bf1b92442bd88fac390dbe639ac')
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}/backdrops/
-  install -d "${pkgdir}"/usr/share/xfce4/backdrops
-  install -t "${pkgdir}"/usr/share/xfce4/backdrops *.{png,jpg}
+  cd "$srcdir/$pkgname-0.1.1a"
+
+  ./configure --prefix=/usr
+  make
 }
+
+package() {
+  cd "$srcdir/$pkgname-0.1.1a"
+  make DESTDIR="$pkgdir" install
+}
+
+# vim:set ts=2 sw=2 et:
