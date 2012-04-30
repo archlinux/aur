@@ -1,12 +1,12 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
 pkgver=1.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
 license=('custom')
-depends=('gcc' 'gcc-fortran' 'openssh' 'valgrind' 'libtool' 'hwloc')
+depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
 makedepends=('inetutils')
 options=(!libtool)
 source=(http://www.open-mpi.org/software/ompi/v1.5/downloads/${pkgname}-${pkgver}.tar.bz2
@@ -19,6 +19,9 @@ build() {
 
    # Fix fakeroot problem (FS#28644)
    patch -Np1 -i ../openmpi-1.5.4-fix-fakeroot-execution.patch
+   
+   # Make sure we use the system ltdl librariry rather than the ones in the tarball
+   rm -r opal/libltdl
 
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
@@ -33,7 +36,7 @@ build() {
                --enable-pretty-print-stacktrace \
                --without-slurm \
                --with-hwloc=/usr \
-               --with-libltdl=/usr \
+               --with-libltdl=/usr  \
                FC=/usr/bin/gfortran \
                LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
 
@@ -47,7 +50,7 @@ package() {
    # FS#28583
    install -d -m 755 "${pkgdir}"/usr/lib/pkgconfig
    for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-      ln -sf /usr/lib/openmpi/pkgconfig/$i "${pkgdir}"/usr/lib/pkgconfig/
+      ln -sf /usr/lib/openmpi/pkgconfig/${i} "${pkgdir}"/usr/lib/pkgconfig/
    done
 
    # Openmpi's otfinfo conflicts with the one from texlive
