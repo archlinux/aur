@@ -1,7 +1,7 @@
-diff -r 6ae1e81f12d7 src/client.c
---- a/src/client.c	Tue Dec 20 20:30:57 2011 +0100
-+++ b/src/client.c	Tue Dec 20 20:41:38 2011 +0100
-@@ -3795,6 +3795,12 @@
+diff -r c7e59386ff22 src/client.c
+--- a/src/client.c	Mon Apr 30 10:18:03 2012 +0200
++++ b/src/client.c	Mon Apr 30 10:52:33 2012 +0200
+@@ -3851,6 +3851,12 @@
  int
  clientGetButtonState (Client *c, int button, int state)
  {
@@ -14,7 +14,7 @@ diff -r 6ae1e81f12d7 src/client.c
      if (state == INACTIVE)
      {
          return (state);
-@@ -3806,12 +3812,6 @@
+@@ -3862,12 +3868,6 @@
          return (PRESSED);
      }
  
@@ -27,10 +27,10 @@ diff -r 6ae1e81f12d7 src/client.c
      return (ACTIVE);
  }
  
-diff -r 6ae1e81f12d7 src/events.c
---- a/src/events.c	Tue Dec 20 20:30:57 2011 +0100
-+++ b/src/events.c	Tue Dec 20 20:41:38 2011 +0100
-@@ -1380,23 +1380,20 @@
+diff -r c7e59386ff22 src/events.c
+--- a/src/events.c	Mon Apr 30 10:18:03 2012 +0200
++++ b/src/events.c	Mon Apr 30 10:52:33 2012 +0200
+@@ -1394,23 +1394,20 @@
                  clientClearDelayedFocus ();
              }
          }
