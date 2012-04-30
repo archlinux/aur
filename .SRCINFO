@@ -1,17 +1,17 @@
 pkgbase = mcpatcher
 	pkgdesc = Minecraft patcher to fix textures with higher than default resolution
-	pkgver = 2.3.6_01
+	pkgver = 2.3.6_02
 	pkgrel = 1
 	url = https://github.com/pclewis/mcpatcher
 	arch = any
 	license = Public Domain
 	depends = java-runtime
 	optdepends = minecraft: the game itself
-	noextract = mcpatcher-2.3.6_01.jar
+	noextract = mcpatcher-2.3.6_02.jar
 	source = mcpatcher
-	source = https://github.com/downloads/pclewis/mcpatcher/mcpatcher-2.3.6_01.jar
+	source = https://github.com/downloads/pclewis/mcpatcher/mcpatcher-2.3.6_02.jar
 	md5sums = 38358254be76dc84676509f43be44938
-	md5sums = a743576a3496f3d9e3d20f7e5733ef30
+	md5sums = 23e3589ab4780145be91ae3d4173b21d
 
 pkgname = mcpatcher
 
