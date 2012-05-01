@@ -1,0 +1,65 @@
+From: Tejun Heo <tj <at> kernel.org>
+Subject: [PATCH 3.4-rc3] memblock: memblock should be able to handle zero length operations
+Newsgroups: gmane.linux.kernel, gmane.linux.kernel.stable
+Date: 2012-04-20 15:31:34 GMT (2 days, 14 hours and 59 minutes ago)
+24aa07882b "memblock, x86: Replace memblock_x86_reserve/free_range()
+with generic ones" replaced x86 specific memblock operations with the
+generic ones; unfortunately, it lost zero length operation handling in
+the process making the kernel panic if somebody tries to reserve zero
+length area.
+
+There isn't much to be gained by being cranky to zero length
+operations and panicking is almost the worst response.  Drop the
+BUG_ON() in memblock_reserve() and update
+memblock_add_region/isolate_range() so that all zero length operations
+are handled as noops.
+
+Signed-off-by: Tejun Heo <tj <at> kernel.org>
+Cc: stable <at> vger.kernel.org
+Reported-by: Valere Monseur <valere.monseur <at> ymail.com>
+Bisected-by: Joseph Freeman <jfree143dev <at> gmail.com>
+Tested-by: Joseph Freeman <jfree143dev <at> gmail.com>
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=43098
+---
+This is causing early panics if anyone tries to reserve zero len area,
+which unfortunately isn't too uncommon depending on BIOS.  The fix is
+fairly safe.  Unsure which tree it should go through.  Cc'ing Linus
+and Ingo.
+
+Thanks.
+
+ mm/memblock.c |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/mm/memblock.c b/mm/memblock.c
+index 99f2855..a44eab3 100644
+--- a/mm/memblock.c
++++ b/mm/memblock.c
+@@ -330,6 +330,9 @@ static int __init_memblock memblock_add_region(struct memblock_type *type,
+ 	phys_addr_t end = base + memblock_cap_size(base, &size);
+ 	int i, nr_new;
+
++	if (!size)
++		return 0;
++
+ 	/* special case for empty array */
+ 	if (type->regions[0].size == 0) {
+ 		WARN_ON(type->cnt != 1 || type->total_size);
+@@ -430,6 +433,9 @@ static int __init_memblock memblock_isolate_range(struct memblock_type *type,
+
+ 	*start_rgn = *end_rgn = 0;
+
++	if (!size)
++		return 0;
++
+ 	/* we'll create at most two more regions */
+ 	while (type->cnt + 2 > type->max)
+ 		if (memblock_double_array(type) < 0)
+@@ -514,7 +520,6 @@ int __init_memblock memblock_reserve(phys_addr_t base, phys_addr_t size)
+ 		     (unsigned long long)base,
+ 		     (unsigned long long)base + size,
+ 		     (void *)_RET_IP_);
+-	BUG_ON(0 == size);
+
+ 	return memblock_add_region(_rgn, base, size, MAX_NUMNODES);
+ }
