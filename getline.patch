@@ -1,0 +1,12 @@
+--- Python-1.5.2/Objects/fileobject.c.orig	2012-05-01 14:39:04.857802025 +0300
++++ Python-1.5.2/Objects/fileobject.c	2012-05-01 14:39:29.663531501 +0300
+@@ -64,6 +64,9 @@
+ 
+ #include <errno.h>
+ 
++// Work around name conflict with newer stdio.h
++#define getline py_getline
++
+ typedef struct {
+ 	PyObject_HEAD
+ 	FILE *f_fp;

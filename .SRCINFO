@@ -1,0 +1,17 @@
+pkgbase = python15
+	pkgdesc = Yes, an ancient version of Python, lol
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = PSF
+	depends = bash
+	options = !makeflags
+	source = http://www.python.org/ftp/python/src/py152.tgz
+	source = getline.patch
+	sha1sums = 2d648d07b1aa1aab32a3a24851c33715141779b9
+	sha1sums = 4a7b8064f7e6eebd398694bc7c373b700b2e5535
+
+pkgname = python15
+
