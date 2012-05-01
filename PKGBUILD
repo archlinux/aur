@@ -8,7 +8,7 @@
 # build time.
 
 pkgname=chromium
-pkgver=18.0.1025.162
+pkgver=18.0.1025.168
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -36,8 +36,8 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium-gcc47.patch
         chromium-media-no-sse-r0.patch
         chromium-revert-jpeg-swizzle-r2.patch)
-sha256sums=('c85875188c40c41225977eef58f3b04def16cae9877d32ced8e13a75207c73cd'
-            '811f6cc6c99a73cbd864d551c1254aa4c943da05454165e8963966a07d30c4ef'
+sha256sums=('1f1fc7bd8066835844a465f9d60c49c21173ff559c40e5d113fe9c4627fc18b9'
+            'f9c5bc8ef4e251769a0609cbca1692682140dc93364c2558aaade3c404f3d987'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
