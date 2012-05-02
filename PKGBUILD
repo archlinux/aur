@@ -5,7 +5,7 @@
 pkgname=wings3d
 _pkgname=wings
 pkgver=1.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc="3D modeling program"
 arch=('x86_64' 'i686')
 url="http://www.wings3d.com/"
@@ -18,10 +18,10 @@ replaces=('wings' 'wings-devel')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/wings/$_pkgname-$pkgver.tar.bz2"
         "$pkgname"
-        "$pkgname.png")
+        "$pkgname.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png")
 sha256sums=('51aea431e18935e5634ea673caa945f586db2203855554d8dcab5e9545f2789a'
             '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e'
-            'ad49fded5e503131ee0e2e03a6db0974aa60f50e1ec6cd697fcacef126c40f52')
+            '6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a')
 _genericname=('3D Modeler')
 
 build() {
@@ -43,13 +43,13 @@ package() {
     cp -r "$srcdir/$_pkgname-$pkgver/$subdir/" "$pkgdir/usr/lib/$pkgname"
   done
 
-  install -D -m 755 "$srcdir/wings3d" "$pkgdir/usr/bin/wings3d"
-  install -D -m 644 "$srcdir/wings3d.desktop" \
-    "$pkgdir/usr/share/applications/wings3d.desktop"
-  install -D -m 644 "$srcdir/wings3d.png" \
-    "$pkgdir/usr/share/pixmaps/wings3d.png"
-  install -D -m 644 license.terms \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 license.terms "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cd "$srcdir"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
 # vim:set ts=2 sw=2 et:

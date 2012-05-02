@@ -1,7 +1,7 @@
 pkgbase = wings3d
 	pkgdesc = 3D modeling program
 	pkgver = 1.4.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.wings3d.com/
 	install = wings3d.install
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = wings3d
 	replaces = wings-devel
 	source = http://downloads.sourceforge.net/wings/wings-1.4.1.tar.bz2
 	source = wings3d
-	source = wings3d.png
+	source = wings3d.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png
 	sha256sums = 51aea431e18935e5634ea673caa945f586db2203855554d8dcab5e9545f2789a
 	sha256sums = 46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e
-	sha256sums = ad49fded5e503131ee0e2e03a6db0974aa60f50e1ec6cd697fcacef126c40f52
+	sha256sums = 6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a
 
 pkgname = wings3d
