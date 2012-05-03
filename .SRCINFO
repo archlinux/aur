@@ -12,6 +12,7 @@ pkgbase = wings3d
 	depends = esdl
 	depends = bash
 	depends = desktop-file-utils
+	depends = cl
 	optdepends = povray: rendering support via POV-Ray
 	replaces = wings
 	replaces = wings-devel
