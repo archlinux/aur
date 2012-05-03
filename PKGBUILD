@@ -17,7 +17,7 @@ optdepends=('povray: rendering support via POV-Ray')
 replaces=('wings' 'wings-devel')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://nodeload.github.com/dgud/wings/tarball/dgud/r15b-driver-compat"
-        "$pkgname"
+        "$pkgname.sh"
         "$pkgname.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png")
 sha256sums=('cbe917601b31b7d469c2f9ed0de1b016be86f14f9e757860990d9489a84585dd'
             '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e'
@@ -47,7 +47,7 @@ package() {
   install -Dm644 license.terms "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd "$srcdir"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
