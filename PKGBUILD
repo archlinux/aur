@@ -54,6 +54,9 @@ build() {
   #  #include "build/build_config.h"' \
   #  chrome/browser/diagnostics/diagnostics_main.cc
 
+  # http://code.google.com/p/chromium/issues/detail?id=109527
+  sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
+
   # Remove unconditional use of SSE3 (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-media-no-sse-r0.patch"
 
@@ -80,7 +83,7 @@ build() {
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
 
-  build/gyp_chromium -f make build/all.gyp --depth=. \
+  build/gyp_chromium \
     -Dwerror= \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
     -Dlinux_strip_binary=1 \
@@ -97,7 +100,7 @@ build() {
     -Duse_system_yasm=1 \
     -Duse_system_zlib=1 \
     -Duse_gconf=0 \
-    $([[ $CARCH == i686 ]] && echo '-Ddisable_sse2=1')
+    -Ddisable_sse2=1
 
   make chrome chrome_sandbox BUILDTYPE=Release
 }
