@@ -1,47 +1,49 @@
-# $Id: PKGBUILD 61589 2012-01-03 23:37:49Z arodseth $
+# $Id$
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=wings3d
 _pkgname=wings
 pkgver=1.4.1
-pkgrel=8
-pkgdesc="3D modeling program"
+pkgrel=15
+pkgdesc='3D modeling program'
 arch=('x86_64' 'i686')
-url="http://www.wings3d.com/"
+url='http://www.wings3d.com/'
 license=('GPL')
-depends=('esdl' 'bash' 'desktop-file-utils' 'cl')
+depends=('erlang-sdl>=1.2-7' 'erlang-cl>=1.0-3' 'bash' 'desktop-file-utils' 'erlang')
 makedepends=('setconf' 'gendesk')
 optdepends=('povray: rendering support via POV-Ray')
-#            'kerkythea: rendering support via Kerkythea'
-replaces=('wings' 'wings-devel')
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://nodeload.github.com/dgud/wings/tarball/dgud/r15b-driver-compat"
+#source=("http://sourceforge.net/projects/wings/files/wings/1.4.1/wings-1.4.1-linux.bzip2.run.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dgud/wings/archive/master.tar.gz"
         "$pkgname.sh"
         "$pkgname.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png")
-sha256sums=('cbe917601b31b7d469c2f9ed0de1b016be86f14f9e757860990d9489a84585dd'
+sha256sums=('760e19fa4973ed0fc75057897135a8efa241e834b078fc05c28786672137b322'
             '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e'
             '6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a')
 _genericname=('3D Modeler')
-_dirname='dgud-wings-4f3a3ff'
 
 build() {
   cd "$srcdir"
   gendesk
   setconf "$pkgname.desktop" Categories "Graphics;3DGraphics;"
 
-  cd "$_dirname"
+  #chmod +x "$_pkgname-$pkgver-linux.bzip2.run"
+  #mkdir -p "$_pkgdir/usr/share/$pkgname"
+  #./$_pkgname-$pkgver-linux.bzip2.run --nox11 --nochown --tar xvf
+
+  cd "$_pkgname-master"
   export ESDL_PATH=$(echo /usr/lib/erlang/lib/esdl-*)
   make
   make lang
 }
 
 package() {
-  cd "$srcdir/$_dirname"
+  cd "$srcdir/$_pkgname-master"
 
   mkdir -p "$pkgdir/usr/lib/$pkgname"
   for subdir in ebin fonts patches plugins shaders textures; do
-    cp -r "$srcdir/$_dirname/$subdir/" "$pkgdir/usr/lib/$pkgname"
+    cp -r "$srcdir/$_pkgname-master/$subdir/" "$pkgdir/usr/lib/$pkgname"
   done
 
   install -Dm644 license.terms "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
