@@ -5,7 +5,7 @@
 pkgname=wings3d
 _pkgname=wings
 pkgver=1.4.1
-pkgrel=7
+pkgrel=8
 pkgdesc="3D modeling program"
 arch=('x86_64' 'i686')
 url="http://www.wings3d.com/"

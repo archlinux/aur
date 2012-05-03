@@ -1,7 +1,7 @@
 pkgbase = wings3d
 	pkgdesc = 3D modeling program
 	pkgver = 1.4.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.wings3d.com/
 	install = wings3d.install
 	arch = x86_64
