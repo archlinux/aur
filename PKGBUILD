@@ -4,7 +4,7 @@
 pkgname=xfce4-artwork
 pkgver=0.1.1a_git20110420
 _debian_pkgver=0.1.1a~git+20110420
-pkgrel=1
+pkgrel=2
 pkgdesc="Backdrops for the Xfce4 desktop"
 arch=('any')
 url="http://xfce-goodies.berlios.de/"
@@ -22,7 +22,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-0.1.1a"
-  make DESTDIR="$pkgdir" install
+  make backdropsdir="$pkgdir/usr/share/backgrounds/xfce" install
 }
 
 # vim:set ts=2 sw=2 et:
