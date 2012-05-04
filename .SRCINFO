@@ -1,6 +1,6 @@
 pkgbase = cacti-spine
 	pkgdesc = Faster poller for Cacti.
-	pkgver = 0.8.8
+	pkgver = 0.8.8_a
 	pkgrel = 1
 	url = http://cacti.net/spine_info.php
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = cacti-spine
 	license = GPL
 	depends = libmysqlclient
 	depends = net-snmp
-	depends = cacti=0.8.8
+	depends = cacti=0.8.8_a
 	backup = etc/spine.conf
-	source = http://www.cacti.net/downloads/spine/cacti-spine-0.8.8.tar.gz
-	md5sums = af1b087e0b90a11ce4619e94dc3180e0
+	source = http://www.cacti.net/downloads/spine/cacti-spine-0.8.8a.tar.gz
+	md5sums = a156128755b043dfc34811b3e2da967e
 
 pkgname = cacti-spine
 
