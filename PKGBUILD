@@ -2,7 +2,7 @@
 
 pkgname=flyspray
 pkgver=0.9.9.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A PHP web-based bug tracker"
 arch=('any')
 url="http://www.flyspray.org/"
@@ -12,12 +12,16 @@ makedepends=('unzip')
 backup=('etc/webapps/flyspray/.htaccess')
 options=('!strip')
 noextract=(flyspray-$pkgver.zip)
-source=(http://flyspray.org/flyspray-$pkgver.zip)
-md5sums=('095b46b08881554790830edab51970ed')
+source=(http://flyspray.org/flyspray-$pkgver.zip
+	"flyspray-php-5.4.patch::https://projects.archlinux.org/vhosts/bugs.archlinux.org.git/patch/?id=aaeeeb05f6d81ce88131239126b9da189fd1f904")
+md5sums=('095b46b08881554790830edab51970ed'
+         '1e5fdc4d2ae316e840960afd39d36061')
 
 build() {
   mkdir $srcdir/flyspray-${pkgver}
-  (cd $srcdir/flyspray-${pkgver} && unzip ../flyspray-$pkgver.zip)
+  (cd $srcdir/flyspray-${pkgver} && \
+	unzip ../flyspray-$pkgver.zip && \
+	patch -p1 <$srcdir/flyspray-php-5.4.patch)
 
   _instdir=$pkgdir/usr/share/webapps/flyspray
   mkdir -p ${_instdir} $pkgdir/etc/webapps/flyspray
