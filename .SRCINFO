@@ -1,0 +1,19 @@
+pkgbase = kvirtual
+	pkgdesc = KDE4 GUI-frontend for kvm/qemu emulator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/KVirtual?content=150682
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = qemu
+	source = kvirtual-1.0.0.tar.gz::https://github.com/didier13150/kvirtual/tarball/0e749e3
+	source = 0001-kvirtualview-add-unistd.sh-for-gcc-4.7.patch
+	md5sums = 39ddd199bd44f9819f74972b681f57c8
+	md5sums = 5250e0ea2f0a29af3f7d7cf58cdbd629
+
+pkgname = kvirtual
+

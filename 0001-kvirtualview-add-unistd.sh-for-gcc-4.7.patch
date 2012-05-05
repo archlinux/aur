@@ -1,0 +1,25 @@
+From cb20017e5c19268deacbd279f366ba1d8a1bc78d Mon Sep 17 00:00:00 2001
+From: BlackEagle <ike.devolder@gmail.com>
+Date: Sat, 5 May 2012 20:04:15 +0200
+Subject: [PATCH] kvirtualview :: add unistd.sh for gcc 4.7
+
+Signed-off-by: BlackEagle <ike.devolder@gmail.com>
+---
+ src/kvirtualview.cpp |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/kvirtualview.cpp b/src/kvirtualview.cpp
+index a7fbeab..6324e1e 100644
+--- a/src/kvirtualview.cpp
++++ b/src/kvirtualview.cpp
+@@ -46,6 +46,7 @@
+ #include <QButtonGroup>
+ 
+ #include <sys/sysinfo.h>
++#include <unistd.h>
+ 
+ KVirtualView::KVirtualView( QWidget * )
+ {
+-- 
+1.7.10.1
+
