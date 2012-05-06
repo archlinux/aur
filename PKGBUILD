@@ -1,6 +1,6 @@
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 
-pkgname=kvirtual
+pkgname=kvirtual-git
 pkgver=20120506
 pkgrel=1
 pkgdesc="KDE4 GUI-frontend for kvm/qemu emulator"
@@ -9,6 +9,8 @@ url="http://kde-apps.org/content/show.php/KVirtual?content=150682"
 license=('GPL2')
 depends=('kdebase-runtime' 'qemu')
 makedepends=('git' 'cmake' 'automoc4')
+provides=('kvirtual')
+conflicts=('kvirtual')
 source=()
 
 if [ -e .githash_$CARCH ] ; then
@@ -49,5 +51,6 @@ package() {
 	cd "$_gitname-build"
 	make DESTDIR="$pkgdir" install
 
+	cd "$srcdir/$_gitname"
 	git show | grep -m 1 commit | sed 's/commit //' > "$startdir/.githash_$CARCH"
 }

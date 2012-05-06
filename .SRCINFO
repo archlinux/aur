@@ -1,4 +1,4 @@
-pkgbase = kvirtual
+pkgbase = kvirtual-git
 	pkgdesc = KDE4 GUI-frontend for kvm/qemu emulator
 	pkgver = 20120506
 	pkgrel = 1
@@ -11,6 +11,8 @@ pkgbase = kvirtual
 	makedepends = automoc4
 	depends = kdebase-runtime
 	depends = qemu
+	provides = kvirtual
+	conflicts = kvirtual
 
-pkgname = kvirtual
+pkgname = kvirtual-git
 
