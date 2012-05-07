@@ -5,8 +5,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.10.3
-pkgrel=2
+pkgver=2.10.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -15,20 +15,11 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'farstream' 'avahi' 'tk' 'ca-certificates' 'intltool'
              'networkmanager')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
-        port-to-farstream-v3.patch)
-sha256sums=('0f67d96231fea3945c2735e6a3b4bd92590ef489fa1511fa69aa6a543cb4168b'
-            '4c11c10da01855afe865408f29f514672b736830105523fe48aa74676d5052ca')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
+sha256sums=('8fbef835c8dfa2281532ad7064d664477d72015d6dcd4345362dcfe658aaee0e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # Apply patch for farsight -> farstream transition
-  # http://developer.pidgin.im/ticket/14936
-  patch -Np1 -i "$srcdir/port-to-farstream-v3.patch"
-
-  # The farstream patch changes configure.ac
-  autoreconf -vi
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
@@ -53,9 +44,7 @@ package_pidgin(){
   depends=('libpurple' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
            'gstreamer0.10' 'hicolor-icon-theme')
   optdepends=('aspell: for spelling correction'
-              'ca-certificates: SSL CA certificates'
-              'gstreamer0.10-good-plugins: video and voice support'
-              'tk: Tcl/Tk scripting support')
+              'gstreamer0.10-good-plugins: video and voice support')
   install=pidgin.install
 
   cd "$srcdir/pidgin-$pkgver"
@@ -78,7 +67,9 @@ package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
   depends=('farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
-              'dbus-python: for purple-remote and purple-url-handler')
+              'ca-certificates: SSL CA certificates'
+              'dbus-python: for purple-remote and purple-url-handler'
+              'tk: Tcl/Tk scripting support')
 
   cd "$srcdir/pidgin-$pkgver"
 
@@ -90,9 +81,6 @@ package_libpurple(){
 package_finch(){
   pkgdesc="A ncurses-based messaging client"
   depends=("libpurple=$pkgver-$pkgrel" 'python2' 'gstreamer0.10')
-  optdepends=('avahi: Bonjour protocol support'
-              'ca-certificates: SSL CA certificates'
-              'tk: Tcl/Tk scripting support')
 
   cd "$srcdir/pidgin-$pkgver"
 
