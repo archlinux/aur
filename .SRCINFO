@@ -1,8 +1,10 @@
 pkgbase = birthday
 	pkgdesc = A program that outputs reminders for upcoming events (e.g. birthdays)
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freshports.org/misc/birthday/
+	arch = i686
+	arch = x86_64
 	license = GPL
 	depends = glibc
 	source = ftp://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/birthday-1.5.tar.gz
