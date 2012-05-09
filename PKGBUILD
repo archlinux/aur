@@ -1,8 +1,8 @@
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kvirtual
-pkgver=1.0.1
-_commithash='bfc170f'
+pkgver=1.1.0
+_commithash='333d832'
 _developer='didier13150'
 pkgrel=1
 pkgdesc="KDE4 GUI-frontend for kvm/qemu emulator"
@@ -28,4 +28,4 @@ package() {
 	cd "$pkgname-$pkgver/build"
 	make DESTDIR="$pkgdir" install
 }
-sha256sums=('af5258638e72b31921ffb1f6586d92d8fbd172b8e9e525d04990dd2412e85b13')
+sha256sums=('45d995d62810c7d10793b1b38b2bb3e23d8cbc6a26c3e63ba9264b7b76ee2fa9')
