@@ -6,7 +6,7 @@ _actualname="refind"
 _pkgname="${_actualname}-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120506
+pkgver=20120510
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -97,7 +97,7 @@ package() {
 	
 	## install the rEFInd x86_64 UEFI app
 	install -d "${pkgdir}/boot/efi/EFI/arch/refind/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/refind/refind.efi" "${pkgdir}/boot/efi/EFI/arch/refind/refindx64.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build/refind/refind_x64.efi" "${pkgdir}/boot/efi/EFI/arch/refind/refindx64.efi"
 	
 	## install the rEFInd config file
 	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/boot/efi/EFI/arch/refind/refind.conf"
