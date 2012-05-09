@@ -9,7 +9,7 @@
 
 pkgname=chromium
 pkgver=18.0.1025.168
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -17,12 +17,8 @@ license=('BSD')
 depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
          'libxss' 'libgcrypt' 'ttf-dejavu' 'desktop-file-utils'
          'hicolor-icon-theme')
-# Building with GCC 4.7 causes segfaults; build with 4.6 for the time being
-# https://bugs.archlinux.org/task/29309
-# Mirror snapshop before GCC 4.7 moved to [core]:
-# Server = http://arm.konnichi.com/2012/04/02/$repo/os/$arch
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
-             'elfutils' 'gcc<4.7')
+             'elfutils')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 # Needed for the NaCl toolchain
 [[ $CARCH == x86_64 ]] && makedepends+=('lib32-zlib')
@@ -34,6 +30,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.desktop
         chromium.sh
         chromium-gcc47.patch
+        sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch
         chromium-media-no-sse-r0.patch
         chromium-revert-jpeg-swizzle-r2.patch)
 sha256sums=('1f1fc7bd8066835844a465f9d60c49c21173ff559c40e5d113fe9c4627fc18b9'
@@ -41,6 +38,7 @@ sha256sums=('1f1fc7bd8066835844a465f9d60c49c21173ff559c40e5d113fe9c4627fc18b9'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
+            'a700aa054800d1b21d84eaba27c38a703dfa023e9226d11a942690c2a0630aff'
             '71751bf5913da1eec3c88c433044224c869b0abd5a29172cf239bddbb4eff761'
             'd99162aa6bae562f116a42347254bbec3752464f0a3e4d8675e2b287b2a838a2')
 
@@ -48,11 +46,11 @@ build() {
   cd "$srcdir/chromium-$pkgver"
 
   # Fix build with gcc 4.7 (patch from openSUSE)
-  #patch -Np2 -i "$srcdir/chromium-gcc47.patch"
+  patch -Np2 -i "$srcdir/chromium-gcc47.patch"
   # Add missing include that defines OS_POSIX
-  #sed -i '1 i\
-  #  #include "build/build_config.h"' \
-  #  chrome/browser/diagnostics/diagnostics_main.cc
+  sed -i '1 i\
+    #include "build/build_config.h"' \
+    chrome/browser/diagnostics/diagnostics_main.cc
 
   # http://code.google.com/p/chromium/issues/detail?id=109527
   sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
@@ -62,6 +60,12 @@ build() {
 
   # Fix JPEG image rendering problem (patch from Gentoo bug #393471)
   patch -Np0 -i "$srcdir/chromium-revert-jpeg-swizzle-r2.patch"
+
+  # SQLite: Fix a problem in fts3_write.c causing stack memory to be referenced
+  # after it is out of scope (http://www.sqlite.org/src/info/f9c4a7c8f4)
+  # (http://code.google.com/p/chromium/issues/detail?id=122525)
+  patch -i "$srcdir/sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch" \
+    third_party/sqlite/amalgamation/sqlite3.c
 
   # Use Python 2
   find . -type f -exec sed -i -r \
