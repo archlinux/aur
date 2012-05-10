@@ -2,8 +2,8 @@
 # Contributor: Judd <jvinet@zeroflux.org>
 
 pkgname=xinetd
-pkgver=2.3.14
-pkgrel=8
+pkgver=2.3.15
+pkgrel=1
 pkgdesc="A secure replacement for inetd"
 arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
@@ -14,12 +14,14 @@ source=(http://www.xinetd.org/xinetd-$pkgver.tar.gz
         xinetd.conf
         xinetd
         servers
-        services)
-md5sums=('567382d7972613090215c6c54f9b82d9'
+        services
+        xinetd.service)
+md5sums=('77358478fd58efa6366accae99b8b04c'
          'f109f699a07bc8cfb5791060f5e87f9e'
          'ea37a2794f202e6b953d9b6956dad16a'
          '21f47b4aa20921cfaddddd9f9a407f81'
-         '9fa2061dc7dd738c8424251deb86f81e')
+         '9fa2061dc7dd738c8424251deb86f81e'
+         '4473d8b2b6c984626d9f73a0b89711ee')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -37,6 +39,8 @@ package() {
   install -Dm644 $srcdir/servers $pkgdir/etc/xinetd.d/servers
   install -Dm644 $srcdir/services $pkgdir/etc/xinetd.d/services
 
+  # install systemd files
+  install -Dm644 $srcdir/xinetd.service $pkgdir/usr/lib/systemd/system/xinetd.service
   # install license
   install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
 }
