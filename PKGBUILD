@@ -3,7 +3,7 @@
 
 pkgname=php-proctitle
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension that allows changing the current process' name"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/proctitle"
@@ -14,6 +14,7 @@ backup=(etc/php/conf.d/runkit.ini)
 
 build() {
 	cd "$srcdir/proctitle-$pkgver"
+	sed 's|static function_entry|static zend_function_entry|g' -i proctitle.c
 	phpize
 	./configure --prefix=/usr
 	make
