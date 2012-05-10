@@ -3,18 +3,10 @@ available() {
 }
 
 post_install() {
-	if available update-mime-database
-	then
-		update-mime-database /usr/share/mime >/dev/null
-	fi
+	update-mime-database /usr/share/mime >/dev/null
+	update-desktop-database -q /usr/share/applications
 
-	if available update-desktop-database
-	then
-		update-desktop-database -q /usr/share/applications
-	fi
-
-	if available gtk-update-icon-cache
-	then
+	if available gtk-update-icon-cache; then
 			gtk-update-icon-cache -q /usr/share/icons/hicolor
 	fi
 }
