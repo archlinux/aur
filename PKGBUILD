@@ -3,7 +3,7 @@
 pkgname=php-stomp
 _extname=stomp
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP stomp client extension"
 arch=("i686" "x86_64")
 url="http://www.php.net/manual/en/book.stomp.php"
