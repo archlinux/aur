@@ -1,7 +1,7 @@
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kvirtual-git
-pkgver=20120509
+pkgver=20120511
 pkgrel=1
 pkgdesc="KDE4 GUI-frontend for kvm/qemu emulator"
 arch=('i686' 'x86_64')
