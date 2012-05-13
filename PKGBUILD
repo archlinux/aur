@@ -7,7 +7,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.3
-pkgver=${_basekernel}.5
+pkgver=${_basekernel}.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
         'i915-fix-ghost-tv-output.patch'
         'ext4-options.patch')
 md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'd346edca5d3de7052f49996b01cef401'
+         'a7f67e9c491403906e4bb475de194631'
          'a69f3228ec513be819e20f0e6625fef6'
          '744c93715cbf8dfd31db5f7b216b954c'
          'eb14dcfd80c00852ef81ded6e826826a'
