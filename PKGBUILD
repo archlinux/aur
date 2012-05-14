@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=0.9.11
-pkgrel=2
+pkgver=0.9.12
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -35,17 +35,15 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd-guests.conf.d
 	openbsd-netcat-default.patch
 	unixperms.patch
-	yajl-2.x.patch
-	"libvirt-qemu-ssh-user.patch::http://libvirt.org/git/?p=libvirt.git;a=patch;h=4eb1c2560d1ab8bae620788d343e9e7b32ddc066")
-md5sums=('6e9fab115075a8fd21d9bd0d7e558a52'
+	yajl-2.x.patch)
+md5sums=('5e842bc55733ceba60c64767580ff3e4'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '8297b1be794a24cc77f66af9380ace59'
          'bc2971dacdbac967fc3474e50affc345'
          'b0be50eb9dfe4d133decf23b60880f7d'
          'db95aecdf2ccf3693fef5821cdcb7eba'
-         '5745bb8d0b254abb7a3528c66e03b0f9'
-         '40f6ad1d227ae2c41b4a83f7a3165ffb')
+         '5745bb8d0b254abb7a3528c66e03b0f9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -63,7 +61,6 @@ build() {
 #  patch -Np1 -i "$srcdir"/unixperms.patch
 
   [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
-  [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/libvirt-qemu-ssh-user.patch
 
   export LDFLAGS=-lX11
   export RADVD=/usr/sbin/radvd
