@@ -1,7 +1,7 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
-pkgver=1.5.5
-pkgrel=3
+pkgver=1.6
+pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
@@ -9,19 +9,17 @@ license=('custom')
 depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
 makedepends=('inetutils')
 options=(!libtool)
-source=(http://www.open-mpi.org/software/ompi/v1.5/downloads/${pkgname}-${pkgver}.tar.bz2
-        openmpi-1.5.4-fix-fakeroot-execution.patch)
-sha1sums=('206e555f6d376443f2342f721d944e67dd1a04ef'
-          'ec46abb6f9e01daca910e4079b9abc036db9ed20')
+source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('8b81eea712bb8f8120468003b5f29baecedf2367')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
 
-   # Fix fakeroot problem (FS#28644)
-   patch -Np1 -i ../openmpi-1.5.4-fix-fakeroot-execution.patch
-   
    # Make sure we use the system ltdl librariry rather than the ones in the tarball
    rm -r opal/libltdl
+
+   # Search for openmpi-default-hostfile in /etc/openmpi
+   sed -i "s|%s/etc/openmpi-default-hostfile|/etc/openmpi/openmpi-default-hostfile|" orte/runtime/orte_mca_params.c
 
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
