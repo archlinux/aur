@@ -2,7 +2,7 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=unarchiver
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="An Objective-C application for uncompressing archive files"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ makedepends=('gcc-objc')
 source=("http://theunarchiver.googlecode.com/files/TheUnarchiver${pkgver}_src.zip"
         "native_obj_exceptions.patch"
         "libz.patch")
-sha1sums=('a8a28e3372a8811689c39871f5de86c64c8c466c'
+sha1sums=('8ab30c79e653ed27b4f9e5f5ae649cbc7b18701a'
           'b8024026607dc2de758479b73d8b01ca6f692b59'
           '003d114a0ba9a919af602881ef5e04cdba2e4c50')
 
