@@ -1,0 +1,12 @@
+diff -rub stomp-1.0.3/php_stomp.c stomp-1.0.3-php54/php_stomp.c
+--- stomp-1.0.3/php_stomp.c	2010-10-13 05:28:38.000000000 +0200
++++ stomp-1.0.3-php54/php_stomp.c	2012-05-15 11:50:11.063386657 +0200
+@@ -327,7 +327,7 @@
+ }
+ 
+ 	 
+-#if (PHP_MAJOR_VERSION == 5 && PHP_MINOR_VERSION == 3 && PHP_RELEASE_VERSION >= 99) || (PHP_MAJOR_VERSION > 5)
++#if (PHP_MAJOR_VERSION == 5 && (PHP_MINOR_VERSION >= 4 || PHP_MINOR_VERSION == 3 && PHP_RELEASE_VERSION >= 99)) || (PHP_MAJOR_VERSION > 5)
+ #define PHP_STOMP_RUNTIME_CACHE 
+ #endif 
+ static zend_object_value php_stomp_new(zend_class_entry *ce TSRMLS_DC)
