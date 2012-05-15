@@ -8,14 +8,14 @@
 # build time.
 
 pkgname=chromium
-pkgver=18.0.1025.168
-pkgrel=2
+pkgver=19.0.1084.46
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
-         'libxss' 'libgcrypt' 'ttf-dejavu' 'desktop-file-utils'
+         'libxss' 'libgcrypt' 'libxslt' 'ttf-dejavu' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
              'elfutils')
@@ -30,36 +30,22 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.desktop
         chromium.sh
         chromium-gcc47.patch
-        sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch
-        chromium-media-no-sse-r0.patch
-        chromium-revert-jpeg-swizzle-r2.patch)
-sha256sums=('1f1fc7bd8066835844a465f9d60c49c21173ff559c40e5d113fe9c4627fc18b9'
-            'f9c5bc8ef4e251769a0609cbca1692682140dc93364c2558aaade3c404f3d987'
+        sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch)
+sha256sums=('2fb77e5d155343a828bd04b6b9d4469fce3033dc6b9f8b53e34a9d02c464639f'
+            '2256327dc58792309911fe88996527925b79ddc7729ec78548b4adf5e4983d42'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
             'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
-            'a700aa054800d1b21d84eaba27c38a703dfa023e9226d11a942690c2a0630aff'
-            '71751bf5913da1eec3c88c433044224c869b0abd5a29172cf239bddbb4eff761'
-            'd99162aa6bae562f116a42347254bbec3752464f0a3e4d8675e2b287b2a838a2')
+            'a700aa054800d1b21d84eaba27c38a703dfa023e9226d11a942690c2a0630aff')
 
 build() {
   cd "$srcdir/chromium-$pkgver"
 
   # Fix build with gcc 4.7 (patch from openSUSE)
   patch -Np2 -i "$srcdir/chromium-gcc47.patch"
-  # Add missing include that defines OS_POSIX
-  sed -i '1 i\
-    #include "build/build_config.h"' \
-    chrome/browser/diagnostics/diagnostics_main.cc
 
   # http://code.google.com/p/chromium/issues/detail?id=109527
   sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
-
-  # Remove unconditional use of SSE3 (patch from Gentoo)
-  patch -Np0 -i "$srcdir/chromium-media-no-sse-r0.patch"
-
-  # Fix JPEG image rendering problem (patch from Gentoo bug #393471)
-  patch -Np0 -i "$srcdir/chromium-revert-jpeg-swizzle-r2.patch"
 
   # SQLite: Fix a problem in fts3_write.c causing stack memory to be referenced
   # after it is out of scope (http://www.sqlite.org/src/info/f9c4a7c8f4)
@@ -87,10 +73,15 @@ build() {
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
 
+  # Silence "identifier 'nullptr' is a keyword in C++11" warnings
+  CFLAGS+=' -Wno-c++0x-compat'
+
   build/gyp_chromium --depth=. \
     -Dwerror= \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
     -Dlinux_strip_binary=1 \
+    -Dlinux_use_gold_binary=0 \
+    -Dlinux_use_gold_flags=0 \
     -Drelease_extra_cflags="$CFLAGS" \
     -Dffmpeg_branding=Chrome \
     -Dproprietary_codecs=1 \
@@ -99,7 +90,7 @@ build() {
     -Duse_system_libevent=1 \
     -Duse_system_libjpeg=1 \
     -Duse_system_libpng=1 \
-    -Duse_system_libxml=0 \
+    -Duse_system_libxml=1 \
     -Duse_system_ssl=0 \
     -Duse_system_yasm=1 \
     -Duse_system_zlib=1 \
