@@ -4,8 +4,8 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="Lightweight web browser based on Gtk WebKit"
 arch=('x86_64' 'i686')
 url="http://www.twotoasts.de/index.php?/pages/midori_summary.html"
@@ -15,10 +15,8 @@ depends=('libwebkit>=1.3.13' 'libunique' 'hicolor-icon-theme' 'desktop-file-util
 makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2>=2.7.1' 'vala') # 'git'
 optdepends=('vala: for use in extensions')
 options=('!emptydirs')
-source=(http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2
-        0001-Fix-libsoup-version-check-defines.patch)
-sha256sums=('7b57cf3ebb56eef586351f2ae9f71ec9683aedff0b79a071b70b811d9876ff84'
-            '0095c23247c62b6a4b3ab4312f68b49e2d0974ce3fd701a2ce0114817c7bd399')
+source=(http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
+sha256sums=('910f47bd2b5f2998cd4fce45c08f9e282318820b68562d0bade2096b9a17e3ea')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,9 +25,6 @@ build() {
   export PYTHON=/usr/bin/python2
   sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" wscript waf
   
-  # FS#29468
-  patch -Np1 -i "$srcdir"/0001-Fix-libsoup-version-check-defines.patch
-
   ./configure \
     --prefix=/usr \
     --jobs=${MAKEFLAGS/-j/} \
