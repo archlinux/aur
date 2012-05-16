@@ -1,0 +1,19 @@
+pkgbase = cardpeek-svn
+	pkgdesc = A tool to read the contents of smartcards
+	pkgver = 206
+	pkgrel = 1
+	url = https://code.google.com/p/cardpeek/
+	install = cardpeek.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = lua
+	depends = pcsclite
+	provides = cardpeek
+	conflicts = cardpeek
+
+pkgname = cardpeek-svn
+
