@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=0.9.11
-pkgrel=7
+pkgver=0.9.12
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -34,7 +34,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
 	openbsd-netcat-default.patch)
-md5sums=('6e9fab115075a8fd21d9bd0d7e558a52'
+md5sums=('5e842bc55733ceba60c64767580ff3e4'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '8297b1be794a24cc77f66af9380ace59'
