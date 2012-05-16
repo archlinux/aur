@@ -1,21 +1,3 @@
-diff -wbBur netcf-0.1.7/configure.ac netcf-0.1.7.my/configure.ac
---- netcf-0.1.7/configure.ac	2010-09-24 18:50:44.000000000 +0400
-+++ netcf-0.1.7.my/configure.ac	2012-05-16 12:59:42.000000000 +0400
-@@ -32,11 +32,12 @@
- PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
- PKG_CHECK_MODULES([LIBXSLT], [libxslt])
- PKG_CHECK_MODULES([LIBEXSLT], [libexslt])
--PKG_CHECK_MODULES([LIBNL], [libnl-1])
-+PKG_CHECK_MODULES([LIBNL], [libnl-3.0])
-+PKG_CHECK_MODULES([LIBNL_ROUTE], [libnl-route-3.0])
- 
- NETCF_CHECK_READLINE
- 
--NETCF_LIBDEPS=$(echo $LIBAUGEAS_LIBS $LIBEXSLT_LIBS $LIBXSLT_LIBS $LIBXML_LIBS $LIBNL_LIBS)
-+NETCF_LIBDEPS=$(echo $LIBAUGEAS_LIBS $LIBEXSLT_LIBS $LIBXSLT_LIBS $LIBXML_LIBS $LIBNL_LIBS $LIBNL_ROUTE_LIBS)
- AC_SUBST([NETCF_LIBDEPS])
- 
- AC_CHECK_HEADER([pthread.h],
 diff -wbBur netcf-0.1.7/data/xml/initscripts-get.xsl netcf-0.1.7.my/data/xml/initscripts-get.xsl
 --- netcf-0.1.7/data/xml/initscripts-get.xsl	2009-10-04 10:18:41.000000000 +0400
 +++ netcf-0.1.7.my/data/xml/initscripts-get.xsl	2012-05-16 12:59:24.000000000 +0400
@@ -410,27 +392,6 @@ diff -wbBur netcf-0.1.7/src/drv_initscripts.c netcf-0.1.7.my/src/drv_initscripts
              ERR_BAIL(ncf);
          }
      }
-diff -wbBur netcf-0.1.7/src/dutil.c netcf-0.1.7.my/src/dutil.c
---- netcf-0.1.7/src/dutil.c	2010-09-23 16:13:13.000000000 +0400
-+++ netcf-0.1.7.my/src/dutil.c	2012-05-16 12:59:24.000000000 +0400
-@@ -495,7 +495,7 @@
- 
- int netlink_init(struct netcf *ncf) {
- 
--    ncf->driver->nl_sock = nl_handle_alloc();
-+    ncf->driver->nl_sock = nl_socket_alloc();
-     if (ncf->driver->nl_sock == NULL)
-         goto error;
-     if (nl_connect(ncf->driver->nl_sock, NETLINK_ROUTE) < 0) {
-@@ -536,7 +536,7 @@
-     }
-     if (ncf->driver->nl_sock) {
-         nl_close(ncf->driver->nl_sock);
--        nl_handle_destroy(ncf->driver->nl_sock);
-+        nl_socket_free(ncf->driver->nl_sock);
-         ncf->driver->nl_sock = NULL;
-     }
-     return 0;
 diff -wbBur netcf-0.1.7/tests/interface/bridge.xml~ netcf-0.1.7.my/tests/interface/bridge.xml~
 --- netcf-0.1.7/tests/interface/bridge.xml~	2009-10-13 21:14:53.000000000 +0400
 +++ netcf-0.1.7.my/tests/interface/bridge.xml~	2012-05-16 12:59:24.000000000 +0400
