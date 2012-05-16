@@ -33,17 +33,13 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
-	openbsd-netcat-default.patch
-	unixperms.patch
-	yajl-2.x.patch)
+	openbsd-netcat-default.patch)
 md5sums=('5e842bc55733ceba60c64767580ff3e4'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '8297b1be794a24cc77f66af9380ace59'
          'bc2971dacdbac967fc3474e50affc345'
-         'b0be50eb9dfe4d133decf23b60880f7d'
-         'db95aecdf2ccf3693fef5821cdcb7eba'
-         '5745bb8d0b254abb7a3528c66e03b0f9')
+         'b0be50eb9dfe4d133decf23b60880f7d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -54,11 +50,6 @@ build() {
     sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-
-#  for more information on authentication see http://libvirt.org/auth.html
-#  If you wish to have unix-permissions based access rather than only polkit
-#  access, create a group called libvirt and uncomment the line below:
-#  patch -Np1 -i "$srcdir"/unixperms.patch
 
   [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
 
