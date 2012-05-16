@@ -3,7 +3,7 @@
 
 pkgname=netcf
 pkgver=0.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for configuring network interfaces"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -14,11 +14,14 @@ options=(!libtool)
 source=("https://fedorahosted.org/released/netcf/$pkgname-$pkgver.tar.gz"
         netcf-0.1.7.patch)
 md5sums=('8e313b623c907eb035cf3948b71fecc2'
-         '0e88ee6813219e9e75a943444fe439f5')
+         'd7e6fc7e3efb9c2160b2f3ad30995165')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i ${srcdir}/netcf-0.1.7.patch
+  aclocal
+  automake --add-missing
+  autoreconf
   ./configure --prefix=/usr --disable-static
   make
 }

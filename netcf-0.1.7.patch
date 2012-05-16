@@ -1,6 +1,24 @@
-diff -ur netcf-0.1.7.ori//data/xml/initscripts-get.xsl netcf-0.1.7/data/xml/initscripts-get.xsl
---- netcf-0.1.7.ori//data/xml/initscripts-get.xsl	2009-10-04 08:18:41.000000000 +0200
-+++ netcf-0.1.7/data/xml/initscripts-get.xsl	2010-12-08 14:54:28.891813397 +0100
+diff -wbBur netcf-0.1.7/configure.ac netcf-0.1.7.my/configure.ac
+--- netcf-0.1.7/configure.ac	2010-09-24 18:50:44.000000000 +0400
++++ netcf-0.1.7.my/configure.ac	2012-05-16 12:59:42.000000000 +0400
+@@ -32,11 +32,12 @@
+ PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
+ PKG_CHECK_MODULES([LIBXSLT], [libxslt])
+ PKG_CHECK_MODULES([LIBEXSLT], [libexslt])
+-PKG_CHECK_MODULES([LIBNL], [libnl-1])
++PKG_CHECK_MODULES([LIBNL], [libnl-3.0])
++PKG_CHECK_MODULES([LIBNL_ROUTE], [libnl-route-3.0])
+ 
+ NETCF_CHECK_READLINE
+ 
+-NETCF_LIBDEPS=$(echo $LIBAUGEAS_LIBS $LIBEXSLT_LIBS $LIBXSLT_LIBS $LIBXML_LIBS $LIBNL_LIBS)
++NETCF_LIBDEPS=$(echo $LIBAUGEAS_LIBS $LIBEXSLT_LIBS $LIBXSLT_LIBS $LIBXML_LIBS $LIBNL_LIBS $LIBNL_ROUTE_LIBS)
+ AC_SUBST([NETCF_LIBDEPS])
+ 
+ AC_CHECK_HEADER([pthread.h],
+diff -wbBur netcf-0.1.7/data/xml/initscripts-get.xsl netcf-0.1.7.my/data/xml/initscripts-get.xsl
+--- netcf-0.1.7/data/xml/initscripts-get.xsl	2009-10-04 10:18:41.000000000 +0400
++++ netcf-0.1.7.my/data/xml/initscripts-get.xsl	2012-05-16 12:59:24.000000000 +0400
 @@ -47,9 +47,12 @@
    <xsl:template name="vlan-interface-common">
      <xsl:variable name="iface" select="concat(vlan/interface/@name, '.', vlan/@tag)"/>
@@ -104,9 +122,9 @@ diff -ur netcf-0.1.7.ori//data/xml/initscripts-get.xsl netcf-0.1.7/data/xml/init
          <xsl:if test="ip/@prefix">
            <node label="NETMASK" value="{ipcalc:netmask(ip/@prefix)}"/>
          </xsl:if>
-diff -ur netcf-0.1.7.ori//data/xml/initscripts-put.xsl netcf-0.1.7/data/xml/initscripts-put.xsl
---- netcf-0.1.7.ori//data/xml/initscripts-put.xsl	2009-10-04 08:18:41.000000000 +0200
-+++ netcf-0.1.7/data/xml/initscripts-put.xsl	2010-11-26 10:44:46.133757628 +0100
+diff -wbBur netcf-0.1.7/data/xml/initscripts-put.xsl netcf-0.1.7.my/data/xml/initscripts-put.xsl
+--- netcf-0.1.7/data/xml/initscripts-put.xsl	2009-10-04 10:18:41.000000000 +0400
++++ netcf-0.1.7.my/data/xml/initscripts-put.xsl	2012-05-16 12:59:24.000000000 +0400
 @@ -47,7 +47,7 @@
    </xsl:template>
  
@@ -191,9 +209,9 @@ diff -ur netcf-0.1.7.ori//data/xml/initscripts-put.xsl netcf-0.1.7/data/xml/init
              <xsl:choose>
                <xsl:when test="node[@label = 'PREFIX']">
                  <xsl:attribute name="prefix"><xsl:value-of select="node[@label = 'PREFIX']/@value"/></xsl:attribute>
-diff -ur netcf-0.1.7.ori//src/drv_initscripts.c netcf-0.1.7/src/drv_initscripts.c
---- netcf-0.1.7.ori//src/drv_initscripts.c	2010-09-23 14:13:13.000000000 +0200
-+++ netcf-0.1.7/src/drv_initscripts.c	2010-12-08 13:57:02.027361706 +0100
+diff -wbBur netcf-0.1.7/src/drv_initscripts.c netcf-0.1.7.my/src/drv_initscripts.c
+--- netcf-0.1.7/src/drv_initscripts.c	2010-09-23 16:13:13.000000000 +0400
++++ netcf-0.1.7.my/src/drv_initscripts.c	2012-05-16 12:59:24.000000000 +0400
 @@ -49,17 +49,20 @@
  #include <libexslt/exslt.h>
  
@@ -392,9 +410,30 @@ diff -ur netcf-0.1.7.ori//src/drv_initscripts.c netcf-0.1.7/src/drv_initscripts.
              ERR_BAIL(ncf);
          }
      }
-diff -ur netcf-0.1.7.ori//tests/interface/bridge.xml~ netcf-0.1.7/tests/interface/bridge.xml~
---- netcf-0.1.7.ori//tests/interface/bridge.xml~	2009-10-13 19:14:53.000000000 +0200
-+++ netcf-0.1.7/tests/interface/bridge.xml~	2009-10-14 05:09:05.000000000 +0200
+diff -wbBur netcf-0.1.7/src/dutil.c netcf-0.1.7.my/src/dutil.c
+--- netcf-0.1.7/src/dutil.c	2010-09-23 16:13:13.000000000 +0400
++++ netcf-0.1.7.my/src/dutil.c	2012-05-16 12:59:24.000000000 +0400
+@@ -495,7 +495,7 @@
+ 
+ int netlink_init(struct netcf *ncf) {
+ 
+-    ncf->driver->nl_sock = nl_handle_alloc();
++    ncf->driver->nl_sock = nl_socket_alloc();
+     if (ncf->driver->nl_sock == NULL)
+         goto error;
+     if (nl_connect(ncf->driver->nl_sock, NETLINK_ROUTE) < 0) {
+@@ -536,7 +536,7 @@
+     }
+     if (ncf->driver->nl_sock) {
+         nl_close(ncf->driver->nl_sock);
+-        nl_handle_destroy(ncf->driver->nl_sock);
++        nl_socket_free(ncf->driver->nl_sock);
+         ncf->driver->nl_sock = NULL;
+     }
+     return 0;
+diff -wbBur netcf-0.1.7/tests/interface/bridge.xml~ netcf-0.1.7.my/tests/interface/bridge.xml~
+--- netcf-0.1.7/tests/interface/bridge.xml~	2009-10-13 21:14:53.000000000 +0400
++++ netcf-0.1.7.my/tests/interface/bridge.xml~	2012-05-16 12:59:24.000000000 +0400
 @@ -2,10 +2,12 @@
    <start mode="onboot"/>
    <mtu size="1500"/>
@@ -409,9 +448,9 @@ diff -ur netcf-0.1.7.ori//tests/interface/bridge.xml~ netcf-0.1.7/tests/interfac
 +    <interface type="ethernet" name="eth1"/>
    </bridge>
  </interface>
-diff -ur netcf-0.1.7.ori//tests/interface/vlan.xml~ netcf-0.1.7/tests/interface/vlan.xml~
---- netcf-0.1.7.ori//tests/interface/vlan.xml~	2010-07-30 06:02:39.000000000 +0200
-+++ netcf-0.1.7/tests/interface/vlan.xml~	2010-09-07 18:26:22.000000000 +0200
+diff -wbBur netcf-0.1.7/tests/interface/vlan.xml~ netcf-0.1.7.my/tests/interface/vlan.xml~
+--- netcf-0.1.7/tests/interface/vlan.xml~	2010-07-30 08:02:39.000000000 +0400
++++ netcf-0.1.7.my/tests/interface/vlan.xml~	2012-05-16 12:59:24.000000000 +0400
 @@ -1,9 +1,9 @@
 -<interface type="vlan" name="eth1.42">
 +<interface type="vlan" name="eth0.42">
