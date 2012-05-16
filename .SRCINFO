@@ -1,6 +1,6 @@
 pkgbase = postgresql-testing
 	pkgdesc = Beta version of the PostgreSQL database (includes both server and libs)
-	pkgver = 9.1.0
+	pkgver = 9.2beta1
 	pkgrel = 1
 	url = http://www.postgresql.org/developer/alpha
 	install = postgresql.install
@@ -10,25 +10,24 @@ pkgbase = postgresql-testing
 	makedepends = python2
 	makedepends = perl
 	depends = libxml2
-	depends = readline>=6.0
+	depends = readline
 	depends = openssl
-	depends = bash
 	optdepends = python2: PL/Python procedure support
-	provides = postgresql-libs=9.1.0
-	provides = postgresql=9.1.0
+	provides = postgresql-libs=9.2beta1
+	provides = postgresql=9.2beta1
 	conflicts = postgresql-libs
 	conflicts = postgresql
 	options = !strip
 	backup = etc/conf.d/postgresql
 	backup = etc/pam.d/postgresql
-	source = http://wwwmaster.postgresql.org/redir/354/f/source/v9.1.0/postgresql-9.1.0.tar.bz2
-	source = postgresql.rc
+	source = http://ftp.postgresql.org/pub/source/v9.2.0beta1/postgresql-9.2beta1.tar.bz2
+	source = postgresql.rcd
 	source = postgresql.confd
 	source = postgresql.pam
 	source = postgresql.logrotate
-	md5sums = 0497b9da1d7c380c340a9a87ba5500fe
-	md5sums = eacf91f987d230f2dc2d040618ea1817
-	md5sums = d63a05943cf0a2726aa2070f3033c569
+	md5sums = 7bb0b7a3a6c32a9ae153d4132fe47d01
+	md5sums = 1ddd1df8010549f237e7983bb326025e
+	md5sums = a54d09a20ab1672adf08f037df188d53
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
 	md5sums = d28e443f9f65a5712c52018b84e27137
 

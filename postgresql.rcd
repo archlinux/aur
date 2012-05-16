@@ -1,0 +1,79 @@
+#!/bin/bash
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+. /etc/conf.d/postgresql
+
+# Default PGROOT if it wasn't defined in the conf.d file
+PGROOT=${PGROOT:-/var/lib/postgres}
+PGLOG=${PGLOG:-/var/log/postgresql.log}
+PGCTL_BIN=/usr/bin/pg_ctl
+PGCTL_ARGS=(-D "$PGROOT/data" -l "$PGLOG" -s -w)
+[[ $PGOPTS ]] && PGCTL_ARGS+=(-o "$PGOPTS")
+
+postgres_init() {
+  # initialization
+  if [[ ! -d "$PGROOT/data" ]]; then
+    mkdir -p "$PGROOT/data" && chown -R postgres:postgres "$PGROOT"
+    su - postgres -c "/usr/bin/initdb $INITOPTS -D '$PGROOT/data'"
+  fi
+  if [[ ! -e "$PGLOG" ]]; then
+    touch "$PGLOG"
+    chown postgres "$PGLOG"
+  fi
+}
+
+do_postgres() {
+  su - postgres -c "'$PGCTL_BIN' $(printf '%q ' "${PGCTL_ARGS[@]}" "$@")"
+}
+
+case $1 in
+  start)
+    postgres_init
+    stat_busy "Starting PostgreSQL"
+    if do_postgres start; then
+      add_daemon postgresql
+      stat_done
+    else
+      stat_fail
+      exit 1
+    fi
+    ;;
+  stop)
+    stat_busy "Stopping PostgreSQL"
+    if do_postgres stop -m fast; then
+      rm_daemon postgresql
+      stat_done
+    else
+      stat_fail
+      exit 1
+    fi
+    ;;
+  reload)
+    stat_busy "Reloading PostgreSQL"
+    if do_postgres reload; then
+      stat_done
+    else
+      stat_fail
+      exit 1
+    fi
+    ;;
+  restart)
+    postgres_init
+    stat_busy "Restarting PostgreSQL"
+    if do_postgres restart -m fast; then
+      add_daemon postgresql
+      stat_done
+    else
+      stat_fail
+      exit 1
+    fi
+    ;;
+  status)
+    stat_busy "Checking PostgreSQL status";
+    ck_status postgresql
+    ;;
+  *)
+    echo "usage: $0 {start|stop|reload|restart|status}"
+    exit 1
+esac

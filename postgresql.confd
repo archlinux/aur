@@ -1,5 +1,11 @@
-#
-# Parameters to be passed to postgresql
-#
-PGROOT="/var/lib/postgres"
-INITOPTS="--locale $LANG"
+##
+## Parameters to be passed to postgresql
+##
+## Default data directory location
+#PGROOT="/var/lib/postgres"
+## Passed to initdb if necessary
+INITOPTS="--locale en_US.UTF-8"
+## Default log file location
+#PGLOG="/var/log/postgresql.log"
+## Additional options to pass via pg_ctl's '-o' option
+#PGOPTS=""

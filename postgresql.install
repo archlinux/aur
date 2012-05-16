@@ -12,11 +12,15 @@ post_upgrade() {
   # FS#23858, fix postgres user shell issue
   postgres_shell=$(getent passwd postgres | cut -d: -f7)
   if [ "$postgres_shell" = "/sbin/nologin" ]; then
-	  chsh -s /bin/bash postgres
+    chsh -s /bin/bash postgres
   fi
 }
 
 post_remove() {
-  getent passwd postgres >/dev/null && userdel postgres
-  getent group postgres >/dev/null && groupdel postgres
+  if getent passwd postgres >/dev/null; then
+    userdel postgres
+  fi
+  if getent group postgres >/dev/null; then
+    groupdel postgres
+  fi
 }
