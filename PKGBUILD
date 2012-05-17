@@ -13,7 +13,7 @@ depends=('mupdf' 'zathura')
 source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz)
 md5sums=('20befdc4db4feec73890eb92ea3aeb5f')
 
-build(){
+build() {
   cd ${srcdir}/zathura-pdf-mupdf-$pkgver
   make
   make DESTDIR="$pkgdir" install
