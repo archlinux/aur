@@ -9,13 +9,13 @@
 
 pkgname=chromium
 pkgver=19.0.1084.46
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
-         'libxss' 'libgcrypt' 'libxslt' 'ttf-dejavu' 'desktop-file-utils'
+         'libxss' 'libgcrypt' 'ttf-dejavu' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
              'elfutils')
@@ -90,7 +90,7 @@ build() {
     -Duse_system_libevent=1 \
     -Duse_system_libjpeg=1 \
     -Duse_system_libpng=1 \
-    -Duse_system_libxml=1 \
+    -Duse_system_libxml=0 \
     -Duse_system_ssl=0 \
     -Duse_system_yasm=1 \
     -Duse_system_zlib=1 \
