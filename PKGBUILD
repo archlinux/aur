@@ -3,7 +3,7 @@
 # Contributor: Lubosz Sarnecki <lubosz at gmail>
 
 pkgname=openni-git
-pkgver=20120319
+pkgver=20120518
 pkgrel=1
 pkgdesc="The OpenNI Framework provides the interface for physical devices and for middleware components"
 arch=('i686' 'x86_64')
@@ -49,7 +49,9 @@ build() {
   find "${srcdir}/${_gitname}-build/Samples" -type f -exec sed -i 's#../../../../Data/SamplesConfig.xml#/usr/share/openni/SamplesConfig.xml#g' {} \;
   
   cd "${srcdir}/${_gitname}-build/Platform/Linux/Build"
-
+  
+  if [ -f Common ]; then ln -fs `cat Common` Common; fi
+  
   # BUILD
   LDFLAGS+=' -lGL' make
 }
