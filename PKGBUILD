@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dmon
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolset for daemonizing and supervising processes"
-arch=(i386 x86_64)
+arch=(i686 x86_64)
 url="http://gitorious.org/dmon"
 license=(MIT)
 depends=(glibc)

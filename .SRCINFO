@@ -1,9 +1,9 @@
 pkgbase = dmon
 	pkgdesc = Toolset for daemonizing and supervising processes
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gitorious.org/dmon
-	arch = i386
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = make
