@@ -6,39 +6,37 @@ pkgbase=linux
 pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
-_basekernel=3.3
-pkgver=${_basekernel}.6
+_basekernel=3.4
+pkgver=${_basekernel}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+source=("ftp://ftp.archlinux.org/other/linux/linux-3.4.tar.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
         'fix-acerhdf-1810T-bios.patch'
         'change-default-console-loglevel.patch'
-        'i915-fix-ghost-tv-output.patch'
-        'ext4-options.patch')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'a7f67e9c491403906e4bb475de194631'
-         'a69f3228ec513be819e20f0e6625fef6'
-         '744c93715cbf8dfd31db5f7b216b954c'
+        'i915-fix-ghost-tv-output.patch')
+md5sums=('cba7741056c05ac98277b99909039a7e'
+         '0c9de293b4d34d2d91de453592c4a89f'
+         '4c54e74f4f05714e3682317e5bde4fd4'
          'eb14dcfd80c00852ef81ded6e826826a'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         'bb7fd1aa23016c8057046b84fd4eb528')
+         '263725f20c0b9eb9c353040792d644e5')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -61,10 +59,6 @@ build() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix ext4 module to mount ext3/2 correct
-  # https://bugs.archlinux.org/task/28653
-  patch -Np1 -i "${srcdir}/ext4-options.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
