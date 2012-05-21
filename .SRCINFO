@@ -1,6 +1,6 @@
 pkgbase = refind-x86_64-git
 	pkgdesc = Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version
-	pkgver = 20120516
+	pkgver = 20120521
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/index.html
 	install = refind-x86_64.install
@@ -20,7 +20,7 @@ pkgbase = refind-x86_64-git
 	backup = boot/efi/EFI/arch/refind/refind_linux.conf
 	source = refind_include_more_shell_paths.patch
 	source = refind_linux.conf
-	sha256sums = c05158da5928076328478d49528c7952c449a1fe5bcd53e5470315a7ccf79e20
+	sha256sums = 09597effe23ddab2c27150cf8f3347068b1f60d28c52fe1df7d607d4a5ebc372
 	sha256sums = 9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f
 
 pkgname = refind-x86_64-git
