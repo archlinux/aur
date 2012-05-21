@@ -1,0 +1,2 @@
+# When stopping zabbix daemon wait 30 seconds until all zabbix server processes terminate.
+ZBX_STOP_TIMEOUT=30

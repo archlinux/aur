@@ -1,0 +1,53 @@
+post_install() {
+
+  mkdir /var/lib/zabbix
+  getent group zabbix > /dev/null || groupadd zabbix > /dev/null
+  getent passwd zabbix > /dev/null || useradd -g zabbix -d /var/lib/zabbix/home zabbix -m > /dev/null
+  chown -R zabbix:zabbix /var/log/zabbix /etc/zabbix /usr/share/zabbix /srv/http/zabbix /var/run/zabbix
+
+  echo "Manual post-installation steps:"
+  echo "-------------------------------------------------------------------------------------"
+  echo "1) Create a MySQL user and database"
+  echo "mysql -uroot -p"
+  echo "> CREATE DATABASE IF NOT EXISTS `zabbix` ;"
+  echo "> GRANT USAGE ON * . * TO  'zabbix'@'localhost' IDENTIFIED BY  'zabbix'"
+  echo ">                                    WITH MAX_QUERIES_PER_HOUR 0"
+  echo ">                                         MAX_CONNECTIONS_PER_HOUR 0"
+  echo ">                                         MAX_UPDATES_PER_HOUR 0"
+  echo ">                                         MAX_USER_CONNECTIONS 0 ;"
+  echo "> REVOKE ALL PRIVILEGES ON  `zabbix` . * FROM  'zabbix'@'localhost' ;"
+  echo "> GRANT ALL PRIVILEGES ON  `zabbix` . * TO  'zabbix'@'localhost' WITH GRANT OPTION ;"
+  echo "2) Load the schema and datasets into the database you created"
+  echo "cd /etc/zabbix/database/mysql/setup/2.0/"
+  echo "mysql --user=zabbix --password=zabbix zabbix < schema.sql"
+  echo "mysql --user=zabbix --password=zabbix zabbix < images.sql"
+  echo "mysql --user=zabbix --password=zabbix zabbix < data.sql"
+  echo "3) Configure /etc/zabbix/zabbix_server.conf"
+  echo "4) Start zabbix-server ( rc.d start zabbix-server )"
+  echo "5) Upgrade /etc/rc.conf ( DEAMONS=( ... zabbix-server ... ) )"
+  echo "6) Configure frontend zabbix on http-server, go to http://zabbix/ and follow the setup process"
+  echo "-------------------------------------------------------------------------------------"
+  echo "For more information see http://www.zabbix.com/documentation.php"
+  echo "-------------------------------------------------------------------------------------"
+}
+
+post_remove() {
+   userdel -rf zabbix
+   rm -rf /var/lib/zabbix
+   rm -rf /var/run/zabbix
+}
+
+post_upgrade() {
+	cat <<EOM
+
+	Read http://www.zabbix.com/documentation/2.0/manual/installation/upgrade
+
+	Upgrade from Zabbix 1.8.x to 2.0
+	1 Stop Zabbix server
+	2 Back up the existing Zabbix database
+	3 Review server configuration parameters
+	4 Upgrade the database ( /etc/zabbix/database/mysql/upgrade/2.0/ )
+
+EOM
+}
+
