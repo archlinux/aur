@@ -2,7 +2,7 @@
 # Maintainer: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=python-boto
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python2')
 source=("http://github.com/downloads/boto/boto/boto-$pkgver.tar.gz"
         'LICENSE')
-md5sums=('9c8c3ea67a58021c95609d4cc3a08e54'
+md5sums=('6fb90c1aa8c8ce6d967f2b0e06deda5b'
          '35ebd993c05c79ba78e9f4fb3e65e547')
 
 build() {
