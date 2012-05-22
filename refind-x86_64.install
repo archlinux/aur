@@ -23,6 +23,8 @@ NOTE: rEFInd requires the kernel file(s) to be present as [UEFISYS]/EFI/[SOME_DI
 
 NOTE: refind_linux.conf should be in the same directory as the kernel file(s), not the directory where refind.efi or refindx64.efi resides.
 
+More info at https://wiki.archlinux.org/index.php/UEFI_Bootloaders .
+
 EOF
 	
 }
