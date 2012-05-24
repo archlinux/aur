@@ -8,8 +8,8 @@
 # build time.
 
 pkgname=chromium
-pkgver=19.0.1084.46
-pkgrel=2
+pkgver=19.0.1084.52
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -24,17 +24,20 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 [[ $CARCH == x86_64 ]] && makedepends+=('lib32-zlib')
 provides=('chromium-browser')
 conflicts=('chromium-browser')
+backup=('etc/chromium/default')
 install=chromium.install
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.bz2
         naclsdk_linux-$pkgver.tar.bz2::http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/$pkgver/naclsdk_linux.bz2
         chromium.desktop
+        chromium.default
         chromium.sh
         chromium-gcc47.patch
         sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch)
-sha256sums=('2fb77e5d155343a828bd04b6b9d4469fce3033dc6b9f8b53e34a9d02c464639f'
-            '2256327dc58792309911fe88996527925b79ddc7729ec78548b4adf5e4983d42'
+sha256sums=('e725d4aa7608c9975b8989188d85d38846956db2f480a1a217bcab06419dab72'
+            'c9984d27b2ac80abd194199090cdb1803f0aab22b6b65518e2dcbd9136b70ee8'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
-            'c53bfc4db9dde684fbaed6a4bbecb207e3e7a0a2703233426fe076a6d3c557f3'
+            '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
+            '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
             'a700aa054800d1b21d84eaba27c38a703dfa023e9226d11a942690c2a0630aff')
 
@@ -117,6 +120,9 @@ package() {
   #ln -s /usr/lib/libavcodec.so.52 "$pkgdir/usr/lib/chromium/"
   #ln -s /usr/lib/libavformat.so.52 "$pkgdir/usr/lib/chromium/"
   #ln -s /usr/lib/libavutil.so.50 "$pkgdir/usr/lib/chromium/"
+
+  # Allow users to override command-line options
+  install -Dm644 "$srcdir/chromium.default" "$pkgdir/etc/chromium/default"
 
   cp -a out/Release/locales out/Release/resources "$pkgdir/usr/lib/chromium/"
 
