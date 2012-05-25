@@ -5,8 +5,8 @@
 # Contributor: bekks <eduard.warkentin@gmx.de>
 
 pkgname=pgadmin3-testing
-pkgver=1.14.0
-_realver=1.14.0
+pkgver=1.16.0beta1
+_realver=1.16.0-beta1
 pkgrel=1
 pkgdesc="A comprehensive design and management interface for PostgreSQL database"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('wxgtk' 'postgresql-libs' 'libxslt')
 makedepends=('libpqxx' 'postgresql')
 provides=('pgadmin3')
 conflicts=('pgadmin3' 'pgadmin3-svn')
-source=(http://wwwmaster.postgresql.org/redir/354/f/pgadmin3/release/v${_realver}/src/pgadmin3-${_realver}.tar.gz
+source=(http://ftp.postgresql.org/pub/pgadmin3/release/v${_realver}/src/pgadmin3-${_realver}.tar.gz
 	pgadmin3.desktop)
 
 build() {
@@ -41,5 +41,5 @@ package() {
     install -D -m 644 pgadmin/include/images/pgAdmin3.ico $pkgdir/usr/share/pgadmin3/pixmaps/pgAdmin3.ico
     install -D -m 644 $srcdir/pgadmin3.desktop $pkgdir/usr/share/applications/
 }
-md5sums=('27bf1694809a7d9adf4feec508374df2'
+md5sums=('057c9caace7d1deb8688fa39d220f820'
          'd07ba4df54baead30b66d19d7450bcad')
