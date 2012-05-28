@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.12
-pkgrel=5
+pkgrel=6
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -26,8 +26,7 @@ backup=('etc/conf.d/libvirtd'
 	'etc/libvirt/libvirtd.conf'
 	'etc/libvirt/libvirt.conf'
 	'etc/libvirt/qemu.conf'
-	'etc/sasl2/libvirt.conf'
-	'etc/sysctl.d/libvirtd')
+	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
 source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.rc.d
@@ -80,6 +79,14 @@ package() {
   install -D -m755 "$srcdir"/libvirtd-guests.rc.d "$pkgdir"/etc/rc.d/libvirtd-guests
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirtd-guests
 
+  install -dm0755 $pkgdir/usr/lib/sysctl.d
+  mv $pkgdir/etc/sysctl.d/libvirtd $pkgdir/usr/lib/sysctl.d/libvirtd
+
   mv $pkgdir/lib/* $pkgdir/usr/lib/
-  rm -rf $pkgdir/var/run $pkgdir/etc/rc.d/init.d $pkgdir/etc/sysconfig $pkgdir/lib
+  rm -rf \
+	$pkgdir/var/run \
+	$pkgdir/etc/rc.d/init.d \
+	$pkgdir/etc/sysconfig \
+	$pkgdir/lib \
+	$pkgdir/etc/sysctl.d
 }
