@@ -26,7 +26,8 @@ backup=('etc/conf.d/libvirtd'
 	'etc/libvirt/libvirtd.conf'
 	'etc/libvirt/libvirt.conf'
 	'etc/libvirt/qemu.conf'
-	'etc/sasl2/libvirt.conf')
+	'etc/sasl2/libvirt.conf'
+	'etc/sysctl.d/libvirtd')
 install="libvirt.install"
 source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.rc.d
