@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.12
-pkgrel=6
+pkgrel=7
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -33,6 +33,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
+	libvirt.tmpfiles.d
 	openbsd-netcat-default.patch
 	libvirt-libnl3.patch)
 md5sums=('5e842bc55733ceba60c64767580ff3e4'
@@ -40,6 +41,7 @@ md5sums=('5e842bc55733ceba60c64767580ff3e4'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '8297b1be794a24cc77f66af9380ace59'
          'bc2971dacdbac967fc3474e50affc345'
+         '8d98e62915785686b0b6c8c070628392'
          'b0be50eb9dfe4d133decf23b60880f7d'
          'ba27fbcd989de8d84cfff98326f10c54')
 
@@ -79,10 +81,14 @@ package() {
   install -D -m755 "$srcdir"/libvirtd-guests.rc.d "$pkgdir"/etc/rc.d/libvirtd-guests
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirtd-guests
 
+
   install -dm0755 $pkgdir/usr/lib/sysctl.d
   mv $pkgdir/etc/sysctl.d/libvirtd $pkgdir/usr/lib/sysctl.d/libvirtd
 
-  mv $pkgdir/lib/* $pkgdir/usr/lib/
+  # systemd stuff
+#  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt
+#  mv $pkgdir/lib/* $pkgdir/usr/lib/
+
   rm -rf \
 	$pkgdir/var/run \
 	$pkgdir/etc/rc.d/init.d \
