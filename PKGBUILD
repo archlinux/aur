@@ -86,7 +86,7 @@ package() {
   mv $pkgdir/etc/sysctl.d/libvirtd $pkgdir/usr/lib/sysctl.d/libvirtd
 
   # systemd stuff
-  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt
+  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
   mv $pkgdir/lib/* $pkgdir/usr/lib/
 
   rm -rf \
