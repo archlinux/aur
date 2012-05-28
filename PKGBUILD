@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.12
-pkgrel=7
+pkgrel=8
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -86,8 +86,8 @@ package() {
   mv $pkgdir/etc/sysctl.d/libvirtd $pkgdir/usr/lib/sysctl.d/libvirtd
 
   # systemd stuff
-#  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt
-#  mv $pkgdir/lib/* $pkgdir/usr/lib/
+  install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt
+  mv $pkgdir/lib/* $pkgdir/usr/lib/
 
   rm -rf \
 	$pkgdir/var/run \
