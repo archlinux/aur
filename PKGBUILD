@@ -80,6 +80,6 @@ package() {
   install -D -m755 "$srcdir"/libvirtd-guests.rc.d "$pkgdir"/etc/rc.d/libvirtd-guests
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirtd-guests
 
-#  mv $pkgdir/lib/* $pkgdir/usr/lib/
+  mv $pkgdir/lib/* $pkgdir/usr/lib/
   rm -rf $pkgdir/var/run $pkgdir/etc/rc.d/init.d $pkgdir/etc/sysconfig $pkgdir/lib
 }
