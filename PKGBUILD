@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 options=(strip purge docs zipman !emptydirs !libtool)
 
 source=('efibootmgr_default_to_rEFInd.patch')
-sha256sums=('8c7b950a8c093a3099fa649edc26d9b0ed969aa56340e16e81b4a451284ce94a')
+sha256sums=('78a5a93e581c329805684c13037d0f00486554e9d0e1837882399a12e11c8d3d')
 
 _gitroot="http://linux.dell.com/git/${_pkgname}.git"
 _gitname="${_pkgname}"
