@@ -2,7 +2,7 @@
 
 pkgname=trayer
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A lightweight GTK2-based systray"
 arch=('i686' 'x86_64')
 url="https://gna.org/projects/fvwm-crystal/"
@@ -12,15 +12,15 @@ makedepends=('libxmu')
 options=('!makeflags')
 source=(http://download.gna.org/fvwm-crystal/trayer/${pkgver}/${pkgname}-${pkgver}.tar.gz
         trayer.diff manpage.diff)
-md5sums=('e1b0b6464f991f2c296561e377585867'
-         '7f66eee885563871f9f76646bca6b14d'
-         '3f1c92bbe275f186b613c04a47e8e977')
+sha1sums=('f2657693d196578e3776b0812952dfa1c25878cc'
+          '63459c5f74b8cc137d8a16ab997200025225215c'
+          'eb919fd4a6223034e59e7c9fd0de298d40c91242')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p0 -i ../trayer.diff
   patch -p1 -i ../manpage.diff
-  sed -i 's/$(LIBS) $(OBJ) $(SYSTRAYOBJ)/$(OBJ) $(SYSTRAYOBJ) $(LIBS)/' Makefile
+  sed -i 's/$(LIBS) $(OBJ) $(SYSTRAYOBJ)/$(OBJ) $(SYSTRAYOBJ) $(LIBS) -lX11/' Makefile
   make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 

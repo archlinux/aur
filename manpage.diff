@@ -4,7 +4,7 @@ Index: trayer/trayer.1
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
 +++ trayer/trayer.1	2011-05-08 21:38:37.000000000 +0200
-@@ -0,0 +1,197 @@
+@@ -0,0 +1,190 @@
 +.TH TRAYER 1 "Feb 14, 2005" "FVWM\-Crystal"
 +.SH NAME
 +trayer \- a lightweight GTK2\-based systray for UNIX desktop
@@ -54,9 +54,6 @@ Index: trayer/trayer.1
 +.\"
 +.RB [\| \-\-distance
 +.RI \| <length> \|]
-+.\"
-+.RB [\| \-\-distancefrom
-+.RI \| left \||\| right \||\| top \||\| bottom \||\| none \|]
 +.\"
 +.RB [\| \-\-expand
 +.RI \| true \||\| false \|]
@@ -174,10 +171,6 @@ Index: trayer/trayer.1
 +.TP
 +\fB\-\-distance\fP \fI<length>\fP
 +Specifies distance between trayer's window and screen edge (in pixels)
-+
-+.TP
-+\fB\-\-distancefrom\fP \fI<edge>\fP
-+Specifies which edge to calculate distance from, see above.
 +
 +.TP
 +\fB\-\-expand\fP \fItrue\fP\||\|\fIfalse\fP
