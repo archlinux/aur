@@ -8,8 +8,8 @@ pkgname=('linux-selinux')
 true && pkgname=('linux-selinux' 'linux-selinux-headers')
 _kernelname=${pkgname#linux}
 _basekernel=3.3
-pkgver=${_basekernel}.4
-pkgrel=2
+pkgver=${_basekernel}.6
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -28,7 +28,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
         'i915-fix-ghost-tv-output.patch'
         'ext4-options.patch')
 md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         '9c4cc16f10b645fbb90f6c05ad388883'
+         'a7f67e9c491403906e4bb475de194631'
          'a69f3228ec513be819e20f0e6625fef6'
          '744c93715cbf8dfd31db5f7b216b954c'
          'ab9328d8a3d2bed80b4611ca8898f6fe'
