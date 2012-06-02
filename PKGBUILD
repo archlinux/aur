@@ -9,7 +9,7 @@ license="GPL"
 depends=('fuse' 'java-runtime')
 source=(http://sourceforge.net/projects/gdatafs/files/gdatafs%20$pkgver.tar.gz)
 md5sums=('77e5207f1b2cfb72307087ebceb7b801')
-arch=('i686' 'x86_64')
+arch=('any')
 build() {
 	pushd "$srcdir"/gdatafs || return 1
 		find . -type f | sed -e 's/\.\///g' | while read file; do
