@@ -7,7 +7,7 @@ pkgbase = gdatafs
 	arch = x86_64
 	license = GPL
 	depends = fuse
-	depends = jdk
+	depends = java-runtime
 	source = http://sourceforge.net/projects/gdatafs/files/gdatafs%201.0.2.tar.gz
 	md5sums = 77e5207f1b2cfb72307087ebceb7b801
 
