@@ -1,7 +1,7 @@
 pkgbase = pmount-safe-removal
 	pkgdesc = mount removable devices as normal user, with safe removal of device
 	pkgver = 0.9.23
-	pkgrel = 4
+	pkgrel = 5
 	url = http://pmount.alioth.debian.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = pmount-safe-removal
 	makedepends = intltool
 	depends = sysfsutils>=2.0.0-1
 	depends = bash
+	depends = util-linux
 	provides = pmount=0.9.23
 	backup = etc/pmount.allow
 	source = https://alioth.debian.org/frs/download.php/3310/pmount-0.9.23.tar.bz2
