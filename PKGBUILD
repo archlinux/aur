@@ -7,8 +7,10 @@ pkgdesc="Gdatafs is a FUSE implemtation that mount picassa web and youtube to yo
 url="http://gdatafs.sourceforge.net"
 license="GPL"
 depends=('fuse' 'java-runtime')
-source=(http://sourceforge.net/projects/gdatafs/files/gdatafs%20$pkgver.tar.gz)
-md5sums=('77e5207f1b2cfb72307087ebceb7b801')
+source=(http://sourceforge.net/projects/gdatafs/files/gdatafs%20$pkgver.tar.gz
+        gdatafs.sh)
+md5sums=('77e5207f1b2cfb72307087ebceb7b801'
+         '76bcee2cd35ec0c78e3a3985dc600882')
 arch=('any')
 build() {
 	pushd "$srcdir"/gdatafs || return 1
@@ -17,8 +19,6 @@ build() {
 				install -D "$file" "$pkgdir"/opt/gdatafs/"$file" || return 1
 			fi || return 1
 		done || return 1
-		install -d "$pkgdir"/usr/bin || return 1
-		echo -e "#! /bin/sh\n\npushd /opt/gdatafs > /dev/null\n\t/opt/gdatafs/gdatafs \"\$1\" \"\$2\" \"\$3\"\npopd > /dev/null" > "$pkgdir"/usr/bin/gdatafs || return 1
-		chmod 755 "$pkgdir"/usr/bin/gdatafs || return 1
+		install -Dm755 "$srcdir"/gdatafs.sh "$pkgdir"/usr/bin/gdatafs || return 1
 	popd || return 1
 }
