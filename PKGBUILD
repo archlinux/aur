@@ -2,11 +2,12 @@
 # Maintainer: Prurigro
 pkgname=gdatafs
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Gdatafs is a FUSE implemtation that mount picassa web and youtube to your filesystem"
 url="http://gdatafs.sourceforge.net"
 license="GPL"
 depends=('fuse' 'java-runtime')
+changelog=ChangeLog
 source=(http://sourceforge.net/projects/gdatafs/files/gdatafs%20$pkgver.tar.gz
         gdatafs.sh)
 md5sums=('77e5207f1b2cfb72307087ebceb7b801'

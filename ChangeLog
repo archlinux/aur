@@ -1,0 +1,10 @@
+2012-06-02 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+	* 1.0.2-2 :
+	First release of this since I adopted the packaged.
+	Java dependency has been changed from hard-coded "jdk" to "java-runtime".
+	Architecture has been changed to "any".
+	Launcher script in /usr/bin has been extracted to its own file in the
+	package.
+
+	Development happens at GitHub: https://github.com/Freso/PKGBUILDs
