@@ -4,7 +4,7 @@
 
 pkgname=picard
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Official MusicBrainz tagger'
 url='http://musicbrainz.org/doc/MusicBrainz_Picard'
 license=('GPL')
