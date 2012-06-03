@@ -3,7 +3,7 @@
 pkgname=gdatafs
 pkgver=1.0.2
 pkgrel=2
-pkgdesc="Gdatafs is a FUSE implemtation that mount picassa web and youtube to your filesystem"
+pkgdesc="FUSE implementation that mounts Picasa, YouTube, and Google Docs on your filesystem"
 url="http://gdatafs.sourceforge.net"
 license="GPL"
 depends=('fuse' 'java-runtime')
