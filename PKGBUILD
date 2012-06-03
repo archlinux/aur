@@ -2,7 +2,7 @@
 # Contributor: Ryan Corder <ryanc@greengrey.org>
 
 pkgname=tenshi
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="real-time log monitor from the Gentoo Linux project"
 url="http://dev.inversepath.com/trac/tenshi"
@@ -14,20 +14,17 @@ source=(http://dev.inversepath.com/tenshi/$pkgname-$pkgver.tar.gz
         'rc-script'
         'rc-conf'
         'tenshi.install'
-        'conf.diff'
-        'make.diff')
+		'conf.diff')
 backup=(etc/tenshi/tenshi.conf etc/conf.d/tenshi)
-md5sums=('86233a514b3a6fbc9a76493513119342'
+md5sums=('9951f2995c4e08539a60026774da183a'
          '94104e395d33c4f72cb6bbfe3591b7a0'
          '302037a01958993b31988d3f50ee20b1'
          'd8a70806f3a2a498d9d8ef2ecb171ad8'
-         '451250b1955b14691ca1c7124d1991f2'
-         'fb582be4bb1f2840f25a41330a32f692')
+		 '451250b1955b14691ca1c7124d1991f2')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	patch -i "$srcdir/make.diff"
 	patch -i "$srcdir/conf.diff"
 	make
 }
