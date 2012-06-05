@@ -7,16 +7,15 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.4
-pkgver=${_basekernel}
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
-source=("ftp://ftp.archlinux.org/other/linux/linux-3.4.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -24,9 +23,10 @@ source=("ftp://ftp.archlinux.org/other/linux/linux-3.4.tar.xz"
         'fix-acerhdf-1810T-bios.patch'
         'change-default-console-loglevel.patch'
         'i915-fix-ghost-tv-output.patch')
-md5sums=('cba7741056c05ac98277b99909039a7e'
-         '0c9de293b4d34d2d91de453592c4a89f'
-         '4c54e74f4f05714e3682317e5bde4fd4'
+md5sums=('967f72983655e2479f951195953e8480'
+         '52adc59c547c4c7926686145b9ade5f1'
+         '3f2c307c8ffae67f60c13ef69af8364a'
+         '18d9d09152bafffaef78f2aac07e7145'
          'eb14dcfd80c00852ef81ded6e826826a'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
@@ -36,7 +36,7 @@ build() {
   cd "${srcdir}/linux-${_basekernel}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -296,3 +296,4 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
+
