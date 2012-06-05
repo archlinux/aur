@@ -1,23 +1,23 @@
 pkgbase=linux
 pkgname=linux-linode
 _kernelname=${pkgname#linux}
-_basekernel=3.3
-pkgver=${_basekernel}.5
-pkgrel=1
+_basekernel=3.4
+pkgver=${_basekernel}.1
+pkgrel=2
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.3.tar.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'd346edca5d3de7052f49996b01cef401'
-         'f24c511823294d1236f037f1f34a3467'
+md5sums=('cba7741056c05ac98277b99909039a7e'
+         '52adc59c547c4c7926686145b9ade5f1'
+         '4d59bb0343e9962c076864d6bbe14346'
          '4c45d442db6239f0b3d0008c0a17c76c'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
