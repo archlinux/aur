@@ -20,6 +20,8 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
+replaces=('refind-x86_64-git')
+
 backup=('boot/efi/EFI/arch/refind/refind.conf'
         'boot/efi/EFI/arch/refind/refind_linux.conf')
 
