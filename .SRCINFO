@@ -1,27 +1,27 @@
-pkgbase = refind-x86_64-git
-	pkgdesc = Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version
-	pkgver = 20120521
+pkgbase = refind-efi-x86_64-git
+	pkgdesc = Rod Smith's fork of rEFIt UEFI Boot Manager - GIT Development Version
+	pkgver = 20120607
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/index.html
-	install = refind-x86_64.install
+	install = refind-efi-x86_64.install
 	arch = any
 	license = GPL3
 	license = custom
 	makedepends = git
-	makedepends = gnu-efi
+	makedepends = gnu-efi>=3.0q
 	depends = dosfstools
 	depends = efibootmgr
 	optdepends = mactel-boot: For bless command in Apple Mac systems
-	provides = refind-x86_64
-	conflicts = refind-x86_64
+	provides = refind-efi-x86_64
+	conflicts = refind-efi-x86_64
 	options = !strip
 	options = docs
 	backup = boot/efi/EFI/arch/refind/refind.conf
 	backup = boot/efi/EFI/arch/refind/refind_linux.conf
 	source = refind_include_more_shell_paths.patch
 	source = refind_linux.conf
-	sha256sums = 09597effe23ddab2c27150cf8f3347068b1f60d28c52fe1df7d607d4a5ebc372
+	sha256sums = db84334a7bea73c6843d82e9d02e1edbda65ff9806bc64e89b885c606c87e5b6
 	sha256sums = 9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f
 
-pkgname = refind-x86_64-git
+pkgname = refind-efi-x86_64-git
 

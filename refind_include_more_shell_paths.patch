@@ -1,5 +1,5 @@
 diff --git a/refind/main.c b/refind/main.c
-index 8dd041e..265bec1 100644
+index 298a6d2..3e92f2e 100644
 --- a/refind/main.c
 +++ b/refind/main.c
 @@ -57,13 +57,13 @@

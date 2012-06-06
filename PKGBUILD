@@ -3,17 +3,17 @@
 # _GNU_EFI_LIB_DIR="/usr/lib"
 
 _actualname="refind"
-_pkgname="${_actualname}-x86_64"
+_pkgname="${_actualname}-efi-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120521
+pkgver=20120607
 pkgrel=1
-pkgdesc="Rod Smith's fork of rEFIt (U)EFI Boot Manager - GIT Version"
+pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - GIT Development Version"
 url="http://www.rodsbooks.com/refind/index.html"
 arch=('any')
 license=('GPL3' 'custom')
 
-makedepends=('git' 'gnu-efi')
+makedepends=('git' 'gnu-efi>=3.0q')
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
@@ -29,7 +29,7 @@ install="${_pkgname}.install"
 source=('refind_include_more_shell_paths.patch'
         'refind_linux.conf')
 
-sha256sums=('09597effe23ddab2c27150cf8f3347068b1f60d28c52fe1df7d607d4a5ebc372'
+sha256sums=('db84334a7bea73c6843d82e9d02e1edbda65ff9806bc64e89b885c606c87e5b6'
             '9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f')
 
 _gitroot="git://git.code.sf.net/p/refind/code"
