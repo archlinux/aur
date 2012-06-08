@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20120317
+pkgver=20120531
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -49,10 +49,10 @@ _osfontdir="/usr/share/fonts"
 
 build() {
  msg "Downloading the latest scripts first"
- rsync -rlptv $_rsyncurl $srcdir 
+ rsync -rlpt $_rsyncurl $srcdir || return 1
  msg "Initializing download directory"
 
- mkdir -p $srcdir/tex/texmf-cache
+ mkdir -p $srcdir/tex/texmf-cache || return 1
 
  msg "Starting download or update of ConTeXt distribution"
  PATH=$scrdir/tex/texmf-$platform/bin:$PATH \
