@@ -1,3 +1,8 @@
+2012-06-08	Chris Brannon <chris@the-brannons.com>
+	* ddclient 3.8.1-4
+	Added the systemd unit from the soon-to-be-defunct systemd-arch-units
+	package.
+
 2012-03-12	Chris Brannon <chris@the-brannons.com>
 	* ddclient 3.8.1-3
 	Applied a patch to use iproute2, rather than net-tools.

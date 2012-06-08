@@ -1,0 +1,11 @@
+[Unit]
+Description=Dynamic DNS Update Client
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/ddclient.pid
+ExecStart=/usr/sbin/ddclient -daemon 300 -syslog -pid /run/ddclient.pid
+
+[Install]
+WantedBy=multi-user.target

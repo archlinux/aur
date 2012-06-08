@@ -4,7 +4,7 @@
 
 pkgname=ddclient
 pkgver=3.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services."
 arch=('any')
 url="http://ddclient.sourceforge.net/"
@@ -15,6 +15,7 @@ install=ddclient.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
       ddclient.rc
         ddclient.conf.d
+        ddclient.service
         iproute2.patch)
 
 build() {
@@ -38,8 +39,10 @@ package() {
   install -D -m644 sample-etc_cron.d_ddclient ${pkgdir}/etc/ddclient/samples/sample-etc_cron.d_ddclient
   install -D -m644 sample-etc_dhcpc_dhcpcd-eth0.exe ${pkgdir}/etc/ddclient/samples/sample-etc_dhcpc_dhcpcd-eth0.exe
   install -D -m644 sample-etc_ppp_ip-up.local ${pkgdir}/etc/ddclient/samples/sample-etc_ppp_ip-up.local
+  install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
 md5sums=('7fa417bc65f8f0e6ce78418a4f631988'
          '10af4667b7269132b8f0cdfc26864d89'
          'b8f39c82827776da948b76ef83544d33'
+         'fde631ff027c03179e9cdd483def324d'
          'e0c8a07e9b7a69e73cecd8626f16e8f0')
