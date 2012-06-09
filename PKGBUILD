@@ -8,7 +8,7 @@ url="http://addons.teamspeak.com/directory/skins/sound-packs/TS3-RC1-Female-Soun
 license=(unknown)
 depends=('teamspeak3')
 changelog=ChangeLog
-source=('http://pictures.pureinsomnia.com/TS3-RC1 Female.zip')
+source=('TS3-RC1 Female.zip::http://addons.teamspeak.com/index.php?option=com_mtree&task=att_download&link_id=280&cf_id=24')
 md5sums=('16890af67434016677540483ea162ab2')
 sha1sums=('61245a8c70cbf9789579a21e8e6ee0f42a5fe0b3')
 
