@@ -2,9 +2,9 @@
 pkgname=lwjgl
 pkgver=2.8.4
 pkgrel=1
-pkgdesc="Lightweight Java Game Library - for use in game projects in Java."
+pkgdesc='Lightweight Java Game Library - for use in game projects in Java.'
 arch=(any)
-url="http://lwjgl.org/"
+url='http://lwjgl.org/'
 license=('BSD')
 changelog=ChangeLog
 options=(!strip)
