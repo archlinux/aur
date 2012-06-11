@@ -68,7 +68,7 @@ package_libpurple(){
   depends=('farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
-              'dbus-python: for purple-remote and purple-url-handler'
+              'python2-dbus: for purple-remote and purple-url-handler'
               'tk: Tcl/Tk scripting support')
 
   cd "$srcdir/pidgin-$pkgver"
