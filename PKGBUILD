@@ -5,7 +5,7 @@
 
 pkgname=mosh
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url="http://mosh.mit.edu/"
@@ -29,7 +29,7 @@ package() {
 
   make DESTDIR="$pkgdir/" install
   install -Dm644 "conf/bash_completion.d/$pkgname" \
-    "$pkgdir/etc/bash_completion.d/$pkgname"
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   install -Dm644 "conf/ufw/applications.d/$pkgname" \
     "$pkgdir/etc/ufw/applications.d/ufw-$pkgname"
 }
