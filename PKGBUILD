@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Judd <jvinet@zeroflux.org>
 
 pkgname=xinetd
 pkgver=2.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure replacement for inetd"
 arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
@@ -21,7 +21,7 @@ md5sums=('77358478fd58efa6366accae99b8b04c'
          'ea37a2794f202e6b953d9b6956dad16a'
          '21f47b4aa20921cfaddddd9f9a407f81'
          '9fa2061dc7dd738c8424251deb86f81e'
-         '4473d8b2b6c984626d9f73a0b89711ee')
+         '08466ed714ea8ba42ad81f6fb3aa62e7')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
