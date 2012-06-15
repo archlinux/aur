@@ -8,8 +8,8 @@ pkgdesc="Use your webcam to take photos and videos, apply fancy special effects 
 arch=(i686 x86_64)
 license=('GPL')
 depends=('gnome-desktop' 'gtk3' 'libcanberra' 'librsvg' 'gstreamer0.10-base-plugins'
-         'gstreamer0.10-good-plugins' 'gstreamer0.10-bad' 'clutter-gst' 'clutter-gtk' 'mx' 'libgee'
-         'gnome-video-effects' 'hicolor-icon-theme' 'dconf' 'cogl')
+         'gstreamer0.10-good-plugins' 'gstreamer0.10-bad-plugins' 'clutter-gst' 'clutter-gtk' 'mx'
+         'libgee' 'gnome-video-effects' 'hicolor-icon-theme' 'dconf' 'cogl')
 makedepends=('pkgconfig' 'gnome-doc-utils' 'intltool' 'gobject-introspection' 'itstool'
              'nautilus-sendto')
 optdepends=('nautilus-sendto: Send images')
