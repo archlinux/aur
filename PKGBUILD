@@ -2,8 +2,8 @@ pkgbase=linux
 pkgname=linux-linode
 _kernelname=${pkgname#linux}
 _basekernel=3.4
-pkgver=${_basekernel}.1
-pkgrel=2
+pkgver=${_basekernel}.2
+pkgrel=1
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -16,8 +16,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('cba7741056c05ac98277b99909039a7e'
-         '52adc59c547c4c7926686145b9ade5f1'
-         '4d59bb0343e9962c076864d6bbe14346'
+         'ac52d3d82c20c7e80740fc5fb00b6ed4'
+         '42db3687dbe37e8b3a5cdf12bd1ce3fb'
          '4c45d442db6239f0b3d0008c0a17c76c'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
