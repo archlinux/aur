@@ -1,9 +1,10 @@
 # Maintainer: Anuj More <anujmorex@gmail.com>
+# Contributor 3: Romain Schmitz <slopjong [at] syn2cat.lu>
 # Contributor 2: Dominik Mayer <dominik.mayer@gmail.com>
 # Contributor 1: Lee.MaRS <leemars@gmail.com>
 
 pkgname=google-appengine-java
-pkgver=1.6.3
+pkgver=1.6.6
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Google App Engine SDK for Java."
@@ -13,7 +14,7 @@ depends=()
 options=('!strip')
 source=(http://googleappengine.googlecode.com/files/appengine-java-sdk-${pkgver}.zip
         profile.appengine-java-sdk)
-sha1sums=('fd89346a1760bec603b39c5d68996fdfb3cf3c3d'
+sha1sums=('bb67c8984606fc8d28ab4f49afc088b5b70d9097'
           '9d6e6c6bd7f3ec53dc08cdfacaac931cfa1cf2f3')
 
 build() {
@@ -23,4 +24,3 @@ build() {
 
   install -D -m755 profile.appengine-java-sdk "$startdir/pkg/etc/profile.d/appengine-java-sdk.sh"
 }
-
