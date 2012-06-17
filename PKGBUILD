@@ -1,7 +1,7 @@
 # Maintainer : Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgname="elilo"
-pkgname="${_pkgname}-x86_64"
+pkgname="${_pkgname}-efi-x86_64"
 
 pkgver="3.14"
 pkgrel="1"
