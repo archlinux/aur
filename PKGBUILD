@@ -4,8 +4,8 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
-pkgver=2.5.0
-pkgrel=6
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,21 +13,11 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin'
              'cmake' 'automoc4' 'doxygen')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
-	"boost148.patch" "libkipi140.patch" "digikam-2.5.0-gcc-4.7.0.patch")
-sha1sums=('6cadb838669d1bdcbd6abb677889f7d68d696383'
-          '93853084905b21309c46ce7d585021e76283d429'
-          '8a8f624fd0ca768a9dcd706405eb6e4944892d87'
-          '5058831a4f1209468d0249c03f0e243f176f995a')
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha1sums=('a7a9e4e342f118b603a11539c98a01c9970254df')
+
 build() {
   cd "${srcdir}"
-
-  pushd ${pkgname}-${pkgver}/core
-  patch -Np0 -i ${srcdir}/boost148.patch
-  patch -Np1 -i ${srcdir}/libkipi140.patch
-  popd
-
-  patch -Np0 -i ${srcdir}/digikam-2.5.0-gcc-4.7.0.patch
 
   mkdir build
   cd build
