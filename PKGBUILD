@@ -32,7 +32,7 @@ md5sums=('967f72983655e2479f951195953e8480'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '263725f20c0b9eb9c353040792d644e5'
-         '18b3877f9014c8cdd5eb8f6a9e8a3a3a')
+         '5a7baeab35f968bf9a6ab115d14586c7')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
