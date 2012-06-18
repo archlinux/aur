@@ -1,0 +1,13 @@
+pkgbase = nagios-plugins
+	pkgdesc = Plugins are scripts and programs that perform host and service checks.
+	pkgver = 1.4.11
+	pkgrel = 1
+	url = http://www.nagios.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/nagiosplug/nagios-plugins-1.4.11.tar.gz
+	md5sums = 042783a2180a6987e0b403870b3d01f7
+
+pkgname = nagios-plugins
+
