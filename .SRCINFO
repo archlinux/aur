@@ -1,6 +1,6 @@
 pkgbase = perl-dbd-csv
 	pkgdesc = DBI driver for CSV files
-	pkgver = 0.33
+	pkgver = 0.35
 	pkgrel = 1
 	url = http://search.cpan.org/~HMBRAND/DBD-CSV/
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = perl-dbd-csv
 	depends = perl>=5.10.0
 	depends = perl-text-csv-xs
 	depends = perl-dbi
+	depends = perl-sql-statement
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/H/HM/HMBRAND/DBD-CSV-0.33.tgz
-	md5sums = 0b43201bf1aa043e12bebecdec17a17e
+	source = http://cpan.perl.org/modules/by-authors/id/H/HM/HMBRAND/DBD-CSV-0.35.tgz
+	md5sums = 90e1635b1b2e4605f5dc6939c41e3087
 
 pkgname = perl-dbd-csv
 
