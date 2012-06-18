@@ -1,7 +1,7 @@
 pkgbase = thunderbird-nightly
 	pkgdesc = Standalone Mail/News reader - Nightly build
 	pkgver = 15.0a1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mozilla.org/thunderbird
 	install = thunderbird-nightly.install
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = thunderbird-nightly
 	depends = nspr
 	depends = nss
 	depends = shared-mime-info
-	depends = sqlite3
+	depends = sqlite
 	depends = startup-notification
 	optdepends = libcanberra: for sound support
 	provides = thunderbird=15.0a1

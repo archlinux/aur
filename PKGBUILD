@@ -4,12 +4,12 @@
 
 pkgname=thunderbird-nightly
 pkgver=15.0a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Mail/News reader - Nightly build"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="http://www.mozilla.org/thunderbird"
-depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg' 'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss' 'shared-mime-info' 'sqlite3' 'startup-notification')
+depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg' 'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss' 'shared-mime-info' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
 provides=("thunderbird=$pkgver")
 install=$pkgname.install
