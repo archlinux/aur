@@ -1,0 +1,11 @@
+pkgbase = homeshick-git
+	pkgdesc = bash stand-in for homesick by technicalpickles
+	pkgver = 20120621
+	pkgrel = 1
+	url = https://github.com/andsens/homeshick
+	arch = any
+	license = BSD
+	makedepends = git
+
+pkgname = homeshick-git
+
