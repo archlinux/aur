@@ -1,29 +1,35 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=orocos-rtt-omniorb
-pkgver=1.10.4
+_pkgname=orocos-toolchain
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="The RealTime Toolkit is a C++ framework for the implementation of control systems - OmniORB enabled"
+pkgdesc="Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Real-Time Toolkit)"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
 license=('GPL')
+groups=('orocos-toolchain')
 depends=('boost' 'omniorb')
 makedepends=('cmake')
 provides=('orocos-rtt')
 conflicts=('orocos-rtt')
-source=(http://people.mech.kuleuven.be/~orocos/pub/stable/rtt/v${pkgver}/orocos-rtt-${pkgver}-src.tar.bz2)
-md5sums=('c82b577966ec79c7f6b9d9d70a187ef6')
+source=(http://www.orocos.org/stable/toolchain/v${pkgver}/${_pkgname}-${pkgver}-src.tar.bz2)
+md5sums=('cb817efca78ae5659a3ca62a741e43bf')
 
 build() {
-	cd ${srcdir}/orocos-rtt-${pkgver}
+	# build rtt
+	cd "${srcdir}/${_pkgname}-${pkgver}/rtt"
+	
+	# update the cmake configuration file so that it finds the RTT
+	sed 's/set(OROCOS-RTT_FOUND ${OROCOS-RTT_IMPORT_FILE})/set(OROCOS-RTT_FOUND TRUE)/g' -i orocos-rtt-config.cmake
 	
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB .
 	make
 }
 
 package() {
-	cd ${srcdir}/orocos-rtt-${pkgver}
-	
+	# install rtt
+	cd "${srcdir}/${_pkgname}-${pkgver}/rtt"
 	make DESTDIR=${pkgdir} install
 }
 
