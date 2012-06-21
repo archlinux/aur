@@ -1,13 +1,13 @@
 pkgbase = dapper
 	pkgdesc = Desktop Applications Autostarter
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://bitbucket.org/jjacky/dapper
 	arch = i686
 	arch = x86_64
 	license = GPL3+
-	source = https://bitbucket.org/jjacky/dapper/downloads/dapper-0.1.1.tar.gz
-	md5sums = bdd1929ffd3dbb29286c56ed9534791b
+	source = https://bitbucket.org/jjacky/dapper/downloads/dapper-0.1.2.tar.gz
+	md5sums = ec231a32217585fae471fad468cdf310
 
 pkgname = dapper
 
