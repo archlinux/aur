@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
 license=('GPL')
 groups=('orocos-toolchain')
-depends=('orocos-rtt' 'orocos-log4cpp')
+depends=('orocos-rtt' 'orocos-log4cpp' 'lua')
 makedepends=('cmake')
 source=(http://www.orocos.org/stable/toolchain/v${pkgver}/${_pkgname}-${pkgver}-src.tar.bz2)
 md5sums=('cb817efca78ae5659a3ca62a741e43bf')
@@ -17,6 +17,8 @@ md5sums=('cb817efca78ae5659a3ca62a741e43bf')
 build() {
 	# build ocl
 	cd "${srcdir}/${_pkgname}-${pkgver}/ocl"
+	
+	sed 's#usr/share#share#g' -i lua/CMakeLists.txt
 	
 	# this is a bit hacky: finding the orocos version of log4cpp with cmake does
 	# not work so we need to provide the complete information from here

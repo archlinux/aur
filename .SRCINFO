@@ -10,6 +10,7 @@ pkgbase = orocos-ocl
 	makedepends = cmake
 	depends = orocos-rtt
 	depends = orocos-log4cpp
+	depends = lua
 	source = http://www.orocos.org/stable/toolchain/v2.5.0/orocos-toolchain-2.5.0-src.tar.bz2
 	md5sums = cb817efca78ae5659a3ca62a741e43bf
 
