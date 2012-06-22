@@ -1,16 +1,17 @@
-# Maintiner: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
+
 pkgname=ruby-cairo
-pkgver=1.10.0
-pkgrel=3
+pkgver=1.12.2
+pkgrel=1
 pkgdesc="Ruby bindings for cairo"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url="http://cairographics.org/rcairo/"
 license=('GPL')
 depends=('ruby' 'cairo>=1.2.0')
 makedepends=('ruby-pkgconfig')
 source=("http://cairographics.org/releases/rcairo-$pkgver.tar.gz")
-sha256sums=('70e2df4fe0bcd2875d7512279058b116e964ca91d152cf9eb2f05b5c7774f118')
+sha256sums=('f071d6ccb12cb6dc1fc91eb086d6150ce779930fe5af38a6987e378c809362c5')
 
 build() {
   cd "$srcdir/rcairo-$pkgver"
