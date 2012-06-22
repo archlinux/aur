@@ -1,8 +1,8 @@
 diff --git a/refind/main.c b/refind/main.c
-index 298a6d2..3e92f2e 100644
+index 9558655..3f54b4f 100644
 --- a/refind/main.c
 +++ b/refind/main.c
-@@ -57,13 +57,13 @@
+@@ -58,13 +58,13 @@
  
  #define MACOSX_LOADER_PATH      L"System\\Library\\CoreServices\\boot.efi"
  #if defined (EFIX64)
@@ -16,6 +16,6 @@ index 298a6d2..3e92f2e 100644
  #else
 -#define SHELL_NAMES             L"\\EFI\\tools\\shell.efi"
 +#define SHELL_NAMES             L"\\EFI\\tools\\shell.efi,\\shell.efi"
+ #define DRIVER_DIRS             L"drivers"
  #endif
  
- // Filename patterns that identify EFI boot loaders. Note that a single case (either L"*.efi" or

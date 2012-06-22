@@ -6,7 +6,7 @@ _actualname="refind"
 _pkgname="${_actualname}-efi-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120607
+pkgver=20120622
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - GIT Development Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -31,7 +31,7 @@ install="${_pkgname}.install"
 source=('refind_include_more_shell_paths.patch'
         'refind_linux.conf')
 
-sha256sums=('db84334a7bea73c6843d82e9d02e1edbda65ff9806bc64e89b885c606c87e5b6'
+sha256sums=('d1bc373c10cf2e17d436d14e080d1daa4d25d51c4d53e477b68417a2b3f4722c'
             '9aac6e65018965ba182ec2d246d37fc5f9269ae96504956d8a51355c3ba1b62f')
 
 _gitroot="git://git.code.sf.net/p/refind/code"
