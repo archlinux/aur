@@ -1,0 +1,15 @@
+pkgbase = rfsm
+	pkgdesc = A small and powerful Statechart implementation
+	pkgver = beta5
+	pkgrel = 1
+	url = http://people.mech.kuleuven.be/~mklotzbucher/rfsm/README.html
+	arch = any
+	license = LGPL
+	license = BSD
+	depends = lua
+	optdepends = orocos-rtt: orocos real-time toolkit support
+	source = rfsm-beta5.tar.gz::https://github.com/kmarkus/rFSM/tarball/beta5
+	md5sums = 0e18e589623ed238e844cc60232ee0af
+
+pkgname = rfsm
+
