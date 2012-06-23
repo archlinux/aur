@@ -155,18 +155,24 @@ _build_using_tianocore_udk() {
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
+	## Fix Build errors
 	sed 's|  MdeModulePkg/Universal/Network|#  MdeModulePkg/Universal/Network|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
+	sed 's|  MdeModulePkg/Library/DxeNetLib/DxeNetLib.inf|#  MdeModulePkg/Library/DxeNetLib/DxeNetLib.inf|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
 	sed 's|  NetLib|#  NetLib|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
 	
+	## Setup UDK Environment
 	source "${_UDK_DIR_}/edksetup.sh" BaseTools
 	echo
 	
+	## Compile UDK BaseTools
 	make -C "${EDK_TOOLS_PATH}"
 	echo
 	
+	## Compile UDK Libraries
 	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc" -a X64 -b RELEASE -t GCC46
 	echo
 	
+	## Unset UDK specific ENV variables
 	unset EDK_TOOLS_PATH
 	unset _UDK_DIR_
 	echo
@@ -174,6 +180,7 @@ _build_using_tianocore_udk() {
 	cd "${srcdir}/${_gitname}_build"
 	echo
 	
+	## Fix UDK Path in rEFInd Makefiles
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR_}|g" -i "${srcdir}/${_gitname}_build/Make.tiano" || true
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR_}|g" -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
 	echo
