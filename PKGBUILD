@@ -8,7 +8,7 @@ _actualname="refind"
 _pkgname="${_actualname}-efi-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120622
+pkgver=20120623
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - GIT Development Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -52,12 +52,12 @@ _update_tianocore_udk_git() {
 	if [[ -d "${srcdir}/tianocore-udk-git/${_DIR_}" ]]; then
 		cd "${srcdir}/tianocore-udk-git/${_DIR_}"
 		git reset --hard
-		git fetch
+		git pull --depth=1 origin "${_gitbranch}:${_gitbranch}"
 		git checkout "${_gitbranch}"
-		git merge "remotes/origin/${_gitbranch}"
 		echo
 	else
-		git clone "git://tianocore.git.sourceforge.net/gitroot/tianocore/edk2-${_DIR_}" "${srcdir}/tianocore-udk-git/${_DIR_}"
+		cd "${srcdir}/tianocore-udk-git/"
+		git clone --depth=1 "git://tianocore.git.sourceforge.net/gitroot/tianocore/edk2-${_DIR_}" "${srcdir}/tianocore-udk-git/${_DIR_}"
 		cd "${srcdir}/tianocore-udk-git/${_DIR_}"
 		git checkout "${_gitbranch}"
 		echo
@@ -107,6 +107,11 @@ _update_git() {
 		
 		echo
 		
+		rm -f "${srcdir}/tianocore-udk-git/edksetup.sh" || true
+		curl --ipv4 -fLC - --retry 3 --retry-delay 3 -o "${srcdir}/tianocore-udk-git/edksetup.sh" "http://edk2.svn.sourceforge.net/viewvc/edk2/trunk/edk2/edksetup.sh"
+		chmod +x "${srcdir}/tianocore-udk-git/edksetup.sh"
+		echo
+		
 	fi
 	
 	echo
@@ -126,6 +131,9 @@ _build_using_tianocore_udk() {
 	
 	rm -rf "${_UDK_DIR_}/Build" || true
 	rm -rf "${_UDK_DIR_}/Conf" || true
+	
+	mkdir -p "${_UDK_DIR_}/Conf"
+	mkdir -p "${_UDK_DIR_}/Build"
 	
 	## Use python2
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
@@ -162,6 +170,9 @@ _build_using_tianocore_udk() {
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR_}|g" -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
 	echo
 	
+	make clean || true
+	echo
+	
 	make tiano
 	echo
 	
@@ -174,6 +185,12 @@ _build_using_gnu-efi() {
 	
 	sed 's|/usr/local/include/efi|/usr/include/efi|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
 	sed 's|/usr/local/lib|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
+	echo
+	
+	sed 's|make -C $(EFILIB_DIR) clean -f Make.tiano|#make -C $(EFILIB_DIR) clean -f Make.tiano|g' -i "${srcdir}/${_gitname}_build/Makefile"
+	echo
+	
+	make clean || true
 	echo
 	
 	make
@@ -195,9 +212,6 @@ build() {
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build"
-	echo
-	
-	make clean || true
 	echo
 	
 	patch -Np1 -i "${srcdir}/refind_include_more_shell_paths.patch"
