@@ -143,16 +143,16 @@ _build_using_tianocore_udk() {
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Source/C/Makefiles/header.makefile" || true
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
-	## Fix GCC 4.7 error - gcc: error: unrecognized command line option ‘-melf_x86_64’
-	# sed 's| -m elf_x86_64| -melf_x86_64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	## Fix GCC 4.7 error - gcc: error: unrecognized command line option '-melf_x86_64'
 	sed 's| -m64 --64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|--64 | |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's| -m64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	# sed 's| -melf_x86_64| -Wl,-melf_x86_64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
 	## Remove GCC -g debug option and add -0s -mabi=ms
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	
+	sed 's|  NetLib|#  NetLib|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
 	
 	source "${_UDK_DIR_}/edksetup.sh" BaseTools
 	echo
@@ -160,7 +160,11 @@ _build_using_tianocore_udk() {
 	make -C "${EDK_TOOLS_PATH}"
 	echo
 	
-	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR}/MdeModulePkg/MdeModulePkg.dsc" -a X64 -b RELEASE -t GCC46
+	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc" -a X64 -b RELEASE -t GCC46
+	echo
+	
+	unset EDK_TOOLS_PATH
+	unset _UDK_DIR_
 	echo
 	
 	cd "${srcdir}/${_gitname}_build"
