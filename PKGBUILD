@@ -1,5 +1,7 @@
 # Maintainer: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
+_USE_TIANOCORE_UDK_LIBS="1"
+
 # _GNU_EFI_LIB_DIR="/usr/lib"
 
 _actualname="refind"
@@ -14,6 +16,13 @@ arch=('any')
 license=('GPL3' 'custom')
 
 makedepends=('git' 'gnu-efi>=3.0q')
+
+if [[ "${_USE_TIANOCORE_UDK_LIBS}" == "1" ]]; then
+	makedepends+=('python2')
+else
+	makedepends+=('gnu-efi>=3.0q')
+fi
+
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
@@ -38,6 +47,26 @@ _gitroot="git://git.code.sf.net/p/refind/code"
 _gitname="${_actualname}"
 _gitbranch="master"
 
+_update_tianocore_udk_git() {
+	
+	if [[ -d "${srcdir}/tianocore-udk-git/${_DIR_}" ]]; then
+		cd "${srcdir}/tianocore-udk-git/${_DIR_}"
+		git reset --hard
+		git fetch
+		git checkout "${_gitbranch}"
+		git merge "remotes/origin/${_gitbranch}"
+		echo
+	else
+		git clone "git://tianocore.git.sourceforge.net/gitroot/tianocore/edk2-${_DIR_}" "${srcdir}/tianocore-udk-git/${_DIR_}"
+		cd "${srcdir}/tianocore-udk-git/${_DIR_}"
+		git checkout "${_gitbranch}"
+		echo
+	fi
+	
+	unset _DIR_
+	
+}
+
 _update_git() {
 	
 	cd "${srcdir}/"
@@ -58,6 +87,96 @@ _update_git() {
 		msg "GIT checkout done or server timeout"
 	fi
 	
+	echo
+	
+	if [[ "${_USE_TIANOCORE_UDK_LIBS}" == "1" ]]; then
+		mkdir -p "${srcdir}/tianocore-udk-git"
+		cd "${srcdir}/tianocore-udk-git"
+		
+		_DIR_="BaseTools"
+		_update_tianocore_udk_git
+		
+		_DIR_="MdePkg"
+		_update_tianocore_udk_git
+		
+		_DIR_="MdeModulePkg"
+		_update_tianocore_udk_git
+		
+		_DIR_="IntelFrameworkPkg"
+		_update_tianocore_udk_git
+		
+		echo
+		
+	fi
+	
+	echo
+	
+}
+
+_build_using_tianocore_udk() {
+	
+	rm -rf "${srcdir}/tianocore-udk-git_build/" || true
+	cp -r "${srcdir}/tianocore-udk-git" "${srcdir}/tianocore-udk-git_build"
+	
+	cd "${srcdir}/tianocore-udk-git_build"
+	echo
+	
+	export _UDK_DIR_="${srcdir}/tianocore-udk-git_build"
+	export EDK_TOOLS_PATH="${_UDK_DIR_}/BaseTools"
+	
+	rm -rf "${_UDK_DIR_}/Build" || true
+	rm -rf "${_UDK_DIR_}/Conf" || true
+	
+	## Use python2
+	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
+	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/Tests/GNUmakefile"
+	
+	## Fix GCC Warning as error
+	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Source/C/Makefiles/header.makefile" || true
+	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	
+	## Fix GCC 4.7 error - gcc: error: unrecognized command line option ‘-melf_x86_64’
+	# sed 's| -m elf_x86_64| -melf_x86_64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	sed 's| -m64 --64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	sed 's|--64 | |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	sed 's| -m64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	# sed 's| -melf_x86_64| -Wl,-melf_x86_64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	
+	## Remove GCC -g debug option and add -0s -mabi=ms
+	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
+	
+	source "${_UDK_DIR_}/edksetup.sh" BaseTools
+	echo
+	
+	make -C "${EDK_TOOLS_PATH}"
+	echo
+	
+	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR}/MdeModulePkg/MdeModulePkg.dsc" -a X64 -b RELEASE -t GCC46
+	echo
+	
+	cd "${srcdir}/${_gitname}_build"
+	echo
+	
+	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR_}|g" -i "${srcdir}/${_gitname}_build/Make.tiano" || true
+	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR_}|g" -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
+	echo
+	
+	make tiano
+	echo
+	
+	make fs
+	echo
+	
+}
+
+_build_using_gnu-efi() {
+	
+	sed 's|/usr/local/include/efi|/usr/include/efi|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
+	sed 's|/usr/local/lib|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
+	echo
+	
+	make
 	echo
 	
 }
@@ -84,12 +203,18 @@ build() {
 	patch -Np1 -i "${srcdir}/refind_include_more_shell_paths.patch"
 	echo
 	
-	sed 's|/usr/local/include/efi|/usr/include/efi|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
-	sed 's|/usr/local/lib|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Make.common" || true
-	echo
+	rm -f "${srcdir}/${_gitname}_build/USED_TIANO.txt" || true
+	rm -f "${srcdir}/${_gitname}_build/USED_GNU-EFI.txt" || true
 	
-	make
-	echo
+	if [[ "${_USE_TIANOCORE_UDK_LIBS}" == "1" ]]; then
+		touch "${srcdir}/${_gitname}_build/USED_TIANO.txt"
+		
+		_build_using_tianocore_udk
+	else
+		"${srcdir}/${_gitname}_build/USED_GNU-EFI.txt"
+		
+		_build_using_gnu-efi
+	fi
 	
 }
 
