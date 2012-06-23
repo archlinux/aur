@@ -1,0 +1,17 @@
+pkgbase = python16
+	pkgdesc = Yes, an ancient version of Python, lol
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = PSF
+	makedepends = tk
+	makedepends = tcl
+	depends = bash
+	options = !makeflags
+	source = http://www.python.org/download/releases/1.6.1/Python-1.6.1.tar.gz
+	sha1sums = 3cc7f523ae529384ea78b41d1c48011484407442
+
+pkgname = python16
+
