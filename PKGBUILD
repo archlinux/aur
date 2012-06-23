@@ -118,7 +118,8 @@ _update_git() {
 		mkdir -p "${srcdir}/${_TIANO_DIR_}"
 		cd "${srcdir}/${_TIANO_DIR_}"
 		
-		for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
+		# for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
+		for _DIR_ in BaseTools MdePkg ; do
 			_update_tianocore_udk_${_D_}
 		done
 		
@@ -146,6 +147,7 @@ _build_using_tianocore_udk() {
 	
 	export _UDK_DIR_="${srcdir}/${_TIANO_DIR_}_build"
 	export EDK_TOOLS_PATH="${_UDK_DIR_}/BaseTools"
+	export _UDK_TARGET_="MdePkg/MdePkg.dsc"
 	
 	rm -rf "${_UDK_DIR_}/Build" || true
 	rm -rf "${_UDK_DIR_}/Conf" || true
@@ -170,6 +172,12 @@ _build_using_tianocore_udk() {
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
+	## Fix UDK Target Platform
+	sed "s|ACTIVE_PLATFORM       = Nt32Pkg/Nt32Pkg.dsc|ACTIVE_PLATFORM       = ${_UDK_TARGET_}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	sed "s|TARGET                = DEBUG|TARGET                = RELEASE|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	sed "s|TARGET_ARCH           = IA32|TARGET_ARCH           = X64|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = GCC46|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	
 	## Fix Build errors
 	# sed 's|  MdeModulePkg/Universal/Network|#  MdeModulePkg/Universal/Network|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
 	# sed 's|  MdeModulePkg/Library/DxeNetLib/DxeNetLib.inf|#  MdeModulePkg/Library/DxeNetLib/DxeNetLib.inf|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
@@ -184,7 +192,7 @@ _build_using_tianocore_udk() {
 	echo
 	
 	## Compile UDK Libraries
-	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR_}/MdePkg/MdePkg.dsc" -a X64 -b RELEASE -t GCC46
+	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR_}/${_UDK_TARGET_}" -a X64 -b RELEASE -t GCC46
 	echo
 	
 	cd "${srcdir}/${_gitname}_build"
@@ -193,6 +201,11 @@ _build_using_tianocore_udk() {
 	## Fix UDK Path in rEFInd Makefiles
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR_}|g" -i "${srcdir}/${_gitname}_build/Make.tiano" || true
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR_}|g" -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
+	echo
+	
+	## Fix UDK Target Platform in rEFInd Makefiles
+	sed 's|EFILIB          = $(EDK2BASE)/Build/MdeModule/|EFILIB          = $(EDK2BASE)/Build/Mde/|g' -i "${srcdir}/${_gitname}_build/refind/Make.tiano" || true
+	sed 's|EFILIB          = $(EDK2BASE)/Build/MdeModule/|EFILIB          = $(EDK2BASE)/Build/Mde/|g' -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
 	echo
 	
 	make clean || true
@@ -269,6 +282,11 @@ package() {
 	## install the rEFInd x86_64 UEFI app
 	install -d "${pkgdir}/boot/efi/EFI/arch/refind/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/refind/refind_x64.efi" "${pkgdir}/boot/efi/EFI/arch/refind/refindx64.efi"
+	
+	if [[ -e "${srcdir}/${_gitname}_build/USED_TIANO.txt" ]]; then
+		install -d "${pkgdir}/boot/efi/EFI/arch/refind/drivers_x64/"
+		install -D -m0644 "${srcdir}/${_gitname}_build/refind/filesystems"/*_x64.efi "${pkgdir}/boot/efi/EFI/arch/refind/drivers_x64/"
+	fi
 	
 	## install the rEFInd config file
 	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/boot/efi/EFI/arch/refind/refind.conf"
