@@ -187,11 +187,6 @@ _build_using_tianocore_udk() {
 	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR_}/MdePkg/MdePkg.dsc" -a X64 -b RELEASE -t GCC46
 	echo
 	
-	## Unset UDK specific ENV variables
-	unset EDK_TOOLS_PATH
-	unset _UDK_DIR_
-	echo
-	
 	cd "${srcdir}/${_gitname}_build"
 	echo
 	
@@ -207,6 +202,11 @@ _build_using_tianocore_udk() {
 	echo
 	
 	make fs
+	echo
+	
+	## Unset UDK specific ENV variables
+	unset EDK_TOOLS_PATH
+	unset _UDK_DIR_
 	echo
 	
 }
