@@ -15,7 +15,7 @@ url="http://www.rodsbooks.com/refind/index.html"
 arch=('any')
 license=('GPL3' 'custom')
 
-makedepends=('git' 'gnu-efi>=3.0q')
+makedepends=('git')
 
 if [[ "${_USE_TIANOCORE_UDK_LIBS}" == "1" ]]; then
 	makedepends+=('python2')

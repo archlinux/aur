@@ -8,7 +8,6 @@ pkgbase = refind-efi-x86_64-git
 	license = GPL3
 	license = custom
 	makedepends = git
-	makedepends = gnu-efi>=3.0q
 	makedepends = python2
 	depends = dosfstools
 	depends = efibootmgr
