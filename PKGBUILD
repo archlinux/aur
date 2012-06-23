@@ -7,7 +7,7 @@ pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
 _basekernel=3.4
-pkgver=${_basekernel}.3
+pkgver=${_basekernel}.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,17 +22,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
         "${pkgname}.preset"
         'fix-acerhdf-1810T-bios.patch'
         'change-default-console-loglevel.patch'
-        'i915-fix-ghost-tv-output.patch'
-        '3.4.2-rpc_pipefs.patch')
+        'i915-fix-ghost-tv-output.patch')
 md5sums=('967f72983655e2479f951195953e8480'
-         '3b6cf4f6337346ee78904eb70e2d4e08'
+         '58e6672d932d74d5e2b6811b9d37d67c'
          '3f2c307c8ffae67f60c13ef69af8364a'
          '18d9d09152bafffaef78f2aac07e7145'
          'eb14dcfd80c00852ef81ded6e826826a'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '5a7baeab35f968bf9a6ab115d14586c7')
+         '263725f20c0b9eb9c353040792d644e5')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -40,8 +38,6 @@ build() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # fix nfs4 regression
-  patch -Np1 -i "${srcdir}/3.4.2-rpc_pipefs.patch"
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
