@@ -4,7 +4,7 @@
 _pkgname=pmount
 pkgname=$_pkgname-safe-removal
 pkgver=0.9.23
-pkgrel=5
+pkgrel=6
 pkgdesc="mount removable devices as normal user, with safe removal of device"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -13,6 +13,7 @@ backup=('etc/pmount.allow')
 depends=('sysfsutils>=2.0.0-1' 'bash' 'util-linux')
 makedepends=('intltool')
 provides=('pmount=0.9.23')
+conflicts=('pmount')
 source=(https://alioth.debian.org/frs/download.php/3310/pmount-0.9.23.tar.bz2
 	patch)
 
