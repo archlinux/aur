@@ -105,6 +105,9 @@ _update_git() {
 		_DIR_="IntelFrameworkPkg"
 		_update_tianocore_udk_git
 		
+		_DIR_="IntelFrameworkModulePkg"
+		_update_tianocore_udk_git
+		
 		echo
 		
 		rm -f "${srcdir}/tianocore-udk-git/edksetup.sh" || true
@@ -152,6 +155,7 @@ _build_using_tianocore_udk() {
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
+	sed 's|  MdeModulePkg/Universal/Network|#  MdeModulePkg/Universal/Network|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
 	sed 's|  NetLib|#  NetLib|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
 	
 	source "${_UDK_DIR_}/edksetup.sh" BaseTools
