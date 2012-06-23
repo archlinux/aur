@@ -1,6 +1,7 @@
 # Maintainer: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _USE_TIANOCORE_UDK_LIBS="1"
+_USE_TIANO_GIT="0"
 
 # _GNU_EFI_LIB_DIR="/usr/lib"
 
@@ -49,17 +50,33 @@ _gitbranch="master"
 
 _update_tianocore_udk_git() {
 	
-	if [[ -d "${srcdir}/tianocore-udk-git/${_DIR_}" ]]; then
-		cd "${srcdir}/tianocore-udk-git/${_DIR_}"
+	if [[ -d "${srcdir}/${_TIANO_DIR_}/${_DIR_}" ]]; then
+		cd "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
 		git reset --hard
 		git pull --depth=1 origin "${_gitbranch}:${_gitbranch}"
 		git checkout "${_gitbranch}"
 		echo
 	else
-		cd "${srcdir}/tianocore-udk-git/"
-		git clone --depth=1 "git://tianocore.git.sourceforge.net/gitroot/tianocore/edk2-${_DIR_}" "${srcdir}/tianocore-udk-git/${_DIR_}"
-		cd "${srcdir}/tianocore-udk-git/${_DIR_}"
+		cd "${srcdir}/${_TIANO_DIR_}/"
+		git clone --depth=1 "git://tianocore.git.sourceforge.net/gitroot/tianocore/edk2-${_DIR_}" "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
+		cd "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
 		git checkout "${_gitbranch}"
+		echo
+	fi
+	
+	unset _DIR_
+	
+}
+
+_update_tianocore_udk_svn() {
+	
+	if [[ -d "${srcdir}/${_TIANO_DIR_}/${_DIR_}" ]]; then
+		cd "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
+		svn update
+		echo
+	else
+		cd "${srcdir}/${_TIANO_DIR_}/"
+		svn checkout "https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/${_DIR_}" "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
 		echo
 	fi
 	
@@ -90,32 +107,27 @@ _update_git() {
 	echo
 	
 	if [[ "${_USE_TIANOCORE_UDK_LIBS}" == "1" ]]; then
-		mkdir -p "${srcdir}/tianocore-udk-git"
-		cd "${srcdir}/tianocore-udk-git"
+		if [[ "${_USE_TIANO_GIT}" == "1" ]]; then
+			_D_="git"
+		else
+			_D_="svn"
+		fi
 		
-		_DIR_="BaseTools"
-		_update_tianocore_udk_git
+		_TIANO_DIR_="tianocore-udk-${_D_}"
 		
-		_DIR_="MdePkg"
-		_update_tianocore_udk_git
+		mkdir -p "${srcdir}/${_TIANO_DIR_}"
+		cd "${srcdir}/${_TIANO_DIR_}"
 		
-		_DIR_="MdeModulePkg"
-		_update_tianocore_udk_git
+		for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
+			_update_tianocore_udk_${_D_}
+		done
 		
-		_DIR_="IntelFrameworkPkg"
-		_update_tianocore_udk_git
-		
-		_DIR_="IntelFrameworkModulePkg"
-		_update_tianocore_udk_git
-		
-		_DIR_="EdkCompatibilityPkg"
-		_update_tianocore_udk_git
-		
+		unset _DIR_
 		echo
 		
-		rm -f "${srcdir}/tianocore-udk-git/edksetup.sh" || true
-		curl --ipv4 -fLC - --retry 3 --retry-delay 3 -o "${srcdir}/tianocore-udk-git/edksetup.sh" "http://edk2.svn.sourceforge.net/viewvc/edk2/trunk/edk2/edksetup.sh"
-		chmod +x "${srcdir}/tianocore-udk-git/edksetup.sh"
+		rm -f "${srcdir}/${_TIANO_DIR_}/edksetup.sh" || true
+		curl --ipv4 -fLC - --retry 3 --retry-delay 3 -o "${srcdir}/${_TIANO_DIR_}/edksetup.sh" "https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2/edksetup.sh"
+		chmod +x "${srcdir}/${_TIANO_DIR_}/edksetup.sh"
 		echo
 		
 	fi
@@ -126,13 +138,13 @@ _update_git() {
 
 _build_using_tianocore_udk() {
 	
-	rm -rf "${srcdir}/tianocore-udk-git_build/" || true
-	cp -r "${srcdir}/tianocore-udk-git" "${srcdir}/tianocore-udk-git_build"
+	rm -rf "${srcdir}/${_TIANO_DIR_}_build/" || true
+	cp -r "${srcdir}/${_TIANO_DIR_}" "${srcdir}/${_TIANO_DIR_}_build"
 	
-	cd "${srcdir}/tianocore-udk-git_build"
+	cd "${srcdir}/${_TIANO_DIR_}_build"
 	echo
 	
-	export _UDK_DIR_="${srcdir}/tianocore-udk-git_build"
+	export _UDK_DIR_="${srcdir}/${_TIANO_DIR_}_build"
 	export EDK_TOOLS_PATH="${_UDK_DIR_}/BaseTools"
 	
 	rm -rf "${_UDK_DIR_}/Build" || true
@@ -172,7 +184,7 @@ _build_using_tianocore_udk() {
 	echo
 	
 	## Compile UDK Libraries
-	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc" -a X64 -b RELEASE -t GCC46
+	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_DIR_}/MdePkg/MdePkg.dsc" -a X64 -b RELEASE -t GCC46
 	echo
 	
 	## Unset UDK specific ENV variables
