@@ -5,10 +5,12 @@ pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to 
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
-depends=('perl' 'perl-moo' 'perl-wx')
+depends=('perl' 'perl-moo' 'perl-wx' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath')
 makedepends=('git')
 provides=('slic3r')
 conflicts=('slic3r')
+source=('slic3r.desktop')
+md5sums=('c997a07f658061d29b221cf7fd07ff97')
 
 _gitroot="git://github.com/alexrj/Slic3r"
 _gitname="Slic3r"
@@ -41,6 +43,13 @@ build() {
    ./Build &&
    ./Build test &&
    ./Build install; } || return 1
+
+  # Icons " current Build.PL is not really geared for installation "
+  install -d $pkgdir/usr/bin/vendor_perl/var
+  install -m 644 $srcdir/$_gitname-build/var/*  $pkgdir/usr/bin/vendor_perl/var/
+
+  install -d $pkgdir/usr/share/applications
+  install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
 
 }
 
