@@ -20,6 +20,10 @@ makedepends=('git')
 
 if [[ "${_USE_TIANOCORE_UDK_LIBS}" == "1" ]]; then
 	makedepends+=('python2')
+	
+	if [[ "${_USE_TIANO_GIT}" != "1" ]]; then
+		makedepends+=('subversion')
+	fi
 else
 	makedepends+=('gnu-efi>=3.0q')
 fi
@@ -119,8 +123,8 @@ _update_git() {
 		cd "${srcdir}/${_TIANO_DIR_}"
 		
 		# for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
-		for _DIR_ in BaseTools MdePkg ; do
-			_update_tianocore_udk_${_D_}
+		for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg ; do
+			"_update_tianocore_udk_${_D_}"
 		done
 		
 		unset _DIR_
@@ -145,17 +149,19 @@ _build_using_tianocore_udk() {
 	cd "${srcdir}/${_TIANO_DIR_}_build"
 	echo
 	
+	## Setup UDK Environment variables
 	export _UDK_DIR_="${srcdir}/${_TIANO_DIR_}_build"
 	export EDK_TOOLS_PATH="${_UDK_DIR_}/BaseTools"
 	export _UDK_TARGET_="MdePkg/MdePkg.dsc"
 	
+	## Cleanup UDK config files
 	rm -rf "${_UDK_DIR_}/Build" || true
 	rm -rf "${_UDK_DIR_}/Conf" || true
 	
 	mkdir -p "${_UDK_DIR_}/Conf"
 	mkdir -p "${_UDK_DIR_}/Build"
 	
-	## Use python2
+	## UDK BaseTools requires python2
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/Tests/GNUmakefile"
 	
@@ -177,11 +183,6 @@ _build_using_tianocore_udk() {
 	sed "s|TARGET                = DEBUG|TARGET                = RELEASE|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TARGET_ARCH           = IA32|TARGET_ARCH           = X64|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = GCC46|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	
-	## Fix Build errors
-	# sed 's|  MdeModulePkg/Universal/Network|#  MdeModulePkg/Universal/Network|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
-	# sed 's|  MdeModulePkg/Library/DxeNetLib/DxeNetLib.inf|#  MdeModulePkg/Library/DxeNetLib/DxeNetLib.inf|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
-	# sed 's|  NetLib|#  NetLib|g' -i "${_UDK_DIR_}/MdeModulePkg/MdeModulePkg.dsc"
 	
 	## Setup UDK Environment
 	source "${_UDK_DIR_}/edksetup.sh" BaseTools
@@ -279,24 +280,25 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build"
 	
-	## install the rEFInd x86_64 UEFI app
+	## Install rEFInd x86_64 UEFI application
 	install -d "${pkgdir}/boot/efi/EFI/arch/refind/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/refind/refind_x64.efi" "${pkgdir}/boot/efi/EFI/arch/refind/refindx64.efi"
 	
+	## Install x86_64 UEFI drivers built from rEFInd if available
 	if [[ -e "${srcdir}/${_gitname}_build/USED_TIANO.txt" ]]; then
 		install -d "${pkgdir}/boot/efi/EFI/arch/refind/drivers_x64/"
-		install -D -m0644 "${srcdir}/${_gitname}_build/refind/filesystems"/*_x64.efi "${pkgdir}/boot/efi/EFI/arch/refind/drivers_x64/"
+		install -D -m0644 "${srcdir}/${_gitname}_build/drivers"/*_x64.efi "${pkgdir}/boot/efi/EFI/arch/refind/drivers_x64/"
 	fi
 	
-	## install the rEFInd config file
+	## Install rEFInd config file
 	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/boot/efi/EFI/arch/refind/refind.conf"
 	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/boot/efi/EFI/arch/refind/refind_linux.conf"
 	
-	## install the rEFInd icons
+	## Install rEFInd icons
 	install -d "${pkgdir}/boot/efi/EFI/arch/refind/icons/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/icons"/* "${pkgdir}/boot/efi/EFI/arch/refind/icons/"
 	
-	## install the rEFInd docs
+	## Install rEFInd docs
 	install -d "${pkgdir}/usr/share/refind/docs/html/"
 	install -d "${pkgdir}/usr/share/refind/docs/Styles/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/docs/refind"/* "${pkgdir}/usr/share/refind/docs/html/"
@@ -305,7 +307,7 @@ package() {
 	install -D -m0644 "${srcdir}/${_gitname}_build/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS.txt"
 	rm -f "${pkgdir}/usr/share/refind/docs/html/.DS_Store" || true
 	
-	## install the rEFIt license file, since rEFInd is a fork of rEFIt
+	## Install rEFIt license file, since rEFInd is a fork of rEFIt
 	install -d "${pkgdir}/usr/share/licenses/refind/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/refind/LICENSE"
 	
