@@ -1,0 +1,108 @@
+From 6ae97ebdd3b60cc1f0e521a25600c4d55b141a29 Mon Sep 17 00:00:00 2001
+From: Hylke Bons <hbons@thinkpad.(none)>
+Date: Thu, 17 May 2012 23:09:18 +0100
+Subject: [PATCH] Fix event log not loading on Ubuntu. Closes #729
+
+---
+ SparkleShare/Linux/SparkleEventLog.cs     |   36 ++++++++++++++---------------
+ SparkleShare/SparkleEventLogController.cs |    3 +++
+ 2 files changed, 21 insertions(+), 18 deletions(-)
+
+diff --git a/SparkleShare/Linux/SparkleEventLog.cs b/SparkleShare/Linux/SparkleEventLog.cs
+index bda8742..b325021 100755
+--- a/SparkleShare/Linux/SparkleEventLog.cs
++++ b/SparkleShare/Linux/SparkleEventLog.cs
+@@ -40,7 +40,6 @@ public class SparkleEventLog : Window {
+         private ScrolledWindow scrolled_window;
+         private WebView web_view;
+         private SparkleSpinner spinner;
+-        private string link_status;
+ 
+ 
+         // Short alias for the translations
+@@ -96,18 +95,8 @@ public SparkleEventLog () : base ("")
+                 Editable = false
+             };
+ 
+-            this.web_view.HoveringOverLink += delegate (object o, WebKit.HoveringOverLinkArgs args) {
+-                this.link_status = args.Link;
+-            };
+-
+-            this.web_view.NavigationRequested += delegate (object o, WebKit.NavigationRequestedArgs args) {
+-                if (args.Request.Uri == this.link_status)
+-                    Controller.LinkClicked (args.Request.Uri);
+ 
+-                // Don't follow HREFs (as this would cause a page refresh)
+-                if (!args.Request.Uri.Equals ("file:"))
+-                    args.RetVal = 1;
+-            };
++            this.web_view.NavigationRequested += WebViewNavigationRequested;
+ 
+             this.scrolled_window.Add (this.web_view);
+             this.content_wrapper.Add (this.spinner);
+@@ -173,6 +162,15 @@ public SparkleEventLog () : base ("")
+                 });
+             };
+         }
++        
++        
++        private void WebViewNavigationRequested (object o, WebKit.NavigationRequestedArgs args) {
++            Controller.LinkClicked (args.Request.Uri.Substring (7));
++
++            // Don't follow HREFs (as this would cause a page refresh)
++            if (!args.Request.Uri.Equals ("file:"))
++                args.RetVal = 1;
++        }
+ 
+ 
+         public void UpdateChooser (string [] folders)
+@@ -263,21 +261,23 @@ public void UpdateContent (string html)
+ 				html = html.Replace ("<!-- $pixmaps-path -->", pixmaps_path);
+                 
+ 				html = html.Replace ("<!-- $document-added-background-image -->", 
+-					"file://" + IO.Path.Combine (icons_path + "document-added.png"));
+-				
++					"file://" + IO.Path.Combine (icons_path, "document-added.png"));
++
+ 				html = html.Replace ("<!-- $document-edited-background-image -->", 
+-					"file://" + IO.Path.Combine (icons_path + "document-edited.png"));
++					"file://" + IO.Path.Combine (icons_path, "document-edited.png"));
+ 				
+ 				html = html.Replace ("<!-- $document-deleted-background-image -->", 
+-					"file://" + IO.Path.Combine (icons_path + "document-deleted.png"));
++					"file://" + IO.Path.Combine (icons_path, "document-deleted.png"));
+ 				
+ 				html = html.Replace ("<!-- $document-moved-background-image -->", 
+-					"file://" + IO.Path.Combine (icons_path + "document-moved.png"));
++					"file://" + IO.Path.Combine (icons_path, "document-moved.png"));
+                         
+                 
+                 Application.Invoke (delegate {
+                     this.spinner.Stop ();
+-                    this.web_view.LoadString (html, null, null, "file://");
++                                this.web_view.NavigationRequested -= WebViewNavigationRequested;
++                    this.web_view.LoadHtmlString (html, "file://");
++                                this.web_view.NavigationRequested += WebViewNavigationRequested;
+                     this.content_wrapper.Remove (this.content_wrapper.Child);
+                     this.content_wrapper.Add (this.scrolled_window);
+                     this.content_wrapper.ShowAll ();
+diff --git a/SparkleShare/SparkleEventLogController.cs b/SparkleShare/SparkleEventLogController.cs
+index 32eb985..47b3e61 100755
+--- a/SparkleShare/SparkleEventLogController.cs
++++ b/SparkleShare/SparkleEventLogController.cs
+@@ -207,9 +207,12 @@ public void WindowClosed ()
+ 
+         public void LinkClicked (string url)
+         {
++            url = url.Replace ("%20", " ");
++        
+             if (url.StartsWith (Path.VolumeSeparatorChar.ToString ()) ||
+ 			    url.Substring (1, 1).Equals (":")) {
+ 				
++				Console.WriteLine ("opening " + url);
+                 Program.Controller.OpenFile (url);
+             }
+         }
+-- 
+1.7.10
+

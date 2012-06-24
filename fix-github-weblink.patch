@@ -1,0 +1,39 @@
+From 15741da4d6c8d5065ef78be962efaddef6c17a8b Mon Sep 17 00:00:00 2001
+From: Hylke Bons <hylkebons@gmail.com>
+Date: Sat, 23 Jun 2012 21:38:59 +0100
+Subject: [PATCH] linux nautilus: Fix 'Copy Web Link' for Github. Closes #800
+
+---
+ SparkleShare/Linux/Nautilus/sparkleshare-nautilus-extension.py.in  |    2 +-
+ SparkleShare/Linux/Nautilus/sparkleshare-nautilus3-extension.py.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/SparkleShare/Linux/Nautilus/sparkleshare-nautilus-extension.py.in b/SparkleShare/Linux/Nautilus/sparkleshare-nautilus-extension.py.in
+index 717761b..dde1ca8 100755
+--- a/SparkleShare/Linux/Nautilus/sparkleshare-nautilus-extension.py.in
++++ b/SparkleShare/Linux/Nautilus/sparkleshare-nautilus-extension.py.in
+@@ -88,7 +88,7 @@ class SparkleShareExtension (nautilus.MenuProvider):
+         if "gitorious.org" in url:
+ 	        url = "http://" + url + "/blobs/master" + relative_path
+         if "github.com" in url:
+-            url = "http://" + url + "/raw/master" + relative_path
++            url = "https://" + url + "/master" + relative_path
+ 
+         url = url.replace (" ", "%20");
+ 
+diff --git a/SparkleShare/Linux/Nautilus/sparkleshare-nautilus3-extension.py.in b/SparkleShare/Linux/Nautilus/sparkleshare-nautilus3-extension.py.in
+index e4de79c..f12577e 100755
+--- a/SparkleShare/Linux/Nautilus/sparkleshare-nautilus3-extension.py.in
++++ b/SparkleShare/Linux/Nautilus/sparkleshare-nautilus3-extension.py.in
+@@ -83,7 +83,7 @@ class SparkleShareExtension (GObject.GObject, Nautilus.MenuProvider):
+         elif "github.com" in host:
+             # ssh://git@github.com/hbons/SparkleShare.git
+             # https://raw.github.com/hbons/SparkleShare/master/README
+-            url = "http://raw.github.com/" + urllib.quote(origin_path.rstrip(".git")) + "/raw/master/" + urllib.quote(relative_path)
++            url = "https://raw.github.com/" + urllib.quote(origin_path.rstrip(".git")) + "/master/" + urllib.quote(relative_path)
+         else:
+             # https://git.one-gear.com/?p=thansen/Public.git;a=blob;f=SparkleShare.txt;hb=HEAD
+             url = "http://" + host + "/?p=" + urllib.quote(origin_path) +";a=blob;f=" + urllib.quote(relative_path) + ";hb=HEAD"
+-- 
+1.7.10
+
