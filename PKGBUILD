@@ -1,7 +1,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 # Maintainer: Thomas Weißschuh <thomas_weissschuh@lavabit.com>
 pkgname=batctl
-pkgver=2012.1.0
+pkgver=2012.2.0
 pkgrel=1
 pkgdesc="B.A.T.M.A.N. advanced control and management tool"
 arch=('i686' 'x86_64')
@@ -19,6 +19,4 @@ package() {
   make DESTDIR=${pkgdir}  PREFIX=/usr install
 
 }
-
-# vim:set ts=2 sw=2 et:
-sha1sums=('90074bad59b711a1d4560df29150ccf7916fe49e')
+md5sums=('7abd284098c514d3f2858e8a956c495e')
