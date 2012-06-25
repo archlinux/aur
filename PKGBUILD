@@ -1,7 +1,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=clutter-gst
-pkgver=1.5.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="GStreamer bindings for clutter"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('LGPL')
 depends=('clutter' 'gstreamer0.10-base' 'libxdamage')
 makedepends=('gobject-introspection')
 options=('!libtool')
-source=(http://clutter-project.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('f12b59d5a548abe38c63750ae2e6cb909afd90cfdcc06d2c4288097f962b08bc')
+source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+sha256sums=('abc879cdd562f1640a825131405f4327a427bfe65b805ebc25d0c78909c8c622')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc
@@ -22,8 +22,8 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="${pkgdir}" install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
