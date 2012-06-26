@@ -10,9 +10,9 @@ pkgbase = openmw-git
 	makedepends = cmake
 	makedepends = boost
 	depends = openal
-	depends = ogre
-	depends = mygui
-	depends = bullet-svn
+	depends = ogre>=1.8.0
+	depends = mygui>=3.2.0
+	depends = bullet>=2.8.0
 	depends = mpg123
 	depends = libsndfile
 	depends = qt

@@ -1,4 +1,3 @@
-
 # Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
 pkgname=openmw-git
 pkgver=20120329
@@ -8,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3')
 
-depends=('openal' 'ogre' 'mygui' 'bullet-svn' 'mpg123' 'libsndfile' 'qt')
+depends=('openal' 'ogre>=1.8.0' 'mygui>=3.2.0' 'bullet>=2.8.0' 'mpg123' 'libsndfile' 'qt')
 
 makedepends=('git' 'cmake' 'boost')
 conflicts=('openmw')
