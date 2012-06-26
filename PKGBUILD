@@ -1,9 +1,9 @@
 
 # Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
 pkgname=openmw-git
-pkgver=20120328
+pkgver=20120329
 pkgrel=1
-pkgdesc="OpenMW is a open-source engine reimplementation for the role-playing game Morrowind."
+pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3')
@@ -52,7 +52,7 @@ build() {
   install -d -m755 "$pkgdir"/etc/openmw
   install -m644 openmw.cfg.install "$pkgdir"/etc/openmw/openmw.cfg
   install -m644 plugins.cfg "$pkgdir"/etc/openmw/
-  install -m644 files/launcher.cfg "$pkgdir"/etc/openmw/
+  install -m644 launcher.cfg "$pkgdir"/etc/openmw/
 
   # Desktop file and icon
   install -d -m755  "$pkgdir"/usr/share/applications
