@@ -1,6 +1,6 @@
 # Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
 pkgname=openmw-git
-pkgver=20120329
+pkgver=20120628
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -52,6 +52,8 @@ build() {
   install -m644 openmw.cfg.install "$pkgdir"/etc/openmw/openmw.cfg
   install -m644 plugins.cfg "$pkgdir"/etc/openmw/
   install -m644 launcher.cfg "$pkgdir"/etc/openmw/
+  install -m644 settings-default.cfg "$pkgdir"/etc/openmw/
+  install -m644 transparency-overrides.cfg "$pkgdir"/etc/openmw/
 
   # Desktop file and icon
   install -d -m755  "$pkgdir"/usr/share/applications
@@ -65,5 +67,4 @@ build() {
   cp -r resources "$pkgdir"/usr/share/games/openmw/ || exit 1
   install -m644 launcher.qss "$pkgdir"/usr/share/games/openmw/resources
 }
-
 
