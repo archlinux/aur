@@ -8,7 +8,7 @@
 # build time.
 
 pkgname=chromium
-pkgver=19.0.1084.56
+pkgver=20.0.1132.43
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
          'libxss' 'libgcrypt' 'ttf-dejavu' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
-             'elfutils')
+             'elfutils' 'subversion')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 # Needed for the NaCl toolchain
 [[ $CARCH == x86_64 ]] && makedepends+=('lib32-zlib')
@@ -33,8 +33,8 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.sh
         chromium-gcc47.patch
         sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch)
-sha256sums=('c33a2cac35a3dd6ef359d8dee47dc405732f9e0865c82cffb876f5d936ec1418'
-            'd10b849436a695b558947b441d0e6bc6555e44173d9b495a73b4aa4317c816de'
+sha256sums=('c21bdee0ec136102e10c527a0d98e3a29e40406d8f7eb63e8e0ac23801722824'
+            'aa836ba493e659f028e8624764ba7662ef4eccd609be4c6812a7901eaf63f6e4'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
@@ -68,10 +68,6 @@ build() {
 
   ln -s "$srcdir/pepper_${pkgver%%.*}/toolchain/linux_x86_newlib" \
     native_client/toolchain/linux_x86_newlib
-
-  # We need to disable system_ssl until "next protocol negotiation" support is
-  # available in our nss package.
-  # (See https://bugzilla.mozilla.org/show_bug.cgi?id=547312)
 
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
@@ -111,15 +107,9 @@ package() {
   install -Dm4755 -o root -g root out/Release/chrome_sandbox \
     "$pkgdir/usr/lib/chromium/chromium-sandbox"
 
-  cp out/Release/{{chrome,resources}.pak,libffmpegsumo.so} \
-    out/Release/nacl_helper{,_bootstrap} \
-    out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_x86_*.nexe} \
+  cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} \
+    out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} \
     "$pkgdir/usr/lib/chromium/"
-
-  # These links are only needed when building with system ffmpeg
-  #ln -s /usr/lib/libavcodec.so.52 "$pkgdir/usr/lib/chromium/"
-  #ln -s /usr/lib/libavformat.so.52 "$pkgdir/usr/lib/chromium/"
-  #ln -s /usr/lib/libavutil.so.50 "$pkgdir/usr/lib/chromium/"
 
   # Allow users to override command-line options
   install -Dm644 "$srcdir/chromium.default" "$pkgdir/etc/chromium/default"
