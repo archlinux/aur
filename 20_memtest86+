@@ -1,0 +1,29 @@
+#! /bin/sh -e
+########################################################
+# This script generates a memtest86+ entry on grub.cfg #
+# if memtest is installed on the system.               #
+########################################################
+
+prefix="/usr"
+exec_prefix="${prefix}"
+
+datarootdir="/usr/share"
+datadir="${datarootdir}"
+
+. "${datadir}/grub/grub-mkconfig_lib"
+
+MEMTEST86_IMAGE="/boot/memtest86+/memtest.bin"
+CLASS="--class memtest86 --class gnu --class tool"
+
+if [ -e $MEMTEST86_IMAGE ] && is_path_readable_by_grub $MEMTEST86_IMAGE; then
+  # image exists, create menu entry
+  echo "Found memtest86+ image: $MEMTEST86_IMAGE" >&2
+  cat << EOF
+menuentry "Memory test (memtest86+)" $CLASS {
+EOF
+  prepare_grub_to_access_device `${grub_probe} --target=device $MEMTEST86_IMAGE` | sed -e "s/^/  /"
+  cat << EOF
+  linux16 (\$root)`make_system_path_relative_to_its_root $MEMTEST86_IMAGE`
+}
+EOF
+fi

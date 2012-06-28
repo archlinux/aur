@@ -1,0 +1,143 @@
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+index 516be86..5f37db2 100644
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -213,6 +213,8 @@ export GRUB_DEFAULT \
+   GRUB_THEME \
+   GRUB_GFXPAYLOAD_LINUX \
+   GRUB_DISABLE_OS_PROBER \
++  GRUB_COLOR_NORMAL \
++  GRUB_COLOR_HIGHLIGHT \
+   GRUB_INIT_TUNE \
+   GRUB_SAVEDEFAULT \
+   GRUB_ENABLE_CRYPTODISK \
+diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
+index 765bfdc..b148558 100644
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -115,6 +115,14 @@ cat <<EOF
+ 
+ EOF
+ 
++if [ x$GRUB_COLOR_NORMAL != x ] && [ x$GRUB_COLOR_HIGHLIGHT != x ] ; then
++    cat << EOF
++set menu_color_normal=$GRUB_COLOR_NORMAL
++set menu_color_highlight=$GRUB_COLOR_HIGHLIGHT
++
++EOF
++fi
++
+ serial=0;
+ gfxterm=0;
+ for x in ${GRUB_TERMINAL_INPUT} ${GRUB_TERMINAL_OUTPUT}; do
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index 14402e8..64c9bb5 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -87,6 +87,8 @@ linux_entry ()
+       case $type in
+ 	  recovery)
+ 	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")" ;;
++	  fallback)
++	      title="$(gettext_printf "%s, with Linux %s (Fallback initramfs)" "${os}" "${version}")" ;;
+ 	  *)
+ 	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")" ;;
+       esac
+@@ -100,7 +102,7 @@ linux_entry ()
+   else
+       echo "menuentry '$(echo "$os" | grub_quote)' ${CLASS} \$menuentry_id_option 'gnulinux-simple-$boot_device_id' {" | sed "s/^/$submenu_indentation/"
+   fi      
+-  if [ x$type != xrecovery ] ; then
++  if [ x$type != xrecovery ] && [ x$type != xfallback ] ; then
+       save_default_entry | sed -e "s/^/\t/"
+   fi
+ 
+@@ -132,7 +134,8 @@ linux_entry ()
+     fi
+     printf '%s\n' "${prepare_boot_cache}" | sed "s/^/$submenu_indentation/"
+   fi
+-  message="$(gettext_printf "Loading Linux %s ..." ${version})"
++
++  message="$(gettext_printf "Loading Linux %s ..." "${version}")"
+   sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$message'
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+@@ -190,7 +193,22 @@ while [ "x$list" != "x" ] ; do
+   alt_version=`echo $version | sed -e "s,\.old$,,g"`
+   linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+ 
++  if test -e "/etc/arch-release" ; then
++    if echo "${basename}" | grep -q 'vmlinuz-linux' ; then
++      version="`echo "${basename}" | sed -e 's,vmlinuz-linux,,g'`"
++      
++      if [ "x${version}" = "x" ] ; then
++        version="core repo kernel"
++      else
++        version="`echo "${version}" | sed -e 's,-,,g'`"
++        version="${version} kernel"
++      fi
++    fi
++  fi
++  
+   initrd=
++  initrd_arch="`echo "${basename}" | sed -e 's,vmlinuz,initramfs,g'`"
++
+   for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
+ 	   "initrd-${version}" "initramfs-${version}.img" \
+ 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+@@ -198,7 +216,8 @@ while [ "x$list" != "x" ] ; do
+ 	   "initramfs-genkernel-${version}" \
+ 	   "initramfs-genkernel-${alt_version}" \
+ 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${version}" \
+-	   "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}"; do
++	   "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}" \
++	   "${initrd_arch}.img" ; do
+     if test -e "${dirname}/${i}" ; then
+       initrd="$i"
+       break
+@@ -226,6 +245,22 @@ while [ "x$list" != "x" ] ; do
+     linux_root_device_thisversion=${GRUB_DEVICE}
+   fi
+ 
++  if test -e "/etc/arch-release" ; then
++    is_first_entry="false"
++    
++    linux_entry "${OS}" "${version}" true \
++              "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++    
++    for i in "${initrd_arch}-fallback.img" "initramfs-${version}-fallback.img" ; do
++      if test -e "${dirname}/${i}" ; then
++        initrd="${i}"
++        linux_entry "${OS}" "${version}" fallback \
++                    "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++        break
++      fi
++    done
++  fi
++
+   if [ "x$is_first_entry" = xtrue ]; then
+     linux_entry "${OS}" "${version}" simple \
+     "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
+@@ -239,8 +274,11 @@ while [ "x$list" != "x" ] ; do
+     echo "submenu '$(gettext_printf "Advanced options for %s" "${OS}" | grub_quote)' \$menuentry_id_option 'gnulinux-advanced-$boot_device_id' {"
+   fi
+ 
++  if ! test -e "/etc/arch-release" ; then
+   linux_entry "${OS}" "${version}" advanced \
+               "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++  fi
++
+   if [ "x${GRUB_DISABLE_RECOVERY}" != "xtrue" ]; then
+     linux_entry "${OS}" "${version}" recovery \
+                 "single ${GRUB_CMDLINE_LINUX}"
+@@ -252,8 +290,10 @@ done
+ 
+ # If at least one kernel was found, then we need to
+ # add a closing '}' for the submenu command.
++if ! test -e "/etc/arch-release" ; then
+ if [ x"$is_first_entry" != xtrue ]; then
+   echo '}'
+ fi
++fi
+ 
+ echo "$title_correction_code"

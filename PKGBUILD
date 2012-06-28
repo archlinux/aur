@@ -1,104 +1,249 @@
-# $Id$
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Contributor: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-pkgname=grub
-pkgver=0.97
-pkgrel=21
-pkgdesc="A GNU multiboot boot loader"
+_grub_lua_ver=24
+_grub_ntldr_ver=21
+_grub_915_ver=9
+
+pkgname=('grub-common' 'grub-bios' 'grub-efi-i386')
+pkgbase=grub
+pkgver=2.00
+pkgrel=1
+url="https://www.gnu.org/software/grub/"
 arch=('i686' 'x86_64')
-license=('GPL')
-url="http://www.gnu.org/software/grub/"
-groups=('base')
-depends=('ncurses' 'diffutils' 'sed')
-optdepends=('xfsprogs: freezing of xfs /boot in install-grub script')
-source=(ftp://alpha.gnu.org/gnu/grub/grub-$pkgver.tar.gz
-        menu.lst
-        install-grub
-        040_all_grub-0.96-nxstack.patch
-        05-grub-0.97-initrdaddr.diff
-        i2o.patch
-        special-devices.patch
-        more-raid.patch
-        intelmac.patch
-        grub-inode-size.patch
-	ext4.patch
-	grub-0.97-ldflags-objcopy-remove-build-id.patch)
-backup=('boot/grub/menu.lst')
-install=grub.install
-sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
-          '33d43d48000b2027f9baec8fc99d33e0c4500c96'
-          '60e8f7e4c113b85165fd5d9cd724e8413a337a12'
-          '157b81dbad3576536b08642242accfa1aeb093a9'
-          'adbb4685c98797ffb4dc83561ec75698991dddbd'
-          'f2e0dff29a7c8a45e90aa07298a1b2a9a9d29afc'
-          'c5e2c94ed0e759590b9eb38c9d979f075d19d7c0'
-          '45fe668a3779664fb292591f426976b6c784d6c8'
-          '066d7ab1ae442f88e94c9e4f1867ac6682965d06'
-          '0436aa6fa0b6f768289172f983a3f4b69384629e'
-          'a36f34e51efed540f1ddafd78e9c9f6d83e4c8d4'
-          '61c4b58d2eaa3c1561d8e9d8fc41341ce8882869')
+license=('GPL3')
+makedepends=('xz' 'bdf-unifont' 'ttf-dejavu' 'python' 'autogen'
+             'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse')
 
-#set destination architecture here
-#DESTARCH="i686"
-DESTARCH="x86_64"
+source=("http://ftp.gnu.org/gnu/grub/grub-${pkgver}.tar.xz"
+        "ftp://ftp.archlinux.org/other/grub2/grub2_extras_lua_r${_grub_lua_ver}.tar.xz"
+        "ftp://ftp.archlinux.org/other/grub2/grub2_extras_ntldr-img_r${_grub_ntldr_ver}.tar.xz"
+        "ftp://ftp.archlinux.org/other/grub2/grub2_extras_915resolution_r${_grub_915_ver}.tar.xz"
+        'archlinux_grub_mkconfig_fixes.patch'
+        'grub.default'
+        'grub.cfg'
+        '20_memtest86+'
+        'grub_bzr_export.sh')
 
+noextract=("grub2_extras_lua_r${_grub_lua_ver}.tar.xz"
+           "grub2_extras_ntldr-img_r${_grub_ntldr_ver}.tar.xz"
+           "grub2_extras_915resolution_r${_grub_915_ver}.tar.xz")
 
-build() {
-  cd $srcdir/$pkgname-$pkgver
+sha1sums=('274d91e96b56a5b9dd0a07accff69dbb6dfb596b'
+          '89290031b974780c6df76893836d2477d4add895'
+          'eb4b35b4c36b64f9405cbcbc538cb205171c1c0a'
+          'd5ae2efec25616028a9d89e98b6e454f1c4c415f'
+          '26e4e946190bea1f03632658cf08ba90e11dec57'
+          'dbf493dec4722feb11f0b5c71ad453a18daf0fc5'
+          '76ae862a945a8848e6999adf8ad1847f0f7008b9'
+          'ce35d7ae75cd1b5b677e894e528f96add40e77b9'
+          '0cfd4e51cdb14a92f06cfd3c607f2aa21f3e55fc')
 
-  # optimizations break the build -- disable them
-  # adding special devices to grub, patches are from fedora
-  patch -Np1 -i ../special-devices.patch
-  patch -Np1 -i ../i2o.patch
-  patch -Np1 -i ../more-raid.patch
-  patch -Np1 -i ../intelmac.patch
-  # Add support for bigger inode size to e2fs_stage1_5
-  patch -Np1 -i ../grub-inode-size.patch
-  # Add ext4 support
-  # http://www.mail-archive.com/bug-grub@gnu.org/msg11458.html
-  patch -Np1 -i ../ext4.patch
-  # binutils fix
-  patch -Np1 -i ../grub-0.97-ldflags-objcopy-remove-build-id.patch
+_build_grub-common_and_bios() {
 
-  sed -e'/^AC_PROG_CC/ a\AM_PROG_CC_C_O\ ' -i "${srcdir}/${pkgname}-${pkgver}/configure.ac"
-  sed -e'/^AC_PROG_CC/ a\AM_PROG_AS\ ' -i "${srcdir}/${pkgname}-${pkgver}/configure.ac"
+	## copy the source for building the common/bios package
+	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub_bios-${pkgver}"
+	cd "${srcdir}/grub_bios-${pkgver}"
 
-  ## recreate ./configure script with the required changes in LDFLAGS and objcopy
-  aclocal
-  autoconf
-  autoreconf
-  automake
+	## Apply Archlinux specific fixes to enable grub-mkconfig detect Arch kernels and initramfs
+	patch -Np1 -i "${srcdir}/archlinux_grub_mkconfig_fixes.patch"
+	echo
 
-  #arch64 fixes for static build
-  if [ "$CARCH" = "x86_64" ]; then  ## correcting problems for new wersion of autotools
+	## fix unifont.bdf location so that grub-mkfont can create *.pf2 files
+	sed 's|/usr/share/fonts/unifont|/usr/share/fonts/unifont /usr/share/fonts/misc|g' -i "${srcdir}/grub_bios-${pkgver}/configure.ac"
 
-    echo "this package has to be built on i686, won't compile on x86_64"
-    sleep 5
-  else
-    if [ "$DESTARCH" = "x86_64" ]; then
-      # patch from gentoo for fixing a segfault
-      patch -Np1 -i ../040_all_grub-0.96-nxstack.patch
-      # patch from frugalware to make it boot when more than 2GB ram installed
-      patch -Np1 -i ../05-grub-0.97-initrdaddr.diff
-      CFLAGS="-static -fno-strict-aliasing" ./configure --prefix=/usr --bindir=/bin --sbindir=/sbin \
-                           --mandir=/usr/share/man --infodir=/usr/share/info
-    else
-      CFLAGS="-fno-strict-aliasing" ./configure --prefix=/usr --bindir=/bin --sbindir=/sbin \
-                  --mandir=/usr/share/man --infodir=/usr/share/info
-    fi
-  fi
+	## fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme
+	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "${srcdir}/grub_bios-${pkgver}/configure.ac"
+
+	## add the grub-extra sources
+	export GRUB_CONTRIB="${srcdir}/grub_bios-${pkgver}/grub-extras/"
+	install -d "${srcdir}/grub_bios-${pkgver}/grub-extras"
+
+	bsdtar xf "${srcdir}/grub2_extras_lua_r${_grub_lua_ver}.tar.xz" \
+		-C "${srcdir}/grub_bios-${pkgver}/grub-extras"
+
+	bsdtar xf "${srcdir}/grub2_extras_ntldr-img_r${_grub_ntldr_ver}.tar.xz" \
+		-C "${srcdir}/grub_bios-${pkgver}/grub-extras"
+
+	bsdtar xf "${srcdir}/grub2_extras_915resolution_r${_grub_915_ver}.tar.xz" \
+		-C "${srcdir}/grub_bios-${pkgver}/grub-extras"
+
+	## Requires python2
+	# sed 's|python |python2 |g' -i "${srcdir}/grub_bios-${pkgver}/autogen.sh"
+
+	## start the actual build process
+	cd "${srcdir}/grub_bios-${pkgver}"
+	./autogen.sh
+	echo
+
+	CFLAGS="" ./configure \
+		--with-platform="pc" \
+		--target="i386" \
+		--host="${CARCH}-unknown-linux-gnu" \
+		"${_EFIEMU}" \
+		--enable-mm-debug \
+		--enable-nls \
+		--enable-device-mapper \
+		--enable-cache-stats \
+		--enable-grub-mkfont \
+		--enable-grub-mount \
+		--prefix="/usr" \
+		--bindir="/usr/bin" \
+		--sbindir="/usr/sbin" \
+		--mandir="/usr/share/man" \
+		--infodir="/usr/share/info" \
+		--datarootdir="/usr/share" \
+		--sysconfdir="/etc" \
+		--program-prefix="" \
+		--with-bootdir="/boot" \
+		--with-grubdir="grub" \
+		--disable-werror
+	echo
+
+	CFLAGS="" make
+	echo
+
 }
 
-package() {
-  cd $srcdir/$pkgname-$pkgver
+_build_grub-efi-i386() {
 
-  CFLAGS= make
-  make DESTDIR=$pkgdir install
-  install -D -m644 ../menu.lst $pkgdir/boot/grub/menu.lst
-  install -D -m755 ../install-grub $pkgdir/sbin/install-grub
+	## copy the source for building the efi package
+	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub_efi-${pkgver}"
+	cd "${srcdir}/grub_efi-${pkgver}"
 
-  if [ "$DESTARCH" = "x86_64" ]; then
-    # fool makepkg into building a x86_64 package
-    export CARCH="x86_64"
-  fi
+	export GRUB_CONTRIB="${srcdir}/grub_efi-${pkgver}/grub-extras/"
+	install -d "${srcdir}/grub_efi-${pkgver}/grub-extras"
+
+	bsdtar xf "${srcdir}/grub2_extras_lua_r${_grub_lua_ver}.tar.xz" \
+		-C "${srcdir}/grub_efi-${pkgver}/grub-extras"
+
+	cd "${srcdir}/grub_efi-${pkgver}"
+	./autogen.sh
+	echo
+
+	CFLAGS="" ./configure \
+		--with-platform="efi" \
+		--target="i386" \
+		--host="${CARCH}-unknown-linux-gnu" \
+		--disable-efiemu \
+		--enable-mm-debug \
+		--enable-nls \
+		--enable-device-mapper \
+		--enable-cache-stats \
+		--enable-grub-mkfont \
+		--enable-grub-mount \
+		--prefix="/usr" \
+		--bindir="/usr/bin" \
+		--sbindir="/usr/sbin" \
+		--mandir="/usr/share/man" \
+		--infodir="/usr/share/info" \
+		--datarootdir="/usr/share" \
+		--sysconfdir="/etc" \
+		--program-prefix="" \
+		--with-bootdir="/boot" \
+		--with-grubdir="grub" \
+		--disable-werror
+	echo
+
+	CFLAGS="" make
+	echo
+
+}
+
+build() {
+
+	## set architecture dependent variables
+	if [[ "${CARCH}" == 'x86_64' ]]; then
+		_EFIEMU="--enable-efiemu"
+	else
+		_EFIEMU="--disable-efiemu"
+	fi
+
+	_HOST="${CARCH}"
+
+	cd "${srcdir}/grub-${pkgver}"
+	# _get_locale_files
+
+	_build_grub-common_and_bios
+	echo
+
+	_build_grub-efi-i386
+	echo
+
+}
+
+package_grub-common() {
+
+	pkgdesc="GNU GRand Unified Bootloader - Utilities and Common Files"
+	depends=('sh' 'xz' 'freetype2' 'gettext' 'device-mapper' 'fuse')
+	conflicts=('grub-legacy' 'grub')
+	replaces=('grub2-common')
+	provides=('grub2-common')
+	backup=('boot/grub/grub.cfg' 'etc/default/grub' 'etc/grub.d/40_custom')
+	optdepends=('libisoburn: provides xorriso for generating grub rescue iso using grub-mkrescue'
+	            'os-prober: to detect other OSes when generating grub.cfg in BIOS systems'
+	            'mtools: for grub-mkrescue FAT FS support')
+	install="grub.install"
+	options=('strip' 'purge' 'docs' 'zipman' '!emptydirs')
+
+	cd "${srcdir}/grub_bios-${pkgver}"
+	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
+	echo
+
+	## install extra /etc/grub.d/ files
+	install -D -m0755 "${srcdir}/20_memtest86+" "${pkgdir}/etc/grub.d/20_memtest86+"
+
+	## install /etc/default/grub (used by grub-mkconfig)
+	install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
+
+	## install grub.cfg (needed so it doesn't get removed on upgrading because it was previously here)
+	install -D -m0644 "${srcdir}/grub.cfg" "${pkgdir}/boot/grub/grub.cfg"
+
+	# remove platform specific files
+	rm -rf "${pkgdir}/usr/lib/grub/i386-pc/"
+
+}
+
+package_grub-bios() {
+
+	pkgdesc="GNU GRand Unified Bootloader - i386 PC BIOS Modules"
+	depends=("grub-common=${pkgver}")
+	options=('!strip' '!emptydirs')
+	replaces=('grub2-bios')
+	provides=('grub2-bios')
+
+	cd "${srcdir}/grub_bios-${pkgver}"
+	make DESTDIR="${pkgdir}/" install
+	echo
+
+	## remove non platform-specific files
+	rm -rf "${pkgdir}"/{boot,etc,usr/{share,bin,sbin}}
+
+	## remove gdb debugging related files
+	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.module || true
+	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.image || true
+	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/{kernel.exec,gdb_grub,gmodule.pl} || true
+
+}
+
+package_grub-efi-i386() {
+
+	pkgdesc="GNU GRand Unified Bootloader - i386 UEFI Modules"
+	depends=("grub-common=${pkgver}" 'dosfstools' 'efibootmgr')
+	options=('!strip' '!emptydirs')
+	replaces=('grub2-efi-i386')
+	provides=('grub2-efi-i386')
+
+	cd "${srcdir}/grub_efi-${pkgver}"
+	make DESTDIR="${pkgdir}/" install
+	echo
+
+	## remove non platform-specific files
+	rm -rf "${pkgdir}"/{boot,etc,usr/{share,bin,sbin}}
+
+	## remove gdb debugging related files
+	rm -f "${pkgdir}/usr/lib/grub/i386-efi"/*.module || true
+	rm -f "${pkgdir}/usr/lib/grub/i386-efi"/*.image || true
+	rm -f "${pkgdir}/usr/lib/grub/i386-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
+
 }
