@@ -1,0 +1,57 @@
+#!/bin/bash
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+YADIFAD='/opt/yadifa/sbin/yadifad'
+PID=$(pidof -o %PPID $YADIFAD)
+MAXSTOPTIME=30
+case "$1" in
+  start)
+    stat_busy "Starting yadifa nameserver"
+        [ -z "$PID" ] && $YADIFAD >> /opt/yadifa/var/log/yadifad.log 2>&1 &
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      add_daemon yadifad
+      stat_done
+    fi
+    ;;
+  stop)
+    stat_busy "Stopping yadifa nameserver"
+    [ ! -z "$PID" ]  && kill -TERM $PID &> /dev/null
+        result=0
+        TIMER=0
+        while [ "$(pidof -o %PPID $YADIFAD)" != "" ] && [ $TIMER -le $MAXSTOPTIME ]; do
+                sleep 1
+                TIMER=$(($TIMER+1))
+        done
+        if [ $TIMER -gt $MAXSTOPTIME ]; then
+                result=1
+        fi
+    if [ $result -gt 0 ]; then
+      stat_fail
+    else
+      rm_daemon yadifad
+      stat_done
+    fi
+    ;;
+  reload)
+    stat_busy "Reloading yadifa nameserver"
+    [ ! -z "$PID" ]  && kill -HUP $PID &> /dev/null
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      rm_daemon yadifad
+      stat_done
+    fi
+        ;;
+  restart)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+  *)
+    echo "usage: $0 {start|stop|reload|restart}"
+esac
+exit 0
