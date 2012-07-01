@@ -1,19 +1,37 @@
 #!/bin/bash
-
-if [ -e "/etc/rc.d/ntpd" ]; then
-	case "$2" in
-		up)
-			/etc/rc.d/ntpd start
-		;;
-		vpn-up)
-			/etc/rc.d/ntpd start
-		;;
-		down)
-			/etc/rc.d/ntpd stop
-		;;
-		vpn-down)
-			/etc/rc.d/ntpd stop
-		;;
-	esac
-fi
+     
+    if [ -e /sys/fs/cgroup/systemd ]; then
+            case "$2" in
+                    up)
+                            systemctl start systemd-timedated-ntp.target
+                    ;;
+                    vpn-up)
+                            systemctl start systemd-timedated-ntp.target
+                    ;;
+                    down)
+                            systemctl stop systemd-timedated-ntp.target
+                    ;;
+                    vpn-down)
+                            systemctl stop systemd-timedated-ntp.target
+                    ;;
+            esac
+    else
+            if [ -e "/etc/rc.d/ntpd" ]; then
+                    case "$2" in
+                            up)
+                                    /etc/rc.d/ntpd start
+                            ;;
+                            vpn-up)
+                                    /etc/rc.d/ntpd start
+                            ;;
+                            down)
+                                    /etc/rc.d/ntpd stop
+                            ;;
+                            vpn-down)
+                                    /etc/rc.d/ntpd stop
+                            ;;
+                    esac
+            fi
+     
+    fi
 
