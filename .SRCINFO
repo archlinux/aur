@@ -1,0 +1,14 @@
+pkgbase = boinc_curses
+	pkgdesc = console based boinc-client monitor and controller
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://www.oook.cz/bsd/boinc_curses/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = boinc
+	source = http://www.oook.cz/bsd/boinc_curses/boinc_curses-0.2.2.tar.bz2
+	sha512sums = 78a480f3b077a642c3b5592a46f5521cb25f9dec3d5e19b58138b08b2b92fc9648de5e3214bc7e52a87006c7abe3340eaf4f58399d65747b437113a44933ebfd
+
+pkgname = boinc_curses
+
