@@ -1,0 +1,17 @@
+pkgbase = hunspell-en-base
+	pkgdesc = English hunspell dictionaries (base files)
+	pkgver = 7.1
+	pkgrel = 1
+	url = http://wordlist.sourceforge.net/
+	arch = any
+	license = LGPL
+	license = custom:scowl
+	optdepends = hunspell: the spell checking libraries and apps
+	conflicts = hunspell-en
+	source = http://downloads.sourceforge.net/wordlist/hunspell-en_US-7.1-0.zip
+	source = http://en-gb.pyxidium.co.uk/dictionary/en_GB.zip
+	md5sums = 8eb485db0a722eb29a5eca517a22e367
+	md5sums = 218909136738f4564b81ecd145ade6ee
+
+pkgname = hunspell-en-base
+
