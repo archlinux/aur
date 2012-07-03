@@ -1,7 +1,7 @@
 # Maintainer: Johannes Dewender   arch at JonnyJD dot net
 pkgname=isrcsubmit
-pkgver=0.4
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
@@ -10,8 +10,8 @@ depends=('python2' 'python-musicbrainz2>=0.7.0')
 makedepends=()
 conflicts=()
 options=(!emptydirs)
-source=(http://github.com/downloads/JonnyJD/musicbrainz-isrcsubmit/isrcsubmit-0.4.tar.gz)
-md5sums=('f24ccfa09b18eaef2819f83ae0f6fee6')
+source=(http://github.com/downloads/JonnyJD/musicbrainz-isrcsubmit/isrcsubmit-$pkgver.tar.gz)
+md5sums=('d3c310343ae80610f904ebdd0e73999a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
