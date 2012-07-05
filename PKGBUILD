@@ -1,3 +1,4 @@
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: Mike Sampson <mike at sambodata dot com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: froggie <sullivanva@gmail.com>
