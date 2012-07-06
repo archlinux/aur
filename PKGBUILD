@@ -1,7 +1,7 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 _pkgbasename=libidn
 pkgname=lib32-$_pkgbasename
-pkgver=1.24
+pkgver=1.25
 pkgrel=1
 pkgdesc="Implementation of the Stringprep, Punycode and IDNA specifications (32 bit)"
 url="http://www.gnu.org/software/libidn/"
@@ -11,7 +11,7 @@ depends=('lib32-glibc' "$_pkgbasename>=$pkgver")
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=(http://ftp.gnu.org/gnu/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz)
-md5sums=('764d7258eeb273941680499fab2c7367')
+sha1sums=('92e64fd5a6428bda6ade2c3cde475b76455cd7dd')
 
 build() {
   cd ${srcdir}/${_pkgbasename}-${pkgver}
