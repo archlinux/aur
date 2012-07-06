@@ -1,19 +1,21 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer:  Alexander Rødseth <rodseth@gmail.com>
+# Maintainer:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: rabyte <rabyte.at.gmail.dot.com>
 # Contributor: Johannes Krampf <wuischke.at.amule.dot.org>
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight web browser based on Gtk WebKit"
 arch=('x86_64' 'i686')
 url="http://www.twotoasts.de/index.php?/pages/midori_summary.html"
 license=('LGPL2.1')
 install=midori.install
 depends=('libwebkit>=1.3.13' 'libunique' 'hicolor-icon-theme' 'desktop-file-utils' 'libnotify>=0.7.1' 'libxss')
-makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2>=2.7.1' 'vala') # 'git'
-optdepends=('vala: for use in extensions')
+makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2>=2.7.1' 'vala')
+optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support')
 options=('!emptydirs')
 source=(http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
 sha256sums=('910f47bd2b5f2998cd4fce45c08f9e282318820b68562d0bade2096b9a17e3ea')
