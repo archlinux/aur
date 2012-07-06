@@ -3,8 +3,8 @@
 # Contributor: Erdbeerkaese <erdbeerkaese underscore arch at gmail dot com>
 
 pkgname=sparkleshare
-pkgver=0.8.4
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="http://sparkleshare.org/"
@@ -16,24 +16,15 @@ install=$pkgname.install
 source=(https://github.com/downloads/hbons/SparkleShare/$pkgname-linux-$pkgver.tar.gz
         fix-event-log.patch
         fix-github-weblink.patch)
-md5sums=('2e1ea43f47232d82d2c03c252c0238e5'
+md5sums=('58459e77635dd594baeb4a7a67f6333e'
          '50bd9df0ebeeda784be503f2fdccc66e'
          '97b6f056c642f01c76fcf3297621166d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # https://github.com/hbons/SparkleShare/issues/729
-  patch -Np1 -i "$srcdir/fix-event-log.patch"
-
-  # https://github.com/hbons/SparkleShare/issues/800
-  patch -Np1 -i "$srcdir/fix-github-weblink.patch"
-
   # Python2 fix
   sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|' SparkleShare/Linux/Nautilus/sparkleshare-nautilus3-extension.py.in
-
-  # Build fix
-  sed -i '/update-desktop-database/ d' SparkleShare/Makefile.in
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-appindicator
