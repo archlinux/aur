@@ -1,14 +1,14 @@
 pkgbase = trash-cli
 	pkgdesc = Command line trashcan (recycle bin) interface
-	pkgver = 0.12.4
+	pkgver = 0.12.7
 	pkgrel = 1
 	url = http://github.com/andreafrancia/trash-cli
 	arch = any
 	license = GPL
 	depends = python2
 	depends = python2-distribute
-	source = trash-cli.tar.gz::http://github.com/andreafrancia/trash-cli/tarball/0.12.4
-	md5sums = f9178597eed85618094d6425160bae0a
+	source = trash-cli.tar.gz::http://github.com/andreafrancia/trash-cli/tarball/0.12.7
+	md5sums = 8faff57b8dfa9de54adcc20e87b350fe
 
 pkgname = trash-cli
 
