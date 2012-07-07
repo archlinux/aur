@@ -5,7 +5,7 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.10.5
+pkgver=2.10.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -16,7 +16,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('6943d95a84d881adec9982685a8b41b68b1114335ae2ae4e18d22658f5c9e7aa')
+sha256sums=('3e25a633b97cbfa8326999a30282e7a662a9b9bbf2853be84af0b8fb60392c96')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
