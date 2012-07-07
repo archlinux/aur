@@ -1,6 +1,6 @@
 pkgbase = gigalomania
 	pkgdesc = 2D real time strategy game that is a clone of Mega-Lo-Mania
-	pkgver = 0.23
+	pkgver = 0.24
 	pkgrel = 1
 	url = http://homepage.ntlworld.com/mark.harman/comp_gigalomania.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = gigalomania
 	depends = sdl
 	depends = sdl_image
 	depends = sdl_mixer
-	source = http://launchpad.net/gigalomania/trunk/0.23/+download/gigalomaniasrc.zip
-	md5sums = 53a09e874a73e8dd7abd3199e5ac7aaf
+	source = http://launchpad.net/gigalomania/trunk/0.24/+download/gigalomaniasrc.zip
+	md5sums = 803d4c9e429d6c9c5412a452a5aa4be0
 
 pkgname = gigalomania
 

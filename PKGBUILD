@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=gigalomania
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc="2D real time strategy game that is a clone of Mega-Lo-Mania"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://homepage.ntlworld.com/mark.harman/comp_gigalomania.html"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer')
 source=(http://launchpad.net/gigalomania/trunk/${pkgver}/+download/gigalomaniasrc.zip)
-md5sums=('53a09e874a73e8dd7abd3199e5ac7aaf')
+md5sums=('803d4c9e429d6c9c5412a452a5aa4be0')
 
 build() {
 	cd ${srcdir}/${pkgname}src
@@ -22,6 +22,9 @@ build() {
 	# don't create log file as they would be placed in cwd
 	sed 's#\"log.txt\"#\"/dev/null"#' -i utils.cpp
 	sed 's#\"log_old.txt\"#\"/dev/null"#' -i utils.cpp
+	
+	# use "stat" instead of "access" to determine if a file exists
+	sed 's#access#stat#g' -i utils.cpp
 	
 	# patch .desktop files
 	sed 's#/opt/gigalomania/gigalomania#/usr/bin/gigalomania#g' -i gigalomania.desktop
