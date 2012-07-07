@@ -1,4 +1,5 @@
-# Maintainer: Roman Kyrylych <Roman.Kyrylych@gmail.com>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
