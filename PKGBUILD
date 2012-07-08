@@ -4,7 +4,7 @@
 
 pkgname=cclive
 pkgver=0.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Commandline downloader for popular video websites.'
 arch=('i686' 'x86_64')
 url='http://cclive.sourceforge.net/'
@@ -15,12 +15,15 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/0.7/${pkgname}-${pk
 md5sums=('2c7a3bbc2d6fdcfebb60cb3ae57944b5')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
+
   ./configure --prefix=/usr
+
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
+
   make DESTDIR="$pkgdir" install
 }
