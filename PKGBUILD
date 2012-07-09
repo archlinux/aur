@@ -1,8 +1,8 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=decklink-sdk
-pkgver=9.1
-_dlid=3225462
+pkgver=9.5
+_dlid=3914076
 pkgrel=1
 pkgdesc="Blackmagic Design DeckLink SDK"
 arch=('i686' 'x86_64')
@@ -11,13 +11,13 @@ license=('custom')
 depends=('decklink' 'gcc-libs' 'mesa' 'qt')
 makedepends=('unzip')
 options=('!strip')
-source=("http://www.blackmagic-design.com/media/${_dlid}/DeckLink_SDK_$pkgver.zip")
-noextract=("DeckLink_SDK_$pkgver.zip")
-sha256sums=('f98573cb8210741d1bc5578403227a11b797b56f5ac0ed88b25cde1905e07313')
+source=("http://www.blackmagic-design.com/media/${_dlid}/Blackmagic_DeckLink_SDK_$pkgver.zip")
+noextract=("Blackmagic_DeckLink_SDK_$pkgver.zip")
+sha256sums=('34b0a5908d91212b2acbeab509527f834f6ed57062670448b3454694cc4fa97a')
 
 package() {
   cd "$srcdir"
-  unzip -o "DeckLink_SDK_$pkgver.zip"
+  unzip -o "Blackmagic_DeckLink_SDK_$pkgver.zip"
 
   mkdir -p "$pkgdir/usr/src" "$pkgdir/usr/bin"
   cp -a "$srcdir/Blackmagic DeckLink SDK $pkgver/Linux/include" "$pkgdir/usr/src/decklink-sdk"
