@@ -3,8 +3,8 @@
 # Contributor  : andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.49.0
-_boostver=1_49_0
+pkgver=1.50.0
+_boostver=1_50_0
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime (32
 bit)"
@@ -13,10 +13,11 @@ url="http://www.boost.org"
 license=('custom')
 groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-gcc-libs')
-makedepends=('icu' 'bzip2' 'lib32-zlib' 'openmpi' 'gcc-multilib')
+makedepends=('icu' 'gcc-multilib')
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
-md5sums=('e0defc8c818e4f1c5bbb29d0292b76ca')
-sha1sums=('fce1a7d8d9866e39e4797975b5132d33ad919511')
+md5sums=('dbc07ab0254df3dda6300fd737b3f264')
+sha1sums=('c9b36ef68b9826239417eb46703408ecae44598f')
+
 
 
 _stagedir="${srcdir}/stagedir"
