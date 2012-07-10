@@ -1,11 +1,12 @@
+# $Id: PKGBUILD 163162 2012-07-08 09:32:43Z ibiru $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.1
-pkgrel=1
+pkgver=2.0.2
+pkgrel=2
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -47,7 +48,8 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'aalib: for ASCII art plugin'
             'libmtp: for MTP devices support'
             'fluidsynth: for synthesizer MIDI FluidSynth'
-            'smbclient: for SMB access plugin')
+            'smbclient: for SMB access plugin'
+            'libcdio: for audio CD playback support')
 conflicts=('vlc-plugin' 'vlc')
 provides=('vlc')
 replaces=('vlc-plugin')
@@ -56,7 +58,7 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!libtool' '!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('5ad114755670e4881a2b35354e2f79bc')
+md5sums=('93e729cc970a4535b3213dbef0e69528')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -79,8 +81,9 @@ build() {
               --enable-xosd \
               --enable-aa \
               --enable-vcdx \
-			  --enable-decklink \
-			  --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk"
+              --enable-decklink \
+              --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk"
+
   make
 }
 
