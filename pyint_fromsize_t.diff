@@ -1,0 +1,18 @@
+Description: Py3k: Map PyInt_FromSize_t to PyLong_FromSize_t
+ The latest SWIG version introduced a usage of PyInt_FromSize_t, but
+ does not define a compatibility macro for Python 3k as for the other
+ PyInt_... functions. This patch adds that macro.
+
+Author: Torsten Landschoff <torsten@debian.org>
+
+
+--- swig2.0-2.0.7.orig/Lib/python/pyhead.swg
++++ swig2.0-2.0.7/Lib/python/pyhead.swg
+@@ -5,6 +5,7 @@
+ #define PyInt_Check(x) PyLong_Check(x)
+ #define PyInt_AsLong(x) PyLong_AsLong(x)
+ #define PyInt_FromLong(x) PyLong_FromLong(x)
++#define PyInt_FromSize_t(x) PyLong_FromSize_t(x)
+ #define PyString_Check(name) PyBytes_Check(name)
+ #define PyString_FromString(x) PyUnicode_FromString(x)
+ #define PyString_Format(fmt, args)  PyUnicode_Format(fmt, args)
