@@ -8,7 +8,7 @@
 # build time.
 
 pkgname=chromium
-pkgver=20.0.1132.47
+pkgver=20.0.1132.57
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -32,13 +32,15 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.default
         chromium.sh
         chromium-gcc47.patch
+        chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
         sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch)
-sha256sums=('a34e87ae916c1146b506090d30ac901dbfa88a55db90f8b2250eb29eaca3a1e5'
-            'ac371e9e8312f01856e892b29c788acfa03cbb79aaabe0b5a3ae0cd2f8399a91'
+sha256sums=('1225c6b6306e89c8892bc0d18e94567d6081d777dee9b8c90efd0da9f6f2641b'
+            '0137e738cad095aeb03da0e4eb92df4ab8f4693c81d462eb5a413de6ecd875d1'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
+            'c1baf14121502efbc2a31b64029dcafa0e28ca5b71ad0e28a3c6342d18198615'
             'a700aa054800d1b21d84eaba27c38a703dfa023e9226d11a942690c2a0630aff')
 
 build() {
@@ -46,6 +48,9 @@ build() {
 
   # Fix build with gcc 4.7 (patch from openSUSE)
   patch -Np2 -i "$srcdir/chromium-gcc47.patch"
+
+  # Fix build with glibc 2.16
+  patch -Np1 -i "$srcdir/chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch"
 
   # http://code.google.com/p/chromium/issues/detail?id=109527
   sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
