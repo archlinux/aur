@@ -1,0 +1,20 @@
+--- new/frontend.po
++++ old/frontend.po
+@@ -7733,7 +7733,7 @@
+ 
+ #: include/views/configuration.sysmap.edit.php:149
+ msgid "No URLs defined."
+-msgstr "URL'ы не заданы."
++msgstr "URLы не заданы."
+ 
+ #: include/forms.inc.php:268
+ msgid "No accessible resources"
+@@ -11643,7 +11643,7 @@
+ #: include/maps.inc.php:145 include/views/configuration.sysmap.edit.php:194
+ #: include/views/js/configuration.sysmaps.js.php:163 report5.php:143
+ msgid "URLs"
+-msgstr "URL'ы"
++msgstr "URLы"
+ 
+ #: include/views/administration.mediatypes.edit.php:87
+ msgid "USA (160 characters)"

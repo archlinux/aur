@@ -1,0 +1,5 @@
+# Defaults specification
+Defaults visiblepw
+
+# User privilege specification
+zabbix ALL=(root) NOPASSWD: /usr/bin/nmap
