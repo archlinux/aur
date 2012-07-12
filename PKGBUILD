@@ -1,6 +1,8 @@
-# Maintainer: Pieter van der Kloet <pvdkloet@gmail.com>
+# Maintainer: Sandy Carter <bwrsandman@gmail.com>
+# PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
+
 pkgname=openmw-git
-pkgver=20120628
+pkgver=20120712
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -9,7 +11,7 @@ license=('GPL3')
 
 depends=('openal' 'ogre>=1.8.0' 'mygui>=3.2.0' 'bullet>=2.8.0' 'mpg123' 'libsndfile' 'qt')
 
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost>=1.5.0')
 conflicts=('openmw')
 
 _gitroot="git://github.com/zinnschlag/openmw.git"
