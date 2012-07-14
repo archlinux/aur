@@ -27,7 +27,7 @@ checkdepends=(
 )
 source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
 md5sums=('8f55a6d4f87fc6d528120c5d1f983e98')
- 
+
 build() {
   cd Sphinx-$pkgver
   # remove build directory (avoid sed issues)
