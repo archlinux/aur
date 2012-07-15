@@ -1,0 +1,14 @@
+diff --git a/src/rpc/virnetsocket.c b/src/rpc/virnetsocket.c
+index 0b32ffe..08dfbb0 100644
+--- a/src/rpc/virnetsocket.c
++++ b/src/rpc/virnetsocket.c
+@@ -97,6 +97,9 @@ static int virNetSocketForkDaemon(const char *binary)
+                                              NULL);
+ 
+     virCommandAddEnvPassCommon(cmd);
++    virCommandAddEnvPass(cmd, "XDG_CACHE_HOME");
++    virCommandAddEnvPass(cmd, "XDG_CONFIG_HOME");
++    virCommandAddEnvPass(cmd, "XDG_RUNTIME_DIR");
+     virCommandClearCaps(cmd);
+     virCommandDaemonize(cmd);
+     ret = virCommandRun(cmd, NULL);

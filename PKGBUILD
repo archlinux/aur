@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -35,7 +35,8 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d
 	openbsd-netcat-default.patch
-	libvirt-libnl3.patch)
+	libvirt-libnl3.patch
+	xdg.patch)
 md5sums=('86cbe53ee662e3b9e8bb0c63c737ba27'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
@@ -43,7 +44,8 @@ md5sums=('86cbe53ee662e3b9e8bb0c63c737ba27'
          'bc2971dacdbac967fc3474e50affc345'
          '8d98e62915785686b0b6c8c070628392'
          'b0be50eb9dfe4d133decf23b60880f7d'
-         'ba27fbcd989de8d84cfff98326f10c54')
+         'ba27fbcd989de8d84cfff98326f10c54'
+         '9b9fcdbd64d37d84ae73d9da0a7efed7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -58,6 +60,7 @@ build() {
   [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
 
   patch -Np1 -i ${srcdir}/libvirt-libnl3.patch
+  patch -Np1 -i ${srcdir}/xdg.patch
   aclocal
   automake --add-missing || true
   autoreconf
