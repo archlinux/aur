@@ -3,7 +3,7 @@ pkgname=linux-linode
 _kernelname=${pkgname#linux}
 _basekernel=3.4
 pkgver=${_basekernel}.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -34,6 +34,7 @@ build() {
   patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   cp "${srcdir}/config.x86_64" ./.config
+  sed -i '2iexit 0' scripts/depmod.sh
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
   make prepare
@@ -69,6 +70,8 @@ package_linux-linode() {
   mkdir -p "${pkgdir}/lib/modules/${emdir}"
   ln -s "../${emdir}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   echo "${_kernver}" >| "${pkgdir}/lib/modules/${emdir}/version"
+  mv "${pkgdir}/"{lib,usr/}
+  depmod -b "${pkgdir}" -F System.map "${_kernver}"
 
   mkdir -p ${pkgdir}/boot/grub
   sed "s/%VER%/${pkgver}-${pkgrel}/ig" ${srcdir}/menu.lst > ${pkgdir}/boot/grub/menu.lst
