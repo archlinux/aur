@@ -4,7 +4,7 @@
 
 pkgname=poldi
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
 url="http://www.g10code.com/p-poldi.html"
@@ -21,8 +21,8 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < ../poldi-arch.patch
 
-  ./configure --prefix=/usr --with-pam-module-directory=/lib/security --sysconfdir=/etc
-  make
+  ./configure --prefix=/usr --with-pam-module-directory=/usr/lib/security --sysconfdir=/etc
+  make CFLAGS+=-lgpg-error
 }
 
 package() {
@@ -31,15 +31,16 @@ package() {
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-conf-skeleton
 
-  mkdir -p "$pkgdir/usr/share/poldi"
-  mv "$pkgdir/etc" "$pkgdir/usr/share/poldi"
-  sed -i "s#^log-file.*#log-file /var/log/poldi.log#" "$pkgdir/usr/share/poldi/etc/poldi/poldi.conf"
+  install -d -m 755 "$pkgdir/usr/share"
+  mv "$pkgdir/etc/poldi" "$pkgdir/usr/share/poldi"
+  rmdir $pkgdir/etc
+  sed -i "s#^log-file.*#log-file /var/log/poldi.log#" "$pkgdir/usr/share/poldi/poldi.conf"
 
-  mkdir -p "$pkgdir/lib/security"
-  cp src/pam/pam_poldi.so "$pkgdir/lib/security/"
+  install -d -m 755 "$pkgdir/usr/lib/security"
+  cp src/pam/pam_poldi.so "$pkgdir/usr/lib/security/"
   cp tests/pam-test "$pkgdir/usr/bin/pam-test-poldi"
 
-  mkdir -p "$pkgdir/etc/pam.d"
+  install -d -m 755 "$pkgdir/etc/pam.d"
   echo -e "auth\tsufficient\tpam_poldi.so" > $pkgdir/etc/pam.d/poldi
 
   rm "$pkgdir/usr/share/info/dir"
