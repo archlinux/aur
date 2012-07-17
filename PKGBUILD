@@ -22,6 +22,7 @@ package() {
     install -D -m644 src/soe/*PrimeSieve.h "$pkgdir/usr/include/primesieve/soe"
     mkdir -p "$pkgdir/usr/lib"
     install -D -m644 lib/lib${pkgname}*.so "$pkgdir/usr/lib"
+    mkdir -p "$pkgdir/usr/share/doc/${pkgname}"
     install -D -m644 doc/* "$pkgdir/usr/share/doc/${pkgname}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   popd
