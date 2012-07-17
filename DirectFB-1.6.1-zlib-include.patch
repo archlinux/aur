@@ -1,0 +1,12 @@
+diff -Naur DirectFB-1.6.0-orig/src/core/surface.c DirectFB-1.6.0/src/core/surface.c
+--- DirectFB-1.6.0-orig/src/core/surface.c	2012-06-20 02:21:36.029994460 -0400
++++ DirectFB-1.6.0/src/core/surface.c	2012-06-20 02:22:48.533330819 -0400
+@@ -28,6 +28,8 @@
+ 
+ #include <config.h>
+ 
++#include <zlib.h>
++
+ #include <direct/debug.h>
+ 
+ #include <core/core.h>
