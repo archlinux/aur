@@ -1,7 +1,7 @@
 # Maintainer: nandub <dev@nandub-dev.tk>
 pkgname=primesieve
 pkgver=3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library that generates prime numbers and prime k-tuplets"
 url="http://code.google.com/p/primesieve/"
 license="BSD"
@@ -21,8 +21,8 @@ package() {
     mkdir -p "$pkgdir/usr/include/primesieve/soe"
     install -D -m644 src/soe/*PrimeSieve.h "$pkgdir/usr/include/primesieve/soe"
     mkdir -p "$pkgdir/usr/lib"
-    install -D -m644 lib/lib$pkgname*.so "$pkgdir/usr/lib"
+    install -D -m644 lib/lib${pkgname}*.so "$pkgdir/usr/lib"
+    install -D -m644 doc/* "$pkgdir/usr/share/doc/${pkgname}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    #make PREFIX=/usr DESTDIR=${startdir}/pkg install || return 1
   popd
 }
