@@ -1,7 +1,7 @@
 pkgbase = primesieve
 	pkgdesc = C++ library that generates prime numbers and prime k-tuplets
 	pkgver = 3.8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://code.google.com/p/primesieve/
 	arch = i686
 	arch = x86_64

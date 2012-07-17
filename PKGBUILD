@@ -1,7 +1,7 @@
 # Maintainer: nandub <dev@nandub-dev.tk>
 pkgname=primesieve
 pkgver=3.8
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ library that generates prime numbers and prime k-tuplets"
 url="http://code.google.com/p/primesieve/"
 license="BSD"
@@ -17,13 +17,17 @@ build() {
 
 package() {
   pushd ${srcdir}/$pkgname-$pkgver || return 1
-    install -D -m755 bin/primesieve "$pkgdir/usr/bin/primesieve"
-    mkdir -p "$pkgdir/usr/include/primesieve/soe"
-    install -D -m644 src/soe/*PrimeSieve.h "$pkgdir/usr/include/primesieve/soe"
-    mkdir -p "$pkgdir/usr/lib"
-    install -D -m644 lib/lib${pkgname}*.so "$pkgdir/usr/lib"
-    mkdir -p "$pkgdir/usr/share/doc/${pkgname}"
-    install -D -m644 doc/* "$pkgdir/usr/share/doc/${pkgname}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Create directory structures
+    install -m755 -d "$pkgdir/usr/bin"
+    install -m644 -d "$pkgdir/usr/include/primesieve/soe"
+    install -m644 -d "$pkgdir/usr/lib"
+    install -m644 -d "$pkgdir/usr/share/doc/${pkgname}"
+    install -m644 -d "$pkgdir/usr/share/licenses/${pkgname}"
+    # Copy files to their respective folders
+    install -m755 bin/primesieve "$pkgdir/usr/bin"
+    install -m644 src/soe/*PrimeSieve.h "$pkgdir/usr/include/primesieve/soe"
+    install -m644 lib/lib${pkgname}*.so "$pkgdir/usr/lib"
+    install -m644 doc/* "$pkgdir/usr/share/doc/${pkgname}"
+    install -m644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}"
   popd
 }
