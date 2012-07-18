@@ -10,9 +10,11 @@ url="http://downloads.sourceforge.net/project/staybox"
 depends=('gtk2')
 makedepends=('pkgconfig')
 source=(http://downloads.sourceforge.net/project/staybox/${pkgname}-${pkgver}.tar.gz)
+md5sums=('25dc697817a2952a4468c5d2a2f206d2')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+  export LDFLAGS=-lX11
   ./configure --sysconfdir=/etc --prefix=/usr
   make
   make DESTDIR=${pkgdir} install
