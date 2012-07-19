@@ -1,7 +1,7 @@
 pkgbase = xfwm4-hover-inactive
 	pkgdesc = Xfce window manager w/ hover effect for inactive windows
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xfce.org/
 	install = xfwm4-hover-inactive.install
 	arch = i686
@@ -18,10 +18,13 @@ pkgbase = xfwm4-hover-inactive
 	options = !libtool
 	source = http://archive.xfce.org/src/xfce/xfwm4/4.10/xfwm4-4.10.0.tar.bz2
 	source = hover-inactive.patch
+	source = xfwm4-4.10.0-implement-NET_WM_MOVERESIZE_CANCEL.patch
 	md5sums = 333e5e25a85411c304e9b4474bf00537
 	md5sums = de495984f2477d3b270b6fb2031278bc
+	md5sums = eb4bf4a6cc300355400c45eb511563e8
 	sha1sums = 1549954949b5e1f38a2279a39a477b52bb5339f2
 	sha1sums = 180be7953007c17d1ea64bcfb2cd116291759fc1
+	sha1sums = 32dd678f8477a5b30d17641a0d75c5a54c4dca52
 
 pkgname = xfwm4-hover-inactive
 
