@@ -1,8 +1,8 @@
-pkgbase = linux
-	pkgdesc = The Linux Kernel and modules
+pkgbase = linux-linode
+	pkgdesc = Kernel for Arch Linux on Linode
 	pkgver = 3.4.6
-	pkgrel = 1
-	url = http://www.kernel.org/
+	pkgrel = 3
+	url = https://github.com/yardenac/linux-linode
 	install = linux-linode.install
 	arch = x86_64
 	license = GPL2

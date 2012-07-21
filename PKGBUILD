@@ -1,11 +1,11 @@
-pkgbase=linux
-pkgname=linux-linode
+pkgbase=linux-linode
+pkgname=${pkgbase}
 _kernelname=${pkgname#linux}
 _basekernel=3.4
 pkgver=${_basekernel}.6
-pkgrel=1
+pkgrel=3
 arch=(x86_64)
-url="http://www.kernel.org/"
+url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
@@ -21,7 +21,7 @@ md5sums=('cba7741056c05ac98277b99909039a7e'
          '4c45d442db6239f0b3d0008c0a17c76c'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
-pkgdesc="The Linux Kernel and modules"
+pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(kernel26 linux)
 conflicts=(kernel26 linux grub grub-legacy)
