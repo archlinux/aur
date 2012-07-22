@@ -1,13 +1,13 @@
 # Maintainer: jjacky
 pkgname=dapper
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Desktop Applications Autostarter"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/jjacky/dapper"
 license=('GPL3+')
 source=(https://bitbucket.org/jjacky/$pkgname/downloads/$pkgname-$pkgver.tar.gz)
-md5sums=('ec231a32217585fae471fad468cdf310')
+md5sums=('69ee2d9bbf3f02257d677f1b765b7a2c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
