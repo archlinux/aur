@@ -6,39 +6,36 @@ pkgbase=linux
 pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
 # pkgname=linux-custom       # Build kernel with a different name
 _kernelname=${pkgname#linux}
-_basekernel=3.4
-pkgver=${_basekernel}.6
+_basekernel=3.5
+pkgver=${_basekernel}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.5.tar.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
         'fix-acerhdf-1810T-bios.patch'
         'change-default-console-loglevel.patch'
-        'i915-fix-ghost-tv-output.patch'
-	'3.4.4-fix-backlight-regression.patch')
-md5sums=('967f72983655e2479f951195953e8480'
-         '14443e53d3ab88e6eac45d954d891e00'
-         '3f2c307c8ffae67f60c13ef69af8364a'
-         '18d9d09152bafffaef78f2aac07e7145'
+        'i915-fix-ghost-tv-output.patch')
+md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
+         'a2facfc8fe8ba073f64d125694cda469'
+         '05d00f104528ced0a3bd9bd6ca9733b9'
          'eb14dcfd80c00852ef81ded6e826826a'
          '38c1fd4a1f303f1f6c38e7f082727e2f'
          '9d3c56a4b999c8bfbd4018089a62f662'
-         '263725f20c0b9eb9c353040792d644e5'
-         '80a46681386bb87813989faeb92bdd9a')
+         '263725f20c0b9eb9c353040792d644e5')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -51,10 +48,6 @@ build() {
   # then dropped because the reasoning was unclear. However, it is clearly
   # needed.
   patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
-
-  # Fix backlight control on some laptops:
-  # https://bugzilla.kernel.org/show_bug.cgi?id=43168
-  patch -Np1 -i "${srcdir}/3.4.4-fix-backlight-regression.patch"
 
   # Patch submitted upstream, waiting for inclusion:
   # https://lkml.org/lkml/2012/2/19/51
@@ -217,7 +210,7 @@ package_linux-headers() {
 
   cp drivers/media/video/*.h  "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/"
 
-  for i in bt8xx cpia2 cx25840 cx88 em28xx et61x251 pwc saa7134 sn9c102; do
+  for i in bt8xx cpia2 cx25840 cx88 em28xx pwc saa7134 sn9c102; do
     mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/${i}"
     cp -a drivers/media/video/${i}/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/${i}"
   done
