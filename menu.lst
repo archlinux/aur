@@ -3,10 +3,15 @@ timeout 10
 
 title Arch Linux Linode Xen kernel %VER%
 root (hd0)
-kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 rw rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro
+kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro
+initrd /boot/initramfs-linux-linode.img
+
+title Arch Linux Linode Xen kernel %VER% - rescue-ish
+root (hd0)
+kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro break=postmount verbose
 initrd /boot/initramfs-linux-linode.img
 
 title Arch Linux Linode Xen kernel %VER% Fallback
 root (hd0)
-kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 rw rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro
+kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro
 initrd /boot/initramfs-linux-linode-fallback.img

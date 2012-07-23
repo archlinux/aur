@@ -3,7 +3,7 @@ pkgname=${pkgbase}
 _kernelname=${pkgname#linux}
 _basekernel=3.4
 pkgver=${_basekernel}.6
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
@@ -17,8 +17,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz"
         'change-default-console-loglevel.patch')
 md5sums=('cba7741056c05ac98277b99909039a7e'
          '14443e53d3ab88e6eac45d954d891e00'
-         'e4d414895dca61fc6003991050b4cd92'
-         '4c45d442db6239f0b3d0008c0a17c76c'
+         '9847e0f43fd4a5dfd061bdc966af2440'
+         'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="Kernel for Arch Linux on Linode"
