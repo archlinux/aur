@@ -9,7 +9,7 @@
 
 pkgname=chromium
 pkgver=20.0.1132.57
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -32,6 +32,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.default
         chromium.sh
         chromium-gcc47.patch
+        chromium-20.0.1132.57-bison-2.6-remove-yyparse-decl.patch
         chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
         sqlite-3.7.6.3-fix-out-of-scope-memory-reference.patch)
 sha256sums=('1225c6b6306e89c8892bc0d18e94567d6081d777dee9b8c90efd0da9f6f2641b'
@@ -40,6 +41,7 @@ sha256sums=('1225c6b6306e89c8892bc0d18e94567d6081d777dee9b8c90efd0da9f6f2641b'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             'f607347ba8477d3c8e60eb3803d26f3c9869f77fd49986c60887c59a6aa7d30d'
+            '8d0e0c53562eee3400606365e33aab035c487d7d958063bc25eea550c6fa3793'
             'c1baf14121502efbc2a31b64029dcafa0e28ca5b71ad0e28a3c6342d18198615'
             'a700aa054800d1b21d84eaba27c38a703dfa023e9226d11a942690c2a0630aff')
 
@@ -51,6 +53,11 @@ build() {
 
   # Fix build with glibc 2.16
   patch -Np1 -i "$srcdir/chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch"
+
+  # Fix build with bison 2.6 (XXX: hacky; waiting on proper upstream fix)
+  # http://crbug.com/138243 / https://bugs.webkit.org/show_bug.cgi?id=91943
+  patch -Np1 -i \
+    "$srcdir/chromium-20.0.1132.57-bison-2.6-remove-yyparse-decl.patch"
 
   # http://code.google.com/p/chromium/issues/detail?id=109527
   sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
