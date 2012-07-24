@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
-cd /opt/holyspirit
-./Holyspirit $@
+cd /opt/share/games/holyspirit
+exec ./Holyspirit $@

@@ -1,6 +1,6 @@
 pkgbase = holyspirit-svn
 	pkgdesc = Diablo clone
-	pkgver = 2357
+	pkgver = 2381
 	pkgrel = 1
 	url = http://www.holyspirit.fr/
 	install = holyspirit.install
@@ -8,11 +8,16 @@ pkgbase = holyspirit-svn
 	arch = x86_64
 	license = GPL
 	makedepends = subversion
+	makedepends = cmake
+	makedepends = qtwebkit
 	depends = sfml
+	optdepends = qtwebkit: for the launcher
 	provides = holyspirit
 	conflicts = holyspirit
+	backup = opt/share/games/holyspirit/configuration.conf
+	backup = opt/share/games/holyspirit/key_mapping.conf
 	source = holyspirit.sh
-	md5sums = d78610c419dc689d41c2e85ce72516d4
+	md5sums = c2fa4f8768d35c54a95dec924e50c75f
 
 pkgname = holyspirit-svn
 
