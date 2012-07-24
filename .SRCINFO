@@ -1,0 +1,18 @@
+pkgbase = holyspirit-svn
+	pkgdesc = Diablo clone
+	pkgver = 2357
+	pkgrel = 1
+	url = http://www.holyspirit.fr/
+	install = holyspirit.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = sfml
+	provides = holyspirit
+	conflicts = holyspirit
+	source = holyspirit.sh
+	md5sums = d78610c419dc689d41c2e85ce72516d4
+
+pkgname = holyspirit-svn
+
