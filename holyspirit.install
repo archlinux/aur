@@ -1,3 +1,14 @@
+logfile="/opt/share/games/holyspirit/Log.txt"
+
 post_install() {
     echo "Add yourself to the games group and relog to play holyspirit"
+    if [ ! -e "$logfile" ]; then
+        touch "$logfile"
+        chgrp games "$logfile"
+        chmod g+w "$logfile"
+    fi
+}
+
+pre_remove() {
+    rm -f "$logfile"
 }

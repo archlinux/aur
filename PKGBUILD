@@ -13,9 +13,10 @@ optdepends=('qtwebkit: for the launcher')
 provides=('holyspirit')
 conflicts=('holyspirit')
 install=holyspirit.install
-source=(holyspirit.sh)
+source=(holyspirit.sh config_crash.patch)
 backup=('opt/share/games/holyspirit/configuration.conf' 'opt/share/games/holyspirit/key_mapping.conf')
-md5sums=('c2fa4f8768d35c54a95dec924e50c75f')
+md5sums=('c2fa4f8768d35c54a95dec924e50c75f'
+         'b997e0c5d714c615509db7850d0290e3')
 
 _svntrunk=https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk
 _svnmod=holyspirit
@@ -36,6 +37,8 @@ build() {
   rm -rf "$srcdir/$_svnmod-build"
   cp -r "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
   cd "$srcdir/$_svnmod-build"
+
+  patch -p1 < ../config_crash.patch
 
   cmake -DSFML_STATIC_LIBRARIES=FALSE \
     -DCMAKE_INSTALL_PREFIX:STRING="$pkgdir/opt"
@@ -65,9 +68,11 @@ package() {
   mkdir -p "$pkgdir/usr/share"
   mv "$pkgdir/opt/share/applications" "$pkgdir/usr/share/applications"
   mv "$pkgdir/opt/share/icons" "$pkgdir/usr/share/icons"
+  sed -i -e "s|$pkgdir/opt|/opt/share|g" \
+    "$pkgdir/usr/share/applications/Holyspirit.desktop"
 
   # make savegames, config and temp dirs writable
-  chown -R root:games "$pkgdir/opt/share/games/holyspirit/"{Data/User,{configuration,key_mapping}.conf}
+  chgrp -R games "$pkgdir/opt/share/games/holyspirit/"{Data/User,{configuration,key_mapping}.conf}
   chmod -R g+w "$pkgdir/opt/share/games/holyspirit/"{Data/User,{configuration,key_mapping}.conf}
 
   install -D "$srcdir/holyspirit.sh" "$pkgdir/usr/bin/holyspirit"

@@ -17,7 +17,9 @@ pkgbase = holyspirit-svn
 	backup = opt/share/games/holyspirit/configuration.conf
 	backup = opt/share/games/holyspirit/key_mapping.conf
 	source = holyspirit.sh
+	source = config_crash.patch
 	md5sums = c2fa4f8768d35c54a95dec924e50c75f
+	md5sums = b997e0c5d714c615509db7850d0290e3
 
 pkgname = holyspirit-svn
 

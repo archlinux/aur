@@ -1,0 +1,51 @@
+From: Johannes Dewender <jonnyjd@users.sf.net>
+Date: Wed, 25 Jul 2012 01:22:42.463515335 +0200
+Subject: [PATCH] fix crash on saving configuration
+
+Holyspirit crashed on exit when the configuration files were not writable.
+
+Signed-off-by: Johannes Dewender <jonnyjd@users.sf.net>
+
+Index: trunk/Source/main.cpp
+===================================================================
+--- trunk/Source/main.cpp	(revision 2381)
++++ trunk/Source/main.cpp	(working copy)
+@@ -88,7 +88,15 @@
+     console->Ajouter("");
+     console->Ajouter("Saving configuration");
+ 
+-    configuration->Sauvegarder();
++    try
++    {
++        configuration->Sauvegarder();
++    }
++    catch (const std::string& str)
++    {
++        console->Ajouter("WARNING : ",1);
++        console->Ajouter(str,1);
++    }
+ 
+     console->Ajouter("");
+     console->Ajouter("Destruction of engines");
+Index: trunk/Source/configuration.cpp
+===================================================================
+--- trunk/Source/configuration.cpp	(revision 2381)
++++ trunk/Source/configuration.cpp	(working copy)
+@@ -608,7 +608,7 @@
+         fichier.close();
+     }
+     else
+-        throw "Unable to save configuration";
++        throw std::string("Unable to save configuration : configuration.conf");
+ }
+ 
+ void Configuration::SauvegarderKeyMapping()
+@@ -639,7 +639,7 @@
+         fichier.close();
+     }
+     else
+-        throw "Unable to save configuration";
++        throw std::string("Unable to save configuration : key_mapping.conf");
+ }
+ 
+ 
