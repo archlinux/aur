@@ -9,6 +9,14 @@ post_install() {
     fi
 }
 
+post_upgrade() {
+    if [ ! -e "$logfile" ]; then
+        touch "$logfile"
+        chgrp games "$logfile"
+        chmod g+w "$logfile"
+    fi
+}
+
 pre_remove() {
     rm -f "$logfile"
 }

@@ -1,5 +1,5 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Johannes Dewender arch at JonnyJD dot net
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
 pkgver=2381
 pkgrel=1
@@ -56,7 +56,8 @@ build() {
 package() {
   cd "$srcdir/$_svnmod-build"
 
-  sed -i -e "s|$pkgdir||g" holyspirit.ini
+  # fix currently broken upstream installation
+  sed -i -e "s|$pkgdir/opt/share/games/holyspirit/||g" holyspirit.ini
   cp ../LauncherHolyspirit .
   make install
 
