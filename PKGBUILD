@@ -49,10 +49,10 @@ build() {
 
   # Config files
   # Replace resources location
-  sed -i 's,resources=resources,resources=/usr/share/games/openmw/resources,' openmw.cfg.install || exit 1
+  sed -i 's,resources=resources,resources=/usr/share/games/openmw/resources,' openmw.cfg || exit 1
 
   install -d -m755 "$pkgdir"/etc/openmw
-  install -m644 openmw.cfg.install "$pkgdir"/etc/openmw/openmw.cfg
+  install -m644 openmw.cfg "$pkgdir"/etc/openmw/openmw.cfg
   install -m644 launcher.cfg "$pkgdir"/etc/openmw/
   install -m644 settings-default.cfg "$pkgdir"/etc/openmw/
   install -m644 transparency-overrides.cfg "$pkgdir"/etc/openmw/
