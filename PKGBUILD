@@ -30,7 +30,7 @@ fi
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
     'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
-    "ftp://ftp.idsoftware.com/idstuff/source/idtech4-$pkgname-source-GPL.zip" \
+    "http://pnfiles.gamespy.com/hostedftp/planetdoom/fms/files/other/38/idtech4doom3sourceGPL.zip" \
     "http://www.1337-server.net/doom3/$pkgname-linux-$pkgver.x86.run")
 provides=('doom3')
 conflicts=('doom3-bin' 'iodoom3' 'iodoom3-git' 'iodoom3-bin')
