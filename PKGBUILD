@@ -1,20 +1,20 @@
-# $Id: PKGBUILD 163162 2012-07-08 09:32:43Z ibiru $
+# $Id$
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt' 'libproxy' 
-         'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska' 
-         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 
-         'libshout' 'libmad' 'libmpeg2' 'libmodplug' 'libass' 
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt' 'libproxy'
+         'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska'
+         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
+         'libshout' 'libmad' 'libmpeg2' 'libmodplug' 'libass'
          'xcb-util-keysyms' 'ttf-freefont')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'fluidsynth' 'libdc1394' 'libavc1394' 'lirc-utils'
@@ -58,7 +58,7 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!libtool' '!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('93e729cc970a4535b3213dbef0e69528')
+md5sums=('a7e79565e3df07dcf9abc6cad3ac26bb')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -81,6 +81,7 @@ build() {
               --enable-xosd \
               --enable-aa \
               --enable-vcdx \
+              --enable-upnp \
               --enable-decklink \
               --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk"
 
