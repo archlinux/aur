@@ -1,0 +1,13 @@
+pkgbase = ompi
+	pkgdesc = A lightweight, open source OpenMP compiler and runtime system for C
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://www.cs.uoi.gr/~ompi/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://www.cs.uoi.gr/~ompi/downloads/ompi-1.2.2.tar.gz
+	sha256sums = 3c9d0ce00908a81403e92e0dc9247ec32c34a86f5ef039ba21a8fc2c004ff975
+
+pkgname = ompi
+
