@@ -3,7 +3,7 @@
 
 pkgname=sfml
 pkgver=2.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
 url='http://www.sfml-dev.org/'
