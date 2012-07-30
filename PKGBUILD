@@ -20,12 +20,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.5.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgname}.preset"
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        'avmfritz-only-few-bytes-are-transfered-on-a-conn.patch')
 md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
-         'a2facfc8fe8ba073f64d125694cda469'
-         '05d00f104528ced0a3bd9bd6ca9733b9'
+         '31dade2f50803beaebf947732f39b51e'
+         '34bf41248c2ab68ddb0a7b3b5f4a68ce'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662')
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '2afcc001cc178be72e3a19d95f4bd5eb')
 
 build() {
   cd "${srcdir}/linux-${_basekernel}"
@@ -40,6 +42,10 @@ build() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix avmfritz capi20 functionallity
+  # https://bugzilla.kernel.org/show_bug.cgi?id=45271
+  patch -Np1 -i "${srcdir}/avmfritz-only-few-bytes-are-transfered-on-a-conn.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
