@@ -1,7 +1,7 @@
 post_install () {
   # Check user/group incron exists
-  getent group incron > /dev/null || groupadd incron
-  getent passwd incron > /dev/null || useradd -c "Incron system" -g incron -s /bin/false -d /var/spool/incron incron
+  getent group incron > /dev/null || groupadd -r incron
+  getent passwd incron > /dev/null || useradd -r -c "Incron system" -g incron -s /bin/false -d /var/spool/incron incron
   # Fix permissions
   chown incron.incron -R /var/spool/incron
 }
