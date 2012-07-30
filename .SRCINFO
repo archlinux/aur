@@ -1,0 +1,16 @@
+pkgbase = collectd-graphite-git
+	pkgdesc = collectd plugin for sending data to graphite
+	pkgver = 20120730
+	pkgrel = 1
+	url = https://github.com/joemiller/collectd-graphite
+	install = collectd-graphite-git.install
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = perl
+	makedepends = make
+	depends = collectd
+	optdepends = graphite-web: to display the graphs on this machine
+
+pkgname = collectd-graphite-git
+

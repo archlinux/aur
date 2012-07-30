@@ -1,0 +1,20 @@
+## arg 1:  the new package version
+  echo "=== To use Collectd-Graphite add the following to your collectd.conf:"
+  cat << EOF
+<LoadPlugin "perl">
+    Globals true
+</LoadPlugin>
+
+<Plugin "perl">
+  BaseName "Collectd::Plugins"
+  LoadPlugin "Graphite"
+
+    <Plugin "Graphite">
+      Buffer "256000"
+      Prefix "servers"
+      Host   "localhost"
+      Port   "81"
+    </Plugin>
+</Plugin>
+EOF
+}
