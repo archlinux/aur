@@ -7,7 +7,7 @@
 
 
 start () {
-  stat_busy "Starting zabbix-server"
+  stat_busy "Starting Zabbix-server"
   /usr/sbin/zabbix_server &>/dev/null
   if [ $? -gt 0 ]; then
      stat_fail
@@ -18,7 +18,7 @@ start () {
  }
 
 stop() {
-  stat_busy "Stopping zabbix-server"
+  stat_busy "Stopping Zabbix-server"
   killall zabbix_server
   if [ $? -gt 0 ]; then
      stat_fail
@@ -44,7 +44,7 @@ case $1 in
    start
    ;;
   *)
-  echo $"Usage: zabbix-server {start|stop|restart}"
+  echo $"Usage: Zabbix-server {start|stop|restart}"
   exit 1
  esac
 

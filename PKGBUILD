@@ -1,6 +1,6 @@
 pkgname=zabbix-server-mysql
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64')
 url="http://www.zabbix.com/"
@@ -21,19 +21,19 @@ source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-$pkgver.tar.
         'zabbix-server.install'
         'frontend.diff'
        )
-md5sums=('3b301aa4f2b7cb5ede46884b9c7873e1'
-         'c56242d58e60c167fb31ac34b25ee64d'
+md5sums=('81d99680bafe14a6c9945b71c97988ca'
+         '3bb7c9b323487bda46d123304a963315'
          '433c31251286f67650123fa18f7ff834'
          '228d6609c0f2364f1268d7b24b4756a4'
          'fb39e61ef9cbc7d35ac27a90661b083c'
-         'ebbed4bb447d49d936802e81856ecd76'
+         'c9621c29f6db72dbdf6db7b5fb847642'
         )
-sha1sums=('ca7d548f6ddb1f963958357ed5ddaf2fbceed104'
-          'ff7acb3012ff95a0b6b02496aab85eb0fc281581'
+sha1sums=('aaa678bc6abc6cb2b174e599108ad19f187047c9'
+          'a328714dcfd7514b334dcf0df2c87f424ee1a691'
           '4b4423af5587d59ab68ba748242183193729ec32'
           '5711484ecd0efc4769b975cfff77911c2044fd18'
           '0c67a10fc43af6f295a5946b3df914d494cd54f6'
-          '79bdfdc87231dd998ec362632e3a1c0072e739cb'
+          '2c48e4272cf0043030e6fc369468829e09996571'
          )
 
 _HTMLPATH='srv/http/zabbix'
