@@ -3,8 +3,8 @@
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
 pkgname=django
-pkgver=1.4
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="A high-level Python Web framework."
 arch=('any')
 license=('BSD')
@@ -14,8 +14,8 @@ makedepends=('python2-distribute')
 optdepends=('mysql-python: for MySQL backend'
             'python2-psycopg2: for PostgreSQL backend')
 source=("https://www.djangoproject.com/m/releases/1.4/Django-$pkgver.tar.gz")
-md5sums=('ba8e86198a93c196015df0b363ab1109')
-sha256sums=('c096bafbea10e7d359bc15eb00a9bf11dbf5201a16d62acfa2de61d5a35488e9')
+md5sums=('e345268dacff12876ae4e45de0a61b7d')
+sha256sums=('4d8d20eba350d3d29613cc5a6302d5c23730c7f9e150985bc58b3175b755409b')
 
 build() {
   cd "$srcdir/Django-$pkgver"
