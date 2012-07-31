@@ -5,8 +5,8 @@
 # Contributor: bekks <eduard.warkentin@gmx.de>
 
 pkgname=pgadmin3-testing
-pkgver=1.16.0beta1
-_realver=1.16.0-beta1
+pkgver=1.16.0beta2
+_realver=1.16.0-beta2
 pkgrel=1
 pkgdesc="A comprehensive design and management interface for PostgreSQL database"
 arch=('i686' 'x86_64')
@@ -41,5 +41,5 @@ package() {
     install -D -m 644 pgadmin/include/images/pgAdmin3.ico $pkgdir/usr/share/pgadmin3/pixmaps/pgAdmin3.ico
     install -D -m 644 $srcdir/pgadmin3.desktop $pkgdir/usr/share/applications/
 }
-md5sums=('057c9caace7d1deb8688fa39d220f820'
+md5sums=('524bd64a6e25703b40bf96efd07bbfc4'
          'd07ba4df54baead30b66d19d7450bcad')
