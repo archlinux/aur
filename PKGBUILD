@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect-git
-pkgver=20110115
+pkgver=20120801
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ build() {
 	cd "${_gitname}-build"
 	
 	# Install "libfreenect.hpp" to "/usr/include/libfreenect"
-	sed 's/DESTINATION include/DESTINATION include\/${projectNameLower}/g' -i "wrappers/cpp/CMakeLists.txt"
+	sed 's/DESTINATION include/DESTINATION ${PROJECT_INCLUDE_INSTALL_DIR}/g' -i "wrappers/cpp/CMakeLists.txt"
 	
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include -DLIB_SUFFIX="" .
 	make
