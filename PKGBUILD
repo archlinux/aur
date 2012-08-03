@@ -1,6 +1,6 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 pkgname=jbig2enc-git
-pkgver=20110728
+pkgver=20120803
 pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
@@ -29,15 +29,13 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  msg "Patching sources..."
-  sed -i 's@-I${LEPTONICA}/src@-I/usr/include/leptonica@' Makefile
-  sed -i 's@${LEPTONICA}/src/.libs/liblept.a@-llept@' Makefile
-
-  msg "Starting make..."
+  msg "Building..."
+  ./autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir/$_gitname-build"
-  install -D jbig2 "$pkgdir/usr/bin/jbig2"
+  make install DESTDIR="$pkgdir"
 }

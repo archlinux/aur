@@ -1,6 +1,6 @@
 pkgbase = jbig2enc-git
 	pkgdesc = A JBIG2 image encoder
-	pkgver = 20110728
+	pkgver = 20120803
 	pkgrel = 1
 	url = https://github.com/agl/jbig2enc
 	arch = i686
