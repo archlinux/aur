@@ -1,7 +1,7 @@
 pkgbase = jbig2enc-git
 	pkgdesc = A JBIG2 image encoder
 	pkgver = 20120803
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agl/jbig2enc
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = jbig2enc-git
 	depends = libpng
 	depends = libjpeg
 	depends = libtiff
+	optdepends = python2: for pdf.py
 
 pkgname = jbig2enc-git
 

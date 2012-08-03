@@ -1,12 +1,13 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 pkgname=jbig2enc-git
 pkgver=20120803
-pkgrel=1
+pkgrel=2
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/agl/jbig2enc"
 license=('Apache')
 depends=('gcc-libs' 'leptonica>=1.68' 'libpng' 'libjpeg' 'libtiff')
+optdepends=('python2: for pdf.py')
 makedepends=('git')
 
 _gitroot="https://github.com/agl/jbig2enc.git"
@@ -28,6 +29,9 @@ build() {
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
+
+  msg "Patching sources..."
+  sed -i 's@^#!/usr/bin/python$@#!/usr/bin/env python2@' pdf.py
 
   msg "Building..."
   ./autogen.sh
