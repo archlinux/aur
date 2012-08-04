@@ -16,6 +16,7 @@ pkgbase = slic3r-git
 	depends = perl-math-planepath
 	optdepends = perl-wx: gui support
 	optdepends = perl-growl-gntp: notifcations support
+	optdepends = perl-net-dbus: ???
 	provides = slic3r
 	conflicts = slic3r
 	source = slic3r.desktop

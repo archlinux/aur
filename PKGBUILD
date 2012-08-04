@@ -8,7 +8,8 @@ license=('GPL')
 depends=('perl' 'perl-moo' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath')
 makedepends=('git')
 optdepends=('perl-wx: gui support'
-            'perl-growl-gntp: notifcations support')
+            'perl-growl-gntp: notifcations support'
+            'perl-net-dbus: ???')
 provides=('slic3r')
 conflicts=('slic3r')
 source=('slic3r.desktop')
