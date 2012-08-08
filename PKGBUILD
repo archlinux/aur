@@ -8,9 +8,9 @@
 # build time.
 
 pkgname=chromium
-pkgver=21.0.1180.57
+pkgver=21.0.1180.75
 _nacl_sdk=20.0.1132.47
-pkgrel=2
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -36,7 +36,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium-20.0.1132.57-bison-2.6-fix.patch
         chromium-21.0.1180.57-fix-crash-in-task-queue.patch
         chromium-ppapi-r0.patch)
-sha256sums=('311ba95249ea994747355596885c9ad583e55bcbe7220a47ea096898e7aeb145'
+sha256sums=('8ee09c680d254a41fda99713b69f541e50f1e7d555b94c6af517e25a11c8830e'
             'ac371e9e8312f01856e892b29c788acfa03cbb79aaabe0b5a3ae0cd2f8399a91'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
