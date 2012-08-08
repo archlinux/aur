@@ -2,24 +2,22 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux
-pkgname=('linux' 'linux-headers' 'linux-docs') # Build stock -ARCH kernel
-# pkgname=linux-custom       # Build kernel with a different name
-_kernelname=${pkgname#linux}
-_basekernel=3.5
-pkgver=${_basekernel}
+pkgbase=linux               # Build stock -ARCH kernel
+#pkgbase=linux-custom       # Build kernel with a different name
+_srcname=linux-3.5
+pkgver=3.5.0
 pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.5.tar.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
-        "${pkgname}.preset"
+        'linux.preset'
         'change-default-console-loglevel.patch'
         'avmfritz-only-few-bytes-are-transfered-on-a-conn.patch')
 md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
@@ -29,8 +27,10 @@ md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '2afcc001cc178be72e3a19d95f4bd5eb')
 
+_kernelname=${pkgbase#linux}
+
 build() {
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
@@ -55,6 +55,7 @@ build() {
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
   # set extraversion to pkgrel
@@ -73,58 +74,68 @@ build() {
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
+  
+  # rewrite configuration
+  yes "" | make config >/dev/null
+
+  # save configuration for later reuse
+  if [ "${CARCH}" = "x86_64" ]; then
+    cat .config > "${startdir}/config.x86_64.last"
+  else
+    cat .config > "${startdir}/config.last"
+  fi
 
   ####################
   # stop here
   # this is useful to configure the kernel
-  #msg "Stopping build"
-  #return 1
+  #msg "Stopping build"; return 1
   ####################
 
-  yes "" | make config
-
   # build!
-  make ${MAKEFLAGS} bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux() {
-  pkgdesc="The Linux Kernel and modules"
-  groups=('base')
+_package() {
+  pkgdesc="The ${pkgbase} kernel and modules"
+  [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('kernel26')
-  conflicts=('kernel26')
-  replaces=('kernel26')
-  backup=("etc/mkinitcpio.d/${pkgname}.preset")
-  install=${pkgname}.install
+  provides=("kernel26${_kernelname}=${pkgver}")
+  conflicts=("kernel26${_kernelname}")
+  replaces=("kernel26${_kernelname}")
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  install=linux.install
 
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
 
   KARCH=x86
 
   # get kernel version
-  _kernver="$(make kernelrelease)"
+  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _basekernel=${_kernver%%-*}
+  _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgname}"
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/src/linux-${_kernver}/vmlinux"
 
   # install fallback mkinitcpio.conf file and preset file for kernel
-  install -D -m644 "${srcdir}/${pkgname}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
+  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # set correct depmod command for install
   sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/g" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
-    -i "${startdir}/${pkgname}.install"
+    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
+    -i "${startdir}/linux.install"
   sed \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgname}\"|g" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|g" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|g" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
+    -e "1s|'linux.*'|'${pkgbase}'|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -145,18 +156,18 @@ package_linux() {
   depmod -b "$pkgdir" -F System.map "$_kernver"
 }
 
-package_linux-headers() {
-  pkgdesc="Header files and scripts for building modules for linux kernel"
-  provides=('kernel26-headers')
-  conflicts=('kernel26-headers')
-  replaces=('kernel26-headers')
+_package-headers() {
+  pkgdesc="Header files and scripts for building modules for ${pkgbase} kernel"
+  provides=("kernel26${_kernelname}-headers=${pkgver}")
+  conflicts=("kernel26${_kernelname}-headers")
+  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
   cd "${pkgdir}/usr/lib/modules/${_kernver}"
   ln -sf ../../../src/linux-${_kernver} build
 
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/src/linux-${_kernver}/Makefile"
   install -D -m644 kernel/Makefile \
@@ -276,13 +287,13 @@ package_linux-headers() {
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-package_linux-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel."
-  provides=('kernel26-docs')
-  conflicts=('kernel26-docs')
-  replaces=('kernel26-docs')
+_package-docs() {
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase} kernel"
+  provides=("kernel26${_kernelname}-docs=${pkgver}")
+  conflicts=("kernel26${_kernelname}-docs")
+  replaces=("kernel26${_kernelname}-docs")
 
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
 
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}"
   cp -al Documentation "${pkgdir}/usr/src/linux-${_kernver}"
@@ -292,3 +303,12 @@ package_linux-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
+
+pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    _package${_p#${pkgbase}}
+  }"
+done
+
+# vim:set ts=8 sts=2 sw=2 et:
