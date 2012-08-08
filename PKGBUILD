@@ -10,7 +10,7 @@
 pkgname=chromium
 pkgver=21.0.1180.57
 _nacl_sdk=20.0.1132.47
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -34,6 +34,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.sh
         chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
         chromium-20.0.1132.57-bison-2.6-fix.patch
+        chromium-21.0.1180.57-fix-crash-in-task-queue.patch
         chromium-ppapi-r0.patch)
 sha256sums=('311ba95249ea994747355596885c9ad583e55bcbe7220a47ea096898e7aeb145'
             'ac371e9e8312f01856e892b29c788acfa03cbb79aaabe0b5a3ae0cd2f8399a91'
@@ -42,6 +43,7 @@ sha256sums=('311ba95249ea994747355596885c9ad583e55bcbe7220a47ea096898e7aeb145'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             'c1baf14121502efbc2a31b64029dcafa0e28ca5b71ad0e28a3c6342d18198615'
             'd7aecc17e1eb582fe791c3e5fb2ca3f0efcb9bf5379309c1c27be35be4363bba'
+            'cbd04d9a7cfda7e9c39fa215da897991a410fb59bf0f664abf93ab2c38689898'
             '1f4b57670d317959bc2dc60e5d2a44aa8fc6028f7ed540cdb502fa0aa99c81bd')
 
 build() {
@@ -54,6 +56,10 @@ build() {
   # http://crbug.com/138243 / https://bugs.webkit.org/show_bug.cgi?id=92264
   patch -d third_party/WebKit -Np1 -i \
     "$srcdir/chromium-20.0.1132.57-bison-2.6-fix.patch"
+
+  # Fix crash in LazyBackgroundTaskQueue::ProcessPendingTasks
+  # http://crbug.com/138790
+  patch -Np1 -i "$srcdir/chromium-21.0.1180.57-fix-crash-in-task-queue.patch"
 
   # Fix build without NaCl glibc toolchain (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-ppapi-r0.patch"
