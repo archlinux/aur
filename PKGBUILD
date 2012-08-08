@@ -74,7 +74,7 @@ build() {
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
-  
+
   # rewrite configuration
   yes "" | make config >/dev/null
 
