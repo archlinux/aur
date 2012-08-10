@@ -1,13 +1,12 @@
 #!/bin/bash
-#
-# Source function library.
+
 . /etc/rc.conf
 . /etc/rc.d/functions
 . /etc/conf.d/zabbix-server
 
 
 start () {
-  stat_busy "Starting Zabbix-server"
+  stat_busy "Starting Zabbix Server"
   /usr/sbin/zabbix_server &>/dev/null
   if [ $? -gt 0 ]; then
      stat_fail
@@ -18,7 +17,7 @@ start () {
  }
 
 stop() {
-  stat_busy "Stopping Zabbix-server"
+  stat_busy "Stopping Zabbix Server"
   killall zabbix_server
   if [ $? -gt 0 ]; then
      stat_fail
@@ -31,7 +30,6 @@ stop() {
   fi
   }
 
-# See how we were called.
 case $1 in	
   start)
    start
@@ -44,7 +42,7 @@ case $1 in
    start
    ;;
   *)
-  echo $"Usage: Zabbix-server {start|stop|restart}"
+  echo $"Usage: Zabbix Server {start|stop|restart}"
   exit 1
  esac
 

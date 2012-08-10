@@ -1,5 +1,5 @@
---- new/frontend.po
-+++ old/frontend.po
+--- a/ru/LC_MESSAGES/frontend.po
++++ b/ru/LC_MESSAGES/frontend.po
 @@ -7812,7 +7812,7 @@
  
  #: include/views/configuration.sysmap.edit.php:149
@@ -18,3 +18,36 @@
  
  #: include/views/administration.mediatypes.edit.php:87
  msgid "USA (160 characters)"
+
+--- a/tr/LC_MESSAGES/frontend.po
++++ b/tr/LC_MESSAGES/frontend.po
+@@ -3811,7 +3811,7 @@
+ 
+ #: jsLoader.php:148
+ msgid "Each URL should have a unique name. Please make sure there is only one URL named"
+-msgstr "Her URL tekil bir isme sahip olmalıdır. Lütfen URL'in yalnızca bir isme sahip olduğundan emin olun."
++msgstr "Her URL tekil bir isme sahip olmalıdır. Lütfen URLin yalnızca bir isme sahip olduğundan emin olun."
+ 
+ #: include/forms.inc.php:1872 include/forms.inc.php:1886
+ #: include/views/administration.users.edit.php:157
+@@ -12782,7 +12782,7 @@
+ 
+ #: include/config.inc.php:244
+ msgid "You cannot view this URL as a"
+-msgstr "Bu URL'i şu şekilde göremezsiniz"
++msgstr "Bu URLi şu şekilde göremezsiniz"
+ 
+ #: include/views/js/configuration.action.edit.js.php:319
+ msgid "You did not specify host for operation."
+
+--- a/uk/LC_MESSAGES/frontend.po
++++ b/uk/LC_MESSAGES/frontend.po
+@@ -7812,7 +7812,7 @@
+ 
+ #: include/views/configuration.sysmap.edit.php:149
+ msgid "No URLs defined."
+-msgstr "URL'и не визначено."
++msgstr "URLи не визначено."
+ 
+ #: include/forms.inc.php:269
+ msgid "No accessible resources"

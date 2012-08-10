@@ -1,0 +1,11 @@
+[Unit]
+Description=Zabbix Server
+After=syslog.target network.target mysqld.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/zabbix_server
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
