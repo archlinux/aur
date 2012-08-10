@@ -5,35 +5,36 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.5
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.5.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
         'avmfritz-only-few-bytes-are-transfered-on-a-conn.patch')
+
+_kernelname=${pkgbase#linux}
 md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
+         '35add5b2e64d1cbc8d123980c967e7ca'
          '31dade2f50803beaebf947732f39b51e'
          '34bf41248c2ab68ddb0a7b3b5f4a68ce'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '2afcc001cc178be72e3a19d95f4bd5eb')
 
-_kernelname=${pkgbase#linux}
-
 build() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -44,6 +45,7 @@ build() {
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # fix avmfritz capi20 functionallity
+  # will be added to 3.5.2
   # https://bugzilla.kernel.org/show_bug.cgi?id=45271
   patch -Np1 -i "${srcdir}/avmfritz-only-few-bytes-are-transfered-on-a-conn.patch"
 
