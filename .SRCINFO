@@ -1,0 +1,15 @@
+pkgbase = python2-processing
+	pkgdesc = Package for using processes which mimics the threading module
+	pkgver = 0.52
+	pkgrel = 1
+	url = http://developer.berlios.de/projects/pyprocessing
+	arch = any
+	license = BSD
+	depends = python2
+	provides = python2-processing
+	conflicts = python-processing
+	source = http://download.berlios.de/pyprocessing/processing-0.52.zip
+	md5sums = 62772fa3002d003b2395ed669072d51d
+
+pkgname = python2-processing
+
