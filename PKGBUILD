@@ -11,7 +11,6 @@ arch=('any')
 license=('BSD')
 depends=('python2')
 provides=('python2-processing')
-conflicts=('python-processing')
 source=(http://download.berlios.de/pyprocessing/${_pythonname}-${pkgver}.zip)
 md5sums=('62772fa3002d003b2395ed669072d51d')
 
