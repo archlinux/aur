@@ -2,8 +2,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=2.8.8
-pkgrel=2
+pkgver=2.8.9
+pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -12,16 +12,11 @@ depends=('curl' 'libarchive' 'shared-mime-info')
 makedepends=('qt')
 optdepends=('qt: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
-        'fix-pkg-config.patch')
-md5sums=('ba74b22c788a0c8547976b880cd02b17'
-         '32c6a4360a2ba12dc77b6a840fa7672b')
+source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
+md5sums=('801f4c87f8b604f727df5bf1f05a59e7')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
-
-  # FS#29545
-  patch -p1 -i "${srcdir}"/fix-pkg-config.patch
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
