@@ -1,15 +1,16 @@
 pkgname=slic3r-git
-pkgver=20120626
-pkgrel=2
+pkgver=20120809
+pkgrel=1
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
 depends=('perl' 'perl-moo' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath')
 makedepends=('git')
-optdepends=('perl-wx: gui support'
-            'perl-growl-gntp: notifcations support'
-            'perl-net-dbus: ???')
+optdepends=('perl-wx: GUI support'
+            'perl-growl-gntp: notifications support via growl'
+            'perl-net-dbus: notifications support via any dbus-based notifier'
+            'perl-xml-sax: Additive Manufacturing File Format (AMF) support')
 provides=('slic3r')
 conflicts=('slic3r')
 source=('slic3r.desktop')
@@ -45,7 +46,7 @@ build() {
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
   # sed -i "s/        'Growl/\#&/" Build.PL
 
-  msg "⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead."
+  msg " ⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead.\n"
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
 
   # Build stage
