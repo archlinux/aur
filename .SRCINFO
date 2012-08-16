@@ -1,0 +1,13 @@
+pkgbase = etherwake
+	pkgdesc = Utility for waking up computers via wake-on-lan (wol)
+	pkgver = 1.09
+	pkgrel = 6
+	url = http://www.scyld.com/wakeonlan.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/etherwake_1.09.orig.tar.gz
+	sha256sums = 54241c7689579dc86e29e6afbc6d60e69f97135091a1395c8a10f6d5a2daec1d
+
+pkgname = etherwake
+
