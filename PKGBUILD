@@ -1,7 +1,7 @@
 # Maintainer: Leonidas <marek@xivilization.net>
 pkgname=factor
-pkgver=0.94
-pkgrel=2
+pkgver=0.95
+pkgrel=1
 pkgdesc="Factor is a general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
 url="http://factorcode.org"
@@ -14,7 +14,7 @@ source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zi
         factor.desktop
         factor.png
         fuel-factor-vm.patch)
-md5sums=('6c89c27ed3127f9b0f308f3b3dba34a2'
+md5sums=('4122978b522a95a2b2348f5915b0cf07'
          '59242ddb19a9be927915e489e2bfca27'
          '74512251d922434c3a973f06800d6181'
          '9d297a5b9dd60ec51d91068e82939474')
