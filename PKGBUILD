@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
@@ -13,11 +13,13 @@ backup=(usr/share/openvpn/easy-rsa/vars
         etc/conf.d/openvpn-tapdev)
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
         http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz.asc
+        openvpn@.service
         openvpn.rc
         openvpn-tapdev.rc
         openvpn-tapdev.conf)
 md5sums=('c5181e27b7945fa6276d21873329c5c7'
          '81ff11ec8cd9fc3c8bc646aae24c4298'
+         '44047df812a3fcd57a7e36a61732a9b9'
          'a3809b9727f0c2af2d0770f5c7442db2'
          'd2c48e970088d679dd3c2afd914ff731'
          '722f483c9e3ce2ec66d3301aaf7cf3d5')
@@ -68,4 +70,5 @@ package() {
   install -D -m755 $srcdir/openvpn.rc $pkgdir/etc/rc.d/openvpn
   install -D -m755 $srcdir/openvpn-tapdev.rc $pkgdir/etc/rc.d/openvpn-tapdev
   install -D -m644 $srcdir/openvpn-tapdev.conf $pkgdir/etc/conf.d/openvpn-tapdev
+  install -D -m644 $srcdir/openvpn@.service $pkgdir/usr/lib/systemd/system/openvpn@.service
 }
