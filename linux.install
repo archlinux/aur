@@ -31,7 +31,7 @@ post_install () {
 post_upgrade() {
   pacman -Q grub &>/dev/null
   hasgrub=$?
-  pacman -Q grub2-common &>/dev/null
+  pacman -Q grub-common &>/dev/null
   hasgrub2=$?
   pacman -Q lilo &>/dev/null
   haslilo=$?
