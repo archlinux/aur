@@ -1,7 +1,7 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
-pkgver=1.6
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
@@ -9,19 +9,14 @@ license=('custom')
 depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
 makedepends=('inetutils')
 options=(!libtool)
-source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2
-        openmpi-hostfile.patch)
-sha1sums=('8b81eea712bb8f8120468003b5f29baecedf2367'
-          'a76da03418a106d57cfd020d0f8d887d7ec9225b')
+source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('1ccff71e3775c80c5a553f30104d663e1226baab')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
 
    # Make sure we use the system ltdl librariry rather than the ones in the tarball
    rm -r opal/libltdl
-
-   # Search for openmpi-default-hostfile in /etc/openmpi
-   patch -Np1 -i ../openmpi-hostfile.patch
 
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
