@@ -16,7 +16,7 @@ makedepends=('unzip')
 conflicts=('bin32-etqw')
 install='etqw.install'
 source=('etqw.launcher' 'etqw-rthread.launcher' 'etqwded.launcher' 'etqw.desktop' \
-"ftp://ftp.i3d.net/Games/Enemy%20Territory%20Quake%20Wars/Patches/ETQW-client-1.5-full.x86.run")
+"http://www.altfire.com/main/files/Gaming/Games/Quake%20Wars/ETQW-client-1.5-linux.x86.run")
 md5sums=('3cbe2e753a7ab8406180ae2a8b7a1aa8'
          'c7df646e396bd08727c713aab8b398ed'
          'a3769be79f6ff5071d89f908078397dd'
