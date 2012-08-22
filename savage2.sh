@@ -1,4 +1,6 @@
 #!/bin/sh
+export LD_LIBRARY_PATH="$(pwd):$(pwd)/libs:$(pwd)/game:$LD_LIBRARY_PATH"
+
 dir=$0
 name=`basename $dir`
 if [ "$name" = "$dir" ]; then

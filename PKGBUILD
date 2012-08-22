@@ -19,7 +19,7 @@ md5sums=('a0ac6f3eba8c9a1d7c908489bdb850c9'
          'a6957bb87da35d58df86d84a6dca1479'
          'b082a33fd1a580d3c70d80bbbfb0bffe'
          '177155e2c2c4e1382ce9b1343e26b5c7'
-         'ccdd27d23125aaa76a1ebfe021ecd967')
+         '4acf06412dbd5ebbec89d1c5f2c99b4f')
 [ "$CARCH" = "x86_64" ] && source[0]="http://savage2.s2games.com/downloads/Savage2-${pkgver}-linux-x64-installer.run"
 [ "$CARCH" = "x86_64" ] && md5sums[0]='ed5cbab367391f91453de21f0f150b04'
 PKGEXT='.pkg.tar'
