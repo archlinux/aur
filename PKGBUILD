@@ -3,14 +3,9 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-# Building for x86_64 requires lib32-glibc & lib32-zlib from [multilib]. These
-# libraries are linked from the NaCl toolchain, and are only needed during
-# build time.
-
 pkgname=chromium
 pkgver=21.0.1180.81
-_nacl_sdk=20.0.1132.47
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -19,16 +14,11 @@ depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
          'libxss' 'libgcrypt' 'ttf-dejavu' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
-             'elfutils' 'subversion')
+             'elfutils' 'subversion' 'nacl-toolchain-newlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
-# Needed for the NaCl toolchain
-[[ $CARCH == x86_64 ]] && makedepends+=('lib32-zlib')
-provides=('chromium-browser')
-conflicts=('chromium-browser')
 backup=('etc/chromium/default')
 install=chromium.install
 source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.bz2
-        naclsdk_linux-$_nacl_sdk.tar.bz2::http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/$_nacl_sdk/naclsdk_linux.bz2
         chromium.desktop
         chromium.default
         chromium.sh
@@ -37,7 +27,6 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium-21.0.1180.57-fix-crash-in-task-queue.patch
         chromium-ppapi-r0.patch)
 sha256sums=('f436e0383ee2a52b483ed4074d3ad067a51745545e159dfe32a4f77ededfbaac'
-            'ac371e9e8312f01856e892b29c788acfa03cbb79aaabe0b5a3ae0cd2f8399a91'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
@@ -77,7 +66,7 @@ build() {
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
   export PATH="$srcdir/python2-path:$PATH"
 
-  ln -s "$srcdir/pepper_${_nacl_sdk%%.*}/toolchain/linux_x86_newlib" \
+  ln -s /usr/lib/nacl-toolchain-newlib \
     native_client/toolchain/linux_x86_newlib
 
   # CFLAGS are passed through release_extra_cflags below
