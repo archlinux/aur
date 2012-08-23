@@ -21,7 +21,7 @@
 #   USA. 
 # 
 
-myver='2.9.8.2' 
+myver='2.9.8.3' 
 dbroot="/var/lib/pacman" 
 pacmandb="/var/lib/pacman.db" 
 pacmanlog=$(pacman -Qv | grep "Log File" | cut -d ":" -f2)
@@ -53,7 +53,7 @@ if [ "$1" != "" ]; then
         dbroot=$1 
 fi 
 
-if [ "`id -u`" != 0 ]; then 
+if [ $(id -u) != 0 ]; then 
         die "You must be root to cage the database" 
 fi 
 

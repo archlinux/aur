@@ -3,62 +3,62 @@
 . /etc/rc.conf
 . /etc/rc.d/functions
 
-pacmanlog=$(pacman -Qv | grep "Log File" | cut -d ":" -f2)
+pacmanlog=$(pacman -Qv 2>/dev/null | grep "Log File" | cut -d ":" -f2)
 
 case "$1" in
     start)
-    # Check and mount pacman database 
-    stat_busy "Mounting the pacman database"
-    # write to pacman.log
-    echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> Mounting the pacmans database" >> ${pacmanlog}
-    /sbin/e2fsck -p /var/lib/pacman.db >/dev/null
-    if [ $? -gt 1 ]; then
-        stat_fail
-        echo 
-        echo "WARNING: PACMAN DATABASE FILESYSTEM CHECK FAILED, NOT MOUNTED" 
-        echo 
+        # Check and mount pacman database 
+	stat_busy "Mounting the pacman database"
         # write to pacman.log
-        echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> WARNING: Pacman database filesystem check failed, not mounted!" >> ${pacmanlog}
-    else
-        mount -o loop -t ext2 /var/lib/pacman.db /var/lib/pacman
-        if [ $? -gt 0 ]; then
+	echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> Mounting the pacmans database" >> $pacmanlog
+	/sbin/e2fsck -p /var/lib/pacman.db >/dev/null
+	if [ $? -gt 1 ]; then
             stat_fail
             echo 
-            echo "WARNING: MOUNTING PACMAN DATABASE FAILED" 
+            echo "WARNING: PACMAN DATABASE FILESYSTEM CHECK FAILED, NOT MOUNTED" 
             echo 
             # write to pacman.log
-            echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> WARNING: Mounting of the pacman database failed!" >> ${pacmanlog}
-        else
-            stat_done
-            add_daemon pacmandb
-            # write to pacman.log
-            echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> Pacman database successfully mounted." >> ${pacmanlog}
-        fi
-    fi
-    ;;
+            echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> WARNING: Pacman database filesystem check failed, not mounted!" >> $pacmanlog
+	else
+            mount -o loop -t ext2 /var/lib/pacman.db /var/lib/pacman
+            if [ $? -gt 0 ]; then
+		stat_fail
+		echo 
+		echo "WARNING: MOUNTING PACMAN DATABASE FAILED" 
+		echo 
+                # write to pacman.log
+		echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> WARNING: Mounting of the pacman database failed!" >> $pacmanlog
+            else
+		stat_done
+		add_daemon pacmandb
+                # write to pacman.log
+		echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> Pacman database successfully mounted." >> $pacmanlog
+            fi
+	fi
+	;;
 
     stop)
-    stat_busy "Unmounting the pacman database"
-    umount /var/lib/pacman >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        # write to pacman.log
-        echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> WARNING: Umounting of the pacman database failed!" >> ${pacmanlog}
-        stat_fail
-    else
-        stat_done
-        rm_daemon pacmandb
-        # write to pacman.log
-        echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> Pacman database successfully unmounted." >> ${pacmanlog}
-    fi
-    ;;
+	stat_busy "Unmounting the pacman database"
+	umount /var/lib/pacman >/dev/null 2>&1
+	if [ $? -ne 0 ]; then
+            # write to pacman.log
+            echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> WARNING: Umounting of the pacman database failed!" >> $pacmanlog
+            stat_fail
+	else
+            stat_done
+            rm_daemon pacmandb
+            # write to pacman.log
+            echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [rc] >> Pacman database successfully unmounted." >> $pacmanlog
+	fi
+	;;
 
     restart)
-    $0 stop
-    sleep 2
-    $0 start
-    ;;
+	$0 stop
+	sleep 2
+	$0 start
+	;;
 
     *)
-    echo "usage: $0 {start|stop|restart}"  
-    ;;
+	echo "usage: $0 {start|stop|restart}"  
+	;;
 esac

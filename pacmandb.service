@@ -1,14 +1,15 @@
 [Unit]
-Description=pacman-cage
+Description=/var/lib/pacman
 DefaultDependencies=no
-Before=shutdown.target local-fs.target
-After=remount-rootfs.service
+After=remount-rootfs.service local-fs.target
+Before=shutdown.service
+
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/etc/rc.d/pacmandb start
-ExecStop=/etc/rc.d/pacmandb stop
+ExecStart=/bin/bash -c '/sbin/e2fsck -p /var/lib/pacman.db >/dev/null; [ $? -eq 1 -o $? -eq 0 ] && /bin/mount -o loop,relatime,sync -t ext2 /var/lib/pacman.db /var/lib/pacman'
+ExecStop=/bin/umount /var/lib/pacman.db
 
 [Install]
 WantedBy=local-fs.target
