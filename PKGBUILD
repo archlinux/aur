@@ -1,16 +1,22 @@
 # Contributor: Javier ‘Phrodo_00‘ Aravena <phrodo.00@gmail.com>
 # Mantainer: iosonofabio Fabio Zanini <fabio.zanini@fastmail.fm>
 pkgname=bzr-gtk
-pkgver=0.103.0
+pkgver=0.104.0
 pkgrel=1
 pkgdesc="Plugin for Bazaar that aims to provide GTK+ interfaces to most Bazaar operations."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://bazaar-vcs.org/bzr-gtk"
 license=('GPL')
-depends=('python2-pygobject2' 'bzr>=2.1' 'bzr<=2.5' 'pycairo' 'libglade')
+depends=('python2>=2.4' 'python2-gobject2' 'bzr>=2' 'bzr<3')
+optdepends=(
+    'python2-cairo: Graphs in the visualisation tool'
+    'pygtksourceview2: Syntax-highlighted diffs'
+    'python2-nautilus: Nautilus integration'
+    # 'pywin32: Olive'
+)
 makedepends=('bzr-stats')
 source=("https://launchpad.net/bzr-gtk/gtk3/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a794ad2faa1f7708a37e3a5885ddf8ca')
+md5sums=('5e6694b57662c338d5eb2d85d4cd2357')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
