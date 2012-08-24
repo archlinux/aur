@@ -1,7 +1,7 @@
 pkgbase = postgresql-testing
 	pkgdesc = Beta version of the PostgreSQL database (includes both server and libs)
 	pkgver = 9.2beta3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.postgresql.org/developer/alpha
 	install = postgresql.install
 	arch = i686
@@ -25,11 +25,15 @@ pkgbase = postgresql-testing
 	source = postgresql.confd
 	source = postgresql.pam
 	source = postgresql.logrotate
+	source = postgresql.service
+	source = postgresql-initdb
 	md5sums = 5164fce3a6c46dd7f6ef188a25ac0bc9
 	md5sums = 1ddd1df8010549f237e7983bb326025e
 	md5sums = a54d09a20ab1672adf08f037df188d53
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
 	md5sums = d28e443f9f65a5712c52018b84e27137
+	md5sums = 1ec1fbf1ce998324248c543e6cc2c5e6
+	md5sums = 1488a98a5d5d96a04416e4f5872223bf
 
 pkgname = postgresql-testing
 

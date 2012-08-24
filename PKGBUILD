@@ -2,7 +2,7 @@
 
 pkgname=postgresql-testing
 pkgver=9.2beta3
-pkgrel=1
+pkgrel=2
 pkgdesc="Beta version of the PostgreSQL database (includes both server and libs)"
 arch=(i686 x86_64)
 license=('custom:PostgreSQL')
@@ -15,7 +15,8 @@ optdepends=('python2: PL/Python procedure support')
 conflicts=('postgresql-libs' 'postgresql')
 provides=("postgresql-libs=$pkgver" "postgresql=$pkgver")
 source=("http://ftp.postgresql.org/pub/source/v$pkgver/postgresql-$pkgver.tar.bz2"
-        postgresql.rcd postgresql.confd postgresql.pam postgresql.logrotate)
+        postgresql.rcd postgresql.confd postgresql.pam postgresql.logrotate
+		postgresql.service postgresql-initdb)
 install=postgresql.install
 
 build() {
@@ -47,8 +48,15 @@ package() {
   make -C contrib
   make -C contrib DESTDIR=$pkgdir install
 
-  install -D -m755 $srcdir/postgresql.rcd $pkgdir/etc/rc.d/postgresql
+  # license
   install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  # install launch script
+  install -D -m755 $srcdir/postgresql.rcd $pkgdir/etc/rc.d/postgresql
+  install -D -m644 $srcdir/postgresql.service $pkgdir/usr/lib/systemd/system/postgresql.service
+  install -D -m755 $srcdir/postgresql-initdb $pkgdir/usr/lib/systemd/scripts/postgresql-initdb
+
+  # install conf files
   install -D -m644 $srcdir/postgresql.confd $pkgdir/etc/conf.d/postgresql
   install -D -m644 $srcdir/postgresql.pam $pkgdir/etc/pam.d/postgresql
   install -D -m644 $srcdir/postgresql.logrotate $pkgdir/etc/logrotate.d/postgresql
@@ -57,4 +65,6 @@ md5sums=('5164fce3a6c46dd7f6ef188a25ac0bc9'
          '1ddd1df8010549f237e7983bb326025e'
          'a54d09a20ab1672adf08f037df188d53'
          '96f82c38f3f540b53f3e5144900acf17'
-         'd28e443f9f65a5712c52018b84e27137')
+         'd28e443f9f65a5712c52018b84e27137'
+         '1ec1fbf1ce998324248c543e6cc2c5e6'
+         '1488a98a5d5d96a04416e4f5872223bf')
