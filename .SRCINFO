@@ -1,7 +1,7 @@
 pkgbase = htmlcxx
 	pkgdesc = A simple non-validating css1 and html parser for C++.
 	pkgver = 0.85
-	pkgrel = 2
+	pkgrel = 3
 	url = http://htmlcxx.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = htmlcxx
 	conflicts = htmlcxx
 	conflicts = libhtmlcxx
 	conflicts = libcss_parser
-	source = http://kent.dl.sourceforge.net/project/htmlcxx/htmlcxx/0.85/htmlcxx-0.85.tar.gz
+	source = http://heanet.dl.sourceforge.net/project/htmlcxx/htmlcxx/0.85/htmlcxx-0.85.tar.gz
 	source = missing-header.patch
 	md5sums = dbe13c25b5846eb7cbbfa63d85f00f74
 	md5sums = 6c89882e310e9945fb0f4cdbb1f965bf
