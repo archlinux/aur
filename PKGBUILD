@@ -2,13 +2,12 @@
 
 pkgname=boinc_curses
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="console based boinc-client monitor and controller"
 arch=('i686' 'x86_64')
 url="http://www.oook.cz/bsd/boinc_curses/"
 license=('GPL')
 depends=(boinc)
-source=($pkgname-$pkgver.tar.gz)
 source=("http://www.oook.cz/bsd/$pkgname/$pkgname-$pkgver.tar.bz2")
 
 build() {
