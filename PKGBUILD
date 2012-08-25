@@ -3,24 +3,23 @@
 # Contributor: SeeSchloss <seeschloss@seos.fr>
 
 pkgname=unoconv
-pkgver=0.4
-pkgrel=4
+pkgver=0.5
+pkgrel=1
 pkgdesc="Libreoffice-based document converter"
 depends=('python2' 'java-runtime' 'libreoffice-common')
 makedepends=('asciidoc')
 arch=('any')
 license=('GPL2')
 url="http://dag.wieers.com/home-made/unoconv"
-source=($url/$pkgname-$pkgver.tar.bz2 python_ldpath_and_doc.patch)
-sha256sums=('29aad1d158989d7c9776a437495a3d67988dbcc0102aa96bcf8b2a9468455d2c'
-            '3805f487729c1e8c81fd0615a9799f58a5910070f5a2273cc118fa6242007611')
+source=($pkgname-$pkgver.zip::https://github.com/dagwieers/unoconv/zipball/$pkgname-$pkgver)
+sha256sums=('5beef3cb723efff188ceba09c63c31ffaa010c154e1961874c7170bf304e3b08')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -Np2 -i "$srcdir/python_ldpath_and_doc.patch"
+    cd dagwieers-$pkgname-???????
+    sed -i '1s/python$/&2/' unoconv
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd dagwieers-$pkgname-???????
     make DESTDIR="$pkgdir" install
 }
