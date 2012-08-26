@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.5
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,15 +18,21 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        'alsa-powersave-3.5.x.patch'
+        'watchdog-3.5.x.patch'
+        'i915-i2c-crash-3.5.x.patch')
+md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
+         '01e0536109d2a06b1701b5051edfcea2'
+         '4eb50449b069bd699d92a290dce76d00'
+         '74c0ce9291ad8aaf26546fe85a1a7d18'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         'c1d58e712112cf8f95e7831012a1e67a'
+         'ae13ed1e92bba07e9b17cf5c8d89683c'
+         'ff4a203dd52e4dfb5d60948bb667d06d')
 
 _kernelname=${pkgbase#linux}
-md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
-         '8e9f9cfd5fbd33ac4b265a4d47949edc'
-         '31dade2f50803beaebf947732f39b51e'
-         '34bf41248c2ab68ddb0a7b3b5f4a68ce'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662')
 
 build() {
   cd "${srcdir}/${_srcname}"
@@ -36,6 +42,18 @@ build() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # fix alsa powersave bug, probably fixed in 3.5.4
+  # https://bugs.archlinux.org/task/31255
+  patch -Np1 -i  "${srcdir}/alsa-powersave-3.5.x.patch"
+
+  # fix broken watchdog
+  # https://bugzilla.kernel.org/show_bug.cgi?id=44991
+  patch -Np1 -i "${srcdir}/watchdog-3.5.x.patch"
+
+  # fix i915 i2c crash
+  # https://bugzilla.kernel.org/show_bug.cgi?id=46381
+  patch -Np1 -i "${srcdir}/i915-i2c-crash-3.5.x.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
