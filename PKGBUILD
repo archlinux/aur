@@ -18,7 +18,7 @@ conflicts=('slic3r-git')
 source=('http://dl.slic3r.org/linux/slic3r-linux-x86_64-0-9-1.tar.gz'
 				'slic3r.desktop')
 md5sums=('1f18badd44021ad19e2fec775f818c86'
-         'c997a07f658061d29b221cf7fd07ff97')
+         '80b52d89fe5d15ebe0c6aa2fe40fe9b5')
 
 build() {
 	install -d "$pkgdir/opt/$pkgname"
