@@ -1,7 +1,7 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 
 pkgname=pgxnclient
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="Command line tool to interact with the PostgreSQL Extension Network"
 arch=(any)
@@ -21,4 +21,4 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/licenses/$pkgname"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/"
 }
-md5sums=('a27fecfa720ec7435465327a695798bf')
+md5sums=('2fae0a02101a0e7ddc0b0674c865bffa')
