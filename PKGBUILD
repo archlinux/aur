@@ -1,8 +1,8 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 
 pkgname=postgresql-testing
-pkgver=9.2beta3
-pkgrel=2
+pkgver=9.2beta4
+pkgrel=1
 pkgdesc="Beta version of the PostgreSQL database (includes both server and libs)"
 arch=(i686 x86_64)
 license=('custom:PostgreSQL')
@@ -61,7 +61,7 @@ package() {
   install -D -m644 $srcdir/postgresql.pam $pkgdir/etc/pam.d/postgresql
   install -D -m644 $srcdir/postgresql.logrotate $pkgdir/etc/logrotate.d/postgresql
 }
-md5sums=('5164fce3a6c46dd7f6ef188a25ac0bc9'
+md5sums=('793839df1f8a2bb2e5e3aea98063064c'
          '1ddd1df8010549f237e7983bb326025e'
          'a54d09a20ab1672adf08f037df188d53'
          '96f82c38f3f540b53f3e5144900acf17'
