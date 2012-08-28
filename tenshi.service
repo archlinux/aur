@@ -1,0 +1,8 @@
+[Unit]
+Description=real-time log monitor
+
+[Service]
+ExecStart=/usr/sbin/tenshi -c /etc/tenshi/tenshi.conf -f
+
+[Install]
+WantedBy=multi-user.target

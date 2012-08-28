@@ -3,7 +3,7 @@
 
 pkgname=tenshi
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="real-time log monitor from the Gentoo Linux project"
 url="http://dev.inversepath.com/trac/tenshi"
 arch=(any)
@@ -14,13 +14,15 @@ source=(http://dev.inversepath.com/tenshi/$pkgname-$pkgver.tar.gz
         'rc-script'
         'rc-conf'
         'tenshi.install'
-		'conf.diff')
+        'tenshi.service'
+        'conf.diff')
 backup=(etc/tenshi/tenshi.conf etc/conf.d/tenshi)
 md5sums=('9951f2995c4e08539a60026774da183a'
          '94104e395d33c4f72cb6bbfe3591b7a0'
          '302037a01958993b31988d3f50ee20b1'
          'd8a70806f3a2a498d9d8ef2ecb171ad8'
-		 '451250b1955b14691ca1c7124d1991f2')
+         'da1142f6dc1ca32efbcc3f01c7b16da3'
+         '451250b1955b14691ca1c7124d1991f2')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -35,6 +37,7 @@ package() {
 	make DESTDIR="$pkgdir" docdir=/usr/share/doc/tenshi install
 	install -Dm644 "$srcdir/rc-conf" "$pkgdir/etc/conf.d/tenshi"
 	install -Dm755 "$srcdir/rc-script" "$pkgdir/etc/rc.d/tenshi"
+	install -Dm644 "$srcdir/tenshi.service" "$pkgdir/usr/lib/systemd/system/tenshi.service"
 	install -dm755 "$pkgdir/usr/share/licenses/tenshi"
 	mv "$pkgdir/usr/share/doc/tenshi/LICENSE" "$pkgdir/usr/share/licenses/tenshi/LICENSE"
 	chmod 750 "$pkgdir/etc/tenshi" "$pkgdir/var/lib/tenshi"
