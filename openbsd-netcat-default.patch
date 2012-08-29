@@ -1,7 +1,7 @@
-diff -wbBur libvirt-0.9.7/src/qemu/qemu_migration.c libvirt-0.9.7.my/src/qemu/qemu_migration.c
---- libvirt-0.9.7/src/qemu/qemu_migration.c	2011-10-31 07:46:04.000000000 +0400
-+++ libvirt-0.9.7.my/src/qemu/qemu_migration.c	2011-11-08 15:46:10.000000000 +0400
-@@ -1589,7 +1589,7 @@
+diff -wbBur libvirt-0.10.0.org/src/qemu/qemu_migration.c libvirt-0.10.0/src/qemu/qemu_migration.c
+--- libvirt-0.10.0.org/src/qemu/qemu_migration.c	2012-08-27 06:12:21.000000000 +0400
++++ libvirt-0.10.0/src/qemu/qemu_migration.c	2012-08-29 13:36:23.000000000 +0400
+@@ -1910,7 +1910,7 @@
                                             spec->dest.unix_socket.file);
          } else {
              const char *args[] = {
@@ -10,10 +10,10 @@ diff -wbBur libvirt-0.9.7/src/qemu/qemu_migration.c libvirt-0.9.7.my/src/qemu/qe
              };
              ret = qemuMonitorMigrateToCommand(priv->mon, migrate_flags, args);
          }
-diff -wbBur libvirt-0.9.7/src/remote/remote_driver.c libvirt-0.9.7.my/src/remote/remote_driver.c
---- libvirt-0.9.7/src/remote/remote_driver.c	2011-11-08 07:53:30.000000000 +0400
-+++ libvirt-0.9.7.my/src/remote/remote_driver.c	2011-11-08 15:46:10.000000000 +0400
-@@ -614,7 +614,7 @@
+diff -wbBur libvirt-0.10.0.org/src/remote/remote_driver.c libvirt-0.10.0/src/remote/remote_driver.c
+--- libvirt-0.10.0.org/src/remote/remote_driver.c	2012-08-27 06:12:21.000000000 +0400
++++ libvirt-0.10.0/src/remote/remote_driver.c	2012-08-29 13:36:32.000000000 +0400
+@@ -693,7 +693,7 @@
                                                  username,
                                                  !tty,
                                                  !verify,
@@ -22,10 +22,22 @@ diff -wbBur libvirt-0.9.7/src/remote/remote_driver.c libvirt-0.9.7.my/src/remote
                                                  keyfile,
                                                  sockname)))
              goto failed;
-diff -wbBur libvirt-0.9.7/src/rpc/virnetsocket.c libvirt-0.9.7.my/src/rpc/virnetsocket.c
---- libvirt-0.9.7/src/rpc/virnetsocket.c	2011-11-08 07:53:30.000000000 +0400
-+++ libvirt-0.9.7.my/src/rpc/virnetsocket.c	2011-11-08 15:46:31.000000000 +0400
-@@ -642,7 +642,7 @@
+diff -wbBur libvirt-0.10.0.org/src/rpc/virnetclient.c libvirt-0.10.0/src/rpc/virnetclient.c
+--- libvirt-0.10.0.org/src/rpc/virnetclient.c	2012-08-28 07:44:50.000000000 +0400
++++ libvirt-0.10.0/src/rpc/virnetclient.c	2012-08-29 13:36:38.000000000 +0400
+@@ -469,7 +469,7 @@
+     DEFAULT_VALUE(host, "localhost");
+     DEFAULT_VALUE(port, "22");
+     DEFAULT_VALUE(username, "root");
+-    DEFAULT_VALUE(netcatPath, "nc");
++    DEFAULT_VALUE(netcatPath, "nc.openbsd");
+     DEFAULT_VALUE(knownHostsVerify, "normal");
+ 
+     virBufferEscapeShell(&buf, netcatPath);
+diff -wbBur libvirt-0.10.0.org/src/rpc/virnetsocket.c libvirt-0.10.0/src/rpc/virnetsocket.c
+--- libvirt-0.10.0.org/src/rpc/virnetsocket.c	2012-08-22 14:00:59.000000000 +0400
++++ libvirt-0.10.0/src/rpc/virnetsocket.c	2012-08-29 13:36:44.000000000 +0400
+@@ -698,7 +698,7 @@
          virCommandAddArgList(cmd, "-o", "StrictHostKeyChecking=no", NULL);
  
      if (!netcat)
@@ -34,3 +46,15 @@ diff -wbBur libvirt-0.9.7/src/rpc/virnetsocket.c libvirt-0.9.7.my/src/rpc/virnet
  
      virCommandAddArgList(cmd, nodename, "sh", "-c", NULL);
  
+diff -wbBur libvirt-0.10.0.org/tests/virnetsockettest.c libvirt-0.10.0/tests/virnetsockettest.c
+--- libvirt-0.10.0.org/tests/virnetsockettest.c	2012-08-10 06:26:04.000000000 +0400
++++ libvirt-0.10.0/tests/virnetsockettest.c	2012-08-29 13:36:53.000000000 +0400
+@@ -593,7 +593,7 @@
+ 
+     struct testSSHData sshData7 = {
+         .nodename = "somehost",
+-        .netcat = "nc -4",
++        .netcat = "nc.openbsd -4",
+         .path = "/tmp/socket",
+         .expectOut = "somehost sh -c 'if ''nc -4'' -q 2>&1 | grep \"requires an argument\" >/dev/null 2>&1; then "
+                                          "ARG=-q0;"

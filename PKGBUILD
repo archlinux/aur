@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=0.9.13
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -37,13 +37,13 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	openbsd-netcat-default.patch
 	libvirt-libnl3.patch
 	xdg.patch)
-md5sums=('86cbe53ee662e3b9e8bb0c63c737ba27'
+md5sums=('63ceb65bba07fc7690499d9eb6d2c844'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '8297b1be794a24cc77f66af9380ace59'
          'bc2971dacdbac967fc3474e50affc345'
          '8d98e62915785686b0b6c8c070628392'
-         'b0be50eb9dfe4d133decf23b60880f7d'
+         '456723b41903d3aaa7ec948c1feea265'
          'ba27fbcd989de8d84cfff98326f10c54'
          '9b9fcdbd64d37d84ae73d9da0a7efed7')
 
@@ -57,13 +57,12 @@ build() {
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
-  [ $NOEXTRACT -eq 1 ] || patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
-
-  patch -Np1 -i ${srcdir}/libvirt-libnl3.patch
-  patch -Np1 -i ${srcdir}/xdg.patch
-  aclocal
-  automake --add-missing || true
-  autoreconf
+  patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
+#  patch -Np1 -i ${srcdir}/libvirt-libnl3.patch
+#  patch -Np1 -i ${srcdir}/xdg.patch
+#  aclocal
+#  automake --add-missing || true
+#  autoreconf
 
   export LDFLAGS=-lX11
   export RADVD=/usr/sbin/radvd
