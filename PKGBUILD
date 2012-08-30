@@ -1,6 +1,6 @@
 pkgname=otrs
-pkgver=3.1.7
-itsmver=3.1.4
+pkgver=3.1.10
+itsmver=3.1.6
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -71,21 +71,21 @@ package() {
 }
 md5sums=('ebfeabfba189816c4b10861289406840'
          'f0ae9b90828825382720f4422aa9c81d'
-         '8ec062d87ba84e5bc9eba8055bae686d'
-         '2c5539215b37220692df7b669a84ec52'
-         '948b8268b4f8bb0dcf6875f670a3674c'
-         'b930a1319993c21cd35689a760ac017c'
-         '7df599ad98a12cd34b6cc32ebe915c07'
-         '6b0a25d8c2c1540322f392a393f6d4b7'
-         '0bef432d12e66c256389bedce61bf331'
-         'e32e04216ba0d88ce9b4903e01baf15f')
+         'fdadbc1c8e7a4d62d7e3afbc3c712702'
+         '56ca1566b21aca220b8c404fdcf8f7cb'
+         '8d69c34e3639764f56b76378fb1a7b1f'
+         'a0b5c0086dbdff853883041cae8c8629'
+         '6a4214dad1ed9ec0eb3e908be46f64a8'
+         'a03c0af712d8dabd1c15f209d3a220b7'
+         'c86ccfd1d3de1e1c385accb3cc790262'
+         'fd913c540e0fd2f689ad99b4add07bf2')
 sha1sums=('247719410cfd3b7a89843f2a7ae6820507f2b22d'
           '69bc6abcdcb3df6e67181dc0644d0088007c6d78'
-          '042963f429b93ebdebae82762b2db32fc0d68bde'
-          '9dd9d3d5379afb41c0abeeb50a3af5ec89daf318'
-          '9b4b71f5968805fa193e12165a4df49b1ea38de7'
-          'fc96ee5c9f83f4a2908776adb410fae442dfaf93'
-          '86b731456456fe6e31f078518e9199ed2c70ffde'
-          'df5ecffe64a5af82da2a3fb7c6c7753d053f8c7f'
-          'fc85ba98229f032302c5a70bd6b130865d48152b'
-          '3bcef2630edd850fab98e9e1e84f5625b78c1076')
+          '91fa603052977ffc63948aeb33c22398645ca35b'
+          '84e49f7dbae79f50acdc7f2aefa7f7e7a92da480'
+          '6ef5c495dc5da33ca6768a2c3771bc41d76e3556'
+          'e11a82665515ba82ed220c5b8ed5e56cc201b953'
+          '3fae708ec3b6fb08a2793d50ef2c65443573132d'
+          '5ec817724ba07af4e9c31368a122ed50946b0664'
+          '2a5c5e557d82b20def1e8163aad46a9cbbbe347f'
+          'd54d6e5f3f2e58d559f596f9f8ff7be7e4301840')
