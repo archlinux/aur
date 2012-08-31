@@ -25,16 +25,16 @@ sha512sums=('b30e47f853298e2263159c78ba67cbbc8d94012c66ae0680b0f7344c57d58b524cb
     '833268b42711b04af2028193f62036a7bbb86e736ded6fce5adbc6aedfa366c73f317a0cfe3f275df2fc74f143d1ca7308ad5b7c6636b608d1c899f8caf10e53')
 
 package() { 
-    cd $srcdir/
-    install -Dm755 pacman-cage $pkgdir/usr/bin/pacman-cage
-    install -Dm755 pacman-uncage $pkgdir/usr/bin/pacman-uncage
-    install -Dm755 pacmandb.rc $pkgdir/etc/rc.d/pacmandb
+    cd "$srcdir"/
+    install -Dm755 pacman-cage "$pkgdir"/usr/bin/pacman-cage
+    install -Dm755 pacman-uncage "$pkgdir"/usr/bin/pacman-uncage
+    install -Dm755 pacmandb.rc "$pkgdir"/etc/rc.d/pacmandb
 
     ## Choose one if you wish to install the cron backup script.
     ## You also might want to change the backup dir inside the script.
-    #install -Dm755 backup_pacmandb.cron $pkgdir/etc/cron.hourly/backup_pacmandb
-    #install -Dm755 backup_pacmandb.cron $pkgdir/etc/cron.daily/backup_pacmandb
+    #install -Dm755 backup_pacmandb.cron "$pkgdir"/etc/cron.hourly/backup_pacmandb
+    #install -Dm755 backup_pacmandb.cron "$pkgdir"/etc/cron.daily/backup_pacmandb
 
     ## Uncomment the following line to install the systemd service file.
-    #install -Dm644 pacmandb.service $pkgdir/lib/systemd/system/pacmandb.service
+    #install -Dm644 pacmandb.service "$pkgdir"/lib/systemd/system/pacmandb.service
 }
