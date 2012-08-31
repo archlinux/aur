@@ -1,7 +1,7 @@
 pkgbase = lilypond-docs
 	pkgdesc = Offline documentation for lilypond
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lilypond.org
 	arch = any
 	license = GPL
