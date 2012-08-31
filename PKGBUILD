@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=21.0.1180.81
-pkgrel=2
+pkgver=21.0.1180.89
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -26,7 +26,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium-20.0.1132.57-bison-2.6-fix.patch
         chromium-21.0.1180.57-fix-crash-in-task-queue.patch
         chromium-ppapi-r0.patch)
-sha256sums=('f436e0383ee2a52b483ed4074d3ad067a51745545e159dfe32a4f77ededfbaac'
+sha256sums=('16cca8d90a3369840f79a6f06d11756515fc8a4c3595060778dcab21e59235c5'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
