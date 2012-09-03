@@ -1,37 +1,32 @@
 #!/bin/bash
-     
-    if [ -e /sys/fs/cgroup/systemd ]; then
-            case "$2" in
-                    up)
-                            systemctl start systemd-timedated-ntp.target
-                    ;;
-                    vpn-up)
-                            systemctl start systemd-timedated-ntp.target
-                    ;;
-                    down)
-                            systemctl stop systemd-timedated-ntp.target
-                    ;;
-                    vpn-down)
-                            systemctl stop systemd-timedated-ntp.target
-                    ;;
-            esac
-    else
-            if [ -e "/etc/rc.d/ntpd" ]; then
-                    case "$2" in
-                            up)
-                                    /etc/rc.d/ntpd start
-                            ;;
-                            vpn-up)
-                                    /etc/rc.d/ntpd start
-                            ;;
-                            down)
-                                    /etc/rc.d/ntpd stop
-                            ;;
-                            vpn-down)
-                                    /etc/rc.d/ntpd stop
-                            ;;
-                    esac
-            fi
-     
-    fi
 
+timedate1() {
+    gdbus call \
+        --system \
+        --object-path /org/freedesktop/timedate1 \
+        --dest org.freedesktop.timedate1 \
+        --method org.freedesktop.timedate1.SetNTP "$@"
+}
+
+if [ -e /sys/fs/cgroup/systemd ]; then
+        case "$2" in
+                up)
+                        timedate1 true false
+                ;;
+                down)
+                        timedate1 false false
+                ;;
+        esac
+else
+        if [ -e "/etc/rc.d/ntpd" ]; then
+                case "$2" in
+                        up)
+                                rc.d start ntpd
+                        ;;
+                        down)
+                                rc.d stop ntpd
+                        ;;
+                esac
+        fi
+
+fi
