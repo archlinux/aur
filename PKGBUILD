@@ -7,10 +7,10 @@
 pkgname=pacman-cage
 pkgver=2.9.8.3
 pkgrel=1
-pkgdesc="Creates a loopbacked filesystem to give better response times when using pacman." 
+pkgdesc="Creates a loopbacked filesystem to give better response times when using pacman."
 arch=(any)
-url="http://bbs.archlinux.org/viewtopic.php?id=20385" 
-license=(GPL) 
+url="http://bbs.archlinux.org/viewtopic.php?id=20385"
+license=(GPL)
 install=$pkgname.install
 source=($pkgname pacman-uncage pacmandb.rc backup_pacmandb.cron pacmandb.service)
 sha256sums=('33dd7f3cfeb624ba72010aea2d69120899923d4e1e370b3e60224f69cbe620aa'
@@ -24,7 +24,7 @@ sha512sums=('b30e47f853298e2263159c78ba67cbbc8d94012c66ae0680b0f7344c57d58b524cb
     '3f45e140979040373c82eeb4a63cf138d776e11e461f1268dbb736e780f82a4b189134d36bd4dae32ce81d3c130f0f3aa554cb3f48b16d0b676ff4ffd6eeb4bb'
     '833268b42711b04af2028193f62036a7bbb86e736ded6fce5adbc6aedfa366c73f317a0cfe3f275df2fc74f143d1ca7308ad5b7c6636b608d1c899f8caf10e53')
 
-package() { 
+package() {
     cd "$srcdir"/
     install -Dm755 pacman-cage "$pkgdir"/usr/bin/pacman-cage
     install -Dm755 pacman-uncage "$pkgdir"/usr/bin/pacman-uncage
