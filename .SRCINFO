@@ -1,0 +1,13 @@
+pkgbase = aov-html2epub-git
+	pkgdesc = Minimal HTML to EPUB format converter.
+	pkgver = 20120903
+	pkgrel = 1
+	url = https://github.com/angelortega/aov-html2epub
+	arch = any
+	license = public domain
+	makedepends = git
+	depends = bash
+	provides = aov-html2epub
+
+pkgname = aov-html2epub-git
+
