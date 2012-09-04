@@ -1,10 +1,10 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
-# Maintainer: Mateusz Herych <heniekk@gmail.com>
+# Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=1.0
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='http://musicbrainz.org/doc/MusicBrainz_Picard'
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('python2-pyqt' 'mutagen' 'libofa' 'ffmpeg')
 optdepends=('libdiscid: CD lookup'
             'chromaprint: fingerprinting')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('abbd606a89b60ed8c948705d47ce1ae1a90f866a')
+sha1sums=('8f4a65a2a2df2f371b907fdea7958c5bd0de6bd7')
 
 install=install
 
