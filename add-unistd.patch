@@ -1,0 +1,45 @@
+diff -aur stopmotion-0.6.2.orig/src/application/externalchangemonitor.cpp stopmotion-0.6.2/src/application/externalchangemonitor.cpp
+--- stopmotion-0.6.2.orig/src/application/externalchangemonitor.cpp	2008-07-25 06:59:03.000000000 -0400
++++ stopmotion-0.6.2/src/application/externalchangemonitor.cpp	2012-09-04 08:53:30.698395845 -0400
+@@ -27,6 +27,8 @@
+ #include <inotifytools/inotifytools.h>
+ #include <inotifytools/inotify.h>
+ 
++#include <unistd.h>
++
+ /**
+  * @todo uniform most of the getenv("home") calls so that it is done once
+  * and pasted around.
+diff -aur stopmotion-0.6.2.orig/src/domain/animation/scene.cpp stopmotion-0.6.2/src/domain/animation/scene.cpp
+--- stopmotion-0.6.2.orig/src/domain/animation/scene.cpp	2008-07-25 06:59:03.000000000 -0400
++++ stopmotion-0.6.2/src/domain/animation/scene.cpp	2012-09-04 08:53:30.841727919 -0400
+@@ -20,6 +20,7 @@
+ #include "scene.h"
+ #include <sstream>
+ #include <cstring>
++#include <unistd.h>
+ 
+ Scene::Scene()
+ {
+diff -aur stopmotion-0.6.2.orig/src/presentation/frontends/qtfrontend/mainwindowgui.cpp stopmotion-0.6.2/src/presentation/frontends/qtfrontend/mainwindowgui.cpp
+--- stopmotion-0.6.2.orig/src/presentation/frontends/qtfrontend/mainwindowgui.cpp	2008-07-25 06:59:03.000000000 -0400
++++ stopmotion-0.6.2/src/presentation/frontends/qtfrontend/mainwindowgui.cpp	2012-09-04 08:53:30.951727867 -0400
+@@ -45,6 +45,7 @@
+ 
+ #include <cstdlib>
+ #include <iostream>
++#include <unistd.h>
+ 
+ using namespace std;
+ using namespace Qt;
+diff -aur stopmotion-0.6.2.orig/src/technical/projectserializer.cpp stopmotion-0.6.2/src/technical/projectserializer.cpp
+--- stopmotion-0.6.2.orig/src/technical/projectserializer.cpp	2008-07-25 06:59:03.000000000 -0400
++++ stopmotion-0.6.2/src/technical/projectserializer.cpp	2012-09-04 08:53:31.068394471 -0400
+@@ -28,6 +28,7 @@
+ #include <libgen.h>
+ #include <stdlib.h>
+ #include <cstring>
++#include <unistd.h>
+ 
+ const char ProjectSerializer::imageDirectory[] = "images/";
+ const char ProjectSerializer::soundDirectory[] = "sounds/";
