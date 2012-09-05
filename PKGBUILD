@@ -3,7 +3,7 @@
 # Contributor: Erdbeerkaese <erdbeerkaese underscore arch at gmail dot com>
 
 pkgname=sparkleshare
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
@@ -13,12 +13,8 @@ depends=('webkit-sharp' 'notify-sharp' 'curl' 'git' 'openssh' 'desktop-file-util
 makedepends=('intltool' 'gnome-doc-utils' 'python2-nautilus')
 optdepends=('python2-nautilus: Nautilus extension')
 install=$pkgname.install
-source=(https://github.com/downloads/hbons/SparkleShare/$pkgname-linux-$pkgver.tar.gz
-        fix-event-log.patch
-        fix-github-weblink.patch)
-md5sums=('58459e77635dd594baeb4a7a67f6333e'
-         '50bd9df0ebeeda784be503f2fdccc66e'
-         '97b6f056c642f01c76fcf3297621166d')
+source=(https://github.com/downloads/hbons/SparkleShare/$pkgname-$pkgver.tar.gz)
+md5sums=('bdf78c6f44ca174935ac0b9984f3be33')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
