@@ -2,7 +2,7 @@
 # Maintainer: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ replaces=('openchrome' 'xf86-video-via')
 options=('!libtool' '!emptydirs' '!makeflags')
 conflicts=('xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'xorg-server<1.11.99.902' 'unichrome-dri')
 source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('6916be0deaff4a07974590dcef1bc37a1a59e5df')
+sha1sums=('89e56dcfe851345f72c61a95b4fa5ab6ad7e0d83')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
