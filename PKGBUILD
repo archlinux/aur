@@ -2,6 +2,7 @@ pkgbase=linux-linode
 pkgname=${pkgbase}
 _kernelname=${pkgname#linux}
 _basekernel=3.5
+_srcname=linux-3.5
 pkgver=${_basekernel}
 pkgrel=1
 arch=(x86_64)
@@ -9,7 +10,7 @@ url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.5.tar.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 #        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config.x86_64'
         'menu.lst'
@@ -29,7 +30,7 @@ backup=(etc/mkinitcpio.d/${pkgname}.preset)
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
 #  patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   cp "${srcdir}/config.x86_64" ./.config
@@ -45,7 +46,7 @@ build() {
 
 package_linux-linode() {
   KARCH=x86
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
   _kernver="$(make kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make INSTALL_MOD_PATH="${pkgdir}" modules_install
