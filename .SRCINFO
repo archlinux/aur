@@ -1,6 +1,6 @@
 pkgbase = linux-linode
 	pkgdesc = Kernel for Arch Linux on Linode
-	pkgver = 3.5
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/yardenac/linux-linode
 	install = linux-linode.install

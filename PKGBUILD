@@ -1,8 +1,8 @@
 pkgbase=linux-linode
-_kernelname=${pkgbase#linux}
 _basekernel=3.5
-_srcname=linux-3.5
-pkgver=${_basekernel}
+_kernelname=${pkgbase#linux}
+_srcname=linux-${_basekernel}
+pkgver=${_basekernel}.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/yardenac/linux-linode"
