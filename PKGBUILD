@@ -35,20 +35,21 @@ build() {
   cp "${srcdir}/config.x86_64" ./.config
   sed -i '2iexit 0' scripts/depmod.sh
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+  sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|g" ./.config
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
   make prepare
 #  msg "Stopping build"; return 1
   CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   CXXFLAGS=${CXXFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
-  ionice -c 3 nice -n 19 make ${MAKEFLAGS} bzImage modules
+  ionice -c 3 nice -n 19 make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 package_linux-linode() {
   KARCH=x86
   cd "${srcdir}/${_srcname}"
-  _kernver="$(make kernelrelease)"
+  _kernver="$(make LOCALVERSION= kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
-  make INSTALL_MOD_PATH="${pkgdir}" modules_install
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
   install -D -m644 vmlinux "${pkgdir}/usr/src/linux-${_kernver}/vmlinux"
   install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
