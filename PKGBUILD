@@ -1,6 +1,6 @@
-pkgbase=linux-linode
+pkgname=linux-linode
 _basekernel=3.5
-_kernelname=${pkgbase#linux}
+_kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
 pkgver=${_basekernel}.0
 pkgrel=1
@@ -13,7 +13,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 #        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config.x86_64'
         'menu.lst'
-        "${pkgbase}.preset"
+        "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
          '3cd625b0194470350f6c72a37f7cfb34'
@@ -25,8 +25,8 @@ depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(kernel26 linux)
 conflicts=(kernel26 linux grub grub-legacy)
 replaces=(kernel26 linux)
-backup=(etc/mkinitcpio.d/${pkgbase}.preset)
-install=${pkgbase}.install
+backup=(etc/mkinitcpio.d/${pkgname}.preset)
+install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${_srcname}"
@@ -50,18 +50,18 @@ package_linux-linode() {
   _kernver="$(make LOCALVERSION= kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgname}"
   install -D -m644 vmlinux "${pkgdir}/usr/src/linux-${_kernver}/vmlinux"
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/${pkgname}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${pkgbase}.install"
+    -i "${startdir}/${pkgname}.install"
   sed \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgname}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   rm -rf "${pkgdir}/lib/firmware"
   find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
