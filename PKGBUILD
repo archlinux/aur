@@ -38,7 +38,7 @@ build() {
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
   make prepare
-#  return 1
+#  msg "Stopping build"; return 1
   CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   CXXFLAGS=${CXXFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   ionice -c 3 nice -n 19 make ${MAKEFLAGS} bzImage modules
