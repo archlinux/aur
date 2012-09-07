@@ -1,7 +1,7 @@
 pkgbase = linux-linode
 	pkgdesc = Kernel for Arch Linux on Linode
 	pkgver = 3.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yardenac/linux-linode
 	install = linux-linode.install
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = linux-linode
 	source = change-default-console-loglevel.patch
 	md5sums = 24153eaaa81dedc9481ada8cd9c3b83d
 	md5sums = 01e0536109d2a06b1701b5051edfcea2
-	md5sums = d6b36a668a935f8557d999d6ed82f325
+	md5sums = e344b46a81404a8359c15283b513820f
 	md5sums = d01f2350ec9f92e2eabcde0f11be24f2
 	md5sums = ee66f3cd0c5bc0ba0f65499784d19f30
 	md5sums = 9d3c56a4b999c8bfbd4018089a62f662
