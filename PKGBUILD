@@ -17,7 +17,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
          '01e0536109d2a06b1701b5051edfcea2'
-         'e344b46a81404a8359c15283b513820f'
+         '5658f8bf82cd5b48e4bb5a04297d8dca'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
