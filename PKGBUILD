@@ -162,11 +162,11 @@ _package() {
   mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
   echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
 
-  # move module tree /lib -> /usr/lib
-  mv "$pkgdir/lib" "$pkgdir/usr"
-
   # Now we call depmod...
   depmod -b "$pkgdir" -F System.map "$_kernver"
+
+  # move module tree /lib -> /usr/lib
+  mv "$pkgdir/lib" "$pkgdir/usr"
 }
 
 _package-headers() {
