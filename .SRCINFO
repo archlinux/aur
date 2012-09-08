@@ -10,7 +10,7 @@ pkgbase = openmw-git
 	makedepends = cmake
 	makedepends = boost>=1.5.0
 	depends = openal
-	depends = ogre>=1.8.0-3
+	depends = ogre=1.8.1
 	depends = mygui>=3.2.0-2
 	depends = bullet>=2.8.0
 	depends = mpg123
