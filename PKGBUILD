@@ -5,7 +5,7 @@
 # Contributor: wain <wain@archlinux.fr>
 
 pkgname=pacman-cage
-pkgver=2.9.8.3
+pkgver=2.9.9
 pkgrel=1
 pkgdesc="Creates a loopbacked filesystem to give better response times when using pacman."
 arch=(any)
@@ -13,19 +13,19 @@ url="http://bbs.archlinux.org/viewtopic.php?id=20385"
 license=(GPL)
 install=$pkgname.install
 source=($pkgname pacman-uncage pacmandb.rc backup_pacmandb.cron pacmandb.service)
-sha256sums=('33dd7f3cfeb624ba72010aea2d69120899923d4e1e370b3e60224f69cbe620aa'
-    'b48630fddf58cbb41511e4ed63e72a0f7e3055c9a7ac1ce8f19d49807949c471'
-    '888886ba0d6c80172970ad8d06f245395fb5318cc96e2d7548e9a2247fe067f4'
+sha256sums=('1b6ac88496e134398c5ee3ac0d476f6ada26b91ad6f5234a73e73c0fde6906f5'
+    '9128803cce031803f0249f2948440e69c9c80832d6ad31a7c1bc8d5b8f0cfe4f'
+    'db04321ebd1198a8422b023b3195c29c9ed1f8c9811e1b9ab83454913ff7e2e7'
     'c4476eb20edf4ba88e06bf25d47c575c7567d431a60aa6d6d6b8a7107f633987'
-    'b6f9505c8665fdfce80c71ffa10d5bc9e2f6198925285c1fd3f7699f04aa6edb')
-sha512sums=('b30e47f853298e2263159c78ba67cbbc8d94012c66ae0680b0f7344c57d58b524cb33f30ba70163e6d9378a32f05a425f1ba4e18f53ebc05c0a2b092c227b38c'
-    'cfc4bc4b66724eeacd2e810c2dee9366344a6f96eea262ce8383b03c504d5c0272727b241424f9ac578d6d660b41875fcbce996f733e8454e574d5f2a871dee0'
-    '9c5c937e164846c12d79b211d50399a1d9af8b291cf9973a83fa7e5a35d25b04d02fbb9c74869f29c26d98a19a17e2f6fa8c7498c282c186af7fa5ef35a1c1ca'
+    '861f7569cc4c5c21d0415cfd44187bc464ae80e2202c4981c1fd7e19fbca9d72')
+sha512sums=('7776810ee584c2ddb5dc330552862f96b29f6a3c8969c7db273a5f7d6c9a2fcba19d104b19dec23813b3b19ba4da72177ca249c00b079a47f501d606e7f3ebf8'
+    'd8c4308441a882560f4b8ceed23f75ff63204103a28086a9778fd28ab3ee2eece25ecc6ee1c75a3e3ee6af32461550834fd175771b7a66206267ce44eb2866bc'
+    '68b464b4777ad443e3d3c295d361173099418b66617d054d0a8b4e1bd9a9906ac4855b8e8ffb5b46a2d101696cd2127d3173fa9d1940be6e17bf48d9b6db61fe'
     '3f45e140979040373c82eeb4a63cf138d776e11e461f1268dbb736e780f82a4b189134d36bd4dae32ce81d3c130f0f3aa554cb3f48b16d0b676ff4ffd6eeb4bb'
-    '833268b42711b04af2028193f62036a7bbb86e736ded6fce5adbc6aedfa366c73f317a0cfe3f275df2fc74f143d1ca7308ad5b7c6636b608d1c899f8caf10e53')
+    '0c78094aa69abfb5d409a1ee98f4241ddfc6cf7c73b1ccae01df21b37b72970d6ad424d1bb983ae77992b13608b8adee10b3f689b3fd037d3f0638c5d9806d11')
 
 package() {
-    cd "$srcdir"/
+    cd "$srcdir"
     install -Dm755 pacman-cage "$pkgdir"/usr/bin/pacman-cage
     install -Dm755 pacman-uncage "$pkgdir"/usr/bin/pacman-uncage
     install -Dm755 pacmandb.rc "$pkgdir"/etc/rc.d/pacmandb

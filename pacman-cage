@@ -1,144 +1,137 @@
-#!/bin/bash 
-# 
-#   pacman-cage 
-# 
-#   Copyright (c) 2002-2006 by Andrew Rose <rose.andrew@gmail.com> 
-#   I used Judds pacman-optimise as a framework. 
-# 
-#   This program is free software; you can redistribute it and/or modify 
-#   it under the terms of the GNU General Public License as published by 
-#   the Free Software Foundation; either version 2 of the License, or 
-#   (at your option) any later version. 
-# 
-#   This program is distributed in the hope that it will be useful, 
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of 
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-#   GNU General Public License for more details. 
-# 
-#   You should have received a copy of the GNU General Public License 
-#   along with this program; if not, write to the Free Software 
-#   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
-#   USA. 
-# 
+#!/bin/bash
+#
+#   pacman-cage
+#
+#   Copyright (c) 2002-2006 by Andrew Rose <rose.andrew@gmail.com>
+#   I used Judds pacman-optimise as a framework.
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+#   USA.
+#
 
-myver='2.9.8.3' 
-dbroot="/var/lib/pacman" 
-pacmandb="/var/lib/pacman.db" 
+myver='2.9.9'
+dbroot="/var/lib/pacman"
+pacmandb="/var/lib/pacman.db"
 pacmanlog=$(pacman -Qv | grep "Log File" | cut -d ":" -f2)
 
-usage() { 
-        echo "pacman-cage $myver" 
-        echo "usage: $0 [pacman_db_root]" 
-        echo 
-        echo "pacman-cage creates a loopbacked filesystem in a contigious file." 
-        echo "This will give better response times when using pacman" 
-        echo 
-} 
+usage() {
+        echo "pacman-cage $myver"
+        echo "usage: $0 [pacman_db_root]"
+        echo
+        echo "pacman-cage creates a loopbacked filesystem in a contigious file."
+        echo "This will give better response times when using pacman"
+        echo
+}
 
-die() { 
-        echo "pacman-cage: $*" >&2 
-        exit 1 
-} 
+die() {
+        echo "pacman-cage: $*" >&2
+        exit 1
+}
 
-die_r() { 
-        rm -f /tmp/pacman.lck 
-        die $* 
-} 
+die_r() {
+        rm -f /tmp/pacman.lck
+        die $*
+}
 
-if [ "$1" != "" ]; then 
-        if [ "$1" = "-h" -o "$1" = "--help" ]; then 
-                usage 
-                exit 0 
-        fi 
-        dbroot=$1 
-fi 
+if [[ "$1" != "" ]]; then
+        if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+                usage
+                exit 0
+        fi
+        dbroot=$1
+fi
 
-if [ $(id -u) != 0 ]; then 
-        die "You must be root to cage the database" 
-fi 
+if [[ $(id -u) != 0 ]]; then
+        die "You must be root to cage the database"
+fi
 
 # added by wain: make sure kernel support loop device
 if ! zcat /proc/config.gz | grep "BLK_DEV_LOOP=\(y\|m\)" >/dev/null; then
-	die "please enable loop device support in kernel (BLK_DEV_LOOP=y)" 
+        die "please enable loop device support in kernel (BLK_DEV_LOOP=y)"
 fi
 
-# make sure pacman isn't running 
-if [ -f /tmp/pacman.lck ]; then 
-        die "Pacman lockfile was found.  Cannot run while pacman is running." 
-fi 
-# make sure pacman.db hasnt already been made 
-if [ -f $pacmandb ]; then 
-        die "$pacmandb already exists!." 
-fi 
+# make sure pacman isn't running
+[[ -f /tmp/pacman.lck ]] && die "Pacman lockfile was found.  Cannot run while pacman is running."
+# make sure pacman.db hasnt already been made
+[[ -f $pacmandb ]] && die "$pacmandb already exists!"
+[[ ! -d $dbroot ]] && die "$dbroot does not exist or is not a directory."
 
-if [ ! -d $dbroot ]; then 
-        die "$dbroot does not exist or is not a directory" 
-fi 
+# don't let pacman run while we do this
+touch /tmp/pacman.lck
 
-# don't let pacman run while we do this 
-touch /tmp/pacman.lck 
-  
 # write to pacman.log
 echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Starting and preparing pacman database caging process ..." >> ${pacmanlog}
 
-# step 1: sum the old db 
-echo "==> md5sum'ing the old database..." 
-find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.old 
+# step 1: sum the old db
+echo "==> md5sum'ing the old database..."
+find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.old
 
-echo "==> creating pacman.db loopback file..." 
-dd if=/dev/zero of=$pacmandb bs=1M count=150 > /dev/null 2>&1 
+echo "==> creating pacman.db loopback file..."
+dd if=/dev/zero of=$pacmandb bs=1M count=150 > /dev/null 2>&1
 
-echo "==> creating ext2 -O dir_index -b 1024 on $pacmandb..." 
+echo "==> creating ext2 -O dir_index -b 1024 on $pacmandb..."
 mkfs.ext2 -F -O dir_index -b 1024 -m 0 $pacmandb > /dev/null 2>&1
-        
-echo "==> creating temporary mount point /mnt/tmp-pacman.." 
-mkdir /mnt/tmp-pacman 
 
-echo "==> mounting pacman.db to temporary mount point..." 
-mount -o loop $pacmandb /mnt/tmp-pacman 
+echo "==> creating temporary mount point /mnt/tmp-pacman.."
+mkdir /mnt/tmp-pacman
 
-echo "==> copying pacman database to temporary mount point..." 
-cp -a /var/lib/pacman/. /mnt/tmp-pacman 
+echo "==> mounting pacman.db to temporary mount point..."
+mount -o loop $pacmandb /mnt/tmp-pacman
 
-echo "==> unmounting temporary mount point..." 
-umount /mnt/tmp-pacman 
+echo "==> copying pacman database to temporary mount point..."
+cp -a /var/lib/pacman/. /mnt/tmp-pacman
 
-echo "==> removing temporary mount point..." 
-rmdir /mnt/tmp-pacman 
-        
-echo "==> moving old /var/lib/pacman to /var/lib/pacman.bak..." 
+echo "==> unmounting temporary mount point..."
+umount /mnt/tmp-pacman
+
+echo "==> removing temporary mount point..."
+rmdir /mnt/tmp-pacman
+
+echo "==> moving old /var/lib/pacman to /var/lib/pacman.bak..."
 [[ -d /var/lib/pacman.bak ]] && rm -fr /var/lib/pacman.bak
-mv /var/lib/pacman /var/lib/pacman.bak 
-        
-echo "==> creating new pacman db mount point @ $dbroot..." 
-mkdir $dbroot 
+mv /var/lib/pacman /var/lib/pacman.bak
 
-echo "==> Mounting new pacman db..." 
-mount -o loop $pacmandb $dbroot 
+echo "==> creating new pacman db mount point @ $dbroot..."
+mkdir $dbroot
 
-echo "==> md5sum'ing the new database..." 
-find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.new 
+echo "==> Mounting new pacman db..."
+mount -o loop $pacmandb $dbroot
 
-echo "==> checking integrity..." 
-diff /tmp/pacsums.old /tmp/pacsums.new >/dev/null 2>&1 
-if [ $? -ne 0 ]; then 
-        # failed, move the old one back into place 
-        umount $dbroot 
-        rm $pacmandb 
-        mv $dbroot.bak $dbroot 
+echo "==> md5sum'ing the new database..."
+find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.new
+
+echo "==> checking integrity..."
+diff /tmp/pacsums.old /tmp/pacsums.new >/dev/null 2>&1
+if [[ $? != 0 ]]; then
+        # failed, move the old one back into place
+        umount $dbroot
+        rm $pacmandb
+        mv $dbroot.bak $dbroot
         echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Something went wrong. Old database was restored." >> ${pacmanlog}
-        die_r "integrity check FAILED, reverting to old database" 
-fi 
+        die_r "integrity check FAILED, reverting to old database"
+fi
 
 # Replaced by wain: mount is now in /etc/rc.d/pacmandb daemon
-#echo "==> Updating /etc/fstab to reflect changes..." 
-#echo "$pacmandb $dbroot ext2 loop,defaults 0 0" >> /etc/fstab 
-  
-rm -f /tmp/pacman.lck /tmp/pacsums.old /tmp/pacsums.new 
-  
+#echo "==> Updating /etc/fstab to reflect changes..."
+#echo "$pacmandb $dbroot ext2 loop,defaults 0 0" >> /etc/fstab
+
+rm -f /tmp/pacman.lck /tmp/pacsums.old /tmp/pacsums.new
+
 echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Pacman database has been caged." >> ${pacmanlog}
-echo 
-echo "Finished.  Your pacman database has been caged!.  May the speedy pacman be with you." 
-echo 
+echo
+echo "Finished.  Your pacman database has been caged!.  May the speedy pacman be with you."
+echo
 
 exit 0

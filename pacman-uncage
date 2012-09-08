@@ -1,60 +1,60 @@
-#!/bin/bash 
-# 
-#   pacman-uncage 
-# 
-#   Copyright (c) 2002-2006 by Andrew Rose <rose.andrew@gmail.com> 
-#   I used Judds pacman-optimise as a framework. 
-# 
-#   This program is free software; you can redistribute it and/or modify 
-#   it under the terms of the GNU General Public License as published by 
-#   the Free Software Foundation; either version 2 of the License, or 
-#   (at your option) any later version. 
-# 
-#   This program is distributed in the hope that it will be useful, 
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of 
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-#   GNU General Public License for more details. 
-# 
-#   You should have received a copy of the GNU General Public License 
-#   along with this program; if not, write to the Free Software 
-#   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
-#   USA. 
-# 
+#!/bin/bash
+#
+#   pacman-uncage
+#
+#   Copyright (c) 2002-2006 by Andrew Rose <rose.andrew@gmail.com>
+#   I used Judds pacman-optimise as a framework.
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+#   USA.
+#
 
-myver='2.9.8.3'
-dbroot="/var/lib/pacman" 
-tmproot="/var/lib/pacman.new" 
-pacmandb="/var/lib/pacman.db" 
+myver='2.9.9'
+dbroot="/var/lib/pacman"
+tmproot="/var/lib/pacman.new"
+pacmandb="/var/lib/pacman.db"
 pacmanlog=$(pacman -Qv | grep "Log File" | cut -d ":" -f2)
 
-usage() { 
-    echo "pacman-uncage $myver" 
-    echo "usage: $0 [pacman_db_root]" 
-    echo 
-    echo "pacman-uncage returns your pacman db to the generic style." 
-    echo 
-} 
+usage() {
+    echo "pacman-uncage $myver"
+    echo "usage: $0 [pacman_db_root]"
+    echo
+    echo "pacman-uncage returns your pacman db to the generic style."
+    echo
+}
 
-die() { 
-    echo "pacman-uncage: $*" >&2 
-    exit 1 
-} 
+die() {
+    echo "pacman-uncage: $*" >&2
+    exit 1
+}
 
-die_r() { 
-    rm -f /tmp/pacman.lck 
-    die $* 
-} 
+die_r() {
+    rm -f /tmp/pacman.lck
+    die $*
+}
 
-if [ "$1" != "" ]; then 
-    if [ "$1" = "-h" -o "$1" = "--help" ]; then 
-        usage 
-        exit 0 
-    fi 
-    dbroot=$1 
-fi 
+if [[ "$1" != "" ]]; then
+    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+        usage
+        exit 0
+    fi
+    dbroot=$1
+fi
 
-if [ $(id -u) != 0 ]; then 
-    die "You must be root to uncage the database" 
+if [[ $(id -u) != 0 ]]]; then
+    die "You must be root to uncage the database"
 fi
 
 # added by wain: make sure pacmandb is mounted
@@ -62,58 +62,57 @@ if ! mount -l | grep $dbroot >/dev/null; then
     die "Pacmandb must be mounted"
 fi
 
-# make sure pacman isn't running 
-if [ -f /tmp/pacman.lck ]; then 
-    die "Pacman lockfile was found.  Cannot run while pacman is running." 
-fi 
+# make sure pacman isn't running
+if [[ -f /tmp/pacman.lck ]]; then
+    die "Pacman lockfile was found.  Cannot run while pacman is running."
+fi
 
-if [ ! -d $dbroot ]; then 
-    die "$dbroot does not exist or is not a directory" 
-fi 
+if [[ ! -d $dbroot ]]; then
+    die "$dbroot does not exist or is not a directory"
+fi
 
-# don't let pacman run while we do this 
-touch /tmp/pacman.lck 
+# don't let pacman run while we do this
+touch /tmp/pacman.lck
 
 # write to pacman.log
 echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Starting and preparing pacmandb uncaging process ..." >> ${pacmanlog}
 
-# step 1: sum the old db 
-echo "==> md5sum'ing the old database..." 
-find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.old 
+# step 1: sum the old db
+echo "==> md5sum'ing the old database..."
+find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.old
 
-echo "==> copying pacman.db contents back, note: the time needed to get a brew is now." 
-mkdir $tmproot 
-cp -a $dbroot/. $tmproot 
+echo "==> copying pacman.db contents back, note: the time needed to get a brew is now."
+mkdir $tmproot
+cp -a $dbroot/. $tmproot
 
-echo "==> unmounting old dbroot and moving new one in" 
-umount $dbroot 
-rmdir $dbroot 
-mv $tmproot $dbroot 
+echo "==> unmounting old dbroot and moving new one in"
+umount $dbroot
+rmdir $dbroot
+mv $tmproot $dbroot
 
-echo "==> md5sum'ing the new database..." 
-find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.new 
+echo "==> md5sum'ing the new database..."
+find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.new
 
-echo "==> checking integrity..." 
-diff /tmp/pacsums.old /tmp/pacsums.new >/dev/null 2>&1 
-if [ $? -ne 0 ]; then 
-    # failed, move the old one back into place 
-    rm -rf $dbroot 
-    mkdir $dbroot 
-    mount -o loop $pacmandb $dbroot 
+echo "==> checking integrity..."
+diff /tmp/pacsums.old /tmp/pacsums.new >/dev/null 2>&1
+if [[ $? != 0 ]]; then
+    # failed, move the old one back into place
+    rm -rf $dbroot
+    mkdir $dbroot
+    mount -o loop $pacmandb $dbroot
     echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Something went wrong. $pacmandb remounted to $dbroot." >> ${pacmanlog}
-    die_r "integrity check FAILED, reverting to old database" 
-fi 
+    die_r "integrity check FAILED, reverting to old database"
+fi
 
-echo "==> Removing old pacman.db" 
-rm $pacmandb 
+echo "==> Removing old pacman.db"
+rm $pacmandb
 
-rm -f /tmp/pacman.lck /tmp/pacsums.old /tmp/pacsums.new 
+rm -f /tmp/pacman.lck /tmp/pacsums.old /tmp/pacsums.new
 
 echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Pacman database has been uncaged." >> ${pacmanlog}
-echo 
-echo "Finished.  Your pacman database has been uncaged!. Welcome home." 
-#echo "You will need to remove the old mount line from your /etc/fstab" 
+echo
+echo "Finished.  Your pacman database has been uncaged!. Welcome home."
 echo "You can remove 'pacmandb' from daemon's list in /etc/rc.conf file"
-echo 
+echo
 
 exit 0
