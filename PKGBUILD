@@ -1,10 +1,10 @@
-# Maintainer: Anuj More <anujmorex@gmail.com>
+# Maintainer: Anuj More <anujmorex at gmail>
 # Contributor 3: Romain Schmitz <slopjong [at] syn2cat.lu>
 # Contributor 2: Dominik Mayer <dominik.mayer@gmail.com>
 # Contributor 1: Lee.MaRS <leemars@gmail.com>
 
 pkgname=google-appengine-java
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Google App Engine SDK for Java."
@@ -14,7 +14,7 @@ depends=()
 options=('!strip')
 source=(http://googleappengine.googlecode.com/files/appengine-java-sdk-${pkgver}.zip
         profile.appengine-java-sdk)
-sha1sums=('08d1a2978a71d5fab3e22d7bba142f49224ac6b1'
+sha1sums=('c4edbf1424dba30648ff815442c5e2bf6f1637b5'
           '9d6e6c6bd7f3ec53dc08cdfacaac931cfa1cf2f3')
 
 build() {
