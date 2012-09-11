@@ -6,7 +6,7 @@
 
 pkgname=pacman-cage
 pkgver=2.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Creates a loopbacked filesystem to give better response times when using pacman."
 arch=(any)
 url="http://bbs.archlinux.org/viewtopic.php?id=20385"
@@ -29,7 +29,7 @@ package() {
     install -Dm755 pacman-cage "$pkgdir"/usr/bin/pacman-cage
     install -Dm755 pacman-uncage "$pkgdir"/usr/bin/pacman-uncage
     install -Dm755 pacmandb.rc "$pkgdir"/etc/rc.d/pacmandb
-    install -Dm644 pacmandb.service "$pkgdir"/lib/systemd/system/pacmandb.service
+    install -Dm644 pacmandb.service "$pkgdir"/usr/lib/systemd/system/pacmandb.service
 
     ## Choose one if you wish to install the cron backup script.
     ## You also might want to change the backup dir inside the script.
