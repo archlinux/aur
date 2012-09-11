@@ -1,7 +1,7 @@
 pkgbase = pacman-cage
 	pkgdesc = Creates a loopbacked filesystem to give better response times when using pacman.
 	pkgver = 2.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bbs.archlinux.org/viewtopic.php?id=20385
 	install = pacman-cage.install
 	arch = any
