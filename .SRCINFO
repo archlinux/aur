@@ -1,7 +1,7 @@
 pkgbase = etqw
 	pkgdesc = Enemy Territory: Quake Wars is a commercial team and class-based multiplayer game. You need the retail DVD to play.
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://zerowing.idsoftware.com/linux/etqw/
 	install = etqw.install
 	arch = i686

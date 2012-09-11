@@ -2,7 +2,7 @@
 
 pkgname=etqw
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Enemy Territory: Quake Wars is a commercial team and class-based multiplayer game. You need the retail DVD to play."
 arch=('i686' 'x86_64')
 url="http://zerowing.idsoftware.com/linux/etqw/"
@@ -16,7 +16,7 @@ makedepends=('unzip')
 conflicts=('bin32-etqw')
 install='etqw.install'
 source=('etqw.launcher' 'etqw-rthread.launcher' 'etqwded.launcher' 'etqw.desktop' \
-"http://www.altfire.com/main/files/Gaming/Games/Quake%20Wars/ETQW-client-1.5-linux.x86.run")
+"http://www.altfire.com/main/files/Gaming/Games/Quake%20Wars/ETQW-client-${pkgver}-linux.x86.run")
 md5sums=('3cbe2e753a7ab8406180ae2a8b7a1aa8'
          'c7df646e396bd08727c713aab8b398ed'
          'a3769be79f6ff5071d89f908078397dd'
@@ -28,7 +28,7 @@ build() {
     install -d $pkgdir/opt/
 
     # Unzip Linux Client Data
-    sh -c "unzip -o $srcdir/ETQW-client-${pkgver}-full.x86.run -d $srcdir/ data/*; true"
+    sh -c "unzip -o $srcdir/ETQW-client-${pkgver}-linux.x86.run -d $srcdir/ data/*; true"
 
     # Move Linux Client Data to Destination Directory
     mv $srcdir/data $pkgdir/opt/etqw
