@@ -23,7 +23,7 @@ if [ ! -d "$PGDATA" ]; then
     echo "Initializing database in $PGDATA"
 
     mkdir -p "$PGDATA"
-    chown -R postgres:postgres "$PGDATA"
+    chown -R postgres:postgres "$PGROOT"
 
     su - postgres -m -c "/usr/bin/initdb $INITOPTS -D '$PGDATA'" >/dev/null
 
