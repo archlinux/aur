@@ -1,0 +1,16 @@
+pkgbase = python2-cssmin
+	pkgdesc = Python port of the YUI CSS compression algorithm.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/zacharyvoase/cssmin
+	arch = any
+	license = MIT
+	license = BSD
+	depends = python2
+	source = http://pypi.python.org/packages/source/c/cssmin/cssmin-0.1.4.tar.gz
+	source = https://raw.github.com/zacharyvoase/cssmin/v0.1.4/LICENSE
+	md5sums = b9149b8a58e70cac5f7972b0dcce776f
+	md5sums = 7f9dbc2d22a3975e22fd6ce0f3d6268f
+
+pkgname = python2-cssmin
+
