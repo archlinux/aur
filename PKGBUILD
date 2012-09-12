@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=grails
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Groovy on rails, web framework"
 arch=('any')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 license=('APACHE')
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/$pkgname-$pkgver.zip"
         "grails.sh")
-sha256sums=('661ffc4df28c106059ba9c42c9579377bf84330145e00c5844d5c234a29a0df3'
+sha256sums=('d9c1425a0799754b45a110918422bde2c33a670f7b1410b51ccb0706af595b22'
             '009f00755c1d5312f8ee4ad7e407e3b4a5328b6820e04b94b39750c43fe76d56')
 
 build() {
