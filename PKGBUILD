@@ -1,6 +1,6 @@
 # Maintainer: jjacky
 pkgname=kalu-git
-pkgver=20120910
+pkgver=20120914
 pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news"
 arch=('i686' 'x86_64')
@@ -12,17 +12,17 @@ provides=('kalu')
 conflicts=('kalu')
 
 _gitroot=https://github.com/jjk-jacky/kalu
-_gitname=master
+_gitname=kalu
 
 build() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
+    cd "$_gitname" && git pull origin next
     msg "The local files are updated."
   else
-    git clone "$_gitroot" "$_gitname"
+    git clone -b next "$_gitroot" "$_gitname"
   fi
 
   msg "GIT checkout done or server timeout"

@@ -1,6 +1,6 @@
 pkgbase = kalu-git
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news
-	pkgver = 20120910
+	pkgver = 20120914
 	pkgrel = 1
 	url = https://github.com/jjk-jacky/kalu
 	arch = i686
