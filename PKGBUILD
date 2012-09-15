@@ -2,7 +2,7 @@
 # Contributor: Muhammed Uluyol <muhammedu@gmail.com>
 
 pkgname=scratch
-pkgver=1.4.0.6
+pkgver=1.4.0.7
 pkgrel=1
 pkgdesc="Create and share your own interactive stories, games, music and art"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 install=$pkgname.install
 depends=('squeak-vm' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'pango')
 source=(http://download.scratch.mit.edu/$pkgname-$pkgver.src.tar.gz)
-md5sums=('ef5bde2ad0aa759f903105d7f7446704')
+md5sums=('f948e9e6de3ec9c7c7b4cc2a1975eb5a')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver.src
