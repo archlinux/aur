@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.5
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,9 +23,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'watchdog-3.5.x.patch'
         'i915-i2c-crash-3.5.x.patch')
 md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
-         '01e0536109d2a06b1701b5051edfcea2'
-         '4eb50449b069bd699d92a290dce76d00'
-         '74c0ce9291ad8aaf26546fe85a1a7d18'
+         '4d34e5098b490670261b1aea71d26023'
+         'ec3dbb7c31881bcbefdbbaf32398046f'
+         '821ddda39e3b2fdd32eb47852a479240'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          'c1d58e712112cf8f95e7831012a1e67a'
@@ -42,10 +42,6 @@ build() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix alsa powersave bug, probably fixed in 3.5.4
-  # https://bugs.archlinux.org/task/31255
-  patch -Np1 -i  "${srcdir}/alsa-powersave-3.5.x.patch"
 
   # fix broken watchdog
   # https://bugzilla.kernel.org/show_bug.cgi?id=44991
