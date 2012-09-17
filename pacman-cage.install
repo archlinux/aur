@@ -1,20 +1,8 @@
 post_install() {
-    cat << __EOF__
-        How to use pacman-cage:
-        First, run as root: 'pacman-cage'
-        Then add 'pacmandb' to DAEMONS array in /etc/rc.conf file
-        If your pacman is already caged, you don't have to run pacman-cage again.
-
-        -------------------------------------------------
-
-        Comment utiliser pacman-cage:
-        D'abord, lancer en root: 'pacman-cage'
-        Puis, ajouter 'pacmandb' à la liste des démons dans le fichier /etc/rc.conf
-        Si vous utilisez déjà pacman-cage il est inutile de le relancer.
-
-        __EOF__
+    systemctl enable pacmandb.service
+    systemctl start pacmandb.service
 }
 
-post_upgrade() {
-    post_install
+pre_remove() {
+    systemctl stop pacmandb.service
 }
