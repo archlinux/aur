@@ -2,7 +2,7 @@
 # Contributor: Nathan O <ndowens.aur at gmail dot com>
 
 pkgname=i7z
-pkgver=0.27.1
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="A better i7 (and now i3, i5) reporting tool for Linux"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('qt')
 optdepends=('qt: for i7z-gui')
 url="http://code.google.com/p/i7z/"
 source=("http://i7z.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4408e0e39b195b8fe6383cadc971a862')
+md5sums=('7f2c4928146b722d67ecdd0d905a4353')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
