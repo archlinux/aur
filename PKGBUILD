@@ -1,4 +1,5 @@
-# Maintainer: Constantin Schomburg <me@xconstruct.net>
+# Contributor: Constantin Schomburg <me@xconstruct.net>
+# Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 pkgname=mcpatcher
 pkgver='2.4.2'
