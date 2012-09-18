@@ -1,4 +1,4 @@
-# Maintainer: Limao Luo <luolimao@gmail.com>
+# Maintainer: Limao Luo <luolimao+AUR@gmail.com>
 # Author: ody
 # Contributor: Vithon <ratm@archlinux.us>
 # Contributor: donvla
