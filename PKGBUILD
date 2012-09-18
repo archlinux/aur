@@ -13,14 +13,17 @@ optdepends=('minecraft: the game itself')
 noextract=("$pkgname-$pkgver.jar")
 changelog=ChangeLog
 source=(mcpatcher
+        mcpatcher.desktop
         https://github.com/downloads/pclewis/mcpatcher/$pkgname-$pkgver.jar)
 md5sums=('38358254be76dc84676509f43be44938'
+         '37c9c1d09bdf97f60a2c46a7fabbd931'
          'acf12fb6c39263b2e7e8b2714418a796')
 
 build() {
     cd "$srcdir"
 
     install -vDm755 "mcpatcher"            "$pkgdir/usr/bin/mcpatcher"
+    install -vDm644 "mcpatcher.desktop"    "$pkgdir/usr/share/applications/mcpatcher.desktop"
     install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/mcpatcher/mcpatcher.jar"
 }
 

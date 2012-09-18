@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MCPatcher
+Comment=Minecraft patcher for HD textures and more.
+TryExec=mcpatcher
+Exec=mcpatcher
+Terminal=false
+Categories=Game;
+Keywords=minecraft;
