@@ -71,8 +71,8 @@ package_linux-linode() {
   mkdir -p "${pkgdir}/lib/modules/${emdir}"
   ln -s "../${emdir}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   echo "${_kernver}" >| "${pkgdir}/lib/modules/${emdir}/version"
-  mv "${pkgdir}/"{lib,usr/}
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  mv "${pkgdir}/"{lib,usr/}
 
   mkdir -p ${pkgdir}/boot/grub
   sed "s/%VER%/${pkgver}-${pkgrel}/ig" ${srcdir}/menu.lst > ${pkgdir}/boot/grub/menu.lst
