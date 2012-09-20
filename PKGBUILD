@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73695 2012-07-14 13:05:07Z allan $
+# $Id: PKGBUILD 75203 2012-08-16 01:54:21Z allan $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
@@ -9,7 +9,7 @@
 _pkgbasename=glibc
 pkgname=libx32-$_pkgbasename
 pkgver=2.16.0
-pkgrel=2.1
+pkgrel=3.1
 pkgdesc="GNU C Library for X32 ABI"
 arch=('x86_64')
 url="http://www.gnu.org/software/libc"
@@ -20,11 +20,13 @@ options=('!strip' '!emptydirs')
 source=(http://ftp.gnu.org/gnu/libc/${_pkgbasename}-${pkgver}.tar.xz{,.sig}
         glibc-2.15-fix-res_query-assert.patch
         glibc-2.15-revert-c5a0802a.patch
+        glibc-2.16-rpcgen-cpp-path.patch
         libx32-glibc.conf)
 md5sums=('80b181b02ab249524ec92822c0174cf7'
          '2a1221a15575820751c325ef4d2fbb90'
          '31f415b41197d85d3bbee3d1eecd06a3'
          '0a0383d50d63f1c02919fe9943b82014'
+         'ea6a43915474e8276e9361eed6a01280'
          '34a4169d2bdc5a3eb83676a0831aae57')
 
 build() {
@@ -37,6 +39,10 @@ build() {
   # revert commit c5a0802a - causes various hangs
   # https://bugzilla.redhat.com/show_bug.cgi?id=552960
   patch -p1 -i ${srcdir}/glibc-2.15-revert-c5a0802a.patch
+
+  # prevent need for /lib/cpp symlink
+  # http://sourceware.org/git/?p=glibc.git;a=commit;h=bf9b740a
+  patch -p1 -i ${srcdir}/glibc-2.16-rpcgen-cpp-path.patch
 
   cd ${srcdir}
   mkdir glibc-build
