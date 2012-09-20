@@ -1,7 +1,7 @@
 pkgbase = libx32-glibc
-	pkgdesc = GNU C Library for X32 ABI
+	pkgdesc = GNU C Library for x32 ABI
 	pkgver = 2.16.0
-	pkgrel = 3.1
+	pkgrel = 4.1
 	url = http://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL
@@ -15,12 +15,16 @@ pkgbase = libx32-glibc
 	source = glibc-2.15-fix-res_query-assert.patch
 	source = glibc-2.15-revert-c5a0802a.patch
 	source = glibc-2.16-rpcgen-cpp-path.patch
+	source = glibc-2.16-strncasecmp-segfault.patch
+	source = glibc-2.16-strtod-overflow.patch
 	source = libx32-glibc.conf
 	md5sums = 80b181b02ab249524ec92822c0174cf7
 	md5sums = 2a1221a15575820751c325ef4d2fbb90
 	md5sums = 31f415b41197d85d3bbee3d1eecd06a3
 	md5sums = 0a0383d50d63f1c02919fe9943b82014
 	md5sums = ea6a43915474e8276e9361eed6a01280
+	md5sums = f042d37cc8ca3459023431809039bc88
+	md5sums = 61d322f7681a85d3293ada5c3ccc2c7e
 	md5sums = 34a4169d2bdc5a3eb83676a0831aae57
 
 pkgname = libx32-glibc

@@ -1,7 +1,8 @@
-# $Id: PKGBUILD 75203 2012-08-16 01:54:21Z allan $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# $Id: PKGBUILD 78782 2012-10-24 15:17:40Z arodseth $
+# Upstream Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: valgrind requires rebuilt with each major glibc version
@@ -9,8 +10,8 @@
 _pkgbasename=glibc
 pkgname=libx32-$_pkgbasename
 pkgver=2.16.0
-pkgrel=3.1
-pkgdesc="GNU C Library for X32 ABI"
+pkgrel=4.1
+pkgdesc='GNU C Library for x32 ABI'
 arch=('x86_64')
 url="http://www.gnu.org/software/libc"
 license=('GPL' 'LGPL')
@@ -21,12 +22,16 @@ source=(http://ftp.gnu.org/gnu/libc/${_pkgbasename}-${pkgver}.tar.xz{,.sig}
         glibc-2.15-fix-res_query-assert.patch
         glibc-2.15-revert-c5a0802a.patch
         glibc-2.16-rpcgen-cpp-path.patch
+        glibc-2.16-strncasecmp-segfault.patch
+        glibc-2.16-strtod-overflow.patch
         libx32-glibc.conf)
 md5sums=('80b181b02ab249524ec92822c0174cf7'
          '2a1221a15575820751c325ef4d2fbb90'
          '31f415b41197d85d3bbee3d1eecd06a3'
          '0a0383d50d63f1c02919fe9943b82014'
          'ea6a43915474e8276e9361eed6a01280'
+         'f042d37cc8ca3459023431809039bc88'
+         '61d322f7681a85d3293ada5c3ccc2c7e'
          '34a4169d2bdc5a3eb83676a0831aae57')
 
 build() {
@@ -44,14 +49,26 @@ build() {
   # http://sourceware.org/git/?p=glibc.git;a=commit;h=bf9b740a
   patch -p1 -i ${srcdir}/glibc-2.16-rpcgen-cpp-path.patch
 
+  # strncasecmp segfault on i686
+  # http://sourceware.org/git/?p=glibc.git;a=commit;h=6db8f737
+  patch -p1 -i ${srcdir}/glibc-2.16-strncasecmp-segfault.patch
+
+  # strtod integer/buffer overflow
+  # http://sourceware.org/git/?p=glibc.git;a=commit;h=da1f4319
+  patch -p1 -i ${srcdir}/glibc-2.16-strtod-overflow.patch
+
+  # ldconfig does not need to look in /usr/lib64 or /usr/libx32 on Arch Linux
+  sed -i "s#add_system_dir#do_not_add_system_dir#" sysdeps/unix/sysv/linux/x86_64/dl-cache.h
+
   cd ${srcdir}
   mkdir glibc-build
   cd glibc-build
 
-
-  # Hack to fix NPTL issues with Xen, only required on 32bit platforms
-  # TODO: make separate glibc-xen package for i686
-  export CFLAGS="${CFLAGS} -mno-tls-direct-seg-refs"
+  #if [[ ${CARCH} = "i686" ]]; then
+    # Hack to fix NPTL issues with Xen, only required on 32bit platforms
+    # TODO: make separate glibc-xen package for i686
+    export CFLAGS="${CFLAGS} -mno-tls-direct-seg-refs"
+  #fi
 
   if [ -x "/opt/gcc-x32-seed/bin/gcc" ]; then
     echo "Using gcc-x32-seed"
