@@ -1,0 +1,15 @@
+pkgbase = slinp-git
+	pkgdesc = PDF presentation tool chest
+	pkgver = 20120813
+	pkgrel = 1
+	url = http://www.uninformativ.de/projects/?q=slinp
+	arch = i686
+	arch = x86_64
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = gtk3
+	depends = python
+	depends = poppler-glib
+
+pkgname = slinp-git
+
