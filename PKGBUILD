@@ -11,6 +11,7 @@ pkgdesc="Creates a loopbacked filesystem to give better response times when usin
 arch=(any)
 url="http://bbs.archlinux.org/viewtopic.php?id=20385"
 license=(GPL)
+depends=(systemd)
 install=$pkgname.install
 source=($pkgname pacman-uncage pacmandb.rc backup_pacmandb.cron pacmandb.service)
 sha256sums=('1b6ac88496e134398c5ee3ac0d476f6ada26b91ad6f5234a73e73c0fde6906f5'

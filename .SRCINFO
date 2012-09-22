@@ -6,6 +6,7 @@ pkgbase = pacman-cage
 	install = pacman-cage.install
 	arch = any
 	license = GPL
+	depends = systemd
 	source = pacman-cage
 	source = pacman-uncage
 	source = pacmandb.rc
