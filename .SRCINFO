@@ -1,0 +1,13 @@
+pkgbase = gitary-git
+	pkgdesc = A diary using git as its backend
+	pkgver = 20120922
+	pkgrel = 1
+	url = http://www.uninformativ.de/projects/?q=gitary
+	arch = any
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = git
+	optdepends = vim: A reasonable editor, syntax files are provided
+
+pkgname = gitary-git
+
