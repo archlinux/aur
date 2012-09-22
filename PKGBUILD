@@ -1,22 +1,24 @@
-# $Id: PKGBUILD 74164 2012-07-22 14:59:12Z heftig $
+# $Id: PKGBUILD 74996 2012-08-11 10:05:23Z heftig $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgbase='gcc-multilib'
-pkgname=('gcc-multilib' 'gcc-libs-multilib' 'lib32-gcc-libs' 'gcc-fortran-multilib' 'gcc-objc-multilib' 'gcc-ada-multilib' 'gcc-go-multilib')
+pkgbase='gcc-multilib-x32'
+pkgname='gcc-multilib-x32'
+true && pkgname=('gcc-multilib-x32' 'gcc-libs-multilib-x32' 'libx32-gcc-libs' 'gcc-fortran-multilib-x32' 'gcc-objc-multilib-x32' 'gcc-go-multilib-x32')
 pkgver=4.7.1
-pkgrel=5
+pkgrel=6.1
+_origrel=6
 _snapshot=4.7-20120721
-_libstdcppmanver=20120605		# Note: check source directory name when updating this
-pkgdesc="The GNU Compiler Collection for multilib"
+_libstdcppmanver=20120725		# Note: check source directory name when updating this
+pkgdesc="The GNU Compiler Collection for multilib with x32 ABI support"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-makedepends=('binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl' 'gcc-ada-multilib'
-             'lib32-glibc>=2.16')
+makedepends=('binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl'
+             'lib32-glibc>=2.16' 'libx32-glibc>=2.16')
 checkdepends=('dejagnu')
 options=('!libtool' '!emptydirs')
 source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
@@ -24,13 +26,14 @@ source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
 	ftp://gcc.gnu.org/pub/gcc/libstdc++/doxygen/libstdc++-api.${_libstdcppmanver}.man.tar.bz2
 	gcc_pure64-multilib.patch
         gcc-4.7.1-libada-pic.patch
-        gcc-4.7.1-libgo-write.patch)
+        gcc-4.7.1-libgo-write.patch
+        189626.patch)
 md5sums=('a1a53fda426bc6809cede8e85bbaf2a3'
-         '767c62f9a047c4434f2345decf1d0819'
-         'ec24c32d3d1030c2bc8cb2ad2d1dc629'
+         '79c4381f983b71868c02da3379e1e8a2'
+         '55818c34a79ec90913ef7778e17ea6b6'
          '2acbc9d35cc9d72329dc71d6b1f162ef'
-         'df82dd175ac566c8a6d46b11ac21f14c')
-
+         'df82dd175ac566c8a6d46b11ac21f14c'
+         'e01126c78cefe99498ff1e04fa728a2b')
 
 if [ -n "${_snapshot}" ]; then
   _basedir="${srcdir}/gcc-${_snapshot}"
@@ -55,6 +58,10 @@ build() {
   # bug to file...
   patch -p1 -i ${srcdir}/gcc-4.7.1-libada-pic.patch
 
+  # http://gcc.1065356.n5.nabble.com/Bug-java-53982-New-gij-built-for-x32-can-t-run-a-simple-Hello-World-class-td452375.html
+  # not yet ready for GCC 4.8
+  #patch -p1 -i ${srcdir}/189626.patch
+
   echo ${pkgver} > gcc/BASE-VER
 
   cd ${srcdir}
@@ -64,7 +71,7 @@ build() {
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --mandir=/usr/share/man --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ \
+      --enable-languages=c,c++,fortran,go,lto,objc,obj-c++ \
       --enable-shared --enable-threads=posix \
       --with-system-zlib --enable-__cxa_atexit \
       --disable-libunwind-exceptions --enable-clocale=gnu \
@@ -75,7 +82,8 @@ build() {
       --enable-lto --enable-gold --enable-ld=default \
       --enable-plugin --with-plugin-ld=ld.gold \
       --with-linker-hash-style=gnu \
-      --enable-multilib --disable-libssp \
+      --enable-multilib --with-multilib-list=m32,m64,mx32 \
+      --disable-libssp \
       --disable-build-with-cxx --disable-build-poststage1-with-cxx \
       --enable-checking=release
   make
@@ -93,11 +101,11 @@ check() {
   ${_basedir}/contrib/test_summary
 }
 
-package_gcc-libs-multilib()
+package_gcc-libs-multilib-x32()
 {
-  pkgdesc="Runtime libraries shipped by GCC for multilib"
-  depends=('glibc>=2.16' "lib32-gcc-libs=$pkgver-$pkgrel")
-  provides=("gcc-libs=$pkgver-$pkgrel")
+  pkgdesc="Runtime libraries shipped by GCC for multilib with x32 ABI support"
+  depends=('glibc>=2.16' "lib32-gcc-libs=$pkgver-$_origrel" "libx32-gcc-libs=$pkgver-$pkgrel")
+  provides=("gcc-libs=$pkgver-$_origrel" "gcc-libs-multilib=$pkgver-$_origrel")
   conflicts=('gcc-libs')
   install=gcc-libs.install
 
@@ -119,6 +127,7 @@ package_gcc-libs-multilib()
 
   # remove stuff in lib32-gcc-libs
   rm -r ${pkgdir}/usr/lib32
+  rm -r ${pkgdir}/usr/libx32
 
   # remove static libraries
   find ${pkgdir} -name *.a -delete
@@ -128,15 +137,15 @@ package_gcc-libs-multilib()
     ${pkgdir}/usr/share/licenses/gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION
 }
 
-package_lib32-gcc-libs()
+package_libx32-gcc-libs()
 {
-  pkgdesc="Runtime libraries shipped by GCC (32-bit)"
-  depends=('lib32-glibc>=2.16' "gcc-libs>=$pkgver")
+  pkgdesc="Runtime libraries shipped by GCC (x32 ABI)"
+  depends=('libx32-glibc>=2.16' "gcc-libs>=$pkgver")
 
   cd gcc-build
-  make -j1 -C $CHOST/32/libgcc DESTDIR=${pkgdir} install-shared
+  make -j1 -C $CHOST/x32/libgcc DESTDIR=${pkgdir} install-shared
   for lib in libmudflap libgomp libstdc++-v3/src libitm; do
-    make -j1 -C $CHOST/32/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+    make -j1 -C $CHOST/x32/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
   done
 
   make -j1 DESTDIR=${pkgdir} install-target-libquadmath
@@ -144,10 +153,11 @@ package_lib32-gcc-libs()
   make -j1 DESTDIR=${pkgdir} install-target-libobjc
 
   # remove unnecessary files installed by install-target-{libquadmath,libgfortran,libobjc}
-  rm ${pkgdir}/usr/lib32/libgfortran.spec
+  rm ${pkgdir}/usr/libx32/libgfortran.spec
 
   # remove stuff in gcc-libs-multilib
   rm -r ${pkgdir}/usr/lib
+  rm -r ${pkgdir}/usr/lib32
   rm -r ${pkgdir}/usr/share/info
 
   # remove static libraries
@@ -155,16 +165,15 @@ package_lib32-gcc-libs()
   
   # Install Runtime Library Exception
   install -Dm644 ${_basedir}/COPYING.RUNTIME \
-    ${pkgdir}/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION
+    ${pkgdir}/usr/share/licenses/libx32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION
 }
-
-package_gcc-multilib()
+package_gcc-multilib-x32()
 {
-  pkgdesc="The GNU Compiler Collection - C and C++ frontends for multilib"
-  depends=("gcc-libs-multilib=$pkgver-$pkgrel" 'binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl')
+  pkgdesc="The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support"
+  depends=("gcc-libs-multilib-x32=$pkgver-$pkgrel" 'binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl')
   groups=('multilib-devel')
-  provides=("gcc=$pkgver-$pkgrel")
-  conflicts=('gcc')
+  provides=("gcc=$pkgver-$_origrel" "gcc-multilib=$pkgver-$_origrel" "gcc-x32-seed=$pkgver-$_origrel")
+  conflicts=('gcc' 'gcc-x32-seed')
   install=gcc.install
 
   cd gcc-build
@@ -175,22 +184,21 @@ package_gcc-multilib()
   mv $pkgdir{,/usr/share/gdb/auto-load}/usr/lib/libstdc++.so.6.0.17-gdb.py
 
   # unfortunately it is much, much easier to install the lot and clean-up the mess...
-  rm $pkgdir/usr/bin/{{$CHOST-,}gfortran,{$CHOST-,}gccgo,gnat*}
-  rm $pkgdir/usr/lib{,32}/*.so*
-  rm $pkgdir/usr/lib{,32}/lib{ffi,gfortran,go{,begin},objc,quadmath}.a
-  rm $pkgdir/usr/lib{,32}/libgfortran.spec
-  rm -r $pkgdir/usr/lib/gcc/$CHOST/${pkgver}/{{,32/}ada{include,lib},finclude,include/objc}
+  rm $pkgdir/usr/bin/{{$CHOST-,}gfortran,{$CHOST-,}gccgo,gnat*} || true
+  rm $pkgdir/usr/lib{,32,x32}/*.so*
+  rm $pkgdir/usr/lib{,32,x32}/lib{ffi,gfortran,go{,begin},objc,quadmath}.a
+  rm $pkgdir/usr/lib{,32,x32}/libgfortran.spec
+  rm -r $pkgdir/usr/lib/gcc/$CHOST/${pkgver}/{{,32/,x32/}ada{include,lib},finclude,include/objc} || true
   rm $pkgdir/usr/lib/gcc/$CHOST/${pkgver}/include/{ffi{,target}.h,quadmath{,_weak}.h}
-  rm $pkgdir/usr/lib/gcc/$CHOST/${pkgver}/{cc1obj{,plus},f951,gnat1,go1}
-  rm $pkgdir/usr/lib/gcc/$CHOST/${pkgver}/{,32/}{libcaf_single,libgfortranbegin}.a
-  rm -r $pkgdir/usr/lib{,32}/go
-  rm $pkgdir/usr/share/info/{gccgo,gfortran,gnat*,libgomp,libquadmath,libitm}.info
+  rm $pkgdir/usr/lib/gcc/$CHOST/${pkgver}/{cc1obj{,plus},f951,gnat1,go1} || true
+  rm $pkgdir/usr/lib/gcc/$CHOST/${pkgver}/{,32/,x32/}{libcaf_single,libgfortranbegin}.a
+  rm -r $pkgdir/usr/lib{,32,x32}/go
+  rm $pkgdir/usr/share/info/{gccgo,gfortran,gnat*,libgomp,libquadmath,libitm}.info || true
   rm $pkgdir/usr/share/locale/{de,fr}/LC_MESSAGES/libstdc++.mo
   rm $pkgdir/usr/share/man/man1/{gccgo,gfortran}.1
   rm $pkgdir/usr/share/man/man3/ffi*
 
-  # many packages require these symlinks
-  ln -s /usr/bin/cpp ${pkgdir}/usr/lib/cpp
+  # many packages expect this symlinks
   ln -s gcc ${pkgdir}/usr/bin/cc
 
   # POSIX conformance launcher scripts for c89 and c99
@@ -232,11 +240,11 @@ EOF
     ${pkgdir}/usr/share/licenses/gcc-multilib/RUNTIME.LIBRARY.EXCEPTION
 }
 
-package_gcc-fortran-multilib()
+package_gcc-fortran-multilib-x32()
 {
-  pkgdesc="Fortran front-end for GCC for multilib"
-  depends=("gcc-multilib=$pkgver-$pkgrel")
-  provides=("gcc-fortran=$pkgver-$pkgrel")
+  pkgdesc="Fortran front-end for GCC for multilib with x32 ABI support"
+  depends=("gcc-multilib-x32=$pkgver-$pkgrel")
+  provides=("gcc-fortran=$pkgver-$_origrel")
   conflicts=('gcc-fortran')
   install=gcc-fortran.install
 
@@ -248,7 +256,7 @@ package_gcc-fortran-multilib()
   install -Dm755 gcc/f951 $pkgdir/usr/lib/gcc/$CHOST/$pkgver/f951
   
   # remove libraries included in gcc-libs
-  rm ${pkgdir}/usr/lib{,32}/lib{gfortran,quadmath}.so*
+  rm ${pkgdir}/usr/lib{,32,x32}/lib{gfortran,quadmath}.so*
   rm ${pkgdir}/usr/share/info/libquadmath.info
 
   ln -s gfortran ${pkgdir}/usr/bin/f95
@@ -258,11 +266,11 @@ package_gcc-fortran-multilib()
     ${pkgdir}/usr/share/licenses/gcc-fortran-multilib/RUNTIME.LIBRARY.EXCEPTION
 }
 
-package_gcc-objc-multilib()
+package_gcc-objc-multilib-x32()
 {
-  pkgdesc="Objective-C front-end for GCC for multilib"
-  depends=("gcc-multilib=$pkgver-$pkgrel")
-  provides=("gcc-objc=$pkgver-$pkgrel")
+  pkgdesc="Objective-C front-end for GCC for multilib with x32 ABI support"
+  depends=("gcc-multilib-x32=$pkgver-$pkgrel")
+  provides=("gcc-objc=$pkgver-$_origrel")
   conflicts=('gcc-objc')
 
   cd gcc-build
@@ -271,18 +279,18 @@ package_gcc-objc-multilib()
   install -m755 gcc/cc1obj{,plus} $pkgdir/usr/lib/gcc/$CHOST/$pkgver/
 
   # remove libraries included in gcc-libs
-  rm ${pkgdir}/usr/lib{,32}/libobjc.so*
+  rm ${pkgdir}/usr/lib{,32,x32}/libobjc.so*
 
   # Install Runtime Library Exception
   install -Dm644 ${_basedir}/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/gcc-objc-multilib/RUNTIME.LIBRARY.EXCEPTION
 }
 
-package_gcc-ada-multilib()
+package_gcc-ada-multilib-x32()
 {
-  pkgdesc="Ada front-end for GCC (GNAT) for multilib"
-  depends=("gcc-multilib=$pkgver-$pkgrel")
-  provides=("gcc-ada=$pkgver-$pkgrel")
+  pkgdesc="Ada front-end for GCC (GNAT) for multilib with x32 ABI support"
+  depends=("gcc-multilib-x32=$pkgver-$pkgrel")
+  provides=("gcc-ada=$pkgver-$_origrel")
   conflicts=('gcc-ada')
   install=gcc-ada.install
 
@@ -294,6 +302,10 @@ package_gcc-ada-multilib()
   make -j1 DESTDIR=${pkgdir} INSTALL="install" \
     INSTALL_DATA="install -m644" install-gnatlib
 
+  cd ../$CHOST/x32/libada
+  make -j1 DESTDIR=${pkgdir} INSTALL="install" \
+    INSTALL_DATA="install -m644" install-gnatlib
+
   ln -s gcc ${pkgdir}/usr/bin/gnatgcc
   
   # Install Runtime Library Exception
@@ -301,11 +313,11 @@ package_gcc-ada-multilib()
     ${pkgdir}/usr/share/licenses/gcc-ada-multilib/RUNTIME.LIBRARY.EXCEPTION
 }
 
-package_gcc-go-multilib()
+package_gcc-go-multilib-x32()
 {
-  pkgdesc="Go front-end for GCC for multilib"
-  depends=("gcc-multilib=$pkgver-$pkgrel")
-  provides=("gcc-go=$pkgver-$pkgrel")
+  pkgdesc="Go front-end for GCC for multilib with x32 ABI support"
+  depends=("gcc-multilib-x32=$pkgver-$pkgrel")
+  provides=("gcc-go=$pkgver-$_origrel")
   conflicts=('gcc-go')
   install=gcc-go.install
 
@@ -318,3 +330,4 @@ package_gcc-go-multilib()
   install -Dm644 ${_basedir}/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/gcc-go/RUNTIME.LIBRARY.EXCEPTION
 }
+pkgdesc="The GNU Compiler Collection for multilib with x32 ABI support"

@@ -6,8 +6,9 @@ diff -u -r gcc-4.7.0/gcc/config/i386/linux64.h gcc-4.7.0-pure64/gcc/config/i386/
  
  #define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
 -#define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
+-#define GLIBC_DYNAMIC_LINKERX32 "/libx32/ld-linux-x32.so.2"
 +#define GLIBC_DYNAMIC_LINKER64 "/lib/ld-linux-x86-64.so.2"
- #define GLIBC_DYNAMIC_LINKERX32 "/libx32/ld-linux-x32.so.2"
++#define GLIBC_DYNAMIC_LINKERX32 "/lib/ld-linux-x32.so.2"
 diff -u -r gcc-4.7.0/gcc/config/i386/t-linux64 gcc-4.7.0-pure64/gcc/config/i386/t-linux64
 --- gcc-4.7.0/gcc/config/i386/t-linux64	2011-11-02 16:23:48.000000000 +0100
 +++ gcc-4.7.0-pure64/gcc/config/i386/t-linux64	2012-03-24 11:52:44.119651885 +0100
