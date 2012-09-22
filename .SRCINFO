@@ -1,0 +1,19 @@
+pkgbase = libx32-dbus-core
+	pkgdesc = Freedesktop.org message bus system (x32 ABI)
+	pkgver = 1.6.4
+	pkgrel = 1.1
+	url = http://www.freedesktop.org/Software/dbus
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = gcc-multilib-x32
+	makedepends = libx32-libx11
+	depends = libx32-glibc
+	depends = libx32-expat
+	depends = dbus-core
+	options = !libtool
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.6.4.tar.gz
+	md5sums = 5ec43dc4554cba638917317b2b4f7640
+
+pkgname = libx32-dbus-core
+
