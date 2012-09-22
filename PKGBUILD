@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 73407 2012-07-07 09:50:53Z heftig $
+# $Id: PKGBUILD 74164 2012-07-22 14:59:12Z heftig $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
@@ -8,8 +8,8 @@
 pkgbase='gcc-multilib'
 pkgname=('gcc-multilib' 'gcc-libs-multilib' 'lib32-gcc-libs' 'gcc-fortran-multilib' 'gcc-objc-multilib' 'gcc-ada-multilib' 'gcc-go-multilib')
 pkgver=4.7.1
-pkgrel=4.1
-#_snapshot=4.7-20120505
+pkgrel=5
+_snapshot=4.7-20120721
 _libstdcppmanver=20120605		# Note: check source directory name when updating this
 pkgdesc="The GNU Compiler Collection for multilib"
 arch=('x86_64')
@@ -19,19 +19,17 @@ makedepends=('binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl' 'gcc-ada-multilib'
              'lib32-glibc>=2.16')
 checkdepends=('dejagnu')
 options=('!libtool' '!emptydirs')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-	#ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
+	ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
 	ftp://gcc.gnu.org/pub/gcc/libstdc++/doxygen/libstdc++-api.${_libstdcppmanver}.man.tar.bz2
 	gcc_pure64-multilib.patch
-	gcc-4.7.1-libada-pic.patch
-	gcc-4.7.1-libgo-write.patch
-        gcc-4.7.1-libgo-mksysinfo.patch)
-md5sums=('933e6f15f51c031060af64a9e14149ff'
+        gcc-4.7.1-libada-pic.patch
+        gcc-4.7.1-libgo-write.patch)
+md5sums=('a1a53fda426bc6809cede8e85bbaf2a3'
          '767c62f9a047c4434f2345decf1d0819'
          'ec24c32d3d1030c2bc8cb2ad2d1dc629'
          '2acbc9d35cc9d72329dc71d6b1f162ef'
-         'df82dd175ac566c8a6d46b11ac21f14c'
-         '8e847244dba042d0aa3297713edaf70c')
+         'df82dd175ac566c8a6d46b11ac21f14c')
 
 
 if [ -n "${_snapshot}" ]; then
@@ -56,9 +54,6 @@ build() {
   
   # bug to file...
   patch -p1 -i ${srcdir}/gcc-4.7.1-libada-pic.patch
-
-  # http://gcc.gnu.org/ml/gcc-patches/2012-06/msg01946.html
-  patch -p0 -i ${srcdir}/gcc-4.7.1-libgo-mksysinfo.patch
 
   echo ${pkgver} > gcc/BASE-VER
 
@@ -195,8 +190,7 @@ package_gcc-multilib()
   rm $pkgdir/usr/share/man/man3/ffi*
 
   # many packages require these symlinks
-  #install -dm755 ${pkgdir}/lib
-  #ln -s /usr/bin/cpp ${pkgdir}/lib/cpp
+  ln -s /usr/bin/cpp ${pkgdir}/usr/lib/cpp
   ln -s gcc ${pkgdir}/usr/bin/cc
 
   # POSIX conformance launcher scripts for c89 and c99
