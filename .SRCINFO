@@ -1,6 +1,6 @@
 pkgbase = slinp-git
 	pkgdesc = PDF presentation tool chest
-	pkgver = 20120813
+	pkgver = 20120922
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=slinp
 	arch = i686

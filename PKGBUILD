@@ -1,6 +1,6 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=slinp-git
-pkgver=20120813
+pkgver=20120922
 pkgrel=1
 pkgdesc="PDF presentation tool chest"
 arch=('i686' 'x86_64')
@@ -9,8 +9,7 @@ license=('custom:PIZZA-WARE')
 depends=('gtk3' 'python' 'poppler-glib')
 makedepends=('git')
 
-#_gitroot="git://github.com/vain/slinp.git"
-_gitroot="/home/void/work/C/slinp"
+_gitroot="git://github.com/vain/slinp.git"
 _gitname="slinp"
 
 build() {
