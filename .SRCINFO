@@ -1,0 +1,16 @@
+pkgbase = libx32-expat
+	pkgdesc = An XML Parser library written in C (x32 ABI)
+	pkgver = 2.1.0
+	pkgrel = 1.1
+	url = http://expat.sourceforge.net/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib-x32
+	depends = libx32-glibc
+	depends = expat
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/expat/expat-2.1.0.tar.gz
+	md5sums = dd7dab7a5fea97d2a6a43f511449b7cd
+
+pkgname = libx32-expat
+
