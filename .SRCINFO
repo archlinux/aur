@@ -1,0 +1,21 @@
+pkgbase = libx32-freetype2
+	pkgdesc = TrueType font rendering library (x32 ABI)
+	pkgver = 2.4.10
+	pkgrel = 1.1
+	url = http://freetype.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib-x32
+	depends = libx32-zlib
+	depends = libx32-bzip2
+	depends = freetype2
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.4.10.tar.bz2
+	source = freetype-2.3.0-enable-spr.patch
+	source = freetype-2.2.1-enable-valid.patch
+	md5sums = 13286702e9390a91661f980608adaff1
+	md5sums = 816dc8619a6904a7385769433c0a8653
+	md5sums = 214119610444c9b02766ccee5e220680
+
+pkgname = libx32-freetype2
+
