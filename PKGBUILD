@@ -1,8 +1,5 @@
 # Maintainer: Limao Luo <luolimao+AUR@gmail.com>
 # Author: ody
-# Contributor: Vithon <ratm@archlinux.us>
-# Contributor: donvla
-# Contributor: wain <wain@archlinux.fr>
 
 pkgname=pacman-cage
 pkgver=2.9.9
@@ -11,7 +8,6 @@ pkgdesc="Creates a loopbacked filesystem to give better response times when usin
 arch=(any)
 url="http://bbs.archlinux.org/viewtopic.php?id=20385"
 license=(GPL)
-depends=(systemd)
 install=$pkgname.install
 source=($pkgname pacman-uncage pacmandb.rc backup_pacmandb.cron pacmandb.service)
 sha256sums=('1b6ac88496e134398c5ee3ac0d476f6ada26b91ad6f5234a73e73c0fde6906f5'
@@ -27,7 +23,7 @@ sha512sums=('7776810ee584c2ddb5dc330552862f96b29f6a3c8969c7db273a5f7d6c9a2fcba19
 
 package() {
     cd "$srcdir"
-    install -Dm755 pacman-cage "$pkgdir"/usr/bin/pacman-cage
+    install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
     install -Dm755 pacman-uncage "$pkgdir"/usr/bin/pacman-uncage
     install -Dm755 pacmandb.rc "$pkgdir"/etc/rc.d/pacmandb
     install -Dm644 pacmandb.service "$pkgdir"/usr/lib/systemd/system/pacmandb.service
