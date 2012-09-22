@@ -1,0 +1,18 @@
+pkgbase = libx32-libpng
+	pkgdesc = A collection of routines used to create PNG format graphics files (x32 ABI)
+	pkgver = 1.5.12
+	pkgrel = 1.1
+	url = http://www.libpng.org/pub/png/libpng.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = libx32-zlib
+	depends = libpng
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.5.12.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.5.12-apng.patch.gz
+	md5sums = 0fd51add1da6a0e470e0c726c59171b9
+	md5sums = 7f2924b1fe0cca9080e18b8720443716
+
+pkgname = libx32-libpng
+
