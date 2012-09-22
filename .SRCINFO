@@ -1,0 +1,17 @@
+pkgbase = libx32-fontconfig
+	pkgdesc = A library for configuring and customizing font access (x32 ABI)
+	pkgver = 2.10.1
+	pkgrel = 1.1
+	url = http://www.fontconfig.org/release/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib-x32
+	depends = libx32-expat>=2.0.1
+	depends = libx32-freetype2>=2.3.11
+	depends = fontconfig
+	options = !libtool
+	source = http://www.fontconfig.org/release/fontconfig-2.10.1.tar.gz
+	md5sums = c94e380eea42f2f23ca9537035ef1899
+
+pkgname = libx32-fontconfig
+
