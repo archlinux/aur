@@ -7,7 +7,7 @@ arch=('any')
 url='http://www.uninformativ.de/projects/?q=gitary'
 license=('custom:PIZZA-WARE')
 makedepends=('git')
-depends=('git')
+depends=('git' 'ncurses')
 optdepends=(
   'vim: A reasonable editor, syntax files are provided'
 )
