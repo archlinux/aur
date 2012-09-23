@@ -1,0 +1,18 @@
+pkgbase = libx32-libxau
+	pkgdesc = X11 authorisation library (x32 ABI)
+	pkgver = 1.0.7
+	pkgrel = 1.1
+	url = http://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = pkgconfig
+	makedepends = xproto>=7.0.15
+	makedepends = gcc-multilib-x32
+	depends = libx32-glibc
+	depends = libxau
+	options = !libtool
+	source = http://xorg.freedesktop.org//releases/individual/lib/libXau-1.0.7.tar.bz2
+	sha1sums = 29c47207fd246425b906f525b2220235ce4cd0f6
+
+pkgname = libx32-libxau
+
