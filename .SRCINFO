@@ -1,0 +1,17 @@
+pkgbase = libx32-libxdmcp
+	pkgdesc = X11 Display Manager Control Protocol library (x32 ABI)
+	pkgver = 1.1.1
+	pkgrel = 1.1
+	url = http://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = gcc-multilib-x32
+	depends = libx32-glibc
+	depends = libxdmcp
+	options = !libtool
+	source = http://xorg.freedesktop.org//releases/individual/lib/libXdmcp-1.1.1.tar.bz2
+	sha1sums = 3b63e8fc1600c51d9897d017da190fc6c16245b6
+
+pkgname = libx32-libxdmcp
+
