@@ -1,0 +1,25 @@
+pkgbase = libx32-openssl
+	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (x32 ABI)
+	pkgver = 1.0.1.c
+	pkgrel = 1.1
+	url = https://www.openssl.org
+	arch = x86_64
+	license = custom:BSD
+	makedepends = gcc-multilib-x32
+	depends = libx32-zlib
+	depends = openssl
+	optdepends = ca-certificates
+	options = !makeflags
+	source = https://www.openssl.org/source/openssl-1.0.1c.tar.gz
+	source = https://www.openssl.org/source/openssl-1.0.1c.tar.gz.asc
+	source = no-rpath.patch
+	source = ca-dir.patch
+	source = openssl-1.0.1-x32.patch
+	md5sums = ae412727c8c15b67880aef7bd2999b2e
+	md5sums = a3d90bc42253def61cd1c4237f1ce5f7
+	md5sums = dc78d3d06baffc16217519242ce92478
+	md5sums = 3bf51be3a1bbd262be46dc619f92aa90
+	md5sums = 10d0cebf2d9c0f64c307e82542f519e3
+
+pkgname = libx32-openssl
+
