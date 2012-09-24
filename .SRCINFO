@@ -1,0 +1,32 @@
+pkgbase = libx32-readline
+	pkgdesc = GNU readline library (x32 ABI)
+	pkgver = 6.2.004
+	pkgrel = 1.1
+	url = http://tiswww.case.edu/php/chet/readline/rltop.html
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib-x32
+	depends = libx32-glibc
+	depends = libx32-ncurses
+	depends = readline
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2.tar.gz
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-001
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-001.sig
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-002
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-002.sig
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-003
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-003.sig
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-004
+	source = http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-004.sig
+	md5sums = 67948acb2ca081f23359d0256e9a271c
+	md5sums = 83287d52a482f790dfb30ec0a8746669
+	md5sums = 8e6a51e2e0e6e45a82752e3692c111ac
+	md5sums = 0665020ea118e8434bd145fb71f452cc
+	md5sums = 285361ca6d48c51ae2428157e174e812
+	md5sums = c9d5d79718856e711667dede87cb7622
+	md5sums = 4437205bb1462f5f32e4812b8292c675
+	md5sums = c08e787f50579ce301075c523fa660a4
+	md5sums = 7e39cad1d349b8ae789e4fc33dbb235f
+
+pkgname = libx32-readline
+
