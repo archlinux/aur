@@ -3,13 +3,13 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-acm
-pkgver=201111
+pkgver=201209
 pkgrel=1
-pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4, sigplanconf v2.3 and the unofficial sigplan-proc-varsize v1.4)"
+pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.4, sigplanconf v2.5 and the unofficial sigplan-proc-varsize v1.4)"
 arch=('any')
 url="http://www.acm.org/sigs/publications/proceedings-templates, http://sigplan.acm.org/authorInformation.htm, http://www.isi.edu/~johnh/SOFTWARE/LATEX/"
 _sigproc_url="http://www.acm.org/sigs/publications"
-_sigplan_url="http://www.sigplan.org"
+_sigplan_url="http://drupal.sigplan.org/sites/default/files"
 license=('')
 groups=()
 depends=('texlive-latex3')
@@ -33,8 +33,6 @@ ${_sigproc_url}/sig-alternate.cls
 ${_sigproc_url}/sig-alternate.tex
 ${_sigplan_url}/sigplanconf.cls
 ${_sigplan_url}/sigplanconf-template.tex
-${_sigplan_url}/sigplanconf-template10.tex
-${_sigplan_url}/sigplanconf-template11.tex
 ${_sigplan_url}/sigplanconf-guide.pdf
 http://www.isi.edu/~johnh/SOFTWARE/LATEX/sigplan-proc-varsize-package.tar.gz
 )
@@ -55,12 +53,10 @@ md5sums=('d0f0b981aafbbc5ecaec202bd7623414'
          'c6a1b19bf288f26bc2dba4b72ac7d457'
          '557a5283c73690acc0ef2d5a1adc5e61'
          'da992183e40385e6cab3e7d4feece0f4'
-         'ceb632f99579d805c2e4472ac878480c'
-         '8753848f67f8203fc161e28be692156e'
-         'f9528cc0463ce2ffe2a892591db58c72'
+         'cff982aef1c6e5b427ade8a95700b9ae'
+         '8230a5fbf2c386a55d2f105c064c7f85'
+         '1e1ec310c153a97ddc9d61905053dd52'
          '0c12d497dc34512c8e5e055d3afe7ade'
          '309f0d83e52e6e70b9608f8f4b0e9ced'
-         '4e94835d0b432831e54701ec2fa0800f'
-         '7db95b194a770fa2ee90fce0f80d9cd7'
          '4a6f87c61d9c7fca4b94c892e4742867'
          '216c50b96e931516e9c3fba2567d5838')
