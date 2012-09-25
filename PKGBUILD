@@ -4,7 +4,7 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.24.12
+pkgver=2.24.13
 pkgrel=1
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
         xid-collision-debug.patch
         gtk-modules-32.patch)
-sha256sums=('c5eba3b9259e4bf7554e9dc9db5d72038aa8b1bdd40fa0364b3705c226d11808'
+sha256sums=('35e1a01e46b02970b02ee9f299390d0aa57c1215ad2667bcd584b72f4ea6513d'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
             '2effb13404442ae266d4c663347e88cd1ca19e9a83b452da1743bac16af9c7b0')
 
