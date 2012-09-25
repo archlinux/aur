@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=21.0.1180.89
+pkgver=22.0.1229.79
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -23,16 +23,12 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.default
         chromium.sh
         chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
-        chromium-20.0.1132.57-bison-2.6-fix.patch
-        chromium-21.0.1180.57-fix-crash-in-task-queue.patch
         chromium-ppapi-r0.patch)
-sha256sums=('16cca8d90a3369840f79a6f06d11756515fc8a4c3595060778dcab21e59235c5'
+sha256sums=('06cab1c48092def5bd94e9f4aa764f6ff5728ce35bbcdcc12fddbad3a0f0f738'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             'c1baf14121502efbc2a31b64029dcafa0e28ca5b71ad0e28a3c6342d18198615'
-            'd7aecc17e1eb582fe791c3e5fb2ca3f0efcb9bf5379309c1c27be35be4363bba'
-            'cbd04d9a7cfda7e9c39fa215da897991a410fb59bf0f664abf93ab2c38689898'
             '1f4b57670d317959bc2dc60e5d2a44aa8fc6028f7ed540cdb502fa0aa99c81bd')
 
 build() {
@@ -40,15 +36,6 @@ build() {
 
   # Fix build with glibc 2.16
   patch -Np1 -i "$srcdir/chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch"
-
-  # Fix build with bison 2.6 (patch from Alexis Menard)
-  # http://crbug.com/138243 / https://bugs.webkit.org/show_bug.cgi?id=92264
-  patch -d third_party/WebKit -Np1 -i \
-    "$srcdir/chromium-20.0.1132.57-bison-2.6-fix.patch"
-
-  # Fix crash in LazyBackgroundTaskQueue::ProcessPendingTasks
-  # http://crbug.com/138790
-  patch -Np1 -i "$srcdir/chromium-21.0.1180.57-fix-crash-in-task-queue.patch"
 
   # Fix build without NaCl glibc toolchain (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-ppapi-r0.patch"
@@ -92,7 +79,7 @@ build() {
     -Duse_system_libxml=0 \
     -Duse_system_ssl=0 \
     -Duse_system_yasm=1 \
-    -Duse_system_zlib=1 \
+    -Duse_system_zlib=0 \
     -Duse_gconf=0 \
     -Ddisable_glibc=1 \
     -Ddisable_sse2=1
