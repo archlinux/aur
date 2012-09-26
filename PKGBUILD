@@ -1,7 +1,7 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 
 pkgname=apgdiff
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Another PostgreSQL Diff Tool for schema comparison and migration"
 url="http://apgdiff.startnet.biz/"
@@ -25,4 +25,4 @@ build() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('9eea426e53a8d73667d885e17a7ac064')
+md5sums=('4e4c248fd041b6e58cc5d1e2e3d9ce37')
