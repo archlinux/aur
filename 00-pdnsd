@@ -16,10 +16,11 @@ pdnsd_is_running() {
   case "$INIT" in
     'systemd')
       systemctl is-active pdnsd.service -q
-      return [ ! $? = 0 ]
+      return $?
     ;;
     'init')
-      return [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` == 'STARTED' ]
+      [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` = 'STARTED' ]
+      return $?
     ;;
     *)
       no_valid_init
@@ -28,7 +29,7 @@ pdnsd_is_running() {
 }
 
 pdnsd_going_up() {
-  if [ ! pdnsd_is_running ]; then
+  if ! pdnsd_is_running; then
     # pDNSd isn't running. Start it.
     case "$INIT" in
       'systemd')
