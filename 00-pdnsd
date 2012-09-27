@@ -3,23 +3,66 @@
 INTERFACE=$1
 STATUS=$2
 
+# $INIT should be either "init" (System V) or "systemd".
+INIT=`cat /proc/1/domm`
+
+no_valid_init() {
+  echo 'No valid init system set. Please select either "init" or "systemd".'
+  exit 1
+}
+
 pdnsd_going_up() {
   # Check whether pDNSd is already running before starting it.
-  if [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` == 'STOPPED' ]; then
-    rc.d start pdnsd
-  else
-    rc.d restart pdnsd
-  fi
+  case "$INIT" in
+    'systemd')
+      systemctl is-active pdnsd.service -q
+      if [ ! $? = 0 ]; then
+        systemctl start pdnsd.service
+      else
+        systemctl restart pdnsd.service
+      fi
+    ;;
+    'init')
+      if [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` == 'STOPPED' ]; then
+        rc.d start pdnsd
+      else
+        rc.d restart pdnsd
+      fi
+    ;;
+    *)
+      no_valid_init
+    ;;
+  esac
 }
 
 pdnsd_going_down() {
   # Check for active interface, take offline if none is active
   if [ ! `nm-tool|grep State|cut -f2 -d' '` = 'connected' ]; then
-    rc.d stop pdnsd
+    case "$INIT" in
+      'systemd')
+        systemctl stop pdnsd.service
+      ;;
+      'init')
+        rc.d stop pdnsd
+      ;;
+      *)
+        no_valid_init
+      ;;
+    esac
   else
     # If another interface is active, restart so we're sure we're using
     # the active connection.
-    rc.d restart pdnsd
+    case "$INIT" in
+      'systemd')
+        systemctl restart pdnsd.service
+      ;;
+      'init')
+        rc.d restart pdnsd
+      ;;
+      *)
+        no_valid_init
+      ;;
+    esac
   fi
 }
 
