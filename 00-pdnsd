@@ -28,59 +28,39 @@ pdnsd_is_running() {
   esac
 }
 
+pdnsd_init_command() {
+  # Give pDNSd a command through the init system
+  case "$INIT" in
+    'systemd')
+      exec systemctl $1 pdnsd.service
+    ;;
+    'init')
+      exec rc.d $1 pdnsd
+    ;;
+    *)
+      no_valid_init
+    ;;
+  esac
+}
+
 pdnsd_going_up() {
   if ! pdnsd_is_running; then
     # pDNSd isn't running. Start it.
-    case "$INIT" in
-      'systemd')
-        systemctl start pdnsd.service
-      ;;
-      'init')
-        rc.d start pdnsd
-      ;;
-    esac
+    pdnsd_init_command start
   else
     # pDNSd is running. Restart it.
-    case "$INIT" in
-      'systemd')
-        systemctl restart pdnsd.service
-      ;;
-      'init')
-        rc.d restart pdnsd
-      ;;
-    esac
-
+    pdnsd_init_command restart
   fi
 }
 
 pdnsd_going_down() {
   # Check for active interface, take offline if none is active
   if [ ! `nm-tool|grep State|cut -f2 -d' '` = 'connected' ]; then
-    case "$INIT" in
-      'systemd')
-        systemctl stop pdnsd.service
-      ;;
-      'init')
-        rc.d stop pdnsd
-      ;;
-      *)
-        no_valid_init
-      ;;
-    esac
+    pdnsd_init_command stop
   else
     # If another interface is active, restart so we're sure we're using
     # the active connection.
-    case "$INIT" in
-      'systemd')
-        systemctl restart pdnsd.service
-      ;;
-      'init')
-        rc.d restart pdnsd
-      ;;
-      *)
-        no_valid_init
-      ;;
-    esac
+    pdnsd_init_command restart
   fi
 }
 
