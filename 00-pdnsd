@@ -19,7 +19,7 @@ pdnsd_is_running() {
       return $?
     ;;
     'init')
-      [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` = 'STARTED' ]
+      [ 'STARTED' = `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` ]
       return $?
     ;;
     *)
@@ -55,7 +55,7 @@ pdnsd_going_up() {
 
 pdnsd_going_down() {
   # Check for active interface, take offline if none is active
-  if [ ! `nm-tool|grep State|cut -f2 -d' '` = 'connected' ]; then
+  if [ 'connected' != `nm-tool|grep State|cut -f2 -d' '` ]; then
     pdnsd_init_command stop
   else
     # If another interface is active, restart so we're sure we're using
