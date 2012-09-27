@@ -4,7 +4,7 @@ INTERFACE=$1
 STATUS=$2
 
 # $INIT should be either "init" (System V) or "systemd".
-INIT=`cat /proc/1/domm`
+INIT=`cat /proc/1/comm`
 
 no_valid_init() {
   echo 'No valid init system set. Please select either "init" or "systemd".'
