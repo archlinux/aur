@@ -7,7 +7,7 @@
 
 pkgname=midori
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
 url='http://www.twotoasts.de/index.php?/pages/midori_summary.html'
@@ -17,12 +17,17 @@ depends=('libwebkit>=1.3.13' 'libunique' 'hicolor-icon-theme' 'desktop-file-util
 makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2>=2.7.1' 'vala')
 optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support')
 options=('!emptydirs')
-source=(http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
-md5sums=('06db7b88a41e9b2265728960d5e98f35')
+source=(http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2
+        0.4.7-private-mode.patch)
+md5sums=('06db7b88a41e9b2265728960d5e98f35'
+         'b2f21a853038662fd0e6c2274ed9dfb7')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  
+
+  # fs#31641
+  patch -Np1 -i $srcdir/0.4.7-private-mode.patch
+
   # python2 
   export PYTHON=/usr/bin/python2
   sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" wscript waf
