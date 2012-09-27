@@ -1,5 +1,5 @@
-2012-xx-xx Frederik "Freso" S. Olesen <freso.dk@gmail.com>
-  * x.x-x :
+2012-09-27 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+  * 2.0-1 :
   Added support for running under both systemd and System V systems.
 
 2012-03-10 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
