@@ -11,28 +11,45 @@ no_valid_init() {
   exit 1
 }
 
-pdnsd_going_up() {
-  # Check whether pDNSd is already running before starting it.
+pdnsd_is_runnning() {
+  # Check whether pDNSd is running.
   case "$INIT" in
     'systemd')
       systemctl is-active pdnsd.service -q
-      if [ ! $? = 0 ]; then
-        systemctl start pdnsd.service
-      else
-        systemctl restart pdnsd.service
-      fi
+      return [ ! $? = 0 ]
     ;;
     'init')
-      if [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` == 'STOPPED' ]; then
-        rc.d start pdnsd
-      else
-        rc.d restart pdnsd
-      fi
+      return [ `rc.d list|grep pdnsd|cut -f1 -d']'|cut -d'[' -f2` == 'STARTED' ]
     ;;
     *)
       no_valid_init
     ;;
   esac
+}
+
+pdnsd_going_up() {
+  if [ ! pdnsd_is_running ]; then
+    # pDNSd isn't running. Start it.
+    case "$INIT" in
+      'systemd')
+        systemctl start pdnsd.service
+      ;;
+      'init')
+        rc.d start pdnsd
+      ;;
+    esac
+  else
+    # pDNSd is running. Restart it.
+    case "$INIT" in
+      'systemd')
+        systemctl restart pdnsd.service
+      ;;
+      'init')
+        rc.d restart pdnsd
+      ;;
+    esac
+
+  fi
 }
 
 pdnsd_going_down() {
