@@ -11,7 +11,7 @@ no_valid_init() {
   exit 1
 }
 
-pdnsd_is_runnning() {
+pdnsd_is_running() {
   # Check whether pDNSd is running.
   case "$INIT" in
     'systemd')
