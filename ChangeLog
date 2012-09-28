@@ -1,5 +1,10 @@
 2012-09-28 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
+	* 2.4.3-2 :
+	Added icon to the desktop menu entry.
+
+2012-09-28 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
 	* 2.4.3-1 :
 	Version bumped.
 	The .desktop now calls Java directly.

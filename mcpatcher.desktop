@@ -5,6 +5,7 @@ Name=MCPatcher
 Comment=Minecraft patcher for HD textures and more.
 TryExec=mcpatcher
 Exec=java -Xmx512m -jar /usr/share/mcpatcher/mcpatcher.jar
+Icon=/usr/share/pixmaps/mcpatcher.png
 Terminal=false
 Categories=Game;
 Keywords=minecraft;
