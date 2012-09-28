@@ -1,6 +1,7 @@
-2012-09-xx Frederik "Freso" S. Olesen <archlinux@freso.dk>
+2012-09-28 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
-	* X-x :
+	* 2.4.3-1 :
+	Version bumped.
 	The .desktop now calls Java directly.
 
 2012-09-19 Frederik "Freso" S. Olesen <archlinux@freso.dk>
