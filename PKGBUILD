@@ -10,7 +10,6 @@ license=('Public Domain')
 url="https://github.com/pclewis/mcpatcher"
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
-makedepends=('unzip')
 noextract=("$pkgname-$pkgver.jar")
 changelog=ChangeLog
 source=(mcpatcher
@@ -24,7 +23,7 @@ build() {
     cd "$srcdir"
 
     # Extract icon
-    unzip "$pkgname-$pkgver.jar" 'resources/icon.png'
+    bsdcpio --extract --make-directories 'resources/icon.png' < "$pkgname-$pkgver.jar"
 
     install -vDm755 "mcpatcher"            "$pkgdir/usr/bin/mcpatcher"
     install -vDm644 "resources/icon.png"   "$pkgdir/usr/share/pixmaps/mcpatcher.png"

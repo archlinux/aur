@@ -6,7 +6,6 @@ pkgbase = mcpatcher
 	changelog = ChangeLog
 	arch = any
 	license = Public Domain
-	makedepends = unzip
 	depends = java-runtime
 	optdepends = minecraft: the game itself
 	noextract = mcpatcher-2.4.3.jar
