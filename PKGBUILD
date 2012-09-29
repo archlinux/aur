@@ -6,7 +6,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='http://sphinx.pocoo.org/'
 license=('GPL')
