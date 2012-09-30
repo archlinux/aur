@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
-pkgver=3.4.2
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="GNOME Docking Library"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=('gtk3')
 makedepends=('gtk-doc' 'intltool' 'gobject-introspection')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('66eeca8aa8e7205abf38911a9eadfbd288967f92388682bd62942ed4f1db4906')
+sha256sums=('32a04fc96667e2f7ca1e3c853b996da3e62f4811b2a90d62cb2081f68aeecac3')
 
 build() {
   cd "$pkgname-$pkgver"
