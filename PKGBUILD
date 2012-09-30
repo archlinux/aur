@@ -1,4 +1,4 @@
-# $Id$
+# $Id: PKGBUILD 167285 2012-09-30 02:21:52Z giovanni $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
@@ -6,7 +6,7 @@
 _pkgname=vlc
 pkgname=vlc-decklink
 pkgver=2.0.3
-pkgrel=1
+pkgrel=4
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -15,7 +15,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt' 'libproxy'
          'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska'
          'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
          'libshout' 'libmad' 'libmpeg2' 'libmodplug' 'libass'
-         'xcb-util-keysyms' 'ttf-freefont')
+         'xcb-util-keysyms')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'fluidsynth' 'libdc1394' 'libavc1394' 'lirc-utils'
              'libcaca' 'librsvg' 'portaudio' 'oss' 'libgme' 'xosd'
@@ -49,7 +49,9 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'libmtp: for MTP devices support'
             'fluidsynth: for synthesizer MIDI FluidSynth'
             'smbclient: for SMB access plugin'
-            'libcdio: for audio CD playback support')
+            'libcdio: for audio CD playback support'
+            'ttf-freefont: for subtitle font '
+            'ttf-dejavu: for subtitle font')
 conflicts=('vlc-plugin' 'vlc')
 provides=('vlc')
 replaces=('vlc-plugin')
@@ -68,8 +70,10 @@ build() {
   ln -sf /usr/src/decklink-sdk decklink-sdk/include
 
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
+  sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
 
   ./configure --prefix=/usr \
+              --sysconfdir=/etc \
               --disable-rpath \
               --enable-oss \
               --enable-faad \
