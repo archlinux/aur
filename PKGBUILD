@@ -6,7 +6,7 @@
 pkgbase=python-nose
 pkgname=('python-nose' 'python2-nose' 'python-nose-doc')
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url='http://readthedocs.org/docs/nose/'
@@ -24,7 +24,7 @@ build() {
 package_python-nose() {
   depends=('python' 'python-distribute')
   cd "$srcdir/nose-$pkgver"
-  python setup.py install --prefix=/usr --root="${pkgdir}"
+  python3 setup.py install --prefix=/usr --root="${pkgdir}"
   mv "$pkgdir/usr/bin/nosetests" "$pkgdir/usr/bin/nosetests3"
 }
 
