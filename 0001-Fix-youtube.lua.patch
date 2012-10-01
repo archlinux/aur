@@ -1,0 +1,32 @@
+From 5b1c00284e1bae3069b51d07d84d3a096ca6bfcf Mon Sep 17 00:00:00 2001
+From: Martin Herkt <lachs0r@hong-mailing.de>
+Date: Thu, 27 Sep 2012 13:45:27 +0200
+Subject: [PATCH] Fix youtube.lua
+
+YouTube has added a new "signature" parameter to their playback URLs.
+Append this parameter to the URL if url_encoded_fmt_stream_map contains
+"sig".
+---
+ share/lua/website/youtube.lua | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/share/lua/website/youtube.lua b/share/lua/website/youtube.lua
+index e7fc60c..39cc31d 100644
+--- a/share/lua/website/youtube.lua
++++ b/share/lua/website/youtube.lua
+@@ -125,7 +125,11 @@ function YouTube.iter_formats(config, U)
+     for f in fmt_stream_map:gmatch('([^,]*),') do
+         local d = U.decode(f)
+         if d['itag'] and d['url'] then
+-            urls[U.unescape(d['itag'])] = U.unescape(d['url'])
++            local uurl = U.unescape(d['url'])
++            if d['sig'] then
++                uurl = uurl .. "&signature=" .. U.unescape(d['sig'])
++            end
++            urls[U.unescape(d['itag'])] = uurl
+         end
+     end
+ 
+-- 
+1.7.12.1
+
