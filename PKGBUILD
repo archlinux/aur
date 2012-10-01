@@ -1,26 +1,21 @@
 # Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
 
 pkgname=libquvi-scripts
-pkgver=0.4.8
-pkgrel=2
+pkgver=0.4.9
+pkgrel=1
 pkgdesc='Library for parsing video download links.'
 arch=('any')
 url='http://quvi.sourceforge.net/'
 license=('LGPL')
 depends=('curl' 'lua')
 options=('!libtool')
-source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.gz"{,.sig}
-        0001-Fix-youtube.lua.patch)
-md5sums=('9a11cfcb474266b377ec41a5a502ffe0'
-         '7126dbed0e493135089018775b1652a6'
-         '0cdcda0fed2128c78c0c3ac784b94243')
+source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
+md5sums=('a7f3dad2e2809857e876726813bba1be'
+         '543647d9dbc5b82e97327630968f8399')
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  patch -Np1 -i ../0001-Fix-youtube.lua.patch
-
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-nsfw --with-nlfy
   make
 }
 
