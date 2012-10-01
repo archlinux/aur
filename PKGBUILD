@@ -11,10 +11,9 @@ depends=('python2')
 makedepends=('git')
 backup=('etc/conf.d/maraschino'
         'opt/maraschino/maraschino.db')
-install='maraschino.install'
 source=('maraschino.sh' 'maraschino.rc')
 md5sums=('7ccaabbd8632323702b591637fcc2b4a'
-         'a2b02d0748d1f72cd1326a23161e39a2')
+         '12d6bdd1753612a126b3626de855519b')
 
 _gitroot=https://github.com/mrkipling/maraschino
 _gitname=maraschino
@@ -54,5 +53,3 @@ package() {
         "${pkgdir}/etc/conf.d/maraschino"
 }
 
-md5sums=('7ccaabbd8632323702b591637fcc2b4a'
-         '12d6bdd1753612a126b3626de855519b')

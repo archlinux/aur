@@ -3,7 +3,6 @@ pkgbase = maraschinoproject-git
 	pkgver = 20120709
 	pkgrel = 1
 	url = http://www.maraschinoproject.com/
-	install = maraschino.install
 	arch = any
 	license = GPL
 	makedepends = git
