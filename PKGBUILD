@@ -1,12 +1,12 @@
-# Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: max.bra <max.bra at alice dot it>
 # Contributor: SeeSchloss <seeschloss@seos.fr>
 
 pkgname=unoconv
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Libreoffice-based document converter"
-depends=('python2' 'java-runtime' 'libreoffice-common')
+depends=('python2' 'libreoffice-common')
 makedepends=('asciidoc')
 arch=('any')
 license=('GPL2')
