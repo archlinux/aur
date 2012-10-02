@@ -2,23 +2,20 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.4.2
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('gnome-desktop' 'gtk3' 'libcanberra' 'librsvg' 'gstreamer0.10-base-plugins'
-         'gstreamer0.10-good-plugins' 'gstreamer0.10-bad-plugins' 'clutter-gst' 'clutter-gtk' 'mx'
-         'libgee' 'gnome-video-effects' 'hicolor-icon-theme' 'dconf' 'cogl')
-makedepends=('pkgconfig' 'gnome-doc-utils' 'intltool' 'gobject-introspection' 'itstool'
-             'nautilus-sendto')
+depends=('gtk3' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'clutter-gst' 'clutter-gtk' 'libcanberra' 'libgee' 'gnome-video-effects' 'librsvg' 'gnome-desktop')
+makedepends=('pkgconfig' 'intltool' 'gobject-introspection' 'itstool' 'vala' 'nautilus-sendto')
 optdepends=('nautilus-sendto: Send images')
 groups=('gnome-extra')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org/projects/cheese/"
 install=cheese.install
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('730083e1fb7da1fc8c38978cbb957ff2128d6f132132b3863bd60c0963a120e0')
+sha256sums=('f0872c6c276fabf054e37e427cb4a4174351a439ebfae7431ecc09a1837e9a80')
 
 build() {
   cd $pkgname-$pkgver
