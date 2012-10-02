@@ -4,8 +4,8 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.5
-pkgver=3.5.4
+_srcname=linux-3.6
+pkgver=3.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -13,24 +13,12 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        'alsa-powersave-3.5.x.patch'
-        'watchdog-3.5.x.patch'
-        'i915-i2c-crash-3.5.x.patch')
-md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
-         '4d34e5098b490670261b1aea71d26023'
-         'ec3dbb7c31881bcbefdbbaf32398046f'
-         '821ddda39e3b2fdd32eb47852a479240'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         'c1d58e712112cf8f95e7831012a1e67a'
-         'ae13ed1e92bba07e9b17cf5c8d89683c'
-         'ff4a203dd52e4dfb5d60948bb667d06d')
+        'change-default-console-loglevel.patch')
 
 _kernelname=${pkgbase#linux}
 
@@ -38,18 +26,10 @@ build() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix broken watchdog
-  # https://bugzilla.kernel.org/show_bug.cgi?id=44991
-  patch -Np1 -i "${srcdir}/watchdog-3.5.x.patch"
-
-  # fix i915 i2c crash
-  # https://bugzilla.kernel.org/show_bug.cgi?id=46381
-  patch -Np1 -i "${srcdir}/i915-i2c-crash-3.5.x.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -321,3 +301,8 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('1a1760420eac802c541a20ab51a093d1'
+         '651983b5213b3aa5acf0c083ffaf5179'
+         '6bfd4471382865de9efeb6603cd614b3'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '9d3c56a4b999c8bfbd4018089a62f662')
