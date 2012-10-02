@@ -1,7 +1,7 @@
 pkgname=otrs
 pkgver=3.1.10
 itsmver=3.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
 options=("emptydirs")
@@ -35,6 +35,7 @@ backup=("etc/httpd/conf/extra/${pkgname}.conf")
 install="${pkgname}.install"
 source=("${pkgname}.conf"
         "${pkgname}.install"
+        "${pkgname}.diff"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz"
         "http://ftp.otrs.org/pub/otrs/itsm/packages31/ITSMCore-${itsmver}.opm"
         "http://ftp.otrs.org/pub/otrs/itsm/packages31/GeneralCatalog-${itsmver}.opm"
@@ -48,6 +49,11 @@ _HTMLPATH="srv/http/${pkgname}"
 package() {
   mkdir -p "${pkgdir}/${_HTMLPATH}/"
   cp -r ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/${_HTMLPATH}/
+  cp ${pkgname}.diff ${pkgdir}/${_HTMLPATH}/
+  cd "${pkgdir}/${_HTMLPATH}/"
+  cat "${pkgname}.diff" | patch -p1
+  rm "${pkgname}.diff"
+  cd "${pkgdir}/.."
   _EXTDIR="${pkgdir}/${_HTMLPATH}/extentions"
   mkdir -p "${_EXTDIR}"
   install -D -m 0640 "${srcdir}/ITSMCore-${itsmver}.opm" \
@@ -71,6 +77,7 @@ package() {
 }
 md5sums=('ebfeabfba189816c4b10861289406840'
          'f0ae9b90828825382720f4422aa9c81d'
+         'f62b83ca1537bb4cefce675fec6011eb'
          'fdadbc1c8e7a4d62d7e3afbc3c712702'
          '56ca1566b21aca220b8c404fdcf8f7cb'
          '8d69c34e3639764f56b76378fb1a7b1f'
@@ -81,6 +88,7 @@ md5sums=('ebfeabfba189816c4b10861289406840'
          'fd913c540e0fd2f689ad99b4add07bf2')
 sha1sums=('247719410cfd3b7a89843f2a7ae6820507f2b22d'
           '69bc6abcdcb3df6e67181dc0644d0088007c6d78'
+          '17036d224c1ad42348970236a39e666254dc932b'
           '91fa603052977ffc63948aeb33c22398645ca35b'
           '84e49f7dbae79f50acdc7f2aefa7f7e7a92da480'
           '6ef5c495dc5da33ca6768a2c3771bc41d76e3556'

@@ -1,0 +1,1740 @@
+--- a/CHANGES
++++ b/CHANGES
+@@ -832,7 +832,7 @@
+  - 2011-01-11 Fixed bug#6653 - Time Format Dashboard etc.
+  - 2011-01-11 Fixed bug#6505 - Ticket::Frontend::PlainView has no effect.
+  - 2011-01-10 Fixed bug#6668 - Upgrade to OTRS 3.0.x fails if OTRS 2.4.x is used with OTRS::ITSM 2.x
+- - 2011-01-07 Fixed bug#6555 - no decoder for iso-8859-1 at /opt/otrs/Kernel/cpan-lib/MIME/Parser.pm line 821.
++ - 2011-01-07 Fixed bug#6555 - no decoder for iso-8859-1 at /srv/http/otrs/Kernel/cpan-lib/MIME/Parser.pm line 821.
+  - 2011-01-07 Fixed bug#6582 - Admin->Manage Queues wrong subqueue default.
+  - 2011-01-07 Fixed bug#6658 - History contains redundant SetPendingTime entries.
+  - 2011-01-06 Fixed bug#5053 - Some inline images (bitmaps) from MS Outlook clients are not displayed in ticket zoom.
+@@ -4261,7 +4261,7 @@
+  - 2006-09-27 fixed bug #1358 - Customer History > All customer tickets.
+     returns an incorrect number of tickets
+  - 2006-09-27 fixed bug #1293 - Can't use an undefined value as a HASH
+-    reference at /opt/otrs/bin/cgi-bin//../../Kernel/Modules/AgentTicketBulk.pm
++    reference at /srv/http/otrs/bin/cgi-bin//../../Kernel/Modules/AgentTicketBulk.pm
+     line 194
+  - 2006-09-27 fixed bug #1356 - mssql driver bug - Stats module of OTRS 2.1
+     beta 2 - "Cant use string ("0")".
+
+--- a/INSTALL
++++ b/INSTALL
+@@ -40,7 +40,7 @@
+ for detailed instructions.
+ 
+ The OTRS system user in this example is "otrs" and the installation
+-directory is /opt/otrs. You can adapt these values as needed.
++directory is /srv/http/otrs. You can adapt these values as needed.
+ 
+ 1) Install tar.gz:
+    ---------------
+@@ -53,7 +53,7 @@
+    Use the following script to get an overview of all installed and
+    required cpan modules.
+ 
+-   shell> perl /opt/otrs/bin/otrs.CheckModules.pl
++   shell> perl /srv/http/otrs/bin/otrs.CheckModules.pl
+ 
+    To install missing Perl modules, you can:
+ 
+@@ -109,7 +109,7 @@
+ 
+     Create user:
+ 
+-    shell> useradd -d /opt/otrs/ -c 'OTRS user' otrs
++    shell> useradd -d /srv/http/otrs/ -c 'OTRS user' otrs
+ 
+     Add user to webserver group (if the webserver is not running as the OTRS user):
+ 
+@@ -123,7 +123,7 @@
+     and $OTRS_HOME/Kernel/Config/*.dist. You must activate them by copying
+     them without the ".dist" filename extension.
+ 
+-      shell> cd /opt/otrs/
++      shell> cd /srv/http/otrs/
+       shell> cp Kernel/Config.pm.dist Kernel/Config.pm
+       shell> cp Kernel/Config/GenericAgent.pm.dist Kernel/Config/GenericAgent.pm
+ 
+@@ -134,14 +134,14 @@
+ 
+ 5) Check if all needed modules are installed:
+    ------------------------------------------
+-      shell> perl -cw /opt/otrs/bin/cgi-bin/index.pl
+-      /opt/otrs/bin/cgi-bin/index.pl syntax OK
++      shell> perl -cw /srv/http/otrs/bin/cgi-bin/index.pl
++      /srv/http/otrs/bin/cgi-bin/index.pl syntax OK
+ 
+-      shell> perl -cw /opt/otrs/bin/cgi-bin/customer.pl
+-      /opt/otrs/bin/cgi-bin/customer.pl syntax OK
++      shell> perl -cw /srv/http/otrs/bin/cgi-bin/customer.pl
++      /srv/http/otrs/bin/cgi-bin/customer.pl syntax OK
+ 
+-      shell> perl -cw /opt/otrs/bin/otrs.PostMaster.pl
+-      /opt/otrs/bin/otrs.PostMaster.pl syntax OK
++      shell> perl -cw /srv/http/otrs/bin/otrs.PostMaster.pl
++      /srv/http/otrs/bin/otrs.PostMaster.pl syntax OK
+ 
+     "syntax OK" tells you all mandatory perl modules are installed.
+ 
+@@ -158,19 +158,19 @@
+    For example:
+      Web server which runs as the OTRS user:
+ 
+-       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=otrs /opt/otrs
++       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=otrs /srv/http/otrs
+ 
+      Webserver with wwwrun user (e. g. SUSE):
+ 
+-       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=wwwrun /opt/otrs
++       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=wwwrun /srv/http/otrs
+ 
+      Webserver with apache user (e. g. Red Hat, CentOS):
+ 
+-       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache /opt/otrs
++       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache /srv/http/otrs
+ 
+      Webserver with www-data user (e. g. Debian, Ubuntu):
+ 
+-       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=www-data --otrs-group=www-data --web-group=www-data /opt/otrs
++       shell> bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=www-data --otrs-group=www-data --web-group=www-data /srv/http/otrs
+ 
+ 8) Database setup:
+    ---------------
+@@ -187,9 +187,9 @@
+ 
+ 10) First email:
+     ------------
+-   To check email reception, you can pipe an email directly into /opt/otrs/bin/otrs.Postmaster.pl:
++   To check email reception, you can pipe an email directly into /srv/http/otrs/bin/otrs.Postmaster.pl:
+ 
+-   shell> cat /opt/otrs/doc/sample_mails/test-email-1.box | /opt/otrs/bin/otrs.PostMaster.pl
++   shell> cat /srv/http/otrs/doc/sample_mails/test-email-1.box | /srv/http/otrs/bin/otrs.PostMaster.pl
+ 
+ 11) Cronjobs for the OTRS user:
+     ---------------------------
+@@ -204,15 +204,15 @@
+ 
+       Scheduling the cronjobs for the first time:
+ 
+-      shell> /opt/otrs/bin/Cron.sh start
++      shell> /srv/http/otrs/bin/Cron.sh start
+ 
+       Updating the cronjob schedules if you made changes:
+ 
+-      shell> /opt/otrs/bin/Cron.sh restart
++      shell> /srv/http/otrs/bin/Cron.sh restart
+ 
+       Stopping the cronjobs (useful for maintenance):
+ 
+-      shell> /opt/otrs/bin/Cron.sh stop
++      shell> /srv/http/otrs/bin/Cron.sh stop
+       
+ 12) OTRS Scheduler Service:
+     ---------------------------
+
+--- a/Kernel/Config/Defaults.pm
++++ b/Kernel/Config/Defaults.pm
+@@ -831,7 +831,7 @@
+     # directories                                         #
+     # --------------------------------------------------- #
+     # root directory
+-    $Self->{Home} = '/opt/otrs';
++    $Self->{Home} = '/srv/http/otrs';
+ 
+     # tmp dir
+     $Self->{TempDir} = '<OTRS_CONFIG_Home>/var/tmp';
+@@ -972,7 +972,7 @@
+     # --------------------------------------------------- #
+     $Self->{PGP}          = 0;
+     $Self->{'PGP::Bin'}     = '/usr/bin/gpg';
+-    $Self->{'PGP::Options'} = '--homedir /opt/otrs/.gnupg/ --batch --no-tty --yes';
++    $Self->{'PGP::Options'} = '--homedir /srv/http/otrs/.gnupg/ --batch --no-tty --yes';
+ 
+ #    $Self->{'PGP::Options'} = '--batch --no-tty --yes';
+ #    $Self->{'PGP::Key::Password'}->{'D2DF79FA'} = 1234;
+
+--- a/Kernel/Config/Files/Framework.xml
++++ b/Kernel/Config/Files/Framework.xml
+@@ -2800,7 +2800,7 @@
+         <Group>Framework</Group>
+         <SubGroup>Crypt::PGP</SubGroup>
+         <Setting>
+-            <String Regex="">--homedir /opt/otrs/.gnupg/ --batch --no-tty --yes</String>
++            <String Regex="">--homedir /srv/http/otrs/.gnupg/ --batch --no-tty --yes</String>
+         </Setting>
+     </ConfigItem>
+     <ConfigItem Name="PGP::Key::Password" Required="1" Valid="1">
+
+--- a/Kernel/Config.pm.dist
++++ b/Kernel/Config.pm.dist
+@@ -63,7 +63,7 @@
+     # ---------------------------------------------------- #
+     # fs root directory
+     # ---------------------------------------------------- #
+-    $Self->{Home} = '/opt/otrs';
++    $Self->{Home} = '/srv/http/otrs';
+ 
+     # ---------------------------------------------------- #
+     # insert your own config settings "here"               #
+
+--- a/Kernel/Language/ar_SA.pm
++++ b/Kernel/Language/ar_SA.pm
+@@ -1262,17 +1262,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/bg.pm
++++ b/Kernel/Language/bg.pm
+@@ -1261,17 +1261,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/ca.pm
++++ b/Kernel/Language/ca.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/cs.pm
++++ b/Kernel/Language/cs.pm
+@@ -1264,17 +1264,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/da.pm
++++ b/Kernel/Language/da.pm
+@@ -1262,17 +1262,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/de.pm
++++ b/Kernel/Language/de.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/el.pm
++++ b/Kernel/Language/el.pm
+@@ -1263,17 +1263,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/es.pm
++++ b/Kernel/Language/es.pm
+@@ -1264,17 +1264,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/es_MX.pm
++++ b/Kernel/Language/es_MX.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/et.pm
++++ b/Kernel/Language/et.pm
+@@ -1259,17 +1259,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/fa.pm
++++ b/Kernel/Language/fa.pm
+@@ -1265,17 +1265,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/fi.pm
++++ b/Kernel/Language/fi.pm
+@@ -1261,17 +1261,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/fr.pm
++++ b/Kernel/Language/fr.pm
+@@ -1266,17 +1266,17 @@
+         'Certificate File' => 'Fichier de Certificat',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             'Le chemin complet et Nom du fichier de Certificat (doit être au format .p12).',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => 'par ex. /opt/otrs/var/certificates/SOAP/certificate.p12',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => 'par ex. /srv/http/otrs/var/certificates/SOAP/certificate.p12',
+         'Certificate Password File' => 'Fichier de Mot de Passe du Certificat',
+         'The password to open the SSL certificate.' => 'Le mot de passe pour ouvrir le Certificat',
+         'Certification Authority (CA) File' => 'Fichier de l\'Autorité de Certification',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             'Le chemin complet et nom du fichier de certificat de l\'Autorité de certification qui valide le certificat SSL',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => 'par ex. /opt/otrs/var/certificates/SOAP/CA/ca.pem',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => 'par ex. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem',
+         'Certification Authority (CA) Directory' => 'Répertoire de l\'Autorité de Certification',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             'Le chemin complet du répertoire de l\autorité de certification où les certificats CA sont stockés dans le système de fichier',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => 'par ex. /opt/otrs/var/certificates/SOAP/CA',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => 'par ex. /srv/http/otrs/var/certificates/SOAP/CA',
+         'Proxy Server' => 'Serveur Proxy',
+         'URI of a proxy server to be used (if needed).' => 'URI du serveur proxy à utiliser (si besoin)',
+         'e.g. http://proxy_hostname:8080' => 'par ex. http://proxy_hostname:8080',
+
+--- a/Kernel/Language/hi.pm
++++ b/Kernel/Language/hi.pm
+@@ -1262,17 +1262,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/hr.pm
++++ b/Kernel/Language/hr.pm
+@@ -1264,17 +1264,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/hu.pm
++++ b/Kernel/Language/hu.pm
+@@ -1265,17 +1265,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/it.pm
++++ b/Kernel/Language/it.pm
+@@ -1267,17 +1267,17 @@
+         'Certificate File' => 'File del Certificato',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             'Percorso completo e nome del certificato SSL, in formato .p12',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => 'es. /opt/otrs/var/certificates/SOAP/certificate.p12',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => 'es. /srv/http/otrs/var/certificates/SOAP/certificate.p12',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => 'Password per aprire il certificato SSL',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             'Percorso completo e nome del file della certification Authority per validare il certificato SSL, in formato .pem',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => 'es. /opt/otrs/var/certificates/SOAP/CA/ca.pem',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => 'es. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             'Percorso completo e nome del file della directory che contiene i certificati CA',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => 'es. /opt/otrs/var/certificates/SOAP/CA',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => 'es. /srv/http/otrs/var/certificates/SOAP/CA',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => 'URI del Proxy Server, se richiesto',
+         'e.g. http://proxy_hostname:8080' => 'es. http://proxy_hostname:8080',
+
+--- a/Kernel/Language/ja.pm
++++ b/Kernel/Language/ja.pm
+@@ -1261,17 +1261,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/lt.pm
++++ b/Kernel/Language/lt.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/lv.pm
++++ b/Kernel/Language/lv.pm
+@@ -1259,17 +1259,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/nb_NO.pm
++++ b/Kernel/Language/nb_NO.pm
+@@ -1267,17 +1267,17 @@
+         'Certificate File' => 'Sertifikat fil',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             'Full adresse og navn på SSL sertifikat filen (må være i .p12 format).',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => 'Proxy server',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => 'f.eks. http://proxy_hostname:8080',
+
+--- a/Kernel/Language/nl.pm
++++ b/Kernel/Language/nl.pm
+@@ -1266,17 +1266,17 @@
+         'Certificate File' => 'Certificaat-bestand',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             'Het volledige pad en de naam van het SSL-certificaat (in .p12 formaat).',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => 'bijv. /opt/otrs/var/certificates/SOAP/certificate.p12',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => 'bijv. /srv/http/otrs/var/certificates/SOAP/certificate.p12',
+         'Certificate Password File' => 'Bestand dat wachtwoord van het certificaaat bevat',
+         'The password to open the SSL certificate.' => 'Het wachtwoord voor het SSL-certificaat',
+         'Certification Authority (CA) File' => 'Certification Authority (CA) bestand',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             'Het volledige pad en de naam van het CA certificaat dat het SSL certificaat valideert.',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => 'Bijvoorbeeld /opt/otrs/var/certificates/SOAP/CA/ca.pem',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => 'Bijvoorbeeld /srv/http/otrs/var/certificates/SOAP/CA/ca.pem',
+         'Certification Authority (CA) Directory' => 'Certification Authority (CA) directory',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             'Het volledige pad van de directory waar de CA-certificaten worden opgeslagen.',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => 'bijvoorbeeld /opt/otrs/var/certificates/SOAP/CA',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => 'bijvoorbeeld /srv/http/otrs/var/certificates/SOAP/CA',
+         'Proxy Server' => 'Proxy-server',
+         'URI of a proxy server to be used (if needed).' => 'URI van de proxy-server (indien nodig).',
+         'e.g. http://proxy_hostname:8080' => 'e.g. http://proxy_hostname:8080',
+
+--- a/Kernel/Language/pl.pm
++++ b/Kernel/Language/pl.pm
+@@ -1262,17 +1262,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/pt.pm
++++ b/Kernel/Language/pt.pm
+@@ -1261,17 +1261,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/pt_BR.pm
++++ b/Kernel/Language/pt_BR.pm
+@@ -1263,17 +1263,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/ru.pm
++++ b/Kernel/Language/ru.pm
+@@ -1267,17 +1267,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/sk_SK.pm
++++ b/Kernel/Language/sk_SK.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/sl.pm
++++ b/Kernel/Language/sl.pm
+@@ -1264,17 +1264,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/sr_Cyrl.pm
++++ b/Kernel/Language/sr_Cyrl.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/sr_Latn.pm
++++ b/Kernel/Language/sr_Latn.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/sv.pm
++++ b/Kernel/Language/sv.pm
+@@ -1261,17 +1261,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/tr.pm
++++ b/Kernel/Language/tr.pm
+@@ -1259,17 +1259,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/uk.pm
++++ b/Kernel/Language/uk.pm
+@@ -1260,17 +1260,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/vi_VN.pm
++++ b/Kernel/Language/vi_VN.pm
+@@ -1259,17 +1259,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/zh_CN.pm
++++ b/Kernel/Language/zh_CN.pm
+@@ -1265,17 +1265,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Language/zh_TW.pm
++++ b/Kernel/Language/zh_TW.pm
+@@ -1262,17 +1262,17 @@
+         'Certificate File' => '',
+         'The full path and name of the SSL certificate file (must be in .p12 format).' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/certificate.p12' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12' => '',
+         'Certificate Password File' => '',
+         'The password to open the SSL certificate.' => '',
+         'Certification Authority (CA) File' => '',
+         'The full path and name of the certification authority certificate file that validates SSL certificate.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem' => '',
+         'Certification Authority (CA) Directory' => '',
+         'The full path of the certification authority directory where the CA certificates are stored in the file system.' =>
+             '',
+-        'e.g. /opt/otrs/var/certificates/SOAP/CA' => '',
++        'e.g. /srv/http/otrs/var/certificates/SOAP/CA' => '',
+         'Proxy Server' => '',
+         'URI of a proxy server to be used (if needed).' => '',
+         'e.g. http://proxy_hostname:8080' => '',
+
+--- a/Kernel/Output/HTML/Standard/AdminGenericInterfaceTransportHTTPSOAP.dtl
++++ b/Kernel/Output/HTML/Standard/AdminGenericInterfaceTransportHTTPSOAP.dtl
+@@ -253,7 +253,7 @@
+                                         <p class="FieldExplanation">
+                                             $Text{"The full path and name of the SSL certificate file (must be in .p12 format)."}
+                                             <br/>
+-                                            $Text{"e.g. /opt/otrs/var/certificates/SOAP/certificate.p12"}
++                                            $Text{"e.g. /srv/http/otrs/var/certificates/SOAP/certificate.p12"}
+                                         </p>
+                                     </div>
+                                     <div class="Clear"></div>
+@@ -275,7 +275,7 @@
+                                         <p class="FieldExplanation">
+                                             $Text{"The full path and name of the certification authority certificate file that validates SSL certificate."}
+                                             <br/>
+-                                            $Text{"e.g. /opt/otrs/var/certificates/SOAP/CA/ca.pem"}
++                                            $Text{"e.g. /srv/http/otrs/var/certificates/SOAP/CA/ca.pem"}
+                                         </p>
+                                     </div>
+                                     <div class="Clear"></div>
+@@ -286,7 +286,7 @@
+                                         <p class="FieldExplanation">
+                                             $Text{"The full path of the certification authority directory where the CA certificates are stored in the file system."}
+                                             <br/>
+-                                            $Text{"e.g. /opt/otrs/var/certificates/SOAP/CA"}
++                                            $Text{"e.g. /srv/http/otrs/var/certificates/SOAP/CA"}
+                                         </p>
+                                     </div>
+                                     <div class="Clear"></div>
+
+--- a/README
++++ b/README
+@@ -51,7 +51,7 @@
+ 
+ Directories & Files:
+ ====================
+-$HOME (e. g. /opt/otrs/)
++$HOME (e. g. /srv/http/otrs/)
+ |
+ |  (all executables)
+ |--/bin/             (all system programs)
+
+--- a/README.webserver
++++ b/README.webserver
+@@ -28,7 +28,7 @@
+ 
+   Add it to /etc/sysconfig/apache with HTTPD_CONF_INCLUDE_FILES
+   [...]
+-  HTTPD_CONF_INCLUDE_FILES=/opt/otrs/scripts/suse-httpd.include.conf
++  HTTPD_CONF_INCLUDE_FILES=/srv/http/otrs/scripts/suse-httpd.include.conf
+   [...]
+ 
+   Start SuSEconfig and restart the web server (rcapache restart).
+@@ -50,11 +50,11 @@
+     also work with group permissions. This is somewhat more work.
+ 
+      Webserver with OTRS user:
+-        "bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=otrs /opt/otrs"
++        "bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=otrs /srv/http/otrs"
+      Webserver with wwwrun user (e. g. SuSE):
+-        "bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=wwwrun /opt/otrs"
++        "bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=wwwrun /srv/http/otrs"
+      Webserver with apache user (e. g. Redhat):
+-        "bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache /opt/otrs"
++        "bin/otrs.SetPermissions.pl --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache /srv/http/otrs"
+ 
+ b)
+  *)
+@@ -62,8 +62,8 @@
+   ============================
+   Add this to the cgi-bin stuff section in httpd.conf
+   [...]
+-  Alias /otrs-web/ "/opt/otrs/var/httpd/htdocs/"
+-  ScriptAlias /otrs/ "/opt/otrs/bin/cgi-bin/"
++  Alias /otrs-web/ "/srv/http/otrs/var/httpd/htdocs/"
++  ScriptAlias /otrs/ "/srv/http/otrs/bin/cgi-bin/"
+   [...]
+ 
+  *)
+@@ -73,11 +73,11 @@
+   Add this to the mod_perl stuff section in httpd.conf
+   [...]
+     # agent, admin and customer frontend
+-    ScriptAlias /otrs/ "/opt/otrs/bin/cgi-bin/"
+-    Alias /otrs-web/ "/opt/otrs/var/httpd/htdocs/"
++    ScriptAlias /otrs/ "/srv/http/otrs/bin/cgi-bin/"
++    Alias /otrs-web/ "/srv/http/otrs/var/httpd/htdocs/"
+ 
+     # load all otrs modules
+-    Perlrequire /opt/otrs/scripts/apache2-perl-startup.pl
++    Perlrequire /srv/http/otrs/scripts/apache2-perl-startup.pl
+ 
+     # Apache::Reload - Reload Perl Modules when Changed on Disk
+     PerlModule Apache2::Reload
+
+--- a/UPGRADING
++++ b/UPGRADING
+@@ -42,7 +42,7 @@
+     shell> /etc/init.d/apache stop
+ 
+ 
+-2) Backup everything below $OTRS_HOME (default: OTRS_HOME=/opt/otrs)
++2) Backup everything below $OTRS_HOME (default: OTRS_HOME=/srv/http/otrs)
+    -----------------------------------------------------------------
+ 
+     o Kernel/Config.pm
+@@ -87,7 +87,7 @@
+ 
+    Note: The OTRS themes between 3.0 and 3.1 are NOT compatible, so don't use your old themes!
+ 
+-   Themes are located under $OTRS_HOME/Kernel/Output/HTML/*/*.dtl (default: OTRS_HOME=/opt/otrs)
++   Themes are located under $OTRS_HOME/Kernel/Output/HTML/*/*.dtl (default: OTRS_HOME=/srv/http/otrs)
+ 
+ 
+ 7) Set file permissions
+@@ -95,7 +95,7 @@
+ 
+    If the tarball is used, execute:
+ 
+-     shell> cd /opt/otrs/
++     shell> cd /srv/http/otrs/
+      shell> bin/otrs.SetPermissions.pl
+ 
+    with the permissions needed for your system setup.
+@@ -104,7 +104,7 @@
+ 8) Apply the database changes
+    --------------------------
+ 
+-     shell> cd /opt/otrs/
++     shell> cd /srv/http/otrs/
+ 
+ 
+     SCHEMA UPDATE PART 1:
+@@ -171,19 +171,19 @@
+           PerlOptions -ParseHeaders
+       </Location>
+ 
+-    Please see the file /opt/otrs/scripts/apache2-httpd.include.conf for an example of
++    Please see the file /srv/http/otrs/scripts/apache2-httpd.include.conf for an example of
+     where this new option needs to be added (inside the <IfModule mod_perl.c> block).
+ 
+     In this file, you will also note a new section on caching:
+ 
+     <IfModule mod_headers.c>
+-        <Directory "/opt/otrs/var/httpd/htdocs/skins/*/*/css-cache">
++        <Directory "/srv/http/otrs/var/httpd/htdocs/skins/*/*/css-cache">
+             <FilesMatch "\.(css|CSS)$">
+                 Header set Cache-Control "max-age=2592000 must-revalidate"
+             </FilesMatch>
+         </Directory>
+ 
+-        <Directory "/opt/otrs/var/httpd/htdocs/js/js-cache">
++        <Directory "/srv/http/otrs/var/httpd/htdocs/js/js-cache">
+             <FilesMatch "\.(js|JS)$">
+                 Header set Cache-Control "max-age=2592000 must-revalidate"
+             </FilesMatch>
+
+--- a/bin/Cron.sh
++++ b/bin/Cron.sh
+@@ -50,7 +50,7 @@
+     OTRS_ROOT=$OTRS_HOME
+ else
+     echo "No cronjobs in $OTRS_HOME/var/cron found!";
+-    echo " * Check the \$HOME (/etc/passwd) of the OTRS user. It must be the root dir of your OTRS system (e. g. /opt/otrs). ";
++    echo " * Check the \$HOME (/etc/passwd) of the OTRS user. It must be the root dir of your OTRS system (e. g. /srv/http/otrs). ";
+     exit 5;
+ fi
+ 
+
+--- a/bin/otrs.SetPermissions.pl
++++ b/bin/otrs.SetPermissions.pl
+@@ -76,7 +76,7 @@
+     [--not-root]
+     <OTRS_HOME>
+ 
+-Try: otrs.SetPermissions.pl /opt/otrs
++Try: otrs.SetPermissions.pl /srv/http/otrs
+ EOF
+ 
+     if ( $#ARGV < 0 ) {
+
+--- a/scripts/apache2-httpd.include.conf
++++ b/scripts/apache2-httpd.include.conf
+@@ -4,8 +4,8 @@
+ # --
+ 
+ # agent, admin and customer frontend
+-ScriptAlias /otrs/ "/opt/otrs/bin/cgi-bin/"
+-Alias /otrs-web/ "/opt/otrs/var/httpd/htdocs/"
++ScriptAlias /otrs/ "/srv/http/otrs/bin/cgi-bin/"
++Alias /otrs-web/ "/srv/http/otrs/var/httpd/htdocs/"
+ 
+ # activate this if you are using an Oracle database
+ #SetEnv ORACLE_HOME /path/to/your/oracle/
+@@ -17,7 +17,7 @@
+ <IfModule mod_perl.c>
+ 
+     # load all otrs modules
+-    Perlrequire /opt/otrs/scripts/apache2-perl-startup.pl
++    Perlrequire /srv/http/otrs/scripts/apache2-perl-startup.pl
+ 
+     # Apache::Reload - Reload Perl Modules when Changed on Disk
+     PerlModule Apache2::Reload
+@@ -45,26 +45,26 @@
+ </IfModule>
+ 
+ # directory settings
+-<Directory "/opt/otrs/bin/cgi-bin/">
++<Directory "/srv/http/otrs/bin/cgi-bin/">
+     AllowOverride None
+     Options +ExecCGI -Includes
+     Order allow,deny
+     Allow from all
+ </Directory>
+-<Directory "/opt/otrs/var/httpd/htdocs/">
++<Directory "/srv/http/otrs/var/httpd/htdocs/">
+     AllowOverride None
+     Order allow,deny
+     Allow from all
+ </Directory>
+ 
+ <IfModule mod_headers.c>
+-    <Directory "/opt/otrs/var/httpd/htdocs/skins/*/*/css-cache">
++    <Directory "/srv/http/otrs/var/httpd/htdocs/skins/*/*/css-cache">
+         <FilesMatch "\.(css|CSS)$">
+             Header set Cache-Control "max-age=2592000 must-revalidate"
+         </FilesMatch>
+     </Directory>
+ 
+-    <Directory "/opt/otrs/var/httpd/htdocs/js/js-cache">
++    <Directory "/srv/http/otrs/var/httpd/htdocs/js/js-cache">
+         <FilesMatch "\.(js|JS)$">
+             Header set Cache-Control "max-age=2592000 must-revalidate"
+         </FilesMatch>
+
+--- a/scripts/apache2-perl-startup.pl
++++ b/scripts/apache2-perl-startup.pl
+@@ -36,9 +36,9 @@
+ use ModPerl::Util;
+ 
+ # set otrs lib path!
+-use lib "/opt/otrs/";
+-use lib "/opt/otrs/Kernel/cpan-lib";
+-use lib "/opt/otrs/Custom";
++use lib "/srv/http/otrs/";
++use lib "/srv/http/otrs/Kernel/cpan-lib";
++use lib "/srv/http/otrs/Custom";
+ 
+ # pull in things we will use in most requests so it is read and compiled
+ # exactly once
+
+--- a/scripts/auto_build/files.txt
++++ b/scripts/auto_build/files.txt
+@@ -1,63 +1,63 @@
+ 
+-%config(noreplace) /opt/otrs/Kernel/Config.pm
+-%config(noreplace) /opt/otrs/Kernel/Config/GenericAgent.pm
+-%config(noreplace) /opt/otrs/var/log/TicketCounter.log
+-%config(noreplace) /opt/otrs/.procmailrc
+-%config(noreplace) /opt/otrs/.fetchmailrc
+-%config(noreplace) /opt/otrs/.mailfilter
+-%config(noreplace) /opt/otrs/Kernel/Output/HTML/Standard/*.dtl
+-%config(noreplace) /opt/otrs/Kernel/Language/*.pm
+-%config(noreplace) /opt/otrs/var/cron/*
+-%config(noreplace) /opt/otrs/var/logo-otrs.png
++%config(noreplace) /srv/http/otrs/Kernel/Config.pm
++%config(noreplace) /srv/http/otrs/Kernel/Config/GenericAgent.pm
++%config(noreplace) /srv/http/otrs/var/log/TicketCounter.log
++%config(noreplace) /srv/http/otrs/.procmailrc
++%config(noreplace) /srv/http/otrs/.fetchmailrc
++%config(noreplace) /srv/http/otrs/.mailfilter
++%config(noreplace) /srv/http/otrs/Kernel/Output/HTML/Standard/*.dtl
++%config(noreplace) /srv/http/otrs/Kernel/Language/*.pm
++%config(noreplace) /srv/http/otrs/var/cron/*
++%config(noreplace) /srv/http/otrs/var/logo-otrs.png
+ 
+-%dir /opt/otrs/
+-/opt/otrs/RELEASE
+-/opt/otrs/ARCHIVE
+-/opt/otrs/.procmailrc.dist
+-/opt/otrs/.fetchmailrc.dist
+-/opt/otrs/.mailfilter.dist
+-%dir /opt/otrs/Custom/
+-/opt/otrs/Custom/README
+-%dir /opt/otrs/Kernel/
+-%dir /opt/otrs/Kernel/Config/
+-/opt/otrs/Kernel/Config.pm.dist
+-/opt/otrs/Kernel/Config/Files/
+-/opt/otrs/Kernel/Config/GenericAgent.pm.dist
+-/opt/otrs/Kernel/Config/GenericAgent.pm.examples
+-/opt/otrs/Kernel/Config/Defaults.pm
+-/opt/otrs/Kernel/GenericInterface*
+-/opt/otrs/Kernel/Language.pm
+-%dir /opt/otrs/Kernel/Language/
+-/opt/otrs/Kernel/Modules*
+-%dir /opt/otrs/Kernel/Output/
+-%dir /opt/otrs/Kernel/Output/HTML/
+-%dir /opt/otrs/Kernel/Output/HTML/Standard/
+-/opt/otrs/Kernel/Output/HTML/*.pm
+-/opt/otrs/Kernel/Scheduler*
+-/opt/otrs/Kernel/System*
+-/opt/otrs/bin*
+-/opt/otrs/scripts*
+-%dir /opt/otrs/var/
+-%dir /opt/otrs/var/packages/*.opm
+-%dir /opt/otrs/var/article/
+-/opt/otrs/var/httpd/
+-/opt/otrs/var/fonts/
+-%dir /opt/otrs/var/log/
+-%dir /opt/otrs/var/sessions/
+-%dir /opt/otrs/var/spool/
+-%dir /opt/otrs/var/cron/
+-%dir /opt/otrs/var/tmp/
+-%dir /opt/otrs/var/stats/
+-/opt/otrs/var/stats/*.xml
+-%dir /opt/otrs/var/tmp/Cache
++%dir /srv/http/otrs/
++/srv/http/otrs/RELEASE
++/srv/http/otrs/ARCHIVE
++/srv/http/otrs/.procmailrc.dist
++/srv/http/otrs/.fetchmailrc.dist
++/srv/http/otrs/.mailfilter.dist
++%dir /srv/http/otrs/Custom/
++/srv/http/otrs/Custom/README
++%dir /srv/http/otrs/Kernel/
++%dir /srv/http/otrs/Kernel/Config/
++/srv/http/otrs/Kernel/Config.pm.dist
++/srv/http/otrs/Kernel/Config/Files/
++/srv/http/otrs/Kernel/Config/GenericAgent.pm.dist
++/srv/http/otrs/Kernel/Config/GenericAgent.pm.examples
++/srv/http/otrs/Kernel/Config/Defaults.pm
++/srv/http/otrs/Kernel/GenericInterface*
++/srv/http/otrs/Kernel/Language.pm
++%dir /srv/http/otrs/Kernel/Language/
++/srv/http/otrs/Kernel/Modules*
++%dir /srv/http/otrs/Kernel/Output/
++%dir /srv/http/otrs/Kernel/Output/HTML/
++%dir /srv/http/otrs/Kernel/Output/HTML/Standard/
++/srv/http/otrs/Kernel/Output/HTML/*.pm
++/srv/http/otrs/Kernel/Scheduler*
++/srv/http/otrs/Kernel/System*
++/srv/http/otrs/bin*
++/srv/http/otrs/scripts*
++%dir /srv/http/otrs/var/
++%dir /srv/http/otrs/var/packages/*.opm
++%dir /srv/http/otrs/var/article/
++/srv/http/otrs/var/httpd/
++/srv/http/otrs/var/fonts/
++%dir /srv/http/otrs/var/log/
++%dir /srv/http/otrs/var/sessions/
++%dir /srv/http/otrs/var/spool/
++%dir /srv/http/otrs/var/cron/
++%dir /srv/http/otrs/var/tmp/
++%dir /srv/http/otrs/var/stats/
++/srv/http/otrs/var/stats/*.xml
++%dir /srv/http/otrs/var/tmp/Cache
+ 
+-/opt/otrs/Kernel/cpan-lib*
++/srv/http/otrs/Kernel/cpan-lib*
+ 
+-%doc /opt/otrs/INSTAL*
+-%doc /opt/otrs/UPGRADING
+-%doc /opt/otrs/COPYING
+-%doc /opt/otrs/COPYING-Third-Party
+-%doc /opt/otrs/CHANGES
+-%doc /opt/otrs/READM*
+-%doc /opt/otrs/doc*
+-%doc /opt/otrs/CREDITS
++%doc /srv/http/otrs/INSTAL*
++%doc /srv/http/otrs/UPGRADING
++%doc /srv/http/otrs/COPYING
++%doc /srv/http/otrs/COPYING-Third-Party
++%doc /srv/http/otrs/CHANGES
++%doc /srv/http/otrs/READM*
++%doc /srv/http/otrs/doc*
++%doc /srv/http/otrs/CREDITS
+
+--- a/scripts/fedora-otrs-4.spec
++++ b/scripts/fedora-otrs-4.spec
+@@ -46,7 +46,7 @@
+ # delete old RPM_BUILD_ROOT
+ rm -rf $RPM_BUILD_ROOT
+ # set DESTROOT
+-export DESTROOT="/opt/otrs/"
++export DESTROOT="/srv/http/otrs/"
+ # create RPM_BUILD_ROOT DESTROOT
+ mkdir -p $RPM_BUILD_ROOT/$DESTROOT/
+ # copy files
+@@ -67,12 +67,12 @@
+ useradd $OTRSUSER || :
+ useradd apache || :
+ groupadd apache || :
+-$RPM_BUILD_ROOT/opt/otrs/bin/otrs.SetPermissions.pl --otrs-user=$OTRSUSER --otrs-group=apache --web-user=apache --web-group=apache $RPM_BUILD_ROOT/opt/otrs
++$RPM_BUILD_ROOT/srv/http/otrs/bin/otrs.SetPermissions.pl --otrs-user=$OTRSUSER --otrs-group=apache --web-user=apache --web-group=apache $RPM_BUILD_ROOT/srv/http/otrs
+ 
+ %pre
+ # remember about the installed version
+-if test -e /opt/otrs/RELEASE; then
+-    cat /opt/otrs/RELEASE|grep VERSION|sed 's/VERSION = //'|sed 's/ /-/g' > /tmp/otrs-old.tmp
++if test -e /srv/http/otrs/RELEASE; then
++    cat /srv/http/otrs/RELEASE|grep VERSION|sed 's/VERSION = //'|sed 's/ /-/g' > /tmp/otrs-old.tmp
+ fi
+ # useradd
+ export OTRSUSER=otrs
+@@ -80,9 +80,9 @@
+ if id $OTRSUSER >/dev/null 2>&1; then
+     echo "$OTRSUSER exists."
+     # update home dir
+-    usermod -d /opt/otrs $OTRSUSER
++    usermod -d /srv/http/otrs $OTRSUSER
+ else
+-    useradd $OTRSUSER -d /opt/otrs/ -s /bin/false -g apache -c 'OTRS System User' && echo "$OTRSUSER added."
++    useradd $OTRSUSER -d /srv/http/otrs/ -s /bin/false -g apache -c 'OTRS System User' && echo "$OTRSUSER added."
+ fi
+ 
+ 
+@@ -93,7 +93,7 @@
+     OLDOTRS=`cat /tmp/otrs-old.tmp`
+     if echo $OLDOTRS | grep -v "$TOINSTALL" > /dev/null; then
+         echo "backup old (maybe not compatible) templates (of $OLDOTRS)"
+-        for i in /opt/otrs/Kernel/Output/HTML/Standard/*.rpmnew;
++        for i in /srv/http/otrs/Kernel/Output/HTML/Standard/*.rpmnew;
+             do BF=`echo $i|sed 's/.rpmnew$//'`; mv -v $BF $BF.backup_maybe_not_compat_to.$OLDOTRS; mv $i $BF;
+         done
+     fi
+@@ -102,22 +102,22 @@
+ 
+ # OTRS 2.0 -> OTRS 2.1
+ # remove old ticket config file
+-if test -e /opt/otrs/Kernel/Config/Files/Ticket.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/Ticket.pm /opt/otrs/Kernel/Config/Files/Ticket.pm.not_longer_used
++if test -e /srv/http/otrs/Kernel/Config/Files/Ticket.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/Ticket.pm /srv/http/otrs/Kernel/Config/Files/Ticket.pm.not_longer_used
+ fi;
+ # remove old ticket postmaster config file
+-if test -e /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm.not_longer_used;
++if test -e /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm.not_longer_used;
+ fi
+ # remove old faq config file
+-if test -e /opt/otrs/Kernel/Config/Files/FAQ.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/FAQ.pm /opt/otrs/Kernel/Config/Files/FAQ.pm.not_longer_used;
++if test -e /srv/http/otrs/Kernel/Config/Files/FAQ.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/FAQ.pm /srv/http/otrs/Kernel/Config/Files/FAQ.pm.not_longer_used;
+ fi
+ 
+ # run OTRS rebuild config, delete cache, if the system was already in use (i.e. upgrade).
+-if test -e /opt/otrs/Kernel/Config/Files/ZZZAAuto.pm; then
+-    /opt/otrs/bin/otrs.RebuildConfig.pl;
+-    /opt/otrs/bin/otrs.DeleteCache.pl;
++if test -e /srv/http/otrs/Kernel/Config/Files/ZZZAAuto.pm; then
++    /srv/http/otrs/bin/otrs.RebuildConfig.pl;
++    /srv/http/otrs/bin/otrs.DeleteCache.pl;
+ fi
+ 
+ # note
+
+--- a/scripts/otrs-scheduler-gentoo-conf.d
++++ b/scripts/otrs-scheduler-gentoo-conf.d
+@@ -21,7 +21,7 @@
+ # --
+ 
+ # The installation path of OTRS
+-OTRS_HOME="/opt/otrs"
++OTRS_HOME="/srv/http/otrs"
+ 
+ # The user, under which the OTRS Scheduler Daemon will run
+ OTRS_USER="otrs"
+
+--- a/scripts/otrs-scheduler-linux
++++ b/scripts/otrs-scheduler-linux
+@@ -37,7 +37,7 @@
+ ### END INIT INFO
+ #-----------------------------------------------------------------------
+ # User defined variables
+-OTRS_HOME=/opt/otrs
++OTRS_HOME=/srv/http/otrs
+ User=otrs
+ Group=otrs
+ # User and Group needs to be the same as the apache user and group
+
+--- a/scripts/redhat-rcotrs-config
++++ b/scripts/redhat-rcotrs-config
+@@ -12,7 +12,7 @@
+ # 
+ # OTRS home (root) directory
+ #
+-OTRS_ROOT=/opt/otrs
++OTRS_ROOT=/srv/http/otrs
+ 
+ # if one of this is false, it will not be checked at the startup!
+ # Note: (may be the database isn't on the same host! --> DB_RUNNING=0) 
+
+--- a/scripts/restore.pl
++++ b/scripts/restore.pl
+@@ -43,7 +43,7 @@
+ if ( exists $Opts{h} ) {
+     print "restore.pl <Revision $VERSION> - restore script\n";
+     print "Copyright (C) 2001-2011 OTRS AG, http://otrs.org/\n";
+-    print "usage: restore.pl -b /data_backup/<TIME>/ -d /opt/otrs/\n";
++    print "usage: restore.pl -b /data_backup/<TIME>/ -d /srv/http/otrs/\n";
+     exit 1;
+ }
+ if ( !$Opts{b} ) {
+
+--- a/scripts/suse-otrs-10.0.spec
++++ b/scripts/suse-otrs-10.0.spec
+@@ -48,7 +48,7 @@
+ # delete old RPM_BUILD_ROOT
+ rm -rf $RPM_BUILD_ROOT
+ # set DESTROOT
+-export DESTROOT="/opt/otrs/"
++export DESTROOT="/srv/http/otrs/"
+ # create RPM_BUILD_ROOT DESTROOT
+ mkdir -p $RPM_BUILD_ROOT/$DESTROOT/
+ # copy files
+@@ -73,12 +73,12 @@
+ useradd $OTRSUSER || :
+ useradd wwwrun || :
+ groupadd www || :
+-$RPM_BUILD_ROOT/opt/otrs/bin/otrs.SetPermissions.pl --otrs-user=$OTRSUSER --web-user=wwwrun --otrs-group=www --web-group=www $RPM_BUILD_ROOT/opt/otrs
++$RPM_BUILD_ROOT/srv/http/otrs/bin/otrs.SetPermissions.pl --otrs-user=$OTRSUSER --web-user=wwwrun --otrs-group=www --web-group=www $RPM_BUILD_ROOT/srv/http/otrs
+ 
+ %pre
+ # remember about the installed version
+-if test -e /opt/otrs/RELEASE; then
+-    cat /opt/otrs/RELEASE|grep VERSION|sed 's/VERSION = //'|sed 's/ /-/g' > /tmp/otrs-old.tmp
++if test -e /srv/http/otrs/RELEASE; then
++    cat /srv/http/otrs/RELEASE|grep VERSION|sed 's/VERSION = //'|sed 's/ /-/g' > /tmp/otrs-old.tmp
+ fi
+ # useradd
+ export OTRSUSER=otrs
+@@ -88,9 +88,9 @@
+     # update groups
+     usermod -g www $OTRSUSER
+     # update home dir
+-    usermod -d /opt/otrs $OTRSUSER
++    usermod -d /srv/http/otrs $OTRSUSER
+ else
+-    useradd $OTRSUSER -d /opt/otrs/ -s /bin/false -g www -c 'OTRS System User' && echo "$OTRSUSER added."
++    useradd $OTRSUSER -d /srv/http/otrs/ -s /bin/false -g www -c 'OTRS System User' && echo "$OTRSUSER added."
+ fi
+ 
+ 
+@@ -104,7 +104,7 @@
+     OLDOTRS=`cat /tmp/otrs-old.tmp`
+     if echo $OLDOTRS | grep -v "$TOINSTALL" > /dev/null; then
+         echo "backup old (maybe not compatible) templates (of $OLDOTRS)"
+-        for i in /opt/otrs/Kernel/Output/HTML/Standard/*.rpmnew;
++        for i in /srv/http/otrs/Kernel/Output/HTML/Standard/*.rpmnew;
+             do BF=`echo $i|sed 's/.rpmnew$//'`; mv -v $BF $BF.backup_maybe_not_compat_to.$OLDOTRS; mv $i $BF;
+         done
+     fi
+@@ -113,22 +113,22 @@
+ 
+ # OTRS 2.0 -> OTRS 2.1
+ # remove old ticket config file
+-if test -e /opt/otrs/Kernel/Config/Files/Ticket.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/Ticket.pm /opt/otrs/Kernel/Config/Files/Ticket.pm.not_longer_used
++if test -e /srv/http/otrs/Kernel/Config/Files/Ticket.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/Ticket.pm /srv/http/otrs/Kernel/Config/Files/Ticket.pm.not_longer_used
+ fi;
+ # remove old ticket postmaster config file
+-if test -e /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm.not_longer_used;
++if test -e /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm.not_longer_used;
+ fi
+ # remove old faq config file
+-if test -e /opt/otrs/Kernel/Config/Files/FAQ.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/FAQ.pm /opt/otrs/Kernel/Config/Files/FAQ.pm.not_longer_used;
++if test -e /srv/http/otrs/Kernel/Config/Files/FAQ.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/FAQ.pm /srv/http/otrs/Kernel/Config/Files/FAQ.pm.not_longer_used;
+ fi
+ 
+ # run OTRS rebuild config, delete cache, if the system was already in use (i.e. upgrade).
+-if test -e /opt/otrs/Kernel/Config/Files/ZZZAAuto.pm; then
+-    /opt/otrs/bin/otrs.RebuildConfig.pl;
+-    /opt/otrs/bin/otrs.DeleteCache.pl;
++if test -e /srv/http/otrs/Kernel/Config/Files/ZZZAAuto.pm; then
++    /srv/http/otrs/bin/otrs.RebuildConfig.pl;
++    /srv/http/otrs/bin/otrs.DeleteCache.pl;
+ fi
+ 
+ # note
+@@ -169,6 +169,6 @@
+ 
+ %changelog
+ * Thu Oct 18 2006 - martin+rpm@otrs.org
+-- added rename of old /opt/otrs/Kernel/Config/Files/(Ticket|TicketPostMaster|FAQ).pm files
++- added rename of old /srv/http/otrs/Kernel/Config/Files/(Ticket|TicketPostMaster|FAQ).pm files
+ * Sun Mar 25 2006 - martin+rpm@otrs.org
+ - added SUSE 10.0 support
+
+--- a/scripts/suse-otrs-11.0.spec
++++ b/scripts/suse-otrs-11.0.spec
+@@ -48,7 +48,7 @@
+ # delete old RPM_BUILD_ROOT
+ rm -rf $RPM_BUILD_ROOT
+ # set DESTROOT
+-export DESTROOT="/opt/otrs/"
++export DESTROOT="/srv/http/otrs/"
+ # create RPM_BUILD_ROOT DESTROOT
+ mkdir -p $RPM_BUILD_ROOT/$DESTROOT/
+ # copy files
+@@ -73,12 +73,12 @@
+ useradd $OTRSUSER || :
+ useradd wwwrun || :
+ groupadd www || :
+-$RPM_BUILD_ROOT/opt/otrs/bin/otrs.SetPermissions.pl --otrs-user=$OTRSUSER --web-user=wwwrun --otrs-group=www --web-group=www $RPM_BUILD_ROOT/opt/otrs
++$RPM_BUILD_ROOT/srv/http/otrs/bin/otrs.SetPermissions.pl --otrs-user=$OTRSUSER --web-user=wwwrun --otrs-group=www --web-group=www $RPM_BUILD_ROOT/srv/http/otrs
+ 
+ %pre
+ # remember about the installed version
+-if test -e /opt/otrs/RELEASE; then
+-    cat /opt/otrs/RELEASE|grep VERSION|sed 's/VERSION = //'|sed 's/ /-/g' > /tmp/otrs-old.tmp
++if test -e /srv/http/otrs/RELEASE; then
++    cat /srv/http/otrs/RELEASE|grep VERSION|sed 's/VERSION = //'|sed 's/ /-/g' > /tmp/otrs-old.tmp
+ fi
+ # useradd
+ export OTRSUSER=otrs
+@@ -88,9 +88,9 @@
+     # update groups
+     usermod -g www $OTRSUSER
+     # update home dir
+-    usermod -d /opt/otrs $OTRSUSER
++    usermod -d /srv/http/otrs $OTRSUSER
+ else
+-    useradd $OTRSUSER -d /opt/otrs/ -s /bin/false -g www -c 'OTRS System User' && echo "$OTRSUSER added."
++    useradd $OTRSUSER -d /srv/http/otrs/ -s /bin/false -g www -c 'OTRS System User' && echo "$OTRSUSER added."
+ fi
+ 
+ 
+@@ -104,7 +104,7 @@
+     OLDOTRS=`cat /tmp/otrs-old.tmp`
+     if echo $OLDOTRS | grep -v "$TOINSTALL" > /dev/null; then
+         echo "backup old (maybe not compatible) templates (of $OLDOTRS)"
+-        for i in /opt/otrs/Kernel/Output/HTML/Standard/*.rpmnew;
++        for i in /srv/http/otrs/Kernel/Output/HTML/Standard/*.rpmnew;
+             do BF=`echo $i|sed 's/.rpmnew$//'`; mv -v $BF $BF.backup_maybe_not_compat_to.$OLDOTRS; mv $i $BF;
+         done
+     fi
+@@ -113,22 +113,22 @@
+ 
+ # OTRS 2.0 -> OTRS 2.1
+ # remove old ticket config file
+-if test -e /opt/otrs/Kernel/Config/Files/Ticket.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/Ticket.pm /opt/otrs/Kernel/Config/Files/Ticket.pm.not_longer_used
++if test -e /srv/http/otrs/Kernel/Config/Files/Ticket.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/Ticket.pm /srv/http/otrs/Kernel/Config/Files/Ticket.pm.not_longer_used
+ fi;
+ # remove old ticket postmaster config file
+-if test -e /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm /opt/otrs/Kernel/Config/Files/TicketPostMaster.pm.not_longer_used;
++if test -e /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm /srv/http/otrs/Kernel/Config/Files/TicketPostMaster.pm.not_longer_used;
+ fi
+ # remove old faq config file
+-if test -e /opt/otrs/Kernel/Config/Files/FAQ.pm; then
+-    mv /opt/otrs/Kernel/Config/Files/FAQ.pm /opt/otrs/Kernel/Config/Files/FAQ.pm.not_longer_used;
++if test -e /srv/http/otrs/Kernel/Config/Files/FAQ.pm; then
++    mv /srv/http/otrs/Kernel/Config/Files/FAQ.pm /srv/http/otrs/Kernel/Config/Files/FAQ.pm.not_longer_used;
+ fi
+ 
+ # run OTRS rebuild config, delete cache, if the system was already in use (i.e. upgrade).
+-if test -e /opt/otrs/Kernel/Config/Files/ZZZAAuto.pm; then
+-    /opt/otrs/bin/otrs.RebuildConfig.pl;
+-    /opt/otrs/bin/otrs.DeleteCache.pl;
++if test -e /srv/http/otrs/Kernel/Config/Files/ZZZAAuto.pm; then
++    /srv/http/otrs/bin/otrs.RebuildConfig.pl;
++    /srv/http/otrs/bin/otrs.DeleteCache.pl;
+ fi
+ 
+ # note
+@@ -169,6 +169,6 @@
+ 
+ %changelog
+ * Thu Oct 18 2006 - martin+rpm@otrs.org
+-- added rename of old /opt/otrs/Kernel/Config/Files/(Ticket|TicketPostMaster|FAQ).pm files
++- added rename of old /srv/http/otrs/Kernel/Config/Files/(Ticket|TicketPostMaster|FAQ).pm files
+ * Sun Mar 25 2006 - martin+rpm@otrs.org
+ - added SUSE 10.0 support
+
+--- a/scripts/suse-rcotrs-config
++++ b/scripts/suse-rcotrs-config
+@@ -12,7 +12,7 @@
+ # 
+ # OTRS home (root) directory
+ #
+-OTRS_ROOT=/opt/otrs
++OTRS_ROOT=/srv/http/otrs
+ 
+ # 
+ # if one of these is false, it will not be checked at the startup!
