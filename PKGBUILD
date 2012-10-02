@@ -1,6 +1,6 @@
 pkgname=zabbix-server-mysql
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64')
 url="http://www.zabbix.com/"
@@ -22,21 +22,21 @@ source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-$pkgver.tar.
         'zabbix-server.install'
         'frontend.diff'
        )
-md5sums=('81d99680bafe14a6c9945b71c97988ca'
-         'af69f7f720e9132da9d4703ffc97ae6a'
-         'bd2d22a6f6e0790db350a1ffaac2c82e'
-         '433c31251286f67650123fa18f7ff834'
-         '228d6609c0f2364f1268d7b24b4756a4'
-         'fb39e61ef9cbc7d35ac27a90661b083c'
-         '7d6da957451c9e713a8192c7e112a7e8'
+md5sums=('bef75dd149abc8a6da4adafc08eb61de' # zabbix-$pkgver.tar.gz
+         'af69f7f720e9132da9d4703ffc97ae6a' # rc.zabbix-server
+         'bd2d22a6f6e0790db350a1ffaac2c82e' # zabbix-server.service
+         '433c31251286f67650123fa18f7ff834' # conf.zabbix-server
+         '228d6609c0f2364f1268d7b24b4756a4' # sudoers.zabbix-server
+         '557f4197402db95aa2d4f2b91b579e05' # zabbix-server.install
+         '4699673e5135c3a7b85a228d610f451c' # frontend.diff
         )
-sha1sums=('aaa678bc6abc6cb2b174e599108ad19f187047c9'
-          '9ce0898ac0c4f075e33d3540f4930500215f70e5'
-          '527209a21b591ea3511eeb16f243a93d7fcbbcb1'
-          '4b4423af5587d59ab68ba748242183193729ec32'
-          '5711484ecd0efc4769b975cfff77911c2044fd18'
-          '0c67a10fc43af6f295a5946b3df914d494cd54f6'
-          'fd5412172ff330422c36892b085a7289b7269d3b'
+sha1sums=('be8902444890db9fb2c4795e62073ce7eea32d96' # zabbix-$pkgver.tar.gz
+          '9ce0898ac0c4f075e33d3540f4930500215f70e5' # rc.zabbix-server
+          '527209a21b591ea3511eeb16f243a93d7fcbbcb1' # zabbix-server.service
+          '4b4423af5587d59ab68ba748242183193729ec32' # conf.zabbix-server
+          '5711484ecd0efc4769b975cfff77911c2044fd18' # sudoers.zabbix-server
+          '91ed001fe42e03b56ee4294a54932908c8582637' # zabbix-server.install
+          'bc354a6f441b82119ac570ac6893053170f36953' # frontend.diff
          )
 
 _HTMLPATH='srv/http/zabbix'
@@ -62,19 +62,20 @@ build() {
 package() {
   cd "$srcdir/zabbix-$pkgver"
 
-  install -d -m0750 $pkgdir/var/run/zabbix
-  install -d -m0750 $pkgdir/var/log/zabbix
+  install -d -m 0750 $pkgdir/var/run/zabbix
+  install -d -m 0750 $pkgdir/var/log/zabbix
 
   _DBPATCHDIR="$pkgdir/etc/zabbix/database/mysql/upgrade/2.0"
   _DBSETUPDIR="$pkgdir/etc/zabbix/database/mysql/setup/2.0"
   mkdir -p $_DBPATCHDIR
   mkdir -p $_DBSETUPDIR
-  install -D -m 0444 upgrades/dbpatches/2.0/mysql/patch.sql $_DBPATCHDIR/patch.sql
-  install -D -m 0444 upgrades/dbpatches/2.0/mysql/rc4_rc5.sql $_DBPATCHDIR/rc4_rc5.sql
-  install -D -m 0444 upgrades/dbpatches/2.0/mysql/upgrade $_DBPATCHDIR/upgrade
-  install -D -m 0444 database/mysql/data.sql $_DBSETUPDIR/data.sql
-  install -D -m 0444 database/mysql/images.sql $_DBSETUPDIR/images.sql
-  install -D -m 0444 database/mysql/schema.sql $_DBSETUPDIR/schema.sql
+
+  for _UPGFILE in patch.sql rc4_rc5.sql upgrade; do
+    install -D -m 0444 upgrades/dbpatches/2.0/mysql/$_UPGFILE $_DBPATCHDIR/$_UPGFILE
+  done
+  for _SQLFILE in {data,images,schema}.sql; do
+    install -D -m 0444 database/mysql/$_SQLFILE $_DBSETUPDIR/$_SQLFILE
+  done
 
   mkdir -p $pkgdir/$_HTMLPATH/
   cp -r frontends/php/* $pkgdir/$_HTMLPATH/
