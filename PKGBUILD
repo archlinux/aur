@@ -4,10 +4,10 @@
 pkgname=mcpatcher
 pkgver='2.4.3'
 pkgrel=2
-pkgdesc="Minecraft patcher to fix textures with higher than default resolution"
+pkgdesc='Minecraft patcher to fix textures with higher than default resolution'
 arch=('any')
 license=('Public Domain')
-url="https://github.com/pclewis/mcpatcher"
+url='https://github.com/pclewis/mcpatcher'
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
 noextract=("$pkgname-$pkgver.jar")
@@ -25,9 +25,9 @@ build() {
     # Extract icon
     bsdcpio --extract --make-directories 'resources/icon.png' < "$pkgname-$pkgver.jar"
 
-    install -vDm755 "mcpatcher"            "$pkgdir/usr/bin/mcpatcher"
+    install -vDm755 'mcpatcher'            "$pkgdir/usr/bin/mcpatcher"
     install -vDm644 "resources/icon.png"   "$pkgdir/usr/share/pixmaps/mcpatcher.png"
-    install -vDm644 "mcpatcher.desktop"    "$pkgdir/usr/share/applications/mcpatcher.desktop"
+    install -vDm644 'mcpatcher.desktop'    "$pkgdir/usr/share/applications/mcpatcher.desktop"
     install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/mcpatcher/mcpatcher.jar"
 }
 
