@@ -12,7 +12,7 @@ changelog=ChangeLog
 source=(minecraft-save-seed-reader
        'https://github.com/downloads/thedarkfreak/Minecraft-Save-Seed-Reader/MinecraftSeed.zip')
 md5sums=('f103f56c33d74318ac25cf5de8ecc541'
-         '62d3a02d976a591d967d42b097e4de31')
+         'fa8e5c9764c2763d4f63d33a42064e3c')
 
 package() {
   cd "$srcdir"
