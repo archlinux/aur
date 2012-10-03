@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Minecraft Save Seed Reader
+Comment=Allows you read Minecraft save seeds and toggle game modes.
+TryExec=minecraft-save-seed-reader
+Exec=java -jar /usr/share/minecraft-save-seed-reader/MinecraftSeed.jar
+Terminal=false
+Categories=Game;
+Keywords=minecraft;

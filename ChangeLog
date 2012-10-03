@@ -1,5 +1,10 @@
 2012-10-03 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
+	* 1.7.1-2 :
+	Added .desktop entry.
+
+2012-10-03 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
 	* 1.7.1-1 :
 	Version bump.
 	Save docs into proper place.

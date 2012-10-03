@@ -1,7 +1,7 @@
 pkgbase = minecraft-save-seed-reader
 	pkgdesc = Allows you to toggle the game mode of Minecraft worlds/saves.
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thedarkfreak/Minecraft-Save-Seed-Reader/wiki
 	changelog = ChangeLog
 	arch = any
@@ -9,8 +9,10 @@ pkgbase = minecraft-save-seed-reader
 	depends = java-runtime
 	optdepends = minecraft: The game whose files this program modifies
 	source = minecraft-save-seed-reader
+	source = minecraft-save-seed-reader.desktop
 	source = https://github.com/downloads/thedarkfreak/Minecraft-Save-Seed-Reader/MinecraftSeed.zip
 	md5sums = f103f56c33d74318ac25cf5de8ecc541
+	md5sums = e84426095bec15f3df09aa5900015c90
 	md5sums = fa8e5c9764c2763d4f63d33a42064e3c
 
 pkgname = minecraft-save-seed-reader
