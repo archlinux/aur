@@ -3,6 +3,7 @@
 	* 1.7.1-1 :
 	Version bump.
 	Save docs into proper place.
+	Also save CHANGELOG.txt and NOTICE.txt in the filesystem.
 
 2011-12-01 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
