@@ -19,7 +19,7 @@ package() {
 
   install -Dm755 "minecraft-save-seed-reader" "$pkgdir/usr/bin/minecraft-save-seed-reader"
   install -Dm644 "MinecraftSeed.jar" "$pkgdir/usr/share/$pkgname/MinecraftSeed.jar"
-  install -Dm644 "README.txt" "$pkgdir/usr/share/docs/$pkgname/README.txt"
+  install -Dm644 "README.txt" "$pkgdir/usr/share/doc/$pkgname/README.txt"
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
 
