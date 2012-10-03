@@ -1,6 +1,6 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 pkgname=minecraft-save-seed-reader
-pkgver=1.6.1
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Allows you to toggle the game mode of Minecraft worlds/saves.'
 arch=(any)
