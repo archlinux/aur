@@ -1,3 +1,4 @@
+# Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=univga
 pkgver=1.0
 pkgrel=4
