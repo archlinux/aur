@@ -2,21 +2,23 @@
 
 pkgname=xf86-video-vmware
 pkgver=12.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
-depends=('libdrm' 'svga-dri')
-makedepends=('xorg-server-devel>=1.11.99.903' 'libx11' 'libxext')
-conflicts=('xorg-server<1.11.99.903')
+depends=('libdrm' 'svga-dri' 'mesa')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=13' 'resourceproto' 'scrnsaverproto')
+conflicts=('xorg-server<1.13.0' 'X-ABI-VIDEODRV_VERSION<13' 'X-ABI-VIDEODRV_VERSION>=14')
 groups=('xorg-drivers' 'xorg')
 options=('!libtool' '!emptydirs')
-source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('efa47f365d88da245804a9934719ff860ed04f95')
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2 git_fixes.diff)
+sha1sums=('efa47f365d88da245804a9934719ff860ed04f95'
+          'ad475b37e2614f365533a40da0fb5b9e2709e3c6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i ${srcdir}/git_fixes.diff
   ./configure --prefix=/usr --enable-vmwarectrl-client
   make
 }
