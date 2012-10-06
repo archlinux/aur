@@ -1,4 +1,1 @@
-pkg
-src
-*deb
-*gz
+*.tgz
