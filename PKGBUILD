@@ -1,7 +1,7 @@
 pkgname=univga
 pkgver=1.0
 pkgrel=3
-pkgdesc="Unicode VGA font"
+pkgdesc="(X11) VGA font with unicode glyphs by Dmitry Yu. Bolkhovityanov"
 arch=('any')
 url="http://www.inp.nsk.su/~bolkhov/files/fonts/univga/"
 license=('MIT')
