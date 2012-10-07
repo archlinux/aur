@@ -1,6 +1,6 @@
 pkgbase = perl-alien-wxwidgets
 	pkgdesc = Building, finding and using wxWidgets binaries
-	pkgver = 0.59
+	pkgver = 0.62
 	pkgrel = 1
 	url = https://metacpan.org/release/Alien-wxWidgets
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-alien-wxwidgets
 	license = PerlArtistic
 	depends = perl
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-0.59.tar.gz
-	md5sums = b4a221625a895aa40b3aaf1625186f7f
+	source = http://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-0.62.tar.gz
+	md5sums = a26e3636aeb6c550935a36711ce13e9c
 
 pkgname = perl-alien-wxwidgets
 
