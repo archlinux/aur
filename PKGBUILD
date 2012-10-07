@@ -3,12 +3,12 @@
 
 pkgname=jasper
 pkgver=1.900.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard"
 arch=('i686' 'x86_64')
 url="http://www.ece.uvic.ca/~mdadams/jasper/"
 license=('custom:JasPer2.0')
-depends=('libjpeg' 'freeglut' 'libxmu')
+depends=('libjpeg' 'freeglut' 'libxmu' 'glu')
 options=('!libtool')
 source=(http://www.ece.uvic.ca/~mdadams/${pkgname}/software/${pkgname}-${pkgver}.zip jpc_dec.c.patch
         patch-libjasper-stepsizes-overflow.diff jasper-1.900.1-CVE-2008-3520.patch
