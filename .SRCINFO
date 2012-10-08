@@ -1,0 +1,15 @@
+pkgbase = gti
+	pkgdesc = A silly git launcher
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://r-wos.org/hacks/gti
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://github.com/rwos/gti/tarball/v1.0.4
+	source = LICENSE
+	sha256sums = 72fdc62d1977052567944d709e31ac41bfdf7a179a3ac6a71a8e1c67ff2102ed
+	sha256sums = 131817f9197405ccbfed83ad13d85f8cebccfe53be11151625bdec3c9c014d0b
+
+pkgname = gti
+
