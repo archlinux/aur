@@ -1,22 +1,23 @@
-# $Id: PKGBUILD 68089 2012-03-17 19:44:07Z lcarlier $
-# Maintainer: Alexander Baldeck <alexander@archlinux.org>
+# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+# Upstream Maintainer: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libxcb
 pkgname=libx32-$_pkgbasename
-pkgver=1.8.1
-pkgrel=2.1
+pkgver=1.9
+pkgrel=1.1
 pkgdesc="X11 client-side library (x32 ABI)"
 arch=(x86_64)
 url="http://xcb.freedesktop.org/"
 depends=('libx32-libxdmcp' 'libx32-libxau' $_pkgbasename)
-makedepends=('pkgconfig' 'libx32-libxslt' 'python2' 'gcc-multilib-x32'
+makedepends=('pkgconfig' 'libx32-libxslt' 'binx32-python2' 'gcc-multilib-x32'
              'autoconf')
 options=('!libtool')
 license=('custom')
 source=(${url}/dist/${_pkgbasename}-${pkgver}.tar.bz2
         libxcb-1.1-no-pthread-stubs.patch)
-sha1sums=('98199b6054750a06cddd4e77baa4354af547ce6f'
+sha1sums=('ad2fb95eeec41ba3d39502a4f7460c3b64fdf061'
           'd2df03ddf3e949c10c2c185256b0eb7fa02837ab')
 
 build() {
@@ -27,7 +28,11 @@ build() {
   export CC="gcc -mx32"
   export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
 
-  PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr --enable-xinput --libdir=/usr/libx32
+  PYTHON=/usr/bin/python2-x32 ./autogen.sh \
+	  --prefix=/usr \
+	  --enable-xinput \
+	  --libdir=/usr/libx32 \
+	  --disable-static
   make
 }
 
