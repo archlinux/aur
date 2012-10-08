@@ -1,12 +1,14 @@
 pkgbase = gti-git
 	pkgdesc = A silly git launcher
-	pkgver = 20120816
+	pkgver = 20121008
 	pkgrel = 1
 	url = http://r-wos.org/hacks/gti
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
+	provides = gti
+	conflicts = gti
 	source = LICENSE
 	sha256sums = 131817f9197405ccbfed83ad13d85f8cebccfe53be11151625bdec3c9c014d0b
 

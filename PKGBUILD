@@ -1,13 +1,15 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=gti-git
-pkgver=20120816
+pkgver=20121008
 pkgrel=1
 pkgdesc="A silly git launcher"
 arch=('i686' 'x86_64')
 url="http://r-wos.org/hacks/gti"
 license=('custom')
 makedepends=('git')
+provides=('gti')
+conflicts=('gti')
 source=('LICENSE')
 sha256sums=('131817f9197405ccbfed83ad13d85f8cebccfe53be11151625bdec3c9c014d0b')
 
