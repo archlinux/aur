@@ -1,25 +1,26 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
-pkgname=vdpau-video
-pkgver=0.7.3
-pkgrel=3
+pkgname=libva-vdpau-driver
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="VDPAU backend for VA API"
 arch=('i686' 'x86_64')
-url="http://cgit.freedesktop.org/vaapi/vdpau-driver/"
+url="http://freedesktop.org/wiki/Software/vaapi"
 license=('GPL')
 depends=('libva' 'libvdpau')
 makedepends=('mesa')
+replaces=('vdpau-video')
 options=('!libtool')
-source=(http://www.splitted-desktop.com/~gbeauchesne/vdpau-video/$pkgname-$pkgver.tar.gz)
-md5sums=('18870e007ecdc50a528861fa55556364')
+source=(http://www.freedesktop.org/software/vaapi/releases/$pkgname/$pkgname-$pkgver.tar.bz2)
+sha1sums=('224318f4ea8bafca6a0fec770e388b7d1a1a66b3')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
 }
