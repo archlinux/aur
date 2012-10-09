@@ -1,14 +1,14 @@
 # Maintainer: Leonidas <marek@xivilization.net>
 pkgname=factor
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Factor is a general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
 url="http://factorcode.org"
 license=(BSD)
 provides=(factor)
 conflicts=(factor-git)
-depends=(pango cairo glib2 freetype2 mesa libgl)
+depends=(pango cairo glib2 freetype2 mesa libgl gtkglext)
 options=(!strip)
 source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zip
         factor.desktop

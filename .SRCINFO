@@ -1,7 +1,7 @@
 pkgbase = factor
 	pkgdesc = Factor is a general purpose, dynamically typed, stack-based programming language.
 	pkgver = 0.95
-	pkgrel = 1
+	pkgrel = 2
 	url = http://factorcode.org
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = factor
 	depends = freetype2
 	depends = mesa
 	depends = libgl
+	depends = gtkglext
 	provides = factor
 	conflicts = factor-git
 	options = !strip
