@@ -3,13 +3,14 @@
 
 pkgname=scratch
 pkgver=1.4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Create and share your own interactive stories, games, music and art"
 arch=('i686' 'x86_64')
 url="http://scratch.mit.edu"
 license=('GPL2')
 install=$pkgname.install
-depends=('squeak-vm' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'pango')
+depends=('squeak-vm' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'pango'
+	 'gtk-update-icon-cache')
 source=(http://download.scratch.mit.edu/$pkgname-$pkgver.src.tar.gz)
 md5sums=('f948e9e6de3ec9c7c7b4cc2a1975eb5a')
 

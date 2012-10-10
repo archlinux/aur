@@ -1,9 +1,9 @@
 post_install() {
-    update-desktop-database 2>/dev/null
-    update-mime-database /usr/share/mime 2>/dev/null
-    gtk-update-icon-cache -qf /usr/share/icons/hicolor 2>/dev/null
+    update-desktop-database
+    update-mime-database /usr/share/mime
+    gtk-update-icon-cache -qf /usr/share/icons/hicolor
 }
 
 post_remove() {
-    post_install()
+    post_install
 }
