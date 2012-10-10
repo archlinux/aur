@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 74996 2012-08-11 10:05:23Z heftig $
+# $Id: PKGBUILD 77262 2012-10-08 12:57:33Z heftig $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
@@ -8,11 +8,11 @@
 pkgbase='gcc-multilib-x32'
 pkgname='gcc-multilib-x32'
 true && pkgname=('gcc-multilib-x32' 'gcc-libs-multilib-x32' 'libx32-gcc-libs' 'gcc-fortran-multilib-x32' 'gcc-objc-multilib-x32' 'gcc-go-multilib-x32')
-pkgver=4.7.1
-pkgrel=6.1
+pkgver=4.7.2
+pkgrel=1.1
 _origrel=6
-_snapshot=4.7-20120721
-_libstdcppmanver=20120725		# Note: check source directory name when updating this
+#_snapshot=4.7-20120721
+_libstdcppmanver=20120924		# Note: check source directory name when updating this
 pkgdesc="The GNU Compiler Collection for multilib with x32 ABI support"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -21,15 +21,15 @@ makedepends=('binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl'
              'lib32-glibc>=2.16' 'libx32-glibc>=2.16')
 checkdepends=('dejagnu')
 options=('!libtool' '!emptydirs')
-source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-	ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
+	#ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
 	ftp://gcc.gnu.org/pub/gcc/libstdc++/doxygen/libstdc++-api.${_libstdcppmanver}.man.tar.bz2
 	gcc_pure64-multilib.patch
         gcc-4.7.1-libada-pic.patch
         gcc-4.7.1-libgo-write.patch
         189626.patch)
-md5sums=('a1a53fda426bc6809cede8e85bbaf2a3'
-         '79c4381f983b71868c02da3379e1e8a2'
+md5sums=('cc308a0891e778cfda7a151ab8a6e762'
+         '7f3d52515daafffb57c287f427381106'
          '55818c34a79ec90913ef7778e17ea6b6'
          '2acbc9d35cc9d72329dc71d6b1f162ef'
          'df82dd175ac566c8a6d46b11ac21f14c'
