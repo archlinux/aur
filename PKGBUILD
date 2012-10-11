@@ -11,8 +11,8 @@ arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
-             'libidn' 'python2' 'hicolor-icon-theme' 'gstreamer0.10'
-             'farstream' 'avahi' 'tk' 'ca-certificates' 'intltool'
+             'libidn' 'python2' 'hicolor-icon-theme' 'gstreamer0.10' 'avahi'
+             'tk' 'ca-certificates' 'intltool'
              'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
@@ -34,6 +34,7 @@ build() {
     --enable-cyrus-sasl \
     --disable-doxygen \
     --enable-nm \
+    --disable-vv \
     --with-python=/usr/bin/python2 \
     --with-system-ssl-certs=/etc/ssl/certs
     make
@@ -42,9 +43,8 @@ build() {
 package_pidgin(){
   pkgdesc="Multi-protocol instant messaging client"
   depends=('libpurple' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
-           'gstreamer0.10' 'hicolor-icon-theme')
-  optdepends=('aspell: for spelling correction'
-              'gstreamer0.10-good-plugins: video and voice support')
+           'hicolor-icon-theme')
+  optdepends=('aspell: for spelling correction')
   install=pidgin.install
 
   cd "$srcdir/pidgin-$pkgver"
@@ -65,7 +65,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss')
+  depends=('gstreamer0.10' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
               'python2-dbus: for purple-remote and purple-url-handler'
@@ -80,7 +80,7 @@ package_libpurple(){
 
 package_finch(){
   pkgdesc="A ncurses-based messaging client"
-  depends=("libpurple=$pkgver-$pkgrel" 'python2' 'gstreamer0.10')
+  depends=("libpurple=$pkgver-$pkgrel" 'libx11' 'python2')
 
   cd "$srcdir/pidgin-$pkgver"
 
