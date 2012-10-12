@@ -1,43 +1,34 @@
 # Maintainer: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
-
-# _GNU_EFI_LIB_DIR="/usr/lib"
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 _actualname="gummiboot"
 _pkgname="${_actualname}-efi-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=20120915
+pkgver=20121012
 pkgrel=1
-pkgdesc="Simple x86_64 UEFI Boot Manager for EFISTUB Kernels - GIT Development Version"
+pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('any')
 license=('GPL2')
 
-makedepends=('git' 'gnu-efi')
-
+makedepends=('git' 'gnu-efi-libs')
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-
-backup=('boot/efi/loader/loader.conf'
-        'boot/efi/loader/entries/archlinux-core.conf'
-        'boot/efi/loader/entries/archlinux-core-fallback.conf')
-
-options=('!strip' 'docs')
-install="${_pkgname}.install"
+options=('!strip')
 
 source=('loader.conf'
-        'archlinux-core.conf'
-        'archlinux-core-fallback.conf')
+        'arch.conf')
 
-sha256sums=('9f53946a3efa4005031ec9f8247a874b8857c1363a2401624e0a909436b558ed'
-            '4d4a0d59ca3e7ab93428c817a04ca717e5295a1536f13649f4b4007495f3921c'
-            '48b20ba6684f65c24508ab7cadd0467201de0b158514c384500b622eaa97efff')
+sha1sums=('82a59f90d9138c26f8db52bb8e94991602cf1edd'
+          '007178db11d524b15eb4566d930752d211e7dd78')
 
 _gitroot="git://anongit.freedesktop.org/gummiboot"
-_gitname="${_actualname}"
+_gitname="gummiboot"
 _gitbranch="master"
 
 _update_git() {
@@ -77,29 +68,39 @@ build() {
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
-	cd "${srcdir}/${_gitname}_build"
+	## Fix Makefiles to enable compile for both x86_64 and i386 UEFI
+	sed 's|ARCH=|ARCH?=|g' -i "${srcdir}/${_gitname}_build/Makefile"
+	sed 's|LIBDIR=|LIBDIR?=|g' -i "${srcdir}/${_gitname}_build/Makefile"
+	sed 's|CFLAGS =|CFLAGS +=|g'  -i "${srcdir}/${_gitname}_build/Makefile"
+	
+	## Compile gummiboot for x86_64 UEFI
+	rm -rf "${srcdir}/${_gitname}_build-x86_64/" || true
+	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-x86_64"
+	cd "${srcdir}/${_gitname}_build-x86_64/"
+	CFLAGS="-m64" ARCH="x86_64" LIBDIR="/usr/lib" make
 	echo
 	
-	make clean || true
+	## Compile gummiboot for i386 aka IA32 UEFI
+	rm -rf "${srcdir}/${_gitname}_build-i386/" || true
+	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
+	cd "${srcdir}/${_gitname}_build-i386/"
+	CFLAGS="-m32" ARCH="ia32" LIBDIR="/usr/lib32" make
 	echo
 	
-	make
-	echo
+	rm -rf "${srcdir}/${_gitname}_build/" || true
 	
 }
 
 package() {
 	
-	cd "${srcdir}/${_gitname}_build"
+	install -d "${pkgdir}/usr/lib/gummiboot/loader/entries/"
 	
-	## Install gummiboot x86_64 UEFI application
-	install -d "${pkgdir}/boot/efi/EFI/arch/gummiboot/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/gummiboot.efi" "${pkgdir}/boot/efi/EFI/arch/gummiboot/gummibootx64.efi"
+	## Install gummiboot UEFI applications
+	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/gummiboot.efi" "${pkgdir}/usr/lib/gummiboot/gummibootx64.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build-i386/gummiboot.efi" "${pkgdir}/usr/lib/gummiboot/gummibootia32.efi"
 	
-	## Install gummiboot configuration files
-	install -d "${pkgdir}/boot/efi/loader/entries/"
-	install -D -m0644 "${srcdir}/loader.conf" "${pkgdir}/boot/efi/loader/loader.conf"
-	install -D -m0644 "${srcdir}/archlinux-core.conf" "${pkgdir}/boot/efi/loader/entries/archlinux-core.conf"
-	install -D -m0644 "${srcdir}/archlinux-core-fallback.conf" "${pkgdir}/boot/efi/loader/entries/archlinux-core-fallback.conf"
+	## Install gummiboot example configuration files
+	install -D -m0644 "${srcdir}/loader.conf" "${pkgdir}/usr/lib/gummiboot/loader/loader.conf"
+	install -D -m0644 "${srcdir}/arch.conf" "${pkgdir}/usr/lib/gummiboot/loader/entries/arch.conf"
 	
 }

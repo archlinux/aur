@@ -1,29 +1,22 @@
 pkgbase = gummiboot-efi-x86_64-git
-	pkgdesc = Simple x86_64 UEFI Boot Manager for EFISTUB Kernels - GIT Development Version
-	pkgver = 20120915
+	pkgdesc = Simple text-mode UEFI Boot Manager - GIT Version
+	pkgver = 20121012
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/gummiboot
-	install = gummiboot-efi-x86_64.install
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = gnu-efi
+	makedepends = gnu-efi-libs
 	depends = dosfstools
 	depends = efibootmgr
 	optdepends = mactel-boot: For bless command in Apple Mac systems
 	provides = gummiboot-efi-x86_64
 	conflicts = gummiboot-efi-x86_64
 	options = !strip
-	options = docs
-	backup = boot/efi/loader/loader.conf
-	backup = boot/efi/loader/entries/archlinux-core.conf
-	backup = boot/efi/loader/entries/archlinux-core-fallback.conf
 	source = loader.conf
-	source = archlinux-core.conf
-	source = archlinux-core-fallback.conf
-	sha256sums = 9f53946a3efa4005031ec9f8247a874b8857c1363a2401624e0a909436b558ed
-	sha256sums = 4d4a0d59ca3e7ab93428c817a04ca717e5295a1536f13649f4b4007495f3921c
-	sha256sums = 48b20ba6684f65c24508ab7cadd0467201de0b158514c384500b622eaa97efff
+	source = arch.conf
+	sha1sums = 82a59f90d9138c26f8db52bb8e94991602cf1edd
+	sha1sums = 007178db11d524b15eb4566d930752d211e7dd78
 
 pkgname = gummiboot-efi-x86_64-git
 
