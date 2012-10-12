@@ -1,4 +1,4 @@
-pkgbase = gummiboot-efi-x86_64-git
+pkgbase = gummiboot-efi-git
 	pkgdesc = Simple text-mode UEFI Boot Manager - GIT Version
 	pkgver = 20121012
 	pkgrel = 1
@@ -10,13 +10,13 @@ pkgbase = gummiboot-efi-x86_64-git
 	depends = dosfstools
 	depends = efibootmgr
 	optdepends = mactel-boot: For bless command in Apple Mac systems
-	provides = gummiboot-efi-x86_64
-	conflicts = gummiboot-efi-x86_64
+	provides = gummiboot-efi
+	conflicts = gummiboot-efi
 	options = !strip
 	source = loader.conf
 	source = arch.conf
 	sha1sums = 82a59f90d9138c26f8db52bb8e94991602cf1edd
 	sha1sums = 007178db11d524b15eb4566d930752d211e7dd78
 
-pkgname = gummiboot-efi-x86_64-git
+pkgname = gummiboot-efi-git
 

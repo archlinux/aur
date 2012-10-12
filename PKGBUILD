@@ -2,8 +2,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
-_actualname="gummiboot"
-_pkgname="${_actualname}-efi-x86_64"
+_pkgname="gummiboot-efi"
 pkgname="${_pkgname}-git"
 
 pkgver=20121012
