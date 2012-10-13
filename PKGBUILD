@@ -1,6 +1,6 @@
 # Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="a scalable c++ machine learning library"
 arch=('i686' 'x86_64')
@@ -23,10 +23,10 @@ md5sums=('ecf9279fc8e92836aeb838c127ab79f6'
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  patch -Np1 -i "$srcdir/${source[1]##*/}"
-  patch -Np1 -i "$srcdir/${source[2]##*/}"
-  patch -Np1 -i "$srcdir/${source[3]##*/}"
-  patch -Np1 -i "$srcdir/${source[4]##*/}"
+  #patch -Np1 -i "$srcdir/${source[1]##*/}"
+  #patch -Np1 -i "$srcdir/${source[2]##*/}"
+  #patch -Np1 -i "$srcdir/${source[3]##*/}"
+  #patch -Np1 -i "$srcdir/${source[4]##*/}"
 
   cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/" -D DEBUG=OFF -D PROFILE=OFF .
   make
@@ -46,3 +46,8 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('9c61f73e2c479315f8270b205315df23'
+         '352cdbadf79e6bc17f71c536b0113dae'
+         '81d7bea820041a7caa4b2683e536ee1f'
+         '44991787106e33443af03c225ab92a3f'
+         'e79dc29cbb5e0575dbc3110c46650e50')
