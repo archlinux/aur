@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.6
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,9 +20,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 md5sums=('1a1760420eac802c541a20ab51a093d1'
-         '775f1389a934512341726f9b4aeaf661'
-         '8dd3f284cb944dc5b334ddadcfac0e08'
-         'e9c94795caa1792571973e0781324f1b'
+         'ad1020c82a71ee1ef2416a0d12e724df'
+         '443f285744cb96401f9a631f542b9248'
+         '2793e97a9e98c501afd3e18d2e3b9762'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662')
 
