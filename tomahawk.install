@@ -1,3 +1,13 @@
+post_upgrade() {
+ xdg-icon-resource forceupdate --theme hicolor
+ update-desktop-database -q
+}
+
 post_install() {
  echo -e "TIP:\nFor better experience it is currently recommended to use phonon-vlc backend as it deals better with networking than gstreamer."
+ post_upgrade
+}
+
+post_remove() {
+ post_upgrade
 }
