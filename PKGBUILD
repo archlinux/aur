@@ -2,15 +2,18 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Ryan Coyner <rcoyner@gmail.com>
 
-pkgname=python-soappy
+pkgbase=python-soappy
+pkgname=python2-soappy
 pkgver=0.12.0
-pkgrel=10
+pkgrel=11
 pkgdesc="A module which implements a high-level interface to SOAP functions"
 arch=('any')
 url="http://pywebsvcs.sourceforge.net/"
 license=('custom')
-depends=('python-fpconst' 'pyxml')
-optdepends=('python-m2crypto: for support for server-side SSL')
+depends=('python2-fpconst' 'pyxml')
+conflicts=('python-soappy<=0.12.0-10')
+replaces=('python-soappy<=0.12.0-10')
+optdepends=('python2-m2crypto: for support for server-side SSL')
 source=("http://downloads.sourceforge.net/pywebsvcs/SOAPpy-${pkgver}.tar.gz")
 md5sums=('d0d29f9b6fb27bfadc69b64a36321e20')
 
@@ -20,7 +23,7 @@ build() {
   python2 setup.py build
 }
 
-package() {
+package_python2-soappy() {
   cd "${srcdir}/SOAPpy-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
