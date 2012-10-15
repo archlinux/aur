@@ -1,6 +1,7 @@
-# $Id: PKGBUILD 77262 2012-10-08 12:57:33Z heftig $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# $Id: PKGBUILD 78782 2012-10-24 15:17:40Z arodseth $
+# Upstream Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
@@ -9,11 +10,11 @@ pkgbase='gcc-multilib-x32'
 pkgname='gcc-multilib-x32'
 true && pkgname=('gcc-multilib-x32' 'gcc-libs-multilib-x32' 'libx32-gcc-libs' 'gcc-fortran-multilib-x32' 'gcc-objc-multilib-x32' 'gcc-go-multilib-x32')
 pkgver=4.7.2
-pkgrel=1.1
-_origrel=6
+pkgrel=1.2
+_origrel=1
 #_snapshot=4.7-20120721
 _libstdcppmanver=20120924		# Note: check source directory name when updating this
-pkgdesc="The GNU Compiler Collection for multilib with x32 ABI support"
+pkgdesc='The GNU Compiler Collection for multilib with x32 ABI support'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
@@ -103,7 +104,7 @@ check() {
 
 package_gcc-libs-multilib-x32()
 {
-  pkgdesc="Runtime libraries shipped by GCC for multilib with x32 ABI support"
+pkgdesc='Runtime libraries shipped by GCC for multilib with x32 ABI support'
   depends=('glibc>=2.16' "lib32-gcc-libs=$pkgver-$_origrel" "libx32-gcc-libs=$pkgver-$pkgrel")
   provides=("gcc-libs=$pkgver-$_origrel" "gcc-libs-multilib=$pkgver-$_origrel")
   conflicts=('gcc-libs')
@@ -139,7 +140,7 @@ package_gcc-libs-multilib-x32()
 
 package_libx32-gcc-libs()
 {
-  pkgdesc="Runtime libraries shipped by GCC (x32 ABI)"
+pkgdesc='Runtime libraries shipped by GCC (x32 ABI)'
   depends=('libx32-glibc>=2.16' "gcc-libs>=$pkgver")
 
   cd gcc-build
@@ -169,7 +170,7 @@ package_libx32-gcc-libs()
 }
 package_gcc-multilib-x32()
 {
-  pkgdesc="The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support"
+pkgdesc='The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support'
   depends=("gcc-libs-multilib-x32=$pkgver-$pkgrel" 'binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl')
   groups=('multilib-devel')
   provides=("gcc=$pkgver-$_origrel" "gcc-multilib=$pkgver-$_origrel" "gcc-x32-seed=$pkgver-$_origrel")
@@ -242,7 +243,7 @@ EOF
 
 package_gcc-fortran-multilib-x32()
 {
-  pkgdesc="Fortran front-end for GCC for multilib with x32 ABI support"
+pkgdesc='Fortran front-end for GCC for multilib with x32 ABI support'
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-fortran=$pkgver-$_origrel")
   conflicts=('gcc-fortran')
@@ -268,7 +269,7 @@ package_gcc-fortran-multilib-x32()
 
 package_gcc-objc-multilib-x32()
 {
-  pkgdesc="Objective-C front-end for GCC for multilib with x32 ABI support"
+pkgdesc='Objective-C front-end for GCC for multilib with x32 ABI support'
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-objc=$pkgver-$_origrel")
   conflicts=('gcc-objc')
@@ -288,7 +289,7 @@ package_gcc-objc-multilib-x32()
 
 package_gcc-ada-multilib-x32()
 {
-  pkgdesc="Ada front-end for GCC (GNAT) for multilib with x32 ABI support"
+pkgdesc='Ada front-end for GCC (GNAT) for multilib with x32 ABI support'
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-ada=$pkgver-$_origrel")
   conflicts=('gcc-ada')
@@ -315,7 +316,7 @@ package_gcc-ada-multilib-x32()
 
 package_gcc-go-multilib-x32()
 {
-  pkgdesc="Go front-end for GCC for multilib with x32 ABI support"
+pkgdesc='Go front-end for GCC for multilib with x32 ABI support'
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-go=$pkgver-$_origrel")
   conflicts=('gcc-go')
