@@ -1,7 +1,8 @@
 # Maintainer: Kaiting Chen <kaitocracy@gmail.com>
 # Maintainer: Aaron Schaefer <aaron@elasticdog.com>
 
-pkgname=python-boto
+pkgbase=python-boto
+pkgname=python2-boto
 pkgver=2.5.2
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
@@ -9,6 +10,8 @@ arch=('any')
 url='https://github.com/boto/boto'
 license=('MIT')
 depends=('python2')
+conflicts=('python-boto>=2.5.2-1')
+replaces=('python-boto>=2.5.2-1')
 source=("http://github.com/downloads/boto/boto/boto-$pkgver.tar.gz"
         'LICENSE')
 md5sums=('be2ed101a4289d1e7271b9371438722d'
