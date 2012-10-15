@@ -1,8 +1,8 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=d-feet
-pkgver=0.1.14
-pkgrel=2
+pkgver=0.1.15
+pkgrel=1
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://live.gnome.org/DFeet"
@@ -12,7 +12,7 @@ makedepends=('python2-distribute')
 optdepends=('python-wnck: get icons for applications')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-md5sums=('15c9ff7277cae66738dc47642b910303')
+sha256sums=('1250d353ded2c2635fb97d26a7fb9e68aba0f851a7f2d5608de651fa14f8eb0a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
