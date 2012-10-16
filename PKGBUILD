@@ -7,7 +7,7 @@ pkgdesc="Mount Wikipedia/Mediawiki sites locally via FUSE"
 arch=('any')
 url="http://wikipediafs.sourceforge.net/"
 license=('GPL')
-depends=('fuse' 'python-fuse')
+depends=('fuse' 'python2-fuse')
 source=("http://downloads.sourceforge.net/wikipediafs/$pkgname-$pkgver.tar.gz")
 sha256sums=('8c9de78dd92354877a8d604f3128238f10cd6c06d594ddc23c06552cc7c731f1')
 
