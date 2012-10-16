@@ -5,14 +5,16 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://numpy.scipy.org/"
 makedepends=('lapack' 'python' 'python2' 'python-distribute' 'python2-distribute' 'gcc-fortran' 'python-nose')
-source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz)
-md5sums=('95ed6c9dcc94af1fc1642ea2a33c1bba')
+source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz
+        numpy-1.6.2-python-3.3-build-fix.patch)
+md5sums=('95ed6c9dcc94af1fc1642ea2a33c1bba'
+         'e0fdbcfc9f6193b6762383b4693e749e')
 
 build() {
   cd "${srcdir}"
@@ -27,6 +29,7 @@ build() {
 
   echo "Building Python3"
   cd "${srcdir}/numpy-${pkgver}"
+  patch -Np1 -i $srcdir/numpy-1.6.2-python-3.3-build-fix.patch
   python setup.py config_fc --fcompiler=gnu95 build
 }
 
