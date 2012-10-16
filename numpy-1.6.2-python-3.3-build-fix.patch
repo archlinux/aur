@@ -75,6 +75,18 @@ index e547071..12745d7 100644
      }
      memcpy(dest, src, itemsize);
      /* @default@ == 2 won't get here */
+diff --git a/numpy/core/src/multiarray/methods.c b/numpy/core/src/multiarray/methods.c
+index c4147ef..119056c 100644
+--- a/numpy/core/src/multiarray/methods.c
++++ b/numpy/core/src/multiarray/methods.c
+@@ -1587,7 +1587,7 @@ array_setstate(PyArrayObject *self, PyObject *args)
+     if (!PyDataType_FLAGCHK(typecode, NPY_LIST_PICKLE)) {
+         int swap=!PyArray_ISNOTSWAPPED(self);
+         self->data = datastr;
+-        if (!_IsAligned(self) || swap) {
++        if (!_IsAligned(self) || swap || (len <= 1000)) {
+             intp num = PyArray_NBYTES(self);
+             self->data = PyDataMem_NEW(num);
+             if (self->data == NULL) {
 -- 
 1.7.12.3
-

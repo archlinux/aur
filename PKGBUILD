@@ -4,32 +4,30 @@
 
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.7.0
+_pkgver=1.7.0b2
+pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://numpy.scipy.org/"
 makedepends=('lapack' 'python' 'python2' 'python-distribute' 'python2-distribute' 'gcc-fortran' 'python-nose')
-source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz
-        numpy-1.6.2-python-3.3-build-fix.patch)
-md5sums=('95ed6c9dcc94af1fc1642ea2a33c1bba'
-         'e0fdbcfc9f6193b6762383b4693e749e')
+source=(http://downloads.sourceforge.net/numpy/numpy-${_pkgver}.tar.gz)
+md5sums=('1b62cf0e34e2db58b0241b00d603df24')
 
 build() {
   cd "${srcdir}"
-  cp -a numpy-${pkgver} numpy-py2-${pkgver}
+  cp -a numpy-${_pkgver} numpy-py2-${_pkgver}
 
   export Atlas=None
   export LDFLAGS="$LDFLAGS -shared"
 
   echo "Building Python2"
-  cd "${srcdir}/numpy-py2-${pkgver}"
+  cd "${srcdir}/numpy-py2-${_pkgver}"
   python2 setup.py config_fc --fcompiler=gnu95 build
 
   echo "Building Python3"
-  cd "${srcdir}/numpy-${pkgver}"
-  patch -Np1 -i $srcdir/numpy-1.6.2-python-3.3-build-fix.patch
+  cd "${srcdir}/numpy-${_pkgver}"
   python setup.py config_fc --fcompiler=gnu95 build
 }
 
@@ -37,7 +35,7 @@ package_python2-numpy() {
   depends=('lapack' 'python2')
   optdepends=('python-nose: testsuite')
 
-  cd "${srcdir}/numpy-py2-${pkgver}"
+  cd "${srcdir}/numpy-py2-${_pkgver}"
   python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
@@ -55,7 +53,7 @@ package_python-numpy() {
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
 
-  cd "${srcdir}/numpy-${pkgver}"
+  cd "${srcdir}/numpy-${_pkgver}"
   python setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python3-numpy"
