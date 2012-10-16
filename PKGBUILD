@@ -1,12 +1,15 @@
-# Maintainer: Biru Ionut <ionut@archlinux.ro>
+# Upstream Maintainer: Biru Ionut <ionut@archlinux.ro>
 # Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
 # Contributor: Kaos < gianlucaatlas dot gmail dot com >
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=sqlite
 pkgname=libx32-sqlite
-_amalgamationver=3071400
-pkgver=3.7.14
-pkgrel=2.1
+_amalgamationver=3071401
+#_docver=${_amalgamationver}
+_docver=3071400
+pkgver=3.7.14.1
+pkgrel=1.1
 pkgdesc="A C library that implements an SQL database engine (x32 ABI)"
 arch=('x86_64')
 license=('custom')
@@ -15,7 +18,7 @@ depends=(libx32-glibc $_pkgbasename)
 makedepends=('tcl' 'gcc-multilib-x32' 'libx32-readline')
 source=(http://www.sqlite.org/sqlite-autoconf-${_amalgamationver}.tar.gz)
 options=(!libtool)
-md5sums=('6464d429b1396a8db35864e791673b65')
+md5sums=('4cf3fd434bbb6e50777019ff3507bfa5')
 provides=("libx32-sqlite3=$pkgver")
 replaces=("libx32-sqlite3")
 conflicts=("libx32-sqlite3")
