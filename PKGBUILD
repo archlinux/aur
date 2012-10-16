@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 74440 2012-07-28 15:05:46Z bluewind $
+# $Id: PKGBUILD 77409 2012-10-09 17:09:48Z bluewind $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 
 pkgname=libx32-dbus-core
 _pkgbasename=dbus-core
-pkgver=1.6.4
+pkgver=1.6.8
 pkgrel=1.1
 pkgdesc="Freedesktop.org message bus system (x32 ABI)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libx32-glibc' 'libx32-expat' 'dbus-core')
 makedepends=('gcc-multilib-x32' libx32-libx11)
 options=(!libtool)
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-${pkgver}.tar.gz)
-md5sums=('5ec43dc4554cba638917317b2b4f7640')
+md5sums=('3bf059c7dd5eda5f539a1b7cfe7a14a2')
 
 build() {
     export CC="gcc -mx32"
