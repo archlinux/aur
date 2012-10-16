@@ -4,7 +4,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('docbook-xsl' 'intltool' 'rdesktop' 'openssh' 'itstool')
 groups=('gnome-extra')
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('4f75882d52308ccb241ef6d76061bad54a7e13e6549fe355faa2af994765f11d')
+sha256sums=('768727f9833ba9b9879d72671bc4b10577f4dfe74488cb0cf4c49edfe0165c62')
 
 build() {
   cd $pkgname-$pkgver
