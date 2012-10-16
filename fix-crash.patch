@@ -1,0 +1,24 @@
+diff -Naur sparkleshare-0.9.3.orig/SparkleShare/Linux/SparkleSetup.cs sparkleshare-0.9.3/SparkleShare/Linux/SparkleSetup.cs
+--- sparkleshare-0.9.3.orig/SparkleShare/Linux/SparkleSetup.cs	2012-09-15 12:18:05.000000000 +0200
++++ sparkleshare-0.9.3/SparkleShare/Linux/SparkleSetup.cs	2012-10-16 19:14:13.226364167 +0200
+@@ -65,14 +65,16 @@
+                                 Xalign    = 1
+                             };
+ 
+-                            string username = UnixUserInfo.GetRealUser ().RealName;
+-                            username        = username.TrimEnd (",".ToCharArray ());
+-
+-                            Entry name_entry = new Entry (username) {
++                            Entry name_entry = new Entry () {
+                                 Xalign = 0,
+                                 ActivatesDefault = true
+                             };
+ 
++                            UnixUserInfo user_info = UnixUserInfo.GetRealUser ();
++                            
++                            if (user_info != null && user_info.RealName != null)
++                                name_entry.Text = user_info.RealName.TrimEnd (",".ToCharArray ());
++
+                             Entry email_entry = new Entry () {
+                                 Xalign = 0,
+                                 ActivatesDefault = true
