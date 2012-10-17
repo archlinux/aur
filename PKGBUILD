@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hp-snmp-agents
-pkgver=8.7.0.1.7_8
+pkgver=9.1.0.57_62
 pkgrel=1
 pkgdesc="Insight Management SNMP Agents for HP ProLiant Systems"
 arch=(i686 x86_64)
@@ -12,12 +12,11 @@ license=("CUSTOM")
 
 [ $CARCH = "x86_64" ] && depends=(${depends[@]} lib32-gcc-libs)
 
-source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/pool/non-free/${pkgname}_${pkgver//_/-}_i386.deb)
+source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.rhel6.i386.rpm)
 
 package() {
-	cd "$pkgdir"
-	tar xf "$srcdir/data.tar.gz"
+	cp -a "$srcdir/"{etc,opt,sbin,usr,var} "$pkgdir"
 }
 
-sha256sums=('198ed76cdf1874e72f586172e4921ae1ac76cb37d38feff602f6ff43e944fba4')
+sha256sums=('f4d603b7208f44506a7d518c672815b5939d0417b7e12e33261d84d4464da115')
 
