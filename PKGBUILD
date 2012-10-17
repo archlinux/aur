@@ -15,7 +15,7 @@ license=("CUSTOM")
 source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.i386.rpm)
 
 package() {
-	cp -a "$srcdir/opt" "$pkgdir"
+	cp -a "$srcdir/"{opt,usr} "$pkgdir"
 }
 
 sha256sums=('c0d1f3213e33710692361f290eb5b43ebb65a178d99ca1736e8d3a67aa4df8fb')
