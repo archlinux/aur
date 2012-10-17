@@ -1,0 +1,16 @@
+pkgbase = cpqacuxe
+	pkgdesc = HP Array Configuration Utility
+	pkgver = 9.10_22.0
+	pkgrel = 1
+	url = http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack
+	arch = i686
+	arch = x86_64
+	groups = hpproliant
+	license = CUSTOM
+	depends = bash
+	depends = hpsmh
+	source = http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/cpqacuxe-9.10-22.0.i386.rpm
+	sha256sums = c0d1f3213e33710692361f290eb5b43ebb65a178d99ca1736e8d3a67aa4df8fb
+
+pkgname = cpqacuxe
+
