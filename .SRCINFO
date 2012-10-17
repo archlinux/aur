@@ -1,0 +1,19 @@
+pkgbase = hp-snmp-agents
+	pkgdesc = Insight Management SNMP Agents for HP ProLiant Systems
+	pkgver = 9.50_2564
+	pkgrel = 1
+	url = http://downloads.linux.hp.com/SDR/downloads/mcp
+	arch = i686
+	arch = x86_64
+	groups = hpproliant
+	license = CUSTOM
+	depends = bash
+	depends = hp-health
+	depends = ethtool
+	depends = pciutils
+	depends = net-snmp
+	source = http://downloads.linux.hp.com/SDR/downloads/mcp/centos/6//current/hp-snmp-agents-9.50-2564.40.rhel6..rpm
+	sha256sums = a72a0d4335a356efb3322cbe37b1a5b94eeb4e9304aff9a266892289059a199a
+
+pkgname = hp-snmp-agents
+
