@@ -6,14 +6,14 @@ pkgrel=1
 pkgdesc="HP System Management Homepage"
 arch=(i686 x86_64)
 url="http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack"
-depends=(bash perl pam)
+depends=(bash perl)
 groups=(hpproliant)
 license=("CUSTOM")
 options=(!strip)
 
 [ $CARCH = "x86_64" ] \
-	&& depends=(${depends[@]} lib32-glibc lib32-expat lib32-zlib) \
-	|| depends=(${depends[@]} expat zlib)
+	&& depends=(${depends[@]} lib32-glibc lib32-expat lib32-zlib lib32-pam) \
+	|| depends=(${depends[@]} expat zlib pam)
 
 source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.i386.rpm)
 
