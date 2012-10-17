@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hpsmh
-pkgver=6.0.0_97
+pkgver=7.1.0_16
 pkgrel=1
 pkgdesc="HP System Management Homepage"
 arch=(i686 x86_64)
@@ -9,17 +9,17 @@ url="http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack"
 depends=(bash perl)
 groups=(hpproliant)
 license=("CUSTOM")
+options=(!strip)
 
 [ $CARCH = "x86_64" ] \
 	&& depends=(${depends[@]} lib32-glibc lib32-expat lib32-zlib) \
 	|| depends=(${depends[@]} expat zlib)
 
-source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/pool/non-free/${pkgname}_${pkgver//_/-}_i386.deb)
+source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.i386.rpm)
 
 package() {
-	cd "$pkgdir"
-	tar xf "$srcdir/data.tar.gz"
+	cp -a "$srcdir/"{etc,opt,usr,var} "$pkgdir"
 }
 
-sha256sums=('8fa8508a4505d8ed8475f06708249416cec0bf3707dc2003d1899cb342f4a9ba')
+sha256sums=('cf13d032330a234dbf960df6c7126517713e695be95e98b2e098d756f243884f')
 
