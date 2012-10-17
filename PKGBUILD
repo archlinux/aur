@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hponcfg
-pkgver=3.1.1.0.2_2
+pkgver=4.0.0_0
 pkgrel=1
 pkgdesc="RILOE II/iLo online configuration utility"
 arch=(i686 x86_64)
@@ -12,11 +12,10 @@ license=("CUSTOM")
 
 [ $CARCH = "x86_64" ] && depends=(${depends[@]} lib32-glibc)
 
-source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/pool/non-free/${pkgname}_${pkgver//_/-}_i386.deb)
+source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.noarch.rpm)
 
 package() {
-	cd "$pkgdir"
-	tar xf "$srcdir/data.tar.gz"
+	cp -a "$srcdir/"{sbin,usr} "$pkgdir"
 }
 
-sha256sums=('2e145c40e20808398fccbdba7f798020ed6fdf65059f634f5351d6ecbc867b99')
+sha256sums=('6c72585ab42c232651c090b5a42372e2f8a756778449b9a726a6560070aa95f1')
