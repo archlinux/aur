@@ -1,0 +1,19 @@
+pkgbase = hpsmh
+	pkgdesc = HP System Management Homepage
+	pkgver = 7.4.0_13
+	pkgrel = 1
+	url = http://downloads.linux.hp.com/SDR/downloads/mcp
+	arch = i686
+	arch = x86_64
+	groups = hpproliant
+	license = CUSTOM
+	depends = expat
+	depends = pam
+	depends = libidn
+	depends = curl
+	options = !strip
+	source = http://downloads.linux.hp.com/SDR/downloads/mcp/centos/7//current/hpsmh-7.4.0-13..rpm
+	sha256sums = dec1164b86ee04d1bda5a5126cf44b0d421e37ad1b9b08a7e0c6d15045aa77bc
+
+pkgname = hpsmh
+
