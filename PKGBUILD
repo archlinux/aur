@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=cpqacuxe
-pkgver=8.70_9.0.7_8
+pkgver=9.10_22.0
 pkgrel=1
 pkgdesc="HP Array Configuration Utility"
 arch=(i686 x86_64)
@@ -12,12 +12,11 @@ license=("CUSTOM")
 
 [ $CARCH = "x86_64" ] && depends=(${depends[@]} lib32-gcc-libs)
 
-source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/pool/non-free/${pkgname}_${pkgver//_/-}_i386.deb)
+source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.i386.rpm)
 
 package() {
-	cd "$pkgdir"
-	tar xf "$srcdir/data.tar.gz"
+	cp -a "$srcdir/opt" "$pkgdir"
 }
 
-sha256sums=('be727f086d628922e39955a2e200a2bbf544c7884c6153a027fdb28f765235bb')
+sha256sums=('c0d1f3213e33710692361f290eb5b43ebb65a178d99ca1736e8d3a67aa4df8fb')
 
