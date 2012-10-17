@@ -1,0 +1,15 @@
+pkgbase = hpacucli
+	pkgdesc = HP Command Line Array Configuration Utility
+	pkgver = 9.40_12.0
+	pkgrel = 1
+	url = http://downloads.linux.hp.com/SDR/downloads/mcp
+	arch = i686
+	arch = x86_64
+	groups = hpproliant
+	license = CUSTOM
+	depends = bash
+	source = http://downloads.linux.hp.com/SDR/downloads/mcp/centos/6//current/hpacucli-9.40-12.0..rpm
+	sha256sums = df3bea520c884eee58e4964da08864c949750b2df9b8c974b692b34f5a465ee3
+
+pkgname = hpacucli
+
