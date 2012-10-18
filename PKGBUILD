@@ -1,13 +1,13 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=isrcsubmit-git
-pkgver=20121015
+pkgver=20121018
 pkgrel=1
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
 license=('GPL3')
-depends=('python2' 'python-musicbrainz2>=0.7.0')
+depends=('python2' 'python2-musicbrainz2>=0.7.0')
 makedepends=('git')
 provides=('isrcsubmit')
 conflicts=('isrcsubmit')
