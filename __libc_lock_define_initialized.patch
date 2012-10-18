@@ -1,0 +1,21 @@
+diff -Naur pam_unix2-2.6/src/read-files.c pam_unix2-2.6.new/src/read-files.c
+--- pam_unix2-2.6/src/read-files.c	2012-07-16 00:44:08.042427627 +0200
++++ pam_unix2-2.6.new/src/read-files.c	2012-07-16 00:38:30.643576530 +0200
+@@ -341,7 +341,7 @@
+ 		  char *buffer, size_t buflen, int *errnop)
+ {
+   /* Locks the static variables in this file.  */
+-  __libc_lock_define_initialized (static, lock)
++  static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+   enum nss_status status;
+   FILE *stream = NULL;
+ 
+@@ -371,7 +371,7 @@
+ 		  char *buffer, size_t buflen, int *errnop)
+ {
+   /* Locks the static variables in this file.  */
+-  __libc_lock_define_initialized (static, lock)
++  static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+   enum nss_status status;
+   FILE *stream = NULL;
+ 
