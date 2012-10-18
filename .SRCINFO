@@ -2,7 +2,7 @@
 # Wed Dec 30 18:02:48 UTC 2015
 pkgbase = django
 	pkgdesc = A high-level Python Web framework.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://www.djangoproject.com/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = django
 	depends = python2
 	optdepends = mysql-python: for MySQL backend
 	optdepends = python2-psycopg2: for PostgreSQL backend
-	source = https://www.djangoproject.com/m/releases/1.4/Django-1.4.1.tar.gz
-	md5sums = e345268dacff12876ae4e45de0a61b7d
-	sha256sums = 4d8d20eba350d3d29613cc5a6302d5c23730c7f9e150985bc58b3175b755409b
+	source = https://www.djangoproject.com/m/releases/1.4/Django-1.4.2.tar.gz
+	md5sums = 6ffecdc01ad360e1abdca1015ae0893a
+	sha256sums = edfd8733f45bbaa524cee25bcac3080ce28c21242c27227464eae3fa6b3d80e7
 
 pkgname = django
 
