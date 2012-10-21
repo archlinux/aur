@@ -1,0 +1,13 @@
+extramodules=/usr/lib/modules/extramodules-3.0-lts
+
+post_install() {
+  depmod -v $(< "$extramodules/version") &>/dev/null
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
