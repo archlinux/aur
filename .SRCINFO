@@ -1,0 +1,17 @@
+pkgbase = latex-make
+	pkgdesc = A collection of LaTeX packages, scipts and Makefile fragments that allows to easily compile LaTeX documents.
+	pkgver = 2.1.18
+	pkgrel = 1
+	url = https://gforge.inria.fr/projects/latex-utils/
+	install = latex-make.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	depends = texlive-latexextra
+	depends = python2
+	source = https://gforge.inria.fr/frs/download.php/30927/latex-make-2.1.18.tar.gz
+	md5sums = e4a3512b95533797191f6a019aeabecd
+	sha256sums = 2e3a6097e498cfe010fbac4b73c43a212ceafc847c9daba214654cd4b177a1dd
+
+pkgname = latex-make
+
