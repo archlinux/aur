@@ -1,6 +1,6 @@
 pkgbase = bmdtools-git
 	pkgdesc = Basic capture and play programs for Blackmagic Design Decklink
-	pkgver = 20121010
+	pkgver = 20121021
 	pkgrel = 1
 	url = https://github.com/lu-zero/bmdtools
 	arch = i686

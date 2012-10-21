@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.inf>
 
 pkgname=bmdtools-git
-pkgver=20121010
+pkgver=20121021
 pkgrel=1
 pkgdesc="Basic capture and play programs for Blackmagic Design Decklink"
 arch=('i686' 'x86_64')
@@ -32,6 +32,7 @@ build() {
   cd "$srcdir/$_gitname-build"
 
   sed -i 's|SDK_PATH=../../include|SDK_PATH=/usr/src/decklink-sdk|' Makefile
+  sed -i 's|pkg-config --libs libavformat libswscale|pkg-config --libs libavformat libswscale libavutil libavcodec|' Makefile
   make
 }
 
