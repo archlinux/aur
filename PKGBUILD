@@ -1,13 +1,14 @@
-# $Id: PKGBUILD 74326 2012-07-24 16:55:53Z ibiru $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+# Upstream Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Travis Willard <travis@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libpng
 pkgname=libx32-$_pkgbasename
-pkgver=1.5.12
-_apngver=1.5.12
+pkgver=1.5.13
+_apngver=1.5.13
 _libversion=15
 pkgrel=1.1
 pkgdesc="A collection of routines used to create PNG format graphics files (x32 ABI)"
@@ -19,8 +20,8 @@ makedepends=(gcc-multilib)
 options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz"
         "http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-${_apngver}-apng.patch.gz")
-md5sums=('0fd51add1da6a0e470e0c726c59171b9'
-         '7f2924b1fe0cca9080e18b8720443716')
+md5sums=('0b607a685da977f1bfc96e1c47055183'
+         '23c8765aa6ca188c0575386d5ea8fe70')
 
 build() {
   export CC="gcc -mx32"
