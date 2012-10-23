@@ -2,7 +2,7 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=unarchiver
-pkgver=3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="An Objective-C application for uncompressing archive files"
 arch=('x86_64' 'i686')
@@ -11,17 +11,14 @@ license=('LGPL2.1')
 depends=('gnustep-base' 'openssl' 'bzip2' 'icu' 'gcc-libs' 'zlib')
 makedepends=('gcc-objc')
 source=("http://theunarchiver.googlecode.com/files/TheUnarchiver${pkgver}_src.zip"
-        "native_obj_exceptions.patch"
-        "libz.patch")
-sha1sums=('8ab30c79e653ed27b4f9e5f5ae649cbc7b18701a'
-          'b8024026607dc2de758479b73d8b01ca6f692b59'
-          '003d114a0ba9a919af602881ef5e04cdba2e4c50')
+        "native_obj_exceptions.patch")
+sha1sums=('9c7825839b00961237ffbc67a94df8136fbbff37'
+          'b8024026607dc2de758479b73d8b01ca6f692b59')
 
 build() {
   cd "$srcdir/The Unarchiver"
 
   patch -p1 < ../native_obj_exceptions.patch
-  patch -p1 < ../libz.patch
 
   cd XADMaster
   . /usr/share/GNUstep/Makefiles/GNUstep.sh
