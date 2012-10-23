@@ -3,8 +3,8 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=3.5.5
-_basever=3.5
+pkgver=3.6.3
+_basever=3.6
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.xz
         # NOTE: signatures are not automatically verified by makepkg
         #http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.sign
         #http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign
-md5sums=('24153eaaa81dedc9481ada8cd9c3b83d'
-         '0d658ffcd548ab029c9a8d6c4d07e8e2')
+md5sums=('1a1760420eac802c541a20ab51a093d1'
+         '96701113d37ef4f9b785206ab8bcc71e')
 
 build() {
   cd ${srcdir}/linux-${_basever}
@@ -31,7 +31,7 @@ package() {
   make INSTALL_HDR_PATH=${pkgdir}/usr headers_install
 
   # use headers from libdrm
-  rm -rf ${pkgdir}/usr/include/drm
+  rm -r ${pkgdir}/usr/include/drm
   
   # clean-up unnecessary files generated during install
   find ${pkgdir} \( -name .install -o -name ..install.cmd \) -delete
