@@ -1,0 +1,17 @@
+pkgbase = emf4cpp
+	pkgdesc = A C++ implementation and type mapping for the Eclipse Modeling Framework (EMF) core, the Ecore metamodel.
+	pkgver = 1012011253
+	pkgrel = 1
+	url = https://code.google.com/p/emf4cpp/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	source = https://emf4cpp.googlecode.com/files/emf4cpp-source-1012011253.tgz
+	md5sums = d77eec7486243ddeeb2305744180cde2
+	sha256sums = be9add194bbb915ddbd721d2e6323e412a24cf8c5609a49bc60753d11992833d
+	sha384sums = e452d4d28aba50e501a8559a20cdaadded48ee3249aaabc48bc90e148459d3d3fae276f5121ac13aad8468728efaabbc
+	sha512sums = a1b79413c465a02ec0ad691ae7b12a53b985244cea8a4e83e6281029fd818e9486c384c49b0470d9f75c2e29886478a5d2ab95842df5247062b9b730fc7ffca5
+
+pkgname = emf4cpp
+
