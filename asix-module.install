@@ -1,0 +1,16 @@
+rebuild_module_dependencies() {
+	EXTRAMODULES='extramodules-3.6-ARCH'
+	depmod $(cat /lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+	rebuild_module_dependencies
+}
+
+post_upgrade() {
+	rebuild_module_dependencies
+}
+
+post_remove() {
+	rebuild_module_dependencies
+}
