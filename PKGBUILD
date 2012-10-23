@@ -9,13 +9,10 @@ pkgdesc="Control the behaviour of your cdrom device"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/squeeze/setcd"
 license=('GPL')
-depends=('glibc')
-source=(
-  "http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}.orig.tar.gz"
-  "http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}-${_extver}.diff.gz"
-)
-md5sums=('60af6bc161aec0019be44c05a611c64f'
-         'da9b4f89debac263b44cda1cb06e548b')
+source=("http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}.orig.tar.gz"
+        "http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}-${_extver}.diff.gz")
+sha256sums=('66187e4b0774467c7316ed12ae168f928520ce4497ea16df0b799d98d8488156'
+            'a0c6f01afac08144359e37e97db3cf66651dd01bcd3421fd58a01ff300d93e8e')
 
 build() {
   cd "$srcdir"
