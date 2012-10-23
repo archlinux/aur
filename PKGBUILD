@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 169393 2012-10-20 09:48:16Z eric $
-# Maintainer:
+# Maintainer: Marti Raudsepp <marti@juffo.org>
 
 pkgbase=pypy-lxml
 pkgname=('pypy-lxml')
