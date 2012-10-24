@@ -5,7 +5,7 @@
 pkgname=dev86
 pkgver=0.16.19
 pkgrel=1
-pkgdesc="Simple C compiler to generate 8086 code"
+pkgdesc='Simple C compiler to generate 8086 code'
 arch=('i686' 'x86_64')
 url="http://www.debath.co.uk/dev86/"
 license=(GPL)
