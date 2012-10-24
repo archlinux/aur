@@ -5,7 +5,7 @@
 pkgname=directfb
 pkgver=1.6.1
 pkgrel=1
-pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
+pkgdesc='Thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device'
 arch=('i686' 'x86_64')
 url="http://www.directfb.org"
 license=('LGPL')
