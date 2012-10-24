@@ -5,7 +5,7 @@
 pkgname=gmrun
 pkgver=0.9.2
 pkgrel=4
-pkgdesc="A simple program which provides a run program window"
+pkgdesc='Simple program which provides a run program window'
 arch=('i686' 'x86_64')
 url="http://sf.net/projects/gmrun"
 license=('GPL')
