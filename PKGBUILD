@@ -5,7 +5,7 @@
 pkgname=synergy
 pkgver=1.4.10
 pkgrel=1
-pkgdesc="Share a single mouse and keyboard between multiple computers"
+pkgdesc='Share a single mouse and keyboard between multiple computers'
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
 depends=('gcc-libs' 'libxtst' 'libxinerama' )
