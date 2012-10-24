@@ -5,7 +5,7 @@
 pkgname=incron
 pkgver=0.5.10
 pkgrel=3
-pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
+pkgdesc='Like the regular cron but is driven by filesystem events instead of time periods'
 arch=('i686' 'x86_64')
 url="http://incron.aiken.cz/"
 license=('GPL')
