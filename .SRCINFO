@@ -1,0 +1,15 @@
+pkgbase = python-ujson
+	pkgdesc = Ultra fast JSON encoder and decoder for Python.
+	pkgver = 1.33
+	pkgrel = 2
+	url = https://github.com/esnme/ultrajson
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://pypi.python.org/packages/source/u/ujson/ujson-1.33.zip
+	source = LICENSE.txt
+	sha256sums = 68cf825f227c82e1ac61e423cfcad923ff734c27b5bdd7174495d162c42c602b
+	sha256sums = 45b0247dc589415c76f5e2055bfa073f673870e9eb0b4177cc3c642efb434559
+
+pkgname = python-ujson
+
