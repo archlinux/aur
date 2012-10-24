@@ -4,7 +4,7 @@
 pkgname=uriparser
 pkgver=0.7.5
 pkgrel=2
-pkgdesc="uriparser is a strictly RFC 3986 compliant URI parsing library. uriparser is cross-platform, fast, supports Unicode"
+pkgdesc='Strictly RFC 3986 compliant URI parsing library. uriparser is cross-platform, fast, supports Unicode'
 url="http://sourceforge.net/projects/uriparser/"
 depends=(glibc)
 makedepends=(doxygen)
