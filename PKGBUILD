@@ -4,7 +4,7 @@
 pkgname=kchmviewer
 pkgver=6.0
 pkgrel=2
-pkgdesc="A .chm files (MS HTML help file format) viewer"
+pkgdesc='.chm files (MS HTML help file format) viewer'
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
