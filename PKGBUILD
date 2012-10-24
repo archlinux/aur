@@ -5,7 +5,7 @@
 pkgname=ibus-pinyin
 pkgver=1.4.0
 pkgrel=1
-pkgdesc='The PinYin Engine for IBus Input Framework.'
+pkgdesc='The PinYin Engine for IBus Input Framework'
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='http://ibus.googlecode.com'
