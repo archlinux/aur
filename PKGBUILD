@@ -4,7 +4,7 @@
 pkgname='perl-io-bufferedselect'
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Line-buffered select interface"
+pkgdesc='Line-buffered select interface'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
