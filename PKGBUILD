@@ -4,7 +4,7 @@
 pkgname='perl-file-next'
 pkgver=1.10
 pkgrel=1
-pkgdesc="File-finding iterator"
+pkgdesc='File-finding iterator'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
