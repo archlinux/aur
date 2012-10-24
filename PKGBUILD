@@ -4,7 +4,7 @@
 pkgname=scratch
 pkgver=1.4.0.7
 pkgrel=2
-pkgdesc="Create and share your own interactive stories, games, music and art"
+pkgdesc='Create and share your own interactive stories, games, music and art'
 arch=('i686' 'x86_64')
 url="http://scratch.mit.edu"
 license=('GPL2')
