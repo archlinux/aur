@@ -3,7 +3,7 @@
 pkgname=grails
 pkgver=2.1.1
 pkgrel=1
-pkgdesc="Groovy on rails, web framework"
+pkgdesc='Groovy on rails, web framework'
 arch=('any')
 url="http://grails.org/"
 depends=('java-environment' 'junit' 'bash' 'sh')
