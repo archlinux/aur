@@ -3,7 +3,7 @@
 pkgname=sbxkb
 pkgver=0.7.6
 pkgrel=1
-pkgdesc="Simple tray XKB indicator"
+pkgdesc='Simple tray XKB indicator'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://downloads.sourceforge.net/project/staybox"
