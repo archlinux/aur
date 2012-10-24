@@ -4,7 +4,7 @@
 pkgname=log4cpp
 pkgver=1.0
 pkgrel=6
-pkgdesc="A library of C++ classes for flexible logging to files, syslog, IDSA and other destinations."
+pkgdesc='Library of C++ classes for flexible logging to files, syslog, IDSA and other destinations'
 arch=('i686' 'x86_64')
 url="http://log4cpp.hora-obscura.de/"
 license=('LGPL')
