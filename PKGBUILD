@@ -7,7 +7,7 @@
 pkgname=dmenu
 pkgver=4.5
 pkgrel=3
-pkgdesc="A generic menu for X"
+pkgdesc='Generic menu for X'
 url="http://tools.suckless.org/dmenu/"
 arch=('i686' 'x86_64')
 license=('MIT')
