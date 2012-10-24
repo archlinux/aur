@@ -3,7 +3,7 @@ _pkgbasename=v4l-utils
 pkgname=lib32-$_pkgbasename
 pkgver=0.8.8
 pkgrel=1
-pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
+pkgdesc='Userspace tools and conversion library for Video 4 Linux (32-bit)'
 arch=('x86_64')
 url="http://freshmeat.net/projects/libv4l"
 provides=("lib32-libv4l=$pkgver")
