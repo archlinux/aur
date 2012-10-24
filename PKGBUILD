@@ -2,7 +2,7 @@
 pkgname=nspluginwrapper
 pkgver=1.4.4
 pkgrel=2.1
-pkgdesc="Cross-platform NPAPI compatible plugin viewer"
+pkgdesc='Cross-platform NPAPI compatible plugin viewer'
 arch=('i686' 'x86_64')
 url="http://nspluginwrapper.davidben.net/"
 license=('GPL')
