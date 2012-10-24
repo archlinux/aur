@@ -4,7 +4,7 @@
 pkgname=ccid
 pkgver=1.4.8
 pkgrel=1
-pkgdesc="A generic USB Chip/Smart Card Interface Devices driver"
+pkgdesc='Generic USB Chip/Smart Card Interface Devices driver'
 arch=('i686' 'x86_64')
 url="http://pcsclite.alioth.debian.org/ccid.html"
 license=('LGPL' 'GPL')
