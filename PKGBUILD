@@ -4,7 +4,7 @@
 pkgname=tenshi
 pkgver=0.14
 pkgrel=2
-pkgdesc="real-time log monitor from the Gentoo Linux project"
+pkgdesc='Real-time log monitor from the Gentoo Linux project'
 url="http://dev.inversepath.com/trac/tenshi"
 arch=(any)
 license=("custom")
