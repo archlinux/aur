@@ -3,7 +3,7 @@
 pkgname=php-geoip
 pkgver=1.0.8
 pkgrel=2
-pkgdesc="GeoIP module for PHP"
+pkgdesc='GeoIP module for PHP'
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/geoip"
 license=('PHP')
