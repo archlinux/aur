@@ -5,7 +5,7 @@
 pkgname=xdialog
 pkgver=2.3.1
 pkgrel=6
-pkgdesc="A drop-in replacement for the 'dialog' or 'cdialog' programs"
+pkgdesc="Drop-in replacement for the 'dialog' or 'cdialog' programs"
 url="http://xdialog.dyns.net/"
 arch=('i686' 'x86_64')
 depends=('gtk2')
