@@ -4,7 +4,7 @@
 pkgname=gtk-chtheme
 pkgver=0.3.1
 pkgrel=7
-pkgdesc="This little program lets you change your Gtk+ 2.0 theme. A better alternative to switch2"
+pkgdesc='This little program lets you change your Gtk+ 2.0 theme. A better alternative to switch2'
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://plasmasturm.org/programs/gtk-chtheme/"
