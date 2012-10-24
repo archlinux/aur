@@ -4,7 +4,7 @@
 pkgname=i7z
 pkgver=0.27.2
 pkgrel=1
-pkgdesc="A better i7 (and now i3, i5) reporting tool for Linux"
+pkgdesc='Better i7 (and now i3, i5) reporting tool for Linux'
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('ncurses')
