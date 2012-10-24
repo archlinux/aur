@@ -6,7 +6,7 @@ pkgbase=lib32-$_pkgbasename
 pkgname=(lib32-libcanberra lib32-libcanberra-pulse)
 pkgver=0.28
 pkgrel=2
-pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
+pkgdesc='Small and lightweight implementation of the XDG Sound Theme Specification (32-bit)'
 arch=(x86_64)
 license=('LGPL')
 depends=('lib32-libvorbis' 'lib32-libtool' 'lib32-gtk2' 'lib32-alsa-lib' 'lib32-tdb'
@@ -52,7 +52,7 @@ package_lib32-libcanberra() {
 }
 
 package_lib32-libcanberra-pulse() {
-  pkgdesc="PulseAudio plugin for libcanberra (32-bit)"
+pkgdesc='PulseAudio plugin for libcanberra (32-bit)'
   depends=("$pkgbase=$pkgver-$pkgrel" 'lib32-libpulse')
 
   cd "$srcdir/$_pkgbasename-$pkgver"
