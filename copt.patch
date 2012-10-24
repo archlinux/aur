@@ -1,0 +1,16 @@
+diff -wbBur dev86-0.16.19.org/copt/copt.c dev86-0.16.19/copt/copt.c
+--- dev86-0.16.19.org/copt/copt.c	2003-10-07 23:46:35.000000000 +0400
++++ dev86-0.16.19/copt/copt.c	2012-10-24 15:23:48.604705265 +0400
+@@ -174,7 +174,11 @@
+   /* Delete leading white spaces */
+   for (cp = buf; *cp && isspace(*cp); cp++) ;
+   if (cp != buf && *cp)
+-	strcpy(buf, cp);
++  {
++	int len = strlen(cp);
++	memmove(buf, cp, len);
++	buf[len] = 0;
++  }
+ 
+   return(buf);
+ }

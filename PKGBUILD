@@ -17,13 +17,16 @@ else
 fi
 options=('!libtool' '!strip' '!makeflags')
 source=(http://www.debath.co.uk/dev86/Dev86src-$pkgver.tar.gz
-	mandir.patch)
+	mandir.patch
+	copt.patch)
 md5sums=('442e98e1afa23fe00d40c5a996385942'
-         '509df653dec8956faf1a40a8c544d9ce')
+         '509df653dec8956faf1a40a8c544d9ce'
+         '32839371e28c1a04477df883e970d6cd')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   patch -p1 <$srcdir/mandir.patch
+  patch -p1 <$srcdir/copt.patch
   echo 'quit' | make PREFIX=/usr DIST="$pkgdir"
 }
 
