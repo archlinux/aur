@@ -5,7 +5,7 @@
 pkgname=autocutsel
 pkgver=0.9.0
 pkgrel=7
-pkgdesc="synchronizes the two copy/paste buffers mainly used by X applications"
+pkgdesc='Synchronizes the two copy/paste buffers mainly used by X applications'
 arch=('i686' 'x86_64')
 depends=('libxaw')
 source=(http://lepton.fr/tools/$pkgname/$pkgname-$pkgver.tar.gz)
