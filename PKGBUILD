@@ -4,7 +4,7 @@
 pkgname=qmc2
 pkgver=0.37
 pkgrel=1
-pkgdesc="Qt 4 based UNIX MAME frontend supporting SDLMAME"
+pkgdesc='Qt 4 based UNIX MAME frontend supporting SDLMAME'
 url="http://qmc2.arcadehits.net"
 license=("GPL")
 arch=('i686' 'x86_64')
