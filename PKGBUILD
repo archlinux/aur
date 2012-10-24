@@ -1,31 +1,24 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Sebastien Binet <binet@lblbox>
 
-pkgname=('python2-virtualenvwrapper')
-pkgbase=python-virtualenvwrapper
+pkgname=python-virtualenvwrapper
 pkgver=3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
 url="http://www.doughellmann.com/projects/virtualenvwrapper/"
 license=('BSD')
-makedepends=('python-virtualenv' 'python2-virtualenv'
-             'python2-virtualenv-clone' 'python2-stevedore')
+depends=('python-virtualenv' 'python2-virtualenv' 'python-virtualenv-clone'
+         'python-stevedore')
+conflicts=('python2-virtualenvwrapper')
+replaces=('python2-virtualenvwrapper')
 source=(http://pypi.python.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
 sha256sums=('1d45a1ea73dbc9cf0a5c7b4b17e631092a02a90a01eb4125051db19a845db4e6')
 
-package_python2-virtualenvwrapper() {
-  depends=('python-virtualenv' 'python2-virtualenv' 'python2-virtualenv-clone'
-           'python2-stevedore')
-  conflicts=('python-virtualenvwrapper<=3.6-1')
-  replaces=('python-virtualenvwrapper<=3.6-1')
-
+package() {
   cd "$srcdir/virtualenvwrapper-$pkgver"
 
-  python2 setup.py install --root="$pkgdir" -O1
-
-  # Use Python 2
-  sed -i 's/which python/&2/' "$pkgdir/usr/bin/virtualenvwrapper.sh"
+  python3 setup.py install --root="$pkgdir" -O1
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   # Extract the license from README.txt
