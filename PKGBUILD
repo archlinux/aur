@@ -4,7 +4,7 @@
 pkgname=libvirt
 pkgver=0.10.2
 pkgrel=1
-pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
+pkgdesc='API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)'
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
