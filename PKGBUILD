@@ -7,7 +7,7 @@
 pkgname=pidgin-otr
 pkgver=4.0.0
 pkgrel=1
-pkgdesc='Off-the-Record Messaging plugin for Pidgin.'
+pkgdesc='Off-the-Record Messaging plugin for Pidgin'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.cypherpunks.ca/otr/'
