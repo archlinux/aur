@@ -6,7 +6,7 @@
 pkgname=lib32-libmikmod
 pkgver=3.1.12
 pkgrel=6
-pkgdesc="A portable sound library"
+pkgdesc='Portable sound library'
 license=('GPL' 'LGPL')
 url="http://sourceforge.net/projects/mikmod/"
 arch=('x86_64')
