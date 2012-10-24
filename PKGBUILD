@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 22681 2010-07-26 17:40:27Z svenstaro $
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Tom Wambold <tom5760@gmail.com>
 
@@ -7,7 +6,7 @@ _pkgname='frogatto'
 arch=('any')
 pkgver=1.2
 pkgrel=1
-pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog (data files)"
+pkgdesc='Old-school 2d platformer game, starring a certain quixotic frog (data files)'
 url="http://www.frogatto.com"
 license=('custom')
 depends=()
