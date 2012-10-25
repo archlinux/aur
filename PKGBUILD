@@ -4,7 +4,7 @@
 pkgname=gocr
 pkgver=0.49
 pkgrel=2
-pkgdesc='Open-source character recognition (OCR)'
+pkgdesc="Open-source character recognition (OCR)"
 arch=("i686" "x86_64")
 url="http://jocr.sourceforge.net/index.html"
 license=('GPL')
