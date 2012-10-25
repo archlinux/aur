@@ -5,7 +5,7 @@
 pkgname=sparkleshare
 pkgver=0.9.3
 pkgrel=2
-pkgdesc='Collaboration and sharing tool based on git written in C Sharp'
+pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="http://sparkleshare.org/"
 license=('GPL3')
