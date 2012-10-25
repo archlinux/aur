@@ -2,7 +2,7 @@
 pkgname=gdlmm
 pkgver=3.3.2
 pkgrel=2
-pkgdesc='C++ bindings for the gdl library'
+pkgdesc="C++ bindings for the gdl library"
 arch=('x86_64' 'i686')
 url="http://git.gnome.org/browse/gdlmm/"
 depends=('gdl' 'gtkmm3')
