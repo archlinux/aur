@@ -3,7 +3,7 @@
 pkgname=youtube-dl
 pkgver=2012.10.09
 pkgrel=1
-pkgdesc='Small command-line program to download videos from YouTube.com and a few more sites'
+pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="http://rg3.github.com/youtube-dl/"
 license=('custom')
