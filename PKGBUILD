@@ -6,7 +6,7 @@
 pkgname=obconf
 pkgver=2.0.3.git20100309
 pkgrel=3
-pkgdesc='GTK2 based configuration tool for the Openbox windowmanager'
+pkgdesc="A GTK2 based configuration tool for the Openbox windowmanager"
 arch=('i686' 'x86_64')
 url="http://openbox.org/wiki/ObConf:About"
 license=('GPL')
