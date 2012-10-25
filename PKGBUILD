@@ -4,7 +4,7 @@
 pkgname=netcf
 pkgver=0.2.2
 pkgrel=1
-pkgdesc='Library for configuring network interfaces'
+pkgdesc="A library for configuring network interfaces"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="https://fedorahosted.org/netcf/"
