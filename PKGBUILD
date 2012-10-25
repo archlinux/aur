@@ -2,7 +2,7 @@
 pkgname=networkmanager-dispatcher-ntpd
 pkgver=1.0
 pkgrel=4
-pkgdesc='Dispatcher Script for ntpd'
+pkgdesc="Dispatcher Script for ntpd"
 arch=(any)
 license=('BSD')
 url="http://www.gnome.org/projects/NetworkManager"
