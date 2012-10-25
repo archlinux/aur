@@ -2,7 +2,7 @@
 pkgname=aurphan
 pkgver=20120310
 pkgrel=1
-pkgdesc='Finds packages in need of maintainers, bug fixes and patches. Adopt today!'
+pkgdesc="Finds packages in need of maintainers, bug fixes and patches.  Adopt today!"
 arch=('any')
 url="http://kmkeen.com/aurphan/"
 license=('GPL')
