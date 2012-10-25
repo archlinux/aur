@@ -3,7 +3,7 @@
 pkgname=opencollada
 pkgver=869
 pkgrel=1
-pkgdesc='Stream based reader and writer library for COLLADA files'
+pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
 url="https://code.google.com/p/opencollada/"
 license=('GPL')
