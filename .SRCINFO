@@ -1,5 +1,5 @@
 pkgbase = ddclient
-	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services
+	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services.
 	pkgver = 3.8.1
 	pkgrel = 4
 	url = http://ddclient.sourceforge.net/
