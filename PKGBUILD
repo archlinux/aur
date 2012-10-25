@@ -5,7 +5,7 @@
 pkgname=ack
 pkgver=1.96
 pkgrel=1
-pkgdesc='Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code'
+pkgdesc="A Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code"
 arch=('any')
 url="http://betterthangrep.com/"
 license=('GPL' 'PerlArtistic')
