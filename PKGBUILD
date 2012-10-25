@@ -6,7 +6,7 @@
 pkgname=libident
 pkgver=0.32
 pkgrel=4
-pkgdesc='Library for querying IDENT servers'
+pkgdesc="Library for querying IDENT servers"
 arch=('x86_64' 'i686')
 url="http://www.remlab.net/libident/"
 license=('custom')
