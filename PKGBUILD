@@ -4,7 +4,7 @@
 pkgname=buildbot
 pkgver=0.8.7
 pkgrel=1
-pkgdesc='System to automate the compile/test cycle required by most software projects'
+pkgdesc="A system to automate the compile/test cycle required by most software projects"
 arch=('any')
 url="http://buildbot.net"
 license=("GPL")
