@@ -20,7 +20,7 @@ build() {
 }
 
 package_libgdamm() {
-pkgdesc='C++ bindings for libgda'
+  pkgdesc="C++ bindings for libgda"
   depends=('libgda' 'glibmm' 'libsigc++')
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
@@ -30,7 +30,7 @@ pkgdesc='C++ bindings for libgda'
 }
 
 package_libgdamm-docs() {
-pkgdesc='Developer documentation for libgdamm'
+  pkgdesc="Developer documentation for libgdamm"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C docs DESTDIR="${pkgdir}" install
