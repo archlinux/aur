@@ -1,10 +1,11 @@
-# $Id: PKGBUILD 74901 2012-08-09 08:07:41Z bluewind $
-# Maintainer:
+# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+# Upstream Maintainer:
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libldap
 pkgname=libx32-$_pkgbasename
-pkgver=2.4.32
+pkgver=2.4.33
 pkgrel=1.1
 pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries (x32 ABI)"
 arch=('x86_64')
@@ -15,7 +16,7 @@ makedepends=(gcc-multilib)
 options=('!libtool')
 source=("ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-${pkgver}.tgz"
         'ntlm.patch')
-md5sums=('6a3e85cf61860ca5e8a1eba6753dd9d0'
+md5sums=('5adae44897647c15ce5abbff313bc85a'
          '4258ddbef923d1f29f2843bc050f8c56')
 
 build() {
