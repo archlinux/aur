@@ -8,7 +8,7 @@ pkgdesc="A Python module which provides an interface to libuv."
 url="https://crate.io/packages/pyuv/"
 license=('MIT')
 arch=('i686' 'x86_64')
-depends=('libuv')
+depends=('python2' 'libuv')
 source=("http://pypi.python.org/packages/source/p/$_libname/$_libname-$pkgver.tar.gz")
 
 build() {
