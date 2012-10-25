@@ -5,7 +5,7 @@
 pkgname=clusterssh
 pkgver=3.28
 pkgrel=3
-pkgdesc='Cluster SSH opens terminal windows with connections to specified hosts and an administration console'
+pkgdesc="Cluster SSH opens terminal windows with connections to specified hosts and an administration console."
 arch=('i686' 'x86_64')
 url="http://clusterssh.sourceforge.net/"
 license=('GPL')
