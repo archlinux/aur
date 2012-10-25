@@ -6,7 +6,7 @@
 pkgname=glom
 pkgver=1.22.0
 pkgrel=2
-pkgdesc='Easy-to-use database designer and user interface'
+pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
 license=('GPL')
