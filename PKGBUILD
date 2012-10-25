@@ -6,7 +6,7 @@
 pkgname=gkrellm
 pkgver=2.3.5
 pkgrel=2
-pkgdesc='System monitor package for GTK2'
+pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
 url="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html"
 license=('GPL3')
