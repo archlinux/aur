@@ -49,7 +49,7 @@ check() {
 }
 
 package_python-sphinx() {
-pkgdesc='Python3 documentation generator'
+  pkgdesc='Python3 documentation generator'
   depends=('python-jinja' 'python-pygments' 'python-docutils')
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
@@ -59,7 +59,7 @@ pkgdesc='Python3 documentation generator'
 }
 
 package_python2-sphinx() {
-pkgdesc='Python2 documentation generator'
+  pkgdesc='Python2 documentation generator'
   depends=('python2-jinja' 'python2-pygments' 'python2-docutils')
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
