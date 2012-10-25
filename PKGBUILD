@@ -5,7 +5,7 @@
 pkgname=subdl
 pkgver=1.0.3
 pkgrel=2
-pkgdesc='Command-line tool for downloading subtitles from opensubtitles.org'
+pkgdesc="A command-line tool for downloading subtitles from opensubtitles.org"
 arch=('any')
 url="http://code.google.com/p/$pkgname/"
 license=('GPL3')
