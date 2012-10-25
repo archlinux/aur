@@ -1,11 +1,13 @@
 pkgbase = kalu
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/jjk-jacky/kalu
 	arch = i686
 	arch = x86_64
 	license = GPL3+
+	makedepends = perl
+	makedepends = groff
 	depends = dbus
 	depends = polkit
 	depends = gtk3
@@ -14,8 +16,8 @@ pkgbase = kalu
 	depends = curl
 	depends = libnotify
 	depends = notification-daemon
-	source = https://github.com/downloads/jjk-jacky/kalu/kalu-1.2.0.tar.gz
-	md5sums = 2636827d3d1be6410382ca7be5119bca
+	source = https://github.com/downloads/jjk-jacky/kalu/kalu-1.2.1.tar.gz
+	md5sums = 1c957d5c0cf551a814f1f4ef0d8cda88
 
 pkgname = kalu
 
