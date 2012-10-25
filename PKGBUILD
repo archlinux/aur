@@ -3,7 +3,7 @@
 pkgname=d-feet
 pkgver=0.1.15
 pkgrel=2
-pkgdesc='D-Bus debugger for GNOME'
+pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://live.gnome.org/DFeet"
 license=('GPL')
