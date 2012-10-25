@@ -4,7 +4,7 @@
 pkgname=patchage
 pkgver=0.5.0
 pkgrel=3
-pkgdesc='Modular patch bay for audio and MIDI systems'
+pkgdesc="A modular patch bay for audio and MIDI systems"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/patchage"
 license=('GPL')
