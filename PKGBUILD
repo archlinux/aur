@@ -6,7 +6,7 @@
 pkgname=cxxtest
 pkgver=4.0.3
 pkgrel=2
-pkgdesc='JUnit/CppUnit/xUnit-like framework for C++'
+pkgdesc="A JUnit/CppUnit/xUnit-like framework for C++."
 arch=('any')
 url="http://cxxtest.com"
 license=("LGPL")
