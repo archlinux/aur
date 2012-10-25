@@ -7,7 +7,7 @@
 pkgname=solfege
 pkgver=3.20.6
 pkgrel=1
-pkgdesc='Music education and ear training software'
+pkgdesc="Music education and ear training software"
 arch=('i686' 'x86_64')
 url="http://www.solfege.org/"
 license=('GPL3')
