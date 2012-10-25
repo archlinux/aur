@@ -4,7 +4,7 @@
 pkgname=ruby-cairo
 pkgver=1.12.2
 pkgrel=1
-pkgdesc='Ruby bindings for cairo'
+pkgdesc="Ruby bindings for cairo"
 arch=('x86_64' 'i686')
 url="http://cairographics.org/rcairo/"
 license=('GPL')
