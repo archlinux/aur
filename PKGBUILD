@@ -2,7 +2,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 pkgname=mcpatcher
-pkgver='2.4.3_01'
+pkgver='2.4.3_02'
 pkgrel=1
 pkgdesc='Minecraft patcher to fix textures with higher than default resolution'
 arch=('any')
@@ -17,7 +17,7 @@ source=(mcpatcher
         https://github.com/downloads/pclewis/mcpatcher/$pkgname-$pkgver.jar)
 md5sums=('38358254be76dc84676509f43be44938'
          '87f031f8f0fceb0feb369c6185e07fbf'
-         '80e0512cf2c282de9b85dc3e28b7e520')
+         '4d14b0f4de8d5540186a5458054a472b')
 
 build() {
     cd "$srcdir"
