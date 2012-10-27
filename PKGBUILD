@@ -2,7 +2,7 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
 
 pkgname=openmw-git
-pkgver=20120909
+pkgver=20121027
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make
+  make -j`getconf _NPROCESSORS_ONLN`
 
   # Install
   # There is currently no make install so we do this manually
