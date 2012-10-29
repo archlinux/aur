@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.6
-pkgver=3.6.3
+pkgver=3.6.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'module-symbol-waiting-3.6.patch'
         'module-init-wait-3.6.patch')
 md5sums=('1a1760420eac802c541a20ab51a093d1'
-         '96701113d37ef4f9b785206ab8bcc71e'
+         'd7efab4da2682c44662b684026b059f7'
          '65f7ff39775f20f65014383564d3cb65'
          '3adbfa45451c4bcf9dd7879bed033d77'
          'eb14dcfd80c00852ef81ded6e826826a'
