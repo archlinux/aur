@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 70628 2012-05-13 11:42:39Z bluewind $
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Upstream Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=openssl
 pkgname=libx32-$_pkgbasename
@@ -8,7 +9,7 @@ _ver=1.0.1c
 pkgver=1.0.1.c
 true && pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (x32 ABI)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -22,12 +23,14 @@ source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"
         'no-rpath.patch'
         'ca-dir.patch'
         'openssl-1.0.1-x32.patch'
+        'opensslconf-stub.h'
 )
 md5sums=('ae412727c8c15b67880aef7bd2999b2e'
          'a3d90bc42253def61cd1c4237f1ce5f7'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
-         '10d0cebf2d9c0f64c307e82542f519e3')
+         '10d0cebf2d9c0f64c307e82542f519e3'
+         'dbb0b2e285f9ba95f189a0eaf3586011')
 
 build() {
 	export CC="gcc -mx32"
@@ -65,10 +68,16 @@ check() {
 }
 
 package() {
+    install="${pkgname}.install"
+
 	cd $srcdir/$_pkgbasename-$_ver
 	make INSTALL_PREFIX=$pkgdir install
 
+    mv "${pkgdir}/usr/include/openssl/opensslconf.h" "${srcdir}/opensslconf-x32.h"
 	rm -rf ${pkgdir}/{usr/{include,share,bin},etc}
+    install -Dm644 "${srcdir}/opensslconf-x32.h" "${pkgdir}/usr/include/openssl/opensslconf-x32.h"
+    install -Dm644 "${srcdir}/opensslconf-stub.h" "${pkgdir}/usr/include/openssl/opensslconf-stub.h"
+
 	mkdir -p $pkgdir/usr/share/licenses
 	ln -s $_pkgbasename $pkgdir/usr/share/licenses/$pkgname
 }
