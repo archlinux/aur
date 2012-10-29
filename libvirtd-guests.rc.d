@@ -104,7 +104,7 @@ libvirt_start_all()
 {
 	if [ -f $LIBVIRTD_LISTFILE ]; then
 		for i in `cat $LIBVIRTD_LISTFILE`; do
-			name='libvirt_domname $i'
+			name=`libvirt_domname $i`
 			stat_busy "Starting/resuming libvirtd/$name guest"
 			libvirt_start "$i"
 			[ $? -eq 0 ] && { sleep $LIBVIRTD_START_DELAY; stat_done; } || stat_fail

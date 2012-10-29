@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -38,7 +38,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 md5sums=('a5e50860d9da238ba270b528411c4a0d'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
-         '8297b1be794a24cc77f66af9380ace59'
+         'b47419dfd8c40d1b37fae6576d07baa0'
          'bc2971dacdbac967fc3474e50affc345'
          '8d98e62915785686b0b6c8c070628392'
          '456723b41903d3aaa7ec948c1feea265')
@@ -88,7 +88,7 @@ package() {
   rm -rf \
 	$pkgdir/var/run \
 	$pkgdir/etc/sysconfig \
+	$pkgdir/etc/rc.d/init.d \
 	$pkgdir/lib \
 	$pkgdir/etc/sysctl.d
-  # TODO: mv and fix /etc/rc.d/init.d script
 }
