@@ -1,0 +1,11 @@
+[Unit]
+Description=GNU Krell Monitors server
+After=network.target
+# If hddtemp is added to the dependencies in the PKGBUILD, then use
+#After=network.target hddtemp.service
+
+[Service]
+ExecStart=/usr/bin/gkrellmd
+
+[Install]
+WantedBy=multi-user.target
