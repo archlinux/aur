@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -63,6 +63,7 @@ build() {
   make -j1
   sed -i 's|/etc/sysconfig/libvirtd|/etc/conf.d/libvirtd|' daemon/libvirtd.service
   sed -i 's|/etc/sysconfig/libvirt-guests|/etc/conf.d/libvirtd-guests|' tools/libvirt-guests.service
+  sed -i 's|/etc/init.d/libvirt-g|/etc/rc.d/libvirtd-g|g' tools/libvirt-guests.service
 }
 
 package() {
@@ -86,8 +87,8 @@ package() {
 
   rm -rf \
 	$pkgdir/var/run \
-	$pkgdir/etc/rc.d/init.d \
 	$pkgdir/etc/sysconfig \
 	$pkgdir/lib \
 	$pkgdir/etc/sysctl.d
+  # TODO: mv and fix /etc/rc.d/init.d script
 }
