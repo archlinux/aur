@@ -1,0 +1,19 @@
+pkgbase = libx32-gdbm
+	pkgdesc = GNU database library (x32 ABI)
+	pkgver = 1.10
+	pkgrel = 1.1
+	url = http://www.gnu.org/software/gdbm/gdbm.html
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib-x32
+	depends = libx32-glibc
+	depends = gdbm
+	options = !libtool
+	options = !makeflags
+	source = ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.10.tar.gz
+	source = gdbm-1.10-zeroheaders.patch
+	md5sums = 88770493c2559dc80b561293e39d3570
+	md5sums = 2a5979910c338dabda6935263b3d8af9
+
+pkgname = libx32-gdbm
+
