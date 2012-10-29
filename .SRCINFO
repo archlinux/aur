@@ -1,0 +1,33 @@
+pkgbase = efl-svn
+	pkgdesc = Enlightenment Foundation Libraries - Eo, Eet, Eina, & Embryo
+	pkgver = 78586
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	groups = e17-libs-svn
+	groups = e17-svn
+	license = BSD
+	license = LGPL2.1
+	makedepends = subversion
+	depends = libjpeg>=7
+	depends = openssl
+	depends = glibc
+	optdepends = python2: to compare Eina benchmarks
+	provides = eet-svn
+	provides = eet
+	provides = eina-svn
+	provides = eina
+	provides = embryo
+	provides = embryo-svn
+	conflicts = eet-svn
+	conflicts = eet
+	conflicts = eina-svn
+	conflicts = eina
+	conflicts = embryo
+	conflicts = embryo-svn
+	options = !libtool
+	options = !emptydirs
+
+pkgname = efl-svn
+
