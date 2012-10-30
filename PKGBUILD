@@ -12,8 +12,8 @@ license=("CUSTOM")
 options=(!strip)
 
 [ $CARCH = "x86_64" ] \
-	&& depends=(${depends[@]} lib32-glibc lib32-expat lib32-zlib lib32-pam) \
-	|| depends=(${depends[@]} expat zlib pam)
+	&& depends=(${depends[@]} lib32-glibc lib32-expat lib32-zlib lib32-pam lib32-libidn lib32-util-linux lib32-curl) \
+	|| depends=(${depends[@]} expat zlib pam libidn)
 
 source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.i386.rpm)
 
