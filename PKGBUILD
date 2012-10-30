@@ -7,7 +7,7 @@
 
 pkgname=midori
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
 url='http://www.twotoasts.de/index.php?/pages/midori_summary.html'
@@ -18,15 +18,20 @@ makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2>=2.7.1' 'vala')
 optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support')
 options=('!emptydirs')
 source=(http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2
-        0.4.7-private-mode.patch)
+        0.4.7-private-mode.patch
+        fix-copying.patch)
 md5sums=('06db7b88a41e9b2265728960d5e98f35'
-         'b2f21a853038662fd0e6c2274ed9dfb7')
+         'b2f21a853038662fd0e6c2274ed9dfb7'
+         '4bf3a0af4edc9ad6c4d46fc9676d9eb0')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  # fs#31641
-  patch -Np1 -i $srcdir/0.4.7-private-mode.patch
+  # FS#31641
+  patch -s -Np1 -i ../0.4.7-private-mode.patch
+
+  # FS#32229
+  patch -s -Np1 -i ../fix-copying.patch > /dev/null || true
 
   # python2 
   export PYTHON=/usr/bin/python2
