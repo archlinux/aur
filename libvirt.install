@@ -16,16 +16,16 @@ post_install() {
   echo ">>> Add 'libvirtd' to daemons in /etc/rc.conf if you want it to load upon"
   echo ">>>  booting."
   echo ""
-  /bin/true
 }
 
 post_upgrade() {
   _libvirt_setup || return 1
-  echo ">>> To finish the upgrade, restart libvirtd by running the command:"
-  echo ">>>  '/etc/rc.d/libvirtd restart' as root or rebooting."
+  echo ">>> To finish the upgrade, restart libvirtd by:"
+  echo ">>>  'systemctl restart libvirtd' as root (systemd) or"
+  echo ">>>  '/etc/rc.d/libvirtd restart' as root (initscripts) or"
+  echo ">>>  rebooting."
   echo ">>> You may also need to run 'rm -rf ~/.libvirt'"
   echo ""
-  /bin/true
 }
 
 post_remove() {
@@ -34,5 +34,4 @@ post_remove() {
    echo ">>>  It can be removed by running 'groupdel libvirt' as root."
    echo ""
    depmod -a
-   /bin/true
 }
