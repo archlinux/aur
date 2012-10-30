@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 78782 2012-10-24 15:17:40Z arodseth $
+# $Id: PKGBUILD 79038 2012-10-29 14:31:32Z spupykin $
 # Upstream Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Upstream Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
 # Contributor: nofxx <x@<nick>.com>
@@ -6,9 +6,9 @@
 
 _basepkgname=redis
 pkgname=binx32-redis
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1.1
-pkgdesc='Advanced key-value store (x32 ABI)'
+pkgdesc="Advanced key-value store (x32 ABI)"
 arch=('x86_64')
 url="http://redis.io/"
 license=('BSD')
@@ -20,7 +20,7 @@ source=("http://redis.googlecode.com/files/${_basepkgname}-${pkgver}.tar.gz"
 	"redis.d"
 	"redis.service"
 	"redis.logrotate")
-md5sums=('92f224a0df37e0b777a2eb3f38a2f128'
+md5sums=('4f788dfb3ee86c7e864dfe537870bb5a'
          '2219168289fc918cb29718399a50a036'
          'a9ebb2cdc0c1166ec9684bf3a891e41e'
          '5a51ae6c10564edb716a93f22e821d67')
