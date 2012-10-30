@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 78782 2012-10-24 15:17:40Z arodseth $
+# $Id: PKGBUILD 78830 2012-10-25 12:44:33Z heftig $
 # Upstream Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Maintainer: Fantix King <fantix.king at gmail.com>
@@ -10,27 +10,24 @@ pkgbase='gcc-multilib-x32'
 pkgname='gcc-multilib-x32'
 true && pkgname=('gcc-multilib-x32' 'gcc-libs-multilib-x32' 'libx32-gcc-libs' 'gcc-fortran-multilib-x32' 'gcc-objc-multilib-x32' 'gcc-go-multilib-x32')
 pkgver=4.7.2
-pkgrel=1.2
-_origrel=1
+pkgrel=2.1
+_origrel=2
 #_snapshot=4.7-20120721
-_libstdcppmanver=20120924		# Note: check source directory name when updating this
-pkgdesc='The GNU Compiler Collection for multilib with x32 ABI support'
+pkgdesc="The GNU Compiler Collection for multilib with x32 ABI support"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-makedepends=('binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl'
+makedepends=('binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl' 'doxygen'
              'lib32-glibc>=2.16' 'libx32-glibc>=2.16')
 checkdepends=('dejagnu')
 options=('!libtool' '!emptydirs')
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
 	#ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
-	ftp://gcc.gnu.org/pub/gcc/libstdc++/doxygen/libstdc++-api.${_libstdcppmanver}.man.tar.bz2
 	gcc_pure64-multilib.patch
         gcc-4.7.1-libada-pic.patch
         gcc-4.7.1-libgo-write.patch
         189626.patch)
 md5sums=('cc308a0891e778cfda7a151ab8a6e762'
-         '7f3d52515daafffb57c287f427381106'
          '55818c34a79ec90913ef7778e17ea6b6'
          '2acbc9d35cc9d72329dc71d6b1f162ef'
          'df82dd175ac566c8a6d46b11ac21f14c'
@@ -88,10 +85,14 @@ build() {
       --disable-build-with-cxx --disable-build-poststage1-with-cxx \
       --enable-checking=release
   make
+  
+  # make documentation
+  cd $CHOST/libstdc++-v3
+  make doc-man-doxygen
 }
 
 check() {
-  cd gcc-build
+  cd ${srcdir}/gcc-build
 
   # increase stack size to prevent test failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
@@ -104,13 +105,13 @@ check() {
 
 package_gcc-libs-multilib-x32()
 {
-pkgdesc='Runtime libraries shipped by GCC for multilib with x32 ABI support'
+  pkgdesc="Runtime libraries shipped by GCC for multilib with x32 ABI support"
   depends=('glibc>=2.16' "lib32-gcc-libs=$pkgver-$_origrel" "libx32-gcc-libs=$pkgver-$pkgrel")
   provides=("gcc-libs=$pkgver-$_origrel" "gcc-libs-multilib=$pkgver-$_origrel")
   conflicts=('gcc-libs')
   install=gcc-libs.install
 
-  cd gcc-build
+  cd ${srcdir}/gcc-build
   make -j1 -C $CHOST/libgcc DESTDIR=${pkgdir} install-shared
   for lib in libmudflap libgomp libstdc++-v3/src libitm; do
     make -j1 -C $CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
@@ -140,10 +141,10 @@ pkgdesc='Runtime libraries shipped by GCC for multilib with x32 ABI support'
 
 package_libx32-gcc-libs()
 {
-pkgdesc='Runtime libraries shipped by GCC (x32 ABI)'
+  pkgdesc="Runtime libraries shipped by GCC (x32 ABI)"
   depends=('libx32-glibc>=2.16' "gcc-libs>=$pkgver")
 
-  cd gcc-build
+  cd ${srcdir}/gcc-build
   make -j1 -C $CHOST/x32/libgcc DESTDIR=${pkgdir} install-shared
   for lib in libmudflap libgomp libstdc++-v3/src libitm; do
     make -j1 -C $CHOST/x32/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
@@ -170,14 +171,14 @@ pkgdesc='Runtime libraries shipped by GCC (x32 ABI)'
 }
 package_gcc-multilib-x32()
 {
-pkgdesc='The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support'
-  depends=("gcc-libs-multilib-x32=$pkgver-$pkgrel" 'binutils-multilib>=2.22' 'libmpc' 'cloog' 'ppl')
+  pkgdesc="The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support"
+  depends=("gcc-libs-multilib-x32=$pkgver-$pkgrel" 'binutils-multilib>=2.23' 'libmpc' 'cloog' 'ppl')
   groups=('multilib-devel')
   provides=("gcc=$pkgver-$_origrel" "gcc-multilib=$pkgver-$_origrel" "gcc-x32-seed=$pkgver-$_origrel")
   conflicts=('gcc' 'gcc-x32-seed')
   install=gcc.install
 
-  cd gcc-build
+  cd ${srcdir}/gcc-build
   
   make -j1 DESTDIR=${pkgdir} install
 
@@ -233,8 +234,8 @@ EOF
 
   # install the libstdc++ man pages
   install -dm755 ${pkgdir}/usr/share/man/man3
-  install -m644 ${srcdir}/libstdc++-api.${_libstdcppmanver}.man/man3/* \
-    ${pkgdir}/usr/share/man/man3/
+  install -m644 -t ${pkgdir}/usr/share/man/man3 \
+    ${CHOST}/libstdc++-v3/doc/doxygen/man/man3/*.3
 
   # Install Runtime Library Exception
   install -Dm644 ${_basedir}/COPYING.RUNTIME \
@@ -243,13 +244,13 @@ EOF
 
 package_gcc-fortran-multilib-x32()
 {
-pkgdesc='Fortran front-end for GCC for multilib with x32 ABI support'
+  pkgdesc="Fortran front-end for GCC for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-fortran=$pkgver-$_origrel")
   conflicts=('gcc-fortran')
   install=gcc-fortran.install
 
-  cd gcc-build
+  cd ${srcdir}/gcc-build
   make -j1 DESTDIR=${pkgdir} install-target-libquadmath
   make -j1 DESTDIR=$pkgdir install-target-libgfortran
   make -j1 -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
@@ -269,12 +270,12 @@ pkgdesc='Fortran front-end for GCC for multilib with x32 ABI support'
 
 package_gcc-objc-multilib-x32()
 {
-pkgdesc='Objective-C front-end for GCC for multilib with x32 ABI support'
+  pkgdesc="Objective-C front-end for GCC for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-objc=$pkgver-$_origrel")
   conflicts=('gcc-objc')
 
-  cd gcc-build
+  cd ${srcdir}/gcc-build
   make -j1 DESTDIR=$pkgdir install-target-libobjc
   install -dm755 $pkgdir/usr/lib/gcc/$CHOST/$pkgver/
   install -m755 gcc/cc1obj{,plus} $pkgdir/usr/lib/gcc/$CHOST/$pkgver/
@@ -289,13 +290,13 @@ pkgdesc='Objective-C front-end for GCC for multilib with x32 ABI support'
 
 package_gcc-ada-multilib-x32()
 {
-pkgdesc='Ada front-end for GCC (GNAT) for multilib with x32 ABI support'
+  pkgdesc="Ada front-end for GCC (GNAT) for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-ada=$pkgver-$_origrel")
   conflicts=('gcc-ada')
   install=gcc-ada.install
 
-  cd gcc-build/gcc
+  cd ${srcdir}/gcc-build/gcc
   make -j1 DESTDIR=$pkgdir ada.install-{common,info}
   install -m755 gnat1 $pkgdir/usr/lib/gcc/$CHOST/$pkgver
 
@@ -316,13 +317,13 @@ pkgdesc='Ada front-end for GCC (GNAT) for multilib with x32 ABI support'
 
 package_gcc-go-multilib-x32()
 {
-pkgdesc='Go front-end for GCC for multilib with x32 ABI support'
+  pkgdesc="Go front-end for GCC for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
   provides=("gcc-go=$pkgver-$_origrel")
   conflicts=('gcc-go')
   install=gcc-go.install
 
-  cd gcc-build
+  cd ${srcdir}/gcc-build
   make -j1 DESTDIR=$pkgdir install-target-libgo
   make -j1 -C gcc DESTDIR=$pkgdir go.install-{common,man,info}
   install -Dm755 gcc/go1 $pkgdir/usr/lib/gcc/$CHOST/$pkgver/go1
