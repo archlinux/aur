@@ -1,6 +1,6 @@
 pkgbase = mbm-gpsd-git
 	pkgdesc = GPS support files for Ericsson F3507g that provide an easy interface to gpsd
-	pkgver = 20111214
+	pkgver = 20121031
 	pkgrel = 1
 	url = http://mbm.sourceforge.net/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = mbm-gpsd-git
 	depends = network-manager-applet
 	depends = intltool
 	depends = gtk-doc
+	depends = libnl1
 	provides = mbm-gpsd
 
 pkgname = mbm-gpsd-git
