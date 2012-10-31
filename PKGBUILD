@@ -2,16 +2,16 @@
 
 _pkgbasename=tdb
 pkgname=lib32-$_pkgbasename
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
-pkgdesc="A Trivia Database similar to GDBM but allows simultaneous commits (32-bit)"
+pkgdesc="A Trivial Database similar to GDBM but allows simultaneous commits (32-bit)"
 arch=(x86_64)
 license=('GPL3')
 url="http://tdb.samba.org/"
 depends=(lib32-glibc $_pkgbasename)
 makedepends=(gcc-multilib libxslt python2)
 source=(http://samba.org/ftp/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz)
-md5sums=('4d97d18bbe9040038d4e003495bb8cd1')
+md5sums=('cc28048309df19782b04359282e9f98b')
 
 build() {
   export CC="gcc -m32"
