@@ -1,6 +1,6 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
 makedepends=('inetutils')
 options=(!libtool)
 source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('694fd3bac911cdb22f77175884d819b6fea871df')
+sha1sums=('a61aa2dee4c47d93d88e49ebed36de25df4f6492')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
