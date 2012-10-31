@@ -2,7 +2,7 @@ pkgname=linux-linode
 _basekernel=3.6
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.3
+pkgver=${_basekernel}.4
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/yardenac/linux-linode"
@@ -18,8 +18,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "module-init-wait-3.6.patch"
         'change-default-console-loglevel.patch')
 md5sums=('1a1760420eac802c541a20ab51a093d1'
-         '96701113d37ef4f9b785206ab8bcc71e'
-         '89b26429d331e26e08173593e43a5311'
+         'd7efab4da2682c44662b684026b059f7'
+         '5108aca003037ac82706e5eb7087c600'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '670931649c60fcb3ef2e0119ed532bd4'
