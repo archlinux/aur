@@ -1,0 +1,22 @@
+pkgbase = libfreenect
+	pkgdesc = Drivers and libraries for the Xbox Kinect device on Linux
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://openkinect.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = libxmu
+	depends = libusb
+	depends = glu
+	depends = freeglut
+	depends = bash
+	source = libfreenect-0.1.2.tar.gz::https://github.com/OpenKinect/libfreenect/tarball/v0.1.2
+	md5sums = d0d7e6cb2775ed2d718f332f49ad3576
+	sha256sums = 88cadbea8fb28838bd56a1ec86808325a8f531e93f2bba171e368137d6b1f6e9
+	sha384sums = d4cd69cde26ad8c1ee2ef63bfdeb3381b701bbdd80d9e00fa0e0ae60b2ef2b4c3c343d4496b64ccf2c0f2fa194cbb04b
+	sha512sums = 0613e0cfc8fb634d64f086711bfa7e4f3791fd90c8d124ef2a608ff956f21aae7327cccbf3a84216095a6de011901e013f13b1bb42f4e2e63e823d39e859f2c6
+
+pkgname = libfreenect
+
