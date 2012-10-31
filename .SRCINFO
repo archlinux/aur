@@ -1,6 +1,6 @@
 pkgbase = libfreenect-git
 	pkgdesc = Drivers and libraries for the Xbox Kinect device on Linux
-	pkgver = 20120801
+	pkgver = 20121031
 	pkgrel = 1
 	url = http://openkinect.org
 	arch = i686
@@ -8,9 +8,11 @@ pkgbase = libfreenect-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
+	makedepends = libxmu
 	depends = libusb
+	depends = glu
 	depends = freeglut
-	depends = libxmu
+	depends = bash
 	provides = libfreenect
 	conflicts = libfreenect
 

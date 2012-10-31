@@ -1,20 +1,20 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect-git
-pkgver=20120801
+pkgver=20121031
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
 license=('GPL')
-depends=('libusb' 'freeglut' 'libxmu')
-makedepends=('cmake' 'git')
+depends=('libusb' 'glu' 'freeglut' 'bash')
+makedepends=('cmake' 'git' 'libxmu')
 provides=('libfreenect')
 conflicts=('libfreenect')
 source=()
 md5sums=()
 
-_gitroot="git://github.com/OpenKinect/libfreenect.git"
+_gitroot="https://github.com/OpenKinect/libfreenect.git"
 _gitname=libfreenect
 
 build() {
