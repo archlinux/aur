@@ -1,0 +1,14 @@
+# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+
+post_install() {
+  echo "You should now create an user and a database for yourls"
+  echo "then edit the config in /etc/webapps/yourls/config.php"
+  echo
+  echo "If you need help, read http://yourls.org/#Config"
+  echo
+  echo "After you configured your webserver accordingly, open"
+  echo "http://yoursite.com/admin/ - (hint: for apache, enable"
+  echo "mod_rewrite and .htaccess files)"
+}
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,18 @@
+pkgbase = yourls
+	pkgdesc = your own URL shortener
+	pkgver = 1.5.1
+	pkgrel = 3
+	url = http://code.google.com/p/yourls/
+	install = yourls.install
+	arch = any
+	license = GPL3
+	depends = php>=4.3
+	depends = mysql>=4.1
+	conflicts = yourls-svn
+	options = !strip
+	backup = etc/webapps/yourls/config.php
+	source = http://yourls.googlecode.com/files/yourls-1.5.1.zip
+	md5sums = 9607d8cd3e6efc594f8a3d3f4171bede
+
+pkgname = yourls
+
