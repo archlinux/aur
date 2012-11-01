@@ -1,0 +1,31 @@
+pkgbase = bitlbee-bzr
+	pkgdesc = Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC
+	pkgver = 916
+	pkgrel = 1
+	url = http://bitlbee.org
+	install = bitlbee.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	makedepends = asciidoc
+	makedepends = libotr
+	makedepends = xmlto
+	makedepends = lynx
+	depends = openssl
+	depends = glib2
+	optdepends = skype4py: to use skyped
+	optdepends = libotr: for OTR encryption support
+	optdepends = xinetd: to run bitlbee through xinetd
+	provides = bitlbee
+	conflicts = bitlbee
+	backup = etc/bitlbee/bitlbee.conf
+	backup = etc/bitlbee/motd.txt
+	backup = etc/xinetd.d/bitlbee
+	source = xinetd
+	source = rc.d
+	sha1sums = 5e0af27ba9cc4fe455e3381c75fc49a9326e2f17
+	sha1sums = be09d29af3853825778331df451f16ca9e452d03
+
+pkgname = bitlbee-bzr
+
