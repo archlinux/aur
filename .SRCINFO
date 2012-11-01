@@ -1,0 +1,16 @@
+pkgbase = stikked
+	pkgdesc = An advanced and beautiful pastebin written in PHP
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/claudehohl/Stikked
+	install = stikked.install
+	arch = any
+	license = GPL
+	depends = php
+	conflicts = stikked-git
+	options = !strip
+	source = stikked-0.8.4.zip::https://github.com/claudehohl/Stikked/zipball/0.8.4
+	md5sums = 40b4729d7221d58d3373bb8fe3a784b7
+
+pkgname = stikked
+
