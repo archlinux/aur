@@ -2,7 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=2.8.9
+pkgver=2.8.10
 pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ makedepends=('qt')
 optdepends=('qt: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('801f4c87f8b604f727df5bf1f05a59e7')
+md5sums=('d4aef1eab859df61d2664721a72732c0')
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
@@ -28,13 +28,15 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  vimpath="$pkgdir/usr/share/vim/vimfiles"
-  install -Dm644 Docs/cmake-indent.vim ${vimpath}/indent/cmake-indent.vim
-  install -Dm644 Docs/cmake-syntax.vim ${vimpath}/syntax/cmake-syntax.vim
-  install -Dm644 Docs/cmake-mode.el ${pkgdir}/usr/share/emacs/site-lisp/cmake-mode.el
+  vimpath="${pkgdir}/usr/share/vim/vimfiles"
+  install -Dm644 Docs/cmake-indent.vim "${vimpath}"/indent/cmake-indent.vim
+  install -Dm644 Docs/cmake-syntax.vim "${vimpath}"/syntax/cmake-syntax.vim
+  install -Dm644 Docs/cmake-mode.el \
+    "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
 
-  install -Dm644 Copyright.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 Copyright.txt \
+    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
