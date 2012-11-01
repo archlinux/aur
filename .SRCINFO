@@ -1,0 +1,16 @@
+pkgbase = stikked-git
+	pkgdesc = An advanced and beautiful pastebin written in PHP
+	pkgver = 20120706
+	pkgrel = 1
+	url = https://github.com/claudehohl/Stikked
+	install = stikked-git.install
+	arch = any
+	license = GPL
+	depends = php
+	provides = stikked
+	conflicts = stikked
+	options = !strip
+	backup = etc/webapps/stikked/stikked.php
+
+pkgname = stikked-git
+

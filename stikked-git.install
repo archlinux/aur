@@ -1,0 +1,24 @@
+# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+
+post_install() {
+  echo "You should now create an user and a database for Stikked"
+  echo "then edit the config in /etc/webapps/stikked/stikked.php."
+  echo
+  echo "The database structure will be created automatically if it doesn't"
+  echo "exist."
+  echo
+  echo "No special file permissions are needed by default. Optional: If you"
+  echo "want to have the JavaScript- and CSS-files minified, the"
+  echo "/usr/share/webapps/Stikked/static/asset/ folder has to be writable."
+}
+
+post_upgrade() {
+  post_install
+  echo
+  echo "If you upgrade from a version before 0.8.2, you should execute this"
+  echo "MySQL statement:"
+  echo
+  echo "ALTER TABLE pastes DROP paste;"
+}
+
+# vim:set ts=2 sw=2 et:
