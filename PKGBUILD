@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=0.10.2
-pkgrel=4
+pkgrel=5
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -39,7 +39,7 @@ md5sums=('a5e50860d9da238ba270b528411c4a0d'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          'b47419dfd8c40d1b37fae6576d07baa0'
-         'bc2971dacdbac967fc3474e50affc345'
+         '0a96ed876ffb1fcb9dff5a9b3a609c1e'
          '8d98e62915785686b0b6c8c070628392'
          '456723b41903d3aaa7ec948c1feea265')
 
@@ -84,6 +84,10 @@ package() {
   # systemd stuff
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
   mv $pkgdir/lib/* $pkgdir/usr/lib/
+
+  sed -i \
+	's|After=.*|After=syslog.target network.target libvirtd.service|' \
+	$pkgdir/usr/lib/systemd/system/libvirt-guests.service
 
   rm -rf \
 	$pkgdir/var/run \

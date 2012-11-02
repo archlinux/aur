@@ -1,4 +1,5 @@
 _libvirt_setup() {
+  systemd-tmpfiles --create libvirt.conf
   rm -f /usr/lib/python?.?/site-packages/libvirt.pyc
   echo ">>> To use libvirt as a non-root user:"
   echo ">>>  Use polkit to grant access."
