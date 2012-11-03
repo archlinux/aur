@@ -18,6 +18,12 @@ makedepends=('bzr-stats')
 source=("https://launchpad.net/bzr-gtk/gtk3/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
 md5sums=('5e6694b57662c338d5eb2d85d4cd2357')
 
+source+=(bzr_handle_patch_open_display.patch bzr_notify_open_display.patch)
+md5sums+=(
+  '384f7ad2131b581342566fa78d041c85'
+  '3aaf3786033d97f488425aa718d7d314'
+)
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
@@ -31,4 +37,3 @@ build() {
   python2 setup.py build_credits
   python2 setup.py install --prefix'=/usr' --root="${startdir}/pkg"
 }
-
