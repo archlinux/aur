@@ -11,7 +11,11 @@ pkgbase = bzr-gtk
 	depends = pycairo
 	depends = libglade
 	source = https://launchpad.net/bzr-gtk/gtk2/0.100.0/+download/bzr-gtk-0.100.0.tar.gz
+	source = bzr_handle_patch_open_display.patch
+	source = bzr_notify_open_display.patch
 	md5sums = a7c2f27072bcacdcf8983ca6a2426dbd
+	md5sums = 384f7ad2131b581342566fa78d041c85
+	md5sums = 3aaf3786033d97f488425aa718d7d314
 
 pkgname = bzr-gtk
 

@@ -11,6 +11,12 @@ depends=('pygtk' 'bzr' 'pycairo' 'libglade')
 source=("https://launchpad.net/bzr-gtk/gtk2/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
 md5sums=('a7c2f27072bcacdcf8983ca6a2426dbd')
 
+source+=(bzr_handle_patch_open_display.patch bzr_notify_open_display.patch)
+md5sums+=(
+  '384f7ad2131b581342566fa78d041c85'
+  '3aaf3786033d97f488425aa718d7d314'
+)
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
@@ -28,4 +34,3 @@ build() {
   cd "${startdir}/src/${pkgname}-${pkgver}/"
   python2 setup.py install --prefix'=/usr' --root="${startdir}/pkg" || return 1
 }
-

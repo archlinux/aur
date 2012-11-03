@@ -1,0 +1,13 @@
+--- src/bzr-gtk-0.100.0/bzr-notify	2011-04-02 11:24:00.000000000 +0200
++++ src/bzr-gtk-0.100.0/bzr-notifyNew	2011-04-02 11:27:56.000000000 +0200
+@@ -9,7 +9,9 @@ screen when a commit occurs.
+ from bzrlib.plugin import load_plugins
+ load_plugins()
+ 
+-from bzrlib.plugins.gtk import open_display, icon_path
++from bzrlib.plugins.gtk.commands import open_display
++from bzrlib.plugins.gtk import icon_path
++
+ 
+ from bzrlib.plugins.gtk.notify import NotifyPopupMenu
+ gtk = open_display()
