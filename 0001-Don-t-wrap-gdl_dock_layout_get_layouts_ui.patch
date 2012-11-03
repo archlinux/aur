@@ -1,0 +1,58 @@
+From ce395bc27cf08e5f40c4ee4142cbb4795397ddc6 Mon Sep 17 00:00:00 2001
+From: Kalev Lember <kalevlember@gmail.com>
+Date: Sun, 22 Apr 2012 21:23:58 +0300
+Subject: [PATCH] Don't wrap gdl_dock_layout_get_layouts_ui
+
+Removed from gdl in commit 2b3b292.
+---
+ gdl/src/docklayout.hg   |    2 --
+ gdl/src/gdl_method.defs |    6 ------
+ 2 files changed, 8 deletions(-)
+
+diff --git a/gdl/src/docklayout.hg b/gdl/src/docklayout.hg
+index 155d58b..bf532a7 100644
+--- a/gdl/src/docklayout.hg
++++ b/gdl/src/docklayout.hg
+@@ -58,8 +58,6 @@ public:
+   
+   _WRAP_METHOD(bool is_dirty() const, gdl_dock_layout_is_dirty)
+   
+-  _WRAP_METHOD(Gtk::Widget* get_layouts_ui(), gdl_dock_layout_get_layouts_ui)
+-  
+   
+   _WRAP_PROPERTY("dirty", bool)
+   
+diff --git a/gdl/src/gdl_method.defs b/gdl/src/gdl_method.defs
+index a7f84bb..8c80bc7 100644
+--- a/gdl/src/gdl_method.defs
++++ b/gdl/src/gdl_method.defs
+@@ -556,12 +556,6 @@
+   (return-type "gboolean")
+ )
+ 
+-(define-method get_layouts_ui
+-  (of-object "GdlDockLayout")
+-  (c-name "gdl_dock_layout_get_layouts_ui")
+-  (return-type "GtkWidget*")
+-)
+-
+ 
+ 
+ ;; From gdl-dock-master.h
+-- 
+1.7.10
+
+--- gdlmm-3.3.2/gdl/gdlmm/docklayout.cc.get_layouts_ui	2011-11-23 19:47:10.000000000 +0200
++++ gdlmm-3.3.2/gdl/gdlmm/docklayout.cc	2012-04-23 00:35:26.839494884 +0300
+@@ -180,11 +180,6 @@
+   return gdl_dock_layout_is_dirty(const_cast<GdlDockLayout*>(gobj()));
+ }
+ 
+-Gtk::Widget* DockLayout::get_layouts_ui()
+-{
+-  return Glib::wrap(gdl_dock_layout_get_layouts_ui(gobj()));
+-}
+-
+ 
+ #ifdef GLIBMM_PROPERTIES_ENABLED
+ Glib::PropertyProxy_ReadOnly<bool> DockLayout::property_dirty() const
