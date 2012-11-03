@@ -6,7 +6,6 @@ pkgbase = libsrsirc
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = autoconf
 	depends = glibc
 	options = !libtool
 	source = libsrsirc-0.0.0.tar.gz::https://github.com/srsbsns/libsrsirc/tarball/bc4b200
