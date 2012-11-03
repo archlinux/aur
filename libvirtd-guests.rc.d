@@ -1,8 +1,32 @@
 #!/bin/bash
 
-. /etc/conf.d/libvirtd-guests
-. /etc/rc.conf
-. /etc/rc.d/functions
+source /etc/conf.d/libvirtd-guests
+[ -f /etc/rc.conf ] && source /etc/rc.conf
+
+if [ -f /etc/rc.d/functions ]; then
+    . /etc/rc.d/functions
+else
+    stat_busy() {
+        echo "$*"
+    }
+
+    stat_fail() {
+        echo "FAIL"
+    }
+
+    stat_done() {
+        echo "DONE"
+    }
+
+    add_daemon() {
+        true
+    }
+
+    rm_daemon() {
+        true
+    }
+fi
+
 
 LIBVIRTD_LISTFILE="/var/state/libvirtd/vm-list"
 
