@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+unset WINEPREFIX
+cd /usr/share/syobon
+wine /usr/share/syobon/syobon "$@"
