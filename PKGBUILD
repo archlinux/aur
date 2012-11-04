@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 169442 2012-10-21 09:07:49Z giovanni $
+# $Id: PKGBUILD 170110 2012-11-02 09:09:21Z giovanni $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
@@ -6,7 +6,7 @@
 _pkgname=vlc
 pkgname=vlc-decklink
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -20,7 +20,7 @@ makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'fluidsynth' 'libdc1394' 'libavc1394' 'lirc-utils'
              'libcaca' 'librsvg' 'portaudio' 'oss' 'libgme' 'xosd'
              'projectm' 'twolame' 'aalib' 'libmtp' 'libdvdcss'
-             'gnome-vfs' 'libgoom2' 'libtar' 'vcdimager' 'opus'
+             'gnome-vfs' 'libgoom2' 'libtar' 'vcdimager' 'opus' 'libssh2'
              'decklink-sdk')
 optdepends=('avahi: for service discovery using bonjour protocol'
             'libnotify: for notification plugin'
@@ -30,8 +30,8 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'libavc1394: for devices using the 1394ta AV/C'
             'libdc1394: for IEEE 1394 plugin'
             'kdelibs: KDE Solid hardware integration'
-            'vdpau-video: vdpau back-end for nvidia'
-            'libva-driver-intel: back-end for intel cards'
+            'libva-vdpau-driver: vdpau back-end for nvidia'
+            'libva-intel-driver: back-end for intel cards'
             'libbluray: for Blu-Ray support'
             'flac: for Free Lossless Audio Codec plugin'
             'oss: for OSS audio support'
@@ -52,7 +52,9 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'libcdio: for audio CD playback support'
             'ttf-freefont: for subtitle font '
             'ttf-dejavu: for subtitle font'
-            'opus: for opus support')
+            'opus: for opus support'
+            'libssh2: for sftp support'
+            'decklink: for decklink support')
 conflicts=('vlc-plugin' 'vlc')
 provides=('vlc')
 replaces=('vlc-plugin')
@@ -88,6 +90,7 @@ build() {
               --enable-vcdx \
               --enable-upnp \
               --enable-opus \
+              --enable-sftp \
               --enable-decklink \
               --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk"
 
