@@ -1,18 +1,23 @@
 # Maintainer: Scimmia <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=78586
+pkgver=78901
 pkgrel=1
-pkgdesc="Enlightenment Foundation Libraries - Eo, Eet, Eina, & Embryo"
+pkgdesc="Enlightenment Foundation Libraries - Eo, Eet, Eina, Embryo, & Evas"
 arch=('i686' 'x86_64')
 groups=('e17-libs-svn' 'e17-svn')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1')
-depends=('libjpeg>=7' 'openssl' 'glibc')
+depends=('libjpeg-turbo' 'openssl' 'glibc' 'libxrender' 'mesa' 'glu' 'libpng'
+         'giflib' 'libtiff' 'librsvg' 'libwebp' 'fontconfig' 'fribidi'
+         'liblinebreak' 'evas_generic_loaders-svn')
 makedepends=('subversion')
-optdepends=('python2: to compare Eina benchmarks')
-conflicts=('eet-svn' 'eet' 'eina-svn' 'eina' 'embryo' 'embryo-svn')
-provides=('eet-svn' 'eet' 'eina-svn' 'eina' 'embryo' 'embryo-svn')
+optdepends=('python2: to compare Eina benchmarks'
+            'harfbuzz: complex text shaping and layout - needed with some languages')
+conflicts=('eet' 'eet-svn' 'eina' 'eina-svn' 'embryo' 'embryo-svn'
+           'evas' 'evas-svn')
+provides=('eet' 'eet-svn' 'eina' 'eina-svn' 'embryo' 'embryo-svn'
+          'evas' 'evas-svn')
 options=('!libtool' '!emptydirs')
          
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/efl"
@@ -36,10 +41,14 @@ build() {
   svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
   cd "$srcdir/$_svnmod-build"
 
-  sed -i 's:#!/usr/bin/env\ python:#!/usr/bin/python2:g' src/scripts/eina/eina-bench-cmp 
+  sed -i 's:#!/usr/bin/env\ python:#!/usr/bin/python2:g' \
+    src/scripts/eina/eina-bench-cmp
 
   ./autogen.sh --prefix=/usr \
-	--libexecdir=/usr/lib
+	--libexecdir=/usr/lib \
+	--enable-fb \
+	--enable-software-xlib \
+	--enable-gl-xlib
   make
 }
 
@@ -50,6 +59,8 @@ package() {
 # install license files
   install -Dm644 "$srcdir/$_svnmod-build/licenses/COPYING.BSD" \
         "$pkgdir/usr/share/licenses/$pkgname/COPYING.BSD"
+  install -Dm644 "$srcdir/$_svnmod-build/COPYING" \
+        "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   rm -r "$srcdir/$_svnmod-build"
 }
