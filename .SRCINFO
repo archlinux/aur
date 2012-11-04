@@ -7,7 +7,6 @@ pkgbase = decklink-sdk
 	arch = x86_64
 	license = custom
 	makedepends = unzip
-	depends = decklink
 	depends = mesa
 	depends = qt
 	noextract = Blackmagic_DeckLink_SDK_9.6.6.zip
