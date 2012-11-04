@@ -8,8 +8,6 @@ url="http://www.geocities.jp/z_gundam_tanosii/home/Main.html"
 license=('unknown')
 depends=(wine)
 makedepends=(unzip)
-checkdepends=()
-options=()
 source=(syobon "http://www.geocities.jp/z_gundam_tanosii/home/syobon-action.zip")
 sha256sums=('f63404733a341d5d381502bdea68ff1637d20e488bd09c50595b52efe391aded'
             'df0d9505f6798a66bee1334d848e8b2f7d5542bdedbeb1004278e21a85b013ef')
