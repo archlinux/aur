@@ -1,17 +1,17 @@
 # Maintainer: jjacky
 pkgname=kalu-git
-pkgver=20120914
+pkgver=20121103
 pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news"
 arch=('i686' 'x86_64')
 url="https://github.com/jjk-jacky/kalu"
 license=('GPL3+')
-depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.0.1' 'pacman<4.1' 'curl' 'libnotify' 'notification-daemon' 'xdg-utils')
-makedepends=('git' 'autoconf')
+depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.0.1' 'pacman<4.1' 'curl' 'libnotify' 'notification-daemon')
+makedepends=('perl' 'groff' 'git' 'autoconf')
 provides=('kalu')
 conflicts=('kalu')
 
-_gitroot=https://github.com/jjk-jacky/kalu
+_gitroot=https://github.com/jjk-jacky/kalu.git
 _gitname=kalu
 
 build() {
@@ -35,7 +35,7 @@ build() {
   #
   # BUILD HERE
   #
-  autoreconf -i
+  ./autogen.sh
   ./configure --prefix=/usr --enable-git-version
   make
 }
