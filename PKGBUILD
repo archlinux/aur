@@ -2,7 +2,7 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
 
 pkgname=openmw-git
-pkgver=20121027
+pkgver=20121104
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -53,7 +53,6 @@ build() {
 
   install -d -m755 "$pkgdir"/etc/openmw
   install -m644 openmw.cfg "$pkgdir"/etc/openmw/
-  install -m644 launcher.cfg "$pkgdir"/etc/openmw/
   install -m644 settings-default.cfg "$pkgdir"/etc/openmw/
   install -m644 transparency-overrides.cfg "$pkgdir"/etc/openmw/
 
