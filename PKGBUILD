@@ -47,6 +47,8 @@ package() {
   install -m755 openmw "$pkgdir"/usr/bin/
   install -m755 omwlauncher "$pkgdir"/usr/bin/
   install -m755 esmtool "$pkgdir"/usr/bin/
+  install -m775 mwiniimport "$pkgdir"/usr/bin
+
 
   # Config files
   # Replace resources location
