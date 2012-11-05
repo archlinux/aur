@@ -1,0 +1,15 @@
+pkgbase = pplatex-git
+	pkgdesc = Pretty-Print LaTeX: A tool to reformat the output of latex and friends into readable messages
+	pkgver = 20121105
+	pkgrel = 1
+	url = https://github.com/stefanhepp/pplatex
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = scons
+	depends = pcre
+	depends = texlive-bin
+
+pkgname = pplatex-git
+
