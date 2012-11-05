@@ -3,7 +3,7 @@
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=directfb
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
 arch=('i686' 'x86_64')
@@ -11,14 +11,11 @@ url="http://www.directfb.org"
 license=('LGPL')
 depends=('gcc-libs' 'libjpeg' 'sdl' 'libpng' 'freetype2')
 options=('!libtool')
-source=(http://www.directfb.org/downloads/Core/DirectFB-${pkgver%.*}/DirectFB-${pkgver}.tar.gz \
-        DirectFB-1.6.1-zlib-include.patch)
-sha1sums=('121c7fd1e81ccb41962986126e1d69f188c2f2c2'
-          'f2309edd87c772a7894d4b648d56197d91790cad')
+source=(http://www.directfb.org/downloads/Core/DirectFB-${pkgver%.*}/DirectFB-${pkgver}.tar.gz)
+sha1sums=('a393a53130e6a80369b7081371cd23dd1cd5e192')
 
 build() {
   cd "${srcdir}/DirectFB-${pkgver}"
-  patch -p1 -i ../DirectFB-1.6.1-zlib-include.patch
   ./configure --prefix=/usr --sysconfdir=/etc --enable-static \
     --enable-zlib --enable-x11 --enable-sdl --disable-vnc --disable-osx \
     --enable-video4linux2 --enable-voodoo
