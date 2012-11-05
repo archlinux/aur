@@ -6,10 +6,7 @@ pkgbase = openmw-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	license = custom:Bitstream Vera
-	license = custom:Daedric Font
-	license = custom:OFL
-	license = custom:shiny
+	license = custom
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost>=1.5.0
