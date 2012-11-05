@@ -2,17 +2,18 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
 
 pkgname=openmw-git
-pkgver=20121104
+pkgver=20121105
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
-license=('GPL3')
+license=('GPL3' 'custom:Bitstream Vera' 'custom:Daedric Font' 'custom:OFL' 'custom:shiny')
 
 depends=('openal' 'ogre=1.8.1' 'mygui>=3.2.0-2' 'bullet>=2.8.0' 'mpg123' 'libsndfile' 'qt')
 
 makedepends=('git' 'cmake' 'boost>=1.5.0')
 conflicts=('openmw')
+provides=('openmw')
 
 _gitroot="git://github.com/zinnschlag/openmw.git"
 _gitname="openmw"
@@ -20,26 +21,26 @@ _gitname="openmw"
 build() {
   msg "Connecting to GIT server...."
 
+  cd "$srcdir"
   if [ -d "$_gitname" ] ; then
     cd "$_gitname" && git pull origin
     git submodule update
     msg "The local files are updated."
   else
-    cd "$srcdir"
-    git clone "$_gitroot" "$_gitname"
+    git clone --depth=1 "$_gitroot" "$_gitname"
     cd "$_gitname"
     git submodule update --init
   fi
-
   msg "GIT checkout done or server timeout"
-  msg "Starting make..."
 
+  msg "Starting make..."
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
   make -j`getconf _NPROCESSORS_ONLN`
+}
 
-  # Install
-  # There is currently no make install so we do this manually
+package() {
+  cd "$srcdir/$_gitname"
 
   # Binaries
   install -d -m755 "$pkgdir"/usr/bin
@@ -67,5 +68,11 @@ build() {
   install -d -m755 "$pkgdir"/usr/share/games/openmw
   cp -r resources "$pkgdir"/usr/share/games/openmw/ || exit 1
   install -m644 launcher.qss "$pkgdir"/usr/share/games/openmw/resources
-}
 
+  # Custom Licences
+  install -d -m755 "$pkgdir"/usr/share/licenses/openmw
+  install -D -m644 "Bitstream Vera License.txt" "$pkgdir/usr/share/licenses/openmw/"
+  install -D -m644 "Daedric Font License.txt" "$pkgdir/usr/share/licenses/openmw/"
+  install -D -m644 "OFL.txt" "$pkgdir/usr/share/licenses/openmw/"
+  install -D -m644 "extern/shiny/License.txt" "$pkgdir/usr/share/licenses/openmw/Shiny License.txt"
+}

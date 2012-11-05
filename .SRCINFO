@@ -1,11 +1,15 @@
 pkgbase = openmw-git
 	pkgdesc = An open-source engine reimplementation for the role-playing game Morrowind.
-	pkgver = 20121104
+	pkgver = 20121105
 	pkgrel = 1
 	url = http://www.openmw.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	license = custom:Bitstream Vera
+	license = custom:Daedric Font
+	license = custom:OFL
+	license = custom:shiny
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost>=1.5.0
@@ -16,6 +20,7 @@ pkgbase = openmw-git
 	depends = mpg123
 	depends = libsndfile
 	depends = qt
+	provides = openmw
 	conflicts = openmw
 
 pkgname = openmw-git
