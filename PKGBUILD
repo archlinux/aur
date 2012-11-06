@@ -3,13 +3,13 @@
 
 pkgname=buildbot
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A system to automate the compile/test cycle required by most software projects"
 arch=('any')
 url="http://buildbot.net"
 license=("GPL")
 depends=('twisted' 'python2-jinja' 'python2-simplejson' 'python2-pysqlite'
-	 'python2-migrate')
+	 'python2-migrate' 'python2-dateutil')
 source=(http://buildbot.googlecode.com/files/buildbot-${pkgver/_/}.tar.gz)
 md5sums=('e41190fce4016f770d9bee2332b7a670')
 
