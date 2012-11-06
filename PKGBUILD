@@ -1,6 +1,6 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=aurphan
-pkgver=20120310
+pkgver=20121106
 pkgrel=1
 pkgdesc="Finds packages in need of maintainers, bug fixes and patches.  Adopt today!"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('bash' 'curl' 'libxml2' 'jshon' 'expac')
 makedepends=()
 source=(http://kmkeen.com/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('9a8405e1f4bee0b075d2149b53d2b331')
+md5sums=('a4549dd88c4acb3a849ad49241506548')
 
 build() {
   cd "$srcdir/$pkgname"
