@@ -1,0 +1,14 @@
+pkgbase = fusefat
+	pkgdesc = User space implementation of the FAT file sustem using FUSE
+	pkgver = 0.3a
+	pkgrel = 1
+	url = http://sourceforge.net/projects/libfat/
+	arch = x86_64
+	arch = i386
+	license = GPL
+	depends = fuse
+	source = http://downloads.sourceforge.net/project/libfat/libfat/0.3a/libfat-0.3a.tar.gz
+	md5sums = 832e148ae5d191a50c84122e049b718f
+
+pkgname = fusefat
+
