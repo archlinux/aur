@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=22.0.1229.94
+pkgver=23.0.1271.64
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.sh
         chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
         chromium-ppapi-r0.patch)
-sha256sums=('a0af7e681ef43a7a17b32a1f6e1dc16ffa2a5f725f946ddaeea13660eba31caf'
+sha256sums=('e894bb22d4747c69fc34b181be3a25e20fd9599ed93f08779df600fe3402ffe7'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
@@ -43,6 +43,9 @@ build() {
   # http://code.google.com/p/chromium/issues/detail?id=109527
   sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
 
+  # Missing gyp files in tarball (http://crbug.com/144823)
+  sed -i '/nacl_test_data\.gyp/d' chrome/chrome_tests.gypi
+
   # Use Python 2
   find . -type f -exec sed -i -r \
     -e 's|/usr/bin/python$|&2|g' \
@@ -53,8 +56,11 @@ build() {
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
   export PATH="$srcdir/python2-path:$PATH"
 
-  ln -s /usr/lib/nacl-toolchain-newlib \
-    native_client/toolchain/linux_x86_newlib
+  # Prepare NaCL toolchain
+  mkdir -p sdk native_client/toolchain/.tars
+  cp -a /usr/lib/nacl-toolchain-newlib sdk/nacl-sdk
+  tar czf native_client/toolchain/.tars/naclsdk_linux_x86.tgz sdk
+  rm -r sdk
 
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
@@ -82,6 +88,7 @@ build() {
     -Duse_system_zlib=0 \
     -Duse_gconf=0 \
     -Ddisable_glibc=1 \
+    -Ddisable_pnacl=1 \
     -Ddisable_sse2=1
 
   make chrome chrome_sandbox BUILDTYPE=Release
