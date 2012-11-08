@@ -1,4 +1,5 @@
 # Maintainer: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 #######
 _TIANOCORE_SVN_URL="https://edk2.svn.sourceforge.net/svnroot/edk2/branches/UDK2010.SR1"
@@ -11,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi-tianocore"
 pkgname="${_pkgname}-git"
 
-pkgver=20121107
+pkgver=20121108
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -19,9 +20,10 @@ arch=('any')
 license=('GPL3' 'custom')
 
 makedepends=('git' 'subversion' 'python2')
-
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
+
+options=('!strip' 'docs' '!makeflags')
 
 conflicts=('refind-efi' "${_pkgname}")
 provides=('refind-efi' "${_pkgname}")
@@ -85,7 +87,7 @@ _update_git() {
 	mkdir -p "${srcdir}/${_TIANO_DIR_}/"
 	cd "${srcdir}/${_TIANO_DIR_}/"
 	
-	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
+	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
 		_update_tianocore_udk_svn
 	done
 	
@@ -94,6 +96,11 @@ _update_git() {
 }
 
 _tianocore_udk_common() {
+	
+	## Unset all FLAGS
+	unset CFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
 	
 	## Setup UDK Environment variables
 	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}_build"
@@ -179,6 +186,11 @@ _refind_changes() {
 
 _build_refind-efi-common() {
 	
+	## Unset all FLAGS
+	unset CFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	
 	rm -rf "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/" || true
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/"
 	
@@ -196,12 +208,15 @@ _build_refind-efi-common() {
 	sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
 	sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
 	
+	## Clean any existing binary files in git repo
 	ARCH="${_UEFI_ARCH}" make clean || true
 	echo
 	
+	## Compile refind.efi
 	ARCH="${_UEFI_ARCH}" make tiano
 	echo
 	
+	## Compile UEFI FS drivers
 	ARCH="${_UEFI_ARCH}" make fs
 	echo
 	
