@@ -1,30 +1,30 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=patator
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="A multi-purpose bruteforcer"
 arch=('any')
 url="http://code.google.com/p/patator/"
 license=('GPL2')
 depends=('python2')
 optdepends=(
-  'python-paramiko: SSH'
-  'python-pycurl: HTTP'
+  'python2-paramiko: SSH'
+  'python2-pycurl: HTTP'
   'openldap: LDAP'
   'impacket: SMB'
   'cx_oracle: Oracle'
   'mysql-python: MySQL'
   'python2-psycopg2: PostgreSQL'
-  'pycrypto: VNC'
-  'python-pydns: DNS'
-  'pysnmp: SNMP'
+  'python2-crypto: VNC'
+  'python2-pydns: DNS'
+  'python2-pysnmp: SNMP'
   'python2-ipy: NETx keywords'
   'java-runtime: keystore files'
   'unzip: zip archives'
 )
 source=("http://patator.googlecode.com/files/patator_v$pkgver.py")
-sha256sums=('04d67703d07d6304a50ace799e5784300b90ddaac6f446d3a216caa1d2e51e88')
+sha256sums=('af7aed50ba0db1d2e932d9edecb1b2945e675ea8e1fcb27da48273b00db8c1f0')
 
 build() {
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|g' -i "$srcdir/${pkgname}_v$pkgver.py"
@@ -40,10 +40,15 @@ package() {
     'smtp_login'
     'smtp_vrfy'
     'smtp_rcpt'
+    'finger_lookup'
     'http_fuzz'
+    'pop_login'
     'pop_passd'
+    'imap_login'
     'ldap_login'
     'smb_login'
+    'smb_lookupsid'
+    'vmauthd_login'
     'mssql_login'
     'oracle_login'
     'mysql_login'
