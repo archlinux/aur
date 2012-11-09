@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi-tianocore"
 pkgname="${_pkgname}-git"
 
-pkgver=20121108
+pkgver=20121109
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -143,7 +143,7 @@ _tianocore_udk_common() {
 	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = ${_COMPILER}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	
 	## Fix UDK Target ARCH
-	sed 's|IA32|X64|g' -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	# sed 's|IA32|X64|g' -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	
 	## Setup UDK Environment
 	chmod +x "${_UDK_DIR}/BaseTools/BuildEnv"
@@ -162,6 +162,9 @@ _tianocore_udk_common() {
 	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "IA32" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
 	echo
 	
+	## Fix UDK Target ARCH for rEFInd
+	sed "s|IA32|X64 IA32|g" -i "${_UDK_DIR}/Conf/target.txt" || true
+	
 }
 
 _refind_changes() {
@@ -175,12 +178,12 @@ _refind_changes() {
 	echo
 	
 	## Use passed ARCH variable value
-	sed 's|ARCH            :=|ARCH            ?=|g' -i "${srcdir}/${_gitname}_build/Make.tiano" || true
-	sed 's|ARCH            :=|ARCH            ?=|g' -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
+	# sed 's|ARCH            :=|ARCH            ?=|g' -i "${srcdir}/${_gitname}_build/Make.tiano" || true
+	# sed 's|ARCH            :=|ARCH            ?=|g' -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
 	
 	## Fix UDK Target Platform in rEFInd Makefiles
-	sed "s|EFILIB          = \$(EDK2BASE)/Build/MdeModule/|EFILIB          = \$(EDK2BASE)/Build/${_TIANOCORE_PKG}/|g" -i "${srcdir}/${_gitname}_build/refind/Make.tiano" || true
-	sed "s|EFILIB          = \$(EDK2BASE)/Build/MdeModule/|EFILIB          = \$(EDK2BASE)/Build/${_TIANOCORE_PKG}/|g" -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
+	# sed "s|EFILIB          = \$(EDK2BASE)/Build/MdeModule/|EFILIB          = \$(EDK2BASE)/Build/${_TIANOCORE_PKG}/|g" -i "${srcdir}/${_gitname}_build/refind/Make.tiano" || true
+	# sed "s|EFILIB          = \$(EDK2BASE)/Build/MdeModule/|EFILIB          = \$(EDK2BASE)/Build/${_TIANOCORE_PKG}/|g" -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
 	
 }
 
@@ -196,17 +199,13 @@ _build_refind-efi-common() {
 	
 	cd "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/"
 	
-	## Fix UDK Target ARCH
-	sed "s|IA32|${_SPEC_ARCH}|g" -i "${_UDK_DIR}/Conf/target.txt" || true
-	sed "s|X64|${_SPEC_ARCH}|g" -i "${_UDK_DIR}/Conf/target.txt" || true
-	
 	## Fix UDK Path in rEFInd Makefiles
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
 	
 	## Fix ld "-m elf_ARCH" parameter
-	sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
-	sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
+	# sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
+	# sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
 	
 	## Clean any existing binary files in git repo
 	ARCH="${_UEFI_ARCH}" make clean || true
@@ -239,14 +238,10 @@ build() {
 	echo
 	
 	_UEFI_ARCH="x86_64"
-	_SPEC_ARCH="X64"
-	_ARCH="x86_64"
 	_build_refind-efi-common
 	echo
 	
 	_UEFI_ARCH="ia32"
-	_SPEC_ARCH="IA32"
-	_ARCH="i386"
 	_build_refind-efi-common
 	echo
 	
