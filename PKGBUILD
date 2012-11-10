@@ -4,7 +4,7 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt')
 pkgver=4.2.6.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
 license=('GPL')
