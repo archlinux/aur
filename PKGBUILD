@@ -1,17 +1,15 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=gitodo-git
-pkgver=20120619
+pkgver=20121110
 pkgrel=1
 pkgdesc="Manage your TODO items using Git as a backend"
 arch=('any')
 url='http://www.uninformativ.de/projects/?q=gitodo'
 license=('custom:PIZZA-WARE')
 makedepends=('git')
-depends=('git')
+depends=('git' 'ruby')
 optdepends=(
-  'ncurses: Colored output'
   'cron: Reminder functionality'
-  'python: Overview of your TODO items in `highcal`'
   'vim: A reasonable editor, syntax files are provided'
 )
 

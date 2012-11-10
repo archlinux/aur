@@ -1,15 +1,14 @@
 pkgbase = gitodo-git
 	pkgdesc = Manage your TODO items using Git as a backend
-	pkgver = 20120619
+	pkgver = 20121110
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=gitodo
 	arch = any
 	license = custom:PIZZA-WARE
 	makedepends = git
 	depends = git
-	optdepends = ncurses: Colored output
+	depends = ruby
 	optdepends = cron: Reminder functionality
-	optdepends = python: Overview of your TODO items in `highcal`
 	optdepends = vim: A reasonable editor, syntax files are provided
 
 pkgname = gitodo-git
