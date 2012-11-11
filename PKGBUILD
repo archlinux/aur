@@ -8,7 +8,7 @@ pkgdesc="Standalone module for fcitx that uses pinyin API on the internet to pro
 arch=('i686' 'x86_64')
 url="https://github.com/csslayer/fcitx-cloudpinyin"
 license=('GPL')
-depends=('fcitx>=4.2.6')
+depends=('curl' 'fcitx>=4.2.6')
 makedepends=('cmake' 'intltool')
 source=(http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz)
 md5sums=('8bffd65fe2172d61edde46ad53380150')
