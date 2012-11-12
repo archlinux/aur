@@ -95,6 +95,7 @@ _tianocore_udk_common() {
 	
 	## Unset all FLAGS
 	unset CFLAGS
+	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	
