@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi-tianocore"
 pkgname="${_pkgname}-git"
 
-pkgver=20121109
+pkgver=20121112
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -39,10 +39,6 @@ sha1sums=('4d1992699f9b48dd2b7e6bd6c0b25fc065f75894'
 _gitroot="git://git.code.sf.net/p/refind/code"
 _gitname="refind"
 _gitbranch="master"
-
-# _refind_dsc_gitroot="git://github.com/snarez/refind-edk2.git"
-# _refind_dsc_gitname="RefindPkg"
-# _refind_efi_gitbranch="master"
 
 _update_tianocore_udk_svn() {
 	
@@ -111,6 +107,7 @@ _tianocore_udk_common() {
 	
 	cd "${_UDK_DIR}/"
 	
+	## Fix PcdMaximumPathNodeCount compile error
 	patch -Np1 -R -i "${srcdir}/UDK-MdePkg-Revert-PathNodeCount.patch"
 	echo
 	
@@ -141,9 +138,6 @@ _tianocore_udk_common() {
 	sed "s|ACTIVE_PLATFORM       = Nt32Pkg/Nt32Pkg.dsc|ACTIVE_PLATFORM       = ${_UDK_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TARGET                = DEBUG|TARGET                = ${_TIANOCORE_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = ${_COMPILER}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	
-	## Fix UDK Target ARCH
-	# sed 's|IA32|X64|g' -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	
 	## Setup UDK Environment
 	chmod +x "${_UDK_DIR}/BaseTools/BuildEnv"
@@ -177,20 +171,13 @@ _refind_changes() {
 	patch -Np1 -i "${srcdir}/refind_include_more_shell_paths.patch"
 	echo
 	
-	## Use passed ARCH variable value
-	# sed 's|ARCH            :=|ARCH            ?=|g' -i "${srcdir}/${_gitname}_build/Make.tiano" || true
-	# sed 's|ARCH            :=|ARCH            ?=|g' -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
-	
-	## Fix UDK Target Platform in rEFInd Makefiles
-	# sed "s|EFILIB          = \$(EDK2BASE)/Build/MdeModule/|EFILIB          = \$(EDK2BASE)/Build/${_TIANOCORE_PKG}/|g" -i "${srcdir}/${_gitname}_build/refind/Make.tiano" || true
-	# sed "s|EFILIB          = \$(EDK2BASE)/Build/MdeModule/|EFILIB          = \$(EDK2BASE)/Build/${_TIANOCORE_PKG}/|g" -i "${srcdir}/${_gitname}_build/filesystems/Make.tiano" || true
-	
 }
 
 _build_refind-efi-common() {
 	
 	## Unset all FLAGS
 	unset CFLAGS
+	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	
@@ -202,10 +189,6 @@ _build_refind-efi-common() {
 	## Fix UDK Path in rEFInd Makefiles
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
-	
-	## Fix ld "-m elf_ARCH" parameter
-	# sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
-	# sed "s|LDFLAGS         = |LDFLAGS         = -m elf_${_ARCH} |g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
 	
 	## Clean any existing binary files in git repo
 	ARCH="${_UEFI_ARCH}" make clean || true
