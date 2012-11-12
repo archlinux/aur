@@ -1,17 +1,21 @@
 pkgbase = syobon
-	pkgdesc = A mario clone that aims to be annoying
-	pkgver = 0.0.0
+	pkgdesc = A free version of the unforgiving Japanese parody of Super Mario Bros
+	pkgver = rc1
 	pkgrel = 1
-	url = http://www.geocities.jp/z_gundam_tanosii/home/Main.html
+	url = http://sourceforge.net/projects/opensyobon/
 	arch = i686
 	arch = x86_64
 	license = unknown
-	makedepends = unzip
-	depends = wine
+	depends = sdl_gfx
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
 	source = syobon
-	source = http://www.geocities.jp/z_gundam_tanosii/home/syobon-action.zip
-	sha256sums = f63404733a341d5d381502bdea68ff1637d20e488bd09c50595b52efe391aded
-	sha256sums = df0d9505f6798a66bee1334d848e8b2f7d5542bdedbeb1004278e21a85b013ef
+	source = http://sourceforge.net/projects/opensyobon/files/src/SyobonAction_rc2_src.tar.gz
+	source = http://sourceforge.net/projects/opensyobon/files/src/SyobonAction_rc2_data.tar.gz
+	sha256sums = c749349348357eeca4c9a1e150d5f32a40d5e11517d46840cba0c777fa788885
+	sha256sums = a61a621de7e4603be047e8666c0376892200f2876c244fb2adc9e4afebc79728
+	sha256sums = 073be7634600df28909701fa132c8e474de1ff9647bf05816f80416be3bcaa9f
 
 pkgname = syobon
 
