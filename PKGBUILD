@@ -25,8 +25,8 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 options=('!strip' 'docs' '!makeflags')
 
-conflicts=('refind-efi' "${_pkgname}")
-provides=('refind-efi' "${_pkgname}")
+conflicts=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
+provides=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
 
 source=('UDK-MdePkg-Revert-PathNodeCount.patch'
         'refind_include_more_shell_paths.patch'
