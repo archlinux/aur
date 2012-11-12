@@ -1,0 +1,75 @@
+diff --git a/.gitignore b/.gitignore
+index 98ea19f..6376ae1 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -50,3 +50,4 @@
+ *GPATH
+ *GRTAGS
+ *GTAGS
++obj/
+diff --git a/com32/cmenu/Makefile b/com32/cmenu/Makefile
+index 80fff36..ba7d8f9 100644
+--- a/com32/cmenu/Makefile
++++ b/com32/cmenu/Makefile
+@@ -15,6 +15,7 @@
+ ## Makefile for the complex menu system
+ ##
+ 
++PYTHON ?= python
+ NOGPL := 1
+ 
+ LIBS  = libmenu/libmenu.c32 \
+@@ -40,7 +41,7 @@ MENUS = $(LIBS) $(subst $(SRC)/,,$(CMENUS) $(IMENUS))
+ 
+ .PRECIOUS: %.c
+ %.c: %.menu adv_menu.tpl
+-	python $(SRC)/menugen.py --input=$< --output=$@ --template=$(SRC)/adv_menu.tpl
++	$(PYTHON) $(SRC)/menugen.py --input=$< --output=$@ --template=$(SRC)/adv_menu.tpl
+ 
+ all:	makeoutputdirs menus
+ 
+diff --git a/mk/efi.mk b/mk/efi.mk
+index db70ec8..d9ddcfa 100644
+--- a/mk/efi.mk
++++ b/mk/efi.mk
+@@ -16,21 +16,22 @@ ifeq ($(ARCH),i386)
+ 	SARCHOPT = -march=i386
+ 	CARCHOPT = -m32 -march=i386
+ 	EFI_SUBARCH = ia32
+-	LIBDIR = /usr/local/lib
+-	EFIINC = /usr/local/include/efi
++	LIBDIR = /usr/lib32
++	EFIINC = /usr/include/efi
+ endif
+ ifeq ($(ARCH),x86_64)
+ 	SARCHOPT = -march=x86-64
+ 	CARCHOPT = -m64 -march=x86-64
+ 	EFI_SUBARCH = $(ARCH)
+ 	EFIINC = /usr/include/efi
+-	LIBDIR=/usr/lib64
++	LIBDIR=/usr/lib
+ endif
+ #LIBDIR=/usr/lib
+ FORMAT=efi-app-$(EFI_SUBARCH)
+ 
+-CFLAGS = -I$(EFIINC) -I$(EFIINC)/$(EFI_SUBARCH) \
+-		-DEFI_FUNCTION_WRAPPER -fPIC -fshort-wchar -ffreestanding \
++CFLAGS = -I$(EFIINC) -I$(EFIINC)/$(EFI_SUBARCH) -I$(EFIINC)/protocol \
++		-DEFI_FUNCTION_WRAPPER -fpic -fshort-wchar -ffreestanding \
++		-fno-stack-protector -fno-strict-aliasing -mno-red-zone -nostdlib \
+ 		-Wall -I$(com32)/include -I$(com32)/include/sys \
+ 		-I$(core)/include $(CARCHOPT) \
+ 		-I$(com32)/lib/ -I$(com32)/libutil/include -std=gnu99 -DELF_DEBUG -DSYSLINUX_EFI \
+diff --git a/mk/lib.mk b/mk/lib.mk
+index b37d0dc..9bdf4ea 100644
+--- a/mk/lib.mk
++++ b/mk/lib.mk
+@@ -56,7 +56,7 @@ ifdef EFI_BUILD
+ #Add console read fixes to rawcon_read.c
+ LIBFLAGS += -DSYSLINUX_EFI -DEFI_FUNCTION_WRAPPER
+ ifeq ($(ARCH),i386)
+-	EFIINC = -I/usr/local/include/efi -I/usr/local/include/efi/ia32
++	EFIINC = -I/usr/include/efi -I/usr/include/efi/ia32
+ endif
+ ifeq ($(ARCH),x86_64)
+ 	EFIINC = -I/usr/include/efi -I/usr/include/efi/x86_64

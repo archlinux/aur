@@ -1,0 +1,9 @@
+post_install() {
+  echo "syslinux-efi has been installed at /usr/lib/syslinux/{efi64,efi32}/"
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
