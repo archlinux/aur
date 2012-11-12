@@ -9,7 +9,7 @@ _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _COMPILER="GCC46"
 #######
 
-_pkgname="refind-efi-tianocore"
+_pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
 pkgver=20121112
