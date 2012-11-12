@@ -1,0 +1,23 @@
+diff --git a/Make.defaults b/Make.defaults
+index 38da180..5799032 100644
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -38,14 +38,14 @@
+ # Where to install the package. GNU-EFI will create and access
+ # lib and include under the root
+ #
+-INSTALLROOT := /
+-PREFIX := /usr/local
+-LIBDIR := ${PREFIX}/lib
++INSTALLROOT ?= /
++PREFIX ?= /usr
++LIBDIR ?= ${PREFIX}/lib
+ 
+ TOPDIR    := $(shell if [ "$$PWD" != "" ]; then echo $$PWD; else pwd; fi)
+ 
+ HOSTARCH   = $(shell uname -m | sed s,i[3456789]86,ia32,)
+-ARCH	   := $(shell uname -m | sed s,i[3456789]86,ia32,)
++ARCH	   ?= $(shell uname -m | sed s,i[3456789]86,ia32,)
+ OS	   = $(shell uname -s)
+ INCDIR	   = -I$(SRCDIR) -I$(TOPDIR)/inc -I$(TOPDIR)/inc/$(ARCH) -I$(TOPDIR)/inc/protocol 
+ GCCVERSION := $(shell gcc -dumpversion | cut -f1 -d.)
