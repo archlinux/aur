@@ -39,6 +39,10 @@ package() {
   # include all header files
   install -dm755 "${pkgdir}/usr/include/graspit"
   cp -r include/* "${pkgdir}/usr/include/graspit/"
+  cp -r ui/*.h "${pkgdir}/usr/include/graspit/"
+  cp -r ui/Planner/*.h "${pkgdir}/usr/include/graspit/"
+  cp -r ui/EGPlanner/*.h "${pkgdir}/usr/include/graspit/"
+  cp -r src/Collision/*.h "${pkgdir}/usr/include/graspit/"
 
   # create a directory for plugins
   install -dm755 "${pkgdir}/usr/share/graspit/plugin"
