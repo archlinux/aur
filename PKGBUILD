@@ -6,32 +6,36 @@ pkgname=erlang-cl
 pkgver=1.0
 pkgrel=1
 arch=('x86_64' 'i686')
-pkgdesc='OpenCL binding'
+pkgdesc='OpenCL binding for Erlang'
 url="http://github.com/tonyrog/cl"
 license=('custom:unknown')
 depends=('erlang' 'libcl' 'bash')
 replaces=('cl')
 makedepends=('opencl-headers')
-source=("$pkgname-$pkgver.tar.gz::https://nodeload.github.com/tonyrog/cl/tarball/master")
-md5sums=('62960d4b8ce47be7d2e3898b99a30fd1')
-_dirname='tonyrog-cl-bba7b77'
+source=("$pkgname-$pkgver.tar.gz::https://nodeload.github.com/tonyrog/cl/tar.gz/master")
+sha256sums=('e2cb407489ebe1d8e8f287283eb5c715d559ce95255f6bbcac137cb84c500be6')
+_dirname='cl-master'
+if [ "$CARCH" = "x86_64" ]
+then
+  _wordsize=64
+else
+  _wordsize=32
+fi
 
 build() {
-  cd "$srcdir/$_dirname"
+  cd "$srcdir/$_dirname/c_src"
 
-  make
-
-  cd c_src
+  make configure
+  ./configure --with-wordsize=$_wordsize --prefix=/usr
+  make all$_wordsize
   rm config.*
 }
 
 package() {
   cd "$srcdir/$_dirname"
 
-  mkdir -p "$pkgdir/usr/lib/erlang/lib/$pkgname-$pkgver"
-  cp -r * "$pkgdir/usr/lib/erlang/lib/$pkgname-$pkgver"
-
-  #install -Dm644 license.terms "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
+  cp -r * "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
 }
 
 # vim:set ts=2 sw=2 et:
