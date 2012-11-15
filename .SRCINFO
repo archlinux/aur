@@ -1,19 +1,17 @@
 pkgbase = mpdris2
 	pkgdesc = MPRIS2 support for MPD
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/eonpatapon/mpDris2
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = intltool
-	depends = mpd
-	depends = dbus-python
+	depends = python2-dbus
 	depends = python2-gobject
-	depends = python2
-	depends = python-mpd
-	source = https://github.com/downloads/eonpatapon/mpDris2/mpDris2-0.2.tar.gz
-	sha512sums = 280f0ae49fac9defc90a5e9a5bec11239464568b01eb97870c97ad1ddc86c4f6ae933d924a0d15000b24cd2988124bbb1ca94e04c4fa6c26b70ef0e2bd3320b3
+	depends = python2-mpd
+	source = https://github.com/downloads/eonpatapon/mpDris2/mpDris2-0.3.tar.gz
+	sha512sums = b43f10fcb951bcda1f3b110ec04acbaf53118811855fca9c0b6875f04c30bb42bd6064a32a81c428f90650c2270f1da13cffd379ef5ed1a9c099bfd8f40a8f32
 
 pkgname = mpdris2
 
