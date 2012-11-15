@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2012.3.0
+pkgver=2012.4.0
 pkgrel=1
 pkgdesc="batman kernel module, (included upstream since .38)"
 arch=('i686' 'x86_64')
@@ -25,5 +25,5 @@ package() {
   install -D -m644 README ${pkgdir}/usr/share/doc/batman-adv/README
 }
 
-sha512sums=('7fb3549624cd05c450323840bfc1878b204a7348f43f80e20a4cfcc188e74ba2e7afaa4e7a4e0ed2b805e63c449fc4657db2054d1f8946b353d2176d8e5731d3'
-            '4af18fcb6645124651c911bab8b58b5675d3af416ad42ca18545cb2709a08e81d9f8522d771dad26ded1801bcb31ebcf169c495456b62abb03502a30932835c6')
+sha256sums=('11201cce7d18643a3d2358e7045cdeadd5ec6b9727d0c1bac6571fdd149ab0ad'
+            '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37')
