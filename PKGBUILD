@@ -1,7 +1,7 @@
 # Maintainer : Thomas Weißschuh <thomas_weissschuh||lavabit.com>
 
 pkgname=hsqldb2-java
-pkgver=2.2.8
+pkgver=2.2.9
 pkgrel=1
 pkgdesc="HSQLDB Java libraries, Version 2"
 arch=('any')
@@ -32,4 +32,4 @@ package() {
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
   install -m644 ${srcdir}/hsqldb-${pkgver}/hsqldb/doc/hsqldb_lic.txt ${pkgdir}/usr/share/licenses/${pkgname}/
 }
-sha1sums=('08762cf53e41f07f68de3a1904ad16aca0471858')
+sha256sums=('6b60decdb59513f52b915abed2223e287ba19360fa77fc8141c4fc6af90c5e72')
