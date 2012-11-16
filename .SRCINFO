@@ -1,6 +1,6 @@
 pkgbase = syslinux-efi-git
 	pkgdesc = SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version
-	pkgver = 20121112
+	pkgver = 20121116
 	pkgrel = 1
 	url = http://syslinux.zytor.com/
 	install = syslinux-efi.install
@@ -22,7 +22,7 @@ pkgbase = syslinux-efi-git
 	options = !purge
 	options = !makeflags
 	source = syslinux-efi-fix-makefiles.patch
-	sha1sums = a55d1d7bec78b929a667e4a59306ca3fb942da68
+	sha1sums = e81380a09e9522fe83de506ca6ab1c6f9af4389a
 
 pkgname = syslinux-efi-git
 

@@ -6,7 +6,7 @@ __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20121112
+pkgver=20121116
 pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
@@ -25,7 +25,7 @@ options=('!strip' 'docs' '!libtool' 'emptydirs' 'zipman' '!purge' '!makeflags')
 
 source=('syslinux-efi-fix-makefiles.patch')
 
-sha1sums=('a55d1d7bec78b929a667e4a59306ca3fb942da68')
+sha1sums=('e81380a09e9522fe83de506ca6ab1c6f9af4389a')
 
 _gitroot="git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
 _gitname="${__pkgname}"
@@ -80,12 +80,14 @@ build() {
 	patch -Np1 -i "${srcdir}/syslinux-efi-fix-makefiles.patch" || true
 	echo
 	
-	rm -rf "${srcdir}/${_gitname}_build/obj/efi64" || true
-	PYTHON="python2" make efi64
+	mkdir -p "${srcdir}/${_gitname}_build/BUILD/"
+	
+	rm -rf "${srcdir}/${_gitname}_build/BUILD/efi64" || true
+	make O="${PWD}/BUILD" PYTHON="python2" efi64
 	echo
 	
-	rm -rf "${srcdir}/${_gitname}_build/obj/efi32" || true
-	PYTHON="python2" make efi32
+	rm -rf "${srcdir}/${_gitname}_build/BUILD/efi32" || true
+	make O="${PWD}/BUILD" PYTHON="python2" efi32
 	echo
 	
 }
@@ -94,10 +96,10 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install
+	make O="${PWD}/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install
 	echo
 	
-	make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install
+	make O="${PWD}/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install
 	echo
 	
 }
