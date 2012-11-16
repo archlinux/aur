@@ -1,0 +1,14 @@
+pkgbase = python2-ayah
+	pkgdesc = Are You a Human (AYAH) Python integration library and CAPTCHA alternative
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.areyouahuman.com/
+	arch = any
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = http://portal.areyouahuman.com/downloads/are-you-a-human-1.0.4.tar.tar.gz
+	sha256sums = 67b8e4dd1710bba75e5331a98a91d93d9c731278eb0cabb9a72f95e1b22a8570
+
+pkgname = python2-ayah
+
