@@ -86,8 +86,14 @@ build() {
 	make O="${PWD}/BUILD" PYTHON="python2" efi64
 	echo
 	
+	make O="${PWD}/BUILD" PYTHON="python2" efi64 installer
+	echo
+	
 	rm -rf "${srcdir}/${_gitname}_build/BUILD/efi32" || true
 	make O="${PWD}/BUILD" PYTHON="python2" efi32
+	echo
+	
+	make O="${PWD}/BUILD" PYTHON="python2" efi32 installer
 	echo
 	
 }
