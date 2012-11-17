@@ -1,6 +1,6 @@
 pkgbase = targetcli-fb
 	pkgdesc = free branch of the targetcli LIO administration shell (iSCSI + Co)
-	pkgver = 2.0rc1.fb16
+	pkgver = 2.0rc1.fb17
 	pkgrel = 1
 	url = https://github.com/agrover/targetcli-fb
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = targetcli-fb
 	provides = targetcli
 	conflicts = lio-utils
 	replaces = rtsadmin
-	source = targetcli-fb-2.0rc1.fb16.tar.gz::https://github.com/agrover/targetcli-fb/tarball/v2.0rc1.fb16
+	source = targetcli-fb-2.0rc1.fb17.tar.gz::https://github.com/agrover/targetcli-fb/tarball/v2.0rc1.fb17
 	source = target
-	md5sums = a8879a62dc9b3a3e2421fd636a9170ed
+	md5sums = 0284ced8b5ab0d77cdcd2c23a0fa8bca
 	md5sums = f23bd6d5d4021c29b4519e40b3b9e042
 
 pkgname = targetcli-fb
