@@ -6,7 +6,6 @@ pkgbase = python2-processing
 	arch = any
 	license = BSD
 	depends = python2
-	provides = python2-processing
 	source = http://download.berlios.de/pyprocessing/processing-0.52.zip
 	md5sums = 62772fa3002d003b2395ed669072d51d
 
