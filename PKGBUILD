@@ -4,7 +4,7 @@
 
 pkgname=slic3r
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 _tagcommit=af78469
 pkgdesc="An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge"
 arch=('any')
@@ -21,7 +21,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/alexrj/Slic3r/tarball/$pkgver"
     'slic3r.desktop')
 md5sums=('84b06706c61f405e729d0ccc6a62d4f2'
-         '80b52d89fe5d15ebe0c6aa2fe40fe9b5')
+         'c997a07f658061d29b221cf7fd07ff97')
+
 build() {
   mv "$srcdir/alexrj-Slic3r-$_tagcommit" "$srcdir/$pkgname-$pkgver"
   cd "$srcdir/$pkgname-$pkgver"
