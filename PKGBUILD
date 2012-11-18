@@ -3,16 +3,16 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=slic3r
-pkgver=0.9.4
-pkgrel=1
-_tagcommit=ed100c4
+pkgver=0.9.5
+pkgrel=2
+_tagcommit=af78469
 pkgdesc="An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge"
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
 depends=('perl' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper'
          'perl-math-convexhull' 'perl-math-geometry-voronoi'
-         'perl-math-planepath')
+         'perl-math-planepath' 'perl-math-convexhull-monotonechain')
 optdepends=('perl-wx: GUI support'
             'perl-growl-gntp: notifications support via growl'
             'perl-net-dbus: notifications support via any dbus-based notifier'
@@ -20,9 +20,8 @@ optdepends=('perl-wx: GUI support'
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/alexrj/Slic3r/tarball/$pkgver"
     'slic3r.desktop')
-md5sums=('35af2bd73db69120f7775699af99f263'
+md5sums=('84b06706c61f405e729d0ccc6a62d4f2'
          '80b52d89fe5d15ebe0c6aa2fe40fe9b5')
-
 build() {
   mv "$srcdir/alexrj-Slic3r-$_tagcommit" "$srcdir/$pkgname-$pkgver"
   cd "$srcdir/$pkgname-$pkgver"
