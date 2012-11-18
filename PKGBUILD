@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 170110 2012-11-02 09:09:21Z giovanni $
+# $Id: PKGBUILD 171268 2012-11-16 23:35:53Z ibiru $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
@@ -6,7 +6,7 @@
 _pkgname=vlc
 pkgname=vlc-decklink
 pkgver=2.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
