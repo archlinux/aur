@@ -4,7 +4,7 @@
 
 pkgname=erlang-cl
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 pkgdesc='OpenCL binding for Erlang'
 url="http://github.com/tonyrog/cl"
