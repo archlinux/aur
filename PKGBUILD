@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.6
-pkgver=3.6.6
+pkgver=3.6.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,15 +20,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         'module-symbol-waiting-3.6.patch'
-        'module-init-wait-3.6.patch')
+        'module-init-wait-3.6.patch'
+        'irq_cfg_pointer-3.6.6.patch')
 md5sums=('1a1760420eac802c541a20ab51a093d1'
-         '11d6d8749d4612a77f43f0531c0f2824'
+         '134936c362d8812b5cafcf3c67afdce0'
          '65f7ff39775f20f65014383564d3cb65'
          '3adbfa45451c4bcf9dd7879bed033d77'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '670931649c60fcb3ef2e0119ed532bd4'
-         '8a71abc4224f575008f974a099b5cf6f')
+         '8a71abc4224f575008f974a099b5cf6f'
+         '4909a0271af4e5f373136b382826717f')
 
 _kernelname=${pkgbase#linux}
 
@@ -50,6 +52,9 @@ build() {
   # https://bugs.archlinux.org/task/32122
   patch -Np1 -i "${srcdir}/module-symbol-waiting-3.6.patch"
   patch -Np1 -i "${srcdir}/module-init-wait-3.6.patch"
+
+  # fix FS#32615 - Check for valid irq_cfg pointer in smp_irq_move_cleanup_interrupt
+  patch -Np1 -i "${srcdir}/irq_cfg_pointer-3.6.6.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
