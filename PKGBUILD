@@ -1,10 +1,11 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt')
 pkgver=4.2.6.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
 license=('GPL')
