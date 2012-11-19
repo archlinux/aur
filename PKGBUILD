@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -16,7 +16,7 @@ makedepends=('pkgconfig' 'lvm2' 'linux-api-headers')
 optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
 	    'kvm'
-	    'openbsd-netcat: for remote management over ssh'
+	    'gnu-netcat: for remote management over ssh'
 	    'qemu'
 	    'radvd'
 	    'dmidecode')
@@ -53,7 +53,7 @@ build() {
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
-  patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
+#  patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
 
   export LDFLAGS=-lX11
   export RADVD=/usr/sbin/radvd
