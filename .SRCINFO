@@ -1,0 +1,20 @@
+pkgbase = econnman-svn
+	pkgdesc = ConnMan User Interface in EFL
+	pkgver = 77238
+	pkgrel = 3
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = subversion
+	depends = python2
+	depends = python2-elementary-svn
+	depends = python2-e_dbus-svn
+	depends = python2-edje-svn
+	depends = python2-ecore-svn
+	depends = connman
+	options = !libtool
+	options = !emptydirs
+
+pkgname = econnman-svn
+
