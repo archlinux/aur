@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -16,7 +16,7 @@ makedepends=('pkgconfig' 'lvm2' 'linux-api-headers')
 optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
 	    'kvm'
-	    'gnu-netcat: for remote management over ssh'
+	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
 	    'radvd'
 	    'dmidecode')
