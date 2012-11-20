@@ -1,19 +1,19 @@
-# Maintainer: Scimmia <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
 pkgver=78901
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment Foundation Libraries - Eo, Eet, Eina, Embryo, & Evas"
 arch=('i686' 'x86_64')
 groups=('e17-libs-svn' 'e17-svn')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1')
-depends=('libjpeg-turbo' 'openssl' 'glibc' 'libxrender' 'mesa' 'glu' 'libpng'
-         'giflib' 'libtiff' 'librsvg' 'libwebp' 'fontconfig' 'fribidi'
-         'liblinebreak' 'evas_generic_loaders-svn')
+depends=('openssl' 'glibc' 'libxrender' 'mesa' 'glu' 
+         'libjpeg-turbo' 'giflib' 'libtiff' 'libwebp' 'libpng'
+         'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak')
 makedepends=('subversion')
 optdepends=('python2: to compare Eina benchmarks'
-            'harfbuzz: complex text shaping and layout - needed with some languages')
+            'evas_generic_loaders-svn: Extra loaders for Evas')
 conflicts=('eet' 'eet-svn' 'eina' 'eina-svn' 'embryo' 'embryo-svn'
            'evas' 'evas-svn')
 provides=('eet' 'eet-svn' 'eina' 'eina-svn' 'embryo' 'embryo-svn'
@@ -49,6 +49,7 @@ build() {
 	--enable-fb \
 	--enable-software-xlib \
 	--enable-gl-xlib
+
   make
 }
 
