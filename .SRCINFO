@@ -1,0 +1,13 @@
+pkgbase = fixsrcip
+	pkgdesc = Allow to force bind/connect using the specified IP
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://0pointer.de/lennart/projects/fixsrcip
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://0pointer.de/lennart/projects/fixsrcip/fixsrcip-0.1.tar.gz
+	md5sums = 9ca2b93dea7a6b994b7e4b092caa0d63
+
+pkgname = fixsrcip
+
