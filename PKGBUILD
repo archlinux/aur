@@ -13,8 +13,8 @@ makedepends=('unzip')
 conflicts=('ioquake3' 'ioquake3-svn')
 install=quake3.install
 source=('quake3.install' 'quake3.desktop' 'quake3.launcher' 'quake3-smp.launcher' 'quake3ded.launcher' \
-'http://media1.gamefront.com/moddb/2008/06/03/linuxq3apoint-1.32b-3.x86.run' \
-'http://ftp.mancubus.net/pub/idgames/idstuff/quake3/quake3-1.32c.zip')
+'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run' \
+'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/quake3-1.32c.zip')
 md5sums=('330f17b7664f8d0ff98ef173bd37fa33'
          '4b3656ccf6b6f6967f53e0977d7e5c0a'
          'b99913defd8c2c8b2f1b9006f5ddeb9f'
