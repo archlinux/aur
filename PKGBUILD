@@ -3,18 +3,18 @@
 
 pkgname=kcm-fcitx
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Config Module for Fcitx"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/kcm-fcitx"
 license=('GPL')
 depends=('fcitx>=4.2.6' 'kdebase-runtime')
 makedepends=('cmake' 'intltool' 'automoc4')
-source=(http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz)
+source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz")
 md5sums=('1a2a9802edf6df79d3883c362ba487f0')
 
 build() {
-  cd "$srcdir"/${pkgname}-${pkgver}
+  cd "$srcdir/${pkgname}-${pkgver}"
 
   rm -rf build
   mkdir build
