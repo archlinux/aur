@@ -5,11 +5,12 @@ pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to 
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
-depends=('perl' 'perl-moo' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain')
+depends=('perl' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy')
 makedepends=('git')
 optdepends=('perl-wx: GUI support'
             'perl-growl-gntp: notifications support via growl'
             'perl-net-dbus: notifications support via any dbus-based notifier'
+            'perl-xml-sax-expatxs: make AMF parsing faster'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support')
 provides=('slic3r')
 conflicts=('slic3r')
@@ -27,14 +28,14 @@ build() {
     cd $_gitname && git pull origin
     msg "The local files are updated."
   else
-    git clone $_gitroot $_gitname
+    git clone --depth=1 $_gitroot $_gitname
   fi
 
   msg "GIT checkout done or server timeout"
   msg "Starting make..."
 
   rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cp -R "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
   # ENV for perl
