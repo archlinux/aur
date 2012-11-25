@@ -6,7 +6,7 @@
 _pkgbasename=giflib
 pkgname=lib32-$_pkgbasename
 pkgver=4.1.6
-pkgrel=7
+pkgrel=8
 pkgdesc="A library for reading and writing gif images (32-bit)"
 url="http://sourceforge.net/projects/giflib/"
 arch=('x86_64')
@@ -37,7 +37,7 @@ package() {
 
   # libungif compatibility - instructions taken from Redhat specfile
   MAJOR=`echo ${pkgver} | sed 's/\([0-9]\+\)\..*/\1/'`
-  gcc -shared -Wl,-soname,libungif.so.${MAJOR} -Llib/.libs -lgif -o libungif.so.${pkgver}
+  gcc -m32 -shared -Wl,-soname,libungif.so.${MAJOR} -Llib/.libs -lgif -o libungif.so.${pkgver}
   install -m755 libungif.so.${pkgver} ${pkgdir}/usr/lib32/
   ln -sf libungif.so.${pkgver} ${pkgdir}/usr/lib32/libungif.so.4
   ln -sf libungif.so.4 ${pkgdir}/usr/lib32/libungif.so
