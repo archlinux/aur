@@ -1,8 +1,11 @@
 post_install() {
+    cat << __EOF__
+===> Run the following commands as root:
     systemctl enable pacmandb.service
     systemctl start pacmandb.service
+__EOF__
 }
 
-pre_remove() {
-    systemctl stop pacmandb.service
+post_upgrade() {
+    post_install
 }
