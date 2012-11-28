@@ -7,22 +7,22 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=R15B02
+pkgver=R15B03
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org'
 license=('custom')
-depends=('ncurses')
+depends=('ncurses' 'openssl')
 provides=('erlang')
 conflicts=('erlang')
-makedepends=('perl' 'openssl')
+makedepends=('perl')
 optdepends=('unixodbc: for database support'
             'java-environment: for Java support')
 source=("http://www.erlang.org/download/otp_src_$pkgver.tar.gz"
         "http://www.erlang.org/download/otp_doc_man_$pkgver.tar.gz")
-sha256sums=('03eb0bd640916666ff83df1330912225fbf555e0c8cf58bb35d8307a314f1158'
-            'e27ed26259a2560b81e02b89190ae2a3bf0a777dc2e875f9615adab0a5388f95')
+sha256sums=('d1ee5dd3833537ad7533f2deaf164936508c55c992c2b930f0c4c4559d40aa12'
+            '0a5a01f8c6050551c1ba0591de42731a6640370e7527fae81cdfe3d3d6af0a6b')
 
 build() {
   cd "$srcdir/otp_src_$pkgver"
