@@ -8,6 +8,8 @@ pkgbase = par2cmdline-git
 	license = GPL
 	makedepends = git
 	depends = gcc-libs
+	provides = par2cmdline
+	conflicts = par2cmdline
 
 pkgname = par2cmdline-git
 

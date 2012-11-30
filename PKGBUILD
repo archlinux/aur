@@ -8,6 +8,8 @@ license="GPL"
 makedepends=('git')
 depends=('gcc-libs')
 arch=('i686' 'x86_64')
+provides=('par2cmdline')
+conflicts=('par2cmdline')
 source=()
 
 if [ -e .githash_${CARCH} ] ; then
