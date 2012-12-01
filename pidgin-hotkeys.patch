@@ -1,0 +1,24 @@
+--- src/hotkeys.c	2007-06-22 20:37:00.000000000 +0200
++++ src/hotkeys.c	2008-04-18 16:08:46.000000000 +0200
+@@ -152,15 +152,19 @@
+ 
+             if ((l = get_pending_list(1)))
+ 	    {
+-		pidgin_conv_present_conversation((PurpleConversation *)l->data);
++			PurpleConversation *conv = l->data;
++		pidgin_conv_present_conversation(conv);
+ 
+ #ifdef GDK_WINDOWING_X11
+ 		{
+ 		    GtkWindow *gtkwindow;
++			PidginConversation *gtkconv = PIDGIN_CONVERSATION(conv);
+ 
+-		    gtkwindow = GTK_WINDOW(pidgin_conv_get_window(PIDGIN_CONVERSATION((PurpleConversation *)l->data))->window);
++		    gtkwindow = GTK_WINDOW(pidgin_conv_get_window(PIDGIN_CONVERSATION(conv))->window);
+ 		    /*gtk_window_present(gtkwindow);*/
+ 		    hacky_active_window(GTK_WIDGET(gtkwindow));
++
++			pidgin_conv_window_switch_gtkconv(gtkconv->win, gtkconv);
+ 		}
+ #endif
+ 		g_list_free(l);
