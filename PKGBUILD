@@ -2,15 +2,15 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=ewebkit-svn
-pkgver=136302
+pkgver=136318
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'cairo' 'elementary<1.8' 'enchant' 'gstreamer0.10-base'
-         'gperf' 'libtiff' 'libsoup' 'libxslt' 'libxt' 'sqlite3')
-makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby')
+         'libtiff' 'libsoup' 'libxslt' 'libxt' 'sqlite')
+makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 
 _svntrunk=https://svn.webkit.org/repository/webkit/trunk
 _svnmod=Webkit
@@ -42,7 +42,9 @@ build() {
 	-DPORT=Efl \
 	-DSHARED_CORE=OFF \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX=/usr
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DENABLE_WEBKIT=ON \
+	-DENABLE_WEBKIT2=ON
 
   make
 }
