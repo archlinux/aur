@@ -1,0 +1,32 @@
+From c910e1b58f01a42b9f99222e501172576d8cad06 Mon Sep 17 00:00:00 2001
+From: Dominik Schmidt <dev@dominik-schmidt.de>
+Date: Fri, 2 Nov 2012 21:43:11 +0100
+Subject: [PATCH] Fix build with new CMake release. Doesn't harm us, but really
+ looks like an upstream bug
+
+---
+ .../thirdparty/kdsingleapplicationguard/kdsingleapplicationguard.h      | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/libtomahawk/thirdparty/kdsingleapplicationguard/kdsingleapplicationguard.h b/src/libtomahawk/thirdparty/kdsingleapplicationguard/kdsingleapplicationguard.h
+index 5f526e1..7b744e1 100644
+--- a/src/libtomahawk/thirdparty/kdsingleapplicationguard/kdsingleapplicationguard.h
++++ b/src/libtomahawk/thirdparty/kdsingleapplicationguard/kdsingleapplicationguard.h
+@@ -3,7 +3,6 @@
+ 
+ #include <QtCore/QObject>
+ 
+-#if QT_VERSION >= 0x040400 || defined(DOXYGEN_RUN)
+ #ifndef QT_NO_SHAREDMEMORY
+ 
+ #include <QtCore/QStringList>
+@@ -138,6 +137,5 @@ QT_END_NAMESPACE
+ 
+ 
+ #endif // QT_NO_SHAREDMEMORY
+-#endif // QT_VERSION >= 0x040400 || defined(DOXYGEN_RUN)
+ 
+ #endif /* __KDTOOLSCORE_KDSINGLEAPPLICATIONGUARD_H__ */
+-- 
+1.8.0.1
+
