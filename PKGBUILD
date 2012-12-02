@@ -48,7 +48,7 @@ package() {
 		/usr/share/doc/p7zip/DOCS/unRarLicense.txt
 
 	# Integration with stuff...
-	install -D GUI/p7zip_32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/p7zip.png
+	install -Dm644 GUI/p7zip_32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/p7zip.png
 	install -d "${pkgdir}"/usr/share/{applications,kde4/services/ServiceMenus}
 	cp GUI/kde4/* "${pkgdir}"/usr/share/kde4/services/ServiceMenus/
 	cp ../7zFM.desktop "${pkgdir}"/usr/share/applications/
