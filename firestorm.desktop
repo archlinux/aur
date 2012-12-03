@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Firestorm Second Life viewer
+Comment=Second Life is a 3-D virtual world entirely built and owned by its residents
+Exec=/usr/bin/firestorm
+Icon=/usr/share/pixmaps/firestorm_icon.png
+Terminal=false
+Categories=Game

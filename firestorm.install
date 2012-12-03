@@ -1,0 +1,31 @@
+post_install() {
+    echo ">>> You must register an account on the official Second Life"
+    echo ">>>  website in order to play Second Life."
+    echo ">>>"
+    echo ">>>  http://www.secondlife.com/"
+    echo ">>>"
+    echo ">>> You must also add your user to the 'games' group."
+    echo ">>>"
+    echo ">>>  # gpasswd -a USERNAME games"
+    echo ">>>"
+    echo ">>> Remember to logout and log back in for the changes to take effect."
+}
+
+post_upgrade() {
+    post_install $1
+    echo
+    echo ">>> The Firestorm team highly recommends to delete the old configuration"
+    echo ">>> upon an upgrade.  This may be accomplished by deleting ~/.firestorm"
+    echo ">>>"
+    echo ">>> Remember, chat logs are saved in that directory, so make sure"
+    echo ">>> to backup any *.txt files you want to keep!"
+}
+
+pre_remove() {
+    /bin/true
+}
+
+op=$1
+shift
+
+$op $*
