@@ -1,0 +1,15 @@
+pkgbase = doschk
+	pkgdesc = Checks filenames for compatibility with SYSV and MS-DOS limits.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/doschk/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ftp.debian.org/debian/pool/main/d/doschk/doschk_1.1.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/d/doschk/doschk_1.1-6.diff.gz
+	sha256sums = ea29748a48a3d8433a2f29059e3a760354a13e01d7a3f00237c5bd9e980c9f38
+	sha256sums = eecf830955648af177cb1772251a14d3725001c59bea627b7f319c1d4e04a41f
+
+pkgname = doschk
+
