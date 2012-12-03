@@ -1,0 +1,18 @@
+pkgbase = radegast
+	pkgdesc = Lightweight client for connecting to Second Life and OpenSim worlds
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://radegast.org
+	arch = any
+	license = BSD
+	makedepends = nant
+	depends = mono
+	source = http://radegast.googlecode.com/files/radegast-2.6-src.zip
+	source = radegast.desktop
+	source = radegast
+	sha256sums = 62d679c35b5ed614827e98b37f3651c2ac36dafe1ea247eb0d5b1a8b05f2aac0
+	sha256sums = 8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567
+	sha256sums = 73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96
+
+pkgname = radegast
+
