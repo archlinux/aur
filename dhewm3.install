@@ -1,0 +1,6 @@
+post_upgrade() {
+  cat <<EOF
+Dhewm3 has moved its user configuration.  To smoothly upgrade, copy or
+move ~/.doom3 to ~/.config/dhewm3.
+EOF
+}
