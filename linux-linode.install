@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-linode
-KERNEL_VERSION=3.6.6-1-linode
+KERNEL_VERSION=3.6.8-1-linode
 
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
