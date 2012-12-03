@@ -1,0 +1,30 @@
+pkgbase = prboom-plus-svn
+	pkgdesc = An enhanced version of the PrBoom Doom engine port
+	pkgver = 4248
+	pkgrel = 1
+	url = http://prboom-plus.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = make
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = deutex-devel
+	makedepends = unzip
+	makedepends = imagemagick
+	depends = libgl
+	depends = libmad
+	depends = mesa
+	depends = portmidi
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_net
+	conflicts = prboom-plus
+	source = prboom-plus.desktop
+	source = prboom-plus-game-server.desktop
+	sha256sums = a858c1dbb4fb10f87d1348ae5a521726e5e6f9ba4e41a392af57aa5b9b6d791d
+	sha256sums = 7f3ac5558ab763246402b25e55e8e6d0756e56dcc0c6c42510a9d21b5814f736
+
+pkgname = prboom-plus-svn
+

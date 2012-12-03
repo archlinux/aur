@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PrBoom Plus Server
+Exec=prboom-plus-game-server
+Icon=prboom-plus-game-server
+Type=Application
+Terminal=true
+Comment=Run a PrBoom Plus server
+Categories=Network;

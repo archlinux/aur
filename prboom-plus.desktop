@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PrBoom Plus
+Exec=prboom-plus
+Icon=prboom-plus
+Type=Application
+Comment=An enhanced Doom game engine
+Categories=Game;ActionGame;
