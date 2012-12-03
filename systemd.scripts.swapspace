@@ -1,0 +1,28 @@
+#!/bin/sh
+
+start() {
+    SWAPSPACE_ARGS="-q -d -p /var/run/swapspace.pid"
+    PIDFILE=/var/run/swapspace.pid
+    PID=$(cat $PIDFILE 2> /dev/null)
+
+    if ! readlink -q /proc/$PID/exe | grep -q \^/usr/sbin/swapspace; then
+        PID=
+        rm -f $PIDFILE
+    fi
+
+    [ -r /etc/conf.d/swapspace ] && . /etc/conf.d/swapspace
+    PID=$(get_pid swapspace)
+    [[ -z $PID ]] && /usr/sbin/swapspace $SWAPSPACE_ARGS
+}
+
+stop() {
+    /usr/sbin/swapspace -e
+    [[ ! -z $PID ]] && kill $PID &> /dev/null
+}
+
+case $1 in
+    start|stop)
+        "$1"
+        ;;
+    *)
+esac

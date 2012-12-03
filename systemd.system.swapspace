@@ -1,0 +1,11 @@
+[Unit]
+Description=A dynamic swap manager
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/systemd/scripts/swapspace start
+ExecStop=/usr/lib/systemd/scripts/swapspace stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

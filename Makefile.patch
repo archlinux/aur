@@ -1,0 +1,25 @@
+--- swapspace-1.10/Makefile.orig	2006-01-03 20:19:35.000000000 -0800
++++ swapspace-1.10/Makefile	2011-10-13 11:22:23.950648477 -0700
+@@ -3,7 +3,7 @@
+ SWAPPARENT=/var/lib
+ SWAPDIR=$(SWAPPARENT)/swapspace
+ 
+-all: VERSION DATE
++all:
+ 	+$(MAKE) -C src VERSION="`cat VERSION`" DATE="`cat DATE`"
+ 	+$(MAKE) -C doc VERSION="`cat VERSION`" DATE="`cat DATE`"
+ 
+@@ -16,12 +16,11 @@
+ install: all
+ 	install -d $(DESTDIR)/$(SWAPPARENT)
+ 	install -d -m700 $(DESTDIR)/$(SWAPDIR)
+-	install -d $(DESTDIR)/usr/sbin $(DESTDIR)/etc $(DESTDIR)/etc/init.d
++	install -d $(DESTDIR)/usr/sbin $(DESTDIR)/etc
+ 	install -d $(DESTDIR)/usr/share/man/man8
+ 	strip src/swapspace || true
+ 	install -m755 src/swapspace $(DESTDIR)/usr/sbin
+ 	install -m644 swapspace.conf $(DESTDIR)/etc
+-	install -m744 debian/swapspace.init $(DESTDIR)/etc/init.d/swapspace
+ 	install -m644 doc/swapspace.8 $(DESTDIR)/usr/share/man/man8
+ 
+ uninstall:
