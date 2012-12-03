@@ -1,0 +1,22 @@
+2012-11-21 Mike Swanson <mikeonthecomputer@gmail.com>
+
+	* 1.0.1-4 :
+	Upstream source disappeared; use Debian mirror instead.
+
+
+2010-07-16 Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+
+	* 1.0.1-3 :
+	PKGBUILD update for pacman-3.4 conventions
+
+
+2009-05-21 Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+
+	* 1.0.1-2 :
+	Replaced in my '# Contributor:' line by '# Maintainer:'
+
+
+2009-03-19 Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+
+	* 1.0.1-1 :
+	Initial release.

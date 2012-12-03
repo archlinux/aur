@@ -1,0 +1,15 @@
+pkgbase = fatattr
+	pkgdesc = Display or change attributes on a FAT filesystem
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = http://kernel.org/pub/linux/utils/fs/fat/fatattr/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://ftp.us.debian.org/debian/pool/main/f/fatattr/fatattr_1.0.1.orig.tar.xz
+	sha256sums = 2dd7208dc259118dffa761ebd9ea509de635578b57cb871f836aa8dd66651d11
+
+pkgname = fatattr
+
