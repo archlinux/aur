@@ -1,0 +1,14 @@
+pkgbase = emacs-vala-mode
+	pkgdesc = A major mode for editing Vala source files in Emacs
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://live.gnome.org/Vala/Emacs
+	install = emacs-vala-mode.install
+	arch = any
+	license = GPL
+	depends = emacs
+	source = https://live.gnome.org/Vala/Emacs?action=AttachFile&do=get&target=vala-mode.el
+	sha256sums = b6b90fcdf0ba1f0cd98e6002a7186a900e03593186869a82d11aa0d78f93d76a
+
+pkgname = emacs-vala-mode
+
