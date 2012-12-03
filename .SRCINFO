@@ -29,6 +29,7 @@ pkgbase = linux-linode
 	source = linux-linode.preset
 	source = module-symbol-waiting-3.6.patch
 	source = module-init-wait-3.6.patch
+	source = irq_cfg_pointer-3.6.6.patch
 	source = change-default-console-loglevel.patch
 	md5sums = 1a1760420eac802c541a20ab51a093d1
 	md5sums = f248294551c34753c5c019c8d513280c
@@ -37,6 +38,7 @@ pkgbase = linux-linode
 	md5sums = ee66f3cd0c5bc0ba0f65499784d19f30
 	md5sums = 670931649c60fcb3ef2e0119ed532bd4
 	md5sums = 8a71abc4224f575008f974a099b5cf6f
+	md5sums = 4909a0271af4e5f373136b382826717f
 	md5sums = 9d3c56a4b999c8bfbd4018089a62f662
 
 pkgname = linux-linode

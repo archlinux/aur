@@ -16,6 +16,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "${pkgname}.preset"
         "module-symbol-waiting-3.6.patch"
         "module-init-wait-3.6.patch"
+        "irq_cfg_pointer-3.6.6.patch"
         'change-default-console-loglevel.patch')
 md5sums=('1a1760420eac802c541a20ab51a093d1'
          'f248294551c34753c5c019c8d513280c'
@@ -24,6 +25,7 @@ md5sums=('1a1760420eac802c541a20ab51a093d1'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '670931649c60fcb3ef2e0119ed532bd4'
          '8a71abc4224f575008f974a099b5cf6f'
+         '4909a0271af4e5f373136b382826717f'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -39,6 +41,7 @@ build() {
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   patch -Np1 -i "${srcdir}/module-symbol-waiting-3.6.patch"
   patch -Np1 -i "${srcdir}/module-init-wait-3.6.patch"
+  patch -Np1 -i "${srcdir}/irq_cfg_pointer-3.6.6.patch"
   cp "${srcdir}/config.x86_64" ./.config
   sed -i '2iexit 0' scripts/depmod.sh
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
