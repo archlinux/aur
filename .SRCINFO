@@ -1,0 +1,27 @@
+pkgbase = python30
+	pkgdesc = Next generation of the python high-level scripting language
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	makedepends = sqlite
+	makedepends = valgrind
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	provides = python3
+	replaces = python3
+	options = !makeflags
+	source = http://www.python.org/ftp/python/3.0.1/Python-3.0.1.tar.bz2
+	sha256sums = 91afb6ac16d3d22bc6bfbc80726dc85ede32bf838f660cc67016c7d0a7079add
+
+pkgname = python30
+
