@@ -1,0 +1,13 @@
+pkgbase = emacs-nyan-mode
+	pkgdesc = Nyan Cat in your Emacs modeline
+	pkgver = 20120517
+	pkgrel = 1
+	url = http://github.com/TeMPOraL/nyan-mode/
+	install = emacs-nyan-mode.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+
+pkgname = emacs-nyan-mode
+
