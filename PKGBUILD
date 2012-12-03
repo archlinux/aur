@@ -1,23 +1,23 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=78901
-pkgrel=2
-pkgdesc="Enlightenment Foundation Libraries - Eo, Eet, Eina, Embryo, & Evas"
+pkgver=80085
+pkgrel=1
+pkgdesc="Enlightenment Foundation Libraries - Ecore, Eet, Eina, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
-groups=('e17-libs-svn' 'e17-svn')
 url="http://www.enlightenment.org"
-license=('BSD' 'LGPL2.1')
-depends=('openssl' 'glibc' 'libxrender' 'mesa' 'glu' 
-         'libjpeg-turbo' 'giflib' 'libtiff' 'libwebp' 'libpng'
-         'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak')
+license=('BSD' 'LGPL2.1' 'custom')
+depends=('mesa' 'curl' 'libjpeg>=7' 'giflib' 'libtiff' 'libwebp'
+         'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak'
+         'libxcomposite' 'libxcursor' 'libxinerama' 'libxp' 'libxrandr'
+         'libxss' 'libxtst')
 makedepends=('subversion')
 optdepends=('python2: to compare Eina benchmarks'
             'evas_generic_loaders-svn: Extra loaders for Evas')
-conflicts=('eet' 'eet-svn' 'eina' 'eina-svn' 'embryo' 'embryo-svn'
-           'evas' 'evas-svn')
-provides=('eet' 'eet-svn' 'eina' 'eina-svn' 'embryo' 'embryo-svn'
-          'evas' 'evas-svn')
+conflicts=('ecore' 'ecore-svn' 'eet' 'eet-svn' 'eina' 'eina-svn'
+           'embryo' 'embryo-svn' 'evas' 'evas-svn')
+provides=('ecore' 'ecore-svn' 'eet' 'eet-svn' 'eina' 'eina-svn'
+          'embryo' 'embryo-svn' 'evas' 'evas-svn')
 options=('!libtool' '!emptydirs')
          
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/efl"
@@ -48,7 +48,10 @@ build() {
 	--libexecdir=/usr/lib \
 	--enable-fb \
 	--enable-software-xlib \
-	--enable-gl-xlib
+	--enable-gl-xlib \
+	--disable-wayland-shm \
+	--with-tls=openssl \
+	--disable-pixman
 
   make
 }
@@ -58,10 +61,14 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install license files
-  install -Dm644 "$srcdir/$_svnmod-build/licenses/COPYING.BSD" \
-        "$pkgdir/usr/share/licenses/$pkgname/COPYING.BSD"
   install -Dm644 "$srcdir/$_svnmod-build/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "$srcdir/$_svnmod-build/AUTHORS" \
+        "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  install -Dm644 "$srcdir/$_svnmod-build/licenses/COPYING.BSD" \
+        "$pkgdir/usr/share/licenses/$pkgname/COPYING.BSD"
+  install -Dm644 "$srcdir/$_svnmod-build/licenses/COPYING.SMALL" \
+        "$pkgdir/usr/share/licenses/$pkgname/COPYING.SMALL"
 
   rm -r "$srcdir/$_svnmod-build"
 }
