@@ -1,0 +1,22 @@
+post_install() {
+  cat <<MSG
+The Doom 3 patch *.pk4 files have been installed to /usr/share/doom3.
+You must still copy the game *.pk4 files from the Doom 3 CDs or an
+installed copy (eg, from Steam, a Windows install, or otherwise) in
+order to complete the game.
+
+The files for the base directory are: pak000.pk4, pak001.pk4,
+pak002.pk4, pak003.pk4, and pak004.pk4.
+
+If you have Doom 3: Resurrection of Evil, you may also copy its
+pak000.pk4 file into the d3xp directory.
+
+STEAM USERS:
+Doom 3 requires a CD-key to run; Steam provides CD-keys but does not
+normally expose them to owners of the game.  If you can run Steam, you
+may be able to right click the game(s) and view the CD key from the
+Steam client.  Otherwise, run the game(s) at least once via Steam and
+then copy the doomkey and xpkey files from
+"Steam/steamapps/common/doom 3/base" into ~/.doom3/base
+MSG
+}
