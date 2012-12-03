@@ -1,0 +1,33 @@
+pkgbase = dosemu-git
+	pkgdesc = DOS emulator
+	pkgver = 20121125
+	pkgrel = 1
+	url = http://www.dosemu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = subversion
+	depends = gpm
+	depends = slang
+	depends = sdl
+	depends = libxxf86vm
+	depends = libsndfile
+	depends = sh
+	depends = xorg-mkfontdir
+	depends = xorg-bdftopcf
+	provides = dosemu
+	conflicts = dosemu
+	noextract = dosemu-freedos-1.1-bin.tgz
+	backup = etc/dosemu/dosemu.conf
+	backup = etc/dosemu/dosemu.users
+	backup = etc/dosemu/global.conf
+	source = https://dl.dropbox.com/u/13513277/dosemu/dosemu-freedos-1.1-bin.tgz
+	source = debianize.patch
+	source = xdosemu.desktop
+	sha256sums = 8f25916dc7f58e71398820b9bc83987cb39e3cd23a7d2d15a7294b2d42cfbed0
+	sha256sums = 9d07462543a6ce35eca7e647c17e1de7193de0a9067b83159aa1f6a18391a6ea
+	sha256sums = ae737e26165c016242d5a8603a5c887c313570e1525091b30f9e8d23d1a9faab
+
+pkgname = dosemu-git
+

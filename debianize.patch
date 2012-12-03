@@ -1,0 +1,71 @@
+Description: adjust where files are installed, which seems specific to Debian.
+ Additionally, adjust how the license files are handled, and how they're
+ mentioned in the copyright notice (i.e. point to the locally installed Debian
+ copies instead of duplicating them in the binary package).
+Author: Kees Cook <kees@debian.org>
+Forwarded: not-needed
+
+Index: dosemu-1.4.0+svn.2080/src/emu.c
+===================================================================
+--- dosemu-1.4.0+svn.2080.orig/src/emu.c	2012-06-16 11:51:59.000000000 -0700
++++ dosemu-1.4.0+svn.2080/src/emu.c	2012-06-16 11:54:53.960920640 -0700
+@@ -245,8 +245,8 @@
+   ".\nCopyright (C) 1992-2006 the 'DOSEMU-Development-Team'.\n"
+   "This program is  distributed  in  the  hope that it will be useful,\n"
+   "but  WITHOUT  ANY  WARRANTY;   without even the implied warranty of\n"
+-  "MERCHANTABILITY  or  FITNESS FOR A PARTICULAR PURPOSE. See the files\n"
+-  "COPYING.DOSEMU and COPYING for more details.\n"
++  "MERCHANTABILITY  or  FITNESS FOR A PARTICULAR PURPOSE. See the file\n"
++  "/usr/share/doc/dosemu/copyright for more details.\n"
+   "Use  this  program  at  your  own  risk!\n\n";
+ 
+   static char text2[] =
+Index: dosemu-1.4.0+svn.2080/src/arch/linux/Makefile.main
+===================================================================
+--- dosemu-1.4.0+svn.2080.orig/src/arch/linux/Makefile.main	2012-06-16 11:51:59.000000000 -0700
++++ dosemu-1.4.0+svn.2080/src/arch/linux/Makefile.main	2012-06-16 11:54:53.968920748 -0700
+@@ -9,7 +9,7 @@
+ # install DOSEMU.
+ 
+ SYS = ../commands
+-dosemudir = $(datadir)/dosemu
++dosemudir = $(libdir)/dosemu
+ 
+ NET=dosext/net/net
+ 
+@@ -196,7 +196,6 @@
+ 	$(INSTALL) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 0755 ../bin/$(DOSBIN) $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 0755 ../bin/dosemu $(DESTDIR)$(bindir)
+-	$(INSTALL) -m 0755 ../bin/mkfatimage $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 0755 ../bin/mkfatimage16 $(DESTDIR)$(bindir)
+ ifdef USE_SBEMU
+ 	$(INSTALL) -m 0755 ../bin/midid $(DESTDIR)$(bindir)
+@@ -211,7 +210,7 @@
+ 	  fi; \
+ 	done
+ 	$(INSTALL) -d $(DESTDIR)$(docdir)
+-	for i in README.bindist NEWS THANKS COPYING COPYING.DOSEMU; do \
++	for i in README.bindist NEWS THANKS; do \
+ 	  $(INSTALL) -m 0644 $(REALTOPDIR)/$$i $(DESTDIR)$(docdir); \
+ 	done
+ 	for i in README README-tech dosemu-HOWTO sound-usage DANG EMUfailure \
+Index: dosemu-1.4.0+svn.2080/src/tools/periph/Makefile
+===================================================================
+--- dosemu-1.4.0+svn.2080.orig/src/tools/periph/Makefile	2012-06-16 11:51:55.000000000 -0700
++++ dosemu-1.4.0+svn.2080/src/tools/periph/Makefile	2012-06-16 11:54:53.968920748 -0700
+@@ -11,12 +11,12 @@
+ D=$(REALTOPDIR)/etc
+ IDEST=/var/lib
+ 
+-CFILES=hdinfo.c mkhdimage.c putrom.c mkfatimage.c mkfatimage16.c \
++CFILES=hdinfo.c mkhdimage.c putrom.c mkfatimage16.c \
+     dexeconfig.c scsicheck.c dosctrl.c vbioscheck.c
+ SFILES=bootsect.S
+ SRC=$(CFILES) $(SFILES)
+ OBJ1=hdinfo mkhdimage putrom dexeconfig scsicheck dosctrl vbioscheck 
+-OBJ=$(OBJ1) $(BINPATH)/bin/mkfatimage $(BINPATH)/bin/mkfatimage16
++OBJ=$(OBJ1) $(BINPATH)/bin/mkfatimage16
+ SCRIPT=getrom
+ 
+ ALL_CPPFLAGS += -I.
