@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Exec=darkplaces-sdl -game dpmod
+Icon=darkplaces
+Type=Application
+Categories=Game;ActionGame;
+Name=Darkplaces mod
+GenericName=Quake Engine
+Comment=Play Quake with the Darkplaces engine and mod
+StartupNotify=true
+Terminal=false
