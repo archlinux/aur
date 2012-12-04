@@ -8,7 +8,7 @@
 
 pkgname=erlang-nox
 pkgver=R15B03
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org'
@@ -16,9 +16,10 @@ license=('custom')
 depends=('ncurses' 'openssl')
 provides=('erlang')
 conflicts=('erlang')
-makedepends=('perl')
+makedepends=('perl' 'lksctp-tools')
 optdepends=('unixodbc: for database support'
-            'java-environment: for Java support')
+            'java-environment: for Java support'
+            'lksctp-tools: for SCTP support')
 source=("http://www.erlang.org/download/otp_src_$pkgver.tar.gz"
         "http://www.erlang.org/download/otp_doc_man_$pkgver.tar.gz")
 sha256sums=('d1ee5dd3833537ad7533f2deaf164936508c55c992c2b930f0c4c4559d40aa12'
