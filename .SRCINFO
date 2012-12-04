@@ -1,6 +1,6 @@
 pkgbase = refind-efi-git
 	pkgdesc = Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version
-	pkgver = 20121112
+	pkgver = 20121204
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/index.html
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = refind-efi-git
 	source = refind_include_more_shell_paths.patch
 	source = refind_linux.conf
 	sha1sums = 4d1992699f9b48dd2b7e6bd6c0b25fc065f75894
-	sha1sums = 7ed2870ee76f42a7bed51410b3cae4da3bc2de2a
+	sha1sums = afa9ff2f982811655dcce4783e934b9abab1d4a3
 	sha1sums = 3d53eb615c3363d45feb95b9bfbf1d5491bf1c24
 
 pkgname = refind-efi-git

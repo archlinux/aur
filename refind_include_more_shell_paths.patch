@@ -1,10 +1,10 @@
 diff --git a/refind/main.c b/refind/main.c
-index beac3bf..1a2cf58 100644
+index ebb9fdd..240371d 100644
 --- a/refind/main.c
 +++ b/refind/main.c
-@@ -62,13 +62,13 @@
+@@ -63,13 +63,13 @@
  
- #define MACOSX_LOADER_PATH      L"System\\Library\\CoreServices\\boot.efi"
+ #define MACOSX_LOADER_PATH      L"\\System\\Library\\CoreServices\\boot.efi"
  #if defined (EFIX64)
 -#define SHELL_NAMES             L"\\EFI\\tools\\shell.efi,\\shellx64.efi"
 +#define SHELL_NAMES             L"\\EFI\\tools\\shellx64.efi,\\EFI\\tools\\shell.efi,\\shellx64.efi"

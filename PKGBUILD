@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20121112
+pkgver=20121204
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -33,7 +33,7 @@ source=('UDK-MdePkg-Revert-PathNodeCount.patch'
         'refind_linux.conf')
 
 sha1sums=('4d1992699f9b48dd2b7e6bd6c0b25fc065f75894'
-          '7ed2870ee76f42a7bed51410b3cae4da3bc2de2a'
+          'afa9ff2f982811655dcce4783e934b9abab1d4a3'
           '3d53eb615c3363d45feb95b9bfbf1d5491bf1c24')
 
 _gitroot="git://git.code.sf.net/p/refind/code"
