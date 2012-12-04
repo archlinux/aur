@@ -1,9 +1,9 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=80085
+pkgver=80184
 pkgrel=1
-pkgdesc="Enlightenment Foundation Libraries - Ecore, Eet, Eina, Embryo, Eo, & Evas"
+pkgdesc="Enlightenment Foundation Libraries - Ecore, Eet, Eina, Eio, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'custom')
@@ -15,9 +15,9 @@ makedepends=('subversion')
 optdepends=('python2: to compare Eina benchmarks'
             'evas_generic_loaders-svn: Extra loaders for Evas')
 conflicts=('ecore' 'ecore-svn' 'eet' 'eet-svn' 'eina' 'eina-svn'
-           'embryo' 'embryo-svn' 'evas' 'evas-svn')
+           'eio' 'eio-svn' 'embryo' 'embryo-svn' 'evas' 'evas-svn')
 provides=('ecore' 'ecore-svn' 'eet' 'eet-svn' 'eina' 'eina-svn'
-          'embryo' 'embryo-svn' 'evas' 'evas-svn')
+          'eio' 'eio-svn' 'embryo' 'embryo-svn' 'evas' 'evas-svn')
 options=('!libtool' '!emptydirs')
          
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/efl"
