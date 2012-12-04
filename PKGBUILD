@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'custom:FIPL')
 url="http://freeimage.sourceforge.net/"
 depends=('gcc-libs')
-makedepends=('hd2u')
+makedepends=('dos2unix')
 source=("http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip")
 md5sums=('6c305b4086500ff8541c596ea6fc7cd7')
 
