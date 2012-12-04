@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.6
-pkgver=3.6.8
+pkgver=3.6.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,16 +21,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'module-symbol-waiting-3.6.patch'
         'module-init-wait-3.6.patch'
-        'irq_cfg_pointer-3.6.6.patch')
-md5sums=('1a1760420eac802c541a20ab51a093d1'
-         'f248294551c34753c5c019c8d513280c'
-         '65f7ff39775f20f65014383564d3cb65'
-         '3adbfa45451c4bcf9dd7879bed033d77'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '670931649c60fcb3ef2e0119ed532bd4'
-         '8a71abc4224f575008f974a099b5cf6f'
-         '4909a0271af4e5f373136b382826717f')
+        'irq_cfg_pointer-3.6.6.patch'
+        'fat-3.6.x.patch')
 
 _kernelname=${pkgbase#linux}
 
@@ -55,6 +47,10 @@ build() {
 
   # fix FS#32615 - Check for valid irq_cfg pointer in smp_irq_move_cleanup_interrupt
   patch -Np1 -i "${srcdir}/irq_cfg_pointer-3.6.6.patch"
+
+  # fix cosmetic fat issue
+  # https://bugs.archlinux.org/task/32916
+  patch -Np1 -i "${srcdir}/fat-3.6.x.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -321,3 +317,13 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('1a1760420eac802c541a20ab51a093d1'
+         'a7c656034599f90dcbc50895b69022aa'
+         '65f7ff39775f20f65014383564d3cb65'
+         '3adbfa45451c4bcf9dd7879bed033d77'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '670931649c60fcb3ef2e0119ed532bd4'
+         '8a71abc4224f575008f974a099b5cf6f'
+         '4909a0271af4e5f373136b382826717f'
+         '88d501404f172dac6fcb248978251560')
