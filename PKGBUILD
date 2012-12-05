@@ -40,6 +40,7 @@ package() {
 
   install -Dm755 gitodo "$pkgdir"/usr/bin/gitodo
   install -Dm755 highcal "$pkgdir"/usr/bin/highcal
+  install -Dm755 ics2gg "$pkgdir"/usr/bin/ics2gg
 
   install -Dm644 man1/gitodo.1 "$pkgdir"/usr/share/man/man1/gitodo.1
   install -Dm644 man1/highcal.1 "$pkgdir"/usr/share/man/man1/highcal.1
