@@ -4,13 +4,14 @@ _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
 pkgver=${_basekernel}.8
 pkgrel=1
-arch=(x86_64)
+arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+	'config'
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
@@ -42,7 +43,11 @@ build() {
   patch -Np1 -i "${srcdir}/module-symbol-waiting-3.6.patch"
   patch -Np1 -i "${srcdir}/module-init-wait-3.6.patch"
   patch -Np1 -i "${srcdir}/irq_cfg_pointer-3.6.6.patch"
-  cp "${srcdir}/config.x86_64" ./.config
+  if [ "${CARCH}" = "x86_64" ]; then
+    cat "${srcdir}/config.x86_64" > ./.config
+  else
+    cat "${srcdir}/config" > ./.config
+  fi
   sed -i '2iexit 0' scripts/depmod.sh
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|g" ./.config
