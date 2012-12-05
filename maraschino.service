@@ -1,0 +1,13 @@
+[Unit]
+Description=Maraschino Daemon
+
+[Service]
+EnvironmentFile=/etc/conf.d/maraschino
+ExecStart=/usr/bin/maraschino -d -p ${PORT}
+GuessMainPID=no
+Type=forking
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

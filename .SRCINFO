@@ -1,6 +1,6 @@
 pkgbase = maraschinoproject-git
 	pkgdesc = Web-based frontend for XBMC, Sickbeard, Sabnzbd, and more.
-	pkgver = 20120709
+	pkgver = 20121205
 	pkgrel = 1
 	url = http://www.maraschinoproject.com/
 	arch = any
@@ -11,8 +11,10 @@ pkgbase = maraschinoproject-git
 	backup = opt/maraschino/maraschino.db
 	source = maraschino.sh
 	source = maraschino.rc
+	source = maraschino.service
 	md5sums = 7ccaabbd8632323702b591637fcc2b4a
 	md5sums = 12d6bdd1753612a126b3626de855519b
+	md5sums = 0e1ac338c5ce5eb535f9ceaf08b5279f
 
 pkgname = maraschinoproject-git
 

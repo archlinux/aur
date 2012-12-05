@@ -1,7 +1,7 @@
 # Maintainer: Slash <demodevil5 [at] yahoo [dot] com>
 
 pkgname=maraschinoproject-git
-pkgver=20120709
+pkgver=20121205
 pkgrel=1
 pkgdesc="Web-based frontend for XBMC, Sickbeard, Sabnzbd, and more."
 arch=('any')
@@ -11,9 +11,10 @@ depends=('python2')
 makedepends=('git')
 backup=('etc/conf.d/maraschino'
         'opt/maraschino/maraschino.db')
-source=('maraschino.sh' 'maraschino.rc')
+source=('maraschino.sh' 'maraschino.rc' 'maraschino.service')
 md5sums=('7ccaabbd8632323702b591637fcc2b4a'
-         '12d6bdd1753612a126b3626de855519b')
+         '12d6bdd1753612a126b3626de855519b'
+         '0e1ac338c5ce5eb535f9ceaf08b5279f')
 
 _gitroot=https://github.com/mrkipling/maraschino
 _gitname=maraschino
@@ -43,6 +44,10 @@ package() {
     # Install Launcher Script
     install -D -m755 "${srcdir}/maraschino.sh" \
         "${pkgdir}/usr/bin/maraschino"
+
+    # Install systemd Script
+    install -D -m755 "${srcdir}/maraschino.service" \
+        "${pkgdir}/usr/lib/systemd/system/maraschino"
 
     # Install Daemon Script
     install -D -m755 "${srcdir}/maraschino.rc" \
