@@ -1,14 +1,14 @@
 pkgbase = reposurgeon
 	pkgdesc = Performs surgery on version control repositories.
-	pkgver = 2.7
+	pkgver = 2.8
 	pkgrel = 1
 	url = http://www.catb.org/~esr/reposurgeon/
 	arch = any
 	license = BSD
 	makedepends = xmlto
 	depends = python2
-	source = http://www.catb.org/~esr/reposurgeon/reposurgeon-2.7.tar.gz
-	sha256sums = 74b956573e43b9a78f622631322be28579899b92895fd4923dc720f57d1a8e8f
+	source = http://www.catb.org/~esr/reposurgeon/reposurgeon-2.8.tar.gz
+	sha256sums = 8472903e36686793c76a7cfb7bcc8f0a00e7b570538a10e1a8cc2801f6892400
 
 pkgname = reposurgeon
 
