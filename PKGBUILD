@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=80184
+pkgver=80292
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Ecore, Eet, Eina, Eio, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
@@ -50,7 +50,6 @@ build() {
 	--enable-software-xlib \
 	--enable-gl-xlib \
 	--disable-wayland-shm \
-	--with-tls=openssl \
 	--disable-pixman
 
   make
