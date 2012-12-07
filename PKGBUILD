@@ -1,13 +1,13 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=80292
+pkgver=80499
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Ecore, Eet, Eina, Eio, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'custom')
-depends=('mesa' 'curl' 'libjpeg>=7' 'giflib' 'libtiff' 'libwebp'
+depends=('mesa' 'curl' 'giflib' 'libtiff' 'libwebp'
          'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxp' 'libxrandr'
          'libxss' 'libxtst')
@@ -47,17 +47,17 @@ build() {
   ./autogen.sh --prefix=/usr \
 	--libexecdir=/usr/lib \
 	--enable-fb \
-	--enable-software-xlib \
-	--enable-gl-xlib \
-	--disable-wayland-shm \
-	--disable-pixman
+	--disable-tslib \
+	--with-x11=xlib \
+	--with-opengl=full \
+	--enable-harfbuzz
 
   make
 }
 
 package() {
   cd "$srcdir/$_svnmod-build"
-  make DESTDIR="$pkgdir" install
+  make -j1 DESTDIR="$pkgdir" install
 
 # install license files
   install -Dm644 "$srcdir/$_svnmod-build/COPYING" \

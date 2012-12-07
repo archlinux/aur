@@ -1,6 +1,6 @@
 pkgbase = efl-svn
 	pkgdesc = Enlightenment Foundation Libraries - Ecore, Eet, Eina, Eio, Embryo, Eo, & Evas
-	pkgver = 80292
+	pkgver = 80499
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = efl-svn
 	makedepends = subversion
 	depends = mesa
 	depends = curl
-	depends = libjpeg>=7
 	depends = giflib
 	depends = libtiff
 	depends = libwebp
