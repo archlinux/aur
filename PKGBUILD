@@ -4,13 +4,14 @@ _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
 pkgver=${_basekernel}.8
 pkgrel=1
-arch=(x86_64)
+arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+	'config'
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
@@ -20,6 +21,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 md5sums=('1a1760420eac802c541a20ab51a093d1'
          'f248294551c34753c5c019c8d513280c'
+         'cd9650fa8f4581969155ce7495a4daa0'
          '4ea4fcd03cb5a531843b69941777906a'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
@@ -42,7 +44,11 @@ build() {
   patch -Np1 -i "${srcdir}/module-symbol-waiting-3.6.patch"
   patch -Np1 -i "${srcdir}/module-init-wait-3.6.patch"
   patch -Np1 -i "${srcdir}/irq_cfg_pointer-3.6.6.patch"
-  cp "${srcdir}/config.x86_64" ./.config
+  if [ "${CARCH}" = "x86_64" ]; then
+    cat "${srcdir}/config.x86_64" > ./.config
+  else
+    cat "${srcdir}/config" > ./.config
+  fi
   sed -i '2iexit 0' scripts/depmod.sh
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|g" ./.config
