@@ -5,7 +5,7 @@
 _pkgname="gummiboot-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20121012
+pkgver=20121207
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -76,6 +76,10 @@ build() {
 	rm -rf "${srcdir}/${_gitname}_build-x86_64/" || true
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-x86_64"
 	cd "${srcdir}/${_gitname}_build-x86_64/"
+	
+	ARCH="x86_64" make clean
+	echo
+	
 	CFLAGS="-m64" ARCH="x86_64" LIBDIR="/usr/lib" make
 	echo
 	
@@ -83,6 +87,10 @@ build() {
 	rm -rf "${srcdir}/${_gitname}_build-i386/" || true
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
 	cd "${srcdir}/${_gitname}_build-i386/"
+	
+	ARCH="ia32" make clean
+	echo
+	
 	CFLAGS="-m32" ARCH="ia32" LIBDIR="/usr/lib32" make
 	echo
 	
