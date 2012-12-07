@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 168643 2012-10-13 18:32:53Z dan $
+# $Id: PKGBUILD 172926 2012-12-06 22:03:52Z dan $
 # Upstream Maintainer: Dan McGee <dan@archlinux.org>
 # Maintainer: Fantix King <fantix.king at gmail.com>
 
@@ -6,9 +6,9 @@ _pkgbase=postgresql
 pkgbase=binx32-postgresql
 pkgname='binx32-postgresql'
 true && pkgname=('libx32-postgresql-libs' 'binx32-postgresql')
-pkgver=9.2.1
+pkgver=9.2.2
 _majorver=${pkgver%.*}
-pkgrel=2.1
+pkgrel=1.1
 arch=('x86_64')
 url="http://www.postgresql.org/"
 license=('custom:PostgreSQL')
@@ -18,7 +18,7 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql-run-socket.patch
         postgresql.rcd postgresql.confd postgresql.logrotate
         postgresql.service postgresql.tmpfiles.conf postgresql-check-db-dir)
-md5sums=('c0b4799ea9850eae3ead14f0a60e9418'
+md5sums=('1cc388988e69bf75c6b55d59070100f6'
          'e7fcec0b799f776e06c7400fab13302a'
          '170486b408ad3b6b24ae91b9196cb004'
          'df507dd37a17a9cb42c1c87056b967a6'
@@ -27,7 +27,7 @@ md5sums=('c0b4799ea9850eae3ead14f0a60e9418'
          '22809c2ab5f733b51abcef82f315b31c'
          '1201fbe01866d7fd137158c3dbc5f99d'
          'f138ddd82028bfe93f53bcbb3b089fd2')
-sha256sums=('db61d498105a7d5fe46185e67ac830c878cdd7dc1f82a87f06b842217924c461'
+sha256sums=('e1a7a854a98896cb7fcd1696a76fca6f3bcac94d75e68a6154ffe2b69184f7f3'
             '15e068dd4896f56eaafd405945c5b57d0b9812e790328d8fc96dc1cbcb3cb10e'
             'f8c444140755e99b1ffd808404bda77c360c2843d13f6270b8dbd067d129b33a'
             'ddc9c2bc96efc5cb1a33875081446a71a0701bcbe0ebdbfc1aa3331563633687'
@@ -102,7 +102,7 @@ package_libx32-postgresql-libs() {
 package_binx32-postgresql() {
   pkgdesc="A sophisticated object-relational DBMS (x32 ABI)"
   backup=('etc/conf.d/postgresql-x32' 'etc/logrotate.d/postgresql-x32')
-  depends=("libx32-postgresql-libs>=${pkgver}" 'libx32-krb5' 'libx32-libxml2' 'libx32-readline>=6.0' 'libx32-openssl>=1.0.0' "${_pkgbase}=${pkgver}")
+  depends=("libx32-postgresql-libs>=${pkgver}" 'libx32-krb5' 'libx32-libxml2' 'libx32-readline>=6.0' 'libx32-openssl>=1.0.0' "${_pkgbase}>=9.2")
   optdepends=('binx32-python2: for PL/Python support'
               'binx32-perl: for PL/Perl support'
               'binx32-tcl: for PL/Tcl support'

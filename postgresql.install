@@ -2,6 +2,7 @@ post_install() {
   if [ ! -d '/var/lib/postgres-x32' ]; then
     mkdir -p '/var/lib/postgres-x32'
   fi
+  systemd-tmpfiles --create postgresql-x32.conf
 }
 
 post_upgrade() {
