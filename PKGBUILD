@@ -2,7 +2,7 @@ pkgname=linux-linode
 _basekernel=3.6
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.8
+pkgver=${_basekernel}.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -20,9 +20,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "irq_cfg_pointer-3.6.6.patch"
         'change-default-console-loglevel.patch')
 md5sums=('1a1760420eac802c541a20ab51a093d1'
-         'f248294551c34753c5c019c8d513280c'
-         'cd9650fa8f4581969155ce7495a4daa0'
-         '4ea4fcd03cb5a531843b69941777906a'
+         'a7c656034599f90dcbc50895b69022aa'
+         '08617a20226d3ea4ff1307ab83aed688'
+         '3c94f19504b7e33daa6e59c1b55fd4c6'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '670931649c60fcb3ef2e0119ed532bd4'
