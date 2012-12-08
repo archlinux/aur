@@ -14,10 +14,10 @@ source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zi
         factor.desktop
         factor.svg
         fuel-factor-vm.patch)
-md5sums=('4122978b522a95a2b2348f5915b0cf07'
-         '59242ddb19a9be927915e489e2bfca27'
-         'a6c664f3837713a8e558e4740d78db90'
-         '9d297a5b9dd60ec51d91068e82939474')
+sha512sums=('eb326168e178dc2751851e9285ed5ee7f8cc1d20e40fb5eb9c20b813db60e4ee29fba1b2f171ea9a1fe240b2dc36261eeb9d76dd014910f0e47a6e08262c02bc'
+            '19cf98d0fce2f1f65db4d3416c9577aa5e1f9c5829fab8f722756d37d4683caf3c740669ba895660a66177b6b38e3c7a30153ca70a515e91a455b83c4a55a026'
+            '4065a22cd10873f74024655aa71aafa2b96c0e391f61a5e71f5f4fac9b49955428528c2666da5e6e5058aa28347b0f9327575f2467baf9e3914739b8fa0b2c26'
+            '72dcec007db4737572bc0fe5ba10d28097cd117092a6df5ef80ce054e17b05d07ed4ec47c09f4324921393c9ccb31d49acfe6244b266abbd8033cd166275ca09')
 
 build() {
     # thanks to qx from #concatenative for the proper SSE settings:
@@ -34,7 +34,7 @@ build() {
     patch -p1 < $srcdir/fuel-factor-vm.patch
 
     # build the VM
-    make || return 1
+    make
     # bootstrap factor with the minimum supported SSE
     ./factor -i=$_bootimg -sse-version=$_sseversion
 
