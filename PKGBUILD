@@ -1,7 +1,7 @@
 # Maintainer: Leonidas <marek@xivilization.net>
 pkgname=factor
 pkgver=0.95
-pkgrel=2
+pkgrel=3
 pkgdesc="Factor is a general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
 url="http://factorcode.org"
@@ -12,11 +12,11 @@ depends=(pango cairo glib2 freetype2 mesa libgl gtkglext)
 options=(!strip)
 source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zip
         factor.desktop
-        factor.png
+        factor.svg
         fuel-factor-vm.patch)
 md5sums=('4122978b522a95a2b2348f5915b0cf07'
          '59242ddb19a9be927915e489e2bfca27'
-         '74512251d922434c3a973f06800d6181'
+         'a6c664f3837713a8e558e4740d78db90'
          '9d297a5b9dd60ec51d91068e82939474')
 
 build() {
@@ -61,5 +61,5 @@ build() {
 
     # add the desktop entry
     install -D "$srcdir/factor.desktop" "$pkgdir/usr/share/applications/factor.desktop"
-    install -D "$srcdir/factor.png" "$pkgdir/usr/share/pixmaps/factor.png"
+    install -D "$srcdir/factor.svg" "$pkgdir/usr/share/pixmaps/factor.svg"
 }

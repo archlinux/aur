@@ -1,7 +1,7 @@
 pkgbase = factor
 	pkgdesc = Factor is a general purpose, dynamically typed, stack-based programming language.
 	pkgver = 0.95
-	pkgrel = 2
+	pkgrel = 3
 	url = http://factorcode.org
 	arch = i686
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = factor
 	options = !strip
 	source = http://downloads.factorcode.org/releases/0.95/factor-src-0.95.zip
 	source = factor.desktop
-	source = factor.png
+	source = factor.svg
 	source = fuel-factor-vm.patch
 	md5sums = 4122978b522a95a2b2348f5915b0cf07
 	md5sums = 59242ddb19a9be927915e489e2bfca27
-	md5sums = 74512251d922434c3a973f06800d6181
+	md5sums = a6c664f3837713a8e558e4740d78db90
 	md5sums = 9d297a5b9dd60ec51d91068e82939474
 
 pkgname = factor
