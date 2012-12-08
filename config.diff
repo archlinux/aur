@@ -1,0 +1,78 @@
+--- a/etc/zabbix/zabbix_agent.conf
++++ b/etc/zabbix/zabbix_agent.conf
+@@ -38,7 +38,7 @@
+ # Include=
+ 
+ # Include=/usr/local/etc/zabbix_agent.userparams.conf
+-# Include=/usr/local/etc/zabbix_agent.conf.d/
++Include=/etc/zabbix/zabbix_agent.conf.d/
+ 
+ ####### USER-DEFINED MONITORED PARAMETERS #######
+ 
+--- a/etc/zabbix/zabbix_agentd.conf
++++ b/etc/zabbix/zabbix_agentd.conf
+@@ -8,7 +8,7 @@
+ #
+ # Mandatory: no
+ # Default:
+-# PidFile=/tmp/zabbix_agentd.pid
++PidFile=/var/run/zabbix/zabbix_agentd.pid
+ 
+ ### Option: LogFile
+ #	Name of log file.
+@@ -18,7 +18,7 @@
+ # Default:
+ # LogFile=
+ 
+-LogFile=/tmp/zabbix_agentd.log
++LogFile=/var/log/zabbix/zabbix_agentd.log
+ 
+ ### Option: LogFileSize
+ #	Maximum size of log file in MB.
+@@ -213,7 +213,7 @@
+ # Include=
+ 
+ # Include=/usr/local/etc/zabbix_agentd.userparams.conf
+-# Include=/usr/local/etc/zabbix_agentd.conf.d/
++Include=/etc/zabbix/zabbix_agentd.conf.d/
+ 
+ ####### USER-DEFINED MONITORED PARAMETERS #######
+ 
+--- a/etc/zabbix/zabbix_server.conf
++++ b/etc/zabbix/zabbix_server.conf
+@@ -36,7 +36,7 @@
+ # Default:
+ # LogFile=
+ 
+-LogFile=/tmp/zabbix_server.log
++LogFile=/var/log/zabbix/zabbix_server.log
+ 
+ ### Option: LogFileSize
+ #	Maximum size of log file in MB.
+@@ -65,7 +65,7 @@
+ #
+ # Mandatory: no
+ # Default:
+-# PidFile=/tmp/zabbix_server.pid
++PidFile=/var/run/zabbix/zabbix_server.pid
+ 
+ ### Option: DBHost
+ #	Database host name.
+@@ -115,7 +115,7 @@
+ #
+ # Mandatory: no
+ # Default:
+-# DBSocket=/tmp/mysql.sock
++DBSocket=/var/run/mysqld/mysql.sock
+ 
+ ### Option: DBPort
+ #	Database port when not using local socket. Ignored for SQLite.
+@@ -448,7 +448,7 @@
+ # Include=
+ 
+ # Include=/usr/local/etc/zabbix_server.general.conf
+-# Include=/usr/local/etc/zabbix_server.conf.d/
++Include=/etc/zabbix/zabbix_server.conf.d/
+ 
+ ### Option: StartProxyPollers
+ #	Number of pre-forked instances of pollers for passive proxies.
