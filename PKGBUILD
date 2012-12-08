@@ -37,12 +37,15 @@ build() {
     make
     # bootstrap factor with the minimum supported SSE
     ./factor -i=$_bootimg -sse-version=$_sseversion
+}
 
+package() {
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/lib/factor
     mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 
     # copy over the stdlib
+    cd $srcdir/$pkgname
     cp -a misc extra core basis factor.image $pkgdir/usr/lib/factor/
     # make folders r+x and files r
     chmod -R 0755 $pkgdir/usr/lib/factor
