@@ -2,7 +2,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=ewebkit-svn
-pkgver=136922
+pkgver=137029
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
@@ -53,10 +53,10 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install license files
-  install -Dm644 "$srcdir/$_svnmod-build/Source/WebCore/LICENCE-APPLE" \
+  install -Dm644 "$srcdir/$_svnmod-build/Source/WebCore/LICENSE-APPLE" \
 	"$pkgdir/usr/share/licenses/$pkgname/LICENSE-APPLE"
 
-  install -Dm644 "$srcdir/$_svnmod-build/Source/WebCore/LICENCE-LGPL-2" \
+  install -Dm644 "$srcdir/$_svnmod-build/Source/WebCore/LICENSE-LGPL-2" \
 	"$pkgdir/usr/share/licenses/$pkgname/LICENSE-LGPL-2"
 
   rm -r "$srcdir/$_svnmod-build"
