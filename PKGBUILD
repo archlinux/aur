@@ -1,4 +1,5 @@
-# Maintainer: kevku <kevku@gmx.com>
+# Maintainer:
+# Contributor: kevku <kevku@gmx.com>
 
 pkgname=xsd
 pkgver=3.3.0
