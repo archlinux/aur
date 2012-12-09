@@ -1,7 +1,7 @@
 pkgbase = morituri-svn
 	pkgdesc = a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy
 	pkgver = 545
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thomas.apestaart.org/morituri/trac/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = morituri-svn
 	depends = cdrdao
 	depends = gstreamer0.10
 	depends = gstreamer0.10-python
-	depends = python-musicbrainz2
+	depends = python2-musicbrainz2
 	depends = python2-pycdio
 	conflicts = morituri
 

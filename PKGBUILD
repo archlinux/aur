@@ -2,13 +2,13 @@
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri-svn
 pkgver=545
-pkgrel=1
+pkgrel=2
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
 url="https://thomas.apestaart.org/morituri/trac/"
 license=("GPL3")
 depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
-	"python-musicbrainz2" "python2-pycdio")
+	"python2-musicbrainz2" "python2-pycdio")
 conflicts=("morituri")
 
 _svntrunk=http://thomas.apestaart.org/morituri/svn/trunk/
