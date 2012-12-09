@@ -1,0 +1,12 @@
+pkgbase = trac-xmlrpc-svn
+	pkgdesc = Remote Procedure Call plugin for Trac
+	pkgver = 12168
+	pkgrel = 1
+	url = http://trac-hacks.org/wiki/XmlRpcPlugin
+	arch = any
+	license = BSD
+	makedepends = subversion
+	depends = trac
+
+pkgname = trac-xmlrpc-svn
+
