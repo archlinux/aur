@@ -1,7 +1,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=openocd-git-libftdi
-pkgver=20120331
+pkgver=20121019
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices -using libftdi instead of ftd2xx"
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ build() {
 	--enable-stlink \
 	--enable-arm-jtag-ew \
 	--enable-buspirate \
-	--enable-usb_flaster_libftdi \
+	--enable-usb_blaster_libftdi \
 	--enable-osbdm
 
   make
