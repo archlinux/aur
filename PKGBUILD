@@ -7,13 +7,7 @@ arch=(any)
 url="http://pypi.python.org/pypi/pynmea/0.6.0"
 license=('MIT')
 depends=('python2')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!emptydirs)
-install=
 source=("http://pypi.python.org/packages/source/p/pynmea/pynmea-${pkgver}.tar.gz")
 md5sums=('69bfc63f475bdeb34bf8aa0745236672')
 
