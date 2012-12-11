@@ -1,7 +1,7 @@
 pkgname=otrs
-pkgver=3.1.10
-itsmver=3.1.6
-pkgrel=2
+pkgver=3.1.12
+itsmver=3.1.7
+pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
 options=("emptydirs")
@@ -35,7 +35,6 @@ backup=("etc/httpd/conf/extra/${pkgname}.conf")
 install="${pkgname}.install"
 source=("${pkgname}.conf"
         "${pkgname}.install"
-        "${pkgname}.diff"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz"
         "http://ftp.otrs.org/pub/otrs/itsm/packages31/ITSMCore-${itsmver}.opm"
         "http://ftp.otrs.org/pub/otrs/itsm/packages31/GeneralCatalog-${itsmver}.opm"
@@ -44,56 +43,50 @@ source=("${pkgname}.conf"
         "http://ftp.otrs.org/pub/otrs/itsm/packages31/ITSMIncidentProblemManagement-${itsmver}.opm"
         "http://ftp.otrs.org/pub/otrs/itsm/packages31/ITSMServiceLevelManagement-${itsmver}.opm"
         "http://ftp.otrs.org/pub/otrs/itsm/packages31/ImportExport-${itsmver}.opm")
-_HTMLPATH="srv/http/${pkgname}"
+_OPMFILES=("ITSMCore-${itsmver}.opm"
+           "GeneralCatalog-${itsmver}.opm"
+           "ITSMChangeManagement-${itsmver}.opm"
+           "ITSMConfigurationManagement-${itsmver}.opm"
+           "ITSMIncidentProblemManagement-${itsmver}.opm"
+           "ITSMServiceLevelManagement-${itsmver}.opm"
+           "ImportExport-${itsmver}.opm")
+_HTMLPATH="${pkgdir}/srv/http/${pkgname}"
+_EXTDIR="${_HTMLPATH}/extentions"
 
 package() {
-  mkdir -p "${pkgdir}/${_HTMLPATH}/"
-  cp -r ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/${_HTMLPATH}/
-  cp ${pkgname}.diff ${pkgdir}/${_HTMLPATH}/
-  cd "${pkgdir}/${_HTMLPATH}/"
-  cat "${pkgname}.diff" | patch -p1
-  rm "${pkgname}.diff"
-  cd "${pkgdir}/.."
-  _EXTDIR="${pkgdir}/${_HTMLPATH}/extentions"
-  mkdir -p "${_EXTDIR}"
-  install -D -m 0640 "${srcdir}/ITSMCore-${itsmver}.opm" \
-                     "${_EXTDIR}/ITSMCore-${itsmver}.opm"
-  install -D -m 0640 "${srcdir}/GeneralCatalog-${itsmver}.opm" \
-                     "${_EXTDIR}/GeneralCatalog-${itsmver}.opm"
-  install -D -m 0640 "${srcdir}/ITSMChangeManagement-${itsmver}.opm" \
-                     "${_EXTDIR}/ITSMChangeManagement-${itsmver}.opm"
-  install -D -m 0640 "${srcdir}/ITSMConfigurationManagement-${itsmver}.opm" \
-                     "${_EXTDIR}/ITSMConfigurationManagement-${itsmver}.opm"
-  install -D -m 0640 "${srcdir}/ITSMIncidentProblemManagement-${itsmver}.opm" \
-                     "${_EXTDIR}/ITSMIncidentProblemManagement-${itsmver}.opm"
-  install -D -m 0640 "${srcdir}/ITSMServiceLevelManagement-${itsmver}.opm" \
-                     "${_EXTDIR}/ITSMServiceLevelManagement-${itsmver}.opm"
-  install -D -m 0640 "${srcdir}/ImportExport-${itsmver}.opm" \
-                     "${_EXTDIR}/ImportExport-${itsmver}.opm"
-  install -D -m 0640 "${srcdir}/${pkgname}.conf" \
-                     "${pkgdir}/etc/httpd/conf/extra/${pkgname}.conf"
-  chown -R 33:33 "${pkgdir}/${_HTMLPATH}/"
-  chmod -R u=rwX,g=r,o=r "${pkgdir}/${_HTMLPATH}/"
+  mkdir -p "${_HTMLPATH}/"
+  mkdir -p "${_EXTDIR}/"
+
+  cp -r ${srcdir}/${pkgname}-${pkgver}/* ${_HTMLPATH}/
+
+  for _OPMFILE in ${_OPMFILES[@]}; do
+    install -D -m 0640 "${srcdir}/${_OPMFILE}" "${_EXTDIR}/${_OPMFILE}"
+  done
+
+  install -D -m 0640 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/httpd/conf/extra/${pkgname}.conf"
+
+  chown -R 33:33 "${_HTMLPATH}/"
+  chmod -R u=rwX,g=r,o=r "${_HTMLPATH}/"
+
+  sed -i "s/\/opt\/otrs/\/srv\/http\/otrs/g" $(grep -rl "/opt/otrs" "${_HTMLPATH}/")
 }
 md5sums=('ebfeabfba189816c4b10861289406840'
          'f0ae9b90828825382720f4422aa9c81d'
-         'f62b83ca1537bb4cefce675fec6011eb'
-         'fdadbc1c8e7a4d62d7e3afbc3c712702'
-         '56ca1566b21aca220b8c404fdcf8f7cb'
-         '8d69c34e3639764f56b76378fb1a7b1f'
-         'a0b5c0086dbdff853883041cae8c8629'
-         '6a4214dad1ed9ec0eb3e908be46f64a8'
-         'a03c0af712d8dabd1c15f209d3a220b7'
-         'c86ccfd1d3de1e1c385accb3cc790262'
-         'fd913c540e0fd2f689ad99b4add07bf2')
+         'db2aa63f73086abb86efa2ee13033c9f'
+         '3d25d053215eda581477635d9e56f8bf'
+         '94cd42ca848075e26161fb6d71402bb5'
+         '5ac80e89c009fb4145ce2edc11ee2676'
+         'c49c648c9cbbc7c0e1469ea52003d75e'
+         '1f2399129287ff2c0a2d7616a5d93882'
+         'cf8b6e657f87ef15abe286bda44b7bb2'
+         '4bfa4c0028e37d3a22b211ee10e44ae9')
 sha1sums=('247719410cfd3b7a89843f2a7ae6820507f2b22d'
           '69bc6abcdcb3df6e67181dc0644d0088007c6d78'
-          '17036d224c1ad42348970236a39e666254dc932b'
-          '91fa603052977ffc63948aeb33c22398645ca35b'
-          '84e49f7dbae79f50acdc7f2aefa7f7e7a92da480'
-          '6ef5c495dc5da33ca6768a2c3771bc41d76e3556'
-          'e11a82665515ba82ed220c5b8ed5e56cc201b953'
-          '3fae708ec3b6fb08a2793d50ef2c65443573132d'
-          '5ec817724ba07af4e9c31368a122ed50946b0664'
-          '2a5c5e557d82b20def1e8163aad46a9cbbbe347f'
-          'd54d6e5f3f2e58d559f596f9f8ff7be7e4301840')
+          '216ebbe832e3b3f8d329bf6739e78fb5786b0123'
+          '9cb5284b0604d5140513c3e6be99c8289ec35a82'
+          'e0cc2cae78b6eb0337f22db3ea3fa22e13922fdd'
+          'ef10729dd6cd10b38f1bcb14c52c999d219c5f01'
+          'e284cb52c5a58f46aa684540a69a47aa31d1e3ae'
+          'd6ed9750d0a3d83616ef2ed7cbb6de5f5905634d'
+          'c9b7bcf4bbefdacac96bfd24ed5506029020b381'
+          '8265089736d78292672fd20fb7c32b81be1bf431')
