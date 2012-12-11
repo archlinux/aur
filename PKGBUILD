@@ -1,7 +1,7 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
 pkgname=libtrace
-pkgver=3.0.14
+pkgver=3.0.15
 pkgrel=1
 pkgdesc="libtrace is a library for trace processing"
 arch=(i686 x86_64)
@@ -20,3 +20,4 @@ build() {
 }
 
 md5sums=('277125db3f976e03b1b774b5607c890e')
+md5sums=('9bc158307419c36aa2c98f2f030427f1')
