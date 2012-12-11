@@ -1,7 +1,8 @@
-# Contributor: Massimiliano Torromeo <Massimiliano DOT Torromeo AT gmail DOT com>
+# Maintainer: Massimiliano Torromeo <Massimiliano DOT Torromeo AT gmail DOT com>
+
 pkgname=trojita-git
 _pkgname=trojita
-pkgver=20111215
+pkgver=20121211
 pkgrel=1
 pkgdesc="A QT IMAP email client"
 arch=(i686 x86_64)
@@ -10,7 +11,7 @@ license=('GPL')
 depends=('qt')
 makedepends=('git' 'cmake')
 
-_gitroot="git://gitorious.org/${_pkgname}/${_pkgname}.git"
+_gitroot="git://anongit.kde.org/trojita.git"
 _gitname=$_pkgname
 
 build() {
