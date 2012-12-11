@@ -6,7 +6,7 @@ __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20121116
+pkgver=20121211
 pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
@@ -23,9 +23,13 @@ conflicts=("${_pkgname}")
 
 options=('!strip' 'docs' '!libtool' 'emptydirs' 'zipman' '!purge' '!makeflags')
 
-source=('syslinux-efi-fix-makefiles.patch')
+source=('syslinux-efi-search-PATH-EFI-syslinux.patch'
+        'syslinux-efi-allow-handover-protocol.patch'
+        'syslinux.cfg')
 
-sha1sums=('e81380a09e9522fe83de506ca6ab1c6f9af4389a')
+sha1sums=('b02f07dbcf77dd998c94d1a202e082a07f35bd3d'
+          '5252feb1c2d82cc959ac20207b34224477c3eb75'
+          '7477f166ae0ed26c69f03d95c13078e146b90fe1')
 
 _gitroot="git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
 _gitname="${__pkgname}"
@@ -76,8 +80,12 @@ build() {
 	unset CXXFLAGS
 	unset LDFLAGS
 	
-	## Fix UEFI related Makefiles
-	patch -Np1 -i "${srcdir}/syslinux-efi-fix-makefiles.patch" || true
+	## Add /EFI/syslinux to the list of search PATHs
+	patch -Np1 -i "${srcdir}/syslinux-efi-search-PATH-EFI-syslinux.patch" || true
+	echo
+	
+	## Fix EFI Handover Protocol
+	patch -Np1 -i "${srcdir}/syslinux-efi-allow-handover-protocol.patch" || true
 	echo
 	
 	mkdir -p "${srcdir}/${_gitname}_build/BUILD/"
@@ -107,5 +115,7 @@ package() {
 	
 	make O="${PWD}/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install
 	echo
+	
+	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/syslinux/syslinux.cfg"
 	
 }

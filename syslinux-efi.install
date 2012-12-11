@@ -1,5 +1,9 @@
 post_install() {
-  echo "syslinux-efi has been installed at /usr/lib/syslinux/{efi64,efi32}/"
+    echo
+    echo "syslinux-efi has been installed at /usr/lib/syslinux/{efi64,efi32}/"
+    echo
+    echo "An example config file has been installed at /usr/lib/syslinux/syslinux.cfg"
+    echo
 }
 
 post_upgrade() {

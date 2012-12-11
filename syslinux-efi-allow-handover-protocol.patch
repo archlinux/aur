@@ -1,0 +1,13 @@
+diff --git a/efi/main.c b/efi/main.c
+index 754cbc5..df432d7 100644
+--- a/efi/main.c
++++ b/efi/main.c
+@@ -759,7 +759,7 @@ int efi_boot_linux(void *kernel_buf, size_t kernel_size,
+ 		printf("bzImage version 0x%x unsupported\n", hdr->version);
+ 		goto bail;
+ 	}
+-	if (hdr->version >= 0x20b) {
++	if (hdr->version < 0x20b) {
+ 		printf("bzImage version 0x%x handover protocol unimplemented \n", hdr->version);
+ 		goto bail;
+ 	}

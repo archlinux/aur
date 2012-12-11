@@ -1,0 +1,36 @@
+diff --git a/core/elflink/load_env32.c b/core/elflink/load_env32.c
+index 1fa43bd..ad4de96 100644
+--- a/core/elflink/load_env32.c
++++ b/core/elflink/load_env32.c
+@@ -112,6 +112,7 @@ void load_env32(com32sys_t * regs __unused)
+ 		"/isolinux",
+ 		"/boot/syslinux",
+ 		"/syslinux",
++		"/EFI/syslinux",
+ 		"/",
+ 		NULL
+ 	};
+diff --git a/core/fs/iso9660/iso9660.c b/core/fs/iso9660/iso9660.c
+index fe58a5b..2467bec 100644
+--- a/core/fs/iso9660/iso9660.c
++++ b/core/fs/iso9660/iso9660.c
+@@ -234,6 +234,7 @@ static int iso_open_config(struct com32_filedata *filedata)
+ 	"/isolinux",
+ 	"/boot/syslinux", 
+ 	"/syslinux", 
++	"/EFI/syslinux",
+ 	"/",
+ 	NULL
+     };
+diff --git a/core/fs/lib/loadconfig.c b/core/fs/lib/loadconfig.c
+index 95e6f3f..1af887f 100644
+--- a/core/fs/lib/loadconfig.c
++++ b/core/fs/lib/loadconfig.c
+@@ -17,6 +17,7 @@ int generic_open_config(struct com32_filedata *filedata)
+ 	NULL,			/* CurrentDirName */
+ 	"/boot/syslinux",
+ 	"/syslinux",
++	"/EFI/syslinux",
+ 	"/",
+ 	NULL
+     };
