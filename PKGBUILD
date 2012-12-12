@@ -16,22 +16,19 @@ replaces=('rtsadmin')
 backup=()
 options=()
 install=
-source=($pkgname-$pkgver.tar.gz::https://github.com/agrover/$pkgname/tarball/v$pkgver
+source=($pkgname-$pkgver.tar.gz::https://github.com/agrover/$pkgname/archive/v$pkgver.tar.gz
 target)
-md5sums=('0284ced8b5ab0d77cdcd2c23a0fa8bca'
+md5sums=('e5c4b4896916b072f962d0936f2f6406'
          'f23bd6d5d4021c29b4519e40b3b9e042')
 
-_githubname=agrover-targetcli-fb
-_gitversion=a449e65
-
 build() {
-  cd "$srcdir/$_githubname-$_gitversion"
+  cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py build
   gzip --stdout targetcli.8 > "targetcli.8.gz"
 }
 
 package() {
-  cd "$srcdir/$_githubname-$_gitversion"
+  cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --skip-build --root="$pkgdir/" --optimize=1
 
   install -D -m 644 targetcli.8.gz "$pkgdir/usr/share/man/man8/targetcli.8.gz"
