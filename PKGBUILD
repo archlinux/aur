@@ -27,7 +27,7 @@ depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(kernel26 linux)
 conflicts=(kernel26 linux grub grub-legacy)
 replaces=(kernel26 linux)
-backup=(etc/mkinitcpio.d/${pkgname}.preset /boot/grub/menu.lst)
+backup=(etc/mkinitcpio.d/${pkgname}.preset boot/grub/menu.lst)
 install=${pkgname}.install
 
 build() {
