@@ -1,3 +1,16 @@
+2012-12-13 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 2.4.4-1 :
+	Version bump.
+
+	Upstream changelog:
+  - Mipmapping support to improve the look of higher resolution textures.
+  - Custom compass needle texture.
+  - Support for weights in Random Mobs properties files.
+  - Fixed CTM method=repeat for rotated logs.
+  - Fixed Watch tile size patch conflict with Forge.
+  - Improved logging system.
+
 2012-11-15 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 2.4.3_04-1 :
