@@ -1,20 +1,13 @@
 #!/bin/bash
 
-timedate1() {
-    gdbus call \
-        --system \
-        --object-path /org/freedesktop/timedate1 \
-        --dest org.freedesktop.timedate1 \
-        --method org.freedesktop.timedate1.SetNTP "$@"
-}
 
 if [ -e /sys/fs/cgroup/systemd ]; then
         case "$2" in
                 up)
-                        timedate1 true false
+                              systemctl start ntpd.service
                 ;;
                 down)
-                        timedate1 false false
+                              systemctl stop ntpd.service
                 ;;
         esac
 else
