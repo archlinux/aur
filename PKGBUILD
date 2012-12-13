@@ -1,8 +1,8 @@
 pkgname=linux-linode
-_basekernel=3.6
+_basekernel=3.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.9
+pkgver=${_basekernel}.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -10,24 +10,17 @@ license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
-	'config'
+#        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        'config'
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
-        "module-symbol-waiting-3.6.patch"
-        "module-init-wait-3.6.patch"
-        "irq_cfg_pointer-3.6.6.patch"
         'change-default-console-loglevel.patch')
-md5sums=('1a1760420eac802c541a20ab51a093d1'
-         'a7c656034599f90dcbc50895b69022aa'
+md5sums=('21223369d682bcf44bcdfe1521095983'
          '08617a20226d3ea4ff1307ab83aed688'
-         '3c94f19504b7e33daa6e59c1b55fd4c6'
+         'f4e8917cc2223741e6fc13c61a6186a7'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
-         '670931649c60fcb3ef2e0119ed532bd4'
-         '8a71abc4224f575008f974a099b5cf6f'
-         '4909a0271af4e5f373136b382826717f'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -39,11 +32,8 @@ install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${_srcname}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+#  patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-  patch -Np1 -i "${srcdir}/module-symbol-waiting-3.6.patch"
-  patch -Np1 -i "${srcdir}/module-init-wait-3.6.patch"
-  patch -Np1 -i "${srcdir}/irq_cfg_pointer-3.6.6.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
