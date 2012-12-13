@@ -1,3 +1,12 @@
+2012-11-15 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 2.4.3_04-1 :
+	Version bump.
+
+	Upstream changelog:
+  - 1.4.4 compatibility.
+  - Added connect=material.
+
 2012-11-04 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 2.4.3_03-1 :
