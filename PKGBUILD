@@ -1,13 +1,13 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=sqlantaresia-git
-pkgver=20120402
+pkgver=20121213
 pkgrel=1
 pkgdesc="SQL Antaresia is a MySQL administrative tool aimed at developers and sysadmins"
 arch=(any)
 url="https://github.com/mtorromeo/sqlantaresia"
 license=('MIT')
-depends=('python2-qt' 'python2-setproctitle' 'mysql-python' 'python2-dbutils' 'python2-qscintilla')
+depends=('python2-pyqt' 'python2-setproctitle' 'mysql-python' 'python2-dbutils' 'python2-qscintilla')
 makedepends=('python2-distribute' 'git')
 optdepends=('python-paramiko: for automatic ssh tunnelling' 'pycrypto: for automatic ssh tunnelling')
 source=(sqlantaresia.desktop)
