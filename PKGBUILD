@@ -1,29 +1,19 @@
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=youtube-dl
-pkgver=2012.11.29
+pkgver=2012.12.11
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="http://rg3.github.com/youtube-dl/"
 license=('custom')
-depends=('python2')
-makedepends=('unzip' 'zip')
-source=(${pkgname}-${pkgver}::https://github.com/rg3/${pkgname}/raw/${pkgver}/${pkgname})
-sha1sums=('f6f415d688aa2cf3a831709694904b8a83d4c1c0')
-
-build() {
-  cd "${srcdir}"
-# Ignoring non-zero exit status of unzip as extraction is successful
-  unzip -q ${pkgname}-${pkgver} || :
-  zip -q youtube-dl *.py
-  echo '#!/usr/bin/env python2' > youtube-dl
-  cat youtube-dl.zip >> youtube-dl
-}
+depends=('python')
+source=(${pkgname}-${pkgver}::https://github.com/downloads/rg3/youtube-dl/youtube-dl)
+sha1sums=('aa45f8e32c637a2342674f32d1ca9e8f70bf695c')
 
 package() {
   cd "${srcdir}"
-  install -D -m755 youtube-dl "${pkgdir}/usr/bin/youtube-dl"
+  install -D -m755 ${pkgname}-${pkgver} "${pkgdir}/usr/bin/youtube-dl"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  grep -i license __init__.py > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  echo "Public Domain" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
