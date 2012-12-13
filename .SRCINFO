@@ -1,7 +1,7 @@
 pkgbase = linux-linode
 	pkgdesc = Kernel for Arch Linux on Linode
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yardenac/linux-linode
 	install = linux-linode.install
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = linux-linode
 	replaces = linux
 	options = !strip
 	backup = etc/mkinitcpio.d/linux-linode.preset
+	backup = /boot/grub/menu.lst
 	source = http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.7.tar.xz
 	source = config
 	source = config.x86_64

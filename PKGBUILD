@@ -3,7 +3,7 @@ _basekernel=3.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
 pkgver=${_basekernel}.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
@@ -27,7 +27,7 @@ depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(kernel26 linux)
 conflicts=(kernel26 linux grub grub-legacy)
 replaces=(kernel26 linux)
-backup=(etc/mkinitcpio.d/${pkgname}.preset)
+backup=(etc/mkinitcpio.d/${pkgname}.preset /boot/grub/menu.lst)
 install=${pkgname}.install
 
 build() {
