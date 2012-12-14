@@ -1,0 +1,13 @@
+pkgbase = ipython-mathjax
+	pkgdesc = mathjax files for usage in the ipython notebook
+	pkgver = 1
+	pkgrel = 1
+	url = http://ipython.org/ipython-doc/stable/install/install.html#mathjax
+	arch = any
+	license = WTFPL
+	depends = mathjax
+	optdepends = ipython: for use with ipython
+	optdepends = ipython2: for use with ipython2
+
+pkgname = ipython-mathjax
+
