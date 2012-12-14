@@ -1,18 +1,18 @@
-# $Id: PKGBUILD 171268 2012-11-16 23:35:53Z ibiru $
+# $Id$
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.4
-pkgrel=4
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt' 'libproxy'
-         'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska'
+         'sdl_image' 'libdvdnav' 'libtiger' 'lua51' 'libmatroska'
          'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
          'libshout' 'libmad' 'libmpeg2' 'libmodplug' 'libass'
          'xcb-util-keysyms')
@@ -21,7 +21,7 @@ makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'libcaca' 'librsvg' 'portaudio' 'oss' 'libgme' 'xosd'
              'projectm' 'twolame' 'aalib' 'libmtp' 'libdvdcss'
              'gnome-vfs' 'libgoom2' 'libtar' 'vcdimager' 'opus' 'libssh2'
-             'decklink-sdk')
+             'mesa' 'decklink-sdk')
 optdepends=('avahi: for service discovery using bonjour protocol'
             'libnotify: for notification plugin'
             'ncurses: for ncurses interface support'
@@ -63,7 +63,7 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!libtool' '!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('f36dab8f126922c56b372388b7fade47')
+md5sums=('4f959c0766ada8cea5a72c65fce94ebe')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -92,7 +92,8 @@ build() {
               --enable-opus \
               --enable-sftp \
               --enable-decklink \
-              --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk"
+              --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk" \
+              LUAC=luac5.1
 
   make
 }
