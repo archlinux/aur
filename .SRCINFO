@@ -1,6 +1,6 @@
 pkgbase = efibootmgr-git
 	pkgdesc = Tool to modify UEFI Firmware Boot Manager Variables. Needs the kernel module 'efivars'.
-	pkgver = 20120530
+	pkgver = 20121215
 	pkgrel = 1
 	url = http://linux.dell.com/efibootmgr/
 	arch = i686
@@ -16,8 +16,6 @@ pkgbase = efibootmgr-git
 	options = zipman
 	options = !emptydirs
 	options = !libtool
-	source = efibootmgr_default_to_rEFInd.patch
-	sha256sums = 78a5a93e581c329805684c13037d0f00486554e9d0e1837882399a12e11c8d3d
 
 pkgname = efibootmgr-git
 

@@ -4,7 +4,7 @@
 _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 
-pkgver=20120530
+pkgver=20121215
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables. Needs the kernel module 'efivars'."
 arch=('i686' 'x86_64')
@@ -15,9 +15,6 @@ depends=('pciutils')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 options=(strip purge docs zipman !emptydirs !libtool)
-
-source=('efibootmgr_default_to_rEFInd.patch')
-sha256sums=('78a5a93e581c329805684c13037d0f00486554e9d0e1837882399a12e11c8d3d')
 
 _gitroot="http://linux.dell.com/git/${_pkgname}.git"
 _gitname="${_pkgname}"
@@ -56,10 +53,7 @@ build() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	patch -Np1 -i "${srcdir}/efibootmgr_default_to_rEFInd.patch"
-	echo
-	
-	CFLAGS="" make
+	make
 	echo
 	
 }
