@@ -5,13 +5,12 @@
 
 pkgname=mosh
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
-url="http://mosh.mit.edu/"
+url='http://mosh.mit.edu/'
 license=('GPL3')
-depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty')
-#optdepends=('libutempter: record of session in {u,t}wmp (recompile mosh afterwards)')
+depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
 source=("https://github.com/downloads/keithw/mosh/$pkgname-$pkgver.tar.gz")
 sha256sums=('93f09fda77e57f05485a61f3ac679bf9f3f359a9b0b93c216ddd53cd124a768f')
 options=('!emptydirs')
