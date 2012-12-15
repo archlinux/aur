@@ -1,17 +1,17 @@
 #!/bin/sh
 
+PIDFILE=/var/run/swapspace.pid
+PID=$(cat $PIDFILE 2> /dev/null)
+
 start() {
     SWAPSPACE_ARGS="-q -d -p /var/run/swapspace.pid"
-    PIDFILE=/var/run/swapspace.pid
-    PID=$(cat $PIDFILE 2> /dev/null)
+    [ -r /etc/conf.d/swapspace ] && . /etc/conf.d/swapspace
 
     if ! readlink -q /proc/$PID/exe | grep -q \^/usr/sbin/swapspace; then
-        PID=
+        unset PID
         rm -f $PIDFILE
     fi
 
-    [ -r /etc/conf.d/swapspace ] && . /etc/conf.d/swapspace
-    PID=$(get_pid swapspace)
     [[ -z $PID ]] && /usr/sbin/swapspace $SWAPSPACE_ARGS
 }
 
