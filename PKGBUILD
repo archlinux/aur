@@ -7,8 +7,8 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=R15B03
-pkgrel=2
+pkgver=R15B03_1
+pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org'
@@ -20,13 +20,13 @@ makedepends=('perl' 'lksctp-tools')
 optdepends=('unixodbc: for database support'
             'java-environment: for Java support'
             'lksctp-tools: for SCTP support')
-source=("http://www.erlang.org/download/otp_src_$pkgver.tar.gz"
-        "http://www.erlang.org/download/otp_doc_man_$pkgver.tar.gz")
-sha256sums=('d1ee5dd3833537ad7533f2deaf164936508c55c992c2b930f0c4c4559d40aa12'
-            '0a5a01f8c6050551c1ba0591de42731a6640370e7527fae81cdfe3d3d6af0a6b')
+source=("http://www.erlang.org/download/otp_src_${pkgver/_/-}.tar.gz"
+        "http://www.erlang.org/download/otp_doc_man_${pkgver/_/-}.tar.gz")
+sha256sums=('4bccac86dd76aec050252e44276a0283a0df9218e6470cf042a9b9f9dfc9476c'
+            '07980d8014c7cf8194b7078c137353f5083992add4663ced3dcba2ff91f228d8')
 
 build() {
-  cd "$srcdir/otp_src_$pkgver"
+  cd "$srcdir/otp_src_${pkgver/_1/}"
 
   msg2 'Configuring...'
   ./configure --prefix=/usr --enable-smp-support
@@ -35,13 +35,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/otp_src_$pkgver"
+  cd "$srcdir/otp_src_${pkgver/_1/}"
 
   make DESTDIR="$pkgdir" install
 
   # Install documentation
   install -d "$pkgdir/usr/share/doc/erlang"
-  install -m0644 "$srcdir/otp_src_$pkgver/README.md" \
+  install -m0644 "$srcdir/otp_src_${pkgver/_1/}/README.md" \
     "$srcdir"/{README,COPYRIGHT} \
     "$pkgdir/usr/share/doc/erlang"
 
@@ -50,7 +50,7 @@ package() {
   cp -r "$srcdir/man" "$pkgdir/usr/lib/erlang"
 
   # Install license
-  install -Dm0644 "$srcdir/otp_src_$pkgver/EPLICENCE" \
+  install -Dm0644 "$srcdir/otp_src_${pkgver/_1/}/EPLICENCE" \
     "$pkgdir/usr/share/licenses/$pkgname/EPLICENCE"
 }
 
