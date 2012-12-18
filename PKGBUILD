@@ -7,8 +7,8 @@
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
 
 pkgname=opera
-_ver=12.11
-_build=1661
+_ver=12.12
+_build=1707
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='Fast and secure web browser and Internet suite'
@@ -25,11 +25,11 @@ options=(!strip !zipman)
 if [[ $CARCH == i686 ]]; then
   _arch=i386
   source=(http://ftp.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('735299d288c4cf55bfde50e02a685f8adb365494ec2566ca776741402d9ba22b')
+  sha256sums=('7f766faa08d62be616ea43cf4bb026c8b6afb5a51fa8eae1227f16d5658779ca')
 elif [[ $CARCH == x86_64 ]]; then
   _arch=$CARCH
   source=(http://ftp.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('773584d3fad92516f1d22a83607cf08e7d7f63a3d999378fa8356bd52669cade')
+  sha256sums=('1ba428bd5acf4f17a8ef0f970fb9e1334477468abbf21612dd8c2eec5fff9129')
 fi
 
 package() {
