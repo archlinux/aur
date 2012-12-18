@@ -1,6 +1,6 @@
 pkgbase = kraft
 	pkgdesc = A program suitable for all trades or crafts
-	pkgver = 0.45
+	pkgver = 0.50
 	pkgrel = 1
 	url = http://www.volle-kraft-voraus.de/
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = kraft
 	makedepends = boost
 	depends = kdepimlibs
 	depends = ctemplate
-	depends = python-reportlab
-	depends = python-pypdf
-	source = http://downloads.sourceforge.net/kraft/kraft-0.45.tar.bz2
-	sha1sums = 0c552742fffb593f054fa86c72d37b6566d7965c
+	depends = python2-reportlab
+	depends = python2-pypdf
+	source = http://downloads.sourceforge.net/kraft/kraft-0.50.tar.bz2
+	sha256sums = 5f3e64138bfa84a09d7be4758c65272aa50151fb4b6b19e313efde0ba755eccc
 
 pkgname = kraft
 
