@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ibus-pinyin
-pkgver=1.4.99.20120808
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Pinyin (Chinese) input method for the IBus framework'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -14,7 +14,6 @@ url='http://ibus.googlecode.com'
 depends=('ibus' 'pyzy' 'lua51')
 makedepends=('intltool')
 source=("https://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('aa298212d9f63acab48cf9f6370c94cdc6920c2a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,3 +32,4 @@ package() {
 
   make NO_INDEX=true DESTDIR="${pkgdir}" install
 }
+md5sums=('f7728b5b785fae58e2b4de8dfda45612')
