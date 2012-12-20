@@ -1,17 +1,19 @@
 pkgbase = ompl
 	pkgdesc = The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms
-	pkgver = 0.11.1
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = http://ompl.kavrakilab.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = boost
 	makedepends = cmake
-	depends = boost
+	depends = boost-libs
+	depends = python
 	optdepends = py++: Python binding
 	optdepends = ode: Plan using the Open Dynamics Engine
-	source = https://bitbucket.org/ompl/ompl/downloads/ompl-0.11.1-Source.tar.gz
-	md5sums = 235ca56932ff20da0c01f8201657740a
+	source = https://bitbucket.org/ompl/ompl/downloads/ompl-0.12.1-Source.tar.gz
+	md5sums = 4e55ad95e45b99d854e70b805f1313f8
 
 pkgname = ompl
 
