@@ -6,6 +6,7 @@ pkgbase = rfsm
 	arch = any
 	license = LGPL
 	license = BSD
+	depends = bash
 	depends = lua
 	optdepends = orocos-rtt: orocos real-time toolkit support
 	source = rfsm-beta5.tar.gz::https://github.com/kmarkus/rFSM/tarball/beta5
