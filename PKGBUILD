@@ -2,7 +2,7 @@
 
 pkgname=reposurgeon
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/reposurgeon/"
@@ -17,7 +17,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -i -e '1s/python/python2/' repodiffer reposurgeon
   make repodiffer.1 repodiffer.html repopuller.1 repopuller.html \
-    reposurgeon.1 reposurgeon.html
+    reposurgeon.1 reposurgeon.html features.html
 }
 
 package() {
@@ -31,7 +31,7 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/doc/reposurgeon"
   install -m644 NEWS README repodiffer.html reposurgeon.html repopuller.html \
-    TODO "$pkgdir/usr/share/doc/reposurgeon"
+    features.html TODO "$pkgdir/usr/share/doc/reposurgeon"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/reposurgeon/COPYING"
 }
