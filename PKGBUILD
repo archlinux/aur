@@ -1,18 +1,19 @@
-# Maintainer: Massimiliano Torromeo <Massimiliano DOT Torromeo AT gmail DOT com>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=trojita-git
-_pkgname=trojita
-pkgver=20121211
+pkgver=20121220
 pkgrel=1
 pkgdesc="A QT IMAP email client"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
 depends=('qt')
+conflicts=('trojita')
+provides=('trojita')
 makedepends=('git' 'cmake')
 
 _gitroot="git://anongit.kde.org/trojita.git"
-_gitname=$_pkgname
+_gitname="trojita"
 
 build() {
 	cd "$srcdir"
@@ -32,10 +33,11 @@ build() {
 	git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
 	cd "$srcdir/$_gitname-build"
 
-	qmake
+	qmake PREFIX=/usr
 	make
+}
 
-	install -D -m755 src/Gui/trojita "$pkgdir/usr/bin/trojita"
-	install -D -m644 src/Gui/trojita.desktop "$pkgdir/usr/share/applications/trojita.desktop"
-	install -D -m644 src/icons/trojita.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/trojita.svg"
+package() {
+	cd "$srcdir/$_gitname-build"
+	make install INSTALL_ROOT="$pkgdir"
 }
