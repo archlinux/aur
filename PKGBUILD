@@ -2,23 +2,24 @@ pkgname=linux-linode
 _basekernel=3.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.0
-pkgrel=2
+pkgver=${_basekernel}.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl)
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-#        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config'
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         'c316bece16c3c09d808966c1bbd30d8c'
-         'f4e8917cc2223741e6fc13c61a6186a7'
+         '48f5f530b048e387e978e3e49de7742a'
+         'e7cacdfb2aec83541c287ef419a9f43d'
+         '5ab6a4c7b056753c72f312c581d6b275'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
@@ -32,7 +33,7 @@ install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${_srcname}"
-#  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
