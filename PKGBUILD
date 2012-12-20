@@ -11,6 +11,9 @@ depends=('bash' 'lua')
 optdepends=('orocos-rtt: orocos real-time toolkit support')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/kmarkus/rFSM/tarball/${pkgver})
 md5sums=('0e18e589623ed238e844cc60232ee0af')
+sha256sums=('af2a8c089faed2cef24b93d887f6dd947fd8ff9cade009696a5922832846ade4')
+sha384sums=('b92426299ea5d57e52b3670eb2488d684bd09ab45630e31d9830e0120548b651b64e12d04a757c8b9aec2f2cb0e07b50')
+sha512sums=('74f4ca2ef7552a9b50b267c337fca63561f3a86b31fdc823c1101dfa8ff0cad3f2ab109edee4a2eadacff32d61db28231f521681c092e444dff5e8b2c27e4ef3')
 
 build() {
   cd "${srcdir}/kmarkus-rFSM-3459bf1"
