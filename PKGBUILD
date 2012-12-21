@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20121216
+pkgver=20121221
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -29,11 +29,9 @@ conflicts=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
 provides=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
 
 source=('UDK-MdePkg-Revert-PathNodeCount.patch'
-        'refind_include_more_shell_paths.patch'
         'refind_linux.conf')
 
 sha1sums=('4d1992699f9b48dd2b7e6bd6c0b25fc065f75894'
-          'afa9ff2f982811655dcce4783e934b9abab1d4a3'
           '3d53eb615c3363d45feb95b9bfbf1d5491bf1c24')
 
 _gitroot="git://git.code.sf.net/p/refind/code"
@@ -168,9 +166,6 @@ _refind_changes() {
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build/"
-	
-	patch -Np1 -i "${srcdir}/refind_include_more_shell_paths.patch"
-	echo
 	
 }
 
