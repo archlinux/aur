@@ -3,7 +3,7 @@ _basekernel=3.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
 pkgver=${_basekernel}.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
@@ -15,13 +15,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
+        'fix-watchdog-3.7.patch'
         'change-default-console-loglevel.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
          '48f5f530b048e387e978e3e49de7742a'
-         'e7cacdfb2aec83541c287ef419a9f43d'
-         '5ab6a4c7b056753c72f312c581d6b275'
+         'decead29c19b529a6776f7774c1bd104'
+         '49166175551bb52106bff00eb7b6362a'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
+         '05825098356199a0d76bd5b337bab2e4'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -34,6 +36,7 @@ install=${pkgname}.install
 build() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -Np1 -i "${srcdir}/fix-watchdog-3.7.patch"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
