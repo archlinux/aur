@@ -5,7 +5,8 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt')
 pkgver=4.2.6.1
-pkgrel=3
+pkgrel=4
+groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
 license=('GPL')
@@ -35,11 +36,31 @@ check() {
 }
 
 package_fcitx() {
-  pkgdesc="Free Chinese Input Toy of X - Input Method Server for X window system"
+  pkgdesc="Flexible Context-aware Input Tool with eXtension"
   depends=('pango' 'libxinerama' 'gtk-update-icon-cache' 'shared-mime-info' \
            'hicolor-icon-theme' 'desktop-file-utils' 'libxkbfile' \
            'libxfixes' 'dbus-core' 'icu')
-  optdepends=('enchant: for word predication support')
+  optdepends=('enchant: for word predication support'
+  	      'fcitx-anthy: Hiragana text to Kana Kanji mixed text Japanese input method'
+	      'fcitx-chewing: Intelligent Zhuyin input method library for traditional Chinese'
+	      'fcitx-cloudpinyin: Standalone module for fcitx that uses pinyin API on the internet to provide additional input candidates'
+	      'fcitx-configtool: GTK based config tool for Fcitx'
+	      'fcitx-fbterm: Fbterm support for Fcitx'
+	      'fcitx-googlepinyin: A fork from google pinyin on android for Fcitx'
+	      'fcitx-gtk2: GTK2 IM Module for fcitx'
+	      'fcitx-gtk3: GTK3 IM Module for fcitx'
+	      'fcitx-hangul: Hangul (Korean) support for fcitx'
+	      'fcitx-libpinyin: Fcitx Wrapper for libpinyin, Library to deal with pinyin'
+	      'fcitx-m17n: Multilingual text processing library'
+	      'fcitx-mozc: Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)'
+	      'fcitx-qt: QT IM Module for fcitx'
+	      'fcitx-rime: Rime input method engine (Traditional Chinese)'
+  	      'fcitx-sunpinyin: Statistical Language Model based pinyin IME by Sun'
+	      'fcitx-table-extra: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie3, Cangjie5'
+	      'fcitx-table-other: Provides some other tables for Fcitx, fork from ibus-table-others, scim-tables'
+	      'fcitx-ui-light: Light weight xlib and xft based ui for fcitx'
+	      'fcitx-unikey: Fcitx Wrapper for unikey'
+	      'kcm-fcitx: KDE Config Module for Fcitx')
   install=fcitx.install
 
   cd "${srcdir}"/build
