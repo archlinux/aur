@@ -1,3 +1,24 @@
+2012-12-25 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+  * 2.4.5 :
+  Version bump.
+  Project is now on Bitbucket, as GitHub no longer supports file downloads.
+
+  Upstream changelog (2.4.4_01):
+  - Fix "redshifting" of default animations at a distance.
+  - Fix darkening of custom compass when GUI is up.
+  - Fix crash on startup in BuildCraft oil animation.
+  - Texture pack support for custom mipmaps, e.g., /terrain-mipmap1.png.
+  - Several tweaks to mipmap generation.
+  - Disable mipmaps by default and reduce default mipmap level to 3.
+
+  Upstream changelog (2.4.5):
+  - Various fixes for custom compasses.
+  - Make Random Mobs compatible with mobs that change skins (e.g., Mo' Creatures).
+  - Improved blending method used for fireworks effects.
+  - Support for resizing the BTW stoked fire animation.
+  - Project moved to Bitbucket.org.
+
 2012-12-13 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 2.4.4-1 :
