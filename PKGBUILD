@@ -3,7 +3,7 @@
 
 pkgname=fcitx-rime
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 _rimever=0.9.3
 pkgdesc="Fcitx Wrapper for librime"
 arch=('i686' 'x86_64')
