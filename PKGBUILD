@@ -2,12 +2,12 @@
 
 pkgname=fcitx-sunpinyin
 pkgver=0.3.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Fcitx Wrapper for sunpinyin, Statistical Language Model based pinyin IME by Sun"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
-install='fcitx-sunpinyin.install'
+install=fcitx-sunpinyin.install
 depends=('fcitx>=4.2.5' 'sunpinyin>2.0.3')
 makedepends=('cmake' 'intltool')
 source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz")
