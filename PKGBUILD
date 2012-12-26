@@ -1,13 +1,13 @@
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=yadifa
-pkgver=1.0.0
-_buildnr=2075
+pkgver=1.0.2
+_buildnr=2237
 pkgrel=1
-pkgdesc="YADIFA is a lightweight authoritative Name Server with DNSSEC capabilities"
+pkgdesc="lightweight authoritative Name Server with DNSSEC capabilities"
 arch=('i686' 'x86_64')
 url="http://www.yadifa.eu"
-license=('FreeBSD3')
+license=('FreeBSD')
 depends=('openssl')
 backup=('opt/yadifa/etc/yadifad.conf')
 options=(!libtool)
@@ -18,7 +18,7 @@ source=(
 	'yadifad.conf'
 )
 sha256sums=(
-	'026e06607a36e40aba2636a324c0e583e5364e3f3ed95fa5d1599d6790762314'
+	'bed2f81a35fc08ad54ccb3b48b926976f8270ade8b256b20efd77a5236ac0c0d'
 	'0ce5dde0768cc333a141314bef726faf053dc83dd6dc5354f288605b6e349895'
 	'095bc19013101c74b7f6e5d79a3ef147a10dc3c362e0c7e1454a9bede6fd00d2'
 	'431f16695abd0e99973edecffecaf730d1bd17dd8ed9006790345542c2c6a231'
