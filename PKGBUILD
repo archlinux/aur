@@ -2,7 +2,7 @@
 
 pkgname=fcitx-hangul
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hangul (Korean) support for fcitx"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
@@ -29,6 +29,5 @@ package() {
    cd "$srcdir/$pkgname-$pkgver/build"
    make DESTDIR="$pkgdir" install
 }
-
 
 md5sums=('168b51487797879cf41ed6f6d086694a')
