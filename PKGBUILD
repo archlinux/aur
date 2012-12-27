@@ -3,7 +3,7 @@
 # Contributor: Erdbeerkaese <erdbeerkaese underscore arch at gmail dot com>
 
 pkgname=sparkleshare
-pkgver=0.9.8
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('webkit-sharp' 'notify-sharp' 'curl' 'git' 'openssh' 'desktop-file-util
 makedepends=('intltool' 'gnome-doc-utils')
 install=$pkgname.install
 source=(https://github.com/downloads/hbons/SparkleShare/$pkgname-linux-$pkgver.tar.gz)
-md5sums=('3eac284a28663b1477ca8769f6f862cd')
+md5sums=('1f43c873e220a8a8f28ee46b33e4ca19')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
