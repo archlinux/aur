@@ -1,14 +1,14 @@
 pkgbase = darkplaces-mod
 	pkgdesc = Quake mod specific to Darkplaces
-	pkgver = 20080808
+	pkgver = 20121222
 	pkgrel = 1
 	url = http://icculus.org/twilight/darkplaces/
 	arch = any
 	license = GPL2
 	depends = darkplaces
-	source = http://icculus.org/twilight/darkplaces/files/darkplacesmod20080808.zip
+	source = http://icculus.org/twilight/darkplaces/files/darkplacesmod20121222.zip
 	source = darkplaces-mod.desktop
-	sha256sums = 8a79480eefd2ab95a45c69182906fd0e9fc66118f042495260aaee6e73b9c249
+	sha256sums = 94750e656db5708cb699cde1dbdc2e83b6768c418d01e156d21a7dde4688f6c4
 	sha256sums = 073f4fec0be35966c0e8a8a94ee8b118790742c31eb5d6af84989d2e5c9b1001
 
 pkgname = darkplaces-mod
