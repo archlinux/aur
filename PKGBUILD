@@ -45,6 +45,7 @@ package() {
   # Binaries
   install -d -m755 "$pkgdir"/usr/bin
   install -m755 openmw "$pkgdir"/usr/bin/
+  install -m755 opencs "$pkgdir"/usr/bin/
   install -m755 omwlauncher "$pkgdir"/usr/bin/
   install -m755 esmtool "$pkgdir"/usr/bin/
   install -m775 mwiniimport "$pkgdir"/usr/bin
