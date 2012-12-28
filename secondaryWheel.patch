@@ -1,7 +1,8 @@
-diff -r 4399ffb6a87c doc/rxvt.1.pod
---- a/doc/rxvt.1.pod	Sat Jan 21 13:57:22 2012 +0100
-+++ b/doc/rxvt.1.pod	Sat Jan 21 14:03:04 2012 +0100
-@@ -456,6 +456,11 @@
+diff --git a/doc/rxvt.1.pod b/doc/rxvt.1.pod
+index 4c93c4b..8b429a0 100644
+--- a/doc/rxvt.1.pod
++++ b/doc/rxvt.1.pod
+@@ -417,6 +417,11 @@ B<secondaryScreen>.
  Turn on/off secondary screen scroll (default enabled); resource
  B<secondaryScroll>.
  
@@ -13,7 +14,7 @@ diff -r 4399ffb6a87c doc/rxvt.1.pod
  =item B<-hold>|B<+hold>
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
-@@ -1168,6 +1173,13 @@
+@@ -1029,6 +1034,13 @@ option is enabled, scrolls on the secondary screen will change the
  scrollback buffer and, when secondaryScreen is off, switching
  to/from the secondary screen will instead scroll the screen up.
  
@@ -27,10 +28,11 @@ diff -r 4399ffb6a87c doc/rxvt.1.pod
  =item B<hold>: I<boolean>
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
-diff -r 4399ffb6a87c src/command.C
---- a/src/command.C	Sat Jan 21 13:57:22 2012 +0100
-+++ b/src/command.C	Sat Jan 21 14:03:04 2012 +0100
-@@ -2197,10 +2197,46 @@
+diff --git a/src/command.C b/src/command.C
+index ab1a4cd..9fde946 100644
+--- a/src/command.C
++++ b/src/command.C
+@@ -2225,10 +2225,46 @@ rxvt_term::button_release (XButtonEvent &ev)
                  }
                else
  # endif
@@ -79,9 +81,10 @@ diff -r 4399ffb6a87c src/command.C
              }
              break;
  #endif
-diff -r 4399ffb6a87c src/optinc.h
---- a/src/optinc.h	Sat Jan 21 13:57:22 2012 +0100
-+++ b/src/optinc.h	Sat Jan 21 14:03:04 2012 +0100
+diff --git a/src/optinc.h b/src/optinc.h
+index d814035..a365037 100644
+--- a/src/optinc.h
++++ b/src/optinc.h
 @@ -26,6 +26,7 @@
   def(cursorBlink)
   def(secondaryScreen)
@@ -90,21 +93,23 @@ diff -r 4399ffb6a87c src/optinc.h
   def(pastableTabs)
   def(cursorUnderline)
  #if ENABLE_FRILLS
-diff -r 4399ffb6a87c src/rsinc.h
---- a/src/rsinc.h	Sat Jan 21 13:57:22 2012 +0100
-+++ b/src/rsinc.h	Sat Jan 21 14:03:04 2012 +0100
-@@ -102,6 +102,7 @@
+diff --git a/src/rsinc.h b/src/rsinc.h
+index 2906837..2e77fa1 100644
+--- a/src/rsinc.h
++++ b/src/rsinc.h
+@@ -103,6 +103,7 @@
  #ifndef NO_SECONDARY_SCREEN
    def (secondaryScreen)
    def (secondaryScroll)
 +  def (secondaryWheel)
  #endif
- #ifdef OFF_FOCUS_FADING
+ #if OFF_FOCUS_FADING
    def (fade)
-diff -r 4399ffb6a87c src/xdefaults.C
---- a/src/xdefaults.C	Sat Jan 21 13:57:22 2012 +0100
-+++ b/src/xdefaults.C	Sat Jan 21 14:03:04 2012 +0100
-@@ -261,6 +261,7 @@
+diff --git a/src/xdefaults.C b/src/xdefaults.C
+index 856acaf..7394852 100644
+--- a/src/xdefaults.C
++++ b/src/xdefaults.C
+@@ -262,6 +262,7 @@ optList[] = {
  #ifndef NO_SECONDARY_SCREEN
                BOOL (Rs_secondaryScreen, "secondaryScreen", "ssc", Opt_secondaryScreen, 0, "enable secondary screen"),
                BOOL (Rs_secondaryScroll, "secondaryScroll", "ssr", Opt_secondaryScroll, 0, "enable secondary screen scroll"),
