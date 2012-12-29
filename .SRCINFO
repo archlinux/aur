@@ -1,0 +1,14 @@
+pkgbase = cmake-modules-webos-git
+	pkgdesc = CMake modules needed to build Open webOS components
+	pkgver = 20121229
+	pkgrel = 1
+	url = https://github.com/openwebos/cmake-modules-webos
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = cmake
+	provides = cmake-modules-webos
+
+pkgname = cmake-modules-webos-git
+
