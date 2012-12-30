@@ -2,13 +2,13 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-svn
-pkgver=80941
+pkgver=81877
 pkgrel=1
 pkgdesc="Widget set in EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1')
-depends=('efreet-svn' 'ethumb-svn') 
+depends=('ethumb-svn') 
 makedepends=('subversion')
 conflicts=('elementary')
 provides=('elementary')
