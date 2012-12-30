@@ -1,9 +1,9 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=81831
+pkgver=81889
 pkgrel=1
-pkgdesc="Enlightenment Foundation Libraries - Ecore, EDbus, Eet, Eina, Eio, Embryo, Eo, & Evas"
+pkgdesc="Enlightenment Foundation Libraries - Ecore, EDbus, Eet, Efreet, Eina, Eio, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'custom')
@@ -15,11 +15,11 @@ makedepends=('subversion')
 optdepends=('python2: to compare Eina benchmarks'
             'evas_generic_loaders-svn: Extra loaders for Evas')
 conflicts=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'eet' 'eet-svn'
-           'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
-           'evas' 'evas-svn')
+           'efreet' 'efreet-svn' 'eina' 'eina-svn' 'eio' 'eio-svn'
+           'embryo' 'embryo-svn' 'evas' 'evas-svn')
 provides=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'eet' 'eet-svn'
-           'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
-           'evas' 'evas-svn')
+          'efreet' 'efreet-svn' 'eina' 'eina-svn' 'eio' 'eio-svn'
+          'embryo' 'embryo-svn' 'evas' 'evas-svn')
 options=('!libtool' '!emptydirs')
          
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/efl"
