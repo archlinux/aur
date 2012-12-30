@@ -1,14 +1,21 @@
 pkgbase = reposurgeon
 	pkgdesc = Performs surgery on version control repositories.
 	pkgver = 2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.catb.org/esr/reposurgeon/
 	arch = any
 	license = BSD
 	makedepends = xmlto
 	depends = python2
-	optdepends = cvsps>=3.0: For reading CVS repositories
+	optdepends = bzr
+	optdepends = cvsps
+	optdepends = darcs
+	optdepends = git
+	optdepends = mercurial
+	optdepends = subversion
+	source = 0001-fix_cvsps_invocation.patch
 	source = http://www.catb.org/~esr/reposurgeon/reposurgeon-2.11.tar.gz
+	sha256sums = 6bc2139ee5875f0d7a76fe18de31170a62e6062e7b0466196ca91129f620a1fa
 	sha256sums = bf426a2006f87ff26d00873bdf26fee7e9010b39ec1b0622e0ec37d53bce4561
 
 pkgname = reposurgeon

@@ -2,19 +2,22 @@
 
 pkgname=reposurgeon
 pkgver=2.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/reposurgeon/"
 license=('BSD')
 depends=('python2')
 makedepends=('xmlto')
-optdepends=('cvsps>=3.0: For reading CVS repositories')
-source=(http://www.catb.org/~esr/reposurgeon/$pkgname-$pkgver.tar.gz)
-sha256sums=('bf426a2006f87ff26d00873bdf26fee7e9010b39ec1b0622e0ec37d53bce4561')
+optdepends=('bzr' 'cvsps' 'darcs' 'git' 'mercurial' 'subversion')
+source=(0001-fix_cvsps_invocation.patch
+        http://www.catb.org/~esr/reposurgeon/$pkgname-$pkgver.tar.gz)
+sha256sums=('6bc2139ee5875f0d7a76fe18de31170a62e6062e7b0466196ca91129f620a1fa'
+            'bf426a2006f87ff26d00873bdf26fee7e9010b39ec1b0622e0ec37d53bce4561')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  patch -p 1 -i ../0001-fix_cvsps_invocation.patch
   sed -i -e '1s/python/python2/' repodiffer reposurgeon
   make repodiffer.1 repodiffer.html repopuller.1 repopuller.html \
     reposurgeon.1 reposurgeon.html features.html
