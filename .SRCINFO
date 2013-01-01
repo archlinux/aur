@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-config
 	pkgdesc = A tool to configure GTK theme colors.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/satya164/gtk-theme-config
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = gtk-theme-config
 	depends = gtk3
 	conflicts = gtk-theme-config-git
 	conflicts = gtk-theme-preferences-git
-	source = gtk-theme-config-0.3.tar.gz::https://github.com/satya164/gtk-theme-config/tarball/v0.3
-	md5sums = a990180e9d6f723b6d1844d15da3eec2
+	source = gtk-theme-config-0.4.tar.gz::https://github.com/satya164/gtk-theme-config/tarball/v0.4
+	md5sums = 7ba1064d51915dceacf60325f3f2d0e4
 
 pkgname = gtk-theme-config
 
