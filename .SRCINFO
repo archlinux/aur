@@ -1,6 +1,6 @@
 pkgbase = efl-svn
 	pkgdesc = Enlightenment Foundation Libraries - Ecore, EDbus, Eet, Efreet, Eina, Eio, Embryo, Eo, & Evas
-	pkgver = 81932
+	pkgver = 81941
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = efl-svn
 	depends = libxrandr
 	depends = libxss
 	depends = libxtst
-	depends = libsndfile
+	depends = libpulse
 	optdepends = python2: to compare Eina benchmarks
 	optdepends = evas_generic_loaders-svn: Extra loaders for Evas
 	provides = ecore

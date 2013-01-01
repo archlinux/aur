@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=81932
+pkgver=81941
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Ecore, EDbus, Eet, Efreet, Eina, Eio, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD' 'LGPL2.1' 'custom')
 depends=('mesa' 'curl' 'giflib' 'libtiff' 'libpng' 'dbus'
          'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxp' 'libxrandr'
-         'libxss' 'libxtst' 'libsndfile')
+         'libxss' 'libxtst' 'libpulse')
 makedepends=('subversion')
 optdepends=('python2: to compare Eina benchmarks'
             'evas_generic_loaders-svn: Extra loaders for Evas')
