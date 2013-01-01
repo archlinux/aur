@@ -1,19 +1,19 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=81956
+pkgver=81959
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Ecore, EDbus, Eet, Efreet, Eina, Eio, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'custom')
-depends=('mesa' 'curl' 'giflib' 'libtiff' 'libpng' 'dbus'
+depends=('curl' 'dbus' 'mesa' 'giflib' 'libtiff' 'libpng' 'libpulse'
          'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxp' 'libxrandr'
-         'libxss' 'libxtst' 'libpulse')
+         'libxss')
 makedepends=('subversion')
 optdepends=('python2: to compare Eina benchmarks'
-            'evas_generic_loaders-svn: Extra loaders for Evas')
+            'evas_generic_loaders-svn: More video/graphics/icon loaders for Evas')
 conflicts=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'eet' 'eet-svn'
            'efreet' 'efreet-svn' 'eina' 'eina-svn' 'eio' 'eio-svn'
            'embryo' 'embryo-svn' 'evas' 'evas-svn')
@@ -47,14 +47,12 @@ build() {
     src/scripts/eina/eina-bench-cmp
 
   ./autogen.sh --prefix=/usr \
-	--libexecdir=/usr/lib \
-	--enable-fast-install \
 	--with-profile=release \
-	--enable-fb \
-	--disable-tslib \
 	--with-x11=xlib \
 	--with-opengl=full \
-	--enable-harfbuzz
+	--enable-harfbuzz \
+	--enable-fb \
+	--disable-tslib
 
   make
 }
