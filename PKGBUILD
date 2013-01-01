@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=81941
+pkgver=81956
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Ecore, EDbus, Eet, Efreet, Eina, Eio, Embryo, Eo, & Evas"
 arch=('i686' 'x86_64')
@@ -48,6 +48,7 @@ build() {
 
   ./autogen.sh --prefix=/usr \
 	--libexecdir=/usr/lib \
+	--enable-fast-install \
 	--with-profile=release \
 	--enable-fb \
 	--disable-tslib \
