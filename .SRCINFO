@@ -1,0 +1,14 @@
+pkgbase = libeweather-svn
+	pkgdesc = E17 Weather library
+	pkgver = 79483
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = subversion
+	depends = edje
+	options = !libtool
+
+pkgname = libeweather-svn
+
