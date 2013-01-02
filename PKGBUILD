@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-ujson
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 _libname=${pkgname/python-/}
 pkgdesc="Ultra fast JSON encoder and decoder for Python."
@@ -21,5 +21,5 @@ package() {
 	install -m0644 -D "$srcdir/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('459ae406944fbf4ff11b552d02f7b848c86401040fe1a4c8f488573232fbb6ff'
+sha256sums=('6fc94fcbf6a6f56fd0814d1eadbfccf35e4215eeba647333ce59dcee03b589f3'
             '45b0247dc589415c76f5e2055bfa073f673870e9eb0b4177cc3c642efb434559')
