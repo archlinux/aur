@@ -1,0 +1,15 @@
+pkgbase = libgt
+	pkgdesc = C library for Guardtime Keyless Signature Service
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = http://www.guardtime.com/resources/developer-tools/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = openssl
+	depends = curl
+	source = http://download.guardtime.com/libgt-0.3.11-src.tgz
+	md5sums = 60b8469e77ef056127ad61ae10b8ad63
+
+pkgname = libgt
+
