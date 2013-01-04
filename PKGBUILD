@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=grails
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
@@ -13,13 +13,13 @@ options=(!emptydirs)
 license=('APACHE')
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/$pkgname-$pkgver.zip"
         "grails.sh")
-sha256sums=('e44573fa86bc795e9cfd1914a87e335c38a95de5697c3a52acad0d77d0ec40ab'
+sha256sums=('a92f63bf65c6d907e45c0a0aba8a0f5388e0035e906e312534891956264c2e75'
             '009f00755c1d5312f8ee4ad7e407e3b4a5328b6820e04b94b39750c43fe76d56')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 "Configuring paths..."
+  msg2 'Configuring paths...'
   setconf bin/grails DIRNAME /usr/share/grails
   setconf bin/grails-debug DIRNAME /usr/share/grails
 }
@@ -27,11 +27,11 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 "Creating directories..."
+  msg2 'Creating directories...'
   mkdir -p "$pkgdir/usr/share/pixmaps/" \
     "$pkgdir/usr/share/$pkgname/"{plugins,scripts,conf,target}
 
-  msg2 "Packaging executables..."
+  msg2 'Packaging executables...'
   install -Dm755 bin/grails-debug \
     "$pkgdir/usr/share/$pkgname/bin/grails-debug"
   install -Dm755 bin/startGrails \
@@ -41,25 +41,25 @@ package() {
   install -Dm755 "../grails.sh" \
     "$pkgdir/usr/share/$pkgname/bin/$pkgname"
 
-  msg2 "Packaging jars..."
+  msg2 'Packaging jar-files...'
   install -d "$pkgdir/usr/share/$pkgname"
   cp -r lib "$pkgdir/usr/share/$pkgname/"
   cp -r dist "$pkgdir/usr/share/$pkgname/"
 
-  msg2 "Packaging class and sourcefiles..."
+  msg2 'Packaging class and sourcefiles...'
   cp -r src "$pkgdir/usr/share/$pkgname/"
 
-  msg2 "Packaging icons..."
+  msg2 'Packaging icons...'
   cp media/icons/*.png "$pkgdir/usr/share/pixmaps/"
 
-  msg2 "Packaging plugins..."
+  msg2 'Packaging plugins...'
   cp plugins/*.zip "$pkgdir/usr/share/$pkgname/plugins/"
 
-  msg2 "Packaging scripts..."
+  msg2 'Packaging scripts...'
   cp scripts/*.groovy "$pkgdir/usr/share/$pkgname/scripts/"
   cp scripts/log4j.properties "$pkgdir/usr/share/$pkgname/scripts/"
 
-  msg2 "Packaging settings and configuration files..."
+  msg2 'Packaging settings and configuration files...'
   cp conf/* "$pkgdir/usr/share/$pkgname/conf/"
   echo "export GRAILS_HOME=/usr/share/grails" > grails.sh
   install -Dm755 grails.sh "$pkgdir/etc/profile.d/grails.sh"
@@ -68,7 +68,7 @@ package() {
   install -Dm644 "src/grails/ant/build.xml" \
     "$pkgdir/usr/share/$pkgname/build.xml"
 
-  msg2 "Packaging license..."
+  msg2 'Packaging license...'
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
