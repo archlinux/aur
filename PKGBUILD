@@ -1,26 +1,27 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=82134
+pkgver=82175
 pkgrel=1
-pkgdesc="Enlightenment Foundation Libraries - Ecore, EDBus, Eet, Eeze, Efreet, Eina, Eio, Embryo, Eo, Ephysics, & Evas"
+pkgdesc="Enlightenment Foundation Libraries - Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Eo, Ephysics, & Evas"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
-license=('BSD' 'LGPL2.1' 'custom')
+license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('curl' 'dbus' 'mesa' 'giflib' 'libtiff' 'libpng' 'libpulse' 'udev'
-         'bullet' 'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak'
-         'libxcomposite' 'libxcursor' 'libxinerama' 'libxp' 'libxss')
+         'bullet' 'lua' 'fontconfig' 'fribidi' 'harfbuzz' 'liblinebreak' 'libxp'
+         'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'shared-mime-info')
 makedepends=('subversion')
-optdepends=('python2: to compare Eina benchmarks'
+optdepends=('python2: compare Eina benchmarks or run inkscape2edc'
             'evas_generic_loaders-svn: More video/graphics/icon loaders for Evas')
-conflicts=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'eet' 'eet-svn'
-           'eeze' 'eeze-svn' 'efreet' 'efreet-svn' 'eina' 'eina-svn'
-           'eio' 'eio-svn' 'embryo' 'embryo-svn' 'ephysics' 'ephysics-svn'
-           'evas' 'evas-svn')
-provides=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'eet' 'eet-svn'
-           'eeze' 'eeze-svn' 'efreet' 'efreet-svn' 'eina' 'eina-svn'
-           'eio' 'eio-svn' 'embryo' 'embryo-svn' 'ephysics' 'ephysics-svn'
-           'evas' 'evas-svn')
+conflicts=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'edje' 'edje-svn'
+           'eet' 'eet-svn' 'eeze' 'eeze-svn' 'efreet' 'efreet-svn'
+           'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
+           'ephysics' 'ephysics-svn' 'evas' 'evas-svn')
+provides=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'edje' 'edje-svn'
+          'eet' 'eet-svn' 'eeze' 'eeze-svn' 'efreet' 'efreet-svn'
+          'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
+          'ephysics' 'ephysics-svn' 'evas' 'evas-svn')
+install=efl.install
 options=('!libtool' '!emptydirs')
          
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/efl"
@@ -44,14 +45,15 @@ build() {
   svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
   cd "$srcdir/$_svnmod-build"
 
-  sed -i 's:#!/usr/bin/env\ python:#!/usr/bin/python2:g' \
-    src/scripts/eina/eina-bench-cmp
+  sed -i 's:#!/usr/bin/env python:#!/usr/bin/python2:g' \
+    "$srcdir/$_svnmod-build/src/scripts/eina/eina-bench-cmp"
 
   ./autogen.sh --prefix=/usr \
 	--with-profile=release \
 	--with-x11=xlib \
 	--with-opengl=full \
 	--enable-harfbuzz \
+	--enable-physics \
 	--enable-fb \
 	--disable-tslib
 
