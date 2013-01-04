@@ -1,14 +1,14 @@
 pkgbase = primesieve
 	pkgdesc = C++ library that generates prime numbers and prime k-tuplets
-	pkgver = 3.8
-	pkgrel = 4
+	pkgver = 4.0
+	pkgrel = 1
 	url = http://code.google.com/p/primesieve/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = gcc-libs
-	source = http://primesieve.googlecode.com/files/primesieve-3.8-src.zip
-	sha1sums = ada0024ed13be6b43eb70f7c794161e289e73d5d
+	source = http://primesieve.googlecode.com/files/primesieve-4.0-src.zip
+	sha1sums = ca40b79c4a8d7811873f827e76b9ce2ae493f939
 
 pkgname = primesieve
 
