@@ -6,14 +6,13 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.6
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
-             'libidn' 'python2' 'hicolor-icon-theme' 'gstreamer0.10' 'avahi'
-             'tk' 'ca-certificates' 'intltool'
-             'networkmanager')
+             'libidn' 'python2' 'hicolor-icon-theme' 'farstream-0.1' 'avahi'
+             'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
 sha256sums=('3e25a633b97cbfa8326999a30282e7a662a9b9bbf2853be84af0b8fb60392c96')
@@ -34,7 +33,6 @@ build() {
     --enable-cyrus-sasl \
     --disable-doxygen \
     --enable-nm \
-    --disable-vv \
     --with-python=/usr/bin/python2 \
     --with-system-ssl-certs=/etc/ssl/certs
     make
@@ -65,7 +63,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('gstreamer0.10' 'libsasl' 'libidn' 'dbus-glib' 'nss')
+  depends=('farstream-0.1' 'libsasl' 'libidn' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
               'python2-dbus: for purple-remote and purple-url-handler'
