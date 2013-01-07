@@ -32,8 +32,9 @@ build() {
       sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
       sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-  
-  cd "${startdir}/src/${pkgname}-${pkgver}/"
-  python2 setup.py build_credits
-  python2 setup.py install --prefix'=/usr' --root="${startdir}/pkg"
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install --prefix'=/usr' --root="${pkgdir}"
 }
