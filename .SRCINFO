@@ -1,13 +1,15 @@
 pkgbase = nbimg
 	pkgdesc = Allows to convert HTC Splash Screen images from NB to BMP and create NB splash screens from BMP format
-	pkgver = 1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://pof.eslack.org/2008/07/03/nbimg-htc-splash-screen-tool/
 	arch = x86_64
 	arch = i686
-	license = GPL
-	source = http://pof.eslack.org/HTC/nbimg/nbimg-1.1.tar.gz
-	md5sums = e1e49ef98311abfa8de7375294a1f1d9
+	license = GPL3
+	source = https://github.com/poliva/nbimg/archive/v1.2.1.tar.gz
+	source = Makefile.patch
+	md5sums = 4cff29b5437f909bba470e4f2b0b861b
+	md5sums = 24fe500b72243ab6d52776583e64fdfa
 
 pkgname = nbimg
 

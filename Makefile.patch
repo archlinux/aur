@@ -1,0 +1,12 @@
+diff -Naur nbimg-1.2.1/Makefile nbimg-1.2.1.patched/Makefile
+--- nbimg-1.2.1/Makefile	2012-06-21 09:40:47.000000000 +0200
++++ nbimg-1.2.1.patched/Makefile	2013-01-07 13:32:48.282389871 +0100
+@@ -20,7 +20,7 @@
+ win32:
+ 	i586-mingw32msvc-gcc $(CFLAGS) $(PROGNAME).c -o $(PROGNAME).exe	
+ 
+-install: all
++install:
+ 	mkdir -p $(bindir)
+ 	$(INSTALL) $(PROGNAME) $(bindir)/$(PROGNAME)
+ 	mkdir -p $(docdir)/$(PROGNAME)/
