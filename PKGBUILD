@@ -29,8 +29,9 @@ build() {
   # Correct open_display bug
   patch <"${startdir}/bzr_notify_open_display.patch"
   patch <"${startdir}/bzr_handle_patch_open_display.patch"
-  
+}
 
-  cd "${startdir}/src/${pkgname}-${pkgver}/"
-  python2 setup.py install --prefix'=/usr' --root="${startdir}/pkg" || return 1
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install --prefix'=/usr' --root="${pkgdir}"
 }
