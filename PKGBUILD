@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=23.0.1271.97
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -30,6 +30,13 @@ sha256sums=('37ba1289b7066c3206d9b8f51c0a6acde0f3f5550e716a61af32485d8d0dc2e1'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             'c1baf14121502efbc2a31b64029dcafa0e28ca5b71ad0e28a3c6342d18198615'
             '1f4b57670d317959bc2dc60e5d2a44aa8fc6028f7ed540cdb502fa0aa99c81bd')
+
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+_google_default_client_id=413772536636.apps.googleusercontent.com
+_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 build() {
   cd "$srcdir/chromium-$pkgver"
@@ -69,6 +76,9 @@ build() {
   CFLAGS+=' -Wno-c++0x-compat'
 
   build/gyp_chromium --depth=. \
+    -Dgoogle_api_key=$_google_api_key \
+    -Dgoogle_default_client_id=$_google_default_client_id \
+    -Dgoogle_default_client_secret=$_google_default_client_secret \
     -Dwerror= \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
     -Dlinux_strip_binary=1 \
