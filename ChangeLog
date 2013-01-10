@@ -1,5 +1,10 @@
 2012-01-10 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
+	* 2.4.5_02-2 :
+	Moved mcpatcher and mcpatcher.desktop to archive hosted on BitBucket.
+
+2012-01-10 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
 	* 2.4.5_02-1 :
 	Version bump.
 
