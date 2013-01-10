@@ -4,15 +4,14 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=23.0.1271.97
-pkgrel=2
+pkgver=24.0.1312.52
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'dbus-glib' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent'
-         'libxss' 'libgcrypt' 'ttf-dejavu' 'desktop-file-utils'
-         'hicolor-icon-theme')
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
+         'libgcrypt' 'ttf-dejavu' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
              'elfutils' 'subversion' 'nacl-toolchain-newlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
@@ -23,17 +22,20 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.default
         chromium.sh
         chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
-        chromium-ppapi-r0.patch)
-sha256sums=('37ba1289b7066c3206d9b8f51c0a6acde0f3f5550e716a61af32485d8d0dc2e1'
+        chromium-ppapi-r0.patch
+        chromium-no-pnacl-r0.patch)
+sha256sums=('f30df8b0f4c999185bb11d873f0caa5d8bc581eb4f37ce0fe85fb7900a01d711'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             'c1baf14121502efbc2a31b64029dcafa0e28ca5b71ad0e28a3c6342d18198615'
-            '1f4b57670d317959bc2dc60e5d2a44aa8fc6028f7ed540cdb502fa0aa99c81bd')
+            '1f4b57670d317959bc2dc60e5d2a44aa8fc6028f7ed540cdb502fa0aa99c81bd'
+            '44061e1648ac4674ad0b9990c265c96c33de435679f6854e4b54a421d81cbe6c')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys.
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
@@ -46,6 +48,9 @@ build() {
 
   # Fix build without NaCl glibc toolchain (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-ppapi-r0.patch"
+
+  # Fix build without NaCl pnacl toolchain (patch from Gentoo)
+  patch -Np0 -i "$srcdir/chromium-no-pnacl-r0.patch"
 
   # http://code.google.com/p/chromium/issues/detail?id=109527
   sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
@@ -71,9 +76,6 @@ build() {
 
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
-
-  # Silence "identifier 'nullptr' is a keyword in C++11" warnings
-  CFLAGS+=' -Wno-c++0x-compat'
 
   build/gyp_chromium --depth=. \
     -Dgoogle_api_key=$_google_api_key \
