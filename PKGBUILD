@@ -1,12 +1,12 @@
 pkgname=zabbix-server-mysql
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686" "x86_64")
 url="http://www.zabbix.com/"
 license=("GPL")
-depends=("apache" "mysql" "php" "php-apache" "php-gd" "fping" "traceroute"
-         "net-snmp" "nmap" "sudo" "curl" "iksemel" "libssh2"
+depends=("apache"   "mysql" "php"  "php-apache" "php-gd"  "fping"   "traceroute"
+         "net-snmp" "nmap"  "sudo" "curl"       "iksemel" "libssh2"
         )
 conflicts=("zabbix-server"
            "zabbix-agent"
@@ -33,7 +33,7 @@ md5sums=("1e3eca19867cadc8377895a646c78dd6" # zabbix-$pkgver.tar.gz
          "228d6609c0f2364f1268d7b24b4756a4" # sudoers.zabbix-server
          "1bcf99ab878cb8d82d3123ee19a094d3" # zabbix-server.install
          "4699673e5135c3a7b85a228d610f451c" # frontend.diff
-         "2df5f59968983546532f16aa6fbeddbb" # config.diff
+         "8d2fd8057acebbfcc9befef40e7dba4b" # config.diff
         )
 sha1sums=("26ffd4616a96434b3c357146780f66058f6fbd80" # zabbix-$pkgver.tar.gz
           "b01e845e9fc00c9eb355bbaca27fe847f3ebaaba" # zabbix-server.service
@@ -42,11 +42,12 @@ sha1sums=("26ffd4616a96434b3c357146780f66058f6fbd80" # zabbix-$pkgver.tar.gz
           "5711484ecd0efc4769b975cfff77911c2044fd18" # sudoers.zabbix-server
           "33ba26c6b53ed9ab23def3a0200a45f0de799329" # zabbix-server.install
           "bc354a6f441b82119ac570ac6893053170f36953" # frontend.diff
-          "ea62ba7bcbf28c5fc80fa6791c60bb2855fc7add" # config.diff
+          "3f9924827607541dfcb929da129245b54f04200d" # config.diff
          )
 
 build() {
   cd "${srcdir}/zabbix-${pkgver}"
+  patch -p1 < "${srcdir}/config.diff"
 
   ./configure \
     --prefix=/usr \
@@ -88,7 +89,6 @@ package() {
   ./update_po.sh
   ./make_mo.sh
   cd "${pkgdir}"
-  patch -p1 < "${srcdir}/config.diff"
 
   chown -R 33:33 "${_HTMLPATH}/"
   chmod -R u=rwX,g=rX,o= "${_HTMLPATH}/"
