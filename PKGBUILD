@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20121221
+pkgver=20130110
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -230,8 +230,8 @@ package() {
 	
 	## install the rEFInd UEFI applications
 	install -d "${pkgdir}/usr/lib/refind/"
-	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/refind/refind_x64.efi" "${pkgdir}/usr/lib/refind/refindx64.efi"
-	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/refind/refind_ia32.efi" "${pkgdir}/usr/lib/refind/refindia32.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/refind/refind_x64.efi" "${pkgdir}/usr/lib/refind/refind_x64.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/refind/refind_ia32.efi" "${pkgdir}/usr/lib/refind/refind_ia32.efi"
 	
 	## Install UEFI drivers built from rEFInd
 	install -d "${pkgdir}/usr/lib/refind/drivers_x64/"
