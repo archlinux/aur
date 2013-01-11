@@ -1,6 +1,6 @@
 pkgbase = ewebkit-svn
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries
-	pkgver = 138558
+	pkgver = 139452
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = ewebkit-svn
 	depends = sqlite
 	depends = e_dbus
 	depends = libtiff
-	depends = gstreamer0.10-base-plugins
+	depends = gst-plugins-base-libs
 	depends = libsoup
 	depends = libxslt
 	depends = libxt
