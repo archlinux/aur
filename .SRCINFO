@@ -1,0 +1,21 @@
+pkgbase = evas_generic_loaders-svn
+	pkgdesc = Extra loaders for GPL loaders and unstable libraries in Evas
+	pkgver = 79173
+	pkgrel = 2
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = efl-svn
+	depends = poppler
+	depends = libraw
+	depends = libspectre
+	depends = librsvg
+	provides = evas_generic_loaders
+	conflicts = evas_generic_loaders
+	options = !libtool
+	options = !emptydirs
+
+pkgname = evas_generic_loaders-svn
+
