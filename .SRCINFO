@@ -1,17 +1,18 @@
 pkgbase = elementary-svn
-	pkgdesc = Widget set in EFL
-	pkgver = 81877
+	pkgdesc = Enlightenment widget set
+	pkgver = 82670
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = subversion
-	depends = ethumb-svn
+	depends = efl-svn
 	provides = elementary
 	conflicts = elementary
 	options = !libtool
 	options = !emptydirs
+	options = !strip
 
 pkgname = elementary-svn
 

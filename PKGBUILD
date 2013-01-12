@@ -2,17 +2,17 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-svn
-pkgver=81877
+pkgver=82670
 pkgrel=1
-pkgdesc="Widget set in EFL"
+pkgdesc="Enlightenment widget set"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1')
-depends=('ethumb-svn') 
+depends=('efl-svn') 
 makedepends=('subversion')
 conflicts=('elementary')
 provides=('elementary')
-options=(!libtool !emptydirs)
+options=('!libtool' '!emptydirs' '!strip')
 
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/elementary"
 _svnmod="elementary"
