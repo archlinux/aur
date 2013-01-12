@@ -1,15 +1,16 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=82512
+pkgver=82675
 pkgrel=1
-pkgdesc="Enlightenment Foundation Libraries - Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, & Evas"
+pkgdesc="Enlightenment Foundation Libraries - Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('check' 'curl' 'dbus' 'mesa' 'giflib' 'libtiff' 'libpulse' 'udev' 'lua'
          'bullet' 'fribidi' 'liblinebreak' 'libxp' 'gstreamer0.10-base-plugins'
-         'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'shared-mime-info')
+         'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'shared-mime-info'
+         'libexif')
 makedepends=('subversion')
 optdepends=('python2: compare Eina benchmarks'
             'evas_generic_loaders-svn: More video/graphic/icon loaders for Evas'
@@ -20,11 +21,13 @@ optdepends=('python2: compare Eina benchmarks'
 conflicts=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'edje' 'edje-svn'
            'eet' 'eet-svn' 'eeze' 'eeze-svn' 'efreet' 'efreet-svn'
            'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
-           'emotion' 'emotion-svn' 'ephysics' 'ephysics-svn' 'evas' 'evas-svn')
+           'emotion' 'emotion-svn' 'ephysics' 'ephysics-svn'
+           'ethumb' 'ethumb-svn' 'evas' 'evas-svn')
 provides=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'edje' 'edje-svn'
           'eet' 'eet-svn' 'eeze' 'eeze-svn' 'efreet' 'efreet-svn'
           'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
-          'emotion' 'emotion-svn' 'ephysics' 'ephysics-svn' 'evas' 'evas-svn')
+          'emotion' 'emotion-svn' 'ephysics' 'ephysics-svn'
+          'ethumb' 'ethumb-svn' 'evas' 'evas-svn')
 install=efl.install
 options=('!libtool' '!emptydirs' '!strip')
          
