@@ -2,8 +2,8 @@ pkgname=linux-linode
 _basekernel=3.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.1
-pkgrel=2
+pkgver=${_basekernel}.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
@@ -18,9 +18,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'fix-watchdog-3.7.patch'
         'change-default-console-loglevel.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         '48f5f530b048e387e978e3e49de7742a'
+         '132211742278e18b8f4808754d85e66c'
          'decead29c19b529a6776f7774c1bd104'
-         '49166175551bb52106bff00eb7b6362a'
+         'c8eaf98829288430609ab534c5c0b96a'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '05825098356199a0d76bd5b337bab2e4'
