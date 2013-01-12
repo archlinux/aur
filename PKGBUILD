@@ -1,15 +1,15 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=econnman-svn
-pkgver=77238
-pkgrel=3
-pkgdesc="ConnMan User Interface in EFL"
-arch=('i686' 'x86_64')
+pkgver=79483
+pkgrel=1
+pkgdesc="Enlightenment ConnMan user interface"
+arch=('any')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('python2' 'python2-elementary-svn' 'python2-e_dbus-svn' 'python2-edje-svn' 'python2-ecore-svn' 'connman')
+depends=('python2-elementary' 'python2-e_dbus' 'python2-edje' 'python2-ecore' 'connman')
 makedepends=('subversion')
-options=('!libtool' '!emptydirs')
+#options=('!libtool' '!emptydirs')
          
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/econnman"
 _svnmod="econnman"
