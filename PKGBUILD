@@ -9,13 +9,13 @@
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
 # Default is RelWithDebInfo to help with debugging.
 
-_buildtype="RelWithDebInfo"
+_buildtype="Release"
 
 ##############################################################
 
 pkgname=tomahawk
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.6.0beta1
+pkgrel=1
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -25,11 +25,8 @@ makedepends=('cmake')
 optdepends=('tomahawk-spotify-git: spotify resolver')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
-options=(!strip)
-source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2"
-        '0001-Fix-build-with-new-CMake-release.patch')
-md5sums=('708602116a849c4739480cf52a98bc1a'
-         '7798ec4e48bc40b81c5fe46ced26677f')
+source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('16b71a6bbe1d71684850f71b99420084')
 
 install=tomahawk.install
 
@@ -39,9 +36,6 @@ if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
 fi
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 -i ${startdir}/0001-Fix-build-with-new-CMake-release.patch
-
   if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
