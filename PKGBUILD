@@ -5,8 +5,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.7
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.7.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,15 +20,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         'fat-3.6.x.patch'
-        'fix-watchdog-3.7.patch')
+        'fix-watchdog-3.7.patch'
+        'drm-fix-track-free-areas-3.7.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         '48f5f530b048e387e978e3e49de7742a'
-         '2cf43e0448a8074eb2ff93035168250b'
-         '58a9ba178fedb244a0a86b760fb4bd81'
+         '132211742278e18b8f4808754d85e66c'
+         'ce16969e83a649c3e7d71031b7f752c2'
+         '610443591e7d3f619b8250833958eb7e'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '88d501404f172dac6fcb248978251560'
-         '3485d6c7ae3af35d16e09d6d9a7ed32a')
+         '3485d6c7ae3af35d16e09d6d9a7ed32a'
+         'e365972f002482a7b25cd5360467d75f')
 
 _kernelname=${pkgbase#linux}
 
@@ -53,6 +55,9 @@ build() {
   # fix watchdog enable/disable regression
   # https://bugs.archlinux.org/task/33095
   patch -Np1 -i "${srcdir}/fix-watchdog-3.7.patch"
+  # fix GPU hang
+  # https://bugs.archlinux.org/task/33160
+  patch -Np1 -i "${srcdir}/drm-fix-track-free-areas-3.7.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -328,3 +333,4 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+
