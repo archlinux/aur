@@ -9,13 +9,13 @@
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
 # Default is RelWithDebInfo to help with debugging.
 
-_buildtype="RelWithDebInfo"
+_buildtype="Release"
 
 ##############################################################
 
 pkgname=jreen
 _name=lib${pkgname}
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt."
 arch=('i686' 'x86_64')
@@ -25,9 +25,8 @@ depends=('libidn' 'qca-ossl' 'zlib')
 makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
-options=(!strip)
-source=(http://qutim.org/dwnl/39/${_name}-${pkgver}.tar.bz2)
-md5sums=('84d483d59976fcbaa7951dd0acfa689a')
+source=(http://qutim.org/dwnl/44/${_name}-${pkgver}.tar.bz2)
+md5sums=('180c4a3356b6d5865292e33de2a29820')
 
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
