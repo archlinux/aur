@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libgcrypt' 'ttf-dejavu' 'desktop-file-utils' 'hicolor-icon-theme')
+         'libgcrypt' 'ttf-font' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
              'elfutils' 'subversion' 'nacl-toolchain-newlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
