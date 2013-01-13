@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-configtool
-pkgver=0.4.5.1
-pkgrel=2
+pkgver=0.4.5.2
+pkgrel=1
 pkgdesc="GTK based config tool for Fcitx"
 arch=('i686' 'x86_64')
 url="http://fcitx.googlecode.com/"
@@ -15,7 +15,6 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   msg "Starting make..."
 
-  rm -rf build
   mkdir build
   cd build
 
@@ -28,4 +27,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('6787dedcb57e6147553ef755c51bb46b')
+md5sums=('fc5d232ed2e7b7b3fced0264961f48d9')
