@@ -8,6 +8,7 @@ pkgdesc='Text objects based on indent levels'
 arch=(any)
 url='http://www.vim.org/scripts/script.php?script_id=3037'
 license=(MIT)
+groups=('vim-plugins')
 depends=(vim)
 install=vimdoc.install
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/michaeljsmith/vim-indent-object/tarball/$pkgver")
