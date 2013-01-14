@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -33,15 +33,13 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
-	libvirt.tmpfiles.d
-	openbsd-netcat-default.patch)
+	libvirt.tmpfiles.d)
 md5sums=('86a8c0acabb01e11ac84fe00624dc54e'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '0ee5b6c58590ff392a266f20f7928d1f'
          '0a96ed876ffb1fcb9dff5a9b3a609c1e'
-         '8d98e62915785686b0b6c8c070628392'
-         '456723b41903d3aaa7ec948c1feea265')
+         '8d98e62915785686b0b6c8c070628392')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -53,8 +51,6 @@ build() {
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
-#  patch -Np1 -i "$srcdir"/openbsd-netcat-default.patch
-
   export LDFLAGS=-lX11
   export RADVD=/usr/sbin/radvd
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
@@ -64,6 +60,7 @@ build() {
   sed -i 's|/etc/sysconfig/libvirtd|/etc/conf.d/libvirtd|' daemon/libvirtd.service
   sed -i 's|/etc/sysconfig/libvirt-guests|/etc/conf.d/libvirtd-guests|' tools/libvirt-guests.service
   sed -i 's|/etc/init.d/libvirt-g|/etc/rc.d/libvirtd-g|g' tools/libvirt-guests.service
+  sed -i 's|@sbindir@|/usr/sbin|g' src/virtlockd.service
 }
 
 package() {
