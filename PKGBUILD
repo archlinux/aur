@@ -202,6 +202,8 @@ package_grub-common() {
 	# remove platform specific files
 	rm -rf "${pkgdir}/usr/lib/grub/i386-pc/"
 
+	# Fix OS naming FS#33393
+	sed -i 's|GNU/Linux|Linux|' ${pkgdir}/etc/grub.d/10_linux
 }
 
 package_grub-bios() {
