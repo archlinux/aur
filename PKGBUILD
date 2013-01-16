@@ -74,7 +74,7 @@ package() {
 
   # Custom Licences
   install -d -m755 "$pkgdir"/usr/share/licenses/openmw
-  install -D -m644 "Bitstream Vera License.txt" "$pkgdir/usr/share/licenses/openmw/"
+  install -D -m644 "Dejavu_lgc_font_license.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "Daedric Font License.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "OFL.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "extern/shiny/License.txt" "$pkgdir/usr/share/licenses/openmw/Shiny License.txt"
