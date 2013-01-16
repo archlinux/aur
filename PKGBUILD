@@ -1,19 +1,21 @@
-# Maintainer: Bartek Piotrowski <barthalion@gmail.com>
+# Maintainer: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=gtimelog
-pkgver=0.5.0
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="Small Gtk+ app for keeping track of my time and producing daily/weekly activity reports"
-arch=(i686 x86_64)
-url="http://mg.pov.lt/gtimelog/"
-license=(GPL)
-depends=('python2' 'pygtk')
-makedepends=('setuptools')
-optdepends=('dbus-python: made GTimeLog a single instance application')
-source=(http://pypi.python.org/packages/source/g/gtimelog/gtimelog-${pkgver}.tar.gz)
-md5sums=('b87ee06eaefc6762d17e6380b163c755')
+pkgdesc='Small GTK+ app for keeping track of your time'
+arch=('any')
+url='http://mg.pov.lt/gtimelog/'
+license=('GPL')
+depends=('python2' 'python2-gobject' 'python2-distribute')
+source=(http://pypi.python.org/packages/source/g/$pkgname/$pkgname-${pkgver}.tar.gz)
+md5sums=('8a66f515d1e378f98d56038633052e55')
 
 package() {
-    cd ${pkgname}-${pkgver}
-    python2 setup.py install --root=${pkgdir}
+    cd "$srcdir"/$pkgname-$pkgver
+    python2 setup.py install --root="$pkgdir"
+
+    sed -i 's/env python/env python2/g' \
+        "$pkgdir"/usr/lib/python2.7/site-packages/gtimelog/main.py \
+        "$pkgdir"/usr/lib/python2.7/site-packages/gtimelog/test_gtimelog.py
 }

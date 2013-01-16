@@ -1,17 +1,15 @@
 pkgbase = gtimelog
-	pkgdesc = Small Gtk+ app for keeping track of my time and producing daily/weekly activity reports
-	pkgver = 0.5.0
+	pkgdesc = Small GTK+ app for keeping track of your time
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = http://mg.pov.lt/gtimelog/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
-	makedepends = setuptools
 	depends = python2
-	depends = pygtk
-	optdepends = dbus-python: made GTimeLog a single instance application
-	source = http://pypi.python.org/packages/source/g/gtimelog/gtimelog-0.5.0.tar.gz
-	md5sums = b87ee06eaefc6762d17e6380b163c755
+	depends = python2-gobject
+	depends = python2-distribute
+	source = http://pypi.python.org/packages/source/g/gtimelog/gtimelog-0.8.0.tar.gz
+	md5sums = 8a66f515d1e378f98d56038633052e55
 
 pkgname = gtimelog
 
