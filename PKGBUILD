@@ -3,7 +3,7 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('3e57ad55bcd82e7c995ad37f52b7d432')
+md5sums=('732fe5258ab4fced26e61475cdcffdb1')
