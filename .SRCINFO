@@ -1,0 +1,12 @@
+pkgbase = ros-groovy-ros-pkg
+	pkgdesc = Rospkg
+	pkgver = 1
+	pkgrel = 1
+	url = http://github.com/ros/rospkg/
+	arch = any
+	license = Apache
+	makedepends = setuptools
+	depends = python2
+
+pkgname = ros-groovy-ros-pkg
+
