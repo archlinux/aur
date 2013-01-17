@@ -52,9 +52,6 @@ build() {
   # Fix build without NaCl pnacl toolchain (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-no-pnacl-r0.patch"
 
-  # http://code.google.com/p/chromium/issues/detail?id=109527
-  sed -i 's|glib/gutils.h|glib.h|' ui/base/l10n/l10n_util.cc
-
   # Missing gyp files in tarball (http://crbug.com/144823)
   sed -i '/nacl_test_data\.gyp/d' chrome/chrome_tests.gypi
 
