@@ -1,6 +1,6 @@
 pkgbase = batman-adv
 	pkgdesc = batman kernel module, (included upstream since .38)
-	pkgver = 2012.4.0
+	pkgver = 2013.0.0
 	pkgrel = 1
 	url = http://www.open-mesh.net/
 	install = batman-adv.install
@@ -9,9 +9,9 @@ pkgbase = batman-adv
 	license = GPL
 	makedepends = linux-headers
 	depends = linux
-	source = http://downloads.open-mesh.org/batman/releases/batman-adv-2012.4.0/batman-adv-2012.4.0.tar.gz
+	source = http://downloads.open-mesh.org/batman/releases/batman-adv-2013.0.0/batman-adv-2013.0.0.tar.gz
 	source = batman-adv.install
-	sha256sums = 11201cce7d18643a3d2358e7045cdeadd5ec6b9727d0c1bac6571fdd149ab0ad
+	sha256sums = af51410ae0e4e87a43bc6897d65cdb41fc9bb75033e65ea03c54e868acdb8435
 	sha256sums = 347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37
 
 pkgname = batman-adv
