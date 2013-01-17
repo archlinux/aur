@@ -1,23 +1,21 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
-# Maintainer: Thomas Weißschuh <thomas_weissschuh@lavabit.com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=batctl
-pkgver=2012.4.0
+pkgver=2013.0.0
 pkgrel=1
 pkgdesc="B.A.T.M.A.N. advanced control and management tool"
 arch=('i686' 'x86_64')
 url="http://www.open-mesh.net/"
 license=('GPL')
-depends=('glibc')
 source=("http://downloads.open-mesh.net/batman/releases/batman-adv-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 build(){
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir}  PREFIX=/usr install
-
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}"  PREFIX=/usr install
 }
-sha256sums=('0bd4061f3c0b0acc184179ad9497141edafdc45d7dea51b7140a1bf4a0e0d866')
+sha256sums=('c66e0b60e136829ea113c1fddf4029d1e7f5e8f0e75a3cea2a5ccf415cc96feb')
