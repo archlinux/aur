@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.7
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,18 +19,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'fat-3.6.x.patch'
-        'fix-watchdog-3.7.patch'
-        'drm-fix-track-free-areas-3.7.patch')
+        'fat-3.6.x.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         '132211742278e18b8f4808754d85e66c'
+         'd4aa39ec9610e9fbd7bb4f5aff2c5db8'
          'ce16969e83a649c3e7d71031b7f752c2'
          '610443591e7d3f619b8250833958eb7e'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
-         '88d501404f172dac6fcb248978251560'
-         '3485d6c7ae3af35d16e09d6d9a7ed32a'
-         'e365972f002482a7b25cd5360467d75f')
+         '88d501404f172dac6fcb248978251560')
 
 _kernelname=${pkgbase#linux}
 
@@ -51,13 +47,6 @@ build() {
   # fix cosmetic fat issue
   # https://bugs.archlinux.org/task/32916
   patch -Np1 -i "${srcdir}/fat-3.6.x.patch"
-
-  # fix watchdog enable/disable regression
-  # https://bugs.archlinux.org/task/33095
-  patch -Np1 -i "${srcdir}/fix-watchdog-3.7.patch"
-  # fix GPU hang
-  # https://bugs.archlinux.org/task/33160
-  patch -Np1 -i "${srcdir}/drm-fix-track-free-areas-3.7.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -333,4 +322,3 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-
