@@ -1,7 +1,7 @@
 pkgbase = slic3r
 	pkgdesc = An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://slic3r.org/
 	arch = any
 	license = GPL
@@ -14,6 +14,7 @@ pkgbase = slic3r
 	depends = perl-math-planepath
 	depends = perl-math-convexhull-monotonechain
 	depends = perl-io-stringy
+	depends = perl-encode-locale
 	optdepends = perl-wx: GUI support
 	optdepends = perl-growl-gntp: notifications support via growl
 	optdepends = perl-net-dbus: notifications support via any dbus-based notifier
