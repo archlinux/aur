@@ -8,10 +8,10 @@
 
 pkgname=erlang-nox
 pkgver=R15B03_1
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
-url='http://www.erlang.org'
+url='http://www.erlang.org/'
 license=('custom')
 depends=('ncurses' 'openssl')
 provides=('erlang')
@@ -29,7 +29,7 @@ build() {
   cd "$srcdir/otp_src_${pkgver/_1/}"
 
   msg2 'Configuring...'
-  ./configure --prefix=/usr --enable-smp-support
+  ./configure --prefix=/usr --enable-smp-support --with-odbc
   msg2 'Compiling...'
   make
 }
