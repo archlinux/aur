@@ -1,0 +1,15 @@
+pkgbase = eweather-svn
+	pkgdesc = Enlightenment e17 module: Eweather
+	pkgver = 82790
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = subversion
+	depends = libeweather-svn
+	depends = enlightenment17
+	options = !libtool
+
+pkgname = eweather-svn
+
