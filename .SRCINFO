@@ -1,15 +1,14 @@
 pkgbase = molt
 	pkgdesc = batch renaming utility
 	pkgver = 0.0.1
-	pkgrel = 1
-	url = https://bitbucket.org/jjacky/molt
+	pkgrel = 2
+	url = http://jjacky.com/molt
 	arch = i686
 	arch = x86_64
 	license = GPL3+
-	makedepends = pkg-config
 	depends = glib2
-	source = https://bitbucket.org/jjacky/molt/get/0.0.1.tar.gz
-	md5sums = b30abd7359b53545a6013a2731d02518
+	source = http://jjacky.com/molt/molt-0.0.1.tar.gz
+	md5sums = 2a528fb8c9534a35c76fa28c20ad36d9
 
 pkgname = molt
 
