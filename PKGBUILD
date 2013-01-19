@@ -1,31 +1,37 @@
 # $Id$
-# Maintainer: Abhishek Dasgupta <abhidg@gmail.com>
+# Maintainer: Jonathan Steel <mail@jsteel.org>
+# Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 # Contributor: David Rosenstrauch <darose@darose.net>
 
 pkgname=ddclient
 pkgver=3.8.1
-pkgrel=4
-pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services."
+pkgrel=5
+pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 arch=('any')
-url="http://ddclient.sourceforge.net/"
+url="http://ddclient.sourceforge.net"
 license=('GPL2')
-depends=('perl' 'perl-io-socket-ssl')
+depends=('perl-io-socket-ssl' 'perl-digest-sha1')
 backup=('etc/ddclient/ddclient.conf' 'etc/conf.d/ddclient')
 install=ddclient.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
-      ddclient.rc
+        ddclient.rc
         ddclient.conf.d
         ddclient.service
         iproute2.patch)
+md5sums=('7fa417bc65f8f0e6ce78418a4f631988'
+         '10af4667b7269132b8f0cdfc26864d89'
+         'b8f39c82827776da948b76ef83544d33'
+         'fde631ff027c03179e9cdd483def324d'
+         'e0c8a07e9b7a69e73cecd8626f16e8f0')
 
 build() {
-  cd ${srcdir}/ddclient-${pkgver}
+  cd "$srcdir"/ddclient-$pkgver
 
-  patch -p1 < "$srcdir/iproute2.patch"
+  patch -p1 < "$srcdir"/iproute2.patch
 }
 
 package() {
-  cd ${srcdir}/ddclient-${pkgver}
+  cd "$srcdir"/ddclient-$pkgver
 
   # core files
   install -D -m755 ddclient ${pkgdir}/usr/sbin/ddclient
@@ -41,8 +47,3 @@ package() {
   install -D -m644 sample-etc_ppp_ip-up.local ${pkgdir}/etc/ddclient/samples/sample-etc_ppp_ip-up.local
   install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
-md5sums=('7fa417bc65f8f0e6ce78418a4f631988'
-         '10af4667b7269132b8f0cdfc26864d89'
-         'b8f39c82827776da948b76ef83544d33'
-         'fde631ff027c03179e9cdd483def324d'
-         'e0c8a07e9b7a69e73cecd8626f16e8f0')

@@ -1,13 +1,13 @@
 pkgbase = ddclient
-	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services.
+	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services
 	pkgver = 3.8.1
-	pkgrel = 4
-	url = http://ddclient.sourceforge.net/
+	pkgrel = 5
+	url = http://ddclient.sourceforge.net
 	install = ddclient.install
 	arch = any
 	license = GPL2
-	depends = perl
 	depends = perl-io-socket-ssl
+	depends = perl-digest-sha1
 	backup = etc/ddclient/ddclient.conf
 	backup = etc/conf.d/ddclient
 	source = http://downloads.sourceforge.net/sourceforge/ddclient/ddclient-3.8.1.tar.bz2
