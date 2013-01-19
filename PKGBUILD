@@ -34,16 +34,16 @@ package() {
   cd "$srcdir"/ddclient-$pkgver
 
   # core files
-  install -D -m755 ddclient ${pkgdir}/usr/sbin/ddclient
-  install -D -m755 ${srcdir}/ddclient.rc ${pkgdir}/etc/rc.d/ddclient
-  install -D -m600 sample-etc_ddclient.conf ${pkgdir}/etc/ddclient/ddclient.conf
-  install -D -m644 ${srcdir}/ddclient.conf.d ${pkgdir}/etc/conf.d/ddclient
-  install -d ${pkgdir}/var/cache/ddclient
+  install -Dm755 ddclient "$pkgdir"/usr/sbin/ddclient
+  install -Dm755 "$srcdir"/ddclient.rc "$pkgdir"/etc/rc.d/ddclient
+  install -Dm600 sample-etc_ddclient.conf "$pkgdir"/etc/ddclient/ddclient.conf
+  install -Dm644 "$srcdir"/ddclient.conf.d "$pkgdir"/etc/conf.d/ddclient
+  install -d "$pkgdir"/var/cache/ddclient
 
   # additional instructions, sample configs
-  install -D -m644 README ${pkgdir}/etc/ddclient/samples/README
-  install -D -m644 sample-etc_cron.d_ddclient ${pkgdir}/etc/ddclient/samples/sample-etc_cron.d_ddclient
-  install -D -m644 sample-etc_dhcpc_dhcpcd-eth0.exe ${pkgdir}/etc/ddclient/samples/sample-etc_dhcpc_dhcpcd-eth0.exe
-  install -D -m644 sample-etc_ppp_ip-up.local ${pkgdir}/etc/ddclient/samples/sample-etc_ppp_ip-up.local
-  install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 README "$pkgdir"/etc/ddclient/samples/README
+  install -Dm644 sample-etc_cron.d_ddclient "$pkgdir"/etc/ddclient/samples/sample-etc_cron.d_ddclient
+  install -Dm644 sample-etc_dhcpc_dhcpcd-eth0.exe "$pkgdir"/etc/ddclient/samples/sample-etc_dhcpc_dhcpcd-eth0.exe
+  install -Dm644 sample-etc_ppp_ip-up.local "$pkgdir"/etc/ddclient/samples/sample-etc_ppp_ip-up.local
+  install -Dm644 "$srcdir"/$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
 }
