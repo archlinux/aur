@@ -1,28 +1,27 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
 depends=('openssl' 'lzo2' 'iproute2')
+makedepends=('systemd')
 license=('custom')
 backup=(usr/share/openvpn/easy-rsa/vars
-        usr/share/openvpn/easy-rsa/openssl-1.0.0.cnf
-        etc/conf.d/openvpn-tapdev)
+        usr/share/openvpn/easy-rsa/openssl-1.0.0.cnf)
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
         http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz.asc
-        openvpn@.service
-        openvpn.rc
-        openvpn-tapdev.rc
-        openvpn-tapdev.conf)
-md5sums=('c5181e27b7945fa6276d21873329c5c7'
-         '81ff11ec8cd9fc3c8bc646aae24c4298'
-         '44047df812a3fcd57a7e36a61732a9b9'
-         'a3809b9727f0c2af2d0770f5c7442db2'
-         'd2c48e970088d679dd3c2afd914ff731'
-         '722f483c9e3ce2ec66d3301aaf7cf3d5')
+        http://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz
+        http://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz.asc
+        openvpn@.service)
+md5sums=('56cffde5d5320e0b1ec364d3e486aca9'
+         '3f67e2fa605800a964dbbcfca644d283'
+         'fbf818b6e1f212e77b9ce0e6d92584a1'
+         '46df49b85f9850fec287e311279bdbef'
+         '44047df812a3fcd57a7e36a61732a9b9')
+options=(!libtool)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -31,14 +30,13 @@ build() {
     --prefix=/usr \
     --enable-password-save \
     --mandir=/usr/share/man \
-    --enable-iproute2
+    --enable-iproute2 \
+    --enable-systemd
   make
-
-  # Build plugins
-  for plug in auth-pam down-root; do
-    cd $srcdir/$pkgname-$pkgver/plugin/$plug
-    make
-  done
+  # Build easy-rsa
+  cd $srcdir/easy-rsa-2.2.0_master
+  ./configure --prefix=/usr --with-easyrsadir=/usr/share/openvpn/easy-rsa
+  make
 }
 
 package() {
@@ -48,27 +46,16 @@ package() {
   install -d -m755 $pkgdir/etc/openvpn
   # Install examples
   install -d -m755 $pkgdir/usr/share/openvpn
-  cp -r sample-config-files $pkgdir/usr/share/openvpn/examples
-  find $pkgdir/usr/share/openvpn -type f -exec chmod 644 {} \;
-  find $pkgdir/usr/share/openvpn -type d -exec chmod 755 {} \;
+  cp -r sample/sample-config-files $pkgdir/usr/share/openvpn/examples
   # Install license
   install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
-  # Install plugins
-  for plug in auth-pam down-root; do
-    cd $srcdir/$pkgname-$pkgver/plugin/$plug
-    install -D -m755 openvpn-$plug.so $pkgdir/usr/lib/openvpn/openvpn-$plug.so
-    cd -
-  done
   # Install contrib
   install -d -m755 $pkgdir/usr/share/openvpn/contrib
   cp -r contrib $pkgdir/usr/share/openvpn
   # Install easy-rsa
-  cd $srcdir/$pkgname-$pkgver
-  make -C easy-rsa/2.0 install DESTDIR=$pkgdir PREFIX=usr/share/openvpn/easy-rsa
+  cd $srcdir/easy-rsa-2.2.0_master
+  make install DESTDIR=$pkgdir
   rm -f ${pkgdir}/usr/share/openvpn/easy-rsa/openssl-0.9.?.cnf
   # Install rc scripts
-  install -D -m755 $srcdir/openvpn.rc $pkgdir/etc/rc.d/openvpn
-  install -D -m755 $srcdir/openvpn-tapdev.rc $pkgdir/etc/rc.d/openvpn-tapdev
-  install -D -m644 $srcdir/openvpn-tapdev.conf $pkgdir/etc/conf.d/openvpn-tapdev
   install -D -m644 $srcdir/openvpn@.service $pkgdir/usr/lib/systemd/system/openvpn@.service
 }
