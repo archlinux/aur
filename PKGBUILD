@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-m17n
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Fcitx Wrapper for m17n."
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
     cd "$srcdir/${pkgname}-${pkgver}/build"
     make DESTDIR="${pkgdir}" install
 }
-md5sums=('a0df4dc1bf2e15fcfef63605dbeb9bba')
+md5sums=('2b0570580875ee2cbd1c773772885a61')
