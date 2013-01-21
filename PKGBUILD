@@ -1,9 +1,10 @@
 # $Id: PKGBUILD 67819 2012-03-14 16:22:14Z spupykin $
+# Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Adds pdf support to zathura by using the mupdf library"
 arch=('i686' 'x86_64')
@@ -12,15 +13,13 @@ license=('custom')
 depends=('mupdf>=1.1' 'zathura')
 conflicts=('zathura-pdf-poppler')
 source=("https://pwmt.org/projects/zathura/plugins/download/$pkgname-$pkgver.tar.gz")
-md5sums=('954b6375b5d81e91cd7477e8a5b4552f')
+md5sums=('b66656d7c8cede5db92e1f66e472985d')
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver"
-  make
+  make -C "${srcdir}/$pkgname-$pkgver"
 }
 
 package(){
-  cd "${srcdir}/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make -C "${srcdir}/$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  install -Dm0644 "${srcdir}/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
