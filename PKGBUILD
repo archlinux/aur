@@ -1,7 +1,7 @@
 # Maintainer: Slash <demodevil5 [at] yahoo [dot] com>
 
 pkgname=maraschinoproject-git
-pkgver=20121205
+pkgver=20130121
 pkgrel=1
 pkgdesc="Web-based frontend for XBMC, Sickbeard, Sabnzbd, and more."
 arch=('any')
@@ -47,7 +47,7 @@ package() {
 
     # Install systemd Script
     install -D -m755 "${srcdir}/maraschino.service" \
-        "${pkgdir}/usr/lib/systemd/system/maraschino"
+        "${pkgdir}/usr/lib/systemd/system/maraschino.service"
 
     # Install Daemon Script
     install -D -m755 "${srcdir}/maraschino.rc" \
