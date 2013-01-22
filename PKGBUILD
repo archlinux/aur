@@ -3,7 +3,7 @@
 
 pkgname=tenshi
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="real-time log monitor from the Gentoo Linux project"
 url="http://dev.inversepath.com/trac/tenshi"
 arch=(any)
@@ -21,7 +21,7 @@ md5sums=('9951f2995c4e08539a60026774da183a'
          '94104e395d33c4f72cb6bbfe3591b7a0'
          '302037a01958993b31988d3f50ee20b1'
          'd8a70806f3a2a498d9d8ef2ecb171ad8'
-         'da1142f6dc1ca32efbcc3f01c7b16da3'
+         'e9aed8f5cb265118c6481c061050f86b'
          '451250b1955b14691ca1c7124d1991f2')
 
 build() {
