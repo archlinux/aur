@@ -5,7 +5,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.7
-pkgver=3.7.3
+pkgver=3.7.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'fat-3.6.x.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         'd4aa39ec9610e9fbd7bb4f5aff2c5db8'
+         '87640faf7264639e1300829d1b292076'
          'ce16969e83a649c3e7d71031b7f752c2'
          '610443591e7d3f619b8250833958eb7e'
          'eb14dcfd80c00852ef81ded6e826826a'
