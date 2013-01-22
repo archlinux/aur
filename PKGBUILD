@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=24.0.1312.52
+pkgver=24.0.1312.56
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium-20.0.1132.57-glib-2.16-use-siginfo_t.patch
         chromium-ppapi-r0.patch
         chromium-no-pnacl-r0.patch)
-sha256sums=('f30df8b0f4c999185bb11d873f0caa5d8bc581eb4f37ce0fe85fb7900a01d711'
+sha256sums=('120bc74c72498916f44efebe32703e2a52e45ba7e6c536f465144816270b2c11'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
