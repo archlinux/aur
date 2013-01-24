@@ -36,7 +36,7 @@ build() {
   msg "Starting make..."
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make #-j`getconf _NPROCESSORS_ONLN`
+  make ${MAKEFLAGS}
 }
 
 package() {
