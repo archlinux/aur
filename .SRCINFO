@@ -1,7 +1,7 @@
 pkgbase = tomahawk
 	pkgdesc = A Music Player App written in C++/Qt
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = tomahawk
 	depends = quazip
 	depends = attica
 	depends = qtwebkit
-	depends = liblastfm1
+	depends = liblastfm
 	optdepends = tomahawk-spotify-git: spotify resolver
 	provides = tomahawk
 	conflicts = tomahawk-git
