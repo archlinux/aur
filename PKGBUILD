@@ -4,34 +4,35 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt')
-pkgver=4.2.6.1
-pkgrel=5
+pkgver=4.2.7
+pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
 license=('GPL')
-makedepends=('cmake' 'intltool' 'doxygen' 'gtk2' 'gtk3' 'qt' 'icu' 'wget' \
-             'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant')
-source=(http://fcitx.googlecode.com/files/${pkgbase}-${pkgver}.tar.xz)
-sha1sums=('dc4577bb6bd6de41317f978196f377fc801cc63a')
+makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt' 'icu' \
+             'iso-codes' 'gobject-introspection' 'libxkbfile')
+source=(http://fcitx.googlecode.com/files/${pkgbase}-${pkgver}_dict.tar.xz)
 
 build() {
   cd "${srcdir}"
-  mkdir build
+  mkdir -p build
   cd build
   cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_OPENCC=OFF \
+    -DFORCE_OPENCC=ON \
     -DFORCE_PRESAGE=ON \
+    -DFORCE_ENCHANT=ON \
     -DENABLE_TEST=ON \
+    -DENABLE_GTK2_IM_MODULE=ON \
     -DENABLE_GTK3_IM_MODULE=ON \
     -DENABLE_QT_IM_MODULE=ON
   make
 }
 
 check() {
-  cd "${srcdir}"/build
+  cd "${srcdir}/build"
   make test
 }
 
@@ -41,6 +42,7 @@ package_fcitx() {
            'hicolor-icon-theme' 'desktop-file-utils' 'libxkbfile' \
            'libxfixes' 'dbus-core' 'icu')
   optdepends=('enchant: for word predication support'
+	      'opencc: optional engine to do chinese convert'
   	      'fcitx-anthy: Hiragana text to Kana Kanji mixed text Japanese input method'
 	      'fcitx-chewing: Intelligent Zhuyin input method library for traditional Chinese'
 	      'fcitx-cloudpinyin: Standalone module for fcitx that uses pinyin API on the internet to provide additional input candidates'
@@ -60,37 +62,51 @@ package_fcitx() {
 	      'fcitx-table-other: Provides some other tables for Fcitx, fork from ibus-table-others, scim-tables'
 	      'fcitx-ui-light: Light weight xlib and xft based ui for fcitx'
 	      'fcitx-unikey: Fcitx Wrapper for unikey'
-	      'kcm-fcitx: KDE Config Module for Fcitx')
+	      'kcm-fcitx: KDE Config Module for Fcitx'
+	      'gettext: for fcitx-po-parser')
   install=fcitx.install
 
-  cd "${srcdir}"/build
+  cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 
-  rm -r "${pkgdir}"/usr/lib/{gtk-2.0,gtk-3.0,qt}
+  rm -r "${pkgdir}/usr/lib/"{gtk-2.0,gtk-3.0,qt}
+  rm -r "${pkgdir}/usr/lib/fcitx/qt"
+  rm -r "${pkgdir}/usr/include/fcitx-qt"
+  rm "${pkgdir}/usr/bin/fcitx-qt-gui-wrapper"
+  rm "${pkgdir}/usr/lib/"libfcitx-qt.so*
+  rm "${pkgdir}/usr/lib/pkgconfig/fcitx-qt.pc"
 }
 
 package_fcitx-gtk2() {
   pkgdesc='GTK2 IM Module for fcitx'
-  depends=('gtk2' 'fcitx')
+  depends=('gtk2' "fcitx>=$pkgver")
   install=fcitx-gtk2.install
 
-  cd "${srcdir}"/build/src/frontend/gtk2
+  cd "${srcdir}/build/src/frontend/gtk2"
   make DESTDIR="${pkgdir}" install
 }
 
 package_fcitx-gtk3() {
   pkgdesc='GTK3 IM Module for fcitx'
-  depends=('gtk3' 'fcitx')
+  depends=('gtk3' "fcitx>=$pkgver")
   install=fcitx-gtk3.install
 
-  cd "${srcdir}"/build/src/frontend/gtk3
+  cd "${srcdir}/build/src/frontend/gtk3"
   make DESTDIR="${pkgdir}" install
 }
 
 package_fcitx-qt() {
   pkgdesc='QT IM Module for fcitx'
-  depends=('qt' 'fcitx')
+  depends=('qt' "fcitx>=$pkgver")
 
-  cd "${srcdir}"/build/src/frontend/qt
+  cd "${srcdir}/build/src/frontend/qt"
+  make DESTDIR="${pkgdir}" install
+
+  cd "${srcdir}/build/tools/gui"
+  make DESTDIR="${pkgdir}" install
+
+  cd "${srcdir}/build/src/lib/fcitx-qt"
   make DESTDIR="${pkgdir}" install
 }
+
+md5sums=('6e291717c24615b9dc9bfaa2949af3a7')
