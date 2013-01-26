@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
 depends=('fcitx>=4.2.7' "librime" "brise")
-makedepends=('cmake' 'intltool')
+makedepends=('cmake')
 install=fcitx-rime.install
 source=(
   "http://fcitx.googlecode.com/files/$pkgname-$pkgver.tar.xz"
