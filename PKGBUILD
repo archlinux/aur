@@ -20,7 +20,7 @@ license=('custom:AVASYS')
 depends=('iscan')
 makedepends=('rpmextract')
 install=gt-s600.install
-source=(http://linux.avasys.jp/drivers/iscan-plugins/$pkgname/${pkgver%_*}/$pkgname-${pkgver//_/-}.$_arch.rpm)
+source=(http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/35/77bf4c0a885f42e920ab9dd0a4ef2404e8863425/$pkgname-${pkgver//_/-}.$_arch.rpm)
 
 build() {
 	cd "$srcdir"

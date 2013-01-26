@@ -9,7 +9,7 @@ pkgbase = iscan-plugin-gt-s600
 	license = custom:AVASYS
 	makedepends = rpmextract
 	depends = iscan
-	source = http://linux.avasys.jp/drivers/iscan-plugins/iscan-plugin-gt-s600/2.1.2/iscan-plugin-gt-s600-2.1.2-1.i386.rpm
+	source = http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/35/77bf4c0a885f42e920ab9dd0a4ef2404e8863425/iscan-plugin-gt-s600-2.1.2-1.i386.rpm
 	md5sums = 0a3a83dbbb2630c5e9453cc78983ab81
 
 pkgname = iscan-plugin-gt-s600
