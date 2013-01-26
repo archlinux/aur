@@ -1,14 +1,15 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 
-pkgname=grails
+pkgbase=grails
+pkgname=('grails' 'grails-docs')
 pkgver=2.2.0
 pkgrel=2
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
 url="http://grails.org/"
-depends=('java-environment' 'junit' 'bash' 'sh')
 makedepends=('apache-ant' 'setconf')
-optdepends=('groovy')
+optdepends=('groovy: the groovy programming language'
+            'grails-docs: documentation for grails')
 options=(!emptydirs)
 license=('APACHE')
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/$pkgname-$pkgver.zip"
@@ -24,7 +25,9 @@ build() {
   setconf bin/grails-debug DIRNAME /usr/share/grails
 }
 
-package() {
+package_grails() {
+  depends=('java-environment' 'junit' 'bash' 'sh')
+
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Packaging application...'
@@ -51,9 +54,20 @@ package() {
 
   msg2 'Cleaning up...'
   cd "$pkgdir/usr/share/$pkgname"
-  # rm -rf doc
+  rm -rf doc
   rm -f INSTALL LICENSE README
   find "$pkgdir/usr/share" -name "*.bat" -exec rm {} \;
+}
+
+package_grails-docs() {
+  pkgdesc='Documentation for Grails'
+  cd "$srcdir/grails-$pkgver"
+
+  msg2 'Packaging documentation...'
+  mkdir -p "$pkgdir/usr/share/doc"
+  cp -r doc "$pkgdir/usr/share/doc/grails-$pkgver"
+  mkdir -p "$pkgdir/usr/share/grails"
+  ln -s "/usr/share/doc/grails-$pkgver" "$pkgdir/usr/share/grails/doc"
 }
 
 # vim:set ts=2 sw=2 et:
