@@ -5,7 +5,8 @@
 # Contributor: kritoke <kritoke@nospam.gmail.com>
 
 pkgbase=ruby-gtk3
-pkgname=('ruby-atk' 'ruby-gdkpixbuf2' 'ruby-gio2' 'ruby-glib2' 'ruby-gtk3' 'ruby-pango' 'ruby-gdk3')
+pkgname=('ruby-gtk3' 'ruby-gdk3')
+depends=('ruby-atk' 'ruby-gdkpixbuf2' 'ruby-gio2' 'ruby-glib2' 'ruby-pango')
 pkgver=1.2.0
 pkgrel=1
 arch=('x86_64' 'i686')
@@ -23,38 +24,6 @@ build() {
 	make
 }
 
-package_ruby-atk() {
-  pkgdesc="Ruby bindings for atk"
-  depends=("ruby-glib2=$pkgver" 'atk')
-
-	cd "$srcdir/ruby-gtk3-$pkgver/atk"
-	make DESTDIR="$pkgdir" install
-}
-
-package_ruby-gdkpixbuf2() {
-  pkgdesc="Ruby bindings for gdkpixbuf2"
-  depends=("ruby-glib2=$pkgver" 'gdk-pixbuf2')
-
-	cd "$srcdir/ruby-gtk3-$pkgver/gdk_pixbuf2"
-	make DESTDIR="$pkgdir" install
-}
-
-package_ruby-gio2() {
-  pkgdesc="Ruby bindings for gio2"
-  depends=("ruby-glib2=$pkgver")
-
-	cd "$srcdir/ruby-gtk3-$pkgver/gio2"
-	make DESTDIR="$pkgdir" install
-}
-
-package_ruby-glib2() {
-  pkgdesc="Ruby bindings for glib2"
-  depends=('glib2' 'ruby')
-
-	cd "$srcdir/ruby-gtk3-$pkgver/glib2"
-	make DESTDIR="$pkgdir" install
-}
-
 package_ruby-gtk3() {
   pkgdesc="Ruby bindings for gtk3"
   depends=('gtk3' "ruby-glib2=$pkgver" "ruby-pango=$pkgver" "ruby-atk=$pkgver"
@@ -64,17 +33,9 @@ package_ruby-gtk3() {
 	make DESTDIR="$pkgdir" install
 }
 
-package_ruby-pango() {
-  pkgdesc="Ruby bindings for pango"
-  depends=("ruby-glib2=$pkgver" 'ruby-cairo' 'pango')
-
-	cd "$srcdir/ruby-gtk3-$pkgver/pango"
-	make DESTDIR="$pkgdir" install
-}
-
 package_ruby-gdk3() {
   pkgdesc="Ruby bindings for gdk3"
-  depends=("ruby-gtk3=$pkgver")
+  depends=('ruby' 'gtk3')
 
 	cd "$srcdir/ruby-gtk3-$pkgver/gdk3"
 	make DESTDIR="$pkgdir" install
