@@ -9,7 +9,7 @@ url="http://code.google.com/p/fcitx"
 license=('GPL')
 depends=('fcitx>=4.2.7')
 optdepends=('qt: To run the fcitx unikey macro editor')
-makedepends=('cmake' 'intltool' 'qt')
+makedepends=('cmake' 'qt')
 source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz")
 install=fcitx-unikey.install
 
