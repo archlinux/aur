@@ -3,7 +3,7 @@
 
 pkgname=iscan-plugin-gt-s600
 pkgver=2.1.2_1
-pkgrel=2
+pkgrel=3
 pkgdesc="iscan plugin for Epson Perfection V10."
 arch=('i686' 'x86_64')
 url="http://www.avasys.jp/lx-bin2/linux_e/spc/DL2.do"
