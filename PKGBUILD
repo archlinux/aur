@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130120
+pkgver=20130126
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -21,7 +21,8 @@ license=('GPL3' 'custom')
 
 makedepends=('git' 'subversion' 'python2')
 depends=('dosfstools' 'efibootmgr')
-optdepends=('mactel-boot: For bless command in Apple Mac systems')
+optdepends=('mactel-boot: For bless command in Apple Mac systems'
+            'imagemagick: For /usr/bin/refind-mkfont script')
 
 options=('!strip' 'docs' '!makeflags')
 
@@ -244,10 +245,6 @@ package() {
 	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/usr/lib/refind/config/refind.conf"
 	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/usr/lib/refind/config/refind_linux.conf"
 	
-	## install the rEFInd icons
-	install -d "${pkgdir}/usr/share/refind/icons/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/icons"/* "${pkgdir}/usr/share/refind/icons/"
-	
 	## install the rEFInd docs
 	install -d "${pkgdir}/usr/share/refind/docs/html/"
 	install -d "${pkgdir}/usr/share/refind/docs/Styles/"
@@ -256,6 +253,27 @@ package() {
 	install -D -m0644 "${srcdir}/${_gitname}_build/README.txt" "${pkgdir}/usr/share/refind/docs/README"
 	install -D -m0644 "${srcdir}/${_gitname}_build/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS"
 	rm -f "${pkgdir}/usr/share/refind/docs/html/.DS_Store" || true
+	
+	## install the rEFInd fonts
+	install -d "${pkgdir}/usr/share/refind/fonts/"
+	install -D -m0644 "${srcdir}/${_gitname}_build/fonts"/* "${pkgdir}/usr/share/refind/fonts/"
+	rm -f "${pkgdir}/usr/share/refind/fonts/mkfont.sh"
+	
+	## install the rEFInd mkfont.sh
+	install -d "${pkgdir}/usr/bin/"
+	install -D -m0755 "${srcdir}/${_gitname}_build/fonts/mkfont.sh" "${pkgdir}/usr/bin/refind-mkfont"
+	
+	## install the rEFInd icons
+	install -d "${pkgdir}/usr/share/refind/icons/"
+	install -D -m0644 "${srcdir}/${_gitname}_build/icons"/* "${pkgdir}/usr/share/refind/icons/"
+	
+	## install the rEFInd images
+	install -d "${pkgdir}/usr/share/refind/images/"
+	install -D -m0644 "${srcdir}/${_gitname}_build/images"/*.{png,bmp} "${pkgdir}/usr/share/refind/images/"
+	
+	## install the rEFInd keys
+	install -d "${pkgdir}/usr/share/refind/keys/"
+	install -D -m0644 "${srcdir}/${_gitname}_build/keys"/* "${pkgdir}/usr/share/refind/keys/"
 	
 	## install the rEFIt license file, since rEFInd is a fork of rEFIt
 	install -d "${pkgdir}/usr/share/licenses/refind/"
