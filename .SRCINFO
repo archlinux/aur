@@ -1,0 +1,34 @@
+pkgbase = picard-plugins-aux
+	pkgdesc = additional plugins for MusicBrainz Picard
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
+	arch = any
+	license = GPL
+	depends = picard
+	conflicts = picard-plugins<1.1
+	source = https://raw.github.com/mineo/mbstuff/master/picard/plugins/padded.py
+	source = https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titlesort.py
+	source = https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titleversion.py
+	source = https://raw.github.com/weisslj/picardplugins/master/f2k_rgscan.py
+	source = http://kalou.net/unix/picard/metaflac_rgscan.py
+	source = http://sites.google.com/site/tonyflaks/sidecar.py
+	source = https://raw.github.com/voiceinsideyou/picard/plugins/contrib/plugins/removeperfectalbums.py
+	source = https://raw.github.com/encukou/picard-plugins/master/autosave.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/eq2.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/ne2.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/p.py
+	md5sums = 97c429234998c46d5ec1de0aa13eae8e
+	md5sums = 1219e450a0eb04d78a5fb1c36ddd45e5
+	md5sums = 05c7dbe8f0ff5fc8e634da7db7f700c7
+	md5sums = deb3dcba323915f6e18de8904c7d3cd8
+	md5sums = c9099bde340ae51d5d2cb908a8ffff24
+	md5sums = 921a0ba1b5659470f907e2cfc2f72694
+	md5sums = c53be179a061dc97f56e00fea9b14bd2
+	md5sums = 3a39b178261c50ad2cd1440657a168a1
+	md5sums = c4be2eceee00f72fc5c4e848d965b2ea
+	md5sums = db4100901c9b583140e8fe81bb4d324f
+	md5sums = 3f4dad9583c7a5d935d009069c599a51
+
+pkgname = picard-plugins-aux
+
