@@ -1,15 +1,6 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 # Based on PKGBUILD for iscan-plugin-gt-x770.
 
-if [ "$CARCH" = "x86_64" ]
-then
-	_arch=$CARCH
-	md5sums=('9e36fd80b1f8ffa3f658b6a025d5e186')
-else
-	_arch=i386
-	md5sums=('0a3a83dbbb2630c5e9453cc78983ab81')
-fi
-
 pkgname=iscan-plugin-gt-s600
 pkgver=2.1.2_1
 pkgrel=2
@@ -20,7 +11,17 @@ license=('custom:AVASYS')
 depends=('iscan')
 makedepends=('rpmextract')
 install=gt-s600.install
-source=(http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/35/77bf4c0a885f42e920ab9dd0a4ef2404e8863425/$pkgname-${pkgver//_/-}.$_arch.rpm)
+
+if [ "$CARCH" = "x86_64" ]
+then
+	_arch=$CARCH
+	md5sums=('9e36fd80b1f8ffa3f658b6a025d5e186')
+	source=(http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/35/e7b4314a66167d0b48ef370bb428dd298482cef2/$pkgname-${pkgver//_/-}.$_arch.rpm)
+else
+	_arch=i386
+	md5sums=('0a3a83dbbb2630c5e9453cc78983ab81')
+	source=(http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/35/77bf4c0a885f42e920ab9dd0a4ef2404e8863425/$pkgname-${pkgver//_/-}.$_arch.rpm)
+fi
 
 build() {
 	cd "$srcdir"
