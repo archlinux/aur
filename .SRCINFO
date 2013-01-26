@@ -1,8 +1,8 @@
 pkgbase = python-discid
 	pkgdesc = Python binding of Libdiscid
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/JonnyJD/python-discid
+	pkgrel = 2
+	url = https://python-discid.readthedocs.org/
 	arch = any
 	license = LGPL3
 	depends = python
