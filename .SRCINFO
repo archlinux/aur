@@ -1,16 +1,15 @@
 pkgbase = dymo-cups-drivers
 	pkgdesc = Official Dymo supplied Linux Cups drivers for LabelWriter series
-	pkgver = 1.2.0
+	pkgver = 1.4.0.5
 	pkgrel = 1
+	url = http://global.dymo.com/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	depends = libcups
-	source = dymo-cups-drivers-1.2.0.tar.gz::http://global.dymo.com/img/compel/xKpID6d3hOi6UrMXDNF4k6IlSMSm3E_0.gz
-	source = 01-add-stddef.patch
-	sha1sums = 1d8f5917029903f11b514ab3ce4b0f0f34592b39
-	sha1sums = 840aadc63377eace23d2006821f1cf3960abc9d0
+	source = http://download.dymo.com/Software/Linux/dymo-cups-drivers-1.4.0.tar.gz
+	sha1sums = 3576496a1afd5a0e076821081a1919468b50d347
 
 pkgname = dymo-cups-drivers
 
