@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 83024 2013-01-26 16:46:15Z arodseth $
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Eric Bélanger
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
