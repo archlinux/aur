@@ -2,7 +2,7 @@
 
 pkgname=grails
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
 url="http://grails.org/"
@@ -27,13 +27,11 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 'Creating directories...'
-  mkdir -p "$pkgdir/usr/share/pixmaps/" \
-    "$pkgdir/usr/share/$pkgname/"{plugins,scripts,conf,target}
+  msg2 'Packaging application...'
+  mkdir -p "$pkgdir/usr/share/pixmaps/"
+  cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/share/$pkgname"
 
-  msg2 'Packaging executables...'
-  install -Dm755 bin/grails-debug \
-    "$pkgdir/usr/share/$pkgname/bin/grails-debug"
+  msg2 'Packaging wrapper scripts...'
   install -Dm755 bin/startGrails \
     "$pkgdir/usr/share/$pkgname/startGrails"
   install -Dm755 "../grails.sh" \
@@ -41,35 +39,21 @@ package() {
   install -Dm755 "../grails.sh" \
     "$pkgdir/usr/share/$pkgname/bin/$pkgname"
 
-  msg2 'Packaging jar-files...'
-  install -d "$pkgdir/usr/share/$pkgname"
-  cp -r lib "$pkgdir/usr/share/$pkgname/"
-  cp -r dist "$pkgdir/usr/share/$pkgname/"
-
-  msg2 'Packaging class and sourcefiles...'
-  cp -r src "$pkgdir/usr/share/$pkgname/"
-
   msg2 'Packaging icons...'
   cp media/icons/*.png "$pkgdir/usr/share/pixmaps/"
-
-  msg2 'Packaging plugins...'
-  cp plugins/*.zip "$pkgdir/usr/share/$pkgname/plugins/"
-
-  msg2 'Packaging scripts...'
-  cp scripts/*.groovy "$pkgdir/usr/share/$pkgname/scripts/"
-  cp scripts/log4j.properties "$pkgdir/usr/share/$pkgname/scripts/"
-
-  msg2 'Packaging settings and configuration files...'
-  cp conf/* "$pkgdir/usr/share/$pkgname/conf/"
+  
+  msg2 'Packaging profile.d script...'
   echo "export GRAILS_HOME=/usr/share/grails" > grails.sh
   install -Dm755 grails.sh "$pkgdir/etc/profile.d/grails.sh"
-  install -Dm644 "build.properties" \
-    "$pkgdir/usr/share/$pkgname/build.properties"
-  install -Dm644 "src/grails/ant/build.xml" \
-    "$pkgdir/usr/share/$pkgname/build.xml"
 
   msg2 'Packaging license...'
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  msg2 'Cleaning up...'
+  cd "$pkgdir/usr/share/$pkgname"
+  # rm -rf doc
+  rm -f INSTALL LICENSE README
+  find "$pkgdir/usr/share" -name "*.bat" -exec rm {} \;
 }
 
 # vim:set ts=2 sw=2 et:
