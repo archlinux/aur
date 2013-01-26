@@ -5,7 +5,7 @@
 
 pkgname=glom
 pkgver=1.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
@@ -14,7 +14,7 @@ depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject' 'libepc'
 makedepends=('intltool' 'gnome-doc-utils' 'python-sphinx' 'boost')
 options=('!libtool')
 install=$pkgname.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/glom/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+source=(ftp://ftp.archlinux.org/other/community/$pkgname/$pkgname-$pkgver.tar.xz)
 sha256sums=('e6ce1b0c76cec8c85beba4900a80f257de3cc23a2c65908262fd8be87c2e546a')
 
 build() {
