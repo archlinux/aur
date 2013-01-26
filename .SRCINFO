@@ -1,0 +1,33 @@
+pkgbase = picard-plugins-search
+	pkgdesc = search plugins for MusicBrainz Picard
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
+	arch = any
+	license = GPL
+	depends = picard
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchAMG.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchAmazon3.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchCastAlbums3.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchDiscogs3.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchEbay.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchFilmMusziek3.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchGMR.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchGoogle3.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchLortelArchives3.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchSoundtrackCollector3.py
+	source = https://raw.github.com/brianfreud/Picard-plugins/master/SearchSoundtrackINFO3.py
+	md5sums = 4b016bbeb194d6848a79c26a5ad8173b
+	md5sums = 4335318cafb9061b32f91c8457bca876
+	md5sums = 121540b38278e548a2daae9700cfd9fd
+	md5sums = 26ed2e6f454422e7f852454105b5a330
+	md5sums = 27736972127cd8c776455488392117dd
+	md5sums = e5c1f7759c4bfd63e9c35cfb93a150d6
+	md5sums = 2d3d4b2ff969e6cd8fc7b270bac92201
+	md5sums = 970f302d3e90d798370e0d2e35f4389c
+	md5sums = 86f2bf4f8f25d3729d3175de25e9dd97
+	md5sums = b7e0d09c6419fe1c179507ecc1c4ed1d
+	md5sums = 75b8c732caeae545d439cd916b8416ac
+
+pkgname = picard-plugins-search
+
