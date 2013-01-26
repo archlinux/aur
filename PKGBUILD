@@ -9,7 +9,7 @@ url="http://code.google.com/p/fcitx"
 license=('GPL')
 install=fcitx-sunpinyin.install
 depends=('fcitx>=4.2.7' 'sunpinyin>2.0.3' 'sunpinyin-data' 'gtk-update-icon-cache')
-makedepends=('cmake' 'intltool')
+makedepends=('cmake')
 source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz")
 
 build() {
