@@ -49,7 +49,7 @@ package() {
 
   mkdir -p $pkgdir/usr/share/python3
   install -m 755 debian/py3versions.py $pkgdir/usr/share/python3/
-  ln -s -r $pkgdir/usr/share/python/py3versions.py $pkgdir/usr/bin/py3versions 
+  ln -s -r $pkgdir/usr/share/python3/py3versions.py $pkgdir/usr/bin/py3versions 
   install -m 755 debian/debian_defaults $pkgdir/usr/share/python3/
   gzip -f debian/py3versions.1
   mkdir -p $pkgdir/usr/share/man/man1
