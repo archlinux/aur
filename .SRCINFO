@@ -1,0 +1,14 @@
+pkgbase = debhelper-python
+	pkgdesc = debhelper scripts for Python 3: pyversions, python3.pm
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = http://packages.debian.org/sid/python3
+	arch = any
+	license = custom:MIT
+	depends = debhelper
+	depends = python
+	source = http://ftp.debian.org/debian/pool/main/p/python3-defaults/python3-defaults_3.2.3-6.tar.gz
+	md5sums = f9fca037e3defc4340bcd90aa38d3afb
+
+pkgname = debhelper-python
+
