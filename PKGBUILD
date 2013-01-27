@@ -5,7 +5,7 @@
 
 pkgname=mosh
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url='http://mosh.mit.edu/'
@@ -16,7 +16,7 @@ sha256sums=('93f09fda77e57f05485a61f3ac679bf9f3f359a9b0b93c216ddd53cd124a768f')
 options=('!emptydirs')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -24,13 +24,13 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR=$pkgdir install
-  install -Dm644 conf/bash_completion.d/$pkgname \
-    $pkgdir/usr/share/bash-completion/completions/$pkgname
-  install -Dm644 conf/ufw/applications.d/$pkgname \
-    $pkgdir/etc/ufw/applications.d/ufw-$pkgname
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "conf/bash_completion.d/$pkgname" \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 "conf/ufw/applications.d/$pkgname" \
+    "$pkgdir/usr/share/mosh/ufw-${pkgname}.example"
 }
 
 # vim:set ts=2 sw=2 et:
