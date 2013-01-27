@@ -4,21 +4,21 @@
 pkgname='frogatto'
 arch=('i686' 'x86_64')
 pkgver=1.2
-pkgrel=7
+pkgrel=8
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
 depends=('glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
 makedepends=('mesa' 'boost')
-source=("frogatto-$pkgver.tar.gz::https://github.com/frogatto/frogatto/tarball/$pkgver"
+source=("frogatto-$pkgver.tar.gz::https://github.com/frogatto/frogatto/archive/$pkgver.tar.gz"
         frogatto
         frogatto.desktop)
-md5sums=('b60924f384e04728eb6e76cdd48ab8f9'
+md5sums=('57da96f06a28b064ff5d9c988cb4bdfe'
          '9ed2c9ea59e95fe3c0b3ad49e58f8890'
          'e31563b04748a39292a59aaad633ff58')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgname"*
+  cd "$srcdir/$pkgname-$pkgver"
 
   sed -i 's/ccache //g' Makefile
   sed -i 's/-lprofiler//g' Makefile
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname"*
+  cd "$srcdir/$pkgname-$pkgver"
 
   install -D -m755 game $pkgdir/opt/frogatto/game
   install -D -m755 server $pkgdir/opt/frogatto/server
