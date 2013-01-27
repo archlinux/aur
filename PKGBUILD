@@ -1,5 +1,5 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
-pkgname=perl-file-fctnllock
+pkgname=perl-file-fcntllock
 _perlmod=File-FcntlLock
 pkgver=0.14
 pkgrel=1
