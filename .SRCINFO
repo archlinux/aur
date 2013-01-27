@@ -1,0 +1,23 @@
+pkgbase = bzr-builddeb
+	pkgdesc = bzr plugin for Debian package management
+	pkgver = 2.8.4
+	pkgrel = 1
+	url = http://jameswestby.net/bzr/builddeb/
+	arch = any
+	license = GPL2
+	depends = bzr>=2.1
+	depends = devscripts
+	depends = dpkg
+	depends = patchutils
+	depends = pristine-tar
+	depends = quilt
+	depends = python2-debian>=0.1.11
+	depends = python2-apt
+	optdepends = bzr-svn: Subversion integration
+	optdepends = python2-lzma: liblzma bindings
+	options = !emptydirs
+	source = http://ftp.debian.org/debian/pool/main/b/bzr-builddeb/bzr-builddeb_2.8.4.tar.gz
+	md5sums = 606b9f93609ac42cc91e47ecf89bc15c
+
+pkgname = bzr-builddeb
+
