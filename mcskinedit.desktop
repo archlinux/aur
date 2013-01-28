@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Minecraft SkinEdit
+Comment=Skin editor for Minecraft.
+TryExec=mcskinedit
+Exec=java -jar /usr/share/mcskinedit/MCSkinEdit.jar
+Icon=mcskinedit_128px.png
+Terminal=false
+Categories=Game;
+Keywords=minecraft;
