@@ -9,10 +9,10 @@ license=(unknown)
 changelog=ChangeLog
 url='http://www.minecraftforum.net/topic/3796-skinedit-new-version-13-april-alpha-3-pre-7/#entry49969'
 depends=('java-runtime')
-source=('http://solidcdn.com/files/27e8/SkinEdit_alpha3_pre7_fix.zip'
+source=('http://orcsinthebasement.com/tempDL/SkinEdit+Alpha+3+pre+7.zip'
         'mcskinedit'
         'http://dl.dropbox.com/u/15956363/skintest2.jar')
-md5sums=('82a1afca96026e3c5bfc5a690f1a8275'
+md5sums=('d55191ab04cef76faf7d3a5c4bee288d'
          'feacb66ff8b71fbf00d13bcb0f829f43'
          'ec418807008ad3f14d55db6457a693b8')
 
