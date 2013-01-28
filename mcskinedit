@@ -1,2 +1,2 @@
 #!/bin/sh
-"$JAVA_HOME/bin/java" -jar /usr/share/mcskinedit/MCSkinEdit.jar
+java -jar /usr/share/mcskinedit/MCSkinEdit.jar
