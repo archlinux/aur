@@ -16,7 +16,7 @@ md5sums=('d55191ab04cef76faf7d3a5c4bee288d'
          'feacb66ff8b71fbf00d13bcb0f829f43'
          'ec418807008ad3f14d55db6457a693b8')
 
-build() {
+package() {
   cd "$srcdir" || return 1
 
   install -d $pkgdir/usr/bin
