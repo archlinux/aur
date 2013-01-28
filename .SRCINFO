@@ -11,7 +11,7 @@ pkgbase = mcskinedit
 	source = mcskinedit
 	source = https://dl.dropbox.com/u/15956363/skintest2.jar
 	md5sums = d55191ab04cef76faf7d3a5c4bee288d
-	md5sums = feacb66ff8b71fbf00d13bcb0f829f43
+	md5sums = c2b48f8d04d8470b78d7b288e3004fc7
 	md5sums = ec418807008ad3f14d55db6457a693b8
 
 pkgname = mcskinedit

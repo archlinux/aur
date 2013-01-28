@@ -13,7 +13,7 @@ source=('http://orcsinthebasement.com/tempDL/SkinEdit+Alpha+3+pre+7.zip'
         'mcskinedit'
         'https://dl.dropbox.com/u/15956363/skintest2.jar')
 md5sums=('d55191ab04cef76faf7d3a5c4bee288d'
-         'feacb66ff8b71fbf00d13bcb0f829f43'
+         'c2b48f8d04d8470b78d7b288e3004fc7'
          'ec418807008ad3f14d55db6457a693b8')
 
 package() {
