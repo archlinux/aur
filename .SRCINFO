@@ -1,8 +1,9 @@
 pkgbase = mcskinedit
 	pkgdesc = Minecraft Skin Editor
 	pkgver = alpha3pre7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.minecraftforum.net/topic/3796-skinedit-new-version-13-april-alpha-3-pre-7/page__view__findpost__p__49969
+	changelog = ChangeLog
 	arch = any
 	license = unknown
 	depends = java-runtime
