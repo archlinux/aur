@@ -75,21 +75,21 @@ package() {
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirtd-guests
 
 
-  install -dm0755 $pkgdir/usr/lib/sysctl.d
-  mv $pkgdir/etc/sysctl.d/libvirtd $pkgdir/usr/lib/sysctl.d/libvirtd
+  install -dm0755 "$pkgdir"/usr/lib/sysctl.d
+  mv "$pkgdir"/etc/sysctl.d/libvirtd "$pkgdir"/usr/lib/sysctl.d/libvirtd.conf
 
   # systemd stuff
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
-  mv $pkgdir/lib/* $pkgdir/usr/lib/
+  mv "$pkgdir"/lib/* "$pkgdir"/usr/lib/
 
   sed -i \
 	's|After=.*|After=syslog.target network.target libvirtd.service|' \
-	$pkgdir/usr/lib/systemd/system/libvirt-guests.service
+	"$pkgdir"/usr/lib/systemd/system/libvirt-guests.service
 
   rm -rf \
-	$pkgdir/var/run \
-	$pkgdir/etc/sysconfig \
-	$pkgdir/etc/rc.d/init.d \
-	$pkgdir/lib \
-	$pkgdir/etc/sysctl.d
+	"$pkgdir"/var/run \
+	"$pkgdir"/etc/sysconfig \
+	"$pkgdir"/etc/rc.d/init.d \
+	"$pkgdir"/lib \
+	"$pkgdir"/etc/sysctl.d
 }
