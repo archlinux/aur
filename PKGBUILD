@@ -11,6 +11,7 @@ depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
   "python2-musicbrainz2")
 optdepends=("python2-pycdio")
 conflicts=("morituri" "morituri-svn")
+replaces=("morituri-svn")
 
 _gitroot=https://github.com/thomasvs/morituri.git
 _gitname=morituri

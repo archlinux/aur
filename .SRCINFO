@@ -14,6 +14,7 @@ pkgbase = morituri-git
 	optdepends = python2-pycdio
 	conflicts = morituri
 	conflicts = morituri-svn
+	replaces = morituri-svn
 
 pkgname = morituri-git
 
