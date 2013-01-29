@@ -8,7 +8,8 @@ arch=(i686 x86_64)
 url="https://github.com/thomasvs/morituri"
 license=("GPL3")
 depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
-  "python2-musicbrainz2" "python2-pycdio")
+  "python2-musicbrainz2")
+optdepends=("python2-pycdio")
 conflicts=("morituri" "morituri-svn")
 
 _gitroot=https://github.com/thomasvs/morituri.git

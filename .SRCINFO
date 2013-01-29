@@ -11,7 +11,7 @@ pkgbase = morituri-git
 	depends = gstreamer0.10
 	depends = gstreamer0.10-python
 	depends = python2-musicbrainz2
-	depends = python2-pycdio
+	optdepends = python2-pycdio
 	conflicts = morituri
 	conflicts = morituri-svn
 
