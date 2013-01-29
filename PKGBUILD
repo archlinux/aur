@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus-core' 'libxau' 'libxdmcp' 'libpcap'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-	 'iproute2' 'netcf' 'libnl' 'libx11')
+	 'iproute2' 'netcf' 'libnl' 'libx11' 'audit')
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers')
 optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
@@ -39,7 +39,7 @@ md5sums=('86a8c0acabb01e11ac84fe00624dc54e'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '0ee5b6c58590ff392a266f20f7928d1f'
          '0a96ed876ffb1fcb9dff5a9b3a609c1e'
-         '8d98e62915785686b0b6c8c070628392')
+         '020971887442ebbf1b6949e031c8dd3f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -55,8 +55,10 @@ build() {
   export RADVD=/usr/sbin/radvd
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
-	--with-init-script=systemd
-  make -j1
+	--with-init-script=systemd --with-audit \
+	--with-qemu-user=nobody --with-qemu-group=nobody \
+	--without-netcf --with-interface
+  make
   sed -i 's|/etc/sysconfig/libvirtd|/etc/conf.d/libvirtd|' daemon/libvirtd.service
   sed -i 's|/etc/sysconfig/libvirt-guests|/etc/conf.d/libvirtd-guests|' tools/libvirt-guests.service
   sed -i 's|/etc/init.d/libvirt-g|/etc/rc.d/libvirtd-g|g' tools/libvirt-guests.service
