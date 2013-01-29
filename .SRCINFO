@@ -1,8 +1,8 @@
-pkgbase = morituri-svn
+pkgbase = morituri-git
 	pkgdesc = a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy
-	pkgver = 545
-	pkgrel = 2
-	url = https://thomas.apestaart.org/morituri/trac/
+	pkgver = 20130125
+	pkgrel = 1
+	url = https://github.com/thomasvs/morituri
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = morituri-svn
 	depends = python2-musicbrainz2
 	depends = python2-pycdio
 	conflicts = morituri
+	conflicts = morituri-svn
 
-pkgname = morituri-svn
+pkgname = morituri-git
 

@@ -1,35 +1,36 @@
 # Maintainer: Caleb Reach <jtxx000@gmail.com>
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
-pkgname=morituri-svn
-pkgver=545
-pkgrel=2
+pkgname=morituri-git
+pkgver=20130125
+pkgrel=1
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
-url="https://thomas.apestaart.org/morituri/trac/"
+url="https://github.com/thomasvs/morituri"
 license=("GPL3")
 depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
-	"python2-musicbrainz2" "python2-pycdio")
-conflicts=("morituri")
+  "python2-musicbrainz2" "python2-pycdio")
+conflicts=("morituri" "morituri-svn")
 
-_svntrunk=http://thomas.apestaart.org/morituri/svn/trunk/
-_svnmod=morituri
+_gitroot=https://github.com/thomasvs/morituri.git
+_gitname=morituri
 
 build() {
   cd "$srcdir"
-  msg "Connecting to SVN server...."
+  msg "Connecting to GIT server...."
 
-  if [[ -d "$_svnmod/.svn" ]]; then
-    (cd "$_svnmod" && svn up -r "$pkgver")
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
   else
-    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
+    git clone "$_gitroot" "$_gitname"
   fi
 
-  msg "SVN checkout done or server timeout"
+  msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf "$srcdir/$_svnmod-build"
-  cp -r "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
   #
   # BUILD HERE
@@ -45,8 +46,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_svnmod-build"
-  make DESTDIR="$pkgdir" install || return 1
+  cd "$srcdir/$_gitname-build"
+  make DESTDIR="$pkgdir/" install || return 1
   install -Dm 0644 "README" "$pkgdir/usr/share/doc/morituri/README"
 }
 
