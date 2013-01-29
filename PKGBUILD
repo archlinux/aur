@@ -4,7 +4,7 @@
 pkgname=cuneiform
 pkgver=1.1.0
 _dpkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/cuneiform-linux"
@@ -23,7 +23,11 @@ build() {
   mkdir builddir
   cd builddir
 
-  cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake \
+	-DCMAKE_BUILD_TYPE=release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DImageMagick_Magick++_LIBRARY=/usr/lib/libMagick++-Q16.so.7 \
+	..
   make
 }
 
