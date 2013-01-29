@@ -1,6 +1,6 @@
 pkgbase = reposurgeon
 	pkgdesc = Performs surgery on version control repositories.
-	pkgver = 2.13
+	pkgver = 2.17
 	pkgrel = 1
 	url = http://www.catb.org/esr/reposurgeon/
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = reposurgeon
 	makedepends = xmlto
 	depends = python2
 	optdepends = bzr
-	optdepends = cvsps>=3.3
+	optdepends = cvs-fast-export
 	optdepends = darcs
 	optdepends = git
 	optdepends = mercurial
 	optdepends = rcs-fast-export
 	optdepends = subversion
-	source = http://www.catb.org/~esr/reposurgeon/reposurgeon-2.13.tar.gz
-	sha256sums = d7c98997d79cd0099a6ccb686b15dc84d331ba3e480ce6e1905a003d271d7766
+	source = http://www.catb.org/~esr/reposurgeon/reposurgeon-2.17.tar.gz
+	sha256sums = 17ad4e8b7c65aaedc749b0be8a6d96f76fa0ff1601342b89da3d858384214e58
 
 pkgname = reposurgeon
 
