@@ -5,7 +5,7 @@
 pkgname=lockdev
 pkgver=1.0.3_1.5
 _pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Run-time shared library for locking devices, using _both_ FSSTND and SVr4 methods.'
 url='http://packages.qa.debian.org/l/lockdev.html'
 license=("GPL")
@@ -21,8 +21,8 @@ build() {
   patch -p1 -i "../${pkgname}_${pkgver/_/-}.diff"
   sed -i "s|CFLAGS	= -g|CFLAGS	= -g -fPIC|" Makefile
 
-  make shared CFLAGS="${CFLAGS} -D_PATH_LOCK=\\\"/run/lock/lockdev\\\""
-  make static CFLAGS="${CFLAGS} -D_PATH_LOCK=\\\"/run/lock/lockdev\\\""
+  make shared CFLAGS="${CFLAGS} -D_PATH_LOCK=\\\"/run/lock/lockdev\\\" -fPIC"
+  make static CFLAGS="${CFLAGS} -D_PATH_LOCK=\\\"/run/lock/lockdev\\\" -fPIC"
 }
 
 package() {
