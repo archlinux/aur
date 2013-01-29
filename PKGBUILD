@@ -2,7 +2,7 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
 
 pkgname=openmw-git
-pkgver=20121231
+pkgver=20130129
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -74,7 +74,7 @@ package() {
 
   # Custom Licences
   install -d -m755 "$pkgdir"/usr/share/licenses/openmw
-  install -D -m644 "Dejavu_lgc_font_license.txt" "$pkgdir/usr/share/licenses/openmw/"
+  install -D -m644 "DejaVu Font License.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "Daedric Font License.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "OFL.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "extern/shiny/License.txt" "$pkgdir/usr/share/licenses/openmw/Shiny License.txt"
