@@ -37,7 +37,6 @@ build() {
   #
   # BUILD HERE
   #
-  sed -i '27s/\<python\>/&2/' doc/Makefile.am
   ./autogen.sh
 
   sed -i '1s/\<python\>/&2/' bin/rip.in etc/bash_completion.d/bash-compgen
