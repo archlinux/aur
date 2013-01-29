@@ -31,7 +31,7 @@ build() {
   msg "Starting build..."
 
   rm -rf "$srcdir/$_gitname-build"
-  cp -R "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cp -R --dereference "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
   #
