@@ -1,6 +1,6 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 pkgname=par2cmdline-git
-pkgver=20121210
+pkgver=20130129
 pkgrel=1
 pkgdesc="A file verification and repair tool"
 url="https://github.com/BlackIkeEagle/par2cmdline"
@@ -54,10 +54,10 @@ build() {
 	make
 }
 
-check() {
-	cd ${_gitname}-build
-	make check
-}
+#check() {
+	#cd ${_gitname}-build
+	#make check
+#}
 
 package() {
 	cd ${_gitname}-build
@@ -65,3 +65,5 @@ package() {
 
 	git show | grep -m 1 commit | sed 's/commit //' > ${startdir}/.githash_${CARCH}
 }
+
+# vim:set ft=sh:
