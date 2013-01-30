@@ -3,7 +3,7 @@
 
 pkgname=unarchiver
 epoch=1
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="An Objective-C application for uncompressing archive files"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('gnustep-base' 'openssl' 'bzip2' 'icu' 'gcc-libs' 'zlib')
 makedepends=('gcc-objc')
 source=("http://theunarchiver.googlecode.com/files/unar${pkgver}_src.zip"
         "native_obj_exceptions.patch")
-sha1sums=('eb028ecbfdd9c0a87d56268b69f87ac5a12d6f0b'
+sha1sums=('972a37909ab7fde53e1561dfe0fb6a729d9d59dc'
           'b8024026607dc2de758479b73d8b01ca6f692b59')
 
 build() {
