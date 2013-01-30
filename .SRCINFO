@@ -1,6 +1,6 @@
 pkgbase = python-discid
 	pkgdesc = Python binding of Libdiscid
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://python-discid.readthedocs.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-discid
 	depends = python
 	depends = libdiscid
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/d/discid/discid-0.2.0.tar.gz
-	md5sums = aa3ebd92250d575aef961d51b2f6b5c3
+	source = http://pypi.python.org/packages/source/d/discid/discid-0.2.1.tar.gz
+	md5sums = f254e552836cd8e3d2ceb0c8de026263
 
 pkgname = python-discid
 
