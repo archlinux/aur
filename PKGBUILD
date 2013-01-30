@@ -39,7 +39,7 @@ build() {
 	msg "creating build directory"
 	cd ${srcdir}
 	[ -d ${_gitname}-build ] && rm -rf ${_gitname}-build
-	cp -a ${_gitname} ${_gitname}-build
+	/usr/share/git/workdir/git-new-workdir ${_gitname} ${_gitname}-build master
 
 	msg "Starting make..."
 	cd ${_gitname}-build
