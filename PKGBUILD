@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -34,7 +34,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
-md5sums=('86a8c0acabb01e11ac84fe00624dc54e'
+md5sums=('7e268ed702c4331d393e5b43449cae13'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '0ee5b6c58590ff392a266f20f7928d1f'
@@ -75,10 +75,6 @@ package() {
 
   install -D -m755 "$srcdir"/libvirtd-guests.rc.d "$pkgdir"/etc/rc.d/libvirtd-guests
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirtd-guests
-
-
-  install -dm0755 "$pkgdir"/usr/lib/sysctl.d
-  mv "$pkgdir"/etc/sysctl.d/libvirtd "$pkgdir"/usr/lib/sysctl.d/libvirtd.conf
 
   # systemd stuff
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
