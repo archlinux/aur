@@ -7,8 +7,8 @@
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
 
 pkgname=opera
-_ver=12.12
-_build=1707
+_ver=12.13
+_build=1734
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='Fast and secure web browser and Internet suite'
@@ -22,14 +22,18 @@ optdepends=('gstreamer0.10-base-plugins: HTML5 Video support'
 install=$pkgname.install
 options=(!strip !zipman)
 
+
+  #source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.i386.linux.tar.xz
+  #http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.x86_64.linux.tar.xz)
+
 if [[ $CARCH == i686 ]]; then
   _arch=i386
-  source=(http://ftp.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('7f766faa08d62be616ea43cf4bb026c8b6afb5a51fa8eae1227f16d5658779ca')
+  source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
+  sha256sums=('8f5d825ad95122c79bb612fa252732f59fd9f97417d976f9503753dda37ef1b4')
 elif [[ $CARCH == x86_64 ]]; then
   _arch=$CARCH
-  source=(http://ftp.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('1ba428bd5acf4f17a8ef0f970fb9e1334477468abbf21612dd8c2eec5fff9129')
+  source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
+  sha256sums=('d980e7e2a362d89c712022b1a1e2822bf4fcc16d7858c1b9111c2d579ef9c2c9')
 fi
 
 package() {
