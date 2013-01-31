@@ -1,67 +1,47 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Liganic <liganic-aur@gmx.net>
 pkgname=opencollada
-pkgver=869
+pkgver=20130130
 pkgrel=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
-url="https://code.google.com/p/opencollada/"
+url="https://github.com/KhronosGroup/OpenCOLLADA"
 license=('GPL')
-depends=('libxml2')
-makedepends=('subversion' 'ruby' 'cmake')
-options=(!libtool !strip)
+depends=('libxml2' 'pcre')
+makedepends=('git' 'cmake')
 
-_svntrunk=http://opencollada.googlecode.com/svn/trunk/
-_svnmod=opencollada
+_gitroot=git://github.com/KhronosGroup/OpenCOLLADA.git
+_gitname=opencollada
 
 build() {
   cd "$srcdir"
-  msg "Connecting to SVN server...."
+  msg "Connecting to GIT server...."
 
-  if [[ -d "$_svnmod/.svn" ]]; then
-    (cd "$_svnmod" && svn up -r "$pkgver")
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
   else
-    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
+    git clone "$_gitroot" "$_gitname"
   fi
 
-  msg "SVN checkout done or server timeout"
+  msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  _builddir="$srcdir/$_svnmod-build"
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
-  rm -rf $_builddir
-  cp -r "$srcdir/$_svnmod" $_builddir
-  cd $_builddir
-
-  mkdir cmake
-  cd cmake
-  cmake ../ 
-  cd $_builddir/cmake
+  [[ -d build ]] && rm -r build
+  mkdir build && cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_SHARED=ON
   make
-
-#  cd scripts/
-#  chmod +x unixbuild.sh
-#  ./unixbuild.sh $pkgdir/usr/
 }
 
 package() {
-  _builddir="$srcdir/$_svnmod-build"
-#  sed -i "s/libdir='.*'/libdir=\'\/usr\/lib\'/" $pkgdir/usr/lib/*.la*
+  cd "$srcdir/$_gitname-build/build"
 
-# Headers
-  rm -rf `find $_builddir -type d -name .svn`
-  mkdir -p $pkgdir/usr/include/opencollada/
-  cd $_builddir
-  _include_dirs=$(find . -type d -name include -and -not -path '*Externals*' -print)
-  for dir in $_include_dirs;do
-    mkdir -p $pkgdir/usr/include/opencollada/${dir}
-    cp -r ${dir}/* $pkgdir/usr/include/opencollada/${dir}/..
-   done
-
-  rm -rf $pkgdir/usr/include/opencollada/generated*
-
-  cp -r $_builddir/cmake/lib/ $pkgdir/usr/
-  cp -r $_builddir/cmake/bin/ $pkgdir/usr/
+  make DESTDIR=$pkgdir install
 }
 
 # vim:set ts=2 sw=2 et:
