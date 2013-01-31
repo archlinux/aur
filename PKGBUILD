@@ -33,7 +33,8 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
-	libvirt.tmpfiles.d)
+	libvirt.tmpfiles.d
+	python.patch)
 md5sums=('7e268ed702c4331d393e5b43449cae13'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
@@ -50,6 +51,8 @@ build() {
     sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
+
+  patch -p1 <$srcdir/python.patch
 
   export LDFLAGS=-lX11
   export RADVD=/usr/sbin/radvd
