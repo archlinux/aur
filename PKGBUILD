@@ -1,16 +1,17 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=efl-svn
-pkgver=82675
+pkgver=83565
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
-depends=('check' 'curl' 'dbus' 'mesa' 'giflib' 'libtiff' 'libpulse' 'udev' 'lua'
-         'bullet' 'fribidi' 'liblinebreak' 'libxp' 'gstreamer0.10-base-plugins'
-         'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'shared-mime-info'
-         'libexif')
+depends=('bullet' 'curl' 'dbus' 'udev' 'lua' 'shared-mime-info'
+         'fribidi' 'harfbuzz' 'fontconfig'
+         'mesa' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif'
+         'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
+         'gstreamer0.10-base-plugins')
 makedepends=('subversion')
 optdepends=('python2: compare Eina benchmarks'
             'evas_generic_loaders-svn: More video/graphic/icon loaders for Evas'
@@ -58,6 +59,7 @@ build() {
   ./autogen.sh --prefix=/usr \
 	--with-x11=xlib \
 	--with-opengl=full \
+	--with-tests=none \
 	--enable-harfbuzz \
 	--enable-fb \
 	--disable-tslib
