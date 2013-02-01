@@ -4,7 +4,7 @@
 
 pkgname=librime
 pkgver=0.9.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/rimeime/"
