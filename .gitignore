@@ -1,0 +1,5 @@
+*.deb
+*.xz
+pkg
+src
+add-repo.sh
