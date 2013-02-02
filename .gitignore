@@ -1,5 +1,6 @@
 *.deb
 *.xz
+*.tar.gz
 pkg
 src
 add-repo.sh
