@@ -11,20 +11,23 @@ url="https://github.com/codebrainz/geany-zencoding"
 license=('GPL')
 depends=('geany' 'python2')
 makedepends=('intltool')
-source=("https://github.com/codebrainz/geany-zencoding/tarball/51334a0259d48a972290dba4c471e1c1aa234931" "geany-zencoding.patch")
-sha256sums=('bc2513582309bc7c787947ce1163ff5616855354ab1c1bf4f0b96da711ea72b8'
-            '0f885d5443ad868595c8628118e9aba14f8a4a4d85fac8bb767ef21d7ec493ca')
+_gitversion="026cd851af95527b766ee3e73a0394ee164cc2bf"
+source=("https://github.com/codebrainz/geany-zencoding/archive/$_gitversion.tar.gz")
+sha256sums=('7a9e3fdd754970931e679cd2306cfdbb72b7ee7899cc65b939a15cc4d2865927')
 
 build() {
-  cd "$srcdir/codebrainz-geany-zencoding-51334a0/"
-  patch -p1 -i $srcdir/geany-zencoding.patch
+  sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+    $(find "$srcdir/geany-zencoding-$_gitversion/" -name '*.py')
+  sed -i 's/\[python\]/\[python2\]/g' $srcdir/geany-zencoding-$_gitversion/configure.ac
+
+  cd "$srcdir/geany-zencoding-$_gitversion/"
   ./autogen.sh
   ./configure --prefix=`pkg-config --variable=prefix geany`
   make
 }
 
 package() {
-  cd "$srcdir/codebrainz-geany-zencoding-51334a0/"
+  cd "$srcdir/geany-zencoding-$_gitversion/"
   make DESTDIR="$pkgdir" install
 }
 

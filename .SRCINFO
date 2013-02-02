@@ -9,10 +9,8 @@ pkgbase = geany-zencoding
 	makedepends = intltool
 	depends = geany
 	depends = python2
-	source = https://github.com/codebrainz/geany-zencoding/tarball/51334a0259d48a972290dba4c471e1c1aa234931
-	source = geany-zencoding.patch
-	sha256sums = bc2513582309bc7c787947ce1163ff5616855354ab1c1bf4f0b96da711ea72b8
-	sha256sums = 0f885d5443ad868595c8628118e9aba14f8a4a4d85fac8bb767ef21d7ec493ca
+	source = https://github.com/codebrainz/geany-zencoding/archive/026cd851af95527b766ee3e73a0394ee164cc2bf.tar.gz
+	sha256sums = 7a9e3fdd754970931e679cd2306cfdbb72b7ee7899cc65b939a15cc4d2865927
 
 pkgname = geany-zencoding
 
