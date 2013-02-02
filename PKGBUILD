@@ -3,7 +3,7 @@
 
 pkgname='perl-file-next'
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="File-finding iterator"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -19,8 +19,8 @@ _distdir="${srcdir}/File-Next-$pkgver"
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      PERL_MM_OPT="INSTALLDIRS=vendor"     \
+      PERL_MB_OPT="--installdirs vendor" \
       MODULEBUILDRC=/dev/null
 
     cd "$_distdir"
@@ -38,7 +38,7 @@ check() {
 
 package() {
   cd "$_distdir"
-  make install
+  make DESTDIR="$pkgdir" install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
