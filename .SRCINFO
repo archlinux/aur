@@ -1,0 +1,18 @@
+pkgbase = geany-zencoding
+	pkgdesc = Zen Coding plugin for geany
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://github.com/codebrainz/geany-zencoding
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = intltool
+	depends = geany
+	depends = python2
+	source = https://github.com/codebrainz/geany-zencoding/tarball/51334a0259d48a972290dba4c471e1c1aa234931
+	source = geany-zencoding.patch
+	sha256sums = bc2513582309bc7c787947ce1163ff5616855354ab1c1bf4f0b96da711ea72b8
+	sha256sums = 0f885d5443ad868595c8628118e9aba14f8a4a4d85fac8bb767ef21d7ec493ca
+
+pkgname = geany-zencoding
+
