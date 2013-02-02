@@ -1,5 +1,6 @@
 # Maintainer: Matt Harrison <matt@mistbyte.com>
 # Contributor: Sagar Chalise <chalisesagar@gmail.com>
+# This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/geany-zencoding
 
 pkgname=geany-zencoding
 pkgver=0.22
