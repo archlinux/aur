@@ -21,7 +21,7 @@ build() {
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
+    cd "$_gitname" && git pull origin && git submodule update --init
     msg "The local files are updated."
   else
     git clone --recursive "$_gitroot" "$_gitname"
