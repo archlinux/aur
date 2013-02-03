@@ -39,8 +39,6 @@ build() {
   #
   ./autogen.sh
 
-  sed -i '1s/\<python\>/&2/' bin/rip.in etc/bash_completion.d/bash-compgen
-
   export PYTHON="python2"
   ./configure --prefix=/usr --sysconfdir=/etc 
   make
