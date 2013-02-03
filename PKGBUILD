@@ -3,7 +3,7 @@
 
 pkgname=mono-addins
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A generic framework for creating extensible applications and for creating libraries which extend those applications"
 arch=('i686' 'x86_64')
 url="http://www.mono-project.com/Mono.Addins"
@@ -16,12 +16,15 @@ md5sums=('afbbe5e9fdf9b03911bc8e6b94feb60b')
 build() {
   export MONO_SHARED_DIR="${srcdir}/.wabi"
   mkdir -p "${MONO_SHARED_DIR}"
+  
   cd ${srcdir}/${pkgname}-${pkgver}
+  ./configure --prefix=/usr --enable-gui
+  make
+} 
 
-  ./configure --prefix=/usr --enable-gui || return 1
-  make || return 1
-  make GACUTIL="/usr/bin/gacutil -root ${pkgdir}/usr/lib"  DESTDIR=${pkgdir} install || return 1
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make GACUTIL="/usr/bin/gacutil -root ${pkgdir}/usr/lib"  DESTDIR=${pkgdir} install
 
-  install -m755 -d ${pkgdir}/usr/share/licenses/${pkgname}
-  install -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
+  install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
