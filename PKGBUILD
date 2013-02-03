@@ -2,7 +2,7 @@
 # Contributor: Caleb Reach <jtxx000@gmail.com>
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri-git
-pkgver=20130125
+pkgver=20130203
 pkgrel=1
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
@@ -13,6 +13,7 @@ depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
 optdepends=("python2-pycdio")
 conflicts=("morituri" "morituri-svn")
 replaces=("morituri-svn")
+changelog=ChangeLog
 
 _gitroot=https://github.com/thomasvs/morituri.git
 _gitname=morituri

@@ -1,8 +1,9 @@
 pkgbase = morituri-git
 	pkgdesc = a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy
-	pkgver = 20130125
+	pkgver = 20130203
 	pkgrel = 1
 	url = https://github.com/thomasvs/morituri
+	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = GPL3
