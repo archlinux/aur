@@ -1,4 +1,5 @@
-# Maintainer: Caleb Reach <jtxx000@gmail.com>
+# Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
+# Contributor: Caleb Reach <jtxx000@gmail.com>
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri-git
 pkgver=20130125
