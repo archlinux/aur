@@ -12,7 +12,7 @@ depends=('ruby' 'vim')
 source=("http://www.vim.org/scripts/download_script.php?src_id=$_scriptid" license.txt)
 md5sums=('4ba364a003903ace6fd51ccbe6b86d78' 'cd49910a3dde6fe0a7e24ebe8cbf7066')
 
-build() {
+package() {
   cd "$srcdir"
   local installpath="$pkgdir/usr/share/vim/vimfiles"
 
