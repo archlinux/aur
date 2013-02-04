@@ -19,6 +19,10 @@ build() {
   ln -s ${srcdir}/$pkgname-$pkgver/doc/Doxyfile.in ${srcdir}/$pkgname-$pkgver/doc/Doxyfile
   sed -i 's|{css,gif,html,png}|{css,html,png}|' doc/Makefile
   make
+}
+
+package() {
+  cd ${srcdir}/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
   install -D -m644 "${srcdir}/$pkgname-$pkgver/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
