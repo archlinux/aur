@@ -17,5 +17,9 @@ build() {
   export LDFLAGS=-lX11
   ./configure --sysconfdir=/etc --prefix=/usr
   make
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
