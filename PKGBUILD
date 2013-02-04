@@ -17,7 +17,7 @@ source=(http://flyspray.org/flyspray-$pkgver.zip
 md5sums=('3a218c5447d64af18f19bc63bb825e58'
          '1e5fdc4d2ae316e840960afd39d36061')
 
-build() {
+package() {
   mkdir $srcdir/flyspray-${pkgver}
   (cd $srcdir/flyspray-${pkgver} && \
 	unzip ../flyspray-$pkgver.zip)
