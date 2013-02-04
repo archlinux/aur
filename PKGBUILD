@@ -20,5 +20,9 @@ build() {
   patch -p1 <$srcdir/build-fix.patch
   ./configure --prefix=/usr
   make
+}
+
+package() {
+  cd $srcdir/gtk+extra-$pkgver
   make DESTDIR=$pkgdir install
 }
