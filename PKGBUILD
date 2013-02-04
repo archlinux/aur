@@ -19,6 +19,10 @@ build() {
   sed -i "s:/usr/bin/install:/bin/install:" Makefile
 
   make
+}
+
+package() {
+  cd ${srcdir}/$pkgname-$pkgver
 
   install -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/man/man1
   make prefix=${pkgdir}/usr mandir=${pkgdir}/usr/share/man/man1 install
