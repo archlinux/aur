@@ -7,8 +7,8 @@
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
 
 pkgname=opera
-_ver=12.13
-_build=1734
+_ver=12.14
+_build=1738
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='Fast and secure web browser and Internet suite'
@@ -23,17 +23,17 @@ install=$pkgname.install
 options=(!strip !zipman)
 
 
-  #source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.i386.linux.tar.xz
-  #http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.x86_64.linux.tar.xz)
+#  source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.i386.linux.tar.xz
+#  http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.x86_64.linux.tar.xz)
 
 if [[ $CARCH == i686 ]]; then
   _arch=i386
   source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('8f5d825ad95122c79bb612fa252732f59fd9f97417d976f9503753dda37ef1b4')
+  sha256sums=('00721be8475bd967ff0017d3db6c57d9d03b329bdcab2fba44231afccb0b9bd9')
 elif [[ $CARCH == x86_64 ]]; then
   _arch=$CARCH
   source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('d980e7e2a362d89c712022b1a1e2822bf4fcc16d7858c1b9111c2d579ef9c2c9')
+  sha256sums=('d38c2a7ae40ba3b0ba9829409167c71ba1f2125b88fcddaceda9aca6416d206e')
 fi
 
 package() {
