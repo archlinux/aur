@@ -6,8 +6,8 @@
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
 
 pkgbase=boost
-pkgname=('boost-libs' 'boost')
-pkgver=1.52.0
+pkgname=('boost' 'boost-libs' 'boost-static')
+pkgver=1.53.0
 _boostver=${pkgver//./_}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url="http://www.boost.org/"
 makedepends=('icu' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz)
 license=('custom')
-sha1sums=('1120430030315b0a94b6d63fc04662960db2444c')
+sha1sums=('0e4ef26cc7780c6bbc63987ef2f29be920e2395b')
 
 _stagedir="${srcdir}/stagedir"
 
@@ -106,7 +106,21 @@ package_boost-libs() {
 
     install -d "${pkgdir}/usr/lib"
     #shared libs
-    cp -r "${_stagedir}"/lib/*.so{,.*} "${pkgdir}/usr/lib/"
+    cp -a "${_stagedir}"/lib/*.so{,.*} "${pkgdir}/usr/lib/"
+
+    # license
+    install -D -m644 "${srcdir}/${pkgbase}_${_boostver}/LICENSE_1_0.txt" \
+        "${pkgdir}"/usr/share/licenses/boost-libs/LICENSE_1_0.txt
+}
+
+package_boost-static() {
+    pkgdesc="The Boost C++ static development libraries"
+    depends=('boost' 'bzip2' 'zlib' 'icu')
+    optdepends=('openmpi: for mpi support')
+
+    install -d "${pkgdir}/usr/lib"
+    #shared libs
+    install -m 644 "${_stagedir}"/lib/*.a "${pkgdir}/usr/lib/"
 
     # license
     install -D -m644 "${srcdir}/${pkgbase}_${_boostver}/LICENSE_1_0.txt" \
