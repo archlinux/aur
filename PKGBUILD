@@ -6,7 +6,7 @@ __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130120
+pkgver=20130205
 pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
