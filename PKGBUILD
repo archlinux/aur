@@ -19,7 +19,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 md5sums=('21223369d682bcf44bcdfe1521095983'
          'ec61c44f37585a768d41c0439101ef9c'
          '06a07ebb855809edf37ff2f980b9a07d'
-         'c8eaf98829288430609ab534c5c0b96a'
+         'c608bf2cf124fd80b718fce90b82a807'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
