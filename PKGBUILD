@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Sébastien Luttringer <seblu@archlinux.org>
+# Maintainer: Sébastien Luttringer
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
