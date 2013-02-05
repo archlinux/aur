@@ -23,7 +23,7 @@ md5sums=('da178df2c119c696c08c09dc9eb01994')
 
 build() {
  # get rid of that .wapi errors; thanks to brice
-  export MONO_SHARED_DIR="${startdir}/src/weird"
+  export MONO_SHARED_DIR="${srcdir}/weird"
   mkdir -p "${MONO_SHARED_DIR}"
   cd "$srcdir/$pkgname-$pkgver"
   autoreconf -fi 
