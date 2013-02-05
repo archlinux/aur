@@ -3,13 +3,13 @@
 # Contributor: Lubosz Sarnecki <lubosz at gmail>
 
 pkgname=openni-git
-pkgver=20120518
+pkgver=20130205
 pkgrel=1
 pkgdesc="The OpenNI Framework provides the interface for physical devices and for middleware components"
 arch=('i686' 'x86_64')
 url="http://www.openni.org/"
 license=('GPL')
-depends=('freeglut' 'libusb' 'java-environment')
+depends=('freeglut' 'mesa' 'libusb' 'java-environment')
 makedepends=('git')
 provides=('openni')
 conflicts=('openni')
