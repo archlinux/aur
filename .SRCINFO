@@ -1,0 +1,20 @@
+pkgbase = python2-requests-git
+	pkgdesc = Python HTTP for Humans.
+	pkgver = 20130206
+	pkgrel = 1
+	url = http://python-requests.org
+	arch = any
+	license = custom: ISC
+	makedepends = git
+	makedepends = python2-distribute
+	depends = python2
+	optdepends = python2-certifi: SSL support
+	optdepends = python2-grequests: asynchronous requests with gevent
+	optdepends = python2-simplejson
+	provides = python2-requests
+	conflicts = python2-requests
+	source = certs.patch
+	sha256sums = 482fc40ba146d2200771a690b3bedf6eddc9c3224d6f7b5ba529124039b07246
+
+pkgname = python2-requests-git
+

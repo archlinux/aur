@@ -1,0 +1,17 @@
+--- requests/certs.py	2013-02-06 22:16:59.811389080 +0100
++++ requests/certs.py.diff	2013-02-06 22:20:07.051490687 +0100
+@@ -12,13 +12,11 @@
+ packaged CA bundle.
+ """
+ 
+-import os.path
+-
+ 
+ def where():
+     """Return the preferred certificate bundle."""
+     # vendored bundle inside Requests
+-    return os.path.join(os.path.dirname(__file__), 'cacert.pem')
++    return "/etc/ssl/certs/ca-certificates.crt"
+ 
+ if __name__ == '__main__':
+     print(where())
