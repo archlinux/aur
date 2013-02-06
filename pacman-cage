@@ -53,9 +53,7 @@ if [[ "$1" != "" ]]; then
         dbroot=$1
 fi
 
-if [[ $(id -u) != 0 ]]; then
-        die "You must be root to cage the database"
-fi
+[[ $(id -u) != 0 ]] && die "You must be root to cage the database"
 
 # added by wain: make sure kernel support loop device
 if ! zcat /proc/config.gz | grep "BLK_DEV_LOOP=\(y\|m\)" >/dev/null; then
@@ -72,7 +70,7 @@ fi
 touch /tmp/pacman.lck
 
 # write to pacman.log
-echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Starting and preparing pacman database caging process ..." >> ${pacmanlog}
+echo "[ $(date '+%Y-%m-%d %H:%M ')] Pacman-cage [cmd] >> Starting and preparing pacman database caging process ..." >> $pacmanlog
 
 # step 1: sum the old db
 echo "==> md5sum'ing the old database..."
@@ -100,7 +98,7 @@ echo "==> removing temporary mount point..."
 rmdir /mnt/tmp-pacman
 
 echo "==> moving old /var/lib/pacman to /var/lib/pacman.bak..."
-[[ -d /var/lib/pacman.bak ]] && rm -fr /var/lib/pacman.bak
+[[ -d /var/lib/pacman.bak ]] && rm -rf /var/lib/pacman.bak
 mv /var/lib/pacman /var/lib/pacman.bak
 
 echo "==> creating new pacman db mount point @ $dbroot..."
@@ -119,7 +117,7 @@ if [[ $? != 0 ]]; then
         umount $dbroot
         rm $pacmandb
         mv $dbroot.bak $dbroot
-        echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Something went wrong. Old database was restored." >> ${pacmanlog}
+        echo "[ $(date '+%Y-%m-%d %H:%M ')] Pacman-cage [cmd] >> Something went wrong. Old database was restored." >> $pacmanlog
         die_r "integrity check FAILED, reverting to old database"
 fi
 
@@ -129,7 +127,7 @@ fi
 
 rm -f /tmp/pacman.lck /tmp/pacsums.old /tmp/pacsums.new
 
-echo "[ $(date "+%Y-%m-%d %H:%M ")] Pacman-cage [cmd] >> Pacman database has been caged." >> ${pacmanlog}
+echo "[ $(date '+%Y-%m-%d %H:%M ')] Pacman-cage [cmd] >> Pacman database has been caged." >> $pacmanlog
 echo
 echo "Finished.  Your pacman database has been caged!.  May the speedy pacman be with you."
 echo
