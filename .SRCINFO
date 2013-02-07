@@ -1,7 +1,7 @@
 pkgbase = chocolate-doom
 	pkgdesc = A Doom port reproducing the behavior of the original DOS version
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
 	arch = i686
