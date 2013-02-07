@@ -3,12 +3,12 @@
 
 pkgname=mediaelch
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a MediaManager for XBMC. Information about Movies, TV Shows and Concerts are stored as nfo files. Fanarts are downloaded automatically from fanart.tv"
 arch=('x86_64' 'i686')
 url="http://www.mediaelch.de/"
 license=('GPL')
-depends=('qt' 'libmediainfo')
+depends=('libmediainfo' 'phonon')
 makedepends=()
 _gitversion="ee7643272f74ac296cd74e84c9022910187064bf"
 source=("https://github.com/Komet/MediaElch/archive/$_gitversion.tar.gz")
