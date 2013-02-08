@@ -15,7 +15,7 @@ _buildtype="Release"
 
 pkgname=tomahawk
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -26,7 +26,7 @@ optdepends=('tomahawk-spotify-git: spotify resolver')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
 source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('517d0c95cc7777b6c29b45a4e650a8ea')
+md5sums=('332aed990f6df337a200b7bd5016970e')
 
 install=tomahawk.install
 
