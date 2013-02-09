@@ -1,0 +1,64 @@
+diff --git a/Makefile b/Makefile
+index f205b67..5a02816 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,27 +1,28 @@
+ VERSION=18
+ 
+-ARCH=$(shell $(CC) -dumpmachine | sed "s/\(-\).*$$//")
+-LIBDIR=$(shell echo $$(cd /usr/lib/$$(gcc -print-multi-os-directory); pwd))
++ARCH?=$(shell $(CC) -dumpmachine | sed "s/\(-\).*$$//")
++LIBDIR?=$(shell echo $$(cd /usr/lib/$$(gcc -print-multi-os-directory); pwd))
+ LIBEFIDIR=$(or $(wildcard $(LIBDIR)/gnuefi), $(LIBDIR))
+ 
+ ifeq ($(ARCH),i686)
+-	ARCH=ia32
++	EFI_ARCH=ia32
+ 	MACHINE_TYPE_NAME=ia32
+ endif
+ 
+ ifeq ($(ARCH),x86_64)
++	EFI_ARCH=x86_64
+ 	MACHINE_TYPE_NAME=x64
+ 	ARCH_CFLAGS= \
+ 		-DEFI_FUNCTION_WRAPPER \
+ 		-mno-red-zone
+ endif
+ 
+-CPPFLAGS = \
++CPPFLAGS += \
+ 	-I. \
+ 	-I/usr/include/efi \
+-	-I/usr/include/efi/$(ARCH)
++	-I/usr/include/efi/$(EFI_ARCH)
+ 
+-CFLAGS = \
++CFLAGS += \
+ 	-DVERSION=$(VERSION) \
+ 	-Wall \
+ 	-Wextra \
+@@ -36,13 +37,13 @@ CFLAGS = \
+ 	-Wsign-compare \
+ 	$(ARCH_CFLAGS)
+ 
+-LDFLAGS = -T $(LIBEFIDIR)/elf_$(ARCH)_efi.lds \
++LDFLAGS = -T $(LIBEFIDIR)/elf_$(EFI_ARCH)_efi.lds \
+ 	-shared \
+ 	-Bsymbolic \
+ 	-nostdlib \
+ 	-znocombreloc \
+ 	-L $(LIBDIR) \
+-	$(LIBEFIDIR)/crt0-efi-$(ARCH).o
++	$(LIBEFIDIR)/crt0-efi-$(EFI_ARCH).o
+ 
+ %.o: %.c
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+@@ -50,7 +51,7 @@ LDFLAGS = -T $(LIBEFIDIR)/elf_$(ARCH)_efi.lds \
+ gummiboot$(MACHINE_TYPE_NAME).efi: gummiboot.so
+ 	objcopy -j .text -j .sdata -j .data -j .dynamic \
+ 	  -j .dynsym -j .rel -j .rela -j .reloc -j .eh_frame \
+-	  --target=efi-app-$(ARCH) $< $@
++	  --target=efi-app-$(EFI_ARCH) $< $@
+ 
+ gummiboot.so: gummiboot.o
+ 	$(LD) $(LDFLAGS) gummiboot.o -o $@ -lefi -lgnuefi \

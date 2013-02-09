@@ -5,7 +5,7 @@
 _pkgname="gummiboot-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130205
+pkgver=20130209
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -20,10 +20,12 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 options=('!strip')
 
-source=('loader.conf'
+source=('gummiboot-fix-makefile.patch'
+        'loader.conf'
         'arch.conf')
 
-sha1sums=('82a59f90d9138c26f8db52bb8e94991602cf1edd'
+sha1sums=('ada07236984c19957a63dd1c1df59913065db7a9'
+          '82a59f90d9138c26f8db52bb8e94991602cf1edd'
           '007178db11d524b15eb4566d930752d211e7dd78')
 
 _gitroot="git://anongit.freedesktop.org/gummiboot"
@@ -66,11 +68,10 @@ build() {
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
+	cd "${srcdir}/${_gitname}_build/"
 	
-	## Fix Makefiles to enable compile for both x86_64 and i386 UEFI
-	sed 's|ARCH=|ARCH?=|g' -i "${srcdir}/${_gitname}_build/Makefile"
-	sed 's|LIBDIR=|LIBDIR?=|g' -i "${srcdir}/${_gitname}_build/Makefile"
-	sed 's|CFLAGS =|CFLAGS +=|g'  -i "${srcdir}/${_gitname}_build/Makefile"
+	## Fix Makefile to enable compile for both x86_64 and i386 UEFI
+	patch -Np1 -i "${srcdir}/gummiboot-fix-makefile.patch" || true
 	
 	## Compile gummiboot for x86_64 UEFI
 	rm -rf "${srcdir}/${_gitname}_build-x86_64/" || true
@@ -80,7 +81,7 @@ build() {
 	ARCH="x86_64" make clean
 	echo
 	
-	CFLAGS="-m64" ARCH="x86_64" LIBDIR="/usr/lib" make
+	ARCH="x86_64" CFLAGS="-m64" LIBDIR="/usr/lib" make
 	echo
 	
 	## Compile gummiboot for i386 aka IA32 UEFI
@@ -88,10 +89,10 @@ build() {
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
 	cd "${srcdir}/${_gitname}_build-i386/"
 	
-	ARCH="ia32" make clean
+	ARCH="i686" make clean
 	echo
 	
-	CFLAGS="-m32" ARCH="ia32" LIBDIR="/usr/lib32" make
+	ARCH="i686" CFLAGS="-m32" LIBDIR="/usr/lib32" make
 	echo
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
@@ -103,8 +104,8 @@ package() {
 	install -d "${pkgdir}/usr/lib/gummiboot/loader/entries/"
 	
 	## Install gummiboot UEFI applications
-	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/gummiboot.efi" "${pkgdir}/usr/lib/gummiboot/gummibootx64.efi"
-	install -D -m0644 "${srcdir}/${_gitname}_build-i386/gummiboot.efi" "${pkgdir}/usr/lib/gummiboot/gummibootia32.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/gummibootx64.efi" "${pkgdir}/usr/lib/gummiboot/gummibootx64.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build-i386/gummibootia32.efi" "${pkgdir}/usr/lib/gummiboot/gummibootia32.efi"
 	
 	## Install gummiboot example configuration files
 	install -D -m0644 "${srcdir}/loader.conf" "${pkgdir}/usr/lib/gummiboot/loader/loader.conf"
