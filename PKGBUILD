@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
@@ -15,16 +15,19 @@ source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
         http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz.asc
         http://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz
         http://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz.asc
-        openvpn@.service)
+        openvpn@.service
+        openvpn-2.3.0-fix-systemd-ask-password-path.patch)
 md5sums=('56cffde5d5320e0b1ec364d3e486aca9'
          '3f67e2fa605800a964dbbcfca644d283'
          'fbf818b6e1f212e77b9ce0e6d92584a1'
          '46df49b85f9850fec287e311279bdbef'
-         '44047df812a3fcd57a7e36a61732a9b9')
+         '0846aa59d0b123d61030890f9a4135ae'
+         'e1bd1523e38745e948c710db1a330bb1')
 options=(!libtool)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  patch -p0 -i $srcdir/openvpn-2.3.0-fix-systemd-ask-password-path.patch
   # Build openvpn
   CFLAGS="$CFLAGS -DPLUGIN_LIBDIR=\\\"/usr/lib/openvpn\\\"" ./configure \
     --prefix=/usr \
