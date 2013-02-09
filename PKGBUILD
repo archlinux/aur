@@ -1,7 +1,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 _pkgbasename=v4l-utils
 pkgname=lib32-$_pkgbasename
-pkgver=0.8.9
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
 arch=('x86_64')
@@ -14,23 +14,23 @@ makedepends=('gcc-multilib')
 depends=('lib32-gcc-libs' $_pkgbasename lib32-libjpeg-turbo)
 source=(http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2
         http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2.asc)
-sha256sums=('3e5511c252b3c320d0b03418f7ee19b42d00ed0871c6b525779007416e46d08e'
-            'dd117aaed88b61e5215b7511f2b95cca8190c04dc8454fcbf0657f3f3ad44681')
+sha256sums=('502db0d865a392d87bff22c4f3bcfb3d0755937b1c18496edd941fd2d1784a3d'
+            '120388a92c3b720bd82e7617a908f3f7e1071d3b9075e9b537b7c60fc3575b08')
+options=(!libtool)
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-
-  sed -i 's|CFLAGS :=|CFLAGS ?=|' Make.rules
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  make -C lib PREFIX=/usr LIBDIR=/usr/lib32
+  ./configure --prefix=/usr --libdir=/usr/lib32 --sysconfdir=/etc
+  make -C lib
 }
 
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  make -C lib install PREFIX=/usr LIBDIR=/usr/lib32 DESTDIR="${pkgdir}/"
+  MAKEFLAGS="-j1" make -C lib install DESTDIR="${pkgdir}/"
   rm -rf "${pkgdir}"/{usr/{include,share,bin,sbin},etc,lib}
 }
