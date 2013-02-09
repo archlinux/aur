@@ -1,4 +1,4 @@
-# Maintainer: yugrotavele <jkluebs at luebsphoto dot com>
+# Maintainer: John Luebs <jkluebs at luebsphoto dot com>
 
 pkgname=dymo-cups-drivers
 pkgver=1.4.0.5
