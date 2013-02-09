@@ -2,8 +2,8 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=crda
-pkgver=1.1.2
-pkgrel=4
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Central Regulatory Domain Agent for wireless networks"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
@@ -12,15 +12,12 @@ depends=('wireless-regdb' 'libnl' 'libgcrypt' 'systemd-tools' 'iw')
 makedepends=('python-m2crypto')
 install=crda.install
 source=(http://wireless.kernel.org/download/crda/${pkgname}-${pkgver}.tar.bz2
-        set-wireless-regdom
-        libnl32.patch)
-md5sums=('5226f65aebacf94baaf820f8b4e06df4'
-         '65c93f2ff2eb1b29d9e9fa102ae2dd45'
-         'c1f7aff29f15a0364ae6f7905a1d4ae6')
+        set-wireless-regdom)
+md5sums=('29579185e06a75675507527243d28e5c'
+         '65c93f2ff2eb1b29d9e9fa102ae2dd45')
                   
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
-  patch -Np1 -i "$srcdir/libnl32.patch"
   sed 's|^#!/usr/bin/env python|#!/usr/bin/python2|' -i utils/key2pub.py
   make crda regdbdump
 }
