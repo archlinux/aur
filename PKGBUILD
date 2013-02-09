@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('any')
-license=('GPL2')
+license=('LGPL2.1')
 
 makedepends=('git' 'gnu-efi-libs')
 depends=('dosfstools' 'efibootmgr')
