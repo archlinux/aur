@@ -1,7 +1,7 @@
 # Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
 
 pkgname=libquvi-scripts
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='Library for parsing video download links.'
 arch=('any')
@@ -10,8 +10,8 @@ license=('LGPL')
 depends=('curl' 'lua')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
-md5sums=('ff79b40f6fb886c144ef18169eab0084'
-         '61a80a8653a0e758fd66ba9535a33d20')
+md5sums=('0b1d596e15ea863d667eb5175d8316ef'
+         '432d7399a8469a4d11f1c32a95510ae3')
 
 build() {
   cd "${pkgname}-${pkgver}"
