@@ -12,7 +12,7 @@ makedepends=('git' 'python2')
 optdepends=('python2-cherrypy: HTTP frontend'
             'python2-ws4py: HTTP frontend'
             'python2-pylast: Last.fm frontend'
-            'python2-dbus: D-Bus frontent')
+            'python2-dbus: MPRIS frontend')
 provides=('mopidy')
 conflicts=('mopidy')
 options=(!emptydirs)
