@@ -1,0 +1,15 @@
+pkgbase = gimp-imagescaler-git
+	pkgdesc = Gamma-correct image scaling (Gimp, Python)
+	pkgver = 20130211
+	pkgrel = 1
+	url = https://blog.hartwork.org/?p=1173
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gimp
+	depends = python2
+	provides = gimp-imagescaler
+	conflicts = gimp-imagescaler
+
+pkgname = gimp-imagescaler-git
+
