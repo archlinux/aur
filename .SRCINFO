@@ -1,0 +1,23 @@
+pkgbase = vim-vimwiki
+	pkgdesc = Personal Wiki for Vim
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://code.google.com/p/vimwiki/
+	install = vimwiki.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	license = GPL3
+	depends = vim
+	depends = python2
+	source = http://vimwiki.googlecode.com/files/vimwiki-2-0-1.zip
+	source = license.txt
+	source = convert_links.py
+	source = convert-links.patch
+	md5sums = fd3ea1842270db87e0b8b966970fedc1
+	md5sums = e19fa0689d06a724fc8ddfe824ef2680
+	md5sums = 0fc0e816bb93e408b62f74e8b2073daa
+	md5sums = 97a75e0b9448cfb16720c7b923a74aa0
+
+pkgname = vim-vimwiki
+

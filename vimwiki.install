@@ -1,0 +1,24 @@
+post_install() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done."
+
+    echo "The link syntax change with vimwiki 2."
+    echo "CamelCase words are no longer considered links."
+    echo "If you want to make all of these links, please use"
+    echo "    vimwiki_convert_links [wiki_directory]"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install
+}
+
+op=$1
+shift
+
+$op $*
