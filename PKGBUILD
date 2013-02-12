@@ -1,6 +1,6 @@
 pkgname=zabbix-server-mysql
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686" "x86_64")
 url="http://www.zabbix.com/"
@@ -26,7 +26,7 @@ source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.ta
         "frontend.diff"
         "config.diff"
        )
-md5sums=("1e3eca19867cadc8377895a646c78dd6" # zabbix-$pkgver.tar.gz
+md5sums=("0c0721c31889b63bce9aa556bcb927e8" # zabbix-$pkgver.tar.gz
          "dc45e84c0b2ea22f59eab03e854bfb77" # zabbix-server.service
          "53d0f295363a26e31e21722d30aec0fd" # zabbix-agentd.service
          "433c31251286f67650123fa18f7ff834" # conf.zabbix-server
@@ -35,7 +35,7 @@ md5sums=("1e3eca19867cadc8377895a646c78dd6" # zabbix-$pkgver.tar.gz
          "4699673e5135c3a7b85a228d610f451c" # frontend.diff
          "8d2fd8057acebbfcc9befef40e7dba4b" # config.diff
         )
-sha1sums=("26ffd4616a96434b3c357146780f66058f6fbd80" # zabbix-$pkgver.tar.gz
+sha1sums=("7798e5d69e0a301be3f014cc0d800c3ee153faa0" # zabbix-$pkgver.tar.gz
           "b01e845e9fc00c9eb355bbaca27fe847f3ebaaba" # zabbix-server.service
           "e1d985367c12c6d4d2d402d25fd807f148a08f08" # zabbix-agentd.service
           "4b4423af5587d59ab68ba748242183193729ec32" # conf.zabbix-server
