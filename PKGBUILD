@@ -17,7 +17,7 @@ source=(http://vimwiki.googlecode.com/files/vimwiki-2-0-1.zip
 md5sums=('fd3ea1842270db87e0b8b966970fedc1'
          'e19fa0689d06a724fc8ddfe824ef2680'
          '0fc0e816bb93e408b62f74e8b2073daa'
-         '97a75e0b9448cfb16720c7b923a74aa0')
+         '1ba74a69c30927e947f22870c2551f73')
 
 build () {
   cd "$srcdir"
