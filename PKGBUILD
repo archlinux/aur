@@ -1,21 +1,25 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Johannes Dewender arch at JonnyJD dot net
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=obs-service-format_spec_file
-pkgver=0.1
+pkgver=0.4.1
 pkgrel=1
-_rpmver=32.1
+_pkgver=32.2
 pkgdesc='An OBS source service: reformats a spec file to SUSE standard'
 arch=('any')
-url='https://build.opensuse.org/package/show?package=obs-service-format_spec_file&project=openSUSE%3ATools'
+url='https://github.com/openSUSE/obs-service-format_spec_file'
 license=('GPL2')
-depends=('osc-source_validator')
-source=("http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Factory/src/${pkgname}-${pkgver}-${_rpmver}.src.rpm")
-md5sums=('50fa18cf7eaf4aca7e4ec10f63e1c9e7')
+depends=('obs-service-source_validator')
+source=("http://download.opensuse.org/repositories/openSUSE:/Factory/standard/src/${pkgname}-${pkgver}-${_pkgver}.src.rpm")
+md5sums=('0c2e19c9ee754d5b828e9231ab9e125f')
 
 package() {
-  cd "${srcdir}"
-  install -d "${pkgdir}"/usr/lib/obs/service/format_spec_file.files
-  install -m755 format_spec_file "${pkgdir}"/usr/lib/obs/service
-  install -m644 format_spec_file.service "${pkgdir}"/usr/lib/obs/service
-  install -m755 prepare_spec "${pkgdir}"/usr/lib/obs/service/format_spec_file.files
+  cd "$srcdir"
+  mkdir -p "$pkgdir/usr/lib/obs/service/format_spec_file.files"
+  install -m755 format_spec_file "$pkgdir/usr/lib/obs/service/"
+  install -m644 format_spec_file.service "$pkgdir/usr/lib/obs/service/"
+  install -m755 prepare_spec patch_license \
+	  "$pkgdir/usr/lib/obs/service/format_spec_file.files/"
+  install -m644 licenses_changes.txt \
+	  "$pkgdir/usr/lib/obs/service/format_spec_file.files/"
 }
