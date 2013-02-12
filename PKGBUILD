@@ -2,16 +2,16 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
 
 pkgname=openmw-git
-pkgver=20130129
+pkgver=20130212
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'custom')
 
-depends=('openal' 'ogre=1.8.1' 'mygui>=3.2.0-2' 'bullet>=2.8.0' 'mpg123' 'libsndfile' 'qt')
+depends=('openal' 'ogre' 'mygui' 'bullet' 'mpg123' 'libsndfile' 'qt' 'ffmpeg')
 
-makedepends=('git' 'cmake' 'boost>=1.5.0')
+makedepends=('git' 'cmake' 'boost')
 conflicts=('openmw')
 provides=('openmw')
 
@@ -79,3 +79,4 @@ package() {
   install -D -m644 "OFL.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "extern/shiny/License.txt" "$pkgdir/usr/share/licenses/openmw/Shiny License.txt"
 }
+
