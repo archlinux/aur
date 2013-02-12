@@ -1,0 +1,19 @@
+pkgbase = reportbug
+	pkgdesc = report bugs in the Debian distribution + python modules
+	pkgver = 6.4.3
+	pkgrel = 1
+	url = http://packages.debian.org/sid/reportbug
+	arch = any
+	license = MIT
+	depends = python2-debian
+	depends = python2-debianbts
+	depends = python2-support
+	depends = apt
+	provides = python2-reportbug=6.4.3
+	conflicts = python2-reportbug
+	options = !emptydirs
+	source = http://ftp.debian.org/debian/pool/main/r/reportbug/reportbug_6.4.3.tar.bz2
+	md5sums = f6478b830615438232d8a64d47b55ee8
+
+pkgname = reportbug
+
