@@ -2,7 +2,7 @@ pkgbase = epson-alc1100-filter
 	pkgdesc = Print driver for Epson ALC1100 colour laser printer
 	pkgver = 1.2
 	pkgrel = 2
-	url = http://www.avasys.jp/lx-bin2/linux_e/laser/DL1.do
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
 	license = custom:EAPL

@@ -6,7 +6,7 @@ pkgver=1.2
 pkgrel=2
 pkgdesc="Print driver for Epson ALC1100 colour laser printer"
 arch=('i686' 'x86_64')
-url="http://www.avasys.jp/lx-bin2/linux_e/laser/DL1.do"
+url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EAPL')
 
 if [ "${CARCH}" = 'i686' ]; then
