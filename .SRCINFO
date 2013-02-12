@@ -1,0 +1,15 @@
+pkgbase = python2-support
+	pkgdesc = automated rebuilding support for python modules
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = http://packages.debian.org/sid/python-support
+	arch = any
+	license = LGPL2.1
+	depends = python2
+	depends = dpkg
+	options = !emptydirs
+	source = http://ftp.debian.org/debian/pool/main/p/python-support/python-support_1.0.15.tar.gz
+	md5sums = fa98675199468943db49deab6f147ebd
+
+pkgname = python2-support
+
