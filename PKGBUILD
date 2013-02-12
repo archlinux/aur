@@ -10,10 +10,10 @@ url="http://www.avasys.jp/lx-bin2/linux_e/laser/DL1.do"
 license=('custom:EAPL')
 
 if [ "${CARCH}" = 'i686' ]; then
-	depends=('libstdc++5' 'bash' 'ghostscript' 'psutils' 'glibc' 'sed' 'grep' 'gawk' 'bc')
+	depends=('libstdc++5' 'ghostscript' 'psutils' 'sed' 'grep' 'gawk' 'bc')
 
 elif [ "${CARCH}" = 'x86_64' ]; then
-	depends=('lib32-gcc-libs' 'lib32-libstdc++5' 'ghostscript' 'psutils' 'glibc' 'sed' 'grep' 'gawk' 'bc')
+	depends=('lib32-gcc-libs' 'lib32-libstdc++5' 'ghostscript' 'psutils' 'sed' 'grep' 'gawk' 'bc')
 fi
 
 makedepends=()
