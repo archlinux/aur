@@ -1,0 +1,17 @@
+pkgbase = obs-build-git
+	pkgdesc = Building part of the OpenSUSE Build Service, osc-build - git version
+	pkgver = 20130119
+	pkgrel = 2
+	url = http://build.opensuse.org
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = perl
+	depends = rpm-org
+	depends = xz
+	provides = obs-build
+	conflicts = obs-build
+
+pkgname = obs-build-git
+
