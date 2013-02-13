@@ -12,11 +12,12 @@ pkgdesc='General-purpose concurrent functional programming language developed by
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
 license=('custom')
-depends=('ncurses' 'openssl' 'unixodbc')
-makedepends=('perl' 'lksctp-tools')
+depends=('ncurses' 'openssl')
+makedepends=('perl' 'lksctp-tools' 'unixodbc')
 provides=('erlang')
 conflicts=('erlang')
-optdepends=('java-environment: for Java support'
+optdepends=('erlang-unixodbc: database support'
+            'java-environment: for Java support'
             'lksctp-tools: for SCTP support')
 source=("http://www.erlang.org/download/otp_src_${pkgver/_/-}.tar.gz"
         "http://www.erlang.org/download/otp_doc_man_${pkgver/_/-}.tar.gz")
@@ -48,6 +49,9 @@ package() {
   # License
   install -Dm0644 "$srcdir/otp_src_${pkgver/_1/}/EPLICENCE" \
     "$pkgdir/usr/share/licenses/$pkgname/EPLICENCE"
+
+  # Remove files that are packaged as erlang-unixodbc
+  rm -r "$pkgdir/usr/lib/erlang/"{lib/odbc*,man/man3/odbc.3.gz}
 }
 
 # vim:set ts=2 sw=2 et:
