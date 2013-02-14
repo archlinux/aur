@@ -1,0 +1,15 @@
+pkgbase = kate-bracesane-plugin
+	pkgdesc = Autobrace plugin for the Kate text editor
+	pkgver = 77378
+	pkgrel = 1
+	url = https://bugs.kde.org/show_bug.cgi?id=313455
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = kdesdk-kate
+	source = kate-bracesane-plugin-77378.tbz2::https://bugs.kde.org/attachment.cgi?id=77378
+	sha256sums = de9fdd2a2871c8d4c7730e3e50ea0987f73950b8bd81e43db2df86800dc83bc9
+
+pkgname = kate-bracesane-plugin
+
