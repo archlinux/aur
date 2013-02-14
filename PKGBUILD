@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.7
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -14,11 +14,17 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'python2' 'hicolor-icon-theme' 'farstream-0.1' 'avahi'
              'tk' 'ca-certificates' 'intltool' 'networkmanager')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('eba32994eca20d1cf24a4261b059b2de71a1ec2dd0926e904074b0db49f7f192')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
+        pidgin-2.10.7-link-libirc-to-libsasl2.patch)
+sha256sums=('eba32994eca20d1cf24a4261b059b2de71a1ec2dd0926e904074b0db49f7f192'
+            '063723d5dc5726c43137b4b383c9d07c2c008391f6a626faaf6cedd31a2f1e8f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # https://developer.pidgin.im/ticket/15517
+  patch -Np1 -i "$srcdir/pidgin-2.10.7-link-libirc-to-libsasl2.patch"
+  autoreconf -vi
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
