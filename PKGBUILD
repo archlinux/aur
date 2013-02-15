@@ -1,11 +1,10 @@
-# $Id: PKGBUILD 130991 2011-07-09 12:23:51Z thomas $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.7
-pkgver=3.7.7
+pkgver=3.7.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +20,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'fat-3.6.x.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         'e232d2535bbd36fe05c203bacc5b72ea'
+         'bf62e0cbc13524bb802d2ed05c7e2e6a'
          '6a6b620836639fa5f989f9c9c2592d6e'
          '03666db0cd0a1f59c0b71b41eb2353eb'
          'eb14dcfd80c00852ef81ded6e826826a'
