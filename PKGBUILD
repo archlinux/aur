@@ -5,7 +5,7 @@ _ver=1.0.1e
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -40,11 +40,13 @@ build() {
 	patch -p0 -i $srcdir/ca-dir.patch
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
-	# workaround for https://rt.openssl.org/Ticket/Display.html?id=2771: OPENSSL_MAX_TLS1_2_CIPHER_LENGTH=50
+	# workaround for https://rt.openssl.org/Ticket/Display.html?id=2771
+	# See Changes file "Changes between 1.0.1 and 1.0.1a [19 Apr 2012]"
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
 		shared zlib enable-md2 ${optflags} \
 		"${openssltarget}" \
 		-Wa,--noexecstack "${CFLAGS}" "${LDFLAGS}" \
+		-DOPENSSL_NO_TLS1_2_CLIENT \
 		-DOPENSSL_MAX_TLS1_2_CIPHER_LENGTH=50
 
 	make depend
@@ -56,6 +58,8 @@ check() {
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
 	patch -p0 -R -i $srcdir/ca-dir.patch
+	# Do not test TLS1.2 as we disabled it above using OPENSSL_NO_TLS1_2_CLIENT
+	sed 's/TLSv1.2 //g' -i test/testssl
 	make test
 	patch -p0 -i $srcdir/ca-dir.patch
 }
