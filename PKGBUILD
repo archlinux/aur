@@ -1,19 +1,20 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer:
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Aurelien Foret <orelien@chez.com>
 
 pkgname=xfce4-datetime-plugin
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="A date and time display plugin for the Xfce panel"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://xfce-goodies.berlios.de/"
 groups=('xfce4-goodies')
-depends=('xfce4-panel>=4.7.4' 'libxfcegui4')
+depends=('xfce4-panel')
 makedepends=('intltool')
 options=('!libtool')
 source=(http://archive.xfce.org/src/panel-plugins/${pkgname}/0.6/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('e82f51ff0e75a63e5cbd139e43e094f9')
+md5sums=('fe604a251eadbc5b0f2b4737b85d92c8')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
