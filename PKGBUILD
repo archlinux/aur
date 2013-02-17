@@ -41,7 +41,7 @@ build() {
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared zlib enable-md2 ${optflags} \
+		shared zlib ${optflags} \
 		"${openssltarget}" \
 		-Wa,--noexecstack "${CFLAGS}" "${LDFLAGS}"
 
