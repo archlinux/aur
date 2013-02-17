@@ -2,7 +2,7 @@ pkgname=linux-linode
 _basekernel=3.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.7
+pkgver=${_basekernel}.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -17,9 +17,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "${pkgname}.preset"
         'change-default-console-loglevel.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         'e232d2535bbd36fe05c203bacc5b72ea'
-         '454af467626209b290f8b77c200e4370'
-         'c395f84060ccc4e352b68ef798fac10e'
+         'bf62e0cbc13524bb802d2ed05c7e2e6a'
+         'c32da81e55e7ae80351aa2e7fbab3912'
+         'b1273d6e331690e59aacc80d34411864'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          '9d3c56a4b999c8bfbd4018089a62f662')
