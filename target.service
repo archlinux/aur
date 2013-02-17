@@ -8,7 +8,7 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=/usr/bin/targetcli restoreconfig clear_existing=true
 ExecStop=/usr/bin/targetcli clearconfig confirm=true
-SyslogIdentifier=targetcli
+SyslogIdentifier=target
 
 [Install]
 WantedBy=multi-user.target

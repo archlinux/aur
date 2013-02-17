@@ -1,14 +1,14 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=targetcli-fb
 pkgver=2.0rc1.fb19
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="free branch of the targetcli LIO administration shell (iSCSI + Co)"
 arch=('any')
 url="https://github.com/agrover/targetcli-fb"
 license=('AGPL3')
 groups=()
-depends=('python2-rtslib-fb>=2.1.fb13' 'python2-configshell-fb')
+depends=('python2-rtslib-fb>=2.1.fb28' 'python2-configshell-fb')
 optdepends=()
 conflicts=('lio-utils')
 provides=('targetcli')
@@ -17,8 +17,10 @@ backup=()
 options=()
 install=
 source=($pkgname-$pkgver.tar.gz::https://github.com/agrover/$pkgname/archive/v$pkgver.tar.gz
+target.service
 target)
 md5sums=('f2bd7ddd04945e49c1f6c9a5c72f76c1'
+         'f462e9a5852346c66b77793565ddbc67'
          'f23bd6d5d4021c29b4519e40b3b9e042')
 
 build() {
@@ -35,8 +37,12 @@ package() {
 
   # arch specific
   cd "$srcdir"
-  install -D -m 755 target "$pkgdir/etc/rc.d/target"
   install -d "$pkgdir/etc/target"
+  # systemd
+  mkdir -p "$pkgdir/usr/lib/systemd/system"
+  cp target.service "$pkgdir/usr/lib/systemd/system/"
+  # sysvinit (deprecated)
+  install -D -m 755 target "$pkgdir/etc/rc.d/target"
 }
 
 # vim:set ts=2 sw=2 et:
