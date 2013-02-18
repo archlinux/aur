@@ -1,7 +1,7 @@
 pkgbase = lio-utils
 	pkgdesc = a simple low-level configuration tool set for LIO (Target and iSCSI)
 	pkgver = 4.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://linux-iscsi.org/wiki/Lio-utils
 	arch = i686
 	arch = x86_64
