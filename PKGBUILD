@@ -2,9 +2,9 @@
 # Contributor: Nut543 <kfs1@online.no>
 pkgname=tmake 
 pkgver=2.12 
-pkgrel=1
+pkgrel=2
 pkgdesc="multiplatform makefile generator in Perl" 
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://tmake.sourceforge.net/"
 license=('custom')
 depends=('perl>=5') 
