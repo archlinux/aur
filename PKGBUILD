@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=kate-bracesane-plugin
-pkgver=77269
+pkgver=77378
 pkgrel=1
 pkgdesc="Autobrace plugin for the Kate text editor"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('6c5b256f43bb1e32bf8032f750385b13228ff08c1133bbfd0e75c944f3da44ca')
+sha256sums=('de9fdd2a2871c8d4c7730e3e50ea0987f73950b8bd81e43db2df86800dc83bc9')
