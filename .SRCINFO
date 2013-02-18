@@ -1,13 +1,16 @@
 pkgbase = cccc
 	pkgdesc = C and C++ Code Counter, code metrics also for Ada and Java files
 	pkgver = 3.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cccc.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = gcc-libs
 	source = http://downloads.sourceforge.net/sourceforge/cccc/cccc-3.1.4.tar.gz
+	source = gcc47.patch
 	md5sums = 7bd3ad868913a0beab2fde931737f928
+	md5sums = e1d2cb39fcac3f3c14eaff4f1e8f2825
 
 pkgname = cccc
 

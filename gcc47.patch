@@ -1,0 +1,17 @@
+From: Johannes Dewender <arch@JonnyJD.net>
+Date: Mon, 18 Feb 2013 19:05:01 +0100
+Subject: patch for gcc 4.7
+
+Index: ccccdist/cccc/cccc_tbl.cc
+===================================================================
+--- ccccdist/cccc/cccc_tbl.cc	(revision 126)
++++ ccccdist/cccc/cccc_tbl.cc	(working copy)
+@@ -96,7 +96,7 @@
+   typename map_t::iterator value_iterator=map_t::find(old_item_ptr->key());
+   if(value_iterator!=map_t::end())
+     {
+-      erase(value_iterator);
++      this->erase(value_iterator);
+       retval=true;
+     }
+   return retval;
