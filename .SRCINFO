@@ -1,7 +1,7 @@
 pkgbase = targetcli
 	pkgdesc = The targetcli administration shell.
 	pkgver = 2.0rc1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linux-iscsi.org/wiki/RTSadmin
 	arch = any
 	license = AGPL3
