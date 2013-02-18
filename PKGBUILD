@@ -3,20 +3,24 @@
 
 pkgname=cmake
 pkgver=2.8.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
 license=('custom')
 depends=('curl' 'libarchive' 'shared-mime-info')
-makedepends=('qt' 'emacs')
-optdepends=('qt: cmake-gui')
+makedepends=('qtbase' 'emacs')
+optdepends=('qtbase: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
 md5sums=('097278785da7182ec0aea8769d06860c')
 
 build() {
   cd ${pkgname}-${pkgver}
+
+  # Qt is built with reduce-relocations
+  export CFLAGS="${CFLAGS} -fPIC"
+  export CXXFLAGS="${CXXFLAGS} -fPIC"
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
