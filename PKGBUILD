@@ -6,7 +6,7 @@ pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
 license=('GPL3')
-depends=('python2' 'python2-musicbrainz2>=0.7.0')
+depends=('python2' 'python2-musicbrainz2>=0.7.0' 'libdiscid')
 makedepends=()
 conflicts=()
 options=(!emptydirs)

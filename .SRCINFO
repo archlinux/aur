@@ -7,6 +7,7 @@ pkgbase = isrcsubmit
 	license = GPL3
 	depends = python2
 	depends = python2-musicbrainz2>=0.7.0
+	depends = libdiscid
 	options = !emptydirs
 	source = http://isrcsubmit.jonnyjd.net/downloads/isrcsubmit-0.5.2.tar.gz
 	md5sums = 3e79b878d55e82125197069bc292d50c
