@@ -3,18 +3,20 @@
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgbase=fcitx
-pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt')
+pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.7
-pkgrel=1
+pkgrel=2
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
 license=('GPL')
-makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt' 'icu' \
+makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' \
              'iso-codes' 'gobject-introspection' 'libxkbfile')
 source=(http://fcitx.googlecode.com/files/${pkgbase}-${pkgver}_dict.tar.xz)
 
 build() {
+  #source /etc/profile.d/qt4.sh
+
   cd "${srcdir}"
   mkdir -p build
   cd build
@@ -55,7 +57,7 @@ package_fcitx() {
 	      'fcitx-libpinyin: Fcitx Wrapper for libpinyin, Library to deal with pinyin'
 	      'fcitx-m17n: Multilingual text processing library'
 	      'fcitx-mozc: Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)'
-	      'fcitx-qt: QT IM Module for fcitx'
+	      'fcitx-qt4: QT4 IM Module for fcitx'
 	      'fcitx-rime: Rime input method engine (Traditional Chinese)'
   	      'fcitx-sunpinyin: Statistical Language Model based pinyin IME by Sun'
 	      'fcitx-table-extra: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie3, Cangjie5'
@@ -69,7 +71,7 @@ package_fcitx() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 
-  rm -r "${pkgdir}/usr/lib/"{gtk-2.0,gtk-3.0,qt}
+  rm -r "${pkgdir}/usr/lib/"{gtk-2.0,gtk-3.0,qt4}
   rm -r "${pkgdir}/usr/lib/fcitx/qt"
   rm -r "${pkgdir}/usr/include/fcitx-qt"
   rm "${pkgdir}/usr/bin/fcitx-qt-gui-wrapper"
@@ -95,9 +97,11 @@ package_fcitx-gtk3() {
   make DESTDIR="${pkgdir}" install
 }
 
-package_fcitx-qt() {
-  pkgdesc='QT IM Module for fcitx'
-  depends=('qt' "fcitx>=$pkgver")
+package_fcitx-qt4() {
+  pkgdesc='QT4 IM Module for fcitx'
+  depends=('qt4' "fcitx>=$pkgver")
+  replaces=('fcitx-qt')
+  conflicts=('fcitx-qt')
 
   cd "${srcdir}/build/src/frontend/qt"
   make DESTDIR="${pkgdir}" install
