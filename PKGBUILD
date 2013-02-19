@@ -1,7 +1,7 @@
 # Maintainer: Johannes Dewender   arch at JonnyJD dot net
 pkgname=isrcsubmit
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
