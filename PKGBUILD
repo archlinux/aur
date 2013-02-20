@@ -5,7 +5,7 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.7
-pkgrel=2
+pkgrel=3
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
@@ -101,6 +101,7 @@ package_fcitx-qt4() {
   pkgdesc='QT4 IM Module for fcitx'
   depends=('qt4' "fcitx>=$pkgver")
   replaces=('fcitx-qt')
+  provides=('fcitx-qt')
   conflicts=('fcitx-qt')
 
   cd "${srcdir}/build/src/frontend/qt"
