@@ -1,9 +1,10 @@
 diff --git a/Makefile b/Makefile
-index f205b67..5a02816 100644
+index b45855e..0997263 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,27 +1,28 @@
- VERSION=18
+@@ -9,16 +9,17 @@ else
+ endif
+ export E Q
  
 -ARCH=$(shell $(CC) -dumpmachine | sed "s/\(-\).*$$//")
 -LIBDIR=$(shell echo $$(cd /usr/lib/$$(gcc -print-multi-os-directory); pwd))
@@ -13,52 +14,53 @@ index f205b67..5a02816 100644
  
  ifeq ($(ARCH),i686)
 -	ARCH=ia32
-+	EFI_ARCH=ia32
++	GNUEFI_ARCH=ia32
  	MACHINE_TYPE_NAME=ia32
  endif
  
  ifeq ($(ARCH),x86_64)
-+	EFI_ARCH=x86_64
++	GNUEFI_ARCH=x86_64
  	MACHINE_TYPE_NAME=x64
  	ARCH_CFLAGS= \
  		-DEFI_FUNCTION_WRAPPER \
- 		-mno-red-zone
- endif
+@@ -28,12 +29,12 @@ endif
+ all: gummiboot$(MACHINE_TYPE_NAME).efi gummiboot
  
+ # ------------------------------------------------------------------------------
 -CPPFLAGS = \
 +CPPFLAGS += \
  	-I. \
  	-I/usr/include/efi \
 -	-I/usr/include/efi/$(ARCH)
-+	-I/usr/include/efi/$(EFI_ARCH)
++	-I/usr/include/efi/$(GNUEFI_ARCH)
  
 -CFLAGS = \
 +CFLAGS += \
  	-DVERSION=$(VERSION) \
  	-Wall \
  	-Wextra \
-@@ -36,13 +37,13 @@ CFLAGS = \
+@@ -48,13 +49,13 @@ CFLAGS = \
  	-Wsign-compare \
  	$(ARCH_CFLAGS)
  
 -LDFLAGS = -T $(LIBEFIDIR)/elf_$(ARCH)_efi.lds \
-+LDFLAGS = -T $(LIBEFIDIR)/elf_$(EFI_ARCH)_efi.lds \
++LDFLAGS += -T $(LIBEFIDIR)/elf_$(GNUEFI_ARCH)_efi.lds \
  	-shared \
  	-Bsymbolic \
  	-nostdlib \
  	-znocombreloc \
  	-L $(LIBDIR) \
 -	$(LIBEFIDIR)/crt0-efi-$(ARCH).o
-+	$(LIBEFIDIR)/crt0-efi-$(EFI_ARCH).o
++	$(LIBEFIDIR)/crt0-efi-$(GNUEFI_ARCH).o
  
  %.o: %.c
- 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
-@@ -50,7 +51,7 @@ LDFLAGS = -T $(LIBEFIDIR)/elf_$(ARCH)_efi.lds \
- gummiboot$(MACHINE_TYPE_NAME).efi: gummiboot.so
- 	objcopy -j .text -j .sdata -j .data -j .dynamic \
+ 	$(E) "  CC       " $@
+@@ -71,7 +72,7 @@ gummiboot$(MACHINE_TYPE_NAME).efi: src/efi/gummiboot.so
+ 	$(E) "  OBJCOPY  " $@
+ 	$(Q) objcopy -j .text -j .sdata -j .data -j .dynamic \
  	  -j .dynsym -j .rel -j .rela -j .reloc -j .eh_frame \
 -	  --target=efi-app-$(ARCH) $< $@
-+	  --target=efi-app-$(EFI_ARCH) $< $@
++	  --target=efi-app-$(GNUEFI_ARCH) $< $@
  
- gummiboot.so: gummiboot.o
- 	$(LD) $(LDFLAGS) gummiboot.o -o $@ -lefi -lgnuefi \
+ # ------------------------------------------------------------------------------
+ gummiboot: src/setup/setup.c src/setup/efivars.h src/setup/efivars.c Makefile

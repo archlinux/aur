@@ -5,7 +5,7 @@
 _pkgname="gummiboot-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130209
+pkgver=20130220
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -18,15 +18,15 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-options=('!strip')
+options=('!strip' '!makeflags')
 
 source=('gummiboot-fix-makefile.patch'
         'loader.conf'
         'arch.conf')
 
-sha1sums=('ada07236984c19957a63dd1c1df59913065db7a9'
+sha1sums=('ec31cc88b3b0de26493b1b9ea06332f717a1f06f'
           '82a59f90d9138c26f8db52bb8e94991602cf1edd'
-          '007178db11d524b15eb4566d930752d211e7dd78')
+          'aff6e152c3f7494e6113a8e2f073810366433015')
 
 _gitroot="git://anongit.freedesktop.org/gummiboot"
 _gitname="gummiboot"
@@ -72,6 +72,7 @@ build() {
 	
 	## Fix Makefile to enable compile for both x86_64 and i386 UEFI
 	patch -Np1 -i "${srcdir}/gummiboot-fix-makefile.patch" || true
+	echo
 	
 	## Compile gummiboot for x86_64 UEFI
 	rm -rf "${srcdir}/${_gitname}_build-x86_64/" || true
@@ -81,7 +82,11 @@ build() {
 	ARCH="x86_64" make clean
 	echo
 	
-	ARCH="x86_64" CFLAGS="-m64" LIBDIR="/usr/lib" make
+	unset CFLAGS
+	unset CPPFLAGS
+	unset LDFLAGS
+	
+	ARCH="x86_64" CFLAGS="-m64" LIBDIR="/usr/lib" make gummibootx64.efi
 	echo
 	
 	## Compile gummiboot for i386 aka IA32 UEFI
@@ -92,7 +97,11 @@ build() {
 	ARCH="i686" make clean
 	echo
 	
-	ARCH="i686" CFLAGS="-m32" LIBDIR="/usr/lib32" make
+	unset CFLAGS
+	unset CPPFLAGS
+	unset LDFLAGS
+	
+	ARCH="i686" CFLAGS="-m32" LIBDIR="/usr/lib32" make gummibootia32.efi
 	echo
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
