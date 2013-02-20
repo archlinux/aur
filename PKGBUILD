@@ -3,12 +3,12 @@ pkgname=python-discid
 _pkgname=discid
 _python=python
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python binding of Libdiscid"
 arch=('any')
 url="https://python-discid.readthedocs.org/"
 license=('LGPL3')
-depends=('python' 'libdiscid')
+depends=('python>=3.1' 'libdiscid>=0.2.2')
 makedepends=()
 conflicts=()
 options=(!emptydirs)
