@@ -3,8 +3,8 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.7
-pkgver=3.7.9
+_srcname=linux-3.8
+pkgver=3.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,17 +12,16 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
         'fat-3.6.x.patch')
-md5sums=('21223369d682bcf44bcdfe1521095983'
-         '375fa67b3daba9e6040f13a0a29bf543'
-         '6a6b620836639fa5f989f9c9c2592d6e'
-         '03666db0cd0a1f59c0b71b41eb2353eb'
+md5sums=('1c738edfc54e7c65faeb90c436104e2f'
+         '2e9010a91995b2f127ec8c26edded05d'
+         '09be44e718bf96264d245f2c2892d811'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '88d501404f172dac6fcb248978251560')
