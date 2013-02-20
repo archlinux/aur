@@ -1,7 +1,7 @@
 pkgbase = zabbix-server-mysql
 	pkgdesc = Zabbix is an enterprise-class open source distributed monitoring solution.
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zabbix.com/
 	install = zabbix-server.install
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = zabbix-server-mysql
 	depends = curl
 	depends = iksemel
 	depends = libssh2
+	optdepends = shellinabox: web-based ssh client
 	conflicts = zabbix-server
 	conflicts = zabbix-agent
 	options = emptydirs

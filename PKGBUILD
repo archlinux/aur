@@ -1,13 +1,16 @@
 pkgname=zabbix-server-mysql
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
-arch=("i686" "x86_64")
+arch=("i686"
+      "x86_64"
+     )
 url="http://www.zabbix.com/"
 license=("GPL")
 depends=("apache"   "mysql" "php"  "php-apache" "php-gd"  "fping"   "traceroute"
          "net-snmp" "nmap"  "sudo" "curl"       "iksemel" "libssh2"
         )
+optdepends=("shellinabox: web-based ssh client")
 conflicts=("zabbix-server"
            "zabbix-agent"
           )
@@ -62,41 +65,40 @@ build() {
     --sysconfdir=/etc/zabbix
 
   make || return 1
-  make DESTDIR="${pkgdir}" install || return 1
 }
 
 package() {
   cd "${srcdir}/zabbix-${pkgver}"
+  make DESTDIR="${pkgdir}" install || return 1
 
-  _HTMLPATH="${pkgdir}/srv/http/zabbix"
-  _DBPATCHDIR="${pkgdir}/etc/zabbix/database/mysql/upgrade/2.0"
-  _DBSETUPDIR="${pkgdir}/etc/zabbix/database/mysql/setup/2.0"
-  mkdir -p "${_HTMLPATH}"
-  mkdir -p "${_DBPATCHDIR}"
-  mkdir -p "${_DBSETUPDIR}"
+  mkdir -p "${pkgdir}/srv/http/zabbix"
+  mkdir -p "${pkgdir}/etc/zabbix/database/mysql/upgrade/2.0"
+  mkdir -p "${pkgdir}/etc/zabbix/database/mysql/setup/2.0"
 
-  for _UPGFILE in patch.sql rc4_rc5.sql upgrade; do
-    install -D -m 0444 "upgrades/dbpatches/2.0/mysql/${_UPGFILE}" "${_DBPATCHDIR}/${_UPGFILE}"
-  done
-  for _SQLFILE in {data,images,schema}.sql; do
-    install -D -m 0444 "database/mysql/${_SQLFILE}" "${_DBSETUPDIR}/${_SQLFILE}"
-  done
+  cp -r ${srcdir}/zabbix-${pkgver}/frontends/php/* ${pkgdir}/srv/http/zabbix/
 
-  cp -r frontends/php/* "${_HTMLPATH}/"
-
-  cd "${_HTMLPATH}/locale/"
+  cd "${pkgdir}/srv/http/zabbix/locale/"
   patch -p1 < "${srcdir}/frontend.diff"
   ./update_po.sh
   ./make_mo.sh
   cd "${pkgdir}"
 
-  chown -R 33:33 "${_HTMLPATH}/"
-  chmod -R u=rwX,g=rX,o= "${_HTMLPATH}/"
+  chown -R 33:33 "${pkgdir}/srv/http/zabbix/"
+  chmod -R 750 "${pkgdir}/srv/http/zabbix/"
 
+  for _UPGFILE in patch.sql rc4_rc5.sql upgrade; do
+    install -D -m 0444 "${srcdir}/zabbix-${pkgver}/upgrades/dbpatches/2.0/mysql/${_UPGFILE}" \
+                       "${pkgdir}/etc/zabbix/database/mysql/upgrade/2.0/${_UPGFILE}"
+  done
+  for _SQLFILE in {data,images,schema}.sql; do
+    install -D -m 0444 "${srcdir}/zabbix-${pkgver}/database/mysql/${_SQLFILE}" \
+                       "${pkgdir}/etc/zabbix/database/mysql/setup/2.0/${_SQLFILE}"
+  done
+  install -d -m 0750                                    "${pkgdir}/etc/sudoers.d/"
+  install -d -m 0750                                    "${pkgdir}/var/run/zabbix"
+  install -d -m 0750                                    "${pkgdir}/var/log/zabbix"
   install -D -m 0640 "${srcdir}/conf.zabbix-server"     "${pkgdir}/etc/conf.d/zabbix-server"
   install -D -m 0640 "${srcdir}/sudoers.zabbix-server"  "${pkgdir}/etc/sudoers.d/zabbix-server"
   install -D -m 0644 "${srcdir}/zabbix-server.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-server.service"
   install -D -m 0644 "${srcdir}/zabbix-agentd.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-agentd.service"
-  install -d -m 0750                                    "${pkgdir}/var/run/zabbix"
-  install -d -m 0750                                    "${pkgdir}/var/log/zabbix"
 }
