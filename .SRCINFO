@@ -1,17 +1,18 @@
 pkgbase = dwt
 	pkgdesc = Simple no-frills terminal emulator based on VTE
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/aperezdc/dwt
 	arch = i686
 	arch = x86_64
+	arch = arm
 	license = MIT
 	depends = vte3
 	depends = terminus-font
 	options = strip
 	options = zipman
-	source = http://people.igalia.com/aperez/files/dwt-0.2.tar.xz
-	sha1sums = b046ad1dd89fd9b7e4a476160c643046d55dd9ac
+	source = http://people.igalia.com/aperez/files/dwt-0.3.tar.xz
+	sha1sums = 8cc638054b8094465e769956c647e1477af3a56f
 
 pkgname = dwt
 
