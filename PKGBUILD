@@ -17,14 +17,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        'fat-3.6.x.patch')
+        'change-default-console-loglevel.patch')
 md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          '2e9010a91995b2f127ec8c26edded05d'
          '09be44e718bf96264d245f2c2892d811'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '88d501404f172dac6fcb248978251560')
+         '9d3c56a4b999c8bfbd4018089a62f662')
 
 _kernelname=${pkgbase#linux}
 
@@ -32,7 +30,7 @@ build() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -41,10 +39,6 @@ build() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix cosmetic fat issue
-  # https://bugs.archlinux.org/task/32916
-  patch -Np1 -i "${srcdir}/fat-3.6.x.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
