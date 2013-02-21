@@ -1,6 +1,6 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
 makedepends=('inetutils')
 options=(!libtool)
 source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('a61aa2dee4c47d93d88e49ebed36de25df4f6492')
+sha1sums=('38095d3453519177272f488d5058a98f7ebdbf10')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
@@ -50,9 +50,6 @@ package() {
 
    # Openmpi's otfinfo conflicts with the one from texlive
    mv "${pkgdir}"/usr/bin/otfinfo{,mpi}
-
-   # Openmpi's otfdump conflicts with the one from libotf
-   mv "${pkgdir}"/usr/bin/otfdump{,ompi}
 
    # Remove dangling symlink
    rm "${pkgdir}"/usr/share/man/man1/orteCC.1
