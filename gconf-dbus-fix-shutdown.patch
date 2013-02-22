@@ -1,0 +1,34 @@
+From 39299610083e0e7f9b44e62b7f4e51e89693cf89 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Tue, 06 Mar 2012 19:39:06 +0000
+Subject: dbus: fix shutdown
+
+gconftool-2 wasn't properly shutting down gconfd, because
+it was trying to do it before connecting to the daemon.
+
+This commit makes sure that we always first try to connect to
+the daemon before asking it to shutdown.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=671490
+---
+diff --git a/gconf/gconf-dbus.c b/gconf/gconf-dbus.c
+index 442a94b..f167fc5 100644
+--- a/gconf/gconf-dbus.c
++++ b/gconf/gconf-dbus.c
+@@ -2483,7 +2483,13 @@ gconf_shutdown_daemon (GError** err)
+ {
+   DBusMessage *message;
+ 
+-  /* Don't want to spawn it if it's already down */
++  /* If we haven't reached out to it yet,
++   * reach out now.
++   */
++  if (global_conn == NULL)
++    gconf_ping_daemon();
++
++  /* But we don't want to spawn it if it's already down */
+   if (global_conn == NULL || !service_running)
+     return;
+   
+--
+cgit v0.9.0.2

@@ -1,7 +1,7 @@
 pkgbase = gconf-gtk2
 	pkgdesc = A configuration database system compiled for GTK2
-	pkgver = 3.2.6
-	pkgrel = 3
+	pkgver = 3.2.5
+	pkgrel = 4
 	url = http://www.gnome.org
 	install = gconf.install
 	arch = i686
@@ -15,14 +15,22 @@ pkgbase = gconf-gtk2
 	depends = libldap
 	depends = dbus-glib
 	depends = gtk2
-	provides = gconf=3.2.6
+	provides = gconf=3.2.5
 	conflicts = gconf
-	source = http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-3.2.6.tar.xz
+	replaces = gconf
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-3.2.5.tar.xz
+	source = gconf-dbus-fix-use-after-free.patch
+	source = gconf-dbus-fix-shutdown.patch
+	source = gsettings-schema-convert-dont-fail.patch
 	source = gconf-merge-schema
 	source = gconfpkg
 	source = gconf-reload.patch
 	source = 01_xml-gettext-domain.patch
-	sha256sums = 1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c
+	sha256sums = 4ddea9503a212ee126c5b46a0a958fd5484574c3cb6ef2baf38db02e819e58c6
+	sha256sums = 76c078218e7c3e93691ddd4d7fd9f5c83d4862d0a0406d17b805f3106b50375d
+	sha256sums = ddf55a40a260dd00364b32b3200bd8a76e890070ea6267fbfb322907c0946ab2
+	sha256sums = be6f084a31229e8edfd6936005c6bb4f2d1548b777df5937923b4702f7a9ac19
 	sha256sums = ee6b6e6f4975dad13a8c45f1c1f0547a99373bdecdcd6604bfc12965c328a028
 	sha256sums = bf1928718caa5df2b9e54a13cfd0f15a8fe0e09e86b84385ce023616a114e898
 	sha256sums = 567b78d8b4b4bbcb77c5f134d57bc503c34867fcc6341c0b01716bcaa4a21694

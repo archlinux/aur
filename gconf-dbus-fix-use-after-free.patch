@@ -1,0 +1,99 @@
+From 84884e9df7ce8c081a1c223c66a799b82545ff1e Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Thu, 18 Oct 2012 20:08:02 +0000
+Subject: gconf-dbus: fix use after free
+
+gconf_engine_get_fuller is accessing freed memory.
+The problem is that it's referencing strings that are owned
+by a D-Bus message, and they go away when the D-Bus message is freed.
+
+This commit addresses the problem by duplicating the strings and
+freeing them later.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=667167
+---
+diff --git a/gconf/gconf-dbus-utils.c b/gconf/gconf-dbus-utils.c
+index 6fd5bfa..92f5980 100644
+--- a/gconf/gconf-dbus-utils.c
++++ b/gconf/gconf-dbus-utils.c
+@@ -569,11 +569,11 @@ gconf_dbus_utils_get_entry_values (DBusMessageIter  *main_iter,
+ 				   gchar           **schema_name_p)
+ {
+   DBusMessageIter  struct_iter;
+-  gchar           *key;
++  const gchar     *key;
+   GConfValue      *value;
+   gboolean         is_default;
+   gboolean         is_writable;
+-  gchar           *schema_name;
++  const gchar     *schema_name;
+ 
+   g_return_val_if_fail (dbus_message_iter_get_arg_type (main_iter) == DBUS_TYPE_STRUCT,
+ 			FALSE);
+@@ -587,7 +587,7 @@ gconf_dbus_utils_get_entry_values (DBusMessageIter  *main_iter,
+   value = utils_get_value (&struct_iter);
+ 
+   dbus_message_iter_next (&struct_iter);
+-  schema_name = (gchar *) utils_get_optional_string (&struct_iter);
++  schema_name = utils_get_optional_string (&struct_iter);
+ 
+   dbus_message_iter_next (&struct_iter);
+   dbus_message_iter_get_basic (&struct_iter, &is_default);
+@@ -596,7 +596,7 @@ gconf_dbus_utils_get_entry_values (DBusMessageIter  *main_iter,
+   dbus_message_iter_get_basic (&struct_iter, &is_writable);
+ 
+   if (key_p)
+-    *key_p = key;
++    *key_p = g_strdup (key);
+ 
+   if (value_p)
+     *value_p = value;
+@@ -604,7 +604,7 @@ gconf_dbus_utils_get_entry_values (DBusMessageIter  *main_iter,
+     gconf_value_free (value);
+ 
+   if (schema_name_p)
+-    *schema_name_p = schema_name;
++    *schema_name_p = g_strdup (schema_name);
+   
+   if (is_default_p)
+     *is_default_p = is_default;
+diff --git a/gconf/gconf-dbus.c b/gconf/gconf-dbus.c
+index f167fc5..5610fcf 100644
+--- a/gconf/gconf-dbus.c
++++ b/gconf/gconf-dbus.c
+@@ -1252,12 +1252,13 @@ gconf_engine_get_fuller (GConfEngine *conf,
+   
+   if (schema_name && schema_name[0] != '/')
+     {
++      g_free (schema_name);
+       schema_name = NULL;
+     }
+   
+   if (schema_name_p)
+-    *schema_name_p = g_strdup (schema_name);
+-  
++    *schema_name_p = schema_name;
++
+   return val;
+ }
+ 
+@@ -2402,7 +2403,7 @@ handle_notify (DBusConnection *connection,
+ 	       GConfEngine *conf2)
+ {
+   GConfEngine *conf;
+-  gchar *key, *schema_name;
++  gchar *key = NULL, *schema_name = NULL;
+   gboolean is_default, is_writable;
+   DBusMessageIter iter;
+   GConfValue *value;
+@@ -2466,6 +2467,8 @@ handle_notify (DBusConnection *connection,
+ 
+   if (value)
+     gconf_value_free (value);
++  g_free (key);
++  g_free (schema_name);
+ 
+   if (!match)
+     return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+--
+cgit v0.9.0.2

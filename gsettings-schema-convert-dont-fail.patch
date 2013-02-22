@@ -1,0 +1,28 @@
+From 02f12f41b031a1c2672e7cf1cb8ebde58288c547 Mon Sep 17 00:00:00 2001
+From: Guido Günther <agx@sigxcpu.org>
+Date: Thu, 23 Feb 2012 20:14:18 +0000
+Subject: gsettings-schema-convert: Don't fail to convert lists without default element
+
+---
+diff --git a/gsettings/gsettings-schema-convert b/gsettings/gsettings-schema-convert
+index a60dc35..913cc83 100755
+--- a/gsettings/gsettings-schema-convert
++++ b/gsettings/gsettings-schema-convert
+@@ -854,11 +854,10 @@ class GConfSchema:
+         # Fix the default value to be parsable by GVariant
+         if self.type == 'list':
+             l = self.default.strip()
+-            if not (l[0] == '[' and l[-1] == ']'):
+-                if not l:
+-                    l = '[]'
+-                else:
+-                    raise GSettingsSchemaConvertException('Cannot parse default list value \'%s\' for key \'%s\'.' % (self.default, self.applyto or self.key))
++            if not l:
++                l = '[]'
++            elif not (l[0] == '[' and l[-1] == ']'):
++                raise GSettingsSchemaConvertException('Cannot parse default list value \'%s\' for key \'%s\'.' % (self.default, self.applyto or self.key))
+             values = l[1:-1].strip()
+             if not values:
+                 self.default = '[]'
+--
+cgit v0.9.0.2
