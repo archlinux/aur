@@ -1,7 +1,7 @@
 pkgbase = notification-daemon-gtk2
 	pkgdesc = Notification daemon for the desktop notifications framework for GTK2
 	pkgver = 0.5.0
-	pkgrel = 7
+	pkgrel = 4
 	url = http://www.galago-project.org/specs/notification/
 	install = notification-daemon.install
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = notification-daemon-gtk2
 	license = GPL
 	makedepends = pkgconfig
 	makedepends = intltool
-	makedepends = libcanberra
 	depends = libsexy>=0.1.11
 	depends = libwnck>=2.28.0
 	depends = gconf-gtk2>=2.28.0
@@ -18,7 +17,9 @@ pkgbase = notification-daemon-gtk2
 	depends = libnotify>=0.4.5
 	depends = libglade>=2.6.4
 	depends = hicolor-icon-theme
-	provides = notification-daemon
+	provides = notification-daemon=0.5.0
+	conflicts = notification-daemon
+	replaces = notification-daemon
 	options = !libtool
 	options = !emptydirs
 	source = http://download.gnome.org/sources/notification-daemon/0.5/notification-daemon-0.5.0.tar.bz2
