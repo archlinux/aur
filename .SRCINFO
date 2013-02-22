@@ -1,11 +1,13 @@
 pkgbase = perl-tk-tframe
 	pkgdesc = Perl/CPAN Module Tk::TFrame
 	pkgver = 2.08
-	pkgrel = 3
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Tk-TFrame
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-GBARR-2.08.tar.gz
 	md5sums = 8791dc6ddba154ccb9b6a54e8ad11351
