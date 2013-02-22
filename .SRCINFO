@@ -1,15 +1,15 @@
 pkgbase = perl-tk-gbarr
 	pkgdesc = Perl/CPAN Module Tk::TFrame,Cloth,NumEntry,NumEntryPlain,FireButton
 	pkgver = 2.08
-	pkgrel = 4
-	url = http://metacpan.org/release/Tk-GBARR
-	arch = any
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Tk-GBAAR
+	arch = i686
+	arch = x86_64
 	license = GPL
 	license = PerlArtistic
-	provides = perl-tk-tframe
-	conflicts = perl-tk-tframe
+	depends = perl
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/S/SR/SREZIC/Tk-GBARR-2.08.tar.gz
+	source = http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-GBARR-2.08.tar.gz
 	md5sums = 8791dc6ddba154ccb9b6a54e8ad11351
 
 pkgname = perl-tk-gbarr

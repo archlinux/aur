@@ -2,16 +2,14 @@
 
 pkgname=perl-tk-gbarr
 pkgver=2.08
-pkgrel=4
+pkgrel=1
 pkgdesc='Perl/CPAN Module Tk::TFrame,Cloth,NumEntry,NumEntryPlain,FireButton'
-arch=('any')
-url='http://metacpan.org/release/Tk-GBARR'
+arch=('i686' 'x86_64')
+url='http://search.cpan.org/dist/Tk-GBAAR'
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/S/SR/SREZIC/Tk-GBARR-$pkgver.tar.gz")
-provides=('perl-tk-tframe')
-conflicts=('perl-tk-tframe')
-depends=()
+source=("http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Tk-GBARR-$pkgver.tar.gz")
+depends=('perl')
 md5sums=('8791dc6ddba154ccb9b6a54e8ad11351')
 
 build() {
@@ -20,9 +18,6 @@ build() {
 	# install module in vendor directories
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
-}
-package() {
-	cd "$srcdir/Tk-GBARR-$pkgver"
 	make install DESTDIR="$pkgdir/"
 
 	#remove perllocal.pod and .packlist
