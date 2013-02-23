@@ -5,7 +5,7 @@
 _pkgname="gummiboot-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130220
+pkgver=20130223
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -24,7 +24,7 @@ source=('gummiboot-fix-makefile.patch'
         'loader.conf'
         'arch.conf')
 
-sha1sums=('ec31cc88b3b0de26493b1b9ea06332f717a1f06f'
+sha1sums=('524c00b8ad0412671af120dfae417248397f1b64'
           '82a59f90d9138c26f8db52bb8e94991602cf1edd'
           'aff6e152c3f7494e6113a8e2f073810366433015')
 

@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index b45855e..0997263 100644
+index 40d5a46..1d50d21 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -9,16 +9,17 @@ else
@@ -55,7 +55,14 @@ index b45855e..0997263 100644
  
  %.o: %.c
  	$(E) "  CC       " $@
-@@ -71,7 +72,7 @@ gummiboot$(MACHINE_TYPE_NAME).efi: src/efi/gummiboot.so
+@@ -66,13 +67,13 @@ src/efi/gummiboot.so: src/efi/gummiboot.o
+ 	$(E) "  LD       " $@
+ 	$(Q) $(LD) $(LDFLAGS) src/efi/gummiboot.o -o $@ -lefi -lgnuefi \
+ 	  $(shell $(CC) -print-libgcc-file-name)
+-	$(Q) nm -D -u $@ | grep ' U ' && exit 1 || :
++	# $(Q) nm -D -u $@ | grep ' U ' && exit 1 || :
+ 
+ gummiboot$(MACHINE_TYPE_NAME).efi: src/efi/gummiboot.so
  	$(E) "  OBJCOPY  " $@
  	$(Q) objcopy -j .text -j .sdata -j .data -j .dynamic \
  	  -j .dynsym -j .rel -j .rela -j .reloc -j .eh_frame \
