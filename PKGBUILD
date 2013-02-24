@@ -2,19 +2,20 @@
 
 pkgname=gtk-vnc-gtk2
 _pkgname=gtk-vnc
-pkgver=0.5.4
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="A VNC viewer widget for GTK built for GTK2 only"
+pkgdesc="A VNC viewer widget for GTK build for GTK2 only"
 arch=('i686' 'x86_64')
-url="https://wiki.gnome.org/Projects/gtk-vnc"
+url="http://live.gnome.org/gtk-vnc"
 license=('LGPL')
 depends=('libgcrypt' 'gtk2')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=("${_pkgname}")
 makedepends=('intltool' 'pygtk' 'pygobject2-devel' 'gtk-doc' 'gtk2' 'vala' 'gobject-introspection')
+options=('!libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('488aa97a76ce6868160699cd45d4a0ee0fe6f0ad4631737c6ddd84450f6c9ce7')
+sha256sums=('1ad1847a23f8ea8fbf2396de46c51ec0900ee3698cde4e205760518cd1e01a40')
 
 build() {
   cd $_pkgname-$pkgver
