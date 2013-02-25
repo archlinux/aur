@@ -1,0 +1,128 @@
+Index: Source/WTF/wtf/PlatformEfl.cmake
+===================================================================
+--- Source/WTF/wtf/PlatformEfl.cmake	(revision 143875)
++++ Source/WTF/wtf/PlatformEfl.cmake	(working copy)
+@@ -31,6 +31,7 @@
+ list(APPEND WTF_INCLUDE_DIRECTORIES
+     ${ECORE_INCLUDE_DIRS}
+     ${ECORE_EVAS_INCLUDE_DIRS}
++    ${ECORE_IMF_INCLUDE_DIRS}
+     ${EINA_INCLUDE_DIRS}
+     ${EO_INCLUDE_DIRS}
+     ${EVAS_INCLUDE_DIRS}
+Index: Source/WebKit/PlatformEfl.cmake
+===================================================================
+--- Source/WebKit/PlatformEfl.cmake	(revision 143875)
++++ Source/WebKit/PlatformEfl.cmake	(working copy)
+@@ -14,6 +14,7 @@
+     ${ECORE_EVAS_INCLUDE_DIRS}
+     ${ECORE_INCLUDE_DIRS}
+     ${ECORE_INPUT_INCLUDE_DIRS}
++    ${ECORE_X_INCLUDE_DIRS}
+     ${EDJE_INCLUDE_DIRS}
+     ${EFREET_INCLUDE_DIRS}
+     ${EINA_INCLUDE_DIRS}
+Index: Source/cmake/FindEcore.cmake
+===================================================================
+--- Source/cmake/FindEcore.cmake	(revision 143875)
++++ Source/cmake/FindEcore.cmake	(working copy)
+@@ -47,36 +47,69 @@
+ )
+ 
+ # Components.
+-FIND_EFL_LIBRARY(ECORE_EVAS
+-    HEADERS Ecore_Evas.h
+-    HEADER_PREFIXES ecore-1
+-    LIBRARY ecore_evas
+-)
+-FIND_EFL_LIBRARY(ECORE_FILE
+-    HEADERS Ecore_File.h
+-    HEADER_PREFIXES ecore-1
+-    LIBRARY ecore_file
+-)
+-FIND_EFL_LIBRARY(ECORE_INPUT
+-    HEADERS Ecore_Input.h
+-    HEADER_PREFIXES ecore-1
+-    LIBRARY ecore_input
+-)
+-FIND_EFL_LIBRARY(ECORE_X
+-    HEADERS Ecore_X.h
+-    HEADER_PREFIXES ecore-1
+-    LIBRARY ecore_x
+-)
+-FIND_EFL_LIBRARY(ECORE_IMF
+-    HEADERS Ecore_IMF.h
+-    HEADER_PREFIXES ecore-1
+-    LIBRARY ecore_imf
+-)
+-FIND_EFL_LIBRARY(ECORE_IMF_EVAS
+-    HEADERS Ecore_IMF_Evas.h
+-    HEADER_PREFIXES ecore-1
+-    LIBRARY ecore_imf_evas
+-)
++if (${EVAS_VERSION} VERSION_EQUAL 1.8)
++    FIND_EFL_LIBRARY(ECORE_EVAS
++        HEADERS Ecore_Evas.h
++        HEADER_PREFIXES ecore-evas-1
++        LIBRARY ecore_evas
++    )
++    FIND_EFL_LIBRARY(ECORE_FILE
++        HEADERS Ecore_File.h
++        HEADER_PREFIXES ecore-file-1
++        LIBRARY ecore_file
++    )
++    FIND_EFL_LIBRARY(ECORE_INPUT
++        HEADERS Ecore_Input.h
++        HEADER_PREFIXES ecore-input-1
++        LIBRARY ecore_input
++    )
++    FIND_EFL_LIBRARY(ECORE_X
++        HEADERS Ecore_X.h
++        HEADER_PREFIXES ecore-x-1
++        LIBRARY ecore_x
++    )
++    FIND_EFL_LIBRARY(ECORE_IMF
++        HEADERS Ecore_IMF.h
++        HEADER_PREFIXES ecore-imf-1
++        LIBRARY ecore_imf
++    )
++    FIND_EFL_LIBRARY(ECORE_IMF_EVAS
++        HEADERS Ecore_IMF_Evas.h
++        HEADER_PREFIXES ecore-imf-evas-1
++        LIBRARY ecore_imf_evas
++    )
++else ()
++    FIND_EFL_LIBRARY(ECORE_EVAS
++        HEADERS Ecore_Evas.h
++        HEADER_PREFIXES ecore-1
++        LIBRARY ecore_evas
++    )
++    FIND_EFL_LIBRARY(ECORE_FILE
++        HEADERS Ecore_File.h
++        HEADER_PREFIXES ecore-1
++        LIBRARY ecore_file
++    )
++    FIND_EFL_LIBRARY(ECORE_INPUT
++        HEADERS Ecore_Input.h
++        HEADER_PREFIXES ecore-1
++        LIBRARY ecore_input
++    )
++    FIND_EFL_LIBRARY(ECORE_X
++        HEADERS Ecore_X.h
++        HEADER_PREFIXES ecore-1
++        LIBRARY ecore_x
++    )
++    FIND_EFL_LIBRARY(ECORE_IMF
++        HEADERS Ecore_IMF.h
++        HEADER_PREFIXES ecore-1
++        LIBRARY ecore_imf
++    )
++    FIND_EFL_LIBRARY(ECORE_IMF_EVAS
++        HEADERS Ecore_IMF_Evas.h
++        HEADER_PREFIXES ecore-1
++        LIBRARY ecore_imf_evas
++    )
++endif ()
+ 
+ foreach (_component ${Ecore_FIND_COMPONENTS})
+     set(_ecore_component "ECORE_${_component}")
