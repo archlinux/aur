@@ -26,7 +26,6 @@ pkgbase = ewebkit-svn
 	depends = libsoup
 	depends = libxslt
 	depends = libxt
-	md5sums = bba54046ca64ac77344e30a4add78e0d
 
 pkgname = ewebkit-svn
 
