@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.8
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,12 +17,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        'CVE-2013-1763.patch')
 md5sums=('1c738edfc54e7c65faeb90c436104e2f'
-         '2e9010a91995b2f127ec8c26edded05d'
-         '09be44e718bf96264d245f2c2892d811'
+         '9710fb1b1e08eb1fc5214dc2fb34ebcc'
+         'b2449cb9f5335fc864fe5b0a6330265a'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662')
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '420991808fe4cba143013427c0737aa9')
 
 _kernelname=${pkgbase#linux}
 
@@ -34,6 +36,10 @@ build() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # Fix security vulnetability CVE-2013-1763.patch
+  # https://bugs.archlinux.org/task/34005
+  patch -Np1 -i "${srcdir}/CVE-2013-1763.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -170,7 +176,7 @@ _package-headers() {
 
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include"
 
-  for i in acpi asm-generic config crypto drm generated linux math-emu \
+  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
     media net pcmcia scsi sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/src/linux-${_kernver}/include/"
   done
