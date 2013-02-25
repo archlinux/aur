@@ -1,0 +1,59 @@
+From 76515c8a369346d76864e55610a6a747d9b152d8 Mon Sep 17 00:00:00 2001
+From: James Simmons <jsimmons@infradead.org>
+Date: Sat, 12 Jan 2013 21:02:12 +0000
+Subject: As the comment suggested in via_outputs.c probing the 3rd i2c bug locks up the P4M900. So we re-enable the via_card_id handling of what outputs to test for to get around this problem.
+
+---
+diff --git a/src/via_display.c b/src/via_display.c
+index 97473f0..aaf4267 100644
+--- a/src/via_display.c
++++ b/src/via_display.c
+@@ -395,7 +395,7 @@ ViaFirstCRTCSetMode(ScrnInfoPtr pScrn, DisplayModePtr mode)
+     hwp->writeCrtc(hwp, 0x18, 0xFF);
+     ViaCrtcMask(hwp, 0x07, 0x10, 0x10);
+     ViaCrtcMask(hwp, 0x09, 0x40, 0x40);
+-    ViaCrtcMask(hwp, 0x33, 0x07, 0x06);
++    ViaCrtcMask(hwp, 0x33, 0x06, 0x07);
+     ViaCrtcMask(hwp, 0x35, 0x10, 0x10);
+ 
+     /* zero Maximum scan line */
+diff --git a/src/via_id.c b/src/via_id.c
+index 7764782..7321b26 100644
+--- a/src/via_id.c
++++ b/src/via_id.c
+@@ -297,6 +297,7 @@ ViaCheckCardId(ScrnInfoPtr pScrn)
+             (Id->Vendor == SUBVENDOR_ID(pVia->PciInfo)) &&
+             (Id->Device == SUBSYS_ID(pVia->PciInfo))) {
+             xf86DrvMsg(pScrn->scrnIndex, X_PROBED, "Detected %s. Card-Ids (%4X|%4X)\n", Id->String, SUBVENDOR_ID(pVia->PciInfo), SUBSYS_ID(pVia->PciInfo));
++            pVia->ActiveDevice = Id->Outputs;
+             pVia->Id = Id;
+             return;
+         }
+diff --git a/src/via_outputs.c b/src/via_outputs.c
+index 808e570..c07b1d2 100644
+--- a/src/via_outputs.c
++++ b/src/via_outputs.c
+@@ -873,10 +873,10 @@ ViaOutputsDetect(ScrnInfoPtr pScrn)
+     /*
+      * FIXME: xf86I2CProbeAddress(pVia->pI2CBus3, 0x40)
+      * disables the panel on P4M900
+-     * See via_tv_detect.
+      */
+     /* TV encoder */
+-    via_tv_init(pScrn);
++    if (pVia->ActiveDevice & VIA_DEVICE_TV)
++        via_tv_init(pScrn);
+ 
+     if (pVia->ActiveDevice & VIA_DEVICE_DFP) {
+         switch (pVia->Chipset) {
+@@ -1195,7 +1195,7 @@ ViaModePrimaryLegacy(xf86CrtcPtr crtc, DisplayModePtr mode)
+     /* Enable MMIO & PCI burst (1 wait state) */
+     ViaSeqMask(hwp, 0x1A, 0x06, 0x06);
+ 
+-	if (pBIOSInfo->analog->status == XF86OutputStatusConnected)
++    if (pBIOSInfo->analog->status == XF86OutputStatusConnected)
+         ViaCrtcMask(hwp, 0x36, 0x30, 0x30);
+     else
+         ViaSeqMask(hwp, 0x16, 0x00, 0x40);
+--
+cgit v0.9.0.2-2-gbebe

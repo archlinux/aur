@@ -3,7 +3,7 @@
 
 pkgname=xf86-video-openchrome
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
@@ -14,11 +14,15 @@ conflicts=('xorg-server<1.13.0' 'X-ABI-VIDEODRV_VERSION<13' 'X-ABI-VIDEODRV_VERS
 replaces=('openchrome' 'xf86-video-via')
 groups=('xorg-drivers' 'xorg')
 options=('!libtool' '!emptydirs' '!makeflags')
-source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('89e56dcfe851345f72c61a95b4fa5ab6ad7e0d83')
+source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2
+        fix_system_lock.diff)
+sha1sums=('89e56dcfe851345f72c61a95b4fa5ab6ad7e0d83'
+          '539ba65df1755af97799f49410e4091b8d222eca')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # https://bugs.freedesktop.org/show_bug.cgi?id=53307
+  patch -Np1 -i ${srcdir}/fix_system_lock.diff
   ./configure --prefix=/usr
   make
 }
