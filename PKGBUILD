@@ -3,12 +3,12 @@
 
 pkgname=kchmviewer
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
-depends=('desktop-file-utils' 'chmlib' 'kdebase-runtime' 'qt' 'xdg-utils')
+depends=('desktop-file-utils' 'chmlib' 'kdebase-runtime' 'xdg-utils')
 makedepends=('automoc4' 'cmake')
 options=('libtool')
 install=$pkgname.install
@@ -32,8 +32,8 @@ package() {
   install -D -m644 ${srcdir}/$pkgname-$pkgver/packages/$pkgname.png \
     ${pkgdir}/usr/share/pixmaps/$pkgname.png
 
-#msits.protocol file provided by kdegraphics package
+#msits.protocol file provided by kdegraphics-okular package
   rm -rf ${pkgdir}/usr/share/kde4
-#kio_msits.so file provided by kdegraphics package - FS#14376
+#kio_msits.so file provided by kdegraphics-okular package - FS#14376
   rm -rf ${pkgdir}/usr/lib
 }
