@@ -2,47 +2,47 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=evas_generic_loaders-svn
-pkgver=79173
-pkgrel=2
-pkgdesc="Extra loaders for GPL loaders and unstable libraries in Evas"
+pkgname=evas_generic_loaders-git
+pkgver=20130226
+pkgrel=1
+pkgdesc="Loaders for Evas using the 'generic' module - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('GPL2')
-depends=('efl-svn' 'poppler' 'libraw' 'libspectre' 'librsvg')
-makedepends=('subversion')
-conflicts=('evas_generic_loaders')
+depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg')
+makedepends=('git')
+conflicts=('evas_generic_loaders' 'evas_generic_loaders-svn')
 provides=('evas_generic_loaders')
-options=('!libtool' '!emptydirs')
+options=('!libtool')
          
-_svntrunk="http://svn.enlightenment.org/svn/e/trunk/evas_generic_loaders"
-_svnmod="evas_generic_loaders"
+_gitroot="git://git.enlightenment.org/core/evas_generic_loaders.git"
+_gitname="evas_generic_loaders"
 
 build() {
   cd "$srcdir"
+  msg "Connecting to GIT server...."
 
-  msg "Connecting to SVN server...."
-
-  if [[ -d "$_svnmod/.svn" ]]; then
-    (cd "$_svnmod" && svn up -r "$pkgver")
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
   else
-    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
+    git clone "$_gitroot" "$_gitname"
   fi
 
-  msg "SVN checkout done or server timeout"
+  msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf "$srcdir/$_svnmod-build"
-  svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_svnmod-build"
+  cd "$srcdir/$_gitname-build"
   make DESTDIR="$pkgdir" install
 
-  rm -r "$srcdir/$_svnmod-build"
+  rm -r "$srcdir/$_gitname-build"
 }
