@@ -3,7 +3,7 @@
 
 _pkgbasename=mpg123
 pkgname=lib32-$_pkgbasename
-pkgver=1.14.4
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="A console based real time MPEG Audio Player for Layer 1, 2 and 3 (32-bit)"
 arch=('x86_64')
@@ -12,9 +12,9 @@ license=('GPL2' 'LGPL2.1')
 depends=('lib32-glibc' 'lib32-libtool' 'lib32-alsa-lib' $_pkgbasename)
 makedepends=('lib32-sdl' gcc-multilib libtool-multilib)
 optdepends=('lib32-sdl: for additional audio support')
-options=('libtool')
+options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.bz2)
-md5sums=('a72d0c60a1d7dbec7cfe966bc11672bf')
+md5sums=('3bb9441c5f4fa10c995b8e0bd84d5549')
 
 build() {
   export CC="gcc -m32"
