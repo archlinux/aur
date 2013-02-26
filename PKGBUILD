@@ -21,7 +21,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'CVE-2013-1763.patch')
 md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          '9710fb1b1e08eb1fc5214dc2fb34ebcc'
-         'b2449cb9f5335fc864fe5b0a6330265a'
+         '03b1dad90f3558dba3031901398c1ca4'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662'
          '420991808fe4cba143013427c0737aa9')
