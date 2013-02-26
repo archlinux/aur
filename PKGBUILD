@@ -2,14 +2,19 @@
 
 pkgname=reposurgeon
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/reposurgeon/"
 license=('BSD')
 depends=('python2')
-makedepends=('xmlto')
-optdepends=('bzr' 'cvs-fast-export' 'darcs' 'git' 'mercurial' 'rcs-fast-export' 'subversion')
+makedepends=('emacs' 'xmlto')
+optdepends=('bzr'
+            'cvs-fast-export'
+	    'darcs'
+	    'git'
+	    'mercurial'
+	    'subversion')
 source=(http://www.catb.org/~esr/reposurgeon/$pkgname-$pkgver.tar.gz)
 sha256sums=('3d427821630010532139c7c9442cb01ee164cb59a6f429afd658cce3372c60ee')
 
@@ -18,6 +23,8 @@ build() {
   sed -i -e '1s/python/python2/' repodiffer reposurgeon
   make repodiffer.1 repodiffer.html repopuller.1 repopuller.html \
     reposurgeon.1 reposurgeon.html features.html
+
+  emacs -batch -f batch-byte-compile reposurgeon-mode.el
 }
 
 package() {
@@ -32,6 +39,9 @@ package() {
   install -dm755 "$pkgdir/usr/share/doc/reposurgeon"
   install -m644 NEWS README repodiffer.html reposurgeon.html repopuller.html \
     features.html TODO "$pkgdir/usr/share/doc/reposurgeon"
+
+  install -dm755 "$pkgdir/usr/share/emacs/site-lisp"
+  install -Dm644 reposurgeon-mode.el{,c} "$pkgdir/usr/share/emacs/site-lisp"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/reposurgeon/COPYING"
 }
