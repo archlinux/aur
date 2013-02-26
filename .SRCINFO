@@ -1,8 +1,9 @@
 pkgbase = econnman-svn
 	pkgdesc = Enlightenment ConnMan user interface
-	pkgver = 79483
+	pkgver = 81738
 	pkgrel = 1
 	url = http://www.enlightenment.org
+	install = econnman.install
 	arch = any
 	license = LGPL3
 	makedepends = subversion

@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=econnman-svn
-pkgver=79483
+pkgver=81738
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface"
 arch=('any')
@@ -9,6 +9,7 @@ url="http://www.enlightenment.org"
 license=('LGPL3')
 depends=('python2-elementary' 'python2-e_dbus' 'python2-edje' 'python2-ecore' 'connman')
 makedepends=('subversion')
+install=econnman.install
 #options=('!libtool' '!emptydirs')
          
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/econnman"
@@ -33,6 +34,8 @@ build() {
   cd "$srcdir/$_svnmod-build"
 
   sed -i 's:#!/usr/bin/python:#!/usr/bin/python2:g' econnman-bin.in
+  
+  sed -i '/python-elementary/d' configure.ac
 
   PYTHON=python2 \
   ./autogen.sh --prefix=/usr

@@ -1,0 +1,15 @@
+post_install() {
+  local merged_efl=$(echo "$(pkg-config ecore --modversion) 1.7.99" | awk '{print ($1 >= $2)}')
+  if (( $merged_efl )); then
+    sed -e '/^import elementary/ s/^/from efl /' \
+        -e '/^import evas/ s/^/from efl /' \
+        -e '/^import ecore/ s/^/from efl /' \
+        -e '/^import edje/ s/^/from efl /' \
+        -i "/usr/bin/econnman-bin"
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
