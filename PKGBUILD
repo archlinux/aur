@@ -3,7 +3,7 @@
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
 pkgname=django
-pkgver=1.4.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
@@ -13,9 +13,9 @@ depends=('python2')
 makedepends=('python2-distribute')
 optdepends=('mysql-python: for MySQL backend'
             'python2-psycopg2: for PostgreSQL backend')
-source=("https://www.djangoproject.com/m/releases/1.4/Django-$pkgver.tar.gz")
-md5sums=('833f531479948201f0f0a3b5b5972565')
-sha256sums=('0dd9fa4f0dfc4f64eedecc82bde8dfe15a0a420ceeb11ca1ed050f1742b57077')
+source=("https://www.djangoproject.com/m/releases/${pkgver:0:3}/Django-$pkgver.tar.gz")
+md5sums=('fac09e1e0f11bb83bb187d652a9be967')
+sha256sums=('078bf8f8ab025ed79e41ed5cee145a64dffea638eb5c2928c8cd106720824416')
 
 build() {
   cd "$srcdir/Django-$pkgver"
