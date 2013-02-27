@@ -1,0 +1,16 @@
+pkgbase = ecrire-git
+	pkgdesc = Simple text editor based on EFL
+	pkgver = 20130227
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	install = ecrire.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = elementary
+	depends = desktop-file-utils
+
+pkgname = ecrire-git
+
