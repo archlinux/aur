@@ -1,0 +1,204 @@
+diff -pur slim-1.3.5.orig/app.cpp slim-1.3.5/app.cpp
+--- slim-1.3.5.orig/app.cpp	2012-12-31 06:03:42.000000000 -0700
++++ slim-1.3.5/app.cpp	2013-02-27 02:03:23.000000000 -0700
+@@ -138,6 +138,7 @@ App::App(int argc, char** argv)
+ 	daemonmode = false;
+ 	force_nodaemon = false;
+ 	firstlogin = true;
++	existing_server = false;
+ 	Dpy = NULL;
+ 
+ 	/* Parse command line
+@@ -188,13 +189,12 @@ App::App(int argc, char** argv)
+ void App::Run() {
+ 	DisplayName = DISPLAY;
+ 
+-#ifdef XNEST_DEBUG
+-	char* p = getenv("DISPLAY");
++	char *p = getenv("DISPLAY");
+ 	if (p && p[0]) {
+ 		DisplayName = p;
+-		cout << "Using display name " << DisplayName << endl;
++		logStream << "Using display name " << DisplayName << endl;
++		existing_server = true;
+ 	}
+-#endif
+ 
+ 	/* Read configuration and theme */
+ 	cfg = new Cfg;
+@@ -249,7 +249,7 @@ void App::Run() {
+ 		}
+ 	}
+ 
+-	if (!testing) {
++	if (!testing && !existing_server) {
+ 		/* Create lock file */
+ 		LoginApp->GetLock();
+ 
+@@ -263,7 +263,6 @@ void App::Run() {
+ 		signal(SIGPIPE, CatchSignal);
+ 		signal(SIGUSR1, User1Signal);
+ 
+-#ifndef XNEST_DEBUG
+ 		if (!force_nodaemon && cfg->getOption("daemon") == "yes") {
+ 			daemonmode = true;
+ 		}
+@@ -283,7 +282,6 @@ void App::Run() {
+ 
+ 		CreateServerAuth();
+ 		StartServer();
+-#endif
+ 
+ 	}
+ 
+@@ -291,7 +289,7 @@ void App::Run() {
+ 	if((Dpy = XOpenDisplay(DisplayName)) == 0) {
+ 		logStream << APPNAME << ": could not open display '"
+ 			 << DisplayName << "'" << endl;
+-		if (!testing) StopServer();
++		if (!testing && !existing_server) StopServer();
+ 		exit(ERR_EXIT);
+ 	}
+ 
+@@ -632,9 +630,9 @@ void App::Login() {
+ 		_exit(OK_EXIT);
+ 	}
+ 
+-#ifndef XNEST_DEBUG
+-	CloseLog();
+-#endif
++	if (!existing_server) {
++		CloseLog();
++	}
+ 
+ 	/* Wait until user is logging out (login process terminates) */
+ 	pid_t wpid = -1;
+@@ -686,11 +684,11 @@ void App::Login() {
+ 
+ 	HideCursor();
+ 
+-#ifndef XNEST_DEBUG
+-	/* Re-activate log file */
+-	OpenLog();
+-	RestartServer();
+-#endif
++	if (!existing_server) {
++		/* Re-activate log file */
++		OpenLog();
++		RestartServer();
++	}
+ 
+ }
+ 
+@@ -709,8 +707,10 @@ void App::Reboot() {
+ 	sleep(3);
+ 
+ 	/* Stop server and reboot */
+-	StopServer();
+-	RemoveLock();
++	if (!existing_server) {
++		StopServer();
++		RemoveLock();
++	}
+ 	system(cfg->getOption("reboot_cmd").c_str());
+ 	exit(OK_EXIT);
+ }
+@@ -731,8 +731,10 @@ void App::Halt() {
+ 	sleep(3);
+ 
+ 	/* Stop server and halt */
+-	StopServer();
+-	RemoveLock();
++	if (!existing_server) {
++		StopServer();
++		RemoveLock();
++	}
+ 	system(cfg->getOption("halt_cmd").c_str());
+ 	exit(OK_EXIT);
+ }
+@@ -778,8 +780,10 @@ void App::Exit() {
+ 		XCloseDisplay(Dpy);
+ 	} else {
+ 		delete LoginPanel;
+-		StopServer();
+-		RemoveLock();
++		if (!existing_server) {
++			StopServer();
++			RemoveLock();
++		}
+ 	}
+ 	delete cfg;
+ 	exit(OK_EXIT);
+@@ -799,8 +803,10 @@ void App::RestartServer() {
+ 	};
+ #endif
+ 
+-	StopServer();
+-	RemoveLock();
++	if (!existing_server) {
++		StopServer();
++		RemoveLock();
++	}
+ 	while (waitpid(-1, NULL, WNOHANG) > 0); /* Collects all dead childrens */
+ 	Run();
+ }
+Only in slim-1.3.5: .app.cpp.swp
+diff -pur slim-1.3.5.orig/app.h slim-1.3.5/app.h
+--- slim-1.3.5.orig/app.h	2012-12-31 06:03:42.000000000 -0700
++++ slim-1.3.5/app.h	2013-02-26 18:34:43.000000000 -0700
+@@ -104,6 +104,7 @@ private:
+ 	bool firstlogin;
+ 	bool daemonmode;
+ 	bool force_nodaemon;
++	bool existing_server;
+ 	/* For testing themes */
+ 	char *testtheme;
+ 	bool testing;
+Only in slim-1.3.5: .image.cpp.swp
+Only in slim-1.3.5: .log.cpp.swp
+diff -pur slim-1.3.5.orig/log.h slim-1.3.5/log.h
+--- slim-1.3.5.orig/log.h	2012-12-31 06:03:42.000000000 -0700
++++ slim-1.3.5/log.h	2013-02-27 02:13:47.000000000 -0700
+@@ -9,6 +9,7 @@
+ #endif
+ #include "const.h"
+ #include <fstream>
++#include <iostream>
+ 
+ using namespace std;
+ 
+@@ -22,17 +23,29 @@ public:
+ 
+ 	template<typename Type>
+ 	LogUnit & operator<<(const Type & text) {
+-		logFile << text; logFile.flush();
++		if (logFile.is_open()) {
++			logFile << text; logFile.flush();
++		} else {
++			cerr << text;
++		}
+ 		return *this;
+ 	}
+ 
+ 	LogUnit & operator<<(ostream & (*fp)(ostream&)) {
+-		logFile << fp; logFile.flush();
++		if (logFile.is_open()) {
++			logFile << fp; logFile.flush();
++		} else {
++			cerr << fp;
++		}
+ 		return *this;
+ 	}
+ 
+ 	LogUnit & operator<<(ios_base & (*fp)(ios_base&)) {
+-		logFile << fp; logFile.flush();
++		if (logFile.is_open()) {
++			logFile << fp; logFile.flush();
++		} else {
++			cerr << fp;
++		}
+ 		return *this;
+ 	}
+ } logStream;
+Only in slim-1.3.5: .panel.cpp.swp
+Only in slim-1.3.5: .switchuser.cpp.swp
