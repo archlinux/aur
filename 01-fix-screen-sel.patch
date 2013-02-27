@@ -1,0 +1,66 @@
+--- a/src/rxvt.h	2012-11-30 07:52:10.000000000 +0100
++++ b/src/rxvt.h	2013-01-19 18:14:07.477653413 +0100
+@@ -1488,6 +1488,7 @@
+   void scr_blank_screen_mem (line_t &l, rend_t efs) const NOTHROW;
+   void scr_kill_char (line_t &l, int col) const NOTHROW;
+   int scr_scroll_text (int row1, int row2, int count) NOTHROW;
++  void copy_line (line_t &dst, line_t &src);
+   void scr_reset ();
+   void scr_release () NOTHROW;
+   void scr_clear (bool really = false) NOTHROW;
+--- a/src/screen.C	2012-11-30 08:13:38.000000000 +0100
++++ b/src/screen.C	2013-01-19 18:17:13.431014964 +0100
+@@ -190,6 +190,16 @@
+   row_buf   = swap_buf  + nrow;
+ }
+
++void
++rxvt_term::copy_line (line_t &dst, line_t &src)
++{
++  scr_blank_screen_mem (dst, DEFAULT_RSTYLE);
++  dst.l = min (src.l, ncol);
++  memcpy (dst.t, src.t, sizeof (text_t) * dst.l);
++  memcpy (dst.r, src.r, sizeof (rend_t) * dst.l);
++  dst.f = src.f;
++}
++
+ void ecb_cold
+ rxvt_term::scr_reset ()
+ {
+@@ -232,8 +242,6 @@
+   line_t *prev_swap_buf  = swap_buf;
+   line_t *prev_row_buf   = row_buf;
+
+-  int common_col = min (prev_ncol, ncol);
+-
+   scr_alloc ();
+
+   if (!prev_row_buf)
+@@ -277,13 +285,8 @@
+
+       for (int row = min (nrow, prev_nrow); row--; )
+         {
+-          scr_blank_screen_mem (drawn_buf [row], DEFAULT_RSTYLE);
+-          scr_blank_screen_mem (swap_buf  [row], DEFAULT_RSTYLE);
+-
+-          memcpy (drawn_buf [row].t, prev_drawn_buf [row].t, sizeof (text_t) * common_col);
+-          memcpy (drawn_buf [row].r, prev_drawn_buf [row].r, sizeof (rend_t) * common_col);
+-          memcpy (swap_buf  [row].t, prev_swap_buf  [row].t, sizeof (text_t) * common_col);
+-          memcpy (swap_buf  [row].r, prev_swap_buf  [row].r, sizeof (rend_t) * common_col);
++          copy_line (drawn_buf [row], prev_drawn_buf [row]);
++          copy_line (swap_buf [row], prev_swap_buf [row]);
+         }
+
+       int p    = MOD (term_start + prev_nrow, prev_total_rows);  // previous row
+@@ -388,10 +391,7 @@
+               line_t &src = prev_row_buf [MOD (term_start + row, prev_total_rows)];
+               line_t &dst = row_buf [row];
+
+-              scr_blank_screen_mem (dst, DEFAULT_RSTYLE);
+-
+-              memcpy (dst.t, src.t, sizeof (text_t) * common_col);
+-              memcpy (dst.r, src.r, sizeof (rend_t) * common_col);
++              copy_line (dst, src);
+             }
+
+           for (int row = prev_nrow; row < nrow; row++)
