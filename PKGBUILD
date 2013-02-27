@@ -1,4 +1,4 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh || lavabit.com >
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=dmtx-utils
 pkgver=0.7.4
@@ -7,9 +7,8 @@ pkgdesc="Utilities to libdmtx"
 url="http://www.libdmtx.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('libdmtx')
+depends=('libdmtx' 'imagemagick')
 source=("http://downloads.sourceforge.net/libdmtx/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('e56990bf058c109206124f8d9177715b7675e657')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
@@ -21,3 +20,5 @@ package() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
+
+sha256sums=('9f510f6c26a2a73e44da28eae78308973cc274043873cc7f90606624066ec7d0')
