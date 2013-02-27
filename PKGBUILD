@@ -3,7 +3,7 @@
 
 pkgname=cmake
 pkgver=2.8.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -12,10 +12,8 @@ depends=('curl' 'libarchive' 'shared-mime-info')
 makedepends=('qt5-base' 'emacs')
 optdepends=('qt5-base: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
-        'use-qmake4-for-qt4.patch')
-md5sums=('097278785da7182ec0aea8769d06860c'
-         '3136ec7953f2e01cc099f38dbd2655e2')
+source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
+md5sums=('097278785da7182ec0aea8769d06860c')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -23,9 +21,6 @@ build() {
   # Qt is built with reduce-relocations
   export CFLAGS="${CFLAGS} -fPIC"
   export CXXFLAGS="${CXXFLAGS} -fPIC"
-
-  # Do not look for 'qmake' as this could referer to the qt5 version
-  patch -p1 -i "${srcdir}"/use-qmake4-for-qt4.patch
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
