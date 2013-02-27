@@ -30,6 +30,7 @@ pkgbase = linux-linode
 	source = config.x86_64
 	source = menu.lst
 	source = linux-linode.preset
+	source = CVE-2013-1763.patch
 	source = change-default-console-loglevel.patch
 	md5sums = 21223369d682bcf44bcdfe1521095983
 	md5sums = 375fa67b3daba9e6040f13a0a29bf543
@@ -37,6 +38,7 @@ pkgbase = linux-linode
 	md5sums = c6b60c3fe0027e209a375adefc386124
 	md5sums = d01f2350ec9f92e2eabcde0f11be24f2
 	md5sums = ee66f3cd0c5bc0ba0f65499784d19f30
+	md5sums = 47e4472ae060798baae01662d661a87b
 	md5sums = 9d3c56a4b999c8bfbd4018089a62f662
 
 pkgname = linux-linode
