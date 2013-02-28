@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1rc2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -28,20 +28,18 @@ backup=('etc/conf.d/libvirtd'
 	'etc/libvirt/qemu.conf'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
-source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
+source=("http://libvirt.org/sources/$pkgname-$pkgver-rc2.tar.gz"
 	libvirtd.rc.d
 	libvirtd.conf.d
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
-	libvirt.tmpfiles.d
-	python.patch)
-md5sums=('7e268ed702c4331d393e5b43449cae13'
+	libvirt.tmpfiles.d)
+md5sums=('d03a65be35c455bc09ee96df66ea2c4d'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '0ee5b6c58590ff392a266f20f7928d1f'
          '0a96ed876ffb1fcb9dff5a9b3a609c1e'
-         '020971887442ebbf1b6949e031c8dd3f'
-         '4280310abbdebbb7ad756840e4ff5671')
+         '020971887442ebbf1b6949e031c8dd3f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -52,8 +50,6 @@ build() {
     sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-
-  patch -p1 <$srcdir/python.patch
 
   export LDFLAGS=-lX11
   export RADVD=/usr/sbin/radvd
