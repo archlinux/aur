@@ -2,7 +2,7 @@ pkgname=linux-linode
 _basekernel=3.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.9
+pkgver=${_basekernel}.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -15,15 +15,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config.x86_64'
         'menu.lst'
         "${pkgname}.preset"
-        "CVE-2013-1763.patch"
         'change-default-console-loglevel.patch')
 md5sums=('21223369d682bcf44bcdfe1521095983'
-         '375fa67b3daba9e6040f13a0a29bf543'
-         '27254c8495fcded64b4cbf6be80e7d2b'
-         '2e9d92b6963061202fbd0c661ae022f1'
+         'ffc885cf2fdedf1792b999d4ab5b8ba8'
+         '8d3616e6ada3119a0466ae08ada7aaae'
+         '6a22c97bddb2af735013c16c87595c46'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
-         '47e4472ae060798baae01662d661a87b'
          '9d3c56a4b999c8bfbd4018089a62f662')
 pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -36,7 +34,6 @@ install=${pkgname}.install
 build() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-  patch -p1 -i "${srcdir}/CVE-2013-1763.patch"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
