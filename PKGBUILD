@@ -4,27 +4,20 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.8
-pkgver=3.8
-pkgrel=2
+pkgver=3.8.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        'CVE-2013-1763.patch')
-md5sums=('1c738edfc54e7c65faeb90c436104e2f'
-         '9710fb1b1e08eb1fc5214dc2fb34ebcc'
-         '03b1dad90f3558dba3031901398c1ca4'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '420991808fe4cba143013427c0737aa9')
+        'change-default-console-loglevel.patch')
 
 _kernelname=${pkgbase#linux}
 
@@ -32,14 +25,10 @@ build() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # Fix security vulnetability CVE-2013-1763.patch
-  # https://bugs.archlinux.org/task/34005
-  patch -Np1 -i "${srcdir}/CVE-2013-1763.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -320,3 +309,9 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('1c738edfc54e7c65faeb90c436104e2f'
+         '50a68679086c346dddb34dedccfae7ee'
+         '307107a8b15060e6fc0e48bdaacaed06'
+         '03b1dad90f3558dba3031901398c1ca4'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '9d3c56a4b999c8bfbd4018089a62f662')
