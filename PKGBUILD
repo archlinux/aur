@@ -14,11 +14,12 @@ optdepends=('qtwebkit: for the launcher')
 provides=('holyspirit')
 conflicts=('holyspirit')
 install=holyspirit.install
-source=(holyspirit.sh config_crash.patch backspace.patch)
+source=(holyspirit.sh config_crash.patch backspace.patch qt-includes.patch)
 backup=('opt/share/games/holyspirit/configuration.conf' 'opt/share/games/holyspirit/key_mapping.conf')
 md5sums=('c2fa4f8768d35c54a95dec924e50c75f'
          'c0fd6d1ede2cb6afbcf082aaae0cc60b'
-         '4967f1cd4216d1ec2ff3cfd1941b18df')
+         '4967f1cd4216d1ec2ff3cfd1941b18df'
+         '97fde790c28fd547be56a8c0d9e2029a')
 
 _svntrunk=https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk
 _svnmod=holyspirit
@@ -43,6 +44,7 @@ build() {
   # patches
   patch -p1 < ../config_crash.patch
   patch -p1 < ../backspace.patch
+  patch -p2 < ../qt-includes.patch
 
   cmake -DSFML_STATIC_LIBRARIES=FALSE \
     -DCMAKE_INSTALL_PREFIX:STRING="$pkgdir/opt"

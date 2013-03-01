@@ -1,0 +1,16 @@
+From: Johannes Dewender <jonnyjd@users.sf.net>
+Date: Sat, 02 Mar 2013 00:02:34 +0100
+Subject: [PATCH] add QtNetwork to includes for QHttp
+
+Index: holyspirit/trunk/Launcher/Launcher.h
+===================================================================
+--- holyspirit.orig/trunk/Launcher/Launcher.h
++++ holyspirit/trunk/Launcher/Launcher.h
+@@ -5,6 +5,7 @@
+ #include <QPushButton>
+ #include <QMessageBox>
+ #include <QtWebKit>
++#include <QtNetwork>
+ 
+ #include "defines.h"
+ #include "optionsjeu.h"
