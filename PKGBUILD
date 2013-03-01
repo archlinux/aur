@@ -1,22 +1,24 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
-pkgver=2381
+pkgver=2419
 pkgrel=1
 pkgdesc="Diablo clone"
 arch=(i686 x86_64)
 url="http://www.holyspirit.fr/"
 license=('GPL')
+# there is no sfml 2.0rc with the BackSpace key change
 depends=('sfml')
 makedepends=('subversion' 'cmake' 'qtwebkit')
 optdepends=('qtwebkit: for the launcher')
 provides=('holyspirit')
 conflicts=('holyspirit')
 install=holyspirit.install
-source=(holyspirit.sh config_crash.patch)
+source=(holyspirit.sh config_crash.patch backspace.patch)
 backup=('opt/share/games/holyspirit/configuration.conf' 'opt/share/games/holyspirit/key_mapping.conf')
 md5sums=('c2fa4f8768d35c54a95dec924e50c75f'
-         'b997e0c5d714c615509db7850d0290e3')
+         'c0fd6d1ede2cb6afbcf082aaae0cc60b'
+         '4967f1cd4216d1ec2ff3cfd1941b18df')
 
 _svntrunk=https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk
 _svnmod=holyspirit
@@ -38,7 +40,9 @@ build() {
   cp -r "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
   cd "$srcdir/$_svnmod-build"
 
+  # patches
   patch -p1 < ../config_crash.patch
+  patch -p1 < ../backspace.patch
 
   cmake -DSFML_STATIC_LIBRARIES=FALSE \
     -DCMAKE_INSTALL_PREFIX:STRING="$pkgdir/opt"

@@ -1,6 +1,6 @@
 pkgbase = holyspirit-svn
 	pkgdesc = Diablo clone
-	pkgver = 2381
+	pkgver = 2419
 	pkgrel = 1
 	url = http://www.holyspirit.fr/
 	install = holyspirit.install
@@ -18,8 +18,10 @@ pkgbase = holyspirit-svn
 	backup = opt/share/games/holyspirit/key_mapping.conf
 	source = holyspirit.sh
 	source = config_crash.patch
+	source = backspace.patch
 	md5sums = c2fa4f8768d35c54a95dec924e50c75f
-	md5sums = b997e0c5d714c615509db7850d0290e3
+	md5sums = c0fd6d1ede2cb6afbcf082aaae0cc60b
+	md5sums = 4967f1cd4216d1ec2ff3cfd1941b18df
 
 pkgname = holyspirit-svn
 

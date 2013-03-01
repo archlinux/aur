@@ -1,16 +1,15 @@
 From: Johannes Dewender <jonnyjd@users.sf.net>
 Date: Wed, 25 Jul 2012 01:22:42.463515335 +0200
 Subject: [PATCH] fix crash on saving configuration
-
 Holyspirit crashed on exit when the configuration files were not writable.
 
 Signed-off-by: Johannes Dewender <jonnyjd@users.sf.net>
 
 Index: trunk/Source/main.cpp
 ===================================================================
---- trunk/Source/main.cpp	(revision 2381)
-+++ trunk/Source/main.cpp	(working copy)
-@@ -88,7 +88,15 @@
+--- trunk/Source/main.cpp.orig
++++ trunk/Source/main.cpp
+@@ -88,7 +88,15 @@ int main (  )
      console->Ajouter("");
      console->Ajouter("Saving configuration");
  
@@ -29,9 +28,9 @@ Index: trunk/Source/main.cpp
      console->Ajouter("Destruction of engines");
 Index: trunk/Source/configuration.cpp
 ===================================================================
---- trunk/Source/configuration.cpp	(revision 2381)
-+++ trunk/Source/configuration.cpp	(working copy)
-@@ -608,7 +608,7 @@
+--- trunk/Source/configuration.cpp.orig
++++ trunk/Source/configuration.cpp
+@@ -608,7 +608,7 @@ void Configuration::Sauvegarder()
          fichier.close();
      }
      else
@@ -40,7 +39,7 @@ Index: trunk/Source/configuration.cpp
  }
  
  void Configuration::SauvegarderKeyMapping()
-@@ -639,7 +639,7 @@
+@@ -639,7 +639,7 @@ void Configuration::SauvegarderKeyMappin
          fichier.close();
      }
      else

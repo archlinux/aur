@@ -1,0 +1,94 @@
+From: Johannes Dewender <jonnyjd@users.sf.net>
+Date: Fri, 01 Mar 2013 20:54:30 +0100
+Subject: [PATCH] BackSpace -> Back for sfml 2.0rc
+
+Revert most of the changes from svn revision 2385,
+in order to make holyspirit work with the sfml package
+on Arch Linux.
+
+Index: trunk/Source/configuration.cpp
+===================================================================
+--- trunk/Source/configuration.cpp.orig
++++ trunk/Source/configuration.cpp
+@@ -1261,7 +1261,7 @@ void Configuration::InitKeys()
+     key_mapping_converter[sf::Keyboard::Dash] = "Dash";
+     key_mapping_converter[sf::Keyboard::Space] = "Space";
+     key_mapping_converter[sf::Keyboard::Return] = "Return";
+-    key_mapping_converter[sf::Keyboard::BackSpace] = "Back";
++    key_mapping_converter[sf::Keyboard::Back] = "Back";
+     key_mapping_converter[sf::Keyboard::Tab] = "Tab";
+     key_mapping_converter[sf::Keyboard::PageUp] = "PageUp";
+     key_mapping_converter[sf::Keyboard::PageDown] = "PageDown";
+Index: trunk/Source/Moteurs/eventManager.cpp
+===================================================================
+--- trunk/Source/Moteurs/eventManager.cpp.orig
++++ trunk/Source/Moteurs/eventManager.cpp
+@@ -115,7 +115,7 @@ void EventManager::GererLesEvenements(bo
+         }
+     }
+ 
+-    if(m_EventTableau[sf::Keyboard::BackSpace])
++    if(m_EventTableau[sf::Keyboard::Back])
+         isEnteredText = false;
+     if(m_EventTableau[sf::Keyboard::Return])
+         isEnteredText = false;
+Index: trunk/Source/Contextes/c_mainMenu.cpp
+===================================================================
+--- trunk/Source/Contextes/c_mainMenu.cpp.orig
++++ trunk/Source/Contextes/c_mainMenu.cpp
+@@ -773,10 +773,10 @@ void  c_MainMenu::E_Continuer(Jeu *jeu)
+         && nom_hero.size() < 16)
+             nom_hero += eventManager->getChar();
+ 
+-        if(eventManager->getEvenement(sf::Keyboard::BackSpace,EventKey))
++        if(eventManager->getEvenement(sf::Keyboard::Back,EventKey))
+             if(!nom_hero.empty())
+                 nom_hero.erase(nom_hero.begin() + nom_hero.size() - 1);
+-        eventManager->StopEvenement(sf::Keyboard::BackSpace,EventKey);
++        eventManager->StopEvenement(sf::Keyboard::Back,EventKey);
+ 
+ 
+         texte.setString(nom_hero);
+@@ -843,10 +843,10 @@ void  c_MainMenu::E_Nouveau(Jeu *jeu)
+     && nom_hero.size() < 16)
+         nom_hero += eventManager->getChar();
+ 
+-    if(eventManager->getEvenement(sf::Keyboard::BackSpace,EventKey))
++    if(eventManager->getEvenement(sf::Keyboard::Back,EventKey))
+         if(!nom_hero.empty())
+             nom_hero.erase(nom_hero.begin() + nom_hero.size() - 1);
+-    eventManager->StopEvenement(sf::Keyboard::BackSpace,EventKey);
++    eventManager->StopEvenement(sf::Keyboard::Back,EventKey);
+ 
+     texte.setCharacterSize(20);
+ 
+@@ -1145,10 +1145,10 @@ void  c_MainMenu::E_Multi(Jeu *jeu)
+     && */entered_ip.size() <= 16)
+         entered_ip += eventManager->getChar();
+ 
+-    if(eventManager->getEvenement(sf::Keyboard::BackSpace,EventKey))
++    if(eventManager->getEvenement(sf::Keyboard::Back,EventKey))
+         if(!entered_ip.empty())
+             entered_ip.erase(entered_ip.begin() + entered_ip.size() - 1);
+-    eventManager->StopEvenement(sf::Keyboard::BackSpace,EventKey);
++    eventManager->StopEvenement(sf::Keyboard::Back,EventKey);
+ 
+     moteurGraphique->special_typo.Draw(entered_ip + (time > 0.5 ? "|" : ""), sf::Vector2f(configuration->Resolution.w/2,
+                                                               configuration->Resolution.h/2 + 52 + 48), 48, 19, true);
+Index: trunk/Source/Contextes/c_jeu.cpp
+===================================================================
+--- trunk/Source/Contextes/c_jeu.cpp.orig
++++ trunk/Source/Contextes/c_jeu.cpp
+@@ -585,10 +585,10 @@ int GestionBoutons(Jeu *jeu, bool diplac
+         if(eventManager->IsEnteredText())
+             jeu->hero.m_personnage.m_speak += eventManager->getChar();
+ 
+-        if(eventManager->getEvenement(sf::Keyboard::BackSpace,EventKey))
++        if(eventManager->getEvenement(sf::Keyboard::Back,EventKey))
+             if(!jeu->hero.m_personnage.m_speak.empty())
+                 jeu->hero.m_personnage.m_speak.erase(jeu->hero.m_personnage.m_speak.begin() + jeu->hero.m_personnage.m_speak.size() - 1);
+-        eventManager->StopEvenement(sf::Keyboard::BackSpace,EventKey);
++        eventManager->StopEvenement(sf::Keyboard::Back,EventKey);
+     }
+ 
+     if (   eventManager->getPositionSouris().x > AutoScreenAdjust(775,0).x
