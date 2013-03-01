@@ -1,14 +1,15 @@
-pkgbase = emotion_generic_players-svn
-	pkgdesc = Extra players modules for Emotion
-	pkgver = 82603
+pkgbase = emotion_generic_players-git
+	pkgdesc = Players for Emotion using the 'generic' module - Currently VLC
+	pkgver = 20130301
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = subversion
-	depends = efl-svn
+	makedepends = git
+	depends = efl-git
 	depends = vlc
+	conflicts = emotion_generic_players-svn
 
-pkgname = emotion_generic_players-svn
+pkgname = emotion_generic_players-git
 
