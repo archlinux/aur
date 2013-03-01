@@ -30,7 +30,7 @@ build() {
     -DENABLE_GTK2_IM_MODULE=ON \
     -DENABLE_GTK3_IM_MODULE=ON \
     -DENABLE_QT_IM_MODULE=ON \
-    -DQT_QMAKE_EXECUTABLE=qmake4
+    -DQT_QMAKE_EXECUTABLE=qmake-qt4
   make
 }
 
