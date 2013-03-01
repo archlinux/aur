@@ -24,6 +24,7 @@ source=(
   "http://mirrors.rit.edu/ubuntu/pool/main/o/openldap/libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/c/cyrus-sasl2/libsasl2-2_2.1.25.dfsg1-3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/universe/l/log4cxx/liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb"
+  "http://mirrors.rit.edu/ubuntu/pool/main/p/protobuf/libprotobuf7_2.4.0a-2ubuntu2_amd64.deb"
   "LICENSE"
   "bitcasa.sh")
 sha256sums=(
@@ -38,6 +39,7 @@ sha256sums=(
   '024df6e175efc8747454a4ca873598c16bc02eab6b811d418e78a5038b39dc09' # libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
   '7ee06d0eb0075b3ca01a162c844984675084bc861a03ce84b0803949ef8c799c' # libsasl2-2_2.1.25.dfsg1-3_amd64.deb
   'ce1af021f0d5a34864b47897f5feab7d18b8023fcb76cb3e760a009c57fc2a19' # liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb
+  '093a674060c746864f17cf5d253c15f9556e316bfd212d6a0b13969666b47daf' # libprotobuf7_2.4.0a-2ubuntu2_amd64.deb
   '0d42620570e40e4d3ee95bd83776bcf484c235bfaa81892006ac863b9e5b7847' # LICENSE
   '0b0d62af78a02d5ea013a58a15e2a1c0f1740eb7b0e429002e9ded81725a8df3' # bitcasa.sh
 )
@@ -64,6 +66,7 @@ build() {
   _extract_deb libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
   _extract_deb libsasl2-2_2.1.25.dfsg1-3_amd64.deb data.tar.gz
   _extract_deb liblog4cxx10_0.10.0-1.2ubuntu2_amd64.deb
+  _extract_deb libprotobuf7_2.4.0a-2ubuntu2_amd64.deb
   msg2 "Done extracting!"
 }
 
@@ -103,6 +106,8 @@ package() {
   install -m644 "$srcdir/usr/lib/libboost_system.so.1.46.1" "$pkgdir/opt/bitcasa/lib/"
   install -m644 "$srcdir/usr/lib/liblog4cxx.so.10" "$pkgdir/opt/bitcasa/lib/"
   install -m644 "$srcdir/usr/lib/liblog4cxx.so.10.0.0" "$pkgdir/opt/bitcasa/lib/"
+  install -m644 "$srcdir/usr/lib/libprotobuf.so.7" "$pkgdir/opt/bitcasa/lib/"
+  install -m644 "$srcdir/usr/lib/libprotobuf.so.7.0.0" "$pkgdir/opt/bitcasa/lib/"
   install -m644 "$srcdir/lib/$CARCH-linux-gnu/libcrypto.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
   install -m644 "$srcdir/lib/$CARCH-linux-gnu/libssl.so.1.0.0" "$pkgdir/opt/bitcasa/lib/"
 
