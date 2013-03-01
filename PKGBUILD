@@ -2,13 +2,13 @@
 
 pkgname=apgdiff
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Another PostgreSQL Diff Tool for schema comparison and migration"
-url="http://apgdiff.startnet.biz/"
-depends=('java-runtime')
+url="http://www.apgdiff.com/"
+depends=('java-environment' 'bash')
 arch=('any')
 license=('MIT')
-source=(http://apgdiff.startnet.biz/download/$pkgname-$pkgver-bin.zip)
+source=(http://www.apgdiff.com/download/$pkgname-$pkgver-bin.zip)
 
 build() {
   mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/$pkgname \
