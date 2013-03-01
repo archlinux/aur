@@ -31,7 +31,7 @@ build() {
   make
 
   cd src/gui
-  qmake4
+  qmake-qt4
   make
 }
 
