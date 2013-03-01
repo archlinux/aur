@@ -1,6 +1,6 @@
 # Contributor: Massimiliano Torromeo <Massimiliano DOT Torromeo AT gmail DOT com>
 pkgname=expressioneditor-git
-pkgver=20120418
+pkgver=20130301
 pkgrel=1
 pkgdesc="Application intended to help in testing and writing regular expressions"
 arch=(i686 x86_64)
