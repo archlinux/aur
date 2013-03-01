@@ -1,7 +1,7 @@
 pkgbase = bitcasa
 	pkgdesc = Infinite Storage in the cloud
 	pkgver = 0.9.6.99
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bitcasa.com
 	install = bitcasa.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = bitcasa
 	depends = libtasn1
 	depends = protobuf
 	depends = p11-kit
-	depends = qt
+	depends = qt4
 	depends = rtmpdump
 	depends = heimdal-aur
 	source = http://mirror.tke.me/bitcasa/bitcasa_0.9.6.99_amd64.deb

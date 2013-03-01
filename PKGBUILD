@@ -3,12 +3,12 @@
 
 pkgname=bitcasa
 pkgver=0.9.6.99
-pkgrel=2
+pkgrel=3
 pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64')
 url="http://www.bitcasa.com"
 license=('custom')
-depends=('apr-util' 'fuse' 'desktop-file-utils' 'hicolor-icon-theme' 'krb5' 'libidn' 'curl' 'libgcrypt' 'libtasn1' 'protobuf' 'p11-kit' 'qt' 'rtmpdump' 'heimdal-aur')
+depends=('apr-util' 'fuse' 'desktop-file-utils' 'hicolor-icon-theme' 'krb5' 'libidn' 'curl' 'libgcrypt' 'libtasn1' 'protobuf' 'p11-kit' 'qt4' 'rtmpdump' 'heimdal-aur')
 makedepends=('binutils' 'tar')
 install=bitcasa.install
 source=(
