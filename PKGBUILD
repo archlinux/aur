@@ -6,7 +6,7 @@ pkgdesc="Application intended to help in testing and writing regular expressions
 arch=(i686 x86_64)
 url="http://alex-elliott.co.uk/projects/expression-editor"
 license=('GPL')
-depends=('qt' 'icu')
+depends=('qt4' 'icu')
 makedepends=('git' 'cmake')
 
 _gitroot="https://github.com/aelliott/expressioneditor.git"
