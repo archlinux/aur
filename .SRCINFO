@@ -1,0 +1,15 @@
+pkgbase = perl-tie-cache
+	pkgdesc = LRU Cache in memory
+	pkgver = 0.19
+	pkgrel = 2
+	url = http://search.cpan.org/~chamas/Tie-Cache-0.19/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHAMAS/Tie-Cache-0.19.tar.gz
+	sha256sums = 29065e9327d4d389131242bdd787c46126c5cc0c6656fdbc0454950e4660561b
+
+pkgname = perl-tie-cache
+
