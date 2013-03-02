@@ -1,11 +1,13 @@
 pkgbase = perl-data-flow
 	pkgdesc = Perl extension for simple-minded recipe-controlled build of data
 	pkgver = 1.02
-	pkgrel = 3
+	pkgrel = 1
 	url = http://search.cpan.org/perldoc?Data::Flow
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/Data-Flow-1.02.tar.gz
 	md5sums = aa453ab013681206bccf43e8e267d63b
