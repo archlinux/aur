@@ -1,16 +1,16 @@
 pkgbase = perl-io-interface
 	pkgdesc = Perl extension for access to network card configuration information
-	pkgver = 1.09
+	pkgver = 1.06
 	pkgrel = 1
 	url = http://search.cpan.org/perldoc?IO::Interface
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
-	depends = glibc
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LD/LDS/IO-Interface-1.09.tar.gz
-	md5sums = 806f97aff5a7361b6f54cd494f4cc9fd
+	source = http://search.cpan.org/CPAN/authors/id/L/LD/LDS/IO-Interface-1.06.tar.gz
+	md5sums = 7d77d0f23ee7f577109fc5f0e67e0a4b
 
 pkgname = perl-io-interface
 
