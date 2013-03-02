@@ -16,7 +16,7 @@ sha256sums=('1d7850bf4cbde3e0bc4efcfed8edbe272fc06ba6b33680899d17f1a4417dc7d4')
 
 build() {
   cd "$srcdir/MediaElch-$_gitversion/"
-  qmake && make
+  qmake-qt4 && make
 }
 
 package() {
