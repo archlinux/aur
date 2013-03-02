@@ -1,0 +1,33 @@
+pkgbase = crunchyfrog-hg
+	pkgdesc = SQL editor and database schema browser for the GNOME desktop, latest development version
+	pkgver = 722.1648adf08bb3
+	pkgrel = 2
+	url = http://code.google.com/p/crunchyfrog
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = python2
+	depends = pygtk
+	depends = pygtksourceview2
+	depends = gnome-python
+	depends = gnome-python-desktop
+	depends = python2-configobj
+	depends = python2-cairo
+	depends = python2-xdg
+	depends = python2-sphinx
+	depends = python2-sqlparse
+	optdepends = mysql-python: To handle MySQL Databases,
+	optdepends = python2-psycopg2: To handle PostgreSQL Databases,
+	optdepends = python2-pysqlite: To handle SQLite Databases,
+	optdepends = python2-cx_oracle: To handle Oracle Databases (just for i686),
+	optdepends = kinterbasdb: To handle Firebird Databases
+	optdepends = informixdb: To handle Informix Databases
+	optdepends = sapdb: To handle MaxDB
+	optdepends = ipython2: To use built-in python shell
+	provides = crunchyfrog
+	conflicts = crunchyfrog
+	source = hg+https://code.google.com/p/crunchyfrog
+	sha256sums = SKIP
+
+pkgname = crunchyfrog-hg
+
