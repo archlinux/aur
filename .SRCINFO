@@ -1,0 +1,29 @@
+pkgbase = parcimonie-git
+	pkgdesc = A tool that incrementally refreshes a GnuPG keyring
+	pkgver = 365.90e7cf6
+	pkgrel = 1
+	url = https://gaffer.ptitcanardnoir.org/intrigeri/code/parcimonie/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = git
+	depends = perl
+	depends = perl-any-moose
+	depends = perl-namespace-autoclean
+	depends = perl-gnupg-interface
+	depends = perl-clone
+	depends = perl-config-general
+	depends = perl-file-homedir
+	depends = perl-path-class
+	depends = perl-net-dbus
+	depends = perl-tie-cache
+	depends = perl-time-duration-parse
+	depends = perl-mousex-types-path-class
+	depends = perl-mousex-getopt
+	depends = perl-path-tiny
+	provides = parcimonie
+	source = git://gaffer.ptitcanardnoir.org/App-Parcimonie.git#branch=debian
+	sha256sums = SKIP
+
+pkgname = parcimonie-git
+
