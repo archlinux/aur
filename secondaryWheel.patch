@@ -29,10 +29,10 @@ index 4c93c4b..8b429a0 100644
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
 diff --git a/src/command.C b/src/command.C
-index ab1a4cd..9fde946 100644
+index 82ad10a..92f22da 100644
 --- a/src/command.C
 +++ b/src/command.C
-@@ -2225,10 +2225,46 @@ rxvt_term::button_release (XButtonEvent &ev)
+@@ -2221,10 +2221,46 @@ rxvt_term::button_release (XButtonEvent &ev)
                  }
                else
  # endif
@@ -94,7 +94,7 @@ index d814035..a365037 100644
   def(cursorUnderline)
  #if ENABLE_FRILLS
 diff --git a/src/rsinc.h b/src/rsinc.h
-index 2906837..2e77fa1 100644
+index 1483955..10f6642 100644
 --- a/src/rsinc.h
 +++ b/src/rsinc.h
 @@ -103,6 +103,7 @@
@@ -106,7 +106,7 @@ index 2906837..2e77fa1 100644
  #if OFF_FOCUS_FADING
    def (fade)
 diff --git a/src/xdefaults.C b/src/xdefaults.C
-index 856acaf..7394852 100644
+index 69acdd8..3e858de 100644
 --- a/src/xdefaults.C
 +++ b/src/xdefaults.C
 @@ -262,6 +262,7 @@ optList[] = {
