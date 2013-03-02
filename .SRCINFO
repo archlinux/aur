@@ -1,0 +1,19 @@
+pkgbase = python2-sha3-git
+	pkgdesc = A Python module that implements SHA-3 (Keccak) with a hashlib-like interface
+	pkgver = 22.2b7fd77
+	pkgrel = 1
+	url = https://github.com/bjornedstrom/python-sha3
+	arch = i686
+	arch = x86_64
+	license = PSF
+	makedepends = git
+	makedepends = gcc
+	depends = python2
+	provides = python2-sha3
+	conflicts = python2-sha3
+	options = !emptydirs
+	source = git+https://github.com/bjornedstrom/python-sha3.git
+	sha256sums = SKIP
+
+pkgname = python2-sha3-git
+
