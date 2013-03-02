@@ -1,0 +1,59 @@
+--- a/stage1/Makefile.am
++++ b/stage1/Makefile.am
+@@ -1,7 +1,7 @@
+-pkglibdir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
+-nodist_pkglib_DATA = stage1
++stagedir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
++nodist_stage_DATA = stage1
+ 
+-CLEANFILES = $(nodist_pkglib_DATA)
++CLEANFILES = $(nodist_stage_DATA)
+ 
+ # We can't use builtins or standard includes.
+ AM_CCASFLAGS = $(STAGE1_CFLAGS) -fno-builtin -nostdinc
+*** a/stage2/Makefile.am	2012-09-25 14:20:54.665739424 -0400
+--- b/stage2/Makefile.am	2012-09-25 14:21:19.688981622 -0400
+***************
+*** 27,38 ****
+  	-DUSE_MD5_PASSWORDS=1 -DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1
+  
+  # Stage 2 and Stage 1.5's.
+! pkglibdir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
+  
+  EXTRA_PROGRAMS = nbloader.exec pxeloader.exec diskless.exec
+  
+  if DISKLESS_SUPPORT
+! pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 ntfs_stage1_5 \
+  	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
+  	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5 \
+  	nbgrub pxegrub
+--- 27,38 ----
+  	-DUSE_MD5_PASSWORDS=1 -DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1
+  
+  # Stage 2 and Stage 1.5's.
+! stagedir = $(libdir)/$(PACKAGE)/$(host_cpu)-$(host_vendor)
+  
+  EXTRA_PROGRAMS = nbloader.exec pxeloader.exec diskless.exec
+  
+  if DISKLESS_SUPPORT
+! stage_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 ntfs_stage1_5 \
+  	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
+  	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5 \
+  	nbgrub pxegrub
+***************
+*** 43,49 ****
+  	reiserfs_stage1_5.exec ufs2_stage1_5.exec vstafs_stage1_5.exec \
+  	xfs_stage1_5.exec nbloader.exec pxeloader.exec diskless.exec
+  else
+! pkglib_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 ntfs_stage1_5 \
+  	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
+  	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5
+  noinst_DATA = pre_stage2 start start_eltorito
+--- 43,49 ----
+  	reiserfs_stage1_5.exec ufs2_stage1_5.exec vstafs_stage1_5.exec \
+  	xfs_stage1_5.exec nbloader.exec pxeloader.exec diskless.exec
+  else
+! stage_DATA = stage2 stage2_eltorito e2fs_stage1_5 fat_stage1_5 ntfs_stage1_5 \
+  	ffs_stage1_5 iso9660_stage1_5 jfs_stage1_5 minix_stage1_5 \
+  	reiserfs_stage1_5 ufs2_stage1_5 vstafs_stage1_5 xfs_stage1_5
+  noinst_DATA = pre_stage2 start start_eltorito

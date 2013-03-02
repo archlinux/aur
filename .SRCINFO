@@ -1,0 +1,19 @@
+pkgbase = antievilmaid-trustedgrub
+	pkgdesc = TrustedGRUB for Anti Evil Maid.
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = http://trustedgrub.sf.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	optdepends = antievilmaid: Anti Evil Maid installation script
+	source = http://sourceforge.net/projects/trustedgrub/files/TrustedGRUB-1.1.5.tar.gz
+	source = grub-0.97-ldflags-objcopy-remove-build-id.patch
+	source = automake-pkglib.patch
+	sha256sums = 8241a0add393d09ef69f3f616a638b6489f1330d923b3ce1603b749a813d7115
+	sha256sums = cbc5caad39811346e901769759d1ee8c6cb06fabf552265b2c7d4c8bfa9a5426
+	sha256sums = b9146229d3a62fbabbf035f8ebf9fb152e90cd419ca68ed7719981d252efad0a
+
+pkgname = antievilmaid-trustedgrub
+
