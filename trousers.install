@@ -1,0 +1,26 @@
+post_install() {
+  groupadd -r tss
+
+  useradd -r -g tss -d /var/lib/tpm -s /bin/false tss
+  chown tss:tss /usr/sbin/tcsd
+
+  chown tss:tss /etc/tcsd.conf
+  chmod 0600 /etc/tcsd.conf
+
+  udevadm trigger --sysname-match="tpm[0-9]*"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  /etc/rc.d/tcsd stop &> /dev/null
+  systemctl stop tcsd
+#  rm -rf /usr/var/lib/tpm
+  userdel tss
+}
+
+op=$1
+shift
+$op $*
