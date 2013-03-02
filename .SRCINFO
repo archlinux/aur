@@ -1,0 +1,23 @@
+pkgbase = spice-vdagent
+	pkgdesc = Spice agent xorg client that enables copy and paste between client and X-session and more
+	pkgver = 0.15.0
+	pkgrel = 5
+	url = http://www.spice-space.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = systemd
+	depends = libpciaccess
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxfixes
+	depends = spice-protocol
+	depends = libsystemd
+	optdepends = dex: start spice-vdagent automatically on login
+	source = http://www.spice-space.org/download/releases/spice-vdagent-0.15.0.tar.bz2
+	source = spice-vdagentd.conf.d
+	sha256sums = 5bae1747307c2f4195f6de97639391be7c6be6c5673fdcc9febed6faca22bd34
+	sha256sums = 03e0cc9e0f0e2afb3fc99846b8eb1fcb0698955833c67a40a6692c7df4df2d12
+
+pkgname = spice-vdagent
+
