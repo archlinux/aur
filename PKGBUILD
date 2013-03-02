@@ -2,7 +2,7 @@
 
 pkgname=graspit
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Environment for grasp analysis and planning."
 arch=('i686' 'x86_64')
 url="http://www.cs.columbia.edu/~cmatei/graspit/"
@@ -22,7 +22,7 @@ sha512sums=('065f5be25ea28740797db61069156edbf56b0198527d5f99e543c5882430d5ed9ae
 build() {
   cd "${srcdir}/Graspit"
 
-  qmake graspit.pro EXT_DESTDIR="${pkgdir}/usr/share/graspit" ADDITIONAL_INCLUDE_DIR=/usr/include/libqhull ADDITIONAL_LINK_FLAGS=-ldl
+  qmake-qt4 graspit.pro EXT_DESTDIR="${pkgdir}/usr/share/graspit" ADDITIONAL_INCLUDE_DIR=/usr/include/libqhull ADDITIONAL_LINK_FLAGS=-ldl
   make
 }
 

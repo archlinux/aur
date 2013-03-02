@@ -1,7 +1,7 @@
 pkgbase = graspit
 	pkgdesc = Environment for grasp analysis and planning.
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cs.columbia.edu/~cmatei/graspit/
 	arch = i686
 	arch = x86_64
