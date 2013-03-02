@@ -1,0 +1,15 @@
+pkgbase = perl-term-shellui
+	pkgdesc = A fully-featured shell-like command line environment
+	pkgver = 0.92
+	pkgrel = 4
+	url = http://search.cpan.org/~BRONSON/Term-ShellUI
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/B/BR/BRONSON/Term-ShellUI-0.92.tar.gz
+	sha256sums = 3279c01c76227335eeff09032a40f4b02b285151b3576c04cacd15be05942bdb
+
+pkgname = perl-term-shellui
+
