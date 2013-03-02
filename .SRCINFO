@@ -1,0 +1,20 @@
+pkgbase = antievilmaid-git
+	pkgdesc = Anti Evil Maid for initramfs-based systems.
+	pkgver = 31.414fd06
+	pkgrel = 1
+	url = http://www.qubes-os.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = antievilmaid-trustedgrub
+	depends = parted
+	optdepends = dracut-antievilmaid-git: Dracut hook for Anti Evil Maid
+	optdepends = mkinitcpio-antievilmaid: mkinitcpio hook for Anti Evil Maid (recommended)
+	provides = antievilmaid
+	conflicts = antievilmaid
+	source = git://git.qubes-os.org/joanna/antievilmaid.git
+	sha256sums = SKIP
+
+pkgname = antievilmaid-git
+
