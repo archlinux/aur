@@ -2,12 +2,11 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
 pkgver=2419
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo clone"
 arch=(i686 x86_64)
 url="http://www.holyspirit.fr/"
 license=('GPL')
-# there is no sfml 2.0rc with the BackSpace key change
 depends=('sfml')
 makedepends=('subversion' 'cmake' 'qtwebkit')
 optdepends=('qtwebkit: for the launcher')
@@ -54,9 +53,7 @@ build() {
 
   msg "Building the launcher..."
   cd Launcher
-  sed -i -e 's|/usr/share/qt4|/usr/share/qt|g' Makefile
-  sed -i -e 's|/usr/bin/moc-qt4|/usr/bin/moc|g' Makefile
-  make INCPATH="-I/usr/share/qt/mkspecs/linux-g++ -I. -I/usr/include/QtCore -I/usr/include/QtNetwork -I/usr/include/QtGui -I/usr/include/QtWebKit -I/usr/include/Qt -I. -I."
+  make
 }
 
 package() {

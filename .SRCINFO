@@ -1,7 +1,7 @@
 pkgbase = holyspirit-svn
 	pkgdesc = Diablo clone
 	pkgver = 2419
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.holyspirit.fr/
 	install = holyspirit.install
 	arch = i686
