@@ -15,7 +15,7 @@ _buildtype="Release"
 
 pkgname=tomahawk
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -40,7 +40,8 @@ build() {
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib/${pkgname} \
         -DCMAKE_BUILD_TYPE=${_buildtype} \
