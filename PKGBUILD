@@ -16,7 +16,7 @@ _buildtype="Release"
 pkgname=jreen
 _name=lib${pkgname}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt."
 arch=('i686' 'x86_64')
 url="http://qutim.org/jreen"
@@ -25,6 +25,7 @@ depends=('libidn' 'qca-ossl' 'zlib')
 makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
+options=(!strip)
 source=(http://qutim.org/dwnl/44/${_name}-${pkgver}.tar.bz2)
 md5sums=('180c4a3356b6d5865292e33de2a29820')
 
@@ -38,7 +39,10 @@ build() {
   mkdir ${srcdir}/${_name}-${pkgver}-build
   cd ${srcdir}/${_name}-${pkgver}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${_name}-${pkgver}
+  cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=${_buildtype} \
+        ../${_name}-${pkgver}
   make
 }
 
