@@ -14,7 +14,7 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=jreen-git
-pkgver=20111112
+pkgver=20130303
 pkgrel=1
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt. - development version"
 arch=('i686' 'x86_64')
@@ -50,7 +50,10 @@ build() {
   mkdir ${srcdir}/${_gitname}-build
   cd ${srcdir}/${_gitname}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${_gitname}
+  cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=${_buildtype} \
+        ../${_gitname}
   make
 }
 
