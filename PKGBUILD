@@ -4,7 +4,7 @@
 pkgname=ruby-highline
 _gemname=highline
 pkgver=1.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level text user interface toolkit for Ruby"
 arch=('any')
 url="http://highline.rubyforge.org/"
