@@ -15,12 +15,12 @@ _buildtype="RelWithDebInfo"
 
 pkgname=jreen-git
 pkgver=20130303
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt. - development version"
 arch=('i686' 'x86_64')
 url="http://qutim.org/jreen"
 license=('GPL2')
-depends=('libidn' 'qca-ossl' 'zlib')
+depends=('gsasl' 'qca-ossl' 'zlib')
 makedepends=('git' 'cmake')
 provides=('jreen')
 conflicts=('jreen')
