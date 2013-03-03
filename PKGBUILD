@@ -15,7 +15,7 @@ _buildtype="RelWithDebInfo"
 
 pkgname=qtweetlib
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Qt based Twitter library"
 arch=('i686' 'x86_64')
 url="https://github.com/minimoog/QTweetLib"
@@ -39,7 +39,10 @@ build(){
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${pkgname}-${pkgver}
+  cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=${_buildtype} \
+        ../${pkgname}-${pkgver}
   make
 }
 
