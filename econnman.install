@@ -5,6 +5,39 @@ post_install() {
         -e '/^import evas/ s/^/from efl /' \
         -e '/^import ecore/ s/^/from efl /' \
         -e '/^import edje/ s/^/from efl /' \
+        -e '11 i from efl.elementary.scroller import Scroller\
+from efl.elementary.box import Box\
+from efl.elementary.check import Check\
+from efl.elementary.button import Button\
+from efl.elementary.label import Label\
+from efl.elementary.progressbar import Progressbar\
+from efl.elementary.frame import Frame\
+from efl.elementary.entry import Entry\
+from efl.elementary.window import Window\
+from efl.elementary.background import Background\
+from efl.elementary.naviframe import Naviframe\
+from efl.elementary.genlist import Genlist, GenlistItemClass\
+from efl.elementary.icon import Icon\
+from efl.elementary.layout import Layout\
+from efl.elementary.scroller import Scroller\
+from efl.elementary.segment_control import SegmentControl\
+from efl.elementary.popup import Popup' \
+        -e 's/elm.Box/Box/g;
+            s/elm.Check/Check/g;
+            s/elm.Button/Button/g;
+            s/elm.Label/Label/g;
+            s/elm.Progressbar/Progressbar/g;
+            s/elm.Frame/Frame/g;
+            s/elm.Entry/Entry/g;
+            s/elm.Window/Window/g;
+            s/elm.Background/Background/g;
+            s/elm.Naviframe/Naviframe/g;
+            s/elm.Genlist/Genlist/g;
+            s/elm.Icon/Icon/g;
+            s/elm.Layout/Layout/g;
+            s/elm.Scroller/Scroller/g;
+            s/elm.SegmentControl/SegmentControl/g;
+            s/elm.Popup/Popup/g' \
         -i "/usr/bin/econnman-bin"
   fi
 }

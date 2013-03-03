@@ -2,7 +2,7 @@
 
 pkgname=econnman-svn
 pkgver=81738
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment ConnMan user interface"
 arch=('any')
 url="http://www.enlightenment.org"

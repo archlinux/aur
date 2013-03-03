@@ -1,7 +1,7 @@
 pkgbase = econnman-svn
 	pkgdesc = Enlightenment ConnMan user interface
 	pkgver = 81738
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	install = econnman.install
 	arch = any
