@@ -9,17 +9,16 @@ pkgbase = wings3d
 	license = GPL
 	makedepends = setconf
 	makedepends = gendesk
-	depends = erlang-sdl>=1.2-7
-	depends = erlang-cl>=1.0-3
+	depends = erlang
+	depends = erlang-sdl
+	depends = erlang-cl
 	depends = bash
 	depends = desktop-file-utils
-	depends = erlang
 	optdepends = povray: rendering support via POV-Ray
-	source = wings3d-1.4.1.tar.gz::https://github.com/dgud/wings/archive/master.tar.gz
-	source = wings3d.sh
+	options = !emptydirs
+	source = http://sourceforge.net/projects/wings/files/wings/1.4.1/wings-1.4.1-linux.bzip2.run.gz
 	source = wings3d.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png
 	sha256sums = 760e19fa4973ed0fc75057897135a8efa241e834b078fc05c28786672137b322
-	sha256sums = 46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e
 	sha256sums = 6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a
 
 pkgname = wings3d
