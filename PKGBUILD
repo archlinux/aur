@@ -16,7 +16,7 @@ _buildtype="Release"
 
 pkgname=libechonest
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ library for interfacing with Echo Nest"
 arch=('i686' 'x86_64')
 url="https://projects.kde.org/projects/playground/libs/libechonest"
@@ -39,7 +39,10 @@ build() {
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_buildtype} ../${pkgname}-${pkgver}
+  cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=${_buildtype} \
+        ../${pkgname}-${pkgver}
   make
 }
 
