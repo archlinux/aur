@@ -2,17 +2,17 @@
 # This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/mediaelch
 
 pkgname=mediaelch
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="a MediaManager for XBMC. Information about Movies, TV Shows and Concerts are stored as nfo files. Fanarts are downloaded automatically from fanart.tv"
 arch=('x86_64' 'i686')
 url="http://www.mediaelch.de/"
 license=('GPL')
 depends=('libmediainfo' 'phonon')
 makedepends=()
-_gitversion="ee7643272f74ac296cd74e84c9022910187064bf"
+_gitversion="bd0b8b7e64addc0de948c85c6bea32e161929f81"
 source=("https://github.com/Komet/MediaElch/archive/$_gitversion.tar.gz")
-sha256sums=('1d7850bf4cbde3e0bc4efcfed8edbe272fc06ba6b33680899d17f1a4417dc7d4')
+sha256sums=('908f54a589a9df17840ee67bb200f55b34e59c052caaa207e722bb011741bda5')
 
 build() {
   cd "$srcdir/MediaElch-$_gitversion/"
