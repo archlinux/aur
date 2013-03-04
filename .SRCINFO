@@ -1,0 +1,17 @@
+pkgbase = adns-ipv6
+	pkgdesc = adns is an asyncronous replacement resolver library with ipv6 support
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~ian/adns/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	conflicts = adns
+	source = http://www.chiark.greenend.org.uk/~ian/adns/ftp/adns-1.4.tar.gz
+	source = http://people.debian.org/~lucab/deb/adns/adns-ipv6.patch
+	md5sums = 88bc7bbf3f62a8d4fb186b8f72ead853
+	md5sums = 848281f907996d3ccfbabd5036ac51a5
+
+pkgname = adns-ipv6
+
