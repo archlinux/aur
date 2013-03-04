@@ -1,0 +1,19 @@
+pkgbase = zbar-headless
+	pkgdesc = Application and library for reading bar codes from various sources (headless version)
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://zbar.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = imagemagick
+	depends = python2
+	provides = zbar=0.10
+	conflicts = zbar-gtk
+	conflicts = zbar-qt
+	conflicts = zbar
+	source = http://downloads.sourceforge.net/project/zbar/zbar/0.10/zbar-0.10.tar.bz2
+	md5sums = 0fd61eb590ac1bab62a77913c8b086a5
+
+pkgname = zbar-headless
+
