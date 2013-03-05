@@ -1,7 +1,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=mp3splt
-pkgver=2.4.3
+pkgver=2.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Commandline tool for splitting mp3 and ogg files without decoding"
@@ -21,4 +21,4 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir/ install
 }
-md5sums=('33559a6f8e6179afd8ca7c9886ffa207')
+md5sums=('c0c66be0058cbc26ed52cfd2b50659fd')
