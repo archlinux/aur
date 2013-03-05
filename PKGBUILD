@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=targetcli-fb
-pkgver=2.0.fb20
+pkgver=2.0.fb21
 pkgrel=1
 epoch=
 pkgdesc="free branch of the targetcli LIO administration shell (iSCSI + Co)"
@@ -19,7 +19,7 @@ install=
 source=($pkgname-$pkgver.tar.gz::https://github.com/agrover/$pkgname/archive/v$pkgver.tar.gz
 target.service
 target)
-md5sums=('b956573a621c953937d31a84b4a8873d'
+md5sums=('8342de8989980c2238b1230b70d64ffb'
          'f462e9a5852346c66b77793565ddbc67'
          'f23bd6d5d4021c29b4519e40b3b9e042')
 
