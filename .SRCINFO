@@ -1,7 +1,7 @@
 pkgbase = holyspirit-svn
-	pkgdesc = Diablo clone
-	pkgver = 2419
-	pkgrel = 2
+	pkgdesc = Action role-playing game (ARPG, like diablo)
+	pkgver = 2420
+	pkgrel = 1
 	url = http://www.holyspirit.fr/
 	install = holyspirit.install
 	arch = i686

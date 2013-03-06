@@ -1,9 +1,9 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
-pkgver=2419
-pkgrel=2
-pkgdesc="Diablo clone"
+pkgver=2420
+pkgrel=1
+pkgdesc="Action role-playing game (ARPG, like diablo)"
 arch=(i686 x86_64)
 url="http://www.holyspirit.fr/"
 license=('GPL')
