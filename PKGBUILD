@@ -3,12 +3,13 @@
 
 pkgname=ruby-cairo
 pkgver=1.12.2
-pkgrel=1
-pkgdesc="Ruby bindings for cairo"
-arch=('x86_64' 'i686')
-url="http://cairographics.org/rcairo/"
+pkgrel=2
+pkgdesc='Ruby bindings for cairo'
+arch=('any') #x86_64' 'i686')
+# http://cairographics.org/releases/
+url='http://cairographics.org/rcairo/'
 license=('GPL')
-depends=('ruby' 'cairo>=1.2.0')
+depends=('ruby' 'cairo')
 makedepends=('ruby-pkgconfig')
 source=("http://cairographics.org/releases/rcairo-$pkgver.tar.gz")
 sha256sums=('f071d6ccb12cb6dc1fc91eb086d6150ce779930fe5af38a6987e378c809362c5')
