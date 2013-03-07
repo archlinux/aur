@@ -6,21 +6,21 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
 url='http://www.twotoasts.de/index.php?/pages/midori_summary.html'
 license=('LGPL2.1')
 install=midori.install
-depends=('libzeitgeist' 'libwebkit' 'libnotify' 'libxss' 'libunique' 'hicolor-icon-theme' 'desktop-file-utils' 'gcr')
-makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2' 'vala')
+depends=('libzeitgeist' 'libwebkit' 'libnotify' 'libxss' 'libunique' 'hicolor-icon-theme' 'desktop-file-utils')
+makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2' 'vala' 'gcr')
 optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support'
             'aria2: download utility')
 options=('!emptydirs')
 source=("http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2"
         'fix-copying.patch')
-sha256sums=('40bf23f84a3537f54d7eb45df1da40ebef54c321b1b34d0d0c8e45bb0cce5e9f'
+sha256sums=('f01e5dc45e94f909e48f0dd62cc4afedd80710769fdf98bc4e0b38d4ef0abc11'
             'd4395ac994d8d614f93ae4863bbf6289b1980e0ed84aef52ca95a678b464b959')
 
 build() {
