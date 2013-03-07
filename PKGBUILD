@@ -3,7 +3,7 @@
 
 pkgname=ruby-cairo
 pkgver=1.12.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64' 'i686')
 # http://cairographics.org/releases/
