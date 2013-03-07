@@ -3,7 +3,7 @@
 
 pkgname=crda
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Central Regulatory Domain Agent for wireless networks"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
@@ -15,7 +15,7 @@ source=(http://wireless.kernel.org/download/crda/${pkgname}-${pkgver}.tar.bz2
         set-wireless-regdom)
 md5sums=('29579185e06a75675507527243d28e5c'
          '65c93f2ff2eb1b29d9e9fa102ae2dd45')
-                  
+
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   sed 's|^#!/usr/bin/env python|#!/usr/bin/python2|' -i utils/key2pub.py
