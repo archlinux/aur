@@ -3,9 +3,9 @@
 
 pkgname=ruby-cairo
 pkgver=1.12.2
-pkgrel=2
+pkgrel=1
 pkgdesc='Ruby bindings for cairo'
-arch=('any') #x86_64' 'i686')
+arch=('x86_64' 'i686') # 'any' for ruby 2.0
 # http://cairographics.org/releases/
 url='http://cairographics.org/rcairo/'
 license=('GPL')
