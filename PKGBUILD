@@ -8,7 +8,7 @@ pkgbase=ruby-gtk3
 pkgname=('ruby-gtk3' 'ruby-gdk3')
 depends=('ruby-atk' 'ruby-gdkpixbuf2' 'ruby-glib2' 'ruby-pango')
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL')
@@ -25,7 +25,7 @@ build() {
 package_ruby-gtk3() {
   pkgdesc='Ruby bindings for gtk3'
   depends=('gtk3' "ruby-glib2=$pkgver" "ruby-pango=$pkgver" "ruby-atk=$pkgver"
-           "ruby-gdkpixbuf2=$pkgver")
+           "ruby-gdkpixbuf2=$pkgver" "ruby-gdk3=$pkgver")
 
 	cd "$srcdir/ruby-gtk3-$pkgver/gtk3"
 	make DESTDIR="$pkgdir/" install
@@ -36,6 +36,7 @@ package_ruby-gdk3() {
   depends=('ruby' 'gtk3')
 
 	cd "$srcdir/ruby-gtk3-$pkgver/gdk3"
+  [ $CARCH == 'i686' ] && mkdir -p /usr/lib/ruby/vendor_ruby/1.9.1/i686-linux
 	make DESTDIR="$pkgdir/" install
 }
 
