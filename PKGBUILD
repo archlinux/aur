@@ -2,12 +2,13 @@
 pkgname=reportbug
 _python=python2
 pkgver=6.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="report bugs in the Debian distribution + python modules"
 arch=('any')
 url="http://packages.debian.org/sid/reportbug"
 license=('MIT')
-depends=('python2-debian' 'python2-debianbts' 'python2-support' 'apt')
+depends=('python2-debian' 'python2-debianbts' 'python2-support' 'apt'
+'sensible-utils')
 provides=('python2-reportbug=6.4.3')
 conflicts=('python2-reportbug')
 options=(!emptydirs)
