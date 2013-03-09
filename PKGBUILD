@@ -2,7 +2,7 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
 
 pkgname=openmw-git
-pkgver=20130306
+pkgver=20130309
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -66,7 +66,7 @@ package() {
   install -m644 files/openmw.desktop "$pkgdir"/usr/share/applications/
 
   install -d -m755 "$pkgdir"/usr/share/pixmaps
-  install -m644 apps/launcher/resources/images/openmw.png "$pkgdir"/usr/share/pixmaps/
+  install -m644 files/launcher/images/openmw.png "$pkgdir"/usr/share/pixmaps/
 
   # Resources
   install -d -m755 "$pkgdir"/usr/share/games/openmw
