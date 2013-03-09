@@ -1,31 +1,32 @@
-# Maintainer: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
-_pkgname="gummiboot-efi"
+_pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=20130223
+pkgver=20130309
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('LGPL2.1')
 
-makedepends=('git' 'gnu-efi-libs')
-depends=('dosfstools' 'efibootmgr')
+makedepends=('git' 'gnu-efi-libs' 'docbook-xsl')
+depends=('util-linux' 'dosfstools')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-options=('!strip' '!makeflags')
+conflicts=("${_pkgname}" 'gummiboot-efi' 'gummiboot-efi-git')
+provides=("${_pkgname}" 'gummiboot-efi' 'gummiboot-efi-git')
 
-source=('gummiboot-fix-makefile.patch'
-        'loader.conf'
+options=('!strip' '!makeflags')
+install="${_pkgname}.install"
+
+source=('loader.conf'
         'arch.conf')
 
-sha1sums=('524c00b8ad0412671af120dfae417248397f1b64'
-          '82a59f90d9138c26f8db52bb8e94991602cf1edd'
+sha1sums=('82a59f90d9138c26f8db52bb8e94991602cf1edd'
           'aff6e152c3f7494e6113a8e2f073810366433015')
 
 _gitroot="git://anongit.freedesktop.org/gummiboot"
@@ -70,53 +71,32 @@ build() {
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	cd "${srcdir}/${_gitname}_build/"
 	
-	## Fix Makefile to enable compile for both x86_64 and i386 UEFI
-	patch -Np1 -i "${srcdir}/gummiboot-fix-makefile.patch" || true
-	echo
-	
-	## Compile gummiboot for x86_64 UEFI
-	rm -rf "${srcdir}/${_gitname}_build-x86_64/" || true
-	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-x86_64"
-	cd "${srcdir}/${_gitname}_build-x86_64/"
-	
-	ARCH="x86_64" make clean
+	make clean || true
 	echo
 	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset LDFLAGS
 	
-	ARCH="x86_64" CFLAGS="-m64" LIBDIR="/usr/lib" make gummibootx64.efi
+	./autogen.sh
 	echo
 	
-	## Compile gummiboot for i386 aka IA32 UEFI
-	rm -rf "${srcdir}/${_gitname}_build-i386/" || true
-	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
-	cd "${srcdir}/${_gitname}_build-i386/"
-	
-	ARCH="i686" make clean
+	./configure --sysconfdir="/etc" --libexecdir="/usr/lib" --libdir="/usr/lib"
 	echo
 	
-	unset CFLAGS
-	unset CPPFLAGS
-	unset LDFLAGS
-	
-	ARCH="i686" CFLAGS="-m32" LIBDIR="/usr/lib32" make gummibootia32.efi
+	make
 	echo
-	
-	rm -rf "${srcdir}/${_gitname}_build/" || true
 	
 }
 
 package() {
 	
-	install -d "${pkgdir}/usr/lib/gummiboot/loader/entries/"
-	
-	## Install gummiboot UEFI applications
-	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/gummibootx64.efi" "${pkgdir}/usr/lib/gummiboot/gummibootx64.efi"
-	install -D -m0644 "${srcdir}/${_gitname}_build-i386/gummibootia32.efi" "${pkgdir}/usr/lib/gummiboot/gummibootia32.efi"
+	cd "${srcdir}/${_gitname}_build/"
+	make DESTDIR="${pkgdir}/" install
+	echo
 	
 	## Install gummiboot example configuration files
+	install -d "${pkgdir}/usr/lib/gummiboot/loader/entries/"
 	install -D -m0644 "${srcdir}/loader.conf" "${pkgdir}/usr/lib/gummiboot/loader/loader.conf"
 	install -D -m0644 "${srcdir}/arch.conf" "${pkgdir}/usr/lib/gummiboot/loader/entries/arch.conf"
 	

@@ -1,25 +1,30 @@
-pkgbase = gummiboot-efi-git
+pkgbase = gummiboot-git
 	pkgdesc = Simple text-mode UEFI Boot Manager - GIT Version
-	pkgver = 20130223
+	pkgver = 20130309
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/gummiboot
-	arch = any
+	install = gummiboot.install
+	arch = x86_64
+	arch = i686
 	license = LGPL2.1
 	makedepends = git
 	makedepends = gnu-efi-libs
+	makedepends = docbook-xsl
+	depends = util-linux
 	depends = dosfstools
-	depends = efibootmgr
 	optdepends = mactel-boot: For bless command in Apple Mac systems
+	provides = gummiboot
 	provides = gummiboot-efi
+	provides = gummiboot-efi-git
+	conflicts = gummiboot
 	conflicts = gummiboot-efi
+	conflicts = gummiboot-efi-git
 	options = !strip
 	options = !makeflags
-	source = gummiboot-fix-makefile.patch
 	source = loader.conf
 	source = arch.conf
-	sha1sums = 524c00b8ad0412671af120dfae417248397f1b64
 	sha1sums = 82a59f90d9138c26f8db52bb8e94991602cf1edd
 	sha1sums = aff6e152c3f7494e6113a8e2f073810366433015
 
-pkgname = gummiboot-efi-git
+pkgname = gummiboot-git
 
