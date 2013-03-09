@@ -1,6 +1,6 @@
 pkgname=slic3r-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
@@ -51,10 +51,14 @@ build() {
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
 
   # Build stage
-  { /usr/bin/perl Build.PL &&
-    ./Build &&
-    ./Build test &&
-    ./Build install; } || return 1
+  /usr/bin/perl Build.PL
+  ./Build
+  ./Build test
+}
+
+package () {
+  cd "$srcdir/$_gitname-build"
+  ./Build install
 
   # Icons " current Build.PL is not really geared for installation "
   install -d $pkgdir/usr/bin/vendor_perl/var
@@ -62,6 +66,5 @@ build() {
 
   install -d $pkgdir/usr/share/applications
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
-
 }
 
