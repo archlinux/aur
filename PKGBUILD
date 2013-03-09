@@ -3,14 +3,14 @@
 
 pkgname=xf86-video-openchrome
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
 url="http://www.openchrome.org"
 depends=('libdrm' 'libxvmc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=13' 'resourceproto' 'scrnsaverproto')
-conflicts=('xorg-server<1.13.0' 'X-ABI-VIDEODRV_VERSION<13' 'X-ABI-VIDEODRV_VERSION>=14' 'xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'unichrome-dri')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=14' 'resourceproto' 'scrnsaverproto')
+conflicts=('xorg-server<1.14.0' 'X-ABI-VIDEODRV_VERSION<14' 'X-ABI-VIDEODRV_VERSION>=15' 'xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'unichrome-dri')
 replaces=('openchrome' 'xf86-video-via')
 groups=('xorg-drivers' 'xorg')
 options=('!libtool' '!emptydirs' '!makeflags')
