@@ -71,7 +71,6 @@ package() {
   # Resources
   install -d -m755 "$pkgdir"/usr/share/games/openmw
   cp -r resources "$pkgdir"/usr/share/games/openmw/ || exit 1
-  install -m644 launcher.qss "$pkgdir"/usr/share/games/openmw/resources
 
   # Custom Licences
   install -d -m755 "$pkgdir"/usr/share/licenses/openmw
