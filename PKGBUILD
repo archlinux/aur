@@ -3,7 +3,7 @@
 
 pkgname=openmw-git
 pkgver=20130309
-pkgrel=1
+pkgrel=3
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
@@ -63,8 +63,8 @@ package() {
 
   # Desktop file and icon
   install -d -m755  "$pkgdir"/usr/share/applications
-  install -m644 files/openmw.desktop "$pkgdir"/usr/share/applications/
-  install -m644 files/opencs.desktop "$pkgdir"/usr/share/applications/
+  install -m644 openmw.desktop "$pkgdir"/usr/share/applications/
+  install -m644 opencs.desktop "$pkgdir"/usr/share/applications/
 
   install -d -m755 "$pkgdir"/usr/share/pixmaps
   install -m644 files/launcher/images/openmw.png "$pkgdir"/usr/share/pixmaps/
