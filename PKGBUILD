@@ -64,9 +64,11 @@ package() {
   # Desktop file and icon
   install -d -m755  "$pkgdir"/usr/share/applications
   install -m644 files/openmw.desktop "$pkgdir"/usr/share/applications/
+  install -m644 files/opencs.desktop "$pkgdir"/usr/share/applications/
 
   install -d -m755 "$pkgdir"/usr/share/pixmaps
   install -m644 files/launcher/images/openmw.png "$pkgdir"/usr/share/pixmaps/
+  install -m644 files/opencs/opencs.png "$pkgdir"/usr/share/pixmaps/
 
   # Resources
   install -d -m755 "$pkgdir"/usr/share/games/openmw
