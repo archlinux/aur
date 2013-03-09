@@ -1,0 +1,6 @@
+post_install() {
+  echo "Add the following line to your .bashrc to autostart tmux at login:"
+  echo "  . /usr/share/tmux-applet/autostart.sh"
+}
+
+# vim:set ts=2 sw=2 et:
