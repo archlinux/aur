@@ -1,18 +1,20 @@
-pkgbase = elementary-svn
-	pkgdesc = Enlightenment widget set
-	pkgver = 82670
+pkgbase = elementary-git
+	pkgdesc = EFL widget toolkit - Development version
+	pkgver = 20130222
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = subversion
-	depends = efl-svn
+	makedepends = git
+	depends = efl-git
 	provides = elementary
+	provides = elementary-svn
 	conflicts = elementary
+	conflicts = elementary-svn
 	options = !libtool
 	options = !emptydirs
 	options = !strip
 
-pkgname = elementary-svn
+pkgname = elementary-git
 

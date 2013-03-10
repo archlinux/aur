@@ -1,48 +1,50 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=elementary-svn
-pkgver=82670
+pkgname=elementary-git
+pkgver=20130222
 pkgrel=1
-pkgdesc="Enlightenment widget set"
+pkgdesc="EFL widget toolkit - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1')
-depends=('efl-svn') 
-makedepends=('subversion')
-conflicts=('elementary')
-provides=('elementary')
+depends=('efl-git')
+makedepends=('git')
+conflicts=('elementary' 'elementary-svn')
+provides=('elementary' 'elementary-svn')
 options=('!libtool' '!emptydirs' '!strip')
 
-_svntrunk="http://svn.enlightenment.org/svn/e/trunk/elementary"
-_svnmod="elementary"
+_gitroot="git://git.enlightenment.org/core/elementary.git"
+_gitname="elementary"
 
 build() {
   cd "$srcdir"
+  msg "Connecting to GIT server...."
 
-  msg "Connecting to SVN server...."
-
-  if [[ -d "$_svnmod/.svn" ]]; then
-    (cd "$_svnmod" && svn up -r "$pkgver")
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
   else
-    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
+    git clone "$_gitroot" "$_gitname"
   fi
 
-  msg "SVN checkout done or server timeout"
+  msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf "$srcdir/$_svnmod-build"
-  svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
   ./autogen.sh --prefix=/usr
 
   make
 }
 
-package(){  
-  cd "$_svnmod-build"
+package() {
+  cd "$srcdir/$_gitname-build"
+
   make DESTDIR="$pkgdir" install
 
-  rm -r "$srcdir/$_svnmod-build"
+# remove build directory
+  rm -r "$srcdir/$_gitname-build"
 }
