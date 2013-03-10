@@ -1,0 +1,19 @@
+pkgbase = opensplice-dds
+	pkgdesc = Enables seamless, timely, scalable and dependable data sharing between distributed applications and network connected devices.
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = http://www.prismtech.com/opensplice
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-environment
+	depends = zlib
+	options = !makeflags
+	source = http://dev.opensplice.org/releases/downloads/releases/OpenSpliceDDSV5.5.1-src.tar.gz
+	md5sums = ae70910701c19b2602e8cc9497bd74ea
+	sha256sums = 8678779041fb3fa66d5c99da634c947fb18f501ec8501a099758c7711b4ed070
+	sha384sums = 28a671b8a13ad271dbc1efc1311925aa41521ba0eae1fa9ba9f46874fa027a545044611b38675d00d364a59dcd3d9a68
+	sha512sums = 2bd6474faf6dd7e5a60db2a2b87540aa474052a4adadd07e185acc24dde6c17e20411b28e2a047cee99633206fc07d958e5f43b6cb6b0e3162b265149b8d863e
+
+pkgname = opensplice-dds
+
