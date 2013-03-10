@@ -4,7 +4,7 @@
 pkgbase=libgdamm
 pkgname=(libgdamm libgdamm-docs)
 pkgver=4.99.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('libgda' 'libsigc++' 'glibmm' 'glibmm-docs')
 url="http://www.gtkmm.org/"
