@@ -1,0 +1,40 @@
+From c0d6f9ad4ab23dc980746078a127905ea56c9bf1 Mon Sep 17 00:00:00 2001
+From: Thomas Dziedzic <gostrc@gmail.com>
+Date: Sun, 10 Mar 2013 09:39:45 -0700
+Subject: [PATCH] backport fix for syntax error
+ https://github.com/ruby-gnome2/ruby-gnome2/commit/03be2d663730119036c9d70d4fc7b52523ae40df
+
+---
+ gdk3/ext/gdk3/rbgdkevent.c  | 2 +-
+ gdk3/ext/gdk3/rbgdkscreen.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdk3/ext/gdk3/rbgdkevent.c b/gdk3/ext/gdk3/rbgdkevent.c
+index 62bb35d..a5478a6 100644
+--- a/gdk3/ext/gdk3/rbgdkevent.c
++++ b/gdk3/ext/gdk3/rbgdkevent.c
+@@ -370,7 +370,7 @@ gdkevent_s_setting_get(int argc, VALUE *argv, G_GNUC_UNUSED VALUE self)
+     VALUE value;
+ 
+     rb_scan_args(argc, argv, "11", &name, &type);
+-    if NIL_P(type) 
++    if (NIL_P(type)) 
+         gtype = G_TYPE_STRING;
+     else
+         gtype = CLASS2GTYPE(type);
+diff --git a/gdk3/ext/gdk3/rbgdkscreen.c b/gdk3/ext/gdk3/rbgdkscreen.c
+index 8f5bffb..7439ad1 100644
+--- a/gdk3/ext/gdk3/rbgdkscreen.c
++++ b/gdk3/ext/gdk3/rbgdkscreen.c
+@@ -214,7 +214,7 @@ rg_get_setting(int argc, VALUE *argv, VALUE self)
+     VALUE value;
+ 
+     rb_scan_args(argc, argv, "11", &name, &type);
+-    if NIL_P(type) 
++    if (NIL_P(type)) 
+         gtype = G_TYPE_STRING;
+     else
+         gtype = CLASS2GTYPE(type);
+-- 
+1.8.1.5
+
