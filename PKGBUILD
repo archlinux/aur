@@ -5,7 +5,7 @@
 # Contributor: kxmd
 
 pkgname=squeak-vm
-pkgver=4.10.2.2602
+pkgver=4.10.2.2614
 pkgrel=1
 pkgdesc="Full-featured implementation of the Smalltalk programming language and environment"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=('speex: for ogg plugin' 'gstreamer0.10: for gstreamer plugin'
     'libpulse: for pulse plugin' 'squeak-image: for the full Squeak 
     environment')
 source=(http://squeakvm.org/unix/release/Squeak-$pkgver-src.tar.gz)
-md5sums=('23b48480581c5a1c1bccf12e93611faf')
+md5sums=('8a5cb1d6899d55df56154fab8716e034')
 
 build() {
   cd "$srcdir"/Squeak-$pkgver-src/
@@ -33,7 +33,7 @@ build() {
 package() {
   cd "$srcdir"/Squeak-$pkgver-src  
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir"/ install
 
   install -Dm644 "$srcdir"/Squeak-$pkgver-src/unix/doc/LICENSE \
     "$pkgdir"/usr/share/licenses/squeak-vm/LICENSE
