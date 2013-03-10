@@ -5,7 +5,7 @@
 pkgname=wings3d
 _pkgname=wings
 pkgver=1.4.1
-pkgrel=15
+pkgrel=16
 pkgdesc='3D modeling program'
 arch=('x86_64' 'i686')
 url='http://www.wings3d.com/'
@@ -15,12 +15,17 @@ makedepends=('setconf' 'gendesk')
 optdepends=('povray: rendering support via POV-Ray')
 install=$pkgname.install
 options=('!emptydirs')
-# Using the binary release, but would prefer using a source release, if there is one that compiles
+_genericname=('3D Modeler')
+# Using the i686-only binary release
+# Would prefer using a source release, if there is one that compiles
 source=("http://sourceforge.net/projects/$_pkgname/files/$_pkgname/$pkgver/$_pkgname-$pkgver-linux.bzip2.run.gz"
         "$pkgname.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png")
 sha256sums=('760e19fa4973ed0fc75057897135a8efa241e834b078fc05c28786672137b322'
             '6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a')
-_genericname=('3D Modeler')
+if [ "$CARCH" == "x86_64" ]
+then
+  depends=('lib32-libgl' 'lib32-glu' 'lib32-sdl' 'lib32-ncurses')
+fi
 
 build() {
   cd "$srcdir"
