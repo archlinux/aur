@@ -1,12 +1,12 @@
 # Maintainer: jjacky
 pkgname=kalu-git
-pkgver=20121103
+pkgver=20130311
 pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news"
 arch=('i686' 'x86_64')
 url="https://github.com/jjk-jacky/kalu"
 license=('GPL3+')
-depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.0.1' 'pacman<4.1' 'curl' 'libnotify' 'notification-daemon')
+depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.1' 'pacman<4.2' 'curl' 'libnotify' 'notification-daemon')
 makedepends=('perl' 'groff' 'git' 'autoconf')
 provides=('kalu')
 conflicts=('kalu')
