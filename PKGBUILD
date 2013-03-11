@@ -5,7 +5,7 @@
 pkgbase=django
 pkgname=('python-django' 'python2-django')
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
 license=('BSD')
