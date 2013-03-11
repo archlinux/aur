@@ -15,7 +15,7 @@ url="http://software.schmorp.de/pkg/rxvt-unicode.html"
 license=('GPL')
 depends=('gcc-libs' 'libxft' 'gdk-pixbuf2')
 optdepends=('perl: lots of utilities') # 'gtk2-perl: to use the urxvt-tabbed')
-provides=('rxvt-unicode=9.15')
+provides=('rxvt-unicode')
 conflicts=('rxvt-unicode')
 source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2 \
         ${_pkgname}.desktop
