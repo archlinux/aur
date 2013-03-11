@@ -1,15 +1,15 @@
 pkgbase = python-discid
 	pkgdesc = Python binding of Libdiscid
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://python-discid.readthedocs.org/
 	arch = any
 	license = LGPL3
 	depends = python>=3.1
 	depends = libdiscid>=0.2.2
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/d/discid/discid-0.2.1.tar.gz
-	md5sums = f254e552836cd8e3d2ceb0c8de026263
+	source = http://pypi.python.org/packages/source/d/discid/discid-0.3.0.tar.gz
+	md5sums = 392369aa5b25552b45ef7e4c28b125ce
 
 pkgname = python-discid
 
