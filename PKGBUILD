@@ -2,13 +2,14 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=efl-git
-pkgver=20130310
+pkgver=20130312
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('bullet' 'curl' 'systemd' 'lua' 'shared-mime-info'
+         'libxkbcommon' 'wayland'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
          'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif'
          'gstreamer0.10-base-plugins'
@@ -63,6 +64,8 @@ build() {
 	--with-x11=xlib \
 	--with-opengl=full \
 	--with-tests=none \
+	--enable-systemd \
+	--enable-wayland \
 	--enable-harfbuzz \
 	--enable-fb \
 	--disable-tslib

@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
-	pkgver = 20130310
+	pkgver = 20130312
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -16,6 +16,8 @@ pkgbase = efl-git
 	depends = systemd
 	depends = lua
 	depends = shared-mime-info
+	depends = libxkbcommon
+	depends = wayland
 	depends = libxcomposite
 	depends = libxcursor
 	depends = libxinerama
