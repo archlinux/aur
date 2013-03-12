@@ -10,6 +10,9 @@ url="https://projects.kde.org/projects/playground/utils/kregexpeditor"
 license=('GPL')
 depends=('kdebase-runtime')
 makedepends=('git' 'cmake' 'automoc4')
+provides=('kregexpeditor')
+conflicts=('kregexpeditor')
+replaces=('kregexpeditor-svn')
 install=kregexpeditor.install
 
 _gitroot="git://anongit.kde.org/kregexpeditor"
