@@ -1,0 +1,21 @@
+pkgbase = kregexpeditor-git
+	pkgdesc = KDE editor for regular expressions
+	pkgver = 491.f618b59
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/utils/kregexpeditor
+	install = kregexpeditor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	provides = kregexpeditor
+	conflicts = kregexpeditor
+	replaces = kregexpeditor-svn
+	source = git://anongit.kde.org/kregexpeditor
+	md5sums = SKIP
+
+pkgname = kregexpeditor-git
+
