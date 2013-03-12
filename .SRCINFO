@@ -1,14 +1,14 @@
 pkgbase = isrcsubmit-git
 	pkgdesc = submit ISRCs from disc to MusicBrainz
-	pkgver = 20130219
+	pkgver = 20130312
 	pkgrel = 1
 	url = https://github.com/JonnyJD/musicbrainz-isrcsubmit
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python2
-	depends = python2-musicbrainz2>=0.7.0
-	depends = libdiscid
+	depends = python2-musicbrainzngs
+	depends = python2-discid
 	provides = isrcsubmit
 	conflicts = isrcsubmit
 	options = !emptydirs
