@@ -1,7 +1,7 @@
 pkgbase = isrcsubmit
 	pkgdesc = submit ISRCs from disc to MusicBrainz
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/JonnyJD/musicbrainz-isrcsubmit
 	arch = any
 	license = GPL3
@@ -9,8 +9,8 @@ pkgbase = isrcsubmit
 	depends = python2-musicbrainz2>=0.7.0
 	depends = libdiscid
 	options = !emptydirs
-	source = http://isrcsubmit.jonnyjd.net/downloads/isrcsubmit-0.5.2.tar.gz
-	md5sums = 3e79b878d55e82125197069bc292d50c
+	source = http://isrcsubmit.jonnyjd.net/downloads/isrcsubmit-1.0.0.tar.gz
+	md5sums = ae6814472f52569b219eb7f337886f44
 
 pkgname = isrcsubmit
 
