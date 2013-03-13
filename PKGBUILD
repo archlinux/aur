@@ -5,21 +5,26 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.7
-pkgrel=3
+pkgrel=4
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
 license=('GPL')
 makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' \
              'iso-codes' 'gobject-introspection' 'libxkbfile')
-source=(http://fcitx.googlecode.com/files/${pkgbase}-${pkgver}_dict.tar.xz)
+source=(http://fcitx.googlecode.com/files/${pkgbase}-${pkgver}_dict.tar.xz
+	https://github.com/fcitx/fcitx/commit/9937b68bad3a7e9465e17b711ce9c0a072d3071f.patch)
 
 build() {
   #source /etc/profile.d/qt4.sh
 
-  cd "${srcdir}"
+  cd "$srcdir/$pkgbase-$pkgver"
+  patch -Np1 -i "$srcdir/9937b68bad3a7e9465e17b711ce9c0a072d3071f.patch"
+
+  cd "$srcdir"
   mkdir -p build
   cd build
+
   cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -115,4 +120,5 @@ package_fcitx-qt4() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('6e291717c24615b9dc9bfaa2949af3a7')
+md5sums=('6e291717c24615b9dc9bfaa2949af3a7'
+         '009e0cd17f078e24c03b3b46b45e41ab')
