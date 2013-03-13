@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=brightmare
-pkgver=0.34.2
+pkgver=0.35
 pkgrel=1
 pkgdesc="A tool that translates LaTeX equations to ASCII/UTF-8 text"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://jwilk.net/software/brightmare"
 license=('GPL2')
 makedepends=('ocaml')
 source=("http://jwilk.net/pool/brightmare_$pkgver.tar.gz")
-sha256sums=('55b40685fabbf2bd05ec7667f2077e0bd9f0a51c665d9ac2bdd4f949bf1795c4')
+sha256sums=('6a3929c1b6a1026c8773481d2204ff336a0399024a244b771fc6bd1bf7557549')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
