@@ -1,7 +1,7 @@
 pkgbase = tmake
 	pkgdesc = multiplatform makefile generator in Perl
 	pkgver = 2.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tmake.sourceforge.net/
 	arch = any
 	license = custom
