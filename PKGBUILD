@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.3
-pkgrel=3rc2
+pkgrel=4
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -29,13 +29,13 @@ backup=('etc/conf.d/libvirtd'
 	'etc/libvirt/qemu.conf'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
-source=("http://libvirt.org/sources/$pkgname-$pkgver-rc2.tar.gz"
+source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.rc.d
 	libvirtd.conf.d
 	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
-md5sums=('d03a65be35c455bc09ee96df66ea2c4d'
+md5sums=('3d9f85d586c9aa3d819b626622f3fc97'
          'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '0ee5b6c58590ff392a266f20f7928d1f'
