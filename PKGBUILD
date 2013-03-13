@@ -1,11 +1,12 @@
-# Maintainer: Serge Zirukin <ftrvxmtrx@gmail.com>
+# Maintainer: Marek Kubica <marek@xivilization.net>
+# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: Nicolas Pouillard <nicolas(dot)pouillard(at)gmail(dot)com>
 # Contributor: Sylvester Johansson <scj(at)archlinux(dot)us>
 # Contributor: Sergey Plaksin <serp256(at)gmail(dot)com>
 
 pkgname=ocaml-batteries
-pkgver=1.5.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="A comprehensive standard library for OCaml"
 arch=('i686' 'x86_64')
@@ -13,8 +14,8 @@ url="https://forge.ocamlcore.org/projects/batteries/"
 license=('LGPL')
 depends=('ocaml' 'ocaml-findlib' 'ocaml-camomile>=0.7.0' 'ocaml-ounit')
 install=ocaml-batteries.install
-source=("http://forge.ocamlcore.org/frs/download.php/950/batteries-$pkgver.tar.gz")
-md5sums=('40b7022fddba246062fd489eeb15cd84')
+source=("http://forge.ocamlcore.org/frs/download.php/1096/batteries-$pkgver.tar.gz")
+sha512sums=('fc491f288f57f85e1ee0446ed0f8a7bd9cb8ba77715b91576b576c1144b596c627116f8975c06edd7cd47831f86eeb6b986ac5d0aa247518893cefaa363230bb')
 options=(!strip !makeflags)
 
 build(){
