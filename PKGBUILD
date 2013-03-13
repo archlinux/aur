@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -35,17 +35,17 @@ md5sums=('97c429234998c46d5ec1de0aa13eae8e'
          'db4100901c9b583140e8fe81bb4d324f'
          '3f4dad9583c7a5d935d009069c599a51')
 
-build() {
-  plugindir=${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins
+package() {
+  plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
   cd "$srcdir"
-  mkdir -p $plugindir
+  mkdir -p "$plugindir"
   cp \
     padded.py \
     titlesort.py titleversion.py \
     f2k_rgscan.py metaflac_rgscan.py sidecar.py \
     removeperfectalbums.py autosave.py \
     eq2.py ne2.py p.py \
-    $plugindir
+    "$plugindir"
 }
 
 # vim:set ts=2 sw=2 et:

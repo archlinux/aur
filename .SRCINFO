@@ -1,7 +1,7 @@
 pkgbase = picard-plugins-aux
 	pkgdesc = additional plugins for MusicBrainz Picard
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
 	arch = any
 	license = GPL
