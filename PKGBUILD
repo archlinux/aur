@@ -3,12 +3,13 @@
 
 pkgname=libgnome-keyring
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME keyring client library"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 depends=('dbus-core' 'glib2' 'libgcrypt')
 makedepends=('intltool' 'gobject-introspection')
+optdepends=('gnome-keyring: key storage service (or use any other service implementing org.freedesktop.secrets)')
 options=('!libtool' '!emptydirs')
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
