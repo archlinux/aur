@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-search
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="search plugins for MusicBrainz Picard"
 arch=('any')
@@ -32,15 +32,15 @@ md5sums=('4b016bbeb194d6848a79c26a5ad8173b'
          'b7e0d09c6419fe1c179507ecc1c4ed1d'
          '75b8c732caeae545d439cd916b8416ac')
 
-build() {
-  plugindir=${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins
+package() {
+  plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
   cd "$srcdir"
-  mkdir -p $plugindir
+  mkdir -p "$plugindir"
   cp  SearchAMG.py SearchAmazon3.py SearchCastAlbums3.py SearchDiscogs3.py \
     SearchEbay.py SearchFilmMusziek3.py SearchGMR.py SearchGoogle3.py \
     SearchLortelArchives3.py SearchSoundtrackCollector3.py \
     SearchSoundtrackINFO3.py \
-    $plugindir
+    "$plugindir"
 }
 
 # vim:set ts=2 sw=2 et:

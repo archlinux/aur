@@ -1,6 +1,6 @@
 pkgbase = picard-plugins-search
 	pkgdesc = search plugins for MusicBrainz Picard
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
 	arch = any
