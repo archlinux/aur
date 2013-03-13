@@ -6,7 +6,7 @@ _synver=4.2
 pkgrel=1
 pkgdesc="Disk Station Assistant - An app to setup Synology DiskStations"
 arch=('i686' 'x86_64')
-url="http://www.synology.com/releaseNote_enu/Assistant.php"
+url="http://www.synology.com/releaseNote_enu/Desktop_Assistant.php"
 license=('unknown')
 depends=()
 if test "$CARCH" == x86_64; then
