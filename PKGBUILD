@@ -1,8 +1,8 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=dsassistant
-pkgver=2647
-_synver=4.1
+pkgver=3179
+_synver=4.2
 pkgrel=1
 pkgdesc="Disk Station Assistant - An app to setup Synology DiskStations"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=(unzip)
 source=(http://download.synology.com/download/ds/DSAssistant/${pkgname}_Linux_${pkgver}.zip
         SynologyAssistant.desktop
         dsassistant.png)
-md5sums=('098f8e70bc6dd5251284f954ef142884'
+md5sums=('080a6a5f9f82d638ce98c70d823ba2bc'
          '73e2c353c541bc79db01d40117d92133'
          '6b447bfb0e43256e2bf1d388a1b022d3')
 
@@ -25,7 +25,7 @@ build() {
 
   mkdir -p ${pkgdir}/opt/dsassistant
   unzip -o dsassistant_Linux_${pkgver}.zip -d ${srcdir}
-  tar zxvf ${srcdir}/SynologyAssistant-${_synver}-${pkgver}.tar.gz -C ${pkgdir}/opt/dsassistant
+  tar zxvf ${srcdir}/linux/SynologyAssistant-${_synver}-${pkgver}.tar.gz -C ${pkgdir}/opt/dsassistant
 
 	# Fix path for readlink
 	sed -i "s%/bin/readlink%/usr/bin/readlink%g" ${pkgdir}/opt/dsassistant/SynologyAssistant/SynologyAssistant
