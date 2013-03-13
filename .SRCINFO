@@ -1,7 +1,7 @@
 pkgbase = ruby-svn
 	pkgdesc = A dynamic, open source programming language with a focus on simplicity and productivity.
-	pkgver = 26652
-	pkgrel = 2
+	pkgver = 39745
+	pkgrel = 1
 	url = http://www.ruby-lang.org/en/
 	arch = i686
 	arch = x86_64
