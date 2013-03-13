@@ -1,7 +1,7 @@
 pkgbase = cccc
 	pkgdesc = C and C++ Code Counter, code metrics also for Ada and Java files
 	pkgver = 3.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cccc.sourceforge.net/
 	arch = i686
 	arch = x86_64

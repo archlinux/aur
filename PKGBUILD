@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=cccc
 pkgver=3.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="C and C++ Code Counter, code metrics also for Ada and Java files"
 arch=('i686' 'x86_64')
 url="http://cccc.sourceforge.net/"
@@ -22,7 +22,10 @@ build() {
   patch -p1 < ../gcc47.patch
 
   make -j 1 || return 1
-  make DESTDIR="$pkgdir/" install
 }
 
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}
 # vim:set ts=2 sw=2 et:
