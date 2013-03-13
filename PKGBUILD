@@ -5,29 +5,28 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.7.0
-_pkgver=1.7.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
-url="http://numpy.scipy.org/"
+url="http://www.numpy.org/"
 makedepends=('lapack' 'python' 'python2' 'python-distribute' 'python2-distribute' 'gcc-fortran' 'python-nose')
-source=(http://downloads.sourceforge.net/numpy/numpy-${_pkgver}.tar.gz)
-md5sums=('1b62cf0e34e2db58b0241b00d603df24')
+source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz)
+md5sums=('4fa54e40b6a243416f0248123b6ec332')
 
 build() {
   cd "${srcdir}"
-  cp -a numpy-${_pkgver} numpy-py2-${_pkgver}
+  cp -a numpy-${pkgver} numpy-py2-${pkgver}
 
-  export Atlas=None
+  export ATLAS=None
   export LDFLAGS="$LDFLAGS -shared"
 
   echo "Building Python2"
-  cd "${srcdir}/numpy-py2-${_pkgver}"
+  cd "${srcdir}/numpy-py2-${pkgver}"
   python2 setup.py config_fc --fcompiler=gnu95 build
 
   echo "Building Python3"
-  cd "${srcdir}/numpy-${_pkgver}"
+  cd "${srcdir}/numpy-${pkgver}"
   python setup.py config_fc --fcompiler=gnu95 build
 }
 
@@ -35,7 +34,12 @@ package_python2-numpy() {
   depends=('lapack' 'python2')
   optdepends=('python-nose: testsuite')
 
-  cd "${srcdir}/numpy-py2-${_pkgver}"
+  _pyver=2.7
+
+  export ATLAS=None
+  export LDFLAGS="$LDFLAGS -shared"
+
+  cd "${srcdir}/numpy-py2-${pkgver}"
   python2 setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
@@ -45,6 +49,9 @@ package_python2-numpy() {
          -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
          -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
              $(find ${pkgdir} -name '*.py')
+
+  install -m755 -d "${pkgdir}/usr/include/python${_pyver}"
+  ln -sf /usr/lib/python${_pyver}/site-packages/numpy/core/include/numpy "${pkgdir}/usr/include/python${_pyver}/numpy"
 }
 
 package_python-numpy() {
@@ -53,9 +60,17 @@ package_python-numpy() {
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
 
-  cd "${srcdir}/numpy-${_pkgver}"
+  _pyver=3.3
+
+  export ATLAS=None
+  export LDFLAGS="$LDFLAGS -shared"
+
+  cd "${srcdir}/numpy-${pkgver}"
   python setup.py config_fc --fcompiler=gnu95 install --prefix=/usr --root="${pkgdir}" --optimize=1
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/python3-numpy"
-  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python3-numpy/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/python-numpy"
+  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-numpy/"
+
+  install -m755 -d "${pkgdir}/usr/include/python${_pyver}"
+  ln -sf /usr/lib/python${_pyver}/site-packages/numpy/core/include/numpy "${pkgdir}/usr/include/python${_pyver}/numpy"
 }
