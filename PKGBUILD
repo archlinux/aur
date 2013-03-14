@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -23,7 +23,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DBUILD_tests=OFF
+    -DBUILD_tests=OFF \
+    -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF
   make
 }
 
