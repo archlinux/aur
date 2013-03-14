@@ -13,16 +13,12 @@ arch=('x86_64' 'i686')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL')
 makedepends=('ruby-pkgconfig' 'ruby-cairo' 'gtk3')
-source=("http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk3-$pkgver.tar.gz"
-        '0001-backport-fix-for-syntax-error-https-github.com-ruby.patch')
-sha256sums=('1dd73c4aa184199f373edad589b715b68da8eb43ae6bdae360e0aa62189a681d'
-            '0df3571688a18048fac9211df1bf21effd4120e568b34e523fe50a7a63e3e3d6')
+source=("http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk3-$pkgver.tar.gz")
+sha256sums=('1dd73c4aa184199f373edad589b715b68da8eb43ae6bdae360e0aa62189a681d')
 
 build() {
 	cd "$srcdir/ruby-gtk3-$pkgver"
 
-  #patch -Np1 -i \
-  #  "$srcdir/0001-backport-fix-for-syntax-error-https-github.com-ruby.patch"
 	LANG="en_US.UTF-8" ruby extconf.rb gtk3 gdk3 --vendor
 	make
 }
