@@ -1,15 +1,14 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=python-efl-svn
-pkgver=83832
+pkgver=84427
 pkgrel=1
 pkgdesc="Python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('elementary-svn' 'python')
+depends=('elementary-svn' 'python-dbus')
 makedepends=('subversion' 'cython')
-options=('!libtool' '!emptydirs')
 
 _svntrunk="http://svn.enlightenment.org/svn/e/trunk/BINDINGS/python/python-efl/"
 _svnmod="python-efl"

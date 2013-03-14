@@ -1,6 +1,6 @@
 pkgbase = python-efl-svn
 	pkgdesc = Python bindings for the Enlightenment Foundataion Libraries
-	pkgver = 83832
+	pkgver = 84427
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -9,9 +9,7 @@ pkgbase = python-efl-svn
 	makedepends = subversion
 	makedepends = cython
 	depends = elementary-svn
-	depends = python
-	options = !libtool
-	options = !emptydirs
+	depends = python-dbus
 
 pkgname = python-efl-svn
 
