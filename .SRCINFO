@@ -1,0 +1,16 @@
+pkgbase = python-openopt
+	pkgdesc = Optimization library
+	pkgver = 0.45
+	pkgrel = 1
+	url = http://www.openopt.org
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-numpy
+	conflicts = python2-openopt
+	source = http://openopt.org/images/3/33/OpenOpt.zip
+	md5sums = 214517cf319eb75a2515fe4f3bcc0684
+	sha256sums = 3f777a523c593e259ca0211d90d403d890822a6ccb67557479f03b4c172a569d
+
+pkgname = python-openopt
+
