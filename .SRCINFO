@@ -1,10 +1,11 @@
 pkgbase = perl-spread-queue
 	pkgdesc = CPAN/Spread::Queue - one-of-many queued messaging delivery using Spread
 	pkgver = 0.4
-	pkgrel = 3
+	pkgrel = 1
 	url = https://metacpan.org/module/JMAY/Spread-Queue-0.4/Queue.pod
-	arch = any
-	license = PerlArtistic
+	arch = i686
+	arch = x86_64
+	license = Perl
 	depends = perl
 	depends = perl-spread
 	options = !emptydirs
