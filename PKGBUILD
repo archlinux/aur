@@ -16,8 +16,10 @@ optdepends=('povray: rendering support via POV-Ray')
 install=$pkgname.install
 options=('!emptydirs')
 _genericname=('3D Modeler')
-# Using the i686-only binary release
-# Would prefer using a source release, if there is one that compiles
+_categories=('Graphics;3DGraphics;')
+
+# Using the i686-only binary release.
+# - Would prefer using a source release, if there is one that compiles.
 source=("http://sourceforge.net/projects/$_pkgname/files/$_pkgname/$pkgver/$_pkgname-$pkgver-linux.bzip2.run.gz"
         "$pkgname.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png")
 sha256sums=('760e19fa4973ed0fc75057897135a8efa241e834b078fc05c28786672137b322'
@@ -29,9 +31,8 @@ fi
 
 build() {
   cd "$srcdir"
-  gendesk
-  setconf "$pkgname.desktop" Categories "Graphics;3DGraphics;"
 
+  gendesk
   chmod +x "$_pkgname-$pkgver-linux.bzip2.run"
   "./$_pkgname-$pkgver-linux.bzip2.run" --nox11 --nochown --tar xf > /dev/null
   setconf install_wings INSTALL_DIR "$pkgdir/opt/$pkgname-$pkgver"
@@ -39,17 +40,16 @@ build() {
 
 package() {
   cd "$srcdir"
-  ./install_wings
 
+  ./install_wings
   cd "$pkgdir"
   setconf "opt/$pkgname-$pkgver/$_pkgname" ROOTDIR "/opt/$pkgname-$pkgver"
   install -Dm755 "opt/$pkgname-$pkgver/$_pkgname" "$pkgdir/usr/bin/$pkgname"
-
   cd "$srcdir"
-  install -Dm644 license.terms "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 license.terms "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
