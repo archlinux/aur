@@ -2,7 +2,7 @@
 pkgname=perl-spread
 _realname=Spread
 pkgver=3.17.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl extension for the Spread group communication system"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~jesus/Spread-3.17.4.4/Spread.pm"
@@ -16,6 +16,9 @@ build() {
   cd  $srcdir/$_realname-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
+}
+package() {
+  cd  $srcdir/$_realname-$pkgver
   make install DESTDIR=$pkgdir
   find $pkgdir -name '.packlist' -delete
   find $pkgdir -name '*.pod' -delete
