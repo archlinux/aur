@@ -6,7 +6,7 @@
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=20130309
+pkgver=20130316
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -23,10 +23,12 @@ provides=("${_pkgname}" 'gummiboot-efi' 'gummiboot-efi-git')
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
-source=('loader.conf'
+source=('gummiboot-fix-docbook-xsl-path.patch'
+        'loader.conf'
         'arch.conf')
 
-sha1sums=('82a59f90d9138c26f8db52bb8e94991602cf1edd'
+sha1sums=('3a7103d36a8f3f6429e78d684d3cac64c3fc0d86'
+          '82a59f90d9138c26f8db52bb8e94991602cf1edd'
           'aff6e152c3f7494e6113a8e2f073810366433015')
 
 _gitroot="git://anongit.freedesktop.org/gummiboot"
@@ -74,6 +76,9 @@ build() {
 	make clean || true
 	echo
 	
+	patch -Np1 -i "${srcdir}/gummiboot-fix-docbook-xsl-path.patch"
+	echo
+	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset LDFLAGS
@@ -81,7 +86,7 @@ build() {
 	./autogen.sh
 	echo
 	
-	./configure --sysconfdir="/etc" --libexecdir="/usr/lib" --libdir="/usr/lib"
+	./configure --enable-manpages --sysconfdir="/etc" --libexecdir="/usr/lib" --libdir="/usr/lib"
 	echo
 	
 	make

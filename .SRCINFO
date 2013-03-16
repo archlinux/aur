@@ -1,6 +1,6 @@
 pkgbase = gummiboot-git
 	pkgdesc = Simple text-mode UEFI Boot Manager - GIT Version
-	pkgver = 20130309
+	pkgver = 20130316
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/gummiboot
 	install = gummiboot.install
@@ -21,8 +21,10 @@ pkgbase = gummiboot-git
 	conflicts = gummiboot-efi-git
 	options = !strip
 	options = !makeflags
+	source = gummiboot-fix-docbook-xsl-path.patch
 	source = loader.conf
 	source = arch.conf
+	sha1sums = 3a7103d36a8f3f6429e78d684d3cac64c3fc0d86
 	sha1sums = 82a59f90d9138c26f8db52bb8e94991602cf1edd
 	sha1sums = aff6e152c3f7494e6113a8e2f073810366433015
 
