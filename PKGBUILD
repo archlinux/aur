@@ -2,7 +2,8 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=efl-git
-pkgver=20130312
+_pkgname=efl
+pkgver=1.7.99.x
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -22,42 +23,31 @@ optdepends=('python2: compare Eina benchmarks'
             'gstreamer0.10-ugly-plugins: Access more types of video in Emotion'
             'gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion'
            )
-conflicts=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'edje' 'edje-svn'
-           'eet' 'eet-svn' 'eeze' 'eeze-svn' 'efreet' 'efreet-svn'
-           'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
-           'emotion' 'emotion-svn' 'ephysics' 'ephysics-svn'
-           'ethumb' 'ethumb-svn' 'evas' 'evas-svn' 'efl-svn')
-provides=('ecore' 'ecore-svn' 'edbus' 'edbus-svn' 'edje' 'edje-svn'
-          'eet' 'eet-svn' 'eeze' 'eeze-svn' 'efreet' 'efreet-svn'
-          'eina' 'eina-svn' 'eio' 'eio-svn' 'embryo' 'embryo-svn'
-          'emotion' 'emotion-svn' 'ephysics' 'ephysics-svn'
-          'ethumb' 'ethumb-svn' 'evas' 'evas-svn' 'efl-svn')
+provides=('ecore=$pkgver' 'ecore-svn' 'edbus' 'edbus-svn' 'edje=$pkgver' 'edje-svn'
+          'eet=$pkgver' 'eet-svn' 'eeze=$pkgver' 'eeze-svn' 'efreet=$pkgver' 'efreet-svn'
+          'eina=$pkgver' 'eina-svn' 'eio=$pkgver' 'eio-svn' 'embryo=$pkgver' 'embryo-svn'
+          'emotion=$pkgver' 'emotion-svn' 'ephysics' 'ephysics-svn'
+          'ethumb=$pkgver' 'ethumb-svn' 'evas=$pkgver' 'evas-svn' 'efl-svn')
+conflicts=('ecore' 'edbus' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio'
+           'embryo' 'emotion' 'ephysics' 'ethumb' 'evas' 'efl-svn')
+options=('!libtool' 'debug')
 install=efl.install
-options=('!libtool' '!strip')
-         
-_gitroot="git://git.enlightenment.org/core/efl.git"
-_gitname="efl"
+source=("git://git.enlightenment.org/core/$_pkgname.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+
+  echo $(grep -m 1 EFL_VERSION configure.ac | grep -o "[[:digit:]]*" | tr '\n' '.')$(git rev-list --count HEAD)
+}
+
+prepare() {
+# set python scripts to run with python2
+  sed -i 's/env python/python2/g' "$srcdir/$_pkgname/src/scripts/eina/eina-bench-cmp"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-# set python scripts to run with python2
-  sed -i 's/env python/python2/g' "$srcdir/$_gitname-build/src/scripts/eina/eina-bench-cmp"
+  cd "$srcdir/$_pkgname"
 
   ./autogen.sh \
 	--prefix=/usr \
@@ -65,8 +55,8 @@ build() {
 	--with-opengl=full \
 	--with-tests=none \
 	--enable-systemd \
-	--enable-wayland \
 	--enable-harfbuzz \
+	--enable-wayland \
 	--enable-fb \
 	--disable-tslib
 
@@ -74,7 +64,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
+  
   make -j1 DESTDIR="$pkgdir" install
 
 # install license files
@@ -82,7 +73,4 @@ package() {
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 licenses/COPYING.BSD "$pkgdir/usr/share/licenses/$pkgname/COPYING.BSD"
   install -Dm644 licenses/COPYING.SMALL "$pkgdir/usr/share/licenses/$pkgname/COPYING.SMALL"
-
-# remove build directory
-  rm -r "$srcdir/$_gitname-build"
 }

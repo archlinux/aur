@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
-	pkgver = 20130312
+	pkgver = 1.7.99.x
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -40,62 +40,51 @@ pkgbase = efl-git
 	optdepends = gstreamer0.10-bad-plugins: Access more types of video in Emotion
 	optdepends = gstreamer0.10-ugly-plugins: Access more types of video in Emotion
 	optdepends = gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion
-	provides = ecore
+	provides = ecore=$pkgver
 	provides = ecore-svn
 	provides = edbus
 	provides = edbus-svn
-	provides = edje
+	provides = edje=$pkgver
 	provides = edje-svn
-	provides = eet
+	provides = eet=$pkgver
 	provides = eet-svn
-	provides = eeze
+	provides = eeze=$pkgver
 	provides = eeze-svn
-	provides = efreet
+	provides = efreet=$pkgver
 	provides = efreet-svn
-	provides = eina
+	provides = eina=$pkgver
 	provides = eina-svn
-	provides = eio
+	provides = eio=$pkgver
 	provides = eio-svn
-	provides = embryo
+	provides = embryo=$pkgver
 	provides = embryo-svn
-	provides = emotion
+	provides = emotion=$pkgver
 	provides = emotion-svn
 	provides = ephysics
 	provides = ephysics-svn
-	provides = ethumb
+	provides = ethumb=$pkgver
 	provides = ethumb-svn
-	provides = evas
+	provides = evas=$pkgver
 	provides = evas-svn
 	provides = efl-svn
 	conflicts = ecore
-	conflicts = ecore-svn
 	conflicts = edbus
-	conflicts = edbus-svn
 	conflicts = edje
-	conflicts = edje-svn
 	conflicts = eet
-	conflicts = eet-svn
 	conflicts = eeze
-	conflicts = eeze-svn
 	conflicts = efreet
-	conflicts = efreet-svn
 	conflicts = eina
-	conflicts = eina-svn
 	conflicts = eio
-	conflicts = eio-svn
 	conflicts = embryo
-	conflicts = embryo-svn
 	conflicts = emotion
-	conflicts = emotion-svn
 	conflicts = ephysics
-	conflicts = ephysics-svn
 	conflicts = ethumb
-	conflicts = ethumb-svn
 	conflicts = evas
-	conflicts = evas-svn
 	conflicts = efl-svn
 	options = !libtool
-	options = !strip
+	options = debug
+	source = git://git.enlightenment.org/core/efl.git
+	md5sums = SKIP
 
 pkgname = efl-git
 
