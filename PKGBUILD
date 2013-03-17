@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.8
 pkgver=3.8.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,13 +17,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        'drm-i915-enable-irqs-earlier-when-resuming.patch'
+        'drm-i915-reorder-setup-sequence-to-have-irqs-for-output-setup.patch')
 md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          'ba18b5d27ed303f5e5a9cda32a451031'
          '307107a8b15060e6fc0e48bdaacaed06'
          '03b1dad90f3558dba3031901398c1ca4'
          'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c')
+         'f3def2cefdcbb954c21d8505d23cc83c'
+         '40e7b328977ad787a0b5584f193d63fe'
+         '8b9159931fab0c191a86dbd5a46fa328')
 
 _kernelname=${pkgbase#linux}
 
@@ -40,6 +44,11 @@ build() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # revert 2 patches which breaks displays
+  # FS 34327
+  patch -Rp1 -i "${srcdir}/drm-i915-enable-irqs-earlier-when-resuming.patch"
+  patch -Rp1 -i "${srcdir}/drm-i915-reorder-setup-sequence-to-have-irqs-for-output-setup.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config

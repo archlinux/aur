@@ -1,0 +1,124 @@
+From 52d7ecedac3f96fb562cb482c139015372728638 Mon Sep 17 00:00:00 2001
+From: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Sat, 1 Dec 2012 21:03:22 +0100
+Subject: drm/i915: reorder setup sequence to have irqs for output setup
+
+From: Daniel Vetter <daniel.vetter@ffwll.ch>
+
+commit 52d7ecedac3f96fb562cb482c139015372728638 upstream.
+
+Otherwise the new&shiny irq-driven gmbus and dp aux code won't work that
+well. Noticed since the dp aux code doesn't have an automatic fallback
+with a timeout (since the hw provides for that already).
+
+v2: Simple move drm_irq_install before intel_modeset_gem_init, as
+suggested by Ben Widawsky.
+
+v3: Now that interrupts are enabled before all connectors are fully
+set up, we might fall over serving a HPD interrupt while things are
+still being set up. Instead of jumping through massive hoops and
+complicating the code with a separate hpd irq enable step, simply
+block out the hotplug work item from doing anything until things are
+in place.
+
+v4: Actually, we can enable hotplug processing only after the fbdev is
+fully set up, since we call down into the fbdev from the hotplug work
+functions. So stick the hpd enabling right next to the poll helper
+initialization.
+
+v5: We need to enable irqs before intel_modeset_init, since that
+function sets up the outputs.
+
+v6: Fixup cleanup sequence, too.
+
+Reviewed-by: Imre Deak <imre.deak@intel.com>
+Signed-off-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+ drivers/gpu/drm/i915/i915_dma.c |   23 ++++++++++++++---------
+ drivers/gpu/drm/i915/i915_drv.h |    1 +
+ drivers/gpu/drm/i915/i915_irq.c |    4 ++++
+ 3 files changed, 19 insertions(+), 9 deletions(-)
+
+--- a/drivers/gpu/drm/i915/i915_dma.c
++++ b/drivers/gpu/drm/i915/i915_dma.c
+@@ -1297,19 +1297,21 @@ static int i915_load_modeset_init(struct
+ 	if (ret)
+ 		goto cleanup_vga_switcheroo;
+ 
++	ret = drm_irq_install(dev);
++	if (ret)
++		goto cleanup_gem_stolen;
++
++	/* Important: The output setup functions called by modeset_init need
++	 * working irqs for e.g. gmbus and dp aux transfers. */
+ 	intel_modeset_init(dev);
+ 
+ 	ret = i915_gem_init(dev);
+ 	if (ret)
+-		goto cleanup_gem_stolen;
+-
+-	intel_modeset_gem_init(dev);
++		goto cleanup_irq;
+ 
+ 	INIT_WORK(&dev_priv->console_resume_work, intel_console_resume);
+ 
+-	ret = drm_irq_install(dev);
+-	if (ret)
+-		goto cleanup_gem;
++	intel_modeset_gem_init(dev);
+ 
+ 	/* Always safe in the mode setting case. */
+ 	/* FIXME: do pre/post-mode set stuff in core KMS code */
+@@ -1317,7 +1319,10 @@ static int i915_load_modeset_init(struct
+ 
+ 	ret = intel_fbdev_init(dev);
+ 	if (ret)
+-		goto cleanup_irq;
++		goto cleanup_gem;
++
++	/* Only enable hotplug handling once the fbdev is fully set up. */
++	dev_priv->enable_hotplug_processing = true;
+ 
+ 	drm_kms_helper_poll_init(dev);
+ 
+@@ -1326,13 +1331,13 @@ static int i915_load_modeset_init(struct
+ 
+ 	return 0;
+ 
+-cleanup_irq:
+-	drm_irq_uninstall(dev);
+ cleanup_gem:
+ 	mutex_lock(&dev->struct_mutex);
+ 	i915_gem_cleanup_ringbuffer(dev);
+ 	mutex_unlock(&dev->struct_mutex);
+ 	i915_gem_cleanup_aliasing_ppgtt(dev);
++cleanup_irq:
++	drm_irq_uninstall(dev);
+ cleanup_gem_stolen:
+ 	i915_gem_cleanup_stolen(dev);
+ cleanup_vga_switcheroo:
+--- a/drivers/gpu/drm/i915/i915_drv.h
++++ b/drivers/gpu/drm/i915/i915_drv.h
+@@ -672,6 +672,7 @@ typedef struct drm_i915_private {
+ 
+ 	u32 hotplug_supported_mask;
+ 	struct work_struct hotplug_work;
++	bool enable_hotplug_processing;
+ 
+ 	int num_pipe;
+ 	int num_pch_pll;
+--- a/drivers/gpu/drm/i915/i915_irq.c
++++ b/drivers/gpu/drm/i915/i915_irq.c
+@@ -287,6 +287,10 @@ static void i915_hotplug_work_func(struc
+ 	struct drm_mode_config *mode_config = &dev->mode_config;
+ 	struct intel_encoder *encoder;
+ 
++	/* HPD irq before everything is fully set up. */
++	if (!dev_priv->enable_hotplug_processing)
++		return;
++
+ 	mutex_lock(&mode_config->mutex);
+ 	DRM_DEBUG_KMS("running encoder hotplug functions\n");
+ 
