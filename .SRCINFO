@@ -1,6 +1,6 @@
 pkgbase = elementary-git
 	pkgdesc = EFL widget toolkit - Development version
-	pkgver = 20130222
+	pkgver = 1.7.99.x
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -8,13 +8,14 @@ pkgbase = elementary-git
 	license = LGPL2.1
 	makedepends = git
 	depends = efl-git
-	provides = elementary
+	provides = elementary=$pkgver
 	provides = elementary-svn
 	conflicts = elementary
 	conflicts = elementary-svn
 	options = !libtool
-	options = !emptydirs
-	options = !strip
+	options = debug
+	source = git://git.enlightenment.org/core/elementary.git
+	md5sums = SKIP
 
 pkgname = elementary-git
 

@@ -2,7 +2,8 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-git
-pkgver=20130222
+_pkgname=elementary
+pkgver=1.7.99.x
 pkgrel=1
 pkgdesc="EFL widget toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -10,30 +11,24 @@ url="http://www.enlightenment.org"
 license=('LGPL2.1')
 depends=('efl-git')
 makedepends=('git')
+provides=('elementary=$pkgver' 'elementary-svn')
 conflicts=('elementary' 'elementary-svn')
-provides=('elementary' 'elementary-svn')
-options=('!libtool' '!emptydirs' '!strip')
+options=('!libtool' 'debug')
+source=("git://git.enlightenment.org/core/$_pkgname.git")
+md5sums=('SKIP')
 
-_gitroot="git://git.enlightenment.org/core/elementary.git"
-_gitname="elementary"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  
+  for i in v_maj v_min v_mic; do
+    local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
+  done
+  
+  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   ./autogen.sh --prefix=/usr
 
@@ -41,10 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
-
-# remove build directory
-  rm -r "$srcdir/$_gitname-build"
 }
