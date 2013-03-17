@@ -1,6 +1,6 @@
 pkgbase = ecrire-git
 	pkgdesc = Simple text editor based on EFL
-	pkgver = 20130227
+	pkgver = 0.1.0.x
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = ecrire.install
@@ -11,6 +11,8 @@ pkgbase = ecrire-git
 	makedepends = cmake
 	depends = elementary
 	depends = desktop-file-utils
+	source = git://git.enlightenment.org/apps/ecrire.git
+	md5sums = SKIP
 
 pkgname = ecrire-git
 
