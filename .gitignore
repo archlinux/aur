@@ -2,3 +2,7 @@
 src/
 pkg/
 *.tar.*
+<<<<<<< HEAD
+=======
+*.log
+>>>>>>> Makepkg 4.1 update
