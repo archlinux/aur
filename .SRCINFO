@@ -1,7 +1,7 @@
 pkgbase = evas_generic_loaders-git
 	pkgdesc = Loaders for Evas using the 'generic' module - Development version
-	pkgver = 20130323
-	pkgrel = 2
+	pkgver = 1.7.99.x
+	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = evas_generic_loaders-git
 	conflicts = evas_generic_loaders
 	conflicts = evas_generic_loaders-svn
 	options = !libtool
-	options = !strip
+	options = debug
+	source = git://git.enlightenment.org/core/evas_generic_loaders.git
+	md5sums = SKIP
 
 pkgname = evas_generic_loaders-git
 
