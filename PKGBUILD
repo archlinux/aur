@@ -8,10 +8,12 @@ pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio 
 arch=(i686 x86_64)
 url="https://github.com/thomasvs/morituri"
 license=("GPL3")
-depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
-  "python2-musicbrainz2")
+depends=(
+  "cdparanoia" "cdrdao" "gstreamer0.10"
+  "gstreamer0.10-python" "python2-musicbrainz2"
+)
 optdepends=(
-  "python2-pycdio: For drive recognition."
+  "python2-pycdio: Drive recognition."
   "gstreamer0.10-base-plugins: Offset detection."
   "cddb-py: FreeDB support."
 )
