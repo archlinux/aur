@@ -13,7 +13,12 @@ source=(http://launchpad.net/oursql/trunk/$pkgver/+download/oursql-$pkgver.tar.b
 
 build() {
 	cd "$srcdir/oursql-$pkgver"
-	python2 setup.py install --root="$pkgdir" --prefix=/usr
+	python2 setup.py build
+}
+
+package() {
+	cd "$srcdir/oursql-$pkgver"
+	python2 setup.py install --skip-build -O1 --root="$pkgdir"
 }
 
 
