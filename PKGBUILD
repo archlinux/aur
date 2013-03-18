@@ -1,13 +1,13 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=python2-rtslib
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="RisingTide Systems generic SCSI target API in python"
 arch=('any')
 url="http://www.risingtidesystems.com/git/?p=rtslib.git;a=summary"
 license=('AGPL3')
-depends=('python2-ipaddr' 'python-netifaces' 'python-configobj')
+depends=('python2-ipaddr' 'python2-netifaces' 'python2-configobj')
 provides=()
 conflicts=()
 backup=()
