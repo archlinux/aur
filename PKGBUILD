@@ -16,7 +16,7 @@ source=("git://git.enlightenment.org/apps/$_pkgname.git"
         'bindings-update.patch'
         'configure.patch')
 md5sums=('SKIP'
-         '7a3d14c2ce0412e2fc503d278401a035'
+         'f07a35832209505768c7fcd375a2de59'
          '9006b3b8d28dbd9a944c497fec40d79f')
 
 pkgver() {

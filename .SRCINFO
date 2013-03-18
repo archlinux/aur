@@ -16,7 +16,7 @@ pkgbase = econnman-git
 	source = bindings-update.patch
 	source = configure.patch
 	md5sums = SKIP
-	md5sums = 7a3d14c2ce0412e2fc503d278401a035
+	md5sums = f07a35832209505768c7fcd375a2de59
 	md5sums = 9006b3b8d28dbd9a944c497fec40d79f
 
 pkgname = econnman-git
