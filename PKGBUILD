@@ -9,8 +9,11 @@ arch=(i686 x86_64)
 url="https://github.com/thomasvs/morituri"
 license=("GPL3")
 depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
-  "python2-musicbrainz2" "cddb-py" "gstreamer0.10-base-plugins")
-optdepends=("python2-pycdio: For drive recognition.")
+  "python2-musicbrainz2" "gstreamer0.10-base-plugins")
+optdepends=(
+  "python2-pycdio: For drive recognition."
+  "cddb-py: FreeDB support."
+)
 conflicts=("morituri" "morituri-svn")
 replaces=("morituri-svn")
 changelog=ChangeLog
