@@ -2,7 +2,7 @@
 # Contributor: Caleb Reach <jtxx000@gmail.com>
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri-git
-pkgver=20130203
+pkgver=20130318
 pkgrel=1
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
