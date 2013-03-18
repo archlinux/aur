@@ -1,0 +1,11 @@
+diff -rup a/src/via_driver.c b/src/via_driver.c
+--- a/src/via_driver.c	2013-03-10 16:11:57.614059200 +0100
++++ b/src/via_driver.c	2013-03-10 16:12:46.374062244 +0100
+@@ -1873,7 +1873,6 @@ VIAScreenInit(SCREEN_INIT_ARGS_DECL)
+     if (!pVia->NoAccel && !viaInitExa(pScreen))
+         return FALSE;
+ 
+-    miInitializeBackingStore(pScreen);
+     xf86SetBackingStore(pScreen);
+ #if 0
+     xf86SetSilkenMouse(pScreen);
