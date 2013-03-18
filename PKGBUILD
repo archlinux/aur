@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/thomasvs/morituri"
 license=("GPL3")
 depends=("cdparanoia" "cdrdao" "gstreamer0.10" "gstreamer0.10-python"
-  "python2-musicbrainz2")
+  "python2-musicbrainz2" "cddb-py" "gstreamer0.10-base-plugins")
 optdepends=("python2-pycdio")
 conflicts=("morituri" "morituri-svn")
 replaces=("morituri-svn")
