@@ -11,6 +11,7 @@ license=('custom')
 depends=('java-environment' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('binutils' 'tar')
 install=screamingfrogseospider.install
+noextract=("screamingfrogseospider_${pkgver}_all.deb")
 source=(
   "http://www.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
   "LICENSE"
