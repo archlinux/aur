@@ -1,16 +1,13 @@
-Index: econnman-bin.in
-===================================================================
---- econnman-bin.in	(revision 81738)
-+++ econnman-bin.in	(working copy)
-@@ -7,18 +7,35 @@
+diff --git a/econnman-bin.in b/econnman-bin.in
+index 6192e25..163c2df 100755
+--- a/econnman-bin.in
++++ b/econnman-bin.in
+@@ -7,11 +7,28 @@
  #  - Fix connman's PropertyChanged when changing off/manual -> dhcp,
  #    gateway is not updated.
  
 -import elementary as elm
 -import evas
--import e_dbus
--import ecore
--import edje
 +from efl import elementary as elm
 +from efl.elementary.scroller import Scroller
 +from efl.elementary.box import Box
@@ -30,21 +27,15 @@ Index: econnman-bin.in
 +from efl.elementary.segment_control import SegmentControl
 +from efl.elementary.popup import Popup
 +from efl import evas
-+from efl import edbus
+ import e_dbus
+-import ecore
+-import edje
 +from efl import ecore
 +from efl import edje
  import dbus
  import dbus.service
  import logging
- import argparse
- import os.path
- 
--dbus_ml = e_dbus.DBusEcoreMainLoop()
-+dbus_ml = edbus.DBusEcoreMainLoop()
- bus = dbus.SystemBus(mainloop=dbus_ml)
- log = logging.getLogger()
- 
-@@ -95,7 +112,7 @@
+@@ -95,7 +112,7 @@ class ObjectView(object):
          self.sig_ch = self.bus_obj.connect_to_signal("PropertyChanged",
                                                       self.on_property_changed)
  
@@ -53,7 +44,7 @@ Index: econnman-bin.in
          self.obj.on_del_add(self._deleted)
          self.obj.size_hint_weight = EXPAND_BOTH
          self.obj.policy_set(elm.ELM_SCROLLER_POLICY_OFF,
-@@ -103,7 +120,7 @@
+@@ -103,7 +120,7 @@ class ObjectView(object):
          self.obj.bounce_set(False, True)
          self.obj.content_min_limit(True, False)
  
@@ -62,7 +53,7 @@ Index: econnman-bin.in
          self.box.size_hint_weight = EXPAND_HORIZ
          self.box.horizontal = False
  
-@@ -128,7 +145,7 @@
+@@ -128,7 +145,7 @@ class ObjectView(object):
          log.critical("must be implemented!")
  
      def add_check(self, box, label, callback=None):
@@ -71,7 +62,7 @@ Index: econnman-bin.in
          obj.size_hint_weight = EXPAND_HORIZ
          obj.size_hint_align = FILL_BOTH
          obj.text = label
-@@ -139,7 +156,7 @@
+@@ -139,7 +156,7 @@ class ObjectView(object):
          return obj
  
      def add_button(self, box, label, callback):
@@ -80,7 +71,7 @@ Index: econnman-bin.in
          obj.size_hint_weight = EXPAND_HORIZ
          obj.size_hint_align = FILL_BOTH
          obj.text = label
-@@ -149,7 +166,7 @@
+@@ -149,7 +166,7 @@ class ObjectView(object):
          return obj
  
      def add_label(self, box, label):
@@ -89,7 +80,7 @@ Index: econnman-bin.in
          lb.size_hint_weight = EXPAND_HORIZ
          lb.size_hint_align = FILL_BOTH
          lb.text = label
-@@ -158,7 +175,7 @@
+@@ -158,7 +175,7 @@ class ObjectView(object):
          return lb
  
      def add_progress(self, box, label):
@@ -98,7 +89,7 @@ Index: econnman-bin.in
          pb.size_hint_weight = EXPAND_HORIZ
          pb.size_hint_align = FILL_BOTH
          pb.text = label
-@@ -167,7 +184,7 @@
+@@ -167,7 +184,7 @@ class ObjectView(object):
          return pb
  
      def add_segment_control(self, box, options, callback):
@@ -107,7 +98,7 @@ Index: econnman-bin.in
          sc.size_hint_weight = EXPAND_HORIZ
          sc.size_hint_align = FILL_BOTH
          items = {}
-@@ -179,14 +196,14 @@
+@@ -179,14 +196,14 @@ class ObjectView(object):
          return sc, items
  
      def add_frame_and_box(self, box, label):
@@ -124,7 +115,7 @@ Index: econnman-bin.in
          bx.size_hint_weight = EXPAND_HORIZ
          bx.size_hint_align = FILL_BOTH
          bx.horizontal = False
-@@ -197,7 +214,7 @@
+@@ -197,7 +214,7 @@ class ObjectView(object):
      def add_label_and_entry(self, box, label, callback=None):
          lb = self.add_label(box, label)
  
@@ -133,7 +124,7 @@ Index: econnman-bin.in
          en.size_hint_weight = EXPAND_HORIZ
          en.size_hint_align = FILL_BOTH
          en.single_line = True
-@@ -218,7 +235,7 @@
+@@ -218,7 +235,7 @@ class OfflineModeMonitor(object):
      user to set the property remotely.
      """
      def __init__(self, win):
@@ -142,7 +133,7 @@ Index: econnman-bin.in
          self.obj.style = "toggle"
          self.obj.part_text_set("on", "Offline")
          self.obj.part_text_set("off", "Online")
-@@ -275,7 +292,7 @@
+@@ -275,7 +292,7 @@ class TechList(object):
      def __init__(self, parent, on_selected=None):
          self.techs = {}
          self.items = {}
@@ -151,7 +142,7 @@ Index: econnman-bin.in
          self.obj.on_del_add(self._deleted)
          self.on_selected = on_selected
          self.obj.callback_selected_add(self._tech_selected)
-@@ -288,7 +305,7 @@
+@@ -288,7 +305,7 @@ class TechList(object):
                                                    "net.connman.Technology",
                                                    "net.connman",
                                                    path_keyword='path')
@@ -160,7 +151,7 @@ Index: econnman-bin.in
                                          text_get_func=self._item_text_get,
                                          content_get_func=self._item_content_get)
  
-@@ -367,7 +384,7 @@
+@@ -367,7 +384,7 @@ class TechList(object):
  
      def _item_content_get(self, obj, part, item_data):
          if part == "elm.swallow.end":
@@ -169,7 +160,7 @@ Index: econnman-bin.in
              ic.standard = "arrow_right"
              return ic
  
-@@ -377,7 +394,7 @@
+@@ -377,7 +394,7 @@ class TechList(object):
          if not t:
              return None
  
@@ -178,7 +169,7 @@ Index: econnman-bin.in
          if t.get("Connected", False):
              ic.standard = "connman-tech-connected"
          elif t.get("Powered", False):
-@@ -509,7 +526,7 @@
+@@ -509,7 +526,7 @@ class ServicesList(object):
      def __init__(self, parent, on_selected=None, on_disclosure=None):
          self.services = {}
          self.items = {}
@@ -187,7 +178,7 @@ Index: econnman-bin.in
          self.on_selected = on_selected
          self.on_disclosure = on_disclosure
          self.obj.callback_selected_add(self._item_selected)
-@@ -523,7 +540,7 @@
+@@ -523,7 +540,7 @@ class ServicesList(object):
                                                    path_keyword='path')
          manager.GetServices(reply_handler=self._get_services_reply,
                              error_handler=self._get_services_error)
@@ -196,7 +187,7 @@ Index: econnman-bin.in
                                          text_get_func=self._item_text_get,
                                          content_get_func=self._item_content_get)
  
-@@ -642,35 +659,35 @@
+@@ -642,35 +659,35 @@ class ServicesList(object):
                  security.remove("none")
  
          if part == "elm.swallow.end":
@@ -238,7 +229,7 @@ Index: econnman-bin.in
              bt.content = ic
              bt.callback_clicked_add(self._item_disclosure, item_data)
              bt.propagate_events = False
-@@ -683,7 +700,7 @@
+@@ -683,7 +700,7 @@ class ServicesList(object):
          if part != "elm.swallow.icon":
              return
  
@@ -247,7 +238,7 @@ Index: econnman-bin.in
          ly.theme_set("icon", type, "default")
          ly.size_hint_min_set(32, 32)
  
-@@ -1332,25 +1349,25 @@
+@@ -1332,25 +1349,25 @@ class Agent(dbus.service.Object):
              on_done(response)
              w.delete()
  
@@ -277,7 +268,7 @@ Index: econnman-bin.in
          lb.size_hint_weight = EXPAND_HORIZ
          lb.size_hint_align = FILL_BOTH
          lb.text = "<b>ConnMan needs your input</b>"
-@@ -1359,7 +1376,7 @@
+@@ -1359,7 +1376,7 @@ class Agent(dbus.service.Object):
  
          name = self.serv_lst.service_name_get(path)
          if name:
@@ -286,7 +277,7 @@ Index: econnman-bin.in
              lb.size_hint_weight = EXPAND_HORIZ
              lb.size_hint_align = FILL_BOTH
              lb.text = "Service: %s" % (name,)
-@@ -1374,14 +1391,14 @@
+@@ -1374,14 +1391,14 @@ class Agent(dbus.service.Object):
                  decos += " (type: %s)" % (t,)
              if desc.get("Requirement") == "mandatory":
                  decos += " REQUIRED"
@@ -303,7 +294,7 @@ Index: econnman-bin.in
              en.size_hint_weight = EXPAND_HORIZ
              en.size_hint_align = FILL_BOTH
              en.single_line = True
-@@ -1392,7 +1409,7 @@
+@@ -1392,7 +1409,7 @@ class Agent(dbus.service.Object):
              bx.pack_end(en)
              widgets[name] = en
  
@@ -312,7 +303,7 @@ Index: econnman-bin.in
          bt.size_hint_weight = EXPAND_HORIZ
          bt.size_hint_align = FILL_BOTH
          bt.callback_clicked_add(on_clicked)
-@@ -1410,12 +1427,12 @@
+@@ -1410,12 +1427,12 @@ def popup_fatal(obj, title, message):
      """
      win = obj.top_widget_get()
      log.critical("%s: %s", title, message)
@@ -327,7 +318,7 @@ Index: econnman-bin.in
      bt.text = "Quit"
      bt.callback_clicked_add(lambda bt: elm.exit())
      pop.part_content_set("button1", bt)
-@@ -1427,12 +1444,12 @@
+@@ -1427,12 +1444,12 @@ def popup_error(obj, title, message):
      """Shows a popup with an error message and a Close button."""
      win = obj.top_widget_get()
      log.error("%s: %s", title, message)
@@ -342,7 +333,7 @@ Index: econnman-bin.in
      bt.text = "Close"
      bt.callback_clicked_add(lambda bt: pop.delete())
      pop.part_content_set("button1", bt)
-@@ -1459,14 +1476,14 @@
+@@ -1459,14 +1476,14 @@ if __name__ == "__main__":
          if os.path.exists(td):
              elm.theme_extension_add(td)
  
@@ -359,7 +350,7 @@ Index: econnman-bin.in
      bg.size_hint_weight = EXPAND_BOTH
      bg.show()
      win.resize_object_add(bg)
-@@ -1481,14 +1498,14 @@
+@@ -1481,14 +1498,14 @@ if __name__ == "__main__":
          elm.shutdown()
          raise
  

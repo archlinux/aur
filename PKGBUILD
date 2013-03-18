@@ -1,19 +1,19 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=econnman-git
-pkgver=20130314
+pkgver=20130318
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('python2-efl-svn' 'connman')
+depends=('python2-efl-svn' 'python2-e_dbus' 'connman')
 makedepends=('git')
 conflicts=('econnman' 'econnman-svn')
 provides=('econnman')
 source=('bindings-update.patch'
         'configure.patch')
-md5sums=('7a3d14c2ce0412e2fc503d278401a035'
+md5sums=('f07a35832209505768c7fcd375a2de59'
          '9006b3b8d28dbd9a944c497fec40d79f')
          
 _gitroot="git://git.enlightenment.org/apps/econnman.git"
@@ -41,7 +41,7 @@ build() {
   sed -i 's:/usr/bin/python:/usr/bin/python2:' econnman-bin.in
 
 # Patch for new bindings
-  patch -Np0 < ../bindings-update.patch
+  patch -Np1 < ../bindings-update.patch
   patch -Np0 < ../configure.patch
 
   PYTHON=python2 \
