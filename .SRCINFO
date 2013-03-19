@@ -1,0 +1,20 @@
+pkgbase = roboptim-core-plugin-ipopt-git
+	pkgdesc = Ipopt interface for RobOptim Core
+	pkgver = 20130314
+	pkgrel = 1
+	url = http://roboptim.net/
+	arch = i686
+	arch = x86_64
+	license = (L)GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = roboptim-core-git
+	depends = boost>=1.41
+	depends = doxygen
+	depends = libltdl
+	depends = ipopt
+	provides = roboptim-core-plugin-ipopt
+	conflicts = roboptim-core-plugin-ipopt
+
+pkgname = roboptim-core-plugin-ipopt-git
+
