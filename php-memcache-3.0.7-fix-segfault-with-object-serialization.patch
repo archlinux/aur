@@ -1,0 +1,162 @@
+Index: memcache.c
+===================================================================
+--- memcache.c	(revision 329831)
++++ memcache.c	(working copy)
+@@ -1529,15 +1529,13 @@
+ 	unsigned int flags, unsigned long cas, void *param TSRMLS_DC) /*
+ 	receives a multiple values, param is a zval** array to store value and flags in {{{ */
+ {
+-	zval *arrval, **result = (zval **)param;
+-	ALLOC_ZVAL(arrval);
+-	*((zval *)arrval) = *value;
++	zval **result = (zval **)param;
+ 
+ 	/* add value to result */
+ 	if (Z_TYPE_P(result[0]) != IS_ARRAY) {
+ 		array_init(result[0]);
+ 	}
+-	add_assoc_zval_ex(result[0], (char *)key, key_len + 1, arrval);
++	add_assoc_zval_ex(result[0], (char *)key, key_len + 1, value);
+ 
+ 	/* add flags to result */
+ 	if (result[1] != NULL) {
+@@ -1565,7 +1563,7 @@
+ 	receives a single value, param is a zval pointer to store value to {{{ */
+ {
+ 	zval **result = (zval **)param;
+-	*(result[0]) = *value;
++	ZVAL_ZVAL(result[0], value, 1, 1);
+ 
+ 	if (result[1] != NULL) {
+ 		ZVAL_LONG(result[1], flags);
+Index: memcache_ascii_protocol.c
+===================================================================
+--- memcache_ascii_protocol.c	(revision 329831)
++++ memcache_ascii_protocol.c	(working copy)
+@@ -122,7 +122,7 @@
+ 	line_len = mmc_stream_get_line(request->io, &line TSRMLS_CC);
+ 	if (line_len > 0) {
+ 		long lval;
+-		zval value;
++		zval *value;
+ 
+ 		int response = mmc_request_check_response(line, line_len);
+ 		if (response != MMC_RESPONSE_UNKNOWN) {
+@@ -132,10 +132,10 @@
+ 		if (sscanf(line, "%lu", &lval) < 1) {
+ 			return mmc_server_failure(mmc, request->io, "Malformed VALUE header", 0 TSRMLS_CC);
+ 		}
+-		
+-		INIT_PZVAL(&value);
+-		ZVAL_LONG(&value, lval);
+-		return request->value_handler(request->key, request->key_len, &value, 0, 0, request->value_handler_param TSRMLS_CC);
++	
++		MAKE_STD_ZVAL(value);
++		ZVAL_LONG(value, lval);
++		return request->value_handler(request->key, request->key_len, value, 0, 0, request->value_handler_param TSRMLS_CC);
+ 	}
+ 	
+ 	return MMC_REQUEST_MORE;
+Index: memcache_binary_protocol.c
+===================================================================
+--- memcache_binary_protocol.c	(revision 329831)
++++ memcache_binary_protocol.c	(working copy)
+@@ -225,14 +225,14 @@
+ 	header = (mmc_mutate_response_header_t *)mmc_stream_get(request->io, sizeof(*header) TSRMLS_CC);
+ 	if (header != NULL) {
+ 		int result;
+-		zval *key, value;
++		zval *key, *value;
+ 
+ 		/* convert remembered key to string and unpack value */
+ 		key = (zval *)mmc_queue_item(&(req->keys), req->command.reqid);
++	
++		MAKE_STD_ZVAL(value);
++		ZVAL_LONG(value, ntohll(header->value));
+ 		
+-		INIT_PZVAL(&value);
+-		ZVAL_LONG(&value, ntohll(header->value));
+-		
+ 		if (Z_TYPE_P(key) != IS_STRING) {
+ 			zval keytmp = *key;
+ 			
+@@ -241,14 +241,14 @@
+ 			convert_to_string(&keytmp);
+ 
+ 			result = request->value_handler(
+-				Z_STRVAL(keytmp), Z_STRLEN(keytmp), &value, 
++				Z_STRVAL(keytmp), Z_STRLEN(keytmp), value, 
+ 				req->value.flags, req->value.cas, request->value_handler_param TSRMLS_CC);
+ 			
+ 			zval_dtor(&keytmp);
+ 		}
+ 		else {
+ 			result = request->value_handler(
+-				Z_STRVAL_P(key), Z_STRLEN_P(key), &value,
++				Z_STRVAL_P(key), Z_STRLEN_P(key), value,
+ 				req->value.flags, req->value.cas, request->value_handler_param TSRMLS_CC);
+ 		}
+ 		
+Index: memcache_pool.c
+===================================================================
+--- memcache_pool.c	(revision 329831)
++++ memcache_pool.c	(working copy)
+@@ -428,8 +428,8 @@
+ 	unsigned long data_len;
+ 	int rv;
+ 
+-	zval value;
+-	INIT_ZVAL(value);
++	zval *object;
++	MAKE_STD_ZVAL(object);
+ 
+ 	if (flags & MMC_COMPRESSED) {
+ 		if (mmc_uncompress(buffer->value.c, bytes, &data, &data_len) != MMC_OK) {
+@@ -445,8 +445,6 @@
+ 	if (flags & MMC_SERIALIZED) {
+ 		php_unserialize_data_t var_hash;
+ 		const unsigned char *p = (unsigned char *)data;
+-		zval *object = &value;
+-
+ 		char key_tmp[MMC_MAX_KEY_LEN + 1];
+ 		mmc_request_value_handler value_handler;
+ 		void *value_handler_param;
+@@ -501,7 +499,7 @@
+ 				long val;
+ 				data[data_len] = '\0';
+ 				val = strtol(data, NULL, 10);
+-				ZVAL_LONG(&value, val);
++				ZVAL_LONG(object, val);
+ 				break;
+ 			}
+ 
+@@ -509,17 +507,17 @@
+ 				double val = 0;
+ 				data[data_len] = '\0';
+ 				sscanf(data, "%lg", &val);
+-				ZVAL_DOUBLE(&value, val);
++				ZVAL_DOUBLE(object, val);
+ 				break;
+ 			}
+ 
+ 			case MMC_TYPE_BOOL:
+-				ZVAL_BOOL(&value, data_len == 1 && data[0] == '1');
++				ZVAL_BOOL(object, data_len == 1 && data[0] == '1');
+ 				break;
+ 
+ 			default:
+ 				data[data_len] = '\0';
+-				ZVAL_STRINGL(&value, data, data_len, 0);
++				ZVAL_STRINGL(object, data, data_len, 0);
+ 
+ 				if (!(flags & MMC_COMPRESSED)) {
+ 					/* release buffer because it's now owned by the zval */
+@@ -528,7 +526,7 @@
+ 		}
+ 
+ 		/* delegate to value handler */
+-		return request->value_handler(key, key_len, &value, flags, cas, request->value_handler_param TSRMLS_CC);
++		return request->value_handler(key, key_len, object, flags, cas, request->value_handler_param TSRMLS_CC);
+ 	}
+ }
+ /* }}}*/
