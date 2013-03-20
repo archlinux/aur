@@ -1,7 +1,7 @@
 # Maintainer: Trygve Aaberge <trygveaa+aur at gmail dot com>
 
 pkgname=mopidy-git
-pkgver=20130210
+pkgver=20130320
 pkgrel=1
 pkgdesc="A music server which can play music from Spotify"
 arch=(any)
