@@ -2,7 +2,7 @@
 # Contributor: Joakim Hernberg <jhernberg at alchemy dot lu>
 _pkgbasename=gettext
 pkgname=lib32-$_pkgbasename
-pkgver=0.18.2
+pkgver=0.18.2.1
 pkgrel=1
 pkgdesc="GNU internationalization library (32-bit)"
 arch=('x86_64')
@@ -13,8 +13,8 @@ makedepends=(gcc-multilib)
 optdepends=('cvs: for autopoint tool')
 options=(!libtool !docs)
 source=(ftp://ftp.gnu.org/pub/gnu/gettext/${_pkgbasename}-${pkgver}.tar.gz{,.sig})
-md5sums=('0c86e5af70c195ab8bd651d17d783928'
-         '1a658e29a03ab42da6d2d468b0583407')
+md5sums=('034c8103b14654ebd300fadac44d6f14'
+         'e4658c307333395a12f8d0b4d95fbb0f')
 
 build() {
   export CC="gcc -m32"
