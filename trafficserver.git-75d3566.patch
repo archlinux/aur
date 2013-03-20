@@ -1,0 +1,42 @@
+From 2bee0a2f0359e5d7cebdb4e2178a5154c75d3566 Mon Sep 17 00:00:00 2001
+From: Zhao Yongming <ming.zym@gmail.com>
+Date: Sat, 15 Sep 2012 16:13:13 +0800
+Subject: [PATCH] make clang happy on security concern
+
+---
+ mgmt/api/INKMgmtAPI.cc  |    4 ++--
+ mgmt/tools/ConfigAPI.cc |    3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/mgmt/api/INKMgmtAPI.cc b/mgmt/api/INKMgmtAPI.cc
+index 17d8afc..a047911 100644
+--- a/mgmt/api/INKMgmtAPI.cc
++++ b/mgmt/api/INKMgmtAPI.cc
+@@ -2436,8 +2436,8 @@ closeAllFds()
+   //           to root
+   if (getuid() != 0) {          // if not super user, need to upgrade to root
+     //printf("before upgrade:current uid%d, euid %d\n", getuid(), geteuid()); fflush(stdout);
+-    seteuid(0);
+-    setreuid(0, 0);
++    if(seteuid(0) != 0 || setreuid(0, 0) != 0)
++      perror("[closeAllFds] unable to restore root privilege.");
+     //printf("after upgrade:current uid %d, euid %d\n", getuid(), geteuid()); fflush(stdout);
+   }
+ 
+diff --git a/mgmt/tools/ConfigAPI.cc b/mgmt/tools/ConfigAPI.cc
+index 85666e4..a0444e0 100644
+--- a/mgmt/tools/ConfigAPI.cc
++++ b/mgmt/tools/ConfigAPI.cc
+@@ -807,7 +807,8 @@ Config_RestoreNetConfig(char *file)
+     ats_free(TagValue);
+   }
+ 
+-  setreuid(old_euid, old_euid); //happens only for floppy config
++  if(setreuid(old_euid, old_euid) != 0)
++    perror("Config_RestoreNetConfig set old uid failed: "); //happens only for floppy config
+   return 0;
+ }
+ 
+-- 
+1.7.9
+

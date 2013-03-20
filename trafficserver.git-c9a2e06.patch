@@ -1,0 +1,128 @@
+From dccdd5a4453828f1befa1bb121d045c50c9a2e06 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Igor=20Gali=C4=87?= <i.galic@brainsware.org>
+Date: Thu, 13 Sep 2012 14:24:04 +0200
+Subject: [PATCH] clang's cecker says this is a security issue
+
+I say it's dead code.
+---
+ mgmt/tools/ConfigAPI.cc |   24 ------------------------
+ mgmt/tools/ConfigAPI.h  |    4 ----
+ mgmt/tools/SysAPI.cc    |   37 -------------------------------------
+ mgmt/tools/SysAPI.h     |    4 ----
+ 4 files changed, 0 insertions(+), 69 deletions(-)
+
+diff --git a/mgmt/tools/ConfigAPI.cc b/mgmt/tools/ConfigAPI.cc
+index 19afe7a..85666e4 100644
+--- a/mgmt/tools/ConfigAPI.cc
++++ b/mgmt/tools/ConfigAPI.cc
+@@ -636,30 +636,6 @@ Config_SetNTP_Off(void)
+   return Time_SetNTP_Off();
+ }
+ 
+-int
+-Config_User_Root(int *old_euid)
+-{
+-  return Sys_User_Root(old_euid);
+-}
+-
+-int
+-Config_User_Inktomi(int euid)
+-{
+-  return Sys_User_Inktomi(euid);
+-}
+-
+-int
+-Config_Grp_Root(int *old_egid)
+-{
+-  return Sys_Grp_Root(old_egid);
+-}
+-
+-int
+-Config_Grp_Inktomi(int egid)
+-{
+-  return Sys_Grp_Inktomi(egid);
+-}
+-
+ #if defined(linux)
+ int
+ Config_DisableInterface(char *eth)
+diff --git a/mgmt/tools/ConfigAPI.h b/mgmt/tools/ConfigAPI.h
+index 62da925..00303b1 100644
+--- a/mgmt/tools/ConfigAPI.h
++++ b/mgmt/tools/ConfigAPI.h
+@@ -85,9 +85,5 @@ extern int Config_GetXmlTagValue(char *XmlTagName, char **XmlTagValue, char *Xml
+ extern int Config_SetSMTP_Server(char *server);
+ extern int Config_GetSMTP_Server(char *server);
+ extern int Config_FloppyNetRestore();
+-extern int Config_User_Root(int *old_euid);
+-extern int Config_User_Inktomi(int euid);
+-extern int Config_Grp_Root(int *old_egid);
+-extern int Config_Grp_Inktomi(int egid);
+ extern int Config_DisableInterface(char *eth);
+ #endif // _CONFIG_API_H
+diff --git a/mgmt/tools/SysAPI.cc b/mgmt/tools/SysAPI.cc
+index 5dd9498..37f80b6 100644
+--- a/mgmt/tools/SysAPI.cc
++++ b/mgmt/tools/SysAPI.cc
+@@ -1184,43 +1184,6 @@ Net_DisableInterface(char *interface)
+ 
+ #endif /* linux */
+ 
+-int
+-Sys_User_Root(int *old_euid)
+-{
+-
+-  *old_euid = getuid();
+-  seteuid(0);
+-  setreuid(0, 0);
+-
+-  return 0;
+-}
+-
+-int
+-Sys_User_Inktomi(int euid)
+-{
+-// bug 50394 - preserve saved uid as root,
+-//             while changing effiective and real uid to input parameter value
+-  setreuid(euid, 0);
+-  seteuid(euid);
+-  return 0;
+-}
+-
+-int
+-Sys_Grp_Root(int *old_egid)
+-{
+-  *old_egid = getegid();
+-  setregid(0, *old_egid);
+-  return 0;
+-}
+-
+-int
+-Sys_Grp_Inktomi(int egid)
+-{
+-  setregid(egid, egid);
+-  return 0;
+-}
+-
+-
+ 
+ 
+ bool
+diff --git a/mgmt/tools/SysAPI.h b/mgmt/tools/SysAPI.h
+index 3417518..aead11c 100644
+--- a/mgmt/tools/SysAPI.h
++++ b/mgmt/tools/SysAPI.h
+@@ -74,10 +74,6 @@ extern int Time_GetNTP_Status(char *status, size_t status_len);
+ extern int Time_SetNTP_Off(void);
+ extern int Net_GetSMTP_Server(char *server);
+ extern int Net_SetSMTP_Server(char *server);
+-extern int Sys_User_Root(int *old_euid);
+-extern int Sys_User_Inktomi(int euid);
+-extern int Sys_Grp_Root(int *old_egid);
+-extern int Sys_Grp_Inktomi(int egid);
+ extern int Net_DisableInterface(char *interface);
+ 
+ #endif // _SYS_API_H
+-- 
+1.7.9
+

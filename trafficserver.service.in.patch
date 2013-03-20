@@ -1,0 +1,11 @@
+--- rc/trafficserver.service.in.orig	2013-03-16 14:11:06.317750280 -0700
++++ rc/trafficserver.service.in	2013-03-16 14:12:18.471699935 -0700
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=simple
+-EnvironmentFile=-/etc/sysconfig/trafficserver
++EnvironmentFile=-/etc/conf.d/trafficserver
+ PIDFile=@exp_runtimedir@/cop.pid
+ ExecStart=@exp_bindir@/traffic_cop $TC_DAEMON_ARGS
+ ExecReload=@exp_bindir@/traffic_line -x

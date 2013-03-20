@@ -1,0 +1,11 @@
+pre_install() {
+	getent group tserver &>/dev/null  || groupadd -g 499 tserver >/dev/null
+	getent passwd tserver &>/dev/null || useradd -u 499 \
+        -d /var/lib/trafficserver -g tserver -s /bin/false tserver >/dev/null
+}
+
+post_remove() {
+	getent passwd tserver &>/dev/null && userdel  tserver  >/dev/null
+	getent group tserver  &>/dev/null && groupdel tserver  >/dev/null
+	true
+}

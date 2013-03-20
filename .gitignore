@@ -1,0 +1,5 @@
+src/
+pkg/
+trafficserver-*.pkg.tar.xz
+trafficserver-*.tar.bz2
+.*.swp
