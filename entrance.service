@@ -1,0 +1,11 @@
+[Unit]
+Description=E17 Display Manager
+Conflicts=getty@tty1.service
+After=systemd-user-sessions.service getty@tty1.service
+
+[Service]
+ExecStart=/usr/sbin/entrance --nodaemon
+Restart=always
+
+[Install]
+Alias=display-manager.service

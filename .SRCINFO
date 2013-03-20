@@ -1,0 +1,19 @@
+pkgbase = entrance-svn
+	pkgdesc = Successor of the e17 display manager - Entrance
+	pkgver = 74295
+	pkgrel = 1
+	url = http://trac.enlightenment.org/e
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = elementary
+	provides = entrance
+	conflicts = elsa
+	source = entrance-pam
+	source = entrance.service
+	md5sums = 9a76cae5b3a0fcbb6116fa08c7a587b5
+	md5sums = a10831272be5d65d40d9f7b5b03361b1
+
+pkgname = entrance-svn
+
