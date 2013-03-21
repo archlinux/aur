@@ -31,6 +31,6 @@ build() {
 package() {
 	cd "$srcdir/$_gitname"
 	for plugin in redis_* resque_*; do
-		install -m0644 -D $plugin "$pkgdir/usr/lib/munin/plugins/$plugin"
+		install -m0755 -D $plugin "$pkgdir/usr/lib/munin/plugins/$plugin"
 	done
 }
