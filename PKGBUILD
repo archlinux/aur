@@ -2,7 +2,7 @@
 
 pkgname=perl-ev-glib
 pkgver='2.01'
-pkgrel=1
+pkgrel=2
 pkgdesc="Embed the glib main loop into EV"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?EV::Glib'
@@ -18,6 +18,9 @@ build() {
 	# install module in vendor directories
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
+}
+package() {
+	cd "$srcdir/EV-Glib-$pkgver"
 	make install DESTDIR="$pkgdir/"
 
 	#remove perllocal.pod and .packlist
