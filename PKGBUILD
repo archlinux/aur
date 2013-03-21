@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=clutter-gtk
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="GTK clutter widget"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('clutter' 'gtk3')
 makedepends=('gobject-introspection')
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('dc3ec6e90bc742c8a68ed7fa4c0d25b9b376828f1a7f013c363fbaf14f3a6974')
+sha256sums=('bc3108594a01a08bb6d9b538afe995e4fd78634a8356064ee8137d87aad51b2e')
 
 build() {
   cd $pkgname-$pkgver
