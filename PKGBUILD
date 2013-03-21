@@ -1,4 +1,4 @@
-# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=redis-munin-git
 pkgver=20130321
@@ -7,7 +7,7 @@ pkgdesc="A set of munin scripts to monitor redis"
 arch=(any)
 url="https://github.com/gilles/redis-munin"
 license=('GPL')
-depends=('munin-node')
+depends=('munin-node' 'ruby-redis')
 makedepends=('git')
 
 _gitroot="https://github.com/gilles/redis-munin.git"
