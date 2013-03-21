@@ -1,7 +1,7 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.10.4
+pkgver=1.13.4
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango')
 makedepends=('mesa' 'gobject-introspection')
 options=(!libtool !emptydirs)
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('0b5c9989f1d07dbda000a68640eb7ebf734513d52e3707668c41eed19991adf9')
+sha256sums=('8e84ca9d6d08eb5e60f5c38e3bd80a3085e21ac86656a52797736706170bff6e')
 
 build() {
   cd "$pkgname-$pkgver"
