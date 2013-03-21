@@ -1,7 +1,7 @@
 pkgbase = perl-apireference
 	pkgdesc = Programatically query the perlapi
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Perl-APIReference
 	arch = i686
 	arch = x86_64
