@@ -2,7 +2,7 @@
 
 pkgname=perl-glib-ev
 pkgver=2.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Coerce Glib into using the EV module as event loop"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?Glib::EV'
@@ -18,6 +18,9 @@ build() {
 	# install module in vendor directories
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
+}
+package() {
+	cd "$srcdir/Glib-EV-$pkgver"
 	make install DESTDIR="$pkgdir/"
 
 	#remove perllocal.pod and .packlist
