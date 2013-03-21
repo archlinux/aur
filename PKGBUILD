@@ -2,7 +2,7 @@
 
 pkgname=perl-io-interface
 pkgver='1.06'
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl extension for access to network card configuration information"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?IO::Interface'
@@ -18,6 +18,9 @@ build() {
 	# install module in vendor directories
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
+}
+package() {
+	cd "$srcdir/IO-Interface-$pkgver"
 	make install DESTDIR="$pkgdir/"
 
 	#remove perllocal.pod and .packlist
