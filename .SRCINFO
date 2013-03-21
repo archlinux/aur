@@ -1,0 +1,13 @@
+pkgbase = redis-munin-git
+	pkgdesc = A set of munin scripts to monitor redis
+	pkgver = 20130321
+	pkgrel = 1
+	url = https://github.com/gilles/redis-munin
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = munin-node
+	depends = ruby-redis
+
+pkgname = redis-munin-git
+
