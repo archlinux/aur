@@ -2,12 +2,11 @@
 Description=PIM Daemon
 After=network.target
 ConditionPathExists=/etc/pimd.conf
-Conflicts=mrouted.service smcroute.service
 
 [Service]
 Type=forking
 PIDFile=/var/run/pimd.pid
-ExecStart=/usr/bin/pimd
+ExecStart=/usr/sbin/pimd
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-abort
 
