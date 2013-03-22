@@ -1,0 +1,15 @@
+pkgbase = natsort
+	pkgdesc = Natural Sorting utility
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jjk-jacky/natsort
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = perl
+	makedepends = groff
+	source = http://jjacky.com/natsort/natsort-0.1.0.tar.gz
+	md5sums = 81cfe73998405843e3d4092c10523530
+
+pkgname = natsort
+
