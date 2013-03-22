@@ -1,0 +1,21 @@
+pkgbase = roboptim-trajectory-git
+	pkgdesc = Trajectory optimization for robotics
+	pkgver = 20130322
+	pkgrel = 1
+	url = http://roboptim.net/
+	arch = i686
+	arch = x86_64
+	license = (L)GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = roboptim-core-git
+	depends = roboptim-core-plugin-ipopt-git
+	depends = boost>=1.41
+	depends = doxygen
+	depends = pkg-config
+	depends = libltdl
+	provides = roboptim-trajectory
+	conflicts = roboptim-trajectory
+
+pkgname = roboptim-trajectory-git
+
