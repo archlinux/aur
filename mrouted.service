@@ -2,12 +2,11 @@
 Description=Multicast Route Daemon
 After=network.target
 ConditionPathExists=/etc/mrouted.conf
-Conflicts=pimd.service smcroute.service
 
 [Service]
 Type=forking
 PIDFile=/var/run/mrouted.pid
-ExecStart=/usr/bin/mrouted
+ExecStart=/usr/sbin/mrouted
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-abort
 
