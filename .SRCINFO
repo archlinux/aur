@@ -1,7 +1,7 @@
 pkgbase = evas_generic_loaders-git
 	pkgdesc = Loaders for Evas using the 'generic' module - Development version
-	pkgver = 20130226
-	pkgrel = 1
+	pkgver = 20130323
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,12 @@ pkgbase = evas_generic_loaders-git
 	depends = libraw
 	depends = libspectre
 	depends = librsvg
+	depends = gstreamer0.10-base
 	provides = evas_generic_loaders
 	conflicts = evas_generic_loaders
 	conflicts = evas_generic_loaders-svn
 	options = !libtool
+	options = !strip
 
 pkgname = evas_generic_loaders-git
 

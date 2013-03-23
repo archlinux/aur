@@ -3,17 +3,17 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=evas_generic_loaders-git
-pkgver=20130226
-pkgrel=1
+pkgver=20130323
+pkgrel=2
 pkgdesc="Loaders for Evas using the 'generic' module - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('GPL2')
-depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg')
+depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg' 'gstreamer0.10-base')
 makedepends=('git')
 conflicts=('evas_generic_loaders' 'evas_generic_loaders-svn')
 provides=('evas_generic_loaders')
-options=('!libtool')
+options=('!libtool' '!strip')
          
 _gitroot="git://git.enlightenment.org/core/evas_generic_loaders.git"
 _gitname="evas_generic_loaders"
