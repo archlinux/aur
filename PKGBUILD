@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130220
+pkgver=20130323
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
