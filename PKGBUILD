@@ -19,7 +19,7 @@ source=(
   "http://mirrors.rit.edu/ubuntu/pool/universe/b/boost1.46/libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/universe/b/boost1.46/libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/c/curl/libcurl3_7.22.0-3ubuntu4_amd64.deb"
-  "http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.1c-4ubuntu7_amd64.deb"
+  "http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.1c-3ubuntu2.2_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/g/gnutls26/libgnutls26_2.12.14-5ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/o/openldap/libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/c/cyrus-sasl2/libsasl2-2_2.1.25.dfsg1-3_amd64.deb"
@@ -34,7 +34,7 @@ sha256sums=(
   '6fc8bfd0ae266ecaa0c64abbff12286f86ff194e3f69be2cf17425e213d7e2b1' # libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb
   '684e5010e378b98da0eeba04f1848575a4c14aac158a4047b9ae386e9fc5b7a1' # libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb
   '46d58ee60211b8467f6e237d194e0919dc9ea7a49bc15e963b212899a4e5d990' # libcurl3_7.22.0-3ubuntu4_amd64.deb
-  'c07156957a679cc4a1fafff45f4d2496aa38b9e8f8fb05185668c493a79a7d79' # libssl1.0.0_1.0.1c-4ubuntu7_amd64.deb
+  '7a7c2bf923a6327576f168fb15e1c75660bee72157d0b1eeb735d11faf5cc818' # libssl1.0.0_1.0.1c-3ubuntu2.2_amd64.deb
   'eb7b0fcaae1dc1931761546f01c52badb982c38c22a3d0e2303b50251d2aace1' # libgnutls26_2.12.14-5ubuntu3_amd64.deb
   '024df6e175efc8747454a4ca873598c16bc02eab6b811d418e78a5038b39dc09' # libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
   '7ee06d0eb0075b3ca01a162c844984675084bc861a03ce84b0803949ef8c799c' # libsasl2-2_2.1.25.dfsg1-3_amd64.deb
@@ -61,7 +61,7 @@ build() {
   _extract_deb libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb
   _extract_deb libboost-system1.46.1_1.46.1-7ubuntu3_amd64.deb
   _extract_deb libcurl3_7.22.0-3ubuntu4_amd64.deb
-  _extract_deb libssl1.0.0_1.0.1c-4ubuntu7_amd64.deb
+  _extract_deb libssl1.0.0_1.0.1c-3ubuntu2.2_amd64.deb
   _extract_deb libgnutls26_2.12.14-5ubuntu3_amd64.deb
   _extract_deb libldap-2.4-2_2.4.28-1.1ubuntu4_amd64.deb
   _extract_deb libsasl2-2_2.1.25.dfsg1-3_amd64.deb data.tar.gz
