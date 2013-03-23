@@ -1,42 +1,45 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
-pkgname=python-efl-svn
-pkgver=84427
+pkgname=python-efl-git
+pkgver=20130322
 pkgrel=1
 pkgdesc="Python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('elementary-svn' 'python-dbus')
-makedepends=('subversion' 'cython')
+depends=('elementary-git' 'python')
+provides=('python-efl-svn')
+conflicts=('python-efl-svn')
+makedepends=('git' 'cython')
 
-_svntrunk="http://svn.enlightenment.org/svn/e/trunk/BINDINGS/python/python-efl/"
-_svnmod="python-efl"
+_gitroot="git://git.enlightenment.org/bindings/python/python-efl.git"
+_gitname="python-efl"
 
 build() {
   cd "$srcdir"
+  msg "Connecting to GIT server...."
 
-  msg "Connecting to SVN server...."
-
-  if [[ -d "$_svnmod/.svn" ]]; then
-    (cd "$_svnmod" && svn up -r "$pkgver")
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
   else
-    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
+    git clone "$_gitroot" "$_gitname"
   fi
 
-  msg "SVN checkout done or server timeout"
+  msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf "$srcdir/$_svnmod-build"
-  svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
-  python setup.py build_ext
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_svnmod-build"
+  cd "$srcdir/$_gitname-build"
+  
   python setup.py install --root="$pkgdir"
 
-  rm -r "$srcdir/$_svnmod-build"
+  rm -r "$srcdir/$_gitname-build"
 }

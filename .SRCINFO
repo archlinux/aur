@@ -1,15 +1,17 @@
-pkgbase = python-efl-svn
+pkgbase = python-efl-git
 	pkgdesc = Python bindings for the Enlightenment Foundataion Libraries
-	pkgver = 84427
+	pkgver = 20130322
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	makedepends = subversion
+	makedepends = git
 	makedepends = cython
-	depends = elementary-svn
-	depends = python-dbus
+	depends = elementary-git
+	depends = python
+	provides = python-efl-svn
+	conflicts = python-efl-svn
 
-pkgname = python-efl-svn
+pkgname = python-efl-git
 
