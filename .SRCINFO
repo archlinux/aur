@@ -1,7 +1,7 @@
 pkgbase = mrouted
 	pkgdesc = mrouted is an implementation of the DVMRP multicast routing protocol. It turns a UNIX workstation into a DVMRP multicast router with tunnel support, in order to cross non-multicast-aware routers.
 	pkgver = 3.9.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://freshmeat.net/projects/mrouted
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mrouted
 	source = http://cloud.github.com/downloads/troglobit/mrouted/mrouted-3.9.6.tar.bz2
 	source = mrouted.service
 	md5sums = e88dfa6a99dd4ee7d8bc7b2dca87ca9e
-	md5sums = 1724b91d87589847bef83930fdf1da62
+	md5sums = e24c3b04c1ab2822c824f8e269c0a58b
 
 pkgname = mrouted
 

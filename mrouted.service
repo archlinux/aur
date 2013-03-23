@@ -2,6 +2,7 @@
 Description=Multicast Route Daemon
 After=network.target
 ConditionPathExists=/etc/mrouted.conf
+Conflicts=pimd.service smcroute.service
 
 [Service]
 Type=forking
