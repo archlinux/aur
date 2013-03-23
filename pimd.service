@@ -2,6 +2,7 @@
 Description=PIM Daemon
 After=network.target
 ConditionPathExists=/etc/pimd.conf
+Conflicts=mrouted.service smcroute.service
 
 [Service]
 Type=forking
