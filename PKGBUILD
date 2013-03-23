@@ -5,7 +5,7 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.7
-pkgrel=4
+pkgrel=5
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
@@ -121,4 +121,4 @@ package_fcitx-qt4() {
 }
 
 md5sums=('6e291717c24615b9dc9bfaa2949af3a7'
-         '009e0cd17f078e24c03b3b46b45e41ab')
+         'ce299aa5b596cc52dc9e66b47795e627')
