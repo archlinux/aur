@@ -2,12 +2,12 @@
 
 pkgname=econnman-git
 pkgver=20130318
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment ConnMan user interface"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('python2-efl-svn' 'python2-e_dbus' 'connman')
+depends=('python2-efl-git' 'python2-e_dbus' 'connman')
 makedepends=('git')
 conflicts=('econnman' 'econnman-svn')
 provides=('econnman')

@@ -1,12 +1,12 @@
 pkgbase = econnman-git
 	pkgdesc = Enlightenment ConnMan user interface
 	pkgver = 20130318
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = any
 	license = LGPL3
 	makedepends = git
-	depends = python2-efl-svn
+	depends = python2-efl-git
 	depends = python2-e_dbus
 	depends = connman
 	provides = econnman
