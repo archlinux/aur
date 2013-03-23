@@ -1,6 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=python-efl-git
+_pkgname=python-efl
 pkgver=20130322
 pkgrel=1
 pkgdesc="Python bindings for the Enlightenment Foundataion Libraries"
@@ -11,35 +12,23 @@ depends=('elementary-git' 'python')
 provides=('python-efl-svn')
 conflicts=('python-efl-svn')
 makedepends=('git' 'cython')
+source=("git://git.enlightenment.org/bindings/python/$_pkgname.git")
+md5sums=('SKIP')
 
-_gitroot="git://git.enlightenment.org/bindings/python/python-efl.git"
-_gitname="python-efl"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+
+  echo $(grep -m 1 "version =" setup.py | awk -F \" '{print $2}').$(git rev-list --count HEAD)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
   
   python setup.py install --root="$pkgdir"
-
-  rm -r "$srcdir/$_gitname-build"
 }

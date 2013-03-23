@@ -12,6 +12,8 @@ pkgbase = python-efl-git
 	depends = python
 	provides = python-efl-svn
 	conflicts = python-efl-svn
+	source = git://git.enlightenment.org/bindings/python/python-efl.git
+	md5sums = SKIP
 
 pkgname = python-efl-git
 
