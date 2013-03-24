@@ -1,0 +1,16 @@
+pkgbase = django-voting-0.1
+	pkgdesc = A generic voting application for Django projects. Version 0.1
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jezdez/django-voting/
+	arch = any
+	license = BSD
+	depends = python2
+	provides = django-voting
+	conflicts = django-voting
+	source = http://pypi.python.org/packages/source/d/django-voting/django-voting-0.1.tar.gz
+	md5sums = 2b6162cd9b0e888b9cf8e847ecdd56cb
+	sha256sums = 7b5f3665559c7606f40bcfac91b134df3a830edb6e0b819921aca08e647b8ba1
+
+pkgname = django-voting-0.1
+
