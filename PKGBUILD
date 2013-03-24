@@ -7,7 +7,7 @@
 
 _pkgname=rxvt-unicode
 pkgname=${_pkgname}-better-wheel-scrolling
-pkgver=9.17
+pkgver=9.18
 pkgrel=1
 pkgdesc="An unicode enabled rxvt-clone terminal emulator (urxvt) w/ better wheel scrolling (VTE-like) (& no utmp/wtmp support)"
 arch=('i686' 'x86_64')
@@ -20,11 +20,11 @@ conflicts=('rxvt-unicode')
 source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2 \
         ${_pkgname}.desktop
         clear.patch secondaryWheel.patch)
-md5sums=('1270432bdc7ce17dbb07d41a607081e0'
+md5sums=('963ccc748fe5bca925e7b92c0404d68b'
          '4723fc20ed200c86caf8c8680a1be26b'
          '5714991c5b1bf5f7d7769961e391a0db'
          'a6011928fe8734591544f70083b995c7')
-sha1sums=('2ffee9c8ea1b5d40d99a29d5626a4558e28fff23'
+sha1sums=('5d12639c4b17019357ee62c08916b826e5d03259'
           'd4eea2dd1834b596c715ec9ea239e70788f49a8f'
           '089e0263722412dd82008ae3e2b3eb335fc8116e'
           '7b2de8c206babc4a8baea1f8c3a4219dcfa03750')
