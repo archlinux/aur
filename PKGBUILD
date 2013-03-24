@@ -1,66 +1,62 @@
-# Maintainer: meklu <meklu at meklu dot org>
+# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Contributor: meklu <meklu at meklu dot org>
 # Contributor: Samsagax <samsagax at gmail dot com>
 # Contributor: Swift Geek <swiftgeek+spam@gmail.com>
 
-pkgname=entrance-svn
-pkgver=74295
+pkgname=entrance-git
+pkgver=20130324
 pkgrel=1
-pkgdesc="Successor of the e17 display manager - Entrance"
+pkgdesc="Enlightenment Display Manager"
 url="http://trac.enlightenment.org/e"
 license=("GPL")
 arch=("i686" "x86_64")
-provides=('entrance')
-conflicts=('elsa')
 depends=('elementary')
-makedepends=('subversion')
+makedepends=('git')
+conflicts=('entrance-svn')
 source=('entrance-pam'
-	'entrance.service')
+        'entrance.service')
 md5sums=('9a76cae5b3a0fcbb6116fa08c7a587b5'
-	 'a10831272be5d65d40d9f7b5b03361b1')
+         '8c6ff8570c3d689fda99e018e5428a67')
 
-_svntrunk="http://svn.enlightenment.org/svn/e/trunk/PROTO/entrance/"
-_svnmod="entrance"
+_gitroot="git://git.enlightenment.org/misc/entrance.git"
+_gitname="entrance"
 
-build ()
-{
-	cd $srcdir
+build () {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
 
-	msg "Connecting to $_svntrunk SVN server...."
-	if [ -d $_svnmod/.svn ]; then
-		(cd $_svnmod && svn up -r $pkgver)
-	else
-		svn co $_svntrunk --config-dir ./ -r $pkgver $_svnmod
-	fi
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
 
-	msg "SVN checkout done or server timeout"
-	msg "Starting make..."
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
 
-	rm -rf $_svnmod-build
-	cp -r $_svnmod $_svnmod-build
-	cd $_svnmod-build
-	
-    ./autogen.sh \
-        --prefix=/usr \
-        --sysconfdir=/etc
-	
-    make
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
+  ./autogen.sh \
+	--prefix=/usr \
+	--sysconfdir=/etc
+
+  make
 }
 
 package() {
-    cd $srcdir/$_svnmod-build
+  cd "$srcdir/$_gitname-build"
 
-    make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 
-    # install license files
-    install -Dm644 $srcdir/$_svnmod-build/COPYING \
-        $pkgdir/usr/share/licenses/$pkgname/COPYING
+# install license files
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
-    # install pam file
-    install -Dm644 $srcdir/entrance-pam \
-        $pkgdir/etc/pam.d/entrance
+# install pam file
+  install -Dm644 "$srcdir/entrance-pam" "$pkgdir/etc/pam.d/entrance"
 
-    # install systemd files
-    install -Dm644 $srcdir/entrance.service \
-        $pkgdir/usr/lib/systemd/system/entrance.service
+# install systemd files
+  install -Dm644 "$srcdir/entrance.service" "$pkgdir/usr/lib/systemd/system/entrance.service"
 }
