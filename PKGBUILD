@@ -15,7 +15,7 @@ optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-xml-sax-expatxs: make AMF parsing faster'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support'
-            'perl-class-xsaccessor: ???')
+            'perl-class-xsaccessor: creating faster accessor methods')
 provides=('slic3r')
 conflicts=('slic3r')
 source=('slic3r.desktop')
