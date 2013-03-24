@@ -4,40 +4,32 @@
 # Contributor: Swift Geek <swiftgeek+spam@gmail.com>
 
 pkgname=entrance-git
-pkgver=20130324
+_pkgname=entrance
+pkgver=0.0.4.x
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://trac.enlightenment.org/e"
-license=("GPL")
-arch=("i686" "x86_64")
+license=('GPL3')
+arch=('i686' 'x86_64')
 depends=('elementary')
 makedepends=('git')
 conflicts=('entrance-svn')
-source=('entrance-pam'
+options=('debug')
+source=("git://git.enlightenment.org/misc/$_pkgname.git"
+        'entrance-pam'
         'entrance.service')
-md5sums=('9a76cae5b3a0fcbb6116fa08c7a587b5'
+md5sums=('SKIP'
+         '9a76cae5b3a0fcbb6116fa08c7a587b5'
          '8c6ff8570c3d689fda99e018e5428a67')
 
-_gitroot="git://git.enlightenment.org/misc/entrance.git"
-_gitname="entrance"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+
+  echo $(grep -m 1 AC_INIT configure.ac | awk -F , '{print $2}' | tr -d '[ ]').$(git rev-list --count HEAD)
+}
 
 build () {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   ./autogen.sh \
 	--prefix=/usr \
@@ -47,12 +39,9 @@ build () {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
-
-# install license files
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
 # install pam file
   install -Dm644 "$srcdir/entrance-pam" "$pkgdir/etc/pam.d/entrance"
