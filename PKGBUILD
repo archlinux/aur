@@ -2,27 +2,27 @@
 # Contributor: Leonid Selivanov <bravebug at gmail dot com>
 
 pkgname=retrovol
-pkgver=0.14.1
-pkgrel=1
-pkgdesc="A sound volume mixer"
+pkgver=0.12
+pkgrel=2
+pkgdesc="An sound volume mixer"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
-url="https://github.com/pizzasgood/retrovol"
-depends=('gtk2' 'alsa-lib')
-makedepends=('git')
-source=("$pkgname::git+https://github.com/pizzasgood/retrovol.git#tag=v${pkgver}")
-md5sums=('SKIP')
+url="http://puppylinux.svn.sourceforge.net/viewvc/puppylinux/retrovol/"
+groups=()
+depends=('gtk2')
+makedepends=()
+optdepends=()
+options=()
+install=
+source=(http://www.browserloadofcoolness.com/software/puppy/PETget/$pkgname-$pkgver.tar.gz)
+md5sums=('2f5922031fd50530baec2b2ccf53c542')
 
-prepare() {
-  cd $pkgname
-  autoreconf -fiv
-}
 build() {
-  cd $pkgname
+  cd ${srcdir}/$pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  cd ${srcdir}/$pkgname-$pkgver
+  make DESTDIR=${pkgdir} install
 }

@@ -1,17 +1,15 @@
 pkgbase = retrovol
-	pkgdesc = A sound volume mixer
-	pkgver = 0.14.1
-	pkgrel = 1
-	url = https://github.com/pizzasgood/retrovol
+	pkgdesc = An sound volume mixer
+	pkgver = 0.12
+	pkgrel = 2
+	url = http://puppylinux.svn.sourceforge.net/viewvc/puppylinux/retrovol/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = git
 	depends = gtk2
-	depends = alsa-lib
-	source = retrovol::git+https://github.com/pizzasgood/retrovol.git#tag=v0.14.1
-	md5sums = SKIP
+	source = http://www.browserloadofcoolness.com/software/puppy/PETget/retrovol-0.12.tar.gz
+	md5sums = 2f5922031fd50530baec2b2ccf53c542
 
 pkgname = retrovol
 
