@@ -1,18 +1,17 @@
 pkgbase = perl-sql-statement
 	pkgdesc = SQL parsing and processing engine
-	pkgver = 1.33
+	pkgver = 1.402
 	pkgrel = 1
-	url = http://search.cpan.org/~REHSACK/SQL-Statement-1.33/
+	url = http://search.cpan.org/~REHSACK/SQL-Statement-1.402/
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl>=5.10.0
-	depends = perl-clone
-	depends = perl-params-util
-	depends = perl-data-dumper
+	depends = perl-clone>=0.30
+	depends = perl-params-util>=1.00
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/R/RE/REHSACK/SQL-Statement-1.33.tar.gz
-	md5sums = 7c81e480630f60363fadb82f52095f3a
+	source = http://cpan.perl.org/modules/by-authors/id/R/RE/REHSACK/SQL-Statement-1.402.tar.gz
+	md5sums = fc6b4b94c7667b492e936653f87b5918
 
 pkgname = perl-sql-statement
 
