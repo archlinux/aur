@@ -1,6 +1,6 @@
 pkgbase = snmpsim
 	pkgdesc = a software that would act like a multitude of real physical devices from SNMP Manager's point of view
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://snmpsim.sourceforge.net/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = snmpsim
 	depends = python-pyasn1
 	optdepends = pycrypto: SNMPv3 support
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/project/snmpsim/snmpsim/0.1.3/snmpsim-0.1.3.tar.gz
-	md5sums = 93719ca49ed013c3819a1f057a412347
+	source = http://downloads.sourceforge.net/project/snmpsim/snmpsim/0.2.0/snmpsim-0.2.0.tar.gz
+	md5sums = f2c06db6c2c75e6fd3cf2c39127ebfa3
 
 pkgname = snmpsim
 
