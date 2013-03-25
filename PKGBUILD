@@ -1,14 +1,14 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=libcec-git
-pkgver=20130104
+pkgver=20130325
 pkgrel=1
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')
 url="https://github.com/Pulse-Eight/libcec"
 license=('GPL')
 makedepends=('git')
-depends=('udev>=151' 'lockdev-fpic')
+depends=('udev>=151' 'lockdev')
 provides=('libcec')
 conflicts=('libcec')
 options=('!libtool')
