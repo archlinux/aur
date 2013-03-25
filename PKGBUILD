@@ -5,7 +5,7 @@
 pkgname=perl-net-libdnet
 _cpanname="Net-Libdnet"
 pkgver=0.98
-pkgrel=4
+pkgrel=1
 pkgdesc="Binding for Dug Song's libdnet"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
