@@ -1,27 +1,31 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Mario Blättermann <mariobl@gnome.org>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=wmblob
-pkgver=1.0.4
-pkgrel=1
+pkgver=1.0.3
+pkgrel=2
 pkgdesc="wmblob shows some blobs moving around"
 arch=('i686' 'x86_64')
-#url="http://dockapps.windowmaker.org/file.php/id/155"
-#url="http://web.archive.org/web/20121029030832/http://dockapps.windowmaker.org/file.php/id/155"
-url="https://github.com/bbidulock/wmblob"
+url="http://dockapps.windowmaker.org/file.php/id/155"
 license=('GPL')
 groups=(x11)
 depends=('gtk2')
-#source=("http://dockapps.windowmaker.org/download.php/id/541/wmblob-1.0.3.tar.bz2")
-#source=("wmblob-1.0.3.tar.bz2")
-source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("http://dockapps.windowmaker.org/download.php/id/541/wmblob-1.0.3.tar.bz2")
 noextract=()
-md5sums=('0b4f9ac8cefd943e2db6882e877a971d')
+md5sums=('5821d20d4e4b86f8ff996320ece2424b')
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
   ./configure --prefix=/usr \
-              --mandir=/usr/share/man \
               --x-includes=/usr/include/X11 \
               --x-libraries=/usr/lib/X11
   make
