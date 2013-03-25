@@ -1,32 +1,59 @@
 diff -pur slim-1.3.5.orig/app.cpp slim-1.3.5/app.cpp
 --- slim-1.3.5.orig/app.cpp	2012-12-31 06:03:42.000000000 -0700
-+++ slim-1.3.5/app.cpp	2013-02-27 02:03:23.000000000 -0700
-@@ -138,6 +138,7 @@ App::App(int argc, char** argv)
- 	daemonmode = false;
++++ slim-1.3.5/app.cpp	2013-03-25 05:14:36.000000000 -0600
+@@ -139,6 +139,9 @@ App::App(int argc, char** argv)
  	force_nodaemon = false;
  	firstlogin = true;
-+	existing_server = false;
  	Dpy = NULL;
++	existing_server = false;
++	displayName = string(DISPLAY);
++	screenName = displayName + SCREEN;
  
  	/* Parse command line
-@@ -188,13 +189,12 @@ App::App(int argc, char** argv)
- void App::Run() {
- 	DisplayName = DISPLAY;
- 
--#ifdef XNEST_DEBUG
--	char* p = getenv("DISPLAY");
-+	char *p = getenv("DISPLAY");
- 	if (p && p[0]) {
- 		DisplayName = p;
--		cout << "Using display name " << DisplayName << endl;
-+		logStream << "Using display name " << DisplayName << endl;
-+		existing_server = true;
+ 	   Note: we force a option for nodaemon switch to handle "-nodaemon" */
+@@ -183,11 +186,17 @@ App::App(int argc, char** argv)
  	}
--#endif
+ #endif /* XNEST_DEBUG */
  
- 	/* Read configuration and theme */
- 	cfg = new Cfg;
-@@ -249,7 +249,7 @@ void App::Run() {
++	char *p = getenv("DISPLAY");
++	if (p && p[0]) {
++		displayName = p;
++		screenName = displayName + SCREEN;
++		existing_server = true;
++		ReadServerAuth();
++	}
++
+ }
+ 
+ void App::Run() {
+-	DisplayName = DISPLAY;
+-
+ #ifdef XNEST_DEBUG
+ 	char* p = getenv("DISPLAY");
+ 	if (p && p[0]) {
+@@ -221,11 +230,12 @@ void App::Run() {
+ #ifdef USE_PAM
+ 	try{
+ 		pam.start("slim");
+-		pam.set_item(PAM::Authenticator::TTY, DisplayName);
++		pam.set_item(PAM::Authenticator::TTY, screenName.c_str());
+ 		pam.set_item(PAM::Authenticator::Requestor, "root");
+ 	}
+ 	catch(PAM::Exception& e){
+ 		logStream << APPNAME << ": " << e << endl;
++		if (existing_server) exit(OPENFAILED_DISPLAY);
+ 		exit(ERR_EXIT);
+ 	};
+ #endif
+@@ -238,6 +248,7 @@ void App::Run() {
+ 			if (themeName == "default") {
+ 				logStream << APPNAME << ": Failed to open default theme file "
+ 					 << themefile << endl;
++				if (existing_server) exit(OPENFAILED_DISPLAY);
+ 				exit(ERR_EXIT);
+ 			} else {
+ 				logStream << APPNAME << ": Invalid theme in config: "
+@@ -249,12 +260,12 @@ void App::Run() {
  		}
  	}
  
@@ -35,118 +62,251 @@ diff -pur slim-1.3.5.orig/app.cpp slim-1.3.5/app.cpp
  		/* Create lock file */
  		LoginApp->GetLock();
  
-@@ -263,7 +263,6 @@ void App::Run() {
- 		signal(SIGPIPE, CatchSignal);
- 		signal(SIGUSR1, User1Signal);
- 
--#ifndef XNEST_DEBUG
- 		if (!force_nodaemon && cfg->getOption("daemon") == "yes") {
- 			daemonmode = true;
- 		}
-@@ -283,7 +282,6 @@ void App::Run() {
- 
- 		CreateServerAuth();
- 		StartServer();
--#endif
- 
+ 		/* Start x-server */
+-		setenv("DISPLAY", DisplayName, 1);
++		setenv("DISPLAY", screenName.c_str(), 1);
+ 		signal(SIGQUIT, CatchSignal);
+ 		signal(SIGTERM, CatchSignal);
+ 		signal(SIGKILL, CatchSignal);
+@@ -288,10 +299,11 @@ void App::Run() {
  	}
  
-@@ -291,7 +289,7 @@ void App::Run() {
- 	if((Dpy = XOpenDisplay(DisplayName)) == 0) {
+ 	/* Open display */
+-	if((Dpy = XOpenDisplay(DisplayName)) == 0) {
++	if((Dpy = XOpenDisplay(screenName.c_str())) == 0) {
  		logStream << APPNAME << ": could not open display '"
- 			 << DisplayName << "'" << endl;
--		if (!testing) StopServer();
-+		if (!testing && !existing_server) StopServer();
+-			 << DisplayName << "'" << endl;
++			 << screenName << "'" << endl;
+ 		if (!testing) StopServer();
++		if (existing_server) exit(OPENFAILED_DISPLAY);
  		exit(ERR_EXIT);
  	}
  
-@@ -632,9 +630,9 @@ void App::Login() {
- 		_exit(OK_EXIT);
+@@ -424,6 +436,7 @@ bool App::AuthenticateUser(bool focuspas
  	}
- 
--#ifndef XNEST_DEBUG
--	CloseLog();
--#endif
-+	if (!existing_server) {
-+		CloseLog();
-+	}
- 
- 	/* Wait until user is logging out (login process terminates) */
- 	pid_t wpid = -1;
-@@ -686,11 +684,11 @@ void App::Login() {
- 
- 	HideCursor();
- 
--#ifndef XNEST_DEBUG
--	/* Re-activate log file */
--	OpenLog();
--	RestartServer();
--#endif
-+	if (!existing_server) {
-+		/* Re-activate log file */
-+		OpenLog();
-+		RestartServer();
-+	}
- 
- }
- 
-@@ -709,8 +707,10 @@ void App::Reboot() {
- 	sleep(3);
- 
- 	/* Stop server and reboot */
--	StopServer();
--	RemoveLock();
-+	if (!existing_server) {
-+		StopServer();
-+		RemoveLock();
-+	}
- 	system(cfg->getOption("reboot_cmd").c_str());
- 	exit(OK_EXIT);
- }
-@@ -731,8 +731,10 @@ void App::Halt() {
- 	sleep(3);
- 
- 	/* Stop server and halt */
--	StopServer();
--	RemoveLock();
-+	if (!existing_server) {
-+		StopServer();
-+		RemoveLock();
-+	}
- 	system(cfg->getOption("halt_cmd").c_str());
- 	exit(OK_EXIT);
- }
-@@ -778,8 +780,10 @@ void App::Exit() {
- 		XCloseDisplay(Dpy);
- 	} else {
- 		delete LoginPanel;
--		StopServer();
--		RemoveLock();
-+		if (!existing_server) {
-+			StopServer();
-+			RemoveLock();
-+		}
- 	}
- 	delete cfg;
- 	exit(OK_EXIT);
-@@ -799,8 +803,10 @@ void App::RestartServer() {
+ 	catch(PAM::Exception& e){
+ 		logStream << APPNAME << ": " << e << endl;
++		if (existing_server) exit(REMANAGE_DISPLAY);
+ 		exit(ERR_EXIT);
  	};
+ 	return true;
+@@ -516,6 +529,7 @@ void App::Login() {
+ 	}
+ 	catch(PAM::Exception& e){
+ 		logStream << APPNAME << ": " << e << endl;
++		if (existing_server) exit(REMANAGE_DISPLAY);
+ 		exit(ERR_EXIT);
+ 	};
+ #else
+@@ -548,12 +562,13 @@ void App::Login() {
+ 		pam.setenv("USER", pw->pw_name);
+ 		pam.setenv("LOGNAME", pw->pw_name);
+ 		pam.setenv("PATH", cfg->getOption("default_path").c_str());
+-		pam.setenv("DISPLAY", DisplayName);
++		pam.setenv("DISPLAY", screenName);
+ 		pam.setenv("MAIL", maildir.c_str());
+ 		pam.setenv("XAUTHORITY", xauthority.c_str());
+ 	}
+ 	catch(PAM::Exception& e){
+ 		logStream << APPNAME << ": " << e << endl;
++		if (existing_server) exit(REMANAGE_DISPLAY);
+ 		exit(ERR_EXIT);
+ 	}
+ #endif
+@@ -561,10 +576,11 @@ void App::Login() {
+ #ifdef USE_CONSOLEKIT
+ 	/* Setup the ConsoleKit session */
+ 	try {
+-		ck.open_session(DisplayName, pw->pw_uid);
++		ck.open_session(screenName, pw->pw_uid);
+ 	}
+ 	catch(Ck::Exception &e) {
+ 		logStream << APPNAME << ": " << e << endl;
++		if (existing_server) exit(REMANAGE_DISPLAY);
+ 		exit(ERR_EXIT);
+ 	}
+ #endif
+@@ -607,7 +623,7 @@ void App::Login() {
+ 		child_env[n++]=StrConcat("USER=", pw->pw_name);
+ 		child_env[n++]=StrConcat("LOGNAME=", pw->pw_name);
+ 		child_env[n++]=StrConcat("PATH=", cfg->getOption("default_path").c_str());
+-		child_env[n++]=StrConcat("DISPLAY=", DisplayName);
++		child_env[n++]=StrConcat("DISPLAY=", screenName);
+ 		child_env[n++]=StrConcat("MAIL=", maildir.c_str());
+ 		child_env[n++]=StrConcat("XAUTHORITY=", xauthority.c_str());
+ # ifdef USE_CONSOLEKIT
+@@ -618,7 +634,7 @@ void App::Login() {
  #endif
  
--	StopServer();
--	RemoveLock();
-+	if (!existing_server) {
-+		StopServer();
-+		RemoveLock();
-+	}
+ 		/* Login process starts here */
+-		SwitchUser Su(pw, cfg, DisplayName, child_env);
++		SwitchUser Su(pw, cfg, displayName, child_env);
+ 		string session = LoginPanel->getSession();
+ 		string loginCommand = cfg->getOption("login_cmd");
+ 		replaceVariables(loginCommand, SESSION_VAR, session);
+@@ -628,6 +644,7 @@ void App::Login() {
+ 			replaceVariables(sessStart, USER_VAR, pw->pw_name);
+ 			system(sessStart.c_str());
+ 		}
++		putenv(StrConcat("XAUTHORITY=", xauthority.c_str()));
+ 		Su.Login(loginCommand.c_str(), mcookie.c_str());
+ 		_exit(OK_EXIT);
+ 	}
+@@ -641,7 +658,7 @@ void App::Login() {
+ 	int status;
+ 	while (wpid != pid) {
+ 		wpid = wait(&status);
+-		if (wpid == ServerPID)
++		if (ServerPID != -1 && wpid == ServerPID)
+ 			xioerror(Dpy);	/* Server died, simulate IO error */
+ 	}
+ 	if (WIFEXITED(status) && WEXITSTATUS(status)) {
+@@ -712,6 +729,7 @@ void App::Reboot() {
+ 	StopServer();
+ 	RemoveLock();
+ 	system(cfg->getOption("reboot_cmd").c_str());
++	if (existing_server) exit(UNMANAGE_DISPLAY);
+ 	exit(OK_EXIT);
+ }
+ 
+@@ -734,6 +752,7 @@ void App::Halt() {
+ 	StopServer();
+ 	RemoveLock();
+ 	system(cfg->getOption("halt_cmd").c_str());
++	if (existing_server) exit(UNMANAGE_DISPLAY);
+ 	exit(OK_EXIT);
+ }
+ 
+@@ -782,6 +801,7 @@ void App::Exit() {
+ 		RemoveLock();
+ 	}
+ 	delete cfg;
++	if (existing_server) exit(REMANAGE_DISPLAY);
+ 	exit(OK_EXIT);
+ }
+ 
+@@ -802,6 +822,7 @@ void App::RestartServer() {
+ 	StopServer();
+ 	RemoveLock();
  	while (waitpid(-1, NULL, WNOHANG) > 0); /* Collects all dead childrens */
++	if (existing_server) exit(RESERVER_DISPLAY);
  	Run();
  }
-Only in slim-1.3.5: .app.cpp.swp
+ 
+@@ -871,7 +892,7 @@ int App::WaitForServer() {
+ 	int	cycles;
+ 
+ 	for(cycles = 0; cycles < ncycles; cycles++) {
+-		if((Dpy = XOpenDisplay(DisplayName))) {
++		if((Dpy = XOpenDisplay(screenName.c_str()))) {
+ 			XSetIOErrorHandler(xioerror);
+ 			return 1;
+ 		} else {
+@@ -1121,6 +1142,7 @@ void App::GetLock() {
+ 
+ /* Remove lockfile and close logs */
+ void App::RemoveLock() {
++	if (existing_server) return;
+ 	remove(cfg->getOption("lockfile").c_str());
+ }
+ 
+@@ -1132,6 +1154,7 @@ bool App::isServerStarted() {
+ /* Redirect stdout and stderr to log file */
+ void App::OpenLog() {
+ 
++	if (existing_server) return;
+ 	if ( !logStream.openLog( cfg->getOption("logfile").c_str() ) ) {
+ 		logStream <<  APPNAME << ": Could not accesss log file: " << cfg->getOption("logfile") << endl;
+ 		RemoveLock();
+@@ -1142,6 +1165,7 @@ void App::OpenLog() {
+ 
+ /* Relases stdout/err */
+ void App::CloseLog(){
++	if (existing_server) return;
+ 	/* Simply closing the log */
+ 	logStream.closeLog();
+ }
+@@ -1213,7 +1237,7 @@ void App::CreateServerAuth() {
+ 	authfile = cfg->getOption("authfile");
+ 	remove(authfile.c_str());
+ 	putenv(StrConcat("XAUTHORITY=", authfile.c_str()));
+-	Util::add_mcookie(mcookie, ":0", cfg->getOption("xauth_path"),
++	Util::add_mcookie(mcookie, displayName.c_str(), cfg->getOption("xauth_path"),
+ 	  authfile);
+ }
+ 
+@@ -1233,3 +1257,40 @@ void App::UpdatePid() {
+ 	lockfile << getpid() << std::endl;
+ 	lockfile.close();
+ }
++
++void App::ReadServerAuth() {
++	/* read authorization from XAUTHORITY file */
++	char *xauth = getenv("XAUTHORITY");
++	if (!xauth || !xauth[0]) {
++		logStream << APPNAME << ": XAUTHORITY not defined in environment" << std::endl;
++		exit(OPENFAILED_DISPLAY);
++	}
++	FILE *authf = fopen(xauth,"r");
++	if (!authf) {
++		logStream << APPNAME << ": " << strerror(errno) << endl;
++		exit(OPENFAILED_DISPLAY);
++	}
++	/* XDM only fills out one entry */
++	Xauth *auth_in = XauReadAuth(authf);
++	if (!auth_in) {
++		logStream << APPNAME << ": no authority in file " << xauth << endl;
++		fclose(authf);
++		exit(OPENFAILED_DISPLAY);
++	}
++	char buf[256];
++	for (int i=0;i<auth_in->data_length&&i<128;i++) {
++		char c1, c2;
++		c1 = c2 = auth_in->data[i];
++		c1 >>= 4;
++		c1 &= 0x0f;
++		c2 &= 0x0f;
++		c1 = (c1 < 10) ? ('0' + c1) : ('a' + (c1 - 10));
++		c2 = (c2 < 10) ? ('0' + c2) : ('a' + (c2 - 10));
++		buf[(i<<1)+0] = c1;
++		buf[(i<<1)+1] = c2;
++		buf[(i<<1)+2] = 0;
++	}
++	mcookie = buf;
++	XauDisposeAuth(auth_in);
++	fclose(authf);
++}
+Only in slim-1.3.5: .app.cpp.swo
 diff -pur slim-1.3.5.orig/app.h slim-1.3.5/app.h
 --- slim-1.3.5.orig/app.h	2012-12-31 06:03:42.000000000 -0700
-+++ slim-1.3.5/app.h	2013-02-26 18:34:43.000000000 -0700
-@@ -104,6 +104,7 @@ private:
++++ slim-1.3.5/app.h	2013-03-02 02:01:49.000000000 -0700
+@@ -13,6 +13,7 @@
+ #define _APP_H_
+ 
+ #include <X11/Xlib.h>
++#include <X11/Xauth.h>
+ #include <signal.h>
+ #include <unistd.h>
+ #include <sys/wait.h>
+@@ -61,6 +62,7 @@ private:
+ 	void CreateServerAuth();
+ 	char *StrConcat(const char *str1, const char *str2);
+ 	void UpdatePid();
++	void ReadServerAuth();
+ 
+ 	bool AuthenticateUser(bool focuspass);
+ 
+@@ -80,7 +82,8 @@ private:
+ 	int Scr;
+ 	Panel *LoginPanel;
+ 	int ServerPID;
+-	const char *DisplayName;
++	std::string displayName;
++	std::string screenName;
+ 	bool serverStarted;
+ 
+ #ifdef USE_PAM
+@@ -104,6 +107,7 @@ private:
  	bool firstlogin;
  	bool daemonmode;
  	bool force_nodaemon;
@@ -154,8 +314,44 @@ diff -pur slim-1.3.5.orig/app.h slim-1.3.5/app.h
  	/* For testing themes */
  	char *testtheme;
  	bool testing;
+diff -pur slim-1.3.5.orig/CMakeLists.txt slim-1.3.5/CMakeLists.txt
+--- slim-1.3.5.orig/CMakeLists.txt	2012-12-31 06:03:42.000000000 -0700
++++ slim-1.3.5/CMakeLists.txt	2013-03-01 23:31:54.000000000 -0700
+@@ -158,6 +158,7 @@ target_link_libraries(${PROJECT_NAME}
+ 	${X11_Xft_LIB}
+ 	${X11_Xrender_LIB}
+ 	${X11_Xmu_LIB}
++	${X11_Xau_LIB}
+ 	${FREETYPE_LIBRARY}
+ 	${JPEG_LIBRARIES}
+ 	${PNG_LIBRARIES}
+diff -pur slim-1.3.5.orig/const.h slim-1.3.5/const.h
+--- slim-1.3.5.orig/const.h	2012-12-31 06:03:42.000000000 -0700
++++ slim-1.3.5/const.h	2013-02-28 07:49:06.000000000 -0700
+@@ -13,7 +13,8 @@
+ #define _CONST_H_
+ 
+ #define APPNAME	"slim"
+-#define DISPLAY	":0.0"
++#define DISPLAY	":0"
++#define SCREEN	".0"
+ 
+ #define CONSOLE_STR	 "console"
+ #define HALT_STR		"halt"
+@@ -30,6 +31,12 @@
+ #define OK_EXIT	 0
+ #define ERR_EXIT	1
+ 
++#define OBEYSESS_DISPLAY    0
++#define REMANAGE_DISPLAY    1
++#define UNMANAGE_DISPLAY    2
++#define RESERVER_DISPLAY    3
++#define OPENFAILED_DISPLAY  4
++
+ /* duration for showing error messages,
+  * as "login command failed", in seconds 
+  */
 Only in slim-1.3.5: .image.cpp.swp
-Only in slim-1.3.5: .log.cpp.swp
 diff -pur slim-1.3.5.orig/log.h slim-1.3.5/log.h
 --- slim-1.3.5.orig/log.h	2012-12-31 06:03:42.000000000 -0700
 +++ slim-1.3.5/log.h	2013-02-27 02:13:47.000000000 -0700
@@ -200,5 +396,15 @@ diff -pur slim-1.3.5.orig/log.h slim-1.3.5/log.h
  		return *this;
  	}
  } logStream;
-Only in slim-1.3.5: .panel.cpp.swp
-Only in slim-1.3.5: .switchuser.cpp.swp
+diff -pur slim-1.3.5.orig/switchuser.cpp slim-1.3.5/switchuser.cpp
+--- slim-1.3.5.orig/switchuser.cpp	2012-12-31 06:03:42.000000000 -0700
++++ slim-1.3.5/switchuser.cpp	2013-02-28 09:22:15.000000000 -0700
+@@ -54,7 +54,6 @@ void SwitchUser::SetClientAuth(const cha
+ 	bool r;
+ 	string home = string(Pw->pw_dir);
+ 	string authfile = home + "/.Xauthority";
+-	remove(authfile.c_str());
+-	r = Util::add_mcookie(mcookie, ":0", cfg->getOption("xauth_path"),
++	r = Util::add_mcookie(mcookie, displayName.c_str(), cfg->getOption("xauth_path"),
+ 	  authfile);
+ }
