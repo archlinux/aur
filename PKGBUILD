@@ -7,28 +7,28 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.52.0
+pkgver=1.53.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 url="http://www.boost.org/"
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('icu>=51.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
-       boost-1.52.0-python3.patch)
-sha1sums=('1120430030315b0a94b6d63fc04662960db2444c'
+        boost-1.53.0-python3.patch)
+sha1sums=('0e4ef26cc7780c6bbc63987ef2f29be920e2395b'
           '34026072a7cb2534164f20e77bb71a5c75093307')
 
 _stagedir="${srcdir}/stagedir"
 
 build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
-    
+
    cd "${srcdir}/${pkgbase}_${_boostver}"
 
    # Fix build errors with python 3
    sed -i "/PYTHON_ROOT/s/print sys.prefix/print(sys.prefix)/g" bootstrap.sh
-   patch -Np1 -i ../boost-1.52.0-python3.patch
+   patch -Np1 -i ../boost-1.53.0-python3.patch
 
    # Shut up strict aliasing warnings
    echo "using gcc : : : <compileflags>-fno-strict-aliasing ;" >> ./tools/build/v2/user-config.jam
@@ -52,7 +52,7 @@ build() {
    "${_stagedir}"/bin/bjam --toolset=gcc cflags="-std=gnu++11" library_status
    popd
    cp -a dist/bin/* "${_stagedir}"/bin
-   
+
    #boostbook is needed by quickbook
    install -d -m 755 "${_stagedir}"/share/boostbook
    cp -a tools/boostbook/{xsl,dtd} "${_stagedir}"/share/boostbook/
