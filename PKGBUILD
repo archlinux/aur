@@ -2,7 +2,7 @@
 
 pkgname=perl-ev-glib
 pkgver='2.01'
-pkgrel=2
+pkgrel=3
 pkgdesc="Embed the glib main loop into EV"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?EV::Glib'
@@ -10,6 +10,7 @@ license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/EV-Glib-${pkgver}.tar.gz")
 depends=('glib-perl' 'perl-ev')
+makedepends=('perl-extutils-pkgconfig')
 md5sums=('20c0196095062a5e0f27a455ac32d8f5')
 
 build() {
