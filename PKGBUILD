@@ -2,7 +2,7 @@
 _author=TOMHRR
 _perlmod=Net-IP-XS
 pkgname=perl-net-ip-xs
-pkgver=0.09
+pkgver=0.10
 pkgrel=1
 pkgdesc="XS implementation of Net::IP"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-tie-simple' 'perl-math-bigint' 'perl-ip-country' 'perl-io-capture')
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('39e690dbefd0da0cc8c914bd253de751')
+md5sums=('7b230a230f82bde8a2b9030f82a02a8e')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"

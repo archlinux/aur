@@ -1,8 +1,8 @@
 pkgbase = perl-net-ip-xs
 	pkgdesc = XS implementation of Net::IP
-	pkgver = 0.09
+	pkgver = 0.10
 	pkgrel = 1
-	url = http://search.cpan.org/~TOMHRR/Net-IP-XS-0.09/
+	url = http://search.cpan.org/~TOMHRR/Net-IP-XS-0.10/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -13,8 +13,8 @@ pkgbase = perl-net-ip-xs
 	depends = perl-ip-country
 	depends = perl-io-capture
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/T/TO/TOMHRR/Net-IP-XS-0.09.tar.gz
-	md5sums = 39e690dbefd0da0cc8c914bd253de751
+	source = http://cpan.perl.org/modules/by-authors/id/T/TO/TOMHRR/Net-IP-XS-0.10.tar.gz
+	md5sums = 7b230a230f82bde8a2b9030f82a02a8e
 
 pkgname = perl-net-ip-xs
 
