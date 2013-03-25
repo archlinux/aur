@@ -1,46 +1,53 @@
-# $Id: PKGBUILD 102844 2013-12-22 01:57:44Z bgyorgy $
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
-
+#Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=lxpolkit-git
-pkgver=0.1.0.r34.g55fc5d4
-pkgrel=2
-epoch=1
-pkgdesc="Simple polkit authentication agent for LXDE"
+pkgver=20130324
+pkgrel=1
+pkgdesc='A simple PolicyKit authentication agent for LXDE'
 arch=('i686' 'x86_64')
 url="http://blog.lxde.org/?p=674"
 license=('GPL')
 groups=('lxde')
-depends=('gtk2' 'polkit')
 provides=('lxpolkit')
 conflicts=('lxpolkit')
+depends=('gtk2>=2.12.0' 'polkit')
 makedepends=('git' 'intltool')
-source=("$pkgname::git://lxde.git.sourceforge.net/gitroot/lxde/lxpolkit")
-md5sums=('SKIP')
+source=('automake-1.12.patch'
+	'autogen.patch')
+md5sums=('c8855c4c750e8b60a9870fa3ef23fd29'
+         'eb74ca8c5346f28fc7978638fabccb50')
 
-pkgver() {
-  cd $pkgname
-  git describe --tags --long| sed -r 's,([^-]*)-g,r\1-g,;s,-,.,g'
-}
-
-prepare() {
-  cd $pkgname
-  # Don't conflict with MATE and Razor-qt (they have their own polkit agents)
-  sed -i '/^NotShowIn/ s/GNOME;KDE;/GNOME;KDE;MATE;Razor;/' data/lxpolkit.desktop.in.in
-  sed -e '/AM_INIT_AUTOMAKE/s,-Werror,,' -i configure.ac
-  sed -e '/AM_INSTALLED_VERSION/s,1.11,1.14,' -i autogen.sh
-}
+_gitroot="git://lxde.git.sourceforge.net/gitroot/lxde/lxpolkit"
+_gitname="lxpolkit"
 
 build() {
-  cd $pkgname
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [ -d "$_gitname" ] ; then
+    cd "$_gitname"
+    git checkout -- configure.ac
+    git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot"
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting make..."
+
+  cd "${srcdir}/${_gitname}"
+  
+  patch -p1 < ${srcdir}/automake-1.12.patch
+  patch -p1 < ${srcdir}/autogen.patch
+
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/lxpolkit
+  #aclocal
+  #automake
+  #autoconf
+  ./configure --prefix="/usr" --sysconfdir="/etc"
   make
 }
-
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${_gitname}"
+  make DESTDIR=${pkgdir} install
 }
-
-# vim:set ts=2 sw=2 et:

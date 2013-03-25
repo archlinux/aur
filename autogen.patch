@@ -1,0 +1,12 @@
+diff -uNr lxpolkit/autogen.sh lxpolkit-patch/autogen.sh
+--- lxpolkit/autogen.sh	2012-11-01 23:46:27.925570540 +0100
++++ lxpolkit-patch/autogen.sh	2012-11-01 23:48:44.193692981 +0100
+@@ -4,7 +4,7 @@
+ AUTOMAKE=${AUTOMAKE:-automake}
+ AM_INSTALLED_VERSION=$($AUTOMAKE --version | sed -e '2,$ d' -e 's/.* \([0-9]*\.[0-9]*\).*/\1/')
+ 
+-if [ "$AM_INSTALLED_VERSION" != "1.10" \
++if [ "$AM_INSTALLED_VERSION" != "1.13" \
+     -a "$AM_INSTALLED_VERSION" != "1.11" ];then
+ 	echo
+ 	echo "You must have automake > 1.10 or 1.11 installed to compile this program."

@@ -1,0 +1,14 @@
+diff --git a/configure.ac b/configure.ac
+index e08aa34..b027674 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,7 +5,8 @@ prog_name = lxpolkit
+ 
+ AC_PREREQ([2.63])
+ AC_INIT([lxpolkit], [0.1.0], [http://lxde.org/])
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
++#AM_INIT_AUTOMAKE([-Wall -Werror foreign])
++AM_INIT_AUTOMAKE([-Wall foreign])
+ 
+ AC_CONFIG_HEADERS([config.h])
+ 
