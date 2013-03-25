@@ -1,7 +1,7 @@
 pkgbase = rp-pppoe-gui
 	pkgdesc = GUI from/for Roaring Penguin's Point-to-Point Protocol over Ethernet client
 	pkgver = 3.11
-	pkgrel = 3
+	pkgrel = 2
 	url = http://www.roaringpenguin.com/pppoe/
 	arch = i686
 	arch = x86_64
