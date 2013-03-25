@@ -5,13 +5,13 @@
 
 pkgname=chromium
 pkgver=25.0.1364.172
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libgcrypt' 'ttf-font' 'udev' 'dbus' 'harfbuzz' 'desktop-file-utils'
+         'libgcrypt' 'ttf-font' 'udev' 'dbus' 'pciutils' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
              'elfutils' 'subversion' 'nacl-toolchain-newlib')
@@ -92,6 +92,8 @@ build() {
     -Dgoogle_default_client_id=$_google_default_client_id \
     -Dgoogle_default_client_secret=$_google_default_client_secret \
     -Dwerror= \
+    -Dlinux_link_gsettings=1 \
+    -Dlinux_link_libpci=1 \
     -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox \
     -Dlinux_strip_binary=1 \
     -Dlinux_use_gold_binary=0 \
@@ -101,7 +103,6 @@ build() {
     -Dproprietary_codecs=1 \
     -Duse_system_bzip2=1 \
     -Duse_system_ffmpeg=0 \
-    -Duse_system_harfbuzz=1 \
     -Duse_system_libevent=1 \
     -Duse_system_libjpeg=1 \
     -Duse_system_libpng=1 \
