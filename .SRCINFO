@@ -1,12 +1,12 @@
 pkgbase = cacti-spine
 	pkgdesc = Faster poller for Cacti.
 	pkgver = 0.8.8_a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cacti.net/spine_info.php
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libmysqlclient
+	depends = libmariadbclient
 	depends = net-snmp
 	depends = cacti=0.8.8_a
 	backup = etc/spine.conf
