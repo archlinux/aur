@@ -1,0 +1,74 @@
+diff -pur wmmixer-1.5.orig/exception.h wmmixer-1.5/exception.h
+--- wmmixer-1.5.orig/exception.h	2002-06-25 13:22:20.000000000 -0600
++++ wmmixer-1.5/exception.h	2013-03-26 03:39:29.000000000 -0600
+@@ -37,4 +37,4 @@ class MixerDeviceException : public Exce
+   //  virtual ~MixerDeviceException();
+ };
+ 
+-#endif _exception_h__
++#endif // _exception_h__
+diff -pur wmmixer-1.5.orig/mixctl.cc wmmixer-1.5/mixctl.cc
+--- wmmixer-1.5.orig/mixctl.cc	2002-06-25 13:44:55.000000000 -0600
++++ wmmixer-1.5/mixctl.cc	2013-03-26 03:40:28.000000000 -0600
+@@ -243,16 +243,16 @@ char* MixCtl::getLabel(int dev)
+ //----------------------------------------------------------------------
+ bool MixCtl::hasChanged()
+ {
+-  struct mixer_info mixer_info;
+-  ioctl(mixfd, SOUND_MIXER_INFO, &mixer_info);
++  struct mixer_info mixer_info1;
++  ioctl(mixfd, SOUND_MIXER_INFO, &mixer_info1);
+      
+-  if (mixer_info.modify_counter == modify_counter)
++  if (mixer_info1.modify_counter == modify_counter)
+     {
+       return false;
+     }
+   else 
+     {
+-      modify_counter = mixer_info.modify_counter;
++      modify_counter = mixer_info1.modify_counter;
+       return true;
+     }
+ }
+diff -pur wmmixer-1.5.orig/mixctl.h wmmixer-1.5/mixctl.h
+--- wmmixer-1.5.orig/mixctl.h	2002-06-25 14:13:30.000000000 -0600
++++ wmmixer-1.5/mixctl.h	2013-03-26 03:41:23.000000000 -0600
+@@ -23,8 +23,8 @@
+ #ifdef __NetBSD__
+ #include <soundcard.h>
+ #endif
+-#ifdef __FreeBSD__
+-#include <machine/soundcard.h>
++#if defined (__FreeBSD__) || defined(__FreeBSD_kernel__)
++#include <sys/soundcard.h>
+ #endif
+ #ifdef __linux__
+ #include <linux/soundcard.h>
+diff -pur wmmixer-1.5.orig/README wmmixer-1.5/README
+--- wmmixer-1.5.orig/README	2002-06-25 14:20:09.000000000 -0600
++++ wmmixer-1.5/README	2013-03-26 03:41:47.000000000 -0600
+@@ -82,10 +82,10 @@ The effect this has is to enable shape s
+ to reduce the size of the window to 56x56 pixels.
+ The "-position position" option has also been added, so you can push
+ wmcdplay off the edge of the screen while it gets swallowed.
+-To put wmmount in your Wharf, add the following line in the appropriate
++To put wmmixer in your Wharf, add the following line in the appropriate
+ part of your .steprc
+ 
+-*Wharf wmmixer nil MaxSwallow "wmmount" wmmixer -a -g -0-0 &
++*Wharf wmmixer nil MaxSwallow "wmmixer" wmmixer -a -g -0-0 &
+ 
+ It is also possible (by editing and recompiling the afterstep sources),
+ to make Wharf handle the new 56x56 pixel window properly - yes, I add
+diff -pur wmmixer-1.5.orig/xhandler.cc wmmixer-1.5/xhandler.cc
+--- wmmixer-1.5.orig/xhandler.cc	2002-06-25 14:13:40.000000000 -0600
++++ wmmixer-1.5/xhandler.cc	2013-03-26 03:39:02.000000000 -0600
+@@ -24,6 +24,7 @@ XHandler::XHandler()
+   strcpy(backcolor_name_, BACKCOLOR);
+ 
+   button_state_ = 0;
++  icon_list_ = NULL;
+ }
+ 
+ //--------------------------------------------------------------------
