@@ -14,8 +14,8 @@ depends=('atk' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'sqlite' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 if [[ -d "$startdir/$_pkgname/.svn" ]]; then
-  source=("$_pkgname::svn+$_svntrunk")
-  md5sums=("SKIP")
+  source+=("$_pkgname"::svn+"$_svntrunk")
+  md5sums+=("SKIP")
 fi
 
 pkgver() {
@@ -31,14 +31,14 @@ prepare() {
 
   if [[ ! -d "$_pkgname/.svn" ]]; then
 #   if this is the first run, checkout only what we need from the repo
-    msg2 "$(gettext "Cloning %s %s repo...")" "$_pkgname" "svn"
+    msg2 "Cloning $_pkgname svn repo..."
     svn co --depth immediates --config-dir "$_pkgname" -r "$pkgver" "$_svntrunk" "$_pkgname"
     cd "$_pkgname"
     svn up --set-depth infinity -r "$pkgver" Source
     svn up --set-depth infinity -r "$pkgver" Tools
 
 #   and create a working copy
-    msg2 "$(gettext "Creating working copy of %s %s repo...")" "$_pkgname" "svn"
+    msg2 "Creating working copy of $_pkgname svn repo..."
     rm -rf "$srcdir/$_pkgname"
     svn export "$startdir/$_pkgname" "$srcdir/$_pkgname"
   fi
