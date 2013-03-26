@@ -2,8 +2,8 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=ewebkit-svn
-pkgver=143884
-pkgrel=1
+pkgver=146904
+pkgrel=2
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
@@ -11,7 +11,6 @@ license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'sqlite' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
-source=("ecore-headers.patch")
 md5sums=("bba54046ca64ac77344e30a4add78e0d")
 
 _svntrunk=https://svn.webkit.org/repository/webkit/trunk
@@ -29,7 +28,6 @@ build() {
     cd "$_svnmod"
     svn up --set-depth infinity Source -r "$pkgver"
     svn up --set-depth infinity Tools -r "$pkgver"
-    svn up --set-depth infinity WebKit.xcworkspace -r "$pkgver"
   fi
 
   msg "SVN checkout done or server timeout"
@@ -39,9 +37,8 @@ build() {
   svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
   cd "$srcdir/$_svnmod-build"
 
-  patch -Np0 < ../ecore-headers.patch
-
-  cmake . -DPORT=Efl \
+  cmake . \
+	-DPORT=Efl \
 	-DPYTHON_EXECUTABLE=/usr/bin/python2 \
 	-DSHARED_CORE=OFF \
 	-DCMAKE_BUILD_TYPE=Release \
@@ -54,6 +51,7 @@ build() {
 
 package() {
   cd "$srcdir/$_svnmod-build"
+
   make DESTDIR="$pkgdir" install
 
 # install license files
