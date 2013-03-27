@@ -1,14 +1,14 @@
-# Contributor: MutantMonkey <mutantmonkey@gmail.com>
+# Contributor: mutantmonkey <aur@mutantmonkey.in>
 pkgname=crunchyfrog-hg
-pkgver=699
-pkgrel=1
+pkgver=722
+pkgrel=2
 pkgdesc="SQL editor and database schema browser for the GNOME desktop, latest development version"
 url='http://code.google.com/p/crunchyfrog'
 arch=('any')
 license=('GPL3')
-depends=('python2' 'python-configobj' 'pygtk' 'pygtksourceview2' 'pycairo' \
-         'pyxdg' 'gnome-python' 'gnome-python-desktop' \
-		 'python-sphinx')
+depends=('python' 'python2-configobj' 'pygtk' 'pygtksourceview2' 'pycairo'
+         'pyxdg' 'gnome-python' 'gnome-python-desktop'
+         'python-sphinx' 'python-sqlparse')
 optdepends=('mysql-python:  To handle MySQL Databases',
             'python-psycopg2:   To handle PostgreSQL Databases',
             'python-pysqlite:   To handle SQLite Databases',
@@ -30,10 +30,18 @@ _hgroot="https://crunchyfrog.googlecode.com/hg"
 _hgrepo="crunchyfrog"
 
 build() {
-    cd ${srcdir}/${_hgrepo}
-
-	# remove all language files except English since the language is wrong otherwise
-	rm -r po/{cs,da,de,el,es,fi,fr,he,id,it,ja,nl,ru,sv,tr}
-
-	python setup.py install --root=${pkgdir}/ --optimize=1 || return 1
+  cd ${srcdir}/${_hgrepo}
+  # python2 fix
+  for file in $(find . -name '*.py' -print); do
+    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
+    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
+  done
+  make PYTHON=/usr/bin/python2
 }
+
+package() {
+  cd ${srcdir}/${_hgrepo}
+  make install PYTHON=/usr/bin/python2 DESTDIR=${pkgdir}/ 
+}
+
+# vim:set ts=2 sw=2 et:
