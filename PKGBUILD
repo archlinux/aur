@@ -1,12 +1,12 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
+# Contributor: Jeremy <reebydobalina@yahoo.ca>
 
 pkgname=ruby-cairo
 pkgver=1.12.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64' 'i686')
-# http://cairographics.org/releases/
 url='http://cairographics.org/rcairo/'
 license=('GPL')
 depends=('ruby' 'cairo')
@@ -25,6 +25,8 @@ package() {
   cd "$srcdir/rcairo-$pkgver"
 
   make DESTDIR="$pkgdir" install
+  install -Dm644 ext/cairo/cairo.so \
+    "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$arch-linux/cairo.so"
 }
 
 # vim:set ts=2 sw=2 et:
