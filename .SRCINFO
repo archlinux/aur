@@ -1,7 +1,7 @@
 pkgbase = wmblob
 	pkgdesc = wmblob shows some blobs moving around
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dockapps.windowmaker.org/file.php/id/155
 	arch = i686
 	arch = x86_64

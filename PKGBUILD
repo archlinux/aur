@@ -1,9 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Mario Blättermann <mariobl@gnome.org>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=wmblob
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="wmblob shows some blobs moving around"
 arch=('i686' 'x86_64')
 url="http://dockapps.windowmaker.org/file.php/id/155"
@@ -26,6 +26,7 @@ md5sums=('5821d20d4e4b86f8ff996320ece2424b')
 build() {
   cd $startdir/src/$pkgname-$pkgver
   ./configure --prefix=/usr \
+              --mandir=/usr/share/man \
               --x-includes=/usr/include/X11 \
               --x-libraries=/usr/lib/X11
   make
