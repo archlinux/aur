@@ -1,15 +1,15 @@
 pkgbase = google-appengine-java
 	pkgdesc = Google App Engine SDK for Java.
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = http://code.google.com/appengine/
 	arch = i686
 	arch = x86_64
 	license = ('Apache 2')
 	options = !strip
-	source = http://googleappengine.googlecode.com/files/appengine-java-sdk-1.7.5.zip
+	source = http://googleappengine.googlecode.com/files/appengine-java-sdk-1.7.6.zip
 	source = profile.appengine-java-sdk
-	sha1sums = 2475c8a50cbe1289e60441f6f011626b9fdc06d0
+	sha1sums = 5521e507ea90371b8f9eb842b5ec45d9bf2f7dc5
 	sha1sums = 9d6e6c6bd7f3ec53dc08cdfacaac931cfa1cf2f3
 
 pkgname = google-appengine-java
