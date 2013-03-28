@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  cd "$startdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
   ./autogen.sh --prefix=/usr
 
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "$startdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
 }
