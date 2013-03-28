@@ -2,31 +2,23 @@
 # Maintainer: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-pkgver=0.3.1
-pkgrel=5
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
 url="http://www.openchrome.org"
-depends=('libdrm' 'libxvmc')
+depends=('libdrm' 'libxvmc' 'systemd')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=14' 'resourceproto' 'scrnsaverproto')
 conflicts=('xorg-server<1.14.0' 'X-ABI-VIDEODRV_VERSION<14' 'X-ABI-VIDEODRV_VERSION>=15' 'xf86-video-via' 'xf86-video-unichrome' 'openchrome' 'unichrome-dri')
 replaces=('openchrome' 'xf86-video-via')
 groups=('xorg-drivers' 'xorg')
 options=('!libtool' '!emptydirs' '!makeflags')
-source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2
-        fix_system_lock.diff
-        no-mibstore.patch)
-sha1sums=('89e56dcfe851345f72c61a95b4fa5ab6ad7e0d83'
-          '539ba65df1755af97799f49410e4091b8d222eca'
-          'af0d7cace699b105e4405e48abc2f433032a7483')
+source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('e5be9a8200410b3e3e66349bab4c8acd1ead4402')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # https://bugs.freedesktop.org/show_bug.cgi?id=53307
-  patch -Np1 -i ${srcdir}/fix_system_lock.diff
-  # https://bugs.freedesktop.org/show_bug.cgi?id=62112
-  patch -Np1 -i ../no-mibstore.patch
   ./configure --prefix=/usr
   make
 }
