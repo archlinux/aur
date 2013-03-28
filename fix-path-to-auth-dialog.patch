@@ -1,0 +1,26 @@
+From a2f52d4455bd81732b6b3c16bdab206c56818c07 Mon Sep 17 00:00:00 2001
+From: Clemens Buchacher <drizzd@aon.at>
+Date: Sun, 1 Jul 2012 18:35:50 +0200
+Subject: [PATCH] fix path to auth-dialog
+
+
+Signed-off-by: Clemens Buchacher <drizzd@aon.at>
+---
+ nm-pptp-service.name.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nm-pptp-service.name.in b/nm-pptp-service.name.in
+index 9ee79b8..ea5f0e5 100644
+--- a/nm-pptp-service.name.in
++++ b/nm-pptp-service.name.in
+@@ -4,6 +4,6 @@ service=org.freedesktop.NetworkManager.pptp
+ program=@LIBEXECDIR@/nm-pptp-service
+ 
+ [GNOME]
+-auth-dialog=nm-pptp-auth-dialog
++auth-dialog=@LIBEXECDIR@/nm-pptp-auth-dialog
+ properties=libnm-pptp-properties
+ supports-external-ui-mode=true
+-- 
+1.7.11.1
+
