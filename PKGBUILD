@@ -1,23 +1,22 @@
-# $Id: PKGBUILD 194797 2013-09-23 17:23:43Z heftig $
+# $Id: PKGBUILD 166520 2012-09-09 15:41:00Z heftig $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn-gtk2
-_pkgname=networkmanager-openvpn
-pkgver=0.9.8.4
+pkgver=0.9.6.0
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=("networkmanager>=${pkgver::5}" 'openvpn' 'gtk2' 'libgnome-keyring')
+depends=("networkmanager>=${pkgver}" 'openvpn' 'gtk2' 'libgnome-keyring')
 makedepends=('intltool')
 optdepends=('network-manager-applet: GNOME frontends to NetWorkmanager')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=('networkmanager-openvpn')
+conflicts=('networkmanager-openvpn')
 install=networkmanager-openvpn.install
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.9/NetworkManager-openvpn-${pkgver}.tar.xz)
-sha256sums=('af8c52b6a61af3c178eed1ea8f1d4704bea87331fde43deb3d4aafe1821e6687')
+sha256sums=('8fb88705793399574b3de2af93f87b63c0eae342d549a1c79bc59f6a1fad87a3')
 
 build() {
   cd NetworkManager-openvpn-${pkgver}
