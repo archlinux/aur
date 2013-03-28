@@ -1,5 +1,5 @@
 pkgbase = eweather-svn
-	pkgdesc = Enlightenment e17 module: Eweather
+	pkgdesc = Enlightenment module: Current weather and forcast gadget
 	pkgver = 82790
 	pkgrel = 1
 	url = http://www.enlightenment.org
@@ -9,7 +9,10 @@ pkgbase = eweather-svn
 	makedepends = subversion
 	depends = libeweather-svn
 	depends = enlightenment17
+	conflicts = e-modules-extra
 	options = !libtool
+	source = eweather::svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/eweather
+	md5sums = SKIP
 
 pkgname = eweather-svn
 
