@@ -4,15 +4,15 @@
 # Contributor: Thomas Weißschuh <thomas_weissschuh lavabit.com>
 
 pkgname=mosh
-pkgver=1.2.3
-pkgrel=5
+pkgver=1.2.4
+pkgrel=1
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url='http://mosh.mit.edu/'
 license=('GPL3')
 depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
-source=("https://github.com/downloads/keithw/mosh/$pkgname-$pkgver.tar.gz")
-sha256sums=('93f09fda77e57f05485a61f3ac679bf9f3f359a9b0b93c216ddd53cd124a768f')
+source=("http://$pkgname.mit.edu/$pkgname-$pkgver.tar.gz")
+sha256sums=('e74d0d323226046e402dd469a176075fc2013b69b0e67cea49762c957175df46')
 optdepends=('ufw-extras')
 options=('!emptydirs')
 
