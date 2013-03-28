@@ -1,5 +1,5 @@
 pkgbase = libeweather-svn
-	pkgdesc = E17 Weather library
+	pkgdesc = EFL based library for weather information
 	pkgver = 79483
 	pkgrel = 1
 	url = http://www.enlightenment.org
@@ -9,6 +9,8 @@ pkgbase = libeweather-svn
 	makedepends = subversion
 	depends = edje
 	options = !libtool
+	source = libeweather::svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/libeweather
+	md5sums = SKIP
 
 pkgname = libeweather-svn
 
