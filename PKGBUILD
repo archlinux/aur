@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 179005 2013-03-01 10:26:55Z andrea $
+# $Id: PKGBUILD 180898 2013-03-27 20:10:16Z guillaume $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
@@ -6,15 +6,15 @@
 _pkgname=vlc
 pkgname=vlc-decklink
 pkgver=2.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy'
-         'sdl_image' 'libdvdnav' 'libtiger' 'lua51' 'libmatroska'
-         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
-         'libshout' 'libmad' 'libmpeg2' 'libmodplug' 'libass'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy' 
+         'sdl_image' 'libdvdnav' 'libtiger' 'lua51' 'libmatroska' 
+         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 
+         'libshout' 'libmad' 'libmpeg2' 'libmodplug' 'libass' 
          'xcb-util-keysyms')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'fluidsynth' 'libdc1394' 'libavc1394' 'lirc-utils'
@@ -93,7 +93,8 @@ build() {
               --enable-sftp \
               --enable-decklink \
               --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk" \
-              LUAC=luac5.1
+              LUAC=luac5.1 \
+              RCC=/usr/bin/rcc-qt4
 
   make
 }
