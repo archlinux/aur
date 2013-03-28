@@ -4,7 +4,7 @@
 
 pkgname=ruby-cairo
 pkgver=1.12.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64' 'i686')
 url='http://cairographics.org/rcairo/'
@@ -26,7 +26,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
   install -Dm644 ext/cairo/cairo.so \
-    "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$arch-linux/cairo.so"
+    "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$CARCH-linux/cairo.so"
 }
 
 # vim:set ts=2 sw=2 et:
