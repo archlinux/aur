@@ -7,14 +7,14 @@
 pkgbase=ruby-gtk3
 pkgname=('ruby-gtk3' 'ruby-gdk3')
 depends=('ruby-atk' 'ruby-gdkpixbuf2' 'ruby-glib2' 'ruby-pango')
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 arch=('x86_64' 'i686')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL')
 makedepends=('ruby-pkgconfig' 'ruby-cairo' 'gtk3')
 source=("http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk3-$pkgver.tar.gz")
-sha256sums=('1dd73c4aa184199f373edad589b715b68da8eb43ae6bdae360e0aa62189a681d')
+sha256sums=('ecd3fde8e56442944a2b692c773081c553d48b621bb53c49b40b7575216f6c6a')
 
 build() {
 	cd "$srcdir/ruby-gtk3-$pkgver"
@@ -29,6 +29,7 @@ package_ruby-gtk3() {
            "ruby-gdkpixbuf2=$pkgver" "ruby-gdk3=$pkgver")
 
 	cd "$srcdir/ruby-gtk3-$pkgver/gtk3"
+  mkdir -p "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$CARCH-linux"
 	make DESTDIR="$pkgdir/" install
 }
 
@@ -37,7 +38,7 @@ package_ruby-gdk3() {
   depends=('ruby' 'gtk3')
 
 	cd "$srcdir/ruby-gtk3-$pkgver/gdk3"
-  [ $CARCH == 'i686' ] && mkdir -p /usr/lib/ruby/vendor_ruby/2.0.0/i686-linux
+  mkdir -p "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$CARCH-linux"
 	make DESTDIR="$pkgdir/" install
 }
 
