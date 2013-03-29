@@ -9,7 +9,7 @@ pkgbase = libeweather-svn
 	makedepends = subversion
 	depends = edje
 	options = !libtool
-	source = libeweather::svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/libeweather
+	source = svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/libeweather
 	md5sums = SKIP
 
 pkgname = libeweather-svn

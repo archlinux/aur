@@ -12,13 +12,11 @@ license=('LGPL2.1')
 depends=('edje')
 makedepends=('subversion')
 options=('!libtool')
-source=("$_pkgname::svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/$_pkgname")
+source=("svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$startdir/$_pkgname"
-
-  svnversion .
+  svnversion "$SRCDEST/$_pkgname"
 }
 
 build() {
