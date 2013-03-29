@@ -24,6 +24,7 @@ build() {
   sed -i 's/ccache //g' Makefile
   sed -i 's/-lprofiler//g' Makefile
   sed -i 's/\.io_service/\.get_io_service/g' src/server.cpp
+  sed -i 's/\%lu\\n/\%zu\\n/g' src/server.cpp
   sed -i 's/-lboost_regex-mt/-lboost_regex/g' Makefile
   sed -i 's/-lboost_system-mt/-lboost_system/g' Makefile
   sed -i 's/-lboost_thread-mt/-lboost_thread/g' Makefile
