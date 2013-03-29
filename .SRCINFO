@@ -11,7 +11,7 @@ pkgbase = eweather-svn
 	depends = enlightenment17
 	conflicts = e-modules-extra
 	options = !libtool
-	source = eweather::svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/eweather
+	source = svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/eweather
 	md5sums = SKIP
 
 pkgname = eweather-svn

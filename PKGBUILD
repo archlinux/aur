@@ -13,13 +13,11 @@ depends=('libeweather-svn' 'enlightenment17')
 makedepends=('subversion')
 conflicts=('e-modules-extra')
 options=('!libtool')
-source=("$_pkgname::svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/$_pkgname")
+source=("svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$startdir/$_pkgname"
-
-  svnversion .
+  svnversion "$SRCDEST/$_pkgname"
 }
 
 build() {
