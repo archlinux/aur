@@ -1,6 +1,6 @@
 pkgbase = networkmanager-openconnect-gtk2
 	pkgdesc = NetworkManager VPN integration for openconnect
-	pkgver = 0.9.6.2
+	pkgver = 0.9.8.0
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager-openconnect.install
@@ -8,16 +8,16 @@ pkgbase = networkmanager-openconnect-gtk2
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	depends = networkmanager>=0.9.6
+	depends = networkmanager>=0.9.8
 	depends = openconnect
-	depends = gtk2
+	depends = gconf
 	depends = libgnome-keyring
 	optdepends = network-manager-applet: GNOME frontends to NetWorkmanager
 	provides = networkmanager-openconnect
 	conflicts = networkmanager-openconnect
 	options = !libtool
-	source = http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openconnect/0.9/NetworkManager-openconnect-0.9.6.2.tar.xz
-	sha256sums = 3f53d87dbeb00fc841ef5981e6f1a1a192c65d273386246d48245cca84fa41b0
+	source = http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openconnect/0.9/NetworkManager-openconnect-0.9.8.0.tar.xz
+	sha256sums = c12487f57ad2f2386db4b103397e3cb66bf34ba589c5f48c3c5ec0b5547e4d9b
 
 pkgname = networkmanager-openconnect-gtk2
 

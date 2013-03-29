@@ -1,22 +1,23 @@
-# $Id: PKGBUILD 166519 2012-09-09 15:40:55Z heftig $
+# $Id: PKGBUILD 179569 2013-03-07 11:54:27Z foutrelis $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openconnect-gtk2
-pkgver=0.9.6.2
+_pkgname=networkmanager-openconnect
+pkgver=0.9.8.0
 pkgrel=1
 pkgdesc="NetworkManager VPN integration for openconnect"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=("networkmanager>=${pkgver::5}" 'openconnect' 'gtk2' 'libgnome-keyring')
+depends=("networkmanager>=${pkgver::5}" 'openconnect' 'gconf' 'libgnome-keyring')
 makedepends=('intltool')
 optdepends=('network-manager-applet: GNOME frontends to NetWorkmanager')
 provides=('networkmanager-openconnect')
 conflicts=('networkmanager-openconnect')
 options=('!libtool')
-install=networkmanager-openconnect.install
+install=$_pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openconnect/0.9/NetworkManager-openconnect-${pkgver}.tar.xz)
-sha256sums=('3f53d87dbeb00fc841ef5981e6f1a1a192c65d273386246d48245cca84fa41b0')
+sha256sums=('c12487f57ad2f2386db4b103397e3cb66bf34ba589c5f48c3c5ec0b5547e4d9b')
 
 build() {
   cd NetworkManager-openconnect-${pkgver}
