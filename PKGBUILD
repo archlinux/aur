@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=2.29
+pkgver=2.30
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('bzr'
             'mercurial'
             'subversion')
 source=(http://www.catb.org/~esr/reposurgeon/$pkgname-$pkgver.tar.gz)
-sha256sums=('0f14ce402fd9c84361b6a200a39a78815ced592828a5f1ad32e5189d021a9409')
+sha256sums=('f137e0b7092172000877fadbd9b35cf020f0894ef4285a8feb4a857549abadea')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
