@@ -1,4 +1,5 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Federico CInelli <cinelli@aur.archlinux.org>
 # Contributor: Tom Wambold <tom5760@gmail.com>
 
 pkgname='frogatto'
@@ -9,7 +10,7 @@ pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
 depends=('glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
-makedepends=('mesa' 'boost')
+makedepends=('mesa-libgl' 'boost')
 source=("frogatto-$pkgver.tar.gz::https://github.com/frogatto/frogatto/archive/$pkgver.tar.gz"
         frogatto
         frogatto.desktop)
@@ -33,14 +34,11 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -D -m755 game $pkgdir/opt/frogatto/game
-  install -D -m755 server $pkgdir/opt/frogatto/server
-
-  install -D -m644 src/LICENSE $pkgdir/usr/share/licenses/frogatto/LICENSE
-
-  cd $srcdir
-  install -DT -m755 frogatto $pkgdir/usr/bin/frogatto
-  install -D -m644 frogatto.desktop $pkgdir/usr/share/applications/frogatto.desktop
+  install -Dm 755 "game" "$pkgdir/opt/frogatto/game"
+  install -Dm 755 "server" "$pkgdir/opt/frogatto/server"
+  install -Dm 644 "src/LICENSE" "$pkgdir/usr/share/licenses/frogatto/LICENSE"
+  install -Dm 755 "$srcdir/frogatto" "$pkgdir/usr/bin/frogatto"
+  install -Dm 644 "$srcdir/frogatto.desktop" "$pkgdir/usr/share/applications/frogatto.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
