@@ -1,6 +1,6 @@
 # Maintainer: Johannes Dewender   arch at JonnyJD dot net
 pkgname=isrcsubmit
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=()
 conflicts=()
 options=(!emptydirs)
 source=(http://isrcsubmit.jonnyjd.net/downloads/isrcsubmit-$pkgver.tar.gz)
-md5sums=('ae6814472f52569b219eb7f337886f44')
+md5sums=('63c04da383f934203f8e0ebe3f53e3d4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
