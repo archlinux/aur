@@ -1,14 +1,14 @@
 pkgbase = networkmanager-pptp-gtk2
 	pkgdesc = NetworkManager VPN plugin for pptp
-	pkgver = 0.9.6.0
-	pkgrel = 2
+	pkgver = 0.9.8.0
+	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager-pptp.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	depends = networkmanager>=0.9.6.0
+	depends = networkmanager>=0.9.8.0
 	depends = pptpclient
 	depends = gtk2
 	depends = libgnome-keyring
@@ -16,10 +16,10 @@ pkgbase = networkmanager-pptp-gtk2
 	provides = networkmanager-pptp
 	conflicts = networkmanager-pptp
 	options = !libtool
-	source = http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-pptp/0.9/NetworkManager-pptp-0.9.6.0.tar.xz
-	source = fix-path-to-auth-dialog.patch
-	sha256sums = a84cbbf24827229e3dd3611bbde191398275c3b7ecd03913047197644f27a2b4
-	sha256sums = 35f9c2cb4d046c8f215617e1a0bfd8551965bd0655af0cd25f89c17ea5e9081a
+	source = http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-pptp/0.9/NetworkManager-pptp-0.9.8.0.tar.xz
+	source = gtk_table_to_gtk_grid.patch
+	sha256sums = 34d0981462d8948ace0dd4f49478c86017b53516afbbf62e2a4c6c0adc679cc8
+	sha256sums = 17c194c605bca780bf657711e9cff910c63ab27eae70c11cb6c53e9c75ad3215
 
 pkgname = networkmanager-pptp-gtk2
 
