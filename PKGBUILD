@@ -1,8 +1,9 @@
-# $Id: PKGBUILD 166522 2012-09-09 15:41:10Z heftig $
+# $Id: PKGBUILD 179572 2013-03-07 11:54:29Z foutrelis $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-vpnc-gtk2
-pkgver=0.9.6.0
+_pkgname=networkmanager-vpnc
+pkgver=0.9.8.0
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for vpnc"
 arch=('i686' 'x86_64')
@@ -12,16 +13,15 @@ depends=("networkmanager>=${pkgver}" 'vpnc' 'hicolor-icon-theme' 'gtk2' 'libgnom
 makedepends=('intltool')
 optdepends=('network-manager-applet: GNOME frontends to NetWorkmanager')
 options=('!libtool')
-provides=('networkmanager-vpnc')
-conflicts=('networkmanager-vpnc')
+provides=($_pkgname)
+conflicts=($_pkgname)
 install=networkmanager-vpnc.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.9/NetworkManager-vpnc-${pkgver}.tar.xz)
-sha256sums=('6c8e35862330e17ee8f4dc44b1ac47470da703e436d339c7b3e2dac7d1b148a2')
+sha256sums=('e4504c569315c20f2468995f073123a787cdb66695d321f20f994abd1d7eb1c1')
 
 build() {
   cd NetworkManager-vpnc-${pkgver}
-  ./configure \
-	--prefix=/usr \
+  ./configure --prefix=/usr \
   	--sysconfdir=/etc \
 	--libexecdir=/usr/lib/networkmanager \
 	--disable-static \
