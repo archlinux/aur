@@ -13,21 +13,21 @@ license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'sqlite' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
-if [[ -d "$startdir/$_pkgname/.svn" ]]; then
+if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
   source+=("$_pkgname"::svn+"$_svntrunk")
   md5sums+=("SKIP")
 fi
 
 pkgver() {
-  if [[ -d "$startdir/$_pkgname/.svn" ]]; then
-    svnversion "$startdir/$_pkgname"
+  if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
+    svnversion "$SRCDEST/$_pkgname"
   else
     svnversion "$_svntrunk"
   fi
 }
 
 prepare() {
-  cd "$startdir"
+  cd "$SRCDEST"
 
   if [[ ! -d "$_pkgname/.svn" ]]; then
 #   if this is the first run, checkout only what we need from the repo
@@ -40,7 +40,7 @@ prepare() {
 #   and create a working copy
     msg2 "Creating working copy of $_pkgname svn repo..."
     rm -rf "$srcdir/$_pkgname"
-    svn export "$startdir/$_pkgname" "$srcdir/$_pkgname"
+    svn export "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
   fi
 }
 
