@@ -1,6 +1,6 @@
 pkgbase = networkmanager-openvpn-gtk2
 	pkgdesc = NetworkManager VPN plugin for OpenVPN
-	pkgver = 0.9.6.0
+	pkgver = 0.9.8.0
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager-openvpn.install
@@ -8,7 +8,7 @@ pkgbase = networkmanager-openvpn-gtk2
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	depends = networkmanager>=0.9.6.0
+	depends = networkmanager>=0.9.8.0
 	depends = openvpn
 	depends = gtk2
 	depends = libgnome-keyring
@@ -16,8 +16,8 @@ pkgbase = networkmanager-openvpn-gtk2
 	provides = networkmanager-openvpn
 	conflicts = networkmanager-openvpn
 	options = !libtool
-	source = http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.9/NetworkManager-openvpn-0.9.6.0.tar.xz
-	sha256sums = 8fb88705793399574b3de2af93f87b63c0eae342d549a1c79bc59f6a1fad87a3
+	source = http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.9/NetworkManager-openvpn-0.9.8.0.tar.xz
+	sha256sums = 4196f4c124426884657c8d0e2578f4d35205b8981a46bf645fd599fb238395ce
 
 pkgname = networkmanager-openvpn-gtk2
 
