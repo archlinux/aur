@@ -1,7 +1,7 @@
 pkgbase = slic3r
 	pkgdesc = An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge
-	pkgver = 0.9.8
-	pkgrel = 2
+	pkgver = 0.9.9
+	pkgrel = 1
 	url = http://slic3r.org/
 	arch = any
 	license = GPL
@@ -20,10 +20,10 @@ pkgbase = slic3r
 	optdepends = perl-net-dbus: notifications support via any dbus-based notifier
 	optdepends = perl-xml-sax-expatxs: make AMF parsing faster
 	optdepends = perl-xml-sax: Additive Manufacturing File Format (AMF) support
-	source = slic3r-0.9.8.tar.gz::https://github.com/alexrj/Slic3r/tarball/0.9.8
+	source = slic3r-0.9.9.tar.gz::https://github.com/alexrj/Slic3r/archive/0.9.9.tar.gz
 	source = slic3r.desktop
 	source = slic3r
-	md5sums = d747eda4ffc1aec41369075e989e9b79
+	md5sums = c8142c3a9d9ccbe4808136abbf75537b
 	md5sums = cf0130330574a13b4372beb8f241d71e
 	md5sums = a30a96504f11c95956dd8ce645b77504
 

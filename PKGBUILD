@@ -3,9 +3,8 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=slic3r
-pkgver=0.9.8
-pkgrel=2
-_tagcommit=7105243
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge"
 arch=('any')
 url="http://slic3r.org/"
@@ -20,16 +19,15 @@ optdepends=('perl-wx: GUI support'
             'perl-xml-sax-expatxs: make AMF parsing faster'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support')
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/alexrj/Slic3r/tarball/$pkgver"
+    "$pkgname-$pkgver.tar.gz::https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
     'slic3r.desktop'
     'slic3r')
-md5sums=('d747eda4ffc1aec41369075e989e9b79'
+md5sums=('c8142c3a9d9ccbe4808136abbf75537b'
          'cf0130330574a13b4372beb8f241d71e'
          'a30a96504f11c95956dd8ce645b77504')
 
 build() {
-  mv "$srcdir/alexrj-Slic3r-$_tagcommit" "$srcdir/$pkgname-$pkgver"
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/Slic3r-$pkgver"
 
   export PERL_MM_USE_DEFAULT=0 PERL_AUTOINSTALL="--skipdeps" \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
