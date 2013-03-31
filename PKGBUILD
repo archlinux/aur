@@ -59,6 +59,7 @@ build() {
 	--enable-systemd \
 	--enable-harfbuzz \
 	--enable-wayland \
+	--enable-xinput22 \
 	--enable-fb \
 	--disable-tslib
 
