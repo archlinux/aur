@@ -41,32 +41,34 @@ pkgbase = efl-git
 	optdepends = gstreamer0.10-ugly-plugins: Access more types of video in Emotion
 	optdepends = gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion
 	provides = ecore=$pkgver
-	provides = ecore-svn
-	provides = edbus
-	provides = edbus-svn
+	provides = edbus=$pkgver
 	provides = edje=$pkgver
-	provides = edje-svn
 	provides = eet=$pkgver
-	provides = eet-svn
 	provides = eeze=$pkgver
-	provides = eeze-svn
 	provides = efreet=$pkgver
-	provides = efreet-svn
 	provides = eina=$pkgver
-	provides = eina-svn
 	provides = eio=$pkgver
-	provides = eio-svn
 	provides = embryo=$pkgver
-	provides = embryo-svn
 	provides = emotion=$pkgver
-	provides = emotion-svn
-	provides = ephysics
-	provides = ephysics-svn
+	provides = ephysics=$pkgver
 	provides = ethumb=$pkgver
-	provides = ethumb-svn
 	provides = evas=$pkgver
+	provides = ecore-svn
+	provides = edbus-svn
+	provides = edje-svn
+	provides = eet-svn
+	provides = eeze-svn
+	provides = efreet-svn
+	provides = eina-svn
+	provides = eio-svn
+	provides = embryo-svn
+	provides = emotion-svn
+	provides = ephysics-svn
+	provides = ethumb-svn
 	provides = evas-svn
 	provides = efl-svn
+	provides = efl
+	provides = efl_x11
 	conflicts = ecore
 	conflicts = edbus
 	conflicts = edje
@@ -81,6 +83,8 @@ pkgbase = efl-git
 	conflicts = ethumb
 	conflicts = evas
 	conflicts = efl-svn
+	conflicts = efl
+	conflicts = efl_x11
 	options = !libtool
 	options = debug
 	source = git://git.enlightenment.org/core/efl.git

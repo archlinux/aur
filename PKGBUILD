@@ -23,13 +23,15 @@ optdepends=('python2: compare Eina benchmarks'
             'gstreamer0.10-ugly-plugins: Access more types of video in Emotion'
             'gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion'
            )
-provides=('ecore=$pkgver' 'ecore-svn' 'edbus' 'edbus-svn' 'edje=$pkgver' 'edje-svn'
-          'eet=$pkgver' 'eet-svn' 'eeze=$pkgver' 'eeze-svn' 'efreet=$pkgver' 'efreet-svn'
-          'eina=$pkgver' 'eina-svn' 'eio=$pkgver' 'eio-svn' 'embryo=$pkgver' 'embryo-svn'
-          'emotion=$pkgver' 'emotion-svn' 'ephysics' 'ephysics-svn'
-          'ethumb=$pkgver' 'ethumb-svn' 'evas=$pkgver' 'evas-svn' 'efl-svn')
-conflicts=('ecore' 'edbus' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio'
-           'embryo' 'emotion' 'ephysics' 'ethumb' 'evas' 'efl-svn')
+provides=('ecore=$pkgver' 'edbus=$pkgver' 'edje=$pkgver' 'eet=$pkgver' 'eeze=$pkgver'
+          'efreet=$pkgver' 'eina=$pkgver' 'eio=$pkgver' 'embryo=$pkgver' 'emotion=$pkgver'
+          'ephysics=$pkgver' 'ethumb=$pkgver' 'evas=$pkgver'
+          'ecore-svn' 'edbus-svn' 'edje-svn' 'eet-svn' 'eeze-svn' 'efreet-svn' 'eina-svn'
+          'eio-svn' 'embryo-svn' 'emotion-svn' 'ephysics-svn' 'ethumb-svn' 'evas-svn'
+          'efl-svn' 'efl' 'efl_x11')
+conflicts=('ecore' 'edbus' 'edje' 'eet' 'eeze' 'efreet' 'eina'
+           'eio' 'embryo' 'emotion' 'ephysics' 'ethumb' 'evas'
+           'efl-svn' 'efl' 'efl_x11')
 options=('!libtool' 'debug')
 install=efl.install
 source=("git://git.enlightenment.org/core/$_pkgname.git")
@@ -65,7 +67,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  
+
   make -j1 DESTDIR="$pkgdir" install
 
 # install license files
