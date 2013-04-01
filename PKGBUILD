@@ -2,6 +2,7 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=ephoto-svn
+_pkgname=ephoto
 pkgver=50446
 pkgrel=1
 pkgdesc="A light image viewer based on EFL"
@@ -11,26 +12,15 @@ license=('BSD')
 depends=('elementary')
 makedepends=('subversion')
 options=('!libtool')
-_svntrunk="http://svn.enlightenment.org/svn/e/trunk/ephoto"
-_svnmod="ephoto"
+source=("svn+http://svn.enlightenment.org/svn/e/trunk/$_pkgname")
+md5sums=('SKIP')
+
+pkgver() {
+  svnversion "$SRCDEST/$_pkgname"
+}
 
 build() {
-  cd "$srcdir"
-
-  msg "Connecting to SVN server...."
-
-  if [[ -d "$_svnmod/.svn" ]]; then
-    (cd "$_svnmod" && svn up -r "$pkgver")
-  else
-    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
-  fi
-
-  msg "SVN checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_svnmod-build"
-  svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
+  cd "$srcdir/$_pkgname"
 
   ./autogen.sh --prefix=/usr
 
@@ -38,10 +28,10 @@ build() {
 }
 
 package() {
+  cd "$srcdir/$_pkgname"
+
   make DESTDIR="$pkgdir" install
 
 # install license files
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
-  rm -r "$srcdir/$_svnmod-build"
 }

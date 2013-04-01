@@ -9,6 +9,8 @@ pkgbase = ephoto-svn
 	makedepends = subversion
 	depends = elementary
 	options = !libtool
+	source = svn+http://svn.enlightenment.org/svn/e/trunk/ephoto
+	md5sums = SKIP
 
 pkgname = ephoto-svn
 
