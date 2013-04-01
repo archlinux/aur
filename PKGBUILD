@@ -28,10 +28,9 @@ provides=('ecore=$pkgver' 'edbus=$pkgver' 'edje=$pkgver' 'eet=$pkgver' 'eeze=$pk
           'ephysics=$pkgver' 'ethumb=$pkgver' 'evas=$pkgver'
           'ecore-svn' 'edbus-svn' 'edje-svn' 'eet-svn' 'eeze-svn' 'efreet-svn' 'eina-svn'
           'eio-svn' 'embryo-svn' 'emotion-svn' 'ephysics-svn' 'ethumb-svn' 'evas-svn'
-          'efl-svn' 'efl' 'efl_x11')
-conflicts=('ecore' 'edbus' 'edje' 'eet' 'eeze' 'efreet' 'eina'
-           'eio' 'embryo' 'emotion' 'ephysics' 'ethumb' 'evas'
-           'efl-svn' 'efl' 'efl_x11')
+          'efl' 'efl_x11' 'efl-svn')
+conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
+           'efl' 'efl_x11' 'efl-svn')
 options=('!libtool' 'debug')
 install=efl.install
 source=("git://git.enlightenment.org/core/$_pkgname.git")
