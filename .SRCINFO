@@ -1,24 +1,13 @@
 pkgbase = ephoto-svn
-	pkgdesc = Ephoto is an light image viewer
+	pkgdesc = A light image viewer based on EFL
 	pkgver = 50446
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
-	groups = e17-libs-svn
-	groups = e17-svn
 	license = BSD
 	makedepends = subversion
-	makedepends = cvs
-	depends = edje-svn
-	depends = evas-svn
-	depends = ethumb-svn
-	depends = ecore-svn
-	depends = eet-svn
-	depends = elementary-svn
-	depends = eio-svn
-	provides = ephoto
-	conflicts = ephoto
+	depends = elementary
 	options = !libtool
 
 pkgname = ephoto-svn
