@@ -4,7 +4,7 @@
 pkgname=cuneiform
 pkgver=1.1.0
 _dpkgver=1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/cuneiform-linux"
@@ -20,15 +20,22 @@ md5sums=('09fd160cdfc512f26442a7e91246598d')
 build() {
   cd "${_SRC_ROOT}"
   sed -i 's#lib64#lib#' install_files.cmake
-  mkdir builddir
+  mkdir -p builddir
   cd builddir
+
+  LMAGICK=`ls -1 /usr/lib/libMagick++*.so.?`
 
   cmake \
 	-DCMAKE_BUILD_TYPE=release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DImageMagick_Magick++_LIBRARY=/usr/lib/libMagick++-Q16.so.7 \
+	-DImageMagick_Magick++_LIBRARY=$LMAGICK \
+	-DImageMagick_Magick++_INCLUDE_DIR=/usr/include/ImageMagick-6 \
 	..
   make
+}
+
+check() {
+  ldd ${_SRC_ROOT}/builddir/cuneiform | grep Magick >/dev/null
 }
 
 package() {
