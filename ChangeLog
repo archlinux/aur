@@ -1,6 +1,9 @@
 2013-04-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 2.4.5_03-1
+	First release of the package as "mcpatcher2".
+
+	* 2.4.5_03-1
 	Version bump.
 	Moved mcpatcher and mcpatcher.desktop back into the package itself.
 

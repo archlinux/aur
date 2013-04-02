@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MCPatcher 2.x
+Comment=Minecraft patcher for HD textures and more. (For Minecraft earlier than 1.5)
+TryExec=mcpatcher2
+Exec=java -Xmx512m -jar /usr/share/mcpatcher2/mcpatcher.jar
+Icon=/usr/share/pixmaps/mcpatcher2.png
+Terminal=false
+Categories=Game;
+Keywords=minecraft;

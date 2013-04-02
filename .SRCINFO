@@ -1,4 +1,4 @@
-pkgbase = mcpatcher
+pkgbase = mcpatcher2
 	pkgdesc = Minecraft patcher to fix textures with higher than default resolution
 	pkgver = 2.4.5_03
 	pkgrel = 1
@@ -10,11 +10,11 @@ pkgbase = mcpatcher
 	optdepends = minecraft: the game itself
 	noextract = mcpatcher-2.4.5_03.jar
 	source = https://bitbucket.org/prupe/mcpatcher/downloads/mcpatcher-2.4.5_03.jar
-	source = mcpatcher
-	source = mcpatcher.desktop
+	source = mcpatcher2
+	source = mcpatcher2.desktop
 	md5sums = d5b33a8cf4896beef40013d778b614b2
-	md5sums = 38358254be76dc84676509f43be44938
-	md5sums = 87f031f8f0fceb0feb369c6185e07fbf
+	md5sums = f0f63af475d5d666395b9b41f59c9f5e
+	md5sums = 9007f849ab95ccd7e62134b858b8618e
 
-pkgname = mcpatcher
+pkgname = mcpatcher2
 
