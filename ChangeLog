@@ -1,5 +1,21 @@
 2013-04-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
+	* 3.0.3-1
+	Version bump.
+
+	Upstream changelog (3.0.2_01):
+	- First official release for 1.5.
+	- Pre release post: http://www.minecraftforum.net/topic/1496369-/page__st__7180#entry20373720
+	- New CTM format post: http://www.minecraftforum.net/topic/1496369-/page__st__7280#entry20568110
+
+	Upstream changelog (3.0.3):
+	- Fixed white lines between textures.
+	- Fixed CTM for brewing stand.
+	- Further optimization of mipmapping/AA.
+	- Fixed Better Grass with fast graphics.
+	- Duplicate carrots_0-2.png to potatoes_0-2.png if the latter is not already present when converting 1.4 texture pack.
+	- Improved custom compass/clock performance.
+
 	* 2.4.5_03-1
 	Version bump.
 	Moved mcpatcher and mcpatcher.desktop back into the package itself.
