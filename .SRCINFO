@@ -1,0 +1,15 @@
+pkgbase = enjoy-git
+	pkgdesc = Music player based on EFL
+	pkgver = 20130402
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = elementary-git
+	depends = lightmediascanner
+	options = !libtool
+
+pkgname = enjoy-git
+
