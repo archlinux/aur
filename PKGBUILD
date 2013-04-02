@@ -28,7 +28,7 @@ build() {
     install -vDm755 'mcpatcher'            "$pkgdir/usr/bin/mcpatcher"
     install -vDm644 'resources/icon.png'   "$pkgdir/usr/share/pixmaps/mcpatcher.png"
     install -vDm644 'mcpatcher.desktop'    "$pkgdir/usr/share/applications/mcpatcher.desktop"
-    install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/mcpatcher/mcpatcher.jar"
+    install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/$pkgname/mcpatcher.jar"
 }
 
 # vim:set ts=4 sw=4 et:
