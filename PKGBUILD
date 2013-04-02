@@ -1,25 +1,27 @@
 # Maintainer: Johannes Dewender   arch at JonnyJD dot net
+_python=python
 pkgname=isrcsubmit
-pkgver=1.0.1
+pkgver=2.0.0_beta.1
+_pkgver=2.0.0-beta.1
 pkgrel=1
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
 license=('GPL3')
-depends=('python2' 'python2-musicbrainz2>=0.7.0' 'libdiscid')
+depends=("$_python" "$_python-musicbrainzngs" "$_python-discid")
 makedepends=()
 conflicts=()
 options=(!emptydirs)
-source=(http://isrcsubmit.jonnyjd.net/downloads/isrcsubmit-$pkgver.tar.gz)
-md5sums=('63c04da383f934203f8e0ebe3f53e3d4')
+source=(http://isrcsubmit.jonnyjd.net/downloads/isrcsubmit-$_pkgver.tar.gz)
+md5sums=('78a0f32a0767cd0b7504f723333733b1')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py build
+  cd "$srcdir/$pkgname-$_pkgver"
+  $_python setup.py build
 }
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "$srcdir/$pkgname-$_pkgver"
+  $_python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
