@@ -2,6 +2,7 @@
 
 	* 2.4.5_03-1
 	Version bump.
+	Moved mcpatcher and mcpatcher.desktop back into the package itself.
 
 2012-01-10 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
