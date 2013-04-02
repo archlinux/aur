@@ -4,7 +4,7 @@
 pkgname='frogatto-data'
 _pkgname='frogatto'
 arch=('any')
-pkgver=1.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog (data files)"
 url="http://www.frogatto.com"
@@ -12,7 +12,7 @@ license=('custom')
 depends=()
 makedepends=()
 source=("frogatto-$pkgver.tar.gz::https://github.com/frogatto/frogatto/tarball/$pkgver")
-md5sums=('b60924f384e04728eb6e76cdd48ab8f9')
+md5sums=('695e49b9edfa5a969798d28a7942f123')
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgname"*
@@ -25,8 +25,7 @@ package() {
   cp -r data $pkgdir/opt/frogatto/
   cp -r images $pkgdir/opt/frogatto/
   cp -r music $pkgdir/opt/frogatto/
-  cp -r sounds $pkgdir/opt/frogatto/
-  cp -r locale $pkgdir/opt/frogatto/
+  cp -r modules $pkgdir/opt/frogatto/
   install -D -m644 FreeMono.ttf $pkgdir/opt/frogatto/FreeMono.ttf
   install -D -m644 DejaVuSans.ttf $pkgdir/opt/frogatto/DejaVuSans.ttf
 
