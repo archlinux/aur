@@ -10,6 +10,8 @@ pkgbase = enjoy-git
 	depends = elementary-git
 	depends = lightmediascanner
 	options = !libtool
+	source = git://git.enlightenment.org/apps/enjoy.git
+	md5sums = SKIP
 
 pkgname = enjoy-git
 

@@ -1,6 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=enjoy-git
+_pkgname=enjoy
 pkgver=20130402
 pkgrel=1
 pkgdesc="Music player based on EFL"
@@ -10,27 +11,21 @@ license=('GPL3')
 depends=('elementary-git' 'lightmediascanner')
 makedepends=('git')
 options=('!libtool')
+source=("git://git.enlightenment.org/apps/$_pkgname.git")
+md5sums=('SKIP')
 
-_gitroot="git://git.enlightenment.org/apps/enjoy.git"
-_gitname="enjoy"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+
+  for i in v_maj v_min v_mic; do
+    local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
+  done
+
+  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   ./autogen.sh --prefix=/usr
 
@@ -38,10 +33,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
-
-# delete build directory
-  rm -r "$srcdir/$_gitname-build"
 }
