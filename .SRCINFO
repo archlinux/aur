@@ -1,17 +1,17 @@
 pkgbase = mcpatcher
 	pkgdesc = Minecraft patcher to fix textures with higher than default resolution
-	pkgver = 2.4.5_02
-	pkgrel = 2
+	pkgver = 2.4.5_03
+	pkgrel = 1
 	url = https://bitbucket.org/prupe/mcpatcher
 	changelog = ChangeLog
 	arch = any
 	license = Public Domain
 	depends = java-runtime
 	optdepends = minecraft: the game itself
-	noextract = mcpatcher-2.4.5_02.jar
-	source = https://bitbucket.org/prupe/mcpatcher/downloads/mcpatcher-2.4.5_02.jar
+	noextract = mcpatcher-2.4.5_03.jar
+	source = https://bitbucket.org/prupe/mcpatcher/downloads/mcpatcher-2.4.5_03.jar
 	source = https://bitbucket.org/Freso/pkgbuilds/downloads/mcpatcher-archlinux.tar.bz2
-	md5sums = 2f3052f35beadf72cd5ee8592ab0976b
+	md5sums = d5b33a8cf4896beef40013d778b614b2
 	md5sums = f30f4f8a8f5a0f83e761c8f32a743692
 
 pkgname = mcpatcher
