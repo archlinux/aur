@@ -1,7 +1,8 @@
-# Author: Wintershade <Wintershade AT google mail DOT com>
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Konrad <konrad AT knauber DOT name>
 # Contributor: Luka Perkov <archlinux <at> lukaperkov <dOt> net>
 # Contributor: Fernando M <f <at> beford.net>
+# Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
 pkgver=4.10.2
@@ -26,7 +27,14 @@ build() {
 	cd ${srcdir}/rpm-${pkgver}
 	export LUA_CFLAGS=`pkg-config lua5.1 --cflags`
 	export LUA_LIBS=`pkg-config lua5.1 --libs`
-	./configure --localstatedir=/var --sysconfdir=/etc  --prefix=/usr  --with-external-db --enable-python CPPFLAGS="`pkg-config --cflags nss`" PYTHON=python2
+	./configure \
+		--localstatedir=/var \
+		--sysconfdir=/etc  \
+		--prefix=/usr  \
+		--with-external-db \
+		--enable-python \
+		CPPFLAGS="`pkg-config --cflags nss`" \
+		PYTHON=python2
 	make
 }
 
