@@ -1,0 +1,27 @@
+pkgbase = rpm-org
+	pkgdesc = RPM Package Manager - RPM.org fork, used in major RPM distros
+	pkgver = 4.10.2
+	pkgrel = 1
+	url = http://www.rpm.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	depends = lua51
+	depends = file
+	depends = nss
+	depends = popt
+	depends = elfutils
+	depends = db
+	provides = rpm=4.10.2
+	provides = rpmextract=1.0-4
+	conflicts = rpm
+	conflicts = rpmextract
+	options = !libtool
+	source = http://rpm.org/releases/rpm-4.10.x/rpm-4.10.2.tar.bz2
+	source = rpmextract.sh
+	md5sums = a644aea351c9b3889bbaded5d6a377c9
+	md5sums = 1f7f4f3b3a93ff6d2f600c7751ae25ef
+
+pkgname = rpm-org
+
