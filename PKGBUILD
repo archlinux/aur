@@ -17,13 +17,17 @@ conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
 source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
-	'rpmextract.sh')
+	rpmextract.sh finish-lua52-support.patch)
 md5sums=('b35f5359e0d4494d7b11e8d0c1512a0d'
-         '1f7f4f3b3a93ff6d2f600c7751ae25ef')
+         '1f7f4f3b3a93ff6d2f600c7751ae25ef'
+         'a82a9372f2bca43049791c162a36c1e5')
 
 
 build() {
 	cd ${srcdir}/rpm-${pkgver}
+
+	patch -p1 < ../finish-lua52-support.patch
+
 	./configure \
 		--prefix=/usr  \
 		--sysconfdir=/etc  \

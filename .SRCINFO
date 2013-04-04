@@ -21,8 +21,10 @@ pkgbase = rpm-org
 	options = !libtool
 	source = http://rpm.org/releases/rpm-4.11.x/rpm-4.11.0.1.tar.bz2
 	source = rpmextract.sh
+	source = finish-lua52-support.patch
 	md5sums = b35f5359e0d4494d7b11e8d0c1512a0d
 	md5sums = 1f7f4f3b3a93ff6d2f600c7751ae25ef
+	md5sums = a82a9372f2bca43049791c162a36c1e5
 
 pkgname = rpm-org
 
