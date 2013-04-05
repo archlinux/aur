@@ -2,7 +2,7 @@
 
 pkgname=ecrire-git
 _pkgname=ecrire
-pkgver=.1.0.83
+pkgver=0.1.0.83
 pkgrel=1
 pkgdesc="Simple text editor based on EFL"
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
   
-  for i in VMAG VMIN VMIC; do
+  for i in VMAJ VMIN VMIC; do
     local _$i=$(grep -m 1 $i CMakeLists.txt | grep -o "[[:digit:]]*")
   done
   
-  echo $_VMAG.$_VMIN.$_VMIC.$(git rev-list --count HEAD)
+  echo $_VMAJ.$_VMIN.$_VMIC.$(git rev-list --count HEAD)
 }
 
 prepare() {
