@@ -1,6 +1,6 @@
 pkgbase = gitary-git
 	pkgdesc = A diary using git as its backend
-	pkgver = 20120922
+	pkgver = 13.01.1.gd605beb
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=gitary
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = gitary-git
 	makedepends = git
 	depends = git
 	optdepends = vim: A reasonable editor, syntax files are provided
+	source = git://github.com/vain/gitary.git
+	md5sums = SKIP
 
 pkgname = gitary-git
 

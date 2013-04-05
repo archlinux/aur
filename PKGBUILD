@@ -1,6 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
-pkgname=gitary-git
-pkgver=20120922
+_pkgname=gitary
+pkgname=$_pkgname-git
+pkgver=13.01.1.gd605beb
 pkgrel=1
 pkgdesc="A diary using git as its backend"
 arch=('any')
@@ -11,31 +12,16 @@ depends=('git')
 optdepends=(
   'vim: A reasonable editor, syntax files are provided'
 )
+source=(git://github.com/vain/gitary.git)
+md5sums=('SKIP')
 
-_gitroot='git://github.com/vain/gitary.git'
-_gitname='master'
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --always | sed 's|-|.|g; s|v||'
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   install -Dm755 gitary "$pkgdir"/usr/bin/gitary
   install -Dm644 gitary-functions "$pkgdir"/usr/lib/gitary/gitary-functions
