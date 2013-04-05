@@ -1,6 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
-pkgname=gitodo-git
-pkgver=20121205
+_pkgname=gitodo
+pkgname=$_pkgname-git
+pkgver=13.01.5.g12160cb
 pkgrel=1
 pkgdesc="Manage your TODO items using Git as a backend"
 arch=('any')
@@ -12,31 +13,16 @@ optdepends=(
   'cron: Reminder functionality'
   'vim: A reasonable editor, syntax files are provided'
 )
+source=(git://github.com/vain/gitodo.git)
+md5sums=('SKIP')
 
-_gitroot='git://github.com/vain/gitodo.git'
-_gitname='master'
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --always | sed 's|-|.|g; s|v||'
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   install -Dm755 gitodo "$pkgdir"/usr/bin/gitodo
   install -Dm755 highcal "$pkgdir"/usr/bin/highcal

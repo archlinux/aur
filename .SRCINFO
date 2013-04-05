@@ -1,6 +1,6 @@
 pkgbase = gitodo-git
 	pkgdesc = Manage your TODO items using Git as a backend
-	pkgver = 20121205
+	pkgver = 13.01.5.g12160cb
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=gitodo
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = gitodo-git
 	depends = ruby
 	optdepends = cron: Reminder functionality
 	optdepends = vim: A reasonable editor, syntax files are provided
+	source = git://github.com/vain/gitodo.git
+	md5sums = SKIP
 
 pkgname = gitodo-git
 
