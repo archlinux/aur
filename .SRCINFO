@@ -1,6 +1,6 @@
 pkgbase = ecrire-git
 	pkgdesc = Simple text editor based on EFL
-	pkgver = 0.1.0.x
+	pkgver = .1.0.83
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = ecrire.install

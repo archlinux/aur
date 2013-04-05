@@ -2,7 +2,7 @@
 
 pkgname=ecrire-git
 _pkgname=ecrire
-pkgver=0.1.0.x
+pkgver=.1.0.83
 pkgrel=1
 pkgdesc="Simple text editor based on EFL"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
   
-  mv "cmake/Modules/legacy/*" /cmake/Modules/
+  mv cmake/Modules/legacy/* cmake/Modules/
 }
 
 build() {
