@@ -1,14 +1,16 @@
 pkgbase = python-supergenpass-git
 	pkgdesc = SuperGenPass Python module and GTK interface
-	pkgver = 20130209
+	pkgver = 20130209.gfc9e077
 	pkgrel = 1
-	url = https://bitbucket.org/vianney/python-supergenpass
+	url = https://github.com/vianney/python-supergenpass
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
 	optdepends = gtk3: for GTK interface
 	optdepends = python-gobject: for GTK interface
+	source = git://github.com/vianney/python-supergenpass.git
+	md5sums = SKIP
 
 pkgname = python-supergenpass-git
 

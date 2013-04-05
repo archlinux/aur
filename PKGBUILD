@@ -1,39 +1,28 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail · com>
-pkgname=python-supergenpass-git
-pkgver=20130209
+_pkgname=python-supergenpass
+pkgname=$_pkgname-git
+pkgver=20130209.gfc9e077
 pkgrel=1
 pkgdesc="SuperGenPass Python module and GTK interface"
 arch=(any)
-url="https://bitbucket.org/vianney/python-supergenpass"
+url="https://github.com/vianney/python-supergenpass"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
 optdepends=('gtk3: for GTK interface'
             'python-gobject: for GTK interface')
+source=("git://github.com/vianney/$_pkgname.git")
+md5sums=('SKIP')
 
-_gitroot=https://bitbucket.org/vianney/python-supergenpass.git
-_gitname=python-supergenpass
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  _date=$(git show -s --format='%ci' | cut -d' ' -f1 | sed 's/-//g')
+  _hash=$(git show -s --format='%h')
+  echo "$_date.g$_hash"
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
