@@ -1,15 +1,15 @@
 # Maintainer: jjacky
 pkgname=pacdep
-pkgver=0.1.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Package Dependencies listing"
 arch=('i686' 'x86_64')
-url="https://github.com/jjk-jacky/pacdep"
+url="http://jjacky.com/pacdep"
 license=('GPL3+')
-depends=('pacman>=4.0.1' 'pacman<4.1')
+depends=('pacman>=4.1' 'pacman<4.2')
 makedepends=('perl' 'groff')
-source=(https://github.com/downloads/jjk-jacky/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('8dc22dd83097eae1fb731e8b8e9210b0')
+source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('fb96d4f486c63bf34b05ce5c95056559')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
