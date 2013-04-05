@@ -3,7 +3,7 @@
 
 pkgname=libeweather-svn
 _pkgname=libeweather
-pkgver=79483
+pkgver=82148
 pkgrel=1
 pkgdesc="EFL based library for weather information"
 arch=('i686' 'x86_64')
@@ -16,7 +16,9 @@ source=("svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
-  svnversion "$SRCDEST/$_pkgname"
+  cd "$SRCDEST/$_pkgname"
+
+  svn info | awk -F : '/Last Changed Rev/ {print $2}' | tr -d " "
 }
 
 build() {

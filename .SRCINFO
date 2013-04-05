@@ -1,6 +1,6 @@
 pkgbase = libeweather-svn
 	pkgdesc = EFL based library for weather information
-	pkgver = 79483
+	pkgver = 82148
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
