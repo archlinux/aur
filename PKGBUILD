@@ -1,6 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
-pkgname=explain-git
-pkgver=20121027
+_pkgname=explain
+pkgname=$_pkgname-git
+pkgver=13.01
 pkgrel=1
 pkgdesc="Annotate commands using a simple markup language"
 arch=('any')
@@ -8,31 +9,16 @@ url='http://www.uninformativ.de/projects/?q=explain'
 license=('custom:PIZZA-WARE')
 depends=('python2')
 makedepends=('git')
+source=(git://github.com/vain/explain.git)
+md5sums=('SKIP')
 
-_gitroot="git://github.com/vain/explain.git"
-_gitname="master"
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --always | sed 's|-|.|g; s|v||'
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
   install -Dm755 explain.py "$pkgdir"/usr/bin/explain.py
   ln -s /usr/bin/explain.py "$pkgdir"/usr/bin/explain
   install -Dm644 man1/explain.py.1 "$pkgdir"/usr/share/man/man1/explain.py.1
