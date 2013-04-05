@@ -1,7 +1,7 @@
 pkgbase = gconf-gtk2
 	pkgdesc = A configuration database system compiled for GTK2
 	pkgver = 3.2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.gnome.org
 	install = gconf.install
 	arch = i686
@@ -10,15 +10,15 @@ pkgbase = gconf-gtk2
 	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
-	depends = libxml2
 	depends = polkit
-	depends = libldap
 	depends = dbus-glib
 	depends = gtk2
+	optdepends = python2: for gsettings-schema-convert utility
 	provides = gconf=3.2.5
 	conflicts = gconf
 	replaces = gconf
 	options = !libtool
+	options = emptydirs
 	source = http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-3.2.5.tar.xz
 	source = gconf-dbus-fix-use-after-free.patch
 	source = gconf-dbus-fix-shutdown.patch

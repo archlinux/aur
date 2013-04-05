@@ -2,16 +2,17 @@
 
 pkgname=gconf-gtk2
 pkgver=3.2.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A configuration database system compiled for GTK2"
 arch=(i686 x86_64)
 license=('LGPL')
 provides=("gconf=$pkgver")
 conflicts=('gconf')
 replaces=('gconf')
-depends=('libxml2' 'polkit' 'libldap' 'dbus-glib' 'gtk2')
+depends=('polkit' 'dbus-glib' 'gtk2')
+optdepends=('python2: for gsettings-schema-convert utility')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
-options=('!libtool')
+options=('!libtool' 'emptydirs')
 install=gconf.install
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-$pkgver.tar.xz
