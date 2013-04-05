@@ -2,7 +2,7 @@
 
 pkgname=econnman-git
 _pkgname=econnman
-pkgver=20130314
+pkgver=1.20
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
@@ -22,7 +22,7 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/$_pkgname"
   
-  echo $(grep -m 1 AC_INIT configure.ac | awk -F , '{print $2}' | tr -d '[ ]').$(git rev-list --count HEAD)
+  echo $(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]').$(git rev-list --count HEAD)
 }
 
 prepare() {
@@ -30,6 +30,7 @@ prepare() {
   sed -i 's:/usr/bin/python:/usr/bin/python2:' "$srcdir/$_pkgname/econnman-bin.in"
 
 # Patch for new bindings
+  cd "$srcdir/$_pkgname"
   patch -Np1 < ../bindings-update.patch
   patch -Np0 < ../configure.patch
 }
