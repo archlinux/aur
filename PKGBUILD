@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
-license=('BSD')
+license=('BSD' 'GPL3')
 depends=('elementary')
 makedepends=('subversion')
 options=('!libtool')
@@ -32,6 +32,9 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  sed -i 's/COPYING.icons/GPL3/g' COPYING
+
 # install license files
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
 }

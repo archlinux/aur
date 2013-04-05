@@ -6,6 +6,7 @@ pkgbase = ephoto-svn
 	arch = i686
 	arch = x86_64
 	license = BSD
+	license = GPL3
 	makedepends = subversion
 	depends = elementary
 	options = !libtool
