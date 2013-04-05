@@ -5,7 +5,7 @@
 
 pkgname=entrance-git
 _pkgname=entrance
-pkgver=0.0.4.x
+pkgver=0.0.4.19
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://trac.enlightenment.org/e"
@@ -14,7 +14,6 @@ arch=('i686' 'x86_64')
 depends=('elementary')
 makedepends=('git')
 conflicts=('entrance-svn')
-options=('debug')
 source=("git://git.enlightenment.org/misc/$_pkgname.git"
         'entrance-pam'
         'entrance.service')
@@ -25,7 +24,7 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  echo $(grep -m 1 AC_INIT configure.ac | awk -F , '{print $2}' | tr -d '[ ]').$(git rev-list --count HEAD)
+  echo $(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]').$(git rev-list --count HEAD)
 }
 
 build () {

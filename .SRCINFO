@@ -1,6 +1,6 @@
 pkgbase = entrance-git
 	pkgdesc = Enlightenment Display Manager
-	pkgver = 0.0.4.x
+	pkgver = 0.0.4.19
 	pkgrel = 1
 	url = http://trac.enlightenment.org/e
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = entrance-git
 	makedepends = git
 	depends = elementary
 	conflicts = entrance-svn
-	options = debug
 	source = git://git.enlightenment.org/misc/entrance.git
 	source = entrance-pam
 	source = entrance.service
