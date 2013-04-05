@@ -1,6 +1,6 @@
 pkgbase = gophcatch-git
 	pkgdesc = Watch gopher holes and catch updates
-	pkgver = 20111106
+	pkgver = 13.01
 	pkgrel = 1
 	url = https://github.com/vain/gophcatch
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = gophcatch-git
 	depends = curl
 	optdepends = lynx: Needed if you want to dump new items
 	optdepends = cron: Recommended if you want to regularly run gophcatch
+	source = git://github.com/vain/gophcatch.git
+	md5sums = SKIP
 
 pkgname = gophcatch-git
 
