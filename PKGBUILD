@@ -3,7 +3,7 @@
 
 pkgname=eweather-svn
 _pkgname=eweather
-pkgver=82790
+pkgver=83648
 pkgrel=1
 pkgdesc="Enlightenment module: Current weather and forcast gadget"
 arch=('i686' 'x86_64')
@@ -17,7 +17,9 @@ source=("svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/$_pkgname"
 md5sums=('SKIP')
 
 pkgver() {
-  svnversion "$SRCDEST/$_pkgname"
+  cd "$SRCDEST/$_pkgname"
+
+  svn info | awk -F : '/Last Changed Rev/ {print $2}' | tr -d " "
 }
 
 build() {
