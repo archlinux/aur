@@ -2,7 +2,7 @@
 
 pkgname=python-efl-git
 _pkgname=python-efl
-pkgver=20130322
+pkgver=1.7.99.166
 pkgrel=1
 pkgdesc="Python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  echo $(grep -m 1 "version =" setup.py | awk -F \" '{print $2}').$(git rev-list --count HEAD)
+  echo $(awk -F \" '/version =/ {print $2}' setup.py).$(git rev-list --count HEAD)
 }
 
 build() {
