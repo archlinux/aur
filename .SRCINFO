@@ -1,12 +1,14 @@
 pkgbase = gedit-coffeescript-git
 	pkgdesc = gedit Syntax Highlighting for CoffeeScript files
-	pkgver = 20121024
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/wavded/gedit-coffeescript
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = gtksourceview3
+	source = git://github.com/wavded/gedit-coffeescript.git
+	md5sums = SKIP
 
 pkgname = gedit-coffeescript-git
 
