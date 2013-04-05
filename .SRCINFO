@@ -1,6 +1,6 @@
 pkgbase = slinp-git
 	pkgdesc = PDF presentation tool chest
-	pkgver = 20120922
+	pkgver = 13.02
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=slinp
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = slinp-git
 	depends = gtk3
 	depends = python
 	depends = poppler-glib
+	source = git://github.com/vain/slinp.git
+	md5sums = SKIP
 
 pkgname = slinp-git
 
