@@ -1,7 +1,8 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=libcec-git
-pkgver=20130325
+epoch=1
+pkgver=2.0.4.77.g3ff78be
 pkgrel=1
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')
@@ -12,36 +13,24 @@ depends=('udev>=151' 'lockdev')
 provides=('libcec')
 conflicts=('libcec')
 options=('!libtool')
+source=('libcec::git+https://github.com/Pulse-Eight/libcec.git')
+md5sums=('SKIP')
 
-_gitroot="https://github.com/Pulse-Eight/libcec.git"
-_gitname="libcec"
+pkgver() {
+  cd "$srcdir"/libcec
+  git describe --tags | sed 's|libcec-||;s|-|.|g'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$srcdir"/libcec
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  sed 's/^LIBS_LIBCEC="$LIBS".*/LIBS_LIBCEC="$LIBS -fPIC"/' -i configure.ac
   autoreconf -vif
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir"/libcec
   make DESTDIR="$pkgdir/" install
 }
 
