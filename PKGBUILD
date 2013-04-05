@@ -1,7 +1,8 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
-pkgname=jbig2enc-git
-pkgver=20120803
-pkgrel=2
+_pkgname=jbig2enc
+pkgname=$_pkgname-git
+pkgver=0.28.2.gf6a5c48
+pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/agl/jbig2enc"
@@ -9,37 +10,27 @@ license=('Apache')
 depends=('gcc-libs' 'leptonica>=1.68' 'libpng' 'libjpeg' 'libtiff')
 optdepends=('python2: for pdf.py')
 makedepends=('git')
+source=("git://github.com/agl/$_pkgname.git")
+md5sums=('SKIP')
 
-_gitroot="https://github.com/agl/jbig2enc.git"
-_gitname="jbig2enc"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe | sed 's/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  sed -i 's@^#!/usr/bin/python$@#!/usr/bin/env python2@' pdf.py
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server..."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  msg "Patching sources..."
-  sed -i 's@^#!/usr/bin/python$@#!/usr/bin/env python2@' pdf.py
-
-  msg "Building..."
+  cd "$srcdir/$_pkgname"
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
   make install DESTDIR="$pkgdir"
 }
