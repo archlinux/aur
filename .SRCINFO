@@ -1,17 +1,17 @@
-pkgbase = ephoto-svn
+pkgbase = ephoto-git
 	pkgdesc = A light image viewer based on EFL
-	pkgver = 50446
+	pkgver = 0.1.1.464
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL3
-	makedepends = subversion
+	makedepends = git
 	depends = elementary
 	options = !libtool
-	source = svn+http://svn.enlightenment.org/svn/e/trunk/ephoto
+	source = git://git.enlightenment.org/apps/ephoto.git
 	md5sums = SKIP
 
-pkgname = ephoto-svn
+pkgname = ephoto-git
 
