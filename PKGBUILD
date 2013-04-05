@@ -1,6 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
-pkgname=sgopherd-git
-pkgver=20121007
+_pkgname=sgopherd
+pkgname=$_pkgname-git
+pkgver=13.01
 pkgrel=1
 pkgdesc="A gopher server written in Bash"
 arch=('any')
@@ -11,31 +12,16 @@ makedepends=('git')
 backup=('etc/xinetd.d/sgopherd')
 optdepends=('xinetd: Traditional way to run sgopherd'
             'systemd: sgopherd also works with socket activation')
+source=(git://github.com/vain/sgopherd.git)
+md5sums=('SKIP')
 
-_gitroot="git://github.com/vain/sgopherd.git"
-_gitname="master"
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --always | sed 's|-|.|g; s|v||'
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   install -Dm755 sgopherd "$pkgdir"/usr/bin/sgopherd
 

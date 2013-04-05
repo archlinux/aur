@@ -1,6 +1,6 @@
 pkgbase = sgopherd-git
 	pkgdesc = A gopher server written in Bash
-	pkgver = 20121007
+	pkgver = 13.01
 	pkgrel = 1
 	url = https://github.com/vain/sgopherd
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = sgopherd-git
 	optdepends = xinetd: Traditional way to run sgopherd
 	optdepends = systemd: sgopherd also works with socket activation
 	backup = etc/xinetd.d/sgopherd
+	source = git://github.com/vain/sgopherd.git
+	md5sums = SKIP
 
 pkgname = sgopherd-git
 
