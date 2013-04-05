@@ -1,8 +1,8 @@
 pkgbase = pkgclip
 	pkgdesc = Cached Packages Trimmer Utility
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://bitbucket.org/jjacky/pkgclip
+	url = http://jjacky.com/pkgclip
 	arch = i686
 	arch = x86_64
 	license = GPL3+
@@ -10,9 +10,9 @@ pkgbase = pkgclip
 	depends = dbus
 	depends = polkit
 	depends = gtk3
-	depends = pacman>=4.0.1
-	source = https://github.com/downloads/jjk-jacky/pkgclip/pkgclip-1.1.0.tar.gz
-	md5sums = 8f1e7a1e6dc7af3cb85e263af669979d
+	depends = pacman>=4.1
+	source = http://jjacky.com/pkgclip/pkgclip-1.2.0.tar.gz
+	md5sums = 5c5b1292c41a24e4633592d5556d246c
 
 pkgname = pkgclip
 

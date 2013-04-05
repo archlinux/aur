@@ -1,15 +1,15 @@
 # Maintainer: jjacky
 pkgname=pkgclip
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cached Packages Trimmer Utility"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/jjacky/pkgclip"
+url="http://jjacky.com/pkgclip"
 license=('GPL3+')
-depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.0.1')
+depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.1')
 makedepends=('perl')
-source=(https://github.com/downloads/jjk-jacky/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('8f1e7a1e6dc7af3cb85e263af669979d')
+source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('5c5b1292c41a24e4633592d5556d246c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
