@@ -1,8 +1,8 @@
 pkgbase = tmux-applet-git
 	pkgdesc = Simple applet enhancement and configuration file for tmux
-	pkgver = 20130309
+	pkgver = 20130309.g514d519
 	pkgrel = 1
-	url = https://bitbucket.org/vianney/tmux-applet
+	url = https://github.com/vianney/tmux-applet
 	install = install
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = tmux-applet-git
 	makedepends = git
 	depends = tmux
 	backup = etc/tmux-applet.conf
+	source = git://github.com/vianney/tmux-applet.git
+	md5sums = SKIP
 
 pkgname = tmux-applet-git
 

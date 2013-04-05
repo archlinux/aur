@@ -1,42 +1,33 @@
 # Maintainer: Vianney le Clément de Saint-Marcq <vleclement AT gmail·com>
-pkgname=tmux-applet-git
-pkgver=20130309
+_pkgname=tmux-applet
+pkgname=$_pkgname-git
+pkgver=20130309.g514d519
 pkgrel=1
 pkgdesc="Simple applet enhancement and configuration file for tmux"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/vianney/tmux-applet"
+url="https://github.com/vianney/tmux-applet"
 license=('GPL3')
 depends=('tmux')
 makedepends=('git')
 backup=('etc/tmux-applet.conf')
 install=install
+source=("git://github.com/vianney/$_pkgname.git")
+md5sums=('SKIP')
 
-_gitroot=https://bitbucket.org/vianney/tmux-applet.git
-_gitname=tmux-applet
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  _date=$(git show -s --format='%ci' | cut -d' ' -f1 | sed 's/-//g')
+  _hash=$(git show -s --format='%h')
+  echo "$_date.g$_hash"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd "$srcdir/$_pkgname"
   make PREFIX=/usr ETCDIR=/etc
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir/" PREFIX=/usr ETCDIR=/etc install
 }
 
