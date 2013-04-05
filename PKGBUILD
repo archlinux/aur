@@ -1,5 +1,5 @@
 pkgname=eml2mbox
-pkgver=0.08
+pkgver=0.09
 pkgrel=1
 pkgdesc="Converts a bunch of eml files into one mbox file"
 arch=('any')

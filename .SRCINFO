@@ -1,6 +1,6 @@
 pkgbase = eml2mbox
 	pkgdesc = Converts a bunch of eml files into one mbox file
-	pkgver = 0.08
+	pkgver = 0.09
 	pkgrel = 1
 	url = https://github.com/yardenac/eml2mbox
 	arch = any
