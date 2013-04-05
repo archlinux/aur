@@ -17,7 +17,6 @@ pkgbase = evas_generic_loaders-git
 	conflicts = evas_generic_loaders
 	conflicts = evas_generic_loaders-svn
 	options = !libtool
-	options = debug
 	source = git://git.enlightenment.org/core/evas_generic_loaders.git
 	md5sums = SKIP
 

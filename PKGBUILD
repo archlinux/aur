@@ -14,7 +14,7 @@ depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg' 'gstreamer0.10-base
 makedepends=('git')
 provides=('evas_generic_loaders')
 conflicts=('evas_generic_loaders' 'evas_generic_loaders-svn')
-options=('!libtool' 'debug')
+options=('!libtool')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
 
