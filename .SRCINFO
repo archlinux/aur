@@ -1,0 +1,16 @@
+pkgbase = knc-git
+	pkgdesc = kerberised netcat, provides mutually authenticated tunnel
+	pkgver = 20130214
+	pkgrel = 1
+	url = http://oskt.secure-endpoints.com/knc.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = krb5
+	options = !libtool
+	source = git+http://oskt.secure-endpoints.com/git/knc
+	md5sums = SKIP
+
+pkgname = knc-git
+
