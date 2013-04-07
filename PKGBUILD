@@ -22,7 +22,7 @@ md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          '606328662bc1bd09b54b8ff33c6260bf'
          'd01f2350ec9f92e2eabcde0f11be24f2'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
-         '9d3c56a4b999c8bfbd4018089a62f662')
+         'f3def2cefdcbb954c21d8505d23cc83c')
 pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(kernel26 linux)
