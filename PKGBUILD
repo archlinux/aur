@@ -6,7 +6,7 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
@@ -18,21 +18,12 @@ makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2' 'vala' 'gcr')
 optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support'
             'aria2: download utility')
 options=('!emptydirs')
-source=("http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2"
-        'fix-copying.patch')
-sha256sums=('f01e5dc45e94f909e48f0dd62cc4afedd80710769fdf98bc4e0b38d4ef0abc11'
-            'd4395ac994d8d614f93ae4863bbf6289b1980e0ed84aef52ca95a678b464b959')
+source=("http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2")
+sha256sums=('d280c19bb135f2b644a67d9f34d1ec1c148ceb14b5de11ce6c23f64c15be5df0')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  # FS#32229
-  patch -s -Np1 -i ../fix-copying.patch > /dev/null || true
-
-  # Python 2 
-  export PYTHON=/usr/bin/python2
-  sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" wscript waf
-  
   ./configure --prefix=/usr \
               --jobs=${MAKEFLAGS/-j/} \
               --enable-addons \
