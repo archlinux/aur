@@ -1,0 +1,14 @@
+pkgbase = python-pynmea
+	pkgdesc = Python NMEA Library - a small library to help read and parse NMEA data
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pynmea/0.6.0
+	arch = any
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/pynmea/pynmea-0.6.0.tar.gz
+	md5sums = 69bfc63f475bdeb34bf8aa0745236672
+
+pkgname = python-pynmea
+
