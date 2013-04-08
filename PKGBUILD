@@ -3,26 +3,28 @@
 
 pkgname=ewebkit-svn
 _pkgname=ewebkit
-pkgver=146904
-pkgrel=2
+pkgver=147944
+pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
-_svntrunk="https://svn.webkit.org/repository/webkit/trunk"
+_svnurl="https://svn.webkit.org/repository/webkit/trunk"
 license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'sqlite' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
+source=('uninitialized_pointer.patch')
+md5sums=('64f29e03a269cadeaca651f4f4746200')
 if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-  source+=("$_pkgname"::svn+"$_svntrunk")
+  source+=("$_pkgname::svn+$_svnurl")
   md5sums+=("SKIP")
 fi
 
 pkgver() {
   if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-    svnversion "$SRCDEST/$_pkgname"
+    svnversion "$SRCDEST/$_pkgname" | sed 's/P$//'
   else
-    svnversion "$_svntrunk"
+    svn info "$_svnurl" | awk '/Revision/ {print $2}'
   fi
 }
 
@@ -32,7 +34,7 @@ prepare() {
   if [[ ! -d "$_pkgname/.svn" ]]; then
 #   if this is the first run, checkout only what we need from the repo
     msg2 "Cloning $_pkgname svn repo..."
-    svn co --depth immediates --config-dir "$_pkgname" -r "$pkgver" "$_svntrunk" "$_pkgname"
+    svn co --depth immediates --config-dir "$_pkgname" -r "$pkgver" "$_svnurl" "$_pkgname"
     cd "$_pkgname"
     svn up --set-depth infinity -r "$pkgver" Source
     svn up --set-depth infinity -r "$pkgver" Tools
@@ -42,6 +44,10 @@ prepare() {
     rm -rf "$srcdir/$_pkgname"
     svn export "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
   fi
+
+# Initialize pointer to avoid build error
+  cd $srcdir/$_pkgname
+  patch -Np0 < ../uninitialized_pointer.patch
 }
 
 build() {

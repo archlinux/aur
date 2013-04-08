@@ -1,7 +1,7 @@
 pkgbase = ewebkit-svn
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries
-	pkgver = 146904
-	pkgrel = 2
+	pkgver = 147944
+	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
 	arch = x86_64
@@ -26,6 +26,8 @@ pkgbase = ewebkit-svn
 	depends = libsoup
 	depends = libxslt
 	depends = libxt
+	source = uninitialized_pointer.patch
+	md5sums = 64f29e03a269cadeaca651f4f4746200
 
 pkgname = ewebkit-svn
 
