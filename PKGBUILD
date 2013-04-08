@@ -1,6 +1,6 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
-pkgver=3.9.10
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
@@ -24,20 +24,19 @@ package() {
 
   cd "$srcdir/HikariKnight-rsu-client-$_hash/runescape"
 
-  mkdir -p "$_instdir"/{share,modules} "$pkgdir"/usr/{bin,share/applications}
+  mkdir -p "$_instdir" "$pkgdir"/usr/{bin,share/applications}
 
   # copy the stuff
-  cp -t "$_instdir" *.txt runescape update-runescape-client rsu-settings AUTHORS
-  cp -R share "$_instdir"/
-  cp -R modules "$_instdir"/
-  cp -R templates/packaging/usr/share "$pkgdir"/usr/
-  ## jawt.dll is no longer packaged upstream ##
-  # cp -R win32/jawt "$_instdir"/win32/
- 
-  # symlink executables
-  ln -s ../../opt/runescape/runescape "$pkgdir"/usr/bin/runescape
-  ln -s ../../opt/runescape/update-runescape-client "$pkgdir"/usr/bin/update-runescape-client
-  ln -s ../../opt/runescape/rsu-settings "$pkgdir"/usr/bin/rsu-settings
+  cp -t "$_instdir" *.txt runescape updater rsu-settings AUTHORS
+  cp -Rt "$_instdir" share rsu
+  cp -Rt "$pkgdir"/usr/bin templates/packaging/usr/games/*
+  cp -Rt "$pkgdir"/usr templates/packaging/usr/share
+
+  # typo fix - applied upstream in following commits:
+  # d2ef369f74a671667732af6d742bc63dfc8bf0e9
+  # e169b1c5f4bb9380ca7bdd3f55cd6aafb7bc714f
+  # 525b8b693388a65642976c6fb0ac65da29816c7c
+  sed -e 's/sciptname/scriptname/g' -i "$pkgdir"/usr/bin/{runescape,rsu-settings,update-runescape-client}
 }
 
-md5sums=('99baef5cfb5b5597aeebaa20c3bcf68c')
+md5sums=('39436913d5e85e6e7c5ee62daab1411d')
