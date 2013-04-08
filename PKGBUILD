@@ -1,6 +1,6 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
@@ -31,12 +31,6 @@ package() {
   cp -Rt "$_instdir" share rsu
   cp -Rt "$pkgdir"/usr/bin templates/packaging/usr/games/*
   cp -Rt "$pkgdir"/usr templates/packaging/usr/share
-
-  # typo fix - applied upstream in following commits:
-  # d2ef369f74a671667732af6d742bc63dfc8bf0e9
-  # e169b1c5f4bb9380ca7bdd3f55cd6aafb7bc714f
-  # 525b8b693388a65642976c6fb0ac65da29816c7c
-  sed -e 's/sciptname/scriptname/g' -i "$pkgdir"/usr/bin/{runescape,rsu-settings,update-runescape-client}
 }
 
-md5sums=('39436913d5e85e6e7c5ee62daab1411d')
+md5sums=('88deaf23a1253357e8ea133a13858545')
