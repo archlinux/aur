@@ -51,11 +51,15 @@ prepare() {
 
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
   sed -i "s/        'Growl/\#&/" Build.PL
+
+  # Nasty fix for useless warning
+  sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
 }
 
 build() {
   cd "$_src_dir"
   msg " ⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead.\n"
+  msg "Running Slic3r under Perl >= 5.16 is not supported nor recommended\nIn case of related to this issues please use ARM repository to get older perl package\n"
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
 
   # Build stage
