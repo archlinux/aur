@@ -1,7 +1,7 @@
 pkgbase = vlc-decklink
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)
-	pkgver = 2.0.5
-	pkgrel = 5
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = http://www.videolan.org/vlc/
 	install = vlc.install
 	arch = i686
@@ -100,8 +100,8 @@ pkgbase = vlc-decklink
 	options = !emptydirs
 	backup = usr/share/vlc/lua/http/.hosts
 	backup = usr/share/vlc/lua/http/dialogs/.hosts
-	source = http://download.videolan.org/pub/videolan/vlc/2.0.5/vlc-2.0.5.tar.xz
-	md5sums = 4f959c0766ada8cea5a72c65fce94ebe
+	source = http://download.videolan.org/pub/videolan/vlc/2.0.6/vlc-2.0.6.tar.xz
+	md5sums = b45be633c71dca04ca7d6c3d64dd728b
 
 pkgname = vlc-decklink
 

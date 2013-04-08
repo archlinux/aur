@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 180898 2013-03-27 20:10:16Z guillaume $
+# $Id: PKGBUILD 182353 2013-04-08 21:34:41Z giovanni $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.5
-pkgrel=5
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -63,7 +63,7 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!libtool' '!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('4f959c0766ada8cea5a72c65fce94ebe')
+md5sums=('b45be633c71dca04ca7d6c3d64dd728b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
