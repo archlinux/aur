@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=26.0.1410.43
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -95,6 +95,7 @@ build() {
     -Dlinux_strip_binary=1 \
     -Dlinux_use_gold_binary=0 \
     -Dlinux_use_gold_flags=0 \
+    -Dlinux_use_tcmalloc=0 \
     -Drelease_extra_cflags="$CFLAGS" \
     -Dffmpeg_branding=Chrome \
     -Dproprietary_codecs=1 \
