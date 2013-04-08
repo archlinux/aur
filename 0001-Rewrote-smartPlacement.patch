@@ -1,0 +1,401 @@
+From 451fee0896ec21ccaaeb02f88f39becc5d06db0f Mon Sep 17 00:00:00 2001
+From: jjacky <i.am.jack.mail@gmail.com>
+Date: Fri, 5 Apr 2013 15:33:00 +0200
+Subject: [PATCH] Rewrote smartPlacement()
+
+Instead of trying to find the position with the least overlaps, including all
+stacked windows with the same weight, we now try to determine the place where
+the lowest window on stack is visible, to put the new window there.
+
+In effect, this means all windows hidden by another one are ignored, only
+windows visible to the user should matter. We put the new window on top of the
+window the lowest on stack, i.e. the last one to be activated/(fully) visible.
+
+By default we will snap to top/left if possible, since we use that corner as
+position for the window. If option snap_to_border is activated, and we're not
+snapper to the top/left borders, if we can we'll snap to the bottom/right ones.
+
+Signed-off-by: jjacky <i.am.jack.mail@gmail.com>
+---
+ src/placement.c | 341 +++++++++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 288 insertions(+), 53 deletions(-)
+
+diff --git a/src/placement.c b/src/placement.c
+index 248d339..b4423cc 100644
+--- a/src/placement.c
++++ b/src/placement.c
+@@ -532,15 +532,139 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
+ }
+ 
+ static void
++expand_horizontal (cairo_region_t        *region,
++                   cairo_rectangle_int_t *rect,
++                   gint                   full_x,
++                   gint                   full_y,
++                   gint                   full_w,
++                   gint                   full_h)
++{
++    cairo_rectangle_int_t r;
++    cairo_region_overlap_t overlap;
++
++    /* a chance to expand on the left? */
++    if (rect->x > full_x)
++    {
++        /* try the full expansion first */
++        r.x = full_x;
++        r.y = rect->y;
++        r.width = rect->x;
++        r.height = rect->height;
++        overlap = cairo_region_contains_rectangle (region, &r);
++        if (overlap == CAIRO_REGION_OVERLAP_IN)
++            rect->x = r.x;
++        else if (overlap == CAIRO_REGION_OVERLAP_PART)
++        {
++            /* there might be some expansion possible */
++            r.x = rect->x;
++            r.width = 0;
++            do
++            {
++                --r.x;
++                ++r.width;
++                overlap = cairo_region_contains_rectangle (region, &r);
++            } while (overlap == CAIRO_REGION_OVERLAP_IN);
++            if (r.width - 1 > 0)
++                rect->x = r.x + 1;
++        }
++    }
++    /* a chance to expand on the right? */
++    if (rect->x + rect->width < full_x + full_w)
++    {
++        /* try the full expansion first */
++        r.x = rect->x + rect->width;
++        r.y = rect->y;
++        r.width = full_x + full_w - r.x;
++        r.height = rect->height;
++        overlap = cairo_region_contains_rectangle (region, &r);
++        if (overlap == CAIRO_REGION_OVERLAP_IN)
++            rect->width += r.width;
++        else if (overlap == CAIRO_REGION_OVERLAP_PART)
++        {
++            /* there might be some expansion possible */
++            r.width = 0;
++            do
++            {
++                ++r.width;
++                overlap = cairo_region_contains_rectangle (region, &r);
++            } while (overlap == CAIRO_REGION_OVERLAP_IN);
++            if (--r.width > 0)
++                rect->width += r.width;
++        }
++    }
++}
++
++static void
++expand_vertical (cairo_region_t        *region,
++                 cairo_rectangle_int_t *rect,
++                 gint                   full_x,
++                 gint                   full_y,
++                 gint                   full_w,
++                 gint                   full_h)
++{
++    cairo_rectangle_int_t r;
++    cairo_region_overlap_t overlap;
++
++    /* a chance to expand on top? */
++    if (rect->y > full_y)
++    {
++        /* try the full expansion first */
++        r.x = rect->x;
++        r.y = full_y;
++        r.width = rect->width;
++        r.height = rect->y - r.y;
++        overlap = cairo_region_contains_rectangle (region, &r);
++        if (overlap == CAIRO_REGION_OVERLAP_IN)
++            rect->y = r.y;
++        else if (overlap == CAIRO_REGION_OVERLAP_PART)
++        {
++            /* there might be some expansion possible */
++            r.height = 0;
++            r.y = rect->y;
++            do
++            {
++                --r.y;
++                ++r.height;
++                overlap = cairo_region_contains_rectangle (region, &r);
++            } while (overlap == CAIRO_REGION_OVERLAP_IN);
++            if (r.height - 1 > 0)
++                rect->y = r.y + 1;
++        }
++    }
++    /* a chance to expand on bottom? */
++    if (rect->y + rect->height < full_y + full_h)
++    {
++        /* try the full expansion first */
++        r.x = rect->x;
++        r.y = rect->y + rect->height;
++        r.width = rect->width;
++        r.height = full_y + full_h - r.y;
++        overlap = cairo_region_contains_rectangle (region, &r);
++        if (overlap == CAIRO_REGION_OVERLAP_IN)
++            rect->height += r.height;
++        else if (overlap == CAIRO_REGION_OVERLAP_PART)
++        {
++            /* there might be some expansion possible */
++            r.height = 0;
++            do
++            {
++                ++r.height;
++                overlap = cairo_region_contains_rectangle (region, &r);
++            } while (overlap == CAIRO_REGION_OVERLAP_IN);
++            if (--r.height > 0)
++                rect->height += r.height;
++        }
++    }
++}
++
++static void
+ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+ {
+-    Client *c2;
+     ScreenInfo *screen_info;
+-    gfloat best_overlaps;
+-    guint i;
+-    gint test_x, test_y, xmax, ymax, best_x, best_y;
+     gint frame_height, frame_width, frame_left, frame_top;
+-    gboolean first;
++    cairo_region_t *region_monitor, *region_used, *region_hole, *region_tmp;
++    cairo_rectangle_int_t rect;
++    GList *list;
+ 
+     g_return_if_fail (c != NULL);
+     TRACE ("entering smartPlacement");
+@@ -550,67 +674,178 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+     frame_width = frameWidth (c);
+     frame_left = frameLeft(c);
+     frame_top = frameTop (c);
+-    test_x = 0;
+-    test_y = 0;
+-    best_overlaps = 0.0;
+-    first = TRUE;
+-
+-    xmax = full_x + full_w - c->width - frameRight (c);
+-    ymax = full_y + full_h - c->height - frameBottom (c);
+-    best_x = full_x + frameLeft (c);
+-    best_y = full_y + frameTop (c);
+ 
+-    test_y = full_y + frameTop (c);
+-    do
++    /* region of the monitor (i.e. where we can/want to put the window) */
++    rect.x = full_x;
++    rect.y = full_y;
++    rect.width = full_w;
++    rect.height = full_h;
++    region_monitor = cairo_region_create_rectangle (&rect);
++    /* region where we'll add visible windows (i.e. used space) */
++    region_used = cairo_region_create ();
++    /* region of monitor we can use, i.e. monitor - used */
++    region_hole = NULL;
++
++    for (list = g_list_last (screen_info->windows_stack); list; list = g_list_previous (list))
+     {
+-        test_x = full_x + frameLeft (c);
+-        do
++        Client *c2 = list->data;
++        gint i, n;
++        gboolean done;
++        cairo_rectangle_int_t best;
++        gdouble best_surface = 0;
++        gboolean can_window_fit = FALSE;
++
++        if (!clientSelectMask (c2, NULL, SEARCH_INCLUDE_SKIP_PAGER | SEARCH_INCLUDE_SKIP_TASKBAR, WINDOW_REGULAR_FOCUSABLE))
++                continue;
++
++        /* rectangle for the window */
++        rect.x = frameX (c2);
++        rect.y = frameY (c2);
++        rect.width = frameWidth (c2);
++        rect.height = frameHeight (c2);
++
++        switch (cairo_region_contains_rectangle (region_monitor, &rect))
+         {
+-            gfloat count_overlaps = 0.0;
+-            TRACE ("analyzing %i clients", screen_info->client_count);
+-            for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+-            {
+-                if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
+-                    && (c->win_workspace == c2->win_workspace)
+-                    && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
++            case CAIRO_REGION_OVERLAP_OUT:
++                /* another monitor, ignore it */
++                continue;
++            case CAIRO_REGION_OVERLAP_IN:
++                /* add the window's rect to region_used */
++                cairo_region_union_rectangle (region_used, &rect);
++                break;
++            case CAIRO_REGION_OVERLAP_PART:
+                 {
+-                    count_overlaps += overlap (test_x - frame_left,
+-                                               test_y - frame_top,
+-                                               test_x - frame_left + frame_width,
+-                                               test_y - frame_top + frame_height,
+-                                               frameX (c2),
+-                                               frameY (c2),
+-                                               frameX (c2) + frameWidth (c2),
+-                                               frameY (c2) + frameHeight (c2));
++                    /* get only the part of the window on our monitor */
++                    region_tmp = cairo_region_copy (region_monitor);
++                    cairo_region_intersect_rectangle (region_tmp, &rect);
++                    /* and add it to region_used */
++                    cairo_region_union (region_used, region_tmp);
++                    cairo_region_destroy (region_tmp);
+                 }
+-            }
+-            if (count_overlaps < 0.1)
+-            {
+-                TRACE ("overlaps is 0 so it's the best we can get");
+-                c->x = test_x;
+-                c->y = test_y;
++        }
+ 
+-                return;
+-            }
+-            else if ((count_overlaps < best_overlaps) || (first))
++        /* get a region of the monitor - visible window, i.e. leaving space
++         * where we can put out window. The goal is to reach a place where there
++         * isn't such space, and then go back one iteration, so we use the space
++         * of the visible (to the user) window the lowest on the stack */
++        region_tmp = cairo_region_copy (region_monitor);
++        cairo_region_subtract (region_tmp, region_used);
++
++        /* is there still free space left? */
++        n = cairo_region_num_rectangles (region_tmp);
++        done = TRUE;
++        for (i = 0; i < n; ++i)
++        {
++            cairo_region_get_rectangle (region_tmp, i, &rect);
++            /* ignore little areas between windows */
++            if (rect.width <= 15 || rect.height <= 15)
++                continue;
++            done = FALSE;
++            break;
++        }
++        if (!done)
++        {
++            if (region_hole)
++                cairo_region_destroy (region_hole);
++            region_hole = region_tmp;
++            continue;
++        }
++        cairo_region_destroy (region_tmp);
++
++        /* got nothing, use defaults */
++        if (!region_hole)
++            break;
++
++        cairo_region_destroy (region_monitor);
++        cairo_region_destroy (region_used);
++
++        n = cairo_region_num_rectangles (region_hole);
++        for (i = 0; i < n; ++i)
++        {
++            cairo_rectangle_int_t r;
++            cairo_rectangle_int_t exp;
++            gdouble exp_surface;
++            gboolean exp_can_window_fit;
++            gdouble surface;
++            gboolean can_fit;
++
++            cairo_region_get_rectangle (region_hole, i, &rect);
++
++            /* expand horizontally, then vertically */
++            expand_horizontal (region_hole, &rect, full_x, full_y, full_w, full_h);
++            expand_vertical (region_hole, &rect, full_x, full_y, full_w, full_h);
++            exp = rect;
++            exp_surface = exp.width * exp.height;
++            exp_can_window_fit = frame_width <= exp.width && frame_height <= exp.height;
++
++            /* expand vertically, then horizontally */
++            expand_vertical (region_hole, &rect, full_x, full_y, full_w, full_h);
++            expand_horizontal (region_hole, &rect, full_x, full_y, full_w, full_h);
++            /* keep the best one */
++            surface = rect.width * rect.height;
++            can_fit = frame_width <= rect.width && frame_height <= rect.height;
++            /* if we can now fit the window, or still can't but in a larger
++             * rect; or still can but in a smaller rect */
++            if ((!exp_can_window_fit && (can_fit || surface > exp_surface))
++                    || (exp_can_window_fit && can_fit && surface < exp_surface))
+             {
+-                best_x = test_x;
+-                best_y = test_y;
+-                best_overlaps = count_overlaps;
++                exp_can_window_fit = can_fit;
++                exp = rect;
++                exp_surface = surface;
+             }
+-            if (first)
++
++            /* is this the new best result ? (same criteria) */
++            if (best_surface == 0 /* our first result */
++                    || (!can_window_fit && (exp_can_window_fit || exp_surface > best_surface))
++                    || (can_window_fit && exp_can_window_fit && exp_surface < best_surface))
+             {
+-                first = FALSE;
++                can_window_fit = exp_can_window_fit;
++                best = exp;
++                best_surface = exp_surface;
+             }
+-            test_x += 8;
+         }
+-        while (test_x <= xmax);
+-        test_y += 8;
++        cairo_region_destroy (region_hole);
++
++        c->x = best.x;
++        c->y = best.y;
++
++        /* unless it could fit, make sure it's fully within monitor */
++        if (!can_window_fit)
++        {
++            /* move to the left if needed */
++            n = c->x + frame_width - full_x - full_w;
++            if (n > 0)
++                c->x -= n;
++            /* move to the top if needed */
++            n = c->y + frame_height - full_y - full_h;
++            if (n > 0)
++                c->y -= n;
++        }
++
++        /* w/ option snap_to_border, we'll try to do just that on the right
++         * & bottom borders if we can & are not on the top/left ones already */
++        if (screen_info->params->snap_to_border)
++        {
++            /* snap right */
++            if (c->x > full_x && best.x + best.width == full_x + full_w)
++                c->x = full_x + full_w - frame_width;
++            /* snap bottom */
++            if (c->y > full_y && best.y + best.height == full_y + full_h)
++                c->y = full_y + full_h - frame_height;
++        }
++
++        /* add frames */
++        c->x += frame_left;
++        c->y += frame_top;
++
++        return;
+     }
+-    while (test_y <= ymax);
+ 
+-    c->x = best_x;
+-    c->y = best_y;
++    cairo_region_destroy (region_monitor);
++    cairo_region_destroy (region_used);
++
++    c->x = full_x + frame_left;
++    c->y = full_y + frame_top;
+ }
+ 
+ static void
+-- 
+1.8.2
+

@@ -1,0 +1,84 @@
+From 099614e3f045e06db7ab509e174510ea74857adb Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <fourdan@xfce.org>
+Date: Wed, 18 Jul 2012 20:12:07 +0000
+Subject: Implement NET_WM_MOVERESIZE_CANCEL message (bug #8949)
+
+as gtk+-3.4 now uses it.
+---
+diff --git a/src/display.h b/src/display.h
+index 1ad2ef8..8797237 100644
+--- a/src/display.h
++++ b/src/display.h
+@@ -163,7 +163,8 @@ enum
+     NET_WM_MOVERESIZE_SIZE_LEFT,
+     NET_WM_MOVERESIZE_MOVE,
+     NET_WM_MOVERESIZE_SIZE_KEYBOARD,
+-    NET_WM_MOVERESIZE_MOVE_KEYBOARD
++    NET_WM_MOVERESIZE_MOVE_KEYBOARD,
++    NET_WM_MOVERESIZE_CANCEL
+ };
+
+ enum
+diff --git a/src/moveresize.c b/src/moveresize.c
+index 9893c30..a98bdf7 100644
+--- a/src/moveresize.c
++++ b/src/moveresize.c
+@@ -827,7 +827,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
+     eventFilterStatus status = EVENT_FILTER_STOP;
+     MoveResizeData *passdata = (MoveResizeData *) data;
+     Client *c = NULL;
+-    gboolean moving = TRUE;
++    gboolean moving;
+     XWindowChanges wc;
+     int prev_x, prev_y;
+
+@@ -840,6 +840,12 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
+     display_info = screen_info->display_info;
+     configure_flags = NO_CFG_FLAG;
+
++    /*
++     * Clients may choose to end the move operation,
++     * we use XFWM_FLAG_MOVING_RESIZING for that.
++     */
++    moving = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
++
+     /* Update the display time */
+     myDisplayUpdateCurrentTime (display_info, xevent);
+
+@@ -1294,7 +1300,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
+     screen_info = c->screen_info;
+     display_info = screen_info->display_info;
+     status = EVENT_FILTER_STOP;
+-    resizing = TRUE;
++
++    /*
++     * Clients may choose to end the resize operation,
++     * we use XFWM_FLAG_MOVING_RESIZING for that.
++     */
++    resizing = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
+
+     frame_x = frameX (c);
+     frame_y = frameY (c);
+diff --git a/src/netwm.c b/src/netwm.c
+index 545e64a..1352f08 100644
+--- a/src/netwm.c
++++ b/src/netwm.c
+@@ -695,10 +695,15 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
+             resize = TRUE; /* Resize */
+             break;
+         case NET_WM_MOVERESIZE_MOVE:
+-        default:
+             event->type = ButtonPress;
+             resize = FALSE; /* Move */
+             break;
++        case NET_WM_MOVERESIZE_CANCEL:
++            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
++            /* Walk through */
++        default: /* Do nothing */
++            return;
++            break;
+     }
+
+     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+--
+cgit v0.9.0.3

@@ -1,0 +1,27 @@
+pkgbase = xfwm4-better-smartplacement
+	pkgdesc = Xfce window manager w/ better smart placement of new windows
+	pkgver = 4.10.0
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfwm4-better-smartplacement.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = libxfce4ui
+	depends = libwnck
+	depends = hicolor-icon-theme
+	provides = xfwm4=4.10.0
+	conflicts = xfwm4
+	options = !libtool
+	source = http://archive.xfce.org/src/xfce/xfwm4/4.10/xfwm4-4.10.0.tar.bz2
+	source = 0001-Rewrote-smartPlacement.patch
+	source = xfwm4-4.10.0-implement-NET_WM_MOVERESIZE_CANCEL.patch
+	sha1sums = 1549954949b5e1f38a2279a39a477b52bb5339f2
+	sha1sums = a7894fd9fb0edc7b4c0149e5c6c3eb085483cff3
+	sha1sums = 32dd678f8477a5b30d17641a0d75c5a54c4dca52
+
+pkgname = xfwm4-better-smartplacement
+
