@@ -1,0 +1,10 @@
+TEXT="==> for compatibility mode to work, you need to install 'wine' and any windows jre inside it.
+"
+
+post_install() {
+    echo $TEXT
+}
+
+post_upgrade() {
+    echo $TEXT
+}
