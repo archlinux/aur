@@ -1,0 +1,19 @@
+pkgbase = culmus
+	pkgdesc = A collection of Type1 and TrueType Hebrew fonts
+	pkgver = 0.130
+	pkgrel = 1
+	url = http://culmus.sourceforge.net
+	install = culmus.install
+	arch = any
+	license = GPL2
+	depends = fontconfig
+	depends = xorg-fonts-alias
+	depends = xorg-font-utils
+	depends = xorg-fonts-encodings
+	source = http://downloads.sourceforge.net/culmus/culmus-0.130.tar.gz
+	source = culmus-0.121-fontconfig_fix.patch
+	md5sums = 58e672defde4caeae42017cd2f9436a6
+	md5sums = 6db715a072d9602a54c69a7e31a6428f
+
+pkgname = culmus
+
