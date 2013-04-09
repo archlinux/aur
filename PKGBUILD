@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=tla-tools
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   'tla2tex'
   'tlc'
 )
-sha256sums=('c8575fa589bf5e8ee8ced8cb464ab7763d6177f2994a7cf172d0997787e537a8'
+sha256sums=('83de9d8459d65b91a951350144560525342fb18bcd9491a4258c64a34146eef1'
             '6b807b8d022564cb1e1a2407915bcbcb8914775f8216653c98730cbf35ff7da8'
             '67001aa90cd3000e8ae00cdd064d594531d44b76f0c6141be6d3f0e85944008a'
             '9b5152e04f56ae8fe307609fd2509ea200d0b699da58a2cb9a779f7bde1c358d'
