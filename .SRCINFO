@@ -1,6 +1,6 @@
 pkgbase = dbench-git
 	pkgdesc = A filesystem benchmark based on load patterns
-	pkgver = 20110123
+	pkgver = 20130101
 	pkgrel = 1
 	url = http://dbench.samba.org/
 	arch = i686
@@ -8,6 +8,8 @@ pkgbase = dbench-git
 	license = GPL3
 	makedepends = git
 	depends = smbclient
+	source = git://git.samba.org/sahlberg/dbench.git
+	sha256sums = SKIP
 
 pkgname = dbench-git
 
