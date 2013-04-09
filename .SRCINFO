@@ -5,6 +5,7 @@ pkgbase = shunit2
 	url = http://code.google.com/p/shunit2/
 	arch = any
 	license = LGPL2.1
+	depends = bash
 	source = http://shunit2.googlecode.com/files/shunit2-2.1.6.tgz
 	md5sums = 4af955ef88c454808754939c83afa22b
 
