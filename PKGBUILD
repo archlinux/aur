@@ -3,7 +3,7 @@
 
 pkgname=mcpatcher2
 _pkgname=mcpatcher
-pkgver='2.4.5_03'
+pkgver='2.4.5_04'
 pkgrel=1
 pkgdesc='Minecraft patcher to fix textures with higher than default resolution'
 arch=('any')
@@ -16,7 +16,7 @@ changelog=ChangeLog
 source=(https://bitbucket.org/prupe/mcpatcher/downloads/$_pkgname-$pkgver.jar
         mcpatcher2
         mcpatcher2.desktop)
-md5sums=('d5b33a8cf4896beef40013d778b614b2'
+md5sums=('c2c4e0327a6074209371953385108615'
          'f0f63af475d5d666395b9b41f59c9f5e'
          '9007f849ab95ccd7e62134b858b8618e')
 

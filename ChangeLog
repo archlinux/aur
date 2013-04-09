@@ -1,3 +1,11 @@
+2013-04-09 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 2.4.5_04-1
+	Version bump.
+
+	Upstream changelog:
+	- Fix a crash with Better Than Wolves 4.65b
+
 2013-04-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 2.4.5_03-1
