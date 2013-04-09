@@ -1,6 +1,6 @@
 pkgbase = e17-places-svn
 	pkgdesc = Enlightenment module: Manage the mounting of volumes
-	pkgver = 82790
+	pkgver = 83648
 	pkgrel = 1
 	url = http://code.google.com/p/e17mods/wiki/Places
 	arch = i686
