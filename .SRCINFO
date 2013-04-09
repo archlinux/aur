@@ -1,16 +1,12 @@
 pkgbase = shunit2
 	pkgdesc = xUnit based unit testing for Unix shell scripts
 	pkgver = 2.1.6
-	pkgrel = 6
+	pkgrel = 7
 	url = http://code.google.com/p/shunit2/
-	install = shunit2.install
-	arch = i686
-	arch = x86_64
-	license = LGPL
+	arch = any
+	license = LGPL2.1
 	source = http://shunit2.googlecode.com/files/shunit2-2.1.6.tgz
-	source = shunit2.install
 	md5sums = 4af955ef88c454808754939c83afa22b
-	md5sums = fb208a1eb601e1be84114df1fa2268db
 
 pkgname = shunit2
 
