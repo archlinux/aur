@@ -1,43 +1,49 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
-pkgname=isrcsubmit-git
-pkgver=20130312
+pkgbase=isrcsubmit-git
+pkgname=$pkgbase
+true && pkgname=('isrcsubmit-python2-git' 'isrcsubmit-python-git')
+pkgver=2.0.0.beta.1.0.g4bfa392
+pkgver(){
+  cd $srcdir/$pkgbase
+  git describe --tags --long | sed 's/-/./g;s/^v//'
+}
+epoch=1
 pkgrel=1
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
 license=('GPL3')
-depends=('python2' 'python2-musicbrainzngs' 'python2-discid')
-makedepends=('git')
+makedepends=('git' 'python-distribute' 'python2-distribute')
 provides=('isrcsubmit')
 conflicts=('isrcsubmit')
 options=(!emptydirs)
 
-_gitroot=https://github.com/JonnyJD/musicbrainz-isrcsubmit.git
-_gitname=isrcsubmit
+source=($pkgbase::git+https://github.com/JonnyJD/musicbrainz-isrcsubmit.git)
+md5sums=('SKIP')
+
+prepare() {
+  rm -rf $srcdir/$pkgbase-python2
+  git clone $pkgbase $pkgbase-python2
+}
 
 build() {
-  cd "$srcdir"
-  msg 'Connecting to GIT server....'
+  cd $pkgbase
+  python setup.py build
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg 'The local files are updated.'
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
 
-  msg 'GIT checkout done or server timeout'
-  msg 'Starting build...'
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd $srcdir/$pkgbase-python2
   python2 setup.py build
+
 }
-package() {
-  cd "$srcdir/$_gitname-build"
+package_isrcsubmit-python-git() {
+  depends=('python' 'python-musicbrainzngs' 'python-discid')
+  cd $srcdir/$pkgbase
+  python setup.py install --root="$pkgdir/" --optimize=1
+}
+package_isrcsubmit-python2-git() {
+  depends=('python2' 'python2-musicbrainzngs' 'python2-discid')
+  cd $srcdir/$pkgbase-python2
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
