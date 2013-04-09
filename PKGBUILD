@@ -24,7 +24,7 @@ pkgver() {
   if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
     svnversion "$SRCDEST/$_pkgname" | sed 's/P$//'
   else
-    svn info "$_svnurl" | awk '/Revision/ {print $2}'
+    LC_ALL=C svn info "$_svnurl" | awk '/Revision/ {print $2}'
   fi
 }
 
