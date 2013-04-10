@@ -7,8 +7,9 @@ pkgdesc="A dynamic, open source programming language with a focus on simplicity 
 arch=('i686' 'x86_64')
 url="http://www.ruby-lang.org/en/"
 license=('BSD' 'custom')
-depends=('glibc' 'gdbm' 'db' 'openssl' 'zlib' 'readline')
-makedepends=('subversion' 'autoconf')
+depends=('openssl')
+optdepends=('tk: for Ruby/TK')
+makedepends=('subversion' 'autoconf' 'openssl')
 # this installs with a suffix (no conflict)
 #conflicts=('ruby')
 #provides=('ruby=2.1.0dev')
@@ -36,6 +37,7 @@ build() {
     --sysconfdir=/etc \
     --enable-shared \
     --enable-pthread \
+    --disable-rpath \
     --program-suffix=$_suffix \
     --with-ruby-version=$_version \
     --with-soname=ruby$_suffix
@@ -49,8 +51,8 @@ check() {
 
 package() {
   cd "$srcdir/ruby"
-  make DESTDIR="$pkgdir" install
-  make DESTDIR="$pkgdir" install-doc
+  make DESTDIR="$pkgdir" install-nodoc
+  #make DESTDIR="$pkgdir" install-doc
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/ruby-svn/LICENSE"
   install -m644 BSDL "$pkgdir/usr/share/licenses/ruby-svn/"

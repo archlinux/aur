@@ -9,12 +9,9 @@ pkgbase = ruby-svn
 	license = custom
 	makedepends = subversion
 	makedepends = autoconf
-	depends = glibc
-	depends = gdbm
-	depends = db
+	makedepends = openssl
 	depends = openssl
-	depends = zlib
-	depends = readline
+	optdepends = tk: for Ruby/TK
 	source = ruby::svn+http://svn.ruby-lang.org/repos/ruby/trunk
 	md5sums = SKIP
 
