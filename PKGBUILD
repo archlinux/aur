@@ -1,7 +1,9 @@
+# vim:set ft=sh:
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kvirtual-git
-pkgver=20121103
+_gitname="kvirtual"
+pkgver=20120603.v1.1.1-3-g9609fc8
 pkgrel=1
 pkgdesc="KDE4 GUI-frontend for kvm/qemu emulator"
 arch=('i686' 'x86_64')
@@ -11,32 +13,15 @@ depends=('kdebase-runtime' 'qemu')
 makedepends=('git' 'cmake' 'automoc4')
 provides=('kvirtual')
 conflicts=('kvirtual')
-source=()
+source=("$_gitname::git://github.com/didier13150/kvirtual.git")
+md5sums=('SKIP')
 
-if [ -e .githash_$CARCH ] ; then
-	_gitphash=$(cat .githash_$CARCH)
-else
-	_gitphash=""
-fi
-
-_gitname="kvirtual"
-_gitroot="git://github.com/didier13150/kvirtual.git"
+pkgver() {
+	cd "$srcdir/$_gitname"
+	echo $(git log -1 --format="%ci" | sed 's/.*\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\).*/\1\2\3/').$(git describe --always )
+}
 
 build() {
-	if [ -d $srcdir/$_gitname/.git ] ; then
-		( cd $srcdir/$_gitname && git pull origin )
-		msg "The local files are updated."
-	else
-		( git clone --depth 1 $_gitroot $_gitname )
-	fi
-	msg "GIT checkout done or server timeout"
-
-	cd $_gitname
-	if [ "$_gitphash" == $(git show | grep -m 1 commit | sed 's/commit //') ]; then
-		msg "Git hash is the same as previous build"
-		return 1
-	fi
-
 	msg "creating build directory"
 	cd "$srcdir"
 	[ -d $_gitname-build ] && rm -rf $_gitname-build
@@ -50,7 +35,4 @@ build() {
 package() {
 	cd "$_gitname-build"
 	make DESTDIR="$pkgdir" install
-
-	cd "$srcdir/$_gitname"
-	git show | grep -m 1 commit | sed 's/commit //' > "$startdir/.githash_$CARCH"
 }
