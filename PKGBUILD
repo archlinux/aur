@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$SRCDEST/$_pkgname"
 
-  svn info | awk '/Last Changed Rev/ {print $4}'
+  LC_ALL=C svn info | awk '/Last Changed Rev/ {print $4}'
 }
 
 build() {
