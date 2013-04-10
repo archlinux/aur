@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
 pkgver=2420
-pkgrel=1
+pkgrel=2
 pkgdesc="Action role-playing game (ARPG, like diablo)"
 arch=(i686 x86_64)
 url="http://www.holyspirit.fr/"
@@ -13,32 +13,21 @@ optdepends=('qtwebkit: for the launcher')
 provides=('holyspirit')
 conflicts=('holyspirit')
 install=holyspirit.install
-source=(holyspirit.sh config_crash.patch backspace.patch qt-includes.patch)
+source=('holyspirit::svn+https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk'
+holyspirit.sh config_crash.patch backspace.patch qt-includes.patch)
 backup=('opt/share/games/holyspirit/configuration.conf' 'opt/share/games/holyspirit/key_mapping.conf')
-md5sums=('c2fa4f8768d35c54a95dec924e50c75f'
+md5sums=('SKIP'
+         'c2fa4f8768d35c54a95dec924e50c75f'
          'c0fd6d1ede2cb6afbcf082aaae0cc60b'
          '4967f1cd4216d1ec2ff3cfd1941b18df'
          '97fde790c28fd547be56a8c0d9e2029a')
 
-_svntrunk=https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk
-_svnmod=holyspirit
-
+pkgver(){
+  cd "$SRCDEST/holyspirit"
+  svnversion
+}
 build() {
-  cd "$srcdir"
-  msg "Connecting to SVN server...."
-
-  if [[ -d "$_svnmod/.svn" ]]; then
-    (cd "$_svnmod" && svn up -r "$pkgver")
-  else
-    svn co "$_svntrunk" --config-dir ./ -r "$pkgver" "$_svnmod"
-  fi
-
-  msg "SVN checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_svnmod-build"
-  cp -r "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
+  cd "$srcdir/holyspirit"
 
   # patches
   patch -p1 < ../config_crash.patch
@@ -57,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_svnmod-build"
+  cd "$srcdir/holyspirit"
 
   # fix currently broken upstream installation
   sed -i -e "s|$pkgdir/opt/share/games/holyspirit/||g" holyspirit.ini
