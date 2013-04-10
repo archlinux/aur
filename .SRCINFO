@@ -1,6 +1,6 @@
 pkgbase = kvirtual-git
 	pkgdesc = KDE4 GUI-frontend for kvm/qemu emulator
-	pkgver = 20120603.v1.1.1-3-g9609fc8
+	pkgver = 20120603.9609fc8
 	pkgrel = 1
 	url = http://kde-apps.org/content/show.php/KVirtual?content=150682
 	arch = i686

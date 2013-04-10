@@ -3,7 +3,7 @@
 
 pkgname=kvirtual-git
 _gitname="kvirtual"
-pkgver=20120603.v1.1.1-3-g9609fc8
+pkgver=20120603.9609fc8
 pkgrel=1
 pkgdesc="KDE4 GUI-frontend for kvm/qemu emulator"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo $(git log -1 --format="%ci" | sed 's/.*\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\).*/\1\2\3/').$(git describe --always )
+	echo $(git log -1 --format="%ci" | sed 's/.*\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\).*/\1\2\3/').$(git rev-parse --short HEAD)
 }
 
 build() {
