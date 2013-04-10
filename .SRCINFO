@@ -1,6 +1,6 @@
 pkgbase = addon-sdk-git
 	pkgdesc = addon-sdk/jetpack development (master) branch
-	pkgver = 20120418
+	pkgver = 4646.789d1e0
 	pkgrel = 1
 	url = http://blog.mozilla.com/addons/
 	install = addon-sdk.install
@@ -10,7 +10,8 @@ pkgbase = addon-sdk-git
 	depends = python2
 	optdepends = firefox
 	optdepends = firefox-nightly
-	md5sums = 8b73ef94708c5a3729636e662b6e0fd0
+	source = git://github.com/mozilla/addon-sdk.git
+	md5sums = SKIP
 
 pkgname = addon-sdk-git
 
