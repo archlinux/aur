@@ -83,7 +83,7 @@ build() {
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
 
-  # Silence "locally defined but not used" warnings in Chromium and WebKit
+  # Silence "typedef 'x' locally defined but not used" warnings
   CFLAGS+=' -Wno-unused-local-typedefs'
 
   build/gyp_chromium --depth=. \
