@@ -1,41 +1,26 @@
+# Contributor: Johannes Dewender arch at JonnyJD dot net
 # Contributor: Eduardo Robles Elvira <edulix AT gmail DOT com>
 # Contributor: Jon Nordby <jononor@gmail.com>
-# Contributor: Johannes Dewender arch at JonnyJD dot net
-
 pkgname=obs-build-git
-_pkgname=obs-build
-provides=($_pkgname)
-conflicts=($_pkgname)
-pkgver=20130119
-pkgrel=2
+pkgver=2.0_407.g1eead7d
+pkgrel=1
 pkgdesc="Building part of the OpenSUSE Build Service, osc-build - git version"
 url="http://build.opensuse.org"
+arch=(any)
 license=("GPL")
 depends=(bash perl rpm-org xz)
 makedepends=(git)
-arch=(any)
-source=()
-md5sums=()
+provides=(obs-build)
+conflicts=(obs-build)
+source=('git+https://github.com/openSUSE/obs-build.git')
+md5sums=('SKIP')
 
-_gitroot="https://github.com/openSUSE/obs-build.git"
-_gitname="$_pkgname"
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Install..."
+pkgver() {
+  cd "$srcdir/obs-build"
+  git describe --tags | sed -e 's/obs_//g' -e 's/-/_/' -e 's/-/./g' -e 's/$v//g'
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/obs-build"
   make install DESTDIR="$pkgdir"
 }
