@@ -26,7 +26,7 @@ md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          'f3def2cefdcbb954c21d8505d23cc83c')
 _kernelname=${pkgbase#linux}
 
-build() {
+prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
@@ -56,6 +56,10 @@ build() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+}
+
+build() {
+  cd "${srcdir}/${_srcname}"
 
   # get kernel version
   make prepare
