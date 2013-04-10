@@ -2,27 +2,30 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=gutenprint-cvs
-pkgver=20120525
+_docname=gutenprint
+pkgver=20130410
+_docver='5.2.9'
 pkgrel=1
-pkgdesc="Top quality printer drivers for POSIX systems"
+pkgdesc="Top quality printer drivers for POSIX systems (cvs version)"
 arch=('i686' 'x86_64')
 license=('GPL')
 install=gutenprint.install
-depends=('readline' 'gnutls>=2.12.3') # needs to be checked. build log says -Lgnutls but namcap doesn't detect it
-makedepends=('gimp>=2.6.11' 'gtk2>=2.24.4' 'cups>=1.4.6' 'foomatic-db-engine' 'ghostscript>=9.02' 'cvs')
+depends=('glibc')
+makedepends=('gimp' 'gtk2' 'cups' 'foomatic-db-engine' 'ghostscript')
 optdepends=('cups:		to use cups printer spooler(recommended)'
             'foomatic-db-engine:	to use foomatic spooler'
             'ghostscript:	adds postscript support for ijsgutenprint'
             'gimp:		adds gutenprint plugin to gimp')
-source=('http://downloads.sourceforge.net/gimp-print/gutenprint-5.2.7.tar.bz2' 'buildfix.patch')
+source=("http://downloads.sourceforge.net/gimp-print/${_docname}-${_docver}.tar.bz2"
+        'configure_ac.patch');
 url='http://gimp-print.sourceforge.net/'
 provides=('gutenprint')
 conflicts=('gutenprint')
 replaces=('gimp-print')
 options=('!libtool' '!emptydirs')
-noextract=('gutenprint-5.2.7.tar.bz2')
-md5sums=('b19029972bf28f6efd693270daf8f5de'
-         '2354cdecf1fbab32eca84266c8c72e7d')
+noextract=("${_docname}-${_docver}.tar.bz2")
+sha256sums=('4b27e4f06f32d30271df89ecb6089bb11bcf2caec5f60b0909e083095354bca0'
+            '041690da1d414e82297fc9bb8a1395cf133e198123c73572c69d932173343768')
 
 _cvsroot=':pserver:anonymous:@gimp-print.cvs.sourceforge.net:/cvsroot/gimp-print'
 _cvsmod='gimp-print'
@@ -46,17 +49,18 @@ build() {
   cp -r "$srcdir/$_cvsmod" "$srcdir/$_cvsmod-build"
   cd "$srcdir/$_cvsmod-build"
 
-  patch -Np1 -i "${srcdir}/buildfix.patch"
+  patch -Np1 -i "${srcdir}/configure_ac.patch"
   # We extract the precompiled documentation from the latest release because there is currently no easy way to run db2html on Arch.
-  tar -xjf "${srcdir}/gutenprint-5.2.7.tar.bz2" --strip-components 1 'gutenprint-5.2.7/doc/developer'
-  ./autogen.sh
-  ./configure --prefix=/usr --disable-samples --with-cups --with-gimp2 \
-	--disable-translated-cups-ppds --with-gimp2-as-gutenprint \
-	--disable-libgutenprintui  --enable-libgutenprintui2 --disable-gtktest \
-	--enable-cups-ppds --enable-cups-ppds-at-top-level \
-	--with-foomatic --with-foomatic3 --with-ghostscript \
-	--disable-static --disable-static-genppd --with-ijs \
-	--disable-globalized-cups-ppds
+  tar -xjf "${srcdir}/${_docname}-${_docver}.tar.bz2" --strip-components 1 "${_docname}-${_docver}/doc/developer"
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr \
+    --enable-samples \
+    --enable-cups-ppds \
+    --enable-cups-ppds-at-top-level \
+    --disable-translated-cups-ppds \
+    --disable-globalized-cups-ppds \
+    --disable-static \
+    --disable-static-genppd
   make
 }
 

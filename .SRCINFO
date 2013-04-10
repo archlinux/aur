@@ -1,20 +1,18 @@
 pkgbase = gutenprint-cvs
-	pkgdesc = Top quality printer drivers for POSIX systems
-	pkgver = 20120525
+	pkgdesc = Top quality printer drivers for POSIX systems (cvs version)
+	pkgver = 20130410
 	pkgrel = 1
 	url = http://gimp-print.sourceforge.net/
 	install = gutenprint.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gimp>=2.6.11
-	makedepends = gtk2>=2.24.4
-	makedepends = cups>=1.4.6
+	makedepends = gimp
+	makedepends = gtk2
+	makedepends = cups
 	makedepends = foomatic-db-engine
-	makedepends = ghostscript>=9.02
-	makedepends = cvs
-	depends = readline
-	depends = gnutls>=2.12.3
+	makedepends = ghostscript
+	depends = glibc
 	optdepends = cups: to use cups printer spooler(recommended)
 	optdepends = foomatic-db-engine: to use foomatic spooler
 	optdepends = ghostscript: adds postscript support for ijsgutenprint
@@ -22,13 +20,13 @@ pkgbase = gutenprint-cvs
 	provides = gutenprint
 	conflicts = gutenprint
 	replaces = gimp-print
-	noextract = gutenprint-5.2.7.tar.bz2
+	noextract = gutenprint-5.2.9.tar.bz2
 	options = !libtool
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/gimp-print/gutenprint-5.2.7.tar.bz2
-	source = buildfix.patch
-	md5sums = b19029972bf28f6efd693270daf8f5de
-	md5sums = 2354cdecf1fbab32eca84266c8c72e7d
+	source = http://downloads.sourceforge.net/gimp-print/gutenprint-5.2.9.tar.bz2
+	source = configure_ac.patch
+	sha256sums = 4b27e4f06f32d30271df89ecb6089bb11bcf2caec5f60b0909e083095354bca0
+	sha256sums = 041690da1d414e82297fc9bb8a1395cf133e198123c73572c69d932173343768
 
 pkgname = gutenprint-cvs
 

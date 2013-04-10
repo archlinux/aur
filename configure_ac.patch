@@ -1,0 +1,32 @@
+diff -ru gimp-print/configure.ac gimp-print.new/configure.ac
+--- gimp-print/configure.ac	2013-02-16 19:23:40.000000000 -0500
++++ gimp-print.new/configure.ac	2013-04-10 00:26:37.837341222 -0400
+@@ -140,7 +140,7 @@
+ GUTENPRINTUI2_LIBDEPS="${GUTENPRINTUI2_LIBDEPS} \$(GUTENPRINT_LIBS)"
+ 
+ dnl Specify a configuration file.
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ dnl Available languages (translations)
+ ALL_LINGUAS="ca cs da de el en_GB es fi fr gl hu it ja nb nl pl pt ru sk sl sv uk zh_CN zh_TW"
+@@ -499,7 +499,6 @@
+ AC_ISC_POSIX
+ AC_PROG_AWK
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AM_PROG_CC_C_O
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+diff -ru gimp-print/scripts/autogen.sh gimp-print.new/scripts/autogen.sh
+--- gimp-print/scripts/autogen.sh	2011-12-18 11:27:03.000000000 -0500
++++ gimp-print.new/scripts/autogen.sh	2013-04-10 00:26:27.894127709 -0400
+@@ -354,7 +354,7 @@
+       fi
+       echo "Running aclocal $aclocalinclude ..."
+       aclocal $aclocalinclude
+-      if grep "^AM_CONFIG_HEADER" configure.ac >/dev/null; then
++      if grep "^AC_CONFIG_HEADERS" configure.ac >/dev/null; then
+ 	echo "Running autoheader..."
+ 	autoheader
+       fi
