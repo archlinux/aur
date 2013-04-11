@@ -31,7 +31,7 @@ replaces=(kernel26 linux)
 backup=(etc/mkinitcpio.d/${pkgname}.preset boot/grub/menu.lst)
 install=${pkgname}.install
 
-build() {
+prepare() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
@@ -45,7 +45,9 @@ build() {
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|g" ./.config
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
   make prepare
-#  msg "Stopping build"; return 1
+}
+
+build() {
   CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   CXXFLAGS=${CXXFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   ionice -c 3 nice -n 19 make ${MAKEFLAGS} LOCALVERSION= bzImage modules
