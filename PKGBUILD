@@ -6,7 +6,7 @@
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=20130324
+pkgver=f910fc0
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -23,15 +23,22 @@ provides=("${_pkgname}" 'gummiboot-efi' 'gummiboot-efi-git')
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
-source=('loader.conf'
-        'arch.conf')
-
-sha1sums=('82a59f90d9138c26f8db52bb8e94991602cf1edd'
-          'aff6e152c3f7494e6113a8e2f073810366433015')
-
 _gitroot="git://anongit.freedesktop.org/gummiboot"
 _gitname="gummiboot"
 _gitbranch="master"
+
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'loader.conf'
+        'arch.conf')
+
+sha1sums=('SKIP'
+          '82a59f90d9138c26f8db52bb8e94991602cf1edd'
+          'aff6e152c3f7494e6113a8e2f073810366433015')
+          
+pkgver() {
+  cd "${_gitname}"
+  git describe --always | sed 's|-|.|g'
+}
 
 _update_git() {
 	
@@ -62,9 +69,6 @@ build() {
 	if [[ "${CARCH}" != "x86_64" ]]; then
 		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
 		exit 1
-	else
-		_update_git
-		echo
 	fi
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
@@ -76,6 +80,7 @@ build() {
 	
 	unset CFLAGS
 	unset CPPFLAGS
+	unset CXXFLAGS
 	unset LDFLAGS
 	
 	./autogen.sh
