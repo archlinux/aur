@@ -3,7 +3,7 @@
 _pkgname=notification-daemon
 pkgname=notification-daemon-gtk2
 pkgver=0.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Notification daemon for the desktop notifications framework for GTK2"
 arch=(i686 x86_64)
 license=('GPL')
@@ -31,6 +31,9 @@ build() {
       --libexecdir=/usr/lib/notification-daemon-1.0 \
       --localstatedir=/var --disable-static || return 1
   make || return 1
+}
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install || return 1
 
   install -d -m755 "${pkgdir}/usr/share/gconf/schemas"

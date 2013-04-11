@@ -1,7 +1,7 @@
 pkgbase = notification-daemon-gtk2
 	pkgdesc = Notification daemon for the desktop notifications framework for GTK2
 	pkgver = 0.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.galago-project.org/specs/notification/
 	install = notification-daemon.install
 	arch = i686
