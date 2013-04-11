@@ -3,7 +3,7 @@
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
 pkgname="gnu-efi-libs-fedora-git"
-pkgver="20121112"
+pkgver=20130411
 pkgrel="1"
 pkgdesc="Library for building x86_64 and i386 UEFI Applications using GNU toolchain - Fedora GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
@@ -19,19 +19,26 @@ fi
 conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')
 
-source=('gnu-efi-fix-x86_64-uefi-call-wrapper.patch'
+_gitroot="git://github.com/vathpela/gnu-efi.git"
+_gitname="gnu-efi-fedora"
+_gitbranch="fedora"
+
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'gnu-efi-fix-x86_64-uefi-call-wrapper.patch'
         'gnu-efi-fedora-disable-USE_MS_ABI.patch'
         'gnu-efi-fedora-IA32-build-fix.patch'
         'gnu-efi-fedora-fix-makefile-vars.patch')
 
-sha1sums=('8918de3aefba2a3dc367bbb28611394c4c300a6d'
+sha1sums=('SKIP'
+          '8918de3aefba2a3dc367bbb28611394c4c300a6d'
           '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001'
           '51ac3eb4667f75dd50acbc3b8805f75fa64b4d7e'
           '09144dd3ec664b96714fe92d823e31bd1bb747e9')
 
-_gitroot="git://github.com/vathpela/gnu-efi.git"
-_gitname="gnu-efi-fedora"
-_gitbranch="fedora"
+pkgver() {
+  cd "${_gitname}"
+  git describe --always | sed 's|-|.|g'
+}
 
 _update_git() {
 	cd "${srcdir}/"
@@ -88,8 +95,6 @@ _build_gnu-efi-libs-i386() {
 }
 
 build() {
-	_update_git
-	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
