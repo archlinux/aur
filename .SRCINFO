@@ -1,0 +1,21 @@
+pkgbase = roboptim-core
+	pkgdesc = Numerical Optimization for Robotics
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://roboptim.net/
+	arch = i686
+	arch = x86_64
+	license = (L)GPL2
+	makedepends = cmake
+	depends = eigen3>=3
+	depends = boost>=1.41
+	depends = doxygen
+	depends = libltdl
+	depends = log4cxx
+	provides = roboptim-core
+	conflicts = roboptim-core-git
+	source = https://github.com/roboptim/releases/blob/master/roboptim-core/roboptim-core-2.0.tar.gz
+	md5sums = 1d077052fb801a95209407e0661f9a6d
+
+pkgname = roboptim-core
+
