@@ -19,7 +19,6 @@ pkgbase = tomahawk
 	depends = attica
 	depends = qtwebkit
 	depends = liblastfm
-	optdepends = tomahawk-spotify-git: spotify resolver
 	provides = tomahawk
 	conflicts = tomahawk-git
 	source = http://download.tomahawk-player.org/tomahawk-0.6.1.tar.bz2
