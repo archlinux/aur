@@ -6,7 +6,7 @@ pkgname="${_pkgname}-git"
 
 pkgver=Release_0_6_0
 pkgrel=1
-pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables. Needs the kernel module 'efivars'."
+pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT Version"
 arch=('i686' 'x86_64')
 url="http://linux.dell.com/efibootmgr/"
 license=('GPL2')
