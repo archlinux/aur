@@ -1,6 +1,8 @@
+# vim:set ft=sh:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 pkgname=par2cmdline-git
-pkgver=20130129
+_gitname='par2cmdline'
+pkgver=20130106.rel-0-5-3-25-g5ffa40e
 pkgrel=1
 pkgdesc="A file verification and repair tool"
 url="https://github.com/BlackIkeEagle/par2cmdline"
@@ -10,32 +12,15 @@ depends=('gcc-libs')
 arch=('i686' 'x86_64')
 provides=('par2cmdline')
 conflicts=('par2cmdline')
-source=()
+source=("$_gitname::git://github.com/BlackIkeEagle/par2cmdline.git")
+sha256sums=('SKIP')
 
-if [ -e .githash_${CARCH} ] ; then
-	_gitphash=$(cat .githash_${CARCH})
-else
-	_gitphash=""
-fi
-
-_gitname='par2cmdline'
-_gitroot='git://github.com/BlackIkeEagle/par2cmdline.git'
+pkgver() {
+	cd "$srcdir/$_gitname"
+	echo $(git log -1 --format="%ci" | sed 's/.*\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\).*/\1\2\3/').$(git describe --always )
+}
 
 build() {
-	if [ -d ${srcdir}/${_gitname}/.git ] ; then
-		( cd ${srcdir}/${_gitname} && git pull origin )
-		msg "The local files are updated."
-	else
-		( git clone --depth 1 ${_gitroot} ${_gitname} )
-	fi
-	msg "GIT checkout done or server timeout"
-
-	cd ${_gitname}
-	if [ "${_gitphash}" == $(git show | grep -m 1 commit | sed 's/commit //') ]; then
-		msg "Git hash is the same as previous build"
-		return 1
-	fi
-
 	msg "creating build directory"
 	cd ${srcdir}
 	[ -d ${_gitname}-build ] && rm -rf ${_gitname}-build
@@ -62,8 +47,4 @@ build() {
 package() {
 	cd ${_gitname}-build
 	make DESTDIR=$startdir/pkg install
-
-	git show | grep -m 1 commit | sed 's/commit //' > ${startdir}/.githash_${CARCH}
 }
-
-# vim:set ft=sh:
