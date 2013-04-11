@@ -2,6 +2,7 @@ src/
 pkg/
 *.tar.xz
 *.tar.gz
+*.pkg.tar
 *.zip
 *.sig
 *.log*

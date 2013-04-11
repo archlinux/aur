@@ -12,7 +12,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130323
+pkgver=a9871b0
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -29,30 +29,21 @@ options=('!strip' 'docs' '!makeflags')
 conflicts=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
 provides=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
 
-source=('UDK-MdePkg-Revert-PathNodeCount.patch'
-        'refind_linux.conf')
-
-sha1sums=('4d1992699f9b48dd2b7e6bd6c0b25fc065f75894'
-          '3d53eb615c3363d45feb95b9bfbf1d5491bf1c24')
-
 _gitroot="git://git.code.sf.net/p/refind/code"
 _gitname="refind"
 _gitbranch="master"
 
-_update_tianocore_udk_svn() {
-	
-	if [[ -d "${srcdir}/${_TIANO_DIR_}/${_DIR_}" ]]; then
-		cd "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
-		svn update || true
-		echo
-	else
-		cd "${srcdir}/${_TIANO_DIR_}/"
-		svn checkout "${_TIANOCORE_SVN_URL}/${_DIR_}" "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
-		echo
-	fi
-	
-	unset _DIR_
-	
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'UDK-MdePkg-Revert-PathNodeCount.patch'
+        'refind_linux.conf')
+
+sha1sums=('SKIP'
+          '4d1992699f9b48dd2b7e6bd6c0b25fc065f75894'
+          '3d53eb615c3363d45feb95b9bfbf1d5491bf1c24')
+
+pkgver() {
+  cd "${_gitname}"
+  git describe --always | sed 's|-|.|g'
 }
 
 _update_git() {
@@ -77,6 +68,26 @@ _update_git() {
 	
 	echo
 	
+}
+
+_update_tianocore_udk_svn() {
+	
+	if [[ -d "${srcdir}/${_TIANO_DIR_}/${_DIR_}" ]]; then
+		cd "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
+		svn update || true
+		echo
+	else
+		cd "${srcdir}/${_TIANO_DIR_}/"
+		svn checkout "${_TIANOCORE_SVN_URL}/${_DIR_}" "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
+		echo
+	fi
+	
+	unset _DIR_
+	
+}
+
+_update_tianocore() {
+	
 	_TIANO_DIR_="tianocore-udk-svn"
 	
 	mkdir -p "${srcdir}/${_TIANO_DIR_}/"
@@ -97,6 +108,7 @@ _tianocore_udk_common() {
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
 	## Setup UDK Environment variables
 	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}_build"
@@ -161,15 +173,6 @@ _tianocore_udk_common() {
 	
 }
 
-_refind_changes() {
-	
-	rm -rf "${srcdir}/${_gitname}_build/" || true
-	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
-	
-	cd "${srcdir}/${_gitname}_build/"
-	
-}
-
 _build_refind-efi-common() {
 	
 	## Unset all FLAGS
@@ -177,6 +180,7 @@ _build_refind-efi-common() {
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
 	rm -rf "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/" || true
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/"
@@ -206,16 +210,18 @@ build() {
 	if [[ "${CARCH}" != "x86_64" ]]; then
 		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
 		exit 1
-	else
-		_update_git
-		echo
 	fi
+	
+	_update_tianocore
+	echo
 	
 	_tianocore_udk_common
 	echo
 	
-	_refind_changes
-	echo
+	rm -rf "${srcdir}/${_gitname}_build/" || true
+	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
+	
+	cd "${srcdir}/${_gitname}_build/"
 	
 	_UEFI_ARCH="x86_64"
 	_build_refind-efi-common
