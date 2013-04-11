@@ -1,26 +1,30 @@
 # Maintainer : Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgname="libefivar"
-pkgname="${_pkgname}-git"    ## For AUR interface
+pkgname="${_pkgname}-git"
 
-pkgdesc="Library to manipulate EFI variables"
+pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=20120914
+pkgver=17dc893
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vathpela/libefivar"
 license=('GPL2')
 
-# makedepends=()
 depends=('glibc')
 options=('!strip' '!emptydirs' 'zipman' '!libtool' 'docs')
-
-# source=()
-# sha256sums=()
 
 _gitroot="git://github.com/vathpela/libefivar.git"
 _gitname="${_pkgname}"
 _gitbranch="master"
+
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${_gitname}"
+  git describe --always | sed 's|-|.|g'
+}
 
 _update_git() {
 	
@@ -48,14 +52,14 @@ _update_git() {
 
 build() {
 	
-	_update_git
-	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
 	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
@@ -82,6 +86,5 @@ package() {
 	
 	# install -d "${pkgdir}/usr/bin"
 	# install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/libefivar-tester"
-	# echo
 	
 }
