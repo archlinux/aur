@@ -18,6 +18,7 @@ optdepends=('perl-wx: GUI support'
 #             'perl-growl-gntp: notifications support via growl'
 provides=('slic3r')
 conflicts=('slic3r')
+BUILDENV+=('!check')
 source=('slic3r.desktop')
 md5sums=('c997a07f658061d29b221cf7fd07ff97')
 
