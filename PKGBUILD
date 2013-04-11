@@ -4,7 +4,7 @@
 _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 
-pkgver=20130127
+pkgver=Release_0_6_0
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables. Needs the kernel module 'efivars'."
 arch=('i686' 'x86_64')
@@ -19,6 +19,14 @@ options=(strip purge docs zipman !emptydirs !libtool)
 _gitroot="http://linux.dell.com/git/${_pkgname}.git"
 _gitname="${_pkgname}"
 _gitbranch="master"
+
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${_gitname}"
+  git describe --always | sed 's|-|.|g'
+}
 
 _update_git() {
 	
@@ -45,8 +53,6 @@ _update_git() {
 }
 
 build() {
-	
-	_update_git
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
