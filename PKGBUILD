@@ -3,8 +3,8 @@
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
 pkgname="gnu-efi-libs-fedora-git"
-pkgver=20130411
-pkgrel="1"
+pkgver=51ddcca
+pkgrel=1
 pkgdesc="Library for building x86_64 and i386 UEFI Applications using GNU toolchain - Fedora GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
@@ -26,13 +26,11 @@ _gitbranch="fedora"
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'gnu-efi-fix-x86_64-uefi-call-wrapper.patch'
         'gnu-efi-fedora-disable-USE_MS_ABI.patch'
-        'gnu-efi-fedora-IA32-build-fix.patch'
         'gnu-efi-fedora-fix-makefile-vars.patch')
 
 sha1sums=('SKIP'
           '8918de3aefba2a3dc367bbb28611394c4c300a6d'
           '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001'
-          '51ac3eb4667f75dd50acbc3b8805f75fa64b4d7e'
           '09144dd3ec664b96714fe92d823e31bd1bb747e9')
 
 pkgver() {
@@ -106,10 +104,6 @@ build() {
 	
 	## Disable GCC MS_ABI CFLAGS
 	patch -Np1 -i "${srcdir}/gnu-efi-fedora-disable-USE_MS_ABI.patch"
-	echo
-	
-	## Fix missing header file for IA32 build
-	patch -Np1 -i "${srcdir}/gnu-efi-fedora-IA32-build-fix.patch"
 	echo
 	
 	## Fix Makefiles to enable compile for both UEFI arch
