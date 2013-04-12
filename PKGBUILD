@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-vmware
 pkgver=13.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
@@ -14,7 +14,7 @@ groups=('xorg-drivers' 'xorg')
 options=('!libtool' '!emptydirs')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2 git-fixes.patch)
 sha256sums=('44919ecd88654f2ab40a1732b5ea6a1dbd1c696b4b0748e68e8b5f1a3486bca6'
-            '0a0fce7ddcb9c53da1b2aa1aa11317c10f0161026f40c82523c4dc0fd496016f')
+            '9322d467d2111be4049e8649b1d2729a2a2ab35cc9769cfee5be63f18e176938')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

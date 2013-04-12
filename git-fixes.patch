@@ -53,3 +53,37 @@ index 9959ffb..7863ba2 100644
      miDCInitialize(pScreen, xf86GetPointerScreenFuncs());
 --
 cgit v0.9.0.2-2-gbebe
+From d13a6334fe76f4e869b2cb8c0a6a13c185b1bedd Mon Sep 17 00:00:00 2001
+From: Loïc Yhuel <loic.yhuel@gmail.com>
+Date: Thu, 11 Apr 2013 09:29:10 +0000
+Subject: vmwgfx: Use myGlyphs to fix crashes
+
+Tested-by: Christian Hesse <mail@eworm.de>
+Reviewed-by: Jakob Bornecrantz <jakob@vmware.com>
+Signed-off-by: Loïc Yhuel <loic.yhuel@gmail.com>
+Signed-off-by: Jakob Bornecrantz <jakob@vmware.com>
+---
+diff --git a/saa/saa_render.c b/saa/saa_render.c
+index c69f2c9..c6ce68c 100644
+--- a/saa/saa_render.c
++++ b/saa/saa_render.c
+@@ -406,6 +406,8 @@ saa_render_setup(ScreenPtr pScreen)
+ 	saa_wrap(sscreen, ps, Trapezoids, saa_trapezoids);
+ 	saa_wrap(sscreen, ps, Triangles, saa_triangles);
+ 	saa_wrap(sscreen, ps, Composite, saa_composite);
++	saa_wrap(sscreen, ps, Glyphs,    miGlyphs);
++	saa_wrap(sscreen, ps, UnrealizeGlyph, miUnrealizeGlyph);
+     }
+ }
+ 
+@@ -419,6 +421,8 @@ saa_render_takedown(ScreenPtr pScreen)
+ 	saa_unwrap(sscreen, ps, Trapezoids);
+ 	saa_unwrap(sscreen, ps, Triangles);
+ 	saa_unwrap(sscreen, ps, Composite);
++	saa_unwrap(sscreen, ps, Glyphs);
++	saa_unwrap(sscreen, ps, UnrealizeGlyph);
+     }
+ }
+ #endif
+--
+cgit v0.9.0.2-2-gbebe
