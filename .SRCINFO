@@ -1,7 +1,7 @@
 pkgbase = space_dapp
 	pkgdesc = A spacer dockapp
 	pkgver = 0.0.1
-	pkgrel = 4
+	pkgrel = 3
 	url = http://tenr.de/howto/space_dapp/space_dapp.html
 	arch = i686
 	arch = x86_64
