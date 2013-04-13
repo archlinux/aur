@@ -2,8 +2,10 @@
 # Contributor: Caleb Reach <jtxx000@gmail.com>
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri-git
-pkgver=20130318
+_gitname=morituri
+pkgver=0.2.0.64.ge990136
 pkgrel=1
+epoch=1
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
 url="https://github.com/thomasvs/morituri"
@@ -20,31 +22,22 @@ optdepends=(
 conflicts=("morituri" "morituri-svn")
 replaces=("morituri-svn")
 changelog=ChangeLog
+source=('morituri::git+https://github.com/thomasvs/morituri.git')
+md5sums=('SKIP')
 
-_gitroot=https://github.com/thomasvs/morituri.git
-_gitname=morituri
+pkgver() {
+  cd "$_gitname"
+  # Use the tag of the last commit, removing "v"
+  git describe --always | sed 's|-|.|g' | sed 's/v//'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$_gitname"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin && git submodule update --init
-    msg "The local files are updated."
-  else
-    git clone --recursive "$_gitroot" "$_gitname"
-  fi
+  # Pull in Git submodules
+  git submodule init
+  git submodule update
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  cp -R --dereference "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
   ./autogen.sh
 
   export PYTHON="python2"
@@ -53,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$_gitname"
   make DESTDIR="$pkgdir/" install || return 1
   install -Dm 0644 "AUTHORS" "$pkgdir/usr/share/doc/morituri/AUTHORS"
   install -Dm 0644 "ChangeLog" "$pkgdir/usr/share/doc/morituri/ChangeLog"

@@ -1,7 +1,8 @@
 pkgbase = morituri-git
 	pkgdesc = a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy
-	pkgver = 20130318
+	pkgver = 0.2.0.64.ge990136
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/thomasvs/morituri
 	changelog = ChangeLog
 	arch = i686
@@ -18,6 +19,8 @@ pkgbase = morituri-git
 	conflicts = morituri
 	conflicts = morituri-svn
 	replaces = morituri-svn
+	source = morituri::git+https://github.com/thomasvs/morituri.git
+	md5sums = SKIP
 
 pkgname = morituri-git
 
