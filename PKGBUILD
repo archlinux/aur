@@ -15,7 +15,7 @@ depends=("firefox")
 source=("https://addons.mozilla.org/firefox/downloads/latest/$_plugin_id/addon-$_plugin_id-latest.xpi")
 md5sums=('9cee021eb8089cc3ba6f04f7e75bb5fb')
 
-build() {
+package() {
   cd "$srcdir"
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
   dstdir=$pkgdir/usr/lib/firefox/extensions/$emid
