@@ -11,7 +11,7 @@ license=('zlib')
 depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2')
 makedepends=('mesa' 'cmake' 'doxygen')
 install=sfml.install
-source=("https://github.com/LaurentGomila/SFML/archive/2.0.tar.gz")
+source=("${pkgname}-${pkgver}::https://github.com/LaurentGomila/SFML/archive/2.0.tar.gz")
 md5sums=('294fd8563a319e06f68bbca0eedc905e')
 
 build() {
