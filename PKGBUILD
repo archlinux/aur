@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=darkplaces-mod
-pkgver=20121222
+pkgver=20130301
 pkgrel=1
 pkgdesc="Quake mod specific to Darkplaces"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('darkplaces')
 source=(http://icculus.org/twilight/darkplaces/files/darkplacesmod$pkgver.zip
         $pkgname.desktop)
-sha256sums=('94750e656db5708cb699cde1dbdc2e83b6768c418d01e156d21a7dde4688f6c4'
+sha256sums=('64cbba822456f4f82c3d9f50cf16122218d70912d5789ba82573e93d35b325fe'
             '073f4fec0be35966c0e8a8a94ee8b118790742c31eb5d6af84989d2e5c9b1001')
 
 build() {
