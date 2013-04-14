@@ -1,23 +1,18 @@
 pkgbase = econnman-git
 	pkgdesc = Enlightenment ConnMan user interface - Development version
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = any
 	license = LGPL3
 	makedepends = git
 	depends = python2-efl-git
-	depends = python2-e_dbus
 	depends = connman
 	provides = econnman
 	conflicts = econnman
 	conflicts = econnman-svn
 	source = git://git.enlightenment.org/apps/econnman.git
-	source = bindings-update.patch
-	source = configure.patch
 	md5sums = SKIP
-	md5sums = f07a35832209505768c7fcd375a2de59
-	md5sums = 9006b3b8d28dbd9a944c497fec40d79f
 
 pkgname = econnman-git
 
