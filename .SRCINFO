@@ -1,6 +1,6 @@
 pkgbase = econnman-git
 	pkgdesc = Enlightenment ConnMan user interface - Development version
-	pkgver = 1.21
+	pkgver = 1.21.5e344be
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = any

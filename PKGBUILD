@@ -2,7 +2,7 @@
 
 pkgname=econnman-git
 _pkgname=econnman
-pkgver=1.21
+pkgver=1.21.5e344be
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
   
-  echo $(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]').$(git rev-list --count HEAD)
+  echo $(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
