@@ -3,7 +3,7 @@
 # Contributor: Paul Bredbury <brebs@sent.com>
 
 pkgname=darkplaces
-pkgver=20121222
+pkgver=20130304
 pkgrel=1
 pkgdesc="An advanced Quake 1 game engine"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('xextproto' 'xf86dgaproto' 'xf86vidmodeproto' 'xproto')
 install=$pkgname.install
 source=(http://icculus.org/twilight/$pkgname/files/darkplacesengine$pkgver.zip
         $pkgname.desktop)
-sha256sums=('13f3a2e5703cc6de1006d071dbdfd44627ead21425df35a3a9eb525e4b8c439f'
+sha256sums=('e1858dcba033b1dfc6e685482745b7137ceb23dfd710671971cd5e34529a9f44'
             '476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37')
 
 build() {
