@@ -1,7 +1,7 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gnome-system-log
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="View your system logs"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=('intltool' 'itstool' 'docbook-xsl')
 groups=('gnome')
 install=$pkgname.install
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('ae18ba888578f84a5a6db2f411cc7059bbbe22f04253a694562ff6cad13185c9')
+sha256sums=('2393d00e059212b5a1135589d11412c0639fe9e60958ccff1bac238139dd4967')
 
 build() {
   cd "$pkgname-$pkgver"
