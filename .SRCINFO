@@ -1,0 +1,13 @@
+pkgbase = ts
+	pkgdesc = A Unix batch system where the tasks spooled run one after the other
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://vicerveza.homeunix.net/~viric/soft/ts/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://vicerveza.homeunix.net/~viric/soft/ts/ts-0.7.3.tar.gz
+	sha256sums = be4d752f01791bf55e264814bbc158b15e42f8bfbce3a6757976259fbc994faa
+
+pkgname = ts
+
