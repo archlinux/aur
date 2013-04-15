@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=radegast
-pkgver=2.8
+pkgver=2.12
 pkgrel=1
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('mono')
 makedepends=('dos2unix' 'recode')
 source=(http://radegast.googlecode.com/files/$pkgname-$pkgver-src.zip
         radegast.desktop radegast)
-sha256sums=('0c62d60f700611e09dd103997b7fcc33d3dd9bc7e7ac8d516c9e1b7a2d75b785'
+sha256sums=('0f51260e883997996c48363ed386d0d0fb1a8591fe0c8b65320cd584ec6d6bce'
             '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
 
