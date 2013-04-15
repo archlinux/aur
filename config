@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/i386 3.8.7-1 Kernel Configuration
+# Linux/i386 3.8.7-2 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -353,7 +353,7 @@ CONFIG_CPU_SUP_INTEL=y
 CONFIG_HPET_TIMER=y
 CONFIG_HPET_EMULATE_RTC=y
 # CONFIG_DMI is not set
-CONFIG_NR_CPUS=4
+CONFIG_NR_CPUS=8
 CONFIG_SCHED_SMT=y
 CONFIG_SCHED_MC=y
 # CONFIG_PREEMPT_NONE is not set
