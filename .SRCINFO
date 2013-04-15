@@ -1,7 +1,7 @@
 pkgbase = ts
 	pkgdesc = A Unix batch system where the tasks spooled run one after the other
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vicerveza.homeunix.net/~viric/soft/ts/
 	arch = i686
 	arch = x86_64
