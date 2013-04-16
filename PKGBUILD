@@ -3,7 +3,7 @@
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
 pkgname=gpgme
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A C wrapper library for GnuPG"
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ depends=('libgpg-error' 'pth' 'gnupg>=2')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
 source=(ftp://ftp.gnupg.org/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2{,.sig})
-md5sums=('326fe97077141713f0930aa87949a287'
-         '4849bea218571c5ab6094d77049bd5d7')
+md5sums=('a0f93aba6d8a831ba14905085027f2f9'
+         'SKIP')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr --disable-static
+  ./configure --prefix=/usr --disable-static --disable-gpgsm-test
   make
 }
 
