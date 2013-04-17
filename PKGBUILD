@@ -21,7 +21,7 @@ prepare() {
 package() {
   cd ${pkgname}
   python setup.py install --root="${pkgdir}/" --optimize=1
-  mv "${pkgdir}/"/usr/share/bash-completion/completions/youtube-dl.bash-completion \
-    "${pkgdir}/"/usr/share/bash-completion/completions/youtube-dl
+  mv "${pkgdir}/usr/share/bash-completion/completions/youtube-dl.bash-completion" \
+    "${pkgdir}/usr/share/bash-completion/completions/youtube-dl"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
