@@ -3,15 +3,16 @@
 
 pkgname=ephoto-git
 _pkgname=ephoto
-pkgver=0.1.1.464
+pkgver=0.1.1.465.aec77f4
 pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'GPL3')
-depends=('elementary')
+depends=('elementary' 'desktop-file-utils')
 makedepends=('git')
 options=('!libtool')
+install=ephoto.install
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
 md5sums=('SKIP')
 
@@ -22,7 +23,7 @@ pkgver() {
     local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
   done
 
-  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD)
+  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
