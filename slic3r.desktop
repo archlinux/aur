@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Slic3r
 Comment=STL-to-GCODE translator for RepRap printers
-Exec=slic3r.pl --gui
+Exec=env LC_ALL=C slic3r.pl --gui
 Icon=/usr/bin/vendor_perl/var/Slic3r_128px.png
 Terminal=0
 Type=Application
