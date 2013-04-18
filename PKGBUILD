@@ -1,7 +1,7 @@
 # Contributor: oliparcol <oliparcol AT gmail DOT com>
 pkgname=ruby-posix-spawn
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="posix-spawn uses posix_spawnp(2) for faster process spawning"
 arch=(any)
 url="https://github.com/rtomayko/posix-spawn"
@@ -18,7 +18,7 @@ build() {
         cd $srcdir
         local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
 
-        gem install --ignore-dependencies -i "$pkgdir$_gemdir" posix-spawn-$pkgver.gem
+        gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" posix-spawn-$pkgver.gem
 
         install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

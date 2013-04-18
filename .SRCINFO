@@ -1,7 +1,7 @@
 pkgbase = ruby-posix-spawn
 	pkgdesc = posix-spawn uses posix_spawnp(2) for faster process spawning
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rtomayko/posix-spawn
 	arch = any
 	license = MIT
