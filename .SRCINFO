@@ -1,6 +1,6 @@
 pkgbase = e17-places-svn
 	pkgdesc = Enlightenment module: Manage the mounting of volumes
-	pkgver = 83648
+	pkgver = 84513
 	pkgrel = 1
 	url = http://code.google.com/p/e17mods/wiki/Places
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = e17-places-svn
 	license = BSD
 	makedepends = subversion
 	depends = enlightenment17
-	depends = e_dbus
 	conflicts = e-modules-extra
 	options = !libtool
+	options = !staticlibs
 	source = svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/places
 	md5sums = SKIP
 

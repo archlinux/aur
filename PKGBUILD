@@ -3,16 +3,16 @@
 
 pkgname=e17-places-svn
 _pkgname=places
-pkgver=83648
+pkgver=84513
 pkgrel=1
 pkgdesc="Enlightenment module: Manage the mounting of volumes"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/e17mods/wiki/Places"
 license=('BSD')
-depends=('enlightenment17' 'e_dbus')
+depends=('enlightenment17')
 makedepends=('subversion')
 conflicts=('e-modules-extra')
-options=('!libtool')
+options=('!libtool' '!staticlibs')
 source=("svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/$_pkgname")
 md5sums=('SKIP')
 
@@ -36,5 +36,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install license files
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
