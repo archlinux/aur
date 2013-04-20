@@ -2,7 +2,7 @@
 
 pkgname=cogl
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
 url="http://www.clutter-project.org/"
@@ -15,7 +15,8 @@ sha256sums=('276e8c9f5ff0fcd57c1eaf74cc245f41ad469a95a18ac831fac2d5960baa5ae8')
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+    --enable-wayland-egl-{platform,server} --enable-gles{1,2}
   make
 }
 
