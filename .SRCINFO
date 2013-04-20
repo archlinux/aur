@@ -1,6 +1,6 @@
 pkgbase = evas_generic_loaders-git
 	pkgdesc = Loaders for Evas using the 'generic' module - Development version
-	pkgver = 1.7.99.x
+	pkgver = 1.7.99.85.2076200
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686

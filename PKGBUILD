@@ -4,7 +4,7 @@
 
 pkgname=evas_generic_loaders-git
 _pkgname=evas_generic_loaders
-pkgver=1.7.99.x
+pkgver=1.7.99.85.2076200
 pkgrel=1
 pkgdesc="Loaders for Evas using the 'generic' module - Development version"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ pkgver() {
     local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
   done
   
-  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD)
+  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
