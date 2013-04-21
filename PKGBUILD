@@ -1,6 +1,7 @@
 # Maintainer: mutantmonkey <mutantmonkey@mutantmonkey.in>
 pkgname=python2-sha3-git
-pkgver=20121201
+_gitname=python-sha3
+pkgver=22.2b7fd77
 pkgrel=1
 pkgdesc="A Python module that implements SHA-3 (Keccak) with a hashlib-like interface"
 arch=('i686' 'x86_64')
@@ -11,33 +12,21 @@ makedepends=('git' 'gcc')
 provides=('python2-sha3')
 conflicts=('python2-sha3')
 options=(!emptydirs)
+source=('git+https://github.com/bjornedstrom/python-sha3.git')
+sha256sums=('SKIP')
 
-_gitroot=https://github.com/bjornedstrom/python-sha3.git
-_gitname=python-sha3
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd $_gitname
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd $_gitname
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
