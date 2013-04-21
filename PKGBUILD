@@ -1,8 +1,8 @@
-# Contributor: MutantMonkey <mutantmonkey@gmail.com>
+# Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=pianobar-git
 _gitname=pianobar
 pkgver=670.53cef3e
-pkgrel=3
+pkgrel=4
 pkgdesc="A free/open-source, console-based replacement for Pandora's Flash player"
 url="http://6xq.net/0017"
 arch=('i686' 'x86_64')
