@@ -7,19 +7,24 @@
 pkgbase=ruby-gtk3
 pkgname=('ruby-gtk3' 'ruby-gdk3')
 depends=('ruby-atk' 'ruby-gdkpixbuf2' 'ruby-glib2' 'ruby-pango')
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 arch=('x86_64' 'i686')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL')
 makedepends=('ruby-pkgconfig' 'ruby-cairo' 'gtk3')
 source=("http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk3-$pkgver.tar.gz")
-sha256sums=('ecd3fde8e56442944a2b692c773081c553d48b621bb53c49b40b7575216f6c6a')
+sha256sums=('105395100bcbcfe8fa3fd5a2963ded64092303da64f31400887dbcd6a84d1e1a')
+
+prepare() {
+	cd "$srcdir/ruby-gtk3-$pkgver"
+
+	LANG="en_US.UTF-8" ruby extconf.rb gtk3 gdk3 --vendor
+}
 
 build() {
 	cd "$srcdir/ruby-gtk3-$pkgver"
 
-	LANG="en_US.UTF-8" ruby extconf.rb gtk3 gdk3 --vendor
 	make
 }
 
