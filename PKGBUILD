@@ -2,7 +2,7 @@
 pkgname=pianobar-git
 _gitname=pianobar
 pkgver=670.53cef3e
-pkgrel=2
+pkgrel=3
 pkgdesc="A free/open-source, console-based replacement for Pandora's Flash player"
 url="http://6xq.net/0017"
 arch=('i686' 'x86_64')
@@ -27,10 +27,10 @@ build() {
 
 package() {
   cd $_gitname
-	make DESTDIR=$pkgdir PREFIX=/usr install
+  make DESTDIR=$pkgdir PREFIX=/usr install
 
-	install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 # vim:set ts=2 sw=2 et:
