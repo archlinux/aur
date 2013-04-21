@@ -1,4 +1,4 @@
-# Maintainer: mutantmonkey <mutantmonkey@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python2-sha3-git
 _gitname=python-sha3
 pkgver=22.2b7fd77
