@@ -1,13 +1,27 @@
 # Maintainer: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
+
+#######
+_gitroot="git://git.code.sf.net/p/refind/code"
+_gitname="refind"
+_gitbranch="master"
+#######
+
+
 #######
 _TIANOCORE_SVN_URL="https://edk2.svn.sourceforge.net/svnroot/edk2/branches/UDK2010.SR1"
+# BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg
+_TIANO_DIR_="tianocore-udk-svn"
+#######
+
+#######
 _TIANOCORE_PKG="Mde"
 _TIANOCORE_TARGET="RELEASE"
 _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _COMPILER="GCC46"
 #######
+
 
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
@@ -29,76 +43,29 @@ options=('!strip' 'docs' '!makeflags')
 conflicts=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
 provides=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
 
-_gitroot="git://git.code.sf.net/p/refind/code"
-_gitname="refind"
-_gitbranch="master"
-
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        "${_TIANO_DIR_}/BaseTools::svn+${_TIANOCORE_SVN_URL}/BaseTools"
+        "${_TIANO_DIR_}/MdePkg::svn+${_TIANOCORE_SVN_URL}/MdePkg"
+        "${_TIANO_DIR_}/MdeModulePkg::svn+${_TIANOCORE_SVN_URL}/MdeModulePkg"
+        "${_TIANO_DIR_}/IntelFrameworkPkg::svn+${_TIANOCORE_SVN_URL}/IntelFrameworkPkg"
+        "${_TIANO_DIR_}/IntelFrameworkModulePkg::svn+${_TIANOCORE_SVN_URL}/IntelFrameworkModulePkg"
+        "${_TIANO_DIR_}/EdkCompatibilityPkg::svn+${_TIANOCORE_SVN_URL}/EdkCompatibilityPkg"
         'UDK-MdePkg-Revert-PathNodeCount.patch'
         'refind_linux.conf')
 
 sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
           '4d1992699f9b48dd2b7e6bd6c0b25fc065f75894'
           '3d53eb615c3363d45feb95b9bfbf1d5491bf1c24')
 
 pkgver() {
   cd "${_gitname}"
   git describe --always | sed 's|-|.|g'
-}
-
-_update_git() {
-	
-	cd "${srcdir}/"
-	
-	msg "Connecting to GIT server...."
-	
-	if [[ -d "${srcdir}/${_gitname}/" ]]; then
-		cd "${srcdir}/${_gitname}/"
-		git reset --hard
-		git fetch
-		git checkout "${_gitbranch}"
-		git merge "remotes/origin/${_gitbranch}"
-		msg "The local GIT repo has been updated."
-	else
-		git clone "${_gitroot}" "${_gitname}"
-		cd "${srcdir}/${_gitname}/"
-		git checkout "${_gitbranch}"
-		msg "GIT checkout done or server timeout"
-	fi
-	
-	echo
-	
-}
-
-_update_tianocore_udk_svn() {
-	
-	if [[ -d "${srcdir}/${_TIANO_DIR_}/${_DIR_}" ]]; then
-		cd "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
-		svn update || true
-		echo
-	else
-		cd "${srcdir}/${_TIANO_DIR_}/"
-		svn checkout "${_TIANOCORE_SVN_URL}/${_DIR_}" "${srcdir}/${_TIANO_DIR_}/${_DIR_}"
-		echo
-	fi
-	
-	unset _DIR_
-	
-}
-
-_update_tianocore() {
-	
-	_TIANO_DIR_="tianocore-udk-svn"
-	
-	mkdir -p "${srcdir}/${_TIANO_DIR_}/"
-	cd "${srcdir}/${_TIANO_DIR_}/"
-	
-	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
-		_update_tianocore_udk_svn
-	done
-	
-	unset _DIR_
-	
 }
 
 _tianocore_udk_common() {
@@ -115,7 +82,11 @@ _tianocore_udk_common() {
 	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
 	
 	rm -rf "${_UDK_DIR}/" || true
-	cp -r "${srcdir}/${_TIANO_DIR_}" "${_UDK_DIR}"
+	mkdir -p "${_UDK_DIR}/"
+	
+	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
+		mv "${srcdir}/${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+	done
 	
 	cd "${_UDK_DIR}/"
 	
@@ -211,9 +182,6 @@ build() {
 		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
 		exit 1
 	fi
-	
-	_update_tianocore
-	echo
 	
 	_tianocore_udk_common
 	echo
