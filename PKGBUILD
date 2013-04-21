@@ -1,6 +1,7 @@
-# Contributor: mutantmonkey <mutantmonkey@gmail.com>
+# Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=dex-git
-pkgver=20111116
+_gitname=dex
+pkgver=48.21a763e
 pkgrel=1
 pkgdesc="A program to execute DesktopEntry files of type Application, primarily for window managers that do not implement the Freedesktop autostart specification"
 url="https://github.com/jceb/dex"
@@ -10,36 +11,21 @@ depends=('python2')
 makedepends=('git')
 provides=('dex')
 conflicts=('dex')
-source=()
-md5sums=()
-sha256sums=()
+source=('git+https://github.com/jceb/dex.git')
+sha256sums=('SKIP')
 
-_gitroot="https://github.com/jceb/dex.git"
-_gitname="dex"
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  sed -i 's/\/usr\/bin\/python/\/usr\/bin\/python2/' dex || return 1
+  cd $_gitname
+  sed -i 's/\/usr\/bin\/python/\/usr\/bin\/python2/' dex
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd $_gitname
   install -m755 -D dex $pkgdir/usr/bin/dex
 }
 
