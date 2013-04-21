@@ -1,44 +1,32 @@
-# Maintainer: mutantmonkey <mutantmonkey@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=stag-git
-pkgver=20121102
+_gitname=stag
+pkgver=62.b64612a
 pkgrel=1
 pkgdesc="A C curses based mp3/ogg/flac tagging application (git version)"
 arch=('i686' 'x86_64')
 url="http://cryptm.org/~sturm/stag.html"
 license=('custom:none')
-groups=()
 depends=('ncurses' 'taglib')
 makedepends=('git')
 options=('!buildflags')
 provides=('stag')
 conflicts=('stag')
+source=('git+https://github.com/smabie/stag.git')
+sha256sums=('SKIP')
 
-_gitroot=https://github.com/smabie/stag.git
-_gitname=stag
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd $_gitname
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd $_gitname
   install -Dm 755 stag $pkgdir/usr/bin/stag
   install -D stag.1 $pkgdir/usr/share/man/man1/stag.1
 }
