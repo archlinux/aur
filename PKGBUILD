@@ -1,6 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=go-xmpp-client
-pkgver=20130401
+_gitname=xmpp-client
+pkgver=73.8bfe768
 pkgrel=1
 pkgdesc="A simple XMPP client wth OTR support written in pure Go"
 arch=('i686' 'x86_64')
@@ -11,10 +12,14 @@ makedepends=('git' 'mercurial')
 conflicts=('go-xmpp-client-git')
 replaces=('go-xmpp-client-git')
 options=('!strip' '!emptydirs')
+source=('git+https://github.com/agl/xmpp-client.git')
+sha256sums=('SKIP')
 _gourl=github.com/agl/xmpp-client
 
-_gitroot=https://github.com/agl/xmpp-client.git
-_gitname=xmpp-client
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
   cd "$srcdir"
