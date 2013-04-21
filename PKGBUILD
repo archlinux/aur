@@ -1,6 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=antievilmaid-git
-pkgver=20121016
+_gitname=antievilmaid
+pkgver=31.414fd06
 pkgrel=1
 pkgdesc="Anti Evil Maid for initramfs-based systems."
 arch=('i686' 'x86_64')
@@ -12,27 +13,16 @@ optdepends=('dracut-antievilmaid-git: Dracut hook for Anti Evil Maid'
 makedepends=('git')
 provides=('antievilmaid')
 conflicts=('antievilmaid')
+source=('git://git.qubes-os.org/joanna/antievilmaid.git')
+sha256sums=('SKIP')
 
-_gitroot=git://git.qubes-os.org/joanna/antievilmaid.git
-_gitname=antievilmaid
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-
+  cd $_gitname
   install -d -m0755 "$pkgdir/usr/lib/antievilmaid"
   install -m0755 antievilmaid_install "$pkgdir/usr/lib/antievilmaid/"
   install -m0644 README "$pkgdir/usr/lib/antievilmaid/"
