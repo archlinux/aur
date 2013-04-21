@@ -1,20 +1,20 @@
 # Maintainer: Leonidas <marek@xivilization.net>
 pkgname=factor
-pkgver=0.95
-pkgrel=3
-pkgdesc="Factor is a general purpose, dynamically typed, stack-based programming language."
+pkgver=0.96
+pkgrel=1
+pkgdesc="A general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
 url="http://factorcode.org"
 license=(BSD)
 provides=(factor)
 conflicts=(factor-git)
-depends=(pango cairo glib2 freetype2 mesa libgl gtkglext)
+depends=(gtkglext)
 options=(!strip)
 source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zip
         factor.desktop
         factor.svg
         fuel-factor-vm.patch)
-sha512sums=('eb326168e178dc2751851e9285ed5ee7f8cc1d20e40fb5eb9c20b813db60e4ee29fba1b2f171ea9a1fe240b2dc36261eeb9d76dd014910f0e47a6e08262c02bc'
+sha512sums=('00f6ee56d650d3e546c5860d5fad9ad94250669f9a9b1d9ea73944c3345de1305582848b0744db860490c19c2c66239f24044d3a775733d37ab4f76ee98d92ff'
             '19cf98d0fce2f1f65db4d3416c9577aa5e1f9c5829fab8f722756d37d4683caf3c740669ba895660a66177b6b38e3c7a30153ca70a515e91a455b83c4a55a026'
             '4065a22cd10873f74024655aa71aafa2b96c0e391f61a5e71f5f4fac9b49955428528c2666da5e6e5058aa28347b0f9327575f2467baf9e3914739b8fa0b2c26'
             '72dcec007db4737572bc0fe5ba10d28097cd117092a6df5ef80ce054e17b05d07ed4ec47c09f4324921393c9ccb31d49acfe6244b266abbd8033cd166275ca09')
