@@ -2,12 +2,12 @@
 pkgname=dex-git
 _gitname=dex
 pkgver=48.21a763e
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to execute DesktopEntry files of type Application, primarily for window managers that do not implement the Freedesktop autostart specification"
 url="https://github.com/jceb/dex"
 arch=('any')
 license=('GPL2')
-depends=('python2')
+depends=('python')
 makedepends=('git')
 provides=('dex')
 conflicts=('dex')
@@ -17,11 +17,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_gitname
   echo $(git rev-list --count master).$(git rev-parse --short master)
-}
-
-build() {
-  cd $_gitname
-  sed -i 's/\/usr\/bin\/python/\/usr\/bin\/python2/' dex
 }
 
 package() {
