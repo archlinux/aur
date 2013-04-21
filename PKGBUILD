@@ -1,7 +1,8 @@
-# Contributor: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=crunchyfrog-hg
-pkgver=722
-pkgrel=2
+_hgname=crunchyfrog
+pkgver=722.1648adf08bb3
+pkgrel=1
 pkgdesc="SQL editor and database schema browser for the GNOME desktop, latest development version"
 url='http://code.google.com/p/crunchyfrog'
 arch=('any')
@@ -22,25 +23,30 @@ optdepends=('mysql-python:  To handle MySQL Databases',
 makedepends=('mercurial')
 provides=('crunchyfrog')
 conflicts=('crunchyfrog')
-source=()
-md5sums=()
-sha256sums=()
+source=('hg+https://code.google.com/p/crunchyfrog')
+sha256sums=('SKIP')
 
-_hgroot="https://crunchyfrog.googlecode.com/hg"
-_hgrepo="crunchyfrog"
+pkgver() {
+  cd $_hgname
+  echo $(hg identify -n).$(hg identify -i)
+}
 
-build() {
-  cd ${srcdir}/${_hgrepo}
+prepare() {
+  cd $_hgname
   # python2 fix
   for file in $(find . -name '*.py' -print); do
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
+}
+
+build() {
+  cd $_hgname
   make PYTHON=/usr/bin/python2
 }
 
 package() {
-  cd ${srcdir}/${_hgrepo}
+  cd $_hgname
   make install PYTHON=/usr/bin/python2 DESTDIR=${pkgdir}/ 
 }
 
