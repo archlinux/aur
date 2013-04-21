@@ -1,6 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=dracut-antievilmaid-git
-pkgver=20120925
+_gitname=antievilmaid
+pkgver=31.414fd06
 pkgrel=1
 pkgdesc="Dracut module and conf file to enable Anti Evil Maid support."
 arch=('i686' 'x86_64')
@@ -11,26 +12,17 @@ makedepends=('git')
 optdepends=("antievilmaid: Anti Evil Maid installation script")
 provides=('dracut-antievilmaid')
 conflicts=('dracut-antievilmaid')
+source=('git://git.qubes-os.org/joanna/antievilmaid.git')
+sha256sums=('SKIP')
 
-_gitroot=git://git.qubes-os.org/joanna/antievilmaid.git
-_gitname=antievilmaid
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
+
   install -D -m0644 dracut-antievilmaid/anti-evil-maid.conf \
     "$pkgdir/etc/dracut.conf.d/anti-evil-maid.conf"
 
