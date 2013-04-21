@@ -1,6 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=parcimonie-git
-pkgver=20130224
+_gitname=App-Parcimonie
+pkgver=344.437a799
 pkgrel=1
 pkgdesc="A tool that incrementally refreshes a GnuPG keyring"
 arch=('any')
@@ -13,37 +14,22 @@ depends=('perl' 'perl-any-moose' 'perl-namespace-autoclean'
          'perl-moosex-types-path-class' 'perl-moosex-getopt')
 makedepends=('git')
 provides=('parcimonie')
+source=('git://gaffer.ptitcanardnoir.org/App-Parcimonie.git#branch=debian')
+sha256sums=('SKIP')
 
-_gitroot=git://gaffer.ptitcanardnoir.org/App-Parcimonie.git
-_gitname=parcimonie
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  git checkout debian
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd $_gitname
   perl Build.PL installdirs=vendor destdir="$pkgdir/"
   perl Build
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-
+  cd $_gitname
   perl Build install
 }
 
