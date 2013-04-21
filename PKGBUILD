@@ -1,44 +1,36 @@
 # Contributor: MutantMonkey <mutantmonkey@gmail.com>
 pkgname=pianobar-git
-pkgver=20130210
-pkgrel=1
+_gitname=pianobar
+pkgver=670.53cef3e
+pkgrel=2
 pkgdesc="A free/open-source, console-based replacement for Pandora's Flash player"
 url="http://6xq.net/0017"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('libao' 'faad2' 'libmad' 'readline' 'json-c')
+depends=('libao' 'faad2' 'libmad' 'readline' 'json-c' 'libgcrypt' 'gnutls')
 optdepends=('libmad')
 makedepends=('pkgconfig>=0.9' 'git' 'automake')
 provides=('pianobar')
 conflicts=('pianobar')
-source=()
-md5sums=()
-sha256sums=()
+source=('git+https://github.com/PromyLOPh/pianobar.git')
+sha256sums=('SKIP')
 
-_gitroot="git://github.com/PromyLOPh/pianobar.git"
-_gitname="pianobar"
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-	cd $srcdir
-	msg "Connecting to the pianobar git repository..."
+  cd $_gitname
+  make
+}
 
-	if [ -d $srcdir/$_gitname ] ; then
-		cd $_gitname && git pull origin
-		msg "The local files are updated."
-	else
-		git clone $_gitroot
-	fi
-
-	msg "GIT checkout done or server timeout"
-	msg "Starting make..."
-
-	rm -rf $srcdir/$_gitname-build	
-	cp -r $srcdir/$_gitname $srcdir/$_gitname-build
-	cd $srcdir/$_gitname-build/
-
-	make || return 1
-	make DESTDIR=$pkgdir PREFIX=/usr install || return 1
+package() {
+  cd $_gitname
+	make DESTDIR=$pkgdir PREFIX=/usr install
 
 	install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/" || return 1
+	install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
+
+# vim:set ts=2 sw=2 et:
