@@ -1,7 +1,7 @@
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=youtube-dl
-pkgver=2013.04.18
+pkgver=2013.04.21
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('python')
 makedepends=('python-distribute')
 source=(http://youtube-dl.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz{,.sig})
-sha1sums=('e1388be0c10541c951ec65a21d4ba2ad18cd2b2d'
+sha1sums=('705b884581d36b806c7395b0dafaba4443f56b3d'
           'SKIP')
 
 prepare() {
