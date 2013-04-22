@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-setproctitle
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 _libname=${pkgname/python-/}
 pkgdesc="Allows a python process to change its process title"
@@ -23,4 +23,4 @@ package() {
 	install -m0644 -D COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
 }
 
-sha256sums=('f2926abd47803e288f665401268a9950961be734e981035bde9acb4af80a032d')
+sha256sums=('c7fca7ca317e309f4d77649ed94ef296e30f8444a9fa75bfb6483b5e70efa882')
