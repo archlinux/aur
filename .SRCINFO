@@ -1,34 +1,28 @@
 pkgbase = udisks2-nosystemd
 	pkgdesc = Disk Management Service, version 2
-	pkgver = 2.1.6
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/udisks
 	arch = i686
 	arch = x86_64
-	groups = eudev-base
 	license = GPL2
 	makedepends = intltool
 	makedepends = docbook-xsl
 	makedepends = gobject-introspection
-	makedepends = python2
+	makedepends = python
 	depends = glib2
 	depends = udev
 	depends = polkit-consolekit
 	depends = libatasmart
-	depends = util-linux
-	depends = libgudev
+	depends = eject
 	optdepends = parted: partition management
 	optdepends = gptfdisk: GUID partition table support
-	optdepends = ntfs-3g: NTFS filesystem management support
-	optdepends = dosfstools: VFAT filesystem management support
-	provides = udisks2=2.1.6
+	provides = udisks2=2.1.0
 	conflicts = udisks2
-	conflicts = udisks2-eudev
 	replaces = udisks2
-	replaces = udisks2-eudev
 	options = !libtool
-	source = http://udisks.freedesktop.org/releases/udisks-2.1.6.tar.bz2
-	sha256sums = dec5f5c85fa0f74f39336acbfba1770f9988c096be23873714543c304b09f46a
+	source = http://udisks.freedesktop.org/releases/udisks-2.1.0.tar.bz2
+	sha256sums = 310208e5a10335dae4b52a0125c24d31cf292cce3d15cf65da4cd308e38d15a8
 
 pkgname = udisks2-nosystemd
 
