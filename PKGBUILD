@@ -1,4 +1,4 @@
-# Maintainer: mutantmonkey <mutantmonkey@mutantmonkey.in>
+# Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=spice-vdagent
 pkgver=0.12.1
 pkgrel=2
