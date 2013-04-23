@@ -104,8 +104,7 @@ rm -f /tmp/pacman.lck /tmp/pacsums.old /tmp/pacsums.new
 
 echo "[ $(date '+%Y-%m-%d %H:%M ')] Pacman-cage [cmd] >> Pacman database has been uncaged." >> $pacmanlog
 echo
-echo "Finished.  Your pacman database has been uncaged!. Welcome home."
-echo "You can remove 'pacmandb' from daemon's list in /etc/rc.conf file"
+echo "Finished.  Your pacman database has been uncaged! Welcome home."
 echo
 
 exit 0
