@@ -5,7 +5,7 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.7
-pkgrel=6
+pkgrel=7
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx/"
@@ -20,6 +20,8 @@ source=(http://fcitx.googlecode.com/files/${pkgbase}-${pkgver}_dict.tar.xz
 
 build() {
   #source /etc/profile.d/qt4.sh
+
+  export CFLAGS+=" -Wall"
 
   cd "$srcdir/$pkgbase-$pkgver"
   patch -Np1 -i "$srcdir/9937b68bad3a7e9465e17b711ce9c0a072d3071f.patch"
@@ -53,9 +55,8 @@ package_fcitx() {
   pkgdesc="Flexible Context-aware Input Tool with eXtension"
   depends=('pango' 'libxinerama' 'gtk-update-icon-cache' 'shared-mime-info' \
            'hicolor-icon-theme' 'desktop-file-utils' 'libxkbfile' \
-           'libxfixes' 'dbus-core' 'icu')
-  optdepends=('enchant: for word predication support'
-	      'opencc: optional engine to do chinese convert'
+           'libxfixes' 'dbus-core' 'icu' 'enchant')
+  optdepends=('opencc: optional engine to do chinese convert'
   	      'fcitx-anthy: Hiragana text to Kana Kanji mixed text Japanese input method'
 	      'fcitx-chewing: Intelligent Zhuyin input method library for traditional Chinese'
 	      'fcitx-cloudpinyin: Standalone module for fcitx that uses pinyin API on the internet to provide additional input candidates'
@@ -126,6 +127,6 @@ package_fcitx-qt4() {
 }
 
 md5sums=('6e291717c24615b9dc9bfaa2949af3a7'
-         'ce299aa5b596cc52dc9e66b47795e627'
+         '246e36c2232f107ed1692a52ebc43c39'
          '6f420547bc8af9627db2e5290f758433'
-         '51e53377e1b83661f2896e25d1a46242')
+	 '51e53377e1b83661f2896e25d1a46242')
