@@ -1,4 +1,5 @@
 # Maintainer: Joris Steyn <jorissteyn@gmail.com>
+
 pkgname=vim-gitgutter-git
 pkgver=103.935184b
 pkgrel=1
@@ -18,7 +19,7 @@ pkgver() {
 }
 
 package() {
-    install -Dm644 ${srcdir}/vim-gitgutter/plugin/gitgutter.vim ${pkgdir}/usr/share/vim/vimfiles/plugin/gitgutter.vim
-    install -Dm644 ${srcdir}/vim-gitgutter/doc/gitgutter.txt ${pkgdir}/usr/share/vim/vimfiles/doc/gitgutter.txt
+    install -Dm644 "${srcdir}"/vim-gitgutter/plugin/gitgutter.vim "${pkgdir}"/usr/share/vim/vimfiles/plugin/gitgutter.vim
+    install -Dm644 "${srcdir}"/vim-gitgutter/doc/gitgutter.txt "${pkgdir}"/usr/share/vim/vimfiles/doc/gitgutter.txt
 }
 
