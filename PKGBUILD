@@ -1,6 +1,6 @@
 pkgname=otrs
-pkgver=3.2.5
-itsmver=3.2.3
+pkgver=3.2.6
+itsmver=3.2.4
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -63,35 +63,36 @@ package() {
 
   install -D -m 0644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/httpd/conf/extra/${pkgname}.conf"
 
-  chown -R 33:33 "${pkgdir}/srv/http/${pkgname}/"
-  chmod -R 775 "${pkgdir}/srv/http/${pkgname}/"
-  chmod -R 2775 "${pkgdir}/srv/http/otrs/var/log/"
-  chmod -R 2775 "${pkgdir}/srv/http/otrs/var/stats/"
-  chmod -R 2775 "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Agent/"
-  chmod -R 2775 "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Agent/default/"
-  chmod -R 2775 "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Agent/default/css/"
-  chmod -R 2775 "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Customer/"
-  chmod -R 2775 "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Customer/default/"
+  chown -R 33:33 "${pkgdir}/srv/http/otrs/"
+  chmod -R 775   "${pkgdir}/srv/http/otrs/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/log/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/stats/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/sessions/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Agent/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Agent/default/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Agent/default/css/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Customer/"
+  chmod -R 2775  "${pkgdir}/srv/http/otrs/var/httpd/htdocs/skins/Customer/default/"
 
   sed -i "s/\/opt\/otrs/\/srv\/http\/otrs/g" $(grep -rl "/opt/otrs" "${pkgdir}/srv/http/${pkgname}/")
 }
 md5sums=('ebfeabfba189816c4b10861289406840'
          'f0ae9b90828825382720f4422aa9c81d'
-         '2cded3a34bd4fca016596710abd90be4'
-         'f8d2c969004a1728dc584e7aead4e85b'
-         '293a7d1007753a51fa97a1b413d53cd4'
-         '843138100f714424c2c977a1955889f9'
-         '3b9cb7a2c04fdafeb1e01dcedded2ec4'
-         'e6d28483cf68347023279fa3800c3afe'
-         '82241031dc96ecee701bd2e9108afd6e'
-         '373faaa4f828b21e0558386a31808e67')
+         '7457b9ee38b22be41eb188e6b7b55f40'
+         '78700594371290cb5f3c651d0a4e1ce9'
+         '351aa4a06eaf2dab6863a19a1cd0a347'
+         'b8e0ea06f26e5fa87cc597d08034d94e'
+         '497323ff765528bf6c4c0d89c29a43be'
+         'f09ffd55ee69953b9d95abf452994314'
+         'f959efe6979b5d82edcfb149b4416652'
+         'a169832bbeb12a6a222530c123126f76')
 sha1sums=('247719410cfd3b7a89843f2a7ae6820507f2b22d'
           '69bc6abcdcb3df6e67181dc0644d0088007c6d78'
-          '5bfe2a3b6a7bad286ce1b24dd8ba9b974c512810'
-          '6b2aa06d09b1bdb37483a8a4da401121a5a21a2c'
-          '48947dbe943cdf32957b943b8dadd2978aaa36ce'
-          '9288d9c9f825563fe8e7a343110f73025702d54d'
-          '591db5e85e3dc33fbdb8c125b73b5dc70f866c04'
-          '969adc52bef58db698840a024ee42bf6512e5d78'
-          'af44ce49f45daff23396374d508b7342d7f8d492'
-          '06e661b6138de4c3a75305f7cfab6bfcce314bc9')
+          '801b33c29f60eb93129f39ded0e3a3defed23ae8'
+          '752cd9b085702cfc2d800f8bb26a08adadb6b157'
+          '2fcdf103d3fde781468d795fcb6fa703c543ba17'
+          '02b7e0287bb198e68681dc35cf41bd53b2b66c9b'
+          'a26c34974e16ce2d729afcbda76dafe5e610495e'
+          '3f3c2ce8b086c108b97115c532b413f80f4e2ad3'
+          '06d8db63ebb592bf1ece6f1ff532811f84a8cce9'
+          '92e34044862a8176b64a29c7107002ea259e6dad')
