@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=polly
-pkgver=0.93.7
-_prealphaver=3.7
+pkgver=0.93.9
+_prealphaver=3.9
 pkgrel=1
 pkgdesc="Linux Twitter client designed for multiple columns of multiple accounts"
 arch=(any)
@@ -23,4 +23,4 @@ package() {
 	python2 setup.py install --skip-build -O1 --root="$pkgdir" --prefix=/usr
 }
 
-sha256sums=('383caaba4517b14b0199162040ae050278842a19e764496a002593d2526a4940')
+sha256sums=('7f6ccd13e765a8ec88f96213668a27e08e01ec0f739c7e73f4cfa5690bf4f990')
