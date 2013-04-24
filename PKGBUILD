@@ -4,7 +4,7 @@
 pkgname=mediaelch
 pkgver=1.6
 pkgrel=1
-pkgdesc="a MediaManager for XBMC. Information about Movies, TV Shows and Concerts are stored as nfo files. Fanarts are downloaded automatically from fanart.tv"
+pkgdesc="a Media Manager for handling Movies, TV Shows and Concerts/Music Videos in XBMC."
 arch=('x86_64' 'i686')
 url="http://www.mediaelch.de/"
 license=('GPL')
