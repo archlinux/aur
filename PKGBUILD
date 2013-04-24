@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.8
 pkgver=3.8.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,13 +17,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        'alsa-firmware-loading-3.8.8.patch')
 md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          '08cdcef928c2ca402adf1c444a3c43ac'
          '838191b72463b4146bc981b602423311'
          '0bebd8b31487488bd75fe5a1892d0db8'
          'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c')
+         'f3def2cefdcbb954c21d8505d23cc83c'
+         'e2ac681ffa439e969b4c3b4616852454')
 
 _kernelname=${pkgbase#linux}
 
@@ -35,6 +37,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # fix alsa firmware loading #34865
+  patch -Np1 -i "${srcdir}/alsa-firmware-loading-3.8.8.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
