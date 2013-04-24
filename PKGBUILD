@@ -1,47 +1,34 @@
 # Maintainer: jjacky
-pkgname=kalu-git
-pkgver=20130311
+_pkgname=kalu
+pkgname=$_pkgname-git
+pkgver=
 pkgrel=1
-pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news"
+pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news [GIT]"
 arch=('i686' 'x86_64')
-url="https://github.com/jjk-jacky/kalu"
+url="http://jjacky.com/$_pkgname"
 license=('GPL3+')
-depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.1' 'pacman<4.2' 'curl' 'libnotify' 'notification-daemon')
+depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.1' 'pacman<4.2' 'curl' 'libnotify'
+         'notification-daemon')
 makedepends=('perl' 'groff' 'git' 'autoconf')
-provides=('kalu')
-conflicts=('kalu')
+source=("git+https://github.com/jjk-jacky/{$_pkgname}.git#branch=next")
+md5sums=('SKIP')
+provides=($_pkgname)
+conflicts=($_pkgname)
 
-_gitroot=https://github.com/jjk-jacky/kalu.git
-_gitname=kalu
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --abbrev=4 --dirty | tr - .
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin next
-    msg "The local files are updated."
-  else
-    git clone -b next "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
+  cd "$srcdir/$_pkgname"
   ./autogen.sh
   ./configure --prefix=/usr --enable-git-version
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir/" install
 }
 

@@ -1,8 +1,8 @@
 pkgbase = kalu-git
-	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news
-	pkgver = 20130311
+	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news [GIT]
+	pkgver = 
 	pkgrel = 1
-	url = https://github.com/jjk-jacky/kalu
+	url = http://jjacky.com/kalu
 	arch = i686
 	arch = x86_64
 	license = GPL3+
@@ -20,6 +20,8 @@ pkgbase = kalu-git
 	depends = notification-daemon
 	provides = kalu
 	conflicts = kalu
+	source = git+https://github.com/jjk-jacky/{kalu}.git#branch=next
+	md5sums = SKIP
 
 pkgname = kalu-git
 
