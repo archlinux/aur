@@ -10,7 +10,7 @@ license=('GPL3+')
 depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.1' 'pacman<4.2' 'curl' 'libnotify'
          'notification-daemon')
 makedepends=('perl' 'groff' 'git' 'autoconf')
-source=("git+https://github.com/jjk-jacky/{$_pkgname}.git#branch=next")
+source=("git+https://github.com/jjk-jacky/${_pkgname}.git#branch=next")
 md5sums=('SKIP')
 provides=($_pkgname)
 conflicts=($_pkgname)

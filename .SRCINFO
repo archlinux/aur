@@ -20,7 +20,7 @@ pkgbase = kalu-git
 	depends = notification-daemon
 	provides = kalu
 	conflicts = kalu
-	source = git+https://github.com/jjk-jacky/{kalu}.git#branch=next
+	source = git+https://github.com/jjk-jacky/kalu.git#branch=next
 	md5sums = SKIP
 
 pkgname = kalu-git
