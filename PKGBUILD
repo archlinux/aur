@@ -3,32 +3,28 @@
 
 pkgname=efl-git
 _pkgname=efl
-pkgver=1.7.99.x
+pkgver=1.7.99.21925.25f1706
 pkgrel=1
-pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, EDBus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
+pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
-depends=('bullet' 'curl' 'systemd' 'lua' 'shared-mime-info'
-         'libxkbcommon' 'wayland'
+depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
-         'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif'
-         'gstreamer0.10-base-plugins'
+         'mesa' 'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif'
          'fribidi' 'harfbuzz' 'fontconfig')
 makedepends=('git')
 optdepends=('python2: compare Eina benchmarks'
-            'evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
-            'gstreamer0.10-good-plugins: Access more types of video in Emotion'
-            'gstreamer0.10-bad-plugins: Access more types of video in Emotion'
-            'gstreamer0.10-ugly-plugins: Access more types of video in Emotion'
-            'gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion'
-           )
-provides=('ecore=$pkgver' 'edbus=$pkgver' 'edje=$pkgver' 'eet=$pkgver' 'eeze=$pkgver'
+
+
+
+
+            'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
+provides=('ecore=$pkgver' 'eldbus=$pkgver' 'edje=$pkgver' 'eet=$pkgver' 'eeze=$pkgver'
           'efreet=$pkgver' 'eina=$pkgver' 'eio=$pkgver' 'embryo=$pkgver' 'emotion=$pkgver'
-          'ephysics=$pkgver' 'ethumb=$pkgver' 'evas=$pkgver'
+          'ephysics=$pkgver' 'ethumb=$pkgver' 'evas=$pkgver' 'efl=$pkgver' 'efl_x11'
           'ecore-svn' 'edbus-svn' 'edje-svn' 'eet-svn' 'eeze-svn' 'efreet-svn' 'eina-svn'
-          'eio-svn' 'embryo-svn' 'emotion-svn' 'ephysics-svn' 'ethumb-svn' 'evas-svn'
-          'efl' 'efl_x11' 'efl-svn')
+          'eio-svn' 'embryo-svn' 'emotion-svn' 'ephysics-svn' 'ethumb-svn' 'evas-svn' 'efl_svn')
 conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
            'efl' 'efl_x11' 'efl-svn')
 options=('!libtool' 'debug')
@@ -38,8 +34,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
+  
+  local _ver=$(grep -m 1 EFL_VERSION configure.ac | grep -o "[[:digit:]]*" | tr '\n' '.')
 
-  echo $(grep -m 1 EFL_VERSION configure.ac | grep -o "[[:digit:]]*" | tr '\n' '.')$(git rev-list --count HEAD)
+  echo $_ver$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
@@ -50,7 +48,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  ./autogen.sh \
+  ./autogen.sh --disable-gstreamer \
 	--prefix=/usr \
 	--with-x11=xlib \
 	--with-opengl=full \
@@ -58,6 +56,7 @@ build() {
 	--enable-systemd \
 	--enable-harfbuzz \
 	--enable-wayland \
+	--enable-egl \
 	--enable-xinput22 \
 	--enable-fb \
 	--disable-tslib
