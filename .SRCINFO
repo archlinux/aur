@@ -1,6 +1,6 @@
 pkgbase = unix-runescape-client
 	pkgdesc = RuneScape client for Linux and Unix
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html
 	install = unix-runescape-client.install
@@ -10,14 +10,13 @@ pkgbase = unix-runescape-client
 	depends = perl
 	depends = xterm
 	depends = p7zip
-	optdepends = zenity: better UI
-	optdepends = perl-wx: for rsu-settings
+	depends = perl-wx
 	optdepends = wine: for "compatibility mode" fix
 	optdepends = alsa-oss: for "force alsa" fix
 	optdepends = pulseaudio: for "force pulseaudio" fix
 	conflicts = runescape-client-bin
-	source = unix-runescape-client-4.0.3.tar.gz::https://github.com/HikariKnight/rsu-client/tarball/v4.0.3
-	md5sums = f4bad77afe0af92f3f32246db777ec4d
+	source = unix-runescape-client-4.0.4.tar.gz::https://github.com/HikariKnight/rsu-client/tarball/v4.0.4
+	md5sums = 327afffbb81fc28eb58c67e8f972fefb
 
 pkgname = unix-runescape-client
 

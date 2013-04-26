@@ -1,15 +1,13 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
 license=(GPL2)
-depends=('java-runtime' 'perl' 'xterm' 'p7zip')
+depends=('java-runtime' 'perl' 'xterm' 'p7zip' 'perl-wx')
 optdepends=(
-  'zenity: better UI'
-  'perl-wx: for rsu-settings'
   'wine: for "compatibility mode" fix'
   'alsa-oss: for "force alsa" fix'
   'pulseaudio: for "force pulseaudio" fix'
@@ -33,4 +31,4 @@ package() {
   cp -Rt "$pkgdir"/usr templates/packaging/usr/share
 }
 
-md5sums=('f4bad77afe0af92f3f32246db777ec4d')
+md5sums=('327afffbb81fc28eb58c67e8f972fefb')
