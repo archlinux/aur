@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Java Runtime
+Comment=Java Runtime Jar Executor
+Exec=/usr/lib/jvm/java-7-openjdk/jre/bin/java -jar %f
+Icon=javaws
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=Utility;
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
