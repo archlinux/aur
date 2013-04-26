@@ -14,7 +14,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config'
         'config.x86_64'
         'menu.lst'
-        "${pkgname}.preset"
+        "preset"
         'change-default-console-loglevel.patch')
 md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          '08cdcef928c2ca402adf1c444a3c43ac'
@@ -28,7 +28,7 @@ depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(linux)
 conflicts=(grub grub-legacy)
 backup=(etc/mkinitcpio.d/${pkgname}.preset boot/grub/menu.lst)
-install=${pkgname}.install
+install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -61,11 +61,11 @@ package_linux-linode() {
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgname}"
   install -D -m644 vmlinux "${pkgdir}/usr/src/linux-${_kernver}/vmlinux"
-  install -D -m644 "${srcdir}/${pkgname}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
+  install -D -m644 "${srcdir}/preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${pkgname}.install"
+    -i "${startdir}/install"
   sed \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgname}\"|" \
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
