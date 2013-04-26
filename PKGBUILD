@@ -39,7 +39,7 @@ build() {
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
-  cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+  cmake -DBUILD_WITH_QT4=on \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib/${pkgname} \
