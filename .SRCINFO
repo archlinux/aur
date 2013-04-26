@@ -30,7 +30,7 @@ pkgbase = linux-linode
 	md5sums = 08cdcef928c2ca402adf1c444a3c43ac
 	md5sums = 610a6d51a0f206b5d51c901d600028f2
 	md5sums = cecbb4be919cccd052c87326837869a3
-	md5sums = d01f2350ec9f92e2eabcde0f11be24f2
+	md5sums = 9720a0d3d98f97231e5d7dec16ceb37b
 	md5sums = ee66f3cd0c5bc0ba0f65499784d19f30
 	md5sums = f3def2cefdcbb954c21d8505d23cc83c
 

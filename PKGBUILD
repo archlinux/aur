@@ -20,7 +20,7 @@ md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          '08cdcef928c2ca402adf1c444a3c43ac'
          '610a6d51a0f206b5d51c901d600028f2'
          'cecbb4be919cccd052c87326837869a3'
-         'd01f2350ec9f92e2eabcde0f11be24f2'
+         '9720a0d3d98f97231e5d7dec16ceb37b'
          'ee66f3cd0c5bc0ba0f65499784d19f30'
          'f3def2cefdcbb954c21d8505d23cc83c')
 pkgdesc="Kernel for Arch Linux on Linode"
