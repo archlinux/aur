@@ -13,14 +13,9 @@ pkgbase = linux-linode
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
-	provides = kernel26
 	provides = linux
-	conflicts = kernel26
-	conflicts = linux
 	conflicts = grub
 	conflicts = grub-legacy
-	replaces = kernel26
-	replaces = linux
 	options = !strip
 	backup = etc/mkinitcpio.d/linux-linode.preset
 	backup = boot/grub/menu.lst

@@ -25,9 +25,8 @@ md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          'f3def2cefdcbb954c21d8505d23cc83c')
 pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-provides=(kernel26 linux)
-conflicts=(kernel26 linux grub grub-legacy)
-replaces=(kernel26 linux)
+provides=(linux)
+conflicts=(grub grub-legacy)
 backup=(etc/mkinitcpio.d/${pkgname}.preset boot/grub/menu.lst)
 install=${pkgname}.install
 
