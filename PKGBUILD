@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail · com>
 pkgname=clunc
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Client for LaCie U-Boot NetConsole"
 arch=('i686' 'x86_64')
 url="http://lacie-nas.org/doku.php?id=clunc"
@@ -14,7 +14,6 @@ sha1sums=('813c54e8df5735bfcd306a9da2c9f3a991df180d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/NC_CMD="nc/\0.openbsd/' clunc
   make
 }
 
