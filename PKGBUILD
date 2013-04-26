@@ -5,10 +5,11 @@ pkgname=casperjs
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="a browser navigation scripting & testing utility written in Javascript on top of PhantomJS."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://casperjs.org/"
 license=('MIT')
 depends=('python' 'phantomjs')
+optdepends=('ruby')
 makedepends=()
 conflicts=()
 provides=()
@@ -21,4 +22,5 @@ package() {
   cp -dpr --no-preserve=ownership "$srcdir/n1k0-casperjs-bc0da16" "$pkgdir/opt/$pkgname"
   install -d "$pkgdir/usr/bin"
   ln -sf /opt/$pkgname/bin/$pkgname $pkgdir/usr/bin/$pkgname
+  install -Dm644 "$srcdir/n1k0-casperjs-bc0da16/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

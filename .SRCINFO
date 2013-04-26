@@ -3,11 +3,11 @@ pkgbase = casperjs
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://casperjs.org/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python
 	depends = phantomjs
+	optdepends = ruby
 	source = https://github.com/n1k0/casperjs/tarball/1.0.2
 	sha256sums = 801c3417567bfebde7ec252aeb30cfde188e8cd7bbbc63d67b795c2bdc672101
 
