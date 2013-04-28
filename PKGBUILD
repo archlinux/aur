@@ -1,13 +1,11 @@
-# Maintainer: Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
-
 
 #######
 _gitroot="git://git.code.sf.net/p/refind/code"
 _gitname="refind"
 _gitbranch="master"
 #######
-
 
 #######
 _TIANOCORE_SVN_URL="https://edk2.svn.sourceforge.net/svnroot/edk2/branches/UDK2010.SR1"
@@ -22,11 +20,10 @@ _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _COMPILER="GCC46"
 #######
 
-
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=9c917ff
+pkgver=de33b35
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -40,8 +37,10 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems'
 
 options=('!strip' 'docs' '!makeflags')
 
-conflicts=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
-provides=('refind-efi' 'refind-efi-tianocore' 'refind-efi-tianocore-git')
+conflicts=('refind-efi')
+provides=('refind-efi')
+
+install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         "${_TIANO_DIR_}/BaseTools::svn+${_TIANOCORE_SVN_URL}/BaseTools"
@@ -204,7 +203,7 @@ build() {
 
 package() {
 	
-	## install the rEFInd UEFI applications
+	## Install the rEFInd UEFI applications
 	install -d "${pkgdir}/usr/lib/refind/"
 	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/refind/refind_x64.efi" "${pkgdir}/usr/lib/refind/refind_x64.efi"
 	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/refind/refind_ia32.efi" "${pkgdir}/usr/lib/refind/refind_ia32.efi"
@@ -215,17 +214,18 @@ package() {
 	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/drivers_x64"/*_x64.efi "${pkgdir}/usr/lib/refind/drivers_x64/"
 	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/drivers_ia32"/*_ia32.efi "${pkgdir}/usr/lib/refind/drivers_ia32/"
 	
-	## Install gptsync UEFI application built from rEFInd
-	install -d "${pkgdir}/usr/lib/refind/gptsync/"
-	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/gptsync/gptsync_x64.efi" "${pkgdir}/usr/lib/refind/gptsync/gptsync_x64.efi"
-	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/gptsync/gptsync_ia32.efi" "${pkgdir}/usr/lib/refind/gptsync/gptsync_ia32.efi"
+	## Install UEFI applications built from rEFInd
+	install -d "${pkgdir}/usr/lib/refind/tools_x64/"
+	install -d "${pkgdir}/usr/lib/refind/tools_ia32/"
+	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/gptsync/gptsync_x64.efi" "${pkgdir}/usr/lib/refind/tools_x64/gptsync_x64.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/gptsync/gptsync_ia32.efi" "${pkgdir}/usr/lib/refind/tools_ia32/gptsync_ia32.efi"
 	
-	## install the rEFInd config file
+	## Install the rEFInd config file
 	install -d "${pkgdir}/usr/lib/refind/config/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/usr/lib/refind/config/refind.conf"
 	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/usr/lib/refind/config/refind_linux.conf"
 	
-	## install the rEFInd docs
+	## Install the rEFInd docs
 	install -d "${pkgdir}/usr/share/refind/docs/html/"
 	install -d "${pkgdir}/usr/share/refind/docs/Styles/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/docs/refind"/* "${pkgdir}/usr/share/refind/docs/html/"
@@ -234,28 +234,28 @@ package() {
 	install -D -m0644 "${srcdir}/${_gitname}_build/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS"
 	rm -f "${pkgdir}/usr/share/refind/docs/html/.DS_Store" || true
 	
-	## install the rEFInd fonts
+	## Install the rEFInd fonts
 	install -d "${pkgdir}/usr/share/refind/fonts/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/fonts"/* "${pkgdir}/usr/share/refind/fonts/"
 	rm -f "${pkgdir}/usr/share/refind/fonts/mkfont.sh"
 	
-	## install the rEFInd mkfont.sh
+	## Install the rEFInd mkfont.sh
 	install -d "${pkgdir}/usr/bin/"
 	install -D -m0755 "${srcdir}/${_gitname}_build/fonts/mkfont.sh" "${pkgdir}/usr/bin/refind-mkfont"
 	
-	## install the rEFInd icons
+	## Install the rEFInd icons
 	install -d "${pkgdir}/usr/share/refind/icons/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/icons"/* "${pkgdir}/usr/share/refind/icons/"
 	
-	## install the rEFInd images
+	## Install the rEFInd images
 	install -d "${pkgdir}/usr/share/refind/images/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/images"/*.{png,bmp} "${pkgdir}/usr/share/refind/images/"
 	
-	## install the rEFInd keys
+	## Install the rEFInd keys
 	install -d "${pkgdir}/usr/share/refind/keys/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/keys"/* "${pkgdir}/usr/share/refind/keys/"
 	
-	## install the rEFIt license file, since rEFInd is a fork of rEFIt
+	## Install the rEFIt license file, since rEFInd is a fork of rEFIt
 	install -d "${pkgdir}/usr/share/licenses/refind/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/refind/LICENSE"
 	
