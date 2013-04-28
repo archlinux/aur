@@ -30,8 +30,8 @@ pkgbase = linux-linode
 	md5sums = 973bc1c68bb5f082a66d20c94193d4ee
 	md5sums = b751543acd0e8e830bc3784b0f2060d6
 	md5sums = fe1369bc997faada4e88da9aa1f053b9
-	md5sums = 9720a0d3d98f97231e5d7dec16ceb37b
-	md5sums = ee66f3cd0c5bc0ba0f65499784d19f30
+	md5sums = 01afd0c0ff8fcf3fe6e0cd91d12886bd
+	md5sums = 3d6427cc412dbc226b5d058c82ba7c66
 	md5sums = f3def2cefdcbb954c21d8505d23cc83c
 
 pkgname = linux-linode

@@ -20,8 +20,8 @@ md5sums=('1c738edfc54e7c65faeb90c436104e2f'
          '973bc1c68bb5f082a66d20c94193d4ee'
          'b751543acd0e8e830bc3784b0f2060d6'
          'fe1369bc997faada4e88da9aa1f053b9'
-         '9720a0d3d98f97231e5d7dec16ceb37b'
-         'ee66f3cd0c5bc0ba0f65499784d19f30'
+         '01afd0c0ff8fcf3fe6e0cd91d12886bd'
+         '3d6427cc412dbc226b5d058c82ba7c66'
          'f3def2cefdcbb954c21d8505d23cc83c')
 pkgdesc="Kernel for Arch Linux on Linode"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')

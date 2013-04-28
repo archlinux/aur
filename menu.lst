@@ -11,11 +11,6 @@ root (hd0)
 kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro break=postmount verbose
 initrd /boot/initramfs-linux-linode.img
 
-title Linux-Linode %VER% Fallback
-root (hd0)
-kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro
-initrd /boot/initramfs-linux-linode-fallback.img
-
 title Arch Vanilla %VER% (if installed)
 root (hd0)
 kernel /boot/vmlinuz-linux root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro break=postmount verbose

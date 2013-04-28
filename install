@@ -14,6 +14,7 @@ post_install () {
 }
 
 post_upgrade() {
+  rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
