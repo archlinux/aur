@@ -16,7 +16,7 @@ Configs are a compromise between vanilla Linode and Arch. Most drivers are disab
 
 Includes a grub boot menu where Linode expects to find it. You do NOT need grub, grub2, grub-legacy or any other. grub-legacy is a conflict because of menu.lst.
 
-Steps to use:
+# STEPS TO USE
 
 	1) pacman -Syu
 	2) pacman -U $pkgfile
