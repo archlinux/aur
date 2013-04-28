@@ -26,7 +26,7 @@ _COMPILER="GCC46"
 _pkgname="refind-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=a9871b0
+pkgver=9c917ff
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -108,7 +108,7 @@ _tianocore_udk_common() {
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Source/C/Makefiles/header.makefile" || true
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
-	## Fix GCC 4.7 error - gcc: error: unrecognized command line option '-melf_x86_64'
+	## Fix GCC >=4.7 error - gcc: error: unrecognized command line option '-melf_x86_64'
 	sed 's| -m64 --64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|--64 | |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's| -m64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
@@ -161,6 +161,7 @@ _build_refind-efi-common() {
 	## Fix UDK Path in rEFInd Makefiles
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
 	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
+	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/gptsync/Make.tiano" || true
 	
 	## Clean any existing binary files in git repo
 	ARCH="${_UEFI_ARCH}" make clean || true
@@ -213,6 +214,11 @@ package() {
 	install -d "${pkgdir}/usr/lib/refind/drivers_ia32/"
 	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/drivers_x64"/*_x64.efi "${pkgdir}/usr/lib/refind/drivers_x64/"
 	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/drivers_ia32"/*_ia32.efi "${pkgdir}/usr/lib/refind/drivers_ia32/"
+	
+	## Install gptsync UEFI application built from rEFInd
+	install -d "${pkgdir}/usr/lib/refind/gptsync/"
+	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/gptsync/gptsync_x64.efi" "${pkgdir}/usr/lib/refind/gptsync/gptsync_x64.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/gptsync/gptsync_ia32.efi" "${pkgdir}/usr/lib/refind/gptsync/gptsync_ia32.efi"
 	
 	## install the rEFInd config file
 	install -d "${pkgdir}/usr/lib/refind/config/"
