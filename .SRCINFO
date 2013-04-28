@@ -3,7 +3,7 @@
 pkgbase = directfb
 	pkgdesc = A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.directfb.org
 	arch = i686
 	arch = x86_64
