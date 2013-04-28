@@ -13,6 +13,7 @@ pkgbase = refind-efi-git
 	depends = dosfstools
 	depends = efibootmgr
 	optdepends = mactel-boot: For bless command in Apple Mac systems
+	optdepends = bash: For /usr/bin/refind-mkfont script
 	optdepends = imagemagick: For /usr/bin/refind-mkfont script
 	provides = refind-efi
 	conflicts = refind-efi

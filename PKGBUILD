@@ -33,6 +33,7 @@ license=('GPL3' 'custom')
 makedepends=('git' 'subversion' 'python2')
 depends=('dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems'
+            'bash: For /usr/bin/refind-mkfont script'
             'imagemagick: For /usr/bin/refind-mkfont script')
 
 options=('!strip' 'docs' '!makeflags')
