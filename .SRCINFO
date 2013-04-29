@@ -16,7 +16,7 @@ pkgbase = efibootmgr-git
 	options = zipman
 	options = !emptydirs
 	options = !libtool
-	source = efibootmgr::git+http://linux.dell.com/git/efibootmgr.git#branch=master
+	source = ::git+http://linux.dell.com/git/.git#branch=master
 	sha1sums = SKIP
 
 pkgname = efibootmgr-git
