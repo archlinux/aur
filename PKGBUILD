@@ -1,25 +1,25 @@
 pkgname=linux-linode
-_basekernel=3.8
+_basekernel=3.9
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.10
+pkgver=${_basekernel}.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
-makedepends=(xmlto docbook-xsl)
+makedepends=(xmlto docbook-xsl kmod inetutils bc)
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+#        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config'
         'config.x86_64'
         'menu.lst'
         "preset"
         'change-default-console-loglevel.patch')
-md5sums=('1c738edfc54e7c65faeb90c436104e2f'
-         '973bc1c68bb5f082a66d20c94193d4ee'
-         'b751543acd0e8e830bc3784b0f2060d6'
-         'fe1369bc997faada4e88da9aa1f053b9'
+md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
+#         '973bc1c68bb5f082a66d20c94193d4ee'
+         'aa934366554155fd1f1100d155505cc8'
+         'eac55046b71f821d7e881cc5f107049b'
          '01afd0c0ff8fcf3fe6e0cd91d12886bd'
          '3d6427cc412dbc226b5d058c82ba7c66'
          'f3def2cefdcbb954c21d8505d23cc83c')
@@ -32,7 +32,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+#  patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
