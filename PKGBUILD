@@ -1,12 +1,16 @@
-# Maintainer : Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer : Keshav Padram (the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
+
+_gitroot="git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
+_gitname="syslinux"
+_gitbranch="firmware"
 
 __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=20130205
+pkgver=6.00.pre4
 pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
@@ -23,38 +27,15 @@ conflicts=("${_pkgname}")
 
 options=('!strip' 'docs' '!libtool' 'emptydirs' 'zipman' '!purge' '!makeflags')
 
-source=('syslinux-efi-search-PATH-EFI-syslinux.patch'
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'syslinux.cfg')
 
-sha1sums=('b02f07dbcf77dd998c94d1a202e082a07f35bd3d'
+sha1sums=('SKIP'
           '7477f166ae0ed26c69f03d95c13078e146b90fe1')
 
-_gitroot="git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
-_gitname="${__pkgname}"
-_gitbranch="firmware"
-
-_update_git() {
-	
-	cd "${srcdir}/"
-	
-	msg "Connecting to GIT server...."
-	
-	if [[ -d "${srcdir}/${_gitname}/" ]]; then
-		cd "${srcdir}/${_gitname}/"
-		git reset --hard
-		git fetch
-		git checkout "${_gitbranch}"
-		git merge "remotes/origin/${_gitbranch}"
-		msg "The local GIT repo has been updated."
-	else
-		git clone "${_gitroot}" "${_gitname}"
-		cd "${srcdir}/${_gitname}/"
-		git checkout "${_gitbranch}"
-		msg "GIT checkout done or server timeout"
-	fi
-	
-	echo
-	
+pkgver() {
+	cd "${srcdir}/${_gitname}/"
+	git describe --always | sed 's|-|.|g' | sed 's|syslinux.||g'
 }
 
 build() {
@@ -62,9 +43,6 @@ build() {
 	if [[ "${CARCH}" != "x86_64" ]]; then
 		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
 		exit 1
-	else
-		_update_git
-		echo
 	fi
 	
 	rm -rf "${srcdir}/${_gitname}_build" || true
@@ -77,25 +55,21 @@ build() {
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
-	## Add /EFI/syslinux to the list of search PATHs
-	# patch -Np1 -i "${srcdir}/syslinux-efi-search-PATH-EFI-syslinux.patch" || true
-	echo
-	
+	rm -rf "${srcdir}/${_gitname}_build/BUILD/" || true
 	mkdir -p "${srcdir}/${_gitname}_build/BUILD/"
 	
-	rm -rf "${srcdir}/${_gitname}_build/BUILD/efi64" || true
-	make O="${PWD}/BUILD" PYTHON="python2" efi64
+	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi64
 	echo
 	
-	make O="${PWD}/BUILD" PYTHON="python2" efi64 installer
+	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi64 installer
 	echo
 	
-	rm -rf "${srcdir}/${_gitname}_build/BUILD/efi32" || true
-	make O="${PWD}/BUILD" PYTHON="python2" efi32
+	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi32
 	echo
 	
-	make O="${PWD}/BUILD" PYTHON="python2" efi32 installer
+	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi32 installer
 	echo
 	
 }
@@ -104,12 +78,13 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	make O="${PWD}/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install
+	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install
 	echo
 	
-	make O="${PWD}/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install
+	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install
 	echo
 	
-	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/syslinux/syslinux.cfg"
+	install -d "${pkgdir}/usr/lib/syslinux/config"
+	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/syslinux/config/syslinux.cfg"
 	
 }
