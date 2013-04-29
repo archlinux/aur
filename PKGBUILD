@@ -11,7 +11,7 @@ pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
 url=("http://www.rpm.org/")
 license=('GPL2')
-depends=('lua' 'file' 'nss>=3.12' 'popt' 'elfutils' 'db' 'libarchive')
+depends=('lua' 'file' 'nss>=3.12' 'popt' 'elfutils' 'libarchive')
 makedepends=('python2')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
@@ -48,6 +48,15 @@ package() {
 	cd ${srcdir}/rpm-${pkgver}
 	make prefix=${pkgdir}/usr localstatedir=${pkgdir}/var install
 	rmdir ${pkgdir}/var/tmp
+	rmdir ${pkgdir}/var
 	# rpmextract using bsdtar, needs libarchive
 	install -m755 ${srcdir}/rpmextract.sh ${pkgdir}/usr/bin/
+
+	# move rpm from /bin to /usr/bin
+	mv ${pkgdir}/bin/rpm ${pkgdir}/usr/bin/
+	rm ${pkgdir}/usr/bin/rpm{query,verify}
+	cd ${pkgdir}/usr/bin
+	ln -s rpm rpmquery
+	ln -s rpm rpmverify
+	rm -r ${pkgdir}/bin/
 }

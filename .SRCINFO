@@ -12,7 +12,6 @@ pkgbase = rpm-org
 	depends = nss>=3.12
 	depends = popt
 	depends = elfutils
-	depends = db
 	depends = libarchive
 	provides = rpm=4.11.0.1
 	provides = rpmextract=1.0-4
