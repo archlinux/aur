@@ -1,8 +1,8 @@
 # Maintainer : Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
-_gitroot="http://linux.dell.com/git/${_pkgname}.git"
-_gitname="${_pkgname}"
+_gitroot="http://linux.dell.com/git/efibootmgr.git"
+_gitname="efibootmgr"
 _gitbranch="master"
 
 _pkgname="efibootmgr"
