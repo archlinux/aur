@@ -64,8 +64,8 @@ sha1sums=('SKIP'
           '3d53eb615c3363d45feb95b9bfbf1d5491bf1c24')
 
 pkgver() {
-  cd "${_gitname}"
-  git describe --always | sed 's|-|.|g'
+	cd "${srcdir}/${_gitname}"
+	git describe --always | sed 's|-|.|g'
 }
 
 _tianocore_udk_common() {
