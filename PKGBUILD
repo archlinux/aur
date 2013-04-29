@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -60,10 +60,15 @@ build() {
 	--with-qemu-user=nobody --with-qemu-group=nobody \
 	--without-netcf --with-interface
   make
+
   sed -i 's|/etc/sysconfig/libvirtd|/etc/conf.d/libvirtd|' daemon/libvirtd.service
-  sed -i 's|/etc/sysconfig/libvirt-guests|/etc/conf.d/libvirtd-guests|' tools/libvirt-guests.service
-  sed -i 's|/etc/init.d/libvirt-g|/etc/rc.d/libvirtd-g|g' tools/libvirt-guests.service
+  sed -i \
+    -e 's|/etc/sysconfig/libvirt-guests|/etc/conf.d/libvirtd-guests|' \
+    -e 's|/etc/init.d/libvirt-g|/etc/rc.d/libvirtd-g|g' \
+    -e 's|After=.*|After=syslog.target network.target libvirtd.service|' \
+    tools/libvirt-guests.service
   sed -i 's|@sbindir@|/usr/sbin|g' src/virtlockd.service
+  sed -i 's|#group =.*|group="kvm"|' src/qemu/qemu.conf
 }
 
 package() {
@@ -81,9 +86,6 @@ package() {
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
   mv "$pkgdir"/lib/* "$pkgdir"/usr/lib/
 
-  sed -i \
-	's|After=.*|After=syslog.target network.target libvirtd.service|' \
-	"$pkgdir"/usr/lib/systemd/system/libvirt-guests.service
 
   rm -rf \
 	"$pkgdir"/var/run \
