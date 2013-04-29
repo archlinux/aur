@@ -6,7 +6,7 @@
 
 pkgname=rpm-org
 pkgver=4.11.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
 url=("http://www.rpm.org/")
@@ -17,16 +17,19 @@ conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
 source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
-	rpmextract.sh finish-lua52-support.patch)
+	rpmextract.sh
+	finish-lua52-support.patch rpmlib-filesystem-check.patch)
 md5sums=('b35f5359e0d4494d7b11e8d0c1512a0d'
          '1f7f4f3b3a93ff6d2f600c7751ae25ef'
-         'a82a9372f2bca43049791c162a36c1e5')
+         'a82a9372f2bca43049791c162a36c1e5'
+         '62a62de128345a8a7a6195fd59f8cd71')
 
 
 build() {
 	cd ${srcdir}/rpm-${pkgver}
 
 	patch -p1 < ../finish-lua52-support.patch
+	patch -p1 < ../rpmlib-filesystem-check.patch
 
 	./configure \
 		--prefix=/usr  \
@@ -35,6 +38,7 @@ build() {
 		--enable-python \
 		--with-external-db \
 		--with-lua \
+		--with-cap \
 		CPPFLAGS="`pkg-config --cflags nss`" \
 		PYTHON=python2
 	make

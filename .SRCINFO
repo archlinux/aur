@@ -1,7 +1,7 @@
 pkgbase = rpm-org
 	pkgdesc = RPM Package Manager - RPM.org fork, used in major RPM distros
 	pkgver = 4.11.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rpm.org/
 	arch = i686
 	arch = x86_64
@@ -22,9 +22,11 @@ pkgbase = rpm-org
 	source = http://rpm.org/releases/rpm-4.11.x/rpm-4.11.0.1.tar.bz2
 	source = rpmextract.sh
 	source = finish-lua52-support.patch
+	source = rpmlib-filesystem-check.patch
 	md5sums = b35f5359e0d4494d7b11e8d0c1512a0d
 	md5sums = 1f7f4f3b3a93ff6d2f600c7751ae25ef
 	md5sums = a82a9372f2bca43049791c162a36c1e5
+	md5sums = 62a62de128345a8a7a6195fd59f8cd71
 
 pkgname = rpm-org
 
