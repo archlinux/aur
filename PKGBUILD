@@ -34,30 +34,8 @@ sha1sums=('SKIP'
           '09144dd3ec664b96714fe92d823e31bd1bb747e9')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
+	cd "${srcdir}/${_gitname}/"
 	git describe --always | sed 's|-|.|g'
-}
-
-_update_git() {
-	cd "${srcdir}/"
-	
-	msg "Connecting to GIT server...."
-	
-	if [[ -d "${srcdir}/${_gitname}/" ]]; then
-		cd "${srcdir}/${_gitname}/"
-		git reset --hard
-		git fetch
-		git checkout "${_gitbranch}"
-		git merge "remotes/origin/${_gitbranch}"
-		msg "The local GIT repo has been updated."
-	else
-		git clone "${_gitroot}" "${_gitname}"
-		cd "${srcdir}/${_gitname}/"
-		git checkout "${_gitbranch}"
-		msg "GIT checkout done or server timeout"
-	fi
-	
-	echo
 }
 
 _build_gnu-efi-libs-x86_64() {
