@@ -2,7 +2,7 @@ post_install() {
 	
 	cat << EOF 
 
-shim is installed at /boot/efi/EFI/arch/shim/shimx64.efi
+shim-efi-x86_64 is installed at /usr/lib/shim/shimx64.efi
 
 EOF
 	
