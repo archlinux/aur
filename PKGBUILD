@@ -2,6 +2,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
+_gitroot="git://github.com/vathpela/gnu-efi.git"
+_gitname="gnu-efi-fedora"
+_gitbranch="fedora"
+
 pkgname="gnu-efi-libs-fedora-git"
 pkgver=51ddcca
 pkgrel=1
@@ -19,10 +23,6 @@ fi
 conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')
 
-_gitroot="git://github.com/vathpela/gnu-efi.git"
-_gitname="gnu-efi-fedora"
-_gitbranch="fedora"
-
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'gnu-efi-fix-x86_64-uefi-call-wrapper.patch'
         'gnu-efi-fedora-disable-USE_MS_ABI.patch'
@@ -34,8 +34,8 @@ sha1sums=('SKIP'
           '09144dd3ec664b96714fe92d823e31bd1bb747e9')
 
 pkgver() {
-  cd "${_gitname}"
-  git describe --always | sed 's|-|.|g'
+	cd "${srcdir}/${_gitname}"
+	git describe --always | sed 's|-|.|g'
 }
 
 _update_git() {
