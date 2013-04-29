@@ -1,12 +1,17 @@
 post_install() {
+	echo
 	echo ":: Run '/usr/bin/gummiboot install' to install gummiboot to EFI System Partition."
+	echo
 }
 
 post_upgrade() {
+	echo
 	echo ":: Run '/usr/bin/gummiboot update' to update gummiboot in EFI System Partition."
+	echo
 }
 
 pre_remove() {
 	echo
 	# echo ":: Run '/usr/bin/gummiboot remove' to remove gummiboot from EFI System Partition."
+	echo
 }

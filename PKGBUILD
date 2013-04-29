@@ -3,6 +3,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
+_gitroot="git://anongit.freedesktop.org/gummiboot"
+_gitname="gummiboot"
+_gitbranch="master"
+
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
@@ -23,10 +27,6 @@ provides=("${_pkgname}" 'gummiboot-efi' 'gummiboot-efi-git')
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
-_gitroot="git://anongit.freedesktop.org/gummiboot"
-_gitname="gummiboot"
-_gitbranch="master"
-
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'loader.conf'
         'arch.conf')
@@ -34,34 +34,10 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
 sha1sums=('SKIP'
           '82a59f90d9138c26f8db52bb8e94991602cf1edd'
           'aff6e152c3f7494e6113a8e2f073810366433015')
-          
-pkgver() {
-  cd "${_gitname}"
-  git describe --always | sed 's|-|.|g'
-}
 
-_update_git() {
-	
-	cd "${srcdir}/"
-	
-	msg "Connecting to GIT server...."
-	
-	if [[ -d "${srcdir}/${_gitname}/" ]]; then
-		cd "${srcdir}/${_gitname}/"
-		git reset --hard
-		git fetch
-		git checkout "${_gitbranch}"
-		git merge "remotes/origin/${_gitbranch}"
-		msg "The local GIT repo has been updated."
-	else
-		git clone "${_gitroot}" "${_gitname}"
-		cd "${srcdir}/${_gitname}/"
-		git checkout "${_gitbranch}"
-		msg "GIT checkout done or server timeout"
-	fi
-	
-	echo
-	
+pkgver() {
+	cd "${srcdir}/${_gitname}/"
+	git describe --always | sed 's|-|.|g'
 }
 
 build() {
@@ -82,6 +58,7 @@ build() {
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
 	./autogen.sh
 	echo
