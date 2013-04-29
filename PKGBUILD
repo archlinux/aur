@@ -1,4 +1,4 @@
-# Maintainer : Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer : Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
