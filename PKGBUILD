@@ -24,8 +24,8 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  git describe --always | sed 's|-|.|g'
+	cd "${srcdir}/${_gitname}"
+	git describe --always | sed 's|-|.|g'
 }
 
 _update_git() {
