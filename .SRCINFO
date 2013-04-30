@@ -1,6 +1,6 @@
 pkgbase = elementary-git
 	pkgdesc = EFL widget toolkit - Development version
-	pkgver = 1.7.99.x
+	pkgver = 1.7.99.7772.d331257
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = elementary-git
 	license = LGPL2.1
 	makedepends = git
 	depends = efl-git
-	provides = elementary=$pkgver
+	provides = elementary=1.7.99.7772.d331257
 	provides = elementary-svn
 	conflicts = elementary
 	conflicts = elementary-svn
