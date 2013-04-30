@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
 pkgver=2420
-pkgrel=2
+pkgrel=3
 pkgdesc="Action role-playing game (ARPG, like diablo)"
 arch=(i686 x86_64)
 url="http://www.holyspirit.fr/"
@@ -14,12 +14,12 @@ provides=('holyspirit')
 conflicts=('holyspirit')
 install=holyspirit.install
 source=('holyspirit::svn+https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk'
-holyspirit.sh config_crash.patch backspace.patch qt-includes.patch)
+holyspirit.sh config_crash.patch convertCoords.patch qt-includes.patch)
 backup=('opt/share/games/holyspirit/configuration.conf' 'opt/share/games/holyspirit/key_mapping.conf')
 md5sums=('SKIP'
          'c2fa4f8768d35c54a95dec924e50c75f'
          'c0fd6d1ede2cb6afbcf082aaae0cc60b'
-         '4967f1cd4216d1ec2ff3cfd1941b18df'
+         '826ad464d28d8359a98105646abc6ebc'
          '97fde790c28fd547be56a8c0d9e2029a')
 
 pkgver(){
@@ -31,7 +31,7 @@ build() {
 
   # patches
   patch -p1 < ../config_crash.patch
-  patch -p1 < ../backspace.patch
+  patch -p2 < ../convertCoords.patch
   patch -p2 < ../qt-includes.patch
 
   cmake -DSFML_STATIC_LIBRARIES=FALSE \
@@ -42,6 +42,9 @@ build() {
 
   msg "Building the launcher..."
   cd Launcher
+  #sed -i -e 's|/usr/share/qt4|/usr/share/qt|g' Makefile
+  #sed -i -e 's|/usr/bin/moc-qt4|/usr/bin/moc|g' Makefile
+  #make INCPATH="-I/usr/share/qt/mkspecs/linux-g++ -I. -I/usr/include/QtCore -I/usr/include/QtNetwork -I/usr/include/QtGui -I/usr/include/QtWebKit -I/usr/include/Qt -I. -I." 
   make
 }
 
