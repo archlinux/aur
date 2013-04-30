@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.9
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,8 +20,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'alsa-firmware-loading-3.8.8.patch')
 md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
-         '60d5e48a9dc8c7047fa91bc72922f407'
-         'd79e4d461f022c5cf599d0bcafbbea93'
+         'b476a6876dc4903b40423a230b2ab193'
+         'dfe4679707d7285d383eeb4791026a23'
          'eb14dcfd80c00852ef81ded6e826826a'
          'f3def2cefdcbb954c21d8505d23cc83c'
          'e2ac681ffa439e969b4c3b4616852454')
