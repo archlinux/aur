@@ -2,7 +2,7 @@
 # Based on PKGBUILD for oilrush
 pkgname=game-dev-tycoon
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 depends=('mesa' 'lib32-gconf' 'systemd')
@@ -22,21 +22,24 @@ build() {
   cd ${srcdir}
 
   msg "You need a full copy of this game in order to install it"
-  msg "Searching for \"${_gamepkg}\"\
-  in dir: $(readlink -f ${startdir})"
-  pkgpath=${startdir}
+  msg "Download the .tar.gz version of the game and give its path below"
+  msg "Searching for \"${_gamepkg}\" in dir: $(readlink -f ${startdir})"
+  pkgpath="${startdir}/${_gamepkg}"
 
   if [[ ! ( -f "${startdir}/${_gamepkg}" ) ]]; then
-    error "Game package not found, please type absolute path to game setup package:"
+    error "Game file not found, please type path to game setup package:"
     read pkgpath
-    if [[ ! ( -f "${pkgpath}/${_gamepkg}" ) ]] ; then
-       error "Unable to find game package." && return 1
-   fi
+    if [[ ! ( "${pkgpath:0:1}" == "/" ) ]]; then
+      pkgpath="${startdir}/${pkgpath}"
+    fi
+    if [[ ! ( -f "${pkgpath}" ) ]] ; then
+       error "Unable to find game file." && return 1
+    fi
   fi
-  msg "Found game package, installing..."
+  msg "Found game file, installing..."
 
-  ln -fs "${pkgpath}/${_gamepkg}" .
-  tar zxf ${srcdir}/${_gamepkg}
+  ln -fs "${pkgpath}" .
+  tar zxf "$(basename "$pkgpath")"
   mv "logo_120.png" "launcher.png"
 }
 
@@ -44,7 +47,7 @@ package() {
   cd "${srcdir}"
   install -d ${pkgdir}/opt/greenheartgames/${pkgname}
 
-  cp -R ${srcdir}/* ${pkgdir}/opt/greenheartgames/${pkgname}/
+  cp -R ${srcdir}/{gamedevtycoon,nw,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
 
   # I know this is bad, but what else can be done about this?
   install -d ${pkgdir}/usr/lib32
