@@ -1,13 +1,13 @@
 # Maintainer: Trygve Aaberge <trygveaa+aur at gmail dot com>
 
 pkgname=mopidy-git
-pkgver=20130320
+pkgver=20130430
 pkgrel=1
 pkgdesc="A music server which can play music from Spotify"
 arch=(any)
 url="http://www.mopidy.com"
 license=('APACHE')
-depends=('python2' 'pyspotify-git' 'python2-pykka' 'gawk' 'gstreamer0.10-python' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins')
+depends=('python2' 'pyspotify-git' 'python2-pykka' 'python2-distribute' 'gawk' 'gstreamer0.10-python' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins')
 makedepends=('git' 'python2')
 optdepends=('python2-cherrypy: HTTP frontend'
             'python2-ws4py: HTTP frontend'
