@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Game Dev Tycoon
+Comment=Game Dev Tycoon
+GenericName=game-dev-tycoon
+Exec=game-dev-tycoon
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/opt/greenheartgames/game-dev-tycoon/launcher.png
+Categories=Game;Simulation;
+X-Desktop-File-Install-Version=1.2.2

@@ -1,0 +1,21 @@
+pkgbase = game-dev-tycoon
+	pkgdesc = a business simulation game where you start a video game development company
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://www.greenheartgames.com/app/game-dev-tycoon/
+	arch = i686
+	arch = x86_64
+	license = commercial
+	depends = mesa
+	depends = lib32-gconf
+	depends = systemd
+	options = !strip
+	source = game-dev-tycoon
+	source = game-dev-tycoon.desktop
+	source = http://www.greenheartgames.com/wp-content/uploads/2012/09/logo_120.png
+	md5sums = 0c1a2b3ba7df65f5763a8f99da799ea4
+	md5sums = b846906a3d1b9820dbc2c68c3c748db9
+	md5sums = 20f8fd0e2d8d72090aa032aec8a43119
+
+pkgname = game-dev-tycoon
+
