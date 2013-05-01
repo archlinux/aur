@@ -2,10 +2,10 @@
 # Based on PKGBUILD for oilrush
 pkgname=game-dev-tycoon
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
-depends=('mesa' 'lib32-gconf' 'node-webkit')
+depends=('mesa' 'lib32-gconf' 'systemd') # systemd for libudev
 provides=()
 options=(!strip)
 PKGEXT=".pkg.tar" # Because we don't want to have to recompress the binary
@@ -39,9 +39,9 @@ build() {
   fi
 
   if [[ ! (`md5sum ${pkgpath} | cut -f1 -d' '` == "${_gamemd5}") ]]; then
-    msg "Game file seems to be a different version, problems may occur!"
+    error "Game file seems to be a different version, problems may occur!"
   fi
-  msg "Found game file, installing..."
+  msg2 "Found game file, installing..."
 
   ln -fs "${pkgpath}" .
   tar zxf "$(basename "$pkgpath")"
@@ -52,6 +52,7 @@ package() {
   cd "${srcdir}"
   install -d ${pkgdir}/opt/greenheartgames/${pkgname}
 
+  msg2 "copy game files"
   cp -R ${srcdir}/{gamedevtycoon,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
 
   # I know this is bad, but what else can be done about this hardcoded library
@@ -60,9 +61,11 @@ package() {
   ln -fs libudev.so.1 ${pkgdir}/usr/lib32/libudev.so.0
 
   # Install Launcher
+  msg2 "install launcher to /usr/bin"
   install -D -m755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # Install Desktop
+  msg2 "add .desktop file"
   install -D -m644 ${srcdir}/${pkgname}.desktop \
     ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
