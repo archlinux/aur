@@ -1,8 +1,8 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 # Based on PKGBUILD for oilrush
 pkgname=game-dev-tycoon
-pkgver=1.2.2
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 depends=('mesa' 'lib32-gconf' 'node-webkit')
@@ -12,6 +12,7 @@ PKGEXT=".pkg.tar" # Because we don't want to have to recompress the binary
 license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
 _gamepkg="game-dev-tycoon.tar.gz"
+_gamemd5="ec2dd3534744545f54689e8611c13e1a"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop'
   'http://www.greenheartgames.com/wp-content/uploads/2012/09/logo_120.png')
 md5sums=('0c1a2b3ba7df65f5763a8f99da799ea4'
@@ -35,6 +36,10 @@ build() {
     if [[ ! ( -f "${pkgpath}" ) ]] ; then
        error "Unable to find game file." && return 1
     fi
+  fi
+
+  if [[ ! (`md5sum ${pkgpath} | cut -f1 -d' '` == "${_gamemd5}") ]]; then
+    msg "Game file seems to be a different version, problems may occur!"
   fi
   msg "Found game file, installing..."
 
