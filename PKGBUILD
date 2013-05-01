@@ -4,7 +4,7 @@
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
 pkgver=1.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 makedepends=('unzip')
@@ -55,21 +55,27 @@ build() {
   msg2 "Cleaning game directory"
   cp "app.nw/package.png" "launcher.png"
   rm gamedevtycoon nw
+
+  # work around issue with switching from garage
+  # will probably be fixed by developers in next version
+  # http://forum.greenheartgames.com/t/linux-the-bugs-of-the-linux-version/824/5
+  msg2 "Work around desk bug"
+  mv app.nw/images/superb/level2Desk.png app.nw/images/superb/level2desk.png
 }
 
 package() {
   cd "${srcdir}"
   install -d ${pkgdir}/opt/greenheartgames/${pkgname}
 
-  msg2 "copy game files"
+  msg2 "Copy game files"
   cp -R ${srcdir}/{app.nw,launcher.png,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
 
   # Install Launcher
-  msg2 "install launcher to /usr/bin"
+  msg2 "Install launcher to /usr/bin"
   install -D -m755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # Install Desktop
-  msg2 "add .desktop file"
+  msg2 "Add .desktop file"
   install -D -m644 ${srcdir}/${pkgname}.desktop \
     ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
