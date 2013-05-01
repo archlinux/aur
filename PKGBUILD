@@ -4,7 +4,7 @@
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
 pkgver=1.3.1
-pkgrel=6
+pkgrel=7
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 makedepends=('unzip')
@@ -14,7 +14,7 @@ options=(!strip)
 PKGEXT=".pkg.tar" # Because we don't want to have to recompress the binary
 license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
-_gamepkg="game-dev-tycoon.tar.gz"
+_gamepkg="gamedevtycoon-${pkgver}.tar.gz"
 _gamemd5="ec2dd3534744545f54689e8611c13e1a"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
 md5sums=('cc2ad6406868368ced023ab7f307505f'
@@ -59,7 +59,7 @@ build() {
   # work around issue with switching from garage
   # will probably be fixed by developers in next version
   # http://forum.greenheartgames.com/t/linux-the-bugs-of-the-linux-version/824/5
-  msg2 "Work around desk bug"
+  msg2 "Work around level 2 desk bug"
   mv app.nw/images/superb/level2Desk.png app.nw/images/superb/level2desk.png
 }
 
