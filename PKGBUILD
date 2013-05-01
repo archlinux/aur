@@ -1,5 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 # Based on PKGBUILD for oilrush
+# Repository here: https://github.com/Jonhoo/gamedevtycoon-PKGBUILD
 pkgname=game-dev-tycoon
 pkgver=1.3.1
 pkgrel=3
