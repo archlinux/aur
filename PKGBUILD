@@ -3,7 +3,7 @@
 # Repository here: https://github.com/Jonhoo/gamedevtycoon-PKGBUILD
 pkgname=game-dev-tycoon
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 makedepends=('unzip')
@@ -61,7 +61,7 @@ package() {
   install -d ${pkgdir}/opt/greenheartgames/${pkgname}
 
   msg2 "copy game files"
-  cp -R ${srcdir}/{app.nw,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
+  cp -R ${srcdir}/{app.nw,launcher.png,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
 
   # Install Launcher
   msg2 "install launcher to /usr/bin"
