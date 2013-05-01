@@ -3,10 +3,11 @@
 # Repository here: https://github.com/Jonhoo/gamedevtycoon-PKGBUILD
 pkgname=game-dev-tycoon
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
-depends=('mesa' 'lib32-gconf' 'systemd') # systemd for libudev
+makedepends=('unzip')
+depends=('mesa' 'node-webkit')
 provides=()
 options=(!strip)
 PKGEXT=".pkg.tar" # Because we don't want to have to recompress the binary
@@ -14,11 +15,9 @@ license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
 _gamepkg="game-dev-tycoon.tar.gz"
 _gamemd5="ec2dd3534744545f54689e8611c13e1a"
-source=('game-dev-tycoon' 'game-dev-tycoon.desktop'
-  'http://www.greenheartgames.com/wp-content/uploads/2012/09/logo_120.png')
-md5sums=('0c1a2b3ba7df65f5763a8f99da799ea4'
-         'b846906a3d1b9820dbc2c68c3c748db9'
-         '20f8fd0e2d8d72090aa032aec8a43119')
+source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
+md5sums=('cc2ad6406868368ced023ab7f307505f'
+         'b846906a3d1b9820dbc2c68c3c748db9')
 
 build() {
   cd ${srcdir}
@@ -42,11 +41,19 @@ build() {
   if [[ ! (`md5sum ${pkgpath} | cut -f1 -d' '` == "${_gamemd5}") ]]; then
     error "Game file seems to be a different version, problems may occur!"
   fi
-  msg2 "Found game file, installing..."
+  msg "Found game file, installing..."
 
+  msg2 "Extracting archive"
   ln -fs "${pkgpath}" .
   tar zxf "$(basename "$pkgpath")"
-  mv "logo_120.png" "launcher.png"
+
+  msg2 "Extracting game files"
+  rm -rf app.nw
+  unzip -qq gamedevtycoon -d app.nw && true
+
+  msg2 "Cleaning game directory"
+  cp "app.nw/package.png" "launcher.png"
+  rm gamedevtycoon nw
 }
 
 package() {
@@ -54,12 +61,7 @@ package() {
   install -d ${pkgdir}/opt/greenheartgames/${pkgname}
 
   msg2 "copy game files"
-  cp -R ${srcdir}/{gamedevtycoon,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
-
-  # I know this is bad, but what else can be done about this hardcoded library
-  # version?
-  msg2 "symlink libudev.so.0 -> libudev.so.1"
-  ln -fs /usr/lib32/libudev.so.1 ${pkgdir}/opt/greenheartgames/${pkgname}/libudev.so.0
+  cp -R ${srcdir}/{app.nw,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
 
   # Install Launcher
   msg2 "install launcher to /usr/bin"
