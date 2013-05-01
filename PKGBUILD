@@ -2,7 +2,7 @@
 # Based on PKGBUILD for oilrush
 pkgname=game-dev-tycoon
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 depends=('mesa' 'lib32-gconf' 'systemd') # systemd for libudev
@@ -57,8 +57,8 @@ package() {
 
   # I know this is bad, but what else can be done about this hardcoded library
   # version?
-  install -d ${pkgdir}/usr/lib32
-  ln -fs libudev.so.1 ${pkgdir}/usr/lib32/libudev.so.0
+  msg2 "symlink libudev.so.0 -> libudev.so.1"
+  ln -fs /usr/lib32/libudev.so.1 ${pkgdir}/opt/greenheartgames/${pkgname}/libudev.so.0
 
   # Install Launcher
   msg2 "install launcher to /usr/bin"
