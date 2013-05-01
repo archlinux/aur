@@ -1,14 +1,14 @@
 pkgbase = game-dev-tycoon
 	pkgdesc = a business simulation game where you start a video game development company
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.greenheartgames.com/app/game-dev-tycoon/
 	arch = i686
 	arch = x86_64
 	license = commercial
 	depends = mesa
 	depends = lib32-gconf
-	depends = systemd
+	depends = node-webkit
 	options = !strip
 	source = game-dev-tycoon
 	source = game-dev-tycoon.desktop

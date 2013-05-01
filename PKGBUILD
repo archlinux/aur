@@ -2,10 +2,10 @@
 # Based on PKGBUILD for oilrush
 pkgname=game-dev-tycoon
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
-depends=('mesa' 'lib32-gconf' 'systemd')
+depends=('mesa' 'lib32-gconf' 'node-webkit')
 provides=()
 options=(!strip)
 PKGEXT=".pkg.tar" # Because we don't want to have to recompress the binary
@@ -47,9 +47,10 @@ package() {
   cd "${srcdir}"
   install -d ${pkgdir}/opt/greenheartgames/${pkgname}
 
-  cp -R ${srcdir}/{gamedevtycoon,nw,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
+  cp -R ${srcdir}/{gamedevtycoon,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
 
-  # I know this is bad, but what else can be done about this?
+  # I know this is bad, but what else can be done about this hardcoded library
+  # version?
   install -d ${pkgdir}/usr/lib32
   ln -fs libudev.so.1 ${pkgdir}/usr/lib32/libudev.so.0
 
