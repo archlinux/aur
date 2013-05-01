@@ -4,12 +4,12 @@
 
 pkgname=slic3r
 pkgver=0.9.9
-pkgrel=1
+pkgrel=3
 pkgdesc="An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge"
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
-depends=('perl' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper>=1.17'
+depends=('perl' 'perl-moo' 'perl-boost-geometry-utils=0.06' 'perl-math-clipper>=1.17'
          'perl-math-convexhull' 'perl-math-geometry-voronoi'
          'perl-math-planepath' 'perl-math-convexhull-monotonechain'
          'perl-io-stringy' 'perl-encode-locale')
@@ -34,10 +34,15 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null SLIC3R_NO_AUTO=1
 
-  { /usr/bin/perl Build.PL &&
-    ./Build &&
-    ./Build test &&
-    ./Build install; } || return 1
+  # Build stage
+  /usr/bin/perl Build.PL
+  ./Build
+  ./Build test
+}
+
+package () {
+	cd "$srcdir/Slic3r-$pkgver"
+	./Build install
 
   install -d $pkgdir/usr/bin/vendor_perl/var
   install -m 644 var/* $pkgdir/usr/bin/vendor_perl/var/
@@ -45,5 +50,7 @@ build() {
   install -d $pkgdir/usr/share/applications
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
 
+  # Just to have a more sane bin name also, and automagically fix perl LANG
+  # problems
   install -m 755 $srcdir/slic3r $pkgdir/usr/bin/
 }
