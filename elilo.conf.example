@@ -3,18 +3,13 @@ prompt
 
 default=arch
 timeout=10
-# lba32
 
-image=/EFI/arch/vmlinuz-linux.efi
+image=/EFI/arch/vmlinuz-arch.efi
 	label=arch
-	append="rootfstype=ext4 gpt add_efi_memmap"
-	root=/dev/disk/by-uuid/XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-	initrd=/EFI/arch/initramfs-linux.img
-	read-only
+	append="root=PARTUUID=XXXXXXXXXX rootfstype=ext4 add_efi_memmap"
+	initrd=/EFI/arch/initramfs-arch.img
 
-image=/EFI/arch/vmlinuz-linux.efi
+image=/EFI/arch/vmlinuz-arch.efi
 	label=arch-fallback
-	append="rootfstype=ext4 gpt add_efi_memmap"
-	root=/dev/disk/by-uuid/XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-	initrd=/EFI/arch/initramfs-linux-fallback.img
-	read-only
+	append="root=PARTUUID=XXXXXXXXXX rootfstype=ext4 add_efi_memmap"
+	initrd=/EFI/arch/initramfs-arch-fallback.img

@@ -1,35 +1,26 @@
 # Maintainer : Keshav P R <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgname="elilo"
-pkgname="${_pkgname}-efi-x86_64"
+pkgname="${_pkgname}-efi"
 
-pkgver="3.14"
+pkgver="3.16"
 pkgrel="1"
-pkgdesc="x86_64 UEFI version of LILO Boot Loader"
+pkgdesc="UEFI version of LILO Boot Loader"
 arch=('any')
 url="http://sourceforge.net/projects/elilo/"
 license=('GPL')
 
 makedepends=('gnu-efi')
 depends=('dosfstools' 'efibootmgr')
-options=('!strip' 'purge' '!libtool' '!emptydirs')
+options=('!strip' 'purge' '!libtool' '!emptydirs' '!makeflags')
 
 install="${pkgname}.install"
-backup=("boot/efi/EFI/arch/elilo/elilo.conf")
 
 source=("http://downloads.sourceforge.net/project/elilo/elilo/elilo-${pkgver}/elilo-${pkgver}-all.tar.gz"
         "elilo.conf.example")
 
-sha1sums=('631fdf211627510b270f0759c26587edb8d30001'
-          '37cf9c4c94a4571863864fe60804f04d24ed1a1e')
-
-_extract_source() {
-	
-	cd "${srcdir}/"
-	
-	bsdtar xf "${srcdir}/elilo-${pkgver}-source.tar.gz"
-	
-}
+sha1sums=('bd0bd4f1b3dc2d23a304f957ffbf907ae104f323'
+          'b961f6181504f7d1bf4b14f76c0477159fc54445')
 
 build() {
 	
@@ -37,19 +28,46 @@ build() {
 		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
 		exit 1
 	else
-		_extract_source
+		cd "${srcdir}/"
+		bsdtar xf "${srcdir}/elilo-${pkgver}-source.tar.gz"
 	fi
 	
-	cd "${srcdir}/elilo/"
+	cd "${srcdir}/elilo-${pkgver}-source/"
+	rm -f "${srcdir}"/*.efi || true
+	rm -f "${srcdir}/elilo-${pkgver}-source.tar.gz" || true
 	
-	make clean || true
-	echo
+	## Fix ARCH Makefile variable
+	sed 's|ARCH	   :=|ARCH	   ?=|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
+	sed 's|dpkg-architecture -qDEB_BUILD_ARCH|uname -m|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
+	
+	## Fix -Werror issues
+	sed 's|DEBUGFLAGS = -Wall|DEBUGFLAGS = -Wall -Wno-error|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
 	
 	## Enable ext2 drivers - build fails for now 
-	# sed 's|CONFIG_ext2fs=n|CONFIG_ext2fs=y|g' -i "${srcdir}/elilo/Make.defaults" || true
-	sed 's|DEBUGFLAGS = -Wall|DEBUGFLAGS = -Wall -Wno-error|g' -i "${srcdir}/elilo/Make.defaults" || true
+	# sed 's|^CONFIG_ext2fs=n|CONFIG_ext2fs=y|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
 	
-	CFLAGS="" make
+	cp -r "${srcdir}/elilo-${pkgver}-source" "${srcdir}/elilo-${pkgver}-x86_64"
+	cd "${srcdir}/elilo-${pkgver}-x86_64/"
+	
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
+	ARCH="x86_64" make
+	echo
+	
+	cp -r "${srcdir}/elilo-${pkgver}-source" "${srcdir}/elilo-${pkgver}-ia32"
+	cd "${srcdir}/elilo-${pkgver}-ia32/"
+	
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
+	ARCH="ia32" make
 	echo
 	
 }
@@ -57,13 +75,11 @@ build() {
 
 package() {
 	
-	cd "${srcdir}/elilo/"
+	install -d "${pkgdir}/usr/lib/elilo"
+	install -D -m0644 "${srcdir}/elilo-${pkgver}-x86_64/elilo.efi" "${pkgdir}/usr/lib/elilo/elilox64.efi"
+	install -D -m0644 "${srcdir}/elilo-${pkgver}-ia32/elilo.efi" "${pkgdir}/usr/lib/elilo/eliloia32.efi"
 	
-	install -d "${pkgdir}/boot/efi/EFI/arch/elilo/"
-	install -D -m0644 "${srcdir}/elilo/elilo.efi" "${pkgdir}/boot/efi/EFI/arch/elilo/elilox64.efi"
-	install -D -m0644 "${srcdir}/elilo.conf.example" "${pkgdir}/boot/efi/EFI/arch/elilo/elilo.conf"
-	
-	# install -d "${pkgdir}/usr/sbin/"
-	# install -D -m0755 "${srcdir}/elilo/tools/eliloalt" "${pkgdir}/usr/sbin/eliloalt"
+	install -d "${pkgdir}/usr/lib/elilo/config"
+	install -D -m0644 "${srcdir}/elilo.conf.example" "${pkgdir}/usr/lib/elilo/config/elilo.conf"
 	
 }
