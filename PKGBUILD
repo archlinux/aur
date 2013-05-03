@@ -10,7 +10,7 @@ arch=('any')
 url="http://sourceforge.net/projects/elilo/"
 license=('GPL')
 
-makedepends=('gnu-efi')
+makedepends=('gnu-efi-libs')
 depends=('dosfstools' 'efibootmgr')
 options=('!strip' 'purge' '!libtool' '!emptydirs' '!makeflags')
 
