@@ -20,9 +20,9 @@ optdepends=('python2: compare Eina benchmarks'
             'gstreamer0.10-ugly-plugins: Access more types of video in Emotion'
             'gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion'
             'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
-provides=('ecore=$pkgver' 'eldbus=$pkgver' 'edje=$pkgver' 'eet=$pkgver' 'eeze=$pkgver'
-          'efreet=$pkgver' 'eina=$pkgver' 'eio=$pkgver' 'embryo=$pkgver' 'emotion=$pkgver'
-          'ephysics=$pkgver' 'ethumb=$pkgver' 'evas=$pkgver' 'efl=$pkgver' 'efl_x11'
+provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$pkgver"
+          "efreet=$pkgver" "eina=$pkgver" "eio=$pkgver" "embryo=$pkgver" "emotion=$pkgver"
+          "ephysics=$pkgver" "ethumb=$pkgver" "evas=$pkgver" "efl=$pkgver" 'efl_x11'
           'ecore-svn' 'edbus-svn' 'edje-svn' 'eet-svn' 'eeze-svn' 'efreet-svn' 'eina-svn'
           'eio-svn' 'embryo-svn' 'emotion-svn' 'ephysics-svn' 'ethumb-svn' 'evas-svn' 'efl_svn')
 conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
