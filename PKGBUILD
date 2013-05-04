@@ -11,7 +11,8 @@ makedepends=('unzip')
 depends=('mesa' 'node-webkit')
 provides=()
 options=(!strip)
-PKGEXT=".pkg.tar" # Because we don't want to have to recompress the binary
+PKGEXT=".pkg.tar" # Because we don't want to recompress everything
+                  # Compressing takes time and only saves about 6MB anyway
 license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
 _gamepkg="gamedevtycoon-${pkgver}.tar.gz"
