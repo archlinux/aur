@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=targetcli-fb
-pkgver=2.1.fb23
+pkgver=2.1.fb24
 pkgrel=1
 epoch=
 pkgdesc="free branch of the targetcli LIO administration shell (iSCSI + Co)"
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/agrover/targetcli-fb"
 license=('AGPL3')
 groups=()
-depends=('python2-rtslib-fb>=2.1.fb28' 'python2-configshell-fb')
+depends=('python2-rtslib-fb>=2.1.fb33' 'python2-configshell-fb')
 optdepends=()
 conflicts=('lio-utils')
 provides=('targetcli')
@@ -19,7 +19,7 @@ install=
 source=($pkgname-$pkgver.tar.gz::https://github.com/agrover/$pkgname/archive/v$pkgver.tar.gz
 target.service
 target)
-md5sums=('4bb78824fae4ee343fe1722d95a8758c'
+md5sums=('b3e2bd5613c5a20fcaed88f770c08b59'
          'f462e9a5852346c66b77793565ddbc67'
          'f23bd6d5d4021c29b4519e40b3b9e042')
 
