@@ -4,7 +4,7 @@
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
 pkgver=1.3.1
-pkgrel=7
+pkgrel=8
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 makedepends=('unzip')
@@ -17,7 +17,7 @@ url="http://www.greenheartgames.com/app/game-dev-tycoon/"
 _gamepkg="gamedevtycoon-${pkgver}.tar.gz"
 _gamemd5="ec2dd3534744545f54689e8611c13e1a"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
-md5sums=('cc2ad6406868368ced023ab7f307505f'
+md5sums=('ae28f2cd5480964f05cf5699f3f1693c'
          'b846906a3d1b9820dbc2c68c3c748db9')
 
 build() {
@@ -68,7 +68,7 @@ package() {
   install -d ${pkgdir}/opt/greenheartgames/${pkgname}
 
   msg2 "Copy game files"
-  cp -R ${srcdir}/{app.nw,launcher.png,nw.pak,libffmpegsumo.so} ${pkgdir}/opt/greenheartgames/${pkgname}/
+  cp -R ${srcdir}/{app.nw,launcher.png} ${pkgdir}/opt/greenheartgames/${pkgname}/
 
   # Install Launcher
   msg2 "Install launcher to /usr/bin"

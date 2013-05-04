@@ -1,4 +1,2 @@
 #!/bin/sh
-cd /opt/greenheartgames/game-dev-tycoon
-export LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH
-nw ./app.nw/
+nw /opt/greenheartgames/game-dev-tycoon/app.nw/
