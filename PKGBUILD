@@ -42,7 +42,7 @@ pkgver() {
 
 prepare() {
 # set python scripts to run with python2
-  sed -i 's/env python/python2/g' "$srcdir/$_pkgname/src/scripts/eina/eina-bench-cmp"
+  sed -i 's/env python$/python2/g' "$srcdir/$_pkgname/src/scripts/eina/eina-bench-cmp"
 }
 
 build() {
