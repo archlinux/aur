@@ -24,7 +24,7 @@ provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$p
           "efreet=$pkgver" "eina=$pkgver" "eio=$pkgver" "embryo=$pkgver" "emotion=$pkgver"
           "ephysics=$pkgver" "ethumb=$pkgver" "evas=$pkgver" "efl=$pkgver" 'efl_x11'
           'ecore-svn' 'edbus-svn' 'edje-svn' 'eet-svn' 'eeze-svn' 'efreet-svn' 'eina-svn'
-          'eio-svn' 'embryo-svn' 'emotion-svn' 'ephysics-svn' 'ethumb-svn' 'evas-svn' 'efl_svn')
+          'eio-svn' 'embryo-svn' 'emotion-svn' 'ephysics-svn' 'ethumb-svn' 'evas-svn' 'efl-svn')
 conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
            'efl' 'efl_x11' 'efl-svn')
 options=('!libtool' 'debug')
