@@ -3,7 +3,7 @@
 
 pkgname=efl-git
 _pkgname=efl
-pkgver=1.7.99.21925.25f1706
+pkgver=1.7.99.21924.1435a48
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
-         'mesa' 'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif'
+         'mesa' 'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif' 'gstreamer0.10-base-plugins'
          'fribidi' 'harfbuzz' 'fontconfig')
 makedepends=('git')
 optdepends=('python2: compare Eina benchmarks'
-
-
-
-
+            'gstreamer0.10-good-plugins: Access more types of video in Emotion'
+            'gstreamer0.10-bad-plugins: Access more types of video in Emotion'
+            'gstreamer0.10-ugly-plugins: Access more types of video in Emotion'
+            'gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion'
             'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
 provides=('ecore=$pkgver' 'eldbus=$pkgver' 'edje=$pkgver' 'eet=$pkgver' 'eeze=$pkgver'
           'efreet=$pkgver' 'eina=$pkgver' 'eio=$pkgver' 'embryo=$pkgver' 'emotion=$pkgver'
@@ -48,7 +48,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  ./autogen.sh --disable-gstreamer \
+  ./autogen.sh \
 	--prefix=/usr \
 	--with-x11=xlib \
 	--with-opengl=full \

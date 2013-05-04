@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
-	pkgver = 1.7.99.21925.25f1706
+	pkgver = 1.7.99.21924.1435a48
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -29,10 +29,15 @@ pkgbase = efl-git
 	depends = libpng
 	depends = libpulse
 	depends = libexif
+	depends = gstreamer0.10-base-plugins
 	depends = fribidi
 	depends = harfbuzz
 	depends = fontconfig
 	optdepends = python2: compare Eina benchmarks
+	optdepends = gstreamer0.10-good-plugins: Access more types of video in Emotion
+	optdepends = gstreamer0.10-bad-plugins: Access more types of video in Emotion
+	optdepends = gstreamer0.10-ugly-plugins: Access more types of video in Emotion
+	optdepends = gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion
 	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
 	provides = ecore=$pkgver
 	provides = eldbus=$pkgver
