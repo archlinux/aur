@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,11 +13,22 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin'
              'cmake' 'automoc4' 'doxygen' 'lensfun')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('f4ce304acdf10e859ab8f70ce9d53a05d92d4fbd')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+        "digikam-3.1.0-fixed-pngs.tar.gz")
+noextract=("digikam-3.1.0-fixed-pngs.tar.gz")
+sha1sums=('f4ce304acdf10e859ab8f70ce9d53a05d92d4fbd'
+          'b0a1991e0df9b72c79562c719bc9d944a3b8bc78')
+
+prepare() {
+  mkdir build
+
+  # Fix invalid PNG images to work with libpng 1.6
+  # https://bugs.kde.org/show_bug.cgi?id=319350
+  tar xf "${srcdir}/digikam-3.1.0-fixed-pngs.tar.gz" -C ${pkgname}-${pkgver} \
+    --strip-components=1
+}
 
 build() {
-  mkdir build
   cd build
   cmake ../${pkgname}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
