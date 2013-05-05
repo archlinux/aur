@@ -3,8 +3,8 @@
 # Repository here: https://github.com/Jonhoo/gamedevtycoon-PKGBUILD
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
-pkgver=1.3.1
-pkgrel=8
+pkgver=1.3.8
+pkgrel=1
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 makedepends=('unzip')
@@ -16,7 +16,7 @@ PKGEXT=".pkg.tar" # Because we don't want to recompress everything
 license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
 _gamepkg="gamedevtycoon-${pkgver}.tar.gz"
-_gamemd5="ec2dd3534744545f54689e8611c13e1a"
+_gamemd5="e617ee5dfa38b7822ffd17734cc2601f"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
 md5sums=('ae28f2cd5480964f05cf5699f3f1693c'
          'b846906a3d1b9820dbc2c68c3c748db9')
@@ -49,19 +49,24 @@ build() {
   ln -fs "${pkgpath}" .
   tar zxf "$(basename "$pkgpath")"
 
+  msg2 "Fishing out ${CARCH} version"
+  # not that it matters considering we're using the source directly...
+  if [[ $CARCH == "x86_64" ]]; then
+    tar xzf "gamedevtycoon-${pkgver}-x64.tar.gz"
+    cd "gamedevtycoon-${pkgver}-2-x64"
+  else
+    tar xzf "gamedevtycoon-${pkgver}-i386.tar.gz"
+    cd "gamedevtycoon-${pkgver}-2-i386"
+  fi
+
   msg2 "Extracting game files"
-  rm -rf app.nw
-  unzip -qq gamedevtycoon -d app.nw && true
+  if [[ -e ../app.nw ]]; then
+    rm -rf ../app.nw
+  fi
+  unzip -qq gamedevtycoon-bin -d ../app.nw && true
 
-  msg2 "Cleaning game directory"
-  cp "app.nw/package.png" "launcher.png"
-  rm gamedevtycoon nw
-
-  # work around issue with switching from garage
-  # will probably be fixed by developers in next version
-  # http://forum.greenheartgames.com/t/linux-the-bugs-of-the-linux-version/824/5
-  msg2 "Work around level 2 desk bug"
-  mv app.nw/images/superb/level2Desk.png app.nw/images/superb/level2desk.png
+  # package.png is prettier than icon.png (transparent background)
+  mv ../app.nw/package.png ../launcher.png
 }
 
 package() {
