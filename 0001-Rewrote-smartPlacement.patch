@@ -1,4 +1,4 @@
-From 451fee0896ec21ccaaeb02f88f39becc5d06db0f Mon Sep 17 00:00:00 2001
+From dc5190f33feb7cc632279c673be827f45c6f4e75 Mon Sep 17 00:00:00 2001
 From: jjacky <i.am.jack.mail@gmail.com>
 Date: Fri, 5 Apr 2013 15:33:00 +0200
 Subject: [PATCH] Rewrote smartPlacement()
@@ -17,14 +17,14 @@ snapper to the top/left borders, if we can we'll snap to the bottom/right ones.
 
 Signed-off-by: jjacky <i.am.jack.mail@gmail.com>
 ---
- src/placement.c | 341 +++++++++++++++++++++++++++++++++++++++++++++++---------
- 1 file changed, 288 insertions(+), 53 deletions(-)
+ src/placement.c | 345 ++++++++++++++++++++++++++++++++++++++++++++++----------
+ 1 file changed, 288 insertions(+), 57 deletions(-)
 
 diff --git a/src/placement.c b/src/placement.c
-index 248d339..b4423cc 100644
+index 01f2590..57277c1 100644
 --- a/src/placement.c
 +++ b/src/placement.c
-@@ -532,15 +532,139 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
+@@ -533,16 +533,139 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
  }
  
  static void
@@ -163,13 +163,14 @@ index 248d339..b4423cc 100644
 -    gint test_x, test_y, xmax, ymax, best_x, best_y;
      gint frame_height, frame_width, frame_left, frame_top;
 -    gboolean first;
+-    gint c2_x, c2_y;
 +    cairo_region_t *region_monitor, *region_used, *region_hole, *region_tmp;
 +    cairo_rectangle_int_t rect;
 +    GList *list;
  
      g_return_if_fail (c != NULL);
      TRACE ("entering smartPlacement");
-@@ -550,67 +674,178 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+@@ -552,70 +675,178 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
      frame_width = frameWidth (c);
      frame_left = frameLeft(c);
      frame_top = frameTop (c);
@@ -234,14 +235,17 @@ index 248d339..b4423cc 100644
 +                break;
 +            case CAIRO_REGION_OVERLAP_PART:
                  {
+-                    c2_x = frameX (c2);
+-                    c2_y = frameY (c2);
+-
 -                    count_overlaps += overlap (test_x - frame_left,
 -                                               test_y - frame_top,
 -                                               test_x - frame_left + frame_width,
 -                                               test_y - frame_top + frame_height,
--                                               frameX (c2),
--                                               frameY (c2),
--                                               frameX (c2) + frameWidth (c2),
--                                               frameY (c2) + frameHeight (c2));
+-                                               c2_x,
+-                                               c2_y,
+-                                               c2_x + frameWidth (c2),
+-                                               c2_y + frameHeight (c2));
 +                    /* get only the part of the window on our monitor */
 +                    region_tmp = cairo_region_copy (region_monitor);
 +                    cairo_region_intersect_rectangle (region_tmp, &rect);
@@ -397,5 +401,5 @@ index 248d339..b4423cc 100644
  
  static void
 -- 
-1.8.2
+1.8.2.2
 
