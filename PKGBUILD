@@ -21,7 +21,7 @@ pkgver() {
     local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
   done
 
-  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD)
+  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
