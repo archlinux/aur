@@ -3,8 +3,8 @@
 
 pkgname=ewebkit-svn
 _pkgname=ewebkit
-pkgver=147944
-pkgrel=1
+pkgver=149647
+pkgrel=2
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
