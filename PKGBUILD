@@ -4,12 +4,12 @@
 
 pkgname=librime
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/rimeime/"
 license=('GPL3')
-depends=('boost' 'google-glog' 'kyotocabinet' 'opencc' 'yaml-cpp')
+depends=('boost' 'google-glog' 'kyotocabinet' 'opencc' 'yaml-cpp>=0.5')
 optdepends=('brise: Rime schema repository')
 makedepends=('cmake')
 source=("http://rimeime.googlecode.com/files/$pkgname-$pkgver.tar.gz")
