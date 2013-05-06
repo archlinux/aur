@@ -5,7 +5,7 @@
 _pkgname=xfwm4
 pkgname=$_pkgname-better-smartplacement
 pkgver=4.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce window manager w/ better smart placement of new windows"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -20,7 +20,7 @@ install=${pkgname}.install
 source=(http://archive.xfce.org/src/xfce/${_pkgname}/4.10/${_pkgname}-${pkgver}.tar.bz2
         0001-Rewrote-smartPlacement.patch)
 sha1sums=('cbfb1beee0e952f133ef851526823b472992de1d'
-          '9f440ac5c6a5bb0343d3a5ebb077e9aaddf2073a')
+          '8c0bc28a8ae5d3e9d516c1a3b271eab094b0dd88')
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}

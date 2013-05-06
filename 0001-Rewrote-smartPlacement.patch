@@ -1,4 +1,4 @@
-From dc5190f33feb7cc632279c673be827f45c6f4e75 Mon Sep 17 00:00:00 2001
+From ecbda020850598aaf0c05bc82ba449fb62c2363f Mon Sep 17 00:00:00 2001
 From: jjacky <i.am.jack.mail@gmail.com>
 Date: Fri, 5 Apr 2013 15:33:00 +0200
 Subject: [PATCH] Rewrote smartPlacement()
@@ -17,11 +17,11 @@ snapper to the top/left borders, if we can we'll snap to the bottom/right ones.
 
 Signed-off-by: jjacky <i.am.jack.mail@gmail.com>
 ---
- src/placement.c | 345 ++++++++++++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 288 insertions(+), 57 deletions(-)
+ src/placement.c | 349 +++++++++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 292 insertions(+), 57 deletions(-)
 
 diff --git a/src/placement.c b/src/placement.c
-index 01f2590..57277c1 100644
+index 01f2590..2831c65 100644
 --- a/src/placement.c
 +++ b/src/placement.c
 @@ -533,16 +533,139 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
@@ -170,7 +170,7 @@ index 01f2590..57277c1 100644
  
      g_return_if_fail (c != NULL);
      TRACE ("entering smartPlacement");
-@@ -552,70 +675,178 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+@@ -552,70 +675,182 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
      frame_width = frameWidth (c);
      frame_left = frameLeft(c);
      frame_top = frameTop (c);
@@ -178,12 +178,12 @@ index 01f2590..57277c1 100644
 -    test_y = 0;
 -    best_overlaps = 0.0;
 -    first = TRUE;
--
+ 
 -    xmax = full_x + full_w - c->width - frameRight (c);
 -    ymax = full_y + full_h - c->height - frameBottom (c);
 -    best_x = full_x + frameLeft (c);
 -    best_y = full_y + frameTop (c);
- 
+-
 -    test_y = full_y + frameTop (c);
 -    do
 +    /* region of the monitor (i.e. where we can/want to put the window) */
@@ -296,6 +296,7 @@ index 01f2590..57277c1 100644
 +        if (!region_hole)
 +            break;
 +
++has_hole:
 +        cairo_region_destroy (region_monitor);
 +        cairo_region_destroy (region_used);
 +
@@ -392,6 +393,9 @@ index 01f2590..57277c1 100644
  
 -    c->x = best_x;
 -    c->y = best_y;
++    if (region_hole)
++        goto has_hole;
++
 +    cairo_region_destroy (region_monitor);
 +    cairo_region_destroy (region_used);
 +

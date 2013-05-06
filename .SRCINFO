@@ -1,7 +1,7 @@
 pkgbase = xfwm4-better-smartplacement
 	pkgdesc = Xfce window manager w/ better smart placement of new windows
 	pkgver = 4.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xfce.org/
 	install = xfwm4-better-smartplacement.install
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = xfwm4-better-smartplacement
 	source = http://archive.xfce.org/src/xfce/xfwm4/4.10/xfwm4-4.10.1.tar.bz2
 	source = 0001-Rewrote-smartPlacement.patch
 	sha1sums = cbfb1beee0e952f133ef851526823b472992de1d
-	sha1sums = 9f440ac5c6a5bb0343d3a5ebb077e9aaddf2073a
+	sha1sums = 8c0bc28a8ae5d3e9d516c1a3b271eab094b0dd88
 
 pkgname = xfwm4-better-smartplacement
 
