@@ -16,11 +16,11 @@ pkgbase = rxvt-unicode-better-wheel-scrolling
 	source = clear.patch
 	source = secondaryWheel.patch
 	md5sums = 963ccc748fe5bca925e7b92c0404d68b
-	md5sums = 4723fc20ed200c86caf8c8680a1be26b
+	md5sums = af8e6ad4cd2d33c26f8df6a838685332
 	md5sums = 5714991c5b1bf5f7d7769961e391a0db
 	md5sums = a6011928fe8734591544f70083b995c7
 	sha1sums = 5d12639c4b17019357ee62c08916b826e5d03259
-	sha1sums = d4eea2dd1834b596c715ec9ea239e70788f49a8f
+	sha1sums = 9a31b46324c0be44fb97be0828e1ead2311b3f9f
 	sha1sums = 089e0263722412dd82008ae3e2b3eb335fc8116e
 	sha1sums = 7b2de8c206babc4a8baea1f8c3a4219dcfa03750
 

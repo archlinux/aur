@@ -21,11 +21,11 @@ source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2 \
         ${_pkgname}.desktop
         clear.patch secondaryWheel.patch)
 md5sums=('963ccc748fe5bca925e7b92c0404d68b'
-         '4723fc20ed200c86caf8c8680a1be26b'
+         'af8e6ad4cd2d33c26f8df6a838685332'
          '5714991c5b1bf5f7d7769961e391a0db'
          'a6011928fe8734591544f70083b995c7')
 sha1sums=('5d12639c4b17019357ee62c08916b826e5d03259'
-          'd4eea2dd1834b596c715ec9ea239e70788f49a8f'
+          '9a31b46324c0be44fb97be0828e1ead2311b3f9f'
           '089e0263722412dd82008ae3e2b3eb335fc8116e'
           '7b2de8c206babc4a8baea1f8c3a4219dcfa03750')
 
