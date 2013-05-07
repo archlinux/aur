@@ -1,0 +1,17 @@
+pkgbase = recuerde
+	pkgdesc = A simple and intuitive todo list.
+	pkgver = 0.2.0_rc4
+	pkgrel = 2
+	url = http://code.google.com/p/recuerde
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = wxpython
+	depends = pygtk
+	depends = sqlite3
+	source = http://recuerde.googlecode.com/files/recuerde-0.2.0-rc4.tar.bz2
+	md5sums = 61c8974e09d9b7a92ff758f8a8d61f9b
+
+pkgname = recuerde
+
