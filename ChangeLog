@@ -1,3 +1,15 @@
+2013-05-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.0.4-1
+	Version bump.
+	Split the build() function into prepare() and package().
+
+	Upstream changelog:
+	- Updated for 1.5.2.
+	- Fixed potential crash with Better Grass.
+	- Report conflicts when mod order would cause MCPatcher's changes to be overwritten.
+	- Fixed compatibility with recent BTW versions.
+
 2013-04-09 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.0.3_01-1
