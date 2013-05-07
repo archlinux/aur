@@ -13,7 +13,7 @@ pkgdesc="An unicode enabled rxvt-clone terminal emulator (urxvt) w/ better wheel
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
 license=('GPL')
-depends=('gcc-libs' 'libxft' 'gdk-pixbuf2')
+depends=('gcc-libs' 'libxft')
 optdepends=('perl: lots of utilities') # 'gtk2-perl: to use the urxvt-tabbed')
 provides=('rxvt-unicode')
 conflicts=('rxvt-unicode')
@@ -41,11 +41,11 @@ build() {
     --enable-keepscrolling \
     --enable-selectionscrolling \
     --enable-smart-resize \
-    --enable-pixbuf \
     --enable-transparency \
     --disable-utmp \
     --disable-wtmp \
     --enable-lastlog \
+    --disable-pixbuf \
     --disable-frills
   make alldoc
   make

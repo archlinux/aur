@@ -8,7 +8,6 @@ pkgbase = rxvt-unicode-better-wheel-scrolling
 	license = GPL
 	depends = gcc-libs
 	depends = libxft
-	depends = gdk-pixbuf2
 	optdepends = perl: lots of utilities
 	provides = rxvt-unicode
 	conflicts = rxvt-unicode
