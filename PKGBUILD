@@ -5,23 +5,27 @@
 
 pkgname=ipmiutil
 pkgver=2.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple program that lists results from the hardware detection library."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/ipmiutil/"
-license=('BSD2.0')
-depends=()
-makedepends=('openssl')
+license=('BSD')
+depends=('openssl')
 options=('!emptydirs')
-source=("http://prdownloads.sourceforge.net/ipmiutil/ipmiutil-${pkgver}.tar.gz")
+changelog=ChangeLog
+source=("http://prdownloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('a1686f1d09c4964c0fd7e8a40bb88cd3')
-build() {
-  cd ${srcdir}
-  tar -xf ${pkgname}-${pkgver}.tar.gz
 
-  cd ${srcdir}/${pkgname}-${pkgver}
+build(){
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure  --enable-gpl
-  make -j1 || return 1
-  make DESTDIR=${pkgdir} install || return 1
+	./configure --enable-gpl
+	make
+}
+
+package(){
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" install
+	
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/ipmiutil/LICENSE"
 }
