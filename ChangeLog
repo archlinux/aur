@@ -1,3 +1,9 @@
+2013-05-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 2.4.5_04-2
+	Split the build() function into prepare() and package().
+	Added note about supported Minecraft version to description.
+
 2013-04-09 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 2.4.5_04-1

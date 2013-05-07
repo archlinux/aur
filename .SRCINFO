@@ -1,7 +1,7 @@
 pkgbase = mcpatcher2
 	pkgdesc = Minecraft patcher to fix textures with higher than default resolution. For Minecraft versions 1.4.x and earlier.
 	pkgver = 2.4.5_04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/prupe/mcpatcher
 	changelog = ChangeLog
 	arch = any

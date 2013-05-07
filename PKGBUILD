@@ -4,7 +4,7 @@
 pkgname=mcpatcher2
 _pkgname=mcpatcher
 pkgver='2.4.5_04'
-pkgrel=1
+pkgrel=2
 pkgdesc='Minecraft patcher to fix textures with higher than default resolution. For Minecraft versions 1.4.x and earlier.'
 arch=('any')
 license=('Public Domain')
