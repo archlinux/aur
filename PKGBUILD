@@ -20,11 +20,15 @@ md5sums=('c2c4e0327a6074209371953385108615'
          'f0f63af475d5d666395b9b41f59c9f5e'
          '9007f849ab95ccd7e62134b858b8618e')
 
-build() {
+prepare() {
     cd "$srcdir"
 
     # Extract icon
     bsdcpio --extract --make-directories 'resources/icon.png' < "$_pkgname-$pkgver.jar"
+}
+
+package() {
+    cd "$srcdir"
 
     install -vDm755 'mcpatcher2'            "$pkgdir/usr/bin/mcpatcher2"
     install -vDm644 'resources/icon.png'    "$pkgdir/usr/share/pixmaps/mcpatcher2.png"
