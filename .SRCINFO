@@ -1,0 +1,23 @@
+pkgbase = truecrypt-nogui
+	pkgdesc = Free open-source cross-platform disk encryption software (CLI)
+	pkgver = 7.1a
+	pkgrel = 1
+	url = http://www.truecrypt.org/
+	arch = i686
+	arch = x86_64
+	license = custom:truecrypt
+	makedepends = nasm
+	depends = fuse>=2.8.0
+	depends = device-mapper
+	optdepends = sudo: mounting encrypted volumes as nonroot users
+	provides = truecrypt
+	conflicts = truecrypt
+	source = ftp://ftp.archlinux.org/other/tc/truecrypt-7.1a.tar.gz
+	source = ftp://ftp.archlinux.org/other/tc/pkcs-2.20.tar.gz
+	source = http://prdownloads.sourceforge.net/wxwindows/wxWidgets-2.8.12.tar.gz
+	md5sums = 102d9652681db11c813610882332ae48
+	md5sums = ce6a707b79411e82e8e558aa03e764b0
+	md5sums = 2fa39da14bc06ea86fe902579fedc5b1
+
+pkgname = truecrypt-nogui
+
