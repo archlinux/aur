@@ -27,10 +27,10 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
 
-	make DESTDIR="$pkgdir"/ install
+  make DESTDIR="$pkgdir"/ install
 
-	install -Dm644 "$srcdir"/ophcrack.desktop "$pkgdir"/usr/share/applications/ophcrack.desktop
-	install -Dm644 src/gui/pixmaps/os.xpm "$pkgdir"/usr/share/$pkgname/pixmaps/os.xpm
+  install -Dm644 "$srcdir"/ophcrack.desktop "$pkgdir"/usr/share/applications/ophcrack.desktop
+  install -Dm644 src/gui/pixmaps/os.xpm "$pkgdir"/usr/share/$pkgname/pixmaps/os.xpm
 }
