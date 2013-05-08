@@ -4,27 +4,26 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.9
-pkgver=3.9
-pkgrel=2
+pkgver=3.9.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        'alsa-firmware-loading-3.8.8.patch')
+        'change-default-console-loglevel.patch')
 md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
-         'b476a6876dc4903b40423a230b2ab193'
-         'dfe4679707d7285d383eeb4791026a23'
+         '66f171a17aa39b6dc6eb8bb51a4117c7'
+         '91b88099925a7d4f9e7adb5552a9c17d'
+         'baf222c5beba4d0d7e32bc0e54e66f9b'
          'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c'
-         'e2ac681ffa439e969b4c3b4616852454')
+         'f3def2cefdcbb954c21d8505d23cc83c')
 
 _kernelname=${pkgbase#linux}
 
@@ -32,13 +31,10 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix alsa firmware loading #34865
-  patch -Np1 -i "${srcdir}/alsa-firmware-loading-3.8.8.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
