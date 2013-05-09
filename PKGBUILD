@@ -2,22 +2,22 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
-url="http://grails.org/"
-makedepends=('apache-ant' 'setconf')
+url='http://grails.org/'
+license=('APACHE')
+makedepends=('setconf' 'apache-ant')
 optdepends=('groovy: the groovy programming language'
             'grails-docs: documentation for grails')
-options=(!emptydirs)
-license=('APACHE')
+options=('!emptydirs')
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/$pkgname-$pkgver.zip"
-        "grails.sh")
-sha256sums=('4ec22ff45718a0f4948261f15f7c46e67ab0c2294d83d6c3eddb110d00f9af1d'
+        "$pkgname.sh")
+sha256sums=('23dab69c42decca4d1da5bae0337fc47b0823faeb441150cec126f18ec76a09e'
             '009f00755c1d5312f8ee4ad7e407e3b4a5328b6820e04b94b39750c43fe76d56')
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Configuring paths...'
@@ -37,25 +37,24 @@ package_grails() {
   msg2 'Packaging wrapper scripts...'
   install -Dm755 bin/startGrails \
     "$pkgdir/usr/share/$pkgname/startGrails"
-  install -Dm755 "../grails.sh" \
+  install -Dm755 "../$pkgname.sh" \
     "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 "../grails.sh" \
+  install -Dm755 "../$pkgname.sh" \
     "$pkgdir/usr/share/$pkgname/bin/$pkgname"
 
   msg2 'Packaging icons...'
   cp media/icons/*.png "$pkgdir/usr/share/pixmaps/"
   
   msg2 'Packaging profile.d script...'
-  echo "export GRAILS_HOME=/usr/share/grails" > grails.sh
-  install -Dm755 grails.sh "$pkgdir/etc/profile.d/grails.sh"
+  echo 'export GRAILS_HOME=/usr/share/grails' > "$pkgname.sh"
+  install -Dm755 "$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
 
   msg2 'Packaging license...'
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   msg2 'Cleaning up...'
   cd "$pkgdir/usr/share/$pkgname"
-  rm -rf doc
-  rm -f INSTALL LICENSE README
+  rm -rf doc INSTALL LICENSE README
   find "$pkgdir/usr/share" -name "*.bat" -exec rm {} \;
 }
 
