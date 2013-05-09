@@ -13,7 +13,7 @@ makedepends=('binutils' 'tar')
 install=bitcasa.install
 source=(
   # "http://dist.bitcasa.com/release/ubuntu/pool/main/b/bitcasa/bitcasa_${pkgver}_amd64.deb"
-  "http://mirror.tke.me/bitcasa/bitcasa_${pkgver}_amd64.deb"
+  "http://mirror.tke.me/bitcasa/pool/main/b/bitcasa/bitcasa_${pkgver}_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/universe/b/boost1.46/libboost-filesystem1.46.1_1.46.1-7ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/main/b/boost1.46/libboost-regex1.46.1_1.46.1-7ubuntu3_amd64.deb"
   "http://mirrors.rit.edu/ubuntu/pool/universe/b/boost1.46/libboost-thread1.46.1_1.46.1-7ubuntu3_amd64.deb"
