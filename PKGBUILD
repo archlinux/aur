@@ -22,18 +22,17 @@ fi
 
 pkgver() {
   if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-    svnversion "$SRCDEST/$_pkgname" | sed 's/P$//'
+    svnversion "$srcdir/$_pkgname" | sed 's/P$//'
   else
     LC_ALL=C svn info "$_svnurl" | awk '/Revision/ {print $2}'
   fi
 }
 
 prepare() {
-  cd "$SRCDEST"
-
-  if [[ ! -d "$_pkgname/.svn" ]]; then
+  if [[ ! -d "$SRCDEST/$_pkgname/.svn" ]]; then
 #   if this is the first run, checkout only what we need from the repo
     msg2 "Cloning $_pkgname svn repo..."
+    cd "$SRCDEST"
     mkdir -p "$_pkgname/.makepkg"
     svn co --depth immediates --config-dir "$_pkgname/.makepkg" -r "$pkgver" "$_svnurl" "$_pkgname"
     cd "$_pkgname"
@@ -43,7 +42,7 @@ prepare() {
 #   and create a working copy
     msg2 "Creating working copy of $_pkgname svn repo..."
     rm -rf "$srcdir/$_pkgname"
-    svn export "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
+    cp -a "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
   fi
 
 # Initialize pointer to avoid build error
