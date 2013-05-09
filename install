@@ -1,0 +1,24 @@
+pkgname=mbox-tools
+HS_DIR=usr/share/haskell/${pkgname}
+
+post_install() {
+    ${HS_DIR}/register.sh
+    (cd usr/share/doc/ghc/html/libraries; ./gen_contents_index)
+}
+
+pre_upgrade() {
+    ${HS_DIR}/unregister.sh
+}
+
+post_upgrade() {
+    ${HS_DIR}/register.sh
+    (cd usr/share/doc/ghc/html/libraries; ./gen_contents_index)
+}
+
+pre_remove() {
+    ${HS_DIR}/unregister.sh
+}
+
+post_remove() {
+    (cd usr/share/doc/ghc/html/libraries; ./gen_contents_index)
+}
