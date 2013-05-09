@@ -5,15 +5,15 @@
 
 pkgbase=python-nose
 pkgname=('python-nose' 'python2-nose' 'python-nose-doc')
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url='http://readthedocs.org/docs/nose/'
 license=('LGPL2.1')
 makedepends=('python' 'python-distribute' 'python2' 'python2-distribute' 'python2-sphinx')
 source=("http://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz")
-md5sums=('735e3f1ce8b07e70ee1b742a8a53585a')
+md5sums=('95d6d32b9d6b029c3c65674bd9e7eabe')
 
 build() {
   cd "$srcdir/nose-$pkgver"
