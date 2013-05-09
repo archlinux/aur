@@ -2,9 +2,14 @@ post_install() {
   if [ ! -d '/var/lib/postgres' ]; then
     mkdir -p '/var/lib/postgres'
   fi
-  getent group postgres >/dev/null || groupadd -g 88 postgres
-  getent passwd postgres >/dev/null || useradd -c 'PostgreSQL user' -u 88 -g postgres -d '/var/lib/postgres' -s /bin/bash postgres
-  passwd -l postgres >/dev/null
+  if ! getent group postgres >/dev/null; then
+    groupadd -g 88 postgres
+  fi
+  if ! getent passwd postgres >/dev/null; then
+    useradd -c 'PostgreSQL user' -u 88 -g postgres -d '/var/lib/postgres' -s /bin/bash postgres
+    passwd -l postgres >/dev/null
+  fi
+  systemd-tmpfiles --create postgresql.conf
 }
 
 post_upgrade() {
@@ -13,6 +18,10 @@ post_upgrade() {
   postgres_shell=$(getent passwd postgres | cut -d: -f7)
   if [ "$postgres_shell" = "/sbin/nologin" ]; then
     chsh -s /bin/bash postgres
+  fi
+  if [ $(vercmp $2 '9.2.1-2') -lt 0 ]; then
+    echo "Note: The Unix domain socket location has changed; be sure to"
+    echo "      restart any local applications using libpq.so."
   fi
 }
 
