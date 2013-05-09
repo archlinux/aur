@@ -5,20 +5,20 @@
 
 _pkgbasename=giflib
 pkgname=lib32-$_pkgbasename
-pkgver=4.1.6
-pkgrel=8
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="A library for reading and writing gif images (32-bit)"
 url="http://sourceforge.net/projects/giflib/"
 arch=('x86_64')
 license=('MIT')
 depends=('lib32-libx11' 'lib32-libsm' $_pkgbasename)
-makedepends=(gcc-multilib)
+makedepends=('xmlto' 'docbook-xsl' 'docbook-xml')
 provides=("lib32-libungif=${pkgver}")
 conflicts=('lib32-libungif')
 replaces=('lib32-libungif')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/giflib/${_pkgbasename}-${pkgver}.tar.bz2)
-md5sums=('7125644155ae6ad33dbc9fc15a14735f')
+md5sums=('bbd3324af24156d5d7e66ab1cee8508d')
 
 build() {
   export CC="gcc -m32"
