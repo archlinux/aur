@@ -1,0 +1,19 @@
+pkgbase = haskell-fclabels
+	pkgdesc = First class accessor labels.
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/fclabels
+	install = haskell-fclabels.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = haskell-mtl>=2.0.1.0
+	depends = haskell-template-haskell>=2.5.0.0
+	depends = haskell-transformers>=0.2.2.0
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/fclabels/1.1.6/fclabels-1.1.6.tar.gz
+	sha256sums = f3f2bc5cee6f9110bc35aa9f16115debc3632fd2ac667e5cb834a1aaf1c2bf38
+
+pkgname = haskell-fclabels
+
