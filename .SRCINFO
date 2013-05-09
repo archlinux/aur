@@ -1,0 +1,18 @@
+pkgbase = haskell-codec-mbox
+	pkgdesc = A library to read and write mailboxes in mbox format
+	pkgver = 0.1.0.0
+	pkgrel = 2
+	url = http://hackage.haskell.org/package/codec-mbox
+	install = haskell-codec-mbox.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = ghc
+	depends = haskell-fclabels>=1.0
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/codec-mbox/0.1.0.0/codec-mbox-0.1.0.0.tar.gz
+	sha256sums = a9022f0196d8cb907cc90d83be97bd6cb7ddab7dee2eeac19d09784183623163
+
+pkgname = haskell-codec-mbox
+
