@@ -1,13 +1,13 @@
 pkgbase = wmcalclock
 	pkgdesc = A Calendar clock [WindowMaker dockapp] with antialiased text
 	pkgver = 1.25
-	pkgrel = 6
-	url = http://web.archive.org/web/20121018121242/http://dockapps.windowmaker.org/file.php/id/9
+	pkgrel = 5
+	url = http://www.dockapps.org/file.php/id/9
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
-	source = wmCalClock-1.25.tar.gz
+	source = http://dockapps.windowmaker.org/download.php/id/16/wmCalClock-1.25.tar.gz
 	md5sums = 70c47ec1d8f8ec7e3ed7eb2d3105d371
 
 pkgname = wmcalclock
