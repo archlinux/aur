@@ -34,7 +34,8 @@ prepare() {
   if [[ ! -d "$_pkgname/.svn" ]]; then
 #   if this is the first run, checkout only what we need from the repo
     msg2 "Cloning $_pkgname svn repo..."
-    svn co --depth immediates --config-dir "$_pkgname" -r "$pkgver" "$_svnurl" "$_pkgname"
+    mkdir -p "$_pkgname/.makepkg"
+    svn co --depth immediates --config-dir "$_pkgname/.makepkg" -r "$pkgver" "$_svnurl" "$_pkgname"
     cd "$_pkgname"
     svn up --set-depth infinity -r "$pkgver" Source
     svn up --set-depth infinity -r "$pkgver" Tools
