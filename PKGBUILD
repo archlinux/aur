@@ -7,13 +7,13 @@
 
 pkgname=midori
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
 url='http://www.twotoasts.de/index.php?/pages/midori_summary.html'
 license=('LGPL2.1')
-install=midori.install
-depends=('libzeitgeist' 'libwebkit' 'libnotify' 'libxss' 'libunique' 'hicolor-icon-theme' 'desktop-file-utils')
+install="$pkgname.install"
+depends=('libzeitgeist' 'webkitgtk2' 'libnotify' 'libxss' 'libunique' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('libxml2' 'intltool' 'gtk-doc' 'librsvg' 'python2' 'vala' 'gcr')
 optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support'
             'aria2: download utility')
