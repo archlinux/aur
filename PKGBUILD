@@ -13,18 +13,19 @@ depends=('gtk3' 'gnome-doc-utils' 'gsettings-desktop-schemas'
 optdepends=('lrzsz: for xmodem, ymodem and zmodem file transfer protocols')
 makedepends=('intltool')
 install=moserial.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/moserial/3.0/$pkgname-$pkgver.tar.xz)
+source=("http://ftp.gnome.org/pub/GNOME/sources/moserial/3.0/$pkgname-$pkgver.tar.xz")
 sha256sums=('baa53fb046485653d16ea879072a2f29b138faeced92f7d1ff045ba8db752073')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   ./configure --prefix=/usr
+
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
