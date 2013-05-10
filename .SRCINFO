@@ -1,0 +1,14 @@
+pkgbase = pypy-virtualenv
+	pkgdesc = Virtual Python Environment builder
+	pkgver = 1.11.6
+	pkgrel = 1
+	url = http://www.virtualenv.org/
+	arch = any
+	license = MIT
+	depends = pypy
+	depends = pypy-distribute
+	source = http://pypi.python.org/packages/source/v/virtualenv/virtualenv-1.11.6.tar.gz
+	md5sums = f61cdd983d2c4e6aeabb70b1060d6f49
+
+pkgname = pypy-virtualenv
+
