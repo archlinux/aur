@@ -4,20 +4,24 @@
 pkgname=openmw-git
 _gitname="openmw"
 pkgver=20130510
-pkgrel=3
+pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'custom')
 
 depends=('openal' 'ogre' 'mygui' 'bullet' 'mpg123' 'libsndfile' 'qt4' 'ffmpeg')
-
 makedepends=('git' 'cmake' 'boost')
 conflicts=('openmw')
 provides=('openmw')
 
 source=('git://github.com/bwrsandman/openmw.git')
 md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_gitname"
+    git log -1 --format="%cd" --date=short | tr -d '-'
+}
 
 build() {
   cd "$srcdir/$_gitname"
