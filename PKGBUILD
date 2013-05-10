@@ -1,4 +1,5 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Tom Gundersen <teg@jklm.no>
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
@@ -7,7 +8,7 @@ pkgrel=1
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('custom')
-depends=('zlib>=1.2.4' 'readline>=6.1' 'ncurses>=5.7' 'xz')
+depends=('zlib' 'readline' 'ncurses' 'xz')
 makedepends=('python2')
 options=('!libtool')
 url="http://www.xmlsoft.org/"
