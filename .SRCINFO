@@ -20,7 +20,7 @@ pkgbase = openmw-git
 	depends = ffmpeg
 	provides = openmw
 	conflicts = openmw
-	source = git://github.com/bwrsandman/openmw.git
+	source = git://github.com/zinnschlag/openmw.git
 	md5sums = SKIP
 
 pkgname = openmw-git

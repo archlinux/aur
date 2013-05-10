@@ -15,7 +15,7 @@ makedepends=('git' 'cmake' 'boost')
 conflicts=('openmw')
 provides=('openmw')
 
-source=('git://github.com/bwrsandman/openmw.git')
+source=('git://github.com/zinnschlag/openmw.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir" \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4
   make ${MAKEFLAGS}
@@ -33,7 +33,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  make install
+  make DESTDIR="$pkgdir" install
 
   # Replace resources location
   sed 's,resources=\./resources,resources=/usr/share/games/openmw/resources,' openmw.cfg > "$pkgdir"/etc/openmw/openmw.cfg 
@@ -45,4 +45,3 @@ package() {
   install -D -m644 "OFL.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "extern/shiny/License.txt" "$pkgdir/usr/share/licenses/openmw/Shiny License.txt"
 }
-
