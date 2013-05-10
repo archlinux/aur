@@ -22,7 +22,7 @@ md5sums=('SKIP')
 build() {
   cd "$srcdir/$_gitname"
   cmake -DCMAKE_INSTALL_PREFIX="$pkgdir" \
-	-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4
+        -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4
   make ${MAKEFLAGS}
 }
 
