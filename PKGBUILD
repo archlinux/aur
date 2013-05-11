@@ -5,16 +5,16 @@
 # Contributor: kritoke <kritoke@nospam.gmail.com>
 
 pkgbase=ruby-gtk3
+pkgver=2.0.0
 pkgname=('ruby-gtk3' 'ruby-gdk3')
-depends=('ruby-atk' 'ruby-gdkpixbuf2' 'ruby-glib2' 'ruby-pango')
-pkgver=1.2.6
+depends=("ruby-atk=$pkgver" "ruby-gdkpixbuf2=$pkgver" "ruby-glib2=$pkgver" "ruby-pango=$pkgver")
 pkgrel=1
 arch=('x86_64' 'i686')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL')
 makedepends=('ruby-pkgconfig' 'ruby-cairo' 'gtk3')
 source=("http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk3-$pkgver.tar.gz")
-sha256sums=('105395100bcbcfe8fa3fd5a2963ded64092303da64f31400887dbcd6a84d1e1a')
+sha256sums=('f5e4cd605ece402ba9b8670058bb06c80ea9e21e4a1ff724d97394439091ff50')
 
 prepare() {
 	cd "$srcdir/ruby-gtk3-$pkgver"
@@ -24,7 +24,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/ruby-gtk3-$pkgver"
-
 	make
 }
 
