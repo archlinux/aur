@@ -5,7 +5,7 @@
 
 pkgname=entrance-git
 _pkgname=entrance
-pkgver=0.0.4.19
+pkgver=0.0.4.19.7fd0458
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://trac.enlightenment.org/e"
@@ -24,7 +24,9 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  echo $(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]').$(git rev-list --count HEAD)
+  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
+
+  echo $_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build () {
@@ -32,6 +34,7 @@ build () {
 
   ./autogen.sh \
 	--prefix=/usr \
+	--sbindir=/usr/bin \
 	--sysconfdir=/etc
 
   make

@@ -4,7 +4,7 @@ Conflicts=getty@tty1.service
 After=systemd-user-sessions.service
 
 [Service]
-ExecStart=/usr/sbin/entrance --nodaemon
+ExecStart=/usr/bin/entrance --nodaemon
 Restart=always
 
 [Install]
