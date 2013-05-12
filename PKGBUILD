@@ -6,7 +6,7 @@
 pkgname=entrance-git
 _pkgname=entrance
 pkgver=0.0.4.19.7fd0458
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment Display Manager"
 url="http://trac.enlightenment.org/e"
 license=('GPL3')
