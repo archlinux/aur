@@ -19,7 +19,7 @@ source=("git://git.enlightenment.org/misc/$_pkgname.git"
         'entrance.service')
 md5sums=('SKIP'
          '9a76cae5b3a0fcbb6116fa08c7a587b5'
-         '8c6ff8570c3d689fda99e018e5428a67')
+         '257ac00eb2fe4c6b7578094ff1a90a0d')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
