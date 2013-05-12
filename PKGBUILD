@@ -4,11 +4,11 @@
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 makedepends=('unzip')
-depends=('mesa' 'node-webkit')
+depends=('mesa' 'node-webkit' 'alsa-lib')
 provides=()
 options=(!strip)
 PKGEXT=".pkg.tar" # Because we don't want to recompress everything
@@ -19,7 +19,7 @@ _gamepkg="gamedevtycoon-${pkgver}-i386-x64.tar.gz"
 _gamerel="1"
 _gamemd5="73dfe05e66958774cc765c64854558f8"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
-md5sums=('ae28f2cd5480964f05cf5699f3f1693c'
+md5sums=('cdfb64b7610e3538e13f8141e3a1098d'
          'b846906a3d1b9820dbc2c68c3c748db9')
 
 build() {

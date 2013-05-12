@@ -1,2 +1,7 @@
 #!/bin/sh
+# Because node-webkit occasionally breaks if local addresses are proxied
+export no_proxy="localhost,127.0.0.1,$no_proxy"
+export NO_PROXY="localhost,127.0.0.1,$NO_PROXY"
+
+# Launch the game
 nw /opt/greenheartgames/game-dev-tycoon/app.nw/
