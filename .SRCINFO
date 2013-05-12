@@ -1,0 +1,19 @@
+pkgbase = replicatorg
+	pkgdesc = ReplicatorG is a simple, opensource 3D printing program
+	pkgver = 0040
+	pkgrel = 1
+	url = http://replicat.org
+	arch = x86
+	arch = x86_64
+	license = GNU GPL v2
+	depends = java-runtime
+	depends = python
+	depends = tk
+	optdepends = psyco: speed up toolpath generation
+	source = http://replicatorg.googlecode.com/files/replicatorg-0040-linux.tgz
+	source = replicatorg
+	md5sums = 9e7171a32013edfd9bcf18330cdc20a1
+	md5sums = 4993a15231df8dbcc16449d19479b284
+
+pkgname = replicatorg
+
