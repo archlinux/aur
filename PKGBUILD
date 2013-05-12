@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender < arch at JonnyJD dot net >
 
 pkgname=vim-vimwiki
-pkgver=2.0.1
+pkgver=2.1
 pkgrel=1
 pkgdesc="Personal Wiki for Vim"
 arch=('any')
@@ -10,11 +10,11 @@ license=('MIT' 'GPL3')
 groups=('vim-plugins')
 depends=('vim' 'python2')
 install=vimwiki.install
-source=(http://vimwiki.googlecode.com/files/vimwiki-2-0-1.zip
+source=(http://vimwiki.googlecode.com/files/vimwiki-2-1.zip
         license.txt
         convert_links.py
         convert-links.patch)
-md5sums=('fd3ea1842270db87e0b8b966970fedc1'
+md5sums=('775877e910d5588f764472dd934a7000'
          'e19fa0689d06a724fc8ddfe824ef2680'
          '0fc0e816bb93e408b62f74e8b2073daa'
          '1ba74a69c30927e947f22870c2551f73')
