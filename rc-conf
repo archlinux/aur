@@ -1,3 +1,0 @@
-TENSHI_CONFIG="/etc/tenshi/tenshi.conf"
-TENSHI_PID=`grep pidfile $TENSHI_CONFIG | cut -d\  -f3`
-TENSHI_OPTIONS="-c $TENSHI_CONFIG"
