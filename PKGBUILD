@@ -5,22 +5,18 @@
 
 pkgname=ddclient
 pkgver=3.8.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 arch=('any')
 url="http://ddclient.sourceforge.net"
 license=('GPL2')
 depends=('perl-io-socket-ssl' 'perl-digest-sha1')
-backup=('etc/ddclient/ddclient.conf' 'etc/conf.d/ddclient')
+backup=('etc/ddclient/ddclient.conf')
 install=ddclient.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
-        ddclient.rc
-        ddclient.conf.d
         ddclient.service
         iproute2.patch)
 md5sums=('7fa417bc65f8f0e6ce78418a4f631988'
-         '10af4667b7269132b8f0cdfc26864d89'
-         'b8f39c82827776da948b76ef83544d33'
          'fde631ff027c03179e9cdd483def324d'
          'e0c8a07e9b7a69e73cecd8626f16e8f0')
 
@@ -35,9 +31,7 @@ package() {
 
   # core files
   install -Dm755 ddclient "$pkgdir"/usr/sbin/ddclient
-  install -Dm755 "$srcdir"/ddclient.rc "$pkgdir"/etc/rc.d/ddclient
   install -Dm600 sample-etc_ddclient.conf "$pkgdir"/etc/ddclient/ddclient.conf
-  install -Dm644 "$srcdir"/ddclient.conf.d "$pkgdir"/etc/conf.d/ddclient
   install -d "$pkgdir"/var/cache/ddclient
 
   # additional instructions, sample configs
