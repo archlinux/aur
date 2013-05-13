@@ -34,9 +34,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
 md5sums=('91c4145f49bcf92e89470fa3fb28fff6'
-         'c43244c40a0437038c82089618e7beaa'
          '3ed0e24f5b5e25bf553f5427d64915e6'
-         '0ee5b6c58590ff392a266f20f7928d1f'
          '0a96ed876ffb1fcb9dff5a9b3a609c1e'
          '020971887442ebbf1b6949e031c8dd3f')
 
