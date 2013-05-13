@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -30,9 +30,7 @@ backup=('etc/conf.d/libvirtd'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
 source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
-	libvirtd.rc.d
 	libvirtd.conf.d
-	libvirtd-guests.rc.d
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
 md5sums=('91c4145f49bcf92e89470fa3fb28fff6'
@@ -76,16 +74,12 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -D -m755 "$srcdir"/libvirtd.rc.d "$pkgdir"/etc/rc.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
-
-  install -D -m755 "$srcdir"/libvirtd-guests.rc.d "$pkgdir"/etc/rc.d/libvirtd-guests
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirtd-guests
 
   # systemd stuff
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
   mv "$pkgdir"/lib/* "$pkgdir"/usr/lib/
-
 
   rm -rf \
 	"$pkgdir"/var/run \
