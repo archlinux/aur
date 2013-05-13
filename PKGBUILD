@@ -3,7 +3,7 @@
 
 pkgname=netcf
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for configuring network interfaces"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -29,5 +29,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
-  rm -rf $pkgdir/etc/rc.d/init.d
+  rm -rf $pkgdir/etc/rc.d
 }
