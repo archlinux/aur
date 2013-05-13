@@ -4,7 +4,7 @@
 
 pkgname=incron
 pkgver=0.5.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('i686' 'x86_64')
 url="http://incron.aiken.cz/"
@@ -13,10 +13,8 @@ depends=('gcc-libs' 'bash')
 install=incron.install
 options=('emptydirs')
 source=("http://inotify.aiken.cz/download/incron/$pkgname-$pkgver.tar.gz"
-	'incron.init'
 	'incrond.service')
 md5sums=('67f8b671db8169edccc8ef11c7d2c8be'
-         '648e1ca1a4b1e624401d9d71aa3756b3'
          '859a90af9e4efe40db381ea07167a66a')
 
 build() {
@@ -38,6 +36,5 @@ package() {
     CFGDIR="${pkgdir}"/etc \
     SYSDATADIR="${pkgdir}"/etc/incron.d install
 
-  install -Dm0755 "${srcdir}"/incron.init "${pkgdir}"/etc/rc.d/incrond
   install -Dm0644 "${srcdir}/incrond.service" "${pkgdir}/usr/lib/systemd/system/incrond.service"
 }
