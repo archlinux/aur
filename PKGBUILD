@@ -4,8 +4,8 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.24.17
-pkgrel=2
+pkgver=2.24.18
+pkgrel=1
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
@@ -19,9 +19,16 @@ license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
         xid-collision-debug.patch
         gtk-modules-32.patch)
-sha256sums=('e947b2b460156d98e8e38930b82458e1d613a71eb26e927f966f7081a640f415'
+sha256sums=('6c963101272ff53bb5b01d21bfb86cebba5f0a68f31c5e10523c63f07e762385'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
             '2effb13404442ae266d4c663347e88cd1ca19e9a83b452da1743bac16af9c7b0')
+
+prepare() {
+  cd "${srcdir}/gtk+-${pkgver}"
+
+  patch -Np1 -i "${srcdir}/xid-collision-debug.patch"
+  patch -p1 -i ${srcdir}/gtk-modules-32.patch
+}
 
 build() {
   export CC="gcc -m32"
@@ -29,8 +36,6 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "${srcdir}/gtk+-${pkgver}"
-  patch -Np1 -i "${srcdir}/xid-collision-debug.patch"
-  patch -p1 -i ${srcdir}/gtk-modules-32.patch
 
   CXX=/bin/false ./configure --prefix=/usr \
       --sysconfdir=/etc \
