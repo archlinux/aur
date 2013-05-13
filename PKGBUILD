@@ -57,12 +57,7 @@ build() {
 	--without-netcf --with-interface
   make
 
-  sed -i 's|/etc/sysconfig/libvirtd|/etc/conf.d/libvirtd|' daemon/libvirtd.service
-  sed -i \
-    -e 's|/etc/sysconfig/libvirt-guests|/etc/conf.d/libvirtd-guests|' \
-    -e 's|/etc/init.d/libvirt-g|/etc/rc.d/libvirtd-g|g' \
-    -e 's|After=.*|After=syslog.target network.target libvirtd.service|' \
-    tools/libvirt-guests.service
+  sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
   sed -i 's|@sbindir@|/usr/sbin|g' src/virtlockd.service
   sed -i 's|#group =.*|group="kvm"|' src/qemu/qemu.conf
 }
