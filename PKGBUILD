@@ -3,7 +3,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=23.0a1
+pkgver=24.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ package() {
   FX_SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/thunderbird/nightly/latest-comm-central/${FX_SRC}"
 
   msg "Downloading..."
-  wget -N ${FX_SRC_URI}
+  curl -ORz ${FX_SRC} ${FX_SRC_URI}
   msg "Extracting..."
   bsdtar -x -f ${FX_SRC}
   msg "Packaging..."
