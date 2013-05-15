@@ -1,0 +1,8 @@
+2013-05-12 Nick Østergaard <oe.nick@gmail.com>
+
+	* 0.9.9-4 :
+	added ChangeLog.
+	does not work with perl-math-clipper=1.21
+	Remove stupid depend Growl::GNTP
+	Remove annoying perl version warnings
+	Sed statements credit to swiftgeek
