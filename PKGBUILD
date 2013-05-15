@@ -3,7 +3,7 @@
 
 pkgname=slic3r-git
 pkgver=0
-pkgrel=5
+pkgrel=6
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
@@ -56,6 +56,9 @@ prepare() {
 
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
+
+  # Workaround shitload of issue via setting LC_ALL=C ... workaround that doesn't work :<
+  #sed -i '1s"^#!.\+$"#!/usr/bin/env LC_ALL=C /usr/bin/perl"' ./slic3r.pl
 }
 
 build() {
