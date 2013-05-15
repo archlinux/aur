@@ -16,7 +16,7 @@
  # Mandatory: no
  # Default:
 -# PidFile=/tmp/zabbix_agentd.pid
-+PidFile=/var/run/zabbix/zabbix_agentd.pid
++PidFile=/run/zabbix/zabbix_agentd.pid
  
  ### Option: LogFile
  #	Name of log file.
@@ -54,7 +54,7 @@
  # Mandatory: no
  # Default:
 -# PidFile=/tmp/zabbix_server.pid
-+PidFile=/var/run/zabbix/zabbix_server.pid
++PidFile=/run/zabbix/zabbix_server.pid
  
  ### Option: DBHost
  #	Database host name.
@@ -63,7 +63,7 @@
  # Mandatory: no
  # Default:
 -# DBSocket=/tmp/mysql.sock
-+DBSocket=/var/run/mysqld/mysqld.sock
++DBSocket=/run/mysqld/mysqld.sock
  
  ### Option: DBPort
  #	Database port when not using local socket. Ignored for SQLite.

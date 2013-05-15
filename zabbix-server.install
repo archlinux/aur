@@ -2,7 +2,7 @@ post_install() {
   mkdir /var/lib/zabbix
   getent group zabbix > /dev/null || groupadd zabbix > /dev/null
   getent passwd zabbix > /dev/null || useradd -g zabbix -d /var/lib/zabbix/home zabbix -m > /dev/null
-  chown -R zabbix:zabbix /var/log/zabbix /etc/zabbix /usr/share/zabbix /srv/http/zabbix /var/run/zabbix
+  chown -R zabbix:zabbix /var/log/zabbix /etc/zabbix /usr/share/zabbix /run/zabbix
 
 cat << EOM
 ----------------------------------------------------------------------------------------

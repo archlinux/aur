@@ -4,9 +4,10 @@ After=syslog.target network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/zabbix_agentd
+ExecStartPre=/usr/bin/mkdir -p /run/zabbix ; /usr/bin/chown -R zabbix:zabbix /run/zabbix
+ExecStart=/usr/bin/zabbix_agentd
 RemainAfterExit=yes
+PIDFile=/run/zabbix/zabbix_agentd.pid
 
 [Install]
 WantedBy=multi-user.target
-
