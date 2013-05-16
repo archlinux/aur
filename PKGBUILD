@@ -3,7 +3,7 @@
 
 pkgname=openmw-git
 _gitname="openmw"
-pkgver=20130510
+pkgver=20130515
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
