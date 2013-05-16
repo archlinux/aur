@@ -1,15 +1,20 @@
 # Maintainer: Sandy Carter (bwrsandman) <bwrsandman@gmail.com>
+# PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/ogrebullet-git
+
 pkgname=ogrebullet-git
-pkgver=20130512
+pkgver=20130516
 pkgrel=1
 pkgdesc="Bullet Physics wrapper for OGRE"
 arch=('i686' 'x86_64')
-url="http://www.ogre3d.org/addonforums/viewtopic.php?f=12&t=4155"
+url="http://www.ogre3d.org/tikiwiki/OgreBullet"
 license=('lgpl')
 depends=(ogre bullet boost)
 makedepends=(git cmake)
 source=(git+https://bitbucket.org/alexeyknyshev/ogrebullet.git)
 sha1sums=('SKIP')
+conflicts=('ogrebullet-svn')
+provides=('ogrebullet')
+
 
 pkgver() {
   cd "$srcdir/$_gitname"
