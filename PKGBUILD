@@ -2,6 +2,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
+# _gitroot="git://git.zytor.com/syslinux/syslinux.git"
 _gitroot="git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
 _gitname="syslinux"
 _gitbranch="firmware"
@@ -10,7 +11,7 @@ __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=6.00.pre4
+pkgver=5.10.pre2.126.g34eeaa3
 pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
@@ -56,6 +57,9 @@ build() {
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
+	
+	## Fix -Werror compile fail
+	sed 's|-Wall|-Wall -Wno-error|g' -i "${srcdir}/${_gitname}_build/mk"/*.mk || true
 	
 	rm -rf "${srcdir}/${_gitname}_build/BUILD/" || true
 	mkdir -p "${srcdir}/${_gitname}_build/BUILD/"
