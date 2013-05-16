@@ -1,6 +1,6 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
@@ -31,4 +31,4 @@ package() {
   cp -Rt "$pkgdir"/usr templates/packaging/usr/share
 }
 
-md5sums=('327afffbb81fc28eb58c67e8f972fefb')
+md5sums=('fb2b034c51ca5cc3bc92b704eead1c23')
