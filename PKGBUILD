@@ -2,8 +2,8 @@
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
-pkgver=0.12.3
-pkgrel=2
+pkgver=0.12.4
+pkgrel=1
 pkgdesc="Gtk3 widget for displaying rasterized maps"
 url="http://projects.gnome.org/libchamplain/"
 license=('LGPL')
@@ -12,7 +12,7 @@ options=('!libtool')
 depends=('clutter-gtk' 'libsoup' 'cairo' 'sqlite')
 makedepends=('gobject-introspection' 'gtk-doc' 'vala')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('3d03d4e6892305a3b5b78e0718e486f6a13271df33d82383fd8361ef71f3e658')
+sha256sums=('631ce8e91b02c596e29778d3f7c1d28013e2e40d080a88f2d9a06f8b79f9e493')
 
 build() {
     cd $pkgname-$pkgver
