@@ -46,7 +46,7 @@ build() {
 	sed 's|CFLAGS	?=|CFLAGS	+=|g' -i "${srcdir}/${_gitname}_build/Make.defaults"
 	sed 's|CCLDFLAGS ?=|CCLDFLAGS +=|g' -i "${srcdir}/${_gitname}_build/Make.defaults"
 	
-	CFLAGS="" LDFLAGS="" LIBDIR="/usr/lib/" make all
+	LIBDIR="/usr/lib/" make all
 	echo
 	
 }
