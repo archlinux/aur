@@ -17,7 +17,7 @@ provides=('ogrebullet')
 
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/ogrebullet"
   git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
