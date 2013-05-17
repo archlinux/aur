@@ -2,30 +2,21 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=2.8.10.2
-pkgrel=5
+pkgver=2.8.11
+pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
 license=('custom')
 depends=('curl' 'libarchive' 'shared-mime-info')
-makedepends=('qt5-base' 'emacs')
-optdepends=('qt5-base: cmake-gui')
+makedepends=('qt4' 'emacs')
+optdepends=('qt4: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
-        'qt4.patch')
-md5sums=('097278785da7182ec0aea8769d06860c'
-         '4933fbe934d3989923f0a60a78dac44e')
+source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
+md5sums=('be6008f2299613d23fe82ab53ef7472e')
 
 build() {
   cd ${pkgname}-${pkgver}
-
-  # qmake refers to Qt5
-  patch -p1 -i "${srcdir}"/qt4.patch
-
-  # Qt is built with reduce-relocations
-  export CFLAGS="${CFLAGS} -fPIC"
-  export CXXFLAGS="${CXXFLAGS} -fPIC"
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
