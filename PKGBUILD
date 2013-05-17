@@ -3,7 +3,7 @@
 
 pkgname=xinetd
 pkgver=2.3.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A secure replacement for inetd"
 arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
@@ -12,29 +12,30 @@ optdepends=('perl: for xconv.pl script')
 backup=('etc/xinetd.conf' 'etc/xinetd.d/servers' 'etc/xinetd.d/services')
 source=(http://www.xinetd.org/xinetd-$pkgver.tar.gz
         xinetd.conf
-        xinetd
         servers
         services
         xinetd.service)
 md5sums=('77358478fd58efa6366accae99b8b04c'
          'f109f699a07bc8cfb5791060f5e87f9e'
-         'ea37a2794f202e6b953d9b6956dad16a'
          '21f47b4aa20921cfaddddd9f9a407f81'
          '9fa2061dc7dd738c8424251deb86f81e'
-         '08466ed714ea8ba42ad81f6fb3aa62e7')
+         '38be35b6e7146dc59902e243d9063b4c')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  sed -i "s#${prefix}/man#${prefix}/share/man#" configure
+}
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  sed -i "s#${prefix}/man#${prefix}/share/man#" configure
-  ./configure --prefix=/usr --without-libwrap
+  ./configure --prefix=/usr --sbindir=/usr/bin --without-libwrap
   make
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  make prefix=$pkgdir/usr install
+  make prefix=$pkgdir/usr DAEMONDIR=$pkgdir/usr/bin install
   
-  install -Dm755 $srcdir/xinetd $pkgdir/etc/rc.d/xinetd
   install -Dm644 $srcdir/xinetd.conf $pkgdir/etc/xinetd.conf
   install -Dm644 $srcdir/servers $pkgdir/etc/xinetd.d/servers
   install -Dm644 $srcdir/services $pkgdir/etc/xinetd.d/services

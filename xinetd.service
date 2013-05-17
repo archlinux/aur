@@ -3,7 +3,7 @@ Description=A secure replacement for inetd
 After=network.target
 
 [Service]
-ExecStart=/usr/sbin/xinetd -dontfork
+ExecStart=/usr/bin/xinetd -dontfork
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
