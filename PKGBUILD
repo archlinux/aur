@@ -2,16 +2,16 @@
 
 pkgname=perl-sys-run
 _cpanname=Sys-Run
-pkgver=0.16
+pkgver=0.11
 pkgrel=1
 pkgdesc="Perl/CPAN Module Sys::Run - Run commands and handle their output"
 arch=(any)
 url="https://metacpan.org/release/$_cpanname"
 license=(PerlArtistic)
 options=('!emptydirs')
-depends=('perl-file-blarf' 'perl-log-tree' 'perl-moose' 'perl-namespace-autoclean')
+depends=(perl-file-blarf perl-log-tree perl-moose perl-namespace-autoclean)
 source=("http://cpan.metacpan.org/authors/id/T/TE/TEX/$_cpanname-$pkgver.tar.gz")
-md5sums=('d2cf5133e6d12ab99ef3151498d4b2b3')
+md5sums=('d25613af788db05392749df3f0111dc5')
 
 build() {
 	cd "$srcdir/$_cpanname-$pkgver"
