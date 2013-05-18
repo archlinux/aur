@@ -3,7 +3,7 @@
 
 pkgname=udisks2-nosystemd
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
@@ -24,6 +24,10 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static
   make
+
+  # fix mdadm location
+  sed -i -e 's#/sbin/mdadm#/usr/bin/mdadm#g' \
+	  "${srcdir}/udisks-${pkgver}"/data/80-udisks2.rules
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = udisks2-nosystemd
 	pkgdesc = Disk Management Service, version 2
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/udisks
 	arch = i686
 	arch = x86_64
