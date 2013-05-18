@@ -4,19 +4,20 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=asunder
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="a graphical CD ripper and encoder"
 arch=('i686' 'x86_64')
 url="http://littlesvr.ca/asunder/"
 license=('GPL2')
-depends=('gtk2' 'libcddb' 'cdparanoia')
-makedepends=('pkgconfig')
+depends=('gtk2' 'libcddb' 'cdparanoia' 'desktop-file-utils')
+makedepends=('pkgconfig' 'intltool' 'gettext')
 optdepends=('lame: for mp3 support' 'vorbis-tools: for ogg support' \
 	'flac: for flac support')
 source=(http://littlesvr.ca/asunder/releases/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('4996860f552879fd8abdc87d1c6c7530')
-sha256sums=('bb608c1cdefcce2f533fb5d5cc23838846b2810ec89d0ebb083507cf27e7822f')
+md5sums=('dd690d8f4c68a2e786c657e08be688d0')
+sha256sums=('ded2eff22c7e65f46eecd8ad89c6c37c5a032af280e293a59c3e5bb34c0bb05f')
+install="$pkgname".install
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
