@@ -6,8 +6,8 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
 url='http://www.twotoasts.de/index.php?/pages/midori_summary.html'
@@ -19,7 +19,7 @@ optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support'
             'aria2: download utility')
 options=('!emptydirs')
 source=("http://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2")
-sha256sums=('d280c19bb135f2b644a67d9f34d1ec1c148ceb14b5de11ce6c23f64c15be5df0')
+sha256sums=('a9c5cb4606e8e4967a2b980caa9ada25623c50d927a302b6bf73eeac5815c97c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
