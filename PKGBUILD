@@ -44,7 +44,7 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	install -d "${pkgdir}/usr/sbin/"
+	install -d "${pkgdir}/usr/bin/"
 	install -D -m0755 "${srcdir}/${_gitname}_build/src/efibootmgr/efibootmgr" "${pkgdir}/usr/bin/efibootmgr"
 	
 	install -d "${pkgdir}/usr/share/man/man8/"
