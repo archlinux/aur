@@ -1,0 +1,26 @@
+pkgname=revelation
+
+post_install() {
+  gconfpkg --install ${pkgname}
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+  update-mime-database usr/share/mime > /dev/null
+}
+
+pre_upgrade() {
+  pre_remove $1
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  gconfpkg --uninstall ${pkgname}
+}
+
+post_remove() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+  update-mime-database usr/share/mime > /dev/null
+}

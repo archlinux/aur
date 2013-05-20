@@ -1,0 +1,33 @@
+diff -Naur revelation-0.4.14.orig/configure.ac revelation-0.4.14/configure.ac
+--- revelation-0.4.14.orig/configure.ac	2012-08-14 01:08:27.190736795 -0400
++++ revelation-0.4.14/configure.ac	2012-08-14 01:43:35.396873763 -0400
+@@ -24,7 +24,7 @@
+ RVL_PYTHON_MODULE(gobject, yes)
+ RVL_PYTHON_MODULE(pango, yes)
+ RVL_PYTHON_MODULE(dbus, yes)
+-RVL_PYTHON_MODULE(cracklib, yes)
++RVL_PYTHON_MODULE(crack, yes)
+ 
+ 
+ dnl Enable applet installation
+diff -Naur revelation-0.4.14.orig/src/lib/util.py revelation-0.4.14/src/lib/util.py
+--- revelation-0.4.14.orig/src/lib/util.py	2012-08-14 01:08:27.194070085 -0400
++++ revelation-0.4.14/src/lib/util.py	2012-08-14 01:43:53.473311172 -0400
+@@ -23,7 +23,7 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ #
+ 
+-import datetime, cracklib, gettext, math, os, random, shlex, string, StringIO, traceback
++import datetime, crack, gettext, math, os, random, shlex, string, StringIO, traceback
+ 
+ _ = gettext.gettext
+ 
+@@ -94,7 +94,7 @@
+ 	# check password with cracklib
+ 	try:
+ 		if len(password) < 100:
+-			cracklib.FascistCheck(password)
++			crack.FascistCheck(password)
+ 
+ 	except ValueError, reason:
+ 
