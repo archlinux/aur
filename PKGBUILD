@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.9
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,14 +18,20 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
+
+_kernelname=${pkgbase#linux}
 md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
-         'adeb2556568f79e827e7a0ce4c483605'
-         '91b88099925a7d4f9e7adb5552a9c17d'
-         'baf222c5beba4d0d7e32bc0e54e66f9b'
+         '71b31e29e0cb437a27017c781293b6f4'
+         '41c65cdad9c05b63549ca96d978c2859'
+         '11c3390fc88ad67b7aa110d0729773c6'
          'eb14dcfd80c00852ef81ded6e826826a'
          'f3def2cefdcbb954c21d8505d23cc83c')
 
-_kernelname=${pkgbase#linux}
+# module.symbols md5sums
+# x86_64
+# e1bd8696bb9a73532de25013dc81bef1  /lib/modules/3.9.3-1-ARCH/modules.symbols
+# i686
+# dd583fcb2b6ca032a1542330b8e146fd  /lib/modules/3.9.3-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
