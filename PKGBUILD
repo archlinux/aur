@@ -63,7 +63,7 @@ build() {
 	./autogen.sh
 	echo
 	
-	./configure --enable-manpages --sysconfdir="/etc" --libexecdir="/usr/lib" --libdir="/usr/lib" --bindir="/usr/bin" --sbindir="/usr/sbin"
+	./configure --enable-manpages --sysconfdir="/etc" --libexecdir="/usr/lib" --libdir="/usr/lib" --bindir="/usr/bin" --sbindir="/usr/bin"
 	echo
 	
 	make
