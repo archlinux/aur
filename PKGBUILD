@@ -2,7 +2,7 @@
 # Contributor: Juan Pablo Gonzalez Tognarelli <lord_jotape@yahoo.com.ar>
 
 pkgname=uriparser
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="uriparser is a strictly RFC 3986 compliant URI parsing library. uriparser is cross-platform, fast, supports Unicode"
 url="http://sourceforge.net/projects/uriparser/"
@@ -11,7 +11,7 @@ makedepends=(doxygen graphviz)
 arch=('i686' 'x86_64')
 license=("custom")
 source=(http://downloads.sourceforge.net/sourceforge/uriparser/$pkgname-$pkgver.tar.bz2)
-md5sums=('2da950ef006be5a842dcc383cbbeaa78')
+md5sums=('1ff590e25e8d9f5eaaa409c741fc387b')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
