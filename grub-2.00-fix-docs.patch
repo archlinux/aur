@@ -1,0 +1,21 @@
+From 40d6b00fa48ae9c1cecf143da5c6061f6ffcb719 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com
+Date: Tue, 12 Mar 2013 15:23:02 -0400
+Subject: [PATCH] Fix docs
+
+I think the doc generation tools got stricter, so fix up the .texi file
+to work.
+
+diff --git a/docs/grub-dev.texi b/docs/grub-dev.texi
+--- a/docs/grub-dev.texi
++++ b/docs/grub-dev.texi
+@@ -1394,8 +1394,8 @@ grub_video_blit_glyph (&glyph, color, 0,
+ 
+ @node Bitmap API
+ @section Bitmap API
+-@itemize
+ @subsection grub_video_bitmap_create
++@itemize
+ @item Prototype:
+ @example
+ grub_err_t grub_video_bitmap_create (struct grub_video_bitmap **bitmap, unsigned int width, unsigned int height, enum grub_video_blit_format blit_format)

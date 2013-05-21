@@ -8,7 +8,7 @@ _grub_915_ver=9
 pkgname=('grub-common' 'grub-bios' 'grub-efi-i386')
 pkgbase=grub
 pkgver=2.00
-pkgrel=1
+pkgrel=2
 url="https://www.gnu.org/software/grub/"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -23,21 +23,14 @@ source=("http://ftp.gnu.org/gnu/grub/grub-${pkgver}.tar.xz"
         'grub.default'
         'grub.cfg'
         '20_memtest86+'
-        'grub_bzr_export.sh')
+        'grub_bzr_export.sh'
+        '0069-Backport-gnulib-fixes-for-C11.-Fixes-Savannah-bug-37.patch'
+        'grub-2.00-fix-docs.patch')
 
 noextract=("grub2_extras_lua_r${_grub_lua_ver}.tar.xz"
            "grub2_extras_ntldr-img_r${_grub_ntldr_ver}.tar.xz"
            "grub2_extras_915resolution_r${_grub_915_ver}.tar.xz")
 
-sha1sums=('274d91e96b56a5b9dd0a07accff69dbb6dfb596b'
-          '89290031b974780c6df76893836d2477d4add895'
-          'eb4b35b4c36b64f9405cbcbc538cb205171c1c0a'
-          'd5ae2efec25616028a9d89e98b6e454f1c4c415f'
-          '26e4e946190bea1f03632658cf08ba90e11dec57'
-          'dbf493dec4722feb11f0b5c71ad453a18daf0fc5'
-          '76ae862a945a8848e6999adf8ad1847f0f7008b9'
-          'ce35d7ae75cd1b5b677e894e528f96add40e77b9'
-          '0cfd4e51cdb14a92f06cfd3c607f2aa21f3e55fc')
 
 _build_grub-common_and_bios() {
 
@@ -71,7 +64,13 @@ _build_grub-common_and_bios() {
 	## Requires python2
 	# sed 's|python |python2 |g' -i "${srcdir}/grub_bios-${pkgver}/autogen.sh"
 
-	## start the actual build process
+	# fix compiling with gcc48
+        patch -Np1 -i ${srcdir}/0069-Backport-gnulib-fixes-for-C11.-Fixes-Savannah-bug-37.patch
+
+	#fix docs compiling
+        patch -Np1 -i ${srcdir}/grub-2.00-fix-docs.patch
+
+        ## start the actual build process
 	cd "${srcdir}/grub_bios-${pkgver}"
 	./autogen.sh
 	echo
@@ -89,7 +88,7 @@ _build_grub-common_and_bios() {
 		--enable-grub-mount \
 		--prefix="/usr" \
 		--bindir="/usr/bin" \
-		--sbindir="/usr/sbin" \
+		--sbindir="/usr/bin" \
 		--mandir="/usr/share/man" \
 		--infodir="/usr/share/info" \
 		--datarootdir="/usr/share" \
@@ -117,6 +116,12 @@ _build_grub-efi-i386() {
 	bsdtar xf "${srcdir}/grub2_extras_lua_r${_grub_lua_ver}.tar.xz" \
 		-C "${srcdir}/grub_efi-${pkgver}/grub-extras"
 
+        # fix compiling with gcc48
+        patch -Np1 -i ${srcdir}/0069-Backport-gnulib-fixes-for-C11.-Fixes-Savannah-bug-37.patch
+
+	#fix docs compiling
+        patch -Np1 -i ${srcdir}/grub-2.00-fix-docs.patch
+
 	cd "${srcdir}/grub_efi-${pkgver}"
 	./autogen.sh
 	echo
@@ -134,7 +139,7 @@ _build_grub-efi-i386() {
 		--enable-grub-mount \
 		--prefix="/usr" \
 		--bindir="/usr/bin" \
-		--sbindir="/usr/sbin" \
+		--sbindir="/usr/bin" \
 		--mandir="/usr/share/man" \
 		--infodir="/usr/share/info" \
 		--datarootdir="/usr/share" \
@@ -249,3 +254,14 @@ package_grub-efi-i386() {
 	rm -f "${pkgdir}/usr/lib/grub/i386-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
 
 }
+md5sums=('a1043102fbc7bcedbf53e7ee3d17ab91'
+         '704ea9f250b6137f05fa0197fd07053a'
+         '77f7d5f8ce395663cd7fff4d37099957'
+         'a80e2b1d3bab778c3b6117d5a698992f'
+         '3b3dae993939b4e323f19365dd830e12'
+         'a03ffd56324520393bf574cefccb893d'
+         'f184b060fe22eca662ad455c69241496'
+         '9b6358d3de5c4bb95a041ab7c44a21ec'
+         'f343ed2340ebc86c427873641bb72419'
+         'ab751d1d8cd3fd47e5ee24d71ecc31ed'
+         '342dd18472a24e5fd252458b24f39a29')

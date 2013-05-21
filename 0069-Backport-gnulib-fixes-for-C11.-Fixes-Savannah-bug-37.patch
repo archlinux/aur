@@ -1,0 +1,50 @@
+From d09689a5a2863043d007c1acb9bf0a8d1d3b776d Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Fri, 28 Dec 2012 06:43:35 +0000
+Subject: [PATCH 069/364] Backport gnulib fixes for C11.  Fixes Savannah bug
+ #37738.
+
+* grub-core/gnulib/stdio.in.h (gets): Warn on use only if
+HAVE_RAW_DECL_GETS.
+* m4/stdio_h.m4 (gl_STDIO_H): Check for gets.
+---
+ ChangeLog                   | 8 ++++++++
+ grub-core/gnulib/stdio.in.h | 6 ++++--
+ m4/stdio_h.m4               | 2 +-
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/grub-core/gnulib/stdio.in.h b/grub-core/gnulib/stdio.in.h
+index 80b9dbf..a8b00c6 100644
+--- a/grub-core/gnulib/stdio.in.h
++++ b/grub-core/gnulib/stdio.in.h
+@@ -138,10 +138,12 @@ _GL_WARN_ON_USE (fflush, "fflush is not always POSIX compliant - "
+ #endif
+ 
+ /* It is very rare that the developer ever has full control of stdin,
+-   so any use of gets warrants an unconditional warning.  Assume it is
+-   always declared, since it is required by C89.  */
++   so any use of gets warrants an unconditional warning; besides, C11
++   removed it.  */
+ #undef gets
++#if HAVE_RAW_DECL_GETS
+ _GL_WARN_ON_USE (gets, "gets is a security hole - use fgets instead");
++#endif
+ 
+ #if @GNULIB_FOPEN@
+ # if @REPLACE_FOPEN@
+diff --git a/m4/stdio_h.m4 b/m4/stdio_h.m4
+index f5650cd..8458bec 100644
+--- a/m4/stdio_h.m4
++++ b/m4/stdio_h.m4
+@@ -37,7 +37,7 @@ AC_DEFUN([gl_STDIO_H],
+   dnl corresponding gnulib module is not in use, and which is not
+   dnl guaranteed by C89.
+   gl_WARN_ON_USE_PREPARE([[#include <stdio.h>
+-    ]], [dprintf fpurge fseeko ftello getdelim getline popen renameat
++    ]], [dprintf fpurge fseeko ftello getdelim getline gets popen renameat
+     snprintf tmpfile vdprintf vsnprintf])
+ ])
+ 
+-- 
+1.8.1.4
+
