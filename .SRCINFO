@@ -1,0 +1,57 @@
+pkgbase = amavisd-new
+	pkgdesc = A high-performance interface between mailer (MTA) and content checkers. Written in Perl for maintainability.
+	pkgver = 2.6.4
+	pkgrel = 4
+	url = http://www.ijs.si/software/amavisd/
+	install = amavisd-new.install
+	changelog = Changelog
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-archive-tar
+	depends = perl-archive-zip>=1.14
+	depends = perl-compress-zlib>=1.35
+	depends = perl-compress-raw-zlib>=2.0.17
+	depends = perl-convert-tnef
+	depends = perl-convert-uulib>=1.08
+	depends = perl-mime-base64
+	depends = perl-mime-tools
+	depends = perl-mailtools>=1.58
+	depends = perl-net-server>=0.88
+	depends = perl-digest-md5>=2.22
+	depends = perl-io-stringy
+	depends = perl-time-hires>=1.49
+	depends = perl-unix-syslog
+	depends = perl-mail-dkim>=0.31
+	depends = perl-berkeleydb>=0.42
+	optdepends = gzip:Decoder for .gz files or .z files.
+	optdepends = bzip2:Decoder for .bz2 fiels.
+	optdepends = arc:Alternative decoder for .arc files.
+	optdepends = nomarch:Alternative decoder for .arc files.
+	optdepends = lha:Decoder for .lha files or .exe files.
+	optdepends = p7zip:Decoder for .7z files.
+	optdepends = arj:Alternative decoder for .arj files or .exe files.
+	optdepends = unarj:Alternative decoder for .arj files or .exe files.
+	optdepends = rar:Alternative decoder for .rar files or .exe files.
+	optdepends = unrar:Alternative decoder for .rar files or .exe files.
+	optdepends = lzop:Decoder for .lzo files.
+	optdepends = tnef:Decoder for .tnef files.
+	optdepends = pax:ALternative decoder for .tar files or .cpio files.
+	optdepends = cpio:Alternative decoder for .tar files or .cpio files.
+	optdepends = gcpio:Alternative decoder for .tar files or .cpio files.
+	optdepends = rpm2cpio:Decoder for .rpm files.
+	optdepends = cabextract:Decoder for .cab files.
+	optdepends = perl-dbi:Needed if using SQL lookups or SQL logging/quarantining.
+	optdepends = perl-ldap:Needed if using LDAP lookups.
+	optdepends = perl-authen-sasl:Authenticating on mail forwarding and on submitting DSN.
+	backup = etc/amavisd/amavisd.conf
+	backup = etc/amavisd/amavisd-custom.conf
+	source = http://www.ijs.si/software/amavisd/amavisd-new-2.6.4.tar.gz
+	source = amavisd
+	source = amavisd.conf
+	md5sums = 03d31657f14cd64c1cb38786214234b4
+	md5sums = 3ec6da7f0a659d1a017bd73b0c7c3aa3
+	md5sums = 756fe29fece79d135850e1cd8c6660a5
+
+pkgname = amavisd-new
+
