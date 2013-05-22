@@ -22,12 +22,11 @@ post_upgrade() {
     /run/amavis       <-- pid, lock, socket
  You must update /etc/amavisd/amavisd.conf to prevent breakage!
 EOF
-	 [ "$(vercmp $2 2.6.4-4)" -lt 0 ] && filters_howto
+	 [ "$(vercmp $2 2.6.4-4)" -lt 0 ] && filters_howto || :
 }
 
 post_remove() {
 	 groupdel amavis &>/dev/null
 	 userdel amavis &>/dev/null
-	 [ -d /var/spool/amavis ] && echo "You still need to clean up /var/spool/amavis"
-	 :
+	 [ -d /var/spool/amavis ] && echo "You still need to clean up /var/spool/amavis" || :
 }
