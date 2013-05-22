@@ -1,23 +1,10 @@
 post_install() {
-	 getent passwd amavis >/dev/null || useradd -u 333 -d /var/lib/amavis -g amavis -s /bin/false amavis >/dev/null
 	 getent group amavis >/dev/null || groupadd -g 333 amavis >/dev/null
-
-    [ ! -d /var/lib/amavis ] && mkdir /var/lib/amavis
-    [ ! -d /var/lib/amavis/db ] && mkdir /var/lib/amavis/db
-    [ ! -d /var/lib/amavis/tmp ] && mkdir /var/lib/amavis/tmp
-    [ ! -d /var/lib/amavis/var ] && mkdir /var/lib/amavis/var
-    [ ! -d /var/lib/amavis/virus ] && mkdir /var/lib/amavis/virus
-    chown -R amavis:amavis /var/lib/amavis
-    chmod -R 750 /var/lib/amavis
+	 getent passwd amavis >/dev/null || useradd -u 333 -M -d /run/amavis/home -g amavis -s /bin/false amavis >/dev/null
 }
 
 post_upgrade() {
-	 [ "$(vercmp $2 2.6.4-3)" -le 0 ] && cat <<EOF
-<<< Attention please!
-<<<
-<<< The default amavisd-new home directory has been moved to /var/lib/amavis.
-<<<
-<<< The pid and lock files has been change to /var/run/amavisd.
+	 [ "$(vercmp $2 2.6.4-4)" -lt 0 ] && cat <<EOF
 <<<
 <<< The anti-spam and anti-virus features has been disabled by default,you
 <<< need to mannully enable them by comment the follow lines in /etc/amavisd.conf
@@ -25,7 +12,16 @@ post_upgrade() {
 <<< #   @bypass_virus_checks_maps = (1);  # controls running of anti-virus code
 <<< #   @bypass_spam_checks_maps = (1);  # controls running of anti-spam code
 <<<
-<<< Please update you /etc/amavisd/amavisd.conf accordingly.
+EOF
+	 [ "$(vercmp $2 2.8.0-1)" -lt 0 ] && cat <<EOF
+<<< Homedir, pid & lock files are now in volatile storage at: /run/amavis
+<<< You must update /etc/amavisd/amavisd.conf to prevent breakage!
 EOF
     post_install
+}
+
+post_remove() {
+	 groupdel amavis &>/dev/null
+	 userdel amavis &>/dev/null
+	 :
 }

@@ -1,6 +1,6 @@
 pkgname=amavisd-new
 pkgver=2.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -29,8 +29,8 @@ source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.gz"
         "service"
         "tmpfiles")
 md5sums=('9851ce19f0c8fcab36f254c4e0251618'
-         'baafa4228ca32922fb119ad161b63e63'
-         'e15d38c8a48244c9d0b451243c1b7201')
+         '3d0c094230621dfa04922afb482e638c'
+         '32e07590b8ffb727d91956734a3cf048')
 install=install
 
 prepare() {
@@ -39,10 +39,10 @@ prepare() {
         -e "s/# @bypass_spam_checks_maps  = (1)/@bypass_spam_checks_maps = (1)/g" \
         -e "s/\\\$daemon_user  = 'vscan'/\\\$daemon_user  = 'amavis'/g" \
         -e "s/\\\$daemon_group = 'vscan'/\\\$daemon_group = 'amavis'/g" \
-        -e "sX# \\\$MYHOME = '/var/amavis'X\\\$MYHOME = '/var/lib/amavis'Xg" \
+        -e "sX# \\\$MYHOME = '/var/amavis'X\\\$MYHOME = '/run/amavis/home'Xg" \
         -e "sX\\\$QUARANTINEDIR = '/var/virusmails'X\\\$QUARANTINEDIR = '\\\$MYHOME/virus'Xg" \
-        -e "sX# \\\$pid_file  = \"\\\$MYHOME/var/amavisd.pid\"X\\\$pid_file = \"/run/amavis/amavisd.pid\"Xg" \
-        -e "sX# \\\$lock_file = \"\\\$MYHOME/var/amavisd.lock\"X\\\$lock_file = \"/run/amavis/amavisd.lock\"Xg" \
+        -e "sX# \\\$pid_file  = \"\\\$MYHOME/var/amavisd.pid\"X\\\$pid_file = \"/run/amavis/pid\"Xg" \
+        -e "sX# \\\$lock_file = \"\\\$MYHOME/var/amavisd.lock\"X\\\$lock_file = \"/run/amavis/lock\"Xg" \
         -e "sX\\\$unix_socketname = \"\\\$MYHOME/amavisd.sock\"X\\\$unix_socketname = \"/run/amavis/amavisd.sock\"Xg" \
         ${srcdir}/amavisd-new-${pkgver}/amavisd.conf
 }

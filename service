@@ -5,7 +5,7 @@ Wants=spamassassin.service
 After=network.target
 
 [Service]
-PIDFile=/run/amavis/amavisd.pid
+PIDFile=/run/amavis/pid
 ExecStart=/usr/bin/amavisd -c /etc/amavisd/amavisd.conf foreground
 ExecReload=/usr/bin/amavisd -c /etc/amavisd/amavisd.conf reload
 

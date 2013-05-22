@@ -1,7 +1,7 @@
 pkgbase = amavisd-new
 	pkgdesc = High-performance interface between mailer (MTA) and content checkers
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.ijs.si/software/amavisd/
 	install = install
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = amavisd-new
 	source = service
 	source = tmpfiles
 	md5sums = 9851ce19f0c8fcab36f254c4e0251618
-	md5sums = baafa4228ca32922fb119ad161b63e63
-	md5sums = e15d38c8a48244c9d0b451243c1b7201
+	md5sums = 3d0c094230621dfa04922afb482e638c
+	md5sums = 32e07590b8ffb727d91956734a3cf048
 
 pkgname = amavisd-new
 
