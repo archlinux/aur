@@ -1,13 +1,12 @@
 pkgbase = amavisd-new
-	pkgdesc = A high-performance interface between mailer (MTA) and content checkers. Written in Perl for maintainability.
-	pkgver = 2.6.4
-	pkgrel = 4
+	pkgdesc = High-performance interface between mailer (MTA) and content checkers
+	pkgver = 2.8.0
+	pkgrel = 1
 	url = http://www.ijs.si/software/amavisd/
-	install = amavisd-new.install
-	changelog = Changelog
+	install = install
 	arch = any
 	license = GPL
-	depends = perl
+	depends = perl>=5.8.2
 	depends = perl-archive-tar
 	depends = perl-archive-zip>=1.14
 	depends = perl-compress-zlib>=1.35
@@ -24,34 +23,14 @@ pkgbase = amavisd-new
 	depends = perl-unix-syslog
 	depends = perl-mail-dkim>=0.31
 	depends = perl-berkeleydb>=0.42
-	optdepends = gzip:Decoder for .gz files or .z files.
-	optdepends = bzip2:Decoder for .bz2 fiels.
-	optdepends = arc:Alternative decoder for .arc files.
-	optdepends = nomarch:Alternative decoder for .arc files.
-	optdepends = lha:Decoder for .lha files or .exe files.
-	optdepends = p7zip:Decoder for .7z files.
-	optdepends = arj:Alternative decoder for .arj files or .exe files.
-	optdepends = unarj:Alternative decoder for .arj files or .exe files.
-	optdepends = rar:Alternative decoder for .rar files or .exe files.
-	optdepends = unrar:Alternative decoder for .rar files or .exe files.
-	optdepends = lzop:Decoder for .lzo files.
-	optdepends = tnef:Decoder for .tnef files.
-	optdepends = pax:ALternative decoder for .tar files or .cpio files.
-	optdepends = cpio:Alternative decoder for .tar files or .cpio files.
-	optdepends = gcpio:Alternative decoder for .tar files or .cpio files.
-	optdepends = rpm2cpio:Decoder for .rpm files.
-	optdepends = cabextract:Decoder for .cab files.
-	optdepends = perl-dbi:Needed if using SQL lookups or SQL logging/quarantining.
-	optdepends = perl-ldap:Needed if using LDAP lookups.
-	optdepends = perl-authen-sasl:Authenticating on mail forwarding and on submitting DSN.
 	backup = etc/amavisd/amavisd.conf
 	backup = etc/amavisd/amavisd-custom.conf
-	source = http://www.ijs.si/software/amavisd/amavisd-new-2.6.4.tar.gz
-	source = amavisd
-	source = amavisd.conf
-	md5sums = 03d31657f14cd64c1cb38786214234b4
-	md5sums = 3ec6da7f0a659d1a017bd73b0c7c3aa3
-	md5sums = 756fe29fece79d135850e1cd8c6660a5
+	source = http://www.ijs.si/software/amavisd/amavisd-new-2.8.0.tar.gz
+	source = service
+	source = tmpfiles
+	md5sums = 9851ce19f0c8fcab36f254c4e0251618
+	md5sums = baafa4228ca32922fb119ad161b63e63
+	md5sums = e15d38c8a48244c9d0b451243c1b7201
 
 pkgname = amavisd-new
 
