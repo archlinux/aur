@@ -1,17 +1,8 @@
-post_install()
-{
+post_install() {
     echo -n "module test... "
-
     perl -mConvert::UUlib -e "exit 0;" 2> /dev/null && echo 'pass.' || echo 'fail.'
 }
 
-post_upgrade()
-{
+post_upgrade() {
     post_install
 }
-
-op=$1
-
-shift
-
-$op $*

@@ -1,9 +1,9 @@
 pkgbase = perl-convert-uulib
 	pkgdesc = Perl interface to the uulib library (a.k.a. uudeview/uuenview).
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~mlehmann/Convert-UUlib/
-	install = perl-convert-uulib.install
+	install = install
 	arch = i686
 	arch = x86_64
 	license = GPL

@@ -8,27 +8,32 @@
 
 pkgname='perl-convert-uulib'
 pkgver='1.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Perl interface to the uulib library (a.k.a. uudeview/uuenview).'
 url='http://search.cpan.org/~mlehmann/Convert-UUlib/'
 arch=('i686' 'x86_64')
 license=('GPL' 'Artistic')
 depends=('perl>=5.8.4')
 options=(!emptydirs)
-install="${pkgname}.install"
+install="install"
 source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-${pkgver}.tar.gz")
+md5sums=('a6486df1d9ce319406fb9d5a610da759')
 
 build(){
     cd "${srcdir}/Convert-UUlib-${pkgver}"
 
+	 unset CPPFLAGS
+
     # install module in vendor directories.
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
-    make || return 1
-    make install DESTDIR=${pkgdir} || return 1
+    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+    make
+}
+package() {
+    cd "${srcdir}/Convert-UUlib-${pkgver}"
+
+    make install DESTDIR=${pkgdir}
 
     # remove perllocal.pod and .packlist
     find ${pkgdir} -name perllocal.pod -delete
     find ${pkgdir} -name .packlist -delete
 }
-
-md5sums=('a6486df1d9ce319406fb9d5a610da759')
