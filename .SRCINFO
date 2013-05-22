@@ -1,7 +1,7 @@
 pkgbase = amavisd-new
 	pkgdesc = High-performance interface between mailer (MTA) and content checkers
 	pkgver = 2.8.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.ijs.si/software/amavisd/
 	install = install
 	arch = any
@@ -23,6 +23,13 @@ pkgbase = amavisd-new
 	depends = perl-unix-syslog
 	depends = perl-mail-dkim>=0.31
 	depends = perl-berkeleydb>=0.42
+	depends = bzip2
+	depends = gzip
+	optdepends = arc: Decoder for: .arc
+	optdepends = arj: Decoder for: .arj .exe
+	optdepends = p7zip: Decoder for: .7z
+	optdepends = unrar: Decoder for: .rar
+	optdepends = rpmextract: Decoder for: .rpm
 	backup = etc/amavisd/amavisd.conf
 	backup = etc/amavisd/amavisd-custom.conf
 	source = http://www.ijs.si/software/amavisd/amavisd-new-2.8.0.tar.gz

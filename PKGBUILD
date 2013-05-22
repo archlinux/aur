@@ -1,6 +1,6 @@
 pkgname=amavisd-new
 pkgver=2.8.0
-pkgrel=7
+pkgrel=8
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -23,6 +23,15 @@ depends=(
     'perl-unix-syslog'
     'perl-mail-dkim>=0.31'
     'perl-berkeleydb>=0.42'
+	 'bzip2'
+	 'gzip'
+)
+optdepends=(
+	 'arc:        Decoder for: .arc'
+	 'arj:        Decoder for: .arj .exe'
+	 'p7zip:      Decoder for: .7z'
+	 'unrar:      Decoder for: .rar'
+	 'rpmextract: Decoder for: .rpm'
 )
 backup=('etc/amavisd/amavisd.conf' 'etc/amavisd/amavisd-custom.conf')
 source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.gz"
