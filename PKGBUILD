@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
 license=('custom')
 depends=('wireless-regdb' 'libnl' 'libgcrypt' 'systemd-tools' 'iw')
-makedepends=('python-m2crypto')
+makedepends=('python2-m2crypto')
 install=crda.install
 source=(http://wireless.kernel.org/download/crda/${pkgname}-${pkgver}.tar.bz2
         set-wireless-regdom)
