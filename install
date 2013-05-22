@@ -1,6 +1,6 @@
 post_install() {
 	 getent group amavis >/dev/null || groupadd -g 333 amavis >/dev/null
-	 getent passwd amavis >/dev/null || useradd -u 333 -M -d /run/amavis/home -g amavis -s /bin/false amavis >/dev/null
+	 getent passwd amavis >/dev/null || useradd -u 333 -M -d /var/spool/amavis -g amavis -s /bin/false amavis >/dev/null
 }
 
 post_upgrade() {
@@ -19,5 +19,6 @@ EOF
 post_remove() {
 	 groupdel amavis &>/dev/null
 	 userdel amavis &>/dev/null
+	 [ -d /var/spool/amavis ] && echo "You still need to clean up /var/spool/amavis"
 	 :
 }

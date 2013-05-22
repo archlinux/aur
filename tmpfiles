@@ -1,6 +1,1 @@
 d /run/amavis            0750 amavis amavis
-d /run/amavis/home       0750 amavis amavis
-d /run/amavis/home/db    0750 amavis amavis
-d /run/amavis/home/tmp   0750 amavis amavis
-d /run/amavis/home/var   0750 amavis amavis
-d /run/amavis/home/virus 0750 amavis amavis

@@ -1,6 +1,6 @@
 pkgname=amavisd-new
 pkgver=2.8.0
-pkgrel=3
+pkgrel=7
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -30,7 +30,7 @@ source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.gz"
         "tmpfiles")
 md5sums=('9851ce19f0c8fcab36f254c4e0251618'
          '3d0c094230621dfa04922afb482e638c'
-         '32e07590b8ffb727d91956734a3cf048')
+         '7114b97b5b2b0d8f98a0a3039e2ef8fe')
 install=install
 
 prepare() {
@@ -39,7 +39,7 @@ prepare() {
         -e "s/# @bypass_spam_checks_maps  = (1)/@bypass_spam_checks_maps = (1)/g" \
         -e "s/\\\$daemon_user  = 'vscan'/\\\$daemon_user  = 'amavis'/g" \
         -e "s/\\\$daemon_group = 'vscan'/\\\$daemon_group = 'amavis'/g" \
-        -e "sX# \\\$MYHOME = '/var/amavis'X\\\$MYHOME = '/run/amavis/home'Xg" \
+        -e "sX# \\\$MYHOME = '/var/amavis'X\\\$MYHOME = '/var/spool/amavis'Xg" \
         -e "sX\\\$QUARANTINEDIR = '/var/virusmails'X\\\$QUARANTINEDIR = '\\\$MYHOME/virus'Xg" \
         -e "sX# \\\$pid_file  = \"\\\$MYHOME/var/amavisd.pid\"X\\\$pid_file = \"/run/amavis/pid\"Xg" \
         -e "sX# \\\$lock_file = \"\\\$MYHOME/var/amavisd.lock\"X\\\$lock_file = \"/run/amavis/lock\"Xg" \
@@ -77,6 +77,7 @@ package() {
     install -D -m755 amavisd-new-qmqpqq.patch  ${pkgdir}/usr/share/doc/amavisd-new/amavisd-new-qmqpqq.patch
     install -D -m755 amavisd-new-courier.patch ${pkgdir}/usr/share/doc/amavisd-new/amavisd-new-courier.patch
 
-    find "README_FILES"  -type f -exec install -D -m644 {,${pkgdir}/usr/share/doc/amavisd-new/}{} \;
+	 install -D -m750 -o 333 -g 333 -d          ${pkgdir}/var/spool/amavis/{,db,tmp,var,virus}
+
     find "test-messages" -type f -exec install -D -m644 {,${pkgdir}/usr/share/doc/amavisd-new/}{} \;
 }
