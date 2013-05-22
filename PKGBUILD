@@ -58,32 +58,13 @@ prepare() {
 
 package() {
     cd ${srcdir}/amavisd-new-${pkgver}
-
     install -D -m755 ${srcdir}/service         ${pkgdir}/usr/lib/systemd/system/amavisd.service
     install -D -m755 ${srcdir}/tmpfiles        ${pkgdir}/usr/lib/tmpfiles.d/amavisd.conf
-
-    install -D -m644 amavisd.conf              ${pkgdir}/etc/amavisd/amavisd.conf
-    install -D -m644 amavisd-custom.conf       ${pkgdir}/etc/amavisd/amavisd-custom.conf
-    install -D -m644 amavisd.conf-default      ${pkgdir}/etc/amavisd/amavisd.conf-default
-
-    install -D -m755 amavisd                   ${pkgdir}/usr/bin/amavisd
-    install -D -m755 amavisd-agent             ${pkgdir}/usr/bin/amavisd-agent
-    install -D -m755 amavisd-nanny             ${pkgdir}/usr/bin/amavisd-nanny
-    install -D -m755 amavisd-release           ${pkgdir}/usr/bin/amavisd-release
-    install -D -m755 amavisd-signer            ${pkgdir}/usr/bin/amavisd-signer
-    install -D -m755 amavisd-snmp-subagent     ${pkgdir}/usr/bin/amavisd-snmp-subagent
-    install -D -m755 amavisd-snmp-subagent-zmq ${pkgdir}/usr/bin/amavisd-snmp-subagent-zmq
-    install -D -m755 p0f-analyzer.pl           ${pkgdir}/usr/bin/p0f-analyzer.pl
-
     install -D -m755 JpegTester.pm             ${pkgdir}/usr/share/perl5/vendor_perl/JpegTester.pm
-
     install -D -m755 LDAP.ldif                 ${pkgdir}/etc/openldap/schema/amavisd-new.ldif
     install -D -m755 LDAP.schema               ${pkgdir}/etc/openldap/schema/amavisd-new.schema
-
-    install -D -m755 amavisd-new-qmqpqq.patch  ${pkgdir}/usr/share/doc/amavisd-new/amavisd-new-qmqpqq.patch
-    install -D -m755 amavisd-new-courier.patch ${pkgdir}/usr/share/doc/amavisd-new/amavisd-new-courier.patch
-
 	 install -D -m750 -o 333 -g 333 -d          ${pkgdir}/var/spool/amavis/{,db,tmp,var,virus}
-
-    find "test-messages" -type f -exec install -D -m644 {,${pkgdir}/usr/share/doc/amavisd-new/}{} \;
+    install -D -m644 -t ${pkgdir}/etc/amavisd             amavisd{.conf,-custom.conf,.conf-default}
+    install -D -m755 -t ${pkgdir}/usr/share/doc/amavis    amavisd-new-{qmqpqq,courier}.patch
+    install -D -m755 -t ${pkgdir}/usr/bin p0f-analyzer.pl amavisd{,-{agent,nanny,release,signer,snmp-subagent{,-zmq}}}
 }
