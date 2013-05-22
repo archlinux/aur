@@ -12,7 +12,7 @@ depends=(
     'perl-compress-zlib>=1.35'
     'perl-compress-raw-zlib>=2.0.17'
     'perl-convert-tnef'
-    'perl-convert-uulib>=1.08'
+    'perl-convert-uulib>=1.4'
     'perl-mime-base64'
     'perl-mime-tools'
     'perl-mailtools>=1.58'
