@@ -5,16 +5,12 @@ post_install() {
 
 post_upgrade() {
 	 [ "$(vercmp $2 2.6.4-4)" -lt 0 ] && cat <<EOF
-<<<
-<<< The anti-spam and anti-virus features has been disabled by default,you
-<<< need to mannully enable them by comment the follow lines in /etc/amavisd.conf
-<<<
-<<< #   @bypass_virus_checks_maps = (1);  # controls running of anti-virus code
-<<< #   @bypass_spam_checks_maps = (1);  # controls running of anti-spam code
-<<<
+<<< To use virus or spam filters, comment these lines in /etc/amavisd/amavisd.conf:
+<<<     @bypass_virus_checks_maps = (1);
+<<<     @bypass_spam_checks_maps = (1);
 EOF
 	 [ "$(vercmp $2 2.8.0-1)" -lt 0 ] && cat <<EOF
-<<< Homedir, pid & lock files are now in volatile storage at: /run/amavis
+<<< Homedir, pid & lock files are now in /run/amavis
 <<< You must update /etc/amavisd/amavisd.conf to prevent breakage!
 EOF
     post_install
