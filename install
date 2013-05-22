@@ -1,19 +1,28 @@
-post_install() {
+users_and_groups() {
 	 getent group amavis >/dev/null || groupadd -g 333 amavis >/dev/null
 	 getent passwd amavis >/dev/null || useradd -u 333 -M -d /var/spool/amavis -g amavis -s /bin/false amavis >/dev/null
 }
+filters_howto() {
+	 cat <<EOF
+ To use virus or spam filters, comment these lines in /etc/amavisd/amavisd.conf:
+     @bypass_virus_checks_maps = (1);
+     @bypass_spam_checks_maps = (1);
+EOF
+}
+post_install() {
+	 users_and_groups
+	 filters_howto
+}
 
 post_upgrade() {
-	 [ "$(vercmp $2 2.6.4-4)" -lt 0 ] && cat <<EOF
-<<< To use virus or spam filters, comment these lines in /etc/amavisd/amavisd.conf:
-<<<     @bypass_virus_checks_maps = (1);
-<<<     @bypass_spam_checks_maps = (1);
-EOF
+    users_and_groups
 	 [ "$(vercmp $2 2.8.0-1)" -lt 0 ] && cat <<EOF
-<<< Homedir, pid & lock files are now in /run/amavis
-<<< You must update /etc/amavisd/amavisd.conf to prevent breakage!
+ Things have moved again. Amavis now uses these directories:
+    /var/spool/amavis <-- homedir, database, quarantine, etc
+    /run/amavis       <-- pid, lock, socket
+ You must update /etc/amavisd/amavisd.conf to prevent breakage!
 EOF
-    post_install
+	 [ "$(vercmp $2 2.6.4-4)" -lt 0 ] && filters_howto
 }
 
 post_remove() {
