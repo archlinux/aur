@@ -43,7 +43,7 @@ prepare() {
         -e "sX\\\$QUARANTINEDIR = '/var/virusmails'X\\\$QUARANTINEDIR = '\\\$MYHOME/virus'Xg" \
         -e "sX# \\\$pid_file  = \"\\\$MYHOME/var/amavisd.pid\"X\\\$pid_file = \"/run/amavis/pid\"Xg" \
         -e "sX# \\\$lock_file = \"\\\$MYHOME/var/amavisd.lock\"X\\\$lock_file = \"/run/amavis/lock\"Xg" \
-        -e "sX\\\$unix_socketname = \"\\\$MYHOME/amavisd.sock\"X\\\$unix_socketname = \"/run/amavis/amavisd.sock\"Xg" \
+        -e "sX\\\$unix_socketname = \"\\\$MYHOME/amavisd.sock\"X\\\$unix_socketname = \"/run/amavis/sock\"Xg" \
         ${srcdir}/amavisd-new-${pkgver}/amavisd.conf
 }
 
@@ -68,12 +68,9 @@ package() {
 
     install -D -m755 JpegTester.pm             ${pkgdir}/usr/share/perl5/vendor_perl/JpegTester.pm
 
-    install -D -m755 TODO                      ${pkgdir}/usr/share/doc/amavisd-new/TODO
-    install -D -m755 LICENSE                   ${pkgdir}/usr/share/doc/amavisd-new/LICENSE
-    install -D -m755 LDAP.ldif                 ${pkgdir}/usr/share/doc/amavisd-new/LDAP.ldif
-    install -D -m755 LDAP.schema               ${pkgdir}/usr/share/doc/amavisd-new/LDAP.schema
-    install -D -m755 RELEASE_NOTES             ${pkgdir}/usr/share/doc/amavisd-new/RELEASE_NOTES
-    install -D -m755 AAAREADME.first           ${pkgdir}/usr/share/doc/amavisd-new/README.first
+    install -D -m755 LDAP.ldif                 ${pkgdir}/etc/openldap/schema/amavisd-new.ldif
+    install -D -m755 LDAP.schema               ${pkgdir}/etc/openldap/schema/amavisd-new.schema
+
     install -D -m755 amavisd-new-qmqpqq.patch  ${pkgdir}/usr/share/doc/amavisd-new/amavisd-new-qmqpqq.patch
     install -D -m755 amavisd-new-courier.patch ${pkgdir}/usr/share/doc/amavisd-new/amavisd-new-courier.patch
 
