@@ -1,27 +1,31 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=d-feet
-pkgver=0.1.15
-pkgrel=2
+pkgver=0.3.4
+pkgrel=1
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://live.gnome.org/DFeet"
 license=('GPL')
-depends=('python2-dbus' 'pygtk' 'hicolor-icon-theme' 'xdg-utils')
-makedepends=('python2-distribute')
-optdepends=('python2-wnck: get icons for applications')
-install=$pkgname.install
+depends=('gtk3' 'python-gobject' 'hicolor-icon-theme')
+makedepends=('python-distribute' 'intltool' 'itstool' 'pep8-python3')
+install=d-feet.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('1250d353ded2c2635fb97d26a7fb9e68aba0f851a7f2d5608de651fa14f8eb0a')
+sha256sums=('25ce601264a95c2bfdd62d709c3498fe7e74e31770cec387c61ff5e9a8727da3')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  make
+}
 
-  python2 setup.py build
+check() {
+  cd $pkgname-$pkgver
+  # Needs X
+  #make check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  python2 setup.py install --root=$pkgdir/ --optimize=1
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }

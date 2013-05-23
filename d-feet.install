@@ -1,5 +1,6 @@
 post_install() {
-  xdg-icon-resource forceupdate
+  glib-compile-schemas usr/share/glib-2.0/schemas
+  gtk-update-icon-cache -f -q usr/share/icons/hicolor
 }
 
 post_upgrade() {
