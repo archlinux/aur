@@ -24,5 +24,5 @@ package(){
 	mkdir -p ${pkgdir}/usr/share/coverlovin ${pkgdir}/usr/bin
 	install -Dm755 *.py ${pkgdir}/usr/share/${pkgname}/
 	mkdir -p ${pkgdir}/usr/bin
-	ln -s "${pkgdir}/usr/share/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/coverlovin"
+	ln -s "../../usr/share/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/coverlovin"
 }
