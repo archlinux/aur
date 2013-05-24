@@ -1,17 +1,17 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=clutter-gst
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="GStreamer bindings for clutter"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://www.clutter-project.org/"
-license=('LGPL')
-depends=('clutter' 'gst-plugins-base-libs' 'libxdamage')
-makedepends=('gobject-introspection')
+license=(LGPL)
+depends=(clutter gst-plugins-base-libs libxdamage gst-plugins-bad)
+makedepends=(gobject-introspection)
 options=('!libtool')
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('577957598d6ee407348dc5d78879da2b212ae54fb3071f86f8409e393dde34c4')
+sha256sums=('bad69cca7dd9c0d54d4f9fc27cba59dd8d8b329db058844716dbdecec6caba97')
 
 build() {
   cd $pkgname-$pkgver
@@ -19,6 +19,11 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc
   make
+}
+
+check() {
+  cd $pkgname-$pkgver
+  make check
 }
 
 package() {
