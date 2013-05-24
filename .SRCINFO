@@ -1,6 +1,6 @@
 pkgbase = mlpack
 	pkgdesc = a scalable c++ machine learning library
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = http://www.mlpack.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = mlpack
 	depends = boost
 	depends = lapack
 	depends = libxml2
-	source = http://www.mlpack.org/files/mlpack-1.0.4.tar.gz
-	md5sums = a1f1a5a6f99dd7e4333341d62171c316
+	source = http://www.mlpack.org/files/mlpack-1.0.5.tar.gz
+	md5sums = f3ae9ed8c85983aa3a5cf8878ec4a5d2
 
 pkgname = mlpack
 
