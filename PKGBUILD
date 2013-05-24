@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=27.0.1453.93
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -24,12 +24,14 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.default
         chromium.sh
         chromium-pnacl-r0.patch
+        chromium-27.0.1453.93-fix-crash-when-quickly-dragging-a-new-tab.patch
         chromium-26.0.1410.43-speechd-0.8.patch)
 sha256sums=('6dd8c01a4d72acc512652332d67e92ff9bcb3533b621f2b281c30f00ce26ad40'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
             '9875ffcc0e9ae9420876ac66b130b1b017d445a031d43cbe0119793e1fb3781c'
+            'd530f52cb485ff8da035b38ffebe171309a1d8e515040f5e6398ecb286336797'
             '23b04468881642ffdc8457016c8f91df395dfccb4af2ad6b758168180ae070f3')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -45,6 +47,10 @@ prepare() {
 
   # Fix build without pnacl (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-pnacl-r0.patch"
+
+  # Fix crash when quickly dragging a new tab
+  # https://code.google.com/p/chromium/issues/detail?id=228918
+  patch -Np1 -i "$srcdir/chromium-27.0.1453.93-fix-crash-when-quickly-dragging-a-new-tab.patch"
 
   # Fix header location for speech-dispatcher 0.8 (patch from PLD Linux)
   patch -Np2 -i "$srcdir/chromium-26.0.1410.43-speechd-0.8.patch"
