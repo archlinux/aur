@@ -1,0 +1,16 @@
+pkgbase = coverlovin
+	pkgdesc = CLI recursive directory album art downloader written in Python
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://launchpad.net/coverlovin
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-simplejson
+	provides = coverlovin
+	replaces = coverlovin
+	source = https://launchpad.net/coverlovin/trunk/2.0/+download/CoverLovin-2.0.tar.gz
+	md5sums = 0d02649097e05fde2da4a157c65e8720
+
+pkgname = coverlovin
+
