@@ -3,7 +3,7 @@
 pkgname=orocos-rtt-omniorb
 _pkgname=orocos-toolchain
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Real-Time Toolkit)"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
@@ -13,15 +13,22 @@ depends=('boost-libs' 'omniorb')
 makedepends=('cmake')
 provides=('orocos-rtt')
 conflicts=('orocos-rtt')
-source=(http://people.mech.kuleuven.be/~orocos/pub/stable/toolchain/v${pkgver}/${_pkgname}-${pkgver}-src.tar.bz2)
-md5sums=('ac68f90da0d7c4595e5d78687d68ab2f')
-sha256sums=('d98adaf4975ffef6b79b7d31f16c488014e347afbc5549910f209db4a9f469fd')
-sha384sums=('6fc673dd6a5f034b21f87b2171f6303077a5759cdcc7c9dd745e44b1a51a7a5a4028455c6588b24556d2d3907dd5b372')
-sha512sums=('7d30ac8bb751c489302cb15c8a613345aabb2023c935c04f371bb35b52faabd9563e20da384fbe409a7f4533c133eea983484800680d22737be95b37653a6be9')
+source=(http://people.mech.kuleuven.be/~orocos/pub/stable/toolchain/v${pkgver}/${_pkgname}-${pkgver}-src.tar.bz2
+        boost.diff)
+md5sums=('ac68f90da0d7c4595e5d78687d68ab2f'
+         'e4fa9508a90d20a5437ceed5ec8b72ff')
+sha256sums=('d98adaf4975ffef6b79b7d31f16c488014e347afbc5549910f209db4a9f469fd'
+            '6f242c19983e556505206cda3406060c3d93652d21d8fabf537dbcbd2d7e7b0b')
+sha384sums=('6fc673dd6a5f034b21f87b2171f6303077a5759cdcc7c9dd745e44b1a51a7a5a4028455c6588b24556d2d3907dd5b372'
+            'aa629cf52c075f6a84c1ca33c7b75cb947d65ac6254e85173bc74a7a44c18743a6780d181b3a6b79aa823d2215177e63')
+sha512sums=('7d30ac8bb751c489302cb15c8a613345aabb2023c935c04f371bb35b52faabd9563e20da384fbe409a7f4533c133eea983484800680d22737be95b37653a6be9'
+            '31b88512783b07218cbda58a292f98fae190610ea4e8cc03472d4c81656b299015ecc2c256ecd70b70617046f2aad17bf5a5fcb3072f608840453592eda29410')
 
 build() {
   # build rtt
   cd "${srcdir}/${_pkgname}-${pkgver}/rtt"
+
+  patch -p1 < "${srcdir}/boost.diff"
 
   # update the cmake configuration file so that it finds the RTT
   sed 's/set(OROCOS-RTT_FOUND ${OROCOS-RTT_IMPORT_FILE})/set(OROCOS-RTT_FOUND TRUE)/g' -i orocos-rtt-config.cmake

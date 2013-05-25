@@ -1,0 +1,20 @@
+--- a/rtt/Service.hpp
++++ b/rtt/Service.hpp
+@@ -58,7 +58,7 @@
+ #include <boost/type_traits/function_traits.hpp>
+ #include <boost/function_types/components.hpp>
+ #include <boost/enable_shared_from_this.hpp>
+-#if BOOST_VERSION >= 104000
++#if BOOST_VERSION >= 104000 && BOOST_VERSION <= 105030
+ #include <boost/smart_ptr/enable_shared_from_this2.hpp>
+ #endif
+ 
+@@ -82,7 +82,7 @@
+         : public OperationInterface,
+           public ConfigurationInterface,
+           public DataFlowInterface,
+-#if BOOST_VERSION >= 104000
++#if BOOST_VERSION >= 104000 && BOOST_VERSION <= 105030
+           public boost::enable_shared_from_this2<Service>
+ #else
+           public boost::enable_shared_from_this<Service>
