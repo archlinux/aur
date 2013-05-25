@@ -3,7 +3,7 @@
 pkgname=orocos-rtt
 _pkgname=orocos-toolchain
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Real-Time Toolkit)"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
