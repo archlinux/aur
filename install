@@ -1,0 +1,6 @@
+post_install() {
+  echo "Enable the encrypt, shutdown, and suspend hooks in /etc/mkinitcpio.conf"
+  echo "and run mkinitcpio -p linux."
+}
+
+# vim:set ts=2 sw=2 et:
