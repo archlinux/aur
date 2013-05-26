@@ -1,0 +1,18 @@
+pkgbase = ruby-autoproj
+	pkgdesc = Allows to easily install and maintain software that is under source code form (usually from a version control system).
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://rock-robotics.org/stable/documentation/autoproj/
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-autobuild
+	depends = ruby-highline
+	depends = ruby-utilrb
+	noextract = autoproj-1.9.2.gem
+	source = http://gems.rubyforge.org/gems/autoproj-1.9.2.gem
+	md5sums = aac2c804bc78dc9bdb74ebc0978494c1
+
+pkgname = ruby-autoproj
+
