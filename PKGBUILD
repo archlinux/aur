@@ -29,9 +29,9 @@ _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# e1bd8696bb9a73532de25013dc81bef1  /lib/modules/3.9.3-1-ARCH/modules.symbols
+# 3257a59402459dcc9e6f6ddd0144c385  /lib/modules/3.9.4-1-ARCH/modules.symbols
 # i686
-# dd583fcb2b6ca032a1542330b8e146fd  /lib/modules/3.9.3-1-ARCH/modules.symbols
+# bc0b5eb05278fcfa92250373217eaca1  /lib/modules/3.9.3-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
