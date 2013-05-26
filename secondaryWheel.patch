@@ -29,7 +29,7 @@ index 4c93c4b..8b429a0 100644
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
 diff --git a/src/command.C b/src/command.C
-index 82ad10a..92f22da 100644
+index 82ad10a..9bc5e79 100644
 --- a/src/command.C
 +++ b/src/command.C
 @@ -2221,10 +2221,46 @@ rxvt_term::button_release (XButtonEvent &ev)
@@ -61,10 +61,10 @@ index 82ad10a..92f22da 100644
 +                       for (i = 0; i < 3; ++i)
 +                         {
 +                            event.type = KeyPress;
-+                            XSendEvent (event.display, event.window, TRUE,
++                            XSendEvent (event.display, event.window, True,
 +                                        KeyPressMask, (XEvent *) &event);
 +                            event.type = KeyRelease;
-+                            XSendEvent (event.display, event.window, TRUE,
++                            XSendEvent (event.display, event.window, True,
 +                                        KeyPressMask, (XEvent *) &event);
 +                          }
 +                    }

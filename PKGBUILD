@@ -8,7 +8,7 @@
 _pkgname=rxvt-unicode
 pkgname=${_pkgname}-better-wheel-scrolling
 pkgver=9.18
-pkgrel=1
+pkgrel=2
 pkgdesc="An unicode enabled rxvt-clone terminal emulator (urxvt) w/ better wheel scrolling (VTE-like) (& no utmp/wtmp support)"
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -19,20 +19,28 @@ provides=('rxvt-unicode')
 conflicts=('rxvt-unicode')
 source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2 \
         ${_pkgname}.desktop
+        fix-doc.patch
         clear.patch secondaryWheel.patch)
 md5sums=('963ccc748fe5bca925e7b92c0404d68b'
          'af8e6ad4cd2d33c26f8df6a838685332'
+         '77d1079a047589b47cd536ea71dc2a9a'
          '5714991c5b1bf5f7d7769961e391a0db'
-         'a6011928fe8734591544f70083b995c7')
+         '3ac56e66095db241c0a5f223f3e9b677')
 sha1sums=('5d12639c4b17019357ee62c08916b826e5d03259'
           '9a31b46324c0be44fb97be0828e1ead2311b3f9f'
+          '2eb8b4c9099c48a47b3c9f30a62244ce514c9df2'
           '089e0263722412dd82008ae3e2b3eb335fc8116e'
-          '7b2de8c206babc4a8baea1f8c3a4219dcfa03750')
+          '7d980df213f9183e26626ebaca7f914d124e9c4b')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -p0 -i ../fix-doc.patch
+  patch -p1 -i ../clear.patch
+  patch -p1 -i ../secondaryWheel.patch
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 -i ../clear.patch
-  patch -p1 -i ../secondaryWheel.patch
   ./configure --prefix=/usr \
     --with-terminfo=/usr/share/terminfo \
     --enable-256-color \
