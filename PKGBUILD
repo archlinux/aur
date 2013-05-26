@@ -2,12 +2,12 @@
 # Contributor: Daenyth <Daenyth+Arch AT gmail DOT com>
 pkgname=perlconsole
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight perl REPL using Term::Readline"
 arch=(any)
 url="http://www.sukria.net/perlconsole.html"
 license=(GPL2)
-depends=(perl-term-readline perl-module-refresh perl-lexical-persistence)
+depends=(perl-term-readline perl-module-refresh perl-lexical-persistence perl-b-keywords)
 backup=()
 options=(!emptydirs)
 install=

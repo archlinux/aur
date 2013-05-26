@@ -1,13 +1,14 @@
 pkgbase = perlconsole
 	pkgdesc = A lightweight perl REPL using Term::Readline
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sukria.net/perlconsole.html
 	arch = any
 	license = GPL2
 	depends = perl-term-readline
 	depends = perl-module-refresh
 	depends = perl-lexical-persistence
+	depends = perl-b-keywords
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/SU/SUKRIA/perlconsole-0.4.tar.gz
 	md5sums = 4a31b5f720b3c05f1a5564ce78459f22
