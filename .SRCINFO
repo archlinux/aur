@@ -1,6 +1,6 @@
 pkgbase = arch-luks-suspend-git
 	pkgdesc = Lock encrypted root volume on suspend
-	pkgver = 20130525.g772d3d8
+	pkgver = 20130526.g67a5664
 	pkgrel = 1
 	url = https://github.com/vianney/arch-luks-suspend
 	install = install
