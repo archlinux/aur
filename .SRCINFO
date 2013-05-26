@@ -1,0 +1,17 @@
+pkgbase = ruby-autobuild
+	pkgdesc = Collection of classes to handle build systems (CMake, autotools, ...) and import mechanisms (tarballs, CVS, SVN, git, ...).
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = http://rock-robotics.org/stable/documentation/autoproj/
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-highline
+	depends = ruby-utilrb
+	noextract = autobuild-1.7.2.gem
+	source = http://gems.rubyforge.org/gems/autobuild-1.7.2.gem
+	md5sums = f990fd9034de97ac6f9dc3b32734b197
+
+pkgname = ruby-autobuild
+
