@@ -1,0 +1,16 @@
+pkgbase = ruby-utilrb
+	pkgdesc = Yet another Ruby toolkit, in the spirit of facets
+	pkgver = 1.6.6
+	pkgrel = 1
+	url = http://utilrb.rubyforge.org/utilrb/
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-facets
+	noextract = utilrb-1.6.6.gem
+	source = http://gems.rubyforge.org/gems/utilrb-1.6.6.gem
+	md5sums = a2295caedf8453c6a36d84c231e2682c
+
+pkgname = ruby-utilrb
+
