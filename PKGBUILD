@@ -1,21 +1,20 @@
-# Maintainer: Thomas Jost <schnouki+aur@schnouki.net>
+# Maintainer: Stefan Tatschner <stefan.tatschner@gmail.com>
 pkgname=git-extras
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, commit counting, repl, changelog population and more"
 arch=(any)
 url="http://github.com/visionmedia/git-extras"
 license=('custom:MIT')
 depends=('git' 'bash')
-source=(git-extras-${pkgver}.tar.gz::https://github.com/visionmedia/${pkgname}/tarball/${pkgver})
-md5sums=('f0bdcecbc4d403937d175b2ebeb6df53')
-sha256sums=('270e941af5a437c98e96dab0bd86e1dfa908a14dcd769536dadebe9584240b85')
+source="https://github.com/visionmedia/${pkgname}/archive/${pkgver}.tar.gz"
+md5sums=('3f05a8ea87afa6780eece3d34a690ee5')
+sha256sums=('80ef21860809167324828da90d9cafff4f49c79096c63e0d7d104d0e6db849ff')
 
 package() {
-  cd "$srcdir"/visionmedia-"$pkgname"-*
-
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
