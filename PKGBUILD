@@ -1,7 +1,7 @@
 # Maintainer: Joris Steyn <jorissteyn@gmail.com>
 
 pkgname=vim-gitgutter-git
-pkgver=103.935184b
+pkgver=104.ff031d0
 pkgrel=1
 pkgdesc="A Vim plugin which shows a git diff in the 'gutter'"
 arch=('any')
