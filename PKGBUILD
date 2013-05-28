@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -55,7 +55,8 @@ build() {
 	--with-init-script=systemd --with-audit \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
 	--without-netcf --with-interface \
-	--with-dnsmasq-path=/usr/bin/dnsmasq
+	--with-dnsmasq-path=/usr/bin/dnsmasq \
+	--with-iptables-path=/usr/bin/iptables
   make
 
   sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
