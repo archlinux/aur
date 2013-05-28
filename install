@@ -1,6 +1,10 @@
 post_install() {
-  echo "Enable the encrypt, shutdown, and suspend hooks in /etc/mkinitcpio.conf"
-  echo "and run mkinitcpio -p linux."
+  echo "Enable the udev, encrypt, shutdown, and suspend hooks"
+  echo "in /etc/mkinitcpio.conf and run 'mkinitcpio -p linux'."
+}
+
+post_upgrade() {
+  echo "Run 'mkinitcpio -p linux' to update the initramfs."
 }
 
 # vim:set ts=2 sw=2 et:
