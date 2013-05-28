@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 182353 2013-04-08 21:34:41Z giovanni $
+# $Id: PKGBUILD 186492 2013-05-27 19:38:42Z giovanni $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
@@ -14,14 +14,13 @@ license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy' 
          'sdl_image' 'libdvdnav' 'libtiger' 'lua51' 'libmatroska' 
          'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 
-         'libshout' 'libmad' 'libmpeg2' 'libmodplug' 'libass' 
-         'xcb-util-keysyms')
+         'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
-             'fluidsynth' 'libdc1394' 'libavc1394' 'lirc-utils'
-             'libcaca' 'librsvg' 'portaudio' 'oss' 'libgme' 'xosd'
-             'projectm' 'twolame' 'aalib' 'libmtp' 'libdvdcss'
-             'gnome-vfs' 'libgoom2' 'libtar' 'vcdimager' 'opus' 'libssh2'
-             'mesa' 'decklink-sdk')
+             'libdc1394' 'libavc1394' 'lirc-utils' 'libcaca' 'oss' 
+             'librsvg' 'portaudio' 'oss' 'libgme' 'xosd' 'projectm' 
+             'twolame' 'aalib' 'libmtp' 'libdvdcss' 'gnome-vfs' 
+             'libgoom2' 'libtar' 'vcdimager' 'opus' 'libssh2' 'mesa'
+             'decklink-sdk')
 optdepends=('avahi: for service discovery using bonjour protocol'
             'libnotify: for notification plugin'
             'ncurses: for ncurses interface support'
@@ -47,7 +46,6 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'xosd: for xosd support'
             'aalib: for ASCII art plugin'
             'libmtp: for MTP devices support'
-            'fluidsynth: for synthesizer MIDI FluidSynth'
             'smbclient: for SMB access plugin'
             'libcdio: for audio CD playback support'
             'ttf-freefont: for subtitle font '
@@ -63,7 +61,7 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!libtool' '!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('b45be633c71dca04ca7d6c3d64dd728b')
+md5sums=('3b0e465b0990097b65abaf3e25589957')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
