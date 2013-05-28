@@ -4,7 +4,7 @@
 
 pkgname=incron
 pkgver=0.5.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('i686' 'x86_64')
 url="http://incron.aiken.cz/"
@@ -15,13 +15,18 @@ options=('emptydirs')
 source=("http://inotify.aiken.cz/download/incron/$pkgname-$pkgver.tar.gz"
 	'incrond.service')
 md5sums=('67f8b671db8169edccc8ef11c7d2c8be'
-         '859a90af9e4efe40db381ea07167a66a')
+         '4be206ba6ecacd9d2006cdc72b4604db')
 
-build() {
+prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
   sed -i '1,1i#include <unistd.h>' inotify-cxx.cpp icd-main.cpp
   sed -i '1,1i#include <stdio.h>' icd-main.cpp inotify-cxx.cpp usertable.cpp appargs.cpp
   sed -i 's|strchr(s,|(char*)strchr(s,|' incroncfg.cpp
+  sed -i 's|$(DESTDIR)$(PREFIX)/sbin/|$(DESTDIR)$(PREFIX)/bin/|g' Makefile
+}
+
+build() {
+  cd "${srcdir}"/$pkgname-$pkgver
   make
 }
 

@@ -4,7 +4,7 @@ Description=Inotify System Scheduler
 [Service]
 Type=forking
 PIDFile=/run/incrond.pid
-ExecStart=/usr/sbin/incrond
+ExecStart=/usr/bin/incrond
 
 [Install]
 WantedBy=multi-user.target
