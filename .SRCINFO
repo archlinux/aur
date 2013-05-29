@@ -8,6 +8,7 @@ pkgbase = coverlovin
 	depends = python2
 	depends = python2-simplejson
 	provides = coverlovin
+	conflicts = coverlovin-funk
 	replaces = coverlovin
 	source = https://launchpad.net/coverlovin/trunk/2.0/+download/CoverLovin-2.0.tar.gz
 	md5sums = 0d02649097e05fde2da4a157c65e8720

@@ -10,6 +10,7 @@ url="https://launchpad.net/coverlovin"
 license=('GPL3')
 depends=('python2' 'python2-simplejson')
 provides=('coverlovin')
+conflicts=('coverlovin-funk')
 replaces=('coverlovin')
 source=("https://launchpad.net/coverlovin/trunk/${pkgver}/+download/CoverLovin-${pkgver}.tar.gz")
 md5sums=('0d02649097e05fde2da4a157c65e8720')
