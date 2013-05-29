@@ -1,18 +1,20 @@
 pkgbase = perl-net-dbus-git
 	pkgdesc = Binding for DBus messaging protocol
 	pkgver = 20130423
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Net-DBus
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	makedepends = git
 	depends = dbus
 	depends = perl-xml-twig
-	provides = perl-net-dbus=1.0.0
+	provides = perl-net-dbus
 	conflicts = perl-net-dbus
-	replaces = perl-net-dbus=1.0.0
 	options = !emptydirs
+	source = git://gitorious.org/net-dbus/net-dbus.git
+	md5sums = SKIP
 
 pkgname = perl-net-dbus-git
 
