@@ -3,8 +3,8 @@
 
 pkgname=ewebkit-svn
 _pkgname=ewebkit
-pkgver=149647
-pkgrel=2
+pkgver=150885
+pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
@@ -56,11 +56,12 @@ build() {
   cmake . \
 	-DPORT=Efl \
 	-DPYTHON_EXECUTABLE=/usr/bin/python2 \
-	-DSHARED_CORE=OFF \
+	-DSHARED_CORE=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DENABLE_WEBKIT=ON \
-	-DENABLE_WEBKIT2=OFF
+	-DENABLE_WEBKIT2=ON \
+	-DENABLE_TOOLS=OFF
 
   make
 }
