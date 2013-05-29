@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.5
-pkgrel=6
+pkgrel=7
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -50,7 +50,7 @@ build() {
 
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
-  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" \
+  [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" --sbindir=/usr/bin \
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd --with-audit \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
@@ -60,7 +60,7 @@ build() {
   make
 
   sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
-  sed -i 's|@sbindir@|/usr/sbin|g' src/virtlockd.service
+  sed -i 's|@sbindir@|/usr/bin|g' src/virtlockd.service
   sed -i 's|#group =.*|group="kvm"|' src/qemu/qemu.conf
 }
 
