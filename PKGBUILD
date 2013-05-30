@@ -13,8 +13,6 @@ license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'cairo' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
-source=('uninitialized_pointer.patch')
-md5sums=('64f29e03a269cadeaca651f4f4746200')
 if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
   source+=("$_pkgname::svn+$_svnurl")
   md5sums+=("SKIP")
@@ -44,10 +42,6 @@ prepare() {
     rm -rf "$srcdir/$_pkgname"
     cp -a "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
   fi
-
-# Initialize pointer to avoid build error
-  cd $srcdir/$_pkgname
-  patch -Np0 < ../uninitialized_pointer.patch
 }
 
 build() {

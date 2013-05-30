@@ -26,8 +26,6 @@ pkgbase = ewebkit-svn
 	depends = libsoup
 	depends = libxslt
 	depends = libxt
-	source = uninitialized_pointer.patch
-	md5sums = 64f29e03a269cadeaca651f4f4746200
 
 pkgname = ewebkit-svn
 
