@@ -3,14 +3,14 @@
 
 pkgname=ewebkit-svn
 _pkgname=ewebkit
-pkgver=150885
+pkgver=150941
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 _svnurl="https://svn.webkit.org/repository/webkit/trunk"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'libtiff'
+depends=('atk' 'cairo' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 source=('uninitialized_pointer.patch')
