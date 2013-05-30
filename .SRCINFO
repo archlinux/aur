@@ -1,0 +1,14 @@
+pkgbase = exiflow
+	pkgdesc = Exiflow is a set of tools (command line and GUI) to provide a complete digital photo workflow for Unixes.
+	pkgver = 0.4.5
+	pkgrel = 3
+	url = http://exiflow.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = perl-exiftool
+	depends = pygtk
+	source = http://downloads.sourceforge.net/project/exiflow/exiflow/0.4.5/Exiflow-0.4.5.tar.gz
+	sha256sums = 36eeced2de5a726aef572c42e9b71aca2d957ea51c72b5e56720eec736b29320
+
+pkgname = exiflow
+
