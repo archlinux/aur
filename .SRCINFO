@@ -1,7 +1,7 @@
 pkgbase = ddclient
 	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services
 	pkgver = 3.8.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://ddclient.sourceforge.net
 	install = ddclient.install
 	arch = any
@@ -12,9 +12,11 @@ pkgbase = ddclient
 	source = http://downloads.sourceforge.net/sourceforge/ddclient/ddclient-3.8.1.tar.bz2
 	source = ddclient.service
 	source = iproute2.patch
+	source = usrbin.patch
 	md5sums = 7fa417bc65f8f0e6ce78418a4f631988
 	md5sums = fde631ff027c03179e9cdd483def324d
 	md5sums = e0c8a07e9b7a69e73cecd8626f16e8f0
+	md5sums = 65e294485a18b8d3f752a124913579f1
 
 pkgname = ddclient
 

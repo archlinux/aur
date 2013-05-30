@@ -1,0 +1,13 @@
+--- sample-etc_cron.d_ddclient.orig	2013-05-12 13:04:10.958327840 +0100
++++ sample-etc_cron.d_ddclient	2013-05-12 13:04:38.588178156 +0100
+@@ -10,8 +10,8 @@
+ ######################################################################
+ ## force an update twice a month (only if you are not using daemon-mode)
+ ##
+-## 30 23 1,15 * *	root    /usr/sbin/ddclient -daemon=0 -syslog -quiet -force
++## 30 23 1,15 * *	root    /usr/bin/ddclient -daemon=0 -syslog -quiet -force
+ ######################################################################
+ ## retry failed updates every hour (only if you are not using daemon-mode)
+ ##
+-## 0 * * * *	root    /usr/sbin/ddclient -daemon=0 -syslog -quiet retry
++## 0 * * * *	root    /usr/bin/ddclient -daemon=0 -syslog -quiet retry
