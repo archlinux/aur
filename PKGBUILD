@@ -4,7 +4,7 @@
 
 pkgname=clutter
 pkgver=1.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GObject based library for creating fast, visually rich graphical user interfaces"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
@@ -19,6 +19,10 @@ build() {
   cd "$pkgname-$pkgver"
   ./configure --prefix=/usr --enable-introspection \
     --enable-wayland-{backend,compositor} --enable-egl-backend --enable-evdev-input
+
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
