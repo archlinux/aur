@@ -1,7 +1,7 @@
 pkgbase = orocos-ocl
 	pkgdesc = Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Orocos Component Library)
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.orocos.org/rtt
 	arch = i686
 	arch = x86_64

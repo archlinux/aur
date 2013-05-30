@@ -3,7 +3,7 @@
 pkgname=orocos-ocl
 _pkgname=orocos-toolchain
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Orocos Component Library)"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
@@ -26,7 +26,7 @@ build() {
   # this is a bit hacky: finding the orocos version of log4cpp with cmake does
   # not work so we need to provide the complete information from here
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLOG4CPP_INCLUDE_DIRS=/usr/include/orocos \
+    -DLOG4CPP_INCLUDE_DIR=/usr/include/orocos \
     -DLOG4CPP_LIBRARIES=orocos-log4cpp \
     -DLOG4CPP_LIBRARY_DIRS=/usr/lib \
     -DLOG4CPP_LIBRARY=/usr/lib/liborocos-log4cpp.so \
