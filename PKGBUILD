@@ -4,7 +4,7 @@
 
 pkgname=incron
 pkgver=0.5.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('i686' 'x86_64')
 url="http://incron.aiken.cz/"
@@ -42,4 +42,5 @@ package() {
     SYSDATADIR="${pkgdir}"/etc/incron.d install
 
   install -Dm0644 "${srcdir}/incrond.service" "${pkgdir}/usr/lib/systemd/system/incrond.service"
+  rmdir $pkgdir/usr/sbin
 }
