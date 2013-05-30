@@ -20,7 +20,6 @@ pkgbase = ewebkit-svn
 	depends = efreet
 	depends = e_dbus
 	depends = enchant
-	depends = sqlite
 	depends = libtiff
 	depends = gst-plugins-base-libs
 	depends = libsoup
