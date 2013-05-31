@@ -5,7 +5,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 pkgname=gkrellm
 pkgver=2.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
 url="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html"
@@ -14,9 +14,8 @@ depends=('gtk2' 'libsm' 'lm_sensors')
 makedepends=('gettext')
 backup=('etc/gkrellmd.conf')
 source=("http://members.dslextreme.com/users/billw/$pkgname/$pkgname-$pkgver.tar.bz2"
-        "gkrellmd" "gkrellm.service")
+        "gkrellm.service")
 sha256sums=('702b5b0e9c040eb3af8e157453f38dd6f53e1dcd8b1272d20266cda3d4372c8b'
-            'c6d532dd7a706891aed92d750bceda74d4618e86ad82feadc0503214de904360'
             '2829931127632d0391f6749024809594b78c138fe4f03c98cd65fdbd47cea376')
 
 build() {
@@ -30,7 +29,6 @@ package() {
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 "server/gkrellmd.conf" "$pkgdir/etc/gkrellmd.conf"
-  install -Dm755 "../gkrellmd" "$pkgdir/etc/rc.d/gkrellmd"
   install -Dm644 "../gkrellm.service" "$pkgdir/usr/lib/systemd/system/gkrellm.service"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
