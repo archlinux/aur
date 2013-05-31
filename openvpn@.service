@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/openvpn --cd /etc/openvpn --config /etc/openvpn/%i.conf --daemon openvpn@%i
+ExecStart=/usr/bin/openvpn --cd /etc/openvpn --config /etc/openvpn/%i.conf --daemon openvpn@%i
 
 [Install]
 WantedBy=multi-user.target

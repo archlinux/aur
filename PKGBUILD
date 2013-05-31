@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
@@ -21,7 +21,7 @@ md5sums=('57a3b64597fc37b7842a3fde354d8bbe'
          'SKIP'
          'fbf818b6e1f212e77b9ce0e6d92584a1'
          'SKIP'
-         '0846aa59d0b123d61030890f9a4135ae'
+         '57ef7353ba2c28c04dfc387c3ca77a4f'
          'e1bd1523e38745e948c710db1a330bb1')
 options=(!libtool)
 
@@ -31,6 +31,7 @@ build() {
   # Build openvpn
   CFLAGS="$CFLAGS -DPLUGIN_LIBDIR=\\\"/usr/lib/openvpn\\\"" ./configure \
     --prefix=/usr \
+    --sbindir=/usr/bin \
     --enable-password-save \
     --mandir=/usr/share/man \
     --enable-iproute2 \
