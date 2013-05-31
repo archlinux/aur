@@ -15,7 +15,8 @@ makedepends=('git')
 optdepends=('gstreamer0.10-base-plugins: Video thumbnails'
             'gstreamer0.10-good-plugins: Video thumbnails'
             'gstreamer0.10-bad-plugins: Video thumbnails'
-            'gstreamer0.10-ugly-plugins: Video thumbnails')
+            'gstreamer0.10-ugly-plugins: Video thumbnails'
+            'gstreamer0.10-ffmpeg: Video thumbnails')
 provides=('evas_generic_loaders')
 conflicts=('evas_generic_loaders' 'evas_generic_loaders-svn')
 options=('!libtool')
