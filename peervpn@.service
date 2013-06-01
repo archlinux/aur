@@ -1,0 +1,19 @@
+# To create a new PeerVPN instance called <name>, create a new configuration file
+# /etc/peervpn/<name>.conf. You can use the provided example configuration file
+# peervpn.conf as a template.
+# 
+# After the configuration file is created, you can control the instance with
+# systemctl using systemd unit named peervpn@<name>.service.
+
+[Unit]
+Description=PeerVPN Node (%i)
+After=syslog.target network.target
+ConditionPathExists=/etc/peervpn/%i.conf
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/peervpn /etc/peervpn/%i.conf
+
+[Install]
+WantedBy=multi-user.target
+
