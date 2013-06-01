@@ -15,19 +15,24 @@ mingw-w64-glib2
 mingw-w64-cairo
 'mingw-w64-gdk-pixbuf2>=2.27.1')
 options=(!libtool !strip !buildflags)
+
 source=(
 "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-"http://pkgs.fedoraproject.org/cgit/mingw-gtk3.git/plain/gtk-dont-define-initguid.patch?id=82ccf489f4763e375805d848351ac3f8fda8e88b"
-"https://git.gnome.org/browse/gtk+/plain/demos/gtk-demo/brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1")
+"https://git.gnome.org/browse/gtk+/plain/demos/gtk-demo/brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1"
+"gtk-dont-define-initguid.patch")
+
+# The second source file is downloaded from GNOME. This file exists in the git repository but not in the tarball. Building of demos will fail without this file.
+# The third source file is downloaded from Fedora Project
+
 md5sums=('8e878e18fc385f2b813419dc7b40a968'
-        '4038939df90f80ea6923d67afff28e03'
-        '523aea0be651baaba128c133751a0f01')
+        '523aea0be651baaba128c133751a0f01'
+        '4038939df90f80ea6923d67afff28e03')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  patch -Np0 < '../gtk-dont-define-initguid.patch?id=82ccf489f4763e375805d848351ac3f8fda8e88b'
+  patch -Np0 < '../gtk-dont-define-initguid.patch'
   for _arch in ${_architectures}; do
     export CFLAGS="-O2 -mms-bitfields"
     export CXXFLAGS="${CFLAGS}"

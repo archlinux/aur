@@ -17,11 +17,11 @@ pkgbase = mingw-w64-gtk3
 	options = !strip
 	options = !buildflags
 	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.8/gtk+-3.8.2.tar.xz
-	source = http://pkgs.fedoraproject.org/cgit/mingw-gtk3.git/plain/gtk-dont-define-initguid.patch?id=82ccf489f4763e375805d848351ac3f8fda8e88b
 	source = https://git.gnome.org/browse/gtk+/plain/demos/gtk-demo/brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1
+	source = gtk-dont-define-initguid.patch
 	md5sums = 8e878e18fc385f2b813419dc7b40a968
-	md5sums = 4038939df90f80ea6923d67afff28e03
 	md5sums = 523aea0be651baaba128c133751a0f01
+	md5sums = 4038939df90f80ea6923d67afff28e03
 
 pkgname = mingw-w64-gtk3
 
