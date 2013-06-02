@@ -3,7 +3,7 @@
 
 pkgname=cheese
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
@@ -21,6 +21,10 @@ build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --disable-static --disable-schemas-compile
+
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
