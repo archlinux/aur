@@ -1,0 +1,17 @@
+pkgbase = netfabb-basic
+	pkgdesc = view and repair STL files
+	pkgver = 4.9.5
+	pkgrel = 0
+	url = http://www.netfabb.com/download.php
+	arch = i686
+	arch = x86_64
+	license = fix_namcap
+	depends = gtk2
+	depends = gcc-libs
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	source = http://www.netfabb.com/download/netfabb_linux.tar.gz
+	md5sums = SKIP
+
+pkgname = netfabb-basic
+
