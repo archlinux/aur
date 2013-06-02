@@ -23,7 +23,7 @@ https://raw.github.com/brianfreud/Picard-plugins/master/eq2.py
 https://raw.github.com/brianfreud/Picard-plugins/master/ne2.py
 https://raw.github.com/brianfreud/Picard-plugins/master/p.py
 )
-md5sums=('97c429234998c46d5ec1de0aa13eae8e'
+md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          '1219e450a0eb04d78a5fb1c36ddd45e5'
          '05c7dbe8f0ff5fc8e634da7db7f700c7'
          'deb3dcba323915f6e18de8904c7d3cd8'
