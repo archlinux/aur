@@ -7,13 +7,9 @@ pkgrel=0
 pkgdesc="view and repair STL files"
 arch=('i686' 'x86_64')
 url="http://www.netfabb.com/download.php"
-license=('fix_namcap')
-depends=('gtk2' 'gcc-libs' 'desktop-file-utils' 'hicolor-icon-theme')
-#optdepends=('')
-#provides=('slic3r')
-#conflicts=('slic3r')
-#Consider uncommenting line below in case of false negative test results ;)
-#BUILDENV+=('!check')
+license=('custom:freeware')
+depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
+install='netfabb-basic.install'
 source=('http://www.netfabb.com/download/netfabb_linux.tar.gz')
 md5sums=('SKIP')
 
@@ -24,18 +20,14 @@ fi
 
 prepare() {
   cd "$srcdir/$pkgname"
-  # sed /usr to $pkgdir/usr in install.sh, TODO: if echo then only after last > / if echo then only last match in line
-  sed -i "s#/usr#$pkgdir/usr#" install.sh
-  #sed "/echo/ s=>>/usr=>>$pkgdir/usr="
-  # remove uninstall.sh lines from install.sh
+  sed -i -E "/(echo)/!s#/usr#$pkgdir/usr#" install.sh
+  sed -i "/echo/ s#>/usr/bin/netfabb-basic#>$pkgdir/usr/bin/netfabb-basic#" install.sh
   sed -i '/uninstall/d' install.sh
-  # do sth with license/readme/changelog files?
-  bash -i || true
-  sleep 3
 }
 
 package () {
   cd "$srcdir/$pkgname"
   ./install.sh
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  cp "$pkgdir/usr/share/doc/$pkgname/copyright" "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
