@@ -9,7 +9,7 @@ _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 
 pkgver=Release_0_6_0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT Version"
 arch=('i686' 'x86_64')
 url="http://linux.dell.com/efibootmgr/"
@@ -20,8 +20,11 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 options=(strip purge docs zipman !emptydirs !libtool)
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
-sha1sums=('SKIP')
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'efibootmgr-tilt_slashes-func.patch')
+
+sha1sums=('SKIP'
+          'abe85252cdd9fcc3050fb1cb2c3652bbe8d67efa')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -34,6 +37,10 @@ build() {
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build/"
+	
+	## Apply tilt_slashes patch
+	patch -Np1 -i "${srcdir}/efibootmgr-tilt_slashes-func.patch" || true
+	echo
 	
 	make
 	echo
