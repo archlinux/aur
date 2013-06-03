@@ -13,20 +13,11 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
-        "digikam-3.1.0-fixed-pngs.tar.gz")
-noextract=("digikam-3.1.0-fixed-pngs.tar.gz")
-sha1sums=('666f1d937dc033ddb880aed8a32e7943113d973f'
-          'b0a1991e0df9b72c79562c719bc9d944a3b8bc78')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha1sums=('666f1d937dc033ddb880aed8a32e7943113d973f')
 
 prepare() {
   mkdir build
-
-  cd  ${pkgname}-${pkgver}
-
-  # Fix invalid PNG images to work with libpng 1.6
-  # https://bugs.kde.org/show_bug.cgi?id=319350
-  tar xf "${srcdir}/digikam-3.1.0-fixed-pngs.tar.gz" --strip-components=1
 }
 
 build() {
