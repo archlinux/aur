@@ -10,15 +10,14 @@ license=('GPL2')
 depends=('pacman>=4.1' 'pacman<4.2' 'python2>=2.7' 'python2-pyqt')
 install="$pkgname.install"
 source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz")
+md5sums=('8381c7f749408a8905c5b84f688c525a')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    make PREFIX='/usr' || return 1
+    make PREFIX='/usr'
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make PREFIX='/usr' DESTDIR="$pkgdir" install || return 1
+    make PREFIX='/usr' DESTDIR="$pkgdir" install
 }
-
-md5sums=('8381c7f749408a8905c5b84f688c525a')
