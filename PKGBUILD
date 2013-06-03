@@ -1,5 +1,6 @@
 pkgname=django-storages-hg
-pkgver=280
+_pkgname=django-storages
+pkgver=1.1.8.r296
 pkgrel=1
 pkgdesc="Collection of custom storage backends for Django"
 arch=('any')
@@ -7,23 +8,22 @@ url="http://code.larlet.fr/django-storages/"
 license=('BSD3')
 depends=('python2-django' 'python2-boto')
 makedepends=('mercurial')
+source=('hg+https://bitbucket.org/david/django-storages')
+md5sums=('SKIP')
 
-_hgroot="https://bitbucket.org/david/django-storages"
-_hgrepo="django-storages"
-_hgbranch="default"
+pkgver() {
+	 cd ${srcdir}/${_pkgname}
+	 _revno="$(hg identify -n)"
+	 _mainver="$(hg log -r "$_revno" --template '{latesttag}' | sed -E 's/v//;s/-/./g')"
+	 echo "${_mainver}.r${_revno}"
+}
 
 build() {
-	 hg --cwd ${_hgrepo} update -C || \
-		  hg clone -b ${_hgbranch} "${_hgroot}/${_hgrepo}" ${_hgrepo}
-	 cd ${_hgrepo}
-	 if (( $(hg id -n) < $(hg id -nr ${_hgbranch}) )); then
-		  printf 'You are not building the latest revision!\n'
-		  printf "Consider updating _hgrev to $(hg id -r ${_hgbranch}).\n"
-	 fi
+	 cd ${srcdir}/${_pkgname}
 	 python2 setup.py build
 }
 
 package() {
-	 cd ${_hgrepo}
+	 cd ${srcdir}/${_pkgname}
 	 python2 setup.py install --root="$pkgdir" --optimize=1
 }
