@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -12,7 +12,7 @@ depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus-core' 'libxau' 'libxdmcp' 'libpcap'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
 	 'iproute2' 'libnl' 'libx11' 'audit')
-makedepends=('pkgconfig' 'lvm2' 'linux-api-headers')
+makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq')
 optdepends=('bridge-utils: for briged networking (default)'
 	    'dnsmasq: for NAT/DHCP for guests'
 	    'kvm'
@@ -54,9 +54,7 @@ build() {
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd --with-audit \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
-	--without-netcf --with-interface \
-	--with-dnsmasq-path=/usr/bin/dnsmasq \
-	--with-iptables-path=/usr/bin/iptables
+	--without-netcf --with-interface
   make
 
   sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
