@@ -3,7 +3,7 @@
 
 pkgname=cmake
 pkgver=2.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -12,8 +12,15 @@ depends=('curl' 'libarchive' 'shared-mime-info')
 makedepends=('qt4' 'emacs')
 optdepends=('qt4: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('be6008f2299613d23fe82ab53ef7472e')
+source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
+        'imagemagick.patch')
+md5sums=('be6008f2299613d23fe82ab53ef7472e'
+         '19c4cf0e6e9c9a890f3698c9df8062f1')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch -p1 -i "${srcdir}"/imagemagick.patch 
+}
 
 build() {
   cd ${pkgname}-${pkgver}
