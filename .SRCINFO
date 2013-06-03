@@ -1,7 +1,7 @@
 pkgbase = gconf-gtk2
 	pkgdesc = A configuration database system compiled for GTK2
 	pkgver = 3.2.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnome.org
 	install = gconf.install
 	arch = i686

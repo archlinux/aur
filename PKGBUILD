@@ -2,7 +2,7 @@
 
 pkgname=gconf-gtk2
 pkgver=3.2.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A configuration database system compiled for GTK2"
 arch=(i686 x86_64)
 license=('LGPL')
@@ -61,5 +61,5 @@ package() {
 
   install -m755 -d "$pkgdir/etc/gconf/gconf.xml.system"
   install -m755 "$srcdir/gconf-merge-schema" "$pkgdir/usr/bin/"
-  install -Dm755 "$srcdir/gconfpkg" "$pkgdir/usr/sbin/gconfpkg"
+  install -Dm755 "$srcdir/gconfpkg" "$pkgdir/usr/bin/gconfpkg"
 }
