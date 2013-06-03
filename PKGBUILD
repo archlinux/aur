@@ -2,7 +2,7 @@
 # Contributor: Michał Siejak <my_fistname@my_lastname.pl>
 pkgname=xlsh-without-x
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="eXtended Login Shell - fast, minimalistic login replacement (without X support)"
 arch=('i686' 'x86_64')
 url="https://github.com/Nadrin/xlsh/wiki"
@@ -13,15 +13,20 @@ source=(https://github.com/Nadrin/xlsh/tarball/master
 	patch)
 install=xlsh.install
 
+prepare() {
+    cd "$srcdir"
+
+    folder=$(ls |grep Nadrin)
+    mv $folder/* .
+    rmdir $folder
+
+    patch -p1 -i patch
+
+    sed -e 's/$(exec_prefix)\/sbin/$(exec_prefix)\/bin/' -i Makefile
+}
+
 build() {
   cd "$srcdir"
-
-  folder=$(ls |grep Nadrin)
-  mv $folder/* .
-  rmdir $folder
-
-  patch -p1 -i patch
-
   make
 }
 

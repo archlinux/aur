@@ -1,7 +1,7 @@
 pkgbase = xlsh-without-x
 	pkgdesc = eXtended Login Shell - fast, minimalistic login replacement (without X support)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nadrin/xlsh/wiki
 	install = xlsh.install
 	arch = i686
