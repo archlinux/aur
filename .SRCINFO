@@ -1,7 +1,7 @@
 pkgbase = upslug2-openwrt
 	pkgdesc = A tool to flash your NSLU2 (Slug) from a computer on a local network. (With OpenWRT patches)
 	pkgver = 41
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.nslu2-linux.org/wiki/Main/UpSlug2
 	arch = i686
 	arch = x86_64
