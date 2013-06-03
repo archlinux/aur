@@ -7,7 +7,7 @@ arch=('any')
 url="http://code.larlet.fr/django-storages/"
 license=('BSD3')
 depends=('python2-django' 'python2-boto')
-makedepends=('mercurial')
+makedepends=('mercurial' 'python' 'python2')
 source=('hg+https://bitbucket.org/david/django-storages')
 md5sums=('SKIP')
 
@@ -18,12 +18,20 @@ pkgver() {
 	 echo "${_mainver}.r${_revno}"
 }
 
+prepare() {
+	 cp -PR --preserve=links,mode,timestamps ${srcdir}/${_pkgname}{,-2}
+}
+
 build() {
 	 cd ${srcdir}/${_pkgname}
+	 python setup.py build
+	 cd ${srcdir}/${_pkgname}-2
 	 python2 setup.py build
 }
 
 package() {
 	 cd ${srcdir}/${_pkgname}
+	 python setup.py install --root="$pkgdir" --optimize=1
+	 cd ${srcdir}/${_pkgname}-2
 	 python2 setup.py install --root="$pkgdir" --optimize=1
 }
