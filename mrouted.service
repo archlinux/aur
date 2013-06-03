@@ -7,7 +7,7 @@ Conflicts=pimd.service smcroute.service
 [Service]
 Type=forking
 PIDFile=/var/run/mrouted.pid
-ExecStart=/usr/sbin/mrouted
+ExecStart=/usr/bin/mrouted
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-abort
 
