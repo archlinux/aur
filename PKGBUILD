@@ -89,11 +89,12 @@ package_libmediawiki() {
 
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
-  depends=('kdebase-runtime' 'kdepimlibs' 'libkdcraw' 'libkipi' 'libksane'
-           'opencv' 'libkvkontakte' 'libkexiv2')
+  depends=('kdebase-runtime' 'kdepimlibs' 'libkdcraw' 'libkipi' 'libksane' 'libkexiv2')
   optdepends=('libkgeomap: Geolocalize tool'
               'libmediawiki: MediaWiki Export plugin'
+              'libkvkontakte: VKontakte.ru Exporter plugin'
               'libgpod: iPodExport plugin'
+              'opencv: Remove Red Eyes plugin'
               'imagemagick: Video SlideShow plugin'
               'qt-gstreamer: Video SlideShow plugin')
   install=kipi-plugins.install
