@@ -1,0 +1,81 @@
+From 6cfec39798d6c86e03c7fc5a8870111e1127e9c9 Mon Sep 17 00:00:00 2001
+From: LAN-TW <lantw44@gmail.com>
+Date: Mon, 3 Jun 2013 20:08:51 +0800
+Subject: [PATCH] Fix build problems
+
+---
+ tightbind/makefile.linux | 4 ++--
+ tightbind/utils/makefile | 2 +-
+ viewkel/makefile.linux   | 7 ++++---
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/tightbind/makefile.linux b/tightbind/makefile.linux
+index 3158457..f9c0e5c 100755
+--- a/tightbind/makefile.linux
++++ b/tightbind/makefile.linux
+@@ -25,7 +25,7 @@ F77FLAGS = -O
+ #A linux box w/o complib (using GNU compilers)
+ #LIBS = -lm -lf2c 
+ LIBS = -lm
+-LOCALLIBS = -L/usr/local/lib -llapack -lblas -lf2c
++LOCALLIBS = -L/usr/local/lib -llapack -lblas -lgfortran
+ 
+ COBJS = main.o genutil.o fileio.o globals.o memory.o distance_mat.o \
+  R_overlap_mat.o mov.o R_hamil.o K_hamil.o kpoints.o K_overlap_mat.o \
+@@ -65,7 +65,7 @@ veryclean:
+ 	cd utils;make clean
+ 
+ .f.o: 
+-	f77 $(F77FLAGS) -c $*.f
++	f95 $(F77FLAGS) -c $*.f
+ 
+ .c.o: 
+ 	cc $(CFLAGS) -c $*.c
+diff --git a/tightbind/utils/makefile b/tightbind/utils/makefile
+index 57ab7c7..afe103c 100755
+--- a/tightbind/utils/makefile
++++ b/tightbind/utils/makefile
+@@ -1,7 +1,7 @@
+ # to use floats instead of doubles, insert -DUSE_FLOATS here.
+ #CFLAGS = -g -I/usr/local/include/
+ #CFLAGS = -32 -O -I/usr/local/include/
+-CFLAGS =  -O -I/usr/local/include/
++CFLAGS =  -O -I/usr/local/include/ -DUSE_BZERO
+ 
+ DOS_OBJS = fit_dos.o genutil.o
+ COOP_OBJS = fit_coop.o genutil.o
+diff --git a/viewkel/makefile.linux b/viewkel/makefile.linux
+index e67def4..4d9f8ec 100755
+--- a/viewkel/makefile.linux
++++ b/viewkel/makefile.linux
+@@ -4,7 +4,8 @@ OBJS = main.o interface.o globals.o xstuff.o genutil.o stack.o manipulate.o \
+   prop_graphs.o band_graphs.o walsh_graphs.o graphics.o tek_lib.o help.o \
+   FMO_diags.o orbitals.o fit_orbs.o matrix_ops.o implicit_polyg.o \
+   triangles.o 3D_objects.o enhpost.o cont_plots.o contour.o labels.o \
+-  MO_conts.o vibrations.o valence.o polyhed.o chull.o mem_debug.o
++  MO_conts.o vibrations.o valence.o polyhed.o chull.o mem_debug.o \
++  viewkelutil.c solid_calcs.c
+ 
+ 
+ 
+@@ -13,7 +14,7 @@ OBJS = main.o interface.o globals.o xstuff.o genutil.o stack.o manipulate.o \
+ #PARM_FILE_LOC = \"/usr/local/src/yaehmop/viewkel/atomic_parms.dat\"
+ #PARM_FILE_LOC = \"/home/landrum/yaehmop/viewkel/atomic_parms.dat\"
+ #PARM_FILE_LOC = \"/usr/local/lib/atomic_parms.dat\"
+-PARM_FILE_LOC = \"/users/landrum/yaehmop/viewkel/new_atomic_parms.dat\"
++PARM_FILE_LOC = \"/usr/share/yaehmop/viewkel/new_atomic_parms.dat\"
+ 
+ # these are things you can turn on or off to make yourself happy.
+ OPT_FEATURES = -DTEK_GRAPHICS -DX_GRAPHICS -DINTERACTIVE_USE \
+@@ -24,7 +25,7 @@ OPT_FEATURES = -DTEK_GRAPHICS -DX_GRAPHICS -DINTERACTIVE_USE \
+ CFLAGS = -g -O -DHIGHPREC -DPARM_FILE=$(PARM_FILE_LOC) $(OPT_FEATURES)\
+ -D_POSIX_SOURCE -DUSE_READLINE
+ 
+-LDFLAGS = -L/usr/X11R6/lib -L/usr/local/lib -lreadline -lhistory -L/usr/lib/termcap -ltermcap
++LDFLAGS = -L/usr/local/lib -lreadline -lhistory
+ 
+ CC = cc
+ 
+-- 
+1.8.3
+
