@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -53,6 +53,9 @@ package_digikam() {
   make DESTDIR="${pkgdir}" install
   cd ../../build/po
   make DESTDIR="${pkgdir}" install
+
+  # Fix conflicts with kde-l10n-* (FS#33762)
+  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/libkipi.mo
 }
 
 package_libkface() {
