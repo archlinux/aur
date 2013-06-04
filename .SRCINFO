@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
-	pkgver = 1.7.99.22270.269ee8d
+	pkgver = 1.7.99.22314.383bb37
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -16,13 +16,13 @@ pkgbase = efl-git
 	depends = lua
 	depends = shared-mime-info
 	depends = libxkbcommon
+	depends = wayland
 	depends = libxcomposite
 	depends = libxcursor
 	depends = libxinerama
 	depends = libxss
 	depends = libxrandr
 	depends = libxp
-	depends = mesa
 	depends = libgl
 	depends = giflib
 	depends = libtiff
@@ -39,20 +39,20 @@ pkgbase = efl-git
 	optdepends = gstreamer0.10-ugly: Access more types of video in Emotion
 	optdepends = gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion
 	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
-	provides = ecore=1.7.99.22270.269ee8d
-	provides = eldbus=1.7.99.22270.269ee8d
-	provides = edje=1.7.99.22270.269ee8d
-	provides = eet=1.7.99.22270.269ee8d
-	provides = eeze=1.7.99.22270.269ee8d
-	provides = efreet=1.7.99.22270.269ee8d
-	provides = eina=1.7.99.22270.269ee8d
-	provides = eio=1.7.99.22270.269ee8d
-	provides = embryo=1.7.99.22270.269ee8d
-	provides = emotion=1.7.99.22270.269ee8d
-	provides = ephysics=1.7.99.22270.269ee8d
-	provides = ethumb=1.7.99.22270.269ee8d
-	provides = evas=1.7.99.22270.269ee8d
-	provides = efl=1.7.99.22270.269ee8d
+	provides = ecore=1.7.99.22314.383bb37
+	provides = eldbus=1.7.99.22314.383bb37
+	provides = edje=1.7.99.22314.383bb37
+	provides = eet=1.7.99.22314.383bb37
+	provides = eeze=1.7.99.22314.383bb37
+	provides = efreet=1.7.99.22314.383bb37
+	provides = eina=1.7.99.22314.383bb37
+	provides = eio=1.7.99.22314.383bb37
+	provides = embryo=1.7.99.22314.383bb37
+	provides = emotion=1.7.99.22314.383bb37
+	provides = ephysics=1.7.99.22314.383bb37
+	provides = ethumb=1.7.99.22314.383bb37
+	provides = evas=1.7.99.22314.383bb37
+	provides = efl=1.7.99.22314.383bb37
 	provides = efl_x11
 	provides = efl-svn
 	conflicts = ecore

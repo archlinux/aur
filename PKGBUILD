@@ -3,15 +3,15 @@
 
 pkgname=efl-git
 _pkgname=efl
-pkgver=1.7.99.22270.269ee8d
+pkgver=1.7.99.22314.383bb37
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
-depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon'
+depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
-         'mesa' 'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif' 'gstreamer0.10-base'
+         'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif' 'gstreamer0.10-base'
          'fribidi' 'harfbuzz' 'fontconfig')
 makedepends=('git')
 optdepends=('python2: compare Eina benchmarks'
@@ -55,7 +55,6 @@ build() {
 	--enable-systemd \
 	--enable-harfbuzz \
 	--enable-wayland \
-	--enable-egl \
 	--enable-xinput22 \
 	--enable-fb \
 	--disable-tslib
