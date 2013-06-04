@@ -4,10 +4,10 @@
 
 pkgname=libxml2
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
-license=('custom')
+license=('MIT')
 depends=('zlib' 'readline' 'ncurses' 'xz')
 makedepends=('python2')
 options=('!libtool')
