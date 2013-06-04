@@ -1,0 +1,15 @@
+pkgbase = pacfolder
+	pkgdesc = Programm to generate a folder with subfolders for each package managed by pacman containing symlinks to all files belonging to that package.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/zvynar/pacfolder
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pacman
+	depends = python3
+	source = git://github.com/zvynar/pacfolder.git
+	md5sums = SKIP
+
+pkgname = pacfolder
+
