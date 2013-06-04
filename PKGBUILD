@@ -5,7 +5,7 @@
 
 pkgname=ddclient
 pkgver=3.8.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 arch=('any')
 url="http://ddclient.sourceforge.net"
