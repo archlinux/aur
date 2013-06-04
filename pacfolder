@@ -1,0 +1,148 @@
+#!/usr/bin/env python3
+"""
+Copyright (2013) Milan Oberkirch.
+
+Permission is hereby granted, free of charge, to any person (except persons
+working on behalf of the military, military organisations or organisations
+promoting or manufacturing firearms or explosive weapons) obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
+import os
+import sys
+import subprocess
+
+
+class PackageFileCollector:
+    """
+    Class to generate a folder containing symbolic links to all files of a
+    specific package.
+    """
+
+    directory_mappings = {
+        """
+        Map from folder in the standard linux file-hierarchy to a folder in the
+        package-folder to create.
+        """
+        '/etc/': 'config',
+        '/usr/bin/': 'binaries',
+        '/usr/share/': 'share',
+        '/usr/lib/': 'libraries',
+        '/usr/include/': 'includes',
+        '/usr/': '',
+        '/': 'misc'
+    }
+
+    __current_target_directory_key = "//"
+
+    def __init__(self, package_name, target_directory='./package-collector/',
+                 directory_mappings=None):
+        self.package_name = package_name
+        self.target_directory = target_directory + self.package_name + os.sep
+        if directory_mappings is not None:
+            self.default_directory_mappings = directory_mappings
+
+    def __get_current_target_directory(self):
+        """
+        Returns the directory, where following files/folders should be created,
+        pattet with directory-seperators.
+        """
+        return self.target_directory +\
+            self.directory_mappings[self.__current_target_directory_key] +\
+            os.sep
+
+    def __get_current_target_file(self, source_file):
+        return self.__get_current_target_directory() +\
+            source_file[len(self.__current_target_directory_key):]
+
+    def __switch_current_target(self, directory_key):
+        self.__current_target_directory_key = directory_key
+        directory = self.__get_current_target_directory()
+        if (self.directory_mappings[directory_key] != '' and not
+                os.path.exists(directory)):
+            os.mkdir(directory)
+
+    def _get_file_list(self):
+        """
+        Returns a list of all files that belong to a package, you might
+        want to overwrite it for other package-managers.
+        """
+        return subprocess.check_output(['pacman', '-Qlq', self.package_name],
+                                       universal_newlines=True).split('\n')
+
+    @classmethod
+    def configure(cls, *args, **kwargs):
+        """
+        Returns a configured instance of AppFolder.
+        """
+        return cls(*args, **kwargs)
+
+    def run(self):
+        """
+        Creates a folder containing symbolic links too all files that belong to
+        the package named package_name.
+        """
+        os.makedirs(self.target_directory)
+        for file in self._get_file_list():
+            if file == "":
+                return 0
+            if os.path.isdir(file):
+                if file in self.directory_mappings.keys():
+                    self.__switch_current_target(file)
+                else:
+                    if not file[0: len(self.__current_target_directory_key)]\
+                       == self.__current_target_directory_key:
+                        self.__switch_current_target('/')
+                    os.makedirs(self.__get_current_target_file(file))
+            elif os.path.isfile(file):
+                os.symlink(file, self.__get_current_target_file(file))
+            elif os.path.islink(file):
+                print('Warning: "' + file + '" seems to be a dead link.'
+                      + ' It will not be included.')
+            elif not os.path.exists(file):
+                print('Error: No such file or directory: "' + file + '".')
+            else:
+                print('Error: cannot access "' + file + '".')
+        return 1
+
+
+def createPackageFolders(*args, **kwargs):
+    """
+    Create a folder containing a sub-folder for each package and put symbolic
+    links to all files belonging to this package into that sub-folder.
+    """
+    package_list = subprocess.check_output(['pacman', '-Qq'],
+                                           universal_newlines=True).split('\n')
+    ignored_packages = ['filesystem']
+    for package in package_list:
+        if package == '':
+            return 0
+        if not package in ignored_packages:
+            pfc = PackageFileCollector.configure(package, *args, **kwargs)
+            pfc.run()
+    return 1
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print(
+            "Usage: " + sys.argv[0] + " target-directory\n\n"
+            + "Creates symlinks for all files belonging to a package in"
+            + " sub-folders for each package. The first argument is the name"
+            + " of the folder, that shell contain all these subfolders.")
+        sys.exit(1)
+    sys.exit(createPackageFolders(target_directory=sys.argv[1]))
