@@ -5,13 +5,13 @@
 pkgname=evas_generic_loaders-git
 _pkgname=evas_generic_loaders
 pkgver=1.7.99.89.4bb0e74
-pkgrel=2
+pkgrel=3
 pkgdesc="Loaders for Evas using the 'generic' module - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('GPL2')
-depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg' 'gstreamer0.10-base')
-makedepends=('git')
+depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg')
+makedepends=('git' 'gstreamer0.10-base')
 optdepends=('gstreamer0.10-base-plugins: Video thumbnails'
             'gstreamer0.10-good-plugins: Video thumbnails'
             'gstreamer0.10-bad-plugins: Video thumbnails'
