@@ -10,7 +10,7 @@ Install
 cd $(mktemp -d)
 wget https://github.com/zvynar/pacfolder/raw/master/PKGBUILD
 makepkg
-sudo pacman -U "*.pkg.tar.xz"
+sudo pacman -U *.pkg.tar.xz
 ```
 
 Usage
