@@ -2,7 +2,7 @@ post_install() {
   groupadd -r tss
 
   useradd -r -g tss -d /var/lib/tpm -s /bin/false tss
-  chown tss:tss /usr/sbin/tcsd
+  chown tss:tss /usr/bin/tcsd
 
   chown tss:tss /etc/tcsd.conf
   chmod 0600 /etc/tcsd.conf

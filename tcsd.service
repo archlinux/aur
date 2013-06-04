@@ -4,7 +4,7 @@ After=sysinit.target
 
 [Service]
 User=tss
-ExecStart=/usr/sbin/tcsd -f -c /etc/tcsd.conf
+ExecStart=/usr/bin/tcsd -f -c /etc/tcsd.conf
 
 [Install]
 WantedBy=default.target
