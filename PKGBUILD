@@ -17,7 +17,7 @@ optdepends=('cups:		to use cups printer spooler(recommended)'
             'ghostscript:	adds postscript support for ijsgutenprint'
             'gimp:		adds gutenprint plugin to gimp')
 source=("http://downloads.sourceforge.net/gimp-print/${_docname}-${_docver}.tar.bz2"
-        'configure_ac.patch' 'usr_sbin.patch');
+        'configure_ac.patch' 'usr_sbin.patch')
 url='http://gimp-print.sourceforge.net/'
 provides=('gutenprint')
 conflicts=('gutenprint')
