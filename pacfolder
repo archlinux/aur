@@ -138,7 +138,7 @@ def createPackageFolders(*args, **kwargs):
     return 1
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 2 or sys.argv[1] in ('--help', '-h'):
         print(
             "Usage: " + sys.argv[0] + " target-directory\n\n"
             + "Creates symlinks for all files belonging to a package in"
