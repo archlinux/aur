@@ -1,0 +1,13 @@
+diff -ru gimp-print/m4/stp_cups.m4 gimp-print.new/m4/stp_cups.m4
+--- gimp-print/m4/stp_cups.m4	2008-08-13 03:35:51.000000000 -0400
++++ gimp-print.new/m4/stp_cups.m4	2013-06-05 00:22:09.029774489 -0400
+@@ -146,7 +146,7 @@
+ if test "${sbindir}" = "\${prefix}/sbin" -a "${cups_prefix}" = "/" ; then
+   cups_sbindir="/usr/sbin"
+ else
+-  cups_sbindir="${cups_prefix}/sbin"
++  cups_sbindir="/usr/bin"
+ fi
+ 
+ # Get explicit CUPS directories if possible
+Only in gimp-print.new/m4: stp_cups.m4~

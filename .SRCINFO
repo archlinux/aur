@@ -25,8 +25,10 @@ pkgbase = gutenprint-cvs
 	options = !emptydirs
 	source = http://downloads.sourceforge.net/gimp-print/gutenprint-5.2.9.tar.bz2
 	source = configure_ac.patch
+	source = usr_sbin.patch
 	sha256sums = 4b27e4f06f32d30271df89ecb6089bb11bcf2caec5f60b0909e083095354bca0
 	sha256sums = 041690da1d414e82297fc9bb8a1395cf133e198123c73572c69d932173343768
+	sha256sums = a232a39e30986426dc34c39092a4c15ede5bac653765801ccf76b2532136171a
 
 pkgname = gutenprint-cvs
 
