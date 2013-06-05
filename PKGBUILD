@@ -3,7 +3,7 @@
 
 pkgname=udisks2-nosystemd
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
@@ -22,7 +22,8 @@ sha256sums=('310208e5a10335dae4b52a0125c24d31cf292cce3d15cf65da4cd308e38d15a8')
 build() {
   cd "udisks-$pkgver"
   ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static
+      --localstatedir=/var --disable-static \
+      --sbindir=/usr/bin
   make
 
   # fix mdadm location
