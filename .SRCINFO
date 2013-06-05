@@ -1,6 +1,6 @@
 pkgbase = gutenprint-cvs
 	pkgdesc = Top quality printer drivers for POSIX systems (cvs version)
-	pkgver = 20130410
+	pkgver = 20130605
 	pkgrel = 1
 	url = http://gimp-print.sourceforge.net/
 	install = gutenprint.install

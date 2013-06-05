@@ -3,7 +3,7 @@
 
 pkgname=gutenprint-cvs
 _docname=gutenprint
-pkgver=20130410
+pkgver=20130605
 _docver='5.2.9'
 pkgrel=1
 pkgdesc="Top quality printer drivers for POSIX systems (cvs version)"
