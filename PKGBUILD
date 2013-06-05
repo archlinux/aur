@@ -15,7 +15,7 @@ _buildtype="Release"
 
 pkgname=tomahawk
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Music Player App written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://tomahawk-player.org/"
@@ -24,6 +24,7 @@ depends=('phonon' 'taglib' 'boost' 'clucene' 'libechonest2' 'jreen' 'qtweetlib' 
 makedepends=('cmake')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
+options=(!strip)
 source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('98b7f5bc43e017379f5cd3834f19e90d')
 
