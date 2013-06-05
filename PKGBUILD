@@ -30,7 +30,7 @@ sha256sums=('4b27e4f06f32d30271df89ecb6089bb11bcf2caec5f60b0909e083095354bca0'
 _cvsroot=':pserver:anonymous:@gimp-print.cvs.sourceforge.net:/cvsroot/gimp-print'
 _cvsmod='gimp-print'
 
-build() {
+prepare() {
   cd "$srcdir"
   msg "Connecting to $_cvsmod.sourceforge.net CVS server...."
 
@@ -52,6 +52,11 @@ build() {
   patch -Np1 -i "${srcdir}/configure_ac.patch"
   # We extract the precompiled documentation from the latest release because there is currently no easy way to run db2html on Arch.
   tar -xjf "${srcdir}/${_docname}-${_docver}.tar.bz2" --strip-components 1 "${_docname}-${_docver}/doc/developer"
+}
+
+build() {
+  cd "$srcdir/$_cvsmod-build"
+
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
     --enable-samples \
