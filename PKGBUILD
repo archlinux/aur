@@ -18,7 +18,7 @@ source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.t
         iproute2.patch
         usrbin.patch)
 md5sums=('7fa417bc65f8f0e6ce78418a4f631988'
-         'fde631ff027c03179e9cdd483def324d'
+         '3a31ec40ac583779fd049b1930f4af9f'
          'e0c8a07e9b7a69e73cecd8626f16e8f0'
          '65e294485a18b8d3f752a124913579f1')
 
