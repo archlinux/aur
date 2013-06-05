@@ -53,6 +53,8 @@ class PackageFileCollector:
     def __init__(self, package_name, target_directory='./package-collector/',
                  directory_mappings=None):
         self.package_name = package_name
+        if target_directory[-1] != os.sep:
+            target_directory += os.sep
         self.target_directory = target_directory + self.package_name + os.sep
         if directory_mappings is not None:
             self.default_directory_mappings = directory_mappings
