@@ -41,7 +41,7 @@ prepare() {
     cd $_gitname && git pull origin
     msg "The local files are updated."
   else
-    git clone --depth=1 $_gitroot $_gitname
+    git clone -b perl-518 --depth=1 $_gitroot $_gitname
   fi
 
   msg "GIT checkout done or server timeout"
