@@ -25,6 +25,7 @@ SOFTWARE.
 
 import os
 import sys
+import logging
 import subprocess
 
 
@@ -34,11 +35,11 @@ class PackageFileCollector:
     specific package.
     """
 
+    """
+    Map from folder in the standard linux file-hierarchy to a folder in the
+    package-folder to create.
+    """
     directory_mappings = {
-        """
-        Map from folder in the standard linux file-hierarchy to a folder in the
-        package-folder to create.
-        """
         '/etc/': 'config',
         '/usr/bin/': 'binaries',
         '/usr/share/': 'share',
@@ -114,12 +115,13 @@ class PackageFileCollector:
             elif os.path.isfile(file):
                 os.symlink(file, self.__get_current_target_file(file))
             elif os.path.islink(file):
-                print('Warning: "' + file + '" seems to be a dead link.'
-                      + ' It will not be included.')
+                logging.warn('"' + file + '" seems to be a dead link.'
+                             ' It will not be included.')
             elif not os.path.exists(file):
-                print('Error: No such file or directory: "' + file + '".')
+                logging.error('No such file or directory (or not'
+                              ' enough permission): "' + file + '".')
             else:
-                print('Error: cannot access "' + file + '".')
+                logging.error('Cannot access "' + file + '".')
         return 1
 
 
@@ -143,8 +145,8 @@ if __name__ == "__main__":
     if len(sys.argv) != 2 or sys.argv[1] in ('--help', '-h'):
         print(
             "Usage: " + sys.argv[0] + " target-directory\n\n"
-            + "Creates symlinks for all files belonging to a package in"
-            + " sub-folders for each package. The first argument is the name"
-            + " of the folder, that shell contain all these subfolders.")
+            "Creates symlinks for all files belonging to a package in"
+            " sub-folders for each package. The first argument is the name"
+            " of the folder, that shell contain all these subfolders.")
         sys.exit(1)
     sys.exit(createPackageFolders(target_directory=sys.argv[1]))
