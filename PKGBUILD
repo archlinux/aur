@@ -11,6 +11,7 @@ depends=('dbus' 'polkit' 'gtk3' 'pacman>=4.1' 'pacman<4.2' 'curl' 'libnotify'
          'notification-daemon')
 makedepends=('perl' 'groff' 'git' 'autoconf')
 source=("git+https://github.com/jjk-jacky/${_pkgname}.git#branch=next")
+install=kalu.install
 md5sums=('SKIP')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -30,6 +31,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir/" install
+  chmod 700 "$pkgdir"/usr/share/polkit-1/rules.d
 }
 
 # vim:set ts=2 sw=2 et:
