@@ -1,0 +1,16 @@
+pkgbase = pygccxml
+	pkgdesc = The purpose of pygccxml is to read a generated file and provide a simple framework to navigate C++ declarations, using Python classes.
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://www.language-binding.net/pygccxml/pygccxml.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gccxml-cvs
+	depends = python2
+	options = !strip
+	source = http://jaist.dl.sourceforge.net/sourceforge/pygccxml/pygccxml-1.0.0.zip
+	md5sums = 44badbf8c4bcd3095290a90f2f2a9234
+
+pkgname = pygccxml
+
