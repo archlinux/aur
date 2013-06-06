@@ -2,7 +2,7 @@
 
 pkgname=hponcfg
 pkgver=4.0.0_0
-pkgrel=1
+pkgrel=2
 pkgdesc="RILOE II/iLo online configuration utility"
 arch=(i686 x86_64)
 url="http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack"
@@ -15,7 +15,9 @@ license=("CUSTOM")
 source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.noarch.rpm)
 
 package() {
-	cp -a "$srcdir/"{sbin,usr} "$pkgdir"
+	cd "$srcdir"
+	mv usr/{sbin,bin}
+	cp -a usr "$pkgdir"
 }
 
 sha256sums=('6c72585ab42c232651c090b5a42372e2f8a756778449b9a726a6560070aa95f1')
