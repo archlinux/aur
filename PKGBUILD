@@ -1,8 +1,8 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
@@ -17,7 +17,7 @@ source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
         http://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz.asc
         openvpn@.service
         openvpn-2.3.0-fix-systemd-ask-password-path.patch)
-md5sums=('57a3b64597fc37b7842a3fde354d8bbe'
+md5sums=('06e5f93dbf13f2c19647ca15ffc23ac1'
          'SKIP'
          'fbf818b6e1f212e77b9ce0e6d92584a1'
          'SKIP'
