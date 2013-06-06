@@ -18,14 +18,14 @@ source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.t
         iproute2.patch
         usrbin.patch)
 md5sums=('7fa417bc65f8f0e6ce78418a4f631988'
-         '3a31ec40ac583779fd049b1930f4af9f'
+         'a649273dd12540defaa296bf9d2a3174'
          'e0c8a07e9b7a69e73cecd8626f16e8f0'
          '65e294485a18b8d3f752a124913579f1')
 
-build() {
+prepare() {
   cd "$srcdir"/ddclient-$pkgver
 
-  patch -p1 < "$srcdir"/iproute2.patch
+  patch -Np1 -i "$srcdir"/iproute2.patch
   patch -Np0 -i "$srcdir"/usrbin.patch
 }
 
