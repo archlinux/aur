@@ -1,9 +1,9 @@
-# Maintainer: Astor Castelo <amcastelo[at]gatech[dot]edu>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Astor Castelo <amcastelo[at]gatech[dot]edu>
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
-# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=chipmunk
-pkgver=6.1.4
+pkgver=6.1.5
 pkgrel=1
 pkgdesc="A high-performance 2D rigid body physics library"
 arch=('i686' 'x86_64')
@@ -27,4 +27,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('6746caff4639c5b9ea44831d42695dadacd283af754d3f310264c8e8a85f0ba3')
+sha256sums=('0519c6e5cb4b12a97d735c8f2f5c21c4404363c13a279095ad1e116825c363d2')
