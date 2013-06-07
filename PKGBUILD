@@ -2,12 +2,14 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
-_gitroot="git://github.com/vathpela/gnu-efi.git"
-_gitname="gnu-efi-fedora"
-_gitbranch="fedora"
+_gitroot="git://git.code.sf.net/p/gnu-efi/code"
+_gitname="gnu-efi"
+_gitbranch="master"
 
-pkgname="gnu-efi-libs-fedora-git"
-pkgver=51ddcca
+_src_rootdir="gnu-efi-3.0"
+
+pkgname="gnu-efi-libs-git"
+pkgver=0ca0dac
 pkgrel=1
 pkgdesc="Library for building x86_64 and i386 UEFI Applications using GNU toolchain - Fedora GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
@@ -24,14 +26,10 @@ conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'gnu-efi-fix-x86_64-uefi-call-wrapper.patch'
-        'gnu-efi-fedora-disable-USE_MS_ABI.patch'
-        'gnu-efi-fedora-fix-makefile-vars.patch')
+        'gnu-efi-disable-USE_MS_ABI.patch')
 
 sha1sums=('SKIP'
-          '8918de3aefba2a3dc367bbb28611394c4c300a6d'
-          '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001'
-          '09144dd3ec664b96714fe92d823e31bd1bb747e9')
+          '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -40,12 +38,13 @@ pkgver() {
 
 _build_gnu-efi-libs-x86_64() {
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-x86_64"
-	cd "${srcdir}/${_gitname}_build-x86_64/"
+	cd "${srcdir}/${_gitname}_build-x86_64/${_src_rootdir}/"
 	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
 	ARCH="x86_64" make -j1
 	echo
@@ -56,12 +55,13 @@ _build_gnu-efi-libs-x86_64() {
 
 _build_gnu-efi-libs-i386() {
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
-	cd "${srcdir}/${_gitname}_build-i386/"
+	cd "${srcdir}/${_gitname}_build-i386/${_src_rootdir}/"
 	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
 	ARCH="ia32" make -j1
 	echo
@@ -74,19 +74,11 @@ build() {
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
-	cd "${srcdir}/${_gitname}_build"
-	
-	## Fix x86_64 UEFI call wrapper http://sourceforge.net/tracker/?func=detail&aid=3576537&group_id=163609&atid=828423
-	patch -Np1 -i "${srcdir}/gnu-efi-fix-x86_64-uefi-call-wrapper.patch"
-	echo
+	cd "${srcdir}/${_gitname}_build/${_src_rootdir}/"
 	
 	## Disable GCC MS_ABI CFLAGS
-	patch -Np1 -i "${srcdir}/gnu-efi-fedora-disable-USE_MS_ABI.patch"
-	echo
-	
-	## Fix Makefiles to enable compile for both UEFI arch
-	patch -Np1 -i "${srcdir}/gnu-efi-fedora-fix-makefile-vars.patch"
-	echo
+	# patch -Np1 -i "${srcdir}/gnu-efi-disable-USE_MS_ABI.patch"
+	# echo
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		_build_gnu-efi-libs-x86_64
@@ -96,23 +88,23 @@ build() {
 }
 
 _package_gnu-efi-libs-x86_64() {
-	cd "${srcdir}/${_gitname}_build-x86_64/"
+	cd "${srcdir}/${_gitname}_build-x86_64/${_src_rootdir}/"
 	
 	make ARCH="x86_64" INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/lib" install
 	echo
 	
 	install -d "${pkgdir}/usr/share/gnu-efi/x86_64/"
-	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/x86_64/"
+	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/x86_64/"
 }
 
 _package_gnu-efi-libs-i386() {
-	cd "${srcdir}/${_gitname}_build-i386/"
+	cd "${srcdir}/${_gitname}_build-i386/${_src_rootdir}/"
 	
 	make ARCH="ia32" INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/${_LIBDIR32}" install
 	echo
 	
 	install -d "${pkgdir}/usr/share/gnu-efi/i386/"
-	install -D -m0644 "${srcdir}/${_gitname}_build-i386/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/i386/"
+	install -D -m0644 "${srcdir}/${_gitname}_build-i386/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/i386/"
 }
 
 package() {
