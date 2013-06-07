@@ -1,15 +1,15 @@
 pkgbase = httest
 	pkgdesc = HTTP Test Tool
-	pkgver = 2.1.5
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = http://htt.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = APACHE
-	source = http://downloads.sourceforge.net/project/htt/htt2.1/httest-2.1.5/httest-2.1.5.tar.gz
-	source = httest-2.1.5-guide.pdf::http://downloads.sourceforge.net/project/htt/htt2.1/httest-2.1.5/users-guide.pdf
-	sha1sums = d29f344ed4c6ef0fdefed472b23bfa9f3c198ea0
-	sha1sums = eeb7b22ce960ec81171a481295b6763981a45dca
+	source = http://downloads.sourceforge.net/project/htt/htt2.4/httest-2.4.2/httest-2.4.2.tar.gz
+	source = httest-2.4.2-guide.pdf::http://downloads.sourceforge.net/project/htt/htt2.4/httest-2.4.2/users-guide.pdf
+	sha256sums = 4532d948430de20fb1dac2e2212cc4fd7fb46c36751b93835c4f6bc2dcea8d40
+	sha256sums = 56ff2bd050f4978e07b1319c3c055a132c08425ef4a2a4f7e81d3f8d254244f1
 
 pkgname = httest
 
