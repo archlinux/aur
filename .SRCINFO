@@ -1,6 +1,6 @@
 pkgbase = cmake-modules-webos-git
 	pkgdesc = CMake modules needed to build Open webOS components
-	pkgver = 20121229
+	pkgver = 20130427
 	pkgrel = 1
 	url = https://github.com/openwebos/cmake-modules-webos
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = cmake-modules-webos-git
 	makedepends = git
 	depends = cmake
 	provides = cmake-modules-webos
+	source = git+https://github.com/openwebos/cmake-modules-webos
+	sha256sums = SKIP
 
 pkgname = cmake-modules-webos-git
 
