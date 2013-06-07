@@ -24,20 +24,20 @@ depends=('phonon' 'taglib' 'boost' 'clucene' 'libechonest2' 'jreen' 'qtweetlib' 
 makedepends=('cmake')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
-options=(!strip)
 source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('98b7f5bc43e017379f5cd3834f19e90d')
-
 install=tomahawk.install
 
-# Clean options array to strip pkg if release buildtype is chosen
-if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
-  options=()
+if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+  options=(!strip)
 fi
 
-build() {
+prepare() {
   if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
+}
+
+build() {
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
   cmake -DBUILD_WITH_QT4=on \
