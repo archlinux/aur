@@ -5,21 +5,26 @@ _pkgbasename=libcanberra
 pkgbase=lib32-$_pkgbasename
 pkgname=(lib32-libcanberra lib32-libcanberra-pulse)
 pkgver=0.30
-pkgrel=2
+pkgrel=4
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 arch=(x86_64)
 license=(LGPL)
 depends=(lib32-libvorbis lib32-libltdl lib32-alsa-lib lib32-tdb $_pkgbasename)
-makedepends=(gtk-doc lib32-libpulse lib32-gtk2 gcc-multilib libtool-multilib)
+makedepends=(gtk-doc lib32-libpulse lib32-gtk2 git gcc-multilib libtool-multilib)
 options=(!emptydirs)
 url=http://0pointer.de/lennart/projects/libcanberra
-source=("$url/$_pkgbasename-$pkgver.tar.xz")
-sha256sums=('c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72')
+source=("git://git.0pointer.de/libcanberra.git#commit=c0620e4")
+sha256sums=('SKIP')
 
 _plugindir=usr/lib32/$_pkgbasename-$pkgver
 
+prepare() {
+  cd $_pkgbasename
+  ./autogen.sh
+}
+
 build() {
-  cd $_pkgbasename-$pkgver
+  cd $_pkgbasename
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
@@ -39,7 +44,7 @@ build() {
 package_lib32-libcanberra() {
   optdepends=("$pkgbase-pulse: PulseAudio driver")
 
-  cd $_pkgbasename-$pkgver
+  cd $_pkgbasename
 
   make -j1 DESTDIR="$pkgdir" install
   rm "$pkgdir"/usr/lib32/libcanberra-gtk*.la
