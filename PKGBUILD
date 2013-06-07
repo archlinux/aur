@@ -14,8 +14,9 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=jreen-git
-pkgver=20130303
-pkgrel=2
+pkgver=v1.1.1.13.gee2cf37
+pkgrel=1
+epoch=1
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt. - development version"
 arch=('i686' 'x86_64')
 url="http://qutim.org/jreen"
@@ -24,40 +25,28 @@ depends=('gsasl' 'qca-ossl' 'zlib')
 makedepends=('git' 'cmake')
 provides=('jreen')
 conflicts=('jreen')
-options=(!strip)
+source=("${pkgname}::git://github.com/euroelessar/jreen.git")
+md5sums=('SKIP')
 
-# Clean options array to strip pkg if release buildtype is chosen
-if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
-  options=()
+if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+  options=(!strip)
 fi
 
-_gitroot="git://github.com/euroelessar/jreen.git"
-_gitname="jreen"
+pkgver() {
+  cd ${srcdir}/${pkgname}
+  git describe --always --tags | sed 's|-|.|g'
+}
 
 build() {
-  cd ${srcdir}
-  msg "Connecting to GIT server..."
-
-  if [ -d ${_gitname} ]; then
-    cd ${_gitname} && git pull origin master
-  else
-    git clone --depth 1 ${_gitroot}
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  if [[ -e ${srcdir}/${_gitname}-build ]]; then rm -rf ${srcdir}/${_gitname}-build; fi
-  mkdir ${srcdir}/${_gitname}-build
-  cd ${srcdir}/${_gitname}-build
+  cd ${srcdir}/${pkgname}
 
   cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=${_buildtype} \
-        ../${_gitname}
+        -DCMAKE_BUILD_TYPE=${_buildtype}
   make
 }
 
 package() {
-  cd ${srcdir}/${_gitname}-build
+  cd ${srcdir}/${pkgname}
   make DESTDIR=${pkgdir} install
 }
