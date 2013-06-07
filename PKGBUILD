@@ -8,7 +8,7 @@ _gitbranch="master"
 #######
 
 #######
-_TIANOCORE_SVN_URL="https://edk2.svn.sourceforge.net/svnroot/edk2/branches/UDK2010.SR1"
+_TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/branches/UDK2010.SR1"
 # BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg
 _TIANO_DIR_="tianocore-udk-svn"
 #######
