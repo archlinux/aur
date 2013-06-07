@@ -26,9 +26,11 @@ conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'gnu-efi-fix-makefile-vars.patch'
         'gnu-efi-disable-USE_MS_ABI.patch')
 
 sha1sums=('SKIP'
+          'eec2b954aa44407b38342be567e767cea302b7c8'
           '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001')
 
 pkgver() {
@@ -37,7 +39,9 @@ pkgver() {
 }
 
 _build_gnu-efi-libs-x86_64() {
+	rm -rf "${srcdir}/${_gitname}_build-x86_64" || true
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-x86_64"
+	
 	cd "${srcdir}/${_gitname}_build-x86_64/${_src_rootdir}/"
 	
 	unset CFLAGS
@@ -54,7 +58,9 @@ _build_gnu-efi-libs-x86_64() {
 }
 
 _build_gnu-efi-libs-i386() {
+	rm -rf "${srcdir}/${_gitname}_build-i386" || true
 	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
+	
 	cd "${srcdir}/${_gitname}_build-i386/${_src_rootdir}/"
 	
 	unset CFLAGS
@@ -76,8 +82,12 @@ build() {
 	
 	cd "${srcdir}/${_gitname}_build/${_src_rootdir}/"
 	
+	## Fix Makefiles to enable compile for both UEFI arch
+	patch -Np1 -i "${srcdir}/gnu-efi-fix-makefile-vars.patch" || true
+	echo
+	
 	## Disable GCC MS_ABI CFLAGS
-	# patch -Np1 -i "${srcdir}/gnu-efi-disable-USE_MS_ABI.patch"
+	# patch -Np1 -i "${srcdir}/gnu-efi-disable-USE_MS_ABI.patch" || true
 	# echo
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then
