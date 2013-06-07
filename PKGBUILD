@@ -25,18 +25,20 @@ depends=('libidn' 'qca-ossl' 'zlib')
 makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
-options=(!strip)
 source=(http://qutim.org/dwnl/44/${_name}-${pkgver}.tar.bz2)
 md5sums=('180c4a3356b6d5865292e33de2a29820')
 
 # Clean options array to strip pkg if release buildtype is chosen
-if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
-  options=()
+if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+  options=(!strip)
 fi
 
-build() {
+prepare() {
   if [[ -e ${srcdir}/${_name}-${pkgver}-build ]]; then rm -rf ${srcdir}/${_name}-${pkgver}-build; fi
   mkdir ${srcdir}/${_name}-${pkgver}-build
+}
+
+build() {
   cd ${srcdir}/${_name}-${pkgver}-build
 
   cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
