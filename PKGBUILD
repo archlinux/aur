@@ -22,21 +22,23 @@ arch=('i686' 'x86_64')
 url="https://projects.kde.org/projects/playground/libs/libechonest"
 license=('GPL')
 depends=('qjson')
-makedepends=('cmake' 'pkg-config')
+makedepends=('cmake')
 provides=('libechonest')
 conflicts=('libechonest-git' 'libechonest2')
-options=(!strip)
 source=(http://pwsp.cleinias.com/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('038c4e390651b207575a12315ed3e687')
 
 # Clean options array to strip pkg if release buildtype is chosen
-if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
-  options=()
+if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+  options=(!strip)
 fi
 
-build() {
+prepare() {
   if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
+}
+
+build() {
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
   cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
