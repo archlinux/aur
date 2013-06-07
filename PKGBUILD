@@ -3,12 +3,12 @@
 
 pkgname=elementary-git
 _pkgname=elementary
-pkgver=1.7.99.7772.d331257
+pkgver=1.7.99.7960.e95dec7
 pkgrel=1
 pkgdesc="EFL widget toolkit - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
-license=('LGPL2.1')
+license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
 makedepends=('git')
 provides=("elementary=$pkgver" 'elementary-svn')
@@ -39,4 +39,7 @@ package() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
+  
+# install license file
+  install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
 }
