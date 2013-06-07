@@ -14,8 +14,9 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=qtweetlib-git
-pkgver=20130303
+pkgver=0.5.135.gad8fa29
 pkgrel=1
+epoch=1
 pkgdesc="C++ Qt based Twitter library - development version"
 arch=('i686' 'x86_64')
 url="https://github.com/minimoog/QTweetLib"
@@ -24,40 +25,28 @@ depends=('qjson')
 makedepends=('git' 'cmake')
 provides=('qtweetlib')
 conflicts=('qtweetlib')
-options=(!strip)
+source=("${pkgname}::git://github.com/minimoog/QTweetLib.git")
+md5sums=('SKIP')
 
-# Clean options array to strip pkg if release buildtype is chosen
-if [[ ${_buildtype} == "Release" ]] || [[ ${_buildtype} == "release" ]]; then
-  options=()
+if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+  options=(!strip)
 fi
 
-_gitroot="git://github.com/minimoog/QTweetLib.git"
-_gitname="QTweetLib"
+pkgver() {
+  cd ${srcdir}/${pkgname}
+  git describe --always --tags | sed 's|-|.|g'
+}
 
 build() {
-  cd ${srcdir}
-  msg "Connecting to GIT server..."
-
-  if [ -d ${_gitname} ]; then
-    cd ${_gitname} && git pull origin master
-  else
-    git clone --depth 1 ${_gitroot}
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  if [[ -e ${srcdir}/${_gitname}-build ]]; then rm -rf ${srcdir}/${_gitname}-build; fi
-  mkdir ${srcdir}/${_gitname}-build
-  cd ${srcdir}/${_gitname}-build
+  cd ${srcdir}/${pkgname}
 
   cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=${_buildtype} \
-        ../${_gitname}
+        -DCMAKE_BUILD_TYPE=${_buildtype}
   make
 }
 
 package() {
-  cd ${srcdir}/${_gitname}-build
+  cd ${srcdir}/${pkgname}
   make DESTDIR=${pkgdir} install
 }
