@@ -11,7 +11,7 @@ __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=5.10.pre2.126.g34eeaa3
+pkgver=6.00.pre5.6.g3d3f765
 pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
@@ -82,11 +82,15 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install
+	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install || true
 	echo
 	
-	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install
+	install -D -m0644 "${srcdir}/${_gitname}_build/BUILD/efi64/com32/elflink/ldlinux/ldlinux.e64" "${pkgdir}/usr/lib/syslinux/efi64/ldlinux.e64" || true
+	
+	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install || true
 	echo
+	
+	install -D -m0644 "${srcdir}/${_gitname}_build/BUILD/efi32/com32/elflink/ldlinux/ldlinux.e32" "${pkgdir}/usr/lib/syslinux/efi32/ldlinux.e32" || true
 	
 	install -d "${pkgdir}/usr/lib/syslinux/config"
 	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/syslinux/config/syslinux.cfg"
