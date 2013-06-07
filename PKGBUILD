@@ -39,6 +39,11 @@ package() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
+
+# install text files
+  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
+  install -Dm644 NEWS "$pkgdir/usr/share/$pkgname/NEWS"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
   
 # install license file
   install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
