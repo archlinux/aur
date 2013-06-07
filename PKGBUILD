@@ -2,8 +2,8 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=batctl
-pkgver=2013.0.0
-pkgrel=1
+pkgver=2013.2.0
+pkgrel=2
 pkgdesc="B.A.T.M.A.N. advanced control and management tool"
 arch=('i686' 'x86_64')
 url="http://www.open-mesh.net/"
@@ -16,6 +16,7 @@ build(){
 }
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}"  PREFIX=/usr install
+  make DESTDIR="${pkgdir}"  PREFIX=/usr SBINDIR=/usr/bin install
 }
-sha256sums=('c66e0b60e136829ea113c1fddf4029d1e7f5e8f0e75a3cea2a5ccf415cc96feb')
+
+sha256sums=('603b8bda311a8ac1a3b0446e0837f3d41a7c7d42ea70d68e2a66e884d224deaa')
