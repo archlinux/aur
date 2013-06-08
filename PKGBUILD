@@ -27,10 +27,12 @@ provides=('gnu-efi-libs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'gnu-efi-fix-makefile-vars.patch'
+        'gnu-efi-disable-mmx-and-sse.patch'
         'gnu-efi-disable-USE_MS_ABI.patch')
 
 sha1sums=('SKIP'
           'eec2b954aa44407b38342be567e767cea302b7c8'
+          '9c9ed8bc8bf76105302b9d57a516f3bab5d6ffa9'
           '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001')
 
 pkgver() {
@@ -84,6 +86,10 @@ build() {
 	
 	## Fix Makefiles to enable compile for both UEFI arch
 	patch -Np1 -i "${srcdir}/gnu-efi-fix-makefile-vars.patch" || true
+	echo
+	
+	## Disable MMX and SSE in GCC 4.8
+	patch -Np1 -i "${srcdir}/gnu-efi-disable-mmx-and-sse.patch" || true
 	echo
 	
 	## Disable GCC MS_ABI CFLAGS
