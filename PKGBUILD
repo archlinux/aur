@@ -30,7 +30,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  CFLAGS="$CFLAGS -fvisibility=hidden"
+  export CFLAGS="$CFLAGS -fvisibility=hidden"
 
   ./autogen.sh \
     --prefix=/usr \
