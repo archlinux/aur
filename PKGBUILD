@@ -2,42 +2,34 @@
 # https://github.com/zizzfizzix/pkgbuilds
 
 pkgname=cloudprint-cups-git
-pkgver=20130310
+pkgver=20130604.2.g896b314
 pkgrel=1
+epoch=1
 pkgdesc="Google Cloud Print driver for CUPS, allows printing to printers hosted on Google Cloud Print."
 arch=('any')
 url="https://github.com/simoncadman/CUPS-Cloud-Print"
 license=('GPL3')
 depends=('pycups' 'python2-httplib2')
 makedepends=('cups' 'git')
-provides=('cloudprint-cups')
-conflicts=('cloudprint-cups')
+provides=('cloudprint-cups' 'cupscloudprint')
+conflicts=('cloudprint-cups' 'cupscloudprint')
+options=(!emptydirs)
+install=cloudprint-cups.install
+source=("${pkgname}::git://github.com/simoncadman/CUPS-Cloud-Print.git")
+md5sums=('SKIP')
 
-_gitroot="git://github.com/simoncadman/CUPS-Cloud-Print.git"
-_gitname="CUPS-Cloud-Print"
+pkgver() {
+  cd ${srcdir}/${pkgname}
+  git describe --always --tags | sed 's|-|.|g'
+}
 
 build() {
-  cd ${srcdir}
-  msg "Connecting to GIT server..."
-
-  if [ -d ${_gitname} ]; then
-    cd ${_gitname} && git pull origin master
-  else
-    git clone --depth 1 ${_gitroot}
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  if [[ -e ${srcdir}/${_gitname}-build ]]; then rm -rf ${srcdir}/${_gitname}-build; fi
-  cp -r ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
-  cd ${srcdir}/${_gitname}-build
-
+  cd ${srcdir}/${pkgname}
   ./configure --prefix /usr
   make
 }
 
 package() {
-  cd ${srcdir}/${_gitname}-build
-  make DESTDIR=${pkgdir} install
-  rm ${pkgdir}/var/log/cups/cloudprint_log
+  cd ${srcdir}/${pkgname}
+  NOPERMS=1 make DESTDIR=${pkgdir} install
 }

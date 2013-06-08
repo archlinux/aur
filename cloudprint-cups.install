@@ -1,0 +1,3 @@
+post_upgrade() {
+  /usr/lib/cloudprint-cups/upgrade.py
+}
