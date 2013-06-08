@@ -10,7 +10,6 @@ pkgbase = elementary-git
 	makedepends = git
 	depends = efl-git
 	provides = elementary=1.7.99.7960.e95dec7
-	provides = elementary-svn
 	conflicts = elementary
 	conflicts = elementary-svn
 	options = !libtool

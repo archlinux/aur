@@ -11,7 +11,7 @@ url="http://www.enlightenment.org"
 license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
 makedepends=('git')
-provides=("elementary=$pkgver" 'elementary-svn')
+provides=("elementary=$pkgver")
 conflicts=('elementary' 'elementary-svn')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
@@ -45,6 +45,9 @@ package() {
   install -Dm644 NEWS "$pkgdir/usr/share/$pkgname/NEWS"
   install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
   
-# install license file
+# install license files
+  sed -n '1,/details./p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
 }
