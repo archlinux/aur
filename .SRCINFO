@@ -4,7 +4,7 @@ pkgbase = slic3r
 	pkgrel = 4
 	url = http://slic3r.org/
 	arch = any
-	license = GPL
+	license = AGPLv3
 	depends = perl
 	depends = perl-moo
 	depends = perl-boost-geometry-utils=0.06

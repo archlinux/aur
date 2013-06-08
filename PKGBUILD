@@ -8,7 +8,7 @@ pkgrel=4
 pkgdesc="An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge"
 arch=('any')
 url="http://slic3r.org/"
-license=('GPL')
+license=('AGPLv3')
 depends=('perl' 'perl-moo' 'perl-boost-geometry-utils=0.06' 'perl-math-clipper>=1.17'
          'perl-math-convexhull' 'perl-math-geometry-voronoi'
          'perl-math-planepath' 'perl-math-convexhull-monotonechain'
