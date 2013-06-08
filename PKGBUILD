@@ -57,7 +57,7 @@ package_elementary-git() {
   install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
 
 # remove test app
-  rm -rf "$pkgdir/usr/bin/elementary_test*"
+  rm -rf "$pkgdir/usr/bin/"elementary_test*
   rm -rf "$pkgdir/usr/lib/elementary/modules/"{test_entry,test_map}
   rm -rf "$pkgdir/usr/lib/elementary_testql.so"
   rm -rf "$pkgdir/usr/share/applications/elementary_test.desktop"
@@ -79,8 +79,6 @@ package_elementary_test-git() {
   rm -rf "$pkgdir/usr/bin/"{elementary_codegen,elementary_config,elementary_quicklaunch,elementary_run,elm_prefs_cc}
   rm -rf "$pkgdir/usr/lib/"{cmake,edje,elementary,libelementary.so*,pkgconfig}
   rm -rf "$pkgdir/usr/share/applications/elementary_config.desktop"
-  rm -rf "$pkgdir/usr/share/elementary/"{config,examples,themes}
-  rm -rf "$pkgdir/usr/share/elementary/edje_externals/"
-  rm -rf "$pkgdir/usr/share/icons/"
-  rm -rf "$pkgdir/usr/share/locale/"
+  rm -rf "$pkgdir/usr/share/elementary/"{config,examples,themes,edje_externals}
+  rm -rf "$pkgdir/usr/share/"{icons,locale}
 }
