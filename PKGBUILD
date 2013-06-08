@@ -26,25 +26,25 @@ buildflags="-fvisibility=hidden"
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  
+
   for i in v_maj v_min v_mic; do
     local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
   done
-  
+
   echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  
+
   ./autogen.sh --prefix=/usr
-  
+
   make
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  
+
   make DESTDIR="$pkgdir" install
 
 # install text files
@@ -56,3 +56,4 @@ package() {
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   sed -n '1,/PARTICULAR PURPOSE/p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
