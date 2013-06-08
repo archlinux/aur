@@ -11,7 +11,7 @@ url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
-         'libgl' 'giflib' 'libtiff' 'libpng' 'libpulse' 'libexif' 'gstreamer0.10-base'
+         'libgl' 'libwebp' 'libpulse' 'libexif' 'gstreamer0.10-base'
          'fribidi' 'harfbuzz' 'fontconfig')
 makedepends=('git')
 optdepends=('python2: compare Eina benchmarks'
@@ -30,6 +30,7 @@ options=('!libtool' 'debug')
 install=efl.install
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
+buildflags="-fvisibility=hidden"
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -48,16 +49,18 @@ build() {
   cd "$srcdir/$_pkgname"
 
   ./autogen.sh \
-	--prefix=/usr \
-	--with-x11=xlib \
-	--with-opengl=full \
-	--with-tests=none \
-	--enable-systemd \
-	--enable-harfbuzz \
-	--enable-wayland \
-	--enable-xinput22 \
-	--enable-fb \
-	--disable-tslib
+    --prefix=/usr \
+    --with-tests=none \
+    --with-x11=xlib \
+    --with-opengl=full \
+    --enable-wayland \
+    --enable-image-loader-webp \
+    --enable-systemd \
+    --enable-harfbuzz \
+    --enable-xinput22 \
+    --enable-multisense \
+    --enable-fb \
+    --disable-tslib
 
   make
 }
@@ -71,7 +74,6 @@ package() {
   install -Dm644 README "$pkgdir/usr/share/$_pkgname/README"
   install -Dm644 NEWS "$pkgdir/usr/share/$_pkgname/NEWS"
   install -Dm644 ChangeLog "$pkgdir/usr/share/$_pkgname/ChangeLog"
-
 
 # install license files
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
