@@ -46,4 +46,13 @@ package() {
   cd "$srcdir/$_pkgname"
   
   make DESTDIR="$pkgdir" install
+
+# install text files
+  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
+  install -Dm644 NEWS "$pkgdir/usr/share/$pkgname/NEWS"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
+
+# install license files
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  sed -n '1,/PARTICULAR PURPOSE/p' COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
