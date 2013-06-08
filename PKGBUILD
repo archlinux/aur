@@ -17,6 +17,7 @@ conflicts=('elementary' 'elementary-svn')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
+buildflags="-fvisibility=hidden"
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -31,7 +32,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  ./autogen.sh
+  ./autogen.sh \
     --prefix=/usr \
     --disable-static
 
