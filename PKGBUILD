@@ -26,6 +26,14 @@ md5sums=('1b561afff48c79f86889664375d179ed')
 _gitroot="git://github.com/alexrj/Slic3r"
 _gitname="Slic3r"
 
+pkgver() {
+  date +%Y%m%d
+  # Why true? cuz pacman is crazy... and it still doesn't work as intended
+  #true && export pkgver="$(awk '/VERSION/{print substr($4,2,length($4)-7)}' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
+  #export fullver="${pkgver}${fullver:1}"
+  #( set -o posix ; set ) >/tmp/variables.after
+}
+
 prepare() {
   export _src_dir="$srcdir/$_gitname-build"
   # Setting these env variables overwrites any command-line-options we don't want...
@@ -34,12 +42,15 @@ prepare() {
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
   export SLIC3R_NO_AUTO="true"
+
   cd "$srcdir"
   msg "Connecting to GIT server...."
 
   if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
+    cd $_gitname
+    git pull origin
     msg "The local files are updated."
+    #TODO: check if it's the same origin
   else
     git clone -b perl-518 --depth=1 $_gitroot $_gitname
   fi
@@ -70,6 +81,7 @@ build() {
   # Build stage
   /usr/bin/perl Build.PL
   ./Build
+
 }
 
 check () {
