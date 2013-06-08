@@ -66,8 +66,8 @@ package_elementary-git() {
 }
 
 package_elementary_test-git() {
-  pkgdesc="Test application for Elementary"
-  depends=('elementary')
+  true && pkgdesc="Test application for Elementary"
+  true && depends=('elementary')
   provides=("elementary_test=$pkgver")
   conflicts=('elementary_test')
 
