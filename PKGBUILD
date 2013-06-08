@@ -51,8 +51,8 @@ package_elementary-git() {
   install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
   
 # install license files
-  sed -n '1,/details./p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
+  sed -n '1,/details./p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
 
@@ -71,6 +71,7 @@ package_elementary_test-git() {
   conflicts=('elementary_test')
 
   cd "$srcdir/$_pkgname"
+
   make -j1 DESTDIR="$pkgdir" install
 
 # remove elementary
@@ -79,7 +80,7 @@ package_elementary_test-git() {
   rm -rf "$pkgdir/usr/lib/"{cmake,edje,elementary,libelementary.so*,pkgconfig}
   rm -rf "$pkgdir/usr/share/applications/elementary_config.desktop"
   rm -rf "$pkgdir/usr/share/elementary/"{config,examples,themes}
-  rm -rf "$pkgdir/usr/share/elementary/edje_externals/icons.edj"
-  rm -rf "$pkgdir/usr/share/icons/elementary.png"
+  rm -rf "$pkgdir/usr/share/elementary/edje_externals/"
+  rm -rf "$pkgdir/usr/share/icons/"
   rm -rf "$pkgdir/usr/share/locale/"
 }
