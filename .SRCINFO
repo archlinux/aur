@@ -1,5 +1,5 @@
 pkgbase = elementary-git
-	pkgdesc = EFL widget toolkit - Development version
+	pkgdesc = Enlightenment GUI toolkit - Development version
 	pkgver = 1.7.99.7960.e95dec7
 	pkgrel = 1
 	url = http://www.enlightenment.org
