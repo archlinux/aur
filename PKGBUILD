@@ -3,7 +3,7 @@
 
 pkgname=slic3r-git
 pkgver=0
-pkgrel=6
+pkgrel=7
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
@@ -25,14 +25,6 @@ md5sums=('1b561afff48c79f86889664375d179ed')
 
 _gitroot="git://github.com/alexrj/Slic3r"
 _gitname="Slic3r"
-
-pkgver() {
-  date +%Y%m%d
-  # Why true? cuz pacman is crazy... and it still doesn't work as intended
-  #true && export pkgver="$(awk '/VERSION/{print substr($4,2,length($4)-7)}' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
-  #export fullver="${pkgver}${fullver:1}"
-  #( set -o posix ; set ) >/tmp/variables.after
-}
 
 prepare() {
   export _src_dir="$srcdir/$_gitname-build"
@@ -70,12 +62,17 @@ prepare() {
 
   # Workaround shitload of issue via setting LC_ALL=C ... workaround that doesn't work :<
   #sed -i '1s"^#!.\+$"#!/usr/bin/env LC_ALL=C /usr/bin/perl"' ./slic3r.pl
+
+  # Why true? cuz pacman is crazy... and it still doesn't work as intended
+  true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
+  export _pkgver="$pkgver"
+  msg2 "Fetched $_pkgver"
 }
 
 build() {
   cd "$_src_dir"
-  msg " ⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead.\n"
-  msg "Running Slic3r under Perl >= 5.16 is not supported nor recommended\nIn case of related to this issues please use ARM repository to get older perl package\n"
+  warning " ⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead.\n"
+  warning "Running Slic3r under Perl >= 5.16 is not supported nor recommended\nIn case of related to this issues please use ARM repository to get older perl package\n"
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
 
   # Build stage
@@ -99,5 +96,8 @@ package () {
 
   install -d $pkgdir/usr/share/applications
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
+
+  # Why double? 1st one was just for messages, this one is for real
+  true && pkgver=$_pkgver
 }
 
