@@ -12,8 +12,15 @@ depends=('curl' 'libarchive' 'shared-mime-info')
 makedepends=('qt4' 'emacs')
 optdepends=('qt4: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('df5324a3b203373a9e0a04b924281a43')
+source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
+        'imagemagick.patch')
+md5sums=('df5324a3b203373a9e0a04b924281a43'
+         '19c4cf0e6e9c9a890f3698c9df8062f1')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch -p1 -i "${srcdir}"/imagemagick.patch
+}
 
 build() {
   cd ${pkgname}-${pkgver}

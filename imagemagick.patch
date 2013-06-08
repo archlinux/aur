@@ -1,0 +1,27 @@
+From 3de9bb48a5d7976d5f22e3c7c0f95cfda102ed8a Mon Sep 17 00:00:00 2001
+From: Funda Wang <fundawang@gmail.com>
+Date: Tue, 28 May 2013 06:17:49 +0000
+Subject: [PATCH] FindImageMagick: Find v6 include dir (#14174)
+
+The header files of ImageMagick are now located at
+<prefix>/include/ImageMagick-6 instead of <prefix>/include/ImageMagick.
+---
+ Modules/FindImageMagick.cmake |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/Modules/FindImageMagick.cmake b/Modules/FindImageMagick.cmake
+index cd97b38..02a5777 100644
+--- a/Modules/FindImageMagick.cmake
++++ b/Modules/FindImageMagick.cmake
+@@ -81,7 +81,7 @@ function(FIND_IMAGEMAGICK_API component header)
+       ${ImageMagick_INCLUDE_DIRS}
+       "[HKEY_LOCAL_MACHINE\\SOFTWARE\\ImageMagick\\Current;BinPath]/include"
+     PATH_SUFFIXES
+-      ImageMagick
++      ImageMagick ImageMagick-6
+     DOC "Path to the ImageMagick include dir."
+     )
+   find_library(ImageMagick_${component}_LIBRARY
+-- 
+1.7.0
+
