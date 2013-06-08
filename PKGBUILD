@@ -5,7 +5,7 @@
 pkgname=elementary-git
 true && pkgname=('elementary-git' 'elementary_test-git')
 _pkgname=elementary
-pkgver=1.7.99.7960.e95dec7
+pkgver=1.7.99.7964.a7ab322
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,6 @@ makedepends=('git')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
-buildflags="-fvisibility=hidden"
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -30,6 +29,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  CFLAGS="$CFLAGS -fvisibility=hidden"
 
   ./autogen.sh \
     --prefix=/usr \
