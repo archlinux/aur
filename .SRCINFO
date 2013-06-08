@@ -1,4 +1,4 @@
-pkgbase = elementary-git
+pkgbase = elementary
 	pkgdesc = EFL widget toolkit - Development version
 	pkgver = 1.7.99.7960.e95dec7
 	pkgrel = 1
@@ -17,5 +17,9 @@ pkgbase = elementary-git
 	source = git://git.enlightenment.org/core/elementary.git
 	md5sums = SKIP
 
-pkgname = elementary-git
+pkgname = elementary
+
+pkgname = elementary_test
+	pkgdesc = Test application for Elementary
+	depends = elementary
 

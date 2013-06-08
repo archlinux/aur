@@ -2,6 +2,7 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-git
+true && pkgname=('elementary' 'elementary_test')
 _pkgname=elementary
 pkgver=1.7.99.7960.e95dec7
 pkgrel=1
@@ -35,7 +36,7 @@ build() {
   make
 }
 
-package() {
+package_elementary() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
@@ -50,4 +51,29 @@ package() {
   install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
+
+# remove test app
+  rm -rf "$pkgdir/usr/bin/elementary_test*"
+  rm -rf "$pkgdir/usr/lib/elementary/modules/"{test_entry,test_map}
+  rm -rf "$pkgdir/usr/lib/elementary_testql.so"
+  rm -rf "$pkgdir/usr/share/applications/elementary_test.desktop"
+  rm -rf "$pkgdir/usr/share/elementary/"{examples,images,objects}
+}
+
+package_elementary_test() {
+  pkgdesc="Test application for Elementary"
+  depends=("elementary")
+
+  cd "$srcdir/$_pkgname"
+  make -j1 DESTDIR="$pkgdir" install
+
+# remove elementary
+  rm -rf "$pkgdir/usr/include"
+  rm -rf "$pkgdir/usr/bin/"{elementary_codegen,elementary_config,elementary_quicklaunch,elementary_run,elm_prefs_cc}
+  rm -rf "$pkgdir/usr/lib/"{cmake,edje,elementary,libelementary.so*,pkgconfig}
+  rm -rf "$pkgdir/usr/share/applications/elementary_config.desktop"
+  rm -rf "$pkgdir/usr/share/elementary/"{config,examples,themes}
+  rm -rf "$pkgdir/usr/share/elementary/edje_externals/icons.edj"
+  rm -rf "$pkgdir/usr/share/icons/elementary.png"
+  rm -rf "$pkgdir/usr/share/locale/"
 }
