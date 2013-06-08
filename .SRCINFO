@@ -1,4 +1,4 @@
-pkgbase = elementary
+pkgbase = elementary-git
 	pkgdesc = EFL widget toolkit - Development version
 	pkgver = 1.7.99.7960.e95dec7
 	pkgrel = 1
@@ -9,17 +9,19 @@ pkgbase = elementary
 	license = CCPL:cc-by-sa
 	makedepends = git
 	depends = efl-git
-	provides = elementary=1.7.99.7960.e95dec7
-	conflicts = elementary
-	conflicts = elementary-svn
 	options = !libtool
 	options = debug
 	source = git://git.enlightenment.org/core/elementary.git
 	md5sums = SKIP
 
-pkgname = elementary
+pkgname = elementary-git
+	provides = elementary=1.7.99.7960.e95dec7
+	conflicts = elementary
+	conflicts = elementary-svn
 
-pkgname = elementary_test
+pkgname = elementary_test-git
 	pkgdesc = Test application for Elementary
 	depends = elementary
+	provides = elementary_test=1.7.99.7960.e95dec7
+	conflicts = elementary_test
 

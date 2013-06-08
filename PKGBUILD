@@ -2,7 +2,7 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-git
-true && pkgname=('elementary' 'elementary_test')
+true && pkgname=('elementary-git' 'elementary_test-git')
 _pkgname=elementary
 pkgver=1.7.99.7960.e95dec7
 pkgrel=1
@@ -12,8 +12,6 @@ url="http://www.enlightenment.org"
 license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
 makedepends=('git')
-provides=("elementary=$pkgver")
-conflicts=('elementary' 'elementary-svn')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
@@ -39,7 +37,10 @@ build() {
   make
 }
 
-package_elementary() {
+package_elementary-git() {
+  provides=("elementary=$pkgver")
+  conflicts=('elementary' 'elementary-svn')
+
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
@@ -63,9 +64,11 @@ package_elementary() {
   rm -rf "$pkgdir/usr/share/elementary/"{examples,images,objects}
 }
 
-package_elementary_test() {
+package_elementary_test-git() {
   pkgdesc="Test application for Elementary"
-  depends=("elementary")
+  depends=('elementary')
+  provides=("elementary_test=$pkgver")
+  conflicts=('elementary_test')
 
   cd "$srcdir/$_pkgname"
   make -j1 DESTDIR="$pkgdir" install
