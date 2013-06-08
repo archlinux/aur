@@ -1,4 +1,5 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Contributor: Carsten Haitzler (Rasterman)
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-git
