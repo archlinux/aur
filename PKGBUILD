@@ -54,5 +54,5 @@ package() {
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  sed -n '1,/PARTICULAR PURPOSE/p' COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  sed -n '1,/PARTICULAR PURPOSE/p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
