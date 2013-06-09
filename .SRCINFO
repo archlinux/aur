@@ -1,0 +1,13 @@
+pkgbase = tomboy-toc
+	pkgdesc = A tomboy plugin to generate a Table of Contents menu item.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://oluc.blogspot.com.ar/2011/04/tomboy-add-in-table-of-content.html
+	arch = any
+	license = LGPL
+	depends = tomboy
+	source = http://oluc.github.io/tomboy/bin/TableOfContent.dll-0.6
+	md5sums = 460db27280e3991396c87789aeebf11c
+
+pkgname = tomboy-toc
+
