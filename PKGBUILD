@@ -30,7 +30,6 @@ options=('!libtool' 'debug')
 install=efl.install
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
-buildflags="-fvisibility=hidden"
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -47,6 +46,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  export CFLAGS="$CFLAGS -fvisibility=hidden"
+  export CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
 
   ./autogen.sh \
     --prefix=/usr \
