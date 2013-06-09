@@ -1,15 +1,15 @@
 pkgbase = syslinux-efi-git
 	pkgdesc = SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version
 	pkgver = 6.00.pre5.6.g3d3f765
-	pkgrel = 1
+	pkgrel = 2
 	url = http://syslinux.zytor.com/
 	install = syslinux-efi.install
 	arch = any
 	license = GPL2
 	makedepends = git
 	makedepends = python2
-	makedepends = gnu-efi-libs
 	makedepends = nasm
+	makedepends = gnu-efi-libs-git
 	depends = dosfstools
 	depends = efibootmgr
 	provides = syslinux-efi

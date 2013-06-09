@@ -12,13 +12,13 @@ _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
 pkgver=6.00.pre5.6.g3d3f765
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
 url="http://syslinux.zytor.com/"
 license=('GPL2')
 
-makedepends=('git' 'python2' 'gnu-efi-libs' 'nasm')
+makedepends=('git' 'python2' 'nasm' 'gnu-efi-libs-git')
 depends=('dosfstools' 'efibootmgr')
 
 install="${_pkgname}.install"
@@ -51,7 +51,7 @@ build() {
 	
 	cd "${srcdir}/${_gitname}_build"
 	
-	## Unset all compiler FLAGS for UEFI build
+	## Unset all compiler FLAGS for efi64 build
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
@@ -70,6 +70,13 @@ build() {
 	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi64 installer
 	echo
 	
+	## Unset all compiler FLAGS for efi32 build
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
 	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi32
 	echo
 	
@@ -83,14 +90,12 @@ package() {
 	cd "${srcdir}/${_gitname}_build/"
 	
 	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install || true
-	echo
-	
 	install -D -m0644 "${srcdir}/${_gitname}_build/BUILD/efi64/com32/elflink/ldlinux/ldlinux.e64" "${pkgdir}/usr/lib/syslinux/efi64/ldlinux.e64" || true
+	echo
 	
 	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install || true
-	echo
-	
 	install -D -m0644 "${srcdir}/${_gitname}_build/BUILD/efi32/com32/elflink/ldlinux/ldlinux.e32" "${pkgdir}/usr/lib/syslinux/efi32/ldlinux.e32" || true
+	echo
 	
 	install -d "${pkgdir}/usr/lib/syslinux/config"
 	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/syslinux/config/syslinux.cfg"
