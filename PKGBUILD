@@ -51,7 +51,7 @@ build() {
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	cd "${srcdir}/${_gitname}_build/"
 	
-	make clean || true
+	# make clean || true
 	echo
 	
 	unset CFLAGS
@@ -59,6 +59,8 @@ build() {
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
+	
+	sed 's|EFI_STATUS efi_main|EFI_STATUS EFIAPI efi_main|g' -i "${srcdir}/${_gitname}_build/src/efi/gummiboot.c" || true
 	
 	./autogen.sh
 	echo
