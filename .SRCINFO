@@ -1,0 +1,19 @@
+pkgbase = tomboy-extras
+	pkgdesc = A meta-package depending on all working add-ins for Tomboy.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/sinisterstuf/tomboy-extras
+	arch = any
+	license = LGPL
+	depends = tomboy-calc
+	depends = tomboy-dragndrop
+	depends = tomboy-export-to-latex
+	depends = tomboy-git-git
+	depends = tomboy-latex
+	depends = tomboy-notepreview
+	depends = tomboy-reminder
+	depends = tomboy-toc
+	depends = tomboy-todo
+
+pkgname = tomboy-extras
+
