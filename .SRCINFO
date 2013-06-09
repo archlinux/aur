@@ -1,0 +1,13 @@
+pkgbase = tomboy-notepreview
+	pkgdesc = A Tomboy plugin to show a tooltip containing a preview when you hold the mouse over a link in a note.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://www.robpvn.net/notepreview/
+	arch = any
+	license = LGPL
+	depends = tomboy
+	source = https://github.com/downloads/robpvn/Tomboy-Note-Preview-Addin/tomboy_notepreviewaddin.zip
+	md5sums = 40633eee15cd50794f44f3afb1559e6f
+
+pkgname = tomboy-notepreview
+
