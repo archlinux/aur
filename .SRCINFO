@@ -1,0 +1,13 @@
+pkgbase = tomboy-dragndrop
+	pkgdesc = A tomboy plugin to create links between Tomboy notes via Drag-n-Drop
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://sites.google.com/site/paginadisalvo/tools/tomboy-drag-n-drop
+	arch = any
+	license = LGPL
+	depends = tomboy
+	source = https://sites.google.com/site/paginadisalvo/tools/tomboy-drag-n-drop/DnDLinking.dll
+	md5sums = ea43bf3a412d7750918b75f3134c256e
+
+pkgname = tomboy-dragndrop
+
