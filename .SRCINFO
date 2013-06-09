@@ -1,0 +1,13 @@
+pkgbase = tomboy-pastebinit
+	pkgdesc = A tomboy plugin to send notes to a Pastebin service
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://launchpad.net/tomboy-pastebinit/
+	arch = any
+	license = LGPL
+	depends = tomboy
+	source = https://launchpad.net/tomboy-pastebinit/trunk/0.1/+download/PasteBinIt.dll
+	md5sums = e683cea2d3691007d55ca4866db88165
+
+pkgname = tomboy-pastebinit
+
