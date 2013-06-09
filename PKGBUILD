@@ -6,9 +6,9 @@
 
 pkgbase=ruby-gtk3
 pkgver=2.0.0
+pkgrel=2
 pkgname=('ruby-gtk3' 'ruby-gdk3')
 depends=("ruby-atk=$pkgver" "ruby-gdkpixbuf2=$pkgver" "ruby-glib2=$pkgver" "ruby-pango=$pkgver")
-pkgrel=1
 arch=('x86_64' 'i686')
 url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL')
@@ -34,7 +34,7 @@ package_ruby-gtk3() {
 
 	cd "$srcdir/ruby-gtk3-$pkgver/gtk3"
   mkdir -p "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$CARCH-linux"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install -j1
 }
 
 package_ruby-gdk3() {
@@ -43,7 +43,7 @@ package_ruby-gdk3() {
 
 	cd "$srcdir/ruby-gtk3-$pkgver/gdk3"
   mkdir -p "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$CARCH-linux"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install -j1
 }
 
 # vim:set ts=2 sw=2 et:
