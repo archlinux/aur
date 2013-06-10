@@ -18,9 +18,13 @@ remove_unused_data.patch)
 md5sums=('ec4323fa1ad4938f9376496bc8c27b05'
          '95dd1b00b5946775299cc787d328b152')
 
-build() {
+prepare() {
   cd $srcdir/$name-$pkgver
   patch -p1 < ../remove_unused_data.patch
+}
+
+build() {
+  cd $srcdir/$name-$pkgver
   $python setup.py build
 }
 
