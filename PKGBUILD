@@ -24,11 +24,14 @@ md5sums=('2b41ca2afade8d6cbf0afe7af0dc928e'
          '1f7f4f3b3a93ff6d2f600c7751ae25ef'
          '62a62de128345a8a7a6195fd59f8cd71')
 
+prepare() {
+	cd ${srcdir}/rpm-${_pkgver}
+	patch -p1 < ../rpmlib-filesystem-check.patch
+}
+
 
 build() {
 	cd ${srcdir}/rpm-${_pkgver}
-
-	patch -p1 < ../rpmlib-filesystem-check.patch
 
 	./configure \
 		--prefix=/usr  \
