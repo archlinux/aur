@@ -3,7 +3,7 @@ pkgname=python2-support
 _pkgname=python-support
 _python=python2
 pkgver=1.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="automated rebuilding support for python modules"
 arch=('any')
 url="http://packages.debian.org/sid/python-support"
@@ -24,10 +24,8 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  mkdir -p $pkgdir/usr/sbin
-  install update-python-modules $pkgdir/usr/sbin/
-
   mkdir -p $pkgdir/usr/bin
+  install update-python-modules $pkgdir/usr/bin/
   install debhelper/dh_pysupport $pkgdir/usr/bin/
 
   mkdir -p $pkgdir/usr/share/python-support/private

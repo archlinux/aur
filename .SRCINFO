@@ -1,7 +1,7 @@
 pkgbase = python2-support
 	pkgdesc = automated rebuilding support for python modules
 	pkgver = 1.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/sid/python-support
 	arch = any
 	license = LGPL2.1
