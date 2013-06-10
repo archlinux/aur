@@ -1,0 +1,17 @@
+post_install() {
+  cat << EOF
+==> Add the following lines to /usr/share/X11/xkb/rules/evdev.xml
+==>  to be able to select the sv_dvorak layout from a GUI:
+    <layout>
+      <configItem>
+        <name>se_sv_dvorak</name>
+        
+        <shortDescription>sv_sv_dvorak</shortDescription>
+        <description>Swedish (sv_dvorak)</description>
+        <languageList>
+          <iso639Id>swe</iso639Id>
+        </languageList>
+      </configItem>
+    </layout>
+EOF
+}
