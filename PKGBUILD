@@ -2,7 +2,7 @@
 pkgname=python2-ethtool
 _pkgname=python-ethtool
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="python bindings for the ethtool kernel interface"
 arch=('i686' 'x86_64')
 url="http://fedorapeople.org/gitweb?p=dsommers/public_git/python-ethtool.git;a=summary"
@@ -33,11 +33,11 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --skip-build --root="$pkgdir/" --optimize=1
 
-  install -d "$pkgdir/usr/sbin"
-  install -m 0755 pethtool.py "$pkgdir/usr/sbin/pethtool"
-  sed -i '1s/python/python2/' "$pkgdir/usr/sbin/pethtool"
-  install -m 0755 pifconfig.py "$pkgdir/usr/sbin/pifconfig"
-  sed -i '1s/python/python2/' "$pkgdir/usr/sbin/pifconfig"
+  install -d "$pkgdir/usr/bin"
+  install -m 0755 pethtool.py "$pkgdir/usr/bin/pethtool"
+  sed -i '1s/python/python2/' "$pkgdir/usr/bin/pethtool"
+  install -m 0755 pifconfig.py "$pkgdir/usr/bin/pifconfig"
+  sed -i '1s/python/python2/' "$pkgdir/usr/bin/pifconfig"
 
   install -d "$pkgdir/usr/share/man/man8"
   install -m 644 man/pethtool.8.gz "$pkgdir/usr/share/man/man8/"
