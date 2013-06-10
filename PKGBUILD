@@ -5,13 +5,16 @@
 pkgname=elementary-git
 true && pkgname=('elementary-git' 'elementary_test-git')
 _pkgname=elementary
-pkgver=1.7.99.7964.a7ab322
+pkgver=1.7.99.7982.b4e4fff
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
+  [[ $(pacman -T ewebkit-svn) ]] || depends+=('ewebkit-svn')
+  [[ $(pacman -T elocation-git) ]] || depends+=('elocation-git')
+  [[ $(pacman -T libeweather-svn) ]] || depends+=('libeweather-svn')
 makedepends=('git')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
