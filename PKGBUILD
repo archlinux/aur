@@ -5,8 +5,9 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.11.0.1
-pkgrel=2
+pkgver=4.11.1_rc1
+_pkgver=4.11.1-rc1
+pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
 url=("http://www.rpm.org/")
@@ -16,19 +17,17 @@ makedepends=('python2')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
-source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
-	rpmextract.sh
-	finish-lua52-support.patch rpmlib-filesystem-check.patch)
-md5sums=('b35f5359e0d4494d7b11e8d0c1512a0d'
+#source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
+source=(http://rpm.org/releases/testing/rpm-${_pkgver}.tar.bz2
+	rpmextract.sh rpmlib-filesystem-check.patch)
+md5sums=('2b41ca2afade8d6cbf0afe7af0dc928e'
          '1f7f4f3b3a93ff6d2f600c7751ae25ef'
-         'a82a9372f2bca43049791c162a36c1e5'
          '62a62de128345a8a7a6195fd59f8cd71')
 
 
 build() {
-	cd ${srcdir}/rpm-${pkgver}
+	cd ${srcdir}/rpm-${_pkgver}
 
-	patch -p1 < ../finish-lua52-support.patch
 	patch -p1 < ../rpmlib-filesystem-check.patch
 
 	./configure \
@@ -45,7 +44,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/rpm-${pkgver}
+	cd ${srcdir}/rpm-${_pkgver}
 	make prefix=${pkgdir}/usr localstatedir=${pkgdir}/var install
 	rmdir ${pkgdir}/var/tmp
 	rmdir ${pkgdir}/var
