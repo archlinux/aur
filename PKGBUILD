@@ -3,7 +3,7 @@
 
 pkgname=gutenprint-cvs
 _docname=gutenprint
-pkgver=20130605
+pkgver=20130611
 _docver='5.2.9'
 pkgrel=1
 pkgdesc="Top quality printer drivers for POSIX systems (cvs version)"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 install=gutenprint.install
 depends=('glibc')
-makedepends=('gimp' 'gtk2' 'cups' 'foomatic-db-engine' 'ghostscript')
+makedepends=('cvs' 'gimp' 'gtk2' 'cups' 'foomatic-db-engine' 'ghostscript')
 optdepends=('cups:		to use cups printer spooler(recommended)'
             'foomatic-db-engine:	to use foomatic spooler'
             'ghostscript:	adds postscript support for ijsgutenprint'
