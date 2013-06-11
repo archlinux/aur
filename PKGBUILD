@@ -60,10 +60,10 @@ build() {
   # ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
 }
 
-md5sums=('b520710dd75773dd8bfbaea214386559'
-         'f6a4252d498efa775c0c32451f3a4701'
-         'dd75af3f4bc865cd0e33b20d186699a8'
-         'c020d70fa6ce887d9a3b70d72c518c85'
-         '455d20873d808d1eeb01df84f3084f5a'
-         '7760044a7e514f0721af0c41747c9d75'
-         'c93dab93e1aeb07fa25f61ee0d043caf')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
