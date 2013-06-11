@@ -2,12 +2,6 @@ Index: pdfsizeopt.py
 ===================================================================
 --- pdfsizeopt.py	(revision 171)
 +++ pdfsizeopt.py	(working copy)
-@@ -1,4 +1,4 @@
--#! /usr/bin/python2.4
-+#! /usr/bin/python2
- #
- # pdfsizeopt.py: do various PDF size optimizations
- # by pts@fazekas.hu at Sun Mar 29 13:42:05 CEST 2009
 @@ -6712,7 +6712,11 @@
        Pathname to Multivalent.jar or None.
      """

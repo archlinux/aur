@@ -1,7 +1,7 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
 pkgname=pdfsizeopt-svn
-pkgver=171
+pkgver=221
 pkgrel=1
 pkgdesc="PDF file size optimizer"
 arch=(any)
@@ -38,4 +38,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('0c2bfe7f87cfcdc6774015c0d6fa15f7')
+md5sums=('ee0d8cd8232c42592791f470301252a1')
