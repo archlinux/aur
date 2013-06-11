@@ -57,7 +57,9 @@ build() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	sed 's|-DGNU_EFI_USE_MS_ABI|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args|g' -i "${srcdir}/${_gitname}_build/Makefile.am" || true
+	# sed 's|-DGNU_EFI_USE_MS_ABI|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args|g' -i "${srcdir}/${_gitname}_build/Makefile.am" || true
+	
+	# sed 's|-DGNU_EFI_USE_MS_ABI|-DNONENONENONE|g' -i "${srcdir}/${_gitname}_build/Makefile.am" || true
 	
 	# sed 's|EFI_STATUS efi_main|EFI_STATUS EFIAPI efi_main|g' -i "${srcdir}/${_gitname}_build/src/efi/gummiboot.c" || true
 	
@@ -77,6 +79,8 @@ package() {
 	cd "${srcdir}/${_gitname}_build/"
 	make DESTDIR="${pkgdir}/" install
 	echo
+	
+	strip "${pkgdir}/usr/bin/gummiboot"
 	
 	## Install gummiboot example configuration files
 	install -d "${pkgdir}/usr/lib/gummiboot/loader/entries/"
