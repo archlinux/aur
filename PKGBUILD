@@ -46,6 +46,7 @@ build() {
 }
 
 package() {
+  cd $startdir/src/$_gitname-build
   make DESTDIR=$pkgdir install || return 1
   mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
   rmdir $pkgdir/usr/sbin/
