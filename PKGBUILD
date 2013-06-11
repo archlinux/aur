@@ -3,7 +3,7 @@
 
 pkgname=mbm-gpsd-git
 pkgver=20121031
-pkgrel=1
+pkgrel=2
 pkgdesc="GPS support files for Ericsson F3507g that provide an easy interface to gpsd"
 arch=('i686' 'x86_64')
 url="http://mbm.sourceforge.net/"
@@ -18,9 +18,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=()
+source=(0001-Remove-call-to-g_type_init.patch)
 noextract=()
-md5sums=()
+md5sums=('b95c87ed13611f3903ed9bc5e504b947')
 _gitname=mbm-gpsd
 _gitroot=git://mbm.git.sourceforge.net/gitroot/mbm/${_gitname}/
 
@@ -38,13 +38,15 @@ build() {
   cd $srcdir || return 1
   cp -r $_gitname $_gitname-build
   cd $_gitname-build || return 1
+  patch -p1 < $srcdir/0001-Remove-call-to-g_type_init.patch
   unset CFLAGS
   unset CXXFLAGS
   ./autogen.sh  --prefix=/usr --sysconfdir=/etc --localstatedir=/var || return 1
-  make || return 1
+  make CFLAGS="-Wno-error" || return 1
   make DESTDIR=$pkgdir install || return 1
+  mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
+  rmdir $pkgdir/usr/sbin/
   rm -rf $srcdir/$_gitname-build
 
 
 }
-
