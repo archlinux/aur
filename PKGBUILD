@@ -43,6 +43,9 @@ build() {
   unset CXXFLAGS
   ./autogen.sh  --prefix=/usr --sysconfdir=/etc --localstatedir=/var || return 1
   make CFLAGS="-Wno-error" || return 1
+}
+
+package() {
   make DESTDIR=$pkgdir install || return 1
   mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
   rmdir $pkgdir/usr/sbin/
