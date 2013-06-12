@@ -9,7 +9,7 @@ pkgdesc="Enlightenment module: Manage the mounting of volumes"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/e17mods/wiki/Places"
 license=('MIT')
-depends=('enlightenment17')
+depends=('enlightenment17>=0.17.99')
 makedepends=('git')
 conflicts=('e17-places-svn')
 provides=('e17-places-svn')
