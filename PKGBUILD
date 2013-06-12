@@ -1,3 +1,4 @@
+# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: zarra <zarraxx@gmail.com>
 pkgname=pygccxml
 pkgver=1.0.0
@@ -23,5 +24,3 @@ package() {
 
   python2 setup.py install --prefix=/usr --root=$pkgdir
 }
-
-# vim:set ts=2 sw=2 et:
