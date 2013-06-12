@@ -1,0 +1,13 @@
+pkgbase = hans
+	pkgdesc = IPv4 over ICMP Echo tunnel
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://code.gerade.org/hans/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/friedrich/hans/archive/v0.4.3.tar.gz
+	sha256sums = 5c7fb50e17144ab9195bf6925a027dd111c72af3247a80b6000252c6ec5ed44a
+
+pkgname = hans
+
