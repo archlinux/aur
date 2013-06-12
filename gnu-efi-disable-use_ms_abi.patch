@@ -1,0 +1,13 @@
+diff --git a/gnu-efi-3.0/Make.defaults b/gnu-efi-3.0/Make.defaults
+index a22a1b4..4c95e7b 100644
+--- a/gnu-efi-3.0/Make.defaults
++++ b/gnu-efi-3.0/Make.defaults
+@@ -83,7 +83,7 @@ GCCNEWENOUGH := $(shell ( [ $(GCCVERSION) -gt "4" ]           \
+                                && [ $(GCCMINOR) -ge "7" ] ) ) \
+                         && echo 1)
+ ifeq ($(GCCNEWENOUGH),1)
+-  CPPFLAGS += -DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args --std=c11
++  CPPFLAGS += --std=c11
+ endif
+ 
+ # Arch-specific compilation flags

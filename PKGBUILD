@@ -6,12 +6,12 @@ _gitroot="git://git.code.sf.net/p/gnu-efi/code"
 _gitname="gnu-efi"
 _gitbranch="master"
 
-_src_rootdir="gnu-efi-3.0"
+_src_rootdir="${_gitname}-3.0"
 
 pkgname="gnu-efi-libs-git"
-pkgver=0ca0dac
+pkgver=8cb1e87
 pkgrel=1
-pkgdesc="Library for building x86_64 and i386 UEFI Applications using GNU toolchain - Fedora GIT Version"
+pkgdesc="Library for building x86_64 and ia32 UEFI Applications using GNU toolchain - Sourceforge GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -26,14 +26,10 @@ conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'gnu-efi-fix-makefile-vars.patch'
-        'gnu-efi-disable-mmx-and-sse.patch'
-        'gnu-efi-disable-USE_MS_ABI.patch')
+        'gnu-efi-disable-use_ms_abi.patch')
 
 sha1sums=('SKIP'
-          'eec2b954aa44407b38342be567e767cea302b7c8'
-          '9c9ed8bc8bf76105302b9d57a516f3bab5d6ffa9'
-          '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001')
+          'e9f2c6cc7414b021cd3297791f911f721f120afa')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -52,18 +48,18 @@ _build_gnu-efi-libs-x86_64() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	ARCH="x86_64" make -j1
+	make ARCH="x86_64" -j1
 	echo
 	
-	ARCH="x86_64" make -j1 -C apps all
+	make ARCH="x86_64" -j1 -C apps all
 	echo
 }
 
-_build_gnu-efi-libs-i386() {
-	rm -rf "${srcdir}/${_gitname}_build-i386" || true
-	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
+_build_gnu-efi-libs-ia32() {
+	rm -rf "${srcdir}/${_gitname}_build-ia32" || true
+	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-ia32"
 	
-	cd "${srcdir}/${_gitname}_build-i386/${_src_rootdir}/"
+	cd "${srcdir}/${_gitname}_build-ia32/${_src_rootdir}/"
 	
 	unset CFLAGS
 	unset CPPFLAGS
@@ -71,10 +67,10 @@ _build_gnu-efi-libs-i386() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	ARCH="ia32" make -j1
+	make ARCH="ia32" -j1
 	echo
 	
-	ARCH="ia32" make -j1 -C apps all
+	make ARCH="ia32" -j1 -C apps all
 	echo
 }
 
@@ -84,23 +80,15 @@ build() {
 	
 	cd "${srcdir}/${_gitname}_build/${_src_rootdir}/"
 	
-	## Fix Makefiles to enable compile for both UEFI arch
-	patch -Np1 -i "${srcdir}/gnu-efi-fix-makefile-vars.patch" || true
-	echo
-	
-	## Disable MMX and SSE in GCC 4.8
-	patch -Np1 -i "${srcdir}/gnu-efi-disable-mmx-and-sse.patch" || true
-	echo
-	
-	## Disable GCC MS_ABI CFLAGS
-	# patch -Np1 -i "${srcdir}/gnu-efi-disable-USE_MS_ABI.patch" || true
+	## Disable ms_abi in gnu-efi Makefiles
+	# patch -Np1 -i "${srcdir}/gnu-efi-disable-use_ms_abi.patch"
 	# echo
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		_build_gnu-efi-libs-x86_64
 	fi
 	
-	_build_gnu-efi-libs-i386
+	_build_gnu-efi-libs-ia32
 }
 
 _package_gnu-efi-libs-x86_64() {
@@ -109,18 +97,18 @@ _package_gnu-efi-libs-x86_64() {
 	make ARCH="x86_64" INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/lib" install
 	echo
 	
-	install -d "${pkgdir}/usr/share/gnu-efi/x86_64/"
-	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/x86_64/"
+	install -d "${pkgdir}/usr/share/gnu-efi/apps/x86_64/"
+	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/x86_64/"
 }
 
-_package_gnu-efi-libs-i386() {
-	cd "${srcdir}/${_gitname}_build-i386/${_src_rootdir}/"
+_package_gnu-efi-libs-ia32() {
+	cd "${srcdir}/${_gitname}_build-ia32/${_src_rootdir}/"
 	
 	make ARCH="ia32" INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/${_LIBDIR32}" install
 	echo
 	
-	install -d "${pkgdir}/usr/share/gnu-efi/i386/"
-	install -D -m0644 "${srcdir}/${_gitname}_build-i386/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/i386/"
+	install -d "${pkgdir}/usr/share/gnu-efi/apps/ia32/"
+	install -D -m0644 "${srcdir}/${_gitname}_build-ia32/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/ia32/"
 }
 
 package() {
@@ -128,9 +116,9 @@ package() {
 		_package_gnu-efi-libs-x86_64
 		
 		_LIBDIR32="lib32"
-		_package_gnu-efi-libs-i386
+		_package_gnu-efi-libs-ia32
 	else
 		_LIBDIR32="lib"
-		_package_gnu-efi-libs-i386
+		_package_gnu-efi-libs-ia32
 	fi
 }
