@@ -10,7 +10,6 @@ pkgbase = e17-places-svn
 	depends = enlightenment17
 	conflicts = e-modules-extra
 	options = !libtool
-	options = !staticlibs
 	source = svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/places
 	md5sums = SKIP
 

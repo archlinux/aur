@@ -12,7 +12,7 @@ license=('MIT')
 depends=('enlightenment17')
 makedepends=('subversion')
 conflicts=('e-modules-extra')
-options=('!libtool' '!staticlibs')
+options=('!libtool')
 source=("svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/$_pkgname")
 md5sums=('SKIP')
 
@@ -25,7 +25,9 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  ./autogen.sh --prefix=/usr
+  ./autogen.sh \
+    --prefix=/usr \
+    --disable-static
   
   make
 }
