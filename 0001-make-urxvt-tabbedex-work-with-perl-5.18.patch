@@ -1,0 +1,25 @@
+From b865e22e2553b9172f6029780520fd2aa7aca0ff Mon Sep 17 00:00:00 2001
+From: yardenac <yardenack@gmail.com>
+Date: Sun, 26 May 2013 23:11:06 -0700
+Subject: [PATCH] make urxvt-tabbedex work with perl 5.18
+
+---
+ tabbedex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tabbedex b/tabbedex
+index ada0e2f..3863715 100755
+--- a/tabbedex
++++ b/tabbedex
+@@ -665,7 +665,7 @@ package urxvt::ext::tabbedex::tab;
+ # simply proxies all interesting calls back to the tabbedex class.
+ 
+ {
+-   for my $hook qw(start destroy user_command key_press property_notify add_lines) {
++   for my $hook (qw(start destroy user_command key_press property_notify add_lines)) {
+       eval qq{
+          sub on_$hook {
+             my \$parent = \$_[0]{term}{parent}
+-- 
+1.8.3.1
+
