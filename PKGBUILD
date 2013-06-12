@@ -1,29 +1,31 @@
+# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=py++-svn
 pkgver=1856
-pkgrel=1
+pkgrel=2
 pkgdesc="Py++ package and Boost.Python library provide a complete solution for interfacing Python and C++"
 arch=('i686' 'x86_64')
-arch=('i686' 'x86_64')
 url="http://www.language-binding.net/index.html"
-depends=('pygccxml')
+depends=('pygccxml' 'python2')
 makedepends=('subversion')
 provides=('py++')
 conflicts=('py++')
 license=('custom')
+md5sums=('SKIP')
 
-_svntrunk="http://pygccxml.svn.sourceforge.net/svnroot/pygccxml/pyplusplus_dev"
 _svnmod="pyplusplus"
+source=("$_svnmod::svn://svn.code.sf.net/p/pygccxml/svn/pyplusplus_dev")
+
+pkgver() {
+  cd "$srcdir/$_svnmod"
+  svnversion | tr -d [A-z]
+}
 
 build() {
-  cd "$srcdir"
-  mkdir -p root
-  msg "Connecting to pyplusplus SVN server......."
-  svn co "$_svntrunk" "$_svnmod"
-  msg "Starting make..."
-  cd "$_svnmod"
-  python2 setup.py install --prefix=../root/
+  cd "$srcdir/$_svnmod"
+  python2 setup.py build
 }
 
 package() {
-  cp -r "$srcdir"/root/ "$pkgdir"/usr/
+  cd "$srcdir/$_svnmod"
+  python2 setup.py install --prefix=/usr --root=$pkgdir
 }
