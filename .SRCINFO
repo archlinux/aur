@@ -1,12 +1,13 @@
 pkgbase = py++
 	pkgdesc = Py++ package and Boost.Python library provide a complete solution for interfacing Python and C++
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.language-binding.net/index.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = pygccxml
+	depends = python2
 	options = !strip
 	source = http://jaist.dl.sourceforge.net/sourceforge/pygccxml/pyplusplus-1.0.0.zip
 	md5sums = 4997f61fa27a432e36fa0142dc3dc06c
