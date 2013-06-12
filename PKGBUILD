@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Enlightenment module: Manage the mounting of volumes"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/e17mods/wiki/Places"
-license=('BSD')
+license=('MIT')
 depends=('enlightenment17')
 makedepends=('subversion')
 conflicts=('e-modules-extra')
@@ -36,5 +36,6 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install license files
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
