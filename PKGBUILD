@@ -14,9 +14,8 @@ _buildtype="Release"
 ##############################################################
 
 pkgname=jreen
-_name=lib${pkgname}
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt."
 arch=('i686' 'x86_64')
 url="http://qutim.org/jreen"
@@ -25,8 +24,8 @@ depends=('libidn' 'qca-ossl' 'zlib')
 makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
-source=(http://qutim.org/dwnl/44/${_name}-${pkgver}.tar.bz2)
-md5sums=('180c4a3356b6d5865292e33de2a29820')
+source=("${pkgname}-${pkgver}.zip::http://github.com/euroelessar/${pkgname}/archive/v${pkgver}.zip")
+md5sums=('07e64faaae4be7cf2c99eac07f80fb8f')
 
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
@@ -34,21 +33,21 @@ if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; the
 fi
 
 prepare() {
-  if [[ -e ${srcdir}/${_name}-${pkgver}-build ]]; then rm -rf ${srcdir}/${_name}-${pkgver}-build; fi
-  mkdir ${srcdir}/${_name}-${pkgver}-build
+  if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
+  mkdir ${srcdir}/${pkgname}-${pkgver}-build
 }
 
 build() {
-  cd ${srcdir}/${_name}-${pkgver}-build
+  cd ${srcdir}/${pkgname}-${pkgver}-build
 
   cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=${_buildtype} \
-        ../${_name}-${pkgver}
+        ../${pkgname}-${pkgver}
   make
 }
 
 package() {
-  cd ${srcdir}/${_name}-${pkgver}-build
+  cd ${srcdir}/${pkgname}-${pkgver}-build
   make DESTDIR=${pkgdir} install
 }

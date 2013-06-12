@@ -1,7 +1,7 @@
 pkgbase = jreen
 	pkgdesc = Free and Opensource Jabber library, written in C++ using cross-platform framework Qt.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qutim.org/jreen
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = jreen
 	depends = zlib
 	provides = jreen
 	conflicts = jreen-git
-	source = http://qutim.org/dwnl/44/libjreen-1.1.1.tar.bz2
-	md5sums = 180c4a3356b6d5865292e33de2a29820
+	source = jreen-1.1.1.zip::http://github.com/euroelessar/jreen/archive/v1.1.1.zip
+	md5sums = 07e64faaae4be7cf2c99eac07f80fb8f
 
 pkgname = jreen
 
