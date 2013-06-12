@@ -1,8 +1,8 @@
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: fancris3 <fancris3 at aol.com>
 
-pkgname=e17-places-svn
-_pkgname=places
+pkgname=places-git
+_pkgname=${pkgname%-git}
 pkgver=84513
 pkgrel=1
 pkgdesc="Enlightenment module: Manage the mounting of volumes"
@@ -10,16 +10,19 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/e17mods/wiki/Places"
 license=('MIT')
 depends=('enlightenment17')
-makedepends=('subversion')
-conflicts=('e-modules-extra')
+makedepends=('git')
+conflicts=('e17-places-svn')
+provides=('e17-places-svn')
 options=('!libtool')
-source=("svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/$_pkgname")
+source=("git://git.enlightenment.org/E-MODULES-EXTRA/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$SRCDEST/$_pkgname"
-
-  LC_ALL=C svn info | awk '/Last Changed Rev/ {print $4}'
+  cd "$srcdir/$_pkgname"
+  
+  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
+  
+  echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {

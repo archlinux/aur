@@ -1,4 +1,4 @@
-pkgbase = e17-places-svn
+pkgbase = places-git
 	pkgdesc = Enlightenment module: Manage the mounting of volumes
 	pkgver = 84513
 	pkgrel = 1
@@ -6,12 +6,13 @@ pkgbase = e17-places-svn
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = subversion
+	makedepends = git
 	depends = enlightenment17
-	conflicts = e-modules-extra
+	provides = e17-places-svn
+	conflicts = e17-places-svn
 	options = !libtool
-	source = svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/places
+	source = git://git.enlightenment.org/E-MODULES-EXTRA/places.git
 	md5sums = SKIP
 
-pkgname = e17-places-svn
+pkgname = places-git
 
