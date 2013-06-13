@@ -14,7 +14,7 @@ pkgbase = gnu-efi-libs-git
 	source = gnu-efi::git+git://git.code.sf.net/p/gnu-efi/code#branch=master
 	source = gnu-efi-disable-use_ms_abi.patch
 	sha1sums = SKIP
-	sha1sums = e9f2c6cc7414b021cd3297791f911f721f120afa
+	sha1sums = 387ac12c85d8b94235d5ec27944e447de4fe0140
 
 pkgname = gnu-efi-libs-git
 

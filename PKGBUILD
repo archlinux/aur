@@ -29,7 +29,7 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'gnu-efi-disable-use_ms_abi.patch')
 
 sha1sums=('SKIP'
-          'e9f2c6cc7414b021cd3297791f911f721f120afa')
+          '387ac12c85d8b94235d5ec27944e447de4fe0140')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -81,7 +81,7 @@ build() {
 	cd "${srcdir}/${_gitname}_build/${_src_rootdir}/"
 	
 	## Disable ms_abi in gnu-efi Makefiles
-	patch -Np1 -i "${srcdir}/gnu-efi-disable-use_ms_abi.patch"
+	# patch -Np1 -i "${srcdir}/gnu-efi-disable-use_ms_abi.patch"
 	echo
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then

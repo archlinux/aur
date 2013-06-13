@@ -1,7 +1,7 @@
-diff --git a/gnu-efi-3.0/Make.defaults b/gnu-efi-3.0/Make.defaults
+diff --git a/Make.defaults b/Make.defaults
 index a22a1b4..4c95e7b 100644
---- a/gnu-efi-3.0/Make.defaults
-+++ b/gnu-efi-3.0/Make.defaults
+--- a/Make.defaults
++++ b/Make.defaults
 @@ -83,7 +83,7 @@ GCCNEWENOUGH := $(shell ( [ $(GCCVERSION) -gt "4" ]           \
                                 && [ $(GCCMINOR) -ge "7" ] ) ) \
                          && echo 1)
