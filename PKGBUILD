@@ -24,7 +24,9 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  ./autogen.sh --prefix=/usr
+  ./autogen.sh \
+    --prefix=/usr \
+    --disable-static
 
   make
 }
@@ -43,3 +45,4 @@ package() {
   install -Dm644 COPYING-PLAIN "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
 }
+
