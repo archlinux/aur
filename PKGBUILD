@@ -81,8 +81,8 @@ build() {
 	cd "${srcdir}/${_gitname}_build/${_src_rootdir}/"
 	
 	## Disable ms_abi in gnu-efi Makefiles
-	# patch -Np1 -i "${srcdir}/gnu-efi-disable-use_ms_abi.patch"
-	# echo
+	patch -Np1 -i "${srcdir}/gnu-efi-disable-use_ms_abi.patch"
+	echo
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		_build_gnu-efi-libs-x86_64
