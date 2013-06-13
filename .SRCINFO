@@ -1,4 +1,4 @@
-pkgbase = eweather-svn
+pkgbase = eweather-git
 	pkgdesc = Enlightenment module: Current weather and forcast gadget
 	pkgver = 84553
 	pkgrel = 1
@@ -6,12 +6,12 @@ pkgbase = eweather-svn
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = subversion
+	makedepends = git
 	depends = libeweather-svn
 	depends = enlightenment17
 	options = !libtool
-	source = svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/eweather
+	source = git://git.enlightenment.org/E-MODULES-EXTRA/eweather.git
 	md5sums = SKIP
 
-pkgname = eweather-svn
+pkgname = eweather-git
 

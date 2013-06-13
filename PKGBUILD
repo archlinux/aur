@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=eweather-svn
-_pkgname=eweather
+pkgname=eweather-git
+_pkgname=${pkgname%-git}
 pkgver=84553
 pkgrel=1
 pkgdesc="Enlightenment module: Current weather and forcast gadget"
@@ -10,15 +10,17 @@ arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1')
 depends=('libeweather-svn' 'enlightenment17')
-makedepends=('subversion')
+makedepends=('git')
 options=('!libtool')
-source=("svn+http://svn.enlightenment.org/svn/e/trunk/E-MODULES-EXTRA/$_pkgname")
+source=("git://git.enlightenment.org/E-MODULES-EXTRA/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$SRCDEST/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-  LC_ALL=C svn info | awk '/Last Changed Rev/ {print $4}'
+  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
+
+  echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
