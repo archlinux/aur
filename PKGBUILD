@@ -4,7 +4,7 @@
 pkgname="urxvt-tabbedex"
 pkgver=0.4
 pkgrel=2
-pkgdesc="tabbed extension for rxvt-unicode (urxvt) with several extra features, pathed for perl 5.18"
+pkgdesc="tabbed extension for rxvt-unicode (urxvt) with several extra features, patched for perl 5.18"
 arch=("any")
 url='http://github.com/stepb/urxvt-tabbedex'
 license=("GPL")
