@@ -39,10 +39,10 @@ build() {
 	make
 }
 
-#check() {
-	#cd ${_gitname}-build
-	#make check
-#}
+check() {
+	cd ${_gitname}-build
+	make check
+}
 
 package() {
 	cd ${_gitname}-build
