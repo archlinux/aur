@@ -1,0 +1,18 @@
+pkgbase = backports-patched
+	pkgdesc = Compat drivers provides drivers released on newer kernels backported for usage on older kernels. Patched flavor
+	pkgver = 3.10_rc1_2
+	pkgrel = 4
+	url = https://backports.wiki.kernel.org/index.php/Main_Page
+	install = backports.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-api-headers
+	makedepends = linux-headers>=4.0
+	depends = linux
+	optdepends = backports-frag+ack: wl-frag+ack patch
+	source = http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v3.10-rc1/backports-3.10-rc1-2.tar.xz
+	sha256sums = 1a7fb65ff46419a0bb5beb88f9de3db324d956910ead9158b53f24e05e58de69
+
+pkgname = backports-patched
+
