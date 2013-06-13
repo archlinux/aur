@@ -19,7 +19,7 @@ makedepends=('pciutils')
 options=('!strip' '!makeflags')
 
 if [[ "${CARCH}" == "x86_64" ]]; then
-	makedepends+=('lib32-glibc')
+	makedepends+=('gcc-multilib')
 fi
 
 conflicts=('gnu-efi-libs')
