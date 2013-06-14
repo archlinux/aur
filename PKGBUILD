@@ -17,8 +17,8 @@ optdepends=('gstreamer0.10-base-plugins: Video thumbnails'
             'gstreamer0.10-bad-plugins: Video thumbnails'
             'gstreamer0.10-ugly-plugins: Video thumbnails'
             'gstreamer0.10-ffmpeg: Video thumbnails')
-provides=('evas_generic_loaders')
-conflicts=('evas_generic_loaders' 'evas_generic_loaders-svn')
+provides=("evas_generic_loaders=$pkgver")
+conflicts=('evas_generic_loaders')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')

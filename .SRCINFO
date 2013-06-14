@@ -19,9 +19,8 @@ pkgbase = evas_generic_loaders-git
 	optdepends = gstreamer0.10-bad-plugins: Video thumbnails
 	optdepends = gstreamer0.10-ugly-plugins: Video thumbnails
 	optdepends = gstreamer0.10-ffmpeg: Video thumbnails
-	provides = evas_generic_loaders
+	provides = evas_generic_loaders=1.7.99.93.6fb0cfd
 	conflicts = evas_generic_loaders
-	conflicts = evas_generic_loaders-svn
 	options = !libtool
 	options = debug
 	source = git://git.enlightenment.org/core/evas_generic_loaders.git
