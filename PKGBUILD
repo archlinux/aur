@@ -6,7 +6,7 @@ pkgname=evas_generic_loaders-git
 _pkgname=evas_generic_loaders
 pkgver=1.7.99.93.6fb0cfd
 pkgrel=1
-pkgdesc="Loaders for Evas using the 'generic' module - Development version"
+pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('GPL2')
@@ -49,9 +49,9 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/$pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/$_pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/$_pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/$_pkgname/README"
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
