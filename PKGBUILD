@@ -1,8 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 _gitname=aov-html2epub
-_gitroot=https://github.com/angelortega/aov-html2epub.git
 pkgname=$_gitname-git
-pkgver=20120903
+pkgver=32.e05f223
 pkgrel=1
 pkgdesc='Minimal HTML to EPUB format converter.'
 arch=(any)
@@ -11,28 +10,16 @@ license=('public domain')
 depends=('bash')
 makedepends=('git')
 provides=($_gitname)
+source=("$_gitname::git+https://github.com/angelortega/$_gitname.git")
+md5sums=('SKIP')
 
-build() {
-  cd "$srcdir"
-  msg 'Connecting to GIT server....'
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg 'The local files are updated.'
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg 'GIT checkout done or server timeout'
-  msg 'Starting build...'
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+pkgver() {
+  cd "$_gitname"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$_gitname"
   install -d "$pkgdir/usr/bin"
   make PREFIX="$pkgdir/usr/bin" install
   install -d "$pkgdir/usr/share/doc/$pkgname"
