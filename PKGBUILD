@@ -6,7 +6,7 @@ pkgver=20130106.5ffa40e
 pkgrel=1
 pkgdesc="A file verification and repair tool"
 url="https://github.com/BlackIkeEagle/par2cmdline"
-license="GPL"
+license=("GPL")
 makedepends=('git')
 depends=('gcc-libs')
 arch=('i686' 'x86_64')
@@ -21,13 +21,8 @@ pkgver() {
 }
 
 build() {
-	msg "creating build directory"
-	cd ${srcdir}
-	[ -d ${_gitname}-build ] && rm -rf ${_gitname}-build
-	/usr/share/git/workdir/git-new-workdir ${_gitname} ${_gitname}-build master
-
 	msg "Starting make..."
-	cd ${_gitname}-build
+	cd ${_gitname}
 
 	# automake
 	aclocal
@@ -40,11 +35,11 @@ build() {
 }
 
 check() {
-	cd ${_gitname}-build
+	cd ${_gitname}
 	make check
 }
 
 package() {
-	cd ${_gitname}-build
-	make DESTDIR=$startdir/pkg install
+	cd ${_gitname}
+	make DESTDIR=$pkgdir install
 }
