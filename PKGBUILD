@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.9
-pkgver=3.9.5
+pkgver=3.9.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,9 +19,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
-         'aa22187ae5cd482a69097e9e59244491'
-         '1eb73dcb091d2671138f87fe62bd9735'
-         '24dff05a9f8d53e92457077e6ca6b6ae'
+         '897cffc5167a561b38c6748e7f0a4215'
+         '5ce5e2c62107182585ea66a1ef936975'
+         '89b4f06a386f9541691f9b3f694da2e5'
          'eb14dcfd80c00852ef81ded6e826826a'
          'f3def2cefdcbb954c21d8505d23cc83c')
 
