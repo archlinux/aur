@@ -10,6 +10,7 @@ pkgbase = emotion_generic_players-git
 	depends = efl-git
 	depends = vlc
 	provides = emotion_generic_players=1.7.99.41.c76724f
+	options = debug
 	source = git://git.enlightenment.org/core/emotion_generic_players.git
 	md5sums = SKIP
 
