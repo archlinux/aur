@@ -4,7 +4,7 @@
 
 pkgname=evas_generic_loaders-git
 _pkgname=evas_generic_loaders
-pkgver=1.7.99.92.5c4445b
+pkgver=1.7.99.93.6fb0cfd
 pkgrel=1
 pkgdesc="Loaders for Evas using the 'generic' module - Development version"
 arch=('i686' 'x86_64')
@@ -22,7 +22,6 @@ conflicts=('evas_generic_loaders' 'evas_generic_loaders-svn')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
-buildflags="-fvisibility=hidden"
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -37,6 +36,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
+  export CFLAGS="$CFLAGS -fvisibility=hidden"
+
   ./autogen.sh --prefix=/usr
 
   make
@@ -48,9 +49,9 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
-  install -Dm644 NEWS "$pkgdir/usr/share/$pkgname/NEWS"
   install -Dm644 ChangeLog "$pkgdir/usr/share/$pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/$pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
