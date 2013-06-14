@@ -1,6 +1,6 @@
 pkgbase = emotion_generic_players-git
 	pkgdesc = Players for Emotion using the 'generic' module - Currently VLC
-	pkgver = 1.7.99.x
+	pkgver = 1.7.99.41.c76724f
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
