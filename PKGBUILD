@@ -36,6 +36,7 @@ build() {
 
 check() {
 	cd ${_gitname}
+	export MAKEFLAGS="-j1"
 	make check
 }
 
