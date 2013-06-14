@@ -4,13 +4,13 @@ pkgname=emotion_generic_players-git
 _pkgname=emotion_generic_players
 pkgver=1.7.99.41.c76724f
 pkgrel=1
-pkgdesc="Players for Emotion using the 'generic' module - Currently VLC"
+pkgdesc="Emotion external binary executable players - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'vlc')
 makedepends=('git')
-conflicts=('emotion_generic_players-svn')
+provides=("emotion_generic_players=$pkgver")
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
 
