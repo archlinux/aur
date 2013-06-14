@@ -1,0 +1,15 @@
+pkgbase = gophrier
+	pkgdesc = A Gopher server
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://gophrier.tuxfamily.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://download.tuxfamily.org/gophrier/gophrier-0.2.3.tar.gz
+	source = gophrier.service
+	sha256sums = 90581c1f3abc8b3f1582adb4b553cd1b0e1edd398a864361d082455d8ad3cd00
+	sha256sums = adee1e8c1a3c7fc91b2849c452fdc7a58ac26a9ee4dd7b6e4f375e87d08afa9d
+
+pkgname = gophrier
+

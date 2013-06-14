@@ -1,0 +1,10 @@
+[Unit]
+Description=Gophrier Gopher server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gophrier -d 0
+
+[Install]
+WantedBy=multi-user.target
