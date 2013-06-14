@@ -1,3 +1,12 @@
+2013-06-14 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.0.4_01-1
+	Version bump.
+
+	Upstream changelog:
+	- Fixed spurious mod conflict warning.
+	- Fixed mapping order of alternate RenderFace methods.
+
 2013-05-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.0.4-1
