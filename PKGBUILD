@@ -9,14 +9,15 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=17dc893
+pkgver=a723e86
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/vathpela/libefivar"
-license=('GPL2')
-
+license=('LGPL2.1')
 depends=('glibc')
-options=('!strip' '!emptydirs' 'zipman' '!libtool' 'docs')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+options=('strip' 'emptydirs' 'zipman' 'libtool' 'docs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
@@ -42,11 +43,7 @@ build() {
 	make clean || true
 	echo
 	
-	sed 's|/usr/lib64/|/usr/lib/|g' -i "${srcdir}/${_gitname}_build/Make.defaults"
-	sed 's|CFLAGS	?=|CFLAGS	+=|g' -i "${srcdir}/${_gitname}_build/Make.defaults"
-	sed 's|CCLDFLAGS ?=|CCLDFLAGS +=|g' -i "${srcdir}/${_gitname}_build/Make.defaults"
-	
-	LIBDIR="/usr/lib/" make all
+	make LIBDIR="/usr/lib/"
 	echo
 	
 }
@@ -60,7 +57,7 @@ package() {
 	
 	chmod 0644 "${pkgdir}/usr/lib/libefivar.a"
 	
-	# install -d "${pkgdir}/usr/bin"
-	# install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/libefivar-tester"
+	install -d "${pkgdir}/usr/bin"
+	install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/libefivar-tester"
 	
 }

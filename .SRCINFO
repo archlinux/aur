@@ -1,15 +1,18 @@
 pkgbase = libefivar-git
 	pkgdesc = Library to manipulate EFI variables - GIT Version
-	pkgver = 17dc893
+	pkgver = a723e86
 	pkgrel = 1
 	url = https://github.com/vathpela/libefivar
 	arch = x86_64
-	license = GPL2
+	arch = i686
+	license = LGPL2.1
 	depends = glibc
-	options = !strip
-	options = !emptydirs
+	provides = libefivar
+	conflicts = libefivar
+	options = strip
+	options = emptydirs
 	options = zipman
-	options = !libtool
+	options = libtool
 	options = docs
 	source = libefivar::git+git://github.com/vathpela/libefivar.git#branch=master
 	sha1sums = SKIP
