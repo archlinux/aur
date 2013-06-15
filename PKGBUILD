@@ -3,7 +3,7 @@
 
 pkgname=slic3r-git
 pkgver=0
-pkgrel=7
+pkgrel=8
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
@@ -20,8 +20,9 @@ provides=('slic3r')
 conflicts=('slic3r')
 #Consider uncommenting line below in case of false negative test results ;)
 #BUILDENV+=('!check')
-source=('slic3r.desktop')
-md5sums=('1b561afff48c79f86889664375d179ed')
+source=('slic3r.desktop' 'slic3r.pl')
+md5sums=('1b561afff48c79f86889664375d179ed'
+         '1371d698799ee97a43d22f6436a2e619')
 
 _gitroot="git://github.com/alexrj/Slic3r"
 _gitname="Slic3r"
@@ -45,6 +46,8 @@ prepare() {
     #TODO: check if it's the same origin
   else
     git clone --depth=1 $_gitroot $_gitname
+    # specific branch
+    #git clone --depth=1 -b branch_name $_gitroot $_gitname
   fi
 
   msg "GIT checkout done or server timeout"
@@ -59,9 +62,6 @@ prepare() {
 
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
-
-  # Workaround shitload of issue via setting LC_ALL=C ... workaround that doesn't work :<
-  #sed -i '1s"^#!.\+$"#!/usr/bin/env LC_ALL=C /usr/bin/perl"' ./slic3r.pl
 
   # Why true? cuz pacman is crazy... and it still doesn't work as intended
   true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
@@ -96,6 +96,9 @@ package () {
 
   install -d $pkgdir/usr/share/applications
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
+
+  # Welcome ultimate ugly - u² hack 
+  install -m 755 $srcdir/slic3r.pl $pkgdir/usr/bin/slic3r.pl
 
   # Why double? 1st one was just for messages, this one is for real
   true && pkgver=$_pkgver
