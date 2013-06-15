@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20120531
+pkgver=20130615
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -22,7 +22,7 @@ backup=()
 
 install=context-minimals-git.install
 
-PKGEXT=".pkg.tar"
+PKGEXT=".pkg.tar.gz"
 
 # ConTeXt minimals uses a different naming convention for architectures
 
@@ -87,8 +87,11 @@ build() {
    fi
    ln -s $_texlivefontdir $srcdir/tex/texmf-fonts/fonts
  fi
+}
 
 
+package()
+{
  install -d $pkgdir/opt || return 1
  msg "Copying files"
  cp -r --preserve=links $srcdir/tex $pkgdir/$_dest || return 1
