@@ -44,7 +44,7 @@ prepare() {
     msg "The local files are updated."
     #TODO: check if it's the same origin
   else
-    git clone -b perl-518 --depth=1 $_gitroot $_gitname
+    git clone --depth=1 $_gitroot $_gitname
   fi
 
   msg "GIT checkout done or server timeout"
