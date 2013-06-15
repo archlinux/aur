@@ -102,6 +102,10 @@ package () {
   install -d $pkgdir/usr/share/applications
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
 
+  # Just to have a more sane bin name also, and automagically fix perl LANG
+  # problems
+  install -m 755 $srcdir/slic3r $pkgdir/usr/bin/
+
   # Why double? 1st one was just for messages, this one is for real
   true && pkgver=$_pkgver
 }
