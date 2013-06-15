@@ -1,8 +1,8 @@
-# Maintainer: Swift Geek <swifgeek ɐ google m č0m>
-# Contributor: Nick Østergaard <oe.nick at gmail dot com>
+# Contributor: Swift Geek <swifgeek at google>
+# Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=slic3r
-pkgver=0
+pkgver=0.9.10b
 pkgrel=1
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
@@ -64,14 +64,6 @@ prepare() {
 
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
-
-  # Workaround shitload of issue via setting LC_ALL=C ... workaround that doesn't work :<
-  #sed -i '1s"^#!.\+$"#!/usr/bin/env LC_ALL=C /usr/bin/perl"' ./slic3r.pl
-
-  # Why true? cuz pacman is crazy... and it still doesn't work as intended
-  true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
-  export _pkgver="$pkgver"
-  msg2 "Fetched $_pkgver"
 }
 
 build() {
@@ -105,8 +97,5 @@ package () {
   # Just to have a more sane bin name also, and automagically fix perl LANG
   # problems
   install -m 755 $srcdir/slic3r $pkgdir/usr/bin/
-
-  # Why double? 1st one was just for messages, this one is for real
-  true && pkgver=$_pkgver
 }
 
