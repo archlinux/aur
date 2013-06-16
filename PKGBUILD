@@ -11,7 +11,7 @@ _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
 pkgver=a0a53b2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('x86_64' 'i686')
@@ -28,12 +28,12 @@ options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'gummiboot-ConsoleControl-use-EFIAPI.patch'
+        'gummiboot-ConsoleControl-Protocol-use-EFIAPI.patch'
         'loader.conf'
         'arch.conf')
 
 sha1sums=('SKIP'
-          '23b7760dff8f2cd17bfee4f9202be6854e54bbc6'
+          '48895792d4b9fc998024074c6be1c5f693cc360f'
           '82a59f90d9138c26f8db52bb8e94991602cf1edd'
           'aff6e152c3f7494e6113a8e2f073810366433015')
 
@@ -63,8 +63,8 @@ build() {
 	
 	# sed 's|EFI_STATUS efi_main|EFI_STATUS EFIAPI efi_main|g' -i "${srcdir}/${_gitname}_build/src/efi/gummiboot.c" || true
 	
-	## Apply ConsoleControl - Use EFIAPI - patch
-	patch -Np1 -i "${srcdir}/gummiboot-ConsoleControl-use-EFIAPI.patch" || true
+	## Apply ConsoleControl Protocol - Use EFIAPI - patch
+	patch -Np1 -i "${srcdir}/gummiboot-ConsoleControl-Protocol-use-EFIAPI.patch" || true
 	echo
 	
 	./autogen.sh

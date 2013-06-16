@@ -1,3 +1,17 @@
+commit 7ced4330a23c94e696fe42b9e49a4699fb82e651
+Author: Keshav Padram <the.ridikulus.rat@gmail.com>
+Date:   Sun Jun 16 19:45:13 2013 +0530
+
+    EFI_CONSOLE_CONTROL_PROTOCOL structs in console_text_mode() should be declared as EFIAPI
+    
+    EFI_CONSOLE_CONTROL_PROTOCOL structs in console_text_mode() previously
+    were not declared as EFIAPI, due to which gummiboot compiled
+    with gnu-efi 3.0t (with GNU_EFI_USE_MS_ABI enabled) hanged. Fix this by
+    declaring EFI_CONSOLE_CONTROL_PROTOCOL_{GET_MODE,SET_MODE,LOCK_STD_IN}
+    as EFIAPI.
+    
+    Tested in Lenovo Thinkpad E430, UEFI 2.3.1, x86_64 firmware.
+
 diff --git a/src/efi/gummiboot.c b/src/efi/gummiboot.c
 index 20da9ce..ecba84f 100644
 --- a/src/efi/gummiboot.c
