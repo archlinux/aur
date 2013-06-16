@@ -10,7 +10,7 @@ _src_rootdir="${_gitname}-3.0"
 
 pkgname="gnu-efi-libs-git"
 pkgver=8cb1e87
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for building x86_64 and ia32 UEFI Applications using GNU toolchain - Sourceforge GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
@@ -83,9 +83,6 @@ build() {
 	## Disable ms_abi in gnu-efi Makefiles
 	# patch -Np1 -i "${srcdir}/gnu-efi-disable-use_ms_abi.patch"
 	echo
-	
-	## Use -mabi=ms gcc flag
-	# sed 's|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args -mabi=ms|g' -i "${srcdir}/${_gitname}_build/${_src_rootdir}/Make.defaults" || true
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		_build_gnu-efi-libs-x86_64
