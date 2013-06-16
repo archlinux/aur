@@ -84,6 +84,9 @@ build() {
 	# patch -Np1 -i "${srcdir}/gnu-efi-disable-use_ms_abi.patch"
 	echo
 	
+	## Use -mabi=ms gcc flag
+	# sed 's|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args -mabi=ms|g' -i "${srcdir}/${_gitname}_build/${_src_rootdir}/Make.defaults" || true
+	
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		_build_gnu-efi-libs-x86_64
 	fi
