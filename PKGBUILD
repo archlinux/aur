@@ -3,7 +3,7 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-git
-_pkgname=$(pkgname%-git)
+_pkgname=${pkgname%-git}
 true && pkgname=('elementary-git' 'elementary_test-git')
 pkgver=1.7.99.8020.ff9294b
 pkgrel=1

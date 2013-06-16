@@ -11,12 +11,12 @@ pkgbase = elementary-git
 	depends = efl-git
 	options = !libtool
 	options = debug
-	source = git://git.enlightenment.org/core/.git
+	source = git://git.enlightenment.org/core/elementary.git
 	md5sums = SKIP
 
 pkgname = elementary-git
-	provides = =1.7.99.8020.ff9294b
-	conflicts = 
+	provides = elementary=1.7.99.8020.ff9294b
+	conflicts = elementary
 
 pkgname = elementary_test-git
 	provides = elementary_test=1.7.99.8020.ff9294b
