@@ -5,7 +5,7 @@ _python=python2
 _name=musicbrainzngs
 
 pkgname=$_python-$_name-git
-pkgver=0.3_3.g41236df
+pkgver=0.4_12.g306075f
 pkgrel=1
 pkgdesc="bindings for the MusicBrainz NGS service"
 url="https://github.com/alastair/python-musicbrainz-ngs"
@@ -13,7 +13,7 @@ license="BSD"
 arch=('any')
 depends=("$_python")
 makedepends=("$_python-distribute" 'git')
-provides=("$_python-musicbrainzngs=0.3")
+provides=("$_python-musicbrainzngs=$pkgver")
 conflicts=("$_python-musicbrainzngs")
 source=('git+https://github.com/alastair/python-musicbrainz-ngs.git')
 md5sums=('SKIP')
