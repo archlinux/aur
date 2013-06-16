@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=emotion_generic_players-git
-_pkgname=emotion_generic_players
+_pkgname=${pkgname%-git}
 pkgver=1.7.99.41.c76724f
 pkgrel=1
 pkgdesc="Emotion external binary executable players - Development version"
@@ -10,8 +10,8 @@ url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'vlc')
 makedepends=('git')
-provides=("emotion_generic_players=$pkgver")
-conflicts=('emotion_generic_players')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
 options=('debug')
