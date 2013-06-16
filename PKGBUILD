@@ -28,10 +28,12 @@ options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'gummiboot-ConsoleControl-use-EFIAPI.patch'
         'loader.conf'
         'arch.conf')
 
 sha1sums=('SKIP'
+          '23b7760dff8f2cd17bfee4f9202be6854e54bbc6'
           '82a59f90d9138c26f8db52bb8e94991602cf1edd'
           'aff6e152c3f7494e6113a8e2f073810366433015')
 
@@ -57,9 +59,13 @@ build() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	sed 's|-DGNU_EFI_USE_MS_ABI|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args|g' -i "${srcdir}/${_gitname}_build/Makefile.am" || true
+	# sed 's|-DGNU_EFI_USE_MS_ABI|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args|g' -i "${srcdir}/${_gitname}_build/Makefile.am" || true
 	
 	# sed 's|EFI_STATUS efi_main|EFI_STATUS EFIAPI efi_main|g' -i "${srcdir}/${_gitname}_build/src/efi/gummiboot.c" || true
+	
+	## Apply ConsoleControl - Use EFIAPI - patch
+	patch -Np1 -i "${srcdir}/gummiboot-ConsoleControl-use-EFIAPI.patch" || true
+	echo
 	
 	./autogen.sh
 	echo
