@@ -1,7 +1,7 @@
 pkgbase = gummiboot-git
 	pkgdesc = Simple text-mode UEFI Boot Manager - GIT Version
-	pkgver = a0a53b2
-	pkgrel = 3
+	pkgver = cbc63ae
+	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/gummiboot
 	install = gummiboot.install
 	arch = x86_64
@@ -22,13 +22,11 @@ pkgbase = gummiboot-git
 	options = !strip
 	options = !makeflags
 	source = gummiboot::git+git://anongit.freedesktop.org/gummiboot#branch=master
-	source = gummiboot-ConsoleControl-Protocol-use-EFIAPI.patch
 	source = loader.conf
 	source = arch.conf
 	sha1sums = SKIP
-	sha1sums = 48895792d4b9fc998024074c6be1c5f693cc360f
-	sha1sums = 82a59f90d9138c26f8db52bb8e94991602cf1edd
-	sha1sums = aff6e152c3f7494e6113a8e2f073810366433015
+	sha1sums = 7a44df90e4988254c518faae61a0aa259b09a3f2
+	sha1sums = 99b7cd4160ab039f63ce7d8d1e05b275aa2b2965
 
 pkgname = gummiboot-git
 

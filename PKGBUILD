@@ -10,8 +10,8 @@ _gitbranch="master"
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=a0a53b2
-pkgrel=3
+pkgver=cbc63ae
+pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('x86_64' 'i686')
@@ -28,14 +28,12 @@ options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'gummiboot-ConsoleControl-Protocol-use-EFIAPI.patch'
         'loader.conf'
         'arch.conf')
 
 sha1sums=('SKIP'
-          '48895792d4b9fc998024074c6be1c5f693cc360f'
-          '82a59f90d9138c26f8db52bb8e94991602cf1edd'
-          'aff6e152c3f7494e6113a8e2f073810366433015')
+          '7a44df90e4988254c518faae61a0aa259b09a3f2'
+          '99b7cd4160ab039f63ce7d8d1e05b275aa2b2965')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -44,24 +42,16 @@ pkgver() {
 
 build() {
 	
-	if [[ "${CARCH}" != "x86_64" ]]; then
-		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
-		exit 1
-	fi
-	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	cd "${srcdir}/${_gitname}_build/"
 	
+	## Unset all compiler FLAGS
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
-	
-	## Apply ConsoleControl Protocol - Use EFIAPI - patch
-	patch -Np1 -i "${srcdir}/gummiboot-ConsoleControl-Protocol-use-EFIAPI.patch" || true
-	echo
 	
 	./autogen.sh
 	echo
@@ -80,6 +70,7 @@ package() {
 	make DESTDIR="${pkgdir}/" install
 	echo
 	
+	## Strip all debug code from /usr/bin/gummiboot
 	strip "${pkgdir}/usr/bin/gummiboot"
 	
 	## Install gummiboot example configuration files
