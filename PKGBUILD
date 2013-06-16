@@ -3,12 +3,12 @@
 
 pkgname=slic3r
 pkgver=0.9.10b
-pkgrel=1
+pkgrel=2
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
-depends=('perl' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale')
+depends=('perl=5.18.0' 'perl-moo' 'perl-boost-geometry-utils>=0.13' 'perl-math-clipper>=1.17' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale')
 makedepends=('git')
 optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
