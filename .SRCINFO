@@ -1,12 +1,11 @@
 pkgbase = perl-xs-object-magic
 	pkgdesc = Opaque, extensible XS pointer backed objects using sv_magic
 	pkgver = 0.04
-	pkgrel = 2
+	pkgrel = 3
 	url = http://metacpan.org/release/XS-Object-Magic
 	arch = i686
 	arch = x86_64
-	license = Perl
-	depends = perl
+	license = Perl Artistic
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/F/FL/FLORA/XS-Object-Magic-0.04.tar.gz
 	md5sums = ce2e38addab1c7e541ca842019cba4a4
