@@ -1,7 +1,7 @@
 pkgbase = xgalaga
 	pkgdesc = An open source remake of the classic arcade game Galaga
 	pkgver = 2.1.1.0
-	pkgrel = 4
+	pkgrel = 1
 	url = http://rumsey.org/xgal.html
 	install = xgalaga.install
 	arch = i686
@@ -9,12 +9,13 @@ pkgbase = xgalaga
 	license = GPL
 	depends = libxmu
 	depends = libxpm
+	backup = var/lib/xgalaga/scores
 	source = http://downloads.sourceforge.net/xgalaga/xgalaga-2.1.1.0.tar.gz
 	source = xgalaga.patch
 	source = xgalaga.png
 	source = xgalaga.desktop
 	md5sums = f37c3377b245d2d53b33eb489966bf28
-	md5sums = f96b73645d1ebbb12d8b3de5d4ec94fc
+	md5sums = db024441d3bc6d41033891ab71e2cece
 	md5sums = 3168c3fec9bd8345946ac93c6b9d7b32
 	md5sums = e8fbde4e6049202a087ebc7daf0f0170
 
