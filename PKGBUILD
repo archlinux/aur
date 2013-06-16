@@ -4,7 +4,7 @@
 pkgname="perl-audio-mixer"
 _cpanname="Audio-Mixer"
 pkgver="0.7"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Sound mixer control using ioctl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
