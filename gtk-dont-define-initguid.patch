@@ -1,0 +1,11 @@
+--- gdk/win32/gdkdnd-win32.c.orig	2013-04-04 21:15:55.689671748 +0200
++++ gdk/win32/gdkdnd-win32.c	2013-04-04 21:16:02.083782327 +0200
+@@ -70,8 +70,6 @@
+  *
+  */
+  
+-#define INITGUID
+-
+ #include "gdkdnd.h"
+ #include "gdkproperty.h"
+ #include "gdkinternals.h"

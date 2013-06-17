@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk2
 	pkgdesc = GTK+ is a multi-platform toolkit (v2) (mingw-w64)
-	pkgver = 2.24.18
+	pkgver = 2.24.19
 	pkgrel = 1
 	url = http://www.gtk.org
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = mingw-w64-gtk2
 	options = !libtool
 	options = !strip
 	options = !buildflags
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-2.24.18.tar.xz
-	source = http://pkgs.fedoraproject.org/cgit/mingw-gtk2.git/plain/gtk-dont-define-initguid.patch?id=3224e445dad240da5f5ebfe371e8c9f627459089
-	md5sums = 4309379acdcd8abfb72ea89bce3e7746
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-2.24.19.tar.xz
+	source = gtk-dont-define-initguid.patch
+	md5sums = 490236abeb0d9351b2a34e9aca70e1de
 	md5sums = 4038939df90f80ea6923d67afff28e03
 
 pkgname = mingw-w64-gtk2

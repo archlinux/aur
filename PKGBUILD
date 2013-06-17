@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gtk2
-pkgver=2.24.18
+pkgver=2.24.19
 pkgrel=1
 pkgdesc="GTK+ is a multi-platform toolkit (v2) (mingw-w64)"
 arch=(any)
@@ -15,15 +15,18 @@ mingw-w64-gdk-pixbuf2)
 options=(!libtool !strip !buildflags)
 source=(
 "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-"http://pkgs.fedoraproject.org/cgit/mingw-gtk2.git/plain/gtk-dont-define-initguid.patch?id=3224e445dad240da5f5ebfe371e8c9f627459089")
-md5sums=('4309379acdcd8abfb72ea89bce3e7746'
+"gtk-dont-define-initguid.patch")
+
+# The second source file is downloaded from Fedora Project
+
+md5sums=("490236abeb0d9351b2a34e9aca70e1de"
 		"4038939df90f80ea6923d67afff28e03")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  patch -Np0 < '../gtk-dont-define-initguid.patch?id=3224e445dad240da5f5ebfe371e8c9f627459089'
+  patch -Np0 < '../gtk-dont-define-initguid.patch'
   for _arch in ${_architectures}; do
     export CFLAGS="-O2 -mms-bitfields"
     export CXXFLAGS="${CFLAGS}"
