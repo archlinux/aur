@@ -7,31 +7,27 @@ _gitname="gnu-efi-fedora"
 _gitbranch="fedora"
 
 pkgname="gnu-efi-libs-fedora-git"
-pkgver=51ddcca
+pkgver=430c83a
 pkgrel=1
-pkgdesc="Library for building x86_64 and i386 UEFI Applications using GNU toolchain - Fedora GIT Version"
+pkgdesc="Library for building x86_64 and ia32 UEFI Applications using GNU toolchain - Fedora GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 makedepends=('pciutils')
 options=('!strip' '!makeflags')
 
 if [[ "${CARCH}" == "x86_64" ]]; then
-	makedepends+=('lib32-glibc')
+	makedepends+=('gcc-multilib')
 fi
 
 conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'gnu-efi-fix-x86_64-uefi-call-wrapper.patch'
-        'gnu-efi-fedora-disable-USE_MS_ABI.patch'
-        'gnu-efi-fedora-fix-makefile-vars.patch')
+        'gnu-efi-fix-x86_64-uefi-call-wrapper.patch')
 
 sha1sums=('SKIP'
-          '8918de3aefba2a3dc367bbb28611394c4c300a6d'
-          '5e6b30cdf2c1d89ccb3f5314bb3e0ef0d45b0001'
-          '09144dd3ec664b96714fe92d823e31bd1bb747e9')
+          '8918de3aefba2a3dc367bbb28611394c4c300a6d')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -46,27 +42,29 @@ _build_gnu-efi-libs-x86_64() {
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
-	ARCH="x86_64" make -j1
+	make ARCH="x86_64" -j1
 	echo
 	
-	ARCH="x86_64" make -j1 -C apps all
+	make ARCH="x86_64" -j1 -C apps all
 	echo
 }
 
-_build_gnu-efi-libs-i386() {
-	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-i386"
-	cd "${srcdir}/${_gitname}_build-i386/"
+_build_gnu-efi-libs-ia32() {
+	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build-ia32"
+	cd "${srcdir}/${_gitname}_build-ia32/"
 	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
+	unset MAKEFLAGS
 	
-	ARCH="ia32" make -j1
+	make ARCH="ia32" -j1
 	echo
 	
-	ARCH="ia32" make -j1 -C apps all
+	make ARCH="ia32" -j1 -C apps all
 	echo
 }
 
@@ -74,25 +72,23 @@ build() {
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
-	cd "${srcdir}/${_gitname}_build"
+	cd "${srcdir}/${_gitname}_build/"
 	
 	## Fix x86_64 UEFI call wrapper http://sourceforge.net/tracker/?func=detail&aid=3576537&group_id=163609&atid=828423
 	patch -Np1 -i "${srcdir}/gnu-efi-fix-x86_64-uefi-call-wrapper.patch"
 	echo
 	
-	## Disable GCC MS_ABI CFLAGS
-	patch -Np1 -i "${srcdir}/gnu-efi-fedora-disable-USE_MS_ABI.patch"
-	echo
+	## Disable GNU_EFI_USE_MS_ABI CFLAGS
+	# sed 's|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args --std=c11|--std=c11|g' -i "${srcdir}/${_gitname}_build/Make.defaults" || true
 	
-	## Fix Makefiles to enable compile for both UEFI arch
-	patch -Np1 -i "${srcdir}/gnu-efi-fedora-fix-makefile-vars.patch"
-	echo
+	## Add  -fno-stack-check to CFLAGS
+	sed 's|-fno-stack-protector|-fno-stack-protector -fno-stack-check|g' -i "${srcdir}/${_gitname}_build/Make.defaults" || true
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		_build_gnu-efi-libs-x86_64
 	fi
 	
-	_build_gnu-efi-libs-i386
+	_build_gnu-efi-libs-ia32
 }
 
 _package_gnu-efi-libs-x86_64() {
@@ -101,18 +97,18 @@ _package_gnu-efi-libs-x86_64() {
 	make ARCH="x86_64" INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/lib" install
 	echo
 	
-	install -d "${pkgdir}/usr/share/gnu-efi/x86_64/"
-	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/x86_64/"
+	install -d "${pkgdir}/usr/share/gnu-efi/apps/x86_64/"
+	install -D -m0644 "${srcdir}/${_gitname}_build-x86_64/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/x86_64/"
 }
 
-_package_gnu-efi-libs-i386() {
-	cd "${srcdir}/${_gitname}_build-i386/"
+_package_gnu-efi-libs-ia32() {
+	cd "${srcdir}/${_gitname}_build-ia32/"
 	
 	make ARCH="ia32" INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/${_LIBDIR32}" install
 	echo
 	
-	install -d "${pkgdir}/usr/share/gnu-efi/i386/"
-	install -D -m0644 "${srcdir}/${_gitname}_build-i386/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/i386/"
+	install -d "${pkgdir}/usr/share/gnu-efi/apps/ia32/"
+	install -D -m0644 "${srcdir}/${_gitname}_build-ia32/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/ia32/"
 }
 
 package() {
@@ -120,9 +116,9 @@ package() {
 		_package_gnu-efi-libs-x86_64
 		
 		_LIBDIR32="lib32"
-		_package_gnu-efi-libs-i386
+		_package_gnu-efi-libs-ia32
 	else
 		_LIBDIR32="lib"
-		_package_gnu-efi-libs-i386
+		_package_gnu-efi-libs-ia32
 	fi
 }
