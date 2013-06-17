@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="shim-efi-x86_64"
 pkgname="${_pkgname}-git"
 
-pkgver=53ba265
+pkgver=0.4.1.g23002e8.23002e8
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
 url="https://github.com/mjg59/shim"
@@ -16,7 +16,7 @@ license=('GPL')
 
 makedepends=('git' 'gnu-efi-libs')
 
-depends=('dosfstools' 'efibootmgr')
+depends=('pesign' 'dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}")
@@ -30,7 +30,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --always | sed 's|-|.|g'
+	echo "$(git describe --tags).$(git describe --always)" | sed 's|-|.|g'
 }
 
 build() {
@@ -43,18 +43,13 @@ build() {
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
-	cd "${srcdir}/${_gitname}_build"
+	cd "${srcdir}/${_gitname}_build/"
+	
+	git clean -x -d -f
 	echo
 	
 	sed 's|/usr/lib64/gnuefi|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Makefile"
 	sed 's|/usr/lib64|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Makefile"
-	echo
-	
-	make clean || true
-	rm -f "${srcdir}/${_gitname}_build/shim.so" || true
-	rm -f "${srcdir}/${_gitname}_build/shim.efi" || true
-	rm -f "${srcdir}/${_gitname}_build/shim.efi.debug" || true
-	echo
 	
 	unset CFLAGS
 	unset CPPFLAGS

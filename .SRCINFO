@@ -1,6 +1,6 @@
 pkgbase = shim-efi-x86_64-git
 	pkgdesc = Simple bootloader for x86_64 UEFI Secure Boot - GIT Version
-	pkgver = 53ba265
+	pkgver = 0.4.1.g23002e8.23002e8
 	pkgrel = 1
 	url = https://github.com/mjg59/shim
 	install = shim-efi-x86_64.install
@@ -8,6 +8,7 @@ pkgbase = shim-efi-x86_64-git
 	license = GPL
 	makedepends = git
 	makedepends = gnu-efi-libs
+	depends = pesign
 	depends = dosfstools
 	depends = efibootmgr
 	optdepends = mactel-boot: For bless command in Apple Mac systems
