@@ -1,7 +1,7 @@
 pkgbase = elilo-efi
 	pkgdesc = UEFI version of LILO Boot Loader
 	pkgver = 3.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/elilo/
 	install = elilo-efi.install
 	arch = any
@@ -10,14 +10,14 @@ pkgbase = elilo-efi
 	depends = dosfstools
 	depends = efibootmgr
 	options = !strip
-	options = purge
+	options = !purge
 	options = !libtool
 	options = !emptydirs
 	options = !makeflags
 	source = http://downloads.sourceforge.net/project/elilo/elilo/elilo-3.16/elilo-3.16-all.tar.gz
-	source = elilo.conf.example
+	source = elilo.conf
 	sha1sums = bd0bd4f1b3dc2d23a304f957ffbf907ae104f323
-	sha1sums = b961f6181504f7d1bf4b14f76c0477159fc54445
+	sha1sums = 2366629b137572f91774a0bdf907864dd7fe3172
 
 pkgname = elilo-efi
 
