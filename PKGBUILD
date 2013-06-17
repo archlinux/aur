@@ -1,22 +1,22 @@
 # Maintainer : Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="git://github.com/vathpela/libefivar.git"
-_gitname="libefivar"
+_gitroot="git://github.com/vathpela/efivar.git"
+_gitname="efivar"
 _gitbranch="master"
 
-_pkgname="libefivar"
+_pkgname="efivar"
 pkgname="${_pkgname}-git"
 
-pkgdesc="Library to manipulate EFI variables - GIT Version"
+pkgdesc="Tools and library to manipulate UEFI variables - GIT Version"
 
-pkgver=138640c
+pkgver=321b638
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/vathpela/libefivar"
+url="https://github.com/vathpela/efivar"
 license=('LGPL2.1')
 depends=('glibc')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
+provides=("${_pkgname}" 'libefivar' 'libefivar-git')
 options=('strip' 'emptydirs' 'zipman' 'libtool' 'docs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
@@ -55,9 +55,7 @@ package() {
 	make -j1 V=1 INSTALLROOT="${pkgdir}/" LIBDIR="/usr/lib/" install
 	echo
 	
-	chmod 0644 "${pkgdir}/usr/lib/libefivar.a"
-	
 	install -d "${pkgdir}/usr/bin"
-	install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/libefivar-tester"
+	install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/efivar-tester"
 	
 }

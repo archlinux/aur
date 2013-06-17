@@ -1,21 +1,25 @@
-pkgbase = libefivar-git
-	pkgdesc = Library to manipulate EFI variables - GIT Version
-	pkgver = 138640c
+pkgbase = efivar-git
+	pkgdesc = Tools and library to manipulate UEFI variables - GIT Version
+	pkgver = 321b638
 	pkgrel = 1
-	url = https://github.com/vathpela/libefivar
+	url = https://github.com/vathpela/efivar
 	arch = x86_64
 	arch = i686
 	license = LGPL2.1
 	depends = glibc
+	provides = efivar
 	provides = libefivar
+	provides = libefivar-git
+	conflicts = efivar
 	conflicts = libefivar
+	conflicts = libefivar-git
 	options = strip
 	options = emptydirs
 	options = zipman
 	options = libtool
 	options = docs
-	source = libefivar::git+git://github.com/vathpela/libefivar.git#branch=master
+	source = efivar::git+git://github.com/vathpela/efivar.git#branch=master
 	sha1sums = SKIP
 
-pkgname = libefivar-git
+pkgname = efivar-git
 
