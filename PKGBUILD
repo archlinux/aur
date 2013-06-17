@@ -1,104 +1,91 @@
 # Maintainer: Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 #######
-_gitroot="git://git.code.sf.net/p/refind/code"
-_gitname="refind"
-_gitbranch="master"
-#######
-
-#######
-_TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/branches/UDK2010.SR1"
-# BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg
-_TIANO_DIR_="tianocore-udk-svn"
+_TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/trunk/edk2"
+_TIANO_DIR_="tianocore-edk2-svn"
 #######
 
 #######
-_TIANOCORE_PKG="Mde"
+_TIANOCORE_PKG="OvmfX64"
 _TIANOCORE_TARGET="RELEASE"
-_UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
+_UDK_TARGET="OvmfPkg/OvmfPkgX64.dsc"
 _COMPILER="GCC46"
 #######
 
-_pkgname="refind-efi"
-pkgname="${_pkgname}-git"
+#######
+_OPENSSL_VERSION="0.9.8w"
+#######
 
-pkgver=08c9041
+_pkgname="ovmf-tianocore-edk2"
+pkgname="${_pkgname}-svn"
+
+pkgver=14427
 pkgrel=1
-pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - built with Tianocore UDK libs - GIT Version"
-url="http://www.rodsbooks.com/refind/index.html"
+pkgdesc="UEFI Firmware (OVMF) for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
+url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
 arch=('any')
-license=('GPL3' 'custom')
+license=('BSD')
 
-makedepends=('git' 'subversion' 'python2')
-depends=('dosfstools' 'efibootmgr')
-optdepends=('mactel-boot: For bless command in Apple Mac systems'
-            'bash: For /usr/bin/refind-mkfont script'
-            'imagemagick: For /usr/bin/refind-mkfont script')
+makedepends=('subversion' 'python2')
 
 options=('!strip' 'docs' '!makeflags')
 
-conflicts=('refind-efi')
-provides=('refind-efi')
+conflicts=('ovmf-svn')
+provides=('ovmf-svn')
 
 install="${_pkgname}.install"
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        "${_TIANO_DIR_}/BaseTools::svn+${_TIANOCORE_SVN_URL}/BaseTools"
-        "${_TIANO_DIR_}/MdePkg::svn+${_TIANOCORE_SVN_URL}/MdePkg"
-        "${_TIANO_DIR_}/MdeModulePkg::svn+${_TIANOCORE_SVN_URL}/MdeModulePkg"
-        "${_TIANO_DIR_}/IntelFrameworkPkg::svn+${_TIANOCORE_SVN_URL}/IntelFrameworkPkg"
-        "${_TIANO_DIR_}/IntelFrameworkModulePkg::svn+${_TIANOCORE_SVN_URL}/IntelFrameworkModulePkg"
-        "${_TIANO_DIR_}/EdkCompatibilityPkg::svn+${_TIANOCORE_SVN_URL}/EdkCompatibilityPkg"
-        'UDK-MdePkg-Revert-PathNodeCount.patch'
-        'refind_linux.conf')
+source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
-sha1sums=('SKIP'
+for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
+	source+=("${_TIANO_DIR_}/${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
+done
+
+for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellPkg FatBinPkg OvmfPkg ; do
+	source+=("${_TIANO_DIR_}/${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
+done
+
+sha1sums=('6dd276534f87aaca4bee679537fef3aaa6b43069'
           'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '4d1992699f9b48dd2b7e6bd6c0b25fc065f75894'
-          '3d53eb615c3363d45feb95b9bfbf1d5491bf1c24')
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP')
+
+noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
 pkgver() {
-	cd "${srcdir}/${_gitname}/"
-	git describe --always | sed 's|-|.|g'
+	cd "${srcdir}/OvmfPkg/"
+	svnversion | tr -d [A-z]
 }
 
-_tianocore_udk_common() {
+_setup_openssl_udk_dir() {
 	
-	## Unset all FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	## Setup UDK Environment variables
-	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}_build"
-	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
-	
-	rm -rf "${_UDK_DIR}/" || true
-	mkdir -p "${_UDK_DIR}/"
-	
-	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg EdkCompatibilityPkg ; do
-		mv "${srcdir}/${_DIR_}" "${_UDK_DIR}/${_DIR_}"
-	done
-	
-	cd "${_UDK_DIR}/"
-	
-	## Fix PcdMaximumPathNodeCount compile error
-	patch -Np1 -R -i "${srcdir}/UDK-MdePkg-Revert-PathNodeCount.patch"
+	## Download OpenSSL Sources
+	bsdtar -C "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/" -xf "${srcdir}/openssl-${_OPENSSL_VERSION}.tar.gz"
 	echo
 	
-	## Cleanup UDK config files
-	rm -rf "${_UDK_DIR}/Build/" || true
-	rm -rf "${_UDK_DIR}/Conf/" || true
-	mkdir -p "${_UDK_DIR}/Conf/"
-	mkdir -p "${_UDK_DIR}/Build/"
+	## Apply EDK2 Patch for OpenSSL
+	cd "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/openssl-${_OPENSSL_VERSION}/"
+	patch -p0 -i "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/EDKII_openssl-${_OPENSSL_VERSION}.patch"
+	echo
+	
+	## Setup OpenSSL headers in EDK2 dir
+	cd "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/"
+	chmod 0755 "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/Install.sh"
+	"${_UDK_DIR}/CryptoPkg/Library/OpensslLib/Install.sh"
+	
+}
+
+_tianocore_makefile_fixes() {
 	
 	## UDK BaseTools requires python2
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
@@ -122,59 +109,6 @@ _tianocore_udk_common() {
 	sed "s|TARGET                = DEBUG|TARGET                = ${_TIANOCORE_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = ${_COMPILER}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	
-	## Setup UDK Environment
-	chmod +x "${_UDK_DIR}/BaseTools/BuildEnv"
-	source "${_UDK_DIR}/BaseTools/BuildEnv" BaseTools
-	echo
-	
-	## Compile UDK BaseTools
-	make -C "${EDK_TOOLS_PATH}"
-	echo
-	
-	## Compile UDK x86_64-UEFI Libraries
-	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "X64" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
-	echo
-	
-	## Compile UDK i386-UEFI Libraries
-	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "IA32" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
-	echo
-	
-	## Fix UDK Target ARCH for rEFInd
-	sed "s|IA32|X64 IA32|g" -i "${_UDK_DIR}/Conf/target.txt" || true
-	
-}
-
-_build_refind-efi-common() {
-	
-	## Unset all FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	rm -rf "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/" || true
-	cp -r "${srcdir}/${_gitname}_build" "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/"
-	
-	cd "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/"
-	
-	## Fix UDK Path in rEFInd Makefiles
-	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/Make.tiano" || true
-	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/filesystems/Make.tiano" || true
-	sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${_gitname}_build_${_UEFI_ARCH}/gptsync/Make.tiano" || true
-	
-	## Clean any existing binary files in git repo
-	ARCH="${_UEFI_ARCH}" make clean || true
-	echo
-	
-	## Compile refind.efi
-	ARCH="${_UEFI_ARCH}" make tiano
-	echo
-	
-	## Compile UEFI FS drivers
-	ARCH="${_UEFI_ARCH}" make fs
-	echo
-	
 }
 
 build() {
@@ -184,20 +118,60 @@ build() {
 		exit 1
 	fi
 	
-	_tianocore_udk_common
+	## Unset all FLAGS
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
+	## Setup UDK Environment variables
+	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}"
+	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
+	
+	rm -rf "${_UDK_DIR}/" || true
+	mkdir -p "${_UDK_DIR}/"
+	
+	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
+		mv "${srcdir}/${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+	done
+	
+	for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellPkg FatBinPkg OvmfPkg ; do
+		mv "${srcdir}/${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+	done
+	
+	cd "${_UDK_DIR}/"
+	
+	## Cleanup UDK config files
+	rm -rf "${_UDK_DIR}/Build/" || true
+	rm -rf "${_UDK_DIR}/Conf/" || true
+	mkdir -p "${_UDK_DIR}/Conf/"
+	mkdir -p "${_UDK_DIR}/Build/"
+	
+	## Fix PcdMaximumPathNodeCount compile error
+	# patch -Np1 -R -i "${srcdir}/UDK-MdePkg-Revert-PathNodeCount.patch"
+	# echo
+	
+	## Setup OpenSSL libs in EDK2 dir for Secure Boot support
+	_setup_openssl_udk_dir
 	echo
 	
-	rm -rf "${srcdir}/${_gitname}_build/" || true
-	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
-	
-	cd "${srcdir}/${_gitname}_build/"
-	
-	_UEFI_ARCH="x86_64"
-	_build_refind-efi-common
+	_tianocore_makefile_fixes
 	echo
 	
-	_UEFI_ARCH="ia32"
-	_build_refind-efi-common
+	cd "${_UDK_DIR}/"
+	
+	## Setup UDK Environment
+	chmod +x "${_UDK_DIR}/BaseTools/BuildEnv"
+	source "${_UDK_DIR}/BaseTools/BuildEnv" BaseTools
+	echo
+	
+	## Compile UDK BaseTools
+	make -C "${EDK_TOOLS_PATH}"
+	echo
+	
+	## Compile OVMF binary
+	"${_UDK_DIR}/OvmfPkg/build.sh" -a "X64" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "BUILD_NEW_SHELL"
 	echo
 	
 }
@@ -205,59 +179,7 @@ build() {
 package() {
 	
 	## Install the rEFInd UEFI applications
-	install -d "${pkgdir}/usr/lib/refind/"
-	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/refind/refind_x64.efi" "${pkgdir}/usr/lib/refind/refind_x64.efi"
-	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/refind/refind_ia32.efi" "${pkgdir}/usr/lib/refind/refind_ia32.efi"
-	
-	## Install UEFI drivers built from rEFInd
-	install -d "${pkgdir}/usr/lib/refind/drivers_x64/"
-	install -d "${pkgdir}/usr/lib/refind/drivers_ia32/"
-	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/drivers_x64"/*_x64.efi "${pkgdir}/usr/lib/refind/drivers_x64/"
-	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/drivers_ia32"/*_ia32.efi "${pkgdir}/usr/lib/refind/drivers_ia32/"
-	
-	## Install UEFI applications built from rEFInd
-	install -d "${pkgdir}/usr/lib/refind/tools_x64/"
-	install -d "${pkgdir}/usr/lib/refind/tools_ia32/"
-	install -D -m0644 "${srcdir}/${_gitname}_build_x86_64/gptsync/gptsync_x64.efi" "${pkgdir}/usr/lib/refind/tools_x64/gptsync_x64.efi"
-	install -D -m0644 "${srcdir}/${_gitname}_build_ia32/gptsync/gptsync_ia32.efi" "${pkgdir}/usr/lib/refind/tools_ia32/gptsync_ia32.efi"
-	
-	## Install the rEFInd config file
-	install -d "${pkgdir}/usr/lib/refind/config/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/refind.conf-sample" "${pkgdir}/usr/lib/refind/config/refind.conf"
-	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/usr/lib/refind/config/refind_linux.conf"
-	
-	## Install the rEFInd docs
-	install -d "${pkgdir}/usr/share/refind/docs/html/"
-	install -d "${pkgdir}/usr/share/refind/docs/Styles/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/docs/refind"/* "${pkgdir}/usr/share/refind/docs/html/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/docs/Styles"/* "${pkgdir}/usr/share/refind/docs/Styles/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/README.txt" "${pkgdir}/usr/share/refind/docs/README"
-	install -D -m0644 "${srcdir}/${_gitname}_build/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS"
-	rm -f "${pkgdir}/usr/share/refind/docs/html/.DS_Store" || true
-	
-	## Install the rEFInd fonts
-	install -d "${pkgdir}/usr/share/refind/fonts/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/fonts"/* "${pkgdir}/usr/share/refind/fonts/"
-	rm -f "${pkgdir}/usr/share/refind/fonts/mkfont.sh"
-	
-	## Install the rEFInd mkfont.sh
-	install -d "${pkgdir}/usr/bin/"
-	install -D -m0755 "${srcdir}/${_gitname}_build/fonts/mkfont.sh" "${pkgdir}/usr/bin/refind-mkfont"
-	
-	## Install the rEFInd icons
-	install -d "${pkgdir}/usr/share/refind/icons/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/icons"/* "${pkgdir}/usr/share/refind/icons/"
-	
-	## Install the rEFInd images
-	install -d "${pkgdir}/usr/share/refind/images/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/images"/*.{png,bmp} "${pkgdir}/usr/share/refind/images/"
-	
-	## Install the rEFInd keys
-	install -d "${pkgdir}/usr/share/refind/keys/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/keys"/* "${pkgdir}/usr/share/refind/keys/"
-	
-	## Install the rEFIt license file, since rEFInd is a fork of rEFIt
-	install -d "${pkgdir}/usr/share/licenses/refind/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/refind/LICENSE"
+	install -d "${pkgdir}/usr/lib/ovmf/x86_64"
+	install -D -m0644 "${_UDK_DIR}/Build/OvmfX64/RELEASE_GCC46/FV/OVMF.fd" "${pkgdir}/usr/lib/ovmf/x86_64/bios.bin"
 	
 }

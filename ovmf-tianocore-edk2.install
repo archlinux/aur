@@ -1,0 +1,16 @@
+post_install() {
+	
+	echo
+	echo "    OVMF X64 bios image has been installed at /usr/lib/ovmf/x86_64/bios.bin"
+	echo
+	echo "    To test, execute: qemu-system-x86_64 -enable-kvm -net none -m 1024 -L /usr/lib/ovmf/x86_64/"
+	echo
+	
+}
+
+post_upgrade() {
+	
+	post_install
+	
+}
+
