@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gtk2
 	pkgdesc = GTK+ is a multi-platform toolkit (v2) (mingw-w64)
 	pkgver = 2.24.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gtk.org
 	arch = any
 	license = LGPL
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-gtk2
 	depends = mingw-w64-crt
 	depends = mingw-w64-atk
 	depends = mingw-w64-pango
-	depends = mingw-w64-glib2
+	depends = mingw-w64-glib2>=2.28.0
 	depends = mingw-w64-cairo
 	depends = mingw-w64-gdk-pixbuf2
 	options = !libtool
