@@ -11,6 +11,8 @@ url="http://www.enlightenment.org"
 license=('LGPL2.1')
 depends=('libeweather-svn' 'enlightenment17')
 makedepends=('git')
+conflicts=("$_pkgname-svn")
+provides=("$_pkgname-svn")
 options=('!libtool')
 source=("git://git.enlightenment.org/E-MODULES-EXTRA/$_pkgname.git")
 md5sums=('SKIP')
@@ -44,7 +46,7 @@ package() {
   install -Dm644 README "$pkgdir/usr/share/$_pkgname/README"
 
 # install license files
-  install -Dm644 COPYING-PLAIN "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  install -Dm644 COPYING-PLAIN "$pkgdir/usr/share/licenses/$pkgname/COPYING-PLAIN"
 }
 
