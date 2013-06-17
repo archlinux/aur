@@ -9,10 +9,10 @@ url="http://www.gtk.org"
 license=("LGPL")
 makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 depends=(mingw-w64-crt
-mingw-w64-atk
-mingw-w64-pango
-mingw-w64-glib2
-mingw-w64-cairo
+'mingw-w64-atk>=2.7.5'
+'mingw-w64-pango>=1.32.4'
+'mingw-w64-glib2>=2.35.3'
+'mingw-w64-cairo>=1.10.0'
 'mingw-w64-gdk-pixbuf2>=2.27.1')
 options=(!libtool !strip !buildflags)
 
@@ -39,6 +39,7 @@ build() {
     unset LDFLAGS
     export PKG_CONFIG_FOR_BUILD="${_arch}-pkg-config"
     mkdir -p "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
+    msg "Copying files"
     cp -r "${srcdir}/gtk+-${pkgver}/"* \
       "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
     cp '../brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1' \
@@ -47,6 +48,7 @@ build() {
     if [ $_arch = "x86_64-w64-mingw32" ]; then
       rm "gtk/gtk.def"
     fi
+    msg "Starting configure and make"
     ${srcdir}/gtk+-${pkgver}/configure \
       --prefix=/usr/${_arch} \
       --build=$CHOST \

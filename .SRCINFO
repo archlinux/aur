@@ -8,10 +8,10 @@ pkgbase = mingw-w64-gtk3
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
 	depends = mingw-w64-crt
-	depends = mingw-w64-atk
-	depends = mingw-w64-pango
-	depends = mingw-w64-glib2
-	depends = mingw-w64-cairo
+	depends = mingw-w64-atk>=2.7.5
+	depends = mingw-w64-pango>=1.32.4
+	depends = mingw-w64-glib2>=2.35.3
+	depends = mingw-w64-cairo>=1.10.0
 	depends = mingw-w64-gdk-pixbuf2>=2.27.1
 	options = !libtool
 	options = !strip
