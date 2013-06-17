@@ -1,6 +1,6 @@
 pkgbase = places-git
 	pkgdesc = Enlightenment module: Manage the mounting of volumes
-	pkgver = 84513
+	pkgver = 0.5.0.r167.9dbfdc0
 	pkgrel = 1
 	url = http://code.google.com/p/e17mods/wiki/Places
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = places-git
 	provides = e17-places-svn
 	conflicts = e17-places-svn
 	options = !libtool
-	source = git://git.enlightenment.org/E-MODULES-EXTRA/places.git
+	source = git://git.enlightenment.org/enlightenment/modules/places.git
 	md5sums = SKIP
 
 pkgname = places-git
