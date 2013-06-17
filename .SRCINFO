@@ -1,6 +1,6 @@
 pkgbase = eweather-git
 	pkgdesc = Enlightenment module: Current weather and forcast gadget
-	pkgver = 84553
+	pkgver = 0.2.0.r59.c4ee849
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = eweather-git
 	provides = eweather-svn
 	conflicts = eweather-svn
 	options = !libtool
-	source = git://git.enlightenment.org/E-MODULES-EXTRA/eweather.git
+	source = git://git.enlightenment.org/enlightenment/modules/eweather.git
 	md5sums = SKIP
 
 pkgname = eweather-git
