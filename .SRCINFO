@@ -1,22 +1,21 @@
-pkgbase = shim-efi-x86_64-git
-	pkgdesc = Simple bootloader for x86_64 UEFI Secure Boot - GIT Version
-	pkgver = 53ba265
+pkgbase = pesign-git
+	pkgdesc = Tools for manipulating signed PE-COFF binaries - GIT Version
+	pkgver = 0.106.1.g7b60469.7b60469
 	pkgrel = 1
-	url = https://github.com/mjg59/shim
-	install = shim-efi-x86_64.install
-	arch = any
-	license = GPL
+	url = https://github.com/vathpela/pesign
+	arch = x86_64
+	arch = i686
+	license = GPL2
 	makedepends = git
-	makedepends = gnu-efi-libs
-	depends = dosfstools
-	depends = efibootmgr
-	optdepends = mactel-boot: For bless command in Apple Mac systems
-	provides = shim-efi-x86_64
-	conflicts = shim-efi-x86_64
+	depends = popt
+	depends = nss
+	provides = pesign
+	conflicts = pesign
 	options = !strip
+	options = !emptydirs
 	options = docs
-	source = shim::git+git://github.com/mjg59/shim.git#branch=master
+	source = pesign::git+git://github.com/vathpela/pesign.git#branch=master
 	sha1sums = SKIP
 
-pkgname = shim-efi-x86_64-git
+pkgname = pesign-git
 

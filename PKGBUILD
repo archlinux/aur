@@ -1,59 +1,42 @@
 # Maintainer: Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="git://github.com/mjg59/shim.git"
-_gitname="shim"
+_gitroot="git://github.com/vathpela/pesign.git"
+_gitname="pesign"
 _gitbranch="master"
 
-_pkgname="shim-efi-x86_64"
+_pkgname="pesign"
 pkgname="${_pkgname}-git"
 
-pkgver=53ba265
+pkgver=0.106.1.g7b60469.7b60469
 pkgrel=1
-pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
-url="https://github.com/mjg59/shim"
-arch=('any')
-license=('GPL')
-
-makedepends=('git' 'gnu-efi-libs')
-
-depends=('dosfstools' 'efibootmgr')
-optdepends=('mactel-boot: For bless command in Apple Mac systems')
+pkgdesc="Tools for manipulating signed PE-COFF binaries - GIT Version"
+url="https://github.com/vathpela/pesign"
+arch=('x86_64' 'i686')
+license=('GPL2')
+makedepends=('git')
+depends=('popt' 'nss')
 
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
-options=('!strip' 'docs')
-install="${_pkgname}.install"
+options=('!strip' '!emptydirs' 'docs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --always | sed 's|-|.|g'
+	echo "$(git describe --tags).$(git describe --always)" | sed 's|-|.|g'
 }
 
 build() {
 	
-	if [[ "${CARCH}" != "x86_64" ]]; then
-		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
-		exit 1
-	fi
-	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
-	cd "${srcdir}/${_gitname}_build"
-	echo
+	cd "${srcdir}/${_gitname}_build/"
 	
-	sed 's|/usr/lib64/gnuefi|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Makefile"
-	sed 's|/usr/lib64|/usr/lib|g' -i "${srcdir}/${_gitname}_build/Makefile"
-	echo
-	
-	make clean || true
-	rm -f "${srcdir}/${_gitname}_build/shim.so" || true
-	rm -f "${srcdir}/${_gitname}_build/shim.efi" || true
-	rm -f "${srcdir}/${_gitname}_build/shim.efi.debug" || true
+	git clean -x -d -f
 	echo
 	
 	unset CFLAGS
@@ -62,7 +45,7 @@ build() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	make
+	make PREFIX="/usr/" LIBDIR="/usr/lib/"
 	echo
 	
 }
@@ -71,8 +54,8 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build"
 	
-	## Install shim x86_64 UEFI application
-	install -d "${pkgdir}/usr/lib/shim/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/shim.efi" "${pkgdir}/usr/lib/shim/shimx64.efi"
+	make INSTALLROOT="${pkgdir}/" PREFIX="/usr/" LIBDIR="/usr/lib/" install
+	
+	chmod 0644 "${pkgdir}/usr/lib/libdpe.a"
 	
 }
