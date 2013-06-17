@@ -55,6 +55,8 @@ package() {
 	make -j1 V=1 INSTALLROOT="${pkgdir}/" LIBDIR="/usr/lib/" install
 	echo
 	
+	# chmod 0755 "${pkgdir}/usr/bin/efivar"
+	
 	install -d "${pkgdir}/usr/bin"
 	install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/efivar-tester"
 	
