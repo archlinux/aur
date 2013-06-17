@@ -9,7 +9,7 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=a723e86
+pkgver=138640c
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/libefivar"
@@ -40,10 +40,10 @@ build() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	make clean || true
+	make V=1 -j1 clean || true
 	echo
 	
-	make LIBDIR="/usr/lib/"
+	make LIBDIR="/usr/lib/" V=1 -j1
 	echo
 	
 }
@@ -52,7 +52,7 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	make INSTALLROOT="${pkgdir}/" LIBDIR="/usr/lib/" install
+	make -j1 V=1 INSTALLROOT="${pkgdir}/" LIBDIR="/usr/lib/" install
 	echo
 	
 	chmod 0644 "${pkgdir}/usr/lib/libefivar.a"
