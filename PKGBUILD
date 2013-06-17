@@ -8,7 +8,7 @@ _grub_915_ver=9
 pkgname=('grub-common' 'grub-bios' 'grub-efi-i386')
 pkgbase=grub
 pkgver=2.00
-pkgrel=3
+pkgrel=4
 url="https://www.gnu.org/software/grub/"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -22,10 +22,21 @@ source=("http://ftp.gnu.org/gnu/grub/grub-${pkgver}.tar.xz"
         'archlinux_grub_mkconfig_fixes.patch'
         'grub.default'
         'grub.cfg'
-        '20_memtest86+'
+        '60_memtest86+'
         'grub_bzr_export.sh'
         '0069-Backport-gnulib-fixes-for-C11.-Fixes-Savannah-bug-37.patch'
         'grub-2.00-fix-docs.patch')
+md5sums=('a1043102fbc7bcedbf53e7ee3d17ab91'
+         '704ea9f250b6137f05fa0197fd07053a'
+         '77f7d5f8ce395663cd7fff4d37099957'
+         'a80e2b1d3bab778c3b6117d5a698992f'
+         '3b3dae993939b4e323f19365dd830e12'
+         'a03ffd56324520393bf574cefccb893d'
+         'f184b060fe22eca662ad455c69241496'
+         'ae9f1bc1a579ddc88b9b2e8b46f7e1d5'
+         'f343ed2340ebc86c427873641bb72419'
+         'ab751d1d8cd3fd47e5ee24d71ecc31ed'
+         '342dd18472a24e5fd252458b24f39a29')
 
 noextract=("grub2_extras_lua_r${_grub_lua_ver}.tar.xz"
            "grub2_extras_ntldr-img_r${_grub_ntldr_ver}.tar.xz"
@@ -198,7 +209,7 @@ package_grub-common() {
 	echo
 
 	## install extra /etc/grub.d/ files
-	install -D -m0755 "${srcdir}/20_memtest86+" "${pkgdir}/etc/grub.d/20_memtest86+"
+	install -D -m0755 "${srcdir}/60_memtest86+" "${pkgdir}/etc/grub.d/60_memtest86+"
 
 	## install /etc/default/grub (used by grub-mkconfig)
 	install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
@@ -256,14 +267,3 @@ package_grub-efi-i386() {
 	rm -f "${pkgdir}/usr/lib/grub/i386-efi"/{kernel.exec,gdb_grub,gmodule.pl} || true
 
 }
-md5sums=('a1043102fbc7bcedbf53e7ee3d17ab91'
-         '704ea9f250b6137f05fa0197fd07053a'
-         '77f7d5f8ce395663cd7fff4d37099957'
-         'a80e2b1d3bab778c3b6117d5a698992f'
-         '3b3dae993939b4e323f19365dd830e12'
-         'a03ffd56324520393bf574cefccb893d'
-         'f184b060fe22eca662ad455c69241496'
-         '9b6358d3de5c4bb95a041ab7c44a21ec'
-         'f343ed2340ebc86c427873641bb72419'
-         'ab751d1d8cd3fd47e5ee24d71ecc31ed'
-         '342dd18472a24e5fd252458b24f39a29')
