@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="efivar"
 pkgname="${_pkgname}-git"
 
-pkgdesc="Tools and library to manipulate UEFI variables - GIT Version"
+pkgdesc="Library to manipulate EFI variables - GIT Version"
 
 pkgver=d89fadd
 pkgrel=1
