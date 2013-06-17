@@ -9,7 +9,7 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Tools and library to manipulate UEFI variables - GIT Version"
 
-pkgver=321b638
+pkgver=d89fadd
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
@@ -54,8 +54,6 @@ package() {
 	
 	make -j1 V=1 INSTALLROOT="${pkgdir}/" LIBDIR="/usr/lib/" install
 	echo
-	
-	# chmod 0755 "${pkgdir}/usr/bin/efivar"
 	
 	install -d "${pkgdir}/usr/bin"
 	install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/efivar-tester"
