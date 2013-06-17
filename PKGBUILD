@@ -8,11 +8,11 @@ _grub_915_ver=9
 pkgname=('grub-common' 'grub-bios' 'grub-efi-i386')
 pkgbase=grub
 pkgver=2.00
-pkgrel=2
+pkgrel=3
 url="https://www.gnu.org/software/grub/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('xz' 'bdf-unifont' 'ttf-dejavu' 'python' 'autogen'
+makedepends=('xz' 'freetype2' 'bdf-unifont' 'ttf-dejavu' 'python' 'autogen'
              'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse')
 
 source=("http://ftp.gnu.org/gnu/grub/grub-${pkgver}.tar.xz"
@@ -180,7 +180,9 @@ build() {
 package_grub-common() {
 
 	pkgdesc="GNU GRand Unified Bootloader - Utilities and Common Files"
-	depends=('sh' 'xz' 'freetype2' 'gettext' 'device-mapper' 'fuse')
+	depends=('sh' 'xz' 'gettext' 'device-mapper')
+        optdepends=('freetype2: for grub-mkfont usage'
+                    'fuse: for grub-mount usage')
 	conflicts=('grub-legacy' 'grub')
 	replaces=('grub2-common')
 	provides=('grub2-common')
