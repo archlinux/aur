@@ -1,24 +1,30 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: twa022 <twa022 at gmail dot com>
 
-pkgname=libeweather-svn
-_pkgname=libeweather
-pkgver=82148
+pkgname=libeweather-git
+_pkgname=${pkgname%-git}
+pkgver=0.2.0.76.22c5c66
 pkgrel=1
 pkgdesc="EFL based library for weather information"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1')
 depends=('edje')
-makedepends=('subversion')
+makedepends=('git')
+provides=("$_pkgname-svn")
+conflicts=("$_pkgname-svn")
 options=('!libtool')
-source=("svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/$_pkgname")
+source=("git://git.enlightenment.org/libs/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$SRCDEST/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-  LC_ALL=C svn info | awk '/Last Changed Rev/ {print $4}'
+  for i in v_maj v_min v_mic; do
+    local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
+  done
+
+  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
@@ -34,3 +40,4 @@ package() {
 
   make DESTDIR="$pkgdir" install
 }
+

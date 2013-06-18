@@ -1,16 +1,18 @@
-pkgbase = libeweather-svn
+pkgbase = libeweather-git
 	pkgdesc = EFL based library for weather information
-	pkgver = 82148
+	pkgver = 0.2.0.76.22c5c66
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = subversion
+	makedepends = git
 	depends = edje
+	provides = libeweather-svn
+	conflicts = libeweather-svn
 	options = !libtool
-	source = svn+http://svn.enlightenment.org/svn/e/trunk/PROTO/libeweather
+	source = git://git.enlightenment.org/libs/libeweather.git
 	md5sums = SKIP
 
-pkgname = libeweather-svn
+pkgname = libeweather-git
 
