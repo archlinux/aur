@@ -9,7 +9,7 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=d89fadd
+pkgver=0.4_13_g3beac07
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
@@ -24,7 +24,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --always | sed 's|-|.|g'
+	echo "$(git describe --tags)" | sed 's|-|_|g'
 }
 
 build() {
@@ -43,7 +43,7 @@ build() {
 	make V=1 -j1 clean || true
 	echo
 	
-	make LIBDIR="/usr/lib/" V=1 -j1
+	make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
 	echo
 	
 }
@@ -52,7 +52,7 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	make -j1 V=1 INSTALLROOT="${pkgdir}/" LIBDIR="/usr/lib/" install
+	make -j1 V=1 DESTDIR="${pkgdir}/" libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" install
 	echo
 	
 	install -d "${pkgdir}/usr/bin"
