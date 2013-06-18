@@ -1,10 +1,12 @@
 post_install() {
 	
-	echo
-	echo "    OVMF X64 bios image has been installed at /usr/share/ovmf/x86_64/bios.bin"
-	echo
-	echo "    You can test OVMF by running "qemu-system-x86_64 -enable-kvm -net none -m 1024 -L /usr/share/ovmf/x86_64/""
-	echo
+	cat << EOF
+    
+    To test OVMF X64 in QEMU 1.5 , run :
+    
+    qemu-system-x86_64 -enable-kvm -net none -m 1024 -bios /usr/share/ovmf/x86_64/bios.bin
+    
+EOF
 	
 }
 
