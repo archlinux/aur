@@ -9,12 +9,12 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=0.4_13_g3beac07
+pkgver=0.4_18_gb8c524c
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
 license=('LGPL2.1')
-depends=('glibc')
+depends=('popt')
 conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
 provides=("${_pkgname}" 'libefivar' 'libefivar-git')
 options=('strip' 'emptydirs' 'zipman' 'libtool' 'docs')
@@ -34,14 +34,16 @@ build() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
+	git clean -x -d -f
+	echo
+	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	make V=1 -j1 clean || true
-	echo
+	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_gitname}_build/src/test/Makefile" || true
 	
 	make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
 	echo
