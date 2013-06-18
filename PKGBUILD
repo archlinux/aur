@@ -148,10 +148,6 @@ build() {
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
 	
-	## Fix PcdMaximumPathNodeCount compile error
-	# patch -Np1 -R -i "${srcdir}/UDK-MdePkg-Revert-PathNodeCount.patch"
-	# echo
-	
 	## Setup OpenSSL libs in EDK2 dir for Secure Boot support
 	_setup_openssl_udk_dir
 	echo
