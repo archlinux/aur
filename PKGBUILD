@@ -7,8 +7,8 @@ _TIANO_DIR_="tianocore-edk2-svn"
 
 #######
 _TIANOCORE_PKG="OvmfX64"
-_TIANOCORE_TARGET="RELEASE"
 _UDK_TARGET="OvmfPkg/OvmfPkgX64.dsc"
+_TIANOCORE_TARGET="RELEASE"
 _COMPILER="GCC46"
 #######
 
@@ -176,6 +176,6 @@ package() {
 	
 	## Install the rEFInd UEFI applications
 	install -d "${pkgdir}/usr/lib/ovmf/x86_64"
-	install -D -m0644 "${_UDK_DIR}/Build/OvmfX64/RELEASE_GCC46/FV/OVMF.fd" "${pkgdir}/usr/lib/ovmf/x86_64/bios.bin"
+	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/lib/ovmf/x86_64/bios.bin"
 	
 }
