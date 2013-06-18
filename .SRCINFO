@@ -1,6 +1,6 @@
 pkgbase = grub
 	pkgver = 2.00
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gnu.org/software/grub/
 	arch = i686
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = grub
 	md5sums = 3b3dae993939b4e323f19365dd830e12
 	md5sums = a03ffd56324520393bf574cefccb893d
 	md5sums = f184b060fe22eca662ad455c69241496
-	md5sums = ae9f1bc1a579ddc88b9b2e8b46f7e1d5
+	md5sums = be55eabc102f2c60b38ed35c203686d6
 	md5sums = f343ed2340ebc86c427873641bb72419
 	md5sums = ab751d1d8cd3fd47e5ee24d71ecc31ed
 	md5sums = 342dd18472a24e5fd252458b24f39a29
