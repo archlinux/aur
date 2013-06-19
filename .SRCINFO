@@ -16,7 +16,7 @@ pkgbase = efibootmgr-git
 	options = zipman
 	options = !emptydirs
 	options = !libtool
-	source = efibootmgr::git+http://linux.dell.com/git/efibootmgr.git#branch=master
+	source = efibootmgr::git+git://linux.dell.com/efibootmgr.git#branch=master
 	source = efibootmgr-tilt_slashes-func.patch
 	sha1sums = SKIP
 	sha1sums = abe85252cdd9fcc3050fb1cb2c3652bbe8d67efa
