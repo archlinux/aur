@@ -5,7 +5,7 @@
 pkgname=evas_generic_loaders-git
 _pkgname=evas_generic_loaders
 pkgver=1.7.99.93.6fb0cfd
-pkgrel=1
+pkgrel=2
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"

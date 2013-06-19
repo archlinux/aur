@@ -1,7 +1,7 @@
 pkgbase = evas_generic_loaders-git
 	pkgdesc = Evas external binary executable loaders - Development version
 	pkgver = 1.7.99.93.6fb0cfd
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
