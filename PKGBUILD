@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=R16B
+pkgver=R16B01
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
@@ -21,8 +21,8 @@ optdepends=('erlang-unixodbc: database support'
             'lksctp-tools: for SCTP support')
 source=("http://www.erlang.org/download/otp_src_${pkgver/_/-}.tar.gz"
         "http://www.erlang.org/download/otp_doc_man_${pkgver/_/-}.tar.gz")
-sha256sums=('f01c2cfe512d3118fd3398a66bdb82bea6ad0f45b464a46a58e452264b7682cd'
-            'f7b1baa088d4ecda4a86944d3a782fcbf80c6b9161756bb50fec9e8d129176b9')
+sha256sums=('da388bc07b8ebdd008f5bb6c3d2c280e358bd188b5aac3ea01e3a7436315abc0'
+            '71972049fbac73457fb6868be18068edce9f2c9fc2aeeab15f019d4217b6a8c2')
 
 build() {
   cd "$srcdir/otp_src_${pkgver/_1/}"
