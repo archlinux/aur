@@ -13,7 +13,7 @@ makedepends=()
 conflicts=()
 options=(!emptydirs)
 source=(http://isrcsubmit.jonnyjd.net/downloads/isrcsubmit-$_pkgver.tar.gz)
-md5sums=('5df6d98bb977f52d733084e4e6ecf6f5')
+md5sums=('0c55664be48b1e0dcee3ed85ecbc749e')
 
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
