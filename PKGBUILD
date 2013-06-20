@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=28.0.1500.45
+pkgver=28.0.1500.52
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgna
         chromium.default
         chromium.sh
         chromium-system-harfbuzz-r0.patch)
-sha256sums=('f183d4d6f733dfed4b9391c4c6cfc831af1d050f00bdebb504b0d413cdc65d07'
+sha256sums=('7b3cbfbb9e5b9d21ffab23d39173611ddb0ba49488795b6db46a62be354518b4'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
