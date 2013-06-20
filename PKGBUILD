@@ -174,7 +174,7 @@ build() {
 
 package() {
 	
-	## Install the rEFInd UEFI applications
+	## Install the OVMF X64 image as bios.bin for QEMU
 	install -d "${pkgdir}/usr/share/ovmf/x86_64"
 	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/x86_64/bios.bin"
 	
