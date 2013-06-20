@@ -1,9 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=trojita-git
-pkgver=20121220
+pkgver=4878.d6d8fa5
 pkgrel=1
-pkgdesc="A QT IMAP email client"
+pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
@@ -12,32 +12,21 @@ conflicts=('trojita')
 provides=('trojita')
 makedepends=('git' 'cmake')
 
-_gitroot="git://anongit.kde.org/trojita.git"
-_gitname="trojita"
+source=('git://anongit.kde.org/trojita.git')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/trojita"
+	echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-	cd "$srcdir"
-	msg "Connecting to GIT server...."
-
-	if [ -d $_gitname ] ; then
-		cd $_gitname && git pull origin
-		msg "The local files are updated."
-	else
-		git clone $_gitroot
-	fi
-
-	msg "GIT checkout done or server timeout"
-	msg "Starting make..."
-
-	rm -rf "$srcdir/$_gitname-build"
-	git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-	cd "$srcdir/$_gitname-build"
-
-	qmake PREFIX=/usr
+	cd "$srcdir/trojita"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname-build"
-	make install INSTALL_ROOT="$pkgdir"
+	cd "$srcdir/trojita"
+	make install DESTDIR="$pkgdir"
 }
