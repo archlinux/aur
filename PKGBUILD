@@ -18,7 +18,7 @@ pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version
 url="http://syslinux.zytor.com/"
 license=('GPL2')
 
-makedepends=('git' 'python2' 'nasm' 'gnu-efi-libs-git')
+makedepends=('git' 'python2' 'nasm' 'gnu-efi-libs')
 depends=('dosfstools' 'efibootmgr')
 
 install="${_pkgname}.install"
