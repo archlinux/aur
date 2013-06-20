@@ -11,8 +11,8 @@ __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=6.00.pre5.6.g3d3f765
-pkgrel=2
+pkgver=6.00
+pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
 url="http://syslinux.zytor.com/"
@@ -28,11 +28,9 @@ conflicts=("${_pkgname}")
 
 options=('!strip' 'docs' '!libtool' 'emptydirs' 'zipman' '!purge' '!makeflags')
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'syslinux.cfg')
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 
-sha1sums=('SKIP'
-          '7477f166ae0ed26c69f03d95c13078e146b90fe1')
+sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -59,7 +57,7 @@ build() {
 	unset MAKEFLAGS
 	
 	## Fix -Werror compile fail
-	sed 's|-Wall|-Wall -Wno-error|g' -i "${srcdir}/${_gitname}_build/mk"/*.mk || true
+	# sed 's|-Wall|-Wall -Wno-error|g' -i "${srcdir}/${_gitname}_build/mk"/*.mk || true
 	
 	rm -rf "${srcdir}/${_gitname}_build/BUILD/" || true
 	mkdir -p "${srcdir}/${_gitname}_build/BUILD/"
@@ -90,14 +88,9 @@ package() {
 	cd "${srcdir}/${_gitname}_build/"
 	
 	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install || true
-	install -D -m0644 "${srcdir}/${_gitname}_build/BUILD/efi64/com32/elflink/ldlinux/ldlinux.e64" "${pkgdir}/usr/lib/syslinux/efi64/ldlinux.e64" || true
 	echo
 	
 	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install || true
-	install -D -m0644 "${srcdir}/${_gitname}_build/BUILD/efi32/com32/elflink/ldlinux/ldlinux.e32" "${pkgdir}/usr/lib/syslinux/efi32/ldlinux.e32" || true
 	echo
-	
-	install -d "${pkgdir}/usr/lib/syslinux/config"
-	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/syslinux/config/syslinux.cfg"
 	
 }

@@ -4,3 +4,4 @@ pkg/
 *.tar.gz
 *.sig
 *.log*
+*.pkg.tar*

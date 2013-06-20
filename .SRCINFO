@@ -1,7 +1,7 @@
 pkgbase = syslinux-efi-git
 	pkgdesc = SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version
-	pkgver = 6.00.pre5.6.g3d3f765
-	pkgrel = 2
+	pkgver = 6.00
+	pkgrel = 1
 	url = http://syslinux.zytor.com/
 	install = syslinux-efi.install
 	arch = any
@@ -22,9 +22,7 @@ pkgbase = syslinux-efi-git
 	options = !purge
 	options = !makeflags
 	source = syslinux::git+git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git#branch=firmware
-	source = syslinux.cfg
 	sha1sums = SKIP
-	sha1sums = 7477f166ae0ed26c69f03d95c13078e146b90fe1
 
 pkgname = syslinux-efi-git
 
