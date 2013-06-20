@@ -1,5 +1,5 @@
 pkgbase = syslinux-efi-git
-	pkgdesc = SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version
+	pkgdesc = SYSLINUX built for x86_64 and ia32 UEFI firmwares - GIT Version
 	pkgver = 6.00
 	pkgrel = 1
 	url = http://syslinux.zytor.com/

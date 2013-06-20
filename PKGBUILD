@@ -14,7 +14,7 @@ pkgname="${_pkgname}-git"
 pkgver=6.00
 pkgrel=1
 arch=('any')
-pkgdesc="SYSLINUX built for x86_64 and i386 UEFI firmwares - GIT (Alpha) Version"
+pkgdesc="SYSLINUX built for x86_64 and ia32 UEFI firmwares - GIT Version"
 url="http://syslinux.zytor.com/"
 license=('GPL2')
 
