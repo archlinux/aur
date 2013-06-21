@@ -24,8 +24,8 @@ SOFTWARE.
 """
 
 import os
-import sys
 import logging
+import argparse
 import subprocess
 
 
@@ -99,7 +99,7 @@ class PackageFileCollector:
     @classmethod
     def configure(cls, *args, **kwargs):
         """
-        Returns a configured instance of AppFolder.
+        Returns a configured instance of PackageFileCollector.
         """
         return cls(*args, **kwargs)
 
@@ -133,28 +133,55 @@ class PackageFileCollector:
         return 1
 
 
-def createPackageFolders(*args, **kwargs):
-    """
-    Create a folder containing a sub-folder for each package and put symbolic
-    links to all files belonging to this package into that sub-folder.
-    """
-    package_list = subprocess.check_output(['pacman', '-Qq'],
-                                           universal_newlines=True).split('\n')
-    ignored_packages = ['filesystem']
-    for package in package_list:
-        if package == '':
-            return 0
-        if not package in ignored_packages:
-            pfc = PackageFileCollector.configure(package, *args, **kwargs)
+class PackageFileCollectorFrontend:
+    _ignored_packages = ['filesystem']
+
+    def __init__(self, *args, **kwargs):
+        parser = argparse.ArgumentParser(description=self.__doc__)
+        parser.add_argument('target_directory', type=str, help='target-folder')
+        parser.add_argument('--pacman-arg', metavar='arg', type=str,
+                            nargs='*', help='add  a single '
+                            'pacman-filter-option '
+                            'to the internal "pacman -Qq"-command. Currently '
+                            'only works with \'--pacman-args=""\'-syntax. Can '
+                            'be applied multible times')
+        args = parser.parse_args()
+        self._pacman_command = ['pacman', '-Qq']
+        if args.pacman_arg:
+            self._pacman_command.extend(args.pacman_arg)
+        self._set_package_list()
+        self._target_directory = args.target_directory
+
+    def _set_package_list(self):
+        package_list = subprocess.check_output(
+            self._pacman_command,
+            universal_newlines=True).split('\n')
+        self._package_list =\
+            [item
+             for item in package_list if item not in self._ignored_packages]
+
+    @classmethod
+    def configure(cls, *args, **kwargs):
+        """
+        Returns a configured instance of PackageFileCollectorFrontend.
+        """
+        return cls(*args, **kwargs)
+
+    def run(self, *args, **kwargs):
+        """
+        Create a folder containing a sub-folder for each package and put
+        symbolic links to all files belonging to this package into that
+        sub-folder.
+        """
+        for package in self._package_list:
+            if package == '':
+                return 0
+            pfc = PackageFileCollector.configure(package,
+                                                 self._target_directory, *args,
+                                                 **kwargs)
             pfc.run()
-    return 1
+        return 1
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2 or sys.argv[1] in ('--help', '-h'):
-        print(
-            "Usage: " + sys.argv[0] + " target-directory\n\n"
-            "Creates symlinks for all files belonging to a package in"
-            " sub-folders for each package. The first argument is the name"
-            " of the folder, that shell contain all these subfolders.")
-        sys.exit(1)
-    sys.exit(createPackageFolders(target_directory=sys.argv[1]))
+    frontend = PackageFileCollectorFrontend.configure()
+    frontend.run()
