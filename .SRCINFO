@@ -17,7 +17,7 @@ pkgbase = cope-git
 	depends = perl-list-moreutils
 	depends = perl-params-util
 	depends = perl-regexp-common
-	source = cope::git://github.com/lotrfan/cope.git
+	source = git://github.com/lotrfan/cope.git
 	md5sums = SKIP
 
 pkgname = cope-git

@@ -1,7 +1,7 @@
 # Contributor: Will Chappell <wtchappell@gmail.com>
 # Contributor: denton <e9203.00 gmail com>
 pkgname=cope-git
-_pkgname=cope
+_gitname=cope
 pkgver=147.64038ce
 pkgrel=1
 pkgdesc='A colourful wrapper for terminal programs'
@@ -14,17 +14,17 @@ depends=("perl>=5.1" 'perl-class-inspector' 'perl-env-path' 'perl-file-sharedir'
 makedepends=('git')
 install=$pkgname.install
 
-source=("$_pkgname::git://github.com/lotrfan/${_pkgname}.git")
+source=("git://github.com/lotrfan/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$_gitname"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$_gitname"
 
   # Make
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$_gitname"
 
   make install DESTDIR=$pkgdir || return 1
 
