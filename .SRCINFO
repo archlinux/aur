@@ -1,0 +1,20 @@
+pkgbase = ghmm-svn
+	pkgdesc = General Hidden Markov Model library
+	pkgver = 2290
+	pkgrel = 2
+	url = http://ghmm.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = m4
+	makedepends = swig
+	depends = gsl
+	depends = libxml2
+	optdepends = python2
+	provides = ghmm
+	conflicts = ghmm
+
+pkgname = ghmm-svn
+
