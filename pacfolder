@@ -139,6 +139,9 @@ class PackageFileCollectorFrontend:
     def __init__(self, *args, **kwargs):
         parser = argparse.ArgumentParser(description=self.__doc__)
         parser.add_argument('target_directory', type=str, help='target-folder')
+        parser.add_argument('--only', metavar='package', type=str,
+                            nargs='*', help='Only process packages given by '
+                            'name.')
         parser.add_argument('--pacman-arg', metavar='arg', type=str,
                             nargs='*', help='add  a single '
                             'pacman-filter-option '
@@ -149,6 +152,8 @@ class PackageFileCollectorFrontend:
         self._pacman_command = ['pacman', '-Qq']
         if args.pacman_arg:
             self._pacman_command.extend(args.pacman_arg)
+        if args.only:
+            self._pacman_command.extend(args.only)
         self._set_package_list()
         self._target_directory = args.target_directory
 
