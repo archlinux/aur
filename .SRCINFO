@@ -1,6 +1,6 @@
 pkgbase = qt5-wayland-git
 	pkgdesc = A cross-platform application and UI framework (QtCompositor, Wayland QPA plugins)
-	pkgver = 20130521
+	pkgver = 0.0.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = i686
@@ -19,6 +19,8 @@ pkgbase = qt5-wayland-git
 	provides = qt5-wayland
 	conflicts = qt5-wayland
 	replaces = qt5-qtwayland-git
+	source = qt5-wayland::git://github.com/plfiorini/qtwayland.git#branch=hawaii-stable
+	md5sums = SKIP
 
 pkgname = qt5-wayland-git
 
