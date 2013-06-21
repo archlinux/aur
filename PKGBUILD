@@ -1,5 +1,6 @@
 # Contributor: Will Chappell <wtchappell@gmail.com>
 # Contributor: denton <e9203.00 gmail com>
+# Maintainer: Jeffrey Tolar <tolar.jeffrey at gmail dot com>
 pkgname=cope-git
 _gitname=cope
 pkgver=147.64038ce
