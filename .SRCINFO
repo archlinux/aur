@@ -1,6 +1,6 @@
 pkgbase = cope-git
 	pkgdesc = A colourful wrapper for terminal programs
-	pkgver = 20110901
+	pkgver = 147.64038ce
 	pkgrel = 1
 	url = http://stuff.cytzol.org/cope/
 	install = cope-git.install

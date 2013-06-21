@@ -2,7 +2,7 @@
 # Contributor: denton <e9203.00 gmail com>
 pkgname=cope-git
 _pkgname=cope
-pkgver=20110901
+pkgver=147.64038ce
 pkgrel=1
 pkgdesc='A colourful wrapper for terminal programs'
 url=http://stuff.cytzol.org/cope/
@@ -16,6 +16,12 @@ install=$pkgname.install
 
 source=("$_pkgname::git://github.com/lotrfan/${_pkgname}.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
 
 build() {
   cd "${srcdir}/${_pkgname}"
