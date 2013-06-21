@@ -29,6 +29,9 @@ pkgver() {
 	git describe --always | sed 's|-|.|g'
 }
 
+[[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
+[[ "${CARCH}" == "i686" ]] && _EFI_ARCH="ia32"
+
 build() {
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
@@ -62,7 +65,7 @@ package() {
 	make INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/lib" install
 	echo
 	
-	install -d "${pkgdir}/usr/share/gnu-efi/apps/"
-	install -D -m0644 "${srcdir}/${_gitname}_build/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/"
+	install -d "${pkgdir}/usr/share/gnu-efi/apps/${_EFI_ARCH}/"
+	install -D -m0644 "${srcdir}/${_gitname}_build/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/${_EFI_ARCH}/"
 	
 }
