@@ -4,9 +4,9 @@ _pkgname="elilo"
 pkgname="${_pkgname}-efi"
 
 pkgver="3.16"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="UEFI version of LILO Boot Loader"
-arch=('any')
+arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/elilo/"
 license=('GPL')
 
@@ -20,43 +20,7 @@ source=("http://downloads.sourceforge.net/project/elilo/elilo/elilo-${pkgver}/el
         "elilo.conf")
 
 sha1sums=('bd0bd4f1b3dc2d23a304f957ffbf907ae104f323'
-          '2366629b137572f91774a0bdf907864dd7fe3172')
-
-_build_elilo-efi-x86_64() {
-	
-	cp -r "${srcdir}/elilo-${pkgver}-source" "${srcdir}/elilo-${pkgver}-x86_64"
-	cd "${srcdir}/elilo-${pkgver}-x86_64/"
-	
-	## Unset all compiler FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	echo
-	make ARCH="x86_64"
-	echo
-	
-}
-
-_build_elilo-efi-ia32() {
-	
-	cp -r "${srcdir}/elilo-${pkgver}-source" "${srcdir}/elilo-${pkgver}-ia32"
-	cd "${srcdir}/elilo-${pkgver}-ia32/"
-	
-	## Unset all compiler FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	echo
-	make ARCH="ia32"
-	echo
-	
-}
+          'b4c2eb097f733f0169d930af12ad590e47adf4b7')
 
 build() {
 	
@@ -66,6 +30,7 @@ build() {
 	fi
 	
 	bsdtar -C "${srcdir}/" -xf "${srcdir}/elilo-${pkgver}-source.tar.gz"
+	echo
 	
 	cd "${srcdir}/elilo-${pkgver}-source/"
 	
@@ -82,21 +47,26 @@ build() {
 	## Fix -Werror build failure
 	sed 's|DEBUGFLAGS = -Wall|DEBUGFLAGS = -Wall -Wno-error|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
 	
-	## Compile elilox64.efi
-	_build_elilo-efi-x86_64
+	cd "${srcdir}/elilo-${pkgver}-source/"
 	
-	## Compile eliloia32.efi
-	_build_elilo-efi-ia32
+	## Unset all compiler FLAGS
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
+	make
+	echo
 	
 }
 
 
 package() {
 	
-	## Install elilox64.efi and eliloia32.efi
+	## Install elilo.efi
 	install -d "${pkgdir}/usr/lib/elilo"
-	install -D -m0644 "${srcdir}/elilo-${pkgver}-x86_64/elilo.efi" "${pkgdir}/usr/lib/elilo/elilox64.efi"
-	install -D -m0644 "${srcdir}/elilo-${pkgver}-ia32/elilo.efi" "${pkgdir}/usr/lib/elilo/eliloia32.efi"
+	install -D -m0644 "${srcdir}/elilo-${pkgver}-source/elilo.efi" "${pkgdir}/usr/lib/elilo/elilo.efi"
 	
 	## Install example elilo.conf
 	install -d "${pkgdir}/usr/lib/elilo/config"

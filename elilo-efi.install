@@ -4,7 +4,7 @@ post_install() {
 
 Important instructions :-
 
-ELILO is installed at /usr/lib/elilo/*.efi
+ELILO is installed at /usr/lib/elilo/elilo.efi
 
 An example config file has been provided at /usr/lib/elilo/config/elilo.conf
 
