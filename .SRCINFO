@@ -1,10 +1,10 @@
 pkgbase = gnu-efi-libs-git
-	pkgdesc = Library for building x86_64 and ia32 UEFI Applications using GNU toolchain - Sourceforge GIT Version
+	pkgdesc = Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version
 	pkgver = 8cb1e87
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/gnu-efi/
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = pciutils
 	provides = gnu-efi-libs
@@ -12,9 +12,7 @@ pkgbase = gnu-efi-libs-git
 	options = !strip
 	options = !makeflags
 	source = gnu-efi::git+git://git.code.sf.net/p/gnu-efi/code#branch=master
-	source = gnu-efi-disable-use_ms_abi.patch
 	sha1sums = SKIP
-	sha1sums = 387ac12c85d8b94235d5ec27944e447de4fe0140
 
 pkgname = gnu-efi-libs-git
 
