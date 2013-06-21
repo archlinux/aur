@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.9
-pkgver=3.9.6
+pkgver=3.9.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,19 +19,18 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
-         '897cffc5167a561b38c6748e7f0a4215'
-         '5ce5e2c62107182585ea66a1ef936975'
-         '89b4f06a386f9541691f9b3f694da2e5'
+         '74005c469fbd309ab631d981e2d3a6e7'
+         '22349dc71e7c17ed51ec923e86c45153'
+         'e503bcd153e5705245e979f1c005befc'
          'eb14dcfd80c00852ef81ded6e826826a'
          'f3def2cefdcbb954c21d8505d23cc83c')
-
 _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# adcca1c58da2decf91e654791c6754dc  /lib/modules/3.9.6-1-ARCH/modules.symbols
+# 20e4b8685a2f3a88957ae9412b905fa5  /lib/modules/3.9.7-1-ARCH/modules.symbols
 # i686
-# d6f15d83c9fddb8d047865fb5ce9e7dd  /lib/modules/3.9.6-1-ARCH/modules.symbols 
+# 1efa064413c17189c8192c3b4f4d37c7  /lib/modules/3.9.7-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
