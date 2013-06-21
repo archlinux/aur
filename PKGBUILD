@@ -11,7 +11,7 @@ arch=(any)
 license=('GPL' 'PerlArtistic')
 depends=("perl>=5.1" 'perl-class-inspector' 'perl-env-path' 'perl-file-sharedir'
          'perl-io-stty' 'perl-io-tty' 'perl-list-moreutils' 'perl-params-util'
-         'perl-regexp-common')
+         'perl-regexp-common' 'perl-regexp-ipv6')
 makedepends=('git')
 install=$pkgname.install
 
