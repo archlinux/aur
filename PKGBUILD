@@ -2,8 +2,8 @@
 # Contributor: dave pretty <david (dot) pretty (at) gmail (dot) com >
 
 pkgname=ghmm-svn
-pkgver=2290
-pkgrel=2
+pkgver=2293
+pkgrel=1
 pkgdesc="General Hidden Markov Model library"
 arch=('i686' 'x86_64')
 url="http://ghmm.org"
@@ -13,30 +13,22 @@ makedepends=('automake' 'autoconf' 'm4' 'swig')
 optdepends=('python2')
 conflicts=('ghmm')
 provides=('ghmm')
+source=("$pkgname::svn+https://ghmm.svn.sourceforge.net/svnroot/ghmm/trunk/ghmm")
+md5sums=('SKIP')
 
-_svntrunk=https://ghmm.svn.sourceforge.net/svnroot/ghmm/trunk/ghmm
-_svnmod=ghmm
+pkgver() {
+  cd "$srcdir/$pkgname"
+  svnversion | tr -d [A-z]
+}
 
 build() {
-  cd "$srcdir"
-
-  if [ -d $_svnmod/.svn ]; then
-    (cd $_svnmod && svn up)
-  else
-    svn co $_svntrunk --config-dir ./ -r $pkgver $_svnmod
-  fi
-
-  msg "SVN checkout done or server timeout"
-  msg "Starting make..."
-  
-  cd "$_svnmod"
+  cd "$srcdir/$pkgname"
   ./autogen.sh
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr
   make
-  
 }
 
 package() {
-  cd "$srcdir/$_svnmod"
+  cd "$srcdir/$pkgname"
   make prefix="$pkgdir/usr" install # does not support DESTDIR
 }

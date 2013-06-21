@@ -1,7 +1,7 @@
 pkgbase = ghmm-svn
 	pkgdesc = General Hidden Markov Model library
-	pkgver = 2290
-	pkgrel = 2
+	pkgver = 2293
+	pkgrel = 1
 	url = http://ghmm.org
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = ghmm-svn
 	optdepends = python2
 	provides = ghmm
 	conflicts = ghmm
+	source = ghmm-svn::svn+https://ghmm.svn.sourceforge.net/svnroot/ghmm/trunk/ghmm
+	md5sums = SKIP
 
 pkgname = ghmm-svn
 
