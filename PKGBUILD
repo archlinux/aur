@@ -23,7 +23,6 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-
 build() {
   cd "$_gitname"
 
