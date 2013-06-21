@@ -5,8 +5,8 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.11.1_rc1
-_pkgver=4.11.1-rc1
+pkgver=4.11.1_rc2
+_pkgver=4.11.1-rc2
 pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
 #source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
 source=(http://rpm.org/releases/testing/rpm-${_pkgver}.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch)
-md5sums=('2b41ca2afade8d6cbf0afe7af0dc928e'
+md5sums=('a8adb7765f654a862989e9dee28ead0f'
          '1f7f4f3b3a93ff6d2f600c7751ae25ef'
          '62a62de128345a8a7a6195fd59f8cd71')
 
