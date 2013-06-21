@@ -11,7 +11,7 @@ __pkgname="syslinux"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=6.00
+pkgver=6.00.2.g2a81889
 pkgrel=1
 arch=('any')
 pkgdesc="SYSLINUX built for x86_64 and ia32 UEFI firmwares - GIT Version"
