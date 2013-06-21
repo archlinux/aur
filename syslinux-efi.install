@@ -1,6 +1,6 @@
 post_install() {
     echo
-    echo "syslinux-efi has been installed at /usr/lib/syslinux/{efi64,efi32}/"
+    echo "syslinux-efi has been installed at /usr/lib/syslinux/efi64/"
     echo
 }
 

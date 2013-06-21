@@ -13,8 +13,8 @@ pkgname="${_pkgname}-git"
 
 pkgver=6.00.2.g2a81889
 pkgrel=1
-arch=('any')
-pkgdesc="SYSLINUX built for x86_64 and ia32 UEFI firmwares - GIT Version"
+arch=('x86_64')
+pkgdesc="SYSLINUX built for x86_64 UEFI firmwares - GIT Version"
 url="http://syslinux.zytor.com/"
 license=('GPL2')
 
@@ -38,11 +38,6 @@ pkgver() {
 }
 
 build() {
-	
-	if [[ "${CARCH}" != "x86_64" ]]; then
-		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
-		exit 1
-	fi
 	
 	rm -rf "${srcdir}/${_gitname}_build" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
@@ -68,19 +63,6 @@ build() {
 	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi64 installer
 	echo
 	
-	## Unset all compiler FLAGS for efi32 build
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi32
-	echo
-	
-	make O="${srcdir}/${_gitname}_build/BUILD" PYTHON="python2" efi32 installer
-	echo
-	
 }
 
 package() {
@@ -88,9 +70,6 @@ package() {
 	cd "${srcdir}/${_gitname}_build/"
 	
 	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi64 install || true
-	echo
-	
-	make O="${srcdir}/${_gitname}_build/BUILD" INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux" efi32 install || true
 	echo
 	
 }
