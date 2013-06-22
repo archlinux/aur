@@ -3,9 +3,8 @@
 
 pkgname=io-git
 pkgver=20110905
-pkgrel=2
-pkgdesc="Io is a prototype-based programming language inspired by
-Smalltalk"
+pkgrel=3
+pkgdesc="Io is a prototype-based programming language inspired by Smalltalk"
 arch=('i686' 'x86_64')
 url="http://www.iolanguage.com/"
 license=('BSD')
