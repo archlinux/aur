@@ -1,9 +1,9 @@
 pkgbase = io-git
 	pkgdesc = Io is a prototype-based programming language inspired by Smalltalk
 	pkgver = 20110905
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.iolanguage.com/
-	arch = i686,
+	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -11,6 +11,7 @@ pkgbase = io-git
 	depends = libevent
 	depends = yajl
 	depends = pcre
+	conflicts = io
 
 pkgname = io-git
 
