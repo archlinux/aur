@@ -1,0 +1,15 @@
+pkgbase = gale-git
+	pkgdesc = Gale is instant messaging software
+	pkgver = 20130304
+	pkgrel = 3
+	url = http://www.gale.org
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = bash
+	depends = gc
+	depends = openssl
+	depends = adns-ipv6
+
+pkgname = gale-git
+
