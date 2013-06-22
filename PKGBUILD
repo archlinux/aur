@@ -1,12 +1,12 @@
-# Maintainer: nandub <dev@nandub-dev.tk>
+# Maintainer: nandub <dev@nandub.info>
 pkgname=gale-git
-pkgver=20130304
-pkgrel=3
+pkgver=20130622
+pkgrel=1
 pkgdesc="Gale is instant messaging software"
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://www.gale.org"
 license=('GPL2')
-depends=('bash' 'gc' 'openssl' 'adns-ipv6')
+depends=('bash' 'gc' 'openssl' 'adns')
 makedepends=('git')
 
 _gitroot=https://github.com/nandub/gale.git
