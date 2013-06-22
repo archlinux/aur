@@ -3,13 +3,13 @@
 
 pkgname=places-git
 _pkgname=${pkgname%-git}
-pkgver=0.5.0.r167.9dbfdc0
+pkgver=0.5.0.r171.92a5ec8
 pkgrel=1
 pkgdesc="Enlightenment module: Manage the mounting of volumes"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/e17mods/wiki/Places"
 license=('MIT')
-depends=('enlightenment17>=0.17.99')
+depends=('enlightenment17>=0.17.99' 'udisks')
 makedepends=('git')
 conflicts=('e17-places-svn')
 provides=('e17-places-svn')
