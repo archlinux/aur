@@ -7,11 +7,11 @@ _gitbranch="master"
 _pkgname="pesign"
 pkgname="${_pkgname}-git"
 
-pkgver=0.106.1.g7b60469.7b60469
+pkgver=0.106.1.g7b60469
 pkgrel=1
 pkgdesc="Tools for manipulating signed PE-COFF binaries - GIT Version"
 url="https://github.com/vathpela/pesign"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL2')
 makedepends=('git')
 depends=('popt' 'nss')
@@ -26,7 +26,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags).$(git describe --always)" | sed 's|-|.|g'
+	echo "$(git describe --tags)" | sed 's|-|.|g'
 }
 
 build() {
@@ -57,5 +57,7 @@ package() {
 	make INSTALLROOT="${pkgdir}/" PREFIX="/usr/" LIBDIR="/usr/lib/" install
 	
 	chmod 0644 "${pkgdir}/usr/lib/libdpe.a"
+	
+	rm -rf "${pkgdir}/etc/rpm/"
 	
 }
