@@ -16,7 +16,7 @@ _COMPILER="GCC46"
 _OPENSSL_VERSION="0.9.8w"
 #######
 
-_pkgname="ovmf-tianocore-edk2"
+_pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
 pkgver=14434
