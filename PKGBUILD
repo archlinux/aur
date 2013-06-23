@@ -24,7 +24,7 @@ pkgver=14441
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
-arch=('any')
+arch=('x86_64')
 license=('BSD')
 
 makedepends=('subversion' 'python2')
