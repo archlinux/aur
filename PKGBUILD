@@ -9,7 +9,7 @@ pkgname="${_pkgname}-git"
 
 pkgver=v1.4.1.6.gf5d338c
 pkgrel=1
-pkgdesc="Tools to create and install UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
+pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
 arch=('x86_64')
 license=('GPL2' 'LGPL2.1')

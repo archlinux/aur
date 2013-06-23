@@ -1,5 +1,8 @@
 post_install() {
-	true
+	echo
+	echo "For info on how to setup own UEFI Secure Boot Keys and "
+	echo "Certificates, read /usr/share/efitools/README"
+	echo
 }
 
 post_upgrade() {
