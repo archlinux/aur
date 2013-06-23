@@ -26,6 +26,7 @@ pkgbase = ewebkit-svn
 	depends = libsoup
 	depends = libxslt
 	depends = libxt
+	depends = harfbuzz-icu
 
 pkgname = ewebkit-svn
 

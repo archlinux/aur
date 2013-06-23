@@ -2,7 +2,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=ewebkit-svn
-_pkgname=ewebkit
+_pkgname=${pkgname%-*}
 pkgver=151620
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
@@ -11,7 +11,7 @@ url="http://trac.webkit.org/wiki/EFLWebKit"
 _svnurl="https://svn.webkit.org/repository/webkit/trunk"
 license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'cairo' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'libtiff'
-         'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt')
+         'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt' 'harfbuzz-icu')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
   source+=("$_pkgname::svn+$_svnurl")
