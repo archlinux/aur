@@ -4,41 +4,33 @@ _gitroot="git://github.com/mjg59/shim.git"
 _gitname="shim"
 _gitbranch="master"
 
-_pkgname="shim-efi-x86_64"
+_pkgname="shim-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.4.1.g23002e8.23002e8
+pkgver=0.4.1.g23002e8
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
 url="https://github.com/mjg59/shim"
-arch=('any')
+arch=('x86_64')
 license=('GPL')
+options=('!strip')
 
 makedepends=('git' 'gnu-efi-libs')
-
-depends=('pesign' 'dosfstools' 'efibootmgr')
+depends=('pesign' 'dosfstools' 'efivar' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-
-options=('!strip' 'docs')
-install="${_pkgname}.install"
+conflicts=("${_pkgname}" 'shim-efi-x86_64' 'shim-efi-x86_64-git')
+provides=("${_pkgname}" 'shim-efi-x86_64' 'shim-efi-x86_64-git')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags).$(git describe --always)" | sed 's|-|.|g'
+	echo "$(git describe --tags)" | sed 's|-|.|g'
 }
 
 build() {
-	
-	if [[ "${CARCH}" != "x86_64" ]]; then
-		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
-		exit 1
-	fi
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
@@ -69,5 +61,7 @@ package() {
 	## Install shim x86_64 UEFI application
 	install -d "${pkgdir}/usr/lib/shim/"
 	install -D -m0644 "${srcdir}/${_gitname}_build/shim.efi" "${pkgdir}/usr/lib/shim/shimx64.efi"
+	install -D -m0644 "${srcdir}/${_gitname}_build/MokManager.efi.signed" "${pkgdir}/usr/lib/shim/MokManager.efi.signed"
+	install -D -m0644 "${srcdir}/${_gitname}_build/fallback.efi.signed" "${pkgdir}/usr/lib/shim/fallback.efi.signed"
 	
 }
