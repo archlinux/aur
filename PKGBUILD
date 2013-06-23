@@ -2,10 +2,11 @@
 
 pkgname=quake-par
 pkgver=0.03.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Quake PAK archiving utility."
 url="ftp://ibiblio.org/pub/linux/games/quake/"
-license="GPL"
+license=('GPL')
+arch=('i686' 'x86_64')
 depends=('glibc')
 makedepends=()
 conflicts=()
@@ -16,15 +17,22 @@ source=("ftp://ibiblio.org/pub/linux/games/quake/par-$pkgver.tar.gz")
 md5sums=('39a73b5b95b04067dfc9acb8ef6bc9ff')
 
 build() {
-	cd $startdir/src/par-$pkgver
-	
-	# Modify Destination Directory in Makefile
-	/bin/sed -i "s:/usr/local:$startdir/pkg/usr:" Makefile.Linux
+    cd $srcdir/par-$pkgver
+    ./configure
+    make
+}
 
-	# Create Dirs
-	install -d $startdir/pkg/usr/{bin,man/man1}
+package() {
+    cd $srcdir/par-$pkgver
 
-	./configure
-	make || return 1
-	make install
+    # Modify Prefix Directory in Makefile
+    /bin/sed -i "s:/usr/local:$pkgdir/usr:" Makefile.Linux
+
+    # Modify man page Directory in Makefile
+    /bin/sed -i "s:\${prefix}/man:$pkgdir/usr/share/man:" Makefile.Linux
+
+    # Create Destination Directories
+    install -d $pkgdir/usr/{bin,share/man/man1}
+
+    make install
 }
