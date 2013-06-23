@@ -1,6 +1,6 @@
 pkgbase = pacdep
 	pkgdesc = Package Dependencies listing
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://jjacky.com/pacdep
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = pacdep
 	makedepends = groff
 	depends = pacman>=4.1
 	depends = pacman<4.2
-	source = http://jjacky.com/pacdep/pacdep-1.0.0.tar.gz
-	md5sums = fb96d4f486c63bf34b05ce5c95056559
+	source = http://jjacky.com/pacdep/pacdep-1.1.0.tar.gz
+	md5sums = 4c416189360ad48320383a5720d51f19
 
 pkgname = pacdep
 
