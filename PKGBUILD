@@ -31,8 +31,8 @@ makedepends=('subversion' 'python2')
 
 options=('!strip' 'docs' '!makeflags')
 
-conflicts=('ovmf-svn')
-provides=('ovmf-svn')
+conflicts=('ovmf' 'ovmf-tianocore-edk2' 'ovmf-tianocore-edk2-svn')
+provides=('ovmf' 'ovmf-tianocore-edk2' 'ovmf-tianocore-edk2-svn')
 
 install="${_pkgname}.install"
 
