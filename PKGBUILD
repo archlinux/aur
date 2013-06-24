@@ -57,8 +57,9 @@ prepare() {
   cp -R "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
-  sed -i "s/        'Growl/\#&/" Build.PL
+  # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;) TODO: Change it to just line containing just like in netfabb
+#  sed -i "s/        'Growl/\#&/" Build.PL
+  sed -i '/Growl/d' Build.PL
 
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
@@ -76,20 +77,35 @@ build() {
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
 
   # Build stage
-  /usr/bin/perl Build.PL
-  ./Build
+#  /usr/bin/perl Build.PL
+#  ./Build
 
 }
 
 check () {
   cd "$_src_dir"
-  ./Build test
+#  ./Build test
+
+# NEW PART
+  /usr/bin/perl Build.PL
 }
 
 package () {
   cd "$srcdir/$_gitname-build"
-  ./Build install
+#  ./Build install
+# NEW PART
+  install -d $pkgdir/usr/share/perl5/vendor_perl/
+  cp -R $srcdir/$_gitname-build/lib/* $pkgdir/usr/share/perl5/vendor_perl/
 
+  install -d $pkgdir/usr/bin/vendor_perl/
+  install -m 755 $srcdir/$_gitname-build/slic3r.pl $pkgdir/usr/bin/vendor_perl/
+
+  #TODO : Do something about utils !
+
+#  install -d "${pkgdir}/usr/share/zsh/site-functions"
+#  install -m 0644 "$srcdir/$_gitname-build/utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/slic3r.zsh"
+
+# STOP NEW
   # Icons " current Build.PL is not really geared for installation "
   install -d $pkgdir/usr/bin/vendor_perl/var
   install -m 644 $srcdir/$_gitname-build/var/*  $pkgdir/usr/bin/vendor_perl/var/
