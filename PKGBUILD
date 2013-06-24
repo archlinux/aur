@@ -2,8 +2,8 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=eweather-git
-_pkgname=${pkgname%-git}
-pkgver=0.2.0.r60.1b045b3
+_pkgname=${pkgname%-*}
+pkgver=0.2.0.r61.e876635
 pkgrel=1
 pkgdesc="Enlightenment module: Current weather and forcast gadget"
 arch=('i686' 'x86_64')
