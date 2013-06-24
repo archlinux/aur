@@ -1,8 +1,8 @@
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index 516be86..5f37db2 100644
+index 8decc1d..170047f 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -213,6 +213,8 @@ export GRUB_DEFAULT \
+@@ -212,6 +212,8 @@ export GRUB_DEFAULT \
    GRUB_THEME \
    GRUB_GFXPAYLOAD_LINUX \
    GRUB_DISABLE_OS_PROBER \
@@ -12,10 +12,10 @@ index 516be86..5f37db2 100644
    GRUB_SAVEDEFAULT \
    GRUB_ENABLE_CRYPTODISK \
 diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index 765bfdc..b148558 100644
+index 2c4bb0a..c7120d2 100644
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
-@@ -115,6 +115,14 @@ cat <<EOF
+@@ -125,6 +125,14 @@ cat <<EOF
  
  EOF
  
@@ -31,7 +31,7 @@ index 765bfdc..b148558 100644
  gfxterm=0;
  for x in ${GRUB_TERMINAL_INPUT} ${GRUB_TERMINAL_OUTPUT}; do
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 14402e8..64c9bb5 100644
+index 0724e16..a8119bd 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -87,6 +87,8 @@ linux_entry ()
@@ -49,7 +49,7 @@ index 14402e8..64c9bb5 100644
    fi      
 -  if [ x$type != xrecovery ] ; then
 +  if [ x$type != xrecovery ] && [ x$type != xfallback ] ; then
-       save_default_entry | sed -e "s/^/\t/"
+       save_default_entry | grub_add_tab
    fi
  
 @@ -132,7 +134,8 @@ linux_entry ()
@@ -60,7 +60,7 @@ index 14402e8..64c9bb5 100644
 +
 +  message="$(gettext_printf "Loading Linux %s ..." "${version}")"
    sed "s/^/$submenu_indentation/" << EOF
- 	echo	'$message'
+ 	echo	'$(echo "$message" | grub_quote)'
  	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
 @@ -190,7 +193,22 @@ while [ "x$list" != "x" ] ; do
    alt_version=`echo $version | sed -e "s,\.old$,,g"`

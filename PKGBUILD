@@ -2,14 +2,16 @@
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
 # Contributor: Keshav Padram (the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-## grub-extras lua and gpxe fail to build
+_GRUB_BZR_REV="5043"
+
+## grub-extras lua and gpxe fail to build with grub bzr rev 5043
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
 
 pkgname=grub
 pkgdesc="GNU GRand Unified Bootloader (2)"
-pkgver=2.00
+pkgver=2.00.${_GRUB_BZR_REV}
 pkgrel=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -18,7 +20,7 @@ backup=('boot/grub/grub.cfg' 'etc/default/grub' 'etc/grub.d/40_custom')
 install="${pkgname}.install"
 options=('!makeflags')
 
-conflicts=('grub-legacy' 'grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
+conflicts=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
 replaces=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
 provides=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
 
@@ -27,51 +29,44 @@ makedepends=('xz' 'freetype2' 'bdf-unifont' 'ttf-dejavu' 'python' 'autogen'
 depends=('sh' 'xz' 'gettext' 'device-mapper')
 optdepends=('freetype2: For grub-mkfont usage'
             'fuse: For grub-mount usage'
-            'dosfstools: For EFI support' 
+            'dosfstools: For grub-mkrescue FAT FS and EFI support' 
             'efibootmgr: For grub-install EFI support'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
             'mtools: For grub-mkrescue FAT FS support')
 
-source=("http://ftp.gnu.org/gnu/grub/grub-${pkgver}.tar.xz"
-        '0069-Backport-gnulib-fixes-for-C11.-Fixes-Savannah-bug-37.patch'
-        'grub-2.00-fix-docs.patch'
+# source=("http://ftp.gnu.org/gnu/grub/grub-${pkgver}.tar.xz"
+source=("grub-${pkgver}::bzr+bzr://bzr.savannah.gnu.org/grub/trunk/grub/#revision=${_GRUB_BZR_REV}"
         'archlinux_grub_mkconfig_fixes.patch'
         '60_memtest86+'
         'grub.default'
         'grub.cfg')
 
 for _DIR_ in 915resolution ntldr-img ; do
-	source+=("grub-extras-${_DIR_}::bzr+bzr://bzr.savannah.gnu.org/grub-extras/${_DIR_}/")
+	source+=("grub-extras-${_DIR_}::bzr+bzr://bzr.savannah.gnu.org/grub-extras/${_DIR_}/#revision=")
 done
 
-source+=("grub-extras-lua::bzr+bzr://bzr.savannah.gnu.org/grub-extras/lua/#revision=24"
-         "grub-extras-gpxe::bzr+bzr://bzr.savannah.gnu.org/grub-extras/gpxe/#revision=13")
-
-sha1sums=('274d91e96b56a5b9dd0a07accff69dbb6dfb596b'
-          'b68565bc155094bade390c257c3f31bc55ae244b'
-          '1dc08391bb13f8e23faa21a76cc4cc4b25467702'
-          '26e4e946190bea1f03632658cf08ba90e11dec57'
+# sha1sums=('274d91e96b56a5b9dd0a07accff69dbb6dfb596b'
+sha1sums=('SKIP'
+          'e7fd9161057411b1adc22977d4b3e7c06116239d'
           '2aa2deeb7d7dc56f389aa1487b7a57b0d44ce559'
           'dbf493dec4722feb11f0b5c71ad453a18daf0fc5'
           '5b7fcb0718a23035c039eb2fda9e088bb13ae611'
-          'SKIP'
-          'SKIP'
           'SKIP'
           'SKIP')
 
 _build_grub-common_and_bios() {
 	
 	## Copy the source for building the common/bios package
-	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub-bios-${pkgver}"
-	cd "${srcdir}/grub-bios-${pkgver}/"
+	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub-${pkgver}-bios"
+	cd "${srcdir}/grub-${pkgver}-bios/"
 	
 	## Add the grub-extra sources
-	export GRUB_CONTRIB="${srcdir}/grub-bios-${pkgver}/grub-extras/"
+	export GRUB_CONTRIB="${srcdir}/grub-${pkgver}-bios/grub-extras/"
 	
-	install -d "${srcdir}/grub-bios-${pkgver}/grub-extras"
-	for _DIR_ in 915resolution ntldr-img lua gpxe ; do
-		cp -r "${srcdir}/grub-extras-${_DIR_}" "${srcdir}/grub-bios-${pkgver}/grub-extras/${_DIR_}"
+	install -d "${srcdir}/grub-${pkgver}-bios/grub-extras"
+	for _DIR_ in 915resolution ntldr-img ; do
+		cp -r "${srcdir}/grub-extras-${_DIR_}" "${srcdir}/grub-${pkgver}-bios/grub-extras/${_DIR_}"
 	done
 	
 	## Unset all compiler FLAGS for bios build
@@ -82,11 +77,11 @@ _build_grub-common_and_bios() {
 	unset MAKEFLAGS
 	
 	## Start the actual build process
-	cd "${srcdir}/grub-bios-${pkgver}/"
+	cd "${srcdir}/grub-${pkgver}-bios/"
 	./autogen.sh
 	echo
 	
-	CFLAGS="-fno-stack-protector" ./configure \
+	./configure \
 		--with-platform="pc" \
 		--target="i386" \
 		"${_EFIEMU}" \
@@ -116,15 +111,15 @@ _build_grub-common_and_bios() {
 _build_grub-efi() {
 	
 	## Copy the source for building the efi package
-	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub-efi-${pkgver}"
-	cd "${srcdir}/grub-efi-${pkgver}/"
+	cp -r "${srcdir}/grub-${pkgver}" "${srcdir}/grub-${pkgver}-efi"
+	cd "${srcdir}/grub-${pkgver}-efi/"
 	
-	export GRUB_CONTRIB="${srcdir}/grub-efi-${pkgver}/grub-extras/"
+	# export GRUB_CONTRIB="${srcdir}/grub-${pkgver}-efi/grub-extras/"
 	
-	install -d "${srcdir}/grub-efi-${pkgver}/grub-extras/"
-	for _DIR_ in lua gpxe ; do
-		cp -r "${srcdir}/grub-extras-${_DIR_}" "${srcdir}/grub-bios-${pkgver}/grub-extras/${_DIR_}"
-	done
+	# install -d "${srcdir}/grub-${pkgver}-efi/grub-extras/"
+	# for _DIR_ in lua gpxe ; do
+	#	cp -r "${srcdir}/grub-extras-${_DIR_}" "${srcdir}/grub-${pkgver}-bios/grub-extras/${_DIR_}"
+	# done
 	
 	## Unset all compiler FLAGS for efi build
 	unset CFLAGS
@@ -133,7 +128,7 @@ _build_grub-efi() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	cd "${srcdir}/grub-efi-${pkgver}/"
+	cd "${srcdir}/grub-${pkgver}-efi/"
 	./autogen.sh
 	echo
 	
@@ -176,14 +171,6 @@ build() {
 	
 	cd "${srcdir}/grub-${pkgver}/"
 	
-	## Fix compiling with gcc48
-	patch -Np1 -i "${srcdir}/0069-Backport-gnulib-fixes-for-C11.-Fixes-Savannah-bug-37.patch"
-	echo
-	
-	## Fix docs compiling
-	patch -Np1 -i "${srcdir}/grub-2.00-fix-docs.patch"
-	echo
-	
 	## Apply Archlinux specific fixes to enable grub-mkconfig detect Arch kernels and initramfs
 	patch -Np1 -i "${srcdir}/archlinux_grub_mkconfig_fixes.patch"
 	echo
@@ -207,7 +194,7 @@ build() {
 
 _package_grub-common_and_bios() {
 	
-	cd "${srcdir}/grub-bios-${pkgver}/"
+	cd "${srcdir}/grub-${pkgver}-bios/"
 	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 	echo
 	
@@ -232,8 +219,8 @@ _package_grub-common_and_bios() {
 
 _package_grub-efi() {
 	
-	cd "${srcdir}/grub-efi-${pkgver}/"
-	make DESTDIR="${pkgdir}/" install
+	cd "${srcdir}/grub-${pkgver}-efi/"
+	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
 	echo
 	
 	## remove gdb debugging related files
