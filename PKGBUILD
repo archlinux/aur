@@ -3,9 +3,9 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=elementary-git
-_pkgname=${pkgname%-git}
+_pkgname=${pkgname%-*}
 true && pkgname=('elementary-git' 'elementary_test-git')
-pkgver=1.7.99.8020.ff9294b
+pkgver=1.7.99.8047.472e94b
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
   [[ $(pacman -T ewebkit-svn) ]] || depends+=('ewebkit-svn')
   [[ $(pacman -T elocation-git) ]] || depends+=('elocation-git')
-  [[ $(pacman -T libeweather-svn) ]] || depends+=('libeweather-svn')
+  [[ $(pacman -T libeweather-git) ]] || depends+=('libeweather-git')
 makedepends=('git')
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
@@ -43,8 +43,8 @@ build() {
 }
 
 package_elementary-git() {
-  provides=("$_pkgname=$pkgver")
-  conflicts=("$_pkgname")
+  provides=("${pkgname%-*}=$pkgver")
+  conflicts=("${pkgname%-*}")
 
   cd "$srcdir/$_pkgname"
 
@@ -56,10 +56,10 @@ package_elementary-git() {
   install -Dm644 README "$pkgdir/usr/share/$_pkgname/README"
   
 # install license files
-  install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
-  sed -n '1,/details./p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
+  sed -n '1,/details./p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
 
 # remove test app
   rm -rf "$pkgdir/usr/bin/"elementary_test*
@@ -72,8 +72,8 @@ package_elementary-git() {
 package_elementary_test-git() {
   true && pkgdesc="Test application for Elementary"
   true && depends=('elementary')
-  provides=("elementary_test=$pkgver")
-  conflicts=('elementary_test')
+  provides=("${pkgname%-*}=$pkgver")
+  conflicts=("${pkgname%-*}")
 
   cd "$srcdir/$_pkgname"
 
