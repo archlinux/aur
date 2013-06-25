@@ -1,17 +1,18 @@
 pkgname=mingw-w64-gtk2
 pkgver=2.24.19
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK+ is a multi-platform toolkit (v2) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
 license=("LGPL")
-makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
-depends=(mingw-w64-crt
-mingw-w64-atk
-mingw-w64-pango
+makedepends=(mingw-w64-gcc mingw-w64-pkg-config gtk-update-icon-cache)
+depends=(
+'mingw-w64-crt'
+'mingw-w64-atk'
+'mingw-w64-pango'
 'mingw-w64-glib2>=2.28.0'
-mingw-w64-cairo
-mingw-w64-gdk-pixbuf2)
+'mingw-w64-cairo'
+'mingw-w64-gdk-pixbuf2')
 options=(!libtool !strip !buildflags)
 source=(
 "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
