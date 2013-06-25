@@ -2,7 +2,7 @@
 pkgname=python-discid
 _pkgname=discid
 _python=python
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python binding of Libdiscid"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=()
 conflicts=()
 options=(!emptydirs)
 source=(http://pypi.python.org/packages/source/d/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('475da2e940e2ee60e2ab89726d8ba4f9')
+md5sums=('88325ccb882c1c31d86ebe10263f0f64')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
