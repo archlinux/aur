@@ -3,7 +3,7 @@
 
 pkgbase=python-boto
 pkgname=python2-boto
-pkgver=2.9.4
+pkgver=2.9.6
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('python-boto>=2.5.2-1')
 replaces=('python-boto>=2.5.2-1')
 source=("http://github.com/boto/boto/archive/$pkgver.tar.gz"
         'LICENSE')
-md5sums=('deb99a55b8a80b637be75e53ca0f8ddc'
+md5sums=('c53078cc657234d03c5e544cc6eb8a07'
          '35ebd993c05c79ba78e9f4fb3e65e547')
 
 build() {
