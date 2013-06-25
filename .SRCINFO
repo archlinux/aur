@@ -1,0 +1,18 @@
+pkgbase = ghmm
+	pkgdesc = General Hidden Markov Model library
+	pkgver = 0.9_rc1
+	pkgrel = 3
+	url = http://ghmm.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gsl
+	depends = libxml2
+	optdepends = gsl
+	optdepends = python2
+	optdepends = python2-pygsl
+	source = http://sourceforge.net/projects/ghmm/files/ghmm/ghmm%200.9-rc1/ghmm-0.9-rc1.tar.gz
+	md5sums = 34d09198401f3a3d6ea04dc8280cdb25
+
+pkgname = ghmm
+
