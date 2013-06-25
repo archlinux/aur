@@ -2,13 +2,14 @@
 
 pkgname=mingw-w64-gtk3
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ is a multi-platform toolkit (v3) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
 license=("LGPL")
-makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
-depends=(mingw-w64-crt
+makedepends=(mingw-w64-gcc mingw-w64-pkg-config gtk-update-icon-cache)
+depends=(
+'mingw-w64-crt'
 'mingw-w64-atk>=2.7.5'
 'mingw-w64-pango>=1.32.4'
 'mingw-w64-glib2>=2.35.3'
