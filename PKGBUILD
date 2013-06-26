@@ -18,7 +18,6 @@ makedepends=('git' 'python-distribute' 'python2-distribute')
 provides=('isrcsubmit')
 conflicts=('isrcsubmit')
 options=(!emptydirs)
-
 source=($pkgbase::git+https://github.com/JonnyJD/musicbrainz-isrcsubmit.git)
 md5sums=('SKIP')
 
@@ -31,16 +30,17 @@ build() {
   cd $pkgbase
   python setup.py build
 
-
   cd $srcdir/$pkgbase-python2
   python2 setup.py build
 
 }
+
 package_isrcsubmit-python-git() {
   depends=('python' 'python-musicbrainzngs>=0.4' 'python-discid>=0.5.0')
   cd $srcdir/$pkgbase
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+
 package_isrcsubmit-python2-git() {
   depends=('python2' 'python2-musicbrainzngs>=0.4' 'python2-discid>=0.5.0')
   cd $srcdir/$pkgbase-python2
