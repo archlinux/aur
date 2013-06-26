@@ -8,7 +8,7 @@ arch=('any')
 url="http://langworth.com/pub/cadubi/"
 license=('GPL' 'PerlArtistic')
 depends=('perl-term-readkey')
-source=("http://pub.langworth.com/$pkgname-$pkgver.tar.gz")
+source=("ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/$pkgname-$pkgver.tar.gz")
 sha256sums=('ca8b6ea305e0eccb11add7fc165beeee7ef33f9f0106e84efa1b364f082df0ab')
 
 build() {
