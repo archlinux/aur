@@ -1,6 +1,6 @@
 pkgbase = isrcsubmit-git
 	pkgdesc = submit ISRCs from disc to MusicBrainz
-	pkgver = 2.0.0.beta.3
+	pkgver = 2.0.0.beta.3.1.g1ba3be7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/JonnyJD/musicbrainz-isrcsubmit
@@ -18,10 +18,10 @@ pkgbase = isrcsubmit-git
 pkgname = isrcsubmit-python2-git
 	depends = python2
 	depends = python2-musicbrainzngs>=0.4
-	depends = python2-discid>=0.5.0
+	depends = python2-discid>=1.0.0
 
 pkgname = isrcsubmit-python-git
 	depends = python
 	depends = python-musicbrainzngs>=0.4
-	depends = python-discid>=0.5.0
+	depends = python-discid>=1.0.0
 

@@ -3,7 +3,7 @@
 pkgbase=isrcsubmit-git
 pkgname=$pkgbase
 true && pkgname=('isrcsubmit-python2-git' 'isrcsubmit-python-git')
-pkgver=2.0.0.beta.3
+pkgver=2.0.0.beta.3.1.g1ba3be7
 pkgver(){
   cd $srcdir/$pkgbase
   git describe --tags --long | sed 's/-/./g;s/^v//'
@@ -36,13 +36,13 @@ build() {
 }
 
 package_isrcsubmit-python-git() {
-  depends=('python' 'python-musicbrainzngs>=0.4' 'python-discid>=0.5.0')
+  depends=('python' 'python-musicbrainzngs>=0.4' 'python-discid>=1.0.0')
   cd $srcdir/$pkgbase
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_isrcsubmit-python2-git() {
-  depends=('python2' 'python2-musicbrainzngs>=0.4' 'python2-discid>=0.5.0')
+  depends=('python2' 'python2-musicbrainzngs>=0.4' 'python2-discid>=1.0.0')
   cd $srcdir/$pkgbase-python2
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
