@@ -12,7 +12,7 @@ _GRUB_BZR_REV="5043"
 pkgname=grub
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.00.${_GRUB_BZR_REV}
-pkgrel=1
+pkgrel=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -183,7 +183,11 @@ build() {
 	
 	## Requires python2
 	# sed 's|python |python2 |g' -i "${srcdir}/grub-${pkgver}/autogen.sh"
-	
+
+        ## pull in language files
+        ./linguas.sh
+        # remove not working langs which need LC_ALL=C.UTF-8
+        sed -i -e 's#en@cyrillic en@greek##g' po/LINGUAS
 	_build_grub-common_and_bios
 	echo
 	
