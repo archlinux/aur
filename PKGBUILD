@@ -3,12 +3,12 @@ _python=python
 pkgname=isrcsubmit
 pkgver=2.0.0_beta.4
 _pkgver=2.0.0-beta.4
-pkgrel=1
+pkgrel=2
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
 license=('GPL3')
-depends=("$_python" "$_python-musicbrainzngs>=0.4" "$_python-discid>=0.5.0")
+depends=("$_python" "$_python-musicbrainzngs>=0.4" "$_python-discid>=1.0.0")
 makedepends=()
 conflicts=()
 options=(!emptydirs)
