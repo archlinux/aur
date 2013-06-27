@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-chewing
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Fcitx Wrapper for chewing'
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
   cd "$srcdir"/${pkgname}-${pkgver}/build
   make DESTDIR="$pkgdir" install
 }
-md5sums=('d4dacf213673b5cac50db41427eb6b35')
+md5sums=('1879ad51b16e07db40338db55054833c')
