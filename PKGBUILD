@@ -1,0 +1,29 @@
+# Contributor: Philipp Schmitt (attentah@NOSPAM.gmail.com)
+
+pkgname=g9xled
+pkgver=1
+pkgrel=2
+pkgdesc="Logitech G9X LED color control utility"
+arch=('i686' 'x86_64')
+url="http://als.regnet.cz/logitech-g9-linux-led-color.html"
+license=('unknown')
+depends=('libusb')
+makedepends=('gcc')
+install="$pkgname.install"
+source=(http://lxl.io/aur/g9xled/g9xled.c)
+noextract=('g9xled.c')
+md5sums=('0a8ba5b00ca0663cd6dd6efa30597cbd')
+
+
+build() {
+
+  # Create destination directories
+  mkdir -p $pkgdir/usr/bin
+
+  # Build/Install
+  cd "$srcdir"
+
+  gcc g9xled.c -o g9xled -lusb
+  install -m755 g9xled $pkgdir/usr/bin
+
+}

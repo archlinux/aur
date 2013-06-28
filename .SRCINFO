@@ -1,0 +1,17 @@
+pkgbase = g9xled
+	pkgdesc = Logitech G9X LED color control utility
+	pkgver = 1
+	pkgrel = 2
+	url = http://als.regnet.cz/logitech-g9-linux-led-color.html
+	install = g9xled.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = gcc
+	depends = libusb
+	noextract = g9xled.c
+	source = http://lxl.io/aur/g9xled/g9xled.c
+	md5sums = 0a8ba5b00ca0663cd6dd6efa30597cbd
+
+pkgname = g9xled
+
