@@ -1,0 +1,18 @@
+pkgbase = phoebetria
+	pkgdesc = Controller software for the BitFenix Recon fan controller.
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://phoebetria.com/
+	install = phoebetria.install
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = qt4
+	depends = rpmextract
+	depends = systemd-tools
+	depends = libusbx
+	source = http://downloads.sourceforge.net/project/phoebetria/phoebetria-fc17-1.4-0.src.rpm
+	sha1sums = 3221dfbda4e15ae1cffdbed3523fb78964df4d4a
+
+pkgname = phoebetria
+

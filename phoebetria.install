@@ -1,0 +1,32 @@
+post_install() {
+groupadd fancontrollers
+cat <<-EoM
+You may want to reload logout/reboot before lauching phoebetria for the first time: a new group (fancontrollers) and an udev rule have been added to your system. 
+XMonad users: if main window isn't displayed or just "flashes", please edit \$XDG_CONFIG_HOME/Phoebetria/Phoebetria.ini and set minimizeToTray to false.
+Working Example: 
+[UserPrefs]
+startMinimized=false
+minimizeToTray=false
+showTrayIconTooltips=true
+useLogScaleRpmSliders=true
+quitOnClose=true
+startupProfile=
+shutdownProfile=
+channelName_0=
+channelName_1=
+channelName_2=
+channelName_3=
+channelName_4=
+probeName_0=
+probeName_1=
+probeName_2=
+probeName_3=
+probeName_4=
+stylesheet=:/other/Phoebetria.qss
+EoM
+}
+
+post_remove() {
+    groupdel fancontrollers
+}
+
