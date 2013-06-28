@@ -10,7 +10,7 @@ license=('unknown')
 depends=('libusb')
 makedepends=('gcc')
 install="$pkgname.install"
-source=(http://lxl.io/aur/g9xled/g9xled.c)
+source=('https://raw.github.com/pschmitt/g9xled/master/g9xled.c')
 noextract=('g9xled.c')
 md5sums=('0a8ba5b00ca0663cd6dd6efa30597cbd')
 
