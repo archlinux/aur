@@ -1,9 +1,0 @@
-post_install() {
-    echo
-    echo "syslinux-efi has been installed at /usr/lib/syslinux/efi64/"
-    echo
-}
-
-post_upgrade() {
-  post_install
-}
