@@ -14,16 +14,17 @@ source=('https://raw.github.com/pschmitt/g9xled/master/g9xled.c')
 noextract=('g9xled.c')
 md5sums=('0a8ba5b00ca0663cd6dd6efa30597cbd')
 
+package() {
+  cd "$srcdir"
+  mkdir -p $pkgdir/usr/bin
+  install -m755 g9xled $pkgdir/usr/bin
+}
+
 
 build() {
-
   # Create destination directories
-  mkdir -p $pkgdir/usr/bin
-
-  # Build/Install
   cd "$srcdir"
 
+  # Compile 
   gcc g9xled.c -o g9xled -lusb
-  install -m755 g9xled $pkgdir/usr/bin
-
 }
