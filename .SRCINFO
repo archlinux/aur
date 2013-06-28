@@ -1,13 +1,13 @@
 pkgbase = guix
 	pkgdesc = GNU guix is a purely functional package manager
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/guix/
 	arch = x86_64
 	arch = i686
 	license = GPL
-	depends = guile2
-	depends = sqlite
+	depends = guile>=2.0.5
+	depends = sqlite>=3.6.19
 	depends = bzip2
 	depends = libgcrypt
 	source = ftp://alpha.gnu.org/gnu/guix/guix-0.2.tar.gz

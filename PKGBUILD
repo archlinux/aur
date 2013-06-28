@@ -3,12 +3,12 @@
 
 pkgname=guix
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU guix is a purely functional package manager"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
 license=('GPL')
-depends=('guile2' 'sqlite' 'bzip2' 'libgcrypt')
+depends=('guile>=2.0.5' 'sqlite>=3.6.19' 'bzip2' 'libgcrypt')
 makedepends=()
 source=('ftp://alpha.gnu.org/gnu/guix/guix-0.2.tar.gz')
 md5sums=('4bdbbd736d0bbcb6cd7e28220c4ea1fe')
@@ -32,5 +32,6 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
+#	only required if enabling check()
 #	chmod -R u+w test-tmp
 }
