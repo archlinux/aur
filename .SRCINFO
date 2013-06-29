@@ -1,7 +1,7 @@
 pkgbase = gnu-efi-libs-fedora-git
-	pkgdesc = Library for building x86_64 and ia32 UEFI Applications using GNU toolchain - Fedora GIT Version
+	pkgdesc = Library for building UEFI Applications using GNU toolchain - Fedora GIT Version
 	pkgver = 430c83a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/gnu-efi/
 	arch = x86_64
 	arch = i686
@@ -12,9 +12,7 @@ pkgbase = gnu-efi-libs-fedora-git
 	options = !strip
 	options = !makeflags
 	source = gnu-efi-fedora::git+git://github.com/vathpela/gnu-efi.git#branch=fedora
-	source = gnu-efi-fix-x86_64-uefi-call-wrapper.patch
 	sha1sums = SKIP
-	sha1sums = 8918de3aefba2a3dc367bbb28611394c4c300a6d
 
 pkgname = gnu-efi-libs-fedora-git
 
