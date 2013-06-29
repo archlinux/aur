@@ -2,7 +2,6 @@
 # Contributor: wain <wain.at.archlinux.fr>
 
 pkgname=customizepkg-scripting
-_pkgname=customizepkg
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="A tool to modify automatically PKGBUILDs - modified to just run scripts"
