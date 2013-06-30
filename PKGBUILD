@@ -1,19 +1,19 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 pkgname=openmpi
-pkgver=1.6.4
-pkgrel=2
+pkgver=1.6.5
+pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
 license=('custom')
 depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
 makedepends=('inetutils')
-options=(!libtool)
+options=('!libtool')
 source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('38095d3453519177272f488d5058a98f7ebdbf10')
+sha1sums=('93859d515b33dd9a0ee6081db285a2d1dffe21ce')
 
 build() {
-   cd "${srcdir}/${pkgname}-${pkgver}"
+   cd ${pkgname}-${pkgver}
 
    # Make sure we use the system ltdl librariry rather than the ones in the tarball
    rm -r opal/libltdl
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-   cd "${srcdir}/${pkgname}-${pkgver}"
+   cd ${pkgname}-${pkgver}
    make DESTDIR="${pkgdir}" install
 
    # FS#28583
@@ -51,8 +51,9 @@ package() {
    # Openmpi's otfinfo conflicts with the one from texlive
    mv "${pkgdir}"/usr/bin/otfinfo{,mpi}
 
-   # Remove dangling symlink
+   # Remove dangling symlink and useless file
    rm "${pkgdir}"/usr/share/man/man1/orteCC.1
+   rm "${pkgdir}"/usr/share/vampirtrace/config.log
 
    install -d -m 755 "${pkgdir}"/etc/ld.so.conf.d
    echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
