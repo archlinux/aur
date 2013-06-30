@@ -1,17 +1,17 @@
 --- a/tr/LC_MESSAGES/frontend.po
 +++ b/tr/LC_MESSAGES/frontend.po
-@@ -3743,7 +3743,7 @@
+@@ -3980,7 +3980,7 @@
  
- #: jsLoader.php:151
+ #: jsLoader.php:155
  msgid "Each URL should have a unique name. Please make sure there is only one URL named"
--msgstr "Her URL tekil bir isme sahip olmalıdır. Lütfen URL'in yalnızca bir isme sahip olduğundan emin olun."
-+msgstr "Her URL tekil bir isme sahip olmalıdır. Lütfen URLin yalnızca bir isme sahip olduğundan emin olun."
+-msgstr "Her URL tekil bir isme sahip olmalıdır. Lütfen URL'in yalnızca bir isme sahip olduğundan emin olun"
++msgstr "Her URL tekil bir isme sahip olmalıdır. Lütfen URLin yalnızca bir isme sahip olduğundan emin olun"
  
- #: include/forms.inc.php:1879 include/forms.inc.php:1893
- #: include/views/administration.users.edit.php:157
-@@ -12823,7 +12823,7 @@
+ #: include/forms.inc.php:1909 include/forms.inc.php:1923
+ #: include/views/administration.users.edit.php:164
+@@ -13234,7 +13234,7 @@
  
- #: include/config.inc.php:244
+ #: include/config.inc.php:252
  msgid "You cannot view this URL as a"
 -msgstr "Bu URL'i şu şekilde göremezsiniz"
 +msgstr "Bu URLi şu şekilde göremezsiniz"
@@ -21,12 +21,12 @@
 
 --- a/uk/LC_MESSAGES/frontend.po
 +++ b/uk/LC_MESSAGES/frontend.po
-@@ -7760,7 +7760,7 @@
+@@ -8054,7 +8054,7 @@
  
  #: include/views/configuration.sysmap.edit.php:149
  msgid "No URLs defined."
 -msgstr "URL'и не визначено."
 +msgstr "URLи не визначено."
  
- #: include/forms.inc.php:269
+ #: include/forms.inc.php:270
  msgid "No accessible resources"

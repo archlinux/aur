@@ -1,6 +1,6 @@
 pkgname=zabbix-server-mysql
-pkgver=2.0.6
-pkgrel=2
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64"
@@ -27,37 +27,67 @@ conflicts=("zabbix-server"
           )
 backup=("etc/zabbix/zabbix_server.conf"
         "etc/zabbix/zabbix_agentd.conf"
-        "etc/conf.d/zabbix-server"
        )
 install="zabbix-server.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
-        "zabbix-server.service"
-        "zabbix-agentd.service"
-        "conf.zabbix-server"
-        "sudoers.zabbix-server"
         "zabbix-server.install"
         "frontend.diff"
         "config.diff"
        )
-md5sums=("f7261987731dd74b58cb1da890655ddc" # zabbix-$pkgver.tar.gz
-         "e365377bbe269cac640a096204605c6b" # zabbix-server.service
-         "2f0476fc3d6c9618fb2265991656ab59" # zabbix-agentd.service
-         "433c31251286f67650123fa18f7ff834" # conf.zabbix-server
-         "228d6609c0f2364f1268d7b24b4756a4" # sudoers.zabbix-server
+md5sums=("0e86f37e3acecc1e0b618af14edc5346" # zabbix-$pkgver.tar.gz
          "99a25ef72b46e5729b80634c85c438ce" # zabbix-server.install
-         "4699673e5135c3a7b85a228d610f451c" # frontend.diff
+         "e663566f1021bc62225cc6fff2e3894b" # frontend.diff
          "651e284397532f500b92c34bb0a2feda" # config.diff
         )
-sha1sums=("75a747ddcfa4bcd5792f69dc8d7de9c5839b8595" # zabbix-$pkgver.tar.gz
-          "2137bee9c763e62914e9b267cfb014c7f6130cba" # zabbix-server.service
-          "b0729a353349e965d0a5fb83b2d017137071007f" # zabbix-agentd.service
-          "4b4423af5587d59ab68ba748242183193729ec32" # conf.zabbix-server
-          "5711484ecd0efc4769b975cfff77911c2044fd18" # sudoers.zabbix-server
+sha1sums=("d7b6e97af514afd131d38dd692b75644080a4aaa" # zabbix-$pkgver.tar.gz
           "2959c2198b99523e623e6f9cdb3061d4ac6e48e8" # zabbix-server.install
-          "bc354a6f441b82119ac570ac6893053170f36953" # frontend.diff
+          "805fd14183fd7959b6b53d5d0d9213518024b4e7" # frontend.diff
           "82239b23cfb4f8f43d9a5a33f77e58103e567af4" # config.diff
          )
+
+create_files() {
+cat << EOL > "$srcdir/sudoers.zabbix-server"
+# Defaults specification
+Defaults visiblepw
+
+# User privilege specification
+zabbix ALL=(root) NOPASSWD: /usr/bin/nmap
+EOL
+
+cat << EOL > "$srcdir/zabbix-server.service"
+[Unit]
+Description=Zabbix Server
+After=syslog.target network.target mysqld.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/mkdir -p /run/zabbix ; /usr/bin/chown -R zabbix:zabbix /run/zabbix
+ExecStart=/usr/bin/zabbix_server
+ExecReload=/usr/bin/zabbix_server -R config_cache_reload
+RemainAfterExit=yes
+PIDFile=/run/zabbix/zabbix_server.pid
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+cat << EOL > "$srcdir/zabbix-agentd.service"
+[Unit]
+Description=Zabbix Agent
+After=syslog.target network.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/mkdir -p /run/zabbix ; /usr/bin/chown -R zabbix:zabbix /run/zabbix
+ExecStart=/usr/bin/zabbix_agentd
+RemainAfterExit=yes
+PIDFile=/run/zabbix/zabbix_agentd.pid
+
+[Install]
+WantedBy=multi-user.target
+EOL
+}
 
 build() {
   cd "${srcdir}/zabbix-${pkgver}"
@@ -112,7 +142,7 @@ package() {
   install -d -m 0750                                    "${pkgdir}/etc/sudoers.d/"
   install -d -m 0755                                    "${pkgdir}/run/zabbix"
   install -d -m 0750                                    "${pkgdir}/var/log/zabbix"
-  install -D -m 0640 "${srcdir}/conf.zabbix-server"     "${pkgdir}/etc/conf.d/zabbix-server"
+  create_files
   install -D -m 0640 "${srcdir}/sudoers.zabbix-server"  "${pkgdir}/etc/sudoers.d/zabbix-server"
   install -D -m 0644 "${srcdir}/zabbix-server.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-server.service"
   install -D -m 0644 "${srcdir}/zabbix-agentd.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-agentd.service"
