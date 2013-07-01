@@ -12,7 +12,7 @@ ConditionPathExists=/etc/peervpn/%i.conf
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/peervpn /etc/peervpn/%i.conf
+ExecStart=/usr/bin/peervpn /etc/peervpn/%i.conf
 
 [Install]
 WantedBy=multi-user.target
