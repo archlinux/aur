@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-sunpinyin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Fcitx Wrapper for sunpinyin, Statistical Language Model based pinyin IME by Sun"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 install=fcitx-sunpinyin.install
 depends=('fcitx>=4.2.7' 'sunpinyin>2.0.3' 'sunpinyin-data' 'gtk-update-icon-cache')
 makedepends=('cmake')
-source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz")
+source=("http://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}.tar.xz")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -27,4 +27,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('de2723baf8e5d9092706cd2baf2f21bb')
+sha512sums=('7ad9065d86d7bb3ceb6536a0fe3559bf2ba60aebe69e2f07c8dadad1a0a2283a1b85712105c6c2a2bf19b9645c4392204db9c3d1db234618ba7f62ee44eda85c')
