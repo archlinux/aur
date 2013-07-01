@@ -2,13 +2,13 @@
 
 pkgname=fcitx-configtool
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK based config tool for Fcitx"
 arch=('i686' 'x86_64')
 url="http://fcitx.googlecode.com/"
 license=('GPL2')
 depends=("fcitx>=4.2.7" "gtk3" "iso-codes")
-optdepends=('fcitx-qt: for some configuration windows')
+optdepends=('fcitx-qt4: for some configuration windows')
 makedepends=("cmake")
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 
