@@ -5,7 +5,7 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.8
-pkgrel=1
+pkgrel=2
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
@@ -13,14 +13,21 @@ license=('GPL')
 makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' \
              'iso-codes' 'gobject-introspection' 'libxkbfile')
 source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz
-        https://github.com/fcitx/fcitx/commit/b0a5439ac0188211c0955baf6811a0e3406ac812.patch)
+        https://github.com/fcitx/fcitx/commit/b0a5439ac0188211c0955baf6811a0e3406ac812.patch
+        https://github.com/fcitx/fcitx/commit/94635187b18badb1a2dff821de9a30a20d00feb1.patch
+        https://github.com/fcitx/fcitx/commit/46d5a69d595ac825f47a3c22ddeb8ce71b04e887.patch)
 
 build() {
   #source /etc/profile.d/qt4.sh
 
   cd "$srcdir/$pkgbase-$pkgver"
+
   # Fix ELF file patch
   patch -p1 -i ../b0a5439ac0188211c0955baf6811a0e3406ac812.patch
+
+  # Fix switch key issue
+  patch -p1 -i ../94635187b18badb1a2dff821de9a30a20d00feb1.patch
+  patch -p1 -i ../46d5a69d595ac825f47a3c22ddeb8ce71b04e887.patch
 
   cd "$srcdir"
   mkdir -p build
@@ -122,4 +129,6 @@ package_fcitx-qt4() {
 }
 
 md5sums=('79676d18536ebb9d0a0fa47e96416016'
-         '0f3f85204ac1559bbf2cff304122234e')
+         '0f3f85204ac1559bbf2cff304122234e'
+         '417cd212d9fb7b9881232d57d023e49f'
+         'd91ae8316154eccce3234c55e53a3c3b')
