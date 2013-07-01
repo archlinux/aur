@@ -4,29 +4,23 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.7
-pkgrel=8
+pkgver=4.2.8
+pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/fcitx/"
+url="http://fcitx-im.org"
 license=('GPL')
 makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' \
-             'iso-codes' 'gobject-introspection' 'libxkbfile' 'git')
-source=(http://fcitx.googlecode.com/files/${pkgbase}-${pkgver}_dict.tar.xz
-	https://github.com/fcitx/fcitx/commit/9937b68bad3a7e9465e17b711ce9c0a072d3071f.patch
-	https://github.com/fcitx/fcitx/commit/10ff96ca1215187444951cdbebe9e0beacacdf5e.patch
-	https://github.com/fcitx/fcitx/commit/dc36c1a88f863971f81a76b8d9ec0db23b0d9387.patch
-	https://github.com/fcitx/fcitx/commit/a9e6570046f9c1477dd6ec6e30e91e020e62d698.patch
-)
+             'iso-codes' 'gobject-introspection' 'libxkbfile')
+source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz
+        https://github.com/fcitx/fcitx/commit/b0a5439ac0188211c0955baf6811a0e3406ac812.patch)
 
 build() {
   #source /etc/profile.d/qt4.sh
 
   cd "$srcdir/$pkgbase-$pkgver"
-  patch -Np1 -i "$srcdir/9937b68bad3a7e9465e17b711ce9c0a072d3071f.patch"
-  patch -Np1 -i "$srcdir/10ff96ca1215187444951cdbebe9e0beacacdf5e.patch"
-  git apply -v -p1 "$srcdir/dc36c1a88f863971f81a76b8d9ec0db23b0d9387.patch"
-  patch -Np1 -i "$srcdir/a9e6570046f9c1477dd6ec6e30e91e020e62d698.patch"
+  # Fix ELF file patch
+  patch -p1 -i ../b0a5439ac0188211c0955baf6811a0e3406ac812.patch
 
   cd "$srcdir"
   mkdir -p build
@@ -87,7 +81,7 @@ package_fcitx() {
   rm -r "${pkgdir}/usr/lib/"{gtk-2.0,gtk-3.0,qt4}
   rm -r "${pkgdir}/usr/lib/fcitx/qt"
   rm -r "${pkgdir}/usr/include/fcitx-qt"
-  rm "${pkgdir}/usr/bin/fcitx-qt-gui-wrapper"
+  rm "${pkgdir}/usr/lib/fcitx/libexec/fcitx-qt-gui-wrapper"
   rm "${pkgdir}/usr/lib/"libfcitx-qt.so*
   rm "${pkgdir}/usr/lib/pkgconfig/fcitx-qt.pc"
 }
@@ -127,8 +121,5 @@ package_fcitx-qt4() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('6e291717c24615b9dc9bfaa2949af3a7'
-         '246e36c2232f107ed1692a52ebc43c39'
-         '6f420547bc8af9627db2e5290f758433'
-         '51e53377e1b83661f2896e25d1a46242'
-         '5e9f90817722a138b459b2bf6a926f96')
+md5sums=('79676d18536ebb9d0a0fa47e96416016'
+         '0f3f85204ac1559bbf2cff304122234e')
