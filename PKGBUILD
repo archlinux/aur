@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-hangul
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Hangul (Korean) support for fcitx"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('fcitx>=4.2.7' 'libhangul')
 makedepends=('cmake' 'intltool')
 install=$pkgname.install
-source=("http://fcitx.googlecode.com/files/$pkgname-$pkgver.tar.xz")
+source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -29,4 +29,4 @@ package() {
    make DESTDIR="$pkgdir" install
 }
 
-md5sums=('d3dac52b1a1697a4f8256e383c889216')
+sha512sums=('07085508da98c49bcecf75fbfad6681263a735a1efcc4fb7a6fa05cb215dfe0c338e95e26cc55e488501b5abbc1007464b1bbf488f07aaca2d1a0a18c8173074')
