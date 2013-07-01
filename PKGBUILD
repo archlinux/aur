@@ -3,8 +3,8 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.9
-pkgver=3.9.8
+_srcname=linux-3.10
+pkgver=3.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,16 +12,15 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
-         'c5f2166686a913abf550bfed8b77df27'
-         'ff8c71d23fa8f635b1ae544fcc401044'
-         '9daae0a53ea755e1477582b240954c5a'
+md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
+         'c91b6048870baf6896eed2a871b1023d'
+         '6ac6e77963823978feca71bb52ed3c6f'
          'eb14dcfd80c00852ef81ded6e826826a'
          'f3def2cefdcbb954c21d8505d23cc83c')
 
@@ -29,15 +28,13 @@ _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# 20e4b8685a2f3a88957ae9412b905fa5  /lib/modules/3.9.7-1-ARCH/modules.symbols
 # i686
-# 1efa064413c17189c8192c3b4f4d37c7  /lib/modules/3.9.7-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-   patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -299,7 +296,7 @@ _package-headers() {
   done
 
   # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arc,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
 _package-docs() {
