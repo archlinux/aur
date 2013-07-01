@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-configtool
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="GTK based config tool for Fcitx"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=("fcitx>=4.2.7" "gtk3" "iso-codes")
 optdepends=('fcitx-qt: for some configuration windows')
 makedepends=("cmake")
-source=("http://fcitx.googlecode.com/files/$pkgname-$pkgver.tar.xz")
+source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,4 +28,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('69eb7271883b0b7894ddab5a38ceeb2f')
+sha512sums=('90ec9f4c30c46ea937f965173a4213b67d1cb360cc43b96af9899cdd5a0e35d34658ee7149ed10b3dc58d3851bc1712915db970fd2d25a976983b1037e380be2')
