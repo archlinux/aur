@@ -1,0 +1,29 @@
+From 6b1093d903f4605dcb974a3b299ed47f3e15edc1 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 27 Mar 2013 11:08:46 +0000
+Subject: util: Don't use clutter_x11_set_use_argb_visual() on non-X11
+
+We shouldn't be running this on non-X11 windowing systems.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=696687
+---
+diff --git a/clutter-gtk/gtk-clutter-util.c b/clutter-gtk/gtk-clutter-util.c
+index 38e3ced..d4a9fa5 100644
+--- a/clutter-gtk/gtk-clutter-util.c
++++ b/clutter-gtk/gtk-clutter-util.c
+@@ -249,8 +249,11 @@ gtk_clutter_init_with_args (int            *argc,
+     return CLUTTER_INIT_SUCCESS;
+ 
+ #if defined(CLUTTER_WINDOWING_X11)
+-  /* enable ARGB visuals by default for Clutter */
+-  clutter_x11_set_use_argb_visual (TRUE);
++  if (clutter_check_windowing_backend (CLUTTER_WINDOWING_X11))
++    {
++      /* enable ARGB visuals by default for Clutter */
++      clutter_x11_set_use_argb_visual (TRUE);
++    }
+ #endif
+ 
+   /* we let gtk+ open the display */
+--
+cgit v0.9.2
