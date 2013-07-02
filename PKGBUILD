@@ -1,21 +1,21 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=4.4.1.34164
+pkgver=4.4.2.34167
 pkgrel=1
 pkgdesc="Second Life is a 3-D virtual world entirely built and owned by its residents. Firestorm is alternative viewer for secondlife (native 32bit)"
-url="http://www.phoenixviewer.com/"
+url="http://www.firestormviewer.org/"
 license=('GPL')
 depends=('openal' 'gnome-vfs' 'gtk2' 'libpng' 'dbus-glib' 'libidn' 'sdl' 'mesa')
 optdepends=('gstreamer0.10: For video support - may need good, bad and ugly plugins')
 [ "$CARCH" = "x86_64" ] && depends=('lib32-gtk2' 'lib32-libpng' 'lib32-openal' 'lib32-dbus-glib' 'lib32-libidn' 'lib32-sdl' 'lib32-mesa')
-[ "$CARCH" = "x86_64" ] && optdepends=('lib32-nvidia-utils: GL support for NVIDIA drivers')
+[ "$CARCH" = "x86_64" ] && optdepends=('lib32-gstreamer0.10: For video support - may need good, bad and ugly plugins' 'lib32-nvidia-utils: GL support for NVIDIA drivers')
 arch=('i686' 'x86_64')
 install=firestorm.install
 source=("http://downloads.phoenixviewer.com/Linux/Phoenix_Firestorm-Release_i686_${pkgver}SL.tar.bz2"
         'firestorm.install'
         'firestorm.desktop'
         'firestorm.launcher')
-sha256sums=('af129be5bd45128b4ac39f629c2ab2a25e2f6f1e7cdabf7be2e6dc288a25b21a'
+sha256sums=('230ef92daf063a8814b8b232ada322cb10a9db90661de6cf58ea94b1984cdbd9'
             'cd919be5e2d28ff86e9b51ffe1076ba8c13acf9c0953fc2f4bb78fe7e79cdbb3'
             '6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1'
             'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530')
