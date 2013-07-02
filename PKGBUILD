@@ -1,8 +1,6 @@
 # Maintainer : Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
-_gitname="efibootmgr"
-
 _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 
@@ -16,10 +14,12 @@ makedepends=('git')
 depends=('pciutils')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-options=(strip purge docs zipman !emptydirs !libtool)
+options=('strip' 'zipman' '!emptydirs' '!libtool')
 
 source=('efibootmgr::git+git://linux.dell.com/efibootmgr.git#branch=master')
 sha1sums=('SKIP')
+
+_gitname="${_pkgname}"
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
