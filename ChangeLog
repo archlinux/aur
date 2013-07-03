@@ -1,3 +1,16 @@
+2013-07-03 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.1.0-1
+	Version bump.
+
+	Upstream changelog:
+	- Updated to support 1.6 and new launcher.
+	- New utility for converting texture packs to resource packs.
+	- New directory structure for MCPatcher files in resource packs.
+	- Custom Item Textures mod.
+	- Removed Java 5 support.
+	- Updated javassist library to 3.18.0-GA.
+
 2013-06-14 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.0.4_01-1
