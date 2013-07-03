@@ -56,5 +56,5 @@ package() {
   rmdir ${pkgdir}/usr/sbin/
   rm -rf ${srcdir}/${_gitname}-build
 }
-md5sums=('c506b9500a2f914fabeb6c2652f85581'
+md5sums=('1c4fd254cd00834f644ab614a76f5c96'
          'b95c87ed13611f3903ed9bc5e504b947')
