@@ -1,5 +1,5 @@
 pkgbase = yaehmop
-	pkgdesc = Yet Another extended Huckel Molecular Orbital Package
+	pkgdesc = Yet Another Extended Huckel Molecular Orbital Package
 	pkgver = 3.1.0b2
 	pkgrel = 1
 	url = http://yaehmop.sourceforge.net/
