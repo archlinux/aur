@@ -1,3 +1,9 @@
+2013-07-03 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.0.4_01-2
+	Renamed package to "mcpatcher3" and moved/renamed files to enable installing
+	alongside mcpatcher and mcpatcher2.
+
 2013-06-14 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.0.4_01-1
