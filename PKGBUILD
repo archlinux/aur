@@ -11,16 +11,15 @@ depends=('libdiscid' 'libmirage>=2.0.0')
 makedepends=()
 options=()
 source=($pkgname-$pkgver.zip::https://github.com/kepstin/image-id/archive/master.zip)
-md5sums=('af5b62a60bf7015b36b670527a92d019')
+md5sums=('86155dbcf8c2b7ac5df8cb242196b9ea')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-	sed -i -e 's/CFLAGS=-g/CFLAGS += -g/' Makefile
 }
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make
+	make CFLAGS="${CFLAGS} -Wall" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
