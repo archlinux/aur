@@ -8,8 +8,8 @@
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
 
 pkgname=opera
-_ver=12.15
-_build=1748
+_ver=12.16
+_build=1860
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='Fast and secure web browser and Internet suite'
@@ -30,11 +30,11 @@ options=(!strip !zipman)
 if [[ $CARCH == i686 ]]; then
   _arch=i386
   source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('602eff2177b42d809c44c832cb961eb5cfad1d502d20af31f082a703bee2eae2')
+  sha256sums=('df640656a52b7c714faf25de92d84992116ce8f82b7a67afc1121eb3c428489d')
 elif [[ $CARCH == x86_64 ]]; then
   _arch=$CARCH
   source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('249e74b1fdf0c2d32813f76bd1f54eaf0a41473ee46957924016b604cc16888d')
+  sha256sums=('b3b5cada3829d2b3b0e2da25e9444ce9dff73dc6692586ce72cfd4f6431e639e')
 fi
 
 package() {
