@@ -97,7 +97,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -160,7 +160,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase} kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   provides=("kernel26${_kernelname}-headers=${pkgver}")
   conflicts=("kernel26${_kernelname}-headers")
   replaces=("kernel26${_kernelname}-headers")
@@ -300,7 +300,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase} kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
   provides=("kernel26${_kernelname}-docs=${pkgver}")
   conflicts=("kernel26${_kernelname}-docs")
   replaces=("kernel26${_kernelname}-docs")
