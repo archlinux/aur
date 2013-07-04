@@ -10,13 +10,13 @@ _gitbranch="firmware"
 _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
-pkgver=6.01.pre6
+pkgver=6.01
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch"
 url="http://syslinux.zytor.com/"
 license=('GPL2')
-options=('!makeflags')
+options=('!makeflags' '!emptydirs')
 
 conflicts=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
 provides=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
@@ -100,7 +100,7 @@ build() {
 	
 	cd "${srcdir}/${_pkgname}/"
 	
-	## Do not try to build the Windows or DOS installers
+	## Do not try to build the Windows or DOS installers and DIAG files
 	sed 's|diag libinstaller dos win32 win64 dosutil txt|libinstaller txt|g' -i "${srcdir}/${_pkgname}/Makefile" || true
 	sed 's|win32/syslinux.exe win64/syslinux64.exe||g' -i "${srcdir}/${_pkgname}/Makefile" || true
 	sed 's|dosutil/*.com dosutil/*.sys||g' -i "${srcdir}/${_pkgname}/Makefile" || true
@@ -111,9 +111,6 @@ build() {
 	## Fix FHS manpage path
 	sed 's|/usr/man|/usr/share/man|g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
 	
-	## Build syslinux-bios
-	_build_syslinux_bios
-	
 	## Build syslinux-efi
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		_build_syslinux_efi64
@@ -122,6 +119,9 @@ build() {
 	if [[ "${CARCH}" == "i686" ]]; then
 		_build_syslinux_efi32
 	fi
+	
+	## Build syslinux-bios
+	_build_syslinux_bios
 	
 }
 
