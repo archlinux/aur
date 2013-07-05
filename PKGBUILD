@@ -3,24 +3,25 @@
 # Repository here: https://github.com/Jonhoo/gamedevtycoon-PKGBUILD
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
-pkgver=1.3.9
-pkgrel=3
+pkgver=1.3.13
+pkgrel=1
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
 makedepends=('unzip')
 depends=('mesa' 'node-webkit' 'alsa-lib')
+conflicts=('game-dev-tycoon-demo')
 provides=()
 options=(!strip)
 PKGEXT=".pkg.tar" # Because we don't want to recompress everything
                   # Compressing takes time and only saves about 6MB anyway
 license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
-_gamepkg="gamedevtycoon-${pkgver}-i386-x64.tar.gz"
+_gamepkg="gamedevtycoon-${pkgver}.i386-x64.tar.gz"
 _gamerel="1"
-_gamemd5="73dfe05e66958774cc765c64854558f8"
+_gamemd5="8db7110413372b4cf80347feb6163e64"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
 md5sums=('ae28f2cd5480964f05cf5699f3f1693c'
-         'b846906a3d1b9820dbc2c68c3c748db9')
+         '29e0fcaa10380835931bedc56530caac')
 
 build() {
   cd ${srcdir}
