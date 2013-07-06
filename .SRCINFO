@@ -1,6 +1,6 @@
 pkgbase = pdf-decrypt
 	pkgdesc = Remove password-protection from PDFs permanently.
-	pkgver = 0
+	pkgver = 2.a71b72a
 	pkgrel = 1
 	url = https://github.com/zvynar/pdf-decrypt
 	arch = any

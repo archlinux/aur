@@ -1,6 +1,6 @@
 pkgname=pdf-decrypt
 _gitname=pdf-decrypt
-pkgver=0
+pkgver=2.a71b72a
 pkgrel=1
 pkgdesc="Remove password-protection from PDFs permanently."
 arch=('any')

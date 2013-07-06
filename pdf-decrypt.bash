@@ -24,24 +24,21 @@ function pdf-decrypt() {
       local encryptionStatus="$(qpdf --show-encryption $file 2>/dev/null)"
       local tempFile=""
       local password=""
+      if [[ "$encryptionStatus" == "File is not encrypted" ]]; then
+          echo $encryptionStatus.
+      else
+          echo "Passwort: "
+          read password
+
+          tempFile=$(mktemp)
+          qpdf --password="$password" --decrypt "$file" "$tempFile" && \
+              mv "$tempFile" "$file"
+          pdf-decrypt-error-handler $?
+      fi
   else
       echo \"$1\" is not a file. > /dev/stderr
       exit 1
   fi
-
-  if [[ "$encryptionStatus" == "File is not encrypted" ]]; then
-      echo $encryptionStatus.
-  else
-      echo "Passwort: "
-      read password
-
-      tempFile=$(mktemp)
-      qpdf --password="$password" --decrypt "$file" "$tempFile" && \
-          mv "$tempFile" "$file"
-      pdf-decrypt-error-handler $?
-  fi
-
-  xdg-open "$file"
 }
 
 if [[ $0 == *${__NAME__}* ]]; then
