@@ -2,7 +2,7 @@
 
 pkgname=libkolabxml
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Kolab XML Format Schema Definitions Library"
 url='http://git.kolab.org/libkolabxml/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,11 @@ source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"{,.
 md5sums=('64887f52c6629bbd8e2390d591ef5892'
          '55fcdaff82818c4a0eac50570db31e53')
 
-build() {
+prepare() {
   mkdir build
+}
+
+build() {
   cd build
   cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
