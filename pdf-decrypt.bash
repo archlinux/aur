@@ -12,7 +12,6 @@ function pdf-decrypt() {
       exit $errno
   fi
   }
-  local errno=''
   case $1 in -h|--help|''):
     echo Usage: \"$0 [file]\".
     echo Removes passwort-protection from PDF-File called [file].
