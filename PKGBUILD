@@ -8,12 +8,16 @@ pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to 
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
-depends=('perl' 'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale')
+depends=('perl'
+         'slic3r-xs-git' 
+         'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale')
 makedepends=('git')
 optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-xml-sax-expatxs: make AMF parsing faster'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support'
+            'perl-wx-glcanvas: support for opengl preview' 
+            'perl-opengl: support for opengl preview'
             'perl-class-xsaccessor: creating faster accessor methods')
 #             'perl-growl-gntp: notifications support via growl'
 provides=('slic3r')
@@ -53,9 +57,9 @@ prepare() {
   msg "GIT checkout done or server timeout"
   msg "Starting make..."
 
-  rm -rf "$srcdir/$_gitname-build"
+  rm -rf "$_src_dir"
   cp -R "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$_src_dir"
 
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;) TODO: Change it to just line containing just like in netfabb
 #  sed -i "s/        'Growl/\#&/" Build.PL
@@ -91,7 +95,7 @@ check () {
 }
 
 package () {
-  cd "$srcdir/$_gitname-build"
+  cd "$_src_dir"
 #  ./Build install
 # NEW PART
   install -d $pkgdir/usr/share/perl5/vendor_perl/
