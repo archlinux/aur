@@ -44,6 +44,6 @@ function pdf-decrypt() {
   xdg-open "$file"
 }
 
-if [[ $0 == *${__NAME__}.bash ]]; then
+if [[ $0 == *${__NAME__}* ]]; then
     $__NAME__ "$@"
 fi
