@@ -7,21 +7,21 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.53.0
+pkgver=1.54.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 url="http://www.boost.org/"
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('icu>=51.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
         boost-1.53.0-python3.patch)
-sha1sums=('0e4ef26cc7780c6bbc63987ef2f29be920e2395b'
+sha1sums=('069501636097d3f40ddfd996d29748bb23591c53'
           '34026072a7cb2534164f20e77bb71a5c75093307')
 
-_stagedir="${srcdir}/stagedir"
 
 build() {
+   export _stagedir="${srcdir}/stagedir"
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd "${srcdir}/${pkgbase}_${_boostver}"
