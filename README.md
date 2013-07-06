@@ -13,6 +13,10 @@ wget https://github.com/zvynar/pdf-decrypt/raw/master/PKGBUILD
 makepkg
 sudo pacman -U *.pkg.tar.xz
 ```
+or
+```bash
+yaourt -S pdf-decrypt
+```
 
 Dependencies:
  - qpdf, a PDF-transformation-program (pdf-decrypt is actually just a small
