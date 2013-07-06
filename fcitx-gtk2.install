@@ -1,7 +1,5 @@
 post_install() {
-  if res="$(usr/bin/gtk-query-immodules-2.0)"; then
-    echo "$res" > etc/gtk-2.0/gtk.immodules
-  fi
+    /usr/bin/gtk-query-immodules-2.0 --update-cache
 }
 
 post_upgrade() {
