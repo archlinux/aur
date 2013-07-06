@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=PDF Decryptor
+Comment=Removes password-protection from a PDF-document.
+Exec=/usr/bin/pdf-decrypt %u
+Icon=/usr/share/pixmaps/pdf-decrypt.png
+Terminal=true
+Categories=Office;
+MimeType=application/pdf;
+StartupNotify=true
