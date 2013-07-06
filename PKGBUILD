@@ -3,7 +3,7 @@
 pkgname=orocos-typelib
 _pkgname=orocos-toolchain
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Typelib)"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
@@ -20,6 +20,11 @@ sha512sums=('7d30ac8bb751c489302cb15c8a613345aabb2023c935c04f371bb35b52faabd9563
 build() {
   # build typelib
   cd "${srcdir}/${_pkgname}-${pkgver}/typelib"
+
+  # patch for for compilation issues in c and ruby binding
+  sed 's#BOOST_STATIC_ASSERT#// BOOST_STATIC_ASSERT#g' -i lang/csupport/containers.cc
+  sed 's#elseif (RUBY_19)#else (RUBY_19)#g' -i cmake/RubyExtensions.cmake
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
