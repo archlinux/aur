@@ -1,5 +1,5 @@
 post_install() {
-    /usr/bin/gtk-query-immodules-2.0 --update-cache
+    usr/bin/gtk-query-immodules-2.0 --update-cache
 }
 
 post_upgrade() {
