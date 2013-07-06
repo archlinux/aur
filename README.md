@@ -35,5 +35,5 @@ Usage
 pdf-decrypt encrypted.pdf
 ```
 The program will ask for a password and replace the encrypted PDF-file with an
-unencrypted version preserving the content (including nodes and comments inside
+unencrypted version preserving the content (including notes and comments inside
 the encrypted version).
