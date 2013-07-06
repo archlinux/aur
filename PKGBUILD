@@ -1,4 +1,4 @@
-# Maintainer: Johannes Löthberg <kyrias@archlinux.info>
+# Maintainer: Johannes Löthberg <demizide@gmail.com>
 
 pkgname=sv_dvorak
 pkgver=1
