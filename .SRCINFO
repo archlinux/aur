@@ -1,0 +1,15 @@
+pkgbase = ttf-openwebicons
+	pkgdesc = a font!
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://pfefferle.github.io/openwebicons/
+	install = install
+	arch = any
+	license = custom
+	source = ttf-openwebicons-1.1.0::https://github.com/pfefferle/openwebicons/archive/1.1.0.tar.gz
+	source = install
+	sha256sums = 82d6a519967405a3b2516f296ab82b541b0d114aa6c39a78f6c13a7c8db475ca
+	sha256sums = a794e8e9f8f8227e6b70ba42b96efe81651856b9e1b335c3094318844af06b45
+
+pkgname = ttf-openwebicons
+
