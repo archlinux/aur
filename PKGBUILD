@@ -3,7 +3,7 @@
 pkgname=orocos-utilrb
 _pkgname=orocos-toolchain
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Ruby toolkit)"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
@@ -20,6 +20,9 @@ sha512sums=('7d30ac8bb751c489302cb15c8a613345aabb2023c935c04f371bb35b52faabd9563
 build() {
   # build utilrb
   cd "${srcdir}/${_pkgname}-${pkgver}/utilrb"
+
+  # set the correct compiler flags
+  sed 's/$CFLAGS/$CPPFLAGS/g' -i ext/extconf.rb
 
   rake
 
