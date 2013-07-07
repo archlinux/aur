@@ -13,5 +13,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-	rm -f /usr/lib/gtk-2.0/2.10.0/immodules.cache-32
+	rm -f /usr/lib32/gtk-2.0/2.10.0/immodules.cache
 }
