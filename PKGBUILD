@@ -4,7 +4,7 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.24.19
+pkgver=2.24.20
 pkgrel=1
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
@@ -17,17 +17,15 @@ makedepends=('pkgconfig' 'gcc-multilib')
 options=('!libtool' '!docs')
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
-        xid-collision-debug.patch
-        gtk-modules-32.patch)
-sha256sums=('15b8bf463eba99abfa58270662914e8e9b83568ab4945b5f0ef1aa29e90becb8'
-            'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
-            '2effb13404442ae266d4c663347e88cd1ca19e9a83b452da1743bac16af9c7b0')
+        xid-collision-debug.patch)
+sha256sums=('cc66bcbf9239a7d9861175c681ba95894b55c70dc0b37aad8345c46ecfda0da3'
+'d758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
 prepare() {
   cd "${srcdir}/gtk+-${pkgver}"
 
   patch -Np1 -i "${srcdir}/xid-collision-debug.patch"
-  patch -p1 -i ${srcdir}/gtk-modules-32.patch
+  sed -i 's#"immomodules.cache"#"immomodules.cache-32"#' gtk/gtkrc.c
 }
 
 build() {
