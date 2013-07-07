@@ -1,0 +1,31 @@
+diff --git a/rtt/scripting/CommonParser.cpp b/rtt/scripting/CommonParser.cpp
+index 95f059b..a5f2753 100644
+--- a/rtt/scripting/CommonParser.cpp
++++ b/rtt/scripting/CommonParser.cpp
+@@ -106,6 +106,7 @@ namespace RTT {
+         BOOST_SPIRIT_DEBUG_RULE( lexeme_identifier );
+         BOOST_SPIRIT_DEBUG_RULE( lexeme_notassertingidentifier );
+         BOOST_SPIRIT_DEBUG_RULE( type_name );
++        BOOST_SPIRIT_DEBUG_RULE( skipper );
+ 
+         // an identifier is a word which can be used to identify a
+         // label, or be the name of an object or method.  it is required
+diff --git a/rtt/scripting/ScriptParser.cpp b/rtt/scripting/ScriptParser.cpp
+index bfd3af1..5fb3d18 100644
+--- a/rtt/scripting/ScriptParser.cpp
++++ b/rtt/scripting/ScriptParser.cpp
+@@ -162,8 +162,12 @@ namespace RTT
+         //skip_parser_t skip_parser = SKIP_PARSER;
+         //iter_pol_t iter_policy( skip_parser );
+         //#define SKIP_PARSER
+-        iter_pol_t iter_policy((comment_p("#") | comment_p("//") | comment_p(
+-                "/*", "*/") | (space_p - eol_p) | commonparser->skipper));
++        skip_parser_t skippers = (comment_p("#") | comment_p("//") 
++                          | comment_p("/*", "*/") 
++                          | (space_p - eol_p) 
++			 | (commonparser->skipper));
++
++        iter_pol_t iter_policy(skippers);
+         scanner_pol_t policies(iter_policy);
+         scanner_t scanner(begin, end, policies);
+ 
