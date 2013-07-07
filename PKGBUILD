@@ -11,7 +11,7 @@ _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
 pkgver=6.01
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch"
 url="http://syslinux.zytor.com/"
@@ -39,7 +39,7 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
 
 sha1sums=('SKIP'
           'b0f174bcc0386fdf699e03d0090e3ac841098010'
-          'b1d915045fe3094f5359df043c53e73a4dc32745')
+          'fbcb99cd47bea63709f4a039554998111d6aba83')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
