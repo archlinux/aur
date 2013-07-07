@@ -1,3 +1,11 @@
+2013-07-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.1.0_02-1
+	Version bump.
+
+	Upstream changelog:
+	- Fixed spacing issue with vanilla fonts.
+
 2013-07-06 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.1.0_01-1
