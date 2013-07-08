@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="efitools"
 pkgname="${_pkgname}-git"
 
-pkgver=v1.4.1.6.gf5d338c
+pkgver=1.4.1.6.gf5d338c
 pkgrel=1
 pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
@@ -30,7 +30,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags)" | sed 's|-|.|g'
+	echo "$(git describe --tags)" | sed -e 's|^v||g' -e 's|-|.|g'
 }
 
 build() {
@@ -58,5 +58,8 @@ package() {
 	cd "${srcdir}/${_gitname}_build/"
 	make DESTDIR="${pkgdir}/" install
 	echo
+	
+	## Do not install LockDown.efi
+	rm -f "${pkgdir}/usr/share/efitools/efi/LockDown.efi" || true
 	
 }
