@@ -5,8 +5,8 @@
 pkgname=perl-net-dbus-git
 _pkgname=perl-net-dbus
 _gitname=net-dbus
-pkgver=20130423
-pkgrel=3
+pkgver=20130708
+pkgrel=1
 pkgdesc="Binding for DBus messaging protocol"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Net-DBus"
