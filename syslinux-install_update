@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Syslinux Installer / Updater Script (for BIOS only)
-# Copyright (C) 2011  Matthew Gyurgyik <pyther@pyther.net>
+# Copyright (C) 2013  Matthew Gyurgyik <pyther@pyther.net>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -26,14 +26,13 @@
 #
 shopt -s nullglob
 
-bios_libpath="/usr/lib/syslinux/bios"
-bios_bootpath="/boot/syslinux"
-extlinux="/usr/bin/extlinux"
+bios_libpath="/usr/lib/syslinux/bios/"
+bios_bootpath="/boot/syslinux/"
+EXTLINUX="/usr/bin/extlinux"
 
-bios_core_modules=(chain.c32 ldlinux.c32 libcom32.c32 libgpl.c32 liblua.c32 libmenu.c32 libutil.c32 linux.c32 menu.c32)
-bios_extra_modules=(config.c32 vesamenu.c32)
-bios_autoupdate_file=/boot/syslinux/SYSLINUX_AUTOUPDATE
-pciids_file=/usr/share/hwdata/pci.ids
+bios_core_modules=(config.c32 chain.c32 ldlinux.c32 libcom32.c32 libgpl.c32 liblua.c32 libmenu.c32 libutil.c32 linux.c32 menu.c32 vesamenu.c32)
+bios_autoupdate_file="/boot/syslinux/SYSLINUX_AUTOUPDATE"
+pciids_file="/usr/share/hwdata/pci.ids"
 
 ## Helper functions ##
 # Taken from libui-sh
@@ -294,14 +293,14 @@ install_mbr() {
     return 0
 }
 
-_install() {
+install_modules() {
     # Copy all com32 files to /boot
     for file in "${bios_libpath}"/*.c32; do
         file=${file##*/}
-        # Symlink files if /boot resides on the same partition as root
         rm "$bios_bootpath/$file" &> /dev/null
         if [[ "$boot" = root ]]; then
-            ln -s "${bios_libpath#$CHROOT}/$file" "$bios_bootpath/$file" &> /dev/null
+            # Symlink files if /boot resides on the same partition as root
+            ln -sf "${bios_libpath#$CHROOT}/$file" "$bios_bootpath/$file" &> /dev/null
         elif [[ "$boot" = boot ]]; then
             cp "$bios_libpath/$file" "$bios_bootpath/$file"
         fi
@@ -311,65 +310,48 @@ _install() {
     if [[ -f $pciids_file ]]; then
         rm "$bios_bootpath/pci.ids" &> /dev/null
         if [[ "$boot" = root ]]; then
-            ln -s "$pciids_file" "$bios_bootpath/pci.ids" &> /dev/null
+            ln -sf "$pciids_file" "$bios_bootpath/pci.ids" &> /dev/null
         elif [[ "$boot" = boot ]]; then
             cp "$pciids_file" "$bios_bootpath/pci.ids" &> /dev/null
         fi
     fi
+}
+
+_install() {
+    install_modules
 
     if device_is_raid "$bootpart"; then
-        echo "Detected RAID on /boot - installing Syslinux with --raid"
-        "$extlinux" --install "$bios_bootpath" -r > /dev/null 2>&1
+        echo "Detected RAID on /boot"
+        "$EXTLINUX" --install "$bios_bootpath" --raid &> /dev/null
     else
-        "$extlinux" --install "$bios_bootpath" > /dev/null 2>&1
+        "$EXTLINUX" --install "$bios_bootpath" &> /dev/null
     fi
 
     if (( $? )); then
-        echo "Syslinux install failed"
+        echo "Syslinux BIOS install failed"
         exit 2
     else
-        echo "Syslinux install successful"
+        echo "Syslinux BIOS install successful"
     fi
 
     touch "$CHROOT/$bios_autoupdate_file"
 }
 
 update() {
-    # Update c32 files in /boot, if /boot is not on same fs
-    if [[ "$boot" = boot ]]; then
-        for file in "$bios_bootpath"/*.c32; do
-            file=${file##*/}
-            rm "$bios_bootpath/$file" &> /dev/null
-            cp "$bios_libpath/$file" "$bios_bootpath/$file" &> /dev/null
-        done
-        if [[ -f "$bios_bootpath/pci.ids" ]]; then
-            rm "$bios_bootpath/pci.ids" &> /dev/null
-            cp "$pciids_file" "$bios_bootpath/pci.ids" &> /dev/null
-        fi
-    fi
-
-    # Ensure core modules exist and if not install them
-    for file in "${bios_core_modules[@]}"; do
-        rm "$bios_bootpath/$file" &> /dev/null
-        if [[  "$boot" = root ]]; then
-            ln -s "${bios_libpath#$CHROOT}/$file" "$bios_bootpath/$file" &> /dev/null
-        elif [[ "$boot" = boot ]]; then
-            cp "$bios_libpath/$file" "$bios_bootpath/$file"
-        fi
-    done
+    install_modules
 
     if device_is_raid $bootpart; then
-        echo "Detected RAID on /boot - installing Syslinux with --raid"
-        "$extlinux" --update "$bios_bootpath" -r &> /dev/null
+        echo "Detected RAID on /boot"
+        "$EXTLINUX" --update "$bios_bootpath" --raid &> /dev/null
     else
-        "$extlinux" --update "$bios_bootpath" &> /dev/null
+        "$EXTLINUX" --update "$bios_bootpath" &> /dev/null
     fi
 
     if (($?)); then
-        echo "Syslinux update failed"
+        echo "Syslinux BIOS update failed"
         exit 2
     else
-        echo "Syslinux update successful"
+        echo "Syslinux BIOS update successful"
     fi
 }
 
@@ -438,7 +420,7 @@ fi
 if [[ "$CHROOT" ]]; then
     bios_libpath="$CHROOT$bios_libpath"
     bios_bootpath="$CHROOT$bios_bootpath"
-    extlinux="$CHROOT$extlinux"
+    EXTLINUX="$CHROOT$EXTLINUX"
 fi
 
 # Exit if no /boot path exists

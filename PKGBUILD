@@ -10,13 +10,14 @@ _gitbranch="firmware"
 _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
-pkgver=6.01
-pkgrel=2
+pkgver=6.02pre2
+pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch"
 url="http://syslinux.zytor.com/"
 license=('GPL2')
 options=('!makeflags' '!emptydirs')
+backup=('boot/syslinux/syslinux.cfg')
 
 conflicts=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
 provides=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
@@ -39,11 +40,11 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
 
 sha1sums=('SKIP'
           'b0f174bcc0386fdf699e03d0090e3ac841098010'
-          'fbcb99cd47bea63709f4a039554998111d6aba83')
+          '05405401f80c7fd1d19a3e66d50c83e008590447')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --always | sed 's|syslinux-||g' | sed 's|-|.|g'
+	git describe --tags | sed -e 's|syslinux-||g' -e 's|-pre|pre|g' -e 's|-|.|g'
 }
 
 _build_syslinux_bios() {
@@ -177,3 +178,4 @@ package() {
 	_package_syslinux_bios
 	
 }
+
