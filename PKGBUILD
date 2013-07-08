@@ -9,7 +9,7 @@ _gitbranch="master"
 _src_rootdir="${_gitname}-3.0"
 
 pkgname="gnu-efi-libs-git"
-pkgver=8f5ba0e
+pkgver=18.8f5ba0e
 pkgrel=1
 pkgdesc="Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
@@ -26,7 +26,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --always | sed 's|-|.|g'
+	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | sed 's|-|.|g'
 }
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
