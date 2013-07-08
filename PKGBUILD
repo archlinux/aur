@@ -45,3 +45,5 @@ package() {
   install -D -m644 "OFL.txt" "$pkgdir/usr/share/licenses/openmw/"
   install -D -m644 "extern/shiny/License.txt" "$pkgdir/usr/share/licenses/openmw/Shiny License.txt"
 }
+
+# vim:set ts=2 sw=2 et:
