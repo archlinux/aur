@@ -1,6 +1,6 @@
 pkgbase = lxkb_config-git
 	pkgdesc = A keyboard configuration application for LXDE
-	pkgver = r153.cec6ebd
+	pkgver = 01e64dc
 	pkgrel = 1
 	url = http://lxde.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = lxkb_config-git
 	provides = lxkb_config
 	conflicts = lxkb_config
 	options = !emptydirs
-	source = lxkb_config-git::git://lxde.git.sourceforge.net/gitroot/lxde/lxkb_config
+	source = git://lxde.git.sourceforge.net/gitroot/lxde/lxkb_config
 	md5sums = SKIP
 
 pkgname = lxkb_config-git

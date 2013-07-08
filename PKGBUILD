@@ -1,6 +1,6 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=lxkb_config-git
-pkgver=r153.cec6ebd
+pkgver=01e64dc
 pkgrel=1
 pkgdesc='A keyboard configuration application for LXDE'
 arch=('i686' 'x86_64')
@@ -13,22 +13,24 @@ depends=('gtk2')
 makedepends=('git' 'intltool')
 options=('!emptydirs')
 
-source=("$pkgname::git://lxde.git.sourceforge.net/gitroot/lxde/lxkb_config")
+source=('git://lxde.git.sourceforge.net/gitroot/lxde/lxkb_config')
 md5sums=('SKIP')
 
+_gitname="lxkb_config"
+
 pkgver() {
-  cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_gitname
+  git describe --always | sed 's|-|.|g'
 }
 
 build() {
-  cd $pkgname
+  cd $_gitname
   autoreconf -fiv
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd $pkgname
+  cd "${_gitname}"
   make DESTDIR="$pkgdir" install
 }
