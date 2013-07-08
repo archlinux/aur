@@ -9,15 +9,17 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.54.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url="http://www.boost.org/"
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('icu>=51.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
-        boost-1.53.0-python3.patch)
+        boost-1.53.0-python3.patch
+        boost-1.54.0-Fix-macro-for-int128-detection.patch)
 sha1sums=('069501636097d3f40ddfd996d29748bb23591c53'
-          '34026072a7cb2534164f20e77bb71a5c75093307')
+          '34026072a7cb2534164f20e77bb71a5c75093307'
+          'bf5177694ab8a0df6bc13aa47b05727c40febebb')
 
 
 build() {
@@ -25,6 +27,8 @@ build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd "${srcdir}/${pkgbase}_${_boostver}"
+
+   patch -Np2 -i ../boost-1.54.0-Fix-macro-for-int128-detection.patch
 
    # Fix build errors with python 3
    sed -i "/PYTHON_ROOT/s/print sys.prefix/print(sys.prefix)/g" bootstrap.sh
