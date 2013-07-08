@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 179572 2013-03-07 11:54:29Z foutrelis $
+# $Id: PKGBUILD 187899 2013-06-07 21:38:48Z heftig $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-vpnc-gtk2
 _pkgname=networkmanager-vpnc
-pkgver=0.9.8.0
+pkgver=0.9.8.2
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for vpnc"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 install=networkmanager-vpnc.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.9/NetworkManager-vpnc-${pkgver}.tar.xz)
-sha256sums=('e4504c569315c20f2468995f073123a787cdb66695d321f20f994abd1d7eb1c1')
+sha256sums=('adf6f4abd29d3f0384ef55fdfea75e6cd56088a0ecdfed2454305fd9e08318a1')
 
 build() {
   cd NetworkManager-vpnc-${pkgver}
