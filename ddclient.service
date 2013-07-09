@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-PIDFile=/run/ddclient.pid
+PIDFile=/var/run/ddclient.pid
 ExecStart=/usr/bin/ddclient
 
 [Install]
