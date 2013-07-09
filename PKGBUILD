@@ -2,7 +2,7 @@
 
 pkgname=kregexpeditor-git
 
-pkgver=20130312
+pkgver=491.f618b59
 pkgrel=1
 pkgdesc="KDE editor for regular expressions"
 arch=(i686 x86_64)
@@ -15,32 +15,26 @@ conflicts=('kregexpeditor')
 replaces=('kregexpeditor-svn')
 install=kregexpeditor.install
 
-_gitroot="git://anongit.kde.org/kregexpeditor"
-_gitname="kregexpeditor"
+source=('git://anongit.kde.org/kregexpeditor')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/kregexpeditor"
+	echo $(git rev-list --count master).$(git rev-parse --short master)
+}
 
 build() {
-	cd "$srcdir"
-	msg "Connecting to GIT server...."
+	cd "$srcdir/kregexpeditor"
 
-	if [ -d $_gitname ] ; then
-		cd $_gitname && git pull origin
-		msg "The local files are updated."
-	else
-		git clone --depth=1 $_gitroot $_gitname
-	fi
-
-	msg "GIT checkout done or server timeout"
-	msg "Starting make..."
-
-	rm -rf "$srcdir/$_gitname-build"
-	cp -R "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-	cd "$srcdir/$_gitname-build"
+	rm -rf "$srcdir/build"
+	cp -R "$srcdir/kregexpeditor" "$srcdir/build"
+	cd "$srcdir/build"
 
 	cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname-build"
+	cd "$srcdir/build"
 	make DESTDIR="$pkgdir/" install
 }
