@@ -2,7 +2,7 @@
 
 pkgname=clutter-gtk
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK clutter widget"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
@@ -23,6 +23,8 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
