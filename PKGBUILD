@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=28.0.1500.52
+pkgver=28.0.1500.71
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -19,15 +19,19 @@ makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 backup=('etc/chromium/default')
 install=chromium.install
-source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
+#source=(http://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
+source=(https://dev.archlinux.org/~foutrelis/sources/$pkgname/$pkgname-$pkgver.tar.xz{,.sig}
         chromium.desktop
         chromium.default
         chromium.sh
+        chromium-28.0.1500.71-avoid-std-string-copying-in-GetFileNameInWhitelist.patch
         chromium-system-harfbuzz-r0.patch)
-sha256sums=('7b3cbfbb9e5b9d21ffab23d39173611ddb0ba49488795b6db46a62be354518b4'
+sha256sums=('a8a821fb7cf1dc2425ecba6d48be0f771d993179411ba3bcdc71d179ea7ec671'
+            'SKIP'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
+            '7c2e448c30677999f524f9513c2f998f3cb15bc6084692cad9c3f310aa813530'
             '2bc4cf17adac9864f4e832e57247984f28fce171d3699c0fc2c3596d1ab20386')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -40,6 +44,11 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # Fix deadlock related to the GPU sandbox when tcmalloc isn't used
+  # https://code.google.com/p/chromium/issues/detail?id=255063
+  # https://bugs.gentoo.org/show_bug.cgi?id=471198#c23
+  patch -Np1 -i "$srcdir/chromium-28.0.1500.71-avoid-std-string-copying-in-GetFileNameInWhitelist.patch"
 
   # Fix build with system harfbuzz (patch from Gentoo)
   patch -Np1 -i "$srcdir/chromium-system-harfbuzz-r0.patch"
