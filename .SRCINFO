@@ -1,6 +1,6 @@
 pkgbase = ewebkit-svn
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries
-	pkgver = 151620
+	pkgver = 152534
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686

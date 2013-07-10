@@ -3,7 +3,7 @@
 
 pkgname=ewebkit-svn
 _pkgname=${pkgname%-*}
-pkgver=151620
+pkgver=152534
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
@@ -35,7 +35,6 @@ prepare() {
     svn co --depth immediates --config-dir "$_pkgname/.makepkg" -r "$pkgver" "$_svnurl" "$_pkgname"
     cd "$_pkgname"
     svn up --set-depth infinity -r "$pkgver" Source
-    svn up --set-depth infinity -r "$pkgver" Tools
 
 #   and create a working copy
     msg2 "Creating working copy of $_pkgname svn repo..."
