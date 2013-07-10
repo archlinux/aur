@@ -3,7 +3,7 @@
 
 pkgbase=python-boto
 pkgname=python2-boto
-pkgver=2.9.6
+pkgver=2.9.7
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
@@ -14,10 +14,10 @@ conflicts=('python-boto>=2.5.2-1')
 replaces=('python-boto>=2.5.2-1')
 source=("http://github.com/boto/boto/archive/$pkgver.tar.gz"
         'LICENSE')
-md5sums=('c53078cc657234d03c5e544cc6eb8a07'
+md5sums=('5d449bcf5f7e06896124b90879c91afa'
          '35ebd993c05c79ba78e9f4fb3e65e547')
 
-build() {
+prepare() {
   cd "$srcdir/boto-$pkgver"
 
   # python2 fix
@@ -27,6 +27,7 @@ build() {
 
 package_python2-boto() {
   cd "$srcdir/boto-$pkgver"
+
   python2 setup.py install --root="$pkgdir"
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
