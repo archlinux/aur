@@ -2,7 +2,7 @@
 _author=REHSACK
 _perlmod=SQL-Statement
 pkgname=perl-sql-statement
-pkgver=1.402
+pkgver=1.405
 pkgrel=1
 pkgdesc="SQL parsing and processing engine"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('perl>=5.10.0'
 )
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/R/RE/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('fc6b4b94c7667b492e936653f87b5918')
+md5sums=('22231c2e28996b5bfea9925d49c11de1')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
