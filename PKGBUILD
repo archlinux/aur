@@ -5,16 +5,16 @@
 pkgname='frogatto'
 arch=('i686' 'x86_64')
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
-depends=('glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
+depends=('git' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
 makedepends=('mesa-libgl' 'boost')
-source=("frogatto-$pkgver.tar.gz::https://github.com/frogatto/frogatto/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver::git+https://github.com/frogatto/frogatto.git#tag=1.3.1"
         frogatto
         frogatto.desktop)
-md5sums=('f3206fbe1395ea2878092fbd4ed2c591'
+md5sums=('SKIP'
          '9ed2c9ea59e95fe3c0b3ad49e58f8890'
          'e31563b04748a39292a59aaad633ff58')
 
