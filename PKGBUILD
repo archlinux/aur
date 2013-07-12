@@ -73,9 +73,9 @@ package() {
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 README "$pkgdir/usr/share/$_pkgname/README"
-  install -Dm644 NEWS "$pkgdir/usr/share/$_pkgname/NEWS"
-  install -Dm644 ChangeLog "$pkgdir/usr/share/$_pkgname/ChangeLog"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
 
 # install license files
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
