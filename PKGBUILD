@@ -56,13 +56,13 @@ build() {
     --with-x11=xlib \
     --with-opengl=full \
     --enable-wayland \
+    --enable-fb \
+    --disable-tslib
     --enable-image-loader-webp \
     --enable-systemd \
     --enable-harfbuzz \
     --enable-xinput22 \
     --enable-multisense \
-    --enable-fb \
-    --disable-tslib
 
   make
 }
@@ -73,16 +73,17 @@ package() {
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
   install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
 
 # install license files
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 licenses/COPYING.BSD "$pkgdir/usr/share/licenses/$pkgname/COPYING.BSD"
   install -Dm644 licenses/COPYING.SMALL "$pkgdir/usr/share/licenses/$pkgname/COPYING.SMALL"
   sed -n '1,/.details/p' licenses/COPYING.LGPL > "$pkgdir/usr/share/licenses/$pkgname/COPYING.LGPL"
   ln -s ../common/GPL2/license.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.GPL"
 }
+
