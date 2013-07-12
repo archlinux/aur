@@ -4,18 +4,19 @@
 # Based on the coverlovin PKGBUILD
 pkgname=coverlovin-funk
 _pkgname=coverlovin
-pkgver=2.0
+pkgver=20130603
 pkgrel=1
 pkgdesc="CLI recursive directory album art downloader written in Python, Thomas Funk patches"
-arch=('any')
 url="https://launchpad.net/coverlovin"
+arch=('any')
 license=('GPL3')
 depends=('python2' 'python2-simplejson' 'mutagen')
 provides=('coverlovin')
 conflicts=('coverlovin')
 replaces=('coverlovin')
-source=("https://launchpadlibrarian.net/135960815/coverlovin.py")
-md5sums=('6a49c643142816a78069f72ae35ed565')
+changelog=changelog
+source=('https://launchpadlibrarian.net/141574171/coverlovin.py')
+md5sums=('2206e9f4f394cca8735669b3b75240d7')
 
 prepare(){
 	cd ${srcdir}
