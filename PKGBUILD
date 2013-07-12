@@ -23,9 +23,9 @@ optdepends=('python2: compare Eina benchmarks'
 provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$pkgver"
           "efreet=$pkgver" "eina=$pkgver" "eio=$pkgver" "embryo=$pkgver" "emotion=$pkgver"
           "ephysics=$pkgver" "ethumb=$pkgver" "evas=$pkgver"
-          "efl=$pkgver" 'efl_x11' 'efl-svn')
+          "efl=$pkgver" 'efl_x11')
 conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
-           'efl' 'efl_x11' 'efl-svn')
+           'efl' 'efl_x11')
 options=('!libtool' 'debug')
 install=efl.install
 source=("git://git.enlightenment.org/core/$_pkgname.git")

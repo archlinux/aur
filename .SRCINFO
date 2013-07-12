@@ -52,7 +52,6 @@ pkgbase = efl-git
 	provides = evas=1.7.99.22360.f2317ac
 	provides = efl=1.7.99.22360.f2317ac
 	provides = efl_x11
-	provides = efl-svn
 	conflicts = ecore
 	conflicts = edje
 	conflicts = eet
@@ -66,7 +65,6 @@ pkgbase = efl-git
 	conflicts = evas
 	conflicts = efl
 	conflicts = efl_x11
-	conflicts = efl-svn
 	options = !libtool
 	options = debug
 	source = git://git.enlightenment.org/core/efl.git
