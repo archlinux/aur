@@ -1,0 +1,17 @@
+pkgbase = eigen3-hg
+	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. Mercurial version.
+	pkgver = 5421.f391c3917cdd
+	pkgrel = 1
+	url = http://eigen.tuxfamily.org
+	arch = any
+	license = MPL2
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = mercurial
+	provides = eigen3
+	conflicts = eigen3
+	source = eigen3::hg+https://bitbucket.org/eigen/eigen
+	sha1sums = SKIP
+
+pkgname = eigen3-hg
+
