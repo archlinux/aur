@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.10
-pkgver=3.10
+pkgver=3.10.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,13 +12,14 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
 md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
+         '0e7f2a767ef3b3643856c96af3409af3'
          '61b61d66adf7e155fc4d4c9b1ede23aa'
          '53279d3bc5213cae51bb8f320f81fb0f'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -36,7 +37,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
