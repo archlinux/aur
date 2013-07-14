@@ -1,39 +1,34 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
-	pkgver = 2.0.3
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = http://www.cups.org/
 	install = cups-nosystemd.install
 	arch = i686
 	arch = x86_64
-	groups = eudev-base
 	license = GPL
 	makedepends = libtiff>=4.0.0
 	makedepends = libpng>=1.5.7
 	makedepends = xdg-utils
 	makedepends = krb5
+	makedepends = gnutls>=2.8.3
 	makedepends = xinetd
 	makedepends = gzip
 	makedepends = autoconf
 	makedepends = avahi
-	makedepends = gnutls
-	makedepends = inetutils
 	depends = acl
 	depends = pam
-	depends = libcups>=2.0.3
+	depends = libcups>=1.6.3
 	depends = cups-filters
 	depends = bc
 	depends = colord
+	depends = libusb
 	depends = dbus
 	depends = hicolor-icon-theme
-	depends = libpaper
 	optdepends = xdg-utils: xdg .desktop file support
-	optdepends = cups-openrc: cups openrc initscript
-	provides = cups=2.0.3
+	provides = cups=1.6.3
 	conflicts = cups
-	conflicts = cups-eudev
 	replaces = cups
-	replaces = cups-eudev
 	backup = etc/cups/cupsd.conf
 	backup = etc/cups/snmp.conf
 	backup = etc/cups/printers.conf
@@ -43,24 +38,39 @@ pkgbase = cups-nosystemd
 	backup = etc/dbus-1/system.d/cups.conf
 	backup = etc/logrotate.d/cups
 	backup = etc/pam.d/cups
-	source = http://www.cups.org/software/2.0.3/cups-2.0.3-source.tar.bz2
+	backup = etc/xinetd.d/cups-lpd
+	source = http://www.cups.org/software/1.6.3/cups-1.6.3-source.tar.gz
 	source = cups
 	source = cups.logrotate
 	source = cups.pam
 	source = cups-no-export-ssllibs.patch
 	source = cups-no-gcrypt.patch
 	source = cups-no-gzip-man.patch
+	source = cups-dbus-utf8.patch
+	source = cups-res_init.patch
+	source = cups-avahi-address.patch
+	source = cups-enum-all.patch
 	source = cups-1.6.0-fix-install-perms.patch
 	source = cups-1.6.2-statedir.patch
-	md5sums = 8d98b85edbdab7ab03739c9622f570e8
+	source = cupsd-no-crash-on-avahi-threaded-poll-shutdown.patch
+	source = get-ppd-file-for-statically-configured-ipp-shared-queues.patch
+	source = ppd-poll-with-client-conf.patch
+	md5sums = 3c50d396fef2ba721224fe65880fe3c3
 	md5sums = 9657daa21760bb0b5fa3d8b51d5e01a1
-	md5sums = fc8286f185e2cc5f7e1f6843bf193e2b
+	md5sums = f861b18f4446c43918c8643dcbbd7f6d
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
 	md5sums = 3ba9e3410df1dc3015463d615ef91b3b
-	md5sums = 1beb4896f217bc241bc08a422274ec0c
+	md5sums = cc4101beccb5ed6deb1c92707a575925
 	md5sums = 90c30380d4c8cd48a908cfdadae1ea24
+	md5sums = a2a88b3a3257c3b5fd3edcc169e6aca4
+	md5sums = 8fe27d4248cacbc02824e7937cab4088
+	md5sums = df0c367c0022e3c7d8e01827e8a6c5e7
+	md5sums = f30c2a161caaf27854581507cde8cac6
 	md5sums = 5117f65342fcc69c6a506529e4daca9e
-	md5sums = 451609db34f95209d64c38474de27ce1
+	md5sums = 9247e218eea94ebda0aebc8ee0e77db8
+	md5sums = cb58bf4e0b80eaee383712e5c84a1ab4
+	md5sums = b578bcd17949a7203237ba1e31f78ef9
+	md5sums = 0becd6ab8782b97f19a02c1dc174c75e
 
 pkgname = cups-nosystemd
 
