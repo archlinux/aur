@@ -15,6 +15,9 @@ depends=('python2' 'openssl')
 makedepends=('pkgconfig')
 source=(http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2)
 md5sums=('ce8cbe25418a76a2aac5395399463362')
+sha256sums=('2c589ae4e1d814c81f994f1c3da10afb09e3173213b870e9056162b7331e273c')
+sha384sums=('4b37e3fcd7c9fba33076d9da010eb08d516b1999de0200de0df2ad4134b919b804248e536b12d9b2a191f0cd568f7936')
+sha512sums=('9bfad88232e1985056c444b92963bd3b7dab1018e355c2d8ace61eded062c51ae3d1aecabaecb0441e287cd5c79d1010bbdf8f194e61f6a3f05f9acae53bc3ae')
 
 build() {
   cd "${srcdir}/omniORB-${pkgver}"
