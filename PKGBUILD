@@ -5,7 +5,7 @@
 # Contributor: Brice Mealier <mealier_brice@yahoo.fr>
 
 pkgname=omniorb
-pkgver=4.1.6
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="A CORBA object request broker for C++ and Python."
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ url="http://omniorb.sourceforge.net/"
 license=('GPL2' 'LGPL2')
 depends=('python2' 'openssl')
 makedepends=('pkgconfig')
-source=(http://downloads.sourceforge.net/omniorb/omniORB-$pkgver.tar.bz2)
-md5sums=('44990f8139c349b53ab43110de6c629b')
+source=(http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2)
+md5sums=('ce8cbe25418a76a2aac5395399463362')
 
 build() {
   cd "${srcdir}/omniORB-${pkgver}"
@@ -25,12 +25,12 @@ build() {
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "$file"
   done
 
-  # Fix to build with OpenSSL 1.0.0
-  sed -i 's/SSL_METHOD/const SSL_METHOD/' \
-         src/lib/omniORB/orbcore/ssl/sslContext.cc \
-         include/omniORB4/sslContext.h
-  ./configure --prefix=/usr --with-omniORB-config=/etc/omniorb/omniORB.cfg \
-              --with-omniNames-logdir=/var/log/omniORB --with-openssl=/usr
+  PYTHON=/usr/bin/python2.7 ./configure \
+         --prefix=/usr \
+         --with-omniORB-config=/etc/omniorb/omniORB.cfg \
+         --with-omniNames-logdir=/var/log/omniORB \
+         --with-openssl=/usr
+
   make
 }
 
