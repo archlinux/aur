@@ -8,7 +8,6 @@ pkgbase = omniorb
 	license = GPL2
 	license = LGPL2
 	makedepends = pkgconfig
-	depends = gcc-libs
 	depends = python2
 	depends = openssl
 	source = http://downloads.sourceforge.net/omniorb/omniORB-4.1.6.tar.bz2
