@@ -17,12 +17,12 @@ source=(http://downloads.sourceforge.net/omniorb/omniORB-$pkgver.tar.bz2)
 md5sums=('44990f8139c349b53ab43110de6c629b')
 
 build() {
-  cd $srcdir/omniORB-$pkgver
+  cd "${srcdir}/omniORB-${pkgver}"
 
   # python2 fix
   for file in $(find . -name '*.py' -print); do
-    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
+    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' "$file"
+    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "$file"
   done
 
   # Fix to build with OpenSSL 1.0.0
@@ -33,13 +33,14 @@ build() {
               --with-omniNames-logdir=/var/log/omniORB --with-openssl=/usr
   make
 }
-package(){
-  cd $srcdir/omniORB-$pkgver
 
-  make DESTDIR=$pkgdir install
+package() {
+  cd "${srcdir}/omniORB-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
 
   for i in man/man1/*.1; do
-    install -D -m 644 $i $pkgdir/usr/share/$i
+    install -D -m 644 $i "${pkgdir}/usr/share/${i}"
   done
-  chmod 755 $pkgdir/{usr,usr/bin,usr/lib,usr/share,usr/include,usr/share/idl,usr/lib/pkgconfig,usr/lib/python2.7,usr/lib/python2.7/site-packages}
+  chmod 755 "${pkgdir}"/{usr,usr/bin,usr/lib,usr/share,usr/include,usr/share/idl,usr/lib/pkgconfig,usr/lib/python2.7,usr/lib/python2.7/site-packages}
 }
