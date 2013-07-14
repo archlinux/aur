@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Essien Ita Essien <me@essienitaessien.com>
 # Contributor: Brice Mealier <mealier_brice@yahoo.fr>
 
