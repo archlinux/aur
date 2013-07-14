@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url='http://gregkh.github.com/bti/'
 license=('GPL')
 depends=('pcre' 'libxml2' 'curl' 'liboauth' 'json-c')
-makedepends=('git')
 source=(http://www.kernel.org/pub/software/web/$pkgname/$pkgname-$pkgver.tar.xz)
 sha256sums=('a3d9d8a86a718a4820387c75ac2af24fecfe754ee562163d700acb7cf795d753')
 
