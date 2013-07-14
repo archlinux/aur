@@ -1,7 +1,7 @@
 # Maintainer: Ner0
 
 pkgname=gtk-theme-config
-pkgver=0.8
+pkgver=1.0
 pkgrel=1
 pkgdesc="A tool to configure GTK theme colors."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('vala')
 conflicts=('gtk-theme-config-git' 'gtk-theme-preferences-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/satya164/gtk-theme-config/tarball/v$pkgver")
 install=gtk-theme-config.install
-md5sums=('31687f78e78ccf26fcfc43ef83aa8745')
+md5sums=('da1c5bab4a906f0b06da2e18a114268c')
 
 package() {
   cd satya164-*
