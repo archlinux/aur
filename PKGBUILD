@@ -87,8 +87,6 @@ _setup_env_vars() {
 
 _prepare_tianocore_sources() {
 	
-	_setup_env_vars
-	
 	msg "Delete old UDK BUILD dir"
 	rm -rf "${_UDK_DIR}/" || true
 	
@@ -162,6 +160,8 @@ prepare() {
 	
 	_bail_out
 	
+	_setup_env_vars
+	
 	msg "Prepare Tianocore Sources"
 	_prepare_tianocore_sources
 	echo
@@ -202,6 +202,8 @@ build() {
 }
 
 package() {
+	
+	_setup_env_vars
 	
 	msg "Install the OVMF X64 image as bios.bin for QEMU"
 	install -d "${pkgdir}/usr/share/ovmf/x86_64"
