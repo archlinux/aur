@@ -15,7 +15,8 @@ sha256sums=('276e8c9f5ff0fcd57c1eaf74cc245f41ad469a95a18ac831fac2d5960baa5ae8')
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+    --enable-wayland-egl-platform --enable-gles{1,2}
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
