@@ -1,6 +1,6 @@
 pkgbase = ovmf-svn
-	pkgdesc = UEFI Firmware (OVMF) with Secure Boot Support for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version
-	pkgver = 14466
+	pkgdesc = UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version
+	pkgver = 14467
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF
 	install = ovmf.install
@@ -8,6 +8,7 @@ pkgbase = ovmf-svn
 	license = BSD
 	makedepends = subversion
 	makedepends = python2
+	makedepends = iasl
 	provides = ovmf
 	provides = ovmf-tianocore-edk2
 	provides = ovmf-tianocore-edk2-svn
