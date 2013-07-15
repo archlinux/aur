@@ -87,7 +87,7 @@ echo "==> md5sum'ing the new database..."
 find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.new
 
 echo "==> checking integrity..."
-diff /tmp/pacsums.old /tmp/pacsums.new >/dev/null 2>&1
+diff /tmp/pacsums.old /tmp/pacsums.new &>/dev/null
 if [[ $? != 0 ]]; then
     # failed, move the old one back into place
     rm -rf $dbroot

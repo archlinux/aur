@@ -77,10 +77,10 @@ echo "==> md5sum'ing the old database..."
 find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.old
 
 echo "==> creating pacman.db loopback file..."
-dd if=/dev/zero of=$pacmandb bs=1M count=150 > /dev/null 2>&1
+dd if=/dev/zero of=$pacmandb bs=1M count=150 &>/dev/null
 
 echo "==> creating ext2 -O dir_index -b 1024 on $pacmandb..."
-mkfs.ext2 -F -O dir_index -b 1024 -m 0 $pacmandb > /dev/null 2>&1
+mkfs.ext2 -F -O dir_index -b 1024 -m 0 $pacmandb &>/dev/null
 
 echo "==> creating temporary mount point /mnt/tmp-pacman.."
 mkdir /mnt/tmp-pacman
@@ -111,7 +111,7 @@ echo "==> md5sum'ing the new database..."
 find $dbroot -type f | sort | xargs md5sum >/tmp/pacsums.new
 
 echo "==> checking integrity..."
-diff /tmp/pacsums.old /tmp/pacsums.new >/dev/null 2>&1
+diff /tmp/pacsums.old /tmp/pacsums.new &>/dev/null
 if [[ $? != 0 ]]; then
         # failed, move the old one back into place
         umount $dbroot
