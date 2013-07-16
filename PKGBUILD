@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=emotion_generic_players-git
-_pkgname=${pkgname%-git}
-pkgver=1.7.99.41.c76724f
+_pkgname=${pkgname%-*}
+pkgver=1.7.99.44.d338805
 pkgrel=1
 pkgdesc="Emotion external binary executable players - Development version"
 arch=('i686' 'x86_64')
