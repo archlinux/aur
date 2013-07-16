@@ -62,7 +62,7 @@ build() {
     --enable-systemd \
     --enable-harfbuzz \
     --enable-xinput22 \
-    --enable-multisense \
+    --enable-multisense
 
   make
 }
