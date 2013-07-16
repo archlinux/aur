@@ -5,7 +5,7 @@
 pkgname=elementary-git
 _pkgname=${pkgname%-*}
 true && pkgname=('elementary-git' 'elementary_test-git')
-pkgver=1.7.99.8047.472e94b
+pkgver=1.7.99.8168.9401c89
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -51,9 +51,9 @@ package_elementary-git() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/$_pkgname/README"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
   
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
