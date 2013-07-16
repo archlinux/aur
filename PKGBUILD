@@ -6,7 +6,7 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
