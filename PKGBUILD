@@ -15,14 +15,14 @@ _COMPILER="GCC46"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=14467
+pkgver=14474
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
 arch=('x86_64' 'i686')
 license=('BSD')
 
-makedepends=('subversion' 'python2' 'iasl')
+makedepends=('subversion' 'python2')
 
 options=('!strip' 'docs' '!makeflags')
 

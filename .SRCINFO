@@ -1,6 +1,6 @@
 pkgbase = uefi-shell-svn
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - SVN Version
-	pkgver = 14467
+	pkgver = 14474
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF
 	install = uefi-shell.install
@@ -9,7 +9,6 @@ pkgbase = uefi-shell-svn
 	license = BSD
 	makedepends = subversion
 	makedepends = python2
-	makedepends = iasl
 	provides = uefi-shell
 	conflicts = uefi-shell
 	options = !strip
