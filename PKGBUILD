@@ -3,7 +3,7 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=evas_generic_loaders-git
-_pkgname=evas_generic_loaders
+_pkgname=${pkgname%-*}
 pkgver=1.7.99.93.6fb0cfd
 pkgrel=2
 pkgdesc="Evas external binary executable loaders - Development version"
@@ -17,8 +17,8 @@ optdepends=('gstreamer0.10-base-plugins: Video thumbnails'
             'gstreamer0.10-bad-plugins: Video thumbnails'
             'gstreamer0.10-ugly-plugins: Video thumbnails'
             'gstreamer0.10-ffmpeg: Video thumbnails')
-provides=("evas_generic_loaders=$pkgver")
-conflicts=('evas_generic_loaders')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 options=('!libtool' 'debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
