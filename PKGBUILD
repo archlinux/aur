@@ -2,7 +2,7 @@
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
 pkgname=ccid
-pkgver=1.4.10
+pkgver=1.4.11
 pkgrel=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('LGPL' 'GPL')
 depends=('pcsclite' 'libusbx')
 makedepends=('pkg-config')
 backup=(etc/reader.conf.d/libccidtwin)
-source=("https://alioth.debian.org/frs/download.php/3897/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('5372e8593624dee837269bf86e4b8b06')
+source=("https://alioth.debian.org/frs/download.php/file/3920/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('20e3d6f045c53707a597cbacb86b6c5b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -20,7 +20,6 @@ build() {
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --enable-twinserial
-
   make
 }
 
