@@ -1,0 +1,15 @@
+pkgbase = libsrsbsns
+	pkgdesc = A library providing some basic functions for sockets, I/O, etc.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/srsbsns/libsrsbsns
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	options = !libtool
+	source = libsrsbsns-0.0.1.tar.gz::https://github.com/srsbsns/libsrsbsns/archive/v0.0.1.tar.gz
+	sha256sums = 61520cabe79b2e0a5a89de8f530f4b4bec8ff4bed0881266d347941e7635ce01
+
+pkgname = libsrsbsns
+
