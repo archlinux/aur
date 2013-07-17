@@ -3,7 +3,7 @@
 
 pkgname=yaehmop
 pkgver=3.1.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another extended Huckel Molecular Orbital Package (YAeHMOP)"
 arch=('x86_64' 'i686')
 url="http://yaehmop.sourceforge.net/"
@@ -13,12 +13,14 @@ depends=('gcc-fortran' 'readline' 'libx11' 'blas' 'lapack')
 source=('http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/bind.3.1.0b2.tgz'
 		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/viewkel.3.1.0b.tgz'
 		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/dense_eval.3.1.0b.tgz'
-		'0001-Fix-build-problems.patch')
+		'0001-Fix-build-problems.patch'
+		'0002-Fix-implicit-declaration.patch')
 
 md5sums=('5a717a1f9c5dbe6cf36de15cb3c5b6ef'
 		'd629bface0f610f7a4a1b3d0305872ca'
 		'aec78fae520950777b7738cf42626d99'
-		'4290dcf6a1ddb040c38dbb54d8698c5b')
+		'4290dcf6a1ddb040c38dbb54d8698c5b'
+		'89ecc02032067fc72a576943b9a413e7')
 
 build() {
 	cd "${srcdir}/${pkgname}"
@@ -32,6 +34,7 @@ build() {
 	rm -f tightbind/utils/fit_dos.o
 	rm -f tightbind/utils/genutil.o
 	patch -p1 < ../../0001-Fix-build-problems.patch
+	patch -p1 < ../../0002-Fix-implicit-declaration.patch
 	cd tightbind
 	make -f makefile.linux install
 	cd ../viewkel

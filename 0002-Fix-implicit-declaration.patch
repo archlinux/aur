@@ -1,0 +1,52 @@
+From b6d75eb61dab7fc7921d45618244e60a82aa4769 Mon Sep 17 00:00:00 2001
+From: LAN-TW <lantw44@gmail.com>
+Date: Thu, 18 Jul 2013 00:52:58 +0800
+Subject: [PATCH] Fix implicit declaration
+
+---
+ tightbind/utils/fit_props.h     | 2 ++
+ tightbind/utils/genutil.c       | 2 ++
+ viewkel/dense_eval/dense_eval.c | 1 +
+ 3 files changed, 5 insertions(+)
+
+diff --git a/tightbind/utils/fit_props.h b/tightbind/utils/fit_props.h
+index 3472da8..8fd9240 100755
+--- a/tightbind/utils/fit_props.h
++++ b/tightbind/utils/fit_props.h
+@@ -4,6 +4,8 @@
+    Created by greg Landrum March 1994
+ ************************************************************************/
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <math.h>
+ 
+ #ifdef USING_THE_MAC
+diff --git a/tightbind/utils/genutil.c b/tightbind/utils/genutil.c
+index 2af48e2..e1aa471 100755
+--- a/tightbind/utils/genutil.c
++++ b/tightbind/utils/genutil.c
+@@ -6,6 +6,8 @@
+ *
+ *****************************************************************************/
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #define FATAL 0
+ #define ERROR 1
+diff --git a/viewkel/dense_eval/dense_eval.c b/viewkel/dense_eval/dense_eval.c
+index 9baa095..1197141 100755
+--- a/viewkel/dense_eval/dense_eval.c
++++ b/viewkel/dense_eval/dense_eval.c
+@@ -32,6 +32,7 @@
+ const  char *_Version_="0.1b";
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <math.h>
+ #include <fcntl.h>
+ 
+-- 
+1.8.3.3
+
