@@ -1,7 +1,7 @@
 pkgbase = guix
 	pkgdesc = GNU guix is a purely functional package manager
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.3
+	pkgrel = 1
 	url = https://www.gnu.org/software/guix/
 	arch = x86_64
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = guix
 	depends = sqlite>=3.6.19
 	depends = bzip2
 	depends = libgcrypt
-	source = ftp://alpha.gnu.org/gnu/guix/guix-0.2.tar.gz
-	md5sums = 4bdbbd736d0bbcb6cd7e28220c4ea1fe
+	source = ftp://alpha.gnu.org/gnu/guix/guix-0.3.tar.gz
+	md5sums = 1112e55273ce47cb89ccbdedb2d431f6
 
 pkgname = guix
 
