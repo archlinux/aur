@@ -4,7 +4,7 @@
 pkgname=yaehmop
 pkgver=3.1.0b2
 pkgrel=1
-pkgdesc="Yet Another extended Huckel Molecular Orbital Package"
+pkgdesc="Yet Another extended Huckel Molecular Orbital Package (YAeHMOP)"
 arch=('x86_64' 'i686')
 url="http://yaehmop.sourceforge.net/"
 license=('GPL')
