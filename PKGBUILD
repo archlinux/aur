@@ -1,4 +1,5 @@
-# Maintainer: Sebastien Binet <binet@lblbox>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python2-lineprofiler
 pkgver=1.0b3
 pkgrel=1
@@ -12,11 +13,11 @@ source=(http://pypi.python.org/packages/source/l/line_profiler/line_profiler-$pk
 md5sums=('63fc2a757192eb5e577559cfdff5b831')
 
 build() {
-  cd $startdir/src/line_profiler-$pkgver
-
-  python2 setup.py build || return 1
+  cd "${srcdir}/line_profiler-${pkgver}"
+  python2 setup.py build
 }
 
 package() {
-  python2 setup.py install --prefix=/usr --root=$startdir/pkg
+  cd "${srcdir}/line_profiler-${pkgver}"
+  python2 setup.py install --prefix=/usr --root="${pkgdir}"
 }
