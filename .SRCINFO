@@ -1,0 +1,15 @@
+pkgbase = ve
+	pkgdesc = NTHU-CS Maple BBS 2.36 BBS-like editor
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://netlab.cse.yzu.edu.tw/~statue/freebsd/zh-tut/ve.html
+	arch = x86_64
+	arch = i686
+	license = custom
+	source = ftp://freebsd.csie.nctu.edu.tw/pub/distfiles/ve-1.1.tgz
+	source = 0001-Fix-incorrent-build-parameters.patch
+	md5sums = 8614598698ce0811c880714530f5892d
+	md5sums = f061844a40d70f245fb083b48f5b83cc
+
+pkgname = ve
+

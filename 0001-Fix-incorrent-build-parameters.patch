@@ -1,0 +1,63 @@
+From 94b15e800eb68da6fd1ca6c667cbdfabf5e6cbfe Mon Sep 17 00:00:00 2001
+From: LAN-TW <lantw44@gmail.com>
+Date: Thu, 18 Jul 2013 12:05:50 +0800
+Subject: [PATCH] Fix incorrent build parameters
+
+---
+ Makefile | 15 ++++++++-------
+ term.c   |  1 -
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index bc9b288..7cff95a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,15 +4,15 @@ OBJ = edit.o term.o screen.o stuff.o io.o editor.o
+ #----------------------------------------------------------
+ # FreeBSD
+ #----------------------------------------------------------
+-CFLAGS ?= -O -pipe
+-CFLAGS += -DVEDITOR
+-LIBS = -ltermcap -lcompat
++#CFLAGS ?= -O -pipe
++#CFLAGS += -DVEDITOR
++#LIBS = -ltermcap -lcompat
+ 
+ #----------------------------------------------------------
+ # Linux
+ #----------------------------------------------------------
+-#CFLAGS = -DVEDITOR -DLINUX
+-#LIBS = -ltermcap -lbsd
++CFLAGS = -DVEDITOR -DLINUX
++LIBS = -lncurses
+ 
+ #----------------------------------------------------------
+ # SunOS
+@@ -26,9 +26,10 @@ clean:
+ 	rm -f *.o ve
+ 
+ install: all
++	mkdir -p $(PREFIX)/bin
+ 	mkdir -p $(PREFIX)/share/ve
+-	$(BSD_INSTALL_PROGRAM) ve $(PREFIX)/bin
+-	$(BSD_INSTALL_DATA) ve.hlp $(PREFIX)/share/ve
++	install ve $(PREFIX)/bin
++	install -m 444 ve.hlp $(PREFIX)/share/ve
+ 
+ ve: $(OBJ)
+ 	$(CC) $(CFLAGS) -o ve $(OBJ) $(LIBS)
+diff --git a/term.c b/term.c
+index 1a71135..f4aa104 100644
+--- a/term.c
++++ b/term.c
+@@ -15,7 +15,6 @@
+ #endif
+ 
+ #ifdef LINUX
+-#include <linux/termios.h>
+ #endif
+ #define stty(fd, data) tcsetattr( fd, TCSETS, data )
+ #define gtty(fd, data) tcgetattr( fd, data )
+-- 
+1.8.3.3
+
