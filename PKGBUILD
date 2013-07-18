@@ -1,6 +1,7 @@
-# Maintainer: Håvard Espeland <espeland@acm.org>
+# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Contributor: Håvard Espeland <espeland@acm.org>
 pkgname=libpfm4
-pkgver=4.3.0
+pkgver=4.4.0
 conflicts=('libpfm3')
 pkgrel=1
 pkgdesc="The hardware-based performance monitoring interface for Linux."
@@ -10,13 +11,18 @@ license=('MIT')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-$pkgver.tar.gz"
         'config.mk')
-md5sums=('0ab272dbdbb759b852ba8bd06db030ef'
-         'ac3806df879a0c99b99574b4011bffab')
+md5sums=('93b853c97a41044ef33c3071bdedb249'
+         'd648df674716271b0ce59a857e535e6e')
 
 build() {
   cd "$srcdir/libpfm-$pkgver"
   cp "${srcdir}/config.mk" .
   make
+}
+
+check () {
+  cd "$srcdir/libpfm-$pkgver/tests"
+  ./validate
 }
 
 package() {

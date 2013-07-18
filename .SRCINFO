@@ -1,6 +1,6 @@
 pkgbase = libpfm4
 	pkgdesc = The hardware-based performance monitoring interface for Linux.
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://perfmon2.sourceforge.net/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = libpfm4
 	license = MIT
 	depends = glibc
 	conflicts = libpfm3
-	source = http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.3.0.tar.gz
+	source = http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.4.0.tar.gz
 	source = config.mk
-	md5sums = 0ab272dbdbb759b852ba8bd06db030ef
-	md5sums = ac3806df879a0c99b99574b4011bffab
+	md5sums = 93b853c97a41044ef33c3071bdedb249
+	md5sums = d648df674716271b0ce59a857e535e6e
 
 pkgname = libpfm4
 
