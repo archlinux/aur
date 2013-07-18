@@ -1,8 +1,8 @@
 pkgbase = uefi-shell-svn
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - SVN Version
-	pkgver = 14483
+	pkgver = 14485
 	pkgrel = 1
-	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF
+	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg
 	install = uefi-shell.install
 	arch = x86_64
 	arch = i686

@@ -15,10 +15,10 @@ _COMPILER="GCC46"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=14483
+pkgver=14485
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
-url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
+url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
 arch=('x86_64' 'i686')
 license=('BSD')
 
