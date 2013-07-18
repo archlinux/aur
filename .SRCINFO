@@ -1,12 +1,11 @@
 pkgbase = xorg-xrx
 	pkgdesc = Broadway
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.x.org/
 	arch = x86_64
 	arch = i686
 	license = custom
-	makedepends = xproxymngproto
 	depends = libxaw
 	options = !libtool
 	source = http://xorg.freedesktop.org/releases/individual/app/xrx-1.0.4.tar.bz2
