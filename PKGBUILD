@@ -20,13 +20,14 @@ build() {
 
   ./configure --prefix=/usr --enable-multibyte=utf-8 \
     --enable-threads=pthreads
-  make
+  make -j1
 }
+
 package() {
   cd "$srcdir/Gauche-$pkgver"
 
-  make DESTDIR="$pkgdir" install-pkg install-doc
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  make -j1 DESTDIR="$pkgdir" install-pkg install-doc
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
