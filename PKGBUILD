@@ -17,7 +17,7 @@ md5sums=('9cee021eb8089cc3ba6f04f7e75bb5fb')
 
 package() {
   cd "$srcdir"
-  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
+  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
   dstdir=$pkgdir/usr/lib/firefox/browser/extensions/$emid
   install -d "$dstdir"
   mv * "$dstdir"
