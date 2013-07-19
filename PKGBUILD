@@ -18,6 +18,9 @@ build() {
 }
 
 package() {
+  license_dir="${pkgdir}/usr/share/licenses/${pkgname}"
   cd "${srcdir}/line_profiler-${pkgver}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}"
+  install -d ${license_dir}
+  install -m644 LICENSE{,_Python}.txt "${license_dir}"
 }
