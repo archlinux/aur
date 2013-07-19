@@ -8,12 +8,11 @@ url="https://github.com/srsbsns/libsrsirc"
 license=('BSD')
 depends=(glibc)
 options=(!libtool)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/srsbsns/libsrsirc/archive/v0.0.1.tar.gz")
-sha256sums=('0bdb95e4067a0743f078282bd19e097ddb54e67527bf1eddbbdcf9f9ed4980d2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/srsbsns/libsrsirc/blob/tar/libsrsirc-0.0.1.tar.gz?raw=true")
+sha256sums=('e7b50a7940626af815672108e940d21d355bffbb008a0b8f53c42810a2f2ae5a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
-  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
