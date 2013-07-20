@@ -44,7 +44,7 @@ sha1sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --tags | sed -e 's|syslinux-||g' -e 's|-pre|pre|g' -e 's|-|.|g'
+	echo "$(git describe --tags)" | sed -e 's|syslinux-||g' -e 's|-pre|pre|g' -e 's|-|.|g'
 }
 
 _build_syslinux_bios() {
