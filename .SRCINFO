@@ -1,6 +1,6 @@
 pkgbase = gnu-efi-libs-fedora-git
 	pkgdesc = Library for building UEFI Applications using GNU toolchain - Fedora GIT Version
-	pkgver = 53.430c83a
+	pkgver = 0.53.430c83a
 	pkgrel = 1
 	url = http://sourceforge.net/projects/gnu-efi/
 	arch = x86_64

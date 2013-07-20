@@ -7,7 +7,7 @@ _gitname="gnu-efi-fedora"
 _gitbranch="fedora"
 
 pkgname="gnu-efi-libs-fedora-git"
-pkgver=53.430c83a
+pkgver=0.53.430c83a
 pkgrel=1
 pkgdesc="Library for building UEFI Applications using GNU toolchain - Fedora GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
@@ -27,7 +27,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | sed 's|-|.|g'
+	echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | sed 's|-|.|g'
 }
 
 build() {
