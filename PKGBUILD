@@ -27,7 +27,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | sed 's|-|.|g'
+	echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | sed -e 's|-|.|g'
 }
 
 build() {
