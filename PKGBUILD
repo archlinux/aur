@@ -10,7 +10,7 @@ _gitbranch="master"
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=33.cbc63ae
+pkgver=33
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -37,7 +37,7 @@ sha1sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags).$(git describe --always)" | sed 's|-|.|g'
+	echo "$(git describe --tags)" | sed -e 's|-|.|g'
 }
 
 build() {
