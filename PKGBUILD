@@ -9,7 +9,7 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=0.4_18_gb8c524c
+pkgver=0.4.18.gb8c524c
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
@@ -24,7 +24,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags)" | sed 's|-|_|g'
+	echo "$(git describe --tags)" | sed 's|-|\.|g'
 }
 
 build() {
