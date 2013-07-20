@@ -2,7 +2,7 @@
 
 pkgname=etrophy
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EFL based library that manages scores, trophies and unlockables"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"

@@ -1,7 +1,7 @@
 pkgbase = etrophy
 	pkgdesc = EFL based library that manages scores, trophies and unlockables
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
