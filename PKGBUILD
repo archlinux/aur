@@ -4,7 +4,7 @@ _pkgname="elilo"
 pkgname="${_pkgname}-efi"
 
 pkgver="3.16"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="UEFI version of LILO Boot Loader"
 arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/elilo/"
@@ -20,14 +20,12 @@ source=("http://downloads.sourceforge.net/project/elilo/elilo/elilo-${pkgver}/el
         "elilo.conf")
 
 sha1sums=('bd0bd4f1b3dc2d23a304f957ffbf907ae104f323'
-          'b4c2eb097f733f0169d930af12ad590e47adf4b7')
+          '68e47ded8d0a049c6285a591c53deece8fdbebc0')
+
+[[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x64"
+[[ "${CARCH}" == "i686" ]] && _EFI_ARCH="ia32"
 
 build() {
-	
-	if [[ "${CARCH}" != "x86_64" ]]; then
-		echo "${pkgname} package can be built only in a x86_64 system. Exiting."
-		exit 1
-	fi
 	
 	bsdtar -C "${srcdir}/" -xf "${srcdir}/elilo-${pkgver}-source.tar.gz"
 	echo
@@ -64,12 +62,12 @@ build() {
 
 package() {
 	
-	## Install elilo.efi
 	install -d "${pkgdir}/usr/lib/elilo"
-	install -D -m0644 "${srcdir}/elilo-${pkgver}-source/elilo.efi" "${pkgdir}/usr/lib/elilo/elilo.efi"
+	
+	## Install elilo.efi
+	install -D -m0644 "${srcdir}/elilo-${pkgver}-source/elilo.efi" "${pkgdir}/usr/lib/elilo/elilo${_EFI_ARCH}.efi"
 	
 	## Install example elilo.conf
-	install -d "${pkgdir}/usr/lib/elilo/config"
-	install -D -m0644 "${srcdir}/elilo.conf" "${pkgdir}/usr/lib/elilo/config/elilo.conf"
+	install -D -m0644 "${srcdir}/elilo.conf" "${pkgdir}/usr/lib/elilo/elilo.conf"
 	
 }

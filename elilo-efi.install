@@ -4,9 +4,9 @@ post_install() {
 
 Important instructions :-
 
-ELILO is installed at /usr/lib/elilo/elilo.efi
+ELILO is installed at /usr/lib/elilo/*.efi
 
-An example config file has been provided at /usr/lib/elilo/config/elilo.conf
+An example config file has been provided at /usr/lib/elilo/elilo.conf
 
 NOTE: elilo supports only FAT12/16/32 . It does not support EXT2, EXT3, EXT4 and other Unix filesystems.
 
