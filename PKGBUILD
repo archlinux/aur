@@ -27,7 +27,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags)" | sed 's|-|.|g'
+	echo "$(git describe --tags)" | sed -e 's|-|.|g'
 }
 
 build() {
