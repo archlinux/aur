@@ -23,7 +23,7 @@ _gitname="${_pkgname}"
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --always | sed 's|Release_||g' | sed 's|_|.|g' | sed 's|-|.|g'
+	git describe --always | sed -e 's|Release_||g' -e 's|_|.|g' -e 's|-|.|g'
 }
 
 build() {
