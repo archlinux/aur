@@ -1,0 +1,18 @@
+pkgbase = eternity-engine
+	pkgdesc = An advanced Doom port with vanilla compatibility
+	pkgver = 3.40.37
+	pkgrel = 1
+	url = http://eternity.youfailit.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = zlib
+	source = http://eternity.mancubus.net/ee-3.40.37-src.zip
+	sha256sums = b8eede10b320f20625a6a7edb725a7bade12cb320371cfd2f0dfb28f5eb8d385
+
+pkgname = eternity-engine
+
