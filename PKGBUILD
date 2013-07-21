@@ -1,8 +1,8 @@
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=yadifa
-pkgver=1.0.2
-_buildnr=2237
+pkgver=1.0.3
+_buildnr=2880
 pkgrel=1
 pkgdesc="lightweight authoritative Name Server with DNSSEC capabilities"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	'yadifad.conf'
 )
 sha256sums=(
-	'bed2f81a35fc08ad54ccb3b48b926976f8270ade8b256b20efd77a5236ac0c0d'
+	'11a841620be8a2cb882a904686e48c3c6b49877942a906edffa24130600b4ba3'
 	'0ce5dde0768cc333a141314bef726faf053dc83dd6dc5354f288605b6e349895'
 	'095bc19013101c74b7f6e5d79a3ef147a10dc3c362e0c7e1454a9bede6fd00d2'
 	'431f16695abd0e99973edecffecaf730d1bd17dd8ed9006790345542c2c6a231'
