@@ -11,7 +11,7 @@ pkgver=$_plugin_version
 pkgrel=2
 arch=('any')
 url="https://addons.mozilla.org/firefox/addon/$_plugin_id"
-depends=("firefox>=21.0")
+depends=()
 source=("https://addons.mozilla.org/firefox/downloads/latest/$_plugin_id/addon-$_plugin_id-latest.xpi")
 md5sums=('9cee021eb8089cc3ba6f04f7e75bb5fb')
 
