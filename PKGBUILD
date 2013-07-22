@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=minitube
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A native YouTube client in QT. Watch YouTube videos without Flash Player"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('phonon')
 install="$pkgname.install"
 source=("http://flavio.tordini.org/files/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('7df1e44b86a4744a492ccc414c0fa77d')
+md5sums=('0da4cb8940034aad832e41acc52df365')
 
 build() {
   cd "$srcdir/$pkgname"
