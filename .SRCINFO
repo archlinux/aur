@@ -1,7 +1,7 @@
 pkgbase = unix-runescape-client
 	pkgdesc = RuneScape client for Linux and Unix
 	pkgver = 4.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html
 	install = unix-runescape-client.install
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = unix-runescape-client
 	depends = xterm
 	depends = p7zip
 	depends = perl-wx
+	depends = wget
 	optdepends = wine: for "compatibility mode" fix
 	optdepends = alsa-oss: for "force alsa" fix
 	optdepends = pulseaudio: for "force pulseaudio" fix

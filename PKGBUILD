@@ -1,12 +1,12 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
 pkgver=4.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
 license=(GPL2)
-depends=('java-runtime' 'perl' 'xterm' 'p7zip' 'perl-wx')
+depends=('java-runtime' 'perl' 'xterm' 'p7zip' 'perl-wx' 'wget')
 makedepends=('git')
 optdepends=(
   'wine: for "compatibility mode" fix'
