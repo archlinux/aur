@@ -1,6 +1,6 @@
 pkgbase = gitodo-git
 	pkgdesc = Manage your TODO items using Git as a backend
-	pkgver = 13.01.5.g12160cb
+	pkgver = 13.06.1.g9e9861d
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=gitodo
 	arch = any
