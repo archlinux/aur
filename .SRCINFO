@@ -1,12 +1,13 @@
 pkgbase = linux-user-chroot
 	pkgdesc = setuid helper for making bind mounts and chrooting
-	pkgver = 2012.2
+	pkgver = 2013.1
 	pkgrel = 1
 	url = http://git.gnome.org/browse/linux-user-chroot/tree/README
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = libxslt
+	makedepends = git
 	depends = glibc
 
 pkgname = linux-user-chroot

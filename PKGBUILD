@@ -1,12 +1,12 @@
 pkgname='linux-user-chroot'
-pkgver='2012.2'
+pkgver='2013.1'
 pkgrel='1'
 pkgdesc='setuid helper for making bind mounts and chrooting'
 url='http://git.gnome.org/browse/linux-user-chroot/tree/README'
 arch=('i686' 'x86_64')
 license='GPL'
 depends=('glibc')
-makedepends=('libxslt')
+makedepends=('libxslt' 'git')
 repo="git://git.gnome.org/${pkgname}"
 
 build () {
