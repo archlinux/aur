@@ -23,7 +23,7 @@ build() {
 
 check() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	make -k -j1 chec
+	make -k -j1 check
 }
 
 package() {
