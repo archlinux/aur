@@ -1,3 +1,17 @@
+2013-07-24 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.1.1-1
+	Version bump.
+
+	Upstream changelog:
+	- Fixed spacing of non-HD fonts to match vanilla.
+	- Fixed missing synthetic EnchantmentList$1 class.
+	- Prevent crash if animation data is invalid.
+	- Some performance optimization.
+	- Fixed CIT application to items with multiple textures (bow, fishing rod).
+	- Fixed CTM method=horizontal for vines and ladders.
+	- Warn if trying to add a resource pack as a mod.
+
 2013-07-10 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.1.0_04-1
