@@ -2,7 +2,7 @@ pkgname=linux-linode
 _basekernel=3.10
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.2
+pkgver=${_basekernel}.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -17,13 +17,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "preset"
         'change-default-console-loglevel.patch')
 md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         '0c94fa440515e289495909749d04aae4'
-         'b1a44ce46a3efc7d76dfa0b7c81c96c6'
-         'ae4bc90bedf747746ae78ccf6e94f70a'
+         '2120557e0a6209d48d854ad0df9314e0'
+         '0aebb7746059b1a5fb876f034d39cd54'
+         'ffe9ddb94b5dd2ec6abc032445a8d235'
          '01afd0c0ff8fcf3fe6e0cd91d12886bd'
          '3d6427cc412dbc226b5d058c82ba7c66'
          'f3def2cefdcbb954c21d8505d23cc83c')
-pkgdesc="Kernel for Arch Linux on Linode"
+pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(linux)
 conflicts=(grub grub-legacy)
