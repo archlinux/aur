@@ -15,7 +15,7 @@ _COMPILER="GCC46"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=14495
+pkgver=14503
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -48,7 +48,7 @@ sha1sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${_TIANOCORE_PKG}Pkg/"
-	svnversion | tr -d [A-z]
+	echo "$(svnversion)" | tr -d [A-z]
 }
 
 _setup_env_vars() {
