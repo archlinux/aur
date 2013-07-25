@@ -1,19 +1,19 @@
 pkgbase = targetcli-fb
 	pkgdesc = free branch of the targetcli LIO administration shell (iSCSI + Co)
-	pkgver = 2.1.fb26
+	pkgver = 2.1.fb27
 	pkgrel = 1
 	url = https://github.com/agrover/targetcli-fb
 	arch = any
-	license = AGPL3
+	license = Apache
 	depends = python2-rtslib-fb>=2.1.fb33
 	depends = python2-configshell-fb
 	provides = targetcli
 	conflicts = lio-utils
 	replaces = rtsadmin
-	source = targetcli-fb-2.1.fb26.tar.gz::https://github.com/agrover/targetcli-fb/archive/v2.1.fb26.tar.gz
+	source = targetcli-fb-2.1.fb27.tar.gz::https://github.com/agrover/targetcli-fb/archive/v2.1.fb27.tar.gz
 	source = target.service
 	source = target
-	md5sums = ee4d654ef8071db696229bf817b18f98
+	md5sums = 3e930c79a1aff77e749e7783acfef13b
 	md5sums = f462e9a5852346c66b77793565ddbc67
 	md5sums = f23bd6d5d4021c29b4519e40b3b9e042
 
