@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url="http://www.gnubg.org"
 license=('GPL')
 depends=('python2' 'gtkglext' 'hicolor-icon-theme')
-conflicts=('gnubg-cli' 'gnubg-cvs')
 install=$pkgname.install
 source=($url/media/sources/$pkgname-release-$pkgver-sources.tar.gz
         $pkgname.desktop)
