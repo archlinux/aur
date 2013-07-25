@@ -20,7 +20,7 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=14495
+pkgver=14503
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
@@ -65,7 +65,7 @@ noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
 pkgver() {
 	cd "${srcdir}/OvmfPkg/"
-	svnversion | tr -d [A-z]
+	echo "$(svnversion)" | tr -d [A-z]
 }
 
 _bail_out() {
