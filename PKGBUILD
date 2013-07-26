@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.10
-pkgver=3.10.2
+pkgver=3.10.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,12 +18,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         '0c94fa440515e289495909749d04aae4'
-         '480f8efb61ee244c52d881304a0ae14b'
-         'e55ce3dd5fead07eed8a6781a57c1b1b'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c')
 
 _kernelname=${pkgbase#linux}
 
@@ -327,3 +321,9 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
+         '2120557e0a6209d48d854ad0df9314e0'
+         '480f8efb61ee244c52d881304a0ae14b'
+         'e55ce3dd5fead07eed8a6781a57c1b1b'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         'f3def2cefdcbb954c21d8505d23cc83c')
