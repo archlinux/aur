@@ -1,0 +1,16 @@
+pkgbase = coverity-submit
+	pkgdesc = Submitting Coverity builds
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://www.catb.org/esr/coverity-submit/
+	arch = any
+	license = BSD
+	makedepends = pychecker
+	depends = python2
+	depends = curl
+	depends = cov-analysis
+	source = http://www.catb.org/~esr/coverity-submit/coverity-submit-1.9.tar.gz
+	md5sums = aa532ef202fad33a80eaa50feda8a4a7
+
+pkgname = coverity-submit
+
