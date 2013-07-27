@@ -4,28 +4,21 @@
 
 pkgname=samdump2
 pkgver=3.0.0
-pkgrel=1
-pkgdesc="Dump password hashes from a Windows NT/2k/XP installation"
+pkgrel=2
+pkgdesc='Dump password hashes from a Windows NT/2k/XP installation.'
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/ophcrack/files/samdump2/"
-license="GPL"
+url='http://sourceforge.net/projects/ophcrack/files/samdump2/'
+license='GPL'
 depends=('openssl')
-source=(
-	"http://downloads.sourceforge.net/ophcrack/$pkgname-$pkgver.tar.bz2"
-	'prefix-infos.patch'
-)
-md5sums=(
-	'5dac2dc3f8171a3dc86053d923a0e6f5'
-	'9652a003668d4dcf2711e397f5f8ec7f'
-)
+source=("http://downloads.sourceforge.net/ophcrack/$pkgname-$pkgver.tar.bz2")
+md5sums=('5dac2dc3f8171a3dc86053d923a0e6f5')
 
 build() {
- cd "$srcdir/$pkgname-$pkgver"
- patch -p0 < "$srcdir/prefix-infos.patch"
- make
+	cd "$srcdir/$pkgname-$pkgver"
+	make LIBS='-lssl -lcrypto' CFLAGS="$CFLAGS"
 }
 
 package() {
- cd "$srcdir/$pkgname-$pkgver"
- make install DESTDIR="$pkgdir"
+	install -Dm 755 "$srcdir/$pkgname-$pkgver/samdump2" "$pkgdir/usr/bin/samdump2"
+	install -Dm 644 "$srcdir/$pkgname-$pkgver/samdump2.1" "$pkgdir/usr/share/man/man1/samdump2.1"
 }

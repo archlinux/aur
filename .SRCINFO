@@ -1,16 +1,14 @@
 pkgbase = samdump2
-	pkgdesc = Dump password hashes from a Windows NT/2k/XP installation
+	pkgdesc = Dump password hashes from a Windows NT/2k/XP installation.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/ophcrack/files/samdump2/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = openssl
 	source = http://downloads.sourceforge.net/ophcrack/samdump2-3.0.0.tar.bz2
-	source = prefix-infos.patch
 	md5sums = 5dac2dc3f8171a3dc86053d923a0e6f5
-	md5sums = 9652a003668d4dcf2711e397f5f8ec7f
 
 pkgname = samdump2
 
