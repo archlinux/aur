@@ -12,7 +12,7 @@ _GRUB_BZR_REV="5043"
 pkgname=grub
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.00.${_GRUB_BZR_REV}
-pkgrel=2
+pkgrel=3
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -40,20 +40,25 @@ source=("grub-${pkgver}::bzr+bzr://bzr.savannah.gnu.org/grub/trunk/grub/#revisio
         'archlinux_grub_mkconfig_fixes.patch'
         '60_memtest86+'
         'grub.default'
-        'grub.cfg')
+        'grub.cfg'
+        'grub-2.00-mkinitcpio-0.15.patch')
+md5sums=('SKIP'
+         'ee1262cc4e20031df019779b1a4b1e39'
+         'be55eabc102f2c60b38ed35c203686d6'
+         'a03ffd56324520393bf574cefccb893d'
+         'f184b060fe22eca662ad455c69241496'
+         'd25d2dcf8ba708dcf768fcaea799f59c'
+         'SKIP'
+         'SKIP')
 
 for _DIR_ in 915resolution ntldr-img ; do
 	source+=("grub-extras-${_DIR_}::bzr+bzr://bzr.savannah.gnu.org/grub-extras/${_DIR_}/#revision=")
 done
 
-# sha1sums=('274d91e96b56a5b9dd0a07accff69dbb6dfb596b'
-sha1sums=('SKIP'
-          'e7fd9161057411b1adc22977d4b3e7c06116239d'
-          '2aa2deeb7d7dc56f389aa1487b7a57b0d44ce559'
-          'dbf493dec4722feb11f0b5c71ad453a18daf0fc5'
-          '5b7fcb0718a23035c039eb2fda9e088bb13ae611'
-          'SKIP'
-          'SKIP')
+prepare() {
+	cd "${srcdir}/grub-${pkgver}"
+	patch -Np0 -i "${srcdir}/grub-2.00-mkinitcpio-0.15.patch"
+}
 
 _build_grub-common_and_bios() {
 	
@@ -241,3 +246,4 @@ package() {
 	_package_grub-common_and_bios
 	
 }
+
