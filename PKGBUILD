@@ -3,7 +3,7 @@
 
 pkgname=openmw-git
 _gitname="openmw"
-pkgver=20130616
+pkgver=0.24.0.438.gf730085
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git log -1 --format="%cd" --date=short | tr -d '-'
+    git describe --always | sed 's|openmw-||' | sed 's|-|.|g'
 }
 
 build() {
