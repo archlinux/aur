@@ -36,6 +36,14 @@ _kernver=$(cat /usr/lib/modules/${_extramodules}/version) # TODO make this a low
 _cfgdir="/etc/makepkg.d/${pkgname}/"
 _patchdir="${_cfgdir}/patches/"
 
+countdown() {
+  local i 
+  for ((i=$1; i>=1; i--)); do
+    echo -ne "\rPress [i] to start interactive config in $i second(s) "
+    sleep 1
+  done
+}
+
 prepare() {
   cd "${srcdir}/backports-${_upver}"
   # modprobe -l dropped in kmod
@@ -60,6 +68,30 @@ prepare() {
       unset _PATCHLIST
     fi
   fi
+
+  # Patch for sane install
+cd "${srcdir}/backports-${_upver}"
+patch -p0 <<'EOF'
+--- Makefile.real	2013-07-13 18:50:46.000000000 +0200
++++ Makefile.real.fixed	2013-07-28 01:52:51.922779881 +0200
+@@ -87,15 +87,6 @@
+ 	@$(MAKE) -C $(KLIB_BUILD) M=$(BACKPORT_PWD)			\
+ 		INSTALL_MOD_DIR=$(KMODDIR) $(KMODPATH_ARG)		\
+ 		modules_install
+-	@./scripts/blacklist.sh $(KLIB)/ $(KLIB)/$(KMODDIR)
+-	@./scripts/compress_modules.sh $(KLIB)/$(KMODDIR)
+-	@./scripts/check_depmod.sh
+-	@./scripts/backport_firmware_install.sh
+-	@/sbin/depmod -a
+-	@./scripts/update-initramfs.sh $(KLIB)
+-	@echo
+-	@echo Your backported driver modules should be installed now.
+-	@echo Reboot.
+ 	@echo
+ 
+ .PHONY: modules_install
+EOF
+
 }
 
 build() {
@@ -71,8 +103,12 @@ build() {
     make "${_selected_drivers[@]/#/defconfig-}"
   else # TODO: else if not that try showing up dialog menu with checkboxes based on available defconfigs ;)
     warning "Config undetected"
-    # TODO: WAIT 10s FOR INTEACTIVE PART - PRESS I FOR INTERACTIVE CONFIG
-    sleep 3
+    # WAIT 10s FOR INTEACTIVE PART - PRESS I FOR INTERACTIVE CONFIG
+    countdown 10 & countdown_pid=$!
+    read -s -n 1 -t 10 ikey || true
+    kill $countdown_pid
+    echo -e -n "\n"
+    [[ "$ikey" != "i" ]] && false
     # BEGIN INTERACTIVE PART
     # TODO: ADD OLDCONFIG OPTION
     cfgway=$(dialog --clear --backtitle "$pkgname" --radiolist 'Choose method to configure' 0 0 0 defconfig 'desc' off "menuconfig" 'desc' off 2>&1 >/dev/tty)
