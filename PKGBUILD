@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.10
-pkgver=3.10.3
+pkgver=3.10.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,12 +18,18 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
+md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
+         '2e46ab138670b3171b52b849568cb42f'
+         '480f8efb61ee244c52d881304a0ae14b'
+         'e55ce3dd5fead07eed8a6781a57c1b1b'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         'f3def2cefdcbb954c21d8505d23cc83c')
 
 _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# a7b2aaafc7773e1054091cb5ca18dad5  /lib/modules/3.10.2-1-ARCH/modules.symbols
+# f99a7b90bd91bdeafe424da0677b55fb  /lib/modules/3.10.4-1-ARCH/modules.symbols
 # i686
 # 767136c9e87ce9f9b92eda46b544b263  /lib/modules/3.10.2-1-ARCH/modules.symbols 
 
@@ -321,9 +327,3 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         '2120557e0a6209d48d854ad0df9314e0'
-         '480f8efb61ee244c52d881304a0ae14b'
-         'e55ce3dd5fead07eed8a6781a57c1b1b'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c')
