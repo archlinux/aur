@@ -1,7 +1,7 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
 	pkgver = 2.00.5043
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
 	arch = x86_64
@@ -56,7 +56,7 @@ pkgbase = grub
 	md5sums = ee1262cc4e20031df019779b1a4b1e39
 	md5sums = be55eabc102f2c60b38ed35c203686d6
 	md5sums = a03ffd56324520393bf574cefccb893d
-	md5sums = f184b060fe22eca662ad455c69241496
+	md5sums = c8b9511586d57d6f2524ae7898397a46
 	md5sums = d25d2dcf8ba708dcf768fcaea799f59c
 	md5sums = SKIP
 	md5sums = SKIP

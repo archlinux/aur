@@ -12,7 +12,7 @@ _GRUB_BZR_REV="5043"
 pkgname=grub
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.00.${_GRUB_BZR_REV}
-pkgrel=3
+pkgrel=4
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -46,10 +46,11 @@ md5sums=('SKIP'
          'ee1262cc4e20031df019779b1a4b1e39'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
-         'f184b060fe22eca662ad455c69241496'
+         'c8b9511586d57d6f2524ae7898397a46'
          'd25d2dcf8ba708dcf768fcaea799f59c'
          'SKIP'
          'SKIP')
+
 
 for _DIR_ in 915resolution ntldr-img ; do
 	source+=("grub-extras-${_DIR_}::bzr+bzr://bzr.savannah.gnu.org/grub-extras/${_DIR_}/#revision=")
@@ -246,4 +247,3 @@ package() {
 	_package_grub-common_and_bios
 	
 }
-
