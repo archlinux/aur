@@ -1,0 +1,13 @@
+pkgbase = fs2_open-data
+	pkgdesc = Freespace 2 retail data for fs2_open
+	pkgver = 1.20
+	pkgrel = 2
+	url = http://www.gog.com/en/gamecard/freespace_2
+	arch = any
+	license = custom:freespace2
+	makedepends = innoextract
+	makedepends = recode
+
+pkgname = fs2_open-data
+	license = custom:goodoldgames
+
