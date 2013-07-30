@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/screamingfrogseospider
 
 pkgname=screamingfrogseospider
-pkgver=2.11
+pkgver=2.20
 pkgrel=1
 pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('any')
@@ -16,18 +16,19 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  '5c41724c5b233832b9e7d6cea4741a2c10f414626bffe79e942c7e1fc72c43f5'
+  '9a5b26517aa25a0783bc33587363dc51a93847ad6126416c1a01475160b98d32'
   '5f32a7baef326d88754c6581883800a8d68a753bec846a1d0c190460ab7a2424'
 )
 
 build() {
-  cd $srcdir/
+  cd "$srcdir"
   msg "Extracting..."
-  tar xf data.tar.gz -C $pkgdir
+  tar xf data.tar.gz
   msg2 "Done extracting!"
 }
 
 package() {
+  cp -dpr --no-preserve=ownership "$srcdir/usr" "$pkgdir"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
