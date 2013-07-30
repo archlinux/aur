@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=ecrire-git
-_pkgname=ecrire
-pkgver=0.1.0.83
+_pkgname=${pkgname%-*}
+pkgver=0.1.0.92
 pkgrel=1
 pkgdesc="Simple text editor based on EFL"
 arch=('i686' 'x86_64')
