@@ -2,7 +2,7 @@
 
 pkgname=ecrire-git
 _pkgname=${pkgname%-*}
-pkgver=0.1.0.92
+pkgver=0.1.0.92.1d1911c
 pkgrel=1
 pkgdesc="Simple text editor based on EFL"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
     local _$i=$(grep -m 1 $i CMakeLists.txt | grep -o "[[:digit:]]*")
   done
   
-  echo $_VMAJ.$_VMIN.$_VMIC.$(git rev-list --count HEAD)
+  echo $_VMAJ.$_VMIN.$_VMIC.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
