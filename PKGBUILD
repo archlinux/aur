@@ -1,6 +1,8 @@
 # Maintainer: Galen Sampson <galen.sampson at gmail dot com>
-pkgname=trafficserver
-pkgver=3.2.4
+# Contributor: David Roheim <david dot roheim at gmail dot com>
+
+pkgname=('trafficserver')
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -10,24 +12,18 @@ depends=('openssl' 'tcl' 'hwloc')
 makedepends=('flex')
 
 source=(
-    'http://apache.tradebit.com/pub/trafficserver/trafficserver-3.2.4.tar.bz2'
-    'trafficserver.tmpfiles'
-    'config.layout.patch'
-    'trafficserver.git-c9a2e06.patch'
-    'trafficserver.git-75d3566.patch'
-    'proxy_Main.patch'
-    'trafficserver.service.in.patch')
-md5sums=(
-    '5ce8f59d608896ae56e9053ff86bb40c'
-    'fc8ab2b6d01e22fb376832fb13137db1'
-    '9ca01c6833ebbde4644a255c8bf802ce'
-    'f395175164b2d8de90535e42ae1de72b'
-    'f774f8454bec9422ac1af5445625a6b5'
-    'ec6be0b8e2ab575bcd077993809061b0'
-    '74ba08091f580f8984eee8db0f7e4d27')
+    http://archive.apache.org/dist/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
+    trafficserver.tmpfiles
+    config.layout.patch
+    trafficserver.service.in.patch)
 
-install=trafficserver.install
-changelog=trafficserver.changelog
+md5sums=(bc76c68589389a453e4e4967c42636d6
+         fc8ab2b6d01e22fb376832fb13137db1
+         9ca01c6833ebbde4644a255c8bf802ce
+         74ba08091f580f8984eee8db0f7e4d27)
+
+install=${pkgname}.install
+changelog=${pkgname}.changelog
 
 backup=(
     'etc/trafficserver/congestion.config'
@@ -84,9 +80,6 @@ backup=(
 build() {
     cd "${pkgname}-${pkgver}"
     patch -Np0 -u -i ../config.layout.patch
-    patch -Np1 -u -i ../trafficserver.git-c9a2e06.patch 
-    patch -Np1 -u -i ../trafficserver.git-75d3566.patch 
-    patch -Np0 -u -i ../proxy_Main.patch
     patch -Np0 -u -i ../trafficserver.service.in.patch
     ./configure --with-user=tserver --enable-layout=Arch
     make
