@@ -1,0 +1,22 @@
+pkgbase = fsport-mediavps
+	pkgdesc = Hi-res FreeSpace 1 resources for FSPort
+	pkgver = 3.4
+	pkgrel = 1
+	url = http://fsport.hard-light.net/website/
+	arch = any
+	license = custom:noncommercial
+	makedepends = unzip
+	depends = fsport
+	noextract = fsport-mediavps.zip
+	noextract = fsport-mediavps_music.zip
+	source = fsport-mediavps.sh
+	source = LICENSE
+	source = http://fsport.freespacemods.net/releases/fsport-mediavps.zip
+	source = http://fsport.freespacemods.net/releases/fsport-mediavps_music.zip
+	sha256sums = d733c40af34b2b5fda74788fe4f949a08a511c52c1211bd86e6926d78b375110
+	sha256sums = 79462ffe82b8cf371f37a3444a8e17165d293e797a865b9c4312f86d00ddf4ec
+	sha256sums = 2e925039df10b796377fa3259b7d05d02f7bc2fe19b642e963000004660b882a
+	sha256sums = 977714e2560b320901002284a68f89505defe9c1d1fa07e2096ffc00d8713518
+
+pkgname = fsport-mediavps
+
