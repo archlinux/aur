@@ -1,6 +1,6 @@
 pkgbase = casperjs
 	pkgdesc = a browser navigation scripting & testing utility written in Javascript on top of PhantomJS.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = http://casperjs.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = casperjs
 	depends = python
 	depends = phantomjs
 	optdepends = ruby
-	source = https://github.com/n1k0/casperjs/tarball/1.0.2
-	sha256sums = 801c3417567bfebde7ec252aeb30cfde188e8cd7bbbc63d67b795c2bdc672101
+	source = https://github.com/n1k0/casperjs/tarball/1.0.3
+	sha256sums = 4fe2759f725aa855a404dbcc2e47d9a7551304885aeaffcfef6866a89744fa5e
 
 pkgname = casperjs
 
