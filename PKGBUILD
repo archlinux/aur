@@ -34,16 +34,6 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir" install
-
-  # Replace resources location
-  sed 's,resources=\./resources,resources=/usr/share/games/openmw/resources,' openmw.cfg > "$pkgdir"/etc/openmw/openmw.cfg 
-
-  # Custom Licences
-  install -d -m755 "$pkgdir"/usr/share/licenses/openmw
-  install -D -m644 "DejaVu Font License.txt" "$pkgdir/usr/share/licenses/openmw/"
-  install -D -m644 "Daedric Font License.txt" "$pkgdir/usr/share/licenses/openmw/"
-  install -D -m644 "OFL.txt" "$pkgdir/usr/share/licenses/openmw/"
-  install -D -m644 "extern/shiny/License.txt" "$pkgdir/usr/share/licenses/openmw/Shiny License.txt"
 }
 
 # vim:set ts=2 sw=2 et:
