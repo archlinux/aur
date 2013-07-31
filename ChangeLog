@@ -1,3 +1,17 @@
+2013-08-01 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.2.0-1
+	Version bump.
+
+	Upstream changelog:
+	- Better integration into the new launcher, including support for multiple profiles.
+	- Compatible with Forge again.
+	- Use custom potion colors for particle effects around players in SMP.
+	- Fixed alignment of CIT enchantment overlay in GUI.
+	- Apply CIT properly to items with multiple render passes in item frames.
+	- Fixed CIT sometimes using the wrong graphic when multiple items of the same type were present.
+	- Fixed CTM for logs with metadata >= 12.
+
 2013-07-24 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.1.1-1
