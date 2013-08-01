@@ -3,7 +3,7 @@
 
 pkgname=efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.99.22360.f2317ac
+pkgver=1.7.99.22911.4d54c97
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$p
 conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
            "$_pkgname" 'efl_x11')
 options=('!libtool' 'debug')
-install=efl.install
+install="$_pkgname.install"
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
 
