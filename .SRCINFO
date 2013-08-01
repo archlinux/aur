@@ -1,7 +1,7 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
 	pkgver = 1.7.99.22911.4d54c97
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	install = efl.install
 	arch = i686

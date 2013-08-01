@@ -4,7 +4,7 @@
 pkgname=efl-git
 _pkgname=${pkgname%-*}
 pkgver=1.7.99.22911.4d54c97
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -57,7 +57,7 @@ build() {
     --with-opengl=full \
     --enable-wayland \
     --enable-fb \
-    --disable-tslib
+    --disable-tslib \
     --enable-image-loader-webp \
     --enable-systemd \
     --enable-harfbuzz \
