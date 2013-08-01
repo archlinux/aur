@@ -5,19 +5,26 @@
 # Contributor: Johannes Krampf <wuischke.at.amule.dot.org>
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
+#
+# Note:
+#
+# * Depending on and compiling with 'granite' didn't work last time I tried.
+# * To compile with gtk3 instead of gtk2, depend on 'webkitgtk' and 'gtk3' then --enable-gtk3.
+# * If steadyflow is moved to [community] or [extra], it can be added as an optdepends.
+#
+
 pkgname=midori
 pkgver=0.5.4
-pkgrel=2
-pkgdesc='Lightweight web browser based on Gtk WebKit'
+pkgrel=3
+pkgdesc='Lightweight web browser (GTK2)'
 arch=('x86_64' 'i686')
 url='http://www.midori-browser.org/'
 license=('LGPL2.1')
 install='midori.install'
-depends=('libzeitgeist' 'webkitgtk3' 'libnotify' 'libxss' 'hicolor-icon-theme' 'desktop-file-utils' 'libunique3' 'gcr') # 'granite'
-makedepends=('pkg-config' 'bzr' 'python2' 'libxml2' 'gtk3' 'intltool' 'python2-docutils' 'libsoup' 'vala' 'librsvg')
+depends=('libzeitgeist' 'webkitgtk2' 'libnotify' 'libxss' 'hicolor-icon-theme' 'desktop-file-utils' 'libunique3' 'gcr')
+makedepends=('pkg-config' 'bzr' 'python2' 'libxml2' 'gtk2' 'intltool' 'python2-docutils' 'libsoup' 'vala' 'librsvg')
 optdepends=('gstreamer0.10-ugly-plugins: HTML5 videos support'
             'aria2: download utility')
-            #'steadyflow: download manager')
 options=('!emptydirs')
 source=("http://www.midori-browser.org/downloads/${pkgname}_${pkgver}_all_.tar.bz2")
 sha256sums=('d4ee77f3dd9bf2c07cea7674d533e77960e9346bd8b5482582ccb3cdaf182022')
@@ -25,11 +32,7 @@ sha256sums=('d4ee77f3dd9bf2c07cea7674d533e77960e9346bd8b5482582ccb3cdaf182022')
 build() {
   cd "$srcdir/${pkgname}_${pkgver}_all_"
 
-  python2 ./waf configure \
-    --prefix=/usr \
-    --enable-gtk3 \
-    --disable-granite
-    #--enable-webkit2
+  python2 ./waf configure --prefix=/usr
   python2 ./waf build 
 }
 
