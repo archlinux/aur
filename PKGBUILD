@@ -7,10 +7,10 @@
 
 pkgname=midori
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight web browser based on Gtk WebKit'
 arch=('x86_64' 'i686')
-url='http://www.twotoasts.de/index.php?/pages/midori_summary.html'
+url='http://www.midori-browser.org/'
 license=('LGPL2.1')
 install='midori.install'
 depends=('libzeitgeist' 'webkitgtk3' 'libnotify' 'libxss' 'hicolor-icon-theme' 'desktop-file-utils' 'libunique3' 'gcr') # 'granite'
@@ -28,8 +28,8 @@ build() {
   python2 ./waf configure \
     --prefix=/usr \
     --enable-gtk3 \
-    --disable-granite \
-    --enable-webkit2
+    --disable-granite
+    #--enable-webkit2
   python2 ./waf build 
 }
 
