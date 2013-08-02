@@ -2,7 +2,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=python-virtualenvwrapper
-pkgver=4.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('python2-virtualenvwrapper')
 replaces=('python2-virtualenvwrapper')
 source=(http://pypi.python.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz
         LICENSE)
-sha256sums=('fe62ea3b8a4e177789092c9412fe2ea1a2c8efd0281216f16887e475bde44210'
+sha256sums=('47ab05af0bc7f146bdd4a77a978e02a1f4e1db6a0546e836e2442fa0990d7d77'
             '5c595d48f16a4cd468f08f467b52b6b2e5e43336961176988b7e4f60cf1b651f')
 
 package() {
