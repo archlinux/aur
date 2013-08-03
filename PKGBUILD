@@ -4,7 +4,7 @@
 
 pkgname=mma
 pkgver=12.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
 depends=('python2>=2.5.0' 'timidity++')
@@ -19,6 +19,7 @@ md5sums=('1c34126c092ca07aab1b606c73670a64'
          '75c3eeac52d846d5ff2050346e48d2d8'
          '7cdddd5de515539cf66f0d8d9613dcdc')
 options=(!strip !zipman)
+backup=(etc/mmarc)
 
 build () {
   cd $srcdir/$pkgname-bin-$pkgver
