@@ -1,0 +1,11 @@
+--- mma-bin-12.10/MMA/main.py.orig	2012-10-20 19:29:35.000000000 -0400
++++ mma-bin-12.10/MMA/main.py	2013-08-03 19:48:46.820508239 -0400
+@@ -156,7 +156,7 @@
+ # First the mmastart files
+ 
+ for f in gbl.mmaStart:
+-    fn = MMA.file.locFile(f, MMA.paths.incPath)
++    fn = MMA.paths.findIncFile(f)
+     if not fn:
+         warning("MmaStart file '%s' not found/processed" % fn)
+     MMA.parse.parseFile(fn)

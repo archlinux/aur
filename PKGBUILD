@@ -4,7 +4,7 @@
 
 pkgname=mma
 pkgver=12.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
 depends=('python2>=2.5.0' 'timidity++')
@@ -13,13 +13,17 @@ arch=('any')
 install=mma.install
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --user-agent "Mozilla/4.0" -o %o %u ')
 source=("http://www.mellowood.ca/mma/mma-bin-$pkgver.tar.gz"
+  fix-mmastart-path.patch
   mmarc)
 md5sums=('1c34126c092ca07aab1b606c73670a64'
+         '75c3eeac52d846d5ff2050346e48d2d8'
          '7cdddd5de515539cf66f0d8d9613dcdc')
+options=(!strip !zipman)
 
 build () {
-
   cd $srcdir/$pkgname-bin-$pkgver
+
+  patch -p1 -i "${srcdir}/fix-mmastart-path.patch"
   for file in $(grep -rl 'env python *$' .); do sed -i 's/env python *$/env python2/g' $file ;done
 }
 
