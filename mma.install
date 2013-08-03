@@ -1,0 +1,27 @@
+# arg 1:  the new package version
+post_install() {
+  echo "updating database file... "
+  /usr/bin/mma -G
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  rm /usr/share/mma/lib/stdlib/.mmaDB
+  rm /usr/share/mma/lib/yamaha/.mmaDB
+  rm /usr/share/mma/lib/kara/.mmaDB
+  post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  rm /usr/share/mma/lib/stdlib/.mmaDB
+  rm /usr/share/mma/lib/yamaha/.mmaDB
+  rm /usr/share/mma/lib/kara/.mmaDB
+  rm /usr/share/mma/MMA/*.pyc
+}
+
+op=$1
+shift
+
+$op $*

@@ -1,0 +1,17 @@
+pkgbase = mma
+	pkgdesc = Musical MIDI Accompaniment (MMA) is an accompaniment generator
+	pkgver = 12.10
+	pkgrel = 1
+	url = http://www.mellowood.ca/mma/
+	install = mma.install
+	arch = any
+	license = GPL
+	depends = python2>=2.5.0
+	depends = timidity++
+	source = http://www.mellowood.ca/mma/mma-bin-12.10.tar.gz
+	source = mmarc
+	md5sums = 1c34126c092ca07aab1b606c73670a64
+	md5sums = 7cdddd5de515539cf66f0d8d9613dcdc
+
+pkgname = mma
+
