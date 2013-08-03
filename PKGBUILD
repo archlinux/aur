@@ -2,16 +2,17 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20150211
+pkgver=20130802
 pkgrel=1
-provides=('eudev')
-replaces=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
-conflicts=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
+_udevver=206
+provides=("udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
+replaces=('udev' 'systemd' 'libsystemd' 'systemd-tools')
+conflicts=('udev' 'systemd' 'libsystemd' 'systemd-tools')
 groups=('base')
 arch=('i686' 'x86_64')
 url="https://github.com/gentoo/eudev"
 license=('GPL')
-depends=('util-linux' 'glib2' 'kmod' 'hwids' 'bash')
+depends=('util-linux' 'glib2' 'kmod' 'hwids' 'bash' 'acl')
 makedepends=('git' 'gobject-introspection' 'gperf' 'libxslt' 'docbook-xsl')
 options=(!makeflags !libtool)
 install="${pkgname}.install"
@@ -19,31 +20,32 @@ backup=('etc/udev/udev.conf' 'etc/udev/rules.d/80-net-name-slot.rules')
 source=('git://github.com/gentoo/eudev.git'
         'initcpio_hooks'
         'initcpio_install'
-        '80-net-name-slot.rules')
+	'80-net-name-slot.rules')
+options=(!makeflags !libtool)
 md5sums=('SKIP'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
-         'd3a7b1d77e53d401ed37827ad297846a'
-         'd83a59d647b511b815ee0e8c85dcd54a')
-_gitname="eudev"
-
-pkgver()
-{
-  cd "${srcdir}/${_gitname}"
-
-  # Date of last commit
-  git log -1 --format="%ci" HEAD | cut -d\  -f1 | tr -d '-'
-}
-
+         '825af8cce7dd73ed4ce1a8289e3bdad8'
+         '372d60f89f626629005bb755be259a20')
+#_gitroot=('git://github.com/gentoo/eudev.git')
+_gitname=('eudev')
+         
 build() {
+  #if [ -d "${_gitname}" ] ; then
+  #  cd "${srcdir}/${_gitname}"
+  #  msg2 "Updating local tree..."
+  #  git pull origin master
+  #else
+  #  cd "${srcdir}"
+  #  msg2 "Cloning initial copy of ${_gitname}..."
+  #  git clone --depth=1 "${_gitroot}" "${_gitname}"
+  #  cd "${srcdir}/${_gitname}"
+  #fi
   cd "${srcdir}/${_gitname}"
 
   if [ -f "Makefile" ];then
     msg2 "Cleaning up..."
     make clean
   fi
-
-  # Temporary workaround for bug #87
-  #sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
   
   msg2 "Configuring sources..."
   ./autogen.sh
@@ -51,7 +53,9 @@ build() {
               --with-rootprefix=/usr \
               --sysconfdir=/etc \
               --libdir=/usr/lib \
-              --sbindir=/usr/bin \
+	      --sbindir=/usr/bin \
+              --with-firmware-path=/usr/lib/firmware/updates:/lib/firmware/updates:/usr/lib/firmware:/lib/firmware \
+              --with-modprobe=/sbin/modprobe \
               --enable-gudev \
               --enable-introspection
 
@@ -64,7 +68,7 @@ package() {
   cd "${srcdir}/${_gitname}"
   make DESTDIR="${pkgdir}" install
 
-  # Install the mkinitpcio hook
+  # install the mkinitpcio hook
   install -Dm644 "${srcdir}/initcpio_hooks" "${pkgdir}/usr/lib/initcpio/hooks/udev"
   install -Dm644 "${srcdir}/initcpio_install" "${pkgdir}/usr/lib/initcpio/install/udev"
 
@@ -75,18 +79,16 @@ package() {
                s#GROUP="cdrom"#GROUP="optical"#g' "${i}"
   done
 
-  # input group is not used in Arch Linux at this moment
-  sed '/GROUP="input"/d' -i "${pkgdir}/usr/lib/udev/rules.d/50-udev-default.rules"
-
   # Make new interface naming policy disabled by default
   rm -f "${pkgdir}/usr/lib/udev/rules.d/80-net-name-slot.rules"
   install -Dm644 "${srcdir}/80-net-name-slot.rules" "${pkgdir}/etc/udev/rules.d/80-net-name-slot.rules"
+}
 
-  # Getting udev version
-  udevver=$(grep UDEV_VERSION configure.ac | egrep -o "[0-9]{3}")
-  provides+=("udev=$udevver")
-  provides+=("systemd=$udevver")
-  provides+=("libsystemd=$udevver")
-  provides+=("systemd-tools=$udevver")
+pkgver()
+{
+  cd "${srcdir}/${_gitname}"
+
+  # Date of last commit
+  git log -1 --format="%ci" HEAD | cut -d\  -f1 | tr -d '-'
 }
 
