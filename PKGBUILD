@@ -1,19 +1,19 @@
-# $Id: PKGBUILD 188100 2013-06-09 13:12:36Z giovanni $
+# $Id: PKGBUILD 191972 2013-08-02 09:52:35Z bpiotrowski $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.7
-pkgrel=2
+pkgver=2.0.8.a
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy' 
          'sdl_image' 'libdvdnav' 'libtiger' 'lua51' 'libmatroska' 
-         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 
+         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg-compat' 'faad2' 'libupnp' 
          'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'libdc1394' 'libavc1394' 'lirc-utils' 'libcaca' 'oss' 
@@ -60,11 +60,18 @@ backup=('usr/share/vlc/lua/http/.hosts'
         'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!libtool' '!emptydirs')
 install=vlc.install
-source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('3b0e465b0990097b65abaf3e25589957')
+source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver/.a}/${_pkgname}-${pkgver/.a/a}.tar.xz"
+        vlc-2.0.7-vaapi-compat.patch
+        vlc-2.0.8-Fix-live555-breakage-in-last-update.patch)
+md5sums=('e5000677181406d026ffe448633d1ca0'
+         '6df10774bb7acf20e09d6139e5c7839e'
+         'e592efe7bb65291a84f99cfaa3a9f8a2')
 
-build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver/.a}"
+
+  patch -Np1 -i ../vlc-2.0.7-vaapi-compat.patch
+  patch -Np1 -i ../vlc-2.0.8-Fix-live555-breakage-in-last-update.patch
 
   # dirty hack because of VLC's configure
   [ -d decklink-sdk ] || mkdir decklink-sdk
@@ -72,12 +79,13 @@ build() {
 
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+}
 
-  # fix for flac-1.3.0
-  sed -i -e 's:stream_decoder.h:FLAC/stream_decoder.h:' modules/codec/flac.c
-  sed -i -e 's:stream_encoder.h:FLAC/stream_encoder.h:' modules/codec/flac.c
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver/.a}"
 
   CFLAGS+="-I/usr/include/samba-4.0" CPPFLAGS+="-I/usr/include/samba-4.0" \
+  PKG_CONFIG_PATH+="/usr/lib/ffmpeg-compat/pkgconfig" \
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --disable-rpath \
@@ -103,12 +111,12 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver/.a}"
 
   make DESTDIR="${pkgdir}" install
 
   for res in 16 32 48 128; do
-    install -D -m644 "${srcdir}/vlc-${pkgver}/share/icons/${res}x${res}/vlc.png" \
+    install -D -m644 "${srcdir}/vlc-${pkgver/.a}/share/icons/${res}x${res}/vlc.png" \
         "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
   done
 }
