@@ -48,7 +48,7 @@ package_elementary-git() {
 
   cd "$srcdir/$_pkgname"
 
-  make DESTDIR="$pkgdir" install
+  make -j1 DESTDIR="$pkgdir" install
 
 # install text files
   install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
