@@ -2,7 +2,7 @@
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
 # Contributor: Keshav Padram (the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_GRUB_BZR_REV="5043"
+_GRUB_BZR_REV="5086"
 
 ## grub-extras lua and gpxe fail to build with grub bzr rev 5043
 
@@ -12,7 +12,7 @@ _GRUB_BZR_REV="5043"
 pkgname=grub
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.00.${_GRUB_BZR_REV}
-pkgrel=4
+pkgrel=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -41,16 +41,17 @@ source=("grub-${pkgver}::bzr+bzr://bzr.savannah.gnu.org/grub/trunk/grub/#revisio
         '60_memtest86+'
         'grub.default'
         'grub.cfg'
-        'grub-2.00-mkinitcpio-0.15.patch')
+        'grub-2.00-mkinitcpio-0.15.patch'
+        'grub-2.00.5086-fix-lvm-parsing.patch')
 md5sums=('SKIP'
          'ee1262cc4e20031df019779b1a4b1e39'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46'
          'd25d2dcf8ba708dcf768fcaea799f59c'
+         '7a0ce6aa4a23fa12e1f79ab03fe63f88'
          'SKIP'
          'SKIP')
-
 
 for _DIR_ in 915resolution ntldr-img ; do
 	source+=("grub-extras-${_DIR_}::bzr+bzr://bzr.savannah.gnu.org/grub-extras/${_DIR_}/#revision=")
@@ -59,6 +60,7 @@ done
 prepare() {
 	cd "${srcdir}/grub-${pkgver}"
 	patch -Np0 -i "${srcdir}/grub-2.00-mkinitcpio-0.15.patch"
+	patch -Np1 -i "${srcdir}/grub-2.00.5086-fix-lvm-parsing.patch"
 }
 
 _build_grub-common_and_bios() {
