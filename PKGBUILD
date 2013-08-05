@@ -3,7 +3,7 @@
 # Contributor: Stefan Clarke <fm0nk3y@yahoo.co.uk>
 
 pkgname=gnubg
-pkgver=1.01.003
+pkgver=1.02.000
 pkgrel=1
 pkgdesc="A world class backgammon application"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('python2' 'gtkglext' 'hicolor-icon-theme')
 install=$pkgname.install
 source=($url/media/sources/$pkgname-release-$pkgver-sources.tar.gz
         $pkgname.desktop)
-md5sums=('5b03cf8634abe2822eee4db1317f0754'
+md5sums=('eef4d08e20f1de40336de1bb3c9cb9ca'
          '965f5c7c25f60b27d06cc6fef7befd30')
 
 build() {
