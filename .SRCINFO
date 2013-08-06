@@ -1,26 +1,27 @@
 pkgbase = psi-plus-git
 	pkgdesc = Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users
-	pkgver = 0.16.457
+	pkgver = 0.16.168
 	pkgrel = 1
 	url = http://psi-plus.com
-	install = psi-plus-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = patch
-	makedepends = qconf-git
+	makedepends = qconf
 	depends = qt4
 	depends = qca-ossl
+	depends = qtwebkit
 	depends = libidn
 	depends = aspell
 	depends = libxss
+	depends = openssl
+	depends = dbus
+	depends = zlib
 	optdepends = qca-gnupg: encrypted client-to-client connection
-	provides = psi-plus=0.16.457
+	provides = psi-plus=0.16.168
 	conflicts = psi-plus
-	conflicts = psi-plus-webkit-git
 	replaces = psi-plus
-	replaces = psi-plus-webkit-git
 	source = git://github.com/psi-im/psi.git
 	source = psi-plus::git://github.com/psi-plus/main.git
 	source = git://github.com/psi-im/iris.git
