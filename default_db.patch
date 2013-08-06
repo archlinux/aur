@@ -1,0 +1,37 @@
+--- config.dist/database.yml	2013-07-25 15:57:39.684841298 -0400
++++ config/database.yml	2013-07-25 15:58:07.195090938 -0400
+@@ -8,23 +8,23 @@
+   username: root
+   password:
+ 
+-production:
+-  adapter: mysql2
+-  database: tracks
++#production:
++#  adapter: mysql2
++#  database: tracks
+   # set this if you are storing utf8 in your mysql database to handle strings
+   # like "Réné".Not needed for sqlite. For PostgreSQL use encoding: unicode
+   # encoding: utf8
+-  host: localhost
+-  username: root
+-  password:
++#  host: localhost
++#  username: root
++#  password:
+ 
+ # The following is an example to configure Tracks to use sqlite
+ 
+-#production:
+-#  adapter: sqlite3
+-#  database: db/tracks-20-blank.sqlite3.db
+-#  pool: 5
+-#  timeout: 5000
++production:
++  adapter: sqlite3
++  database: db/tracks.sqlite3.db
++  pool: 5
++  timeout: 5000
+ 
+ 
+ # Warning: The database defined as "test" will be erased and

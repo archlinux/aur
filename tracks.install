@@ -1,0 +1,16 @@
+post_install() {
+    echo "
+Tracks is pre-configured to use Mongrel as a web server and SQLite as a
+database. Simply start the systemd unit and navigate to http://server:10008/
+
+  # systemctl start tracks
+
+If you want to use your own webserver or a different database please consult
+the Tracks installation documentation here:
+
+  https://github.com/TracksApp/tracks/blob/v2.2.2/doc/installation.textile
+
+All tracks data is stored in /usr/share/webapps/tracks/ (where you'll need to
+run the commands listed in the documentation)
+"
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=Tracks GTD Task Manager Web Service
+After=syslog.target
+After=network.target
+After=mysqld.service
+After=postgresql.service
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/webapps/tracks
+ExecStart=/usr/bin/bundle exec rails server mongrel -e production -p 10008
+User=http
+Group=http
+StandardOutput=syslog
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target
