@@ -4,7 +4,7 @@
 
 pkgname=gpgme
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A C wrapper library for GnuPG"
 arch=('i686' 'x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
@@ -18,7 +18,8 @@ md5sums=('c8cb345ba7c0353e47bdf3c5c05e49be'
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr --disable-static --disable-gpgsm-test
+  ./configure --prefix=/usr --disable-fd-passing --disable-static \
+              --disable-gpgsm-test
   make
 }
 
