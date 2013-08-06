@@ -53,7 +53,7 @@ build() {
     # Initialize the default sqlite Database
     bundle exec rake db:migrate RAILS_ENV=production
 
-    # Precompile statis assets
+    # Precompile static assets
     bundle exec rake assets:precompile
 }
 
