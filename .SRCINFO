@@ -1,0 +1,14 @@
+pkgbase = doom3bfg-data
+	pkgdesc = Doom 3: BFG Edition game files
+	pkgver = 1.0.34.6456
+	pkgrel = 1
+	url = http://www.idsoftware.com/
+	arch = any
+	license = custom
+	source = base.sha256
+	source = doom3bfg.png
+	sha256sums = be5b2710d3890c9d1cfb9693003bce736b66d584d71dc56163c038181f939875
+	sha256sums = 8b7998805ca2bdb8ab8500963acf4fab46331f1c44dcdc17b3e930f2afe98961
+
+pkgname = doom3bfg-data
+
