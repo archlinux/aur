@@ -62,7 +62,7 @@ package() {
 
     # Create destination directories
     install -d ${pkgdir}/etc/webapps/tracks
-    install -d ${pkgdir}/srv/www
+    install -d ${pkgdir}/srv/http
     install -d ${pkgdir}/usr/share/webapps/tracks
 
     # Copy Tracks data to destination directory
@@ -79,9 +79,9 @@ package() {
     ln -s /usr/share/webapps/tracks/config/site.yml \
         ${pkgdir}/etc/webapps/tracks/site.yml
 
-    # Symlink tracks to /srv/www/
+    # Symlink tracks to /srv/http/
     ln -s /usr/share/webapps/tracks/ \
-        ${pkgdir}/srv/www/tracks
+        ${pkgdir}/srv/http/tracks
 
     # Install systemd Service File
     install -Dm644 tracks.service \
