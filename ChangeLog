@@ -1,3 +1,23 @@
+2013-08-08 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.0_rc1-1 :
+	Version bump.
+
+	Upstream changelog:
+	- Feature: Player movement added again.
+	- Bug fix: Clicking icons multiple times will not cause them to return to standard size while remaining selected.
+	- Bug fix: Play icons are now accurate and won't disappear.
+	- Bug fix: Slime data is now accurate.
+	- Bug fix: The map now starts with x:0,y:0 at the center.
+	- Bug fix: Zoom amount is retained when entering a new map.
+	- Bug fix: Default zoom is no longer too close.
+	- Bug fix: Memory leak involving key binds.
+	- Bug fix: Using +/- will now zoom in and out.
+	- Bug fix: Moving to a player will now center you at that player.
+	- Other: The grid layer has now been adjusted to no longer clutter when zoomed out.
+	- Other: A few menu items were renamed to better reflect what they did.
+	- Other: Maps may now be loaded by selected the world folder or the level.dat file.
+
 2013-08-03 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.0_beta1-1 :

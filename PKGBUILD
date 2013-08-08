@@ -1,8 +1,8 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 pkgname=amidst
-pkgver='3.0_beta1'
-_jarfile='AMIDST_beta1.jar'
+pkgver='3.0_rc1'
+_jarfile='AMIDST-3.0-rc1.jar'
 pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
@@ -12,10 +12,10 @@ depends=('java-runtime')
 optdepends=('minecraft: the game itself')
 noextract=($_jarfile)
 changelog=ChangeLog
-source=("https://dl.dropboxusercontent.com/u/67828684/$_jarfile"
+source=("https://bitbucket.org/skiphs/amidst/downloads/$_jarfile"
         amidst.sh
         amidst.desktop)
-md5sums=('c321e8dc333df8b73e8f5384ba48d690'
+md5sums=('3752e485f328b907de7eb71a6d558e11'
          '783c4040c9736f96ce72e9997833a0bf'
          '3c6900ac68e3175768322e684f9f1bcb')
 
