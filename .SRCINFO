@@ -1,0 +1,14 @@
+pkgbase = cdebootstrap-static
+	pkgdesc = Bootstrap a Debian system
+	pkgver = 0.5.10
+	pkgrel = 2
+	url = http://packages.debian.org/search?keywords=cdebootstrap
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wget
+	depends = gnupg
+	optdepends = debian-archive-keyring
+
+pkgname = cdebootstrap-static
+
