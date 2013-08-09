@@ -8,7 +8,6 @@ arch=('any')
 url="http://www.enlightenment.org"
 license=('LGPL3')
 depends=('python2-elementary' 'python2-e_dbus' 'python2-edje' 'python2-ecore' 'connman')
-conflicts=('econnman-svn')
 source=("http://packages.profusion.mobi/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('cec2bd0aaf9d8975dd69ac6b5a4e638e')
 
