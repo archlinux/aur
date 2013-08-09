@@ -10,7 +10,7 @@ license=('GPL')
 url='http://www.minecraftforum.net/topic/626786-'
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
-noextract=($_jarfile)
+noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://bitbucket.org/skiphs/amidst/downloads/$_jarfile"
         amidst.sh
