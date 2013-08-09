@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=python-efl-git
-_pkgname=python-efl
-pkgver=1.7.99.198.0fae488
+_pkgname=${pkgname%-*}
+pkgver=1.7.99.301.606bf86
 pkgrel=1
 pkgdesc="Python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
