@@ -1,0 +1,11 @@
+diff -ru discount-2.0.5/configure.inc discount-2.0.5-new/configure.inc
+--- discount-2.0.5/configure.inc	2011-01-24 17:05:44.000000000 -0800
++++ discount-2.0.5-new/configure.inc	2011-01-31 23:04:47.966666672 -0800
+@@ -1240,7 +1240,6 @@
+ install)$PROG_INSTALL -c \$FULLNAME "\$1"
+ 	$PROG_LN_S -f \$FULLNAME \$1/\$LIBNAME.\$MAJOR
+ 	$PROG_LN_S -f \$FULLNAME \$1/\$LIBNAME
+-	test "$LDCONFIG" && $LDCONFIG "\$1"
+ 	;;
+ esac
+ EOF
