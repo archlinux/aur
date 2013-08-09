@@ -5,6 +5,7 @@ pkgbase = amidst
 	url = http://www.minecraftforum.net/topic/626786-
 	changelog = ChangeLog
 	arch = any
+	license = GPL
 	depends = java-runtime
 	optdepends = minecraft: the game itself
 	noextract = AMIDST-3.0-rc1.jar
