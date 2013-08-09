@@ -17,13 +17,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
-md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         '6366a8d4b0429ab6836c296ba298fb0e'
-         '09aad29932fe0d1aa765b314800db9a8'
-         '4360abfcf235aec738a313cca0421932'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c')
+        'change-default-console-loglevel.patch'
+        'criu-no-expert.patch')
 
 _kernelname=${pkgbase#linux}
 
@@ -47,6 +42,10 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # allow criu without expert option set
+  # patch from fedora
+  patch -Np1 -i "${srcdir}/criu-no-expert.patch"
+ 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
@@ -327,3 +326,16 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
+         '6366a8d4b0429ab6836c296ba298fb0e'
+         '09aad29932fe0d1aa765b314800db9a8'
+         '1e3e8aaf0dd56131ccfcee05695b0109'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         'f3def2cefdcbb954c21d8505d23cc83c')
+md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
+         '6366a8d4b0429ab6836c296ba298fb0e'
+         '09aad29932fe0d1aa765b314800db9a8'
+         '5ffd739d5b3e7c68bf07472aaceca400'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         'f3def2cefdcbb954c21d8505d23cc83c'
+         'd50c1ac47394e9aec637002ef3392bd1')
