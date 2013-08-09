@@ -1,0 +1,14 @@
+pkgbase = asr-manpages
+	pkgdesc = A set of humorous manual pages developed on alt.sysadmin.recovery
+	pkgver = 1.3
+	pkgrel = 5
+	url = http://debian.org/
+	arch = any
+	license = custom
+	source = http://ftp.debian.org/debian/pool/main/a/asr-manpages/asr-manpages_1.3.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/a/asr-manpages/asr-manpages_1.3-6.diff.gz
+	md5sums = ee77b619e01a2d841a45469708d90631
+	md5sums = 9608fb9ee121a278bf4cac5fc6dae267
+
+pkgname = asr-manpages
+
