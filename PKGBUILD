@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=econnman-git
-_pkgname=econnman
+_pkgname=${pkgname%-*}
 pkgver=1.21.5e344be
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
