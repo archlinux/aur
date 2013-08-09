@@ -25,13 +25,13 @@ pkgver() {
 
 prepare() {
 # Run with python2
-  sed -i 's:/usr/bin/python:/usr/bin/python2:' "$srcdir/$_pkgname/econnman-bin.in"
+  sed -i 's:/usr/bin/python$:&2:' "$srcdir/$_pkgname/econnman-bin.in"
 }
 
 build() {
   cd "$srcdir/$_pkgname"
 
-  PYTHON=python2 \
+  PYTHON=/usr/bin/python2 \
   ./autogen.sh --prefix=/usr
 
   make
