@@ -1,0 +1,14 @@
+pkgbase = funny-manpages
+	pkgdesc = A set of miscellaneous humorous manpages (don't take them too seriously!).
+	pkgver = 1.3
+	pkgrel = 5
+	url = http://debian.org/
+	arch = any
+	license = custom
+	source = http://ftp.debian.org/debian/pool/main/f/funny-manpages/funny-manpages_1.3.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/f/funny-manpages/funny-manpages_1.3-5.diff.gz
+	md5sums = bed1deef82218d42fb230a2176a11ed4
+	md5sums = d7bccce54fb400de443fe6ff15bba940
+
+pkgname = funny-manpages
+
