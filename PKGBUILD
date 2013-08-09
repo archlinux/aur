@@ -18,7 +18,9 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
   
-  echo $(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
+  
+  echo _ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
