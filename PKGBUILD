@@ -2,7 +2,7 @@
 
 pkgname=amidst
 pkgver='3.0_rc1'
-_jarfile='AMIDST-3.0-rc1.jar'
+_jarfile="${pkgname^^}-${pkgver//_/-}.jar"
 pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
