@@ -1,0 +1,13 @@
+pkgbase = debian-archive-keyring
+	pkgdesc = GnuPG archive keys of the Debian archive
+	pkgver = 2012.4
+	pkgrel = 2
+	url = http://packages.debian.org/sid/debian-archive-keyring
+	arch = any
+	license = GPL
+	depends = gnupg
+	source = http://ftp.fr.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2012.4_all.deb
+	md5sums = f27bae2cf146acab9e750fd379dc0ed7
+
+pkgname = debian-archive-keyring
+
