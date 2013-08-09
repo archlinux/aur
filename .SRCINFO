@@ -1,0 +1,17 @@
+pkgbase = firefox-extension-speed-dial
+	pkgdesc = Firefox extension that simplifies the access to your most visited websites
+	pkgver = 0.9.6.15
+	pkgrel = 1
+	url = http://speeddial.uworks.net/
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	license = MPL
+	depends = firefox
+	conflicts = firefox-speed-dial
+	replaces = firefox-speed-dial
+	source = http://speeddial.uworks.net/speed_dial-0.9.6.15-fx.xpi
+	md5sums = bbb616afe4ed2c5c40e84e63fab6a6f5
+
+pkgname = firefox-extension-speed-dial
+
