@@ -10,8 +10,8 @@ url="http://www.enlightenment.org"
 license=('LGPL3')
 depends=('python2-efl-git' 'connman')
 makedepends=('git')
-provides=('econnman')
-conflicts=('econnman' 'econnman-svn')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
 md5sums=('SKIP')
 

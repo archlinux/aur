@@ -8,9 +8,8 @@ pkgbase = econnman-git
 	makedepends = git
 	depends = python2-efl-git
 	depends = connman
-	provides = econnman
+	provides = econnman=1.21.5e344be
 	conflicts = econnman
-	conflicts = econnman-svn
 	source = git://git.enlightenment.org/apps/econnman.git
 	md5sums = SKIP
 
