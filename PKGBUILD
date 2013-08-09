@@ -12,10 +12,13 @@ conflicts=('econnman-svn')
 source=("http://packages.profusion.mobi/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('cec2bd0aaf9d8975dd69ac6b5a4e638e')
 
+prepare() {
+# Run with python2
+  sed -i 's:/usr/bin/python$:&2:' "$srcdir/$pkgname-$pkgver/econnman-bin.in"
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  sed -i 's:/usr/bin/python:/usr/bin/python2:g' econnman-bin.in
 
   PYTHON=/usr/bin/python2 \
   ./configure --prefix=/usr
