@@ -1,3 +1,8 @@
+2013-08-11 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.2.0-2
+	Moved .jar file to /usr/share/java/mcpatcher/
+
 2013-08-01 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.2.0-1

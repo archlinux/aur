@@ -3,7 +3,7 @@
 
 pkgname=mcpatcher
 pkgver='4.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Minecraft patcher to fix textures with higher than default resolution'
 arch=('any')
 license=('Public Domain')
@@ -16,8 +16,8 @@ source=(https://bitbucket.org/prupe/mcpatcher/downloads/$pkgname-$pkgver.jar
         mcpatcher
         mcpatcher.desktop)
 md5sums=('552cc0ea875032a5e15c395debdc8869'
-         '38358254be76dc84676509f43be44938'
-         '87f031f8f0fceb0feb369c6185e07fbf')
+         '9ec7aafefe59c2864b70f61d8661113d'
+         '5bcaba0e9fbc3a22159c17a64c7688fd')
 
 prepare() {
     cd "$srcdir"
@@ -32,7 +32,7 @@ package() {
     install -vDm755 'mcpatcher'            "$pkgdir/usr/bin/mcpatcher"
     install -vDm644 'resources/icon.png'   "$pkgdir/usr/share/pixmaps/mcpatcher.png"
     install -vDm644 'mcpatcher.desktop'    "$pkgdir/usr/share/applications/mcpatcher.desktop"
-    install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/$pkgname/mcpatcher.jar"
+    install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/mcpatcher.jar"
 }
 
 # vim:set ts=4 sw=4 et:
