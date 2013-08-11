@@ -1,4 +1,4 @@
-# Maintainer: Keshav Padram <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: Keshav Padram Amburay <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _gitroot="git://github.com/mjg59/shim.git"
 _gitname="shim"
