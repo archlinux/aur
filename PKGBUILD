@@ -8,10 +8,10 @@
 _runkernver=$(uname -r)
 
 pkgname=backports-patched
-pkgver=3.10_2 # NO CRAP! (-c). Use _ instead of -
+pkgver=3.10_2
 _upver="${pkgver//_/-}"
 pkgrel=6
-pkgdesc='Compat drivers provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
+pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
 url='https://backports.wiki.kernel.org/index.php/Main_Page'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -19,15 +19,19 @@ depends=('linux')
 makedepends=('linux-api-headers' "linux-headers>=${_runkernver:0:3}")
 optdepends=('backports-frag+ack: wl-frag+ack patch')
 install=backports.install
-# TODO: GET SOME BETTER SOURCE CHECKING
-#source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%%-*}/compat-drivers-${_upver}.tar.xz")
+# Stable and rc? TODO: Check with rc :D
 source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%%-*}/backports-${_upver}.tar.xz")
+# Snapshot:
 #source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-#echo $source
-#XZ is way better in decompression
-
 sha256sums=('4cb2f68a052c440a0a57f6d55dc23e07f174759da8fbb2908bd814c1f8c7815a')
 
+# Check for daily pkgver eg. 20370718
+date -d "$pkgver" > /dev/null 2>&1
+if [[ $? == 0 ]]; then
+  source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
+  sha256sums=('SKIP')
+  warning "Skipping checksum check for snapshots"
+fi
 
 #_extramodules=extramodules-3.9-ARCH
 _extramodules=extramodules-${_runkernver%.*}-ARCH

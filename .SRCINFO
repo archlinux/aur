@@ -1,5 +1,5 @@
 pkgbase = backports-patched
-	pkgdesc = Compat drivers provides drivers released on newer kernels backported for usage on older kernels. Patched flavor
+	pkgdesc = Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor
 	pkgver = 3.10_2
 	pkgrel = 6
 	url = https://backports.wiki.kernel.org/index.php/Main_Page
