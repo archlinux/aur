@@ -1,7 +1,18 @@
 2013-08-11 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
-	* 4.2.0-2
+	* 4.2.1-1
+	Version bump.
 	Moved .jar file to /usr/share/java/mcpatcher/
+
+	Upstream changelog:
+	- Fixed problem preventing choosing a custom minecraft installation directory.
+	- More "hands-off" Forge installation method that also supports LiteLoader.
+	- Use system proxy settings for all downloads.
+	- Use shorter timeout when downloading versions.json and use bundled copy as a fallback.
+	- Option to use HD font spacing with non-HD fonts.
+	- Do not use default CIT texture if any texture.* properties are set.
+	- Treat bare filenames without leading / as relative to properties file.
+	- Pattern and regex based NBT rules in CIT.
 
 2013-08-01 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
