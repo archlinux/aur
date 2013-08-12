@@ -6,6 +6,7 @@
 # Contributor: Benjamin Mtz (Cruznick) <cruznick at archlinux dot us>
 
 _runkernver=$(uname -r)
+_shortkernver=${_runkernver%.*}
 
 pkgname=backports-patched
 pkgver=3.10_2
@@ -16,7 +17,7 @@ url='https://backports.wiki.kernel.org/index.php/Main_Page'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('linux')
-makedepends=('linux-api-headers' "linux-headers>=${_runkernver:0:3}")
+makedepends=('linux-api-headers' "linux-headers>=$_shortkernver")
 optdepends=('backports-frag+ack: wl-frag+ack patch')
 install=backports.install
 # Stable and rc? TODO: Check with rc :D
@@ -33,8 +34,7 @@ if [[ $? == 0 ]]; then
   warning "Skipping checksum check for snapshots"
 fi
 
-#_extramodules=extramodules-3.9-ARCH
-_extramodules=extramodules-${_runkernver%.*}-ARCH
+_extramodules=extramodules-${_shortkernver}-ARCH
 _kernver=$(cat /usr/lib/modules/${_extramodules}/version) # TODO make this a lower boundary and utilize in reality pacman to get freshest paths. Or make it for specific kernels. Or multiply it over specific kernels ? :3
 
 _cfgdir="/etc/makepkg.d/${pkgname}/"
@@ -101,7 +101,7 @@ EOF
 build() {
   cd "${srcdir}/backports-${_upver}"
   unset _selected_drivers
-  # Make time! 
+  # Get config - not in prepare beause interactive part is using cc
   if [ -n "${_selected_drivers}" ]; then
     msg "Config detected"
     make "${_selected_drivers[@]/#/defconfig-}"
@@ -113,8 +113,7 @@ build() {
     kill $countdown_pid
     echo -e -n "\n"
     [[ "$ikey" != "i" ]] && false
-    # BEGIN INTERACTIVE PART
-    # TODO: ADD OLDCONFIG OPTION
+    # BEGIN INTERACTIVE PART TODO: ADD OLDCONFIG OPTION WITH FILE SELECT
     cfgway=$(dialog --clear --backtitle "$pkgname" --radiolist 'Choose method to configure' 0 0 0 defconfig 'desc' off "menuconfig" 'desc' off 2>&1 >/dev/tty)
     case "$cfgway" in
       defconfig)
@@ -136,6 +135,8 @@ build() {
     # END OF THE INTERACTIVE PART
   fi
   [[ -n "$_selected_drivers" ]] && msg "» $_selected_drivers «" # CONVERT TO MESSAGE AND ONLY IF VAR IS -n
+
+  # Actual build
   msg "Starting actual build"
   make KLIB=/usr/lib/modules/"${_kernver}" # should be make modules
 }

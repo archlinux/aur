@@ -1,13 +1,13 @@
 post_install() {
 	post_upgrade
-	echo 'Read the doc: http://wireless.kernel.org/en/users/Download'
+	echo 'Read the doc: https://backports.wiki.kernel.org/index.php/Main_Page'
 }
 
 post_upgrade() {
 	depmod
 	echo
-	usr/bin/athenable ath5k
-	usr/bin/iwl-enable iwlagn
+#	usr/bin/athenable ath5k
+#	usr/bin/iwl-enable iwlagn
 }
 
 post_remove() {
