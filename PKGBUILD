@@ -22,7 +22,7 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Freespace 2 retail data for fs2_open"
 arch=('any')
 url="http://www.gog.com/en/gamecard/freespace_2"
@@ -39,8 +39,8 @@ PKGEXT=".pkg.tar"
 prepare() {
   # Could possibly support older versions of the GOG installer too,
   # but it's worth it to have the latest version.
-  local _gog_md5="4713c27c02d4de4368c2ebde46e46c9f"
-  local _gog_exe="setup_freespace2_2.0.0.8.exe"
+  local _gog_md5="06341f1ccd8f70a1e02cc236712e7726"
+  local _gog_exe="setup_freespace_2.exe"
   if [[ -f ../$_gog_exe ]]; then
     echo "GOG installer detected; checking md5sum ..."
     if ! echo "$_gog_md5 ../$_gog_exe" | md5sum -c --status; then
@@ -65,7 +65,7 @@ package() {
   cd "$srcdir"
 
   if [[ -r readme.txt ]]; then sed -n 416,471p readme.txt > LICENSE;
-  else head -n 19 < tmp/GOG_EULA.txt | recode windows-1252/CRLF..utf8 > LICENSE;
+  else head -n 19 < tmp/gog_EULA.txt | recode windows-1252/CRLF..utf8 > LICENSE;
     license=('custom:goodoldgames');
   fi
 
