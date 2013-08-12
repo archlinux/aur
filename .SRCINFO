@@ -1,6 +1,6 @@
 pkgbase = mediaelch
 	pkgdesc = a Media Manager for handling Movies, TV Shows and Concerts/Music Videos in XBMC.
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = http://www.mediaelch.de/
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = mediaelch
 	license = GPL
 	depends = libmediainfo
 	depends = phonon
-	source = http://www.mediaelch.de/releases/1.6/mediaelch-1.6.tar.gz
-	sha256sums = ee5624bdb11c51d95953d654af167fa8e6ecade1204f2cbf8da0ad6bb96fbf6c
+	depends = quazip
+	source = http://www.mediaelch.de/releases/1.7/mediaelch-1.7.tar.gz
+	sha256sums = 5e7f509996686e1bd6719d767e03b5d327dd3eefeed3ce9aeb4e0226aa515fd5
 
 pkgname = mediaelch
 
