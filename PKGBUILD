@@ -5,7 +5,7 @@
 
 _gitname=gnupg
 pkgname=gnupg-git
-pkgver=2.1.0beta3+220+g82c25e6
+pkgver=2.1.0beta3+233+g50c98c7
 pkgrel=1
 pkgdesc="GNU Privacy Guard 2 - a PGP replacement tool. Development version. Do not use in production environments. Test new ECC algorithm by using --expert with --gen-key"
 arch=('i686' 'x86_64')
@@ -16,7 +16,6 @@ url="http://www.gnupg.org/"
 makedepends=('git' 'ghostscript' 'transfig' 'automake-1.11')
 provides=("gnupg=${pkgver}" 'dirmngr')
 conflicts=('gnupg2' 'gnupg' 'dirmngr')
-replaces=('gnupg2' 'gnupg' 'dirmngr')
 install=${pkgname}.install
 source=("git://git.gnupg.org/gnupg.git")
 sha1sums=('SKIP')
