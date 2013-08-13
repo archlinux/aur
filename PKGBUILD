@@ -1,21 +1,21 @@
+# Maintainer: Felix Yan <felixonmars@gmail.com>
 # Maintainer: Kaiting Chen <kaitocracy@gmail.com>
 # Maintainer: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgbase=python-boto
 pkgname=python2-boto
-pkgver=2.9.7
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
 url='https://github.com/boto/boto'
 license=('MIT')
 depends=('python2')
+makedepends=('python2-distribute')
 conflicts=('python-boto>=2.5.2-1')
 replaces=('python-boto>=2.5.2-1')
 source=("http://github.com/boto/boto/archive/$pkgver.tar.gz"
         'LICENSE')
-md5sums=('5d449bcf5f7e06896124b90879c91afa'
-         '35ebd993c05c79ba78e9f4fb3e65e547')
 
 prepare() {
   cd "$srcdir/boto-$pkgver"
@@ -31,3 +31,6 @@ package_python2-boto() {
   python2 setup.py install --root="$pkgdir"
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+md5sums=('77af8e4dcd851a26b93e8751faa25c7d'
+         '35ebd993c05c79ba78e9f4fb3e65e547')
