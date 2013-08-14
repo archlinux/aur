@@ -1,0 +1,20 @@
+pkgbase = poppler-minimal
+	pkgdesc = PDF rendering library based on xpdf 3.0 (minimal non-X version)
+	pkgver = 0.22.5
+	pkgrel = 1
+	url = http://poppler.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = icu
+	depends = fontconfig
+	depends = gcc-libs
+	provides = poppler
+	conflicts = poppler
+	options = !libtool
+	options = !emptydirs
+	source = http://poppler.freedesktop.org/poppler-0.22.5.tar.gz
+	md5sums = 1cd27460f7e3379d1eb109cfd7bcdb39
+
+pkgname = poppler-minimal
+
