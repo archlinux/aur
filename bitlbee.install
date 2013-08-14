@@ -1,10 +1,7 @@
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Contributor: Patrick Burroughs (Celti) <celticmadman@gmail.com>
-# Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
-
 post_install() {
-	getent group bitlbee &>/dev/null || groupadd -r bitlbee >/dev/null
-	getent passwd bitlbee &>/dev/null || useradd -r -g bitlbee -d /var/lib/bitlbee -s /bin/false -c bitlbee bitlbee >/dev/null
+	getent group bitlbee &>/dev/null || groupadd -r -g 65 bitlbee >/dev/null
+	getent passwd bitlbee &>/dev/null || useradd -r -u 65 -g bitlbee -d /var/lib/bitlbee -s /bin/false -c bitlbee bitlbee >/dev/null
+	systemd-tmpfiles --create bitlbee.conf
 }
 
 post_upgrade() {
@@ -16,5 +13,3 @@ post_remove() {
 	getent group bitlbee &>/dev/null && groupdel bitlbee >/dev/null
 	true
 }
-
-# vim:set ts=2 sw=2 et:
