@@ -1,6 +1,6 @@
 pkgbase = xournal-git
 	pkgdesc = Notetaking and sketching application
-	pkgver = 20120913
+	pkgver = 0.4.7.12.gc722403
 	pkgrel = 1
 	url = http://sourceforge.net/projects/xournal/
 	install = xournal.install
@@ -20,6 +20,8 @@ pkgbase = xournal-git
 	conflicts = xournal
 	conflicts = xournal-image-patched
 	conflicts = xournalpp-svn
+	source = xournal::git+http://git.code.sf.net/p/xournal/code
+	sha1sums = SKIP
 
 pkgname = xournal-git
 
