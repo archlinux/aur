@@ -17,11 +17,13 @@ backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
-        'ca-dir.patch')
+        'ca-dir.patch'
+        'openssl-1.0.1e-fix_pod_syntax-1.patch')
 md5sums=('66bf6f10f060d561929de96f9dfe5b8c'
-         'e18847df48d39416f4ca5064887a2e28'
+         'SKIP'
          'dc78d3d06baffc16217519242ce92478'
-         '3bf51be3a1bbd262be46dc619f92aa90')
+         '3bf51be3a1bbd262be46dc619f92aa90'
+         '88d3bef4bbdc640b0412315d8d347bdf')
 
 build() {
 	cd $srcdir/$pkgname-$_ver
@@ -38,6 +40,8 @@ build() {
 	patch -p0 -i $srcdir/no-rpath.patch
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
+
+	patch -p1 -i $srcdir/openssl-1.0.1e-fix_pod_syntax-1.patch
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
