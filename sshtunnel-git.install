@@ -1,0 +1,17 @@
+# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+
+post_install() {
+	getent group sshtunnel &>/dev/null || groupadd -r -g 558 sshtunnel >/dev/null
+	getent passwd sshtunnel &>/dev/null || useradd -r -u 558 -g sshtunnel -d /var/lib/sshtunnel -s /bin/false -c sshtunnel sshtunnel >/dev/null
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	getent passwd sshtunnel &>/dev/null && userdel sshtunnel >/dev/null
+	getent group sshtunnel &>/dev/null && groupdel sshtunnel >/dev/null
+}
+
+# vim:set ts=2 sw=2 et:
