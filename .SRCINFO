@@ -1,0 +1,19 @@
+pkgbase = yourls-git
+	pkgdesc = your own URL shortener
+	pkgver = 1.0.826.gb9844f1
+	pkgrel = 1
+	url = https://github.com/YOURLS/YOURLS
+	install = yourls-git.install
+	arch = any
+	license = GPL3
+	makedepends = subversion
+	depends = php>=4.3
+	depends = mysql>=4.1
+	provides = yourls
+	conflicts = yourls
+	backup = etc/webapps/yourls/config.php
+	source = git+https://github.com/YOURLS/YOURLS.git
+	sha1sums = SKIP
+
+pkgname = yourls-git
+
