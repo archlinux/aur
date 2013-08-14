@@ -2,8 +2,8 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=ephoto-git
-_pkgname=ephoto
-pkgver=0.1.1.465.aec77f4
+_pkgname=${pkgname%-*}
+pkgver=0.1.1.470.7ac111a
 pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
