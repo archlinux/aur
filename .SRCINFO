@@ -1,0 +1,13 @@
+pkgbase = ddupes
+	pkgdesc = Extends fdupes action to directories. Includes ffdupes (fast fdupes).
+	pkgver = 2.3
+	pkgrel = 2
+	url = http://www.pietrobattiston.it/ddupes
+	arch = any
+	license = GPL3
+	depends = python2
+	source = ddupes-2.3.tar.gz::http://www.pietrobattiston.it/_media/ddupes:ddupes-2.3.tar.gz
+	sha1sums = 2e5667da75a12e27634a6d4ca6133775bf1d7c0d
+
+pkgname = ddupes
+
