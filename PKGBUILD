@@ -7,14 +7,13 @@
 
 pkgname=erlang-nox
 pkgver=R16B01
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
 license=('custom')
 depends=('ncurses' 'openssl')
 makedepends=('perl' 'lksctp-tools' 'unixodbc')
-provides=('erlang')
 conflicts=('erlang')
 optdepends=('erlang-unixodbc: database support'
             'java-environment: for Java support'
@@ -25,14 +24,14 @@ sha256sums=('da388bc07b8ebdd008f5bb6c3d2c280e358bd188b5aac3ea01e3a7436315abc0'
             '71972049fbac73457fb6868be18068edce9f2c9fc2aeeab15f019d4217b6a8c2')
 
 build() {
-  cd "$srcdir/otp_src_${pkgver/_1/}"
+  cd "otp_src_${pkgver/_1/}"
 
   ./configure --prefix=/usr --enable-smp-support --with-odbc
   make
 }
 
 package() {
-  cd "$srcdir/otp_src_${pkgver/_1/}"
+  cd "otp_src_${pkgver/_1/}"
 
   make DESTDIR="$pkgdir" install
 
