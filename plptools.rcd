@@ -11,21 +11,21 @@
 
 NCPD_PIDFILE=/var/run/plptools/ncpd.pid
 NCPD_PID=$(cat $NCPD_PIDFILE 2>/dev/null)
-if ! readlink -q /proc/$NCPD_PID/exe | grep -q '^/usr/sbin/ncpd'; then
+if ! readlink -q /proc/$NCPD_PID/exe | grep -q '^/usr/bin/ncpd'; then
 	NCPD_PID=
 	rm $NCPD_PIDFILE 2>/dev/null
 fi
 
 PLPFUSE_PIDFILE=/var/run/plptools/plpfuse.pid
 PLPFUSE_PID=$(cat $PLPFUSE_PIDFILE 2>/dev/null)
-if ! readlink -q /proc/$PLPFUSE_PID/exe | grep -q '^/usr/sbin/plpfuse'; then
+if ! readlink -q /proc/$PLPFUSE_PID/exe | grep -q '^/usr/bin/plpfuse'; then
 	PLPFUSE_PID=
 	rm $PLPFUSE_PIDFILE 2>/dev/null
 fi
 
 PLPPRINTD_PIDFILE=/var/run/plptools/plpprintd.pid
 PLPPRINTD_PID=$(cat $PLPPRINTD_PIDFILE 2>/dev/null)
-if ! readlink -q /proc/$PLPPRINTD_PID/exe | grep -q '^/usr/sbin/plpprintd'; then
+if ! readlink -q /proc/$PLPPRINTD_PID/exe | grep -q '^/usr/bin/plpprintd'; then
 	PLPPRINTD_PID=
 	rm $PLPPRINTD_PIDFILE 2>/dev/null
 fi
@@ -38,12 +38,12 @@ start() {
 	fi
 	if test "$START_NCPD" = "yes" ; then
 		stat_busy "  ncpd: "
-		[[ -z $NCPD_PID ]] && /usr/sbin/ncpd $NCPD_ARGS
+		[[ -z $NCPD_PID ]] && /usr/bin/ncpd $NCPD_ARGS
 		if [[ $? -gt 0 ]]; then
 			RETVAL=1
 			stat_fail
 		else
-			PID=`pidof -o %PPID /usr/sbin/ncpd`
+			PID=`pidof -o %PPID /usr/bin/ncpd`
 			echo $PID > $NCPD_PIDFILE 2>/dev/null
 			add_daemon ncpd
 			stat_done
@@ -52,12 +52,12 @@ start() {
         if [ $RETVAL -eq 0 ] ; then
 		if test "$START_PLPFUSE" = "yes" ; then
 			stat_busy "  plpfuse: "
-			[[ -z $PLPFUSE_PID ]] && /usr/sbin/plpfuse $PLPFUSE_ARGS $PLPFUSE_MOUNTPOINT
+			[[ -z $PLPFUSE_PID ]] && /usr/bin/plpfuse $PLPFUSE_ARGS $PLPFUSE_MOUNTPOINT
 			if [[ $? -gt 0 ]]; then
 				RETVAL=1
 				stat_fail
 			else
-				PID=`pidof -o %PPID /usr/sbin/plpfuse`
+				PID=`pidof -o %PPID /usr/bin/plpfuse`
 				echo $PID > $PLPFUSE_PIDFILE 2>/dev/null
 				add_daemon plpfuse
 				stat_done
@@ -67,12 +67,12 @@ start() {
 	if [ $RETVAL -eq 0 ] ; then
 		if test "$START_PLPPRINTD" = "yes" ; then
 			stat_busy "  plpprintd: "
-			[[ -z $PLPPRINTD_PID ]] && /usr/sbin/plpprintd $PLPPRINTD_ARGS
+			[[ -z $PLPPRINTD_PID ]] && /usr/bin/plpprintd $PLPPRINTD_ARGS
 			if [[ $? -gt 0 ]]; then
 				RETVAL=1
 				stat_fail
 			else
-				PID=`pidof -o %PPID /usr/sbin/plpprintd`
+				PID=`pidof -o %PPID /usr/bin/plpprintd`
 				echo $PID > $PLPPRINTD_PIDFILE 2>/dev/null
 				add_daemon plpprintd
 				stat_done

@@ -1,7 +1,7 @@
 # Maintainer: Markus Heidelberg <markus dot heidelberg at web dot de>
 pkgname=plptools
 pkgver=1.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for communication with EPOC PDAs, e.g. mounting via FUSE"
 arch=('i686' 'x86_64')
 url="http://plptools.sourceforge.net/"
@@ -14,13 +14,13 @@ source=(http://downloads.sourceforge.net/project/plptools/plptools/1.0.11/plptoo
         plptools.confd)
 md5sums=('4779b5dc0a3de3bafbd26350ce0087d4'
          '424867fe9ea319820356c948923fa3ae'
-         '7a34e878b9a431cd1c9c3d63fd78edde'
+         'be5122e28727098f1f1ee795ea1dde80'
          '084277c3392195c8c49d11c8b1e69c9a')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   patch -p1 < $srcdir/plpfuse-x86_64.patch
-  ./configure --prefix=/usr --with-initdir=/etc/rc.d
+  ./configure --prefix=/usr --sbindir=/usr/bin --with-initdir=/etc/rc.d
   make
 }
 
