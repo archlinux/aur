@@ -6,8 +6,8 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
-pkgver=0.5.4
-pkgrel=4
+pkgver=0.5.5
+pkgrel=1
 pkgdesc='Lightweight web browser (GTK2)'
 arch=('x86_64' 'i686')
 url='http://www.midori-browser.org/'
@@ -21,19 +21,19 @@ optdepends=('gstreamer0.10-base-plugins: HTML5 OGG videos support'
             'aria2: download utility')
 options=('!emptydirs')
 source=("http://www.midori-browser.org/downloads/${pkgname}_${pkgver}_all_.tar.bz2")
-sha256sums=('d4ee77f3dd9bf2c07cea7674d533e77960e9346bd8b5482582ccb3cdaf182022')
+sha256sums=('ca69382a285222a86028abebd73fed1976735883027ff0adc094b627789bbd62')
 
 build() {
-  cd "$srcdir/${pkgname}_${pkgver}_all_"
+  cd "$srcdir/$pkgname-${pkgver}"
 
-  python2 ./waf configure --prefix=/usr
-  python2 ./waf build 
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "$srcdir/${pkgname}_${pkgver}_all_"
+  cd "$srcdir/$pkgname-${pkgver}"
 
-  DESTDIR="$pkgdir" python2 ./waf install
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
