@@ -1,6 +1,6 @@
 pkgbase = gummiboot-git
 	pkgdesc = Simple text-mode UEFI Boot Manager - GIT Version
-	pkgver = 35
+	pkgver = 35.2.gd22065f
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/gummiboot
 	install = gummiboot.install
