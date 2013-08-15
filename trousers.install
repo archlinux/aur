@@ -2,6 +2,7 @@ post_install() {
   groupadd -r tss
 
   useradd -r -g tss -d /var/lib/tpm -s /bin/false tss
+  chown -R tss:tss /var/lib/tpm
   chown tss:tss /usr/bin/tcsd
 
   chown tss:tss /etc/tcsd.conf
@@ -17,7 +18,6 @@ post_upgrade() {
 pre_remove() {
   /etc/rc.d/tcsd stop &> /dev/null
   systemctl stop tcsd
-#  rm -rf /usr/var/lib/tpm
   userdel tss
 }
 
