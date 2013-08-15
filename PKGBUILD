@@ -3,7 +3,7 @@
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
 url='http://grails.org/'
@@ -18,23 +18,21 @@ sha256sums=('af084206cb134c50cd52e93cd7abb056e55488a8712d247af0d8a60234cdd43a'
             '009f00755c1d5312f8ee4ad7e407e3b4a5328b6820e04b94b39750c43fe76d56')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-  msg2 'Configuring paths...'
+  # configure paths
   setconf bin/grails DIRNAME /usr/share/grails
   setconf bin/grails-debug DIRNAME /usr/share/grails
 }
 
 package_grails() {
   depends=('java-environment' 'junit' 'bash' 'sh')
+  cd "$pkgname-$pkgver"
 
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Packaging application...'
   mkdir -p "$pkgdir/usr/share/pixmaps/"
   cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/share/$pkgname"
 
-  msg2 'Packaging wrapper scripts...'
+  # wrapper scripts
   install -Dm755 bin/startGrails \
     "$pkgdir/usr/share/$pkgname/startGrails"
   install -Dm755 "../$pkgname.sh" \
@@ -42,17 +40,14 @@ package_grails() {
   install -Dm755 "../$pkgname.sh" \
     "$pkgdir/usr/share/$pkgname/bin/$pkgname"
 
-  msg2 'Packaging icons...'
+  # icons
   cp media/icons/*.png "$pkgdir/usr/share/pixmaps/"
   
-  msg2 'Packaging profile.d script...'
+  # profile.d script
   echo 'export GRAILS_HOME=/usr/share/grails' > "$pkgname.sh"
   install -Dm755 "$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
 
-  msg2 'Packaging license...'
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  msg2 'Cleaning up...'
+  # clean up
   cd "$pkgdir/usr/share/$pkgname"
   rm -rf doc INSTALL LICENSE README
   find "$pkgdir/usr/share" -name "*.bat" -exec rm {} \;
@@ -60,9 +55,8 @@ package_grails() {
 
 package_grails-docs() {
   pkgdesc='Documentation for Grails'
-  cd "$srcdir/grails-$pkgver"
+  cd "grails-$pkgver"
 
-  msg2 'Packaging documentation...'
   mkdir -p "$pkgdir/usr/share/doc"
   cp -r doc "$pkgdir/usr/share/doc/grails-$pkgver"
   mkdir -p "$pkgdir/usr/share/grails"
