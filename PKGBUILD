@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.10
-pkgver=3.10.6
-pkgrel=2
+pkgver=3.10.7
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,17 +19,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch'
-        '3.10.6-logitech-dj.patch'
-        '3.10.6-reset-superseed-xhci-hcd.patch')
+        '3.10.6-logitech-dj.patch')
 md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         'b41c06c1154592045cc2a9d88363de14'
+         '6b1b6b62044fcf3624f067154d5c1666'
          '09aad29932fe0d1aa765b314800db9a8'
          '5ffd739d5b3e7c68bf07472aaceca400'
          'eb14dcfd80c00852ef81ded6e826826a'
          'f3def2cefdcbb954c21d8505d23cc83c'
          'd50c1ac47394e9aec637002ef3392bd1'
-         '3ff40ca684cfe719723e627e2cef7cea'
-         '31f4d721494c4d5493ed90d9c504c5c9')
+         '3ff40ca684cfe719723e627e2cef7cea')
 
 _kernelname=${pkgbase#linux}
 
@@ -59,9 +57,6 @@ prepare() {
  
   # fix FS#35991 - [linux] 3.10.x renders Logitech Unified Receivers useless
   patch -Np1 -i  "${srcdir}/3.10.6-logitech-dj.patch"
-
-  # fix FS#36296 - [linux] 3.10.3 reset SuperSpeed USB using xhci_hcd
-  patch -Np1 -i  "${srcdir}/3.10.6-reset-superseed-xhci-hcd.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
