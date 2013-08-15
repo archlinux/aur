@@ -1,33 +1,28 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
+
 pkgname=gdlmm
-pkgver=3.3.2
-pkgrel=3
-pkgdesc="C++ bindings for the gdl library"
+pkgver=3.7.3
+pkgrel=1
+pkgdesc='C++ bindings for the gdl library'
 arch=('x86_64' 'i686')
-url="http://git.gnome.org/browse/gdlmm/"
+url='http://git.gnome.org/browse/gdlmm/'
 depends=('gdl' 'gtkmm3')
-options=(!libtool !emptydirs)
+options=('!libtool' '!emptydirs')
 license=('LGPL')
-source=("http://ftp.gnome.org/pub/GNOME/sources/gdlmm/3.3/$pkgname-$pkgver.tar.xz"
-        "0001-Don-t-wrap-gdl_dock_layout_get_layouts_ui.patch")
-sha256sums=('cf3253be052737332b2b6e9dbd6f62d79cbc3f3398497158c0099dbc45741a46'
-            '8fb0d920c5c3d4279738f048cbff65b5b4fa544c9f004f8e64d39e54f52653d5')
+source=("http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
+sha256sums=('e280ed9233877b63ad0a0c8fb04d2c35dc6a29b3312151ee21a15b5932fef79b')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Fix build with gdl 3.6
-  patch -Np1 -i "$srcdir/0001-Don-t-wrap-gdl_dock_layout_get_layouts_ui.patch"
+  cd "$pkgname-$pkgver"
 
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
