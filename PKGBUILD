@@ -6,12 +6,12 @@
 pkgbase=python-nose
 pkgname=('python-nose' 'python2-nose' 'python-nose-doc')
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A discovery-based unittest extension"
 arch=('any')
 url='http://readthedocs.org/docs/nose/'
 license=('LGPL2.1')
-makedepends=('python' 'python-distribute' 'python2' 'python2-distribute' 'python2-sphinx')
+makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools' 'python2-sphinx')
 source=("http://pypi.python.org/packages/source/n/nose/nose-${pkgver}.tar.gz")
 md5sums=('95d6d32b9d6b029c3c65674bd9e7eabe')
 
@@ -22,14 +22,14 @@ build() {
 }
 
 package_python-nose() {
-  depends=('python' 'python-distribute')
+  depends=('python' 'python-setuptools')
   cd "$srcdir/nose-$pkgver"
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
   mv "$pkgdir/usr/bin/nosetests" "$pkgdir/usr/bin/nosetests3"
 }
 
 package_python2-nose() {
-  depends=('python2' 'python2-distribute')
+  depends=('python2' 'python2-setuptools')
   cd "$srcdir/nose2-$pkgver"
   python2 setup.py install --prefix=/usr --root="${pkgdir}"
   mv "$pkgdir/usr/bin/nosetests" "$pkgdir/usr/bin/nosetests2"
