@@ -10,6 +10,10 @@ WINE="/usr/bin/wine";
 SHOWDEBUG="0";
 RELAYLOG="0";
 
+if [ -e /opt/wine-silverlight/bin/wine ];then
+    WINE="/opt/wine-silverlight/bin/wine";
+fi
+
 # Use 32bit arch by default required by silverlight
 export WINEARCH=win32;
 
@@ -287,7 +291,7 @@ else
 	if [ -f "${NETFLIX_DESKTOP}/profile-settings" ]; then
 		. "${NETFLIX_DESKTOP}/profile-settings";
 	fi
-	WINEVERSION=`/usr/bin/wine --version | sed -e 's/wine-//'`;
+	WINEVERSION=`$WINE --version | sed -e 's/wine-//'`;
 	OLDVERSION=`cat "${NETFLIX_DESKTOP}/wine-version" 2> /dev/null`;
 	NEWWINE=`vercomp "${WINEVERSION}" "1.5.19"`;
 	OLDPROFILE=`vercomp "${OLDVERSION}" "1.5.19"`;
