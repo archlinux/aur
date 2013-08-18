@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Netflix Desktop
+GenericName=Netflix Desktop
+Comment=Watch movies and TV shows on your PC
+Exec=netflix-desktop
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/netflix-desktop/NetflixIcon.png
+Categories=Video;Player;AudioVideo;

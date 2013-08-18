@@ -1,0 +1,16 @@
+post_install() {
+	update-desktop-database -q
+    echo
+    echo "Netflix Desktop was installed without the needed installation files 'FirefoxSetup.exe' "
+    echo "and 'SilverlightSetup.exe'. These files will be downloaded to ~/.netflix-desktop once "
+    echo "netflix-desktop is activated."
+    echo
+    echo "!IMPORTANT!"
+    echo "It is vitally important that you install the correct OpenGL drivers for your system! "
+    echo "All available OpenGL drivers are added as optional dependencies to this package."
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
