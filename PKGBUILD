@@ -5,12 +5,12 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.numpy.org/"
-makedepends=('lapack' 'python' 'python2' 'python-distribute' 'python2-distribute' 'gcc-fortran' 'python-nose')
+makedepends=('lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gcc-fortran' 'python-nose')
 source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz)
 md5sums=('0ab72b3b83528a7ae79c6df9042d61c6')
 
