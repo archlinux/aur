@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
-	git describe --always | sed 's|-|.|g'
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
