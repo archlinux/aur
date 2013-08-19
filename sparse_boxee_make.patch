@@ -1,0 +1,12 @@
+--- Makefile.in.orig    2011-06-02 17:04:16.581335442 -0700
++++ Makefile.in 2011-06-02 17:04:33.164892185 -0700
+@@ -178,7 +178,7 @@
+ DISTCLEAN_FILES=config.h config.log config.status tools/Linux/xbmc.sh \
+         autom4te.cache config.h.in~
+ 
+-all : Makefile externals Boxee BoxeeHal RecoveryConsole BoxeeWrapper MemLeakDetector
++all : Makefile externals Boxee 
+ 
+ give_me_my_mouse_back: give_me_my_mouse_back.c
+        gcc -g -o give_me_my_mouse_back give_me_my_mouse_back.c -I/opt/local/include -lSDL
+

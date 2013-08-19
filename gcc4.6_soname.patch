@@ -1,0 +1,50 @@
+--- xbmc/cores/dvdplayer/Codecs/Makefile.in.orig	2011-06-02 17:08:23.041324030 -0700
++++ xbmc/cores/dvdplayer/Codecs/Makefile.in	2011-06-02 17:08:42.561587420 -0700
+@@ -200,25 +200,25 @@
+ 	$(MAKE) -C $@
+ 
+ $(SYSDIR)/libdts-$(ARCH).so: $(WRAPPER) libdts/libdts/libdts.a
+-	$(CC) -o $@ $(LDFLAGS) --soname,$@ \
++	$(CC) -o $@ $(LDFLAGS) -Wl,--soname,$@ \
+ 		libdts/libdts/bitstream.o \
+ 		libdts/libdts/downmix.o libdts/libdts/parse.o \
+ 		`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/libfaad-$(ARCH).so:  $(WRAPPER) libfaad2/libfaad/libfaad.la
+-	$(CC) -o $@ $(LDFLAGS) --soname,$@ libfaad2/libfaad/*.o \
++	$(CC) -o $@ $(LDFLAGS) -Wl,--soname,$@ libfaad2/libfaad/*.o \
+ 		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/liba52-$(ARCH).so: $(WRAPPER) liba52/liba52/liba52.la
+-	$(CC) -o $@ $(LDFLAGS) --soname,$@ liba52/liba52/.libs/*.o \
++	$(CC) -o $@ $(LDFLAGS) -Wl,--soname,$@ liba52/liba52/.libs/*.o \
+ 		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/libao-$(ARCH).so: $(WRAPPER) liba52/libao/libao.a
+-	$(CC) -o $@ $(LDFLAGS) --soname,$@ liba52/libao/libao.a \
++	$(CC) -o $@ $(LDFLAGS) -Wl,--soname,$@ liba52/libao/libao.a \
+ 		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/libmpeg2-$(ARCH).so: $(WRAPPER) libmpeg2/libmpeg2/libmpeg2.la
+-	$(CC) -o $@ $(LDFLAGS) --soname,$@ libmpeg2/libmpeg2/.libs/*.o \
++	$(CC) -o $@ $(LDFLAGS) -Wl,--soname,$@ libmpeg2/libmpeg2/.libs/*.o \
+ 		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ libdts/libdts/libdts.a : libdts;
+--- xbmc/cores/dvdplayer/Codecs/libdvd/Makefile.in.orig	2011-06-02 17:09:20.372101279 -0700
++++ xbmc/cores/dvdplayer/Codecs/libdvd/Makefile.in	2011-06-02 17:09:31.418918082 -0700
+@@ -40,12 +40,12 @@
+ else
+ 
+ $(SYSDIR)/libdvdcss-$(ARCH).so: $(WRAPPER) libdvdcss/src/.libs/libdvdcss.a
+-	$(CC) -o $@ $(LDFLAGS) $(LDFLAGS2) --soname,$@ \
++	$(CC) -o $@ $(LDFLAGS) $(LDFLAGS2) -Wl,--soname,$@ \
+ 		libdvdcss/src/*.o \
+ 		`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/libdvdnav-$(ARCH).so: $(WRAPPER) $(DVDCSS_A) libdvdread/obj/libdvdread.a libdvdnav/obj/libdvdnav.a
+-	$(CC) -o $@ $(LDFLAGS) $(LDFLAGS2) --soname,$@ $(DVDCSS_O) libdvdread/obj/*.o libdvdnav/obj/*.o \
++	$(CC) -o $@ $(LDFLAGS) $(LDFLAGS2) -Wl,--soname,$@ $(DVDCSS_O) libdvdread/obj/*.o libdvdnav/obj/*.o \
+ 		`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ endif

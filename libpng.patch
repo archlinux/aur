@@ -1,0 +1,22 @@
+--- xbmc/visualizations/Goom/goom2k4-0/src/pngload.c.orig	2010-02-04 16:58:05.000000000 -0800
++++ xbmc/visualizations/Goom/goom2k4-0/src/pngload.c	2010-02-04 17:09:11.000000000 -0800
+@@ -94,7 +94,7 @@
+ 		png_set_palette_to_rgb (png_ptr);
+ 
+ 	if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
+-		png_set_gray_1_2_4_to_8 (png_ptr);
++		png_set_expand_gray_1_2_4_to_8 (png_ptr);
+ 	else if (color_type == PNG_COLOR_TYPE_GRAY ||
+ 					 color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+ 			png_set_gray_to_rgb (png_ptr);
+--- xbmc/screensavers/rsxs-0.9/src/pngimage.cc.orig	2010-02-04 16:56:46.000000000 -0800
++++ xbmc/screensavers/rsxs-0.9/src/pngimage.cc	2010-02-04 17:09:11.000000000 -0800
+@@ -65,7 +65,7 @@
+ 			(png_get_color_type(png, pngInfo) == PNG_COLOR_TYPE_GRAY) &&
+ 			png_get_bit_depth(png, pngInfo) < 8
+ 		)
+-			png_set_gray_1_2_4_to_8(png);
++			png_set_expand_gray_1_2_4_to_8(png);
+ 		if (png_get_valid(png, pngInfo, PNG_INFO_tRNS))
+ 			png_set_tRNS_to_alpha(png);
+ 		if (fullColor)

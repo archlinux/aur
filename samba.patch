@@ -1,0 +1,11 @@
+--- xbmc/cores/paplayer/MACDll/Source/MACLib/APEHeader.cpp.orig	2011-03-24 12:20:43.000000000 -0700
++++ xbmc/cores/paplayer/MACDll/Source/MACLib/APEHeader.cpp	2011-03-24 12:20:59.000000000 -0700
+@@ -4,7 +4,7 @@
+ #include "APEInfo.h"
+ 
+ #ifndef __APPLE__
+-#include <linux/smbno.h>
++#include "smbno.h"
+ #endif
+ 
+ // TODO: should push and pop the file position

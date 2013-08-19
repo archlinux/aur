@@ -1,0 +1,17 @@
+--- xbmc/lib/cximage-6.0/jpeg-turbo/Makefile.in.orig	2011-06-05 07:02:03.000000000 -0700
++++ xbmc/lib/cximage-6.0/jpeg-turbo/Makefile.in	2011-06-05 07:03:38.000000000 -0700
+@@ -213,12 +213,14 @@
+ CC = @CC@
+ CCDEPMODE = @CCDEPMODE@
+ CFLAGS = @CFLAGS@
++CFLAGS += -fPIC
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CXX = @CXX@
+ CXXCPP = @CXXCPP@
+ CXXDEPMODE = @CXXDEPMODE@
+ CXXFLAGS = @CXXFLAGS@
++CXXFLAGS += -fPIC
+ CYGPATH_W = @CYGPATH_W@
+ DEBARCH = @DEBARCH@
+ DEFS = @DEFS@
