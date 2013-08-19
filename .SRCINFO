@@ -1,0 +1,14 @@
+pkgbase = webian-shell
+	pkgdesc = A web browser for devices that dont need a desktop
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://webian.org/
+	install = webian-shell.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/downloads/webianproject/shell/webian_shell_0.1-linux_32.tar.gz
+	md5sums = eb3ff4780c4e9c9927dbee4cb27b4c15
+
+pkgname = webian-shell
+

@@ -1,0 +1,7 @@
+post_install() {
+	ln -s /opt/webian-shell/Webian\ Shell /usr/bin/webian
+}
+
+post_remove() {
+	rm /usr/bin/webian
+}
