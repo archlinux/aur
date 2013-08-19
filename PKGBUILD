@@ -2,7 +2,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=asix-module
-pkgver=4.6.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="A kernel module for the ASIX USB 2.0 low power AX88772B/AX88772A/AX88760/AX88772/AX88178 ethernet controllers"
 url="http://www.asix.com.tw"
@@ -33,4 +33,4 @@ package() {
 	sed -i "s|extramodules-.*-ARCH|extramodules-3.$_kernver-ARCH|" "$startdir/$pkgname.install"
 }
 
-sha256sums=('7ef0d3a941582aa2ea3d014c921742a349301b9dfc5b99cbb54e11c1e66adcdd')
+sha256sums=('13aa6ced68117cf1685ce26a33c0599f5692bba62e89e132a0e7457e5ef66fd2')
