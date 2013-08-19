@@ -1,0 +1,29 @@
+--- configure.in.orig	2011-12-31 02:57:36.000000000 -0800
++++ configure.in	2011-12-31 02:58:00.000000000 -0800
+@@ -665,6 +665,9 @@
+ PKG_CHECK_MODULES([MAD],        [mad],
+                   [INCLUDES+=" $MAD_CFLAGS"; LIBS+=" $MAD_LIBS"],
+                   AC_MSG_ERROR($missing_library))
++PKG_CHECK_MODULES([CDIO],       [libcdio],
++                  [INCLUDES+=" $CDIO_CFLAGS"; LIBS+=" $CDIO_LIBS"],
++		  AC_MSG_ERROR($missing_library))
+ 
+ 
+ if test "$use_fontconfig" = yes; then
+@@ -753,8 +756,6 @@
+   USE_EXTERNAL_SAMBA=0
+   BUILD_WAVEFORM=1
+ else
+-  LIBS+="/usr/lib/libmysqlclient.so.16 " 
+-  LIBS+="/usr/lib/libcdio.a "
+   AC_CHECK_HEADER([FLAC/stream_decoder.h],, AC_MSG_ERROR($missing_library))
+   AC_CHECK_LIB([dl],        [main],, AC_MSG_ERROR($missing_library))
+   AC_CHECK_LIB([resolv],    [main],, AC_MSG_ERROR($missing_library))
+@@ -1375,7 +1376,6 @@
+              xbmc/visualizations/OpenGLSpectrum/Makefile \
+              xbmc/visualizations/WaveForm/Makefile \
+              xbmc/visualizations/iTunes/Makefile \
+-             BoxeeHal/server/Makefile \
+              tools/TexturePacker/Makefile "
+ 
+ if test "$host_vendor" = "apple"; then

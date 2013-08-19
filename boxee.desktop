@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Boxee
+Comment=Next generation social media player
+Exec=/opt/boxee/run-boxee-desktop
+Icon=boxee
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Player;
+StartupNotify=false

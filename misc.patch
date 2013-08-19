@@ -1,0 +1,65 @@
+--- ./xbmc/Util.h.orig	2012-03-15 22:00:01.523336417 -0700
++++ ./xbmc/Util.h	2012-03-15 22:16:04.929767220 -0700
+@@ -335,7 +335,6 @@
+   CStdString m_strPath;
+ };
+ 
+-#define foreach         BOOST_FOREACH
+ #define reverse_foreach BOOST_REVERSE_FOREACH
+ 
+ #ifdef _WIN32
+--- xbmc/FileSystem/IFile.h.orig	2012-03-15 23:15:49.670353230 -0700
++++ xbmc/FileSystem/IFile.h	2012-03-15 23:17:29.238454405 -0700
+@@ -82,7 +82,7 @@
+   virtual int IoControl(int request, void* param) { return -1; }
+ 
+   virtual CStdString GetContent()                            { return "application/octet-stream"; }
+-  virtual long long	GetAvailableRead() { return 0; }
++  virtual int64_t	GetAvailableRead() { return 0; }
+ 
+ protected:
+   bool m_bSkipEol;
+--- xbmc/FileSystem/FilePipe.h.orig	2012-03-15 23:18:55.316360228 -0700
++++ xbmc/FileSystem/FilePipe.h	2012-03-15 23:19:39.913668548 -0700
+@@ -57,7 +57,7 @@
+   virtual int64_t Seek(int64_t iFilePosition, int iWhence = SEEK_SET);
+   virtual void Close();
+   virtual void Flush();
+-  virtual __int64	GetAvailableRead();
++  virtual int64_t	GetAvailableRead();
+ 
+   virtual bool OpenForWrite(const CURI& url, bool bOverWrite = false);
+ 
+--- xbmc/FileSystem/FileCache.h.orig	2012-03-15 23:28:03.500942167 -0700
++++ xbmc/FileSystem/FileCache.h	2012-03-15 23:28:28.771307021 -0700
+@@ -61,7 +61,7 @@
+ 
+     virtual CStdString GetContent();
+ 
+-    virtual __int64	GetAvailableRead();
++    virtual int64_t	GetAvailableRead();
+ 
+   private:
+     CCacheStrategy *m_pCache;
+--- xbmc/FileSystem/FileCache.cpp.orig	2012-03-15 23:31:02.803529139 -0700
++++ xbmc/FileSystem/FileCache.cpp	2012-03-15 23:31:39.150719716 -0700
+@@ -423,7 +423,7 @@
+   return m_source.GetImplemenation()->GetContent();
+ }
+ 
+-__int64	CFileCache::GetAvailableRead()
++int64_t	CFileCache::GetAvailableRead()
+ {
+   if (!m_pCache)
+     return 0;
+--- xbmc/FileSystem/FilePipe.cpp.orig	2012-03-15 23:35:18.300541779 -0700
++++ xbmc/FileSystem/FilePipe.cpp	2012-03-15 23:35:49.730993852 -0700
+@@ -158,7 +158,7 @@
+     m_listeners[l]->OnPipeOverFlow();
+ }
+ 
+-__int64	CFilePipe::GetAvailableRead()
++int64_t	CFilePipe::GetAvailableRead()
+ {
+   return m_pipe->GetAvailableRead();
+ }

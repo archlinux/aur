@@ -1,0 +1,54 @@
+--- xbmc/FileSystem/FileCurl.cpp.orig	2009-11-23 01:12:07.000000000 -0800
++++ xbmc/FileSystem/FileCurl.cpp	2010-01-21 13:42:25.000000000 -0800
+@@ -82,14 +82,6 @@
+ }
+ 
+ /* curl calls this routine to get more data */
+-extern "C" size_t dummy_callback(char *buffer,
+-                                 size_t size,
+-                                 size_t nitems,
+-                                 void *userp)
+-{
+-  return 0;  
+-}
+-
+ extern "C" size_t write_callback(char *buffer,
+                size_t size,
+                size_t nitems,
+@@ -281,10 +273,6 @@
+     m_fileSize = m_filePos + (int64_t)length;
+   }
+ 
+-  char *url = NULL; 
+-  if (CURLE_OK == g_curlInterface.easy_getinfo(m_easyHandle, CURLINFO_EFFECTIVE_URL, (char*)&url))
+-    m_strEffectiveUrl = url;
+-    
+   long response;
+   if (CURLE_OK == g_curlInterface.easy_getinfo(m_easyHandle, CURLINFO_RESPONSE_CODE, &response))
+     return response;
+@@ -959,8 +947,6 @@
+     throw new CRedirectException(new CFileShoutcast); 
+   }
+ 
+-  m_url = m_state->m_strEffectiveUrl;
+-  
+   m_multisession = false;
+   if(m_url.Left(5).Equals("http:") || m_url.Left(6).Equals("https:"))
+   {
+@@ -1137,7 +1123,6 @@
+   SetRequestHeaders(m_state);
+   g_curlInterface.easy_setopt(m_state->m_easyHandle, CURLOPT_TIMEOUT, 5);
+   g_curlInterface.easy_setopt(m_state->m_easyHandle, CURLOPT_NOBODY, 0);
+-  g_curlInterface.easy_setopt(m_state->m_easyHandle, CURLOPT_WRITEFUNCTION, (void*)dummy_callback);
+   g_curlInterface.easy_setopt(m_state->m_easyHandle, CURLOPT_FOLLOWLOCATION, 1);
+   g_curlInterface.easy_setopt(m_state->m_easyHandle, CURLOPT_WRITEDATA, (void *)NULL); /* will cause write failure*/
+   
+@@ -1260,7 +1245,7 @@
+   
+   // only attempt to fill buffer if transactions still running and buffer
+   // doesnt exceed required size already
+-  while ((unsigned int)m_buffer.GetMaxReadSize() < want && m_buffer.GetMaxWriteSize() > 0 && !g_application.m_bStop)
++  while ((unsigned int)m_buffer.GetMaxReadSize() < want && m_buffer.GetMaxWriteSize() > 0 )
+   {
+     if (m_cancelled)
+       return false;

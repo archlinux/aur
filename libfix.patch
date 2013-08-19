@@ -1,0 +1,22 @@
+--- Makefile.in.orig	2012-03-16 12:53:27.065656865 -0700
++++ Makefile.in	2012-03-16 12:54:53.106860545 -0700
+@@ -181,7 +181,7 @@
+ DISTCLEAN_FILES=config.h config.log config.status tools/Linux/xbmc.sh \
+         autom4te.cache config.h.in~
+ 
+-all : Makefile externals Boxee BoxeeHal RecoveryConsole BoxeeWrapper MemLeakDetector
++all : Makefile externals Boxee 
+ 
+ give_me_my_mouse_back: give_me_my_mouse_back.c
+ 	gcc -g -o give_me_my_mouse_back give_me_my_mouse_back.c -I/opt/local/include -lSDL
+@@ -202,9 +202,8 @@
+ LIBS += -lsmbclient
+ endif
+ 
+-ifeq ($(findstring i486-linux,$(ARCH)), i486-linux)
++LIBS += -lmms -lXext
+ LIBS += xbmc/lib/libPython/Python/libpython2.4.a
+-endif
+ 
+ .PHONY : dllloader exports visualizations screensavers eventclients papcodecs \
+ 	dvdpcodecs imagelib codecs externals force skins libjsonrpc libplist shairport w_scan sqlite3pp

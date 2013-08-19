@@ -1,0 +1,36 @@
+--- tools/TexturePacker/XBTFWriter.h.orig	2012-08-15 16:05:57.704426524 -0700
++++ tools/TexturePacker/XBTFWriter.h	2012-08-15 16:06:06.124601983 -0700
+@@ -3,6 +3,7 @@
+ 
+ #include <string>
+ #include <stdio.h>
++#include <unistd.h>
+ #include "XBTF.h"
+ 
+ class CXBTFWriter
+--- xbmc/cores/dvdplayer/Codecs/Makefile.in.orig	2012-08-15 16:11:05.674179258 -0700
++++ xbmc/cores/dvdplayer/Codecs/Makefile.in	2012-08-15 16:11:21.164502240 -0700
+@@ -221,19 +221,19 @@
+ 
+ $(SYSDIR)/libfaad-$(ARCH).so:  $(WRAPPER) libfaad2/libfaad/libfaad.la
+ 	$(CC) -o $@ $(LDFLAGS) -Wl,-soname,$@ libfaad2/libfaad/*.o \
+-		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
++		`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/liba52-$(ARCH).so: $(WRAPPER) liba52/liba52/liba52.la
+ 	$(CC) -o $@ $(LDFLAGS) -Wl,-soname,$@ liba52/liba52/.libs/*.o \
+-		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
++		`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/libao-$(ARCH).so: $(WRAPPER) liba52/libao/libao.a
+ 	$(CC) -o $@ $(LDFLAGS) -Wl,-soname,$@ liba52/libao/libao.a \
+-		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
++		`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ $(SYSDIR)/libmpeg2-$(ARCH).so: $(WRAPPER) libmpeg2/libmpeg2/libmpeg2.la
+ 	$(CC) -o $@ $(LDFLAGS) -Wl,-soname,$@ libmpeg2/libmpeg2/.libs/*.o \
+-		-Wl`cat $(WRAPPER:.o=.def)` $(WRAPPER)
++		`cat $(WRAPPER:.o=.def)` $(WRAPPER)
+ 
+ libdts/libdts/libdts.a : libdts;
+ libdts:

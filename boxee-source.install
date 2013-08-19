@@ -1,0 +1,29 @@
+post_install() {
+
+	ln -s /usr/lib/libsmime3.so /usr/lib/libsmime3.so.1d 
+        ln -s /usr/lib/libssl3.so /usr/lib/libssl3.so.1d 
+        ln -s /usr/lib/libnss3.so /usr/lib/libnss3.so.1d 
+        ln -s /usr/lib/libnssutil3.so /usr/lib/libnssutil3.so.1d 
+        ln -s /usr/lib/libplds4.so /usr/lib/libplds4.so.0d 
+        ln -s /usr/lib/libplc4.so /usr/lib/libplc4.so.0d 
+        ln -s /usr/lib/libnspr4.so /usr/lib/libnspr4.so.0d 
+
+        pushd /opt/boxee/media/ 
+                ln -s icon32x32-linux.png icon.png 
+        popd 
+
+	cat /etc/rc.conf | grep ^TIMEZONE | cut -d"\"" -f 2 > /etc/timezone 
+
+}
+
+post_remove() {
+	rm /usr/lib/libsmime3.so.1d
+	rm /usr/lib/libssl3.so.1d
+	rm /usr/lib/libnss3.so.1d
+	rm /usr/lib/libnssutil3.so.1d
+	rm /usr/lib/libplds4.so.0d
+	rm /usr/lib/libplc4.so.0d
+	rm /usr/lib/libnspr4.so.0d
+	rm /opt/boxee/media/icon.png
+	rm /etc/timezone
+}
