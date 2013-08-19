@@ -1,0 +1,17 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    echo " >> "
+    echo " >> Please use the official flashplugin package from [extra], both are the same version"
+    echo " >> "
+    echo " >> If you have an issue with a blue tint on flash videos,"
+    echo " >> add the line export VDPAU_NVIDIA_NO_OVERLAY=1 to either your shell profile"
+    echo " >> (E.g. ~/.bash_profile or ~/.zprofile) or ~/.xinitrc. If this doesn't work, try and"
+    echo " >> uncomment EnableLinuxHWVideoDecode = 1 and OverrideGPUValidation = 1 from /etc/adobe/mms.cfg."
+    echo " >> You can also replace libvdpau with libvdpau-git-flashpatch to fix the issue "
+    echo " >> If you run into problems, please contact nVidia or Broadcom along with your system config info / driver version."
+    echo " >> "
+}
+
+post_upgrade() {
+        post_install $1
+}

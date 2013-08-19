@@ -1,0 +1,30 @@
+pkgbase = flashplugin-beta
+	pkgdesc = Adobe Flash Player 11 Beta
+	pkgver = 11.2.202.280
+	pkgrel = 1
+	url = http://labs.adobe.com/downloads/flashplayer11-2.html
+	install = flashplugin.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = mozilla-common
+	depends = libxt
+	depends = gtk2
+	depends = nss
+	depends = curl
+	optdepends = libvdpau: GPU acceleration on Nvidia card
+	optdepends = libvdpau-git-flashpatch: libvdpau with fixed for blue overlay issue
+	provides = flashplayer
+	provides = flashplugin
+	conflicts = flashplugin
+	options = !strip
+	backup = etc/adobe/mms.cfg
+	source = flash_player_beta-11.2.202.280.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.280/install_flash_player_11_linux.i386.tar.gz
+	source = mms.cfg
+	source = LICENSE
+	md5sums = fc78697b7fe17f3d96bc776dbc69cbc8
+	md5sums = 245c04e582a6cb993a2c2a1c3f62e7a2
+	md5sums = 05ccdb2de8f04af6641675975a807cf5
+
+pkgname = flashplugin-beta
+
