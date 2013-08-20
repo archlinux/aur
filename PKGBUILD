@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.10
-pkgver=3.10.7
+pkgver=3.10.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'criu-no-expert.patch'
         '3.10.6-logitech-dj.patch')
 md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         '6b1b6b62044fcf3624f067154d5c1666'
+         'f62214b2847eef5fc22cfc9f1e2d28a3'
          '09aad29932fe0d1aa765b314800db9a8'
          '5ffd739d5b3e7c68bf07472aaceca400'
          'eb14dcfd80c00852ef81ded6e826826a'
