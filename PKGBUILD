@@ -1,5 +1,6 @@
-# Maintainer: Jesus Alvarez <jeezusjr@gmail.com>
-# Contributor: sxe <sxxe@gmx.de>
+# Maintainer  : Anish Bhatt anish [at] gatech [dot] edu
+# Contributor : Jesus Alvarez <jeezusjr@gmail.com>
+# Contributor : sxe <sxxe@gmx.de>
 # Based on the wine-git in AUR
 
 pkgname='netflix-desktop'
