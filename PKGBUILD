@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="An automated script for viewing Netflix through Firefox and patched WINE"
 url="https://launchpad.net/netflix-desktop/"
 arch=('i686' 'x86_64')
-license=('LGPL')
+license=('MIT')
 depends=('wine-silverlight' 'ttf-ms-fonts' 'zenity' 'wget')
 
 if [[ "$CARCH" == "x86_64" ]]; then
@@ -78,6 +78,10 @@ package() {
         install -dm755 ${pkgdir}/usr/share/netflix-desktop/fullscreen-close-plugin
         cp -R ${srcdir}/${pkgname}/wine-browser-installer/fullscreen-close-plugin/* ${pkgdir}/usr/share/netflix-desktop/fullscreen-close-plugin/
         cd "${srcdir}/${pkgname}"
+
+        # Install MIT license
+        install -Dm644 "debian/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/Copyright.txt"
+
         pushd po
         make DESTDIR="${pkgdir}" install
         popd
