@@ -3,7 +3,7 @@
 
 pkgname=openmw-git
 _gitname="openmw"
-pkgver=0.24.0.438.gf730085
+pkgver=0.25.322.g0481e64
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -20,11 +20,11 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --always | sed 's|openmw-||' | sed 's|-|.|g'
+    git describe --always | sed 's|openmw-\([0-9]\+.[0-9]\+\).0|\1|' | sed 's|-|.|g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "${srcdir}/${_gitname}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4
