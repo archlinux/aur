@@ -4,8 +4,8 @@
 # Based on the wine-git in AUR
 
 pkgname='netflix-desktop'
-pkgver=0.8
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="An automated script for viewing Netflix through Firefox and patched WINE"
 url="https://launchpad.net/netflix-desktop/"
 arch=('i686' 'x86_64')
@@ -33,13 +33,12 @@ fi
 
 install=netflix-desktop.install
 
-source=("https://github.com/anish/archlinux/raw/master/netflix-desktop/netflix-desktop.tar.gz"
-#source=("https://launchpad.net/netflix-desktop/trunk/${pkgver}.0/+download/${pkgname}.tar.gz"
+source=("https://launchpad.net/netflix-desktop/trunk/${pkgver}/+download/${pkgname}.tar.gz"
 netflix-desktop.desktop  
 netflix-desktop.launcher
 NetflixIcon.png)
 
-md5sums=('c6da1fd128cfbe35423fe86ad01f7db3'
+md5sums=('7ce4580a463a61ab3dca713adc3c3bf4'
          'a41f098487affa1de34c8b44d52617b5'
          'aa3bf2a5686f1b038e1561f8cc28929e'
          '0a4c2ef50831a751dae74315eb066c01')
