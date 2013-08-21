@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=28.0.1500.95
+pkgver=29.0.1547.57
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -23,16 +23,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.desktop
         chromium.default
         chromium.sh
-        chromium-28.0.1500.71-avoid-std-string-copying-in-GetFileNameInWhitelist.patch
-        chromium-nss-3.15.patch
-        chromium-system-harfbuzz-r0.patch)
-sha256sums=('3c38888bebed3d13f860babc7fb667d425723c350e25cdfb73fc746f4f91d734'
+        chromium-28.0.1500.71-avoid-std-string-copying-in-GetFileNameInWhitelist.patch)
+sha256sums=('ae77204a5417ad7bf1ade257ba49f3ca64c83ed5741cb811a31f9f675d498576'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
-            '7c2e448c30677999f524f9513c2f998f3cb15bc6084692cad9c3f310aa813530'
-            'a5ca532d213cc6f9ad19341445309ad4e4aec9530f4309536fb42ee97deca5a6'
-            '2bc4cf17adac9864f4e832e57247984f28fce171d3699c0fc2c3596d1ab20386')
+            '7c2e448c30677999f524f9513c2f998f3cb15bc6084692cad9c3f310aa813530')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -49,12 +45,6 @@ prepare() {
   # https://code.google.com/p/chromium/issues/detail?id=255063
   # https://bugs.gentoo.org/show_bug.cgi?id=471198#c23
   patch -Np1 -i "$srcdir/chromium-28.0.1500.71-avoid-std-string-copying-in-GetFileNameInWhitelist.patch"
-
-  # Fix build with NSS 3.15 (patch from Gentoo)
-  patch -Np1 -i "$srcdir/chromium-nss-3.15.patch"
-
-  # Fix build with system harfbuzz (patch from Gentoo)
-  patch -Np1 -i "$srcdir/chromium-system-harfbuzz-r0.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -97,6 +87,7 @@ build() {
     -Dlinux_use_gold_binary=0
     -Dlinux_use_gold_flags=0
     -Dlinux_use_tcmalloc=0
+    -Dlogging_like_official_build=1
     -Drelease_extra_cflags="$CFLAGS"
     -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
@@ -124,7 +115,7 @@ build() {
     -Ddisable_sse2=1)
 
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
-  build/gyp_chromium --depth=. "${_chromium_conf[@]}"
+  build/gyp_chromium -f make --depth=. "${_chromium_conf[@]}"
 
   make chrome chrome_sandbox BUILDTYPE=Release
 }
