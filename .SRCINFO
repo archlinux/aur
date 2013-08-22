@@ -3,7 +3,7 @@
 pkgbase = sv_dvorak
 	pkgdesc = A (non-standard) Swedish dvorak keyboard layout. (Xorg driver, for console driver checkout the dvorak-se package.)
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tlundqvist.org/sv_dvorak/
 	install = sv_dvorak.install
 	arch = any
