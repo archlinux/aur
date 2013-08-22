@@ -5,7 +5,7 @@
 
 pkgname='netflix-desktop'
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated script for viewing Netflix through Firefox and patched WINE"
 url="https://launchpad.net/netflix-desktop/"
 arch=('i686' 'x86_64')
@@ -48,9 +48,6 @@ build() {
   pushd po
   make
   popd
-  pushd wine-browser-installer/test-xattr
-  make
-  popd
   pushd wine-browser-installer
   sed -i -e 's/share\/wine-browser-installer/share\/netflix-desktop/g' download-missing-files
   sed -i -e 's/\/usr\/share\/n/${HOME}\/\.n/g' download-missing-files
@@ -84,9 +81,7 @@ package() {
         pushd po
         make DESTDIR="${pkgdir}" install
         popd
-        pushd wine-browser-installer/test-xattr
-        make DESTDIR="${pkgdir}/usr/share/netflix-desktop/" install
-        popd
+        install -Dm755 wine-browser-installer/test-xattr ${pkgdir}/usr/share/netflix-desktop/
 }
 
 # vim:set ts=2 sw=2 et:
