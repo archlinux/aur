@@ -1,0 +1,10 @@
+[Unit]
+Description=Spamassassin Proxy Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/spampd --port=10025 --relayhost=127.0.0.1:10026 --tagall --log-rules-hit --user spampd --group spampd --pid=/home/spampd/spampd.pid --nodetach
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+post_install() {
+  useradd -m -d /home/spampd -r spampd
+}
+
+post_remove() {
+  userdel spampd
+  echo "Remove /home/spampd if you don't want to keep spamassassin's data" >&2
+}
+
+# vim:set ts=2 sw=2 et:
