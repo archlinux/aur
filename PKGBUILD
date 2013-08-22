@@ -2,12 +2,13 @@
 
 pkgname=mingw-w64-gtk3
 pkgver=3.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK+ is a multi-platform toolkit (v3) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
 license=("LGPL")
-makedepends=(mingw-w64-gcc mingw-w64-pkg-config gtk-update-icon-cache)
+makedepends=(mingw-w64-gcc mingw-w64-pkg-config gtk-update-icon-cache python2)
+# python2 is required to run gdbus-codegen
 depends=(
 'mingw-w64-crt'
 'mingw-w64-atk>=2.7.5'
