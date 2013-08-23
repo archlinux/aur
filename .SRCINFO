@@ -1,0 +1,13 @@
+pkgbase = befungee-git
+	pkgdesc = Befunge-93 interpreter written in Python with a built-in debugger
+	pkgver = 20111120
+	pkgrel = 1
+	url = https://github.com/programble/befungee
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	options = !emptydirs
+
+pkgname = befungee-git
+
