@@ -1,0 +1,23 @@
+pkgbase = scout-git
+	pkgdesc = A CLI interface to Tomboy and Gnote
+	pkgver = 20110426.158
+	pkgrel = 2
+	url = https://github.com/lelutin/scout
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2-distribute
+	makedepends = haskell-pandoc
+	depends = python2
+	depends = python2-dbus
+	optdepends = tomboy: either this one
+	optdepends = gnote: or that one must be installed
+	provides = scout
+	conflicts = scout
+	source = scout::git+git://github.com/lelutin/scout.git
+	source = scout-man.patch
+	md5sums = SKIP
+	md5sums = 67bb8bbfb7370496644c737638566207
+
+pkgname = scout-git
+

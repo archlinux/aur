@@ -1,0 +1,29 @@
+--- setup.py.orig	2013-04-28 15:57:46.913496770 +0000
++++ setup.py	2013-04-28 15:57:20.027108948 +0000
+@@ -8,7 +8,7 @@
+ 
+ """
+ import sys
+-from subprocess import Popen
++from subprocess import Popen, call
+ from setuptools import setup, find_packages
+ from glob import glob
+ 
+@@ -26,7 +26,7 @@
+ 
+ if command:
+     # Compile documentation
+-    Popen(["make", command ], cwd="doc")
++    call(["make", command ], cwd="doc")
+ 
+     if command in ["develop", "test"]:
+         # while developing, we don't want to call 'setup.py develop' after each
+@@ -43,7 +43,7 @@
+ """
+ 
+ DATA_LIST = [
+-    ('/usr/share/man/man1/', glob('doc/*.1.gz'))
++    ('/usr/share/man/man1/', list(glob('doc/*.1.gz')))
+ ]
+ 
+ setup(
