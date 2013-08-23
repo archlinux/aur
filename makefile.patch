@@ -1,0 +1,14 @@
+--- Makefile.PL	2003-10-17 11:51:14.000000000 +0000
++++ Makefile.PL.new	2011-02-26 19:18:13.564838996 +0000
+@@ -9,9 +9,9 @@
+     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
+       (ABSTRACT_FROM  => 'HandEvaluator.pm', # retrieve abstract from module
+        AUTHOR         => 'Simon Cozens <simon@dsl.easynet.co.uk>') : ()),
+-    LIBS              => ['-L/usr/local/lib -lpoker'], # e.g., '-lm'
++    LIBS              => ['-L/usr/local/lib -lpoker-eval'], # e.g., '-lm'
+     DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
+-    INC               => '-I.', # e.g., '-I. -I/usr/include/other'
++    INC               => '-I. -I/usr/include/poker-eval', # e.g., '-I. -I/usr/include/other'
+ 	# Un-comment this if you add C files to link with later:
+     # OBJECT            => '$(O_FILES)', # link all the C files too
+ );
