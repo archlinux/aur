@@ -1,0 +1,12 @@
+diff -aurN djvubind-1.2.1-orig/djvubind/encode.py djvubind-1.2.1/djvubind/encode.py
+--- djvubind-1.2.1-orig/djvubind/encode.py	2013-04-18 03:29:47.880072281 +0000
++++ djvubind-1.2.1/djvubind/encode.py	2013-04-18 03:30:51.219398193 +0000
+@@ -131,7 +131,7 @@
+         #utils.execute('convert -opaque black "{0}" "temp_graphics.tif"'.format(infile))
+         #utils.execute('convert +opaque black "{0}" "temp_textual.tif"'.format(infile))
+         utils.execute('convert "{0}" -opaque black "temp_graphics.tif"'.format(infile))
+-        utils.execute('convert "{0}" +opaque black -monochrome "temp_textual.tif"'.format(infile))
++        utils.execute('convert "{0}" +opaque black -monochrome -compress lzw "temp_textual.tif"'.format(infile))
+ 
+         # Encode the bitonal image.
+         self._cjb2('temp_textual.tif', 'enc_bitonal_out.djvu', dpi)

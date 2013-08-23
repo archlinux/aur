@@ -1,0 +1,21 @@
+pkgbase = djvubind
+	pkgdesc = A tool to create highly compressed djvu files with ocr, metadata, and bookmarks
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://code.google.com/p/djvubind/
+	arch = any
+	license = GPL3
+	makedepends = python
+	depends = python
+	depends = djvulibre
+	depends = imagemagick
+	depends = tesseract
+	optdepends = minidjvu: for higher black-and-white compression
+	optdepends = cuneiform: an alternative OCR system
+	source = http://djvubind.googlecode.com/files/djvubind-1.2.1.tar.bz2
+	source = djvubind-1.2.1-compress.patch
+	md5sums = 027ee90fec7d6ee5ee921eebfae1dc2d
+	md5sums = 6fb6019bbc7e0171241399a145ef0b25
+
+pkgname = djvubind
+
