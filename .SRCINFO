@@ -1,0 +1,19 @@
+pkgbase = perl-devel-pragma
+	pkgdesc = Perl module providing helper functions for developers of lexical pragmas
+	pkgver = 0.54
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Pragma
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-extutils-depends>=0.302
+	depends = perl-b-hooks-endofscope>=0.09
+	depends = perl-b-hooks-op-annotation>=0.43
+	depends = perl-b-hooks-op-check>=0.18
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOCOLATE/Devel-Pragma-0.54.tar.gz
+	md5sums = 6f68dd87e2433f8640dea58be3e3e97d
+
+pkgname = perl-devel-pragma
+
