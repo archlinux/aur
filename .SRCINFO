@@ -1,0 +1,15 @@
+pkgbase = perl-list-permutor
+	pkgdesc = Perl module to process all possible permutations of a list
+	pkgver = 0.022
+	pkgrel = 1
+	url = http://search.cpan.org/dist/List-Permutor/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHOENIX/List-Permutor-0.022.tar.gz
+	md5sums = b5c0f922730b9493c7c1e0583a5c8f78
+
+pkgname = perl-list-permutor
+
