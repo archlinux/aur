@@ -1,0 +1,16 @@
+pkgbase = perl-sql-reservedwords
+	pkgdesc = Perl module that prodives list of SQL reserved words
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://search.cpan.org/dist/SQL-ReservedWords
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/SQL-ReservedWords-0.8.tar.gz
+	md5sums = 7de3ba15d2455b20cbaf692f28e5b633
+
+pkgname = perl-sql-reservedwords
+
