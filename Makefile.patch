@@ -1,0 +1,24 @@
+--- src/mkdoc/Makefile	2010-08-02 16:01:09.361636372 +0000
++++ src/mkdoc-build/Makefile	2010-08-02 17:42:13.081860423 +0000
+@@ -1,4 +1,4 @@
+-PREFIX=/usr
++PREFIX?=/usr
+ DOCBOOKCSS=/usr/share/xml/docbook/xsl-stylesheets-1.75.2/html/docbook.xsl
+ DOCSRC=doc/top.mkdoc doc/mkdoc.conf
+ MKDOCFLAGS=
+@@ -7,11 +7,13 @@
+ 
+ all: docs
+ 
+-install: htmldoc
++install:
+ 	mkdir -p $(PREFIX)/bin
+ 	mkdir -p $(PREFIX)/share/mkdoc
+ 	cp -r src/* $(PREFIX)/share/mkdoc
+-	ln -s $(PREFIX)/share/mkdoc/mkdoc $(PREFIX)/bin/mkdoc
++	ln -s /usr/share/mkdoc/mkdoc $(PREFIX)/bin/mkdoc
++
++install-doc: htmldoc
+ 	mkdir -p $(PREFIX)/share/doc/mkdoc
+ 	cp -r doc/html $(PREFIX)/share/doc/mkdoc
+ 

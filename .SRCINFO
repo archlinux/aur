@@ -1,0 +1,14 @@
+pkgbase = mkdoc-svn
+	pkgdesc = C/C++ documentation tool
+	pkgver = 74
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/mkdoc/
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = perl
+	source = Makefile.patch
+	md5sums = 2e862d1eaf0efc01041b779479a0019f
+
+pkgname = mkdoc-svn
+
