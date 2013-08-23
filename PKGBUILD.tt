@@ -1,0 +1,34 @@
+# CPAN Name  : Module::Refresh
+# Contributor: Daenyth
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc="Perl module to refresh %INC files when updated on disk"
+arch=("any")
+license=("GPL" "PerlArtistic")
+url="[% url %]"
+options=(!emptydirs)
+depends=("perl")
+checkdepends=("perl-path-class") # 'perl' provides 'perl-test-simple' and 'perl-file-temp'
+source=([% source %])
+md5sums=("[% md5sums %]")
+
+build() {
+  cd "$srcdir/[% distdir %]"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+check() {
+  cd "$srcdir/[% distdir %]"
+  make test
+}
+
+package() {
+  cd "$srcdir/[% distdir %]"
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
