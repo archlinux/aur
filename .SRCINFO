@@ -1,0 +1,16 @@
+pkgbase = ttf-georgewilliams
+	pkgdesc = Free unicode TrueType fonts by George Williams: Caliban, Caslon Roman, Cupola
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://fontforge.sourceforge.net/sfds/index.html
+	install = ttf-georgewilliams.install
+	arch = any
+	license = BSD
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://ftp.debian.org/debian/pool/main/g/gw-fonts-ttf/gw-fonts-ttf_1.0.orig.tar.gz
+	md5sums = 298c1e66a86ab25f013cfb68f7d9e0ba
+
+pkgname = ttf-georgewilliams
+
