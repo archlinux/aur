@@ -1,0 +1,36 @@
+--- findimagedupes	2013-07-31 17:29:22.616148571 +0000
++++ findimagedupes.new	2013-07-31 18:16:43.073637364 +0000
+@@ -444,7 +444,7 @@
+ 
+ sub try {
+ 	my ($err) = @_;
+-	if ($err and $err !~ /Warning (315|330):/) {
++	if ($err ne '' and $err !~ /Warning (315|330):/) {
+ 		die("imagemagick problem: $err\n");
+ 	}
+ }
+@@ -882,20 +882,20 @@
+ 
+ =over 4
+ 
+-=item 0
++=item S<0>
+ 
+ Success.
+ 
+-=item 1
++=item S<1>
+ 
+ Usage information was requested (B<--help> or B<--man>), or there
+ were warnings.
+ 
+-=item 2
++=item S<2>
+ 
+ Invalid options or arguments were provided.
+ 
+-=item 3
++=item S<3>
+ 
+ Runtime error.
+ 
