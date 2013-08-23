@@ -1,0 +1,17 @@
+pkgbase = perl-www-shorten
+	pkgdesc = Interface to URL shortening sites
+	pkgver = 3.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Shorten
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-libwww
+	optdepends = perl-config-auto: for configuration file support
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/WWW-Shorten-3.03.tar.gz
+	md5sums = 8ba21ec85951c5ed7f87e2ea28280882
+
+pkgname = perl-www-shorten
+
