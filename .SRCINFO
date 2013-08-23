@@ -1,0 +1,15 @@
+pkgbase = perl-class-insideout
+	pkgdesc = Perl module for safe and simple inside-out objects construction
+	pkgver = 1.13
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-InsideOut
+	arch = any
+	license = Apache
+	depends = perl
+	depends = perl-class-isa
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Class-InsideOut-1.13.tar.gz
+	md5sums = 5b760b74a7c36cd7a5a1f3aa614318da
+
+pkgname = perl-class-insideout
+
