@@ -1,0 +1,14 @@
+pkgbase = gaussianbeam
+	pkgdesc = Gaussian optics simulator
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://gaussianbeam.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4>=4.4
+	source = http://downloads.sourceforge.net/project/gaussianbeam/gaussianbeam/GaussianBeam-0.4/GaussianBeam-0.4.tar.bz2
+	md5sums = d79f743f692dce767fe873ef63f5555a
+
+pkgname = gaussianbeam
+
