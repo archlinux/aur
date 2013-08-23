@@ -1,0 +1,17 @@
+pkgbase = ttf-ingleby
+	pkgdesc = Ingleby font from dafont.com
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dafont.com/ingleby.font
+	install = ttf-ingleby.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = ttf-ingleby.zip::http://img.dafont.com/dl/?f=ingleby
+	source = LICENSE
+	md5sums = efe53e9821d831bf7f41c94e582e9a86
+	md5sums = 5f283b3761250226c5f1316d85cf0265
+
+pkgname = ttf-ingleby
+
