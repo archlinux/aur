@@ -1,0 +1,11 @@
+post_install() {
+  [ -x usr/bin/install-info ] && install-info /usr/share/info/numdiff.info.gz /usr/share/info/dir 2> /dev/null
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  [ -x usr/bin/install-info ] && install-info --delete /usr/share/info/numdiff.info.gz /usr/share/info/dir 2> /dev/null
+}

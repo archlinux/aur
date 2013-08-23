@@ -1,0 +1,16 @@
+pkgbase = numdiff
+	pkgdesc = Program to compare files ignoring small numeric differences
+	pkgver = 5.6.1
+	pkgrel = 1
+	url = http://www.nongnu.org/numdiff/
+	install = numdiff.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gmp
+	depends = gmp
+	source = http://savannah.nongnu.org/download/numdiff/numdiff-5.6.1.tar.gz
+	md5sums = 96b5cae2e6a50a3fd23f1cd9b15798fd
+
+pkgname = numdiff
+
