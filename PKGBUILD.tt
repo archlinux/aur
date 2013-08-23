@@ -1,0 +1,33 @@
+# CPAN Name  : TeX::Encode
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc="Perl module to encode/decode UTF-8 strings into TeX"
+arch=("any")
+url="[% url %]"
+license=("GPL" "PerlArtistic")
+source=([% source %])
+depends=("perl" "perl-html-parser")
+checkdepends=("perl-test-pod-coverage")
+options=(!emptydirs)
+md5sums=("[% md5sums %]")
+
+build() {
+  cd "$srcdir/[% distdir %]"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+check() {
+  cd "$srcdir/[% distdir %]"
+  make test
+}
+
+package() {
+  cd "$srcdir/[% distdir %]"
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

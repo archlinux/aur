@@ -1,0 +1,17 @@
+pkgbase = perl-tex-encode
+	pkgdesc = Perl module to encode/decode UTF-8 strings into TeX
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/TeX-Encode
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-pod-coverage
+	depends = perl
+	depends = perl-html-parser
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMBRODY/TeX-Encode-1.3.tar.gz
+	md5sums = ffc51bdcbfa533e886c47bcfda8cf591
+
+pkgname = perl-tex-encode
+
