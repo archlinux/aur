@@ -1,0 +1,31 @@
+--- xyscanWindow.cpp.orig	2011-05-16 03:22:20.000000000 +0000
++++ xyscanWindow.cpp	2011-06-28 10:51:46.034524709 +0000
+@@ -396,27 +396,9 @@
+ {
+     mHelpBrowser = 0;
+ 
+-    QString path = qApp->applicationDirPath() + "/docs";
++    QString path = "/usr/share/doc/xyscan";
+     QDir dir(path);
+     if (!dir.exists()) {
+-        path = qApp->applicationDirPath() + "/../docs";
+-        dir.setPath(path);
+-    }
+-#if defined(Q_OS_MAC)   
+-    if (!dir.exists()) {
+-        path = qApp->applicationDirPath() + "/../Resources/docs";
+-        dir.setPath(path);
+-    }
+-#endif
+-    //
+-    //  For developing on Mac/Xcode only: avoids having to copy
+-    //  the docs into the build substructure.
+-    //
+-    if (!dir.exists()) { 
+-        path = "/Users/ullrich/Documents/Projects/xyscan/docs";
+-        dir.setPath(path);
+-    }
+-    if (!dir.exists()) {
+         QMessageBox::warning( 0, "xyscan",
+                              tr("Cannot find the directory holding the documentation (docs). "
+                                 "No online help will be available. "

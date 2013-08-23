@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Xyscan
+Categories=Education;Science;Graphics;2DGraphics;
+Comment=Tool to extract data points from graphical plots
+Comment[ru]=Программа для определения координат точек по растровому графику
+TryExec=xyscan
+Exec=xyscan
+Icon=xyscan
