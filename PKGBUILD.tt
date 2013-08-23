@@ -1,0 +1,34 @@
+# CPAN Name  : DBM::Deep
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='A pure Perl multi-level hash/array DBM that supports transactions'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl')
+cheackdepends=('perl-test-deep' 'perl-test-warn' 'perl-test-exception')
+source=([% source %] https://rt.cpan.org/Ticket/Attachment/1216944/642637/pod.patch)
+options=(!emptydirs)
+md5sums=('[% md5sums %]' '33b420e4e89741a42dc18c6337274d69')
+
+build() {
+	cd "$srcdir/[% distdir %]"
+	patch -i "$srcdir/pod.patch" -p1
+	PERL_MM_USE_DEFAULT=1 perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	perl Build
+}
+
+check() {
+	cd "$srcdir/[% distdir %]"
+	perl Build test
+}
+
+package() {
+	cd "$srcdir/[% distdir %]"
+	perl Build install
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

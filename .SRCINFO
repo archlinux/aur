@@ -1,0 +1,17 @@
+pkgbase = perl-dbm-deep
+	pkgdesc = A pure Perl multi-level hash/array DBM that supports transactions
+	pkgver = 2.0009
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBM-Deep
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKINYON/DBM-Deep-2.0009.tar.gz
+	source = https://rt.cpan.org/Ticket/Attachment/1216944/642637/pod.patch
+	md5sums = a5e0aa1d5e835aa1d502e7256b4fb035
+	md5sums = 33b420e4e89741a42dc18c6337274d69
+
+pkgname = perl-dbm-deep
+
