@@ -1,0 +1,61 @@
+# CPAN Name  : PDL
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+# Contributor: Thomas Dziedzic < gostrc at gmail >
+# Contributor: carltonf <xiong[c05]@gmail.com>
+# Contributor: Colin Pitrat <colin.pitrat@gmail.com>
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
+arch=('i686' 'x86_64')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=(
+	'perl>=5.8.9'       # To provide ExtUtils::MakeMaker 3.61
+	'perl-inline>=0.43'
+	'gsl'
+)
+makedepends=(
+	'fftw2'
+	'hdf4'
+	'perl-opengl>=0.63'
+	'plplot'
+	'perl-extutils-f77'
+	'proj'
+)
+optdepends=(
+	'fftw2: for PDL::FFTW support'
+	'hdf4: for HDF files support'
+	'perl-astro-fits-header: improved FITS files support'
+#	'perl-convert-uu: for the case when something wrong with Unicode support'  # It is necessary on *BSD systems
+#	'perl-extutils-f77: for PDL::Slatec and PDL::Minuit support'               # It is not necessary at runtime
+	'perl-opengl>=0.63: for PDL::Graphics::TriD support'
+	'plplot: for PDL::Graphics::PLplot support'
+	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
+)
+
+source=([% source %] perldl.conf pdl-tests.patch)
+changelog='ChangeLog'
+options=(!emptydirs)
+md5sums=('[% md5sums %]' '9caa2b89a7f7aabfd7dcfb2c1ef79bc9' 'a376497f3426ca19ea81a01c2c4f95c2')
+
+build() {
+	cd "$srcdir/[% distdir %]"
+	patch -i $srcdir/pdl-tests.patch -p1
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=$srcdir/perldl.conf
+	make
+}
+
+check() {
+	cd "$srcdir/[% distdir %]"
+	make test
+}
+
+package() {
+	cd "$srcdir/[% distdir %]"
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

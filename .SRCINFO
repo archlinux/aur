@@ -1,0 +1,35 @@
+pkgbase = perl-pdl
+	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
+	pkgver = 2.006
+	pkgrel = 2
+	url = http://search.cpan.org/dist/PDL
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = fftw2
+	makedepends = hdf4
+	makedepends = perl-opengl>=0.63
+	makedepends = plplot
+	makedepends = perl-extutils-f77
+	makedepends = proj
+	depends = perl>=5.8.9
+	depends = perl-inline>=0.43
+	depends = gsl
+	optdepends = fftw2: for PDL::FFTW support
+	optdepends = hdf4: for HDF files support
+	optdepends = perl-astro-fits-header: improved FITS files support
+	optdepends = perl-opengl>=0.63: for PDL::Graphics::TriD support
+	optdepends = plplot: for PDL::Graphics::PLplot support
+	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.006.tar.gz
+	source = perldl.conf
+	source = pdl-tests.patch
+	md5sums = df54b730453325be36b2e98ffe1f004d
+	md5sums = 9caa2b89a7f7aabfd7dcfb2c1ef79bc9
+	md5sums = a376497f3426ca19ea81a01c2c4f95c2
+
+pkgname = perl-pdl
+

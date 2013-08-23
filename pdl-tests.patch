@@ -1,0 +1,62 @@
+From 2a14ed6276b63c0f9642cc38f5874067775535d7 Mon Sep 17 00:00:00 2001
+From: Chris Marshall <devel.chm.01@gmail.com>
+Date: Thu, 28 Mar 2013 09:23:18 -0400
+Subject: [PATCH] Fix %hash randomization bugs in PDL tests
+
+It appears that t/hdr.t and t/niceslice.t tests
+had hash comparison checks assuming (%h1) and (%h2)
+if the two hashes were equal.  This should fix
+perl 5.17.x failures for PDL-2.006
+---
+ t/hdrs.t      |    6 +++++-
+ t/niceslice.t |   10 ++++++++--
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/t/hdrs.t b/t/hdrs.t
+index 15da81e..893edcf 100644
+--- a/t/hdrs.t
++++ b/t/hdrs.t
+@@ -16,7 +16,11 @@ sub hdrcmp {
+   my ($ah,$bh) = map {$_->gethdr} @_;
+ # Copy-by-reference test is obsolete; check contents instead (CED 12-Apr-2003)
+ #   return $ah==$bh
+-  return join("",%{$ah}) eq join("",%{$bh});
++  my %ahh = %{$ah};
++  my (@ahhkeys) = sort keys %ahh;
++  my %bhh = %{$bh};
++  my (@bhhkeys) =  sort keys %bhh;
++  return join("",@bhh{@bhhkeys}) eq join("",@ahh{@ahhkeys});
+ }
+ 
+ print "1..9\n";
+diff --git a/t/niceslice.t b/t/niceslice.t
+index 3f6de15..3c35eee 100644
+--- a/t/niceslice.t
++++ b/t/niceslice.t
+@@ -6,7 +6,7 @@ use PDL::LiteF;
+ BEGIN { 
+     eval 'require PDL::NiceSlice';
+     unless ($@) {
+-	plan tests => 43,
++	plan tests => 44,
+ 	# todo => [37..40],
+     } else {
+ 	plan tests => 1;
+@@ -208,7 +208,13 @@ eval translate_and_show '$b = $a(1:2,pdl(0,2));';
+ # Old hdrcpy test (for copy-by-reference); this is obsolete
+ # with quasi-deep copying.  --CED 11-Apr-2003
+ #   ok (!$@ and $b->gethdr() == $h);
+-ok(!$@ and join("",%{$b->gethdr}) eq join("",%{$h}));
++if ( ok(!$@) ) {
++   my %bh = %{$b->gethdr};
++   my (@bhkeys) = sort keys %bh;
++   my %hh = %{$h};
++   my (@hhkeys) =  sort keys %hh;
++   ok(join("",@bh{@bhkeys}) eq join("",@hh{@hhkeys}));
++}
+ 
+ $a = ones(10);
+ my $i = which $a < 0;
+-- 
+1.7.4.1
+
