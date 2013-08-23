@@ -1,0 +1,17 @@
+pkgbase = perl-cgi-cookie-splitter
+	pkgdesc = Perl package to split big cookies into smaller ones
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CGI-Cookie-Splitter/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-use-ok
+	depends = perl
+	depends = perl-cgi-simple
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/CGI-Cookie-Splitter-0.02.tar.gz
+	md5sums = 0667729771df4aef5d56ee80fb44ac55
+
+pkgname = perl-cgi-cookie-splitter
+
