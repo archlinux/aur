@@ -1,0 +1,21 @@
+pkgbase = perl-template-declare
+	pkgdesc = Pure-Perl declarative HTML/XUL/RDF/XML templating system
+	pkgver = 0.46
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Template-Declare
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-warn>=0.11
+	depends = perl>=5.8.2
+	depends = perl-class-accessor
+	depends = perl-class-data-inheritable
+	depends = perl-class-isa
+	depends = perl-html-lint
+	depends = perl-string-bufferstack>=1.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Template-Declare-0.46.tar.gz
+	md5sums = 3ac9c89cb6000ca7284ad57ed77bba5a
+
+pkgname = perl-template-declare
+
