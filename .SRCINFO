@@ -1,0 +1,13 @@
+pkgbase = cmake-usedoxygen
+	pkgdesc = CMake module to add Doxygen rule into Makefile
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = http://tobias.rautenkranz.ch/cmake/doxygen/
+	arch = any
+	license = BSD
+	depends = cmake
+	source = http://tobias.rautenkranz.ch/cmake/doxygen/releases/UseDoxygen-1.3.3.tar.gz
+	md5sums = 696423a0fb4438ffd88c209f67b41690
+
+pkgname = cmake-usedoxygen
+
