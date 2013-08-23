@@ -1,0 +1,15 @@
+pkgbase = perl-string-bufferstack
+	pkgdesc = Perl module providing a framework for storing nested buffers
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/String-BufferStack
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/String-BufferStack-1.16.tar.gz
+	md5sums = 86bbb4950be7ed63e31e0477a4cd6b1b
+
+pkgname = perl-string-bufferstack
+
