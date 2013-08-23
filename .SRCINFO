@@ -1,0 +1,19 @@
+pkgbase = perl-io-handle-util
+	pkgdesc = Perl module with functions for working with IO::Handle like objects
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IO-Handle-Util
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-use-ok
+	depends = perl
+	depends = perl-asa
+	depends = perl-io-string
+	depends = perl-sub-exporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/IO-Handle-Util-0.01.tar.gz
+	md5sums = ece953bc43c2e5914f92ec186cba0086
+
+pkgname = perl-io-handle-util
+
