@@ -1,0 +1,15 @@
+pkgbase = perl-math-counting
+	pkgdesc = Perl module for combinatorial counting operations
+	pkgver = 0.1303
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Math-Counting
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>5.10.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GE/GENE/Math-Counting-0.1303.tar.gz
+	md5sums = 108316c63bddff9b85345b4789142cc2
+
+pkgname = perl-math-counting
+
