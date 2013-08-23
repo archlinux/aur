@@ -1,0 +1,15 @@
+pkgbase = perl-shell-command
+	pkgdesc = Perl module providing cross-platform functions emulating common shell commands
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Shell-Command
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Shell-Command-0.06.tar.gz
+	md5sums = d3e42d3cb2ea325dc1059bb8706b47bb
+
+pkgname = perl-shell-command
+
