@@ -1,0 +1,17 @@
+pkgbase = perl-file-policy
+	pkgdesc = Perl module providing site policy for file I/O functions
+	pkgver = 1.005
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Policy
+	arch = any
+	license = GPL
+	checkdepends = perl-log-trace
+	checkdepends = perl-test-assertions
+	depends = perl
+	depends = perl-file-slurp
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BB/BBC/File-Policy-1.005.tar.gz
+	md5sums = 735ee869bf623861724bd3960f482e0d
+
+pkgname = perl-file-policy
+
