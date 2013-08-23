@@ -1,0 +1,18 @@
+pkgbase = perl-test-email
+	pkgdesc = Perl module to test Email contents
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Email
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.2
+	depends = perl-mail-pop3client>=2
+	depends = perl-mail-sendmail>=0.79
+	depends = perl-mime-tools>=5.4
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAMES/Test-Email-0.07.tar.gz
+	md5sums = be2f80d2dbdd2f9c3329237402ebcf14
+
+pkgname = perl-test-email
+
