@@ -1,0 +1,19 @@
+pkgbase = lasercalc
+	pkgdesc = A tool to calculate optical paths and resonators based on Gaussian beam matrix optics
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = https://sourceforge.net/apps/phpwebsite/lasercalc/
+	install = lasercalc.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = wxgtk2.9
+	makedepends = autoconf2.13
+	depends = wxgtk2.9
+	source = http://downloads.sourceforge.net/project/lasercalc/lasercalc/0.5.1/lasercalc-0.5.1.tar.gz
+	source = lasercalc.desktop
+	md5sums = 63930093bb5b4e459873a71d3ca3e598
+	md5sums = 73612ba4597ea5c4278390a42caa62ea
+
+pkgname = lasercalc
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=LaserCalc
+GenericName=LaserCalc
+Exec=lasercalc
+Icon=lasercalc
+StartupNotify=false
+Terminal=false
+Categories=Physics;Education;Science
+Comment=Optics Simulator
