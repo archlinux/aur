@@ -1,0 +1,12 @@
+diff -rau gle-graphics-4.2.4c/src/gui/qgslibloader.cpp gle-graphics-4.2.4c-pathed/src/gui/qgslibloader.cpp
+--- gle-graphics-4.2.4c/src/gui/qgslibloader.cpp	2012-02-19 21:07:34.000000000 +0000
++++ gle-graphics-4.2.4c-pathed/src/gui/qgslibloader.cpp	2012-08-08 17:56:27.574528844 +0000
+@@ -279,7 +279,7 @@
+ 			libloc.append("/Ghostscript");
+ 		}
+ 		QByteArray strdata = libloc.toLatin1();
+-		hmodule = dlopen(strdata.constData(), RTLD_NOW);
++		hmodule = dlopen(strdata.constData(), RTLD_NOW | RTLD_DEEPBIND);
+ 	}
+ 	/* Error message if loading fails */
+ 	if (hmodule == NULL) {

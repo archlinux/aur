@@ -1,0 +1,27 @@
+diff -bruN a/src/gle/tex.cpp b/src/gle/tex.cpp
+--- a/src/gle/tex.cpp	2012-01-14 23:46:06.000000000 +0900
++++ b/src/gle/tex.cpp	2013-07-07 01:00:23.397705896 +0900
+@@ -399,11 +399,11 @@
+ 	for (i=0;i<npm;i++) {
+ 		pm[i] = in;
+ 		pmlen[i] = 0;
+-		if (chr_code[(unsigned int)*in]==7) { /* begin group */
++		if (chr_code[(unsigned int)*(uchar*)in]==7) { /* begin group */
+ 			pm[i] = ++in;
+ 			for (;*in!=0;in++) {
+-				if (chr_code[(unsigned int)*in]==7) gcnt++;
+-				if (chr_code[(unsigned int)*in]==8) {
++				if (chr_code[(unsigned int)*(uchar*)in]==7) gcnt++;
++				if (chr_code[(unsigned int)*(uchar*)in]==8) {
+ 					if (gcnt==0) break;
+ 					gcnt--;
+ 				}
+@@ -411,7 +411,7 @@
+ 			pmlen[i] = in - pm[i];
+ 			in++;
+ 		} else {
+-			if (chr_code[(unsigned int)*in]==6) { /* backslash look for non-alpha */
++			if (chr_code[(unsigned int)*(uchar*)in]==6) { /* backslash look for non-alpha */
+ 				pm[i] = ++in;
+ 				if (isalpha(*pm[i])) {
+ 					for (;*in!=0;in++) {

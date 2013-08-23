@@ -1,0 +1,17 @@
+diff --git a/src/gle/gle-poppler.cpp b/src/gle/gle-poppler.cpp
+index cde6b8f..3b04d75 100644
+--- a/src/gle/gle-poppler.cpp
++++ b/src/gle/gle-poppler.cpp
+@@ -330,9 +330,9 @@ void gle_convert_pdf_to_image(char* pdfData,
+     int i_width = gle_round_int(width / PS_POINTS_PER_INCH * resolution);
+     int i_height = gle_round_int(height / PS_POINTS_PER_INCH * resolution);
+     cairo_format_t format = CAIRO_FORMAT_RGB24;
+-	if ((options & GLE_OUTPUT_OPTION_TRANSPARENT) != 0 && device == GLE_DEVICE_PNG) {
+-		format = CAIRO_FORMAT_ARGB32;
+-	}
++//	if ((options & GLE_OUTPUT_OPTION_TRANSPARENT) != 0 && device == GLE_DEVICE_PNG) {
++//		format = CAIRO_FORMAT_ARGB32;
++//	}
+     cairo_surface_t* surface = cairo_image_surface_create(format, i_width, i_height);
+     cairo_t* cr = cairo_create(surface);
+     if (format == CAIRO_FORMAT_RGB24) {
