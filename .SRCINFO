@@ -1,0 +1,15 @@
+pkgbase = gaussianbeam-svn
+	pkgdesc = Gaussian optics simulator
+	pkgver = 137
+	pkgrel = 1
+	url = http://gaussianbeam.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = qt4>=4.4
+	provides = gaussianbeam
+	conflicts = gaussianbeam
+
+pkgname = gaussianbeam-svn
+
