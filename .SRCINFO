@@ -1,0 +1,22 @@
+pkgbase = perl-path-tiny
+	pkgdesc = A small and fast Perl package for working with file paths
+	pkgver = 0.026
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Path-Tiny
+	arch = any
+	license = Apache
+	checkdepends = perl>=5.13.4
+	checkdepends = perl-devel-hide
+	checkdepends = perl-file-pushd
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-failwarnings
+	depends = perl>=5.10.1
+	depends = perl-pathtools>=3.40
+	depends = perl-autodie>=2.14
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Path-Tiny-0.026.tar.gz
+	md5sums = 3b52cfff6bb4edbdf5ca21789cd5bd2e
+
+pkgname = perl-path-tiny
+
