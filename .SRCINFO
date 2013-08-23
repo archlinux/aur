@@ -1,0 +1,13 @@
+pkgbase = bgrep
+	pkgdesc = Binary grep
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/tmbinc/bgrep
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://github.com/tmbinc/bgrep/archive/bgrep-0.2.tar.gz
+	md5sums = 99846d0a782bd72665349fd0269eaf11
+
+pkgname = bgrep
+
