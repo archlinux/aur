@@ -1,0 +1,32 @@
+# CPAN Name  : autodie
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Replace functions with ones that succeed or die with lexical scope'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl>=5.8.8')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+build() {
+  cd "$srcdir/[% distdir %]"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+check() {
+  cd "$srcdir/[% distdir %]"
+  make test
+}
+
+package() {
+  cd "$srcdir/[% distdir %]"
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

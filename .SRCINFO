@@ -1,0 +1,15 @@
+pkgbase = perl-autodie
+	pkgdesc = Replace functions with ones that succeed or die with lexical scope
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://search.cpan.org/dist/autodie
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.8
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PJ/PJF/autodie-2.20.tar.gz
+	md5sums = 9612b13dba42e0259bb8ae58264f8177
+
+pkgname = perl-autodie
+
