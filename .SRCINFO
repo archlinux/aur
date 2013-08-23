@@ -1,0 +1,17 @@
+pkgbase = perl-string-koremutake
+	pkgdesc = Perl module that converts to and from Koremutake Memorable Random Strings
+	pkgver = 0.30
+	pkgrel = 1
+	url = http://search.cpan.org/dist/String-Koremutake
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0.15
+	depends = perl
+	depends = perl-error>=0.15
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/String-Koremutake-0.30.tar.gz
+	md5sums = 9b28d2017b98015f5e1b376324673419
+
+pkgname = perl-string-koremutake
+
