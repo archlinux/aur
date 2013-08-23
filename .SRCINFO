@@ -1,0 +1,15 @@
+pkgbase = gnuplotme
+	pkgdesc = A simple intuitive front-end script for gnuplot
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.jamjoom.net/tools/gnuplotme/gnuplotme.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = perl
+	depends = gnuplot
+	source = http://www.jamjoom.net/tools/gnuplotme/gnuplotme
+	md5sums = 27686ba9e503400323672319151e9c2b
+
+pkgname = gnuplotme
+
