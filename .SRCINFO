@@ -1,0 +1,16 @@
+pkgbase = perl-text-ngram
+	pkgdesc = Perl package for Ngram analysis of text
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Ngram
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AM/AMBS/Text/Text-Ngram-0.14.tar.gz
+	md5sums = 0181102a68f3672b830b1f9e127a7af3
+
+pkgname = perl-text-ngram
+
