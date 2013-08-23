@@ -1,0 +1,41 @@
+pkgbase = perl-jifty-dbi
+	pkgdesc = An object-relational persistence framework for Jifty
+	pkgver = 0.76
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Jifty-DBI
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-warn
+	checkdepends = perl-dbd-sqlite
+	depends = perl
+	depends = perl-cache-simple-timedexpiry>=0.21
+	depends = perl-class-accessor
+	depends = perl-class-data-inheritable
+	depends = perl-class-returnvalue>=0.4
+	depends = perl-class-trigger>=0.12
+	depends = perl-clone
+	depends = perl-dbi
+	depends = perl-dbix-dbschema>=0.34
+	depends = perl-data-page>=2.0
+	depends = perl-datetime>=0.34
+	depends = perl-datetime-format-iso8601
+	depends = perl-datetime-format-strptime
+	depends = perl-exporter-lite
+	depends = perl-hash-merge
+	depends = perl-lingua-en-inflect
+	depends = perl-object-declare>=0.22
+	depends = perl-scalar-defer>=0.1
+	depends = perl-universal-require>=0.11
+	optdepends = perl-cache-memcached: Memcached support
+	optdepends = perl-yaml: YAML filter
+	optdepends = perl-yaml-syck: YAML filter
+	optdepends = perl-time-duration: duration filter
+	optdepends = perl-time-duration-parse>=0.06: duration filter
+	optdepends = perl-uri: URI filter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TS/TSIBLEY/Jifty-DBI-0.76.tar.gz
+	md5sums = 161c0a7545dbd7635c3066696a9fe804
+
+pkgname = perl-jifty-dbi
+
