@@ -1,0 +1,15 @@
+pkgbase = gwydump
+	pkgdesc = A small program to dump Gwyddion .gwy file structure in a human-readable text format
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://gwyddion.net/gwydump.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = glib2
+	source = http://downloads.sourceforge.net/project/gwyddion/gwydump/2.1/gwydump-2.1.tar.xz
+	md5sums = a7bff369b5d8c07974b99b480ff46f01
+
+pkgname = gwydump
+
