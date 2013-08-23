@@ -1,0 +1,33 @@
+pkgbase = perl-pdl-git
+	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
+	pkgver = 20130413.3530
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PDL
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = fftw2
+	makedepends = hdf4
+	makedepends = perl-opengl>=0.63
+	makedepends = plplot
+	makedepends = perl-extutils-f77
+	makedepends = proj
+	depends = perl>=5.8.9
+	depends = perl-inline>=0.43
+	depends = gsl
+	optdepends = fftw2: for PDL::FFTW support
+	optdepends = hdf4: for HDF files support
+	optdepends = perl-astro-fits-header: improved FITS files support
+	optdepends = perl-opengl>=0.63: for PDL::Graphics::TriD support
+	optdepends = plplot: for PDL::Graphics::PLplot support
+	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
+	provides = perl-pdl
+	conflicts = perl-pdl
+	source = perl-pdl::git+git://pdl.git.sourceforge.net/gitroot/pdl/pdl
+	source = perldl.conf
+	md5sums = SKIP
+	md5sums = 9caa2b89a7f7aabfd7dcfb2c1ef79bc9
+
+pkgname = perl-pdl-git
+
