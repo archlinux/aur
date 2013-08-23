@@ -1,0 +1,34 @@
+# CPAN Name  : CGI::Application::Plugin::DBH
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc="Perl package for easy DBI access from CGI::Application"
+arch=("any")
+url="[% url %]"
+license=("PerlArtistic" "GPL")
+depends=("perl>=5.10.1" "perl-cgi-application" "perl-dbi")
+checkdepends=("perl-test-mockobject>=1.20120301" "perl-dbd-mock>=0.11")
+makedepends=("perl")
+source=([% source %])
+options=(!emptydirs)
+md5sums=("[% md5sums %]")
+
+build() {
+  cd "$srcdir/[% distdir %]"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+check() {
+  cd "$srcdir/[% distdir %]"
+  make test
+}
+
+package() {
+  cd "$srcdir/[% distdir %]"
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
