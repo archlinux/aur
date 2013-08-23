@@ -1,0 +1,32 @@
+# CPAN Name  : Test::Script::Run
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc="Perl module helping with scripts testing in your module"
+arch=("any")
+url="[% url %]"
+license=("PerlArtistic" "GPL")
+depends=("perl" "perl-ipc-run3" "perl-test-exception")
+source=([% source %])
+options=(!emptydirs)
+md5sums=("[% md5sums %]")
+
+build() {
+  cd "$srcdir/[% distdir %]"
+  PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+check() {
+  cd "$srcdir/[% distdir %]"
+  make test
+}
+
+package() {
+  cd "$srcdir/[% distdir %]"
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
