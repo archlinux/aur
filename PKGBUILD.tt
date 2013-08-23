@@ -1,0 +1,33 @@
+# CPAN Name  : Email::MIME::CreateHTML
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc="Perl module that allows you to create HTML emails"
+arch=("any")
+url="[% url %]"
+license=("GPL")
+depends=("perl" "perl-data-serializer" "perl-email-mime" "perl-file-policy" "perl-html-tagset" "perl-html-tokeparser-simple>=3.15" "perl-mime-types")
+makedepends=("perl-test-assertions")
+source=([% source %])
+options=(!emptydirs)
+md5sums=("[% md5sums %]")
+
+build() {
+  cd "$srcdir/[% distdir %]"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+check() {
+  cd "$srcdir/[% distdir %]"
+  make test
+}
+
+package() {
+  cd "$srcdir/[% distdir %]"
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

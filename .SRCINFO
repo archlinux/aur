@@ -1,0 +1,21 @@
+pkgbase = perl-email-mime-createhtml
+	pkgdesc = Perl module that allows you to create HTML emails
+	pkgver = 1.030
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Email-MIME-CreateHTML
+	arch = any
+	license = GPL
+	makedepends = perl-test-assertions
+	depends = perl
+	depends = perl-data-serializer
+	depends = perl-email-mime
+	depends = perl-file-policy
+	depends = perl-html-tagset
+	depends = perl-html-tokeparser-simple>=3.15
+	depends = perl-mime-types
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BB/BBC/Email-MIME-CreateHTML-1.030.tar.gz
+	md5sums = 96d9913a62ff1a8621ecd63b6f743cab
+
+pkgname = perl-email-mime-createhtml
+
