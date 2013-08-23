@@ -1,0 +1,15 @@
+pkgbase = perl-algorithm-permute
+	pkgdesc = Perl module for handy and fast permutations with object oriented interface
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Algorithm-Permute/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ED/EDPRATOMO/Algorithm-Permute-0.12.tar.gz
+	md5sums = 93c9e11af9511390379720fe046fb960
+
+pkgname = perl-algorithm-permute
+
