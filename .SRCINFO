@@ -1,0 +1,16 @@
+pkgbase = ttf-andika
+	pkgdesc = A sans serif, Unicode-compliant font designed especially for literacy use
+	pkgver = 1.004
+	pkgrel = 1
+	url = http://scripts.sil.org/andika
+	install = ttf-andika.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-sil-fonts
+	source = andika-1.004.zip::http://scripts.sil.org/cms/scripts/render_download.php?&format=file&media_id=Andika-1.004.zip&filename=Andika-1.004.zip
+	md5sums = f83086975b0fe292dba1749e638ba9f2
+
+pkgname = ttf-andika
+
