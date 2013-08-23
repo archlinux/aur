@@ -1,0 +1,17 @@
+pkgbase = perl-ipc-pubsub
+	pkgdesc = Perl module providing a simple API for publishing messages to channels and for subscribing to them
+	pkgver = 0.29
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IPC-PubSub
+	arch = any
+	license = MIT
+	depends = perl>=5.6.0
+	depends = perl-data-uuid
+	depends = perl-dbm-deep>=1.00
+	depends = perl-class-accessor
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/IPC-PubSub-0.29.tar.gz
+	md5sums = e10d5732307982eff46a4223f05d104f
+
+pkgname = perl-ipc-pubsub
+
