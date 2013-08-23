@@ -1,0 +1,12 @@
+pkgbase = asciidoc-gtk-highlight
+	pkgdesc = CMake module to add Doxygen rule into Makefile
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://launchpad.net/asciidoc-gtk-highlight
+	arch = any
+	license = LGPL
+	source = https://launchpad.net/asciidoc-gtk-highlight/trunk/0.1/+download/asciidoc-gtk-highlight.tar.gz
+	md5sums = 8062eb44841ee6fe7f21a5fa44c6bd9a
+
+pkgname = asciidoc-gtk-highlight
+
