@@ -1,0 +1,16 @@
+pkgbase = perl-algorithm-combinatorics
+	pkgdesc = Perl module for efficient generation of combinatorial sequences
+	pkgver = 0.27
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Algorithm-Combinatorics
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FX/FXN/Algorithm-Combinatorics-0.27.tar.gz
+	md5sums = bada976399f9edfe364d6fcf9e0bcde2
+
+pkgname = perl-algorithm-combinatorics
+
