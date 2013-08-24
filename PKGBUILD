@@ -9,13 +9,13 @@ _TIANO_DIR_="tianocore-edk2-svn"
 _TIANOCORE_PKG="Shell"
 _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _TIANOCORE_TARGET="RELEASE"
-_COMPILER="GCC46"
+_COMPILER="GCC47"
 #######
 
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=14573
+pkgver=14601
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
