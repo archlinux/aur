@@ -10,7 +10,7 @@ _gitbranch="master"
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=35.7.g5d85fe4
+pkgver=36
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
@@ -56,7 +56,16 @@ build() {
 	./autogen.sh
 	echo
 	
-	./configure --enable-manpages --sysconfdir="/etc" --libexecdir="/usr/lib" --libdir="/usr/lib" --bindir="/usr/bin" --sbindir="/usr/bin"
+	./configure \
+		--enable-manpages \
+		--bindir="/usr/bin" \
+		--sbindir="/usr/bin" \
+		--sysconfdir="/etc" \
+		--libdir="/usr/lib" \
+		--libexecdir="/usr/lib" \
+		--with-efi-libdir="/usr/lib" \
+		--with-efi-ldsdir="/usr/lib" \
+		--with-efi-includedir="/usr/include"
 	echo
 	
 	make V=1 -j1
