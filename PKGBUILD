@@ -2,8 +2,8 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.2.4
+pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
 url='http://grails.org/'
@@ -14,7 +14,7 @@ optdepends=('groovy: the groovy programming language'
 options=('!emptydirs')
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/$pkgname-$pkgver.zip"
         "$pkgname.sh")
-sha256sums=('af084206cb134c50cd52e93cd7abb056e55488a8712d247af0d8a60234cdd43a'
+sha256sums=('7453eb23856f4b1acad4b084990f748494b260eb18dfbcdf0c4a28c2f54ce92f'
             '009f00755c1d5312f8ee4ad7e407e3b4a5328b6820e04b94b39750c43fe76d56')
 
 prepare() {
