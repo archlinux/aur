@@ -10,7 +10,7 @@ _TIANO_DIR_="tianocore-edk2-svn"
 _TIANOCORE_PKG="OvmfX64"
 _UDK_TARGET="OvmfPkg/OvmfPkgX64.dsc"
 _TIANOCORE_TARGET="RELEASE"
-_COMPILER="GCC46"
+_COMPILER="GCC47"
 #######
 
 #######
@@ -20,7 +20,7 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=14573
+pkgver=14601
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
