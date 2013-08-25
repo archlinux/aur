@@ -1,0 +1,70 @@
+diff -aur properties-0.1.old/configure.ac properties-0.1/configure.ac
+--- properties-0.1.old/configure.ac	2013-01-01 18:27:55.000000000 +0400
++++ properties-0.1/configure.ac	2013-08-25 16:45:03.000000000 +0400
+@@ -1,31 +1,38 @@
+ AC_PREREQ([2.68])
+ AC_INIT([properties],[0.1],[udo.eisenbarth@arcor.de],[],[http://lasercalc.sourceforge.net])
+ AM_INIT_AUTOMAKE([-Wall -Werror])
++AM_PROG_AR
+ LT_PREREQ([2.4.2])
+ LT_INIT([dlopen])
+ #AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_SRCDIR([src/PropValue.cpp])
+ AC_CONFIG_MACRO_DIR([m4])
+ # Check host system type (windows or linux) and define $host_os
+-AC_CANONICAL_HOST 
++AC_CANONICAL_HOST
+ AC_LANG([C++])
+ AC_PROG_CXX
+ 
+ # Check for wxWidget libraries
+-WX_CONFIG_OPTIONS
+-WX_CONFIG_CHECK(2.9.4,wxWin=1,,[std,propgrid,richtext],$WXOPTIONS)
++AM_OPTIONS_WXCONFIG
++AM_PATH_WXCONFIG(2.9.4, wxWin=1)
++
+ if test "$wxWin" != 1; then
+ 	AC_MSG_ERROR([
+-		wxWidgets must be installed on your system.
+- 
++		wxWidgets must be installed on your system
++		but wx-config script couldn't be found.
++
+ 		Please check that wx-config is in path, the directory
+ 		where wxWidgets libraries are installed (returned by
+-		'wx-config --libs' or 'wx-config --static --libs' command)
+-		is in LD_LIBRARY_PATH or equivalent variable and
+-		wxWidgets version is $reqwx or above.
+-		])
++		'wx-config --libs' command) is in LD_LIBRARY_PATH or
++		equivalent variable and wxWidgets version is 2.3.4 or above.
++	])
+ fi
+-CPPFLAGS="-D__GXX_EXPERIMENTAL_CXX0X__ $WX_CPPFLAGS"
++
++CPPFLAGS="$CPPFLAGS $WX_CPPFLAGS"
++CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS_ONLY"
++CFLAGS="$CFLAGS $WX_CFLAGS_ONLY"
++LIBS="$LIBS $WX_LIBS"
++
+ AC_ARG_ENABLE(debug,
+ [[  --enable-debug   use debug configuration]],
+ [
+@@ -34,7 +41,7 @@
+ [	
+ 	CXXCONF="-O3 -DNDEBUG"
+ ])
+-CXXFLAGS="-std=c++0x -Wall -Wextra -pedantic $CXXCONF"
++CXXFLAGS="-std=c++0x -Wall -Wextra -pedantic $CXXCONF $CXXFLAGS"
+ AC_CONFIG_FILES(Makefile
+                 src/Makefile
+                 include/Makefile)
+diff -aur properties-0.1.old/Makefile.am properties-0.1/Makefile.am
+--- properties-0.1.old/Makefile.am	2012-12-29 17:01:11.000000000 +0400
++++ properties-0.1/Makefile.am	2013-08-25 14:10:32.000000000 +0400
+@@ -1,2 +1,2 @@
+-ACLOCAL_AMFLAGS = -I m4 -I /usr/local/share/aclocal
+-SUBDIRS=src include
+\ No newline at end of file
++ACLOCAL_AMFLAGS=-I m4
++SUBDIRS=src include

@@ -1,0 +1,61 @@
+diff -aur plot-0.6/configure.ac plot-0.6.new/configure.ac
+--- plot-0.6/configure.ac	2012-12-28 22:32:47.000000000 +0400
++++ plot-0.6.new/configure.ac	2013-08-25 18:21:48.428453380 +0400
+@@ -1,30 +1,31 @@
+ AC_PREREQ([2.68])
+ AC_INIT([plot],[0.6],[udo.eisenbarth@arcor.de],[],[http://lasercalc.sourceforge.net])
+ AM_INIT_AUTOMAKE([-Wall -Werror])
++AM_PROG_AR
+ LT_PREREQ([2.4.2])
+ LT_INIT([dlopen])
+ AC_CONFIG_SRCDIR([src/Vector3D.cpp])
+ AC_CONFIG_MACRO_DIR([m4])
+ # Check host system type (windows or linux) and define $host_os
+-AC_CANONICAL_HOST 
++AC_CANONICAL_HOST
+ AC_LANG([C++])
+ AC_PROG_CXX
+ 
+ # Check for wxWidget libraries
+-WX_CONFIG_OPTIONS
+-WX_CONFIG_CHECK(2.9.4,wxWin=1,,[std,propgrid,richtext],$WXOPTIONS)
++AM_OPTIONS_WXCONFIG
++AM_PATH_WXCONFIG(2.9.4, wxWin=1)
+ if test "$wxWin" != 1; then
+ 	AC_MSG_ERROR([
+-		wxWidgets must be installed on your system.
+- 
++		wxWidgets must be installed on your system
++		but wx-config script couldn't be found.
++
+ 		Please check that wx-config is in path, the directory
+ 		where wxWidgets libraries are installed (returned by
+-		'wx-config --libs' or 'wx-config --static --libs' command)
+-		is in LD_LIBRARY_PATH or equivalent variable and
+-		wxWidgets version is $reqwx or above.
+-		])
++		'wx-config --libs' command) is in LD_LIBRARY_PATH or
++		equivalent variable and wxWidgets version is 2.3.4 or above.
++	])
+ fi
+-CPPFLAGS="-D__GXX_EXPERIMENTAL_CXX0X__ $WX_CPPFLAGS -I/usr/local/include"
++
+ AC_ARG_ENABLE(debug,
+ [[  --enable-debug   use debug configuration]],
+ [
+@@ -33,6 +34,7 @@
+ [	
+ 	CXXCONF="-O3 -DNDEBUG"
+ ])
+-CXXFLAGS="-std=c++0x -Wall -Wextra $CXXCONF"
++CPPFLAGS="$WX_CPPFLAGS $CPPFLAGS"
++CXXFLAGS="$WX_CXXFLAGS_ONLY -std=c++0x -Wall -Wextra $CXXCONF $CXXFLAGS"
+ AC_CONFIG_FILES(Makefile include/Makefile src/Makefile)
+ AC_OUTPUT
+diff -aur plot-0.6/Makefile.am plot-0.6.new/Makefile.am
+--- plot-0.6/Makefile.am	2012-12-29 17:02:06.000000000 +0400
++++ plot-0.6.new/Makefile.am	2013-08-25 18:21:52.245082787 +0400
+@@ -1,2 +1,2 @@
+-ACLOCAL_AMFLAGS = -I m4 -I /usr/local/share/aclocal
++ACLOCAL_AMFLAGS=-I m4
+ SUBDIRS=src include

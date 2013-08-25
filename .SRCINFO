@@ -1,19 +1,32 @@
 pkgbase = lasercalc
 	pkgdesc = A tool to calculate optical paths and resonators based on Gaussian beam matrix optics
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.6
+	pkgrel = 1
 	url = https://sourceforge.net/apps/phpwebsite/lasercalc/
 	install = lasercalc.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = wxgtk2.9
-	makedepends = autoconf2.13
 	depends = wxgtk2.9
-	source = http://downloads.sourceforge.net/project/lasercalc/lasercalc/0.5.1/lasercalc-0.5.1.tar.gz
+	source = http://downloads.sourceforge.net/project/lasercalc/lasercalc/0.6/lasercalc_0.6-1.tar.gz
+	source = http://downloads.sourceforge.net/project/lasercalc/lasercalc/0.6/libproperties-0.1.tar.gz
+	source = http://downloads.sourceforge.net/project/lasercalc/lasercalc/0.6/libsaf.0.1.tar.gz
+	source = http://downloads.sourceforge.net/project/lasercalc/lasercalc/0.6/libplot-0.6.tar.gz
 	source = lasercalc.desktop
-	md5sums = 63930093bb5b4e459873a71d3ca3e598
+	source = lasercalc-0.6-libproperties.patch
+	source = lasercalc-0.6-libsaf.patch
+	source = lasercalc-0.6-libplot.patch
+	source = lasercalc-0.6-build.patch
+	md5sums = ece7d77db1d95a07259a79172f80b250
+	md5sums = 83b17c914f9a8f54484c806e20644823
+	md5sums = 11dd24135f8200aff8e64cc499c7330e
+	md5sums = 585ee9c4be758f172c8e72c297afcfa1
 	md5sums = 73612ba4597ea5c4278390a42caa62ea
+	md5sums = 6bc56b784452b40089e4d77b487b2582
+	md5sums = 2325c4e7775d5c1099bff7e195b5e8ca
+	md5sums = 12824bc49db77cf34c1a60447d923142
+	md5sums = 587c7381386cbd3efde97e87d376d101
 
 pkgname = lasercalc
 

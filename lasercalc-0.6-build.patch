@@ -1,0 +1,97 @@
+diff -aur LaserCalc/configure.ac LaserCalc.new/configure.ac
+--- LaserCalc/configure.ac	2013-01-03 22:53:38.000000000 +0400
++++ LaserCalc.new/configure.ac	2013-08-25 18:39:40.371300640 +0400
+@@ -7,30 +7,29 @@
+ AC_CONFIG_SRCDIR([src/LaserCalc.cpp])
+ AC_CONFIG_MACRO_DIR([m4])
+ # Check host system type (windows or linux) and define $host_os
+-AC_CANONICAL_HOST 
++AC_CANONICAL_HOST
+ AC_LANG([C++])
+ AC_PROG_CXX
+ # Check for an installed libSAF
+ #AC_SEARCH_LIBS(assetTest,[saf],,)
+ # Check if Windows build (-> include resource file in this case)
+ AM_CONDITIONAL([WINDOWS], [test "$host_os" = "mingw32"])
++
+ # Check for wxWidget libraries
+-WX_CONFIG_OPTIONS
+-WX_STANDARD_OPTIONS([toolkit,wxshared])
+-WX_CONVERT_STANDARD_OPTIONS_TO_WXCONFIG_FLAGS
+-WX_CONFIG_CHECK(2.9.4,wxWin=1,,[std,propgrid,richtext],$WXCONFIG_FLAGS)
++AM_OPTIONS_WXCONFIG
++AM_PATH_WXCONFIG(2.9.4, wxWin=1)
+ if test "$wxWin" != 1; then
+ 	AC_MSG_ERROR([
+-		wxWidgets must be installed on your system.
+- 
++		wxWidgets must be installed on your system
++		but wx-config script couldn't be found.
++
+ 		Please check that wx-config is in path, the directory
+ 		where wxWidgets libraries are installed (returned by
+-		'wx-config --libs' or 'wx-config --static --libs' command)
+-		is in LD_LIBRARY_PATH or equivalent variable and
+-		wxWidgets version is 2.9.4 or above.
+-		])
++		'wx-config --libs' command) is in LD_LIBRARY_PATH or
++		equivalent variable and wxWidgets version is 2.3.4 or above.
++	])
+ fi
+-WX_DETECT_STANDARD_OPTION_VALUES
++
+ AC_ARG_ENABLE(debug,
+ [[  --enable-debug   compile with debug settings]],
+ [
+@@ -41,12 +40,13 @@
+ [	
+ 	CXXCONF="-O3 -DNDEBUG"
+ ])
+-CPPFLAGS="$CPPFLAGS -D__GXX_EXPERIMENTAL_CXX0X__ $WX_CPPFLAGS -I/usr/local/include"
+-CXXFLAGS="-std=c++0x -Wall -Wextra -pedantic $CXXCONF $WX_CXXFLAGS_ONLY"
+-LIBS="$LIBS $WX_LIBS"
++CPPFLAGS="$WX_CPPFLAGS $CPPFLAGS"
++CXXFLAGS="-std=c++0x -Wall -Wextra -pedantic $CXXCONF $WX_CXXFLAGS_ONLY $CXXFLAGS"
++LIBS="$WX_LIBS `$WX_CONFIG_WITH_ARGS --optional-libs richtext propgrid` $LIBS"
++
+ if  test "$host_os" = "mingw32"; then
+ 	LIBS="$LIBS -static-libgcc -static-libstdc++"
+ fi
++
+ AC_CONFIG_FILES(Makefile src/Makefile help/Makefile doc/examples/Makefile)
+ AC_OUTPUT
+-WX_STANDARD_OPTIONS_SUMMARY_MSG
+diff -aur LaserCalc/Makefile.am LaserCalc.new/Makefile.am
+--- LaserCalc/Makefile.am	2013-01-26 22:16:22.000000000 +0400
++++ LaserCalc.new/Makefile.am	2013-08-25 18:32:06.029083464 +0400
+@@ -1,4 +1,4 @@
+-ACLOCAL_AMFLAGS = -I m4 -I /usr/local/share/aclocal
++ACLOCAL_AMFLAGS=-I m4
+ SUBDIRS=src help doc/examples
+ 
+ dist_pkgdata_DATA= \
+diff -aur LaserCalc/src/Makefile.am LaserCalc.new/src/Makefile.am
+--- LaserCalc/src/Makefile.am	2013-03-03 18:01:44.000000000 +0400
++++ LaserCalc.new/src/Makefile.am	2013-08-25 19:03:54.730297234 +0400
+@@ -127,10 +127,10 @@
+ EXTRA_lasercalc_SOURCES= \
+ 	resources.rc
+ 
+-lasercalc_LDADD=\
+-	/usr/local/lib/libsaf.la \
+-	/usr/local/lib/libproperties.la \
+-	/usr/local/lib/libplot.la
++lasercalc_LDADD = \
++	-lplot \
++	-lsaf \
++	-lproperties
+ 
+ if WINDOWS
+ lasercalc_LDADD+=resources.o
+@@ -159,4 +159,4 @@
+ CLEANFILES = \
+ 	*.gcda \
+ 	*.gcov \
+-	*.gcno
+\ No newline at end of file
++	*.gcno
