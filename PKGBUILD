@@ -5,12 +5,12 @@
 
 pkgname='netflix-desktop'
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An automated script for viewing Netflix through Firefox and patched WINE"
 url="https://launchpad.net/netflix-desktop/"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('wine-silverlight' 'ttf-ms-fonts' 'zenity' 'wget')
+depends=('wine-silverlight' 'ttf-ms-fonts' 'zenity' 'wget' 'python2-pyxattr')
 
 if [[ "$CARCH" == "x86_64" ]]; then
   depends+=(
