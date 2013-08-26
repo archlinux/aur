@@ -5,7 +5,7 @@
 
 pkgname='netflix-desktop'
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An automated script for viewing Netflix through Firefox and patched WINE"
 url="https://launchpad.net/netflix-desktop/"
 arch=('i686' 'x86_64')
@@ -43,16 +43,24 @@ md5sums=('7ce4580a463a61ab3dca713adc3c3bf4'
          'aa3bf2a5686f1b038e1561f8cc28929e'
          '0a4c2ef50831a751dae74315eb066c01')
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  pushd wine-browser-installer
+  sed -i '1s|python|python2|g' test-xattr
+  sed -i -e 's/share\/wine-browser-installer/share\/netflix-desktop/g' download-missing-files
+  sed -i -e '3s/\/var\/lib\/wine-browser-installer/${HOME}\/\.netflix-desktop/g' download-missing-files
+  sed -i 's|var\/lib|usr\/share|g' download-missing-files
+  sed -i '21i cat "${GLOBAL_SUMS}" >> "${SUMS}"' download-missing-files
+  sed -i -e 's/GLOBAL_SUMS="${PKG_DIR/GLOBAL_SUMS="${PKG_DIR/g' download-missing-files
+  echo "a67102a827cfd16430099cf923eb97dd72653d71e7ab1a27e0eab0fa60a7da83  FirefoxSetup.exe      775  http://download.mozilla.org/?product=firefox-18.0.1&os=win&lang=en-US                                                                
+b0e476090206b2e61ba897de9151a31e0182c0e62e8abd528c35d3857ad6131c  SilverlightSetup.exe  775  http://silverlight.dlservice.microsoft.com/download/6/A/1/6A13C54D-3F35-4082-977A-27F30ECE0F34/10329.00/runtime/Silverlight.exe" > sha256sums
+  popd
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
   pushd po
   make
-  popd
-  pushd wine-browser-installer
-  sed -i -e 's/share\/wine-browser-installer/share\/netflix-desktop/g' download-missing-files
-  sed -i -e 's/\/usr\/share\/n/${HOME}\/\.n/g' download-missing-files
-  sed -i -e 's/GLOBAL_SUMS="${INST/GLOBAL_SUMS="${NETF/g' download-missing-files
-  sed -i '4i NETFDIR="/usr/share/netflix-desktop";' download-missing-files
   popd
 }
 
