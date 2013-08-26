@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A C wrapper library for GnuPG"
 arch=('i686' 'x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
-license=('GPL')
+license=('LGPL')
 depends=('libgpg-error' 'pth' 'gnupg>=2')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
