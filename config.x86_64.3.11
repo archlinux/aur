@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 3.11.0-rc5 Kernel Configuration
+# Linux/x86 3.11.0-rc7 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -2422,7 +2422,7 @@ CONFIG_WIL6210_ISR_COR=y
 CONFIG_ATH10K=m
 CONFIG_ATH10K_PCI=m
 # CONFIG_ATH10K_DEBUG is not set
-CONFIG_ATH10K_DEBUGFS=y 
+CONFIG_ATH10K_DEBUGFS=y
 # CONFIG_ATH10K_TRACING is not set
 CONFIG_B43=m
 CONFIG_B43_BCMA=y
