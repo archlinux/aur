@@ -1,0 +1,7 @@
+[Service]
+ExecStart=/usr/bin/mailgraph.pl -l /var/log/everything.log --daemon-rrd /var/lib/mailgraph
+# FIXME: doesn't work
+#ExecStart=/bin/bash -c '/usr/bin/journalctl -af | /usr/bin/mailgraph.pl -c -l -'
+
+[Install]
+WantedBy=multi-user.target
