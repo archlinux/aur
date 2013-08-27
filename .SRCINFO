@@ -1,0 +1,15 @@
+pkgbase = colorpicker-git
+	pkgdesc = A small tool for X11 that writes the color value on your screen at the cursor position to stdout, in RGB.
+	pkgver = 1.0.ba94a3c
+	pkgrel = 2
+	url = https://github.com/mistyhands/colorpicker
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = xclip
+	source = https://github.com/mistyhands/colorpicker/archive/ba94a3c.tar.gz
+	sha1sums = 32866feb566705515401d3bb6d258797871a32ad
+
+pkgname = colorpicker-git
