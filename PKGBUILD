@@ -19,7 +19,7 @@ md5sums=('41a133d43bfcca35470b905c51ed19c2'
          '73e2c353c541bc79db01d40117d92133'
          '6b447bfb0e43256e2bf1d388a1b022d3')
 
-build() {
+package() {
   cd $srcdir
 
   mkdir -p ${pkgdir}/opt/dsassistant
