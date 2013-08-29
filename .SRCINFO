@@ -1,0 +1,20 @@
+pkgbase = wine-browser-installer
+	pkgdesc = Browser installer for wine-silverlight, shared between netflix-desktop and pipelight
+	pkgver = 1
+	pkgrel = 1
+	url = https://launchpad.net/netflix-desktop
+	arch = any
+	license = LGPL2.1
+	license = MIT
+	depends = wine-silverlight
+	depends = ttf-ms-fonts
+	depends = wget
+	source = http://bazaar.launchpad.net/~ehoover/netflix-desktop/trunk/download/head:/hwacceldefault-20130827205229-rdlz1uxnkgfds0az-1/hw-accel-default
+	source = http://bazaar.launchpad.net/~ehoover/netflix-desktop/trunk/download/head:/hwacceldefault-20130827205229-rdlz1uxnkgfds0az-1/gizmos
+	source = http://bazaar.launchpad.net/~ehoover/netflix-desktop/trunk/download/head:/copyright-20121127215043-6ku8w1ub5rzvwo3m-1/copyright
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = wine-browser-installer
+
