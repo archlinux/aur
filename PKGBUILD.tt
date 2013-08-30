@@ -5,28 +5,29 @@
 pkgname=[% pkgname %]
 pkgver=[% pkgver %]
 pkgrel=[% pkgrel %]
-pkgdesc="Perl module to deliver an email to a list of mailboxes"
-arch=("any")
-url="[% url %]"
-license=("PerlArtistic" "GPL")
-depends=("perl" "perl-email-foldertype>=0.7" "perl-email-simple>=1.998" "perl-file-path-expand>=1.01")
+pkgdesc='Perl module to deliver an email to a list of mailboxes'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl>=5.8.8' 'perl-email-foldertype>=0.7' 'perl-email-simple>=1.998' 'perl-file-path-expand>=1.01')
+checkdepends=('perl>=5.13.4' 'perl-capture-tiny')
 source=([% source %])
 options=(!emptydirs)
-md5sums=("[% md5sums %]")
+md5sums=('[% md5sums %]')
 
 build() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
