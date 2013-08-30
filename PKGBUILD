@@ -3,22 +3,23 @@
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=directfb
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
 arch=('i686' 'x86_64')
 url="http://www.directfb.org"
 license=('LGPL')
-depends=('gcc-libs' 'libjpeg' 'sdl' 'libpng' 'freetype2')
+depends=('gcc-libs' 'libjpeg' 'sdl' 'libpng' 'freetype2' 'libdrm' 'libgl' 'mesa')
 options=('!libtool')
 source=(http://www.directfb.org/downloads/Core/DirectFB-${pkgver%.*}/DirectFB-${pkgver}.tar.gz)
-sha1sums=('0433c5999044ec9701481a92e50c0760cdb50c41')
+sha1sums=('095852479098a55be2b0c6a0250af4159ee16e7c')
 
 build() {
   cd DirectFB-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc --enable-static \
     --enable-zlib --enable-x11 --enable-sdl --disable-vnc --disable-osx \
-    --enable-video4linux2 --enable-voodoo
+    --enable-video4linux2 --enable-voodoo \
+    --enable-mesa --enable-drmkms
   make
 } 
 
