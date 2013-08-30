@@ -11,11 +11,14 @@ post_upgrade() {
 }
 
 post_remove() {
-  post_install
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done."
 }
 
 read -d '' eunuch <<"EOF"
-# vim-eunuch-git
+# vim-eunuch
 
 Vim sugar for the UNIX shell commands that need it the most. Commands include:
 
