@@ -100,7 +100,7 @@ EOF
 
 build() {
   cd "${srcdir}/backports-${_upver}"
-  unset _selected_drivers
+  # unset _selected_drivers # WARNING! DEBUGGING UNSET - MAKE SURE THAT THIS LINE IS COMMENTED
   # Get config - not in prepare beause interactive part is using cc
   if [ -n "${_selected_drivers}" ]; then
     msg "Config detected"
