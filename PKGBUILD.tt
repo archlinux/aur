@@ -1,33 +1,33 @@
 # CPAN Name  : Ouch
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
 
-pkgname=perl-ouch
-pkgver=0.0405
-pkgrel=1
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
 pkgdesc="Perl module for exceptions that don't hurt"
 arch=('any')
-url='http://search.cpan.org/dist/Ouch'
+url='[% url %]'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
 checkdepends=('perl-test-trap')
-source=(http://search.cpan.org/CPAN/authors/id/R/RI/RIZEN/Ouch-0.0405.tar.gz)
+source=([% source %])
 options=(!emptydirs)
-md5sums=('6fd3a410e40d20244de4d67fe5b08037')
+md5sums=('[% md5sums %]')
 
 build() {
-  cd Ouch-0.0405
+  cd [% distdir %]
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
-  cd Ouch-0.0405
+  cd [% distdir %]
   make test
 }
 
 package() {
-  cd Ouch-0.0405
+  cd [% distdir %]
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
