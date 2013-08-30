@@ -1,15 +1,18 @@
 pkgbase = perl-email-foldertype
 	pkgdesc = Perl module to determine the type of a mail folder
-	pkgver = 0.813
+	pkgver = 0.814
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Email-FolderType/
+	url = http://search.cpan.org/dist/Email-FolderType
 	arch = any
-	license = GPL
 	license = PerlArtistic
+	license = GPL
+	checkdepends = perl>=5.13.4
+	checkdepends = perl-capture-tiny
 	depends = perl>=5.8.9
+	depends = perl-email-simple
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-FolderType-0.813.tar.gz
-	md5sums = 4d33367e38ec1548737c15ccd200f18c
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-FolderType-0.814.tar.gz
+	md5sums = 952aad6ab391737932dc32c6e5c17d26
 
 pkgname = perl-email-foldertype
 
