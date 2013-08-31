@@ -101,7 +101,7 @@ package_fcitx-gtk3() {
 }
 
 package_fcitx-qt4() {
-  pkgdesc='QT4 IM Module for fcitx'
+  pkgdesc='Qt4 IM Module for fcitx'
   depends=('qt4' "fcitx>=$pkgver")
   replaces=('fcitx-qt')
   provides=('fcitx-qt')
