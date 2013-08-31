@@ -10,24 +10,24 @@ arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-libwww')
-optdepends=("perl-config-auto: for configuration file support")
+optdepends=('perl-config-auto: for configuration file support')
 source=([% source %])
 options=(!emptydirs)
-md5sums=("[% md5sums %]")
+md5sums=('[% md5sums %]')
 
 build() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
