@@ -3,7 +3,7 @@
 pkgname=fcitx-qt5
 pkgver=0.1.1
 pkgrel=5
-pkgdesc="QT5 IM Module for Fcitx"
+pkgdesc="Qt5 IM Module for Fcitx"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
@@ -25,4 +25,5 @@ package() {
   cd "$srcdir/${pkgname}-${pkgver}/build"
   make install DESTDIR="${pkgdir}"
 }
+
 md5sums=('c93a4922ddc4f042749e707673f0fa41')
