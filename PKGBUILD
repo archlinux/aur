@@ -1,12 +1,13 @@
 # Contributor && Maintarner: Swift Geek <swiftgeek ɐt gmail døt com>
 # TODO: ADD parser for config in /etc/makepkg.d/. Use that config instead of auto-detection! tidier code
 # TODO: FIND AND FIX EDGE CASES (EMPTY VARS!) *SPANK*
+# TODO: ALWAYS DELETE SRCDIR contents
 
 pkgname=firefox-nightly-i18n
-pkgver=0
-pkgrel=0
+pkgver=26.0a1
+pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
-url="http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/"
+url="http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
 arch=('i686' 'x86_64')
 license=('MPL')
 depends=('firefox-nightly')
@@ -29,7 +30,7 @@ EOF
 ) | grep ftp.*ftp.*firefox.*langpack.xpi$ | awk -F\. '{print $(NF-2)}' | tr '\n' ' '
 }
 
-package() {
+prepare() {
   cd "${srcdir}"
   msg "Getting LANG-packs list from ftp.mozilla.com…"
   srv_lang_list=($(ls_lang))
@@ -67,13 +68,31 @@ package() {
         menu_lang_list+=($item desc off)
       fi
     done
-    echo ${menu_lang_list[*]}
+    # echo ${menu_lang_list[*]} # DEBUG ECHO!
     # Display dialog
     selected_lang_list=$(dialog --clear --backtitle "$pkgname" --checklist 'Choose langpacks to include' 0 0 0 "${menu_lang_list[@]}" 2>&1 >/dev/tty)
-    echo ${selected_lang_list[*]}
+    msg2 "${selected_lang_list[*]} "
   else
     selected_lang_list=${sys_lang_list[*]}
     msg2 "Assuming auto-detect was good"
   fi
+  #DL
+  msg "Downloading langpacks…"
+  for i in ${selected_lang_list[*]}; do
+    msg2 "${i}…"
+    curl -OR "http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-${CARCH}/xpi/firefox-${pkgver}.${i}.langpack.xpi"
+  done 
+}
 
+package () {
+  cd ${srcdir}
+  install -d ${pkgdir}/opt/firefox-${pkgver}/browser/extensions/
+  install -d ${pkgdir}/opt/firefox-${pkgver}/defaults/pref
+  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/opt/firefox-${pkgver}/defaults/pref/lang-pref.js
+  for item in ${srcdir}/*.xpi; do
+    iitem=$(basename $item)
+    iitem=${iitem/.langpack.xpi/@firefox.mozilla.org.xpi}
+    iitem=${iitem/firefox-${pkgver}./langpack-}
+    install -m644 $item ${pkgdir}/opt/firefox-${pkgver}/browser/extensions/$iitem
+  done
 }
