@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=gitary
 pkgname=$_pkgname-git
-pkgver=13.01.1.gd605beb
+pkgver=13.06.1.g49c5f22
 pkgrel=1
 pkgdesc="A diary using git as its backend"
 arch=('any')
@@ -24,12 +24,8 @@ package() {
   cd "$srcdir/$_pkgname"
 
   install -Dm755 gitary "$pkgdir"/usr/bin/gitary
-  install -Dm644 gitary-functions "$pkgdir"/usr/lib/gitary/gitary-functions
-
   install -Dm644 man1/gitary.1 "$pkgdir"/usr/share/man/man1/gitary.1
-
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
   install -Dm644 vim/ftdetect/gitary.vim \
     "$pkgdir"/usr/share/vim/vimfiles/ftdetect/gitary.vim
   install -Dm644 vim/syntax/gitary.vim \
