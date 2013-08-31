@@ -10,24 +10,24 @@ arch=('any')
 url='[% url %]'
 license=('Apache')
 depends=('perl>=5.10.1')
-checkdepends=('perl-capture-tiny')
+checkdepends=('perl>=5.13.4' 'perl-capture-tiny>=0.12')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
 
 build() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
+  cd [% distdir %]
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
