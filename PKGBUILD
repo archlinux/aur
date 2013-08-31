@@ -1,7 +1,6 @@
 # Contributor && Maintarner: Swift Geek <swiftgeek ɐt gmail døt com>
 # TODO: ADD parser for config in /etc/makepkg.d/. Use that config instead of auto-detection! tidier code
 # TODO: FIND AND FIX EDGE CASES (EMPTY VARS!) *SPANK*
-# TODO: ALWAYS DELETE SRCDIR contents
 
 pkgname=firefox-nightly-i18n
 pkgver=26.0a1
@@ -13,21 +12,22 @@ license=('MPL')
 depends=('firefox-nightly')
 
 countdown() {
-  # TODO: FFS CHECK FOR MAIN PID
   local i 
   for ((i=$1; i>=1; i--)); do
+    [[ ! -e /proc/$$ ]] && exit
     echo -ne "\rPress [i] to start interactive config in $i second(s) or any key to skip "
     sleep 1
   done
 }
 
 ls_lang () {
-(  ftp -in ftp.mozilla.org <<EOF
+{  ftp -in ftp.mozilla.org <<EOF
 user anonymous secrets
 cd /pub/firefox/nightly/latest-mozilla-central-l10n/linux-$CARCH/xpi/
 ls
 EOF
-) | grep ftp.*ftp.*firefox.*langpack.xpi$ | awk -F\. '{print $(NF-2)}' | tr '\n' ' '
+[ "$?" != 0 ] && error "FTP connection failed" && exit 1
+} | grep ftp.*ftp.*firefox.*langpack.xpi$ | awk -F\. '{print $(NF-2)}' | tr '\n' ' '
 }
 
 prepare() {
@@ -72,7 +72,9 @@ prepare() {
     # Display dialog
     selected_lang_list=$(dialog --clear --backtitle "$pkgname" --checklist 'Choose langpacks to include' 0 0 0 "${menu_lang_list[@]}" 2>&1 >/dev/tty)
     msg2 "${selected_lang_list[*]} "
+    [ -z "${selected_lang_list[*]}" ] && error "Nothing was selected" && exit 1
   else
+    [ -z "${sys_lang_list[*]}" ] && exit 1
     selected_lang_list=${sys_lang_list[*]}
     msg2 "Assuming auto-detect was good"
   fi
