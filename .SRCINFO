@@ -1,0 +1,12 @@
+pkgbase = firefox-nightly-i18n
+	pkgdesc = Universal i18n for firefox-nightly - xpi version
+	pkgver = 0
+	pkgrel = 0
+	url = http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-/xpi/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	depends = firefox-nightly
+
+pkgname = firefox-nightly-i18n
+
