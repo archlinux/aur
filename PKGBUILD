@@ -43,6 +43,7 @@ _patchdir="${_cfgdir}/patches/"
 countdown() {
   local i 
   for ((i=$1; i>=1; i--)); do
+    [[ ! -e /proc/$$ ]] && exit
     echo -ne "\rPress [i] to start interactive config in $i second(s) "
     sleep 1
   done
