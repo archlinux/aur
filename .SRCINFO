@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GTK+ is a multi-platform toolkit (v3) (mingw-w64)
-	pkgver = 3.8.2
-	pkgrel = 3
+	pkgver = 3.8.4
+	pkgrel = 1
 	url = http://www.gtk.org
 	arch = any
 	license = LGPL
@@ -18,10 +18,10 @@ pkgbase = mingw-w64-gtk3
 	options = !libtool
 	options = !strip
 	options = !buildflags
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.8/gtk+-3.8.2.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.8/gtk+-3.8.4.tar.xz
 	source = https://git.gnome.org/browse/gtk+/plain/demos/gtk-demo/brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1
 	source = gtk-dont-define-initguid.patch
-	md5sums = 8e878e18fc385f2b813419dc7b40a968
+	md5sums = 2b232d76c01ceb626948bcbe70b05269
 	md5sums = 523aea0be651baaba128c133751a0f01
 	md5sums = 4038939df90f80ea6923d67afff28e03
 
