@@ -1,14 +1,16 @@
 pkgbase = networkmanager-dispatcher-ntpd
 	pkgdesc = Dispatcher Script for ntpd
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnome.org/projects/NetworkManager
 	arch = any
-	license = BSD
+	license = MIT
 	depends = networkmanager
 	depends = ntp
 	source = 10-ntpd
+	source = LICENSE
 	md5sums = 6e2ea87331a44dd83dd992d1ed8363ea
+	md5sums = bade437c691452a83923e5064da20757
 
 pkgname = networkmanager-dispatcher-ntpd
 
