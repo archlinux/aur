@@ -53,11 +53,13 @@ prepare() {
     fi
   done
   msg "Matched LANGs: ${sys_lang_list[*]}"
-
-  countdown 10 & countdown_pid=$!
-  read -s -n 1 -t 10 ikey || true
-  kill $countdown_pid
-  echo -e -n "\n"
+  
+  tty -s && {
+    countdown 10 & countdown_pid=$!
+    read -s -n 1 -t 10 ikey || true
+    kill $countdown_pid
+    echo -e -n "\n"
+  }
 
   if [ "$ikey" = "i" ]; then
     # Pre-select menu items
