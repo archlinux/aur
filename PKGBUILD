@@ -109,6 +109,7 @@ build() {
   else # TODO: else if not that try showing up dialog menu with checkboxes based on available defconfigs ;)
     warning "Config undetected"
     # WAIT 10s FOR INTEACTIVE PART - PRESS I FOR INTERACTIVE CONFIG
+    tty -s # Checks if user input is accesssible, otherwise fail
     countdown 10 & countdown_pid=$!
     read -s -n 1 -t 10 ikey || true
     kill $countdown_pid
