@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-overbite
 	pkgdesc = Gopher plugin for Firefox
 	pkgver = 3.0.1627
-	pkgrel = 2
+	pkgrel = 3
 	url = https://addons.mozilla.org/firefox/addon/7685
 	arch = any
 	license = MPL

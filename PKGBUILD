@@ -8,7 +8,7 @@ license=('MPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://addons.mozilla.org/firefox/addon/$_plugin_id"
 depends=('firefox')
