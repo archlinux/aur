@@ -1,7 +1,7 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
-pkgver=4.0.6
-pkgrel=3
+pkgver=4.0.9
+pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
