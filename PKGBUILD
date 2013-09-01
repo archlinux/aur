@@ -70,6 +70,9 @@ prepare() {
 
   # Why true? cuz pacman is crazy... and it still doesn't work as intended
   true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
+  if [ ! -d $(echo /var/lib/pacman/local/slic3r-xs-git-*.${pkgver##*.}-*) ]; then 
+    error "slic3r-xs-git version doesn't match. Please update it first!"; false; exit 1
+  fi
   export _pkgver="$pkgver"
   msg2 "Fetched $_pkgver"
 }
