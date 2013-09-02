@@ -10,6 +10,8 @@ url="http://www.enlightenment.org"
 license=('GPL3')
 depends=('elementary' 'desktop-file-utils')
 makedepends=('git' 'cmake')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 install=ecrire.install
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
 md5sums=('SKIP')
@@ -33,7 +35,8 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   make
 }
