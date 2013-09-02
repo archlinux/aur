@@ -32,7 +32,8 @@ build() {
   cd "$srcdir/$_pkgname"
 
   PYTHON=/usr/bin/python2 \
-  ./autogen.sh --prefix=/usr
+  ./autogen.sh \
+    --prefix=/usr
 
   make
 }
@@ -41,4 +42,10 @@ package() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
+
+# install text files
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
 }
