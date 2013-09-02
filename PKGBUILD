@@ -1,25 +1,25 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake3-urbanterror
-pkgver=4.1.1
+pkgver=4.2.014
 pkgrel=1
 pkgdesc="Urban Terror is a team-based tactical shooter based on the Quake 3 Engine (Quake3 Mod Version)"
-url="http://www.urbanterror.net/"
-license=('freeware')
-arch=('i686' 'x86_64')
-depends=('quake3' 'curl')
-makedepends=('unzip')
-source=('ftp://ftp.snt.utwente.nl/pub/games/urbanterror/full_install/linux_or_mac/UrbanTerror411.zip')
-md5sums=('722c1fea9936593c9ef039bb068cc33b')
+url="http://www.urbanterror.info/"
+license=('custom')
+arch=('any')
+depends=('quake3')
+source=('http://cdn.urbanterror.info/urt/42/zips/UrbanTerror42_full014.zip')
+sha256sums=('52618f40223baedf37b0a97fc99fd05d3915d20eaff38c71e4eeb66835c7d169')
+PKGEXT='.pkg.tar'
 
-build() {
-    cd $srcdir
+package() {
+    # Create Destination Directory
+    install -d ${pkgdir}/opt/quake3/
 
     # Base UT Files
-    install -d $pkgdir/opt/quake3/
-    mv $srcdir/UrbanTerror/q3ut4 $pkgdir/opt/quake3/
+    mv ${srcdir}/UrbanTerror42/q3ut4 ${pkgdir}/opt/quake3/
 
-    # Clean Up
-    cd $pkgdir/opt/quake3/q3ut4/
-    rm *.url
+    # Install License/Readme File
+    install -D -m644 ${pkgdir}/opt/quake3/q3ut4/readme42.txt \
+        ${pkgdir}/usr/share/licenses/${pkgname}/readme42.txt
 }
