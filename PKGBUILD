@@ -103,7 +103,7 @@ build() {
               --enable-opus \
               --enable-sftp \
               --enable-decklink \
-              --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk" \
+              --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver/.a}/decklink-sdk" \
               LUAC=luac5.1 \
               RCC=/usr/bin/rcc-qt4
 
