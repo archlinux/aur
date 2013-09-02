@@ -1,16 +1,15 @@
 pkgbase = quake-qrp-textures
 	pkgdesc = High Quality Textures for Quake from the Quake Revitalization Project (QRP)
 	pkgver = 1.00
-	pkgrel = 1
-	url = http://facelift.quakedev.com/
+	pkgrel = 2
+	url = http://qrp.quakeone.com/
 	arch = any
 	license = custom
-	makedepends = p7zip
 	depends = quake
-	source = QRP_map_textures_v.1.00.pk3.7z::http://facelift.quakedev.com/downloads/dl_dod.se.php?f=QRP_map_textures_v.1.00.pk3.7z
-	source = QRP_normalmap_textures_add-on_v.1.00.pk3.7z::http://facelift.quakedev.com/downloads/dl_dod.se.php?f=QRP_normalmap_textures_add-on_v.1.00.pk3.7z
-	md5sums = 9958c0130d129aacdb36cbd4a68b1fbb
-	md5sums = ff88d1ef2b3e78560c2bd20843a25424
+	source = http://bfeared.com/library/quake/qrp/QRP_map_textures_v.1.00.pk3.7z
+	source = http://bfeared.com/library/quake/qrp/QRP_normalmap_textures_add-on_v.1.00.pk3.7z
+	sha256sums = ec05b443c77af87d5285f608684c1501158e4a74f03b090115120df7680b990d
+	sha256sums = 474f5845622c71eaf30c9199966ebc53768e5355bf71cdb2b765dae74af4c37e
 
 pkgname = quake-qrp-textures
 
