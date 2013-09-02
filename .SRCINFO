@@ -1,7 +1,7 @@
 pkgbase = wmmail
 	pkgdesc = A WindowMaker dock applet for email reporting.
 	pkgver = 0.64
-	pkgrel = 1
+	pkgrel = 4
 	url = http://dockapps.windowmaker.org/file.php/id/93
 	arch = i686
 	arch = x86_64
@@ -10,14 +10,13 @@ pkgbase = wmmail
 	depends = libxext
 	depends = libxcb
 	depends = libxau
-	depends = windowmaker
 	options = !emptydirs
 	source = WMMail.app-0.64.tar.gz
 	source = wmmail.patch
 	source = system.WMMail
 	source = WMMail.1
 	md5sums = fc596db9f2f6b52eec3a303178106c8e
-	md5sums = 740f3d7e1851cd6b5897ed58f36cbd20
+	md5sums = 88d2beab580f972610165fbc95767031
 	md5sums = 3e4e2e065c6e419a522949cb0afc22d0
 	md5sums = ccaf16328da78a003274f230c3640cdb
 
