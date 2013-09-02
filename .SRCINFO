@@ -1,18 +1,18 @@
 pkgbase = doom3-cdoom
 	pkgdesc = Classic Doom: Doom 1 shareware episode maps recreated for use with Doom 3.
 	pkgver = 1.3.1
-	pkgrel = 1
-	url = http://cdoom.d3files.com/
-	arch = i686
+	pkgrel = 2
+	url = http://www.moddb.com/mods/classic-doom-3
+	arch = any
 	license = custom
-	makedepends = unzip
 	depends = doom3
+	depends = sh
 	source = http://www.slashbunny.com/aur/doom3-cdoom/classic_doom_3_131.zip
 	source = doom3-cdoom.desktop
 	source = doom3-cdoom.launcher
-	md5sums = 7dc67da1a4007e85014de566283d1a41
-	md5sums = fe84fee23843eac65cecdf3e76414184
-	md5sums = bfb9b58d9f2ed85839472848ecfd5a30
+	sha256sums = e771efcb2178389cfd73d4ba59c4b78ce226d42f82ccba9859f597291bbecad5
+	sha256sums = 62f81a078d70b5474f9b6829d76835ea58b50dc40ee120649d7b19d6d456714e
+	sha256sums = 32ed98f373573906d5f5082ad9a09ae0d65e4ae7c47e42cee8468b95e4ce8171
 
 pkgname = doom3-cdoom
 
