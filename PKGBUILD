@@ -4,13 +4,13 @@ pkgname=wmmail
 _appname=WMMail
 _realname=${_appname}.app
 pkgver=0.64
-pkgrel=4
+pkgrel=5
 pkgdesc="A WindowMaker dock applet for email reporting."
 arch=('i686' 'x86_64')
 url="http://dockapps.windowmaker.org/file.php/id/93"
 license=('GPL')
 options=('!emptydirs')
-depends=('libx11' 'libxext' 'libxcb' 'libxau')
+depends=('windowmaker')
 source=("${_realname}-${pkgver}.tar.gz" "${pkgname}.patch" "system.${_appname}" "${_appname}.1")
 md5sums=('fc596db9f2f6b52eec3a303178106c8e'
          '88d2beab580f972610165fbc95767031'
