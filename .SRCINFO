@@ -1,0 +1,21 @@
+pkgbase = savage-xr
+	pkgdesc = The Linux Client for the game Savage XR
+	pkgver = 1.0rc3
+	pkgrel = 1
+	url = http://www.newerth.com
+	install = savage-xr.install
+	arch = i686
+	arch = x86_64
+	license = custom: "Unknown"
+	depends = sdl
+	depends = mesa
+	depends = pcre
+	source = xr_setup-1.0rc3-cl_lin_prod.bin::http://www.newerth.com/?id=downloads&op=downloadFile&file=xr_setup-1.0rc3-cl_lin_prod.bin&mirrorid=3
+	source = savage-xr.desktop
+	source = savage-xr-editor.desktop
+	md5sums = 3dbe7041cd13e2d74e55ad4367178061
+	md5sums = b03a2a0f072d8360fc2eeac9a8000462
+	md5sums = 998bb912dffe9a90e98fc7efb0f42f02
+
+pkgname = savage-xr
+

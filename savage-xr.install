@@ -1,0 +1,14 @@
+post_install() {
+    echo ">>> In order to play Savage XR, add your user to the 'games' group."
+    echo ">>>"
+    echo ">>>  # gpasswd -a USERNAME games"
+    echo ">>>"
+    echo ">>> Remember to logout and log back in for the changes to take effect."
+    echo ">>>"
+    echo ">>> Known issues: the game and autoupdate change permissions on files."
+}
+
+post_remove() {
+    echo "==> To completely remove Savage XR, you will need to manually remove"
+    echo "==>   /opt/savage-xr as root"
+}
