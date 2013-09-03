@@ -2,7 +2,7 @@
 # Contributor: Feufochmar <feufochmar@d-20.fr>
 pkgname=wmnet
 pkgver=1.06
-pkgrel=4
+pkgrel=3
 pkgdesc="A network monitor applet for WindowMaker"
 arch=('i686' 'x86_64')
 url="http://www.katharineosborne.com/wmnet/"
