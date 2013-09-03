@@ -1,8 +1,8 @@
 pkgbase = savage-xr
-	pkgdesc = The Linux Client for the game Savage XR
-	pkgver = 1.0rc3
+	pkgdesc = Savage: The Battle for Newerth is an online multiplayer team-based FPS/RTS hybrid. Completely free as of September 2006. (Includes XR Patches)
+	pkgver = 1.0
 	pkgrel = 1
-	url = http://www.newerth.com
+	url = http://www.newerth.com/
 	install = savage-xr.install
 	arch = i686
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = savage-xr
 	depends = sdl
 	depends = mesa
 	depends = pcre
-	source = xr_setup-1.0rc3-cl_lin_prod.bin::http://www.newerth.com/?id=downloads&op=downloadFile&file=xr_setup-1.0rc3-cl_lin_prod.bin&mirrorid=3
 	source = savage-xr.desktop
 	source = savage-xr-editor.desktop
-	md5sums = 3dbe7041cd13e2d74e55ad4367178061
-	md5sums = b03a2a0f072d8360fc2eeac9a8000462
-	md5sums = 998bb912dffe9a90e98fc7efb0f42f02
+	source = xr_setup-1.0-cl_lin_prod.bin::http://www.newerth.com/?id=downloads&op=downloadFile&file=xr_setup-1.0-cl_lin_prod.bin&mirrorid=3
+	sha256sums = 8955d76ce899af3d8892a470c169bc9a220010d57f610a655d734ca8d10349ad
+	sha256sums = da527fc99a755538fa0d5370e0499fd4e0c75d35e8611cfda092811b84d843b2
+	sha256sums = f9ee596b0a02af69bdca1c51b1a2984edd012f34fb217a20378156ad3f55e380
 
 pkgname = savage-xr
 

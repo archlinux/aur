@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Savage XR
-Exec=/usr/bin/savage-xr.sh
+Exec=/usr/bin/savage-xr
 Icon=/usr/share/pixmaps/savage-xr.xpm
 Type=Application
 Categories=Application;Game

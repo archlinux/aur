@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Savage XR Map Editor
-Exec=/usr/bin/savage-xr.sh mod graveyard
+Exec=/usr/bin/savage-xr mod graveyard
 Icon=/usr/share/pixmaps/savage-xr.xpm
 Type=Application
 Categories=Application;Game;
