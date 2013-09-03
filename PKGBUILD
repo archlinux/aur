@@ -2,7 +2,7 @@
 # Maintainer: Anish Bhatt <anish [at] gatech [dot] edu>
 pkgname=wine-browser-installer
 pkgver=1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Browser installer for wine-silverlight, shared between netflix-desktop and pipelight"
 arch=('any')
@@ -23,8 +23,8 @@ prepare() {
 	sed -i 's|wine-browser-installer|wine-silverlight|g' hw-accel-default
 	sed -i 's|wine-browser-installer|wine-silverlight|g' gizmos
 	sed -i "5 a\# Use [ -t 0 ] only when running manually from command line" hw-accel-default
-	sed -i '7s|^|#|g' hw-accel-default
-	sed -i '9,11s|^|#|g' hw-accel-default
+	sed -i '8s|^|#|g' hw-accel-default
+	sed -i '10,12s|^|#|g' hw-accel-default
 	popd
 }
 
