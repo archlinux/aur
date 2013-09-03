@@ -1,12 +1,12 @@
 # Maintainer: Markus Heidelberg <markus dot heidelberg at web dot de>
 pkgname=javapsionlink-cvs
 pkgver=2.0_beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="Data transfer between Psion EPOC PDA and PC via RS-232; PsiWin clone"
 arch=('any')
 url="http://littlespikeyland.com/psionlink/"
 license=('LGPL')
-depends=('java-runtime' 'rxtx')
+depends=('java-runtime' 'java-rxtx')
 makedepends=('java-environment' 'cvs' 'apache-ant')
 install="javapsionlink.install"
 source=(replace-javax.comm.patch
