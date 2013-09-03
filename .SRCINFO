@@ -1,19 +1,22 @@
 pkgbase = freeciv-svn
 	pkgdesc = A multiuser clone of the famous Microprose game of Civilization
-	pkgver = 12994
+	pkgver = 23273
 	pkgrel = 1
 	url = http://www.freeciv.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = subversion
+	depends = curl
 	depends = gtk2
-	depends = sdl_image
+	depends = imagemagick
 	depends = sdl_mixer
-	depends = freetype2
-	depends = readline
+	depends = hicolor-icon-theme
 	provides = freeciv
 	conflicts = freeciv
+	options = !libtool
+	source = freeciv::svn+http://svn.gna.org/svn/freeciv/trunk
+	sha256sums = SKIP
 
 pkgname = freeciv-svn
 

@@ -1,38 +1,35 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=freeciv-svn
-pkgver=12994 
+pkgver=23273
 pkgrel=1
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization"
 url="http://www.freeciv.org/"
-license="GPL"
+license=('GPL')
 arch=('i686' 'x86_64')
-depends=('gtk2' 'sdl_image' 'sdl_mixer' 'freetype2' 'readline')
+depends=('curl' 'gtk2' 'imagemagick' 'sdl_mixer' 'hicolor-icon-theme')
 makedepends=('subversion')
 conflicts=('freeciv')
 provides=('freeciv')
-source=()
-md5sums=()
+options=('!libtool')
+source=('freeciv::svn+http://svn.gna.org/svn/freeciv/trunk')
+sha256sums=('SKIP')
 
-# Valid Values: gtk, sdl, xaw3d, xaw, win32, ftwl
-_freecivclient=sdl
-
-_svntrunk=http://svn.gna.org/svn/freeciv/trunk
-_svnmod=freeciv
+pkgver() {
+    cd ${srcdir}/freeciv
+    svnversion | tr -d [A-z]
+}
 
 build() {
-	cd $startdir/src
+    cd ${srcdir}/freeciv
 
-	# Get Latest Source Code
-	svn co $_svntrunk --config-dir ./ -r $pkgver $_svnmod
-	cd $_svnmod
+    ./autogen.sh
+    ./configure --prefix=/usr --enable-client=gtk2 --enable-shared --without-ggz-client
+    make
+}
 
-	msg "SVN checkout done or server timeout"
-	msg "Starting make..."
+package() {
+    cd ${srcdir}/freeciv
 
-	# Compile Source
-	./autogen.sh
-	./configure --prefix=/usr --with-readline --enable-client=$_freecivclient
-	make || return 1
-	make DESTDIR=$startdir/pkg/ install
+    make DESTDIR=${pkgdir} install
 }
