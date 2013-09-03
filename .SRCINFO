@@ -1,7 +1,7 @@
 pkgbase = netfabb-basic
 	pkgdesc = view and repair STL files
-	pkgver = 4.9.5
-	pkgrel = 0
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = http://www.netfabb.com/download.php
 	install = netfabb-basic.install
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = netfabb-basic
 	depends = gtk2
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	source = http://www.netfabb.com/download/netfabb_linux.tar.gz
-	md5sums = SKIP
+	source = netfabb-basic_5.0.0_linux32.tar.gz::http://www.netfabb.com/download.php?pikey=WuHOZzhsQZUjHAT
+	md5sums = 8f59b70fae694148d1915560e0e4de99
 
 pkgname = netfabb-basic
 

@@ -1,21 +1,25 @@
 # Maintainer: Swift Geek <swifgeek É google m Ä0m>
 # Contributor: Nick Ã˜stergaard <oe.nick at gmail dot com>
 
+# TODO: move libs to lib32 ?
+# User lib32-gtk2 properly
+
 pkgname=netfabb-basic
-pkgver=4.9.5
-pkgrel=0
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="view and repair STL files"
 arch=('i686' 'x86_64')
 url="http://www.netfabb.com/download.php"
 license=('custom:freeware')
 depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 install='netfabb-basic.install'
-source=('http://www.netfabb.com/download/netfabb_linux.tar.gz')
-md5sums=('SKIP')
+source=("netfabb-basic_${pkgver}_linux32.tar.gz::http://www.netfabb.com/download.php?pikey=WuHOZzhsQZUjHAT")
+md5sums=('8f59b70fae694148d1915560e0e4de99')
 
-if test "$CARCH" == x86_64; then
-  source=('http://www.netfabb.com/download/netfabb_linux64.tar.gz')
-  md5sums=('36577e34a3b51742c3ace44cfd15d794')
+if [ "$CARCH" == x86_64 ] ; then
+#  source=('http://www.netfabb.com/download/netfabb_linux64.tar.gz')
+#  md5sums=('36577e34a3b51742c3ace44cfd15d794')
+   depends[0]="lib32-gtk2"
 fi
 
 prepare() {
