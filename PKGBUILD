@@ -3,8 +3,8 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.10
-pkgver=3.10.10
+_srcname=linux-3.11
+pkgver=3.11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,36 +12,33 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'criu-no-expert.patch'
-        '3.10.6-logitech-dj.patch')
-md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         'd010ef17d3e577fd1bdcb6887f2b9836'
-         '09aad29932fe0d1aa765b314800db9a8'
-         '5ffd739d5b3e7c68bf07472aaceca400'
+        'criu-no-expert.patch')
+md5sums=('fea363551ff45fbe4cb88497b863b261'
+         '101831e5062bf569b10f2ae59be49a49'
+         '6f9ee333fd72f1177f2cac8788fd3d7e'
          'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c'
-         'd50c1ac47394e9aec637002ef3392bd1'
-         '3ff40ca684cfe719723e627e2cef7cea')
+         '98beb36f9b8cf16e58de2483ea9985e3'
+         'd50c1ac47394e9aec637002ef3392bd1')
 
 _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# 8eff46fa6e5604112ea3d0d0848c0005  /lib/modules/3.10.8-1-ARCH/modules.symbols
+# 0a8cb1a1b982705859c7d3f9e08f62a6  /lib/modules/3.11.0-1-ARCH/modules.symbols
 # i686
-# bba2399c1ae0183280c52dffe95f77a2  /lib/modules/3.10.8-1-ARCH/modules.symbols
+# ab1720bb0151dcf057761a402f61b6d5  /lib/modules/3.11.0-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -54,9 +51,6 @@ prepare() {
   # allow criu without expert option set
   # patch from fedora
   patch -Np1 -i "${srcdir}/criu-no-expert.patch"
- 
-  # fix FS#35991 - [linux] 3.10.x renders Logitech Unified Receivers useless
-  patch -Np1 -i  "${srcdir}/3.10.6-logitech-dj.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
