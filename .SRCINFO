@@ -1,7 +1,7 @@
 pkgbase = wmwifi
 	pkgdesc = A wireless network interface monitor dockapp for Window Maker
 	pkgver = 0.6
-	pkgrel = 4
+	pkgrel = 3
 	url = http://dockapps.org/file.php/id/222
 	arch = i686
 	arch = x86_64
