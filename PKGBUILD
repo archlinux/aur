@@ -49,7 +49,8 @@ build() {
 	--prefix=/usr \
 	--sbindir=/usr/bin \
 	--sysconfdir=/etc \
-	--disable-grub2
+	--disable-grub2 \
+	--disable-consolekit
 
   make
 }
