@@ -12,6 +12,7 @@ url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('elementary')
+  [[ ! $(pacman -T ekbd-svn) ]] && depends+=('ekbd-svn')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
