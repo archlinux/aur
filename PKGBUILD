@@ -36,7 +36,8 @@ build () {
   ./autogen.sh \
 	--prefix=/usr \
 	--sbindir=/usr/bin \
-	--sysconfdir=/etc
+	--sysconfdir=/etc \
+	--disable-grub2
 
   make
 }
