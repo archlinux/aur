@@ -31,7 +31,15 @@ pkgver() {
   echo $_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build () {
+prepare() {
+  sed -e '/"session_path"/ s|/bin:/usr/bin:/usr/local/bin|/usr/local/sbin:/usr/local/bin:/usr/bin|' \
+      -e '/"shutdown"/ s|/sbin/shutdown -h now|/usr/bin/systemctl poweroff|' \
+      -e '/"reboot"/ s|/sbin/shutdown -r now|/usr/bin/systemctl reboot|' \
+      -e '/"suspend"/ s|/usr/sbin/pm-suspend|/usr/bin/systemctl suspend|' \
+      -i "$srcdir/$_pkgname/data/entrance.conf"
+}
+
+build() {
   cd "$srcdir/$_pkgname"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
