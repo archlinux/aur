@@ -4,16 +4,17 @@
 # Contributor: Swift Geek <swiftgeek+spam@gmail.com>
 
 pkgname=entrance-git
-_pkgname=entrance
-pkgver=0.0.4.19.7fd0458
-pkgrel=2
+_pkgname=${pkgname%-*}
+pkgver=0.0.4.30.e51ff8c
+pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://trac.enlightenment.org/e"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('elementary')
 makedepends=('git')
-conflicts=('entrance-svn')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/misc/$_pkgname.git"
         'entrance-pam'
         'entrance.service')
