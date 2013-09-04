@@ -15,6 +15,7 @@ depends=('elementary')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+backup=('etc/entrance.conf')
 source=("git://git.enlightenment.org/misc/$_pkgname.git"
         'entrance-pam'
         'entrance.service')

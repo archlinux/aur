@@ -10,6 +10,7 @@ pkgbase = entrance-git
 	depends = elementary
 	provides = entrance=0.0.4.30.e51ff8c
 	conflicts = entrance
+	backup = etc/entrance.conf
 	source = git://git.enlightenment.org/misc/entrance.git
 	source = entrance-pam
 	source = entrance.service
