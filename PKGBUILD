@@ -17,7 +17,7 @@ license=('LGPL2.1')
 depends=('popt')
 conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
 provides=("${_pkgname}" 'libefivar' 'libefivar-git')
-options=('strip' 'emptydirs' 'zipman' 'libtool' 'docs')
+options=('!strip' 'emptydirs' 'zipman' 'libtool' 'docs' '!makeflags')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
@@ -37,11 +37,11 @@ build() {
 	git clean -x -d -f
 	echo
 	
-	# unset CFLAGS
-	# unset CPPFLAGS
-	# unset CXXFLAGS
-	# unset LDFLAGS
-	# unset MAKEFLAGS
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
 	
 	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_gitname}_build/src/test/Makefile" || true
 	

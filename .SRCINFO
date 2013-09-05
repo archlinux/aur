@@ -13,11 +13,12 @@ pkgbase = efivar-git
 	conflicts = efivar
 	conflicts = libefivar
 	conflicts = libefivar-git
-	options = strip
+	options = !strip
 	options = emptydirs
 	options = zipman
 	options = libtool
 	options = docs
+	options = !makeflags
 	source = efivar::git+https://github.com/vathpela/efivar.git#branch=master
 	sha1sums = SKIP
 
