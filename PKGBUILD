@@ -1,29 +1,32 @@
 # Maintainer : Keshav Padram Amburay <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
-_pkgname="efibootmgr"
+__pkgname="efibootmgr"
+_pkgname="${__pkgname}-pjones"
 pkgname="${_pkgname}-git"
 
-pkgver=0.6.0.1.gf38f4aa
+_gitroot="https://github.com/vathpela/efibootmgr.git"
+_gitname="${_pkgname}"
+_gitbranch="libefivars"
+
+pkgver=0.17666f3
 pkgrel=1
-pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT Version"
+pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - Built from Fedora's Peter Jones GitHub Repo - libefivars branch"
 arch=('x86_64' 'i686')
-url="http://linux.dell.com/git/efibootmgr.git"
+url="https://github.com/vathpela/efibootmgr"
 license=('GPL2')
 makedepends=('git')
-depends=('pciutils')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-options=('strip' 'zipman' '!emptydirs' '!libtool')
+depends=('pciutils' 'efivar')
+conflicts=("${__pkgname}" "${__pkgname}-git" "${_pkgname}")
+provides=("${__pkgname}" "${__pkgname}-git" "${_pkgname}")
+options=('!strip' 'zipman' '!emptydirs' '!libtool')
 
-source=('efibootmgr::git+git://linux.dell.com/efibootmgr.git#branch=master')
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
-
-_gitname="${_pkgname}"
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags)" | sed -e 's|Release_||g' -e 's|_|.|g' -e 's|-|.|g'
+	echo "0.$(git describe --always)"
 }
 
 build() {
