@@ -1,7 +1,7 @@
 pkgbase = wmudmount
 	pkgdesc = A filesystem mounter dockapp that uses udisks.
 	pkgver = 1.13
-	pkgrel = 3
+	pkgrel = 2
 	url = http://sourceforge.net/projects/wmudmount/
 	install = wmudmount.install
 	arch = i686
