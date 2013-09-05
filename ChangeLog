@@ -1,3 +1,12 @@
+2013-09-05 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.1-1 :
+	Version bump.
+
+	Upstream changes:
+	- Compatible with Minecraft snapshot 13w36a.
+	- The colors have all been changed to match minecraft's "official" biome colors.
+
 2013-08-11 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.0-1 :
