@@ -9,7 +9,7 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=0.4.24.gd8356a3
+pkgver=0.5
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
