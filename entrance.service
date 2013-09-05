@@ -1,6 +1,5 @@
 [Unit]
 Description=Enlightenment Display Manager
-Conflicts=getty@tty1.service
 After=systemd-user-sessions.service
 
 [Service]

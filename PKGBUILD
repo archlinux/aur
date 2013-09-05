@@ -20,7 +20,7 @@ backup=('etc/entrance.conf')
 source=("git://git.enlightenment.org/misc/$_pkgname.git"
         'entrance.service')
 md5sums=('SKIP'
-         '257ac00eb2fe4c6b7578094ff1a90a0d')
+         'a64b761bb312d9685705232618f57d84')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

@@ -14,7 +14,7 @@ pkgbase = entrance-git
 	source = git://git.enlightenment.org/misc/entrance.git
 	source = entrance.service
 	md5sums = SKIP
-	md5sums = 257ac00eb2fe4c6b7578094ff1a90a0d
+	md5sums = a64b761bb312d9685705232618f57d84
 
 pkgname = entrance-git
 
