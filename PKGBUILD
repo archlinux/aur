@@ -9,7 +9,7 @@ _gitroot="https://github.com/vathpela/efibootmgr.git"
 _gitname="${_pkgname}"
 _gitbranch="libefivars"
 
-pkgver=0.17666f3
+pkgver=0.010cc54
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - Built from Fedora's Peter Jones GitHub Repo - libefivars branch"
 arch=('x86_64' 'i686')
