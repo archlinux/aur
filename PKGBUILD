@@ -1,11 +1,11 @@
 # Maintainer : Keshav Padram Amburay <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="git://github.com/vathpela/efivar.git"
-_gitname="efivar"
-_gitbranch="master"
-
 _pkgname="efivar"
 pkgname="${_pkgname}-git"
+
+_gitroot="https://github.com/vathpela/efivar.git"
+_gitname="${_pkgname}"
+_gitbranch="master"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
@@ -37,11 +37,11 @@ build() {
 	git clean -x -d -f
 	echo
 	
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
+	# unset CFLAGS
+	# unset CPPFLAGS
+	# unset CXXFLAGS
+	# unset LDFLAGS
+	# unset MAKEFLAGS
 	
 	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_gitname}_build/src/test/Makefile" || true
 	

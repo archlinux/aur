@@ -18,7 +18,7 @@ pkgbase = efivar-git
 	options = zipman
 	options = libtool
 	options = docs
-	source = efivar::git+git://github.com/vathpela/efivar.git#branch=master
+	source = efivar::git+https://github.com/vathpela/efivar.git#branch=master
 	sha1sums = SKIP
 
 pkgname = efivar-git
