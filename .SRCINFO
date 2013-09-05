@@ -8,6 +8,7 @@ pkgbase = entrance-git
 	license = GPL3
 	makedepends = git
 	depends = elementary
+	depends = xorg-xauth
 	provides = entrance=0.0.4.40.6da13be
 	conflicts = entrance
 	backup = etc/entrance.conf

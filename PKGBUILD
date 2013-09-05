@@ -11,7 +11,7 @@ pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('elementary')
+depends=('elementary' 'xorg-xauth')
   [[ ! $(pacman -T ekbd-svn) ]] && depends+=('ekbd-svn')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
