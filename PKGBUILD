@@ -58,6 +58,9 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+# install correct PAM file
+  install -Dm644 "data/entrance.other" "$pkgdir/etc/pam.d/entrance"
+
 # install systemd files
   install -Dm644 "$srcdir/entrance.service" "$pkgdir/usr/lib/systemd/system/entrance.service"
 
