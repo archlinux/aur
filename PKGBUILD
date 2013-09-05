@@ -5,7 +5,7 @@
 
 pkgname=entrance-git
 _pkgname=${pkgname%-*}
-pkgver=0.0.4.30.e51ff8c
+pkgver=0.0.4.40.6da13be
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -18,10 +18,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/entrance.conf')
 source=("git://git.enlightenment.org/misc/$_pkgname.git"
-        'entrance-pam'
         'entrance.service')
 md5sums=('SKIP'
-         '9a76cae5b3a0fcbb6116fa08c7a587b5'
          '257ac00eb2fe4c6b7578094ff1a90a0d')
 
 pkgver() {
@@ -59,9 +57,6 @@ package() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
-
-# install pam file
-  install -Dm644 "$srcdir/entrance-pam" "$pkgdir/etc/pam.d/entrance"
 
 # install systemd files
   install -Dm644 "$srcdir/entrance.service" "$pkgdir/usr/lib/systemd/system/entrance.service"
