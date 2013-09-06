@@ -9,7 +9,7 @@ _gitbranch="master"
 
 pkgdesc="Library to manipulate EFI variables - GIT Version"
 
-pkgver=0.5.4.g5f3a15f
+pkgver=0.5.5.ga7b98d5
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
@@ -37,7 +37,7 @@ build() {
 	git clean -x -d -f
 	echo
 	
-	git revert --no-edit 5f3a15fbad2eedfc23ad3f63e2a8e304c08141e8
+	# git revert --no-edit 5f3a15fbad2eedfc23ad3f63e2a8e304c08141e8
 	echo
 	
 	unset CFLAGS
