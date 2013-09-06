@@ -37,6 +37,9 @@ build() {
 	git clean -x -d -f
 	echo
 	
+	git revert --no-edit 5f3a15fbad2eedfc23ad3f63e2a8e304c08141e8
+	echo
+	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
