@@ -1,6 +1,6 @@
 pkgbase = efivar-git
 	pkgdesc = Library to manipulate EFI variables - GIT Version
-	pkgver = 0.5
+	pkgver = 0.5.4.g5f3a15f
 	pkgrel = 1
 	url = https://github.com/vathpela/efivar
 	arch = x86_64
