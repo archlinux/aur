@@ -1,5 +1,5 @@
 diff --git a/src/lib/efi.c b/src/lib/efi.c
-index cc8a73a..08a98b1 100644
+index cc8a73a..c34d29f 100644
 --- a/src/lib/efi.c
 +++ b/src/lib/efi.c
 @@ -476,7 +476,7 @@ make_disk_load_option(char *disk, uint8_t *buf, size_t size)
@@ -11,15 +11,17 @@ index cc8a73a..08a98b1 100644
  	size_t needed = 0;
  	off_t buf_offset = 0;
  
-@@ -519,10 +519,14 @@ make_disk_load_option(char *disk, uint8_t *buf, size_t size)
+@@ -519,10 +519,15 @@ make_disk_load_option(char *disk, uint8_t *buf, size_t size)
  		return needed;
  	buf_offset += needed;
  
-+	os_loader_path = calloc(strlen(opts.loader)+1, sizeof(*os_loader_path));
++	needed = (strlen(opts.loader) + 1) * sizeof (*os_loader_path);
++	os_loader_path = malloc(needed);
 +	if (!os_loader_path)
 +		return -1;
  	efichar_from_char(os_loader_path, tilt_slashes(opts.loader),
- 			sizeof(os_loader_path));
+-			sizeof(os_loader_path));
++			needed);
  	needed = make_file_path_device_path(os_loader_path, buf + buf_offset,
  					size == 0 ? 0 : size - buf_offset);
 +	free(os_loader_path);

@@ -22,7 +22,7 @@ pkgbase = efibootmgr-pjones-git
 	source = efibootmgr-pjones::git+https://github.com/vathpela/efibootmgr.git#branch=libefivars
 	source = efibootmgr-remove-loader-path-chars-limit.patch
 	sha1sums = SKIP
-	sha1sums = f52fe466a80e9f06d6f8301966a080d2d9836a73
+	sha1sums = 57cb0e01d9c102491fc1758766f530813cad97d2
 
 pkgname = efibootmgr-pjones-git
 

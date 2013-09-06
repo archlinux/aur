@@ -25,7 +25,7 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'efibootmgr-remove-loader-path-chars-limit.patch')
 
 sha1sums=('SKIP'
-          'f52fe466a80e9f06d6f8301966a080d2d9836a73')
+          '57cb0e01d9c102491fc1758766f530813cad97d2')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
