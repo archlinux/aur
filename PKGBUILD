@@ -9,7 +9,7 @@ _gitroot="https://github.com/vathpela/efibootmgr.git"
 _gitname="${_pkgname}"
 _gitbranch="libefivars"
 
-pkgver=0.6.0.134.c516322
+pkgver=0.6.0.136.867bfd5
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - Built from Fedora's Peter Jones GitHub Repo - libefivars branch"
 arch=('x86_64' 'i686')
@@ -21,8 +21,11 @@ conflicts=("${__pkgname}" "${__pkgname}-git" "${_pkgname}")
 provides=("${__pkgname}" "${__pkgname}-git" "${_pkgname}")
 options=('!strip' 'zipman' '!emptydirs' '!libtool')
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
-sha1sums=('SKIP')
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'efibootmgr-remove-loader-path-chars-limit.patch')
+
+sha1sums=('SKIP'
+          'f52fe466a80e9f06d6f8301966a080d2d9836a73')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -42,6 +45,9 @@ build() {
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build/"
+	
+	patch -Np1 -i "${srcdir}/efibootmgr-remove-loader-path-chars-limit.patch"
+	echo
 	
 	make EXTRA_CFLAGS="-Os"
 	echo
