@@ -32,8 +32,8 @@ files as follows:
  - `pdf-decrypt.desktop` -> `/usr/share/applications/pdf-decrypt.desktop`
  - `pdf-decrypt.png` -> `/usr/share/pixmaps/pdf-decrypt.png`
 
-Usage
------
+Usage:
+------
 
 ```bash
 pdf-decrypt encrypted.pdf
