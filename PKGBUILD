@@ -2,7 +2,7 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-testing
-pkgver=9.3beta1
+pkgver=9.3.0
 pkgrel=1
 _majorver=9.3
 pkgdesc="Beta version of the PostgreSQL database (includes both server and libs)"
@@ -16,7 +16,7 @@ makedepends=('python2' 'perl')
 optdepends=('python2: for PL/Python support'
             'perl: for PL/Perl support')
 conflicts=('postgresql-libs' 'postgresql' 'postgresql-testing')
-provides=("postgresql-libs=$_pkgver" "postgresql=$_pkgver")
+provides=("postgresql-libs=$pkgver" "postgresql=$pkgver")
 source=("http://ftp.postgresql.org/pub/source/v$pkgver/postgresql-$pkgver.tar.bz2"
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
@@ -67,7 +67,7 @@ package() {
   install -D -m644 "${srcdir}/postgresql.logrotate" \
     "${pkgdir}/etc/logrotate.d/postgresql"
 }
-md5sums=('f11cfe12cf04b5bf7f94de79e4ef7ec6'
+md5sums=('09aee56f3a15ce4a7ea32044fb845b53'
          '75c579eed03ffb2312631f0b649175b4'
          '96f82c38f3f540b53f3e5144900acf17'
          'd28e443f9f65a5712c52018b84e27137'
