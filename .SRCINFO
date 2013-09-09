@@ -1,15 +1,15 @@
 pkgbase = wine-browser-installer
 	pkgdesc = Browser installer for wine-silverlight, shared between netflix-desktop and pipelight
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/netflix-desktop
 	arch = any
 	license = LGPL2.1
 	license = MIT
 	depends = ttf-ms-fonts
 	depends = wget
-	source = https://launchpad.net/netflix-desktop/trunk/0.8.4/+download/netflix-desktop.tar.gz
-	md5sums = 2c7812e368ea681fb22a1f904c1bc6fc
+	source = https://launchpad.net/netflix-desktop/trunk/0.8.5/+download/netflix-desktop.tar.gz
+	md5sums = 139aa89ce9536ff860445ec67777f81a
 
 pkgname = wine-browser-installer
 
