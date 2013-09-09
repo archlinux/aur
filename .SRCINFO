@@ -1,0 +1,20 @@
+pkgbase = kcc
+	pkgdesc = Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/ciromattia/kcc
+	arch = any
+	license = ISC
+	makedepends = python2-cx_freeze
+	depends = python2
+	depends = python2-pillow
+	depends = python2-pyqt4
+	optdepends = kindlegen: for .mobi generation
+	optdepends = unrar: for CBR/RAR support
+	options = !strip
+	source = https://github.com/ciromattia/kcc/archive/3.2.1.tar.gz
+	md5sums = 682fe6a11ba004728aad1784e4a3da09
+	sha256sums = 7b30a59cf663489b19edc3109909ab6a05ad4c78e4b781c97e92ab9b819837d1
+
+pkgname = kcc
+
