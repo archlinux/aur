@@ -2,7 +2,7 @@
 # Maintainer: Anish Bhatt <anish [at] gatech [dot] edu>
 pkgname=wine-browser-installer
 pkgver=1
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Browser installer for wine-silverlight, shared between netflix-desktop and pipelight"
 arch=('any')
@@ -33,6 +33,14 @@ prepare() {
 	sed -i '4s|^|WINEARCH=win32 |g' wine-silverlight4-installer.install-script
 	sed -i '6s|^|WINEARCH=win32 |g' wine-silverlight4-installer.install-script
 	sed -i '6s|@@PACKAGE@@|SilverlightSetup|g' wine-silverlight4-installer.install-script
+
+	sed -i '4s|^|WINEARCH=win32 |g' wine-silverlight5.1-installer.install-script
+	sed -i '6s|^|WINEARCH=win32 |g' wine-silverlight5.1-installer.install-script
+	sed -i '6s|@@PACKAGE@@|wine-silverlight5.1-installer.exe|g' wine-silverlight5.1-installer.install-script
+
+        sed -i '4s|^|WINEARCH=win32 |g' wine-silverlight5.0-installer.install-script
+        sed -i '6s|^|WINEARCH=win32 |g' wine-silverlight5.0-installer.install-script
+        sed -i '6s|@@PACKAGE@@|wine-silverlight5.0-installer.exe|g' wine-silverlight5.0-installer.install-script
 }
 
 package() {
@@ -46,6 +54,8 @@ package() {
 	popd
 	pushd debian
 	install -Dm755 wine-silverlight4-installer.install-script "${pkgdir}"/usr/share/wine-silverlight/.
+	install -Dm755 wine-silverlight5.1-installer.install-script "${pkgdir}"/usr/share/wine-silverlight/.
+	install -Dm755 wine-silverlight5.0-installer.install-script "${pkgdir}"/usr/share/wine-silverlight/.
 	popd
         # Install MIT license
         install -Dm644 "debian/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/Copyright.txt"
