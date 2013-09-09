@@ -45,9 +45,10 @@ LOCAL_SUMS="${WINEPREFIX}/wine-browser-installer.sha256sums";
 SHOWDEBUG="0";
 RELAYLOG="0";
 ${PKG_DIR}/hw-accel-default; HW_ACCELERATION_DISABLED=$?;
+HW_ACCELERATION_DISABLED=1;
 HW_ACCELERATION_FORCED="0";
 ALLOW_ADDONS="0";
-USE_PIPELIGHT="1";
+USE_PIPELIGHT="0";
 WINDOW_MODE="fullscreen";
 SUDO=$(which gksudo 2>/dev/null);
 if [ "${SUDO}" = "" ]; then
@@ -274,9 +275,17 @@ if [ "${CHECKSUMS_MATCH}" -eq "1" ]; then
 	(
 		echo "1";
 #		${WINE} wineboot -i > /dev/null;
-#		for DEP in $DEPENDENCIES; do
-			"${PKG_DIR}/install-dependency" wine-silverlight4-installer;
-#		done
+		"${PKG_DIR}/install-dependency" wine-silverlight4-installer;
+		SILVERLIGHT_VERSION="4.1.10329.0"
+		# Configure the plugin registry key for the Windows Firefox version
+		tmpfile="/tmp/wine-browser.$$.reg";
+		cat >"${tmpfile}" <<-EOF
+			REGEDIT4
+
+			[HKEY_LOCAL_MACHINE\\Software\\MozillaPlugins\\@Microsoft.com/NpCtrl,version=1.0]
+			"Path"="C:\\\\Program Files\\\\Silverlight\\\\${SILVERLIGHT_VERSION}\\\\npctrl.dll"
+		EOF
+		${WINE} regedit ${tmpfile};
 		echo "100";
 	) | zenity --progress --pulsate --no-cancel --auto-close --text="${TASK}";
 	touch ${WINEPREFIX}/run
@@ -403,9 +412,10 @@ fi
 if [ "${PIPELIGHT_INSTALLED}" -eq "1" ] && [ "${USE_PIPELIGHT}" -eq "1" ]; then
 	FIREFOX="$(which firefox)";
 	FIREFOX_PROFILE="${BROWSER_PROFILE}";
-#	export PIPELIGHT_CONFIG="${WINEPREFIX}/pipelight-config";
-#	rm "${BROWSER_PROFILE}/pluginreg.dat"; # reset the plugin registry on every load
+	export PIPELIGHT_CONFIG="${WINEPREFIX}/pipelight-config";
+	rm "${BROWSER_PROFILE}/pluginreg.dat"; # reset the plugin registry on every load
 else
+	${WINE} "${WINEPREFIX}/FirefoxSetup.exe" /INI=Z:\\usr\\share\\netflix-desktop\\browser-settings.ini 2>>${OUTPUT}; 
 	FIREFOX="${WINE} \"C:\\Program Files\\Mozilla Firefox\\firefox.exe\"";
 	FIREFOX_PROFILE="C:\\browser-profile";
 fi
