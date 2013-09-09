@@ -2,13 +2,13 @@
 # Maintainer: Anish Bhatt <anish [at] gatech [dot] edu>
 pkgname=wine-browser-installer
 pkgver=1
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="Browser installer for wine-silverlight, shared between netflix-desktop and pipelight"
 arch=('any')
 url="https://launchpad.net/netflix-desktop"
 license=('LGPL2.1' 'MIT')
-depends=('ttf-ms-fonts' 'wget')
+depends=('ttf-ms-fonts' 'wget' 'mesa-demos')
 
 _pkname=netflix-desktop
 optdepends=()
