@@ -4,13 +4,13 @@
 # Based on the wine-git in AUR
 
 pkgname='netflix-desktop'
-pkgver=0.8.2
-pkgrel=4
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="An automated script for viewing Netflix through Firefox and patched WINE"
 url="https://launchpad.net/netflix-desktop/"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('wine-silverlight' 'ttf-ms-fonts' 'zenity' 'wget' 'python2-pyxattr')
+depends=('wine-silverlight' 'ttf-ms-fonts' 'zenity' 'wget' 'python2-pyxattr' 'wine-browser-installer')
 
 if [[ "$CARCH" == "x86_64" ]]; then
   depends+=(
@@ -38,9 +38,9 @@ netflix-desktop.desktop
 netflix-desktop.launcher
 NetflixIcon.png)
 
-md5sums=('7ce4580a463a61ab3dca713adc3c3bf4'
+md5sums=('2c7812e368ea681fb22a1f904c1bc6fc'
          'a41f098487affa1de34c8b44d52617b5'
-         'aa3bf2a5686f1b038e1561f8cc28929e'
+         'cd0bb0c68faa48727d8e77ae041543c2'
          '0a4c2ef50831a751dae74315eb066c01')
 
 prepare() {
