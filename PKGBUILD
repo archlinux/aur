@@ -2,7 +2,7 @@
 # Maintainer: Anish Bhatt <anish [at] gatech [dot] edu>
 pkgname=wine-browser-installer
 pkgver=1
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="Browser installer for wine-silverlight, shared between netflix-desktop and pipelight"
 arch=('any')
@@ -36,11 +36,11 @@ prepare() {
 
 	sed -i '4s|^|WINEARCH=win32 |g' wine-silverlight5.1-installer.install-script
 	sed -i '6s|^|WINEARCH=win32 |g' wine-silverlight5.1-installer.install-script
-	sed -i '6s|@@PACKAGE@@|wine-silverlight5.1-installer.exe|g' wine-silverlight5.1-installer.install-script
+	sed -i '6s|@@PACKAGE@@|wine-silverlight5.1-installer|g' wine-silverlight5.1-installer.install-script
 
         sed -i '4s|^|WINEARCH=win32 |g' wine-silverlight5.0-installer.install-script
         sed -i '6s|^|WINEARCH=win32 |g' wine-silverlight5.0-installer.install-script
-        sed -i '6s|@@PACKAGE@@|wine-silverlight5.0-installer.exe|g' wine-silverlight5.0-installer.install-script
+        sed -i '6s|@@PACKAGE@@|wine-silverlight5.0-installer|g' wine-silverlight5.0-installer.install-script
 }
 
 package() {
