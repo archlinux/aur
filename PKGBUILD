@@ -11,10 +11,11 @@ license=('LGPL2.1' 'MIT')
 depends=('ttf-ms-fonts' 'wget' 'mesa-demos')
 
 _pkname=netflix-desktop
+_pkgrel=0.8.5
 optdepends=()
 #install=
 #changelog=
-source=(https://launchpad.net/${_pkname}/trunk/0.8.5/+download/${_pkname}.tar.gz)
+source=(netflix-desktop-${_pkgrel}.tar.gz::https://launchpad.net/${_pkname}/trunk/${_pkgrel}/+download/${_pkname}.tar.gz)
 #noextract=()
 md5sums=('139aa89ce9536ff860445ec67777f81a')
 

@@ -9,7 +9,7 @@ pkgbase = wine-browser-installer
 	depends = ttf-ms-fonts
 	depends = wget
 	depends = mesa-demos
-	source = https://launchpad.net/netflix-desktop/trunk/0.8.5/+download/netflix-desktop.tar.gz
+	source = netflix-desktop-0.8.5.tar.gz::https://launchpad.net/netflix-desktop/trunk/0.8.5/+download/netflix-desktop.tar.gz
 	md5sums = 139aa89ce9536ff860445ec67777f81a
 
 pkgname = wine-browser-installer
