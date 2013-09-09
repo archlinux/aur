@@ -185,7 +185,7 @@ while [ "$files_missing" -eq "1" ]; do
 			exit;
 		fi
 		# Use a separate script to download the file (graphical sudo takes forever to exit each time)
-		${SUDO} "${INSTDIR}/download-missing-files" ${PACKAGE} "${SERVICE}" "${DEPENDENCIES}";
+		"${INSTDIR}/download-missing-files" ${PACKAGE} "${SERVICE}" "${DEPENDENCIES}";
 	fi
 done
 
