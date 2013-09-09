@@ -5,7 +5,7 @@
 
 pkgname='netflix-desktop'
 pkgver=0.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc="An automated script for viewing Netflix through Firefox and patched WINE"
 url="https://launchpad.net/netflix-desktop/"
 arch=('i686' 'x86_64')
@@ -76,7 +76,7 @@ package() {
         install -m644 ${srcdir}/${pkgname}/wine-browser-installer/browser-settings.ini ${pkgdir}/usr/share/netflix-desktop/
         install -m644 NetflixIcon.png ${pkgdir}/usr/share/netflix-desktop/
         install -m644 netflix-desktop.desktop ${pkgdir}/usr/share/applications/
-        install -m755 ${srcdir}/${pkgname}/wine-browser-installer/download-missing-files ${pkgdir}/usr/share/netflix-desktop/install-file-downloader
+        install -m755 ${srcdir}/${pkgname}/wine-browser-installer/download-missing-files ${pkgdir}/usr/share/netflix-desktop/.
         install -dm755 ${pkgdir}/usr/share/netflix-desktop/browser-profile
         cp -R ${srcdir}/${pkgname}/wine-browser-installer/browser-profile/* ${pkgdir}/usr/share/netflix-desktop/browser-profile/
         install -dm755 ${pkgdir}/usr/share/netflix-desktop/fullscreen-close-plugin
