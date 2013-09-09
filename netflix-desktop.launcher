@@ -69,8 +69,8 @@ DEPENDENCIES="wine-browser-installer ${DEPENDENCIES}";
 . "${PKG_DIR}/gizmos"
 
 # General strings that are translatable
-gettext_download_missing=$(eval_gettext "Not all of the components required by \$SERVICE were downloaded, would you like to download them now? (requires an Internet connection and sudo permissions)");
-gettext_fonts_needed=$(gettext "MS true type fonts are not properly installed, would you like to download and install them now? (requires an Internet connection and sudo permissions)");
+gettext_download_missing=$(eval_gettext "Not all of the components required by \$SERVICE were downloaded, would you like to download them now? (requires an Internet connection)");
+gettext_fonts_needed=$(gettext "MS true type fonts are not properly installed, would you like to download and install them now? (requires an Internet connection)");
 gettext_fonts_still_needed=$(eval_gettext "It appears that you still have not installed the MS true type fonts. You need to accept the license agreement and install these fonts for \$SERVICE to work properly.");
 gettext_compositing_error=$(eval_gettext "Compositing is not available, please enable compositing support and relaunch \$SERVICE.");
 

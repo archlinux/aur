@@ -38,10 +38,9 @@ netflix-desktop.desktop
 netflix-desktop.launcher
 NetflixIcon.png)
 
-
 md5sums=('139aa89ce9536ff860445ec67777f81a'
          'a41f098487affa1de34c8b44d52617b5'
-         '5d5edafefb90ffade94318c704a30290'
+         'bd3492b17011d5acd4e05df1f60ead3b'
          '0a4c2ef50831a751dae74315eb066c01')
 
 prepare() {
