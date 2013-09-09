@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=textios
 pkgname=$_pkgname-git
-pkgver=13.08.15.gb63e5ac
+pkgver=13.09
 pkgrel=1
 pkgdesc="Text interface to Icinga and Nagios"
 arch=('any')
