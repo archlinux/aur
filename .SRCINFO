@@ -1,7 +1,7 @@
 pkgbase = netflix-desktop
 	pkgdesc = An automated script for viewing Netflix through Firefox and patched WINE
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/netflix-desktop/
 	install = netflix-desktop.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = netflix-desktop
 	source = netflix-desktop.desktop
 	source = netflix-desktop.launcher
 	source = NetflixIcon.png
-	md5sums = 2c7812e368ea681fb22a1f904c1bc6fc
+	md5sums = 139aa89ce9536ff860445ec67777f81a
 	md5sums = a41f098487affa1de34c8b44d52617b5
 	md5sums = cd0bb0c68faa48727d8e77ae041543c2
 	md5sums = 0a4c2ef50831a751dae74315eb066c01
