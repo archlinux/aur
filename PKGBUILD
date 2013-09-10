@@ -102,8 +102,6 @@ package()
     rm -f "${pkgdir}"/usr/lib/trafficserver/libloader.la
     rm -f "${pkgdir}"/usr/lib/trafficserver/header_rewrite.la
 
-    rm -rf "${pkgdir}"/run
-
     install -D -m 644 "${srcdir}"/trafficserver.tmpfiles \
         "${pkgdir}"/usr/lib/tmpfiles.d/trafficserver.conf
 
