@@ -16,5 +16,5 @@ post_upgrade() {
 post_remove() {
 	getent passwd tserver &>/dev/null && userdel  tserver  >/dev/null
 	getent group tserver  &>/dev/null && groupdel tserver  >/dev/null
-	true
+	echo 'Tserver log files and cache files must be cleaned up manually.'
 }
