@@ -1,5 +1,5 @@
-# Maintainer: Swift Geek <swifgeek É google m Ä0m>
-# Contributor: Nick Ã˜stergaard <oe.nick at gmail dot com>
+# Maintainer: Swift Geek <swifgeek ɐŧ google bøt cøm>
+# Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 # TODO: move libs to lib32 ?
 # User lib32-gtk2 properly
@@ -13,7 +13,17 @@ url="http://www.netfabb.com/download.php"
 license=('custom:freeware')
 depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 install='netfabb-basic.install'
-source=("netfabb-basic_${pkgver}_linux32.tar.gz::http://www.netfabb.com/download.php?pikey=WuHOZzhsQZUjHAT")
+
+if [ -z "$pikey" ]; then
+  msg "Fetching pikey"
+  pikey=$(curl --data "operatinsystems=linux" --data "zusatz=-5.0.0-9" --data "disti=targz" --data "download32=Download%20for%20PC%2032-Bit"  http://www.netfabb.com/downloadcenter.php?basic=1 | grep pikey)
+  pikey="${pikey#*pikey=}"
+  export pikey="${pikey%%\">*}"
+  [ -z "$pikey" ] && error "Fetching pikey has failed" && exit 1
+  msg2 "pikey: $pikey"
+fi
+
+source=("netfabb-basic_${pkgver}_linux32.tar.gz::http://www.netfabb.com/download.php?pikey=$pikey")
 md5sums=('8f59b70fae694148d1915560e0e4de99')
 
 if [ "$CARCH" == x86_64 ] ; then

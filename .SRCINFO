@@ -10,7 +10,7 @@ pkgbase = netfabb-basic
 	depends = gtk2
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	source = netfabb-basic_5.0.0_linux32.tar.gz::http://www.netfabb.com/download.php?pikey=WuHOZzhsQZUjHAT
+	source = netfabb-basic_5.0.0_linux32.tar.gz::http://www.netfabb.com/download.php?pikey=lFaCZuTNTGHKrZJ
 	md5sums = 8f59b70fae694148d1915560e0e4de99
 
 pkgname = netfabb-basic
