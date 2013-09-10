@@ -2,25 +2,23 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname=('trafficserver')
-pkgver=3.2.5
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('openssl' 'tcl' 'hwloc')
+depends=('tcl' 'hwloc' 'curl')
 makedepends=('flex')
 
 source=(
     http://archive.apache.org/dist/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
     trafficserver.tmpfiles
-    config.layout.patch
     trafficserver.service.in.patch)
 
-md5sums=(bc76c68589389a453e4e4967c42636d6
-         fc8ab2b6d01e22fb376832fb13137db1
-         9ca01c6833ebbde4644a255c8bf802ce
-         74ba08091f580f8984eee8db0f7e4d27)
+md5sums=('9f68a20f0c1ae81c4ab41d6fc8810b35'
+         'fc8ab2b6d01e22fb376832fb13137db1'
+         '74ba08091f580f8984eee8db0f7e4d27')
 
 install=${pkgname}.install
 changelog=${pkgname}.changelog
@@ -35,12 +33,9 @@ backup=(
     'etc/trafficserver/trafficserver-release'
     'etc/trafficserver/splitdns.config'
     'etc/trafficserver/vaddrs.config'
-    'etc/trafficserver/ae_ua.config'
     'etc/trafficserver/cluster.config'
     'etc/trafficserver/storage.config'
-    'etc/trafficserver/mgr.cnf'
     'etc/trafficserver/volume.config'
-    'etc/trafficserver/plugin.db'
     'etc/trafficserver/icp.config'
     'etc/trafficserver/update.config'
     'etc/trafficserver/remap.config'
@@ -79,7 +74,6 @@ backup=(
 
 build() {
     cd "${pkgname}-${pkgver}"
-    patch -Np0 -u -i ../config.layout.patch
     patch -Np0 -u -i ../trafficserver.service.in.patch
     ./configure --with-user=tserver --enable-layout=Arch
     make
@@ -102,6 +96,11 @@ package()
     rm -f "${pkgdir}"/usr/lib/trafficserver/conf_remap.la
     rm -f "${pkgdir}"/usr/lib/trafficserver/stats_over_http.la
     rm -f "${pkgdir}"/usr/lib/trafficserver/header_filter.la
+    rm -f "${pkgdir}"/usr/lib/libatscpp11api.la
+    rm -f "${pkgdir}"/usr/lib/trafficserver/gzip.la
+    rm -f "${pkgdir}"/usr/lib/trafficserver/cacheurl.la
+    rm -f "${pkgdir}"/usr/lib/trafficserver/libloader.la
+    rm -f "${pkgdir}"/usr/lib/trafficserver/header_rewrite.la
 
     rm -rf "${pkgdir}"/run
 

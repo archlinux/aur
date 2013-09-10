@@ -4,6 +4,15 @@ pre_install() {
         -d /var/lib/trafficserver -g tserver -s /bin/false tserver >/dev/null
 }
 
+post_upgrade() {
+    # There are configuration changes required when upgrading to major
+    # version 4.
+    if [[ "${2%%.*}" -lt 4 ]]; then
+        echo 'Please review your configuration when upgrading to v4:'
+        echo ' https://cwiki.apache.org/confluence/display/TS/Upgrading+to+v4.0'
+    fi
+}
+
 post_remove() {
 	getent passwd tserver &>/dev/null && userdel  tserver  >/dev/null
 	getent group tserver  &>/dev/null && groupdel tserver  >/dev/null
