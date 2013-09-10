@@ -5464,9 +5464,7 @@ CONFIG_ISCSI_IBFT=m
 #
 # EFI (Extensible Firmware Interface) Support
 #
-CONFIG_EFI_VARS=m
-CONFIG_EFI_VARS_PSTORE=m
-CONFIG_EFI_VARS_PSTORE_DEFAULT_DISABLE=y
+# CONFIG_EFI_VARS is not set
 
 #
 # File systems
