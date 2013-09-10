@@ -1,0 +1,184 @@
+From: Dan Vrátil <dvratil@redhat.com>
+Date: Mon, 09 Sep 2013 16:43:56 +0000
+Subject: Refresh modes when currentModeId points to unknown mode
+X-Git-Url: http://quickgit.kde.org/?p=libkscreen.git&a=commitdiff&h=1d9ac012e857036bb8814cc84c9cf10bb57ca40c
+---
+Refresh modes when currentModeId points to unknown mode
+
+Sometimes drivers insert or remove modes, so when currentModeId points to a mode
+that we don't have cached, we must refresh the local cache.
+
+This also fixes a crash that occured when currentModeId would be pointing to a
+mode that we don't have (even after refreshing modes)
+
+REVIEW: 112604
+BUG: 323107
+BUG: 324625
+FIXED-IN: 1.0.2
+---
+
+
+--- a/backends/xrandr/xrandrconfig.cpp
++++ b/backends/xrandr/xrandrconfig.cpp
+@@ -163,31 +163,54 @@
+         }
+ 
+         XRandRMode* currentMode = currentOutput->currentMode();
+-        Q_ASSERT_X(currentMode, "applyKScreenConfig", "currentOutput has returned a null XRandRMode*");
+-
+-        QSize size = currentMode->size();
+-
+-        int x, y;
+-
+-        //TODO: Move this code within libkscreen
+-        y = currentOutput->position().y();
+-        if (currentOutput->isHorizontal()) {
+-            y += size.height();
++
++        // Current output mode can be unlisted - when output size changes to a
++        // resolution that is not listed by xrandr, in some cases the driver will
++        // dynamically create a new mode, so we just need to update the list
++        // of modes and try to get a mode matching currentModeId again.
++        // In some cases however re-reading modes from xrandr won't help - in that
++        // case we fallback to doing nothing
++        if (!currentMode) {
++            XRROutputInfo *outputInfo = XRandR::XRROutput(currentOutput->id());
++            currentOutput->updateModes(outputInfo);
++            XRRFreeOutputInfo(outputInfo);
++            currentMode = currentOutput->currentMode();
++        }
++
++        if (currentMode) {
++            const QSize size = currentMode->size();
++            int x, y;
++
++            //TODO: Move this code within libkscreen
++            y = currentOutput->position().y();
++            if (currentOutput->isHorizontal()) {
++                y += size.height();
++            } else {
++                y += size.width();
++            }
++
++            x = currentOutput->position().x();
++            if (currentOutput->isHorizontal()) {
++                x += size.width();
++            } else {
++                x += size.height();
++            }
++
++            if (x > newSize.width() || y > newSize.height()) {
++                if (!toDisable.contains(output->id())) {
++                    kDebug(dXndr()) << "Output doesn't fit: " << x << "x" << y << newSize;
++                    toDisable.insert(output->id(), output);
++                }
++            }
+         } else {
+-            y += size.width();
+-        }
+-
+-        x = currentOutput->position().x();
+-        if (currentOutput->isHorizontal()) {
+-            x += size.width();
+-        } else {
+-            x += size.height();
+-        }
+-
+-        if (x > newSize.width() || y > newSize.height()) {
+-            if (!toDisable.contains(output->id())) {
+-                kDebug(dXndr()) << "Output doesn't fit: " << x << "x" << y << newSize;
+-                toDisable.insert(output->id(), output);
++            // Don't update the output
++            toChange.remove(currentOutput->id());
++
++            kWarning() << "Output" << currentOutput->id() << ": Failed to get currentMode";
++            kDebug(dXndr()) << "CurrentModeId:" << currentOutput->currentModeId();
++            kDebug(dXndr()) << "Available modes:";
++            Q_FOREACH (XRandRMode *mode, currentOutput->modes()) {
++                kDebug(dXndr()) << "\t" << mode->id() << mode->size() << mode->refreshRate() << mode->name();
+             }
+         }
+     }//Q_FOREACH(KScreen::Output *output, outputs)
+
+--- a/backends/xrandr/xrandrmode.cpp
++++ b/backends/xrandr/xrandrmode.cpp
+@@ -48,10 +48,25 @@
+     return kscreenMode;
+ }
+ 
++int XRandRMode::id() const
++{
++    return m_id;
++}
++
+ QSize XRandRMode::size() const
+ {
+     return m_size;
+ }
+ 
++float XRandRMode::refreshRate() const
++{
++    return m_refreshRate;
++}
++
++QString XRandRMode::name() const
++{
++    return m_name;
++}
++
+ #include "xrandrmode.moc"
+ 
+
+--- a/backends/xrandr/xrandrmode.h
++++ b/backends/xrandr/xrandrmode.h
+@@ -45,7 +45,11 @@
+ 
+     KScreen::Mode* toKScreenMode(KScreen::Output *parent);
+ 
++    int id() const;
+     QSize size() const;
++    float refreshRate() const;
++    QString name() const;
++
+ private:
+     int m_id;
+     QString m_name;
+
+--- a/backends/xrandr/xrandroutput.cpp
++++ b/backends/xrandr/xrandroutput.cpp
+@@ -82,6 +82,11 @@
+ QPoint XRandROutput::position() const
+ {
+     return m_position;
++}
++
++XRandRMode::Map XRandROutput::modes() const
++{
++    return m_modes;
+ }
+ 
+ QString XRandROutput::currentModeId() const
+
+--- a/backends/xrandr/xrandroutput.h
++++ b/backends/xrandr/xrandroutput.h
+@@ -81,6 +81,7 @@
+     bool isPrimary() const;
+     QPoint position() const;
+     QString currentModeId() const;
++    XRandRMode::Map modes() const;
+     XRandRMode* currentMode() const;
+     KScreen::Output::Rotation rotation() const;
+     inline bool isHorizontal() const { return ((m_rotation == KScreen::Output::None) || (m_rotation == KScreen::Output::Inverted)); }
+@@ -88,9 +89,10 @@
+ 
+     KScreen::Output* toKScreenOutput(KScreen::Config *parent) const;
+     void updateKScreenOutput(KScreen::Output *output) const;
++
++    void updateModes(const XRROutputInfo *outputInfo);
+ private:
+     void updateOutput(const XRROutputInfo *outputInfo);
+-    void updateModes(const XRROutputInfo *outputInfo);
+     void fetchType();
+     KScreen::Output::Type typeFromName();
+     QByteArray typeFromProperty() const;
+
