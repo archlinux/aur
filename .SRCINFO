@@ -1,0 +1,16 @@
+pkgbase = libexude
+	pkgdesc = A simple to use memory debugger
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://opensource.conformal.com/wiki/exude
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = libclens=0.7.0
+	makedepends = libclog=0.6.4
+	makedepends = libbsd
+	source = https://opensource.conformal.com/snapshots/exude/exude-0.7.3.tar.gz
+	sha1sums = 90064deb9e6c0f98f72ed5c52acba074aa6d20f4
+
+pkgname = libexude
+
