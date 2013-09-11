@@ -1,0 +1,24 @@
+pkgbase = cyphertite
+	pkgdesc = A high-security scalable solution for online backups
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://opensource.conformal.com/wiki/cyphertite
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = libclens=0.7.0
+	depends = libassl=1.4.1
+	depends = libclog=0.6.4
+	depends = libexude=0.7.3
+	depends = libshrink=0.5.4
+	depends = libxmlsd=0.10.1
+	depends = expat
+	depends = libedit
+	depends = libevent
+	depends = libssh2
+	depends = sqlite
+	source = https://opensource.conformal.com/snapshots/cyphertite/cyphertite-1.6.3.tar.gz
+	sha1sums = ec9c0cddd0f4662764fede03035caf2a358de101
+
+pkgname = cyphertite
+
