@@ -5,22 +5,27 @@
 pkgname=lockdev
 pkgver=1.0.3_1.5
 _pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Run-time shared library for locking devices, using _both_ FSSTND and SVr4 methods.'
 url='http://packages.qa.debian.org/l/lockdev.html'
 license=("GPL")
 arch=('i686' 'x86_64')
 source=("http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${_pkgver}.orig.tar.gz"
-	      "http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${pkgver/_/-}.diff.gz")
+	"http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${pkgver/_/-}.diff.gz"
+	'build.patch')
 md5sums=('64b9c1b87b125fc348e892e24625524a'
-         'c4e8a5a2e46b76b48339c232b358f579')
+         'c4e8a5a2e46b76b48339c232b358f579'
+         '2db93cadf6670ddcd01de4bfc22a35e1')
+
+prepare() {
+  cd "${pkgname}-${_pkgver}"
+  patch -p1 -i "../${pkgname}_${pkgver/_/-}.diff"
+  sed -i "s|CFLAGS	= -g|CFLAGS	= -g -fPIC|" Makefile
+  patch -p1 -i ../build.patch # FS#33280
+}
 
 build() {
   cd "${pkgname}-${_pkgver}"
-
-  patch -p1 -i "../${pkgname}_${pkgver/_/-}.diff"
-  sed -i "s|CFLAGS	= -g|CFLAGS	= -g -fPIC|" Makefile
-
   make shared CFLAGS="${CFLAGS} -D_PATH_LOCK=\\\"/run/lock/lockdev\\\" -fPIC"
   make static CFLAGS="${CFLAGS} -D_PATH_LOCK=\\\"/run/lock/lockdev\\\" -fPIC"
 }
