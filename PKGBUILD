@@ -10,15 +10,16 @@ url='http://flavio.tordini.org/minitube'
 license=('GPL')
 depends=('phonon')
 install="$pkgname.install"
-source=("http://flavio.tordini.org/files/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('0da4cb8940034aad832e41acc52df365')
+source=("ftp://ftp.archlinux.org/other/community/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
+md5sums=('5851cb3e75b39ab7dfbdd45a8ebc6197'
+         'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
-  qmake
+  cd $pkgname-$pkgver
+  qmake-qt4
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname-$pkgver
   make install INSTALL_ROOT="$pkgdir/"
 }
