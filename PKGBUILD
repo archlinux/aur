@@ -1,6 +1,6 @@
-# Contributor: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=aurphan
-pkgver=20130628
+pkgver=20130912
 pkgrel=1
 pkgdesc="Finds packages in need of maintainers, bug fixes and patches.  Adopt today!"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('bash' 'curl' 'jshon' 'expac')
 makedepends=()
 source=(http://kmkeen.com/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('866da488f268245a811764fc25cddb61')
+md5sums=('267ab65be0c20f5c8d042f28397fd7d8')
 
 package() {
   cd "$srcdir/$pkgname"
