@@ -1,6 +1,6 @@
 pkgbase = uefi-shell-svn
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - SVN Version
-	pkgver = 14601
+	pkgver = 14662
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg
 	install = uefi-shell.install
@@ -14,10 +14,10 @@ pkgbase = uefi-shell-svn
 	options = !strip
 	options = docs
 	options = !makeflags
-	source = tianocore-edk2-svn/BaseTools::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/BaseTools
-	source = tianocore-edk2-svn/MdePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdePkg
-	source = tianocore-edk2-svn/MdeModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdeModulePkg
-	source = tianocore-edk2-svn/ShellPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellPkg
+	source = tianocore-edk2-svn_BaseTools::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/BaseTools
+	source = tianocore-edk2-svn_MdePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdePkg
+	source = tianocore-edk2-svn_MdeModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdeModulePkg
+	source = tianocore-edk2-svn_ShellPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellPkg
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP

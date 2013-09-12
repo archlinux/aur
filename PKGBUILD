@@ -15,7 +15,7 @@ _COMPILER="GCC47"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=14601
+pkgver=14662
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -32,7 +32,7 @@ provides=('uefi-shell')
 install="${_pkgname}.install"
 
 for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
-	source+=("${_TIANO_DIR_}/${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
+	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
 sha1sums=('SKIP'
@@ -47,8 +47,10 @@ sha1sums=('SKIP'
 [[ "${CARCH}" == "i686" ]] && _TIANO_S_ARCH="ia32"
 
 pkgver() {
-	cd "${srcdir}/${_TIANOCORE_PKG}Pkg/"
+	
+	cd "${srcdir}/${_TIANO_DIR_}_${_TIANOCORE_PKG}Pkg/"
 	echo "$(svnversion)" | tr -d [A-z]
+	
 }
 
 _setup_env_vars() {
@@ -68,7 +70,7 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/"
 	
 	for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
-		mv "${srcdir}/${_DIR_}" "${_UDK_DIR}/${_DIR_}"
+		mv "${srcdir}/${_TIANO_DIR_}_${_DIR_}" "${_UDK_DIR}/${_DIR_}"
 	done
 	
 	cd "${_UDK_DIR}/"
