@@ -1,18 +1,18 @@
 pkgbase = gnuais
 	pkgdesc = Open source software for demodulating and decoding AIS messages
-	pkgver = 0.2.8
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = http://gnuais.sourceforge.net/
 	arch = x86
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
 	makedepends = cmake
-	depends = alsa-lib
 	depends = libpulse
-	optdepends = curl
-	optdepends = mysql
-	source = https://github.com/rubund/gnuais/archive/0.2.8.zip
-	md5sums = 398f90661991b008882df5bd293706c4
+	depends = curl
+	depends = osm-gps-map
+	depends = libmysqlclient
+	source = https://github.com/rubund/gnuais/archive/0.3.1.zip
+	md5sums = f9fc0222f974abaf9e142cfb77d4e9fb
 
 pkgname = gnuais
 
