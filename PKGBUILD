@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python2-pyuv
-pkgver=0.10.3
+pkgver=0.11.1
 pkgrel=1
 _libname=${pkgname/python2-/}
 pkgdesc="A Python module which provides an interface to libuv."
@@ -14,12 +14,7 @@ source=("$_libname-$pkgver.tar.gz::https://github.com/saghul/pyuv/archive/releas
 
 build() {
 	cd "$srcdir/$_libname-release-$pkgver"
-
-	rm -f "deps/libuv/libuv.a"
-	mkdir -p deps/libuv
-	ln -s /usr/lib/libuv.a deps/libuv/
-	ln -s /usr/include/libuv deps/libuv/include
-	python2 setup.py build_ext --inplace --force
+	python2 setup.py build
 }
 
 package() {
@@ -28,4 +23,4 @@ package() {
 	install -m0644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('f464558e0851b3f09c1632461d4c79941c1e1f8994db7200900c627e4b7f46a8')
+sha256sums=('b432d35985ba289454785d7a25dae335d16cd2bb1705d86d3a8f240225b67a57')
