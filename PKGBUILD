@@ -2,9 +2,9 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20130802
+pkgver=20130914
 pkgrel=1
-_udevver=206
+_udevver=207
 provides=("udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
 replaces=('udev' 'systemd' 'libsystemd' 'systemd-tools')
 conflicts=('udev' 'systemd' 'libsystemd' 'systemd-tools')
@@ -26,20 +26,17 @@ md5sums=('SKIP'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
          '825af8cce7dd73ed4ce1a8289e3bdad8'
          '372d60f89f626629005bb755be259a20')
-#_gitroot=('git://github.com/gentoo/eudev.git')
 _gitname=('eudev')
-         
+
+pkgver()
+{
+  cd "${srcdir}/${_gitname}"
+
+  # Date of last commit
+  git log -1 --format="%ci" HEAD | cut -d\  -f1 | tr -d '-'
+}
+
 build() {
-  #if [ -d "${_gitname}" ] ; then
-  #  cd "${srcdir}/${_gitname}"
-  #  msg2 "Updating local tree..."
-  #  git pull origin master
-  #else
-  #  cd "${srcdir}"
-  #  msg2 "Cloning initial copy of ${_gitname}..."
-  #  git clone --depth=1 "${_gitroot}" "${_gitname}"
-  #  cd "${srcdir}/${_gitname}"
-  #fi
   cd "${srcdir}/${_gitname}"
 
   if [ -f "Makefile" ];then
@@ -82,13 +79,5 @@ package() {
   # Make new interface naming policy disabled by default
   rm -f "${pkgdir}/usr/lib/udev/rules.d/80-net-name-slot.rules"
   install -Dm644 "${srcdir}/80-net-name-slot.rules" "${pkgdir}/etc/udev/rules.d/80-net-name-slot.rules"
-}
-
-pkgver()
-{
-  cd "${srcdir}/${_gitname}"
-
-  # Date of last commit
-  git log -1 --format="%ci" HEAD | cut -d\  -f1 | tr -d '-'
 }
 
