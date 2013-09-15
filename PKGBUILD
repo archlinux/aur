@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.11
-pkgver=3.11
+pkgver=3.11.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,7 +12,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -20,8 +20,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch')
 md5sums=('fea363551ff45fbe4cb88497b863b261'
-         '101831e5062bf569b10f2ae59be49a49'
-         '6f9ee333fd72f1177f2cac8788fd3d7e'
+         '43331cad943b9540afea49ad8ce5cf46'
+         '247d9bafa184e2d9a27c1a0485419fff'
+         '5effb245b8ec78ad570b3e5962a1a7e0'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          'd50c1ac47394e9aec637002ef3392bd1')
@@ -30,15 +31,15 @@ _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# 0a8cb1a1b982705859c7d3f9e08f62a6  /lib/modules/3.11.0-1-ARCH/modules.symbols
+# 04f5bf482c436b4a75c93754e9eacd8e  /lib/modules/3.11.1-1-ARCH/modules.symbols
 # i686
-# ab1720bb0151dcf057761a402f61b6d5  /lib/modules/3.11.0-1-ARCH/modules.symbols
+# 3414985d965d31f5af7b4ee5c9a2a80d  /lib/modules/3.11.1-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -332,9 +333,3 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-md5sums=('fea363551ff45fbe4cb88497b863b261'
-         'e81efb645d21ff94f3fdc4781dd2c6ad'
-         'bf3fde5083e07cbbad7fbc2ab3c60bee'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '98beb36f9b8cf16e58de2483ea9985e3'
-         'd50c1ac47394e9aec637002ef3392bd1')
