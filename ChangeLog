@@ -1,3 +1,11 @@
+2013-09-15 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.2.2-1
+	Version bump.
+
+	Upstream changelog:
+	- Support for older (alpha and newer) Minecraft versions using the new launcher.
+
 2013-08-11 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.2.1-1
