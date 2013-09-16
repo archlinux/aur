@@ -20,10 +20,10 @@ pkgbase = syslinux-firmware-git
 	optdepends = util-linux: For isohybrid
 	optdepends = efibootmgr: For EFI support
 	optdepends = dosfstools: For EFI support
-	provides = syslinux
-	provides = syslinux-bios
-	provides = syslinux-efi
-	provides = syslinux-git
+	provides = syslinux=6.02pre16
+	provides = syslinux-bios=6.02pre16
+	provides = syslinux-efi=6.02pre16
+	provides = syslinux-git=6.02pre16
 	conflicts = syslinux
 	conflicts = syslinux-bios
 	conflicts = syslinux-efi

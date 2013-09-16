@@ -20,7 +20,7 @@ options=('!makeflags' '!emptydirs')
 backup=('boot/syslinux/syslinux.cfg')
 
 conflicts=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
-provides=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
+provides=("syslinux=${pkgver}" "syslinux-bios=${pkgver}" "syslinux-efi=${pkgver}" "syslinux-git=${pkgver}")
 
 makedepends=('git' 'python2' 'nasm' 'gnu-efi-libs')
 depends=('perl' 'glibc')
