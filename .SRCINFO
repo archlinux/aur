@@ -7,9 +7,9 @@ pkgbase = efivar-git
 	arch = i686
 	license = LGPL2.1
 	depends = popt
-	provides = efivar
-	provides = libefivar
-	provides = libefivar-git
+	provides = efivar=0.6.1.g6ec0289
+	provides = libefivar=0.6.1.g6ec0289
+	provides = libefivar-git=0.6.1.g6ec0289
 	conflicts = efivar
 	conflicts = libefivar
 	conflicts = libefivar-git

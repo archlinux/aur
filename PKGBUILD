@@ -16,7 +16,7 @@ url="https://github.com/vathpela/efivar"
 license=('LGPL2.1')
 depends=('popt')
 conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
-provides=("${_pkgname}" 'libefivar' 'libefivar-git')
+provides=("${_pkgname}=${pkgver}" "libefivar=${pkgver}" "libefivar-git=${pkgver}")
 options=('!strip' 'emptydirs' 'zipman' 'libtool' 'docs' '!makeflags')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
