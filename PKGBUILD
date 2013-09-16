@@ -18,7 +18,7 @@ license=('GPL2')
 makedepends=('git')
 depends=('pciutils' 'efivar')
 conflicts=("${__pkgname}" "${__pkgname}-git" "${_pkgname}")
-provides=("${__pkgname}" "${__pkgname}-git" "${_pkgname}")
+provides=("${__pkgname}=${pkgver}" "${__pkgname}-git=${pkgver}" "${_pkgname}=${pkgver}")
 options=('!strip' 'zipman' '!emptydirs' '!libtool')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")

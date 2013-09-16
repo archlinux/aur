@@ -9,9 +9,9 @@ pkgbase = efibootmgr-pjones-git
 	makedepends = git
 	depends = pciutils
 	depends = efivar
-	provides = efibootmgr
-	provides = efibootmgr-git
-	provides = efibootmgr-pjones
+	provides = efibootmgr=0.6.0.142.adc0500
+	provides = efibootmgr-git=0.6.0.142.adc0500
+	provides = efibootmgr-pjones=0.6.0.142.adc0500
 	conflicts = efibootmgr
 	conflicts = efibootmgr-git
 	conflicts = efibootmgr-pjones
