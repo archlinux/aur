@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="pesign"
 pkgname="${_pkgname}-git"
 
-pkgver=0.108.2.gf2cf2c5
+pkgver=0.108.8.g52e03f4
 pkgrel=1
 pkgdesc="Tools for manipulating signed PE-COFF binaries - GIT Version"
 url="https://github.com/vathpela/pesign"
@@ -17,7 +17,7 @@ makedepends=('git')
 depends=('popt' 'nss')
 
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 
 options=('!strip' '!emptydirs' 'docs')
 
