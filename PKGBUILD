@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="shim-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.4.1.g23002e8
+pkgver=0.4.3.g16854e3
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
 url="https://github.com/mjg59/shim"
@@ -20,7 +20,7 @@ depends=('pesign' 'dosfstools' 'efivar' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}" 'shim-efi-x86_64' 'shim-efi-x86_64-git')
-provides=("${_pkgname}" 'shim-efi-x86_64' 'shim-efi-x86_64-git')
+provides=("${_pkgname}=${pkgver}" "shim-efi-x86_64=${pkgver}" "shim-efi-x86_64-git=${pkgver}")
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
