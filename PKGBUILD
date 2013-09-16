@@ -19,7 +19,7 @@ depends=('dosfstools' 'efivar' 'efibootmgr' 'sbsigntool')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
