@@ -13,9 +13,9 @@ pkgbase = gummiboot-git
 	depends = util-linux
 	depends = dosfstools
 	optdepends = mactel-boot: For bless command in Apple Mac systems
-	provides = gummiboot
-	provides = gummiboot-efi
-	provides = gummiboot-efi-git
+	provides = gummiboot=37
+	provides = gummiboot-efi=37
+	provides = gummiboot-efi-git=37
 	conflicts = gummiboot
 	conflicts = gummiboot-efi
 	conflicts = gummiboot-efi-git

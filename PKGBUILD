@@ -22,7 +22,7 @@ depends=('util-linux' 'dosfstools')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}" 'gummiboot-efi' 'gummiboot-efi-git')
-provides=("${_pkgname}" 'gummiboot-efi' 'gummiboot-efi-git')
+provides=("${_pkgname}=${pkgver}" "gummiboot-efi=${pkgver}" "gummiboot-efi-git=${pkgver}")
 
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
