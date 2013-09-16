@@ -2,7 +2,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=firefox-extension-speed-dial
-pkgver=0.9.6.15
+pkgver=0.9.6.17
 pkgrel=1
 pkgdesc="Firefox extension that simplifies the access to your most visited websites"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('firefox')
 conflicts=('firefox-speed-dial')
 replaces=('firefox-speed-dial')
 source=(http://speeddial.uworks.net/speed_dial-$pkgver-fx.xpi)
-md5sums=('bbb616afe4ed2c5c40e84e63fab6a6f5')
+md5sums=('7d71ec9405f41d59a8234fa17f4f4a50')
 
 package() {
   cd "$srcdir"
