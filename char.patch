@@ -1,0 +1,12 @@
+diff -aur old/xpdf/XPDFViewer.cc new/xpdf/XPDFViewer.cc
+--- old/xpdf/XPDFViewer.cc	2011-08-15 14:08:53.000000000 -0700
++++ new/xpdf/XPDFViewer.cc	2011-08-17 11:05:55.739431215 -0700
+@@ -1803,7 +1803,7 @@
+   menuPane = XmCreatePulldownMenu(toolBar, "zoomMenuPane", args, n);
+   for (i = 0; i < nZoomMenuItems; ++i) {
+     n = 0;
+-    s = XmStringCreateLocalized(zoomMenuInfo[i].label);
++    s = XmStringCreateLocalized((char *)zoomMenuInfo[i].label);
+     XtSetArg(args[n], XmNlabelString, s); ++n;
+     XtSetArg(args[n], XmNuserData, (XtPointer)i); ++n;
+     sprintf(buf, "zoom%d", i);

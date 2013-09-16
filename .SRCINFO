@@ -1,0 +1,26 @@
+pkgbase = xpdf
+	pkgdesc = Viewer for Portable Document Format (PDF) files
+	pkgver = 3.03
+	pkgrel = 4
+	url = http://www.foolabs.com/xpdf/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = lesstif
+	depends = gsfonts
+	depends = libxt
+	optdepends = poppler: tools that used to be included in xpdf
+	optdepends = desktop-file-utils: for desktop environments
+	backup = etc/xpdfrc
+	source = ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.03.tar.gz
+	source = sanitize.patch
+	source = char.patch
+	source = desktop
+	sha1sums = 499423e8a795e0efd76ca798239eb4d0d52fe248
+	sha1sums = 2face78a2f550fd15eeceb8a1ce47c566104f457
+	sha1sums = 5c471944685a6b24a2b0c0e000562d1a3263aeeb
+	sha1sums = 17ebbfe457cb92e97b12b7362e8ce961526012d9
+
+pkgname = xpdf
+
