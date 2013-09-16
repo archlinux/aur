@@ -2,7 +2,7 @@
 
 pkgname=clutter-gtk
 pkgver=1.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK clutter widget"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
