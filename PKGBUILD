@@ -2,7 +2,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
@@ -10,17 +10,16 @@ url="http://www.swig.org/"
 license=('custom')
 depends=('zlib' 'pcre')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('ad6f95ce9b9da4a8f5b80ac1848d26c76f518d84')
+sha1sums=('d3bf4e78824dba76bfb3269367f1ae0276b49df9')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -D -m644 LICENSE-UNIVERSITIES "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-UNIVERSITIES
