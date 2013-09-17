@@ -20,6 +20,7 @@ optdepends=(
   "gstreamer0.10-base-plugins: Offset detection."
   "cddb-py: FreeDB support."
 )
+provides=('morituri')
 conflicts=("morituri" "morituri-svn")
 replaces=("morituri-svn")
 changelog=ChangeLog

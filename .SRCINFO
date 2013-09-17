@@ -18,6 +18,7 @@ pkgbase = morituri-git
 	optdepends = python2-pycdio: Drive recognition.
 	optdepends = gstreamer0.10-base-plugins: Offset detection.
 	optdepends = cddb-py: FreeDB support.
+	provides = morituri
 	conflicts = morituri
 	conflicts = morituri-svn
 	replaces = morituri-svn
