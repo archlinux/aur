@@ -1,3 +1,10 @@
+2013-09-17 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+	* 0.2.2.46.g1c47a42-1 :
+	A few small fix-ups:
+	- Actually "provide" morituri now.
+	- Add make/build dependencies...
+
 2013-04-13 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 0.2.0.64.ge990136-1 :
