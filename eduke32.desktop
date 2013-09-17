@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=EDuke32
+Comment=Advanced Duke Nukem 3D engine
+Icon=eduke32
+Exec=eduke32
+Categories=Game;Shooter;
+Terminal=false
+StartupNotify=false

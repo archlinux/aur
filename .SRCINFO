@@ -1,0 +1,36 @@
+pkgbase = eduke32
+	pkgdesc = An advanced Duke Nukem 3D source port
+	pkgver = 20130915_4065
+	pkgrel = 1
+	url = http://eduke32.com/
+	install = eduke32.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom: BUILD
+	makedepends = nasm
+	depends = sdl_mixer
+	depends = mesa
+	depends = libvpx
+	depends = gtk2
+	depends = desktop-file-utils
+	optdepends = eduke32-hrp: High Resolution Pack
+	optdepends = eduke32-dukeplus: Enhanced Mod
+	optdepends = timidity-freepats: free soundfont for music
+	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
+	conflicts = eduke32-svn
+	source = http://dukeworld.duke4.net/eduke32/synthesis/20130915-4065/eduke32_src_20130915-4065.tar.bz2
+	source = eduke32.png
+	source = eduke32.desktop
+	source = eduke32.install
+	md5sums = 7f225c0fd725c5aefb83b67c942d0b12
+	md5sums = bc189b860c8562e10f01e0faed909089
+	md5sums = 244895de9c74550c1bb079793d8b18fe
+	md5sums = 52fe1aacaa53e04587d16e05252fd714
+	sha256sums = 49dae0a559d93b0f8857f6e1feb73529c142d32dc2a6b74c5747983d5471fdfa
+	sha256sums = b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863
+	sha256sums = 9224aadf634448726d2e863ba9a455887dc3b90049238fe592b7f7b5634cbd79
+	sha256sums = ff05c37c046c5ab0456ff6307bfe9cef3eb8579ab8124a418e973378c9215158
+
+pkgname = eduke32
+
