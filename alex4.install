@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "Copy /usr/share/alex4/alex4.ini to \$HOME/.alex4 directory."
+  echo "You can then edit it to configure game options."
+}
+
+post_upgrade() {
+  post_install
+}

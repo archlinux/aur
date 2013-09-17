@@ -1,0 +1,298 @@
+Description: Get rid of deprecated Allegro functions.
+Forwarded: yes
+Author: Peter De Wachter <pdewacht@gmail.com>
+Last-Update: 2009-05-07
+
+--- a/src/edit.c
++++ b/src/edit.c
+@@ -69,8 +69,8 @@
+ 		}
+ 	
+ 		// show stuff
+-		textprintf(bmp, data[THE_FONT].dat, 1, 1, 0, "TILE: %d,%d", tx, ty);
+-		textprintf(bmp, data[THE_FONT].dat, 1, 11, 0, "SIZE: %d,%d", map->width, map->height);
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, 1, 0, -1, "TILE: %d,%d", tx, ty);
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, 11, 0, -1, "SIZE: %d,%d", map->width, map->height);
+ 
+ 		// show start pos
+ 		x = (ABS(map->start_x) << 4) - map->offset_x;
+@@ -80,7 +80,7 @@
+ 	
+ 		// draw status bar
+ 		rectfill(bmp, 0, 110, 159, 119, 1);
+-		textprintf(bmp, data[THE_FONT].dat, 1, 111, 4, "EDITING: %s", get_filename(edit_path_and_file));
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, 111, 4, -1, "EDITING: %s", get_filename(edit_path_and_file));
+ 	}
+ 	else if (edit_mode == EDIT_MODE_SELECT) {	// draw tile palette
+ 		// calculate offset depending on mouse pointer
+@@ -104,16 +104,16 @@
+ 	else if (edit_mode == EDIT_MODE_STATS) {	// draw map properties
+ 		int ty = 16;
+ 		clear_to_color(bmp, 3);
+-		textprintf(bmp, data[THE_FONT].dat, 1, 1, 1, "%s (props)", get_filename(edit_path_and_file));	
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, 1, 1, -1, "%s (props)", get_filename(edit_path_and_file));	
+ 		line(bmp, 0, 10, 159, 10, 1);
+-		textprintf(bmp, data[THE_FONT].dat, 1, ty+=10, 1, "Win by:");
+-		textprintf(bmp, data[THE_FONT].dat, 1, ty+=10, 1, "  1) reach exit (%s)", (map->win_conditions & MAP_WIN_EXIT ? "X" : " "));
+-		textprintf(bmp, data[THE_FONT].dat, 1, ty+=10, 1, "  2) kill boss  (%s)", (map->win_conditions & MAP_WIN_KILL_GUARDIAN ? "X" : " "));
+-		textprintf(bmp, data[THE_FONT].dat, 1, ty+=10, 1, "  3) kill all   (%s)", (map->win_conditions & MAP_WIN_KILL_ALL ? "X" : " "));
+-		textprintf(bmp, data[THE_FONT].dat, 1, ty+=10, 1, "4) Boss level:  (%s)", (map->boss_level ? "X" : " "));
+-		textprintf(bmp, data[THE_FONT].dat, 1, ty+=10, 1, "5) Name: %s", map->name);
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, ty+=10, 1, -1, "Win by:");
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, ty+=10, 1, -1, "  1) reach exit (%s)", (map->win_conditions & MAP_WIN_EXIT ? "X" : " "));
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, ty+=10, 1, -1, "  2) kill boss  (%s)", (map->win_conditions & MAP_WIN_KILL_GUARDIAN ? "X" : " "));
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, ty+=10, 1, -1, "  3) kill all   (%s)", (map->win_conditions & MAP_WIN_KILL_ALL ? "X" : " "));
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, ty+=10, 1, -1, "4) Boss level:  (%s)", (map->boss_level ? "X" : " "));
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, ty+=10, 1, -1, "5) Name: %s", map->name);
+ 
+-		textprintf(bmp, data[THE_FONT].dat, 1, 110, 1, "F1: back to editor");
++		textprintf_ex(bmp, data[THE_FONT].dat, 1, 110, 1, -1, "F1: back to editor");
+ 	}
+ 
+ 	if (edit_mode != EDIT_MODE_STATS) {
+--- a/src/hisc.c
++++ b/src/hisc.c
+@@ -153,9 +153,9 @@
+ 
+ // draws a single hisc post
+ void draw_hisc_post(Thisc *table, BITMAP *bmp, FONT *fnt, int x, int y, int color, int show_level) {
+-	textprintf(bmp, fnt, x, y, color, "%s", table->name);
+-	if (show_level) textprintf_right(bmp, fnt, x+80, y, color, "%2d", table->level);
+-	textprintf_right(bmp, fnt, x+140, y, color, "%d", table->score);
++	textprintf_ex(bmp, fnt, x, y, color, -1, "%s", table->name);
++	if (show_level) textprintf_right_ex(bmp, fnt, x+80, y, color, -1, "%2d", table->level);
++	textprintf_right_ex(bmp, fnt, x+140, y, color, -1, "%d", table->score);
+ }
+ 
+ // draws the entire table
+--- a/src/main.c
++++ b/src/main.c
+@@ -496,15 +496,15 @@
+ 
+ 	rectfill(bmp, 0, y, 159, y+9, 1);
+ 	draw_sprite_h_flip(bmp, data[HERO_NORM].dat, 0, y+1); 
+-	textprintf(bmp, data[THE_FONT].dat, 9, y+1, 4, " :%d", player.lives);
++	textprintf_ex(bmp, data[THE_FONT].dat, 9, y+1, 4, -1, " :%d", player.lives);
+ 
+ 	for(i = 0; i < player.health; i ++)
+ 		draw_sprite(bmp, data[HEART2].dat, 40 + 10 * i, y-3);
+ 
+ 	draw_sprite(bmp, data[EGG].dat, 80, y-5); 
+-	textprintf(bmp, data[THE_FONT].dat, 85, y+1, 4, " :%d", player.ammo);
++	textprintf_ex(bmp, data[THE_FONT].dat, 85, y+1, 4, -1, " :%d", player.ammo);
+ 
+-	textprintf_right(bmp, data[THE_FONT].dat, 158, y+1, 4, "%d", player.score);
++	textprintf_right_ex(bmp, data[THE_FONT].dat, 158, y+1, 4, -1, "%d", player.score);
+ }
+ 
+ 
+@@ -626,7 +626,6 @@
+ 
+ 	// various allegro things
+ 	log2file(" initializing allegro");
+-	text_mode(-1);
+ 	garble_string(init_string, 53);
+ #ifdef __unix__
+ 	snprintf(filename, sizeof(filename), "%s/.alex4/alex4.ini",
+@@ -635,7 +634,6 @@
+ #else
+ 	set_config_file("alex4.ini");
+ #endif
+-	set_window_close_button(FALSE);
+ 	
+ 	// install timers
+ 	log2file(" installing timers");
+@@ -701,7 +699,7 @@
+ 
+ 	// show initial loading screen
+ 	clear(swap_screen);
+-	textout_centre(swap_screen, font, "loading...", 320, 200, 1);
++	textout_centre_ex(swap_screen, font, "loading...", 320, 200, 1, -1);
+ 	blit_to_screen(swap_screen);
+ 
+ #ifndef __unix__
+@@ -788,8 +786,8 @@
+ 	clear_to_color(swap_screen, 3);
+ 
+ 	bmp = data[FLD_LOGO].dat;
+-	draw_character(swap_screen, bmp, 80 - bmp->w / 2 + 0, 50 + 1, 1);
+-	draw_character(swap_screen, bmp, 80 - bmp->w / 2, 50, 4);
++	draw_character_ex(swap_screen, bmp, 80 - bmp->w / 2 + 0, 50 + 1, 1, -1);
++	draw_character_ex(swap_screen, bmp, 80 - bmp->w / 2, 50, 4, -1);
+ 	
+ 	blit_to_screen(swap_screen);
+ 
+@@ -1100,11 +1098,11 @@
+ 
+ // draws text with an outline
+ void textout_outline(BITMAP *bmp, const char *txt, int x, int y) {
+-	textout(bmp, data[THE_FONT].dat, txt, x+1, y, 1);
+-	textout(bmp, data[THE_FONT].dat, txt, x-1, y, 1);
+-	textout(bmp, data[THE_FONT].dat, txt, x, y+1, 1);
+-	textout(bmp, data[THE_FONT].dat, txt, x, y-1, 1);
+-	textout(bmp, data[THE_FONT].dat, txt, x, y, 4);
++	textout_ex(bmp, data[THE_FONT].dat, txt, x+1, y, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, txt, x-1, y, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, txt, x, y+1, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, txt, x, y-1, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, txt, x, y, 4, -1);
+ }
+ 
+ 
+@@ -1451,12 +1449,12 @@
+ 
+ 	sprintf(buf, "%s %d %s", (level > min ? "<" : " "), level, (level < max ? ">" : " "));
+ 	clear_bitmap(stuff);
+-	textout_centre(stuff, data[THE_FONT].dat, buf, stuff->w/2 + 1, 1, 2);
+-	textout_centre(stuff, data[THE_FONT].dat, buf, stuff->w/2, 0, 1);
++	textout_centre_ex(stuff, data[THE_FONT].dat, buf, stuff->w/2 + 1, 1, 2, -1);
++	textout_centre_ex(stuff, data[THE_FONT].dat, buf, stuff->w/2, 0, 1, -1);
+ 	stretch_sprite(bmp, stuff, 80 - 4*stuff->w/2, 30, 4*stuff->w, 4*stuff->h);
+ 
+-	textout_centre(bmp, data[THE_FONT].dat, "SELECT START LEVEL", 80, 90, 1);
+-	textout_centre(bmp, data[THE_FONT].dat, "SELECT START LEVEL", 79, 89, 4);
++	textout_centre_ex(bmp, data[THE_FONT].dat, "SELECT START LEVEL", 80, 90, 1, -1);
++	textout_centre_ex(bmp, data[THE_FONT].dat, "SELECT START LEVEL", 79, 89, 4, -1);
+ 
+ 	if (options.one_hundred) {
+ 		if (game_count & 32 || game_count & 16) draw_sprite(bmp, data[SHIP100].dat, xpos, 2);
+@@ -2532,20 +2530,20 @@
+ 
+ 	y = 60;
+ 	x = 50;
+-	textout(bmp, data[THE_FONT].dat, start_string, x+1, y+1, 1);
+-	textout(bmp, data[THE_FONT].dat, start_string, x, y, 4);
++	textout_ex(bmp, data[THE_FONT].dat, start_string, x+1, y+1, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, start_string, x, y, 4, -1);
+ 
+ 	y += step;
+-	textout(bmp, data[THE_FONT].dat, "HIGH SCORES", x+1, y+1, 1);
+-	textout(bmp, data[THE_FONT].dat, "HIGH SCORES", x, y, 4);
++	textout_ex(bmp, data[THE_FONT].dat, "HIGH SCORES", x+1, y+1, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, "HIGH SCORES", x, y, 4, -1);
+ 
+ 	y += step;
+-	textout(bmp, data[THE_FONT].dat, "EDITOR", x+1, y+1, 1);
+-	textout(bmp, data[THE_FONT].dat, "EDITOR", x, y, 4);
++	textout_ex(bmp, data[THE_FONT].dat, "EDITOR", x+1, y+1, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, "EDITOR", x, y, 4, -1);
+ 
+ 	y += step;
+-	textout(bmp, data[THE_FONT].dat, "QUIT", x+1, y+1, 1);
+-	textout(bmp, data[THE_FONT].dat, "QUIT", x, y, 4);
++	textout_ex(bmp, data[THE_FONT].dat, "QUIT", x+1, y+1, 1, -1);
++	textout_ex(bmp, data[THE_FONT].dat, "QUIT", x, y, 4, -1);
+ 
+ 	draw_sprite(bmp, data[POINTER].dat, x - 25 + fixtoi(3 * fcos(itofix(tick << 2))), 44 + menu_choice * step);
+ }
+@@ -2597,7 +2595,7 @@
+         string[i] = letters[current_letter];
+ 		string[i + 1] = '\0';
+         blit(block, bmp, 0, 0, pos_x - 1, pos_y - 1, block->w, block->h);
+-        textout(bmp, f, string, pos_x, pos_y, colour);
++        textout_ex(bmp, f, string, pos_x, pos_y, colour, -1);
+ 		blit_to_screen(bmp);
+ 
+ 		if (pad != NULL) {
+--- a/src/map.c
++++ b/src/map.c
+@@ -280,7 +280,7 @@
+ 	
+ 	if (sm == NULL) return;
+ 	
+-	set_clip(bmp, dx, dy, dx+w-1, dy+h-1);
++	set_clip_rect(bmp, dx, dy, dx+w-1, dy+h-1);
+ 	
+ 	for(y=0;y<7;y++) {
+ 		for(x=0;x<11;x++) {
+@@ -330,13 +330,13 @@
+ 
+ 				if (edit) {
+ 					if (sm->dat[pos].type == MAP_DEAD) {
+-						textout(bmp, font, "D", dx + x*16 + ax, dy + y*16 + ay, 0);
++						textout_ex(bmp, font, "D", dx + x*16 + ax, dy + y*16 + ay, 0, -1);
+ 					}
+ 					if (sm->dat[pos].type == MAP_EXIT) {
+-						textout(bmp, font, "XT", dx + x*16 + ax, dy + y*16 + ay, 255);
++						textout_ex(bmp, font, "XT", dx + x*16 + ax, dy + y*16 + ay, 255, -1);
+ 					}
+ 					if (sm->dat[pos].type == MAP_BRK) {
+-						textout(bmp, font, "GL", dx + x*16 + ax, dy + y*16 + ay, 255);
++						textout_ex(bmp, font, "GL", dx + x*16 + ax, dy + y*16 + ay, 255, -1);
+ 					}
+ 					if (sm->dat[pos].type == MAP_ENEMY1) {
+ 						draw_sprite(bmp, sm->data[ENEMY1_01 + ((ABS(game_count) >> 3) % 4)].dat, dx + x*16 + ax, dy + y*16 + ay);
+@@ -367,7 +367,7 @@
+ 		}
+ 	}
+ 
+-	set_clip(bmp, 0, 0, SCREEN_W - 1, SCREEN_H - 1);
++	set_clip_rect(bmp, 0, 0, SCREEN_W - 1, SCREEN_H - 1);
+ 	
+ }
+ 
+--- a/src/script.c
++++ b/src/script.c
+@@ -89,7 +89,7 @@
+ 
+ 	// draw text
+ 	for(i = 0; i < lines; i ++) {
+-		textout(bmp, d[THE_FONT].dat, rows[i], x1 + 4, y1 + 5 + i * 9, 1);
++		textout_ex(bmp, d[THE_FONT].dat, rows[i], x1 + 4, y1 + 5 + i * 9, 1, -1);
+ 	}
+ }
+ 
+--- a/src/scroller.c
++++ b/src/scroller.c
+@@ -65,22 +65,22 @@
+ 	if (sc->horizontal) {
+ 		if (sc->offset < -sc->length) return;
+ 		if (sc->offset > sc->width) return;
+-		set_clip(bmp, x, y, x + sc->width, y + sc->height);
+-		textout(bmp, sc->fnt, sc->text, x + sc->offset + 1, y + 1, 1);
+-		textout(bmp, sc->fnt, sc->text, x + sc->offset, y, 3);
+-		set_clip(bmp, 0, 0, bmp->w-1, bmp->h-1);
++		set_clip_rect(bmp, x, y, x + sc->width, y + sc->height);
++		textout_ex(bmp, sc->fnt, sc->text, x + sc->offset + 1, y + 1, 1, -1);
++		textout_ex(bmp, sc->fnt, sc->text, x + sc->offset, y, 3, -1);
++		set_clip_rect(bmp, 0, 0, bmp->w-1, bmp->h-1);
+ 	}
+ 	else {
+ 		int i;
+ 		if (sc->offset < -sc->rows * sc->font_height) return;
+ 		if (sc->offset > sc->height) return;
+-		set_clip(bmp, x, y, x + sc->width, y + sc->height);
++		set_clip_rect(bmp, x, y, x + sc->width, y + sc->height);
+ 		for(i=0;i<sc->rows;i++) {
+ 			if (i * sc->font_height + sc->offset <= sc->height) 
+ 				if ((i+1) * sc->font_height + sc->offset >= 0)
+-					textout_centre(bmp, sc->fnt, sc->lines[i], x+(sc->width>>1) , i * sc->font_height + y + sc->offset, -1);
++					textout_centre_ex(bmp, sc->fnt, sc->lines[i], x+(sc->width>>1) , i * sc->font_height + y + sc->offset, -1, -1);
+ 		}
+-		set_clip(bmp, 0, 0, bmp->w-1, bmp->h-1);
++		set_clip_rect(bmp, 0, 0, bmp->w-1, bmp->h-1);
+ 	}
+ }
+ 
+--- a/src/shooter.c
++++ b/src/shooter.c
+@@ -341,7 +341,7 @@
+ 		if (!o->hit || o->type == SO_PLAYER_BULLET)
+ 			draw_sprite(bmp, s_data[o->image].dat, (int)o->x, (int)o->y);
+ 		else
+-			draw_character(bmp, s_data[o->image].dat, (int)o->x, (int)o->y, 4);
++			draw_character_ex(bmp, s_data[o->image].dat, (int)o->x, (int)o->y, 4, -1);
+ 	}
+ 	else {
+ 		int c = (o->energy + 8) >> 3;
+@@ -379,8 +379,8 @@
+ 		padding_str[i] = '0';
+ 	padding_str[i] = '\0';
+ 	strcat(padding_str, score_str);
+-	textprintf_right(bmp, s_data[SPACE_FONT].dat, x + 160, y + 2, 3, "%s", padding_str);
+-	if (s_var.score) textprintf_right(bmp, s_data[SPACE_FONT].dat, x + 160, y + 2, 4, "%s", score_str);
++	textprintf_right_ex(bmp, s_data[SPACE_FONT].dat, x + 160, y + 2, 3, -1, "%s", padding_str);
++	if (s_var.score) textprintf_right_ex(bmp, s_data[SPACE_FONT].dat, x + 160, y + 2, 4, -1, "%s", score_str);
+ }
+ 
+ 

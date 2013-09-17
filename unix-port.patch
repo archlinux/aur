@@ -1,0 +1,781 @@
+Description: Support Unix-like operating systems.
+ Based on Hans de Goede's patch for Fedora. 
+Author: Hans de Goede <hdegoede@redhat.com>
+ Peter de Wachter <pdewacht@gmail.com>,
+ Peter Pentchev <roam@ringlet.net>
+Forwarded: yes
+Last-Update: 2011-03-09
+
+--- a/src/main.c
++++ b/src/main.c
+@@ -38,6 +38,7 @@
+ #include "main.h"
+ #include "edit.h"
+ #include "shooter.h"
++#include "unix.h"
+ 
+ #include "../data/data.h"
+ 
+@@ -66,7 +67,6 @@
+ Tscroller hscroll;
+ Thisc *hisc_table;
+ Thisc *hisc_table_space;
+-char working_directory[1024];
+ 
+ // the map
+ Tmap *map = NULL;
+@@ -126,6 +126,7 @@
+ int playing_original_game = 1;
+ int init_ok = 0;
+ 
++static FILE* log_fp = NULL;
+ 
+ 
+ // // // // // // // // // // // // // // // // // // // // // 
+@@ -154,20 +155,18 @@
+ // loggs the text to the text file
+ void log2file(char *format, ...) {
+ 	va_list ptr; /* get an arg pointer */
+- 	FILE *fp;
+ 	
+-	fp = fopen("log.txt", "at");
+-	if (fp) {
++	if (log_fp) {
+ 		/* initialize ptr to point to the first argument after the format string */
+ 		va_start(ptr, format);
+  
+ 		/* Write to logfile. */
+-		vfprintf(fp, format, ptr); // Write passed text.
+-		fprintf(fp, "\n"); // New line..
++		vfprintf(log_fp, format, ptr); // Write passed text.
++		fprintf(log_fp, "\n"); // New line..
+  
+ 		va_end(ptr);
+  
+-		fclose(fp);
++		fflush(log_fp);
+ 	}
+ 
+ }
+@@ -618,6 +617,10 @@
+ 	BITMAP *bmp;
+ 	int i;
+ 	int w, h;
++#ifdef __unix__   
++	char filename[512];
++	char *homedir = get_homedir();
++#endif 	
+ 
+ 	log2file("\nInit routines:");
+ 
+@@ -625,7 +628,13 @@
+ 	log2file(" initializing allegro");
+ 	text_mode(-1);
+ 	garble_string(init_string, 53);
++#ifdef __unix__
++	snprintf(filename, sizeof(filename), "%s/.alex4/alex4.ini",
++		homedir? homedir:".");
++	override_config_file(filename);
++#else
+ 	set_config_file("alex4.ini");
++#endif
+ 	set_window_close_button(FALSE);
+ 	
+ 	// install timers
+@@ -695,6 +704,7 @@
+ 	textout_centre(swap_screen, font, "loading...", 320, 200, 1);
+ 	blit_to_screen(swap_screen);
+ 
++#ifndef __unix__
+ 	// set switch modes and callbacks
+ 	if (set_display_switch_mode(SWITCH_PAUSE) < 0)
+ 		log2file("  * display switch mode failed");
+@@ -702,6 +712,7 @@
+ 		log2file("  * display switch in failed");
+ 	if (set_display_switch_callback(SWITCH_OUT, display_switch_out) < 0)
+ 		log2file("  * display switch out failed");
++#endif
+ 
+ 
+ 	// set win title (no! really???)
+@@ -718,7 +729,7 @@
+ 	// load data
+ 	log2file(" loading data");
+ 	packfile_password(init_string);
+-	data = load_datafile("data/data.dat");
++	data = load_datafile(DATADIR "data.dat");
+ 	packfile_password(NULL);
+ 	if (data == NULL) {
+     	log2file("  *** failed");
+@@ -728,7 +739,13 @@
+ 
+ 	// load options
+ 	log2file(" loading options");
++#ifdef __unix__
++	snprintf(filename, sizeof(filename), "%s/.alex4/alex4.sav",
++		homedir? homedir:".");
++	pf = pack_fopen(filename, "rp");
++#else
+ 	pf = pack_fopen("alex4.sav", "rp");
++#endif
+ 	if (pf) {
+ 		load_options(&options, pf);
+ 		pack_fclose(pf);
+@@ -740,7 +757,13 @@
+ 
+ 	// loading highscores
+ 	log2file(" loading hiscores");
++#ifdef __unix__
++	snprintf(filename, sizeof(filename), "%s/.alex4/alex4.hi",
++		homedir? homedir:".");
++	pf = pack_fopen(filename, "rp");
++#else
+ 	pf = pack_fopen("alex4.hi", "rp");
++#endif
+ 	if (pf) {
+ 		load_hisc_table(hisc_table, pf);
+ 		load_hisc_table(hisc_table_space, pf);
+@@ -776,7 +799,7 @@
+ 		log2file(" loading original maps");
+ 		packfile_password(init_string);
+ 		num_levels = -1;  // skip end object when counting
+-		maps = load_datafile_callback("data/maps.dat", count_maps_callback);
++		maps = load_datafile_callback(DATADIR "maps.dat", count_maps_callback);
+ 		packfile_password(NULL);
+ 		if (maps == NULL) {
+ 	    	log2file("  *** failed");
+@@ -835,11 +858,12 @@
+ 	// install sound
+ 	log2file(" installing sound");
+    	set_volume_per_voice(0);
+-	switch(get_config_int("sound", "sound_device", 0)) {
++	switch(get_config_int("sound", "sound_device", 1)) {
+ 		case 1:
+ 			i = DIGI_AUTODETECT;
+ 			log2file("  DIGI_AUTODETECT selected (%d)", i);
+ 			break;
++#ifdef ALLEGRO_WINDOWS
+ 		case 2:
+ 			i = DIGI_DIRECTX(0);
+ 			log2file("  DIGI_DIRECTX(0) selected (%d)", i);
+@@ -848,6 +872,20 @@
+ 			i = DIGI_DIRECTAMX(0);
+ 			log2file("  DIGI_DIRECTAMX(0) selected (%d)", i);
+ 			break;
++#elif defined ALLEGRO_UNIX
++#ifdef DIGI_OSS
++		case 2:
++			i = DIGI_OSS;
++			log2file("  DIGI_OSS selected (%d)", i);
++			break;
++#endif
++#ifdef DIGI_ALSA
++		case 3:
++			i = DIGI_ALSA;
++			log2file("  DIGI_ALSA selected (%d)", i);
++			break;
++#endif
++#endif
+ 		default:
+ 			i = -770405;	// dummy number
+ 			got_sound = 0;
+@@ -870,9 +908,9 @@
+ 		if (get_config_int("sound", "use_sound_datafile", 1)) {
+ 			log2file(" loading sound datafile");
+ 			packfile_password(init_string);
+-			sfx_data = load_datafile("data/sfx_44.dat");
++			sfx_data = load_datafile(DATADIR "sfx_44.dat");
+ 			if (sfx_data == NULL) {
+-				sfx_data = load_datafile("data/sfx_22.dat");
++				sfx_data = load_datafile(DATADIR "sfx_22.dat");
+ 				log2file("  sfx_44.dat not found");
+ 				s = 0;
+ 			}
+@@ -971,6 +1009,10 @@
+ void uninit_game() {
+ 	int i;
+ 	PACKFILE *pf;
++#ifdef __unix__   
++	char filename[512];
++	char *homedir = get_homedir();
++#endif 	
+ 
+ 	log2file("\nExit routines:");
+ 
+@@ -989,14 +1031,26 @@
+ 	// only save if everything was inited ok!
+ 	if (init_ok) {
+ 		log2file(" saving options");
++#ifdef __unix__
++		snprintf(filename, sizeof(filename), "%s/.alex4/alex4.sav",
++			homedir? homedir:".");
++		pf = pack_fopen(filename, "wp");
++#else
+ 		pf = pack_fopen("alex4.sav", "wp");
++#endif
+ 		if (pf) {
+ 			save_options(&options, pf);
+ 			pack_fclose(pf);
+ 		}
+ 		
+ 		log2file(" saving highscores");
++#ifdef __unix__
++		snprintf(filename, sizeof(filename), "%s/.alex4/alex4.hi",
++			homedir? homedir:".");
++		pf = pack_fopen(filename, "wp");
++#else
+ 		pf = pack_fopen("alex4.hi", "wp");
++#endif
+ 		if (pf) {
+ 			save_hisc_table(hisc_table, pf);
+ 			save_hisc_table(hisc_table_space, pf);
+@@ -1289,7 +1343,7 @@
+ 			// poll music machine
+ 			if (got_sound) al_poll_duh(dp);
+ 
+-			if (mode == 1 && (keypressed() || is_fire(&ctrl) || is_jump(&ctrl) ) || my_counter > 200) {
++			if (((mode == 1) && (keypressed() || is_fire(&ctrl) || is_jump(&ctrl))) || (my_counter > 200)) {
+ 				mode = 2;
+ 			}
+ 			
+@@ -1343,7 +1397,7 @@
+ 	if (space) {
+ 		// get space bg
+ 		packfile_password(init_string);
+-		df = load_datafile_object("data/a45.dat", "BG1");
++		df = load_datafile_object(DATADIR "a45.dat", "BG1");
+ 		packfile_password(NULL);
+ 		if (df != NULL)	{
+ 			bg = df->dat;
+@@ -2149,7 +2203,7 @@
+ 
+ // calculates camera pos for map m considering player p
+ void calculate_camera_pos(Tplayer *p, Tmap *m) {
+-	static camera_type = 1;
++	static int camera_type = 1;
+ 
+ 	if (p->actor->status == AC_BALL) {
+ 		camera_type = 2;
+@@ -2841,6 +2895,10 @@
+ 			}
+ 			else {
+ 				PACKFILE *pf;
++#ifdef __unix__   
++				char filename[512];
++				char *homedir = get_homedir();
++#endif 	
+ 				log2file(" level complete");
+ 				if (got_sound) stop_music();
+ 				if (level < MAX_LEVELS && playing_original_game) {
+@@ -2875,7 +2933,14 @@
+ 
+ 				// save options
+ 				log2file(" saving options");
++#ifdef __unix__
++				snprintf(filename, sizeof(filename),
++					"%s/.alex4/alex4.sav",
++					homedir? homedir:".");
++				pf = pack_fopen(filename, "wp");
++#else
+ 				pf = pack_fopen("alex4.sav", "wp");
++#endif
+ 				if (pf) {
+ 					save_options(&options, pf);
+ 					pack_fclose(pf);
+@@ -2969,24 +3034,36 @@
+ 
+ // main
+ int main(int argc, char **argv) {   
+-	FILE *fp;
+ 	int i;
+ 	char full_path[1024];
++#ifndef __unix__   
++	char working_directory[1024];
++#else
++	char *homedir = get_homedir();
++#endif
+ 
+ 	// init allegro
+ 	allegro_init();
+ 
++#ifdef __unix__
++	// start logfile
++	snprintf(full_path, sizeof(full_path), "%s/.alex4",
++		homedir? homedir:".");
++	check_and_create_dir(full_path);
++	snprintf(full_path, sizeof(full_path), "%s/.alex4/log.txt",
++		homedir? homedir:".");
++	log_fp = fopen(full_path, "wt");
++#else
+ 	// get working directory
+ 	get_executable_name(full_path, 1024);
+ 	replace_filename(working_directory, full_path, "", 1024);
+ 	chdir(working_directory);
+ 
+-
+ 	// start logfile
+-	fp = fopen("log.txt", "wt");
+-	if (fp) {
+-		fprintf(fp, "Alex 4 (%s) - log file\n-------------------\n", GAME_VERSION_STR);
+-		fclose(fp);
++	log_fp = fopen("log.txt", "wt");
++#endif
++	if (log_fp) {
++		fprintf(log_fp, "Alex 4 (%s) - log file\n-------------------\n", GAME_VERSION_STR);
+ 	}
+ 
+ 	// log program arguments
+@@ -2994,7 +3071,9 @@
+ 	for(i = 0; i < argc; i ++) {
+ 		log2file("   %s", argv[i]);
+ 	}
++#ifndef __unix__
+ 	log2file("Working directory is:\n   %s", working_directory);
++#endif
+ 
+ 	// test wether to play real game
+ 	// or custom levels
+@@ -3022,6 +3101,8 @@
+ 	uninit_game();
+ 	allegro_exit();
+ 	log2file("\nDone...\n");
++	if (log_fp)
++		fclose(log_fp);
+ 
+ 	return 0;
+ } END_OF_MAIN(); 
+--- a/src/player.h
++++ b/src/player.h
+@@ -60,4 +60,4 @@
+ void wound_player(Tplayer *p);
+ void kill_player(Tplayer *p);
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/map.h
++++ b/src/map.h
+@@ -111,4 +111,4 @@
+ 
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- /dev/null
++++ b/src/unix.c
+@@ -0,0 +1,87 @@
++#ifdef __unix__
++#include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <pwd.h>
++#include <errno.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#if defined(__DECC) && defined(VMS)
++#include <unixlib.h>
++static char *vms_to_unix_buffer = NULL;
++static int convert_vms_to_unix(char *vms_dir_name)
++{
++	vms_to_unix_buffer = vms_dir_name;
++}
++#endif
++
++char *get_homedir(void)
++{
++	struct passwd *pw;
++	char *home;
++
++	home = getenv("HOME");
++	if (home)
++		return home;
++
++	if (!(pw = getpwuid(getuid())))
++	{
++		fprintf(stderr, "Who are you? Not found in passwd database!!\n");
++		return NULL;
++	}
++
++#if defined(__DECC) && defined(VMS)
++	/* Convert The OpenVMS Formatted "$HOME" Directory Path Into Unix
++	   Format. */
++	decc$from_vms(pw->pw_dir, convert_vms_to_unix, 1);
++	return vms_to_unix_buffer;
++#else
++	return pw->pw_dir;
++#endif
++}
++//-----------------------------------------------------------------------------
++int check_and_create_dir(const char *name)
++{
++	struct stat stat_buffer;
++
++	if (stat(name, &stat_buffer))
++	{
++		/* error check if it doesn't exist or something else is wrong */
++		if (errno == ENOENT)
++		{
++			/* doesn't exist letts create it ;) */
++#ifdef BSD43
++			if (mkdir(name, 0775))
++#else
++				if (mkdir(name, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH))
++#endif
++				{
++					fprintf(stderr, "Error creating dir %s", name);
++					perror(" ");
++					return -1;
++				}
++		}
++		else
++		{
++			/* something else went wrong yell about it */
++			fprintf(stderr, "Error opening %s", name);
++			perror(" ");
++			return -1;
++		}
++	}
++	else
++	{
++		/* file exists check it's a dir otherwise yell about it */
++#ifdef BSD43
++		if (!(S_IFDIR & stat_buffer.st_mode))
++#else
++			if (!S_ISDIR(stat_buffer.st_mode))
++#endif
++			{
++				fprintf(stderr,"Error %s exists but isn't a dir\n", name);
++				return -1;
++			}
++	}
++	return 0;
++}
++#endif
+--- /dev/null
++++ b/src/Makefile
+@@ -0,0 +1,24 @@
++PREFIX  = /usr/local
++DATADIR = $(PREFIX)/share/$(TARGET)
++CFLAGS  ?= -g -Wall -Wno-deprecated-declarations -O2
++LIBS = -laldmb -ldumb `allegro-config --libs`
++DEFINES = -DDATADIR=\"$(DATADIR)/\"
++OBJS    =  actor.o    edit.o  map.o       player.o    shooter.o unix.o \
++           bullet.o   hisc.o  options.o   script.o    timer.o          \
++           control.o  main.o  particle.o  scroller.o  token.o
++TARGET  = alex4
++
++$(TARGET): $(OBJS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
++
++%.o: %.c
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(DEFINES) -o $@ -c $<
++
++install: $(TARGET)
++	mkdir -p $(PREFIX)/bin
++	mkdir -p $(DATADIR)
++	install -p -m 755 $(TARGET) $(PREFIX)/bin
++	install -p -m 644 ../data/*.dat $(DATADIR)
++
++clean:
++	rm -f $(OBJS) $(TARGET) *~
+--- a/src/token.h
++++ b/src/token.h
+@@ -41,4 +41,4 @@
+ Ttoken *tokenize(char *str);
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/shooter.c
++++ b/src/shooter.c
+@@ -1372,7 +1372,7 @@
+ 	// load data
+ 	log2file(" loading shooter data");
+ 	packfile_password(get_init_string());
+-	s_data = load_datafile("data/a45.dat");
++	s_data = load_datafile(DATADIR "a45.dat");
+ 	if (!s_data) {
+ 		log2file(" *** failed");
+ 		return -1;
+--- a/src/particle.h
++++ b/src/particle.h
+@@ -54,4 +54,4 @@
+ void update_particle_with_map(Tparticle *p, Tmap *m);
+ void create_burst(Tparticle *ps, int x, int y, int spread, int num, int life, int bmp);
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- /dev/null
++++ b/src/unix.h
+@@ -0,0 +1,6 @@
++#ifdef __unix__
++
++char *get_homedir();
++int check_and_create_dir(const char *name);
++
++#endif
+--- a/src/scroller.h
++++ b/src/scroller.h
+@@ -51,4 +51,4 @@
+ 
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/map.c
++++ b/src/map.c
+@@ -24,6 +24,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <endian.h>
+ #include "allegro.h"
+ #include "map.h"
+ #include "timer.h"
+@@ -64,7 +65,41 @@
+ 
+ 	return m;
+ }
+-	
++
++static void mem_to_int(int *dest, unsigned char *mem)
++{
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++	memcpy(dest, mem, 4);
++#else
++	*dest = mem[0] | (((int)mem[1]) << 8) | (((int)mem[2]) << 16) |
++		(((int)mem[3]) << 24);
++#endif
++}
++
++static void fread_int(int *dest, FILE *fp)
++{
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++	fread(dest, 4, 1, fp);
++#else
++	unsigned char buf[4];
++	fread(buf, 1, 4, fp);
++	mem_to_int(dest, buf);
++#endif
++}
++
++static void fwrite_int(const int *src, FILE *fp)
++{
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++	fwrite(src, 4, 1, fp);
++#else
++	unsigned char buf[4];
++	buf[0] = *src;
++	buf[1] = *src >> 8;
++	buf[2] = *src >> 16;
++	buf[3] = *src >> 24;
++	fwrite(buf, 1, 4, fp);
++#endif
++}
+ 
+ // loads one splendind map from disk
+ Tmap *load_map(char *fname) {
+@@ -93,7 +128,19 @@
+ 	}
+ 	
+ 	// read datastruct
+-	fread(m, sizeof(Tmap), 1, fp);
++	// a mapfile contain a raw dump of the Tmap struct made on an i386
++	// the code below reads these struct dumps in an arch neutral manner
++	// Note this dumps contains pointers, these are not used because these
++	// ofcourse point to some no longer valid address.
++	fread(m, 64, 1, fp);             // first 64 bytes data
++	fread_int(&(m->width), fp);
++	fread_int(&(m->height), fp);
++	fread(header, 4, 1, fp);         // skip the first pointer
++	fread_int(&(m->offset_x), fp);
++	fread_int(&(m->offset_y), fp);
++	fread(header, 4, 1, fp);         // skip the second pointer
++	fread_int(&(m->start_x), fp);
++	fread_int(&(m->start_y), fp);
+ 
+ 	// read map data
+ 	m->dat = malloc(m->width * m->height * sizeof(Tmappos));
+@@ -116,8 +163,8 @@
+ // loads one splendind map from memory
+ Tmap *load_map_from_memory(void *mem) {
+ 	Tmap *m;
+-	char header[6];
+-    char *c = (char *)mem;
++	unsigned char header[6];
++	unsigned char *c = (unsigned char *)mem;
+ 
+ 	
+ 	// does the header match?
+@@ -137,9 +184,19 @@
+ 	}
+ 	
+ 	// read datastruct
+-	// fread(m, sizeof(Tmap), 1, fp);
+-	memcpy(m, c, sizeof(Tmap));
+-    c += sizeof(Tmap);
++	// a mapfile contain a raw dump of the Tmap struct made on an i386
++	// the code below reads these struct dumps in an arch neutral manner
++	// Note this dumps contains pointers, these are not used because these
++	// ofcourse point to some no longer valid address.
++	memcpy(m, c, 64); c += 64;             // first 64 bytes data
++	mem_to_int(&(m->width), c);  c += 4;
++	mem_to_int(&(m->height), c); c += 4;
++	c += 4;	                               // skip the first pointer
++	mem_to_int(&(m->offset_x), c); c += 4;
++	mem_to_int(&(m->offset_y), c); c += 4;
++	c += 4;                                // skip the second pointer
++	mem_to_int(&(m->start_x), c); c+= 4;
++	mem_to_int(&(m->start_y), c); c+= 4;
+ 
+ 	// read map data
+ 	m->dat = malloc(m->width * m->height * sizeof(Tmappos));
+@@ -174,7 +231,18 @@
+ 	fwrite(header, 6, 1, fp);
+ 
+ 	// write datastruct
+-	fwrite(m, sizeof(Tmap), 1, fp);
++	// a mapfile should contain a raw dump of the Tmap struct as made on an
++	// i386 the code below writes a struct dump as an i386 in an arch
++	// neutral manner
++	fwrite(m, 64, 1, fp);             // first 64 bytes data
++	fwrite_int(&(m->width), fp);
++	fwrite_int(&(m->height), fp);
++	fwrite(header, 4, 1, fp);         // skip the first pointer
++	fwrite_int(&(m->offset_x), fp);
++	fwrite_int(&(m->offset_y), fp);
++	fwrite(header, 4, 1, fp);         // skip the second pointer
++	fwrite_int(&(m->start_x), fp);
++	fwrite_int(&(m->start_y), fp);
+ 
+ 	// write map data
+ 	fwrite(m->dat, sizeof(Tmappos), m->width * m->height, fp);
+@@ -409,7 +477,7 @@
+ 	}
+ 
+ 	if (mask == 5 && oy > 31 - ox) return mask; // 45 degree slope / 
+-	if (mask == 6 && oy > ox) return mask;		// 45 degree slope \
++	if (mask == 6 && oy > ox) return mask;		// 45 degree slope \ .
+ 
+ 	// the not so simple ones
+ 	if (mask == 3 && oy > 31 - ox / 2) return mask;	// 22 degree slope / (low)
+--- a/src/shooter.h
++++ b/src/shooter.h
+@@ -83,8 +83,8 @@
+ 	int difficulty;
+ 
+ 	// player related
+-	long unsigned int score;
+-	long unsigned int show_score;
++	unsigned int score;
++	unsigned int show_score;
+ 	int lives;
+ 	int power_gauge;
+ 	int power_level;
+@@ -118,4 +118,4 @@
+ int start_shooter(Tcontrol *c, int with_sound);
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/timer.h
++++ b/src/timer.h
+@@ -37,4 +37,4 @@
+ void fps_counter(void);
+ void cycle_counter(void);
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/main.h
++++ b/src/main.h
+@@ -93,5 +93,8 @@
+ #define check_bb_collision(x1,y1,w1,h1,x2,y2,w2,h2) (!( ((x1)>=(x2)+(w2)) || ((x2)>=(x1)+(w1)) || \
+                                                         ((y1)>=(y2)+(h2)) || ((y2)>=(y1)+(h1)) ))
+ 
++#ifndef DATADIR
++#define DATADIR "data/"
++#endif
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/script.h
++++ b/src/script.h
+@@ -51,4 +51,4 @@
+ 
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/edit.h
++++ b/src/edit.h
+@@ -37,4 +37,4 @@
+ void draw_edit_mode(BITMAP *bmp, Tmap *map, int mx, int my);
+ void update_edit_mode(Tmap *map, BITMAP *bmp, int mx, int my, int mb);
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/token.c
++++ b/src/token.c
+@@ -67,7 +67,7 @@
+ 
+ // tokenizes the string str
+ Ttoken *tokenize(char *str) {
+-    Ttoken *tok_list, *tok_tmp;
++    Ttoken *tok_list, *tok_tmp = NULL;
+     char word[256];
+     int a, b, c;
+     int i = 0;
+--- a/src/hisc.h
++++ b/src/hisc.h
+@@ -48,4 +48,4 @@
+ void draw_hisc_post(Thisc *table, BITMAP *bmp, FONT *fnt, int x, int y, int color, int show_level);
+ void draw_hisc_table(Thisc *table, BITMAP *bmp, FONT *fnt, int x, int y, int color, int show_level);
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/options.h
++++ b/src/options.h
+@@ -43,4 +43,4 @@
+ void load_options(Toptions *o, PACKFILE *fp);
+ void reset_options(Toptions *o);
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/timer.c
++++ b/src/timer.c
+@@ -60,4 +60,4 @@
+ 	game_count ++;
+ 
+ 	return TRUE;
+-}
+\ No newline at end of file
++}
+--- a/src/actor.h
++++ b/src/actor.h
+@@ -91,4 +91,4 @@
+ void kill_actor(Tactor *a);
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+--- a/src/bullet.h
++++ b/src/bullet.h
+@@ -52,4 +52,4 @@
+ void update_bullet(Tbullet *b);
+ void update_bullet_with_map(Tbullet *b, Tmap *m);
+ 
+-#endif
+\ No newline at end of file
++#endif

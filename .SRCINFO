@@ -1,0 +1,31 @@
+pkgbase = alex4
+	pkgdesc = Help Alex the Allegator rescue Lola before the humans make a pair of shoes out of her!
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://allegator.sourceforge.net
+	install = alex4.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dumb
+	source = http://downloads.sourceforge.net/project/allegator/Alex4/source%20and%20data/alex4src_data.zip
+	source = unix-port.patch
+	source = allegro-4.2.patch
+	source = alex4.png
+	source = alex4.desktop
+	source = alex4.install
+	md5sums = c81b8e3813300a0cfbe828bcdff60fda
+	md5sums = 8dcafad79e34fc9adb78a49b6933e10c
+	md5sums = f9ccd450934d346deec450e91ecfc42e
+	md5sums = 1c21affded614148ad06deb1bb59086c
+	md5sums = 96f6ee8ce4fc268d5161e5294cfe565e
+	md5sums = f5bfcc2b2378cf34ab0491e8a8da6c23
+	sha256sums = d266d7fba64fbfedf13240d3d0eb21b8bacbedeaa5f22b26a27d472c8d23f103
+	sha256sums = 5bb70ca82bcd0df0ed72eccada0c9ccb37a570d7c62ea8a076bdf2169a15c2e5
+	sha256sums = ea3e6ffd558cbdb6c392d598499f0780de8c0e456da554531c5c975fe8688d28
+	sha256sums = 236a8d163ee8aa94073aa1ec969a85e887b3c70fefbcd03b1f41b93b09fa32c6
+	sha256sums = b7fc0854e9a07f08bd90f59aaf99011afc3c6c2a0ad0b244ec04694ce0ff19dd
+	sha256sums = 9a9589ca7ab7792cadeb6529141b9d719356d989a7393d7eab322b88c6f27965
+
+pkgname = alex4
+
