@@ -1,0 +1,17 @@
+pkgbase = morituri-whatcd-git
+	pkgdesc = morituri logger meant for What.CD submissions
+	pkgver = 23.97dfae8
+	pkgrel = 1
+	url = https://github.com/supermanvelo/morituri-whatcd
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = morituri
+	depends = python2
+	provides = morituri-whatcd
+	source = git+https://github.com/supermanvelo/morituri-whatcd.git
+	md5sums = SKIP
+
+pkgname = morituri-whatcd-git
+
