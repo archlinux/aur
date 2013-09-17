@@ -1,4 +1,4 @@
-extramodules=/usr/lib/modules/extramodules-3.0-lts
+extramodules=/usr/lib/modules/extramodules-3.10-lts
 
 post_install() {
   depmod -v $(< "$extramodules/version") &>/dev/null
