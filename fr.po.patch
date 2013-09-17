@@ -1,0 +1,11 @@
+--- debhelper/man/po4a/po/fr.po 2012-09-11 01:53:27.000000000 +0900
++++ debhelper/man/po4a/po/fr.po.new     2013-06-22 12:53:18.042707445 +0900
+@@ -6022,7 +6022,7 @@
+ "répertoires à la recherche de fichiers portant un nom ressemblant à ceux "
+ "utilisés pour les pages de manuel. Nota : Seuls les vrais répertoires sont "
+ "scrutés, les liens symboliques sont ignorés. dh_installmanpages utilise "
+-"L<file(1) > pour vérifier si les fichiers sont dans un format correct, puis "
++"L<file(1)> pour vérifier si les fichiers sont dans un format correct, puis "
+ "se base sur l'extension du fichier pour l'installer dans le bon répertoire."
+ 
+ # type: textblock
