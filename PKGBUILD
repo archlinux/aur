@@ -14,6 +14,7 @@ depends=(
   "cdparanoia" "cdrdao" "gstreamer0.10"
   "gstreamer0.10-python" "python2-musicbrainz2"
 )
+makedepends=('git' 'python2-setuptools')
 optdepends=(
   "python2-pycdio: Drive recognition."
   "gstreamer0.10-base-plugins: Offset detection."
