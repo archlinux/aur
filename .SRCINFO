@@ -1,0 +1,15 @@
+pkgbase = eclipse-i18n-de
+	pkgdesc = German language pack for eclipse IDE
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = http://babel.eclipse.org/
+	arch = any
+	license = EPL
+	depends = eclipse>=4.3
+	conflicts = eclipse-i18n-pack1
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/babel/babel_language_packs/R0.11.0/kepler/BabelLanguagePack-eclipse-de_4.3.0.v20130724043401.zip
+	md5sums = 634a1523a61884edbc54430dee4095ca
+	sha256sums = 585afb92f50d5a04ebc607c4907d6b255df5c814f5cbd8c6d359ee78604fa06b
+
+pkgname = eclipse-i18n-de
+
