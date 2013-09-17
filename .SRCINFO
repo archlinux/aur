@@ -1,0 +1,31 @@
+pkgbase = easyrpg-player
+	pkgdesc = EasyRPG Player aims to be a free, RPG Maker 2000/2003 interpreter.
+	pkgver = 0.1.1
+	pkgrel = 3
+	url = https://easy-rpg.org/
+	install = easyrpg-player.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=2.8
+	makedepends = boost
+	depends = sdl_mixer
+	depends = freetype2
+	depends = pixman
+	depends = libpng
+	depends = libjpeg
+	depends = boost-libs
+	depends = openal
+	depends = libsndfile
+	depends = lua51
+	depends = expat
+	conflicts = easyrpg-player-git
+	source = https://easy-rpg.org/downloads/player/EasyRPG_Player-0.1.1-src.zip
+	source = easyrpg-player.install
+	md5sums = e6b0e42d98b993a0119a92dd0593acda
+	md5sums = 8ceae8f6dfa0eeff7e8029e6ee792386
+	sha256sums = db0f3c910c7aaf881e5d472becb666ed22281ae3ff1220c4191f806f5afa38c9
+	sha256sums = 187f2c695b2ad0471cea3679956ab77e1c191b082182ee6d776447990ef1edc1
+
+pkgname = easyrpg-player
+
