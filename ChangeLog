@@ -1,3 +1,20 @@
+2013-09-18 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.3_alpha_1-1 :
+	Version bump.
+
+	Upstream changelog:
+	- Increased performance for filling in image data. 
+	- Slightly reduce memory usage for structure generation.
+	- Added official support for 13w37b.
+	- Reduced memory usage from grid layer.
+	- Increased performance for drawing biome layer.
+	- Added FPS counter.
+	- Improved detection of multiplayer maps.
+	- Major performance improvements for zoomed out maps.
+	- Added spawn location icon.
+	- Added option to toggle framerate panel in the menus.
+
 2013-09-12 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.2-1 :
