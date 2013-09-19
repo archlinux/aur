@@ -1,0 +1,31 @@
+pkgbase = openshot-bzr
+	pkgdesc = an open-source, non-linear video editor for Linux based on MLT framework
+	pkgver = 741
+	pkgrel = 1
+	url = http://www.openshotvideo.com/
+	install = openshot.install
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = mlt-python-bindings
+	depends = pygoocanvas
+	depends = sdl
+	depends = librsvg
+	depends = mplayer
+	depends = pyxdg
+	depends = pygtk
+	depends = python2-httplib2
+	depends = python-imaging
+	optdepends = dvgrab: for IEEE digital sources
+	optdepends = libquicktime
+	optdepends = libavc1394
+	optdepends = faac
+	optdepends = jack
+	optdepends = jack-rack
+	optdepends = ladspa
+	conflicts = openshot
+	source = bzr+lp:openshot
+	md5sums = SKIP
+
+pkgname = openshot-bzr
+
