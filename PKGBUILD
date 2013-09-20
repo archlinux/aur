@@ -1,6 +1,6 @@
 pkgname=amavisd-new
-pkgver=2.8.0
-pkgrel=8
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -37,7 +37,7 @@ backup=('etc/amavisd/amavisd.conf' 'etc/amavisd/amavisd-custom.conf')
 source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.gz"
         "service"
         "tmpfiles")
-md5sums=('9851ce19f0c8fcab36f254c4e0251618'
+md5sums=('f6f9abd1aac05521bdcb3754d09f5314'
          '3d0c094230621dfa04922afb482e638c'
          '7114b97b5b2b0d8f98a0a3039e2ef8fe')
 install=install
@@ -64,6 +64,12 @@ package() {
     install -D -m755 LDAP.ldif                 ${pkgdir}/etc/openldap/schema/amavisd-new.ldif
     install -D -m755 LDAP.schema               ${pkgdir}/etc/openldap/schema/amavisd-new.schema
 	 install -D -m750 -o 333 -g 333 -d          ${pkgdir}/var/spool/amavis/{,db,tmp,var,virus}
+
+	 mkdir -p \
+		  ${pkgdir}/etc/amavisd \
+		  ${pkgdir}/usr/share/doc/amavis \
+		  ${pkgdir}/usr/bin
+
     install -D -m644 -t ${pkgdir}/etc/amavisd             amavisd{.conf,-custom.conf,.conf-default}
     install -D -m755 -t ${pkgdir}/usr/share/doc/amavis    amavisd-new-{qmqpqq,courier}.patch
     install -D -m755 -t ${pkgdir}/usr/bin p0f-analyzer.pl amavisd{,-{agent,nanny,release,signer,snmp-subagent{,-zmq}}}
