@@ -1,6 +1,6 @@
 pkgbase = unix-runescape-client
 	pkgdesc = RuneScape client for Linux and Unix
-	pkgver = 4.0.9
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html
 	install = unix-runescape-client.install
@@ -17,7 +17,7 @@ pkgbase = unix-runescape-client
 	optdepends = alsa-oss: for "force alsa" fix
 	optdepends = pulseaudio: for "force pulseaudio" fix
 	conflicts = runescape-client-bin
-	source = git://github.com/HikariKnight/rsu-client.git#tag=v4.0.9
+	source = git://github.com/HikariKnight/rsu-client.git#tag=v4.1.1
 	md5sums = SKIP
 
 pkgname = unix-runescape-client
