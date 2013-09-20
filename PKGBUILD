@@ -14,6 +14,7 @@ pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
 license=('LGPL2.1')
+makedepends=('git')
 depends=('popt')
 conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
 provides=("${_pkgname}=${pkgver}" "libefivar=${pkgver}" "libefivar-git=${pkgver}")

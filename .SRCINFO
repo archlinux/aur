@@ -6,6 +6,7 @@ pkgbase = efivar-git
 	arch = x86_64
 	arch = i686
 	license = LGPL2.1
+	makedepends = git
 	depends = popt
 	provides = efivar=0.6.2.g9c8a7f6
 	provides = libefivar=0.6.2.g9c8a7f6
