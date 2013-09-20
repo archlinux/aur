@@ -6,6 +6,7 @@ pkgbase = gnu-efi-libs-git
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = git
 	makedepends = pciutils
 	provides = gnu-efi-libs
 	conflicts = gnu-efi-libs

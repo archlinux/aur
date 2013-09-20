@@ -15,7 +15,7 @@ pkgdesc="Library for building UEFI Applications using GNU toolchain - Sourceforg
 url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
 arch=('x86_64' 'i686')
-makedepends=('pciutils')
+makedepends=('git' 'pciutils')
 options=('!strip' '!makeflags')
 
 conflicts=('gnu-efi-libs')
