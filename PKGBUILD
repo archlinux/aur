@@ -8,7 +8,7 @@
 
 pkgname='perl-convert-uulib'
 pkgver='1.4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Perl interface to the uulib library (a.k.a. uudeview/uuenview).'
 url='http://search.cpan.org/~mlehmann/Convert-UUlib/'
 arch=('i686' 'x86_64')
