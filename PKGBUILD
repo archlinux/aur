@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 # Old Maintainer: Ezekiel Sulastin <zekesulastin@gmail.com>
 
-# Warning: this package is BIG - 1.3 GiB for the GOG installer,
+# Warning: this package is BIG - 1.6 GiB for the GOG installer,
 #   2 GiB for the actual unpacked game data, and 2 GiB for
 #   the finished package if uncompressed.  mv is used over cp
 #   in the package phase to save a bit of space, but make sure
@@ -22,7 +22,7 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=3
+pkgrel=4
 pkgdesc="Freespace 2 retail data for fs2_open"
 arch=('any')
 url="http://www.gog.com/en/gamecard/freespace_2"
@@ -39,8 +39,8 @@ PKGEXT=".pkg.tar"
 prepare() {
   # Could possibly support older versions of the GOG installer too,
   # but it's worth it to have the latest version.
-  local _gog_md5="06341f1ccd8f70a1e02cc236712e7726"
-  local _gog_exe="setup_freespace_2.exe"
+  local _gog_md5="2870b98722a1e56a360e3a959019e678"
+  local _gog_exe="setup_freespace2_2.0.0.8.exe"
   if [[ -f ../$_gog_exe ]]; then
     echo "GOG installer detected; checking md5sum ..."
     if ! echo "$_gog_md5 ../$_gog_exe" | md5sum -c --status; then
@@ -65,7 +65,7 @@ package() {
   cd "$srcdir"
 
   if [[ -r readme.txt ]]; then sed -n 416,471p readme.txt > LICENSE;
-  else head -n 19 < tmp/gog_EULA.txt | recode windows-1252/CRLF..utf8 > LICENSE;
+  else head -n 19 < tmp/GOG_EULA.txt | recode windows-1252/CRLF..utf8 > LICENSE;
     license=('custom:goodoldgames');
   fi
 
@@ -86,4 +86,8 @@ package() {
     rm -rf app/data{2,3}
     mv app/* "$pkgdir/opt/fs2_open"
   fi
+
+  # Useless files for a Linux port. :D
+  find "$pkgdir/opt/fs2_open" -iname \*.exe -print0 -or -iname \*.dll -print0 \
+    -or -iname \*.ico -print0 | xargs -0 rm -f
 }
