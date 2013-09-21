@@ -1,0 +1,322 @@
+#!/bin/bash
+# Sources: iptables -> https://www.privateinternetaccess.com/forum/index.php?p=/discussion/35/block-non-vpn-traffic-on-linux-with-iptables-protect-against-disconnect/p1
+# Dependencies: transmission-daemon rename openvpn systemd sudo wget curl
+
+PIA_CONFIG_DIR="/etc/openvpn/privateinternetaccess"
+PIA_CONFIG_URL="https://www.privateinternetaccess.com/openvpn/openvpn.zip"
+PIA_COMMON_CONFIG="$PIA_CONFIG_DIR/pia_common"
+PIA_SERVERS_FILE=$PIA_CONFIG_DIR/piaservers
+PIA_SERVERS_IP_FILE=$PIA_CONFIG_DIR/piaserverips
+PASSWD_FILE="$PIA_CONFIG_DIR/passwd"
+CLIENT_ID_FILE="$PIA_CONFIG_DIR/clientid"
+TRANSMISSION_SETTINGS_FILE="/home/dl/.config/transmission-daemon/settings.json"
+PIA_OPEN_PORT_FILE="$PIA_CONFIG_DIR/open_port"
+PIA_OPEN_PORT="$(cat $PIA_OPEN_PORT_FILE)"
+TMPDIR="/tmp/pia"
+VIRT_NET_DEV="tun0"
+
+function usage() {
+    echo "Usage: $1 [-p|r] [-a|d] [-u] [-c] [-h]"
+    echo "-p: Request new port"
+    echo "-r: Refresh (request port forwarding again) [default]"
+    echo "-a: Block non VPN traffic (iptables)"
+    echo "-d: Unblock non VPN traffic (iptables) [default]"
+    echo "-g: Use Google DNS (updates resolv.conf)"
+    echo "-u: Update configuration files" 
+    echo "-c: Ensure OpenVPN is running. If not stop transmissiond"
+    echo "-h: Display this message"
+}
+
+# Checks if executed as root. If not reinvoke self with sudo
+function check_root() {
+    [[ $EUID -ne 0 ]] && { echo -e "This script must be run as root\nInvoking sudo -- $0 $*" 1>&2; exec sudo -- $0 $*; }
+}
+
+function _myip() {
+    wget --quiet -O - checkip.dyndns.org | sed -e 's/[^:]*: //' -e 's/<.*$//'
+}
+
+function _locate_ip() {
+    geoiplookup $1
+}
+
+function check_transmission() {
+    systemctl is-active transmissiond > /dev/null 2>&1
+}
+
+# Checks if the OpenVPN service is running
+function check_ovpn() {
+    local ovpnd="$(systemctl -t service | grep 'openvpn@.* active')"
+    if [[ -z "$ovpnd" ]]; then
+        echo 'OpenVPN service not running !' >&2
+        check_transmission && { echo -n 'Stopping transmissiond... '; systemctl stop transmissiond; echo 'Done !'; } || echo "Transmissiond not running"
+        iplist_unblock
+        return 1 
+    fi
+}
+
+function info() {
+    local vpn_exit="$(systemctl -t service | grep 'openvpn@.* active' | awk '{ print $NF }')"
+    local ext_ip="$(_myip)"
+    check_ovpn && echo "OpenVPN is running (Exit point: $vpn_exit)"
+    echo "IP: $ext_ip"
+    echo "GeoIP: $(_locate_ip $ext_ip)"
+}
+
+function _ufw_port_allowed() {
+    ufw status | grep -E "^$1\s+ALLOW" > /dev/null
+}
+
+# Delete previous rule from ufw
+function _ufw_delete_old_rule() {
+    if [[ -n "$PIA_OPEN_PORT" ]] && _ufw_port_allowed "$PIA_OPEN_PORT"; then
+        ufw delete allow $PIA_OPEN_PORT
+    fi
+}
+
+# Add a new rule to ufw
+function _ufw_add_new_rule () {
+    if [[ -n "$PIA_OPEN_PORT_NEW" ]] && _ufw_port_allowed "$PIA_OPEN_PORT_NEW"; then
+        ufw allow $PIA_OPEN_PORT_NEW
+    fi
+}
+
+# Update ufw rules
+function ufw_update() {
+    # Check if ufw is running
+    systemctl is-active ufw > /dev/null 2>&1 || return 1
+    echo -n "Updating UFW rules... "
+    _ufw_delete_old_rule
+    _ufw_add_new_rule
+    ufw reload > /dev/null
+    echo 'Done !'
+}
+
+function transmission_peer_port_update() {
+    local transmission_peer_port="$(grep 'peer-port\"' $TRANSMISSION_SETTINGS_FILE | grep -Eo '[0-9]+')"
+    echo -n "Updating transmission's listening port... "
+    # Check if transmission is running
+    if check_transmission; then
+        # get current listening port
+        transmission_peer_port="$(transmission-remote -si | grep Listenport | grep -oE '[0-9]+')"
+        if [[ "$PIA_OPEN_PORT_NEW" != "$transmission_peer_port" ]]; then
+            transmission-remote -p "$PIA_OPEN_PORT_NEW"
+            # systemctl restart transmissiond
+            echo 'Checking port...'
+            sleep 2 && transmission-remote -pt
+        fi
+    else
+        # write new listening port to config
+        if [[ -n "$PIA_OPEN_PORT_NEW" ]] && [[ "$PIA_OPEN_PORT_NEW" != "$transmission_peer_port" ]]; then
+            echo "Writing new peer port to transmission's settings.json..."
+            sed -i 's/\(\"peer-port\":\).*,/\1 '$PIA_OPEN_PORT_NEW',/' $TRANSMISSION_SETTINGS_FILE
+        fi
+        check_ovpn && systemctl restart transmissiond 
+    fi
+    echo 'Done !'
+}
+
+# Return a new client ID
+function new_client_id() {
+    head -n 100 /dev/urandom | md5sum | tr -d " -" | tee $CLIENT_ID_FILE
+}
+
+function request_port() {
+    local username="$(head -1 $PASSWD_FILE)"
+    local passwd="$(tail -1 $PASSWD_FILE)"
+    local local_vpn_ip="$(ip addr show $VIRT_NET_DEV | grep inet | awk '{ print $2 }')"
+    local client_id="$1"
+    #[[ -z "$client_id" ]] || client_id=$(new_client_id)
+    echo -n "Updating port forwarding... "
+    if test $VERBOSE; then
+        echo "Username: $username"
+        echo "Client ID: $client_id"
+        echo "VPN local IP: $local_vpn_ip"
+    fi
+    PIA_OPEN_PORT_NEW="$(curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" https://www.privateinternetaccess.com/vpninfo/port_forward_assignment | grep -oE "[0-9]+" 2>&1)"
+    if [[ -n "$PIA_OPEN_PORT_NEW" ]]; then
+        echo $PIA_OPEN_PORT_NEW > $PIA_OPEN_PORT_FILE
+        echo "Done ! New port: $PIA_OPEN_PORT_NEW (Previous: $PIA_OPEN_PORT)"
+        ufw_update                    # Update firewall rules
+        transmission_peer_port_update # Update Transmission's peer port
+   else
+        echo 'Failed'
+   fi
+}
+
+function update_config() {
+    echo -n 'Updating configuration... '
+    local ovpn_file
+
+    # Clean up
+    rm -f $PIA_CONFIG_DIR/ca.crt $PIA_CONFIG_DIR/*.ovpn
+    
+    # Fetch server config files
+    wget -N -q --directory-prefix=$PIA_CONFIG_DIR $PIA_CONFIG_URL
+    unzip -d $PIA_CONFIG_DIR -q $PIA_CONFIG_DIR/openvpn.zip 
+    
+    # Replace space by underscore in filenames 
+    rename ' ' '_' *.ovpn
+    # Append up/down scripts to every ovpn file
+    for ovpn_file in $(ls -1 $PIA_CONFIG_DIR/*.ovpn); do 
+        cat $PIA_COMMON_CONFIG  >> $ovpn_file
+    done
+    
+    # Extract server addresses and resolve hosts
+    grep -h "remote " $PIA_CONFIG_DIR/*.ovpn | cut -d ' ' -f 2 | sort -u > $PIA_SERVERS_FILE
+    cat $PIA_SERVERS_FILE | nslookup | grep Address | grep -v "192.168.1.1" | awk '{ print $2 }' > $PIA_SERVERS_IP_FILE
+
+    # why is following dig cmd failing randomly ?
+    #dig -f /tmp/piaservers A +short | sort > $PIA_SERVERS_IP_FILE 
+    echo 'Done !'
+}
+
+function iplist_block() {
+    echo -n 'Blocking non VPN-traffic... '
+    check_ovpn || return 0
+    [[ -f $PIA_SERVERS_IP_FILE ]] || update_config
+    # Add PIA server IPs to script
+    local ip_list=$(tr '\n' ' ' < $PIA_SERVERS_IP_FILE)
+    [[ -n "$ip_list" ]] || { echo 'IP list is empty !' >2; exit 2; }
+    # Start building iptables blocklist
+    iptables -F
+    iptables -A INPUT -i tun+ -j ACCEPT
+    iptables -A OUTPUT -o tun+ -j ACCEPT
+    iptables -A INPUT -s 127.0.0.1 -j ACCEPT
+    iptables -A OUTPUT -d 127.0.0.1 -j ACCEPT
+
+    for IP in $ip_list; do
+        iptables -A INPUT -s ${IP} -j ACCEPT
+        iptables -A OUTPUT -d ${IP} -j ACCEPT
+    done
+
+    # Allow connecting to local network 
+    iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
+    iptables -A OUTPUT -d 192.168.1.0/24 -j ACCEPT
+    # Disallow other connections 
+    iptables -A INPUT -j DROP
+    iptables -A OUTPUT -j DROP
+    echo 'Done !'
+}
+
+function iplist_unblock() {
+    echo -n 'Unblocking ... '
+    iptables -F
+    iptables -A INPUT -j ACCEPT
+    iptables -A OUTPUT -j ACCEPT
+    echo 'Done !'
+}
+
+function google_dns() {
+    echo -n "Updating resolv.conf file..."
+    echo -e "# Generated by pia-tools\nnameserver 8.8.8.8\nnameserver 8.8.4.4" > /etc/resolv.conf   
+}
+
+check_root "$*" # check permissions
+
+# If no option -> refresh
+# When started by OpenVPN daemon (up script) this script gets called like this: $0 tun0 1500 1542 10.185.1.6 10.185.1.5 init
+if [[ $# -eq 0 ]] || [[ $# -gt 5 ]]; then
+    port_action=refresh 
+    #ip_action=disallow
+fi  
+
+while getopts ':adgprciuh-' OPTION ; do
+    case "$OPTION" in
+        a)
+            test $ip_action && exit 1
+            ip_action=allow
+            ;;
+        d)
+            test $ip_action && exit 1
+            ip_action=disallow
+            ;;
+        p)
+            test $port_action && exit 1
+            port_action=portfwd
+            ;;
+        r)
+            test $port_action && exit 1
+            port_action=refresh
+            ;;
+        g)
+            gdns=gdns
+            ;;
+        u)
+            update=update
+            ;;
+        c)
+            check=check
+            ;;
+        i)
+            info=info
+            ;;
+        -)
+            [ $OPTIND -ge 1 ] && optind=$(expr $OPTIND - 1 ) || optind=$OPTIND
+            eval OPTION="\$$optind"
+            OPTARG=$(echo $OPTION | cut -d'=' -f2)
+            OPTION=$(echo $OPTION | cut -d'=' -f1)
+            case $OPTION in
+                --port)
+                    test $port_action && exit 1
+                    port_action=portfwd
+                    ;;
+                --refresh)
+                    test $port_action && exit 1
+                    port_action=refresh
+                    ;;
+                --allow)
+                    test $ip_action && exit 1
+                    ip_action=allow
+                    ;;
+                --disallow)
+                    test $ip_action && exit 1
+                    ip_action=disallow
+                    ;;
+                --googledns)
+                    gdns=gdns
+                    ;;
+                --update)
+                    update=update
+                    ;;
+                --check)
+                    check=check
+                    ;;
+                --info)
+                    info=info
+                    ;;
+                *)
+                    usage $(basename $0)
+                    ;;
+            esac
+            OPTIND=1
+            shift
+            ;;
+        ?)
+            usage $(basename $0)
+            ;;
+    esac
+done
+
+[[ -n $update ]] && update_config
+
+if [[ -n "$port_action" ]]; then
+    client_id=$(cat $CLIENT_ID_FILE)
+    if [[ -z "$client_id" ]] || [[ "$port_action" == "portfwd" ]]; then
+        client_id=$(new_client_id)
+    fi
+    check_ovpn 
+    request_port $client_id
+    unset client_id port_action
+fi
+
+if [[ -n "$ip_action" ]]; then
+    [[ "$ip_action" == "disallow" ]] && iplist_block || iplist_unblock
+    unset ip_action
+fi
+
+[[ -n "$check" ]] && check_ovpn
+[[ -n "$info" ]] && info
+[[ -n "$gdns" ]] && google_dns
+
+exit 0
