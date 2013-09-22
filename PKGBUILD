@@ -4,7 +4,7 @@ pkgname=ev-git
 _pkgname=${pkgname%-*}
 pkgver=0.0.0.37.85f5fcd
 pkgrel=1
-pkgdesc="echo xv | tr x e"
+pkgdesc="xv image viewer replacment using EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1')
@@ -12,7 +12,6 @@ depends=('elementary')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-#options=('!libtool')
 source=("git://git.enlightenment.org/devs/discomfitor/$_pkgname.git")
 md5sums=('SKIP')
 

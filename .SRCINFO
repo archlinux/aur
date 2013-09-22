@@ -1,5 +1,5 @@
 pkgbase = ev-git
-	pkgdesc = echo xv | tr x e
+	pkgdesc = xv image viewer replacment using EFL
 	pkgver = 0.0.0.37.85f5fcd
 	pkgrel = 1
 	url = http://www.enlightenment.org
