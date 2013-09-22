@@ -1,0 +1,17 @@
+pkgbase = ev-git
+	pkgdesc = echo xv | tr x e
+	pkgver = 0.0.0.37.85f5fcd
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = elementary
+	provides = ev=0.0.0.37.85f5fcd
+	conflicts = ev
+	source = git://git.enlightenment.org/devs/discomfitor/ev.git
+	md5sums = SKIP
+
+pkgname = ev-git
+
