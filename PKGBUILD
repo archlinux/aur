@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.11
 pkgver=3.11.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -18,14 +18,16 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'criu-no-expert.patch')
+        'criu-no-expert.patch'
+        '3.11.1-fix-skge.patch')
 md5sums=('fea363551ff45fbe4cb88497b863b261'
          '43331cad943b9540afea49ad8ce5cf46'
          '247d9bafa184e2d9a27c1a0485419fff'
          '5effb245b8ec78ad570b3e5962a1a7e0'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
-         'd50c1ac47394e9aec637002ef3392bd1')
+         'd50c1ac47394e9aec637002ef3392bd1'
+         '4fcee2b4485492dcfdead632275198eb')
 
 _kernelname=${pkgbase#linux}
 
@@ -49,6 +51,9 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # #36865 fix broken skge network module
+  patch -Np1 -i "${srcdir}/3.11.1-fix-skge.patch"
+ 
   # allow criu without expert option set
   # patch from fedora
   patch -Np1 -i "${srcdir}/criu-no-expert.patch"
