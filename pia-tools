@@ -76,7 +76,7 @@ function _ufw_delete_old_rule() {
 
 # Add a new rule to ufw
 function _ufw_add_new_rule () {
-    if [[ -n "$PIA_OPEN_PORT_NEW" ]] && _ufw_port_allowed "$PIA_OPEN_PORT_NEW"; then
+    if [[ -n "$PIA_OPEN_PORT_NEW" ]] && ! _ufw_port_allowed "$PIA_OPEN_PORT_NEW"; then
         ufw allow $PIA_OPEN_PORT_NEW
     fi
 }
