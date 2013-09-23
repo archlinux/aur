@@ -1,8 +1,8 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.15.10
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
 url="http://www.clutter-project.org/"
@@ -11,7 +11,7 @@ depends=('libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango')
 makedepends=('mesa' 'gobject-introspection')
 options=(!libtool !emptydirs)
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d82d5078f6b6d3c9369d0c190e34064ef3337fbdd06ecaf17e36f3a50f13a61c')
+sha256sums=('75c2c4636a050fda7ee8722ce3d9c618b08799ed92bbb72b4fdff3e73b096094')
 
 build() {
   cd "$pkgname-$pkgver"
