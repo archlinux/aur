@@ -2,7 +2,7 @@
 
 pkgname=cogl
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
 url="http://www.clutter-project.org/"
@@ -16,7 +16,9 @@ sha256sums=('75c2c4636a050fda7ee8722ce3d9c618b08799ed92bbb72b4fdff3e73b096094')
 build() {
   cd "$pkgname-$pkgver"
   ./configure --prefix=/usr \
-    --enable-wayland-egl-platform --enable-gles{1,2}
+    --enable-gles{1,2} \
+    --enable-{kms,wayland}-egl-platform \
+    --enable-wayland-egl-server
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
