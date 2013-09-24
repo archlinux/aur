@@ -1,0 +1,12 @@
+diff -Naur seahorse-nautilus-3.8.0.orig/tool/seahorse-tool-progress.c seahorse-nautilus-3.8.0/tool/seahorse-tool-progress.c
+--- seahorse-nautilus-3.8.0.orig/tool/seahorse-tool-progress.c	2011-10-24 09:25:37.000000000 +0200
++++ seahorse-nautilus-3.8.0/tool/seahorse-tool-progress.c	2013-04-28 22:26:54.483276592 +0200
+@@ -226,8 +226,6 @@
+         progress_fd = -1;
+         return;
+     }
+-
+-    g_child_watch_add (progress_pid, progress_cancel, NULL);
+ }
+ 
+ void
