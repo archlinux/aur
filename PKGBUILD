@@ -1,6 +1,6 @@
 # Maintainer: Marek Kubica <marek@xivilization.net>
 pkgname=git-cal-git
-pkgver=0.0.0
+pkgver=r22
 pkgrel=1
 pkgdesc='github like contributions calendar on terminal'
 arch=('any')

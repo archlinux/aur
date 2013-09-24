@@ -1,6 +1,6 @@
 pkgbase = git-cal-git
 	pkgdesc = github like contributions calendar on terminal
-	pkgver = 0.0.0
+	pkgver = r22
 	pkgrel = 1
 	url = https://github.com/k4rthik/git-cal
 	arch = any
