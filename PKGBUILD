@@ -4,26 +4,27 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.8.3
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
-arch=('i686' 'x86_64')
-license=('GPL')
+arch=(i686 x86_64)
+license=(GPL)
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
-depends=('libsecret' 'gtk-vnc' 'vte3' 'telepathy-glib' 'avahi' 'desktop-file-utils' 'dconf' 'shared-mime-info' 'gnome-icon-theme')
+depends=(libsecret gtk-vnc vte3 telepathy-glib avahi desktop-file-utils dconf shared-mime-info
+         gnome-icon-theme spice-gtk3)
 optdepends=('openssh: SSH plugin'
             'rdesktop: RDP plugin')
-makedepends=('docbook-xsl' 'intltool' 'rdesktop' 'openssh' 'itstool')
-groups=('gnome-extra')
+makedepends=(docbook-xsl intltool rdesktop openssh itstool)
+groups=(gnome-extra)
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('0d862429307d28333f17afa40cf81f6006903e1aa134a8bc430079a9db40b1c6')
+sha256sums=('d90ca19d1075149d044a58274016bb3976b2201774ae079d661fd7c3859a1900')
 
 build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc \
-      --libexecdir=/usr/lib/vinagre --enable-rdp --disable-spice
+      --libexecdir=/usr/lib/$pkgname --enable-rdp
   make
 }
 
