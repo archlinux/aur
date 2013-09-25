@@ -3,7 +3,7 @@
 # Repository here: https://github.com/Jonhoo/gamedevtycoon-PKGBUILD
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
-pkgver=1.3.13
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
 _gamepkg="gamedevtycoon-${pkgver}.i386-x64.tar.gz"
 _gamerel="1"
-_gamemd5="8db7110413372b4cf80347feb6163e64"
+_gamemd5="114dc18ac7e445eff3827c136e5577d9"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
 md5sums=('ae28f2cd5480964f05cf5699f3f1693c'
          '29e0fcaa10380835931bedc56530caac')
