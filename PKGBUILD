@@ -3,6 +3,7 @@
 
 pkgname=mcpatcher
 pkgver='4.2.2'
+_jarfile="$pkgname-${pkgver//_/-}.jar"
 pkgrel=1
 pkgdesc='Minecraft patcher to fix textures with higher than default resolution'
 arch=('any')
@@ -10,9 +11,9 @@ license=('Public Domain')
 url='https://bitbucket.org/prupe/mcpatcher'
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
-noextract=("$pkgname-$pkgver.jar")
+noextract=("$_jarfile")
 changelog=ChangeLog
-source=(https://bitbucket.org/prupe/mcpatcher/downloads/$pkgname-$pkgver.jar
+source=("https://bitbucket.org/prupe/mcpatcher/downloads/$_jarfile"
         mcpatcher
         mcpatcher.desktop)
 md5sums=('96dce97fc86463cdc4a5a4e85fe963ab'
@@ -23,16 +24,16 @@ prepare() {
     cd "$srcdir"
 
     # Extract icon
-    bsdcpio --extract --make-directories 'resources/icon.png' < "$pkgname-$pkgver.jar"
+    bsdcpio --extract --make-directories 'resources/icon.png' < "$_jarfile"
 }
 
 package() {
     cd "$srcdir"
 
-    install -vDm755 'mcpatcher'            "$pkgdir/usr/bin/mcpatcher"
-    install -vDm644 'resources/icon.png'   "$pkgdir/usr/share/pixmaps/mcpatcher.png"
-    install -vDm644 'mcpatcher.desktop'    "$pkgdir/usr/share/applications/mcpatcher.desktop"
-    install -vDm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/mcpatcher.jar"
+    install -vDm755 'mcpatcher'          "$pkgdir/usr/bin/mcpatcher"
+    install -vDm644 'resources/icon.png' "$pkgdir/usr/share/pixmaps/mcpatcher.png"
+    install -vDm644 'mcpatcher.desktop'  "$pkgdir/usr/share/applications/mcpatcher.desktop"
+    install -vDm644 "$_jarfile"          "$pkgdir/usr/share/java/$pkgname/mcpatcher.jar"
 }
 
 # vim:set ts=4 sw=4 et:
