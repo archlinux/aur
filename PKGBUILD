@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=targetcli-fb
 pkgver=2.1.fb30
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="free branch of the targetcli LIO administration shell (iSCSI + Co)"
 arch=('any')
@@ -16,7 +16,7 @@ replaces=('rtsadmin')
 backup=()
 options=()
 install=
-source=($pkgname-$pkgver.tar.gz::https://github.com/agrover/$pkgname/archive/v$pkgver.tar.gz
+source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$pkgname-$pkgver.tar.gz
 target.service
 target)
 md5sums=('c5993434d606ad722d6939fd519f519d'
