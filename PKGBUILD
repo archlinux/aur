@@ -1,4 +1,4 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 # Contributor: Nathan "Necopinus" <nathan@ecopunk.info>
 # Contributor: Sebastian Schäfer <sarek@uliweb.de>
 
