@@ -2,7 +2,7 @@
 # Contributor: Leewings Ng <osideal@gmail.com>
 
 pkgname=fcitx-table-extra
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie3, Cangjie5'
 arch=('any')
@@ -32,4 +32,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('8042fad0972963faba530652a50b43d74fc94843770e24c95fddaa034b18dbc558529fd3afb619aa98f3cbbd0405a54dbc5e4c3c23a840c9973691c54ce87515')
+sha512sums=('02432660cb81be7cad0ad636f28a79964d91853b2a795c8fc5bc5a1de411b0eae6dc5b9d5ff403669c8cce560583770c63399364118bd6f2d2aa1f7ffe4b2d7d')
