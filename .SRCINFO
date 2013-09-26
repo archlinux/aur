@@ -1,7 +1,7 @@
 pkgbase = udisks2-nosystemd
 	pkgdesc = Disk Management Service, version 2
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/udisks
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = udisks2-nosystemd
 	depends = util-linux
 	optdepends = parted: partition management
 	optdepends = gptfdisk: GUID partition table support
+	optdepends = ntfs-3g: NTFS filesystem management support
+	optdepends = dosfstools: VFAT filesystem management support
 	provides = udisks2=2.1.1
 	conflicts = udisks2
 	replaces = udisks2

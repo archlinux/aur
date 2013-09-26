@@ -3,7 +3,7 @@
 
 pkgname=udisks2-nosystemd
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
@@ -11,7 +11,9 @@ license=('GPL2')
 depends=('glib2' 'udev' 'polkit-consolekit' 'libatasmart' 'util-linux')
 makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python')
 optdepends=('parted: partition management'
-            'gptfdisk: GUID partition table support')
+            'gptfdisk: GUID partition table support'
+            'ntfs-3g: NTFS filesystem management support'
+            'dosfstools: VFAT filesystem management support')
 provides=("udisks2=${pkgver}")
 conflicts=('udisks2')
 replaces=('udisks2')
