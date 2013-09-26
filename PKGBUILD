@@ -66,7 +66,7 @@ package() {
     install -d ${pkgdir}/usr/share/webapps/tracks
 
     # Copy Tracks data to destination directory
-    cp -r ${srcdir}/TracksApp-tracks-bc8b817/. \
+    cp -r ${srcdir}/${_tracks_archive_path}/. \
         ${pkgdir}/usr/share/webapps/tracks/
 
     # Change ownership of files to http:http
