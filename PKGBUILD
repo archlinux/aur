@@ -4,8 +4,8 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.8.1
-pkgrel=2
+pkgver=4.2.8.2
+pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
@@ -22,6 +22,7 @@ build() {
   cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSYSCONFDIR=/etc \
     -DFORCE_OPENCC=ON \
     -DFORCE_PRESAGE=ON \
     -DFORCE_ENCHANT=ON \
@@ -117,4 +118,4 @@ package_fcitx-qt4() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('981e07830693b9525f8f8c7f18579477c066a19ae9358d8aa96ae5439cc3d40f7af2ad24b8cbd24410a5472d002a02eccb8c9d042019cd8459fd094e302d5a72')
+sha512sums=('57945d1bacf80b112a4c5fd8454931f7014036ad1b7b81161be184c3c4d6e31c501f90361bd7327ebaef651f162eb450a6def4c726bd7159c3794b7606b3c2e2')
