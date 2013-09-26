@@ -1,23 +1,23 @@
-# $Id: PKGBUILD 191972 2013-08-02 09:52:35Z bpiotrowski $
+# $Id$
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.0.8.a
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy' 
-         'sdl_image' 'libdvdnav' 'libtiger' 'lua51' 'libmatroska' 
-         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg-compat' 'faad2' 'libupnp' 
+         'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska' 
+         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 
          'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
-             'libdc1394' 'libavc1394' 'lirc-utils' 'libcaca' 'oss' 
-             'librsvg' 'portaudio' 'oss' 'libgme' 'xosd' 'projectm' 
+             'libdc1394' 'libavc1394' 'lirc-utils' 'libcaca' 
+             'librsvg' 'portaudio' 'libgme' 'xosd' 'projectm' 
              'twolame' 'aalib' 'libmtp' 'libdvdcss' 'gnome-vfs' 
              'libgoom2' 'libtar' 'vcdimager' 'opus' 'libssh2' 'mesa'
              'decklink-sdk')
@@ -33,7 +33,6 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'libva-intel-driver: back-end for intel cards'
             'libbluray: for Blu-Ray support'
             'flac: for Free Lossless Audio Codec plugin'
-            'oss: for OSS audio support'
             'portaudio: for portaudio support'
             'twolame: for TwoLAME mpeg2 encoder plugin'
             'projectm: for ProjectM visualisation plugin'
@@ -61,17 +60,14 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!libtool' '!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/pub/videolan/${_pkgname}/${pkgver/.a}/${_pkgname}-${pkgver/.a/a}.tar.xz"
-        vlc-2.0.7-vaapi-compat.patch
-        vlc-2.0.8-Fix-live555-breakage-in-last-update.patch)
-md5sums=('e5000677181406d026ffe448633d1ca0'
-         '6df10774bb7acf20e09d6139e5c7839e'
-         'e592efe7bb65291a84f99cfaa3a9f8a2')
+vlc-2.0.7-vaapi-compat.patch)
+md5sums=('8c77bda671821f5b9ede96b6816e2ade'
+         '6df10774bb7acf20e09d6139e5c7839e')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver/.a}"
 
   patch -Np1 -i ../vlc-2.0.7-vaapi-compat.patch
-  patch -Np1 -i ../vlc-2.0.8-Fix-live555-breakage-in-last-update.patch
 
   # dirty hack because of VLC's configure
   [ -d decklink-sdk ] || mkdir decklink-sdk
@@ -89,7 +85,6 @@ build() {
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --disable-rpath \
-              --enable-oss \
               --enable-faad \
               --enable-nls \
               --enable-lirc \
