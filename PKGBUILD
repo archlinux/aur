@@ -1,10 +1,12 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
 pkgname=debhelper-python
 _pkgname=python3-defaults
-pkgver=3.2.3
+_pkgname2=dh-python
+pkgver=3.3.2
+_pkgver=1.20130917
 pkgrel=1
-_pkgrel=6
-pkgdesc="debhelper scripts for Python 3: pyversions, python3.pm"
+_pkgrel=17
+pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python3"
 license=('custom:MIT')
@@ -19,33 +21,31 @@ replaces=()
 backup=()
 options=()
 install=
-source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz)
-md5sums=('f9fca037e3defc4340bcd90aa38d3afb')
+source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz
+http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver.orig.tar.xz)
+md5sums=('abad7f583e166182e3a7b36b82aaf629'
+         '24271694c7096376c7397d6a05fc7ff3')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-debian"
   make
   # python3 works fine as binary
   #for file in {dh_python3,py3clean,py3compile,debian/py3versions.py}; do
   #  sed -i -e '1s|/usr/bin/python3$|/usr/bin/python|' $file
   #done
-  sed -i -e 's|python3.2$|python3.3|g' debian/debian_defaults
-  sed -i -e 's|python3.1$|python3.2|g' debian/debian_defaults
+
+  cd "$srcdir/$_pkgname2-$_pkgver"
+  make
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  #make -k check_versions
+  cd "$srcdir/$_pkgname-debian"
+  make -k check_versions
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  mv $pkgdir/usr/local/bin $pkgdir/usr/bin
-  mv $pkgdir/usr/local/share $pkgdir/usr/share
-  mkdir -p $pkgdir/usr/share/perl5/vendor_perl
-  mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
-  rm -r $pkgdir/usr/local
+  cd "$srcdir/$_pkgname-debian"
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   mkdir -p $pkgdir/usr/share/python3
   install -m 755 debian/py3versions.py $pkgdir/usr/share/python3/
@@ -57,6 +57,11 @@ package() {
 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   install -D -m 644 debian/copyright $pkgdir/usr/share/licenses/$pkgname/
+
+  cd "$srcdir/$_pkgname2-$_pkgver"
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
+  mkdir -p $pkgdir/usr/share/perl5/vendor_perl
+  mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
 }
 
 # vim:set ts=2 sw=2 et:
