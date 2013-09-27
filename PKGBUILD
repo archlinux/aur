@@ -1,9 +1,9 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
 pkgname=debhelper-python2
 _pkgname=python-defaults
-pkgver=2.7.3
-pkgrel=2
-_pkgrel=4
+pkgver=2.7.5
+pkgrel=1
+_pkgrel=5
 pkgdesc="debhelper scripts for Python 2: pyversions, python2.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python"
@@ -19,8 +19,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz)
-md5sums=('c64ada8169474b522835fae6885033ee')
+source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz makefile_supported.patch)
+md5sums=('066c3b10e9f1ede9187eea6fd1f851d5'
+         'ba61b80b7461b85283b6695e1bf6a768')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -28,6 +29,8 @@ build() {
   for file in {dh_python2,pyclean,pycompile,debian/pyversions.py}; do
     sed -i -e '1s|/usr/bin/python$|/usr/bin/python2|' $file
   done
+  sed -i -e 's|>/dev/stderr|>\&2|g' Makefile
+  patch -p1 < ../makefile_supported.patch
 }
 
 check() {

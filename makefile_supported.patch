@@ -1,0 +1,11 @@
+--- python-defaults-2.7.5/Makefile	2013-09-27 11:12:20.411871795 +0200
++++ python-defaults-2.7.5/Makefile	2013-09-27 11:22:15.035658573 +0200
+@@ -42,7 +42,7 @@
+ check_versions:
+ 	@set -e;\
+ 	DEFAULT=`sed -rn 's,^DEFAULT = \(([0-9]+)\, ([0-9]+)\),\1.\2,p' debpython/version.py`;\
+-	SUPPORTED=`sed -rn 's,^SUPPORTED = \[\(([0-9]+)\, ([0-9]+)\)\, \(([0-9]+)\, ([0-9]+)\)\],\1.\2 \3.\4,p' debpython/version.py`;\
++	SUPPORTED=`sed -rn 's,^SUPPORTED = \[\(([0-9]+)\, ([0-9]+)\)\,\],\1.\2,p' debpython/version.py`;\
+ 	DEB_DEFAULT=`sed -rn 's,^default-version = python([0-9.]*),\1,p' debian/debian_defaults`;\
+ 	DEB_SUPPORTED=`sed -rn 's|^supported-versions = (.*)|\1|p' debian/debian_defaults | sed 's/python//g;s/,//g'`;\
+ 	[ "$$DEFAULT" = "$$DEB_DEFAULT" ] || \
