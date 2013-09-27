@@ -2,8 +2,8 @@
 pkgname=debhelper-python2
 _pkgname=python-defaults
 pkgver=2.7.3
-pkgrel=1
-_pkgrel=3
+pkgrel=2
+_pkgrel=4
 pkgdesc="debhelper scripts for Python 2: pyversions, python2.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python"
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz)
-md5sums=('7fb22d7d50a776f20b77cc96dcc1afab')
+md5sums=('c64ada8169474b522835fae6885033ee')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
