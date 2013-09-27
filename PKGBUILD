@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.8.4
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="GTK+ is a multi-platform toolkit (v3) (mingw-w64)"
 arch=(any)
@@ -9,47 +9,40 @@ url="http://www.gtk.org"
 license=("LGPL")
 makedepends=(mingw-w64-gcc mingw-w64-pkg-config gtk-update-icon-cache python2)
 # python2 is required to run gdbus-codegen
+makedepends+=(autoconf automake libtool)
+# autotools are required because several Makefile.am are modified
 depends=(
 'mingw-w64-crt'
 'mingw-w64-atk>=2.7.5'
 'mingw-w64-pango>=1.32.4'
-'mingw-w64-glib2>=2.35.3'
-'mingw-w64-cairo>=1.10.0'
+'mingw-w64-glib2>=2.37.5'
+'mingw-w64-cairo>=1.12.0'
 'mingw-w64-gdk-pixbuf2>=2.27.1')
 options=(!libtool !strip !buildflags)
 
 source=(
 "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-"https://git.gnome.org/browse/gtk+/plain/demos/gtk-demo/brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1"
-"gtk-dont-define-initguid.patch")
+"0004-BURN-THE-.DEF.patch")
 
-# The second source file is downloaded from GNOME. This file exists in the git repository but not in the tarball. Building of demos will fail without this file.
-# The third source file is downloaded from Fedora Project
+# The second source file is downloaded from Fedora Project
 
-md5sums=('2b232d76c01ceb626948bcbe70b05269'
-        '523aea0be651baaba128c133751a0f01'
-        '4038939df90f80ea6923d67afff28e03')
+md5sums=('f5148a330886b906ba0eb7842409d93f'
+         '369582585e60eab9fa5c9aa22a68e41c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  patch -Np0 < '../gtk-dont-define-initguid.patch'
+  patch -Np1 < "../0004-BURN-THE-.DEF.patch"
+  autoreconf -i
   for _arch in ${_architectures}; do
+    unset LDFLAGS
     export CFLAGS="-O2 -mms-bitfields"
     export CXXFLAGS="${CFLAGS}"
-    unset LDFLAGS
-    export PKG_CONFIG_FOR_BUILD="${_arch}-pkg-config"
+    export PKG_CONFIG="${_arch}-pkg-config"
+    export PKG_CONFIG_FOR_BUILD="pkg-config"
     mkdir -p "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
-    msg "Copying files"
-    cp -r "${srcdir}/gtk+-${pkgver}/"* \
-      "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
-    cp '../brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1' \
-      "${srcdir}/gtk+-${pkgver}/demos/gtk-demo/brick.png"
     cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
-    if [ $_arch = "x86_64-w64-mingw32" ]; then
-      rm "gtk/gtk.def"
-    fi
     msg "Starting configure and make"
     ${srcdir}/gtk+-${pkgver}/configure \
       --prefix=/usr/${_arch} \
@@ -59,8 +52,7 @@ build() {
       --enable-gtk2-dependency \
       --enable-static \
       --enable-shared \
-      --disable-cups \
-      --with-included-immodules
+      --disable-cups
     make
   done
 }

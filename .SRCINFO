@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GTK+ is a multi-platform toolkit (v3) (mingw-w64)
-	pkgver = 3.8.4
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = http://www.gtk.org
 	arch = any
@@ -9,21 +9,22 @@ pkgbase = mingw-w64-gtk3
 	makedepends = mingw-w64-pkg-config
 	makedepends = gtk-update-icon-cache
 	makedepends = python2
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
 	depends = mingw-w64-crt
 	depends = mingw-w64-atk>=2.7.5
 	depends = mingw-w64-pango>=1.32.4
-	depends = mingw-w64-glib2>=2.35.3
-	depends = mingw-w64-cairo>=1.10.0
+	depends = mingw-w64-glib2>=2.37.5
+	depends = mingw-w64-cairo>=1.12.0
 	depends = mingw-w64-gdk-pixbuf2>=2.27.1
 	options = !libtool
 	options = !strip
 	options = !buildflags
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.8/gtk+-3.8.4.tar.xz
-	source = https://git.gnome.org/browse/gtk+/plain/demos/gtk-demo/brick.png?h=gtk-3-8&id=231d6c209f47edac828f52a7316980129c370eb1
-	source = gtk-dont-define-initguid.patch
-	md5sums = 2b232d76c01ceb626948bcbe70b05269
-	md5sums = 523aea0be651baaba128c133751a0f01
-	md5sums = 4038939df90f80ea6923d67afff28e03
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.10/gtk+-3.10.0.tar.xz
+	source = 0004-BURN-THE-.DEF.patch
+	md5sums = f5148a330886b906ba0eb7842409d93f
+	md5sums = 369582585e60eab9fa5c9aa22a68e41c
 
 pkgname = mingw-w64-gtk3
 
