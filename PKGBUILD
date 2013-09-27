@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.11
-pkgver=3.11.1
-pkgrel=3
+pkgver=3.11.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,7 +22,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '3.11.1-fix-skge.patch'
         '3.11-haswell-intel_pstate.patch')
 md5sums=('fea363551ff45fbe4cb88497b863b261'
-         '43331cad943b9540afea49ad8ce5cf46'
+         '5aa3286dcc7d70ceb50c3cbc64bc1cd8'
          '247d9bafa184e2d9a27c1a0485419fff'
          '5effb245b8ec78ad570b3e5962a1a7e0'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -30,7 +30,6 @@ md5sums=('fea363551ff45fbe4cb88497b863b261'
          'd50c1ac47394e9aec637002ef3392bd1'
          '4fcee2b4485492dcfdead632275198eb'
          '1040ae6c10d4a68f89899f94a2318a17')
-
 
 _kernelname=${pkgbase#linux}
 
