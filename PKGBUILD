@@ -1,8 +1,8 @@
 pkgname=linux-linode
-_basekernel=3.10
+_basekernel=3.11
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.12
+pkgver=${_basekernel}.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -16,13 +16,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'menu.lst'
         "preset"
         'change-default-console-loglevel.patch')
-md5sums=('4f25cd5bec5f8d5a7d935b3f2ccb8481'
-         '9bfba28fef36c6a7fc16fd896eab131b'
-         '7af8d551afc4c0e84705f8108d7b01cb'
-         'dd65a4b649b544efe554f3ef57d96fe3'
+md5sums=('fea363551ff45fbe4cb88497b863b261'
+         '5aa3286dcc7d70ceb50c3cbc64bc1cd8'
+         '36f31c7cc2eb09cb8a1362511c620b31'
+         '024b7041c945cbb664676d66be4c0d71'
          '01afd0c0ff8fcf3fe6e0cd91d12886bd'
          '3d6427cc412dbc226b5d058c82ba7c66'
-         'f3def2cefdcbb954c21d8505d23cc83c')
+         '98beb36f9b8cf16e58de2483ea9985e3')
 pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(linux)
