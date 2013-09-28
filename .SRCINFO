@@ -1,0 +1,16 @@
+pkgbase = notifyconf
+	pkgdesc = GUI for configuring notify-osd-customizable
+	pkgver = 7
+	pkgrel = 4
+	url = https://launchpad.net/notifyconf
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = notify-osd-customizable
+	depends = qt4
+	source = notifyconf.desktop
+	md5sums = 06b1fbde2b18edbe3e152797063a9306
+
+pkgname = notifyconf
+
