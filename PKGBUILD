@@ -4,7 +4,7 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.8.2
+pkgver=4.2.8.3
 pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
@@ -118,4 +118,4 @@ package_fcitx-qt4() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('57945d1bacf80b112a4c5fd8454931f7014036ad1b7b81161be184c3c4d6e31c501f90361bd7327ebaef651f162eb450a6def4c726bd7159c3794b7606b3c2e2')
+sha512sums=('93c7aa5209f344e1e89addb1dca7a76cde884e4467c0db5f79e758ea8ffb0fe1207ba1c507fb6574fe8223fa873ed5d1dd44835b70cf9254f5149df8e242e92d')
