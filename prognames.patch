@@ -1,0 +1,12 @@
+diff -ruNa tsocks-1.8_b/validateconf.c tsocks-1.8/validateconf.c
+--- tsocks-1.8_b/validateconf.c	2009-12-23 21:45:03.000000000 +0100
++++ tsocks-1.8/validateconf.c	2009-12-23 21:47:19.000000000 +0100
+@@ -23,7 +23,7 @@
+ */
+ 
+ /* Global configuration variables */ 
+-char *progname = "validateconf";	      /* Name for error msgs      */
++char *progname = "tsocks-validateconf";	      /* Name for error msgs      */
+ 
+ /* Header Files */
+ #include <config.h>

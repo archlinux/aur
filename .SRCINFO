@@ -1,0 +1,16 @@
+pkgbase = tsocks-tools
+	pkgdesc = Misc. tools from the tsocks package
+	pkgver = 1.8beta5
+	pkgrel = 2
+	url = http://tsocks.sf.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sf.net/tsocks/tsocks-1.8beta5.tar.gz
+	source = prognames.patch
+	md5sums = 51caefd77e5d440d0bbd6443db4fc0f8
+	md5sums = 31f3cef79c70578b3dc8d1d8776154c2
+
+pkgname = tsocks-tools
+
