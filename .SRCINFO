@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-bofh-excuses
+	pkgdesc = BOFH excuses fortune cookie files
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://www.cs.wisc.edu/~ballard/bofh/
+	arch = any
+	groups = fortune-mods
+	license = Public domain
+	depends = fortune-mod
+	source = http://ftp.debian.org/debian/pool/main/f/fortunes-bofh-excuses/fortunes-bofh-excuses_1.2.orig.tar.gz
+	md5sums = 54742a9f82d49721e3f64280e916c604
+
+pkgname = fortune-mod-bofh-excuses
+
