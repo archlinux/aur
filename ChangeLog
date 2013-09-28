@@ -1,3 +1,16 @@
+2013-09-28 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.3.0_beta2-1
+	Version bump.
+
+	Upstream changelog:
+	- Compatible with 13w39b.
+	- Fixed lit blocks like glowstone turning black.
+	- Fixed color of side grass texture.
+	- Fixed crash with CTM connect=material.
+	- Fixed missing gson library with older Minecraft versions.
+	- Added -noproxy option for Linux users without Gnome libraries installed.
+
 2013-09-25 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.3.0_beta1-1
