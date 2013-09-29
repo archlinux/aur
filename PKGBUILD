@@ -4,7 +4,7 @@
 pkgname=pacman-cage
 pkgver=2.9.9
 pkgrel=7
-pkgdesc="Creates a loopbacked filesystem to give better response times when using pacman."
+pkgdesc="Creates a loopbacked filesystem to give better response times when using pacman"
 arch=(any)
 url=http://bbs.archlinux.org/viewtopic.php?id=20385
 license=(GPL3)
