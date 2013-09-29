@@ -16,7 +16,7 @@ url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
 arch=('x86_64' 'i686')
 makedepends=('git' 'pciutils')
-options=('!strip' '!makeflags')
+options=('staticlibs' '!strip' '!makeflags')
 
 conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')

@@ -10,6 +10,7 @@ pkgbase = gnu-efi-libs-git
 	makedepends = pciutils
 	provides = gnu-efi-libs
 	conflicts = gnu-efi-libs
+	options = staticlibs
 	options = !strip
 	options = !makeflags
 	source = gnu-efi::git+git://git.code.sf.net/p/gnu-efi/code#branch=master
