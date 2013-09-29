@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=gtk2fontsel
+GenericName=gtk2fontsel
+Exec=gtk2fontsel
+Terminal=false
+Type=Application
+Categories=System;GTK;
+Comment=Font selection and preview tool

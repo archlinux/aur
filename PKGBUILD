@@ -3,14 +3,15 @@
 
 pkgname=gtk2fontsel
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Font selection and preview tool"
 arch=('i686' 'x86_64')
 url="http://gtk2fontsel.sourceforge.net/"
 license=('GPL')
 depends=('gtk2')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('f344018b19b6a818795a4c702770cd9d')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz gtk2fontsel.desktop)
+sha256sums=('5cd6396fc3c6e7f9bc358cc5ad30592ba446cdb0138a811216497b6453905a68'
+            'b827567c26b929256c5df3837019d7f9531ecf5ba5d7ba4a16f339ea0288d332')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
@@ -23,4 +24,6 @@ package() {
   cd ${srcdir}/$pkgname-$pkgver
 
   make prefix=${pkgdir}/usr install
+  install -D -m644 ${srcdir}/gtk2fontsel.desktop \
+    ${pkgdir}/usr/share/applications/gtk2fontsel.desktop
 }
