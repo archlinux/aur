@@ -3,6 +3,11 @@
 	* 3.4-1 :
 	Version bump.
 
+	Upstream changelog:
+	- Added support for 13w39a/b
+	- AMIDST now loads all libraries contained in the .minecraft/libraries folder.
+	- Greatly reduced the file size for AMIDST.
+
 2013-09-18 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.3_alpha_1-1 :
