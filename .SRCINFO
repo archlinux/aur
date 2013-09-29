@@ -10,6 +10,7 @@ pkgbase = gnu-efi-libs-fedora-git
 	makedepends = pciutils
 	provides = gnu-efi-libs
 	conflicts = gnu-efi-libs
+	options = staticlibs
 	options = !strip
 	options = !makeflags
 	source = gnu-efi-fedora::git+git://github.com/vathpela/gnu-efi.git#branch=fedora
