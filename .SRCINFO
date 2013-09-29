@@ -1,0 +1,21 @@
+pkgbase = freeplane
+	pkgdesc = A Java mindmapping tool
+	pkgver = 1.2.23_01
+	pkgrel = 1
+	url = http://freeplane.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/sourceforge/freeplane/freeplane_bin-1.2.23_01.zip
+	source = freeplane.png
+	source = freeplane.desktop
+	source = freeplane.run
+	md5sums = 513a63eeabfa211eb2e69d4151832373
+	md5sums = 98cda5bde55691556b744c2787e7ac72
+	md5sums = 85d40893aef0b71f9ffdf2dec4fbb0f0
+	md5sums = d72e3d0471338520f75a2fcf3ce536a7
+
+pkgname = freeplane
+
