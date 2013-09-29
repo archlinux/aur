@@ -1,0 +1,14 @@
+pkgbase = caatinga-git
+	pkgdesc = A command line backup program written in Python - Git Version
+	pkgver = 44.c3a06ad
+	pkgrel = 1
+	url = https://github.com/headmastersquall/caatinga
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2-distribute
+	provides = caatinga
+	conflicts = caatinga
+
+pkgname = caatinga-git
+
