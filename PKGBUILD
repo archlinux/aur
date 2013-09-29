@@ -2,7 +2,7 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20130914
+pkgver=20130927
 pkgrel=1
 _udevver=207
 provides=("udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
@@ -24,9 +24,9 @@ source=('git://github.com/gentoo/eudev.git'
 options=(!makeflags !libtool)
 md5sums=('SKIP'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
-         '825af8cce7dd73ed4ce1a8289e3bdad8'
-         '372d60f89f626629005bb755be259a20')
-_gitname=('eudev')
+         '88849afefcef229b8f79be7bbf05c3a2'
+         'd83a59d647b511b815ee0e8c85dcd54a')
+_gitname="eudev"
 
 pkgver()
 {
@@ -52,7 +52,7 @@ build() {
               --libdir=/usr/lib \
 	      --sbindir=/usr/bin \
               --with-firmware-path=/usr/lib/firmware/updates:/lib/firmware/updates:/usr/lib/firmware:/lib/firmware \
-              --with-modprobe=/sbin/modprobe \
+              --with-modprobe=/usr/bin/modprobe \
               --enable-gudev \
               --enable-introspection
 
