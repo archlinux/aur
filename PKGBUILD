@@ -6,7 +6,7 @@
 
 pkgname=p7zip
 pkgver=9.20.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Command-line version of the 7zip compressed file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
@@ -23,19 +23,21 @@ sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7'
 options=('!makeflags')
 install=install
 
-build() {
+prepare() {
 	cd "${srcdir}/${pkgname}_${pkgver}"
-
+	rm GUI/kde4/p7zip_compress.desktop
 	[[ $CARCH = x86_64 ]] \
 	&& cp makefile.linux_amd64_asm makefile.machine \
 	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+}
 
+build() {
+	cd "${srcdir}/${pkgname}_${pkgver}"
 	make all4 OPTFLAGS="${CXXFLAGS}"
 }
 
 package() {
 	cd "${srcdir}/${pkgname}_${pkgver}"
-
 	make install \
 		DEST_DIR="${pkgdir}" \
 		DEST_HOME="/usr" \
