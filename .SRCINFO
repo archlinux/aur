@@ -1,0 +1,16 @@
+pkgbase = zimlib-git
+	pkgdesc = The standard implementation of the ZIM specification - openzim
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://openzim.org/wiki/Zimlib
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = xz
+	depends = gcc-libs
+	source = zimlib-git::git+https://gerrit.wikimedia.org/r/p/openzim.git
+	md5sums = SKIP
+
+pkgname = zimlib-git
+
