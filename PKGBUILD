@@ -3,8 +3,8 @@
 
 pkgname=efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.99.22911.4d54c97
-pkgrel=2
+pkgver=1.7.99.23272.fdea402
+pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -13,6 +13,7 @@ depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
          'libgl' 'libwebp' 'libpulse' 'libexif' 'gstreamer0.10-base'
          'fribidi' 'harfbuzz' 'fontconfig')
+  [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg')
 makedepends=('git')
 optdepends=('python2: compare Eina benchmarks'
             'gstreamer0.10-good: Access more types of video in Emotion'
