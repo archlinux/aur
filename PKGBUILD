@@ -5,11 +5,11 @@
 pkgname='frogatto'
 arch=('i686' 'x86_64')
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
-depends=('git' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data')
+depends=('git' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data' 'ttf-ubuntu-font-family')
 makedepends=('mesa-libgl' 'boost')
 source=("$pkgname-$pkgver::git+https://github.com/frogatto/frogatto.git#tag=1.3.1"
         frogatto
@@ -40,6 +40,9 @@ package() {
   install -Dm 644 "src/LICENSE" "$pkgdir/usr/share/licenses/frogatto/LICENSE"
   install -Dm 755 "$srcdir/frogatto" "$pkgdir/usr/bin/frogatto"
   install -Dm 644 "$srcdir/frogatto.desktop" "$pkgdir/usr/share/applications/frogatto.desktop"
+
+  # Make level editor work (FS#37139)
+  ln -s /usr/share/fonts/TTF/UbuntuMono-R.ttf ${pkgdir}/opt/frogatto/
 }
 
 # vim:set ts=2 sw=2 et:
