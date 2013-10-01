@@ -1,0 +1,29 @@
+Index: _src/savepng.cpp
+===================================================================
+--- _src/savepng.cpp	(revision 6)
++++ _src/savepng.cpp	(working copy)
+@@ -94,7 +94,11 @@
+ 	}
+ 	
+ 	/* Set error handling. */
++#if PNG_LIBPNG_VER > 10399
++	if (setjmp(png_jmpbuf(png_ptr)))
++#else
+ 	if (setjmp(png_ptr->jmpbuf))
++#endif
+ 	{
+ 		/* If we get here, we had a problem reading the file */
+ 		IMG_SetError("Error writing the PNG file");
+@@ -142,10 +146,10 @@
+ done:
+         if (row_pointers)
+ 			delete [] row_pointers;
+-	
++#if PNG_LIBPNG_VER <= 10399	
+ 	if (info_ptr->palette)
+ 		delete info_ptr->palette;
+-	
++#endif	
+ 	png_destroy_write_struct(&png_ptr, (png_infopp)NULL);
+ 	
+ 	

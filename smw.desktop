@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Super Mario War
+Exec=smw
+Icon=smw
+Type=Application
+Comment=Super Mario multiplayer game
+Categories=Game;
+Terminal=false
+Version=1.0

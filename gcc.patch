@@ -1,0 +1,95 @@
+Index: Makefile
+===================================================================
+--- Makefile	(revision 6)
++++ Makefile	(working copy)
+@@ -8,9 +8,13 @@
+            build/savepng.o build/sfx.o
+ SMW_OBJS:= build/HashTable.o build/ai.o build/gamemodes.o build/main.o \
+            build/map.o build/menu.o build/object.o build/player.o \
+-           build/splash.o build/uicontrol.o build/uimenu.o build/world.o
++           build/splash.o build/uicontrol.o build/uimenu.o build/world.o \
++		   build/objecthazard.o build/objectgame.o build/modeoptionsmenu.o \
++		   build/uicustomcontrol.o
+ LEVELEDIT_OBJS:=build/leveleditor.o
+-WORLDEDIT_OBJS:=build/sfx.o build/world.o build/worldeditor.o
++WORLDEDIT_OBJS:=build/sfx.o build/objecthazard.o build/object.o \
++		   build/uicontrol.o build/uimenu.o build/modeoptionsmenu.o \
++		   build/world.o build/worldeditor.o
+ 
+ include configuration
+ #here because of one .c file among a .cpp project (o_O)
+Index: _src/map.cpp
+===================================================================
+--- _src/map.cpp	(revision 6)
++++ _src/map.cpp	(working copy)
+@@ -628,7 +628,7 @@
+ 			
+ 			for(short iBackground = 0; iBackground < 26; iBackground++)
+ 			{
+-				char * szFindUnderscore = strstr(g_szBackgroundConversion[iBackground], "_");
++				const char * szFindUnderscore = strstr(g_szBackgroundConversion[iBackground], "_");
+ 
+ 				if(szFindUnderscore)
+ 					szFindUnderscore++;
+Index: _src/uicontrol.cpp
+===================================================================
+--- _src/uicontrol.cpp	(revision 6)
++++ _src/uicontrol.cpp	(working copy)
+@@ -2,6 +2,7 @@
+ #include <math.h>
+ 
+ extern void LoadCurrentMapBackground();
++extern void LoadMapHazards(bool fPreview);
+ 
+ UI_Control::UI_Control(short x, short y)
+ {
+Index: _src/ai.cpp
+===================================================================
+--- _src/ai.cpp	(revision 6)
++++ _src/ai.cpp	(working copy)
+@@ -345,7 +345,8 @@
+ 			{
+ 				delete itr->second;
+ 			
+-				itr = attentionObjects.erase(itr);
++				attentionObjects.erase(itr);
++				itr = attentionObjects.begin(); // do not blame me, just read http://msdn.microsoft.com/en-us/library/z2f3cb7h(v=vs.80).aspx
+ 				lim = attentionObjects.end();
+ 			}
+ 		}
+Index: _src/path.cpp
+===================================================================
+--- _src/path.cpp	(revision 6)
++++ _src/path.cpp	(working copy)
+@@ -1,4 +1,5 @@
+ #include <string>
++#include <cstring>
+ #include <iostream>
+ #include <sys/stat.h>
+ 
+Index: _src/FileList.cpp
+===================================================================
+--- _src/FileList.cpp	(revision 6)
++++ _src/FileList.cpp	(working copy)
+@@ -16,6 +16,7 @@
+ #include "dirlist.h"
+ #include <ctype.h>
+ #include <iostream>
++#include <algorithm>
+ using std::cout;
+ using std::endl;
+ using std::string;
+Index: _src/uicustomcontrol.cpp
+===================================================================
+--- _src/uicustomcontrol.cpp	(revision 6)
++++ _src/uicustomcontrol.cpp	(working copy)
+@@ -4649,7 +4649,8 @@
+ 
+ 					//Clear out all input from cpu controlled team
+ 					COutputControl * playerKeys = NULL;
+-					for(short iTeamMember = 0; iTeamMember < game_values.teamcounts[iControllingTeam]; iTeamMember++)
++					short iTeamMember = 0;
++					for(; iTeamMember < game_values.teamcounts[iControllingTeam]; iTeamMember++)
+ 					{
+ 						playerKeys = &game_values.playerInput.outputControls[game_values.teamids[iControllingTeam][iTeamMember]];
+ 
