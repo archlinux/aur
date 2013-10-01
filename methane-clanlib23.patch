@@ -1,0 +1,35 @@
+diff -ru methane-1.5.1.orig/Makefile methane-1.5.1/Makefile
+--- methane-1.5.1.orig/Makefile	2011-04-05 09:21:14.000000000 +0200
++++ methane-1.5.1/Makefile	2013-09-12 05:07:40.456736802 +0200
+@@ -1,5 +1,5 @@
+-METHANE_FLAGS = -DENABLE_SOUND `pkg-config --cflags clanCore-2.2 clanDisplay-2.2 clanApp-2.2 clanGL-2.2 clanGL1-2.2 clanSWRender-2.2 clanSound-2.2 clanMikMod-2.2`
+-METHANE_LIBS = `pkg-config --libs clanCore-2.2 clanDisplay-2.2 clanApp-2.2 clanGL-2.2 clanGL1-2.2 clanSWRender-2.2  clanSound-2.2 clanMikMod-2.2`
++METHANE_FLAGS = -DENABLE_SOUND `pkg-config --cflags clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanGL1-2.3 clanSWRender-2.3 clanSound-2.3 clanMikMod-2.3`
++METHANE_LIBS = `pkg-config --libs clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanGL1-2.3 clanSWRender-2.3 clanSound-2.3 clanMikMod-2.3`
+ 
+ OBJF = build/game.o build/baddie.o build/methane.o build/target.o build/maps.o build/gfxoff.o build/mapdata.o build/objlist.o build/doc.o build/bitdraw.o build/global.o build/suck.o build/power.o build/goodie.o build/bititem.o build/player.o build/weapon.o build/bitgroup.o build/boss.o build/sound.o build/gasobj.o build/misc.o
+ 
+--- methane-1.5.1.orig/sources/methane.cpp	2011-04-05 09:08:02.000000000 +0200
++++ methane-1.5.1/sources/methane.cpp	2013-09-12 05:09:03.240665466 +0200
+@@ -80,15 +80,15 @@
+ 				return 0;
+ 			}
+ 
+-			CL_AutoPtr<CL_SetupSound> setup_sound;
+-			CL_AutoPtr<CL_SoundOutput> sound_output;
+-			CL_AutoPtr<CL_SetupMikMod> setup_mikmod;
++			CL_UniquePtr<CL_SetupSound> setup_sound;
++			CL_UniquePtr<CL_SoundOutput> sound_output;
++			CL_UniquePtr<CL_SetupMikMod> setup_mikmod;
+ 
+ 			if (GLOBAL_SoundEnable)
+ 			{
+-				setup_sound = new CL_SetupSound;
+-				sound_output = new CL_SoundOutput(44100);
+-				setup_mikmod = new CL_SetupMikMod;
++				setup_sound = cl_move(CL_UniquePtr<CL_SetupSound>(new CL_SetupSound));
++				sound_output = cl_move(CL_UniquePtr<CL_SoundOutput>(new CL_SoundOutput(44100)));
++				setup_mikmod = cl_move(CL_UniquePtr<CL_SetupMikMod>(new CL_SetupMikMod));
+ 			}
+ 
+ 			// Set the video mode

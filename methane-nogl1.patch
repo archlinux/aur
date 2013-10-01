@@ -1,0 +1,66 @@
+--- methane-1.5.1.orig/Makefile	2013-09-12 05:07:40.456736802 +0200
++++ methane-1.5.1/Makefile	2013-09-12 05:21:30.747823618 +0200
+@@ -1,5 +1,5 @@
+-METHANE_FLAGS = -DENABLE_SOUND `pkg-config --cflags clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanGL1-2.3 clanSWRender-2.3 clanSound-2.3 clanMikMod-2.3`
+-METHANE_LIBS = `pkg-config --libs clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanGL1-2.3 clanSWRender-2.3 clanSound-2.3 clanMikMod-2.3`
++METHANE_FLAGS = -DENABLE_SOUND `pkg-config --cflags clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanSWRender-2.3 clanSound-2.3 clanMikMod-2.3`
++METHANE_LIBS = `pkg-config --libs clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanSWRender-2.3 clanSound-2.3 clanMikMod-2.3`
+ 
+ OBJF = build/game.o build/baddie.o build/methane.o build/target.o build/maps.o build/gfxoff.o build/mapdata.o build/objlist.o build/doc.o build/bitdraw.o build/global.o build/suck.o build/power.o build/goodie.o build/bititem.o build/player.o build/weapon.o build/bitgroup.o build/boss.o build/sound.o build/gasobj.o build/misc.o
+ 
+--- methane-1.5.1.orig/sources/methane.cpp	2013-09-12 05:09:03.240665466 +0200
++++ methane-1.5.1/sources/methane.cpp	2013-09-12 05:22:43.694862222 +0200
+@@ -17,7 +17,6 @@
+ #include <ClanLib/display.h>
+ #include <ClanLib/swrender.h>
+ #include <ClanLib/gl.h>
+-#include <ClanLib/gl1.h>
+ #include <ClanLib/sound.h>
+ #include <ClanLib/mikmod.h>
+ 
+@@ -53,7 +52,6 @@
+ 		try
+ 		{
+ 			CL_SetupGL target_opengl2;
+-			CL_SetupGL1 target_opengl1;
+ 			CL_SetupSWRender target_swrender;
+ 
+ 			// Since SWRender is compatible and fast - Use that as the default setting options
+@@ -66,9 +64,6 @@
+ 					case (opengl2):
+ 						target_opengl2.set_current();
+ 						break;
+-					case (opengl1):
+-						target_opengl1.set_current();
+-						break;
+ 					case (swrender):
+ 						target_swrender.set_current();
+ 						break;
+@@ -297,11 +292,6 @@
+ 				LastKey = 0;
+ 				GLOBAL_RenderTarget = opengl2;
+ 			}
+-			if ( (LastKey == 'e') || (LastKey == 'E') )
+-			{
+-				LastKey = 0;
+-				GLOBAL_RenderTarget = opengl1;
+-			}
+ 			if ( (LastKey == 'r') || (LastKey == 'R') )
+ 			{
+ 				LastKey = 0;
+@@ -322,14 +312,7 @@
+ 				options_font.draw_text(gc, 10, ypos, "OpenGL V2 - Disabled. Press 'W' to select");
+ 			}
+ 			ypos += 50;
+-			if (GLOBAL_RenderTarget == opengl1)
+-			{
+-				options_font.draw_text(gc, 10, ypos, "OpenGL V1 - Enabled.");
+-			}
+-			else
+-			{
+-				options_font.draw_text(gc, 10, ypos, "OpenGL V1 - Disabled. Press 'E' to select");
+-			}
++			options_font.draw_text(gc, 10, ypos, "OpenGL V1 - Not available");
+ 			ypos += 50;
+ 			if (GLOBAL_RenderTarget == swrender)
+ 			{

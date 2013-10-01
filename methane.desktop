@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Methane
+GenericName=Super Methane Brothers
+Comment=Game in which you use a gas gun to capture baddies.
+Exec=methane
+Icon=methane
+Terminal=false
+StartupNotify=false
+Categories=Game;ArcadeGame;
