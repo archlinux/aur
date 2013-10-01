@@ -1,0 +1,28 @@
+pkgbase = clanlib-23
+	pkgdesc = A multi-platform game development library (legacy 2.3 branch).
+	pkgver = 2.3.7
+	pkgrel = 1
+	url = http://clanlib.org/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = mesa
+	depends = alsa-lib
+	depends = libjpeg
+	depends = libmikmod
+	depends = libpng
+	depends = libvorbis
+	depends = libxi
+	depends = libxmu
+	depends = sdl_gfx
+	depends = freetype2
+	depends = pcre
+	depends = sqlite
+	depends = libgl
+	options = !libtool
+	source = http://clanlib.org/download/releases-2.0/ClanLib-2.3.7.tgz
+	md5sums = 65c9881286c47bbe88b2b691aacbc05b
+	sha256sums = d46127c08103f48d15936ceb9f95b3dfb1ff8ccba667cef1b3f8e639cb2601c2
+
+pkgname = clanlib-23
+
