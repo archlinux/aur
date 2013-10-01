@@ -1,0 +1,13 @@
+pkgbase = pywiiload-git
+	pkgdesc = Send homebrew executables or zip archives to your modded Wii over network
+	pkgver = 1.2.6418f26
+	pkgrel = 1
+	url = http://wiibrew.org/wiki/PyWiiLoad
+	arch = any
+	license = GPL3
+	depends = python
+	source = pywiiload::git://github.com/dniMretsaM/PyWiiLoad.git
+	md5sums = SKIP
+
+pkgname = pywiiload-git
+
