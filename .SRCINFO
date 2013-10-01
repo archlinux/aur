@@ -1,0 +1,25 @@
+pkgbase = gngeo
+	pkgdesc = A portable command-line NeoGeo Emulator.
+	pkgver = 0.8
+	pkgrel = 8
+	url = http://gngeo.googlecode.com
+	install = gngeo.install
+	arch = i686
+	arch = x86_64
+	license = GPL custom
+	makedepends = nasm
+	depends = zlib
+	depends = sdl
+	depends = libgl
+	source = http://gngeo.googlecode.com/files/gngeo-0.8.tar.gz
+	source = 4dec1ccfb85d.patch
+	source = gngeo.install
+	md5sums = 21055885694e9f6cdbaa20be069a4258
+	md5sums = cfa16491e9e5185afec9342be49d55d1
+	md5sums = a35dae77928afe13275a7f2728cb1519
+	sha256sums = 4955a36a978accbc13cc9d58be3dbbed8864f27c34446b2fea879ee27fd7c4b6
+	sha256sums = 8666f2cf6d2a21ddf4d44e5106f9ae60a73820789a6ad3fec09befadb7105901
+	sha256sums = 4937a0eb60edd810f35805ed9838413061d1841e426ecc2b71336478d3139892
+
+pkgname = gngeo
+

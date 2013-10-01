@@ -1,0 +1,37 @@
+Fix for "undefined reference to" 'cpu_68k_mkstate' and 'cpu_z80_mkstate'
+
+http://code.google.com/p/gngeo/source/detail?r=4dec1ccfb85d9de229bdbee1e4d2b730cfdedf70
+
+Author: Mathieu Peponas <m.peponas>
+
+Log message:
+Add mkstate interface to raze and cyclone (Fix  Issue 1  Gngeo 0.8 compile error)
+Save state still not implemented on these core.
+
+--- src/gngeo-0.8/src/star_interf.c	2011-10-25 16:04:13.000000000 -0200
++++ star_interf.c	2012-01-30 19:11:05.148009489 -0200
+@@ -169,6 +169,10 @@
+     pretend_writeword[7].memorycall=mem68k_store_bk_normal_word;
+ }
+ 
++void cpu_68k_mkstate(gzFile *gzf,int mode) {
++	/* TODO */
++}
++
+ void cpu_68k_init(void)
+ {
+     s68000init();
+
+--- src/gngeo-0.8/src/raze_interf.c	2011-10-25 16:04:13.000000000 -0200
++++ raze_interf.c	2012-01-30 19:11:11.218079959 -0200
+@@ -220,7 +220,9 @@
+ }
+ #endif
+ 
+-
++void cpu_z80_mkstate(gzFile *gzf,int mode) {
++	/* TODO */
++}
+ 
+ void cpu_z80_init(void)
+ {

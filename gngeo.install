@@ -1,0 +1,21 @@
+post_install()
+{
+  echo ""
+  echo "***************************************************************"
+  echo " GnGeo has been installed. You will need to supply a rom and"
+  echo " bios path at the command-line to play games or you should"
+  echo " create a configuration file and save it as: ~/.gngeo/gngeorc"
+  echo " Take a look in /usr/share/gngeo/ for a sample_gngeorc file."
+  echo "***************************************************************"
+  echo ""
+}
+
+post_upgrade()
+{
+  echo ""
+  echo "***************************************************************"
+  echo " The structure of the configuration file, gngeorc, was"
+  echo " changed in Gngeo v0.8."
+  echo "***************************************************************"
+  echo ""
+}
