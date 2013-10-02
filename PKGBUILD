@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.11
-pkgver=3.11.2
+pkgver=3.11.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,16 +19,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch'
-        '3.11.1-fix-skge.patch'
         '3.11-haswell-intel_pstate.patch')
 md5sums=('fea363551ff45fbe4cb88497b863b261'
-         '5aa3286dcc7d70ceb50c3cbc64bc1cd8'
+         'b098457c2d9e9626faacfda931deefb6'
          '247d9bafa184e2d9a27c1a0485419fff'
          '5effb245b8ec78ad570b3e5962a1a7e0'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          'd50c1ac47394e9aec637002ef3392bd1'
-         '4fcee2b4485492dcfdead632275198eb'
          '1040ae6c10d4a68f89899f94a2318a17')
 
 _kernelname=${pkgbase#linux}
@@ -53,9 +51,6 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # #36865 fix broken skge network module
-  patch -Np1 -i "${srcdir}/3.11.1-fix-skge.patch"
- 
   # add intel haswell support to intel_pstate
   # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/patch/?id=6cdcdb793791f776ea9408581b1242b636d43b37
   # will be in 3.12
