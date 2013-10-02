@@ -3,7 +3,7 @@
 
 pkgname=ewebkit-svn
 _pkgname=${pkgname%-*}
-pkgver=154268
+pkgver=159930
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
@@ -13,11 +13,9 @@ license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'cairo' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt' 'harfbuzz-icu')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
-source=("harfbuzz-icu.patch")
-sha256sums=('95f61c07e2548ff7b3799c8812a3eb922658a3969144cca701f6f89d9e5c6a34')
 if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-  source+=("$_pkgname::svn+$_svnurl")
-  sha256sums+=('SKIP')
+  source=("$_pkgname::svn+$_svnurl")
+  sha256sums=('SKIP')
 fi
 
 pkgver() {
@@ -43,13 +41,14 @@ prepare() {
     rm -rf "$srcdir/$_pkgname"
     cp -a "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
   fi
-
-  cd "$srcdir/$_pkgname"
-  patch -Np0 < ../harfbuzz-icu.patch
 }
 
 build() {
   cd "$srcdir/$_pkgname"
+
+# build with glib 2.38/libsoup 2.44
+  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+  export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 
   cmake . \
     -DPORT=Efl \
