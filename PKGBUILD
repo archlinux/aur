@@ -4,7 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=29.0.1547.76
+pkgver=30.0.1599.66
+_toolchains_rev=12029
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -15,20 +16,32 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'harfbuzz-icu'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
-             'elfutils' 'subversion' 'nacl-toolchain-newlib')
+             'elfutils' 'subversion')
+[[ $CARCH = x86_64 ]] && makedepends+=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 backup=('etc/chromium/default')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
+        naclsdk_nacl_linux_x86-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_linux_x86.tgz
+        naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_linux_x86.tgz
+        naclsdk_pnacl_translator-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz
+        naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz.sha1hash
         chromium.desktop
         chromium.default
         chromium.sh
-        chromium-28.0.1500.71-avoid-std-string-copying-in-GetFileNameInWhitelist.patch)
-sha256sums=('61db2740f6eb7f95aeadf20d5e34a5c6759e9e8d08b88f5c960e041cfc502888'
+        chromium-system-icu-r0.patch)
+noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
+           naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
+           naclsdk_pnacl_translator-$_toolchains_rev.tgz)
+sha256sums=('8fe8262fd69b59c759916d17eaf4225d1d5b64c468629cb9a684144d3cd15724'
+            '641e2acf0e755bfe052016164e9e0198104130b612a042eacf259a2f2630d6cd'
+            '6ce53b1af8fef34c1557c7fbb764cfbca29cb70b8ee3367746a31976cf115e01'
+            '0b7afcbad1461336e7062d7c8d64e67e670a1fce07214e24313204af1f3a5a70'
+            'd6c5ed767ee9ee4e92b4de958cd32b0152783f170c1483fe99d2199fc2623813'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
-            '7c2e448c30677999f524f9513c2f998f3cb15bc6084692cad9c3f310aa813530')
+            '9bf164094ff33565f79807ab17cbd1d3f75655383fdaa01bb1a702263174cf09')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -41,10 +54,8 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Fix deadlock related to the GPU sandbox when tcmalloc isn't used
-  # https://code.google.com/p/chromium/issues/detail?id=255063
-  # https://bugs.gentoo.org/show_bug.cgi?id=471198#c23
-  patch -Np1 -i "$srcdir/chromium-28.0.1500.71-avoid-std-string-copying-in-GetFileNameInWhitelist.patch"
+  # Fix build with system ICU (patch from Gentoo)
+  patch -Np0 -i "$srcdir/chromium-system-icu-r0.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -56,10 +67,15 @@ prepare() {
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
 
   # Prepare NaCL toolchain
-  mkdir -p out/Release/obj/gen/sdk/toolchain
-  cp -a /usr/lib/nacl-toolchain-newlib \
-    out/Release/obj/gen/sdk/toolchain/linux_x86_newlib
-  touch out/Release/obj/gen/sdk/toolchain/linux_x86_newlib/stamp.untar
+  mkdir native_client/toolchain/{.tars,pnacl_translator}
+  ln -s "$srcdir/naclsdk_nacl_linux_x86-$_toolchains_rev.tgz" \
+    native_client/toolchain/.tars/naclsdk_linux_x86.tgz
+  ln -s "$srcdir/naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz" \
+    native_client/toolchain/.tars/naclsdk_pnacl_linux_x86.tgz
+  ln -s "$srcdir/naclsdk_pnacl_translator-$_toolchains_rev.tgz" \
+    native_client/toolchain/.tars/naclsdk_pnacl_translator.tgz
+  ln -s "$srcdir/naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash" \
+    native_client/toolchain/pnacl_translator/SOURCE_SHA1
 }
 
 build() {
@@ -82,7 +98,6 @@ build() {
     -Dlinux_link_libpci=1
     -Dlinux_link_libspeechd=1
     -Dlinux_link_pulseaudio=1
-    -Dlinux_sandbox_path=/usr/lib/chromium/chromium-sandbox
     -Dlinux_strip_binary=1
     -Dlinux_use_gold_binary=0
     -Dlinux_use_gold_flags=0
@@ -110,8 +125,6 @@ build() {
     -Duse_system_zlib=0
     -Duse_gconf=0
     -Ddisable_glibc=1
-    -Ddisable_pnacl=1
-    -Ddisable_newlib_untar=1
     -Ddisable_sse2=1)
 
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
@@ -126,7 +139,7 @@ package() {
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
 
   install -Dm4755 -o root -g root out/Release/chrome_sandbox \
-    "$pkgdir/usr/lib/chromium/chromium-sandbox"
+    "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
   cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} \
     out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} \
