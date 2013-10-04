@@ -1,7 +1,7 @@
 pkgbase = vlc-decklink
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.videolan.org/vlc/
 	install = vlc.install
 	arch = i686
@@ -48,7 +48,7 @@ pkgbase = vlc-decklink
 	depends = zvbi
 	depends = taglib
 	depends = libmpcdec
-	depends = ffmpeg
+	depends = ffmpeg-compat
 	depends = faad2
 	depends = libupnp
 	depends = libshout

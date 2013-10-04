@@ -6,14 +6,14 @@
 _pkgname=vlc
 pkgname=vlc-decklink
 pkgver=2.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy' 
          'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska' 
-         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 
+         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg-compat' 'faad2' 'libupnp' 
          'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'libdc1394' 'libavc1394' 'lirc-utils' 'libcaca' 
