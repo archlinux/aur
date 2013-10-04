@@ -1,7 +1,7 @@
 # Maintainer: Dylan Cali <calid1984@gmail.com>
 
 pkgname='google-authenticator-libpam-git'
-pkgver=20120505
+pkgver=20131003
 pkgrel=1
 pkgdesc='PAM module for google authenticator app'
 arch=('any')
