@@ -3,7 +3,7 @@
 
 pkgname=ccid
 pkgver=1.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver"
 arch=('i686' 'x86_64')
 url="http://pcsclite.alioth.debian.org/ccid.html"
@@ -19,7 +19,8 @@ build() {
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
-              --enable-twinserial
+              --enable-twinserial \
+              --enable-serialconfdir=/etc/reader.conf.d
   make
 }
 
@@ -27,4 +28,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
+  # move the configuration file in /etc and create a symbolic link
+  mv "${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist" "${pkgdir}/etc/libccid_Info.plist"
+  ln -s /etc/libccid_Info.plist ${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist
 }
