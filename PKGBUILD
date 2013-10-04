@@ -1,47 +1,39 @@
 # Maintainer: Dylan Cali <calid1984@gmail.com>
+# Contributer: Alexander Görtz <aur@nyloc.de>
 
 pkgname='google-authenticator-libpam-git'
-pkgver=20131003
+
+pkgver=r150.f0d1574
+pkgver() {
+  cd "$srcdir/$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
 pkgrel=1
 pkgdesc='PAM module for google authenticator app'
-arch=('any')
-url="https://code.google.com/p/google-authenticator/"
+arch=('i686' 'x86_64')
+url='https://github.com/google/google-authenticator'
 license=('APACHE')
 depends=('pam')
 makedepends=('git')
 optdepends=('qrencode: scannable QR codes for google auth phone app')
 provides=('google-authenticator-libpam')
 conflicts=('google-authenticator-libpam')
-
-_gitrepo='google-authenticator'
-_gitbuild="${_gitrepo}-build"
+source=("$pkgname"::'git+https://github.com/google/google-authenticator.git')
+md5sums=(SKIP)
 
 build() {
-
-    msg "Checking out latest source from $url"
-
-    if [ -d "$_gitrepo" ]
-    then
-        cd "$_gitrepo" && git pull
-        cd "$srcdir"
-    else
-        # google code doesn't support shallow clones (yet)
-        git clone https://code.google.com/p/google-authenticator/
-    fi
-
-    rm -rf "$_gitbuild"
-    mkdir  "$_gitbuild"
-
-    cd "$_gitrepo"
-    find -mindepth 1 -maxdepth 1 -not -name '.git*' -print0 \
-        | xargs -0 cp -rt "../$_gitbuild"
-
-    cd "../$_gitbuild/libpam"
-    make
+  cd "${srcdir}/${pkgname}/libpam"
+  ./bootstrap.sh
+  ./configure --prefix=/usr
+  make
 }
 
+
 package() {
-  cd "$srcdir/$_gitbuild/libpam"
-  install -D -m755 pam_google_authenticator.so "$pkgdir/usr/lib/security/pam_google_authenticator.so"
-  install -D -m755 google-authenticator "$pkgdir/usr/bin/google-authenticator"
+  cd "${srcdir}/${pkgname}/libpam"
+  make DESTDIR="${pkgdir}/" install
 }
