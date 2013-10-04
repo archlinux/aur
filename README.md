@@ -15,8 +15,8 @@ From the google authenticator [homepage](https://code.google.com/p/google-authen
 This PKGBUILD uses the latest source from the official google authenticator libpam [git repo](http://code.google.com/p/google-authenticator/source/checkout) to build an Arch Linux ``pkg.tar.xz``.
 
 ### INSTALL ###
-    git clone git@github.com:calid/aur-google-authenticator-libpam-git.git
-    cd aur-google-authenticator-libpam-git
+    git clone git@github.com:calid/aur-google-auth-libpam-git.git
+    cd aur-google-auth-libpam-git
     makepkg
     sudo pacman -U google-authenticator-libpam-git-XYZ-any.pkg.tar.xz
 
