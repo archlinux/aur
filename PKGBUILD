@@ -5,7 +5,7 @@
 
 pkgname=vinagre
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=(i686 x86_64)
 license=(GPL)
@@ -14,8 +14,8 @@ install=vinagre.install
 depends=(libsecret gtk-vnc vte3 telepathy-glib avahi desktop-file-utils dconf shared-mime-info
          gnome-icon-theme spice-gtk3)
 optdepends=('openssh: SSH plugin'
-            'rdesktop: RDP plugin')
-makedepends=(docbook-xsl intltool rdesktop openssh itstool)
+            'freerdp: RDP plugin')
+makedepends=(docbook-xsl intltool freerdp openssh itstool)
 groups=(gnome-extra)
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
