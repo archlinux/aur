@@ -1,0 +1,11 @@
+[Unit]
+Description=jsession X session manager
+
+[Service]
+Type=forking
+BusName=prog.jsession
+ExecStart=/usr/bin/jsessiond
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
