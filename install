@@ -1,6 +1,6 @@
 KERNEL_NAME=-linode
 
-export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
 
 post_install () {
   echo ">>> Updating module dependencies. Please wait ..."
