@@ -1,0 +1,16 @@
+pkgbase = zb-fetcher
+	pkgdesc = Tool to monitor ZetaBoards forums for new posts
+	pkgver = 1.8.5
+	pkgrel = 2
+	url = http://ikn.org.uk/ZetaBoards%20topic%20fetcher
+	arch = any
+	license = GPL3
+	makedepends = po4a
+	depends = python2>=2.6
+	depends = pygtk>=2.6
+	depends = python2-pycurl
+	source = https://launchpad.net/zb-fetcher/trunk/1.8.5/+download/zb-fetcher-1.8.5.tar.gz
+	md5sums = 96059ff9968b4ac8b3fba355e0d6cce6
+
+pkgname = zb-fetcher
+
