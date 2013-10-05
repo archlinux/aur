@@ -5,7 +5,7 @@
 pkgname=lib32-boost-libs
 pkgver=1.54.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url="http://www.boost.org"
 arch=('x86_64')
 pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime (32 bit)"
@@ -13,8 +13,12 @@ license=('custom')
 groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-icu' 'lib32-gcc-libs')
 makedepends=('lib32-icu>=51.1' 'lib32-bzip2' 'lib32-zlib' 'gcc-multilib' 'python' 'python2')
-source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
-sha1sums=('069501636097d3f40ddfd996d29748bb23591c53')
+source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz
+        boost-1.54.0-Fix-macro-for-int128-detection.patch
+        fix-new-glibc.patch)
+sha1sums=('069501636097d3f40ddfd996d29748bb23591c53'
+          'bf5177694ab8a0df6bc13aa47b05727c40febebb'
+          'e3a5fac340c12b39add50070efb439b857108a0b')
 
 
 
@@ -30,6 +34,9 @@ build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd "${srcdir}/boost_${_boostver}"
+
+   patch -Np2 -i ../boost-1.54.0-Fix-macro-for-int128-detection.patch
+   patch -Np2 -i ../fix-new-glibc.patch
 
    # Shut up strict aliasing warnings
    echo "using gcc : : : <compileflags>-fno-strict-aliasing ;" >> ./tools/build/v2/user-config.jam
