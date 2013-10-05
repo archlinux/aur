@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.11
-pkgver=3.11.3
+pkgver=3.11.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'criu-no-expert.patch'
         '3.11-haswell-intel_pstate.patch')
 md5sums=('fea363551ff45fbe4cb88497b863b261'
-         'b098457c2d9e9626faacfda931deefb6'
+         '5147e7f82600452c5438f8309c07eccd'
          '247d9bafa184e2d9a27c1a0485419fff'
          '5effb245b8ec78ad570b3e5962a1a7e0'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -33,10 +33,9 @@ _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# 04f5bf482c436b4a75c93754e9eacd8e  /lib/modules/3.11.1-1-ARCH/modules.symbols
+# 44169a8e457641f2d8f83e9cde6e22f8  /lib/modules/3.11.4-1-ARCH/modules.symbols
 # i686
-# 3414985d965d31f5af7b4ee5c9a2a80d  /lib/modules/3.11.1-1-ARCH/modules.symbols
-
+# 9294a0246b8975295f4fdf2d22b431d9  /lib/modules/3.11.4-1-ARCH/modules.symbols
 prepare() {
   cd "${srcdir}/${_srcname}"
 
