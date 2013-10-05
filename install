@@ -1,14 +1,10 @@
-# arg 1:  the new package version
-# arg 2:  the old package version
-
 KERNEL_NAME=-linode
-KERNEL_VERSION=3.11.4-1-linode
 
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
 post_install () {
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod ${KERNEL_VERSION}
+  depmod ${1##*:}${KERNEL_NAME}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   mkinitcpio -p linux${KERNEL_NAME}
 }
@@ -16,7 +12,7 @@ post_install () {
 post_upgrade() {
   rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod ${KERNEL_VERSION}
+  depmod ${1##*:}${KERNEL_NAME}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
   mkinitcpio -p linux${KERNEL_NAME}
 }
