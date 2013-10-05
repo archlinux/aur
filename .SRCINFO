@@ -1,0 +1,18 @@
+pkgbase = alltray-oldmaintenance
+	pkgdesc = AllTray old-maintenance series
+	pkgver = 0.71b
+	pkgrel = 1
+	url = http://alltray.trausch.us
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gtk2>=2.2
+	makedepends = gconf
+	depends = gtk2>=2.2
+	depends = gconf
+	conflicts = alltray
+	source = alltray-oldmaintenance-0.71b.tar.gz::http://edge.launchpad.net/alltray/old-maintenance/0.71b/+download/alltray-0.71b.tar.gz
+	md5sums = 93a866aa4dd96dc258eb3d7fccb41da8
+
+pkgname = alltray-oldmaintenance
+
