@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 187894 2013-06-07 21:35:29Z heftig $
+# $Id: PKGBUILD 194794 2013-09-23 17:21:36Z heftig $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
@@ -9,7 +9,7 @@
 pkgname=networkmanager-ifupdown
 _oldname=networkmanager
 _pkgname=NetworkManager
-pkgver=0.9.8.2
+pkgver=0.9.8.4
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ install=networkmanager.install
 #source=(git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=93c1041
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
         NetworkManager.conf disable_set_hostname.patch)
-sha256sums=('5c0b2f71b2f61e0dfbe95cebad83001758db252d5cdf5b6f7ceebac9c6bd7ead'
+sha256sums=('4c9ff0aaf52bee8df9a73290ec2b3f4441ff504420d0b0dfd729b00a92d80d99'
             '44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
 
