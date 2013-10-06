@@ -4,7 +4,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=initscripts-fork
-pkgver=2013.10.1
+pkgver=2013.10.2
 pkgrel=1
 pkgdesc="Maintained fork of system initialization/bootup scripts"
 arch=('any')
@@ -20,11 +20,11 @@ optdepends=('dhcpcd: DHCP network configuration'
             'net-tools: Network support'
             'wireless_tools: Wireless networking'
             'systemd: new crypttab format support'
-	    'sysctl-default-conf: additional tweaks for kernel parameters')
+	          'sysctl-default-conf: additional tweaks for kernel parameters')
 makedepends=(asciidoc)
 install=initscripts.install
 source=(https://bitbucket.org/TZ86/$pkgname/get/$pkgver.tar.bz2)
-md5sums=('bb6042fe71d9fd1644f0efa1311e8d57')
+md5sums=('c66aa6d8436568517e191f868e939a5b')
 
 package() {
   cd TZ86-$pkgname-*
