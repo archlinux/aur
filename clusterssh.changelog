@@ -1,0 +1,6 @@
+2013-10-06 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* clusterssh 3.28-4 - changelog properly added, changed to 'any' architecture
+
+2009-12-26 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* Package moved to [community]
+	* version 3.28 - 39 votes in AUR

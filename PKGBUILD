@@ -4,14 +4,15 @@
 
 pkgname=clusterssh
 pkgver=3.28
-pkgrel=3
+pkgrel=4
 pkgdesc="Cluster SSH opens terminal windows with connections to specified hosts and an administration console."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://clusterssh.sourceforge.net/"
 license=('GPL')
 depends=('perl-tk' 'perl-x11-protocol' 'xterm')
+changelog=$pkgname.changelog
 source=(http://downloads.sourceforge.net/project/$pkgname/1.%20ClusterSSH%20Series%203/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('11e012329d2c62e1f7b17f3ac517769a')
+sha256sums=('27e7c0feb652d980229c5fe07f9d6bfe4eb1e3becafaf0e82a5409a9f67d8faf')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
