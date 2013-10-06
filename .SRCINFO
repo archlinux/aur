@@ -1,0 +1,17 @@
+pkgbase = journal-triggerd
+	pkgdesc = Runs trigger on journal messages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://jjacky.com/journal-triggerd
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = perl
+	makedepends = groff
+	depends = systemd
+	depends = glib2
+	source = http://jjacky.com/journal-triggerd/journal-triggerd-0.1.0.tar.gz
+	md5sums = b20213df183e681f378e3f87b4c9acc2
+
+pkgname = journal-triggerd
+
