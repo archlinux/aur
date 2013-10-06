@@ -1,0 +1,21 @@
+pkgbase = unknown-horizons
+	pkgdesc = 2D realtime strategy simulation with an emphasis on economy and city building.
+	pkgver = 2013.3
+	pkgrel = 3
+	url = http://www.unknown-horizons.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = CCPL
+	depends = fife
+	depends = python2
+	depends = python2-pillow
+	depends = python2-yaml
+	conflicts = unknown-horizons-svn
+	conflicts = unknown-horizons-git
+	source = https://github.com/unknown-horizons/unknown-horizons/releases/download/2013.3/unknown-horizons-2013.3.tar.xz
+	md5sums = 1d7f1c89afdb6c2a559a6e42ebb13def
+	sha256sums = 75e2484eec56cbd789f57ed095300e096b1fe73816d862eadc08c08740639a1d
+
+pkgname = unknown-horizons
+
