@@ -1,0 +1,14 @@
+pkgbase = dh-autoreconf
+	pkgdesc = debhelper add-on to call autoreconf and clean up after the build
+	pkgver = 9
+	pkgrel = 1
+	url = http://packages.debian.org/sid/dh-make
+	arch = any
+	license = GPL
+	depends = debhelper
+	depends = perl
+	source = http://ftp.debian.org/debian/pool/main/d/dh-autoreconf/dh-autoreconf_9.tar.gz
+	md5sums = 8ee1d5b7f31c36de89ec37c81ae54973
+
+pkgname = dh-autoreconf
+
