@@ -1,0 +1,14 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index fc7bba4..b32f858 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -36,7 +36,8 @@ int main(int argc, char *argv[])
+ 
+     YL::init_table();
+     QTranslator trans;
+-    trans.load(QLocale::system(), "Qelly", "_");
++    trans.load("Qelly_" + QLocale::system().name().toLower(),
++               a.applicationDirPath(), "_");
+     a.installTranslator(&trans);
+ 
+     UJ::Qelly::Controller c;

@@ -1,7 +1,7 @@
 pkgbase = qelly-git
 	pkgdesc = Qelly is a Qt port of Nally
 	pkgver = 1.0a2.1.g7c18a56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uranusjr/Qelly
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,9 @@ pkgbase = qelly-git
 	provides = qelly
 	conflicts = qelly
 	source = qelly-git::git+https://github.com/uranusjr/Qelly.git
+	source = Fix-QTranslator-Filename.patch
 	md5sums = SKIP
+	md5sums = 55915bbd7bc13673a9d510bb2e456c10
 
 pkgname = qelly-git
 
