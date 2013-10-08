@@ -4,7 +4,7 @@
 
 # TODO: bring in pyalsa, csound, mma
 pkgname=solfege
-pkgver=3.22.0
+pkgver=3.22.2
 pkgrel=1
 pkgdesc="Music education and ear training software"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('timidity++: or any MIDI player & MIDI-WAV converter'
             'lilypond: for generating print-outs & score sheets'
             'texlive-bin: use LaTeX to replace HTML reports with DVI')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('8a5275d6db3ff181068441d7e32ad7f3')
+md5sums=('ee9778d2b960b7afb375c5b3c3878222')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
