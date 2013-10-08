@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gtk3
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ is a multi-platform toolkit (v3) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
@@ -64,6 +64,7 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' -o -name '*.manifest' | xargs -rtl1 rm
     find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip -x
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/"{etc,share}
+    rm -r "$pkgdir/usr/${_arch}/etc"
+    rm -r "$pkgdir/usr/${_arch}/share/man"
   done
 }
