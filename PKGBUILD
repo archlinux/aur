@@ -4,7 +4,7 @@
 
 pkgname=splix
 pkgver=2.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('i686' 'x86_64')
 url="http://splix.ap2c.org/"
@@ -12,19 +12,24 @@ license=('GPL')
 depends=('libcups' 'gcc-libs' 'ghostscript>=9.02')
 makedepends=('libcups' 'jbigkit' 'krb5')
 install=splix.install
-source=(http://downloads.sourceforge.net/splix/$pkgname-$pkgver.tar.bz2)
-md5sums=('f3aa735c22a926818b3d8b26c9964186')
+source=(svn://svn.code.sf.net/p/splix/code/splix#revision=315
+        splix-deviceID.patch)
+md5sums=('SKIP'
+         '674b6880dcee844e0e7f50baae0dc09f')
+
+prepare() {
+  cd splix
+  patch -Np1 -i ../splix-deviceID.patch
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's#const PPDFile::Value::Value #const PPDFile::Value #' src/ppdfile.cpp
-  make PSTORASTER=gstoraster
+  cd splix
+  CXXFLAGS+=" -fno-strict-aliasing"
+  make drv
+  make all DRV_ONLY=1
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -d "$pkgdir/usr/lib/cups/filter"
-  install -d "$pkgdir/usr/share/cups/model/samsung"
-  make DESTDIR="$pkgdir" install
-  ln -s gstoraster $pkgdir/usr/lib/cups/filter/pstoraster
+  cd splix
+  make DESTDIR="$pkgdir" install DRV_ONLY=1
 }
