@@ -1,5 +1,5 @@
 pkgname=zabbix-server-mysql
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
@@ -21,7 +21,7 @@ depends=("apache>=2"
          "iksemel"
          "libssh2"
         )
-optdepends=("shellinabox: web-based ssh client")
+optdepends=("shellinabox: web-based ssh/telnet client")
 conflicts=("zabbix-server"
            "zabbix-agent"
           )
@@ -32,21 +32,18 @@ install="zabbix-server.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
         "zabbix-server.install"
-        "frontend.diff"
         "config.diff"
        )
-md5sums=("8fef9e6f499295211dd9b2a9db96464b" # zabbix-$pkgver.tar.gz
+md5sums=("edf00241cce2302e0b65f620e83c7e41" # zabbix-$pkgver.tar.gz
          "99a25ef72b46e5729b80634c85c438ce" # zabbix-server.install
-         "e663566f1021bc62225cc6fff2e3894b" # frontend.diff
          "651e284397532f500b92c34bb0a2feda" # config.diff
         )
-sha1sums=("5481354f848416c6c3daa100a3b9cda1d17010df" # zabbix-$pkgver.tar.gz
+sha1sums=("858b52ca1769086f4302e431c28d4ad458464c62" # zabbix-$pkgver.tar.gz
           "2959c2198b99523e623e6f9cdb3061d4ac6e48e8" # zabbix-server.install
-          "805fd14183fd7959b6b53d5d0d9213518024b4e7" # frontend.diff
           "82239b23cfb4f8f43d9a5a33f77e58103e567af4" # config.diff
          )
 
-create_files() {
+prepare() {
 cat << EOL > "$srcdir/sudoers.zabbix-server"
 # Defaults specification
 Defaults visiblepw
@@ -118,13 +115,6 @@ package() {
   mkdir -p "${pkgdir}/etc/zabbix/database/mysql/setup/2.0"
 
   cp -r ${srcdir}/zabbix-${pkgver}/frontends/php/* ${pkgdir}/usr/share/webapps/zabbix/
-
-  cd "${pkgdir}/usr/share/webapps/zabbix/locale/"
-  patch -p1 < "${srcdir}/frontend.diff"
-  ./update_po.sh
-  ./make_mo.sh
-  cd "${pkgdir}"
-
   chown -R 33:33 "${pkgdir}/usr/share/webapps/zabbix/"
   find ${pkgdir}/usr/share/webapps/zabbix/ -type f -exec chmod 644 {} \;
   find ${pkgdir}/usr/share/webapps/zabbix/ -type d -exec chmod 755 {} \;
@@ -142,7 +132,6 @@ package() {
   install -d -m 0750                                    "${pkgdir}/etc/sudoers.d/"
   install -d -m 0755                                    "${pkgdir}/run/zabbix"
   install -d -m 0750                                    "${pkgdir}/var/log/zabbix"
-  create_files
   install -D -m 0640 "${srcdir}/sudoers.zabbix-server"  "${pkgdir}/etc/sudoers.d/zabbix-server"
   install -D -m 0644 "${srcdir}/zabbix-server.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-server.service"
   install -D -m 0644 "${srcdir}/zabbix-agentd.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-agentd.service"
