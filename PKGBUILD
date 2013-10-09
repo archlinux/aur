@@ -6,16 +6,17 @@
 # Contributor: Ronan Rabouin <darkbaboon@gmail.com>
 pkgname=unknown-horizons
 pkgver=2013.3
-pkgrel=3
+pkgrel=4
 pkgdesc="2D realtime strategy simulation with an emphasis on economy and city building."
 arch=('i686' 'x86_64')
 url="http://www.unknown-horizons.org/"
 license=('GPL' 'CCPL')
 depends=('fife' 'python2' 'python2-pillow' 'python2-yaml')
+makedepends=('intltool')
 conflicts=('unknown-horizons-svn' 'unknown-horizons-git')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('1d7f1c89afdb6c2a559a6e42ebb13def')
-sha256sums=('75e2484eec56cbd789f57ed095300e096b1fe73816d862eadc08c08740639a1d')
+md5sums=('2417cb88c12a0f855c96743c7f3287d0')
+sha256sums=('18c2fd62365e40f6bb06b0a3c4106fff592bac249c3f498d49442f5dc217e37d')
 
 package() {
 	cd "$srcdir/$pkgname"
