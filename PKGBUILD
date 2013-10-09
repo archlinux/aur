@@ -5,12 +5,12 @@
 # TODO: bring in pyalsa, csound, mma
 pkgname=solfege
 pkgver=3.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Music education and ear training software"
 arch=('i686' 'x86_64')
 url="http://www.solfege.org/"
 license=('GPL3')
-depends=('pygtk' 'libgtkhtml' 'librsvg')
+depends=('pygtk' 'librsvg')
 makedepends=('ghostscript' 'gnome-doc-utils' 'libxslt'
              'swig' 'texinfo' 'txt2man')
 optdepends=('timidity++: or any MIDI player & MIDI-WAV converter'
