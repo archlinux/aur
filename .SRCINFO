@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
-	pkgver = 1.7.99.23272.fdea402
+	pkgver = 1.7.99.23304.80bcfac
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -38,20 +38,20 @@ pkgbase = efl-git
 	optdepends = gstreamer0.10-ugly: Access more types of video in Emotion
 	optdepends = gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion
 	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
-	provides = ecore=1.7.99.23272.fdea402
-	provides = eldbus=1.7.99.23272.fdea402
-	provides = edje=1.7.99.23272.fdea402
-	provides = eet=1.7.99.23272.fdea402
-	provides = eeze=1.7.99.23272.fdea402
-	provides = efreet=1.7.99.23272.fdea402
-	provides = eina=1.7.99.23272.fdea402
-	provides = eio=1.7.99.23272.fdea402
-	provides = embryo=1.7.99.23272.fdea402
-	provides = emotion=1.7.99.23272.fdea402
-	provides = ephysics=1.7.99.23272.fdea402
-	provides = ethumb=1.7.99.23272.fdea402
-	provides = evas=1.7.99.23272.fdea402
-	provides = efl=1.7.99.23272.fdea402
+	provides = ecore=1.7.99.23304.80bcfac
+	provides = eldbus=1.7.99.23304.80bcfac
+	provides = edje=1.7.99.23304.80bcfac
+	provides = eet=1.7.99.23304.80bcfac
+	provides = eeze=1.7.99.23304.80bcfac
+	provides = efreet=1.7.99.23304.80bcfac
+	provides = eina=1.7.99.23304.80bcfac
+	provides = eio=1.7.99.23304.80bcfac
+	provides = embryo=1.7.99.23304.80bcfac
+	provides = emotion=1.7.99.23304.80bcfac
+	provides = ephysics=1.7.99.23304.80bcfac
+	provides = ethumb=1.7.99.23304.80bcfac
+	provides = evas=1.7.99.23304.80bcfac
+	provides = efl=1.7.99.23304.80bcfac
 	provides = efl_x11
 	conflicts = ecore
 	conflicts = edje

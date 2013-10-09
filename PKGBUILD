@@ -3,7 +3,7 @@
 
 pkgname=efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.99.23272.fdea402
+pkgver=1.7.99.23304.80bcfac
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
          'libgl' 'libwebp' 'libpulse' 'libexif' 'gstreamer0.10-base'
          'fribidi' 'harfbuzz' 'fontconfig')
-  [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg')
+  [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
 makedepends=('git')
 optdepends=('python2: compare Eina benchmarks'
             'gstreamer0.10-good: Access more types of video in Emotion'
@@ -42,7 +42,7 @@ pkgver() {
 
 prepare() {
 # set python scripts to run with python2
-  sed -i 's/env python$/python2/' "$srcdir/$_pkgname/src/scripts/eina/eina-bench-cmp"
+  sed -i 's/env python$/&2/' "$srcdir/$_pkgname/src/scripts/eina/eina-bench-cmp"
 }
 
 build() {
