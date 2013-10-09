@@ -2,8 +2,8 @@
 
 pkgname=qelly-git
 _pkgname=Qelly
-pkgver=1.0a2.1.g7c18a56
-pkgrel=2
+pkgver=1.0a2.9.g83cd4a5
+pkgrel=1
 pkgdesc="Qelly is a Qt port of Nally"
 arch=('x86_64' 'i686')
 url="https://github.com/uranusjr/Qelly"
@@ -12,10 +12,8 @@ depends=('qt4' 'libqxt')
 makedepends=()
 conflicts=('qelly')
 provides=('qelly')
-source=("$pkgname::git+https://github.com/uranusjr/Qelly.git"
-        "Fix-QTranslator-Filename.patch")
-md5sums=('SKIP'
-         '55915bbd7bc13673a9d510bb2e456c10')
+source=("$pkgname::git+https://github.com/uranusjr/Qelly.git")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -27,7 +25,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	patch -p1 < ../Fix-QTranslator-Filename.patch
 	qmake-qt4
 	make
 }
