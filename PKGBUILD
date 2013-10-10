@@ -4,41 +4,40 @@
 # Contributor: Jesse Juhani Jaara <jesse.jaara@gmail.com>
 
 pkgname=lib32-libmikmod
-pkgver=3.2.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A portable sound library"
-license=('GPL' 'LGPL')
+license=(GPL LGPL)
 url="http://mikmod.shlomifish.org/"
-arch=('x86_64')
-depends=('libmikmod' 'lib32-glibc')
-makedepends=('gcc-multilib alsa-lib')
+arch=(x86_64)
+depends=(libmikmod lib32-openal)
+makedepends=(gcc-multilib libtool-multilib lib32-alsa-lib)
 options=('!libtool')
 install=$pkgname.install
-source=($url/files/libmikmod-$pkgver.tar.gz
-        libmikmod-3.2.0-64bit-fix.diff
-        libmikmod-3.1.12-loopingvolume-fix.diff)
-md5sums=('96e9820d72a41fe27ff304071739696c'
-         '0bb09aac6e83e0a7fd6535961b3cff4c'
-         'a837fd876cbd2ac27419b802504489db')
+source=($url/files/libmikmod-$pkgver.tar.gz)
+sha256sums=('2311b209255bf24e95161907a16778cb054ac6d447fd8d05f1f0e41a555c7580')
+
+prepare() {
+  mkdir build
+}
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd $srcdir/libmikmod-$pkgver
-
-  # patches from sdl_mixer-1.2.11 source
-  patch -Np1 -i $srcdir/libmikmod-3.2.0-64bit-fix.diff
-  patch -Np1 -i $srcdir/libmikmod-3.1.12-loopingvolume-fix.diff
-
-  ./configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --libdir=/usr/lib32 --disable-static
+  cd build
+  ../libmikmod-$pkgver/configure \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --enable-openal \
+    --disable-static
   make
 }
 
 package() {
-  cd $srcdir/libmikmod-$pkgver
-  make DESTDIR=$pkgdir install
-  rm -rf "${pkgdir}"/usr/{include,share,bin}
+  cd build
+  make DESTDIR="$pkgdir" install
+  rm -r "$pkgdir"/usr/{include,share,bin}
 }
 
