@@ -1,14 +1,14 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=prince
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Prince of Persia adventure game (for dosbox)"
 arch=(any)
 url="http://unknown/"
 license=('unknown')
 depends=(dosbox)
 makedepends=(unzip)
-source=(prince
+source=(princeofpersia
         "prince.zip::http://www.abzone.be/downloads/apps/gam_PoP_vxx.zip")
 noextract=("prince.zip")
 sha256sums=('c431d88d1486fcd5c3c26e67571e86f3d65a3f4bfdff0ac4f1b372a7a4070308'
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/prince" "$pkgdir/usr/bin/prince"
+  install -Dm755 "$srcdir/princeofpersia" "$pkgdir/usr/bin/princeofpersia"
   install -dm755 "$pkgdir/usr/share"
   cp -r "$srcdir/princedir/" "$pkgdir/usr/share/prince"
   find "$pkgdir/usr/share/prince/" -type f -exec chmod 644 "{}" \;
