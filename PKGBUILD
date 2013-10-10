@@ -2,7 +2,7 @@
 
 pkgname=qelly-git
 _pkgname=Qelly
-pkgver=1.0a2.9.g83cd4a5
+pkgver=1.0a2.11.g7ebcd1a
 pkgrel=1
 pkgdesc="Qelly is a Qt port of Nally"
 arch=('x86_64' 'i686')
@@ -32,8 +32,5 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
-	install -m 644 "bin/Qelly_zh_tw.qm" "${pkgdir}/usr/lib/${_pkgname}"
-	install -m 755 "bin/Qelly" "${pkgdir}/usr/lib/${_pkgname}"
-	ln -s "../lib/${_pkgname}/Qelly" "${pkgdir}/usr/bin/Qelly"
+	install -m 755 "bin/Qelly" "${pkgdir}/usr/bin"
 }
