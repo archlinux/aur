@@ -1,3 +1,5 @@
+# Based on an older PKGBUILD by: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+
 pkgname=('python2-pywikibot-git')
 pkgver=2171.e644b32
 pkgrel=1
