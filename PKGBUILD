@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python2-setuptools' 'git')
 depends=('python2-httplib2')
 install=install
-source=("${pkgname}::git+https://git.wikimedia.org/git/pywikibot/core.git" 'user-config.py')
+source=("${pkgname}::git+https://gerrit.wikimedia.org/r/p/pywikibot/core.git" 'user-config.py')
 md5sums=('SKIP' '0f7c5edb33017b4bbea2f80f13fe4843')
 
 pkgver() {
