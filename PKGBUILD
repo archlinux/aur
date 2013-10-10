@@ -1,7 +1,7 @@
 # Based on an older PKGBUILD by: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
 pkgname=('python2-pywikibot-git')
-pkgver=2171.e644b32
+pkgver=2178.36435bb
 pkgrel=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 arch=('any')
@@ -10,33 +10,30 @@ license=('MIT')
 makedepends=('python2-setuptools' 'git')
 depends=('python2-httplib2')
 install=install
-source=("core::git+https://git.wikimedia.org/git/pywikibot/core.git" 'user-config.py')
+source=("${pkgname}::git+https://git.wikimedia.org/git/pywikibot/core.git" 'user-config.py')
 md5sums=('SKIP' '0f7c5edb33017b4bbea2f80f13fe4843')
 
 pkgver() {
-	 cd "${srcdir}/core"
+	 cd "${srcdir}/${pkgname}"
 	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	 printf "%s" "${ver//-/.}"
 }
 
 prepare() {
-  # This is really a pain : interactive setup to create a per-user config file...
-  # We just provide a sample config file in /usr/share/pywikibot/user-config.py
-	 sed -i '/generate_user_files.py/Id' "${srcdir}/core/setup.py"
+	 # upstream horror #1: global install script forces interactive setup to create per-user config file
+	 # we excise this code and just provide a default config for user to copy
+	 sed -i '/generate_user_files.py/Id' "${srcdir}/${pkgname}/setup.py"
 }
 
 package() {
-	 cd "${srcdir}/core"
+	 cd "${srcdir}/${pkgname}"
 	 python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-    # This is _really_ a pain... It installs itself in
-    #  /usr/lib/python2.7/site-packages/tests
-    #  /usr/lib/python2.7/site-packages/scripts
-    # These are likely to collide with others python packages...
-    # => This has to be fixed upstream
-    rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests
+	 # upstream horror #2: installing itself in:
+	 #  /usr/lib/python2.7/site-packages/tests
+	 #  /usr/lib/python2.7/site-packages/scripts
+	 # This is mindblowingly stupid and prone to break something else.
+	 rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests
 
-    # Copy our example config file
-    mkdir -p $pkgdir/usr/share/pywikibot
-    install ${srcdir}/user-config.py $pkgdir/usr/share/pywikibot
+	 install -D -m644 {${srcdir},${pkgdir}/usr/share/pywikibot}/user-config.py
 }
