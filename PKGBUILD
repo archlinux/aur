@@ -13,7 +13,6 @@ arch=(x86_64)
 depends=(libmikmod lib32-openal)
 makedepends=(gcc-multilib libtool-multilib lib32-alsa-lib)
 options=('!libtool')
-install=$pkgname.install
 source=($url/files/libmikmod-$pkgver.tar.gz)
 sha256sums=('2311b209255bf24e95161907a16778cb054ac6d447fd8d05f1f0e41a555c7580')
 
