@@ -1,0 +1,15 @@
+pkgbase = python-markups
+	pkgdesc = Wrapper around various text markups
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://launchpad.net/python-markups
+	arch = any
+	license = BSD
+	depends = python
+	optdepends = python-markdown: markdown support
+	optdepends = python-docutils: reST support
+	source = http://pypi.python.org/packages/source/M/Markups/Markups-0.2.4.tar.gz
+	sha256sums = 0aab138698035e699fad1c88bebb3fa5e90a1876bc7d8fefb3491513fe13f16b
+
+pkgname = python-markups
+
