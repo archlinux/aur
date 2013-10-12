@@ -9,7 +9,7 @@ _gitbranch="master"
 _src_rootdir="${_gitname}-3.0"
 
 pkgname="gnu-efi-libs-git"
-pkgver=0.18.8f5ba0e
+pkgver=0.22.27cdb74
 pkgrel=1
 pkgdesc="Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
