@@ -1,0 +1,17 @@
+pkgbase = e_jeweled-git
+	pkgdesc = Bejeweled style game base on EFL
+	pkgver = 0.0.0.r15.bbdb683
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = elementary
+	provides = e_jeweled=0.0.0.r15.bbdb683
+	conflicts = e_jeweled
+	source = git://git.enlightenment.org/devs/seoz/e_jeweled.git
+	md5sums = SKIP
+
+pkgname = e_jeweled-git
+
