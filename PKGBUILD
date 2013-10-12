@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.gz
         cupsd-no-crash-on-avahi-threaded-poll-shutdown.patch
         get-ppd-file-for-statically-configured-ipp-shared-queues.patch
         ppd-poll-with-client-conf.patch)
-md5sums=('3c50d396fef2ba721224fe65880fe3c3'
+md5sums=('17c948b442dfdb3c53f5c8b7eaa1442f'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'f861b18f4446c43918c8643dcbbd7f6d'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -153,7 +153,7 @@ package() {
   touch ${pkgdir}/etc/cups/printers.conf
   touch ${pkgdir}/etc/cups/classes.conf
   touch ${pkgdir}/etc/cups/subscriptions.conf 
-  chgrp lp ${pkgdir}/etc/cups/{printers.conf,classes.conf,subscriptions.conf}
+  chgrp -R lp ${pkgdir}/etc/cups
   
   # fix .desktop file
   sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' ${pkgdir}/usr/share/applications/cups.desktop
