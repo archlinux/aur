@@ -1,0 +1,13 @@
+pkgbase = pg_view-git
+	pkgdesc = postgreSQL Activity View Utility
+	pkgver = 20130825
+	pkgrel = 1
+	url = https://github.com/zalando/pg_view
+	arch = any
+	license = Apache
+	depends = python2-psycopg2
+	source = git+https://github.com/zalando/pg_view.git
+	sha256sums = SKIP
+
+pkgname = pg_view-git
+
