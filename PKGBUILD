@@ -1,8 +1,8 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.10.1
+pkgrel=1
 pkgdesc="GTK+ is a multi-platform toolkit (v3) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
@@ -26,7 +26,7 @@ source=(
 
 # The second source file is downloaded from Fedora Project
 
-md5sums=('f5148a330886b906ba0eb7842409d93f'
+md5sums=('027d1cb23ac91ce678194ad0cdc14a3f'
          '369582585e60eab9fa5c9aa22a68e41c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
