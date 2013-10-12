@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=hdapsd-git
-pkgver=20130420
+pkgver=20130625
 pkgrel=1
 pkgdesc='HDAPS userspace hard drive protection daemon'
 arch=('i686' 'x86_64')

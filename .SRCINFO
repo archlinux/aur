@@ -1,6 +1,6 @@
 pkgbase = hdapsd-git
 	pkgdesc = HDAPS userspace hard drive protection daemon
-	pkgver = 20130420
+	pkgver = 20130625
 	pkgrel = 1
 	url = https://github.com/evgeni/hdapsd/
 	arch = i686
