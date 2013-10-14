@@ -3,7 +3,7 @@
 
 pkgname=xinetd
 pkgver=2.3.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A secure replacement for inetd"
 arch=('i686' 'x86_64')
 url="http://www.xinetd.org/"
@@ -14,16 +14,21 @@ source=(http://www.xinetd.org/xinetd-$pkgver.tar.gz
         xinetd.conf
         servers
         services
-        xinetd.service)
+        xinetd.service
+        fix-CVE-2013-4342.patch)
 md5sums=('77358478fd58efa6366accae99b8b04c'
          'f109f699a07bc8cfb5791060f5e87f9e'
          '21f47b4aa20921cfaddddd9f9a407f81'
          '9fa2061dc7dd738c8424251deb86f81e'
-         '38be35b6e7146dc59902e243d9063b4c')
+         '38be35b6e7146dc59902e243d9063b4c'
+         'b14615c73753ceffbcc96d5e08f3c18d')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
   sed -i "s#${prefix}/man#${prefix}/share/man#" configure
+  # fix #37310
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1006100#c
+  patch -Np1 -i $srcdir/fix-CVE-2013-4342.patch
 }
 
 build() {
