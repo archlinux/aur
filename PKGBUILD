@@ -2,7 +2,7 @@
 
 pkgname=easyrpg-player-git
 _gitname=Player
-pkgver=0.1.1.34.g99a32b6
+pkgver=0.1.2.47.g2a136ad
 pkgrel=1
 pkgdesc="EasyRPG Player aims to be a free, RPG Maker 2000/2003 interpreter (development version)."
 arch=('i686' 'x86_64')
@@ -11,42 +11,34 @@ license=('GPL3')
 conflicts=('easyrpg-player')
 provides=('easyrpg-player')
 makedepends=('cmake>=2.8' 'boost' 'git')
-depends=('sdl_mixer' 'freetype2' 'pixman' 'libpng' 'libjpeg' 'boost-libs' 'openal' 'libsndfile' 'lua' 'expat')
-install="$pkgname.install"
-source=("git://github.com/EasyRPG/Player.git"
-        "$pkgname.install")
-md5sums=('SKIP'
-         '8ceae8f6dfa0eeff7e8029e6ee792386')
-sha256sums=('SKIP'
-            '187f2c695b2ad0471cea3679956ab77e1c191b082182ee6d776447990ef1edc1')
+depends=('sdl_mixer' 'freetype2' 'pixman' 'libpng' 'libjpeg' 'openal' 'libsndfile' 'expat')
+install=$pkgname.install
+source=(git://github.com/EasyRPG/Player.git)
+md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
 
-  # Use last tag and incrementing counter as version
-  git describe --tags --always | sed 's|-|.|g'
+  local ver="$(git describe --long)"
+  printf "%s" "${ver//-/.}"
 }
 
 prepare () {
-  cd "$srcdir"
-
-  # remove old build dir
+  # remove old build
   rm -rf build
 }
 
 build () {
-  cd "$srcdir"
-
   mkdir build
   cd build
 
-  cmake ../Player/builds/cmake/ -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed" -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake ../Player -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed" -DCMAKE_INSTALL_PREFIX="/usr"
 
   make
 }
 
 package () {
-  cd "$srcdir/build"
+  cd build
 
-  DESTDIR="$pkgdir" make install
+  DESTDIR=$pkgdir make install
 }
