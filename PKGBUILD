@@ -2,23 +2,22 @@
 pkgname=crunchyfrog-hg
 _hgname=crunchyfrog
 pkgver=722.1648adf08bb3
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL editor and database schema browser for the GNOME desktop, latest development version"
 url='http://code.google.com/p/crunchyfrog'
 arch=('any')
 license=('GPL3')
-depends=('python' 'python2-configobj' 'pygtk' 'pygtksourceview2' 'pycairo'
-         'pyxdg' 'gnome-python' 'gnome-python-desktop'
-         'python-sphinx' 'python-sqlparse')
-optdepends=('mysql-python:  To handle MySQL Databases',
-            'python-psycopg2:   To handle PostgreSQL Databases',
-            'python-pysqlite:   To handle SQLite Databases',
-            'cx_oracle: To handle Oracle Databases (just for i686)',
-            'pymssql:   To handle Microsoft SQL Server Databases',
-            'kinterbasdb:   To handle Firebird Databases'
-            'informixdb: To handle Informix Databases'
-            'sapdb: To handle MaxDB'
-            'ipython: To use built-in python shell'
+depends=('python2' 'pygtk' 'pygtksourceview2' 'gnome-python'
+         'gnome-python-desktop' 'python2-configobj' 'python2-cairo'
+         'python2-xdg' 'python2-sphinx' 'python2-sqlparse')
+optdepends=('mysql-python:      To handle MySQL Databases',
+            'python2-psycopg2:  To handle PostgreSQL Databases',
+            'python2-pysqlite:  To handle SQLite Databases',
+            'python2-cx_oracle: To handle Oracle Databases (just for i686)',
+            'kinterbasdb:       To handle Firebird Databases'
+            'informixdb:        To handle Informix Databases'
+            'sapdb:             To handle MaxDB'
+            'ipython2:          To use built-in python shell'
            )
 makedepends=('mercurial')
 provides=('crunchyfrog')
