@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-unikey
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Fcitx Wrapper for unikey"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
@@ -25,9 +25,6 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
-
-  # Fix desc missing problem
-  install -Dm644 ../src/fcitx-unikey.desc "$pkgdir/usr/share/fcitx/configdesc/fcitx-unikey.desc"
 }
 
-sha512sums=('71a0773222b1172943f80bce904da77c136225981a0580d937327829c8d734fc65d9c4afa5275bd210ca837d7a7b9d8bfb18df96f62710068b9883a22499fbfb')
+sha512sums=('5826022312ad307d8a070cd3ab77a206a5f73d6ce5337cdac4c75ec9a436b055ca0e28fcc7baf2f1512b2cb92c779002a8fc41ac01cdedc3dc669355d825a0aa')
