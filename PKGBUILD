@@ -4,8 +4,8 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.10.1
+pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=(i686 x86_64)
 license=(GPL)
@@ -15,16 +15,16 @@ depends=(libsecret gtk-vnc vte3 telepathy-glib avahi desktop-file-utils dconf sh
          gnome-icon-theme spice-gtk3)
 optdepends=('openssh: SSH plugin'
             'freerdp: RDP plugin')
-makedepends=(docbook-xsl intltool freerdp openssh itstool)
+makedepends=(docbook-xsl intltool freerdp openssh itstool spice-protocol)
 groups=(gnome-extra)
 options=('!emptydirs' '!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d90ca19d1075149d044a58274016bb3976b2201774ae079d661fd7c3859a1900')
+sha256sums=('ea8cc79e227148359d3582ff121dab864913eb1dfcba6458e11da32d4dfec503')
 
 build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc \
-      --libexecdir=/usr/lib/$pkgname --enable-rdp
+      --libexecdir=/usr/lib/$pkgname --enable-rdp --enable-spice
   make
 }
 
