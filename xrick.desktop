@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Rick Dangerous game clone
+Name=xrick
+Exec=xrick
+Icon=xrick
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
