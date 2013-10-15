@@ -1,6 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
-pkgname=isrcsubmit-git
+_pkgname=isrcsubmit
+pkgname=$_pkgname-git
 pkgver=2.0.0.beta.4.4.g2fd25e2
 pkgver(){
   cd "$srcdir/$pkgname"
@@ -33,6 +34,8 @@ check() {
 package() {
   cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -d $pkgdir/usr/share/doc/$_pkgname
+  install -m644 -t $pkgdir/usr/share/doc/$_pkgname AUTHORS CHANGES.* COPYING README.*
 }
 
 # vim:set ts=2 sw=2 et:
