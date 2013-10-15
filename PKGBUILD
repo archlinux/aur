@@ -6,7 +6,7 @@
 pkgname=chromium
 pkgver=30.0.1599.66
 _toolchains_rev=12029
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
