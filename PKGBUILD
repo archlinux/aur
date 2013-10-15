@@ -2,7 +2,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 _pkgname=isrcsubmit
 pkgname=$_pkgname-git
-pkgver=2.0.0.beta.4.4.g2fd25e2
+pkgver=2.0.0.beta.5.30.g5608084
 pkgver(){
   cd "$srcdir/$pkgname"
   git describe --tags --long | sed 's/-/./g;s/^v//'
