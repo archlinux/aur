@@ -6,7 +6,7 @@ pkgbase = isrcsubmit-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-distribute
+	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
 	depends = python-musicbrainzngs>=0.4

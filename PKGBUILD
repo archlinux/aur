@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
 license=('GPL3')
 depends=('python' 'python-musicbrainzngs>=0.4' 'python-discid>=1.0.0')
-makedepends=('git' 'python-distribute' 'python-sphinx')
+makedepends=('git' 'python-setuptools' 'python-sphinx')
 provides=('isrcsubmit')
 conflicts=('isrcsubmit')
 replaces=('isrcsubmit-python2-git' 'isrcsubmit-python-git')
