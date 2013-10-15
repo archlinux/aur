@@ -2,7 +2,6 @@ pkgbase = isrcsubmit-git
 	pkgdesc = submit ISRCs from disc to MusicBrainz
 	pkgver = 2.0.0.beta.4.4.g2fd25e2
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/JonnyJD/musicbrainz-isrcsubmit
 	arch = any
 	license = GPL3

@@ -7,7 +7,6 @@ pkgver(){
   cd $srcdir/$pkgbase
   git describe --tags --long | sed 's/-/./g;s/^v//'
 }
-epoch=1
 pkgrel=1
 pkgdesc="submit ISRCs from disc to MusicBrainz"
 arch=('any')
