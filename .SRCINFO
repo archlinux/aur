@@ -1,0 +1,15 @@
+pkgbase = python-pies
+	pkgdesc = The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/timothycrosley/pies
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pies/pies-1.0.3.tar.gz
+	md5sums = 044f45fe0ba267a7d5978735b392599e
+
+pkgname = python-pies
+
