@@ -1,0 +1,16 @@
+pkgbase = python-isort
+	pkgdesc = isort your python imports for you so you don't have to.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/timothycrosley/isort
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pies
+	depends = python-natsort
+	source = https://github.com/timothycrosley/isort/archive/2.0.1.tar.gz
+	md5sums = 93e6d6c94f8750646fd92361bcc4962c
+
+pkgname = python-isort
+
