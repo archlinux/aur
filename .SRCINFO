@@ -1,0 +1,17 @@
+pkgbase = lib32-oxygen-gtk-git
+	pkgdesc = Port of the Oxygen theme to gtk
+	pkgver = 20111118
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/artwork/oxygen-gtk
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc-multilib
+	depends = lib32-gtk2
+	depends = oxygen-gtk-git
+	depends = lib32-dbus-glib
+
+pkgname = lib32-oxygen-gtk-git
+
