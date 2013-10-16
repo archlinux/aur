@@ -2,15 +2,15 @@
 # Contributor: damian01w <damian01w@gmail.com>
 
 pkgname=kde-servicemenus-encfs
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="One KDE servicemenu for encfs encrypted directories."
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php?content=57086"
 license=('GPL3')
 depends=('kdebase-workspace' 'encfs')
 source=("http://kde-apps.org/CONTENT/content-files/57086-kde-service-menu-encfs_${pkgver}.tar.gz")
-md5sums=('ced9b1d14b8f46fa1c53f8a13fe3bc45')
+md5sums=('42b10bd668568ce8ffdd25351c0f2d7e')
 
 build() {
   tar -xvf ${srcdir}/57086-kde-service-menu-encfs_${pkgver}.tar.gz
