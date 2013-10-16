@@ -11,7 +11,7 @@ _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
 pkgver=6.02
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch"
 url="http://syslinux.zytor.com/"
@@ -56,6 +56,7 @@ _build_syslinux_bios() {
 	## Do not try to build syslinux with our default LDFLAGS, it will fail
 	unset LDFLAGS
 	
+	make PYTHON="python2" bios spotless
 	make PYTHON="python2" bios
 	make PYTHON="python2" bios installer
 	
@@ -74,6 +75,7 @@ _build_syslinux_efi64() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
+	make PYTHON="python2" efi64 spotless
 	make PYTHON="python2" efi64
 	make PYTHON="python2" efi64 installer
 	
@@ -92,6 +94,7 @@ _build_syslinux_efi32() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
+	make PYTHON="python2" efi32 spotless
 	make PYTHON="python2" efi32
 	make PYTHON="python2" efi32 installer
 	
