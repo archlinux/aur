@@ -1,15 +1,15 @@
-# Maintainer : Thomas Weißschuh <thomas_weissschuh||lavabit.com>
+# Maintainer : Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=hsqldb2-java
-pkgver=2.2.9
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="HSQLDB Java libraries, Version 2"
 arch=('any')
 license=('custom')
 depends=('java-environment')
 makedepends=('java-runtime' 'unzip' 'apache-ant')
 conflicts=('hsqldb-java')
-source=("http://downloads.sourceforge.net/project/hsqldb/hsqldb/hsqldb_2_2/hsqldb-${pkgver}.zip")
+source=("http://downloads.sourceforge.net/project/hsqldb/hsqldb/hsqldb_2_3/hsqldb-${pkgver}.zip")
 url="http://hsqldb.org/"
 
 
@@ -36,4 +36,4 @@ package() {
           "${srcdir}/hsqldb-${pkgver}/hsqldb/doc/hsqldb_lic.txt" \
           "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-sha256sums=('6b60decdb59513f52b915abed2223e287ba19360fa77fc8141c4fc6af90c5e72')
+sha256sums=('621e8734f288fa09dbbca91d0fcb2935eecce407d18c79506a18f6c8bd6cb932')
