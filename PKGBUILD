@@ -16,9 +16,10 @@ optdepends=('qt4: gui support')
 license=('GPL2')
 source=("http://synergy.googlecode.com/files/$pkgname-$pkgver-Source.tar.gz"
         "synergys.socket"
-        "synergys.service"
-        "synergy.png"
-        "synergy.desktop")
+        "synergys.service")
+sha512sums=('5305e03d871e5408640ece55364067418f9b8b160dda31f994ebafe807b31291bdaa688a901f2e81710acb0857952c37f0c1823a50c927573feaec0c8659be9d'
+            'f7d918faf4a25654786f270fc48b6e4089ecd1b2f504bb90de543b47a862733f7be067e06fd613d621bba48d20dc63214966e2cfbd2cb3fcbfe623d6d41f10ad'
+            'a10dfe5b24ac6f4a2ef3a3a9f8a6a3c432b91d5e59d1fae2258d37c5be00ac8f172656fa0d213012c7dc94ab8c04c3945ae33acfcd5db5fad8b37ccc9f5e980f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
@@ -51,12 +52,7 @@ package() {
   install -Dm644 "$srcdir/synergys.socket" "$pkgdir/usr/lib/systemd/system/"
 
   # install desktop/icon stuff
-  install -Dm644 "$srcdir/synergy.png" "$pkgdir/usr/share/pixmaps/synergy.png"
-  install -Dm644 "$srcdir/synergy.desktop" "$pkgdir/usr/share/applications/synergy.desktop"
+  cd ../res
+  install -Dm644 "synergy.ico" "$pkgdir/usr/share/pixmaps/synergy.ico"
+  install -Dm644 "synergy.desktop" "$pkgdir/usr/share/applications/synergy.desktop"
 }
-
-sha512sums=('5305e03d871e5408640ece55364067418f9b8b160dda31f994ebafe807b31291bdaa688a901f2e81710acb0857952c37f0c1823a50c927573feaec0c8659be9d'
-            'f7d918faf4a25654786f270fc48b6e4089ecd1b2f504bb90de543b47a862733f7be067e06fd613d621bba48d20dc63214966e2cfbd2cb3fcbfe623d6d41f10ad'
-            'a10dfe5b24ac6f4a2ef3a3a9f8a6a3c432b91d5e59d1fae2258d37c5be00ac8f172656fa0d213012c7dc94ab8c04c3945ae33acfcd5db5fad8b37ccc9f5e980f'
-            'cb3db9593c943bce11ce5ae962e120feb70e6afa9206887a6971c77491711afcebc78653e7413e87e33d031c43a507f4a9a6e8747d10b60c6642106ae1690f18'
-            'c1c76ecfbed5c22f1a2a7562dce20971a784ff6b0edbf5c9b5f7c796f9ead882b82f970bb24f35533b928c341f87f66b0b10d9d96e122d14d74102cac8997445')
