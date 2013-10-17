@@ -4,7 +4,7 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.24.21
+pkgver=2.24.22
 pkgrel=1
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
@@ -17,16 +17,14 @@ makedepends=('pkgconfig' 'gcc-multilib')
 options=('!libtool' '!docs')
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
-        xid-collision-debug.patch gtkrc-fix.patch)
-sha256sums=('302e9216dd19ec4b5b9e2f77275e23758253f7e86b06287284d8e794ef38dce3'
-            'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
-            '4038c0f1ef4cc052e469858abe32eaa8afc8d4f540760f18ad132986e396604d')
+        xid-collision-debug.patch)
+sha256sums=('b114b6e9fb389bf3aa8a6d09576538f58dce740779653084046852fb4140ae7f'
+'d758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
 prepare() {
   cd "${srcdir}/gtk+-${pkgver}"
 
   patch -Np1 -i "${srcdir}/xid-collision-debug.patch"
-  patch -Np1 -i ../gtkrc-fix.patch
 }
 
 build() {
