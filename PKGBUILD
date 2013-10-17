@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=libcryptui
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Library for OpenPGP prompts"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('intltool' 'gobject-introspection')
 options=('!libtool')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('ceeba7ebdcda768d671e9df9332b18d4f25edd1f4d91e86a241c3c1f3ffc6332')
+sha256sums=('5e3e82e647ac4fb74ed46b4fffbf89e80198f856e1509f5edcd47dd2751a4be0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
