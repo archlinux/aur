@@ -2,7 +2,7 @@
 
 pkgname=python-efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.99.354.f5fbb90
+pkgver=1.7.99.358.641fe47
 pkgrel=1
 pkgdesc="Python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
@@ -31,4 +31,8 @@ package() {
   cd "$srcdir/$_pkgname"
   
   python setup.py install --root="$pkgdir"
+
+# install text files
+  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
 }
