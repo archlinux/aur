@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=seahorse-nautilus
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="PGP encryption and signing for nautilus"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('intltool')
 options=('!libtool')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d54c5fbc2bade03296d39999f8412708cfa87e82bda3c5af8e0b8ad86b2fadf3')
+sha256sums=('eacaf33bba920cf117641393a6eef483dbc075009349082e77d22f79afbd823a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
