@@ -1,0 +1,47 @@
+From 8aead336aca910e015faaa032da519518976ee72 Mon Sep 17 00:00:00 2001
+From: Christophe Vu-Brugier <cvubrugier@yahoo.fr>
+Date: Sat, 12 Oct 2013 18:37:22 +0200
+Subject: [PATCH] Use 2to3 in setup and mention that configshell-fb is Python 3
+ compatible
+
+Signed-off-by: Christophe Vu-Brugier <cvubrugier@yahoo.fr>
+---
+ README.md | 2 ++
+ setup.py  | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 3f59325..3da1424 100644
+--- a/README.md
++++ b/README.md
+@@ -6,6 +6,8 @@ A Python library for building configuration shells
+ configshell-fb is a Python library that provides a framework
+ for building simple but nice CLI-based applications.
+ 
++This runs with Python 2 and 2to3 is run by setup.py to run on Python 3.
++
+ configshell-fb development
+ --------------------------
+ configshell-fb is licensed under the Apache 2.0 license. Contributions are welcome.
+diff --git a/setup.py b/setup.py
+index e17c7a0..4743008 100755
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,7 @@ License for the specific language governing permissions and limitations
+ under the License.
+ '''
+ 
+-from distutils.core import setup
++from setuptools import setup
+ 
+ setup(
+     name = 'configshell-fb',
+@@ -27,4 +27,5 @@ setup(
+     maintainer_email = 'agrover@redhat.com',
+     url = 'http://github.com/agrover/configshell-fb',
+     packages = ['configshell'],
++    use_2to3 = True,
+     )
+-- 
+1.8.4.1
+
