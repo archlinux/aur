@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.11
-pkgver=3.11.5
+pkgver=3.11.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'criu-no-expert.patch'
         '3.11-haswell-intel_pstate.patch')
 md5sums=('fea363551ff45fbe4cb88497b863b261'
-         '628876a432c0d4090013b383abac20e4'
+         'c44ebb225fe9956b636b79ab6b61aa42'
          '77cf04eba30f625d46b5097b036ae138'
          '98d1e9862f555e5c56e95aae1f149789'
          'eb14dcfd80c00852ef81ded6e826826a'
