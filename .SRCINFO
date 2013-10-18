@@ -1,0 +1,20 @@
+pkgbase = rbdl-hg
+	pkgdesc = RBDL - Rigid Body Dynamics Library. Mercurial version.
+	pkgver = 574.10633e9d9e84
+	pkgrel = 1
+	url = http://rbdl.bitbucket.org
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = cmake
+	makedepends = eigen3
+	makedepends = mercurial
+	optdepends = lua51: Lua model add-on
+	optdepends = unittestpp: unit tests
+	provides = rbdl
+	conflicts = rbdl
+	source = rbdl::hg+https://bitbucket.org/rbdl/rbdl
+	sha1sums = SKIP
+
+pkgname = rbdl-hg
+
