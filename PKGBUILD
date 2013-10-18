@@ -9,7 +9,6 @@ pkgdesc="synchronizes the two copy/paste buffers mainly used by X applications"
 arch=('i686' 'x86_64')
 depends=('libxaw')
 source=(http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('ba4a6f632cb4815ae4e5c3027c24cfc5')
 url="http://www.nongnu.org/autocutsel/"
 install=autocutsel.install
 license=('GPL')
