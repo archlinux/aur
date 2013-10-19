@@ -1,0 +1,18 @@
+pkgbase = python2-ttystatus-git
+	pkgdesc = progress and status updates on terminals for Python
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://liw.fi/ttystatus/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python2
+	provides = python2-ttystatus
+	conflicts = python2-ttystatus
+	replaces = python2-ttystatus-bzr
+	source = python2-ttystatus-git::git://git.liw.fi/ttystatus
+	md5sums = SKIP
+
+pkgname = python2-ttystatus-git
+
