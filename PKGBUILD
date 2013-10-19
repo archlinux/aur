@@ -3,30 +3,30 @@
 # Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname=perl-autodie
-pkgver=2.21
+pkgver=2.22
 pkgrel=1
 pkgdesc='Replace functions with ones that succeed or die with lexical scope'
 arch=('any')
 url='http://search.cpan.org/dist/autodie'
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.8.8')
-source=(http://search.cpan.org/CPAN/authors/id/P/PJ/PJF/autodie-2.21.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/P/PJ/PJF/autodie-2.22.tar.gz)
 options=(!emptydirs)
-md5sums=('144b6f8335e98ecbb14267ebd59f69b1')
+md5sums=('2930d449fb94b0f8743cf689c7fa1752')
 
 build() {
-  cd "$srcdir/autodie-2.21"
+  cd "$srcdir/autodie-2.22"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
-  cd "$srcdir/autodie-2.21"
+  cd "$srcdir/autodie-2.22"
   make test
 }
 
 package() {
-  cd "$srcdir/autodie-2.21"
+  cd "$srcdir/autodie-2.22"
   make install DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
