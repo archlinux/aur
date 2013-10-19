@@ -1,0 +1,18 @@
+pkgbase = python2-tracing-git
+	pkgdesc = The Python library tracing helps with logging debug messages.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://liw.fi/tracing/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python2
+	provides = python2-tracing
+	conflicts = python2-tracing
+	replaces = python2-tracing-bzr
+	source = python2-tracing-git::git://git.liw.fi/python-tracing
+	md5sums = SKIP
+
+pkgname = python2-tracing-git
+
