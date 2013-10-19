@@ -9,8 +9,7 @@ pkgdesc='A small and fast Perl module for working with file paths'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.10.1' 'perl-pathtools>=3.40' 'perl-autodie>=2.14' 'perl-digest>=1.03' 'perl-digest-sha>=5.45')
-checkdepends=('perl>=5.13.4' 'perl-test-failwarnings')
+depends=('perl>=5.17.8')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
