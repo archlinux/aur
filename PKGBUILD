@@ -12,17 +12,19 @@ depends=('rxvt-unicode')
 replaces=('rxvt-unicode-256color-named-tabs')
 install=urxvt-tabbedex.install
 source=("https://github.com/stepb/urxvt-tabbedex/tarball/tabbedex-$pkgver"
-        '0001-make-urxvt-tabbedex-work-with-perl-5.18.patch')
+		'0001-make-urxvt-tabbedex-work-with-perl-5.18.patch')
 md5sums=('d8c165ae73ae4fa8008e9658c415846d'
-         '92d581a40779da3127c88fdc7d10257f')
+		 '92d581a40779da3127c88fdc7d10257f')
 
 prepare() {
-  cd ${srcdir}/stepb-urxvt-tabbedex-f9490d8
+	cd ${srcdir}/stepb-urxvt-tabbedex-f9490d8
 
-  patch tabbedex ../0001-make-urxvt-tabbedex-work-with-perl-5.18.patch
+	patch tabbedex ../0001-make-urxvt-tabbedex-work-with-perl-5.18.patch
 }
 
 package() {
-  install -Dm644 ${srcdir}/stepb-urxvt-tabbedex-f9490d8/tabbedex \
-      ${pkgdir}/usr/lib/urxvt/perl/tabbedex
+	install -Dm644 ${srcdir}/stepb-urxvt-tabbedex-f9490d8/tabbedex \
+				   ${pkgdir}/usr/lib/urxvt/perl/tabbedex
 }
+
+# vim: set ts=4 sw=4 noet:
