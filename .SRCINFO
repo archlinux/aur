@@ -1,0 +1,18 @@
+pkgbase = python2-cliapp-git
+	pkgdesc = Python framework for Unix-like command line programs
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://liw.fi/cliapp/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python2
+	provides = python2-cliapp
+	conflicts = python2-cliapp
+	replaces = python2-cliapp-bzr
+	source = python2-cliapp-git::git://git.liw.fi/cliapp
+	md5sums = SKIP
+
+pkgname = python2-cliapp-git
+
