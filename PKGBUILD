@@ -2,13 +2,13 @@
 
 pkgname=econnman-git
 _pkgname=${pkgname%-*}
-pkgver=1.21.5e344be
+pkgver=1.22.a9f57df
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('python2-efl-git' 'connman')
+depends=('python-efl-git' 'connman')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -20,18 +20,12 @@ pkgver() {
 
   local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
 
-  echo _ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-# Run with python2
-  sed -i 's:/usr/bin/python$:&2:' "$srcdir/$_pkgname/econnman-bin.in"
+  echo $_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
   cd "$srcdir/$_pkgname"
 
-  PYTHON=/usr/bin/python2 \
   ./autogen.sh \
     --prefix=/usr
 
