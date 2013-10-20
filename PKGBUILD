@@ -5,7 +5,7 @@ _ver=1.0.1e
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=3
+pkgrel=4
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -25,6 +25,17 @@ md5sums=('66bf6f10f060d561929de96f9dfe5b8c'
          '3bf51be3a1bbd262be46dc619f92aa90'
          '88d3bef4bbdc640b0412315d8d347bdf')
 
+prepare() {
+	cd $srcdir/$pkgname-$_ver
+
+	# remove rpath: http://bugs.archlinux.org/task/14367
+	patch -p0 -i $srcdir/no-rpath.patch
+	# set ca dir to /etc/ssl by default
+	patch -p0 -i $srcdir/ca-dir.patch
+
+	patch -p1 -i $srcdir/openssl-1.0.1e-fix_pod_syntax-1.patch
+}
+
 build() {
 	cd $srcdir/$pkgname-$_ver
 
@@ -35,13 +46,6 @@ build() {
 		openssltarget='linux-elf'
 		optflags=''
 	fi
-
-	# remove rpath: http://bugs.archlinux.org/task/14367
-	patch -p0 -i $srcdir/no-rpath.patch
-	# set ca dir to /etc/ssl by default
-	patch -p0 -i $srcdir/ca-dir.patch
-
-	patch -p1 -i $srcdir/openssl-1.0.1e-fix_pod_syntax-1.patch
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
