@@ -1,4 +1,4 @@
-# Maintainer: Johannes Löthberg <demizide@gmail.com>
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=sv_dvorak
 pkgver=1
