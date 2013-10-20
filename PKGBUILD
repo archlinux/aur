@@ -14,14 +14,14 @@ _buildtype="RelWithDebInfo"
 ##############################################################
 
 pkgname=jreen-git
-pkgver=v1.1.1.13.gee2cf37
+pkgver=v1.1.1.17.g9cb0ae2
 pkgrel=1
 epoch=1
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt. - development version"
 arch=('i686' 'x86_64')
 url="http://qutim.org/jreen"
 license=('GPL2')
-depends=('gsasl' 'qca-ossl' 'zlib')
+depends=('gsasl' 'qt4' 'speex')
 makedepends=('git' 'cmake')
 provides=('jreen')
 conflicts=('jreen')
@@ -40,7 +40,7 @@ pkgver() {
 build() {
   cd ${srcdir}/${pkgname}
 
-  cmake -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+  cmake -DJREEN_FORCE_QT4=on \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=${_buildtype}
   make
