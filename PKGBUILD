@@ -2,7 +2,7 @@
 _pkgbasename=v4l-utils
 pkgname=lib32-$_pkgbasename
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
 arch=('x86_64')
 url="http://freshmeat.net/projects/libv4l"
@@ -16,7 +16,6 @@ source=(http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2
         http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2.asc)
 sha256sums=('1de3882099e04e89e354675ee408b82c8ac8afd3ca6ab27ea321771901285f30'
             'SKIP')
-options=(!libtool)
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
