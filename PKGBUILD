@@ -1,4 +1,4 @@
-# Maintainer: Johannes Löthberg <demizide@gmail.com>
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: M Rawash <mrawash@gmail.com>
 
 pkgname=urxvt-tabbedex-git
