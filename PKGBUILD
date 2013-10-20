@@ -3,17 +3,17 @@
 
 pkgname=ruby-highline
 _gemname=highline
-pkgver=1.6.19
+pkgver=1.6.20
 pkgrel=1
 pkgdesc="A high-level text user interface toolkit for Ruby"
 arch=('any')
-url="http://highline.rubyforge.org/"
+url="http://rubygems.org/gems/highline"
 license=('GPL2' 'RUBY')
 depends=('ruby')
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-md5sums=('33c87ec12f3aa7b2c547fa40642796c2')
+sha256sums=('3b22f05b871e9e8963df2c67bfb40310dbc5410260419237309b962cf8ad673e')
 
 package() {
   cd "${srcdir}"
