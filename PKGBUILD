@@ -1,4 +1,4 @@
-# Maintainer: Johannes Löthberg <demizide@gmail.com>
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: StephenB <mail4stb at gmail dot com>
 
 pkgname=urxvt-tabbedex
