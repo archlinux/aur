@@ -19,13 +19,13 @@ source=('git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir"/pcmanfm
+	cd pcmanfm
 
 	printf "%s" "$(git describe --always --long | sed 's/-/-r/' | tr - .)"
 }
 
 build() {
-	cd "$srcdir"/pcmanfm
+	cd pcmanfm
 
 	msg "Starting make..."
 	./autogen.sh
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/pcmanfm
+	cd pcmanfm
 	make DESTDIR="$pkgdir" install
 }
 
