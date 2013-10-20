@@ -21,7 +21,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir"/pcmanfm
 
-	git describe --always --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+	printf "%s" "$(git describe --always --long | sed 's/-/-r/' | tr - .)"
 }
 
 build() {
