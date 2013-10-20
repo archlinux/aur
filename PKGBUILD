@@ -1,4 +1,4 @@
-# Maintainer: Johannes Löthberg <demizide@gmail.com>
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Henrik Skärnell <henrik(at)skarnell.se>
 
 pkgname=dvorak-se
