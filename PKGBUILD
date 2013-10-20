@@ -2,16 +2,16 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
-# _gitroot="git://git.zytor.com/syslinux/syslinux.git"
-_gitroot="git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
+_gitroot="http://git.zytor.com/syslinux/syslinux.git"
+# _gitroot="https://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
 _gitname="syslinux"
 _gitbranch="firmware"
 
 _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
-pkgver=6.02
-pkgrel=2
+pkgver=6.02.2.g4c3c856
+pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch"
 url="http://syslinux.zytor.com/"
@@ -22,7 +22,7 @@ backup=('boot/syslinux/syslinux.cfg')
 conflicts=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
 provides=("syslinux=${pkgver}" "syslinux-bios=${pkgver}" "syslinux-efi=${pkgver}" "syslinux-git=${pkgver}")
 
-makedepends=('git' 'python2' 'nasm' 'gnu-efi-libs')
+makedepends=('git' 'python2' 'nasm' 'ncurses' 'gnu-efi-libs')
 depends=('perl' 'glibc')
 optdepends=('perl-passwd-md5:  For md5pass'
             'perl-digest-sha1: For sha1pass'

@@ -1,7 +1,7 @@
 pkgbase = syslinux-firmware-git
 	pkgdesc = Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch
-	pkgver = 6.02
-	pkgrel = 2
+	pkgver = 6.02.2.g4c3c856
+	pkgrel = 1
 	url = http://syslinux.zytor.com/
 	install = syslinux.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = syslinux-firmware-git
 	makedepends = git
 	makedepends = python2
 	makedepends = nasm
+	makedepends = ncurses
 	makedepends = gnu-efi-libs
 	depends = perl
 	depends = glibc
@@ -20,10 +21,10 @@ pkgbase = syslinux-firmware-git
 	optdepends = util-linux: For isohybrid
 	optdepends = efibootmgr: For EFI support
 	optdepends = dosfstools: For EFI support
-	provides = syslinux=6.02
-	provides = syslinux-bios=6.02
-	provides = syslinux-efi=6.02
-	provides = syslinux-git=6.02
+	provides = syslinux=6.02.2.g4c3c856
+	provides = syslinux-bios=6.02.2.g4c3c856
+	provides = syslinux-efi=6.02.2.g4c3c856
+	provides = syslinux-git=6.02.2.g4c3c856
 	conflicts = syslinux
 	conflicts = syslinux-bios
 	conflicts = syslinux-efi
@@ -31,7 +32,7 @@ pkgbase = syslinux-firmware-git
 	options = !makeflags
 	options = !emptydirs
 	backup = boot/syslinux/syslinux.cfg
-	source = syslinux::git+git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git#branch=firmware
+	source = syslinux::git+http://git.zytor.com/syslinux/syslinux.git#branch=firmware
 	source = syslinux.cfg
 	source = syslinux-install_update
 	sha1sums = SKIP
