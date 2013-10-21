@@ -1,6 +1,6 @@
 pkgbase = evas_generic_loaders-git
 	pkgdesc = Evas external binary executable loaders - Development version
-	pkgver = 1.7.99.93.6fb0cfd
+	pkgver = 1.7.99.94.02cfe08
 	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = i686
@@ -19,9 +19,8 @@ pkgbase = evas_generic_loaders-git
 	optdepends = gstreamer0.10-bad-plugins: Video thumbnails
 	optdepends = gstreamer0.10-ugly-plugins: Video thumbnails
 	optdepends = gstreamer0.10-ffmpeg: Video thumbnails
-	provides = evas_generic_loaders=1.7.99.93.6fb0cfd
+	provides = evas_generic_loaders=1.7.99.94.02cfe08
 	conflicts = evas_generic_loaders
-	options = !libtool
 	options = debug
 	source = git://git.enlightenment.org/core/evas_generic_loaders.git
 	md5sums = SKIP

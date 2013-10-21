@@ -4,7 +4,7 @@
 
 pkgname=evas_generic_loaders-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.99.93.6fb0cfd
+pkgver=1.7.99.94.02cfe08
 pkgrel=2
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=('gstreamer0.10-base-plugins: Video thumbnails'
             'gstreamer0.10-ffmpeg: Video thumbnails')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=('!libtool' 'debug')
+options=('debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
 
