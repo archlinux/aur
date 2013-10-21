@@ -1,5 +1,5 @@
 post_install() {
-  cat << EOF
+	cat << EOF
 ==> Add the following lines to /usr/share/X11/xkb/rules/evdev.xml
 ==>  to be able to select the sv_dvorak layout from a GUI:
     <layout>
@@ -15,3 +15,5 @@ post_install() {
     </layout>
 EOF
 }
+
+# vim: set ts=4 sw=4 noet:
