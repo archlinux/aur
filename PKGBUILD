@@ -27,7 +27,7 @@ provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$p
           "$_pkgname=$pkgver" 'efl_x11')
 conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
            "$_pkgname" 'efl_x11')
-options=('!libtool' 'debug')
+options=('debug')
 install="$_pkgname.install"
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 md5sums=('SKIP')
