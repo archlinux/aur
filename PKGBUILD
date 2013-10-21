@@ -3,7 +3,7 @@
 
 pkgname=eweather-git
 _pkgname=${pkgname%-*}
-pkgver=0.2.0.r61.e876635
+pkgver=0.2.0.r67.8ab0a2e
 pkgrel=1
 pkgdesc="Enlightenment module: Current weather and forcast gadget"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ depends=('libeweather-git' 'enlightenment17')
 makedepends=('git')
 conflicts=("$_pkgname-svn")
 provides=("$_pkgname-svn")
-options=('!libtool')
 source=("git://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
 md5sums=('SKIP')
 
