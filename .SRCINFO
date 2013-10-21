@@ -1,6 +1,6 @@
 pkgbase = qelly
 	pkgdesc = Qelly is a Qt port of Nally
-	pkgver = 1.0a2
+	pkgver = 1.0a3
 	pkgrel = 1
 	url = https://github.com/uranusjr/Qelly
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = qelly
 	depends = libqxt
 	provides = qelly
 	conflicts = qelly
-	source = https://github.com/uranusjr/Qelly/archive/v1.0a2.tar.gz
-	md5sums = 0a575a62889a3aec2d356932a92ced29
+	source = https://github.com/uranusjr/Qelly/archive/v1.0a3.tar.gz
+	md5sums = 3a50df49d8e7cb5ff075145aeeab5214
 
 pkgname = qelly
 

@@ -2,7 +2,7 @@
 
 pkgname=qelly
 _pkgname=Qelly
-pkgver=1.0a2
+pkgver=1.0a3
 pkgrel=1
 pkgdesc="Qelly is a Qt port of Nally"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ makedepends=()
 conflicts=('qelly')
 provides=('qelly')
 source=("https://github.com/uranusjr/Qelly/archive/v${pkgver}.tar.gz")
-md5sums=('0a575a62889a3aec2d356932a92ced29')
+md5sums=('3a50df49d8e7cb5ff075145aeeab5214')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
