@@ -3,7 +3,7 @@
 
 pkgname=libeweather-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.0.76.22c5c66
+pkgver=0.2.0.77.020f66c
 pkgrel=1
 pkgdesc="EFL based library for weather information"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ depends=('edje')
 makedepends=('git')
 provides=("$_pkgname-svn")
 conflicts=("$_pkgname-svn")
-options=('!libtool')
 source=("git://git.enlightenment.org/libs/$_pkgname.git")
 md5sums=('SKIP')
 
