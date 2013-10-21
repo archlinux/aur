@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('elementary')
-options=('!libtool' '!emptydirs')
+options=('!emptydirs')
 source=("http://download.enlightenment.org/releases/$pkgname-$pkgver.tar.bz2")
 md5sums=('ed8aabe52b71e54db6f9104725e61645')
 

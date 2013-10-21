@@ -7,7 +7,6 @@ pkgbase = etrophy
 	arch = x86_64
 	license = BSD
 	depends = elementary
-	options = !libtool
 	options = !emptydirs
 	source = http://download.enlightenment.org/releases/etrophy-0.5.1.tar.bz2
 	md5sums = ed8aabe52b71e54db6f9104725e61645
