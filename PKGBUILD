@@ -11,7 +11,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(lib32-libvorbis lib32-libltdl lib32-alsa-lib lib32-tdb $_pkgbasename)
 makedepends=(gtk-doc lib32-libpulse lib32-gtk2 git gcc-multilib libtool-multilib)
-options=(!emptydirs)
+options=(!emptydirs libtool)
 url=http://0pointer.de/lennart/projects/libcanberra
 source=("git://git.0pointer.de/libcanberra.git#commit=c0620e4")
 sha256sums=('SKIP')
@@ -56,7 +56,8 @@ package_lib32-libcanberra() {
     mv "$pkgdir/$_plugindir"/libcanberra-$_p.* ../$_p-plugin
   done
 
-  rm -r "${pkgdir}"/usr/{include,share,bin,lib32/gnome-settings-daemon-3.0}
+  rm -r "$pkgdir"/usr/{include,share,bin,lib32/gnome-settings-daemon-3.0}
+  rm "$pkgdir"/usr/lib32/*.la
 }
 
 package_lib32-libcanberra-pulse() {
