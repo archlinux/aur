@@ -5,7 +5,7 @@
 
 pkgname=entrance-git
 _pkgname=${pkgname%-*}
-pkgver=0.0.4.40.6da13be
+pkgver=0.0.5.r44.91415db
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -27,7 +27,7 @@ pkgver() {
 
   local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
 
-  echo $_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
