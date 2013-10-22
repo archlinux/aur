@@ -1,6 +1,6 @@
 pkgbase = python-isort
 	pkgdesc = isort your python imports for you so you don't have to.
-	pkgver = 2.1.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/timothycrosley/isort
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-isort
 	depends = python
 	depends = python-pies
 	depends = python-natsort
-	source = https://github.com/timothycrosley/isort/archive/2.1.0.tar.gz
-	sha1sums = 98b3aa02c6aa4baec5955f8a918ce4e3e30e01d5
+	source = https://github.com/timothycrosley/isort/archive/2.2.1.tar.gz
+	sha1sums = d59f51db4502f78b50ec263a518b7923605a4146
 
 pkgname = python-isort
 
