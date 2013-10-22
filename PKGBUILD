@@ -3,9 +3,9 @@
 
 pkgname=gtkspell
 pkgver=2.0.16
-pkgrel=2
+pkgrel=3
 url="http://gtkspell.sourceforge.net/"
-pkgdesc="GtkSpell provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
+pkgdesc="Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'enchant')
@@ -16,7 +16,7 @@ md5sums=('f75dcc9338f182c571b321d37c606a94')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-static
   make
 }
 
