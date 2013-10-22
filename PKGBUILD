@@ -1,4 +1,4 @@
-# Maintainer: jsteel <jsteel@aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel@aur.archlinux.org>
 # Contributor: Peter Simons <simons@cryp.to>
 
 pkgname=shhmsg
@@ -8,6 +8,7 @@ pkgdesc="Library for displaying messages"
 arch=('i686' 'x86_64')
 url="http://shh.thathost.com/pub-unix"
 license=('GPL')
+options=('staticlibs')
 source=($url/files/$pkgname-$pkgver.tar.gz)
 md5sums=('de300150851786eb19cb9b9ad234d7a2')
 
