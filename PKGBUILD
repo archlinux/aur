@@ -1,4 +1,4 @@
-# Maintainer: jsteel <jsteel@aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel@aur.archlinux.org>
 # Contributor: Peter Simons <simons@cryp.to>
 
 pkgname=shhopt
@@ -8,6 +8,7 @@ pkgdesc="Library for parsing command line options"
 arch=('i686' 'x86_64')
 url="http://shh.thathost.com/pub-unix"
 license=('GPL')
+options=('staticlibs')
 source=($url/files/$pkgname-$pkgver.tar.gz)
 md5sums=('caf24206354296e8a48771aea1f47fbd')
 
