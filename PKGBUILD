@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="efitools"
 pkgname="${_pkgname}-git"
 
-pkgver=1.4.1.7.g272314e
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
