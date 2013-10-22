@@ -36,5 +36,5 @@ package() {
     chmod +x installdb
     ./installdb "${pkgdir}/opt/DialogBlocks"
     sed -i "s|$pkgdir||g" $pkgdir/usr/bin/dialogblocks
-    sed -i "s|$pkgdir||g" $pkgdir/usr/bin/uninstalldialogblocks-$pkgver
+    rm $pkgdir/usr/bin/uninstalldialogblocks-$pkgver
 }
