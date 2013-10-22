@@ -1,0 +1,22 @@
+diff -up src/lldpd/src/daemon/lldpd.service.in.orig src/lldpd/src/daemon/lldpd.service.in
+--- src/lldpd/src/daemon/lldpd.service.in.orig	2013-10-22 03:26:35.000000000 -0600
++++ src/lldpd/src/daemon/lldpd.service.in	2013-10-22 03:32:58.000000000 -0600
+@@ -1,12 +1,16 @@
+ [Unit]
+ Description=LLDP daemon
+ Documentation=man:lldpd(8)
++Requires=snmpd.service
++After=snmpd.service network.target
++RequiresMountsFor=/run
+ 
+ [Service]
+ Type=notify
+ NotifyAccess=main
+-EnvironmentFile=-/etc/default/lldpd
+-ExecStart=@prefix@/sbin/lldpd $DAEMON_ARGS
++ExecStart=@sbindir@/lldpd -x -c -f -s -e -l -M 2
++ExecStartPre=/bin/mkdir -p @PRIVSEP_CHROOT@
++ExecStartPre=/bin/chown @PRIVSEP_USER@.@PRIVSEP_GROUP@ @PRIVSEP_CHROOT@
+ ExecStartPre=/bin/mkdir -p @PRIVSEP_CHROOT@/etc
+ ExecStartPre=/bin/cp /etc/localtime @PRIVSEP_CHROOT@/etc/localtime
+ Restart=on-failure

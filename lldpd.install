@@ -1,30 +1,18 @@
 post_install(){
-  # new password and equal group allocated in system range
-  usr/bin/getent passwd lldpd >/dev/null 2>&1 || \
-  usr/bin/useradd  -K SYS_UID_MIN=100 -K SYS_UID_MAX=499 \
-                   -K SYS_GID_MIN=100 -K SYS_GID_MAX=499 \
-                   -K USERGROUPS_ENAB=yes -r -U -d /run/lldpd -s /bin/false lldpd
+  groupadd -g 142 _lldpd &>/dev/null
+  useradd -u 142 -g _lldpd -d /var/run/lldpd -s /bin/false _lldpd &>/dev/null
 }
 
 post_upgrade(){
-  local changed
-  # old user name and group was _lldpd
-  usr/bin/getent passwd _lldpd >/dev/null 2>&1 && usr/bin/userdel  _lldpd
-  usr/bin/getent group  _lldpd >/dev/null 2>&1 && usr/bin/groupdel _lldpd
-  # get rid of old 142 uid and gid
-  usr/bin/getent passwd 142 >/dev/null 2>&1 && usr/bin/userdel  lldpd
-  usr/bin/getent group  142 >/dev/null 2>&1 && usr/bin/groupdel lldpd
-  # new password and equal group allocated in system range
-  usr/bin/getent passwd lldpd >/dev/null 2>&1 || {
-    usr/bin/useradd  -K SYS_UID_MIN=100 -K SYS_UID_MAX=499 \
-                     -K SYS_GID_MIN=100 -K SYS_GID_MAX=499 \
-                     -K USERGROUPS_ENAB=yes -r -U -d /run/lldpd -s /bin/false lldpd
-    echo "==> lldpd uid/gid could have changed"
-    echo "==> consider $> systemctl try-restart lldpd.service"
-  }
+  getent group _lldpd >/dev/null 2>&1 || groupadd -g 142 lldpd &>/dev/null
+  getent passwd _lldpd >/dev/null 2>&1 || useradd -u 142 -g lldpd -d /var/run/_lldpd -s /bin/false _lldpd &>/dev/null
 }
 
 post_remove(){
-  usr/bin/getent passwd lldpd >/dev/null 2>&1 && usr/bin/userdel  lldpd
-  usr/bin/getent group  lldpd >/dev/null 2>&1 && usr/bin/groupdel lldpd
+  if getent passwd _lldpd >/dev/null 2>&1; then
+    userdel _lldpd
+  fi
+  if getent group _lldpd >/dev/null 2>&1; then
+    groupdel _lldpd
+  fi
 }
