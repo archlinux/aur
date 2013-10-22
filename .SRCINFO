@@ -1,0 +1,14 @@
+pkgbase = dialogblocks
+	pkgdesc = Cross-plattform GUI programming assistant - wxwidget
+	pkgver = 5.03
+	pkgrel = 1
+	url = http://www.anthemion.co.uk/dialogblocks/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = libpng12
+	source = http://www.anthemion.co.uk/dialogblocks/DialogBlocks-5.03-.tar.gz
+	sha256sums = 7db332d9314499ba2543b8b066f04789fc3354b44c249b4cf7a55e36e2b17197
+
+pkgname = dialogblocks
+
