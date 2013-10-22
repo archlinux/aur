@@ -1,10 +1,11 @@
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: StephenB <mail4stb at gmail dot com>
 # Contributor: M Rawash <mrawash@gmail.com>
 
 pkgname=urxvt-tabbedex-git
 pkgver=0.4.r9.g49c1514
-pkgrel=1
-pkgdesc="Tabbed plugin for rxvt-unicode with many enhancements, git version with perl 5.18 patch."
+pkgrel=2
+pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
 arch=("any")
 url='http://github.com/stepb/urxvt-tabbedex'
 license=("GPL")
@@ -13,10 +14,12 @@ makedepends=('git')
 provides=('urxvt-tabbedex')
 conflicts=('urxvt-tabbedex')
 install=urxvt-tabbedex-git.install
-source=('git://github.com/stepb/urxvt-tabbedex.git'
-		'0001-make-urxvt-tabbedex-work-with-perl-5.18.patch')
+source=('git+https://github.com/stepb/urxvt-tabbedex.git'
+		'0001-make-urxvt-tabbedex-work-with-perl-5.18.patch'
+		'urxvt-tabbedex-git.install')
 md5sums=('SKIP'
-		 '92d581a40779da3127c88fdc7d10257f')
+		 '92d581a40779da3127c88fdc7d10257f'
+		 '2b72e16f346240c14bbe27ca23051b7a')
 
 pkgver() {
 	cd urxvt-tabbedex
@@ -29,7 +32,7 @@ prepare() {
 }
 
 package() {
-	install -Dm644 "$srcdir"/urxvt-tabbedex/tabbedex "$pkgdir"/usr/lib/urxvt/perl/tabbedex
+	install -Dm644 urxvt-tabbedex/tabbedex "$pkgdir"/usr/lib/urxvt/perl/tabbedex
 }
 
 # vim: set ts=4 sw=4 noet:
