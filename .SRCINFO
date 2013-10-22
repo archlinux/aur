@@ -3,7 +3,7 @@
 pkgbase = pcmanfm-git
 	pkgdesc = An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing
 	pkgver = 1.1.2.r36.g9b9dd4c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pcmanfm.sourceforge.net/
 	install = pcmanfm.install
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = pcmanfm-git
 	optdepends = gnome-menus: applications menu and "Open with..." dialog
 	provides = pcmanfm
 	conflicts = pcmanfm
-	source = git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm
+	source = git+https://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm
 	md5sums = SKIP
 
 pkgname = pcmanfm-git
