@@ -3,7 +3,7 @@
 pkgname=dialogblocks
 _pkgname=DialogBlocks
 pkgver=5.03
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-plattform GUI programming assistant - wxwidget'
 arch=('i686' 'x86_64')
 url='http://www.anthemion.co.uk/dialogblocks/'
@@ -35,9 +35,6 @@ package() {
      # Install
     chmod +x installdb
     ./installdb "${pkgdir}/opt/DialogBlocks"
-    echo $pkgdir
     sed -i "s|$pkgdir||g" $pkgdir/usr/bin/dialogblocks
-    cat $pkgdir/usr/bin/dialogblocks
     sed -i "s|$pkgdir||g" $pkgdir/usr/bin/uninstalldialogblocks-$pkgver
-    cat $pkgdir/usr/bin/uninstalldialogblocks-$pkgver
 }
