@@ -1,22 +1,22 @@
 diff -up src/lldpd/src/daemon/lldpd.service.in.orig src/lldpd/src/daemon/lldpd.service.in
---- src/lldpd/src/daemon/lldpd.service.in.orig	2013-10-22 03:26:35.000000000 -0600
-+++ src/lldpd/src/daemon/lldpd.service.in	2013-10-22 03:32:58.000000000 -0600
-@@ -1,12 +1,16 @@
+--- src/lldpd/src/daemon/lldpd.service.in.orig	2013-10-22 14:59:11.000000000 -0600
++++ src/lldpd/src/daemon/lldpd.service.in	2013-10-22 15:23:40.000000000 -0600
+@@ -1,15 +1,14 @@
  [Unit]
  Description=LLDP daemon
  Documentation=man:lldpd(8)
+-After=network.target
 +Requires=snmpd.service
 +After=snmpd.service network.target
-+RequiresMountsFor=/run
+ RequiresMountsFor=@PRIVSEP_CHROOT@
  
  [Service]
  Type=notify
  NotifyAccess=main
 -EnvironmentFile=-/etc/default/lldpd
--ExecStart=@prefix@/sbin/lldpd $DAEMON_ARGS
+-EnvironmentFile=-/etc/sysconfig/lldpd
+-ExecStart=@prefix@/sbin/lldpd $DAEMON_ARGS $LLDPD_OPTIONS
 +ExecStart=@sbindir@/lldpd -x -c -f -s -e -l -M 2
-+ExecStartPre=/bin/mkdir -p @PRIVSEP_CHROOT@
-+ExecStartPre=/bin/chown @PRIVSEP_USER@.@PRIVSEP_GROUP@ @PRIVSEP_CHROOT@
  ExecStartPre=/bin/mkdir -p @PRIVSEP_CHROOT@/etc
  ExecStartPre=/bin/cp /etc/localtime @PRIVSEP_CHROOT@/etc/localtime
  Restart=on-failure

@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=lldpd-git
-pkgver=0.7.6.47
+pkgver=0.7.6.50
 pkgrel=1
 pkgdesc="LLDP daemon for GNU/Linux implementing both reception and sending"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("git://github.com/vincentbernat/lldpd.git"
 	'lldpd.install'
 	'LICENSE')
 md5sums=('SKIP'
-         'ceb8e6f1ce0085d0b9f39cfc8d8f55fe'
+         'bb01e71d16a33cf028d0a0ce4ccc6a86'
          '0b06475bc2048aa29fb1d8c660446f87'
          '8ae98663bac55afe5d989919d296f28a')
 _gitname=lldpd
