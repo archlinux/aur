@@ -9,7 +9,6 @@ pkgbase = grub
 	arch = i686
 	license = GPL3
 	makedepends = git
-	makedepends = git
 	makedepends = xz
 	makedepends = freetype2
 	makedepends = bdf-unifont
