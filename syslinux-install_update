@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # Syslinux Installer / Updater Script (for BIOS only)
-# Copyright (C) 2013  Matthew Gyurgyik <pyther@pyther.net>
+# Copyright (C) 2011-2013  Matthew Gyurgyik <pyther@pyther.net>
+# Copyright (C) 2013  Keshav Padram Amburay <(the) (ddoott) (ridikulus) (ddoott) (rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,19 +19,22 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 #-----------------
+# ChangeLog:
+# 2013-10-23 : Keshav Padram Amburay : Updated script to work with Syslinux 6.02 Arch Linux pkg
+#-----------------
 # Exit Codes:
 #   1 - get_boot_device or other function failed
 #   2 - install/update failed
 #   3 - set_active failed
 #   4 - install_mbr failed
-#
+#-----------------
+
 shopt -s nullglob
 
-bios_libpath="/usr/lib/syslinux/bios/"
-bios_bootpath="/boot/syslinux/"
+bios_libpath="/usr/lib/syslinux/bios"
+bios_bootpath="/boot/syslinux"
 EXTLINUX="/usr/bin/extlinux"
 
-bios_core_modules=(config.c32 chain.c32 ldlinux.c32 libcom32.c32 libgpl.c32 liblua.c32 libmenu.c32 libutil.c32 linux.c32 menu.c32 vesamenu.c32)
 bios_autoupdate_file="/boot/syslinux/SYSLINUX_AUTOUPDATE"
 pciids_file="/usr/share/hwdata/pci.ids"
 
@@ -294,34 +298,22 @@ install_mbr() {
 }
 
 install_modules() {
-    # Copy all com32 files to /boot
-    for file in "${bios_libpath}"/*.c32; do
-        file=${file##*/}
-        rm "$bios_bootpath/$file" &> /dev/null
-        if [[ "$boot" = root ]]; then
-            # Symlink files if /boot resides on the same partition as root
-            ln -sf "${bios_libpath#$CHROOT}/$file" "$bios_bootpath/$file" &> /dev/null
-        elif [[ "$boot" = boot ]]; then
-            cp "$bios_libpath/$file" "$bios_bootpath/$file"
-        fi
-    done
+    # Copy all syslinux *.c32 modules to /boot
+    rm "$bios_bootpath"/*.c32 &> /dev/null
+    cp "$bios_libpath"/*.c32 "$bios_bootpath"/ &> /dev/null
 
     # Copy / Symlink pci.ids if pci.ids exists on the FS
-    if [[ -f $pciids_file ]]; then
+    if [[ -f "$pciids_file" ]]; then
         rm "$bios_bootpath/pci.ids" &> /dev/null
-        if [[ "$boot" = root ]]; then
-            ln -sf "$pciids_file" "$bios_bootpath/pci.ids" &> /dev/null
-        elif [[ "$boot" = boot ]]; then
-            cp "$pciids_file" "$bios_bootpath/pci.ids" &> /dev/null
-        fi
+        cp "$pciids_file" "$bios_bootpath/pci.ids" &> /dev/null
     fi
 }
 
 _install() {
     install_modules
 
-    if device_is_raid "$bootpart"; then
-        echo "Detected RAID on /boot"
+    if device_is_raid "$bootpart" ; then
+        echo "Detected RAID on /boot - installing Syslinux with --raid"
         "$EXTLINUX" --install "$bios_bootpath" --raid &> /dev/null
     else
         "$EXTLINUX" --install "$bios_bootpath" &> /dev/null
@@ -340,8 +332,8 @@ _install() {
 update() {
     install_modules
 
-    if device_is_raid $bootpart; then
-        echo "Detected RAID on /boot"
+    if device_is_raid "$bootpart" ; then
+        echo "Detected RAID on /boot - installing Syslinux with --raid"
         "$EXTLINUX" --update "$bios_bootpath" --raid &> /dev/null
     else
         "$EXTLINUX" --update "$bios_bootpath" &> /dev/null
@@ -404,15 +396,15 @@ if [[ $USAGE ]]; then
     exit 0
 fi
 
-# Make sure only root can run our script
-if (( $(id -u) != 0 )); then
-    echo "This script must be run as root" 1>&2
-    exit 1
-fi
-
 # Display Usage Information if both Install and Update are passed
 if [[ $INSTALL && $UPDATE ]]; then
     usage
+    exit 1
+fi
+
+# Make sure only root can run our script
+if (( $(id -u) != 0 )); then
+    echo "This script must be run as root" 1>&2
     exit 1
 fi
 
