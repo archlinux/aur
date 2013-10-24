@@ -1,6 +1,6 @@
 pkgbase = kde-colors-solarized-git
 	pkgdesc = Solarized Dark and Solarized Light themes for Konsole, Kate and Kcolorchooser.
-	pkgver = 20130405
+	pkgver = 20131024
 	pkgrel = 1
 	url = https://github.com/hayalci/kde-colors-solarized
 	arch = any

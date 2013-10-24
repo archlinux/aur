@@ -1,7 +1,7 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 pkgname=kde-colors-solarized-git
-pkgver=20130405
+pkgver=20131024
 pkgrel=1
 pkgdesc="Solarized Dark and Solarized Light themes for Konsole, Kate and Kcolorchooser."
 arch=('any')
@@ -30,9 +30,9 @@ package() {
   install -m 644 ${srcdir}/${pkgname}/Solarized_Colors ${pkgdir}/${prefix}/config/colors/Solarized\ Colors
 
   # Konsole (yakuake, etc.) color scheme
-  mkdir -p ${pkgdir}/${prefix}/kde4/apps/konsole/
-  install -m 644 ${srcdir}/${pkgname}/"Solarized Dark.colorscheme"  ${pkgdir}/${prefix}/kde4/apps/konsole
-  install -m 644 ${srcdir}/${pkgname}/"Solarized Light.colorscheme" ${pkgdir}/${prefix}/kde4/apps/konsole
+  mkdir -p ${pkgdir}/${prefix}/apps/konsole/
+  install -m 644 ${srcdir}/${pkgname}/"Solarized Dark.colorscheme"  ${pkgdir}/${prefix}/apps/konsole
+  install -m 644 ${srcdir}/${pkgname}/"Solarized Light.colorscheme" ${pkgdir}/${prefix}/apps/konsole
 
   # Kate Color Schema and syntax highligting / merged upstream
   # mkdir -p ${pkgdir}/${prefix}/config/
