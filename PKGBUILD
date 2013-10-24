@@ -15,7 +15,7 @@ _buildtype="Release"
 
 pkgname=jreen
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt."
 arch=('i686' 'x86_64')
 url="http://qutim.org/jreen"
@@ -24,8 +24,10 @@ depends=('libidn' 'qca-ossl' 'zlib')
 makedepends=('cmake')
 provides=('jreen')
 conflicts=('jreen-git')
-source=("${pkgname}-${pkgver}.zip::http://github.com/euroelessar/${pkgname}/archive/v${pkgver}.zip")
-md5sums=('07e64faaae4be7cf2c99eac07f80fb8f')
+source=("${pkgname}-${pkgver}.zip::http://github.com/euroelessar/${pkgname}/archive/v${pkgver}.zip"
+	'jreenMacros.cmake.patch')
+md5sums=('07e64faaae4be7cf2c99eac07f80fb8f'
+         '397e75be409ea7e8bddff88b6f977f5f')
 
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
@@ -35,6 +37,9 @@ fi
 prepare() {
   if [[ -e ${srcdir}/${pkgname}-${pkgver}-build ]]; then rm -rf ${srcdir}/${pkgname}-${pkgver}-build; fi
   mkdir ${srcdir}/${pkgname}-${pkgver}-build
+
+  cd ${srcdir}/${pkgname}-${pkgver}/cmake
+  patch -i ${srcdir}/jreenMacros.cmake.patch
 }
 
 build() {
