@@ -2,7 +2,7 @@
 
 pkgname=enventor-git
 _pkgname=${pkgname%-*}
-pkgver=0.2.0.247.9e4fa1a
+pkgver=0.2.0.248.817dd1b
 pkgrel=1
 pkgdesc="Editor for EDC files (edje/efl) - Development version"
 arch=('i686' 'x86_64')
