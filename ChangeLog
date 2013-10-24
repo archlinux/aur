@@ -1,3 +1,14 @@
+2013-10-24 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.3.0_beta4-1
+	Version bump.
+
+	Upstream changelog:
+	- Updated for 1.7.1.
+	- Fixed invalid cast exception with player skins.
+	- Fixed rendering issues with custom clock/compass textures.
+	- Fixed rendering issues with custom enchantments in the GUI.
+
 2013-10-15 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.3.0_beta3-1
