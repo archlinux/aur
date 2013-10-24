@@ -1,23 +1,26 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hponcfg
-pkgver=4.0.0_0
-pkgrel=2
+pkgver=4.2.0_0
+pkgrel=1
 pkgdesc="RILOE II/iLo online configuration utility"
 arch=(i686 x86_64)
 url="http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack"
-depends=(hp-health libxslt)
+depends=(libxslt)
 groups=(hpproliant)
 license=("CUSTOM")
 
-[ $CARCH = "x86_64" ] && depends=(${depends[@]} lib32-glibc)
+[ $CARCH = "i686" ] && pkgarch=i386 || pkgarch=$CARCH
 
-source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.noarch.rpm)
+source=(http://downloads.linux.hp.com/SDR/downloads/ServicePackforProLiant/RHEL/6.4/$CARCH/current/$pkgname-${pkgver//_/-}.$pkgarch.rpm)
+
+sha256sums=('3cdd67cba1545617db0cd39fb9a7c15b8f72e4aeaac16fc0a3c0624f8f723f6d')
+if [ $CARCH = "i686" ]; then
+	sha256sums=('fcac62f2bf74fc1fea531a0e6280c15a590cd80c15aa829246d54a54080a3997')
+fi
 
 package() {
 	cd "$srcdir"
-	mv usr/{sbin,bin}
 	cp -a usr "$pkgdir"
+	cp -a sbin "$pkgdir/usr/bin"
 }
-
-sha256sums=('6c72585ab42c232651c090b5a42372e2f8a756778449b9a726a6560070aa95f1')
