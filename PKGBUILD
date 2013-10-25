@@ -5,13 +5,12 @@
 
 pkgname=faac
 pkgver=1.28
-pkgrel=4
+pkgrel=5
 pkgdesc="An AAC audio encoder"
 arch=('i686' 'x86_64')
 url="http://www.audiocoding.com/"
 license=('GPL' 'custom')
 depends=('libmp4v2' 'glibc')
-options=('!libtool')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'altivec.patch' 'mp4v2-1.9.patch' 'mp4v2-2.0.0.patch')
 
