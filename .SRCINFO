@@ -1,6 +1,6 @@
 pkgbase = unix-runescape-client
 	pkgdesc = RuneScape client for Linux and Unix
-	pkgver = 4.1.4
+	pkgver = 4.1.7
 	pkgrel = 1
 	url = http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html
 	install = unix-runescape-client.install
@@ -9,15 +9,16 @@ pkgbase = unix-runescape-client
 	makedepends = git
 	depends = java-runtime
 	depends = perl
-	depends = xterm
-	depends = p7zip
 	depends = perl-wx
 	depends = wget
+	depends = p7zip
 	optdepends = wine: for "compatibility mode" fix
 	optdepends = alsa-oss: for "force alsa" fix
 	optdepends = pulseaudio: for "force pulseaudio" fix
+	optdepends = perl-config-inifiles: instead of builtin
+	optdepends = perl-io-stringy: instead of builtin
 	conflicts = runescape-client-bin
-	source = git://github.com/HikariKnight/rsu-client.git#tag=v4.1.4
+	source = git://github.com/HikariKnight/rsu-client.git#tag=v4.1.7
 	md5sums = SKIP
 
 pkgname = unix-runescape-client
