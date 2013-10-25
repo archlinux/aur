@@ -2,7 +2,7 @@
 
 pkgname=minecraft
 pkgver=latest
-pkgrel=20
+pkgrel=21
 pkgdesc="Minecraft is a game about placing blocks while running from skeletons. Or something like that..."
 arch=(any)
 license=('custom')
@@ -11,10 +11,10 @@ depends=('java-runtime' 'xorg-server-utils' 'openal')
 noextract=('minecraft.jar')
 source=(minecraft http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
          minecraft.desktop minecraft.png minecraft.install LICENSE)
-md5sums=('e528cb2b833cac204bdefd2a46687fe3'
+md5sums=('9652c0548bc2aec58039588fcec1e4e4'
          '85273e24404cc6865805f951487b8a1e'
          'dad9b69540dac246ced70b98f07e8e08'
-         'b2c25797bf513a5ee215dd90b4b828e3'
+         'dfecf76f9db4497399f4b7c171150c89'
          '30f8fd3deb598757bb21bac3c1c55110'
          'b82eddf7100b63e2fc52e53028327589')
 install='minecraft.install'
