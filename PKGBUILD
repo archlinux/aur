@@ -1,34 +1,28 @@
 # Maintainer: carstene1ns <arch carsten-teibes de>
 
 pkgname=easyrpg-player
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="EasyRPG Player aims to be a free, RPG Maker 2000/2003 interpreter."
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
 license=('GPL3')
 conflicts=('easyrpg-player-git')
-makedepends=('cmake>=2.8' 'boost')
-depends=('sdl_mixer' 'freetype2' 'pixman' 'libpng' 'libjpeg' 'boost-libs' 'openal' 'libsndfile' 'lua51' 'expat')
+makedepends=('cmake>=2.8' 'boost' 'git')
+depends=('sdl_mixer' 'freetype2' 'pixman' 'libpng' 'libjpeg' 'boost-libs' 'openal' 'libsndfile' 'lua' 'expat')
 install="$pkgname.install"
-source=("https://easy-rpg.org/downloads/player/EasyRPG_Player-$pkgver-src.zip"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/EasyRPG/Player/archive/$pkgver.tar.gz"
         "$pkgname.install")
-md5sums=('e6b0e42d98b993a0119a92dd0593acda'
-         '8ceae8f6dfa0eeff7e8029e6ee792386')
-sha256sums=('db0f3c910c7aaf881e5d472becb666ed22281ae3ff1220c4191f806f5afa38c9'
-            '187f2c695b2ad0471cea3679956ab77e1c191b082182ee6d776447990ef1edc1')
+md5sums=('51e1476fdae1b05917274d5fd3556561'
+         'bc45142571f7077981a2da6cd2a21bd1')
+sha256sums=('c376d1074f9a2fd7a732b0d3d37f9f60a29e0bdb013e26b60fb9c359ac74ffed'
+            '80ead4ae70a3192e3e16b9ad36cdd40b0a6271e1a082e574687ccbadd62404ca')
 
 prepare () {
   cd "$srcdir"
 
   # remove old build
   rm -rf build
-
-  cd "$srcdir/Player-0.1.1/src/"
-
-  # patch to fix build with newer libpng
-  grep -v -q cstring image_png.cpp
-  [ $? -eq 0 ] && sed -i 's|#include <cstdlib>|#include <cstdlib>\n#include <cstring>|' image_png.cpp
 }
 
 build () {
@@ -37,8 +31,7 @@ build () {
   mkdir build
   cd build
 
-  # work around lua linking problems
-  cmake ../Player-0.1.1/builds/cmake/ -DLUA_INCLUDE_DIR="/usr/include/lua5.1" -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed" -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake ../Player-$pkgver -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed" -DCMAKE_INSTALL_PREFIX="/usr"
 
   make
 }
