@@ -3,13 +3,12 @@
 
 pkgname=t1lib
 pkgver=5.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for generating character- and string-glyphs from Adobe Type 1 fonts"
 arch=('i686' 'x86_64')
 url="http://www.ibiblio.org/pub/Linux/libs/graphics/!INDEX.html"
 license=('GPL')
 depends=('libxaw')
-options=(!libtool)
 source=(http://www.ibiblio.org/pub/Linux/libs/graphics/${pkgname}-${pkgver}.tar.gz )
 md5sums=('a5629b56b93134377718009df1435f3c')
 
