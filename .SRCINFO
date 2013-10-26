@@ -1,27 +1,22 @@
-pkgbase = efivar-git
-	pkgdesc = Library to manipulate EFI variables - GIT Version
-	pkgver = 0.7.3.gf00ee56
+pkgbase = devpath-git
+	pkgdesc = Library and Utility for dealing with UEFI Device Paths - GIT Version
+	pkgver = 0.1.9.e71ed30
 	pkgrel = 1
-	url = https://github.com/vathpela/efivar
+	url = https://github.com/vathpela/devpath
 	arch = x86_64
 	arch = i686
 	license = LGPL2.1
 	makedepends = git
 	depends = popt
-	provides = efivar=0.7.3.gf00ee56
-	provides = libefivar=0.7.3.gf00ee56
-	provides = libefivar-git=0.7.3.gf00ee56
-	conflicts = efivar
-	conflicts = libefivar
-	conflicts = libefivar-git
+	provides = devpath=0.1.9.e71ed30
+	conflicts = devpath
 	options = !strip
 	options = emptydirs
 	options = zipman
-	options = libtool
+	options = !libtool
 	options = docs
-	options = !makeflags
-	source = efivar::git+https://github.com/vathpela/efivar.git#branch=master
+	source = devpath::git+https://github.com/vathpela/devpath.git#branch=master
 	sha1sums = SKIP
 
-pkgname = efivar-git
+pkgname = devpath-git
 

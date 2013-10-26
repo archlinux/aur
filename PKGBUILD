@@ -1,31 +1,34 @@
 # Maintainer : Keshav Padram Amburay <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_pkgname="efivar"
+_pkgname="devpath"
 pkgname="${_pkgname}-git"
 
-_gitroot="https://github.com/vathpela/efivar.git"
+_gitroot="https://github.com/vathpela/devpath.git"
 _gitname="${_pkgname}"
 _gitbranch="master"
 
-pkgdesc="Library to manipulate EFI variables - GIT Version"
+pkgdesc="Library and Utility for dealing with UEFI Device Paths - GIT Version"
 
-pkgver=0.7.3.gf00ee56
+pkgver=0.1.9.e71ed30
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/vathpela/efivar"
+url="https://github.com/vathpela/devpath"
 license=('LGPL2.1')
 makedepends=('git')
 depends=('popt')
-conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
-provides=("${_pkgname}=${pkgver}" "libefivar=${pkgver}" "libefivar-git=${pkgver}")
-options=('!strip' 'emptydirs' 'zipman' 'libtool' 'docs' '!makeflags')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
+options=('!strip' 'emptydirs' 'zipman' '!libtool' 'docs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	echo "$(git describe --tags)" | sed -e 's|-|\.|g'
+	
+	_ACTUAL_VER="$(grep 'VERSION' "${srcdir}/${_gitname}/Makefile" | head -1 | sed -e 's|VERSION = ||g')"
+	
+	echo "${_ACTUAL_VER}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -38,18 +41,7 @@ build() {
 	git clean -x -d -f
 	echo
 	
-	# git revert --no-edit 5f3a15fbad2eedfc23ad3f63e2a8e304c08141e8
-	echo
-	
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_gitname}_build/src/test/Makefile" || true
-	
-	make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
+	make LIBDIR="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
 	echo
 	
 }
@@ -58,10 +50,7 @@ package() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	make -j1 V=1 DESTDIR="${pkgdir}/" libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" install
+	make -j1 V=1 DESTDIR="${pkgdir}/" LIBDIR="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" install
 	echo
-	
-	install -d "${pkgdir}/usr/bin"
-	install -D -m0755 "${srcdir}/${_gitname}_build/src/test/tester" "${pkgdir}/usr/bin/efivar-tester"
 	
 }
