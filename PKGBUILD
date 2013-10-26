@@ -27,7 +27,8 @@ build() {
   cd "${srcdir}/${_gitname}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4
+        -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4 \
+        -DHAVE_LIBUDEV_H=0
   make
 }
 
