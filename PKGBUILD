@@ -28,26 +28,31 @@ pkgver() {
 	echo "$(git describe --tags)" | sed -e 's|-|\.|g'
 }
 
-build() {
+prepare() {
+	
+	cd "${srcdir}/${_gitname}/"
+	
+	git clean -x -d -f
+	echo
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	git clean -x -d -f
-	echo
+	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_gitname}_build/src/test/Makefile" || true
 	
-	# git revert --no-edit 5f3a15fbad2eedfc23ad3f63e2a8e304c08141e8
-	echo
+}
+
+build() {
+	
+	cd "${srcdir}/${_gitname}_build/"
 	
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
-	
-	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_gitname}_build/src/test/Makefile" || true
 	
 	make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
 	echo
