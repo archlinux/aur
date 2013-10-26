@@ -3,14 +3,14 @@
 
 pkgname=openmw-git
 _gitname="openmw"
-pkgver=0.25.322.g0481e64
+pkgver=0.26.161.g8c9a5de
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'custom')
 
-depends=('openal' 'ogre' 'mygui' 'bullet' 'mpg123' 'libsndfile' 'qt4' 'ffmpeg' 'sdl2')
+depends=('openal' 'ogre' 'mygui' 'bullet' 'mpg123' 'libsndfile' 'qt4' 'ffmpeg' 'sdl2' 'unshield')
 makedepends=('git' 'cmake' 'boost')
 conflicts=('openmw')
 provides=('openmw')
