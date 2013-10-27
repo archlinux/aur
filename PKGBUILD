@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-configtool
-pkgver=0.4.7
-pkgrel=2
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="GTK based config tool for Fcitx"
 arch=('i686' 'x86_64')
 url="http://fcitx.googlecode.com/"
@@ -13,19 +13,16 @@ makedepends=("cmake")
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   msg "Starting make..."
 
-  mkdir -p build
-  cd build
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make 
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('90ec9f4c30c46ea937f965173a4213b67d1cb360cc43b96af9899cdd5a0e35d34658ee7149ed10b3dc58d3851bc1712915db970fd2d25a976983b1037e380be2')
+sha512sums=('7b3c43b9d7d1dab04880effe6fc4e80e64c9bad34699c0c8d2992ec971605ef2eaa0b1fb13f71a582289c75560c3edc95af21f6413ac2bb594d5cdb31a0b4cb7')
