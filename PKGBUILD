@@ -3,9 +3,10 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Jozef Riha <jose1711@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
+
 pkgname=gkrellm
 pkgver=2.3.5
-pkgrel=4
+pkgrel=5
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
 url="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html"
@@ -30,7 +31,6 @@ package() {
   make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 "server/gkrellmd.conf" "$pkgdir/etc/gkrellmd.conf"
   install -Dm644 "../gkrellm.service" "$pkgdir/usr/lib/systemd/system/gkrellm.service"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
