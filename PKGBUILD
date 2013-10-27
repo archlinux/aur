@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=prboom-plus-svn
-pkgver=4248
+pkgver=4355
 pkgrel=1
 pkgdesc="An enhanced version of the PrBoom Doom engine port"
 arch=('i686' 'x86_64')
@@ -10,59 +10,51 @@ license=('GPL')
 depends=('libgl' 'libmad' 'mesa' 'portmidi' 'sdl_image' 'sdl_mixer' 'sdl_net')
 makedepends=('subversion' 'make' 'autoconf' 'automake' 'deutex-devel' 'unzip' 'imagemagick')
 conflicts=('prboom-plus')
-source=(prboom-plus.desktop prboom-plus-game-server.desktop)
-sha256sums=('a858c1dbb4fb10f87d1348ae5a521726e5e6f9ba4e41a392af57aa5b9b6d791d'
-            '7f3ac5558ab763246402b25e55e8e6d0756e56dcc0c6c42510a9d21b5814f736')
+source=('prboom-plus::svn+http://www.crowproductions.de/repos/prboom/branches/prboom-plus-24/prboom2'
+        prboom-plus.desktop prboom-plus-game-server.desktop)
+sha256sums=('SKIP'
+            'a858c1dbb4fb10f87d1348ae5a521726e5e6f9ba4e41a392af57aa5b9b6d791d'
+            '013f1ebf0ff41592b44d8cd510824d258dd06a53ddedafc1e87403a70d37159a')
 
-_svntrunk=http://www.crowproductions.de/repos/prboom/branches/prboom-plus-24/prboom2
-_svnmod=prboom2
+pkgver() {
+  cd prboom-plus
+  local ver="$(svnversion)"
+  printf "%s" "${ver//[[:alpha:]]}"
+}
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/prboom-plus"
 
-  if [ -d $_svnmod/.svn ]; then
-    (cd $_svnmod && svn up -r $pkgver)
-  else
-    svn co $_svntrunk --config-dir ./ -r $pkgver $_svnmod
-  fi
-
-  msg "SVN checkout done or server timeout"
-
-  cd $_svnmod
-
-  if [ ! -e /usr/share/doom/doom2.wad ]; then
-    echo "Please place doom2.wad into /usr/share/doom."
+  if [ ! -e /usr/share/games/doom/doom2.wad ]; then
+    echo "Please place doom2.wad into /usr/share/games/doom."
     echo "You may install Freedoom if you do not own DOOM II."
     echo " Press Enter to continue."
     read -a _unused
-    if [ ! -e /usr/share/doom/doom2.wad ]; then
-      echo "/usr/share/doom/doom.wad not found!"
+    if [ ! -e /usr/share/games/doom/doom2.wad ]; then
+      echo "/usr/share/games/doom/doom.wad not found!"
       return 1
     fi
   fi
 
   tr -d '\r' < bootstrap > bootstrap.fixed
   mv -f bootstrap.fixed bootstrap
-  ln -sf /usr/share/doom/doom2.wad data/
+  ln -sf /usr/share/games/doom/doom2.wad data/
   sed 's|/games|/bin|g' -i src/Makefile.am
   sed 's|CFLAGS_OPT=.*|:|g' -i configure.ac
 
   sh bootstrap
-  ./configure	--prefix=/usr --with-waddir=/usr/share/doom
+  ./configure --prefix=/usr --with-waddir=/usr/share/games/doom
 
   make || return 1
 }
 
 package() {
-  cd "${srcdir}/${_svnmod}"
+  cd "${srcdir}/prboom-plus"
   make DESTDIR="${pkgdir}" install
 
   install -d -m755 "${pkgdir}"/usr/share/{applications,pixmaps}
 
-  convert ICONS/fouch.ico ICONS/fouch.png
-  convert ICONS/god.ico ICONS/god.png
-  install -m644 ICONS/fouch.png "${pkgdir}"/usr/share/pixmaps/"${pkgname/-svn}.png"
-  install -m644 ICONS/god.png "${pkgdir}"/usr/share/pixmaps/"${pkgname/-svn}-game-server.png"
+  install -m644 ICONS/prboom-plus.svg "${pkgdir}"/usr/share/pixmaps/prboom-plus.svg
 
   cd "${srcdir}"
   install -m644 prboom-plus{,-game-server}.desktop "${pkgdir}"/usr/share/applications/

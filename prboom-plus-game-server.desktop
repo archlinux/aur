@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=PrBoom Plus Server
 Exec=prboom-plus-game-server
-Icon=prboom-plus-game-server
+Icon=prboom-plus
 Type=Application
 Terminal=true
 Comment=Run a PrBoom Plus server
