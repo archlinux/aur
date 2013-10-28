@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gdk-pixbuf2
 pkgver=2.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An image loading library (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
@@ -12,7 +12,7 @@ mingw-w64-jasper
 mingw-w64-libpng
 mingw-w64-libjpeg-turbo
 mingw-w64-libtiff)
-options=(!libtool !strip !buildflags)
+options=(!libtool !strip !buildflags staticlibs)
 source=("http://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
 md5sums=('d1e32c91597f8f2fa6ead4201216dd05')
 
@@ -30,6 +30,8 @@ build() {
       --prefix=/usr/${_arch} \
       --build=$CHOST \
       --host=${_arch} \
+      --enable-static \
+      --enable-shared \
       --with-included-loaders=wbmp,png,pnm,ras,ani,xpm,xbm,tga,icns,pcx,qtif,gdip-ico,gdip-wmf,gdip-emf,gdip-bmp,gdip-gif,gdip-jpeg,gdip-tiff
     make || true
     # Suppress the building of some test program because it use some

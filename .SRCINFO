@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gdk-pixbuf2
 	pkgdesc = An image loading library (mingw-w64)
 	pkgver = 2.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gtk.org
 	arch = any
 	license = GPL2
@@ -16,6 +16,7 @@ pkgbase = mingw-w64-gdk-pixbuf2
 	options = !libtool
 	options = !strip
 	options = !buildflags
+	options = staticlibs
 	source = http://download.gnome.org/sources/gdk-pixbuf/2.30/gdk-pixbuf-2.30.0.tar.xz
 	md5sums = d1e32c91597f8f2fa6ead4201216dd05
 
