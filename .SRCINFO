@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GTK+ is a multi-platform toolkit (v3) (mingw-w64)
 	pkgver = 3.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gtk.org
 	arch = any
 	license = LGPL
@@ -21,6 +21,7 @@ pkgbase = mingw-w64-gtk3
 	options = !libtool
 	options = !strip
 	options = !buildflags
+	options = staticlibs
 	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.10/gtk+-3.10.2.tar.xz
 	source = 0004-BURN-THE-.DEF.patch
 	sha256sums = 93af12d28e5f6ccc373ea59f31147e2884c9b3c15dc4841ce3b5cee45b13814c
