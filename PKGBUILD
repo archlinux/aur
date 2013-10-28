@@ -5,12 +5,13 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.numpy.org/"
-makedepends=('lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gcc-fortran' 'python-nose')
+makedepends=('lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gcc-fortran' 'python-nose' 'python2-nose')
+options=('staticlibs')
 source=(http://downloads.sourceforge.net/numpy/numpy-${pkgver}.tar.gz)
 md5sums=('0ab72b3b83528a7ae79c6df9042d61c6')
 
@@ -32,7 +33,7 @@ build() {
 
 package_python2-numpy() {
   depends=('lapack' 'python2')
-  optdepends=('python-nose: testsuite')
+  optdepends=('python2-nose: testsuite')
 
   _pyver=2.7
 
@@ -56,6 +57,7 @@ package_python2-numpy() {
 
 package_python-numpy() {
   depends=('lapack' 'python')
+  optdepends=('python-nose: testsuite')
   provides=("python3-numpy=${pkgver}")
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
