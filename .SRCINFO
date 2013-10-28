@@ -1,0 +1,14 @@
+pkgbase = python-pymysql
+	pkgdesc = Pure Python MySQL Client
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://www.pymysql.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = http://pypi.python.org/packages/source/P/PyMySQL/PyMySQL-0.6.3.tar.gz
+	sha256sums = 07c6f082597cb7e048f3d96646334a17dd0ed263e080f9cc2c0762bb04cd6b35
+
+pkgname = python-pymysql
+
