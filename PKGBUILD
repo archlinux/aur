@@ -15,7 +15,7 @@ _COMPILER="GCC47"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=14795
+pkgver=14805
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
