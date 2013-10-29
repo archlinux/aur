@@ -1,7 +1,7 @@
 pkgbase = libfreenect
 	pkgdesc = Drivers and libraries for the Xbox Kinect device on Linux
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openkinect.org
 	arch = i686
 	arch = x86_64
