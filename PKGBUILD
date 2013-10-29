@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=1.6.4
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ backup=(etc/cups/cupsd.conf
         etc/logrotate.d/cups
         etc/pam.d/cups
         etc/xinetd.d/cups-lpd)
-source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.gz
+source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups cups.logrotate cups.pam
         # improve build and linking
         cups-no-export-ssllibs.patch
@@ -40,10 +40,8 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.gz
         cups-1.6.0-fix-install-perms.patch
         cups-1.6.2-statedir.patch
         # Debian
-        cupsd-no-crash-on-avahi-threaded-poll-shutdown.patch
-        get-ppd-file-for-statically-configured-ipp-shared-queues.patch
-        ppd-poll-with-client-conf.patch)
-md5sums=('17c948b442dfdb3c53f5c8b7eaa1442f'
+	get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
+md5sums=('5ab496a2ce27017fcdb3d7ec4818a75a'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'f861b18f4446c43918c8643dcbbd7f6d'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -55,10 +53,8 @@ md5sums=('17c948b442dfdb3c53f5c8b7eaa1442f'
          'df0c367c0022e3c7d8e01827e8a6c5e7'
          'f30c2a161caaf27854581507cde8cac6'
          '5117f65342fcc69c6a506529e4daca9e'
-         '9247e218eea94ebda0aebc8ee0e77db8'
-         'cb58bf4e0b80eaee383712e5c84a1ab4'
-         'b578bcd17949a7203237ba1e31f78ef9'
-         '0becd6ab8782b97f19a02c1dc174c75e')
+         '451609db34f95209d64c38474de27ce1'
+         'b578bcd17949a7203237ba1e31f78ef9')
 
 prepare() {
   cd cups-${pkgver}
@@ -76,20 +72,21 @@ prepare() {
   # Ensure attributes are valid UTF-8 in dbus notifier
   patch -Np1 -i ${srcdir}/cups-dbus-utf8.patch
 
-  # Fixed crash which sometimes happens on shutdown of the CUPS daemon, caused by a wrong shutdown sequence for shutting down the Avahi threaded poll.
-  patch -Np1 -i ${srcdir}/cupsd-no-crash-on-avahi-threaded-poll-shutdown.patch
   # Applications could not get the PPD file for statically-configured IPP-shared print queues
   patch -Np1 -i ${srcdir}/get-ppd-file-for-statically-configured-ipp-shared-queues.patch
-  # If an external server is used via client.conf and the DNS is inconsistent (ex: DNS gives "noname" for many IPs, reverse DNS gives one of these IPs for "noname") local PPDs can get polled for print queues instead of the PPDs of the external server Bug: http://www.cups.org/str.php?L2763
-  patch -Np1 -i ${srcdir}/ppd-poll-with-client-conf.patch
+  
   # fix permissions on some files - alternative: cups-0755.patch by FC
   patch -Np0 -i ${srcdir}/cups-1.6.0-fix-install-perms.patch
+  
   # move /var/run -> /run for pid file
   patch -Np1 -i ${srcdir}/cups-1.6.2-statedir.patch
+  
   # Re-initialise the resolver on failure in httpAddrGetList() 
   patch -Np1 -i ${srcdir}/cups-res_init.patch
+  
   # Use IP address when resolving DNSSD URIs
   patch -Np1 -i ${srcdir}/cups-avahi-address.patch
+  
   # Return from cupsEnumDests() once all records have been returned.
   patch -Np1 -i ${srcdir}/cups-enum-all.patch
 
@@ -168,5 +165,5 @@ package() {
   rm -v ${pkgdir}/usr/share/cups/banners/*
   rm -v ${pkgdir}/usr/share/cups/data/testprint
   # comment out all conversion rules which use any of the removed filters
-  perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' ${pkgdir}/usr/share/cups/mime/mime.convs
+  perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "${pkgdir}/usr/share/cups/mime/mime.convs"
 }

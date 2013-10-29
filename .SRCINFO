@@ -1,6 +1,6 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
-	pkgver = 1.6.4
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = http://www.cups.org/
 	install = cups-nosystemd.install
@@ -18,7 +18,7 @@ pkgbase = cups-nosystemd
 	makedepends = avahi
 	depends = acl
 	depends = pam
-	depends = libcups>=1.6.4
+	depends = libcups>=1.7.0
 	depends = cups-filters
 	depends = bc
 	depends = colord
@@ -26,7 +26,7 @@ pkgbase = cups-nosystemd
 	depends = dbus
 	depends = hicolor-icon-theme
 	optdepends = xdg-utils: xdg .desktop file support
-	provides = cups=1.6.4
+	provides = cups=1.7.0
 	conflicts = cups
 	replaces = cups
 	backup = etc/cups/cupsd.conf
@@ -39,7 +39,7 @@ pkgbase = cups-nosystemd
 	backup = etc/logrotate.d/cups
 	backup = etc/pam.d/cups
 	backup = etc/xinetd.d/cups-lpd
-	source = http://www.cups.org/software/1.6.4/cups-1.6.4-source.tar.gz
+	source = http://www.cups.org/software/1.7.0/cups-1.7.0-source.tar.bz2
 	source = cups
 	source = cups.logrotate
 	source = cups.pam
@@ -52,10 +52,8 @@ pkgbase = cups-nosystemd
 	source = cups-enum-all.patch
 	source = cups-1.6.0-fix-install-perms.patch
 	source = cups-1.6.2-statedir.patch
-	source = cupsd-no-crash-on-avahi-threaded-poll-shutdown.patch
 	source = get-ppd-file-for-statically-configured-ipp-shared-queues.patch
-	source = ppd-poll-with-client-conf.patch
-	md5sums = 17c948b442dfdb3c53f5c8b7eaa1442f
+	md5sums = 5ab496a2ce27017fcdb3d7ec4818a75a
 	md5sums = 9657daa21760bb0b5fa3d8b51d5e01a1
 	md5sums = f861b18f4446c43918c8643dcbbd7f6d
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
@@ -67,10 +65,8 @@ pkgbase = cups-nosystemd
 	md5sums = df0c367c0022e3c7d8e01827e8a6c5e7
 	md5sums = f30c2a161caaf27854581507cde8cac6
 	md5sums = 5117f65342fcc69c6a506529e4daca9e
-	md5sums = 9247e218eea94ebda0aebc8ee0e77db8
-	md5sums = cb58bf4e0b80eaee383712e5c84a1ab4
+	md5sums = 451609db34f95209d64c38474de27ce1
 	md5sums = b578bcd17949a7203237ba1e31f78ef9
-	md5sums = 0becd6ab8782b97f19a02c1dc174c75e
 
 pkgname = cups-nosystemd
 
