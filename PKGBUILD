@@ -8,19 +8,18 @@ url="http://www.open-mpi.org"
 license=('custom')
 depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
 makedepends=('inetutils')
-options=('!libtool')
+options=('staticlibs')
 source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('93859d515b33dd9a0ee6081db285a2d1dffe21ce')
 
 build() {
    cd ${pkgname}-${pkgver}
 
-   # Make sure we use the system ltdl librariry rather than the ones in the tarball
+   # Make sure we use the system ltdl library rather than the ones in the tarball
    rm -r opal/libltdl
 
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
-               --mandir=/usr/share/man \
                --enable-mpi-f90 \
                --libdir=/usr/lib/${pkgname} \
                --with-threads=posix \
