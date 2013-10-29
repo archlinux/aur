@@ -1,0 +1,12 @@
+pkgbase = trellis-desk
+	pkgdesc = A robust and user-friendly help desk solution for businesses and organizations
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.accord5.com/trellis
+	arch = any
+	license = custom
+	source = http://www.accord5.com/trellis_desk_v104_final.zip
+	md5sums = 2d1133183f96b87d1933ad0664e2b248
+
+pkgname = trellis-desk
+
