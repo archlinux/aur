@@ -16,7 +16,6 @@ pkgbase = directfb
 	depends = libdrm
 	depends = libgl
 	depends = mesa
-	options = !libtool
 	source = http://www.directfb.org/downloads/Core/DirectFB-1.7/DirectFB-1.7.1.tar.gz
 	sha1sums = ff3dc6885f2875586849d88ee9f87fca866259b0
 
