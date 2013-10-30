@@ -6,7 +6,6 @@ pkgrel=4
 pkgdesc="GTK clutter widget"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
-options=('!libtool')
 license=('LGPL')
 depends=('clutter' 'gtk3')
 makedepends=('gobject-introspection')
