@@ -9,7 +9,6 @@ license=('GPL')
 depends=('libsoup' 'liboauth' 'gcr' 'gnome-online-accounts')
 makedepends=('intltool' 'gobject-introspection')
 url="http://www.gnome.org"
-options=('!libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('ae405145bb6a2109488b7123206b469b141f17317066471dd485b4ea50499c83')
 
