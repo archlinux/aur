@@ -10,7 +10,7 @@ url="http://liblqr.wikidot.com/"
 license=('GPL')
 depends=('glib2')
 makedepends=('pkgconfig')
-options=('!libtool' '!emptydirs')
+options=('!emptydirs')
 source=("http://liblqr.wikidot.com/local--files/en:download-page/$pkgname-1-$pkgver.tar.bz2")
 md5sums=('915643d993da97e10665d48c0bf8f3d0')
 
