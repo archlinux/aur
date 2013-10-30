@@ -11,7 +11,7 @@ depends=('libdrm' 'svga-dri' 'mesa')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=14' 'resourceproto' 'scrnsaverproto')
 conflicts=('xorg-server<1.14.0' 'X-ABI-VIDEODRV_VERSION<14' 'X-ABI-VIDEODRV_VERSION>=15')
 groups=('xorg-drivers' 'xorg')
-options=('!libtool' '!emptydirs')
+options=('!emptydirs')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
 sha256sums=('802dda415c22412edad6c3df44fe18a06e91d0f8456d9a58bac0d340fdf8fe3d')
 
