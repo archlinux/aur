@@ -10,7 +10,6 @@ url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
 depends=('xfwm4')
-options=('!libtool')
 source=(http://archive.xfce.org/src/art/$pkgname/4.10/$pkgname-$pkgver.tar.bz2)
 sha256sums=('3214d5f00e9703b5e8c9e7c3287d606dedec7285ceb4d5db332e93ada66fd575')
 
