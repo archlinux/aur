@@ -1,5 +1,5 @@
 diff --git a/doc/rxvt.1.pod b/doc/rxvt.1.pod
-index 4c93c4b..8b429a0 100644
+index 7e2ae26..b7f993f 100644
 --- a/doc/rxvt.1.pod
 +++ b/doc/rxvt.1.pod
 @@ -417,6 +417,11 @@ B<secondaryScreen>.
@@ -29,16 +29,16 @@ index 4c93c4b..8b429a0 100644
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
 diff --git a/src/command.C b/src/command.C
-index 82ad10a..9bc5e79 100644
+index 542d14c..cd4066d 100644
 --- a/src/command.C
 +++ b/src/command.C
-@@ -2221,10 +2221,46 @@ rxvt_term::button_release (XButtonEvent &ev)
+@@ -2222,10 +2222,46 @@ rxvt_term::button_release (XButtonEvent &ev)
                  }
                else
  # endif
 +#ifndef NO_SECONDARY_SCREEN
                  {
--                  scr_page (v, i);
+-                  scr_page (dirn, lines);
 -                  scrollBar.show (1);
 +                  /* on SECONDARY screen, we send "fake" UP/DOWN keys instead
 +                   * (this allows to scroll within man, less, etc) */
@@ -57,8 +57,8 @@ index 82ad10a..9bc5e79 100644
 +                       event.same_screen = ev.same_screen;
 +                       event.state       = 0;
 +                       event.keycode     = XKeysymToKeycode(ev.display,
-+                                            (v == UP) ? XK_Up : XK_Down);
-+                       for (i = 0; i < 3; ++i)
++                                            (dirn == UP) ? XK_Up : XK_Down);
++                       for (lines = 0; lines < 3; ++lines)
 +                         {
 +                            event.type = KeyPress;
 +                            XSendEvent (event.display, event.window, True,
@@ -72,7 +72,7 @@ index 82ad10a..9bc5e79 100644
 +                  else
 +#endif
 +                    {
-+                       scr_page (v, i);
++                       scr_page (dirn, lines);
 +                       scrollBar.show (1);
 +                    }
 +#ifndef NO_SECONDARY_SCREEN
