@@ -9,7 +9,6 @@ license=('LGPL')
 url="http://live.gnome.org/libepc"
 depends=('gtk3' 'avahi' 'libsoup')
 makedepends=('intltool')
-options=('!libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/0.4/$pkgname-$pkgver.tar.xz)
 sha256sums=('4f98fc306c0f9d361e1381484744246efd084053732924741078270c49afc33b')
 
