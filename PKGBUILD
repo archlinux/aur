@@ -14,7 +14,7 @@ makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=14' 'resourceproto' 'sc
 conflicts=('xorg-server<1.14.0' 'X-ABI-VIDEODRV_VERSION<14' 'X-ABI-VIDEODRV_VERSION>=15' 'xf86-video-via' 'xf86-video-unichrome' 'openchrome')
 replaces=('openchrome' 'xf86-video-via')
 groups=('xorg-drivers' 'xorg')
-options=('!libtool' '!emptydirs' '!makeflags')
+options=('!emptydirs' '!makeflags')
 source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('1f7b23d4ed53417eda5c6730486b36812f469295')
 
