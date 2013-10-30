@@ -9,7 +9,6 @@ license=('GPL')
 url="http://www.gnome.org/"
 depends=('gtk3')
 makedepends=('gtk-doc' 'intltool' 'gobject-introspection')
-options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('4e0d6f66115ba3b0f3cd2495d8a95c6714d701f89d556bb691bd0c0a62a1c760')
 
