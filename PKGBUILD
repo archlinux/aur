@@ -10,7 +10,7 @@ url="http://gtk-sharp.sourceforge.net"
 depends=('mono' 'libglade' 'gtk2')
 makedepends=('pkgconfig' 'monodoc')
 conflicts=('gtk#')
-options=('!libtool' '!makeflags')
+options=('!makeflags')
 source=(https://github.com/mono/gtk-sharp/archive/${pkgver}.tar.gz)
 md5sums=('0cdaef41857e29c23942a148c83122ac')
 
