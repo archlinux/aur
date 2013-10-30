@@ -9,7 +9,6 @@ url="http://www.clutter-project.org/"
 license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage gst-plugins-bad)
 makedepends=(gobject-introspection)
-options=('!libtool')
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('cee6b0667c74a54fdf43f0ec7c1dc8ff0ffd1c594e0d43529de45048f8080a4d')
 
