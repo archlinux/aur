@@ -17,7 +17,7 @@ optdepends=('openssh: SSH plugin'
             'freerdp: RDP plugin')
 makedepends=(docbook-xsl intltool freerdp openssh itstool spice-protocol)
 groups=(gnome-extra)
-options=('!emptydirs' '!libtool')
+options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('ea8cc79e227148359d3582ff121dab864913eb1dfcba6458e11da32d4dfec503')
 
