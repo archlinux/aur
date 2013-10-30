@@ -3,7 +3,7 @@
 # Contributor: Keshav Padram Amburay (the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgver="2.00"
-_GRUB_GIT_COMMIT="bca274b45597725f21f77a773087b62a2922eb2b"
+_GRUB_GIT_COMMIT="93c120754a537a2f060b8e20eab620e714309b82"
 
 ## grub-extras gpxe is not needed
 
@@ -12,7 +12,7 @@ _GRUB_GIT_COMMIT="bca274b45597725f21f77a773087b62a2922eb2b"
 
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
-pkgver=2.00.900.gbca274b
+pkgver=2.00.963.g93c1207
 pkgrel=1
 epoch="1"
 url="https://www.gnu.org/software/grub/"
@@ -26,8 +26,9 @@ conflicts=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
 replaces=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
 provides=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
 
-makedepends=('git' 'bzr' 'rsync' 'xz' 'freetype2' 'bdf-unifont' 'ttf-dejavu' 'python'
-             'autogen' 'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse')
+makedepends=('git' 'bzr' 'rsync' 'xz' 'freetype2' 'bdf-unifont'
+             'ttf-dejavu' 'python2' 'autogen' 'texinfo' 'help2man'
+             'gettext' 'device-mapper' 'fuse')
 depends=('sh' 'xz' 'gettext' 'device-mapper')
 optdepends=('freetype2: For grub-mkfont usage'
             'fuse: For grub-mount usage'
@@ -78,8 +79,8 @@ prepare() {
 	msg "Fix OS naming FS#33393"
 	sed 's|GNU/Linux|Linux|' -i "${srcdir}/grub-${_pkgver}/util/grub.d/10_linux.in"
 	
-	# msg "Requires python2"
-	# sed 's|python |python2 |g' -i "${srcdir}/grub-${_pkgver}/autogen.sh"
+	msg "autogen.sh requires python (2/3). since bzr is in makedepends, use python2 and no need to pull python3"
+	sed 's|python |python2 |g' -i "${srcdir}/grub-${_pkgver}/autogen.sh"
 	
 	msg "Pull in latest language files"
 	./linguas.sh
@@ -105,7 +106,7 @@ _build_grub-common_and_bios() {
 	
 	msg "Add the grub-extra sources for bios build"
 	install -d "${srcdir}/grub-${_pkgver}-bios/grub-extras"
-	for _DIR_ in 915resolution lua ntldr-img ; do
+	for _DIR_ in 915resolution ntldr-img ; do
 		cp -r "${srcdir}/grub-extras-${_DIR_}" "${srcdir}/grub-${_pkgver}-bios/grub-extras/${_DIR_}"
 	done
 	export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
@@ -165,7 +166,7 @@ _build_grub-efi() {
 	for _DIR_ in lua ; do
 		cp -r "${srcdir}/grub-extras-${_DIR_}" "${srcdir}/grub-${_pkgver}-efi/grub-extras/${_DIR_}"
 	done
-	export GRUB_CONTRIB="${srcdir}/grub-efi/grub-extras/"
+	# export GRUB_CONTRIB="${srcdir}/grub-efi/grub-extras/"
 	
 	msg "Unset all compiler FLAGS for efi build"
 	unset CFLAGS

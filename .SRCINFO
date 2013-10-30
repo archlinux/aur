@@ -1,6 +1,6 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.00.900.gbca274b
+	pkgver = 2.00.963.g93c1207
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gnu.org/software/grub/
@@ -15,7 +15,7 @@ pkgbase = grub
 	makedepends = freetype2
 	makedepends = bdf-unifont
 	makedepends = ttf-dejavu
-	makedepends = python
+	makedepends = python2
 	makedepends = autogen
 	makedepends = texinfo
 	makedepends = help2man
@@ -47,7 +47,7 @@ pkgbase = grub
 	backup = boot/grub/grub.cfg
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = grub-2.00::git+git://git.sv.gnu.org/grub.git#commit=bca274b45597725f21f77a773087b62a2922eb2b
+	source = grub-2.00::git+git://git.sv.gnu.org/grub.git#commit=93c120754a537a2f060b8e20eab620e714309b82
 	source = archlinux_grub_mkconfig_fixes.patch
 	source = 60_memtest86+
 	source = grub.default
