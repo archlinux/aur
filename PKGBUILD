@@ -10,7 +10,6 @@ url="http://git.gnome.org/browse/libcryptui/"
 license=('GPL')
 depends=('gtk3' 'gpgme' 'dbus-glib' 'libnotify' 'libgnome-keyring' 'dconf')
 makedepends=('intltool' 'gobject-introspection')
-options=('!libtool')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('5e3e82e647ac4fb74ed46b4fffbf89e80198f856e1509f5edcd47dd2751a4be0')
