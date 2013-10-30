@@ -10,7 +10,6 @@ license=('GPL')
 depends=(libidn popt libldap)
 source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('991478532b56ab3b6f46ea9fa332626f')
-options=(!libtool)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
