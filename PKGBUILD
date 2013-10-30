@@ -10,7 +10,6 @@ arch=(i686 x86_64)
 license=('MIT')
 depends=('zlib' 'readline' 'ncurses' 'xz')
 makedepends=('python2')
-options=('!libtool')
 url="http://www.xmlsoft.org/"
 source=(ftp://ftp.xmlsoft.org/${pkgname}/${pkgname}-${pkgver}.tar.gz
         http://www.w3.org/XML/Test/xmlts20080827.tar.gz)
