@@ -10,7 +10,6 @@ url="http://git.gnome.org/browse/seahorse-nautilus/"
 license=('GPL')
 depends=('libcryptui' 'gcr' 'nautilus')
 makedepends=('intltool')
-options=('!libtool')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('eacaf33bba920cf117641393a6eef483dbc075009349082e77d22f79afbd823a')
