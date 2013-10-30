@@ -12,7 +12,6 @@ url="http://xfce-goodies.berlios.de/"
 groups=('xfce4-goodies')
 depends=('xfce4-panel')
 makedepends=('intltool')
-options=('!libtool')
 source=(http://archive.xfce.org/src/panel-plugins/${pkgname}/0.6/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('fe604a251eadbc5b0f2b4737b85d92c8')
 
