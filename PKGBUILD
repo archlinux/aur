@@ -23,7 +23,6 @@ md5sums=('06e5f93dbf13f2c19647ca15ffc23ac1'
          'SKIP'
          '57ef7353ba2c28c04dfc387c3ca77a4f'
          'e1bd1523e38745e948c710db1a330bb1')
-options=(!libtool)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
