@@ -8,7 +8,6 @@ arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 depends=('gtk2>=2.22.0')
 makedepends=('pkg-config' 'intltool')
-options=('!libtool')
 url="http://live.gnome.org/GnomeArt"
 source=(ftp://ftp.archlinux.org/other/gtk-engines/${pkgname}-${pkgver}.tar.gz
         ftp://ftp.archlinux.org/other/gtk-engines/${pkgname}-${pkgver}.tar.gz.sig)
