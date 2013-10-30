@@ -8,7 +8,6 @@ pkgdesc="A cross-platform, open-source thesaurus"
 url="http://aiksaurus.sourceforge.net/"
 license=('GPL')
 arch=('i686' 'x86_64')
-options=('!libtool')
 depends=('gtk2')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'aiksaurus-gcc44.patch')
