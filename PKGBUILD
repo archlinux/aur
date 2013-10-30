@@ -11,7 +11,6 @@ license=('GPL')
 depends=('imagemagick')
 makedepends=('bc')
 backup=('etc/psiconv/psiconv.conf')
-options=('!libtool')
 source=("http://software.frodo.looijaard.name/${pkgname}/files/${pkgname}-${pkgver}.tar.gz")
 md5sums=('8d7548e3c6b9cd408544736133728acd')
 
