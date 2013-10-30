@@ -9,7 +9,6 @@ license=('GPL')
 depends=('libva' 'libvdpau')
 makedepends=('mesa')
 replaces=('vdpau-video')
-options=('!libtool')
 source=(http://www.freedesktop.org/software/vaapi/releases/$pkgname/$pkgname-$pkgver.tar.bz2)
 sha1sums=('224318f4ea8bafca6a0fec770e388b7d1a1a66b3')
 
