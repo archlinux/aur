@@ -13,7 +13,6 @@ license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'python2' 'hicolor-icon-theme' 'farstream-0.1' 'avahi'
              'tk' 'ca-certificates' 'intltool' 'networkmanager')
-options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
         pidgin-2.10.7-link-libirc-to-libsasl2.patch)
 sha256sums=('eba32994eca20d1cf24a4261b059b2de71a1ec2dd0926e904074b0db49f7f192'
