@@ -1,0 +1,21 @@
+pkgbase = localepurge
+	pkgdesc = Script to remove disk space wasted for unneeded localizations.
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://packages.debian.org/source/sid/localepurge
+	arch = any
+	license = GPL
+	backup = etc/locale.nopurge
+	source = http://ftp.de.debian.org/debian/pool/main/l/localepurge/localepurge_0.7.3.tar.gz
+	source = http://fgr.bitbucket.org/im/localepurge-arch/localepurge.diff
+	source = http://fgr.bitbucket.org/im/localepurge-arch/localepurge.8.diff
+	source = http://fgr.bitbucket.org/im/localepurge-arch/localepurge.config.diff
+	source = http://fgr.bitbucket.org/im/localepurge-arch/locale.nopurge
+	sha256sums = 1e5f569c8d5e3d09bf51128f11ebe7c80bccd785b0c028e949df21347ed135f7
+	sha256sums = b8704eec22d0e84ada9a524277322f9892c11f3f4b84ec0dd4f50f0ca2dc7474
+	sha256sums = 82bd40594ef0646465eed6e525368e87694322513c0d3280879fcfc5c40cb6a7
+	sha256sums = dbed1ae1f1514f14c00fdb48d09ac8cd3407dbc3f1a1fed84f1e8735da1f9678
+	sha256sums = b9c28be93fa47d4f0315972159e501d9eef28bbab7ffe6e8e7c4a13c359f35e8
+
+pkgname = localepurge
+
