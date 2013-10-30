@@ -9,7 +9,6 @@ url="http://mp3splt.sourceforge.net"
 license=('GPL')
 depends=('flac' 'libmad' 'libvorbis' 'libid3tag' 'pcre' 'libltdl')
 makedepends=('libtool')
-options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz")
 
 prepare() {
