@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'enchant')
 makedepends=('intltool' 'gtk-doc')
-options=('!libtool')
 source=(http://gtkspell.sourceforge.net/download/${pkgname}-${pkgver}.tar.gz)
 md5sums=('f75dcc9338f182c571b321d37c606a94')
 
