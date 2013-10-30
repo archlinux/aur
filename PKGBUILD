@@ -9,7 +9,6 @@ license=('GPL')
 url="http://mp3splt.sourceforge.net"
 depends=('libmp3splt')
 source=("http://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz")
-options=('!libtool')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
