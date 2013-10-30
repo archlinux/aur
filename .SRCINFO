@@ -1,7 +1,8 @@
 pkgbase = dosemu-git
 	pkgdesc = DOS emulator
-	pkgver = 20130617
+	pkgver = 1.4.0.8.180.g35054ba
 	pkgrel = 1
+	epoch = 1
 	url = http://www.dosemu.org/
 	arch = i686
 	arch = x86_64
@@ -22,11 +23,13 @@ pkgbase = dosemu-git
 	backup = etc/dosemu/dosemu.conf
 	backup = etc/dosemu/dosemu.users
 	backup = etc/dosemu/global.conf
-	source = https://dl.dropbox.com/u/13513277/dosemu/dosemu-freedos-1.1-bin.tgz
+	source = dosemu::git://git.code.sf.net/p/dosemu/code
+	source = https://dl.dropboxusercontent.com/u/13513277/dosemu/dosemu-freedos-1.1-bin.tgz
 	source = debianize.patch
 	source = xdosemu.desktop
-	sha256sums = 8f25916dc7f58e71398820b9bc83987cb39e3cd23a7d2d15a7294b2d42cfbed0
-	sha256sums = 0a75924d81cde89affe8ea0213fe542cfe6204c45bff5fbaae4f5dd11e3ede2d
+	sha256sums = SKIP
+	sha256sums = 0891a8346ee58f8468ab17f93315d6f23fe68348d297be39c1faad5bd6e59613
+	sha256sums = 63471aa2c47a52319665c1f3a706d21665edd41df07797c3f558db348b477ba0
 	sha256sums = ae737e26165c016242d5a8603a5c887c313570e1525091b30f9e8d23d1a9faab
 
 pkgname = dosemu-git

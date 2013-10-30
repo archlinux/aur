@@ -1,12 +1,5 @@
-Description: adjust where files are installed, which seems specific to Debian.
- Additionally, adjust how the license files are handled, and how they're
- mentioned in the copyright notice (i.e. point to the locally installed Debian
- copies instead of duplicating them in the binary package).
-Author: Kees Cook <kees@debian.org>
-Forwarded: not-needed
-
 diff --git a/src/arch/linux/Makefile.main b/src/arch/linux/Makefile.main
-index 793c9e2..c25ead3 100644
+index 3fbf825..f122607 100644
 --- a/src/arch/linux/Makefile.main
 +++ b/src/arch/linux/Makefile.main
 @@ -9,7 +9,7 @@
@@ -16,7 +9,7 @@ index 793c9e2..c25ead3 100644
 -dosemudir = $(datadir)/dosemu
 +dosemudir = $(libdir)/dosemu
  
- NET=dosext/net/net
+ NET=dosext/net
  
 @@ -215,7 +215,6 @@ install:
  	$(INSTALL) -d $(DESTDIR)$(bindir)
