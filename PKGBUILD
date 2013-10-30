@@ -8,7 +8,6 @@ url="http://telepathy.freedesktop.org/wiki/Logger"
 license=('LGPL2.1')
 depends=('telepathy-glib' 'sqlite' 'libxml2' 'dconf')
 makedepends=('intltool' 'gnome-doc-utils' 'gobject-introspection')
-options=('!libtool')
 install=telepathy-logger.install
 source=(http://telepathy.freedesktop.org/releases/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('e513eaa767344821073a0b7bb8b45217')
