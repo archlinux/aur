@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://helm.cs.unibo.it/mml-widget/"
 license=('GPL')
 depends=('popt' 'gtk2' 't1lib' 'gmetadom')
-options=('!libtool')
 source=("http://helm.cs.unibo.it/mml-widget/sources/${pkgname}-${pkgver}.tar.gz"
         'gtkmathview-0.8.0-gcc44.patch'
         'gtkmathview-0.8.0-cond-t1.patch')
