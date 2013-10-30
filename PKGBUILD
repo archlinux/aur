@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://toxygen.net/libgadu/"
 license=('LGPL2.1')
 depends=('openssl')
-options=('!libtool')
 source=("http://toxygen.net/${pkgname}/files/${pkgname}-${pkgver}.tar.gz")
 md5sums=('832432fef251f69f31e68574c17f0c51')
 
