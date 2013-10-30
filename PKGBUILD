@@ -28,7 +28,9 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  ./autogen.sh --prefix=/usr
+  ./autogen.sh \
+    --prefix=/usr \
+    --disable-static
 
   make
 }
