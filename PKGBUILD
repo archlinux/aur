@@ -9,7 +9,7 @@ url="http://www.clutter-project.org/"
 license=('GPL2')
 depends=('libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango')
 makedepends=('mesa' 'gobject-introspection')
-options=(!libtool !emptydirs)
+options=(!emptydirs)
 source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('75c2c4636a050fda7ee8722ce3d9c618b08799ed92bbb72b4fdff3e73b096094')
 
