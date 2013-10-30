@@ -10,7 +10,6 @@ license=('GPL')
 arch=('i686' 'x86_64')
 url="http://alltray.trausch.us/"
 depends=('libxpm' 'libgtop' 'libwnck')
-options=('!libtool')
 source=(https://code.launchpad.net/alltray/trunk/${pkgver}/+download/alltray-${pkgver}.tar.gz)
 md5sums=('5842253b89a5943031b5a02bbd8fd4fb')
 
