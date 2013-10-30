@@ -12,7 +12,6 @@ url="http://www.glom.org/"
 license=('GPL')
 depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject' 'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql')
 makedepends=('intltool' 'gnome-doc-utils' 'python-sphinx' 'boost')
-options=('!libtool')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/1.24/$pkgname-$pkgver.tar.xz)
 sha256sums=('eae586be8d3fc36ee80e5ca0ef5d877e76d346cbfe451c9abff5be27692030d1')
