@@ -1,0 +1,13 @@
+--- cyphertite/GNUmakefile.orig	2013-10-17 16:30:24.000000000 -0400
++++ cyphertite/GNUmakefile	2013-10-30 20:32:26.815983695 -0400
+@@ -51,8 +51,8 @@
+ CFLAGS += $(INCFLAGS) $(WARNFLAGS) $(OPTLEVEL) $(DEBUG)
+ LDLIBS += -L../ctutil/obj -L../ctutil -L../libcyphertite/obj -L../libcyphertite
+ LDLIBS += -lcyphertite -lctutil -lassl -lexude -lclog -lshrink -lxmlsd
+-LDLIBS += -lclens -levent_core -lexpat -lsqlite3 -llzma -llzo2 $(CURL.LDLIBS)
+-LDLIBS += $(LIB.LINKSTATIC) -lssl -lcrypto
++LDLIBS += -lclens -levent_core -lexpat -lsqlite3 -llzma -llzo2
++LDLIBS += $(LIB.LINKDYNAMIC) -lssl -lcrypto -lcurl
+ LDLIBS += $(LIB.LINKDYNAMIC) -ldl -ledit -lncurses -lz
+ 
+ BIN.NAME = cyphertite
