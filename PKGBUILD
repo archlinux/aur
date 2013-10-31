@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url='http://kaizer.se/wiki/keybinder/'
 license=('GPL')
 makedepends=('pygtk')
-options=(!libtool)
 source=(http://kaizer.se/publicfiles/${_offname}/${_offname}-${pkgver}.tar.gz)
 sha256sums=('42863ca0174d568a8c02c6fb243fee1681823825e8bcb1718c51611d8e9793bb')
 
