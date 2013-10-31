@@ -10,7 +10,6 @@ license=('LGPL')
 url="https://fedorahosted.org/netcf/"
 depends=('augeas>=0.7.4' 'netctl' 'libxslt' 'libxml2' 'libnl')
 makedepends=('gcc')
-options=(!libtool)
 source=("https://fedorahosted.org/released/netcf/$pkgname-$pkgver.tar.gz")
 md5sums=('bee292470b06201b59af0fad473a1b65')
 
