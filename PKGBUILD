@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url='http://www.remlab.net/libident/'
 license=('custom')
 depends=('glibc')
-options=('!emptydirs' '!libtool')
+options=('!emptydirs')
 source=("http://www.remlab.net/files/libident/libident-$pkgver.tar.gz"
         'libident.pc')
 sha256sums=('8cc8fb69f1c888be7cffde7f4caeb3dc6cd0abbc475337683a720aa7638a174b'
