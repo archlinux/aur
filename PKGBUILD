@@ -2,7 +2,7 @@
 
 pkgname=libexude
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple to use memory debugger"
 arch=(i686 x86_64)
 url="https://opensource.conformal.com/wiki/exude"

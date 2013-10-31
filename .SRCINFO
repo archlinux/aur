@@ -1,7 +1,7 @@
 pkgbase = libexude
 	pkgdesc = A simple to use memory debugger
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opensource.conformal.com/wiki/exude
 	arch = i686
 	arch = x86_64
