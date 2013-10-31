@@ -1,0 +1,13 @@
+diff --git a/snapper/Btrfs.cc b/snapper/Btrfs.cc
+index 2c110c3..be9e974 100644
+--- a/snapper/Btrfs.cc
++++ b/snapper/Btrfs.cc
+@@ -982,7 +982,7 @@ namespace snapper
+ 	{
+ 	    boost::this_thread::interruption_point();
+ 
+-	    int r = btrfs_read_and_process_send_stream(fd, &send_ops, &*this);
++	    int r = btrfs_read_and_process_send_stream(fd, &send_ops, &*this, 0);
+ 
+ 	    if (r < 0)
+ 	    {
