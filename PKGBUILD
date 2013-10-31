@@ -2,7 +2,7 @@
 
 pkgname=libxmlsd
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that wraps expat in order to simplify XML use in C programs"
 arch=(i686 x86_64)
 url="https://opensource.conformal.com/wiki/xmlsd"

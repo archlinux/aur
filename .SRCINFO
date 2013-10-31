@@ -1,7 +1,7 @@
 pkgbase = libxmlsd
 	pkgdesc = Library that wraps expat in order to simplify XML use in C programs
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opensource.conformal.com/wiki/xmlsd
 	arch = i686
 	arch = x86_64
