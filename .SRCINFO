@@ -6,8 +6,8 @@ pkgbase = libassl
 	arch = i686
 	arch = x86_64
 	license = ISC
-	makedepends = libclens=0.7.0
-	depends = openssl>=1.0.1.c
+	makedepends = libclens
+	depends = glibc
 	source = https://opensource.conformal.com/snapshots/assl/assl-1.4.1.tar.gz
 	sha1sums = e3d05390e63ce122a3f6ee3a996fa4b0876f9db5
 
