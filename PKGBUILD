@@ -20,7 +20,7 @@ optdepends=('bridge-utils: for briged networking (default)'
 	    'radvd'
 	    'dmidecode'
 	    'ebtables')
-options=('emptydirs' '!libtool')
+options=('emptydirs')
 backup=('etc/conf.d/libvirtd'
 	'etc/conf.d/libvirt-guests'
 	'etc/libvirt/libvirtd.conf'
