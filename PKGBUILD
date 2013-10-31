@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://log4cpp.sourceforge.net/"
 license=('LGPL')
 depends=('gcc-libs')
-options=('!libtool')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('b9ef6244baa5e5e435f35e0b9474b35d')
 
