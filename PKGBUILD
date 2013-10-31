@@ -2,7 +2,7 @@
 
 pkgname=libclog
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="(Copious Logger) is a library that provides various logging services"
 arch=(i686 x86_64)
 url="https://opensource.conformal.com/wiki/clog"

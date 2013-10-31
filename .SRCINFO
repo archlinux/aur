@@ -1,7 +1,7 @@
 pkgbase = libclog
 	pkgdesc = (Copious Logger) is a library that provides various logging services
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opensource.conformal.com/wiki/clog
 	arch = i686
 	arch = x86_64
