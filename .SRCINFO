@@ -1,0 +1,26 @@
+pkgbase = duplicity-bzr
+	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm.
+	pkgver = 930
+	pkgrel = 1
+	url = http://www.nongnu.org/duplicity/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnupg
+	depends = librsync
+	depends = ncftp
+	depends = python2-paramiko
+	optdepends = lftp: FTPS backend
+	optdepends = python2-boto: Amazon S3 backend
+	optdepends = python2-gobject: GIO backend
+	optdepends = gvfs: GIO backend
+	optdepends = python2-gdata: Google Docs backend
+	optdepends = python2-httplib2: Ubuntu One backend
+	optdepends = python2-oauthlib: Ubuntu One backend
+	optdepends = rsync: rsync backend
+	conflicts = duplicity
+	source = bzr+lp:duplicity
+	sha512sums = SKIP
+
+pkgname = duplicity-bzr
+
