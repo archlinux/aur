@@ -6,7 +6,8 @@ pkgbase = libxmlsd
 	arch = i686
 	arch = x86_64
 	license = ISC
-	makedepends = libclens=0.7.0
+	makedepends = libclens
+	depends = glibc
 	source = https://opensource.conformal.com/snapshots/xmlsd/xmlsd-0.10.1.tar.gz
 	sha1sums = 34ce748d6974e1fc793843d0bfaef87f0176aae6
 
