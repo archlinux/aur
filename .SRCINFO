@@ -6,7 +6,8 @@ pkgbase = libclog
 	arch = i686
 	arch = x86_64
 	license = ISC
-	makedepends = libclens=0.7.0
+	makedepends = libclens
+	depends = glibc
 	source = https://opensource.conformal.com/snapshots/clog/clog-0.6.4.tar.gz
 	sha1sums = eee1ffe2a61b156983dbd75702709f408901df52
 
