@@ -2,7 +2,7 @@
 
 pkgname=libshrink
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Library provides a single API into several compression algorithms (LZO, LZ77, LZMA)"
 arch=(i686 x86_64)
 url="https://opensource.conformal.com/wiki/shrink"
