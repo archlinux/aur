@@ -1,0 +1,17 @@
+pkgbase = mosek
+	pkgdesc = A tool for solving mathematical optimization problems.
+	pkgver = 7.0.90
+	pkgrel = 1
+	url = http://mosek.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = java-environment
+	depends = bash
+	options = !libtool
+	options = !strip
+	source = http://download.mosek.com/stable/7/mosektools.tar.bz2
+
+pkgname = mosek
+
