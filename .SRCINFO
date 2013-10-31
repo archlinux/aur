@@ -1,0 +1,18 @@
+pkgbase = coinor-csdp
+	pkgdesc = A C library for Semidefinite Programming (SDP) by B. Borchers.
+	pkgver = 6.1.1
+	pkgrel = 3
+	url = https://projects.coin-or.org/Csdp/
+	arch = i686
+	arch = x86_64
+	license = CPL
+	makedepends = lapack
+	makedepends = blas
+	depends = blas
+	depends = lapack
+	options = !libtool
+	source = http://www.coin-or.org/download/source/Csdp/Csdp-6.1.1.tgz
+	sha512sums = ba5dc0faea223bad6293f131ee63daee0a395a6e84c76fe108dbbefb3ab0696b2a59f435766c78a2d22244801a9abda2719798cbfe30dd9e1c32317e0283fd2e
+
+pkgname = coinor-csdp
+
