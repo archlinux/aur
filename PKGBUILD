@@ -10,7 +10,6 @@ url="http://kde-apps.org/content/show.php/Pidgin+KWallet+Plugin?content=127136"
 license=('GPL')
 depends=('pidgin' 'kdelibs')
 makedepends=('cmake')
-options=(!libtool)
 source=("http://kde-apps.org/CONTENT/content-files/127136-PidginKWallet-$pkgver.tar.bz2")
 md5sums=('c8fde518d8058de8302124791d0d15c6')
 
