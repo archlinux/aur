@@ -1,0 +1,24 @@
+pkgbase = l1_logreg
+	pkgdesc = An implementation of the interprior-point method for L1-regularized logistic regression.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://www.stanford.edu/~boyd/l1_logreg/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = blas
+	makedepends = lapack
+	makedepends = doxygen
+	makedepends = texlive-core
+	makedepends = texlive-bin
+	depends = blas
+	depends = lapack
+	options = !libtool
+	source = http://www.stanford.edu/~boyd/l1_logreg/download/l1_logreg-0.8.2.tar.gz
+	sha512sums = 3a4097035e6acad2ac6cc895fe18821ab7ca96ddf8cf5fc244eb09c48cad848db492ac3189678c9b6c9379fae46e72c2b91ced2a4c803b8a51fa9aa25365d41d
+
+pkgname = l1_logreg
+
+pkgname = l1_logreg-docs
+	depends = l1_logreg
+
