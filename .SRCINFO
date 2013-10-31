@@ -6,7 +6,7 @@ pkgbase = libshrink
 	arch = i686
 	arch = x86_64
 	license = ISC
-	makedepends = libclens=0.7.0
+	makedepends = libclens
 	depends = zlib
 	depends = lzo2
 	depends = xz
