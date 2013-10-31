@@ -1,6 +1,7 @@
 #Maintainer: Dan Ziemba <zman0900@gmail.com>
 
-pkgname=cyphertite
+_pkgbasename=cyphertite
+pkgname=$_pkgbasename-external-libs
 pkgver=1.6.6
 pkgrel=1
 pkgdesc="A high-security scalable solution for online backups"
@@ -22,6 +23,8 @@ depends=('libassl'
          'sqlite>=3.0.0'
 )
 makedepends=('libclens')
+conflicts=('cyphertite')
+provides=('cyphertite')
 
 source=(https://opensource.conformal.com/snapshots/cyphertite/cyphertite-$pkgver.tar.gz
         cyphertite-dynamic-link.patch)
@@ -29,12 +32,12 @@ sha1sums=('9c787d964de383e8dac1f25afa0531aee4ea8b4a'
           '2f90214c2827dd7e66bcffe7724d0415a2411822')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgbasename-$pkgver"
 	patch -u -p0 -i $srcdir/cyphertite-dynamic-link.patch
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgbasename-$pkgver"
 	make LOCALBASE=/usr obj
 
 	msg "Building ctutil..."
@@ -48,11 +51,11 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgbasename-$pkgver"
 	make -C cyphertite LOCALBASE=/usr DESTDIR="$pkgdir" install
 
-	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cat <<EOF >$pkgdir/usr/share/licenses/$pkgname/LICENSE
+	mkdir -p $pkgdir/usr/share/licenses/$_pkgbasename
+	cat <<EOF >$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE
 ISC
 .
 Permission to use, copy, modify, and distribute this software for any
