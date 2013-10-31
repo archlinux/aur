@@ -1,0 +1,14 @@
+pkgbase = python-pycompiz-svn
+	pkgdesc = A high level abstraction utility for controlling Compiz Fusion through D-Bus messaging
+	pkgver = 3
+	pkgrel = 1
+	url = https://code.google.com/p/pycompiz/
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = python
+	source = pycompiz::svn+http://pycompiz.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = python-pycompiz-svn
+
