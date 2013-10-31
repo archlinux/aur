@@ -1,11 +1,11 @@
 pkgbase = gputest
 	pkgdesc = cross-platform GPU stress test and OpenGL benchmark. Contains FurMark, TessMark
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 0
 	url = http://www.geeks3d.com/gputest/
 	arch = x86_64
 	license = custom:freeware
-	md5sums = bf7a715a8e3f36a648896acbebf5b449
+	md5sums = 7ea5b52fe0d3ce0a904806a5a4a1abdc
 
 pkgname = gputest
 

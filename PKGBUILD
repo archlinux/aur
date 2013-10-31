@@ -2,7 +2,7 @@
 # Contributor: Nick Ã˜stergaard <oe.nick at gmail dot com>
 
 pkgname=gputest
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=0
 pkgdesc="cross-platform GPU stress test and OpenGL benchmark. Contains FurMark, TessMark"
 arch=('x86_64')
@@ -11,13 +11,13 @@ license=('custom:freeware')
 depends=()
 #source=("http://www.ozone3d.net/gputest/dl/GpuTest_Linux_x64_${pkgver}.zip")
 #noextract=("GpuTest_Linux_x64_${pkgver}.zip")
-md5sums=('bf7a715a8e3f36a648896acbebf5b449')
+md5sums=('7ea5b52fe0d3ce0a904806a5a4a1abdc')
 
 prepare() {
   cd $srcdir
   # Fetch
   echo $md5s
-  wget -c --referer "http://www.geeks3d.com/20130712/gputest-0-5-0-cross-platform-opengl-benchmark-linux-mesa-gallium3d-glibc-windows-macosx/" \
+  wget -c --referer "http://www.geeks3d.com/20131028/gputest-0-6-0-opengl-benchmark-for-windows-mac-os-x-and-linux-downloads/" \
   "http://www.ozone3d.net/gputest/dl/GpuTest_Linux_x64_${pkgver}.zip"
   echo ${md5sums[0]} GpuTest_Linux_x64_${pkgver}.zip | md5sum -c --quiet 
   rm -rf "$srcdir/gputest"
