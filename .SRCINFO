@@ -1,7 +1,7 @@
 pkgbase = libassl
 	pkgdesc = Provides a much simpler and sane programming interface to OpenSSL
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opensource.conformal.com/wiki/assl
 	arch = i686
 	arch = x86_64

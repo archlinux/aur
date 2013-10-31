@@ -2,7 +2,7 @@
 
 pkgname=libassl
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a much simpler and sane programming interface to OpenSSL"
 arch=(i686 x86_64)
 url="https://opensource.conformal.com/wiki/assl"
