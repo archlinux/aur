@@ -3,7 +3,7 @@
 # TODO: FIND AND FIX EDGE CASES (EMPTY VARS!) *SPANK*
 
 pkgname=firefox-nightly-i18n
-pkgver=27.0a1
+pkgver=28.0a1
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
