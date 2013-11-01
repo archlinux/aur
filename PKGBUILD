@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net 
 pkgname=python-configshell-fb
 _pkgname=configshell-fb
-pkgver=1.1.fb9
+pkgver=1.1.fb10
 pkgrel=1
 epoch=
 pkgdesc="python framework for building simple CLI applications (free branch)"
@@ -13,13 +13,8 @@ provides=('python-configshell')
 conflicts=('python-configshell')
 options=()
 source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz 2to3.patch)
-md5sums=('48b7c9be66c9e450585598504c2fde45'
+md5sums=('72e152e33785bd975cc3848653d1f0bd'
          'd0413e9d1a8dca6df0c92aa9a4a2bf54')
-
-prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  patch -p1 < ../2to3.patch
-}
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
