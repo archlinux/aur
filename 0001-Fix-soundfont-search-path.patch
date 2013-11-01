@@ -1,0 +1,29 @@
+From 6147e4496a26f0571a2918bbc82b4b1483df8545 Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jan@cholasta.net>
+Date: Mon, 5 Mar 2018 16:17:24 +0100
+Subject: [PATCH] Fix soundfont search path
+
+---
+ src/gameconfigfile.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/gameconfigfile.cpp b/src/gameconfigfile.cpp
+index cb47c3597..452fd4160 100644
+--- a/src/gameconfigfile.cpp
++++ b/src/gameconfigfile.cpp
+@@ -143,10 +143,12 @@ FGameConfigFile::FGameConfigFile ()
+ 		SetValueForKey("Path", "$PROGDIR/soundfonts", true);
+ #else
+ 		SetValueForKey("Path", "$HOME/" GAME_DIR "/soundfonts", true);
++		SetValueForKey("Path", SHARE_DIR "/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/local/share/doom/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/local/share/games/doom/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/share/doom/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/share/games/doom/soundfonts", true);
++		SetValueForKey("Path", "/usr/share/soundfonts", true);
+ #endif
+ 	}
+ 
+-- 
+2.18.0
+
