@@ -27,6 +27,8 @@ prepare() {
 
   cd "$srcdir/gputest"
   sed -i '2icd /opt/gputest/' *.sh
+  sed -i 's#./GpuTest#/opt/gputest/GpuTest#' ./gputest_gui.py 
+  sed -i '1s"^#!.\+$"#!/usr/bin/python2"' ./gputest_gui.py
 
 }
 
@@ -37,6 +39,7 @@ package () {
   install -d "$pkgdir/opt/gputest/data/"
   install -m 755 GpuTest "$pkgdir/opt/gputest/"
   install -m 644 ./data/* "$pkgdir/opt/gputest/data/"
+  install -m 644 ./data/.DS_Store "$pkgdir/opt/gputest/data/"
   install -d "$pkgdir/usr/bin/"
-  install -m 755 *.sh "$pkgdir/usr/bin/"
+  install -m 755 {*.sh,*.py} "$pkgdir/usr/bin/"
 }
