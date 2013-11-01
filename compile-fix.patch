@@ -1,0 +1,22 @@
+diff -ur a/gui/lib_util.cc b/gui/lib_util.cc
+--- a/gui/lib_util.cc	2013-02-02 02:50:59.000000000 +0100
++++ b/gui/lib_util.cc	2013-02-10 11:00:59.158575941 +0100
+@@ -25,6 +25,7 @@
+ #ifdef UNIX
+ #include <sys/time.h>
+ #include <time.h>
++#include <unistd.h>
+ #endif
+ 
+ 
+diff -ur a/tools/qsavetex/u_util.cc b/tools/qsavetex/u_util.cc
+--- a/tools/qsavetex/u_util.cc	2013-02-02 02:51:06.000000000 +0100
++++ b/tools/qsavetex/u_util.cc	2013-02-10 11:01:11.288576152 +0100
+@@ -21,6 +21,7 @@
+ #ifdef UNIX
+ #include <sys/time.h>
+ #include <time.h>
++#include <unistd.h>
+ #endif
+ 
+ 

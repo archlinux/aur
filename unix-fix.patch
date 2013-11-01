@@ -1,0 +1,16 @@
+diff -ur a/tools/qsavetex/main.cc b/tools/qsavetex/main.cc
+--- a/tools/qsavetex/main.cc	2013-02-02 02:51:07.000000000 +0100
++++ b/tools/qsavetex/main.cc	2013-02-10 11:14:12.378589529 +0100
+@@ -189,12 +189,6 @@
+ 
+   LogInit(LOG_FILE);
+ 
+-  const char *working_path = GetExecutablePath(argv[0]);
+-  if (! working_path)
+-    working_path = ".";
+-
+-  FileChangeDir(working_path);
+-
+ 
+   // handle command-line arguments
+   while (argc > 0)
