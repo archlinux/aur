@@ -1,0 +1,11 @@
+diff -ur zdoom-2.6.1.orig/src/gameconfigfile.cpp zdoom-2.6.1/src/gameconfigfile.cpp
+--- zdoom-2.6.1.orig/src/gameconfigfile.cpp	2012-07-02 00:49:26.000000000 +0200
++++ zdoom-2.6.1/src/gameconfigfile.cpp	2012-07-29 16:23:11.755232082 +0200
+@@ -140,6 +140,7 @@
+ #else
+ 		SetValueForKey ("Path", "~/" GAME_DIR, true);
+ 		SetValueForKey ("Path", SHARE_DIR, true);
++		SetValueForKey ("Path", "/usr/share/doom", true);
+ #endif
+ 	}
+ 
