@@ -9,7 +9,7 @@ arch=('any')
 url='http://wiki.ubuntu.com/Lubuntu/Artwork'
 license=('GPL')
 optdepends=('gtk-engine-murrine: gtk2 theme support'
-'elementary-icons: icons support'
+'elementary-icon-theme: icons support'
 'gtk-engine-unico: gtk3 theme support')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_$pkgver.tar.gz")
 sha256sums=('a802683b13956478f10fbee35555c107bec436aae59fc3beda1050bbdfc45db6')
