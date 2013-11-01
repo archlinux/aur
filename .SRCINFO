@@ -1,0 +1,12 @@
+pkgbase = heretic1-wad
+	pkgdesc = The Heretic shareware IWAD (game data)
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.idsoftware.com/games/vintage/heretic
+	arch = any
+	license = custom
+	source = ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/idstuff/heretic/htic_v12.zip
+	md5sums = 420b23b3d8f2cbd164c121369eaa2b09
+
+pkgname = heretic1-wad
+
