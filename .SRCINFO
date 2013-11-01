@@ -1,0 +1,21 @@
+pkgbase = slade
+	pkgdesc = SLADE3 Doom editor.
+	pkgver = 3.0.2
+	pkgrel = 3
+	url = http://slade.mancubus.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = imagemagick
+	depends = fluidsynth
+	depends = freeimage
+	depends = sfml1.6
+	depends = wxgtk2.9
+	source = http://slade.mancubus.net/files/slade_302_src.zip
+	source = build.patch
+	md5sums = 4cce3c83292ea55044b7d385bb61a907
+	md5sums = 09d9a15776a96af7b1b84512bc651033
+
+pkgname = slade
+
