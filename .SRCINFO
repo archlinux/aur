@@ -1,0 +1,12 @@
+pkgbase = hexen1-wad
+	pkgdesc = The Hexen 1 Demo IWAD (game data)
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://hhexen.sourceforge.net/
+	arch = any
+	license = unknown
+	source = http://downloads.sourceforge.net/hhexen/hexen_demo_wad_1.1.tgz
+	md5sums = 59338254c9528d785a3bc4b47962eb78
+
+pkgname = hexen1-wad
+
