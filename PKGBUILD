@@ -11,8 +11,8 @@ url="http://www.enlightenment.org"
 license=('LGPL2.1')
 depends=('libeweather-git' 'enlightenment17')
 makedepends=('git')
-conflicts=("$_pkgname-svn")
-provides=("$_pkgname-svn")
+conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 source=("git://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
 md5sums=('SKIP')
 

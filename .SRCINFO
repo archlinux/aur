@@ -9,8 +9,8 @@ pkgbase = eweather-git
 	makedepends = git
 	depends = libeweather-git
 	depends = enlightenment17
-	provides = eweather-svn
-	conflicts = eweather-svn
+	provides = eweather=0.2.0.r67.8ab0a2e
+	conflicts = eweather
 	source = git://git.enlightenment.org/enlightenment/modules/eweather.git
 	md5sums = SKIP
 
