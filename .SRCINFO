@@ -1,0 +1,14 @@
+pkgbase = doom1-wad
+	pkgdesc = The Doom shareware IWAD (game data)
+	pkgver = 1.9
+	pkgrel = 2
+	url = http://www.idsoftware.com/games/doom/doom-ultimate
+	arch = any
+	license = custom
+	source = ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/idstuff/doom/doom19s.zip
+	source = LICENSE
+	md5sums = 244d181457c9be5f28b91b488e67e042
+	md5sums = 8a65f7e6e006f3e769f8172115bbf7b6
+
+pkgname = doom1-wad
+
