@@ -3,7 +3,7 @@
 
 pkgname=efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.99.23304.80bcfac
+pkgver=1.7.99.23536.1a5bdb4
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -24,9 +24,9 @@ optdepends=('python2: compare Eina benchmarks'
 provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$pkgver"
           "efreet=$pkgver" "eina=$pkgver" "eio=$pkgver" "embryo=$pkgver" "emotion=$pkgver"
           "ephysics=$pkgver" "ethumb=$pkgver" "evas=$pkgver"
-          "$_pkgname=$pkgver" 'efl_x11')
+          "$_pkgname=$pkgver")
 conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
-           "$_pkgname" 'efl_x11')
+           "$_pkgname")
 options=('debug')
 install="$_pkgname.install"
 source=("git://git.enlightenment.org/core/$_pkgname.git")
