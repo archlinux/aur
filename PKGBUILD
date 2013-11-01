@@ -28,6 +28,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
+  export CFLAGS="$CFLAGS -fvisibility=hidden"
+
   ./autogen.sh \
     --prefix=/usr \
     --disable-static
