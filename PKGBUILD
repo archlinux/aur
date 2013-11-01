@@ -11,9 +11,9 @@ license=('GPL')
 optdepends=('gtk-engine-murrine: gtk2 theme support'
             'elementary-icon-theme: icons support'
             'gtk-engine-unico: gtk3 theme support')
-source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_$pkgver.tar.gz")
+source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/${pkgname}/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('a802683b13956478f10fbee35555c107bec436aae59fc3beda1050bbdfc45db6')
 
 package(){
-    cp -r $srcdir/lubuntu-artwork-$pkgver/usr $pkgdir
+    cp -r "${srcdir}/${pkgname}-${pkgver}/usr" "${pkgdir}"
 }
