@@ -5,7 +5,7 @@ pkgbase = enjoy-git
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = LGPL3
 	makedepends = git
 	depends = elementary>=1.7.99
 	depends = lightmediascanner

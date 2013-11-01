@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Music player based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
-license=('GPL3')
+license=('LGPL3')
 depends=('elementary>=1.7.99' 'lightmediascanner')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
@@ -39,4 +39,10 @@ package() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
+
+# install text files
+  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
 }
