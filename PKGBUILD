@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=enjoy-git
-_pkgname=enjoy
+_pkgname=${pkgname%-*}
 pkgver=0.1.0.205.aa8fec6
 pkgrel=1
 pkgdesc="Music player based on EFL"
@@ -10,6 +10,8 @@ url="http://www.enlightenment.org"
 license=('GPL3')
 depends=('elementary>=1.7.99' 'lightmediascanner')
 makedepends=('git')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
 md5sums=('SKIP')
 
