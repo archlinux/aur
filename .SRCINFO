@@ -11,6 +11,8 @@ pkgbase = ephoto-git
 	makedepends = git
 	depends = elementary
 	depends = desktop-file-utils
+	provides = ephoto=0.1.1.472.0619778
+	conflicts = ephoto
 	source = git://git.enlightenment.org/apps/ephoto.git
 	md5sums = SKIP
 

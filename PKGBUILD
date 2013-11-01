@@ -11,6 +11,8 @@ url="http://www.enlightenment.org"
 license=('BSD' 'GPL3')
 depends=('elementary' 'desktop-file-utils')
 makedepends=('git')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 install=ephoto.install
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
 md5sums=('SKIP')
