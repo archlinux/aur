@@ -1,10 +1,10 @@
 pkgname=mingw-w64-gdk-pixbuf2
 pkgver=2.30.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An image loading library (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
-license=("GPL2")
+license=("LGPL")
 makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 depends=(mingw-w64-crt
 'mingw-w64-glib2>=2.37.2'
@@ -12,7 +12,7 @@ mingw-w64-jasper
 mingw-w64-libpng
 mingw-w64-libjpeg-turbo
 mingw-w64-libtiff)
-options=(!libtool !strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs)
 source=("http://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
 md5sums=('d1e32c91597f8f2fa6ead4201216dd05')
 
