@@ -1,0 +1,11 @@
+diff -ur gzdoom-1.6.00.orig/src/gameconfigfile.cpp gzdoom-1.6.00/src/gameconfigfile.cpp
+--- gzdoom-1.6.00.orig/src/gameconfigfile.cpp	2012-11-06 15:17:16.674596717 +0100
++++ gzdoom-1.6.00/src/gameconfigfile.cpp	2012-11-06 15:22:53.667933990 +0100
+@@ -140,6 +140,7 @@
+ #else
+ 		SetValueForKey ("Path", "~/" GAME_DIR, true);
+ 		SetValueForKey ("Path", SHARE_DIR, true);
++		SetValueForKey ("Path", "/usr/share/doom", true);
+ #endif
+ 	}
+ 

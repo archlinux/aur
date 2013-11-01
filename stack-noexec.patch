@@ -1,0 +1,93 @@
+diff -ur gzdoom-1.6.00.orig/src/asm_ia32/a.asm gzdoom-1.6.00/src/asm_ia32/a.asm
+--- gzdoom-1.6.00.orig/src/asm_ia32/a.asm	2012-11-06 15:17:27.061263504 +0100
++++ gzdoom-1.6.00/src/asm_ia32/a.asm	2012-11-06 15:24:25.474601731 +0100
+@@ -810,3 +810,13 @@
+ GLOBAL _rtext_a_end
+ _rtext_a_end:
+ %endif
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf32
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf64  
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur gzdoom-1.6.00.orig/src/asm_ia32/misc.asm gzdoom-1.6.00/src/asm_ia32/misc.asm
+--- gzdoom-1.6.00.orig/src/asm_ia32/misc.asm	2012-11-06 15:17:27.064596838 +0100
++++ gzdoom-1.6.00/src/asm_ia32/misc.asm	2012-11-06 15:24:25.474601731 +0100
+@@ -198,3 +198,13 @@
+ 		pop		ebx
+ 		emms
+ 		ret
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf32
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf64  
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap.asm gzdoom-1.6.00/src/asm_ia32/tmap.asm
+--- gzdoom-1.6.00.orig/src/asm_ia32/tmap.asm	2012-11-06 15:17:27.061263504 +0100
++++ gzdoom-1.6.00/src/asm_ia32/tmap.asm	2012-11-06 15:24:25.474601731 +0100
+@@ -1891,3 +1891,13 @@
+ 		selfmod rtext_start, rtext_end
+ 		call	setpitch3
+ 		jmp		setvlinebpl_
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf32
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf64  
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap2.asm gzdoom-1.6.00/src/asm_ia32/tmap2.asm
+--- gzdoom-1.6.00.orig/src/asm_ia32/tmap2.asm	2012-11-06 15:17:27.061263504 +0100
++++ gzdoom-1.6.00/src/asm_ia32/tmap2.asm	2012-11-06 15:24:25.474601731 +0100
+@@ -638,3 +638,13 @@
+ GLOBAL _rtext_tmap2_end
+ _rtext_tmap2_end:
+ %endif
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf32
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf64  
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap3.asm gzdoom-1.6.00/src/asm_ia32/tmap3.asm
+--- gzdoom-1.6.00.orig/src/asm_ia32/tmap3.asm	2012-11-06 15:17:27.061263504 +0100
++++ gzdoom-1.6.00/src/asm_ia32/tmap3.asm	2012-11-06 15:24:25.474601731 +0100
+@@ -342,3 +342,13 @@
+ GLOBAL _rtext_tmap3_end
+ _rtext_tmap3_end:
+ %endif
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf32
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf64
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur gzdoom-1.6.00.orig/src/asm_x86_64/tmap3.s gzdoom-1.6.00/src/asm_x86_64/tmap3.s
+--- gzdoom-1.6.00.orig/src/asm_x86_64/tmap3.s	2012-11-06 15:17:30.497930211 +0100
++++ gzdoom-1.6.00/src/asm_x86_64/tmap3.s	2012-11-06 15:24:25.474601731 +0100
+@@ -139,3 +139,4 @@
+ 		.align 16
+ 
+ 
++		.section	.note.GNU-stack,"",@progbits
