@@ -1,0 +1,39 @@
+From 255b0f81a99f59b66d249191d5eb4c4889717c4f Mon Sep 17 00:00:00 2001
+From: LAN-TW <lantw44@gmail.com>
+Date: Sat, 2 Nov 2013 15:34:35 +0800
+Subject: [PATCH] Fix hard-coded data path
+
+---
+ tightbind/makefile.linux | 2 +-
+ viewkel/Makefile         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tightbind/makefile.linux b/tightbind/makefile.linux
+index f9c0e5c..abe1569 100755
+--- a/tightbind/makefile.linux
++++ b/tightbind/makefile.linux
+@@ -8,7 +8,7 @@
+ # to change where the program looks for the extended hueckel parameters
+ #   change the following:
+ # This is the one for isolobal
+-PARM_FILE_LOC = \"/usr/local/lib/eht_parms.dat\"
++PARM_FILE_LOC = \"/usr/share/yaehmop/tightbind/eht_parms.dat\"
+ 
+ # to use floats instead of doubles, insert -DUSE_FLOATS here.
+ #  to perform real symmetry analysis (with principle axis location), use
+diff --git a/viewkel/Makefile b/viewkel/Makefile
+index 3dea2b5..c9f18e9 100644
+--- a/viewkel/Makefile
++++ b/viewkel/Makefile
+@@ -15,7 +15,7 @@ UTILSOBJS=genutil.o mem_debug.o
+ #PARM_FILE_LOC = \"/usr/local/src/yaehmop/viewkel/atomic_parms.dat\"
+ #PARM_FILE_LOC = \"/home/landrum/yaehmop/viewkel/atomic_parms.dat\"
+ #PARM_FILE_LOC = \"/usr/local/lib/atomic_parms.dat\"
+-PARM_FILE_LOC = \"/home/glandrum/yaehmop/viewkel/new_atomic_parms.dat\"
++PARM_FILE_LOC = \"/usr/share/yaehmop/viewkel/new_atomic_parms.dat\"
+ 
+ # these are things you can turn on or off to make yourself happy.
+ OPT_FEATURES = -DTEK_GRAPHICS -DX_GRAPHICS -DINTERACTIVE_USE \
+-- 
+1.8.4.2
+

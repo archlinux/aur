@@ -3,7 +3,7 @@
 
 pkgname=yaehmop
 pkgver=3.1.0b2
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another extended Huckel Molecular Orbital Package (YAeHMOP)"
 arch=('x86_64' 'i686')
 url="http://yaehmop.sourceforge.net/"
@@ -14,13 +14,15 @@ source=('http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/b
 		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/viewkel.3.1.0b.tgz'
 		'http://downloads.sourceforge.net/project/yaehmop/yaehmop-beta/3.1.0b2/dense_eval.3.1.0b.tgz'
 		'0001-Fix-build-problems.patch'
-		'0002-Fix-implicit-declaration.patch')
+		'0002-Fix-implicit-declaration.patch'
+		'0003-Fix-hard-coded-data-path.patch')
 
 md5sums=('5a717a1f9c5dbe6cf36de15cb3c5b6ef'
 		'd629bface0f610f7a4a1b3d0305872ca'
 		'aec78fae520950777b7738cf42626d99'
 		'4290dcf6a1ddb040c38dbb54d8698c5b'
-		'89ecc02032067fc72a576943b9a413e7')
+		'89ecc02032067fc72a576943b9a413e7'
+		'f0804353cfdb4ea56c8c0c92bec0a40a')
 
 build() {
 	cd "${srcdir}/${pkgname}"
@@ -35,6 +37,7 @@ build() {
 	rm -f tightbind/utils/genutil.o
 	patch -p1 < ../../0001-Fix-build-problems.patch
 	patch -p1 < ../../0002-Fix-implicit-declaration.patch
+	patch -p1 < ../../0003-Fix-hard-coded-data-path.patch
 	cd tightbind
 	make -f makefile.linux install
 	cd ../viewkel
@@ -49,8 +52,15 @@ build() {
 }
 
 package() {
+	mkdir -p "${pkgdir}/usr/share/${pkgname}/tightbind"
 	mkdir -p "${pkgdir}/usr/share/${pkgname}/viewkel"
 	cp -rp "${srcdir}/${pkgname}/bin" "${pkgdir}/usr/"
-	install -m 644 "${srcdir}/${pkgname}/viewkel/new_atomic_parms.dat" \
+	install -m 644 \
+		"${srcdir}/${pkgname}/tightbind/eht_parms.dat" \
+		"${srcdir}/${pkgname}/tightbind/muller_parms.dat" \
+		"${pkgdir}/usr/share/${pkgname}/tightbind"
+	install -m 644 \
+		"${srcdir}/${pkgname}/viewkel/new_atomic_parms.dat" \
+		"${srcdir}/${pkgname}/viewkel/atomic_parms.dat" \
 		"${pkgdir}/usr/share/${pkgname}/viewkel"
 }
