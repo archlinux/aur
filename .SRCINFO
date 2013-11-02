@@ -1,0 +1,22 @@
+pkgbase = texmaker-qt4
+	pkgdesc = Free cross-platform LaTeX editor
+	pkgver = 4.1
+	pkgrel = 2
+	url = http://www.xm1math.net/texmaker/index.html
+	install = texmaker-qt4.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = poppler-qt4
+	depends = qtwebkit
+	depends = desktop-file-utils
+	optdepends = ghostscript: LaTeX to HTML conversion command
+	optdepends = ibus-qt: accented characters support
+	optdepends = poppler: PDF rendering support
+	provides = texmaker
+	conflicts = texmaker
+	source = http://www.xm1math.net/texmaker/texmaker-4.1.tar.bz2
+	md5sums = 97ef7f97e73d69283391e467e5758275
+
+pkgname = texmaker-qt4
+
