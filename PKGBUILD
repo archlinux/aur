@@ -11,11 +11,12 @@ source=("http://sourceforge.net/projects/genders/files/genders/$pkgver-$pkgrel/$
         '624078.patch')
 md5sums=('26a3bc4b6d5eeae3ade7b719c6165d85'
          '76431ec248c0ee9a2d1b9971cc13ce57')
+options=('!makeflags')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < ../624078.patch
-  ./configure --without-python-extensions
+  ./configure --prefix=/usr --without-python-extensions
   make
 }
 

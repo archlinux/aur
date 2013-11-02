@@ -6,6 +6,7 @@ pkgbase = genders
 	arch = x86_64
 	arch = i686
 	license = GPL
+	options = !makeflags
 	source = http://sourceforge.net/projects/genders/files/genders/1.20-1/genders-1.20.tar.gz
 	source = 624078.patch
 	md5sums = 26a3bc4b6d5eeae3ade7b719c6165d85
