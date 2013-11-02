@@ -1,3 +1,15 @@
+2013-11-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.3.0_beta5-1
+	Version bump.
+
+	Upstream changelog:
+	- Fixed "java.lang.IllegalAccessError: tried to access field bqf.a" error when patching more than once.
+	- Fixed custom fog0.png palette not being read.
+	- Render the unconnected edges of glass panes.
+	- Some changes to the new (Misa-style) custom colormap format.  Still a work in progress.
+	- New option backfaceCulling.3 in renderpass.properties.  Defaults to true (current behavior).  Set to false to render all sides of blocks during the glass overlay pass.
+
 2013-10-24 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.3.0_beta4-1
