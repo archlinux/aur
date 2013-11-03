@@ -1,0 +1,20 @@
+pkgbase = libselinux
+	pkgdesc = SELinux library and simple utilities
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://userspace.selinuxproject.org
+	arch = i686
+	arch = x86_64
+	groups = selinux
+	license = GPL
+	depends = libsepol>=2.2
+	depends = python2
+	depends = python
+	depends = swig
+	depends = ruby
+	options = !emptydirs
+	source = http://userspace.selinuxproject.org/releases/20131030/libselinux-2.2.tar.gz
+	sha256sums = e9dc64216543a7283d786f623ac28e8867f8794138e7deba474a3aa8d02dce33
+
+pkgname = libselinux
+
