@@ -5,7 +5,7 @@
 
 pkgname=entrance-git
 _pkgname=${pkgname%-*}
-pkgver=0.0.5.r44.91415db
+pkgver=0.0.5.r45.539a5d9
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -44,11 +44,11 @@ build() {
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
   ./autogen.sh \
-	--prefix=/usr \
-	--sbindir=/usr/bin \
-	--sysconfdir=/etc \
-	--disable-grub2 \
-	--disable-consolekit
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --disable-grub2 \
+    --disable-consolekit
 
   make
 }
