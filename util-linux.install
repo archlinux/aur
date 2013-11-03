@@ -1,0 +1,21 @@
+post_install() {
+  # we don't want use systemd-tmpfiles here because
+  # the package dependency would create a circular dep.
+  if [ ! -d run/uuidd ]; then
+    # refer to uid/gid by number to avoid dependency on filesystem
+    install -o 68 -g 68 -dm755 run/uuidd
+  fi
+}
+
+post_upgrade() {
+  if [ "$(vercmp $2 2.21.2-4)" -lt 0 ]; then
+    if [ -f /var/lib/hwclock/adjtime ]; then
+      mv /var/lib/hwclock/adjtime /etc/adjtime
+    fi
+    if [ -d /var/lib/hwclock ]; then
+      rmdir /var/lib/hwclock
+    fi
+  fi
+
+  post_install
+}

@@ -1,0 +1,44 @@
+pkgbase = util-linux-selinux
+	pkgdesc = Miscellaneous system utilities for Linux
+	pkgver = 2.24
+	pkgrel = 1
+	url = http://www.kernel.org/pub/linux/utils/util-linux/
+	install = util-linux.install
+	arch = i686
+	arch = x86_64
+	groups = selinux
+	license = GPL2
+	makedepends = systemd
+	makedepends = python
+	depends = pam-selinux
+	depends = shadow-selinux
+	depends = coreutils
+	depends = glibc
+	depends = libselinux
+	optdepends = python: python bindings to libmount
+	provides = util-linux-ng=2.24
+	provides = eject
+	provides = util-linux=2.24-
+	conflicts = util-linux-ng
+	conflicts = eject
+	conflicts = util-linux
+	options = strip
+	options = debug
+	backup = etc/pam.d/chfn
+	backup = etc/pam.d/chsh
+	backup = etc/pam.d/login
+	backup = etc/pam.d/su
+	backup = etc/pam.d/su-l
+	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.tar.xz
+	source = uuidd.tmpfiles
+	source = pam-login
+	source = pam-common
+	source = pam-su
+	md5sums = 4fac6443427f575fc5f3531a4ad2ca01
+	md5sums = a39554bfd65cccfd8254bb46922f4a67
+	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
+	md5sums = a31374fef2cba0ca34dfc7078e2969e4
+	md5sums = fa85e5cce5d723275b14365ba71a8aad
+
+pkgname = util-linux-selinux
+
