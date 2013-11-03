@@ -1,0 +1,20 @@
+pkgbase = pdsh-genders
+	pkgdesc = A high-performance, parallel remote shell utility
+	pkgver = 2.22
+	pkgrel = 1
+	url = https://computing.llnl.gov/linux/pdsh.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = openssh
+	depends = readline
+	depends = genders
+	optdepends = perl: required by the dshbak utility
+	conflicts = pdsh
+	options = libtool
+	source = http://downloads.sourceforge.net/pdsh/pdsh-2.22.tar.bz2
+	md5sums = 151b7a67079e88da0309a5c60432f4a9
+
+pkgname = pdsh-genders
+
