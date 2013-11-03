@@ -1,0 +1,25 @@
+pkgbase = coreutils-selinux
+	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support
+	pkgver = 8.21
+	pkgrel = 2
+	url = http://www.gnu.org/software/coreutils
+	install = coreutils.install
+	arch = i686
+	arch = x86_64
+	groups = selinux
+	license = GPL3
+	depends = glibc
+	depends = pam-selinux
+	depends = acl
+	depends = gmp
+	depends = libcap
+	depends = libselinux
+	provides = coreutils=8.21-
+	conflicts = coreutils
+	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.21.tar.xz
+	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.21.tar.xz.sig
+	md5sums = 065ba41828644eca5dd8163446de5d64
+	md5sums = SKIP
+
+pkgname = coreutils-selinux
+
