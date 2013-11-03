@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic Command Scheduler
+
+[Service]
+ExecStart=/usr/bin/crond -n
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
