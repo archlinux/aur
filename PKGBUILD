@@ -4,6 +4,7 @@
 
 pkgbase=linux-selinux       # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
+pkgname=('linux-selinux')
 _srcname=linux-3.11
 pkgver=3.11.6
 pkgrel=1
@@ -333,7 +334,7 @@ _package-docs() {
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+true && pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     _package${_p#${pkgbase}}
