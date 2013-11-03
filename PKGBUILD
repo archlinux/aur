@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/openSUSE/obs-service-format_spec_file'
 license=('GPL2')
 depends=('obs-service-source_validator')
-source=("http://download.opensuse.org/repositories/openSUSE:/Factory/standard/src/${pkgname}-${pkgver}-${_pkgver}.src.rpm")
+source=("http://download.opensuse.org/source/factory/repo/oss/suse/src/${pkgname}-${pkgver}-${_pkgver}.src.rpm")
 md5sums=('338b0a7abc17774ba1f059b55d8c8c90')
 
 package() {

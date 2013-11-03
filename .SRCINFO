@@ -6,7 +6,7 @@ pkgbase = obs-service-format_spec_file
 	arch = any
 	license = GPL2
 	depends = obs-service-source_validator
-	source = http://download.opensuse.org/repositories/openSUSE:/Factory/standard/src/obs-service-format_spec_file-0.4.2-7.3.src.rpm
+	source = http://download.opensuse.org/source/factory/repo/oss/suse/src/obs-service-format_spec_file-0.4.2-7.3.src.rpm
 	md5sums = 338b0a7abc17774ba1f059b55d8c8c90
 
 pkgname = obs-service-format_spec_file
