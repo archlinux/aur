@@ -1,0 +1,54 @@
+diff -aur pam_unix2-2.9.1/src/public.h pam_unix2-2.9.1.new/src/public.h
+--- pam_unix2-2.9.1/src/public.h	2008-09-26 16:29:54.000000000 +0200
++++ pam_unix2-2.9.1.new/src/public.h	2013-02-25 11:10:12.269979021 +0100
+@@ -97,8 +97,6 @@
+ #endif
+ 
+ #ifdef WITH_SELINUX
+-extern int selinux_check_access (const char *__chuser,
+-                                 unsigned int __access);
+ extern int set_default_context (pam_handle_t *pamh,
+ 				const char *filename,
+                                 char **prev_context);
+diff -aur pam_unix2-2.9.1/src/selinux_utils.c pam_unix2-2.9.1.new/src/selinux_utils.c
+--- pam_unix2-2.9.1/src/selinux_utils.c	2006-01-13 11:49:46.000000000 +0100
++++ pam_unix2-2.9.1.new/src/selinux_utils.c	2013-02-25 11:10:41.056709132 +0100
+@@ -38,38 +38,6 @@
+ #include "public.h"
+ 
+ int
+-selinux_check_access (const char *chuser, unsigned int access)
+-{
+-  int status = -1;
+-  security_context_t user_context;
+-
+-  if (getprevcon (&user_context) == 0)
+-    {
+-      context_t c = context_new (user_context);
+-      const char *user = context_user_get (c);
+-
+-      if (strcmp (chuser, user) == 0)
+-	status = 0;
+-      else
+-	{
+-	  struct av_decision avd;
+-	  int retval = security_compute_av (user_context,
+-					    user_context,
+-					    SECCLASS_PASSWD,
+-					    access,
+-					    &avd);
+-
+-	  if ((retval == 0) &&
+-	      ((access & avd.allowed) == access))
+-	    status = 0;
+-	}
+-      context_free (c);
+-      freecon (user_context);
+-    }
+-  return status;
+-}
+-
+-int
+ set_default_context (pam_handle_t *pamh, const char *filename,
+ 		     char **prev_context)
+ {

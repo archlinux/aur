@@ -1,0 +1,42 @@
+pkgbase = pam-selinux
+	pkgdesc = SELinux aware PAM (Pluggable Authentication Modules) library
+	pkgver = 1.1.8
+	pkgrel = 2
+	url = http://www.kernel.org/pub/linux/libs/pam/
+	arch = i686
+	arch = x86_64
+	groups = selinux
+	license = GPL2
+	makedepends = flex
+	makedepends = w3m
+	makedepends = docbook-xml>=4.4
+	makedepends = docbook-xsl
+	depends = glibc
+	depends = db
+	depends = cracklib
+	depends = libtirpc
+	depends = pambase
+	depends = libselinux
+	provides = pam=1.1.8-2
+	conflicts = pam
+	options = !emptydirs
+	backup = etc/security/access.conf
+	backup = etc/security/group.conf
+	backup = etc/security/limits.conf
+	backup = etc/security/namespace.conf
+	backup = etc/security/namespace.init
+	backup = etc/security/pam_env.conf
+	backup = etc/security/time.conf
+	backup = etc/default/passwd
+	backup = etc/environment
+	source = https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-1.1.8.tar.bz2
+	source = ftp://ftp.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
+	source = pam_unix2-glibc216.patch
+	source = pam_unix2-rm_selinux_check_access.patch
+	md5sums = 35b6091af95981b1b2cd60d813b5e4ee
+	md5sums = da6a46e5f8cd3eaa7cbc4fc3a7e2b555
+	md5sums = dac109f68e04a4df37575fda6001ea17
+	md5sums = 6a0a6bb6f6f249ef14f6b21ab9880916
+
+pkgname = pam-selinux
+
