@@ -1,0 +1,25 @@
+pkgbase = gazebo
+	pkgdesc = A multi-robot simulator for outdoor environments
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://gazebosim.org/
+	install = gazebo.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = boost
+	depends = cegui
+	depends = freeglut
+	depends = intel-tbb
+	depends = libltdl
+	depends = libxml2
+	depends = ogre
+	depends = protobuf
+	depends = qt4
+	depends = tinyxml
+	source = http://gazebosim.org/assets/distributions/gazebo-1.9.1.tar.bz2
+	md5sums = 4f673d7f5daef456f871647d582ff493
+
+pkgname = gazebo
+
