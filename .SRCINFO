@@ -1,16 +1,15 @@
 pkgbase = quake3-defrag
 	pkgdesc = DeFRaG is a Quake3 modification made specifically for speedruns and trickjumps.
-	pkgver = 1.91.20
+	pkgver = 1.91.22
 	pkgrel = 1
-	url = http://defrag.planetquake.gamespy.com/
-	arch = i686
-	arch = x86_64
+	url = http://www.q3df.org/
+	arch = any
 	license = GPL
 	makedepends = unzip
 	depends = quake3
-	noextract = defrag_1.91.20.zip
-	source = http://q3defrag.org/files/defrag/defrag_1.91.20.zip
-	md5sums = 5753a41c668b38a1954afd3ecd836c54
+	noextract = defrag_1.91.22.zip
+	source = http://q3defrag.org/files/defrag/defrag_1.91.22.zip
+	sha256sums = c406f3f49b94f37b9c056031b76f4b24d3aedc875f0c131547dddd42a687dea6
 
 pkgname = quake3-defrag
 
