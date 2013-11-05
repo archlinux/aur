@@ -5,7 +5,7 @@
 pkgname=elementary-git
 _pkgname=${pkgname%-*}
 true && pkgname=('elementary-git' 'elementary_test-git')
-pkgver=1.7.99.8652.2d77ef0
+pkgver=1.8.0.8740.f3789ec
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -62,11 +62,10 @@ package_elementary-git() {
   install -Dm644 COPYING.images "$pkgdir/usr/share/licenses/$pkgname/COPYING.images"
 
 # remove test app
-  rm -rf "$pkgdir/usr/bin/"elementary_test*
+  rm -rf "$pkgdir/usr/bin/"elementary_test
   rm -rf "$pkgdir/usr/lib/elementary/modules/"{test_entry,test_map}
-  rm -rf "$pkgdir/usr/lib/elementary_testql.so"
   rm -rf "$pkgdir/usr/share/applications/elementary_test.desktop"
-  rm -rf "$pkgdir/usr/share/elementary/"{examples,images,objects}
+  rm -rf "$pkgdir/usr/share/elementary/"{images,objects}
 }
 
 package_elementary_test-git() {
@@ -82,7 +81,8 @@ package_elementary_test-git() {
 # remove elementary
   rm -rf "$pkgdir/usr/include"
   rm -rf "$pkgdir/usr/bin/"{elementary_codegen,elementary_config,elementary_quicklaunch,elementary_run,elm_prefs_cc}
-  rm -rf "$pkgdir/usr/lib/"{cmake,edje,elementary,libelementary.so*,pkgconfig}
+  rm -rf "$pkgdir/usr/lib/"{cmake,edje,libelementary.so*,pkgconfig}
+  rm -rf "$pkgdir/usr/lib/elementary/modules/"{access_output,datetime_input_ctxpopup,prefs}
   rm -rf "$pkgdir/usr/share/applications/elementary_config.desktop"
   rm -rf "$pkgdir/usr/share/elementary/"{config,examples,themes,edje_externals}
   rm -rf "$pkgdir/usr/share/"{icons,locale}
