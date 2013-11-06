@@ -1,14 +1,14 @@
 # Maintainer: Sergey Mamonov <mrqwer88@gmail.com>
 pkgname=maldet
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="Linux Malware Detect"
 url="http://www.rfxn.com"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 
-source=("http://www.rfxn.com/downloads/maldetect-1.4.1.tar.gz")
-md5sums=('1cbd253191365dc267eda5ab6d6af049')
+source=("http://www.rfxn.com/downloads/maldetect-1.4.2.tar.gz")
+md5sums=('6dd1372668766fa4332f8376c4e627e1')
 
 package() {
   cd "${srcdir}/${pkgname}ect-${pkgver}"
