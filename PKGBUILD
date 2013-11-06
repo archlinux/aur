@@ -20,12 +20,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch')
 md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
-         'dc43ea54ac044242539e4995df4b45fa'
-         'e10cb607bb55ef75c74b254649597c35'
+         '798bca5d2f0a1505c9b86a5227a2b339'
+         '8fa6cbb28dda5a4b38730c7f728e1845'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          'd50c1ac47394e9aec637002ef3392bd1')
-
 _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
@@ -332,3 +331,9 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
+         '798bca5d2f0a1505c9b86a5227a2b339'
+         '8fa6cbb28dda5a4b38730c7f728e1845'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '98beb36f9b8cf16e58de2483ea9985e3'
+         'd50c1ac47394e9aec637002ef3392bd1')
