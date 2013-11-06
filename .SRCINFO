@@ -1,7 +1,7 @@
 pkgbase = maldet
 	pkgdesc = Linux Malware Detect
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.rfxn.com
 	arch = x86_64
 	arch = i686
