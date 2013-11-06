@@ -2,8 +2,8 @@
 
 pkgname=mingw-w64-gtk3
 pkgver=3.10.2
-pkgrel=3
-pkgdesc="GTK+ is a multi-platform toolkit (v3) (mingw-w64)"
+pkgrel=4
+pkgdesc="GObject-based multi-platform GUI toolkit (v3) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
 license=("LGPL")
@@ -22,18 +22,21 @@ options=(!strip !buildflags staticlibs)
 
 source=(
 "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-"0004-BURN-THE-.DEF.patch")
+"0004-BURN-THE-.DEF.patch"
+"0005-Remove-gobject-introspection.patch")
 
 # The second source file is downloaded from Fedora Project
 
 sha256sums=('93af12d28e5f6ccc373ea59f31147e2884c9b3c15dc4841ce3b5cee45b13814c'
-            'b35ecacab70680391e06af85893b7aa8612f0812ded35395b6e93f49e8eab92b')
+            'b35ecacab70680391e06af85893b7aa8612f0812ded35395b6e93f49e8eab92b'
+            'e9e29fbf7444e449def11a31a6c2682932df416b1b5c82dbe0eac54e3fe51dd9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
   patch -Np1 < "../0004-BURN-THE-.DEF.patch"
+  patch -Np1 < "../0005-Remove-gobject-introspection.patch"
   autoreconf -i
   for _arch in ${_architectures}; do
     unset LDFLAGS
