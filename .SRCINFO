@@ -1,0 +1,22 @@
+pkgbase = epour-git
+	pkgdesc = Torrent client based on EFL
+	pkgver = 0.5.2.0.r10.gfcb3922
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	install = epour.install
+	arch = any
+	license = GPL3
+	license = MIT
+	makedepends = git
+	makedepends = python2-distutils-extra
+	depends = python2-efl
+	depends = libtorrent
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = epour=0.5.2.0.r10.gfcb3922
+	conflicts = epour
+	source = git://git.enlightenment.org/apps/epour.git
+	md5sums = SKIP
+
+pkgname = epour-git
+
