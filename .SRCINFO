@@ -1,0 +1,22 @@
+pkgbase = freeplane-git
+	pkgdesc = A Java mindmapping tool
+	pkgver = preview.1.3.5_05.177.g8964c24
+	pkgrel = 1
+	url = https://github.com/freeplane/freeplane.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = apache-ant
+	depends = java-runtime
+	source = git+https://github.com/freeplane/freeplane.git
+	source = license.txt
+	source = freeplane.desktop
+	source = freeplane.run
+	md5sums = SKIP
+	md5sums = 3515835a89d4c99214d0ab65d433af16
+	md5sums = 85d40893aef0b71f9ffdf2dec4fbb0f0
+	md5sums = d72e3d0471338520f75a2fcf3ce536a7
+
+pkgname = freeplane-git
+
