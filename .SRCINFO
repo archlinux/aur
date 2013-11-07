@@ -9,12 +9,10 @@ pkgbase = freeplane-git
 	makedepends = git
 	makedepends = apache-ant
 	depends = java-runtime
-	source = git+https://github.com/freeplane/freeplane.git
-	source = license.txt
+	source = git://github.com/freeplane/freeplane.git
 	source = freeplane.desktop
 	source = freeplane.run
 	md5sums = SKIP
-	md5sums = 3515835a89d4c99214d0ab65d433af16
 	md5sums = 85d40893aef0b71f9ffdf2dec4fbb0f0
 	md5sums = d72e3d0471338520f75a2fcf3ce536a7
 

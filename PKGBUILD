@@ -3,8 +3,6 @@
 
 pkgname=freeplane-git
 pkgver=preview.1.3.5_05.177.g8964c24
-_APPNAME=freeplane
-_BUILD_DIR=${_APPNAME}/${_APPNAME}_framework/build
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('i686' 'x86_64')
@@ -12,28 +10,27 @@ url="https://github.com/freeplane/freeplane.git"
 license=('GPL')
 makedepends=('git' 'apache-ant')
 depends=('java-runtime')
-source=('git+https://github.com/freeplane/freeplane.git' 'license.txt' 'freeplane.desktop' 'freeplane.run')
+source=('git://github.com/freeplane/freeplane.git' 'freeplane.desktop' 'freeplane.run')
 md5sums=('SKIP'
-         '3515835a89d4c99214d0ab65d433af16'
          '85d40893aef0b71f9ffdf2dec4fbb0f0'
          'd72e3d0471338520f75a2fcf3ce536a7')
 
 
 pkgver() {
-	cd "${_APPNAME}"
+	cd "${pkgname%-*}"
 	# Use the tag of the last commit
 	local ver="$(git describe --long)"
 	printf "%s" "${ver//-/.}"
 }
 
 build() {
-	cd "${_APPNAME}"
+	cd "${pkgname%-*}"
 	ant build 
 }
 
 package() {
-  cd ${srcdir}/${_BUILD_DIR}
-  for file in $( find plugins -type f ) ; do
+  cd ${srcdir}/${pkgname%-*}/${pkgname%-*}_framework/build
+  find plugins -type f | while read file; do
     install -Dm644 ${file} ${pkgdir}/usr/share/freeplane/${file}
   done
   
