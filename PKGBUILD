@@ -22,7 +22,7 @@ prepare() {
 package() {
   cd "$srcdir/$pkgname"
 
-  python2 setup.py install --root=$pkgdir
+  python2 setup.py install --root="$pkgdir"
 
 # install text files
   install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
