@@ -1,16 +1,18 @@
-pkgbase = android-x86-system-image-18
-	pkgdesc = Android x86 Atom System Image, API-18
+pkgbase = android-x86-system-image
+	pkgdesc = Android x86 Atom System Image, latest API
 	pkgver = 4.3_r01
 	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/android-43-jelly-bean-x86-emulator-system-image
 	arch = any
 	license = custom
-	depends = android-platform-18
+	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
+	provides = android-x86-system-image-18
+	conflicts = android-x86-system-image-18
 	options = !strip
 	source = http://download-software.intel.com/sites/landingpage/android/sysimg_x86-18_r01.zip
 	md5sums = a158194c0d57fe9bcf03b090813859c8
 
-pkgname = android-x86-system-image-18
+pkgname = android-x86-system-image
 
