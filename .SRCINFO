@@ -1,14 +1,16 @@
-pkgbase = android-armv7a-eabi-system-image-19
-	pkgdesc = Android ARM EABI v7a System Image, API-${_sdkint}
+pkgbase = android-armv7a-eabi-system-image
+	pkgdesc = Android ARM EABI v7a System Image, latest API
 	pkgver = 4.4_r01
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
-	depends = android-platform-19
+	depends = android-platform
+	provides = android-armv7a-eabi-system-image-19
+	conflicts = android-armv7a-eabi-system-image-19
 	options = !strip
 	source = http://dl.google.com/android/repository/sysimg_armv7a-19_r01.zip
 	sha1sums = 12dd1187dfd953b1ffcef5067d94578590f9e600
 
-pkgname = android-armv7a-eabi-system-image-19
+pkgname = android-armv7a-eabi-system-image
 
