@@ -2,7 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=2.8.12
+pkgver=2.8.12.1
 pkgrel=1
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('qt4' 'emacs')
 optdepends=('qt4: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('105bc6d21cc2e9b6aff901e43c53afea')
+md5sums=('9d38cd4e2c94c3cea97d0e2924814acc')
 
 build() {
   cd ${pkgname}-${pkgver}
