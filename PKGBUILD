@@ -1,18 +1,21 @@
-# Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r01
 _sdkver=4.4
 _sdkint=19
-pkgname=android-google-apis-${_sdkint}
+pkgname=android-google-apis
 pkgver=${_sdkver}_${_rev}
 pkgrel=1
-pkgdesc="Android Google APIs, API-${_sdkint}"
+pkgdesc="Android Google APIs, latest API"
 arch=('any')
 url="http://code.google.com/android/add-ons/google-apis"
 license=('custom')
-depends=("android-platform-${_sdkint}")
+depends=("android-platform")
+provides=("${pkgname}-${_sdkint}")
+conflicts=("${pkgname}-${_sdkint}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/google_apis-${_sdkint}_${_rev}.zip")
 md5sums=('afab18ca357272c8f967896d9e05198e')
