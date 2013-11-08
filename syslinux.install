@@ -1,38 +1,28 @@
 post_install() {
-  echo "==> If you want to use syslinux as your BIOS bootloader"
-  echo "==> edit /boot/syslinux/syslinux.cfg and run"
-  echo "==>   # /usr/bin/syslinux-install_update -i -a -m"
-  echo "==> to install it."
-  
   cat << EOF
 
-Syslinux efi64 and efi32 files have been installed at
-/usr/lib/syslinux/{efi64,efi32}/ respectively.
+==> For setting up Syslinux BIOS using the install script follow 
+    https://wiki.archlinux.org/index.php/Syslinux#Automatic_Install
+  
+==> If you are upgrading from Syslinux 4.xx or 5.xx, please re-install
+    (not update) Syslinux BIOS manually (not using the install script) once
+    by following https://wiki.archlinux.org/index.php/Syslinux#Manual_install
 
-To install, copy /usr/lib/syslinux/efi64 to (ESP)/EFI/syslinux and
-syslinux.cfg to (ESP)/EFI/syslinux/syslinux.cfg and add a boot entry
-using efibootmgr for (ESP)/EFI/syslinux/syslinux.efi
+==> The install script may not properly upgrade Syslinux to 6.xx version
+  
+==> For setting up Syslinux EFI follow
+    https://wiki.archlinux.org/index.php/Syslinux#UEFI_Systems
+  
+==> The install script does not currently support Syslinux EFI installation
 
 EOF
-
 }
 
 post_upgrade() {
-  # auto-update syslinux if /boot/syslinux/SYSLINUX_AUTOUPDATE exists
+  ## auto-update syslinux if /boot/syslinux/SYSLINUX_AUTOUPDATE exists
   /usr/bin/syslinux-install_update -s
-  # update to 5.01 message
-  if [ "$(vercmp $2 5.01)" -lt 0 ]; then
-      echo "If you used syslinux-install_update to install syslinux:"
-      echo "==> If you want to use syslinux with menu and all modules please rerun" 
-      echo "==>   # /usr/bin/syslinux-install_update -i -a -m"
-      echo ""
-      echo "If you manually installed syslinux:"
-      echo "==> Please copy or symlink all .c32 modules to your /boot/syslinux directory."
-      echo "==> If (/ and /boot on seperate fs):"
-      echo "==>   # cp /usr/lib/syslinux/bios/*.c32 /boot/syslinux"
-      echo "==> If (/ and /boot on same fs):"
-      echo "==>   # ln -s /usr/lib/syslinux/bios/*.c32 /boot/syslinux"
-  fi
+  
+  post_install
 }
 
 # vim:set ts=2 sw=2 et:

@@ -333,7 +333,7 @@ update() {
     install_modules
 
     if device_is_raid "$bootpart" ; then
-        echo "Detected RAID on /boot - installing Syslinux with --raid"
+        echo "Detected RAID on /boot - updating Syslinux with --raid"
         "$EXTLINUX" --update "$bios_bootpath" --raid &> /dev/null
     else
         "$EXTLINUX" --update "$bios_bootpath" &> /dev/null
