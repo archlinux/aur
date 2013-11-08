@@ -1,18 +1,21 @@
-# Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r01
 _sdkver=4.4
 _sdkint=19
-pkgname=android-platform-${_sdkint}
+pkgname=android-platform
 pkgver=${_sdkver}_${_rev}
 pkgrel=1
-pkgdesc="Android SDK Platform, API-${_sdkint}"
+pkgdesc="Android SDK Platform, latest API"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends=('android-sdk' 'android-sdk-platform-tools')
+provides=("${pkgname}-${_sdkint}")
+conflicts=("${pkgname}-${_sdkint}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/android-${_sdkint}_${_rev}.zip")
 sha1sums=('96281811998272dce46e8285d15fce444a3d5a96')
