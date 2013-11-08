@@ -27,6 +27,8 @@ package() {
     [[ -f $i && -x $i ]] && install -Dm755 "$i" "$pkgdir"/usr/bin/"$i"
   done
 
+  install -Dm644 vim/textios.vim \
+    "$pkgdir"/usr/share/vim/vimfiles/ftdetect/textios.vim
   install -Dm644 man/man1/textios.1 "$pkgdir"/usr/share/man/man1/textios.1
   install -Dm644 man/man1/htmlios.1 "$pkgdir"/usr/share/man/man1/htmlios.1
   install -Dm644 man/man5/textiosrc.5 "$pkgdir"/usr/share/man/man5/textiosrc.5
