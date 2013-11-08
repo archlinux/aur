@@ -1,0 +1,14 @@
+pkgbase = android-google-apis-19
+	pkgdesc = Android Google APIs, API-19
+	pkgver = 4.4_r01
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform-19
+	options = !strip
+	source = http://dl.google.com/android/repository/google_apis-19_r01.zip
+	md5sums = afab18ca357272c8f967896d9e05198e
+
+pkgname = android-google-apis-19
+
