@@ -5,36 +5,36 @@ _python=python2
 _name=musicbrainzngs
 
 pkgname=$_python-$_name-git
-pkgver=0.4_12.g306075f
+pkgver=0.4_30.g33890d0
 pkgrel=1
 pkgdesc="bindings for the MusicBrainz NGS service"
-url="https://github.com/alastair/python-musicbrainz-ngs"
+url="https://github.com/alastair/python-musicbrainzngs"
 license="BSD"
 arch=('any')
 depends=("$_python")
 makedepends=("$_python-distribute" 'git')
 provides=("$_python-musicbrainzngs=$pkgver")
 conflicts=("$_python-musicbrainzngs")
-source=('git+https://github.com/alastair/python-musicbrainz-ngs.git')
+source=('git+https://github.com/alastair/python-musicbrainzngs.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/python-musicbrainz-ngs"
+  cd "$srcdir/python-musicbrainzngs"
   git describe --tags | sed -e 's/^v//' -e 's/-/_/' -e 's/-/\./g'
 }
 
 build() {
-  cd "$srcdir/python-musicbrainz-ngs"
+  cd "$srcdir/python-musicbrainzngs"
   $_python setup.py build
 }
 
 check() {
-  cd "$srcdir/python-musicbrainz-ngs"
+  cd "$srcdir/python-musicbrainzngs"
   $_python setup.py test
 }
 
 package() {
-  cd "$srcdir/python-musicbrainz-ngs"
+  cd "$srcdir/python-musicbrainzngs"
   $_python setup.py install --root=$pkgdir
 }
 
