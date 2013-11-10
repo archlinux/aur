@@ -8,7 +8,6 @@ pkgbase = terminology-git
 	groups = e17-extra-svn
 	license = BSD
 	makedepends = git
-	depends = efl-git
 	depends = elementary-git
 	provides = terminology=0.3.0.568.bf3e2ab
 	conflicts = terminology
