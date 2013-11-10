@@ -1,0 +1,20 @@
+pkgbase = terminology-git
+	pkgdesc = Terminal emulator for e17, successor of previous eterm
+	pkgver = 0.3.0.568.bf3e2ab
+	pkgrel = 1
+	url = http://www.enlightenment.org/p.php?p=about/terminology
+	arch = i686
+	arch = x86_64
+	groups = e17-extra-svn
+	license = BSD
+	makedepends = git
+	depends = efl-git
+	depends = elementary-git
+	provides = terminology
+	conflicts = terminology
+	options = !libtool
+	source = git://git.enlightenment.org/apps/terminology.git
+	md5sums = SKIP
+
+pkgname = terminology-git
+
