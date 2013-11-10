@@ -1,6 +1,6 @@
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
 pkgname=numdiff
-pkgver=5.8.0
+pkgver=5.8.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Program to compare files ignoring small numeric differences'
@@ -10,7 +10,7 @@ makedepends=('gmp')
 depends=('gmp')
 source=(http://savannah.nongnu.org/download/$pkgname/$pkgname-$pkgver.tar.gz)
 install=numdiff.install
-md5sums=('1e0a88b5422fd56caa79b301abaad1f2')
+md5sums=('a295eb391f6cb1578209fc6b4f9d994e')
 options=(!buildflags)
 
 # Don't allow '--enable-optimization' or '-O' in CFLAGS.

@@ -1,6 +1,6 @@
 pkgbase = numdiff
 	pkgdesc = Program to compare files ignoring small numeric differences
-	pkgver = 5.8.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.nongnu.org/numdiff/
 	install = numdiff.install
@@ -10,8 +10,8 @@ pkgbase = numdiff
 	makedepends = gmp
 	depends = gmp
 	options = !buildflags
-	source = http://savannah.nongnu.org/download/numdiff/numdiff-5.8.0.tar.gz
-	md5sums = 1e0a88b5422fd56caa79b301abaad1f2
+	source = http://savannah.nongnu.org/download/numdiff/numdiff-5.8.1.tar.gz
+	md5sums = a295eb391f6cb1578209fc6b4f9d994e
 
 pkgname = numdiff
 
