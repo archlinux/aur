@@ -1,16 +1,16 @@
 pkgbase = perl-ouch
 	pkgdesc = Perl module for exceptions that don't hurt
-	pkgver = 0.0405
+	pkgver = 0.0408
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Ouch
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-trap
-	depends = perl
+	depends = perl>=5.10.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RI/RIZEN/Ouch-0.0405.tar.gz
-	md5sums = 6fd3a410e40d20244de4d67fe5b08037
+	source = http://search.cpan.org/CPAN/authors/id/R/RI/RIZEN/Ouch-0.0408.tar.gz
+	md5sums = f3cd70271ba8f7598569bc04097b7881
 
 pkgname = perl-ouch
 
