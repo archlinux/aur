@@ -1,19 +1,19 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Cravix < dr dot neemous at gmail dot org >
-# Based on edje PKGBUILD wrote by Ronald van Haren <ronald.archlinux.org>
 
 pkgname=terminology-git
 _pkgname=${pkgname%-*}
-pkgver=0.3.0.568.bf3e2ab
+pkgver=0.4.0alpha1.r772.d682db2
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org/p.php?p=about/terminology"
 license=('BSD')
-depends=('elementary-git')
+depends=('elementary>=1.8.0')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+options=('debug')
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
 md5sums=('SKIP')
 
