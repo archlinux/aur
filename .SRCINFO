@@ -10,9 +10,8 @@ pkgbase = terminology-git
 	makedepends = git
 	depends = efl-git
 	depends = elementary-git
-	provides = terminology
+	provides = terminology=0.3.0.568.bf3e2ab
 	conflicts = terminology
-	options = !libtool
 	source = git://git.enlightenment.org/apps/terminology.git
 	md5sums = SKIP
 
