@@ -2,7 +2,7 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
@@ -16,8 +16,8 @@ noextract=("${pkgname[1]}-$pkgver.zip")
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[0]}-$pkgver.zip"
         "http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[1]}-$pkgver.zip"
         "$pkgbase.sh")
-sha256sums=('d37fa632a11ce0dfb0c9cadefebf1631911fde226885964c6cb5b87ab7f6c30f'
-            '9fbaf89879176e12fa74fbdbb604c7e94e8736c8821f5b72a82f3636b8f8d308'
+sha256sums=('c4cd9b0465b184e0f6fc06b4dfe89f87c4bec53072815c60074d9c4e39c70fe1'
+            'c038c82265084004e6278e10b446b262cdf0b481383df8e4ff71975671d0fc9f'
             '5b9b76115640a31c728fb6951a1ee9ed0c7da7bbb558e0f1fe22f383c05633f0')
 
 prepare() {
