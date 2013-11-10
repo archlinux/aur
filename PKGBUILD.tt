@@ -10,7 +10,8 @@ arch=('any')
 url='[% url %]'
 license=('GPL')
 options=(!emptydirs)
-depends=('perl>=5.8.9' 'perl-attribute-handlers>=0.77' 'perl-test-simple'
+depends=('perl>=5.8.9'
+	'perl-attribute-handlers>=0.77'
 	'perl-mro-compat>=0.11')
 makedepends=('perl-extutils-pkgconfig')
 checkdepends=('perl-test-exception' 'perl-test-most')
@@ -18,18 +19,18 @@ source=([% source %])
 md5sums=('[% md5sums %]')
 
 build() {
-  cd "$srcdir/[% distdir %]"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
-  make test
+	cd [% distdir %]
+	make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd [% distdir %]
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
