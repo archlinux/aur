@@ -1,0 +1,6 @@
+
+post_install()
+{
+  echo "See /usr/share/gngeo/sample_gngeorc for a sample configuration file" \
+       "and save your config to ~/.gngeo/gngeorc file."
+}

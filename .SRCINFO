@@ -1,0 +1,32 @@
+pkgbase = gngeo-hg
+	pkgdesc = A portable command-line NeoGeo Emulator (development version).
+	pkgver = 0.8.r95.6ad2a3d1bba3
+	pkgrel = 1
+	url = https://code.google.com/p/gngeo/
+	install = gngeo-hg.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = mercurial
+	makedepends = nasm
+	depends = zlib
+	depends = sdl
+	optdepends = libgl: OpenGL renderer backend
+	provides = gngeo
+	conflicts = gngeo
+	source = gngeo::hg+https://code.google.com/p/gngeo/
+	source = gngeo.desktop
+	source = gngeo.png
+	source = gngeo-hg.install
+	md5sums = SKIP
+	md5sums = 0e45bc9cf87a61bd3b92fb27c6a87dbd
+	md5sums = 25321e134708b239199c6ba49a9a2248
+	md5sums = fa2be7e60f3390bbd4137f0dd593a2f7
+	sha256sums = SKIP
+	sha256sums = f1844db27e0f2d8046a107b0279c76c19a89f7d824da80590e93ea24382c3785
+	sha256sums = b543425d51bd669fe5081b0b89492f18163c292194ac2a4acff683ba2a60063e
+	sha256sums = a1fe0ad7b8f601abcca92650e225c28af45db0b9eb4d96f3bdc055af0fe5c635
+
+pkgname = gngeo-hg
+
