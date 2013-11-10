@@ -1,11 +1,10 @@
 pkgbase = terminology-git
-	pkgdesc = Terminal emulator for e17, successor of previous eterm
+	pkgdesc = EFL based terminal emulator - Development version
 	pkgver = 0.3.0.568.bf3e2ab
 	pkgrel = 1
 	url = http://www.enlightenment.org/p.php?p=about/terminology
 	arch = i686
 	arch = x86_64
-	groups = e17-extra-svn
 	license = BSD
 	makedepends = git
 	depends = elementary-git
