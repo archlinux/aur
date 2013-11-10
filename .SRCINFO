@@ -1,0 +1,18 @@
+pkgbase = perl-www-expand
+	pkgdesc = Perl module to expand any shortened URL
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Expand
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.8
+	depends = perl-http-message
+	depends = perl-libwww
+	depends = perl-strictures
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GL/GLITCHMR/WWW-Expand-0.1.4.tar.gz
+	md5sums = 9bbd23792c04aa655b90309fb819f508
+
+pkgname = perl-www-expand
+
