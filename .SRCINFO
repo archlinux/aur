@@ -1,6 +1,6 @@
 pkgbase = perl-test-failwarnings
 	pkgdesc = A Perl package that add test failures if warnings are caught
-	pkgver = 0.007
+	pkgver = 0.008
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Test-FailWarnings
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-test-failwarnings
 	checkdepends = perl-capture-tiny>=0.12
 	depends = perl>=5.10.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Test-FailWarnings-0.007.tar.gz
-	md5sums = e81bafafa5ecb9455b970f99b726da7c
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Test-FailWarnings-0.008.tar.gz
+	md5sums = c03d51f550dbfd9945722ff7f4c32717
 
 pkgname = perl-test-failwarnings
 
