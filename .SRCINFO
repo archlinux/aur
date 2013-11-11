@@ -1,0 +1,23 @@
+pkgbase = sqrxz
+	pkgdesc = A fast paced jump'n'run which will please the hardcore gamer amongst you.
+	pkgver = 0.996a
+	pkgrel = 1
+	url = http://sqrxz.de/
+	install = sqrxz.install
+	arch = i686
+	arch = x86_64
+	license = Freeware
+	depends = sdl_mixer
+	depends = zlib
+	options = !strip
+	source = http://www.retroguru.com/sqrxz/sqrxz-v0996a-ubuntu.tar.gz
+	source = sqrxz.png
+	source = sqrxz.sh
+	source = sqrxz.desktop
+	md5sums = c1aeca939aa91547391127c66fcf945a
+	md5sums = d10c83b355d87098251b076fe98a70e0
+	md5sums = e8ea0bad8846ca29172d18ecbe1481d2
+	md5sums = fd4c648b20629430dfcb84261115c2ab
+
+pkgname = sqrxz
+
