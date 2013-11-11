@@ -1,0 +1,26 @@
+pkgbase = lib32-allegro
+	pkgdesc = Portable library mainly aimed at video game and multimedia programming (32 bit)
+	pkgver = 5.0.10
+	pkgrel = 2
+	url = http://alleg.sourceforge.net/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc-multilib
+	makedepends = lib32-mesa
+	makedepends = lib32-glu
+	depends = lib32-jack
+	depends = lib32-libxpm
+	depends = lib32-libxxf86dga
+	depends = lib32-libgl
+	depends = lib32-physfs
+	depends = lib32-gtk2
+	depends = lib32-libpulse
+	depends = lib32-alsa-lib
+	depends = allegro=5.0.10
+	source = http://downloads.sourceforge.net/alleg/allegro-5.0.10.tar.gz
+	md5sums = bf51a90e158ff8b1cec0514ef70195cf
+	sha256sums = 71b81080f34f6e485edd0c51f22923c18ff967d5db438e591e6f3885d5bdcda1
+
+pkgname = lib32-allegro
+
