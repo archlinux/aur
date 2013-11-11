@@ -1,0 +1,20 @@
+
+post_install() {
+  # updates for our .desktop file
+  update-desktop-database -q
+
+  echo "You need to be in the games group for save functionality"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  # updates for our .desktop file
+  update-desktop-database -q
+
+  if [ -d /opt/sqrxz3 ]; then
+    echo "You may safely delete /opt/sqrxz3 and it's contents (config/highscore files) if you don't need them."
+  fi
+}
