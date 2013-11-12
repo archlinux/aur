@@ -1,0 +1,15 @@
+pkgbase = geany-themes-git
+	pkgdesc = A collection of color schemes for geany.
+	pkgver = 1.22.26
+	pkgrel = 2
+	url = https://github.com/codebrainz/geany-themes
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = geany
+	provides = geany-themes
+	source = git://github.com/codebrainz/geany-themes.git
+	md5sums = SKIP
+
+pkgname = geany-themes-git
+
