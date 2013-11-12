@@ -1,5 +1,6 @@
 pkgname=zabbix-server-mysql
-pkgver=2.0.9
+_pkgname=zabbix-server
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
@@ -22,29 +23,26 @@ depends=("apache>=2"
          "libssh2"
         )
 optdepends=("shellinabox: web-based ssh/telnet client")
-conflicts=("zabbix-server"
+conflicts=("${_pkgname}"
            "zabbix-agent"
           )
 backup=("etc/zabbix/zabbix_server.conf"
         "etc/zabbix/zabbix_agentd.conf"
        )
-install="zabbix-server.install"
+install="${_pkgname}.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
         "zabbix-server.install"
-        "config.diff"
        )
-md5sums=("edf00241cce2302e0b65f620e83c7e41" # zabbix-$pkgver.tar.gz
-         "99a25ef72b46e5729b80634c85c438ce" # zabbix-server.install
-         "651e284397532f500b92c34bb0a2feda" # config.diff
+md5sums=("caec9b3b744dac0b171c0c6b0c240b69"
+         "385ebe40ac42c777022ccee7543e20ca"
         )
-sha1sums=("858b52ca1769086f4302e431c28d4ad458464c62" # zabbix-$pkgver.tar.gz
-          "2959c2198b99523e623e6f9cdb3061d4ac6e48e8" # zabbix-server.install
-          "82239b23cfb4f8f43d9a5a33f77e58103e567af4" # config.diff
+sha1sums=("a20d79c57abf1f5cc5b4261df6da10175e2fcfae"
+          "4997f1aa087e0de4869234dbacd667faf59b19d5"
          )
 
 prepare() {
-cat << EOL > "$srcdir/sudoers.zabbix-server"
+cat << EOL > "${srcdir}/${_pkgname}.sudoers"
 # Defaults specification
 Defaults visiblepw
 
@@ -52,14 +50,13 @@ Defaults visiblepw
 zabbix ALL=(root) NOPASSWD: /usr/bin/nmap
 EOL
 
-cat << EOL > "$srcdir/zabbix-server.service"
+cat << EOL > "${srcdir}/${_pkgname}.service"
 [Unit]
 Description=Zabbix Server
 After=syslog.target network.target mysqld.service
 
 [Service]
 Type=oneshot
-ExecStartPre=/usr/bin/mkdir -p /run/zabbix ; /usr/bin/chown -R zabbix:zabbix /run/zabbix
 ExecStart=/usr/bin/zabbix_server
 ExecReload=/usr/bin/zabbix_server -R config_cache_reload
 RemainAfterExit=yes
@@ -69,14 +66,13 @@ PIDFile=/run/zabbix/zabbix_server.pid
 WantedBy=multi-user.target
 EOL
 
-cat << EOL > "$srcdir/zabbix-agentd.service"
+cat << EOL > "${srcdir}/zabbix-agentd.service"
 [Unit]
 Description=Zabbix Agent
 After=syslog.target network.target
 
 [Service]
 Type=oneshot
-ExecStartPre=/usr/bin/mkdir -p /run/zabbix ; /usr/bin/chown -R zabbix:zabbix /run/zabbix
 ExecStart=/usr/bin/zabbix_agentd
 RemainAfterExit=yes
 PIDFile=/run/zabbix/zabbix_agentd.pid
@@ -84,14 +80,25 @@ PIDFile=/run/zabbix/zabbix_agentd.pid
 [Install]
 WantedBy=multi-user.target
 EOL
+
+cat << EOL > "${srcdir}/${_pkgname}.conf"
+d /run/zabbix 0755 zabbix zabbix
+EOL
+
+  cd "${srcdir}/zabbix-${pkgver}"
+  sed -i "s/\/usr\/local\/etc/\/etc\/zabbix/g"                                  $(grep -rl "/usr/local/etc"  "conf/" "man/")
+  sed -i "s/# DBSocket=\/tmp\/mysql.sock/DBSocket=\/run\/mysqld\/mysqld.sock/g" $(grep -rl "# DBSocket=/tmp" "conf/"       )
+  sed -i "s/# PidFile=\/tmp/PidFile=\/run\/zabbix/g"                            $(grep -rl "# PidFile=/tmp"  "conf/"       )
+  sed -i "s/LogFile=\/tmp/LogFile=\/var\/log/g"                                 $(grep -rl "LogFile=/tmp"    "conf/"       )
+  sed -i "s/\/usr\/sbin/\/usr\/bin/g"                                           $(grep -rl "/usr/sbin"       "conf/"       )
 }
 
 build() {
   cd "${srcdir}/zabbix-${pkgver}"
-  patch -p1 < "${srcdir}/config.diff"
 
   ./configure \
     --prefix=/usr \
+    --bindir=/usr/bin \
     --sbindir=/usr/bin \
     --sysconfdir=/etc/zabbix \
     --enable-ipv6 \
@@ -101,7 +108,8 @@ build() {
     --with-net-snmp \
     --with-jabber \
     --with-libcurl \
-    --with-ssh2
+    --with-ssh2 \
+    --with-libxml2
 
   make || return 1
 }
@@ -110,29 +118,24 @@ package() {
   cd "${srcdir}/zabbix-${pkgver}"
   make DESTDIR="${pkgdir}" install || return 1
 
-  mkdir -p "${pkgdir}/usr/share/webapps/zabbix"
-  mkdir -p "${pkgdir}/etc/zabbix/database/mysql/upgrade/2.0"
-  mkdir -p "${pkgdir}/etc/zabbix/database/mysql/setup/2.0"
+  install -dm 0755 "${pkgdir}/usr/share/webapps/zabbix"
+  install -dm 0755 "${pkgdir}/etc/zabbix/database/"
 
   cp -r ${srcdir}/zabbix-${pkgver}/frontends/php/* ${pkgdir}/usr/share/webapps/zabbix/
   chown -R 33:33 "${pkgdir}/usr/share/webapps/zabbix/"
   find ${pkgdir}/usr/share/webapps/zabbix/ -type f -exec chmod 644 {} \;
   find ${pkgdir}/usr/share/webapps/zabbix/ -type d -exec chmod 755 {} \;
 
-  for _UPGFILE in patch.sql rc4_rc5.sql upgrade
-  do
-    install -D -m 0444 "${srcdir}/zabbix-${pkgver}/upgrades/dbpatches/2.0/mysql/${_UPGFILE}" \
-                       "${pkgdir}/etc/zabbix/database/mysql/upgrade/2.0/${_UPGFILE}"
-  done
   for _SQLFILE in {data,images,schema}.sql
   do
     install -D -m 0444 "${srcdir}/zabbix-${pkgver}/database/mysql/${_SQLFILE}" \
-                       "${pkgdir}/etc/zabbix/database/mysql/setup/2.0/${_SQLFILE}"
+                       "${pkgdir}/etc/zabbix/database/${_SQLFILE}"
   done
-  install -d -m 0750                                    "${pkgdir}/etc/sudoers.d/"
-  install -d -m 0755                                    "${pkgdir}/run/zabbix"
-  install -d -m 0750                                    "${pkgdir}/var/log/zabbix"
-  install -D -m 0640 "${srcdir}/sudoers.zabbix-server"  "${pkgdir}/etc/sudoers.d/zabbix-server"
-  install -D -m 0644 "${srcdir}/zabbix-server.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-server.service"
-  install -D -m 0644 "${srcdir}/zabbix-agentd.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-agentd.service"
+  install -dm 0750                                    "${pkgdir}/etc/sudoers.d/"
+  install -dm 0755                                    "${pkgdir}/run/zabbix"
+  install -dm 0750                                    "${pkgdir}/var/log/zabbix"
+  install -Dm 0640 "${srcdir}/${_pkgname}.sudoers"    "${pkgdir}/etc/sudoers.d/${_pkgname}"
+  install -Dm 0644 "${srcdir}/${_pkgname}.conf"       "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  install -Dm 0644 "${srcdir}/${_pkgname}.service"    "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm 0644 "${srcdir}/zabbix-agentd.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-agentd.service"
 }
