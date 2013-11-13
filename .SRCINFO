@@ -6,7 +6,7 @@ pkgbase = perl-convert-uulib
 	install = install
 	arch = any
 	license = GPL
-	license = Artistic
+	license = PerlArtistic
 	depends = perl>=5.8.4
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-1.4.tar.gz

@@ -13,7 +13,7 @@ pkgdesc='Perl interface to the uulib library (a.k.a. uudeview/uuenview).'
 _dist=Convert-UUlib
 arch=('any')
 url='http://search.cpan.org/~mlehmann/Convert-UUlib/'
-license=('GPL' 'Artistic')
+license=('GPL' 'PerlArtistic')
 depends=('perl>=5.8.4')
 options=(!emptydirs)
 install="install"
