@@ -22,7 +22,7 @@ md5sums=('a6486df1d9ce319406fb9d5a610da759')
 build() {
   cd "${srcdir}"/"${_dist}"-"${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT
+  unset PERL5LIB PERL_MM_OPT CPPFLAGS
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
   perl Makefile.PL
