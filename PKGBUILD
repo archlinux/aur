@@ -36,7 +36,5 @@ package() {
 
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 
-    # remove perllocal.pod and .packlist
-    find ${pkgdir} -name perllocal.pod -delete
-    find ${pkgdir} -name .packlist -delete
+  find "${pkgdir}" -name '.packlist' -o -name 'perllocal.pod' -delete
 }
