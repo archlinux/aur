@@ -16,7 +16,6 @@ url='http://search.cpan.org/~mlehmann/Convert-UUlib/'
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.8.4')
 options=(!emptydirs)
-install="install"
 source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-${pkgver}.tar.gz")
 md5sums=('a6486df1d9ce319406fb9d5a610da759')
 
@@ -29,6 +28,16 @@ build(){
   perl Makefile.PL
   make
 }
+
+check() {
+  cd "${srcdir}"/"${_dist}"-"${pkgver}"
+
+  unset PERL5LIB PERL_MM_OPT
+  export PERL_MM_USE_DEFAULT=1
+
+  make test
+}
+
 package() {
   cd "${srcdir}"/"${_dist}"-"${pkgver}"
 
