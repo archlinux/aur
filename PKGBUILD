@@ -23,16 +23,18 @@ md5sums=('a6486df1d9ce319406fb9d5a610da759')
 build(){
   cd "${srcdir}"/"${_dist}"-"${pkgver}"
 
-	 unset CPPFLAGS
+  unset PERL5LIB PERL_MM_OPT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
-    # install module in vendor directories.
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-    make
+  perl Makefile.PL
+  make
 }
 package() {
   cd "${srcdir}"/"${_dist}"-"${pkgver}"
 
-    make install DESTDIR=${pkgdir}
+  unset PERL5LIB PERL_MM_OPT
+
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 
     # remove perllocal.pod and .packlist
     find ${pkgdir} -name perllocal.pod -delete
