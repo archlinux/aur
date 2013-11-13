@@ -8,7 +8,7 @@
 
 pkgname='perl-convert-uulib'
 pkgver='1.4'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Perl interface to the uulib library (a.k.a. uudeview/uuenview).'
 _dist=Convert-UUlib
 arch=('any')
@@ -19,7 +19,7 @@ options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-${pkgver}.tar.gz")
 md5sums=('a6486df1d9ce319406fb9d5a610da759')
 
-build(){
+build() {
   cd "${srcdir}"/"${_dist}"-"${pkgver}"
 
   unset PERL5LIB PERL_MM_OPT
