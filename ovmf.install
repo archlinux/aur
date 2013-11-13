@@ -2,9 +2,18 @@ post_install() {
 	
 	cat << EOF
     
-    To test OVMF X64 in QEMU 1.5 , run :
+    NOTE: The OVMF X64 image has been moved to /usr/share/ovmf/x86_64/ovmf.bin
     
-    qemu-system-x86_64 -enable-kvm -net none -m 1024 -bios /usr/share/ovmf/x86_64/bios.bin
+    OVMF now support NV VAR storage within the OVMF image if QEMU flash (-pflash) is supported
+    This requires write access by QEMU to the OVMF image
+    For more info see http://sourceforge.net/p/tianocore/edk2/ci/e58e5bcd23badac8ef91d3bcc73baac3ca27e2ae/
+    
+    To test OVMF X64 in QEMU (use >= v1.5), run:
+    
+    \$ cp /usr/share/ovmf/x86_64/ovmf.bin ~/ovmf.bin
+    \$ qemu-system-x86_64 -enable-kvm -net none -m 1024 -pflash ~/ovmf.bin
+    
+    NOTE: The command is not -bios , it is -pflash now
     
 EOF
 	

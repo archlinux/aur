@@ -20,9 +20,9 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=14795
+pkgver=14844
 pkgrel=1
-pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
+pkgdesc="x86_64 UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
 arch=('x86_64')
 license=('BSD')
@@ -198,7 +198,7 @@ build() {
 	echo
 	
 	msg "Compile OVMF binary"
-	"${_UDK_DIR}/OvmfPkg/build.sh" -a "X64" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "BUILD_NEW_SHELL"
+	"${_UDK_DIR}/OvmfPkg/build.sh" -a "X64" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
 	echo
 	
 }
@@ -207,8 +207,8 @@ package() {
 	
 	_setup_env_vars
 	
-	msg "Install the OVMF X64 image as bios.bin for QEMU"
-	install -d "${pkgdir}/usr/share/ovmf/x86_64"
-	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/x86_64/bios.bin"
+	msg "Install the OVMF X64 image as ovmf.bin"
+	install -d "${pkgdir}/usr/share/ovmf"
+	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/x86_64/ovmf.bin"
 	
 }
