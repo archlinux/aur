@@ -10,6 +10,7 @@ pkgname='perl-convert-uulib'
 pkgver='1.4'
 pkgrel='3'
 pkgdesc='Perl interface to the uulib library (a.k.a. uudeview/uuenview).'
+_dist=Convert-UUlib
 url='http://search.cpan.org/~mlehmann/Convert-UUlib/'
 arch=('i686' 'x86_64')
 license=('GPL' 'Artistic')
@@ -20,7 +21,7 @@ source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-${pk
 md5sums=('a6486df1d9ce319406fb9d5a610da759')
 
 build(){
-    cd "${srcdir}/Convert-UUlib-${pkgver}"
+  cd "${srcdir}"/"${_dist}"-"${pkgver}"
 
 	 unset CPPFLAGS
 
@@ -29,7 +30,7 @@ build(){
     make
 }
 package() {
-    cd "${srcdir}/Convert-UUlib-${pkgver}"
+  cd "${srcdir}"/"${_dist}"-"${pkgver}"
 
     make install DESTDIR=${pkgdir}
 
