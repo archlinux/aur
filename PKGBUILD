@@ -2,28 +2,26 @@
 # Contributor: poplarch <poplarch@gmail.com>
 
 pkgname=fcitx-cloudpinyin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Standalone module for fcitx that uses pinyin API on the internet to provide additional input candidates'
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx-cloudpinyin"
 license=('GPL')
-depends=('curl' 'fcitx>=4.2.7')
+depends=('curl' 'fcitx')
 makedepends=('cmake')
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  mkdir -p build
-  cd build
-  
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cd ${pkgname}-${pkgver}
+
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}/build"
+  cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('ddda528f72ffd200ae78b4b2d9791e20576a220d0b15e4c55e9bd1977188c65696ca2a522acbb27177b2b22b33cdc41774d1ce111eb090adaba8fcc97f12cd8e')
+sha512sums=('874c2b1f037c14e8f6cdbd174c86014d9f6b2035d1828ecf3c8debc704a5f3469eff7ead50638f26080986d912c6e93fe82b78f1a9161f09b738461d07614814')
