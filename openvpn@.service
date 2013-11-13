@@ -1,6 +1,5 @@
 [Unit]
 Description=OpenVPN connection to %i
-After=network.target
 
 [Service]
 Type=forking
