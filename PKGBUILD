@@ -4,15 +4,15 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=30.0.1599.114
-_toolchains_rev=12029
+pkgver=31.0.1650.48
+_toolchains_rev=12181
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
-         'libgcrypt' 'ttf-font' 'udev' 'dbus' 'flac' 'opus' 'libwebp' 'snappy'
+         'libgcrypt' 'ttf-font' 'udev' 'dbus' 'flac' 'opus' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'harfbuzz-icu'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
@@ -20,6 +20,7 @@ makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
 [[ $CARCH = x86_64 ]] && makedepends+=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 backup=('etc/chromium/default')
+options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         naclsdk_nacl_linux_x86-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_linux_x86.tgz
@@ -29,18 +30,22 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.desktop
         chromium.default
         chromium.sh
+        chromium-31.0.1650.48-NPN_URLRedirectResponse.patch
+        chromium-31.0.1650.48-NPAPI-cookies.patch
         chromium-system-icu-r0.patch)
 noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_translator-$_toolchains_rev.tgz)
-sha256sums=('82ff2b54cb6fa9f314098e9905e79d578d97940bab05111a3c0c782217c2b760'
-            '641e2acf0e755bfe052016164e9e0198104130b612a042eacf259a2f2630d6cd'
-            '6ce53b1af8fef34c1557c7fbb764cfbca29cb70b8ee3367746a31976cf115e01'
-            '0b7afcbad1461336e7062d7c8d64e67e670a1fce07214e24313204af1f3a5a70'
-            'd6c5ed767ee9ee4e92b4de958cd32b0152783f170c1483fe99d2199fc2623813'
+sha256sums=('3e478b5b85a023b3bba55b23d71cd6f585a08f865f7a98297a9a0757e9695c5d'
+            'cb4ac159f61de5e75d339813c0fc74f986156310a2c43a30ba40125951e72450'
+            'ad229b69a5af72a9fa7cf2167ee48560cc11049206e4ef919cb31d1273d6409f'
+            'fdb8309ef2b1c8600d63c4420ac02d66d85ab9befe98d99e9706828870730077'
+            '162cf456b0a1cb4ce505004f828a09164ee3e3c8274739c6d5e972bf0ef1cfe9'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
+            'c2e56730e0cf962d762d18abf8488e1b19b4688ce39d22dd74c47dba7996319b'
+            'b24f58147333eb29f762aec58742db74825b587def3d6daf16c8cd315ce6ccff'
             '9bf164094ff33565f79807ab17cbd1d3f75655383fdaa01bb1a702263174cf09')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -53,6 +58,14 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # Black screen is displayed when playing a video with NPAPI plugin
+  # http://code.google.com/p/chromium/issues/detail?id=301510
+  patch -Np0 -i "$srcdir/chromium-31.0.1650.48-NPN_URLRedirectResponse.patch"
+
+  # Cookies not being sent with plugin requests
+  # http://code.google.com/p/chromium/issues/detail?id=316511
+  patch -Np0 -i "$srcdir/chromium-31.0.1650.48-NPAPI-cookies.patch"
 
   # Fix build with system ICU (patch from Gentoo)
   patch -Np0 -i "$srcdir/chromium-system-icu-r0.patch"
@@ -115,7 +128,6 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libwebp=1
     -Duse_system_libxml=0
     -Duse_system_opus=1
     -Duse_system_snappy=1
@@ -144,6 +156,12 @@ package() {
   cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} \
     out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} \
     "$pkgdir/usr/lib/chromium/"
+
+  # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
+  strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
+    "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
+  strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so" \
+    "$pkgdir/usr/lib/chromium/libppGoogleNaClPluginChrome.so"
 
   # Allow users to override command-line options
   install -Dm644 "$srcdir/chromium.default" "$pkgdir/etc/chromium/default"
