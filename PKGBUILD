@@ -1,3 +1,4 @@
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: AeroNotix <aaron.l.france@gmail.com>
 # Contributor: AeroNotix <aaron.l.france@gmail.com>
 
@@ -5,10 +6,10 @@ pkgname=rebar
 pkgver=20131114
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/rebar/rebar"
 license=('APACHE')
-depends=('erlang')
+depends=('erlang-nox')
 makedepends=('git')
 source=("git://github.com/rebar/rebar.git")
 md5sums=('SKIP')
