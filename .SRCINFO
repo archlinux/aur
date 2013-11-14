@@ -1,0 +1,17 @@
+pkgbase = pilight-git
+	pkgdesc = Send and receive 433.92Mhz codes
+	pkgver = v2.0.r0.g172149f
+	pkgrel = 1
+	url = http://pilight.org/
+	arch = i386
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = glibc
+	source = git+https://github.com/pilight/pilight.git
+	md5sums = SKIP
+
+pkgname = pilight-git
+
