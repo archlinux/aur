@@ -1,16 +1,14 @@
 pkgbase = zabbix-server-mysql
 	pkgdesc = Zabbix is an enterprise-class open source distributed monitoring solution.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zabbix.com/
 	install = zabbix-server.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = apache>=2
 	depends = mariadb>=5.5
 	depends = php
-	depends = php-apache
 	depends = php-gd
 	depends = fping
 	depends = traceroute
@@ -20,7 +18,9 @@ pkgbase = zabbix-server-mysql
 	depends = curl
 	depends = iksemel
 	depends = libssh2
-	optdepends = shellinabox: web-based ssh/telnet client
+	optdepends = shellinabox: Web-based ssh/telnet client
+	optdepends = apache: A high performance Unix-based HTTP server
+	optdepends = php-apache: Apache SAPI for PHP
 	conflicts = zabbix-server
 	conflicts = zabbix-agent
 	options = emptydirs

@@ -1,17 +1,15 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64"
      )
 url="http://www.zabbix.com/"
 license=("GPL")
-depends=("apache>=2"
-         "mariadb>=5.5"
+depends=("mariadb>=5.5"
          "php"
-         "php-apache"
          "php-gd"
          "fping"
          "traceroute"
@@ -22,7 +20,10 @@ depends=("apache>=2"
          "iksemel"
          "libssh2"
         )
-optdepends=("shellinabox: web-based ssh/telnet client")
+optdepends=("shellinabox: Web-based ssh/telnet client"
+            "apache: A high performance Unix-based HTTP server"
+            "php-apache: Apache SAPI for PHP"
+           )
 conflicts=("${_pkgname}"
            "zabbix-agent"
           )
