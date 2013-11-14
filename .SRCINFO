@@ -9,8 +9,8 @@ pkgbase = places-git
 	makedepends = git
 	depends = enlightenment17>=0.17.99
 	depends = udisks
-	provides = e17-places-svn
-	conflicts = e17-places-svn
+	provides = places=0.5.0.r176.d26c909
+	conflicts = places
 	source = git://git.enlightenment.org/enlightenment/modules/places.git
 	md5sums = SKIP
 
