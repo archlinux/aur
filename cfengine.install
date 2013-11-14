@@ -1,0 +1,11 @@
+post_install() {
+
+ if [ ! -f /var/lib/cfengine/ppkeys/localhost.priv ]; then
+  cf-key > /dev/null
+ fi 
+
+ if ! [ -f /var/lib/cfengine/masterfiles/promises.cf ]; then
+  cp -R /usr/share/CoreBase/* /var/lib/cfengine/masterfiles/
+ fi
+
+}
