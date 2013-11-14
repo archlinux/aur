@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "Before using this software you have to accept the license."
+  echo "To read it: less /usr/share/licenses/atd-demo/LICENCE"
+}
+
+post_upgrade() {
+  post_install
+}

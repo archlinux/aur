@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=ATD Demo (Fullscreen)
+Comment=Airline Tycoon Deluxe Demo (Fullscreen)
+Icon=/opt/atd-demo/ATDeluxe.xpm
+Exec=atd-demo
+Categories=Game
+Terminal=false
+StartupNotify=false

@@ -1,0 +1,27 @@
+pkgbase = atd-demo
+	pkgdesc = This is a demo of Airline Tycoon Deluxe for Linux.
+	pkgver = 1.08.20130212
+	pkgrel = 1
+	url = http://rune-soft.com/Games/Released/Game-239/game=Airline_Tycoon_Deluxe-6
+	install = atd-demo.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = sdl_mixer
+	conflicts = atd
+	options = !strip
+	source = https://bitbucket.org/runesoftdev/airline_public/downloads/airline.tycoon.deluxe_1.08-english.demo_x86-20130212.mojo.run
+	source = atd-demo.sh
+	source = atd-demo.desktop
+	source = atd-demo-fs.desktop
+	md5sums = d7bace7f1d67fda376919bf83c942fb4
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	sha256sums = ff0b2f03cbfda4fe13aa803ced484d29e528a3b1bd30f04b03617c10ce7cda55
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = atd-demo
+
