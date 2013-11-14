@@ -3,14 +3,14 @@
 
 pkgname=android-apktool-git
 pkgver=20131101
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for reengineering Android apk files"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/android-apktool/"
 license=('Apache 2.0')
-depends=('java-runtime' 'android-sdk-build-tools' 'jdk7') # sadly openjdk does not work
+depends=('java-runtime' 'android-sdk-build-tools' 'java-runtime')
 conflicts=('android-apktool')
-makedepends=('git')
+makedepends=('git' 'jdk7') # openjdk does not work for some unknown reason
 
 _gitroot=https://github.com/iBotPeaches/Apktool
 _gitname=apktool
