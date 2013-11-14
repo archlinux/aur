@@ -2,34 +2,38 @@
 
 pkgname=slim-xdm
 _pkgname=slim
-pkgver=1.3.5
-pkgrel=20
+pkgver=1.3.6
+pkgrel=2
 pkgdesc="Desktop-independent graphical login manager for X11 with XDM support"
 arch=('i686' 'x86_64')
 url="http://slim.berlios.de/"
 license=('GPL2')
-depends=('pam' 'libxmu' 'libpng' 'libjpeg' 'libxft' 'xorg-xauth')
+depends=('pam' 'libxmu' 'libpng' 'libjpeg' 'libxft' 'libxrandr' 'xorg-xauth')
 provides=("${_pkgname}=${pkgver}")
 conflicts=($_pkgname)
 replaces=($_pkgname 'wdm-slim')
 makedepends=('cmake' 'freeglut')
 backup=('etc/slim.conf' 'etc/logrotate.d/slim' 'etc/pam.d/slim')
 source=(http://download.berlios.de/$_pkgname/$_pkgname-$pkgver.tar.gz
+        slim-$pkgver.patch
         slim.pam
-        slim.logrotate
-        slim.patch)
-sha256sums=('818d209f51e2fa8d5b94ef75ce90a7415be48b45e796d66f8083a9532b655629'
+        slim.logrotate)
+sha256sums=('21defeed175418c46d71af71fd493cd0cbffd693f9d43c2151529125859810df'
+            'fedc89cc91d7aa5e87970d4541f70199990801d68ac9db7aef14079400c4b3f6'
             'b9a77a614c451287b574c33d41e28b5b149c6d2464bdb3a5274799842bca51a4'
-            '5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def'
-            '43a6ea707d5273a1a7cb1d03b21ee2dc617a16d85d0616e4a4824b5c7c826e06')
+            '5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def')
 
-build() {
-  cd "$srcdir"
-  patch -p0 <slim.patch
+prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   # Fix installation path of slim.service
-  sed -i 's|usr/lib/systemd/system|/&|' CMakeLists.txt
+  sed -i 's|set(LIBDIR "/lib")|set(LIBDIR "/usr/lib")|' CMakeLists.txt
+
+  patch -Np1 -i "$srcdir/slim-1.3.6.patch"
+}
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -52,11 +56,6 @@ package() {
   sed -i -e 's|#xserver_arguments.*|xserver_arguments -nolisten tcp vt07|' \
          -e 's|/var/run/slim.lock|/var/lock/slim.lock|' \
     "$pkgdir/etc/slim.conf"
-}
-
-makepatch() {
-  diff -purN ${_pkgname}-${pkgver}.orig ${_pkgname}-${pkgver} >${_pkgname}.patch
-  makepkg -c -g >>PKGBUILD
 }
 
 # vim:set ts=2 sw=2 et:
