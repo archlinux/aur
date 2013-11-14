@@ -1,0 +1,17 @@
+pkgbase = eruler-git
+	pkgdesc = On-Screen Ruler and Measurement Tools using EFL
+	pkgver = 0.1.0.r1.3e5e849
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = elementary>=1.7.99
+	provides = eruler=0.1.0.r1.3e5e849
+	conflicts = eruler
+	source = git://git.enlightenment.org/apps/eruler.git
+	sha256sums = SKIP
+
+pkgname = eruler-git
+
