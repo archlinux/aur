@@ -14,13 +14,13 @@ makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  
+
   local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '-[ ]')
-  
+
   echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
@@ -48,4 +48,3 @@ package() {
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-

@@ -12,7 +12,7 @@ pkgbase = places-git
 	provides = places=0.5.0.r176.d26c909
 	conflicts = places
 	source = git://git.enlightenment.org/enlightenment/modules/places.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = places-git
 
