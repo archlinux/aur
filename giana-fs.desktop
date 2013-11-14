@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Giana's Return
+Name=Giana's Return (Fullscreen)
 Comment=Jump and run platformer (Mario Bros. Clone)
-Exec=giana -ogl
+Exec=giana -fs
 Icon=giana
 Terminal=false
 Categories=Game;

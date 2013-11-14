@@ -9,7 +9,6 @@ pkgbase = giana
 	license = custom: Freeware
 	depends = sdl_mixer
 	depends = zlib
-	depends = desktop-file-utils
 	depends = glut
 	depends = glu
 	optdepends = libmodplug: better music decoder
@@ -17,15 +16,11 @@ pkgbase = giana
 	source = http://www.gianas-return.de/gr-v1001-ubuntu.zip
 	source = giana.sh
 	source = giana.desktop
-	source = giana.install
-	md5sums = 9b6f8459ecd2483f0756e170908c780d
-	md5sums = 379904ec4b97453eb08dea10962b45e2
-	md5sums = 602c3f7fc8440250bd1136586f93f7c5
-	md5sums = 4535be161d68a7a13448eeb8abf99d15
+	source = giana-fs.desktop
 	sha256sums = cf932707776c25444cb9ff9feb91489886efdc3764aa6aeeb53845f7c1816970
-	sha256sums = f4e95c46847c2435870a920ea94a9674f8a28fd9ea14d81f6d8c4be9d2b3d85b
-	sha256sums = 9aa9cd5a33c16cc529aaff71b040f055416fa25320925b344937dbe3909225cc
-	sha256sums = b454a6cc67780d483beb00fa7b015a9b8ebca3fd6dbfc472a79719b7716e9f7c
+	sha256sums = e42996d0a09c6384fe0af413f8737256fd79f5d1094b1074018e4404a68246da
+	sha256sums = ea2452f45c2edeb9acac12294ff759e465e010fa997cc2fdf9d2ab57af76a0d9
+	sha256sums = 80aa0cd19c742199c69b7c1778f28c8f75aa6646c2b3a26ae6eed608b2d6a7a4
 
 pkgname = giana
 
