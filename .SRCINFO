@@ -3,15 +3,15 @@ pkgbase = pilight-git
 	pkgver = v2.0.r0.g172149f
 	pkgrel = 1
 	url = http://pilight.org/
-	arch = i386
 	arch = x86_64
-	arch = arm
+	arch = armv6h
 	license = GPL3
 	makedepends = gcc
-	makedepends = cmake
 	makedepends = glibc
 	source = git+https://github.com/pilight/pilight.git
-	md5sums = SKIP
+	source = https://raw.github.com/pschmitt/pilight-git/master/Makefile
+	sha256sums = SKIP
+	sha256sums = 73ee5197ef82359b194cd670026428a0fcd47c3762af1406fe811f530cdb93d3
 
 pkgname = pilight-git
 
