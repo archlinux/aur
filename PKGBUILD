@@ -12,6 +12,8 @@ makedepends=('git')
 backup=('etc/xinetd.d/sgopherd')
 optdepends=('xinetd: Traditional way to run sgopherd'
             'systemd: sgopherd also works with socket activation')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(git://github.com/vain/sgopherd.git)
 md5sums=('SKIP')
 
