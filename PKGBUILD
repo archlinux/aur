@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=holyspirit-svn
 pkgver=2420
-pkgrel=3
+pkgrel=4
 pkgdesc="Action role-playing game (ARPG, like diablo)"
 arch=(i686 x86_64)
 url="http://www.holyspirit.fr/"
@@ -13,7 +13,7 @@ optdepends=('qtwebkit: for the launcher')
 provides=('holyspirit')
 conflicts=('holyspirit')
 install=holyspirit.install
-source=('holyspirit::svn+https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk'
+source=('holyspirit::svn+https://svn.code.sf.net/p/lechemindeladam/code/trunk'
 holyspirit.sh config_crash.patch convertCoords.patch qt-includes.patch)
 backup=('opt/share/games/holyspirit/configuration.conf' 'opt/share/games/holyspirit/key_mapping.conf')
 md5sums=('SKIP'

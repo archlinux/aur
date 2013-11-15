@@ -1,7 +1,7 @@
 pkgbase = holyspirit-svn
 	pkgdesc = Action role-playing game (ARPG, like diablo)
 	pkgver = 2420
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.holyspirit.fr/
 	install = holyspirit.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = holyspirit-svn
 	conflicts = holyspirit
 	backup = opt/share/games/holyspirit/configuration.conf
 	backup = opt/share/games/holyspirit/key_mapping.conf
-	source = holyspirit::svn+https://lechemindeladam.svn.sourceforge.net/svnroot/lechemindeladam/trunk
+	source = holyspirit::svn+https://svn.code.sf.net/p/lechemindeladam/code/trunk
 	source = holyspirit.sh
 	source = config_crash.patch
 	source = convertCoords.patch
