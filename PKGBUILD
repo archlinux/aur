@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=gitary
 pkgname=$_pkgname-git
-pkgver=13.06.1.g49c5f22
+pkgver=13.10
 pkgrel=1
 pkgdesc="A diary using git as its backend"
 arch=('any')
