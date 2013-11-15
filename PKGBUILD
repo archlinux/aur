@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=gitodo
 pkgname=$_pkgname-git
-pkgver=13.06.1.g9e9861d
+pkgver=13.10.2.g88ed057
 pkgrel=1
 pkgdesc="Manage your TODO items using Git as a backend"
 arch=('any')
