@@ -9,6 +9,8 @@ url='http://www.uninformativ.de/projects/?q=slinp'
 license=('custom:PIZZA-WARE')
 depends=('gtk3' 'python' 'poppler-glib')
 makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(git://github.com/vain/slinp.git)
 md5sums=('SKIP')
 

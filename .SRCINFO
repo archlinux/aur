@@ -10,6 +10,8 @@ pkgbase = slinp-git
 	depends = gtk3
 	depends = python
 	depends = poppler-glib
+	provides = slinp
+	conflicts = slinp
 	source = git://github.com/vain/slinp.git
 	md5sums = SKIP
 
