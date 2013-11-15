@@ -12,6 +12,8 @@ depends=('git')
 optdepends=(
   'vim: A reasonable editor, syntax files are provided'
 )
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(git://github.com/vain/gitary.git)
 md5sums=('SKIP')
 

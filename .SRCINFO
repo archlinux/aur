@@ -8,6 +8,8 @@ pkgbase = gitary-git
 	makedepends = git
 	depends = git
 	optdepends = vim: A reasonable editor, syntax files are provided
+	provides = gitary
+	conflicts = gitary
 	source = git://github.com/vain/gitary.git
 	md5sums = SKIP
 
