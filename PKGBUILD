@@ -28,6 +28,9 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 
+  install -Dm 644 doc/targetctl.8 "$pkgdir/usr/share/man/man8/targetctl.8"
+  install -Dm 644 doc/saveconfig.json.5 "$pkgdir/usr/share/man/man5/saveconfig.json.5"
+
   # arch specific
   cd "$srcdir"
   install -d "$pkgdir/etc/target"
