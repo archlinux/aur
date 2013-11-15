@@ -1,6 +1,6 @@
 pkgbase = textios-git
 	pkgdesc = Text interface to Icinga and Nagios
-	pkgver = 13.09.4.gbe2f8a7
+	pkgver = 13.11
 	pkgrel = 1
 	url = https://github.com/vain/textios
 	arch = any
