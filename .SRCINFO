@@ -10,6 +10,8 @@ pkgbase = gitodo-git
 	depends = ruby
 	optdepends = cron: Reminder functionality
 	optdepends = vim: A reasonable editor, syntax files are provided
+	provides = gitodo
+	conflicts = gitodo
 	source = git://github.com/vain/gitodo.git
 	md5sums = SKIP
 

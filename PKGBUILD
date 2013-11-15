@@ -13,6 +13,8 @@ optdepends=(
   'cron: Reminder functionality'
   'vim: A reasonable editor, syntax files are provided'
 )
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(git://github.com/vain/gitodo.git)
 md5sums=('SKIP')
 
