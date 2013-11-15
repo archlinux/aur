@@ -1,3 +1,4 @@
+# Maintainer: jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Felix Kaiser <felix.kaiser@fxkr.net>
 
 pkgbase=python-mock
