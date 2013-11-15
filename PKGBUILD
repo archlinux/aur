@@ -9,6 +9,8 @@ url='https://github.com/vain/textios'
 license=('custom:PIZZA-WARE')
 depends=('python2' 'curl' 'vim')
 makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(git://github.com/vain/textios.git)
 md5sums=('SKIP')
 
