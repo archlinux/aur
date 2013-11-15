@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=python-rtslib-fb
 _pkgname=rtslib-fb
-pkgver=2.1.fb41
+pkgver=2.1.fb42
 pkgrel=1
 epoch=
 pkgdesc="free branch version of the LIO target API"
@@ -11,12 +11,13 @@ license=('Apache')
 depends=()
 # this is incompatible to python2-rtslib
 provides=()
-conflicts=('python2-rtslib')
+conflicts=('python2-rtslib' 'targetcli-fb<=2.1.fb31')
 backup=()
 options=()
 install=
-source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz)
-md5sums=('14cb7ae59940fae4688e3a860c9cb4e2')
+source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz target.service)
+md5sums=('4a4367c02edee471c6990e3d2053950f'
+         '0bd602821a24cd598488807d130b55d7')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -26,6 +27,13 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --skip-build --root="$pkgdir/" --optimize=1
+
+  # arch specific
+  cd "$srcdir"
+  install -d "$pkgdir/etc/target"
+  # systemd
+  mkdir -p "$pkgdir/usr/lib/systemd/system"
+  cp target.service "$pkgdir/usr/lib/systemd/system/"
 }
 
 # vim:set ts=2 sw=2 et:
