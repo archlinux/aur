@@ -6,6 +6,7 @@ pkgbase = pilight-git
 	arch = x86_64
 	arch = armv6h
 	license = GPL3
+	makedepends = git
 	makedepends = gcc
 	makedepends = glibc
 	source = git+https://github.com/pilight/pilight.git
