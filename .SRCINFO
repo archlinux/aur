@@ -9,6 +9,8 @@ pkgbase = gophcatch-git
 	depends = curl
 	optdepends = lynx: Needed if you want to dump new items
 	optdepends = cron: Recommended if you want to regularly run gophcatch
+	provides = gophcatch
+	conflicts = gophcatch
 	source = git://github.com/vain/gophcatch.git
 	md5sums = SKIP
 

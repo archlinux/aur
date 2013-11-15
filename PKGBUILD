@@ -13,6 +13,8 @@ optdepends=(
   'lynx: Needed if you want to dump new items'
   'cron: Recommended if you want to regularly run gophcatch'
 )
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(git://github.com/vain/gophcatch.git)
 md5sums=('SKIP')
 
