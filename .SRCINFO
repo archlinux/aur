@@ -1,6 +1,6 @@
 pkgbase = rtspeccy-git
 	pkgdesc = Real time spectrum analyzer (audio)
-	pkgver = 20120914.76
+	pkgver = 13.06
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=rtspeccy
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = rtspeccy-git
 	depends = mesa
 	provides = rtspeccy
 	conflicts = rtspeccy
-	source = rtspeccy::git+https://github.com/vain/rtspeccy.git
+	source = git://github.com/vain/rtspeccy.git
 	md5sums = SKIP
 
 pkgname = rtspeccy-git
