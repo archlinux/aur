@@ -9,6 +9,8 @@ url='http://www.uninformativ.de/projects/?q=explain'
 license=('custom:PIZZA-WARE')
 depends=('python2')
 makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(git://github.com/vain/explain.git)
 md5sums=('SKIP')
 

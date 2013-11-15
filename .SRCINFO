@@ -7,6 +7,8 @@ pkgbase = explain-git
 	license = custom:PIZZA-WARE
 	makedepends = git
 	depends = python2
+	provides = explain
+	conflicts = explain
 	source = git://github.com/vain/explain.git
 	md5sums = SKIP
 
