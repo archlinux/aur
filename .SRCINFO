@@ -1,7 +1,7 @@
 pkgbase = pilight-git
 	pkgdesc = Send and receive 433.92Mhz codes
 	pkgver = v2.0.r0.g172149f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pilight.org/
 	arch = x86_64
 	arch = armv6h

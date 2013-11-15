@@ -3,7 +3,7 @@
 pkgname=pilight-git
 _pkgname=pilight
 pkgver=v2.0.r0.g172149f
-pkgrel=1
+pkgrel=2
 pkgdesc="Send and receive 433.92Mhz codes"
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
