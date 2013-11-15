@@ -3,14 +3,14 @@
 pkgname=pilight-git
 _pkgname=pilight
 pkgver=v2.0.r0.g172149f
-pkgrel=2
+pkgrel=3
 pkgdesc="Send and receive 433.92Mhz codes"
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
 license=('GPL3')
 makedepends=('git' 'gcc' 'glibc')
 source=(git+https://github.com/pilight/pilight.git 'https://raw.github.com/pschmitt/pilight-git/master/Makefile')
-sha256sums=('SKIP' '73ee5197ef82359b194cd670026428a0fcd47c3762af1406fe811f530cdb93d3')
+sha256sums=('SKIP' '8669f4366b60f9ff6e17cbab219654a3c81e4e5f0a0e8e79779e3a3297fae760')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"

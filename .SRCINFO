@@ -1,7 +1,7 @@
 pkgbase = pilight-git
 	pkgdesc = Send and receive 433.92Mhz codes
 	pkgver = v2.0.r0.g172149f
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pilight.org/
 	arch = x86_64
 	arch = armv6h
@@ -12,7 +12,7 @@ pkgbase = pilight-git
 	source = git+https://github.com/pilight/pilight.git
 	source = https://raw.github.com/pschmitt/pilight-git/master/Makefile
 	sha256sums = SKIP
-	sha256sums = 73ee5197ef82359b194cd670026428a0fcd47c3762af1406fe811f530cdb93d3
+	sha256sums = 8669f4366b60f9ff6e17cbab219654a3c81e4e5f0a0e8e79779e3a3297fae760
 
 pkgname = pilight-git
 
