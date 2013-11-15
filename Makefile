@@ -88,7 +88,7 @@ install:
 	install -Dm 0644 web/apple-touch-icon-iphone.png $(DESTDIR)usr/share/webapps/pilight/	
 
 	mv $(DESTDIR)usr/lib/pilight/libpilight.so $(DESTDIR)usr/lib/pilight/libpilight.so.2
-	ln -sf $(DESTDIR)usr/lib/pilight/libpilight.so.2 $(DESTDIR)usr/lib/libpilight.so
+	ln -sf /usr/lib/pilight/libpilight.so.2 $(DESTDIR)usr/lib/libpilight.so
 	
 clean:
 	rm pilight-* >/dev/null 2>&1 || true
