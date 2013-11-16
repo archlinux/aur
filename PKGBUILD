@@ -26,10 +26,10 @@ build() {
   mkdir $srcdir/$pkgname/build_release
   mkdir $srcdir/$pkgname/build_debug
   cd $srcdir/$pkgname/build_release
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXAMPLES=Off ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXAMPLES=Off -DREGISTRY=Off ..
   make
   cd $srcdir/$pkgname/build_debug
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DEXAMPLES=Off ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DEXAMPLES=Off -DREGISTRY=Off ..
   make
 }
 
