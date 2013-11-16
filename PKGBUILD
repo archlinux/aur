@@ -2,8 +2,8 @@
 
 pkgname=pilight
 pkgver=2.0
-pkgrel=2
-pkgdesc="Send and receive 433.92Mhz codes"
+pkgrel=3
+pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
 license=('GPL3')
