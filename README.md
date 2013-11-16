@@ -16,7 +16,4 @@ makepkg -si
 
 * AUR page: https://aur.archlinux.org/packages/pilight-git/
 * Upstream: http://www.pilight.org and https://github.com/pilight/pilight
-
-## Stable version
-
-https://github.com/pschmitt/pilight
+* Stable version: https://github.com/pschmitt/pilight
