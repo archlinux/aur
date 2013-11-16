@@ -3,7 +3,7 @@
 pkgname=pilight-git
 _pkgname=pilight
 pkgver=v2.0.r0.g172149f
-pkgrel=5
+pkgrel=6
 pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
@@ -15,6 +15,7 @@ source=('git+https://github.com/pilight/pilight.git'
 sha256sums=('SKIP' 
             '8669f4366b60f9ff6e17cbab219654a3c81e4e5f0a0e8e79779e3a3297fae760'
             '826f51966a2fbaf00ea8b3900010142f6974420e475874a314ad5466811a6bd9')
+conflicts=('pilight')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
