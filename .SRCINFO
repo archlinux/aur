@@ -1,0 +1,13 @@
+pkgbase = bingrep
+	pkgdesc = Small binary version of grep
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/bingrep/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/project/bingrep/bingrep/bingrep-0.1/bingrep-0.1.tar.gz
+	md5sums = 5ab4a69fdcc7d65cc71292bc6b9582ab
+
+pkgname = bingrep
+
