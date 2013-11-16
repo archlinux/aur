@@ -1,0 +1,21 @@
+pkgbase = blitz-cppqed-hg
+	pkgdesc = C++ Class library for scientific computing. This version contains backward compatible patches needed for C++QED
+	pkgver = 10.r1924
+	pkgrel = 1
+	url = http://www.sourceforge.net/projects/blitz/
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = LGPL3
+	license = BSD
+	makedepends = mercurial
+	makedepends = gcc
+	depends = gcc-libs
+	depends = boost
+	provides = blitz
+	conflicts = blitz
+	source = blitz-cppqed-hg::hg+http://cppqed.hg.sourceforge.net:8000/hgroot/cppqed/blitz
+	md5sums = SKIP
+
+pkgname = blitz-cppqed-hg
+
