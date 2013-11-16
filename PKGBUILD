@@ -2,25 +2,27 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=ts
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="A Unix batch system where the tasks spooled run one after the other"
 arch=('i686' 'x86_64')
 url="http://vicerveza.homeunix.net/~viric/soft/ts/"
 license=('GPL2')
 source=("http://vicerveza.homeunix.net/~viric/soft/ts/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('be4d752f01791bf55e264814bbc158b15e42f8bfbce3a6757976259fbc994faa')
+sha256sums=('1a638f9dc5a96a764dde7b8af04c2dbb88d8cb0326139e9b231b8091804a5910')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  sed -i 's|$(PREFIX)/man/man1|$(PREFIX)/share/man/man1|g' Makefile
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  sed -i 's|$(PREFIX)/man/man1|$(PREFIX)/share/man/man1|g' Makefile
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
   make PREFIX="$pkgdir/usr" install
   install -D --mode=0644 TRICKS "$pkgdir/usr/share/doc/ts/TRICKS"
 }
