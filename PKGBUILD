@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=31.0.1650.48
+pkgver=31.0.1650.57
 _toolchains_rev=12181
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
 noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_translator-$_toolchains_rev.tgz)
-sha256sums=('3e478b5b85a023b3bba55b23d71cd6f585a08f865f7a98297a9a0757e9695c5d'
+sha256sums=('89fe1ea38754c3d39bbd068313336a4467e7111854d8e14cc51bc2435c7667f7'
             'cb4ac159f61de5e75d339813c0fc74f986156310a2c43a30ba40125951e72450'
             'ad229b69a5af72a9fa7cf2167ee48560cc11049206e4ef919cb31d1273d6409f'
             'fdb8309ef2b1c8600d63c4420ac02d66d85ab9befe98d99e9706828870730077'
