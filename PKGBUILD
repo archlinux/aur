@@ -1,4 +1,4 @@
-# Maintainer : Keshav Padram Amburay (the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer : Keshav Padram Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
@@ -47,18 +47,43 @@ pkgver() {
 	echo "$(git describe --tags)" | sed -e 's|syslinux-||g' -e 's|-pre|pre|g' -e 's|-|.|g'
 }
 
+prepare() {
+	
+	cd "${srcdir}/${_pkgname}/"
+	
+	msg "Do not try to build the Windows or DOS installers and DIAG files"
+	sed 's|diag libinstaller dos win32 win64 dosutil txt|libinstaller txt|g' -i "${srcdir}/${_pkgname}/Makefile" || true
+	sed 's|win32/syslinux.exe win64/syslinux64.exe||g' -i "${srcdir}/${_pkgname}/Makefile" || true
+	sed 's|dosutil/*.com dosutil/*.sys||g' -i "${srcdir}/${_pkgname}/Makefile" || true
+	sed 's|dos/syslinux.com||g' -i "${srcdir}/${_pkgname}/Makefile" || true
+	sed 's|INSTALLSUBDIRS = com32 utils dosutil|INSTALLSUBDIRS = com32 utils|g' -i "${srcdir}/${_pkgname}/Makefile" || true
+	sed 's|install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|# install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|g' -i "${srcdir}/${_pkgname}/Makefile" || true
+	
+	msg "Fix FHS manpage path"
+	sed 's|/usr/man|/usr/share/man|g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
+	
+}
+
 _build_syslinux_bios() {
 	
 	rm -rf "${srcdir}/${_pkgname}-bios/" || true
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-bios"
 	cd "${srcdir}/${_pkgname}-bios/"
 	
-	## Do not try to build syslinux with our default LDFLAGS, it will fail
+	msg "Do not try to compile bios build with our default LDFLAGS, it will fail"
 	unset LDFLAGS
 	
+	msg "Run make bios spotless"
 	make PYTHON="python2" bios spotless
+	echo
+	
+	msg "Run make bios"
 	make PYTHON="python2" bios
+	echo
+	
+	msg "Run make bios installer"
 	make PYTHON="python2" bios installer
+	echo
 	
 }
 
@@ -68,16 +93,24 @@ _build_syslinux_efi64() {
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-efi64"
 	cd "${srcdir}/${_pkgname}-efi64/"
 	
-	## Unset all compiler FLAGS for efi64 build
+	msg "Unset all compiler FLAGS for efi64 build"
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
+	msg "Run make efi64 spotless"
 	make PYTHON="python2" efi64 spotless
+	echo
+	
+	msg "Run make efi64"
 	make PYTHON="python2" efi64
+	echo
+	
+	msg "Run make efi64 installer"
 	make PYTHON="python2" efi64 installer
+	echo
 	
 }
 
@@ -87,16 +120,24 @@ _build_syslinux_efi32() {
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-efi32"
 	cd "${srcdir}/${_pkgname}-efi32/"
 	
-	## Unset all compiler FLAGS for efi32 build
+	msg "Unset all compiler FLAGS for efi32 build"
 	unset CFLAGS
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
+	msg "Run make efi32 spotless"
 	make PYTHON="python2" efi32 spotless
+	echo
+	
+	msg "Run make efi32"
 	make PYTHON="python2" efi32
+	echo
+	
+	msg "Run make efi32 installer"
 	make PYTHON="python2" efi32 installer
+	echo
 	
 }
 
@@ -104,28 +145,21 @@ build() {
 	
 	cd "${srcdir}/${_pkgname}/"
 	
-	## Do not try to build the Windows or DOS installers and DIAG files
-	sed 's|diag libinstaller dos win32 win64 dosutil txt|libinstaller txt|g' -i "${srcdir}/${_pkgname}/Makefile" || true
-	sed 's|win32/syslinux.exe win64/syslinux64.exe||g' -i "${srcdir}/${_pkgname}/Makefile" || true
-	sed 's|dosutil/*.com dosutil/*.sys||g' -i "${srcdir}/${_pkgname}/Makefile" || true
-	sed 's|dos/syslinux.com||g' -i "${srcdir}/${_pkgname}/Makefile" || true
-	sed 's|INSTALLSUBDIRS = com32 utils dosutil|INSTALLSUBDIRS = com32 utils|g' -i "${srcdir}/${_pkgname}/Makefile" || true
-	sed 's|install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|# install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|g' -i "${srcdir}/${_pkgname}/Makefile" || true
-	
-	## Fix FHS manpage path
-	sed 's|/usr/man|/usr/share/man|g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
-	
-	## Build syslinux-efi
 	if [[ "${CARCH}" == "x86_64" ]]; then
+		msg "Build syslinux efi64"
 		_build_syslinux_efi64
+		echo
 	fi
 	
 	if [[ "${CARCH}" == "i686" ]]; then
+		msg "Build syslinux efi32"
 		_build_syslinux_efi32
+		echo
 	fi
 	
-	## Build syslinux-bios
+	msg "Build syslinux bios"
 	_build_syslinux_bios
+	echo
 	
 }
 
@@ -133,34 +167,55 @@ _package_syslinux_bios() {
 	
 	cd "${srcdir}/${_pkgname}-bios/"
 	
-	## Install Syslinux bios
+	msg "Install Syslinux bios"
 	make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/bios/" bios install
+	echo
 	
-	## Remove syslinux.exe,syslinux64.exe,syslinux.com and dosutil dir
+	msg "Remove syslinux.exe,syslinux64.exe,syslinux.com and dosutil dir"
 	rm "${pkgdir}/usr/lib/syslinux/bios"/syslinux.{com,exe} || true
 	rm "${pkgdir}/usr/lib/syslinux/bios/syslinux64.exe" || true
 	rm -rf "${pkgdir}/usr/lib/syslinux/bios/dosutil/" || true
 	
-	## Remove com32 and diag dirs
+	msg "Remove com32 and diag dirs"
 	rm -rf "${pkgdir}/usr/lib/syslinux/bios/diag/" || true
 	rm -rf "${pkgdir}/usr/lib/syslinux/bios/com32/" || true
 	
-	## Move extlinux binary to /usr/bin
+	msg "Move extlinux binary to /usr/bin"
 	install -d "${pkgdir}/usr/bin"
 	mv "${pkgdir}/sbin/extlinux" "${pkgdir}/usr/bin/extlinux"
 	rm -rf "${pkgdir}/sbin/"
 	
-	## Install docs
+	msg "Install syslinux docs"
 	install -d "${pkgdir}/usr/share/doc"
 	cp -ar "${srcdir}/${_pkgname}/doc" "${pkgdir}/usr/share/doc/syslinux"
 	
-	## Install the default configuration
+	msg "Install syslinux.cfg"
 	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/boot/syslinux/syslinux.cfg"
 	
-	## Install the installation and update script
+	msg "Install the syslinux-install_update script"
 	## This script is maintained at git://gist.github.com/772138.git
 	## Script not yet updated for syslinux-efi
 	install -D -m0755 "${srcdir}/syslinux-install_update" "${pkgdir}/usr/bin/syslinux-install_update"
+	
+}
+
+_package_syslinux_efi() {
+	
+	cd "${srcdir}/${_pkgname}/"
+	
+	if [[ "${CARCH}" == "x86_64" ]]; then
+		cd "${srcdir}/${_pkgname}-efi64/"
+		msg "Install Syslinux efi64"
+		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" efi64 install
+		echo
+	fi
+	
+	if [[ "${CARCH}" == "i686" ]]; then
+		cd "${srcdir}/${_pkgname}-efi32/"
+		msg "Install Syslinux efi32"
+		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" efi32 install
+		echo
+	fi
 	
 }
 
@@ -168,17 +223,13 @@ package() {
 	
 	cd "${srcdir}/${_pkgname}/"
 	
-	if [[ "${CARCH}" == "x86_64" ]]; then
-		cd "${srcdir}/${_pkgname}-efi64/"
-		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" efi64 install
-	fi
+	msg "Package Syslinux efi"
+	_package_syslinux_efi
+	echo
 	
-	if [[ "${CARCH}" == "i686" ]]; then
-		cd "${srcdir}/${_pkgname}-efi32/"
-		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" efi32 install
-	fi
-	
+	msg "Package Syslinux bios"
 	_package_syslinux_bios
+	echo
 	
 }
 
