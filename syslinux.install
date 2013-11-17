@@ -1,13 +1,15 @@
 post_install() {
+  
   cat << EOF
 
 ==> For setting up Syslinux BIOS using the install script follow 
     https://wiki.archlinux.org/index.php/Syslinux#Automatic_Install
 
 EOF
-
+  
   ## Message specific to Syslinux 4.xx (or 5.xx) to 6.xx upgrade
   if [ "$(vercmp $2 6.00)" -lt 0 ]; then
+    
     cat << EOF
 ==> If you are upgrading from Syslinux 4.xx or 5.xx, please re-install
     (not update) Syslinux BIOS manually (not using the install script) once
@@ -15,8 +17,9 @@ EOF
 
 ==> The install script may not properly upgrade Syslinux to 6.xx version
 EOF
+    
   fi
-
+  
   cat << EOF
 
 ==> For setting up Syslinux EFI follow
@@ -25,13 +28,16 @@ EOF
 ==> The install script does not currently support Syslinux EFI installation
 
 EOF
+  
 }
 
 post_upgrade() {
+  
   ## auto-update syslinux if /boot/syslinux/SYSLINUX_AUTOUPDATE exists
   /usr/bin/syslinux-install_update -s
   
   post_install
+  
 }
 
 # vim:set ts=2 sw=2 et:
