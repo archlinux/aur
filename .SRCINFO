@@ -1,7 +1,7 @@
 pkgbase = syslinux-firmware-git
 	pkgdesc = Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch
 	pkgver = 6.02.2.g4c3c856
-	pkgrel = 3
+	pkgrel = 4
 	url = http://syslinux.zytor.com/
 	install = syslinux.install
 	arch = x86_64
