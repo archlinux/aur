@@ -8,14 +8,14 @@ _pkgname="efitools"
 pkgname="${_pkgname}-git"
 
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
 arch=('x86_64')
 license=('GPL2' 'LGPL2.1')
 
 makedepends=('git' 'gnu-efi-libs' 'help2man' 'perl-file-slurp')
-depends=('dosfstools' 'efivar' 'efibootmgr' 'sbsigntool')
+depends=('openssl' 'sbsigntool' 'efivar' 'efibootmgr' 'dosfstools')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}")
