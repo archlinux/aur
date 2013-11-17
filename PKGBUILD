@@ -91,6 +91,7 @@ package_kipi-plugins() {
               'opencv: Remove Red Eyes plugin'
               'imagemagick: Video SlideShow plugin'
               'qt-gstreamer: Video SlideShow plugin')
+  options=('staticlibs')
   install=kipi-plugins.install
 
   cd build/extra/kipi-plugins
