@@ -1,0 +1,32 @@
+pkgbase = vtigercrm
+	pkgdesc = A free, full-featured, 100% Open Source CRM software ideal for small and medium businesses
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = https://www.vtiger.com/crm/open-source/
+	arch = any
+	license = custom
+	depends = mariadb>=5.5
+	depends = php>=5.4
+	depends = php-gd
+	depends = gd
+	depends = perl
+	depends = perl-archive-zip
+	depends = libpng
+	depends = libjpeg
+	depends = freetype2
+	depends = zlib
+	options = !strip
+	backup = etc/webapps/vtigercrm/config.php
+	backup = etc/webapps/vtigercrm/config.db.php
+	backup = etc/webapps/vtigercrm/config.inc.php
+	backup = etc/webapps/vtigercrm/config.template.php
+	backup = etc/webapps/vtigercrm/config.help.link.php
+	backup = etc/webapps/vtigercrm/config.performance.php
+	backup = etc/webapps/vtigercrm/connection.php
+	source = http://downloads.sourceforge.net/vtigercrm/vtigercrm-5.4.0.tar.gz
+	source = PHPv54-v2.patch
+	md5sums = 4d9fb047c42a8231bcbbad9c5e31292e
+	md5sums = dea518ebc093ff67f9fdc70caad969b9
+
+pkgname = vtigercrm
+
