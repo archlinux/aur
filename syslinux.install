@@ -2,7 +2,7 @@ post_install() {
   
   cat << EOF
 
-==> For setting up Syslinux BIOS using the install script follow 
+==> For setting up Syslinux BIOS using the syslinux-install_update script follow 
     https://wiki.archlinux.org/index.php/Syslinux#Automatic_Install
 EOF
   
