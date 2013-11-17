@@ -6,19 +6,19 @@
 # Contributor: Silvio Knizek <killermoehre@gmx.net>
 
 pkgname=trousers
-pkgver=0.3.10
-pkgrel=6
+pkgver=0.3.11.2
+pkgrel=1
 pkgdesc="Open-source TCG Software Stack implementation for use with a TPM"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/trousers"
 license=('CPL')
 depends=('openssl')
 install=${pkgname}.install
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
+source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/0.3.11/${pkgname}-${pkgver}.tar.gz
         ${pkgname}.install
         tcsd.service
         70-tpmd.rules)
-sha256sums=('eb9569de5c66d9698f6c3303de03777b95ec72827f68b7744454bfa9227bc530'
+sha256sums=('9bdc3001e00e215c09ac50810940c5c32a0fe057952916e5e836c858bf0e870d'
             '5276d40a80191b494e8c90a619f37417c551afc58c11b689774a7243891abf4f'
             '653c3a94ec628e7a7fb150d0d289b0866c6b3bb9aa57af2c59724517d205d7bd'
             'c50ea41a4809699dd50f2e621acc6baafb2dffa43cd5a0df8a0679f1d1b1b884')
