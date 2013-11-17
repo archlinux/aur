@@ -18,6 +18,7 @@ pkgbase = ceph-git
 	depends = keyutils
 	depends = libatomic_ops
 	depends = linux>=2.6.37
+	depends = leveldb
 	optdepends = fcgi: radosgw - Amazon S3 compatibility
 	optdepends = expat: radosgw - Amazon S3 compatibility
 	provides = ceph

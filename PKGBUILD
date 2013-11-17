@@ -6,7 +6,7 @@ pkgdesc="Massively distributed fault-tolerant file system. Git development versi
 arch=('x86_64' 'i686')
 url="http://ceph.newdream.net/"
 license=('GPL')
-depends=('libedit' 'libsigc++' 'gtkmm' 'btrfs-progs-unstable' 'crypto++' 'gperftools' 'python2' 'fuse' 'keyutils' 'libatomic_ops' 'linux>=2.6.37')
+depends=('libedit' 'libsigc++' 'gtkmm' 'btrfs-progs-unstable' 'crypto++' 'gperftools' 'python2' 'fuse' 'keyutils' 'libatomic_ops' 'linux>=2.6.37' 'leveldb')
 makedepends=('boost')
 optdepends=('fcgi: radosgw - Amazon S3 compatibility'
 						'expat: radosgw - Amazon S3 compatibility')
