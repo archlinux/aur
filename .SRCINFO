@@ -1,0 +1,27 @@
+pkgbase = ceph-git
+	pkgdesc = Massively distributed fault-tolerant file system. Git development version.
+	pkgver = 20110528
+	pkgrel = 1
+	url = http://ceph.newdream.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = boost
+	depends = libedit
+	depends = libsigc++
+	depends = gtkmm
+	depends = btrfs-progs-unstable
+	depends = crypto++
+	depends = gperftools
+	depends = python2
+	depends = fuse
+	depends = keyutils
+	depends = libatomic_ops
+	depends = linux>=2.6.37
+	optdepends = fcgi: radosgw - Amazon S3 compatibility
+	optdepends = expat: radosgw - Amazon S3 compatibility
+	provides = ceph
+	conflicts = ceph
+
+pkgname = ceph-git
+
