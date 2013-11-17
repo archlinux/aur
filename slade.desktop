@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=SLADE
+Type=Application
+Comment=Slayer's Leet-Ass Doom Editor
+Exec=slade
+Icon=slade
+Categories=Game;
+Terminal=False

@@ -1,0 +1,27 @@
+pkgbase = slade-git
+	pkgdesc = SLADE3 Doom editor.
+	pkgver = 20131117
+	pkgrel = 1
+	url = http://slade.mancubus.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = zip
+	depends = fluidsynth
+	depends = freeimage
+	depends = ftgl
+	depends = libmodplug
+	depends = sfml
+	depends = wxgtk2.9
+	provides = slade
+	conflicts = slade
+	source = slade::git://github.com/sirjuddington/SLADE.git
+	source = slade.desktop
+	md5sums = SKIP
+	md5sums = 49eb1692463e2aa93ea2754a5df7a6e4
+
+pkgname = slade-git
+
