@@ -4,13 +4,13 @@
 # Contributor: JD Steffen
 
 pkgname=eduke32
-pkgver=20131108_4145
+pkgver=20131116_4167
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
 arch=('i686' 'x86_64')
 url="http://eduke32.com/"
 license=('GPL' 'custom: BUILD')
-depends=('sdl_mixer' 'mesa' 'libvpx' 'gtk2' 'desktop-file-utils')
+depends=('sdl_mixer' 'mesa' 'libvpx' 'libvorbis' 'flac' 'gtk2')
 makedepends=('nasm')
 # nasm is x86-only
 [ "$CARCH" == "x86_64" ] && makedepends=()
@@ -22,16 +22,13 @@ conflicts=('eduke32-svn')
 install="$pkgname.install"
 source=("http://dukeworld.duke4.net/$pkgname/synthesis/${pkgver//_/-}/${pkgname}_src_${pkgver//_/-}.tar.xz"
         "$pkgname.png"
-        "$pkgname.desktop"
-        "$pkgname.install")
-md5sums=('4cf2e506769be5a02714074731b3721b'
+        "$pkgname.desktop")
+md5sums=('a92fd7139e626de94f220e4ffe512c0f'
          'bc189b860c8562e10f01e0faed909089'
-         '244895de9c74550c1bb079793d8b18fe'
-         '52fe1aacaa53e04587d16e05252fd714')
-sha256sums=('9c82ca3626ac2446697b9f1a8a71fb64b9e491c396d72592b4e591d7f66e82a3'
+         'SKIP')
+sha256sums=('76712e125e6f9a52d7f3249a1ab3b29f1b2eb0c2d98212579a074c954d57f054'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
-            '9224aadf634448726d2e863ba9a455887dc3b90049238fe592b7f7b5634cbd79'
-            'ff05c37c046c5ab0456ff6307bfe9cef3eb8579ab8124a418e973378c9215158')
+            'SKIP')
 
 build() {
   cd "$srcdir/${pkgname}_${pkgver//_/-}"

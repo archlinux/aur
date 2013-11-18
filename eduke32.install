@@ -1,17 +1,9 @@
 
 post_install() {
   echo "Remember you need Duke Nukem 3D data files to play."
-
-  # apply updates for our .desktop file
-  update-desktop-database -q
+  echo "You can put them under ~/.eduke32/"
 }
 
 post_upgrade() {
-  # apply updates for our .desktop file
-  update-desktop-database -q
-}
-
-post_remove() {
-  # apply updates for our .desktop file
-  update-desktop-database -q
+  post_install
 }
