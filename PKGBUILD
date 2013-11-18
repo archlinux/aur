@@ -12,8 +12,8 @@ depends=('gtk3' 'gnome-doc-utils' 'gsettings-desktop-schemas'
          'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('lrzsz: for xmodem, ymodem and zmodem file transfer protocols')
 makedepends=('intltool')
-install=moserial.install
-source=("http://ftp.gnome.org/pub/GNOME/sources/moserial/3.0/$pkgname-$pkgver.tar.xz")
+install=$pkgname.install
+source=("http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
 sha256sums=('baa53fb046485653d16ea879072a2f29b138faeced92f7d1ff045ba8db752073')
 
 build() {
