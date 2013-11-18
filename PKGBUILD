@@ -3,13 +3,13 @@
 
 pkgname=terminology-git
 _pkgname=${pkgname%-*}
-pkgver=0.4.0alpha1.r772.d682db2
+pkgver=0.4.0alpha1.r786.f8edf05
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org/p.php?p=about/terminology"
 license=('BSD')
-depends=('elementary>=1.8.0')
+depends=('elementary')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
