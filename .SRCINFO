@@ -1,0 +1,14 @@
+pkgbase = perl-math-calc-units
+	pkgdesc = Human-readable unit-aware calculator
+	pkgver = 1.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Math-Calc-Units
+	arch = any
+	license = unknown
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SF/SFINK/Math-Calc-Units-1.07.tar.gz
+	md5sums = 56e4be0e64d6c8fc27c8f87d0d3cebd8
+
+pkgname = perl-math-calc-units
+
