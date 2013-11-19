@@ -1,27 +1,36 @@
-# Maintainer: sh0 <mee@sh0.org>
+# Maintainer: Mark Grimes <mgrimes at peculier.com>
 pkgname=perl-nagios-plugin
-pkgver=0.35
+pkgver=0.36
 pkgrel=1
 pkgdesc="A family of perl modules to streamline writing Nagios plugins"
+_dist=Nagios-Plugin
 arch=('any')
-url="http://search.cpan.org/dist/Nagios-Plugin"
+url="http://search.cpan.org/dist/$_dist"
 license=('unknown')
 depends=('perl>=5.10.0' 'perl-params-validate' 'perl-class-accessor' 'perl-config-tiny' 'perl-math-calc-units')
 options=(!emptydirs)
-source=(http://search.cpan.org/CPAN/authors/id/T/TO/TONVOON/Nagios-Plugin-$pkgver.tar.gz)
-md5sums=('96b3510798e28f3ebed8c23f4225e80e')
+source=(http://search.cpan.org/CPAN/authors/id/T/TO/TONVOON/$_dist-$pkgver.tar.gz)
+md5sums=('b897f6d5d66a655dde7caec579efcf2e')
 
-build() {
-  cd "$srcdir/Nagios-Plugin-$pkgver"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+build() (
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
   make
-}
+)
 
-package() {
-  cd "$srcdir/Nagios-Plugin-$pkgver"
-  make install DESTDIR="$pkgdir/"
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
-}
+check() (
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
+)
+
+package() (
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+)
 
 # vim:set ts=2 sw=2 et:
