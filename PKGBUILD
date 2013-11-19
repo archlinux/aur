@@ -1,61 +1,103 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# $Id$
+# Maintainer: Ido Rosen <ido@kernel.org>
+# Contributor: Evan Teitelman <teitelmanevan@gmail.com>
+# Contributor: Eric Renfro <erenfro@gmail.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
+# Contributor: Marti Raudsepp <marti@juffo.org>
+# Contributor: Sandman <the0sandman@hotmail.com>
+# Contributor: raw <spam@rw23.de>
+# Contributor: Dave Simons <miouhpi@gmail.com>
+#
+# NOTE: To request changes to this package, please submit a pull request
+#       to the GitHub repository at https://github.com/ido/packages-archlinux
+#       Otherwise, open a GitHub issue.  Thank you! -Ido
+#
+
 pkgname=ceph-git
-pkgver=20110528
+pkgver=0.72.255.g574cb61
 pkgrel=1
-pkgdesc="Massively distributed fault-tolerant file system. Git development version."
+epoch=1
+pkgdesc='Distributed, fault-tolerant file system delivering object, block, and file storage in one unified system.'
 arch=('x86_64' 'i686')
-url="http://ceph.newdream.net/"
-license=('GPL')
-depends=('libedit' 'libsigc++' 'gtkmm' 'btrfs-progs-unstable' 'crypto++' 'gperftools' 'python2' 'fuse' 'keyutils' 'libatomic_ops' 'linux>=2.6.37' 'leveldb')
-makedepends=('boost')
-optdepends=('fcgi: radosgw - Amazon S3 compatibility'
-						'expat: radosgw - Amazon S3 compatibility')
+url='http://ceph.newdream.net/'
+license=('LGPL2.1')
+depends=('libedit' 'libsigc++' 'gtkmm' 'btrfs-progs' 'crypto++'
+         'gperftools>=1.8.3-2' 'python2' 'fuse' 'keyutils'
+         'libatomic_ops' 'curl' 'libaio' 'fcgi' 'expat' 'boost'
+         'leveldb')
+makedepends=('boost' 'boost-libs')
+install=ceph.install
+options=('!libtool' 'emptydirs')
 provides=('ceph')
 conflicts=('ceph')
-_gitroot="git://ceph.newdream.net/git/ceph.git"
-_gitname="ceph"
+source=("git+https://github.com/ceph/ceph.git"
+        "ceph-osd@.service"
+        "ceph-mon@.service"
+        "ceph-mds@.service"
+        "ceph.install")
+sha256sums=('SKIP'
+            '29483c0f6718e8830cf52c0d31e391fb52dc1b460bcb65cf9c72dfab83e5b5ce'
+            'a50811ce62fd6cdcc17d8f1e4d9700c1889ab4bfc5e9a22155bd725a27715e3c'
+            'b8239a04cc42e3e4ced2e141df6804e61e875131a5c95d6bcbfc3b44f388d44b'
+            'c1669b2bedc07a313b8bd29735296791abc0fd94eb353c9683b6015f2cc2c93c')
+
+pkgver() {
+  cd "${srcdir}/${pkgname%%-git}"
+  #printf "%s" "$(git describe --long --tags | sed 's/v//; s/-/./g')"
+  git describe --long --tags | sed 's/v//; s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname%%-git}"
+  # Fix for newer version of automake.
+  #find . -name 'Makefile.am' | while read makefile ; do
+  #  if grep -q AUTOMAKE_OPTIONS "$makefile" ; then
+  #    sed -i 's/AUTOMAKE_OPTIONS = /&subdir-objects /' "$makefile"
+  #  else
+  #    sed -i '1a\AUTOMAKE_OPTIONS = subdir-objects' "$makefile"
+  #  fi
+  #done
+}
 
 build() {
-  cd "$srcdir"
+  cd "${srcdir}/${pkgname%%-git}"
 
-  msg "Connecting to the ceph git repository..."
-  if [ -d "$srcdir/$_gitname" ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
-  msg "GIT checkout done or server timeout"
-
-  cd "$srcdir"
-  rm -rf "$_gitname-build"
-  git clone "$_gitname" "$_gitname-build"
-  cd "$_gitname-build"
-
-  msg2 "Configuring..."
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make clean
-  msg2 "Compiling..."
+  LIBS="-lpthread -lboost_system" ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-radosgw
+
   make
-  msg2 "Patching python scripts..."
-  sed -i 's:thon:thon2:' src/obsync/boto_tool
-  sed -i 's:thon:thon2:' src/obsync/obsync
 }
 
 package() {
-  cd "$_gitname-build"
-  msg2 "Packaging..."
+  cd "${srcdir}/${pkgname%%-git}"
+
   make DESTDIR="$pkgdir" install
-  mkdir -p "$pkgdir/var/run/ceph" "$pkgdir/var/log/ceph" \
+
+  install -dm755 "$pkgdir/var/run/ceph" "$pkgdir/var/log/ceph" \
     "$pkgdir/etc/rc.d" "$pkgdir/etc/ceph"
+
+  # Systemd.
+  install -dm755 "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "$srcdir/ceph-osd@.service" "$pkgdir/usr/lib/systemd/system/ceph-osd@.service"
+  install -Dm644 "$srcdir/ceph-mon@.service" "$pkgdir/usr/lib/systemd/system/ceph-mon@.service"
+  install -Dm644 "$srcdir/ceph-mds@.service" "$pkgdir/usr/lib/systemd/system/ceph-mds@.service"
   install -Dm755 "src/init-ceph" "$pkgdir/etc/rc.d/ceph"
-  # Move /usr/sbin to /sbin, which is expected by the mount command
-  mv "$pkgdir/usr/sbin" "$pkgdir/"
+
+  # Fix bin directory.
+  mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
+
+  # Sample config.
   install -Dm644 "$pkgdir/usr/share/doc/ceph/sample.ceph.conf" \
     "$pkgdir/etc/ceph/ceph.conf.sample"
+
+  # License.
   install -Dm644 COPYING \
-    "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+
+  # Clean up.
+  rmdir "$pkgdir/var/run/ceph"
 }
 
-# vim:set ts=2 sw=2 et:

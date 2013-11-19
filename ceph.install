@@ -1,0 +1,9 @@
+post_install() {
+  mkdir /var/run/ceph
+}
+
+pre_remove() {
+  rmdir --ignore-fail-on-non-empty /var/run/ceph
+}
+
+# vim:set ts=2 sw=2 et:

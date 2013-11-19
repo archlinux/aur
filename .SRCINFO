@@ -1,28 +1,45 @@
 pkgbase = ceph-git
-	pkgdesc = Massively distributed fault-tolerant file system. Git development version.
-	pkgver = 20110528
+	pkgdesc = Distributed, fault-tolerant file system delivering object, block, and file storage in one unified system.
+	pkgver = 0.72.255.g574cb61
 	pkgrel = 1
+	epoch = 1
 	url = http://ceph.newdream.net/
+	install = ceph.install
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = LGPL2.1
 	makedepends = boost
+	makedepends = boost-libs
 	depends = libedit
 	depends = libsigc++
 	depends = gtkmm
-	depends = btrfs-progs-unstable
+	depends = btrfs-progs
 	depends = crypto++
-	depends = gperftools
+	depends = gperftools>=1.8.3-2
 	depends = python2
 	depends = fuse
 	depends = keyutils
 	depends = libatomic_ops
-	depends = linux>=2.6.37
+	depends = curl
+	depends = libaio
+	depends = fcgi
+	depends = expat
+	depends = boost
 	depends = leveldb
-	optdepends = fcgi: radosgw - Amazon S3 compatibility
-	optdepends = expat: radosgw - Amazon S3 compatibility
 	provides = ceph
 	conflicts = ceph
+	options = !libtool
+	options = emptydirs
+	source = git+https://github.com/ceph/ceph.git
+	source = ceph-osd@.service
+	source = ceph-mon@.service
+	source = ceph-mds@.service
+	source = ceph.install
+	sha256sums = SKIP
+	sha256sums = 29483c0f6718e8830cf52c0d31e391fb52dc1b460bcb65cf9c72dfab83e5b5ce
+	sha256sums = a50811ce62fd6cdcc17d8f1e4d9700c1889ab4bfc5e9a22155bd725a27715e3c
+	sha256sums = b8239a04cc42e3e4ced2e141df6804e61e875131a5c95d6bcbfc3b44f388d44b
+	sha256sums = c1669b2bedc07a313b8bd29735296791abc0fd94eb353c9683b6015f2cc2c93c
 
 pkgname = ceph-git
 
