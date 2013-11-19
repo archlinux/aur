@@ -1,7 +1,7 @@
 pkgbase = perl-math-calc-units
 	pkgdesc = Human-readable unit-aware calculator
 	pkgver = 1.07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Math-Calc-Units
 	arch = any
 	license = unknown
