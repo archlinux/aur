@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 194794 2013-09-23 17:21:36Z heftig $
+# $Id: PKGBUILD 198341 2013-10-30 14:16:46Z allan $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
@@ -9,7 +9,7 @@
 pkgname=networkmanager-ifupdown
 _oldname=networkmanager
 _pkgname=NetworkManager
-pkgver=0.9.8.4
+pkgver=0.9.8.8
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=('i686' 'x86_64')
@@ -22,16 +22,16 @@ depends=(dbus-glib iproute2 libnl nss polkit udev wpa_supplicant dhcp-client
 makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc git)
 optdepends=('dhclient: DHCPv6 support'
             'dnsmasq: Connection sharing'
-            'bluez4: Bluetooth support'
+            'bluez: Bluetooth support'
             'openresolv: resolvconf support'
             'ppp: Dialup connection support')
-options=('!libtool')
 backup=('etc/NetworkManager/NetworkManager.conf')
+options=('!libtool')
 install=networkmanager.install
 #source=(git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=93c1041
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
         NetworkManager.conf disable_set_hostname.patch)
-sha256sums=('4c9ff0aaf52bee8df9a73290ec2b3f4441ff504420d0b0dfd729b00a92d80d99'
+sha256sums=('8a0a3de9cd2897f778193aa5f04c8a6f6f87fe07f7a088aab26d2b35baa17a55'
             '44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
 
@@ -64,7 +64,7 @@ build() {
     --enable-doc \
     --enable-ifupdown
 
-  make
+  make V=0
 }
 
 package() {

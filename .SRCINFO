@@ -1,6 +1,6 @@
 pkgbase = networkmanager-ifupdown
 	pkgdesc = Network Management daemon
-	pkgver = 0.9.8.4
+	pkgver = 0.9.8.8
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager.install
@@ -27,17 +27,17 @@ pkgbase = networkmanager-ifupdown
 	depends = modemmanager
 	optdepends = dhclient: DHCPv6 support
 	optdepends = dnsmasq: Connection sharing
-	optdepends = bluez4: Bluetooth support
+	optdepends = bluez: Bluetooth support
 	optdepends = openresolv: resolvconf support
 	optdepends = ppp: Dialup connection support
-	provides = networkmanager=0.9.8.4
+	provides = networkmanager=0.9.8.8
 	conflicts = networkmanager
 	options = !libtool
 	backup = etc/NetworkManager/NetworkManager.conf
-	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-0.9.8.4.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-0.9.8.8.tar.xz
 	source = NetworkManager.conf
 	source = disable_set_hostname.patch
-	sha256sums = 4c9ff0aaf52bee8df9a73290ec2b3f4441ff504420d0b0dfd729b00a92d80d99
+	sha256sums = 8a0a3de9cd2897f778193aa5f04c8a6f6f87fe07f7a088aab26d2b35baa17a55
 	sha256sums = 44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21
 	sha256sums = 25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460
 
