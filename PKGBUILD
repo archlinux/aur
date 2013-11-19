@@ -12,9 +12,9 @@ depends=('elementary' 'desktop-file-utils')
 makedepends=('git' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-install=ecrire.install
+install=$_pkgname.install
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -34,6 +34,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  export CFLAGS="$CFLAGS -fvisibility=hidden"
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr

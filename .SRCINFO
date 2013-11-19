@@ -14,7 +14,7 @@ pkgbase = ecrire-git
 	provides = ecrire=0.1.0.92.1d1911c
 	conflicts = ecrire
 	source = git://git.enlightenment.org/apps/ecrire.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ecrire-git
 
