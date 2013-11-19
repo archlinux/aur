@@ -4,10 +4,10 @@
 
 pkgname=ruby-treetop
 pkgver=1.4.15
-pkgrel=2
-pkgdesc="A Ruby-based text parsing and interpretation DSL"
+pkgrel=3
+pkgdesc='A Ruby-based text parsing and interpretation DSL'
 arch=('any')
-url="http://functionalform.blogspot.com/"
+url='http://treetop.rubyforge.org/'
 license=('MIT')
 depends=('ruby-polyglot')
 source=("http://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
