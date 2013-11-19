@@ -3,7 +3,6 @@ pkgbase = lib32-allegro4
 	pkgver = 4.4.2
 	pkgrel = 3
 	url = http://alleg.sourceforge.net/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cmake
@@ -17,10 +16,10 @@ pkgbase = lib32-allegro4
 	depends = lib32-libxcursor
 	depends = lib32-alsa-lib
 	depends = lib32-libogg
+	depends = lib32-glu
 	depends = allegro4=4.4.2
 	options = staticlibs
 	source = http://downloads.sourceforge.net/alleg/allegro-4.4.2.tar.gz
-	md5sums = 4db71b0460fc99926ae91d223199c2e6
 	sha256sums = 1b21e7577dbfada02d85ca4510bd22fedaa6ce76fde7f4838c7c1276eb840fdc
 
 pkgname = lib32-allegro4
