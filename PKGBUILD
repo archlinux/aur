@@ -6,7 +6,7 @@ pkgname=firefox-nightly-i18n
 pkgver=28.0a1
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
-url="http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
+url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
 arch=('i686' 'x86_64')
 license=('MPL')
 depends=('firefox-nightly')
@@ -84,7 +84,7 @@ prepare() {
   msg "Downloading langpacks…"
   for i in ${selected_lang_list[*]}; do
     msg2 "${i}…"
-    curl -OR "http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-${CARCH}/xpi/firefox-${pkgver}.${i}.langpack.xpi"
+    curl -OR "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-${CARCH}/xpi/firefox-${pkgver}.${i}.langpack.xpi"
   done 
 }
 
