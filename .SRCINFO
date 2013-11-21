@@ -1,6 +1,6 @@
 pkgbase = desksanity-git
 	pkgdesc = Enlightement Module: Desktop Insanity
-	pkgver = 0.1.r8.a37d634
+	pkgver = 0.1.r28.e312dba
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = desksanity-git
 	makedepends = git
 	depends = efx-git
 	depends = enlightenment17>=0.18.99
-	provides = desksanity=0.1.r8.a37d634
+	provides = desksanity=0.1.r28.e312dba
 	conflicts = desksanity
 	source = git://git.enlightenment.org/devs/discomfitor/desksanity.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = desksanity-git
 

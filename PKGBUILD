@@ -2,7 +2,7 @@
 
 pkgname=desksanity-git
 _pkgname=${pkgname%-*}
-pkgver=0.1.r8.a37d634
+pkgver=0.1.r28.e312dba
 pkgrel=1
 pkgdesc="Enlightement Module: Desktop Insanity"
 arch=('i686' 'x86_64')
@@ -12,14 +12,13 @@ depends=('efx-git' 'enlightenment17>=0.18.99')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-#options=('!libtool')
 source=("git://git.enlightenment.org/devs/discomfitor/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
+  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]-')
 
   echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
