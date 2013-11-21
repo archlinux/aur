@@ -28,7 +28,7 @@ prepare() {
   setconf bin/grails-debug DIRNAME /usr/share/grails
 
   # profile.d script
-  echo 'export GRAILS_HOME=/usr/share/grails' > "$pkgbase.profile"
+  echo 'export GRAILS_HOME=/usr/share/grails' > "$srcdir/$pkgbase.profile"
 }
 
 package_grails() {
