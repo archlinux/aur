@@ -1,16 +1,17 @@
 # Maintainer: Swift Geek <swifgeek ɐ google m č0m>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
+# Contributor: olasd
+#TODO: sed-out "need" for ExtUtils::Typemap or provide package if really needed
 
 pkgname=slic3r-git
 pkgver=0
-pkgrel=10
+pkgrel=11
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
 depends=('perl'
-         'slic3r-xs-git' 
-         'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82' )
+         'perl-moo' 'perl-boost-geometry-utils' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82' 'perl-extutils-parsexs>=3.22' )
 makedepends=('git')
 optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
@@ -20,8 +21,8 @@ optdepends=('perl-wx: GUI support'
             'perl-opengl: support for opengl preview'
             'perl-class-xsaccessor: creating faster accessor methods')
 #             'perl-growl-gntp: notifications support via growl'
-provides=('slic3r')
-conflicts=('slic3r')
+provides=('slic3r' 'slic3r-xs' 'slic3r-xs-git')
+conflicts=('slic3r' 'slic3r-xs' 'slic3r-xs-git')
 #Consider uncommenting line below in case of false negative test results ;)
 #BUILDENV+=('!check')
 source=('slic3r.desktop' 'slic3r.pl')
@@ -70,22 +71,20 @@ prepare() {
 
   # Why true? cuz pacman is crazy... and it still doesn't work as intended
   true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
-  if [ ! -d $(echo /var/lib/pacman/local/slic3r-xs-git-*.${pkgver##*.}-*) ]; then 
-    error "slic3r-xs-git version doesn't match. Please update it first!"; false; exit 1
-  fi
   export _pkgver="$pkgver"
   msg2 "Fetched $_pkgver"
 }
 
 build() {
-  cd "$_src_dir"
+  cd "$_src_dir/xs"
   warning " ⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead.\n"
   warning "Running Slic3r under Perl >= 5.16 is not supported nor recommended\nIn case of related to this issues please use ARM repository to get older perl package\n"
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
 
-  # Build stage
-#  /usr/bin/perl Build.PL
-#  ./Build
+  # slic3r-xs Build stage
+  msg2 "Building Slic3r::XS (1/3)"
+  /usr/bin/perl Build.PL
+  ./Build
 
 }
 
@@ -94,7 +93,11 @@ check () {
 #  ./Build test
 
 # NEW PART
-  /usr/bin/perl Build.PL
+  msg2 "Testing Slic3r::XS - (2/3)"
+  #/usr/bin/perl Build.PL
+  prove -Ixs/lib/ -Ixs/blib/ -Ixs/blib/arch/auto/Slic3r/XS/ xs/t/
+  msg2 "Testing Slic3r (3/3)"
+  prove -Ixs/lib/ -Ixs/blib/ -Ixs/blib/arch/auto/Slic3r/XS/ t/
 }
 
 package () {
@@ -120,8 +123,12 @@ package () {
   install -d $pkgdir/usr/share/applications
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
 
-  # Welcome ultimate ugly - u² hack 
+  # Welcome ultimate ugly - u² hack TODO: This may be not needed anymore!
   install -m 755 $srcdir/slic3r.pl $pkgdir/usr/bin/slic3r.pl
+
+  ### SLIC3R-XS MERGE
+  cd "$_src_dir/xs"
+  ./Build install
 
   # Why double? 1st one was just for messages, this one is for real
   true && pkgver=$_pkgver
