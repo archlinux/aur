@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.12
-pkgver=3.12
+pkgver=3.12.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,7 +12,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -20,11 +20,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch')
 md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
+         '5a8cb5a659baeeb6df3fe22de8d32df6'
          '798bca5d2f0a1505c9b86a5227a2b339'
          '8fa6cbb28dda5a4b38730c7f728e1845'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          'd50c1ac47394e9aec637002ef3392bd1')
+
 _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
@@ -37,7 +39,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -331,9 +333,3 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
-         '798bca5d2f0a1505c9b86a5227a2b339'
-         '8fa6cbb28dda5a4b38730c7f728e1845'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '98beb36f9b8cf16e58de2483ea9985e3'
-         'd50c1ac47394e9aec637002ef3392bd1')
