@@ -2,7 +2,7 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
@@ -16,9 +16,9 @@ noextract=("${pkgname[1]}-$pkgver.zip")
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[0]}-$pkgver.zip"
         "http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[1]}-$pkgver.zip"
         "$pkgbase.sh")
-sha256sums=('c4cd9b0465b184e0f6fc06b4dfe89f87c4bec53072815c60074d9c4e39c70fe1'
-            'c038c82265084004e6278e10b446b262cdf0b481383df8e4ff71975671d0fc9f'
-            '5b9b76115640a31c728fb6951a1ee9ed0c7da7bbb558e0f1fe22f383c05633f0')
+sha256sums=('cbee1bb289cd1e2f899d25d6bb2efc2c9a316073a01d851b7bd3a05308041bfb'
+            '9190afcd85f5e09c86055f37d07fdf2bed51c0d495376c6d3a09df7f5296db54'
+            '15553ae56fd39f049edfa65a05413ef6d68ae37ed1ccc69570bf81e888239bf4')
 
 prepare() {
   cd "${pkgname[0]}-$pkgver"
@@ -26,13 +26,17 @@ prepare() {
   # configure paths
   setconf bin/grails DIRNAME /usr/share/grails
   setconf bin/grails-debug DIRNAME /usr/share/grails
+
+  # profile.d script
+  echo 'export GRAILS_HOME=/usr/share/grails' > "$pkgbase.profile"
 }
 
 package_grails() {
-  depends=('java-environment' 'junit' 'bash' 'sh')
+  depends=('java-environment' 'junit' 'bash')
+
   cd "$pkgname-$pkgver"
 
-  mkdir -p "$pkgdir/usr/share/pixmaps/"
+  install -d "$pkgdir/usr/share/pixmaps/"
   cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/share/$pkgname"
 
   # wrapper scripts
@@ -47,8 +51,7 @@ package_grails() {
   cp media/icons/*.png "$pkgdir/usr/share/pixmaps/"
   
   # profile.d script
-  echo 'export GRAILS_HOME=/usr/share/grails' > "$pkgname.sh"
-  install -Dm755 "$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
+  install -Dm755 "$srcdir/$pkgbase.profile" "$pkgdir/etc/profile.d/$pkgname.sh"
 
   # clean up
   cd "$pkgdir/usr/share/$pkgname"

@@ -1,7 +1,5 @@
 #!/bin/sh
-if [[ ! -f $GRAILS_HOME/startGrails ]]; then
-  GRAILS_HOME=/usr/share/grails
-fi
+[[ -f $GRAILS_HOME/startGrails ]] || GRAILS_HOME=/usr/share/grails
 DIRNAME=$GRAILS_HOME
 . "$DIRNAME/startGrails"
 startGrails org.codehaus.groovy.grails.cli.GrailsScriptRunner "$@"
