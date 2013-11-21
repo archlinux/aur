@@ -5,45 +5,37 @@
 pkgbase=linux-selinux       # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 pkgname=('linux-selinux')
-_srcname=linux-3.11
-pkgver=3.11.6
+_srcname=linux-3.12
+pkgver=3.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
+groups=(selinux)
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
         'change-default-console-loglevel.patch'
-        'criu-no-expert.patch'
-        '3.11-haswell-intel_pstate.patch')
-md5sums=('fea363551ff45fbe4cb88497b863b261'
-         'c44ebb225fe9956b636b79ab6b61aa42'
-         '01e9995f0fdfe68bdc70b224473e0089'
-         '98d1e9862f555e5c56e95aae1f149789'
-         '2225ac6f6ad737d7d2428ca943801eea'
-         '98beb36f9b8cf16e58de2483ea9985e3'
-         'd50c1ac47394e9aec637002ef3392bd1'
-         '1040ae6c10d4a68f89899f94a2318a17')
+        'criu-no-expert.patch')
 
 _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# ec2540e9486c8a2c9026a40b8fe551c5  /lib/modules/3.11.5-1-ARCH/modules.symbols
+# 2fd43e3edc671c61e043a5c0b3b2a1f0  /lib/modules/3.12.0-1-ARCH/modules.symbols
 # i686
-# e9c1ae7203f65cdd073257640f61505e  /lib/modules/3.11.5-1-ARCH/modules.symbols
+# e98940249665dbfa380cfdbbacf6c6b8  /lib/modules/3.12.0-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -52,11 +44,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # add intel haswell support to intel_pstate
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/patch/?id=6cdcdb793791f776ea9408581b1242b636d43b37
-  # will be in 3.12
-  patch -Np1 -i "${srcdir}/3.11-haswell-intel_pstate.patch"
 
   # allow criu without expert option set
   # patch from fedora
@@ -342,3 +329,15 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
+         '4444274fdd87c6fde916538db12c74f7'
+         '55e1c69550c9d0dbe0a2feed7816cd28'
+         '2225ac6f6ad737d7d2428ca943801eea'
+         '98beb36f9b8cf16e58de2483ea9985e3'
+         'd50c1ac47394e9aec637002ef3392bd1')
+sha256sums=('2e120ec7fde19fa51dc6b6cc11c81860a0775defcad5a5bf910ed9a50e845a02'
+            '2232bc240758c9f2e404bcf8d2143e027432ab3651768aaedc5905778551c95b'
+            '27dbaafd362cfda78a8ca90b718ead3d1bc55f3cc70fd72b18752dff6187d7f4'
+            '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
+            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
+            'daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5')
