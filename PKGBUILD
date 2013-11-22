@@ -6,7 +6,7 @@
 
 pkgname=synergy
 pkgver=1.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -16,16 +16,19 @@ optdepends=('qt4: gui support')
 license=('GPL2')
 source=("http://synergy.googlecode.com/files/$pkgname-$pkgver-Source.tar.gz"
         "synergys.socket"
-        "synergys.service")
-sha512sums=('857e8cbfb0b32c7dc325de5765f182f4e4fb198443b4a3e26d38c2d3dec3819e57057b91a202b53c86d4fad18154d1d58b401812dd8fabc384255e44d4b4b01a'
-            'f7d918faf4a25654786f270fc48b6e4089ecd1b2f504bb90de543b47a862733f7be067e06fd613d621bba48d20dc63214966e2cfbd2cb3fcbfe623d6d41f10ad'
-            'a10dfe5b24ac6f4a2ef3a3a9f8a6a3c432b91d5e59d1fae2258d37c5be00ac8f172656fa0d213012c7dc94ab8c04c3945ae33acfcd5db5fad8b37ccc9f5e980f')
+        "synergys.service"
+        "unfuck-cryptopp-thanks-gentoo.patch")
+sha1sums=('0766bc3d95d6971746764d30e0853db14926ae73'
+          '947406e72351145c65ba9884ed175bf781482d46'
+          '00f2259c31c9551c0830d9e889fd0a0790cf9045'
+          '129151952e6d25504ca823aee8ebe93ce3d376ce')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
 
-  # Unzip the crypto library
-  unzip -d tools/cryptopp562 tools/cryptopp562.zip
+  # Unfuck the bundled cryptopp stuff. Thanks a lot, Gentoo!
+  # You and Fedora are our only friends in this crazy world.
+  patch -Np1 < "${srcdir}/unfuck-cryptopp-thanks-gentoo.patch"
 
   cmake -D CMAKE_INSTALL_PREFIX=/usr . 
   make
