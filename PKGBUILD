@@ -13,7 +13,7 @@ source=("http://files.ax86.net/terminus-ttf/files/${pkgver}/terminus-ttf-${pkgve
 
 build()
 {
-	cd "${srcdir}/terminus-ttf-${pkgver}"
+    cd "${srcdir}/terminus-ttf-${pkgver}"
 
     for i in *.ttf; do
         local destname="$(echo "$i" | sed -E 's|-[[:digit:].]+\.ttf$|.ttf|')"
