@@ -1,13 +1,13 @@
 pkgbase = ocaml-camomile
 	pkgdesc = Comprehensive Unicode library for OCaml
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yoriyuki/Camomile
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	depends = ocaml
-	depends = ocaml-findlib>=1.2.3
+	makedepends = ocaml
+	makedepends = ocaml-findlib>=1.2.3
 	options = !strip
 	options = !makeflags
 	source = https://github.com/yoriyuki/camomile/releases/download/rel-0.8.5/camomile-0.8.5.tar.bz2
