@@ -6,10 +6,13 @@
 
 pkgname=eigen3-hg
 _name=eigen3
-pkgver=5421.f391c3917cdd
+pkgver=3.2.r5716
 pkgver() {
     cd ${_name}
-    echo $(hg identify -n).$(hg identify -i)
+    # Remove after hyphen
+    _latesttag=$(hg parents --template '{latesttag}' | sed "s/-[^-]*$//g")
+    _revision=$(hg identify -n)
+    echo ${_latesttag}.r${_revision}
 }
 pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. Mercurial version."
