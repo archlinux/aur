@@ -4,8 +4,8 @@
 
 pkgname=evas_generic_loaders-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.99.94.02cfe08
-pkgrel=2
+pkgver=1.8.0alpha2.99.173468d
+pkgrel=1
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -27,10 +27,12 @@ pkgver() {
   cd "$srcdir/$_pkgname"
 
   for i in v_maj v_min v_mic; do
-    local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
+    local v_ver="$v_ver.$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")"
   done
 
-  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  v_ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | sed "s/v_ver/${v_ver#.}/" | tr -d '[ ]-')
+
+  printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
