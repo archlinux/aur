@@ -1,6 +1,6 @@
 pkgbase = elementary-git
 	pkgdesc = Enlightenment GUI toolkit - Development version
-	pkgver = 1.8.0.8740.f3789ec
+	pkgver = 1.8.0alpha2.8865.373c10b
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = elementary-git
 	md5sums = SKIP
 
 pkgname = elementary-git
-	provides = elementary=1.8.0.8740.f3789ec
+	provides = elementary=1.8.0alpha2.8865.373c10b
 	conflicts = elementary
 
 pkgname = elementary_test-git
-	provides = elementary_test=1.8.0.8740.f3789ec
+	provides = elementary_test=1.8.0alpha2.8865.373c10b
 	conflicts = elementary_test
 
