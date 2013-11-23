@@ -9,7 +9,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.55.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url="http://www.boost.org/"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -43,13 +43,13 @@ build() {
    [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
 
    install -dm755 "${_stagedir}"/bin
-   install tools/build/v2/engine/${_bindir}/bjam "${_stagedir}"/bin/bjam
+   install tools/build/v2/engine/${_bindir}/b2 "${_stagedir}"/bin/b2
 
    pushd tools
    for _tool in bcp inspect quickbook compiler_status process_jam_log wave; do
-      "${_stagedir}"/bin/bjam --toolset=clang $_tool
+      "${_stagedir}"/bin/b2 --toolset=clang $_tool
    done
-   "${_stagedir}"/bin/bjam --toolset=clang cflags="-std=gnu++11  -D__STRICT_ANSI__" library_status
+   "${_stagedir}"/bin/b2 --toolset=clang cflags="-std=gnu++11  -D__STRICT_ANSI__" library_status
    popd
    cp -a dist/bin/* "${_stagedir}"/bin
 
@@ -63,12 +63,12 @@ build() {
    # and installs includes in /usr/include/boost.
    # --layout=system no longer adds the -mt suffix for multi-threaded libs.
    # install to ${_stagedir} in preparation for split packaging
-   "${_stagedir}"/bin/bjam \
+   "${_stagedir}"/bin/b2 \
       variant=release \
       debug-symbols=off \
       threading=multi \
       runtime-link=shared \
-      link=shared \
+      link=shared,static \
       toolset=clang \
       python=2.7 \
       --layout=system \
@@ -83,12 +83,18 @@ package_boost() {
    optdepends=('python: for python bindings'
                'python2: for python2 bindings'
                'boost-build: to use boost jam for building your project.')
+   options=('staticlibs')
 
    install -dm755 "${pkgdir}"/usr
    cp -a "${_stagedir}"/{bin,include,share} "${pkgdir}"/usr
 
+   install -d "${pkgdir}"/usr/lib
+   find "${_stagedir}"/lib -name \*.a -exec mv {} "${pkgdir}"/usr/lib \;
+
    install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost/LICENSE_1_0.txt
+
+   ln -s /usr/bin/b2 "$pkgdir"/usr/bin/bjam
 }
 
 package_boost-libs() {
