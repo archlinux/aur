@@ -4,7 +4,7 @@
 
 pkgbase=python-boto
 pkgname=python2-boto
-pkgver=2.17.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
@@ -32,5 +32,5 @@ package_python2-boto() {
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('43be5f14a11ca5cb2f76c8b8fa256e34070400ee1844fd58495744a36f490f2aacf6453c951ab628eebbd82d469d220636570a9dc9ccd661133dffe491f8eedd'
+sha512sums=('a8ac914eef7c6a70a2faed54896f01490e607455baa9e6cc59d88046046ef7c5953845d020724d1865874165a437ab8a09592dd787040cc84bd6a5fbb0474ed3'
             '1d7ec138faa438b8302b9d15a5b8ec80dcda4b9854408095cf01f83b6d131cf6e567e564b888fdddab087953a595d85487435bb8aca445354bd0be14676a3a8d')
