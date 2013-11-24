@@ -5,7 +5,6 @@ pkgname=morituri-git
 _gitname=morituri
 pkgver=0.2.2.46.g1c47a42
 pkgrel=1
-epoch=1
 pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
 arch=(i686 x86_64)
 url="https://github.com/thomasvs/morituri"
