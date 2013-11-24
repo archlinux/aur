@@ -29,7 +29,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$_gitname"
   # Use the tag of the last commit, removing "v"
-  git describe --always | sed 's|-|.|g' | sed 's/v//'
+  git describe --always | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
 }
 
 build() {
