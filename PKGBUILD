@@ -3,7 +3,7 @@
 
 pkgname=terminology-git
 _pkgname=${pkgname%-*}
-pkgver=0.4.0alpha1.r786.f8edf05
+pkgver=0.4.0alpha2.r796.81a7d98
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('debug')
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -30,7 +30,8 @@ build() {
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
-  ./autogen.sh --prefix=/usr
+  ./autogen.sh \
+    --prefix=/usr
 
   make
 }
