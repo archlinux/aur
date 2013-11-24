@@ -22,7 +22,7 @@ sha256sums=('23009e113a3b6b39bee6e4a1c9e65353a1504ccbfd437f8187751f0d495e5d11'
             '6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a')
 
 prepare() {
-  gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
+  gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name 'Wings3D' \
     --genericname '3D Modeler' --categories 'Graphics;3DGraphics'
 }
 
@@ -33,10 +33,10 @@ build() {
 }
 
 package() {
-  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   cd "$_pkgname-master"
   install -d "$pkgdir/usr/lib/$pkgname"
   for subdir in ebin fonts patches plugins shaders textures; do
