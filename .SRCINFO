@@ -1,7 +1,7 @@
 pkgbase = lib32-boost-libs
 	pkgdesc = Free peer-reviewed portable C++ source libraries - Runtime (32 bit)
-	pkgver = 1.54.0
-	pkgrel = 2
+	pkgver = 1.55.0
+	pkgrel = 1
 	url = http://www.boost.org
 	arch = x86_64
 	groups = lib32
@@ -16,12 +16,8 @@ pkgbase = lib32-boost-libs
 	depends = lib32-zlib
 	depends = lib32-icu
 	depends = lib32-gcc-libs
-	source = http://downloads.sourceforge.net/sourceforge/boost/boost_1_54_0.tar.gz
-	source = boost-1.54.0-Fix-macro-for-int128-detection.patch
-	source = fix-new-glibc.patch
-	sha1sums = 069501636097d3f40ddfd996d29748bb23591c53
-	sha1sums = bf5177694ab8a0df6bc13aa47b05727c40febebb
-	sha1sums = e3a5fac340c12b39add50070efb439b857108a0b
+	source = http://downloads.sourceforge.net/sourceforge/boost/boost_1_55_0.tar.gz
+	sha1sums = 61ed0e57d3c7c8985805bb0682de3f4c65f4b6e5
 
 pkgname = lib32-boost-libs
 

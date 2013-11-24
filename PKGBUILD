@@ -3,9 +3,9 @@
 # Contributor  : andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.54.0
+pkgver=1.55.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 url="http://www.boost.org"
 arch=('x86_64')
 pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime (32 bit)"
@@ -13,12 +13,8 @@ license=('custom')
 groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-icu' 'lib32-gcc-libs')
 makedepends=('lib32-icu>=51.1' 'lib32-bzip2' 'lib32-zlib' 'gcc-multilib' 'python' 'python2')
-source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz
-        boost-1.54.0-Fix-macro-for-int128-detection.patch
-        fix-new-glibc.patch)
-sha1sums=('069501636097d3f40ddfd996d29748bb23591c53'
-          'bf5177694ab8a0df6bc13aa47b05727c40febebb'
-          'e3a5fac340c12b39add50070efb439b857108a0b')
+source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
+sha1sums=('61ed0e57d3c7c8985805bb0682de3f4c65f4b6e5')
 
 
 
@@ -34,9 +30,6 @@ build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd "${srcdir}/boost_${_boostver}"
-
-   patch -Np2 -i ../boost-1.54.0-Fix-macro-for-int128-detection.patch
-   patch -Np2 -i ../fix-new-glibc.patch
 
    # Shut up strict aliasing warnings
    echo "using gcc : : : <compileflags>-fno-strict-aliasing ;" >> ./tools/build/v2/user-config.jam
@@ -56,9 +49,10 @@ build() {
 	install "${srcdir}"/boost_${_boostver}/tools/build/v2/engine/${_bindir}/bjam "${_stagedir}"/bin/bjam
 
    pushd tools
-   for _tool in bcp inspect quickbook compiler_status process_jam_log wave; do
+   for _tool in bcp inspect quickbook process_jam_log wave; do
       "${_stagedir}"/bin/bjam --toolset=gcc $_tool
    done
+   "${_stagedir}"/bin/bjam --toolset=gcc cflags="-std=gnu++11" compiler_status
    "${_stagedir}"/bin/bjam --toolset=gcc cflags="-std=gnu++11" library_status
    popd
    cp -a dist/bin/* "${_stagedir}"/bin
