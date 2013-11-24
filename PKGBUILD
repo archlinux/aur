@@ -2,46 +2,36 @@
 # Contributor (original PKGBUILD): Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
 
 pkgname=android-apktool-git
-pkgver=20131101
-pkgrel=2
+_gitname=Apktool
+_gitbranch=wip-2.0
+_gitauthor=iBotPeaches
+pkgver=v1.5.2.r164.g4b180bd
+pkgrel=1
 pkgdesc="a tool for reengineering Android apk files"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/android-apktool/"
 license=('Apache 2.0')
-depends=('java-runtime' 'android-sdk-build-tools' 'java-runtime')
+depends=('java-runtime' 'android-sdk-build-tools')
 conflicts=('android-apktool')
 makedepends=('git' 'jdk7') # openjdk does not work for some unknown reason
+source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch")
+sha512sums=('SKIP')
 
-_gitroot=https://github.com/iBotPeaches/Apktool
-_gitname=apktool
-_gitbranch=wip-2.0
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
-  # Copied this bit from one of the examples, thanks to whoever made it
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname" -b "$_gitbranch"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname"
 
   # Build (this is the part where openjdk fails)
-   ./gradlew build fatJar proguard
+   ./gradlew build fatJar proguard # proguard isn't needed, but makes the binary a little bit smaller
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname"
   mkdir -p "${pkgdir}"/usr/bin
-  install -m 0755 "${srcdir}/$_gitname-build/scripts/linux/apktool" "${pkgdir}"/usr/bin
-  install -m 0644 "${srcdir}/$_gitname-build/brut.apktool/apktool-cli/build/libs/apktool"*"small.jar" "${pkgdir}"/usr/bin/apktool.jar
+  install -m 0755 "${srcdir}/$_gitname/scripts/linux/apktool" "${pkgdir}"/usr/bin
+  install -m 0644 "${srcdir}/$_gitname/brut.apktool/apktool-cli/build/libs/apktool"*"small.jar" "${pkgdir}"/usr/bin/apktool.jar
 }
