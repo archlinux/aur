@@ -1,3 +1,10 @@
+2013-11-24 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+	* 0.2.2.r58.ga74fd71-1 :
+	- Update versioning to use new recommended format:
+	  https://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines#Git
+	- Use README.md instead of README
+
 2013-09-17 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 0.2.2.46.g1c47a42-1 :
