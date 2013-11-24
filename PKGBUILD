@@ -54,7 +54,7 @@ package() {
   install -Dm 0644 "ChangeLog" "$pkgdir/usr/share/doc/morituri/ChangeLog"
   install -Dm 0644 "HACKING" "$pkgdir/usr/share/doc/morituri/HACKING"
   install -Dm 0644 "NEWS" "$pkgdir/usr/share/doc/morituri/NEWS"
-  install -Dm 0644 "README" "$pkgdir/usr/share/doc/morituri/README"
+  install -Dm 0644 "README.md" "$pkgdir/usr/share/doc/morituri/README.md"
   install -Dm 0644 "RELEASE" "$pkgdir/usr/share/doc/morituri/RELEASE"
   install -Dm 0644 "TODO" "$pkgdir/usr/share/doc/morituri/TODO"
 }
