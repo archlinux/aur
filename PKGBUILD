@@ -12,13 +12,13 @@ arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
-  [[ $(pacman -T ewebkit-svn) ]] || depends+=('ewebkit-svn')
-  [[ $(pacman -T elocation-git) ]] || depends+=('elocation-git')
-  [[ $(pacman -T libeweather-git) ]] || depends+=('libeweather-git')
+  [[ ! $(pacman -T ewebkit-svn) ]] && depends+=('ewebkit-svn')         # webkit-efl support is detected at build time
+  [[ ! $(pacman -T elocation-git) ]] && depends+=('elocation-git')     # elocation support is detected at build time
+  [[ ! $(pacman -T libeweather-git) ]] && depends+=('libeweather-git') # eweather support is detected at build time
 makedepends=('git')
 options=('debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

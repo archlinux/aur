@@ -11,7 +11,7 @@ pkgbase = elementary-git
 	depends = efl-git
 	options = debug
 	source = git://git.enlightenment.org/core/elementary.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = elementary-git
 	provides = elementary=1.8.0alpha2.8868.65f37f9
