@@ -5,6 +5,7 @@ pkgbase = targetcli-fb
 	url = https://github.com/agrover/targetcli-fb
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	depends = python-rtslib-fb>=2.1.fb42
 	depends = python-configshell-fb
 	provides = targetcli

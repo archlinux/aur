@@ -9,6 +9,7 @@ url="https://github.com/agrover/targetcli-fb"
 license=('Apache')
 groups=()
 depends=('python-rtslib-fb>=2.1.fb42' 'python-configshell-fb')
+makedepends=('python-setuptools')
 # TODO: optdepend on python-ethtool when available for python3
 optdepends=()
 provides=('targetcli')
