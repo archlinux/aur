@@ -5,6 +5,7 @@ pkgbase = python-configshell-fb
 	url = https://github.com/agrover/configshell-fb
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	depends = python-pyparsing
 	depends = python-urwid
 	provides = python-configshell

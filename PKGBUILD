@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/agrover/configshell-fb"
 license=('Apache')
 depends=('python-pyparsing' 'python-urwid')
+makedepends=('python-setuptools')
 provides=('python-configshell')
 conflicts=('python-configshell')
 options=()
