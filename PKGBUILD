@@ -1,9 +1,9 @@
 # Maintainer : Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
-# Contributor: Keshav Padram Amburay (the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Keshav Padram Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgver="2.00"
-_GRUB_GIT_COMMIT="93c120754a537a2f060b8e20eab620e714309b82"
+_GRUB_GIT_COMMIT="5ae5c54c7e5cb048cdd78a53181cee0da698a953"
 
 ## grub-extras gpxe is not needed
 
@@ -12,7 +12,7 @@ _GRUB_GIT_COMMIT="93c120754a537a2f060b8e20eab620e714309b82"
 
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
-pkgver=2.00.963.g93c1207
+pkgver=2.00.1282.g5ae5c54
 pkgrel=1
 epoch="1"
 url="https://www.gnu.org/software/grub/"
@@ -26,8 +26,8 @@ conflicts=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
 replaces=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
 provides=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
 
-makedepends=('git' 'bzr' 'rsync' 'xz' 'freetype2' 'bdf-unifont'
-             'ttf-dejavu' 'python2' 'autogen' 'texinfo' 'help2man'
+makedepends=('git' 'bzr' 'rsync' 'xz' 'freetype2' 'ttf-dejavu'
+             'python2' 'autogen' 'texinfo' 'help2man'
              'gettext' 'device-mapper' 'fuse')
 depends=('sh' 'xz' 'gettext' 'device-mapper')
 optdepends=('freetype2: For grub-mkfont usage'
@@ -40,13 +40,15 @@ optdepends=('freetype2: For grub-mkfont usage'
 
 # source=("http://ftp.gnu.org/gnu/grub/grub-${pkgver}.tar.xz"
 source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#commit=${_GRUB_GIT_COMMIT}"
+        'http://unifoundry.com/unifont-5.1.20080820.bdf.gz'
         'archlinux_grub_mkconfig_fixes.patch'
         '60_memtest86+'
         'grub.default'
         'grub.cfg')
 
 md5sums=('SKIP'
-         'ee1262cc4e20031df019779b1a4b1e39'
+         '6b8263ceccef33bd633aa019d74b7943'
+         'b9cbff4a67e463722a113c66d57c4042'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46'
@@ -88,6 +90,9 @@ prepare() {
 	
 	msg "Remove non working langs which need LC_ALL=C.UTF-8"
 	sed -e 's#en@cyrillic en@greek##g' -i "${srcdir}/grub-${_pkgver}/po/LINGUAS"
+	
+	msg "Avoid problem with unifont during compile of grub, http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847"
+	cp "${srcdir}/unifont-5.1.20080820.bdf" "${srcdir}/grub-${_pkgver}/unifont.bdf"
 	
 }
 

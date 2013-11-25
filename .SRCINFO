@@ -1,6 +1,6 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.00.963.g93c1207
+	pkgver = 2.00.1282.g5ae5c54
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gnu.org/software/grub/
@@ -13,7 +13,6 @@ pkgbase = grub
 	makedepends = rsync
 	makedepends = xz
 	makedepends = freetype2
-	makedepends = bdf-unifont
 	makedepends = ttf-dejavu
 	makedepends = python2
 	makedepends = autogen
@@ -47,7 +46,8 @@ pkgbase = grub
 	backup = boot/grub/grub.cfg
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = grub-2.00::git+git://git.sv.gnu.org/grub.git#commit=93c120754a537a2f060b8e20eab620e714309b82
+	source = grub-2.00::git+git://git.sv.gnu.org/grub.git#commit=5ae5c54c7e5cb048cdd78a53181cee0da698a953
+	source = http://unifoundry.com/unifont-5.1.20080820.bdf.gz
 	source = archlinux_grub_mkconfig_fixes.patch
 	source = 60_memtest86+
 	source = grub.default
@@ -56,7 +56,8 @@ pkgbase = grub
 	source = grub-extras-lua::bzr+bzr://bzr.savannah.gnu.org/grub-extras/lua/#revision=
 	source = grub-extras-ntldr-img::bzr+bzr://bzr.savannah.gnu.org/grub-extras/ntldr-img/#revision=
 	md5sums = SKIP
-	md5sums = ee1262cc4e20031df019779b1a4b1e39
+	md5sums = 6b8263ceccef33bd633aa019d74b7943
+	md5sums = b9cbff4a67e463722a113c66d57c4042
 	md5sums = be55eabc102f2c60b38ed35c203686d6
 	md5sums = a03ffd56324520393bf574cefccb893d
 	md5sums = c8b9511586d57d6f2524ae7898397a46

@@ -1,5 +1,5 @@
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index 8decc1d..170047f 100644
+index db58ab9..e66e139 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
 @@ -212,6 +212,8 @@ export GRUB_DEFAULT \
@@ -12,7 +12,7 @@ index 8decc1d..170047f 100644
    GRUB_SAVEDEFAULT \
    GRUB_ENABLE_CRYPTODISK \
 diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index 2c4bb0a..c7120d2 100644
+index 9838720..dbb5dd2 100644
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
 @@ -125,6 +125,14 @@ cat <<EOF
@@ -31,7 +31,7 @@ index 2c4bb0a..c7120d2 100644
  gfxterm=0;
  for x in ${GRUB_TERMINAL_INPUT} ${GRUB_TERMINAL_OUTPUT}; do
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 0724e16..a8119bd 100644
+index e27d6f7..0a255f5 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -87,6 +87,8 @@ linux_entry ()
@@ -115,11 +115,11 @@ index 0724e16..a8119bd 100644
 +    done
 +  fi
 +
-   if [ "x$is_first_entry" = xtrue ]; then
+   if [ "x$is_top_level" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xy ]; then
      linux_entry "${OS}" "${version}" simple \
      "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
-@@ -239,8 +274,11 @@ while [ "x$list" != "x" ] ; do
-     echo "submenu '$(gettext_printf "Advanced options for %s" "${OS}" | grub_quote)' \$menuentry_id_option 'gnulinux-advanced-$boot_device_id' {"
+@@ -240,8 +275,11 @@ while [ "x$list" != "x" ] ; do
+     is_top_level=false
    fi
  
 +  if ! test -e "/etc/arch-release" ; then
@@ -135,7 +135,7 @@ index 0724e16..a8119bd 100644
  # If at least one kernel was found, then we need to
  # add a closing '}' for the submenu command.
 +if ! test -e "/etc/arch-release" ; then
- if [ x"$is_first_entry" != xtrue ]; then
+ if [ x"$is_top_level" != xtrue ]; then
    echo '}'
  fi
 +fi
