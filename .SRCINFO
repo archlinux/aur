@@ -5,6 +5,7 @@ pkgbase = python-rtslib-fb
 	url = https://github.com/agrover/rtslib-fb
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	conflicts = python2-rtslib
 	conflicts = targetcli-fb<=2.1.fb31
 	source = https://fedorahosted.org/releases/t/a/targetcli-fb/rtslib-fb-2.1.fb42.tar.gz

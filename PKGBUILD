@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/agrover/rtslib-fb"
 license=('Apache')
 depends=()
+makedepends=('python-setuptools')
 # this is incompatible to python2-rtslib
 provides=()
 conflicts=('python2-rtslib' 'targetcli-fb<=2.1.fb31')
