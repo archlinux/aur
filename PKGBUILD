@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo $(git log -1 --format="%ci" | sed 's/.*\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\).*/\1\2\3/').$(git rev-parse --short HEAD)
+	git log -1 --date=short --format="%cd.%h" | tr -d '-'
 }
 
 build() {
