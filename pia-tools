@@ -1,19 +1,47 @@
 #!/bin/bash
+# Description: Script to automate privateinternetacces port forwarding and starting/stopping transmission when connected/disconnected and other stuff
+# Version: 0.9
+# Author: Philipp Schmitt (philipp<at>schmitt.co)
+# Documentation: cf. pia-tools.groff
 # Sources: iptables -> https://www.privateinternetaccess.com/forum/index.php?p=/discussion/35/block-non-vpn-traffic-on-linux-with-iptables-protect-against-disconnect/p1
 # Dependencies: transmission-daemon rename openvpn systemd sudo wget curl
 
-PIA_CONFIG_DIR="/etc/openvpn/privateinternetaccess"
-PIA_CONFIG_URL="https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-PIA_COMMON_CONFIG="$PIA_CONFIG_DIR/pia_common"
-PIA_SERVERS_FILE=$PIA_CONFIG_DIR/piaservers
-PIA_SERVERS_IP_FILE=$PIA_CONFIG_DIR/piaserverips
-PASSWD_FILE="$PIA_CONFIG_DIR/passwd"
-CLIENT_ID_FILE="$PIA_CONFIG_DIR/clientid"
-TRANSMISSION_SETTINGS_FILE="/home/dl/.config/transmission-daemon/settings.json"
-PIA_OPEN_PORT_FILE="$PIA_CONFIG_DIR/open_port"
+# Source config file
+PIA_CONF='/etc/pia-tools.conf'
+[[ -r "$PIA_CONF" ]] && . $PIA_CONF
+
+# Setup default config if not already set in pia-tools.conf
+if [[ -z "$PIA_CONFIG_DIR" ]]; then
+    PIA_CONFIG_DIR='/etc/openvpn/pia'
+fi
+if [[ -z "$PIA_CONFIG_URL" ]]; then
+    PIA_CONFIG_URL='https://www.privateinternetaccess.com/openvpn/openvpn.zip'
+fi
+if [[ -z "$PIA_COMMON_CONFIG" ]]; then
+    PIA_COMMON_CONFIG="$PIA_CONFIG_DIR/pia_common"
+fi
+if [[ -z "$PIA_SERVERS_FILE" ]]; then
+    PIA_SERVERS_FILE="$PIA_CONFIG_DIR/piaservers"
+fi
+if [[ -z "$PIA_SERVERS_IP_FILE" ]]; then
+    PIA_SERVERS_IP_FILE="$PIA_CONFIG_DIR/piaserverips"
+fi
+if [[ -z "$PIA_PASSWD_FILE" ]]; then
+    PIA_PASSWD_FILE="$PIA_CONFIG_DIR/passwd"
+fi
+if [[ -z "$PIA_CLIENT_ID_FILE" ]]; then
+    PIA_CLIENT_ID_FILE="$PIA_CONFIG_DIR/clientid"
+fi
+if [[ -z "$TRANSMISSION_SETTINGS_FILE" ]]; then
+    TRANSMISSION_SETTINGS_FILE='/home/dl/.config/transmission-daemon/settings.json'
+fi
+if [[ -z "$PIA_OPEN_PORT_FILE" ]]; then
+    PIA_OPEN_PORT_FILE="$PIA_CONFIG_DIR/open_port"
+fi
 PIA_OPEN_PORT="$(cat $PIA_OPEN_PORT_FILE)"
-TMPDIR="/tmp/pia"
-VIRT_NET_DEV="tun0"
+if [[ -z "$VIRT_NET_DEV" ]]; then
+    VIRT_NET_DEV='tun'
+fi
 
 function usage() {
     echo "Usage: $1 [-p|r] [-a|d] [-u] [-c] [-h]"
@@ -29,15 +57,10 @@ function usage() {
 
 # Checks if executed as root. If not reinvoke self with sudo
 function check_root() {
-    [[ $EUID -ne 0 ]] && { echo -e "This script must be run as root\nInvoking sudo -- $0 $*" 1>&2; exec sudo -- $0 $*; }
-}
-
-function _myip() {
-    wget --quiet -O - checkip.dyndns.org | sed -e 's/[^:]*: //' -e 's/<.*$//'
-}
-
-function _locate_ip() {
-    geoiplookup $1
+    if [[ $EUID -ne 0 ]]; then
+        echo -e "This script must be run as root\nInvoking sudo -- $0 $*" 1>&2
+        exec sudo -- $0 $*
+    fi
 }
 
 function check_transmission() {
@@ -49,7 +72,13 @@ function check_ovpn() {
     local ovpnd="$(systemctl -t service | grep 'openvpn@.* active')"
     if [[ -z "$ovpnd" ]]; then
         echo 'OpenVPN service not running !' >&2
-        check_transmission && { echo -n 'Stopping transmissiond... '; systemctl stop transmissiond; echo 'Done!'; } || echo "Transmissiond not running"
+        if check_transmission; then
+            echo -n 'Stopping transmissiond... '
+            systemctl stop transmissiond
+            echo 'Done!'
+        else
+            echo "Transmissiond not running"
+        fi
         iplist_unblock
         return 1 
     fi
@@ -57,10 +86,8 @@ function check_ovpn() {
 
 function info() {
     local vpn_exit="$(systemctl -t service | grep 'openvpn@.* active' | awk '{ print $NF }')"
-    local ext_ip="$(_myip)"
-    check_ovpn && echo "OpenVPN is running (Exit point: $vpn_exit)"
-    echo "IP: $ext_ip"
-    echo "GeoIP: $(_locate_ip $ext_ip)"
+    check_ovpn && echo "OpenVPN is running (Exit point: $vpn_exit)" || echo "OpenVPN stopped"
+    check_transmission && echo "Transmissiond is running" || echo "Transmissiond stopped"
 }
 
 function _ufw_port_allowed() {
@@ -118,12 +145,12 @@ function transmission_peer_port_update() {
 
 # Return a new client ID
 function new_client_id() {
-    head -n 100 /dev/urandom | md5sum | tr -d " -" | tee $CLIENT_ID_FILE
+    head -n 100 /dev/urandom | md5sum | tr -d " -" | tee $PIA_CLIENT_ID_FILE
 }
 
 function request_port() {
-    local username="$(head -1 $PASSWD_FILE)"
-    local passwd="$(tail -1 $PASSWD_FILE)"
+    local username="$(head -1 $PIA_PASSWD_FILE)"
+    local passwd="$(tail -1 $PIA_PASSWD_FILE)"
     local local_vpn_ip="$(ip addr show $VIRT_NET_DEV | grep inet | awk '{ print $2 }')"
     local client_id="$1"
     #[[ -z "$client_id" ]] || client_id=$(new_client_id)
@@ -236,7 +263,8 @@ function restore_dns() {
 check_root "$*" # check permissions
 
 # If no option -> refresh
-# When started by OpenVPN daemon (up script) this script gets called like this: $0 tun0 1500 1542 10.185.1.6 10.185.1.5 init
+# When started by OpenVPN daemon (up script) this script gets called like this: 
+# $0 tun0 1500 1542 10.185.1.6 10.185.1.5 init
 if [[ $# -eq 0 ]] || [[ $# -gt 5 ]]; then
     port_action=refresh 
     #ip_action=disallow
@@ -261,6 +289,7 @@ while getopts ':adgprciuh-' OPTION; do
             port_action=refresh
             ;;
         g)
+            test $dns && exit 1
             dns=pia
             ;;
         u)
@@ -295,12 +324,15 @@ while getopts ':adgprciuh-' OPTION; do
                     ip_action=disallow
                     ;;
                 --pia-dns)
+                    test $dns && exit 1
                     dns=pia
                     ;;
                 --google-dns)
+                    test $dns && exit 1
                     dns=google
                     ;;
                 --restore-dns)
+                    test $dns && exit 1
                     dns=restore
                     ;;
                 --update)
@@ -328,7 +360,7 @@ done
 [[ -n $update ]] && update_config
 
 if [[ -n "$port_action" ]]; then
-    client_id=$(cat $CLIENT_ID_FILE)
+    client_id=$(cat $PIA_CLIENT_ID_FILE)
     if [[ -z "$client_id" ]] || [[ "$port_action" == "portfwd" ]]; then
         client_id=$(new_client_id)
     fi
