@@ -1,14 +1,15 @@
 #!/bin/bash
 # Description: Script to automate privateinternetacces port forwarding and 
 # starting/stopping transmission when connected/disconnected and other stuff
-# Version: 0.9.1
+# Version: 0.9.2
 # Author: Philipp Schmitt (philipp<at>schmitt.co)
 # Documentation: cf. pia-tools.groff
 # Sources: iptables -> https://www.privateinternetaccess.com/forum/index.php?p=/discussion/35/block-non-vpn-traffic-on-linux-with-iptables-protect-against-disconnect/p1
 # Dependencies: transmission-daemon rename openvpn systemd sudo wget curl ufw
 
 # Source config file
-PIA_CONF='/etc/pia-tools.conf'
+
+test "$PIA_CONF" || PIA_CONF='/etc/pia-tools.conf'
 [[ -r "$PIA_CONF" ]] && . $PIA_CONF
 
 # Setup default config if not already set in pia-tools.conf
