@@ -183,9 +183,9 @@ function request_port() {
         | grep -oE "[0-9]+" 2>&1)"
     if [[ -n "$PIA_OPEN_PORT_NEW" ]]; then
         echo "$PIA_OPEN_PORT_NEW" > "$PIA_OPEN_PORT_FILE"
-        echo -n "Done! Port: $PIA_OPEN_PORT_NEW"
+        echo "Done! Port: $PIA_OPEN_PORT_NEW"
         if [[ "$PIA_OPEN_PORT_NEW" != "$PIA_OPEN_PORT" ]]; then
-            echo " (Previous: $PIA_OPEN_PORT)"
+            echo "(Previous: $PIA_OPEN_PORT)"
             ufw_update                    # Update firewall rules
             transmission_peer_port_update # Update Transmission's peer port
         fi
