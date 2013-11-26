@@ -49,7 +49,7 @@ function check_ovpn() {
     local ovpnd="$(systemctl -t service | grep 'openvpn@.* active')"
     if [[ -z "$ovpnd" ]]; then
         echo 'OpenVPN service not running !' >&2
-        check_transmission && { echo -n 'Stopping transmissiond... '; systemctl stop transmissiond; echo 'Done !'; } || echo "Transmissiond not running"
+        check_transmission && { echo -n 'Stopping transmissiond... '; systemctl stop transmissiond; echo 'Done!'; } || echo "Transmissiond not running"
         iplist_unblock
         return 1 
     fi
@@ -89,7 +89,7 @@ function ufw_update() {
     _ufw_delete_old_rule
     _ufw_add_new_rule
     ufw reload > /dev/null
-    echo 'Done !'
+    echo 'Done!'
 }
 
 function transmission_peer_port_update() {
@@ -113,7 +113,7 @@ function transmission_peer_port_update() {
         fi
         check_ovpn && systemctl restart transmissiond 
     fi
-    echo 'Done !'
+    echo 'Done!'
 }
 
 # Return a new client ID
@@ -136,7 +136,7 @@ function request_port() {
     PIA_OPEN_PORT_NEW="$(curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" https://www.privateinternetaccess.com/vpninfo/port_forward_assignment | grep -oE "[0-9]+" 2>&1)"
     if [[ -n "$PIA_OPEN_PORT_NEW" ]]; then
         echo $PIA_OPEN_PORT_NEW > $PIA_OPEN_PORT_FILE
-        echo "Done ! New port: $PIA_OPEN_PORT_NEW (Previous: $PIA_OPEN_PORT)"
+        echo "Done! New port: $PIA_OPEN_PORT_NEW (Previous: $PIA_OPEN_PORT)"
         ufw_update                    # Update firewall rules
         transmission_peer_port_update # Update Transmission's peer port
    else
@@ -168,7 +168,7 @@ function update_config() {
 
     # why is following dig cmd failing randomly ?
     #dig -f /tmp/piaservers A +short | sort > $PIA_SERVERS_IP_FILE 
-    echo 'Done !'
+    echo 'Done!'
 }
 
 function iplist_block() {
@@ -196,7 +196,7 @@ function iplist_block() {
     # Disallow other connections 
     iptables -A INPUT -j DROP
     iptables -A OUTPUT -j DROP
-    echo 'Done !'
+    echo 'Done!'
 }
 
 function iplist_unblock() {
@@ -204,7 +204,7 @@ function iplist_unblock() {
     iptables -F
     iptables -A INPUT -j ACCEPT
     iptables -A OUTPUT -j ACCEPT
-    echo 'Done !'
+    echo 'Done!'
 }
 
 function _dns() {
