@@ -51,8 +51,11 @@ prepare() {
     #TODO: check if it's the same origin
   else
     git clone --depth=1 $_gitroot $_gitname
-    # specific branch
-    #git clone --depth=1 -b branch_name $_gitroot $_gitname
+    ##specific branch
+    # git clone --depth=1 -b branch_name $_gitroot $_gitname
+    ##specific commit
+    # git clone --depth=1000 $_gitroot $_gitname
+    # ( cd $srcdir/$_gitname; git checkout 754e6ac74b3cdbd8f8a409291f39777432a0983a )
   fi
 
   msg "GIT checkout done or server timeout"
@@ -90,20 +93,16 @@ build() {
 
 check () {
   cd "$_src_dir"
-#  ./Build test
 
-# NEW PART
   msg2 "Testing Slic3r::XS - (2/3)"
-  #/usr/bin/perl Build.PL
-  prove -Ixs/lib/ -Ixs/blib/ -Ixs/blib/arch/auto/Slic3r/XS/ xs/t/
+  prove -Ixs/blib/arch -Ixs/blib/lib/ xs/t/
+
   msg2 "Testing Slic3r (3/3)"
-  prove -Ixs/lib/ -Ixs/blib/ -Ixs/blib/arch/auto/Slic3r/XS/ t/
+  prove -Ixs/blib/arch -Ixs/blib/lib/ t/
 }
 
 package () {
   cd "$_src_dir"
-#  ./Build install
-# NEW PART
   install -d $pkgdir/usr/share/perl5/vendor_perl/
   cp -R $srcdir/$_gitname-build/lib/* $pkgdir/usr/share/perl5/vendor_perl/
 
@@ -111,15 +110,18 @@ package () {
   install -m 755 $srcdir/$_gitname-build/slic3r.pl $pkgdir/usr/bin/vendor_perl/
 
   #TODO : Do something about utils !
+  #install -m 755 $srcdir/$_gitname-build/utils/*.pl $pkgdir/usr/bin/
+  #install -m 755 $srcdir/$_gitname-build/utils/post-processing/*.pl $pkgdir/usr/bin/
 
-#  install -d "${pkgdir}/usr/share/zsh/site-functions"
-#  install -m 0644 "$srcdir/$_gitname-build/utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/slic3r.zsh"
+  # ZSH autocompletion
+  install -d "${pkgdir}/usr/share/zsh/site-functions"
+  install -m 0644 "$srcdir/$_gitname-build/utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/_slic3r.zsh"
 
-# STOP NEW
   # Icons " current Build.PL is not really geared for installation "
   install -d $pkgdir/usr/bin/vendor_perl/var
   install -m 644 $srcdir/$_gitname-build/var/*  $pkgdir/usr/bin/vendor_perl/var/
 
+  # Desktop icon
   install -d $pkgdir/usr/share/applications
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
 
