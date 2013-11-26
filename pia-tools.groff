@@ -38,6 +38,9 @@ Check if OpenVPN is running, if not stop transmissiond
 .TP
 \fB\-i\fR, \fB \-\-info\fR
 Show information about the status of openvpn, transmission
+.TP
+\fB\-v\fR, \fB \-\-verbose\fR
+Enable verbose output. In order to get really verbose you can also try bash -x pia-tools
 .SH EXAMPLES
 This ould typically be called within OpenVPN's up function:
 .PP
@@ -57,30 +60,36 @@ pia-tools --restore-dns
 .fi
 .PP
 .SH ENVIRONMENT
-.PP
-.nf
-.RS
-PIA_CONFIG_DIR
-.RE
-.fi
-.PP
-Where the OpenVPN configuration files are kept (default: /etc/openvpn/pia)
-.PP
-.nf
-.RS
-PIA_PASSWD_FILE
-.RE
-.fi
-.PP
-File holding the credentials
+.IP \fBPIA_CONF\fR
+Path to pia-tools.conf (default: /etc/pia-tools.conf)
+.SH CONFIGURATION
+.IP \fBPIA_CONFIG_DIR\fR
+Where to store the OpenVPN config for PIA (default: /etc/openvpn/pia)
+.IP \fBPIA_CONFIG_URL\fR
+From where to fetch the OpenVPN config (default: https://www.privateinternetaccess.com/openvpn/openvpn.zip)
+.IP \fBPIA_COMMON_CONFIG\fR
+Path to a common config section that should be appended to all configs. Typically holds up and down scripts. (default: $PIA_CONFIG_DIR/pia_common)
+.IP \fBPIA_SERVERS_FILE\fR
+Path to the file holding all available exit point URLs (default: $PIA_CONFIG_DIR/piaservers)
+.IP \fBPIA_SERVERS_IP_FILE\fR
+Path to the file where all IPs from exit points from PIA_SERVERS_FILE are stored (default: $PIA_CONFIG_DIR/piaserverips)
+.IP \fBPIA_PASSWD_FILE\fR
+File holding your PIA credentials (default: $PIA_CONFIG_DIR/passwd)
+.IP \fBPIA_CLIENT_ID_FILE\fR
+File where your client-ID is stored (default: $PIA_CONFIG_DIR/clientid)
+.IP \fBTRANSMISSION_SETTINGS_FILE\fR
+Path to transmission config (default: /home/dl/.config/transmission-daemon/settings.json)
+.IP \fBPIA_OPEN_PORT_FILE\fR
+Path to the file where the currently open (forwarded) port is stored (default: $PIA_CONFIG_DIR/open_port)
+.IP \fBVIRT_NET_DEV\fR
+The virtual network device used by OpenVPN (device: tun0)
 .SH FILES
 /etc/pia-tools.conf
-/etc/openvpn/pia/passwd
-/etc/openvpn/pia/passwd 
+/etc/openvpn/pia/
 .SH SEE ALSO
 .BR openvpn(8)
 .SH BUGS
-No known bugs. Open an issue on GitHub if you find one.
+No known bugs. Open an issue on GitHub if you find one (Link to the repo below).
 .SH AUTHOR
 Philipp Schmitt (philipp@schmitt.co)
 .br
