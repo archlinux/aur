@@ -1,10 +1,11 @@
 #!/bin/bash
-# Description: Script to automate privateinternetacces port forwarding and starting/stopping transmission when connected/disconnected and other stuff
-# Version: 0.9
+# Description: Script to automate privateinternetacces port forwarding and 
+# starting/stopping transmission when connected/disconnected and other stuff
+# Version: 0.9.1
 # Author: Philipp Schmitt (philipp<at>schmitt.co)
 # Documentation: cf. pia-tools.groff
 # Sources: iptables -> https://www.privateinternetaccess.com/forum/index.php?p=/discussion/35/block-non-vpn-traffic-on-linux-with-iptables-protect-against-disconnect/p1
-# Dependencies: transmission-daemon rename openvpn systemd sudo wget curl
+# Dependencies: transmission-daemon rename openvpn systemd sudo wget curl ufw
 
 # Source config file
 PIA_CONF='/etc/pia-tools.conf'
@@ -40,7 +41,7 @@ if [[ -z "$PIA_OPEN_PORT_FILE" ]]; then
 fi
 PIA_OPEN_PORT="$(cat $PIA_OPEN_PORT_FILE)"
 if [[ -z "$VIRT_NET_DEV" ]]; then
-    VIRT_NET_DEV='tun'
+    VIRT_NET_DEV='tun0'
 fi
 
 function usage() {
@@ -50,15 +51,18 @@ function usage() {
     echo "-a: Block non VPN traffic (iptables)"
     echo "-d: Unblock non VPN traffic (iptables) [default]"
     echo "-g: Use PIA DNS (updates resolv.conf)"
-    echo "-u: Update configuration files" 
+    echo "-u: Update configuration files"
     echo "-c: Ensure OpenVPN is running. If not stop transmissiond"
     echo "-h: Display this message"
+    echo "-v: Verbose output"
 }
 
 # Checks if executed as root. If not reinvoke self with sudo
 function check_root() {
     if [[ $EUID -ne 0 ]]; then
-        echo -e "This script must be run as root\nInvoking sudo -- $0 $*" 1>&2
+        if test "$VERBOSE"; then
+            echo -e "This script must be run as root\nInvoking sudo -- $0 $*" 1>&2
+        fi
         exec sudo -- $0 $*
     fi
 }
@@ -77,17 +81,26 @@ function check_ovpn() {
             systemctl stop transmissiond
             echo 'Done!'
         else
-            echo "Transmissiond not running"
+            echo "Transmissiond not running" >&2
         fi
         iplist_unblock
-        return 1 
+        return 1
     fi
 }
 
 function info() {
-    local vpn_exit="$(systemctl -t service | grep 'openvpn@.* active' | awk '{ print $NF }')"
-    check_ovpn && echo "OpenVPN is running (Exit point: $vpn_exit)" || echo "OpenVPN stopped"
-    check_transmission && echo "Transmissiond is running" || echo "Transmissiond stopped"
+    local vpn_exit="$(systemctl -t service | grep 'openvpn@.* active' \
+                    | awk '{ print $NF }')"
+    if check_ovpn; then
+        echo "OpenVPN is running (Exit point: $vpn_exit)"
+    else
+        echo "OpenVPN stopped"
+    fi
+    if check_transmission; then
+        echo "Transmissiond is running"
+    else
+        echo "Transmissiond stopped"
+    fi
 }
 
 function _ufw_port_allowed() {
@@ -103,7 +116,8 @@ function _ufw_delete_old_rule() {
 
 # Add a new rule to ufw
 function _ufw_add_new_rule () {
-    if [[ -n "$PIA_OPEN_PORT_NEW" ]] && ! _ufw_port_allowed "$PIA_OPEN_PORT_NEW"; then
+    if [[ -n "$PIA_OPEN_PORT_NEW" ]] && \
+          ! _ufw_port_allowed "$PIA_OPEN_PORT_NEW"; then
         ufw allow $PIA_OPEN_PORT_NEW
     fi
 }
@@ -130,15 +144,17 @@ function transmission_peer_port_update() {
             transmission-remote -p "$PIA_OPEN_PORT_NEW"
             # systemctl restart transmissiond
             echo 'Checking port...'
-            sleep 2 && transmission-remote -pt
+            # TODO The sleep timer may need to be adjusted
+            sleep 3 && transmission-remote -pt
         fi
     else
         # write new listening port to config
-        if [[ -n "$PIA_OPEN_PORT_NEW" ]] && [[ "$PIA_OPEN_PORT_NEW" != "$transmission_peer_port" ]]; then
+        if [[ -n "$PIA_OPEN_PORT_NEW" ]] && \
+           [[ "$PIA_OPEN_PORT_NEW" != "$transmission_peer_port" ]]; then
             echo "Writing new peer port to transmission's settings.json..."
             sed -i 's/\(\"peer-port\":\).*,/\1 '$PIA_OPEN_PORT_NEW',/' $TRANSMISSION_SETTINGS_FILE
         fi
-        check_ovpn && systemctl restart transmissiond 
+        check_ovpn && systemctl restart transmissiond
     fi
     echo 'Done!'
 }
@@ -160,12 +176,18 @@ function request_port() {
         echo "Client ID: $client_id"
         echo "VPN local IP: $local_vpn_ip"
     fi
-    PIA_OPEN_PORT_NEW="$(curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" https://www.privateinternetaccess.com/vpninfo/port_forward_assignment | grep -oE "[0-9]+" 2>&1)"
+    PIA_OPEN_PORT_NEW="$(\
+        curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
+        https://www.privateinternetaccess.com/vpninfo/port_forward_assignment \
+        | grep -oE "[0-9]+" 2>&1)"
     if [[ -n "$PIA_OPEN_PORT_NEW" ]]; then
-        echo $PIA_OPEN_PORT_NEW > $PIA_OPEN_PORT_FILE
-        echo "Done! New port: $PIA_OPEN_PORT_NEW (Previous: $PIA_OPEN_PORT)"
-        ufw_update                    # Update firewall rules
-        transmission_peer_port_update # Update Transmission's peer port
+        echo "$PIA_OPEN_PORT_NEW" > "$PIA_OPEN_PORT_FILE"
+        echo -n "Done! Port: $PIA_OPEN_PORT_NEW"
+        if [[ "$PIA_OPEN_PORT_NEW" != "$PIA_OPEN_PORT" ]]; then
+            echo " (Previous: $PIA_OPEN_PORT)"
+            ufw_update                    # Update firewall rules
+            transmission_peer_port_update # Update Transmission's peer port
+        fi
    else
         echo 'Failed'
    fi
@@ -180,21 +202,23 @@ function update_config() {
     
     # Fetch server config files
     wget -N -q --directory-prefix=$PIA_CONFIG_DIR $PIA_CONFIG_URL
-    unzip -d $PIA_CONFIG_DIR -q $PIA_CONFIG_DIR/openvpn.zip 
+    unzip -d $PIA_CONFIG_DIR -q $PIA_CONFIG_DIR/openvpn.zip
     
-    # Replace space by underscore in filenames 
+    # Replace space by underscore in filenames
     rename ' ' '_' *.ovpn
     # Append up/down scripts to every ovpn file
-    for ovpn_file in $(ls -1 $PIA_CONFIG_DIR/*.ovpn); do 
+    for ovpn_file in $(ls -1 $PIA_CONFIG_DIR/*.ovpn); do
         cat $PIA_COMMON_CONFIG  >> $ovpn_file
     done
     
     # Extract server addresses and resolve hosts
-    grep -h "remote " $PIA_CONFIG_DIR/*.ovpn | cut -d ' ' -f 2 | sort -u > $PIA_SERVERS_FILE
-    cat $PIA_SERVERS_FILE | nslookup | grep Address | grep -v "192.168.1.1" | awk '{ print $2 }' > $PIA_SERVERS_IP_FILE
+    grep -h "remote " $PIA_CONFIG_DIR/*.ovpn | cut -d ' ' -f 2 \
+        | sort -u > $PIA_SERVERS_FILE
+    cat $PIA_SERVERS_FILE | nslookup | grep Address | grep -v "192.168.1.1" \
+        | awk '{ print $2 }' > $PIA_SERVERS_IP_FILE
 
     # why is following dig cmd failing randomly ?
-    #dig -f /tmp/piaservers A +short | sort > $PIA_SERVERS_IP_FILE 
+    #dig -f /tmp/piaservers A +short | sort > $PIA_SERVERS_IP_FILE
     echo 'Done!'
 }
 
@@ -217,10 +241,10 @@ function iplist_block() {
         iptables -A OUTPUT -d ${IP} -j ACCEPT
     done
 
-    # Allow connecting to local network 
+    # Allow connecting to local network
     iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
     iptables -A OUTPUT -d 192.168.1.0/24 -j ACCEPT
-    # Disallow other connections 
+    # Disallow other connections
     iptables -A INPUT -j DROP
     iptables -A OUTPUT -j DROP
     echo 'Done!'
@@ -235,13 +259,16 @@ function iplist_unblock() {
 }
 
 function _dns() {
-    mv /etc/resolv.conf /etc/resolv.conf.orig
+    if mv /etc/resolv.conf /etc/resolv.conf.orig; then
+        test $VERBOSE && echo "Backed up /etc/resolv.conf to /etc/resolv.conf.orig"
+    fi
     echo -n "Updating resolv.conf file... "
     echo "# Generated by pia-tools" > /etc/resolv.conf
     for dns in $@; do
         echo "nameserver $dns" >> /etc/resolv.conf
     done
     echo 'Done!'
+    test $VERBOSE && echo -e "New resolv.conf:\n$(cat /etc/resolv.conf)"
 }
 
 function pia_dns() {
@@ -263,14 +290,14 @@ function restore_dns() {
 check_root "$*" # check permissions
 
 # If no option -> refresh
-# When started by OpenVPN daemon (up script) this script gets called like this: 
+# When started by OpenVPN daemon (up script) this script gets called like this:
 # $0 tun0 1500 1542 10.185.1.6 10.185.1.5 init
 if [[ $# -eq 0 ]] || [[ $# -gt 5 ]]; then
-    port_action=refresh 
+    port_action=refresh
     #ip_action=disallow
-fi  
+fi
 
-while getopts ':adgprciuh-' OPTION; do
+while getopts ':adgprciuhv-' OPTION; do
     case "$OPTION" in
         a)
             test $ip_action && exit 1
@@ -290,7 +317,7 @@ while getopts ':adgprciuh-' OPTION; do
             ;;
         g)
             test $dns && exit 1
-            dns=pia
+            dns_action=pia
             ;;
         u)
             update=update
@@ -300,6 +327,12 @@ while getopts ':adgprciuh-' OPTION; do
             ;;
         i)
             info=info
+            ;;
+        h)
+            usage $(basename $0)
+            ;;
+        v)
+            VERBOSE=1
             ;;
         -)
             [ $OPTIND -ge 1 ] && optind=$(expr $OPTIND - 1 ) || optind=$OPTIND
@@ -325,15 +358,15 @@ while getopts ':adgprciuh-' OPTION; do
                     ;;
                 --pia-dns)
                     test $dns && exit 1
-                    dns=pia
+                    dns_action=pia
                     ;;
                 --google-dns)
                     test $dns && exit 1
-                    dns=google
+                    dns_action=google
                     ;;
                 --restore-dns)
                     test $dns && exit 1
-                    dns=restore
+                    dns_action=restore
                     ;;
                 --update)
                     update=update
@@ -344,6 +377,12 @@ while getopts ':adgprciuh-' OPTION; do
                 --info)
                     info=info
                     ;;
+                --verbose)
+                    VERBOSE=1
+                    ;;
+                #--debug)
+                # TODO
+                #    ;;
                 *)
                     usage $(basename $0)
                     ;;
@@ -359,16 +398,18 @@ done
 
 [[ -n $update ]] && update_config
 
-if [[ -n "$port_action" ]]; then
+# Request port forwarding if port_action is set or no other action is
+if [[ -n "$port_action" ]] || ! test $port_action $dns_action $ip_action $check $info; then
     client_id=$(cat $PIA_CLIENT_ID_FILE)
     if [[ -z "$client_id" ]] || [[ "$port_action" == "portfwd" ]]; then
         client_id=$(new_client_id)
     fi
-    check_ovpn 
+    check_ovpn
     request_port $client_id
     unset client_id port_action
 fi
 
+# Block/Unblock non-VPN traffic if requested
 if [[ -n "$ip_action" ]]; then
     [[ "$ip_action" == "disallow" ]] && iplist_block || iplist_unblock
     unset ip_action
@@ -377,7 +418,7 @@ fi
 [[ -n "$check" ]] && check_ovpn
 [[ -n "$info" ]] && info
 
-case "$dns" in
+case "$dns_action" in
     google) google_dns ;;
     restore) restore_dns ;;
     pia) pia_dns ;;
