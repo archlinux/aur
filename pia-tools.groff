@@ -1,0 +1,87 @@
+.\" Manpage for pia-tools.
+.\" Contact philipp@schmitt.co to correct errors or typos.
+.TH pia-tools 8 "26 November 2013" "1.0" "pia-tools man page"
+.SH NAME
+pia-tools \- OpenVPN hook for privateinternetaccess.com 
+.SH SYNOPSIS
+pia-tools [\fIOPTIONS\fR]
+.SH DESCRIPTION
+Script to automate privateinternetacces port forwarding and starting/stopping transmission when connected/disconnected and other stuff
+.SH OPTIONS
+.TP
+\fB\-p\fR, \fB \-\-port\fR
+Request a new forwarding port
+.TP
+\fB\-r\fR, \fB \-\-refresh\fR
+Request port forwarding [default]
+.TP
+\fB\-a\fR, \fB \-\-allow\fR
+Block all non-VPN traffic 
+.TP
+\fB\-d\fR, \fB \-\-disallow\fR
+Unblock all non-VPN traffic [default]
+.TP
+\fB\-g\fR, \fB \-\-pia\-dns\fR
+Backup /etc/resolv.conf and create a new using PIA's DNS service
+.TP
+\fB\-\-google\-dns\fR
+Backup /etc/resolv.conf and create a new one using Google's DNS service
+.TP
+\fB\-\-restore\-dns\fR
+Restore /etc/resolv.conf from backup
+.TP
+\fB\-u\fR, \fB \-\-update\fR
+Reset/Update the configuration files in PIA_CONFIG_DIR
+.TP
+\fB\-c\fR, \fB \-\-check\fR
+Check if OpenVPN is running, if not stop transmissiond
+.TP
+\fB\-i\fR, \fB \-\-info\fR
+Show information about the status of openvpn, transmission
+.SH EXAMPLES
+This ould typically be called within OpenVPN's up function:
+.PP
+.nf
+.RS
+pia-tools -rg
+.RE
+.fi
+.PP
+Which would request port forwarding and use PIA's DNS
+The down function should call something like this:
+.PP
+.nf
+.RS
+pia-tools --restore-dns
+.RE
+.fi
+.PP
+.SH ENVIRONMENT
+.PP
+.nf
+.RS
+PIA_CONFIG_DIR
+.RE
+.fi
+.PP
+Where the OpenVPN configuration files are kept (default: /etc/openvpn/pia)
+.PP
+.nf
+.RS
+PIA_PASSWD_FILE
+.RE
+.fi
+.PP
+File holding the credentials
+.SH FILES
+/etc/pia-tools.conf
+/etc/openvpn/pia/passwd
+/etc/openvpn/pia/passwd 
+.SH SEE ALSO
+.BR openvpn(8)
+.SH BUGS
+No known bugs. Open an issue on GitHub if you find one.
+.SH AUTHOR
+Philipp Schmitt (philipp@schmitt.co)
+.br
+Source: https://github.com/pschmitt/pia-tools
