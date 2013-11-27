@@ -1,11 +1,11 @@
 #!/bin/bash
 # Description: Script to automate privateinternetacces port forwarding and 
 # starting/stopping transmission when connected/disconnected and other stuff
-# Version: 0.9.2
+# Version: 0.9.3
 # Author: Philipp Schmitt (philipp<at>schmitt.co)
 # Documentation: cf. pia-tools.groff
 # Sources: iptables -> https://www.privateinternetaccess.com/forum/index.php?p=/discussion/35/block-non-vpn-traffic-on-linux-with-iptables-protect-against-disconnect/p1
-# Dependencies: transmission-daemon openvpn systemd sudo wget curl ufw
+# Dependencies: transmission-daemon openvpn systemd sudo wget ufw unzip
 
 # Source config file
 
@@ -178,9 +178,13 @@ function request_port() {
         echo "VPN local IP: $local_vpn_ip"
     fi
     PIA_OPEN_PORT_NEW="$(\
-        curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
+        wget -q -O- --post-data "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
         https://www.privateinternetaccess.com/vpninfo/port_forward_assignment \
         | grep -oE "[0-9]+" 2>&1)"
+    # PIA_OPEN_PORT_NEW="$(\
+    #     curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
+    #     https://www.privateinternetaccess.com/vpninfo/port_forward_assignment \
+    #     | grep -oE "[0-9]+" 2>&1)"
     if [[ -n "$PIA_OPEN_PORT_NEW" ]]; then
         echo "$PIA_OPEN_PORT_NEW" > "$PIA_OPEN_PORT_FILE"
         echo "Done! Port: $PIA_OPEN_PORT_NEW"
@@ -384,6 +388,9 @@ while getopts ':adgprciuhv-' OPTION; do
                     ;;
                 --info)
                     info=info
+                    ;;
+                --help)
+                    usage $(basename $0)
                     ;;
                 --verbose)
                     VERBOSE=1
