@@ -16,7 +16,7 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 
 * transmission-cli
 * openvpn
-* systemd
+* systemd (**optional**)
 * sudo
 * dnsutils (nslookup)
 * wget
@@ -47,11 +47,16 @@ If you also want to have the MANPAGE:
 ```bash
 wget -q -O- https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff | gzip -c - > pia-tools.1.gz 
 mv pia-tools.1.gz $MANPATH
-wget https://raw.github.com/pschmitt/pia-tools/master/pia@.service
-mv pia@.service /usr/lib/systemd/system
 ```
 
 **Note**: `$MANPATH` may not be defined, so you'll have to find out where to put the obtained file. On ArchLinux, this would be `/usr/share/man/man1/`
+
+#### Systemd service file
+
+```bash
+wget https://raw.github.com/pschmitt/pia-tools/master/pia@.service
+mv pia@.service /usr/lib/systemd/system
+```
 
 ## Post installation
 
