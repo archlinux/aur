@@ -7,7 +7,7 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 ## TODO
 
 * ~~Ship a ready-to-go OpenVPN wrapper service for systemd~~
-* Get rid of cURL and rename (and sudo?) dependencies
+* Get rid of cURL ~~and rename~~ (and sudo?) dependencies
 * Modularity
 * Automate the [post-installation](#post-installation)
 * Better error handling
@@ -15,7 +15,6 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 ## Dependencies
 
 * transmission-cli
-* util-linux (for rename)
 * openvpn
 * systemd
 * sudo
