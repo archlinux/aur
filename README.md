@@ -7,9 +7,9 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 ## TODO
 
 * ~~Ship a ready-to-go OpenVPN wrapper service for systemd~~
-* Get rid of cURL ~~and rename~~ (and sudo?) dependencies
+* Get rid of ~~cURL and rename~~ (and sudo?) dependencies
 * Modularity
-* Automate the [post-installation](#post-installation)
+* ~~Automate the [post-installation](#post-installation)~~
 * Better error handling
 
 ## Dependencies
@@ -20,7 +20,7 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 * sudo
 * dnsutils (nslookup)
 * wget
-* curl (yes I know wget + cURL... I'm working on that)
+* sed
 * ufw
 
 ## Installation
@@ -65,26 +65,21 @@ First I recommend to create `/etc/openvpn/pia` and the *required* config files:
 ```bash
 mkdir -p /etc/openvpn/pia
 
-# Please remember to change MYUSERNAME and MYPASSWORD
-cat <<EOM > /etc/openvpn/pia/passwd
-MYUSERNAME
-MYPASSWORD
-EOM
-
 # Feel free to edit the up/down parameters
 cat <<EOM > /etc/openvpn/pia/pia_common
 auth-user-pass passwd
 script-security 2 
-up "/home/pschmitt/bin/pia-tools -g"
-down "/home/pschmitt/bin/pia-tools --restore-dns"
+up "/usr/bin/pia-tools -g"
+down "/usr/bin/pia-tools --restore-dns"
 EOM
+
+# Start interactive setup
+pia-tools --setup
 ```
 
-Now you should run following which will fetch the necessary OpenVPN config files from PIA and append the previously created `pia_common` file to all of then:
+The setup will store your credentials in `/etc/openvpn/pia/passwd`, download the config files from PIA and append `/etc/openvpn/pia/pia_common` to all of them.
 
-```bash
-pia-tools --update
-```
+In order to download the config files again run `pia-tools --update`
 
 ## Go! Go! GOOOOO!
 
