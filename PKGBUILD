@@ -17,7 +17,7 @@ sha256sums=('3c30fabca083e19754ec0547bfefa65a26592a698c2d985bab7bcbaac6ecba96'
             '5a1ffc5094428d70bb0e19f1cc7eec7544b1ad9154a653f75b64f8ac1aeec867'
             'ca889526b3154f221ec57df982c887c6fd02f5be15310fbe25b14d701d4fa394'
             '326197a42525e640432e6ceb3fd0cfe6bbab2324bc607babaa89fb3c80971828'
-            'da696c2b1521220b4c7b8df14665bc4204e8b03b7e7b7bbcd9f665556c7bfe19')
+            '7653ccfd4f1986241bf1705de8bc4e7e6282acd4085a2e385e143e62b1b0ed5f')
 install="pia-tools.install"
 
 package() {
