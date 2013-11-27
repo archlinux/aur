@@ -2,8 +2,8 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=pcmanfm-git
-pkgver=1.1.2.r36.g9b9dd4c
-pkgrel=3
+pkgver=1.1.2.r94.gf717e0c
+pkgrel=1
 pkgdesc="An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing"
 arch=('i686' 'x86_64')
 url="http://pcmanfm.sourceforge.net/"
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd pcmanfm
-	printf "%s" "$(git describe --always --long | sed 's/-/-r/' | tr - .)"
+	git describe --always --long | sed 's/-/-r/; s/-/./g'
 }
 
 build() {
