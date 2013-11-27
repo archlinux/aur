@@ -2,18 +2,18 @@
 
 pkgname=pia-tools-orig
 pkgver=0.9.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVPN hook for privateinternetaccess.com'
 arch=('any')
 url='https://github.com/pschmitt/pia-tools'
 license=('GPL3')
-depends=('transmission-cli' 'dnsutils' 'openvpn' 'systemd' 'sudo' 'wget' 'ufw' 'unzip')
+depends=('transmission-cli' 'dnsutils' 'openvpn' 'systemd' 'sudo' 'wget' 'ufw' 'unzip' 'sed')
 source=('https://raw.github.com/pschmitt/pia-tools/master/pia-tools'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff'
         'https://raw.github.com/pschmitt/pia-tools/master/pia@.service'
         'https://raw.github.com/pschmitt/pia-tools/master/pia_common'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools.install')
-sha256sums=('a4d017bd3db885eafaf1c0f822af9fc8b9b97e33b3cbf2c0ea89219da82f71dd'
+sha256sums=('c6889af37d68014b777a7483b11a4c0b7a50741066a1b7c85c30f5530dc561c6'
             '35ddc09ca81f1667653d0809cf4fc9b515ce5cfd0011cb3bd6bfa1cc69a3fc03'
             'ca889526b3154f221ec57df982c887c6fd02f5be15310fbe25b14d701d4fa394'
             '6c8d6b9024b3e782932dee0f0c917b9eb9f2a4d8ec6da26428d0abe751447b9b'
