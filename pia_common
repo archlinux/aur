@@ -1,0 +1,5 @@
+auth-user-pass passwd
+script-security 2 
+up "/home/pschmitt/bin/pia-tools -g"
+down "/home/pschmitt/bin/pia-tools --restore-dns"
+
