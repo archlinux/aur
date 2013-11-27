@@ -7,7 +7,10 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 ## TODO
 
 * ~~Ship a ready-to-go OpenVPN wrapper service for systemd~~
-* Get rid of cURL dependency
+* Get rid of cURL and rename (and sudo?) dependencies
+* Modularity
+* Automate the [post-installation](#post-installation)
+* Better error handling
 
 ## Dependencies
 
@@ -52,7 +55,7 @@ mv pia@.service /usr/lib/systemd/system
 
 ## Post installation
 
-First I'll recommend to create `/etc/openvpn/pia` and the *required* config files:
+First I recommend to create `/etc/openvpn/pia` and the *required* config files:
 
 ```bash
 mkdir -p /etc/openvpn/pia
@@ -78,7 +81,7 @@ Now you should run following which will fetch the necessary OpenVPN config files
 pia-tools --update
 ```
 
-## Go!Go!GOOOOO!
+## Go! Go! GOOOOO!
 
 ```bash
 systemctl start pia@Sweden
@@ -103,7 +106,7 @@ VIRT_NET_DEV='tun0'
 
 ## Read more
 
-If you installed the [MANPAGE](#MANPAGE):
+If you installed the [MANPAGE](#manpage):
 
 ```bash
 man pia-tools
