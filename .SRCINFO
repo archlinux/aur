@@ -23,7 +23,7 @@ pkgbase = pia-tools-orig
 	sha256sums = 35ddc09ca81f1667653d0809cf4fc9b515ce5cfd0011cb3bd6bfa1cc69a3fc03
 	sha256sums = ca889526b3154f221ec57df982c887c6fd02f5be15310fbe25b14d701d4fa394
 	sha256sums = 6c8d6b9024b3e782932dee0f0c917b9eb9f2a4d8ec6da26428d0abe751447b9b
-	sha256sums = 7653ccfd4f1986241bf1705de8bc4e7e6282acd4085a2e385e143e62b1b0ed5f
+	sha256sums = 6e1c7a5c0dd90cce431eec928767427caed8a19c9e094691d522fed8b8eedc08
 
 pkgname = pia-tools-orig
 
