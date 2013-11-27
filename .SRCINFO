@@ -1,6 +1,22 @@
 pkgbase = pia-tools-orig
-	pkgver = 0.0
-	pkgrel = 0
+	pkgdesc = OpenVPN hook for privateinternetaccess.com
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/pschmitt/pia-tools
+	arch = any
+	license = GPL3
+	depends = transmission-cli
+	depends = util-linux
+	depends = openvpn
+	depends = systemd
+	depends = sudo
+	depends = wget
+	depends = curl
+	depends = ufw
+	source = https://raw.github.com/pschmitt/pia-tools/master/pia-tools
+	source = https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff
+	sha256sums = 2837f0d094dfc5aacc2901f6a258684fda6a31a20b9e6ed347f6b5d2ddb24823
+	sha256sums = 5a1ffc5094428d70bb0e19f1cc7eec7544b1ad9154a653f75b64f8ac1aeec867
 
 pkgname = pia-tools-orig
 
