@@ -111,14 +111,14 @@ function _ufw_port_allowed() {
 
 # Delete previous rule from ufw
 function _ufw_delete_old_rule() {
-    if [[ -n "$PIA_OPEN_PORT" ]] && _ufw_port_allowed "$PIA_OPEN_PORT"; then
+    if test "$PIA_OPEN_PORT" && _ufw_port_allowed "$PIA_OPEN_PORT"; then
         ufw delete allow $PIA_OPEN_PORT
     fi
 }
 
 # Add a new rule to ufw
 function _ufw_add_new_rule () {
-    if [[ -n "$PIA_OPEN_PORT_NEW" ]] && \
+    if test "$PIA_OPEN_PORT_NEW" && \
           ! _ufw_port_allowed "$PIA_OPEN_PORT_NEW"; then
         ufw allow $PIA_OPEN_PORT_NEW
     fi
@@ -151,7 +151,7 @@ function transmission_peer_port_update() {
         fi
     else
         # write new listening port to config
-        if [[ -n "$PIA_OPEN_PORT_NEW" ]] && \
+        if test "$PIA_OPEN_PORT_NEW" && \
            [[ "$PIA_OPEN_PORT_NEW" != "$transmission_peer_port" ]]; then
             echo "Writing new peer port to transmission's settings.json..."
             sed -i 's/\(\"peer-port\":\).*,/\1 '$PIA_OPEN_PORT_NEW',/' $TRANSMISSION_SETTINGS_FILE
@@ -186,7 +186,7 @@ function request_port() {
     #     curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
     #     https://www.privateinternetaccess.com/vpninfo/port_forward_assignment \
     #     | grep -oE "[0-9]+" 2>&1)"
-    if [[ -n "$PIA_OPEN_PORT_NEW" ]]; then
+    if test "$PIA_OPEN_PORT_NEW"; then
         echo "$PIA_OPEN_PORT_NEW" > "$PIA_OPEN_PORT_FILE"
         echo "Done! Port: $PIA_OPEN_PORT_NEW"
         if [[ "$PIA_OPEN_PORT_NEW" != "$PIA_OPEN_PORT" ]]; then
@@ -264,7 +264,7 @@ function iplist_block() {
     [[ -f $PIA_SERVERS_IP_FILE ]] || update_config
     # Add PIA server IPs to script
     local ip_list=$(tr '\n' ' ' < $PIA_SERVERS_IP_FILE)
-    [[ -n "$ip_list" ]] || { echo 'IP list is empty !' >2; exit 2; }
+    test "$ip_list" || { echo 'IP list is empty !' >2; exit 2; }
     # Start building iptables blocklist
     iptables -F
     iptables -A INPUT -i tun+ -j ACCEPT
@@ -278,8 +278,8 @@ function iplist_block() {
     done
 
     # Allow connecting to local network
-    iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
-    iptables -A OUTPUT -d 192.168.1.0/24 -j ACCEPT
+    iptables -A INPUT -s 192.168.0.0/24 -j ACCEPT
+    iptables -A OUTPUT -d 192.168.0.0/24 -j ACCEPT
     # Disallow other connections
     iptables -A INPUT -j DROP
     iptables -A OUTPUT -j DROP
@@ -439,16 +439,16 @@ while getopts ':adgprciuhsv-' OPTION; do
     esac
 done
 
-test $action_help && { usage $(basename $0); exit 0; }
-test $info && info
-# Every function except help and info needs root permissions
+test $action_help && { usage $(basename $0); exit $?; }
+# Every function except help needs root permissions
 check_root "$*" # check permissions
-test $setup && { setup; exit 0; }
+test $info && { info; exit $?; }
+test $setup && { setup; exit $?; }
 test $update && update_config
 test $check && check_ovpn
 
 # Request port forwarding if port_action is set or no other action is
-if [[ -n "$port_action" ]] || ! test $port_action $dns_action $ip_action $check $info $update; then
+if test "$port_action" || ! test $port_action $dns_action $ip_action $check $info $update; then
     client_id=$(cat $PIA_CLIENT_ID_FILE)
     if [[ -z "$client_id" ]] || [[ "$port_action" == "portfwd" ]]; then
         client_id=$(new_client_id)
@@ -459,11 +459,10 @@ if [[ -n "$port_action" ]] || ! test $port_action $dns_action $ip_action $check 
 fi
 
 # Block/Unblock non-VPN traffic if requested
-if [[ -n "$ip_action" ]]; then
-    [[ "$ip_action" == "disallow" ]] && iplist_block || iplist_unblock
-    unset ip_action
-fi
-
+case "$ip_action" in
+    disallow) iplist_block ;;
+    allow) iplist_unblock ;;
+esac
 
 case "$dns_action" in
     google) google_dns ;;
