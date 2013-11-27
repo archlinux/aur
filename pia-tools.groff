@@ -30,6 +30,9 @@ Backup /etc/resolv.conf and create a new one using Google's DNS service
 \fB\-\-restore\-dns\fR
 Restore /etc/resolv.conf from backup
 .TP
+\fB\-s\fR, \fB \-\-setup\fR
+Run the interactive setup which will create the passwd and download the config files from PIA
+.TP
 \fB\-u\fR, \fB \-\-update\fR
 Reset/Update the configuration files in PIA_CONFIG_DIR
 .TP

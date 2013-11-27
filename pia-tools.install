@@ -1,9 +1,7 @@
 post_install() {
 cat <<EOM
 To get started: 
-- Put your PIA credentials in /etc/openvpn/pia/passwd. The first line has to be be your account name, the second your password.
-Don't put an empty line at end.
-- run # pia-tools --update to retrieve the configuration files from PIA
+- run # pia-tools --setup 
 - start the service: # systemctl start pia@Sweden
 EOM
 }
