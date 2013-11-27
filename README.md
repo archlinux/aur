@@ -6,7 +6,8 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 
 ## TODO
 
-* Ship a ready-to-go OpenVPN wrapper service for systemd
+* ~~Ship a ready-to-go OpenVPN wrapper service for systemd~~
+* Get rid of cURL dependency
 
 ## Dependencies
 
@@ -43,6 +44,8 @@ If you also want to have the MANPAGE:
 ```bash
 wget -q -O- https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff | gzip -c - > pia-tools.1.gz 
 mv pia-tools.1.gz $MANPATH
+wget https://raw.github.com/pschmitt/pia-tools/master/pia@.service
+mv pia@.service /usr/lib/systemd/system
 ```
 
 **Note**: `$MANPATH` may not be defined, so you'll have to find out where to put the obtained file. On ArchLinux, this would be `/usr/share/man/man1/`
@@ -78,7 +81,7 @@ pia-tools --update
 ## Go!Go!GOOOOO!
 
 ```bash
-systemctl start openvpn@Romania
+systemctl start pia@Sweden
 ```
 
 ## Sample config file
