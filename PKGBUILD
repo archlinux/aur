@@ -7,7 +7,7 @@ pkgdesc='OpenVPN hook for privateinternetaccess.com'
 arch=('any')
 url='https://github.com/pschmitt/pia-tools'
 license=('GPL3')
-depends=('transmission-cli' 'openvpn' 'systemd' 'sudo' 'wget' 'curl' 'ufw')
+depends=('transmission-cli' 'dnsutils' 'openvpn' 'systemd' 'sudo' 'wget' 'curl' 'ufw')
 source=('https://raw.github.com/pschmitt/pia-tools/master/pia-tools'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff'
         'https://raw.github.com/pschmitt/pia-tools/master/pia@.service'

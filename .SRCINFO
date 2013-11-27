@@ -6,6 +6,7 @@ pkgbase = pia-tools-orig
 	arch = any
 	license = GPL3
 	depends = transmission-cli
+	depends = dnsutils
 	depends = openvpn
 	depends = systemd
 	depends = sudo
