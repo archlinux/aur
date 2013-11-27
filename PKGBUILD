@@ -23,7 +23,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd urxvt-tabbedex
-	printf "%s" "$(git describe --tags --long | sed 's/^tabbedex-//;s/-/-r/' | tr - .)"
+	git describe --tags --long | sed 's/^tabbedex-//; s/-/-r/; s/-/./g'
 }
 
 prepare() {
