@@ -6,6 +6,7 @@ pkgbase = openmw-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	license = MIT
 	license = custom
 	makedepends = git
 	makedepends = cmake

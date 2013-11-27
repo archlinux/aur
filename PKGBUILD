@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
-license=('GPL3' 'custom')
+license=('GPL3' 'MIT' 'custom')
 
 depends=('openal' 'ogre' 'mygui' 'bullet' 'mpg123' 'libsndfile' 'qt4' 'ffmpeg' 'sdl2' 'unshield')
 makedepends=('git' 'cmake' 'boost')
