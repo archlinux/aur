@@ -18,6 +18,7 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 * openvpn
 * systemd
 * sudo
+* dnsutils (nslookup)
 * wget
 * curl (yes I know wget + cURL... I'm working on that)
 * ufw
