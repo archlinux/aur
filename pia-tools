@@ -191,9 +191,10 @@ function request_port() {
         echo "Done! Port: $PIA_OPEN_PORT_NEW"
         if [[ "$PIA_OPEN_PORT_NEW" != "$PIA_OPEN_PORT" ]]; then
             test "$PIA_OPEN_PORT" && echo "Previous: $PIA_OPEN_PORT"
-            ufw_update                    # Update firewall rules
-            transmission_peer_port_update # Update Transmission's peer port
+            # Update firewall rules
+            ufw_update
         fi
+        transmission_peer_port_update # Update Transmission's peer port
    else
         echo 'Failed'
    fi
