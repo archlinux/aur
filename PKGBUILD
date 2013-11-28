@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  make -C "$pkgname-$pkgver/build" DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
