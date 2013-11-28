@@ -11,14 +11,14 @@ arch=('any')
 url='https://github.com/boto/boto'
 license=('MIT')
 depends=('python2')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'git')
 conflicts=('python-boto>=2.5.2-1')
 replaces=('python-boto>=2.5.2-1')
 source=("git+https://github.com/boto/boto.git#tag=$pkgver"
         'LICENSE')
 
 prepare() {
-  cd boto-$pkgver
+  cd boto
 
   # python2 fix
   find . -name '*.py' -type f -print0 | xargs -0 \
@@ -26,7 +26,7 @@ prepare() {
 }
 
 package_python2-boto() {
-  cd boto-$pkgver
+  cd boto
 
   python2 setup.py install --root="$pkgdir"
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
