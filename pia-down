@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+
+pia-tools --restore
+
+systemctl stop transmissiond
+
+(sleep 10 && systemctl kill transmissiond)&
+
+exit 0

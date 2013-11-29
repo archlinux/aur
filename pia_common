@@ -1,4 +1,4 @@
 auth-user-pass passwd
 script-security 2 
-up "/usr/bin/pia-tools -g"
-down "/usr/bin/pia-tools --restore-dns"
+up "/etc/openvpn/pia/pia-up"
+down "/etc/openvpn/pia/pia-down"

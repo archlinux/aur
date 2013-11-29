@@ -1,14 +1,12 @@
 #!/bin/bash
-# Description: Script to automate privateinternetacces port forwarding and 
+# Description: Script to automate privateinternetacces port forwarding and
 # starting/stopping transmission when connected/disconnected and other stuff
-# Version: 0.9.5.1
+# Version: 0.9.6
 # Author: Philipp Schmitt (philipp<at>schmitt.co)
 # Documentation: cf. pia-tools.groff
-# Sources: iptables -> https://www.privateinternetaccess.com/forum/index.php?p=/discussion/35/block-non-vpn-traffic-on-linux-with-iptables-protect-against-disconnect/p1
 # Dependencies: transmission-daemon openvpn systemd sudo wget ufw unzip
 
 # Source config file
-
 test "$PIA_CONF" || PIA_CONF='/etc/pia-tools.conf'
 [[ -r "$PIA_CONF" ]] && . $PIA_CONF
 
@@ -41,6 +39,9 @@ if [[ -z "$PIA_OPEN_PORT_FILE" ]]; then
     PIA_OPEN_PORT_FILE="$PIA_CONFIG_DIR/open_port"
 fi
 PIA_OPEN_PORT="$(cat $PIA_OPEN_PORT_FILE 2>/dev/null)"
+if [[ -z "$NET_DEV" ]]; then
+    NET_DEV='enp104s0'
+fi
 if [[ -z "$VIRT_NET_DEV" ]]; then
     VIRT_NET_DEV='tun0'
 fi
@@ -85,7 +86,8 @@ function check_ovpn() {
         else
             echo "Transmissiond not running" >&2
         fi
-        iplist_unblock
+        _ufw_delete_rule "$PIA_OPEN_PORT"
+        # ufw_unblock
         return 1
     fi
 }
@@ -110,17 +112,16 @@ function _ufw_port_allowed() {
 }
 
 # Delete previous rule from ufw
-function _ufw_delete_old_rule() {
-    if test "$PIA_OPEN_PORT" && _ufw_port_allowed "$PIA_OPEN_PORT"; then
-        ufw delete allow $PIA_OPEN_PORT
+function _ufw_delete_rule() {
+    if test "$1" && _ufw_port_allowed "$1"; then
+        ufw delete allow $1
     fi
 }
 
 # Add a new rule to ufw
 function _ufw_add_new_rule () {
-    if test "$PIA_OPEN_PORT_NEW" && \
-          ! _ufw_port_allowed "$PIA_OPEN_PORT_NEW"; then
-        ufw allow $PIA_OPEN_PORT_NEW
+    if test "$1" && ! _ufw_port_allowed "$1"; then
+        ufw allow $1
     fi
 }
 
@@ -129,9 +130,23 @@ function ufw_update() {
     # Check if ufw is running
     systemctl is-active ufw > /dev/null 2>&1 || return 1
     echo -n "Updating UFW rules... "
-    _ufw_delete_old_rule
-    _ufw_add_new_rule
+    _ufw_delete_rule "$PIA_OPEN_PORT"
+    _ufw_add_new_rule "$PIA_OPEN_PORT_NEW"
     ufw reload > /dev/null
+    echo 'Done!'
+}
+
+function ufw_allow_non_vpn() {
+    echo -n 'Allowing non-VPN traffic ... '
+    ufw delete deny out on $NET_DEV > /dev/null 2>&1
+    ufw delete deny in on $NET_DEV > /dev/null 2>&1
+    echo 'Done!'
+}
+
+function ufw_deny_non_vpn() {
+    echo -n 'Denying non-VPN traffic ... '
+    ufw deny out on $NET_DEV > /dev/null 2>&1
+    ufw deny in on $NET_DEV > /dev/null 2>&1
     echo 'Done!'
 }
 
@@ -171,7 +186,7 @@ function request_port() {
     local passwd="$(tail -1 $PIA_PASSWD_FILE)"
     local local_vpn_ip="$(ip addr show $VIRT_NET_DEV | grep inet | awk '{ print $2 }')"
     local client_id="$1"
-    #[[ -z "$client_id" ]] || client_id=$(new_client_id)
+    [[ -z "$local_vpn_ip" ]] && local_vpn_ip=$LOCAL_IP
     echo -n "Updating port forwarding... "
     if test $VERBOSE; then
         echo "Username: $username"
@@ -182,18 +197,14 @@ function request_port() {
         wget -q -O- --post-data "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
         https://www.privateinternetaccess.com/vpninfo/port_forward_assignment \
         | grep -oE "[0-9]+" 2>&1)"
-    # PIA_OPEN_PORT_NEW="$(\
-    #     curl -s -d "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
-    #     https://www.privateinternetaccess.com/vpninfo/port_forward_assignment \
-    #     | grep -oE "[0-9]+" 2>&1)"
     if test "$PIA_OPEN_PORT_NEW"; then
         echo "$PIA_OPEN_PORT_NEW" > "$PIA_OPEN_PORT_FILE"
         echo "Done! Port: $PIA_OPEN_PORT_NEW"
         if [[ "$PIA_OPEN_PORT_NEW" != "$PIA_OPEN_PORT" ]]; then
             test "$PIA_OPEN_PORT" && echo "Previous: $PIA_OPEN_PORT"
-            # Update firewall rules
-            ufw_update
         fi
+        # Update firewall rules
+        ufw_update
         transmission_peer_port_update # Update Transmission's peer port
    else
         echo 'Failed'
@@ -230,11 +241,11 @@ function update_config() {
 
     # Clean up
     rm -f $PIA_CONFIG_DIR/ca.crt $PIA_CONFIG_DIR/*.ovpn
-    
+
     # Fetch server config files
     wget -N -q --directory-prefix=$PIA_CONFIG_DIR $PIA_CONFIG_URL
     unzip -d $PIA_CONFIG_DIR -q $PIA_CONFIG_DIR/openvpn.zip
-    
+
     # Replace space by underscore in filenames
     local ifs_bak=$IFS
     IFS=$(echo -en "\n\b")
@@ -248,7 +259,7 @@ function update_config() {
         cat $PIA_COMMON_CONFIG  >> $ovpn_spaceless
     done
     IFS=$ifs_bak
-    
+
     # Extract server addresses and resolve hosts
     grep -h "remote " $PIA_CONFIG_DIR/*.ovpn | cut -d ' ' -f 2 \
         | sort -u > $PIA_SERVERS_FILE
@@ -260,53 +271,22 @@ function update_config() {
     echo 'Done!'
 }
 
-function iplist_block() {
-    echo -n 'Blocking non VPN-traffic... '
-    check_ovpn || return 0
-    [[ -f $PIA_SERVERS_IP_FILE ]] || update_config
-    # Add PIA server IPs to script
-    local ip_list=$(tr '\n' ' ' < $PIA_SERVERS_IP_FILE)
-    test "$ip_list" || { echo 'IP list is empty !' >2; exit 2; }
-    # Start building iptables blocklist
-    iptables -F
-    iptables -A INPUT -i tun+ -j ACCEPT
-    iptables -A OUTPUT -o tun+ -j ACCEPT
-    iptables -A INPUT -s 127.0.0.1 -j ACCEPT
-    iptables -A OUTPUT -d 127.0.0.1 -j ACCEPT
-
-    for IP in $ip_list; do
-        iptables -A INPUT -s ${IP} -j ACCEPT
-        iptables -A OUTPUT -d ${IP} -j ACCEPT
-    done
-
-    # Allow connecting to local network
-    iptables -A INPUT -s 192.168.0.0/24 -j ACCEPT
-    iptables -A OUTPUT -d 192.168.0.0/24 -j ACCEPT
-    # Disallow other connections
-    iptables -A INPUT -j DROP
-    iptables -A OUTPUT -j DROP
-    echo 'Done!'
-}
-
-function iplist_unblock() {
-    echo -n 'Unblocking ... '
-    iptables -F
-    iptables -A INPUT -j ACCEPT
-    iptables -A OUTPUT -j ACCEPT
-    echo 'Done!'
-}
-
 function _dns() {
-    if mv /etc/resolv.conf /etc/resolv.conf.orig; then
-        test $VERBOSE && echo "Backed up /etc/resolv.conf to /etc/resolv.conf.orig"
+    local resolv=/etc/resolv.conf
+    local resolv_bak=/etc/resolv.conf.orig
+
+    if [[ ! -e $resolv_bak ]]; then
+        if mv $resolv $resolv_bak; then
+            test $VERBOSE && echo "Backed up $resolv to $resolv_bak"
+        fi
     fi
-    echo -n "Updating resolv.conf file... "
-    echo "# Generated by pia-tools" > /etc/resolv.conf
+    echo -n "Updating $resolv file... "
+    echo "# Generated by $(basename $0)" > $resolv
     for dns in $@; do
-        echo "nameserver $dns" >> /etc/resolv.conf
+        echo "nameserver $dns" >> $resolv
     done
     echo 'Done!'
-    test $VERBOSE && echo -e "New resolv.conf:\n$(cat /etc/resolv.conf)"
+    test $VERBOSE && echo -e "New $resolv:\n$(cat $resolv)"
 }
 
 function pia_dns() {
@@ -326,9 +306,7 @@ function restore_dns() {
 }
 
 # If no option -> refresh
-# When started by OpenVPN daemon (up script) this script gets called like this:
-# $0 tun0 1500 1542 10.185.1.6 10.185.1.5 init
-if [[ $# -eq 0 ]] || [[ $# -gt 5 ]]; then
+if [[ $# -eq 0 ]]; then
     action_port=refresh
     #action_fw=disallow
 fi
@@ -336,110 +314,93 @@ fi
 # Every function except help needs root permissions
 check_root "$*"
 
-while getopts ':adgprciuhsv-' OPTION; do
-    case "$OPTION" in
-        a)
+ARGS=$(getopt -o "adprfguscihv" -l "allow,disallow,port,refresh,pia-dns,google-dns,restore-dns,restore,force,update,setup,info,help,verbose" -n "$0" -- "$@")
+
+[[ $? -ne 0 ]] && { usage $(basename $0); exit 1; }
+
+eval set -- "$ARGS"
+
+while true; do
+    case "$1" in
+        -a|--allow)
             test $action_fw && exit 1
             action_fw=allow
-            ;;
-        d)
-            test $action_fw && exit 1
-            action_fw=disallow
-            ;;
-        p)
-            test $action_port && exit 1
-            action_port=portfwd
-            ;;
-        r)
-            test $action_port && exit 1
-            action_port=refresh
-            ;;
-        g)
-            test $dns && exit 1
-            action_dns=pia
-            ;;
-        u)
-            action_update=1
-            ;;
-        s)
-            action_setup=1
-            ;;
-        c)
-            action_check=1
-            ;;
-        i)
-            action_info=1
-            ;;
-        h)
-            action_help=1
-            ;;
-        v)
-            VERBOSE=1
-            ;;
-        -)
-            [ $OPTIND -ge 1 ] && optind=$(expr $OPTIND - 1 ) || optind=$OPTIND
-            eval OPTION="\$$optind"
-            OPTARG=$(echo $OPTION | cut -d'=' -f2)
-            OPTION=$(echo $OPTION | cut -d'=' -f1)
-            case $OPTION in
-                --port)
-                    test $action_port && exit 1
-                    action_port=portfwd
-                    ;;
-                --refresh)
-                    test $action_port && exit 1
-                    action_port=refresh
-                    ;;
-                --allow)
-                    test $action_fw && exit 1
-                    action_fw=allow
-                    ;;
-                --disallow)
-                    test $action_fw && exit 1
-                    action_fw=disallow
-                    ;;
-                --pia-dns)
-                    test $dns && exit 1
-                    action_dns=pia
-                    ;;
-                --google-dns)
-                    test $dns && exit 1
-                    action_dns=google
-                    ;;
-                --restore-dns)
-                    test $dns && exit 1
-                    action_dns=restore
-                    ;;
-                --update)
-                    action_update=1
-                    ;;
-                --setup)
-                    action_setup=1
-                    ;;
-                --check)
-                    action_check=1
-                    ;;
-                --info)
-                    action_info=1
-                    ;;
-                --help)
-                    action_help=1 
-                    ;;
-                --verbose)
-                    VERBOSE=1
-                    ;;
-                *)
-                    action_help=1 
-                    ;;
-            esac
-            OPTIND=1
             shift
             ;;
-        ?)
-            action_help=1 
+        -d|--disallow)
+            test $action_fw && exit 1
+            action_fw=disallow
+            shift
             ;;
+        -p|--port)
+            test $action_port && exit 1
+            action_port=portfwd
+            shift
+            ;;
+        -r|--refresh)
+            test $action_port && exit 1
+            action_port=refresh
+            shift
+            ;;
+        -g|--pia-dns)
+            test $action_dns && exit 1
+            action_dns=pia
+            shift
+            ;;
+        --google-dns)
+            test $action_dns && exit 1
+            action_dns=google
+            shift
+            ;;
+        --restore-dns)
+            test $action_dns && exit 1
+            action_dns=restore
+            shift
+            ;;
+        --restore)
+            test $action_dns && exit 1
+            action_dns=restore
+            action_check=1
+            shift
+            ;;
+        -f|--force)
+            FORCE=1
+            shift
+            ;;
+        -c|--check)
+            action_check=1
+            shift
+            ;;
+        -i|--info)
+            action_info=1
+            shift
+            ;;
+        -s|--setup)
+            action_setup=1
+            shift
+            ;;
+        -u|--update)
+            action_update=1
+            shift
+            ;;
+        -h|--help)
+            action_help=1
+            shift
+            ;;
+        -v|--verbose)
+            VERBOSE=1
+            shift
+            ;;
+        --)
+      shift
+      break;;
     esac
 done
+
+# When started by OpenVPN daemon (up script) this script gets called like this:
+# $0 $@ tun0 1500 1542 10.185.1.6 10.185.1.5 init
+[[ -n $2 ]] && VIRT_NET_DEV=$1
+[[ -n $4 ]] && LOCAL_IP=$4
 
 test $action_help && { usage $(basename $0); exit $?; }
 test $action_info && { info; exit $?; }
@@ -447,27 +408,28 @@ test $action_setup && { setup; exit $?; }
 test $action_update && update_config
 test $action_check && check_ovpn
 
-# Request port forwarding if action_port is set or no other action is
-if test "$action_port" || ! test $action_port $action_dns $action_fw $action_check $action_info $action_update $action_setup; then
-    client_id=$(cat $PIA_CLIENT_ID_FILE)
-    if [[ -z "$client_id" ]] || [[ "$action_port" == "portfwd" ]]; then
-        client_id=$(new_client_id)
-    fi
-    check_ovpn
-    request_port $client_id
-    unset client_id action_port
-fi
-
-# Block/Unblock non-VPN traffic if requested
-case "$action_fw" in
-    disallow) iplist_block ;;
-    allow) iplist_unblock ;;
-esac
-
 case "$action_dns" in
     google) google_dns ;;
     restore) restore_dns ;;
     pia) pia_dns ;;
 esac
+
+# Block/Unblock non-VPN traffic if requested
+case "$action_fw" in
+    disallow) ufw_deny_non_vpn ;;
+    allow) ufw_allow_non_vpn;;
+esac
+
+# Request port forwarding if action_port is set or no other action is
+if test "$action_port"; then
+    client_id=$(cat $PIA_CLIENT_ID_FILE 2>/dev/null)
+    if [[ -z "$client_id" ]] || [[ "$action_port" == "portfwd" ]]; then
+        client_id=$(new_client_id)
+    fi
+    [[ -z "$FORCE" ]] && check_ovpn
+    request_port $client_id
+    unset client_id action_port
+fi
+
 
 exit 0
