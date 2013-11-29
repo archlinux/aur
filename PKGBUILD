@@ -2,7 +2,7 @@
 
 pkgname=python2-cssmin
 _pythonname=cssmin
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 arch=('any')
 license=('MIT' 'BSD')
@@ -11,7 +11,7 @@ depends=('python2')
 url='https://github.com/zacharyvoase/cssmin'
 source=("http://pypi.python.org/packages/source/c/${_pythonname}/${_pythonname}-${pkgver}.tar.gz"
 	"https://raw.github.com/zacharyvoase/${_pythonname}/v${pkgver}/LICENSE")
-md5sums=('b9149b8a58e70cac5f7972b0dcce776f'
+md5sums=('c2798658a4f69663365a3e70c3b8250b'
          '7f9dbc2d22a3975e22fd6ce0f3d6268f')
 
 build() {
