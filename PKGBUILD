@@ -9,7 +9,7 @@ _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 
 pkgname=backports-patched
-pkgver=3.12_1
+pkgver=3.12.1_1
 _upver="${pkgver//_/-}"
 pkgrel=6
 pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
@@ -24,7 +24,7 @@ install=backports.install
 source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%-*}/backports-${_upver}.tar.xz")
 # Snapshot:
 #source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-sha256sums=('9833d43dc676eb0029b452e13a3eb24d89b5a5c065e39b9d71b1a023cc3c2b84')
+sha256sums=('133c8d5feba700e311da3ac0591a20b2e2f8b40634b96e9fbfe154239d713061')
 
 # Check for daily pkgver eg. 20370718
 date -d "$pkgver" > /dev/null 2>&1
@@ -112,7 +112,7 @@ build() {
     tty -s # Checks if user input is accesssible, otherwise fail
     countdown 10 & countdown_pid=$!
     read -s -n 1 -t 10 ikey || true
-    kill $countdown_pid
+    kill -s SIGHUP $countdown_pid
     echo -e -n "\n"
     [[ "$ikey" != "i" ]] && false
     # BEGIN INTERACTIVE PART TODO: ADD OLDCONFIG OPTION WITH FILE SELECT
