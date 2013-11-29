@@ -314,7 +314,12 @@ fi
 # Every function except help needs root permissions
 check_root "$*"
 
-ARGS=$(getopt -o "adprfguscihv" -l "allow,disallow,port,refresh,pia-dns,google-dns,restore-dns,restore,force,update,setup,info,help,verbose" -n "$0" -- "$@")
+ARGS=$(getopt -o "adprfguscihv" \
+              -l "allow,disallow,\
+                  port,refresh,pia-dns,google-dns,restore-dns,\
+                  restore,force,\
+                  update,setup,info,help,verbose" \
+              -n "$0" -- "$@")
 
 [[ $? -ne 0 ]] && { usage $(basename $0); exit 1; }
 
