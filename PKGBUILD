@@ -1,13 +1,13 @@
 pkgname='dwt'
-pkgver='0.3'
+pkgver='0.4'
 pkgrel='1'
 pkgdesc='Simple no-frills terminal emulator based on VTE'
 license='MIT'
 url='https://github.com/aperezdc/dwt'
 source=( "http://people.igalia.com/aperez/files/${pkgname}-${pkgver}.tar.xz" )
-sha1sums=('8cc638054b8094465e769956c647e1477af3a56f')
+sha1sums=('a13469c32c0437b31b20ea1d77b96dca2bc685f8')
 arch=('i686' 'x86_64' 'arm')
-depends=('vte3' 'terminus-font')
+depends=('vte3')
 options=('strip' 'zipman')
 
 build () {
