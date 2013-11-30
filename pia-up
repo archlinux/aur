@@ -4,5 +4,7 @@
 pia-tools --google-dns
 # Port forward request will fail if asked too early
 (sleep 5 && pia-tools -r)&
+# Update conky
+(sleep 5 && killall -SIGUSR1 conky)&
 
 exit 0
