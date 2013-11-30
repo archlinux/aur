@@ -1,7 +1,7 @@
 pkgbase = soqt-hg
 	pkgdesc = The glue between Coin & Qt
-	pkgver = 20100809
-	pkgrel = 2
+	pkgver = 1933.e8310fe21c1b
+	pkgrel = 1
 	url = https://bitbucket.org/Coin3D/soqt
 	arch = i686
 	arch = x86_64
