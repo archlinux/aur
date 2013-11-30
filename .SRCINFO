@@ -1,28 +1,19 @@
 pkgbase = soqt-hg
-	pkgdesc = SoQt is a library which provides the glue between Coin and Qt. Provides of SoQT and SoQT-Doc
+	pkgdesc = The glue between Coin & Qt
 	pkgver = 20100809
 	pkgrel = 2
-	url = http://www.coin3d.org/lib/soqt/
+	url = https://bitbucket.org/Coin3D/soqt
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gcc
 	makedepends = doxygen
-	makedepends = coin
 	depends = coin
-	depends = qt
-	depends = libxmu
+	depends = qt4
 	provides = soqt
-	provides = soqt-doc
 	conflicts = soqt
-	conflicts = soqt-doc
-	options = !makeflags
-	source = http://hg.sim.no/SoQt/default/archive/bb2d3916586f.tar.bz2
-	source = http://hg.sim.no/SoGUI/default/archive/239bd7ae533d.tar.bz2
-	source = http://hg.sim.no/SoAnyData/default/archive/fba431fe9560.tar.bz2
-	md5sums = 32a722141d4e50d1cfafe675d5c2cc38
-	md5sums = 5e6c73f965c8f53403ccdfc6ae3f3253
-	md5sums = 5f8f5869de97eedf3f814bdc895d2676
+	options = !libtool
+	source = soqt-hg::hg+https://bitbucket.org/Coin3D/soqt
+	md5sums = SKIP
 
 pkgname = soqt-hg
 
