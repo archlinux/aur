@@ -1,7 +1,7 @@
 pkgbase = ascii-fluid-dynamics-git
 	pkgdesc = Ascii Fluid Dynamics (21st IOCCC honorable mention)
 	pkgver = 12.9befe51
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ioccc.org/2012/endoh1/hint.html
 	arch = any
 	license = Creative Commons
@@ -10,7 +10,7 @@ pkgbase = ascii-fluid-dynamics-git
 	source = wrapper
 	source = bash-completion
 	md5sums = SKIP
-	md5sums = 69d80af3d125b86cd0ba8b272ca26bed
+	md5sums = f78f39c7890e3e7acfbe2dbd0b831970
 	md5sums = 1888d55425f97bba9845a2bb0917d17e
 
 pkgname = ascii-fluid-dynamics-git
