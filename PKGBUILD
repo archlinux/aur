@@ -1,13 +1,17 @@
 pkgname=('ascii-fluid-dynamics-git')
 pkgver=12.9befe51
-pkgrel=2
+pkgrel=3
 pkgdesc="Ascii Fluid Dynamics (21st IOCCC honorable mention)"
 arch=('any')
 url="http://www.ioccc.org/2012/endoh1/hint.html"
 license=('Creative Commons')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/c00kiemon5ter/ioccc-obfuscated-c-contest.git" 'wrapper')
-md5sums=('SKIP' '69d80af3d125b86cd0ba8b272ca26bed')
+source=("${pkgname}::git+https://github.com/c00kiemon5ter/ioccc-obfuscated-c-contest.git"
+	 'wrapper'
+	 'bash-completion')
+md5sums=('SKIP'
+	 '69d80af3d125b86cd0ba8b272ca26bed'
+	 '1888d55425f97bba9845a2bb0917d17e')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -24,7 +28,9 @@ package() {
 	local destdir="${pkgdir}/usr/lib/${pkgname}"
 	install -d -m755 "${destdir}"
 	install -d -m755 "${pkgdir}/usr/bin"
+	install -d -m755 "${pkgdir}/usr/share/bash-completion/completions"
 	install -D -m644 "${srcdir}/${pkgname}/2012/endoh1"/*.{txt,c} "${destdir}/"
 	install -D -m755 "${srcdir}/${pkgname}/2012/endoh1/endoh1" "${destdir}/"
 	install -D -m755 "${srcdir}/wrapper" "${pkgdir}/usr/bin/ascii-fluid-dynamics"
+	install -D -m755 "${srcdir}/bash-completion" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }
