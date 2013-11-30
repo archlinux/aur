@@ -2,7 +2,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=wireless-regdb
-pkgver=2013.10.11
+pkgver=2013.11.27
 pkgrel=1
 pkgdesc="Central Regulatory Domain Database"
 arch=('any')
@@ -10,16 +10,26 @@ url="http://wireless.kernel.org/en/developers/Regulatory"
 backup=(etc/conf.d/wireless-regdom)
 license=('custom')
 depends=('sh')
+makedepends=('crda')
 install=wireless-regdb.install
 source=(https://www.kernel.org/pub/software/network/wireless-regdb/${pkgname}-${pkgver}.tar.xz
         crda.conf.d)
-sha256sums=('fdf2ad0b09dc820946dbd2816c2e7add3505f2ffe9022e0093ab702dc37073b9'
+sha256sums=('aa86150a367df0d6c8d875c05448c96a18c4ddf063f3e1b8c2235c2679117cc2'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b')
 
 package() {
   # Install and verify regulatory.bin file
   msg "Installing and verifying the regulatory.bin file ..."
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/regulatory.bin "${pkgdir}"/usr/lib/crda/regulatory.bin
+  # This creates a depend/makedepend loop:
+  # crda depends on wireless-regdb (but strictly doesn't makedepend on it)
+  # wireless-regdb makedepends on crda
+  if /usr/bin/regdbdump "${pkgdir}"/usr/lib/crda/regulatory.bin > /dev/null; then
+    msg "Regulatory database verification was succesful."
+  else
+    error "Regulatory database verification failed."
+    return 1
+  fi
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/linville.key.pub.pem "${pkgdir}"/usr/lib/crda/pubkeys/linville.key.pub.pem
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/wireless-regdb/LICENSE
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/regulatory.bin.5 "${pkgdir}"/usr/share/man/man5/regulatory.bin.5
