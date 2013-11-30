@@ -1,0 +1,32 @@
+# CPAN Name  : List::Gen
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl module providing functions for generating lists'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+options=(!emptydirs)
+depends=('perl>=5.8.6')
+source=([% source %])
+md5sums=('[% md5sums %]')
+
+build() {
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	perl Build
+}
+
+check() {
+	cd [% distdir %]
+	perl Build test
+}
+
+package() {
+	cd [% distdir %]
+	perl Build install
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
