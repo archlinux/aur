@@ -1,0 +1,18 @@
+#!/bin/bash
+
+libdir=/usr/lib/ascii-fluid-dynamics-git
+
+files=()
+for arg; do
+	 if [ -f "$arg" ]; then
+		  files+=("$arg")
+	 elif [ -f "$libdir/$arg" ]; then
+		  files+=("$libdir/$arg")
+	 else
+		  echo "Unknown arg: $arg"
+	 fi
+done
+
+for file in "${files[@]}"; do
+	 "$libdir/endoh1" < "$file"
+done
