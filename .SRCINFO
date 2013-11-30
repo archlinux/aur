@@ -13,6 +13,12 @@ pkgbase = soqt-hg
 	conflicts = soqt
 	options = !libtool
 	source = soqt-hg::hg+https://bitbucket.org/Coin3D/soqt
+	source = hg+https://bitbucket.org/Coin3D/generalmsvcgeneration
+	source = hg+https://bitbucket.org/Coin3D/soanydata
+	source = hg+https://bitbucket.org/Coin3D/sogui
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = soqt-hg

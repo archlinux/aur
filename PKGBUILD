@@ -10,8 +10,11 @@ makedepends=('doxygen')
 provides=('soqt')
 conflicts=('soqt')
 options=('!libtool')
-source=("${pkgname}::hg+https://bitbucket.org/Coin3D/soqt")
-md5sums=('SKIP')
+source=("${pkgname}::hg+https://bitbucket.org/Coin3D/soqt"
+	 "hg+https://bitbucket.org/Coin3D/generalmsvcgeneration"
+	 "hg+https://bitbucket.org/Coin3D/soanydata"
+	 "hg+https://bitbucket.org/Coin3D/sogui")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
