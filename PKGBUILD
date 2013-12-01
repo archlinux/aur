@@ -1,6 +1,6 @@
 pkgname=('ascii-fluid-dynamics-git')
 pkgver=12.9befe51
-pkgrel=5
+pkgrel=6
 pkgdesc="Ascii Fluid Dynamics (21st IOCCC honorable mention)"
 arch=('any')
 url="http://www.ioccc.org/2012/endoh1/hint.html"
@@ -34,5 +34,5 @@ package() {
 	install -D -m755 "${srcdir}/${pkgname}/2012/endoh1/endoh1" "${destdir}/"
 	install -D -m755 "${srcdir}/${pkgname}/2012/endoh1/endoh1_color" "${destdir}/"
 	install -D -m755 "${srcdir}/wrapper" "${pkgdir}/usr/bin/ascii-fluid-dynamics"
-	install -D -m644 "${srcdir}/bash-completion" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+	install -D -m644 "${srcdir}/bash-completion" "${pkgdir}/usr/share/bash-completion/completions/ascii-fluid-dynamics"
 }
