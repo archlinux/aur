@@ -2,7 +2,7 @@ _ascii-fluid-dynamics() {
 	 pushd /usr/lib/ascii-fluid-dynamics-git &>/dev/null
 	 shopt -s dotglob
 	 local things=(*)
-	 COMPREPLY=( $(compgen -W "${things[*]}" -- "${COMP_WORDS[COMP_CWORD]}") )
+	 COMPREPLY=( $(compgen -W "--color ${things[*]}" -- "${COMP_WORDS[COMP_CWORD]}") )
 	 popd &>/dev/null
 }
 

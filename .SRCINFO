@@ -11,7 +11,7 @@ pkgbase = ascii-fluid-dynamics-git
 	source = bash-completion
 	md5sums = SKIP
 	md5sums = f78f39c7890e3e7acfbe2dbd0b831970
-	md5sums = 1888d55425f97bba9845a2bb0917d17e
+	md5sums = f38d4cca534df7aaf78c5c2b832a04e6
 
 pkgname = ascii-fluid-dynamics-git
 

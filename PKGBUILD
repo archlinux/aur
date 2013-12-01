@@ -11,7 +11,7 @@ source=("${pkgname}::git+https://github.com/c00kiemon5ter/ioccc-obfuscated-c-con
 	 'bash-completion')
 md5sums=('SKIP'
 	 'f78f39c7890e3e7acfbe2dbd0b831970'
-	 '1888d55425f97bba9845a2bb0917d17e')
+	 'f38d4cca534df7aaf78c5c2b832a04e6')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
