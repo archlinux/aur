@@ -1,6 +1,6 @@
 pkgname=('ascii-fluid-dynamics-git')
 pkgver=12.9befe51
-pkgrel=6
+pkgrel=7
 pkgdesc="Ascii Fluid Dynamics (21st IOCCC honorable mention)"
 arch=('any')
 url="http://www.ioccc.org/2012/endoh1/hint.html"
