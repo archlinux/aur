@@ -57,7 +57,7 @@ prepare() {
   tty -s && {
     countdown 10 & countdown_pid=$!
     read -s -n 1 -t 10 ikey || true
-    kill $countdown_pid
+    kill -s SIGHUP $countdown_pid
     echo -e -n "\n"
   }
 
