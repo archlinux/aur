@@ -15,11 +15,18 @@ source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/$pkgver/$pkgname-$pkgver
 sha256sums=('2a7832541a0306b3d4eb63a1cf8978d7bbfc7927e9304473fe801d71fd99736c'
             '1addebc552e4374f3f9ee778fb734c08c1ed3a4b2b5e70905f7c9287c9b34882')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # Port to glib 2.32
+  patch -Np1 -i "$srcdir/regexxer-glib2.32.patch"
+
+  # Don't try to compile GSettings schemas when packaging
+  sed -i '/GLIB_COMPILE_SCHEMAS/ d' Makefile.in
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i "$srcdir/regexxer-glib2.32.patch"
-  sed -i '/GLIB_COMPILE_SCHEMAS/ d' Makefile.in
-
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-schemas-compile
   make
@@ -27,6 +34,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
   make DESTDIR="$pkgdir/" install
 }
