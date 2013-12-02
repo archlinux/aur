@@ -3,7 +3,7 @@
 
 pkgname=unarchiver
 epoch=1
-pkgver=1.7
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="unar and lsar: Objective-C tools for uncompressing archive files"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('gnustep-base' 'openssl' 'bzip2' 'icu' 'gcc-libs' 'zlib')
 makedepends=('gcc-objc')
 source=("http://theunarchiver.googlecode.com/files/unar${pkgver}_src.zip"
         "native_obj_exceptions.patch")
-sha1sums=('e34760d3806fbf3f1358485ccadf51bd5c7f81be'
+sha1sums=('fe052cd7042651cccc7ba0e9c4d6d7dba5102fd4'
           'b8024026607dc2de758479b73d8b01ca6f692b59')
 
 prepare(){
