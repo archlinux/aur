@@ -3,7 +3,7 @@
 
 pkgname=cmake
 pkgver=2.8.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
         "findfreetype.patch")
 md5sums=('9d38cd4e2c94c3cea97d0e2924814acc'
-         '327193131a09aba0caba52716cf76dd2')
+         '90321de1d9d46cd8d6609d0509dbd7b0')
 
 build() {
   cd ${pkgname}-${pkgver}
