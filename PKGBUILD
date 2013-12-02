@@ -12,11 +12,15 @@ depends=('curl' 'libarchive' 'shared-mime-info')
 makedepends=('qt4' 'emacs')
 optdepends=('qt4: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9d38cd4e2c94c3cea97d0e2924814acc')
+source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
+        "findfreetype.patch")
+md5sums=('9d38cd4e2c94c3cea97d0e2924814acc'
+         '327193131a09aba0caba52716cf76dd2')
 
 build() {
   cd ${pkgname}-${pkgver}
+
+  patch -Np1 < ${srcdir}/findfreetype.patch
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
