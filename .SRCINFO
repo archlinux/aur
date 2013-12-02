@@ -1,7 +1,7 @@
 pkgbase = redshift-minimal
 	pkgdesc = Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies..
-	pkgver = 1.7
-	pkgrel = 6
+	pkgver = 1.8
+	pkgrel = 1
 	url = http://jonls.dk/redshift/
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = redshift-minimal
 	depends = libxxf86vm
 	provides = redshift
 	conflicts = redshift
-	source = https://launchpad.net/redshift/trunk/1.7/+download/redshift-1.7.tar.bz2
-	md5sums = c56512afa292b5a94b715ed4a1841d4c
+	source = https://github.com/jonls/redshift/archive/v1.8.tar.gz
+	md5sums = 8f81b58da2bbe7b62092c3b473f3d9a5
 
 pkgname = redshift-minimal
 
