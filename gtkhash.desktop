@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=gtkhash
+Exec=gtkhash
+Icon=calc
+Terminal=false
+Categories=Utility;GNOME;GTK;

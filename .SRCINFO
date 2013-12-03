@@ -1,0 +1,22 @@
+pkgbase = gtkhash
+	pkgdesc = A GTK+ utility for computing message digests or checksums.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://gtkhash.sourceforge.net/
+	install = gtkhash.install
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = GPL
+	makedepends = intltool
+	depends = gtk2
+	depends = dconf
+	source = http://downloads.sourceforge.net/gtkhash/gtkhash-0.7.0.tar.xz
+	source = gtkhash.desktop
+	md5sums = f80567fdd8c4435e03b837d54f38f1bb
+	md5sums = SKIP
+	sha256sums = 161d4f27f2d412c8cb3f566ca3aa8144942bbf836c18bcb1e5f79451e6f5dfdd
+	sha256sums = SKIP
+
+pkgname = gtkhash
+
