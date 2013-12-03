@@ -9,7 +9,7 @@ pkgdesc="Web-based application helping to implement the 'Getting things done' me
 arch=('any')
 url=("http://www.getontracks.org/")
 license=('GPL')
-makedepends=('ruby-bundler' 'sqlite')
+makedepends=('libmariadbclient' 'libxml2' 'libxslt'  'ruby-bundler' 'sqlite')
 backup=('usr/share/webapps/tracks/config/database.yml'
         'usr/share/webapps/tracks/config/site.yml'
         'usr/share/webapps/tracks/db/tracks.sqlite3.db')
