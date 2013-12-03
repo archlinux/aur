@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Scavenger (Fullscreen)
+Comment=Fun 2D arcade/thinking game very much like Lode Runner
+Exec=scavenger
+Icon=scavenger
+Terminal=false
+Categories=Game;ArcadeGame;

@@ -1,0 +1,18 @@
+pkgbase = scavenger
+	pkgdesc = 2D arcade/thinking game like Lode Runner (SDL version)
+	pkgver = 145.1
+	pkgrel = 2
+	url = http://www.xdr.com/dash/scavenger.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	source = http://downloads.sourceforge.net/sdlscavenger/sdlscav-145.1_2010_11_5.tgz
+	source = scavenger.desktop
+	source = scavenger-fs.desktop
+	md5sums = 995dc8b6b1792e1c2c9ec253bcfafbfe
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = scavenger
+
