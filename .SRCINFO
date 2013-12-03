@@ -1,9 +1,8 @@
 pkgbase = xrick
-	pkgdesc = A clone of Rick Dangerous
+	pkgdesc = Clone of Rick Dangerous, a classic platform game
 	pkgver = 021212
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.bigorno.net/xrick
-	install = xrick.install
 	arch = i686
 	arch = x86_64
 	license = custom: spirit of GPL
@@ -12,13 +11,10 @@ pkgbase = xrick
 	depends = zlib
 	source = http://www.bigorno.net/xrick/xrick-021212.zip
 	source = xrick.desktop
-	source = xrick.install
-	md5sums = 6a56d23679f51c602b285642c6451fb6
-	md5sums = 4b7d95acef1c6c14527d7d3a7f702ebc
-	md5sums = a2be0f43954eb8a37dd807435e843ab1
+	source = xrick-fs.desktop
 	sha256sums = 2a167169ccdb2c108e97d5d021da9be29356d756283f1c20d5a7ad121b4accf0
-	sha256sums = 9bf9d3f063dc0cc5ce256cc2fd3475512628d68a5efcf87f4a64878956d8bba0
-	sha256sums = e8577e66ae08d597d908eb0d04792c890b04f7ecd463f9d601d2b244e04614d2
+	sha256sums = 3dda77a8017e35767c8339fb92ce0a554912c98af33fb75e986ca1d30d40c320
+	sha256sums = 5d8c57aeb0b4e445576f86aaa8b851315c4c31d03544f7ad4b95c9507551a625
 
 pkgname = xrick
 

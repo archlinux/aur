@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=xrick
-Exec=xrick
+Name=xrick (Fullscreen)
+Exec=xrick -fullscreen
 Icon=xrick
 Comment=Rick Dangerous game clone
 Terminal=false
