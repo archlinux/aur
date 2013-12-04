@@ -6,7 +6,7 @@
 
 pkgname=synergy
 pkgver=1.4.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -56,6 +56,6 @@ package() {
 
   # install desktop/icon stuff
   cd ../res
-  install -Dm644 "synergy.ico" "$pkgdir/usr/share/pixmaps/synergy.ico"
+  install -Dm644 "synergy.ico" "$pkgdir/usr/share/icons/synergy.ico"
   install -Dm644 "synergy.desktop" "$pkgdir/usr/share/applications/synergy.desktop"
 }
