@@ -2,8 +2,8 @@
 # Contributor: Tom Kuther <gimpel@sonnenkinder.org>
 
 pkgname=snapper
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('i686' 'x86_64')
 url="http://snapper.io"
@@ -11,14 +11,8 @@ license=('GPL2')
 depends=('btrfs-progs' 'libxml2' 'dbus' 'boost-libs')
 makedepends=('boost' 'lvm2' 'libxslt' 'docbook-xsl' 'pam' 'git')
 backup=('etc/conf.d/snapper')
-source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2"
-        'libbtrfs.patch')
+source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2")
 options=(!libtool)
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 -i "$srcdir"/libbtrfs.patch
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -55,7 +49,9 @@ package() {
 
   make DESTDIR="$pkgdir" install
   install -Dm644 data/sysconfig.snapper "$pkgdir"/etc/conf.d/snapper
+
+  rm -f "$pkgdir"/etc/snapper/zypp-plugin.conf
+  rm -f "$pkgdir"/usr/share/man/man*/snapper-zypp-plugin.*.gz
 }
 
-sha256sums=('fcb8d98aa36021970b214a2b6ea85f86aa29e107559bf677226e2e4ade2c6ed0'
-            '0d0289e7448a357c78450f6690d684fef0e889921be152038a73401d37294317')
+sha256sums=('989a261411b7bf4f23373222402c37764e4f1714e301a8e9e396bb92a74e0539')
