@@ -37,8 +37,8 @@ check() {
 package() {
   cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -d $pkgdir/usr/share/doc/$_pkgname
-  install -m644 -t $pkgdir/usr/share/doc/$_pkgname AUTHORS CHANGES.* COPYING README.*
+  install -d "$pkgdir/usr/share/doc/$_pkgname"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname" AUTHORS CHANGES.* COPYING README.*
 }
 
 # vim:set ts=2 sw=2 et:
