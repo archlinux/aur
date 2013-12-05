@@ -5,7 +5,7 @@
 pkgname=elementary-git
 _pkgname=${pkgname%-*}
 true && pkgname=('elementary-git' 'elementary_test-git')
-pkgver=1.8.0alpha2.8868.65f37f9
+pkgver=1.8.99.8943.e5d4dad
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ package_elementary-git() {
   install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
   install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
   install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
-  
+
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
@@ -67,7 +67,7 @@ package_elementary-git() {
   rm -rf "$pkgdir/usr/bin/"elementary_test
   rm -rf "$pkgdir/usr/lib/elementary/modules/"{test_entry,test_map}
   rm -rf "$pkgdir/usr/share/applications/elementary_test.desktop"
-  rm -rf "$pkgdir/usr/share/elementary/"{images,objects}
+  rm -rf "$pkgdir/usr/share/elementary/"{examples,images,objects}
 }
 
 package_elementary_test-git() {
