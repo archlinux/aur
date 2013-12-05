@@ -1,0 +1,23 @@
+pkgbase = gtkhash-git
+	pkgdesc = A GTK+ utility for computing message digests or checksums (development version).
+	pkgver = 0.7.0.4.ga01ad64
+	pkgrel = 1
+	url = http://gtkhash.sourceforge.net/
+	install = gtkhash.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = nemo
+	depends = dconf
+	depends = gtk3
+	optdepends = nemo: filemanager plugin
+	provides = gtkhash
+	conflicts = gtkhash
+	source = gtkhash::git://github.com/tristanheaven/gtkhash.git
+	source = gtkhash.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = gtkhash-git
+
