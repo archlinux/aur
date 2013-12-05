@@ -1,0 +1,33 @@
+pkgbase = docker-git
+	pkgdesc = Pack, ship and run any application as a lightweight container
+	pkgver = 0.7.0.dev.4905.a8e99d9
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/dotcloud/docker
+	install = docker.install
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = device-mapper
+	depends = bridge-utils
+	depends = iproute2
+	depends = device-mapper
+	depends = lxc
+	depends = sqlite
+	depends = systemd
+	provides = docker
+	conflicts = docker
+	conflicts = lxc-docker
+	replaces = lxc-docker-git
+	options = !strip
+	source = git+https://github.com/dotcloud/docker.git
+	source = docker.service
+	source = docker.install
+	md5sums = SKIP
+	md5sums = 3f7ccab915fb1942f06e18946c2811d2
+	md5sums = 1a8e60447794b3c4f87a2272cc9f144f
+
+pkgname = docker-git
+
