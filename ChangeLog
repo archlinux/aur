@@ -1,3 +1,25 @@
+2013-11-25 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.3.1_beta1-1
+	Version bump.
+
+	Upstream changelog:
+	- Force consistent coloring and random CTM between top and bottom half of double_plant blocks.
+	- Fixed CTM problems with metadata 15.
+	- Fixed custom grass, foliage.png always using the vanilla format.
+	- Fixed beacon particle effects transparency.
+	- Support texture.* syntax in CIT type=enchantment.
+	- Added yOffset property to grid format colormap.
+	- Fixed Test Minecraft button with 13w47e.
+	- Fixed crash with zan's minimap.
+	- Fixed transparency issues with 13w47e.
+	- Fixed CIT ignoring weight property in some cases.
+	- Allow CIT matching of damage as a % of max in addition to an absolute value.
+	- Preserve Mojang's hard-coded biome colors for packs with no grass, foliage.png.
+	- Fix inconsistent water particle colors.
+	- Ignore neighbor's metadata when checking connect=material.
+	- New property enableColormap.3 to enable custom colormaps during render pass 3.
+
 2013-11-17 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.3.0-1
