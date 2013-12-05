@@ -1,3 +1,12 @@
+2013-11-28 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.5_beta_1-1 :
+	Version bump.
+
+	Upstream changelog (since 3.5-test-build):
+	- Fixed a bug where Mega Spruce Tiaga would show up as black if you changed the color profile. (Note: This will require any custom profiles you've made to also include a "Mega Spruce Tiaga (Hills)" entry, as the issue was from having Mega Spruce Tiaga link to two biomes)
+	- Added library loading based on the jar's json file. (Note: If no json file is found, no libraries will be loaded... this may be changed in the future. Additionally, lwjgl, jinput, and any OS requirements are currently ignored)
+
 2013-09-29 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.4-1 :
