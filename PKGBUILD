@@ -2,7 +2,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 _pkgname=isrcsubmit
 pkgname=$_pkgname-git
-pkgver=2.0.0.beta.5.30.g5608084
+pkgver=2.0.0.beta.5.42.g30437eb
 pkgver(){
   cd "$srcdir/$pkgname"
   git describe --tags --long | sed 's/-/./g;s/^v//'
@@ -14,6 +14,9 @@ url="https://github.com/JonnyJD/musicbrainz-isrcsubmit"
 license=('GPL3')
 depends=('python' 'python-musicbrainzngs>=0.4' 'python-discid>=1.0.0')
 makedepends=('git' 'python-setuptools' 'python-sphinx')
+optdepends=(
+  "python-keyring: Keyring integration."
+)
 provides=('isrcsubmit')
 conflicts=('isrcsubmit')
 replaces=('isrcsubmit-python2-git' 'isrcsubmit-python-git')
