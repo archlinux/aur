@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkcompactdisc
-pkgver=4.11.3
+pkgver=4.11.4
 pkgrel=1
 pkgdesc="A library for interfacing with CDs"
 url='https://projects.kde.org/projects/kde/kdemultimedia/libkcompactdisc'
@@ -12,7 +12,7 @@ makedepends=('cmake' 'automoc4')
 replaces=('kdemultimedia-kioslave')
 conflicts=('kdemultimedia-kioslave')
 source=("http://download.kde.org/stable/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('e8c3e8efe5454538a7e7538355d099ebdbf6ac2b')
+sha1sums=('72c1b8a8f31433c3f0b3b60a5bb4a911ce6649fa')
 
 build() {
   cd "${srcdir}"
