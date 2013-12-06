@@ -1,7 +1,7 @@
 #!/bin/bash
 # Description: Script to automate privateinternetacces port forwarding and
 # starting/stopping transmission when connected/disconnected and other stuff
-# Version: 0.9.6
+# Version: 0.9.7
 # Author: Philipp Schmitt (philipp<at>schmitt.co)
 # Documentation: cf. pia-tools.groff
 # Dependencies: transmission-daemon openvpn systemd sudo wget ufw unzip
@@ -46,7 +46,7 @@ if [[ -z "$VIRT_NET_DEV" ]]; then
     VIRT_NET_DEV='tun0'
 fi
 
-function usage() {
+usage() {
     echo "Usage: $1 [-p|r] [-a|d] [-u] [-c] [-h]"
     echo "-p: Request new port"
     echo "-r: Refresh (request port forwarding again) [default]"
@@ -61,21 +61,21 @@ function usage() {
 }
 
 # Checks if executed as root. If not reinvoke self with sudo
-function check_root() {
+check_root() {
     if [[ $EUID -ne 0 ]]; then
         if test "$VERBOSE"; then
             echo -e "This script must be run as root\nInvoking sudo -- $0 $*" 1>&2
         fi
-        exec sudo -- $0 $*
+        exec sudo -- "$0" "$@"
     fi
 }
 
-function check_transmission() {
+check_transmission() {
     systemctl is-active transmissiond > /dev/null 2>&1
 }
 
 # Checks if the OpenVPN service is running
-function check_ovpn() {
+check_ovpn() {
     local ovpnd="$(systemctl -t service | grep 'pia@.* active')"
     if [[ -z "$ovpnd" ]]; then
         echo 'OpenVPN service not running !' >&2
@@ -92,7 +92,7 @@ function check_ovpn() {
     fi
 }
 
-function info() {
+info() {
     local vpn_exit="$(systemctl -t service | grep 'pia@.* active' \
                     | awk '{ print $NF }')"
     if check_ovpn; then
@@ -107,26 +107,26 @@ function info() {
     fi
 }
 
-function _ufw_port_allowed() {
+_ufw_port_allowed() {
     ufw status | grep -E "^$1\s+ALLOW" > /dev/null
 }
 
 # Delete previous rule from ufw
-function _ufw_delete_rule() {
+_ufw_delete_rule() {
     if test "$1" && _ufw_port_allowed "$1"; then
-        ufw delete allow $1
+        ufw delete allow "$1"
     fi
 }
 
 # Add a new rule to ufw
-function _ufw_add_new_rule () {
+_ufw_add_new_rule () {
     if test "$1" && ! _ufw_port_allowed "$1"; then
-        ufw allow $1
+        ufw allow "$1"
     fi
 }
 
 # Update ufw rules
-function ufw_update() {
+ufw_update() {
     # Check if ufw is running
     systemctl is-active ufw > /dev/null 2>&1 || return 1
     echo -n "Updating UFW rules... "
@@ -136,21 +136,21 @@ function ufw_update() {
     echo 'Done!'
 }
 
-function ufw_allow_non_vpn() {
+ufw_allow_non_vpn() {
     echo -n 'Allowing non-VPN traffic ... '
     ufw delete deny out on $NET_DEV > /dev/null 2>&1
     ufw delete deny in on $NET_DEV > /dev/null 2>&1
     echo 'Done!'
 }
 
-function ufw_deny_non_vpn() {
+ufw_deny_non_vpn() {
     echo -n 'Denying non-VPN traffic ... '
     ufw deny out on $NET_DEV > /dev/null 2>&1
     ufw deny in on $NET_DEV > /dev/null 2>&1
     echo 'Done!'
 }
 
-function transmission_peer_port_update() {
+transmission_peer_port_update() {
     local transmission_peer_port="$(grep 'peer-port\"' $TRANSMISSION_SETTINGS_FILE | grep -Eo '[0-9]+')"
     echo -n "Updating transmission's listening port... "
     # Check if transmission is running
@@ -169,7 +169,7 @@ function transmission_peer_port_update() {
         if test "$PIA_OPEN_PORT_NEW" && \
            [[ "$PIA_OPEN_PORT_NEW" != "$transmission_peer_port" ]]; then
             echo "Writing new peer port to transmission's settings.json..."
-            sed -i 's/\(\"peer-port\":\).*,/\1 '$PIA_OPEN_PORT_NEW',/' $TRANSMISSION_SETTINGS_FILE
+            sed -i 's/\(\"peer-port\":\).*,/\1 '"$PIA_OPEN_PORT_NEW"',/' "$TRANSMISSION_SETTINGS_FILE"
         fi
         check_ovpn && systemctl restart transmissiond
     fi
@@ -177,18 +177,18 @@ function transmission_peer_port_update() {
 }
 
 # Return a new client ID
-function new_client_id() {
+new_client_id() {
     head -n 100 /dev/urandom | md5sum | tr -d " -" | tee $PIA_CLIENT_ID_FILE
 }
 
-function request_port() {
+request_port() {
     local username="$(head -1 $PIA_PASSWD_FILE)"
     local passwd="$(tail -1 $PIA_PASSWD_FILE)"
     local local_vpn_ip="$(ip addr show $VIRT_NET_DEV | grep inet | awk '{ print $2 }')"
     local client_id="$1"
     [[ -z "$local_vpn_ip" ]] && local_vpn_ip=$LOCAL_IP
     echo -n "Updating port forwarding... "
-    if test $VERBOSE; then
+    if test "$VERBOSE"; then
         echo "Username: $username"
         echo "Client ID: $client_id"
         echo "VPN local IP: $local_vpn_ip"
@@ -211,7 +211,7 @@ function request_port() {
    fi
 }
 
-function setup() {
+setup() {
     if [[ -e $PIA_PASSWD_FILE ]]; then
         echo -en "$PIA_PASSWD_FILE exits.\nRemove it? (y|N) "
         read delete
@@ -235,7 +235,7 @@ function setup() {
     echo "# systemctl start pia@Sweden"
 }
 
-function update_config() {
+update_config() {
     echo -n 'Updating configuration... '
     local ovpn ovpn_spaceless
 
@@ -249,55 +249,55 @@ function update_config() {
     # Replace space by underscore in filenames
     local ifs_bak=$IFS
     IFS=$(echo -en "\n\b")
-    for ovpn in $(ls $PIA_CONFIG_DIR/*.ovpn); do
+    for ovpn in "$PIA_CONFIG_DIR"/*.ovpn; do
         # Rename files so that do not contain spaces
-        ovpn_spaceless="$(sed 's/ /_/g' <<< $ovpn)"
+        ovpn_spaceless=$(sed 's/ /_/g' <<< "$ovpn")
         if [[ "$ovpn" != "$ovpn_spaceless" ]]; then
             mv "$ovpn" "$ovpn_spaceless"
         fi
         # Append up/down scripts to every ovpn file
-        cat $PIA_COMMON_CONFIG  >> $ovpn_spaceless
+        cat "$PIA_COMMON_CONFIG"  >> "$ovpn_spaceless"
     done
     IFS=$ifs_bak
 
     # Extract server addresses and resolve hosts
-    grep -h "remote " $PIA_CONFIG_DIR/*.ovpn | cut -d ' ' -f 2 \
-        | sort -u > $PIA_SERVERS_FILE
-    cat $PIA_SERVERS_FILE | nslookup | grep Address | grep -v "192.168.1.1" \
-        | awk '{ print $2 }' > $PIA_SERVERS_IP_FILE
+    grep -h "remote " "$PIA_CONFIG_DIR"/*.ovpn | cut -d ' ' -f 2 \
+        | sort -u > "$PIA_SERVERS_FILE"
+    cat "$PIA_SERVERS_FILE" | nslookup \
+        | sed -n 's/Address: \(.*\)/\1/gp' > "$PIA_SERVERS_IP_FILE"
 
     # why is following dig cmd failing randomly ?
     #dig -f /tmp/piaservers A +short | sort > $PIA_SERVERS_IP_FILE
     echo 'Done!'
 }
 
-function _dns() {
+_dns() {
     local resolv=/etc/resolv.conf
     local resolv_bak=/etc/resolv.conf.orig
 
     if [[ ! -e $resolv_bak ]]; then
         if mv $resolv $resolv_bak; then
-            test $VERBOSE && echo "Backed up $resolv to $resolv_bak"
+            test "$VERBOSE" && echo "Backed up $resolv to $resolv_bak"
         fi
     fi
     echo -n "Updating $resolv file... "
-    echo "# Generated by $(basename $0)" > $resolv
-    for dns in $@; do
-        echo "nameserver $dns" >> $resolv
+    echo "# Generated by $(basename $0)" > "$resolv"
+    for dns in "$@"; do
+        echo "nameserver $dns" >> "$resolv"
     done
     echo 'Done!'
-    test $VERBOSE && echo -e "New $resolv:\n$(cat $resolv)"
+    test "$VERBOSE" && echo -e "New $resolv:\n$(cat $resolv)"
 }
 
-function pia_dns() {
+pia_dns() {
     _dns '4.2.2.1' '4.2.2.2'
 }
 
-function google_dns() {
+google_dns() {
     _dns '8.8.8.8' '8.8.4.4'
 }
 
-function restore_dns() {
+restore_dns() {
     if [[ ! -f /etc/resolv.conf.orig ]]; then
         echo "Could not find a resolv.conf.orig" >&2
         return 1
@@ -321,49 +321,49 @@ ARGS=$(getopt -o "adprfguscihv" \
                   update,setup,info,help,verbose" \
               -n "$0" -- "$@")
 
-[[ $? -ne 0 ]] && { usage $(basename $0); exit 1; }
+[[ $? -ne 0 ]] && { usage "$(basename $0)"; exit 1; }
 
 eval set -- "$ARGS"
 
 while true; do
     case "$1" in
         -a|--allow)
-            test $action_fw && exit 1
+            test "$action_fw" && exit 1
             action_fw=allow
             shift
             ;;
         -d|--disallow)
-            test $action_fw && exit 1
+            test "$action_fw" && exit 1
             action_fw=disallow
             shift
             ;;
         -p|--port)
-            test $action_port && exit 1
+            test "$action_port" && exit 1
             action_port=portfwd
             shift
             ;;
         -r|--refresh)
-            test $action_port && exit 1
+            test "$action_port" && exit 1
             action_port=refresh
             shift
             ;;
         -g|--pia-dns)
-            test $action_dns && exit 1
+            test "$action_dns" && exit 1
             action_dns=pia
             shift
             ;;
         --google-dns)
-            test $action_dns && exit 1
+            test "$action_dns" && exit 1
             action_dns=google
             shift
             ;;
         --restore-dns)
-            test $action_dns && exit 1
+            test "$action_dns" && exit 1
             action_dns=restore
             shift
             ;;
         --restore)
-            test $action_dns && exit 1
+            test "$action_dns" && exit 1
             action_dns=restore
             action_check=1
             shift
@@ -407,11 +407,11 @@ done
 [[ -n $2 ]] && VIRT_NET_DEV=$1
 [[ -n $4 ]] && LOCAL_IP=$4
 
-test $action_help && { usage $(basename $0); exit $?; }
-test $action_info && { info; exit $?; }
-test $action_setup && { setup; exit $?; }
-test $action_update && update_config
-test $action_check && check_ovpn
+test "$action_help" && { usage "$(basename $0)"; exit $?; }
+test "$action_info" && { info; exit $?; }
+test "$action_setup" && { setup; exit $?; }
+test "$action_update" && update_config
+test "$action_check" && check_ovpn
 
 case "$action_dns" in
     google) google_dns ;;
@@ -427,12 +427,12 @@ esac
 
 # Request port forwarding if action_port is set or no other action is
 if test "$action_port"; then
-    client_id=$(cat $PIA_CLIENT_ID_FILE 2>/dev/null)
+    client_id="$(cat $PIA_CLIENT_ID_FILE 2>/dev/null)"
     if [[ -z "$client_id" ]] || [[ "$action_port" == "portfwd" ]]; then
         client_id=$(new_client_id)
     fi
     [[ -z "$FORCE" ]] && check_ovpn
-    request_port $client_id
+    request_port "$client_id"
     unset client_id action_port
 fi
 
