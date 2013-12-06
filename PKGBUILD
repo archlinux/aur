@@ -1,7 +1,7 @@
 _hkgname=codec-mbox
 pkgname=haskell-${_hkgname}
-pkgver=0.1.0.0
-pkgrel=2
+pkgver=0.2.0.0
+pkgrel=1
 pkgdesc="A library to read and write mailboxes in mbox format"
 url="http://hackage.haskell.org/package/${_hkgname}"
 _licensefile=LICENSE
@@ -12,7 +12,7 @@ depends=("ghc" "haskell-fclabels>=1.0")
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=("a9022f0196d8cb907cc90d83be97bd6cb7ddab7dee2eeac19d09784183623163")
+sha256sums=("94094b42a472016be310aba00f25a8f442231c9820be08539337786a9e39764d")
 
 # PKGBUILD functions
 build() {
