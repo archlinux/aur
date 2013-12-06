@@ -1,6 +1,6 @@
 _hkgname=fclabels
 pkgname=haskell-${_hkgname}
-pkgver=1.1.6
+pkgver=2.0.0.5
 pkgrel=1
 pkgdesc="First class accessor labels."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -11,7 +11,7 @@ depends=('haskell-mtl>=2.0.1.0' 'haskell-template-haskell>=2.5.0.0' 'haskell-tra
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
-sha256sums=('f3f2bc5cee6f9110bc35aa9f16115debc3632fd2ac667e5cb834a1aaf1c2bf38')
+sha256sums=('ab6149f16dd52efa91a273201c58b4343aca3c2ce3ca210bd801a56ae65ee0f5')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
