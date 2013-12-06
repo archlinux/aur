@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=phonon-gstreamer
-pkgver=4.7.0
-pkgrel=2
+pkgver=4.7.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 pkgdesc="Phonon GStreamer backend"
@@ -11,8 +11,8 @@ depends=('gstreamer0.10-base-plugins')
 makedepends=('cmake' 'automoc4' 'phonon-qt4')
 provides=('phonon-backend')
 install="${pkgname}.install"
-source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/src/phonon-backend-gstreamer-${pkgver}.tar.xz")
-md5sums=('f00a1529d43158ce9faea516814562d3')
+source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/phonon-backend-gstreamer-${pkgver}.tar.xz")
+md5sums=('7c0cfab4ec0bbe1f201503e6ccc7290a')
 
 prepare() {
   mkdir build
