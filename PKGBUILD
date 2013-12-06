@@ -1,6 +1,6 @@
 _hkgname=hsemail
 pkgname=haskell-hsemail
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="Internet Message Parsers"
 url="http://hackage.haskell.org/package/$_hkgname"
@@ -12,7 +12,7 @@ depends=("haskell-base" "sh" "haskell-mtl" "haskell-old-time" "haskell-parsec")
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=("04c486b2e8a39b9091cd43df401200526837ddc1ddf3822240e6b09f25358c6c")
+sha256sums=("25aac3890ff09812be47639ad52cd7be622dc9b193e5a0be115bda12ffcd989b")
 
 # PKGBUILD functions
 build() {
