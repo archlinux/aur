@@ -1,3 +1,31 @@
+2013-12-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 4.3.1-1
+	Version bump.
+
+	Upstream changelog:
+	- Updated for 1.7.3pre and related launcher changes.
+	- Fixed bug causing attempts to download json files for modded versions.
+	- Fixed UI hang when user closes window while patcher is busy.
+	- Force consistent coloring between top and bottom halves of double_plant blocks.
+	- New CTM property linked=true to synchronize top and bottom halves of double_plant blocks when using random CTM.
+	- Apply default grass.png to tall ferns and grass too.
+	- Fixed CTM problems with metadata 15.
+	- Fixed custom grass, foliage.png always using the vanilla format.
+	- Fixed beacon particle effects transparency.
+	- Support texture.* syntax in CIT type=enchantment.
+	- Added yOffset property to grid format colormap.
+	- Fixed crash with zan's minimap.
+	- Fixed transparency issues with 13w47e.
+	- Fixed CIT ignoring weight property in some cases.
+	- Allow CIT matching of damage as a % of max in addition to an absolute value.
+	- Preserve Mojang's hard-coded biome colors for packs with no grass, foliage.png.
+	- Fix inconsistent water particle colors.
+	- Ignore neighbor's metadata when checking connect=material.
+	- New property enableColormap.3 to enable custom colormaps during render pass 3.
+	- Fixed CTM iron bars applying default texture on top of custom one.
+	- Fixed conversion of texture packs from 1.4 to 1.5.
+
 2013-11-25 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 4.3.1_beta1-1
