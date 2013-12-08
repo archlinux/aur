@@ -71,5 +71,5 @@ package() {
   install niLicense niReg "${pkgdir}/usr/bin"
   install Sample* "${pkgdir}/usr/bin"
 
-  install libnimCodecs.so libnimMockNodes.so libnimRecorder.so libOpenNI.so "${pkgdir}/usr/lib"
+  install libnimCodecs.so libnimMockNodes.so libnimRecorder.so libOpenNI.so libOpenNI.jni.so "${pkgdir}/usr/lib"
 }
