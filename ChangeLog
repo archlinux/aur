@@ -1,3 +1,19 @@
+2013-12-08 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.6_beta_1-1 :
+	Version bump.
+
+	Upstream changelog:
+	- AMIDST will now show hidden files when using the "Open from file" option.
+	- Twitch libraries have been added to the exclude list.
+	- Attempting to load AMIDST with a missing library no longer results in a crash unless that library was required.
+	- Rendering speed has been GREATLY improved on some (most) computers.
+	- An option has been added to the biome profile menu to reload the list of profiles. (Shortcut: CTRL + B)
+	- AMIDST no longer keeps color profiles (and other json files) open after reading them.
+	- Duplicate colors in profiles are now supported.
+	- default.json now looks much cleaner when generated.
+	- Color profiles may now include an "alias" for that biome. (It will come up when you hover over the biome)
+
 2013-12-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.5-1 :
