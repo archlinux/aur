@@ -1,17 +1,16 @@
 pkgbase = econnman
 	pkgdesc = Enlightenment ConnMan user interface
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = any
 	license = LGPL3
-	depends = python2-elementary
-	depends = python2-e_dbus
-	depends = python2-edje
-	depends = python2-ecore
+	depends = python2-efl
 	depends = connman
 	source = http://packages.profusion.mobi/econnman/econnman-1.tar.gz
-	md5sums = cec2bd0aaf9d8975dd69ac6b5a4e638e
+	source = 1.8.patch
+	sha256sums = 3e2724423d6cfe24dca6bf34bbc340fb71ecf2e569346c92978593320128f02d
+	sha256sums = 2237a401f07d8a57600251959becd60c7eac6e1010862ac9a70737ed6fa06896
 
 pkgname = econnman
 
