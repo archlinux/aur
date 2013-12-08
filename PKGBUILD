@@ -4,7 +4,7 @@
 
 pkgname=openni-git
 pkgver=20130205
-pkgrel=1
+pkgrel=2
 pkgdesc="The OpenNI Framework provides the interface for physical devices and for middleware components"
 arch=('i686' 'x86_64')
 url="http://www.openni.org/"

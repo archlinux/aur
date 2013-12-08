@@ -1,7 +1,7 @@
 pkgbase = openni-git
 	pkgdesc = The OpenNI Framework provides the interface for physical devices and for middleware components
 	pkgver = 20130205
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openni.org/
 	install = openni.install
 	arch = i686
