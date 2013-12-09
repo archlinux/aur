@@ -3,7 +3,7 @@
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri-git
 _gitname=morituri
-pkgver=0.2.2.r58.ga74fd71
+pkgver=0.2.2.r60.gb461d8a
 pkgrel=1
 pkgdesc='a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy'
 arch=(i686 x86_64)
