@@ -2,25 +2,25 @@
 
 pkgname=econnman-git
 _pkgname=${pkgname%-*}
-pkgver=1.22.a9f57df
+pkgver=1.24.0551b4c
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('python-efl-git' 'connman')
+depends=('python-efl' 'connman')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
+  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  echo $_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
