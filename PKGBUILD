@@ -10,10 +10,11 @@ arch=(i686 x86_64)
 url='https://github.com/thomasvs/morituri'
 license=('GPL3')
 depends=(
-  'cdparanoia' 'cdrdao' 'gstreamer0.10'
-  'gstreamer0.10-python' 'python2-musicbrainz2'
+  'cdparanoia' 'cdrdao'
+  'gstreamer0.10' 'gstreamer0.10-python'
+  'python2-xdg' 'python2-setuptools'
 )
-makedepends=('git' 'python2-setuptools')
+makedepends=('git')
 optdepends=(
   'python2-pycdio: Drive recognition.'
   'gstreamer0.10-base-plugins: Offset detection.'
