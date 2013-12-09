@@ -48,7 +48,7 @@ build() {
 
 package() {
   cd "$_gitname"
-  make DESTDIR="$pkgdir/" install || return 1
+  make DESTDIR="$pkgdir/" install
   install -d "$pkgdir/usr/share/doc/$_gitname"
   install -m644 -t "$pkgdir/usr/share/doc/$_gitname" \
     AUTHORS ChangeLog HACKING NEWS README.md RELEASE TODO
