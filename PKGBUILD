@@ -5,23 +5,23 @@ pkgname=morituri-git
 _gitname=morituri
 pkgver=0.2.2.r58.ga74fd71
 pkgrel=1
-pkgdesc="a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy"
+pkgdesc='a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy'
 arch=(i686 x86_64)
-url="https://github.com/thomasvs/morituri"
-license=("GPL3")
+url='https://github.com/thomasvs/morituri'
+license=('GPL3')
 depends=(
-  "cdparanoia" "cdrdao" "gstreamer0.10"
-  "gstreamer0.10-python" "python2-musicbrainz2"
+  'cdparanoia' 'cdrdao' 'gstreamer0.10'
+  'gstreamer0.10-python' 'python2-musicbrainz2'
 )
 makedepends=('git' 'python2-setuptools')
 optdepends=(
-  "python2-pycdio: Drive recognition."
-  "gstreamer0.10-base-plugins: Offset detection."
-  "cddb-py: FreeDB support."
+  'python2-pycdio: Drive recognition.'
+  'gstreamer0.10-base-plugins: Offset detection.'
+  'cddb-py: FreeDB support.'
 )
 provides=('morituri')
-conflicts=("morituri" "morituri-svn")
-replaces=("morituri-svn")
+conflicts=('morituri' 'morituri-svn')
+replaces=('morituri-svn')
 changelog=ChangeLog
 source=('morituri::git+https://github.com/thomasvs/morituri.git')
 md5sums=('SKIP')
@@ -41,7 +41,7 @@ build() {
 
   ./autogen.sh
 
-  export PYTHON="python2"
+  export PYTHON='python2'
   ./configure --prefix=/usr --sysconfdir=/etc 
   make
 }
@@ -49,13 +49,13 @@ build() {
 package() {
   cd "$_gitname"
   make DESTDIR="$pkgdir/" install || return 1
-  install -Dm 0644 "AUTHORS" "$pkgdir/usr/share/doc/morituri/AUTHORS"
-  install -Dm 0644 "ChangeLog" "$pkgdir/usr/share/doc/morituri/ChangeLog"
-  install -Dm 0644 "HACKING" "$pkgdir/usr/share/doc/morituri/HACKING"
-  install -Dm 0644 "NEWS" "$pkgdir/usr/share/doc/morituri/NEWS"
-  install -Dm 0644 "README.md" "$pkgdir/usr/share/doc/morituri/README.md"
-  install -Dm 0644 "RELEASE" "$pkgdir/usr/share/doc/morituri/RELEASE"
-  install -Dm 0644 "TODO" "$pkgdir/usr/share/doc/morituri/TODO"
+  install -Dm 0644 'AUTHORS' "$pkgdir/usr/share/doc/morituri/AUTHORS"
+  install -Dm 0644 'ChangeLog' "$pkgdir/usr/share/doc/morituri/ChangeLog"
+  install -Dm 0644 'HACKING' "$pkgdir/usr/share/doc/morituri/HACKING"
+  install -Dm 0644 'NEWS' "$pkgdir/usr/share/doc/morituri/NEWS"
+  install -Dm 0644 'README.md' "$pkgdir/usr/share/doc/morituri/README.md"
+  install -Dm 0644 'RELEASE' "$pkgdir/usr/share/doc/morituri/RELEASE"
+  install -Dm 0644 'TODO' "$pkgdir/usr/share/doc/morituri/TODO"
 }
 
 # vim:set ts=2 sw=2 et:
