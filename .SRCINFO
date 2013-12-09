@@ -1,24 +1,19 @@
 pkgbase = chocolate-doom
-	pkgdesc = A Doom port reproducing the behavior of the original DOS version
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgdesc = Doom, Heretic, Hexen, Strife port accurately reproducing the originals.
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = autoconf
-	makedepends = automake
-	makedepends = python2
+	makedepends = python
 	depends = sdl
 	depends = sdl_mixer
 	depends = sdl_net
-	source = http://sourceforge.net/projects/chocolate-doom/files/chocolate-doom/1.7.0/chocolate-doom-1.7.0.tar.gz
-	source = chocolate-doom.desktop
-	source = chocolate-setup.desktop
-	sha256sums = c1cffb602e3cc3a82941b4675b9dc816a6e419076faf8f54db46df397f86bfc0
-	sha256sums = 67b077b4a57971678236fb3bfa0968d091febc81bde5516503f9a2084df560e6
-	sha256sums = 9db67a88ece98c92e551857ee19b2b3ba69f476d4869661667f5f1ed325bf69a
+	source = https://soulsphere.org/projects/chocolate-doom/2.0.0/chocolate-doom-2.0.0.tar.gz
+	sha256sums = 85c58b77dad933013253b453ef01907492b4719acd56cf8cb6c76f4a361ab60c
 
 pkgname = chocolate-doom
 
