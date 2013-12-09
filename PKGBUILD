@@ -1,7 +1,7 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _plugin_name=https-everywhere
-_plugin_version=3.4.2
+_plugin_version=3.4.3
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
 pkgrel=1
@@ -13,11 +13,11 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://www.eff.org/files/https-everywhere-${_plugin_version}.xpi")
 noextract=("https://www.eff.org/files/https-everywhere-${_plugin_version}.xpi")
-md5sums=('b2478a0e35b070a4cf9fa71685f1cc3f')
+md5sums=('9605453f61e32561cf508f08019fa1ef')
 
 package() {
   cd $srcdir
-  unzip ../https-everywhere-${_plugin_version}.xpi
+  unzip -qqo ../https-everywhere-${_plugin_version}.xpi
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
 
   local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
