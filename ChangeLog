@@ -1,3 +1,14 @@
+2013-12-09 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.6_beta_2-1 :
+	Version bump.
+
+	Upstream changelog:
+	- Added an actual error message for the elusive "Unable to find critical external class while loading." error.
+	- Biome profiles containing syntax errors will no longer cause the entire profile list to not load.
+	- Libraries correctly load based on OS and JSON rules provided.
+	- Libraries now load the ".jar" file in a directory rather than the first file.
+
 2013-12-08 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.6_beta_1-1 :
