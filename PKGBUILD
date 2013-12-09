@@ -49,13 +49,9 @@ build() {
 package() {
   cd "$_gitname"
   make DESTDIR="$pkgdir/" install || return 1
-  install -Dm 0644 'AUTHORS' "$pkgdir/usr/share/doc/morituri/AUTHORS"
-  install -Dm 0644 'ChangeLog' "$pkgdir/usr/share/doc/morituri/ChangeLog"
-  install -Dm 0644 'HACKING' "$pkgdir/usr/share/doc/morituri/HACKING"
-  install -Dm 0644 'NEWS' "$pkgdir/usr/share/doc/morituri/NEWS"
-  install -Dm 0644 'README.md' "$pkgdir/usr/share/doc/morituri/README.md"
-  install -Dm 0644 'RELEASE' "$pkgdir/usr/share/doc/morituri/RELEASE"
-  install -Dm 0644 'TODO' "$pkgdir/usr/share/doc/morituri/TODO"
+  install -d "$pkgdir/usr/share/doc/$_gitname"
+  install -m644 -t "$pkgdir/usr/share/doc/$_gitname" \
+    AUTHORS ChangeLog HACKING NEWS README.md RELEASE TODO
 }
 
 # vim:set ts=2 sw=2 et:
