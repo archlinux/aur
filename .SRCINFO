@@ -1,0 +1,15 @@
+pkgbase = lightmediascanner-git
+	pkgdesc = Lightweight library to scan media - git version
+	pkgver = 20080504
+	pkgrel = 1
+	url = http://lms.garage.maemo.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = lightmediascanner
+	conflicts = lightmediascanner
+	options = !libtool
+
+pkgname = lightmediascanner-git
+
