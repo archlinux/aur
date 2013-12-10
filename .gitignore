@@ -1,0 +1,7 @@
+pkg
+src
+*.swp
+*.swo
+*.pkg.tar.xz
+*.src.tar.gz
+dynamic-colors
