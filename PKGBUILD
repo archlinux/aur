@@ -1,7 +1,7 @@
 # Maintainer: Dave Simons <pkgs@simonsd.org> 
 
 pkgname=dynamic-colors-git
-pkgver=435af29e698702c06ed92c136e717f8ff5c878e9
+pkgver=0
 pkgrel=1
 pkgdesc="Change terminal colors on the fly"
 arch=('i686' 'x86_64')
