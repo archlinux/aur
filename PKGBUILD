@@ -14,7 +14,7 @@ license=('None')
 
 pkgver() {
   cd "$srcdir/dynamic-colors"
-  git rev-parse HEAD
+  git rev-parse --short HEAD
 }
 
 build() {
