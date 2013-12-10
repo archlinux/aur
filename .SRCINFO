@@ -5,6 +5,7 @@ pkgbase = dynamic-colors-git
 	url = https://github.com/sos4nt/dynamic-colors
 	arch = i686
 	arch = x86_64
+	license = None
 	makedepends = git
 	provides = dynamic-colors
 	source = git://github.com/sos4nt/dynamic-colors.git
