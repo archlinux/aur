@@ -4,7 +4,7 @@
 
 pkgname=gazebo
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -12,7 +12,7 @@ license=('Apache')
 # See: http://www.gazebosim.org/user_guide/installation__requirements.html
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre>=1.7.1' 'protobuf>=2.3.0' 'qt4' 'sdformat-hg'
+         'ogre-1.8' 'protobuf>=2.3.0' 'qt4' 'sdformat-hg'
          'tinyxml>=2.6.2')
 optdepends=('bullet>=2.81: Bullet support'
             'cegui-0.7>=0.7.5: Design custom graphical interfaces'
