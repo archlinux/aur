@@ -1,0 +1,14 @@
+pkgbase = dynamic-colors-git
+	pkgdesc = Change terminal colors on the fly
+	pkgver = 435af29e698702c06ed92c136e717f8ff5c878e9
+	pkgrel = 1
+	url = https://github.com/sos4nt/dynamic-colors
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	provides = dynamic-colors
+	source = git://github.com/sos4nt/dynamic-colors.git
+	md5sums = SKIP
+
+pkgname = dynamic-colors-git
+
