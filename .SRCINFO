@@ -1,0 +1,21 @@
+pkgbase = chocolate-doom-git
+	pkgdesc = Doom, Heretic, Hexen, Strife port accurately reproducing the originals.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.chocolate-doom.org/
+	install = chocolate-doom.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	makedepends = python
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_net
+	conflicts = chocolate-doom
+	source = git://github.com/fragglet/chocolate-doom.git
+	sha256sums = SKIP
+
+pkgname = chocolate-doom-git
+

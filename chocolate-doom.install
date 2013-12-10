@@ -1,0 +1,3 @@
+post_install() {
+    echo ":: Copy any IWAD files to /usr/share/games/doom"
+}
