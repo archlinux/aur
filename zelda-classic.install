@@ -1,0 +1,8 @@
+
+post_install() {
+  echo "If you experience Errors, check/delete your ~/.zelda-classic directory."
+}
+
+post_upgrade() {
+  post_install
+}

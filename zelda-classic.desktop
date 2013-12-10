@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zelda Classic
+Exec=zelda-classic
+Icon=zelda-classic
+Type=Application
+Comment=A tribute to Nintendo's The Legend of Zelda (NES)
+Categories=Game;AdventureGame;
+Terminal=false

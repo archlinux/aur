@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zelda Classic Quest Editor
+Exec=zelda-classic-zquest
+Icon=zelda-classic-zquest
+Type=Application
+Comment=Create/Modify Quests for Zelda Classic
+Categories=Game;AdventureGame;
+Terminal=false
