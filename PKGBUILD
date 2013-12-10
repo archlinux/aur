@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('sdl' 'sdl_mixer' 'sdl_net')
 makedepends=('autoconf' 'python')
 install=${pkgname}.install
-source=(https://soulsphere.org/projects/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+source=(http://${pkgname}.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('85c58b77dad933013253b453ef01907492b4719acd56cf8cb6c76f4a361ab60c')
 
 build() {
