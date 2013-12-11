@@ -1,6 +1,6 @@
 pkgbase = linode-api-python-git
 	pkgdesc = Linode API bindings for Python 2.7
-	pkgver = 20110619
+	pkgver = 174.a565abb
 	pkgrel = 1
 	url = https://github.com/tjfontaine/linode-python
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = linode-api-python-git
 	makedepends = git
 	depends = python2
 	optdepends = python-pycurl: For verification of SSL keys
+	source = git+https://github.com/tjfontaine/linode-python.git
+	md5sums = SKIP
 
 pkgname = linode-api-python-git
 
