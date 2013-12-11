@@ -1,0 +1,17 @@
+pkgbase = https-everywhere
+	pkgdesc = Chrome/Chromium extension to use HTTPS whenever possible - git/dev
+	pkgver = 21698.6d79761
+	pkgrel = 3
+	url = https://www.eff.org/https-everywhere
+	arch = any
+	license = GPL
+	makedepends = perl
+	makedepends = python2-lxml
+	makedepends = libxml2
+	makedepends = xxd
+	makedepends = zip
+	source = git+https://git.torproject.org/https-everywhere.git
+	md5sums = SKIP
+
+pkgname = https-everywhere-chrome-git
+
