@@ -1,0 +1,17 @@
+pkgbase = devkitppc-portlibs-libjpeg
+	pkgdesc = Library of JPEG support fuctions
+	pkgver = 8d
+	pkgrel = 1
+	url = http://www.ijg.org/
+	arch = any
+	license = custom
+	depends = devkitppc
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/jpeg-8d.tar.bz2
+	md5sums = 9858d03ba65352bc5f579511741b9454
+	sha256sums = 8315375a8bace8b903a9f22aa10e398572efabd35eb1c12d74c1515d32f1fba9
+
+pkgname = devkitppc-portlibs-libjpeg
+
