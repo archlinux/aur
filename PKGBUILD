@@ -2,7 +2,7 @@
 
 pkgname=econnman-git
 _pkgname=${pkgname%-*}
-pkgver=1.1.r25.72838d0
+pkgver=1.1.0.r0.g72838d0
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
@@ -18,9 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
-
-  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
