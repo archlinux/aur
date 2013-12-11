@@ -3,7 +3,7 @@
 # Contributor: Michael S. Walker <barrucadu@localhost>
 
 pkgname=ack
-pkgver=2.10
+pkgver=2.12
 pkgrel=1
 pkgdesc="A Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl-file-next')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/$pkgname-$pkgver.tar.gz)
-md5sums=('4581d79ecb12b544f363f0f162aaaeb5')
+md5sums=('11e886ab0ec72173869a82e59227ddf2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -22,8 +22,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  # some standalone tests are failing
-  make test || true
+  make test
 }
 
 package() {
