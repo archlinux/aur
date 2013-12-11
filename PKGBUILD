@@ -9,7 +9,6 @@ pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
-depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('autoconf' 'python')
 install=chocolate-doom.install
 source=(http://chocolate-doom.org/downloads/${pkgver}/chocolate-doom-${pkgver}.tar.gz)
@@ -120,3 +119,4 @@ package_chocolate-strife() {
 
 # More AUR workaround.
 pkgdesc="Doom, Heretic, Hexen, Strife port accurately reproducing the originals."
+depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
