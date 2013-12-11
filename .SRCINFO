@@ -1,7 +1,7 @@
 pkgbase = chocolate-doom
 	pkgdesc = Doom, Heretic, Hexen, Strife port accurately reproducing the originals.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
 	arch = i686
@@ -9,11 +9,41 @@ pkgbase = chocolate-doom
 	license = GPL2
 	makedepends = autoconf
 	makedepends = python
-	depends = sdl
+	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
 	source = http://chocolate-doom.org/downloads/2.0.0/chocolate-doom-2.0.0.tar.gz
 	sha256sums = 85c58b77dad933013253b453ef01907492b4719acd56cf8cb6c76f4a361ab60c
 
 pkgname = chocolate-doom
+	pkgdesc = Doom port accurately reproducing the original v1.9 EXEs.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common
+
+pkgname = chocolate-heretic
+	pkgdesc = Heretic port accurately reproducing the original v1.3 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common
+
+pkgname = chocolate-hexen
+	pkgdesc = Hexen port accurately reproducing the original v1.1 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common
+
+pkgname = chocolate-strife
+	pkgdesc = Strife port accurately reproducing the original v1.31 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common
+
+pkgname = chocolate-common
+	pkgdesc = Files shared in common with Chocolate Doom-based games.
+	depends = sdl_net
 
