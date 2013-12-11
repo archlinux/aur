@@ -1,21 +1,21 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=dsassistant
-pkgver=4206
+pkgver=4359
 _synver=4.3
 pkgrel=1
 pkgdesc="Disk Station Assistant - An app to setup Synology DiskStations"
 arch=('i686' 'x86_64')
-url="http://www.synology.com/releaseNote_enu/Desktop_Assistant.php"
+url="http://www.synology.com/en-global/releaseNote/tool/Synology%20Assistant"
 license=('unknown')
 depends=()
 if test "$CARCH" == x86_64; then
 	depends=("${depends[@]}" lib32-glibc lib32-glib2 lib32-libxt  lib32-libxext lib32-fontconfig lib32-libxrender)
 fi
-source=(http://download.synology.com/download/ds/DSAssistant/${pkgver}/linux/SynologyAssistant-${_synver}-${pkgver}.tar.gz
+source=(http://global.download.synology.com/download/Tools/SynologyAssistant/${pkgver}/Linux/SynologyAssistant-${_synver}-${pkgver}.tar.gz
         SynologyAssistant.desktop
         dsassistant.png)
-md5sums=('41a133d43bfcca35470b905c51ed19c2'
+md5sums=('9a8548e0870fce44541e4966e0524fd8'
          '73e2c353c541bc79db01d40117d92133'
          '6b447bfb0e43256e2bf1d388a1b022d3')
 
