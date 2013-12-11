@@ -5,7 +5,7 @@ _pkgname=chocolate-doom # for the individual package functions
 pkgname=chocolate-doom
 true && pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
@@ -40,6 +40,8 @@ package_chocolate-common() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc man/man5
+  rm -rf applications/chocolate-doom.desktop applications/screensavers \
+    icons/chocolate-doom.png
   cd man/man6
   rm -f chocolate-{doom,heretic,hexen,strife}.6
 }
@@ -57,7 +59,7 @@ package_chocolate-doom() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{heretic,hexen,strife}
-  rm -rf applications icons
+  rm -f applications/chocolate-setup.desktop icons/chocolate-setup.png
   rm -f man/man?/chocolate-{heretic,hexen,strife,setup,server}* \
     man/man5/{heretic,hexen,strife}.cfg*
 }
