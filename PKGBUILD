@@ -3,7 +3,7 @@
 
 pkgname=efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.8.99.23880.6a5e72d
+pkgver=1.8.99.23936.30687d4
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland'
          'libgl' 'libwebp' 'libpulse' 'libexif' 'gstreamer0.10-base'
          'fribidi' 'harfbuzz' 'fontconfig')
   [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
-makedepends=('git')
+makedepends=('git' 'python2')
 optdepends=('python2: compare Eina benchmarks'
             'gstreamer0.10-good: Access more types of video in Emotion'
             'gstreamer0.10-bad: Access more types of video in Emotion'
@@ -87,4 +87,6 @@ package() {
   install -Dm644 licenses/COPYING.SMALL "$pkgdir/usr/share/licenses/$pkgname/COPYING.SMALL"
   sed -n '1,/.details/p' licenses/COPYING.LGPL > "$pkgdir/usr/share/licenses/$pkgname/COPYING.LGPL"
   ln -s ../common/GPL2/license.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.GPL"
+
+  python2 -m compileall -q "$pkgdir"
 }
