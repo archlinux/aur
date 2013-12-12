@@ -1,0 +1,6 @@
+/cfr_*.jar
+/src
+/pkg
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+*.src.tar.gz

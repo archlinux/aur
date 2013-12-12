@@ -1,0 +1,18 @@
+pkgbase = cfr
+	pkgdesc = Another Java decompiler
+	pkgver = 0_57
+	pkgrel = 1
+	url = http://www.benf.org/other/cfr/
+	arch = any
+	license = MIT
+	depends = java-runtime
+	noextract = cfr_0_57.jar
+	source = http://www.benf.org/other/cfr/cfr_0_57.jar
+	source = cfr
+	source = LICENSE
+	md5sums = b71924966563cc5b98569f6dcff07153
+	md5sums = d0f7cff1f51f2b25139e4855bf0520ee
+	md5sums = 94f3aea3b6c6ef49be7d3d27be0d5f84
+
+pkgname = cfr
+
