@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Escape Goat
+Comment=A goat, imprisoned for witchcraft, must escape the treacherous Prison of Agnus
+Icon=escapegoat
+Exec=/usr/bin/escapegoat
+Categories=Game;
