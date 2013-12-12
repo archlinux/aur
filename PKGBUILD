@@ -2,7 +2,7 @@
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=python2-wokkel
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 _libname=${pkgname/python2-/}
 pkgdesc="Twisted Jabber support library"
@@ -22,9 +22,9 @@ build() {
 
 package() {
 	cd "$srcdir/$_libname-$pkgver"
-	python2 setup.py install -O1 --prefix=/usr --root="$pkgdir"
+	python2 setup.py install --skip-build -O1 --root="$pkgdir"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('b4a29fd9238e0047a846b78e703a3310c53c7a6e16b55b0be80518c47f86da66')
+sha256sums=('5306591c28f406873fad1d4eba27e5e081a4a7f37e3725b24afd47b3137f4965')
