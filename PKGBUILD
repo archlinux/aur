@@ -7,7 +7,7 @@ arch=('any')
 url='https://www.eff.org/https-everywhere'
 license=('GPL')
 makedepends=(git perl python2-lxml libxml2 vim zip)
-source=("git+https://git.torproject.org/${pkgbase}.git")
+source=("git+https://github.com/EFForg/${pkgbase}.git")
 md5sums=('SKIP')
 
 pkgver() {

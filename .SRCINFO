@@ -11,7 +11,7 @@ pkgbase = https-everywhere
 	makedepends = libxml2
 	makedepends = vim
 	makedepends = zip
-	source = git+https://git.torproject.org/https-everywhere.git
+	source = git+https://github.com/EFForg/https-everywhere.git
 	md5sums = SKIP
 
 pkgname = https-everywhere-chrome-git
