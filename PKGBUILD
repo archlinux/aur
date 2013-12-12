@@ -3,7 +3,7 @@
 # TODO: FIND AND FIX EDGE CASES (EMPTY VARS!) *SPANK*
 
 pkgname=firefox-nightly-i18n
-pkgver=28.0a1
+pkgver=29.0a1
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
@@ -57,7 +57,7 @@ prepare() {
   tty -s && {
     countdown 10 & countdown_pid=$!
     read -s -n 1 -t 10 ikey || true
-    kill -s SIGHUP $countdown_pid
+    kill -s SIGHUP $countdown_pid > /dev/null || true # Any key below 1sec fix
     echo -e -n "\n"
   }
 
