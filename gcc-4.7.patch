@@ -1,0 +1,18 @@
+diff -Naur lockdev-1.0.3.orig/src/ttylock.h lockdev-1.0.3/src/ttylock.h
+--- lockdev-1.0.3.orig/src/ttylock.h	2013-12-13 15:34:52.195877321 +0000
++++ lockdev-1.0.3/src/ttylock.h	2013-12-13 15:38:16.131190480 +0000
+@@ -36,10 +36,10 @@
+ 
+ /* API of the library */
+ 
+-int ttylock (char * devname);
+-int ttywait (char * devname);
+-int ttyunlock (char * devname);
+-int ttylocked (char * devname);
++static inline int ttylock (char * devname);
++static inline int ttywait (char * devname);
++static inline int ttyunlock (char * devname);
++static inline int ttylocked (char * devname);
+ 
+ 
+ static inline int
