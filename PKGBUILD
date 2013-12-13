@@ -24,12 +24,12 @@ depends=('qjson')
 makedepends=('cmake')
 provides=('qtweetlib')
 conflicts=('qtweetlib-git')
-source=(https://github.com/downloads/minimoog/QTweetLib/QTweetLib-${pkgver}.tar.gz)
+source=("https://github.com/downloads/minimoog/QTweetLib/QTweetLib-${pkgver}.tar.gz")
 md5sums=('bf1a7cf45eb63479bf5d81d807b0d518')
 
 # Clean options array to strip pkg if release buildtype is chosen
 if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
-  options=(!strip)
+  options=('debug')
 fi
 
 prepare() {

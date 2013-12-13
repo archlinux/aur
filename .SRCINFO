@@ -10,7 +10,7 @@ pkgbase = qtweetlib
 	depends = qjson
 	provides = qtweetlib
 	conflicts = qtweetlib-git
-	options = !strip
+	options = debug
 	source = https://github.com/downloads/minimoog/QTweetLib/QTweetLib-0.5.tar.gz
 	md5sums = bf1a7cf45eb63479bf5d81d807b0d518
 
