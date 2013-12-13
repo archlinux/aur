@@ -29,7 +29,7 @@ source=("${pkgname}::git://github.com/minimoog/QTweetLib.git")
 md5sums=('SKIP')
 
 if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
-  options=(!strip)
+  options=('debug')
 fi
 
 pkgver() {

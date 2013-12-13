@@ -12,7 +12,7 @@ pkgbase = qtweetlib-git
 	depends = qjson
 	provides = qtweetlib
 	conflicts = qtweetlib
-	options = !strip
+	options = debug
 	source = qtweetlib-git::git://github.com/minimoog/QTweetLib.git
 	md5sums = SKIP
 
