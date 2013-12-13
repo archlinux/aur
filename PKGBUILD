@@ -1,50 +1,21 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: twa022 <twa022 at gmail dot com>
 
-pkgname=ewebkit-svn
-_pkgname=${pkgname%-*}
-pkgver=159930
+pkgname=ewebkit
+pkgver=159807
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
-_svnurl="https://svn.webkit.org/repository/webkit/trunk"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'cairo' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'libtiff'
+depends=('atk' 'cairo' 'efl' 'e_dbus' 'enchant' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt' 'harfbuzz-icu')
-makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
-if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-  source=("$_pkgname::svn+$_svnurl")
-  sha256sums=('SKIP')
-fi
-
-pkgver() {
-  if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-    svnversion "$srcdir/$_pkgname" | sed 's/P$//'
-  else
-    LC_ALL=C svn info "$_svnurl" | awk '/Revision/ {print $2}'
-  fi
-}
-
-prepare() {
-  if [[ ! -d "$SRCDEST/$_pkgname/.svn" ]]; then
-#   if this is the first run, checkout only what we need from the repo
-    msg2 "Cloning $_pkgname svn repo..."
-    cd "$SRCDEST"
-    mkdir -p "$_pkgname/.makepkg"
-    svn co --depth immediates --config-dir "$_pkgname/.makepkg" -r "$pkgver" "$_svnurl" "$_pkgname"
-    cd "$_pkgname"
-    svn up --set-depth infinity -r "$pkgver" Source
-
-#   and create a working copy
-    msg2 "Creating working copy of $_pkgname svn repo..."
-    rm -rf "$srcdir/$_pkgname"
-    cp -a "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
-  fi
-}
+makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf')
+source=("http://download.enlightenment.org/rel/libs/webkit-efl/webkit-efl-$pkgver.tar.xz")
+sha256sums=('a99531299e41ba4671b32bbf46c3efc4d65960c9c87949a87f76e622c284f178')
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/webkit-efl"
 
 # build with glib 2.38/libsoup 2.44
   export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
@@ -64,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/webkit-efl"
 
   make DESTDIR="$pkgdir" install
 

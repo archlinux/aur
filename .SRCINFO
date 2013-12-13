@@ -1,6 +1,6 @@
-pkgbase = ewebkit-svn
+pkgbase = ewebkit
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries
-	pkgver = 159930
+	pkgver = 159807
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -9,16 +9,13 @@ pkgbase = ewebkit-svn
 	license = LGPL2.1
 	license = BSD
 	makedepends = cmake
-	makedepends = subversion
 	makedepends = perl
 	makedepends = python2
 	makedepends = ruby
 	makedepends = gperf
 	depends = atk
 	depends = cairo
-	depends = edje
-	depends = eeze
-	depends = efreet
+	depends = efl
 	depends = e_dbus
 	depends = enchant
 	depends = libtiff
@@ -27,6 +24,8 @@ pkgbase = ewebkit-svn
 	depends = libxslt
 	depends = libxt
 	depends = harfbuzz-icu
+	source = http://download.enlightenment.org/rel/libs/webkit-efl/webkit-efl-159807.tar.xz
+	sha256sums = a99531299e41ba4671b32bbf46c3efc4d65960c9c87949a87f76e622c284f178
 
-pkgname = ewebkit-svn
+pkgname = ewebkit
 
