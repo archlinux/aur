@@ -10,7 +10,6 @@ pkgrel=1
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
 license=('GPL3')
-options=('!libtool')
 arch=('i686' 'x86_64')
 depends=('qdbm' 'openssl' 'pcre' 'libxml2')
 optdepends=('tokyocabinet' 'libvirt' 'postgresql-libs' 'libmariadbclient')

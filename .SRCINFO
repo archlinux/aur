@@ -15,7 +15,6 @@ pkgbase = cfengine
 	optdepends = libvirt
 	optdepends = postgresql-libs
 	optdepends = libmariadbclient
-	options = !libtool
 	source = cfengine-3.5.2.tar.gz::http://cfengine.com/source-code/download?file=cfengine-3.5.2.tar.gz
 	source = cf-execd.service
 	source = cf-monitord.service
