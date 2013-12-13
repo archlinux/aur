@@ -41,4 +41,6 @@ package() {
   install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
   install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
   install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+
+  chmod 666 "$pkgdir/var/lib/connman/econnman.config"
 }
