@@ -29,9 +29,8 @@ source=("${pkgname}-${pkgver}.zip::http://github.com/euroelessar/${pkgname}/arch
 md5sums=('07e64faaae4be7cf2c99eac07f80fb8f'
          '397e75be409ea7e8bddff88b6f977f5f')
 
-# Clean options array to strip pkg if release buildtype is chosen
 if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
-  options=(!strip)
+  options=('debug')
 fi
 
 prepare() {
