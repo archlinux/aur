@@ -29,7 +29,7 @@ md5sums=('98b7f5bc43e017379f5cd3834f19e90d')
 install=tomahawk.install
 
 if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
-  options=(!strip)
+  options=('debug')
 fi
 
 prepare() {
