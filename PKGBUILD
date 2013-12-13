@@ -25,12 +25,11 @@ depends=('qjson')
 makedepends=('cmake')
 provides=('libechonest')
 conflicts=('libechonest-git' 'libechonest2')
-source=(http://pwsp.cleinias.com/${pkgname}-${pkgver}.tar.bz2)
+source=("http://pwsp.cleinias.com/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('038c4e390651b207575a12315ed3e687')
 
-# Clean options array to strip pkg if release buildtype is chosen
 if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
-  options=(!strip)
+  options=('debug')
 fi
 
 prepare() {
