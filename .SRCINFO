@@ -1,7 +1,7 @@
 pkgbase = libpfm4
 	pkgdesc = The hardware-based performance monitoring interface for Linux.
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://perfmon2.sourceforge.net/
 	arch = x86_64
 	arch = i686

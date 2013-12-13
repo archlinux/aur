@@ -3,7 +3,7 @@
 pkgname=libpfm4
 pkgver=4.4.0
 conflicts=('libpfm3')
-pkgrel=1
+pkgrel=2
 pkgdesc="The hardware-based performance monitoring interface for Linux."
 arch=('x86_64' 'i686')
 url="http://perfmon2.sourceforge.net/"
@@ -27,7 +27,16 @@ check () {
 
 package() {
   cd "$srcdir/libpfm-$pkgver"
+
+  # Install libraries
   make DESTDIR="$pkgdir/" install
+
+  # Install useful example files
+  # Note: this match will probably be applied for the next version
+  sed -i 's/$(DOCDIR)/$(DESTDIR)$(DOCDIR)/g' perf_examples/Makefile
+  make DESTDIR="$pkgdir/" install_examples
+
+  # Install license
   install -D -m0644 COPYING "${pkgdir}"/usr/share/licenses/libpfm4/LICENSE
 }
 
