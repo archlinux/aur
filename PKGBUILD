@@ -2,7 +2,7 @@
 
 pkgname=econnman-git
 _pkgname=${pkgname%-*}
-pkgver=1.1.0.r0.g72838d0
+pkgver=1.1.0.r4.g240c1a3
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
@@ -25,7 +25,8 @@ build() {
   cd "$srcdir/$_pkgname"
 
   ./autogen.sh \
-    --prefix=/usr
+    --prefix=/usr \
+    --localstatedir=/var
 
   make
 }
