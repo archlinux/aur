@@ -1,0 +1,14 @@
+pkgbase = cpp-coveralls
+	pkgdesc = Upload the coverage report of C/C++ project to coveralls.io.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/eddyxu/cpp-coveralls
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = python2
+	source = cpp-coveralls::git://github.com/eddyxu/cpp-coveralls.git#commit=e117aa76e5f55bef7630d200cdfdd19550d4a9a8
+	sha1sums = SKIP
+
+pkgname = cpp-coveralls
+
