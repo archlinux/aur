@@ -1,0 +1,15 @@
+pkgbase = perl-mousex-types
+	pkgdesc = Organize your Mouse types in libraries
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/~GFUJI/MouseX-Types-0.06/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/MouseX-Types-0.06.tar.gz
+	sha256sums = 77288441fdadd15beeec9a0813ece8aec1542f1d8ceaaec14755b3f316fbcf8b
+
+pkgname = perl-mousex-types
+
