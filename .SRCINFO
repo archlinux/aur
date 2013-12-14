@@ -1,0 +1,17 @@
+pkgbase = python2-houdinipy
+	pkgdesc = A Python binding for Houdini that provides (un)escaping functions for HTML, URLs/URIs and Javascript.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://python-houdini.61924.nl/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/houdini.py/houdini.py-0.1.0.tar.gz
+	source = LICENSE
+	sha256sums = cabd10734a859c34c3707ecb99b93cb78547a9128cbfabbe3f4d5628e822f666
+	sha256sums = 0fed45cfa40d1ceed4bf0173f11af10e962d2647a4beb7c0e8250a30720a1890
+
+pkgname = python2-houdinipy
+
