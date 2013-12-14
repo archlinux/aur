@@ -1,13 +1,14 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python2-mynt
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A static site generator designed to give you all the features of a CMS."
 arch=('any')
 url="http://mynt.mirroredwhite.com/"
 license=('BSD')
-depends=('python2>=2.7' 'python2-houdinipy' 'python2-jinja' 'python2-misaka'
-         'python2-pygments' 'python2-watchdog' 'python2-yaml')
+depends=('python2>=2.7' 'python2-houdinipy' 'python2-jinja>=2.7'
+         'python2-misaka>=1.0.2' 'python2-pygments' 'python2-watchdog'
+         'python2-yaml')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/m/mynt/mynt-${pkgver}.tar.gz"
         'jinja2_version.patch')
