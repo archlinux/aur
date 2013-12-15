@@ -5,7 +5,7 @@ pkgver=0.17
 pkgrel=3
 _debrev=13
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('BSD')
 pkgdesc="Remote who"
 depends=('glibc' 'sh')
 optdepends=('cron: to periodically delete old /var/spool/rwho files'
@@ -44,6 +44,7 @@ package() {
   mv $pkgdir/usr/sbin/rwhod $pkgdir/usr/bin
   rmdir $pkgdir/usr/sbin
 
+  install -Dm644 $srcdir/debian/copyright $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 $srcdir/rwhod.conf $pkgdir/etc/conf.d/rwhod
   install -Dm644 $srcdir/rwhod.service $pkgdir/usr/lib/systemd/system/rwhod.service
   install -D $srcdir/rwhod.cron $pkgdir/etc/cron.monthly/rwhod
