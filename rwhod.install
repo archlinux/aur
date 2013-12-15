@@ -1,0 +1,7 @@
+post_install () {
+  echo ">> Place 'rwhod' in DAEMONS= in /etc/rc.conf to enable rwhod on system boot."
+}
+op=$1
+shift
+$op $*
+	  

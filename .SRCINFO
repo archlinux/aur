@@ -1,0 +1,23 @@
+pkgbase = netkit-rwho-debian
+	pkgdesc = Remote who
+	pkgver = 0.17
+	pkgrel = 2
+	url = ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
+	install = rwhod.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	conflicts = netkit-rwho
+	backup = etc/conf.d/rwhod
+	source = http://ftp.de.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_0.17.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_0.17-12.diff.gz
+	source = rwhod.rc
+	source = rwhod.conf
+	md5sums = 0f71620d45d472f89134ba0d74242e75
+	md5sums = ccbb57e61d8594aa37c33cc906071ce1
+	md5sums = 5ab5042d60e508658e0a676d13556acb
+	md5sums = d052293ac9c851ba8093338c530b349e
+
+pkgname = netkit-rwho-debian
+
