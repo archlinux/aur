@@ -1,0 +1,14 @@
+pkgbase = python-socksipy-branch
+	pkgdesc = A module for using the Twilio REST API and generating valid TwiML.
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://code.google.com/p/socksipy-branch/
+	arch = any
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = http://socksipy-branch.googlecode.com/files/SocksiPy-branch-1.01.tar.gz
+	sha256sums = 8331732ed0fcacc84e7c33c07f5e3902f0869a215b3a56f0a8845d2fafbfd504
+
+pkgname = python-socksipy-branch
+
