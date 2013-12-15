@@ -1,0 +1,16 @@
+pkgbase = xapian-omega
+	pkgdesc = Indexers and CGI search frontend for Xapian
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.xapian.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xapian-core
+	depends = perl
+	depends = pcre
+	source = http://oligarchy.co.uk/xapian/1.2.0/xapian-omega-1.2.0.tar.gz
+	md5sums = 4ab93bd80e786f2adbba1b49d61c5ee0
+
+pkgname = xapian-omega
+
