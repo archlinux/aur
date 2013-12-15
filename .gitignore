@@ -1,0 +1,6 @@
+/netkit-rwho_*.tar.gz
+/src
+/pkg
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+*.src.tar.gz
