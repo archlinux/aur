@@ -8,15 +8,19 @@ pkgbase = netkit-rwho-debian
 	arch = x86_64
 	license = GPL
 	depends = glibc
+	depends = sh
+	optdepends = cron: to periodically delete old /var/spool/rwho files
 	backup = etc/conf.d/rwhod
 	source = http://ftp.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_0.17.orig.tar.gz
 	source = http://ftp.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_0.17-13.debian.tar.gz
 	source = rwhod.conf
 	source = rwhod.service
+	source = rwhod.cron
 	md5sums = 0f71620d45d472f89134ba0d74242e75
 	md5sums = 82ed5a3c6b0bbf00b36508b9787963b9
 	md5sums = 6f0db2a76fc465cc2e2d37dc0c4aa19d
 	md5sums = d8ff594a2235fb7a0b3328f6f2459e60
+	md5sums = 059e662579a4b893ee6fa97032f8b0a2
 
 pkgname = netkit-rwho-debian
 
