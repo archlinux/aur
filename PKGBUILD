@@ -13,9 +13,13 @@ source=(http://oligarchy.co.uk/xapian/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('4ab93bd80e786f2adbba1b49d61c5ee0')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-	./configure --prefix=/usr --sysconfdir=/etc || return 1
-	make || return 1
-	make DESTDIR=${pkgdir} install || return 1
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+}
+
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR=${pkgdir} install
 }
