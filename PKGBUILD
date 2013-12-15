@@ -46,5 +46,5 @@ package() {
 
   install -Dm644 $srcdir/rwhod.conf $pkgdir/etc/conf.d/rwhod
   install -Dm644 $srcdir/rwhod.service $pkgdir/usr/lib/systemd/system/rwhod.service
-  install -D $srcdir/rwhod.cron $pkgdir/etc/cron.monthly/rwhod.cron
+  install -D $srcdir/rwhod.cron $pkgdir/etc/cron.monthly/rwhod
 }
