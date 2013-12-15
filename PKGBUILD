@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc="Remote who"
 depends=('glibc' 'sh')
-optdepends=('cron: to periodically delete old /var/spool/rwho files')
+optdepends=('cron: to periodically delete old /var/spool/rwho files'
+            'systemd: to run the rwhod daemon')
 url='ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/'
 install=rwhod.install
 backup=('etc/conf.d/rwhod')

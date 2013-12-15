@@ -10,6 +10,7 @@ pkgbase = netkit-rwho-debian
 	depends = glibc
 	depends = sh
 	optdepends = cron: to periodically delete old /var/spool/rwho files
+	optdepends = systemd: to run the rwhod daemon
 	backup = etc/conf.d/rwhod
 	source = http://ftp.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_0.17.orig.tar.gz
 	source = http://ftp.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_0.17-13.debian.tar.gz
