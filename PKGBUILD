@@ -3,12 +3,12 @@
 
 pkgname=crda
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Central Regulatory Domain Agent for wireless networks"
 arch=(i686 x86_64)
 url="http://wireless.kernel.org/en/developers/Regulatory/CRDA"
 license=('custom')
-depends=('wireless-regdb' 'libnl' 'libgcrypt' 'systemd-tools' 'iw')
+depends=('wireless-regdb' 'libnl' 'libgcrypt' 'systemd' 'iw')
 makedepends=('python2-m2crypto')
 install=crda.install
 source=(http://wireless.kernel.org/download/crda/${pkgname}-${pkgver}.tar.bz2
