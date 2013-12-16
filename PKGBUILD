@@ -4,8 +4,8 @@
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
 pkgver=1.0.1
-pkgrel=1
-pkgdesc="A Python Mocking and Patching Library for Testing"
+pkgrel=2
+pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 makedepends=('python2' 'python')
 license=('BSD')
