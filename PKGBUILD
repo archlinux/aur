@@ -3,7 +3,7 @@
 
 pkgname=netcf
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for configuring network interfaces"
 arch=('i686' 'x86_64')
 license=('LGPL')
