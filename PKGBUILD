@@ -2,7 +2,7 @@
 
 pkgname=mopidy-beets
 _pypiname=Mopidy-Beets
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from a Beets collection"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 makedepends=('python2')
 provides=('mopidy-beets')
 source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('8746d2cfac14947255062de7eae2c3f1')
+md5sums=('d72f4b28603af9d9d44fe2ef8e0cdec6')
 
 package() {
   cd "$srcdir/$_pypiname-$pkgver"
