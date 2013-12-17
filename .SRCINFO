@@ -1,0 +1,15 @@
+pkgbase = ttf-pizzadude-bullets
+	pkgdesc = A dingbats-style symbolic font that displays happy faces, stars, arrows, eyes, hearts, and more.
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://www.pizzadude.dk
+	install = ttf-pizzadude-bullets.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = pizzadude_bullets.zip::http://img.dafont.com/dl/?f=pizzadude_bullets
+	md5sums = 9ecfa31321fa775367864042dc1daded
+
+pkgname = ttf-pizzadude-bullets
+
