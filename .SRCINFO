@@ -1,0 +1,20 @@
+pkgbase = php-ssh-git
+	pkgdesc = An SSH2 extension for PHP (git version)
+	pkgver = 134.aa5adbd
+	pkgrel = 1
+	url = http://pecl.php.net/package/ssh2
+	install = install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = php
+	makedepends = git
+	depends = php
+	depends = openssh
+	provides = php-ssh
+	conflicts = php-ssh
+	source = git+https://git.php.net/repository/pecl/networking/ssh2.git
+	md5sums = SKIP
+
+pkgname = php-ssh-git
+
