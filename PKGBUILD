@@ -3,37 +3,31 @@
 pkgname=qt5-wayland-git
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="A cross-platform application and UI framework (QtCompositor, Wayland QPA plugins)"
-groups=('qt' 'qt5')
+pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=('i686' 'x86_64')
 url="http://qt-project.org/"
 license=('GPL3' 'LGPL')
-depends=('qt5-base-git' 'qt5-declarative-git' 'libxcomposite' 'libxkbcommon' 'wayland')
-replaces=('qt5-qtwayland-git')
-provides=('qt5-wayland')
+depends=('qt5-base' 'libxcomposite' 'wayland')
+makedepends=('git' 'qtchooser')
 conflicts=('qt5-wayland')
-makedepends=('gcc' 'git')
-#_gitroot="git://gitorious.org/qt/qtwayland.git"
-_gitroot="git://github.com/plfiorini/qtwayland.git"
-#_gitbranch=master
-_gitbranch=hawaii-stable
-_gitname="qt5-wayland"
-source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
+options=('!libtool' 'debug')
+source=(git://gitorious.org/qt/qtwayland.git#branch=stable)
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/${_gitname}
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd qtwayland
+  git describe --always | sed 's|-|.|g'
 }
 
 build() {
-	cd ${srcdir}/${_gitname}
-	qmake CONFIG+=wayland-compositor
-	#qmake
-	make
+  export QT_SELECT=5
+
+  cd qtwayland
+  qmake
+  make
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
-	make INSTALL_ROOT="${pkgdir}" install
+  cd qtwayland
+  make INSTALL_ROOT="${pkgdir}" install
 }
