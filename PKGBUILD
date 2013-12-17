@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdk-pixbuf2
-pkgver=2.30.1
+pkgver=2.30.2
 pkgrel=1
 pkgdesc="An image loading library (mingw-w64)"
 arch=(any)
@@ -14,7 +14,7 @@ mingw-w64-libjpeg-turbo
 mingw-w64-libtiff)
 options=(!strip !buildflags staticlibs)
 source=("http://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
-sha256sums=('a3263b1e15668c009313bf04ab67420bec9f2b167c402a71a486307cadee8d30')
+sha256sums=('cababfa075a9a60426809309ec86b82ea28e83f44ef69c898e48c040b6feecbf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -33,11 +33,6 @@ build() {
       --enable-static \
       --enable-shared \
       --with-included-loaders=wbmp,png,pnm,ras,ani,xpm,xbm,tga,icns,pcx,qtif,gdip-ico,gdip-wmf,gdip-emf,gdip-bmp,gdip-gif,gdip-jpeg,gdip-tiff
-    make || true
-    # Suppress the building of some test program because it use some
-    # POSIX functions which are not available on MinGW
-    touch "${srcdir}/${pkgname}-${pkgver}-build-${_arch}/tests/pixbuf-randomly-modified.o"
-    touch "${srcdir}/${pkgname}-${pkgver}-build-${_arch}/tests/pixbuf-randomly-modified.exe"
     make
   done
 }
