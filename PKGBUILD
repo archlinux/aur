@@ -2,7 +2,7 @@
 # quick update check: https://git.wikimedia.org/log/pywikibot%2Fcore/refs%2Fheads%2Fmaster
 
 pkgname=('python2-pywikibot-git')
-pkgver=2178.36435bb
+pkgver=2477.98b0588
 pkgrel=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 arch=('any')
@@ -18,12 +18,6 @@ pkgver() {
 	 cd "${srcdir}/${pkgname}"
 	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	 printf "%s" "${ver//-/.}"
-}
-
-prepare() {
-	 # upstream horror #1: global install script forces interactive setup to create per-user config file
-	 # we excise this code and just provide a default config for user to copy
-	 sed -i '/generate_user_files.py/Id' "${srcdir}/${pkgname}/setup.py"
 }
 
 package() {
