@@ -1,6 +1,6 @@
 pkgname=amavisd-new
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -49,7 +49,7 @@ prepare() {
         -e "s/\\\$daemon_user  = 'vscan'/\\\$daemon_user  = 'amavis'/g" \
         -e "s/\\\$daemon_group = 'vscan'/\\\$daemon_group = 'amavis'/g" \
         -e "sX# \\\$MYHOME = '/var/amavis'X\\\$MYHOME = '/var/spool/amavis'Xg" \
-        -e "sX\\\$QUARANTINEDIR = '/var/virusmails'X\\\$QUARANTINEDIR = '\\\$MYHOME/virus'Xg" \
+        -e "sX\\\$QUARANTINEDIR = '/var/virusmails'X\\\$QUARANTINEDIR = \"\\\$MYHOME/virus\"Xg" \
         -e "sX# \\\$pid_file  = \"\\\$MYHOME/var/amavisd.pid\"X\\\$pid_file = \"/run/amavis/pid\"Xg" \
         -e "sX# \\\$lock_file = \"\\\$MYHOME/var/amavisd.lock\"X\\\$lock_file = \"/run/amavis/lock\"Xg" \
         -e "sX\\\$unix_socketname = \"\\\$MYHOME/amavisd.sock\"X\\\$unix_socketname = \"/run/amavis/sock\"Xg" \
