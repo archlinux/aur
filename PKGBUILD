@@ -13,7 +13,7 @@ makedepends=('binutils' 'tar')
 _source_arch="i386"
 [ "$CARCH" = "x86_64" ] && _source_arch="amd64"
 source=(
-  "http://dist.bitcasa.com/release/apt/pool/main/b/bitcasa/bitcasa_${pkgver}_amd64.deb"
+  "http://dist.bitcasa.com/release/apt/pool/main/b/bitcasa/bitcasa_${pkgver}_${_source_arch}.deb"
   "LICENSE"
 )
 sha256sums=(
