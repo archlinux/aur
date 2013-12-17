@@ -1,7 +1,7 @@
 # quick check for commits https://git.php.net/?p=pecl/networking/ssh2.git;a=shortlog
 
 pkgname=php-ssh-git
-pkgver=134.aa5adbd
+pkgver=135.ddaa6a0
 pkgrel=1
 pkgdesc="An SSH2 extension for PHP (git version)"
 url="http://pecl.php.net/package/ssh2"
@@ -12,7 +12,7 @@ makedepends=('php' 'git')
 provides=('php-ssh')
 conflicts=('php-ssh')
 install=install
-source=("git+https://git.php.net/repository/pecl/networking/ssh2.git")
+source=("ssh2::git+https://github.com/yardenac/php-ssh2.git#commit=ddaa6a0")
 md5sums=('SKIP')
 
 pkgver() {
