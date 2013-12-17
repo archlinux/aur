@@ -1,0 +1,15 @@
+# Maintainer: Max Bruckner
+pkgname=update-grub
+pkgver=0.0.1
+pkgrel=7
+pkgdesc="Simple wrapper around grub-mkconfig"
+arch=('any')
+url='http://packages.ubuntu.com/precise/grub2-common'
+license=('GPL2')
+depends=('grub')
+source=( 'update-grub' )
+sha512sums=('5b61d697f9e101357e2970a05a5f42b2288fcb2c595ee2512b4c9c64e965af4e5d32da24ff6905d8293df516a4477c76655127466d8f1b3cfa2bddea67e84ef5')
+
+package() {
+  install -Dm 755 "$srcdir/update-grub" "$pkgdir/usr/bin/update-grub"
+}
