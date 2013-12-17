@@ -2,16 +2,16 @@
 
 pkgname=python-efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.8.0.r509.1c1f102
+pkgver=1.8.99.r515.9089706
 pkgrel=1
 pkgdesc="Python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
-depends=('elementary>=1.7.99' 'python-dbus')
+depends=('elementary>=1.8.99' 'python-dbus')
+makedepends=('git' 'cython')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-makedepends=('git' 'cython')
 source=("git://git.enlightenment.org/bindings/python/$_pkgname.git")
 md5sums=('SKIP')
 
