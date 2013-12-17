@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Terasology-devbuild
+GenericName=Terasology-devbuild
+Comment=Yet another high resolution game with blocks...
+Exec=terasology-devbuild
+Terminal=false
+Type=Application
+Icon=terasology-devbuild
+Categories=Game;

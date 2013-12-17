@@ -1,0 +1,22 @@
+pkgbase = terasology-devbuild
+	pkgdesc = Yet another high resolution game with blocks like Minecraft! (Last succesful development build)
+	pkgver = 1432
+	pkgrel = 1
+	url = http://terasology.org
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = unzip
+	depends = jdk8-openjdk
+	depends = xorg-server-utils
+	depends = openal
+	options = !strip
+	source = terasology-devbuild
+	source = terasology-devbuild.desktop
+	source = http://jenkins.movingblocks.net/job/DistroOmega/164/artifact/distros/omega/build/distributions/TerasologyOmega.zip
+	sha512sums = 9d2562e769aee38a09de315f9900754827ec2720400e10553f0cbf78c0834bf325220c42c249f17999bc764aa4a0c12aa7abe162d43ea5327672c2fa88fa2669
+	sha512sums = 9ecacc34ae0a17cfe1031f32ee4f25e4e840bed072445ac0a8ffc1b2a012a7b60fed739fcc2ceab8083293a31e7409406bc190c4295022df82815f48c5541d19
+	sha512sums = 6f59405390228870f5822d1bb02f63967661ad83c1bb58dcfbd75eea5a0e1dc4e8eb92c2f9f40d7431641e225650b8b42543321f13f48567cf7c9a418ef98927
+
+pkgname = terasology-devbuild
+
