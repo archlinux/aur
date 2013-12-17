@@ -1,0 +1,15 @@
+pkgbase = ttf-digital-7
+	pkgdesc = A truetype font which is perfect for digital clocks.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.styleseven.com
+	install = ttf-digital-7.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = digital_7.zip::http://img.dafont.com/dl/?f=digital_7
+	md5sums = fedbddce28f059e7468c7031d050623a
+
+pkgname = ttf-digital-7
+
