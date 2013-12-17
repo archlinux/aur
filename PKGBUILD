@@ -1,4 +1,5 @@
 # Based on an older PKGBUILD by: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# quick update check: https://git.wikimedia.org/log/pywikibot%2Fcore/refs%2Fheads%2Fmaster
 
 pkgname=('python2-pywikibot-git')
 pkgver=2178.36435bb
