@@ -1,6 +1,6 @@
 pkgbase = targetcli-fb
 	pkgdesc = free branch of the targetcli LIO administration shell (iSCSI + Co)
-	pkgver = 2.1.fb32
+	pkgver = 2.1.fb33
 	pkgrel = 1
 	url = https://github.com/agrover/targetcli-fb
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = targetcli-fb
 	depends = python-rtslib-fb>=2.1.fb42
 	depends = python-configshell-fb
 	provides = targetcli
-	source = https://fedorahosted.org/releases/t/a/targetcli-fb/targetcli-fb-2.1.fb32.tar.gz
-	md5sums = 16dc44a858025511b46858b0c5d56151
+	source = https://fedorahosted.org/releases/t/a/targetcli-fb/targetcli-fb-2.1.fb33.tar.gz
+	md5sums = 758f89dbc40ba54e7f9f901677031fa0
 
 pkgname = targetcli-fb
 
