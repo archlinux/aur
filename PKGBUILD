@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=1.3.8.19
+pkgver=1.3.8.31
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
@@ -23,7 +23,6 @@ pkgver() {
 build() {
   cd $pkgname
   ./autogen.sh
-  LDFLAGS=
   ./configure --prefix=/usr --sysconfdir=/etc \
     --enable-shaped-decorations --enable-gradients \
     --enable-guievents
