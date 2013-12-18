@@ -1,0 +1,3 @@
+#!/bin/sh
+
+keyfuzz -s -d /dev/input/by-id/usb-Apple_Inc._Apple_Keyboard-event-kbd < /etc/keyfuzz/apple_aluminium.keyfuzz
