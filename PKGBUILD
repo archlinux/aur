@@ -10,7 +10,7 @@ _gitbranch="master"
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=39.11.g60ffd0b
+pkgver=39.20.g2535b8c
 pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
