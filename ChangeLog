@@ -1,3 +1,27 @@
+2013-12-18 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.6_beta_3-1 :
+	Version bump. Note the changed license.
+
+	Upstream changelog:
+	- Switching/creating maps will no longer consume extra memory. (This means that you'll no long have issues with excess memory usage when you cycle through many different seeds)
+	- Added automatic seed histories. If AMIDST detects a "history.txt" file next to it, it will write a time stamp followed by the seed for each seed you enter.
+	- In addition to "history.txt" you may also use the "-history someFileOrPath.txt" (or whatever extension you'd like) to specify where AMIDST should write seed history to. If AMIDST cannot find a file at the path you've specified, it will attempt to make one. If it cannot make one, it will simply not log your seed history.
+	- A new option is availible in the Options menu called "Show Debug Info". Enabling this will add a small panel to the map viewer containing debug information on fragments.
+	- More windows will now use the AMIDST icon.
+	- Mac OS X users should no longer experience the "corrupted" issue.
+	- A licenses window has been added to the help menu. This will contain all relevant license information for AMIDST and its libraries.
+	- AMIDST is now under GPL v3
+	- Added a "-mcpath <file>" flag for users to specify the path to their .minecraft directory.
+	- Changing color profiles is now much faster as fragments regenerate from cache instead of rebuilding the entire map.
+	- The default version is now 1.7.4.
+	- Most crashes now create a "crash dialog" containing a log that can easily be pasted.
+	- Added "-log <file>" flag. Using this flag will cause AMIDST to write all log output to the specified file. AMIDST should create a file if it does not exist.
+	- AMIDST now returns "4" on crashes. This will change at a later date to include various error codes.
+	- Added 1.7.4 to official version list.
+	- Added smooth fragment fading. (This may be disabled in the options menu) Enabling this will cause all fragments to fade in when loaded.
+	- Added option to set the default world type to any of the world types or "prompt each time".
+
 2013-12-09 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.6_beta_2-1 :

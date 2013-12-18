@@ -1,12 +1,12 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 pkgname=amidst
-pkgver='3.6_beta_2'
+pkgver='3.6_beta_3'
 _jarfile="${pkgname^^}-${pkgver//_/-}.jar"
 pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
-license=('GPL')
+license=('GPL3')
 url='http://www.minecraftforum.net/topic/626786-'
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
@@ -15,7 +15,7 @@ changelog=ChangeLog
 source=("https://bitbucket.org/skiphs/amidst/downloads/$_jarfile"
         amidst.sh
         amidst.desktop)
-md5sums=('846d26e447d0438853e7d66ca13a1138'
+md5sums=('4170403c280e92822ded794233632f68'
          '783c4040c9736f96ce72e9997833a0bf'
          '3c6900ac68e3175768322e684f9f1bcb')
 
