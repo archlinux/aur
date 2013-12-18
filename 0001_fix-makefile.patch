@@ -1,0 +1,24 @@
+--- Makefile.orig	2013-12-16 08:36:26.000000000 -0800
++++ Makefile	2013-12-18 09:25:53.322278872 -0800
+@@ -63,10 +63,11 @@
+ check: cvs-fast-export
+ 	@(cd tests >/dev/null; make --quiet)
+ 
+-install: cvs-fast-export.1 all
++install: cvs-fast-export cvs-fast-export.1 cvssync.1
+ 	$(INSTALL) -d "$(target)/bin"
+ 	$(INSTALL) -d "$(target)/share/man/man1"
+ 	$(INSTALL) cvs-fast-export "$(target)/bin"
++	$(INSTALL) cvssync "$(target)/bin"
+ 	$(INSTALL) -m 644 cvs-fast-export.1 "$(target)/share/man/man1"
+ 	$(INSTALL) -m 644 cvssync.1 "$(target)/share/man/man1"
+ 
+@@ -85,7 +86,7 @@
+ 	cppcheck --template gcc --enable=all $(SUPPRESSIONS) --suppress=unusedStructMember *.[ch]
+ 
+ SOURCES = Makefile *.[ch] *.[yl] cvssync
+-DOCS = README COPYING NEWS AUTHORS TODO control cvs-fast-export.asc
++DOCS = README COPYING NEWS AUTHORS TODO control cvs-fast-export.asc cvssync.asc
+ ALL =  $(SOURCES) $(DOCS)
+ cvs-fast-export-$(VERSION).tar.gz: $(ALL)
+ 	tar --transform='s:^:cvs-fast-export-$(VERSION)/:' --show-transformed-names -cvzf cvs-fast-export-$(VERSION).tar.gz $(ALL)
