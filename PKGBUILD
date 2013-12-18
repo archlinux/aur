@@ -25,8 +25,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-git}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4 
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo
   make
 }
 
