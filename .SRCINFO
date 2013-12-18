@@ -1,7 +1,7 @@
 pkgbase = lib32-oxygen-gtk2-git
 	pkgdesc = Port of the Oxygen theme to gtk
 	pkgver = 20131016
-	pkgrel = 2
+	pkgrel = 3
 	url = https://projects.kde.org/projects/playground/artwork/oxygen-gtk
 	arch = i686
 	arch = x86_64

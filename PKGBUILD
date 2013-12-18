@@ -3,7 +3,7 @@
 _pkgbasename=oxygen-gtk2-git
 pkgname=lib32-${_pkgbasename}
 pkgver=20131016
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of the Oxygen theme to gtk"
 arch=('i686' 'x86_64')
 url="https://projects.kde.org/projects/playground/artwork/oxygen-gtk"
@@ -18,6 +18,10 @@ md5sums=()
 _gitroot="git://anongit.kde.org/oxygen-gtk"
 _gitname="oxygen-gtk"
 
+prepare() {
+  mkdir build
+}
+
 build() {
   msg "Connecting to GIT server...."
 
@@ -31,7 +35,6 @@ build() {
   msg "GIT checkout done or server timeout"
   msg "Starting make..."
 
-  mkdir build
   cd build
 
   export CC="gcc -m32"
