@@ -9,11 +9,11 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.55.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 url="http://www.boost.org/"
 arch=('i686' 'x86_64')
 license=('custom')
-makedepends=('icu>=52.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi' 'clang')
+makedepends=('icu>=52.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
         001-log_fix_dump_avx2.patch)
 sha1sums=('61ed0e57d3c7c8985805bb0682de3f4c65f4b6e5'
@@ -37,7 +37,7 @@ build() {
 
    cd ${pkgbase}_${_boostver}
 
-   ./bootstrap.sh --with-toolset=clang --with-icu --with-python=/usr/bin/python2
+   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
 
    _bindir="bin.linuxx86"
    [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
@@ -47,9 +47,9 @@ build() {
 
    pushd tools
    for _tool in bcp inspect quickbook compiler_status process_jam_log wave; do
-      "${_stagedir}"/bin/b2 --toolset=clang $_tool
+      "${_stagedir}"/bin/b2 --toolset=gcc cflags="${CPPFLAGS} ${CFLAGS} -std=gnu++11 -O3" linkflags="${LDFLAGS}" $_tool
    done
-   "${_stagedir}"/bin/b2 --toolset=clang cflags="-std=gnu++11  -D__STRICT_ANSI__" library_status
+   "${_stagedir}"/bin/b2 --toolset=gcc cflags="${CPPFLAGS} ${CFLAGS} -std=gnu++11 -O3" linkflags="${LDFLAGS}" library_status
    popd
    cp -a dist/bin/* "${_stagedir}"/bin
 
@@ -69,8 +69,9 @@ build() {
       threading=multi \
       runtime-link=shared \
       link=shared,static \
-      toolset=clang \
+      toolset=gcc \
       python=2.7 \
+      cflags="${CPPFLAGS} ${CFLAGS} -std=gnu++11 -O3" linkflags="${LDFLAGS}" \
       --layout=system \
       --prefix="${_stagedir}" \
       ${JOBS} \
