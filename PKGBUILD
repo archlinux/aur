@@ -2,18 +2,19 @@
 # Contributor : Geraud Le Falher <daureg@gmail.com>
 
 pkgname=log4cpp
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A library of C++ classes for flexible logging to files, syslog, IDSA and other destinations."
 arch=('i686' 'x86_64')
 url="http://log4cpp.sourceforge.net/"
 license=('LGPL')
 depends=('gcc-libs')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('b9ef6244baa5e5e435f35e0b9474b35d')
+md5sums=('1e173df8ee97205f412ff84aa93b8fbe')
 
 build() {
 	cd "$srcdir/$pkgname"
+  export CXXFLAGS="$CXXFLAGS -lpthread"
   ./configure --prefix=/usr --disable-doxygen --disable-dot --without-idsa
 	make
 }
