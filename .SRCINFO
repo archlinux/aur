@@ -1,7 +1,7 @@
 pkgbase = roboptim-core-plugin-ipopt-git
 	pkgdesc = Ipopt interface for RobOptim Core
 	pkgver = 20130314
-	pkgrel = 1
+	pkgrel = 2
 	url = http://roboptim.net/
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = roboptim-core-plugin-ipopt-git
 	depends = roboptim-core-git
 	depends = boost>=1.41
 	depends = doxygen
+	depends = eigen3
 	depends = libltdl
 	depends = ipopt
 	provides = roboptim-core-plugin-ipopt

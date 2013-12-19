@@ -2,12 +2,12 @@
 # Contributor: Thomas Moulard <thomas.moulard@gmail.com>
 pkgname=roboptim-core-plugin-ipopt-git
 pkgver=20130314
-pkgrel=1
+pkgrel=2
 pkgdesc="Ipopt interface for RobOptim Core"
 arch=('i686' 'x86_64')
 url="http://roboptim.net/"
 license=('(L)GPL2')
-depends=('roboptim-core-git' 'boost>=1.41' 'doxygen' 'libltdl' 'ipopt')
+depends=('roboptim-core-git' 'boost>=1.41' 'doxygen' 'eigen3' 'libltdl' 'ipopt')
 makedepends=('git' 'cmake')
 provides=('roboptim-core-plugin-ipopt')
 conflicts=('roboptim-core-plugin-ipopt')
