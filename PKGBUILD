@@ -6,7 +6,7 @@
 pkgname=chromium
 pkgver=31.0.1650.63
 _toolchains_rev=12181
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -107,6 +107,7 @@ build() {
     -Dgoogle_default_client_id=$_google_default_client_id
     -Dgoogle_default_client_secret=$_google_default_client_secret
     -Dwerror=
+    -Dpython_ver=2.7
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
     -Dlinux_link_libspeechd=1
