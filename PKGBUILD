@@ -13,8 +13,8 @@ license=('GPL2')
 url="http://www.kernel.org/pub/linux/libs/pam/"
 depends=('glibc' 'db' 'cracklib' 'libtirpc' 'pambase' 'libselinux')
 makedepends=('flex' 'w3m' 'docbook-xml>=4.4' 'docbook-xsl')
-conflicts=("${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf}
         etc/default/passwd
 	etc/environment)

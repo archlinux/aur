@@ -18,7 +18,9 @@ pkgbase = pam-selinux
 	depends = pambase
 	depends = libselinux
 	provides = pam=1.1.8-2
+	provides = selinux-pam=1.1.8-2
 	conflicts = pam
+	conflicts = selinux-pam
 	options = !emptydirs
 	backup = etc/security/access.conf
 	backup = etc/security/group.conf
