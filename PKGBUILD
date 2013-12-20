@@ -28,8 +28,8 @@ backup=('etc/cron.deny'
         'etc/cron.d/0hourly'
         'etc/anacrontab')
 
-conflicts=('cron' "${pkgname/-selinux}")
-provides=('cron' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
+conflicts=('cron' "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=('cron' "${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 
 build() {

@@ -16,8 +16,10 @@ pkgbase = cronie-selinux
 	optdepends = smtp-forwarder: forward job output to email server
 	provides = cron
 	provides = cronie=1.4.9-5
+	provides = selinux-cronie=1.4.9-5
 	conflicts = cron
 	conflicts = cronie
+	conflicts = selinux-cronie
 	backup = etc/cron.deny
 	backup = etc/pam.d/crond
 	backup = etc/cron.d/0hourly
