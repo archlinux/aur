@@ -12,8 +12,8 @@ url="http://psmisc.sourceforge.net/index.html"
 license=('GPL')
 groups=('selinux')
 depends=('ncurses')
-conflicts=("${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=(http://downloads.sourceforge.net/psmisc/${pkgname/-selinux}-${pkgver}.tar.gz
         psmisc-22.20-fix-selinux-in-pstree.patch)
 sha1sums=('abdddc8d5c91251bba0f3190956ae9d05c058745'

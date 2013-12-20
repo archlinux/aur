@@ -9,7 +9,9 @@ pkgbase = psmisc-selinux
 	license = GPL
 	depends = ncurses
 	provides = psmisc=22.20-1
+	provides = selinux-psmisc=22.20-1
 	conflicts = psmisc
+	conflicts = selinux-psmisc
 	source = http://downloads.sourceforge.net/psmisc/psmisc-22.20.tar.gz
 	source = psmisc-22.20-fix-selinux-in-pstree.patch
 	sha1sums = abdddc8d5c91251bba0f3190956ae9d05c058745
