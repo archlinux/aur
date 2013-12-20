@@ -14,8 +14,10 @@ pkgbase = coreutils-selinux
 	depends = gmp
 	depends = libcap
 	depends = libselinux
-	provides = coreutils=8.21-
+	provides = coreutils=8.21-2
+	provides = selinux-coreutils=8.21-2
 	conflicts = coreutils
+	conflicts = selinux-coreutils
 	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.21.tar.xz
 	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.21.tar.xz.sig
 	md5sums = 065ba41828644eca5dd8163446de5d64

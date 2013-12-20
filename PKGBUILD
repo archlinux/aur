@@ -14,8 +14,8 @@ url="http://www.gnu.org/software/coreutils"
 groups=('selinux')
 depends=('glibc' 'pam-selinux' 'acl' 'gmp' 'libcap' 'libselinux')
 install=${pkgname/-selinux}.install
-conflicts=("${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkrel}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=(ftp://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz{,.sig})
 md5sums=('065ba41828644eca5dd8163446de5d64'
          'SKIP')
