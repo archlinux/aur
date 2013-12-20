@@ -1,6 +1,6 @@
 pkgbase = chocolate-doom-git
 	pkgdesc = Doom, Heretic, Hexen, Strife port accurately reproducing the originals.
-	pkgver = 2.0.0
+	pkgver = 2.0.0.5.gb9690ac
 	pkgrel = 1
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
@@ -10,12 +10,46 @@ pkgbase = chocolate-doom-git
 	makedepends = git
 	makedepends = autoconf
 	makedepends = python
-	depends = sdl
+	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
 	conflicts = chocolate-doom
-	source = git://github.com/fragglet/chocolate-doom.git
+	conflicts = chocolate-heretic
+	conflicts = chocolate-hexen
+	conflicts = chocolate-strife
+	conflicts = chocolate-common
+	source = git://github.com/chocolate-doom/chocolate-doom.git
 	sha256sums = SKIP
 
 pkgname = chocolate-doom-git
+	pkgdesc = Doom port accurately reproducing the original v1.9 EXEs.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common-git
+
+pkgname = chocolate-heretic-git
+	pkgdesc = Heretic port accurately reproducing the original v1.3 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common-git
+
+pkgname = chocolate-hexen-git
+	pkgdesc = Hexen port accurately reproducing the original v1.1 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common-git
+
+pkgname = chocolate-strife-git
+	pkgdesc = Strife port accurately reproducing the original v1.31 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = chocolate-common-git
+
+pkgname = chocolate-common-git
+	pkgdesc = Files shared in common with Chocolate Doom-based games.
+	depends = sdl_net
 
