@@ -70,10 +70,12 @@ pkgname = systemd-selinux
 	conflicts = systemd-tools
 	conflicts = udev
 	conflicts = systemd
+	conflicts = selinux-systemd
 	replaces = libsystemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
+	replaces = selinux-systemd
 	backup = etc/dbus-1/system.d/org.freedesktop.systemd1.conf
 	backup = etc/dbus-1/system.d/org.freedesktop.hostname1.conf
 	backup = etc/dbus-1/system.d/org.freedesktop.login1.conf
@@ -95,6 +97,8 @@ pkgname = systemd-sysvcompat-selinux
 	depends = sysvinit-tools
 	depends = systemd-selinux
 	provides = systemd-sysvcompat-sysvcompat=208-2
+	provides = selinux-systemd-sysvcompat-sysvcompat=208-2
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
+	conflicts = selinux-systemd-sysvcompat
 

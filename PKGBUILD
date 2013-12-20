@@ -68,8 +68,8 @@ package_systemd-selinux() {
   provides=("libsystemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             'libgudev-1.0.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
             'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so')
-  replaces=('libsystemd' 'nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('libsystemd' 'nss-myhostname' 'systemd-tools' 'udev' 'systemd')
+  replaces=('libsystemd' 'nss-myhostname' 'systemd-tools' 'udev' 'selinux-systemd')
+  conflicts=('libsystemd' 'nss-myhostname' 'systemd-tools' 'udev' 'systemd' 'selinux-systemd')
   provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: systemd-journal-gatewayd'
@@ -139,8 +139,8 @@ package_systemd-sysvcompat-selinux() {
   pkgdesc="sysvinit compat for systemd"
   license=('GPL2')
   groups=('selinux')
-  conflicts=('sysvinit' 'systemd-sysvcompat')
-  provides=("${pkgname/-selinux}-sysvcompat=${pkgver}-${pkgrel}")
+  conflicts=('sysvinit' 'systemd-sysvcompat' 'selinux-systemd-sysvcompat')
+  provides=("${pkgname/-selinux}-sysvcompat=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}-sysvcompat=${pkgver}-${pkgrel}")
   depends=('sysvinit-tools' 'systemd-selinux')
 
   mv "$srcdir/_sysvcompat"/* "$pkgdir"
