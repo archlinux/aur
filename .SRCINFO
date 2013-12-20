@@ -64,6 +64,16 @@ pkgname = systemd-selinux
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = python: systemd library bindings
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
+	provides = libsystemd=208
+	provides = nss-myhostname
+	provides = systemd-tools=208
+	provides = udev=208
+	provides = libgudev-1.0.so
+	provides = libsystemd-daemon.so
+	provides = libsystemd-id128.so
+	provides = libsystemd-journal.so
+	provides = libsystemd-login.so
+	provides = libudev.so
 	provides = systemd=208-2
 	conflicts = libsystemd
 	conflicts = nss-myhostname

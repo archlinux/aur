@@ -67,10 +67,10 @@ package_systemd-selinux() {
            'pam-selinux' 'util-linux-selinux' 'xz' 'libselinux')
   provides=("libsystemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             'libgudev-1.0.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
-            'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so')
+            'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so'
+            "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   replaces=('libsystemd' 'nss-myhostname' 'systemd-tools' 'udev' 'selinux-systemd')
   conflicts=('libsystemd' 'nss-myhostname' 'systemd-tools' 'udev' 'systemd' 'selinux-systemd')
-  provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: systemd-journal-gatewayd'
               'quota-tools: kernel-level quota management'
