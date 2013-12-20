@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-ioncube_loader
-pkgver=4.4.4
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Loader for PHP files encoded with ionCube PHP Encoder"
 arch=(i686 x86_64)
@@ -11,17 +11,15 @@ depends=(php)
 backup=(etc/php/conf.d/00-ioncube_loader.ini)
 
 if [[ $CARCH == "x86_64" ]]; then
-	source=($pkgname-$CARCH-$pkgver.tar.bz2::http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.bz2)
-	sha256sums=('563994cacbd2b040befe39f336b2e5a1e2592d472ebd1e767b1b590e46085aed')
+	source=(ioncube_loader-$CARCH-$pkgver.tar.bz2::http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.bz2)
+	sha256sums=('178cda96e05665cd6410aab8456ac3376c471bf67a80867b843385851d8f903a')
 else
-	source=($pkgname-$CARCH-$pkgver.tar.bz2::http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.bz2)
-	sha256sums=('35b11405f79cccb12ed5139bde15f8f33f3e0ee965e5398ca3181d223fc07975')
+	source=(ioncube_loader-$CARCH-$pkgver.tar.bz2::http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.bz2)
+	sha256sums=('ac3026b3f2587f873d81e5e5c678155237379e5a4b00d293be77128d27c3fe61')
 fi
 
 package() {
-	cd "$srcdir"
 	install -d -m0755 "$pkgdir/etc/php/conf.d"
-	install -D -m0755 ioncube/ioncube_loader_lin_5.4.so "$pkgdir/usr/lib/php/modules/ioncube_loader.so"
-# 	install -D -m0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	install -D -m0755 "$srcdir/ioncube/ioncube_loader_lin_5.5.so" "$pkgdir/usr/lib/php/modules/ioncube_loader.so"
 	echo "zend_extension = /usr/lib/php/modules/ioncube_loader.so" > "$pkgdir/etc/php/conf.d/00-ioncube_loader.ini"
 }
