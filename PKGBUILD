@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 groups=('selinux')
 depends=('glibc' 'sh' 'libselinux')
-conflicts=("${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 url="http://www.gnu.org/software/findutils"
 source=("ftp://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz"{,.sig}
         "http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/${pkgname/-selinux}/files/${pkgname/-selinux}-${pkgver}-selinux.diff")

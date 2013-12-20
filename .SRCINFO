@@ -12,7 +12,9 @@ pkgbase = findutils-selinux
 	depends = sh
 	depends = libselinux
 	provides = findutils=4.4.2-5
+	provides = selinux-findutils=4.4.2-5
 	conflicts = findutils
+	conflicts = selinux-findutils
 	source = ftp://ftp.gnu.org/pub/gnu/findutils/findutils-4.4.2.tar.gz
 	source = ftp://ftp.gnu.org/pub/gnu/findutils/findutils-4.4.2.tar.gz.sig
 	source = http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/findutils/files/findutils-4.4.2-selinux.diff
