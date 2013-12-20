@@ -2,7 +2,7 @@
 
 pkgname=eigen3topython-git
 _name=eigen3topython
-pkgver=20131219
+pkgver=20131221
 pkgver() {
   date +%Y%m%d
 }
@@ -14,7 +14,7 @@ license=('GPLv3')
 depends=('python2' 'eigen3')
 makedepends=('doxygen' 'cmake' 'git' 'pkg-config')
 provides=('eigen3topython')
-source=("${_name}::git+https://github.com/jorisv/Eigen3ToPython")
+source=("${_name}::git+https://github.com/bchretien/Eigen3ToPython")
 md5sums=('SKIP')
 
 build()
