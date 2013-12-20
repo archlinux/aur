@@ -7,7 +7,9 @@ pkgbase = pambase-selinux
 	groups = selinux
 	license = GPL
 	provides = pambase=20130928-1
+	provides = selinux-pambase=20130928-1
 	conflicts = pambase
+	conflicts = selinux-pambase
 	backup = etc/pam.d/system-auth
 	backup = etc/pam.d/system-local-login
 	backup = etc/pam.d/system-login

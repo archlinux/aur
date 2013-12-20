@@ -11,8 +11,8 @@ arch=('any')
 url="http://www.archlinux.org"
 license=('GPL')
 groups=('selinux')
-conflicts=("${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=('system-auth'
         'system-local-login'
         'system-login'
