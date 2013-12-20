@@ -15,8 +15,8 @@ url="http://www.sudo.ws/sudo/"
 license=('custom')
 groups=('selinux')
 depends=('glibc' 'pam-selinux' 'libselinux')
-conflicts=("${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=('etc/sudoers' 'etc/pam.d/sudo')
 source=(http://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.pam)
