@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.12
-pkgver=3.12.5
+pkgver=3.12.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,9 +20,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch')
 md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
-         '70e456d21f7e7c0dc2f9bd170f1ae4ee'
-         '798bca5d2f0a1505c9b86a5227a2b339'
-         '8cd452ae4f74f11dc09b25a0270b07f1'
+         '9e75be8b127e58f1a76c0015eabb12ae'
+         '5259c05d5791002e81cb6eca368caa60'
+         'a884d449ea454a75e9d0b6165336734c'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          'd50c1ac47394e9aec637002ef3392bd1')
@@ -31,9 +31,9 @@ _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# 2fd43e3edc671c61e043a5c0b3b2a1f0  /lib/modules/3.12.0-1-ARCH/modules.symbols
+# 23ef8d9dae0c916c9e1a7a07b77f797d  /lib/modules/3.12.6-1-ARCH/modules.symbols
 # i686
-# e98940249665dbfa380cfdbbacf6c6b8  /lib/modules/3.12.0-1-ARCH/modules.symbols
+# eadbff034e17f92ccb4a7737302f3dbd  /lib/modules/3.12.6-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
