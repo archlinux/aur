@@ -9,7 +9,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.55.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=4
 url="http://www.boost.org/"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -49,7 +49,7 @@ build() {
    for _tool in bcp inspect quickbook compiler_status process_jam_log wave; do
       "${_stagedir}"/bin/b2 --toolset=gcc cflags="${CPPFLAGS} ${CFLAGS} -std=gnu++11 -O3" linkflags="${LDFLAGS}" $_tool
    done
-   "${_stagedir}"/bin/b2 --toolset=gcc cflags="${CPPFLAGS} ${CFLAGS} -std=gnu++11 -O3" linkflags="${LDFLAGS}" library_status
+   "${_stagedir}"/bin/b2 --toolset=gcc cflags="${CPPFLAGS} ${CFLAGS} -O3" linkflags="${LDFLAGS}" library_status
    popd
    cp -a dist/bin/* "${_stagedir}"/bin
 
@@ -71,7 +71,7 @@ build() {
       link=shared,static \
       toolset=gcc \
       python=2.7 \
-      cflags="${CPPFLAGS} ${CFLAGS} -std=gnu++11 -O3" linkflags="${LDFLAGS}" \
+      cflags="${CPPFLAGS} ${CFLAGS} -O3" linkflags="${LDFLAGS}" \
       --layout=system \
       --prefix="${_stagedir}" \
       ${JOBS} \
