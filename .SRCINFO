@@ -13,7 +13,9 @@ pkgbase = shadow-selinux
 	depends = acl
 	depends = libselinux
 	provides = shadow=4.1.5.1-7
+	provides = selinux-shadow=4.1.5.1-7
 	conflicts = shadow
+	conflicts = selinux-shadow
 	options = strip
 	options = debug
 	backup = etc/login.defs
