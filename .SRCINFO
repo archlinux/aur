@@ -19,9 +19,11 @@ pkgbase = util-linux-selinux
 	provides = util-linux-ng=2.24
 	provides = eject
 	provides = util-linux=2.24-
+	provides = selinux-util-linux=2.24-
 	conflicts = util-linux-ng
 	conflicts = eject
 	conflicts = util-linux
+	conflicts = selinux-util-linux
 	options = strip
 	options = debug
 	backup = etc/pam.d/chfn
