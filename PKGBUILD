@@ -11,6 +11,8 @@ arch=('any')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 depends=('python2')
+conflicts=("selinux-usr-${pkgname}")
+provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('438c246bdc6b3cf1b12116831f4c601aaae6e93decb007dddab212a3c88781b0')
 
