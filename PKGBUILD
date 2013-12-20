@@ -14,6 +14,8 @@ groups=('selinux')
 depends=('libsemanage>=2.2' 'libcgroup' 'dbus-glib' 'python2-ipy' 'setools'
          'sepolgen')
 optdepends=('hicolor-icon-theme: needed for graphical tools')
+conflicts=("selinux-usr-${pkgname}")
+provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
 source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgver}.tar.gz"
         'restorecond.service')

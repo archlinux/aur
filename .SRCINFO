@@ -14,6 +14,8 @@ pkgbase = policycoreutils
 	depends = setools
 	depends = sepolgen
 	optdepends = hicolor-icon-theme: needed for graphical tools
+	provides = selinux-usr-policycoreutils=2.2.1-1
+	conflicts = selinux-usr-policycoreutils
 	options = !emptydirs
 	source = http://userspace.selinuxproject.org/releases/20131030/policycoreutils-2.2.1.tar.gz
 	source = restorecond.service
