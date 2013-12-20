@@ -11,6 +11,8 @@ url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
 depends=('libsepol>=2.2' 'python2' 'python' 'swig' 'ruby')
+conflicts=("selinux-usr-${pkgname}")
+provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
 source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('e9dc64216543a7283d786f623ac28e8867f8794138e7deba474a3aa8d02dce33')
