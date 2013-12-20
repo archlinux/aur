@@ -12,6 +12,8 @@ license=('GPL')
 groups=('selinux')
 depends=('glibc')
 options=(staticlibs)
+conflicts=("selinux-usr-${pkgname}")
+provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('77a4b27006295805bdbd7f240038cb32a49be1d60847d413899501702933fc0f')
 
