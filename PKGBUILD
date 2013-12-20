@@ -16,8 +16,8 @@ makedepends=('linux-selinux-headers')
 depends=('krb5' 'openssl' 'libedit' 'ldns' 'libselinux')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
-conflicts=("${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
+conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"
         'sshdgenkeys.service'

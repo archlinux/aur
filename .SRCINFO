@@ -17,7 +17,9 @@ pkgbase = openssh-selinux
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
 	provides = openssh=6.3p1-1
+	provides = selinux-openssh=6.3p1-1
 	conflicts = openssh
+	conflicts = selinux-openssh
 	backup = etc/ssh/ssh_config
 	backup = etc/ssh/sshd_config
 	backup = etc/pam.d/sshd
