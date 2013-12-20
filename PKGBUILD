@@ -2,7 +2,7 @@
 
 pkgname=spacevecalg-git
 _name=spacevecalg
-pkgver=20131219
+pkgver=20131221
 pkgver() {
   date +%Y%m%d
 }
@@ -14,7 +14,7 @@ license=('GPLv3')
 depends=('eigen3' 'python2')
 makedepends=('doxygen' 'cmake' 'git' 'pkg-config' 'boost')
 provides=('spacevecalg')
-source=("${_name}::git+https://github.com/jorisv/SpaceVecAlg")
+source=("${_name}::git+https://github.com/bchretien/SpaceVecAlg")
 md5sums=('SKIP')
 
 build()
