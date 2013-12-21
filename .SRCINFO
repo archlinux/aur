@@ -1,6 +1,6 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
-	pkgver = 4.4_r01
+	pkgver = 4.4.2_r02
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = android-platform
 	provides = android-platform-19
 	conflicts = android-platform-19
 	options = !strip
-	source = http://dl.google.com/android/repository/android-19_r01.zip
-	sha1sums = 96281811998272dce46e8285d15fce444a3d5a96
+	source = http://dl.google.com/android/repository/android-19_r02.zip
+	sha1sums = fb87a779320bcb8a0a0932f6db8843ba72d1993b
 
 pkgname = android-platform
 
