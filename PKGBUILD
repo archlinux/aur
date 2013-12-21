@@ -4,7 +4,7 @@
 # Contributor: angelux/xangelux (xangelux <at> gmail <dot> com)
 
 pkgname=policycoreutils
-pkgver=2.2.1
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
 source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgver}.tar.gz"
         'restorecond.service')
-sha256sums=('102dbddcb1daaba7d55cbbb0843f7a9f1727d63a83e43e15edb77116115bf646'
+sha256sums=('bbf850a8c3c2f371f439d6525663eecdd3a737acd594d2f27f8d8f3a07830cc4'
             '20572c2cc09c8af5239f26cfea3eb2648d87d9927e55791f13572ea2184e857e')
 
 prepare() {
