@@ -3,8 +3,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=1.9.1
-pkgrel=4
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -21,7 +21,7 @@ optdepends=('bullet>=2.81: Bullet support'
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="${pkgname}.install"
 source=(http://gazebosim.org/assets/distributions/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('4f673d7f5daef456f871647d582ff493')
+md5sums=('9fce4ee44ff496f412b18acf656e6dcf')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

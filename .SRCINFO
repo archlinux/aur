@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 1.9.1
-	pkgrel = 4
+	pkgver = 1.9.2
+	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = gazebo
 	optdepends = cegui-0.7>=0.7.5: Design custom graphical interfaces
 	optdepends = ffmpeg>=0.8.3: Playback movies on textured surfaces
 	optdepends = urdfdom: Load URDF files
-	source = http://gazebosim.org/assets/distributions/gazebo-1.9.1.tar.bz2
-	md5sums = 4f673d7f5daef456f871647d582ff493
+	source = http://gazebosim.org/assets/distributions/gazebo-1.9.2.tar.bz2
+	md5sums = 9fce4ee44ff496f412b18acf656e6dcf
 
 pkgname = gazebo
 
