@@ -1,0 +1,1 @@
+update_pkgver=$(wget -q -O- https://github.com/didier13150/kvirtual/releases | grep -m1 -ie 'releases\/tag' | sed 's,.*tag\/v\([0-9a-z\.]*\)".*,\1,')
