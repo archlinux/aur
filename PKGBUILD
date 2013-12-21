@@ -4,7 +4,7 @@
 
 pkgname=gazebo
 pkgver=1.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -29,6 +29,9 @@ build() {
   # Create build directory
   mkdir -p build && cd build
 
+  # Adapt paths for Ogre 1.8
+  export PKG_CONFIG_PATH="/opt/OGRE-1.8/lib/pkgconfig:$PKG_CONFIG_PATH"
+
   # Run CMake. We skip unit tests.
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DENABLE_TESTS_COMPILATION:BOOL=False
@@ -40,6 +43,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
+
+  # Add paths for OGRE-1.8
+  echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo/setup.sh
+  echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo-1.9/setup.sh
 }
 
 # vim:set ts=2 sw=2 et:
