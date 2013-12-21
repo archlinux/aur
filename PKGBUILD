@@ -9,8 +9,7 @@ url='https://projects.kde.org/projects/frameworks/kinit'
 license=('LGPL')
 depends=('kio')
 makedepends=('extra-cmake-modules' 'git')
-conflicts=('kinit')
-provides=('kinit')
+groups=('kf5')
 source=('git://anongit.kde.org/kinit.git')
 md5sums=('SKIP')
 
