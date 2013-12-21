@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit
-pkgver=r5.b0c35ad
+pkgver=r6.8ae5a97
 pkgrel=1
 pkgdesc='KInit'
 arch=('i686' 'x86_64')
