@@ -27,7 +27,7 @@ build() {
   cd build
   cmake ../kinit \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/opt/kf5 \
     -DLIB_INSTALL_DIR=lib \
     -DBUILD_TESTING=OFF
   make
