@@ -1,6 +1,6 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.00.1282.g5ae5c54
+	pkgver = 2.02.beta1
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gnu.org/software/grub/
@@ -9,12 +9,11 @@ pkgbase = grub
 	arch = i686
 	license = GPL3
 	makedepends = git
-	makedepends = bzr
 	makedepends = rsync
 	makedepends = xz
 	makedepends = freetype2
 	makedepends = ttf-dejavu
-	makedepends = python2
+	makedepends = python
 	makedepends = autogen
 	makedepends = texinfo
 	makedepends = help2man
@@ -46,24 +45,24 @@ pkgbase = grub
 	backup = boot/grub/grub.cfg
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = grub-2.00::git+git://git.sv.gnu.org/grub.git#commit=5ae5c54c7e5cb048cdd78a53181cee0da698a953
-	source = http://unifoundry.com/unifont-5.1.20080820.bdf.gz
-	source = archlinux_grub_mkconfig_fixes.patch
+	source = grub-2.02::git+git://git.sv.gnu.org/grub.git#tag=grub-2.02-beta1
+	source = grub-extras::git+git://git.sv.gnu.org/grub-extras.git#branch=master
+	source = http://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz
+	source = http://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz.sig
+	source = grub-add-GRUB_COLOR_variables.patch
+	source = 10_archlinux
 	source = 60_memtest86+
 	source = grub.default
 	source = grub.cfg
-	source = grub-extras-915resolution::bzr+bzr://bzr.savannah.gnu.org/grub-extras/915resolution/#revision=
-	source = grub-extras-lua::bzr+bzr://bzr.savannah.gnu.org/grub-extras/lua/#revision=
-	source = grub-extras-ntldr-img::bzr+bzr://bzr.savannah.gnu.org/grub-extras/ntldr-img/#revision=
 	md5sums = SKIP
-	md5sums = 6b8263ceccef33bd633aa019d74b7943
-	md5sums = b9cbff4a67e463722a113c66d57c4042
+	md5sums = SKIP
+	md5sums = 728b7439ac733a7c0d56049adec364c7
+	md5sums = SKIP
+	md5sums = e506ae4a9f9f7d1b765febfa84e10d48
+	md5sums = b7f3fc13d5afcb1e6f7d49010025b725
 	md5sums = be55eabc102f2c60b38ed35c203686d6
 	md5sums = a03ffd56324520393bf574cefccb893d
 	md5sums = c8b9511586d57d6f2524ae7898397a46
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
 
 pkgname = grub
 
