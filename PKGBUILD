@@ -10,12 +10,14 @@ depends=('picard')
 conflicts=('picard-plugins<1.1')
 # removed due to crashes:
 #https://raw.github.com/mineo/mbstuff/master/picard/plugins/cue.py
+# previous location (only temporarily offline?)
+#http://kalou.net/unix/picard/metaflac_rgscan.py
 source=(
 https://raw.github.com/mineo/mbstuff/master/picard/plugins/padded.py
 https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titlesort.py
 https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titleversion.py
 https://raw.github.com/weisslj/picardplugins/master/f2k_rgscan.py
-http://kalou.net/unix/picard/metaflac_rgscan.py
+http://kraehen.org/mb/metaflac_rgscan.py
 http://sites.google.com/site/tonyflaks/sidecar.py
 https://raw.github.com/voiceinsideyou/picard/plugins/contrib/plugins/removeperfectalbums.py
 https://raw.github.com/encukou/picard-plugins/master/autosave.py
