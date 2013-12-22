@@ -1,13 +1,13 @@
 # Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=59.228d379
+pkgver=113.7d3553d
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
 url="http://www.sourceforge.net/projects/blitz/"
 license=('GPL2')
-depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-cvs')
+depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-cvs' 'python2' 'python2-numpy')
 makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('cppqed')

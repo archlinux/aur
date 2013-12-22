@@ -1,5 +1,5 @@
 pkgbase = cppqed-git
-	pkgver = 59.228d379
+	pkgver = 113.7d3553d
 	pkgrel = 1
 	url = http://www.sourceforge.net/projects/blitz/
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = cppqed-git
 	depends = boost
 	depends = blitz-cppqed-hg
 	depends = flens-cvs
+	depends = python2
+	depends = python2-numpy
 	provides = cppqed
 	conflicts = cppqed
 	source = cppqed-git::git://git.code.sf.net/p/cppqed/cppqed#branch=Development
