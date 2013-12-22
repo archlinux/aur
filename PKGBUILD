@@ -10,16 +10,16 @@ pkgdesc="Upload the coverage report of C/C++ project to coveralls.io."
 arch=('i686' 'x86_64')
 url='https://github.com/eddyxu/cpp-coveralls'
 license=('Apache')
-depends=('python2')
+depends=('python' 'python-requests' 'python-setuptools')
 source=("$pkgname"::'git://github.com/eddyxu/cpp-coveralls.git'#commit=${_commit})
 sha1sums=('SKIP')
 
 build() {
     cd ${pkgname}
-    python2 setup.py build
+    python3 setup.py build
 }
 
 package() {
     cd ${srcdir}/${pkgname}
-    python2 setup.py install -O1 --skip-build --root "${pkgdir}" --prefix=/usr
+    python3 setup.py install -O1 --skip-build --root "${pkgdir}" --prefix=/usr
 }

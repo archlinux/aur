@@ -6,7 +6,9 @@ pkgbase = cpp-coveralls
 	arch = i686
 	arch = x86_64
 	license = Apache
-	depends = python2
+	depends = python
+	depends = python-requests
+	depends = python-setuptools
 	source = cpp-coveralls::git://github.com/eddyxu/cpp-coveralls.git#commit=e117aa76e5f55bef7630d200cdfdd19550d4a9a8
 	sha1sums = SKIP
 
