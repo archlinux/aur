@@ -1,0 +1,16 @@
+pkgbase = ocaml-ounit
+	pkgdesc = Unit testing framework for OCaml
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = http://ounit.forge.ocamlcore.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ocaml-findlib
+	depends = ocaml
+	options = !strip
+	source = http://forge.ocamlcore.org/frs/download.php/886/ounit-1.1.2.tar.gz
+	md5sums = 14e4d8ee551004dbcc1607f438ef7d83
+
+pkgname = ocaml-ounit
+
