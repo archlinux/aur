@@ -1,6 +1,6 @@
 pkgbase = bitcasa
 	pkgdesc = Infinite Storage in the cloud
-	pkgver = 0.9.9.125
+	pkgver = 0.9.9.126
 	pkgrel = 1
 	url = http://www.bitcasa.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = bitcasa
 	makedepends = binutils
 	makedepends = tar
 	depends = fuse
-	source = http://dist.bitcasa.com/release/apt/pool/main/b/bitcasa/bitcasa_0.9.9.125_i386.deb
+	source = http://dist.bitcasa.com/release/apt/pool/main/b/bitcasa/bitcasa_0.9.9.126_i386.deb
 	source = LICENSE
-	sha256sums = 193e51df065257ec1dd9481da54407ecc597b5fac819c1977d51959e78df2da4
+	sha256sums = 83e50d0352378824f415a4801c8dcddd06b8a490d7b461b61fe7ff263dd0fe38
 	sha256sums = c08193ed3cda1f08d4cbdab2d36b746b33947ae218b967c66eac19427f96d4f2
 
 pkgname = bitcasa

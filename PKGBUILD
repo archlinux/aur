@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/bitcasa
 
 pkgname=bitcasa
-pkgver=0.9.9.125
+pkgver=0.9.9.126
 pkgrel=1
 pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64' 'i686')
@@ -17,10 +17,10 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  '193e51df065257ec1dd9481da54407ecc597b5fac819c1977d51959e78df2da4' # bitcasa_0.9.9.125_i368.deb
+  '83e50d0352378824f415a4801c8dcddd06b8a490d7b461b61fe7ff263dd0fe38' # bitcasa_0.9.9.126_i386.deb
   'c08193ed3cda1f08d4cbdab2d36b746b33947ae218b967c66eac19427f96d4f2' # LICENSE
 )
-[ "$CARCH" = "x86_64" ] && sha256sums[0]='02fabc5eb332fa55d30056ed895453c3538bc258f65088b63266e2237c4d7dd4' # bitcasa_0.9.9.125_amd64.deb
+[ "$CARCH" = "x86_64" ] && sha256sums[0]='174c944cf8c67b17f8894c184419d16420c625616271434df575399877e0f9fb' # bitcasa_0.9.9.126_amd64.deb
 
 build() {
   cd $srcdir/
