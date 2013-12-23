@@ -1,4 +1,5 @@
-# Maintainer: Serge Zirukin <ftrvxmtrx@gmail.com>
+# Maintainer: Marek Kubica <marek@xivilization.net>
+# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: Thomas S Hatch <thatch45 at gmail dot com>
 # Contributor: Sebastian Wiesner <lunaryorn googlemail com>
@@ -7,8 +8,8 @@
 
 pkgname=ocaml-ounit
 _pkgname=ounit
-pkgver=1.1.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
 pkgdesc="Unit testing framework for OCaml"
@@ -16,8 +17,8 @@ url="http://ounit.forge.ocamlcore.org"
 depends=('ocaml')
 makedepends=('ocaml-findlib')
 options=('!strip')
-source=("http://forge.ocamlcore.org/frs/download.php/886/$_pkgname-$pkgver.tar.gz")
-md5sums=('14e4d8ee551004dbcc1607f438ef7d83')
+source=("http://forge.ocamlcore.org/frs/download.php/1258/$_pkgname-$pkgver.tar.gz")
+sha512sums=('e12c8fb534ef88de7a83a34e5a578060a90abfce601d8532408412a56e843f69b89cfd6ce69bd7c5519e9a04e306d46339e9b8f13975727a3458afe20cd776d0')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

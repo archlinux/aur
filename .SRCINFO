@@ -1,7 +1,7 @@
 pkgbase = ocaml-ounit
 	pkgdesc = Unit testing framework for OCaml
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = http://ounit.forge.ocamlcore.org
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ocaml-ounit
 	makedepends = ocaml-findlib
 	depends = ocaml
 	options = !strip
-	source = http://forge.ocamlcore.org/frs/download.php/886/ounit-1.1.2.tar.gz
-	md5sums = 14e4d8ee551004dbcc1607f438ef7d83
+	source = http://forge.ocamlcore.org/frs/download.php/1258/ounit-2.0.0.tar.gz
+	sha512sums = e12c8fb534ef88de7a83a34e5a578060a90abfce601d8532408412a56e843f69b89cfd6ce69bd7c5519e9a04e306d46339e9b8f13975727a3458afe20cd776d0
 
 pkgname = ocaml-ounit
 
