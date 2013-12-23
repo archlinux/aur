@@ -3,23 +3,24 @@
 
 pkgname=efl-git
 _pkgname=${pkgname%-*}
-pkgver=1.8.99.23936.30687d4
+pkgver=1.8.99.24061.3082bbc
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
-depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland'
+depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland' 'avahi'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
-         'libgl' 'libwebp' 'libpulse' 'libexif' 'gstreamer0.10-base'
+         'libgl' 'libwebp' 'libpulse' 'libexif' 'gst-plugins-base-libs'
          'fribidi' 'harfbuzz' 'fontconfig')
   [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
 makedepends=('git' 'python2')
 optdepends=('python2: compare Eina benchmarks'
-            'gstreamer0.10-good: Access more types of video in Emotion'
-            'gstreamer0.10-bad: Access more types of video in Emotion'
-            'gstreamer0.10-ugly: Access more types of video in Emotion'
-            'gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion'
+            'gst-plugins-base: Access more types of video in Emotion'
+            'gst-plugins-good: Access more types of video in Emotion'
+            'gst-plugins-bad: Access more types of video in Emotion'
+            'gst-plugins-ugly: Access more types of video in Emotion'
+            'gst-libav: Access video with ffmpeg/libav in Emotion'
             'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
 provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$pkgver"
           "efreet=$pkgver" "eina=$pkgver" "eio=$pkgver" "embryo=$pkgver" "emotion=$pkgver"

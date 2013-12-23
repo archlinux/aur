@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
-	pkgver = 1.8.99.23936.30687d4
+	pkgver = 1.8.99.24061.3082bbc
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -18,6 +18,7 @@ pkgbase = efl-git
 	depends = shared-mime-info
 	depends = libxkbcommon
 	depends = wayland
+	depends = avahi
 	depends = libxcomposite
 	depends = libxcursor
 	depends = libxinerama
@@ -28,31 +29,32 @@ pkgbase = efl-git
 	depends = libwebp
 	depends = libpulse
 	depends = libexif
-	depends = gstreamer0.10-base
+	depends = gst-plugins-base-libs
 	depends = fribidi
 	depends = harfbuzz
 	depends = fontconfig
 	depends = openjpeg
 	optdepends = python2: compare Eina benchmarks
-	optdepends = gstreamer0.10-good: Access more types of video in Emotion
-	optdepends = gstreamer0.10-bad: Access more types of video in Emotion
-	optdepends = gstreamer0.10-ugly: Access more types of video in Emotion
-	optdepends = gstreamer0.10-ffmpeg: Access video with ffmpeg in Emotion
+	optdepends = gst-plugins-base: Access more types of video in Emotion
+	optdepends = gst-plugins-good: Access more types of video in Emotion
+	optdepends = gst-plugins-bad: Access more types of video in Emotion
+	optdepends = gst-plugins-ugly: Access more types of video in Emotion
+	optdepends = gst-libav: Access video with ffmpeg/libav in Emotion
 	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
-	provides = ecore=1.8.99.23936.30687d4
-	provides = eldbus=1.8.99.23936.30687d4
-	provides = edje=1.8.99.23936.30687d4
-	provides = eet=1.8.99.23936.30687d4
-	provides = eeze=1.8.99.23936.30687d4
-	provides = efreet=1.8.99.23936.30687d4
-	provides = eina=1.8.99.23936.30687d4
-	provides = eio=1.8.99.23936.30687d4
-	provides = embryo=1.8.99.23936.30687d4
-	provides = emotion=1.8.99.23936.30687d4
-	provides = ephysics=1.8.99.23936.30687d4
-	provides = ethumb=1.8.99.23936.30687d4
-	provides = evas=1.8.99.23936.30687d4
-	provides = efl=1.8.99.23936.30687d4
+	provides = ecore=1.8.99.24061.3082bbc
+	provides = eldbus=1.8.99.24061.3082bbc
+	provides = edje=1.8.99.24061.3082bbc
+	provides = eet=1.8.99.24061.3082bbc
+	provides = eeze=1.8.99.24061.3082bbc
+	provides = efreet=1.8.99.24061.3082bbc
+	provides = eina=1.8.99.24061.3082bbc
+	provides = eio=1.8.99.24061.3082bbc
+	provides = embryo=1.8.99.24061.3082bbc
+	provides = emotion=1.8.99.24061.3082bbc
+	provides = ephysics=1.8.99.24061.3082bbc
+	provides = ethumb=1.8.99.24061.3082bbc
+	provides = evas=1.8.99.24061.3082bbc
+	provides = efl=1.8.99.24061.3082bbc
 	conflicts = ecore
 	conflicts = edje
 	conflicts = eet
