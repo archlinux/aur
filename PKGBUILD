@@ -3,7 +3,7 @@
 pkgname=slim-xdm
 _pkgname=slim
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop-independent graphical login manager for X11 with XDM support"
 arch=('i686' 'x86_64')
 url="http://slim.berlios.de/"
@@ -13,7 +13,8 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=($_pkgname)
 replaces=($_pkgname 'wdm-slim')
 makedepends=('cmake' 'freeglut')
-backup=('etc/slim.conf' 'etc/logrotate.d/slim' 'etc/pam.d/slim')
+backup=('etc/slim.conf' 'etc/logrotate.d/slim' 'etc/pam.d/slim'
+        'etc/slimlock.conf')
 source=(http://download.berlios.de/$_pkgname/$_pkgname-$pkgver.tar.gz
         slim-$pkgver.patch
         slim.pam
@@ -51,6 +52,7 @@ package() {
 
   install -Dm644 "$srcdir/slim.pam" "$pkgdir/etc/pam.d/slim"
   install -Dm644 "$srcdir/slim.logrotate" "$pkgdir/etc/logrotate.d/slim"
+  install -Dm644 slimlock.conf "$pkgdir/etc/slimlock.conf"
 
   # Provide sane defaults
   sed -i -e 's|#xserver_arguments.*|xserver_arguments -nolisten tcp vt07|' \
