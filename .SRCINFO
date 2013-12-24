@@ -1,15 +1,16 @@
 pkgbase = sokobond
 	pkgdesc = A minimalist puzzle game about bonding chemical elements
 	pkgver = 20130411
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sokobond.com
 	arch = any
 	license = custom:commercial
-	depends = adobe-air
+	makedepends = unzip
+	depends = adobe-air-sdk
 	source = sokobond-bin
 	source = sokobond.desktop
 	source = sokobond.png
-	md5sums = f3edf9b80f109d83c7240ae01153de50
+	md5sums = 623d50caa3b22cf956c7b00a88f780f2
 	md5sums = f18ec1d1d3e2d8c51ef71f689153f8a3
 	md5sums = 58ee2375b470f7811ab26632b9f3d0ee
 
