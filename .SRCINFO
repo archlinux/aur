@@ -4,8 +4,10 @@ pkgbase = quake3-osp
 	pkgrel = 3
 	url = http://www.orangesmoothie.org/
 	arch = any
+	license = custom
 	depends = quake3
-	source = http://osp.jsmart.web.id/orangesmoothie/downloads/osp-Quake3-1.03a_full.zip
+	noextract = osp-Quake3-1.03a_full.zip
+	source = http://osp.dget.cc/orangesmoothie/downloads/osp-Quake3-1.03a_full.zip
 	md5sums = 8b2b4925cce1895067bc617b86c62ea5
 
 pkgname = quake3-osp
