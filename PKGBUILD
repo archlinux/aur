@@ -1,18 +1,18 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=ompl
-pkgver=0.12.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms"
 arch=('i686' 'x86_64')
 url="http://ompl.kavrakilab.org/"
 license=('BSD')
-depends=('boost-libs' 'python')
+depends=('boost-libs' 'python' 'python-matplotlib')
 makedepends=('boost' 'cmake')
 optdepends=('py++: Python binding'
             'ode: Plan using the Open Dynamics Engine')
 source=(https://bitbucket.org/ompl/ompl/downloads/${pkgname}-${pkgver}-Source.tar.gz)
-md5sums=('4e55ad95e45b99d854e70b805f1313f8')
+md5sums=('f022017e24905b2eb7e85d6611ef988f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
@@ -28,6 +28,14 @@ build() {
     -DOMPL_REGISTRATION=Off ..
   make
 }
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}-Source"
+
+  cd build
+  #make test
+}
+
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
