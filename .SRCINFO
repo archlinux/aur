@@ -11,7 +11,9 @@ pkgbase = mediaelch
 	depends = qt5-script
 	depends = quazip-qt5
 	source = http://www.mediaelch.de/releases/2.0.1/mediaelch-2.0.1.tar.gz
+	source = https://raw.github.com/Komet/MediaElch/506aedf2469acaf858b7d133e5c009da783a3264/main.cpp
 	sha256sums = 768a76e8754c4bc995fa12ace1b9a63dbead3d03a0ad45debff7d0ccbd520ae9
+	sha256sums = a2eb1dc91216efd5c542ea118dad9716f641e1d1081cf2d6e170d2090d4c7542
 
 pkgname = mediaelch
 
