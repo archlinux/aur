@@ -15,7 +15,7 @@ sha256sums=('768a76e8754c4bc995fa12ace1b9a63dbead3d03a0ad45debff7d0ccbd520ae9' '
 
 build() {
   cd "$srcdir/mediaelch-$pkgver/"
-  cp "$srcdir/main.cpp" "$srcdir/mediaelch-$pkgver/main.cpp"
+  cp "$srcdir/main.cpp" "$srcdir/mediaelch-$pkgver/main.cpp" # Using main.cpp right from github since it is easier than including a patch file
   qmake && make
 }
 
