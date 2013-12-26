@@ -1,0 +1,5 @@
+src/
+pkg/
+grantlee-qt5-git
+*.tar.xz
+*.tar.gz

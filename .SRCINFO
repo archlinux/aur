@@ -1,0 +1,19 @@
+pkgbase = grantlee-qt5-git
+	pkgdesc = Grantlee is a string template engine based on the Django template system.
+	pkgver = v5.0.0.13.g8b120f2
+	pkgrel = 1
+	url = http://www.grantlee.org
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-script
+	provides = grantlee-qt5
+	conflicts = grantlee-qt5
+	source = grantlee-qt5-git::git+https://github.com/steveire/grantlee.git
+	md5sums = SKIP
+
+pkgname = grantlee-qt5-git
+
