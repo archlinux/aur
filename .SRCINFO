@@ -3,14 +3,13 @@ pkgbase = quake3-cpma
 	pkgver = 1.48
 	pkgrel = 1
 	url = http://eu.promode.ru/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom
 	depends = quake3
 	source = quake3-cpma.launcher
 	source = http://promode.ru/files/cpma148-nomaps.zip
-	md5sums = ba3def87863a0199824902e271ae4968
-	md5sums = 9d0d0277b956bc0ce0cac1f4e49fca9b
+	sha256sums = 73307f10927bef8cd29000303e1448383d1003727121fd1f7840d6db98ddca92
+	sha256sums = 1f0aafcaa48a16880ab4541aaa8b9d017c6c0b90c8fc0b4de871f976c05598d5
 
 pkgname = quake3-cpma
 
