@@ -1,7 +1,7 @@
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=ioquake3-git
-pkgver=20130121
+pkgver=20131217.gbc2efc4
 pkgrel=1
 pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 files to play."
 url="http://ioquake3.org/"
@@ -14,51 +14,44 @@ provides=('quake3' 'ioquake3')
 replaces=('quake3-icculus-svn' 'ioquake3-svn')
 install=quake3.install
 source=('quake3.desktop' 'quake3.launcher' 'quake3ded.launcher' \
-'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run')
-md5sums=('9eca51e2b3ee3e0100944cba436a2a4c'
-         'ea5d99df80b41269523b34229fdf854d'
-         'ea5d99df80b41269523b34229fdf854d'
-         'c71fdddccb20e8fc393d846e9c61d685')
+'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run'
+'quake3::git://github.com/ioquake/ioq3.git')
+sha256sums=('12dbd31e9de1493642d120bfd1548dfc4935e47fec806003cfc04b9d84b85673'
+            '7f0806379b10a6cff248b647aeb67d89a8e954e51e7a633cfadeca9865d125e7'
+            '7f0806379b10a6cff248b647aeb67d89a8e954e51e7a633cfadeca9865d125e7'
+            'c36132c5556b35e01950f1e9c646235033a5130f87ad776ba2bc7becf4f4f186'
+            'SKIP')
 
-_gitroot=git://github.com/ioquake/ioq3.git
-_gitname=quake3
+pkgver() {
+    cd "${srcdir}/quake3"
+
+    git log -1 --format="%cd.g%h" --date=short | sed 's/-//g'
+}
+
+prepare() {
+    cd "${srcdir}/quake3"
+
+    # Patch Makefile to correct install path
+    /bin/sed -i "s:/usr/local/games/quake3:${pkgdir}/opt/quake3:" Makefile
+}
 
 build() {
-    cd $srcdir
-
-    msg "Connecting to GIT server...."
-
-    if [[ -d "$_gitname" ]]; then
-        cd "$_gitname" && git pull origin
-        msg "The local files are updated."
-    else
-        git clone "$_gitroot" "$_gitname"
-    fi
-
-    msg "GIT checkout done or server timeout"
-    msg "Starting build..."
-
-    rm -rf "$srcdir/$_gitname-build"
-    git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-    cd "$srcdir/$_gitname-build"
-
-    # Modify Makefile to correct install path
-    /bin/sed -i "s:/usr/local/games/quake3:$pkgdir/opt/quake3:" Makefile
+    cd "${srcdir}/quake3"
 
     # Compile ioQuake3
-    make || return 1
+    make
 }
 
 package() {
-    cd "$srcdir/$_gitname-build"
+    cd "${srcdir}/quake3"
 
     # Install Files
-    make copyfiles || return 1
+    make copyfiles
 
     # Extract Patch Files
-    cd $srcdir
-    chmod +x $srcdir/linuxq3apoint-1.32b-3.x86.run
-    $srcdir/linuxq3apoint-1.32b-3.x86.run --tar xf
+    cd "${srcdir}"
+    chmod +x "${srcdir}/linuxq3apoint-1.32b-3.x86.run"
+    "${srcdir}/linuxq3apoint-1.32b-3.x86.run" --tar xf
 
     # Modify Launcher Scripts
     if [ "$CARCH" = "x86_64" ]; then
@@ -66,40 +59,41 @@ package() {
         # x86_64 Systems
         #
         /bin/sed -i "s:IOQ3_BINARY:ioquake3.x86_64:" \
-            $srcdir/quake3.launcher
+            "${srcdir}/quake3.launcher"
         /bin/sed -i "s:IOQ3_BINARY:ioq3ded.x86_64:" \
-            $srcdir/quake3ded.launcher
+            "${srcdir}/quake3ded.launcher"
     else
         #
         # i686 Systems
         #
         /bin/sed -i "s:IOQ3_BINARY:ioquake3.i386:" \
-        $srcdir/quake3.launcher
+            "${srcdir}/quake3.launcher"
         /bin/sed -i "s:IOQ3_BINARY:ioq3ded.i386:" \
-        $srcdir/quake3ded.launcher
+            "${srcdir}/quake3ded.launcher"
     fi
 
     # Install Quake 3 Patch Files
-    install -m 644 $srcdir/baseq3/*.pk3 \
-        $pkgdir/opt/quake3/baseq3/
+    install -m 644 "${srcdir}"/baseq3/*.pk3 \
+        "${pkgdir}/opt/quake3/baseq3/"
 
     # Install Quake 3 Expansion Pack Patch Files
-    install -m 644 $srcdir/missionpack/*.pk3 \
-        $pkgdir/opt/quake3/missionpack/
+    install -m 644 "${srcdir}"/missionpack/*.pk3 \
+        "${pkgdir}/opt/quake3/missionpack/"
 
     # Install Launcher (Client)
-    install -D -m 755 $srcdir/quake3.launcher \
-        $pkgdir/usr/bin/quake3
+    install -D -m 755 "${srcdir}/quake3.launcher" \
+        "${pkgdir}/usr/bin/quake3"
 
     # Install Launcher (Server)
-    install -D -m 755 $srcdir/quake3ded.launcher \
-        $pkgdir/usr/bin/quake3ded
+    install -D -m 755 "${srcdir}/quake3ded.launcher" \
+        "${pkgdir}/usr/bin/quake3ded"
 
     # Install Desktop File
-    install -D -m 644 $srcdir/quake3.desktop \
-        $pkgdir/usr/share/applications/quake3.desktop
+    install -D -m 644 "${srcdir}/quake3.desktop" \
+        "${pkgdir}/usr/share/applications/quake3.desktop"
 
     # Install Icon File
-    install -D -m 644 $srcdir/quake3-build/misc/quake3.png \
-        $pkgdir/usr/share/pixmaps/quake3.png
+    install -D -m 644 "${srcdir}/quake3/misc/quake3.png" \
+        "${pkgdir}/usr/share/pixmaps/quake3.png"
 }
+
