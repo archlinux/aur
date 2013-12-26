@@ -1,6 +1,6 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=grantlee-git
-pkgver=v0.3.0.58.g374109a
+pkgver=v0.4.0.0.g358e826
 pkgrel=1
 pkgdesc="Grantlee is a string template engine based on the Django template system."
 arch=('i686' 'x86_64')
