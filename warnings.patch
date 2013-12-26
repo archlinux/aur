@@ -1,0 +1,31 @@
+diff -uNr ioquake3-1.36/code/botlib/l_precomp.c ioquake3-1.36fix/code/botlib/l_precomp.c
+--- ioquake3-1.36/code/botlib/l_precomp.c	2013-12-25 21:36:27.064643691 -0500
++++ ioquake3-1.36fix/code/botlib/l_precomp.c	2013-12-25 21:39:34.303087830 -0500
+@@ -1698,7 +1698,6 @@
+ 	int questmarkintvalue = 0;
+ 	float questmarkfloatvalue = 0;
+ 	int gotquestmarkvalue = qfalse;
+-	int lastoperatortype = 0;
+ 	//
+ 	operator_t operator_heap[MAX_OPERATORS];
+ 	int numoperators = 0;
+@@ -2087,7 +2086,6 @@
+ 		else Log_Write("result value = %f", v1->floatvalue);
+ #endif //DEBUG_EVAL
+ 		if (error) break;
+-		lastoperatortype = o->operator;
+ 		//if not an operator with arity 1
+ 		if (o->operator != P_LOGIC_NOT
+ 				&& o->operator != P_BIN_NOT)
+diff -uNr ioquake3-1.36/code/tools/lcc/cpp/tokens.c ioquake3-1.36fix/code/tools/lcc/cpp/tokens.c
+--- ioquake3-1.36/code/tools/lcc/cpp/tokens.c	2005-10-03 21:21:34.000000000 -0400
++++ ioquake3-1.36fix/code/tools/lcc/cpp/tokens.c	2013-12-25 21:38:45.329290465 -0500
+@@ -267,7 +267,7 @@
+ 	if (str)
+ 		fprintf(stderr, "%s ", str);
+ 	if (tp<trp->bp || tp>trp->lp)
+-		fprintf(stderr, "(tp offset %d) ", tp-trp->bp);
++		fprintf(stderr, "(tp offset %ld) ", (long int) (tp - trp->bp));
+ 	for (tp=trp->bp; tp<trp->lp && tp<trp->bp+32; tp++) {
+ 		if (tp->type!=NL) {
+ 			int c = tp->t[tp->len];
