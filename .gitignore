@@ -1,5 +1,2 @@
-src/
-pkg/
-*.pkg.tar.xz
-*.pkg.tar
-*.src.tar.gz
+quake3/
+linuxq3apoint-1.32b-3.x86.run
