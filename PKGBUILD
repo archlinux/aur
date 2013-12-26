@@ -1,6 +1,6 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=doxygen-git
-pkgver=Release_1_8_5.71.g94a299a
+pkgver=Release_1_8_6.1.g8f58d6d
 pkgrel=1
 pkgdesc="A documentation system for C++, C, Java, IDL and PHP - git version"
 arch=('i686' 'x86_64')
@@ -25,9 +25,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	./configure --prefix /usr --with-doxywizard
-	# Use python2 where necessary for doxywizard, instead of python (which is python3)
-	sed -i 's/^\(.*\)\.commands = python /\1.commands = python2 /' addon/doxywizard/doxywizard.pro
+	./configure --prefix /usr --with-doxywizard --python python2
 	make
 }
 
