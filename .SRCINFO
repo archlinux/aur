@@ -1,0 +1,24 @@
+pkgbase = doxygen-git
+	pkgdesc = A documentation system for C++, C, Java, IDL and PHP - git version
+	pkgver = Release_1_8_10.32.g45e153f
+	pkgrel = 1
+	url = http://www.doxygen.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = perl
+	makedepends = flex
+	makedepends = bison
+	makedepends = python2
+	depends = qt5-base
+	optdepends = graphviz: enable dot support
+	provides = doxygen
+	conflicts = doxygen
+	replaces = doxygen-svn
+	source = doxygen-git::git+https://github.com/doxygen/doxygen.git
+	md5sums = SKIP
+
+pkgname = doxygen-git
+

@@ -1,0 +1,5 @@
+src/
+pkg/
+doxygen-git
+*.tar.xz
+*.tar.gz
