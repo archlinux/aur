@@ -1,0 +1,14 @@
+pkgbase = enventor
+	pkgdesc = Editor for EDC files (edje/efl)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = elementary
+	source = http://download.enlightenment.org/rel/apps/enventor/enventor-0.1.tar.gz
+	sha256sums = b63fb458700e7d0bee5306fbabacc9d07d08edd60a80b994367dccb2c6a4e014
+
+pkgname = enventor
+
