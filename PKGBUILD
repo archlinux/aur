@@ -2,32 +2,34 @@
 # Contributor: Ondrej Martinak <omartinak@gmail.com>
 
 pkgname=sfml
-pkgver=2.1
+_commit=4a300547f3
+pkgver=2.1.0.$_commit
 pkgrel=1
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
 url='http://www.sfml-dev.org/'
 license=('zlib')
 depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2')
-makedepends=('mesa' 'cmake' 'doxygen')
+makedepends=('mesa' 'cmake' 'doxygen' 'git')
 install=sfml.install
-source=("${pkgname}-${pkgver}::https://github.com/LaurentGomila/SFML/archive/${pkgver}.tar.gz")
-md5sums=('6457a5903b156390012773e9ef33f65f')
+source=("git+https://github.com/LaurentGomila/SFML.git#commit=${_commit}")
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir"/SFML-${pkgver}
+  cd "$srcdir"/SFML
 
   mkdir build && cd build
   cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DSFML_BUILD_EXAMPLES=true \
-      -DSFML_BUILD_DOC=true
+      -DSFML_BUILD_EXAMPLES=1 \
+      -DSFML_BUILD_DOC=1 \
+      -DCMAKE_CXX_FLAGS="-DGLXContextID=XID $CXXFLAGS"
   make
   make doc
 }
 
 package() {
-  cd "$srcdir"/SFML-${pkgver}/build
+  cd "$srcdir"/SFML/build
 
   make DESTDIR="$pkgdir/" install
 
