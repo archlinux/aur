@@ -1,5 +1,4 @@
-src/
-pkg/
-*.pkg.tar.xz
-*.pkg.tar
-*.src.tar.gz
+botlib.patch
+warnings.patch
+linuxq3apoint-1.32b-3.x86.run
+ioquake3-1.36.tar.bz2
