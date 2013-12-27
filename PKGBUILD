@@ -4,17 +4,17 @@
 
 pkgname=perl-moosex-getopt
 pkgver=0.58
-pkgrel=1
+pkgrel=2
 pkgdesc='A Moose role for processing command line options'
 arch=('any')
 url='http://search.cpan.org/dist/MooseX-Getopt'
 license=('PerlArtistic' 'GPL')
+builddepends=('perl-module-build-tiny>=0.027')
 depends=('perl>=5.8.9'
 	'perl-getopt-long-descriptive>=0.081'
 	'perl-moose>=0.56'
 	'perl-moosex-role-parameterized'
-	'perl-try-tiny'
-	'perl-module-build-tiny>=0.027')
+	'perl-try-tiny')
 checkdepends=('perl-cpan-meta-check>=0.007'
 	'perl-module-runtime'
 	'perl-path-tiny>=0.009'
@@ -23,9 +23,8 @@ checkdepends=('perl-cpan-meta-check>=0.007'
 	'perl-test-fatal>=0.003'
 	'perl-test-requires' 
 	'perl-test-trap'
-	'perl-test-warnings'
-	'perl-config-any')
-source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.58.tar.gz)
+	'perl-test-warnings')
+source=(http://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Getopt-0.58.tar.gz)
 options=(!emptydirs)
 md5sums=('8dca84e633fdbac70c221620f3bfb8ab')
 
