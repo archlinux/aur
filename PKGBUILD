@@ -1,7 +1,7 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=sokobond
 pkgver=20130411
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist puzzle game about bonding chemical elements"
 arch=(any)
 url="http://www.sokobond.com"
@@ -13,7 +13,7 @@ source=("$pkgname-bin"
         "$pkgname.png")
 md5sums=('623d50caa3b22cf956c7b00a88f780f2'
          'f18ec1d1d3e2d8c51ef71f689153f8a3'
-         '58ee2375b470f7811ab26632b9f3d0ee')
+         '018765159d0ac8f32c422d50e282c59f')
 PKGEXT=.pkg.tar
 
 _archive="${pkgname}_linux_11042013.tar.gz"
