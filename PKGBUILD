@@ -2,9 +2,9 @@
 
 pkgname=qelly-git
 _pkgname=Qelly
-pkgver=1.0a2.11.g7ebcd1a
+pkgver=1.0b.5.g76c0435
 pkgrel=1
-pkgdesc="Qelly is a Qt port of Nally"
+pkgdesc="Beautiful cross-platform BBS client"
 arch=('x86_64' 'i686')
 url="https://github.com/uranusjr/Qelly"
 license=('GPL')
