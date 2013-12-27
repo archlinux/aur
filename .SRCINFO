@@ -1,5 +1,5 @@
 pkgbase = qelly
-	pkgdesc = Qelly is a Qt port of Nally
+	pkgdesc = Beautiful cross-platform BBS client
 	pkgver = 1.0b
 	pkgrel = 1
 	url = https://github.com/uranusjr/Qelly
