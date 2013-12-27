@@ -1,7 +1,7 @@
 pkgbase = uwm-git
 	pkgdesc = Micro (u) Window Manager
 	pkgver = 0.30.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://uwm.sourceforge.net/
 	arch = i686
 	arch = x86_64

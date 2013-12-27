@@ -2,7 +2,7 @@
 
 pkgname=uwm-git
 pkgver=0.30.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Micro (u) Window Manager"
 arch=('i686' 'x86_64')
 url="http://uwm.sourceforge.net/"
@@ -39,7 +39,7 @@ package() {
   install -Dm0644 uwm.1 "$pkgdir/usr/share/man/man1/uwm.1"
   install -Dm0644 uwmrc.5 "$pkgdir/usr/share/man/man5/uwmrc.5"
   install -Dm0644 contrib/uwmrc.example "$pkgdir/etc/X11/system.uwmrc"
-  install -Dm0644 contrib/uwm16x16.xpm "$pkgdir/usr/share/pixmaps/uwm.xpm"
+  install -Dm0644 contrib/uwm16x16.xpm "$pkgdir/usr/share/pixmaps/uwm16x16.xpm"
 }
 
 
