@@ -63,13 +63,13 @@ prepare() {
     echo -e -n "\n"
   }
   if [ "$ikey" = "i" -o "$ikey" = "I" ]; then
-    select_mode=$(dialog --clear --backtitle "$pkgname" --noitem --radiolist 'Specify revision based on:' 0 0 0 branch/commit on tag off  2>&1 >/dev/tty)
+    select_mode=$(dialog --keep-tite --backtitle "$pkgname" --noitem --radiolist 'Specify revision based on:' 0 0 0 branch/commit on tag off  2>&1 >/dev/tty)
     case $select_mode in
       "branch/commit")
         cd "$_src_dir"
         # Pick a branch - default is master… for now
         branches=( $(git ls-remote --heads origin  | sed 's?.*refs/heads/??' | awk '{printf $1; if ($1 == "master") printf " on ";else printf " off "}') )
-        branch=$(dialog --clear --backtitle "$pkgname" --no-items --radiolist 'Pick branch' 0 0 0 ${branches[*]} 2>&1 >/dev/tty)
+        branch=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Pick branch' 0 0 0 ${branches[*]} 2>&1 >/dev/tty)
         unset branches
         msg2 "Chosen \"${branch}\" branch "
         git checkout $branch -f
@@ -83,7 +83,7 @@ prepare() {
         done
         unset git_log
         commits[2]='on'
-        commit=$(dialog --clear --backtitle "$pkgname" --radiolist 'Pick commit' 0 0 0 "${commits[@]}" 2>&1 >/dev/tty)
+        commit=$(dialog --keep-tite --backtitle "$pkgname" --radiolist 'Pick commit' 0 0 0 "${commits[@]}" 2>&1 >/dev/tty)
         unset commits
         msg2 "Picked \"${commit}\" commit"
         git checkout  $commit -f
@@ -91,7 +91,8 @@ prepare() {
       "tag")
         cd "$_src_dir"
         tags=( $(git tag -l | tac | awk '{printf $1; if ($1 == "1.0.0RC1") printf " on ";else printf " off "}') )
-        tag=$(dialog --clear --backtitle "$pkgname" --no-items --radiolist 'Pick tag' 0 0 0 ${tags[*]} 2>&1 >/dev/tty)
+        tag=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Pick tag' 0 0 0 ${tags[*]} 2>&1 >/dev/tty)
+        msg2 "Picked \"${tag}\" tag"
         git checkout "tags/${tag}" -f
         ;;
       *)
