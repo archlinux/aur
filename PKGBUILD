@@ -72,8 +72,8 @@ prepare() {
     done
     # echo ${menu_lang_list[*]} # DEBUG ECHO!
     # Display dialog
-    selected_lang_list=$(dialog --clear --backtitle "$pkgname" --checklist 'Choose langpacks to include' 0 0 0 "${menu_lang_list[@]}" 2>&1 >/dev/tty)
-    msg2 "${selected_lang_list[*]} "
+    selected_lang_list=$(dialog --keep-tite --backtitle "$pkgname" --checklist 'Choose langpacks to include' 0 0 0 "${menu_lang_list[@]}" 2>&1 >/dev/tty)
+    msg2 "Selected LANG-packs: ${selected_lang_list[*]} "
     [ -z "${selected_lang_list[*]}" ] && error "Nothing was selected" && exit 1
   else
     [ -z "${sys_lang_list[*]}" ] && exit 1
