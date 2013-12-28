@@ -3,19 +3,18 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=slic3r
-pkgver=1.0.0RC1
-pkgrel=1
+pkgver=1.0.0RC2
+pkgrel=2
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
 license=('GPL')
 depends=('perl' 'perl-moo' 'perl-boost-geometry-utils'
-'perl-math-clipper' 'perl-math-convexhull'
-'perl-math-geometry-voronoi' 'perl-math-planepath'
-'perl-math-convexhull-monotonechain' 'perl-io-stringy'
-'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82'
-'perl-extutils-parsexs-aur')
-makedepends=('git')
+				 'perl-math-clipper' 'perl-math-convexhull'
+				 'perl-math-geometry-voronoi' 'perl-math-planepath'
+				 'perl-math-convexhull-monotonechain' 'perl-io-stringy'
+				 'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82'
+				 'perl-extutils-parsexs-aur')
 optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-xml-sax-expatxs: make AMF parsing faster'
@@ -28,16 +27,15 @@ provides=('slic3r')
 conflicts=('slic3r-git')
 #Consider uncommenting line below in case of false negative test results ;)
 #BUILDENV+=('!check')
-source=('slic3r.desktop'
-		'slic3r')
-md5sums=('cf0130330574a13b4372beb8f241d71e'
+source=("https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
+				'slic3r.desktop'
+				'slic3r')
+md5sums=('4d17d404ec09b71d75f92ccca8c7ee6d'
+         'cf0130330574a13b4372beb8f241d71e'
          'a30a96504f11c95956dd8ce645b77504')
 
-_gitroot="git://github.com/alexrj/Slic3r"
-_gitname="Slic3r"
-
 prepare() {
-  export _src_dir="$srcdir/$_gitname-build"
+  export _src_dir="$srcdir/Slic3r-$pkgver"
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
@@ -45,39 +43,13 @@ prepare() {
     MODULEBUILDRC=/dev/null
   export SLIC3R_NO_AUTO="true"
 
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname
-    git pull origin
-    msg "The local files are updated."
-    #TODO: check if it's the same origin
-  else
-    git clone --depth=1000 $_gitroot $_gitname
-  fi
-	cd $srcdir/$_gitname
-	pwd
-	git checkout 754e6ac74b3cdbd8f8a409291f39777432a0983a # 1.0.0RC1
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$_src_dir"
-  cp -R "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$_src_dir"
-
+	cd "$_src_dir"
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
 #  sed -i "s/        'Growl/\#&/" Build.PL
   sed -i '/Growl/d' Build.PL
 
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
-
-  # Why true? cuz pacman is crazy... and it still doesn't work as intended
-  true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
-  export _pkgver="$pkgver"
-  msg2 "Fetched $_pkgver"
 }
 
 build() {
@@ -106,22 +78,22 @@ check () {
 package () {
   cd "$_src_dir"
   install -d $pkgdir/usr/share/perl5/vendor_perl/
-  cp -R $srcdir/$_gitname-build/lib/* $pkgdir/usr/share/perl5/vendor_perl/
+  cp -R $srcdir/Slic3r-$pkgver/lib/* $pkgdir/usr/share/perl5/vendor_perl/
 
   install -d $pkgdir/usr/bin/vendor_perl/
-  install -m 755 $srcdir/$_gitname-build/slic3r.pl $pkgdir/usr/bin/vendor_perl/
+  install -m 755 $srcdir/Slic3r-$pkgver/slic3r.pl $pkgdir/usr/bin/vendor_perl/
 
   #TODO : Do something about utils ! (we let swiftgeek fix this)
-  #install -m 755 $srcdir/$_gitname-build/utils/*.pl $pkgdir/usr/bin/
-  #install -m 755 $srcdir/$_gitname-build/utils/post-processing/*.pl $pkgdir/usr/bin/
+  #install -m 755 $srcdir/Slic3r-$pkgver/utils/*.pl $pkgdir/usr/bin/
+  #install -m 755 $srcdir/Slic3r-$pkgver/utils/post-processing/*.pl $pkgdir/usr/bin/
 
   # ZSH autocompletion
   install -d "${pkgdir}/usr/share/zsh/site-functions"
-  install -m 0644 "$srcdir/$_gitname-build/utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/_slic3r.zsh"
+  install -m 0644 "$srcdir/Slic3r-$pkgver/utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/_slic3r.zsh"
 
   # Icons " current Build.PL is not really geared for installation "
   install -d $pkgdir/usr/bin/vendor_perl/var
-  install -m 644 $srcdir/$_gitname-build/var/*  $pkgdir/usr/bin/vendor_perl/var/
+  install -m 644 $srcdir/Slic3r-$pkgver/var/*  $pkgdir/usr/bin/vendor_perl/var/
 
   # Desktop icon
   install -d $pkgdir/usr/share/applications
