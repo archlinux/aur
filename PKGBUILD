@@ -56,7 +56,8 @@ prepare() {
 # TODO: ASK for disabling checks
 #------------------------------------------------------
 # Welcome new interactive config overlord
-  tty -s && {
+
+  [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s && {
     countdown 3 & countdown_pid=$!
     read -s -n 1 -t 3 ikey || true
     kill -s SIGHUP $countdown_pid > /dev/null || true # Any key below 1sec fix
