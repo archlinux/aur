@@ -54,25 +54,25 @@ prepare() {
   done
   msg "Matched LANGs: ${sys_lang_list[*]}"
   
-  tty -s && {
+  [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s && {
     countdown 10 & countdown_pid=$!
     read -s -n 1 -t 10 ikey || true
     kill -s SIGHUP $countdown_pid > /dev/null || true # Any key below 1sec fix
     echo -e -n "\n"
   }
 
-  if [ "$ikey" = "i" ]; then
+  if [ "$ikey" = "i" -o "$ikey" = "I" ]; then
     # Pre-select menu items
     for item in ${srv_lang_list[*]}; do
       if [[ " ${sys_lang_list[*]} " == *" ${item} "* ]]; then
-        menu_lang_list+=($item desc on)
+        menu_lang_list+=($item on)
       else
-        menu_lang_list+=($item desc off)
+        menu_lang_list+=($item off)
       fi
     done
     # echo ${menu_lang_list[*]} # DEBUG ECHO!
     # Display dialog
-    selected_lang_list=$(dialog --keep-tite --backtitle "$pkgname" --checklist 'Choose langpacks to include' 0 0 0 "${menu_lang_list[@]}" 2>&1 >/dev/tty)
+    selected_lang_list=$(dialog --keep-tite --backtitle "$pkgname" --no-items --checklist 'Choose langpacks to include' 0 0 0 "${menu_lang_list[@]}" 2>&1 >/dev/tty)
     msg2 "Selected LANG-packs: ${selected_lang_list[*]} "
     [ -z "${selected_lang_list[*]}" ] && error "Nothing was selected" && exit 1
   else
