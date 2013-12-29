@@ -114,17 +114,17 @@ build() {
     read -s -n 1 -t 10 ikey || true
     kill -s SIGHUP $countdown_pid
     echo -e -n "\n"
-    [[ "$ikey" != "i" ]] && false
+    [[ "$ikey" =~ ^[iI]$ ]] || false
     # BEGIN INTERACTIVE PART TODO: ADD OLDCONFIG OPTION WITH FILE SELECT
-    cfgway=$(dialog --keep-tite --backtitle "$pkgname" --radiolist 'Choose method to configure' 0 0 0 defconfig 'desc' off "menuconfig" 'desc' off 2>&1 >/dev/tty)
+    cfgway=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Choose method to configure' 0 0 0 'defconfig' off 'menuconfig' off 2>&1 >/dev/tty)
     msg2 "Chosen to configure with \"${cfgway}\""
     case "$cfgway" in
       defconfig)
         for i in $(ls ./defconfigs/); do
-          list_opts+=("$i" "desc" "off")
+          list_opts+=("$i" "off")
         done
         echo "${list_opts[@]}"
-        _selected_drivers=$(dialog --keep-tite --backtitle "$pkgname" --checklist 'Choose driver groups to compile' 0 0 0 "${list_opts[@]}" 2>&1 >/dev/tty)
+        _selected_drivers=$(dialog --keep-tite --backtitle "$pkgname" --no-items --checklist 'Choose driver groups to compile' 0 0 0 "${list_opts[@]}" 2>&1 >/dev/tty)
         msg2 "Selected drivers groups: ${_selected_drivers}"
         make "${_selected_drivers[@]/#/defconfig-}"
         ;;
