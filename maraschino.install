@@ -1,0 +1,26 @@
+MC_USER="maraschino"
+MC_GROUP="maraschino"
+MC_DIR="/usr/lib/maraschino"
+MC_SETTINGS_DIR="/var/lib/maraschino"
+
+## arg 1:  the new package version
+post_install() {
+    groupadd ${MC_GROUP} &> /dev/null
+    useradd -g ${MC_GROUP} -d ${MC_DIR} -s /bin/false ${MC_USER} &> /dev/null
+    chown -R ${MC_USER}:${MC_GROUP} ${MC_DIR}
+    chown -R ${MC_USER}:${MC_GROUP} ${MC_SETTINGS_DIR}
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    chown -R ${MC_USER}:${MC_GROUP} ${MC_DIR}
+    chown -R ${MC_USER}:${MC_GROUP} ${MC_SETTINGS_DIR}
+}
+
+## arg 1:  the old package version
+post_remove() {
+    userdel ${MC_USER} &> /dev/null
+    groupdel ${MC_GROUP} &> /dev/null || /bin/true
+}
+

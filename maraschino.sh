@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python2 /opt/maraschino/Maraschino.py "$@"
+python2 /usr/lib/maraschino/Maraschino.py "$@"

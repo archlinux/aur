@@ -1,13 +1,15 @@
 [Unit]
 Description=Maraschino Daemon
+After=network.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/maraschino
-ExecStart=/usr/bin/maraschino -d -p ${PORT}
-GuessMainPID=no
+ExecStart=/usr/bin/maraschino -d -p ${MC_PORT} --datadir ${MC_DATA} --pidfile /run/maraschino/maraschino.pid
+PIDFile=/run/maraschino/maraschino.pid
 Type=forking
-User=root
-Group=root
+User=maraschino
+Group=maraschino
 
 [Install]
 WantedBy=multi-user.target
+
