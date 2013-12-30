@@ -1,0 +1,17 @@
+pkgbase = ruby-mime-types-1
+	pkgdesc = This library allows for the identification of a file's likely MIME content type
+	pkgver = 1.25.1
+	pkgrel = 1
+	url = http://mime-types.rubyforge.org/
+	arch = any
+	license = MIT
+	license = Artistic 2.0
+	license = GPL-2
+	depends = ruby
+	noextract = mime-types-1.25.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mime-types-1.25.1.gem
+	sha1sums = 77b8adb876b2eda4877fc427093a4b1de578bc04
+
+pkgname = ruby-mime-types-1
+
