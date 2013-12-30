@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=git
+Type=Application
+Icon=gnome-mime-application-x-love-game
+Exec=supersonicball
+Terminal=false
+StartupNotify=false
+Name=Supersonic Ball
+GenericName=Arcade Game
+Comment=The crazy ball tunnel game
+Categories=Game;ArcadeGame;
