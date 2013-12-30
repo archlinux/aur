@@ -2,12 +2,12 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 pkgname=mcwm-git
 pkgver=20130209.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist floating window manager written on top of the XCB"
 arch=('i686' 'x86_64')
 url="http://hack.org/mc/hacks/mcwm/"
 license=('ISC')
-depends=('xcb-util' 'xcb-util-wm' 'xcb-util-keysyms')
+depends=('xcb-util-wm' 'xcb-util-keysyms')
 makedepends=('git')
 provides=('mcwm')
 conflicts=('mcwm')
@@ -25,7 +25,6 @@ prepare() {
 }
 build() {
   cd $pkgname
-  LDFLAGS+=" -Wl,--no-as-needed"
   make
 }
 package() {
