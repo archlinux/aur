@@ -1,15 +1,13 @@
 pkgbase = autorevision
 	pkgdesc = Extracts metadata about the head of a repository; useful for build scripts.
-	pkgver = 1.4
+	pkgver = 1.8
 	pkgrel = 1
 	url = http://www.catb.org/~esr/autorevision/
 	arch = any
 	license = BSD
 	makedepends = asciidoc
-	makedepends = markdown
-	depends = bash
-	source = http://www.catb.org/~esr/autorevision/autorevision-1.4.tgz
-	sha256sums = b573160aea1e46c9d0f67290e6a3faf8c8f9fbc71d7222ca1af54bb9ea39fc35
+	source = http://www.catb.org/~esr/autorevision/autorevision-1.8.tgz
+	sha256sums = fd5a82fe1017119bd277aca74ded6ef899baf636a5c1277c2cd4e12ffce8c90c
 
 pkgname = autorevision
 
