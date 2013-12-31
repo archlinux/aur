@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=mcwm
 pkgver=20130209.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist floating window manager written on top of the XCB"
 arch=('i686' 'x86_64')
 url="http://hack.org/mc/hacks/mcwm/"
