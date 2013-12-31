@@ -22,6 +22,8 @@ pkgver() {
 
 package() {
 	 cd "${srcdir}/${pkgname}"
+	 export PYTHONPATH="${pkgdir}/usr/lib/python2.7/site-packages"
+	 mkdir -p "$PYTHONPATH"
 	 python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
 	 # upstream horror #2: installing itself in:
