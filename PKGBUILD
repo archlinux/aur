@@ -1,31 +1,22 @@
-pkgname=pycollada-git
+gitname=pycollada
+pkgname=${gitname}-git
 pkgver=20130416
 pkgrel=1
 pkgdesc="A python COLLADA library. Can be used to create, edit and load COLLADA documents. "
 arch=('any')
-url="https://github.com/pycollada/pycollada"
+url="https://github.com/${gitname}/${gitname}"
 license=("BSD3")
 depends=('python2-lxml' 'python2-numpy' 'python2-dateutil' 'python2-distribute')
 makedepends=('git')
-
-_gitroot="git://github.com/pycollada/pycollada.git"
-_gitname="pycollada"
-
-prepare() {
-	 if [[ -d $_gitname ]] ; then
-		  cd "$_gitname" && git pull origin
-		  msg "The local files are updated."
-	 else
-		  git clone "$_gitroot" "$_gitname"
-	 fi
-}
+source=("git+${url}.git")
+md5sums=('SKIP')
 
 build() {
-	 cd "$_gitname"
+	 cd "${srcdir}/${gitname}"
 	 python2 setup.py build
 }
 
 package() {
-	 cd "$_gitname"
+	 cd "${srcdir}/${gitname}"
 	 python2 setup.py install --root="$pkgdir" --optimize=1
 }
