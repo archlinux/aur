@@ -5,7 +5,7 @@ pkgdesc="A python COLLADA library. Can be used to create, edit and load COLLADA 
 arch=('any')
 url="https://github.com/pycollada/pycollada"
 license=("BSD3")
-depends=('python-lxml' 'python-numpy' 'python-dateutil' 'python2-distribute')
+depends=('python2-lxml' 'python2-numpy' 'python2-dateutil' 'python2-distribute')
 makedepends=('git')
 
 _gitroot="git://github.com/pycollada/pycollada.git"
