@@ -1,8 +1,7 @@
-# Maintainer: Patrick Louis <patrick at unixhub dot net>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=mcwm-git
-pkgver=20130209.2.5
-pkgrel=2
+pkgver=20130209.2.r5.gc33df8a
+pkgrel=1
 pkgdesc="A minimalist floating window manager written on top of the XCB"
 arch=('i686' 'x86_64')
 url="http://hack.org/mc/hacks/mcwm/"
@@ -17,7 +16,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's,[-_],.,g;s,\.g.*$,,'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 prepare() {
   cd $pkgname
