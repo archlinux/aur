@@ -1,5 +1,5 @@
 pkgbase = pycollada-git
-	pkgdesc = A python COLLADA library. Can be used to create, edit and load COLLADA documents.
+	pkgdesc = Create, edit and load COLLADA documents in Python
 	pkgver = 20130416
 	pkgrel = 1
 	url = https://github.com/pycollada/pycollada
