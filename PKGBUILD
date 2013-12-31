@@ -1,6 +1,6 @@
 gitname=pycollada
 pkgname=${gitname}-git
-pkgver=20130416
+pkgver=277.afd44fd
 pkgrel=1
 pkgdesc="Create, edit and load COLLADA documents in Python"
 arch=('any')
@@ -10,6 +10,12 @@ depends=('python2-lxml' 'python2-numpy' 'python2-dateutil' 'python2-distribute')
 makedepends=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')
+
+pkgver() {
+	 cd "${srcdir}/${gitname}"
+	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	 printf "%s" "${ver//-/.}"
+}
 
 build() {
 	 cd "${srcdir}/${gitname}"

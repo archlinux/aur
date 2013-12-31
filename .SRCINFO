@@ -1,6 +1,6 @@
 pkgbase = pycollada-git
 	pkgdesc = Create, edit and load COLLADA documents in Python
-	pkgver = 20130416
+	pkgver = 277.afd44fd
 	pkgrel = 1
 	url = https://github.com/pycollada/pycollada
 	arch = any
