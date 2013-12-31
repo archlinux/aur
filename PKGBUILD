@@ -50,8 +50,7 @@ build() {
   cd "${srcdir}/${_srcname}"
   CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
   CXXFLAGS=${CXXFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
-  cpus=$(awk '/^processor/ {cpus++} END {print cpus}' /proc/cpuinfo)
-  [[ "$MAKEFLAGS" =~ -j[0-9]* ]] || MAKEFLAGS+=" -j${cpus:-1}"
+  [[ "$MAKEFLAGS" =~ -j[0-9]* ]] || MAKEFLAGS+=" -j$(nproc)"
   ionice -c 3 nice -n 19 make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
