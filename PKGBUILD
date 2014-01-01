@@ -4,7 +4,7 @@
 
 pkgname=gazebo
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -45,8 +45,8 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Add paths for OGRE-1.8
-  echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo/setup.sh
-  echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo-1.9/setup.sh
+  echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo/setup.sh
+  echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo-1.9/setup.sh
 }
 
 # vim:set ts=2 sw=2 et:
