@@ -20,6 +20,11 @@ pkgver() {
 	 printf "%s" "${ver//-/.}"
 }
 
+build() {
+	 cd "${srcdir}/${pkgname}"
+	 python2 setup.py build
+}
+
 package() {
 	 cd "${srcdir}/${pkgname}"
 	 export PYTHONPATH="${pkgdir}/usr/lib/python2.7/site-packages"
