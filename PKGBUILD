@@ -26,11 +26,8 @@ package() {
 	 mkdir -p "$PYTHONPATH"
 	 python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 </dev/null
 
-	 # upstream horror #2: installing itself in:
-	 #  /usr/lib/python2.7/site-packages/tests
-	 #  /usr/lib/python2.7/site-packages/scripts
-	 # This is mindblowingly stupid and prone to break something else.
-	 rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests
+	 # did the above PYTHONPATH hack cause these?
+#	 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/{easy-install.pth,site.py*}
 
 	 install -D -m644 {${srcdir},${pkgdir}/usr/share/pywikibot}/user-config.py
 }
