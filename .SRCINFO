@@ -1,7 +1,7 @@
 pkgbase = maraschinoproject-git
 	pkgdesc = Web-based frontend for XBMC, Sickbeard, Sabnzbd, and more.
 	pkgver = v0.3.0.r230.gf16c775
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.maraschinoproject.com/
 	install = maraschino.install
 	arch = any
@@ -12,10 +12,12 @@ pkgbase = maraschinoproject-git
 	source = maraschino.sh
 	source = maraschino.confd
 	source = maraschino.service
+	source = tmpfiles.d
 	source = maraschino::git+https://github.com/mrkipling/maraschino.git
 	sha256sums = b711e56f3275aa2e600a737471e2f3d8adc0eb7452e7fbf0937cb4584f939e48
 	sha256sums = 2f9073c6cddd6a73a1f156c9280da757c8ea64c0134da70696705794a8d38aa5
 	sha256sums = 51d8698cac6b8a4d70e71aaa6bda1dbc071a3beb77557b3c5abfb33a78e63b6b
+	sha256sums = b66d6b0411d98bbee914ac2ab1bc7be1a4a1ab58580d948207be9114b3ac2890
 	sha256sums = SKIP
 
 pkgname = maraschinoproject-git

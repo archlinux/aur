@@ -9,6 +9,7 @@ post_install() {
     useradd -g ${MC_GROUP} -d ${MC_DIR} -s /bin/false ${MC_USER} &> /dev/null
     chown -R ${MC_USER}:${MC_GROUP} ${MC_DIR}
     chown -R ${MC_USER}:${MC_GROUP} ${MC_SETTINGS_DIR}
+    usr/bin/systemd-tmpfiles --create maraschino.conf || true
 }
 
 ## arg 1:  the new package version
@@ -16,6 +17,7 @@ post_install() {
 post_upgrade() {
     chown -R ${MC_USER}:${MC_GROUP} ${MC_DIR}
     chown -R ${MC_USER}:${MC_GROUP} ${MC_SETTINGS_DIR}
+    usr/bin/systemd-tmpfiles --create maraschino.conf || true
 }
 
 ## arg 1:  the old package version
