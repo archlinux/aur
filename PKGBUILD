@@ -27,7 +27,7 @@ package() {
 	 python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 </dev/null
 
 	 # did the above PYTHONPATH hack cause these?
-#	 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/{easy-install.pth,site.py*}
+	 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/{easy-install.pth,site.py*}
 
 	 install -D -m644 {${srcdir},${pkgdir}/usr/share/pywikibot}/user-config.py
 }
