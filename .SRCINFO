@@ -1,0 +1,18 @@
+pkgbase = duplicity-backup-git
+	pkgdesc = Bash wrapper script for automated backups with duplicity supporting S3
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/zertrin/duplicity-backup
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = duplicity
+	optdepends = gnupg: encryption support
+	optdepends = s3cmd: for storing on Amazon S3
+	optdepends = mailx: for mail notifications
+	backup = etc/duplicity-backup.conf
+	source = duplicity-backup-git::git+https://github.com/zertrin/duplicity-backup.git
+	md5sums = SKIP
+
+pkgname = duplicity-backup-git
+
