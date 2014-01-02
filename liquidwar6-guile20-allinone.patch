@@ -1,0 +1,34 @@
+From 5490c9966f7e32860150afca68c3bbf6ca2399d5 Mon Sep 17 00:00:00 2001
+From: Christian Mauduit <ufoot@ufoot.org>
+Date: Sat, 24 Dec 2011 01:48:38 +0000
+Subject: fixed allinone target for Guile 2.0
+
+---
+diff --git a/liquidwar6/src/Makefile.am b/liquidwar6/src/Makefile.am
+index da78107..a57885d 100644
+--- a/liquidwar6/src/Makefile.am
++++ b/liquidwar6/src/Makefile.am
+@@ -19,7 +19,7 @@
+ # Contact author        : ufoot@ufoot.org
+ 
+ if ALLINONE
+-AM_CFLAGS = @LW6_CFLAGS@ -I${srcdir}/lib @SDL_CFLAGS@
++AM_CFLAGS = @LW6_CFLAGS@ -I${srcdir}/lib @GUILE_CFLAGS@ @SDL_CFLAGS@
+ AM_LDFLAGS = @LW6_LDFLAGS@ @SDL_LIBS@ @SDL_LIBS_SOUND@
+ else
+ AM_CFLAGS = @LW6_CFLAGS@ -I${srcdir}/lib @GUILE_CFLAGS@
+diff --git a/liquidwar6/src/Makefile.in b/liquidwar6/src/Makefile.in
+index 64c750d..675120f 100644
+--- a/liquidwar6/src/Makefile.in
++++ b/liquidwar6/src/Makefile.in
+@@ -338,7 +338,7 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ @ALLINONE_FALSE@AM_CFLAGS = @LW6_CFLAGS@ -I${srcdir}/lib @GUILE_CFLAGS@
+-@ALLINONE_TRUE@AM_CFLAGS = @LW6_CFLAGS@ -I${srcdir}/lib @SDL_CFLAGS@
++@ALLINONE_TRUE@AM_CFLAGS = @LW6_CFLAGS@ -I${srcdir}/lib @GUILE_CFLAGS@ @SDL_CFLAGS@
+ @ALLINONE_FALSE@AM_LDFLAGS = @LW6_LDFLAGS@
+ @ALLINONE_TRUE@AM_LDFLAGS = @LW6_LDFLAGS@ @SDL_LIBS@ @SDL_LIBS_SOUND@
+ # Note: libgpm seem to be required only when linking statically
+--
+cgit v0.9.0.2
