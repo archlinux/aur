@@ -1,62 +1,38 @@
 2014-01-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
-	* 3.6_beta_4-1 :
-	Version bump. Note the changed license.
-
-	Upstream changelog:
-	- Fixed a lot of issues with 3.6-beta-3
-	- New version selector
-
-2013-12-18 Frederik "Freso" S. Olesen <archlinux@freso.dk>
-
-	* 3.6_beta_3-1 :
-	Version bump. Note the changed license.
-
-	Upstream changelog:
-	- Switching/creating maps will no longer consume extra memory. (This means that you'll no long have issues with excess memory usage when you cycle through many different seeds)
-	- Added automatic seed histories. If AMIDST detects a "history.txt" file next to it, it will write a time stamp followed by the seed for each seed you enter.
-	- In addition to "history.txt" you may also use the "-history someFileOrPath.txt" (or whatever extension you'd like) to specify where AMIDST should write seed history to. If AMIDST cannot find a file at the path you've specified, it will attempt to make one. If it cannot make one, it will simply not log your seed history.
-	- A new option is availible in the Options menu called "Show Debug Info". Enabling this will add a small panel to the map viewer containing debug information on fragments.
-	- More windows will now use the AMIDST icon.
-	- Mac OS X users should no longer experience the "corrupted" issue.
-	- A licenses window has been added to the help menu. This will contain all relevant license information for AMIDST and its libraries.
-	- AMIDST is now under GPL v3
-	- Added a "-mcpath <file>" flag for users to specify the path to their .minecraft directory.
-	- Changing color profiles is now much faster as fragments regenerate from cache instead of rebuilding the entire map.
-	- The default version is now 1.7.4.
-	- Most crashes now create a "crash dialog" containing a log that can easily be pasted.
-	- Added "-log <file>" flag. Using this flag will cause AMIDST to write all log output to the specified file. AMIDST should create a file if it does not exist.
-	- AMIDST now returns "4" on crashes. This will change at a later date to include various error codes.
-	- Added 1.7.4 to official version list.
-	- Added smooth fragment fading. (This may be disabled in the options menu) Enabling this will cause all fragments to fade in when loaded.
-	- Added option to set the default world type to any of the world types or "prompt each time".
-
-2013-12-09 Frederik "Freso" S. Olesen <archlinux@freso.dk>
-
-	* 3.6_beta_2-1 :
+	* 3.6-1 :
 	Version bump.
 
 	Upstream changelog:
-	- Added an actual error message for the elusive "Unable to find critical external class while loading." error.
-	- Biome profiles containing syntax errors will no longer cause the entire profile list to not load.
-	- Libraries correctly load based on OS and JSON rules provided.
-	- Libraries now load the ".jar" file in a directory rather than the first file.
-
-2013-12-08 Frederik "Freso" S. Olesen <archlinux@freso.dk>
-
-	* 3.6_beta_1-1 :
-	Version bump.
-
-	Upstream changelog:
-	- AMIDST will now show hidden files when using the "Open from file" option.
-	- Twitch libraries have been added to the exclude list.
-	- Attempting to load AMIDST with a missing library no longer results in a crash unless that library was required.
-	- Rendering speed has been GREATLY improved on some (most) computers.
-	- An option has been added to the biome profile menu to reload the list of profiles. (Shortcut: CTRL + B)
-	- AMIDST no longer keeps color profiles (and other json files) open after reading them.
-	- Duplicate colors in profiles are now supported.
-	- default.json now looks much cleaner when generated.
-	- Color profiles may now include an "alias" for that biome. (It will come up when you hover over the biome)
+	- Major Changes:
+	  - AMIDST is now under GPL v3
+	  - Completely reworked the profile selector.
+	  - Added automatic seed histories. If AMIDST detects a "history.txt" file next to it, it will write a time stamp followed by the seed for each seed you enter.
+	  - Added smooth fragment fading. (This may be disabled in the options menu) Enabling this will cause all fragments to fade in when loaded.
+	  - Most crashes now create a "crash dialog" containing a log that can easily be pasted.
+	  - A licenses window has been added to the help menu. This will contain all relevant license information for AMIDST and its libraries.
+	  - Added option to set the default world type to any of the world types or "prompt each time".
+	  - Switching maps no longer eats up extra memory. (This will be a huge improvement in memory/processing performance when loading new maps)
+	  - Rendering speeds have been vastly improved.
+	  - Fixed issue where files would not be properly closed.
+	- Minor Changes/Fixes:
+	  - Hidden files/folders now show when opening a world from a file/folder.
+	  - Added 1.7.4 to official version list.
+	  - A new option is availible in the Options menu called "Show Debug Info". Enabling this will add a small panel to the map viewer containing debug information on fragments.
+	  - Library loading now follows OS rules correctly. (This should fix a number of errors with loading)
+	  - AMIDST now returns "4" on crashes. This will change at a later date to include various error codes.
+	  - Mac OS X users should no longer experience the "corrupted" issue.
+	- Command Line Support:
+	  - Added a "-mcpath <file>" flag for users to specify the path to their .minecraft directory.
+	  - Added "-log <file>" flag. Using this flag will cause AMIDST to write all log output to the specified file. AMIDST should create a file if it does not exist.
+	  - Added "-history <file>" to specify where AMIDST should write seed history to. If AMIDST cannot find a file at the path you've specified, it will attempt to make one.
+	- Biome Color Profiles:
+	  Overview: This was something that was added in 3.5, but I've improved on a bit for 3.6. Color profiles let you set what color each biome shows up as. To activate them, simply create a folder named "biome" next to AMIDST. After launching AMIDST again, a new file should appear in that folder called "default.js". It will contain the default options for a color profile. You may edit this directly, or create new color profiles within the folder (following the same design as default.js). Any subdirectories will show up as sub-menus. (There is also support for shortcuts, as mentioned in this post)
+	  - Added support for biome nicknames. (Example: [ "Ice Plains", { "alias":"Really cold place", "r":255, "g":255, "b":255 } ] )
+	  - Duplicate biome colors are now supported.
+	  - default.json is not much cleaner.
+	  - Biome profiles no longer cause an empty profile list when there's a syntax error.
+	  - A new menu option for reloading your list of biome color profiles has been added.
 
 2013-12-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
