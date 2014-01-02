@@ -1,0 +1,16 @@
+pkgbase = eperiodique
+	pkgdesc = A simple Periodic Table Of Elements viewer using elementary and edje
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/eperiodique/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = elementary
+	depends = edje
+	depends = gettext
+	source = http://downloads.sourceforge.net/project/eperiodique/0.4/eperiodique-0.4.tar.bz2
+	md5sums = 163f6ab416183bb4fc6fc035a620c551
+
+pkgname = eperiodique
+
