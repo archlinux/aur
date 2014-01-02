@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 pkgname=amidst
-pkgver='3.6_beta_3'
+pkgver='3.6_beta_4'
 _jarfile="${pkgname^^}-${pkgver//_/-}.jar"
 pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
@@ -15,7 +15,7 @@ changelog=ChangeLog
 source=("https://bitbucket.org/skiphs/amidst/downloads/$_jarfile"
         amidst.sh
         amidst.desktop)
-md5sums=('4170403c280e92822ded794233632f68'
+md5sums=('ff61a5b390a40e8b77470c90bc546c6e'
          '783c4040c9736f96ce72e9997833a0bf'
          '3c6900ac68e3175768322e684f9f1bcb')
 
