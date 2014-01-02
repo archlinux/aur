@@ -2,7 +2,7 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=pcmanfm-git
-pkgver=1.1.2.r94.gf717e0c
+pkgver=git
 pkgrel=1
 pkgdesc="An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing"
 arch=('i686' 'x86_64')
