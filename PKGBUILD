@@ -3,8 +3,8 @@
 # Contributor: M Rawash <mrawash@gmail.com>
 
 pkgname=urxvt-tabbedex-git
-pkgver=0.4.r9.g49c1514
-pkgrel=2
+pkgver=git
+pkgrel=1
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
 arch=("any")
 url='http://github.com/stepb/urxvt-tabbedex'
