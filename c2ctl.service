@@ -1,0 +1,11 @@
+[Unit]
+Description=Intel Core and Core 2 frequency and voltage modification service
+After=cpupower.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/systemd/scripts/c2ctl
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

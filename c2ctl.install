@@ -1,8 +1,9 @@
 post_install() {
-  echo " *"
-  echo " * Warning: USE THIS PROGRAM AT YOU OWN RISK. IT MAY DAMAGE YOUR HARDWARE."
-  echo " *"
-  echo " * RC-script should be used to set processor paramaters at startup."
-  echo " * Edit '/etc/conf.d/c2ctl' to change parameters."
-  echo " *"
+	echo " *"
+	echo " * Warning: USE THIS PROGRAM AT YOU OWN RISK. IT MAY DAMAGE YOUR HARDWARE."
+	echo " *"
+	echo " * You need to set CPU frequency governer to 'userspace'."
+	echo " * Use 'systemctl enable c2ctl' to set processor paramaters at startup."
+	echo " * Edit '/etc/conf.d/c2ctl' to change parameters."
+	echo " *"
 }
