@@ -1,0 +1,24 @@
+pkgbase = smc-git
+	pkgdesc = Secret Maryo Chronicles
+	pkgver = 210.a0405c9
+	pkgrel = 1
+	url = http://www.secretmaryo.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = git
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = cegui-0.7
+	depends = boost-libs
+	depends = libgl
+	conflicts = smc
+	source = smc::git://github.com/FluXy/SMC.git
+	source = smc.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = smc-git
+
