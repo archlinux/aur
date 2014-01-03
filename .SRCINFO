@@ -1,0 +1,29 @@
+pkgbase = smc
+	pkgdesc = Secret Maryo Chronicles
+	pkgver = 1.9
+	pkgrel = 23
+	url = http://www.secretmaryo.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = cegui-0.7
+	depends = boost-libs
+	source = http://downloads.sourceforge.net/smclone/smc-1.9.tar.bz2
+	source = http://downloads.sourceforge.net/smclone/SMC_Music_5.0_high.zip
+	source = smc-cegui-0.7.diff
+	source = smc-boost_filesystem3.diff
+	source = smc.png
+	source = smc.desktop
+	md5sums = 75ab7826303c49aec25b052a8b90287f
+	md5sums = 0bccac29052d3eed93e88535312eaaa2
+	md5sums = 51dfea21b741ad19df14e738df52f1cf
+	md5sums = 309a5a6d4b3c0b3dc5e1b7f4de84086f
+	md5sums = efca7580e28748625eb676c9d24ee122
+	md5sums = SKIP
+
+pkgname = smc
+

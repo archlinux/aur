@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Secret Maryo Chronicles
+Exec=smc
+Icon=smc
+Terminal=false
+Categories=Game;ArcadeGame;
+StartupNotify=false
