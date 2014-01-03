@@ -9,18 +9,18 @@
 
 pkgname=cegui-0.7
 pkgver=0.7.9
-pkgrel=3
-pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
+pkgrel=4
+pkgdesc="A free library providing windowing and widgets for graphics APIs/engines (legacy version)"
 arch=('i686' 'x86_64')
 url="http://crayzedsgui.sourceforge.net"
 license=("MIT")
-depends=('pcre' 'glew' 'expat' 'freetype2' 'libxml2' 'devil' 'freeglut' 'lua51'
-         'silly' 'mesa' 'glm' 'glfw')
-makedepends=('python2' 'doxygen' 'ogre' 'gtk2' 'boost' 'graphviz' 'irrlicht')
+depends=('glew' 'freetype2' 'libxml2' 'devil' 'freeglut' 'lua51' 'silly' 'mesa' 'glm' 'glfw')
+makedepends=('python2' 'doxygen' 'gtk2' 'boost' 'graphviz') # 'ogre' 'irrlicht')
 optdepends=("python2: python bindings"
-            "ogre: ogre module"
-            "gtk2: gtk2 module"
-            "irrlicht: irrlicht module")
+            "boost-libs: null renderer with python2"
+            #"ogre: ogre module"
+            #"irrlicht: irrlicht module"
+            "gtk2: gtk2 module")
 provides=('cegui')
 conflicts=('cegui')
 options=('!libtool')
@@ -29,18 +29,22 @@ md5sums=('a8b682daf82e383edc169c2e6eb2b321')
 sha256sums=('7c3b264def08b46de749c2acaba363e907479d924612436f3bd09da2e474bb8c')
 
 build() {
-  cd "$srcdir/CEGUI-$pkgver"
+  cd CEGUI-$pkgver
 
   ./bootstrap
-  ./configure --prefix=/usr --sysconfdir=/etc --enable-null-renderer --with-gtk2
+  Lua_CFLAGS="$(pkg-config --cflags lua5.1)" \
+  Lua_LIBS="$(pkg-config --libs lua5.1)" \
+  PYTHON="/usr/bin/python2" ./configure --prefix=/usr --sysconfdir=/etc \
+    --enable-null-renderer --with-gtk2 --disable-samples \
+    --disable-ogre-renderer --disable-irrlicht-renderer
 
   make
 }
 
 package() {
-  cd "$srcdir/CEGUI-$pkgver"
+  cd CEGUI-$pkgver
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 
-  install -Dm644 doc/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 doc/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
