@@ -1,14 +1,16 @@
 pkgbase = python-efl
-	pkgdesc = Python bindings for the Enlightenment Foundataion Libraries
+	pkgdesc = python bindings for the Enlightenment Foundataion Libraries
 	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	depends = elementary
-	depends = python-dbus
-	source = http://download.enlightenment.org/releases/BINDINGS/python/python-efl-1.8.0.tar.bz2
+	license = GPL3
+	depends = elementary>=1.8.0
+	depends = $_python-dbus
+	source = http://download.enlightenment.org/rel/bindings/python/python-efl-1.8.0.tar.gz
+	sha256sums = 8f883c325e30ee3eb2fa38822fa353a22207441b385f4e167cf9c1cf855638f7
 
 pkgname = python-efl
 
