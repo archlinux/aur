@@ -1,8 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-eunuch-git
-_gitname='vim-eunuch'
-pkgver=v1.0.5.g6a4d193
+pkgver=r22.6a4d193
 pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
@@ -18,19 +17,19 @@ conflicts=('vim-eunuch')
 install=vimdoc.install
 
 pkgver() {
-  cd $_gitname
-  git describe --always | sed 's|-|.|g'
+  cd ${pkgname%-git}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd $_gitname
+  cd ${pkgname%-git}
   
   msg 'Removing unneeded files...'
   rm -f README.markdown
 }
 
 package() {
-  cd $_gitname
+  cd ${pkgname%-git}
 
   msg 'Installing...'
   install -dm 755 ${pkgdir}/usr/share/vim/vimfiles/
