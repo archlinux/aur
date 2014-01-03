@@ -1,0 +1,77 @@
+From 0294b2be5f4c11e60620c0018674ff0e17b14238 Mon Sep 17 00:00:00 2001
+From: "Dr. Stephen Henson" <steve@openssl.org>
+Date: Sat, 14 Dec 2013 13:55:48 +0000
+Subject: Check EVP errors for handshake digests.
+
+Partial mitigation of PR#3200
+---
+ ssl/s3_both.c |  2 ++
+ ssl/s3_pkt.c  |  8 +++++++-
+ ssl/t1_enc.c  | 11 ++++++-----
+ 3 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/ssl/s3_both.c b/ssl/s3_both.c
+index ead01c8..1e5dcab 100644
+--- a/ssl/s3_both.c
++++ b/ssl/s3_both.c
+@@ -161,6 +161,8 @@ int ssl3_send_finished(SSL *s, int a, int b, const char *sender, int slen)
+ 
+ 		i=s->method->ssl3_enc->final_finish_mac(s,
+ 			sender,slen,s->s3->tmp.finish_md);
++		if (i == 0)
++			return 0;
+ 		s->s3->tmp.finish_md_len = i;
+ 		memcpy(p, s->s3->tmp.finish_md, i);
+ 		p+=i;
+diff --git a/ssl/s3_pkt.c b/ssl/s3_pkt.c
+index 804291e..c4bc4e7 100644
+--- a/ssl/s3_pkt.c
++++ b/ssl/s3_pkt.c
+@@ -1459,8 +1459,14 @@ int ssl3_do_change_cipher_spec(SSL *s)
+ 		slen=s->method->ssl3_enc->client_finished_label_len;
+ 		}
+ 
+-	s->s3->tmp.peer_finish_md_len = s->method->ssl3_enc->final_finish_mac(s,
++	i = s->method->ssl3_enc->final_finish_mac(s,
+ 		sender,slen,s->s3->tmp.peer_finish_md);
++	if (i == 0)
++		{
++		SSLerr(SSL_F_SSL3_DO_CHANGE_CIPHER_SPEC, ERR_R_INTERNAL_ERROR);
++		return 0;
++		}
++	s->s3->tmp.peer_finish_md_len = i;
+ 
+ 	return(1);
+ 	}
+diff --git a/ssl/t1_enc.c b/ssl/t1_enc.c
+index 809ad2e..72015f5 100644
+--- a/ssl/t1_enc.c
++++ b/ssl/t1_enc.c
+@@ -915,18 +915,19 @@ int tls1_final_finish_mac(SSL *s,
+ 		if (mask & ssl_get_algorithm2(s))
+ 			{
+ 			int hashsize = EVP_MD_size(md);
+-			if (hashsize < 0 || hashsize > (int)(sizeof buf - (size_t)(q-buf)))
++			EVP_MD_CTX *hdgst = s->s3->handshake_dgst[idx];
++			if (!hdgst || hashsize < 0 || hashsize > (int)(sizeof buf - (size_t)(q-buf)))
+ 				{
+ 				/* internal error: 'buf' is too small for this cipersuite! */
+ 				err = 1;
+ 				}
+ 			else
+ 				{
+-				EVP_MD_CTX_copy_ex(&ctx,s->s3->handshake_dgst[idx]);
+-				EVP_DigestFinal_ex(&ctx,q,&i);
+-				if (i != (unsigned int)hashsize) /* can't really happen */
++				if (!EVP_MD_CTX_copy_ex(&ctx, hdgst) ||
++					!EVP_DigestFinal_ex(&ctx,q,&i) ||
++					(i != (unsigned int)hashsize))
+ 					err = 1;
+-				q+=i;
++				q+=hashsize;
+ 				}
+ 			}
+ 		}
+-- 
+1.8.5.2
+

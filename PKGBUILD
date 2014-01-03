@@ -5,7 +5,7 @@ _ver=1.0.1e
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=5
+pkgrel=6
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -20,14 +20,20 @@ source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         'ca-dir.patch'
         'openssl-1.0.1e-fix_pod_syntax-1.patch'
         'openssl-1.0.1-Check-DTLS_BAD_VER-for-version-number.patch'
-        'openssl-1.0.1-e_aes_cbc_hmac_sha1.c-fix-rare-bad-record-mac-on-AES.patch')
+        'openssl-1.0.1-e_aes_cbc_hmac_sha1.c-fix-rare-bad-record-mac-on-AES.patch'
+        'openssl-1.0.1-Check-EVP-errors-for-handshake-digests.patch'
+        'openssl-1.0.1-Use-version-in-SSL_METHOD-not-SSL-structure.patch'
+        'openssl-1.0.1-Fix-DTLS-retransmission-from-previous-session.patch')
 md5sums=('66bf6f10f060d561929de96f9dfe5b8c'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
          '88d3bef4bbdc640b0412315d8d347bdf'
          'ae7848bb152b8834ceff30c8c480d422'
-         'c5cc62a47cef72f4e5ad119a88e97ae4')
+         'c5cc62a47cef72f4e5ad119a88e97ae4'
+         '3f674c14f07d9c7efd64c58e966eda83'
+         '756362dfdd40cee380d3158022415fc4'
+         'fc0c0466ea2f4f8446d16050a9639dee')
 
 prepare() {
 	cd $srcdir/$pkgname-$_ver
@@ -44,6 +50,11 @@ prepare() {
 	# Communication problems with 1.0.1e
 	# http://rt.openssl.org/Ticket/Display.html?id=3002
 	patch -p1 -i $srcdir/openssl-1.0.1-e_aes_cbc_hmac_sha1.c-fix-rare-bad-record-mac-on-AES.patch
+	# CVE-2013-6449; FS#38357
+	patch -p1 -i $srcdir/openssl-1.0.1-Check-EVP-errors-for-handshake-digests.patch
+	patch -p1 -i $srcdir/openssl-1.0.1-Use-version-in-SSL_METHOD-not-SSL-structure.patch
+	# CVE-2013-6450
+	patch -p1 -i $srcdir/openssl-1.0.1-Fix-DTLS-retransmission-from-previous-session.patch
 }
 
 build() {
