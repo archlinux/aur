@@ -20,7 +20,7 @@ pkgver() {
 build() {
   cd "$srcdir/sensei-raw-ctl"
   rm .git* -rf
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_GUI=NO
+  cmake . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DBUILD_GUI=NO
 }
 
 package() {
