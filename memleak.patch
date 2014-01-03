@@ -1,0 +1,37 @@
+From 03aeaccbffa97c9237b57ca067e3da7388862129 Mon Sep 17 00:00:00 2001
+From: Radoslaw Pajak <r.pajak@samsung.com>
+Date: Fri, 08 Nov 2013 12:51:32 +0000
+Subject: fixed memory freeing if error during listing services
+
+Signed-off-by: Radoslaw Pajak <r.pajak@samsung.com>
+Reviewed-by: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=71526
+---
+diff --git a/bus/activation.c b/bus/activation.c
+index fcb7133..ea48a26 100644
+--- a/bus/activation.c
++++ b/bus/activation.c
+@@ -2179,7 +2179,7 @@ bus_activation_list_services (BusActivation *activation,
+ 
+  error:
+   for (j = 0; j < i; j++)
+-    dbus_free (retval[i]);
++    dbus_free (retval[j]);
+   dbus_free (retval);
+ 
+   return FALSE;
+diff --git a/bus/services.c b/bus/services.c
+index 6f380fa..01a720e 100644
+--- a/bus/services.c
++++ b/bus/services.c
+@@ -368,7 +368,7 @@ bus_registry_list_services (BusRegistry *registry,
+   
+  error:
+   for (j = 0; j < i; j++)
+-    dbus_free (retval[i]);
++    dbus_free (retval[j]);
+   dbus_free (retval);
+ 
+   return FALSE;
+--
+cgit v0.9.0.2-2-gbebe
