@@ -1,5 +1,5 @@
 pkgname=https-everywhere-chrome
-pkgver=2013.10.16
+pkgver=2014.1.3
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible"
 arch=('any')
@@ -9,7 +9,7 @@ depends=()
 makedepends=()
 options=()
 source=(https://www.eff.org/files/$pkgname-$pkgver.crx)
-md5sums=('6912c81c286553da58bfe1c81c573be9')
+md5sums=('5c26b0ec9bcef054c47d1a035e90b20c')
 
 package() {
 	 mkdir -p $pkgdir/usr/share/$pkgname
