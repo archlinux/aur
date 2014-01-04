@@ -4,13 +4,15 @@
 
 pkgname=wmbatteries
 pkgver=0.1.3
-pkgrel=6
+pkgrel=7
 pkgdesc="a dockapp based on wmacpiload"
-url="http://dockapps.org/file.php/id/216"
+#url="http://dockapps.windowmaker.org/file.php/id/216"
+url="http://web.archive.org/web/20121031043911/http://dockapps.windowmaker.org/file.php/id/216"
 depends=('libxpm' 'libxext')
 license=('GPL')
 arch=('i686' 'x86_64')
-source=("http://dockapps.windowmaker.org/download.php/id/394/$pkgname-$pkgver.tar.bz2")
+#source=("http://dockapps.windowmaker.org/download.php/id/394/$pkgname-$pkgver.tar.bz2")
+source=("$pkgname-$pkgver.tar.bz2")
 md5sums=('ed74f6f0e3945731615e92efed00f4dd')    #md5sums=('ed74f6f0e3945731615e92efed00f4dd')
 
 build() {
