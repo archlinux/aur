@@ -1,0 +1,20 @@
+pkgbase = s3fs-c-git
+	pkgdesc = Fork of s3fs
+	pkgver = 57.9c6d31b
+	pkgrel = 1
+	url = https://github.com/tongwang/s3fs-c
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = fuse
+	depends = glib2
+	depends = libxml++
+	depends = mime-types
+	provides = s3fs
+	conflicts = s3fs
+	source = git+https://github.com/tongwang/s3fs-c.git
+	md5sums = SKIP
+
+pkgname = s3fs-c-git
+
