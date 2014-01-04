@@ -4,16 +4,16 @@
 # Contributor: JD Steffen
 
 pkgname=eduke32
-pkgver=20131206_4194
+pkgver=20140101_4240
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
 arch=('i686' 'x86_64')
 url="http://eduke32.com/"
 license=('GPL' 'custom: BUILD')
-depends=('sdl_mixer' 'mesa' 'glu' 'libvpx' 'libvorbis' 'flac' 'gtk2')
-makedepends=('nasm')
+depends=('sdl_mixer' 'libgl' 'libvpx' 'flac' 'gtk2')
+makedepends=('mesa' 'glu')
 # nasm is x86-only
-[ "$CARCH" == "x86_64" ] && makedepends=()
+[ "$CARCH" == "i686" ] && makedepends=(${makedepends[@]} 'nasm')
 optdepends=('eduke32-hrp: High Resolution Pack'
             'eduke32-dukeplus: Enhanced Mod'
             'timidity-freepats: free soundfont for music'
@@ -23,12 +23,9 @@ install="$pkgname.install"
 source=("http://dukeworld.duke4.net/$pkgname/synthesis/${pkgver//_/-}/${pkgname}_src_${pkgver//_/-}.tar.xz"
         "$pkgname.png"
         "$pkgname.desktop")
-md5sums=('412927b3865b6ef244c47817190353e0'
-         'bc189b860c8562e10f01e0faed909089'
-         'SKIP')
-sha256sums=('ad95b4155f890ef4dc1c08b940dc426cf456c9ebacabcf6a15fc28a5c31100be'
+sha256sums=('c91a01ae0291bcfe5b4259af3fa93934da1ae5466ca4a9d592e07c075689b4ce'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
-            'SKIP')
+            '9224aadf634448726d2e863ba9a455887dc3b90049238fe592b7f7b5634cbd79')
 
 build() {
   cd ${pkgname}_${pkgver//_/-}
@@ -41,9 +38,9 @@ package() {
   cd ${pkgname}_${pkgver//_/-}
 
   # install binaries, buildlicense, icon and desktop files
-  install -d $pkgdir/usr/bin
-  install -m755 eduke32 mapster32 $pkgdir/usr/bin
-  install -Dm644 package/common/buildlic.txt $pkgdir/usr/share/licenses/$pkgname/buildlic.txt
-  install -Dm644 ../$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -Dm644 ../$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -d "$pkgdir"/usr/bin
+  install -m755 eduke32 mapster32 "$pkgdir"/usr/bin
+  install -Dm644 package/common/buildlic.txt "$pkgdir"/usr/share/licenses/$pkgname/buildlic.txt
+  install -Dm644 ../$pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
