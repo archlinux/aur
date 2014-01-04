@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-f77
 	pkgdesc = Perl module providing simple interface to F77 libraries
 	pkgver = 1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/ExtUtils-F77
 	arch = any
 	license = PerlArtistic
