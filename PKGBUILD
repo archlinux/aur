@@ -2,7 +2,7 @@
 
 pkgname=epsxe-plugin-spu-eternal
 pkgver=1.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Epsxe Eternal SPU plugin"
 url="https://web.archive.org/web/20050404072132/http://www1.odn.ne.jp/psx-alternative/"
 depends=('epsxe' 'libstdc++296')
@@ -14,6 +14,7 @@ md5sums=('65e3cd9edcbce6ea74f0dbe9ab794784'
 license=('custom')
 arch=('i686' 'x86_64')
 install=epsxe-plugin-spu-eternal.install
+backup=('opt/epsxe/cfg/spuEternal.cfg')
 
 package () {
     cd $srcdir/
@@ -32,4 +33,10 @@ package () {
     install -m 775 -o root -g games -d "${pkgdir}/opt/epsxe/plugins"
     install -m 755 -o root -g games -t "${pkgdir}/opt/epsxe/plugins" \
                                                           libspuEternal.so.1.41
+
+    # Config
+    install -m 775 -o root -g games -d "${pkgdir}/opt/epsxe/cfg"
+    touch "${pkgdir}/opt/epsxe/cfg/spuEternal.cfg"
+    chown root:games "${pkgdir}/opt/epsxe/cfg/spuEternal.cfg"
+    chmod 775 "${pkgdir}/opt/epsxe/cfg/spuEternal.cfg"
 }
