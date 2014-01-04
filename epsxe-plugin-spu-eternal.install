@@ -1,0 +1,10 @@
+#/bin/sh
+
+post_install() {
+  cat << EOF
+==> You can use this plugin with alsa/pulseaudio via ossp.
+==> Install the optional dependency ossp and enable its service
+==> systemctl enable osspd.service
+EOF
+}
+

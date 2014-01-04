@@ -1,0 +1,19 @@
+pkgbase = epsxe-plugin-spu-eternal
+	pkgdesc = Epsxe Eternal SPU plugin
+	pkgver = 1.41
+	pkgrel = 1
+	url = https://web.archive.org/web/20050404072132/http://www1.odn.ne.jp/psx-alternative/
+	install = epsxe-plugin-spu-eternal.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = epsxe
+	depends = libstdc++296
+	optdepends = ossp
+	source = https://web.archive.org/web/20050404072132/http://www1.odn.ne.jp/psx-alternative/download/spuEternal141_linux.tgz
+	source = epsxe-plugin-spu-eternal.install
+	md5sums = 65e3cd9edcbce6ea74f0dbe9ab794784
+	md5sums = 23c360ad5cf88d58b120da5782bebf4f
+
+pkgname = epsxe-plugin-spu-eternal
+
