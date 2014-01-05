@@ -1,18 +1,19 @@
 
 post_install() {
     echo ">>>"
-    echo ">>>>To play Q3 with the Retail Version:"
-    echo ">>>   Move the pak0.pk3 file from the original game CD to"
+    echo ">>> To play Q3 with the Retail Version:"
+    echo ">>>   Move the pak0.pk3 file from the original game CD to:"
     echo ">>>      /opt/quake3/baseq3/"
     echo ">>>"
-    echo ">>>>To play Q3 with the Demo Version:"
-    echo ">>>   You need the demoq3/pak0.pk3 from the demo installer. The"
-    echo ">>>   qvm files inside that pk3 file will not work, so you have"
-    echo ">>>   to copy or link the .so files in the baseq3/ directory to"
-    echo ">>>   /opt/quake3/demoq3/ with the pak0.pk3 file."
+    echo ">>> To play Q3 with the Demo Version:"
+    echo ">>>   Move the demoq3/pak0.pk3 from the demo installer to:"
+    echo ">>>      /opt/quake3/demoq3/"
     echo ">>>"
-    echo ">>>>When you have the .pk3 file(s) installed, run the game:"
+    echo ">>> When you have the .pk3 file(s) installed, run the game:"
     echo ">>>      quake3"
+    echo ">>>"
+    echo ">>> Or for the Demo Version:"
+    echo ">>>     quake3 +set fs_game demoq3"
     echo ">>>"
 }
 
