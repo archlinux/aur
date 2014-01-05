@@ -14,17 +14,21 @@ arch=('i686' 'x86_64')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
 depends=(
-	'perl>=5.8.9'       # To provide ExtUtils::MakeMaker 3.61
+	'perl>=5.8.9'
 	'perl-inline>=0.43'
 	'gsl'
 )
 makedepends=(
+	'perl>=5.11.3' # To provide ExtUtils::MakeMaker 6.56
 	'fftw2'
 	'hdf4'
-	'perl-opengl>=0.63'
+	'perl-opengl>=0.6703'
 	'plplot'
 	'perl-extutils-f77'
 	'proj'
+)
+checkdepends=(
+	'perl-test-warn'
 )
 optdepends=(
 	'fftw2: for PDL::FFTW support'
@@ -32,30 +36,29 @@ optdepends=(
 	'perl-astro-fits-header: improved FITS files support'
 #	'perl-convert-uu: for the case when something wrong with Unicode support'  # It is necessary on *BSD systems
 #	'perl-extutils-f77: for PDL::Slatec and PDL::Minuit support'               # It is not necessary at runtime
-	'perl-opengl>=0.63: for PDL::Graphics::TriD support'
+	'perl-opengl>=0.6703: for PDL::Graphics::TriD support'
 	'plplot: for PDL::Graphics::PLplot support'
 	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
 )
 
-source=([% source %] perldl.conf pdl-tests.patch)
+source=([% source %] perldl.conf)
 changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('[% md5sums %]' '9caa2b89a7f7aabfd7dcfb2c1ef79bc9' 'a376497f3426ca19ea81a01c2c4f95c2')
+md5sums=('[% md5sums %]' '8e1f6285ce4ee9439dc1088709cfec18')
 
 build() {
-	cd "$srcdir/[% distdir %]"
-	patch -i $srcdir/pdl-tests.patch -p1
-	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=$srcdir/perldl.conf
+	cd [% distdir %]
+	F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=$srcdir/perldl.conf
 	make
 }
 
 check() {
-	cd "$srcdir/[% distdir %]"
+	cd [% distdir %]
 	make test
 }
 
 package() {
-	cd "$srcdir/[% distdir %]"
+	cd [% distdir %]
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }

@@ -1,3 +1,14 @@
+2014-01-02	Anton Leontiev	<bunder /at/ t-25.ru>
+
+	* 2.007-1 :
+	New upstream release
+
+	* pdl-test-.patch :
+	Removed
+
+	* perldl.conf :
+	Add WITH_PLPLOT => 1
+
 2013-08-06	Anton Leontiev	<bunder /at/ t-25.ru>
 
 	* 2.006-2 :
