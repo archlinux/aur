@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
-license=('BSD' 'GPL3')
+license=('BSD')
 depends=('elementary' 'desktop-file-utils')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
@@ -41,8 +41,6 @@ package() {
   cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
-
-  sed -i 's/COPYING.icons/the GNU General Public License v3/g' COPYING
 
 # install text files
   install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
