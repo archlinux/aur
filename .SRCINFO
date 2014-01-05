@@ -1,0 +1,34 @@
+pkgbase = enlightenment17-git
+	pkgdesc = Enlightenment window manager (formerly e17) - Development version
+	pkgver = 0.17.99.17108.65a9f8d
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	install = enlightenment17.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = elementary-git
+	depends = xcb-util-keysyms
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = udisks2
+	depends = ttf-font
+	depends = pixman
+	depends = mesa
+	depends = bluez-libs
+	optdepends = acpid: power events on laptop lid close
+	optdepends = bluez-libs: bluetooth module
+	optdepends = connman: network module
+	optdepends = gdb: create backtraces on crash
+	provides = enlightenment17=0.17.99.17108.65a9f8d
+	provides = notification-daemon
+	conflicts = enlightenment17
+	options = debug
+	backup = etc/enlightenment/sysactions.conf
+	backup = etc/xdg/menus/enlightenment.menu
+	source = git://git.enlightenment.org/core/enlightenment.git
+	sha256sums = SKIP
+
+pkgname = enlightenment17-git
+
