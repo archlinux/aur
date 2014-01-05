@@ -1,6 +1,6 @@
 pkgbase = ovmf-svn
 	pkgdesc = x86_64 UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version
-	pkgver = 14844
+	pkgver = 15046
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF
 	install = ovmf.install
