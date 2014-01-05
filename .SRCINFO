@@ -1,12 +1,13 @@
 pkgbase = perl-pdl-git
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
-	pkgver = 20130413.3530
+	pkgver = 20131205.3765
 	pkgrel = 1
 	url = http://search.cpan.org/dist/PDL
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl>=5.11.3
 	makedepends = fftw2
 	makedepends = hdf4
 	makedepends = perl-opengl>=0.63
@@ -27,7 +28,7 @@ pkgbase = perl-pdl-git
 	source = perl-pdl::git+git://pdl.git.sourceforge.net/gitroot/pdl/pdl
 	source = perldl.conf
 	md5sums = SKIP
-	md5sums = 9caa2b89a7f7aabfd7dcfb2c1ef79bc9
+	md5sums = 8e1f6285ce4ee9439dc1088709cfec18
 
 pkgname = perl-pdl-git
 
