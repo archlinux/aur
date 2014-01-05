@@ -3,7 +3,7 @@
 # Contributor: Keshav Padram Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgver="2.02"
-_GRUB_GIT_TAG="grub-2.02-beta1"
+_GRUB_GIT_TAG="grub-2.02-beta2"
 
 _UNIFONT_VER="6.3.20131217"
 
@@ -12,7 +12,7 @@ _UNIFONT_VER="6.3.20131217"
 
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
-pkgver=2.02.beta1
+pkgver=2.02.beta2
 pkgrel=1
 epoch="1"
 url="https://www.gnu.org/software/grub/"
@@ -46,13 +46,12 @@ source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}
         '60_memtest86+'
         'grub.default'
         'grub.cfg')
-
 md5sums=('SKIP'
          'SKIP'
          '728b7439ac733a7c0d56049adec364c7'
          'SKIP'
          'e506ae4a9f9f7d1b765febfa84e10d48'
-         'b7f3fc13d5afcb1e6f7d49010025b725'
+         'cc988384d9b3bfb61384342e3e1f28c3'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46')
