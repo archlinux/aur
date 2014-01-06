@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-eunuch-git
-pkgver=r22.6a4d193
+pkgver=v1.0.r5.g6a4d193
 pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
@@ -18,7 +18,7 @@ install=vimdoc.install
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
