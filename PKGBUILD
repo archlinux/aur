@@ -3,15 +3,15 @@
 # Contributor: Dany Martineau <dany.luc.martineau gmail com>
 
 pkgname=liquidwar6-extra-maps
-pkgver=0.0.13beta
-pkgrel=2
+pkgver=0.2.3551
+pkgrel=1
 pkgdesc="Extra maps for Liquidwar6"
 arch=('any')
 url="http://www.gnu.org/software/liquidwar6/"
 license=('GPL')
 depends=("liquidwar6=$pkgver")
 source=("http://download.savannah.gnu.org/releases/liquidwar6/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('cd104827e9cb96384ab8e2583dfa05c9')
+sha256sums=('1acb398907d2c89e26f0f7baae11e88024968be52fa0c6534ce8305b32271f6b')
 
 build() {
   cd $pkgname-$pkgver
