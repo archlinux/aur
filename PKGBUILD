@@ -6,15 +6,15 @@
 
 pkgname=p7zip
 pkgver=9.20.1
-pkgrel=8
+pkgrel=9
 pkgdesc='Command-line version of the 7zip compressed file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
 arch=('i686' 'x86_64')
 depends=('gcc-libs' 'bash')
-optdepends=('wxgtk: GUI'
+optdepends=('wxgtk2.8: GUI'
             'desktop-file-utils: desktop entries')
-makedepends=('yasm' 'nasm' 'wxgtk')
+makedepends=('yasm' 'nasm' 'wxgtk2.8')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}_src_all.tar.bz2"
         '7zFM.desktop')
 sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7'
@@ -29,6 +29,9 @@ prepare() {
 	[[ $CARCH = x86_64 ]] \
 	&& cp makefile.linux_amd64_asm makefile.machine \
 	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+
+	sed -i 's/wx-config/wx-config-2.8/g' CPP/7zip/TEST/TestUI/makefile \
+		CPP/7zip/UI/{FileManager,GUI,P7ZIP}/makefile
 }
 
 build() {
