@@ -1,6 +1,6 @@
 pkgbase = homesick
 	pkgdesc = A man's home is his castle. Never leave your dotfiles behind.
-	pkgver = 0.9.4
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = http://github.com/technicalpickles/homesick
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = homesick
 	makedepends = rubygems
 	depends = ruby
 	depends = ruby-thor
-	noextract = homesick-0.9.4.gem
-	source = http://rubygems.org/downloads/homesick-0.9.4.gem
-	sha512sums = 6f4914752f9483a0bb56f53df3a7ca435407c9f30352ae554ac63e35074979236ebaa666b24f4fd76ff741e633c8533390396700320733e79bc79486c571c808
+	noextract = homesick-0.9.8.gem
+	source = http://rubygems.org/downloads/homesick-0.9.8.gem
+	sha512sums = 03e07e69462307cf528e3c982322deefadf11960bdc8acd5153f32bf7fe994562edb55d7815142d0b151268ec2fd52425c42e0487440edfa8c71e55074bba60e
 
 pkgname = homesick
 
