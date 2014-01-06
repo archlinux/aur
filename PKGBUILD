@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=2.43
+pkgver=3.0
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -16,11 +16,10 @@ optdepends=('bzr'
             'mercurial'
             'subversion')
 source=(http://www.catb.org/~esr/reposurgeon/$pkgname-$pkgver.tar.gz)
-sha256sums=('68142e09d922f8d44809c10589258cddda6f45f23375434fa2780da751f7d834')
+sha256sums=('358b72670c645b62a122feccebb660d9f3c98544bf1fc4d159b1b44cb2a45107')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i -e '1s/python/python2/' repodiffer reposurgeon
   make
 }
 
