@@ -3,21 +3,21 @@
 
 pkgname=ioquake3-git
 pkgver=20131217.gbc2efc4
-pkgrel=1
+pkgrel=2
 pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 files to play."
 url="http://ioquake3.org/"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('curl' 'freetype2' 'libjpeg' 'libvorbis' 'openal' 'sdl' 'speex' 'zlib')
-makedepends=('nasm' 'git')
-optdepends=('mumble')
+depends=('curl' 'freetype2' 'libjpeg' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl' 'speex' 'zlib')
+makedepends=('git')
+optdepends=('mumble: Mumble VoIP support')
 conflicts=('quake3' 'quake3-icculus-svn' 'quake3-svn' 'ioquake3-svn')
 provides=('quake3' 'ioquake3')
 replaces=('quake3-icculus-svn' 'ioquake3-svn')
 install=quake3.install
 source=('quake3.desktop' \
 'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run'
-'quake3::git://github.com/ioquake/ioq3.git')
+'quake3::git+https://github.com/ioquake/ioq3.git')
 sha256sums=('12dbd31e9de1493642d120bfd1548dfc4935e47fec806003cfc04b9d84b85673'
             'c36132c5556b35e01950f1e9c646235033a5130f87ad776ba2bc7becf4f4f186'
             'SKIP')
@@ -37,6 +37,8 @@ prepare() {
 }
 
 q3make() {
+    export CFLAGS="${CFLAGS} $(pkg-config --cflags opusfile)"
+
     make $@ \
         BUILD_CLIENT=1                \
         BUILD_SERVER=1                \
@@ -54,7 +56,7 @@ q3make() {
         USE_CURL=1                    \
         USE_CURL_DLOPEN=0             \
         USE_CODEC_VORBIS=1            \
-        USE_CODEC_OPUS=0              \
+        USE_CODEC_OPUS=1              \
         USE_FREETYPE=1                \
         USE_MUMBLE=1                  \
         USE_VOIP=1                    \
