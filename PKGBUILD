@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=opencollada
-pkgver=20130408
+pkgver=20140108
 pkgrel=1
 pkgdesc="Stream based reader and writer library for COLLADA files"
 arch=(i686 x86_64)
@@ -19,11 +19,10 @@ build() {
   [[ -d build ]] && rm -r build
   mkdir build && cd build
 
-# Activate these once pr#124 is merged
-#    -DUSE_SHARED=ON \
-#    -DUSE_STATIC=OFF \
   cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_SHARED=ON \
+    -DUSE_STATIC=OFF
   make
 }
 
