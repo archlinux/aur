@@ -3,6 +3,6 @@ Name=OpenDUNE
 Exec=opendune
 Icon=opendune
 Type=Application
-Comment=Open source re-creation of the popular game "Dune II"
+Comment=Open source re-creation of "Dune II"
 Categories=Game;
 Terminal=false

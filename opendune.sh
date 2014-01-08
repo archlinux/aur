@@ -20,6 +20,6 @@ if [ -f $HOME/.opendune/data/dune.pak ]; then
 
 else
 
-  echo "Please place Dune II data files in \"$HOME/.opendune/data\"."
+  echo "Please place Dune II data files in \"~/.opendune/data\"."
 
 fi
