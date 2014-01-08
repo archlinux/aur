@@ -1,18 +1,20 @@
-# Maintainer: carstene1ns <arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=smc-git
 pkgver=210.a0405c9
 pkgrel=1
-pkgdesc="Secret Maryo Chronicles"
+pkgdesc="Secret Maryo Chronicles (development version)"
 arch=('i686' 'x86_64')
 url="http://www.secretmaryo.org"
 license=('GPL3')
 depends=('sdl_image' 'sdl_ttf' 'sdl_mixer' 'cegui-0.7' 'boost-libs' 'libgl')
 makedepends=('boost' 'git')
 conflicts=('smc')
-source=("smc"::"git://github.com/FluXy/SMC.git" "smc.desktop")
-md5sums=('SKIP' 'SKIP')
+provides=('smc')
+source=(smc::"git+https://github.com/FluXy/SMC.git" "smc.desktop")
+sha256sums=('SKIP'
+            '291fca2243262c24cf086bec60ae77fd53f58bc42e876b224d58e96a5a35d79a')
 
 pkgver() {
   cd smc
@@ -24,7 +26,6 @@ build() {
 
   ./autogen.sh
   ./configure --prefix=/usr
-
   make
 }
 

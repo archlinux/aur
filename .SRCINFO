@@ -1,5 +1,5 @@
 pkgbase = smc-git
-	pkgdesc = Secret Maryo Chronicles
+	pkgdesc = Secret Maryo Chronicles (development version)
 	pkgver = 210.a0405c9
 	pkgrel = 1
 	url = http://www.secretmaryo.org
@@ -14,11 +14,12 @@ pkgbase = smc-git
 	depends = cegui-0.7
 	depends = boost-libs
 	depends = libgl
+	provides = smc
 	conflicts = smc
-	source = smc::git://github.com/FluXy/SMC.git
+	source = smc::git+https://github.com/FluXy/SMC.git
 	source = smc.desktop
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 291fca2243262c24cf086bec60ae77fd53f58bc42e876b224d58e96a5a35d79a
 
 pkgname = smc-git
 
