@@ -1,16 +1,16 @@
-# Maintainer: carstene1ns <arch carsten-teibes de>
+# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 
 _pkgbase=pjson
 pkgname=$_pkgbase-git
 pkgver=21.1870aa6
 pkgrel=1
-pkgdesc="Command-line tool to validate and pretty-print JSON and XML."
+pkgdesc="Command-line tool to validate and pretty-print JSON and XML"
 url="http://igorgue.com/pjson"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-pygments')
 conflicts=("$_pkgbase")
-source=("git://github.com/igorgue/pjson.git")
+source=($_pkgbase::"git+https://github.com/igorgue/pjson.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -33,5 +33,5 @@ package() {
 
   python setup.py install --root="$pkgdir/" --optimize=1
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

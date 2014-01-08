@@ -1,5 +1,5 @@
 pkgbase = pjson-git
-	pkgdesc = Command-line tool to validate and pretty-print JSON and XML.
+	pkgdesc = Command-line tool to validate and pretty-print JSON and XML
 	pkgver = 21.1870aa6
 	pkgrel = 1
 	url = http://igorgue.com/pjson
@@ -8,7 +8,7 @@ pkgbase = pjson-git
 	depends = python
 	depends = python-pygments
 	conflicts = pjson
-	source = git://github.com/igorgue/pjson.git
+	source = pjson::git+https://github.com/igorgue/pjson.git
 	md5sums = SKIP
 
 pkgname = pjson-git
