@@ -14,10 +14,10 @@ pkgbase = gtkhash-git
 	optdepends = nemo: filemanager plugin
 	provides = gtkhash
 	conflicts = gtkhash
-	source = gtkhash::git://github.com/tristanheaven/gtkhash.git
+	source = gtkhash::git+https://github.com/tristanheaven/gtkhash.git
 	source = gtkhash.desktop
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f0312086093f0dd5ce0cfd6c9312abd42b57401960c39c19377372c154a32388
 
 pkgname = gtkhash-git
 
