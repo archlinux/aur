@@ -1,0 +1,19 @@
+pkgbase = yadex
+	pkgdesc = A Doom level editor with additional support for Heretic, Hexen and Strife
+	pkgver = 1.7.0
+	pkgrel = 5
+	url = http://www.teaser.fr/~amajorel/yadex/
+	install = yadex.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libx11
+	depends = gcc-libs
+	optdepends = freedoom
+	optdepends = doom1-wad
+	backup = etc/yadex.cfg
+	source = https://github.com/chungy/yadex/archive/bf9d7d76ea0ca6e61a26cf624996527799f254a3.zip
+	sha256sums = 0ece732a8dc392ff7becc01005c722a9ad4ca0868b5656a3dd90469a15518d18
+
+pkgname = yadex
+
