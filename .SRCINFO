@@ -1,5 +1,5 @@
 pkgbase = gtkhash
-	pkgdesc = A GTK+ utility for computing message digests or checksums.
+	pkgdesc = A GTK+ utility for computing message digests or checksums
 	pkgver = 0.7.0
 	pkgrel = 2
 	url = http://gtkhash.sourceforge.net/
@@ -15,10 +15,8 @@ pkgbase = gtkhash
 	optdepends = nemo: filemanager plugin
 	source = http://downloads.sourceforge.net/gtkhash/gtkhash-0.7.0.tar.xz
 	source = gtkhash.desktop
-	md5sums = f80567fdd8c4435e03b837d54f38f1bb
-	md5sums = SKIP
 	sha256sums = 161d4f27f2d412c8cb3f566ca3aa8144942bbf836c18bcb1e5f79451e6f5dfdd
-	sha256sums = SKIP
+	sha256sums = f0312086093f0dd5ce0cfd6c9312abd42b57401960c39c19377372c154a32388
 
 pkgname = gtkhash
 

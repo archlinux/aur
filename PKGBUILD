@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <arch carsten-teibes de>
+# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: Jan Böhringer <janboe@gmail.com>
 # Contributor: Frédérik Paradis <fredy_14@live.fr>
 # Contributor: GI_Jack <GI_Jack@hushmail.com>
@@ -13,19 +13,17 @@ _thunar_plugin=n
 pkgname=gtkhash
 pkgver=0.7.0
 pkgrel=2
-pkgdesc="A GTK+ utility for computing message digests or checksums."
+pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('i686' 'x86_64' 'mips64el')
 url="http://gtkhash.sourceforge.net/"
 license=('GPL')
 makedepends=('intltool')
 depends=('dconf')
 install=$pkgname.install
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz
-        gtkhash.desktop)
-md5sums=('f80567fdd8c4435e03b837d54f38f1bb'
-         'SKIP')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz"
+        "gtkhash.desktop")
 sha256sums=('161d4f27f2d412c8cb3f566ca3aa8144942bbf836c18bcb1e5f79451e6f5dfdd'
-            'SKIP')
+            'f0312086093f0dd5ce0cfd6c9312abd42b57401960c39c19377372c154a32388')
 
 # gtk version
 if [ "$_gtk_version" = "3" ]; then
@@ -62,15 +60,14 @@ build() {
 
   ./configure --prefix=/usr --disable-schemas-compile --enable-gtkhash \
               --enable-linux-crypto --enable-nettle $_pkgoptions
-
   make
 }
 
 package() {
   cd $pkgname-$pkgver
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir/" install
 
   # install desktop entry
-  install -Dm644 ../gtkhash.desktop $pkgdir/usr/share/applications/gtkhash.desktop
+  install -Dm644 ../gtkhash.desktop "$pkgdir"/usr/share/applications/gtkhash.desktop
 }
