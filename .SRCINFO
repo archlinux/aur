@@ -1,15 +1,22 @@
 pkgbase = eclipse-i18n-de
-	pkgdesc = German language pack for eclipse IDE
+	pkgdesc = German language pack for eclipse IDE (and selected components)
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://babel.eclipse.org/
 	arch = any
 	license = EPL
 	depends = eclipse>=4.3
 	conflicts = eclipse-i18n-pack1
-	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/babel/babel_language_packs/R0.11.0/kepler/BabelLanguagePack-eclipse-de_4.3.0.v20130724043401.zip
-	md5sums = 634a1523a61884edbc54430dee4095ca
-	sha256sums = 585afb92f50d5a04ebc607c4907d6b255df5c814f5cbd8c6d359ee78604fa06b
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/babel/babel_language_packs/R0.11.1/kepler/BabelLanguagePack-eclipse-de_4.3.0.v20131123020001.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/babel/babel_language_packs/R0.11.1/kepler/BabelLanguagePack-datatools-de_4.3.0.v20131123020001.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/babel/babel_language_packs/R0.11.1/kepler/BabelLanguagePack-technology.packaging-de_4.3.0.v20131123020001.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/babel/babel_language_packs/R0.11.1/kepler/BabelLanguagePack-tools.cdt-de_4.3.0.v20131123020001.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/babel/babel_language_packs/R0.11.1/kepler/BabelLanguagePack-webtools-de_4.3.0.v20131123020001.zip
+	sha256sums = 8726c156352fddbf2cf3fcfa58b94b51a7575789c282cd56dc2730fc539aa53f
+	sha256sums = 389952b94012fba2d2bce49eef510cabb2a55d963be6d984ac74a83f92784e3b
+	sha256sums = b2d1452ef6bb1d49269e68a4900d2dd4ecdb9b8f040658a7b78e777af4ebc80b
+	sha256sums = d007a4785b49e02ab5a526e8c1374b750fe44a22fb327e55ae8f07c0ef0e69fd
+	sha256sums = ec8b92023fb2a9d93c48df4217dcebba164c27b1e878c44f337d1e6f34718311
 
 pkgname = eclipse-i18n-de
 
