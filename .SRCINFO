@@ -10,8 +10,7 @@ pkgbase = lib32-physfs
 	depends = lib32-zlib
 	depends = physfs=2.0.3
 	source = http://icculus.org/physfs/downloads/physfs-2.0.3.tar.bz2
-	md5sums = c2c727a8a8deb623b521b52d0080f613
-	sha1sums = 327308c777009a41bbabb9159b18c4c0ac069537
+	sha256sums = ca862097c0fb451f2cacd286194d071289342c107b6fe69079c079883ff66b69
 
 pkgname = lib32-physfs
 

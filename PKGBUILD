@@ -11,12 +11,11 @@ url="http://icculus.org/physfs/"
 license=('custom')
 depends=('lib32-zlib' "$_pkgbase=$pkgver")
 makedepends=('cmake' 'gcc-multilib')
-source=("http://icculus.org/physfs/downloads/$_pkgbase-$pkgver.tar.bz2")
-md5sums=('c2c727a8a8deb623b521b52d0080f613')
-sha1sums=('327308c777009a41bbabb9159b18c4c0ac069537')
+source=("${url}downloads/$_pkgbase-$pkgver.tar.bz2")
+sha256sums=('ca862097c0fb451f2cacd286194d071289342c107b6fe69079c079883ff66b69')
 
 build() {
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd $_pkgbase-$pkgver
 
   rm -rf build
   mkdir build && cd build
@@ -32,19 +31,18 @@ build() {
     -DPHYSFS_BUILD_WX_TEST=OFF \
     -DPHYSFS_BUILD_STATIC=OFF \
     -DLIB_SUFFIX=32
-
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd $_pkgbase-$pkgver
 
-  make -C build DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir/" install
 
   # remove header file
-  rm -rf $pkgdir/usr/include
+  rm -rf "$pkgdir"/usr/include
 
   # link license
-  install -dm755 "$pkgdir"/usr/share/licenses
+  install -d "$pkgdir"/usr/share/licenses
   ln -s $_pkgbase "$pkgdir"/usr/share/licenses/$pkgname
 }
