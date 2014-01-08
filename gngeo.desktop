@@ -6,4 +6,4 @@ Comment=portable NeoGeo Emulator
 Exec=gngeo
 Icon=gngeo
 Terminal=false
-Categories=Game;Emulator
+Categories=Game;Emulator;
