@@ -2,13 +2,12 @@ pkgbase = qwad
 	pkgdesc = A Python-Qt utility to manage Wad files with NUS downloader for Wii
 	pkgver = 0.9
 	pkgrel = 1
-	url = http://www.nanolx.org/
+	url = http://www.nanolx.org
 	arch = any
 	license = GPL3
 	depends = python2-crypto
 	depends = python2-pyqt
-	source = http://nanolx.org/downloads/Qwad/qwad_0.9.tar.bz2
-	md5sums = 0481b2115bb02b838f5ad5324b2c9afb
+	source = http://www.nanolx.org/downloads/Qwad/qwad_0.9.tar.bz2
 	sha256sums = 10689ff8a457ec25726ed1500c5a2c8013661a8e9e56342d8d425155214cbc2b
 
 pkgname = qwad
