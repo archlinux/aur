@@ -13,16 +13,14 @@ post_install() {
     install-info $infodir/$file $infodir/dir 2> /dev/null
   done
 
-  echo "Poldi is now installed."
   echo
-  echo "Since this is the first time you've installed poldi, the template configuration files have been placed in /etc/poldi. Take a look and edit them to your needs."
-  echo "The original templates will remain in /usr/share/poldi/etc/poldi."
-
-  mkdir -p /etc/poldi
-  cp -fR /usr/share/poldi/etc/poldi/* /etc/poldi/
-
+  echo "*** Poldi is now installed."
   echo
-  echo "Future upgrades to this package will NOT overwrite your configuration files in /etc/poldi, since this might seriously break things. The latest version of the template configuration files can always be found in /usr/share/doc/poldi/example_etc/poldi."
+  echo "A PAM configuration file has been installed as '/etc/pam.d/system-auth-poldi'."
+  echo -e "To enable its use, you need to put 'auth include system-auth-poldi'\nin the relevant files (/etc/pam.d/system-auth is a good starting point)."
+  echo
+  echo "You can test the installation with 'pam-test-poldi SERVICE'."
+  echo
 }
 
 ## arg 1:  the new package version
@@ -38,11 +36,6 @@ post_upgrade() {
   for file in ${filelist[@]}; do
     install-info $infodir/$file $infodir/dir 2> /dev/null
   done
-
-  echo "Poldi has now been upgraded."
-  echo
-  echo "Warning: Upgrades to this package will not replace any configuration files in /etc/poldi, in order to prevent serious logging in problems."
-  echo "The updated sample configuration files are now in /usr/share/poldi/etc/poldi. Take a look and update your own files in /etc/poldi if necessary."
 }
 
 ## arg 1:  the old package version

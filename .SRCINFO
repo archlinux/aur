@@ -1,7 +1,7 @@
 pkgbase = poldi
 	pkgdesc = PAM module for authentication using a smartcard
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.g10code.com/p-poldi.html
 	install = poldi.install
 	arch = i686
@@ -11,10 +11,12 @@ pkgbase = poldi
 	depends = libgpg-error
 	depends = libksba
 	depends = pam
+	backup = etc/poldi/poldi.conf
+	backup = etc/pam.d/system-auth-poldi
 	source = ftp://ftp.gnupg.org/gcrypt/alpha/poldi/poldi-0.4.1.tar.bz2
 	source = poldi-arch.patch
 	md5sums = 197986f9ba6aec9a91ee4610f4c6be8b
-	md5sums = 3533f7b428e2c9a4bbfff2271ba24e5d
+	md5sums = a4187baaacc764d20909345865668280
 
 pkgname = poldi
 

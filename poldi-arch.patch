@@ -9,3 +9,18 @@ diff -ur poldi-0.4-orig/src/util/support.c poldi-0.4/src/util/support.c
  #include <stdio.h>
  #include <stdlib.h>
  #include <assert.h>
+--- poldi-0.4.1-orig/conf/poldi.conf.skel	2013-11-21 12:06:29.740052210 +1100
++++ poldi-0.4.1/conf/poldi.conf.skel		2013-11-21 12:05:35.573383899 +1100
+@@ -5,10 +5,10 @@
+ auth-method localdb
+ 
+ # Specify the log file:
+-log-file /home/moritz/logs/poldi.txt
++log-file /var/log/poldi.log
+ 
+ # Enable debugging messages
+ debug
+ 
+ # Specify SCDaemon executable
+-scdaemon-program /usr/bin/scdaemon
++scdaemon-program /usr/lib/gnupg/scdaemon

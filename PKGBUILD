@@ -4,7 +4,7 @@
 
 pkgname=poldi
 pkgver=0.4.1
-pkgrel=2
+pkgrel=4
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
 url="http://www.g10code.com/p-poldi.html"
@@ -12,7 +12,7 @@ license="GPL"
 depends=('libgcrypt' 'libgpg-error' 'libksba' 'pam')
 makedepends=()
 options=()
-backup=()
+backup=("etc/poldi/poldi.conf" "etc/pam.d/system-auth-poldi")
 install=poldi.install
 source=("ftp://ftp.gnupg.org/gcrypt/alpha/poldi/$pkgname-$pkgver.tar.bz2" "poldi-arch.patch")
 
@@ -34,16 +34,16 @@ package() {
   install -d -m 755 "$pkgdir/usr/share"
   mv "$pkgdir/etc/poldi" "$pkgdir/usr/share/poldi"
   rmdir $pkgdir/etc
-  sed -i "s#^log-file.*#log-file /var/log/poldi.log#" "$pkgdir/usr/share/poldi/poldi.conf"
+  install -D -m 644 "$pkgdir/usr/share/poldi/poldi.conf"  "$pkgdir/etc/poldi/poldi.conf"
 
   install -d -m 755 "$pkgdir/usr/lib/security"
   cp src/pam/pam_poldi.so "$pkgdir/usr/lib/security/"
   cp tests/pam-test "$pkgdir/usr/bin/pam-test-poldi"
 
   install -d -m 755 "$pkgdir/etc/pam.d"
-  echo -e "auth\tsufficient\tpam_poldi.so" > $pkgdir/etc/pam.d/poldi
+  echo -e "auth\tsufficient\tpam_poldi.so" > $pkgdir/etc/pam.d/system-auth-poldi
 
   rm "$pkgdir/usr/share/info/dir"
 }
 md5sums=('197986f9ba6aec9a91ee4610f4c6be8b'
-         '3533f7b428e2c9a4bbfff2271ba24e5d')
+         'a4187baaacc764d20909345865668280')
