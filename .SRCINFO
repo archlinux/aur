@@ -19,7 +19,6 @@ pkgbase = lib32-allegro
 	depends = lib32-alsa-lib
 	depends = allegro=5.0.10
 	source = http://downloads.sourceforge.net/alleg/allegro-5.0.10.tar.gz
-	md5sums = bf51a90e158ff8b1cec0514ef70195cf
 	sha256sums = 71b81080f34f6e485edd0c51f22923c18ff967d5db438e591e6f3885d5bdcda1
 
 pkgname = lib32-allegro
