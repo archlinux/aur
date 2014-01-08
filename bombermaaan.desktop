@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Bombermaaan
+Comment=A classic Bomberman-like game with multiplayer support
+Exec=bombermaaan
+Icon=bombermaaan
+Terminal=false
+Categories=Game;ArcadeGame;
