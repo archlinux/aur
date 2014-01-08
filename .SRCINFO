@@ -6,7 +6,7 @@ pkgbase = pywiiload-git
 	arch = any
 	license = GPL3
 	depends = python
-	source = pywiiload::git://github.com/dniMretsaM/PyWiiLoad.git
+	source = pywiiload::git+https://github.com/dniMretsaM/PyWiiLoad.git
 	md5sums = SKIP
 
 pkgname = pywiiload-git
