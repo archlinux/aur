@@ -49,6 +49,7 @@ build() {
 
   msg2 "Extracting archive"
   ln -fs "${pkgpath}" .
+  # for some reason the .tar.gz is really a zip..?
   unzip -f "$(basename "$pkgpath")"
 
   msg2 "Fishing out ${CARCH} version"
