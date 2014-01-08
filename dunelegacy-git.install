@@ -1,13 +1,8 @@
 
 post_install() {
-  # updates for our .desktop file
-  update-desktop-database -q
+  echo "Remember you have to put your DUNEII datafiles under ~/.config/dunelegacy/data/"
 }
 
 post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  post_install $1
+  post_install
 }

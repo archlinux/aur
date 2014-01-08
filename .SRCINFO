@@ -1,6 +1,6 @@
 pkgbase = dunelegacy-git
-	pkgdesc = Updated clone of Westood Studios' Dune2 (Git version)
-	pkgver = v0.96.3.8.g319cb34
+	pkgdesc = Updated clone of Westood Studios' Dune2 (development version)
+	pkgver = 0.96.3.r8.g319cb34
 	pkgrel = 1
 	url = http://dunelegacy.sourceforge.net
 	install = dunelegacy-git.install
@@ -11,9 +11,8 @@ pkgbase = dunelegacy-git
 	depends = sdl_mixer
 	provides = dunelegacy
 	conflicts = dunelegacy
-	source = dunelegacy::git+https://dunelegacy.git.sourceforge.net/gitroot/dunelegacy/dunelegacy
+	source = dunelegacy::git+http://git.code.sf.net/p/dunelegacy/code
 	md5sums = SKIP
-	sha256sums = SKIP
 
 pkgname = dunelegacy-git
 
