@@ -3,15 +3,14 @@ pkgbase = python-librtmp
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/chrippa/python-librtmp
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = Simplified BSD
 	makedepends = python-setuptools
 	depends = python-singledispatch
 	depends = python-cffi
 	depends = rtmpdump
 	source = https://pypi.python.org/packages/source/p/python-librtmp/python-librtmp-0.1.2.tar.gz
-	md5sums = 2a1d37dc84f09a5c5a99bc435029c733
 	sha256sums = 207e539c04419cc2ea3380cfdee0c8576168079603168c7cc1807e9f4982e997
 
 pkgname = python-librtmp
