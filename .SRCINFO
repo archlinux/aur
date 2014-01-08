@@ -8,16 +8,17 @@ pkgbase = bombermaaan
 	arch = x86_64
 	license = GPL3
 	depends = sdl_mixer
+	conflicts = bombermaaan-svn
 	source = http://downloads.sourceforge.net/bombermaaan/Bombermaaan_1.4.0.627_20081018_src.tar.gz
 	source = http://downloads.sourceforge.net/bombermaaan/Bombermaaan_1.4.0.627_20081018_res.tar.gz
 	source = http://media1.gamefront.com/moddb/2011/02/17/Bombermaan_levels_pack.zip
 	source = bombermaaan.png
 	source = bombermaaan.desktop
-	md5sums = ee90bdd9654f0886c9585e6d785a1f52
-	md5sums = 6c12f92ba80788f5958f7d9b65c81307
-	md5sums = 9986c2abe340b8831eff6f6c4474ad0d
-	md5sums = 40b94792c2f9f41ebde2d5c5ddf224c6
-	md5sums = SKIP
+	sha256sums = fb0b6d59569d436ac10b452857b8800b831513ab888b29a66c2dc0ada12d045d
+	sha256sums = 48c702d42a87b44606cbed2da88b49b250f66c6a65067d1dc43b25980ef1c74a
+	sha256sums = 7a73655f609096271434d20e8a9c33b9af71c547a4a1fc312fbd85866f6c8519
+	sha256sums = 803576f10eb6b45e807cd12a4ccd6b17652ddda53bf8f0e2fa1fb5623d9287bc
+	sha256sums = 06f8be98170c3c95628003a1419bb25527617330f225bab82baffa564ca1f92b
 
 pkgname = bombermaaan
 

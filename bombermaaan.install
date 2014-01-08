@@ -1,6 +1,6 @@
 
 post_install() {
-  echo "You can put additional level files in \"~/.Bombermaaan/Levels\"."
+  echo "You can put additional level files in '~/.Bombermaaan/Levels'."
 }
 
 post_upgrade() {
