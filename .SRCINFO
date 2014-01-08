@@ -1,6 +1,6 @@
 pkgbase = game-dev-tycoon
 	pkgdesc = a business simulation game where you start a video game development company
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = http://www.greenheartgames.com/app/game-dev-tycoon/
 	arch = i686

@@ -3,7 +3,7 @@
 # Repository here: https://github.com/Jonhoo/gamedevtycoon-PKGBUILD
 # Changelog here: http://www.greenheartgames.com/game-dev-tycoon-changelog/
 pkgname=game-dev-tycoon
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="a business simulation game where you start a video game development company"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ license=("commercial")
 url="http://www.greenheartgames.com/app/game-dev-tycoon/"
 _gamepkg="gamedevtycoon-${pkgver}.i386-x64.tar.gz"
 _gamerel="1"
-_gamemd5="114dc18ac7e445eff3827c136e5577d9"
+_gamemd5="954f535a0ebd67cb134e251ebbbe120b"
 source=('game-dev-tycoon' 'game-dev-tycoon.desktop')
 md5sums=('ae28f2cd5480964f05cf5699f3f1693c'
          '29e0fcaa10380835931bedc56530caac')
@@ -49,7 +49,7 @@ build() {
 
   msg2 "Extracting archive"
   ln -fs "${pkgpath}" .
-  tar zxf "$(basename "$pkgpath")"
+  unzip -f "$(basename "$pkgpath")"
 
   msg2 "Fishing out ${CARCH} version"
   # not that it matters considering we're using the source directly...
@@ -81,6 +81,9 @@ package() {
   # Install Launcher
   msg2 "Install launcher to /usr/bin"
   install -D -m755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+
+  msg2 "Ensuring node-webkit mods folder exists"
+  install -d -m755 ${pkgdir}/usr/lib/node-webkit/mods
 
   # Install Desktop
   msg2 "Add .desktop file"
