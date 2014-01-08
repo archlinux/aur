@@ -4,8 +4,8 @@ pkgbase = atd-demo
 	pkgrel = 1
 	url = http://rune-soft.com/Games/Released/Game-239/game=Airline_Tycoon_Deluxe-6
 	install = atd-demo.install
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = custom
 	depends = sdl_mixer
 	conflicts = atd
@@ -14,14 +14,10 @@ pkgbase = atd-demo
 	source = atd-demo.sh
 	source = atd-demo.desktop
 	source = atd-demo-fs.desktop
-	md5sums = d7bace7f1d67fda376919bf83c942fb4
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
 	sha256sums = ff0b2f03cbfda4fe13aa803ced484d29e528a3b1bd30f04b03617c10ce7cda55
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 804921da338e7a29351d83de33475c7ede92e7f8fcfbc0b7755f9b05739e4906
+	sha256sums = 42b4848957cd57067f095c9aa08060e8c9435df7cb6a0d4250c6c847c0667a4f
+	sha256sums = 365468f8f75658670d4b400cce2dad2a7bc07ed7070629cdb9ec82f5c3906906
 
 pkgname = atd-demo
 
