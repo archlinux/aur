@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 # based on cegui from Arch Linux repository, original credits go to:
@@ -25,7 +25,6 @@ provides=('cegui')
 conflicts=('cegui')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/crayzedsgui/CEGUI-$pkgver.tar.gz")
-md5sums=('a8b682daf82e383edc169c2e6eb2b321')
 sha256sums=('7c3b264def08b46de749c2acaba363e907479d924612436f3bd09da2e474bb8c')
 
 build() {
@@ -37,7 +36,6 @@ build() {
   PYTHON="/usr/bin/python2" ./configure --prefix=/usr --sysconfdir=/etc \
     --enable-null-renderer --with-gtk2 --disable-samples \
     --disable-ogre-renderer --disable-irrlicht-renderer
-
   make
 }
 
