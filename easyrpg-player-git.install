@@ -1,6 +1,6 @@
 
 post_install() {
-  echo "You can launch a RPG Maker 2000/2003 game by starting 'EasyRPG_Player' in it's directory."
+  echo "You can launch a RPG Maker 2k/2k3 game by starting 'easyrpg-player' in it's directory."
   echo "Remember you may need RTP(E) for some games."
 }
 
