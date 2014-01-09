@@ -1,12 +1,13 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=matwm2-svn
 pkgver=r793
-pkgrel=1
+pkgrel=2
 pkgdesc="A nice tiling or floating window manager"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/segin-utils/"
 license=('BSD')
 depends=('libxinerama' 'libxft')
+makedepends=('svn')
 source=("$pkgname::svn+http://segin-utils.googlecode.com/svn/trunk/matwm2")
 md5sums=('SKIP')
 
