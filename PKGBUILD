@@ -9,7 +9,7 @@ pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
-depends=('elementary>=1.8.0' "$_python-dbus")
+depends=('elementary' "$_python-dbus")
 source=("http://download.enlightenment.org/rel/bindings/python/$_pkgname-$pkgver.tar.gz")
 sha256sums=('8f883c325e30ee3eb2fa38822fa353a22207441b385f4e167cf9c1cf855638f7')
 
