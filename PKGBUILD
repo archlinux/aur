@@ -1,28 +1,30 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
-pkgname=enjoy-git
-_pkgname=${pkgname%-*}
+_pkgname=enjoy
+pkgname=$_pkgname-git
 pkgver=0.1.0.205.aa8fec6
 pkgrel=1
 pkgdesc="Music player based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('elementary>=1.7.99' 'lightmediascanner')
+depends=('elementary' 'lightmediascanner')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  for i in v_maj v_min v_mic; do
-    local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
+  for _i in v_maj v_min v_mic; do
+    local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
   done
 
-  echo $_v_maj.$_v_min.$_v_mic.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  v_ver=$(awk -F , -v v_ver=$v_ver '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+
+  printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
