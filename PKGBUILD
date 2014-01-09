@@ -3,31 +3,31 @@
 # Contributor: Samsagax <samsagax at gmail dot com>
 # Contributor: Swift Geek <swiftgeek+spam@gmail.com>
 
-pkgname=entrance-git
-_pkgname=${pkgname%-*}
-pkgver=0.0.5.r45.539a5d9
+_pkgname=entrance
+pkgname=$_pkgname-git
+pkgver=0.0.99.r73.9f1e051
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('elementary' 'xorg-xauth')
-  [[ ! $(pacman -T ekbd-svn) ]] && depends+=('ekbd-svn')
+  [[ (! $(pacman -T ekbd-svn)) || (! $(pacman -T ekbd-git)) ]] && depends+=('ekbd-git')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/entrance.conf')
 source=("git://git.enlightenment.org/misc/$_pkgname.git"
         'entrance.service')
-md5sums=('SKIP'
-         'a64b761bb312d9685705232618f57d84')
+sha256sums=('SKIP'
+            '187e721108e342bf0442cdaf2a3e4b836b17c3c756b691d1ee3f02e6abcb0ecb')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]')
+  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
