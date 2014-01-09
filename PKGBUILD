@@ -3,12 +3,13 @@
 
 pkgname=clanlib-23
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform game development library (legacy 2.3 branch)."
 arch=('i686' 'x86_64')
 url="http://clanlib.org/"
 license=('zlib')
-depends=('alsa-lib' 'libjpeg' 'libmikmod' 'libpng' 'libvorbis' 'libxi' 'libxmu' 'sdl_gfx' 'freetype2' 'pcre' 'sqlite' 'libgl')
+depends=('alsa-lib' 'libjpeg' 'libmikmod' 'libvorbis' 'fontconfig' 'pcre'
+         'sqlite' 'libxrender' 'libgl')
 makedepends=('mesa')
 options=('!libtool')
 source=("http://clanlib.org/download/releases-2.0/ClanLib-2.3.7.tgz")
