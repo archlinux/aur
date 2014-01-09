@@ -22,7 +22,8 @@ pkgver() {
     local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
   done
 
-  v_ver=$(awk -F , -v v_ver=$v_ver '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+# uncomment later, right now it would cause pacman to think it's a downgrade
+# v_ver=$(awk -F , -v v_ver=$v_ver '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
   printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
