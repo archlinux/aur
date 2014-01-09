@@ -1,15 +1,15 @@
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: fancris3 <fancris3 at aol.com>
 
-pkgname=places-git
-_pkgname=${pkgname%-*}
-pkgver=0.5.0.r176.d26c909
+_pkgname=places
+pkgname=$_pkgname-git
+pkgver=0.5.0.r178.58cd789
 pkgrel=1
 pkgdesc="Enlightenment module: Manage the mounting of volumes"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/e17mods/wiki/Places"
 license=('MIT')
-depends=('enlightenment17>=0.17.99' 'udisks')
+depends=('enlightenment' 'udisks')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -19,9 +19,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '-[ ]')
+  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
