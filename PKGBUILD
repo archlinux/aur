@@ -2,14 +2,14 @@
 # Contributor: nem <nem@ikitten.co.uk>
 pkgname=mantis-wm-git
 pkgver=0.11.c5805bd
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightweight window manager for X"
 arch=('i686' 'x86_64')
 url="http://github.com/andreas-volker/mantis-wm"
 license=('MIT')
 depends=('libx11')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/andreas-volker/mantis-wm.git")
+source=("$pkgname::git://github.com/andreas-volker/mantis-wm.git")
 md5sums=( 'SKIP')
 
 pkgver() {
