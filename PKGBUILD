@@ -1,9 +1,9 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=efl-git
-_pkgname=${pkgname%-*}
-pkgver=1.8.99.24061.3082bbc
+_pkgname=efl
+pkgname=$_pkgname-git
+pkgver=1.8.99.24168.bd0d03f
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -40,11 +40,6 @@ pkgver() {
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
   printf "$efl_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-# set python scripts to run with python2
-  sed -i 's/env python$/&2/' "$srcdir/$_pkgname/src/scripts/eina/eina-bench-cmp"
 }
 
 build() {
