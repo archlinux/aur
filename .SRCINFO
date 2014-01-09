@@ -1,7 +1,7 @@
 pkgbase = matwm2-svn
 	pkgdesc = A nice tiling or floating window manager
 	pkgver = r793
-	pkgrel = 2
+	pkgrel = 3
 	url = http://code.google.com/p/segin-utils/
 	arch = i686
 	arch = x86_64
