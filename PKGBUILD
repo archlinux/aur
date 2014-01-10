@@ -2,8 +2,8 @@
 
 pkgname=kde-colors-solarized-git
 pkgver=20131024
-pkgrel=1
-pkgdesc="Solarized Dark and Solarized Light themes for Konsole, Kate and Kcolorchooser."
+pkgrel=2
+pkgdesc="Solarized theme for Kcolorchooser."
 arch=('any')
 url="https://github.com/hayalci/kde-colors-solarized"
 license=('GPL')
@@ -26,20 +26,20 @@ package() {
   prefix=$(kde4-config --prefix)/share
 
   # KDE Color Palette
-  mkdir -p ${pkgdir}/${prefix}/config/colors/
-  install -m 644 ${srcdir}/${pkgname}/Solarized_Colors ${pkgdir}/${prefix}/config/colors/Solarized\ Colors
+  mkdir -p "${pkgdir}/${prefix}/config/colors/"
+  install -m 644 "${srcdir}/${pkgname}/Solarized_Colors" "${pkgdir}/${prefix}/config/colors/Solarized\ Colors"
 
-  # Konsole (yakuake, etc.) color scheme
-  mkdir -p ${pkgdir}/${prefix}/apps/konsole/
-  install -m 644 ${srcdir}/${pkgname}/"Solarized Dark.colorscheme"  ${pkgdir}/${prefix}/apps/konsole
-  install -m 644 ${srcdir}/${pkgname}/"Solarized Light.colorscheme" ${pkgdir}/${prefix}/apps/konsole
+  # Konsole (yakuake, etc.) color scheme / merged upstream
+  # mkdir -p "${pkgdir}/${prefix}/apps/konsole/"
+  # install -m 644 "${srcdir}/${pkgname}/Solarized Dark.colorscheme"  "${pkgdir}/${prefix}/apps/konsole"
+  # install -m 644 "${srcdir}/${pkgname}/Solarized Light.colorscheme" "${pkgdir}/${prefix}/apps/konsole"
 
   # Kate Color Schema and syntax highligting / merged upstream
   # mkdir -p ${pkgdir}/${prefix}/config/
-  # cat ${srcdir}/${pkgname}/"Solarized Dark.kateschema" >   ${pkgdir}/${prefix}/config/kateschemarc
-  # cat ${srcdir}/${pkgname}/"Solarized Dark.katesyntax" >   ${pkgdir}/${prefix}/config/katesyntaxhighlightingrc
-  # cat ${srcdir}/${pkgname}/"Solarized Light.kateschema" >> ${pkgdir}/${prefix}/config/kateschemarc
-  # cat ${srcdir}/${pkgname}/"Solarized Light.katesyntax" >> ${pkgdir}/${prefix}/config/katesyntaxhighlightingrc
+  # cat "${srcdir}/${pkgname}/Solarized Dark.kateschema" >   "${pkgdir}/${prefix}/config/kateschemarc"
+  # cat "${srcdir}/${pkgname}/Solarized Dark.katesyntax" >   "${pkgdir}/${prefix}/config/katesyntaxhighlightingrc"
+  # cat "${srcdir}/${pkgname}/Solarized Light.kateschema" >> "${pkgdir}/${prefix}/config/kateschemarc"
+  # cat "${srcdir}/${pkgname}/Solarized Light.katesyntax" >> "${pkgdir}/${prefix}/config/katesyntaxhighlightingrc"
 
 }
 
