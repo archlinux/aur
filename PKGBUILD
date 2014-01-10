@@ -4,16 +4,16 @@
 # Contributor: Jesse Juhani Jaara <jesse.jaara@gmail.com>
 
 pkgname=lib32-libmikmod
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="A portable sound library"
 license=(GPL LGPL)
 url="http://mikmod.sourceforge.net"
 arch=(x86_64)
-depends=(libmikmod lib32-openal)
+depends=(libmikmod lib32-libpulse)
 makedepends=(gcc-multilib libtool-multilib lib32-alsa-lib)
 source=(http://downloads.sourceforge.net/mikmod/libmikmod-$pkgver.tar.gz)
-sha256sums=('2e8ca1d945ff7330741d085548a6d4e8b2f6a9d41edda773607905d8905683ae')
+sha256sums=('b714ee340a04e6867f60246f679e0f40063b92f99269b6b715c8bf19ad469fb6')
 
 prepare() {
   mkdir build
@@ -28,7 +28,6 @@ build() {
   ../libmikmod-$pkgver/configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
-    --enable-openal \
     --disable-static
   make
 }
