@@ -18,7 +18,7 @@ optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-xml-sax-expatxs: make AMF parsing faster'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support'
-            'perl-wx-glcanvas: support for opengl preview' 
+            'perl-wx-glcanvas: support for opengl preview'
             'perl-opengl: support for opengl preview'
             'perl-class-xsaccessor: creating faster accessor methods')
 #             'perl-growl-gntp: notifications support via growl'
@@ -34,7 +34,7 @@ md5sums=('SKIP'
 _gitname="Slic3r"
 
 countdown() {
-  local i 
+  local i
   for ((i=$1; i>=1; i--)); do
     [[ ! -e /proc/$$ ]] && exit
     echo -ne "\rPress [i] to start interactive config in $i second(s) or any key to skip "
@@ -68,8 +68,8 @@ prepare() {
     case $select_mode in
       "branch/commit")
         cd "$_src_dir"
-        # Pick a branch - default is master… for now
-        branches=( $(git ls-remote --heads origin  | sed 's?.*refs/heads/??' | awk '{printf $1; if ($1 == "master") printf " on ";else printf " off "}') )
+        # Pick a branch - default is stable… for now
+        branches=( $(git ls-remote --heads origin  | sed 's?.*refs/heads/??' | awk '{printf $1; if ($1 == "stable") printf " on ";else printf " off "}') )
         branch=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Pick branch' 0 0 0 ${branches[*]} 2>&1 >/dev/tty)
         unset branches
         msg2 "Chosen \"${branch}\" branch "
@@ -100,6 +100,9 @@ prepare() {
         echo "WTF!? This shouldn't happen at all"
         ;;
     esac
+  else
+    cd "$_src_dir"
+    git checkout stable -f
   fi
 
   cd "$_src_dir"
