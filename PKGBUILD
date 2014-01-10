@@ -2,7 +2,7 @@
 
 pkgname=kde-colors-solarized-git
 pkgver=20131024
-pkgrel=2
+pkgrel=3
 pkgdesc="Solarized theme for Kcolorchooser."
 arch=('any')
 url="https://github.com/hayalci/kde-colors-solarized"
@@ -27,7 +27,7 @@ package() {
 
   # KDE Color Palette
   mkdir -p "${pkgdir}/${prefix}/config/colors/"
-  install -m 644 "${srcdir}/${pkgname}/Solarized_Colors" "${pkgdir}/${prefix}/config/colors/Solarized\ Colors"
+  install -m 644 "${srcdir}/${pkgname}/Solarized_Colors" "${pkgdir}/${prefix}/config/colors/Solarized Colors"
 
   # Konsole (yakuake, etc.) color scheme / merged upstream
   # mkdir -p "${pkgdir}/${prefix}/apps/konsole/"

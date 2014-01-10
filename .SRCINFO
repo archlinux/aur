@@ -1,7 +1,7 @@
 pkgbase = kde-colors-solarized-git
 	pkgdesc = Solarized theme for Kcolorchooser.
 	pkgver = 20131024
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hayalci/kde-colors-solarized
 	arch = any
 	license = GPL
