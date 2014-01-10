@@ -1,0 +1,11 @@
+
+post_install() {
+  echo "Remember you need the DUNEII data files in ~/.local/share/dunedynasty/data"
+  echo "For midi music start 'timidity -iA -B 4,8' or set soundfont path for use"
+  echo "with FluidSynth in ~/.config/dunedynasty/dunedynasty.cfg"
+  echo "For an example config file see /usr/share/doc/dunedynasty folder."
+}
+
+post_upgrade() {
+  post_install
+}
