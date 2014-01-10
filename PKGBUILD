@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.12
-pkgver=3.12.6
+pkgver=3.12.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,9 +20,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch')
 md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
-         '9e75be8b127e58f1a76c0015eabb12ae'
-         '5259c05d5791002e81cb6eca368caa60'
-         'a884d449ea454a75e9d0b6165336734c'
+         'a158a29ecf49e768ebd2f34967991606'
+         'a9281e90e529795eaf10b45d70ab2868'
+         '6000a9c7bd83081a65611d9dfbdd8eda'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          'd50c1ac47394e9aec637002ef3392bd1')
