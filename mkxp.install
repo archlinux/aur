@@ -1,0 +1,11 @@
+
+post_install() {
+  echo "Currently, you have to copy /usr/bin/mkxp to the directory of the"
+  echo "RPG Maker XP game you want to play, after that you can launch it"
+  echo "with ./mkxp in it's directory. You may want to add a mkxp.conf to game"
+  echo "directory for customisation, see sample file in /usr/share/doc/mkxp"
+}
+
+post_upgrade() {
+  post_install
+}

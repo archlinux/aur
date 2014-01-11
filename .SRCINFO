@@ -1,0 +1,32 @@
+pkgbase = mkxp-git
+	pkgdesc = Open source implementation of the Ruby Game Scripting System of RPG Maker XP
+	pkgver = r319.b8fc5e2
+	pkgrel = 1
+	url = https://github.com/Ancurio/mkxp
+	install = mkxp.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = vim
+	depends = ruby
+	depends = physfs-hg
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl_sound-patched-hg
+	depends = pixman
+	depends = glew
+	depends = openal
+	depends = boost-libs
+	depends = libgl
+	depends = libsigc++
+	provides = mkxp
+	conflicts = mkxp
+	source = mkxp::git+https://github.com/Ancurio/mkxp.git
+	md5sums = SKIP
+
+pkgname = mkxp-git
+
