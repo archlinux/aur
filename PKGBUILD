@@ -1,17 +1,17 @@
 # Maintainer: nandub <dev@nandub.info>
 pkgname=primesieve
-pkgver=4.2
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 pkgdesc="C++ library that generates prime numbers and prime k-tuplets"
 url="http://code.google.com/p/primesieve/"
 license=("BSD")
 depends=(gcc-libs)
 source=(http://primesieve.googlecode.com/files/$pkgname-$pkgver-src.zip)
-sha1sums=('6468d65a4ea15acdfb2a0785f437b39de45b717d')
+sha1sums=('52f1e3161ca82591aee038412069c9845dc54ca7')
 arch=('i686' 'x86_64')
 build() {
   pushd ${srcdir}/$pkgname-$pkgver || return 1
-    make bin lib SHARED=yes || return 1
+    make bin lib shared || return 1
   popd || return 1
 }
 
@@ -25,8 +25,8 @@ package() {
     install -m655 -d "$pkgdir/usr/share/licenses/${pkgname}"
     # Copy files to their respective folders
     install -m755 bin/primesieve "$pkgdir/usr/bin"
-    install -m644 src/soe/*PrimeSieve.h "$pkgdir/usr/include/primesieve/soe"
-    install -m644 lib/lib${pkgname}*.so "$pkgdir/usr/lib"
+    install -m644 include/primesieve/soe/*.h "$pkgdir/usr/include/primesieve/soe"
+    install -m644 lib/lib${pkgname}.* "$pkgdir/usr/lib"
     install -m644 doc/* "$pkgdir/usr/share/doc/${pkgname}"
     install -m644 COPYING "$pkgdir/usr/share/licenses/${pkgname}"
   popd
