@@ -14,5 +14,20 @@ if [ ! -f $HOME/.zelda-classic/1st.qst ]; then
 fi
 
 cd $HOME/.zelda-classic
-./zelda-l "$@"
+
+case "${0##*/}" in
+  zelda-classic)
+    ./zelda-l "$@"
+  ;;
+  zelda-classic-zlaunch)
+    ./zlaunch-l "$@"
+  ;;
+  zelda-classic-zquest)
+    ./zquest-l "$@"
+  ;;
+  *)
+    echo "Something is wrong with your Zelda Classic installation."
+  ;;
+esac
+
 cd - &>/dev/null
