@@ -4,7 +4,7 @@ _pkgname=python3-defaults
 _pkgname2=dh-python
 pkgver=3.3.2
 _pkgver=1.20130917
-pkgrel=1
+pkgrel=2
 _pkgrel=17
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -40,7 +40,11 @@ build() {
 
 check() {
   cd "$srcdir/$_pkgname-debian"
+  sed -i -e 's|/usr/share/python3/debian_defaults|debian/debian_defaults|' \
+    debpython/version.py
   make -k check_versions
+  sed -i -e 's|debian/debian_defaults|/usr/share/python3/debian_defaults|' \
+    debpython/version.py
 }
 
 package() {
