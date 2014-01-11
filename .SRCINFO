@@ -1,7 +1,7 @@
 pkgbase = debhelper-python2
 	pkgdesc = debhelper scripts for Python 2: pyversions, python2.pm
 	pkgver = 2.7.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://packages.debian.org/sid/python
 	arch = any
 	license = custom:MIT

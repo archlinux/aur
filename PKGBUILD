@@ -2,7 +2,7 @@
 pkgname=debhelper-python2
 _pkgname=python-defaults
 pkgver=2.7.5
-pkgrel=2
+pkgrel=3
 _pkgrel=5
 pkgdesc="debhelper scripts for Python 2: pyversions, python2.pm"
 arch=('any')
@@ -42,6 +42,9 @@ package() {
   make DESTDIR="$pkgdir/" install
   mv $pkgdir/usr/local/bin $pkgdir/usr/bin
   mv $pkgdir/usr/local/share $pkgdir/usr/share
+  # remove tools that are installed with debhelper-python (Python 3)
+  rm $pkgdir/usr/share/debhelper/autoscripts/{postinst-pycompile,prerm-pyclean}
+
   mkdir -p $pkgdir/usr/share/perl5/vendor_perl
   mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
   rm -r $pkgdir/usr/local
