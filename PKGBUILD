@@ -3,8 +3,8 @@ pkgname=debhelper-python
 _pkgname=python3-defaults
 _pkgname2=dh-python
 pkgver=3.3.2
-_pkgver=1.20130917
-pkgrel=2
+_pkgver=1.20131021
+pkgrel=3
 _pkgrel=17
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -24,7 +24,7 @@ install=
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz
 http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver.orig.tar.xz)
 md5sums=('abad7f583e166182e3a7b36b82aaf629'
-         '24271694c7096376c7397d6a05fc7ff3')
+         '827c911be659b027faf2c9f6d4b668d4')
 
 build() {
   cd "$srcdir/$_pkgname-debian"
@@ -69,4 +69,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
