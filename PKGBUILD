@@ -4,7 +4,7 @@ _pkgname=python3-defaults
 _pkgname2=dh-python
 pkgver=3.3.2
 _pkgver=1.20131021
-pkgrel=3
+pkgrel=4
 _pkgrel=17
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -66,6 +66,8 @@ package() {
   make DESTDIR="$pkgdir/" PREFIX=/usr install
   mkdir -p $pkgdir/usr/share/perl5/vendor_perl
   mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
+  # python2.pm is in debhelper-python2
+  rm $pkgdir/usr/share/perl5/vendor_perl/Debian/Debhelper/Sequence/python2.pm
 }
 
 # vim:set ts=2 sw=2 et:
