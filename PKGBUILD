@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=spice-vdagent
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Spice agent xorg client that enables copy and paste between client and X-session and more"
 arch=('i686' 'x86_64')
 url="http://www.spice-space.org/"
@@ -10,7 +10,7 @@ depends=('libpciaccess' 'libxinerama' 'libxrandr' 'libxfixes' 'spice-protocol')
 optdepends=('dex: start spice-vdagent automatically on login')
 source=("http://www.spice-space.org/download/releases/$pkgname-$pkgver.tar.bz2"
         'spice-vdagentd.conf.d')
-sha256sums=('bbaf007615002e4636c5faa6fe6912527f2cfb518aecc9e1f903bc8b0f00767c'
+sha256sums=('5bae1747307c2f4195f6de97639391be7c6be6c5673fdcc9febed6faca22bd34'
             '03e0cc9e0f0e2afb3fc99846b8eb1fcb0698955833c67a40a6692c7df4df2d12')
 
 build() {
