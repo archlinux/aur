@@ -1,8 +1,8 @@
 pkgbase = python2-ethtool
 	pkgdesc = python bindings for the ethtool kernel interface
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
-	url = https://git.fedorahosted.org/cgit/python-ethtool.git/
+	url = http://fedorapeople.org/cgit/dsommers/public_git/python-ethtool.git/
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -10,8 +10,8 @@ pkgbase = python2-ethtool
 	depends = python2
 	depends = libnl1
 	options = !emptydirs
-	source = https://git.fedorahosted.org/cgit/python-ethtool.git/snapshot/python-ethtool-0.8.tar.bz2
-	sha256sums = 903e0896270cefa866fc3e177c14121476b70ba5aebcc3eb0280cc47d9df538f
+	source = https://fedorahosted.org/releases/p/y/python-ethtool/python-ethtool-0.9.tar.bz2
+	sha256sums = f8f6c96272c297c5047b5c0fbae428ce7e01b907e694605dc0ac43f16ecc5ac0
 
 pkgname = python2-ethtool
 
