@@ -1,0 +1,119 @@
+diff -Naur neo4j-community-2.0.0.orig/bin/neo4j neo4j-community-2.0.0/bin/neo4j
+--- neo4j-community-2.0.0.orig/bin/neo4j	2013-12-08 13:51:51.000000000 -0200
++++ neo4j-community-2.0.0/bin/neo4j	2013-12-20 16:15:21.365783596 -0200
+@@ -46,10 +46,11 @@
+     cd "$(dirname "$SCRIPT")"
+     SCRIPT=`basename "$SCRIPT"`
+   done
+-  NEO4J_HOME=`cd $( dirname "$SCRIPT" )/.. && dirs -l +0`
+-  NEO4J_INSTANCE=$NEO4J_HOME
+-  NEO4J_CONFIG=$NEO4J_INSTANCE/conf
+-  NEO4J_LOG=$NEO4J_INSTANCE/data/log
++  NEO4J_HOME=/usr/share/java/neo4j
++  NEO4J_INSTANCE=/var/lib/neo4j
++  NEO4J_CONFIG=/etc/neo4j
++  NEO4J_LOG=/var/log/neo4j
++  NEO4J_SHARE=/usr/share/neo4j
+ 
+   cd "$NEO4J_HOME"
+ }
+@@ -67,14 +68,14 @@
+ }
+ 
+ findBaseDirAndCdThere
+-source bin/utils
++source ${NEO4J_SHARE}/bin/utils
+ parseConfig
+ 
+ JAVA_OPTS="-server -XX:+DisableExplicitGC ${wrapper_java_additional}"
+ [ -z "${wrapper_java_initmemory}" ] || JAVA_OPTS="$JAVA_OPTS -Xms${wrapper_java_initmemory}m"
+ [ -z "${wrapper_java_maxmemory}" ] || JAVA_OPTS="$JAVA_OPTS -Xmx${wrapper_java_maxmemory}m"
+ 
+-#NEO4J_SERVER_PORT=`( egrep "^org.neo4j.server.webserver.port" $NEO4J_INSTANCE/conf/neo4j-server.properties || echo 7474 ) | sed -e 's/.*=//'`
++#NEO4J_SERVER_PORT=`( egrep "^org.neo4j.server.webserver.port" ${NEO4J_CONFIG}/neo4j-server.properties || echo 7474 ) | sed -e 's/.*=//'`
+ NEO4J_SERVER_PORT=${org_neo4j_server_webserver_port:=7474}
+ 
+ LAUNCHD_NAME="${LAUNCHD_NAME}.${NEO4J_SERVER_PORT}"
+@@ -90,16 +91,16 @@
+ # Username to propose for neo4j user, can be overridden by -u USERNAME option
+ DEFAULT_USER='neo4j'
+ 
+-SCRIPT_NAME="${NEO4J_HOME}/bin/neo4j"
++SCRIPT_NAME="/usr/bin/neo4j"
+ SERVICE_NAME=${wrapper_ntservice_name:=neo4j-service}
+ LAUNCHD_DIR=~/Library/LaunchAgents/
+ 
+ TIMEOUT=120
+ 
+-PID_FILE=${NEO4J_INSTANCE}/data/neo4j-service.pid
++PID_FILE=/run/neo4j/neo4j-service.pid
+ buildclasspath() {
+   # confirm library jars
+-  LIBDIR="$NEO4J_HOME"/lib
++  LIBDIR="$NEO4J_HOME"
+   if [ ! -e "$LIBDIR" ] ; then
+     echo "Error: missing Neo4j Library, expected at $LIBDIR"
+     exit 1
+@@ -134,7 +135,7 @@
+   CLASSPATH=${ALL_JARS}
+ 
+   # add useful conf stuff to classpath - always a good idea
+-  CLASSPATH="$CLASSPATH":"$NEO4J_HOME"/conf/
++  CLASSPATH="$CLASSPATH":"$NEO4J_CONFIG"
+ }
+ 
+ detectrunning() {
+@@ -289,16 +290,16 @@
+ # pass in "true" for created to mark that the user was created (instead than pre-existing)
+ modify_user_config() {
+   created=${2:-"false"}
+-  if `grep -q "wrapper\.user=" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"` ; then
+-    sed -i -e "s/^.*wrapper\.user=.*$/wrapper\.user=$1/" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
++  if `grep -q "wrapper\.user=" "$NEO4J_CONFIG/neo4j-wrapper.conf"` ; then
++    sed -i -e "s/^.*wrapper\.user=.*$/wrapper\.user=$1/" "$NEO4J_CONFIG/neo4j-wrapper.conf"
+   else
+-    echo "wrapper.user=$1" >> "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
++    echo "wrapper.user=$1" >> "$NEO4J_CONFIG/neo4j-wrapper.conf"
+   fi
+ 
+-  if `grep -q "wrapper\.user\.created=" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"` ; then
+-    sed -i -e "s/^.*wrapper\.user\.created=.*$/wrapper\.user\.created=${created}/" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
++  if `grep -q "wrapper\.user\.created=" "$NEO4J_CONFIG/neo4j-wrapper.conf"` ; then
++    sed -i -e "s/^.*wrapper\.user\.created=.*$/wrapper\.user\.created=${created}/" "$NEO4J_CONFIG/neo4j-wrapper.conf"
+   else
+-    echo "wrapper.user.created=${created}" >> "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
++    echo "wrapper.user.created=${created}" >> "$NEO4J_CONFIG/neo4j-wrapper.conf"
+   fi
+ }
+ 
+diff -Naur neo4j-community-2.0.0.orig/bin/neo4j-shell neo4j-community-2.0.0/bin/neo4j-shell
+--- neo4j-community-2.0.0.orig/bin/neo4j-shell	2013-12-08 13:51:51.000000000 -0200
++++ neo4j-community-2.0.0/bin/neo4j-shell	2014-01-06 16:03:05.279834973 -0200
+@@ -86,7 +86,7 @@
+ 
+ if [ -z "$REPO" ]
+ then
+-  REPO="$BASEDIR"/lib
++  REPO=/usr/share/java/neo4j/
+ fi
+ 
+ LIBRARY_JARS=""
+diff -Naur neo4j-community-2.0.0.orig/bin/utils neo4j-community-2.0.0/bin/utils
+--- neo4j-community-2.0.0.orig/bin/utils	2013-12-08 13:51:51.000000000 -0200
++++ neo4j-community-2.0.0/bin/utils	2013-12-20 15:14:26.613409008 -0200
+@@ -325,11 +325,11 @@
+ # in place.
+ checkandrepairenv() {
+     # Create data/log if missing, change owner if created.
+-    if [ ! -d "$NEO4J_HOME"/data/log ]; then
+-      echo "${NEO4J_HOME}/data/log was missing, recreating..."
+-      mkdir "$NEO4J_HOME"/data/log
++    if [ ! -d "$NEO4J_LOG" ]; then
++      echo "${NEO4J_LOG} was missing, recreating..."
++      mkdir "$NEO4J_LOG"
+       if [ $UID == 0 ] ; then
+-        chown $NEO4J_USER "$NEO4J_HOME"/data/log
++        chown $NEO4J_USER "$NEO4J_LOG"
+       fi
+     fi
+ }

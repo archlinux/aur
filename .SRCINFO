@@ -1,0 +1,31 @@
+pkgbase = neo4j
+	pkgdesc = A fully transactional graph database implemented in Java
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://neo4j.org/
+	install = neo4j.install
+	arch = any
+	license = GPL
+	depends = bash
+	depends = lsof
+	depends = java-runtime
+	options = !strip
+	backup = etc/neo4j/custom-logback.xml
+	backup = etc/neo4j/logging.properties
+	backup = etc/neo4j/neo4j-http-logging.xml
+	backup = etc/neo4j/neo4j-server.properties
+	backup = etc/neo4j/neo4j-wrapper.conf
+	backup = etc/neo4j/neo4j.properties
+	source = http://dist.neo4j.org/neo4j-community-2.0.0-unix.tar.gz
+	source = bin.patch
+	source = conf.patch
+	source = neo4j.install
+	source = neo4j.service
+	sha256sums = 44a7160ead5cf70a385cceed30f7e999e29047b39ca92ac346bd230e2767f2ff
+	sha256sums = 3b7dfe7448e82a7be4dfa31d1d30aa3921a483c6a33926800664af3bef25e3d2
+	sha256sums = d230ccb4d2ddd7bc504d729c50170c39acc8f16815168f99b82f4d7fdd07b094
+	sha256sums = 2885511c87bd9594ffb81715fe4b9163c1f895c43206bc6f06048deca26d0de5
+	sha256sums = 9a02869e8e974e6bb2003b920a43652605c0e7431f54b59a16fc566bc1833497
+
+pkgname = neo4j
+
