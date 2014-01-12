@@ -1,8 +1,8 @@
 #Maintainer: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=libassl
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Provides a much simpler and sane programming interface to OpenSSL"
 arch=(i686 x86_64)
 url="https://opensource.conformal.com/wiki/assl"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('libclens')
 
 source=(https://opensource.conformal.com/snapshots/assl/assl-$pkgver.tar.gz)
-sha1sums=('e3d05390e63ce122a3f6ee3a996fa4b0876f9db5')
+sha1sums=('dc76a213b13633643c4e2279cc339aae9c736dd3')
 
 build() {
 	cd "assl-$pkgver"
