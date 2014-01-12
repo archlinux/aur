@@ -1,6 +1,6 @@
 pkgbase = eduke32
 	pkgdesc = An advanced Duke Nukem 3D source port
-	pkgver = 20140101_4240
+	pkgver = 20140112_4257
 	pkgrel = 1
 	url = http://eduke32.com/
 	install = eduke32.install
@@ -20,10 +20,10 @@ pkgbase = eduke32
 	optdepends = timidity-freepats: free soundfont for music
 	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
 	conflicts = eduke32-svn
-	source = http://dukeworld.duke4.net/eduke32/synthesis/20140101-4240/eduke32_src_20140101-4240.tar.xz
+	source = http://dukeworld.duke4.net/eduke32/synthesis/20140112-4257/eduke32_src_20140112-4257.tar.xz
 	source = eduke32.png
 	source = eduke32.desktop
-	sha256sums = c91a01ae0291bcfe5b4259af3fa93934da1ae5466ca4a9d592e07c075689b4ce
+	sha256sums = fb3d1487af0230acb55b868b363c36d032bc24e732b57f4c73bf61ab97108d3b
 	sha256sums = b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863
 	sha256sums = 9224aadf634448726d2e863ba9a455887dc3b90049238fe592b7f7b5634cbd79
 

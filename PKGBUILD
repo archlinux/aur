@@ -4,7 +4,9 @@
 # Contributor: JD Steffen
 
 pkgname=eduke32
-pkgver=20140101_4240
+_pkgdate=20140112
+_pkgrev=4257
+pkgver=${_pkgdate}_$_pkgrev
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
 arch=('i686' 'x86_64')
@@ -19,23 +21,23 @@ optdepends=('eduke32-hrp: High Resolution Pack'
             'timidity-freepats: free soundfont for music'
             'eduke32-shareware-episode: Duke Nukem 3D Demo')
 conflicts=('eduke32-svn')
-install="$pkgname.install"
-source=("http://dukeworld.duke4.net/$pkgname/synthesis/${pkgver//_/-}/${pkgname}_src_${pkgver//_/-}.tar.xz"
+install=$pkgname.install
+source=("http://dukeworld.duke4.net/$pkgname/synthesis/$_pkgdate-$_pkgrev/${pkgname}_src_$_pkgdate-$_pkgrev.tar.xz"
         "$pkgname.png"
         "$pkgname.desktop")
-sha256sums=('c91a01ae0291bcfe5b4259af3fa93934da1ae5466ca4a9d592e07c075689b4ce'
+sha256sums=('fb3d1487af0230acb55b868b363c36d032bc24e732b57f4c73bf61ab97108d3b'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
             '9224aadf634448726d2e863ba9a455887dc3b90049238fe592b7f7b5634cbd79')
 
 build() {
-  cd ${pkgname}_${pkgver//_/-}
+  cd ${pkgname}_$_pkgdate-$_pkgrev
 
   # add our makeflags and explicitly disable c++ building with sdl 1.2
-  make debug="${CXXFLAGS}" CPLUSPLUS=0 SDL_TARGET=1
+  make debug="$CXXFLAGS" CPLUSPLUS=0 SDL_TARGET=1
 }
 
 package() {
-  cd ${pkgname}_${pkgver//_/-}
+  cd ${pkgname}_$_pkgdate-$_pkgrev
 
   # install binaries, buildlicense, icon and desktop files
   install -d "$pkgdir"/usr/bin
