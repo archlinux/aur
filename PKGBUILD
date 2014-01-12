@@ -1,12 +1,12 @@
 # Maintainer: Johannes Dewender  arch at JonnyJD dot net
 pkgname=coverity-submit
-pkgver=1.9
+pkgver=1.12
 pkgrel=1
 pkgdesc="Submitting Coverity builds"
 arch=('any')
 url="http://www.catb.org/esr/coverity-submit/"
 license=('BSD')
-depends=('python2' 'curl' 'cov-analysis')
+depends=('python2' 'curl')
 makedepends=('pychecker')
 optdepends=()
 provides=()
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 source=(http://www.catb.org/~esr/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('aa532ef202fad33a80eaa50feda8a4a7')
+md5sums=('6b2c61a809bef8f83b4b90c6eaff4ef0')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
