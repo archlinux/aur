@@ -2,7 +2,7 @@
 
 _pkgbasename=cyphertite
 pkgname=$_pkgbasename-external-libs
-pkgver=1.6.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A high-security scalable solution for online backups"
 arch=(i686 x86_64)
@@ -28,7 +28,7 @@ provides=('cyphertite')
 
 source=(https://opensource.conformal.com/snapshots/cyphertite/cyphertite-$pkgver.tar.gz
         cyphertite-dynamic-link.patch)
-sha1sums=('9c787d964de383e8dac1f25afa0531aee4ea8b4a'
+sha1sums=('91dc3ac37f6f9f0190c83d15d1e20785953a0783'
           '2f90214c2827dd7e66bcffe7724d0415a2411822')
 
 prepare() {
