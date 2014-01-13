@@ -1,11 +1,11 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=python2-ethtool
 _pkgname=python-ethtool
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="python bindings for the ethtool kernel interface"
 arch=('i686' 'x86_64')
-url="http://fedorapeople.org/cgit/dsommers/public_git/python-ethtool.git/"
+url="https://fedorahosted.org/python-ethtool/"
 license=('GPL2')
 groups=()
 depends=('python2' 'libnl1')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(https://fedorahosted.org/releases/p/y/$_pkgname/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('f8f6c96272c297c5047b5c0fbae428ce7e01b907e694605dc0ac43f16ecc5ac0')
+sha256sums=('21476567e471b7ca364f6c324f4a607bf9ed4c7a33a45def7e5a5b78ad755016')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
