@@ -1,9 +1,9 @@
 pkgbase = easyrpg-player-git
-	pkgdesc = EasyRPG Player aims to be a free, RPG Maker 2k/2k3 interpreter (development version).
+	pkgdesc = EasyRPG Player aims to be a free, RPG Maker 2000/2003 interpreter (development version)
 	pkgver = 0.1.2.r120.gbceb9f6
 	pkgrel = 1
 	url = https://easy-rpg.org/
-	install = easyrpg-player-git.install
+	install = easyrpg-player.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
