@@ -1,23 +1,24 @@
 pkgbase = sqrxz3
-	pkgdesc = A fast paced jump'n'run which will please the hardcore gamer amongst you (Part III).
-	pkgver = 1.05
+	pkgdesc = A fast paced jump'n'run which will please the hardcore gamer amongst you (Part III)
+	pkgver = 1.05r
 	pkgrel = 1
 	url = http://sqrxz.de/
 	install = sqrxz3.install
 	arch = i686
 	arch = x86_64
-	license = Freeware
+	license = custom: Freeware
 	depends = sdl_mixer
 	depends = zlib
+	optdepends = libmodplug: better music decoder
 	options = !strip
 	source = http://www.retroguru.com/sqrxz3/sqrxz3-v.latest-ubuntu.tar.gz
 	source = sqrxz3.png
 	source = sqrxz3.sh
 	source = sqrxz3.desktop
-	md5sums = 76d5692a70e6c8e8474431cb6ae2a40e
-	md5sums = d10c83b355d87098251b076fe98a70e0
-	md5sums = ac4392c8175517682c8d43d0c1b89299
-	md5sums = 13c4475f3b2e4bb02e5b4ff1ef79fee9
+	sha256sums = b74a4bc4010e283a6c01380aa3bb49b98d228640d73319f5c75e036dcd1ac14a
+	sha256sums = d07ee6bb33dfd8187b23450bad58a2f4d68e217284d345e341a761aca14eb8c2
+	sha256sums = 0019a50f899f9534c1abc2e0e6519d558d239fa5f0e2c50fdb3d3f23d566c6a0
+	sha256sums = 194164042e5d394ce1492548002351c23da0b274f64a92851d87fec4ecb1d440
 
 pkgname = sqrxz3
 

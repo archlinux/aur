@@ -1,51 +1,46 @@
-# Maintainer: cars10t <carsten.1 gmx.net>
+# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=sqrxz3
-pkgver=1.05
+pkgver=1.05r
 pkgrel=1
-pkgdesc="A fast paced jump'n'run which will please the hardcore gamer amongst you (Part III)."
+pkgdesc="A fast paced jump'n'run which will please the hardcore gamer amongst you (Part III)"
 arch=('i686' 'x86_64')
 url="http://sqrxz.de/"
-license=('Freeware')
+license=('custom: Freeware')
 depends=('sdl_mixer' 'zlib')
-source=("http://www.retroguru.com/${pkgname}/${pkgname}-v.latest-ubuntu.tar.gz"
-        "${pkgname}.png"
-        "${pkgname}.sh"
-        "${pkgname}.desktop")
-md5sums=('76d5692a70e6c8e8474431cb6ae2a40e'
-         'd10c83b355d87098251b076fe98a70e0'
-         'ac4392c8175517682c8d43d0c1b89299'
-         '13c4475f3b2e4bb02e5b4ff1ef79fee9')
+optdepends=('libmodplug: better music decoder')
+install=$pkgname.install
+source=("http://www.retroguru.com/$pkgname/$pkgname-v.latest-ubuntu.tar.gz"
+        "$pkgname.png"
+        "$pkgname.sh"
+        "$pkgname.desktop")
+sha256sums=('b74a4bc4010e283a6c01380aa3bb49b98d228640d73319f5c75e036dcd1ac14a'
+            'd07ee6bb33dfd8187b23450bad58a2f4d68e217284d345e341a761aca14eb8c2'
+            '0019a50f899f9534c1abc2e0e6519d558d239fa5f0e2c50fdb3d3f23d566c6a0'
+            '194164042e5d394ce1492548002351c23da0b274f64a92851d87fec4ecb1d440')
 options=(!strip)
-install=${pkgname}.install
 
 package() {
-  cd "${srcdir}/"
+  # create folders
+  install -d "$pkgdir"/{opt/$pkgname/data,usr/share/{doc,licenses}/$pkgname}
 
-  # use correct arch
-  case ${CARCH} in
+  # install architecture dependent executeable
+  case $CARCH in
     i686)
-      cp ${pkgname}_ubuntu32 $pkgname
-      ;;
+      install -m755 ${pkgname}_ubuntu32 "$pkgdir"/opt/$pkgname/$pkgname;;
     x86_64)
-      cp ${pkgname}_ubuntu64 $pkgname
-      ;;
+      install -m755 ${pkgname}_ubuntu64 "$pkgdir"/opt/$pkgname/$pkgname;;
   esac
 
-  # install binary, data, text, icon and desktop files
-  install -Dm755 "${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
-  install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-
-  mkdir -p "${pkgdir}/opt/${pkgname}/data"
-  install -Dm644 data/*.zda "${pkgdir}/opt/${pkgname}/data"
-
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 *.txt "${pkgdir}/usr/share/doc/${pkgname}"
-
-  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # install launcher, data, text, icon, desktop and license files
+  install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
+  install -m644 data/*.zda "$pkgdir"/opt/$pkgname/data
+  install -m644 *.txt "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 $pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  tail -n +16 sqrxz3.txt | head -n 10 > "$pkgdir"/usr/share/licenses/$pkgname/FREEWARE
 
   # fix permissions
-  chgrp -R games ${pkgdir}/opt/${pkgname}
-  chmod g+w ${pkgdir}/opt/${pkgname}
+  chgrp -R games "$pkgdir"/opt/$pkgname
+  chmod g+w "$pkgdir"/opt/$pkgname
 }
