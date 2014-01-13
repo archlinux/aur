@@ -1,7 +1,7 @@
 pkgbase = gcc-multilib-x32
 	pkgdesc = The GNU Compiler Collection for multilib with x32 ABI support
-	pkgver = 4.7.2
-	pkgrel = 2.1
+	pkgver = 4.8.0_3
+	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -9,73 +9,72 @@ pkgbase = gcc-multilib-x32
 	license = FDL
 	license = custom
 	checkdepends = dejagnu
-	makedepends = binutils-multilib>=2.22
+	checkdepends = inetutils
+	makedepends = binutils-multilib>=2.23
 	makedepends = libmpc
 	makedepends = cloog
-	makedepends = ppl
+	makedepends = gcc-ada-multilib
 	makedepends = doxygen
-	makedepends = lib32-glibc>=2.16
-	makedepends = libx32-glibc>=2.16
+	makedepends = lib32-glibc>=2.17
+	makedepends = libx32-glibc>=2.17
 	options = !libtool
 	options = !emptydirs
-	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.7.2/gcc-4.7.2.tar.bz2
-	source = gcc_pure64-multilib.patch
-	source = gcc-4.7.1-libada-pic.patch
-	source = gcc-4.7.1-libgo-write.patch
-	source = 189626.patch
-	md5sums = cc308a0891e778cfda7a151ab8a6e762
-	md5sums = 55818c34a79ec90913ef7778e17ea6b6
-	md5sums = 2acbc9d35cc9d72329dc71d6b1f162ef
-	md5sums = df82dd175ac566c8a6d46b11ac21f14c
-	md5sums = e01126c78cefe99498ff1e04fa728a2b
+	source = ftp://gcc.gnu.org/pub/gcc/snapshots/4.8-20130425/gcc-4.8-20130425.tar.bz2
+	md5sums = 03690556f09991fbecac0467227c5d4e
 
 pkgname = gcc-multilib-x32
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support
 	install = gcc.install
-	groups = multilib-devel
-	depends = gcc-libs-multilib-x32=4.7.2-2.1
+	groups = x32-devel
+	depends = gcc-libs-multilib-x32=4.8.0_3-1
 	depends = binutils-multilib>=2.23
 	depends = libmpc
 	depends = cloog
-	depends = ppl
-	provides = gcc=4.7.2-2
-	provides = gcc-multilib=4.7.2-2
-	provides = gcc-x32-seed=4.7.2-2
+	provides = gcc=4.8.0-3
+	provides = gcc-multilib=4.8.0-3
 	conflicts = gcc
 	conflicts = gcc-x32-seed
+	conflicts = gcc-multilib
 
 pkgname = gcc-libs-multilib-x32
 	pkgdesc = Runtime libraries shipped by GCC for multilib with x32 ABI support
 	install = gcc-libs.install
-	depends = glibc>=2.16
-	depends = lib32-gcc-libs=4.7.2-2
-	depends = libx32-gcc-libs=4.7.2-2.1
-	provides = gcc-libs=4.7.2-2
-	provides = gcc-libs-multilib=4.7.2-2
+	depends = glibc>=2.17
+	depends = lib32-gcc-libs=4.8.0-3
+	depends = libx32-gcc-libs=4.8.0_3-1
+	provides = gcc-libs=4.8.0-3
+	provides = gcc-libs-multilib=4.8.0-3
 	conflicts = gcc-libs
 
 pkgname = libx32-gcc-libs
 	pkgdesc = Runtime libraries shipped by GCC (x32 ABI)
-	depends = libx32-glibc>=2.16
-	depends = gcc-libs>=4.7.2
+	depends = libx32-glibc>=2.17
+	depends = gcc-libs>=4.8.0-3
 
 pkgname = gcc-fortran-multilib-x32
 	pkgdesc = Fortran front-end for GCC for multilib with x32 ABI support
 	install = gcc-fortran.install
-	depends = gcc-multilib-x32=4.7.2-2.1
-	provides = gcc-fortran=4.7.2-2
+	depends = gcc-multilib-x32=4.8.0_3-1
+	provides = gcc-fortran=4.8.0-3
 	conflicts = gcc-fortran
 
 pkgname = gcc-objc-multilib-x32
 	pkgdesc = Objective-C front-end for GCC for multilib with x32 ABI support
-	depends = gcc-multilib-x32=4.7.2-2.1
-	provides = gcc-objc=4.7.2-2
+	depends = gcc-multilib-x32=4.8.0_3-1
+	provides = gcc-objc=4.8.0-3
 	conflicts = gcc-objc
+
+pkgname = gcc-ada-multilib-x32
+	pkgdesc = Ada front-end for GCC (GNAT) for multilib with x32 ABI support
+	install = gcc-ada.install
+	depends = gcc-multilib-x32=4.8.0_3-1
+	provides = gcc-ada=4.8.0-3
+	conflicts = gcc-ada
 
 pkgname = gcc-go-multilib-x32
 	pkgdesc = Go front-end for GCC for multilib with x32 ABI support
 	install = gcc-go.install
-	depends = gcc-multilib-x32=4.7.2-2.1
-	provides = gcc-go=4.7.2-2
+	depends = gcc-multilib-x32=4.8.0_3-1
+	provides = gcc-go=4.8.0-3
 	conflicts = gcc-go
 
