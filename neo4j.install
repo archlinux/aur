@@ -9,7 +9,8 @@
    chown -R neo4j.neo4j /var/lib/neo4j
    chown -R neo4j.neo4j /var/log/neo4j
    chown -R neo4j.neo4j /etc/neo4j
-   chown -R neo4j.neo4j /run/neo4j
+   
+   /usr/bin/systemd-tmpfiles --create neo4j.conf
  }
  
  post_upgrade() {

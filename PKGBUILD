@@ -1,7 +1,7 @@
 # Maintainer: Marcel Campello Ferreira <tucho.tijucano@gmail.com>
 pkgname=neo4j
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
 url="http://neo4j.org/"
@@ -19,12 +19,14 @@ source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
 	bin.patch
 	conf.patch
 	neo4j.install
-	neo4j.service)
+	neo4j.service
+	neo4j-tmpfile.conf)
 sha256sums=(44a7160ead5cf70a385cceed30f7e999e29047b39ca92ac346bd230e2767f2ff
 	    3b7dfe7448e82a7be4dfa31d1d30aa3921a483c6a33926800664af3bef25e3d2
 	    d230ccb4d2ddd7bc504d729c50170c39acc8f16815168f99b82f4d7fdd07b094
-	    2885511c87bd9594ffb81715fe4b9163c1f895c43206bc6f06048deca26d0de5
-	    9a02869e8e974e6bb2003b920a43652605c0e7431f54b59a16fc566bc1833497)
+	    6af4ac963343f8d88c2a10361391eea113737a2383eed3fbba26c89e548d4d66
+	    27e044354f10cb4c844b827442850326d900bc40e01443dbc0cd446bd057af27
+	    e9ecbf86072ca92129ab1889b5f91e2494b86e84248bd15a37681a3997892d7d)
 
 prepare() {
 
@@ -80,5 +82,5 @@ package() {
   install -Dm644 neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service
   
   # Runtime files
-  install -dm755 $pkgdir/run/neo4j
+  install -Dm644 neo4j-tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/neo4j.conf
 }

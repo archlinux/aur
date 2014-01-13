@@ -7,3 +7,6 @@ Type=forking
 ExecStart=/usr/bin/neo4j start
 ExecStop=/usr/bin/neo4j stop
 PIDFile=/run/neo4j/neo4j-service.pid
+
+[Install]
+WantedBy=multi-user.target
