@@ -2,13 +2,13 @@
 pkgname=python2-ethtool
 _pkgname=python-ethtool
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="python bindings for the ethtool kernel interface"
 arch=('i686' 'x86_64')
 url="https://fedorahosted.org/python-ethtool/"
 license=('GPL2')
 groups=()
-depends=('python2' 'libnl1')
+depends=('python2' 'libnl')
 makedepends=('asciidoc')
 provides=()
 conflicts=()
