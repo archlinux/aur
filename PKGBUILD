@@ -8,28 +8,32 @@ arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
 license=('GPL3')
 conflicts=('easyrpg-player-git')
-makedepends=('cmake>=2.8' 'boost' 'git')
+makedepends=('boost' 'git')
 depends=('sdl_mixer' 'freetype2' 'pixman' 'libpng' 'libjpeg' 'openal' 'libsndfile' 'expat')
 install=$pkgname.install
-source=($pkgname-$pkgver.tar.gz::"https://github.com/EasyRPG/Player/archive/$pkgver.tar.gz")
-sha256sums=('c376d1074f9a2fd7a732b0d3d37f9f60a29e0bdb013e26b60fb9c359ac74ffed')
-
-prepare () {
-  # remove old build
-  rm -rf build
-}
+source=(easyrpg-readers-$pkgver.tar.gz::"https://github.com/EasyRPG/Readers/archive/$pkgver.tar.gz"
+        $pkgname-$pkgver.tar.gz::"https://github.com/EasyRPG/Player/archive/$pkgver.tar.gz")
+sha256sums=('694c1b55c4a575ebc602e4f18736cda0ec187205f14545dc5641408427bd0d49'
+            'c376d1074f9a2fd7a732b0d3d37f9f60a29e0bdb013e26b60fb9c359ac74ffed')
 
 build () {
-  mkdir build
-  cd build
+  # build readers
+  cd Readers-$pkgver
 
-  cmake ../Player-$pkgver -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed" -DCMAKE_INSTALL_PREFIX="/usr"
+  ./autogen.sh
+  ./configure --enable-xml
+  make
 
+  # build player
+  cd ../Player-$pkgver
+
+  ./autogen.sh
+  ./configure --prefix="/usr" LIBS="-lreaders -lexpat" \
+    CPPFLAGS="-DUNIX -I$srcdir/Readers-$pkgver/include" \
+    LDFLAGS="-L$srcdir/Readers-$pkgver/src"
   make
 }
 
 package () {
-  cd build
-
-  DESTDIR="$pkgdir/" make install
+  install -Dm755 Player-$pkgver/src/$pkgname "$pkgdir"/usr/bin/$pkgname
 }

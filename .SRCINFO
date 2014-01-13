@@ -7,7 +7,6 @@ pkgbase = easyrpg-player
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake>=2.8
 	makedepends = boost
 	makedepends = git
 	depends = sdl_mixer
@@ -19,7 +18,9 @@ pkgbase = easyrpg-player
 	depends = libsndfile
 	depends = expat
 	conflicts = easyrpg-player-git
+	source = easyrpg-readers-0.1.2.tar.gz::https://github.com/EasyRPG/Readers/archive/0.1.2.tar.gz
 	source = easyrpg-player-0.1.2.tar.gz::https://github.com/EasyRPG/Player/archive/0.1.2.tar.gz
+	sha256sums = 694c1b55c4a575ebc602e4f18736cda0ec187205f14545dc5641408427bd0d49
 	sha256sums = c376d1074f9a2fd7a732b0d3d37f9f60a29e0bdb013e26b60fb9c359ac74ffed
 
 pkgname = easyrpg-player
