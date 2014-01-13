@@ -6,7 +6,6 @@ pkgbase = docker-git
 	url = https://github.com/dotcloud/docker
 	install = docker.install
 	arch = x86_64
-	arch = i686
 	license = Apache
 	makedepends = git
 	makedepends = go
