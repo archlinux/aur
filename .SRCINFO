@@ -1,7 +1,7 @@
 pkgbase = ros-build-tools
 	pkgdesc = Utilities for building arch packages for ROS stacks.
-	pkgver = 0.0.1
-	pkgrel = 4
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = http://www.ros.org
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = ros-build-tools
 	source = generate_packages_makefile.py
 	source = generate-python-patch.sh
 	source = import_catkin_packages.py
+	source = clear-ros-env.sh
 	md5sums = b2b4fd23abb8e9e7382ef9aeab2542f5
 	md5sums = 79ae7fb600e116623a42631d15d66a87
 	md5sums = ac82eca7efc9f0ff7e8b976a83692868
@@ -21,7 +22,8 @@ pkgbase = ros-build-tools
 	md5sums = d257f7f20384e894b0431ee61068aa96
 	md5sums = 563c9d1320a3a997db25d3087303dcfb
 	md5sums = 8d6d7eb89a12c449497b209f1a06655b
-	md5sums = 97e1f0d09e3b1bf1f02980dbf6a28f41
+	md5sums = d2c2631fc8dd742404f1f828ad23d01f
+	md5sums = 07f5253eb3f8cb5295c32026a20ab6c0
 
 pkgname = ros-build-tools
 

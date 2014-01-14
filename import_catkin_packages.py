@@ -109,7 +109,7 @@ makedepends=('ros-build-tools')
 
 ros_depends=(%(ros_package_dependencies)s)
 depends=(${ros_depends}
-         %(other_dependencies)s)
+  %(other_dependencies)s)
 
 _tag=release/%(distro)s/%(package_name)s/${pkgver}-%(package_version_minor)s
 _dir=%(package_name)s
@@ -118,6 +118,7 @@ md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
+  /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/%(distro)s/setup.bash ] && source /opt/ros/%(distro)s/setup.bash
 
   # Create build directory
