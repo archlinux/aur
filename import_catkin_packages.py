@@ -108,7 +108,7 @@ license=('%(license)s')
 makedepends=('ros-build-tools')
 
 ros_depends=(%(ros_package_dependencies)s)
-depends=(${ros_depends}
+depends=(${ros_depends[@]}
   %(other_dependencies)s)
 
 _tag=release/%(distro)s/%(package_name)s/${pkgver}-%(package_version_minor)s
@@ -336,7 +336,7 @@ def generate_pkgbuild(distro, package, directory, force=False,
         generate_pkgbuild(distro, distro.package(dependency), directory,
                           force=force, no_overwrite=no_overwrite, recursive=recursive,
                           exclude_dependencies=exclude_dependencies,
-                          rosdep_url=rosdep_urls, generated=generated)
+                          rosdep_urls=rosdep_urls, generated=generated)
   output_directory = os.path.join(directory, package.name)
   if not os.path.exists(output_directory):
     os.mkdir(output_directory)
