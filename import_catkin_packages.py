@@ -7,15 +7,13 @@ import catkin_pkg.package
 from optparse import OptionParser
 import os
 import os.path
-import subprocess
 import urllib2
 import urlparse
 import yaml
 
-
 class PackageBase(object):
 
-  def __init__(self, distro, repository_url, name, version):
+  def __init__(self, distro, repository_url, name, version, version_minor):
     self.packages = []
     self.distro = distro
     self.repository_url = repository_url
@@ -23,15 +21,16 @@ class PackageBase(object):
       self._get_package_xml_url(repository_url, name, version))
     self.name = package.name
     self.version = package.version
+    self.version_minor = version_minor
     self.licenses = package.licenses
     self.description = package.description
     self.dependencies = [self._ensure_python2_dependency(dependency.name)
                          for dependency in package.build_depends + package.run_depends]
-    
+
   def _parse_package_file(self, url):
     """
     Parses the package.xml file specified by `url`.
-    
+
     Arguments:
     - `url`: Valid URL pointing to a package.xml file.
     """
@@ -44,11 +43,27 @@ class PackageBase(object):
         [self._rosify_package_name(
             'ros-%s-' % self.distro.name + dependency)
          for dependency in self.dependencies if dependency in known_packages]))
-  
-  def _get_non_ros_dependencies(self):
+
+  def _get_non_ros_dependencies(self, rosdep_urls=[]):
     known_packages = self.distro.package_names(expand_metapackages=True)
-    return list(set([dependency for dependency in self.dependencies
+
+    other_dependencies = list(set([dependency for dependency in self.dependencies
                      if dependency not in known_packages]))
+
+    # Fix usual non-ROS dependencies:
+    #  - load replacement dictionary: these are found in rosdep yaml files. We
+    #                                 just need to download and merge these files
+    #                                 in a dictionary.
+    dependency_map = self._get_rosdep_dictionary(rosdep_urls)
+    #  - replace in other_dependencies
+    for index, dep in enumerate(other_dependencies):
+      if (dep in dependency_map):
+        # The map may replace one package by multiple ones
+        other_dependencies[index] = dependency_map[dep][0]
+        for package in dependency_map[dep][1:]:
+          other_dependencies.append(package)
+
+    return other_dependencies
 
   def _rosify_package_name(self, name):
     return name.replace('_', '-')
@@ -58,12 +73,28 @@ class PackageBase(object):
 
   def _get_package_xml_url(self, url, name, version):
     if url.find('github'):
-      return github_raw_url(url, 'package.xml', 'release/%s/%s' % (name, version))
+      if self.distro.name != "fuerte":
+        return github_raw_url(url, 'package.xml', 'release/%s/%s' % (self.distro.name, name))
+      else: # fuerte-specific
+        return github_raw_url(url, 'package.xml', 'release/%s/%s' % (name, version))
     else:
-      raise 'Unable to generate url for package.xml'
+      raise Exception('Unable to generate url for package.xml')
+
+  def _get_rosdep_dictionary(self, rosdep_urls):
+    dependency_map = {}
+    for rosdep_url in rosdep_urls:
+      stream = urllib2.urlopen(rosdep_url)
+      rosdep_file = yaml.load(stream)
+      for package_name, distrib in rosdep_file.items():
+        if 'arch' in distrib:
+          # Discard empty values
+          if distrib["arch"] != []:
+            dependency_map[package_name] = distrib["arch"]
+    return dependency_map
+
 
   def generate(self, exclude_dependencies=[]):
-    raise '`generate` not implemented.'
+    raise Exception('`generate` not implemented.')
 
 
 class Package(PackageBase):
@@ -85,19 +116,36 @@ depends=(${ros_depends[@]}
 source=()
 md5sums=()
 
+_branch=release/%(distro)s/%(package_name)s/${pkgver}-%(package_version_minor)s
+
 build() {
+  # Use ROS environment variables
   [ -f /opt/ros/%(distro)s/setup.bash ] && source /opt/ros/%(distro)s/setup.bash
+
+  # Download source code
   if [ -d ${srcdir}/%(package_name)s ]; then
     cd ${srcdir}/%(package_name)s
     git fetch origin --tags
-    git reset --hard release/%(package_name)s/${pkgver}
+    git reset --hard ${_branch}
   else
-    git clone -b release/%(package_name)s/${pkgver} %(package_url)s ${srcdir}/%(package_name)s
+    git clone -b ${_branch} %(package_url)s ${srcdir}/%(package_name)s
   fi
+
+  # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
+
+  # Fix Python3 error
   /usr/share/ros-build-tools/fix-python-scripts.sh ${srcdir}/%(package_name)s
-  cmake ${srcdir}/%(package_name)s -DCATKIN_BUILD_BINARY_PACKAGE=ON -DCMAKE_INSTALL_PREFIX=/opt/ros/%(distro)s -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so -DSETUPTOOLS_DEB_LAYOUT=OFF
+
+  cmake ${srcdir}/%(package_name)s \\
+        -DCMAKE_BUILD_TYPE=Release \\
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \\
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/%(distro)s \\
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \\
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \\
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \\
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
 
@@ -107,16 +155,18 @@ package() {
 }
 """
 
-  def generate(self, exclude_dependencies=[]):
+  def generate(self, exclude_dependencies=[], rosdep_urls=[]):
     ros_dependencies = [dependency for dependency in self._get_ros_dependencies()
                         if dependency not in exclude_dependencies]
-    other_dependencies = [dependency for dependency in self._get_non_ros_dependencies()
+    other_dependencies = [dependency for dependency in self._get_non_ros_dependencies(rosdep_urls)
                           if dependency not in exclude_dependencies]
+
     return self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
       'arch_package_name': self._rosify_package_name(self.name),
       'package_name': self.name,
       'package_version': self.version,
+      'package_version_minor': self.version_minor,
       'package_url': self.repository_url,
       'license': ', '.join(self.licenses),
       'description': self.description.replace('"', '\\"').replace('`', '\`'),
@@ -145,29 +195,30 @@ source=()
 md5sums=()
 
 """
-  
-  def __init__(self, distro, repository_url, name, version):
-    super(MetaPackage, self).__init__(distro, repository_url, name, version)
-    self.packages = [Package(distro, repository_url, child_name, version)
+
+  def __init__(self, distro, repository_url, name, version, version_minor):
+    super(MetaPackage, self).__init__(distro, repository_url, name, version, version_minor)
+    self.packages = [Package(distro, repository_url, child_name, version, version_minor)
                      for child_name in distro.meta_package_package_names(name)]
 
-  def generate(self, exclude_dependencies=[]):
+  def generate(self, exclude_dependencies=[], rosdep_urls=[]):
     ros_dependencies = [dependency for dependency in self._get_ros_dependencies()
                         if dependency not in exclude_dependencies]
-    other_dependencies = [dependency for dependency in self._get_non_ros_dependencies()
+    other_dependencies = [dependency for dependency in self._get_non_ros_dependencies(rosdep_urls)
                           if dependency not in exclude_dependencies]
     return self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
       'arch_package_name': self._rosify_package_name(self.name),
       'package_name': self.name,
       'package_version': self.version,
+      'package_version_minor': self.version_minor,
       'license': ', '.join(self.licenses),
       'description': self.description.replace('"', '\"'),
       'ros_package_dependencies': '\n  '.join(ros_dependencies),
       'other_dependencies': '\n  '.join(other_dependencies)
       }
 
-  
+
 class DistroDescription(object):
 
   def __init__(self, name, url):
@@ -175,8 +226,9 @@ class DistroDescription(object):
     self.name = name
     self._distro = yaml.load(stream)
     self._package_cache = {}
-    if self.name != self._distro['release-name']:
-      raise 'ROS distro names do not match (%s != %s)' % (self.name, self._distro['release-name'])
+    if self.name == "fuerte":
+      if self.name != self._distro['release-name']:
+        raise Exception('ROS distro names do not match (%s != %s)' % (self.name, self._distro['release-name']))
 
   def package_names(self, expand_metapackages=False):
     packages = [name for name in self._distro['repositories'].keys()]
@@ -193,15 +245,16 @@ class DistroDescription(object):
   def package(self, name):
     package_data = self._get_package_data(name)
     if not package_data:
-      raise 'Unable to find package `%s`' % name
+      raise Exception('Unable to find package `%s`' % name)
     if self._package_cache.get(name):
       return self._package_cache[name]
     url = package_data['url']
     version = package_data['version'].split('-')[0]
+    version_minor = package_data['version'].split('-')[1]
     if self._is_meta_package(name):
-      package = MetaPackage(self, url, name, version)
+      package = MetaPackage(self, url, name, version, version_minor)
     else:
-      package = Package(self, url, name, version)
+      package = Package(self, url, name, version, version_minor)
     self._package_cache[name] = package
     return package
 
@@ -230,7 +283,7 @@ def list_packages(distro_description):
 ### From http://code.activestate.com/recipes/577058/ (r2)
 def query_yes_no(question, default="yes"):
   """Ask a yes/no question via raw_input() and return their answer.
-  
+
   "question" is a string that is presented to the user.
   "default" is the presumed answer if the user just hits <Enter>.
       It must be "yes" (the default), "no" or None (meaning
@@ -275,25 +328,25 @@ def github_raw_url(repo_url, path, commitish):
 
 def generate_pkgbuild(distro, package, directory, force=False,
                       no_overwrite=False, recursive=False, exclude_dependencies=[],
-                      generated=None):
+                      rosdep_urls=[], generated=None):
   if generated is None:
     generated = []
   elif package.name in generated:
     return
-  generated.append(package.name)  
+  generated.append(package.name)
   if package.packages:
     for child_package in package.packages:
       generate_pkgbuild(distro, child_package, directory,
                         force=force, exclude_dependencies=exclude_dependencies,
                         no_overwrite=no_overwrite, recursive=recursive,
-                        generated=generated)
+                        rosdep_urls=rosdep_urls, generated=generated)
   if recursive:
     for dependency in package.dependencies:
       if distro.is_package(dependency):
         generate_pkgbuild(distro, distro.package(dependency), directory,
                           force=force, no_overwrite=no_overwrite, recursive=recursive,
                           exclude_dependencies=exclude_dependencies,
-                          generated=generated)
+                          rosdep_url=rosdep_urls, generated=generated)
   output_directory = os.path.join(directory, package.name)
   if not os.path.exists(output_directory):
     os.mkdir(output_directory)
@@ -306,7 +359,7 @@ def generate_pkgbuild(distro, package, directory, force=False,
       return
   print('Generating PKGBUILD for package %s.' % package.name)
   with open(os.path.join(output_directory, 'PKGBUILD'), 'w') as pkgbuild:
-    pkgbuild.write(package.generate(exclude_dependencies))
+    pkgbuild.write(package.generate(exclude_dependencies, rosdep_urls))
 
 
 def main():
@@ -317,10 +370,15 @@ def main():
                     default=False, help='Lists all available packages.')
   parser.add_option('--output-directory', metavar='output_directory', default='.',
                     help='The output directory. Packages are put into <output-directory>/<name>')
+  default_distro_url = 'https://raw.github.com/ros/rosdistro/master/%s/release.yaml'
   parser.add_option(
-    '--distro-url', metavar='distro_url',
-    default='https://raw.github.com/ros/rosdistro/master/releases/%s.yaml',
+    '--distro-url', metavar='distro_url', default=default_distro_url,
     help='The URL of the distro description. %s is replaced by the actual distro name')
+  default_rosdep_url = 'https://raw.github.com/ros/rosdistro/master/rosdep/%s.yaml'
+  parser.add_option(
+    '--rosdep-urls', metavar='rosdep_urls',
+    default=[default_rosdep_url % 'base', default_rosdep_url % 'python', default_rosdep_url % 'ruby'],
+    help='The URLs of the rosdep mapping files.')
   parser.add_option(
     '--exclude-dependencies', metavar='exclude_dependencies',
     default='python2-catkin-pkg,python2-rospkg,python2-rosdep',
@@ -333,6 +391,10 @@ def main():
                     help='Recursively import dependencies')
   options, args = parser.parse_args()
 
+  if options.distro == "fuerte" and options.distro_url == default_distro_url:
+    # Use legagy fuerte URL
+    options.distro_url = 'https://raw.github.com/ros/rosdistro/master/releases/%s.yaml'
+
   distro = DistroDescription(
     options.distro, url=options.distro_url % options.distro)
   if options.list_packages:
@@ -344,7 +406,7 @@ def main():
                         os.path.abspath(options.output_directory),
                         exclude_dependencies=options.exclude_dependencies.split(','),
                         force=options.force, no_overwrite=options.no_overwrite,
-                        recursive=options.recursive)
+                        recursive=options.recursive, rosdep_urls=options.rosdep_urls)
   else:
     parser.error('No packages specified.')
 

@@ -1,7 +1,7 @@
 pkgbase = ros-build-tools
 	pkgdesc = Utilities for building arch packages for ROS stacks.
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ros.org
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ros-build-tools
 	md5sums = d257f7f20384e894b0431ee61068aa96
 	md5sums = 563c9d1320a3a997db25d3087303dcfb
 	md5sums = 8d6d7eb89a12c449497b209f1a06655b
-	md5sums = 85fc98bd9df02afa0d8a27c01db78c66
+	md5sums = 79a24410afcdd781a91e294df70a160e
 
 pkgname = ros-build-tools
 
