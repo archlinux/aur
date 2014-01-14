@@ -58,9 +58,9 @@ class PackageBase(object):
     #  - replace in other_dependencies
     for index, dep in enumerate(other_dependencies):
       if (dep in dependency_map):
-        # The map may replace one package by multiple ones
-        other_dependencies[index] = dependency_map[dep][0]
-        for package in dependency_map[dep][1:]:
+        # The map may replace one package by multiple ones, or even by none
+        other_dependencies.remove(dep)
+        for package in dependency_map[dep]:
           other_dependencies.append(package)
 
     return other_dependencies
@@ -87,9 +87,7 @@ class PackageBase(object):
       rosdep_file = yaml.load(stream)
       for package_name, distrib in rosdep_file.items():
         if 'arch' in distrib:
-          # Discard empty values
-          if distrib["arch"] != []:
-            dependency_map[package_name] = distrib["arch"]
+          dependency_map[package_name] = distrib["arch"]
     return dependency_map
 
 
@@ -99,7 +97,7 @@ class PackageBase(object):
 
 class Package(PackageBase):
   BUILD_TEMPLATE = """
-pkgdesc="%(description)s"
+pkgdesc="ROS - %(description)s"
 url='http://www.ros.org/'
 
 pkgname='ros-%(distro)s-%(arch_package_name)s'
@@ -110,35 +108,26 @@ license=('%(license)s')
 makedepends=('ros-build-tools')
 
 ros_depends=(%(ros_package_dependencies)s)
-depends=(${ros_depends[@]}
-  %(other_dependencies)s)
+depends=(${ros_depends}
+         %(other_dependencies)s)
 
-source=()
-md5sums=()
-
-_branch=release/%(distro)s/%(package_name)s/${pkgver}-%(package_version_minor)s
+_tag=release/%(distro)s/%(package_name)s/${pkgver}-%(package_version_minor)s
+_dir=%(package_name)s
+source=("${_dir}"::"git+%(package_url)s"#tag=${_tag})
+md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
   [ -f /opt/ros/%(distro)s/setup.bash ] && source /opt/ros/%(distro)s/setup.bash
-
-  # Download source code
-  if [ -d ${srcdir}/%(package_name)s ]; then
-    cd ${srcdir}/%(package_name)s
-    git fetch origin --tags
-    git reset --hard ${_branch}
-  else
-    git clone -b ${_branch} %(package_url)s ${srcdir}/%(package_name)s
-  fi
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
   # Fix Python3 error
-  /usr/share/ros-build-tools/fix-python-scripts.sh ${srcdir}/%(package_name)s
+  /usr/share/ros-build-tools/fix-python-scripts.sh ${srcdir}/${_dir}
 
-  cmake ${srcdir}/%(package_name)s \\
+  cmake ${srcdir}/${_dir} \\
         -DCMAKE_BUILD_TYPE=Release \\
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \\
         -DCMAKE_INSTALL_PREFIX=/opt/ros/%(distro)s \\
