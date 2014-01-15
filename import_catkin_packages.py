@@ -10,6 +10,7 @@ import os.path
 import urllib2
 import urlparse
 import yaml
+import re
 
 class PackageBase(object):
 
@@ -23,9 +24,18 @@ class PackageBase(object):
     self.version = package.version
     self.version_minor = version_minor
     self.licenses = package.licenses
-    self.description = package.description
-    self.dependencies = [self._ensure_python2_dependency(dependency.name)
-                         for dependency in package.build_depends + package.run_depends]
+    self.dependencies = [dependency.name for dependency in package.build_depends + package.run_depends]
+
+    # Remove HTML tags from description
+    self.description = re.sub('<[^<]+?>', '', package.description)
+    # Put it on one line to motivate packagers to make shorter descriptions
+    self.description = re.sub('\n', ' ', self.description)
+    # Multiple consecutive spaces turned into one
+    self.description = re.sub('([ ]+)', ' ', self.description)
+    # Only take the first sentence (keep short description)
+    self.description = self.description.split(".")[0] + "."
+    # Handle quotes
+    self.description = self.description.replace('"', '\\"').replace('`', '\`').replace('&quot;', '\\"')
 
   def _parse_package_file(self, url):
     """
@@ -64,6 +74,10 @@ class PackageBase(object):
           other_fixed_dependencies.add(package)
       else:
         other_fixed_dependencies.add(dep)
+
+    # Fix some possibly missing Python 2 package conflicts
+    other_fixed_dependencies = [self._ensure_python2_dependency(dependency)
+                                for dependency in other_fixed_dependencies]
 
     return other_fixed_dependencies
 
@@ -107,7 +121,7 @@ pkgver='%(package_version)s'
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('%(license)s')
-makedepends=('ros-build-tools')
+makedepends=('cmake' 'ros-build-tools')
 
 ros_depends=(%(ros_package_dependencies)s)
 depends=(${ros_depends[@]}
@@ -153,7 +167,7 @@ package() {
     other_dependencies = [dependency for dependency in self._get_non_ros_dependencies(rosdep_urls)
                           if dependency not in exclude_dependencies]
 
-    return self.BUILD_TEMPLATE % {
+    pkgbuild = self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
       'arch_package_name': self._rosify_package_name(self.name),
       'package_name': self.name,
@@ -161,10 +175,16 @@ package() {
       'package_version_minor': self.version_minor,
       'package_url': self.repository_url,
       'license': ', '.join(self.licenses),
-      'description': self.description.replace('"', '\\"').replace('`', '\`'),
+      'description': self.description,
       'ros_package_dependencies': '\n  '.join(ros_dependencies),
       'other_dependencies': '\n  '.join(other_dependencies)
       }
+
+    # Post-processing:
+    # Remove useless carriage return
+    pkgbuild = re.sub('\${ros_depends\[@\]}\\n  \)',
+                      '${ros_depends[@]})', pkgbuild)
+    return pkgbuild
 
 
 class MetaPackage(PackageBase):
@@ -205,7 +225,7 @@ md5sums=()
       'package_version': self.version,
       'package_version_minor': self.version_minor,
       'license': ', '.join(self.licenses),
-      'description': self.description.replace('"', '\"'),
+      'description': self.description,
       'ros_package_dependencies': '\n  '.join(ros_dependencies),
       'other_dependencies': '\n  '.join(other_dependencies)
       }
@@ -345,9 +365,9 @@ def generate_pkgbuild(distro, package, directory, force=False,
   if os.path.exists(os.path.join(output_directory, 'PKGBUILD')):
     if no_overwrite:
       return
-    if not force and not query_yes_no(
+    if not force and query_yes_no(
       "Directory '%s' already contains a PKGBUILD file. Overwrite?" % (
-        output_directory)):
+        output_directory)) == "no":
       return
   print('Generating PKGBUILD for package %s.' % package.name)
   with open(os.path.join(output_directory, 'PKGBUILD'), 'w') as pkgbuild:
