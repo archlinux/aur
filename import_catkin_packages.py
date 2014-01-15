@@ -55,15 +55,17 @@ class PackageBase(object):
     #                                 just need to download and merge these files
     #                                 in a dictionary.
     dependency_map = self._get_rosdep_dictionary(rosdep_urls)
+    other_fixed_dependencies = set()
     #  - replace in other_dependencies
     for index, dep in enumerate(other_dependencies):
       if (dep in dependency_map):
         # The map may replace one package by multiple ones, or even by none
-        other_dependencies.remove(dep)
         for package in dependency_map[dep]:
-          other_dependencies.append(package)
+          other_fixed_dependencies.add(package)
+      else:
+        other_fixed_dependencies.add(dep)
 
-    return other_dependencies
+    return other_fixed_dependencies
 
   def _rosify_package_name(self, name):
     return name.replace('_', '-')
