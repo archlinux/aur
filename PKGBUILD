@@ -7,15 +7,17 @@ pkgdesc="A Python-Qt utility to manage Wad files with NUS downloader for Wii"
 arch=('any')
 url="http://www.nanolx.org"
 license=('GPL3')
-depends=('python2-crypto' 'python2-pyqt')
+depends=('python2-crypto' 'python2-pyqt4')
 source=("$url/downloads/Qwad/${pkgname}_$pkgver.tar.bz2")
 sha256sums=('10689ff8a457ec25726ed1500c5a2c8013661a8e9e56342d8d425155214cbc2b')
 
 prepare() {
   cd ${pkgname}_$pkgver
 
-  # QT 4 fix
-  sed -i -e "s|-lrelease|-lrelease-qt4|" Makefile
+  # use QT4
+  sed "s|-lrelease |-lrelease-qt4 |" -i Makefile
+  # use python2
+  sed "s|python |python2 |" -i qwad
 }
 
 build() {
@@ -28,8 +30,11 @@ build() {
 package() {
   cd ${pkgname}_$pkgver
 
-  DESTDIR="$pkgdir/" make install
+  make DESTDIR="$pkgdir/" install
 
-  # python 2 fix
-  sed -i -e "s|python|/usr/bin/env python2|" "$pkgdir"/usr/bin/$pkgname
+  # remove license (part of core licenses) and move doc to doc folder
+  rm "$pkgdir"/usr/share/Qwad/{README,COPYING,AUTHORS}
+  install -d "$pkgdir"/usr/share/doc/qwad
+  install -m664 {AUTHORS,ChangeLog,CLI,CLI.Channels,README} \
+    "$pkgdir"/usr/share/doc/qwad
 }

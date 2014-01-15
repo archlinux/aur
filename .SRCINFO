@@ -6,7 +6,7 @@ pkgbase = qwad
 	arch = any
 	license = GPL3
 	depends = python2-crypto
-	depends = python2-pyqt
+	depends = python2-pyqt4
 	source = http://www.nanolx.org/downloads/Qwad/qwad_0.9.tar.bz2
 	sha256sums = 10689ff8a457ec25726ed1500c5a2c8013661a8e9e56342d8d425155214cbc2b
 
