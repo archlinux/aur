@@ -4,13 +4,13 @@
 
 pkgname=checkpolicy
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy compiler"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
-depends=('libsepol>=2.2' 'libselinux>=2.2')
+depends=('libsepol' 'libselinux')
 #makedepends=('selinux-flex')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
@@ -26,4 +26,6 @@ build() {
 package(){
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+  install -m 0755 test/dismod "${pkgdir}"/usr/bin/sedismod
+  install -m 0755 test/dispol "${pkgdir}"/usr/bin/sedispol
 }

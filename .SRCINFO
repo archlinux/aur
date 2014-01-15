@@ -1,15 +1,15 @@
 pkgbase = checkpolicy
 	pkgdesc = SELinux policy compiler
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = GPL
-	depends = libsepol>=2.2
-	depends = libselinux>=2.2
-	provides = selinux-usr-checkpolicy=2.2-1
+	depends = libsepol
+	depends = libselinux
+	provides = selinux-usr-checkpolicy=2.2-2
 	conflicts = selinux-usr-checkpolicy
 	options = !emptydirs
 	source = http://userspace.selinuxproject.org/releases/20131030/checkpolicy-2.2.tar.gz
