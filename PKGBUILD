@@ -2,7 +2,7 @@
 
 pkgname=php-ssh-git
 pkgver=135.ddaa6a0
-pkgrel=1
+pkgrel=2
 pkgdesc="An SSH2 extension for PHP (git version)"
 url="http://pecl.php.net/package/ssh2"
 license=('PHP')
