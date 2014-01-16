@@ -1,6 +1,6 @@
 pkgbase = python2-musicbrainzngs-git
 	pkgdesc = bindings for the MusicBrainz NGS service
-	pkgver = 0.4_30.g33890d0
+	pkgver = 0.4_75.g2456f73
 	pkgrel = 1
 	url = http://python-musicbrainzngs.readthedocs.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python2-musicbrainzngs-git
 	makedepends = python2-distribute
 	makedepends = git
 	depends = python2
-	provides = python2-musicbrainzngs=0.4_30.g33890d0
+	provides = python2-musicbrainzngs=0.4_75.g2456f73
 	conflicts = python2-musicbrainzngs
 	source = git+https://github.com/alastair/python-musicbrainzngs.git
 	md5sums = SKIP

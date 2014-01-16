@@ -5,7 +5,7 @@ _python=python2
 _name=musicbrainzngs
 
 pkgname=$_python-$_name-git
-pkgver=0.4_30.g33890d0
+pkgver=0.4_75.g2456f73
 pkgrel=1
 pkgdesc="bindings for the MusicBrainz NGS service"
 url="http://python-musicbrainzngs.readthedocs.org/"
