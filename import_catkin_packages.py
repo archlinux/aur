@@ -189,7 +189,7 @@ package() {
 
 class MetaPackage(PackageBase):
   BUILD_TEMPLATE = """
-pkgdesc="%(description)s"
+pkgdesc="ROS - %(description)s"
 url='http://www.ros.org/'
 
 pkgname='ros-%(distro)s-%(arch_package_name)s'
@@ -218,7 +218,7 @@ md5sums=()
                         if dependency not in exclude_dependencies]
     other_dependencies = [dependency for dependency in self._get_non_ros_dependencies(rosdep_urls)
                           if dependency not in exclude_dependencies]
-    return self.BUILD_TEMPLATE % {
+    pkgbuild = self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
       'arch_package_name': self._rosify_package_name(self.name),
       'package_name': self.name,
@@ -229,6 +229,12 @@ md5sums=()
       'ros_package_dependencies': '\n  '.join(ros_dependencies),
       'other_dependencies': '\n  '.join(other_dependencies)
       }
+
+    # Post-processing:
+    # Remove useless carriage return
+    pkgbuild = re.sub('\${ros_depends\[@\]}\\n  \)',
+                      '${ros_depends[@]})', pkgbuild)
+    return pkgbuild
 
 
 class DistroDescription(object):
