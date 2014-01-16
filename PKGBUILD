@@ -4,9 +4,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=31.0.1650.63
+pkgver=32.0.1700.77
+_srcver=32.0.1700.76
 _toolchains_rev=12181
-pkgrel=2
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -22,31 +23,27 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
 backup=('etc/chromium/default')
 options=('!strip')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$_srcver.tar.xz
         naclsdk_nacl_linux_x86-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_linux_x86.tgz
         naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_linux_x86.tgz
         naclsdk_pnacl_translator-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz
         naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz.sha1hash
         chromium.desktop
         chromium.default
-        chromium.sh
-        chromium-31.0.1650.48-NPN_URLRedirectResponse.patch
-        chromium-31.0.1650.48-NPAPI-cookies.patch
-        chromium-system-icu-r0.patch)
+        chromium-32.0.1700.76-diff-to-32.0.1700.77.patch
+        chromium.sh)
 noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_translator-$_toolchains_rev.tgz)
-sha256sums=('7f0a37391b2829fa077426127f61b830cca51518e6a55ace2bf397aba9e52008'
+sha256sums=('4aad8c69dd575f76b8490142f55f8a620fbdd5567e54d3510ae6243358a08d1e'
             'cb4ac159f61de5e75d339813c0fc74f986156310a2c43a30ba40125951e72450'
             'ad229b69a5af72a9fa7cf2167ee48560cc11049206e4ef919cb31d1273d6409f'
             'fdb8309ef2b1c8600d63c4420ac02d66d85ab9befe98d99e9706828870730077'
             '162cf456b0a1cb4ce505004f828a09164ee3e3c8274739c6d5e972bf0ef1cfe9'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
-            '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
-            'c2e56730e0cf962d762d18abf8488e1b19b4688ce39d22dd74c47dba7996319b'
-            'b24f58147333eb29f762aec58742db74825b587def3d6daf16c8cd315ce6ccff'
-            '9bf164094ff33565f79807ab17cbd1d3f75655383fdaa01bb1a702263174cf09')
+            '3b167d9480a6472c60ad9493f9a92b0cf79785a029bd0e886ab275f923b510df'
+            '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -57,18 +54,11 @@ _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_srcver"
 
-  # Black screen is displayed when playing a video with NPAPI plugin
-  # http://code.google.com/p/chromium/issues/detail?id=301510
-  patch -Np0 -i "$srcdir/chromium-31.0.1650.48-NPN_URLRedirectResponse.patch"
-
-  # Cookies not being sent with plugin requests
-  # http://code.google.com/p/chromium/issues/detail?id=316511
-  patch -Np0 -i "$srcdir/chromium-31.0.1650.48-NPAPI-cookies.patch"
-
-  # Fix build with system ICU (patch from Gentoo)
-  patch -Np0 -i "$srcdir/chromium-system-icu-r0.patch"
+  # Source tarball for 32.0.1700.77 is currently missing so we might as well
+  # patch 32.0.1700.76 with the single change before 32.0.1700.77 was tagged
+  patch -Np1 -i "$srcdir/chromium-32.0.1700.76-diff-to-32.0.1700.77.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -92,7 +82,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_srcver"
 
   export PATH="$srcdir/python2-path:$PATH"
 
@@ -115,7 +105,6 @@ build() {
     -Dlinux_strip_binary=1
     -Dlinux_use_gold_binary=0
     -Dlinux_use_gold_flags=0
-    -Dlinux_use_tcmalloc=0
     -Dlogging_like_official_build=1
     -Drelease_extra_cflags="$CFLAGS"
     -Dlibspeechd_h_prefix=speech-dispatcher/
@@ -147,7 +136,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_srcver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
 
