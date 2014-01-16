@@ -54,4 +54,8 @@ package() {
   install -Dm644 doc/LICENSE "$pkgdir/usr/share/licenses/sudo/LICENSE"
 }
 
+workaround_for_the_aur_webinterface='
+pkgver=1.8.8
+'
+
 # vim:set ts=2 sw=2 et:
