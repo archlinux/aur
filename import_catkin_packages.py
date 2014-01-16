@@ -269,7 +269,9 @@ class DistroDescription(object):
     url = package_data['url']
     version = package_data['version'].split('-')[0]
     version_minor = package_data['version'].split('-')[1]
-    if self._is_meta_package(name):
+    # WARNING: some metapackages embed a package with the same name. In this case,
+    #          we treat the package as a normal package.
+    if self._is_meta_package(name) and (not name in self._distro['repositories'][name]['packages']):
       package = MetaPackage(self, url, name, version, version_minor)
     else:
       package = Package(self, url, name, version, version_minor)
