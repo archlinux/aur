@@ -1,0 +1,22 @@
+From 4952a9beff339b75641a7a84c226c11d6bd680c4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20B=C3=A4chler?= <thomas@archlinux.org>
+Date: Mon, 30 Sep 2013 01:34:46 +0200
+Subject: [PATCH 4/7] Remove FsckPassNo from systemd-fsck-root.service
+
+---
+ units/systemd-fsck-root.service.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/units/systemd-fsck-root.service.in b/units/systemd-fsck-root.service.in
+index 4388314..4162983 100644
+--- a/units/systemd-fsck-root.service.in
++++ b/units/systemd-fsck-root.service.in
+@@ -19,5 +19,4 @@ Type=oneshot
+ RemainAfterExit=yes
+ ExecStart=@rootlibexecdir@/systemd-fsck
+ StandardOutput=journal+console
+-FsckPassNo=1
+ TimeoutSec=0
+-- 
+1.8.5.1
+

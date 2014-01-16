@@ -1,0 +1,364 @@
+From accdd018ede77ef1c057775396c18c73406cbcb4 Mon Sep 17 00:00:00 2001
+From: Tom Gundersen <teg@jklm.no>
+Date: Sat, 5 Oct 2013 17:28:09 +0200
+Subject: [PATCH 5/7] mount/service: drop FsckPassNo support
+
+We now treat passno as boleans in the generators, and don't need this any more. fsck itself
+is able to sequentialize checks on the same local media, so in the common case the ordering
+is redundant.
+
+It is still possible to force an order by using .d fragments, in case that is desired.
+---
+ TODO                                  |  4 ---
+ man/systemd.mount.xml                 | 22 ---------------
+ man/systemd.service.xml               | 27 -------------------
+ src/core/load-fragment-gperf.gperf.m4 |  2 --
+ src/core/load-fragment.c              | 30 ---------------------
+ src/core/load-fragment.h              |  1 -
+ src/core/mount.c                      | 32 +---------------------
+ src/core/mount.h                      |  1 -
+ src/core/service.c                    | 51 -----------------------------------
+ src/core/service.h                    |  2 --
+ 10 files changed, 1 insertion(+), 171 deletions(-)
+
+diff --git a/TODO b/TODO
+index 29a76ef..f0060d9 100644
+--- a/TODO
++++ b/TODO
+@@ -84,8 +84,6 @@ Features:
+ 
+ * ensure scope units may be started only a single time
+ 
+-* document that in instead of FsckPassNo= people should just add a manual dep to systemd-fsck@.service to their mount units.
+-
+ * better error message if you run systemctl without systemd running
+ 
+ * systemctl status output should should include list of triggering units and their status
+@@ -562,8 +560,6 @@ Features:
+ 
+ * when breaking cycles drop sysv services first, then services from /run, then from /etc, then from /usr
+ 
+-* move passno parsing to fstab generator
+-
+ * automount: implement expire:
+    - set superblock timeout AUTOFS_DEV_IOCTL_TIMEOUT_CMD
+    - periodically run AUTOFS_DEV_IOCTL_EXPIRE_CMD
+diff --git a/man/systemd.mount.xml b/man/systemd.mount.xml
+index 48af1ca..217289a 100644
+--- a/man/systemd.mount.xml
++++ b/man/systemd.mount.xml
+@@ -273,28 +273,6 @@
+         </refsect1>
+ 
+         <refsect1>
+-                <title>Compatibility Options</title>
+-
+-                <para>The following option is also available in the
+-                <literal>[Mount]</literal> section, but exists purely
+-                for compatibility reasons and should not be used in
+-                newly written mount files.</para>
+-
+-                <variablelist class='unit-directives'>
+-                        <varlistentry>
+-                                <term><varname>FsckPassNo=</varname></term>
+-
+-                                <listitem><para>The pass number for
+-                                the file system checking service for
+-                                this mount. See
+-                                <citerefentry><refentrytitle>systemd.service</refentrytitle><manvolnum>5</manvolnum></citerefentry>
+-                                for more information on this setting.
+-                                </para></listitem>
+-                        </varlistentry>
+-                </variablelist>
+-        </refsect1>
+-
+-        <refsect1>
+                   <title>See Also</title>
+                   <para>
+                           <citerefentry><refentrytitle>systemd</refentrytitle><manvolnum>1</manvolnum></citerefentry>,
+diff --git a/man/systemd.service.xml b/man/systemd.service.xml
+index 81a4078..b1e3af2 100644
+--- a/man/systemd.service.xml
++++ b/man/systemd.service.xml
+@@ -970,33 +970,6 @@
+                                 range 0-99.</para></listitem>
+                         </varlistentry>
+ 
+-                        <varlistentry>
+-                                <term><varname>FsckPassNo=</varname></term>
+-                                <listitem><para>Set the fsck passno
+-                                priority to use to order this service
+-                                in relation to other file system
+-                                checking services. This option is only
+-                                necessary to fix ordering in relation
+-                                to fsck jobs automatically created for
+-                                all <filename>/etc/fstab</filename>
+-                                entries with a value in the fs_passno
+-                                column > 0. As such it should only be
+-                                used as option for fsck
+-                                services. Almost always it is a better
+-                                choice to add explicit ordering
+-                                directives via
+-                                <varname>After=</varname> or
+-                                <varname>Before=</varname>,
+-                                instead. For more details see
+-                                <citerefentry><refentrytitle>systemd.unit</refentrytitle><manvolnum>5</manvolnum></citerefentry>. If
+-                                used, pass an integer value in the
+-                                same range as
+-                                <filename>/etc/fstab</filename>'s
+-                                fs_passno column. See
+-                                <citerefentry><refentrytitle>fstab</refentrytitle><manvolnum>5</manvolnum></citerefentry>
+-                                for details.</para></listitem>
+-                        </varlistentry>
+-
+                 </variablelist>
+         </refsect1>
+ 
+diff --git a/src/core/load-fragment-gperf.gperf.m4 b/src/core/load-fragment-gperf.gperf.m4
+index 31fb7bc..e3025d2 100644
+--- a/src/core/load-fragment-gperf.gperf.m4
++++ b/src/core/load-fragment-gperf.gperf.m4
+@@ -173,7 +173,6 @@ Service.NonBlocking,             config_parse_bool,                  0,
+ Service.BusName,                 config_parse_unit_string_printf,    0,                             offsetof(Service, bus_name)
+ Service.NotifyAccess,            config_parse_notify_access,         0,                             offsetof(Service, notify_access)
+ Service.Sockets,                 config_parse_service_sockets,       0,                             0
+-Service.FsckPassNo,              config_parse_fsck_passno,           0,                             offsetof(Service, fsck_passno)
+ EXEC_CONTEXT_CONFIG_ITEMS(Service)m4_dnl
+ CGROUP_CONTEXT_CONFIG_ITEMS(Service)m4_dnl
+ KILL_CONTEXT_CONFIG_ITEMS(Service)m4_dnl
+@@ -225,7 +224,6 @@ Mount.What,                      config_parse_string,                0,
+ Mount.Where,                     config_parse_path,                  0,                             offsetof(Mount, where)
+ Mount.Options,                   config_parse_string,                0,                             offsetof(Mount, parameters_fragment.options)
+ Mount.Type,                      config_parse_string,                0,                             offsetof(Mount, parameters_fragment.fstype)
+-Mount.FsckPassNo,                config_parse_fsck_passno,           0,                             offsetof(Mount, parameters_fragment.passno)
+ Mount.TimeoutSec,                config_parse_sec,                   0,                             offsetof(Mount, timeout_usec)
+ Mount.DirectoryMode,             config_parse_mode,                  0,                             offsetof(Mount, directory_mode)
+ EXEC_CONTEXT_CONFIG_ITEMS(Mount)m4_dnl
+diff --git a/src/core/load-fragment.c b/src/core/load-fragment.c
+index fb7efca..4067930 100644
+--- a/src/core/load-fragment.c
++++ b/src/core/load-fragment.c
+@@ -1033,35 +1033,6 @@ int config_parse_sysv_priority(const char *unit,
+ }
+ #endif
+ 
+-int config_parse_fsck_passno(const char *unit,
+-                             const char *filename,
+-                             unsigned line,
+-                             const char *section,
+-                             const char *lvalue,
+-                             int ltype,
+-                             const char *rvalue,
+-                             void *data,
+-                             void *userdata) {
+-
+-        int *passno = data;
+-        int i, r;
+-
+-        assert(filename);
+-        assert(lvalue);
+-        assert(rvalue);
+-        assert(data);
+-
+-        r = safe_atoi(rvalue, &i);
+-        if (r || i < 0) {
+-                log_syntax(unit, LOG_ERR, filename, line, -r,
+-                           "Failed to parse fsck pass number, ignoring: %s", rvalue);
+-                return 0;
+-        }
+-
+-        *passno = (int) i;
+-        return 0;
+-}
+-
+ DEFINE_CONFIG_PARSE_ENUM(config_parse_kill_mode, kill_mode, KillMode, "Failed to parse kill mode");
+ 
+ int config_parse_kill_signal(const char *unit,
+@@ -2708,7 +2679,6 @@ void unit_dump_config_items(FILE *f) {
+                 { config_parse_start_limit_action,    "ACTION" },
+                 { config_parse_set_status,            "STATUS" },
+                 { config_parse_service_sockets,       "SOCKETS" },
+-                { config_parse_fsck_passno,           "PASSNO" },
+                 { config_parse_environ,               "ENVIRON" },
+                 { config_parse_syscall_filter,        "SYSCALL" },
+                 { config_parse_cpu_shares,            "SHARES" },
+diff --git a/src/core/load-fragment.h b/src/core/load-fragment.h
+index 90e5e3a..404df76 100644
+--- a/src/core/load-fragment.h
++++ b/src/core/load-fragment.h
+@@ -56,7 +56,6 @@ int config_parse_exec_secure_bits(const char *unit, const char *filename, unsign
+ int config_parse_bounding_set(const char *unit, const char *filename, unsigned line, const char *section, const char *lvalue, int ltype, const char *rvalue, void *data, void *userdata);
+ int config_parse_limit(const char *unit, const char *filename, unsigned line, const char *section, const char *lvalue, int ltype, const char *rvalue, void *data, void *userdata);
+ int config_parse_sysv_priority(const char *unit, const char *filename, unsigned line, const char *section, const char *lvalue, int ltype, const char *rvalue, void *data, void *userdata);
+-int config_parse_fsck_passno(const char *unit, const char *filename, unsigned line, const char *section, const char *lvalue, int ltype, const char *rvalue, void *data, void *userdata);
+ int config_parse_kill_signal(const char *unit, const char *filename, unsigned line, const char *section, const char *lvalue, int ltype, const char *rvalue, void *data, void *userdata);
+ int config_parse_exec_mount_flags(const char *unit, const char *filename, unsigned line, const char *section, const char *lvalue, int ltype, const char *rvalue, void *data, void *userdata);
+ int config_parse_timer(const char *unit, const char *filename, unsigned line, const char *section, const char *lvalue, int ltype, const char *rvalue, void *data, void *userdata);
+diff --git a/src/core/mount.c b/src/core/mount.c
+index 70cd372..88563b3 100644
+--- a/src/core/mount.c
++++ b/src/core/mount.c
+@@ -313,33 +313,6 @@ static int mount_add_device_links(Mount *m) {
+         if (r < 0)
+                 return r;
+ 
+-        if (p->passno > 0 &&
+-            UNIT(m)->manager->running_as == SYSTEMD_SYSTEM) {
+-                char *name;
+-                Unit *fsck;
+-                /* Let's add in the fsck service */
+-
+-                /* aka SPECIAL_FSCK_SERVICE */
+-                name = unit_name_from_path_instance("systemd-fsck", p->what, ".service");
+-                if (!name)
+-                        return -ENOMEM;
+-
+-                r = manager_load_unit_prepare(UNIT(m)->manager, name, NULL, NULL, &fsck);
+-                if (r < 0) {
+-                        log_warning_unit(name,
+-                                         "Failed to prepare unit %s: %s", name, strerror(-r));
+-                        free(name);
+-                        return r;
+-                }
+-                free(name);
+-
+-                SERVICE(fsck)->fsck_passno = p->passno;
+-
+-                r = unit_add_two_dependencies(UNIT(m), UNIT_AFTER, UNIT_REQUIRES, fsck, true);
+-                if (r < 0)
+-                        return r;
+-        }
+-
+         return 0;
+ }
+ 
+@@ -1410,7 +1383,6 @@ static int mount_add_one(
+                 const char *where,
+                 const char *options,
+                 const char *fstype,
+-                int passno,
+                 bool set_flags) {
+         int r;
+         Unit *u;
+@@ -1530,8 +1502,6 @@ static int mount_add_one(
+         free(p->fstype);
+         p->fstype = f;
+ 
+-        p->passno = passno;
+-
+         if (load_extras) {
+                 r = mount_add_extras(MOUNT(u));
+                 if (r < 0)
+@@ -1601,7 +1571,7 @@ static int mount_load_proc_self_mountinfo(Manager *m, bool set_flags) {
+                 if (!d || !p)
+                         return log_oom();
+ 
+-                k = mount_add_one(m, d, p, o, fstype, 0, set_flags);
++                k = mount_add_one(m, d, p, o, fstype, set_flags);
+                 if (k < 0)
+                         r = k;
+         }
+diff --git a/src/core/mount.h b/src/core/mount.h
+index 7cd4320..a955069 100644
+--- a/src/core/mount.h
++++ b/src/core/mount.h
+@@ -58,7 +58,6 @@ typedef struct MountParameters {
+         char *what;
+         char *options;
+         char *fstype;
+-        int passno;
+ } MountParameters;
+ 
+ typedef enum MountResult {
+diff --git a/src/core/service.c b/src/core/service.c
+index 96ed2d3..ce75757 100644
+--- a/src/core/service.c
++++ b/src/core/service.c
+@@ -1056,48 +1056,6 @@ static int service_load_sysv(Service *s) {
+ }
+ #endif
+ 
+-static int fsck_fix_order(Service *s) {
+-        Unit *other;
+-        int r;
+-
+-        assert(s);
+-
+-        if (s->fsck_passno <= 0)
+-                return 0;
+-
+-        /* For each pair of services where both have an fsck priority
+-         * we order things based on it. */
+-
+-        LIST_FOREACH(units_by_type, other, UNIT(s)->manager->units_by_type[UNIT_SERVICE]) {
+-                Service *t;
+-                UnitDependency d;
+-
+-                t = SERVICE(other);
+-
+-                if (s == t)
+-                        continue;
+-
+-                if (UNIT(t)->load_state != UNIT_LOADED)
+-                        continue;
+-
+-                if (t->fsck_passno <= 0)
+-                        continue;
+-
+-                if (t->fsck_passno < s->fsck_passno)
+-                        d = UNIT_AFTER;
+-                else if (t->fsck_passno > s->fsck_passno)
+-                        d = UNIT_BEFORE;
+-                else
+-                        continue;
+-
+-                r = unit_add_dependency(UNIT(s), d, UNIT(t), true);
+-                if (r < 0)
+-                        return r;
+-        }
+-
+-        return 0;
+-}
+-
+ static int service_verify(Service *s) {
+         assert(s);
+ 
+@@ -1254,10 +1212,6 @@ static int service_load(Unit *u) {
+                         return r;
+ #endif
+ 
+-                r = fsck_fix_order(s);
+-                if (r < 0)
+-                        return r;
+-
+                 if (s->bus_name)
+                         if ((r = unit_watch_bus_name(u, s->bus_name)) < 0)
+                                 return r;
+@@ -1381,11 +1335,6 @@ static void service_dump(Unit *u, FILE *f, const char *prefix) {
+                         prefix, s->sysv_runlevels);
+ #endif
+ 
+-        if (s->fsck_passno > 0)
+-                fprintf(f,
+-                        "%sFsckPassNo: %i\n",
+-                        prefix, s->fsck_passno);
+-
+         if (s->status_text)
+                 fprintf(f, "%sStatus Text: %s\n",
+                         prefix, s->status_text);
+diff --git a/src/core/service.h b/src/core/service.h
+index ce5b5e0..37fa6ff 100644
+--- a/src/core/service.h
++++ b/src/core/service.h
+@@ -157,8 +157,6 @@ struct Service {
+         pid_t main_pid, control_pid;
+         int socket_fd;
+ 
+-        int fsck_passno;
+-
+         bool permissions_start_only;
+         bool root_directory_start_only;
+         bool remain_after_exit;
+-- 
+1.8.5.1
+

@@ -1,0 +1,28 @@
+From 0c6f1f4ea4980ff719979d36f10bd6ea3e464c02 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <medhefgo@web.de>
+Date: Thu, 31 Oct 2013 17:22:03 +0100
+Subject: [PATCH] Make hibernation test work for swap files
+
+Suspend to disk works for swap files too (even if it is located
+on an ecrypted file system):
+https://www.kernel.org/doc/Documentation/power/swsusp-and-swap-files.txt
+---
+ src/shared/sleep-config.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/shared/sleep-config.c b/src/shared/sleep-config.c
+index d068bfc..2bb0493 100644
+--- a/src/shared/sleep-config.c
++++ b/src/shared/sleep-config.c
+@@ -206,7 +206,7 @@ static int hibernation_partition_size(size_t *size, size_t *used) {
+                 if (!d)
+                         return -ENOMEM;
+ 
+-                if (!streq(type, "partition")) {
++                if (!streq(type, "partition") && !streq(type, "file")) {
+                         log_debug("Partition %s has type %s, ignoring.", d, type);
+                         continue;
+                 }
+-- 
+1.8.5.2
+

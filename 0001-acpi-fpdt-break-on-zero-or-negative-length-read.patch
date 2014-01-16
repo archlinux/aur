@@ -1,0 +1,26 @@
+From f576cd2092bc40f9998415cdc3caf10035d4743a Mon Sep 17 00:00:00 2001
+From: Pavel Holica <conscript89@gmail.com>
+Date: Wed, 6 Nov 2013 23:24:16 +0100
+Subject: [PATCH] acpi-fpdt: break on zero or negative length read
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1027478
+---
+ src/shared/acpi-fpdt.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/shared/acpi-fpdt.c b/src/shared/acpi-fpdt.c
+index 75648b4..7bae47f 100644
+--- a/src/shared/acpi-fpdt.c
++++ b/src/shared/acpi-fpdt.c
+@@ -109,6 +109,8 @@ int acpi_get_boot_usec(usec_t *loader_start, usec_t *loader_exit) {
+         for (rec = (struct acpi_fpdt_header *)(buf + sizeof(struct acpi_table_header));
+              (char *)rec < buf + l;
+              rec = (struct acpi_fpdt_header *)((char *)rec + rec->length)) {
++                if (rec->length <= 0)
++                        break;
+                 if (rec->type != ACPI_FPDT_TYPE_BOOT)
+                         continue;
+                 if (rec->length != sizeof(struct acpi_fpdt_header))
+-- 
+1.8.5.2
+

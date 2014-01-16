@@ -1,0 +1,33 @@
+From 92e94a2b145eb3bee7035907cd8482285bb680ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20B=C3=A4chler?= <thomas@archlinux.org>
+Date: Sun, 22 Dec 2013 09:17:14 +0100
+Subject: [PATCH] fstab-generator: Do not try to fsck non-devices
+
+This fixes a regression introduced in 64e70e4 where the mount fails
+when fstab is misconfigured with fs_passno > 0 on a virtual file
+system like nfs, and the type is specified as "auto".
+
+This is a backport of e2f123b97, but it since not all fsck-related patches
+have been backported to this version, the implementation is a bit different.
+---
+ src/fstab-generator/fstab-generator.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/fstab-generator/fstab-generator.c b/src/fstab-generator/fstab-generator.c
+index c0c2992..cf8b371 100644
+--- a/src/fstab-generator/fstab-generator.c
++++ b/src/fstab-generator/fstab-generator.c
+@@ -210,7 +210,9 @@ static int add_mount(
+                         post);
+ 
+         if (passno > 0) {
+-                if (streq(where, "/")) {
++                if(!is_device_path(what)) {
++                        log_warning("Checking was requested for \"%s\", but it is not a device.", what);
++                } else if (streq(where, "/")) {
+                         lnk = strjoin(arg_dest, "/", SPECIAL_LOCAL_FS_TARGET, ".wants/", "systemd-fsck-root.service", NULL);
+                         if (!lnk)
+                                 return log_oom();
+-- 
+1.8.5.2
+

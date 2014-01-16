@@ -1,0 +1,102 @@
+From 64e70e4b86d3f732d3513189312f6220d1d5cfbc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20B=C3=A4chler?= <thomas@archlinux.org>
+Date: Mon, 30 Sep 2013 01:34:44 +0200
+Subject: [PATCH 2/7] fstab-generator: Generate explicit dependencies on
+ systemd-fsck@.service instead of using FsckPassNo
+
+[tomegun:
+  * order all fsck instances after fsck-root
+  * check for OOM
+  * added notes in the manpages]
+---
+ man/systemd-fsck@.service.xml         |  3 ++-
+ man/systemd-fstab-generator.xml       |  5 +++++
+ src/fstab-generator/fstab-generator.c | 21 +++++++++++++++++----
+ units/systemd-fsck@.service.in        |  2 +-
+ 4 files changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/man/systemd-fsck@.service.xml b/man/systemd-fsck@.service.xml
+index e934352..17bd1c0 100644
+--- a/man/systemd-fsck@.service.xml
++++ b/man/systemd-fsck@.service.xml
+@@ -62,7 +62,8 @@
+                 system
+                 check. <filename>systemd-fsck-root.service</filename> is
+                 responsible for file system checks on the root
+-                file system.</para>
++                file system. The root file system check is performed
++                before the other file systems.</para>
+ 
+                 <para><filename>systemd-fsck</filename> will
+                 forward file system checking progress to the
+diff --git a/man/systemd-fstab-generator.xml b/man/systemd-fstab-generator.xml
+index 9ca16c7..740db8f 100644
+--- a/man/systemd-fstab-generator.xml
++++ b/man/systemd-fstab-generator.xml
+@@ -61,6 +61,11 @@
+                 reloaded. This will instantiate mount and swap units
+                 as necessary.</para>
+ 
++                <para>The <term><varname>passno</varname></term> field
++                is treated like a simlpe boolean, and the ordering information
++                is discarded. However, the root filesystem is checked
++                before all the other filesystems.</para>
++
+                 <para>See
+                 <citerefentry><refentrytitle>systemd.mount</refentrytitle><manvolnum>5</manvolnum></citerefentry>
+                 and
+diff --git a/src/fstab-generator/fstab-generator.c b/src/fstab-generator/fstab-generator.c
+index a7536f8..77247de 100644
+--- a/src/fstab-generator/fstab-generator.c
++++ b/src/fstab-generator/fstab-generator.c
+@@ -209,17 +209,30 @@ static int add_mount(
+                         "Before=%s\n",
+                         post);
+ 
++        if (passno > 0) {
++                _cleanup_free_ char *fsck = NULL;
++
++                fsck = unit_name_from_path_instance("systemd-fsck", what, ".service");
++                if (!fsck)
++                        return log_oom();
++
++                fprintf(f,
++                        "Requires=%s\n"
++                        "After=%s\n",
++                        fsck,
++                        fsck);
++        }
++
++
+         fprintf(f,
+                 "\n"
+                 "[Mount]\n"
+                 "What=%s\n"
+                 "Where=%s\n"
+-                "Type=%s\n"
+-                "FsckPassNo=%i\n",
++                "Type=%s\n",
+                 what,
+                 where,
+-                type,
+-                passno);
++                type);
+ 
+         if (!isempty(opts) &&
+             !streq(opts, "defaults"))
+diff --git a/units/systemd-fsck@.service.in b/units/systemd-fsck@.service.in
+index e229cdc..c12efa8 100644
+--- a/units/systemd-fsck@.service.in
++++ b/units/systemd-fsck@.service.in
+@@ -10,7 +10,7 @@ Description=File System Check on %f
+ Documentation=man:systemd-fsck@.service(8)
+ DefaultDependencies=no
+ BindsTo=%i.device
+-After=systemd-readahead-collect.service systemd-readahead-replay.service %i.device
++After=systemd-readahead-collect.service systemd-readahead-replay.service %i.device systemd-fsck-root.service
+ Before=shutdown.target
+ 
+ [Service]
+-- 
+1.8.5.1
+
