@@ -5,8 +5,8 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.1.3
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 arch=('any')
 url='http://sphinx.pocoo.org/'
 license=('GPL')
@@ -26,26 +26,36 @@ checkdepends=(
   'texlive-latexextra'
 )
 source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
-md5sums=('8f55a6d4f87fc6d528120c5d1f983e98')
+md5sums=('8516046aad73fe46dedece4e8e434328')
 
-build() {
-  cd Sphinx-$pkgver
-  # remove build directory (avoid sed issues)
-  [[ -e build ]] && rm -rf build
-  # python builds
-  python setup.py build --build-lib=build/python
-  python2 setup.py build --build-lib=build/python2
+prepare() {
+  # souce duplication is required because makefile modify source code
+  # setyp.py --build tricks don't works well
+  cp -a Sphinx-$pkgver Sphinx-${pkgver}2
   # change python2 interpreter
-  find build/python2 -type f -exec \
+  find Sphinx-${pkgver}2 -type f -exec \
     sed -i '1s,^#! \?/usr/bin/\(env \|\)python$,#!/usr/bin/python2,' {} \;
   # change sphinx-binaries name in source code
-  find build/python2 -type f -name '*.py' -exec \
+  find Sphinx-${pkgver}2 -type f -name '*.py' -exec \
     sed -ri 's,(sphinx-(:?build|apidoc|autogen|quickstart)),\12,' {} \;
 }
 
+build() {
+  msg2 'Python 3 version'
+  cd "$srcdir"/Sphinx-$pkgver
+  make build
+  msg2 'Python 2 version'
+  cd "$srcdir"/Sphinx-${pkgver}2
+  make build
+}
+
 check() {
-  #(cd Sphinx-$pkgver/build/python/ && python ../../tests/run.py -d)
-  (cd Sphinx-$pkgver/build/python2/ && python2 ../../tests/run.py -d)
+  msg2 'Python 3 version'
+  cd "$srcdir"/Sphinx-$pkgver
+  make test
+  msg2 'Python 2 version'
+  cd "$srcdir"/Sphinx-${pkgver}2
+  make test
 }
 
 package_python-sphinx() {
@@ -54,8 +64,7 @@ package_python-sphinx() {
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
   cd Sphinx-$pkgver
-  python setup.py build --build-lib=build/python \
-                  install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-sphinx() {
@@ -63,13 +72,8 @@ package_python2-sphinx() {
   depends=('python2-jinja' 'python2-pygments' 'python2-docutils')
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
-  cd Sphinx-$pkgver
-  python2 setup.py build --build-lib=build/python2 \
-                   install --root="$pkgdir" --optimize=1
-  # fix python3 conflict
-  for _f in "$pkgdir"/usr/bin/*; do
-      mv -v "$_f" "${_f}2"
-  done
+  cd Sphinx-${pkgver}2
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
