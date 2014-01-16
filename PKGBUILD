@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.12
-pkgver=3.12.7
-pkgrel=2
+pkgver=3.12.8
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -27,7 +27,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-notification-fails.patch'
 )
 md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
-         'a158a29ecf49e768ebd2f34967991606'
+         '03d34842e3a1197d17055610f62627b8'
          'a9281e90e529795eaf10b45d70ab2868'
          '6000a9c7bd83081a65611d9dfbdd8eda'
          'eb14dcfd80c00852ef81ded6e826826a'
