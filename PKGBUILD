@@ -3,13 +3,13 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.8.99.24168.bd0d03f
+pkgver=1.8.99.24257.6db1691
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
-depends=('bullet' 'curl' 'lua' 'shared-mime-info' 'libxkbcommon' 'wayland' 'avahi'
+depends=('bullet' 'curl' 'luajit' 'shared-mime-info' 'libxkbcommon' 'wayland' 'avahi'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
          'libgl' 'libwebp' 'libpulse' 'libexif' 'gst-plugins-base-libs'
          'fribidi' 'harfbuzz' 'fontconfig')
