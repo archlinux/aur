@@ -1,11 +1,12 @@
-# $Id: PKGBUILD 203495 2014-01-11 20:07:11Z eric $
+# Contributor: Taiki Sugawara <buzz.taiki@gmail.com>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
-pkgname=p7zip
+pkgname=p7zip-natspec
+_pkgname=p7zip
 pkgver=9.20.1
 pkgrel=9
 pkgdesc='Command-line version of the 7zip compressed file archiver'
@@ -16,7 +17,9 @@ depends=('gcc-libs' 'bash')
 optdepends=('wxgtk2.8: GUI'
             'desktop-file-utils: desktop entries')
 makedepends=('yasm' 'nasm' 'wxgtk2.8')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}_src_all.tar.bz2"
+conflicts=('p7zip')
+provides=('p7zip')
+source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${pkgver}_src_all.tar.bz2"
         '7zFM.desktop')
 sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7'
           'f2c370d6f1b286b7ce9a2804e22541b755616a40')
@@ -25,7 +28,7 @@ options=('!makeflags')
 install=install
 
 prepare() {
-	cd "${srcdir}/${pkgname}_${pkgver}"
+	cd "${srcdir}/${_pkgname}_${pkgver}"
 	rm GUI/kde4/p7zip_compress.desktop
 	[[ $CARCH = x86_64 ]] \
 	&& cp makefile.linux_amd64_asm makefile.machine \
@@ -36,12 +39,12 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${pkgname}_${pkgver}"
+	cd "${srcdir}/${_pkgname}_${pkgver}"
 	make all4 OPTFLAGS="${CXXFLAGS}"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}_${pkgver}"
+	cd "${srcdir}/${_pkgname}_${pkgver}"
 	make install \
 		DEST_DIR="${pkgdir}" \
 		DEST_HOME="/usr" \

@@ -1,4 +1,4 @@
-pkgbase = p7zip
+pkgbase = p7zip-natspec
 	pkgdesc = Command-line version of the 7zip compressed file archiver
 	pkgver = 9.20.1
 	pkgrel = 9
@@ -15,11 +15,13 @@ pkgbase = p7zip
 	depends = bash
 	optdepends = wxgtk2.8: GUI
 	optdepends = desktop-file-utils: desktop entries
+	provides = p7zip
+	conflicts = p7zip
 	options = !makeflags
 	source = http://downloads.sourceforge.net/project/p7zip/p7zip/9.20.1/p7zip_9.20.1_src_all.tar.bz2
 	source = 7zFM.desktop
 	sha1sums = 1cd567e043ee054bf08244ce15f32cb3258306b7
 	sha1sums = f2c370d6f1b286b7ce9a2804e22541b755616a40
 
-pkgname = p7zip
+pkgname = p7zip-natspec
 
