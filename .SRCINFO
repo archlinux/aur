@@ -1,6 +1,6 @@
 pkgbase = mpc-git
 	pkgdesc = A minimalist command line interface to MPD
-	pkgver = 20100616
+	pkgver = 0.25.3.gffcbf13
 	pkgrel = 1
 	url = http://mpd.wikia.com
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = mpc-git
 	provides = mpc
 	conflicts = mpc
 	replaces = mpc-svn
+	source = git://git.musicpd.org/master/mpc.git
+	md5sums = SKIP
 
 pkgname = mpc-git
 

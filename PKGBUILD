@@ -1,7 +1,8 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
+# Contributor: flu
 
 pkgname=mpc-git
-pkgver=20100616
+pkgver=0.25.3.gffcbf13
 pkgrel=1
 pkgdesc="A minimalist command line interface to MPD"
 arch=('i686' 'x86_64')
@@ -13,43 +14,33 @@ optdepends=('bash-completion')
 conflicts=('mpc')
 provides=('mpc')
 replaces=('mpc-svn')
-source=()
-md5sums=()
+source=('git://git.musicpd.org/master/mpc.git')
+md5sums=('SKIP')
 
-_gitroot="git://git.musicpd.org/master/mpc.git"
-_gitname="mpc"
+pkgver() {
+    cd "${srcdir}/mpc"
+
+    git describe | sed 's/^release-//; s/-/./g'
+}
 
 build() {
-    cd ${srcdir}
-
-    msg "Connecting to GIT server..."
-
-    if [ -d ${srcdir}/$_gitname ] ; then
-        cd $_gitname && git pull origin
-        msg "The local files are updated."
-    else
-        git clone $_gitroot
-    fi
-
-    msg "GIT checkout done or server timeout"
-    msg "Starting make..."
-
-    # Copy Latest files to Build Directory
-    rm -rf ${srcdir}/$_gitname-build
-    git clone ${srcdir}/$_gitname ${srcdir}/$_gitname-build
-    cd ${srcdir}/$_gitname-build
+    cd "${srcdir}/mpc"
 
     # Configure Source
     ./autogen.sh --prefix=/usr
 
     # Build Source
-	make || return 1
+    make
+}
+
+package() {
+    cd "${srcdir}/mpc"
 
     # Install Source
-	make prefix=${pkgdir}/usr install || return 1
+    make prefix="${pkgdir}/usr" install
 
     # Install Bash Completion File
-    install -D -m 644 ${srcdir}/$_gitname/doc/mpc-completion.bash \
-        ${pkgdir}/etc/bash_completion.d/mpc
+    install -D -m 644 "${srcdir}/mpc/doc/mpc-completion.bash" \
+        "${pkgdir}/etc/bash_completion.d/mpc"
 }
-	
+
