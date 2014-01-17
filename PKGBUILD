@@ -9,20 +9,22 @@ pkgname=p7zip-natspec
 _pkgname=p7zip
 pkgver=9.20.1
 pkgrel=9
-pkgdesc='Command-line version of the 7zip compressed file archiver'
+pkgdesc='Command-line version of the 7zip compressed file archiver, using libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'bash')
+depends=('gcc-libs' 'bash' 'libnatspec')
 optdepends=('wxgtk2.8: GUI'
             'desktop-file-utils: desktop entries')
 makedepends=('yasm' 'nasm' 'wxgtk2.8')
 conflicts=('p7zip')
 provides=('p7zip')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${pkgver}_src_all.tar.bz2"
-        '7zFM.desktop')
+        '7zFM.desktop'
+        'natspec.patch')
 sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7'
-          'f2c370d6f1b286b7ce9a2804e22541b755616a40')
+          'f2c370d6f1b286b7ce9a2804e22541b755616a40'
+          'e780553323a72a1222aa696c5c6edc1b23a5657b')
 
 options=('!makeflags')
 install=install
@@ -30,9 +32,11 @@ install=install
 prepare() {
 	cd "${srcdir}/${_pkgname}_${pkgver}"
 	rm GUI/kde4/p7zip_compress.desktop
+    patch -p1 < ../natspec.patch
+
 	[[ $CARCH = x86_64 ]] \
-	&& cp makefile.linux_amd64_asm makefile.machine \
-	|| cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+	    && cp makefile.linux_amd64_asm makefile.machine \
+	    || cp makefile.linux_x86_asm_gcc_4.X makefile.machine
 
 	sed -i 's/wx-config/wx-config-2.8/g' CPP/7zip/TEST/TestUI/makefile \
 		CPP/7zip/UI/{FileManager,GUI,P7ZIP}/makefile

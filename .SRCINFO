@@ -1,5 +1,5 @@
 pkgbase = p7zip-natspec
-	pkgdesc = Command-line version of the 7zip compressed file archiver
+	pkgdesc = Command-line version of the 7zip compressed file archiver, using libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).
 	pkgver = 9.20.1
 	pkgrel = 9
 	url = http://p7zip.sourceforge.net/
@@ -13,6 +13,7 @@ pkgbase = p7zip-natspec
 	makedepends = wxgtk2.8
 	depends = gcc-libs
 	depends = bash
+	depends = libnatspec
 	optdepends = wxgtk2.8: GUI
 	optdepends = desktop-file-utils: desktop entries
 	provides = p7zip
@@ -20,8 +21,10 @@ pkgbase = p7zip-natspec
 	options = !makeflags
 	source = http://downloads.sourceforge.net/project/p7zip/p7zip/9.20.1/p7zip_9.20.1_src_all.tar.bz2
 	source = 7zFM.desktop
+	source = natspec.patch
 	sha1sums = 1cd567e043ee054bf08244ce15f32cb3258306b7
 	sha1sums = f2c370d6f1b286b7ce9a2804e22541b755616a40
+	sha1sums = e780553323a72a1222aa696c5c6edc1b23a5657b
 
 pkgname = p7zip-natspec
 
