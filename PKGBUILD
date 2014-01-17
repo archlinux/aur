@@ -8,7 +8,8 @@
 pkgname=p7zip-natspec
 _pkgname=p7zip
 pkgver=9.20.1
-pkgrel=9
+pkgrel=1
+_base_pkgrel=9
 pkgdesc='Command-line version of the 7zip compressed file archiver, using libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
