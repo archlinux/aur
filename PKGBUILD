@@ -1,9 +1,9 @@
-# Contributor: Taiki Sugawara <buzz.taiki@gmail.com>
+# Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=p7zip-natspec
 _pkgname=p7zip
