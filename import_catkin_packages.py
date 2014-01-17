@@ -35,7 +35,7 @@ class PackageBase(object):
     # Only take the first sentence (keep short description)
     self.description = self.description.split(".")[0] + "."
     # Handle quotes
-    self.description = self.description.replace('"', '\\"').replace('`', '\`').replace('&quot;', '\\"')
+    self.description = self.description.replace('"', '').replace('`', '').replace('&quot;', '').replace('\'','')
 
   def _parse_package_file(self, url):
     """
@@ -379,7 +379,7 @@ def generate_pkgbuild(distro, package, directory, force=False,
       "Directory '%s' already contains a PKGBUILD file. Overwrite?" % (
         output_directory)) == "no":
       return
-  print('Generating PKGBUILD for package %s.' % package.name)
+  print('Generating PKGBUILD for package %s' % package.name)
   with open(os.path.join(output_directory, 'PKGBUILD'), 'w') as pkgbuild:
     pkgbuild.write(package.generate(exclude_dependencies, rosdep_urls))
 
