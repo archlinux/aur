@@ -14,7 +14,7 @@ import re
 
 class PackageBase(object):
 
-  def __init__(self, distro, repository_url, name, version, version_minor):
+  def __init__(self, distro, repository_url, name, version, version_patch):
     self.packages = []
     self.distro = distro
     self.repository_url = repository_url
@@ -22,7 +22,7 @@ class PackageBase(object):
       self._get_package_xml_url(repository_url, name, version))
     self.name = package.name
     self.version = package.version
-    self.version_minor = version_minor
+    self.version_patch = version_patch
     self.licenses = package.licenses
     self.dependencies = [dependency.name for dependency in package.build_depends + package.run_depends]
 
@@ -118,6 +118,7 @@ url='http://www.ros.org/'
 
 pkgname='ros-%(distro)s-%(arch_package_name)s'
 pkgver='%(package_version)s'
+_pkgver_patch=%(package_version_patch)s
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('%(license)s')
@@ -127,7 +128,7 @@ ros_depends=(%(ros_package_dependencies)s)
 depends=(${ros_depends[@]}
   %(other_dependencies)s)
 
-_tag=release/%(distro)s/%(package_name)s/${pkgver}-%(package_version_minor)s
+_tag=release/%(distro)s/%(package_name)s/${pkgver}-${_pkgver_patch}
 _dir=%(package_name)s
 source=("${_dir}"::"git+%(package_url)s"#tag=${_tag})
 md5sums=('SKIP')
@@ -141,9 +142,10 @@ build() {
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python3 error
+  # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh ${srcdir}/${_dir}
 
+  # Build project
   cmake ${srcdir}/${_dir} \\
         -DCMAKE_BUILD_TYPE=Release \\
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \\
@@ -172,7 +174,7 @@ package() {
       'arch_package_name': self._rosify_package_name(self.name),
       'package_name': self.name,
       'package_version': self.version,
-      'package_version_minor': self.version_minor,
+      'package_version_patch': self.version_patch,
       'package_url': self.repository_url,
       'license': ', '.join(self.licenses),
       'description': self.description,
@@ -208,9 +210,9 @@ md5sums=()
 
 """
 
-  def __init__(self, distro, repository_url, name, version, version_minor):
-    super(MetaPackage, self).__init__(distro, repository_url, name, version, version_minor)
-    self.packages = [Package(distro, repository_url, child_name, version, version_minor)
+  def __init__(self, distro, repository_url, name, version, version_patch):
+    super(MetaPackage, self).__init__(distro, repository_url, name, version, version_patch)
+    self.packages = [Package(distro, repository_url, child_name, version, version_patch)
                      for child_name in distro.meta_package_package_names(name)]
 
   def generate(self, exclude_dependencies=[], rosdep_urls=[]):
@@ -223,7 +225,7 @@ md5sums=()
       'arch_package_name': self._rosify_package_name(self.name),
       'package_name': self.name,
       'package_version': self.version,
-      'package_version_minor': self.version_minor,
+      'package_version_patch': self.version_patch,
       'license': ', '.join(self.licenses),
       'description': self.description,
       'ros_package_dependencies': '\n  '.join(ros_dependencies),
@@ -268,13 +270,13 @@ class DistroDescription(object):
       return self._package_cache[name]
     url = package_data['url']
     version = package_data['version'].split('-')[0]
-    version_minor = package_data['version'].split('-')[1]
+    version_patch = package_data['version'].split('-')[1]
     # WARNING: some metapackages embed a package with the same name. In this case,
     #          we treat the package as a normal package.
     if self._is_meta_package(name) and (not name in self._distro['repositories'][name]['packages']):
-      package = MetaPackage(self, url, name, version, version_minor)
+      package = MetaPackage(self, url, name, version, version_patch)
     else:
-      package = Package(self, url, name, version, version_minor)
+      package = Package(self, url, name, version, version_patch)
     self._package_cache[name] = package
     return package
 

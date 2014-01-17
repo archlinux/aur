@@ -4,7 +4,7 @@ pkgdesc='Utilities for building arch packages for ROS stacks.'
 url=http://www.ros.org
 
 pkgname='ros-build-tools'
-pkgver='0.0.3'
+pkgver='0.0.4'
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
@@ -40,5 +40,5 @@ md5sums=('b2b4fd23abb8e9e7382ef9aeab2542f5'
          'd257f7f20384e894b0431ee61068aa96'
          '563c9d1320a3a997db25d3087303dcfb'
          '8d6d7eb89a12c449497b209f1a06655b'
-         '40a0d4c9f6dc89dc3bb9d1442942a5cf'
+         'b75916b783e57e8d4bf95faec3454080'
          '07f5253eb3f8cb5295c32026a20ab6c0')
