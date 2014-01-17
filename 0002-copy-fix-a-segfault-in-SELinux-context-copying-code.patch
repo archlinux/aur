@@ -1,0 +1,31 @@
+From 41916b5986de48851535be339a852efe315ac139 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss_git@m4x.org>
+Date: Sat, 18 Jan 2014 14:02:26 +0100
+Subject: [PATCH 2/2] copy: fix a segfault in SELinux context copying code
+
+Apply upstream fix on src/selinux.c
+
+http://git.savannah.gnu.org/cgit/coreutils.git/commit/?id=d718331e59afb35e56445f3a1597ed74a7f3a3e2
+---
+ src/selinux.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/selinux.c b/src/selinux.c
+index 680bc49..784cd1b 100644
+--- a/src/selinux.c
++++ b/src/selinux.c
+@@ -192,6 +192,11 @@ restorecon_private (char const *path, bool local)
+     {
+       if (getfscreatecon (&tcon) < 0)
+         return rc;
++      if (!tcon)
++        {
++          errno = ENODATA;
++          return rc;
++        }
+       rc = lsetfilecon (path, tcon);
+       freecon (tcon);
+       return rc;
+-- 
+1.8.5.3
+

@@ -5,8 +5,8 @@
 # SELinux Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 
 pkgname=coreutils-selinux
-pkgver=8.21
-pkgrel=2
+pkgver=8.22
+pkgrel=1
 pkgdesc="The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,14 +16,25 @@ depends=('glibc' 'pam-selinux' 'acl' 'gmp' 'libcap' 'libselinux')
 install=${pkgname/-selinux}.install
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-source=(ftp://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz{,.sig})
-md5sums=('065ba41828644eca5dd8163446de5d64'
-         'SKIP')
+source=(ftp://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz{,.sig}
+        '0001-copy-fix-SELinux-context-preservation-for-existing-d.patch'
+        '0002-copy-fix-a-segfault-in-SELinux-context-copying-code.patch')
+md5sums=('8fb0ae2267aa6e728958adc38f8163a2'
+         'SKIP'
+         'a320632626e1639643f3510ae1c62ed0'
+         '40575ec80e895b5db52dafa6556e6e26')
+
+prepare() {
+  cd "${pkgname/-selinux}-$pkgver"
+  patch -Np1 < "$srcdir/0001-copy-fix-SELinux-context-preservation-for-existing-d.patch"
+  patch -Np1 < "$srcdir/0002-copy-fix-a-segfault-in-SELinux-context-copying-code.patch"
+}
 
 build() {
   cd ${srcdir}/${pkgname/-selinux}-${pkgver}
-  ./configure --prefix=/usr --libexecdir=/usr/lib \
-              --enable-no-install-program=groups,hostname,kill,uptime
+  ./configure --prefix=/usr --libexecdir=/usr/lib --with-openssl \
+              --enable-no-install-program=groups,hostname,kill,uptime \
+              --with-selinux
   make
 }
 
