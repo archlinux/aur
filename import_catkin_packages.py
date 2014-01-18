@@ -249,6 +249,15 @@ class DistroDescription(object):
     if self.name == "fuerte":
       if self.name != self._distro['release-name']:
         raise Exception('ROS distro names do not match (%s != %s)' % (self.name, self._distro['release-name']))
+    # process "metapackages"
+    if 'metapackages' in self._distro['repositories'].keys():
+      metapackages = self._distro['repositories']['metapackages']
+      for meta in metapackages['packages']:
+        self._distro['repositories'][meta] = {}
+        self._distro['repositories'][meta]['url'] = metapackages['url']
+        self._distro['repositories'][meta]['version'] = metapackages['version']
+    del self._distro['repositories']['metapackages']
+
 
   def package_names(self, expand_metapackages=False):
     packages = [name for name in self._distro['repositories'].keys()]

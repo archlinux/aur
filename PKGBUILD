@@ -40,5 +40,5 @@ md5sums=('b2b4fd23abb8e9e7382ef9aeab2542f5'
          'd257f7f20384e894b0431ee61068aa96'
          '563c9d1320a3a997db25d3087303dcfb'
          '8d6d7eb89a12c449497b209f1a06655b'
-         'da381d4f57e1563ac67703de4c675e86'
+         '5b97e0f6f5aea290ec54be37fbd15093'
          '07f5253eb3f8cb5295c32026a20ab6c0')
