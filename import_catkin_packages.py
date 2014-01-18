@@ -122,7 +122,7 @@ _pkgver_patch=%(package_version_patch)s
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('%(license)s')
-makedepends=('cmake' 'ros-build-tools')
+makedepends=('cmake' 'git' 'ros-build-tools')
 
 ros_depends=(%(ros_package_dependencies)s)
 depends=(${ros_depends[@]}
