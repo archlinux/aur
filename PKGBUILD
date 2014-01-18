@@ -2,8 +2,8 @@
 
 pkgname=pilight-git
 _pkgname=pilight
-pkgver=v2.0.r0.g172149f
-pkgrel=7
+pkgver=v2.1.r0.g560ec6c
+pkgrel=1
 pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
@@ -12,8 +12,8 @@ makedepends=('git' 'gcc' 'glibc')
 source=('git+https://github.com/pilight/pilight.git'
         'https://raw.github.com/pschmitt/aur-pilight-git/master/Makefile'
         'https://raw.github.com/pschmitt/aur-pilight-git/master/pilight.service')
-sha256sums=('SKIP' 
-            '8669f4366b60f9ff6e17cbab219654a3c81e4e5f0a0e8e79779e3a3297fae760'
+sha256sums=('SKIP'
+            'bd92a1812a038a460ad3a5b1081b06c720335646421b38fc944dbe15c12e210c'
             'a6646c4ccb653d17b6b77a3659d96e5d37becd3a0c0daedce48773094ad81e40')
 conflicts=('pilight')
 
@@ -31,6 +31,7 @@ prepare() {
         sed -i 's|\(#include .*pilight.h\)"|\1.in"|g' $f
     done
     sed -i 's/#cmakedefine/#define/g' pilight.h.in 
+    sed -i 's/wiringpi.o/wiringPi.o/g' libs/pilight/Makefile
 }
 
 build() {

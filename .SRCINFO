@@ -1,7 +1,7 @@
 pkgbase = pilight-git
 	pkgdesc = Modular domotica with the Raspberry Pi
-	pkgver = v2.0.r0.g172149f
-	pkgrel = 7
+	pkgver = v2.1.r0.g560ec6c
+	pkgrel = 1
 	url = http://pilight.org/
 	arch = x86_64
 	arch = armv6h
@@ -14,7 +14,7 @@ pkgbase = pilight-git
 	source = https://raw.github.com/pschmitt/aur-pilight-git/master/Makefile
 	source = https://raw.github.com/pschmitt/aur-pilight-git/master/pilight.service
 	sha256sums = SKIP
-	sha256sums = 8669f4366b60f9ff6e17cbab219654a3c81e4e5f0a0e8e79779e3a3297fae760
+	sha256sums = bd92a1812a038a460ad3a5b1081b06c720335646421b38fc944dbe15c12e210c
 	sha256sums = a6646c4ccb653d17b6b77a3659d96e5d37becd3a0c0daedce48773094ad81e40
 
 pkgname = pilight-git
