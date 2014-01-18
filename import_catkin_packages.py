@@ -24,7 +24,8 @@ class PackageBase(object):
     self.version = package.version
     self.version_patch = version_patch
     self.licenses = package.licenses
-    self.dependencies = [dependency.name for dependency in package.build_depends + package.run_depends]
+    self.run_dependencies = [dependency.name for dependency in package.run_depends]
+    self.build_dependencies = [dependency.name for dependency in package.build_depends + package.buildtool_depends]
 
     # Remove HTML tags from description
     self.description = re.sub('<[^<]+?>', '', package.description)
@@ -47,39 +48,56 @@ class PackageBase(object):
     return catkin_pkg.package.parse_package_string(
       urllib2.urlopen(url).read())
 
-  def _get_ros_dependencies(self):
-    known_packages = self.distro.package_names(expand_metapackages=True)
-    return list(set(
-        [self._rosify_package_name(
-            'ros-%s-' % self.distro.name + dependency)
-         for dependency in self.dependencies if dependency in known_packages]))
-
-  def _get_non_ros_dependencies(self, rosdep_urls=[]):
-    known_packages = self.distro.package_names(expand_metapackages=True)
-
-    other_dependencies = list(set([dependency for dependency in self.dependencies
-                     if dependency not in known_packages]))
-
+  def _fix_dependencies(self, rosdep_urls, build_dep, run_dep):
     # Fix usual non-ROS dependencies:
     #  - load replacement dictionary: these are found in rosdep yaml files. We
     #                                 just need to download and merge these files
     #                                 in a dictionary.
     dependency_map = self._get_rosdep_dictionary(rosdep_urls)
-    other_fixed_dependencies = set()
-    #  - replace in other_dependencies
-    for index, dep in enumerate(other_dependencies):
-      if (dep in dependency_map):
-        # The map may replace one package by multiple ones, or even by none
-        for package in dependency_map[dep]:
-          other_fixed_dependencies.add(package)
-      else:
-        other_fixed_dependencies.add(dep)
 
-    # Fix some possibly missing Python 2 package conflicts
-    other_fixed_dependencies = [self._ensure_python2_dependency(dependency)
-                                for dependency in other_fixed_dependencies]
+    def _fix_dependencies_with_map(dependencies):
+      fixed_dependencies = set()
+      #  - replace in other_dependencies
+      for index, dep in enumerate(dependencies):
+        if (dep in dependency_map):
+          # The map may replace one package by multiple ones, or even by none
+          for package in dependency_map[dep]:
+            fixed_dependencies.add(package)
+        else:
+          fixed_dependencies.add(dep)
 
-    return other_fixed_dependencies
+      # Fix some possibly missing Python 2 package conflicts
+      fixed_dependencies = [self._ensure_python2_dependency(dependency)
+                            for dependency in fixed_dependencies]
+      return fixed_dependencies
+
+    fixed_build_dep = _fix_dependencies_with_map(build_dep)
+    fixed_run_dep = _fix_dependencies_with_map(run_dep)
+
+    return fixed_build_dep, fixed_run_dep
+
+  def _get_ros_dependencies(self):
+    """
+    Returns (build_dependencies, run_dependencies)
+    """
+    known_packages = self.distro.package_names(expand_metapackages=True)
+    build_dep = list(set([self._rosify_package_name('ros-%s-' % self.distro.name + dependency)
+                           for dependency in self.build_dependencies if dependency in known_packages]))
+    run_dep = list(set([self._rosify_package_name('ros-%s-' % self.distro.name + dependency)
+                           for dependency in self.run_dependencies if dependency in known_packages]))
+    return build_dep, run_dep
+
+  def _get_non_ros_dependencies(self, rosdep_urls=[]):
+    """
+    Returns (build_dependencies, run_dependencies)
+    """
+    known_packages = self.distro.package_names(expand_metapackages=True)
+
+    other_build_dep = list(set([dependency for dependency in self.build_dependencies
+                               if dependency not in known_packages]))
+    other_run_dep = list(set([dependency for dependency in self.run_dependencies
+                               if dependency not in known_packages]))
+    return self._fix_dependencies(rosdep_urls, other_build_dep, other_run_dep)
 
   def _rosify_package_name(self, name):
     return name.replace('_', '-')
@@ -122,11 +140,15 @@ _pkgver_patch=%(package_version_patch)s
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('%(license)s')
-makedepends=('cmake' 'git' 'ros-build-tools')
 
-ros_depends=(%(ros_package_dependencies)s)
+ros_makedepends=(%(ros_build_dependencies)s)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]}
+  %(other_build_dependencies)s)
+
+ros_depends=(%(ros_run_dependencies)s)
 depends=(${ros_depends[@]}
-  %(other_dependencies)s)
+  %(other_run_dependencies)s)
 
 _tag=release/%(distro)s/%(package_name)s/${pkgver}-${_pkgver_patch}
 _dir=%(package_name)s
@@ -164,10 +186,17 @@ package() {
 """
 
   def generate(self, exclude_dependencies=[], rosdep_urls=[]):
-    ros_dependencies = [dependency for dependency in self._get_ros_dependencies()
-                        if dependency not in exclude_dependencies]
-    other_dependencies = [dependency for dependency in self._get_non_ros_dependencies(rosdep_urls)
-                          if dependency not in exclude_dependencies]
+    raw_build_dep, raw_run_dep = self._get_ros_dependencies()
+    ros_build_dep = [dependency for dependency in raw_build_dep
+                     if dependency not in exclude_dependencies]
+    ros_run_dep = [dependency for dependency in raw_run_dep
+                   if dependency not in exclude_dependencies]
+
+    other_raw_build_dep, other_raw_run_dep = self._get_non_ros_dependencies(rosdep_urls)
+    other_build_dep = [dependency for dependency in other_raw_build_dep
+                     if dependency not in exclude_dependencies]
+    other_run_dep = [dependency for dependency in other_raw_run_dep
+                   if dependency not in exclude_dependencies]
 
     pkgbuild = self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
@@ -178,14 +207,15 @@ package() {
       'package_url': self.repository_url,
       'license': ', '.join(self.licenses),
       'description': self.description,
-      'ros_package_dependencies': '\n  '.join(ros_dependencies),
-      'other_dependencies': '\n  '.join(other_dependencies)
+      'ros_build_dependencies': '\n  '.join(ros_build_dep),
+      'ros_run_dependencies': '\n  '.join(ros_run_dep),
+      'other_build_dependencies': '\n  '.join(other_build_dep),
+      'other_run_dependencies': '\n  '.join(other_run_dep)
       }
 
     # Post-processing:
     # Remove useless carriage return
-    pkgbuild = re.sub('\${ros_depends\[@\]}\\n  \)',
-                      '${ros_depends[@]})', pkgbuild)
+    pkgbuild = re.sub('\\n  \)', ')', pkgbuild)
     return pkgbuild
 
 
@@ -199,15 +229,18 @@ pkgver='%(package_version)s'
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('%(license)s')
-makedepends=('ros-build-tools')
 
-ros_depends=(%(ros_package_dependencies)s)
+ros_makedepends=(%(ros_build_dependencies)s)
+makedepends=('cmake' 'git' 'ros-build-tools'
+  ${ros_makedepends[@]}
+  %(other_build_dependencies)s)
+
+ros_depends=(%(ros_run_dependencies)s)
 depends=(${ros_depends[@]}
-  %(other_dependencies)s)
+  %(other_run_dependencies)s)
 
 source=()
 md5sums=()
-
 """
 
   def __init__(self, distro, repository_url, name, version, version_patch):
@@ -216,10 +249,17 @@ md5sums=()
                      for child_name in distro.meta_package_package_names(name)]
 
   def generate(self, exclude_dependencies=[], rosdep_urls=[]):
-    ros_dependencies = [dependency for dependency in self._get_ros_dependencies()
-                        if dependency not in exclude_dependencies]
-    other_dependencies = [dependency for dependency in self._get_non_ros_dependencies(rosdep_urls)
-                          if dependency not in exclude_dependencies]
+    raw_build_dep, raw_run_dep = self._get_ros_dependencies()
+    ros_build_dep = [dependency for dependency in raw_build_dep
+                     if dependency not in exclude_dependencies]
+    ros_run_dep = [dependency for dependency in raw_run_dep
+                   if dependency not in exclude_dependencies]
+
+    other_raw_build_dep, other_raw_run_dep = self._get_non_ros_dependencies(rosdep_urls)
+    other_build_dep = [dependency for dependency in other_raw_build_dep
+                     if dependency not in exclude_dependencies]
+    other_run_dep = [dependency for dependency in other_raw_run_dep
+                   if dependency not in exclude_dependencies]
     pkgbuild = self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
       'arch_package_name': self._rosify_package_name(self.name),
@@ -228,8 +268,10 @@ md5sums=()
       'package_version_patch': self.version_patch,
       'license': ', '.join(self.licenses),
       'description': self.description,
-      'ros_package_dependencies': '\n  '.join(ros_dependencies),
-      'other_dependencies': '\n  '.join(other_dependencies)
+      'ros_build_dependencies': '\n  '.join(ros_build_dep),
+      'ros_run_dependencies': '\n  '.join(ros_run_dep),
+      'other_build_dependencies': '\n  '.join(other_build_dep),
+      'other_run_dependencies': '\n  '.join(other_run_dep)
       }
 
     # Post-processing:
@@ -372,7 +414,7 @@ def generate_pkgbuild(distro, package, directory, force=False,
                         no_overwrite=no_overwrite, recursive=recursive,
                         rosdep_urls=rosdep_urls, generated=generated)
   if recursive:
-    for dependency in package.dependencies:
+    for dependency in package.run_dependencies + package.build_dependencies:
       if distro.is_package(dependency):
         generate_pkgbuild(distro, distro.package(dependency), directory,
                           force=force, no_overwrite=no_overwrite, recursive=recursive,
