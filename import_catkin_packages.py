@@ -11,6 +11,7 @@ import urllib2
 import urlparse
 import yaml
 import re
+from collections import OrderedDict
 
 class PackageBase(object):
 
@@ -24,8 +25,11 @@ class PackageBase(object):
     self.version = package.version
     self.version_patch = version_patch
     self.licenses = package.licenses
-    self.run_dependencies = [dependency.name for dependency in package.run_depends]
-    self.build_dependencies = [dependency.name for dependency in package.build_depends + package.buildtool_depends]
+    self.run_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.run_depends]))
+    self.build_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.build_depends + package.buildtool_depends]))
+    # Build dependencies already added:
+    if 'git' in self.build_dependencies: self.build_dependencies.remove('git')
+    if 'cmake' in self.build_dependencies: self.build_dependencies.remove('cmake')
 
     # Remove HTML tags from description
     self.description = re.sub('<[^<]+?>', '', package.description)
@@ -454,7 +458,7 @@ def main():
     help='The URLs of the rosdep mapping files.')
   parser.add_option(
     '--exclude-dependencies', metavar='exclude_dependencies',
-    default='python2-catkin-pkg,python2-rospkg,python2-rosdep',
+    default='',
     help='Comma-separated list of (source) package dependencies to exclude from the generated PKGBUILD file.')
   parser.add_option('-f', '--force', dest='force', action='store_true', default=False,
                     help='Always overwrite exiting PKGBUILD files.')
