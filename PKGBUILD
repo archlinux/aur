@@ -1,15 +1,14 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64"
      )
 url="http://www.zabbix.com/"
 license=("GPL")
-depends=("mariadb>=5.5"
-         "php"
+depends=("php"
          "php-gd"
          "fping"
          "traceroute"
@@ -20,9 +19,10 @@ depends=("mariadb>=5.5"
          "iksemel"
          "libssh2"
         )
-optdepends=("shellinabox: Web-based ssh/telnet client"
+optdepends=("mariadb: Fast SQL database server, drop-in replacement for MySQL"
             "apache: A high performance Unix-based HTTP server"
             "php-apache: Apache SAPI for PHP"
+            "shellinabox: Web-based ssh/telnet client"
            )
 conflicts=("${_pkgname}"
            "zabbix-agent"
@@ -57,6 +57,7 @@ Description=Zabbix Server
 After=syslog.target network.target mysqld.service
 
 [Service]
+User=zabbix
 Type=oneshot
 ExecStart=/usr/bin/zabbix_server
 ExecReload=/usr/bin/zabbix_server -R config_cache_reload
@@ -73,6 +74,7 @@ Description=Zabbix Agent
 After=syslog.target network.target
 
 [Service]
+User=zabbix
 Type=oneshot
 ExecStart=/usr/bin/zabbix_agentd
 RemainAfterExit=yes
@@ -90,7 +92,7 @@ EOL
   sed -i "s/\/usr\/local\/etc/\/etc\/zabbix/g"                                  $(grep -rl "/usr/local/etc"  "conf/" "man/")
   sed -i "s/# DBSocket=\/tmp\/mysql.sock/DBSocket=\/run\/mysqld\/mysqld.sock/g" $(grep -rl "# DBSocket=/tmp" "conf/"       )
   sed -i "s/# PidFile=\/tmp/PidFile=\/run\/zabbix/g"                            $(grep -rl "# PidFile=/tmp"  "conf/"       )
-  sed -i "s/LogFile=\/tmp/LogFile=\/var\/log/g"                                 $(grep -rl "LogFile=/tmp"    "conf/"       )
+  sed -i "s/LogFile=\/tmp/LogFile=\/var\/log\/zabbix/g"                         $(grep -rl "LogFile=/tmp"    "conf/"       )
   sed -i "s/\/usr\/sbin/\/usr\/bin/g"                                           $(grep -rl "/usr/sbin"       "conf/"       )
 }
 
@@ -132,7 +134,7 @@ package() {
     install -D -m 0444 "${srcdir}/zabbix-${pkgver}/database/mysql/${_SQLFILE}" \
                        "${pkgdir}/etc/zabbix/database/${_SQLFILE}"
   done
-  install -dm 0750                                    "${pkgdir}/etc/sudoers.d/"
+  install -dm 0750                                    "${pkgdir}/etc/sudoers.d"
   install -dm 0755                                    "${pkgdir}/run/zabbix"
   install -dm 0750                                    "${pkgdir}/var/log/zabbix"
   install -Dm 0640 "${srcdir}/${_pkgname}.sudoers"    "${pkgdir}/etc/sudoers.d/${_pkgname}"
