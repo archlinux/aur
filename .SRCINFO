@@ -1,0 +1,24 @@
+pkgbase = enigma_sdl-svn
+	pkgdesc = Puzzle game inspired by Oxyd on the Atari ST and Rock'n'Roll on the Amiga (development version)
+	pkgver = 1.20.r2383
+	pkgrel = 1
+	url = http://www.nongnu.org/enigma/
+	install = enigma_sdl.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	makedepends = texi2html
+	makedepends = subversion
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = xerces-c
+	depends = hicolor-icon-theme
+	provides = enigma_sdl
+	conflicts = enigma_sdl
+	source = enigma_sdl::svn+http://svn.code.sf.net/p/enigma-game/source/trunk
+	md5sums = SKIP
+
+pkgname = enigma_sdl-svn
+
