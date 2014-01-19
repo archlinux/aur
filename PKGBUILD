@@ -3,7 +3,7 @@
 
 pkgname=psiconv
 pkgver=0.9.8
-pkgrel=14
+pkgrel=15
 pkgdesc="Converts Psion 5(MX) files to more commonly used file formats"
 arch=('i686' 'x86_64')
 url="http://software.frodo.looijaard.name/psiconv/"
