@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=${_pkgname}-git
-pkgver=0.18.0rc2.17435.d2af775
+pkgver=0.18.99.17591.921557c
 pkgrel=1
 pkgdesc="Enlightenment window manager (formerly e17) - Development version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
             'bluez-libs: bluetooth module'
             'connman: network module'
-            'gdb: create backtraces on crash')
+            'gdb: create backtraces on crash'
+            'packagekit: packagekit module')
 provides=("$_pkgname=$pkgver" 'notification-daemon' "enlightenment17=$pkgver" "enlightenment17-git=$pkgver")
 conflicts=("$_pkgname" "enlightenment17" "enlightenment17-git")
 backup=('etc/enlightenment/sysactions.conf'

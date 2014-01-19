@@ -1,6 +1,6 @@
 pkgbase = enlightenment-git
 	pkgdesc = Enlightenment window manager (formerly e17) - Development version
-	pkgver = 0.18.0rc2.17435.d2af775
+	pkgver = 0.18.99.17591.921557c
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = enlightenment.install
@@ -21,10 +21,11 @@ pkgbase = enlightenment-git
 	optdepends = bluez-libs: bluetooth module
 	optdepends = connman: network module
 	optdepends = gdb: create backtraces on crash
-	provides = enlightenment=0.18.0rc2.17435.d2af775
+	optdepends = packagekit: packagekit module
+	provides = enlightenment=0.18.99.17591.921557c
 	provides = notification-daemon
-	provides = enlightenment17=0.18.0rc2.17435.d2af775
-	provides = enlightenment17-git=0.18.0rc2.17435.d2af775
+	provides = enlightenment17=0.18.99.17591.921557c
+	provides = enlightenment17-git=0.18.99.17591.921557c
 	conflicts = enlightenment
 	conflicts = enlightenment17
 	conflicts = enlightenment17-git
