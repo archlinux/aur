@@ -2,14 +2,14 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.cups.org/"
 depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord' 'libusb' 'dbus' 'hicolor-icon-theme')
-makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'gnutls>=2.8.3' 'xinetd' 'gzip' 'autoconf' 'avahi')
+makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd' 'gzip' 'autoconf' 'avahi' 'openssl' 'inetutils')
 optdepends=('xdg-utils: xdg .desktop file support')
 provides=("cups=${pkgver}")
 conflicts=('cups')
@@ -32,7 +32,6 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-no-gcrypt.patch
         cups-no-gzip-man.patch
         # FC
-        cups-dbus-utf8.patch
         cups-res_init.patch
         cups-avahi-address.patch
         cups-enum-all.patch
@@ -41,14 +40,13 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-1.6.2-statedir.patch
         # Debian
 	get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
-md5sums=('5ab496a2ce27017fcdb3d7ec4818a75a'
+md5sums=('55277c40fd4b7183dc3671d39c5c42b7'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'f861b18f4446c43918c8643dcbbd7f6d'
          '96f82c38f3f540b53f3e5144900acf17'
          '3ba9e3410df1dc3015463d615ef91b3b'
          'cc4101beccb5ed6deb1c92707a575925'
          '90c30380d4c8cd48a908cfdadae1ea24'
-         'a2a88b3a3257c3b5fd3edcc169e6aca4'
          '8fe27d4248cacbc02824e7937cab4088'
          'df0c367c0022e3c7d8e01827e8a6c5e7'
          'f30c2a161caaf27854581507cde8cac6'
@@ -68,9 +66,6 @@ prepare() {
   patch -Np1 -i ${srcdir}/cups-no-gzip-man.patch
 
   # various bugfixes (upstream reports/SVN or Fedora/Debian
-
-  # Ensure attributes are valid UTF-8 in dbus notifier
-  patch -Np1 -i ${srcdir}/cups-dbus-utf8.patch
 
   # Applications could not get the PPD file for statically-configured IPP-shared print queues
   patch -Np1 -i ${srcdir}/get-ppd-file-for-statically-configured-ipp-shared-queues.patch
@@ -107,7 +102,8 @@ build() {
      --enable-pam=yes \
      --enable-raw-printing \
      --enable-dbus --with-dbusdir=/etc/dbus-1 \
-     --enable-ssl=yes --enable-gnutls \
+     --enable-ssl=yes --enable-openssl \
+     --disable-gnutls \
      --enable-threads \
      --enable-avahi\
      --with-php=/usr/bin/php-cgi \
@@ -117,9 +113,9 @@ build() {
 
 check() {
   cd "$srcdir/cups-$pkgver"
-  #httpAddrGetList(workstation64): FAIL
-  #1 TESTS FAILED!
-  #make[1]: *** [testhttp] Error 1
+  
+  #./run-stp-tests.sh: line 782:  6307 Aborted                 (core dumped) $VALGRIND ../scheduler/cupsd -c /tmp/cups-$user/cupsd.conf -f > /tmp/cups-$user/log/debug_log 2>&1
+  #FAIL: 87 error messages, expected 33.
   make -k check || /bin/true
 }
 
