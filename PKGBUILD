@@ -1,4 +1,4 @@
-# Maintainer : Keshav Padram Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
