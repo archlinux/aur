@@ -1,6 +1,6 @@
-pkgbase = efibootmgr-pjones-git
-	pkgdesc = Tool to modify UEFI Firmware Boot Manager Variables - Built from Fedora's Peter Jones GitHub Repo - libefivars branch
-	pkgver = 0.6.0.142.adc0500
+pkgbase = efibootmgr-git
+	pkgdesc = Tool to modify UEFI Firmware Boot Manager Variables - GIT master branch
+	pkgver = 0.6.1.29.gf4e29e4
 	pkgrel = 1
 	url = https://github.com/vathpela/efibootmgr
 	arch = x86_64
@@ -9,18 +9,18 @@ pkgbase = efibootmgr-pjones-git
 	makedepends = git
 	depends = pciutils
 	depends = efivar
-	provides = efibootmgr=0.6.0.142.adc0500
-	provides = efibootmgr-git=0.6.0.142.adc0500
-	provides = efibootmgr-pjones=0.6.0.142.adc0500
+	provides = efibootmgr=0.6.1.29.gf4e29e4
+	provides = efibootmgr-pjones=0.6.1.29.gf4e29e4
+	provides = efibootmgr-pjones-_git=0.6.1.29.gf4e29e4
 	conflicts = efibootmgr
-	conflicts = efibootmgr-git
 	conflicts = efibootmgr-pjones
+	conflicts = efibootmgr-pjones-git
 	options = !strip
 	options = zipman
 	options = !emptydirs
 	options = !libtool
-	source = efibootmgr-pjones::git+https://github.com/vathpela/efibootmgr.git#branch=libefivars
+	source = efibootmgr::git+https://github.com/vathpela/efibootmgr.git#branch=master
 	sha1sums = SKIP
 
-pkgname = efibootmgr-pjones-git
+pkgname = efibootmgr-git
 
