@@ -1,4 +1,4 @@
-# Maintainer : Keshav Padram Amburay <(the ddoott ridikulusddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer : Keshav Amburay <(the ddoott ridikulusddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
 _pkgname="efibootmgr"
