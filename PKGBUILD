@@ -1,4 +1,4 @@
-# Maintainer: Keshav Padram Amburay <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _gitroot="git://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git"
 _gitname="efitools"
