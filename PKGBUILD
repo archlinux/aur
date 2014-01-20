@@ -9,7 +9,7 @@ _TIANO_DIR_="tianocore-edk2-svn"
 _TIANOCORE_PKG="Shell"
 _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _TIANOCORE_TARGET="RELEASE"
-_COMPILER="GCC47"
+_COMPILER="GCC48"
 #######
 
 _pkgname="uefi-shell"
