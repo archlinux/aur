@@ -1,0 +1,19 @@
+pkgbase = physfs-hg
+	pkgdesc = A library to provide abstract access to various archives (development version)
+	pkgver = 2.1.0.r1338.aae614cdd005
+	pkgrel = 1
+	url = http://icculus.org/physfs/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = mercurial
+	depends = zlib
+	provides = physfs
+	conflicts = physfs
+	source = hg+http://hg.icculus.org/icculus/physfs
+	md5sums = SKIP
+
+pkgname = physfs-hg
+
