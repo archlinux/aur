@@ -1,4 +1,4 @@
-# Maintainer : Keshav Padram Amburay <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer : Keshav Padram Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Andre Osku Schmidt (oskude) <(andre.osku.schmidt) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 #######
@@ -10,7 +10,7 @@ _TIANO_DIR_="tianocore-edk2-svn"
 _TIANOCORE_PKG="OvmfX64"
 _UDK_TARGET="OvmfPkg/OvmfPkgX64.dsc"
 _TIANOCORE_TARGET="RELEASE"
-_COMPILER="GCC47"
+_COMPILER="GCC48"
 #######
 
 #######
@@ -20,7 +20,7 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15046
+pkgver=15140
 pkgrel=1
 pkgdesc="x86_64 UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
