@@ -1,0 +1,13 @@
+pkgbase = lpc21isp
+	pkgdesc = In-circuit programming (ISP) tool for the NXP (Philips) LPC1300 / LPC1700 / LPC2000 series ARM7 / M0 / M3 microcontrollers
+	pkgver = 1.97
+	pkgrel = 1
+	url = http://sourceforge.net/projects/lpc21isp/
+	arch = i686
+	arch = x86_64
+	license = LGPLv3
+	source = http://downloads.sourceforge.net/project/lpc21isp/lpc21isp/1.97/lpc21isp_197.tar.gz
+	md5sums = 0b286859a05a725647ecb1b3fe9ba606
+
+pkgname = lpc21isp
+
