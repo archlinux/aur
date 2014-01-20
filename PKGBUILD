@@ -4,7 +4,7 @@
 
 pkgname=libsepol
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -25,6 +25,9 @@ build() {
 package(){
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib install
+
+  # Those are removed in Fedora
+  rm -r "${pkgdir}"/usr/bin/chkcon "${pkgdir}"/usr/share/man
 
   # /lib/lisepol.so fix
   cd "${pkgdir}"/usr/lib
