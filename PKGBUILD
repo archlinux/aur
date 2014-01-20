@@ -2,14 +2,12 @@
 
 pkgname=xgalaga
 pkgver=2.1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source remake of the classic arcade game Galaga"
 arch=('i686' 'x86_64')
 url="http://rumsey.org/xgal.html"
 license=('GPL')
 depends=('libxmu' 'libxpm')
-backup=(var/lib/$pkgname/scores)
-#options=('!buildflags')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         $pkgname.patch
@@ -23,8 +21,8 @@ md5sums=('f37c3377b245d2d53b33eb489966bf28'
 build() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  /bin/cp -f /usr/share/automake-1.13/config.guess .
-  /bin/cp -f /usr/share/automake-1.13/config.sub   .
+  /bin/cp -f /usr/share/automake-1.14/config.guess .
+  /bin/cp -f /usr/share/automake-1.14/config.sub   .
 
   patch -Np1 -i "$srcdir"/$pkgname.patch
 
