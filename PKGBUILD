@@ -5,15 +5,15 @@
 _gitroot="http://git.zytor.com/syslinux/syslinux.git"
 # _gitroot="https://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
 _gitname="syslinux"
-_gitbranch="firmware"
+_gitbranch="master"
 
 _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
-pkgver=6.03pre1.2.g27b0cc6
+pkgver=6.03pre1.34.gba3c1d6
 pkgrel=1
 arch=('x86_64' 'i686')
-pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT firmware branch"
+pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master (previously firmware) branch"
 url="http://syslinux.zytor.com/"
 license=('GPL2')
 options=('!makeflags' '!emptydirs')
@@ -22,7 +22,7 @@ backup=('boot/syslinux/syslinux.cfg')
 conflicts=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
 provides=("syslinux=${pkgver}" "syslinux-bios=${pkgver}" "syslinux-efi=${pkgver}" "syslinux-git=${pkgver}")
 
-makedepends=('git' 'python2' 'nasm' 'ncurses' 'gnu-efi-libs')
+makedepends=('git' 'python2' 'nasm' 'ncurses')
 depends=('perl' 'glibc')
 optdepends=('perl-passwd-md5:  For md5pass'
             'perl-digest-sha1: For sha1pass'
@@ -35,10 +35,12 @@ optdepends=('perl-passwd-md5:  For md5pass'
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        "gnu-efi::git://git.code.sf.net/p/gnu-efi/code"
         'syslinux.cfg'
         'syslinux-install_update')
 
 sha1sums=('SKIP'
+          'SKIP'
           'b0f174bcc0386fdf699e03d0090e3ac841098010'
           '6032b30aadbd738764213e1710652d0735d93f16')
 
@@ -51,6 +53,10 @@ prepare() {
 	
 	cd "${srcdir}/${_pkgname}/"
 	
+	msg "Run git clean"
+	git clean -x -d -f
+	echo
+	
 	msg "Do not try to build the Windows or DOS installers and DIAG files"
 	sed 's|diag libinstaller dos win32 win64 dosutil txt|libinstaller txt|g' -i "${srcdir}/${_pkgname}/Makefile" || true
 	sed 's|win32/syslinux.exe win64/syslinux64.exe||g' -i "${srcdir}/${_pkgname}/Makefile" || true
@@ -62,27 +68,35 @@ prepare() {
 	msg "Fix FHS manpage path"
 	sed 's|/usr/man|/usr/share/man|g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
 	
+	msg "Run git clean for gnu-efi"
+	cd "${srcdir}/${_pkgname}/gnu-efi/"
+	git clean -x -d -f
+	echo
+	
+	msg "Prepare gnu-efi source"
+	cp -r "${srcdir}/gnu-efi/gnu-efi-3.0" "${srcdir}/${_pkgname}/gnu-efi/gnu-efi-3.0"
+	
+	cd "${srcdir}/${_pkgname}/"
+	
 }
 
 _build_syslinux_bios() {
 	
 	rm -rf "${srcdir}/${_pkgname}-bios/" || true
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-bios"
+	
+	mkdir -p "${srcdir}/${_pkgname}-bios/OBJDIR"
 	cd "${srcdir}/${_pkgname}-bios/"
 	
 	msg "Do not try to compile bios build with our default LDFLAGS, it will fail"
 	unset LDFLAGS
 	
-	msg "Run make bios spotless"
-	make PYTHON="python2" bios spotless
-	echo
-	
 	msg "Run make bios"
-	make PYTHON="python2" bios
+	make PYTHON="python2" OBJDIR="${srcdir}/${_pkgname}-bios/OBJDIR" bios
 	echo
 	
 	msg "Run make bios installer"
-	make PYTHON="python2" bios installer
+	make PYTHON="python2" OBJDIR="${srcdir}/${_pkgname}-bios/OBJDIR" bios installer
 	echo
 	
 }
@@ -91,6 +105,24 @@ _build_syslinux_efi64() {
 	
 	rm -rf "${srcdir}/${_pkgname}-efi64/" || true
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-efi64"
+	
+	mkdir -p "${srcdir}/${_pkgname}-efi64/OBJDIR/efi64/"
+	cd "${srcdir}/${_pkgname}-efi64/gnu-efi/gnu-efi-3.0/"
+	
+	msg "Unset all compiler FLAGS for gnu-efi efi64 build"
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
+	make ARCH="x86_64" -j1
+	echo
+	
+	msg "Run make install gnu-efi for syslinux efi64"
+	make ARCH="x86_64" PREFIX="${srcdir}/${_pkgname}-efi64/OBJDIR/efi64/" install
+	echo
+	
 	cd "${srcdir}/${_pkgname}-efi64/"
 	
 	msg "Unset all compiler FLAGS for efi64 build"
@@ -100,16 +132,12 @@ _build_syslinux_efi64() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	msg "Run make efi64 spotless"
-	make PYTHON="python2" efi64 spotless
-	echo
-	
 	msg "Run make efi64"
-	make PYTHON="python2" efi64
+	make PYTHON="python2" OBJDIR="${srcdir}/${_pkgname}-efi64/OBJDIR" efi64
 	echo
 	
 	msg "Run make efi64 installer"
-	make PYTHON="python2" efi64 installer
+	make PYTHON="python2" OBJDIR="${srcdir}/${_pkgname}-efi64/OBJDIR" efi64 installer
 	echo
 	
 }
@@ -118,6 +146,25 @@ _build_syslinux_efi32() {
 	
 	rm -rf "${srcdir}/${_pkgname}-efi32/" || true
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-efi32"
+	
+	mkdir -p "${srcdir}/${_pkgname}-efi32/OBJDIR/efi32/"
+	cd "${srcdir}/${_pkgname}-efi32/gnu-efi/gnu-efi-3.0/"
+	
+	msg "Unset all compiler FLAGS for gnu-efi efi32 build"
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
+	msg "Run make gnu-efi for syslinux efi32"
+	make ARCH="ia32" -j1
+	echo
+	
+	msg "Run make install gnu-efi for syslinux efi32"
+	make ARCH="ia32" PREFIX="${srcdir}/${_pkgname}-efi32/OBJDIR/efi32/" install
+	echo
+	
 	cd "${srcdir}/${_pkgname}-efi32/"
 	
 	msg "Unset all compiler FLAGS for efi32 build"
@@ -127,16 +174,12 @@ _build_syslinux_efi32() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	msg "Run make efi32 spotless"
-	make PYTHON="python2" efi32 spotless
-	echo
-	
 	msg "Run make efi32"
-	make PYTHON="python2" efi32
+	make PYTHON="python2" OBJDIR="${srcdir}/${_pkgname}-efi32/OBJDIR" efi32
 	echo
 	
 	msg "Run make efi32 installer"
-	make PYTHON="python2" efi32 installer
+	make PYTHON="python2" OBJDIR="${srcdir}/${_pkgname}-efi32/OBJDIR" efi32 installer
 	echo
 	
 }
@@ -168,7 +211,7 @@ _package_syslinux_bios() {
 	cd "${srcdir}/${_pkgname}-bios/"
 	
 	msg "Install Syslinux bios"
-	make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/bios/" bios install
+	make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/bios/" OBJDIR="${srcdir}/${_pkgname}-bios/OBJDIR" bios install
 	echo
 	
 	msg "Remove syslinux.exe,syslinux64.exe,syslinux.com and dosutil dir"
@@ -206,14 +249,14 @@ _package_syslinux_efi() {
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		cd "${srcdir}/${_pkgname}-efi64/"
 		msg "Install Syslinux efi64"
-		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" efi64 install
+		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" OBJDIR="${srcdir}/${_pkgname}-efi64/OBJDIR" efi64 install
 		echo
 	fi
 	
 	if [[ "${CARCH}" == "i686" ]]; then
 		cd "${srcdir}/${_pkgname}-efi32/"
 		msg "Install Syslinux efi32"
-		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" efi32 install
+		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" OBJDIR="${srcdir}/${_pkgname}-efi32/OBJDIR" efi32 install
 		echo
 	fi
 	
