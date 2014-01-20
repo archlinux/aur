@@ -1,4 +1,4 @@
-# Maintainer: Keshav Padram Amburay <(the.ridikulus.rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _gitroot="git://github.com/mjg59/shim.git"
 _gitname="shim"
@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="shim-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.5
+pkgver=0.7.13.g27129a5
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
 url="https://github.com/mjg59/shim"
