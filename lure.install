@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "You can add /usr/share/lure(/<language>) to your scummvm games list or use"
+  echo "the lure(-<language>) launchers."
+  echo "The launchers respect your scummvm configuration and accept scummvm command"
+  echo "line options, eg. 'lure-de -f' starts the game fullscreen in german language."
+  echo "Just a sidenote: scummvm fails to load, if you use english and a second language"
+  echo "version (the ids match): launcher lure-de + configured lure in scummvm won't work."
+}

@@ -1,0 +1,32 @@
+pkgbase = lure
+	pkgdesc = fantasy point-and-click adventure game with comedic elements (aka Lure of the Temptress) - multi language
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://www.revolution.co.uk/games/lure/
+	install = lure.install
+	arch = any
+	license = custom
+	depends = scummvm
+	provides = lure-de
+	provides = lure-fr
+	provides = lure-it
+	provides = lure-es
+	conflicts = lure-de
+	conflicts = lure-fr
+	conflicts = lure-it
+	conflicts = lure-es
+	source = http://downloads.sourceforge.net/scummvm/lure-1.1.zip
+	source = http://downloads.sourceforge.net/scummvm/lure-de-1.1.zip
+	source = http://downloads.sourceforge.net/scummvm/lure-fr-1.1.zip
+	source = http://downloads.sourceforge.net/scummvm/lure-it-1.1.zip
+	source = http://downloads.sourceforge.net/scummvm/lure-es-1.1.zip
+	source = lure.sh
+	sha256sums = f3178245a1483da1168c3a11e70b65d33c389f1f5df63d4f3a356886c1890108
+	sha256sums = 5e83a6a8646629c55cfd84932b10231af2ff16d96e815ed0ce86564a0b3c186b
+	sha256sums = 2983149f9912a72761b1225e834a41d19aa565689b9027061a0220779694a1f8
+	sha256sums = 524270b2fb3f1caef621acf4379e3dbb69aed3c8ec1a98b38e94b290d3b046cf
+	sha256sums = 9306b9faad8c0a8189d3cbbfead511fc4d993655cc845cb8e15369baed2f7bb7
+	sha256sums = 2b063364f775bb1c8e4f571d5400da4581c77eff013fd8c6d400abcaec315150
+
+pkgname = lure
+
