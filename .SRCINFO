@@ -9,6 +9,7 @@ pkgbase = efibootmgr-git
 	makedepends = git
 	depends = pciutils
 	depends = efivar
+	depends = zlib
 	provides = efibootmgr=0.6.1.29.gf4e29e4
 	provides = efibootmgr-pjones=0.6.1.29.gf4e29e4
 	provides = efibootmgr-pjones-_git=0.6.1.29.gf4e29e4

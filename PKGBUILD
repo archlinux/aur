@@ -15,7 +15,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efibootmgr"
 license=('GPL2')
 makedepends=('git')
-depends=('pciutils' 'efivar')
+depends=('pciutils' 'efivar' 'zlib')
 conflicts=("${_pkgname}" "${_pkgname}-pjones" "${_pkgname}-pjones-git")
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-pjones=${pkgver}" "${_pkgname}-pjones-_git=${pkgver}")
 options=('!strip' 'zipman' '!emptydirs' '!libtool')
