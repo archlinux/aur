@@ -1,0 +1,24 @@
+pkgbase = bombermaaan-svn
+	pkgdesc = A classic Bomberman-like game with multiplayer support
+	pkgver = 1.4.0.658
+	pkgrel = 1
+	url = http://bombermaaan.sourceforge.net/
+	install = bombermaaan.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = sdl_mixer
+	provides = bombermaaan
+	conflicts = bombermaaan
+	source = bombermaaan::svn+https://svn.code.sf.net/p/bombermaaan/code/trunk
+	source = http://downloads.sourceforge.net/bombermaaan/Bombermaaan_1.4.0.627_20081018_res.tar.gz
+	source = http://media1.gamefront.com/moddb/2011/02/17/Bombermaan_levels_pack.zip
+	source = bombermaaan.desktop
+	sha256sums = SKIP
+	sha256sums = 48c702d42a87b44606cbed2da88b49b250f66c6a65067d1dc43b25980ef1c74a
+	sha256sums = 7a73655f609096271434d20e8a9c33b9af71c547a4a1fc312fbd85866f6c8519
+	sha256sums = 06f8be98170c3c95628003a1419bb25527617330f225bab82baffa564ca1f92b
+
+pkgname = bombermaaan-svn
+
