@@ -12,7 +12,7 @@
 
 pkgname=gnupg-largekeys
 pkgver=2.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
 license=('GPL')

@@ -1,7 +1,7 @@
 pkgbase = gnupg-largekeys
 	pkgdesc = Complete and free implementation of the OpenPGP standard
 	pkgver = 2.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnupg.org/
 	install = install
 	arch = i686
