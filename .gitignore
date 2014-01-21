@@ -1,0 +1,8 @@
+*.gz
+*.zip
+*.tar.*
+gyp
+pkg
+src
+fcitx-mozc-*.patch
+mozc-*
