@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 
 pkgname=python2-mpldatacursor-git
-pkgver=20131023
+pkgver=20140121
 pkgrel=1
 pkgdesc="Interactive data cursors (clickable annotation boxes) for matplotlib."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ pkgver() {
 }
 
 build() {
-    cd ${pkgname}
+    cd ${srcdir}/${pkgname}
     python2 setup.py build
 }
 
