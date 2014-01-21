@@ -3,8 +3,8 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.12
-pkgver=3.12.8
+_srcname=linux-3.13
+pkgver=3.13
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,7 +12,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -26,33 +26,18 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch'
         'rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-notification-fails.patch'
 )
-md5sums=('cc6ee608854e0da4b64f6c1ff8b6398c'
-         '03d34842e3a1197d17055610f62627b8'
-         'a9281e90e529795eaf10b45d70ab2868'
-         '6000a9c7bd83081a65611d9dfbdd8eda'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '98beb36f9b8cf16e58de2483ea9985e3'
-         'd50c1ac47394e9aec637002ef3392bd1'
-         'd4a75f77e6bd5d700dcd534cd5f0dfce'
-         'dc86fdc37615c97f03c1e0c31b7b833a'
-         '88eef9d3b5012ef7e82af1af8cc4e517'
-         'cec0bb8981936eab2943b2009b7a6fff'
-         '88d9cddf9e0050a76ec4674f264fb2a1'
-         'cb9016630212ef07b168892fbcfd4e5d')
 
 _kernelname=${pkgbase#linux}
 
 # module.symbols md5sums
 # x86_64
-# 23ef8d9dae0c916c9e1a7a07b77f797d  /lib/modules/3.12.6-1-ARCH/modules.symbols
 # i686
-# eadbff034e17f92ccb4a7737302f3dbd  /lib/modules/3.12.6-1-ARCH/modules.symbols
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -357,3 +342,15 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
+         'a9281e90e529795eaf10b45d70ab2868'
+         '6000a9c7bd83081a65611d9dfbdd8eda'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '98beb36f9b8cf16e58de2483ea9985e3'
+         'd50c1ac47394e9aec637002ef3392bd1'
+         'd4a75f77e6bd5d700dcd534cd5f0dfce'
+         'dc86fdc37615c97f03c1e0c31b7b833a'
+         '88eef9d3b5012ef7e82af1af8cc4e517'
+         'cec0bb8981936eab2943b2009b7a6fff'
+         '88d9cddf9e0050a76ec4674f264fb2a1'
+         'cb9016630212ef07b168892fbcfd4e5d')
