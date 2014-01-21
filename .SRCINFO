@@ -1,18 +1,18 @@
 pkgbase = mopidy-beets
 	pkgdesc = Mopidy extension for playing music from a Beets collection
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
 	license = APACHE
 	makedepends = python2
-	depends = mopidy>=0.16
+	depends = mopidy>=0.18
 	depends = python2-pykka>=1.1
-	depends = python2-distribute
-	depends = python2-requests
+	depends = python2-setuptools
+	depends = python2-requests>=2.0
 	provides = mopidy-beets
-	source = https://pypi.python.org/packages/source/M/Mopidy-Beets/Mopidy-Beets-1.0.4.tar.gz
-	md5sums = d72f4b28603af9d9d44fe2ef8e0cdec6
+	source = https://pypi.python.org/packages/source/M/Mopidy-Beets/Mopidy-Beets-1.1.0.tar.gz
+	md5sums = 4a16dd96e14546c65ebaa7428179e45e
 
 pkgname = mopidy-beets
 
