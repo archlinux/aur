@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 _realname=syslog-ng
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ source=("http://www.balabit.com/downloads/files/syslog-ng/sources/$pkgver/source
         syslog-ng.conf.d
         syslog-ng.logrotate
 	syslog-ng.rc)
-sha1sums=('f0c91e14ee1f691cf680daf942d84ed87e5469c0'
-          'd270d6fbe7338d4ecb4d0f27c40882078116d95b'
+sha1sums=('7a8070f384e0dba1dfd6622c40bc6e402fa6178f'
+          'cf61571ffde34ecf36be76881fce20944fd3efa4'
           'eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd'
           '949128fe3d7f77a7aab99048061f885bc758000c'
           '94af81a84e3add6653755122cdd5080694de059d')
