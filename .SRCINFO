@@ -1,0 +1,14 @@
+pkgbase = quake2-demo
+	pkgdesc = Quake II demo (0.pak) for quake II engines
+	pkgver = 3.14
+	pkgrel = 1
+	url = http://www.idsoftware.com/games/quake/quake2
+	arch = any
+	license = custom: shareware
+	optdepends = yamagi-quake2: recommended engine to play
+	optdepends = quake2: another engine to play
+	source = ftp://ftp.idsoftware.com/idstuff/quake2/q2-314-demo-x86.exe
+	sha256sums = 7ace5a43983f10d6bdc9d9b6e17a1032ba6223118d389bd170df89b945a04a1e
+
+pkgname = quake2-demo
+
