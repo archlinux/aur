@@ -1,0 +1,19 @@
+pkgbase = rage-git
+	pkgdesc = Video Player based on EFL
+	pkgver = 0.1.0.r5.f2cb079
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	install = rage.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = elementary>=1.8.99
+	depends = desktop-file-utils
+	provides = rage=0.1.0.r5.f2cb079
+	conflicts = rage
+	source = git://git.enlightenment.org/apps/rage.git
+	sha256sums = SKIP
+
+pkgname = rage-git
+
