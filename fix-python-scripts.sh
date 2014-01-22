@@ -7,11 +7,12 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-for file in $(grep -rl 'env python *$' $1); do
+for file in $(grep -rl -e 'env python *$' -e 'bin/python *$' $1); do
     if [ -z "$file" ]; then
         echo "Error finding files."
         exit 1
     fi
-    sed -i 's/env python *$/env python2/g' $file
+    sed -i 's,env python *$,env python2,g' $file
+    sed -i 's,/usr/bin/python *$,/usr/bin/env python2,g' $file
 done
 
