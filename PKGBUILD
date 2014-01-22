@@ -1,5 +1,7 @@
 # $Id$
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: AndyRTR <andyrtr@archlinux.org>
+
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: royrocks <royrocks13@gmail.com>
 
@@ -27,5 +29,3 @@ build() {
 package() {
   make -C "$pkgname-$pkgver+nmu2" DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
