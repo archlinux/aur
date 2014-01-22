@@ -15,12 +15,11 @@ optdepends=('fluidsynth: software synthesizer for midi music'
             'timidity-freepats: patch set for timidity++'
             'libmad: for mp3 music support')
 install=$pkgname.install
+changelog=$pkgname.ChangeLog
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-        $pkgname.desktop)
-md5sums=('8ee5bddfb3a613657006edb70f57bb52'
-         'SKIP')
+        "$pkgname.desktop")
 sha256sums=('a50e5a643db6835acb8cf7afd262b5eeba3fac01151ea51afcb1f5914d35a5c5'
-            'SKIP')
+            '4bc37a890a354e274b152a03fffa61d2da1609131c848742e1e4bca537176493')
 
 prepare() {
   cd $pkgname-$pkgver

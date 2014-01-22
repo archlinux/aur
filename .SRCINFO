@@ -4,6 +4,7 @@ pkgbase = dunedynasty
 	pkgrel = 1
 	url = http://dunedynasty.sourceforge.net/
 	install = dunedynasty.install
+	changelog = dunedynasty.ChangeLog
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -16,10 +17,8 @@ pkgbase = dunedynasty
 	optdepends = libmad: for mp3 music support
 	source = http://downloads.sourceforge.net/dunedynasty/dunedynasty-1.5.7.tar.gz
 	source = dunedynasty.desktop
-	md5sums = 8ee5bddfb3a613657006edb70f57bb52
-	md5sums = SKIP
 	sha256sums = a50e5a643db6835acb8cf7afd262b5eeba3fac01151ea51afcb1f5914d35a5c5
-	sha256sums = SKIP
+	sha256sums = 4bc37a890a354e274b152a03fffa61d2da1609131c848742e1e4bca537176493
 
 pkgname = dunedynasty
 
