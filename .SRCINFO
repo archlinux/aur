@@ -1,0 +1,19 @@
+pkgbase = hhexen
+	pkgdesc = A Linux port of Raven Game's old shooter, Hexen (aka Hacked Hexen)
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://hhexen.sourceforge.net/hhexen.html
+	install = hhexen.install
+	changelog = hhexen.ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl_mixer
+	depends = glu
+	optdepends = timidity++: for midi music support
+	optdepends = hexen1-wad: data files from shareware version
+	source = http://downloads.sourceforge.net/hhexen/hhexen-1.6.3-src.tgz
+	sha256sums = ab88c1df8b2be107beb0fc1f7d6193c0102f731032955bacccc0b6c515668ccb
+
+pkgname = hhexen
+

@@ -1,0 +1,11 @@
+
+post_install() {
+  echo "Put your hexen.wad (and additional wads) in '~/.hhexen'."
+  echo "You can put custom mp3/ogg music in '~/.hhexen/music', a recreated version"
+  echo "of the original sound track is available freely here:"
+  echo "http://sycraft.org/content/audio/hexen.shtml"
+}
+
+post_upgrade() {
+  post_install
+}
