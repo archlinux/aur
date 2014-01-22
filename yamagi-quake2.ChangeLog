@@ -1,0 +1,10 @@
+2014-01-22 carstene1ns <url/mail: arch carsten-teibes de>
+
+	* 5.21-1 :
+	(package adopted)
+	new upstream release.
+	updated dependencies to sdl2
+	added .desktop file
+	removed launcher, data dir hack not required
+	new systemwide data dir /usr/share/yamagi-quake2
+	added documentation and license

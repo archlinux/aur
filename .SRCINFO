@@ -1,0 +1,26 @@
+pkgbase = yamagi-quake2
+	pkgdesc = Enhanced Quake II engine optimized for modern systems
+	pkgver = 5.21
+	pkgrel = 1
+	url = http://www.yamagi.org/quake2/
+	install = yamagi-quake2.install
+	changelog = yamagi-quake2.ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom: Info-ZIP
+	license = GPL2
+	makedepends = openal
+	makedepends = mesa
+	depends = libjpeg
+	depends = sdl2
+	depends = libxxf86vm
+	depends = libvorbis
+	optdepends = quake2-demo: shareware data files
+	optdepends = openal: alternative audio backend
+	source = http://deponie.yamagi.org/quake2/quake2-5.21.tar.xz
+	source = yamagi-quake2.desktop
+	sha256sums = ffa9f0c3471aa04c5b11678b54505dfdfad0d7bca845a0a1fa4790259eb69be4
+	sha256sums = 984cba7e43033b5b2339879474854006b0340c55b6c20693df88e983e0f2daf2
+
+pkgname = yamagi-quake2
+
