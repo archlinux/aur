@@ -1,0 +1,20 @@
+pkgbase = prboom
+	pkgdesc = A game engine which provides a program to play Doom levels.
+	pkgver = 2.5.0
+	pkgrel = 7
+	url = http://prboom.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mesa
+	depends = libpng
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = glu
+	source = http://downloads.sourceforge.net/prboom/prboom-2.5.0.tar.gz
+	source = libpng-1.4.patch
+	sha256sums = 226c1c470f8cc983327536404f405a1d026cf0a5188c694a1243cc8630014bae
+	sha256sums = eb3b41139b8269f9223b084f8444e306dac60dc6fc190d7fabf41b162adca385
+
+pkgname = prboom
+
