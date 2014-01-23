@@ -5,7 +5,7 @@
 # Contributor: kritoke <kritoke@nospam.gmail.com>
 
 pkgbase=ruby-gtk3
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgname=('ruby-gtk3' 'ruby-gdk3')
 depends=("ruby-atk=$pkgver" "ruby-gdkpixbuf2=$pkgver" "ruby-glib2=$pkgver" "ruby-pango=$pkgver")
@@ -14,7 +14,7 @@ url='http://ruby-gnome2.sourceforge.jp/'
 license=('LGPL')
 makedepends=('ruby-pkgconfig' 'ruby-cairo' 'gtk3')
 source=("http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk3-$pkgver.tar.gz")
-sha256sums=('cc55542b207899af2bc0489c004c394b2332656cbf25ef3ff0daceff39535047')
+sha256sums=('436844cc9ab3bf5e5a3027e3276fc69ff9cae5cff88bc60179c416050d5e753d')
 
 prepare() {
 	cd "$srcdir/ruby-gtk3-$pkgver"
