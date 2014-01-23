@@ -6,7 +6,7 @@
 
 pkgbase=ruby-gtk3
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgname=('ruby-gtk3' 'ruby-gdk3')
 depends=("ruby-atk=$pkgver" "ruby-gdkpixbuf2=$pkgver" "ruby-glib2=$pkgver" "ruby-pango=$pkgver")
 arch=('x86_64' 'i686')
