@@ -2,10 +2,10 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=evas_generic_loaders-git
-_pkgname=${pkgname%-*}
-pkgver=1.8.0beta1.100.4f99c5d
-pkgrel=1
+_pkgname=evas_generic_loaders
+pkgname=$_pkgname-git
+pkgver=1.8.99.113.04615db
+pkgrel=2
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
