@@ -1,0 +1,8 @@
+2014-01-24 carstene1ns <url/mail: arch carsten-teibes de>
+
+	* 2.00-1 :
+	(package adopted)
+	new upstream release.
+	added .desktop file
+	new systemwide data dir /usr/share/yamagi-quake2
+	added documentation and license
