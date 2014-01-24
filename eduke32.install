@@ -1,7 +1,7 @@
 
 post_install() {
-  echo "Remember you need Duke Nukem 3D data files to play."
-  echo "You can put them under ~/.eduke32/"
+  echo "Remember you need Duke Nukem 3D data files to play. You can put them under"
+  echo "'/usr/share/games/eduke32/' for all users or '~/.eduke32/' only for yourself."
 }
 
 post_upgrade() {
