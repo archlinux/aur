@@ -2,17 +2,17 @@
 # Contributor: Carsten Haitzler (Rasterman)
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=elementary-git
-_pkgname=${pkgname%-*}
+_pkgname=elementary
+pkgname=$_pkgname-git
 true && pkgname=('elementary-git' 'elementary_test-git')
-pkgver=1.8.99.8943.e5d4dad
+pkgver=1.8.99.9272.a1ee947
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
-  [[ ! $(pacman -T ewebkit-svn) ]] && depends+=('ewebkit-svn')         # webkit-efl support is detected at build time
+  [[ ! $(pacman -T ewebkit) ]] && depends+=('ewebkit')                 # webkit-efl support is detected at build time
   [[ ! $(pacman -T elocation-git) ]] && depends+=('elocation-git')     # elocation support is detected at build time
   [[ ! $(pacman -T libeweather-git) ]] && depends+=('libeweather-git') # eweather support is detected at build time
 makedepends=('git')
@@ -23,13 +23,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  for _i in v_maj v_min v_mic; do
-    local v_ver=$v_ver.$(grep -m 1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-  done
+  local efl_version=$(grep -m 1 EFL_VERSION configure.ac | grep -o "[[:digit:]]*" | tr '\n' '.')
+  efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  v_ver=$(awk -F , -v v_ver=${v_ver#.} '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
-
-  printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "$efl_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
