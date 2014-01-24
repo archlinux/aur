@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "You need Quake II - Mission Pack 2 ('Ground Zero') data files to play,"
+  echo "copy them to '~/.yq2/rogue'."
+}
+
+post_upgrade() {
+  post_install
+}
