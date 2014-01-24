@@ -1,10 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=waimea-git
-pkgver=0.5.0.3
+_pkgname=waimea
+pkgver=0.5.0.8
 pkgrel=1
 pkgdesc="An X11 window manager designed for maximum efficiency"
 arch=('i686' 'x86_64')
-url="http://waimea.sourceforge.net/"
+url="https://github.com/bbidulock/waimea"
 license=('GPL')
 provides=('waimea')
 conflicts=('waimea' 'waimea-cvs')
@@ -20,8 +21,8 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  sed "s|^AC_INIT(.*$|AC_INIT([waimea], [$pkgver], [http://github.com/bbidulock/waimea/issues])|" \
-    -i configure.in
+  sed -r -e "s|^AC_INIT\(.*|AC_INIT([$_pkgname], [$pkgver], [$url/issues])|" \
+    -i configure.ac
 }
 
 build() {
