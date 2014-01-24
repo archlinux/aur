@@ -1,0 +1,16 @@
+pkgbase = statsvn
+	pkgdesc = retrieves information from a subversion repository (tables, charts)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/statsvn/
+	arch = any
+	license = LGPL
+	depends = java-environment
+	depends = bash
+	source = http://downloads.sourceforge.net/project/statsvn/statsvn/0.7.0/statsvn-0.7.0.zip
+	source = statsvn
+	md5sums = 94254c808ca50bd215abd0e5b20b01d6
+	md5sums = 8435f081a8b7446cc9e26b13f5b76548
+
+pkgname = statsvn
+
