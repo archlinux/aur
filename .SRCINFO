@@ -1,0 +1,15 @@
+pkgbase = urdfdom-headers
+	pkgdesc = The URDF (U-Robot Description Format) headers provides core data structure headers for URDF.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://gazebosim.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	source = urdfdom_headers::git+https://github.com/ros/urdfdom_headers.git#tag=0.2.3
+	md5sums = SKIP
+
+pkgname = urdfdom-headers
+
