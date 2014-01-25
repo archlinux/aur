@@ -19,13 +19,24 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         'criu-no-expert.patch'
-        'sunrpc-create-a-new-dummy-pipe-for-gssd-to-hold-open.patch'
-        'sunrpc-replace-gssd_running-with-more-reliable-check.patch'
-        'nfs-check-gssd-running-before-krb5i-auth.patch'
-        'rpc_pipe-remove-the-clntXX-dir-if-creating-the-pipe-fails.patch'
-        'sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch'
-        'rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-notification-fails.patch'
-)
+        '0001-sunrpc-create-a-new-dummy-pipe-for-gssd-to-hold-open.patch'
+        '0002-sunrpc-replace-sunrpc_net-gssd_running-flag-with-a-m.patch'
+        '0003-nfs-check-if-gssd-is-running-before-attempting-to-us.patch'
+        '0004-rpc_pipe-remove-the-clntXX-dir-if-creating-the-pipe-.patch'
+        '0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch'
+        '0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch')
+md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
+         '6556af5e5208c041c09e27ed1c44009f'
+         '33b718f55049ae4ac33231cd65e08305'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '98beb36f9b8cf16e58de2483ea9985e3'
+         '989dc54ff8b179b0f80333cc97c0d43f'
+         'dd2adb99cd3feed6f11022562901965c'
+         'b00cc399d3797cb0793e18b5bf387a50'
+         '7cbd2349cdf046acc37b652c06ba36be'
+         '10dbaf863e22b2437e68f9190d65c861'
+         'd5907a721b97299f0685c583499f7820'
+         'a724515b350b29c53f20e631c6cf9a14')
 
 _kernelname=${pkgbase#linux}
 
@@ -45,22 +56,26 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # allow criu without expert option set
-  # patch from fedora
-  patch -Np1 -i "${srcdir}/criu-no-expert.patch"
+  # allow Checkpoint/restore (for criu) without EXPERT=y
+  patch -p1 -i "${srcdir}/criu-no-expert.patch"
 
   # fix 15 seocnds nfs delay
-  patch -Np1 -i "${srcdir}/sunrpc-create-a-new-dummy-pipe-for-gssd-to-hold-open.patch"
-  patch -Np1 -i "${srcdir}/sunrpc-replace-gssd_running-with-more-reliable-check.patch"
-  patch -Np1 -i "${srcdir}/nfs-check-gssd-running-before-krb5i-auth.patch"
-  # fix nfs kernel oops
-  # #37866
-  patch -Np1 -i "${srcdir}/rpc_pipe-remove-the-clntXX-dir-if-creating-the-pipe-fails.patch"
-  patch -Np1 -i "${srcdir}/sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch"
+  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=4b9a445e3eeb8bd9278b1ae51c1b3a651e370cd6
+  patch -p1 -i "${srcdir}/0001-sunrpc-create-a-new-dummy-pipe-for-gssd-to-hold-open.patch"
+  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=89f842435c630f8426f414e6030bc2ffea0d6f81
+  patch -p1 -i "${srcdir}/0002-sunrpc-replace-sunrpc_net-gssd_running-flag-with-a-m.patch"
+  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=6aa23d76a7b549521a03b63b6d5b7880ea87eab7
+  patch -p1 -i "${srcdir}/0003-nfs-check-if-gssd-is-running-before-attempting-to-us.patch"
 
-  patch -Np1 -i "${srcdir}/rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-notification-fails.patch"
+  # fix nfs kernel oops
+  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=3396f92f8be606ea485b0a82d4e7749a448b013b
+  patch -p1 -i "${srcdir}/0004-rpc_pipe-remove-the-clntXX-dir-if-creating-the-pipe-.patch"
+  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=e2f0c83a9de331d9352185ca3642616c13127539
+  patch -p1 -i "${srcdir}/0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch"
+  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=23e66ba97127ff3b064d4c6c5138aa34eafc492f
+  patch -p1 -i "${srcdir}/0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -342,15 +357,3 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
-         'a9281e90e529795eaf10b45d70ab2868'
-         '6000a9c7bd83081a65611d9dfbdd8eda'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '98beb36f9b8cf16e58de2483ea9985e3'
-         'd50c1ac47394e9aec637002ef3392bd1'
-         'd4a75f77e6bd5d700dcd534cd5f0dfce'
-         'dc86fdc37615c97f03c1e0c31b7b833a'
-         '88eef9d3b5012ef7e82af1af8cc4e517'
-         'cec0bb8981936eab2943b2009b7a6fff'
-         '88d9cddf9e0050a76ec4674f264fb2a1'
-         'cb9016630212ef07b168892fbcfd4e5d')
