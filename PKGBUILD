@@ -26,8 +26,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch'
         '0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch')
 md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
-         '6556af5e5208c041c09e27ed1c44009f'
-         '33b718f55049ae4ac33231cd65e08305'
+         'ba4468d313adfaf22368add7f58204aa'
+         '035bb27dac306f5c028d96cad14bb249'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          '989dc54ff8b179b0f80333cc97c0d43f'
