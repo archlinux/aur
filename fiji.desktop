@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Fiji
+GenericName=Fiji Is Just ImageJ
+Comment=Image processing and analysis
+Categories=Graphics;Science;ImageProcessing;Biology;
+Icon=/opt/fiji/images/icon.png
+Exec='ImageJ-linux %f'
