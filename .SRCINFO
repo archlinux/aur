@@ -1,5 +1,5 @@
 pkgbase = micromanager-git
-	pkgdesc = Software package for microscopy hardware devices control. CMMCore and python2 bindings only.
+	pkgdesc = Software package for control of automated microscopes. CMMCore and python2 bindings only.
 	pkgver = 1.4.13.r2306.gf5e50bd
 	pkgrel = 1
 	url = http://www.micro-manager.org
