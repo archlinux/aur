@@ -1,0 +1,27 @@
+pkgbase = micromanager-git
+	pkgdesc = Software package for microscopy hardware devices control. CMMCore and python2 bindings only.
+	pkgver = 1.4.13.r2326.g5117eb9
+	pkgrel = 1
+	url = http://www.micro-manager.org
+	install = mm.install
+	arch = x86_64
+	arch = i686
+	license = LGPL-2.1 BSD GPL-3
+	makedepends = git
+	makedepends = swig
+	depends = zlib
+	depends = boost
+	depends = libdc1394
+	depends = python2
+	depends = python2-numpy
+	source = micromanager-git::git+https://github.com/mdcurtis/micromanager-upstream.git
+	source = python_makefile.diff
+	source = python_setup.diff
+	source = micromanager-lib.conf
+	md5sums = SKIP
+	md5sums = 76a9fb824728a8397e3b5245ffe4ddaf
+	md5sums = e14361cc344c2fb0d03f3458d53eb152
+	md5sums = b7b6a68ce53d8ea1a4a29d187174ee4c
+
+pkgname = micromanager-git
+
