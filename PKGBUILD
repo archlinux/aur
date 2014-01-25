@@ -22,7 +22,7 @@ package() {
   find "${pkgdir}" -type f -name *.gem -delete
 
   install -dm 755 "${pkgdir}"/usr/share/licenses/${pkgname}
-  ln -s "${pkgdir}"/${_gemdir}/gems/${pkgname#*-}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
+  ln -s ${_gemdir}/gems/${pkgname#*-}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
 
 # vim: ts=2 sw=2 et:
