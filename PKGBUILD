@@ -1,7 +1,7 @@
 # Maintainer: radioxoma <radioxoma from gmail com>
 # Last successful build with 1.4.13.r2306.gf5e50bd 22.01.2014 on x86_64.
 pkgname=micromanager-git
-pkgver=1.4.13.r2326.g5117eb9
+pkgver=1.4.13.r2306.gf5e50bd
 pkgrel=1
 epoch=
 pkgdesc="Software package for microscopy hardware devices control. CMMCore and python2 bindings only."
@@ -13,14 +13,14 @@ depends=('zlib' 'boost' 'libdc1394' 'python2' 'python2-numpy')
 makedepends=('git' 'swig')
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=('micromanager')
+conflicts=('micromanager')
 replaces=()
 backup=()
 options=()
 install=mm.install
 changelog=
-source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git
+source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=f5e50bd
         'python_makefile.diff'
         'python_setup.diff'
         'micromanager-lib.conf')
