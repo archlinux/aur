@@ -1,11 +1,13 @@
 pkgbase = picard-plugins-aux
 	pkgdesc = additional plugins for MusicBrainz Picard
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
 	arch = any
 	license = GPL
 	depends = picard
+	optdepends = flac: for metaflac ReplayGain
+	optdepends = foobar2000: for foobar ReplayGain
 	conflicts = picard-plugins<1.1
 	source = https://raw.github.com/mineo/mbstuff/master/picard/plugins/padded.py
 	source = https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titlesort.py

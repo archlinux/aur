@@ -1,12 +1,14 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
 license=('GPL')
 depends=('picard')
+optdepends=('flac:        for metaflac ReplayGain'
+            'foobar2000:  for foobar ReplayGain')
 conflicts=('picard-plugins<1.1')
 # removed due to crashes:
 #https://raw.github.com/mineo/mbstuff/master/picard/plugins/cue.py
