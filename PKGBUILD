@@ -5,7 +5,7 @@
 
 _pkgbasename=oxygen-gtk2
 pkgname=lib32-${_pkgbasename}
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Port of the default KDE widget theme (Oxygen) to GTK2"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('lib32-oxygen-gtk')
 replaces=('lib32-oxygen-gtk')
 makedepends=('cmake' 'gcc-multilib')
 source=(http://download.kde.org/stable/${_pkgbasename}/${pkgver}/src/${_pkgbasename}-${pkgver}.tar.bz2)
-md5sums=('3c240d0edf1f7355dcbeec348cac68ec')
+md5sums=('822cedb3ae46907fd262487150a195d4')
 
 prepare() {
   mkdir build
