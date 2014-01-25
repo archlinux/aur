@@ -107,13 +107,6 @@ prepare() {
 
   # rewrite configuration
   yes "" | make config >/dev/null
-
-  # save configuration for later reuse
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat .config > "${startdir}/config.x86_64.last"
-  else
-    cat .config > "${startdir}/config.last"
-  fi
 }
 
 build() {
