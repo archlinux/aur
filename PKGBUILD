@@ -2,7 +2,7 @@ pkgname=linux-linode
 _basekernel=3.12
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.8
+pkgver=${_basekernel}.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -17,7 +17,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "preset"
         'change-default-console-loglevel.patch')
 sha512sums=('4ba5797e0772726d05c9f2eee66dc6dc2a5033c749ef44764c805a83da739ed5d0c6443b76785e38fe1ef74cc7ade787e48144faed0cfcb6f124f05248c700ff'
-            '27cf39ed82d2b28669a7a63b577814b625e9fa73fce4e15c5f4a35358621356e4364c4892427fb5e02982087090404f5ce871357a04c0372d008b1e55ca55aee'
+            '48bd420e0560088e35621b4691c5702773fbc04a79341dda57d01fcc6004476bf6a4b96670eaf0b1b14c78470e7c6a32a0ce73095524d0b1b3d004dc1ed43849'
             '975431228eeb7dd8226282d39fad983faaa107eb8170df7c795b293a58afc80bd1a6dc208d5373b9d4c71817301fce49d6936b71eda0980cb1f2fe34ec1b5267'
             'dc244d8389811b7fd7f4f34bb3ba743a9c60d30106f7dd4cde2454a53b15b063d90286523d6f493a7fe009dc361c71ca59fa2bd2b13172f034561098654fe864'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
