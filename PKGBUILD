@@ -3,12 +3,12 @@
 
 pkgname="cups-nosystemd"
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.cups.org/"
-depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord' 'libusb' 'dbus' 'hicolor-icon-theme')
+depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord' 'libusb' 'dbus' 'hicolor-icon-theme' 'libpaper')
 makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd' 'gzip' 'autoconf' 'avahi' 'openssl' 'inetutils')
 optdepends=('xdg-utils: xdg .desktop file support')
 provides=("cups=${pkgver}")
@@ -105,19 +105,20 @@ build() {
      --enable-ssl=yes --enable-openssl \
      --disable-gnutls \
      --enable-threads \
-     --enable-avahi\
+     --enable-avahi \
+     --enable-libpaper \
      --with-php=/usr/bin/php-cgi \
      --with-optim="$CFLAGS"
   make
 }
 
-#check() {
-#  cd "$srcdir/cups-$pkgver"
-#  
-#  #./run-stp-tests.sh: line 782:  6307 Aborted                 (core dumped) $VALGRIND ../scheduler/cupsd -c /tmp/cups-$user/cupsd.conf -f > /tmp/cups-$user/log/debug_log 2>&1
-#  #FAIL: 87 error messages, expected 33.
-#  make -k check || /bin/true
-#}
+check() {
+  cd "$srcdir/cups-$pkgver"
+  
+  #./run-stp-tests.sh: line 782:  6307 Aborted                 (core dumped) $VALGRIND ../scheduler/cupsd -c /tmp/cups-$user/cupsd.conf -f > /tmp/cups-$user/log/debug_log 2>&1
+  #FAIL: 87 error messages, expected 33.
+  make -k check || /bin/true
+}
 
 package() {
   cd ${srcdir}/cups-${pkgver}
