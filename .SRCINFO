@@ -1,0 +1,14 @@
+pkgbase = drascula-int
+	pkgdesc = "Drascula: The Vampire Strikes Back" - Spanish, German, French and Italian AddOn
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://scummvm.org/
+	arch = any
+	license = custom
+	depends = scummvm>=1.3.0
+	depends = drascula
+	source = http://downloads.sourceforge.net/scummvm/drascula-int-1.1.zip
+	sha256sums = 24d894925c02993d0cd59013cd228b5e5c68c77d0dc57045a2aa2aba4e344388
+
+pkgname = drascula-int
+
