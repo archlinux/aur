@@ -60,8 +60,9 @@ package_linux-linode() {
   _kernver="$(make LOCALVERSION= kernelrelease)"
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+  rm -rf "${pkgdir}"/lib/{firmware,modules/${_kernver}/{source,build}}
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgname}"
-  install -D -m644 vmlinux "${pkgdir}/usr/src/linux-${_kernver}/vmlinux"
+  install -D -m644 vmlinux "${pkgdir}/lib/modules/${_kernver}/build/vmlinux"
   install -D -m644 "${srcdir}/preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
@@ -71,8 +72,6 @@ package_linux-linode() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-  rm -rf "${pkgdir}/lib/firmware"
   find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
 
   emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
@@ -80,6 +79,7 @@ package_linux-linode() {
   ln -s "../${emdir}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   echo "${_kernver}" >| "${pkgdir}/lib/modules/${emdir}/version"
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/"{lib,usr/}
 
   mkdir -p ${pkgdir}/boot/grub
