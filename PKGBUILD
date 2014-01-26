@@ -14,7 +14,7 @@ depends=('sysfsutils>=2.0.0-1' 'bash' 'util-linux')
 makedepends=('intltool')
 provides=('pmount=0.9.23')
 conflicts=('pmount')
-source=(https://alioth.debian.org/frs/download.php/file/3310/pmount-0.9.23.tar.bz2
+source=(http://ftp.de.debian.org/debian/pool/main/p/pmount/pmount_0.9.23.orig.tar.bz2
         patch)
 md5sums=('db19f5bf3151b1b41705ec7bafa439d3'
          'a1c8ef20e809ab63b7f89d2c68b05620')
