@@ -12,7 +12,7 @@ license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
-             'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick')
+             'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('9e44fcf219312cbcbbaee0cc9a7f460a01769224')
 
