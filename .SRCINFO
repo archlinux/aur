@@ -1,5 +1,5 @@
 pkgbase = ttf-liberation-sans-narrow
-	pkgdesc = Red Hats Liberation fonts.
+	pkgdesc = Red Hat's Liberation Sans Narrow
 	pkgver = 1.07.3
 	pkgrel = 1
 	url = https://www.redhat.com/promo/fonts/

@@ -9,7 +9,7 @@
 pkgname=ttf-liberation-sans-narrow
 pkgver=1.07.3
 pkgrel=1
-pkgdesc='Red Hats Liberation fonts.'
+pkgdesc="Red Hat's Liberation Sans Narrow"
 arch=('any')
 license=('custom' 'GPL2')
 url='https://www.redhat.com/promo/fonts/'
