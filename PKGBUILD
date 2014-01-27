@@ -44,7 +44,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname-build"
-  make PREFIX="$pkgdir/" install
+  make PREFIX="$pkgdir/usr" install
 }
 
 # vim:set ts=2 sw=2 et:
