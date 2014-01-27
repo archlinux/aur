@@ -5,6 +5,7 @@ pkgbase = ttf-liberation-sans-narrow
 	url = https://www.redhat.com/promo/fonts/
 	install = ttf.install
 	arch = any
+	license = custom
 	license = GPL2
 	makedepends = fontforge
 	depends = fontconfig
