@@ -1,18 +1,24 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python2-stomp.py
-pkgver=3.1.1
+_libname=${pkgname/python2-/}
+pkgver=4.0.9
 pkgrel=1
 pkgdesc="Python STOMP client, supporting versions 1.0 and 1.1 of the protocol"
 arch=(any)
-url="http://code.google.com/p/stomppy"
+url="https://github.com/jasonrbriggs/stomp.py"
 license=(Apache 2.0)
 depends=(python2)
-source=(http://stomppy.googlecode.com/files/stomp.py-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
 
 build() {
-     cd "$srcdir/stomp.py-$pkgver"
-     python2 setup.py install -O1 --root="$pkgdir"
+	cd "$srcdir/$_libname-$pkgver"
+	python2 setup.py build
 }
 
-md5sums=('c151d41d61db53177db9d80d90c11113')
+package() {
+	cd "$srcdir/$_libname-$pkgver"
+	python2 setup.py install --skip-build -O1 --root="$pkgdir"
+}
+
+sha256sums=('40e89df032535572c04dc62f640a017717717875f7adbd9960048f5a89ba6677')
