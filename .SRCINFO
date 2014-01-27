@@ -1,0 +1,14 @@
+pkgbase = gpx-git
+	pkgdesc = Gcode to x3g conversion post processor
+	pkgver = r43.3570fc9
+	pkgrel = 1
+	url = https://github.com/whpthomas/GPX
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = gpx
+	conflicts = gpx
+
+pkgname = gpx-git
+
