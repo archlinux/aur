@@ -1,3 +1,6 @@
+fmodapi*.tar.gz
+zdoom
+
 /*.pkg.tar.xz
 /pkg/
 /src/
