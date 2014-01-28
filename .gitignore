@@ -2,5 +2,6 @@ fmodapi*.tar.gz
 zdoom
 
 /*.pkg.tar.xz
+/*.src.tar.gz
 /pkg/
 /src/
