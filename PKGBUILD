@@ -2,13 +2,13 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=20131117
+pkgver=20140128
 pkgrel=1
 pkgdesc="SLADE3 Doom editor."
 arch=('i686' 'x86_64')
 url="http://slade.mancubus.net/"
 license=('GPL')
-depends=('fluidsynth' 'freeimage' 'ftgl' 'libmodplug' 'sfml' 'wxgtk2.9')
+depends=('fluidsynth' 'freeimage' 'ftgl' 'libmodplug' 'sfml' 'wxgtk>=3.0')
 makedepends=('cmake' 'git' 'imagemagick' 'zip')
 conflicts=('slade')
 provides=('slade')
@@ -24,9 +24,7 @@ pkgver() {
 build() {
   cd slade
 
-  cmake -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-2.9 \
-        -DwxWidgets_wxrc_EXECUTABLE=/usr/bin/wxrc-2.9 \
-        -DCMAKE_CXX_FLAGS=-DNDEBUG \
+  cmake -DCMAKE_CXX_FLAGS=-DNDEBUG \
         .
   make
 
