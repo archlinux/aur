@@ -1,6 +1,6 @@
 pkgname=otrs
-pkgver=3.3.3
-itsmver=3.3.3
+pkgver=3.3.4
+itsmver=3.3.4
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -51,7 +51,7 @@ source=("${pkgname}.install"
         "http://ftp.otrs.org/pub/otrs/packages/FileManager-1.4.9.opm"
         "http://ftp.otrs.org/pub/otrs/packages/iPhoneHandle-1.3.1.opm"
         "http://ftp.otrs.org/pub/otrs/packages/MasterSlave-1.1.2.opm"
-        "http://ftp.otrs.org/pub/otrs/packages/OTRSCodePolicy-1.0.1.opm"
+        "http://ftp.otrs.org/pub/otrs/packages/OTRSCodePolicy-1.0.4.opm"
         "http://ftp.otrs.org/pub/otrs/packages/OpenNMS-1.2.1.opm"
         "http://ftp.otrs.org/pub/otrs/packages/OTRSMasterSlave-1.4.2.opm"
         "http://ftp.otrs.org/pub/otrs/packages/Support-1.5.4.opm"
@@ -104,21 +104,21 @@ package() {
   sed -i "s/\/opt/\/usr\/share\/webapps/g" $(grep -rl "/opt" "${pkgdir}/usr/share/webapps/${pkgname}")
 }
 md5sums=('6ae7c4f13927318f80c838b6ac4c9e0c'
-         '0616ba689f79cd9e5236bbe6f9df7c68'
-         '488ddcc1969ed4bacb5e2aba102c9d66'
-         '999ee53d28ace768e218190d85e5b8dc'
-         '0d297eb8e0e63b171c9c5df1c3e8dcc4'
-         '4a8d7cc5ff183866a226b28dee947a6d'
-         'fd13e3aea24752945f92c8d3e61b4c14'
-         '2749cba9a3a1bb03912557f19f97c9bf'
-         '93f206435d1c5024c94e8c9a672a29b7'
+         'd671e416717e356870f56a46768a5972'
+         '6085ee5d6e67245dc7a25591a45bebcd'
+         'ca2de89867c4c6b085b1c079a6a7824d'
+         '2f2f2840c4042d3b17a355ba9d7bfe32'
+         '5ed271cc1544753429317d7c64a8c878'
+         'f09c521ef66e72edf95c36d5d9665390'
+         'e45f24da756bfa2375dde2a9e146452f'
+         '79e18173ae80a006505327bbf7b051d3'
          'c095828fb4aade210835fb1250fcaf6b'
          '3a9342a8b7347bf47f832d58020beb9c'
          'dceec7be8ec2a83df8d3c1d20a62fc60'
          '693dfab8458e202d935f31f4c7128670'
          '273707110ec37179288fcbb67c71fc7e'
          'cec1d57f6fc904d6b8ed4748ed07e92c'
-         'a5d32e6840bbbd660d3efe54086b1ddb'
+         '0ca9da48fc2af9d95c1201a748ba26a6'
          '384bb6437746686e18ff13e9bcea9f2f'
          '3dafa9dd8e706e6ac0d32ac619221192'
          'd2279a0d9881f2dd67abb7133b1763b0'
@@ -128,21 +128,21 @@ md5sums=('6ae7c4f13927318f80c838b6ac4c9e0c'
          '3616b36f808e2a559ec1f340f68da9cd'
          '7083a797c1a6a7da73fde4b3f289a9fe')
 sha1sums=('aa8e024dcf6dc0f29fe421ca5f0451b701ede0b8'
-          '277eb41e7889088fe8fd6275719db547f8b602dc'
-          '3e4751dbd4c48dbf91364c36d53acd7bb5f8062b'
-          'e4f9901f850ed0643e0ba717df71a6daff68a4db'
-          'c351713fd7f982cf338e459155b10e9e20b737e9'
-          '831379762295618709fb946bd08123d523d7bbaf'
-          '9b621e60499fdca6acc47aafb97b05ef143c3a10'
-          '0d09b9a925cf53239fa0635f46842e527bf7ab27'
-          'c80ed7ee0d6272edcfd8bc272370724d2c67538a'
+          '310a3b2956507c2c91abd4b0df02fde21af34736'
+          '63e34f40f59e906f0b02b26b3823bcfad8c4b7e5'
+          '0c98ae1d4d4e3369689066fbc0424ecaad088a8f'
+          '4f89a0bd34d4ffb61ed61b6b99935bb5759d7655'
+          '626d21507f9239317813b42c3a824e7cef4919a3'
+          '0a8796388b7d1bd7c2751960d062ad47f9d05aae'
+          '501d181318d016eea46e84319e6b6a5b8d42450e'
+          '8cffee93c1b05b28a9ed2b584d1df35a0d27ed74'
           '232a8412b361b8cc0c3faf0ab24cb19bce2dd6bc'
           '5362cc6fc56d8b5e2a9b208c8d5789213bba5576'
           'f4250b19232cb645b679855865cd232e5a8008f5'
           '06b0f08497e33bf243b34c075507367baeaca071'
           '43d159a8a69c71fd5063e907d05e52f989922509'
           '319c419b4533b7daa66a5decbb61fb2a7f945105'
-          'fb0ec5a97f788fbd3129f4f4d40a8d5d123577a0'
+          '28efd786a52984cd63a6881567cc6699779c12fa'
           'a55a04cf4ec9cbcffaef88aeed3432e7b8e527b3'
           'b21006481c88d792b35ad543900ab1c318eb61aa'
           'bd95753e1c1ac2584286ce45aec7ac42aae6aedc'
