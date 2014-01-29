@@ -4,15 +4,15 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.13
-pkgver=3.13
-pkgrel=2
+pkgver=3.13.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -28,6 +28,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch'
         'i8042-fix-aliases.patch')
 md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
+         '675692f24410f375055d422e7886f3d8'
          'ba4468d313adfaf22368add7f58204aa'
          '035bb27dac306f5c028d96cad14bb249'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -52,7 +53,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
