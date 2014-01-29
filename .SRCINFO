@@ -1,0 +1,15 @@
+pkgbase = django-debug-toolbar
+	pkgdesc = A configurable set of panels that display various debug information about the current request/response.
+	pkgver = 0.8.5
+	pkgrel = 2
+	url = https://github.com/django-debug-toolbar/django-debug-toolbar
+	arch = any
+	license = custom:BSD
+	depends = python
+	depends = django
+	source = django-debug-toolbar-0.8.5.tar.gz::https://github.com/django-debug-toolbar/django-debug-toolbar/tarball/v0.8.5
+	md5sums = 56f0de572a767230e14aaa21997336eb
+	sha256sums = eb88affe759d05bb5eed10e1c56a4cad00a7f90b362dceef5baaea88cfa0bfa2
+
+pkgname = django-debug-toolbar
+
