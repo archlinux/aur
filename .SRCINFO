@@ -1,6 +1,6 @@
 pkgbase = discount
 	pkgdesc = A Markdown implementation written in C
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = http://www.pell.portland.or.us/~orc/Code/discount/
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = discount
 	license = custom:BSD
 	provides = markdown
 	conflicts = markdown
-	source = http://www.pell.portland.or.us/~orc/Code/discount/discount-2.1.6.tar.bz2
+	source = https://github.com/Orc/discount/archive/v2.1.7.tar.gz
 	source = no-ldconfig.patch
-	md5sums = 6f44e627777b6392f8f4a3280642482a
+	md5sums = bc60abde3d36fe891802c59544591d63
 	md5sums = 744609beab58d358a2109e622927f379
 
 pkgname = discount
