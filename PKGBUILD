@@ -3,15 +3,15 @@
 
 pkgname=obs-service-format_spec_file
 pkgver=0.4.2
-pkgrel=1
-_pkgver=7.3
+pkgrel=2
+_pkgver=9.2
 pkgdesc='An OBS source service: reformats a spec file to SUSE standard'
 arch=('any')
 url='https://github.com/openSUSE/obs-service-format_spec_file'
 license=('GPL2')
 depends=('obs-service-source_validator')
 source=("http://download.opensuse.org/source/factory/repo/oss/suse/src/${pkgname}-${pkgver}-${_pkgver}.src.rpm")
-md5sums=('338b0a7abc17774ba1f059b55d8c8c90')
+md5sums=('54a9794ccdc4933ee423fdadadfd20fd')
 
 package() {
   cd "$srcdir"
