@@ -3,8 +3,8 @@
 
 pkgname=obs-service-source_validator
 pkgver=0.3
-pkgrel=1
-_pkgrel=5.3
+pkgrel=2
+_pkgrel=6.1
 pkgdesc='An OBS source service: running all the osc source-validator checks'
 arch=('any')
 url='https://build.opensuse.org/package/show?package=obs-service-source_validator&project=openSUSE%3AFactory'
@@ -13,7 +13,7 @@ depends=('perl-timedate')
 provides=('osc-source_validator=0.2')
 conflicts=('osc-source_validator<=0.1')
 source=("http://download.opensuse.org/source/factory/repo/oss/suse/src/${pkgname}-${pkgver}-${_pkgrel}.src.rpm")
-md5sums=('40ac5b77bbe6850ccc78f16eafb16701')
+md5sums=('aaa7804cda0d894791dd224267ab80f3')
 
 build() {
   cd "$srcdir"
