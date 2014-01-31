@@ -10,7 +10,9 @@ pkgdesc='Scheme R5RS interpreter and compiler (via C)'
 arch=('x86_64' 'i686')
 url='http://dynamo.iro.umontreal.ca/wiki/index.php/Main_Page'
 license=('LGPL2.1' 'Apache')
+install="$pkgname.install"
 source=(http://www.iro.umontreal.ca/~gambit/download/gambit/v4.7/source/${_distname}.tgz)
+sha256sums=('6b7d58f1e28169d2c873386a1cf7e321e96d23ffd4b3238b105d66ca6bdd7472')
 
 build() {
   cd "$_distname"
