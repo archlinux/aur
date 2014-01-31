@@ -1,0 +1,145 @@
+
+# HG changeset patch
+# User Mark Doliner <mark@kingant.net>
+# Date 1391153359 28800
+# Node ID b8e2a5fbffd3052ccba7160b56eac70f8e19c49a
+# Parent  e733020a9d3840275ffa931a9aeefe4d8befc08e
+Fix problems logging into some servers including jabber.org and
+chat.facebook.com.
+
+See my length comment in iq.c for details.
+
+diff --git a/libpurple/protocols/jabber/iq.c b/libpurple/protocols/jabber/iq.c
+--- a/libpurple/protocols/jabber/iq.c
++++ b/libpurple/protocols/jabber/iq.c
+@@ -283,6 +283,52 @@
+ 	g_hash_table_remove(js->iq_callbacks, id);
+ }
+ 
++/**
++ * Verify that the 'from' attribute of an IQ reply is a valid match for
++ * a given IQ request. The expected behavior is outlined in section
++ * 8.1.2.1 of the XMPP CORE spec (RFC 6120). We consider the reply to
++ * be a valid match if any of the following is true:
++ * - Request 'to' matches reply 'from' (including the case where
++ *   neither are set).
++ * - Request 'to' was empty and reply 'from' is server JID.
++ * - Request 'to' was empty and reply 'from' is my JID. The spec says
++ *   we should only allow bare JID, but we also allow full JID for
++ *   compatibility with some servers.
++ *
++ * These rules should allow valid IQ replies while preventing spoofed
++ * ones.
++ *
++ * For more discussion see the "Spoofing of iq ids and misbehaving
++ * servers" email thread from January 2014 on the jdev and security
++ * mailing lists.
++ *
++ * @return TRUE if this reply is valid for the given request.
++ */
++static gboolean does_reply_from_match_request_to(JabberStream *js, JabberID *to, JabberID *from)
++{
++	if (jabber_id_equal(to, from)) {
++		/* Request 'to' matches reply 'from' */
++		return TRUE;
++	}
++
++	if (!to && purple_strequal(from->domain, js->user->domain)) {
++		/* Request 'to' is empty and reply 'from' domain matches our domain */
++
++		if (!from->node && !from->resource) {
++			/* Reply 'from' is server bare JID */
++			return TRUE;
++		}
++
++		if (purple_strequal(from->node, js->user->node)
++				&& (!from->resource || purple_strequal(from->resource, js->user->resource))) {
++			/* Reply 'from' is my full or bare JID */
++			return TRUE;
++		}
++	}
++
++	return FALSE;
++}
++
+ void jabber_iq_parse(JabberStream *js, xmlnode *packet)
+ {
+ 	JabberIqCallbackData *jcd;
+@@ -377,8 +423,9 @@
+ 
+ 	/* First, lets see if a special callback got registered */
+ 	if(type == JABBER_IQ_RESULT || type == JABBER_IQ_ERROR) {
+-		if((jcd = g_hash_table_lookup(js->iq_callbacks, id))) {
+-			if(jabber_id_equal(js, jcd->to, from_id)) {
++		jcd = g_hash_table_lookup(js->iq_callbacks, id);
++		if (jcd) {
++			if (does_reply_from_match_request_to(js, jcd->to, from_id)) {
+ 				jcd->callback(js, from, type, id, packet, jcd->data);
+ 				jabber_iq_remove_callback_by_id(js, id);
+ 				jabber_id_free(from_id);
+diff --git a/libpurple/protocols/jabber/jutil.c b/libpurple/protocols/jabber/jutil.c
+--- a/libpurple/protocols/jabber/jutil.c
++++ b/libpurple/protocols/jabber/jutil.c
+@@ -510,30 +510,21 @@
+ 
+ 
+ gboolean
+-jabber_id_equal(JabberStream *js, const JabberID *jid1, const JabberID *jid2)
++jabber_id_equal(const JabberID *jid1, const JabberID *jid2)
+ {
+-	const JabberID *j1, *j2;
+-	JabberID *bare_user_jid;
+-	gboolean equal;
++	if (!jid1 && !jid2) {
++		/* Both are null therefore equal */
++		return TRUE;
++	}
+ 
+-	/* If an outgoing stanza has no 'to', or an incoming has no 'from',
+-	 * then those are "the server acting as my account". This function will
+-	 * handle that correctly.
+-	 */
+-	if (!jid1 && !jid2)
+-		return TRUE;
++	if (!jid1 || !jid2) {
++		/* One is null, other is non-null, therefore not equal */
++		return FALSE;
++	}
+ 
+-	bare_user_jid = jabber_id_to_bare_jid(js->user);
+-	j1 = jid1 ? jid1 : bare_user_jid;
+-	j2 = jid2 ? jid2 : bare_user_jid;
+-
+-	equal = purple_strequal(j1->node, j2->node) &&
+-			purple_strequal(j1->domain, j2->domain) &&
+-			purple_strequal(j1->resource, j2->resource);
+-
+-	jabber_id_free(bare_user_jid);
+-
+-	return equal;
++	return purple_strequal(jid1->node, jid2->node) &&
++			purple_strequal(jid1->domain, jid2->domain) &&
++			purple_strequal(jid1->resource, jid2->resource);
+ }
+ 
+ char *jabber_get_domain(const char *in)
+diff --git a/libpurple/protocols/jabber/jutil.h b/libpurple/protocols/jabber/jutil.h
+--- a/libpurple/protocols/jabber/jutil.h
++++ b/libpurple/protocols/jabber/jutil.h
+@@ -46,12 +46,10 @@
+ JabberID* jabber_id_new(const char *str);
+ 
+ /**
+- * Compare two JIDs for equality.
+- *
+- * Warning: If either JID is NULL then this function uses the user's
+- * bare JID, instead!
++ * Compare two JIDs for equality. In addition to the node and domain,
++ * the resources of the two JIDs must also be equal (or both absent).
+  */
+-gboolean jabber_id_equal(JabberStream *js, const JabberID *jid1, const JabberID *jid2);
++gboolean jabber_id_equal(const JabberID *jid1, const JabberID *jid2);
+ 
+ void jabber_id_free(JabberID *jid);
+ 
+

@@ -6,23 +6,31 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'python2' 'hicolor-icon-theme' 'farstream-0.1' 'avahi'
              'tk' 'ca-certificates' 'intltool' 'networkmanager')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2{,.asc})
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2{,.asc}
+        pidgin-2.10.8-fix-login-issues-with-certain-xmpp-servers.patch)
 sha256sums=('b633367e3588ff3e615d68e812302dfdbe32e73693cbe42a0d827b7aed7a8227'
-            'SKIP')
-
-build() {
+            'SKIP'
+            '4b4cc2d0816bbc7de83d34de6880935163007193a36dcc13afc89fc1ffacc5d2')
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # https://developer.pidgin.im/ticket/15879
+  patch -Np1 -i "$srcdir/pidgin-2.10.8-fix-login-issues-with-certain-xmpp-servers.patch"
 
   # Use Python 2
   sed -i 's/env python$/&2/' */plugins/*.py \
     libpurple/purple-{remote,notifications-example,url-handler}
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./configure \
     --prefix=/usr \
