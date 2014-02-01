@@ -1,6 +1,6 @@
 pkgbase = python2-mpldatacursor-git
 	pkgdesc = Interactive data cursors (clickable annotation boxes) for matplotlib.
-	pkgver = 20140121
+	pkgver = 0.4.0.r26.g1738e4b
 	pkgrel = 1
 	url = https://github.com/joferkington/mpldatacursor
 	arch = i686
@@ -8,8 +8,10 @@ pkgbase = python2-mpldatacursor-git
 	license = MIT
 	depends = python2-matplotlib>=0.9
 	depends = python2-numpy>=1.1
-	source = python2-mpldatacursor-git::git://github.com/joferkington/mpldatacursor.git
-	sha1sums = SKIP
+	provides = python2-mpldatacursor
+	conflicts = python2-mpldatacursor
+	source = mpldatacursor::git+https://github.com/joferkington/mpldatacursor.git#branch=master
+	md5sums = SKIP
 
 pkgname = python2-mpldatacursor-git
 
