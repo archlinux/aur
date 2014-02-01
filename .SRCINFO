@@ -1,0 +1,21 @@
+pkgbase = metapod-git
+	pkgdesc = META-Programming Optimized Dynamics library that provides robot dynamics algorithms.
+	pkgver = 1.0.7.r87.ga77d92e
+	pkgrel = 1
+	url = http://gazebosim.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = boost>=1.40
+	depends = eigen3
+	optdepends = urdfdom: urdfdom support
+	provides = metapod
+	conflicts = metapod
+	source = metapod::git+https://github.com/laas/metapod.git#branch=master
+	md5sums = SKIP
+
+pkgname = metapod-git
+
