@@ -297,7 +297,7 @@ class DistroDescription(object):
         raise Exception('ROS distro names do not match (%s != %s)' % (self.name, self._distro['release-name']))
     # process "metapackages"
     if 'metapackages' in self._distro['repositories'].keys():
-      metapackages = self._distro['repositories']['metapackages']
+      metapackages = self._distro['repositories']['metapackages']['release']
       for meta in metapackages['packages']:
         self._distro['repositories'][meta] = {}
         self._distro['repositories'][meta]['url'] = metapackages['url']
@@ -318,7 +318,7 @@ class DistroDescription(object):
     return self._get_package_data(name) != None
 
   def package(self, name):
-    package_data = self._get_package_data(name)
+    package_data = self._get_package_data(name)['release']
     if not package_data:
       raise Exception('Unable to find package `%s`' % name)
     if self._package_cache.get(name):
@@ -447,7 +447,7 @@ def main():
                     default=False, help='Lists all available packages.')
   parser.add_option('--output-directory', metavar='output_directory', default='.',
                     help='The output directory. Packages are put into <output-directory>/<name>')
-  default_distro_url = 'https://raw.github.com/ros/rosdistro/master/%s/release.yaml'
+  default_distro_url = 'https://raw.github.com/ros/rosdistro/master/%s/distribution.yaml'
   parser.add_option(
     '--distro-url', metavar='distro_url', default=default_distro_url,
     help='The URL of the distro description. %s is replaced by the actual distro name')
