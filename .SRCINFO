@@ -1,0 +1,17 @@
+pkgbase = cpplog-git
+	pkgdesc = A simple, header-only, MIT-licensed C++ logging library.
+	pkgver = 20140129
+	pkgrel = 1
+	url = https://github.com/andrew-d/cpplog
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = boost
+	provides = cpplog
+	conflicts = cpplog
+	source = cpplog::git+https://github.com/bchretien/cpplog.git
+	md5sums = SKIP
+
+pkgname = cpplog-git
+
