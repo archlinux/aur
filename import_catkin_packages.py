@@ -318,7 +318,7 @@ class DistroDescription(object):
     return self._get_package_data(name) != None
 
   def package(self, name):
-    package_data = self._get_package_data(name)['release']
+    package_data = self._get_package_data(name)
     if not package_data:
       raise Exception('Unable to find package `%s`' % name)
     if self._package_cache.get(name):
@@ -328,7 +328,7 @@ class DistroDescription(object):
     version_patch = package_data['version'].split('-')[1]
     # WARNING: some metapackages embed a package with the same name. In this case,
     #          we treat the package as a normal package.
-    if self._is_meta_package(name) and (not name in self._distro['repositories'][name]['packages']):
+    if self._is_meta_package(name) and (not name in self._distro['repositories'][name]['release']['packages']):
       package = MetaPackage(self, url, name, version, version_patch)
     else:
       package = Package(self, url, name, version, version_patch)
@@ -336,21 +336,21 @@ class DistroDescription(object):
     return package
 
   def meta_package_package_names(self, name):
-    return self._distro['repositories'][name]['packages'].keys()
+    return self._distro['repositories'][name]['release']['packages']
 
   def _is_meta_package(self, name):
-    if self._distro['repositories'].get(name):
-      return (self._distro['repositories'][name].get('packages') != None)
+      if self._distro['repositories'][name].get('release') != None:
+        return (self._distro['repositories'][name]['release'].get('packages') != None)
 
   def _get_package_data(self, name):
     """Searches for `name` in all known packages and metapackages."""
     if self._distro['repositories'].get(name):
-      return self._distro['repositories'][name]
+      return self._distro['repositories'][name]['release']
     else:
       for package in self.package_names():
         if (self._is_meta_package(package)
-            and name in self._distro['repositories'][package]['packages']):
-          return self._distro['repositories'][package]
+            and name in self._distro['repositories'][package]['release']['packages']):
+          return self._distro['repositories'][package]['release']
 
 
 def list_packages(distro_description):
