@@ -24,6 +24,7 @@ optdepends=('lftp: FTPS backend'
             'python2-httplib2: Ubuntu One backend'
             'python2-oauthlib: Ubuntu One backend'
             'rsync: rsync backend')
+makedepends=('bzr')
 source=(bzr+lp:duplicity)
 sha512sums=('SKIP')
 #_bzrtrunk='https://code.launchpad.net/~duplicity-team/duplicity/trunk'

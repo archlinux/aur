@@ -6,6 +6,7 @@ pkgbase = duplicity-bzr
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = bzr
 	depends = gnupg
 	depends = librsync
 	depends = ncftp
