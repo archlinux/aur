@@ -1,3 +1,4 @@
+# Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=glbsp
