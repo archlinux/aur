@@ -1,6 +1,5 @@
-# Contributor: Christoph Zeiler <rabyte*gmail>
-# Contributor: Jan Cholasta <grubber at grubber cz>
 # Maintainer: Jan Cholasta <grubber at grubber cz>
+# Contributor: Christoph Zeiler <rabyte*gmail>
 
 _fmodver=42636
 _fmodarch=linux
