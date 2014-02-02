@@ -1,4 +1,4 @@
-# Contributor: Jan Cholasta <grubber@grubber.cz>
+# Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=urbanbrawl-wad
 pkgver=1.0
