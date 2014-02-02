@@ -1,0 +1,12 @@
+pkgbase = strife0-wad
+	pkgdesc = The Strife shareware IWAD (game data)
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.mobygames.com/game/dos/strife
+	arch = any
+	license = unknown
+	source = ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/roguestuff/strife11.zip
+	md5sums = 972070afb30c96fc3c69d954dfab2424
+
+pkgname = strife0-wad
+
