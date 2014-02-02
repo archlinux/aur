@@ -1,3 +1,4 @@
+# Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=hexen1-wad
