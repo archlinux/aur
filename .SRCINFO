@@ -1,0 +1,12 @@
+pkgbase = chexquest3-wad
+	pkgdesc = Chex Quest 3 IWAD (game data)
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.chucktropolis.com/gamers.htm
+	arch = any
+	license = custom
+	source = http://www.chucktropolis.com/downloads/ChexQuest3.zip
+	md5sums = e6e9bec61c1678ee0c883731dd43b60d
+
+pkgname = chexquest3-wad
+
