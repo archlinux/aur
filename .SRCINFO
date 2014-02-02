@@ -1,0 +1,12 @@
+pkgbase = hacx-wad
+	pkgdesc = Hacx IWAD (game data)
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.drnostromo.com/hacx/
+	arch = any
+	license = custom
+	source = http://www.drnostromo.com/hacx/files/hacx12.zip
+	md5sums = 38cdd2baa912e771da562b44448206ec
+
+pkgname = hacx-wad
+
