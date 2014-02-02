@@ -1,5 +1,4 @@
-# Contributor: Jan Cholasta <grubber@grubber.cz>
-# Maintainer: Jan Cholasta <grubber@grubber.cz>
+# Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=zdbsp
 pkgver=1.17
