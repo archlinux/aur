@@ -1,6 +1,5 @@
-# Contributor: Andrew Rabert <arabert@nullsum.net>
-# Contributor: Jan Cholasta <grubber at grubber cz>
 # Maintainer: Jan Cholasta <grubber at grubber cz>
+# Contributor: Andrew Rabert <arabert@nullsum.net>
 
 _fmodver=42636
 _fmodarch=linux
