@@ -1,4 +1,4 @@
-# Contributor: Jan Cholasta <grubber@grubber.cz>
+# Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=harmony-wad
 pkgver=1.1
