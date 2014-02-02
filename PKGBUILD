@@ -1,4 +1,3 @@
-# Contributor: Jan Cholasta <grubber at grubber cz>
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
