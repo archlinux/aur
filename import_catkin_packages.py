@@ -339,6 +339,7 @@ class DistroDescription(object):
     return self._distro['repositories'][name]['release']['packages']
 
   def _is_meta_package(self, name):
+    if self._distro['repositories'].get(name) != None:
       if self._distro['repositories'][name].get('release') != None:
         return (self._distro['repositories'][name]['release'].get('packages') != None)
 
