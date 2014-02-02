@@ -1,4 +1,5 @@
-# Contributor: Jan Cholasta <grubber@grubber.cz>
+# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=doom1-wad
 pkgver=1.9
