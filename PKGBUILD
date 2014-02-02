@@ -1,4 +1,4 @@
-# Contributor: Jan Cholasta <grubber@grubber.cz>
+# Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=heretic1-wad
 pkgver=1.2
