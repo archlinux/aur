@@ -11,12 +11,12 @@ pkgname=opera
 _ver=12.16
 _build=1860
 pkgver=$_ver.$_build
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and secure web browser and Internet suite'
 arch=('i686' 'x86_64')
 url='http://www.opera.com/browser/'
 license=('custom:opera')
-depends=('gcc-libs' 'libxt' 'freetype2' 'libxext' 'glib2'
+depends=('gcc-libs' 'libxt' 'freetype2' 'libxext' 'glib2' 'ttf-font'
          'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('gstreamer0.10-base-plugins: HTML5 Video support'
             'gstreamer0.10-good: HTML5 Video support')
