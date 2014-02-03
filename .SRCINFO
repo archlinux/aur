@@ -1,0 +1,21 @@
+pkgbase = nodejs-yeoman
+	pkgdesc = Command line interface for creating, building, maintaining, and shipping Yeoman projects.
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = http://yeoman.io
+	arch = any
+	license = BSD
+	depends = curl
+	depends = git
+	depends = ruby-compass
+	depends = libjpeg-turbo
+	depends = optipng
+	depends = nodejs-bower
+	depends = nodejs-grunt-cli
+	optdepends = phantomjs: browser-run test suite
+	noextract = yo-1.4.7.tgz
+	source = http://registry.npmjs.org/yo/-/yo-1.4.7.tgz
+	sha256sums = 3c07f8b4220f09840330071cde3948c5c05f06b8f4b6de40dfe6da4b32ff9f77
+
+pkgname = nodejs-yeoman
+
