@@ -1,0 +1,15 @@
+pkgbase = perl-net-rendezvous-publish
+	pkgdesc = Net::Rendezvous::Publish - publish Rendezvous services
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/~rclamp/Net-Rendezvous-Publish-0.04/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/Net-Rendezvous-Publish-0.04.tar.gz
+	md5sums = abd07bd91853f5536d6e3434c67918c3
+
+pkgname = perl-net-rendezvous-publish
+
