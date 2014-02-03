@@ -1,0 +1,15 @@
+pkgbase = perl-net-bonjour
+	pkgdesc = Net::Bonjour - Module for DNS service discovery (Apple's Bonjour)
+	pkgver = 0.96
+	pkgrel = 1
+	url = http://search.cpan.org/~chlige/Net-Bonjour-0.96/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHLIGE/Net-Bonjour-0.96.tar.gz
+	md5sums = 619e15831c8db014ceff422191fe6538
+
+pkgname = perl-net-bonjour
+
