@@ -3,10 +3,10 @@ _author=rclamp
 _perlmod=Class-Accessor-Lvalue
 pkgname=perl-class-accessor-lvalue
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="This module subclasses Class::Accessor in order to provide lvalue accessor makers."
 arch=(any)
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
+url="http://search.cpan.org/dist/$_perlmod/lib/Class/Accessor/Lvalue.pm"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
@@ -19,10 +19,6 @@ build() {
   # Install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
-
-  ## For packages with Build.PL, do this instead:
-  # perl Build.PL installdirs=vendor destdir="$pkgdir/"
-  # perl Build
 }
 
 package() {

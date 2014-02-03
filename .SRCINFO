@@ -1,8 +1,8 @@
 pkgbase = perl-class-accessor-lvalue
 	pkgdesc = This module subclasses Class::Accessor in order to provide lvalue accessor makers.
 	pkgver = 0.11
-	pkgrel = 1
-	url = http://search.cpan.org/~rclamp/Class-Accessor-Lvalue-0.11/
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Class-Accessor-Lvalue/lib/Class/Accessor/Lvalue.pm
 	arch = any
 	license = GPL
 	license = PerlArtistic
