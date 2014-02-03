@@ -4,7 +4,7 @@
 
 pkgname=urxvt-tabbedex-git
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
 arch=("any")
 url='http://github.com/stepb/urxvt-tabbedex'
@@ -19,7 +19,7 @@ source=('git+https://github.com/stepb/urxvt-tabbedex.git'
 		'urxvt-tabbedex-git.install')
 md5sums=('SKIP'
 		 '92d581a40779da3127c88fdc7d10257f'
-		 '2b72e16f346240c14bbe27ca23051b7a')
+		 'a07c8a1c46379ab763a113d3d9f4111e')
 
 pkgver() {
 	cd urxvt-tabbedex
