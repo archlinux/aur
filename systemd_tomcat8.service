@@ -1,0 +1,34 @@
+[Unit]
+Description=Tomcat 8 servlet container
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/tomcat8.pid
+Environment=CATALINA_PID=/var/run/tomcat8.pid
+Environment=TOMCAT_JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+Environment=CATALINA_HOME=/usr/share/tomcat8
+Environment=CATALINA_BASE=/usr/share/tomcat8
+Environment=CATALINA_OPTS=
+
+ExecStart=/usr/bin/jsvc \
+            -Dcatalina.home=${CATALINA_HOME} \
+            -Dcatalina.base=${CATALINA_BASE} \
+            -Djava.io.tmpdir=/var/tmp/tomcat8/temp \
+            -cp /usr/share/java/commons-daemon.jar:/usr/share/java/eclipse-ecj.jar:${CATALINA_HOME}/bin/bootstrap.jar:${CATALINA_HOME}/bin/tomcat-juli.jar \
+            -user tomcat8 \
+            -java-home ${TOMCAT_JAVA_HOME} \
+            -pidfile /var/run/tomcat8.pid \
+            -errfile SYSLOG \
+            -outfile SYSLOG \
+            $CATALINA_OPTS \
+            org.apache.catalina.startup.Bootstrap
+
+ExecStop=/usr/bin/jsvc \
+            -pidfile /var/run/tomcat8.pid \
+            -stop \
+            org.apache.catalina.startup.Bootstrap
+
+[Install]
+WantedBy=multi-user.target
+

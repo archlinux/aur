@@ -1,0 +1,28 @@
+post_install() {
+  getent group  tomcat8 >/dev/null 2>&1 || groupadd -g 57 tomcat8
+  getent passwd tomcat8 >/dev/null 2>&1 || useradd  -u 57 -g tomcat8 -d /usr/share/tomcat8 -s /bin/false tomcat8
+
+  if [ -f lib/modules/$(uname -r)/kernel/security/capability.ko ]; then
+    echo 'It appears that your current kernel has linux security'
+    echo 'capabilities built as a module. Tomcat requires this'
+    echo ' functionality to operate.'
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  if getent passwd tomcat8 > /dev/null 2>&1; then
+      userdel tomcat8
+  fi
+  if getent group tomcat8 > /dev/null 2>&1; then
+      groupdel tomcat8
+  fi
+
+  echo 'To fully clean Tomcat''s file, consider removing the following directories:'
+  echo '  /var/lib/tomcat8'
+  echo '  /var/tmp/tomcat8'
+  echo '  /var/log/tomcat8'
+}
