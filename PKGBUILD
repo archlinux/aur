@@ -1,12 +1,12 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
-pkgver=3.7.2
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/ciromattia/kcc"
 license=('ISC')
-depends=('python2' 'python2-pillow' 'python2-pyqt4' 'python2-psutil')
+depends=('python' 'python-pillow' 'python-psutil' 'python-pyqt5' 'python-slugify')
 makedepends=('zip')
 optdepends=(
   'kindlegen: for .mobi generation'
@@ -14,8 +14,8 @@ optdepends=(
   'p7zip: for 7z/CB7 support'
 )
 source=(https://github.com/ciromattia/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('9dedaac5d664e829f936c0ca1b4aae68')
-sha256sums=('ef491843efe54bb9696ef1cf4ededa1bb888b1bdcf83398bd19259b0526df681')
+md5sums=('e57cd606079ad4bf9fb4106bb871c78d')
+sha256sums=('a3996a6e562ffc41d3121a686192e42b707037867fd8c96932522b1b74c01e06')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,7 +28,9 @@ build() {
 
 package() {
   cd "$srcdir/build"
-  install -Dm755 kcc $pkgdir/usr/bin/kcc
+  for bin in kcc kcc-c2e kcc-c2p; do
+    install -Dm755 $bin $pkgdir/usr/bin/$bin
+  done
   install -Dm644 kcc.png $pkgdir/usr/share/pixmaps/kcc.png
   install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }
