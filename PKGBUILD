@@ -3,10 +3,10 @@ _author=rclamp
 _perlmod=Net-Rendezvous-Publish
 pkgname=perl-net-rendezvous-publish
 pkgver=0.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Net::Rendezvous::Publish - publish Rendezvous services"
 arch=(any)
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
+url="http://search.cpan.org/dist/$_perlmod/lib/Net/Rendezvous/Publish.pm"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
@@ -19,10 +19,6 @@ build() {
   # Install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
-
-  ## For packages with Build.PL, do this instead:
-  # perl Build.PL installdirs=vendor destdir="$pkgdir/"
-  # perl Build
 }
 
 package() {

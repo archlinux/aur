@@ -1,8 +1,8 @@
 pkgbase = perl-net-rendezvous-publish
 	pkgdesc = Net::Rendezvous::Publish - publish Rendezvous services
 	pkgver = 0.04
-	pkgrel = 1
-	url = http://search.cpan.org/~rclamp/Net-Rendezvous-Publish-0.04/
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Net-Rendezvous-Publish/lib/Net/Rendezvous/Publish.pm
 	arch = any
 	license = GPL
 	license = PerlArtistic
