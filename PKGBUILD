@@ -6,7 +6,7 @@
 # Contributor: Ismael Carnales <icarnales@gamail.com
 
 pkgname=pidgin-light
-pkgver=2.10.8
+pkgver=2.10.9
 pkgrel=1
 pkgdesc="A light pidgin version: msn, jabber, irc supported protocols without gstreamer, tcl, tk, xscreensaver support.No video/voice.  Includes finch "
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=('!libtool')
 install=pidgin-light.install
 source=(http://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/pidgin-$pkgver.tar.bz2 pidgin-light.install )
 
-md5sums=('384be5689e62a9d4d42320e4ca90433d'
+md5sums=('10a4a69d077893f6dd3438cd8af94e81'
          '8cc4ec58d3288bb171fc8359c25674f7')
 
 build() {
