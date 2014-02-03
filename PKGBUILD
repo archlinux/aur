@@ -2,7 +2,7 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-git"
-pkgver=0.16.168
+pkgver=0.16.280
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users"
 url="http://psi-plus.com"
@@ -57,9 +57,9 @@ build() {
   qconf
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
-	      --enable-webkit \
-	      --enable-plugins \
-	      --disable-enchant # enchant spell engine doesn't support multi-language spelling, use aspell instead
+              --enable-webkit \
+              --enable-plugins \
+              --disable-enchant # enchant spell engine doesn't support multi-language spelling, use aspell instead
   make
 }
 
