@@ -7,7 +7,8 @@ pkgdesc="Task execution tool & library"
 url="http://pyinvoke.org"
 license=('BSD')
 arch=('any')
-depends=('pycrypto' 'python2-paramiko' 'python2-setuptools')
+depends=('python2')
+makedepends=('python2-setuptools')
 source=("http://pypi.python.org/packages/source/i/invoke/invoke-$pkgver.tar.gz")
 
 build() {
