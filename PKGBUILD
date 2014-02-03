@@ -3,10 +3,10 @@ _author=chlige
 _perlmod=Net-Bonjour
 pkgname=perl-net-bonjour
 pkgver=0.96
-pkgrel=1
+pkgrel=2
 pkgdesc="Net::Bonjour - Module for DNS service discovery (Apple's Bonjour)"
 arch=(any)
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
+url="http://search.cpan.org/dist/$_perlmod/lib/Net/Bonjour.pm"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
@@ -19,10 +19,6 @@ build() {
   # Install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
-
-  ## For packages with Build.PL, do this instead:
-  # perl Build.PL installdirs=vendor destdir="$pkgdir/"
-  # perl Build
 }
 
 package() {
