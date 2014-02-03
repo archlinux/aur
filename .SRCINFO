@@ -1,0 +1,15 @@
+pkgbase = perl-class-accessor-lvalue
+	pkgdesc = This module subclasses Class::Accessor in order to provide lvalue accessor makers.
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/~rclamp/Class-Accessor-Lvalue-0.11/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RC/RCLAMP/Class-Accessor-Lvalue-0.11.tar.gz
+	md5sums = f39c187d5c2b16200f59aaa6d532999d
+
+pkgname = perl-class-accessor-lvalue
+
