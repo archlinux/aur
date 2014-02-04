@@ -1,7 +1,7 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 pkgname=tomcat8
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='http://tomcat.apache.org/'
 license=('APACHE')
