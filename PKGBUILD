@@ -1,6 +1,7 @@
 # Maintainer: Timothée Ravier <tim@siosm.fr>
 # Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
+# Contributor: Zezadas
 
 pkgname=libselinux
 pkgver=2.2.2
@@ -10,7 +11,7 @@ arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
-makedepends=('python2' 'python' 'ruby' 'xz' 'pcre')
+makedepends=('python2' 'python' 'ruby' 'xz' 'pcre' 'swig')
 depends=('libsepol')
 optdepends=('python2: python2 bindings'
             'python: python bindings'
