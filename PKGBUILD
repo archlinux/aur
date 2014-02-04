@@ -3,6 +3,7 @@
 # Maintainer: Aaron Griffin <aaron@archlinux.org>
 # SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
+# SELinux Contributor: Zezadas
 
 pkgname=shadow-selinux
 pkgver=4.1.5.1
@@ -22,7 +23,7 @@ backup=(etc/login.defs
         etc/default/useradd)
 options=(strip debug)
 install='shadow.install'
-source=("http://pkg-shadow.alioth.debian.org/releases/${pkgname/-selinux}-$pkgver.tar.bz2"{,.sig}
+source=("ftp://ftp.archlinux.org/other/packages/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.bz2"{,.sig}
         LICENSE
         chgpasswd
         chpasswd
