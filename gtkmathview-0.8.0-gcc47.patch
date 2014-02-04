@@ -1,0 +1,67 @@
+diff -up gtkmathview-0.8.0/mathmlps/main.cc.gcc47 gtkmathview-0.8.0/mathmlps/main.cc
+--- gtkmathview-0.8.0/mathmlps/main.cc.gcc47	2012-02-27 13:12:01.218602317 -0500
++++ gtkmathview-0.8.0/mathmlps/main.cc	2012-02-27 13:12:06.596555579 -0500
+@@ -21,6 +21,13 @@
+ #include <cstring>
+ #include <cassert>
+ #include <fstream>
++#ifdef __linux__
++/* to get getopt on Linux */
++#ifndef __USE_POSIX2
++#define __USE_POSIX2
++#endif
++#endif
++#include <unistd.h>
+ 
+ #include <popt.h>
+ 
+diff -up gtkmathview-0.8.0/mathmlsvg/main.cc.gcc47 gtkmathview-0.8.0/mathmlsvg/main.cc
+--- gtkmathview-0.8.0/mathmlsvg/main.cc.gcc47	2012-02-27 13:10:33.335366105 -0500
++++ gtkmathview-0.8.0/mathmlsvg/main.cc	2012-02-27 13:10:33.374365766 -0500
+@@ -21,6 +21,13 @@
+ #include <cstring>
+ #include <cassert>
+ #include <fstream>
++#ifdef __linux__
++/* to get getopt on Linux */
++#ifndef __USE_POSIX2
++#define __USE_POSIX2
++#endif
++#endif
++#include <unistd.h>
+ 
+ #include <popt.h>
+ 
+diff -up gtkmathview-0.8.0/src/frontend/common/TemplateBuilder.hh.gcc47 gtkmathview-0.8.0/src/frontend/common/TemplateBuilder.hh
+--- gtkmathview-0.8.0/src/frontend/common/TemplateBuilder.hh.gcc47	2007-08-17 06:02:34.000000000 -0400
++++ gtkmathview-0.8.0/src/frontend/common/TemplateBuilder.hh	2012-02-27 13:10:33.376365750 -0500
+@@ -47,12 +47,13 @@ protected:
+   SmartPtr<typename ElementBuilder::type>
+   getElement(const typename Model::Element& el) const
+   {
+-    if (SmartPtr<typename ElementBuilder::type> elem = smart_cast<typename ElementBuilder::type>(linkerAssoc(el)))
++    SmartPtr<typename ElementBuilder::type> elem;
++    if (elem = smart_cast<typename ElementBuilder::type>(this->linkerAssoc(el)))
+       return elem;
+     else
+       {
+-	SmartPtr<typename ElementBuilder::type> elem = ElementBuilder::type::create(ElementBuilder::getContext(*this));
+-	linkerAdd(el, elem);
++	elem = ElementBuilder::type::create(ElementBuilder::getContext(*this));
++	this->linkerAdd(el, elem);
+ 	return elem;
+       }
+   }
+diff -up gtkmathview-0.8.0/src/frontend/common/TemplateElementIterator.hh.gcc47 gtkmathview-0.8.0/src/frontend/common/TemplateElementIterator.hh
+--- gtkmathview-0.8.0/src/frontend/common/TemplateElementIterator.hh.gcc47	2007-08-17 06:02:34.000000000 -0400
++++ gtkmathview-0.8.0/src/frontend/common/TemplateElementIterator.hh	2012-02-27 13:10:33.377365741 -0500
+@@ -43,7 +43,7 @@ protected:
+   findValidNodeForward(const typename Model::Node& p0) const
+   {
+     for (typename Model::Node p = p0; p; p = Model::getNextSibling(p))
+-      if (valid(p)) return Model::asElement(p);
++      if (this->valid(p)) return Model::asElement(p);
+     return typename Model::Element();
+   }
+     
+

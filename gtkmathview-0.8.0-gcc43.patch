@@ -1,0 +1,56 @@
+diff -up gtkmathview-0.8.0/mathmlps/main.cc.gcc43 gtkmathview-0.8.0/mathmlps/main.cc
+--- gtkmathview-0.8.0/mathmlps/main.cc.gcc43	2008-07-29 16:40:04.000000000 -0400
++++ gtkmathview-0.8.0/mathmlps/main.cc	2008-07-29 16:40:14.000000000 -0400
+@@ -18,6 +18,7 @@
+ 
+ #include <config.h>
+ 
++#include <cstring>
+ #include <cassert>
+ #include <fstream>
+ 
+diff -up gtkmathview-0.8.0/mathmlsvg/main.cc.gcc43 gtkmathview-0.8.0/mathmlsvg/main.cc
+--- gtkmathview-0.8.0/mathmlsvg/main.cc.gcc43	2007-08-17 06:02:46.000000000 -0400
++++ gtkmathview-0.8.0/mathmlsvg/main.cc	2008-07-29 16:33:03.000000000 -0400
+@@ -18,6 +18,7 @@
+ 
+ #include <config.h>
+ 
++#include <cstring>
+ #include <cassert>
+ #include <fstream>
+ 
+diff -up gtkmathview-0.8.0/mathmlsvg/SMS.cc.gcc43 gtkmathview-0.8.0/mathmlsvg/SMS.cc
+--- gtkmathview-0.8.0/mathmlsvg/SMS.cc.gcc43	2008-07-29 16:39:01.000000000 -0400
++++ gtkmathview-0.8.0/mathmlsvg/SMS.cc	2008-07-29 16:39:07.000000000 -0400
+@@ -18,6 +18,7 @@
+ 
+ #include <config.h>
+ 
++#include <cstring>
+ #include <sstream>
+ #include "defs.h"
+ #include "AbstractLogger.hh"
+diff -up gtkmathview-0.8.0/src/backend/ps/T1_FontDataBase.cc.gcc43 gtkmathview-0.8.0/src/backend/ps/T1_FontDataBase.cc
+--- gtkmathview-0.8.0/src/backend/ps/T1_FontDataBase.cc.gcc43	2008-07-29 16:35:24.000000000 -0400
++++ gtkmathview-0.8.0/src/backend/ps/T1_FontDataBase.cc	2008-07-29 16:35:28.000000000 -0400
+@@ -19,7 +19,7 @@
+ #include <t1lib.h>
+ #include <config.h>
+ #include <map>
+-#include <string>
++#include <cstring>
+ #include <stdlib.h>
+ #include <iostream>
+ #include <list>
+diff -up gtkmathview-0.8.0/src/engine/mathml/mathVariantAux.cc.gcc43 gtkmathview-0.8.0/src/engine/mathml/mathVariantAux.cc
+--- gtkmathview-0.8.0/src/engine/mathml/mathVariantAux.cc.gcc43	2007-08-17 06:02:38.000000000 -0400
++++ gtkmathview-0.8.0/src/engine/mathml/mathVariantAux.cc	2008-07-29 16:33:03.000000000 -0400
+@@ -18,6 +18,7 @@
+ 
+ #include <config.h>
+ 
++#include <cstring>
+ #include <cassert>
+ 
+ #include "mathVariantAux.hh"
