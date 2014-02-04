@@ -33,7 +33,7 @@ sha256sums=('30ab363416806da907b86b97f1d31c252473e3200358bb1570f563c8312b5a3e'
 prepare() {
   cd ${pkgname}-${pkgver}
   patch -p2 < ../libselinux-rhat.patch
-  sed -i 's|pkg-config --cflags ruby|pkg-config --cflags ruby-2.0|' src/Makefile
+  sed -i 's|pkg-config --cflags ruby|pkg-config --cflags ruby-2.1|' src/Makefile
   sed -i 's|site_ruby|vendor_ruby|' src/Makefile
 }
 
