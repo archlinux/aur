@@ -17,36 +17,15 @@ backup=(etc/tomcat8/catalina.policy
         etc/tomcat8/tomcat-users.xml
         etc/tomcat8/web.xml)
 install=tomcat8.install
-source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/src/apache-tomcat-${pkgver}-src.tar.gz
+source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
         systemd_tomcat8.service
         systemd_tmpfiles.d_tomcat8.conf
         tomcat8.install)
 
-sha256sums=('2725863308fb767d002e2305ef3943517824109531147c456bcb5602d28a29c3'
+sha256sums=('9f8f58eea82cf5091e7f00893d7983ae8bc247e613acfcf2da6bf827b02ff6d1'
             '435ea512aa6b4e4d2e28eee90964f706b0a0f57e7c6e59db1ca9c4986bdbef3e'
             'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847'
             '901c9262d869b4788a1ebb0cd50c5f2a195ebf26d9a8eac74679361f1a19fae1')
-
-prepare() {
-  cd "${srcdir}/apache-tomcat-${pkgver}-src"
-  touch HACK
-  mkdir "${srcdir}/DOWN_LIBS"
-}
-
-build() {
-  cd "${srcdir}/apache-tomcat-${pkgver}-src"
-
-  . /etc/profile.d/apache-ant.sh
-
-  ant \
-    -Dbase.path="${srcdir}/DOWN_LIBS" \
-    -Dcommons-daemon.jar=/usr/share/java/commons-daemon.jar \
-    -Dcommons-daemon.native.src.tgz="HACK" \
-    -Dtomcat-native.tar.gz="HACK" \
-    -Dcommons-dbcp.version=2.0-20140203.145446-157 \
-    -Djdt.jar=/usr/share/java/eclipse-ecj.jar
-    #-Dcommons-pool.home="HACKDIR" \
-}
 
 # Takes ages:
 #check() {
@@ -61,7 +40,7 @@ _gid_tomcat8=57
 _uid_tomcat8=57
 
 package() {
-  cd "${srcdir}/apache-tomcat-${pkgver}-src/output/build"
+  cd "${srcdir}/apache-tomcat-${pkgver}"
 
   # Tomcat general files
   install -dm755 "${pkgdir}"/usr/share/${pkgname} \
@@ -73,8 +52,8 @@ package() {
 
   install -m644 lib/* "${pkgdir}"/usr/share/java/${pkgname}
   # eclipse-ecj is packaged on its own
-  rm "${pkgdir}"/usr/share/java/${pkgname}/eclipse-ecj.jar
-  ln -s ../eclipse-ecj.jar "${pkgdir}"/usr/share/java/${pkgname}/eclipse-ecj.jar
+  rm "${pkgdir}"/usr/share/java/${pkgname}/ecj-*.jar
+  ln -s ../eclipse-ecj.jar "${pkgdir}"/usr/share/java/${pkgname}/ecj.jar
 
   ln -s /usr/share/java/${pkgname} "${pkgdir}"/usr/share/${pkgname}/lib
 
