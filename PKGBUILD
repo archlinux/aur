@@ -23,7 +23,7 @@ source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tom
         tomcat8.install)
 
 sha256sums=('9f8f58eea82cf5091e7f00893d7983ae8bc247e613acfcf2da6bf827b02ff6d1'
-            '435ea512aa6b4e4d2e28eee90964f706b0a0f57e7c6e59db1ca9c4986bdbef3e'
+            'a72a07377b5c30b36923a410172a4b02925f7743a61ebd39c183b48c427b48a0'
             'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847'
             '901c9262d869b4788a1ebb0cd50c5f2a195ebf26d9a8eac74679361f1a19fae1')
 

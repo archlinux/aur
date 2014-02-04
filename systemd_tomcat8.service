@@ -1,6 +1,6 @@
 [Unit]
 Description=Tomcat 8 servlet container
-After=syslog.target network.target
+After=network.target
 
 [Service]
 Type=forking
