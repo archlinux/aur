@@ -1,0 +1,19 @@
+pkgbase = ocaml-odn
+	pkgdesc = OCaml data notation
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://forge.ocamlcore.org/projects/odn
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml-findlib
+	makedepends = ocaml-ounit
+	depends = ocaml>=3.12
+	depends = ocaml-type-conv>=3.0.4
+	depends = ocaml-fileutils
+	options = !strip
+	source = http://forge.ocamlcore.org/frs/download.php/1029/ocaml-data-notation-0.0.10.tar.gz
+	md5sums = 35b32f58d01a8fe2e0deead4bc8d78b8
+
+pkgname = ocaml-odn
+
