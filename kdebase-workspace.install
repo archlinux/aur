@@ -17,6 +17,12 @@ post_upgrade() {
 }
 
 post_remove() {
+	if getent passwd kdm >/dev/null 2>&1; then
+	  userdel kdm
+	fi
+	if getent group kdm >/dev/null 2>&1; then
+	  groupdel kdm
+	fi
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 
     if [ -d usr/share/apps/kdm/faces ]; then
