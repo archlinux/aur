@@ -7,7 +7,7 @@ pkgver=0.19.r183.6d6a3ba
 pkgrel=1
 pkgdesc="Enlightenment module: Manage the mounting of volumes"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/e17mods/wiki/Places"
+url="https://phab.enlightenment.org/w/emodules/places/"
 license=('MIT')
 depends=('enlightenment>=0.18.99' 'udisks')
 makedepends=('git')
