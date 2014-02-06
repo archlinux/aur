@@ -3,7 +3,8 @@
 # TODO: FIND AND FIX EDGE CASES (EMPTY VARS!) *SPANK*
 
 pkgname=firefox-nightly-i18n
-pkgver=29.0a1
+_version=30.0a1
+pkgver=30.0a1.20140206
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
@@ -11,8 +12,12 @@ arch=('i686' 'x86_64')
 license=('MPL')
 depends=('firefox-nightly')
 
+pkgver() {
+  echo "${_version}.$(date +%Y%m%d)"
+}
+
 countdown() {
-  local i 
+  local i
   for ((i=$1; i>=1; i--)); do
     [[ ! -e /proc/$$ ]] && exit
     echo -ne "\rPress [i] to start interactive config in $i second(s) or any key to skip "
@@ -53,7 +58,7 @@ prepare() {
     fi
   done
   msg "Matched LANGs: ${sys_lang_list[*]}"
-  
+
   [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s && {
     countdown 10 & countdown_pid=$!
     read -s -n 1 -t 10 ikey || true
@@ -84,19 +89,19 @@ prepare() {
   msg "Downloading langpacks…"
   for i in ${selected_lang_list[*]}; do
     msg2 "${i}…"
-    curl -OR "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-${CARCH}/xpi/firefox-${pkgver}.${i}.langpack.xpi"
-  done 
+    curl -OR "https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-${CARCH}/xpi/firefox-${_version}.${i}.langpack.xpi"
+  done
 }
 
 package () {
   cd ${srcdir}
-  install -d ${pkgdir}/opt/firefox-${pkgver}/browser/extensions/
-  install -d ${pkgdir}/opt/firefox-${pkgver}/defaults/pref
-  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/opt/firefox-${pkgver}/defaults/pref/lang-pref.js
+  install -d ${pkgdir}/opt/firefox-${_version}/browser/extensions/
+  install -d ${pkgdir}/opt/firefox-${_version}/defaults/pref
+  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/opt/firefox-${_version}/defaults/pref/lang-pref.js
   for item in ${srcdir}/*.xpi; do
     iitem=$(basename $item)
     iitem=${iitem/.langpack.xpi/@firefox.mozilla.org.xpi}
-    iitem=${iitem/firefox-${pkgver}./langpack-}
-    install -m644 $item ${pkgdir}/opt/firefox-${pkgver}/browser/extensions/$iitem
+    iitem=${iitem/firefox-${_version}./langpack-}
+    install -m644 $item ${pkgdir}/opt/firefox-${_version}/browser/extensions/$iitem
   done
 }
