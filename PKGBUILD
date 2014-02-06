@@ -3,7 +3,7 @@
 pkgname=sv_dvorak
 pkgver=1
 pkgrel=3
-pkgdesc="A (non-standard) Swedish dvorak keyboard layout. (Xorg driver, for console driver checkout the dvorak-se package.)"
+pkgdesc="A Swedish dvorak keyboard layout (Xorg driver)"
 arch=(any)
 url="http://tlundqvist.org/sv_dvorak/"
 license=('GPL')
@@ -16,4 +16,4 @@ package() {
 	install -Dm644 se_sv_dvorak_new.xorg "$pkgdir"/usr/share/X11/xkb/symbols/se_sv_dvorak
 }
 
-# vim: set ts=4 sw=4 noet:
+# vim: set ts=2 sts=2 sw=2 noet:
