@@ -8,7 +8,7 @@ _gitroot="https://github.com/vathpela/efibootmgr.git"
 _gitname="${_pkgname}"
 _gitbranch="master"
 
-pkgver=0.6.1.29.gf4e29e4
+pkgver=0.6.1.44.g53ad442
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT master branch"
 arch=('x86_64' 'i686')
