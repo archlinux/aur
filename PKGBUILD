@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r73.9f1e051
+pkgver=0.0.99.r87.a20597a
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -17,10 +17,8 @@ makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/entrance.conf')
-source=("git://git.enlightenment.org/misc/$_pkgname.git"
-        'entrance.service')
-sha256sums=('SKIP'
-            '187e721108e342bf0442cdaf2a3e4b836b17c3c756b691d1ee3f02e6abcb0ecb')
+source=("git://git.enlightenment.org/misc/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -36,6 +34,8 @@ prepare() {
       -e '/"reboot"/ s|/sbin/shutdown -r now|/usr/bin/systemctl reboot|' \
       -e '/"suspend"/ s|/usr/sbin/pm-suspend|/usr/bin/systemctl suspend|' \
       -i "$srcdir/$_pkgname/data/entrance.conf"
+
+  sed -i 's|sbin/entrance|bin/entrance|' "$srcdir/$_pkgname/data/entrance.service.in"
 }
 
 build() {
@@ -60,9 +60,6 @@ package() {
 
 # install correct PAM file
   install -Dm644 "data/entrance.other" "$pkgdir/etc/pam.d/entrance"
-
-# install systemd files
-  install -Dm644 "$srcdir/entrance.service" "$pkgdir/usr/lib/systemd/system/entrance.service"
 
 # install text files
   install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
