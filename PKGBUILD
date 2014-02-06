@@ -4,7 +4,7 @@
 pkgname=dvorak-se
 pkgver=1
 pkgrel=2
-pkgdesc="A (non-standard) Swedish dvorak keyboard layout. (Console driver, for the Xorg driver checkout the sv_dvorak package.)"
+pkgdesc="A Swedish dvorak keyboard layout (Console driver)"
 arch=(any)
 url="http://tlundqvist.org/sv_dvorak/"
 license=('GPL')
@@ -18,4 +18,4 @@ package() {
 	install -Dm644 dvorak-se.map.gz "$pkgdir"/usr/share/kbd/keymaps/i386/dvorak/
 }
 
-# vim: set ts=4 sw=4 noet:
+# vim: set ts=2 sts=2 sw=2 noet:
