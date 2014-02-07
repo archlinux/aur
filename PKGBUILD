@@ -1,4 +1,4 @@
-# Contributor: J0k3r <moebius282 e4at gmail D0_T com>
+# Contributor: J0k3r <moebius282 at gmail dot com>
 # Contributor: Marcel Pfeiffer <pfeiffer.marcel at gmx dot de>
 # Contributor: epsy < epsy46 at free dot fr >
 
