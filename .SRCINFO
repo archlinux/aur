@@ -1,0 +1,16 @@
+pkgbase = devkitppc-portlibs-mxml
+	pkgdesc = Small XML parser library (for Nintendo Gamecube/Wii homebrew development)
+	pkgver = 2.6
+	pkgrel = 3
+	url = http://www.minixml.org/
+	arch = any
+	license = LGPL
+	depends = devkitppc
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/mxml-2.6-src.tar.bz2
+	sha256sums = 780d4bc7c3b5ab207412487402cc56dff670521da8a57315ca0047c2d4667ad5
+
+pkgname = devkitppc-portlibs-mxml
+
