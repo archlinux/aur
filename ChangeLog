@@ -1,3 +1,17 @@
+2014-02-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 3.7_beta_1-1 :
+	Version bump.
+	See https://github.com/skiphs/AMIDST/releases/tag/3.7-beta-1
+
+	Upstream changelog:
+	- Added new highlight biome mode.
+	- Grid layer now has outlined text.
+	- Added support for new 14w02a+
+	- Zoomed out maps now appear much smoother
+	- Reworked most of the in-map UI
+	- Fixed bug where having too many players in a world would cause AMIDST to crash
+
 2014-01-02 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.6-1 :

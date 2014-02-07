@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 pkgname=amidst
-pkgver='3.6'
+pkgver='3.7_beta_1'
 _jarver="${pkgver//_/-}"
 _jarfile="${pkgname^^}-$_jarver.jar"
 pkgrel=1
@@ -16,7 +16,7 @@ changelog=ChangeLog
 source=("https://github.com/skiphs/AMIDST/releases/download/$_jarver/$_jarfile"
         amidst.sh
         amidst.desktop)
-md5sums=('adb87b3b35e9df79f4e20a301ca3e7b7'
+md5sums=('1b55678bacba22cbdc5dadafbc9270ac'
          '783c4040c9736f96ce72e9997833a0bf'
          '3c6900ac68e3175768322e684f9f1bcb')
 
