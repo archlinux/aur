@@ -1,16 +1,13 @@
 pkgbase = python-musicbrainzngs
 	pkgdesc = bindings for the MusicBrainz NGS service
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://python-musicbrainzngs.readthedocs.org/
 	arch = any
 	license = BSD
-	makedepends = python-distribute
 	depends = python
-	source = http://pypi.python.org/packages/source/m/musicbrainzngs/musicbrainzngs-0.4.tar.gz
-	source = remove_unused_data.patch
-	md5sums = ec4323fa1ad4938f9376496bc8c27b05
-	md5sums = 95dd1b00b5946775299cc787d328b152
+	source = http://pypi.python.org/packages/source/m/musicbrainzngs/musicbrainzngs-0.5.tar.gz
+	md5sums = 9e17a181af72d04a291c9a960bc73d44
 
 pkgname = python-musicbrainzngs
 

@@ -5,22 +5,18 @@ python=python
 name=musicbrainzngs
 
 pkgname=$python-$name
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="bindings for the MusicBrainz NGS service"
 url="http://python-musicbrainzngs.readthedocs.org/"
 license="BSD"
 arch=('any')
 depends=('python')
-makedepends=('python-distribute')
-source=(http://pypi.python.org/packages/source/m/$name/$name-$pkgver.tar.gz
-remove_unused_data.patch)
-md5sums=('ec4323fa1ad4938f9376496bc8c27b05'
-         '95dd1b00b5946775299cc787d328b152')
+source=(http://pypi.python.org/packages/source/m/$name/$name-$pkgver.tar.gz)
+md5sums=('9e17a181af72d04a291c9a960bc73d44')
 
 prepare() {
   cd $srcdir/$name-$pkgver
-  patch -p1 < ../remove_unused_data.patch
 }
 
 build() {
