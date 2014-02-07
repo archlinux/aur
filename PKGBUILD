@@ -2,7 +2,8 @@
 
 pkgname=amidst
 pkgver='3.6'
-_jarfile="${pkgname^^}-${pkgver//_/-}.jar"
+_jarver="${pkgver//_/-}"
+_jarfile="${pkgname^^}-$_jarver.jar"
 pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
@@ -12,7 +13,7 @@ depends=('java-runtime')
 optdepends=('minecraft: the game itself')
 noextract=("$_jarfile")
 changelog=ChangeLog
-source=("https://bitbucket.org/skiphs/amidst/downloads/$_jarfile"
+source=("https://github.com/skiphs/AMIDST/releases/download/$_jarver/$_jarfile"
         amidst.sh
         amidst.desktop)
 md5sums=('adb87b3b35e9df79f4e20a301ca3e7b7'
