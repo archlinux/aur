@@ -4,7 +4,7 @@
 
 pkgbase=django
 pkgname=('python-django' 'python2-django')
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
@@ -12,8 +12,8 @@ license=('BSD')
 url="http://www.djangoproject.com/"
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=("https://www.djangoproject.com/m/releases/${pkgver:0:3}/Django-$pkgver.tar.gz")
-md5sums=('3ea7a00ea9e7a014e8a4067dd6466a1b')
-sha256sums=('cf011874f54a16e7452e0fe1e7f4ec144b95b47ecf31766c9f1f8cf438f09c06')
+md5sums=('45d974c623b3bfbf9976f3d808fe1ee9')
+sha256sums=('d1b3f8460e936f47846e7c4f80af951eda82a41c253c3a51ff3389863ff1c03a')
 
 build() {
   cd "$srcdir/Django-$pkgver"
