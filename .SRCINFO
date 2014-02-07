@@ -1,0 +1,16 @@
+pkgbase = devkitppc-portlibs-zlib
+	pkgdesc = Deflate compression method library (for Nintendo Gamecube/Wii homebrew development)
+	pkgver = 1.2.5
+	pkgrel = 2
+	url = http://www.zlib.net/
+	arch = any
+	license = zlib
+	depends = devkitppc
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/zlib-1.2.5.tar.bz2
+	sha256sums = 36f3341a85779a5a43f1bd216bbd95e1e7783abff4ac55ad2819598d4ca6dd7c
+
+pkgname = devkitppc-portlibs-zlib
+
