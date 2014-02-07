@@ -1,14 +1,15 @@
-# Maintainer:  Eugeni Dodonov <eugeni@dodonov.net>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor:  Eugeni Dodonov <eugeni@dodonov.net>
 
 pkgname=powerstat-git
-pkgver=20120328
+pkgver=20140207
 pkgrel=1
 pkgdesc="a tool for measuring a laptops power usage via the battery"
 arch=(i686 x86_64)
-url="http://kernel.ubuntu.com/git?p=cking/powerstat.git"
-license=(GPL)
+url="http://kernel.ubuntu.com/~cking/powerstat/"
+license=(GPL2)
 depends=(glibc)
-makedepends=(make)
+makedepends=(git)
 
 provides=('powerstat')
 
@@ -18,14 +19,14 @@ _gitname=powerstat
 build() {
   cd ${srcdir}
   if [ -d $_gitname ] ; then
-    ( cd $_gitname && git pull ) 
+    ( cd $_gitname && git pull )
   else
     git clone $_gitroot
   fi
-  
+
   rm -rf "${_gitname}_build"
   cp -r "${_gitname}" "${_gitname}_build"
-  
+
   cd "${_gitname}_build/"
   make
 }
