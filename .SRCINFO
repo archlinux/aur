@@ -1,0 +1,17 @@
+pkgbase = devkitppc-portlibs-freetype2
+	pkgdesc = TrueType font rendering library (for Nintendo Gamecube/Wii homebrew development)
+	pkgver = 2.4.2
+	pkgrel = 2
+	url = http://freetype.sourceforge.net
+	arch = any
+	license = GPL
+	depends = devkitppc
+	depends = devkitppc-portlibs-zlib
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/freetype-2.4.2.tar.bz2
+	sha256sums = 9a987aef8c50d9bcfdfdc9f012f8bd0de6095cc1a5524e62c1a037deb8dacbfe
+
+pkgname = devkitppc-portlibs-freetype2
+
