@@ -1,0 +1,5 @@
+pkg/
+src/
+*.pkg.*
+*.src.*
+kairo[-_]linux*.gz
