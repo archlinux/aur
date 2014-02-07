@@ -1,0 +1,14 @@
+pkgbase = powerstat-git
+	pkgdesc = a tool for measuring a laptops power usage via the battery
+	pkgver = 20120328
+	pkgrel = 1
+	url = http://kernel.ubuntu.com/git?p=cking/powerstat.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = glibc
+	provides = powerstat
+
+pkgname = powerstat-git
+
