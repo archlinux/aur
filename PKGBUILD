@@ -1,4 +1,4 @@
-# Maintainer: J0k3r <moebius282@gmail.com>
+# Maintainer: J0k3r <moebius282 at gmail dot com>
 
 pkgname=reus
 pkgver=1389636757
