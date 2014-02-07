@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Fez
+Comment=A game where you play as Gomez, a 2D creature living in what he believes is a 2D world
+Icon=fez.png
+Exec=fez
+Categories=Game;
+Path=/opt/fez
+

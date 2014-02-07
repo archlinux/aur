@@ -1,0 +1,27 @@
+pkgbase = fez
+	pkgdesc = A game where you play as Gomez, a 2D creature living in what he believes is a 2D world
+	pkgver = 20130915
+	pkgrel = 1
+	epoch = 1
+	url = http://fezgame.com/
+	changelog = fez.changelog
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = unknown
+	makedepends = unzip
+	makedepends = imagemagick
+	depends = gcc-libs
+	depends = bash
+	depends = sdl2
+	depends = openal
+	noextract = fez-09152013-bin
+	source = hib://fez-09152013-bin
+	source = fez.desktop
+	source = fez.changelog
+	sha256sums = 91b56f8bd558dba4cdc8d070a66c6c15071533d7456d2f1629a14b3af55c5e6e
+	sha256sums = 7d28fe54e85ab3b9d33337a745a412bdab8fa233b40f8137475dc142f434bbcf
+	sha256sums = 6e3bb1dca64e050a09bb2ab87f3f2a5cc42e419a46ffbea2abfc06502ca3173f
+
+pkgname = fez
+
