@@ -1,0 +1,28 @@
+pkgbase = netradiant-git
+	pkgdesc = A Stabilized Q3 Map Editor - git version
+	pkgver = 1334
+	pkgrel = 1
+	epoch = 1
+	url = http://dev.xonotic.org/projects/xonotic/wiki/Netradiant
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = BSD
+	license = LGPL
+	makedepends = svn
+	depends = gtk2
+	depends = gtkglext
+	depends = libxml2
+	depends = zlib
+	depends = libpng
+	provides = netradiant
+	conflicts = netradiant-svn-unfree
+	conflicts = netradiant-svn
+	conflicts = netradiant-bin32
+	source = netradiant-git::git://git.xonotic.org/xonotic/netradiant.git
+	source = netradiant.desktop
+	sha256sums = SKIP
+	sha256sums = e462d733d2c9136f4b9648573065b457e80568fddafd331c0cac895994049454
+
+pkgname = netradiant-git
+
