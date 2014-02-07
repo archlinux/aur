@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Reus
+Comment=A god game in which you take control of nature through the hands of mighty giants
+Icon=reus.png
+Exec=reus
+Categories=Game;
+Path=/opt/reus
+

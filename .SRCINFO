@@ -1,0 +1,28 @@
+pkgbase = reus
+	pkgdesc = A god game in which you take control of nature through the hands of mighty giants
+	pkgver = 1389636757
+	pkgrel = 1
+	epoch = 1
+	url = http://www.reusgame.com/
+	changelog = reus.changelog
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = unknown
+	makedepends = unzip
+	makedepends = imagemagick
+	depends = gcc-libs
+	depends = libvorbis
+	depends = openal
+	depends = libtheora
+	depends = freetype2
+	depends = sdl2
+	source = hib://reus_linux_1389636757-bin
+	source = reus.desktop
+	source = reus.changelog
+	sha256sums = e9f2306bbbf8908b1dd4d09519959316a31df38002e80bfb74116cd338c50584
+	sha256sums = 91e5b44bed07a180f591687d199fb88507a80f91cbea6cb6b42d19bfce73323a
+	sha256sums = SKIP
+
+pkgname = reus
+

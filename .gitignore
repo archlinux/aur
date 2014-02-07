@@ -1,0 +1,6 @@
+pkg/
+src/
+*.pkg.*
+*.src.*
+reus_beta2_lin_bin
+reus_linux_*-bin
