@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Hotline Miami
+Comment=A 2D top-down action video game
+Icon=hotlinemiami.png
+Exec=hotlinemiami
+Categories=Game;

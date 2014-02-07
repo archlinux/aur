@@ -1,0 +1,27 @@
+pkgbase = hotlinemiami
+	pkgdesc = A 2D top-down action video game
+	pkgver = 1.0.9a
+	pkgrel = 2
+	url = http://hotlinemiami.com/
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = unknown
+	depends = openal
+	depends = libvorbis
+	depends = nvidia-cg-toolkit
+	depends = glu
+	depends = fontconfig
+	depends = lib32-xrandr
+	depends = libxrandr
+	depends = qt5-base
+	noextract = hotlinemiami_v1.0.9a-Linux_28-05-2013.tar.gz
+	source = hib://hotlinemiami_v1.0.9a-Linux_28-05-2013.tar.gz
+	source = hotlinemiami.desktop
+	source = hotlinemiami.png
+	sha256sums = 070300558ba52f75455d1645bba6dd956f460ada0d3839f8b3c3ac712ba957da
+	sha256sums = ca65c11bc9e06f438b2da2bb44c40424537e60b704656a155f672b16fde5f8de
+	sha256sums = 01432c725bd258761e67fe1db94531465ba0480e250724cf6b939669e13b0e8a
+
+pkgname = hotlinemiami
+

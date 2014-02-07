@@ -1,0 +1,5 @@
+pkg/
+src/
+*.pkg.*
+*.src.*
+[Hh]otline[Mm]iami_*.tar.gz
