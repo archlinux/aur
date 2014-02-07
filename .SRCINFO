@@ -1,0 +1,17 @@
+pkgbase = devkitppc-portlibs-expat
+	pkgdesc = XML Parser library (for Nintendo Gamecube/Wii homebrew development)
+	pkgver = 2.0.1
+	pkgrel = 3
+	url = http://expat.sourceforge.net/
+	arch = any
+	license = custom
+	depends = devkitppc
+	depends = devkitppc-portlibs-zlib
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/expat-2.0.1.tar.bz2
+	sha256sums = b4565d5ef6caa6c66e9fe2a06830ab904595771e6a8a84524ac65553ec3b2b8f
+
+pkgname = devkitppc-portlibs-expat
+
