@@ -1,0 +1,6 @@
+pkg/
+src/
+*.pkg.*
+*.src.*
+PenumbraCollection-SDL2-1.1.1-4.sh
+penumbra_overture_1.1.sh

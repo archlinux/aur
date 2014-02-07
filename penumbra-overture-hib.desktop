@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Penumbra Overture
+Comment=A first person adventure/survival horror game.
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=penumbra-overture-hib.png
+Exec=penumbra-overture-hib
+Categories=Game;
