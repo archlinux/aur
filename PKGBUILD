@@ -1,4 +1,4 @@
-# Maintainer: David Miller <moebius282 e4at gmail D0_T com>
+# Maintainer: J0k3r <moebius282 at gmail dot com>
 
 pkgname=penumbra-overture-hib
 pkgver=1.1
