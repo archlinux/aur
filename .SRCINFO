@@ -1,0 +1,17 @@
+pkgbase = devkitppc-portlibs-libpng
+	pkgdesc = PNG format graphic files library (for Nintendo Gamecube/Wii homebrew development)
+	pkgver = 1.5.4
+	pkgrel = 2
+	url = http://www.libpng.org
+	arch = any
+	license = custom
+	depends = devkitppc
+	depends = devkitppc-portlibs-zlib
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libpng-1.5.4.tar.bz2
+	sha256sums = 9743d1a84e84b756e19707b09ca5874d7052c5dc65d6cc1a1e231998833f5529
+
+pkgname = devkitppc-portlibs-libpng
+
