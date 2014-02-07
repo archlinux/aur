@@ -1,0 +1,10 @@
+post_install()
+{
+	echo 'You can configure the fullscreen resolution of the game in the startup script "/usr/bin/superhexagon"'
+	echo 'This will fix fullscreen with multihead setups! yay!'
+}
+
+post_upgrade()
+{
+	post_install
+}

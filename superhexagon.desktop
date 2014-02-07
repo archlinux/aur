@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=SuperHexagon
+GenericName=SuperHexagon
+Comment=A minimal action game by Terry Cavanagh, with music by Chipzel
+Icon=superhexagon.png
+Exec=superhexagon
+Categories=Game;
+Path=/opt/superhexagon
+

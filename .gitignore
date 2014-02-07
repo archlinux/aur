@@ -1,0 +1,7 @@
+pkg/
+src/
+*.pkg.*
+*.src.*
+linux-*.tar.gz
+patch.tar.bz2
+super-hexagon-*-bin*
