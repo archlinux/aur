@@ -1,13 +1,13 @@
 pkgbase = ruby-rainbow
 	pkgdesc = Rainbow is extension to ruby's String class adding support for colorizing text on ANSI terminal
-	pkgver = 1.1.4
-	pkgrel = 4
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://rubygems.org/gems/rainbow
 	arch = any
 	license = GPL2
 	depends = ruby
-	source = https://rubygems.org/downloads/rainbow-1.1.4.gem
-	md5sums = c5bb469c89b151668f8e4eeb37e98cbf
+	source = https://rubygems.org/downloads/rainbow-2.0.0.gem
+	md5sums = 5e2a70432911f5049472d1273c1521c7
 
 pkgname = ruby-rainbow
 
