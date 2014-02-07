@@ -1,0 +1,20 @@
+pkgbase = littleinferno
+	pkgdesc = A game about burning things
+	pkgver = 20130509
+	pkgrel = 1
+	url = http://tomorrowcorporation.com/littleinferno
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom:proprietary
+	depends = openal
+	depends = libvorbis
+	depends = curl
+	depends = libgl
+	source = hib://LittleInferno-20130509.sh
+	source = littleinferno.desktop
+	sha256sums = 3848f4037652699c162ebf3ae78f6dce81772394911483c9f1ef49cb51f6a198
+	sha256sums = 32a630a295a136552f748156ba981154d04d1695d8f8dab316928c40a55d6a95
+
+pkgname = littleinferno
+

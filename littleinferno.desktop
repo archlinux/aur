@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Little Inferno
+Comment=A game about burning things
+Icon=littleinferno.png
+Exec=littleinferno
+Categories=Game;
