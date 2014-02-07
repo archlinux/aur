@@ -1,0 +1,10 @@
+ 
+post_install() {
+  echo "To use the toolchain right away, you have to set the environment variables in"
+  echo "your currently running shells by executing 'source /etc/profile.d/devkitppc.sh'!"
+  echo "This is done automatically for every shell opened from now on."
+}
+
+post_upgrade() {
+  post_install
+}
