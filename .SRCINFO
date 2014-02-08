@@ -1,12 +1,12 @@
 pkgbase = explain-git
 	pkgdesc = Annotate commands using a simple markup language
-	pkgver = 13.01.5.g8af1449
+	pkgver = 13.11.1.g717040c
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=explain
 	arch = any
 	license = custom:PIZZA-WARE
 	makedepends = git
-	depends = python2
+	depends = python
 	provides = explain
 	conflicts = explain
 	source = git://github.com/vain/explain.git
