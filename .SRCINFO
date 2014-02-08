@@ -1,0 +1,43 @@
+pkgbase = perl-plack
+	pkgdesc = Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
+	pkgver = 1.0028
+	pkgrel = 2
+	url = http://plackperl.org/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-http-request-ascgi
+	checkdepends = perl-fcgi
+	checkdepends = perl-fcgi-procmanager
+	checkdepends = perl-http-server-simple-psgi
+	checkdepends = perl-log-log4perl
+	checkdepends = perl-authen-simple-passwd
+	checkdepends = perl-io-handle-util
+	checkdepends = perl-log-dispatch-array
+	checkdepends = perl-lwp-protocol-http10
+	checkdepends = perl-module-refresh
+	checkdepends = perl-mime-types
+	checkdepends = perl-test-requires
+	checkdepends = perl-test-tcp>=0.11
+	makedepends = perl-extutils-makemaker>=6.59
+	depends = perl>=5.8.1
+	depends = perl-apache-logformat-compiler
+	depends = perl-stream-buffered
+	depends = perl-devel-stacktrace>=1.23
+	depends = perl-devel-stacktrace-ashtml>=0.11
+	depends = perl-file-sharedir>=1.00
+	depends = perl-file-sharedir-install>=0,03
+	depends = perl-filesys-notify-simple
+	depends = perl-hash-multivalue>=0.05
+	depends = perl-http-body>=1.06
+	depends = perl-http-message>=5.814
+	depends = perl-libwww
+	depends = perl-try-tiny
+	depends = perl-uri>=1.59
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Plack-1.0028.tar.gz
+	md5sums = 5acf30b426a8e2e354906ef93e3ad80b
+	sha512sums = dd55ad9a4e2b6af1b903920634afc81da542b531b28adb9b23281e17f6f7550ec31d79014d880e93b5513bc76b5829054f0a86af7dfa099eb5c15469b02eff91
+
+pkgname = perl-plack
+
