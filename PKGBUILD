@@ -4,7 +4,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=initscripts-fork
-pkgver=2013.10.2
+pkgver=2014.02.1
 pkgrel=1
 pkgdesc="Maintained fork of system initialization/bootup scripts"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('dhcpcd: DHCP network configuration'
 makedepends=(asciidoc)
 install=initscripts.install
 source=(https://bitbucket.org/TZ86/$pkgname/get/$pkgver.tar.bz2)
-md5sums=('c66aa6d8436568517e191f868e939a5b')
+md5sums=('f187be99af1b06d417b0d9a36c14f186')
 
 package() {
   cd TZ86-$pkgname-*

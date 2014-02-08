@@ -1,6 +1,6 @@
 pkgbase = initscripts-fork
 	pkgdesc = Maintained fork of system initialization/bootup scripts
-	pkgver = 2013.10.2
+	pkgver = 2014.02.1
 	pkgrel = 1
 	url = https://bitbucket.org/TZ86/initscripts-fork/overview
 	install = initscripts.install
@@ -31,8 +31,8 @@ pkgbase = initscripts-fork
 	backup = etc/rc.conf
 	backup = etc/rc.local
 	backup = etc/rc.local.shutdown
-	source = https://bitbucket.org/TZ86/initscripts-fork/get/2013.10.2.tar.bz2
-	md5sums = c66aa6d8436568517e191f868e939a5b
+	source = https://bitbucket.org/TZ86/initscripts-fork/get/2014.02.1.tar.bz2
+	md5sums = f187be99af1b06d417b0d9a36c14f186
 
 pkgname = initscripts-fork
 
