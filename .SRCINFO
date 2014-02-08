@@ -18,7 +18,7 @@ pkgbase = chocolate-doom-git
 	conflicts = chocolate-hexen
 	conflicts = chocolate-strife
 	conflicts = chocolate-common
-	source = git://github.com/chocolate-doom/chocolate-doom.git
+	source = git+https://github.com/chocolate-doom/chocolate-doom.git
 	sha256sums = SKIP
 
 pkgname = chocolate-doom-git

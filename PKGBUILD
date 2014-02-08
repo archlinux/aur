@@ -11,7 +11,7 @@ license=('GPL2')
 makedepends=('git' 'autoconf' 'python')
 conflicts=(${pkgname[@]/-git/})
 install=${_pkgname}.install
-source=(git://github.com/chocolate-doom/chocolate-doom.git)
+source=(git+https://github.com/chocolate-doom/chocolate-doom.git)
 sha256sums=('SKIP')
 
 pkgver() {
