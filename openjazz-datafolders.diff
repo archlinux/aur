@@ -1,0 +1,25 @@
+diff -Npurw OpenJazz-src-050214.old/Makefile.am OpenJazz-src-050214/Makefile.am
+--- OpenJazz-src-050214.old/Makefile.am	2013-07-22 00:36:04.000000000 +0200
++++ OpenJazz-src-050214/Makefile.am	2014-02-08 20:56:51.253996586 +0100
+@@ -1,7 +1,8 @@
+ # -*- Makefile -*-
+ 
+ AM_CPPFLAGS = -DUSE_MODPLUG -DUSE_SOCKETS -DSCALE -I${top_srcdir}/src \
+-              ${libSDL_CFLAGS} ${libmodplug_CFLAGS}
++              -DDATAPATH=\"/usr/share/openjazz/\" -DLOWERCASE_FILENAMES \
++              -DHOMEDIR=1 ${libSDL_CFLAGS} ${libmodplug_CFLAGS}
+ AM_CFLAGS   = -Wall
+ AM_CXXFLAGS = -Wall
+ 
+diff -Npurw OpenJazz-src-050214.old/src/main.cpp OpenJazz-src-050214/src/main.cpp
+--- OpenJazz-src-050214.old/src/main.cpp	2014-02-04 22:45:50.000000000 +0100
++++ OpenJazz-src-050214/src/main.cpp	2014-02-08 20:00:21.741360579 +0100
+@@ -174,7 +174,7 @@ Main::Main (int argc, char *argv[]) {
+ 	#ifdef WIN32
+ 	firstPath = new Path(firstPath, createString(getenv("HOME"), "\\"));
+ 	#else
+-	firstPath = new Path(firstPath, createString(getenv("HOME"), "/."));
++	firstPath = new Path(firstPath, createString(getenv("HOME"), "/.openjazz/"));
+ 	#endif
+ #endif
+ 

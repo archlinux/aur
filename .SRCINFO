@@ -1,0 +1,19 @@
+pkgbase = openjazz
+	pkgdesc = A free, open-source version of the classic Jazz Jackrabbit™ games
+	pkgver = 20140205
+	pkgrel = 1
+	url = http://alister.eu/jazz/oj/
+	install = openjazz.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = sdl
+	depends = libmodplug
+	source = http://alister.eu/jazz/oj/OpenJazz-src-050214.zip
+	source = openjazz-datafolders.diff
+	sha256sums = d1d214d97f5288242ce33f535ae1b2ea1dbcd39f853e5ef5b310f888eda936cd
+	sha256sums = a8bbf3d0116cf4faa0a073d8b4e7f356a9833d7dd6d26da1e487c90252334667
+
+pkgname = openjazz
+
