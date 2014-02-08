@@ -1,7 +1,7 @@
 pkgbase = xyscan
 	pkgdesc = Tool to extract data points from graphical plots
 	pkgver = 3.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://star.physics.yale.edu/~ullrich/xyscanDistributionPage/
 	install = xyscan.install
 	arch = i686
