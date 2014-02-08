@@ -1,0 +1,35 @@
+pkgbase = gtk3
+	pkgdesc = GObject-based multi-platform GUI toolkit (v3)
+	pkgver = 3.10.7
+	pkgrel = 1
+	url = http://www.gtk.org/
+	install = gtk3.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	depends = atk
+	depends = cairo
+	depends = gtk-update-icon-cache
+	depends = libcups
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxi
+	depends = libxcomposite
+	depends = libxdamage
+	depends = pango
+	depends = shared-mime-info
+	depends = colord
+	depends = at-spi2-atk
+	depends = wayland
+	depends = libxkbcommon
+	optdepends = gnome-themes-standard: Default widget theme
+	optdepends = gnome-icon-theme: Default icon theme
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.10/gtk+-3.10.7.tar.xz
+	source = settings.ini
+	sha256sums = b7e9de15385031cff43897e7e59f6692eaabf500f36eef80e6b9d6486ad49427
+	sha256sums = 14369dfd1d325c393e17c105d5d5cc5501663277bd4047ea04a50abb3cfbd119
+
+pkgname = gtk3
+
