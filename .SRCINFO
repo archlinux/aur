@@ -1,0 +1,24 @@
+pkgbase = taisei-git
+	pkgdesc = Open source Touhou clone (development version)
+	pkgver = 1.0a.r118.g0212de9
+	pkgrel = 1
+	url = http://taisei-project.org/
+	install = taisei.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = sdl_ttf
+	depends = hicolor-icon-theme
+	depends = mesa
+	depends = libpng
+	depends = freealut
+	depends = glu
+	provides = taisei
+	conflicts = taisei
+	source = taisei::git+https://github.com/laochailan/taisei.git
+	md5sums = SKIP
+
+pkgname = taisei-git
+
