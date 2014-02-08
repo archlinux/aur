@@ -3,7 +3,7 @@
 pkgname=chocolate-doom-git
 _pkgname=${pkgname/-git/}
 true && pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
-pkgver=2.0.0.5.gb9690ac
+pkgver=2.0.0.16.g95ef264
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
@@ -49,7 +49,7 @@ package_chocolate-common-git() {
   rm -rf applications/chocolate-doom.desktop applications/screensavers \
     icons/chocolate-doom.png
   cd man/man6
-  rm -f chocolate-{doom,heretic,hexen,strife}.6
+  rm -f chocolate-{doom,heretic,hexen,strife}{,-setup}.6
 }
 
 package_chocolate-doom-git() {

@@ -1,6 +1,6 @@
 pkgbase = chocolate-doom-git
 	pkgdesc = Doom, Heretic, Hexen, Strife port accurately reproducing the originals.
-	pkgver = 2.0.0.5.gb9690ac
+	pkgver = 2.0.0.16.g95ef264
 	pkgrel = 1
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
