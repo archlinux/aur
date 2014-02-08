@@ -2,10 +2,10 @@
 
 pkgname=shared-mime-info
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL2')
 depends=('libxml2' 'glib2')
 makedepends=('intltool' 'pkgconfig')
 install=shared-mime-info.install
@@ -16,6 +16,9 @@ options=(!makeflags)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # https://bugs.archlinux.org/task/38836
+  # https://bugs.freedesktop.org/show_bug.cgi?id=70366
+  export ac_cv_func_fdatasync=no
   ./configure --prefix=/usr --disable-update-mimedb
   make
 }
