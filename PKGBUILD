@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 makedepends=('git' 'autoconf' 'python')
-conflicts=(${pkgname[@]/-git/})
 install=${_pkgname}.install
 source=(git+https://github.com/chocolate-doom/chocolate-doom.git)
 sha256sums=('SKIP')
@@ -35,6 +34,7 @@ build() {
 package_chocolate-common-git() {
   pkgdesc="Files shared in common with Chocolate Doom-based games."
   depends=('sdl_net')
+  conflicts=(chocolate-common)
 
   cd "${_pkgname}"
   make DESTDIR="${pkgdir}" install
@@ -55,6 +55,7 @@ package_chocolate-common-git() {
 package_chocolate-doom-git() {
   pkgdesc="Doom port accurately reproducing the original v1.9 EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
+  conflicts=(chocolate-doom)
 
   cd "${_pkgname}"
   make DESTDIR="${pkgdir}" install
@@ -73,6 +74,7 @@ package_chocolate-doom-git() {
 package_chocolate-heretic-git() {
   pkgdesc="Heretic port accurately reproducing the original v1.3 EXE."
   depends=(${depends[@]} 'chocolate-common-git')
+  conflicts=(chocolate-heretic)
 
   cd "${_pkgname}"
   make DESTDIR="${pkgdir}" install
@@ -91,6 +93,7 @@ package_chocolate-heretic-git() {
 package_chocolate-hexen-git() {
   pkgdesc="Hexen port accurately reproducing the original v1.1 EXE."
   depends=(${depends[@]} 'chocolate-common-git')
+  conflicts=(chocolate-hexen)
 
   cd "${_pkgname}"
   make DESTDIR="${pkgdir}" install
@@ -109,6 +112,7 @@ package_chocolate-hexen-git() {
 package_chocolate-strife-git() {
   pkgdesc="Strife port accurately reproducing the original v1.31 EXE."
   depends=(${depends[@]} 'chocolate-common-git')
+  conflicts=(chocolate-strife)
 
   cd "${_pkgname}"
   make DESTDIR="${pkgdir}" install

@@ -13,11 +13,6 @@ pkgbase = chocolate-doom-git
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
-	conflicts = chocolate-doom
-	conflicts = chocolate-heretic
-	conflicts = chocolate-hexen
-	conflicts = chocolate-strife
-	conflicts = chocolate-common
 	source = git+https://github.com/chocolate-doom/chocolate-doom.git
 	sha256sums = SKIP
 
@@ -27,6 +22,7 @@ pkgname = chocolate-doom-git
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common-git
+	conflicts = chocolate-doom
 
 pkgname = chocolate-heretic-git
 	pkgdesc = Heretic port accurately reproducing the original v1.3 EXE.
@@ -34,6 +30,7 @@ pkgname = chocolate-heretic-git
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common-git
+	conflicts = chocolate-heretic
 
 pkgname = chocolate-hexen-git
 	pkgdesc = Hexen port accurately reproducing the original v1.1 EXE.
@@ -41,6 +38,7 @@ pkgname = chocolate-hexen-git
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common-git
+	conflicts = chocolate-hexen
 
 pkgname = chocolate-strife-git
 	pkgdesc = Strife port accurately reproducing the original v1.31 EXE.
@@ -48,8 +46,10 @@ pkgname = chocolate-strife-git
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common-git
+	conflicts = chocolate-strife
 
 pkgname = chocolate-common-git
 	pkgdesc = Files shared in common with Chocolate Doom-based games.
 	depends = sdl_net
+	conflicts = chocolate-common
 
