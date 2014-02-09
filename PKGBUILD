@@ -1,7 +1,7 @@
 # Maintainer: Markus Heidelberg <markus dot heidelberg at web dot de>
 pkgname=plptools
 pkgver=1.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Utilities for communication with EPOC PDAs, e.g. mounting via FUSE"
 arch=('i686' 'x86_64')
 url="http://plptools.sourceforge.net/"
@@ -17,17 +17,20 @@ md5sums=('4779b5dc0a3de3bafbd26350ce0087d4'
          'be5122e28727098f1f1ee795ea1dde80'
          '084277c3392195c8c49d11c8b1e69c9a')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < "$srcdir/plpfuse-x86_64.patch"
+}
+
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 < $srcdir/plpfuse-x86_64.patch
+  cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr --sbindir=/usr/bin --with-initdir=/etc/rc.d
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=$pkgdir install
-  rm $pkgdir/usr/lib/*.la
-  install -Dm644 $srcdir/plptools.confd $pkgdir/etc/conf.d/plptools
-  install -Dm755 $srcdir/plptools.rcd $pkgdir/etc/rc.d/plptools
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 "$srcdir/plptools.confd" "$pkgdir/etc/conf.d/plptools"
+  install -Dm755 "$srcdir/plptools.rcd" "$pkgdir/etc/rc.d/plptools"
 }

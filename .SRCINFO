@@ -1,7 +1,7 @@
 pkgbase = plptools
 	pkgdesc = Utilities for communication with EPOC PDAs, e.g. mounting via FUSE
 	pkgver = 1.0.11
-	pkgrel = 3
+	pkgrel = 4
 	url = http://plptools.sourceforge.net/
 	arch = i686
 	arch = x86_64
