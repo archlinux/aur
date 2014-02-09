@@ -1,0 +1,20 @@
+--- KeeFox-1.2.7/KeePassRPC/KeePassRPC.csproj	2013-09-03 21:07:46.000000000 +0200
++++ KeeFox-1.2.7/KeePassRPC/KeePassRPC.csproj	2014-02-09 16:07:04.082924522 +0100
+@@ -91,7 +91,7 @@
+     <Reference Include="KeePass, Version=2.1.8.29009, Culture=neutral, PublicKeyToken=7952fc8ece49a093, processorArchitecture=MSIL">
+       <SpecificVersion>False</SpecificVersion>
+       <ExecutableExtension>.exe</ExecutableExtension>
+-      <HintPath>..\..\..\Program Files (x86)\KeePass Password Safe 2 DEV\KeePass.exe</HintPath>
++      <HintPath>/usr/share/keepass/KeePass.exe</HintPath>
+     </Reference>
+     <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+       <SpecificVersion>False</SpecificVersion>
+@@ -255,7 +255,7 @@
+   <Target Name="AfterBuild">
+   </Target>
+   -->
+-  <PropertyGroup>
++  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+     <PreBuildEvent>
+     </PreBuildEvent>
+     <PostBuildEvent>
