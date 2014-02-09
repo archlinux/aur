@@ -1,6 +1,6 @@
 pkgbase = donnatella
 	pkgdesc = GTK+3 customizable file manager with advanced unique features
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = http://jjacky.com/donnatella
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = donnatella
 	license = GPL3+
 	depends = gtk3
 	optdepends = gtk3-donnatella: For some advanced GUI features
-	source = http://jjacky.com/donnatella/donnatella-0.1.0.tar.gz
-	md5sums = 3178bce78f7f4cb6d1096323baad31ea
+	source = http://jjacky.com/donnatella/donnatella-0.1.1.tar.gz
+	md5sums = f9bc605592cdfd114fd7fbaa9561b919
 
 pkgname = donnatella
 
