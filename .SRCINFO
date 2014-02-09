@@ -1,7 +1,7 @@
 pkgbase = unix-runescape-client
 	pkgdesc = RuneScape client for Linux and Unix
-	pkgver = 4.2.2
-	pkgrel = 2
+	pkgver = 4.2.3
+	pkgrel = 1
 	url = http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html
 	install = unix-runescape-client.install
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = unix-runescape-client
 	optdepends = perl-config-inifiles: instead of builtin
 	optdepends = perl-io-stringy: instead of builtin
 	conflicts = runescape-client-bin
-	source = unix-runescape-client-4.2.2.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v4.2.2.tar.gz
-	md5sums = d509e3b883b6340d994ad67757ee87ef
+	source = unix-runescape-client-4.2.3.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v4.2.3.tar.gz
+	md5sums = 955cb686727d9f06667c8602921d1637
 
 pkgname = unix-runescape-client
 
