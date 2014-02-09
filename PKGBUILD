@@ -57,7 +57,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install correct PAM file
-  install -Dm644 "data/entrance.other" "$pkgdir/etc/pam.d/entrance"
+  install -Dm644 "data/entrance.arch" "$pkgdir/etc/pam.d/entrance"
 
 # install text files
   install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
