@@ -21,8 +21,8 @@ source=("https://bitbucket.org/runesoftdev/airline_public/downloads/airline.tyco
 # this sha256sum is provided by runesoft:
 sha256sums=('ff0b2f03cbfda4fe13aa803ced484d29e528a3b1bd30f04b03617c10ce7cda55'
             '804921da338e7a29351d83de33475c7ede92e7f8fcfbc0b7755f9b05739e4906'
-            '42b4848957cd57067f095c9aa08060e8c9435df7cb6a0d4250c6c847c0667a4f'
-            '365468f8f75658670d4b400cce2dad2a7bc07ed7070629cdb9ec82f5c3906906')
+            '15dcf570a53e154fa90527f93d8a33f0f3d688164eeefda783a88e11de2e85bd'
+            '0a1d59c89423693d295cc93b5ec04066ce79e7b01037efc4b998c522fd89e011')
 
 package() {
   cd data

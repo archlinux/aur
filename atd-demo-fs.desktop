@@ -5,6 +5,6 @@ Name=ATD Demo (Fullscreen)
 Comment=Airline Tycoon Deluxe Demo (Fullscreen)
 Icon=/opt/atd-demo/ATDeluxe.xpm
 Exec=atd-demo
-Categories=Game
+Categories=Game;
 Terminal=false
 StartupNotify=false
