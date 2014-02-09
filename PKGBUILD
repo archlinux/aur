@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r87.a20597a
+pkgver=0.0.99.r98.1160e12
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -34,8 +34,6 @@ prepare() {
       -e '/"reboot"/ s|/sbin/shutdown -r now|/usr/bin/systemctl reboot|' \
       -e '/"suspend"/ s|/usr/sbin/pm-suspend|/usr/bin/systemctl suspend|' \
       -i "$srcdir/$_pkgname/data/entrance.conf"
-
-  sed -i 's|sbin/entrance|bin/entrance|' "$srcdir/$_pkgname/data/entrance.service.in"
 }
 
 build() {
