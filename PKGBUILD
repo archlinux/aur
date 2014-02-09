@@ -14,20 +14,20 @@ source=("https://github.com/luckyrat/KeeFox/archive/v${pkgver}.tar.gz"
         build-fixes.patch)
 
 prepare() {
-	cd "$srcdir/KeeFox-$pkgver"
+    cd "$srcdir/KeeFox-$pkgver"
 
     # Need --binary option because of DOS line endings.
-	patch --binary -Np1 -i "$srcdir/build-fixes.patch"
+    patch --binary -Np1 -i "$srcdir/build-fixes.patch"
 }
 
 build() {
-	cd "$srcdir/KeeFox-$pkgver/KeePassRPC"
+    cd "$srcdir/KeeFox-$pkgver/KeePassRPC"
 
     xbuild /property:Configuration=Release KeePassRPC.csproj
 }
 
 package() {
-	cd "$srcdir/KeeFox-$pkgver/KeePassRPC/bin/Release"
+    cd "$srcdir/KeeFox-$pkgver/KeePassRPC/bin/Release"
 
     for f in Jayrock*.dll KeePassRPC.dll; do
         install -m 644 -D "$f" "${pkgdir}/usr/share/keepass/plugins/rpc/${f}"
