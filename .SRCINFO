@@ -1,6 +1,6 @@
 pkgbase = backports-patched
 	pkgdesc = Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor
-	pkgver = 3.12.1_1
+	pkgver = 3.13.2_1
 	pkgrel = 6
 	url = https://backports.wiki.kernel.org/index.php/Main_Page
 	install = backports.install
@@ -11,8 +11,8 @@ pkgbase = backports-patched
 	makedepends = linux-headers>=4.0
 	depends = linux
 	optdepends = backports-frag+ack: wl-frag+ack patch
-	source = http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v3.12.1/backports-3.12.1-1.tar.xz
-	sha256sums = 133c8d5feba700e311da3ac0591a20b2e2f8b40634b96e9fbfe154239d713061
+	source = http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v3.13.2/backports-3.13.2-1.tar.xz
+	sha256sums = fc16f3accd56de8616c68707c623268ff80f52c1017bddb94800cafb990545bb
 
 pkgname = backports-patched
 

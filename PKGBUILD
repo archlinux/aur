@@ -5,11 +5,15 @@
 # Contributor: Mathias Buren <mathias.buren at gmail dot com>
 # Contributor: Benjamin Mtz (Cruznick) <cruznick at archlinux dot us>
 
+#TODO: Investigate empty dir - /usr/lib/modules/3.12.9-2-ARCH/
+#TODO: Document and finish automation for patching and config
+#TODO: Add config (from makepkg.d only) for downloading most recent snapshot (include logic in pkgver() function)
+
 _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 
 pkgname=backports-patched
-pkgver=3.12.1_1
+pkgver=3.13.2_1
 _upver="${pkgver//_/-}"
 pkgrel=6
 pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
@@ -24,7 +28,7 @@ install=backports.install
 source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%-*}/backports-${_upver}.tar.xz")
 # Snapshot:
 #source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-sha256sums=('133c8d5feba700e311da3ac0591a20b2e2f8b40634b96e9fbfe154239d713061')
+sha256sums=('fc16f3accd56de8616c68707c623268ff80f52c1017bddb94800cafb990545bb')
 
 # Check for daily pkgver eg. 20370718
 date -d "$pkgver" > /dev/null 2>&1
