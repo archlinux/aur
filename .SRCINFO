@@ -10,6 +10,7 @@ pkgbase = qt5-wayland-git
 	makedepends = git
 	makedepends = qtchooser
 	depends = qt5-base
+	depends = qt5-declarative
 	depends = libxcomposite
 	depends = wayland
 	conflicts = qt5-wayland

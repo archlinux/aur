@@ -7,7 +7,7 @@ pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=('i686' 'x86_64')
 url="http://qt-project.org/"
 license=('GPL3' 'LGPL')
-depends=('qt5-base' 'libxcomposite' 'wayland')
+depends=('qt5-base' 'qt5-declarative' 'libxcomposite' 'wayland')
 makedepends=('git' 'qtchooser')
 conflicts=('qt5-wayland')
 options=('!libtool' 'debug')
@@ -23,7 +23,7 @@ build() {
   export QT_SELECT=5
 
   cd qtwayland
-  qmake
+  qmake CONFIG+=wayland-compositor
   make
 }
 
