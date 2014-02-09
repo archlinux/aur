@@ -1,7 +1,7 @@
 pkgbase = njam
 	pkgdesc = Full-featured cross-platform pacman-like game
 	pkgver = 1.25
-	pkgrel = 7
+	pkgrel = 8
 	url = http://njam.sourceforge.net/
 	arch = i686
 	arch = x86_64
