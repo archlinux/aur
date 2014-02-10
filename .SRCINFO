@@ -1,8 +1,8 @@
 pkgbase = haskell-largeword
 	pkgdesc = Provides Word128, Word192 and Word256 and a way of producing other large words if required.
 	pkgver = 1.0.5
-	pkgrel = 1
-	url = http://trac.haskell.org/largeword/wiki
+	pkgrel = 2
+	url = https://hackage.haskell.org/package/largeword
 	install = haskell-largeword.install
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = haskell-largeword
 	makedepends = ghc
 	depends = haskell-base
 	options = strip
+	options = staticlibs
 	source = http://hackage.haskell.org/packages/archive/largeword/1.0.5/largeword-1.0.5.tar.gz
 	sha256sums = b42164506e521be1d296055086f109a62bc5c3e71b46751d06ada7622fc79c45
 
