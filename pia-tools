@@ -1,7 +1,7 @@
 #!/bin/bash
 # Description: Script to automate privateinternetacces port forwarding and
 # starting/stopping transmission when connected/disconnected and other stuff
-# Version: 0.9.7
+# Version: 0.9.7.1
 # Author: Philipp Schmitt (philipp<at>schmitt.co)
 # Documentation: cf. pia-tools.groff
 # Dependencies: transmission-daemon openvpn systemd sudo wget ufw unzip
@@ -55,7 +55,7 @@ usage() {
     echo "-g: Use PIA DNS (updates resolv.conf)"
     echo "-u: Update configuration files"
     echo "-s: Run setup"
-    echo "-c: Ensure OpenVPN is running. If not stop transmissiond"
+    echo "-c: Ensure OpenVPN is running. If not stop transmission"
     echo "-h: Display this message"
     echo "-v: Verbose output"
 }
@@ -71,7 +71,7 @@ check_root() {
 }
 
 check_transmission() {
-    systemctl is-active transmissiond > /dev/null 2>&1
+    systemctl is-active transmission > /dev/null 2>&1
 }
 
 # Checks if the OpenVPN service is running
@@ -80,8 +80,8 @@ check_ovpn() {
     if [[ -z "$ovpnd" ]]; then
         echo 'OpenVPN service not running !' >&2
         if check_transmission; then
-            echo -n 'Stopping transmissiond... '
-            systemctl stop transmissiond
+            echo -n 'Stopping transmission... '
+            systemctl stop transmission
             echo 'Done!'
         else
             echo "Transmissiond not running" >&2
@@ -159,7 +159,7 @@ transmission_peer_port_update() {
         transmission_peer_port="$(transmission-remote -si | grep Listenport | grep -oE '[0-9]+')"
         if [[ "$PIA_OPEN_PORT_NEW" != "$transmission_peer_port" ]]; then
             transmission-remote -p "$PIA_OPEN_PORT_NEW"
-            # systemctl restart transmissiond
+            # systemctl restart transmission
             echo 'Checking port...'
             # TODO The sleep timer may need to be adjusted
             sleep 3 && transmission-remote -pt
@@ -171,7 +171,7 @@ transmission_peer_port_update() {
             echo "Writing new peer port to transmission's settings.json..."
             sed -i 's/\(\"peer-port\":\).*,/\1 '"$PIA_OPEN_PORT_NEW"',/' "$TRANSMISSION_SETTINGS_FILE"
         fi
-        check_ovpn && systemctl restart transmissiond
+        check_ovpn && systemctl restart transmission
     fi
     echo 'Done!'
 }
