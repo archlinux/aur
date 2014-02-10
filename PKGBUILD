@@ -2,11 +2,12 @@
 
 pkgname=microchip-libraries-for-applications
 pkgver=v2013_06_15
-pkgrel=2
+pkgrel=3
 pkgdesc="Microchip Libraries for Applications"
 arch=('i686' 'x86_64')
 url="http://www.microchip.com/MLA"
 license=('custom')
+optdepends=('java-runtime: Graphics and TCP/IP utilities support')
 makedepends=('fakechroot')
 [ $CARCH = x86_64 ] && depends+=('lib32-glibc' 'lib32-fakeroot')
 options=(!strip libtool staticlibs emptydirs !zipman)
@@ -66,7 +67,50 @@ package() {
   find "$pkgdir$_instdir" -type d -exec chmod 0755 '{}' \; -exec chmod ug-s '{}' \;
   find "$pkgdir$_instdir" -type f -exec chmod 0644 '{}' \;
 
-  # TODO: create start scripts for Java tools
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # executable files
+  install -d "$pkgdir/usr/bin"
+
+  # Graphics Resource Converter
+  cat << EOF > "$pkgdir/usr/bin/grc"
+#!/bin/sh
+java -jar "$_instdir/Microchip/Graphics/bin/grc/grc.jar" "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/grc"
+
+  # External Memory Programmer
+  cat << EOF > "$pkgdir/usr/bin/memory_programmer"
+#!/bin/sh
+java -jar "$_instdir/Microchip/Graphics/bin/memory_programmer/memory_programmer.jar" "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/memory_programmer"
+
+  # Microchip 2 Binary Information Base
+  cat << EOF > "$pkgdir/usr/bin/mib2bib"
+#!/bin/sh
+java -jar "$_instdir/Microchip/TCPIP Stack/Utilities/mib2bib.jar" "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/mib2bib"
+
+  # Microchip MPFS Generator
+  cat << EOF > "$pkgdir/usr/bin/mpfs2"
+#!/bin/sh
+java -jar "$_instdir/Microchip/TCPIP Stack/Utilities/MPFS2.jar" "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/mpfs2"
+
+  # Microchip Hash Table Filter Entry Calculator"
+  cat << EOF > "$pkgdir/usr/bin/hash_calculator"
+#!/bin/sh
+java -jar "$_instdir/Microchip/TCPIP Stack/Utilities/Hash Calculator.jar"
+EOF
+  chmod 755 "$pkgdir/usr/bin/hash_calculator"
+
+  # Microchip TCPIP Discoverer
+  cat << EOF > "$pkgdir/usr/bin/tcpip_discoverer"
+#!/bin/sh
+java -jar "$_instdir/Microchip/TCPIP Stack/Utilities/TCPIP Discoverer.jar"
+EOF
+  chmod 755 "$pkgdir/usr/bin/tcpip_discoverer"
 }
