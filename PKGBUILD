@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -19,7 +19,8 @@ optdepends=('bridge-utils: for briged networking (default)'
 	    'qemu'
 	    'radvd'
 	    'dmidecode'
-	    'ebtables')
+	    'ebtables'
+	    'pm-utils: host power management')
 options=('emptydirs')
 backup=('etc/conf.d/libvirtd'
 	'etc/conf.d/libvirt-guests'
