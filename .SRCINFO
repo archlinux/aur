@@ -1,0 +1,21 @@
+pkgbase = ecwolf-hg
+	pkgdesc = Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL (development version)
+	pkgver = r987.4169dcc8502a
+	pkgrel = 1
+	url = http://maniacsvault.net/ecwolf
+	install = ecwolf.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	makedepends = cmake
+	depends = sdl_mixer
+	depends = libjpeg
+	depends = gtk2
+	provides = ecwolf
+	conflicts = ecwolf
+	source = hg+https://bitbucket.org/Blzut3/ecwolf
+	md5sums = SKIP
+
+pkgname = ecwolf-hg
+
