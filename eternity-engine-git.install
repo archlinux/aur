@@ -1,4 +1,0 @@
-post_install() {
-  echo "Set ETERNITYBASE=/usr/share/eternity to use Eternity;"
-  echo "Recommended to add to your ~/.profile or similar."
-}
