@@ -5,13 +5,14 @@
 pkgname=eternity-engine-git
 _pkgname=${pkgname/-git/}
 pkgver=3.40.46.27.gd6a6623
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('sdl' 'sdl_mixer' 'sdl_net' 'zlib')
 makedepends=('git' 'cmake')
+conflicts=(${_pkgname})
 source=(${_pkgname}::git+https://github.com/team-eternity/eternity.git)
 sha256sums=('SKIP')
 
