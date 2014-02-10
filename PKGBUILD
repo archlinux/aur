@@ -2,15 +2,15 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
 url="http://www.swig.org/"
 license=('custom')
-depends=('zlib' 'pcre')
+depends=('pcre' 'gcc-libs')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('d3bf4e78824dba76bfb3269367f1ae0276b49df9')
+sha1sums=('4203c68f79012a2951f542018ff4358d838b5035')
 
 build() {
   cd ${pkgname}-${pkgver}
