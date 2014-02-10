@@ -1,0 +1,20 @@
+pkgbase = eternity-engine-git
+	pkgdesc = An advanced Doom port with vanilla compatibility
+	pkgver = 3.40.46.27.gd6a6623
+	pkgrel = 1
+	url = http://eternity.youfailit.net/
+	install = eternity-engine-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = zlib
+	source = eternity-engine::git+https://github.com/team-eternity/eternity.git
+	sha256sums = SKIP
+
+pkgname = eternity-engine-git
+
