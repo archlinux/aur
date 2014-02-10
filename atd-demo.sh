@@ -1,7 +1,3 @@
 #/bin/sh
 
-cd /opt/atd-demo
-
-./ATDeluxe.Demo "$@"
-
-cd - > /dev/null
+cd /opt/atd-demo && exec ./ATDeluxe.Demo "$@"

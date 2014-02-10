@@ -2,8 +2,8 @@
 Type=Application
 Version=1.0
 Name=ATD Demo
-Comment=Airline Tycoon Deluxe Demo
-Icon=/opt/atd-demo/ATDeluxe.xpm
+Comment=Play Airline Tycoon Deluxe Demo
+Icon=atd-demo
 Exec=atd-demo /window /noinputgrab
 Categories=Game;
 Terminal=false

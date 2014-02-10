@@ -1,7 +1,9 @@
 
 post_install() {
-  echo "Before using this software you have to accept the license."
-  echo "To read it: less /usr/share/licenses/atd-demo/LICENCE"
+  echo "With using this software you accept the license. It is installed with this"
+  echo "package: '/usr/share/licenses/atd-demo/LICENCE'."
+  echo "See also 'https://bitbucket.org/runesoftdev/airline_public/wiki/Switches' for"
+  echo "available parameters, a .desktop file with '/window /noinputgrab' is provided."
 }
 
 post_upgrade() {
