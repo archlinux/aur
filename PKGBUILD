@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.8.99.24257.6db1691
+pkgver=1.9.0alpha1.24466.aa07b08
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  local efl_version=$(grep -m 1 EFL_VERSION configure.ac | grep -o "[[:digit:]]*" | tr '\n' '.')
+  local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
   printf "$efl_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
