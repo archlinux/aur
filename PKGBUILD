@@ -1,8 +1,8 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=parcimonie-git
 _gitname=App-Parcimonie
-pkgver=344.437a799
-pkgrel=3
+pkgver=365.90e7cf6
+pkgrel=1
 pkgdesc="A tool that incrementally refreshes a GnuPG keyring"
 arch=('any')
 url="https://gaffer.ptitcanardnoir.org/intrigeri/code/parcimonie/"
@@ -11,7 +11,8 @@ depends=('perl' 'perl-any-moose' 'perl-namespace-autoclean'
          'perl-gnupg-interface' 'perl-clone' 'perl-config-general'
          'perl-file-homedir' 'perl-path-class' 'perl-net-dbus'
          'perl-tie-cache' 'perl-time-duration-parse'
-         'perl-mousex-types-path-class' 'perl-mousex-getopt')
+         'perl-mousex-types-path-class' 'perl-mousex-getopt'
+         'perl-path-tiny')
 makedepends=('git')
 provides=('parcimonie')
 source=('git://gaffer.ptitcanardnoir.org/App-Parcimonie.git#branch=debian')
