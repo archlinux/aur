@@ -3,15 +3,15 @@
 # Contributor: hauptmech <hauptmech@gmail.com>
 pkgname=python2-empy
 realname=empy
-pkgver=3.3
-pkgrel=5
+pkgver=3.3.2
+pkgrel=1
 pkgdesc="A powerful and robust templating system for Python."
 arch=(i686 x86_64)
 url="http://www.alcyone.com/software/empy"
-depends=('python2>=1.5.2')
+depends=('python2>=2.4')
 license=('LGPL')
 source=("http://www.alcyone.com/software/empy/empy-$pkgver.tar.gz")
-md5sums=('e7b518a6fc4fd28fef87726cdb003118')
+md5sums=('fbb34761cdf9acc4c65e298c9eced395')
 
 build() {
     cd ${srcdir}/empy-$pkgver
