@@ -87,6 +87,8 @@ prepare() {
   # Fix i8042 aliases
   patch -p1 -i "${srcdir}/i8042-fix-aliases.patch"
   # Revert avmfritz breaker
+  # https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=e0f6dec35f9286e78879fe1ac92803fd69fc4fdc
+  # https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=0c44c2d0f459cd7e275242b72f500137c4fa834d
   patch -Rp1 -i "${srcdir}/0001-revert-avmfritz-breaker.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
