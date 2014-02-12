@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.13
 pkgver=3.13.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -26,6 +26,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch'
         '0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch'
         '0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch'
+        '0001-revert-avmfritz-breaker.patch'
         'i8042-fix-aliases.patch'
         )
 md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
@@ -42,6 +43,7 @@ md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
          'd5907a721b97299f0685c583499f7820'
          'a724515b350b29c53f20e631c6cf9a14'
          'e6fa278c092ad83780e2dd0568e24ca6'
+         'bc1917dd2a0f9e4f511f120c85fa0c49'
          '93dbf73af819b77f03453a9c6de2bb47')
 
 _kernelname=${pkgbase#linux}
@@ -84,6 +86,8 @@ prepare() {
 
   # Fix i8042 aliases
   patch -p1 -i "${srcdir}/i8042-fix-aliases.patch"
+  # Revert avmfritz breaker
+  patch -Rp1 -i "${srcdir}/0001-revert-avmfritz-breaker.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
