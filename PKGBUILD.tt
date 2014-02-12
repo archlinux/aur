@@ -1,0 +1,34 @@
+# CPAN Name  : Text::Lorem
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl package and tool to generate random Latin looking text'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl')
+makedepends=('perl-module-build')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+build() {
+	cd [% distdir %]
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT
+	PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	perl Build
+}
+
+check() {
+	cd [% distdir %]
+	perl Build test
+}
+
+package() {
+	cd [% distdir %]
+	perl Build install
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

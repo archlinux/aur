@@ -1,0 +1,16 @@
+pkgbase = perl-text-lorem
+	pkgdesc = Perl package and tool to generate random Latin looking text
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Lorem
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADEOLA/Text-Lorem-0.3.tar.gz
+	md5sums = 7fa832ff29a5307bcd80dd4af8ec3e7d
+
+pkgname = perl-text-lorem
+
