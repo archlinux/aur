@@ -16,6 +16,7 @@ pkgbase = python2-moviepy-git
 	depends = python2-pygame
 	depends = scikit-image
 	depends = python2-scipy
+	depends = python-tqdm
 	source = git+https://github.com/Zulko/moviepy.git
 	md5sums = SKIP
 
