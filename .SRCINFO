@@ -1,0 +1,23 @@
+pkgbase = htop-git
+	pkgdesc = Interactive text-mode process viewer
+	pkgver = 312.953ec71
+	pkgrel = 1
+	url = https://github.com/hishamhm/htop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	depends = ncurses
+	optdepends = lsof: list open files for running process
+	optdepends = strace: attach to running process
+	provides = htop
+	conflicts = htop
+	options = !emptydirs
+	source = git+https://github.com/hishamhm/htop.git
+	source = https://projects.archlinux.org/svntogit/packages.git/plain/htop/trunk/tree-crash.patch
+	md5sums = SKIP
+	md5sums = 48eba3c0303bfd19d761b859bc69d713
+
+pkgname = htop-git
+
