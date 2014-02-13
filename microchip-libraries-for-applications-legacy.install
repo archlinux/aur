@@ -1,0 +1,10 @@
+post_install() {
+  echo "---------------------------------------------------------
+Before using Microchip Libraries for Applications you have to agree with LICENSE:
+/usr/share/licenses/microchip-libraries-for-applications/LICENSE
+---------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install
+}
