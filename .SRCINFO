@@ -1,4 +1,4 @@
-pkgbase = python-tqdm
+pkgbase = tqdm
 	pkgdesc = Simple Python Progress Meter
 	pkgver = 1.0
 	pkgrel = 1
