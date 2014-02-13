@@ -40,7 +40,8 @@ build() {
         --enable-unicode \
         --enable-openvz \
         --enable-vserver \
-        --enable-cgroup
+        --enable-cgroup \
+        --enable-oom
 
 	 make
 }
