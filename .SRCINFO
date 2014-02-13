@@ -1,4 +1,4 @@
-pkgbase = moviepy
+pkgbase = python2-moviepy
 	pkgdesc = Script-based movie editing with python2
 	pkgver = 0.2.1.6.93
 	pkgrel = 1
