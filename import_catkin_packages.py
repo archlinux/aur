@@ -35,6 +35,8 @@ class PackageBase(object):
     self.description = re.sub('<[^<]+?>', '', package.description)
     # Put it on one line to motivate packagers to make shorter descriptions
     self.description = re.sub('\n', ' ', self.description)
+    # Convert tabs to spaces
+    self.description = re.sub('\t', ' ', self.description)
     # Multiple consecutive spaces turned into one
     self.description = re.sub('([ ]+)', ' ', self.description)
     # Only take the first sentence (keep short description)
