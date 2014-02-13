@@ -1,32 +1,33 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer:
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 
 pkgname=libgadu
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="This library implements the client side of the Gadu-Gadu protocol"
 arch=('i686' 'x86_64')
-url="http://toxygen.net/libgadu/"
+url="http://libgadu.net/"
 license=('LGPL2.1')
-depends=('openssl')
-source=("http://toxygen.net/${pkgname}/files/${pkgname}-${pkgver}.tar.gz")
-md5sums=('832432fef251f69f31e68574c17f0c51')
+depends=('openssl' 'zlib')
+source=("http://github.com/wojtekka/libgadu/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('63b0870821bdb7077a952183db31db50')
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
- 	 --disable-static \
-	 --enable-shared \
-	 --with-pthread
+    --disable-static \
+    --enable-shared \
+    --with-pthread
   make
 }
 
 check() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make check
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
