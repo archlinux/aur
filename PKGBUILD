@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.13
-pkgver=3.13.2
-pkgrel=3
+pkgver=3.13.3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -30,7 +30,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'i8042-fix-aliases.patch'
         )
 md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
-         '352993d23acc5760dafa10ffc9d8881a'
+         '2d3d298f2b430122f4baf2af88277231'
          'ba4468d313adfaf22368add7f58204aa'
          '035bb27dac306f5c028d96cad14bb249'
          'eb14dcfd80c00852ef81ded6e826826a'
