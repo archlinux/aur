@@ -1,12 +1,15 @@
 pkgbase = velox-git
 	pkgdesc = A simple xcb window manager inspired by awesome, xmonad, and dwm.
-	pkgver = 0.0.2.r244.g4e549c6
+	pkgver = 0.0.2.r203.g882271d
 	pkgrel = 1
 	url = http://www.ohloh.net/p/velox-wm
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = swc-git
+	depends = libpulse
+	depends = libxkbcommon
+	depends = libyaml
+	depends = libmpdclient
 	provides = velox
 	conflicts = velox
 	source = velox-git::git+https://github.com/michaelforney/velox.git
