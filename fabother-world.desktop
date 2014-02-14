@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Fabother World
+Comment=Another World (Out Of This World) interpreter
+Exec=fabother-world
+Icon=fabother-world
+Terminal=false
+Categories=Game;

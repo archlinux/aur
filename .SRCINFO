@@ -1,0 +1,26 @@
+pkgbase = fabother-world-git
+	pkgdesc = An interpreter for Another World (Out of this world)
+	pkgver = r62.0b0f404
+	pkgrel = 1
+	url = http://fabiensanglard.net/anotherWorld_code_review/
+	install = fabother-world.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sh
+	depends = sdl
+	depends = zlib
+	provides = fabother-world
+	conflicts = fabother-world
+	source = fabother-world::git+https://github.com/fabiensanglard/Another-World-Bytecode-Interpreter.git
+	source = fabother-world.sh
+	source = fabother-world.png
+	source = fabother-world.desktop
+	sha256sums = SKIP
+	sha256sums = edc27018901b0d72fdeae797643070dbfa53dc2220d9f96af059b1aff4430aa9
+	sha256sums = b57c493f1ae135ebc2b809211db091957fa0a7b755856ef1637e58cdd7dd216e
+	sha256sums = 897a8ae9f3bf64e44dea5981b0d1189ea80e4aedf0b4ab039b7e969c7eb7593f
+
+pkgname = fabother-world-git
+
