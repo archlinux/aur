@@ -1,6 +1,6 @@
 pkgbase = gnu-efi-libs-git
 	pkgdesc = Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version
-	pkgver = 0.27.7bcb832
+	pkgver = 0.30.b32a578
 	pkgrel = 1
 	url = http://sourceforge.net/projects/gnu-efi/
 	arch = x86_64
