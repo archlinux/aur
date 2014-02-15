@@ -27,15 +27,14 @@ sha256sums=('c2ef50159348a660eeecf310d75a8c05d02dc33904c59bb14b2b51fb5b3ca232'
             '901c9262d869b4788a1ebb0cd50c5f2a195ebf26d9a8eac74679361f1a19fae1')
 
 _gid_log=19
-_gid_tomcat8=57
-_uid_tomcat8=57
+_gid_tomcat=57
+_uid_tomcat=57
 
 package() {
   cd "${srcdir}/apache-tomcat-${pkgver}"
 
   # Tomcat general files
-  install -dm755 "${pkgdir}"/usr/share/${pkgname} \
-                 "${pkgdir}"/usr/share/java/${pkgname}
+  install -dm755 "${pkgdir}"/usr/share/{,java/}${pkgname}
   cp -r bin "${pkgdir}"/usr/share/${pkgname}
   # commons-daemon and tomcat-natives are packaged on their own
   rm "${pkgdir}"/usr/share/${pkgname}/bin/{*.bat,commons-daemon*,tomcat-native.tar.gz}
@@ -49,23 +48,23 @@ package() {
   ln -s /usr/share/java/${pkgname} "${pkgdir}"/usr/share/${pkgname}/lib
 
   # We log through systemd but this would still be required for stock Tomcat logging
-  install -dm775 -o ${_uid_tomcat8} -g ${_gid_log} "${pkgdir}"/var/log/${pkgname}
+  install -dm775 -o ${_uid_tomcat} -g ${_gid_log} "${pkgdir}"/var/log/${pkgname}
   ln -s /var/log/${pkgname} "${pkgdir}"/usr/share/${pkgname}/logs
   touch "${pkgdir}"/var/log/${pkgname}/catalina.{out,err}
   chgrp ${_gid_log} "${pkgdir}"/var/log/${pkgname}/catalina.{out,err}
 
   install -dm775 "${pkgdir}"/etc/${pkgname}
-  install -g ${_gid_tomcat8} -m640 conf/* "${pkgdir}"/etc/${pkgname}
-  install -d -g ${_gid_tomcat8} -m775 "${pkgdir}"/etc/${pkgname}/Catalina
+  install -g ${_gid_tomcat} -m640 conf/* "${pkgdir}"/etc/${pkgname}
+  install -d -g ${_gid_tomcat} -m775 "${pkgdir}"/etc/${pkgname}/Catalina
   ln -s /etc/${pkgname} "${pkgdir}"/usr/share/${pkgname}/conf
 
   install -dm775 "${pkgdir}"/var/lib/${pkgname}
   cp -r webapps "${pkgdir}"/var/lib/${pkgname}
-  chown -R ${_uid_tomcat8}:${_gid_tomcat8} "${pkgdir}"/var/lib/${pkgname}
+  chown -R ${_uid_tomcat}:${_gid_tomcat} "${pkgdir}"/var/lib/${pkgname}
   ln -s /var/lib/${pkgname}/webapps "${pkgdir}"/usr/share/${pkgname}/webapps
 
   install -dm1777 "${pkgdir}"/var/tmp
-  install -dm775 -o ${_uid_tomcat8} -g ${_gid_tomcat8} "${pkgdir}"/var/tmp/${pkgname}/{temp,work}
+  install -dm775 -o ${_uid_tomcat} -g ${_gid_tomcat} "${pkgdir}"/var/tmp/${pkgname}/{temp,work}
   ln -s /var/tmp/${pkgname}/temp "${pkgdir}"/usr/share/${pkgname}/temp
   ln -s /var/tmp/${pkgname}/work "${pkgdir}"/usr/share/${pkgname}/work
 
