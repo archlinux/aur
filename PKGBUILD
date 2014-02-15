@@ -27,14 +27,6 @@ sha256sums=('c2ef50159348a660eeecf310d75a8c05d02dc33904c59bb14b2b51fb5b3ca232'
             'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847'
             '901c9262d869b4788a1ebb0cd50c5f2a195ebf26d9a8eac74679361f1a19fae1')
 
-# Takes ages:
-#check() {
-#  cd "${srcdir}/apache-tomcat-${pkgver}-src"
-#
-#  ant test \
-#    -Dbase.path="${srcdir}/DOWN_LIBS"
-#}
-
 _gid_log=19
 _gid_tomcat8=57
 _uid_tomcat8=57
