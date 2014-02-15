@@ -2,15 +2,14 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='lib32-eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"
-pkgver=20150619
+pkgver=20140209
 pkgrel=1
+groups=('base')
 arch=('x86_64')
 url="https://github.com/gentoo/eudev"
 license=('GPL')
 depends=('lib32-glib2' 'eudev-git')
 makedepends=('git' 'gcc-multilib' 'lib32-util-linux' 'gobject-introspection' 'gperf')
-replaces=('lib32-systemd')
-conflicts=('lib32-systemd')
 options=(!makeflags !libtool)
 source=('git://github.com/gentoo/eudev.git')
 md5sums=('SKIP')
@@ -35,7 +34,7 @@ build() {
     msg2 "Cleaning up..."
     make clean
   fi
-
+  
   msg2 "Configuring sources..."
   ./autogen.sh
   ./configure --prefix=/usr \
@@ -43,7 +42,8 @@ build() {
               --sysconfdir=/etc \
               --libdir=/usr/lib32 \
               --sbindir=/usr/bin \
-	      --disable-kmod \
+              --with-firmware-path=/usr/lib/firmware/updates:/lib/firmware/updates:/usr/lib/firmware:/lib/firmware \
+              --with-modprobe=/usr/bin/modprobe \
               --enable-gudev \
               --enable-introspection \
               --disable-manpages
@@ -59,9 +59,5 @@ package() {
 
   rm -rf "${pkgdir}"/etc
   rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
-
-  # Getting udev version
-  udevver=$(grep UDEV_VERSION configure.ac | egrep -o "[0-9]{3}")
-  provides+=("lib32-systemd=${udevver}")
 }
 
