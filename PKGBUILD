@@ -2,11 +2,11 @@
 pkgname=tomcat8
 pkgver=8.0.3
 pkgrel=1
+pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=('any')
 url='http://tomcat.apache.org/'
 license=('APACHE')
 makedepends=('java-environment>=7' 'apache-ant>=1.8' 'java-commons-daemon' 'eclipse-ecj')
-pkgdesc='Servlet-3.1/JSP-2.3 Container'
 depends=('java-runtime>=7' 'java-jsvc' 'java-commons-daemon' 'eclipse-ecj')
 optdepends=('tomcat-native: to allow optimal performance in production environments')
 backup=(etc/tomcat8/catalina.policy
