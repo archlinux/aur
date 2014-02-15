@@ -1,6 +1,6 @@
 pkgbase = biosdisk-git
 	pkgdesc = Utility for creating Dell BIOS flash disks
-	pkgver = 21.42a22fe
+	pkgver = v0.75.18.g42a22fe
 	pkgrel = 1
 	url = https://linux.dell.com/biosdisk
 	arch = any

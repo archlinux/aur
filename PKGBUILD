@@ -5,7 +5,7 @@
 
 gitname="biosdisk"
 pkgname="${gitname}-git"
-pkgver=21.42a22fe
+pkgver=v0.75.18.g42a22fe
 pkgrel=1
 arch=('any')
 pkgdesc="Utility for creating Dell BIOS flash disks"
