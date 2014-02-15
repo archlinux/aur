@@ -6,7 +6,6 @@ pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages
 arch=('any')
 url='http://tomcat.apache.org/'
 license=('APACHE')
-makedepends=('java-environment>=7' 'apache-ant>=1.8' 'java-commons-daemon' 'eclipse-ecj')
 depends=('java-runtime>=7' 'java-jsvc' 'java-commons-daemon' 'eclipse-ecj')
 optdepends=('tomcat-native: to allow optimal performance in production environments')
 backup=(etc/tomcat8/catalina.policy
