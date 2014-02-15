@@ -1,7 +1,7 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 pkgname=tomcat8
-pkgver=8.0.1
-pkgrel=2
+pkgver=8.0.3
+pkgrel=1
 arch=('any')
 url='http://tomcat.apache.org/'
 license=('APACHE')
@@ -22,7 +22,7 @@ source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tom
         systemd_tmpfiles.d_tomcat8.conf
         tomcat8.install)
 
-sha256sums=('9f8f58eea82cf5091e7f00893d7983ae8bc247e613acfcf2da6bf827b02ff6d1'
+sha256sums=('c2ef50159348a660eeecf310d75a8c05d02dc33904c59bb14b2b51fb5b3ca232'
             'a72a07377b5c30b36923a410172a4b02925f7743a61ebd39c183b48c427b48a0'
             'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847'
             '901c9262d869b4788a1ebb0cd50c5f2a195ebf26d9a8eac74679361f1a19fae1')
