@@ -31,4 +31,3 @@ ExecStop=/usr/bin/jsvc \
 
 [Install]
 WantedBy=multi-user.target
-
