@@ -21,8 +21,5 @@ pre_remove() {
       groupdel tomcat8
   fi
 
-  echo 'To fully clean Tomcat''s file, consider removing the following directories:'
-  echo '  /var/lib/tomcat8'
-  echo '  /var/tmp/tomcat8'
-  echo '  /var/log/tomcat8'
+  echo 'To fully clean Tomcat''s file, consider removing directories /var/{lib,tmp,log}/tomcat8'
 }
