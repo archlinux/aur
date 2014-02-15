@@ -2,7 +2,7 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20131026
+pkgver=20140209
 pkgrel=1
 _udevver=207
 provides=('eudev' "udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
@@ -12,7 +12,7 @@ groups=('base')
 arch=('i686' 'x86_64')
 url="https://github.com/gentoo/eudev"
 license=('GPL')
-depends=('util-linux' 'glib2' 'kmod' 'hwids' 'bash' 'acl')
+depends=('util-linux' 'glib2' 'kmod' 'hwids' 'bash')
 makedepends=('git' 'gobject-introspection' 'gperf' 'libxslt' 'docbook-xsl')
 options=(!makeflags !libtool)
 install="${pkgname}.install"
@@ -20,8 +20,7 @@ backup=('etc/udev/udev.conf' 'etc/udev/rules.d/80-net-name-slot.rules')
 source=('git://github.com/gentoo/eudev.git'
         'initcpio_hooks'
         'initcpio_install'
-	'80-net-name-slot.rules')
-options=(!makeflags !libtool)
+        '80-net-name-slot.rules')
 md5sums=('SKIP'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
          '88849afefcef229b8f79be7bbf05c3a2'
