@@ -8,18 +8,18 @@ url='http://tomcat.apache.org/'
 license=('APACHE')
 depends=('java-runtime>=7' 'java-jsvc' 'java-commons-daemon' 'eclipse-ecj')
 optdepends=('tomcat-native: to allow optimal performance in production environments')
-backup=(etc/tomcat8/catalina.policy
-        etc/tomcat8/catalina.properties
-        etc/tomcat8/context.xml
-        etc/tomcat8/logging.properties
-        etc/tomcat8/server.xml
-        etc/tomcat8/tomcat-users.xml
-        etc/tomcat8/web.xml)
-install=tomcat8.install
+backup=(etc/${pkgname}/catalina.policy
+        etc/${pkgname}/catalina.properties
+        etc/${pkgname}/context.xml
+        etc/${pkgname}/logging.properties
+        etc/${pkgname}/server.xml
+        etc/${pkgname}/tomcat-users.xml
+        etc/${pkgname}/web.xml)
+install=${pkgname}.install
 source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
-        systemd_tomcat8.service
-        systemd_tmpfiles.d_tomcat8.conf
-        tomcat8.install)
+        systemd_${pkgname}.service
+        systemd_tmpfiles.d_${pkgname}.conf
+        ${pkgname}.install)
 
 sha256sums=('c2ef50159348a660eeecf310d75a8c05d02dc33904c59bb14b2b51fb5b3ca232'
             'a72a07377b5c30b36923a410172a4b02925f7743a61ebd39c183b48c427b48a0'
@@ -68,8 +68,8 @@ package() {
   ln -s /var/tmp/${pkgname}/temp "${pkgdir}"/usr/share/${pkgname}/temp
   ln -s /var/tmp/${pkgname}/work "${pkgdir}"/usr/share/${pkgname}/work
 
-  install -Dm644 "${srcdir}"/systemd_tomcat8.service \
+  install -Dm644 "${srcdir}"/systemd_${pkgname}.service \
                  "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
-  install -Dm644 "${srcdir}"/systemd_tmpfiles.d_tomcat8.conf \
+  install -Dm644 "${srcdir}"/systemd_tmpfiles.d_${pkgname}.conf \
                  "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
