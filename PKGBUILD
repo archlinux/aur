@@ -10,7 +10,7 @@ _gitbranch="master"
 _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
-pkgver=6.03pre1.34.gba3c1d6
+pkgver=6.03pre1.76.g9692bae
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master (previously firmware) branch"
