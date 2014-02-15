@@ -22,9 +22,9 @@ source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tom
         ${pkgname}.install)
 
 sha256sums=('c2ef50159348a660eeecf310d75a8c05d02dc33904c59bb14b2b51fb5b3ca232'
-            'a72a07377b5c30b36923a410172a4b02925f7743a61ebd39c183b48c427b48a0'
+            '4f895aa4834489411a1b19027e12e8eb0d3a7408127be720e5aad8f9a0e1d660'
             'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847'
-            '901c9262d869b4788a1ebb0cd50c5f2a195ebf26d9a8eac74679361f1a19fae1')
+            '32fcb0f44e32cd8901e936ebad4942a399efa8b98fdc42f5345dd8929b6c1887')
 
 _gid_log=19
 _gid_tomcat=57

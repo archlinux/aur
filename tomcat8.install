@@ -1,6 +1,16 @@
+_pkgname='tomcat8'
+_gid_tomcat_name='tomcat8'
+_gid_tomcat=57
+_uid_tomcat_name='tomcat8'
+_uid_tomcat=57
+
 post_install() {
-  getent group  tomcat8 >/dev/null 2>&1 || groupadd -g 57 tomcat8
-  getent passwd tomcat8 >/dev/null 2>&1 || useradd  -u 57 -g tomcat8 -d /usr/share/tomcat8 -s /bin/false tomcat8
+  if ! getent group ${_gid_tomcat_name} >/dev/null 2>&1; then
+    groupadd -g ${_gid_tomcat} ${_gid_tomcat_name}
+  fi
+  if ! getent passwd ${_uid_tomcat_name} >/dev/null 2>&1; then
+    useradd  -u ${_uid_tomcat} -g ${_gid_tomcat_name} -d /usr/share/${_pkgname} -s /bin/false ${_uid_tomcat_name}
+  fi
 
   if [ -f lib/modules/$(uname -r)/kernel/security/capability.ko ]; then
     echo 'It appears that your current kernel has linux security'
@@ -14,12 +24,12 @@ post_upgrade() {
 }
 
 pre_remove() {
-  if getent passwd tomcat8 > /dev/null 2>&1; then
-      userdel tomcat8
+  if getent passwd ${_uid_tomcat_name} > /dev/null 2>&1; then
+    userdel ${_uid_tomcat_name}
   fi
-  if getent group tomcat8 > /dev/null 2>&1; then
-      groupdel tomcat8
+  if getent group ${_gid_tomcat_name} > /dev/null 2>&1; then
+    groupdel ${_gid_tomcat_name}
   fi
 
-  echo 'To fully clean Tomcat''s file, consider removing directories /var/{lib,tmp,log}/tomcat8'
+  echo "To fully clean Tomcat's file, consider removing directories /var/{lib,tmp,log}/${_pkgname}"
 }
