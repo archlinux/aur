@@ -1,0 +1,33 @@
+# CPAN Name  : Tree::Binary
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl package for OO binary tree'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl')
+checkdepends=('perl-test-exception')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+build() {
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
+}
+
+check() {
+	cd [% distdir %]
+	make test
+}
+
+package() {
+	cd [% distdir %]
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
