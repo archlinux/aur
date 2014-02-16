@@ -3,7 +3,7 @@
 pkgname=pilight
 pkgver=3.0
 _pkgver_major=$(sed -n 's/\(^[0-9]\+\)\.*.*$/\1/p' <<< $pkgver)
-pkgrel=2
+pkgrel=3
 pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
