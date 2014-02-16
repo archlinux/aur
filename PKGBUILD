@@ -20,5 +20,3 @@ package() {
 	cd pafy
 	python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim: set ts=4 sts=4 sw=4 noet:
