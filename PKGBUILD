@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect-git
-pkgver=20130103
+pkgver=20140215
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
@@ -34,9 +34,6 @@ build() {
   cp -rf "${_gitname}" "${_gitname}-build"
   cd "${_gitname}-build"
 
-  # Install "libfreenect.hpp" to "/usr/include/libfreenect"
-  sed 's/DESTINATION include/DESTINATION ${PROJECT_INCLUDE_INSTALL_DIR}/g' -i "wrappers/cpp/CMakeLists.txt"
-
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include -DLIB_SUFFIX="" \
     -DBUILD_AUDIO=ON \
@@ -53,10 +50,4 @@ package() {
 
   make DESTDIR="${pkgdir}" install
   install -Dm644 platform/linux/udev/51-kinect.rules "${pkgdir}/etc/udev/rules.d/51-kinect.rules"
-
-  # Patch include files
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect.hpp"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect_audio.h"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect_registration.h"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect_sync.h"
 }
