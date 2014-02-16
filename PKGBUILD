@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
@@ -12,16 +12,13 @@ makedepends=('cmake' 'libxmu' 'python2-numpy')
 optdepends=('opencv: support for python demos'
             'python2-matplotlib: support for python demos')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/OpenKinect/libfreenect/archive/v${pkgver}.tar.gz)
-md5sums=(c96d38d7d16e09294b41f650ccd3ea68)
-sha256sums=(288a82402f5ca9d5edfec4fcf4af2c197433a12db03a0e7ce28ac77c530cedad)
-sha384sums=(7c2b41fb647396a06c0f30ad0a77fa3c89d8ab05c35e5c9f5a9d7d919672a0559703229393261e92a80e8892a775fb51)
-sha512sums=(6331c146dab2a0dd747985c6dbabfb9bf84edbc5e7fcb1ca53cd94e930f20f97c8e707017916c76dd939f25ee1e07a100bc564061ace2d31c59a0f2db77b61a7)
+md5sums=(dcc66679e6c82612f8d1187e606277c2)
+sha256sums=(291da3812dfa7bea70b19ca3dc51bce8d403c21e0a11ca57641f4df1392c40a8)
+sha384sums=(0baa8bdc8cf89175e43c004c24a91ec62198795973a2b4e8c90787a4d4924a3edde45f2959d311754f0bc464d113333a)
+sha512sums=(d7ec3425c73e2a863e6a5880e85cf559dfe0b08e03b8851bde40afcfc9c2fc9a84eb941cda0a4de6e3a1bd31a2d272bf566c8f34588f0b66bd3986502f9bd7fd)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Install "libfreenect.hpp" to "/usr/include/libfreenect"
-  sed 's/DESTINATION include/DESTINATION ${PROJECT_INCLUDE_INSTALL_DIR}/g' -i "wrappers/cpp/CMakeLists.txt"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include -DLIB_SUFFIX="" \
@@ -39,10 +36,4 @@ package() {
 
   make DESTDIR="${pkgdir}" install
   install -Dm644 platform/linux/udev/51-kinect.rules "${pkgdir}/etc/udev/rules.d/51-kinect.rules"
-	
-  # Patch include files
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect.hpp"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect-audio.h"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect-registration.h"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect_sync.h"
 }
