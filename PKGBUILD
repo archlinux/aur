@@ -15,11 +15,11 @@ provides=('urxvt-tabbedex')
 conflicts=('urxvt-tabbedex')
 install=urxvt-tabbedex.install
 source=('git+https://github.com/stepb/urxvt-tabbedex.git#tag=tabbedex-0.4'
-				'0001-make-urxvt-tabbedex-work-with-perl-5.18.patch'
-				'urxvt-tabbedex.install')
+		'0001-make-urxvt-tabbedex-work-with-perl-5.18.patch'
+		'urxvt-tabbedex.install')
 md5sums=('SKIP'
-				 '92d581a40779da3127c88fdc7d10257f'
-				 'a07c8a1c46379ab763a113d3d9f4111e')
+		 '92d581a40779da3127c88fdc7d10257f'
+		 'a07c8a1c46379ab763a113d3d9f4111e')
 
 prepare() {
 	cd urxvt-tabbedex
@@ -29,5 +29,3 @@ prepare() {
 package() {
 	install -Dm644 urxvt-tabbedex/tabbedex "$pkgdir"/usr/lib/urxvt/perl/tabbedex
 }
-
-# vim: set ts=2 sts=2 sw=2 noet:
