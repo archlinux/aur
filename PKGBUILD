@@ -2,7 +2,8 @@
 
 pkgname=pilight-git
 _pkgname=pilight
-pkgver=v3.0.r2.gf1fecb7
+pkgver=v3.0.r163.geccaab8
+_pkgver_major=$(sed -n 's/^v\([0-9]\+\)\.*.*$/\1/p' <<< $pkgver)
 pkgrel=1
 pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
@@ -17,7 +18,11 @@ conflicts=('pilight')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    # Why is the last tag skipped?
+    local latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+    local description=$(git describe | sed 's/^v.*-\(.*-.*\)$/\1/')
+    sed -E 's/([^-]*-g)/r\1/;s/-/./g' <<< "${latest_tag}-${description}"
+    # git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -42,8 +47,8 @@ package() {
     # Fix paths
     cd "${pkgdir}"
     mv usr/sbin usr/bin
-    mv usr/lib/pilight/libpilight.so.2 usr/lib/libpilight.so.2
-    ln -s usr/lib/libpilight.so.2 usr/lib/libpilight.so
+    mv usr/lib/pilight/libpilight.so.${_pkgver_major} usr/lib/libpilight.so.${_pkgver_major}
+    ln -s usr/lib/libpilight.so.${_pkgver_major} usr/lib/libpilight.so
     mkdir -p usr/share/webapps/${_pkgname}
     mv usr/local/share/${_pkgname}/default usr/share/webapps/${_pkgname}
 
