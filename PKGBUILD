@@ -4,7 +4,7 @@ pkgname=pilight-git
 _pkgname=pilight
 pkgver=v3.0.r163.geccaab8
 _pkgver_major=$(sed -n 's/^v\([0-9]\+\)\.*.*$/\1/p' <<< $pkgver)
-pkgrel=2
+pkgrel=3
 pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
@@ -13,7 +13,7 @@ makedepends=('git' 'gcc' 'glibc')
 source=('git+https://github.com/pilight/pilight.git#branch=development'
         'https://raw.github.com/pschmitt/aur-pilight-git/master/pilight.service')
 sha256sums=('SKIP'
-            'a6646c4ccb653d17b6b77a3659d96e5d37becd3a0c0daedce48773094ad81e40')
+            '25ffe32693a9a68be4234f63248f6e72e1704cbb74646f77672d02ba19e7f179')
 conflicts=('pilight')
 
 pkgver() {
