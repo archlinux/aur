@@ -39,8 +39,11 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include -DLIB_SUFFIX="" \
-    -DBUILD_AUDIO=ON -DBUILD_PYTHON=ON -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DPython_ADDITIONAL_VERSIONS="2.7;2.6;2.5;2.4;2.3;2.2;2.1;2.0".
+    -DBUILD_AUDIO=ON \
+    -DBUILD_OPENNI2_DRIVER=ON \
+    -DBUILD_PYTHON=ON \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPython_ADDITIONAL_VERSIONS="2.7;2.6;2.5;2.4;2.3;2.2;2.1;2.0" .
 
   make
 }
@@ -53,7 +56,7 @@ package() {
 
   # Patch include files
   sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect.hpp"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect-audio.h"
-  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect-registration.h"
+  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect_audio.h"
+  sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect_registration.h"
   sed 's/<libfreenect.h>/<libfreenect\/libfreenect.h>/g' -i "${pkgdir}/usr/include/libfreenect/libfreenect_sync.h"
 }
