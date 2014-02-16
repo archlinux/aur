@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('git' 'gcc' 'glibc')
 source=("https://github.com/pilight/pilight/archive/v${pkgver}.tar.gz"
         'https://raw.github.com/pschmitt/aur-pilight/master/pilight.service')
-sha256sums=('fabc7f53c61340e95ccd974c0224cd9eba8833679853188c7d6dddad58c6d435'
+sha256sums=('fdd75bccdb4df1e75749ba6b1b490d5e258a752e85efd5f63ea35130a1de94f1'
             'a6646c4ccb653d17b6b77a3659d96e5d37becd3a0c0daedce48773094ad81e40')
 conflicts=('pilight-git')
 
