@@ -5,7 +5,6 @@ post_install() {
     <layout>
       <configItem>
         <name>se_sv_dvorak</name>
-        
         <shortDescription>sv_sv_dvorak</shortDescription>
         <description>Swedish (sv_dvorak)</description>
         <languageList>
@@ -15,5 +14,3 @@ post_install() {
     </layout>
 EOF
 }
-
-# vim: set ts=4 sw=4 noet:
