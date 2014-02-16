@@ -8,7 +8,5 @@ post_install () {
 }
 
 post_upgrade () {
-	post_install $1
+	post_install
 }
-
-# vim: set ts=4 sw=4 noet:
