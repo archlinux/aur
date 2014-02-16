@@ -20,6 +20,9 @@ prepare() {
     # Fix zlib path
     sed -i 's|\(/usr/lib/\).*/\(libz.so\)|\1\2|g' CMakeLists.txt
     sed -i 's|\("webserver-root"\): "/usr/local/share/pilight/"|\1: "/usr/share/webapps/pilight"|' settings.json-default
+    # Dirty fix for hardcoded interface name (try to guess default network interface name)
+    local default_net_interface=$(route | grep default | tail -1 | awk '{ print $NF }')
+    sed -i "s/eth0/${default_net_interface}/g" libs/pilight/ssdp.c
 }
 
 build() {
