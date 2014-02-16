@@ -4,7 +4,7 @@ pkgname=pilight-git
 _pkgname=pilight
 pkgver=v3.0.r163.geccaab8
 _pkgver_major=$(sed -n 's/^v\([0-9]\+\)\.*.*$/\1/p' <<< $pkgver)
-pkgrel=1
+pkgrel=2
 pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
@@ -30,6 +30,10 @@ prepare() {
     # Fix zlib path
     sed -i 's|\(/usr/lib/\).*/\(libz.so\)|\1\2|g' CMakeLists.txt
     sed -i 's|\("webserver-root"\): "/usr/local/share/pilight/"|\1: "/usr/share/webapps/pilight"|' settings.json-default
+    sed -i 's|\("pid-file"\): "/var\(/run/pilight.pid\)"|\1: "\2"|' settings.json-default
+    # Dirty fix for hardcoded interface name (try to guess default network interface name)
+    local default_net_interface=$(route | grep default | tail -1 | awk '{ print $NF }')
+    sed -i "s/eth0/${default_net_interface}/g" libs/pilight/ssdp.c
 }
 
 build() {
