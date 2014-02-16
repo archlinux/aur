@@ -11,7 +11,7 @@ license=('GPL')
 depends=('libfm-gtk-git')
 makedepends=('git' 'intltool' 'pkg-config')
 optdepends=('gvfs: mounting of local and remote drives'
-						'gnome-menus: applications menu and "Open with..." dialog')
+			'gnome-menus: applications menu and "Open with..." dialog')
 provides=('pcmanfm')
 conflicts=('pcmanfm')
 install=pcmanfm.install
@@ -33,5 +33,3 @@ build() {
 package() {
 	make -C pcmanfm DESTDIR="$pkgdir" install
 }
-
-# vim: set ts=2 sts=2 sw=2 noet:
