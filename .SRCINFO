@@ -1,7 +1,7 @@
 pkgbase = pilight
 	pkgdesc = Modular domotica with the Raspberry Pi
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pilight.org/
 	arch = x86_64
 	arch = armv6h
@@ -12,7 +12,7 @@ pkgbase = pilight
 	conflicts = pilight-git
 	source = https://github.com/pilight/pilight/archive/v3.0.tar.gz
 	source = https://raw.github.com/pschmitt/aur-pilight/master/pilight.service
-	sha256sums = 7cdd313e0b234c694b617f1a672abf8ad588ded00c4e130378b7285999b1d18e
+	sha256sums = fabc7f53c61340e95ccd974c0224cd9eba8833679853188c7d6dddad58c6d435
 	sha256sums = a6646c4ccb653d17b6b77a3659d96e5d37becd3a0c0daedce48773094ad81e40
 
 pkgname = pilight
