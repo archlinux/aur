@@ -1,5 +1,6 @@
 [Unit]
 Description=pilight daemon
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/pilight-daemon
