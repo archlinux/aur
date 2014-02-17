@@ -1,0 +1,777 @@
+diff --git a/data/80-udisks2.rules b/data/80-udisks2.rules
+index ed093ee..7112db8 100644
+--- a/data/80-udisks2.rules
++++ b/data/80-udisks2.rules
+@@ -94,6 +94,9 @@ SUBSYSTEMS=="usb", ENV{ID_VENDOR}=="*SanDisk*", ENV{ID_MODEL}=="*Cruzer*", ENV{I
+ SUBSYSTEMS=="usb", ENV{ID_VENDOR}=="HP", ENV{ID_MODEL}=="*v125w*", ENV{ID_DRIVE_THUMB}="1"
+ SUBSYSTEMS=="usb", ENV{ID_VENDOR_ID}=="13fe", ENV{ID_MODEL}=="*Patriot*", ENV{ID_DRIVE_THUMB}="1"
+ 
++# SD-Card reader in Chromebook Pixel
++SUBSYSTEMS=="usb", ENV{ID_VENDOR_ID}=="05e3", ENV{ID_MODEL_ID}=="0727", ENV{ID_DRIVE_FLASH_SD}="1"
++
+ # ------------------------------------------------------------------------
+ # ------------------------------------------------------------------------
+ # ------------------------------------------------------------------------
+diff --git a/doc/man/udisksctl.xml b/doc/man/udisksctl.xml
+index 8f38479..434a8fb 100644
+--- a/doc/man/udisksctl.xml
++++ b/doc/man/udisksctl.xml
+@@ -104,6 +104,16 @@
+ 
+     <cmdsynopsis>
+       <command>udisksctl</command>
++      <arg choice="plain">power-off </arg>
++      <group choice="req">
++        <arg choice="plain">--object-path <replaceable>OBJECT</replaceable></arg>
++        <arg choice="plain">--block-device <replaceable>DEVICE</replaceable></arg>
++      </group>
++      <arg choice="opt">--no-user-interaction</arg>
++    </cmdsynopsis>
++
++    <cmdsynopsis>
++      <command>udisksctl</command>
+       <arg choice="plain">smart-simulate </arg>
+       <arg choice="plain">--file <replaceable>PATH</replaceable></arg>
+       <group choice="req">
+@@ -238,6 +248,31 @@
+       </varlistentry>
+ 
+       <varlistentry>
++        <term><option>power-off</option></term>
++        <listitem>
++          <para>
++            Arranges for the drive to be safely removed and powered
++            off. On the OS side this includes ensuring that no process
++            is using the drive, then requesting that in-flight buffers
++            and caches are committed to stable storage. The exact
++            steps for powering off the drive depends on the drive
++            itself and the interconnect used. For drives connected
++            through USB, the effect is that the USB device will be
++            deconfigured followed by disabling the upstream hub port
++            it is connected to.
++          </para>
++          <para>
++            Note that as some physical devices contain multiple drives
++            (for example 4-in-1 flash card reader USB devices)
++            powering off one drive may affect other drives. As such
++            there are not a lot of guarantees associated with
++            performing this action. Usually the effect is that the
++            drive disappears as if it was unplugged.
++          </para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
+         <term><option>smart-simulate</option></term>
+         <listitem>
+           <para>
+diff --git a/src/udisksdaemonutil.c b/src/udisksdaemonutil.c
+index 574bf2c..a588580 100644
+--- a/src/udisksdaemonutil.c
++++ b/src/udisksdaemonutil.c
+@@ -830,7 +830,7 @@ udisks_daemon_util_get_caller_uid_sync (UDisksDaemon            *daemon,
+     {
+       struct passwd pwstruct;
+       gchar pwbuf[8192];
+-      static struct passwd *pw;
++      struct passwd *pw = NULL;
+       int rc;
+ 
+       rc = getpwuid_r (uid, &pwstruct, pwbuf, sizeof pwbuf, &pw);
+@@ -840,6 +840,7 @@ udisks_daemon_util_get_caller_uid_sync (UDisksDaemon            *daemon,
+                        UDISKS_ERROR,
+                        UDISKS_ERROR_FAILED,
+                        "User with uid %d does not exist", (gint) uid);
++          goto out;
+         }
+       else if (pw == NULL)
+         {
+diff --git a/src/udiskslinuxblock.c b/src/udiskslinuxblock.c
+index d619850..22bcfd0 100644
+--- a/src/udiskslinuxblock.c
++++ b/src/udiskslinuxblock.c
+@@ -804,12 +804,23 @@ udisks_linux_block_update (UDisksLinuxBlock        *block,
+       gchar *dm_name_dev_file = NULL;
+       const gchar *dm_name_dev_file_as_symlink = NULL;
+ 
++      const gchar *dm_vg_name;
++      const gchar *dm_lv_name;
++      gchar *dm_lvm_dev_file = NULL;
++
+       dm_name = g_udev_device_get_property (device->udev_device, "DM_NAME");
+       if (dm_name != NULL)
+         dm_name_dev_file = g_strdup_printf ("/dev/mapper/%s", dm_name);
++
++      dm_vg_name = g_udev_device_get_property (device->udev_device, "DM_VG_NAME");
++      dm_lv_name = g_udev_device_get_property (device->udev_device, "DM_LV_NAME");
++      if (dm_vg_name != NULL && dm_lv_name != NULL)
++        dm_lvm_dev_file =  g_strdup_printf ("/dev/%s/%s", dm_vg_name, dm_lv_name);
++
+       for (n = 0; symlinks != NULL && symlinks[n] != NULL; n++)
+         {
+-          if (g_str_has_prefix (symlinks[n], "/dev/vg_"))
++          if (g_str_has_prefix (symlinks[n], "/dev/vg_")
++              || g_strcmp0 (symlinks[n], dm_lvm_dev_file) == 0)
+             {
+               /* LVM2 */
+               preferred_device_file = symlinks[n];
+@@ -824,6 +835,7 @@ udisks_linux_block_update (UDisksLinuxBlock        *block,
+       if (preferred_device_file == NULL && dm_name_dev_file_as_symlink != NULL)
+         preferred_device_file = dm_name_dev_file_as_symlink;
+       g_free (dm_name_dev_file);
++      g_free (dm_lvm_dev_file);
+     }
+   else if (g_str_has_prefix (device_file, "/dev/md"))
+     {
+diff --git a/src/udiskslinuxdevice.c b/src/udiskslinuxdevice.c
+index 0b65a69..8c4a3ed 100644
+--- a/src/udiskslinuxdevice.c
++++ b/src/udiskslinuxdevice.c
+@@ -199,6 +199,7 @@ probe_ata (UDisksLinuxDevice  *device,
+     {
+       /* ATA8: 7.16 IDENTIFY DEVICE - ECh, PIO Data-In */
+       input.command = 0xec;
++      input.count = 1;
+       output.buffer = g_new0 (guchar, 512);
+       output.buffer_size = 512;
+       if (!udisks_ata_send_command_sync (fd,
+@@ -221,6 +222,7 @@ probe_ata (UDisksLinuxDevice  *device,
+     {
+       /* ATA8: 7.17 IDENTIFY PACKET DEVICE - A1h, PIO Data-In */
+       input.command = 0xa1;
++      input.count = 1;
+       output.buffer = g_new0 (guchar, 512);
+       output.buffer_size = 512;
+       if (!udisks_ata_send_command_sync (fd,
+diff --git a/src/udiskslinuxdrive.c b/src/udiskslinuxdrive.c
+index 170ba27..ed541ff 100644
+--- a/src/udiskslinuxdrive.c
++++ b/src/udiskslinuxdrive.c
+@@ -25,6 +25,12 @@
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <fcntl.h>
++#include <inttypes.h>
++#include <errno.h>
++#include <linux/bsg.h>
++#include <scsi/scsi.h>
++#include <scsi/sg.h>
++#include <scsi/scsi_ioctl.h>
+ 
+ #include <pwd.h>
+ #include <grp.h>
+@@ -1192,6 +1198,122 @@ handle_set_configuration (UDisksDrive           *_drive,
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
++/* TODO: move to udisksscsi.[ch] similar what we do for ATA with udisksata.[ch] */
++
++static gboolean
++send_scsi_command_sync (gint      fd,
++                        guint8   *cdb,
++                        gsize     cdb_len,
++                        GError  **error)
++{
++  struct sg_io_v4 io_v4;
++  uint8_t sense[32];
++  gboolean ret = FALSE;
++  gint rc;
++  gint timeout_msec = 30000; /* 30 seconds */
++
++  g_return_val_if_fail (fd != -1, FALSE);
++  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
++
++  /* See http://sg.danny.cz/sg/sg_io.html and http://www.tldp.org/HOWTO/SCSI-Generic-HOWTO/index.html
++   * for detailed information about how the SG_IO ioctl work
++   */
++
++  memset (sense, 0, sizeof (sense));
++  memset (&io_v4, 0, sizeof (io_v4));
++  io_v4.guard = 'Q';
++  io_v4.protocol = BSG_PROTOCOL_SCSI;
++  io_v4.subprotocol = BSG_SUB_PROTOCOL_SCSI_CMD;
++  io_v4.request_len = cdb_len;
++  io_v4.request = (uintptr_t) cdb;
++  io_v4.max_response_len = sizeof (sense);
++  io_v4.response = (uintptr_t) sense;
++  io_v4.timeout = timeout_msec;
++
++  rc = ioctl (fd, SG_IO, &io_v4);
++  if (rc != 0)
++    {
++      /* could be that the driver doesn't do version 4, try version 3 */
++      if (errno == EINVAL)
++        {
++          struct sg_io_hdr io_hdr;
++          memset (&io_hdr, 0, sizeof (struct sg_io_hdr));
++          io_hdr.interface_id = 'S';
++          io_hdr.cmdp = (unsigned char*) cdb;
++          io_hdr.cmd_len = cdb_len;
++          io_hdr.dxfer_direction = SG_DXFER_NONE;
++          io_hdr.sbp = sense;
++          io_hdr.mx_sb_len = sizeof (sense);
++          io_hdr.timeout = timeout_msec;
++
++          rc = ioctl (fd, SG_IO, &io_hdr);
++          if (rc != 0)
++            {
++              g_set_error (error, G_IO_ERROR, g_io_error_from_errno (errno),
++                           "SGIO v3 ioctl failed (v4 not supported): %m");
++              goto out;
++            }
++          else
++            {
++              if (!(io_hdr.status == 0 &&
++                    io_hdr.host_status == 0 &&
++                    io_hdr.driver_status == 0))
++                {
++                  g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                               "Non-GOOD SCSI status from SGIO v3 ioctl: "
++                               "status=%d host_status=%d driver_status=%d",
++                               io_hdr.status,
++                               io_hdr.host_status,
++                               io_hdr.driver_status);
++                  goto out;
++                }
++            }
++        }
++      else
++        {
++          g_set_error (error, G_IO_ERROR, g_io_error_from_errno (errno),
++                       "SGIO v4 ioctl failed: %m");
++          goto out;
++        }
++    }
++  else
++    {
++      if (!(io_v4.device_status == 0 &&
++            io_v4.transport_status == 0 &&
++            io_v4.driver_status == 0))
++        {
++          g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                       "Non-GOOD SCSI status from SGIO v4 ioctl: "
++                       "device_status=%d transport_status=%d driver_status=%d",
++                       io_v4.device_status,
++                       io_v4.transport_status,
++                       io_v4.driver_status);
++          goto out;
++        }
++    }
++
++  ret = TRUE;
++
++ out:
++  return ret;
++}
++
++static gboolean
++send_scsi_start_stop_command_sync (gint      fd,
++                                   GError  **error)
++{
++  uint8_t cdb[6];
++
++  /* SBC3 (SCSI Block Commands), 5.20 START STOP UNIT command
++   */
++  memset (cdb, 0, sizeof cdb);
++  cdb[0] = 0x1b;                        /* OPERATION CODE: START STOP UNIT */
++
++  return send_scsi_command_sync (fd, cdb, sizeof cdb, error);
++}
++
++/* ---------------------------------------------------------------------------------------------------- */
++
+ static gboolean
+ handle_power_off (UDisksDrive           *_drive,
+                   GDBusMethodInvocation *invocation,
+@@ -1216,6 +1338,7 @@ handle_power_off (UDisksDrive           *_drive,
+   gid_t caller_gid;
+   pid_t caller_pid;
+   GList *sibling_objects = NULL, *l;
++  gint fd = -1;
+ 
+   object = udisks_daemon_util_dup_object (drive, &error);
+   if (object == NULL)
+@@ -1324,10 +1447,10 @@ handle_power_off (UDisksDrive           *_drive,
+     {
+       UDisksBlock *block_to_sync = UDISKS_BLOCK (l->data);
+       const gchar *device_file;
+-      gint fd;
++      gint device_fd;
+       device_file = udisks_block_get_device (block_to_sync);
+-      fd = open (device_file, O_RDONLY|O_NONBLOCK|O_EXCL);
+-      if (fd == -1)
++      device_fd = open (device_file, O_RDONLY|O_NONBLOCK|O_EXCL);
++      if (device_fd == -1)
+         {
+           g_dbus_method_invocation_return_error (invocation,
+                                                  UDISKS_ERROR,
+@@ -1336,7 +1459,7 @@ handle_power_off (UDisksDrive           *_drive,
+                                                  device_file);
+           goto out;
+         }
+-      if (fsync (fd) != 0)
++      if (fsync (device_fd) != 0)
+         {
+           g_dbus_method_invocation_return_error (invocation,
+                                                  UDISKS_ERROR,
+@@ -1345,7 +1468,7 @@ handle_power_off (UDisksDrive           *_drive,
+                                                  device_file);
+           goto out;
+         }
+-      if (close (fd) != 0)
++      if (close (device_fd) != 0)
+         {
+           g_dbus_method_invocation_return_error (invocation,
+                                                  UDISKS_ERROR,
+@@ -1356,9 +1479,45 @@ handle_power_off (UDisksDrive           *_drive,
+         }
+     }
+ 
+-  escaped_device = udisks_daemon_util_escape_and_quote (udisks_block_get_device (block));
++  /* Send the "SCSI START STOP UNIT" command to request that the unit
++   * be stopped but don't treat failure as fatal. In fact some
++   * USB-attached hard-disks fails with this command, probably due to
++   * the SCSI/SATA translation layer.
++   */
++  fd = open (udisks_block_get_device (block), O_RDONLY|O_NONBLOCK|O_EXCL);
++  if (fd == -1)
++    {
++      g_dbus_method_invocation_return_error (invocation,
++                                             UDISKS_ERROR,
++                                             UDISKS_ERROR_FAILED,
++                                             "Error opening %s: %m",
++                                             udisks_block_get_device (block));
++      goto out;
++    }
++  if (!send_scsi_start_stop_command_sync (fd, &error))
++    {
++      udisks_warning ("Ignoring SCSI command START STOP UNIT failure (%s) on %s",
++                      error->message,
++                      udisks_block_get_device (block));
++      g_clear_error (&error);
++    }
++  else
++    {
++      udisks_notice ("Powering off %s - successfully sent SCSI command START STOP UNIT",
++                     udisks_block_get_device (block));
++    }
++  if (close (fd) != 0)
++    {
++      g_dbus_method_invocation_return_error (invocation,
++                                             UDISKS_ERROR,
++                                             UDISKS_ERROR_FAILED,
++                                             "Error closing %s: %m",
++                                             udisks_block_get_device (block));
++      goto out;
++    }
++  fd = -1;
+ 
+-  /* TODO: Send the eject? Send SCSI START STOP UNIT? */
++  escaped_device = udisks_daemon_util_escape_and_quote (udisks_block_get_device (block));
+   device = udisks_linux_drive_object_get_device (object, TRUE /* get_hw */);
+   if (device == NULL)
+     {
+@@ -1405,10 +1564,20 @@ handle_power_off (UDisksDrive           *_drive,
+         }
+     }
+   fclose (f);
++  udisks_notice ("Powered off %s - successfully wrote to sysfs path %s",
++                 udisks_block_get_device (block),
++                 remove_path);
+ 
+   udisks_drive_complete_power_off (UDISKS_DRIVE (drive), invocation);
+ 
+  out:
++  if (fd != -1)
++    {
++      if (close (fd) != 0)
++        {
++          udisks_warning ("Error closing device: %m");
++        }
++    }
+   g_list_free_full (blocks_to_sync, g_object_unref);
+   g_list_free_full (sibling_objects, g_object_unref);
+   g_free (remove_path);
+diff --git a/src/udiskslinuxdriveata.c b/src/udiskslinuxdriveata.c
+index 48cc6e6..534ef4d 100644
+--- a/src/udiskslinuxdriveata.c
++++ b/src/udiskslinuxdriveata.c
+@@ -1943,7 +1943,7 @@ udisks_linux_drive_ata_secure_erase_sync (UDisksLinuxDriveAta     *drive,
+   /* First get the IDENTIFY data directly from the drive, for sanity checks */
+   {
+     /* ATA8: 7.16 IDENTIFY DEVICE - ECh, PIO Data-In */
+-    UDisksAtaCommandInput input = {.command = 0xec};
++    UDisksAtaCommandInput input = {.command = 0xec, .count = 1};
+     UDisksAtaCommandOutput output = {.buffer = identify.buf, .buffer_size = sizeof (identify.buf)};
+     if (!udisks_ata_send_command_sync (fd,
+                                        -1,
+diff --git a/src/udiskslinuxfilesystem.c b/src/udiskslinuxfilesystem.c
+index 4c8d8aa..f243046 100644
+--- a/src/udiskslinuxfilesystem.c
++++ b/src/udiskslinuxfilesystem.c
+@@ -348,13 +348,16 @@ find_mount_options_for_fs (const gchar *fstype)
+ static gid_t
+ find_primary_gid (uid_t uid)
+ {
+-  struct passwd *pw;
++  struct passwd *pw = NULL;
++  struct passwd pwstruct;
++  gchar pwbuf[8192];
++  int rc;
+   gid_t gid;
+ 
+   gid = (gid_t) - 1;
+ 
+-  pw = getpwuid (uid);
+-  if (pw == NULL)
++  rc = getpwuid_r (uid, &pwstruct, pwbuf, sizeof pwbuf, &pw);
++  if (rc != 0 || pw == NULL)
+     {
+       udisks_warning ("Error looking up uid %d: %m", uid);
+       goto out;
+@@ -370,7 +373,10 @@ is_uid_in_gid (uid_t uid,
+                gid_t gid)
+ {
+   gboolean ret;
+-  struct passwd *pw;
++  struct passwd *pw = NULL;
++  struct passwd pwstruct;
++  gchar pwbuf[8192];
++  int rc;
+   static gid_t supplementary_groups[128];
+   int num_supplementary_groups = 128;
+   int n;
+@@ -379,8 +385,8 @@ is_uid_in_gid (uid_t uid,
+ 
+   ret = FALSE;
+ 
+-  pw = getpwuid (uid);
+-  if (pw == NULL)
++  rc = getpwuid_r (uid, &pwstruct, pwbuf, sizeof pwbuf, &pw);
++  if (rc != 0 || pw == NULL)
+     {
+       udisks_warning ("Error looking up uid %d: %m", uid);
+       goto out;
+diff --git a/src/udisksspawnedjob.c b/src/udisksspawnedjob.c
+index 802551f..b181933 100644
+--- a/src/udisksspawnedjob.c
++++ b/src/udisksspawnedjob.c
+@@ -371,22 +371,25 @@ static void
+ child_setup (gpointer user_data)
+ {
+   UDisksSpawnedJob *job = UDISKS_SPAWNED_JOB (user_data);
+-  struct passwd *pw;
++  struct passwd pwstruct;
++  gchar pwbuf[8192];
++  struct passwd *pw = NULL;
++  int rc;
+   gid_t egid;
+ 
+   if (job->run_as_uid == getuid () && job->run_as_euid == geteuid ())
+     goto out;
+ 
+-  pw = getpwuid (job->run_as_euid);
+-  if (pw == NULL)
++  rc = getpwuid_r (job->run_as_euid, &pwstruct, pwbuf, sizeof pwbuf, &pw);
++  if (rc != 0 || pw == NULL)
+    {
+      g_printerr ("No password record for uid %d: %m\n", (gint) job->run_as_euid);
+      abort ();
+    }
+   egid = pw->pw_gid;
+ 
+-  pw = getpwuid (job->run_as_uid);
+-  if (pw == NULL)
++  rc = getpwuid_r (job->run_as_uid, &pwstruct, pwbuf, sizeof pwbuf, &pw);
++  if (rc != 0 || pw == NULL)
+    {
+      g_printerr ("No password record for uid %d: %m\n", (gint) job->run_as_uid);
+      abort ();
+diff --git a/tools/udisksctl.c b/tools/udisksctl.c
+index 97b0f17..c87fe9f 100644
+--- a/tools/udisksctl.c
++++ b/tools/udisksctl.c
+@@ -1691,6 +1691,12 @@ handle_command_loop (gint        *argc,
+           goto out;
+         }
+ 
++      if (udisks_object_peek_loop (object) == NULL)
++        {
++          g_printerr ("Error: specified object is not a loop device\n");
++          goto out;
++        }
++
+     delete_try_again:
+       error = NULL;
+       if (!udisks_loop_call_delete_sync (udisks_object_peek_loop (object),
+@@ -2009,6 +2015,238 @@ handle_command_smart_simulate (gint        *argc,
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
++static gchar   *opt_power_off_object_path = NULL;
++static gchar   *opt_power_off_device = NULL;
++static gboolean opt_power_off_no_user_interaction = FALSE;
++
++static const GOptionEntry command_power_off_entries[] =
++{
++  {
++    "object-path",
++    'p',
++    0,
++    G_OPTION_ARG_STRING,
++    &opt_power_off_object_path,
++    "Object path for ATA device",
++    NULL
++  },
++  {
++    "block-device",
++    'b',
++    0,
++    G_OPTION_ARG_STRING,
++    &opt_power_off_device,
++    "Device file for ATA device",
++    NULL
++  },
++  {
++    "no-user-interaction",
++    0, /* no short option */
++    0,
++    G_OPTION_ARG_NONE,
++    &opt_power_off_no_user_interaction,
++    "Do not authenticate the user if needed",
++    NULL
++  },
++  {
++    NULL
++  }
++};
++
++static gint
++handle_command_power_off (gint        *argc,
++                          gchar      **argv[],
++                          gboolean     request_completion,
++                          const gchar *completion_cur,
++                          const gchar *completion_prev)
++{
++  gint ret;
++  GOptionContext *o;
++  gchar *s;
++  gboolean complete_objects;
++  gboolean complete_devices;
++  GList *l;
++  GList *objects;
++  UDisksObject *object;
++  UDisksDriveAta *ata;
++  guint n;
++  GVariant *options;
++  GVariantBuilder builder;
++  GError *error;
++
++  ret = 1;
++  opt_power_off_object_path = NULL;
++  opt_power_off_device = NULL;
++  object = NULL;
++  options = NULL;
++
++  modify_argv0_for_command (argc, argv, "power-off");
++
++  o = g_option_context_new (NULL);
++  if (request_completion)
++    g_option_context_set_ignore_unknown_options (o, TRUE);
++  g_option_context_set_help_enabled (o, FALSE);
++  g_option_context_set_summary (o, "Safely power off a drive.");
++  g_option_context_add_main_entries (o,
++                                     command_power_off_entries,
++                                     NULL /* GETTEXT_PACKAGE*/);
++
++  complete_objects = FALSE;
++  if (request_completion && (g_strcmp0 (completion_prev, "--object-path") == 0 || g_strcmp0 (completion_prev, "-p") == 0))
++    {
++      complete_objects = TRUE;
++      remove_arg ((*argc) - 1, argc, argv);
++    }
++
++  complete_devices = FALSE;
++  if (request_completion && (g_strcmp0 (completion_prev, "--block-device") == 0 || g_strcmp0 (completion_prev, "-b") == 0))
++    {
++      complete_devices = TRUE;
++      remove_arg ((*argc) - 1, argc, argv);
++    }
++
++  if (!g_option_context_parse (o, argc, argv, NULL))
++    {
++      if (!request_completion)
++        {
++          s = g_option_context_get_help (o, FALSE, NULL);
++          g_printerr ("%s", s);
++          g_free (s);
++          goto out;
++        }
++    }
++
++  if (request_completion)
++    {
++      if ((opt_power_off_object_path == NULL && !complete_objects) &&
++          (opt_power_off_device == NULL && !complete_devices))
++        {
++          g_print ("--object-path \n"
++                   "--block-device \n");
++        }
++
++      if (complete_objects)
++        {
++          const gchar *object_path;
++          objects = g_dbus_object_manager_get_objects (udisks_client_get_object_manager (client));
++          for (l = objects; l != NULL; l = l->next)
++            {
++              object = UDISKS_OBJECT (l->data);
++              ata = udisks_object_peek_drive_ata (object);
++              if (ata != NULL)
++                {
++                  object_path = g_dbus_object_get_object_path (G_DBUS_OBJECT (object));
++                  g_assert (g_str_has_prefix (object_path, "/org/freedesktop/UDisks2/"));
++                  g_print ("%s \n", object_path + sizeof ("/org/freedesktop/UDisks2/") - 1);
++                }
++            }
++          g_list_foreach (objects, (GFunc) g_object_unref, NULL);
++          g_list_free (objects);
++        }
++
++      if (complete_devices)
++        {
++          objects = g_dbus_object_manager_get_objects (udisks_client_get_object_manager (client));
++          for (l = objects; l != NULL; l = l->next)
++            {
++              object = UDISKS_OBJECT (l->data);
++              ata = udisks_object_peek_drive_ata (object);
++              if (ata != NULL)
++                {
++                  const gchar * const *symlinks;
++                  UDisksBlock *block;
++                  block = udisks_client_get_block_for_drive (client, udisks_object_peek_drive (object), TRUE);
++                  g_print ("%s \n", udisks_block_get_device (block));
++                  symlinks = udisks_block_get_symlinks (block);
++                  for (n = 0; symlinks != NULL && symlinks[n] != NULL; n++)
++                    g_print ("%s \n", symlinks[n]);
++                }
++            }
++          g_list_foreach (objects, (GFunc) g_object_unref, NULL);
++          g_list_free (objects);
++        }
++      goto out;
++    }
++
++  g_variant_builder_init (&builder, G_VARIANT_TYPE_VARDICT);
++  if (opt_power_off_no_user_interaction)
++    {
++      g_variant_builder_add (&builder,
++                             "{sv}",
++                             "auth.no_user_interaction", g_variant_new_boolean (TRUE));
++    }
++  options = g_variant_builder_end (&builder);
++  g_variant_ref_sink (options);
++
++  if (opt_power_off_object_path != NULL)
++    {
++      object = lookup_object_by_path (opt_power_off_object_path);
++      if (object == NULL)
++        {
++          g_printerr ("Error looking up object with path %s\n", opt_power_off_object_path);
++          goto out;
++        }
++    }
++  else if (opt_power_off_device != NULL)
++    {
++      UDisksObject *block_object;
++      UDisksDrive *drive;
++      block_object = lookup_object_by_device (opt_power_off_device);
++      if (block_object == NULL)
++        {
++          g_printerr ("Error looking up object for device %s\n", opt_power_off_device);
++          goto out;
++        }
++      drive = udisks_client_get_drive_for_block (client, udisks_object_peek_block (block_object));
++      object = (UDisksObject *) g_dbus_interface_dup_object (G_DBUS_INTERFACE (drive));
++      g_object_unref (block_object);
++    }
++  else
++    {
++      s = g_option_context_get_help (o, FALSE, NULL);
++      g_printerr ("%s", s);
++      g_free (s);
++      goto out;
++    }
++
++ try_again:
++  error = NULL;
++  if (!udisks_drive_call_power_off_sync (udisks_object_peek_drive (object),
++                                         options,
++                                         NULL,                       /* GCancellable */
++                                         &error))
++    {
++      if (error->domain == UDISKS_ERROR &&
++          error->code == UDISKS_ERROR_NOT_AUTHORIZED_CAN_OBTAIN &&
++          setup_local_polkit_agent ())
++        {
++          g_error_free (error);
++          goto try_again;
++        }
++      g_dbus_error_strip_remote_error (error);
++      g_printerr ("Error powering off drive: %s (%s, %d)\n",
++                  error->message, g_quark_to_string (error->domain), error->code);
++      g_clear_error (&error);
++      g_object_unref (object);
++      goto out;
++    }
++
++  g_object_unref (object);
++
++
++  ret = 0;
++
++ out:
++  if (options != NULL)
++    g_variant_unref (options);
++  g_option_context_free (o);
++  g_free (opt_power_off_object_path);
++  g_free (opt_power_off_device);
++  return ret;
++}
++
++/* ---------------------------------------------------------------------------------------------------- */
++
+ static gchar *opt_info_object = NULL;
+ static gchar *opt_info_device = NULL;
+ static gchar *opt_info_drive = NULL;
+@@ -2855,6 +3093,7 @@ usage (gint *argc, gchar **argv[], gboolean use_stdout)
+                        "  lock            Lock an encrypted device\n"
+                        "  loop-setup      Set-up a loop device\n"
+                        "  loop-delete     Delete a loop device\n"
++                       "  power-off       Safely power off a drive\n"
+                        "  smart-simulate  Set SMART data for a drive\n"
+                        "\n"
+                        "Use \"%s COMMAND --help\" to get help on each command.\n",
+@@ -3053,6 +3292,15 @@ main (int argc,
+                                            completion_prev);
+       goto out;
+     }
++  else if (g_strcmp0 (command, "power-off") == 0)
++    {
++      ret = handle_command_power_off (&argc,
++                                      &argv,
++                                      request_completion,
++                                      completion_cur,
++                                      completion_prev);
++      goto out;
++    }
+   else if (g_strcmp0 (command, "dump") == 0)
+     {
+       ret = handle_command_dump (&argc,
+@@ -3156,6 +3404,7 @@ main (int argc,
+                    "unlock \n"
+                    "loop-setup \n"
+                    "loop-delete \n"
++                   "power-off \n"
+                    "smart-simulate \n"
+                    );
+           ret = 0;

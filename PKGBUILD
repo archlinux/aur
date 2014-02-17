@@ -2,8 +2,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=udisks2-nosystemd
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
@@ -18,13 +18,23 @@ provides=("udisks2=${pkgver}")
 conflicts=('udisks2')
 replaces=('udisks2')
 options=(!libtool)
-source=(http://udisks.freedesktop.org/releases/udisks-$pkgver.tar.bz2)
-sha256sums=('013b09ff38aa256b89c01525771f4565cb088724d5c8c79b32e9f811e88086fb')
+source=(http://udisks.freedesktop.org/releases/udisks-${pkgver}.tar.bz2
+        git-fixes.patch)
+sha256sums=('afe928fe7f44086b835257efc3fcbe503e2da7c988a773c997d0291bbab4a637'
+            '52a9b9f039f9f115414715375f2b5874b79b5b67fbe2bdf3105b46d3a35f673f')
+
+prepare() {
+  cd "udisks-$pkgver"
+
+  patch -Np1 -i ../git-fixes.patch
+}
 
 build() {
   cd "udisks-$pkgver"
-  ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static \
+  ./configure --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --disable-static \
       --sbindir=/usr/bin
   make
 
