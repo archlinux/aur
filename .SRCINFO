@@ -1,0 +1,21 @@
+pkgbase = wallabag
+	pkgdesc = Self hostable application for saving web pages
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.wallabag.org/
+	install = wallabag.install
+	arch = x86_64
+	license = WTFPL
+	depends = php>=5.3
+	depends = php-tidy
+	depends = pcre
+	depends = mariadb
+	optdepends = php-sqlite: For sqlite storage
+	optdepends = php-pgsql: For postgres storage
+	source = https://github.com/wallabag/wallabag/archive/1.5.0.tar.gz
+	source = vendor.zip::http://wllbg.org/vendor
+	sha256sums = d76dd80920e7474d1b017540d6639908752e4ab35a82d0dee8e149ba33b708a4
+	sha256sums = bd3e843290de28f1c20fa19ed746ca221c9174cb7f0a9723618f21bddb883e12
+
+pkgname = wallabag
+
