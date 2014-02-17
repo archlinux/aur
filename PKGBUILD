@@ -4,8 +4,8 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.2.5
-pkgrel=3
+pkgver=0.2.6
+pkgrel=1
 pkgdesc="Adds pdf support to zathura by using the mupdf library"
 arch=('i686' 'x86_64')
 url="https://pwmt.org/projects/zathura/plugins/zathura-pdf-mupdf/"
@@ -14,7 +14,7 @@ depends=('mupdf>=1.3' 'zathura'
 	 'jbig2dec' 'openjpeg2')
 conflicts=('zathura-pdf-poppler')
 source=("https://pwmt.org/projects/zathura/plugins/download/$pkgname-$pkgver.tar.gz")
-md5sums=('42dcdf2511ffc8f87ca6baba6c566f91')
+md5sums=('5102e416aecc2a14d78cc9c83d529b39')
 
 build() {
   make -C "${srcdir}/$pkgname-$pkgver"
