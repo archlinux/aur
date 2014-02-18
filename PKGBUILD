@@ -2,7 +2,7 @@
 # $Id$
 pkgname=pdfsizeopt-svn
 pkgver=221
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF file size optimizer"
 arch=(any)
 url="https://code.google.com/p/pdfsizeopt"
