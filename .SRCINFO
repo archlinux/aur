@@ -1,6 +1,6 @@
 pkgbase = mbm-gps-control-git
 	pkgdesc = Graphical interface to mbm-gpsd
-	pkgver = 20111213
+	pkgver = r16.1d2fee0
 	pkgrel = 1
 	url = http://mbm.sourceforge.net/
 	arch = i686
@@ -11,6 +11,10 @@ pkgbase = mbm-gps-control-git
 	depends = network-manager-applet
 	depends = intltool
 	provides = mbm-gps-control
+	source = mbm-gps-control::git://mbm.git.sourceforge.net/gitroot/mbm/mbm-gps-control/
+	source = 0001-Remove-call-to-g_type_init.patch
+	md5sums = SKIP
+	md5sums = 0b32f46bcd6616c7288a392f183f011a
 
 pkgname = mbm-gps-control-git
 

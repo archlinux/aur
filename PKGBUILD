@@ -1,50 +1,44 @@
-# Contributor: Andreas Boehler <andy dot boehler at gmx dot at> 
+# Contributor: Andreas Boehler <andy dot boehler at gmx dot at>
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
+# Contributor: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
-pkgname=mbm-gps-control-git
-pkgver=20111213
+_gitname=mbm-gps-control
+pkgname="${_gitname}-git"
+pkgver=r16.1d2fee0
 pkgrel=1
 pkgdesc="Graphical interface to mbm-gpsd"
 arch=('i686' 'x86_64')
 url="http://mbm.sourceforge.net/"
 license=('GPL')
-groups=()
 depends=('networkmanager' 'network-manager-applet' 'intltool')
 makedepends=('git')
-optdepends=()
-provides=('mbm-gps-control')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=()
-_gitname=mbm-gps-control
-_gitroot=git://mbm.git.sourceforge.net/gitroot/mbm/${_gitname}/
+provides=("${_gitname}")
+source=(
+"${_gitname}::git://mbm.git.sourceforge.net/gitroot/mbm/${_gitname}/"
+0001-Remove-call-to-g_type_init.patch
+)
+md5sums=('SKIP'
+         '0b32f46bcd6616c7288a392f183f011a')
 
-
-build() {
-  msg "Connecting to sourceforge.net git server...."
-  rm  -rf $startdir/src/$_gitname-build
-  if [[ -d $_gitname ]]; then
-  cd $_gitname || return 1
-  git pull origin || return 1
-  else
-  git clone $_gitroot $_gitname || return 1
-  fi
-  msg " checkout done."
-  cd $srcdir || return 1
-  cp -r $_gitname $_gitname-build
-  cd $_gitname-build || return 1
-  unset CFLAGS
-  unset CXXFLAGS
-  ./autogen.sh  --prefix=/usr --sysconfdir=/etc --localstatedir=/var || return 1
-  make || return 1
-  make DESTDIR=$pkgdir install || return 1
-  rm -rf $srcdir/$_gitname-build
-
-
+pkgver() {
+	cd "$srcdir/$_gitname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$srcdir/$_gitname"
+	git am "$srcdir/0001-Remove-call-to-g_type_init.patch"
+}
+
+build() {
+	cd "$srcdir/$_gitname"
+	unset CFLAGS
+	unset CXXFLAGS
+	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	make
+}
+
+package() {
+	cd "$srcdir/$_gitname"
+	make DESTDIR="$pkgdir" install
+}

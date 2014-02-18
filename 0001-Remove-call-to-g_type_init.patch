@@ -1,0 +1,40 @@
+From 059c735433eeef93c59e8e5923218349fa6da9ee Mon Sep 17 00:00:00 2001
+From: "Frederik \"Freso\" S. Olesen" <freso.dk@gmail.com>
+Date: Sat, 15 Feb 2014 12:23:28 +0100
+Subject: [PATCH] Remove call to g_type_init.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is exactly the same as Olivier Mehani's patch for mbm-gpsd, that had this
+commit message:
+"""
+From [0]:
+
+“g_type_init has been deprecated since version 2.36 and should not be
+used in newly-written code. the type system is now initialised
+automatically”
+
+[0] https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#g-type-init
+"""
+
+Signed-off-by: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+---
+ src/gps_control.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/gps_control.c b/src/gps_control.c
+index bfd1202..cfde6ab 100644
+--- a/src/gps_control.c
++++ b/src/gps_control.c
+@@ -311,8 +311,6 @@ void dbus_connect (DBUS_Connection * conn)
+ {
+ 	GError *error;
+ 
+-	g_type_init ();
+-
+ 	error = NULL;
+ 	conn->connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
+ 	if (conn->connection == NULL) {
+-- 
+1.8.5.5
