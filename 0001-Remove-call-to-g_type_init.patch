@@ -1,0 +1,36 @@
+From 318fc17e6466d044bc8121d495f9db71f007d3c4 Mon Sep 17 00:00:00 2001
+From: Olivier Mehani <olivier.mehani@nicta.com.au>
+Date: Tue, 11 Jun 2013 12:25:06 +1000
+Subject: [PATCH] Remove call to g_type_init
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+From [0]:
+
+“g_type_init has been deprecated since version 2.36 and should not be
+used in newly-written code. the type system is now initialised
+automatically”
+
+[0] https://developer.gnome.org/gobject/unstable/gobject-Type-Information.html#g-type-init
+
+Signed-off-by: Olivier Mehani <olivier.mehani@nicta.com.au>
+---
+ src/mbm_gpsd.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/mbm_gpsd.c b/src/mbm_gpsd.c
+index 924d6df..64faddb 100644
+--- a/src/mbm_gpsd.c
++++ b/src/mbm_gpsd.c
+@@ -155,7 +155,6 @@ int main (int argc, char *argv[])
+     sigaction (SIGHUP, &sig_action, NULL);
+ 
+ 	mbm_options_parse (argc, argv);
+-	g_type_init ();
+ 
+ 	if (!mbm_foreground()) {
+ 		pid_t pid, sid;
+-- 
+1.8.3
+
