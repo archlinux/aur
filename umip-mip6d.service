@@ -1,0 +1,16 @@
+# Do not make modifications to this file, as they may not survive update.
+# Instead, copy it to /etc/systemd/system/, and modify it there. That modified
+# copy will override the parameters here.
+#
+# See systemd(1) for details.
+#
+[Unit]
+Description=Mobile IPv6 and NEMO Basic Support daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/mip6d -c /etc/mip6d/mip6d.conf
+
+[Install]
+WantedBy=multi-user.target

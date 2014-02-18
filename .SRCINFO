@@ -1,0 +1,26 @@
+pkgbase = umip
+	pkgdesc = Open source implementation of Mobile IPv6 and NEMO Basic Support for Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://umip.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake bison
+	makedepends = flex
+	makedepends = indent
+	depends = openssl
+	depends = ipsec-tools
+	depends = radvd
+	provides = mip6d
+	conflicts = mip6d
+	replaces = mip6d
+	backup = etc/mip6d/mip6d.conf
+	source = git://git.umip.org/umip.git#tag=v1.0
+	source = umip-mip6d.service
+	md5sums = SKIP
+	md5sums = b53816cb794648e00cf5970a95e89990
+
+pkgname = umip
+
