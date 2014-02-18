@@ -13,7 +13,7 @@
       Buffer "256000"
       Prefix "servers"
       Host   "localhost"
-      Port   "81"
+      Port   "2003"
     </Plugin>
 </Plugin>
 EOF
