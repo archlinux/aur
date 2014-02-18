@@ -22,7 +22,7 @@ optdepends=(
 #  gnome-nds-thumbnailer
 #  swfdec-thumbnailer
 #  gnome-xcf-thumbnailer
-install=rox-thumbnailers.install
+#install=rox-thumbnailers.install
 source=(http://denver.sociol.unimi.it/~yuri/rox/ROX-thumbnailers_${pkgver}.0.tgz)
 md5sums=('c53e7eb42e54fc8a0673dbf78456d441')
 
