@@ -1,18 +1,19 @@
 # Maintainer: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=wallabag
-pkgver=1.5.0
+pkgver=1.5.1.1
 pkgrel=1
 pkgdesc='Self hostable application for saving web pages'
-arch=('x86_64')
+arch=('any')
 url='http://www.wallabag.org/'
 license=('WTFPL')
 depends=('php>=5.3' 'php-tidy' 'pcre' 'mariadb')
 optdepends=('php-sqlite: For sqlite storage' 'php-pgsql: For postgres storage')
 install="$pkgname.install"
+options=(!strip)
 source=("https://github.com/wallabag/wallabag/archive/${pkgver}.tar.gz"
         "vendor.zip::http://wllbg.org/vendor")
-sha256sums=('d76dd80920e7474d1b017540d6639908752e4ab35a82d0dee8e149ba33b708a4'
+sha256sums=('d0d63e5efe56ea28c4ebda2a0ea84162d75c9f7899fccb45aa3fb3e7afc12f5f'
             'bd3e843290de28f1c20fa19ed746ca221c9174cb7f0a9723618f21bddb883e12')
 
 prepare() {
