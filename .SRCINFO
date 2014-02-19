@@ -1,15 +1,13 @@
-pkgbase = perl-extutils-typemaps-default
-	pkgdesc = ExtUtils::Typemaps::Default - A set of useful typemaps
-	pkgver = 1.05
+pkgbase = perl-extutils-typemap
+	pkgdesc = ExtUtils::Typemap
+	pkgver = 1.00
 	pkgrel = 1
-	url = http://search.cpan.org/dist/ExtUtils-Typemaps-Default//
+	url = http://search.cpan.org/dist/ExtUtils-Typemap/
 	arch = any
-	license = GPL
-	license = PerlArtistic
-	depends = perl>=5.10.0
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-Typemaps-Default-1.05.tar.gz
-	md5sums = 346c127faf7b74bc4cfc29fa3e8e6f8d
+	license = unknown
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-Typemap-1.00.tar.gz
+	sha256sums = b1b015772dbb068b93a0f6ffa02f5d94822365e6018ac5ed2bc53ca669071fc7
 
-pkgname = perl-extutils-typemaps-default
+pkgname = perl-extutils-typemap
 
