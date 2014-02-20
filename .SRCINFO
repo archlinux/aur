@@ -1,6 +1,6 @@
 pkgbase = stikked-git
 	pkgdesc = An advanced and beautiful pastebin written in PHP
-	pkgver = 0.8.5.2.g2ab968b
+	pkgver = 0.8.5.74.gbef6333
 	pkgrel = 1
 	url = https://github.com/claudehohl/Stikked
 	install = stikked-git.install

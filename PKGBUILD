@@ -2,7 +2,7 @@
 
 pkgname=stikked-git
 _gitname='Stikked'
-pkgver=0.8.5.2.g2ab968b
+pkgver=0.8.5.74.gbef6333
 pkgrel=1
 pkgdesc="An advanced and beautiful pastebin written in PHP"
 arch=('any')
@@ -26,8 +26,8 @@ package() {
 
   mkdir -p "$pkgdir/usr/share/webapps/Stikked" "$pkgdir/etc/webapps/stikked"
   cp -ra * .htaccess "$pkgdir/usr/share/webapps/Stikked"
-  mv "$pkgdir/usr/share/webapps/Stikked/application/config/stikked.php" \
-     "$pkgdir/etc/webapps/stikked"
+  mv "$pkgdir/usr/share/webapps/Stikked/application/config/stikked.php.dist" \
+     "$pkgdir/etc/webapps/stikked/stikked.php"
   ln -s "/etc/webapps/stikked/stikked.php" \
         "$pkgdir/usr/share/webapps/Stikked/application/config/stikked.php"
 }
