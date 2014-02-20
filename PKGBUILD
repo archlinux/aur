@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.13
-pkgver=3.13.3
+pkgver=3.13.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,12 +25,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0004-rpc_pipe-remove-the-clntXX-dir-if-creating-the-pipe-.patch'
         '0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch'
         '0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch'
+        '0001-SUNRPC-Ensure-that-gss_auth-isn-t-freed-before-its-u.patch'
         '0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch'
         '0001-quirk-asm_volatile_goto.patch'
         'i8042-fix-aliases.patch'
         )
 md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
-         '2d3d298f2b430122f4baf2af88277231'
+         '77ca721ea0e8373f58f596fe0d9b1b47'
          'ba4468d313adfaf22368add7f58204aa'
          '035bb27dac306f5c028d96cad14bb249'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -42,6 +43,7 @@ md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
          '10dbaf863e22b2437e68f9190d65c861'
          'd5907a721b97299f0685c583499f7820'
          'a724515b350b29c53f20e631c6cf9a14'
+         '1ae4ec847f41fa1b6d488f956e94c893'
          'e6fa278c092ad83780e2dd0568e24ca6'
          '6baa312bc166681f48e972824f3f6649'
          '93dbf73af819b77f03453a9c6de2bb47')
@@ -80,6 +82,10 @@ prepare() {
   patch -p1 -i "${srcdir}/0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch"
   # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=23e66ba97127ff3b064d4c6c5138aa34eafc492f
   patch -p1 -i "${srcdir}/0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch"
+
+  # Fix FS#38921
+  # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9eb2ddb48ce3a7bd745c14a933112994647fa3cd
+  patch -p1 -i "${srcdir}/0001-SUNRPC-Ensure-that-gss_auth-isn-t-freed-before-its-u.patch"
 
   # Fix symbols: Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=83460ec8dcac14142e7860a01fa59c267ac4657c
   patch -Rp1 -i "${srcdir}/0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch"
