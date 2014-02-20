@@ -1,7 +1,7 @@
 pkgbase = texmaker-qt4
 	pkgdesc = Free cross-platform LaTeX editor
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.xm1math.net/texmaker/index.html
 	install = texmaker-qt4.install
 	arch = i686
