@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=32.0.1700.107
-_toolchains_rev=12181
+pkgver=33.0.1750.115
+_toolchains_rev=12526
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -29,17 +29,19 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz.sha1hash
         chromium.desktop
         chromium.default
+        chromium-gn-r0.patch
         chromium.sh)
 noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_translator-$_toolchains_rev.tgz)
-sha256sums=('1febb61356e8e9de549c33133583980ac6e02dc0ef1fdbfa703665e2e47ac1ad'
-            'cb4ac159f61de5e75d339813c0fc74f986156310a2c43a30ba40125951e72450'
-            'ad229b69a5af72a9fa7cf2167ee48560cc11049206e4ef919cb31d1273d6409f'
-            'fdb8309ef2b1c8600d63c4420ac02d66d85ab9befe98d99e9706828870730077'
-            '162cf456b0a1cb4ce505004f828a09164ee3e3c8274739c6d5e972bf0ef1cfe9'
+sha256sums=('3743d63f4b7369fadd13811b30fc9204e5a2345b01aa1484a209228efe2e19f2'
+            '4bc956815bd45a82ed7c3b623d0ffb55fcc6c6af55828a0bf1560733def68e8d'
+            '3ae77302adf775f2d513e7d9cb730cbe3e42d515002c4388d25fa3ec11b7b12f'
+            'ce89d9c53b32a83f477e9ac2c2269d573477e23908462fccbf945c3303a9fb1f'
+            '4408c8d4cb6d072929ba6e7f3edac170bfea8f54eb009ee7ceaa131a0c1fa92e'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
+            'a1145e83d775101b28dcdceb3ca076fc7e9a4b9f69a1a2236d0c97ad39afb3d3'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -52,6 +54,8 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  patch -Np0 -i "$srcdir/chromium-gn-r0.patch"
 
   # Use Python 2
   find . -type f -exec sed -i -r \
