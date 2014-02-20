@@ -1,0 +1,1 @@
+nagios,nrpe,icinga ALL = NOPASSWD: /usr/bin/hddtemp

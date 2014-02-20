@@ -1,0 +1,10 @@
+--- check_lm_sensors.old        2013-11-27 11:47:04.434470582 +0100
++++ check_lm_sensors    2013-11-27 11:47:21.464334394 +0100
+@@ -284,7 +284,7 @@
+
+             verbose "  checking disk /dev/$name\n", 1;
+
+-            my $command = "$hddtemp_bin -n /dev/$name";
++            my $command = "sudo $hddtemp_bin -n /dev/$name";
+
+             my $output;
