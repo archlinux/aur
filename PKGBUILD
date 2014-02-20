@@ -2,8 +2,8 @@
 
 pkgname=xournal-git
 _gitname=xournal
-pkgver=0.4.7.12.gc722403
-pkgrel=1
+pkgver=0.4.7.16.g6d4c59e
+pkgrel=2
 pkgdesc="Notetaking and sketching application"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/xournal/"
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  autoreconf -i
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
