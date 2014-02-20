@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=yourls
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="your own URL shortener"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('php>=4.3' 'mysql>=4.1')
 conflicts=('yourls-svn')
 backup=('etc/webapps/yourls/config.php')
 install=$pkgname.install
-source=("https://github.com/YOURLS/YOURLS/archive/${pkgver}.tar.gz")
-sha1sums=('8198f69bc7386eaa9c4753c8bc5c548d4a77e152')
+source=("yourls-${pkgver}.tar.gz::https://github.com/YOURLS/YOURLS/archive/${pkgver}.tar.gz")
+sha1sums=('4da4c4f17bb55e452d96495bf6372f78ec47499f')
 
 package() {
   cd "$srcdir/YOURLS-$pkgver"
