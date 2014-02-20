@@ -1,0 +1,9 @@
+2013-02-18 | J0k3r <moebius282@gmail.com>
+
+	* antichamber-1392664980-1:
+		- Inital Release ( antichamber_1.01_linux_1392664980.sh )
+
+2013-02-19 | J0k3r <moebius282@gmail.com>
+
+	* antichamber-1392664980-2:
+		- Fixed 32-bit build. Using provided 'libtcmalloc.so.0' and 'libSDL2_mixer-2.0.so.0'

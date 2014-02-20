@@ -1,0 +1,22 @@
+pkgbase = antichamber
+	pkgdesc = A mind-bending psychological exploration game where nothing can be taken for granted
+	pkgver = 1392664980
+	pkgrel = 2
+	url = http://www.antichamber-game.com/
+	changelog = antichamber.changelog
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = unknown
+	makedepends = unzip
+	depends = libvorbis
+	depends = sdl2
+	source = hib://antichamber_1.01_linux_1392664980.sh
+	source = antichamber.desktop
+	source = antichamber.changelog
+	sha256sums = 4973acf3b995ee015ce12908c368acd10db86614e45088a6ccdb53b60e8c235e
+	sha256sums = 5b2a809bc1c70f50fc372571db5048bbc428f893e7e861fac572d622b588d82a
+	sha256sums = SKIP
+
+pkgname = antichamber
+
