@@ -4,17 +4,17 @@
 # Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=bitlbee-bzr
-pkgver=996
+pkgver=1005
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('gnutls' 'glib2')
-makedepends=('bzr' 'asciidoc' 'libotr3' 'xmlto' 'lynx')
+makedepends=('bzr' 'asciidoc' 'libotr' 'xmlto' 'lynx')
 checkdepends=('check')
 optdepends=('skype4py: to use skyped'
-            'libotr3: for OTR encryption support'
+            'libotr: for OTR encryption support'
             'xinetd: to run bitlbee through xinetd')
 source=('bitlbee::bzr+http://code.bitlbee.org/bitlbee/'
         'xinetd'
@@ -49,10 +49,6 @@ build() {
     --strip=0 \
     --otr=plugin \
     --skype=plugin
-
-  # hacky: build against libotr3
-  sed -i 's,^OTRFLAGS=.*,OTRFLAGS=-lotr3,' Makefile.settings
-  sed -i 's,#include.*libotr,&3,' otr.h
 
   make
 }
