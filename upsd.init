@@ -1,0 +1,43 @@
+#!/bin/bash
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+PID=`pidof -o %PPID /usr/sbin/upsd`
+case "$1" in 
+	start)
+		stat_busy "Starting UPSd Daemon"
+		/usr/bin/upsdrvctl start &> /dev/null
+		[ -z "$PID" ] && /usr/sbin/upsd &>/dev/null
+		/usr/sbin/upsmon &>/dev/null
+		if [ $? -gt 0 ]; then
+			stat_fail
+		else
+			add_daemon upsd
+			stat_done
+		fi
+		;;
+
+	stop)
+		stat_busy "Stopping UPSd Daemon"
+		/usr/sbin/upsmon -c stop &> /dev/null
+		/usr/sbin/upsd -c stop &> /dev/null
+		/usr/bin/upsdrvctl stop &> /dev/null
+		if [ $? -gt 0 ]; then
+			stat_fail
+		else
+			rm_daemon upsd
+			stat_done
+		fi
+		;;
+
+	restart)
+		$0 stop
+		sleep 3
+		$0 start
+		;;
+
+	*)
+		cho "usage: $0 {start|stop|restart}"
+esac
+exit 0

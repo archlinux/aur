@@ -1,0 +1,26 @@
+pkgbase = network-ups-tools-git
+	pkgdesc = NUT is a collection of programs for monitoring and administering UPS hardware
+	pkgver = v2.7.1.signed.r8.gb11d66f
+	pkgrel = 2
+	url = http://www.networkupstools.org/
+	install = nut.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = asciidoc
+	depends = openssl
+	depends = libusb-compat
+	provides = network-ups-tools
+	conflicts = network-ups-tools
+	backup = etc/ups/ups.conf
+	backup = etc/ups/upsd.conf
+	backup = etc/ups/upsd.users
+	backup = etc/ups/upsmon.conf
+	backup = etc/ups/upssched.conf
+	source = git+https://github.com/networkupstools/nut.git
+	source = upsd.init
+	md5sums = SKIP
+	md5sums = 089ea4a56552253328d17603ff5670cc
+
+pkgname = network-ups-tools-git
+
