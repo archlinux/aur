@@ -2,24 +2,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=minitube
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="A native YouTube client in Qt. Watch YouTube videos without Flash Player"
 arch=('i686' 'x86_64')
 url='http://flavio.tordini.org/minitube'
 license=('GPL3')
-depends=('phonon')
+depends=('phonon-qt4')
 install="$pkgname.install"
-source=("http://flavio.tordini.org/files/$pkgname/$pkgname-$pkgver.tar.gz"
-        "$pkgname-missing-locale.patch")
-md5sums=('e52933f3ae5200f83aa39ac71ac13bfb'
-         '70cdaa1d3df700cf90243be5a0d55443')
-
-prepare() {
-  cd $pkgname
-  # remove missing translations
-  patch -p1 -i ../${source[1]}
-}
+source=("http://flavio.tordini.org/files/$pkgname/$pkgname-1.2.6.tar.gz") # tagging mismatch
+md5sums=('b5a7794cad661d47e0e856b864f774af')
 
 build() {
   cd $pkgname
