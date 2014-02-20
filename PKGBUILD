@@ -2,7 +2,7 @@
 # Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=('poppler-minimal')
-pkgver=0.22.5
+pkgver=0.24.5
 pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
@@ -13,8 +13,8 @@ depends=('fontconfig' 'gcc-libs')
 conflicts=("poppler")
 provides=("poppler")
 url="http://poppler.freedesktop.org/"
-source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.gz)
-md5sums=('1cd27460f7e3379d1eb109cfd7bcdb39')
+source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz)
+sha1sums=('7b7cabee85bd81a7e55c939740d5d7ccd7c0dda5')
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
