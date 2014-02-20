@@ -1,0 +1,16 @@
+pkgbase = baikal
+	pkgdesc = Lightweight CalDAV+CardDAV server
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = http://baikal-server.com/
+	arch = any
+	license = GPL
+	depends = php
+	optdepends = sqlite: Database
+	optdepends = mariadb: Alternate database
+	options = !strip
+	source = http://baikal-server.com/get/baikal-regular-0.2.7.tgz
+	sha1sums = 01eabcf0229ddffc0542f4e2a349754e778abbea
+
+pkgname = baikal
+
