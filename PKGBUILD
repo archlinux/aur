@@ -1,6 +1,6 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=lxkb_config-git
-pkgver=01e64dc
+pkgver=cec6ebd
 pkgrel=1
 pkgdesc='A keyboard configuration application for LXDE'
 arch=('i686' 'x86_64')
