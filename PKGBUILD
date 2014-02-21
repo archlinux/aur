@@ -1,9 +1,12 @@
 # Maintainer: radioxoma
 # Contributor: dreieck
 
+# PKGBUILD repository:
+# https://github.com/radioxoma/aur/tree/master/fiji-binary
+
 pkgname="fiji-binary"
 pkgver="20130715"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
 arch=('i686' 'x86_64')
 url='http://fiji.sc/'
@@ -14,6 +17,7 @@ optdepends=('java3d: For the 3D viewer plugin.')
 provides=("fiji=${pkgver}" "fiji-binary=${pkgver}")
 replaces=("fiji<=${pkgver}" "fiji-binary<=${pkgver}")
 conflicts=("fiji-binary-latest")
+install=fiji.install
 source=(
         "http://fiji.sc/downloads/Life-Line/fiji-nojre-${pkgver}.zip"
         # "http://jenkins.imagej.net/job/Stable-Fiji/lastSuccessfulBuild/artifact/fiji-nojre.zip" ## This one is the "continuous build".
@@ -55,7 +59,7 @@ package()
   _extractdir="${srcdir}/Fiji.app"
 
   _targetdirinrootfs="/opt/fiji"
-  _targetdir="${pkgdir}/${_targetdirinrootfs}"
+  _targetdir="${pkgdir}${_targetdirinrootfs}"
   _bindir="${pkgdir}/usr/bin"
   mkdir -p "${_targetdir}" || exit 111
   mkdir -p "${_bindir}" || exit 116
