@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 groups=("games")
 _purgelibs=('libogg.so' 'libvorbis.so' 'libvorbisfile.so.3' 'libSDL2-2.0.so.0')
 if [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-libvorbis' 'lib32-sdl2' ) # 'lib32-sdl2_mixer' not in repo and aur package misnamed & broken ; gperftools only in aur :/
+  depends=('lib32-libvorbis' 'lib32-sdl2') # 'lib32-sdl2_mixer' not in repo and aur package misnamed & broken ; gperftools only in aur :/
 else
   depends=('libvorbis' 'sdl2')
   # _purgelibs+=('libtcmalloc.so.0' 'libSDL2_mixer-2.0.so.0') #gperftools doesn't provide a required symlink; also: 'MinorityMix_SetPosition', could be sdl2_mixer
