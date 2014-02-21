@@ -1,7 +1,7 @@
 pkgbase = initscripts-fork
 	pkgdesc = Maintained fork of system initialization/bootup scripts
 	pkgver = 2014.02.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/TZ86/initscripts-fork/overview
 	install = initscripts.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = initscripts-fork
 	depends = findutils
 	depends = sysvinit
 	depends = procps-ng
+	depends = kbd
 	optdepends = dhcpcd: DHCP network configuration
 	optdepends = bridge-utils: Network bridging support
 	optdepends = net-tools: Network support
