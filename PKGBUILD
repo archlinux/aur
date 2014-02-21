@@ -1,27 +1,36 @@
 # Maintainer: J0k3r <moebius282 at gmail dot com>
 
 pkgname=hotlinemiami
-pkgver=1.0.9a
-pkgrel=2
+pkgver=1392944501
+pkgrel=1
+epoch=1
 pkgdesc="A 2D top-down action video game"
 url="http://hotlinemiami.com/"
 license=('unknown')
 # © Dennaton Interactive Design of the Future ™
 arch=('i686' 'x86_64')
 groups=("games")
+_purgelibs=('libopenal.so.1' 'libCgGL.so' 'libCg.so')
+# It appears like qt5 is no longer needed.
+_purgelibs+=('libQt5Core.so.5' 'libQt5Gui.so.5' 'libQt5Widgets.so.5')
+# If the program doesn't run, comment the line above. /\
 if [ "$CARCH" = "x86_64" ]; then
-	depends=('lib32-openal' 'lib32-libvorbis' 'lib32-nvidia-cg-toolkit' 'lib32-glu' 'lib32-fontconfig' 'lib32-libxrandr')
+	depends=('lib32-openal' 'lib32-libvorbis' 'lib32-nvidia-cg-toolkit' 'lib32-glu' 'lib32-fontconfig' 'lib32-libxrandr' 'lib32-libxi')
 else
-	depends=('openal' 'libvorbis' 'nvidia-cg-toolkit' 'glu' 'fontconfig' 'lib32-xrandr' 'libxrandr' 'qt5-base' )
+	depends=('openal' 'libvorbis' 'nvidia-cg-toolkit' 'glu' 'fontconfig' 'libxrandr' 'libxi')
 fi
-_archivename="${pkgname}_v${pkgver}-Linux_28-05-2013"
+changelog="${pkgname}.changelog"
+_archivename="HotlineMiami_linux_${pkgver}"
 source=("hib://${_archivename}.tar.gz"
 		"${pkgname}.desktop"
-		"${pkgname}.png")
-sha256sums=('070300558ba52f75455d1645bba6dd956f460ada0d3839f8b3c3ac712ba957da'
+		"${pkgname}.png"
+		"${pkgname}.changelog")
+sha256sums=('338268eecbd63ab5cf168d85ef6c7b36f2a6999adb359222b5372651b08ba805'
 			'ca65c11bc9e06f438b2da2bb44c40424537e60b704656a155f672b16fde5f8de'
-			'01432c725bd258761e67fe1db94531465ba0480e250724cf6b939669e13b0e8a')
+			'01432c725bd258761e67fe1db94531465ba0480e250724cf6b939669e13b0e8a'
+			'SKIP')
 noextract=("${source[0]:6}")
+options=('strip')
 PKGEXT=".pkg.tar"
 
 
@@ -42,30 +51,28 @@ package()
 {
 	install -d "${pkgdir}/opt/${pkgname}/"
 
-# Otherwise it extract the files loosely in $srcdir
+# Otherwise it extract the files loosely in ${srcdir}/
 	tar -xzf  "${srcdir}/${_archivename}.tar.gz" -C "${pkgdir}/opt/${pkgname}/"
 
 # We don't need these, as we use the shared system libraries
-# We can't go this simple way on x86_64 currently, as arch doesn't provide lib32-qt5 :(
-	if [ "$CARCH" = "x86_64" ]; then
-		_purgelibs=('libopenal.so.1' 'libCgGL.so' 'libCg.so')
-		for i in "${_purgelibs[@]}"; do
-			rm "${pkgdir}/opt/${pkgname}/lib/${i}"
-		done
-		chown root:root "${pkgdir}/opt/${pkgname}/lib/"
-	else
-		rm -r "${pkgdir}/opt/${pkgname}/lib/"
-	fi
+	rm -r "${pkgdir}/opt/${pkgname}/lib/.svn/"
 
-	find "${pkgdir}/opt/${pkgname}/" -type f -exec chown root:root "{}" \;
+	for i in "${_purgelibs[@]}"; do
+		rm "${pkgdir}/opt/${pkgname}/lib/${i}"
+	done
+	rmdir "${pkgdir}/opt/${pkgname}/lib/" &> /dev/null || true
+
+# The default owner/group is 500. I don't know if this is necessarry, but makepkg doesn't seem to set the owner/group of all files to root by default.
+	chown -R root:root "${pkgdir}/opt/${pkgname}/"*
 
 	install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
 # I extracted this from the windows executable; couldn't find one anywhere else
 	install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	
+# We need this as the program expect to be launched from the same directory it resides in
 	install -d "${pkgdir}/usr/bin/"
 
-# We need this as the program expect to be launched from the same directory it resides in
 	cat > "${pkgdir}/usr/bin/${pkgname}" <<-EOF
 		#!/bin/bash
 

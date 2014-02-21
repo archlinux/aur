@@ -1,0 +1,7 @@
+2013-02-21 | J0k3r <moebius282@gmail.com>
+
+	* hotlinemiami-1392944501-1:
+		- Updated to latest release ( HotlineMiami_linux_1392944501.tar.gz )
+		- Restructured the PKGBUILD a bit
+		- Removed the qt5 dependency
+		- Added changelog
