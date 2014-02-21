@@ -17,6 +17,11 @@ wget -c http://github.com/mdcurtis/micromanager-upstream/archive/1.4.13.tar.gz
 Версия 1.4.15
     23.09.2013 на сайте, коммит svn 10680
     23.09.2013 12:35:02 исключили адаптер камеры svn 11822
+Версия 1.4.16 31 jan, 2014 svn 7e21ba8e40866457934b40e03d66f345c683ed79 (последний коммит тем днём)
+
+Последний 21.02.2014 b09f14cba5a58cccdcd905ffe90117bcfeb7be80
+_ZN13MMCorePrivate19GetPathOfThisModuleEv
+LibraryPathsUnix.cpp
     
     16.10.2013 собирают под Ubuntu 13.10 x64
     21.10.2013 Открыт тикет [MMCorePy Unix build is missing libraries](https://valelab.ucsf.edu/trac/micromanager/ticket/685)

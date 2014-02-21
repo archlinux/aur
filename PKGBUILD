@@ -1,7 +1,7 @@
 # Maintainer: radioxoma <radioxoma from gmail com>
 # Last successful build with 1.4.13.r2306.gf5e50bd 22.01.2014 on x86_64.
 pkgname=micromanager-git
-pkgver=1.4.13.r2306.gf5e50bd
+pkgver=1.4.13.r2469.gb09f14c
 pkgrel=1
 epoch=
 pkgdesc="Software package for control of automated microscopes. CMMCore and python2 bindings only."
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=mm.install
 changelog=
-source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=f5e50bd
+source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git
         'python_makefile.diff'
         'python_setup.diff'
         'micromanager-lib.conf')
