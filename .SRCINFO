@@ -1,0 +1,15 @@
+pkgbase = xiccd
+	pkgdesc = Simple bridge between colord and X
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/agalakhov/xiccd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = colord
+	depends = libxrandr
+	source = https://github.com/agalakhov/xiccd/archive/v0.2.2.tar.gz
+	sha1sums = 45831c211fe7eafc13c36f0fce9549c42373380d
+
+pkgname = xiccd
+
