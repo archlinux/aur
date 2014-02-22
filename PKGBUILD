@@ -1,8 +1,8 @@
 # Maintainer: jjacky
 _pkgname=kalu
 pkgname=$_pkgname-git
-pkgver=
-pkgrel=1
+pkgver=next
+pkgrel=2
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news [GIT]"
 arch=('i686' 'x86_64')
 url="http://jjacky.com/$_pkgname"
@@ -32,6 +32,7 @@ package() {
   cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir/" install
   chmod 700 "$pkgdir"/usr/share/polkit-1/rules.d
+  chown 102 "$pkgdir"/usr/share/polkit-1/rules.d
 }
 
 # vim:set ts=2 sw=2 et:
