@@ -49,8 +49,8 @@
 _bldtype=Release
 
 _mozcver=1.13.1651.102
-_utdicver=20140103
-_zipcoderel=201312
+_utdicver=20140205
+_zipcoderel=201401
 _protobuf_ver=2.5.0
 _gyp_rev=1828
 
@@ -74,7 +74,7 @@ source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=
         http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
         EDICT_license.html
         mod-generate-mozc-ut.sh
-        http://downloads.sourceforge.net/pnsft-aur/x-ken-all${_zipcoderel}.zip
+        http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcoderel}.zip
         http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcoderel}.zip
         http://protobuf.googlecode.com/files/protobuf-${_protobuf_ver}.tar.bz2
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_patchver}.patch
@@ -178,12 +178,12 @@ package() {
 
 sha512sums=('SKIP'
             'SKIP'
-            'cc46598bcb08adc0b81891a190ea5cc62b4d998cc5baf3ea0a60de75d2d5b95a0484700d217808510d536c04d26738ceb7a5e7ef6bda0188bc9173984b23cd0b'
-            '485c25e2b4d9cd760e0c9f7c83d7eefc3e324f0db01d3189ecc663e13a911381923f03ed98920b4b44a55c6d9591ab32d485ba82e3893a1d67c3324cd2412eb8'
+            '0b3ad94bc4fda6ffdf6b06f3cf0bfc92946ab5f49add636ba82b529c24b3b77ef3ffdeb860654152b28e569595eefae86da2bf2ea8aa3422a24eda746b3379ae'
+            '51c414575c61f378fa21f28c0eed3c40c585c6f1f1fcd1d22f0ab642aa396d945dc2b8ddea3fe76dd5366b31c2ee69fbbb8b8b8c0d717266717a9dcf4f0ae391'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
-            'd009d22a01cc76f54f019914996153781e4900f35c3c021cb06ef9316ecbc7071b1a26a93cfd85ac32d9cb9b501b3b5f36c9231f29f1137e9fa5efe33c9b93b5'
-            'f05c779257c8bc6e51ba8ab9fddec918a6de29d45c756bd3b83d42cb99265ada85313e980518096338ebcadcd0fe6433cbd9ad20a74f4116975eb7c168b72d81'
-            '87e8733cfc11528fa698b0a48f4e89c0dd02e2d79c804025219531fad4776cfcba720d720003d83a65401b4631c9ae1adc3395d18965066d232a76794ae3d54f'
+            '10089bcae1ff2ce063cdc04900523f7a2b3c6e386eadf92c7295575688db938d602aa6e94c3401ece229f4023511d0fd5543eb45a09dc6474ed185dbfedf592f'
+            'e6e8f0d71c1f9baf1b5d7a446bb73ca49146e1701a682475425743a2ddeeea79e0e56ce8f3aa53d01da3dc751fba01bf4036cce500b9f537c954f2a88a7c43d9'
+            '51637967d68d13bb3d10469ce45ea92cfac4fd80bd74600c34150c48c606e034b1073f5ee995fb5c30121560fc21dd4c85e0b5d9e7569714d611db39f01d79b0'
             '5994b3669808b82fef5c860ecad36358c0767f84acac877e7bfcf722e59d972835a955714149bdd4158fbd1328a51d01397a563991d26475351ee72be48142ee'
             'cd879029d87fd80a70796bd83ac67decbb58b181acafcee22110cb46a50c371c82b67babcfe80b1c05fa9beef3d3a7ddd580105a70c411795cf8c9ef745661e2'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
