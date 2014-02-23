@@ -1,7 +1,7 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64"
@@ -33,12 +33,12 @@ backup=("etc/zabbix/zabbix_server.conf"
 install="${_pkgname}.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
-        "zabbix-server.install"
+        "${_pkgname}.install"
        )
-md5sums=("558497839b13a548f533eb2fc951a4e3"
+md5sums=("7f680ad3ef7145840e3de5c7a0f19b7c"
          "385ebe40ac42c777022ccee7543e20ca"
         )
-sha1sums=("2f07bfa08123f341ff16df88590d154282ce704f"
+sha1sums=("0be3f194a9ee6a9354d9f18e17b717289fe35a4f"
           "4997f1aa087e0de4869234dbacd667faf59b19d5"
          )
 
@@ -122,7 +122,7 @@ package() {
   make DESTDIR="${pkgdir}" install || return 1
 
   install -dm 0755 "${pkgdir}/usr/share/webapps/zabbix"
-  install -dm 0755 "${pkgdir}/etc/zabbix/database/"
+  install -dm 0755 "${pkgdir}/etc/zabbix/database"
 
   cp -r ${srcdir}/zabbix-${pkgver}/frontends/php/* ${pkgdir}/usr/share/webapps/zabbix/
   chown -R 33:33 "${pkgdir}/usr/share/webapps/zabbix/"
