@@ -130,9 +130,24 @@ class PackageBase(object):
           dependency_map[package_name] = distrib["arch"]
     return dependency_map
 
-
   def generate(self, exclude_dependencies=[]):
     raise Exception('`generate` not implemented.')
+
+  def is_same_version(self, pkgbuild_file):
+    """
+    Checks whether a currently installed PKGBUILD contains the same version.
+    """
+    f = open(pkgbuild_file, "r")
+    content = f.read()
+    pattern_pkgver = re.compile(r"pkgver='([0-9\.]*)'")
+    pattern_pkgver_patch = re.compile(r"_pkgver_patch=([0-9]*)")
+    match_pkgver = re.search(pattern_pkgver, content)
+    match_pkgver_patch = re.search(pattern_pkgver_patch, content)
+    if match_pkgver and match_pkgver_patch:
+      return (match_pkgver.group(1) == self.version
+              and match_pkgver_patch.group(1) == self.version_patch)
+    else:
+      return False
 
 
 class Package(PackageBase):
@@ -407,8 +422,8 @@ def github_raw_url(repo_url, path, commitish):
 
 
 def generate_pkgbuild(distro, package, directory, force=False,
-                      no_overwrite=False, recursive=False, exclude_dependencies=[],
-                      rosdep_urls=[], generated=None):
+                      no_overwrite=False, recursive=False, update=False,
+                      exclude_dependencies=[], rosdep_urls=[], generated=None):
   if generated is None:
     generated = []
   elif package.name in generated:
@@ -419,13 +434,13 @@ def generate_pkgbuild(distro, package, directory, force=False,
       generate_pkgbuild(distro, child_package, directory,
                         force=force, exclude_dependencies=exclude_dependencies,
                         no_overwrite=no_overwrite, recursive=recursive,
-                        rosdep_urls=rosdep_urls, generated=generated)
+                        update=update, rosdep_urls=rosdep_urls, generated=generated)
   if recursive:
     for dependency in package.run_dependencies + package.build_dependencies:
       if distro.is_package(dependency):
         generate_pkgbuild(distro, distro.package(dependency), directory,
                           force=force, no_overwrite=no_overwrite, recursive=recursive,
-                          exclude_dependencies=exclude_dependencies,
+                          exclude_dependencies=exclude_dependencies, update=update,
                           rosdep_urls=rosdep_urls, generated=generated)
   output_directory = os.path.join(directory, package.name)
   if not os.path.exists(output_directory):
@@ -437,8 +452,15 @@ def generate_pkgbuild(distro, package, directory, force=False,
       "Directory '%s' already contains a PKGBUILD file. Overwrite?" % (
         output_directory)) == "no":
       return
-  print('Generating PKGBUILD for package %s' % package.name)
-  with open(os.path.join(output_directory, 'PKGBUILD'), 'w') as pkgbuild:
+  pkgbuild_file = os.path.join(output_directory, 'PKGBUILD')
+  if update:
+    if package.is_same_version(pkgbuild_file):
+      print('PKGBUILD for package %s already up-to-date (%s-%s)'
+            % (package.name, package.version, package.version_patch))
+      return
+  print('Generating PKGBUILD for package %s (%s-%s)'
+        % (package.name, package.version, package.version_patch))
+  with open(pkgbuild_file, 'w') as pkgbuild:
     pkgbuild.write(package.generate(exclude_dependencies, rosdep_urls))
 
 
@@ -467,8 +489,10 @@ def main():
                     help='Always overwrite exiting PKGBUILD files.')
   parser.add_option('-n', '--no-overwrite', dest='no_overwrite', action='store_true', default=False,
                     help='Do not overwrite PKGBUILD files.')
-  parser.add_option('--recursive', dest='recursive', action='store_true', default=False,
+  parser.add_option('-r','--recursive', dest='recursive', action='store_true', default=False,
                     help='Recursively import dependencies')
+  parser.add_option('-u','--update', dest='update', action='store_true', default=False,
+                    help='Update PKGBUILD if a newer version is found.')
   options, args = parser.parse_args()
 
   if options.distro == "fuerte" and options.distro_url == default_distro_url:
@@ -486,9 +510,10 @@ def main():
                         os.path.abspath(options.output_directory),
                         exclude_dependencies=options.exclude_dependencies.split(','),
                         force=options.force, no_overwrite=options.no_overwrite,
-                        recursive=options.recursive, rosdep_urls=options.rosdep_urls)
+                        update=options.update, recursive=options.recursive,
+                        rosdep_urls=options.rosdep_urls)
   else:
-    parser.error('No packages specified.')
+    parser.error('No package specified.')
 
 
 if __name__ == '__main__':
