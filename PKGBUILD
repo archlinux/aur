@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 
 pkgname=cdogs
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
 arch=('i686' 'x86_64')
@@ -16,15 +16,15 @@ makedepends=('cmake')
 conflicts=('cdogs-git')
 source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/$pkgver.tar.gz"
         hqx-for-$pkgver.tar.gz::"https://github.com/cxong/hqx/archive/994249c8c4d1446afd9c05654bf7eafffd7a11bb.tar.gz"
-        tinydir-for-$pkgver.tar.gz::"https://github.com/cxong/tinydir/archive/10561a348a74a839276d3f81505a21a4ab1960ec.tar.gz"
-        cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/dd7572bccc5b291e6e9ced0a694030fd30b622a6.tar.gz"
-        rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/b84226ac1345cc62ab7d92c13f4fa27434a99946.tar.gz")
+        tinydir-for-$pkgver.tar.gz::"https://github.com/cxong/tinydir/archive/5545eeb7bf5ee2b64f790a276f89aa1856a6269a.tar.gz"
+        cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/e90cdcf2ebaedabb8f5a2595d6edf7c823a4f196.tar.gz"
+        rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/97348047c4340de554bb0b5c6e0d2ab34c88f05b.tar.gz")
 noextract=("hqx-for-$pkgver.tar.gz" "tinydir-for-$pkgver.tar.gz" "cbehave-for-$pkgver.tar.gz" "rlutil-for-$pkgver.tar.gz")
-sha256sums=('ecf775a91c257703ce622f28e967e317f0e605a80bc46facf3e89100d8268219'
+sha256sums=('675eab5e9fafe3254cd2a42435c37809d97050bd875c748184d59565a8dda276'
             'adeef0711099da7e86c2c20b3fc40e63f32ea1e11ef0b9a98dacfc983f38f4ce'
-            '402002b715043bb95ee5a604508de83737ed67e3b98b0eb0aa3e0a63700f4dfd'
-            '7d367e4f14f2a2d65a40354fa6864cb13f0b2be14b367ae8e948b38021b3361a'
-            'dec6d24c82a88c7b1fb84b60f6e026916cb8c628af30f88400ff6c9f3ccb7727')
+            'ebd1c2c64724f5f5e1837e42bae1f5c67a0be4df09b7974c2d6a3d64c8314ea4'
+            '16fbb9d01d7c03701447621f51033d58e1853d622bbff2930148fadd4a8e8029'
+            'eca5ba880a64688591c556a0d125e0cc2b92c2c15b60e733a85f2a735728f9c7')
 
 prepare() {
   cd $pkgname-sdl-$pkgver
