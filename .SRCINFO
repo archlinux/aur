@@ -1,0 +1,16 @@
+pkgbase = tack
+	pkgdesc = A program that can be used to verify or refine a terminfo (terminal information) description of a terminal.
+	pkgver = 1.07_20130713
+	pkgrel = 1
+	url = http://invisible-island.net/ncurses/tack.html
+	changelog = tack.changelog
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	provides = tack
+	source = ftp://invisible-island.net/ncurses/current/tack-1.07-20130713.tgz
+	md5sums = c79fd171415dbdce11032e6bb42aa6f6
+
+pkgname = tack
+
