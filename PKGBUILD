@@ -2,7 +2,7 @@
 
 pkgname=echoping
 pkgver=6.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="tests performance of a remote host by sending HTTP, TCP and UDP requests"
 arch=('i686' 'x86_64')
 url="http://echoping.sourceforge.net/"
@@ -13,7 +13,7 @@ md5sums=('991478532b56ab3b6f46ea9fa332626f')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --config-cache
+  ./configure --prefix=/usr --config-cache --with-ssl
   make
 }
 
