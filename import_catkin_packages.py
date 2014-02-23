@@ -1,6 +1,5 @@
 #!/usr/bin/env python2
 
-
 from __future__ import print_function
 
 import catkin_pkg.package
@@ -137,15 +136,18 @@ class PackageBase(object):
     """
     Checks whether a currently installed PKGBUILD contains the same version.
     """
-    f = open(pkgbuild_file, "r")
-    content = f.read()
-    pattern_pkgver = re.compile(r"pkgver='([0-9\.]*)'")
-    pattern_pkgver_patch = re.compile(r"_pkgver_patch=([0-9]*)")
-    match_pkgver = re.search(pattern_pkgver, content)
-    match_pkgver_patch = re.search(pattern_pkgver_patch, content)
-    if match_pkgver and match_pkgver_patch:
-      return (match_pkgver.group(1) == self.version
-              and match_pkgver_patch.group(1) == self.version_patch)
+    if os.path.isfile(pkgbuild_file):
+      f = open(pkgbuild_file, "r")
+      content = f.read()
+      pattern_pkgver = re.compile(r"pkgver='([0-9\.]*)'")
+      pattern_pkgver_patch = re.compile(r"_pkgver_patch=([0-9]*)")
+      match_pkgver = re.search(pattern_pkgver, content)
+      match_pkgver_patch = re.search(pattern_pkgver_patch, content)
+      if match_pkgver and match_pkgver_patch:
+        return (match_pkgver.group(1) == self.version
+                and match_pkgver_patch.group(1) == self.version_patch)
+      else:
+        return False
     else:
       return False
 
