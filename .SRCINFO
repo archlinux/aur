@@ -1,0 +1,14 @@
+pkgbase = sclapp
+	pkgdesc = easy-to-use framework for writing simple command-line applications in Python
+	pkgver = 0.5.3
+	pkgrel = 2
+	url = http://www.alittletooquiet.net/software/sclapp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	source = http://forestbond.com/media/release/sclapp-0.5.3.tar.gz
+	md5sums = 815fe32642213fb63cf29d3ffc0a6e33
+
+pkgname = sclapp
+
