@@ -319,8 +319,9 @@ class DistroDescription(object):
       metapackages = self._distro['repositories']['metapackages']['release']
       for meta in metapackages['packages']:
         self._distro['repositories'][meta] = {}
-        self._distro['repositories'][meta]['url'] = metapackages['url']
-        self._distro['repositories'][meta]['version'] = metapackages['version']
+        self._distro['repositories'][meta]['release'] = {}
+        self._distro['repositories'][meta]['release']['url'] = metapackages['url']
+        self._distro['repositories'][meta]['release']['version'] = metapackages['version']
     del self._distro['repositories']['metapackages']
 
 
