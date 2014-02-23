@@ -1,8 +1,4 @@
-# Create folder for image samples cache.
-
-pre_install() {
-    mkdir -p --mode=777 /opt/fiji/samples
-}
+# Delete folder for image samples cache.
 
 pre_remove() {
     rm -r /opt/fiji/samples

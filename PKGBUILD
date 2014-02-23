@@ -6,7 +6,7 @@
 
 pkgname="fiji-binary"
 pkgver="20130715"
-pkgrel="6"
+pkgrel="7"
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
 arch=('i686' 'x86_64')
 url='http://fiji.sc/'
@@ -27,7 +27,6 @@ md5sums=(
          'abdcbf387ccd76015558ccfcc0b79d29'
          '4c59f5f24368b179aab17eac1e1dfd2a'
         )
-
 _userexecutable="fiji" # That name to be presented to the user.
 
 _executablebase="ImageJ-linux"
@@ -63,6 +62,7 @@ package()
   _bindir="${pkgdir}/usr/bin"
   mkdir -p "${_targetdir}" || exit 111
   mkdir -p "${_bindir}" || exit 116
+  mkdir -p --mode=777 "${_targetdir}/samples" # Folder for image samples cache
   cp -afv "${_extractdir}"/* "${_targetdir}" || exit 121
   chown -R root:root "${_targetdir}" || true
   cd "${_bindir}" || exit 125
