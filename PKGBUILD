@@ -2,7 +2,7 @@
 # Contributor: Denis Kobozev <d.v.kobozev at gmail dot com>
 
 pkgname=xapian-omega
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Indexers and CGI search frontend for Xapian"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -23,4 +23,4 @@ package() {
     make DESTDIR=${pkgdir} install
 }
 
-md5sums=('57dbdcfd3008fe6394275a8de75292c2')
+md5sums=('d6cb99c7ef5664c8995627d390b90039')
