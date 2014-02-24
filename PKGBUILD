@@ -2,7 +2,7 @@
 # https://github.com/zizzfizzix/pkgbuilds
 
 pkgname=cloudprint-cups-git
-pkgver=20130604.2.g896b314
+pkgver=20140210.66.gddd00d5
 pkgrel=1
 epoch=1
 pkgdesc="Google Cloud Print driver for CUPS, allows printing to printers hosted on Google Cloud Print."
