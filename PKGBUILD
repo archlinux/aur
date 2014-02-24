@@ -1,9 +1,8 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Maintainer: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: rabyte <rabyte.at.gmail.dot.com>
 # Contributor: Johannes Krampf <wuischke.at.amule.dot.org>
-# Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Andrew Gregory <andrew.gregory.8@gmail.com>
 
 pkgname=midori
