@@ -1,5 +1,5 @@
 # Maintainer:  Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
