@@ -1,0 +1,15 @@
+pkgbase = mongrel2
+	pkgdesc = Application, language, and network architecture agnostic web server
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://mongrel2.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = sqlite3
+	depends = zeromq
+	source = https://github.com/zedshaw/mongrel2/releases/download/1.9.2/mongrel2-v1.9.2.tar.bz2
+	sha256sums = 543553c3082f2b992649a975f6cb7324ae2aea93af05288ea4f2c1262a7f63b2
+
+pkgname = mongrel2
+
