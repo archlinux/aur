@@ -1,0 +1,16 @@
+pkgbase = python2-stomper
+	pkgdesc = A transport neutral client implementation of the STOMP protocol.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/oisinmulvihill/stomper
+	arch = any
+	license = apache
+	makedepends = python2-setuptools
+	depends = python2
+	provides = stomper
+	replaces = stomper
+	source = http://pypi.python.org/packages/source/s/stomper/stomper-0.3.0.tar.gz
+	sha256sums = ceaacc016c0e8e98c3d3155f22069d18d403637d57492d9cf678813e27c9ecb0
+
+pkgname = python2-stomper
+
