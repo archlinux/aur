@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=go-xmpp-client
 _gitname=xmpp-client
-pkgver=73.8bfe768
+pkgver=99.5e5d916
 pkgrel=1
 pkgdesc="A simple XMPP client wth OTR support written in pure Go"
 arch=('i686' 'x86_64')
@@ -27,18 +27,12 @@ build() {
 }
 
 check() {
-  source /etc/profile.d/go.sh
   GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}/...
 }
 
 package() {
-  source /etc/profile.d/go.sh
-
-  mkdir -p "${pkgdir}/$GOPATH/src/${_gourl}"
-  cp -Rv --preserve=timestamps "${srcdir}/src/${_gourl}" \
-    "${pkgdir}/$GOPATH/src/${_gourl}"
-
-  install -Dm755 "${srcdir}/bin/xmpp-client" "${pkgdir}/usr/bin/xmpp-client"
+  cd "$srcdir"
+  install -Dm755 bin/xmpp-client "${pkgdir}/usr/bin/xmpp-client"
 }
 
 # vim:set ts=2 sw=2 et:
