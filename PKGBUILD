@@ -2,14 +2,14 @@
 
 pkgname=clutter-gst
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer bindings for clutter"
 arch=(i686 x86_64)
 url="http://www.clutter-project.org/"
 license=(LGPL)
-depends=(clutter gst-plugins-base-libs libxdamage gst-plugins-bad)
+depends=(clutter gst-plugins-base-libs libxdamage)
 makedepends=(gobject-introspection)
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+source=(http://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz)
 sha256sums=('f00cf492a6d4f1036c70d8a0ebd2f0f47586ea9a9b49b1ffda79c9dc7eadca00')
 
 build() {
