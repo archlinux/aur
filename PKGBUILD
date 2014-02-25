@@ -2,7 +2,7 @@
 
 pkgname=php-oauth
 _extname=oauth
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=("i686" "x86_64")
@@ -11,7 +11,6 @@ license=('BSD')
 depends=('php')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
-md5sums=('9a9f35e45786534d8580abfffc8c273c')
 
 build() {
 	cd "$srcdir/$_extname-$pkgver"
@@ -19,6 +18,10 @@ build() {
 	phpize
 	./configure
 	make
+}
+
+package() {
+	cd "$srcdir/$_extname-$pkgver"
 
 	install -m0755 -d "$pkgdir/etc/php/conf.d/"
 	install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
@@ -27,4 +30,4 @@ build() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-# vim:set ts=2 sw=2 et:
+sha256sums=('86bb5ee37afe672d4532ad784c7f711855c79f0dabf0acacafd5344ab6cf0195')
