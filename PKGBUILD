@@ -5,20 +5,20 @@
 # Contributor: Michael Düll <mail@akurei.me>
 
 pkgname=synergy
-pkgver=1.4.15
-pkgrel=3
+pkgver=1.4.16
+pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
 depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++')
-makedepends=('libxt' 'cmake' 'qt4' 'unzip')
-optdepends=('qt4: gui support')
+makedepends=('libxt' 'cmake' 'qt5-base' 'unzip')
+optdepends=('qt5-base: gui support')
 license=('GPL2')
-source=("http://synergy.googlecode.com/files/$pkgname-$pkgver-Source.tar.gz"
+source=("http://fossfiles.com/synergy/synergy-${pkgver}-r1969-Source.tar.gz"
         "synergys.socket"
         "synergys.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
-sha1sums=('0766bc3d95d6971746764d30e0853db14926ae73'
+sha1sums=('c489e8f3262d5ad5dbcb5257c8354f459bd68f1f'
           '947406e72351145c65ba9884ed175bf781482d46'
           '00f2259c31c9551c0830d9e889fd0a0790cf9045'
           '129151952e6d25504ca823aee8ebe93ce3d376ce')
@@ -30,11 +30,11 @@ build() {
   # You and Fedora are our only friends in this crazy world.
   patch -Np1 < "${srcdir}/unfuck-cryptopp-thanks-gentoo.patch"
 
-  cmake -D CMAKE_INSTALL_PREFIX=/usr . 
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS="${CXXFLAGS} -pthread" .
+  make -j1
 
   cd src/gui
-  qmake-qt4
+  qmake
   make
 }
 
@@ -48,6 +48,12 @@ package() {
 
   # install config
   install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}.conf.example" 
+  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}.conf.example-advanced" "${pkgdir}/etc/${pkgname}.conf.example-advanced"
+  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}.conf.example-basic" "${pkgdir}/etc/${pkgname}.conf.example-basic" 
+
+  # install manfiles
+  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}c.man" "${pkgdir}/usr/share/man/man1/${pkgname}c.1"
+  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}s.man" "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
 
   # install systemd service and socket
   install -d "$pkgdir/usr/lib/systemd/system"
