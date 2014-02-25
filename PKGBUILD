@@ -51,7 +51,7 @@ md5sums=('SKIP'
          '728b7439ac733a7c0d56049adec364c7'
          'SKIP'
          'e506ae4a9f9f7d1b765febfa84e10d48'
-         'cc988384d9b3bfb61384342e3e1f28c3'
+         'dcf3e0b47119b0bb06ce987c8f030ffa'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46')
@@ -272,12 +272,3 @@ package() {
 	_package_grub-common_and_bios
 	
 }
-md5sums=('SKIP'
-         'SKIP'
-         '728b7439ac733a7c0d56049adec364c7'
-         'SKIP'
-         'e506ae4a9f9f7d1b765febfa84e10d48'
-         'dcf3e0b47119b0bb06ce987c8f030ffa'
-         'be55eabc102f2c60b38ed35c203686d6'
-         'a03ffd56324520393bf574cefccb893d'
-         'c8b9511586d57d6f2524ae7898397a46')
