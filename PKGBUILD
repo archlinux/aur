@@ -1,7 +1,7 @@
 # Maintainer: Johannes Löthberg <johannes2kyriasis.com>
 
 pkgname=python-pafy-git
-pkgver=0.3.33.r0.gc20f6ba
+pkgver=git
 pkgrel=1
 pkgdesc="Python API for YouTube - Download videos and retrieve metadata from YouTube."
 arch=('any')
