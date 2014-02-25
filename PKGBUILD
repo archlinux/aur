@@ -21,7 +21,7 @@ package() {
 	cd "$srcdir/mtorromeo-iosshy-ef4ee08"
 	python2 setup.py install -O2 --root="$pkgdir"
 	install -m0644 -D "$srcdir/iosshy.desktop" "$pkgdir/usr/share/applications/iosshy.desktop"
-	install -D LICENSE "$pkgdir/usr/share/licenses/sqlantaresia/COPYING"
+	install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 sha256sums=('ec774f07e698141a37c4144e3adafa1d0af98c51f517c20e3cccffd360b323a3'
