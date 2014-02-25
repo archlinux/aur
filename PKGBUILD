@@ -1,5 +1,6 @@
-# Maintainer: Bernd Helm
-# Based on PKGBUILD by Mike Shade <mshade@mshade.org>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Bernd Helm
+# Contributor: Mike Shade <mshade@mshade.org>
 
 _pkgname=evdev
 pkgname=python-$_pkgname
@@ -10,11 +11,11 @@ arch=(any)
 url="http://packages.python.org/evdev/"
 license=(New BSD)
 depends=(python linux-api-headers)
-makedepends=(python-distribute)
+makedepends=(python-setuptools)
 provides=(python-$_pkgname=$pkgver)
 conflicts=(python-$_pkgname)
 source=(http://pypi.python.org/packages/source/e/$_pkgname/$_pkgname-$pkgver.tar.gz
-    https://raw.github.com/gvalkov/python-$_pkgname/master/LICENSE)
+        https://raw.github.com/gvalkov/python-$_pkgname/master/LICENSE)
 
 package() {
     cd "$srcdir"/$_pkgname-$pkgver/
