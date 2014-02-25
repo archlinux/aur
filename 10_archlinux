@@ -2,7 +2,8 @@
 
 ##
 ## grub-mkconfig helper script specific to Arch Linux
-## Contributed by "Keshav Padram Amburay" <the ddoott ridikulus ddoott rat aatt geemmayil ddoott ccoomm>
+## Contributed by "Keshav Amburay" <the ddoott ridikulus ddoott rat aatt geemmayil ddoott ccoomm>
+## Updated on 08 February 2014
 ##
 ## Script based on do_grub_config() function in Arch Linux Archboot ISO Installer/Setup script 
 ## Some parts taken from /etc/grub.d/10_linux script shipped by GRUB(2) upstream
@@ -64,20 +65,29 @@ CLASS="--class arch-linux --class arch --class gnu-linux --class gnu --class os"
 [[ "${grub_file}" != "" ]] && _FUNC_GRUB_FILE_PRESENT
 
 BOOT_PART_FS_UUID="$(${grub_probe} --target="fs_uuid" "/boot" 2>/dev/null)"
-BOOT_PART_HINTS_STRING="$(${grub_probe} --target="hints_string" "/boot" 2>/dev/null)"
+BOOT_PART_HINTS_STRING="$(${grub_probe} --target="hints_string" "/boot" 2>/dev/null || true)"
 BOOT_PART_FS="$(${grub_probe} --target="fs" "/boot" 2>/dev/null)"
 
-ROOT_PART_FS_UUID="$(${grub_probe} --target="fs_uuid" "/" 2>/dev/null)"
-ROOT_PART_HINTS_STRING="$(${grub_probe} --target="hints_string" "/" 2>/dev/null)"
-ROOT_PART_FS="$(${grub_probe} --target="fs" "/" 2>/dev/null)"
-
-if [[ "${ROOT_PART_FS_UUID}" == "${BOOT_PART_FS_UUID}" ]]; then
-    SUBDIR="/boot"
-else
-    SUBDIR=""
-fi
+ROOT_PART_GRUB_DEVICE="$(${grub_probe} --target=device / || true)"
+ROOT_PART_FS="$(${grub_probe} --device ${ROOT_PART_GRUB_DEVICE} --target=fs 2> /dev/null || echo "unknown")"
 
 if [[ "${GRUB_LINUX_ROOT_DEVICE}" == "" ]]; then
+    
+    case "${ROOT_PART_FS}" in
+        btrfs)
+            rootsubvol="$(make_system_path_relative_to_its_root /)"
+            rootsubvol="${rootsubvol#/}"
+            if [[ "${rootsubvol}" != "" ]]; then
+                GRUB_LINUX_ROOT_DEVICE="subvol=${rootsubvol}"
+            fi
+        ;;
+        zfs)
+            rpool="$(${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true)"
+            bootfs="$(make_system_path_relative_to_its_root / | sed -e "s,@$,,")"
+            GRUB_LINUX_ROOT_DEVICE="ZFS=${rpool}${bootfs}"
+        ;;
+    esac
+    
     if [[ "${GRUB_DEVICE_UUID}" == "" ]] || \
        [[ "${GRUB_DISABLE_LINUX_UUID}" == "true" ]] || \
        [[ ! -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" ]] || \
@@ -94,6 +104,10 @@ for _KERNEL_ in ${list} ; do
     
     echo "Found linux image: ${_KERNEL_}" >&2
     
+    basename="$(basename "${_KERNEL_}")"
+    dirname="$(dirname "${_KERNEL_}")"
+    REAL_DIR="$(make_system_path_relative_to_its_root "${dirname}")"
+  
     _KERNEL_FILE_="$(echo ${_KERNEL_} | sed 's,/boot/,,g')"
     _KERNEL_PKG_="pkg-$(echo ${_KERNEL_FILE_} | sed 's,vmlinuz-,,g')"
     
@@ -106,6 +120,7 @@ for _KERNEL_ in ${list} ; do
 cat << EOF
 
 menuentry "Arch Linux ${_KERNEL_PKG_} kernel" ${CLASS} {
+    $(save_default_entry)
     if [ x\$feature_all_video_module = xy ]; then
         insmod all_video
     fi
@@ -117,9 +132,9 @@ menuentry "Arch Linux ${_KERNEL_PKG_} kernel" ${CLASS} {
         search --no-floppy --fs-uuid  --set=root ${BOOT_PART_FS_UUID}
     fi
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel ...'
-    linux ${SUBDIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
+    linux ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel initramfs ...'
-    initrd ${SUBDIR}/${_INITRAMFS_}
+    initrd ${REAL_DIR}/${_INITRAMFS_}
 }
 
 EOF
@@ -134,6 +149,7 @@ EOF
 cat << EOF
 
 menuentry "Arch Linux ${_KERNEL_PKG_} kernel (fallback initramfs)" ${CLASS} {
+    $(save_default_entry)
     if [ x\$feature_all_video_module = xy ]; then
         insmod all_video
     fi
@@ -145,9 +161,9 @@ menuentry "Arch Linux ${_KERNEL_PKG_} kernel (fallback initramfs)" ${CLASS} {
         search --no-floppy --fs-uuid  --set=root ${BOOT_PART_FS_UUID}
     fi
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel ...'
-    linux ${SUBDIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
+    linux ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel fallback initramfs ...'
-    initrd ${SUBDIR}/${_INITRAMFS_FALLBACK_}
+    initrd ${REAL_DIR}/${_INITRAMFS_FALLBACK_}
 }
 
 EOF
@@ -157,6 +173,7 @@ EOF
 cat << EOF
 
 menuentry "Arch Linux ${_KERNEL_PKG_} kernel (no initramfs)" ${CLASS} {
+    $(save_default_entry)
     if [ x\$feature_all_video_module = xy ]; then
         insmod all_video
     fi
@@ -168,7 +185,7 @@ menuentry "Arch Linux ${_KERNEL_PKG_} kernel (no initramfs)" ${CLASS} {
         search --no-floppy --fs-uuid  --set=root ${BOOT_PART_FS_UUID}
     fi
     echo 'Loading Arch Linux ${_KERNEL_PKG_} kernel ...'
-    linux ${SUBDIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
+    linux ${REAL_DIR}/${_KERNEL_FILE_} root=${GRUB_LINUX_ROOT_DEVICE} rw ${GRUB_LINUX_PARAMS}
 }
 
 EOF
