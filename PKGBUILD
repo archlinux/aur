@@ -1,7 +1,7 @@
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=mps-youtube-git
-pkgver=0.01.32.r2.g7f0feac
+pkgver=git
 pkgrel=1
 pkgdesc="Terminal based YouTube jukebox with playlist management"
 arch=('any')
