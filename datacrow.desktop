@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Data Crow
+Comment=Movie, video, book, image, software, and music cataloger/media manager.
+TryExec=datacrow
+Exec=java -jar -Xmx256m /opt/datacrow/datacrow.jar
+Icon=datacrow
+Terminal=false
+Categories=Office;
