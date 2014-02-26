@@ -1,0 +1,9 @@
+post_install () {
+	printf "==> Remember to install either mpv or mplayer for playback support.\n"
+	printf "==> For mpv playback run these commands inside mps:\n"
+	printf "set player mpv\nset playerargs --really-quiet --no-video\n"
+}
+
+post_upgrade () {
+	post_install $1
+}
