@@ -5,7 +5,7 @@
 # User lib32-gtk2 properly
 
 pkgname=netfabb-basic
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="view and repair STL files"
 arch=('i686' 'x86_64')
@@ -14,23 +14,25 @@ license=('custom:freeware')
 depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 install='netfabb-basic.install'
 
+md5sums=('10b53ba2e5a9f40dd61051d9abf14d8c') # 32-bit
+nARCH=32
+if [ "$CARCH" == x86_64 ] ; then
+   md5sums=('e8037bd5db76806e72a239418509e5bc') # 64-bit
+   depends[0]="lib32-gtk2"
+   nARCH=64
+fi
+
 if [ -z "$pikey" ]; then
   msg "Fetching pikey"
-  pikey=$(curl --data "operatinsystems=linux" --data "zusatz=-5.0.0-9" --data "disti=targz" --data "download32=Download%20for%20PC%2032-Bit"  http://www.netfabb.com/downloadcenter.php?basic=1 | grep pikey)
+  pikey=$(curl --data "operatinsystems=linux" --data "zusatz=-$pkgver-9" --data "disti=targz" --data "download${nARCH}=Download%20for%20PC%20${nARCH}-Bit"  "http://www.netfabb.com/downloadcenter.php?basic=1" | grep pikey)
   pikey="${pikey#*pikey=}"
   export pikey="${pikey%%\">*}"
   [ -z "$pikey" ] && error "Fetching pikey has failed" && exit 1
   msg2 "pikey: $pikey"
 fi
 
-source=("netfabb-basic_${pkgver}_linux32.tar.gz::http://www.netfabb.com/download.php?pikey=$pikey")
-md5sums=('8f59b70fae694148d1915560e0e4de99')
+source=("netfabb-basic_${pkgver}_linux${nARCH}.tar.gz::http://www.netfabb.com/download.php?pikey=$pikey")
 
-if [ "$CARCH" == x86_64 ] ; then
-#  source=('http://www.netfabb.com/download/netfabb_linux64.tar.gz')
-#  md5sums=('36577e34a3b51742c3ace44cfd15d794')
-   depends[0]="lib32-gtk2"
-fi
 
 prepare() {
   cd "$srcdir/$pkgname"
