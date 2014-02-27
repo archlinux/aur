@@ -4,7 +4,7 @@
 
 pkgname=discount
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Markdown implementation written in C"
 arch=('i686' 'x86_64')
 url="http://www.pell.portland.or.us/~orc/Code/discount/"
@@ -20,7 +20,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -e "s/m 444/m 644/g" -i configure.inc
   patch -p1 -i "$srcdir/no-ldconfig.patch"
-  ./configure.sh --prefix=/usr --enable-all-features --shared
+  ./configure.sh --prefix=/usr --enable-all-features --with-fenced-code --shared
   make
 }
 
