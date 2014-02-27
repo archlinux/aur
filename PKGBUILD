@@ -3,7 +3,7 @@
 
 pkgname=pcmanfm-git
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing"
 arch=('i686' 'x86_64')
 url="http://pcmanfm.sourceforge.net/"
@@ -15,8 +15,9 @@ optdepends=('gvfs: mounting of local and remote drives'
 provides=('pcmanfm')
 conflicts=('pcmanfm')
 install=pcmanfm.install
-source=('git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm')
-md5sums=('SKIP')
+source=('git://git.lxde.org/git/lxde/pcmanfm' 'pcmanfm.install')
+md5sums=('SKIP'
+         'fc9ea2af71f55f32c8b22bf5ea879e69')
 
 pkgver() {
 	cd pcmanfm
