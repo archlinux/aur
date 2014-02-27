@@ -1,6 +1,6 @@
 pkgbase = zdbsp
 	pkgdesc = A node builder optimized for ZDoom WADs
-	pkgver = 1.17
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = zdbsp
 	makedepends = cmake
 	depends = gcc-libs
 	depends = zlib
-	noextract = zdbsp-1.17-src.zip
-	source = http://zdoom.org/files/utils/zdbsp-1.17-src.zip
-	md5sums = 3868c13982eac42c9ac49a681946d5ce
+	noextract = zdbsp-1.18.1-src.zip
+	source = http://zdoom.org/files/utils/zdbsp/zdbsp-1.18.1-src.zip
+	md5sums = e2402ef8acf5364a58b70acecf5e9b9b
 
 pkgname = zdbsp
 

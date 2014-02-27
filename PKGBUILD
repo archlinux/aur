@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=zdbsp
-pkgver=1.17
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="A node builder optimized for ZDoom WADs"
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ url="http://www.zdoom.org/"
 license=('GPL2')
 depends=('gcc-libs' 'zlib')
 makedepends=('cmake')
-source=(http://zdoom.org/files/utils/${pkgname}-${pkgver}-src.zip)
+source=(http://zdoom.org/files/utils/zdbsp/${pkgname}-${pkgver}-src.zip)
 noextract=(${pkgname}-${pkgver}-src.zip)
-md5sums=('3868c13982eac42c9ac49a681946d5ce')
+md5sums=('e2402ef8acf5364a58b70acecf5e9b9b')
 
 build() {
   cd "$srcdir"
