@@ -2,8 +2,8 @@
 
 pkgname=np1-mps-git
 pkgver=git
-pkgrel=1
-pkgdesc="Terminal based YouTube jukebox with playlist management"
+pkgrel=2
+pkgdesc="Terminal based jukebox with playlist management"
 arch=('any')
 url='https://github.com/np1/mps'
 license=('GPL3')
