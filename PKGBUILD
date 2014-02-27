@@ -78,7 +78,7 @@ source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=
         http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcoderel}.zip
         http://protobuf.googlecode.com/files/protobuf-${_protobuf_ver}.tar.bz2
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_patchver}.patch
-        http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
+        http://download.fcitx-im.org/data/fcitx-mozc-icon.tar.gz)
 
 build() {
   #source /etc/profile.d/qt4.sh
