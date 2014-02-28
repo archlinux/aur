@@ -7,18 +7,17 @@
 
 # What type of build do you want?
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
-# Default is RelWithDebInfo to help with debugging.
 
-_buildtype="Release"
+_buildtype='Release'
 
 ##############################################################
 
 pkgname=jreen
 pkgver=1.1.1
 pkgrel=4
-pkgdesc="Free and Opensource Jabber library, written in C++ using cross-platform framework Qt."
+pkgdesc='Free and Opensource Jabber library, written in C++ using cross-platform framework Qt.'
 arch=('i686' 'x86_64')
-url="http://qutim.org/jreen"
+url='http://qutim.org/jreen'
 license=('GPL2')
 depends=('libidn' 'qca-ossl' 'zlib')
 makedepends=('cmake')
@@ -29,7 +28,7 @@ source=("${pkgname}-${pkgver}.zip::http://github.com/euroelessar/${pkgname}/arch
 md5sums=('07e64faaae4be7cf2c99eac07f80fb8f'
          '397e75be409ea7e8bddff88b6f977f5f')
 
-if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
   options=('debug')
 fi
 
