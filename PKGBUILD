@@ -7,9 +7,8 @@
 
 # What type of build do you want?
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
-# Default is RelWithDebInfo to help with debugging.
 
-_buildtype="RelWithDebInfo"
+_buildtype='RelWithDebInfo'
 
 ##############################################################
 
@@ -17,9 +16,9 @@ pkgname=qtweetlib-git
 pkgver=0.5.135.gad8fa29
 pkgrel=1
 epoch=1
-pkgdesc="C++ Qt based Twitter library - development version"
+pkgdesc='C++ Qt based Twitter library - development version'
 arch=('i686' 'x86_64')
-url="https://github.com/minimoog/QTweetLib"
+url='https://github.com/minimoog/QTweetLib'
 license=('GPL2')
 depends=('qjson')
 makedepends=('git' 'cmake')
@@ -28,7 +27,7 @@ conflicts=('qtweetlib')
 source=("${pkgname}::git://github.com/minimoog/QTweetLib.git")
 md5sums=('SKIP')
 
-if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
   options=('debug')
 fi
 
