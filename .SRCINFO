@@ -1,0 +1,24 @@
+pkgbase = cpyrit-opencl-svn
+	pkgdesc = OpenCL backend for accelerated attack against WPA-PSK authentication. (SVN version)
+	pkgver = 308
+	pkgrel = 1
+	url = http://code.google.com/p/pyrit/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = opencl-headers
+	makedepends = svn
+	depends = pyrit-svn
+	depends = python2
+	optdepends = opencl-nvidia: OpenCL implemention for NVIDIA
+	optdepends = opencl-catalyst: OpenCL implemention from AMD
+	provides = cpyrit-opencl
+	conflicts = cpyrit-calpp-svn
+	conflicts = cpyrit-calpp
+	conflicts = cpyrit-opencl
+	conflicts = cpyrit-cuda
+	source = svn+http://pyrit.googlecode.com/svn/trunk/cpyrit_opencl
+	md5sums = SKIP
+
+pkgname = cpyrit-opencl-svn
+
