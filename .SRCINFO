@@ -1,0 +1,20 @@
+pkgbase = pyrit-svn
+	pkgdesc = GPU-accelerated attack against WPA-PSK authentication, (SVN version)
+	pkgver = 308
+	pkgrel = 7
+	url = http://code.google.com/p/pyrit/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = libpcap
+	optdepends = cpyrit-calpp-svn: CAL++ backend
+	optdepends = cpyrit-cuda-svn: CUDA backend
+	optdepends = cpyrit-opencl-svn: OpenCL backend
+	provides = pyrit
+	conflicts = pyrit
+	source = svn+http://pyrit.googlecode.com/svn/trunk/pyrit
+	md5sums = SKIP
+
+pkgname = pyrit-svn
+
