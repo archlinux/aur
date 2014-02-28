@@ -7,18 +7,17 @@
 
 # What type of build do you want?
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
-# Default is RelWithDebInfo to help with debugging.
 
-_buildtype="Release"
+_buildtype='Release'
 
 ##############################################################
 
 pkgname=tomahawk
 pkgver=0.7.0
 pkgrel=2
-pkgdesc="A Music Player App written in C++/Qt"
+pkgdesc='A Music Player App written in C++/Qt'
 arch=('i686' 'x86_64')
-url="http://tomahawk-player.org/"
+url='http://tomahawk-player.org/'
 license=('GPL3')
 depends=('phonon' 'taglib' 'boost' 'clucene' 'libechonest2' 'jreen' 'qtweetlib' 'quazip' 'attica' 'qtwebkit' 'liblastfm')
 makedepends=('cmake')
@@ -28,7 +27,7 @@ source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('98b7f5bc43e017379f5cd3834f19e90d')
 install=tomahawk.install
 
-if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
   options=('debug')
 fi
 
