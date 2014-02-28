@@ -7,18 +7,17 @@
 
 # What type of build do you want?
 # See http://techbase.kde.org/Development/CMake/Addons_for_KDE#Buildtypes to check what is supported.
-# Default is RelWithDebInfo to help with debugging.
 
-_buildtype="RelWithDebInfo"
+_buildtype='Release'
 
 ##############################################################
 
 pkgname=qtweetlib
 pkgver=0.5
 pkgrel=2
-pkgdesc="C++ Qt based Twitter library"
+pkgdesc='C++ Qt based Twitter library'
 arch=('i686' 'x86_64')
-url="https://github.com/minimoog/QTweetLib"
+url='https://github.com/minimoog/QTweetLib'
 license=('GPL2')
 depends=('qjson')
 makedepends=('cmake')
@@ -28,7 +27,7 @@ source=("https://github.com/downloads/minimoog/QTweetLib/QTweetLib-${pkgver}.tar
 md5sums=('bf1a7cf45eb63479bf5d81d807b0d518')
 
 # Clean options array to strip pkg if release buildtype is chosen
-if [[ ! ${_buildtype} == "Release" ]] && [[ ! ${_buildtype} == "release" ]]; then
+if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
   options=('debug')
 fi
 
