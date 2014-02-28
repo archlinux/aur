@@ -1,0 +1,29 @@
+pkgbase = libimobiledevice-git
+	pkgdesc = libimobiledevice is a software library that talks the protocols to support iPhone and iPod Touch devices on Linux
+	pkgver = 1.1.0.427.g8837cf3
+	pkgrel = 1
+	epoch = 1
+	url = http://www.libimobiledevice.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = swig
+	depends = gnutls
+	depends = libgcrypt
+	depends = glib2
+	depends = libplist-git
+	depends = usbmuxd-git
+	provides = libiphone-git
+	provides = libiphone
+	provides = libimobiledevice
+	conflicts = libiphone-git
+	conflicts = libiphone
+	conflicts = libimobiledevice
+	options = libtool
+	source = git://git.sukimashita.com/libimobiledevice.git
+	sha512sums = SKIP
+
+pkgname = libimobiledevice-git
+
