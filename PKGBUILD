@@ -12,6 +12,7 @@ url='http://www.cfengine.org'
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('qdbm' 'openssl' 'pcre' 'libxml2')
+makedepends=('which')
 optdepends=('tokyocabinet' 'libvirt' 'postgresql-libs' 'libmariadbclient')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::http://cfengine.com/source-code/download?file=${pkgname}-${pkgver}.tar.gz"
