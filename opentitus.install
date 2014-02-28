@@ -1,0 +1,17 @@
+
+post_install() {
+  echo "You need the 'Titus the Fox'/'Moktar' data files. Put them under"
+  echo "'~/.opentitus/titus' or '~/.opentitus/moktar' respectively."
+  echo "OpenTitus needs a config file, example files are in '/usr/share/opentitus'."
+  echo "They will be copied (along with the music support files) by the launcher script,"
+  echo "if not already available in your home folder. For a list of available options"
+  echo "see the readme file in '/usr/share/doc/opentitus'."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "You may remove leftover configs, music and data files from '~/.opentitus'."
+}

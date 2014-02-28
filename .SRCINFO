@@ -1,0 +1,19 @@
+pkgbase = opentitus
+	pkgdesc = Rewrite of the game engine used in the old DOS-based games Titus the Fox and Moktar (the French version)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://opentitus.sourceforge.net
+	install = opentitus.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/opentitus/OpenTitus_0.8.0_src.zip
+	source = http://arch.carsten-teibes.de/aur-stuff/opentitus-libopl_precompiled.tar.xz
+	source = opentitus.sh
+	sha256sums = ab1cb8ff02bc4b77508ccd948a6df387c0fa2b3c245800a01ca54acd0a02774e
+	sha256sums = 3e3195b4361e4a07dba2e0c445733542174babaf3bb407a48c49a305ef9d4150
+	sha256sums = 449365685b0b55556b4f70bd9ec91e685541e5cb1250050be73807889f9f2132
+
+pkgname = opentitus
+
