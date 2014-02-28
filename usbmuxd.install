@@ -1,0 +1,19 @@
+post_install() {
+    groupadd -g 140 usbmux &>/dev/null
+    useradd -c 'usbmux user' -u 140 -g usbmux -d / -s /sbin/nologin usbmux &>/dev/null
+    passwd -l usbmux &>/dev/null
+}
+
+post_upgrade() {
+    getent group usbmux >/dev/null 2>&1 || groupadd -g 140 usbmux &>/dev/null
+    getent passwd usbmux >/dev/null 2>&1 || useradd -c 'usbmux user' -u 140 -g usbmux -d / -s /sbin/nologin usbmux &>/dev/null
+}
+
+post_remove() {
+    if getent passwd usbmux >/dev/null 2>&1; then
+        userdel usbmux
+    fi
+    if getent group usbmux >/dev/null 2>&1; then
+        groupdel usbmux
+    fi
+}

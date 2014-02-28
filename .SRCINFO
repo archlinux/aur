@@ -1,0 +1,26 @@
+pkgbase = usbmuxd-git
+	pkgdesc = USB Multiplex Daemon
+	pkgver = 1.0.8.63.g5927823
+	pkgrel = 1
+	epoch = 1
+	url = http://www.libimobiledevice.org/
+	install = usbmuxd.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = glib2
+	depends = libxml2
+	depends = libusbmuxd-git
+	provides = usbmuxd
+	conflicts = usbmuxd
+	source = git://git.sukimashita.com/usbmuxd.git
+	source = usbmuxd.service
+	source = 39-usbmuxd.rules
+	sha512sums = SKIP
+	sha512sums = 9771b422e9b48e11a0c2ecaafda06ea9acee651afd4f7e7589e9704d60bd9eb014f6b737d1e279735225f68d910183c698949ee153275e0873940dae00911210
+	sha512sums = aa5e9f6caf8978ff458d789e549ab931d41d4443ae7802eca27b736db812d12938d2a23999d15d7fcbe4ec993495cd1bc88f2c40c3e44710e575e792669179cd
+
+pkgname = usbmuxd-git
+
