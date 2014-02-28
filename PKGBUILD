@@ -1,46 +1,34 @@
 # $Id$
-# Maintainer: Jonathan Steel <mail@jsteel.org>
+# Maintainer: Jonathan Steel <jsteel@aur.archlinux.org>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 # Contributor: David Rosenstrauch <darose@darose.net>
 
 pkgname=ddclient
-pkgver=3.8.1
-pkgrel=8
+pkgver=3.8.2
+pkgrel=1
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 arch=('any')
 url="http://ddclient.sourceforge.net"
 license=('GPL2')
-depends=('perl-io-socket-ssl' 'perl-digest-sha1')
+depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools')
 backup=('etc/ddclient/ddclient.conf')
-install=ddclient.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
-        ddclient.service
-        iproute2.patch
-        usrbin.patch)
-md5sums=('7fa417bc65f8f0e6ce78418a4f631988'
-         'a649273dd12540defaa296bf9d2a3174'
-         'e0c8a07e9b7a69e73cecd8626f16e8f0'
-         '65e294485a18b8d3f752a124913579f1')
-
-prepare() {
-  cd "$srcdir"/ddclient-$pkgver
-
-  patch -Np1 -i "$srcdir"/iproute2.patch
-  patch -Np0 -i "$srcdir"/usrbin.patch
-}
+        $pkgname.service)
+md5sums=('62cd5fe93ced2c794d5f441f9d908841'
+         '1bcd3e75309e658931532adef2a0608a')
 
 package() {
-  cd "$srcdir"/ddclient-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
 
-  # core files
-  install -Dm755 ddclient "$pkgdir"/usr/bin/ddclient
-  install -Dm600 sample-etc_ddclient.conf "$pkgdir"/etc/ddclient/ddclient.conf
-  install -d "$pkgdir"/var/cache/ddclient
-
-  # additional instructions, sample configs
-  install -Dm644 README "$pkgdir"/etc/ddclient/samples/README
-  install -Dm644 sample-etc_cron.d_ddclient "$pkgdir"/etc/ddclient/samples/sample-etc_cron.d_ddclient
-  install -Dm644 sample-etc_dhcpc_dhcpcd-eth0.exe "$pkgdir"/etc/ddclient/samples/sample-etc_dhcpc_dhcpcd-eth0.exe
-  install -Dm644 sample-etc_ppp_ip-up.local "$pkgdir"/etc/ddclient/samples/sample-etc_ppp_ip-up.local
+  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm600 sample-etc_$pkgname.conf "$pkgdir"/etc/$pkgname/$pkgname.conf
+  install -d "$pkgdir"/var/cache/$pkgname
   install -Dm644 "$srcdir"/$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+
+  install -Dm644 README.cisco "$pkgdir"/usr/share/doc/$pkgname/README.cisco
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+  install -Dm644 README.ssl "$pkgdir"/usr/share/doc/$pkgname/README.ssl
+  install -Dm644 sample-etc_cron.d_$pkgname "$pkgdir"/usr/share/doc/$pkgname/sample-etc_cron.d_$pkgname
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
 }
