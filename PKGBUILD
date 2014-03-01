@@ -1,21 +1,32 @@
 # Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-#######
+## "1" to enable IA32 SHELL build in Arch x86_64, "0" to disable
+_SHELL_IA32_ARCH_X64="1"
+
+###############
 _TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/trunk/edk2"
 _TIANO_DIR_="tianocore-edk2-svn"
-#######
+###############
 
-#######
+###############
 _TIANOCORE_PKG="Shell"
 _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _TIANOCORE_TARGET="RELEASE"
 _COMPILER="GCC48"
-#######
+###############
+
+###############
+[[ "${CARCH}" == "x86_64" ]] && _TIANO_ARCH="X64"
+[[ "${CARCH}" == "i686" ]] && _TIANO_ARCH="IA32"
+
+[[ "${CARCH}" == "x86_64" ]] && _TIANO_S_ARCH="x64"
+[[ "${CARCH}" == "i686" ]] && _TIANO_S_ARCH="ia32"
+###############
 
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=15140
+pkgver=15280
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -39,12 +50,6 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP')
-
-[[ "${CARCH}" == "x86_64" ]] && _TIANO_ARCH="X64"
-[[ "${CARCH}" == "i686" ]] && _TIANO_ARCH="IA32"
-
-[[ "${CARCH}" == "x86_64" ]] && _TIANO_S_ARCH="x64"
-[[ "${CARCH}" == "i686" ]] && _TIANO_S_ARCH="ia32"
 
 pkgver() {
 	
@@ -139,9 +144,15 @@ build() {
 	make -C "${EDK_TOOLS_PATH}"
 	echo
 	
-	msg "Compile UEFI Shell v2 binary"
+	msg "Compile UEFI Shell v2 ${_TIANO_ARCH} binary"
 	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "${_TIANO_ARCH}" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
 	echo
+	
+	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_SHELL_IA32_ARCH_X64}" == "1" ]]; then
+		msg "Compile UEFI Shell v2 IA32 binary"
+		"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "IA32" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
+		echo
+	fi
 	
 }
 
@@ -149,8 +160,14 @@ package() {
 	
 	_setup_env_vars
 	
-	msg "Install the UEFI Shell v2 binary"
+	msg "Install the UEFI Shell v2 ${_TIANO_ARCH} binary"
 	install -d "${pkgdir}/usr/share/uefi"
 	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/${_TIANO_ARCH}/Shell.efi" "${pkgdir}/usr/share/uefi/shell${_TIANO_S_ARCH}_v2.efi"
+	
+	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_SHELL_IA32_ARCH_X64}" == "1" ]]; then
+		msg "Install the UEFI Shell v2 IA32 binary"
+		install -d "${pkgdir}/usr/share/uefi"
+		install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/IA32/Shell.efi" "${pkgdir}/usr/share/uefi/shellia32_v2.efi"
+	fi
 	
 }
