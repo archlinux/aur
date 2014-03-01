@@ -2,13 +2,13 @@
 
 _pkgbase=cdogs
 pkgname=$_pkgbase-git
-pkgver=0.5.3.r93.gf4d0495
+pkgver=0.5.4.r31.g193972f
 pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2", development version)'
 arch=('i686' 'x86_64')
 url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
-depends=('sdl_mixer')
+depends=('sdl_mixer' 'sdl_image')
 makedepends=('git' 'cmake')
 conflicts=("$_pkgbase")
 provides=("$_pkgbase")
