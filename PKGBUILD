@@ -1,30 +1,34 @@
 # Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Andre Osku Schmidt (oskude) <(andre.osku.schmidt) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-#######
+################
 _TIANOCORE_SVN_URL="https://svn.code.sf.net/p/edk2/code/trunk/edk2"
 _TIANO_DIR_="tianocore-edk2-svn"
-#######
+################
 
-#######
-_TIANOCORE_PKG="OvmfX64"
-_UDK_TARGET="OvmfPkg/OvmfPkgX64.dsc"
-_TIANOCORE_TARGET="RELEASE"
+################
+_UDK_OVMF_X64_PKG="OvmfX64"
+_UDK_OVMF_X64_DSC="OvmfPkg/OvmfPkgX64.dsc"
+
+_UDK_OVMF_IA32_PKG="OvmfIa32"
+_UDK_OVMF_IA32_DSC="OvmfPkg/OvmfPkgIa32.dsc"
+
+_UDK_TARGET="RELEASE"
 _COMPILER="GCC48"
-#######
+################
 
-#######
+################
 _OPENSSL_VERSION="0.9.8w"
-#######
+################
 
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15140
+pkgver=15280
 pkgrel=1
-pkgdesc="x86_64 UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
+pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 license=('BSD')
 
 makedepends=('subversion' 'python2' 'iasl')
@@ -129,8 +133,8 @@ _prepare_tianocore_sources() {
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -Os -mabi=ms |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
 	msg "Fix UDK Target Platform"
-	sed "s|ACTIVE_PLATFORM       = Nt32Pkg/Nt32Pkg.dsc|ACTIVE_PLATFORM       = ${_UDK_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
-	sed "s|TARGET                = DEBUG|TARGET                = ${_TIANOCORE_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	sed "s|ACTIVE_PLATFORM       = Nt32Pkg/Nt32Pkg.dsc|ACTIVE_PLATFORM       = ${_UDK_OVMF_X64_DSC}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
+	sed "s|TARGET                = DEBUG|TARGET                = ${_UDK_TARGET}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|TOOL_CHAIN_TAG        = MYTOOLS|TOOL_CHAIN_TAG        = ${_COMPILER}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	sed "s|IA32|X64|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 	
@@ -197,8 +201,14 @@ build() {
 	make -C "${EDK_TOOLS_PATH}"
 	echo
 	
-	msg "Compile OVMF binary"
-	"${_UDK_DIR}/OvmfPkg/build.sh" -a "X64" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
+	if [[ "${CARCH}" == "x86_64" ]]; then
+		msg "Compile OVMF X64 binary"
+		"${_UDK_DIR}/OvmfPkg/build.sh" -a "X64" -b "${_UDK_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
+		echo
+	fi
+	
+	msg "Compile OVMF IA32 binary"
+	"${_UDK_DIR}/OvmfPkg/build.sh" -a "IA32" -b "${_UDK_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
 	echo
 	
 }
@@ -207,8 +217,15 @@ package() {
 	
 	_setup_env_vars
 	
-	msg "Install the OVMF X64 image as ovmf.bin"
-	install -d "${pkgdir}/usr/share/ovmf"
-	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/x86_64/ovmf.bin"
+	if [[ "${CARCH}" == "x86_64" ]]; then
+		msg "Install the OVMF X64 image"
+		install -d "${pkgdir}/usr/share/ovmf/x86_64"
+		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/x86_64/ovmf.bin"
+	fi
+	
+	msg "Install the OVMF IA32 image"
+	install -d "${pkgdir}/usr/share/ovmf/ia32"
+	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/ia32/ovmf.bin"
+	
 	
 }
