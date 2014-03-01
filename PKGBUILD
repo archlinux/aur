@@ -1,6 +1,6 @@
 # Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="git://github.com/vathpela/pesign.git"
+_gitroot="https://github.com/vathpela/pesign.git"
 _gitname="pesign"
 _gitbranch="master"
 

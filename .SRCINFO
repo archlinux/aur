@@ -13,7 +13,7 @@ pkgbase = pesign-git
 	options = !strip
 	options = !emptydirs
 	options = docs
-	source = pesign::git+git://github.com/vathpela/pesign.git#branch=master
+	source = pesign::git+https://github.com/vathpela/pesign.git#branch=master
 	sha1sums = SKIP
 
 pkgname = pesign-git
