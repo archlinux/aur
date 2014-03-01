@@ -38,7 +38,7 @@ optdepends=('perl-passwd-md5:  For md5pass'
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        "gnu-efi::git://git.code.sf.net/p/gnu-efi/code"
+        "gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code"
         'syslinux.cfg'
         'syslinux-install_update')
 
