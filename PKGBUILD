@@ -6,27 +6,32 @@
 
 pkgname=cdogs
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
 arch=('i686' 'x86_64')
 url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
-depends=('sdl_mixer')
+depends=('sdl_mixer' 'sdl_image')
 makedepends=('cmake')
 conflicts=('cdogs-git')
 source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/$pkgver.tar.gz"
         hqx-for-$pkgver.tar.gz::"https://github.com/cxong/hqx/archive/994249c8c4d1446afd9c05654bf7eafffd7a11bb.tar.gz"
-        tinydir-for-$pkgver.tar.gz::"https://github.com/cxong/tinydir/archive/5545eeb7bf5ee2b64f790a276f89aa1856a6269a.tar.gz"
         cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/e90cdcf2ebaedabb8f5a2595d6edf7c823a4f196.tar.gz"
-        rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/97348047c4340de554bb0b5c6e0d2ab34c88f05b.tar.gz")
-noextract=("hqx-for-$pkgver.tar.gz" "tinydir-for-$pkgver.tar.gz" "cbehave-for-$pkgver.tar.gz" "rlutil-for-$pkgver.tar.gz")
+        rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/97348047c4340de554bb0b5c6e0d2ab34c88f05b.tar.gz"
+        tinydir-for-$pkgver.tar.gz::"https://github.com/cxong/tinydir/archive/5545eeb7bf5ee2b64f790a276f89aa1856a6269a.tar.gz")
 sha256sums=('675eab5e9fafe3254cd2a42435c37809d97050bd875c748184d59565a8dda276'
             'adeef0711099da7e86c2c20b3fc40e63f32ea1e11ef0b9a98dacfc983f38f4ce'
-            'ebd1c2c64724f5f5e1837e42bae1f5c67a0be4df09b7974c2d6a3d64c8314ea4'
             '16fbb9d01d7c03701447621f51033d58e1853d622bbff2930148fadd4a8e8029'
-            'eca5ba880a64688591c556a0d125e0cc2b92c2c15b60e733a85f2a735728f9c7')
+            'eca5ba880a64688591c556a0d125e0cc2b92c2c15b60e733a85f2a735728f9c7'
+            'ebd1c2c64724f5f5e1837e42bae1f5c67a0be4df09b7974c2d6a3d64c8314ea4')
 
 prepare() {
+  # copy submodules to right location
+  cp -rup hqx-994249c8c4d1446afd9c05654bf7eafffd7a11bb/* $pkgname-sdl-$pkgver/src/cdogs/hqx
+  cp -rup cbehave-e90cdcf2ebaedabb8f5a2595d6edf7c823a4f196/* $pkgname-sdl-$pkgver/src/tests/cbehave
+  cp -rup rlutil-97348047c4340de554bb0b5c6e0d2ab34c88f05b/* $pkgname-sdl-$pkgver/src/tests/cbehave/rlutil
+  cp -rup tinydir-5545eeb7bf5ee2b64f790a276f89aa1856a6269a/* $pkgname-sdl-$pkgver/src/tinydir
+
   cd $pkgname-sdl-$pkgver
 
   # disable -Werror (aborts build)
@@ -34,12 +39,6 @@ prepare() {
 
   # fix name in .desktop file
   sed 's|Exec=cdogs-sdl|Exec=cdogs|g' -i build/linux/cdogs-sdl.desktop
-
-  # extract submodules
-  bsdtar -x --strip-components 1 -f ../hqx-for-$pkgver.tar.gz -C src/cdogs/hqx
-  bsdtar -x --strip-components 1 -f ../tinydir-for-$pkgver.tar.gz -C src/tinydir
-  bsdtar -x --strip-components 1 -f ../cbehave-for-$pkgver.tar.gz -C src/tests/cbehave
-  bsdtar -x --strip-components 1 -f ../rlutil-for-$pkgver.tar.gz -C src/tests/cbehave/rlutil
 }
 
 build() {
