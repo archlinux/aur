@@ -1,0 +1,23 @@
+pkgbase = cannonball-git
+	pkgdesc = Enhanced OutRun Engine (development version)
+	pkgver = 0.22.r3.g9b5ed35
+	pkgrel = 1
+	url = http://reassembler.blogspot.de/
+	install = cannonball.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = sdl
+	depends = bash
+	provides = cannonball
+	conflicts = cannonball
+	source = cannonball::git+https://github.com/djyt/cannonball.git
+	source = cannonball.sh
+	md5sums = SKIP
+	md5sums = 06ea516bc9a4454da988074465e25943
+
+pkgname = cannonball-git
+
