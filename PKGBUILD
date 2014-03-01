@@ -2,6 +2,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
+## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
+_SYSLINUX_IA32_EFI_ARCH_X64="1"
+
 _gitroot="http://git.zytor.com/syslinux/syslinux.git"
 # _gitroot="https://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
 _gitname="syslinux"
@@ -10,7 +13,7 @@ _gitbranch="master"
 _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
-pkgver=6.03pre1.76.g9692bae
+pkgver=6.03pre5
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master (previously firmware) branch"
@@ -192,6 +195,12 @@ build() {
 		msg "Build syslinux efi64"
 		_build_syslinux_efi64
 		echo
+		
+		if [[ "${_SYSLINUX_IA32_EFI_ARCH_X64}" == "1" ]]; then
+			msg "Build syslinux efi32"
+			_build_syslinux_efi32
+			echo
+		fi
 	fi
 	
 	if [[ "${CARCH}" == "i686" ]]; then
@@ -251,6 +260,13 @@ _package_syslinux_efi() {
 		msg "Install Syslinux efi64"
 		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" OBJDIR="${srcdir}/${_pkgname}-efi64/OBJDIR" efi64 install
 		echo
+		
+		if [[ "${_SYSLINUX_IA32_EFI_ARCH_X64}" == "1" ]]; then
+			cd "${srcdir}/${_pkgname}-efi32/"
+			msg "Install Syslinux efi32"
+			make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" OBJDIR="${srcdir}/${_pkgname}-efi32/OBJDIR" efi32 install
+			echo
+		fi
 	fi
 	
 	if [[ "${CARCH}" == "i686" ]]; then
