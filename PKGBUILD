@@ -245,7 +245,7 @@ _package_syslinux_bios() {
 	install -D -m0644 "${srcdir}/syslinux.cfg" "${pkgdir}/boot/syslinux/syslinux.cfg"
 	
 	msg "Install the syslinux-install_update script"
-	## This script is maintained at git://gist.github.com/772138.git
+	## This script is maintained at https://gist.github.com/pyther/772138
 	## Script not yet updated for syslinux-efi
 	install -D -m0755 "${srcdir}/syslinux-install_update" "${pkgdir}/usr/bin/syslinux-install_update"
 	
