@@ -13,7 +13,7 @@ pkgbase = gnu-efi-libs-fedora-git
 	options = staticlibs
 	options = !strip
 	options = !makeflags
-	source = gnu-efi-fedora::git+git://github.com/vathpela/gnu-efi.git#branch=fedora
+	source = gnu-efi-fedora::git+https://github.com/vathpela/gnu-efi.git#branch=fedora
 	sha1sums = SKIP
 
 pkgname = gnu-efi-libs-fedora-git

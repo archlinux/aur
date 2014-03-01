@@ -2,7 +2,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
-_gitroot="git://github.com/vathpela/gnu-efi.git"
+_gitroot="https://github.com/vathpela/gnu-efi.git"
 _gitname="gnu-efi-fedora"
 _gitbranch="fedora"
 
