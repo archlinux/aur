@@ -2,7 +2,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
-_gitroot="git://git.code.sf.net/p/gnu-efi/code"
+_gitroot="http://git.code.sf.net/p/gnu-efi/code"
 _gitname="gnu-efi"
 _gitbranch="master"
 
