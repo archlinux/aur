@@ -1,0 +1,14 @@
+
+post_install() {
+  echo "You need the 'Out Run (Rev B)' Rom set data files. Put them under"
+  echo "'~/.cannonball/roms'. The launcher script will also place a config"
+  echo "file there, if not already existing."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "You may remove leftover config and data files from '~/.cannonball'."
+}
