@@ -1,0 +1,17 @@
+pkgbase = systemd-user-session-units-git
+	pkgdesc = A collection of units for the systemd user session.
+	pkgver = 58
+	pkgrel = 1
+	url = https://github.com/sofar/user-session-units
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = dbus
+	depends = systemd-xorg-launch-helper-git
+	provides = user-session-units
+	conflicts = user-session-units
+	source = user-session-units::git+https://github.com/sofar/user-session-units.git
+	sha256sums = SKIP
+
+pkgname = systemd-user-session-units-git
+
