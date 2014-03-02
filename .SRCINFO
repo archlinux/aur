@@ -1,7 +1,7 @@
 pkgbase = python-rtslib-fb
 	pkgdesc = free branch version of the LIO target API
 	pkgver = 2.1.fb46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agrover/rtslib-fb
 	arch = any
 	license = Apache

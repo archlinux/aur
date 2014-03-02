@@ -2,7 +2,7 @@
 pkgname=python-rtslib-fb
 _pkgname=rtslib-fb
 pkgver=2.1.fb46
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="free branch version of the LIO target API"
 arch=('any')
@@ -35,6 +35,7 @@ package() {
   # arch specific
   cd "$srcdir"
   install -d "$pkgdir/etc/target"
+  install -d "$pkgdir/etc/target/backup"
   # systemd
   mkdir -p "$pkgdir/usr/lib/systemd/system"
   cp target.service "$pkgdir/usr/lib/systemd/system/"
