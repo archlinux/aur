@@ -1,4 +1,5 @@
-# Maintainer: Alucryd <alucryd at gmail dot com>
+# Maintainer: Thomas Hebb <tommyhebb@gmail.com>
+# Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=systemd-user-session-units-git
 pkgver=58
