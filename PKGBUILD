@@ -25,7 +25,9 @@ build () {
   cd "${srcdir}/user-session-units"
 
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+              --enable-allunits
+
   make
 }
 
