@@ -6,10 +6,11 @@ url=http://www.ros.org
 pkgname='ros-build-tools'
 pkgver='0.0.5'
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 makedepends=()
 depends=()
+optdepends=('python2' 'python2-catkin_pkg' 'python2-termcolor' 'python2-yaml')
 
 pkg_destination_dir="/usr/share/ros-build-tools"
 
@@ -40,5 +41,5 @@ md5sums=('8b2e864de97e97298ebfb8da471f2df1'
          'd257f7f20384e894b0431ee61068aa96'
          '563c9d1320a3a997db25d3087303dcfb'
          '8d6d7eb89a12c449497b209f1a06655b'
-         '1f24db984558a3df7be93cba472136fe'
+         '23e856627875ead5565661afa7f0caf0'
          '07f5253eb3f8cb5295c32026a20ab6c0')

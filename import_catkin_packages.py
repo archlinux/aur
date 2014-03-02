@@ -11,6 +11,7 @@ import urlparse
 import yaml
 import re
 from collections import OrderedDict
+from termcolor import colored, cprint
 
 class PackageBase(object):
 
@@ -458,11 +459,15 @@ def generate_pkgbuild(distro, package, directory, force=False,
   pkgbuild_file = os.path.join(output_directory, 'PKGBUILD')
   if update:
     if package.is_same_version(pkgbuild_file):
-      print('PKGBUILD for package %s already up-to-date (%s-%s)'
-            % (package.name, package.version, package.version_patch))
+      print('PKGBUILD for package %s already up-to-date (%s)'
+            % (colored(package.name, 'yellow', attrs=['bold']),
+               colored(package.version + '-' + package.version_patch, 'white',
+                       attrs=['bold'])))
       return
-  print('Generating PKGBUILD for package %s (%s-%s)'
-        % (package.name, package.version, package.version_patch))
+  print('Generating PKGBUILD for package %s (%s)'
+        % (colored(package.name, 'green', attrs=['bold']),
+           colored(package.version + '-' + package.version_patch, 'white',
+                   attrs=['bold'])))
   with open(pkgbuild_file, 'w') as pkgbuild:
     pkgbuild.write(package.generate(exclude_dependencies, rosdep_urls))
 

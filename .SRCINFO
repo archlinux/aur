@@ -1,11 +1,15 @@
 pkgbase = ros-build-tools
 	pkgdesc = Utilities for building arch packages for ROS stacks.
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org
 	arch = i686
 	arch = x86_64
 	license = BSD
+	optdepends = python2
+	optdepends = python2-catkin_pkg
+	optdepends = python2-termcolor
+	optdepends = python2-yaml
 	source = fix-python-scripts.sh
 	source = stack-install-tools.sh
 	source = create-arch-ros-package-legacy.sh
@@ -22,7 +26,7 @@ pkgbase = ros-build-tools
 	md5sums = d257f7f20384e894b0431ee61068aa96
 	md5sums = 563c9d1320a3a997db25d3087303dcfb
 	md5sums = 8d6d7eb89a12c449497b209f1a06655b
-	md5sums = 1f24db984558a3df7be93cba472136fe
+	md5sums = 23e856627875ead5565661afa7f0caf0
 	md5sums = 07f5253eb3f8cb5295c32026a20ab6c0
 
 pkgname = ros-build-tools
