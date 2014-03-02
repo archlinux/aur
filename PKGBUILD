@@ -16,13 +16,13 @@ source=('user-session-units::git+https://github.com/sofar/user-session-units.git
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"/user-session-units
+  cd "${srcdir}/user-session-units"
 
   git rev-list --count HEAD
 }
 
 build () {
-  cd "${srcdir}"/user-session-units
+  cd "${srcdir}/user-session-units"
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -30,7 +30,7 @@ build () {
 }
 
 package() {
-  cd "${srcdir}"/user-session-units
+  cd "${srcdir}/user-session-units"
 
   make DESTDIR="${pkgdir}" install
 }
