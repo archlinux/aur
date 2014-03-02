@@ -11,9 +11,8 @@ depends=('python')
 optdepends=('mpv: Alternative to mplayer for playback'
 			'mplayer: Alternative to mpv for playback')
 install=np1-mps.install
-source=("https://github.com/np1/mps/archive/v$pkgver.tar.gz" 'np1-mps.install')
-md5sums=('32f7939c7b082f5867b874308b377eb8'
-         '26c08fc68ce960f1cc3a7f3f9157fa27')
+source=("https://github.com/np1/mps/archive/v$pkgver.tar.gz")
+md5sums=('32f7939c7b082f5867b874308b377eb8')
 
 package() {
 	cd mps-$pkgver
