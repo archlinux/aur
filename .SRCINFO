@@ -13,9 +13,7 @@ pkgbase = np1-mps-git
 	optdepends = mplayer: Alternative to mpv for playback
 	conflicts = np1-mps
 	source = git+https://github.com/np1/mps.git
-	source = np1-mps-git.install
 	md5sums = SKIP
-	md5sums = 26c08fc68ce960f1cc3a7f3f9157fa27
 
 pkgname = np1-mps-git
 

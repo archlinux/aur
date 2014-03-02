@@ -12,9 +12,8 @@ optdepends=('mpv: Alternative to mplayer for playback'
 			'mplayer: Alternative to mpv for playback')
 conflicts=('np1-mps')
 install=np1-mps-git.install
-source=('git+https://github.com/np1/mps.git' 'np1-mps-git.install')
-md5sums=('SKIP'
-         '26c08fc68ce960f1cc3a7f3f9157fa27')
+source=('git+https://github.com/np1/mps.git')
+md5sums=('SKIP')
 
 pkgver() {
 	cd mps
