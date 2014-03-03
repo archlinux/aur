@@ -2,8 +2,8 @@
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.5.231
-pkgrel=2
+pkgver=0.95.5.263
+pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=(i686 x86_64)
 url="http://www.windowmaker.org"
@@ -13,7 +13,7 @@ makedepends=('git')
 options=('!libtool')
 provides=('windowmaker')
 conflicts=('windowmaker' 'windowmaker-git')
-source=("git://repo.or.cz/wmaker-crm.git"
+source=("git://repo.or.cz/wmaker-crm.git#branch=next"
 	"wmaker.desktop")
 md5sums=('SKIP'
          '2fba97bebfd691836b92b8f0db79ff13')
@@ -23,6 +23,12 @@ _gitname="wmaker-crm"
 pkgver() {
   cd $_gitname
   git describe --always | sed 's|wmaker.||;s|-|.|g;s|[.]g[a-f0-9]*$||'
+}
+
+prepare() {
+  cd $_gitname
+  sed -e 's/^RLoadWEBP.*/RLoadWEBP(const char *file_name, int index)/' \
+	-i wrlib/load_webp.c
 }
 
 build() {
