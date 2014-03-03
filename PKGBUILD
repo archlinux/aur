@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 # Contributor: Brecht Machiels <brecht at mos6581 dot org>
 
-pkgname=python-pyprof2calltree
+pkgname=pyprof2calltree
 pkgver=1.3.1
 pkgrel=2
 pkgdesc="Help visualize profiling data from cProfile with kcachegrind"
