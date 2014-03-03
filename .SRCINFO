@@ -1,0 +1,17 @@
+pkgbase = dzen2-git
+	pkgdesc = X notification utility with Xinerama and XMP support, git version.
+	pkgver = r14.488ab66
+	pkgrel = 2
+	url = https://github.com/robm/dzen
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	depends = libxft
+	provides = dzen2
+	conflicts = dzen2-svn
+	conflicts = dzen2
+	source = dzen::git+https://github.com/robm/dzen
+	md5sums = SKIP
+
+pkgname = dzen2-git
+
