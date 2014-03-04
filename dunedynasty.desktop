@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dune Dynasty
+Comment=Classic Dune. Modern Controls.
+Exec=dunedynasty
+Icon=dunedynasty
+Terminal=false
+Type=Application
+Categories=Game;
