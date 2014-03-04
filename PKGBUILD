@@ -13,7 +13,6 @@ url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
 depends=('sdl_mixer' 'sdl_image')
 makedepends=('cmake')
-conflicts=('cdogs-git')
 source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/$pkgver.tar.gz"
         hqx-for-$pkgver.tar.gz::"https://github.com/cxong/hqx/archive/994249c8c4d1446afd9c05654bf7eafffd7a11bb.tar.gz"
         cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/e90cdcf2ebaedabb8f5a2595d6edf7c823a4f196.tar.gz"
