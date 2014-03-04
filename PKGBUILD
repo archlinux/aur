@@ -20,7 +20,6 @@ optdepends=('eduke32-hrp: High Resolution Pack'
             'eduke32-dukeplus: Enhanced Mod'
             'timidity-freepats: a free soundfont for music'
             'eduke32-shareware-episode: Duke Nukem 3D Demo')
-conflicts=('eduke32-svn')
 install=$pkgname.install
 source=("http://dukeworld.duke4.net/$pkgname/synthesis/$_pkgdate-$_pkgrev/${pkgname}_src_$_pkgdate-$_pkgrev.tar.xz"
         "$pkgname.png"

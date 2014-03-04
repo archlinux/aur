@@ -19,7 +19,6 @@ pkgbase = eduke32
 	optdepends = eduke32-dukeplus: Enhanced Mod
 	optdepends = timidity-freepats: a free soundfont for music
 	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
-	conflicts = eduke32-svn
 	source = http://dukeworld.duke4.net/eduke32/synthesis/20140228-4357/eduke32_src_20140228-4357.tar.xz
 	source = eduke32.png
 	source = eduke32.desktop
