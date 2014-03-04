@@ -17,7 +17,6 @@ pkgbase = easyrpg-player
 	depends = openal
 	depends = libsndfile
 	depends = expat
-	conflicts = easyrpg-player-git
 	source = easyrpg-readers-0.1.2.tar.gz::https://github.com/EasyRPG/Readers/archive/0.1.2.tar.gz
 	source = easyrpg-player-0.1.2.tar.gz::https://github.com/EasyRPG/Player/archive/0.1.2.tar.gz
 	sha256sums = 694c1b55c4a575ebc602e4f18736cda0ec187205f14545dc5641408427bd0d49

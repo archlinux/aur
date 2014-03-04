@@ -7,7 +7,6 @@ pkgdesc="EasyRPG Player aims to be a free, RPG Maker 2000/2003 interpreter"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
 license=('GPL3')
-conflicts=('easyrpg-player-git')
 makedepends=('boost' 'git')
 depends=('sdl_mixer' 'freetype2' 'pixman' 'libpng' 'libjpeg' 'openal' 'libsndfile' 'expat')
 install=$pkgname.install
