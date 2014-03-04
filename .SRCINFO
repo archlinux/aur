@@ -11,7 +11,6 @@ pkgbase = ecwolf
 	depends = sdl_mixer
 	depends = libjpeg
 	depends = gtk2
-	conflicts = ecwolf-hg
 	source = http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.2.3-src.7z
 	sha256sums = 41ba154bfef4c09282d63c93f7696771458276096ea5bc9f03f0867a05a2864a
 

@@ -9,7 +9,6 @@ url="http://maniacsvault.net/ecwolf"
 license=('GPL')
 depends=('sdl_mixer' 'libjpeg' 'gtk2')
 makedepends=('cmake')
-conflicts=('ecwolf-hg')
 install=$pkgname.install
 source=("http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$pkgver-src.7z")
 sha256sums=('41ba154bfef4c09282d63c93f7696771458276096ea5bc9f03f0867a05a2864a')
