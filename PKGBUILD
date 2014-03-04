@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=dunedynasty
 pkgver=1.5.7
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('allegro')
 makedepends=('cmake')
 optdepends=('fluidsynth: software synthesizer for midi music'
-            'fluidr3: good soundfont for use with fluidsynth'
+            'soundfont-fluid: good soundfont for use with fluidsynth'
             'timidity++: alternative midi sequencer'
             'timidity-freepats: patch set for timidity++'
             'libmad: for mp3 music support')
@@ -25,11 +25,9 @@ prepare() {
   cd $pkgname-$pkgver
 
   # set doc folder
-  sed -i 's|doc/dunedynasty-${DUNE_DYNASTY_VERSION}|share/doc/dunedynasty|' \
-    CMakeLists.txt
+  sed 's|doc/dunedynasty-${DUNE_DYNASTY_VERSION}|share/doc/dunedynasty|' -i CMakeLists.txt
   # set soundfont path
-  sed -i 's|s/sf2/FluidR3_GM.sf2|fonts/fluidr3/FluidR3GM.SF2|' \
-    dist/dunedynasty.cfg-sample
+  sed 's|s/sf2/FluidR3_GM.sf2|fonts/FluidR3_GM2-2.sf2|' -i dist/dunedynasty.cfg-sample
 }
 
 build() {
