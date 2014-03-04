@@ -5,7 +5,7 @@ _pkgbase=bombermaaan
 pkgname=$_pkgbase-svn
 pkgver=1.4.0.658
 pkgrel=1
-pkgdesc="A classic Bomberman-like game with multiplayer support"
+pkgdesc="A classic Bomberman-like game with multiplayer support (development version)"
 arch=('i686' 'x86_64')
 url="http://$_pkgbase.sourceforge.net/"
 license=('GPL3')
@@ -14,7 +14,7 @@ makedepends=('subversion')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 install=$_pkgbase.install
-source=($_pkgbase::"svn+https://svn.code.sf.net/p/$_pkgbase/code/trunk"
+source=($_pkgbase::"svn+http://svn.code.sf.net/p/$_pkgbase/code/trunk"
         "http://downloads.sourceforge.net/$_pkgbase/Bombermaaan_1.4.0.627_20081018_res.tar.gz"
         "http://media1.gamefront.com/moddb/2011/02/17/Bombermaan_levels_pack.zip"
         "$_pkgbase.desktop")
