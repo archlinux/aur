@@ -8,7 +8,6 @@ pkgbase = bombermaaan
 	arch = x86_64
 	license = GPL3
 	depends = sdl_mixer
-	conflicts = bombermaaan-svn
 	source = http://downloads.sourceforge.net/bombermaaan/Bombermaaan_1.4.0.627_20081018_src.tar.gz
 	source = http://downloads.sourceforge.net/bombermaaan/Bombermaaan_1.4.0.627_20081018_res.tar.gz
 	source = http://media1.gamefront.com/moddb/2011/02/17/Bombermaan_levels_pack.zip

@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 url="http://$pkgname.sourceforge.net/"
 license=('GPL3')
 depends=('sdl_mixer')
-conflicts=("$pkgname-svn")
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_src.tar.gz"
         "http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_res.tar.gz"
