@@ -3,17 +3,15 @@
 _python=python
 pkgname=$_python-efl
 _pkgname=python-efl
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
 depends=('elementary' "$_python-dbus")
-provides=("$_python-ecore" "$_python-edje" "$_python-elementary" "$_python-emotion" "$_python-evas" "$_python-e_dbus")
-conflicts=("$_python-ecore" "$_python-edje" "$_python-elementary" "$_python-emotion" "$_python-evas" "$_python-e_dbus")
 source=("http://download.enlightenment.org/rel/bindings/python/$_pkgname-$pkgver.tar.bz2")
-sha1sums=('82b34b9336d517537b2a4032dff9d1e2de8b8dd8')
+sha1sums=('377eb29fd291aa499b6560851b34c8bd90ae8ad8')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

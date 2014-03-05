@@ -1,6 +1,6 @@
 pkgbase = python-efl
 	pkgdesc = python bindings for the Enlightenment Foundataion Libraries
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -9,20 +9,8 @@ pkgbase = python-efl
 	license = GPL3
 	depends = elementary
 	depends = python-dbus
-	provides = python-ecore
-	provides = python-edje
-	provides = python-elementary
-	provides = python-emotion
-	provides = python-evas
-	provides = python-e_dbus
-	conflicts = python-ecore
-	conflicts = python-edje
-	conflicts = python-elementary
-	conflicts = python-emotion
-	conflicts = python-evas
-	conflicts = python-e_dbus
-	source = http://download.enlightenment.org/rel/bindings/python/python-efl-1.8.1.tar.bz2
-	sha1sums = 82b34b9336d517537b2a4032dff9d1e2de8b8dd8
+	source = http://download.enlightenment.org/rel/bindings/python/python-efl-1.9.0.tar.bz2
+	sha1sums = 377eb29fd291aa499b6560851b34c8bd90ae8ad8
 
 pkgname = python-efl
 
