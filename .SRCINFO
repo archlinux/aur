@@ -1,0 +1,25 @@
+pkgbase = redshift-git
+	pkgdesc = Adjusts the color temperature of your screen according to your surroundings (development version)
+	pkgver = 1.8.r30.ge26337d
+	pkgrel = 1
+	url = http://jonls.dk/redshift/
+	install = redshift-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = libxxf86vm
+	depends = geoclue
+	optdepends = gtk3: for redshift-gtk
+	optdepends = python-xdg: for redshift-gtk
+	optdepends = python-gobject: for redshift-gtk
+	optdepends = librsvg: for redshift-gtk
+	optdepends = hicolor-icon-theme: for redshift-gtk
+	provides = redshift
+	conflicts = redshift
+	source = redshift::git+https://github.com/jonls/redshift.git
+	md5sums = SKIP
+
+pkgname = redshift-git
+
