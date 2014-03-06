@@ -1,7 +1,7 @@
-# Maintainer: <thomas t-8ch de>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=logcat-color
-pkgver='0.5'
+pkgver='0.6.0'
 pkgrel=1
 pkgdesc='A colorful alternative to "adb logcat"'
 arch=('any')
@@ -20,4 +20,4 @@ package() {
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('d9f85101b3809708595941c670dc20ff4cbbff25fb782093d8825f114a7ccc2b')
+sha256sums=('ca66de3271f5b08fa267b25ad89b5d295ccc5d658f51e764d4f5753fc0d980cb')
