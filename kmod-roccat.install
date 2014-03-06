@@ -1,0 +1,11 @@
+post_install() {
+  depmod -A `ls -v /lib/modules | grep -v extra | tail -n 1`
+}
+
+post_upgrade() {
+  depmod -A `ls -v /lib/modules | grep -v extra | tail -n 1`
+}
+
+post_remove() {
+  depmod -A `ls -v /lib/modules | grep -v extra | tail -n 1`
+}
