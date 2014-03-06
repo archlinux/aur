@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=lilypond-docs
-pkgver=2.16.2
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Offline documentation for lilypond"
 arch=(any)
@@ -10,11 +10,10 @@ depends=("lilypond=${pkgver}")
 license=("GPL")
 options=("!strip")
 source=("http://lilypond.org/download/binaries/documentation/lilypond-${pkgver}-1.documentation.tar.bz2")
-sha256sums=('d84bb0a88472eb414d5948268782503f0fb59be8ba1d03b2d045332041057d84')
 
 package(){
   mkdir -p "${pkgdir}/usr/share"
   cp -R "${srcdir}/share/"{doc,omf} "${pkgdir}/usr/share/"
 }
 
-# vim: sw=2:ts=2 et:
+sha256sums=('ade8bd8e34670070df2c2388a83d64a65204b5bd22919851ff6fa99910f785b3')
