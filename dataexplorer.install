@@ -1,0 +1,8 @@
+post_install() {
+  echo "To use the DataExplorer, you need to put all users into the uucp group."
+  echo "  $> gpasswd -a <username> uucp"
+  echo "Additionally, make sure, /var/lock has the right permissions to use by this group:"
+  echo "  $> chown root:uucp /var/lock"
+  echo "  $> chmod g+w /var/lock"
+}
+
