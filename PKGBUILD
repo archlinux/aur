@@ -78,7 +78,7 @@ package_roccat-tools-isku() {
 
 package_roccat-tools-iskufx() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Isku FX devices"
-  true && depends=('roccat-tools-common')
+  true && depends=('roccat-tools-common' 'isku')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/iskufx"
@@ -111,7 +111,7 @@ package_roccat-tools-koneplus() {
 
 package_roccat-tools-konepure() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Kone Pure devices"
-  true && depends=('roccat-tools-common')
+  true && depends=('roccat-tools-common' 'konextd')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/konepure"
@@ -122,7 +122,7 @@ package_roccat-tools-konepure() {
 
 package_roccat-tools-konepureoptical() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Kone Pure optical devices"
-  true && depends=('roccat-tools-common')
+  true && depends=('roccat-tools-common' 'konepure')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/konepureoptical"
@@ -133,7 +133,7 @@ package_roccat-tools-konepureoptical() {
 
 package_roccat-tools-konextd() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Kone XTD devices"
-  true && depends=('roccat-tools-common')
+  true && depends=('roccat-tools-common' 'koneplus')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/konextd"
