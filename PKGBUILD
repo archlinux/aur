@@ -1,7 +1,7 @@
 # Maintainer: Aaron Mueller <mail@aaron-mueller.de>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 # Contributor: Xpander <xpander0@gmail.com>
-# Contributor: erazor <erazor_de@users.soruceforge.net>
+# Contributor: Stefan Achatz <erazor_de@users.soruceforge.net>
 
 pkgname=roccat-tools
 
@@ -24,7 +24,7 @@ true && pkgname=('roccat-tools-common'
                  'roccat-tools-savu')
 pkgbase=roccat-tools
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Userland applications to configure and make extended use of ROCCAT devices"
 arch=('i686' 'x86_64')
 url="http://roccat.sourceforge.net"
