@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=python-path
-pkgver=4.3
+pkgver=5.1
 pkgrel=1
 pkgdesc='A module wrapper for os.path'
 url='https://github.com/jaraco/path.py'
@@ -13,4 +13,4 @@ package() {
   cd "$srcdir/path.py-${pkgver}"
   python3 setup.py install --root="$pkgdir" --optimize=1
 }
-sha256sums=('4c6b34610c7164efcfe10ebc0204937ddac9bd2125727575c57662a111eda452')
+sha256sums=('976b1392527c77383eb827de7fd44dacaf1297a63aa0df526f47af302f479d54')
