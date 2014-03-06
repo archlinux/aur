@@ -2,12 +2,12 @@
 
 pkgname=enventor-git
 _pkgname=${pkgname%-*}
-pkgver=0.1.0.259.eaf3493
+pkgver=0.1.0.370.acaca01
 pkgrel=1
 pkgdesc="Editor for EDC files (edje/efl) - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
-license=('GPL3')
+license=('BSD')
 depends=('elementary')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
@@ -41,4 +41,8 @@ package() {
   cd "$srcdir/$_pkgname"
   
   make DESTDIR="$pkgdir" install
+
+# install license files
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
