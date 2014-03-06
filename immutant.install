@@ -1,0 +1,26 @@
+post_install() {
+  . /etc/profile.d/immutant.sh
+
+  getent group $JBOSS_USER >/dev/null 2>&1 || groupadd $JBOSS_USER
+  getent passwd $JBOSS_USER >/dev/null 2>&1 || useradd -g $JBOSS_USER -d $JBOSS_HOME -s /bin/bash $JBOSS_USER
+  chown -R $JBOSS_USER:$JBOSS_USER $JBOSS_HOME
+
+  JBOSS_PIDFILE_DIR=`dirname $JBOSS_PIDFILE`
+  mkdir -p $JBOSS_PIDFILE_DIR
+  chown $JBOSS_USER:$JBOSS_USER $JBOSS_PIDFILE_DIR
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  . /etc/profile.d/immutant.sh
+
+  if getent passwd $JBOSS_USER >/dev/null 2>&1; then
+    userdel $JBOSS_USER
+  fi
+  if getent group $JBOSS_USER >/dev/null 2>&1; then
+    groupdel $JBOSS_USER
+  fi
+}

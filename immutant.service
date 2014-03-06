@@ -1,0 +1,13 @@
+[Unit]
+Description=Immutant
+
+[Service]
+Type=simple
+User=immutant
+PIDFile=/run/immutant/immutant.pid
+ExecStart=/usr/share/immutant/jboss/bin/immutant
+ExecReload=/usr/share/immutant/jboss/bin/jboss-cli.sh --connect command=:reload
+ExecStop=/usr/share/immutant/jboss/bin/jboss-cli.sh --connect command=:shutdown
+
+[Install]
+WantedBy=multi-user.target

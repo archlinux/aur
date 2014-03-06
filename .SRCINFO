@@ -1,0 +1,32 @@
+pkgbase = immutant
+	pkgdesc = Application server for Clojure
+	pkgver = 1135
+	pkgrel = 1
+	url = http://immutant.org
+	install = immutant.install
+	arch = any
+	license = LGPL
+	makedepends = java-environment>=6
+	depends = java-environment
+	backup = etc/profile.d/immutant.sh
+	backup = usr/share/immutant/jboss/standalone/configuration/logging.properties
+	backup = usr/share/immutant/jboss/standalone/configuration/mgmt-users.properties
+	backup = usr/share/immutant/jboss/standalone/configuration/standalone-full-ha.xml
+	backup = usr/share/immutant/jboss/standalone/configuration/standalone-full.xml
+	backup = usr/share/immutant/jboss/standalone/configuration/standalone-ha.xml
+	backup = usr/share/immutant/jboss/standalone/configuration/standalone.xml
+	backup = usr/share/immutant/jboss/bin/standalone.conf
+	backup = usr/share/immutant/jboss/bin/domain.conf
+	source = http://immutant.org/builds/1135/immutant-dist-slim.zip
+	source = immutant.wrapper
+	source = immutant.install
+	source = immutant.profile
+	source = immutant.service
+	md5sums = dada8d0a495c925336e01db7f4829f11
+	md5sums = 9a7380fd66643c65d2a978bc03a7d076
+	md5sums = efa9fdc79a263371180c5209fe24a07a
+	md5sums = 59acab08bffa79f5a41cba46246ee4ea
+	md5sums = bf168d26ffcd4d98390fd5d76e2dd0f0
+
+pkgname = immutant
+
