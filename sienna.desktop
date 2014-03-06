@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Sienna
+Comment=Simple, fast-paced one-button platformer
+Exec=sienna
+Icon=sienna
+Terminal=false
+StartupNotify=false
+Categories=Game;ArcadeGame;
