@@ -1,0 +1,57 @@
+--- usr/local/Brother/cupswrapper/cupswrapperDCP7030-2.0.2	2013-09-04 11:39:39.000000000 +0200
+--- usr/local/Brother/cupswrapper/cupswrapperDCP7030-2.0.2	2013-09-04 11:34:56.863828506 +0200
+@@ -27,22 +27,14 @@
+   if [ -f /usr/share/ppd/DCP7030.ppd ];then
+   rm -f /usr/share/ppd/DCP7030.ppd
+   fi
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
++  # restart
++  systemctl restart cupsd
+   exit 0 
+ fi
+ if [ "$1" = "-r" ]; then
+   lpadmin -x DCP7030
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
++  # restart
++  systemctl restart cupsd
+   exit 0 
+ fi
+ if [ "$1" = "help" ] || [ "$1" = "-h" ]; then
+@@ -515,18 +507,8 @@
+ 
+ chmod a+w /usr/local/Brother/inf/brDCP7030rc
+ chmod a+w /usr/local/Brother/inf
+-if [ -e /etc/init.d/lpd ]; then
+-   /etc/init.d/lpd stop
+-fi
+-if [  -e /etc/init.d/lprng ]; then
+-   /etc/init.d/lprng stop
+-fi
+-  if [ -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-  fi
+-  if [ -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-  fi
++# restart
++systemctl restart cupsd
+ sleep 2s
+ port2=`lpinfo -v | grep -i 'usb://Brother/DCP-7030' | head -1`
+ if [ "$port2" = '' ];then
+@@ -537,4 +519,4 @@
+ 	port=usb:/dev/usb/lp0
+ fi
+ lpadmin -p DCP7030 -E -v $port -P /usr/share/cups/model/DCP7030.ppd
+-  exit 0 
++  exit 0 
+\ No newline at end of file

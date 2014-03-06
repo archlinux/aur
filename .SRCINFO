@@ -1,0 +1,29 @@
+pkgbase = brother-dcp7030
+	pkgdesc = Brother cupd and lpd driver for DCP-7030
+	pkgver = 2.0.2
+	pkgrel = 3
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#DCP-7030
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-glibc
+	depends = psutils
+	noextract = DCP7030.ppd.gz
+	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP7030-2.0.2-1.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/brdcp7030lpr-2.0.2-1.i386.deb
+	source = brlpdwrapperDCP7030
+	source = DCP7030.ppd.gz
+	source = cupswrapper-systemd.patch
+	md5sums = 73919884cb19f9fb1a462c77aaa3477e
+	md5sums = 26b48edf27afe34d9847579cd81eb206
+	md5sums = 993574b2c9e9052ae8d823d5414d8585
+	md5sums = 7cb25cc78f001c18e591504db90fe20f
+	md5sums = 567b9004776ab376f273181256165479
+	sha256sums = a9a4e0ec5f941cf17fcc7156febf8aff21673bc78a6313176527a0423847627d
+	sha256sums = cd4e6c4b16c5e734721068134699c65b2eca0584bc86031ee7eef7af05b36d8c
+	sha256sums = 0320e1f19c3be746442b7c6324f0732b17928d2bb611ef143007f6ca0882765b
+	sha256sums = ff55d56e1d4488768cbe3ca843a26a284bd2988bd9dddf4a0f1d39c637929997
+	sha256sums = 11bfa0871ec5fda4e49e8d768840ca0de8a5aa6e8aec740b0a42ef8bc9e53c8a
+
+pkgname = brother-dcp7030
+
