@@ -1,7 +1,7 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh lavabit.com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=ghi
-pkgver=0.9.0.20121114
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='GitHub Issues on the command line'
 arch=('any')
@@ -21,5 +21,4 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   PREFIX="${pkgdir}/usr/" rake install
 }
-
-# vim:set ts=2 sw=2 et:
+sha256sums=('1109e0c4baf3088dc45fe72243e4089ed324e6ac6281fc57b170996b17f9b1c2')
