@@ -6,7 +6,7 @@
 
 pkgname=eigen3-hg
 _name=eigen3
-pkgver=3.2.r5716
+pkgver=3.2.r5816
 pkgver() {
     cd ${_name}
     # Remove after hyphen
