@@ -1,0 +1,18 @@
+pkgbase = lib32-libxaw
+	pkgdesc = X11 Athena Widget library (32 bit)
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = gcc-multilib
+	depends = lib32-libxmu
+	depends = lib32-libxpm
+	depends = libxaw
+	options = !libtool
+	source = http://xorg.freedesktop.org//releases/individual/lib/libXaw-1.0.12.tar.bz2
+	sha256sums = 96fc314874fce9979556321d1d6ee00b5baf32fb333b7278853b4983bc3cdbf6
+
+pkgname = lib32-libxaw
+
