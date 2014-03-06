@@ -1,66 +1,40 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh || lavabit.com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
+
 pkgname=filetea-git
-pkgver=20111031
+pkgver=20140125
 pkgrel=1
-pkgdesc="Low friction, one-click anonymous file sharing."
+pkgdesc='Low friction, one-click anonymous file sharing.'
 arch=(i686 x86_64)
-url="https://gitorious.org/filetea/filetea"
+url='https://gitorious.org/filetea/filetea'
 license=('AGPL3')
 depends=(evd-git)
 optdepends=('jquery: to have automatic jquery updates')
 makedepends=('git')
-backup=('etc/filetea/filetea.conf')
-source=('filetea.rc.d'
+backup=('etc/filetea/filetead.conf')
+source=('git+https://github.com/elima/FileTea'
         'filetea.service')
 
-_gitroot=git://gitorious.org/filetea/filetea
-_gitname=filetea
-
 build() {
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "${_gitname}" ]]; then
-    cd "${_gitname}" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "${_gitroot}" "${_gitname}"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "${srcdir}/${_gitname}-build"
-  git clone "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-build"
-  cd "${srcdir}/${_gitname}-build"
-
-  #
-  # BUILD HERE
-  #
-  ./autogen.sh
-  ./configure --prefix=/usr
+  cd "${srcdir}/FileTea"
+  ./autogen.sh --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}-build"
-  mkdir -p ${pkgdir}/etc/{filetea,rc.d}
-  cp ${srcdir}/filetea.rc.d ${pkgdir}/etc/rc.d/filetea
-  cp filetea.conf ${pkgdir}/etc/filetea/
-
+  cd "${srcdir}"
   # systemd support
-  mkdir -p ${pkgdir}/lib/systemd/system/
-  cp ${srcdir}/filetea.service ${pkgdir}/lib/systemd/system/
+  install -D -m644 filetea.service "${pkgdir}/usr/lib/systemd/system/filetea.service"
 
-  # change config (if you have installed jquery to /usr/share/jquery/jquery.min.js)
-  # jquery{,-ui} packets in AUR have no static filenames atm
-  # sed -i 's|^#jquery-dir=.*$|jquery-dir=/usr/share/jquery/|'   ${pkgdir}/etc/filetea/filetea.conf
-  # same goes for jquery-ui
-  # sed -i 's|^#jquery-ui-dir=.*$|jquery-dir=/usr/share/jquery/|'   ${pkgdir}/etc/filetea/filetea.conf
+  cd FileTea
+  install -D -m644 filetead.conf "${pkgdir}/etc/filetea/filetead.conf"
 
   make DESTDIR="${pkgdir}/" install
 }
 
-# vim:set ts=2 sw=2 et:
-sha1sums=('e48b01a3b261495169e2d42da0cc9a776839aa27'
-          'baf43b7f5b5eb218245b727138c7b1d3a97d29fc')
+pkgver() {
+  date '+%Y%m%d'
+}
+sha256sums=('SKIP'
+            'e9b40e6568729c557790e2b0b809b258eee2b18162b197db8cc4da4ff58ea52d')
+sha256sums=('SKIP'
+            'd8294aca58a31ffd4355e87faf144bef672ee7fb1c7265d02394fdabf28031d4')

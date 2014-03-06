@@ -1,6 +1,6 @@
 pkgbase = filetea-git
 	pkgdesc = Low friction, one-click anonymous file sharing.
-	pkgver = 20111031
+	pkgver = 20140125
 	pkgrel = 1
 	url = https://gitorious.org/filetea/filetea
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = filetea-git
 	makedepends = git
 	depends = evd-git
 	optdepends = jquery: to have automatic jquery updates
-	backup = etc/filetea/filetea.conf
-	source = filetea.rc.d
+	backup = etc/filetea/filetead.conf
+	source = git+https://github.com/elima/FileTea
 	source = filetea.service
-	sha1sums = e48b01a3b261495169e2d42da0cc9a776839aa27
-	sha1sums = baf43b7f5b5eb218245b727138c7b1d3a97d29fc
+	sha256sums = SKIP
+	sha256sums = d8294aca58a31ffd4355e87faf144bef672ee7fb1c7265d02394fdabf28031d4
 
 pkgname = filetea-git
 

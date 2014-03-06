@@ -1,8 +1,8 @@
 [Unit]
-Description="Low friction, one-click anonymous file sharing."
+Description=Low friction, one-click anonymous file sharing
 
 [Service]
-ExecStart=/usr/sbin/filetea
+ExecStart=/usr/bin/filetead -c /etc/filetea/filetead.conf
 
 [Install]
 WantedBy=multi-user.target
