@@ -1,0 +1,29 @@
+post_install() {
+  ldconfig
+  touch --no-create /usr/share/icons/hicolor
+
+  groupadd --force roccat
+
+  mkdir --parents /var/lib/roccat
+  chown root:roccat /var/lib/roccat
+  chmod 2770 /var/lib/roccat
+
+  udevadm control --reload-rules
+}
+
+post_upgrade() {
+  ldconfig
+  touch --no-create /usr/share/icons/hicolor
+  udevadm control --reload-rules
+}
+
+post_remove() {
+  ldconfig
+  udevadm control --reload-rules
+
+  # If there are some configuration files in this dir, we get an error, which
+  # is good because we don't want to remove the user configs.
+  rm -r /var/lib/roccat
+
+  groupdel roccat
+}
