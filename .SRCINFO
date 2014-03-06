@@ -1,0 +1,19 @@
+pkgbase = worker
+	pkgdesc = A file manager for the X Window System
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://www.boomerangsworld.de/worker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxt
+	depends = avfs
+	depends = gcc-libs
+	depends = libx11
+	depends = file
+	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-3.3.0.tar.bz2
+	md5sums = b3c4282e73dc25fbeab9850851acdd04
+	sha1sums = 0b6982d73f586b395ea90c458712d4210f0afea2
+
+pkgname = worker
+
