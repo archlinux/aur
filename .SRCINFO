@@ -1,5 +1,5 @@
 pkgbase = python2-moviepy-git
-	pkgdesc = Script-based movie editing with python2
+	pkgdesc = Script-based movie editing with python2 (git version)
 	pkgver = 45.deb8a68
 	pkgrel = 1
 	url = http://zulko.github.io/moviepy/
