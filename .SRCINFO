@@ -1,0 +1,20 @@
+pkgbase = spim-svn
+	pkgdesc = A MIPS32 simulator (SVN version)
+	pkgver = 658
+	pkgrel = 1
+	url = http://sourceforge.net/projects/spimsimulator/
+	arch = i686
+	arch = x86_64
+	groups = emulators
+	license = custom:BSD
+	makedepends = subversion
+	depends = glibc
+	provides = spim
+	conflicts = spim
+	source = svn+http://svn.code.sf.net/p/spimsimulator/code/spim
+	source = svn+http://svn.code.sf.net/p/spimsimulator/code/CPU
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spim-svn
+
