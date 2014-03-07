@@ -1,6 +1,6 @@
 pkgbase = ewebkit-svn
-	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries
-	pkgver = 159930
+	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries - Development version
+	pkgver = 161552
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -16,9 +16,7 @@ pkgbase = ewebkit-svn
 	makedepends = gperf
 	depends = atk
 	depends = cairo
-	depends = edje
-	depends = eeze
-	depends = efreet
+	depends = efl
 	depends = e_dbus
 	depends = enchant
 	depends = libtiff
@@ -27,6 +25,8 @@ pkgbase = ewebkit-svn
 	depends = libxslt
 	depends = libxt
 	depends = harfbuzz-icu
+	provides = ewebkit=161552
+	conflicts = ewebkit
 
 pkgname = ewebkit-svn
 

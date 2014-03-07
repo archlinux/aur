@@ -1,18 +1,20 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: twa022 <twa022 at gmail dot com>
 
-pkgname=ewebkit-svn
-_pkgname=${pkgname%-*}
-pkgver=159930
+_pkgname=ewebkit
+pkgname=$_pkgname-svn
+pkgver=161552
 pkgrel=1
-pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
+pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 _svnurl="https://svn.webkit.org/repository/webkit/trunk"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'cairo' 'edje' 'eeze' 'efreet' 'e_dbus' 'enchant' 'libtiff'
+depends=('atk' 'cairo' 'efl' 'e_dbus' 'enchant' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt' 'harfbuzz-icu')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
   source=("$_pkgname::svn+$_svnurl")
   sha256sums=('SKIP')
@@ -20,7 +22,7 @@ fi
 
 pkgver() {
   if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-    svnversion "$srcdir/$_pkgname" | sed 's/P$//'
+    svnversion "$srcdir/$_pkgname" | tr -d '[[:alpha:]]'
   else
     LC_ALL=C svn info "$_svnurl" | awk '/Revision/ {print $2}'
   fi
