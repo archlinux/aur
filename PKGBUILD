@@ -1,6 +1,5 @@
 pkgname=otrs
-pkgver=3.3.4
-itsmver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -37,29 +36,30 @@ install="${pkgname}.install"
 source=("${pkgname}.install"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz"
         # ITSM
-        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMCore-${itsmver}.opm"
-        "http://ftp.otrs.org/pub/otrs/itsm/packages33/GeneralCatalog-${itsmver}.opm"
-        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMChangeManagement-${itsmver}.opm"
-        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMConfigurationManagement-${itsmver}.opm"
-        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMIncidentProblemManagement-${itsmver}.opm"
-        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMServiceLevelManagement-${itsmver}.opm"
-        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ImportExport-${itsmver}.opm"
+        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMCore-${pkgver}.opm"
+        "http://ftp.otrs.org/pub/otrs/itsm/packages33/GeneralCatalog-${pkgver}.opm"
+        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMChangeManagement-${pkgver}.opm"
+        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMConfigurationManagement-${pkgver}.opm"
+        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMIncidentProblemManagement-${pkgver}.opm"
+        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ITSMServiceLevelManagement-${pkgver}.opm"
+        "http://ftp.otrs.org/pub/otrs/itsm/packages33/ImportExport-${pkgver}.opm"
         # Packages
         "http://ftp.otrs.org/pub/otrs/packages/Benchmark-1.2.5.opm"
         "http://ftp.otrs.org/pub/otrs/packages/Calendar-1.9.5.opm"
         "http://ftp.otrs.org/pub/otrs/packages/FAQ-2.3.1.opm"
         "http://ftp.otrs.org/pub/otrs/packages/FileManager-1.4.9.opm"
-        "http://ftp.otrs.org/pub/otrs/packages/iPhoneHandle-1.3.1.opm"
+        "http://ftp.otrs.org/pub/otrs/packages/Fred-3.2.2.opm"
         "http://ftp.otrs.org/pub/otrs/packages/MasterSlave-1.1.2.opm"
         "http://ftp.otrs.org/pub/otrs/packages/OTRSCodePolicy-1.0.4.opm"
-        "http://ftp.otrs.org/pub/otrs/packages/OpenNMS-1.2.1.opm"
         "http://ftp.otrs.org/pub/otrs/packages/OTRSMasterSlave-1.4.2.opm"
+        "http://ftp.otrs.org/pub/otrs/packages/OpenNMS-1.2.1.opm"
         "http://ftp.otrs.org/pub/otrs/packages/Support-1.5.4.opm"
         "http://ftp.otrs.org/pub/otrs/packages/Survey-2.3.2.opm"
         "http://ftp.otrs.org/pub/otrs/packages/SystemMonitoring-2.5.2.opm"
         "http://ftp.otrs.org/pub/otrs/packages/SystemStatus-1.6.1.opm"
         "http://ftp.otrs.org/pub/otrs/packages/TimeAccounting-2.3.1.opm"
-        "http://ftp.otrs.org/pub/otrs/packages/WebMail-0.13.2.opm")
+        "http://ftp.otrs.org/pub/otrs/packages/WebMail-0.13.2.opm"
+        "http://ftp.otrs.org/pub/otrs/packages/iPhoneHandle-1.3.1.opm")
 package() {
   install -dm 0755 "${pkgdir}/etc/webapps/${pkgname}"
   install -dm 0755 "${pkgdir}/usr/share/webapps/${pkgname}"
@@ -104,50 +104,52 @@ package() {
   sed -i "s/\/opt/\/usr\/share\/webapps/g" $(grep -rl "/opt" "${pkgdir}/usr/share/webapps/${pkgname}")
 }
 md5sums=('6ae7c4f13927318f80c838b6ac4c9e0c'
-         'd671e416717e356870f56a46768a5972'
-         '6085ee5d6e67245dc7a25591a45bebcd'
-         'ca2de89867c4c6b085b1c079a6a7824d'
-         '2f2f2840c4042d3b17a355ba9d7bfe32'
-         '5ed271cc1544753429317d7c64a8c878'
-         'f09c521ef66e72edf95c36d5d9665390'
-         'e45f24da756bfa2375dde2a9e146452f'
-         '79e18173ae80a006505327bbf7b051d3'
+         '76d825316d1c0e66de6c34bfbdcc4e32'
+         '15e1aacfd5a512a0a45e71548e74123a'
+         '6e499ad948902f31b74b6c3d10bb0d6a'
+         'c55570f79f6d3bbb485db0cddc8f3d74'
+         'd88fd53c948e8e66f873053577c222b1'
+         '432ee81042950d4aae0dc4d7a72fc3d0'
+         '5437b93fe7afb727d8ac24292b1e4de8'
+         '28c119d6ea3a68562928f51489ce7aef'
          'c095828fb4aade210835fb1250fcaf6b'
          '3a9342a8b7347bf47f832d58020beb9c'
          'dceec7be8ec2a83df8d3c1d20a62fc60'
          '693dfab8458e202d935f31f4c7128670'
-         '273707110ec37179288fcbb67c71fc7e'
+         '909bfaaff1a87a4a5509ebd303dce52c'
          'cec1d57f6fc904d6b8ed4748ed07e92c'
          '0ca9da48fc2af9d95c1201a748ba26a6'
-         '384bb6437746686e18ff13e9bcea9f2f'
          '3dafa9dd8e706e6ac0d32ac619221192'
+         '384bb6437746686e18ff13e9bcea9f2f'
          'd2279a0d9881f2dd67abb7133b1763b0'
          '529600ab8ac6beda5d1a03fd69545a86'
          '6576d6f293814e6e1346b066fbe5c742'
          '618f815328b9a5a8e262138ff7ca6d9b'
          '3616b36f808e2a559ec1f340f68da9cd'
-         '7083a797c1a6a7da73fde4b3f289a9fe')
+         '7083a797c1a6a7da73fde4b3f289a9fe'
+         '273707110ec37179288fcbb67c71fc7e')
 sha1sums=('aa8e024dcf6dc0f29fe421ca5f0451b701ede0b8'
-          '310a3b2956507c2c91abd4b0df02fde21af34736'
-          '63e34f40f59e906f0b02b26b3823bcfad8c4b7e5'
-          '0c98ae1d4d4e3369689066fbc0424ecaad088a8f'
-          '4f89a0bd34d4ffb61ed61b6b99935bb5759d7655'
-          '626d21507f9239317813b42c3a824e7cef4919a3'
-          '0a8796388b7d1bd7c2751960d062ad47f9d05aae'
-          '501d181318d016eea46e84319e6b6a5b8d42450e'
-          '8cffee93c1b05b28a9ed2b584d1df35a0d27ed74'
+          '7f648f2329c0edfb59bbf3b4893a49cf780f44f0'
+          'e767976c6337c6d0e5f2bc0c1cb4850d5deda9f9'
+          'fc682bc96196098373d2fc64d935b359e06a4045'
+          '3a62dbc8192df4f8f8c09c76abbf37579d343ffe'
+          '9efbbf8783d48c52e3f599209ccc2301d8c6caf4'
+          '5e8dfbb4d2832ccf1ada1cceb2df72dfb0ef3572'
+          'c1ceef7baf44e2c2748b5e3880526da285867bea'
+          '23e79dc8f7f0629c992284309e34ab5e453f04ba'
           '232a8412b361b8cc0c3faf0ab24cb19bce2dd6bc'
           '5362cc6fc56d8b5e2a9b208c8d5789213bba5576'
           'f4250b19232cb645b679855865cd232e5a8008f5'
           '06b0f08497e33bf243b34c075507367baeaca071'
-          '43d159a8a69c71fd5063e907d05e52f989922509'
+          '0cfc4631496961355a842bf95eff22982dd3e574'
           '319c419b4533b7daa66a5decbb61fb2a7f945105'
           '28efd786a52984cd63a6881567cc6699779c12fa'
-          'a55a04cf4ec9cbcffaef88aeed3432e7b8e527b3'
           'b21006481c88d792b35ad543900ab1c318eb61aa'
+          'a55a04cf4ec9cbcffaef88aeed3432e7b8e527b3'
           'bd95753e1c1ac2584286ce45aec7ac42aae6aedc'
           'c3db858b9c3735e21e205be8200d2c087e828faa'
           '03127c1d256b4fb81bb14f7f30c5e965502c6a1d'
           '3f44f7f7868874a8d9d940b11ba624f3633b6c54'
           '44ebda46d181d5032539a2624f4f06da7b5d57cf'
-          '0f0e466b1e25ab0ff4554e953b5f5804fab65efa')
+          '0f0e466b1e25ab0ff4554e953b5f5804fab65efa'
+          '43d159a8a69c71fd5063e907d05e52f989922509')
