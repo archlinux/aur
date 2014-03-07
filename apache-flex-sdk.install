@@ -1,0 +1,3 @@
+post_install() {
+    echo Please re-login or source /etc/profile to use the new \$PATH
+}
