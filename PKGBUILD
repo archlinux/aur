@@ -2,7 +2,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=ewebkit
-pkgver=159807
+pkgver=164189
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ depends=('atk' 'cairo' 'efl' 'e_dbus' 'enchant' 'libtiff'
          'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt' 'harfbuzz-icu')
 makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf')
 source=("http://download.enlightenment.org/rel/libs/webkit-efl/webkit-efl-$pkgver.tar.xz")
-sha256sums=('a99531299e41ba4671b32bbf46c3efc4d65960c9c87949a87f76e622c284f178')
+sha1sums=('1a90bd20d9b38b86566349163a72ffbd869dd1c2')
 
 build() {
-  cd "$srcdir/webkit-efl"
+  cd "$srcdir/efl-webkit"
 
 # build with glib 2.38/libsoup 2.44
   export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/webkit-efl"
+  cd "$srcdir/efl-webkit"
 
   make DESTDIR="$pkgdir" install
 
