@@ -10,7 +10,7 @@ pkgdesc='Remote who client and server (with Debian patches)'
 depends=('glibc' 'sh')
 optdepends=('cron: to periodically delete old /var/spool/rwho files'
             'systemd: to run the rwhod daemon')
-url='ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/'
+url='http://packages.qa.debian.org/n/netkit-rwho.html'
 install=rwhod.install
 backup=('etc/conf.d/rwhod')
 source=(http://ftp.debian.org/debian/pool/main/n/netkit-rwho/netkit-rwho_${pkgver}.orig.tar.gz
