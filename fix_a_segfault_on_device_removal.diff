@@ -1,0 +1,31 @@
+From 05e6bcc666e345ed4619c1a40a298212d1075b99 Mon Sep 17 00:00:00 2001
+From: Rui Matos <tiagomatos@gmail.com>
+Date: Thu, 21 Nov 2013 13:51:26 +0000
+Subject: device-manager-evdev: Fix a segfault on device removal
+
+Master devices have a NULL sysfs path so use g_strcmp0 to handle them
+without crashing.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=712812
+---
+diff --git a/clutter/evdev/clutter-device-manager-evdev.c b/clutter/evdev/clutter-device-manager-evdev.c
+index 256fd0e..38d707f 100644
+--- a/clutter/evdev/clutter-device-manager-evdev.c
++++ b/clutter/evdev/clutter-device-manager-evdev.c
+@@ -943,11 +943,8 @@ find_device_by_udev_device (ClutterDeviceManagerEvdev *manager_evdev,
+     {
+       ClutterInputDeviceEvdev *device = l->data;
+ 
+-      if (strcmp (sysfs_path,
+-                  _clutter_input_device_evdev_get_sysfs_path (device)) == 0)
+-        {
+-          return device;
+-        }
++      if (g_strcmp0 (sysfs_path, _clutter_input_device_evdev_get_sysfs_path (device)) == 0)
++        return device;
+     }
+ 
+   return NULL;
+--
+cgit v0.9.2
+

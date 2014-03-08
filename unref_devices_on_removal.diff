@@ -1,0 +1,22 @@
+From 7d8f72a60e4087a4d9e48d3f0e38b669b3717243 Mon Sep 17 00:00:00 2001
+From: Rui Matos <tiagomatos@gmail.com>
+Date: Thu, 21 Nov 2013 13:50:40 +0000
+Subject: device-manager-evdev: Unref devices on removal
+
+https://bugzilla.gnome.org/show_bug.cgi?id=712812
+---
+diff --git a/clutter/evdev/clutter-device-manager-evdev.c b/clutter/evdev/clutter-device-manager-evdev.c
+index 9e7be95..256fd0e 100644
+--- a/clutter/evdev/clutter-device-manager-evdev.c
++++ b/clutter/evdev/clutter-device-manager-evdev.c
+@@ -1046,6 +1046,8 @@ clutter_device_manager_evdev_remove_device (ClutterDeviceManager *manager,
+       clutter_event_source_free (source);
+       priv->event_sources = g_slist_remove (priv->event_sources, source);
+     }
++
++  g_object_unref (device);
+ }
+ 
+ static const GSList *
+--
+cgit v0.9.2
