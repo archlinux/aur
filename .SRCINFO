@@ -1,7 +1,7 @@
 pkgbase = netkit-rwho-debian
 	pkgdesc = Remote who client and server (with Debian patches)
 	pkgver = 0.17
-	pkgrel = 3
+	pkgrel = 4
 	url = http://packages.qa.debian.org/n/netkit-rwho.html
 	install = rwhod.install
 	arch = i686
