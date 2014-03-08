@@ -6,7 +6,7 @@ pkgrel=3
 _debrev=13
 arch=('i686' 'x86_64')
 license=('BSD')
-pkgdesc="Remote who"
+pkgdesc="Remote who client and server (with Debian patches)"
 depends=('glibc' 'sh')
 optdepends=('cron: to periodically delete old /var/spool/rwho files'
             'systemd: to run the rwhod daemon')

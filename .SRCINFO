@@ -1,5 +1,5 @@
 pkgbase = netkit-rwho-debian
-	pkgdesc = Remote who
+	pkgdesc = Remote who client and server (with Debian patches)
 	pkgver = 0.17
 	pkgrel = 3
 	url = ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
