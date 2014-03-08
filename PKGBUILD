@@ -3,7 +3,7 @@
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r02
+_rev=r03
 _sdkver=4.4.2
 _sdkint=19
 pkgname=android-platform
@@ -18,7 +18,7 @@ provides=("${pkgname}-${_sdkint}")
 conflicts=("${pkgname}-${_sdkint}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/android-${_sdkint}_${_rev}.zip")
-sha1sums=('fb87a779320bcb8a0a0932f6db8843ba72d1993b')
+sha1sums=('5f33d8fd36a384fe2b170035e04a29c274a9ef95')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
