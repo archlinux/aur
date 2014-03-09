@@ -8,7 +8,7 @@ pkgdesc="Simple text editor based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('GPL3')
-depends=('elementary' 'desktop-file-utils')
+depends=('elementary')
 makedepends=('git' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")

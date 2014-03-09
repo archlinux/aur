@@ -10,7 +10,6 @@ pkgbase = ecrire-git
 	makedepends = git
 	makedepends = cmake
 	depends = elementary
-	depends = desktop-file-utils
 	provides = ecrire=0.1.0.106.317bca3
 	conflicts = ecrire
 	source = git://git.enlightenment.org/apps/ecrire.git
