@@ -2,13 +2,13 @@
 
 _pkgname=rage
 pkgname=$_pkgname-git
-pkgver=0.1.0.r5.f2cb079
+pkgver=0.1.0.r24.8f12634
 pkgrel=1
 pkgdesc="Video Player based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary>=1.8.99' 'desktop-file-utils')
+depends=('elementary' 'desktop-file-utils')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
