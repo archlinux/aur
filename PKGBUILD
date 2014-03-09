@@ -3,8 +3,8 @@
 # Contributor: Xavius <xavierelf@gmail.com>
 
 pkgname=lib32-portaudio
-pkgver=19_20111121
-pkgrel=2
+pkgver=19_20140130
+pkgrel=1
 pkgdesc='A free, cross-platform, open source, audio I/O library. (32 bit)'
 arch=('x86_64')
 url="http://www.portaudio.com/"
@@ -13,7 +13,7 @@ depends=('lib32-alsa-lib' 'lib32-jack' "${pkgname#*-}")
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=("http://www.portaudio.com/archives/pa_stable_v${pkgver}.tgz")
-sha256sums=('9c26d1330d506496789edafe55b0386f20d83c4aa2c0e3f81fbeb0f114ab1b99')
+sha256sums=('8fe024a5f0681e112c6979808f684c3516061cc51d3acc0b726af98fc96c8d57')
 
 build() {
   cd "${srcdir}"/${pkgname#*-}
