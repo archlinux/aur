@@ -1,9 +1,9 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Cravix < dr dot neemous at gmail dot org >
 
-pkgname=terminology-git
-_pkgname=${pkgname%-*}
-pkgver=0.4.0alpha2.r796.81a7d98
+_pkgname=terminology
+pkgname=$_pkgname-git
+pkgver=0.5.99.r1040.503dd08
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
 arch=('i686' 'x86_64')
@@ -42,11 +42,10 @@ package(){
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t"$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
