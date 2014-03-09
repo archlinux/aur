@@ -4,7 +4,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 _pkgbasename=libao
 pkgname=lib32-$_pkgbasename
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A cross-platform audio output library and plugins (32-bit)"
 url="http://www.xiph.org/ao/"
@@ -14,7 +14,7 @@ depends=($_pkgbasename 'lib32-glibc' 'lib32-alsa-lib' 'lib32-libpulse')
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=("http://downloads.xiph.org/releases/ao/$_pkgbasename-$pkgver.tar.gz")
-md5sums=('08283fbe1f587619053a156254afecec')
+md5sums=('9f5dd20d7e95fd0dd72df5353829f097')
 
 build() {
   cd "$srcdir/$_pkgbasename-$pkgver"
