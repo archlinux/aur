@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
-pkgname=ecrire-git
-_pkgname=${pkgname%-*}
-pkgver=0.1.0.102.d20ff8a
+_pkgname=ecrire
+pkgname=$_pkgname-git
+pkgver=0.1.0.106.317bca3
 pkgrel=1
 pkgdesc="Simple text editor based on EFL"
 arch=('i686' 'x86_64')
@@ -20,10 +20,10 @@ pkgver() {
   cd "$srcdir/$_pkgname"
 
   for i in VMAJ VMIN VMIC; do
-    local _$i=$(grep -m 1 $i CMakeLists.txt | grep -o "[[:digit:]]*")
+    local PACKAGE_VERSION=${PACKAGE_VERSION#.}.$(grep -m 1 $i CMakeLists.txt | grep -o "[[:digit:]]*")
   done
 
-  echo $_VMAJ.$_VMIN.$_VMIC.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf $PACKAGE_VERSION.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
