@@ -58,11 +58,11 @@ prepare() {
 
 package() {
     cd ${srcdir}/amavisd-new-${pkgver}
-    install -D -m755 ${srcdir}/service         ${pkgdir}/usr/lib/systemd/system/amavisd.service
-    install -D -m755 ${srcdir}/tmpfiles        ${pkgdir}/usr/lib/tmpfiles.d/amavisd.conf
+    install -D -m644 ${srcdir}/service         ${pkgdir}/usr/lib/systemd/system/amavisd.service
+    install -D -m644 ${srcdir}/tmpfiles        ${pkgdir}/usr/lib/tmpfiles.d/amavisd.conf
     install -D -m755 JpegTester.pm             ${pkgdir}/usr/share/perl5/vendor_perl/JpegTester.pm
-    install -D -m755 LDAP.ldif                 ${pkgdir}/etc/openldap/schema/amavisd-new.ldif
-    install -D -m755 LDAP.schema               ${pkgdir}/etc/openldap/schema/amavisd-new.schema
+    install -D -m644 LDAP.ldif                 ${pkgdir}/etc/openldap/schema/amavisd-new.ldif
+    install -D -m644 LDAP.schema               ${pkgdir}/etc/openldap/schema/amavisd-new.schema
 	 install -D -m750 -o 333 -g 333 -d          ${pkgdir}/var/spool/amavis/{,db,tmp,var,virus}
 
 	 mkdir -p \
@@ -71,6 +71,6 @@ package() {
 		  ${pkgdir}/usr/bin
 
     install -D -m644 -t ${pkgdir}/etc/amavisd             amavisd{.conf,-custom.conf,.conf-default}
-    install -D -m755 -t ${pkgdir}/usr/share/doc/amavis    amavisd-new-{qmqpqq,courier}.patch
+    install -D -m644 -t ${pkgdir}/usr/share/doc/amavis    amavisd-new-{qmqpqq,courier}.patch
     install -D -m755 -t ${pkgdir}/usr/bin p0f-analyzer.pl amavisd{,-{agent,nanny,release,signer,snmp-subagent{,-zmq}}}
 }
