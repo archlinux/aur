@@ -2,7 +2,7 @@ _infodir=/usr/share/info
 _iinfoargs="$_infodir/gambit-c.info.gz $_infodir/dir"
 
 post_install() {
-  install-info ${_iinfoargs}
+  install-info $_iinfoargs
 }
 
 post_upgrade() {
@@ -10,7 +10,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  install-info --delete ${_iinfoargs}
+  install-info --delete $_iinfoargs
 }
 
 # vim:set ts=2 sw=2 et:

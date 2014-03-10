@@ -2,20 +2,20 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
-_distname=gambc-v4_7_1
 pkgname=gambit-c
-pkgver=4.7.1
-pkgrel=2
+pkgver=4.7.2
+pkgrel=1
 pkgdesc='Scheme R5RS interpreter and compiler (via C)'
 arch=('x86_64' 'i686')
 url='http://dynamo.iro.umontreal.ca/wiki/index.php/Main_Page'
 license=('LGPL2.1' 'Apache')
+depends=('bash')
 install="$pkgname.install"
-source=(http://www.iro.umontreal.ca/~gambit/download/gambit/v4.7/source/${_distname}.tgz)
-sha256sums=('6b7d58f1e28169d2c873386a1cf7e321e96d23ffd4b3238b105d66ca6bdd7472')
+source=("http://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/it-}-v${pkgver//./_}.tgz")
+sha256sums=('c09597fa423602eb9d06b1ab3c1a63cd9c612b89f7f6d718f2c0a96da4d4ac1a')
 
 build() {
-  cd "$_distname"
+ cd "${pkgname/it-}-v${pkgver//./_}"
 
   ./configure --prefix=/usr --docdir=/usr/share/doc/gambit-c \
     --infodir=/usr/share/info --libdir=/usr/lib/gambit-c \
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  make -C "$_distname" install DESTDIR="$pkgdir"
+  make -C "${pkgname/it-}-v${pkgver//./_}" install DESTDIR="$pkgdir"
   # gsc conflicts with the one provided by ghostscript
   mv "$pkgdir/usr/bin/gsc" "$pkgdir/usr/bin/gambitc"
   ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
