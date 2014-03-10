@@ -1,6 +1,6 @@
 pkgbase = pjson-git
 	pkgdesc = Command-line tool to validate and pretty-print JSON and XML
-	pkgver = 21.1870aa6
+	pkgver = 0.4.r25.g1d6604e
 	pkgrel = 1
 	url = http://igorgue.com/pjson
 	arch = any

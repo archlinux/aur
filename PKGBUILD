@@ -2,7 +2,7 @@
 
 _pkgbase=pjson
 pkgname=$_pkgbase-git
-pkgver=21.1870aa6
+pkgver=0.4.r25.g1d6604e
 pkgrel=1
 pkgdesc="Command-line tool to validate and pretty-print JSON and XML"
 url="http://igorgue.com/pjson"
@@ -15,23 +15,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  # python3 fix
-  sed "s/print e/print (e)/" -i $_pkgbase/$_pkgbase/__init__.py
-
-  # arch's pygments is 1.6
-  sed "s/JSONLexer/JsonLexer/" -i $_pkgbase/$_pkgbase/__init__.py
-  sed "s/Pygments==1.5/Pygments==1.6/" -i $_pkgbase/setup.py
+  _ver=$(grep version setup.py | sed "s|.*version='\(.*\)'.*|\1|")
+  printf "%s.r%s.g%s" "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd $_pkgbase
 
   python setup.py install --root="$pkgdir/" --optimize=1
-
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
