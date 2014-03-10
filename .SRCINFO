@@ -11,7 +11,6 @@ pkgbase = epour
 	depends = python2-efl
 	depends = libtorrent
 	depends = hicolor-icon-theme
-	depends = desktop-file-utils
 	source = git://git.enlightenment.org/apps/epour.git#tag=epour-0.5.2.0
 	md5sums = SKIP
 
