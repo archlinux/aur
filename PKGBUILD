@@ -8,7 +8,7 @@ pkgdesc="Torrent client based on EFL"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3' 'MIT')
-depends=('python2-efl' 'libtorrent' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('python2-efl' 'libtorrent' 'hicolor-icon-theme')
 makedepends=('git' 'python2-distutils-extra')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
