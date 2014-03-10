@@ -1,0 +1,16 @@
+pkgbase = freecheck
+	pkgdesc = A free check printing application
+	pkgver = 0.30
+	pkgrel = 1
+	url = https://github.com/alerque/freecheck
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	license = GPL
+	depends = perl
+	depends = gnumicr
+	source = https://github.com/alerque/freecheck/archive/v0.30.tar.gz
+	md5sums = 6c7f7707962329a61bc56ce739178a61
+
+pkgname = freecheck
+
