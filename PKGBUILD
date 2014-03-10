@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.9.0alpha1.24466.aa07b08
+pkgver=1.9.99.24849.2ab6aac
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
 arch=('i686' 'x86_64')
@@ -51,7 +51,6 @@ build() {
   ./autogen.sh \
     --prefix=/usr \
     --with-tests=none \
-    --with-x11=xlib \
     --with-opengl=full \
     --enable-wayland \
     --enable-fb \
