@@ -1,6 +1,6 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 pkgname=freecheck
-pkgver=0.30
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="A free check printing application"
 epoch=
@@ -9,11 +9,12 @@ url="https://github.com/alerque/freecheck"
 license=('GPL')
 groups=()
 depends=(perl gnumicr)
-source=(https://github.com/alerque/freecheck/archive/v0.30.tar.gz)
-md5sums=('6c7f7707962329a61bc56ce739178a61')
+source=('https://github.com/alerque/freecheck/archive/installer.tar.gz')
+md5sums=('09fe4b90da437fb2592b7ef662eccc7f')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $srcdir
+  cd "$srcdir/$pkgname-installer"
 
   install -Dm644 freecheck.cfg "$pkgdir/etc/freecheck/freecheck.cfg"
   install -Dm755 freecheck "$pkgdir/usr/bin/freecheck"
