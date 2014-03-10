@@ -1,0 +1,6 @@
+function post_install {
+    echo " > Please add the line to ~/.bashrc :"
+    echo " > [[ -s /etc/profile.d/autojump.bash ]] && . /etc/profile.d/autojump.bash"
+    echo " > Or substitute ~/.zshrc and /etc/profile.d/autojump.zsh"
+    echo " > You need to run 'source ~/.bashrc' before you can start using autojump."
+}

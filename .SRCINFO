@@ -1,0 +1,18 @@
+pkgbase = autojump-git
+	pkgdesc = A faster way to navigate your filesystem from the command line
+	pkgver = release.v21.6.9.149.g72313db
+	pkgrel = 1
+	url = http://github.com/joelthelion/autojump
+	install = install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = python
+	provides = autojump
+	conflicts = autojump
+	source = git+https://github.com/joelthelion/autojump.git
+	md5sums = SKIP
+
+pkgname = autojump-git
+
