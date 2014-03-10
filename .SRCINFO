@@ -1,0 +1,14 @@
+pkgbase = gnumicr
+	pkgdesc = An open-source licensed Type 1 MICR E13-B font
+	pkgver = 0.30
+	pkgrel = 1
+	url = https://github.com/alerque/gnumicr
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/alerque/gnumicr/archive/v0.30.tar.gz
+	md5sums = 4472c31b43b332975e58e8141d56091b
+
+pkgname = gnumicr
+
