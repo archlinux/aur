@@ -8,7 +8,7 @@ pkgdesc="Video Player based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary' 'desktop-file-utils')
+depends=('elementary')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")

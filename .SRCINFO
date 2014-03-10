@@ -9,7 +9,6 @@ pkgbase = rage-git
 	license = BSD
 	makedepends = git
 	depends = elementary
-	depends = desktop-file-utils
 	provides = rage=0.1.0.r24.8f12634
 	conflicts = rage
 	source = git://git.enlightenment.org/apps/rage.git
