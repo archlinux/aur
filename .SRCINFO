@@ -41,31 +41,7 @@ pkgbase = efl-git
 	optdepends = gst-plugins-ugly: Access more types of video in Emotion
 	optdepends = gst-libav: Access video with ffmpeg/libav in Emotion
 	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
-	provides = ecore=1.9.99.24849.2ab6aac
-	provides = eldbus=1.9.99.24849.2ab6aac
-	provides = edje=1.9.99.24849.2ab6aac
-	provides = eet=1.9.99.24849.2ab6aac
-	provides = eeze=1.9.99.24849.2ab6aac
-	provides = efreet=1.9.99.24849.2ab6aac
-	provides = eina=1.9.99.24849.2ab6aac
-	provides = eio=1.9.99.24849.2ab6aac
-	provides = embryo=1.9.99.24849.2ab6aac
-	provides = emotion=1.9.99.24849.2ab6aac
-	provides = ephysics=1.9.99.24849.2ab6aac
-	provides = ethumb=1.9.99.24849.2ab6aac
-	provides = evas=1.9.99.24849.2ab6aac
 	provides = efl=1.9.99.24849.2ab6aac
-	conflicts = ecore
-	conflicts = edje
-	conflicts = eet
-	conflicts = eeze
-	conflicts = efreet
-	conflicts = eina
-	conflicts = eio
-	conflicts = embryo
-	conflicts = emotion
-	conflicts = ethumb
-	conflicts = evas
 	conflicts = efl
 	options = debug
 	source = git://git.enlightenment.org/core/efl.git

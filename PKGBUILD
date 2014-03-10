@@ -22,12 +22,8 @@ optdepends=('python2: compare Eina benchmarks'
             'gst-plugins-ugly: Access more types of video in Emotion'
             'gst-libav: Access video with ffmpeg/libav in Emotion'
             'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
-provides=("ecore=$pkgver" "eldbus=$pkgver" "edje=$pkgver" "eet=$pkgver" "eeze=$pkgver"
-          "efreet=$pkgver" "eina=$pkgver" "eio=$pkgver" "embryo=$pkgver" "emotion=$pkgver"
-          "ephysics=$pkgver" "ethumb=$pkgver" "evas=$pkgver"
-          "$_pkgname=$pkgver")
-conflicts=('ecore' 'edje' 'eet' 'eeze' 'efreet' 'eina' 'eio' 'embryo' 'emotion' 'ethumb' 'evas'
-           "$_pkgname")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 options=('debug')
 install="$_pkgname.install"
 source=("git://git.enlightenment.org/core/$_pkgname.git")
