@@ -9,7 +9,7 @@ url="https://github.com/alerque/gnumicr"
 license=('GPL')
 depends=('fontconfig' 'xorg-font-utils')
 source=(https://github.com/alerque/gnumicr/archive/v0.30.tar.gz)
-md5sums=('4472c31b43b332975e58e8141d56091b')
+md5sums=('20e317196feb2ffea5a2a11c082eff52')
 
 post_install() {
     echo -n "==> Rebuilding font cache... "
