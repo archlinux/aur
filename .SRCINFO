@@ -1,16 +1,16 @@
 pkgbase = freecheck
-	pkgdesc = A free check printing application
+	pkgdesc = A blank check printer that adds MICR codes and check templates to blank stock.
 	pkgver = 0.30.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alerque/freecheck
-	arch = x86_64
-	arch = i686
-	arch = armv6h
-	license = GPL
+	arch = any
+	license = GPL2
 	depends = perl
 	depends = gnumicr
+	optdepends = cups: printing support
+	optdepends = ghostscript: output to pdf files
 	source = https://github.com/alerque/freecheck/archive/installer.tar.gz
-	md5sums = 09fe4b90da437fb2592b7ef662eccc7f
+	md5sums = aa984e37da9165d488fc31cf3efcc28a
 
 pkgname = freecheck
 
