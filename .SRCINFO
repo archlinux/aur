@@ -1,0 +1,13 @@
+pkgbase = ldapauthmanager
+	pkgdesc = An LDAP user manager and password self-service webaapp.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://projects.jethrocarr.com/p/oss-ldapauthmanager/
+	arch = any
+	license = AGPL
+	depends = php-ldap
+	source = https://projects.jethrocarr.com/p/oss-ldapauthmanager/downloads/get/ldapauthmanager-1.4.0.tar.bz2
+	md5sums = 4b41c3c9deaf2750e3ffcaaf9a0c6c22
+
+pkgname = ldapauthmanager
+
