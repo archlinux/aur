@@ -2,7 +2,7 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20140302
+pkgver=20140309
 pkgrel=1
 _udevver=210
 provides=('eudev' "udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
@@ -42,6 +42,9 @@ build() {
     msg2 "Cleaning up..."
     make clean
   fi
+
+  # Temporary workaround for bug #87
+  sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
   
   msg2 "Configuring sources..."
   ./autogen.sh
@@ -64,7 +67,7 @@ package() {
   cd "${srcdir}/${_gitname}"
   make DESTDIR="${pkgdir}" install
 
-  # install the mkinitpcio hook
+  # Install the mkinitpcio hook
   install -Dm644 "${srcdir}/initcpio_hooks" "${pkgdir}/usr/lib/initcpio/hooks/udev"
   install -Dm644 "${srcdir}/initcpio_install" "${pkgdir}/usr/lib/initcpio/install/udev"
 
