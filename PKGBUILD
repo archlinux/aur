@@ -35,11 +35,6 @@ pkgver() {
   git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-  cd $_gitname
-  python2 setup.py build
-}
-
 package() {
   cd $_gitname
   python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
