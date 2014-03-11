@@ -10,20 +10,19 @@ arch=('any')
 url="http://www.mopidy.com"
 license=('APACHE')
 depends=('python2'
-         'pyspotify-git'
          'python2-pykka'
-         'python2-distribute'
-         'gawk'
+         'python2-setuptools'
          'gstreamer0.10-python'
          'gstreamer0.10-base-plugins'
          'gstreamer0.10-good-plugins'
          'gstreamer0.10-ugly-plugins')
-makedepends=('git'
-             'python2')
-optdepends=('python2-cherrypy: HTTP frontend'
-            'python2-ws4py: HTTP frontend'
-            'python2-pylast: Last.fm frontend'
-            'python2-dbus: MPRIS frontend')
+makedepends=('git' 'python2')
+optdepends=('gstreamer0.10-ffmpeg: AAC+ and WMA support.'
+            'mopidy-spotify: Spotify backend'
+            'mopidy-scrobbler: Last.FM scrobbler'
+            'mopidy-MPRIS: MPRIS frontend'
+            'python2-cherrypy: HTTP frontend'
+            'python2-ws4py: HTTP frontend')
 conflicts=('mopidy')
 provides=('mopidy')
 source=('git+https://github.com/mopidy/mopidy.git'
