@@ -26,7 +26,7 @@ optdepends=('python2-cherrypy: HTTP frontend'
             'python2-dbus: MPRIS frontend')
 conflicts=('mopidy')
 provides=('mopidy')
-source=('git://github.com/mopidy/mopidy.git#branch=master'
+source=('git+https://github.com/mopidy/mopidy.git'
         'mopidy@.service')
 md5sums=('SKIP'
          'eee7b58b4eb5ca7de27f67e174ab7f9a')

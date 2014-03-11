@@ -22,7 +22,7 @@ pkgbase = mopidy-git
 	optdepends = python2-dbus: MPRIS frontend
 	provides = mopidy
 	conflicts = mopidy
-	source = git://github.com/mopidy/mopidy.git#branch=master
+	source = git+https://github.com/mopidy/mopidy.git
 	source = mopidy@.service
 	md5sums = SKIP
 	md5sums = eee7b58b4eb5ca7de27f67e174ab7f9a
