@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 _pkgname=freecheck
 pkgname=freecheck-git
-pkgver=0.30_4_g3f4fe6f
-pkgrel=3
+pkgver=0.30_5_gb5d7d15
+pkgrel=1
 _branch=devel
 url=https://github.com/alerque/$_pkgname
 pkgdesc='A blank check printer that adds MICR codes and check templates to blank stock.'
