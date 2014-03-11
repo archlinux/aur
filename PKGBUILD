@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -59,17 +59,15 @@ install="libvirt.install"
 source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	libvirtd-guests.conf.d
-	libvirt.tmpfiles.d
-	"FS#38546.patch::http://libvirt.org/git/?p=libvirt.git;a=commitdiff_plain;h=7f0fd427413fe04963b1bcb158cf70e980ad1842")
-md5sums=('cce374220f67895afb6331bd2ddedbfd'
+	libvirt.tmpfiles.d)
+md5sums=('592958ad1ddce7574d8cb0a31e635acd'
          '3ed0e24f5b5e25bf553f5427d64915e6'
          '0a96ed876ffb1fcb9dff5a9b3a609c1e'
-         '020971887442ebbf1b6949e031c8dd3f'
-         'f579805e75956d32992c6934346ee740')
+         '020971887442ebbf1b6949e031c8dd3f')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 <"$srcdir/FS#38546.patch"
+#  patch -p1 <"$srcdir/FS#38546.patch"
 }
 
 build() {
@@ -106,7 +104,7 @@ package() {
 
   # systemd stuff
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
-  mv "$pkgdir"/lib/* "$pkgdir"/usr/lib/
+#  mv "$pkgdir"/lib/* "$pkgdir"/usr/lib/
 
   rm -rf \
 	"$pkgdir"/var/run \
