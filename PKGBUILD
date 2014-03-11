@@ -31,12 +31,12 @@ md5sums=('SKIP'
          'eee7b58b4eb5ca7de27f67e174ab7f9a')
 
 pkgver() {
-  cd $_gitname
+  cd "$_gitname"
   git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-  cd $_gitname
+  cd "$_gitname"
   python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 
   install -Dm644 "$srcdir/mopidy@.service" "$pkgdir/usr/lib/systemd/system/mopidy@.service"
