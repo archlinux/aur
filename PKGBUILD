@@ -20,7 +20,7 @@ build() {
     make
 
     cd GUI
-    qmake
+    qmake-qt4
     make clean
     make
 }
