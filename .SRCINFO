@@ -1,0 +1,19 @@
+pkgbase = opentyrian
+	pkgdesc = Open Source port of the classic DOS shoot-em-up Tyrian
+	pkgver = 2.1.20130907
+	pkgrel = 1
+	url = https://code.google.com/p/opentyrian
+	install = opentyrian.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_net
+	optdepends = hicolor-icon-theme: .desktop file icons
+	provides = tyrian
+	source = http://camanis.net/opentyrian/releases/opentyrian-2.1.20130907-src.tar.gz
+	source = http://camanis.net/tyrian/tyrian21.zip
+	sha256sums = f54b6b3cedcefa187c9f605d6164aae29ec46a731a6df30d351af4c008dee45f
+	sha256sums = 7790d09a2a3addcd33c66ef063d5900eb81cc9c342f4807eb8356364dd1d9277
+
+pkgname = opentyrian
+
