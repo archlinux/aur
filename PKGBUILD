@@ -15,7 +15,7 @@ noextract=(flyspray-$pkgver.zip)
 source=(http://flyspray.org/flyspray-$pkgver.zip
 	"flyspray-php-5.4.patch::https://projects.archlinux.org/vhosts/bugs.archlinux.org.git/patch/?id=aaeeeb05f6d81ce88131239126b9da189fd1f904")
 md5sums=('3a218c5447d64af18f19bc63bb825e58'
-         '1e5fdc4d2ae316e840960afd39d36061')
+         'b278362976074d963f74767c7e79bf11')
 
 package() {
   mkdir $srcdir/flyspray-${pkgver}
