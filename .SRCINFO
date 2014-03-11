@@ -1,0 +1,25 @@
+pkgbase = steins-gate
+	pkgdesc = Libre reimplementation of the Steins;Gate visual novel
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://dev.pulsir.eu/krofna/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = LGPL3
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	depends = sfml
+	depends = gst-plugins-base-libs
+	depends = ttf-arphic-uming
+	source = libnpa-0.2.0.tar.gz::https://github.com/FGRE/libnpa/archive/v0.2.0.tar.gz
+	source = libnpengine-0.2.0.tar.gz::https://github.com/FGRE/libnpengine/archive/v0.2.0.tar.gz
+	source = steins-gate-0.2.0.tar.gz::https://github.com/FGRE/steins-gate/archive/v0.2.0.tar.gz
+	sha256sums = 85f1727bc3e2cf745275dac84b454cceb8152c27eeff24ff9de81f105e1c5668
+	sha256sums = 66c79ba74e49e2286186c3e14fe2c58e170ecff321ec60fbdb5ab2864f32e981
+	sha256sums = 7fb23b66f1163b5d40f07931f6045b87b2f65c767b80dc950a3414fe80c9319e
+
+pkgname = steins-gate
+
