@@ -2,14 +2,17 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='lib32-eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"
-pkgver=20140209
+pkgver=20140309
 pkgrel=1
-groups=('base')
+_udevver=210
 arch=('x86_64')
 url="https://github.com/gentoo/eudev"
 license=('GPL')
 depends=('lib32-glib2' 'eudev-git')
 makedepends=('git' 'gcc-multilib' 'lib32-util-linux' 'gobject-introspection' 'gperf')
+provides=("lib32-systemd=${_udevver}")
+replaces=('lib32-systemd')
+conflicts=('lib32-systemd')
 options=(!makeflags !libtool)
 source=('git://github.com/gentoo/eudev.git')
 md5sums=('SKIP')
@@ -34,6 +37,9 @@ build() {
     msg2 "Cleaning up..."
     make clean
   fi
+
+  # Temporary workaround for bug #87
+  sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
   
   msg2 "Configuring sources..."
   ./autogen.sh
