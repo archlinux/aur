@@ -1,6 +1,6 @@
 pkgbase = mopidy-git
 	pkgdesc = A music server which can play music from Spotify
-	pkgver = 20130807
+	pkgver = 0.18.3.r75.g52b6676
 	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any

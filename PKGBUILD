@@ -3,7 +3,7 @@
 
 pkgname=mopidy-git
 _gitname=mopidy
-pkgver=20130807
+pkgver=0.18.3.r75.g52b6676
 pkgrel=1
 pkgdesc="A music server which can play music from Spotify"
 arch=('any')
@@ -33,7 +33,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_gitname
-  git describe --always | sed 's|-|.|g'
+  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
