@@ -8,11 +8,13 @@ pkgdesc="An LDAP user manager and password self-service webaapp."
 arch=('any')
 license=('AGPL')
 depends=('php-ldap')
-source=("https://projects.jethrocarr.com/p/oss-ldapauthmanager/downloads/get/ldapauthmanager-1.4.0.tar.bz2" 'apache.conf')
+source=("https://projects.jethrocarr.com/p/oss-ldapauthmanager/downloads/get/ldapauthmanager-1.4.0.tar.bz2"
+		'apache.conf')
 md5sums=('4b41c3c9deaf2750e3ffcaaf9a0c6c22'
          'a5a247acdc7004988a7fb4470f19f4f6')
-
-backup=('etc/webapps/ldapauthmanager/config.php' 'etc/webapps/ldapauthmanager/apache.conf')
+backup=('etc/webapps/ldapauthmanager/config.php'
+        'etc/webapps/ldapauthmanager/apache.conf'
+        'etc/webapps/ldapauthmanager/config-settings.php')
 
 post_install () {
     echo "## You will need to create a database ##"
@@ -34,6 +36,8 @@ package () {
     install -Dm0664 htdocs/admin/config.php ${pkgdir}/etc/webapps/ldapauthmanager/config.php
     rm ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/config.php
     ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config.php ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/
+    mv ${pkgdir}/usr/share/webapps/ldapauthmanager/scripts/include/sample-config.php ${pkgdir}/etc/webapps/ldapauthmanager/config-settings.php
+    ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config-settings.php ${pkgdir}/usr/share/webapps/ldapauthmanager/scripts/include/
 
     install -Dm0664 $srcdir/apache.conf $pkgdir/etc/webapps/ldapauthmanager/apache.conf
 }

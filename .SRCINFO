@@ -8,6 +8,7 @@ pkgbase = ldapauthmanager
 	depends = php-ldap
 	backup = etc/webapps/ldapauthmanager/config.php
 	backup = etc/webapps/ldapauthmanager/apache.conf
+	backup = etc/webapps/ldapauthmanager/config-settings.php
 	source = https://projects.jethrocarr.com/p/oss-ldapauthmanager/downloads/get/ldapauthmanager-1.4.0.tar.bz2
 	source = apache.conf
 	md5sums = 4b41c3c9deaf2750e3ffcaaf9a0c6c22
