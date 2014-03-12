@@ -38,7 +38,7 @@ package () {
     rm ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/config.php
     ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config.php ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/
     mv ${pkgdir}/usr/share/webapps/ldapauthmanager/scripts/include/sample-config.php ${pkgdir}/etc/webapps/ldapauthmanager/config-settings.php
-    ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config-settings.php ${pkgdir}/usr/share/webapps/ldapauthmanager/scripts/include/
+    ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config-settings.php ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/include/
 
     install -Dm0664 $srcdir/apache.conf $pkgdir/etc/webapps/ldapauthmanager/apache.conf
 }
