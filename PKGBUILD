@@ -28,6 +28,10 @@ post_upgrade () {
 
 package () {
     cd "$srcdir/$pkgname-$pkgver"
+    # Change hard coded "Group" to "Groups" in order to match other Arch related docs for setting up
+    # system authentication using LDAP. This needs to be fixed to be an option upstream!
+    find ./ -type f -print0 | xargs -n1 -0 sed -i 's/ou=Group/ou=Groups/g'
+
     mkdir -p ${pkgdir}/etc/webapps/ldapauthmanager
     mkdir -p ${pkgdir}/usr/share/webapps/ldapauthmanager
 
