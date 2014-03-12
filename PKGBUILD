@@ -17,12 +17,23 @@ backup=('etc/webapps/ldapauthmanager/apache.conf'
 
 post_install () {
     echo "## You will need to create a database ##"
-    echo "$ mysql ­-u root ­-p < /usr/share/webapps/ldapauthmanager/sql/version_LATESTDATE_install.sql"
+    echo "$ mysql -u root -p < /usr/share/webapps/ldapauthmanager/sql/version_LATESTDATE_install.sql"
+
+    echo "##### WARNING #####"
+    echo "This webapp requires the rootdn's user and password in plain text in the config files"
+    echo "and uses this to bind to the LDAP server. This of course must me readable by the httpd"
+    echo "daemon, so basically the password to your LDAP rootdn which has control over you posix"
+    echo "user accounts (the whole point of this program!) is sitting around in plain text to be"
+    echo "read by anybody that can host files or inject code to be run as the httpd user. It then"
+    echo "procedes to authenticate users by downloading their password fields and manually"
+    echo "running the crypto checks on them. Even then it does not re-bind as that user but"
+    echo "keeps right on going as the rootdn and tries to enforce access restrictions itself."
+    echo "##### WARNING #####"
 }
 
 post_upgrade () {
     echo "## You will need to update your database ##"
-    echo "$ mysql ­-u root ­-p < /usr/share/webapps/ldapauthmanager/sql/version_LATESTDATE_install.sql"
+    echo "$ mysql -u root -p < /usr/share/webapps/ldapauthmanager/sql/version_LATESTDATE_upgrade.sql"
 }
 
 package () {
@@ -36,7 +47,7 @@ package () {
 
     find ./ -type f -execdir chmod 0644 {} \;
     cp -ra htdocs scripts sql resources ldap radius ${pkgdir}/usr/share/webapps/ldapauthmanager/
-    install -Dm0664 htdocs/admin/config.php ${pkgdir}/etc/webapps/ldapauthmanager/config.php
+    install -Dm0600 htdocs/admin/config.php ${pkgdir}/etc/webapps/ldapauthmanager/config.php
     mv ${pkgdir}/{usr/share/webapps/ldapauthmanager/htdocs/include/sample-config,etc/webapps/ldapauthmanager/config-settings}.php
 
     install -Dm0664 $srcdir/apache.conf $pkgdir/etc/webapps/ldapauthmanager/apache.conf
