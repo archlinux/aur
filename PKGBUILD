@@ -13,8 +13,7 @@ source=("https://projects.jethrocarr.com/p/oss-ldapauthmanager/downloads/get/lda
 md5sums=('4b41c3c9deaf2750e3ffcaaf9a0c6c22'
          'b69aab9b308ee7c17b8a3c94c5d1fd4f')
 
-backup=('etc/webapps/ldapauthmanager/config.php'
-        'etc/webapps/ldapauthmanager/apache.conf'
+backup=('etc/webapps/ldapauthmanager/apache.conf'
         'etc/webapps/ldapauthmanager/config-settings.php')
 
 post_install () {
@@ -35,10 +34,7 @@ package () {
     find ./ -type f -execdir chmod 0644 {} \;
     cp -ra htdocs scripts sql resources ldap radius ${pkgdir}/usr/share/webapps/ldapauthmanager/
     install -Dm0664 htdocs/admin/config.php ${pkgdir}/etc/webapps/ldapauthmanager/config.php
-    rm ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/config.php
-    ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config.php ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/
-    mv ${pkgdir}/usr/share/webapps/ldapauthmanager/scripts/include/sample-config.php ${pkgdir}/etc/webapps/ldapauthmanager/config-settings.php
-    ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config-settings.php ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/include/
+    mv ${pkgdir}/{usr/share/webapps/ldapauthmanager/htdocs/include/sample-config,etc/webapps/ldapauthmanager/config-settings}.php
 
     install -Dm0664 $srcdir/apache.conf $pkgdir/etc/webapps/ldapauthmanager/apache.conf
 }
