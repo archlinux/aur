@@ -127,7 +127,12 @@ class PackageBase(object):
       rosdep_file = yaml.load(stream)
       for package_name, distrib in rosdep_file.items():
         if 'arch' in distrib:
-          dependency_map[package_name] = distrib["arch"]
+          if 'pacman' in distrib["arch"]:
+            dependency_map[package_name] = distrib["arch"]["pacman"]["packages"]
+          elif 'aur' in distrib["arch"]:
+            dependency_map[package_name] = distrib["arch"]["aur"]["packages"]
+          else:
+            dependency_map[package_name] = distrib["arch"]
     return dependency_map
 
   def generate(self, exclude_dependencies=[]):
@@ -367,7 +372,11 @@ class DistroDescription(object):
   def _get_package_data(self, name):
     """Searches for `name` in all known packages and metapackages."""
     if self._distro['repositories'].get(name):
-      return self._distro['repositories'][name]['release']
+      try:
+        return self._distro['repositories'][name]['release']
+      except KeyError, e:
+        print (colored("Missing %s branch for %s" % (e, name),
+                       'red', attrs=['bold']))
     else:
       for package in self.package_names():
         if (self._is_meta_package(package)
