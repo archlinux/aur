@@ -11,7 +11,8 @@ depends=('php-ldap')
 source=("https://projects.jethrocarr.com/p/oss-ldapauthmanager/downloads/get/ldapauthmanager-1.4.0.tar.bz2"
 		'apache.conf')
 md5sums=('4b41c3c9deaf2750e3ffcaaf9a0c6c22'
-         'a5a247acdc7004988a7fb4470f19f4f6')
+         'b69aab9b308ee7c17b8a3c94c5d1fd4f')
+
 backup=('etc/webapps/ldapauthmanager/config.php'
         'etc/webapps/ldapauthmanager/apache.conf'
         'etc/webapps/ldapauthmanager/config-settings.php')

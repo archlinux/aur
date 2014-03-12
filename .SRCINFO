@@ -12,7 +12,7 @@ pkgbase = ldapauthmanager
 	source = https://projects.jethrocarr.com/p/oss-ldapauthmanager/downloads/get/ldapauthmanager-1.4.0.tar.bz2
 	source = apache.conf
 	md5sums = 4b41c3c9deaf2750e3ffcaaf9a0c6c22
-	md5sums = a5a247acdc7004988a7fb4470f19f4f6
+	md5sums = b69aab9b308ee7c17b8a3c94c5d1fd4f
 
 pkgname = ldapauthmanager
 
