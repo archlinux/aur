@@ -3,36 +3,30 @@
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=erlang-cl
-pkgver=1.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc='OpenCL binding for Erlang'
-url="http://github.com/tonyrog/cl"
-license=('custom:unknown')
+url='http://github.com/tonyrog/cl'
+license=('MIT')
 depends=('erlang' 'libcl' 'bash')
 replaces=('cl')
-makedepends=('opencl-headers')
-source=("$pkgname-$pkgver.tar.gz::https://nodeload.github.com/tonyrog/cl/tar.gz/master")
-sha256sums=('76991eba2418ced8e28f4237878e1ec8bb231193c614dab63623ff518b2dc56c')
-if [ "$CARCH" = "x86_64" ]
-then
-  _wordsize=64
-else
-  _wordsize=32
-fi
-_dirname='cl-master'
+makedepends=('opencl-headers' 'rebar')
+source=("https://github.com/tonyrog/cl/archive/cl-$pkgver.zip")
+sha256sums=('63d720995f5bfa9f6a11211bb0ec400ad28799d127d2a642f06ee33769b145ab')
 
 build() {
-  cd "$srcdir/$_dirname/c_src"
+  cd "cl-cl-$pkgver/c_src"
 
-  make configure
-  ./configure --with-wordsize="$_wordsize" --prefix=/usr
-  make "all$_wordsize"
-  rm config.*
+  rebar compile
+  #make configure
+  #./configure --with-wordsize="$_wordsize" --prefix=/usr
+  #[ $CARCH = x86_64 ] && make all64 || make all32
+  #rm config.*
 }
 
 package() {
-  cd "$srcdir/$_dirname"
+  cd "cl-cl-$pkgver"
 
   mkdir -p "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
   cp -r * "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
