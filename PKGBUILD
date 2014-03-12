@@ -29,8 +29,9 @@ package () {
     mkdir -p ${pkgdir}/etc/webapps/ldapauthmanager
     mkdir -p ${pkgdir}/usr/share/webapps/ldapauthmanager
 
+    find ./ -type f -execdir chmod 0644 {} \;
     cp -ra htdocs scripts sql resources ldap radius ${pkgdir}/usr/share/webapps/ldapauthmanager/
-    cp htdocs/admin/config.php ${pkgdir}/etc/webapps/ldapauthmanager/
+    install -Dm0664 htdocs/admin/config.php ${pkgdir}/etc/webapps/ldapauthmanager/config.php
     rm ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/config.php
     ln -s ${pkgdir}/etc/webapps/ldapauthmanager/config.php ${pkgdir}/usr/share/webapps/ldapauthmanager/htdocs/admin/
 
