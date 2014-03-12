@@ -1,11 +1,24 @@
 post_install() {
 
- if [ ! -f /var/lib/cfengine/ppkeys/localhost.priv ]; then
+ if [ ! -f /var/cfengine/ppkeys/localhost.priv ]; then
   cf-key > /dev/null
  fi 
 
- if ! [ -f /var/lib/cfengine/masterfiles/promises.cf ]; then
-  cp -R /usr/share/CoreBase/* /var/lib/cfengine/masterfiles/
+ if ! [ -f /var/cfengine/masterfiles/promises.cf ]; then
+  cp -R /usr/share/CoreBase/* /var/cfengine/masterfiles/
+ fi
+ 
+ if ! [ -f /var/cfengine/bin/cf-promises ]; then
+  cd /var/cfengine/bin
+  ln -s /usr/bin/cf-* .
  fi
 
+ echo "Bootstrap cfengine with cf-agent --bootstrap <IP address of policy server>"
+
+}
+post_remove() {
+
+ if [ -d /var/cfengine/bin ]; then
+   rm /var/cfengine/bin/*
+ fi
 }

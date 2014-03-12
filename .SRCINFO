@@ -16,14 +16,15 @@ pkgbase = cfengine
 	optdepends = libvirt
 	optdepends = postgresql-libs
 	optdepends = libmariadbclient
+	optdepends = acl
 	source = cfengine-3.5.3.tar.gz::http://cfengine.com/source-code/download?file=cfengine-3.5.3.tar.gz
 	source = cf-execd.service
 	source = cf-monitord.service
 	source = cf-serverd.service
 	md5sums = c840eb0163924ca657ab180fe5a170b4
-	md5sums = bf64e1dedbcef5a74e3b585076135c87
-	md5sums = c56bde562ec29c1533433a320f4f4b5d
-	md5sums = 2a3aed38b03b14335a70103e45d42ee8
+	md5sums = dba17dc5133b8fa86de11577120d46c5
+	md5sums = a2f9db31408f288cb934397ffb474db3
+	md5sums = ff28f7de9b81b4673082a2640a318896
 
 pkgname = cfengine
 

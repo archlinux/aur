@@ -3,9 +3,9 @@ Description=CFEngine Server Daemon
 After=syslog.target
 
 [Service]
-ExecStart=/usr/bin/cf-serverd
+ExecStart=/var/cfengine/bin/cf-serverd
 Type=forking
-PIDFile=/srv/cfengine/cf-serverd.pid
+PIDFile=/var/cfengine/cf-serverd.pid
 
 [Install]
 WantedBy=multi-user.target

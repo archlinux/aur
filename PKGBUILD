@@ -13,32 +13,32 @@ license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('qdbm' 'openssl' 'pcre' 'libxml2')
 makedepends=('which')
-optdepends=('tokyocabinet' 'libvirt' 'postgresql-libs' 'libmariadbclient')
+optdepends=('tokyocabinet' 'libvirt' 'postgresql-libs' 'libmariadbclient' 'acl')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::http://cfengine.com/source-code/download?file=${pkgname}-${pkgver}.tar.gz"
         'cf-execd.service'
         'cf-monitord.service'
         'cf-serverd.service')
 md5sums=('c840eb0163924ca657ab180fe5a170b4'
-         'bf64e1dedbcef5a74e3b585076135c87'
-         'c56bde562ec29c1533433a320f4f4b5d'
-         '2a3aed38b03b14335a70103e45d42ee8')
+         'dba17dc5133b8fa86de11577120d46c5'
+         'a2f9db31408f288cb934397ffb474db3'
+         'ff28f7de9b81b4673082a2640a318896')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 
   ./configure \
     --prefix=/usr \
-    --with-workdir=/var/lib/${pkgname} \
+    --with-workdir=/var/${pkgname} \
     --with-openssl \
     --with-pcre \
     --with-libacl=check \
     --with-libxml2 \
-    --without-libvirt \
+    --with-libvirt=check \
     --with-qdbm \
-    --without-mysql \
-    --without-tokyocabinet \
-    --without-postgresql
+    --with-mysql=check \
+    --with-tokyocabinet=check \
+    --with-postgresql=check
 
   make
 }
@@ -57,4 +57,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
