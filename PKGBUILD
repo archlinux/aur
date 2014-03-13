@@ -16,9 +16,7 @@ md5sums=('SKIP')
 prepare() {
   cd "$srcdir/$pkgname"
 
-  sed -i 's/env python$/&2/' bin/epour \
-                             epour/*.py \
-                             epour/gui/*.py
+  sed -i 's/env python$/&2/' bin/epour epour/*.py epour/gui/*.py
 }
 
 package() {
