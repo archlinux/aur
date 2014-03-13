@@ -1,4 +1,0 @@
-# Reconfigure the keyboard layout of Apple slim aluminium keyboards to match the
-# rest of the world's keyboards
-
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="024f", ACTION=="add", RUN+="/usr/bin/fix-apple-keyboard"
