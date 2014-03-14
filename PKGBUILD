@@ -1,21 +1,25 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: Yardena Cohen <yardenack at gmail dot org>
 
-pkgname=mat
+gitname=mat
+pkgname=mat-git
 pkgver=0.5.1
 pkgrel=1
-pkgdesc="Metadata anonymisation toolkit"
+pkgdesc="Metadata anonymisation toolkit (git version)"
 arch=('any')
 url="https://mat.boum.org"
 license=('GPL2')
-depends=('python2-distutils-extra' 'python2' 'hachoir-core' 'hachoir-parser' 'python2-cairo' 'python2-poppler' 'python2-pdfrw' 'mutagen' 'python2-gobject')
+depends=('python2-distutils-extra' 'python2' 'hachoir-core' 'hachoir-parser' 'python2-cairo' 'python2-poppler' 'python2-pdfrw' 'mutagen' 'python2-gobject' 'git')
 optdepends=('perl-image-exiftool: extended image support')
-source=(https://mat.boum.org/files/mat-${pkgver}.tar.xz)
+source=("git+https://git.torproject.org/user/jvoisin/mat.git")
+sha256sums=('SKIP')
 
-package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}"
+pkgver() {
+	cd "${srcdir}/${gitname}"
+	local ver="$(git describe --tags)"
+	printf "%s" "${ver//-/.}"
 }
-
-# vim:ts=2:sw=2:et:
-md5sums=('a56b1193d27ba619136fb66ba2d0c0fa')
+package() {
+	cd "${srcdir}/${gitname}"
+	python2 setup.py install --root="${pkgdir}" --optimize=1
+}
