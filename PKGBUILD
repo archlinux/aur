@@ -3,12 +3,12 @@
 
 pkgname=libcryptui
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for OpenPGP prompts"
 arch=('i686' 'x86_64')
 url="http://git.gnome.org/browse/libcryptui/"
 license=('GPL')
-depends=('gtk3' 'gpgme' 'dbus-glib' 'libnotify' 'libgnome-keyring' 'dconf')
+depends=('gtk3' 'gpgme' 'dbus-glib' 'libnotify' 'libgnome-keyring' 'dconf' 'libsm')
 makedepends=('intltool' 'gobject-introspection')
 install=$pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
