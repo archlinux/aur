@@ -12,7 +12,7 @@ source=("http://www.benf.org/other/cfr/cfr_${pkgver}.jar"
 noextract=("cfr_${pkgver}.jar")
 md5sums=('d305dc76f7edf88fa79e0c0906740074'
          'd0f7cff1f51f2b25139e4855bf0520ee'
-         '94f3aea3b6c6ef49be7d3d27be0d5f84')
+         '023543479a311ba82f63192d82d4ef92')
 
 package() {
   install -D cfr "$pkgdir/usr/bin/cfr"
