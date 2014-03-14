@@ -1,7 +1,7 @@
 pkgbase = mma
 	pkgdesc = Musical MIDI Accompaniment (MMA) is an accompaniment generator
-	pkgver = 12.10
-	pkgrel = 3
+	pkgver = 13.12
+	pkgrel = 1
 	url = http://www.mellowood.ca/mma/
 	install = mma.install
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = mma
 	options = !strip
 	options = !zipman
 	backup = etc/mmarc
-	source = http://www.mellowood.ca/mma/mma-bin-12.10.tar.gz
+	source = http://www.mellowood.ca/mma/mma-bin-13.12.tar.gz
 	source = fix-mmastart-path.patch
 	source = mmarc
-	md5sums = 1c34126c092ca07aab1b606c73670a64
-	md5sums = 75c3eeac52d846d5ff2050346e48d2d8
-	md5sums = 7cdddd5de515539cf66f0d8d9613dcdc
+	sha1sums = 8db89bb03228c4567bc28add52336a24728280ee
+	sha1sums = 59e4abe8a192e919b141cefbdf9660257266387f
+	sha1sums = 3c03107c2a1b380f66ed68458d9b9def8371c0f6
 
 pkgname = mma
 
