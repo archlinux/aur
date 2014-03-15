@@ -1,0 +1,42 @@
+--- bin/gitzone-install~	2014-03-15 17:59:13.090966492 +0200
++++ bin/gitzone-install	2014-03-15 18:10:33.343601968 +0200
+@@ -24,19 +24,19 @@
+ 
+ if [ -z $1 ]; then 
+     echo "usage: gitzone-install username [ id_rsa.pub ]";
+-    return 0; fi
++    exit 0; fi
+ 
+ uid="`id -u`"
+ if ! [ "$uid" = "0" ]; then
+     echo "this script needs to be run as root."
+-    return 1; fi
++    exit 1; fi
+ 
+ user="$1"
+ 
+ # check user argument
+ grep "^$user" /etc/passwd > /dev/null
+-if ! [ $? = 0 ]; then echo "error: user not found: $user"; return 1; fi
+-if ! [ -r /home/$user ]; then echo "error: user home not found: /home/$user"; return 1; fi
++if ! [ $? = 0 ]; then echo "error: user not found: $user"; exit 1; fi
++if ! [ -r /home/$user ]; then echo "error: user home not found: /home/$user"; exit 1; fi
+ if [ -r /home/$user/zones/$user/.git ]; then
+ 	echo "error: gitzone already installed for user $user";
+ else # create gitzone directory in user home
+@@ -102,12 +102,12 @@
+ 
+ 
+ key="$2" # add ssh key
+-if [ -z "$key" ]; then return 0; fi
+-if ! [ -r $key ]; then echo "warning: key not found $key"; return 1; fi
++if [ -z "$key" ]; then exit 0; fi
++if ! [ -r $key ]; then echo "warning: key not found $key"; exit 1; fi
+ mkdir -p /home/$user/.ssh
+ touch /home/$user/.ssh/authorized_keys
+ cat $key >> /home/$user/.ssh/authorized_keys
+ chmod -R go-rwx /home/$user/.ssh
+ chown -R $user:$user /home/$user/.ssh
+ echo "ssh public key $key added for $user"
+-return 0
++exit 0
