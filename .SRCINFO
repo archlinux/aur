@@ -1,0 +1,14 @@
+pkgbase = diradm-git
+	pkgdesc = A simple bash script for managing posix users and groups stored in a LDAP directory
+	pkgver = 1.3_1_gf4b32ed
+	pkgrel = 1
+	url = https://github.com/alerque/diradm
+	arch = any
+	license = GPL2
+	depends = openldap
+	conflicts = diradm
+	source = git://github.com/alerque/diradm.git#branch=devel
+	md5sums = SKIP
+
+pkgname = diradm-git
+
