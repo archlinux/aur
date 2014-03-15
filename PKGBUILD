@@ -2,7 +2,7 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20140309
+pkgver=20140315
 pkgrel=1
 _udevver=210
 provides=('eudev' "udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
@@ -44,7 +44,7 @@ build() {
   fi
 
   # Temporary workaround for bug #87
-  sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
+  #sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
   
   msg2 "Configuring sources..."
   ./autogen.sh
