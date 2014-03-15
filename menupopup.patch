@@ -1,0 +1,16 @@
+--- src/chrome/nagioschecker/content/nagioschecker-options.xul.orig	2014-03-15 20:00:37.586911007 +0100
++++ src/chrome/nagioschecker/content/nagioschecker-options.xul	2014-03-15 21:35:16.266202193 +0100
+@@ -30,11 +30,11 @@
+   </stringbundleset>
+   
+   <popupset>
+-   <popup id="treemenu">
++   <menupopup id="treemenu">
+       <menuitem id="edit-menuitem" label="&nch.prefs.edit;..." oncommand="cz.petrsimek.gNCHOptions.editSelectedServer();" />
+       <menuitem id="able-menuitem" label="&nch.prefs.disable;" oncommand="cz.petrsimek.gNCHOptions.actionOnSelectedServer('able');" />
+       <menuitem id="remove-menuitem" label="&nch.prefs.remove;" oncommand="cz.petrsimek.gNCHOptions.removeSelectedServer();" />
+-   </popup>
++   </menupopup>
+ </popupset>
+ 
+   
