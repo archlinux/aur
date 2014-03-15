@@ -1,7 +1,6 @@
-# Maintainer: Benjamin Chretien <chretien@lirmm.fr>
-# Contributor: Thomas Moulard <thomas.moulard@gmail.com>
+# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-git
-pkgver=2.0.r207.g8ed946d
+pkgver=2.0.r266.g3dae58c
 pkgrel=1
 pkgdesc="Numerical Optimization for Robotics"
 arch=('i686' 'x86_64')
@@ -9,7 +8,7 @@ url="http://roboptim.net/"
 license=('(L)GPL2')
 depends=('eigen3' 'boost>=1.41' 'libltdl' 'log4cxx>=0.10')
 optdepends=()
-makedepends=('git' 'cmake>=2.8' 'doxygen')
+makedepends=('git' 'cmake' 'doxygen')
 provides=('roboptim-core')
 conflicts=('roboptim-core')
 
@@ -25,9 +24,6 @@ _buildtype="RELWITHDEBINFO"
 
 # Build directory
 _builddir="${_gitname}-build"
-
-# Doxytag file to correct
-_doxytag="usr/share/doc/roboptim-core/doxygen-html/roboptim-core.doxytag"
 
 pkgver() {
     cd "$srcdir/${_gitname}"
@@ -77,8 +73,4 @@ package() {
 
     msg "Installing files"
     make --silent DESTDIR="${pkgdir}/" install
-
-    # Remove ${src_dir} from the doxytag
-    msg "Correcting doxytag file"
-    sed -i "s:${srcdir}::g" ${pkgdir}/${_doxytag}
 }

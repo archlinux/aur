@@ -1,13 +1,13 @@
 pkgbase = roboptim-core-git
 	pkgdesc = Numerical Optimization for Robotics
-	pkgver = 2.0.r207.g8ed946d
+	pkgver = 2.0.r266.g3dae58c
 	pkgrel = 1
 	url = http://roboptim.net/
 	arch = i686
 	arch = x86_64
 	license = (L)GPL2
 	makedepends = git
-	makedepends = cmake>=2.8
+	makedepends = cmake
 	makedepends = doxygen
 	depends = eigen3
 	depends = boost>=1.41
