@@ -2,7 +2,7 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='lib32-eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"
-pkgver=20140309
+pkgver=20140315
 pkgrel=1
 _udevver=210
 arch=('x86_64')
@@ -39,7 +39,7 @@ build() {
   fi
 
   # Temporary workaround for bug #87
-  sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
+  #sed /"#include <linux\/fcntl.h>"/d -i src/*/*.c
   
   msg2 "Configuring sources..."
   ./autogen.sh
