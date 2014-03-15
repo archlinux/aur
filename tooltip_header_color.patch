@@ -1,0 +1,16 @@
+--- chrome/nagioschecker/skin/classic/nagioschecker/nagioschecker.css	2010-02-03 21:43:06.000000000 +0100
++++ chrome/nagioschecker/skin/classic/nagioschecker/nagioschecker.css	2014-03-15 16:25:26.865032645 +0100
+@@ -309,11 +309,13 @@
+ .nagioschecker-tooltip {
+ 	-moz-appearance:none;
+ 	background-color: infobackground;
++  color: infotext;
+ }
+
+ .nagioschecker-popup {
+ 	-moz-appearance:none;
+ 		background-color: infobackground;
++  color: infotext;
+ }
+ 
+ 

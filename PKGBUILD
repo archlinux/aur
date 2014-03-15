@@ -3,17 +3,27 @@
 
 _plugin_name=nagioschecker
 _plugin_version=0.16
-pkgdesc="Plugin for firefox, statusbar indicator of the events from the network monitoring system Nagios."
+pkgdesc='Plugin for firefox, statusbar indicator of the events from the network monitoring system Nagios.'
 license=('MPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=14
+pkgrel=15
 arch=('any')
-url="https://code.google.com/p/nagioschecker/"
-depends=("firefox>=3.0")
-source=("https://addons.mozilla.org/firefox/downloads/latest/3607/addon-3607-latest.xpi")
-md5sums=('6ad71fd4d6fed74a272072f804abb80e')
+url='https://code.google.com/p/nagioschecker/'
+depends=('firefox>=3.0')
+source=('https://addons.mozilla.org/firefox/downloads/latest/3607/addon-3607-latest.xpi'
+        'tooltip_header_color.patch')
+md5sums=('6ad71fd4d6fed74a272072f804abb80e'
+         'fa6176f083d02d2a282041d0375abb55')
+
+prepare() {
+  # Fix the color bug in recent version of firefox
+  patch -uN ${srcdir}/chrome/nagioschecker/skin/classic/nagioschecker/nagioschecker.css < ${srcdir}/tooltip_header_color.patch
+
+  # Increase max version (reported on https://addons.mozilla.org/en-US/firefox/addon/nagios-checker/)
+  sed -i 's/<em:maxVersion>\(.*\)<\/em:maxVersion>/<em:maxVersion>99\.*\.\*<\/em:maxVersion>/' ${srcdir}/install.rdf
+}
 
 package() {
   cd $srcdir
@@ -23,9 +33,6 @@ package() {
   install -d $dstdir
 
   cp -dpr --no-preserve=ownership * $dstdir
-
-  # Increase max version (reported on https://addons.mozilla.org/en-US/firefox/addon/nagios-checker/)
-  sed -i 's/<em:maxVersion>\(.*\)<\/em:maxVersion>/<em:maxVersion>99\.*\.\*<\/em:maxVersion>/' $dstdir/install.rdf
 
   rm $dstdir/addon-3607-latest.xpi
   chmod -R 755 $dstdir
