@@ -3,7 +3,7 @@
 _pkgname=diradm
 pkgname=${_pkgname}-git
 pkgver=1.3_1_gf4b32ed
-pkgrel=1
+pkgrel=2
 _branch=devel
 pkgdesc="A simple bash script for managing posix users and groups stored in a LDAP directory"
 arch=('any')
@@ -13,6 +13,7 @@ depends=('openldap')
 conflicts=("$_pkgname")
 source=("git://github.com/alerque/$_pkgname.git#branch=$_branch")
 md5sums=('SKIP')
+backup=('etc/diradm.conf')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
