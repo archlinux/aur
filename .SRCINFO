@@ -1,0 +1,21 @@
+pkgbase = roboptim-core-plugin-eigen-git
+	pkgdesc = Eigen NonLinearOptimization interface for RobOptim Core.
+	pkgver = 0.1.r0.g0956b6e
+	pkgrel = 1
+	url = http://roboptim.net/
+	arch = i686
+	arch = x86_64
+	license = (L)GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = eigen3
+	depends = boost>=1.41
+	depends = libltdl
+	depends = log4cxx>=0.10
+	depends = roboptim-core-git
+	source = roboptim-core-plugin-eigen::git://github.com/roboptim/roboptim-core-plugin-eigen.git
+	md5sums = SKIP
+
+pkgname = roboptim-core-plugin-eigen-git
+
