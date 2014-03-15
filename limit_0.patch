@@ -1,0 +1,12 @@
+--- src/chrome/nagioschecker/content/utils.js.orig	2014-03-15 20:12:11.138456135 +0100
++++ src/chrome/nagioschecker/content/utils.js	2014-03-15 21:28:11.142307657 +0100
+@@ -94,7 +94,8 @@
+ 			if (service) params.push('service='+nagios_escape(service));
+ 		break;
+ 	}
+-	
++
++  params.push('limit=0');
+ 	if (params.length>0) url += '?' + params.join('&');
+ 
+ 	return url;
