@@ -1,0 +1,15 @@
+pkgbase = gitzone
+	pkgdesc = git-based zone management tool for static and dynamic domains
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dyne/gitzone
+	arch = any
+	license = AGPL3
+	depends = perl
+	depends = bind
+	backup = etc/gitzone.conf
+	source = gitzone-1.0::https://github.com/dyne/gitzone/archive/v1.0.tar.gz
+	md5sums = 7dfedb6b4d350db97ed41f40519f4961
+
+pkgname = gitzone
+
