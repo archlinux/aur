@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=patator
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A multi-purpose bruteforcer"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   'unzip: zip archives'
 )
 source=("http://patator.googlecode.com/files/patator_v$pkgver.py")
-sha256sums=('af7aed50ba0db1d2e932d9edecb1b2945e675ea8e1fcb27da48273b00db8c1f0')
+sha256sums=('83ed9230b0eb3bcbc05184ecf515ede05d72dd38b3943757d59abf5c2518d4a8')
 
 build() {
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|g' -i "$srcdir/${pkgname}_v$pkgver.py"
