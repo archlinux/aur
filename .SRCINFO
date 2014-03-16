@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.24
-	pkgrel = 2
+	pkgver = 2.24.1
+	pkgrel = 1
 	url = http://www.kernel.org/pub/linux/utils/util-linux/
 	install = util-linux.install
 	arch = i686
@@ -12,14 +12,14 @@ pkgbase = util-linux-selinux
 	makedepends = python
 	depends = pam-selinux
 	depends = shadow-selinux
-	depends = coreutils
+	depends = coreutils-selinux
 	depends = glibc
 	depends = libselinux
 	optdepends = python: python bindings to libmount
-	provides = util-linux-ng=2.24
+	provides = util-linux-ng=2.24.1
 	provides = eject
-	provides = util-linux=2.24-
-	provides = selinux-util-linux=2.24-
+	provides = util-linux=2.24.1-
+	provides = selinux-util-linux=2.24.1-
 	conflicts = util-linux-ng
 	conflicts = eject
 	conflicts = util-linux
@@ -31,16 +31,12 @@ pkgbase = util-linux-selinux
 	backup = etc/pam.d/login
 	backup = etc/pam.d/su
 	backup = etc/pam.d/su-l
-	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.tar.xz
-	source = 0001-lsblk-fix-D-segfault.patch
-	source = 0001-pylibmount-correctly-import-from-pylibmount.so.patch
+	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.1.tar.xz
 	source = uuidd.tmpfiles
 	source = pam-login
 	source = pam-common
 	source = pam-su
-	md5sums = 4fac6443427f575fc5f3531a4ad2ca01
-	md5sums = 1899fe3b853a5835c76cca0501b6b518
-	md5sums = a18a1e89ffdfa3bc96ae976646a723ec
+	md5sums = 88d46ae23ca599ac5af9cf96b531590f
 	md5sums = a39554bfd65cccfd8254bb46922f4a67
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4

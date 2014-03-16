@@ -6,13 +6,13 @@
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
 
 pkgname=util-linux-selinux
-pkgver=2.24
-pkgrel=2
+pkgver=2.24.1
+pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
 groups=('selinux')
-depends=('pam-selinux' 'shadow-selinux' 'coreutils' 'glibc' 'libselinux')
+depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux' 'glibc' 'libselinux')
 optdepends=('python: python bindings to libmount')
 makedepends=('systemd' 'python')
 # checkdepends=('bc')
@@ -24,8 +24,6 @@ provides=("util-linux-ng=$pkgver" 'eject'
 license=('GPL2')
 options=('strip' 'debug')
 source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.24/${pkgname/-selinux}-$pkgver.tar.xz"
-        0001-lsblk-fix-D-segfault.patch
-        0001-pylibmount-correctly-import-from-pylibmount.so.patch
         uuidd.tmpfiles
         pam-login
         pam-common
@@ -36,20 +34,11 @@ backup=(etc/pam.d/chfn
         etc/pam.d/su
         etc/pam.d/su-l)
 install=util-linux.install
-md5sums=('4fac6443427f575fc5f3531a4ad2ca01'
-         '1899fe3b853a5835c76cca0501b6b518'
-         'a18a1e89ffdfa3bc96ae976646a723ec'
+md5sums=('88d46ae23ca599ac5af9cf96b531590f'
          'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad')
-
-prepare() {
-  cd "${pkgname/-selinux}-$pkgver"
-
-  patch -Np1 <"$srcdir"/0001-lsblk-fix-D-segfault.patch
-  patch -Np1 <"$srcdir"/0001-pylibmount-correctly-import-from-pylibmount.so.patch
-}
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
