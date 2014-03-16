@@ -5,81 +5,74 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=208
-pkgrel=10
+pkgver=210
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
-makedepends=('acl' 'cryptsetup' 'libdbus' 'docbook-xsl' 'gobject-introspection' 'gperf'
-             'gtk-doc' 'intltool' 'kmod' 'libcap' 'libgcrypt' 'libmicrohttpd' 'libxslt'
-             'linux-api-headers' 'pam-selinux' 'python' 'quota-tools' 'xz'
+makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
+             'gtk-doc' 'intltool' 'kmod' 'libcap' 'libgcrypt'  'libmicrohttpd' 'libxslt'
+             'linux-api-headers' 'pam-selinux' 'python' 'python-lxml' 'quota-tools' 'xz'
              'libselinux')
 options=('strip' 'debug')
 source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"
+        '0001-login-fix-pos-array-allocation.patch'
+        '0002-login-set-pos-slot-to-fallback-on-pos-eviction.patch'
+        '0003-login-Allow-calling-org.freedesktop.login1.Seat.Swit.patch'
+        '0004-fix-typo-in-iDRAC-network-interface-name-irdac-idrac.patch'
+        '0007-mount-don-t-send-out-PropertiesChanged-message-if-ac.patch'
+        '0008-mount-don-t-fire-PropertiesChanged-signals-for-mount.patch'
+        '0009-logs-show-fix-corrupt-output-with-empty-messages.patch'
+        '0010-journalctl-refuse-extra-arguments-with-verify-and-si.patch'
+        '0011-cdrom_id-use-the-old-MMC-fallback.patch'
+        '0012-nspawn-fix-detection-of-missing-proc-self-loginuid.patch'
+        '0013-Fix-systemd-stdio-bridge-symlink.patch'
+        '0014-execute-free-directory-path-if-we-fail-to-remove-it-.patch'
+        '0015-journal-assume-that-next-entry-is-after-previous-ent.patch'
+        '0016-journal-forget-file-after-encountering-an-error.patch'
+        '0017-core-correctly-unregister-PIDs-from-PID-hashtables.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
-        'initcpio-install-udev'
-        '0001-systemd-order-remote-mounts-from-mountinfo-before-re.patch'
-        '0001-Make-hibernation-test-work-for-swap-files.patch'
-        '0001-fix-lingering-references-to-var-lib-backlight-random.patch'
-        '0001-mount-check-for-NULL-before-reading-pm-what.patch'
-        '0001-shared-util-fix-off-by-one-error-in-tag_to_udev_node.patch'
-        '0001-login-Don-t-stop-a-running-user-manager-from-garbage.patch'
-        '0001-fstab-generator-When-parsing-the-root-cmdline-option.patch'
-        '0002-fstab-generator-Generate-explicit-dependencies-on-sy.patch'
-        '0003-gpt-auto-generator-Generate-explicit-dependencies-on.patch'
-        '0004-Remove-FsckPassNo-from-systemd-fsck-root.service.patch'
-        '0005-mount-service-drop-FsckPassNo-support.patch'
-        '0006-efi-boot-generator-hookup-to-fsck.patch'
-        '0007-fsck-root-only-run-when-requested-in-fstab.patch'
-        '0001-fstab-generator-Do-not-try-to-fsck-non-devices.patch'
-        '0001-acpi-fpdt-break-on-zero-or-negative-length-read.patch')
-md5sums=('df64550d92afbffb4f67a434193ee165'
+        'initcpio-install-udev')
+md5sums=('03efddf8c9eca36d4d590f9967e7e818'
+         'e64ade3fffc1e8fc5af0703135b389c4'
+         'b619c45b2e973b9bd1cc85a66647a859'
+         '5265ac8a57f8b6438effd332c5a38e7e'
+         '0d047c3e44076fcefded5c2db31743d7'
+         'c5bee064008abf23e5154768681944d2'
+         '11f93b3c02c268a16db95f69c3d8c459'
+         '43bc34b1e991dca2d9fb8b887e3b2d3d'
+         '2e4a5fc2b2cc2e64c3ade2f504763b81'
+         'b55c5fb9dccb25085e199afc460ca011'
+         'cc16a4ae58eb87a9739f183ed20e2290'
+         'be17e74f25c70a2928fe16ce4fdb5a7e'
+         '4875226e16a893b82663691c6ae7c922'
+         '0180fbe462be9ca6a0da208ccb94844e'
+         'c1182aee4a8baaf66d7a6b7a1347d60e'
+         '057ef5aa2089f0884151f22e7dbe4ed5'
          '29245f7a240bfba66e2b1783b63b6b40'
-         '8b68b0218a3897d4d37a6ccf47914774'
-         'bde43090d4ac0ef048e3eaee8202a407'
-         '8f1182afa1156f0076a912b23e761e02'
-         'a5c6564d5435ee99814effd2aa9baf93'
-         '1b191c4e7a209d322675fd199e3abc66'
-         'a693bef63548163ffc165f4c4801ebf7'
-         'ccafe716d87df9c42af0d1960b5a4105'
-         '441e3d464ee6af5fe4af6a8bc10d7980'
-         '718d841203cf2ea9e24a7d0f1d19d48b'
-         '623c77bad0d2968e44963d72924825f1'
-         'e52fc8368853c7800ab03ab8868cfd41'
-         '2096f33bd36dfa0a7f0431d0a429787a'
-         'd2481a6ea199b581e243a950125b0ca6'
-         'c2aee634a3a6c50778968f0d5c756f40'
-         'ef8b8212d504bb73c10bf4e85f0703b2'
-         '4ba2317bf4d7708fca406f49482b1bf3'
-         '078f10d6fc315b329844cd20fa742eee')
+         '5e04f468a13ae2b9d6a9dfc77c49a7d1'
+         'bde43090d4ac0ef048e3eaee8202a407')
 
 prepare() {
   cd "${pkgname/-selinux}-$pkgver"
-  patch -Np1 < "$srcdir"/0001-fix-lingering-references-to-var-lib-backlight-random.patch
-  patch -Np1 < "$srcdir"/0001-mount-check-for-NULL-before-reading-pm-what.patch
-  patch -Np1 < "$srcdir"/0001-shared-util-fix-off-by-one-error-in-tag_to_udev_node.patch
-  # Fix lingering user managers
-  patch -Np1 < "$srcdir"/0001-login-Don-t-stop-a-running-user-manager-from-garbage.patch
-  # Backport changes in fstab passno handling
-  # Basically, we only need 0001 and 0007, but 0007 is based on earlier patches,
-  # and it doesn't hurt to backport them all.
-  patch -Np1 < "$srcdir"/0001-fstab-generator-When-parsing-the-root-cmdline-option.patch
-  patch -Np1 < "$srcdir"/0002-fstab-generator-Generate-explicit-dependencies-on-sy.patch
-  patch -Np1 < "$srcdir"/0003-gpt-auto-generator-Generate-explicit-dependencies-on.patch
-  patch -Np1 < "$srcdir"/0004-Remove-FsckPassNo-from-systemd-fsck-root.service.patch
-  patch -Np1 < "$srcdir"/0005-mount-service-drop-FsckPassNo-support.patch
-  patch -Np1 < "$srcdir"/0006-efi-boot-generator-hookup-to-fsck.patch
-  patch -Np1 < "$srcdir"/0007-fsck-root-only-run-when-requested-in-fstab.patch
-  # Fix FS#38210 (result of the previous backport)
-  patch -Np1 < "$srcdir"/0001-fstab-generator-Do-not-try-to-fsck-non-devices.patch
-  # Fix FS#38123
-  patch -Np1 < "$srcdir"/0001-Make-hibernation-test-work-for-swap-files.patch
-  # Fix FS#35671
-  patch -Np1 <"$srcdir"/0001-systemd-order-remote-mounts-from-mountinfo-before-re.patch
-  # Fix FS#38403
-  patch -Np1 <"$srcdir"/0001-acpi-fpdt-break-on-zero-or-negative-length-read.patch
 
-  autoreconf
+  patch -Np1 <../0001-login-fix-pos-array-allocation.patch
+  patch -Np1 <../0002-login-set-pos-slot-to-fallback-on-pos-eviction.patch
+  patch -Np1 <../0003-login-Allow-calling-org.freedesktop.login1.Seat.Swit.patch
+  patch -Np1 <../0004-fix-typo-in-iDRAC-network-interface-name-irdac-idrac.patch
+  patch -Np1 <../0007-mount-don-t-send-out-PropertiesChanged-message-if-ac.patch
+  patch -Np1 <../0008-mount-don-t-fire-PropertiesChanged-signals-for-mount.patch
+  patch -Np1 <../0009-logs-show-fix-corrupt-output-with-empty-messages.patch
+  patch -Np1 <../0010-journalctl-refuse-extra-arguments-with-verify-and-si.patch
+  patch -Np1 <../0011-cdrom_id-use-the-old-MMC-fallback.patch
+  patch -Np1 <../0012-nspawn-fix-detection-of-missing-proc-self-loginuid.patch
+  patch -Np1 <../0013-Fix-systemd-stdio-bridge-symlink.patch
+  patch -Np1 <../0014-execute-free-directory-path-if-we-fail-to-remove-it-.patch
+  patch -Np1 <../0015-journal-assume-that-next-entry-is-after-previous-ent.patch
+  patch -Np1 <../0016-journal-forget-file-after-encountering-an-error.patch
+  patch -Np1 <../0017-core-correctly-unregister-PIDs-from-PID-hashtables.patch
+
+  autoreconf -fis
 }
 
 build() {
@@ -89,11 +82,13 @@ build() {
       --libexecdir=/usr/lib \
       --localstatedir=/var \
       --sysconfdir=/etc \
+      --enable-audit \
       --enable-introspection \
       --enable-gtk-doc \
+      --enable-compat-libs \
       --enable-selinux \
-      --disable-audit \
       --disable-ima \
+      --disable-kdbus \
       --with-sysvinit-path= \
       --with-sysvrcnd-path= \
       --with-firmware-path="/usr/lib/firmware/updates:/usr/lib/firmware"
@@ -108,10 +103,10 @@ check() {
 package_systemd-selinux() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1' 'MIT')
-  depends=('acl' 'bash' 'dbus-core' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
-           'pam-selinux' 'util-linux-selinux' 'xz' 'libselinux')
+  depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
+           'pam-selinux' 'libseccomp' 'util-linux-selinux' 'xz' 'libselinux')
   provides=("libsystemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
-            'libgudev-1.0.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
+            'libgudev-1.0.so' 'libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
             'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   replaces=('libsystemd' 'nss-myhostname' 'systemd-tools' 'udev' 'selinux-systemd')
@@ -138,13 +133,10 @@ package_systemd-selinux() {
 
   make -C "${pkgname/-selinux}-$pkgver" DESTDIR="$pkgdir" install
 
-  # fix .so links in manpage stubs
-  find "$pkgdir/usr/share/man" -type f -name '*.[[:digit:]]' \
-      -exec sed -ri '1s|^\.so (.*)\.([0-9]+)|.so man\2/\1.\2|' {} +
-
-  # don't write units to /etc by default -- we'll enable this on post_install
-  # as a sane default
+  # don't write units to /etc by default -- we'll enable the getty on
+  # post_install as a sane default.
   rm "$pkgdir/etc/systemd/system/getty.target.wants/getty@tty1.service"
+  rm "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-networkd.service"
   rmdir "$pkgdir/etc/systemd/system/getty.target.wants"
 
   # get rid of RPM macros

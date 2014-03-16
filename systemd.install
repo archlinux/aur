@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sd_booted() {
-  [ -e sys/fs/cgroup/systemd ]
+  [ -d /run/systemd/system ]
 }
 
 add_privs() {
@@ -11,6 +11,30 @@ add_privs() {
   fi
 }
 
+add_journal_acls() {
+  # ignore errors, since the filesystem might not support ACLs
+  setfacl -Rnm g:wheel:rx,d:g:wheel:rx,g:adm:rx,d:g:adm:rx /var/log/journal/ 2>/dev/null
+  :
+}
+
+maybe_reexec() {
+  # don't reexec on 209-1 upgrade due to large infrastructural changes.
+  if [ "$(vercmp 209-1 "$2")" -eq 1 ]; then
+    echo ':: systemd has not been reexecuted. It is recommended that you'
+    echo '   reboot at your earliest convenience.'
+    return
+  fi
+
+  if sd_booted; then
+    systemctl --system daemon-reexec
+  fi
+}
+
+_dir_empty() {
+  set -- "$1"/*
+  [ ! -e "$1" ] && [ ! -L "$1" ]
+}
+
 post_common() {
   systemd-machine-id-setup
 
@@ -18,24 +42,6 @@ post_common() {
 
   udevadm hwdb --update
   journalctl --update-catalog
-
-  if sd_booted; then
-    systemctl --system daemon-reexec
-  fi
-}
-
-mask_net_naming() {
-  if [ ! -e etc/udev/rules.d/80-net-name-slot.rules ]; then
-    printf >etc/udev/rules.d/80-net-name-slot.rules '# %s\n' \
-      "This file masks persistent renaming rules for network devices. If you" \
-      "delete this file, /usr/lib/udev/rules.d/80-net-name-slot.rules may" \
-      "rename network devices according to ID_NET_NAME_{ONBOARD,SLOT,PATH}" \
-      "properties of your network devices, with priority in that order. See" \
-      "the output of 'udevadm test-builtin net_id /sys/class/net/\$interface'" \
-      "for details on what that new name might be." \
-      "" \
-      "http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
-  fi
 }
 
 _208_changes() {
@@ -51,8 +57,45 @@ _208_changes() {
   fi
 }
 
+_209_changes() {
+  # attempt to preserve existing behavior
+
+  local old_rule=etc/udev/rules.d/80-net-name-slot.rules
+  local new_rule=etc/udev/rules.d/80-net-setup-link.rules
+
+  echo ":: Network device naming is now controlled by udev's net_setup_link"
+  echo "   builtin. Refer to the NETWORK LINK CONFIGURATION section of the"
+  echo "   udev manpage for a full description."
+
+  # not clear what action we can take here, so don't do anything
+  [[ -e $new_rule ]] && return 0
+
+  # rename the old rule to the new one so that we preserve the user's
+  # existing option.
+  if [[ -e $old_rule ]]; then
+    printf ':: Renaming %s to %s in order\n' "${old_rule##*/}" "${new_rule##*/}"
+    printf '   to preserve existing network naming behavior.\n'
+    mv -v "$old_rule" "$new_rule"
+  else
+    echo ':: No changes have been made to your network naming configuration.'
+    echo '   Interfaces should continue to maintain the same names.'
+  fi
+}
+
+_210_changes() {
+  if sd_booted; then
+    # If /etc/systemd/network is non-empty, then this is a 209 user who used
+    # networkd. Re-enable it for them.
+    if ! _dir_empty etc/systemd/network; then
+      systemctl enable systemd-networkd
+    fi
+  fi
+}
+
 post_install() {
-  post_common
+  post_common "$@"
+
+  add_journal_acls
 
   # enable getty@tty1 by default, but don't track the file
   systemctl enable getty@tty1.service
@@ -62,39 +105,9 @@ post_install() {
 }
 
 post_upgrade() {
-  post_common
+  post_common "$@"
 
-  # getty@tty1.service is no longer enabled by default, but we don't want to break
-  # existing setups.
-  if [ "$(vercmp 183 "$2")" -eq 1 ]; then
-    # systemctl seems to be whiny on sysvinit. this will succeed unless something
-    # horrific happens, so just mask the error.
-    systemctl -q enable getty@tty1.service || true
-  fi
-
-  if [ "$(vercmp 194-4 "$2")" -eq 1 ]; then
-    printf '==> journald now writes to /var/log/journal by default. This can be\n'
-    printf '    controlled with the Storage setting in /etc/systemd/journald.conf\n'
-  fi
-
-  # logind's protocol changed. kindly restart the daemon to avoid locking
-  # out further logins.
-  if [ "$(vercmp 195 "$2")" -eq 1 ]; then
-    if sd_booted; then
-      systemctl restart systemd-logind.service
-    fi
-  fi
-
-  if [ "$(vercmp 196-1 "$2")" -eq 1 ]; then
-    printf '==> The legacy configuration options are no longer supported in rc.conf,\n'
-    printf '    convert your rc.conf to the new configuration formats.\n'
-  fi
-
-  if [ "$(vercmp 197-1 "$2")" -eq 1 ]; then
-    mask_net_naming
-    printf '==> Persistent net naming rules have been shipped as disabled.\n'
-    printf '    See /etc/udev/rules.d/80-net-name-slot.rules for more detail\n'
-  fi
+  maybe_reexec "$@"
 
   if [ "$(vercmp 204-1 "$2")" -eq 1 ]; then
     printf '==> The /bin/systemd symlink has been removed. Any references in your\n'
@@ -114,6 +127,18 @@ post_upgrade() {
 
   if [ "$(vercmp 208-1 "$2")" -eq 1 ]; then
     _208_changes
+  fi
+
+  if [ "$(vercmp 208-8 "$2")" -eq 1 ]; then
+    add_journal_acls
+  fi
+
+  if [ "$(vercmp 209-1 "$2")" -eq 1 ]; then
+    _209_changes
+  fi
+
+  if [ "$(vercmp 210-1 "$2")" -eq 1 ]; then
+    _210_changes
   fi
 }
 

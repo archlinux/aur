@@ -1,0 +1,28 @@
+From 8100c1a8f58b2fb5d97e156420a7e16562e93bc4 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 2 Mar 2014 23:37:39 -0500
+Subject: [PATCH] Fix systemd-stdio-bridge symlink
+
+The symlink is created in bindir (/usr/bin), and points to a binary
+which lives in rootlibexecdir (/lib/systemd or /usr/lib/systemd). A
+relative symlink does not work here.
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 38445fb..e7134a2 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1978,7 +1978,7 @@ systemd_bus_proxyd_LDADD = \
+ 
+ bus-proxyd-install-hook:
+ 	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(bindir)
+-	$(AM_V_LN)$(LN_S) -f ../lib/systemd/systemd-bus-proxyd $(DESTDIR)$(bindir)/systemd-stdio-bridge
++	$(AM_V_LN)$(LN_S) -f $(rootlibexecdir)/systemd-bus-proxyd $(DESTDIR)$(bindir)/systemd-stdio-bridge
+ 
+ bus-proxyd-uninstall-hook:
+ 	rm -f $(DESTDIR)$(bindir)/systemd-stdio-bridge
+-- 
+1.9.0
+

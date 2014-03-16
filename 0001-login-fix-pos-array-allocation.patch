@@ -1,0 +1,52 @@
+From a1937e679f76758635d295287398abe526de2522 Mon Sep 17 00:00:00 2001
+From: David Herrmann <dh.herrmann@gmail.com>
+Date: Tue, 25 Feb 2014 12:20:25 +0100
+Subject: [PATCH] login: fix pos-array allocation
+
+GREEDY_REALLOC takes a pointer to the real size, not the array-width as
+argument. Therefore, our array is currently way to small to keep the seat
+positions.
+
+Introduce GREEDY_REALLOC0_T() as typed version of GREEDY_REALLOC and store
+the array-width instead of array-size.
+---
+ src/login/logind-seat.c | 2 +-
+ src/shared/util.h       | 9 +++++++++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/login/logind-seat.c b/src/login/logind-seat.c
+index 631be5f..36ec7ed 100644
+--- a/src/login/logind-seat.c
++++ b/src/login/logind-seat.c
+@@ -475,7 +475,7 @@ void seat_claim_position(Seat *s, Session *session, unsigned int pos) {
+         if (seat_has_vts(s))
+                 pos = session->vtnr;
+ 
+-        if (!GREEDY_REALLOC0(s->positions, s->position_count, pos + 1))
++        if (!GREEDY_REALLOC0_T(s->positions, s->position_count, pos + 1))
+                 return;
+ 
+         seat_evict_position(s, session);
+diff --git a/src/shared/util.h b/src/shared/util.h
+index 9913fce..78b1444 100644
+--- a/src/shared/util.h
++++ b/src/shared/util.h
+@@ -723,6 +723,15 @@ void* greedy_realloc0(void **p, size_t *allocated, size_t need);
+ #define GREEDY_REALLOC0(array, allocated, need) \
+         greedy_realloc0((void**) &(array), &(allocated), sizeof((array)[0]) * (need))
+ 
++#define GREEDY_REALLOC0_T(array, count, need)                           \
++        ({                                                              \
++                size_t _size = (count) * sizeof((array)[0]);            \
++                void *_ptr = GREEDY_REALLOC0((array), _size, (need));   \
++                if (_ptr)                                               \
++                        (count) = _size / sizeof((array)[0]);           \
++                _ptr;                                                   \
++        })
++
+ static inline void _reset_errno_(int *saved_errno) {
+         errno = *saved_errno;
+ }
+-- 
+1.9.0
+

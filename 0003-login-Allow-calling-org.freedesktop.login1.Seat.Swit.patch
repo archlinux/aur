@@ -1,0 +1,35 @@
+From 9c413373d2112055a0142ef522bf95af9b491b4a Mon Sep 17 00:00:00 2001
+From: "Jasper St. Pierre" <jstpierre@mecheye.net>
+Date: Fri, 21 Feb 2014 18:23:17 -0500
+Subject: [PATCH] login: Allow calling org.freedesktop.login1.Seat.SwitchTo
+
+---
+ src/login/org.freedesktop.login1.conf | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/login/org.freedesktop.login1.conf b/src/login/org.freedesktop.login1.conf
+index d677f61..1318328 100644
+--- a/src/login/org.freedesktop.login1.conf
++++ b/src/login/org.freedesktop.login1.conf
+@@ -141,6 +141,18 @@
+                        send_member="ActivateSession"/>
+ 
+                 <allow send_destination="org.freedesktop.login1"
++                       send_interface="org.freedesktop.login1.Seat"
++                       send_member="SwitchTo"/>
++
++                <allow send_destination="org.freedesktop.login1"
++                       send_interface="org.freedesktop.login1.Seat"
++                       send_member="SwitchToPrevious"/>
++
++                <allow send_destination="org.freedesktop.login1"
++                       send_interface="org.freedesktop.login1.Seat"
++                       send_member="SwitchToNext"/>
++
++                <allow send_destination="org.freedesktop.login1"
+                        send_interface="org.freedesktop.login1.Session"
+                        send_member="Activate"/>
+ 
+-- 
+1.9.0
+

@@ -1,0 +1,30 @@
+From 0b6b7c2004317da48e5bbd3078c5662d8f0061b6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Wed, 26 Feb 2014 23:01:43 -0500
+Subject: [PATCH] journalctl: refuse extra arguments with --verify and similar
+
+Positional arguments only make sense with the default action.
+For other actions, complain instead of ignoring them silently.
+---
+ src/journal/journalctl.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/journal/journalctl.c b/src/journal/journalctl.c
+index a328ba1..0619b25 100644
+--- a/src/journal/journalctl.c
++++ b/src/journal/journalctl.c
+@@ -658,6 +658,11 @@ static int parse_argv(int argc, char *argv[]) {
+                 return -EINVAL;
+         }
+ 
++        if (arg_action != ACTION_SHOW && optind < argc) {
++                log_error("Extraneous arguments starting with '%s'", argv[optind]);
++                return -EINVAL;
++        }
++
+         return 1;
+ }
+ 
+-- 
+1.9.0
+
