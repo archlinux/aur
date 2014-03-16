@@ -1,6 +1,6 @@
 pkgbase = debhelper
 	pkgdesc = A collection of programs that can be used in a debian/rules file to automate common tasks
-	pkgver = 9.20130720
+	pkgver = 9.20140228
 	pkgrel = 1
 	url = http://kitenet.net/~joey/code/debhelper/
 	arch = any
@@ -17,10 +17,8 @@ pkgbase = debhelper
 	depends = perl>=5.6.0
 	depends = po-debconf
 	optdepends = dh-make
-	source = http://launchpad.net/debhelper/main/9.20130720/+download/debhelper_9.20130720.tar.gz
-	source = fr.po.patch
-	sha256sums = 4128575e19c2a6dbe8bfe2af591976b6bc737bb9b5d89e91492c6d72c487b01f
-	sha256sums = 66f5c36f2652876d5b0a11246ad5c0ca6bfb85fc9ca868068e1080837a45e8ad
+	source = http://launchpad.net/debhelper/main/9.20140228/+download/debhelper_9.20140228.tar.gz
+	sha256sums = fb4cbc94e0a415f68abd4efcb197321e1fb2f7de61b74a3b83873259c05d53c8
 
 pkgname = debhelper
 
