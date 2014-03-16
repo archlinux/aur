@@ -3,15 +3,15 @@
 
 pkgname=python2-urwid-satext
 _realname=urwid_satext
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Urwid satext is a curses-based user interface library for sat (salut a toi)."
 license=('GPL')
 arch=('any')
 depends=('python2-urwid' 'python2')
 url="http://www.goffi.org/"
-source=(http://ftp.goffi.org/urwid-satext/${_realname}-${pkgver}.tar.bz2)
-sha256sums=('80f035500a67f9e0776b9ef29d5b0b6d7282cc5f95735b4f315a2a4404b8b5b1')
+source=("http://ftp.goffi.org/urwid-satext/${_realname}-${pkgver}.tar.bz2")
+sha256sums=('cd6c1f8ff48b276cbbb9d34ed0df5e0a3e510c693cc6f37f46f65b95cb477ae0')
 
 package() {
   cd "${srcdir}/${_realname}-${pkgver}"
