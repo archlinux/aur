@@ -1,18 +1,18 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=decklink-sdk
-pkgver=9.7.7
+pkgver=10.0
 pkgrel=1
 epoch=1
 pkgdesc="Blackmagic Design DeckLink SDK"
 arch=('i686' 'x86_64')
 url="http://www.blackmagic-design.com/support/sdks/"
 license=('custom')
-depends=('mesa' 'qt4')
+depends=('glu' 'mesa' 'qt4')
 makedepends=('unzip')
 options=('!strip')
 source=("http://software.blackmagicdesign.com/SDK/Blackmagic_DeckLink_SDK_${pkgver}.zip")
-sha256sums=('512d955d6136e2a99dc31c62606c508143bb6db4fa6b295aae7908f560efa403')
+sha256sums=('e319206f427508a54ba2e86a0f23a00ba50219ecdc58a6e35b1e9ad473b3dece')
 
 package() {
   cd "$srcdir"

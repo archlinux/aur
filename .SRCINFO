@@ -1,6 +1,6 @@
 pkgbase = decklink-sdk
 	pkgdesc = Blackmagic Design DeckLink SDK
-	pkgver = 9.7.7
+	pkgver = 10.0
 	pkgrel = 1
 	epoch = 1
 	url = http://www.blackmagic-design.com/support/sdks/
@@ -8,11 +8,12 @@ pkgbase = decklink-sdk
 	arch = x86_64
 	license = custom
 	makedepends = unzip
+	depends = glu
 	depends = mesa
 	depends = qt4
 	options = !strip
-	source = http://software.blackmagicdesign.com/SDK/Blackmagic_DeckLink_SDK_9.7.7.zip
-	sha256sums = 512d955d6136e2a99dc31c62606c508143bb6db4fa6b295aae7908f560efa403
+	source = http://software.blackmagicdesign.com/SDK/Blackmagic_DeckLink_SDK_10.0.zip
+	sha256sums = e319206f427508a54ba2e86a0f23a00ba50219ecdc58a6e35b1e9ad473b3dece
 
 pkgname = decklink-sdk
 
