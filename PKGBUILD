@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Marcin Skory <armitage at q84fh dot net>
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
@@ -7,7 +7,7 @@
 pkgname=alephone
 _pkgdate=20140104
 pkgver=1.1_$_pkgdate
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="http://marathon.sourceforge.net/"
@@ -18,32 +18,37 @@ depends=('sdl_ttf' 'sdl_image' 'sdl_net' 'libmad' 'glu' 'mesa' 'zziplib'
 optdepends=('alephone-emr: community-made scenario'
             'alephone-eternalx: community-made scenario'
             'alephone-evil: community-made scenario'
-            'alephone-infinity: original data for Marathon Infinity'
-            'alephone-marathon: M1A1 data converted for AlephOne'
-            'alephone-marathon2: original data for Marathon 2: Durandal'
+            'alephone-infinity: original data for Marathon Infinity' # ok!
+            'alephone-marathon: M1A1 data converted for AlephOne' # ok!
+            'alephone-marathon2: original data for Marathon 2: Durandal' # ok!
             'alephone-red: community-made scenario'
             'alephone-rubiconx: community-made scenario'
             'alephone-tempus_irae: community-made scenario')
 makedepends=('boost' 'lua')
 source=("http://downloads.sourceforge.net/marathon/AlephOne-$_pkgdate.tar.bz2"
         "http://downloads.sourceforge.net/marathon/README.md"
-        "$pkgname-remove-deprecated-r5002.diff"
-        "$pkgname-ffmpeg-add-magic-number.diff")
+        "$pkgname-r5002-remove-deprecated-ffmpeg-quality-setting.diff"
+        "$pkgname-r5009-support-newer-ffmpeg.diff"
+        "$pkgname-r5011-use-mkstemp.diff"
+        "$pkgname-r5012-include-iostream.diff")
 sha256sums=('7f7d35c1d99cddd7cd0b47d3e4b84311373b04c60402ce86e9d85c36dfbaabcd'
             'b2b01a3120b61e56cecb6409585118a5e907171fef0e4dc25afaf13fcea5c5d5'
-            'b06a57cffbf5ae3df916de1baa457e53c78a7ed5af22e7e330da3fc405602351'
-            'cd0f169ea4a79d4b782ee0c03c35b254d947b8fc6af88cc5563d71f864b891f8')
+            'd792f675ad0a92f415f43f1cd15dd828520b1728b5d9b6129933a2abf72df43f'
+            '40117efbd082d0b81b7ca0880bfaa313bd64061d80e29f1660eba6ce3c8b2eba'
+            '44b8426b1d0260d152864eb473915a206554569833fe3bea5746285a8d7689d0'
+            'd1d82464dd97621dfcec234e36d8b5d54c6251b5a792959e9ad8e28bf4bc3dc6')
 
 prepare() {
   cd AlephOne-$_pkgdate
 
-  # add removed ffmpeg define
-  patch -Np1 < ../$pkgname-ffmpeg-add-magic-number.diff
-  # remove old setting
-  patch -Np1 < ../$pkgname-remove-deprecated-r5002.diff
+  # backport some patches to make it compile correctly
+  patch -Np0 < ../$pkgname-r5002-remove-deprecated-ffmpeg-quality-setting.diff
+  patch -Np0 < ../$pkgname-r5009-support-newer-ffmpeg.diff
+  patch -Np0 < ../$pkgname-r5011-use-mkstemp.diff
+  patch -Np0 < ../$pkgname-r5012-include-iostream.diff
 
-  # this is a leftover from old version (needed?)
-  #sed "s|PACKAGE='AlephOne'|PACKAGE='alephone'|g" -i configure
+  # lowercase for (folder) name
+  sed "s|PACKAGE='AlephOne'|PACKAGE='alephone'|g" -i configure
 }
 
 build() {

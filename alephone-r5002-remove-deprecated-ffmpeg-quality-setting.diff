@@ -1,7 +1,8 @@
-diff -rupN AlephOne-20140104/Source_Files/FFmpeg/Movie.cpp AlephOne-20140104.new/Source_Files/FFmpeg/Movie.cpp
---- AlephOne-20140104/Source_Files/FFmpeg/Movie.cpp	2014-01-04 03:19:57.000000000 +0100
-+++ AlephOne-20140104.new/Source_Files/FFmpeg/Movie.cpp	2014-03-16 01:43:32.030011019 +0100
-@@ -491,7 +491,7 @@ bool Movie::Setup()
+Index: Source_Files/FFmpeg/Movie.cpp
+===================================================================
+--- Source_Files/FFmpeg/Movie.cpp	(Revision 5001)
++++ Source_Files/FFmpeg/Movie.cpp	(Revision 5002)
+@@ -491,7 +491,7 @@
          
          // tuning options
          int aq = graphics_preferences->movie_export_audio_quality;
