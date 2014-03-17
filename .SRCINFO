@@ -1,0 +1,23 @@
+pkgbase = opensonic
+	pkgdesc = Game based on the Sonic the Hedgehog universe.
+	pkgver = 0.1.4
+	pkgrel = 6
+	url = http://opensnc.sourceforge.net/
+	install = opensonic.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = allegro4
+	depends = libpng
+	source = http://downloads.sourceforge.net/project/opensnc/Open%20Sonic/0.1.4/opensnc-src-0.1.4.tar.gz
+	source = opensonic.desktop
+	source = opensonic.sh
+	source = http://arch.carsten-teibes.de/aur-stuff/opensonic-loadpng.tar.xz
+	sha256sums = 3a4c3fa9538ee27c04b5ea848c9ad0a83f335471936d4617a18d3648c42588e9
+	sha256sums = 8649e72ba9eb3e01da81671c9c849a6823ccd4f022819e8b57d24abdaa691b06
+	sha256sums = a7ed81118fea52c8ce60a8538e92b6121da3b3358c41d1e6d370ada83cef8740
+	sha256sums = 9681cf2519b5217149dababbc67ae0280d454a59b3b46ec36c0c9e843a554e36
+
+pkgname = opensonic
+

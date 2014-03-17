@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=OpenSonic
+Exec=opensonic
+Icon=opensonic
+Comment=Game based on the "Sonic the Hedgehog" universe
+Categories=Game;ArcadeGame;
