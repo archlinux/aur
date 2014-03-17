@@ -328,7 +328,7 @@ class DistroDescription(object):
         self._distro['repositories'][meta]['release'] = {}
         self._distro['repositories'][meta]['release']['url'] = metapackages['url']
         self._distro['repositories'][meta]['release']['version'] = metapackages['version']
-    del self._distro['repositories']['metapackages']
+      del self._distro['repositories']['metapackages']
 
 
   def package_names(self, expand_metapackages=False):
