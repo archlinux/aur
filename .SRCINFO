@@ -1,0 +1,23 @@
+pkgbase = plee-the-bear
+	pkgdesc = A classic 2D platform game - rescue your kidnapped son (to slap him).
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://www.stuff-o-matic.com/plee-the-bear/?lang=en
+	install = plee-the-bear.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = CCPL: by-sa
+	makedepends = cmake
+	makedepends = boost
+	makedepends = docbook-to-man
+	depends = libclaw
+	depends = sdl2_mixer
+	depends = wxgtk2.8
+	depends = desktop-file-utils
+	depends = boost-libs
+	source = plee-the-bear-0.7.0-light.tar.gz::http://www.stuff-o-matic.com/plee-the-bear/download/file.php?platform=source
+	sha256sums = 41dfe864fe2d791d6f99ba7cd330e22c94fce19d82909054eeac594aa4f2924e
+
+pkgname = plee-the-bear
+
