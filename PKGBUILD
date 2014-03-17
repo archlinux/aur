@@ -17,9 +17,8 @@ source=('git://github.com/bluepeppers/archey3.git#commit=c1d1fedccc843ada034d7bc
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-
-  grep pkgver= PKGBUILD | cut -d'=' -f2
+  # Fetch the version number from the PKGBUILD in the upstream git repo
+  grep pkgver= "$pkgname/PKGBUILD" | cut -d'=' -f2
 }
 
 package() {
