@@ -5,7 +5,7 @@
 
 pkgname=cxxtest
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Unit testing framework for C++'
 arch=('any')
 url='http://cxxtest.com/'
@@ -15,13 +15,11 @@ source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('356d0f4810e8eb5c344147a0cca50fc0d84122c286e7644b61cb365c2ee22083')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  sed -i 's:env python:python3:g' bin/cxxtestgen
+  sed -i 's:env python:python3:g' "$pkgname-$pkgver/bin/cxxtestgen"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   install -m 755 -d "$pkgdir/usr/"{bin,include/cxxtest}
   install -m 755 bin/cxxtestgen "$pkgdir/usr/bin/"
