@@ -8,7 +8,6 @@ pkgbase = espionage-git
 	license = GPL3
 	makedepends = git
 	depends = python-efl
-	depends = gtk-update-icon-cache
 	provides = espionage=0.9.r13.04c9800
 	conflicts = espionage
 	source = git://git.enlightenment.org/apps/espionage.git

@@ -1,5 +1,5 @@
 post_install() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  [[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 post_upgrade() {

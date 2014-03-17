@@ -8,7 +8,7 @@ pkgdesc="PyEFL D-Bus inspector"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3')
-depends=('python-efl' 'gtk-update-icon-cache')
+depends=('python-efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
