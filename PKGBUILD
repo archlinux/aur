@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
-pkgname=enventor-git
-_pkgname=${pkgname%-*}
+_pkgname=enventor
+pkgname=$_pkgname-git
 pkgver=0.2.0.r0.g640b20f
 pkgrel=1
 pkgdesc="Editor for EDC files (edje/efl) - Development version"
