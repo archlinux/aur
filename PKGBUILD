@@ -5,7 +5,7 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -70,8 +70,8 @@ package_python-numpy() {
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
 
-  _pyver=3.3
-  _pyinc=3.3m
+  _pyver=3.4
+  _pyinc=3.4m
 
   export ATLAS=None
   export LDFLAGS="$LDFLAGS -shared"
