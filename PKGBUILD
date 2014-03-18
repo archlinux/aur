@@ -3,7 +3,7 @@
 _python=python
 pkgname=$_python-efl-git
 _pkgname=python-efl
-pkgver=1.8.99.r531.445211f
+pkgver=1.9.0.r559.89780d4
 pkgrel=1
 pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries - Development Version"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
 depends=('elementary>=1.8.99' "$_python-dbus")
 makedepends=('git' "${_python/p/c}")
-provides=("${pkgname%-*}=$pkgver" "$_python-ecore" "$_python-edje" "$_python-elementary" "$_python-emotion" "$_python-evas" "$_python-e_dbus")
-conflicts=("${pkgname%-*}" "$_python-ecore" "$_python-edje" "$_python-elementary" "$_python-emotion" "$_python-evas" "$_python-e_dbus")
+provides=("${pkgname%-*}=$pkgver")
+conflicts=("${pkgname%-*}")
 source=("git://git.enlightenment.org/bindings/python/$_pkgname.git")
 md5sums=('SKIP')
 
