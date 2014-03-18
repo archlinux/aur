@@ -3,13 +3,13 @@
 _python=python
 pkgname=$_python-efl-git
 _pkgname=python-efl
-pkgver=1.9.0.r559.89780d4
+pkgver=1.9.99.r560.2346ff9
 pkgrel=1
 pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries - Development Version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
-depends=('elementary>=1.8.99' "$_python-dbus")
+depends=('elementary>=1.9.99' "$_python-dbus")
 makedepends=('git' "${_python/p/c}")
 provides=("${pkgname%-*}=$pkgver")
 conflicts=("${pkgname%-*}")
