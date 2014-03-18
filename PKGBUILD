@@ -2,10 +2,10 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 _pkgname=enlightenment
-pkgname=${_pkgname}-git
-pkgver=0.18.99.17591.921557c
+pkgname=$_pkgname-git
+pkgver=0.18.99.18185.08e2173
 pkgrel=1
-pkgdesc="Enlightenment window manager (formerly e17) - Development version"
+pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
@@ -18,8 +18,8 @@ optdepends=('acpid: power events on laptop lid close'
             'connman: network module'
             'gdb: create backtraces on crash'
             'packagekit: packagekit module')
-provides=("$_pkgname=$pkgver" 'notification-daemon' "enlightenment17=$pkgver" "enlightenment17-git=$pkgver")
-conflicts=("$_pkgname" "enlightenment17" "enlightenment17-git")
+provides=("$_pkgname=$pkgver" 'notification-daemon')
+conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/enlightenment.menu')
 options=('debug')
