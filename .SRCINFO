@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)
-	pkgver = 1.9.99.24849.2ab6aac
+	pkgver = 1.9.99.25005.7fd1ffc
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -41,7 +41,7 @@ pkgbase = efl-git
 	optdepends = gst-plugins-ugly: Access more types of video in Emotion
 	optdepends = gst-libav: Access video with ffmpeg/libav in Emotion
 	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
-	provides = efl=1.9.99.24849.2ab6aac
+	provides = efl=1.9.99.25005.7fd1ffc
 	conflicts = efl
 	options = debug
 	source = git://git.enlightenment.org/core/efl.git
