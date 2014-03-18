@@ -6,16 +6,16 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='http://sphinx.pocoo.org/'
 license=('GPL')
 makedepends=(
-  'python-distribute'
+  'python-setuptools'
   'python-docutils'
   'python-jinja'
   'python-pygments'
-  'python2-distribute'
+  'python2-setuptools'
   'python2-docutils'
   'python2-jinja'
   'python2-pygments'
