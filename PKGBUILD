@@ -6,7 +6,7 @@
 # Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=openssh-selinux
-pkgver=6.5p1
+pkgver=6.6p1
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='http://www.openssh.org/portable.html'
@@ -17,17 +17,16 @@ depends=('krb5' 'openssl' 'libedit' 'ldns' 'libselinux')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
+          "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
-        'lowercase.patch'
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
         'sshd.socket'
         'sshd.pam')
-sha1sums=('3363a72b4fee91b29cf2024ff633c17f6cd2f86d' 'SKIP'
-          '3163a71cbaeac39d0783ad4c501fd0630d6c0c22'
+sha1sums=('b850fd1af704942d9b3c2eff7ef6b3a59b6a6b6e' 'SKIP'
           'cc1ceec606c98c7407e7ac21ade23aed81e31405'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
@@ -37,11 +36,6 @@ sha1sums=('3363a72b4fee91b29cf2024ff633c17f6cd2f86d' 'SKIP'
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
 install=install
-
-prepare() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-	patch -p1 -i ../lowercase.patch
-}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
