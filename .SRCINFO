@@ -1,5 +1,5 @@
 pkgbase = systemd-selinux
-	pkgver = 210
+	pkgver = 211
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = systemd-selinux
 	makedepends = libgcrypt
 	makedepends = libmicrohttpd
 	makedepends = libxslt
+	makedepends = libutil-linux
 	makedepends = linux-api-headers
 	makedepends = pam-selinux
 	makedepends = python
@@ -25,41 +26,11 @@ pkgbase = systemd-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = http://www.freedesktop.org/software/systemd/systemd-210.tar.xz
-	source = 0001-login-fix-pos-array-allocation.patch
-	source = 0002-login-set-pos-slot-to-fallback-on-pos-eviction.patch
-	source = 0003-login-Allow-calling-org.freedesktop.login1.Seat.Swit.patch
-	source = 0004-fix-typo-in-iDRAC-network-interface-name-irdac-idrac.patch
-	source = 0007-mount-don-t-send-out-PropertiesChanged-message-if-ac.patch
-	source = 0008-mount-don-t-fire-PropertiesChanged-signals-for-mount.patch
-	source = 0009-logs-show-fix-corrupt-output-with-empty-messages.patch
-	source = 0010-journalctl-refuse-extra-arguments-with-verify-and-si.patch
-	source = 0011-cdrom_id-use-the-old-MMC-fallback.patch
-	source = 0012-nspawn-fix-detection-of-missing-proc-self-loginuid.patch
-	source = 0013-Fix-systemd-stdio-bridge-symlink.patch
-	source = 0014-execute-free-directory-path-if-we-fail-to-remove-it-.patch
-	source = 0015-journal-assume-that-next-entry-is-after-previous-ent.patch
-	source = 0016-journal-forget-file-after-encountering-an-error.patch
-	source = 0017-core-correctly-unregister-PIDs-from-PID-hashtables.patch
+	source = http://www.freedesktop.org/software/systemd/systemd-211.tar.xz
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
-	md5sums = 03efddf8c9eca36d4d590f9967e7e818
-	md5sums = e64ade3fffc1e8fc5af0703135b389c4
-	md5sums = b619c45b2e973b9bd1cc85a66647a859
-	md5sums = 5265ac8a57f8b6438effd332c5a38e7e
-	md5sums = 0d047c3e44076fcefded5c2db31743d7
-	md5sums = c5bee064008abf23e5154768681944d2
-	md5sums = 11f93b3c02c268a16db95f69c3d8c459
-	md5sums = 43bc34b1e991dca2d9fb8b887e3b2d3d
-	md5sums = 2e4a5fc2b2cc2e64c3ade2f504763b81
-	md5sums = b55c5fb9dccb25085e199afc460ca011
-	md5sums = cc16a4ae58eb87a9739f183ed20e2290
-	md5sums = be17e74f25c70a2928fe16ce4fdb5a7e
-	md5sums = 4875226e16a893b82663691c6ae7c922
-	md5sums = 0180fbe462be9ca6a0da208ccb94844e
-	md5sums = c1182aee4a8baaf66d7a6b7a1347d60e
-	md5sums = 057ef5aa2089f0884151f22e7dbe4ed5
+	md5sums = 0a70c382b6089526f98073b4ee85ef75
 	md5sums = 29245f7a240bfba66e2b1783b63b6b40
 	md5sums = 5e04f468a13ae2b9d6a9dfc77c49a7d1
 	md5sums = bde43090d4ac0ef048e3eaee8202a407
@@ -79,35 +50,26 @@ pkgname = systemd-selinux
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
+	depends = libsystemd
 	depends = pam-selinux
 	depends = libseccomp
-	depends = util-linux-selinux
+	depends = libutil-linux-selinux
 	depends = xz
 	depends = libselinux
+	optdepends = python: systemd library bindings
 	optdepends = cryptsetup: required for encrypted block devices
 	optdepends = libmicrohttpd: systemd-journal-gatewayd
 	optdepends = quota-tools: kernel-level quota management
-	optdepends = python: systemd library bindings
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
-	provides = libsystemd=210
 	provides = nss-myhostname
-	provides = systemd-tools=210
-	provides = udev=210
-	provides = libgudev-1.0.so
-	provides = libsystemd.so
-	provides = libsystemd-daemon.so
-	provides = libsystemd-id128.so
-	provides = libsystemd-journal.so
-	provides = libsystemd-login.so
-	provides = libudev.so
-	provides = systemd=210-1
-	conflicts = libsystemd
+	provides = systemd-tools=211
+	provides = udev=211
+	provides = systemd=211-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
 	conflicts = systemd
 	conflicts = selinux-systemd
-	replaces = libsystemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
@@ -131,9 +93,10 @@ pkgname = systemd-sysvcompat-selinux
 	groups = selinux
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat-sysvcompat=210-1
-	provides = selinux-systemd-sysvcompat-sysvcompat=210-1
+	provides = systemd-sysvcompat=211-1
+	provides = selinux-systemd-sysvcompat=211-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
+	replaces = systemd-sysvcompat
 
