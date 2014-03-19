@@ -1,8 +1,8 @@
 pkgbase = pam-selinux
 	pkgdesc = SELinux aware PAM (Pluggable Authentication Modules) library
 	pkgver = 1.1.8
-	pkgrel = 2
-	url = http://www.kernel.org/pub/linux/libs/pam/
+	pkgrel = 3
+	url = http://linux-pam.org
 	arch = i686
 	arch = x86_64
 	groups = selinux
@@ -12,13 +12,12 @@ pkgbase = pam-selinux
 	makedepends = docbook-xml>=4.4
 	makedepends = docbook-xsl
 	depends = glibc
-	depends = db
 	depends = cracklib
 	depends = libtirpc
-	depends = pambase
+	depends = pambase-selinux
 	depends = libselinux
-	provides = pam=1.1.8-2
-	provides = selinux-pam=1.1.8-2
+	provides = pam=1.1.8-3
+	provides = selinux-pam=1.1.8-3
 	conflicts = pam
 	conflicts = selinux-pam
 	options = !emptydirs

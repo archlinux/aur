@@ -6,18 +6,17 @@
 
 pkgname=pam-selinux
 pkgver=1.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="http://www.kernel.org/pub/linux/libs/pam/"
-depends=('glibc' 'db' 'cracklib' 'libtirpc' 'pambase' 'libselinux')
+url="http://linux-pam.org"
+depends=('glibc' 'cracklib' 'libtirpc' 'pambase-selinux' 'libselinux')
 makedepends=('flex' 'w3m' 'docbook-xml>=4.4' 'docbook-xsl')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf}
-        etc/default/passwd
-	etc/environment)
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
+          "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
+backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/default/passwd etc/environment)
 groups=('selinux')
 source=(https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-$pkgver.tar.bz2
         #http://www.kernel.org/pub/linux/libs/pam/library/Linux-PAM-$pkgver.tar.bz2
@@ -32,7 +31,8 @@ md5sums=('35b6091af95981b1b2cd60d813b5e4ee'
 
 build() {
   cd $srcdir/Linux-PAM-$pkgver
-  ./configure --libdir=/usr/lib --sbindir=/usr/bin --enable-selinux
+  ./configure --libdir=/usr/lib --sbindir=/usr/bin --disable-db \
+              --enable-selinux
   make
 
   cd $srcdir/pam_unix2-2.9.1
