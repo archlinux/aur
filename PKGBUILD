@@ -6,21 +6,15 @@
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
 
 pkgname=util-linux-selinux
+pkgname=(util-linux-selinux libutil-linux-selinux)
 pkgver=2.24.1
-pkgrel=1
+pkgrel=3
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
 groups=('selinux')
-depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux' 'glibc' 'libselinux')
-optdepends=('python: python bindings to libmount')
 makedepends=('systemd' 'python')
 # checkdepends=('bc')
-conflicts=('util-linux-ng' 'eject'
-           "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-provides=("util-linux-ng=$pkgver" 'eject'
-          "${pkgname/-selinux}=${pkgver}-${pkrel}"
-          "selinux-${pkgname/-selinux}=${pkgver}-${pkrel}")
 license=('GPL2')
 options=('strip' 'debug')
 source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.24/${pkgname/-selinux}-$pkgver.tar.xz"
@@ -28,12 +22,6 @@ source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.24/${pkgnam
         pam-login
         pam-common
         pam-su)
-backup=(etc/pam.d/chfn
-        etc/pam.d/chsh
-        etc/pam.d/login
-        etc/pam.d/su
-        etc/pam.d/su-l)
-install=util-linux.install
 md5sums=('88d46ae23ca599ac5af9cf96b531590f'
          'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
@@ -69,7 +57,23 @@ build() {
 #  make -C "${pkgname/-selinux}-$pkgver" check
 #}
 
-package() {
+
+package_util-linux-selinux() {
+  conflicts=('util-linux-ng' 'eject'
+             "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+  provides=("util-linux-ng=$pkgver" 'eject'
+            "${pkgname/-selinux}=${pkgver}-${pkrel}"
+            "selinux-${pkgname/-selinux}=${pkgver}-${pkrel}")
+  depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
+           'libsystemd-selinux' 'libutil-linux-selinux')
+  optdepends=('python: python bindings to libmount')
+  install=util-linux.install
+  backup=(etc/pam.d/chfn
+          etc/pam.d/chsh
+          etc/pam.d/login
+          etc/pam.d/su
+          etc/pam.d/su-l)
+
   cd "${pkgname/-selinux}-$pkgver"
 
   make DESTDIR="${pkgdir}" install
@@ -92,4 +96,24 @@ package() {
   cd "$pkgdir"
   mv {,usr/}sbin/* usr/bin
   rmdir sbin usr/sbin
+
+  ### create libutil-linux split
+  rm -rf "$srcdir/_libutil-linux"
+  install -dm755 "$srcdir"/_libutil-linux/usr/lib
+  cd "$srcdir"/_libutil-linux
+  mv "$pkgdir"/usr/lib/lib*.{a,so}* usr/lib
 }
+
+package_libutil-linux-selinux() {
+  pkgdesc="util-linux runtime libraries"
+  provides=('libblkid.so' 'libmount.so' 'libuuid.so'
+            "${pkgname/-selinux}=${pkgver}-${pkrel}")
+  conflicts=("${pkgname/-selinux}")
+
+  mv "$srcdir/_libutil-linux"/* "$pkgdir"
+}
+
+workaround_for_the_aur_webinterface='
+pkgname="util-linux-selinux"
+depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux' 'glibc' 'libselinux')
+'

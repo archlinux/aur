@@ -1,36 +1,16 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.24.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.kernel.org/pub/linux/utils/util-linux/
-	install = util-linux.install
 	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = GPL2
 	makedepends = systemd
 	makedepends = python
-	depends = pam-selinux
-	depends = shadow-selinux
-	depends = coreutils-selinux
-	depends = glibc
-	depends = libselinux
-	optdepends = python: python bindings to libmount
-	provides = util-linux-ng=2.24.1
-	provides = eject
-	provides = util-linux=2.24.1-
-	provides = selinux-util-linux=2.24.1-
-	conflicts = util-linux-ng
-	conflicts = eject
-	conflicts = util-linux
-	conflicts = selinux-util-linux
 	options = strip
 	options = debug
-	backup = etc/pam.d/chfn
-	backup = etc/pam.d/chsh
-	backup = etc/pam.d/login
-	backup = etc/pam.d/su
-	backup = etc/pam.d/su-l
 	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.1.tar.xz
 	source = uuidd.tmpfiles
 	source = pam-login
@@ -43,4 +23,32 @@ pkgbase = util-linux-selinux
 	md5sums = fa85e5cce5d723275b14365ba71a8aad
 
 pkgname = util-linux-selinux
+	install = util-linux.install
+	depends = pam-selinux
+	depends = shadow-selinux
+	depends = coreutils-selinux
+	depends = libsystemd-selinux
+	depends = libutil-linux-selinux
+	optdepends = python: python bindings to libmount
+	provides = util-linux-ng=2.24.1
+	provides = eject
+	provides = util-linux=2.24.1-
+	provides = selinux-util-linux=2.24.1-
+	conflicts = util-linux-ng
+	conflicts = eject
+	conflicts = util-linux
+	conflicts = selinux-util-linux
+	backup = etc/pam.d/chfn
+	backup = etc/pam.d/chsh
+	backup = etc/pam.d/login
+	backup = etc/pam.d/su
+	backup = etc/pam.d/su-l
+
+pkgname = libutil-linux-selinux
+	pkgdesc = util-linux runtime libraries
+	provides = libblkid.so
+	provides = libmount.so
+	provides = libuuid.so
+	provides = libutil-linux=2.24.1-
+	conflicts = libutil-linux
 
