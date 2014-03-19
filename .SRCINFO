@@ -1,13 +1,13 @@
 pkgbase = cronie-selinux
-	pkgdesc = Daemon that runs specified programs at scheduled times and related tools wth SELinux support
+	pkgdesc = Daemon that runs specified programs at scheduled times and related tools with SELinux support
 	pkgver = 1.4.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fedorahosted.org/cronie/
 	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = custom:BSD
-	depends = pam
+	depends = pam-selinux
 	depends = bash
 	depends = run-parts
 	depends = libselinux
@@ -15,8 +15,8 @@ pkgbase = cronie-selinux
 	optdepends = smtp-server: send job output via email
 	optdepends = smtp-forwarder: forward job output to email server
 	provides = cron
-	provides = cronie=1.4.11-1
-	provides = selinux-cronie=1.4.11-1
+	provides = cronie=1.4.11-2
+	provides = selinux-cronie=1.4.11-2
 	conflicts = cron
 	conflicts = cronie
 	conflicts = selinux-cronie

@@ -1,16 +1,17 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# $Id$
 # Contributor: Kaiting Chen <kaiting.chen@kiwilight.com>
+# Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=cronie-selinux
 pkgver=1.4.11
-pkgrel=1
-pkgdesc='Daemon that runs specified programs at scheduled times and related tools wth SELinux support'
+pkgrel=2
+pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://fedorahosted.org/cronie/'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
-depends=('pam' 'bash' 'run-parts' 'libselinux')
+depends=('pam-selinux' 'bash' 'run-parts' 'libselinux')
 optdepends=('pm-utils: defer anacron on battery power'
             'smtp-server: send job output via email'
             'smtp-forwarder: forward job output to email server')
@@ -34,7 +35,7 @@ provides=('cron' "${pkgname/-selinux}=${pkgver}-${pkgrel}"
 groups=('selinux')
 
 build() {
-	cd ${pkgname/-selinux}-${pkgver}
+	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
@@ -49,7 +50,7 @@ build() {
 }
 
 package() {
-	cd ${pkgname/-selinux}-${pkgver}
+	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
 	make DESTDIR="${pkgdir}" install
 
