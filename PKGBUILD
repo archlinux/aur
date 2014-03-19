@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -34,9 +34,15 @@ build() {
 }
 
 package() {
-  install -d "$pkgdir"/{opt/,usr/bin/}
+  install -d "$pkgdir"/{opt/,usr/bin/,usr/share/bash-completion/completions/}
 
   cp -r "$srcdir"/substrate/ "$pkgdir"/opt/$pkgname/
 
   ln -s /opt/$pkgname/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
+
+  ln -s /opt/$pkgname/embedded/gems/gems/$pkgname-$pkgver/contrib/bash/completion.sh \
+    "$pkgdir"/usr/share/bash-completion/completions/$pkgname
+
+  install -Dm644 "$srcdir"/$pkgname/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
