@@ -1,5 +1,5 @@
 pkgbase = findutils-selinux
-	pkgdesc = GNU utilities to locate files with SELinux patch
+	pkgdesc = GNU utilities to locate files with SELinux support
 	pkgver = 4.4.2
 	pkgrel = 5
 	url = http://www.gnu.org/software/findutils

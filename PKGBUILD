@@ -1,17 +1,19 @@
 # $Id$
+# Maintainer:
 # SELinux Maintainer: Timothée Ravier
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=findutils-selinux
 pkgver=4.4.2
 pkgrel=5
-pkgdesc="GNU utilities to locate files with SELinux patch"
+pkgdesc="GNU utilities to locate files with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL3')
 groups=('selinux')
 depends=('glibc' 'sh' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
+provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
+          "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 url="http://www.gnu.org/software/findutils"
 source=("ftp://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz"{,.sig}
         "http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/${pkgname/-selinux}/files/${pkgname/-selinux}-${pkgver}-selinux.diff")
@@ -44,5 +46,5 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
