@@ -6,7 +6,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='http://sphinx.pocoo.org/'
 license=('GPL')
@@ -53,9 +53,11 @@ check() {
   msg2 'Python 3 version'
   cd "$srcdir"/Sphinx-$pkgver
   make PYTHON=python3 test
+  rm -r build/lib/tests
   msg2 'Python 2 version'
   cd "$srcdir"/Sphinx-${pkgver}2
   make PYTHON=python2 test
+  rm -r build/lib/tests
 }
 
 package_python-sphinx() {
