@@ -1,12 +1,13 @@
 pkgbase = obnam-git
 	pkgdesc = Obnam is an easy, secure backup program.
-	pkgver = 4143.8c67fc9
-	pkgrel = 1024
+	pkgver = 4189.8e50f17
+	pkgrel = 1
 	url = http://liw.fi/obnam/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = python2-yaml
 	depends = python2
 	depends = python2-cliapp-git
 	depends = python2-tracing-git

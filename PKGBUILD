@@ -1,14 +1,14 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 pkgname=obnam-git
-pkgver=4143.8c67fc9
-pkgrel=1024
+pkgver=4189.8e50f17
+pkgrel=1
 pkgdesc="Obnam is an easy, secure backup program."
 arch=('i686' 'x86_64')
 url="http://liw.fi/obnam/"
 license=('GPL3')
 groups=()
 depends=('python2' 'python2-cliapp-git' 'python2-tracing-git' 'python2-larch-git' 'python2-ttystatus-git' 'python2-paramiko')
-makedepends=('git')
+makedepends=('git' 'python2-yaml')
 provides=('obnam')
 conflicts=('obnam')
 replaces=()
