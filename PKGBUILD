@@ -5,13 +5,13 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r98.1160e12
+pkgver=0.0.99.r130.0a180d7
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('elementary' 'xorg-xauth')
+depends=('elementary' 'xorg-xauth' 'sudo')
   [[ (! $(pacman -T ekbd-svn)) || (! $(pacman -T ekbd-git)) ]] && depends+=('ekbd-git')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
