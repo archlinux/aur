@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=1.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -20,10 +20,17 @@ makedepends=('git')
 depends=('ruby' 'curl' 'lzo2' 'libidn' 'rtmpdump')
 source=(git://github.com/mitchellh/$pkgname.git
         git://github.com/mitchellh/$pkgname-installers.git
+        plugins.patch
         http://pkgbuild.com/~jsteel/aur/$pkgname/substrate_archlinux_$CARCH.zip)
-md5sums=('SKIP' 'SKIP')
-[[ $CARCH == i686 ]] && md5sums[2]='c04042b24de56d18a041bc005e5ecaa4'
-[[ $CARCH == x86_64 ]] && md5sums[2]='53d8a137e0b50fee8509a7d1c15fd33b'
+md5sums=('SKIP' 'SKIP'
+         'c73455203b22aaf89e3a7779ebbe81ed')
+[[ $CARCH == i686 ]] && md5sums[3]='c04042b24de56d18a041bc005e5ecaa4'
+[[ $CARCH == x86_64 ]] && md5sums[3]='53d8a137e0b50fee8509a7d1c15fd33b'
+
+prepare() {
+  # Remove proprietary plugins
+  patch -Np1 -i "$srcdir"/plugins.patch
+}
 
 build() {
   cd "$srcdir"/$pkgname
