@@ -2,46 +2,36 @@
 
 _pkgbase=easyrpg-player
 pkgname=$_pkgbase-git
-pkgver=0.1.2.r174.gaf25dc2
+pkgver=0.1.2.r212.g3fda9dd
 pkgrel=1
-pkgdesc="EasyRPG Player aims to be a free, RPG Maker 2000/2003 interpreter (development version)"
+pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
-license=('GPL3' 'MIT')
+license=('GPL3')
 conflicts=("$_pkgbase")
 provides=("$_pkgbase")
-makedepends=('boost' 'git')
+makedepends=('boost' 'git' 'liblcf-git')
 depends=('sdl2_mixer' 'freetype2' 'pixman' 'expat')
+optdepends=('wine: to use RTP(E) installed with wine')
 install=$_pkgbase.install
-source=(liblcf::"git+https://github.com/EasyRPG/liblcf.git"
-        $_pkgbase::"git+https://github.com/EasyRPG/Player.git")
-md5sums=('SKIP' 'SKIP')
+source=($_pkgbase::"git+https://github.com/EasyRPG/Player.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed 's/-/.r/;s/-/./'
 }
 
 build () {
-  # build readers library
-  cd liblcf
+  cd $_pkgbase
 
-  ./autogen.sh
-  ./configure --enable-xml
-  make
-
-  # build player
-  cd ../$_pkgbase
-
-  ./autogen.sh
-  ./configure --prefix=/usr LIBS="-llcf -lexpat" \
-    CPPFLAGS="-DUNIX -I$srcdir/liblcf/include" \
-    LDFLAGS="-L$srcdir/liblcf/src"
+  autoreconf -i
+  # temporarily fix liblcf path+linking
+  CPPFLAGS="$CPPFLAGS -I/usr/include/liblcf" LIBS="-llcf -lexpat" \
+    ./configure --prefix=/usr
   make
 }
 
 package () {
   install -Dm755 $_pkgbase/src/$_pkgbase "$pkgdir"/usr/bin/$_pkgbase
-  install -Dm644 liblcf/COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING-liblcf
 }
