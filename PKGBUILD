@@ -22,36 +22,35 @@ options=(!strip !zipman)
 backup=(etc/mmarc)
 
 build () {
-  cd $srcdir/$pkgname-bin-$pkgver
+  cd "$srcdir/$pkgname-bin-$pkgver"
 
-  patch -p1 -i "${srcdir}/fix-mmastart-path.patch"
+  patch -p1 -i "$srcdir/fix-mmastart-path.patch"
   for file in $(grep -rl 'env python *$' .); do sed -i 's/env python *$/env python2/g' $file ;done
 }
 
 package () {
-  cd $srcdir/$pkgname-bin-$pkgver
+  cd "$srcdir/$pkgname-bin-$pkgver"
 
-  mkdir -p $pkgdir/usr/{bin,share/mma,share/man/man1,share/man/man8}
-  mkdir -p $pkgdir/etc
+  mkdir -p "$pkgdir"/usr/{bin,share/mma,share/man/man1,share/man/man8}
+  mkdir -p "$pkgdir"/etc
 
 
-  cp mma.py $pkgdir/usr/bin/mma
-  cp mma-gb $pkgdir/usr/bin/mma-gb
-  cp mma-libdoc $pkgdir/usr/bin/mma-libdoc
-  cp mma-renum $pkgdir/usr/bin/mma-renum
-  cp util/mma-mnx.py $pkgdir/usr/bin/mma-mnx
-  cp util/mma-rm2std.py $pkgdir/usr/bin/mma-rm2std
-  cp util/mma-splitrec.py $pkgdir/usr/bin/mma-splitrec
-  cp util/mmatabs.py $pkgdir/usr/bin/mmatabs
-  cp util/mup2mma.py $pkgdir/usr/bin/mup2mma
-  cp util/pg2mma.py $pkgdir/usr/bin/pg2mma
-  cp util/synthsplit.py $pkgdir/usr/bin/mma-synthsplit
-  cp -r {docs,egs,includes,lib,MMA,text} $pkgdir/usr/share/mma
-  cp util/README.* $pkgdir/usr/share/mma/docs
-  mv $pkgdir/usr/share/mma/docs/man/mma-libdoc.8 $pkgdir/usr/share/man/man8
-  mv $pkgdir/usr/share/mma/docs/man/mma-renum.1 $pkgdir/usr/share/man/man1
-  mv $pkgdir/usr/share/mma/docs/man/mma.1 $pkgdir/usr/share/man/man1
-  rm -rf $pkgdir/usr/share/mma/docs/man
-  cp $srcdir/mmarc $pkgdir/etc
-
+  cp mma.py "$pkgdir"/usr/bin/mma
+  cp mma-gb "$pkgdir"/usr/bin/mma-gb
+  cp mma-libdoc "$pkgdir"/usr/bin/mma-libdoc
+  cp mma-renum "$pkgdir"/usr/bin/mma-renum
+  cp util/mma-mnx.py "$pkgdir"/usr/bin/mma-mnx
+  cp util/mma-rm2std.py "$pkgdir"/usr/bin/mma-rm2std
+  cp util/mma-splitrec.py "$pkgdir"/usr/bin/mma-splitrec
+  cp util/mmatabs.py "$pkgdir"/usr/bin/mmatabs
+  cp util/mup2mma.py "$pkgdir"/usr/bin/mup2mma
+  cp util/pg2mma.py "$pkgdir"/usr/bin/pg2mma
+  cp util/synthsplit.py "$pkgdir"/usr/bin/mma-synthsplit
+  cp -r {docs,egs,includes,lib,MMA,text} "$pkgdir"/usr/share/mma
+  cp util/README.* "$pkgdir"/usr/share/mma/docs
+  mv "$pkgdir"/usr/share/mma/docs/man/mma-libdoc.8 "$pkgdir"/usr/share/man/man8
+  mv "$pkgdir"/usr/share/mma/docs/man/mma-renum.1 "$pkgdir"/usr/share/man/man1
+  mv "$pkgdir"/usr/share/mma/docs/man/mma.1 "$pkgdir"/usr/share/man/man1
+  rm -rf "$pkgdir"/usr/share/mma/docs/man
+  cp "$srcdir"/mmarc "$pkgdir"/etc
 }
