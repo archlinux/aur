@@ -3,6 +3,9 @@
 # Contributor: Eric Le Bras <eric.lebras@gmail.com>
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 
+# I maintain this on github, feel free to submit a pull request to
+# https://github.com/jkl1337/packages-archlinux.git
+
 pkgname=mma
 pkgver=13.12
 pkgrel=1
