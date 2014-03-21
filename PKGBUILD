@@ -1,4 +1,5 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
+# $Id $
+# Maintainer: John K. Luebs <jkl@johnluebs.com>
 # Contributor: Eric Le Bras <eric.lebras@gmail.com>
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 
