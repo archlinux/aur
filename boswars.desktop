@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bos Wars
+GenericName=Battle of Survival Wars
+Comment=real-time strategy game
+Exec=boswars
+Icon=boswars
+Terminal=false
+Type=Application
+Categories=Game;StrategyGame;
