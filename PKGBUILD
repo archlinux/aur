@@ -3,13 +3,13 @@
 pkgname=orocos-utilrb
 _pkgname=orocos-toolchain
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Robot Control Software is a tool to create real-time robotics applications using modular, run-time configurable software components (Ruby toolkit)"
 arch=('i686' 'x86_64')
 url="http://www.orocos.org/rtt"
 license=('GPL')
 groups=('orocos-toolchain')
-depends=('ruby')
+depends=('ruby1.9')
 makedepends=('ruby-hoe')
 source=(http://people.mech.kuleuven.be/~orocos/pub/stable/toolchain/v${pkgver}/${_pkgname}-${pkgver}-src.tar.bz2)
 md5sums=('ac68f90da0d7c4595e5d78687d68ab2f')
@@ -24,7 +24,7 @@ build() {
   # set the correct compiler flags
   sed 's/$CFLAGS/$CPPFLAGS/g' -i ext/extconf.rb
 
-  rake
+  rake-1.9
 
   cd ext
   make
@@ -39,7 +39,7 @@ package() {
   # install utilrb
   cd "${srcdir}/${_pkgname}-${pkgver}/utilrb"
 
-  _libdir=`ruby -r rbconfig -e 'printf("%s",RbConfig::CONFIG["rubylibdir"])'`
+  _libdir=`ruby-1.9 -r rbconfig -e 'printf("%s",RbConfig::CONFIG["rubylibdir"])'`
 
   install -dm755 "${pkgdir}${_libdir}"
   cp -dr --no-preserve=ownership lib/* "${pkgdir}${_libdir}"
