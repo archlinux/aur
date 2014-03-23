@@ -26,7 +26,7 @@ package_libkeybinder2() {
 
   cd "${srcdir}/${_offname}-master"
   make DESTDIR="${pkgdir}/" install
-  rm -rf ${pkgdir}/usr/lib/python2.7
+  rm -rf "${pkgdir}/usr/lib/python2.7"
 }
 
 package_python2-keybinder2() {
@@ -36,6 +36,6 @@ package_python2-keybinder2() {
 
   cd "${srcdir}/${_offname}-master"
   make DESTDIR="${pkgdir}/" install
-  rm -rf ${pkgdir}/usr/lib/{girepository-1.0,libkeybinder*,pkgconfig}
-  rm -rf ${pkgdir}/usr/{include,share}
+  rm -rf "${pkgdir}"/usr/lib/{girepository-1.0,libkeybinder*,pkgconfig}
+  rm -rf "${pkgdir}"/usr/{include,share}
 }
