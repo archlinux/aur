@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=liblcf-git
-pkgver=0.1.2.r94.gc02ba45
+pkgver=0.1.2.r107.gd31af5c
 pkgrel=1
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)"
 arch=('i686' 'x86_64')
@@ -25,6 +25,13 @@ build () {
   autoreconf -i
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd liblcf
+
+  # disable as-needed (problems with library order)
+  make check LDFLAGS="$LDFLAGS -Wl,--no-as-needed"
 }
 
 package () {
