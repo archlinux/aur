@@ -10,7 +10,6 @@ pkgbase = lightmediascanner
 	depends = libvorbis
 	depends = libmp4v2
 	depends = flac
-	options = !libtool
 	source = http://packages.profusion.mobi/lightmediascanner/lightmediascanner-0.4.5.0.tar.bz2
 	md5sums = cb51f52ac8ba514987ae3f5278b628b2
 

@@ -10,16 +10,23 @@ arch=('i686' 'x86_64')
 url="http://lms.garage.maemo.org/"
 license=('LGPL')
 depends=('sqlite3' 'libvorbis' 'libmp4v2' 'flac')
-options=('!libtool')
-source=(http://packages.profusion.mobi/lightmediascanner/$pkgname-$pkgver.tar.bz2)
+source=("http://packages.profusion.mobi/lightmediascanner/$pkgname-$pkgver.tar.bz2")
+md5sums=('cb51f52ac8ba514987ae3f5278b628b2')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  ./configure --prefix=/usr \
-	  --disable-static \
-	  --enable-video-dummy \
-	  --enable-audio-dummy || return 1
-  make || return 1
-  make DESTDIR="$pkgdir" install || return 1
+  cd "$srcdir/$pkgname-$pkgver"
+
+  ./configure \
+    --prefix=/usr \
+    --disable-static \
+    --enable-video-dummy \
+    --enable-audio-dummy
+
+  make
 }
-md5sums=('cb51f52ac8ba514987ae3f5278b628b2')
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir" install
+}
