@@ -1,38 +1,26 @@
 # Maintainer: Tilman Blumenbach <tilman AT ax86 DOT net>
 
 pkgname=keepass-plugin-rpc
-pkgver=1.2.7
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="RPC plugin for Keepass"
 arch=(i686 x86_64)
 url="http://keefox.org/"
 license=('GPL')
 depends=(keepass)
-# Technically, mono is already pulled in by the keepass dependency.
-makedepends=(mono)
-source=("https://github.com/luckyrat/KeeFox/archive/v${pkgver}.tar.gz"
-        build-fixes.patch)
+source=("keefox.zip::https://addons.mozilla.org/firefox/downloads/file/248762/keefox-1.3.1-tb+fx-linux.xpi")
+noextract=(keefox.zip)
 
 prepare() {
-    cd "$srcdir/KeeFox-$pkgver"
+    cd "$srcdir"
 
-    # Need --binary option because of DOS line endings.
-    patch --binary -Np1 -i "$srcdir/build-fixes.patch"
-}
-
-build() {
-    cd "$srcdir/KeeFox-$pkgver/KeePassRPC"
-
-    xbuild /property:Configuration=Release KeePassRPC.csproj
+    unzip -qd keefox keefox.zip
 }
 
 package() {
-    cd "$srcdir/KeeFox-$pkgver/KeePassRPC/bin/Release"
+    cd "$srcdir/keefox/deps"
 
-    for f in Jayrock*.dll KeePassRPC.dll; do
-        install -m 644 -D "$f" "${pkgdir}/usr/share/keepass/plugins/rpc/${f}"
-    done
+    install -m 644 -D KeePassRPC.plgx "${pkgdir}/usr/share/keepass/plugins/rpc/KeePassRPC.plgx"
 }
 
-md5sums=('b854bb627b5477d9ef9ac1becc9e4a63'
-         '4744511f20a030802cec01e71714b5f3')
+md5sums=('bd9e44f57a19493c50ebb100e309d588')
