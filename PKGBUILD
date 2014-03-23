@@ -3,7 +3,7 @@
 
 pkgname=swaks
 pkgver=20130209.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH'
 arch=('any')
 url="http://jetmore.org/john/code/${pkgname}/"
@@ -11,6 +11,13 @@ license=('GPL')
 depends=('perl-net-dns')
 source=("http://jetmore.org/john/code/${pkgname}/files/${pkgname}-${pkgver}.tar.gz")
 md5sums=('281af4f487ada31cda1408a19e8da5b4')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  # fix perl 5.18 breakage
+  sed -i 's#^=item \([0-9]\+\)$#=item C<\1>#' doc/ref.pod
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
