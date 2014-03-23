@@ -9,7 +9,7 @@ pkgdesc="Lightweight library to scan media - Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
-depends=('sqlite3' 'libvorbis' 'libmp4v2' 'flac' 'libtheora' 'glib2')
+depends=('sqlite3' 'libmp4v2' 'ffmpeg')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")

@@ -8,11 +8,8 @@ pkgbase = lightmediascanner-git
 	license = LGPL
 	makedepends = git
 	depends = sqlite3
-	depends = libvorbis
 	depends = libmp4v2
-	depends = flac
-	depends = libtheora
-	depends = glib2
+	depends = ffmpeg
 	provides = lightmediascanner=0.4.5.99.r357.b05729d
 	conflicts = lightmediascanner
 	source = git://github.com/profusion/lightmediascanner.git
