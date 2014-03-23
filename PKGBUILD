@@ -57,8 +57,8 @@ build() {
 }
 
 package() {
-  install -d -m755 "${pkgdir}/usr/"{lib,bin,share/openni,include/ni/Linux-x86}
-  install -d -m755 "${pkgdir}/var/lib/ni"
+  install -dm755 "${pkgdir}/usr/"{lib,bin,share/openni,include/ni/Linux-x86}
+  install -dm755 "${pkgdir}/var/lib/ni"
 
   cd "${srcdir}/${_gitname}-build/Include"
   install *.h "${pkgdir}/usr/include/ni"
