@@ -1,25 +1,27 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: furester <furester at gmail.com>
 
-pkgname=lightmediascanner-git
-_pkgname=${pkgname%-*}
-pkgver=0.4.5.r114.g1f7b0f2
+_pkgname=lightmediascanner
+pkgname=$_pkgname-git
+pkgver=0.4.5.99.r357.b05729d
 pkgrel=1
 pkgdesc="Lightweight library to scan media - Development version"
 arch=('i686' 'x86_64')
-url="http://lms.garage.maemo.org/"
+url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
 depends=('sqlite3' 'libvorbis' 'libmp4v2' 'flac' 'libtheora' 'glib2')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.profusion.mobi/$_pkgname.git")
+source=("git://github.com/profusion/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  git describe --long --tags | sed 's/.*_//;s/-/.r/;s/-/./g'
+  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+
+  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {

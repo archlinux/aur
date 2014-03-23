@@ -1,8 +1,8 @@
 pkgbase = lightmediascanner-git
 	pkgdesc = Lightweight library to scan media - Development version
-	pkgver = 0.4.5.r114.g1f7b0f2
+	pkgver = 0.4.5.99.r357.b05729d
 	pkgrel = 1
-	url = http://lms.garage.maemo.org/
+	url = https://github.com/profusion/lightmediascanner
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -13,9 +13,9 @@ pkgbase = lightmediascanner-git
 	depends = flac
 	depends = libtheora
 	depends = glib2
-	provides = lightmediascanner=0.4.5.r114.g1f7b0f2
+	provides = lightmediascanner=0.4.5.99.r357.b05729d
 	conflicts = lightmediascanner
-	source = git://git.profusion.mobi/lightmediascanner.git
+	source = git://github.com/profusion/lightmediascanner.git
 	sha256sums = SKIP
 
 pkgname = lightmediascanner-git
