@@ -1,7 +1,7 @@
 pkgbase = boxee-source
 	pkgdesc = A freeware cross-platform media center software with social networking features that is a fork of the open source XBMC media center
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.boxee.tv/
 	install = boxee-source.install
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = boxee-source
 	depends = unrar
 	depends = smbclient
 	depends = streamripper
-	depends = python-pysqlite
+	depends = python2-pysqlite
 	depends = curl
 	depends = gawk
 	depends = pmount
