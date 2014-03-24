@@ -13,5 +13,5 @@ md5sums=('5e95d0e968ad24778e0ae9fee748d73f')
 
 package() {
   cd $pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
 }
