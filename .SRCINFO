@@ -1,0 +1,27 @@
+pkgbase = libinput-no-gestures
+	pkgdesc = Input device management and event handling library - patched to remove gestures
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/libinput/libinput
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = check
+	depends = mtdev
+	depends = libevdev
+	depends = libwacom
+	depends = systemd-libs
+	depends = glibc
+	optdepends = gtk4: libinput debug-gui
+	optdepends = python-pyudev: libinput measure
+	optdepends = python-libevdev: libinput measure
+	optdepends = python-yaml: used by various tools
+	provides = libinput
+	conflicts = libinput
+	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.29.0/libinput-1.29.0.tar.bz2
+	sha256sums = 7160c16c409c9ea4f7da9d91923ae0a92df7f3453a292bf684bed071acd7b4ff
+
+pkgname = libinput-no-gestures
