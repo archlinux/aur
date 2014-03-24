@@ -4,15 +4,15 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.13
-pkgver=3.13.6
-pkgrel=2
+pkgver=3.13.7
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -28,11 +28,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch'
         '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
         'i8042-fix-aliases.patch'
-        '0001-Revert-xhci-1.0-Limit-arbitrarily-aligned-scatter-ga.patch'
-        '0002-Revert-USBNET-ax88179_178a-enable-tso-if-usb-host-su.patch'
         )
 md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
-         'a9b131a589a176b4c437b8ca4557b85e'
+         'cb33b329d3417846d310c7f58a2614b6'
          'ba4468d313adfaf22368add7f58204aa'
          '035bb27dac306f5c028d96cad14bb249'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -47,8 +45,7 @@ md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
          'e6fa278c092ad83780e2dd0568e24ca6'
          '06f1751777e0772c18c3fa4fbae91aa5'
          '93dbf73af819b77f03453a9c6de2bb47'
-         'c753259957f6f2515c634ef99aef4a6b'
-         '53f116cdcc9635b694bc5735a36ba9d8')
+         )
 
 _kernelname=${pkgbase#linux}
 
@@ -93,10 +90,6 @@ prepare() {
 
   # Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
   patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
-
-  # Fix xhci mass storage problems
-  patch -p1 -i "${srcdir}/0001-Revert-xhci-1.0-Limit-arbitrarily-aligned-scatter-ga.patch"
-  patch -p1 -i "${srcdir}/0002-Revert-USBNET-ax88179_178a-enable-tso-if-usb-host-su.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
