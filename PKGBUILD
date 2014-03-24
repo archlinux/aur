@@ -2,7 +2,7 @@
 
 _pkgbase=easyrpg-player
 pkgname=$_pkgbase-git
-pkgver=0.1.2.r212.g3fda9dd
+pkgver=0.1.2.r217.gc52a6f6
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
@@ -26,9 +26,7 @@ build () {
   cd $_pkgbase
 
   autoreconf -i
-  # temporarily fix liblcf path+linking
-  CPPFLAGS="$CPPFLAGS -I/usr/include/liblcf" LIBS="-llcf -lexpat" \
-    ./configure --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
