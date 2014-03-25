@@ -1,0 +1,5 @@
+18,21d17
+< if [ ! -e "$base/bin/git" ]; then
+< 	echo "** base directory $base does not contain bin/git" >&2
+< 	exit 1
+< fi
