@@ -3,14 +3,16 @@
 
 pkgname="cups-nosystemd"
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.cups.org/"
+groups=('eudev-base')
 depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord' 'libusb' 'dbus' 'hicolor-icon-theme' 'libpaper')
 makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd' 'gzip' 'autoconf' 'avahi' 'openssl' 'inetutils')
-optdepends=('xdg-utils: xdg .desktop file support')
+optdepends=('xdg-utils: xdg .desktop file support'
+            'cups-openrc: cups openrc initscript')
 provides=("cups=${pkgver}")
 conflicts=('cups')
 replaces=('cups')
@@ -69,19 +71,19 @@ prepare() {
 
   # Applications could not get the PPD file for statically-configured IPP-shared print queues
   patch -Np1 -i ${srcdir}/get-ppd-file-for-statically-configured-ipp-shared-queues.patch
-  
+
   # fix permissions on some files - alternative: cups-0755.patch by FC
   patch -Np0 -i ${srcdir}/cups-1.6.0-fix-install-perms.patch
-  
+
   # move /var/run -> /run for pid file
   patch -Np1 -i ${srcdir}/cups-1.6.2-statedir.patch
-  
-  # Re-initialise the resolver on failure in httpAddrGetList() 
+
+  # Re-initialise the resolver on failure in httpAddrGetList()
   patch -Np1 -i ${srcdir}/cups-res_init.patch
-  
+
   # Use IP address when resolving DNSSD URIs
   patch -Np1 -i ${srcdir}/cups-avahi-address.patch
-  
+
   # Return from cupsEnumDests() once all records have been returned.
   patch -Np1 -i ${srcdir}/cups-enum-all.patch
 
@@ -92,7 +94,10 @@ prepare() {
 
 build() {
   cd cups-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+  ./configure \
+     --prefix=/usr \
+     --sysconfdir=/etc \
+     --localstatedir=/var \
      --sbindir=/usr/bin \
      --libdir=/usr/lib \
      --with-logdir=/var/log/cups \
@@ -133,7 +138,7 @@ package() {
   install -D -m755 ../cups ${pkgdir}/etc/rc.d/cupsd
   install -D -m644 ../cups.logrotate ${pkgdir}/etc/logrotate.d/cups
   install -D -m644 ../cups.pam ${pkgdir}/etc/pam.d/cups
-  
+
   # fix perms on /var/spool and /etc
   chmod 755 ${pkgdir}/var/spool
   chmod 755 ${pkgdir}/etc
@@ -141,23 +146,23 @@ package() {
   # install ssl directory where to store the certs, solves some samba issues
   install -dm700 -g lp ${pkgdir}/etc/cups/ssl
   # remove directory from package, we create it in cups rc.d file
-  rm -rf ${pkgdir}/var/run
+  rm -rf ${pkgdir}/run
 
   # install some more configuration files that will get filled by cupsd
   touch ${pkgdir}/etc/cups/printers.conf
   touch ${pkgdir}/etc/cups/classes.conf
-  touch ${pkgdir}/etc/cups/subscriptions.conf 
+  touch ${pkgdir}/etc/cups/subscriptions.conf
   chgrp -R lp ${pkgdir}/etc/cups
-  
+
   # fix .desktop file
   sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' ${pkgdir}/usr/share/applications/cups.desktop
-  
+
   # compress some driver files, adopted from Fedora
   find ${pkgdir}/usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
-  
+
   # remove client.conf man page
   rm -f ${pkgdir}/usr/share/man/man5/client.conf.5
-  
+
   # remove files now part of cups-filters
   rm -v ${pkgdir}/usr/share/cups/banners/*
   rm -v ${pkgdir}/usr/share/cups/data/testprint
