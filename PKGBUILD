@@ -3,11 +3,12 @@
 
 pkgname=udisks2-nosystemd
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
 license=('GPL2')
+groups=('eudev-base')
 depends=('glib2' 'udev' 'polkit-consolekit' 'libatasmart' 'util-linux')
 makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python')
 optdepends=('parted: partition management'
@@ -23,7 +24,8 @@ sha256sums=('5cc92fd651ee49a7888f90d091282b949afc629b31fdb34e187208750720632d')
 
 build() {
   cd "udisks-$pkgver"
-  ./configure --prefix=/usr \
+  ./configure \
+      --prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
       --disable-static \
