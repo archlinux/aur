@@ -1,31 +1,31 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python-pybindgen
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc="A tool to generate Python bindings for C/C++ code"
 url="http://pypi.python.org/pypi/PyBindGen"
 arch=('i686' 'x86_64')
 license=('LGPL')
-depends=('python2' 'pygccxml')
+depends=('python' 'pygccxml')
 makedepends=('waf')
 provides=('python-pybindgen')
 conflicts=('python-pybindgen-bzr')
-source=("http://pybindgen.googlecode.com/files/pybindgen-${pkgver}.tar.bz2")
-md5sums=('cfeb90233fc4a84d92307a980a3f1d0c')
+source=("https://pypi.python.org/packages/source/P/PyBindGen/PyBindGen-${pkgver}.tar.gz")
+md5sums=('7d8fe2b3b4646c3c1d9e5342b1645f6a')
 
 build() {
-  cd ${srcdir}/pybindgen-$pkgver
-  PYTHON=python2 ./waf configure --prefix=/usr
-  PYTHON=python2 ./waf
+  cd ${srcdir}/PyBindGen-$pkgver
+  PYTHON=python3 ./waf configure --prefix=/usr
+  PYTHON=python3 ./waf
 }
 
 check() {
-  cd ${srcdir}/pybindgen-$pkgver
-  PYTHON=python2 ./waf check
+  cd ${srcdir}/PyBindGen-$pkgver
+  PYTHON=python3 ./waf check
 }
 
 package() {
-  cd ${srcdir}/pybindgen-$pkgver
-  PYTHON=python2 ./waf install --prefix=/usr --destdir=${pkgdir}
+  cd ${srcdir}/PyBindGen-$pkgver
+  PYTHON=python3 ./waf install --prefix=/usr --destdir=${pkgdir}
 }
