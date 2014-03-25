@@ -4,16 +4,17 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-_realname=syslog-ng
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
+groups=('eudev-base')
 url="http://www.balabit.com/network-security/syslog-ng/"
 depends=('awk' 'eventlog' 'glib2' 'libcap' 'openssl' 'udev')
 makedepends=('flex' 'pkg-config' 'python2' 'libxslt')
-optdepends=('logrotate: for rotating log files')
+optdepends=('logrotate: for rotating log files'
+            'syslog-ng-openrc: syslog-ng openrc initscript')
 provides=("syslog-ng=${pkgver}")
 replaces=('syslog-ng')
 conflicts=('syslog-ng')
@@ -21,11 +22,11 @@ backup=('etc/syslog-ng/scl.conf'
         'etc/syslog-ng/syslog-ng.conf'
         'etc/conf.d/syslog-ng'
         'etc/logrotate.d/syslog-ng')
-source=("http://www.balabit.com/downloads/files/syslog-ng/sources/$pkgver/source/${_realname}_$pkgver.tar.gz"
+source=("http://www.balabit.com/downloads/files/syslog-ng/sources/$pkgver/source/syslog-ng_$pkgver.tar.gz"
         syslog-ng.conf
         syslog-ng.conf.d
         syslog-ng.logrotate
-	syslog-ng.rc)
+        syslog-ng.rc)
 sha1sums=('7a8070f384e0dba1dfd6622c40bc6e402fa6178f'
           'cf61571ffde34ecf36be76881fce20944fd3efa4'
           'eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd'
@@ -33,7 +34,7 @@ sha1sums=('7a8070f384e0dba1dfd6622c40bc6e402fa6178f'
           '94af81a84e3add6653755122cdd5080694de059d')
 
 build() {
-  cd "$_realname-$pkgver"
+  cd "syslog-ng-$pkgver"
 
   ./configure \
     --prefix=/usr \
@@ -51,7 +52,7 @@ build() {
 }
 
 package() {
-  make -C "$_realname-$pkgver" DESTDIR="$pkgdir" install
+  make -C "syslog-ng-$pkgver" DESTDIR="$pkgdir" install
 
   install -dm755 "$pkgdir/var/lib/syslog-ng" "$pkgdir/etc/syslog-ng/patterndb.d"
   install -Dm644 "$srcdir/syslog-ng.conf" "$pkgdir/etc/syslog-ng/syslog-ng.conf"
