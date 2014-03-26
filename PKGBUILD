@@ -25,7 +25,6 @@ _archive=("bitwig-studio-${pkgver}.deb")
 _archive_md5="60415786ba89915e89b25001d3dd891f"
 build() {
   cd $srcdir
-  #cd $pkgname-$pkgver
 
   if [ ! -f ${_archive} ]
   then
