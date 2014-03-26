@@ -36,6 +36,10 @@ build() {
     echo "Invalid checksum for ${_archive}"
     return 1
   fi
+}
+
+package() {
+  cd $srcdir
 
   # create pkgdir folders
   install -d $pkgdir/usr/bin
