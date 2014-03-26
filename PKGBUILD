@@ -13,7 +13,7 @@ license=('custom')
 # yourself in a situation where you are missing 
 # something please tell me via mail or on Github: 
 # https://github.com/mkzero/bitwig-studio-demo-aur
-depends=( 'xdg-utils' 'zenity' )
+depends=( 'xdg-utils' 'zenity' 'xcb-util-wm')
 makedepends=('deb2targz')
 optdepends=('alsa-lib' 'oss')
 provides=('bitwig-studio')
