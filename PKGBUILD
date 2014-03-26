@@ -18,10 +18,10 @@ makedepends=('deb2targz')
 optdepends=('alsa-lib' 'oss')
 provides=('bitwig-studio')
 options=(!strip)
-source=('http://packs.bitwig.com/downloads/bitwig-studio-1.0.1.deb')
+source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver}.deb")
 md5sums=('60415786ba89915e89b25001d3dd891f')
 
-_archive=('bitwig-studio-1.0.1.deb')
+_archive=("bitwig-studio-${pkgver}.deb")
 _archive_md5="60415786ba89915e89b25001d3dd891f"
 build() {
   cd $srcdir
