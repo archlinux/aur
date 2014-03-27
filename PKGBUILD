@@ -2,10 +2,10 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=automatic
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="RSS downloader for Linux based systems, capable of adding downloaded torrents directly to Transmission"
 arch=('i686' 'x86_64')
-url="http://kylek.is-a-geek.org:31337/Automatic/"
+url="http://forum.dsmg600.info/viewtopic.php?id=2291"
 license=('GPLv2')
 depends=('curl' 'libxml2' 'pcre')
 optdepends=('transmission-cli')
