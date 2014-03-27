@@ -4,8 +4,14 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 # Contributor: Michael Düll <mail@akurei.me>
 
+# I would just like to take a minute here and state that synergy is
+# some of the worst packaged software ever. They BUNDLE a fucking
+# zip for cryptopp and do not provide an option to use a system-
+# installed version of that library. They change around paths every
+# update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.4.16
+pkgver=1.4.17
+_pkgver=2055
 pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
@@ -14,14 +20,14 @@ depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++')
 makedepends=('libxt' 'cmake' 'qt5-base' 'unzip')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
-source=("http://fossfiles.com/synergy/synergy-${pkgver}-r1969-Source.tar.gz"
+source=("http://fossfiles.com/synergy/synergy-${pkgver}-r${_pkgver}-Source.tar.gz"
         "synergys.socket"
         "synergys.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
-sha1sums=('c489e8f3262d5ad5dbcb5257c8354f459bd68f1f'
+sha1sums=('a28fd5c7e709e6ee85501e9ed4496d060d3e5c22'
           '947406e72351145c65ba9884ed175bf781482d46'
           '00f2259c31c9551c0830d9e889fd0a0790cf9045'
-          '129151952e6d25504ca823aee8ebe93ce3d376ce')
+          '8e321e664ae4b7a763175524dd938a88d85c7909')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
