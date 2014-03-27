@@ -3,7 +3,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=slic3r
-pkgver=1.0.0RC3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
@@ -30,7 +30,7 @@ conflicts=('slic3r-git')
 source=("https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
 				'slic3r.desktop'
 				'slic3r')
-md5sums=('cd33fed96d8dcf667b94aea2fa6be875'
+md5sums=('0739eae265015b0cca440a7b80979e80'
          'cf0130330574a13b4372beb8f241d71e'
          'a30a96504f11c95956dd8ce645b77504')
 
