@@ -5,7 +5,7 @@
 # Contributor: scippio <scippio@berounet.cz>
 
 pkgname=freeimage
-pkgver=3.15.4
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('i686' 'x86_64')
@@ -14,20 +14,15 @@ url="http://freeimage.sourceforge.net/"
 depends=('gcc-libs')
 makedepends=('dos2unix')
 source=("http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip")
-md5sums=('9f9a3b2c3c1b4fd24fe479e8aaee86b1')
+md5sums=('1a2d1fff6204adbd479cc98818892fc1')
 
 build() {
   cp -r FreeImage FreeImagefip
 
-  export CFLAGS="$CFLAGS -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS"
-  export CXXFLAGS="$CXXFLAGS -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS"
-
   cd FreeImage
-  sed -i "1 i #include <cstring>" Source/OpenEXR/IlmImf/ImfAutoArray.h
   make
 
   cd ${srcdir}/FreeImagefip
-  sed -i "1 i #include <cstring>" Source/OpenEXR/IlmImf/ImfAutoArray.h
   make -f Makefile.fip 
 }
 
