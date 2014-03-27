@@ -2,7 +2,7 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=systemd-user-session-units-git
-pkgver=58
+pkgver=75
 pkgrel=1
 pkgdesc="A collection of units for the systemd user session."
 arch=('any')

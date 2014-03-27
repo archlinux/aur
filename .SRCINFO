@@ -1,6 +1,6 @@
 pkgbase = systemd-user-session-units-git
 	pkgdesc = A collection of units for the systemd user session.
-	pkgver = 58
+	pkgver = 75
 	pkgrel = 1
 	url = https://github.com/sofar/user-session-units
 	arch = any
