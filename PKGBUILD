@@ -3,8 +3,8 @@
 
 pkgname=libplist-git
 epoch=1
-pkgver=1.10.29.g6dcc8c4
-pkgrel=2
+pkgver=1.11.1.gf5f2f5e
+pkgrel=1
 pkgdesc="A library to handle Apple Property List format whereas it's binary or XML"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
