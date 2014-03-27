@@ -1,7 +1,7 @@
 pkgbase = syslog-ng-nosystemd
 	pkgdesc = Next-generation syslogd with advanced networking and filtering capabilities
 	pkgver = 3.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.balabit.com/network-security/syslog-ng/
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,9 @@ pkgbase = syslog-ng-nosystemd
 	optdepends = syslog-ng-openrc: syslog-ng openrc initscript
 	provides = syslog-ng=3.5.3
 	conflicts = syslog-ng
+	conflicts = syslog-ng-eudev
 	replaces = syslog-ng
+	replaces = syslog-ng-eudev
 	backup = etc/syslog-ng/scl.conf
 	backup = etc/syslog-ng/syslog-ng.conf
 	backup = etc/conf.d/syslog-ng

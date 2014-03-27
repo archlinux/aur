@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -16,8 +16,8 @@ makedepends=('flex' 'pkg-config' 'python2' 'libxslt')
 optdepends=('logrotate: for rotating log files'
             'syslog-ng-openrc: syslog-ng openrc initscript')
 provides=("syslog-ng=${pkgver}")
-replaces=('syslog-ng')
-conflicts=('syslog-ng')
+replaces=('syslog-ng' 'syslog-ng-eudev')
+conflicts=('syslog-ng' 'syslog-ng-eudev')
 backup=('etc/syslog-ng/scl.conf'
         'etc/syslog-ng/syslog-ng.conf'
         'etc/conf.d/syslog-ng'
