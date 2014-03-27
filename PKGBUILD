@@ -3,11 +3,11 @@
 
 pkgname=python-librtmp
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to librtmp"
 arch=('i686' 'x86_64')
 url="https://github.com/chrippa/python-librtmp"
-license=('Simplified BSD')
+license=('custom: Simplified BSD')
 depends=('python-singledispatch' 'python-cffi' 'rtmpdump')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")

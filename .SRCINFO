@@ -1,11 +1,11 @@
 pkgbase = python-librtmp
 	pkgdesc = Python interface to librtmp
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrippa/python-librtmp
 	arch = i686
 	arch = x86_64
-	license = Simplified BSD
+	license = custom: Simplified BSD
 	makedepends = python-setuptools
 	depends = python-singledispatch
 	depends = python-cffi
