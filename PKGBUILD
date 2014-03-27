@@ -3,25 +3,27 @@
 
 pkgname="cups-nosystemd"
 pkgver=1.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.cups.org/"
 groups=('eudev-base')
-depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord' 'libusb' 'dbus' 'hicolor-icon-theme' 'libpaper')
-makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd' 'gzip' 'autoconf' 'avahi' 'openssl' 'inetutils')
+depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord' 'libusb'
+         'dbus' 'hicolor-icon-theme' 'libpaper')
+makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd'
+             'gzip' 'autoconf' 'avahi' 'openssl' 'inetutils')
 optdepends=('xdg-utils: xdg .desktop file support'
             'cups-openrc: cups openrc initscript')
 provides=("cups=${pkgver}")
-conflicts=('cups')
-replaces=('cups')
+conflicts=('cups' 'cups-eudev')
+replaces=('cups' 'cups-eudev')
 install=cups-nosystemd.install
 backup=(etc/cups/cupsd.conf
         etc/cups/snmp.conf
         etc/cups/printers.conf
         etc/cups/classes.conf
-	etc/cups/cups-files.conf
+        etc/cups/cups-files.conf
         etc/cups/subscriptions.conf
         etc/dbus-1/system.d/cups.conf
         etc/logrotate.d/cups
@@ -41,7 +43,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-1.6.0-fix-install-perms.patch
         cups-1.6.2-statedir.patch
         # Debian
-	get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
+        get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
 md5sums=('55277c40fd4b7183dc3671d39c5c42b7'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'f861b18f4446c43918c8643dcbbd7f6d'

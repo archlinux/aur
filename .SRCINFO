@@ -1,7 +1,7 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
 	pkgver = 1.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.cups.org/
 	install = cups-nosystemd.install
 	arch = i686
@@ -32,7 +32,9 @@ pkgbase = cups-nosystemd
 	optdepends = cups-openrc: cups openrc initscript
 	provides = cups=1.7.1
 	conflicts = cups
+	conflicts = cups-eudev
 	replaces = cups
+	replaces = cups-eudev
 	backup = etc/cups/cupsd.conf
 	backup = etc/cups/snmp.conf
 	backup = etc/cups/printers.conf
