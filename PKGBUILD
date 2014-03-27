@@ -4,7 +4,7 @@
 #
 pkgname=dbus-nosystemd
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Freedesktop.org message bus system"
 url="http://www.freedesktop.org/Software/dbus"
 arch=(i686 x86_64)
@@ -16,8 +16,8 @@ makedepends=('libx11' 'xmlto' 'docbook-xsl')
 optdepends=('libx11: dbus-launch support'
             'dbus-openrc: dbus openrc initscript')
 provides=('dbus-core' "dbus=${pkgver}")
-conflicts=('dbus-core' 'dbus')
-replaces=('dbus-core' 'dbus')
+conflicts=('dbus-core' 'dbus' 'dbus-eudev')
+replaces=('dbus-core' 'dbus' 'dbus-eudev')
 install=dbus-nosystemd.install
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz #{,.asc}
 	30-dbus dbus)

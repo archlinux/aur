@@ -1,7 +1,7 @@
 pkgbase = dbus-nosystemd
 	pkgdesc = Freedesktop.org message bus system
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freedesktop.org/Software/dbus
 	install = dbus-nosystemd.install
 	arch = i686
@@ -23,8 +23,10 @@ pkgbase = dbus-nosystemd
 	provides = dbus=1.8.0
 	conflicts = dbus-core
 	conflicts = dbus
+	conflicts = dbus-eudev
 	replaces = dbus-core
 	replaces = dbus
+	replaces = dbus-eudev
 	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.0.tar.gz
 	source = 30-dbus
 	source = dbus
