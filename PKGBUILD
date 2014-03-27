@@ -6,7 +6,7 @@ pkgdesc="Wx::GLCanvas - interface to wxWidgets' OpenGL canvas"
 arch=('any')
 url="http://search.cpan.org/~mbarbon/Wx-GLCanvas/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0')
+depends=('perl>=5.10.0' 'perl-alien-wxwidgets')
 makedepends=()
 provides=()
 conflicts=()
