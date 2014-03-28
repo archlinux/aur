@@ -1,8 +1,8 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-vmware
-pkgver=13.0.1
-pkgrel=3
+pkgver=13.0.2
+pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
@@ -12,16 +12,8 @@ makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=15')
 conflicts=('xorg-server<1.15.0' 'X-ABI-VIDEODRV_VERSION<15' 'X-ABI-VIDEODRV_VERSION>=16')
 groups=('xorg-drivers' 'xorg')
 options=('!emptydirs')
-source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2
-	xatracker-v2-fixes.patch)
-sha256sums=('802dda415c22412edad6c3df44fe18a06e91d0f8456d9a58bac0d340fdf8fe3d'
-            '7ab392cbc6258dc36df14ef60072c655d850bcfb6885111b41bcfe25dc1faacc')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  # grab from upstream git repo, needed for mesa>10.0
-  patch -Np1 -i ../xatracker-v2-fixes.patch
-}
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('c8ba3d2cead3620dba2cbf5defb7f1759b2b96f4fe209f4bf6976832b6763c54')
 
 build() {
   cd ${pkgname}-${pkgver}
