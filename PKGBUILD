@@ -49,8 +49,8 @@
 _bldtype=Release
 
 _mozcver=1.13.1651.102
-_utdicver=20140205
-_zipcoderel=201401
+_utdicver=20140320
+_zipcoderel=201402
 _protobuf_ver=2.5.0
 _gyp_rev=1828
 
@@ -144,14 +144,15 @@ package() {
 
   install -d "${pkgdir}/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE doc-ut/README data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
-  for d in doc-ut/dictionary/*
+  cd doc-ut/dictionary
+  for d in *
   do
     install -d "${pkgdir}/usr/share/licenses/dictionary/${d}"
     install -m 644 "${d}"/* "${pkgdir}/usr/share/licenses/dictionary/${d}"
   done
-  [[ "$_edict" == "yes" ]] && \
-    install -m 644 ${srcdir}/EDICT_license.html "${pkgdir}/usr/share/licenses/dictionary/edict/license.html"
+  install -m 644 ${srcdir}/EDICT_license.html "${pkgdir}/usr/share/licenses/dictionary/edict/license.html"
 
+  cd "${srcdir}/mozc-ut-${pkgver}"
   for mofile in out_linux/${_bldtype}/obj/gen/unix/fcitx/po/*.mo
   do
     filename=`basename $mofile`
@@ -178,12 +179,12 @@ package() {
 
 sha512sums=('SKIP'
             'SKIP'
-            '0b3ad94bc4fda6ffdf6b06f3cf0bfc92946ab5f49add636ba82b529c24b3b77ef3ffdeb860654152b28e569595eefae86da2bf2ea8aa3422a24eda746b3379ae'
-            '51c414575c61f378fa21f28c0eed3c40c585c6f1f1fcd1d22f0ab642aa396d945dc2b8ddea3fe76dd5366b31c2ee69fbbb8b8b8c0d717266717a9dcf4f0ae391'
+            '9d3008a7296090cba5c000b96038e9632c5792987dd1549cbbe7e223376027d78bede82f5c16edf0331c40ab8eb31da4a00aa8c2511d634583a884e4ca7e0adc'
+            '9e6f2a35f1a20c74e9cf367b7cf0d94b0182bd8d50995c6e06a97a9ecb5e46da89847e31a2a8fd23697f8c39ac80c07da7e4db1f6a8db8118418934fd46a6383'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             '10089bcae1ff2ce063cdc04900523f7a2b3c6e386eadf92c7295575688db938d602aa6e94c3401ece229f4023511d0fd5543eb45a09dc6474ed185dbfedf592f'
-            'e6e8f0d71c1f9baf1b5d7a446bb73ca49146e1701a682475425743a2ddeeea79e0e56ce8f3aa53d01da3dc751fba01bf4036cce500b9f537c954f2a88a7c43d9'
-            '51637967d68d13bb3d10469ce45ea92cfac4fd80bd74600c34150c48c606e034b1073f5ee995fb5c30121560fc21dd4c85e0b5d9e7569714d611db39f01d79b0'
+            'b0cd251048fc8d429387e7d5e0d86b3b3478b83c0a2ce994d002e66041b123cd2b03cbd08ac54874c7491af12a754aa661b18d5131f8f55717d0483040dfd1eb'
+            '188b88e81acdd66776d2e2e2a6a60e449d87864f4e128baa47c048075e7127be16a58a6fe283e3f0df3058edfd4b430e79b1c37789decedb8f3c54b3d1cc9f8f'
             '5994b3669808b82fef5c860ecad36358c0767f84acac877e7bfcf722e59d972835a955714149bdd4158fbd1328a51d01397a563991d26475351ee72be48142ee'
             'cd879029d87fd80a70796bd83ac67decbb58b181acafcee22110cb46a50c371c82b67babcfe80b1c05fa9beef3d3a7ddd580105a70c411795cf8c9ef745661e2'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
