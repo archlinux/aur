@@ -1,7 +1,7 @@
 pkgbase = wdm
 	pkgdesc = An replacement X window display manager similar to, and based on XDM
 	pkgver = 1.28
-	pkgrel = 8
+	pkgrel = 7
 	url = http://github.com/raorn/wdm
 	arch = i686
 	arch = x86_64
@@ -14,11 +14,9 @@ pkgbase = wdm
 	source = wdm::git+https://github.com/raorn/wdm.git#tag=wdm-1.28
 	source = Makefile.in
 	source = cy.po
-	source = wdm.service
 	md5sums = SKIP
 	md5sums = b0860fca75e1c8ce7699014b4778a3f7
 	md5sums = 2e1a8d2c6bd69d1fad151d86906163bd
-	md5sums = e176d2339acb8b5422c0369f83fd68a0
 
 pkgname = wdm
 
