@@ -5,17 +5,22 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.8.3
-pkgrel=2
+pkgrel=3
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
 license=('GPL')
-makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' \
-             'iso-codes' 'gobject-introspection' 'libxkbfile')
-source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz)
+makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
+             'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant')
+source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz
+        add-a-context-variable-to-disable-punc.patch)
+
+prepare() {
+  cd ${pkgbase}-${pkgver}
+  patch -p1 -i ../add-a-context-variable-to-disable-punc.patch
+}
 
 build() {
-  cd "$srcdir"
   mkdir -p build
   cd build
 
@@ -35,7 +40,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/build"
+  cd build
   make test
 }
 
@@ -72,7 +77,7 @@ package_fcitx() {
 	      'gettext: for fcitx-po-parser')
   install=fcitx.install
 
-  cd "${srcdir}/build"
+  cd build
   make DESTDIR="${pkgdir}" install
 
   rm -r "${pkgdir}/usr/lib/"{gtk-2.0,gtk-3.0,qt4}
@@ -118,4 +123,5 @@ package_fcitx-qt4() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('93c7aa5209f344e1e89addb1dca7a76cde884e4467c0db5f79e758ea8ffb0fe1207ba1c507fb6574fe8223fa873ed5d1dd44835b70cf9254f5149df8e242e92d')
+sha512sums=('93c7aa5209f344e1e89addb1dca7a76cde884e4467c0db5f79e758ea8ffb0fe1207ba1c507fb6574fe8223fa873ed5d1dd44835b70cf9254f5149df8e242e92d'
+            'ceb4d1b768f2f0c90c5bcde2c00a713883bed28d0e0e1f00a00c685020794d296045690cd55939127d0e204851248fe107e8a277571a8f7dbafde0eed29c340d')
