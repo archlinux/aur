@@ -8,7 +8,7 @@ pkgdesc="Infinite Storage in the cloud"
 arch=('x86_64' 'i686')
 url="http://www.bitcasa.com"
 license=('custom')
-depends=('fuse')
+depends=('fuse' 'libidn' 'util-linux')
 makedepends=('binutils' 'tar')
 _source_arch="i386"
 [ "$CARCH" = "x86_64" ] && _source_arch="amd64"
