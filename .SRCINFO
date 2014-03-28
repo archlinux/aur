@@ -1,7 +1,7 @@
 pkgbase = pkgbrowser
 	pkgdesc = A utility for browsing pacman databases and the AUR
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/kachelaqa/pkgbrowser
 	install = pkgbrowser.install
 	arch = i686

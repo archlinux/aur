@@ -2,7 +2,7 @@
 
 pkgname='pkgbrowser'
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility for browsing pacman databases and the AUR'
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/kachelaqa/$pkgname"
