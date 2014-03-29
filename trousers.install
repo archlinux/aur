@@ -16,7 +16,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-  /etc/rc.d/tcsd stop &> /dev/null
   systemctl stop tcsd
   userdel tss
 }
