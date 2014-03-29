@@ -1,4 +1,6 @@
-src/
 cp/
+src/
+pkg/
 bitwig-studio-*.deb
 bitwig-studio-demo-*.src.tar.gz
+bitwig-studio-demo-*.tar.xz
