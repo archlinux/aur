@@ -22,7 +22,7 @@ source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver}.deb")
 md5sums=('2d6a2dacf0e658a49d5026f11574ddbc')
 
 _archive=("bitwig-studio-${pkgver}.deb")
-_archive_md5="1cd74be4ac9966327ae75fa1bcb76160"
+_archive_md5="${md5sums[0]}"
 build() {
   cd $srcdir
 
