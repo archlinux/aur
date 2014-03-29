@@ -20,7 +20,3 @@ pre_remove() {
   systemctl stop tcsd
   userdel tss
 }
-
-op=$1
-shift
-$op $*
