@@ -13,7 +13,7 @@ _gitbranch="master"
 _pkgname="syslinux"
 pkgname="${_pkgname}-firmware-git"
 
-pkgver=6.03pre6
+pkgver=6.03pre9
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master (previously firmware) branch"
@@ -38,7 +38,7 @@ optdepends=('perl-passwd-md5:  For md5pass'
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        "gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code"
+        "gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#commit=b32a5785737023d10b2c08ad433cd2604d36bcb8"
         'syslinux.cfg'
         'syslinux-install_update')
 
@@ -123,7 +123,7 @@ _build_syslinux_efi64() {
 	echo
 	
 	msg "Run make install gnu-efi for syslinux efi64"
-	make ARCH="x86_64" PREFIX="${srcdir}/${_pkgname}-efi64/OBJDIR/efi64/" install
+	make ARCH="x86_64" PREFIX="${srcdir}/${_pkgname}-efi64/OBJDIR/efi64/" -j1 install
 	echo
 	
 	cd "${srcdir}/${_pkgname}-efi64/"
