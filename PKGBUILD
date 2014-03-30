@@ -1,21 +1,27 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv
-pkgver=0.2.3
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
 url="http://www.infradead.org/ocserv/"
 license=('GPL2')
-depends=('autogen' 'gnutls')
+depends=('autogen' 'libpcl' 'gnutls' 'http-parser' 'libdbus' 'libnl' 'libsystemd' 'pam' 'protobuf-c')
 backup=('etc/ocserv.config' 'etc/ocserv-passwd')
 source=("ftp://ftp.infradead.org/pub/ocserv/ocserv-$pkgver.tar.xz")
-sha256sums=('eb3fe2b2bf40d68c92d1f63cc0e52385ad614f203acd97811d352ac90e74a147')
+sha256sums=('a420bff8d26bd7b1e820b875a264bd8fdae871770120f3adf131b040cbf6ed9a')
+
+prepare() {
+  cd "$srcdir/${pkgname}-${pkgver}/"
+  sed -e 's/CPPFunction/rl_completion_func_t/' -i src/occtl.c
+}
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}/"
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
+
 package() {
   cd "$srcdir/${pkgname}-${pkgver}/"
   make DESTDIR="$pkgdir" install
