@@ -30,7 +30,7 @@ build()
 	cd "${srcdir}/${pkgname}"
 	rm -rf "${srcdir}/${pkgname}/build"
 	sed -i 's/AM_PROG_CC_STDC/AC_PROG_CC/g' configure.ac
-	./autogen.sh
+#	./autogen.sh
 
 	LDFLAGS='-lm' ./configure --prefix=/usr
 	make
