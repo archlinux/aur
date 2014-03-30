@@ -8,7 +8,7 @@ pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
 url="http://pilight.org/"
 license=('GPL3')
-makedepends=('git' 'gcc' 'glibc')
+makedepends=('cmake' 'git' 'gcc' 'glibc')
 source=("https://github.com/pilight/pilight/archive/v${pkgver}.tar.gz"
         'https://raw.github.com/pschmitt/aur-pilight/master/pilight.service')
 sha256sums=('fdd75bccdb4df1e75749ba6b1b490d5e258a752e85efd5f63ea35130a1de94f1'

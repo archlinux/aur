@@ -6,6 +6,7 @@ pkgbase = pilight
 	arch = x86_64
 	arch = armv6h
 	license = GPL3
+	makedepends = cmake
 	makedepends = git
 	makedepends = gcc
 	makedepends = glibc
