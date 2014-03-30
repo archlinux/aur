@@ -1,0 +1,27 @@
+From fbb6fe5ec57a2a0a9464ec5c433fc18793ebb05f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?D=C4=81vis?= <davispuh@gmail.com>
+Date: Thu, 17 Sep 2015 18:05:29 +0300
+Subject: [PATCH] Remove new_sync for Linux >= 4.1
+
+---
+ open-vm-tools/modules/linux/vmhgfs/file.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/open-vm-tools/modules/linux/vmhgfs/file.c b/open-vm-tools/modules/linux/vmhgfs/file.c
+index 0bc5ee3..ada3eee 100644
+--- a/open-vm-tools/modules/linux/vmhgfs/file.c
++++ b/open-vm-tools/modules/linux/vmhgfs/file.c
+@@ -169,8 +169,10 @@ struct file_operations HgfsFileFileOperations = {
+    .flush      = HgfsFlush,
+ #if defined VMW_USE_AIO
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 1, 0)
+    .read       = new_sync_read,
+    .write      = new_sync_write,
++#endif // LINUX_VERSION_CODE < KERNEL_VERSION(4, 1, 0)
+    .read_iter  = HgfsFileRead,
+    .write_iter = HgfsFileWrite,
+ #else // LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0)
+---
+2.5.2
+
