@@ -9,7 +9,7 @@ arch=('any')
 url='http://expat.sourceforge.net/'
 license=('custom')
 options=(!strip libtool staticlibs)
-depends=('devkitppc' 'devkitppc-portlibs-zlib')
+depends=('devkitppc')
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/expat-$pkgver.tar.bz2")
 sha256sums=('b4565d5ef6caa6c66e9fe2a06830ab904595771e6a8a84524ac65553ec3b2b8f')
 

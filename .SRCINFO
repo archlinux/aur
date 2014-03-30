@@ -6,7 +6,6 @@ pkgbase = devkitppc-portlibs-expat
 	arch = any
 	license = custom
 	depends = devkitppc
-	depends = devkitppc-portlibs-zlib
 	options = !strip
 	options = libtool
 	options = staticlibs
