@@ -56,6 +56,7 @@ package() {
 
   # Install icons
   mkdir -p $pkgdir/usr/share/pixmaps
-  cp $pkgdir/usr/share/icons/gnome/48x48/apps/bitwig-studio.png \
+  install -m644 $pkgdir/usr/share/icons/gnome/48x48/apps/bitwig-studio.png \
     $pkgdir/usr/share/pixmaps/
+  install -m644 $pkgdir/usr/share/icons/gnome $pkgdir/usr/share/icons/hicolor
 }
