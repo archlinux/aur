@@ -7,7 +7,7 @@ pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
 pkgver=4.11.7
 _kdever=4.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -46,6 +46,17 @@ sha1sums=('515c687a5a967e14e0470012e99ca2ae4cd86700'
           'd509dac592bd8b310df27991b208c95b6d907514'
           'aa9d2e5a69986c4c3d47829721ea99edb473be12')
 
+# avoid linking error when libsystemd-journal.so.0 doesn't exist in
+# user's system
+check_libpulse() {
+	if ! pacman -Q systemd >/dev/null 2>&1 && \
+		pacman -Q libpulse >/dev/null 2>&1; then
+		return 1
+	fi
+	return 0
+}
+check_libpulse || makedepends+=('libpulse-nosystemd')
+
 prepare() {
 	cd ${_pkgname}-${pkgver}
 
@@ -63,11 +74,6 @@ prepare() {
 }
 
 build() {
-	if ! pacman -Q systemd >/dev/null 2>&1 && \
-           ! pacman -Q libpulse-nosystemd >/dev/null 2>&1; then
-		warning "If you got linking error during build try to replace libpulse to libpulse-nosystemd package. See https://aur.archlinux.org/packages/libpulse-nosystemd/"
-	fi
-
 	mkdir build
 	cd build
 	cmake ../${_pkgname}-${pkgver} \
@@ -92,12 +98,12 @@ package() {
 
 	install -d -m755 "${pkgdir}"/usr/share/xsessions/
 	ln -sf /usr/share/apps/kdm/sessions/kde-plasma{,-safe}.desktop \
-                "${pkgdir}"/usr/share/xsessions/
+		"${pkgdir}"/usr/share/xsessions/
 	install -d -m755 "${pkgdir}"/etc/kde/{env,shutdown}
 
 	install -d -g 135 -o 135 "${pkgdir}"/var/lib/kdm
-        install -D -m755 "${srcdir}"/kdm "${pkgdir}"/etc/rc.d/kdm
-        install -D -m644 "${srcdir}"/kdm.service \
-                "${pkgdir}"/usr/lib/systemd/system/kdm.service
-        install -Dm644 "${srcdir}"/kdm.logrotate "${pkgdir}"/etc/logrotate.d/kdm
+	install -D -m755 "${srcdir}"/kdm "${pkgdir}"/etc/rc.d/kdm
+	install -D -m644 "${srcdir}"/kdm.service \
+		"${pkgdir}"/usr/lib/systemd/system/kdm.service
+	install -Dm644 "${srcdir}"/kdm.logrotate "${pkgdir}"/etc/logrotate.d/kdm
 }
