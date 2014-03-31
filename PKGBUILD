@@ -3,13 +3,13 @@
 pkgname=perl-datetime-format-datemanip
 _realname=DateTime-Format-DateManip
 pkgver=0.04
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl DateTime extension to convert Date::Manip dates and durations to DateTimes and vice versa."
 url="https://metacpan.org/module/DateTime::Format::DateManip"
 depends=(perl perl-datetime perl-date-manip)
 license="GPL"
 options=('!emptydirs')
-arch=('i686' 'x86_64')
+arch=('any')
 source=(http://cpan.metacpan.org/authors/id/B/BB/BBENNETT/dt-fmt-datemanip/DateTime-Format-DateManip-0.04.tar.gz)
 md5sums=('5965a3b4760c8aafb7471ba37d3a39c4')
 
