@@ -1,0 +1,18 @@
+pkgbase = perl-css-inliner
+	pkgdesc = Perl CSS::Inliner CPAN module
+	pkgver = 3936
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CSS-Inliner/
+	arch = any
+	license = unknown
+	depends = perl
+	depends = perl-html-query
+	depends = perl-html-treebuilder-xpath
+	depends = perl-libwww
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAMELKEV/CSS-Inliner-3936.tar.gz
+	sha256sums = 047fa69f3d9e61d0cf9c7ea7eb78e0d3d33fb9ff6b180d6eafe53c26b0121c4a
+
+pkgname = perl-css-inliner
+
