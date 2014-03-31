@@ -23,8 +23,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            'daeeef19e9bb520a6572d7eacf6e8b52e91a8176914c5912389b3e8d7b27aa41'
-            '12943874b15423e255d05057c87ffe46a93a37cc3bdaa1497a1d07d63d8bd3e5'
+            '059325a759c92a0bbc07b5618b3d59eccd72a7647d066c509c9eceb0aecc799e'
+            'd2c8ddda8e56884596ce76fd53f1513a27ed4f9a092513813d0d6164f423cc28'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '17984c2dafbc3099cafe01dbf03039844099c3cc7719d9bc8633b1ca6a6ab17b'
@@ -34,6 +34,7 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
 _kernelname=${pkgbase#linux}
 
 prepare() {
+  CARCH=i686
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
