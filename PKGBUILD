@@ -2,7 +2,7 @@
 
 cpaname=CSS-Inliner
 cpanauthor=KAMELKEV
-pkgname=perl-${cpaname,,}
+pkgname=perl-css-inliner
 pkgver=3936
 pkgrel=1
 pkgdesc="Perl CSS::Inliner CPAN module"
