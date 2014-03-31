@@ -15,7 +15,7 @@ makedepends=(python-setuptools)
 provides=(python-$_pkgname=$pkgver)
 conflicts=(python-$_pkgname)
 source=(http://pypi.python.org/packages/source/e/$_pkgname/$_pkgname-$pkgver.tar.gz
-        https://raw.github.com/gvalkov/python-$_pkgname/master/LICENSE)
+        https://github.com/gvalkov/python-evdev/raw/d9110552d6d03bd657d876b40a066b6790e82ebb/LICENSE)
 
 package() {
     cd "$srcdir"/$_pkgname-$pkgver/
