@@ -3,8 +3,8 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.13
-pkgver=3.13.7
+_srcname=linux-3.14
+pkgver=3.14
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -12,40 +12,24 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'criu-no-expert.patch'
-        '0001-sunrpc-create-a-new-dummy-pipe-for-gssd-to-hold-open.patch'
-        '0002-sunrpc-replace-sunrpc_net-gssd_running-flag-with-a-m.patch'
-        '0003-nfs-check-if-gssd-is-running-before-attempting-to-us.patch'
-        '0004-rpc_pipe-remove-the-clntXX-dir-if-creating-the-pipe-.patch'
-        '0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch'
-        '0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch'
-        '0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch'
         '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
-        'i8042-fix-aliases.patch'
+        '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
+        '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         )
-md5sums=('0ecbaf65c00374eb4a826c2f9f37606f'
-         'cb33b329d3417846d310c7f58a2614b6'
-         'ba4468d313adfaf22368add7f58204aa'
-         '035bb27dac306f5c028d96cad14bb249'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '98beb36f9b8cf16e58de2483ea9985e3'
-         '989dc54ff8b179b0f80333cc97c0d43f'
-         'dd2adb99cd3feed6f11022562901965c'
-         'b00cc399d3797cb0793e18b5bf387a50'
-         '7cbd2349cdf046acc37b652c06ba36be'
-         '10dbaf863e22b2437e68f9190d65c861'
-         'd5907a721b97299f0685c583499f7820'
-         'a724515b350b29c53f20e631c6cf9a14'
-         'e6fa278c092ad83780e2dd0568e24ca6'
-         '06f1751777e0772c18c3fa4fbae91aa5'
-         '93dbf73af819b77f03453a9c6de2bb47'
-         )
+sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
+            'daeeef19e9bb520a6572d7eacf6e8b52e91a8176914c5912389b3e8d7b27aa41'
+            '12943874b15423e255d05057c87ffe46a93a37cc3bdaa1497a1d07d63d8bd3e5'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
+            '17984c2dafbc3099cafe01dbf03039844099c3cc7719d9bc8633b1ca6a6ab17b'
+            '03522828e5a2af5b5ccfdedb21ec429797e4391549091781df899e7aacb9818a'
+            'fa447576b7f86b495ff922f6b217e5c5864484d23428dd62e46f8fb7778cec7c')
 
 _kernelname=${pkgbase#linux}
 
@@ -53,7 +37,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -63,33 +47,15 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # allow Checkpoint/restore (for criu) without EXPERT=y
-  patch -p1 -i "${srcdir}/criu-no-expert.patch"
-
-  # fix 15 seocnds nfs delay
-  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=4b9a445e3eeb8bd9278b1ae51c1b3a651e370cd6
-  patch -p1 -i "${srcdir}/0001-sunrpc-create-a-new-dummy-pipe-for-gssd-to-hold-open.patch"
-  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=89f842435c630f8426f414e6030bc2ffea0d6f81
-  patch -p1 -i "${srcdir}/0002-sunrpc-replace-sunrpc_net-gssd_running-flag-with-a-m.patch"
-  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=6aa23d76a7b549521a03b63b6d5b7880ea87eab7
-  patch -p1 -i "${srcdir}/0003-nfs-check-if-gssd-is-running-before-attempting-to-us.patch"
-
-  # fix nfs kernel oops
-  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=3396f92f8be606ea485b0a82d4e7749a448b013b
-  patch -p1 -i "${srcdir}/0004-rpc_pipe-remove-the-clntXX-dir-if-creating-the-pipe-.patch"
-  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=e2f0c83a9de331d9352185ca3642616c13127539
-  patch -p1 -i "${srcdir}/0005-sunrpc-add-an-info-file-for-the-dummy-gssd-pipe.patch"
-  # http://git.linux-nfs.org/?p=trondmy/linux-nfs.git;a=commitdiff;h=23e66ba97127ff3b064d4c6c5138aa34eafc492f
-  patch -p1 -i "${srcdir}/0006-rpc_pipe-fix-cleanup-of-dummy-gssd-directory-when-no.patch"
-
   # Fix symbols: Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=83460ec8dcac14142e7860a01fa59c267ac4657c
-  patch -Rp1 -i "${srcdir}/0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch"
-
-  # Fix i8042 aliases
-  patch -p1 -i "${srcdir}/i8042-fix-aliases.patch"
+  #patch -Rp1 -i "${srcdir}/0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch"
 
   # Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
   patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
+
+  # Fix atkbd aliases
+  patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
+  patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
