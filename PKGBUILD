@@ -3,7 +3,7 @@
 # Contributor 1: Lee.MaRS <leemars@gmail.com>
 
 pkgname=google-appengine-java
-pkgver=1.8.5
+pkgver=1.9.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Google App Engine SDK for Java."
@@ -11,9 +11,9 @@ url="http://code.google.com/appengine/"
 license="('Apache 2')"
 depends=()
 options=('!strip')
-source=(http://googleappengine.googlecode.com/files/appengine-java-sdk-${pkgver}.zip
+source=(https://commondatastorage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-${pkgver}.zip
         profile.appengine-java-sdk)
-sha1sums=('1fd19eed87d5442b7c3fc434d77a458937424284'
+sha1sums=('e2bcbf981b3ebcb0639b818e201fe220cadc51d5'
           '9d6e6c6bd7f3ec53dc08cdfacaac931cfa1cf2f3')
 
 package() {
