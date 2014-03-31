@@ -1,7 +1,7 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 # Contributor: Swift Geek <swiftgeek «at» gmail.com>
 cpaname=ExtUtils-Typemap
-pkgname=perl-${cpaname,,}
+pkgname=perl-extutils-typemap
 pkgver=1.00
 pkgrel=1
 pkgdesc="ExtUtils::Typemap "
