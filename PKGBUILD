@@ -50,9 +50,11 @@ package() {
 
   install -m644 ${pkgdir}/opt/$_pkgname/EULA.rtf $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
+  # Fix launcher category
   sed -i 's:Categories=Multimedia:Categories=Multimedia;AudioVideo;Player;Recorder;:' \
     $pkgdir/usr/share/applications/bitwig-studio.desktop
 
+  # Install icons
   mkdir -p $pkgdir/usr/share/pixmaps
   cp $pkgdir/usr/share/icons/gnome/48x48/apps/bitwig-studio.png \
     $pkgdir/usr/share/pixmaps/
