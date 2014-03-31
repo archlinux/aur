@@ -1,0 +1,55 @@
+--- src/CMakeLists.old	2014-03-31 14:45:54.585329000 +0200
++++ src/CMakeLists.txt	2014-03-31 15:04:47.691007930 +0200
+@@ -68,21 +68,27 @@ if(UNIX)
+ 		TARGETS 
+ 			mars
+ 		RUNTIME DESTINATION
+-			${CMAKE_INSTALL_PREFIX}/games
++			${CMAKE_INSTALL_PREFIX}/bin
+ 	)
+ 	install(
+ 		FILES
+ 			${MARS_SOURCE_DIR}/credits.txt
++			${MARS_SOURCE_DIR}/README.md
++		DESTINATION
++			${CMAKE_INSTALL_PREFIX}/share/doc/mars-shooter
++	)
++	install(
++		FILES
+ 			${MARS_SOURCE_DIR}/license.txt
+ 		DESTINATION
+-			${CMAKE_INSTALL_PREFIX}/share/doc/marsshooter
++			${CMAKE_INSTALL_PREFIX}/share/licenses/mars-shooter-git
+ 	)
+ 	install(
+ 		FILES
+ 			${MARS_SOURCE_DIR}/data/botnames.txt
+ 			${MARS_SOURCE_DIR}/data/shipnames.txt
+ 		DESTINATION
+-			${CMAKE_INSTALL_PREFIX}/share/games/marsshooter
++			${CMAKE_INSTALL_PREFIX}/share/marsshooter
+ 	)
+ 	install(
+ 		DIRECTORY 
+@@ -92,7 +98,7 @@ if(UNIX)
+ 			${CMAKE_SOURCE_DIR}/data/shaders
+ 			${CMAKE_SOURCE_DIR}/data/tex
+ 		DESTINATION 
+-			${CMAKE_INSTALL_PREFIX}/share/games/marsshooter
++			${CMAKE_INSTALL_PREFIX}/share/marsshooter
+ 		PATTERN 
+ 			".svn" EXCLUDE
+ 	)
+@@ -122,12 +128,6 @@ if(UNIX)
+ 		DESTINATION
+ 			${CMAKE_INSTALL_PREFIX}/share/applications
+ 	)
+-	install(
+-		FILES
+-			${MARS_SOURCE_DIR}/resources/mars
+-		DESTINATION
+-			${CMAKE_INSTALL_PREFIX}/share/menu
+-	)
+ 
+ else(UNIX)
+ 	# executable

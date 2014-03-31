@@ -1,0 +1,58 @@
+diff -rupN old/cmake/modules/FindFribidi.cmake new/cmake/modules/FindFribidi.cmake
+--- old/cmake/modules/FindFribidi.cmake	1970-01-01 01:00:00.000000000 +0100
++++ new/cmake/modules/FindFribidi.cmake	2014-03-31 15:18:22.411022000 +0200
+@@ -0,0 +1,42 @@
++# - Find Fribidi
++# Find the Fribidi includes and libraries
++#
++# Following variables are provided:
++# FRIBIDI_FOUND
++#     True if Fribidi has been found
++# FRIBIDI_INCLUDE_DIRS
++#     The include directories of Fribidi
++# FRIBIDI_LIBRARIES
++#     Fribidi library list
++
++if(APPLE)
++    set(FRIBIDI_INCLUDE_DIR NAMES fribidi/fribidi.h PATHS /Library/Frameworks/fribidi.framework/Headers)
++    find_library(FRIBIDI_LIBRARY NAMES fribidi PATHS /Library/Frameworks/fribidi.framework)
++    set(FRIBIDI_LIBRARIES ${FRIBIDI_LIBRARY})
++    include_directories(/Library/Frameworks/fribidi.framework/Headers)
++    #add_definitions(-framework fribidi)
++    set(FRIBIDI_FOUND 1)
++elseif(UNIX)
++    include(FindPkgConfig)
++    pkg_check_modules(FRIBIDI fribidi)
++else()
++    set(FRIBIDI_FOUND 0)
++endif()
++
++if(NOT FRIBIDI_FOUND)
++    find_path(FRIBIDI_INCLUDE_DIR NAMES fribidi/fribidi.h PATHS /Library/Frameworks/fribidi.framework/Headers "${PROJECT_SOURCE_DIR}/dependencies/include")
++    find_library(FRIBIDI_LIBRARY NAMES fribidi PATHS /Library/Frameworks/fribidi.framework "${PROJECT_SOURCE_DIR}/dependencies/lib")
++
++    include(FindPackageHandleStandardArgs)
++    find_package_handle_standard_args(Fribidi DEFAULT_MSG FRIBIDI_INCLUDE_DIR FRIBIDI_LIBRARY)
++
++    if(APPLE)
++            set(FRIBIDI_INCLUDE_DIR "/Library/Frameworks/fribidi.framework/Headers")
++    endif()
++
++    # Publish variables
++    set(FRIBIDI_INCLUDE_DIRS ${FRIBIDI_INCLUDE_DIR})
++    set(FRIBIDI_LIBRARIES ${FRIBIDI_LIBRARY})
++endif()
++
++mark_as_advanced(FRIBIDI_INCLUDE_DIR FRIBIDI_LIBRARY)
+diff -rupN old/CMakeLists.txt new/CMakeLists.txt
+--- old/CMakeLists.txt	2014-03-31 15:18:21.474345000 +0200
++++ new/CMakeLists.txt	2014-03-31 15:18:22.411022000 +0200
+@@ -47,6 +47,8 @@ endif(APPLE)
+ 
+ # Fribidi library needed for bi-directional texts
+ 	find_library(FRIBIDI_LIBRARY fribidi)
++	find_package( Fribidi )
++	include_directories(${FRIBIDI_INCLUDE_DIRS})
+ 
+ # set the executable output path
+ if(APPLE)

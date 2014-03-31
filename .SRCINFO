@@ -1,0 +1,29 @@
+pkgbase = mars-shooter-git
+	pkgdesc = A ridiculous space shooter with nice graphics (development version)
+	pkgver = 0.7.4.r4.d88244b
+	pkgrel = 1
+	url = http://mars-game.sourceforge.net/
+	install = mars.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = sfml
+	depends = taglib
+	depends = fribidi
+	depends = hicolor-icon-theme
+	provides = mars-shooter
+	conflicts = mars-shooter
+	source = mars-shooter::git+https://github.com/thelaui/M.A.R.S..git
+	source = mars-fribidi.patch
+	source = mars-shader.patch
+	source = mars-archinstall.patch
+	sha256sums = SKIP
+	sha256sums = 6fb105bd6c7f0b3c35bedc13240e1b1f9ad37bb5b4b1328438532b4f40e19c6e
+	sha256sums = 3f9b15350fb9a3acf05469e6bb2a83ff7fc7113499098d11dc759c343c459afa
+	sha256sums = d33d6cd40bf6b2846c069524ed3344e2f4c3afe373e89c74d3e4888d63e2261a
+
+pkgname = mars-shooter-git
+

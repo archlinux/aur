@@ -1,0 +1,17 @@
+--- src/System/window.cpp.orig	2014-03-31 15:18:22.264354000 +0200
++++ src/System/window.cpp	2014-03-31 15:18:22.407689000 +0200
+@@ -308,13 +308,10 @@ namespace window {
+         glEnable(GL_TEXTURE_2D);
+ 
+         if (shader)
+-            shader->bind();
++            shader->bind(NULL);
+ 
+         window_.draw(toBeDrawn, states);
+ 
+-        if (shader)
+-            shader->unbind();
+-
+         window_.popGLStates();
+         glPopMatrix();
+         glPopAttrib();
