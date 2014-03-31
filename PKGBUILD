@@ -21,15 +21,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
+        '0004-Revert-syscalls.h-use-gcc-alias-instead-of-assembler.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '059325a759c92a0bbc07b5618b3d59eccd72a7647d066c509c9eceb0aecc799e'
             'd2c8ddda8e56884596ce76fd53f1513a27ed4f9a092513813d0d6164f423cc28'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            '17984c2dafbc3099cafe01dbf03039844099c3cc7719d9bc8633b1ca6a6ab17b'
-            '03522828e5a2af5b5ccfdedb21ec429797e4391549091781df899e7aacb9818a'
-            'fa447576b7f86b495ff922f6b217e5c5864484d23428dd62e46f8fb7778cec7c')
+            '29a958c37e1fb04c49b1cc3be4f38b53ffdeef61ab049865209f6b77817302d0'
+            'd8db3b235d871d2b27986d3cb73a57b1d33fed52196a4b608152498a57e93838'
+            'eb9a773b7b978bc508e8459ef835ff2cb8a41bb235caff1c18c5b718d7ce902c'
+            '4edd92642d710d8a351dd2acce36d412eccbf60380f9d0368ec315acb49ad704')
 
 _kernelname=${pkgbase#linux}
 
@@ -48,15 +50,16 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # Fix symbols: Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=83460ec8dcac14142e7860a01fa59c267ac4657c
-  #patch -Rp1 -i "${srcdir}/0001-syscalls.h-use-gcc-alias-instead-of-assembler-aliase.patch"
-
   # Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
   patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
 
   # Fix atkbd aliases
   patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
   patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
+
+  # Fix symbols: Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=83460ec8dcac14142e7860a01fa59c267ac4657c
+  # For details, see https://lkml.org/lkml/2014/1/26/22
+  patch -p1 -i "${srcdir}/0004-Revert-syscalls.h-use-gcc-alias-instead-of-assembler.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -205,25 +208,6 @@ _package-headers() {
 
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
-  # add headers for lirc package
-  # pci
-  for i in bt8xx cx88 saa7134; do
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/pci/${i}"
-    cp -a drivers/media/pci/${i}/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/pci/${i}"
-  done
-  # usb
-  for i in cpia2 em28xx pwc sn9c102; do
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/${i}"
-    cp -a drivers/media/usb/${i}/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/${i}"
-  done
-  # i2c
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c"
-  cp drivers/media/i2c/*.h  "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-  for i in cx25840; do
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/${i}"
-    cp -a drivers/media/i2c/${i}/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/${i}"
-  done
-
   # add docbook makefile
   install -D -m644 Documentation/DocBook/Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
@@ -255,6 +239,7 @@ _package-headers() {
   # http://bugs.archlinux.org/task/13146
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
   cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
   cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
 
   # add dvb headers
