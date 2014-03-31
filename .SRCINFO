@@ -1,12 +1,12 @@
 pkgbase = bitwig-studio-demo
 	pkgdesc = Music production system for production, remixing and performance
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bitwig.com
 	arch = x86_64
 	license = custom
 	makedepends = deb2targz
-	depends = jack2
+	depends = jack
 	depends = xdg-utils
 	depends = zenity
 	depends = xcb-util-wm

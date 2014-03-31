@@ -3,7 +3,7 @@
 pkgname=bitwig-studio-demo
 _pkgname=bitwig-studio
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Music production system for production, remixing and performance"
 arch=( 'x86_64' )
 url="http://www.bitwig.com"
@@ -13,7 +13,7 @@ license=('custom')
 # yourself in a situation where you are missing 
 # something please tell me via mail or on Github: 
 # https://github.com/mkzero/bitwig-studio-demo-aur
-depends=( 'jack2' 'xdg-utils' 'zenity' 'xcb-util-wm')
+depends=( 'jack' 'xdg-utils' 'zenity' 'xcb-util-wm')
 makedepends=('deb2targz')
 optdepends=('alsa-lib' 'oss')
 provides=('bitwig-studio')
