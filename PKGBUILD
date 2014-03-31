@@ -54,4 +54,8 @@ package() {
 
   sed -i 's:Categories=Multimedia:Categories=Multimedia;AudioVideo;Player;Recorder;:' \
     $pkgdir/usr/share/applications/bitwig-studio.desktop
+
+  mkdir -p $pkgdir/usr/share/pixmaps
+  cp $pkgdir/usr/share/icons/gnome/48x48/apps/bitwig-studio.png \
+    $pkgdir/usr/share/pixmaps/
 }
