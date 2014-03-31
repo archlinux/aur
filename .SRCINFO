@@ -1,0 +1,16 @@
+pkgbase = perl-captcha-recaptcha-mailhide
+	pkgdesc = Perl Captcha::reCAPTCHA::Mailhide CPAN module
+	pkgver = 0.94
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Captcha-reCAPTCHA-Mailhide/
+	arch = any
+	license = unknown
+	depends = perl
+	depends = perl-crypt-rijndael
+	depends = perl-html-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/Captcha-reCAPTCHA-Mailhide-0.94.tar.gz
+	sha256sums = 904975cc274e6890df1348376d3d7ae99c2980f7e6f7a3fae4d518746686200f
+
+pkgname = perl-captcha-recaptcha-mailhide
+
