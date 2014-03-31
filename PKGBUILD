@@ -22,6 +22,7 @@ md5sums=('c874884b96e7c6872b98cd66992a8833')
 
 _archive=("bitwig-studio-${pkgver}.deb")
 _archive_md5="${md5sums[0]}"
+
 build() {
   cd $srcdir
 
