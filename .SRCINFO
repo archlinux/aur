@@ -1,0 +1,19 @@
+pkgbase = git-crypt-git
+	pkgdesc = Transparent file encryption in Git
+	pkgver = 20131230
+	pkgrel = 1
+	url = http://www.agwa.name/projects/git-crypt/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = openssl
+	provides = git-crypt
+	conflicts = git-crypt
+	source = git+https://github.com/AGWA/git-crypt
+	sha256sums = SKIP
+
+pkgname = git-crypt-git
+
