@@ -1,19 +1,19 @@
-From f8483f358783d4bb6179335b3bbbab910a6b92e9 Mon Sep 17 00:00:00 2001
+From ce7ffa434879371f128cef9d602a352248938026 Mon Sep 17 00:00:00 2001
 From: LAN-TW <lantw44@gmail.com>
-Date: Thu, 7 Nov 2013 00:31:25 +0800
+Date: Tue, 1 Apr 2014 13:38:20 +0800
 Subject: [PATCH] Remove gobject-introspection
 
 ---
- configure.ac    |  6 -----
- gdk/Makefile.am | 79 ---------------------------------------------------------
- gtk/Makefile.am | 52 -------------------------------------
- 3 files changed, 137 deletions(-)
+ configure.ac    |  6 ----
+ gdk/Makefile.am | 98 ---------------------------------------------------------
+ gtk/Makefile.am | 61 -----------------------------------
+ 3 files changed, 165 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 8c7098e..a1c8958 100644
+index 0539eb5..15e652c 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1566,12 +1566,6 @@ fi
+@@ -1613,12 +1613,6 @@ fi
  GLIB_GSETTINGS
  
  ##################################################
@@ -23,14 +23,28 @@ index 8c7098e..a1c8958 100644
 -GOBJECT_INTROSPECTION_CHECK(introspection_required_version)
 -
 -##################################################
- # Packagekit module
+ # colord module
  #################################################
  
 diff --git a/gdk/Makefile.am b/gdk/Makefile.am
-index 3ec649d..2c76999 100644
+index a7fd1ba..1fce47d 100644
 --- a/gdk/Makefile.am
 +++ b/gdk/Makefile.am
-@@ -191,85 +191,6 @@ if USE_WAYLAND
+@@ -1,13 +1,5 @@
+ ## Makefile.am for gtk+/gdk
+ include $(top_srcdir)/Makefile.decl
+--include $(INTROSPECTION_MAKEFILE)
+-INTROSPECTION_GIRS =
+-INTROSPECTION_SCANNER_ARGS = \
+-	--add-include-path=../gdk \
+-	--warn-all
+-INTROSPECTION_COMPILER_ARGS = \
+-   --includedir=$(srcdir) \
+-   --includedir=.
+ 
+ SUBDIRS = $(GDK_BACKENDS) .
+ 
+@@ -191,96 +183,6 @@ if USE_WAYLAND
  libgdk_3_la_LIBADD += wayland/libgdk-wayland.la
  endif
  
@@ -63,6 +77,7 @@ index 3ec649d..2c76999 100644
 -	x11/gdkdevicemanager-xi2.c	\
 -	x11/gdkdevice-xi2.c		\
 -	x11/gdkdisplay-x11.c		\
+-	x11/gdkdisplaymanager-x11.c	\
 -	x11/gdkdnd-x11.c		\
 -	x11/gdkeventsource.c		\
 -	x11/gdkeventtranslator.c	\
@@ -80,8 +95,18 @@ index 3ec649d..2c76999 100644
 -	x11/gdkxid.c			\
 -	x11/xsettings-client.c		\
 -	x11/gdkx.h			\
+-	x11/gdkx11applaunchcontext.h	\
 -	x11/gdkx11cursor.h		\
+-	x11/gdkx11device.h		\
+-	x11/gdkx11device-core.h		\
+-	x11/gdkx11device-xi2.h		\
+-	x11/gdkx11devicemanager.h	\
+-	x11/gdkx11devicemanager-core.h	\
+-	x11/gdkx11devicemanager-xi2.h	\
 -	x11/gdkx11display.h		\
+-	x11/gdkx11displaymanager.h	\
+-	x11/gdkx11dnd.h			\
+-	x11/gdkx11keys.h		\
 -	x11/gdkx11property.h		\
 -	x11/gdkx11screen.h		\
 -	x11/gdkx11selection.h		\
@@ -117,10 +142,25 @@ index 3ec649d..2c76999 100644
  noinst_DATA = gdk-win32-$(GTK_API_VERSION).lib
  
 diff --git a/gtk/Makefile.am b/gtk/Makefile.am
-index 179fc9c..d0aaa3f 100644
+index cbb215a..61f7b79 100644
 --- a/gtk/Makefile.am
 +++ b/gtk/Makefile.am
-@@ -1302,58 +1302,6 @@ LDADDS =								\
+@@ -1,14 +1,5 @@
+ # Makefile.am for gtk+/gtk
+ include $(top_srcdir)/Makefile.decl
+--include $(INTROSPECTION_MAKEFILE)
+-INTROSPECTION_GIRS =
+-INTROSPECTION_SCANNER_ARGS = \
+-	--add-include-path=../gdk \
+-	--warn-all
+-INTROSPECTION_COMPILER_ARGS = \
+-	--includedir=$(srcdir) \
+-    --includedir=. \
+-    --includedir=../gdk
+ 
+ if USE_QUARTZ
+ GTK_PRINT_PREVIEW_COMMAND="open -a /Applications/Preview.app %f"
+@@ -1330,58 +1321,6 @@ LDADDS =								\
  	$(top_builddir)/gdk/libgdk-3.la				\
  	$(GTK_DEP_LIBS)
  
@@ -180,5 +220,5 @@ index 179fc9c..d0aaa3f 100644
  # Installed tools
  #
 -- 
-1.8.4.2
+1.9.1
 

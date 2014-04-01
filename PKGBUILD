@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.10.7
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (v3) (mingw-w64)"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
 'mingw-w64-crt'
 'mingw-w64-atk>=2.7.5'
 'mingw-w64-pango>=1.32.4'
-'mingw-w64-glib2>=2.37.5'
+'mingw-w64-glib2>=2.39.5'
 'mingw-w64-cairo>=1.12.0'
 'mingw-w64-gdk-pixbuf2>=2.27.1')
 options=(!strip !buildflags staticlibs)
@@ -27,9 +27,9 @@ source=(
 
 # The second source file is downloaded from Fedora Project
 
-sha256sums=('b7e9de15385031cff43897e7e59f6692eaabf500f36eef80e6b9d6486ad49427'
+sha256sums=('eb69741cd4029b5a1ac9cf04d9de55dcf9e30777a63891750f5d20cc554b6e4b'
             'b35ecacab70680391e06af85893b7aa8612f0812ded35395b6e93f49e8eab92b'
-            'e9e29fbf7444e449def11a31a6c2682932df416b1b5c82dbe0eac54e3fe51dd9')
+            'b32544cfd52fa39be3390d08e5cf174b425e2023a40546382639a6f3b547c61b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
