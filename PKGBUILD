@@ -36,7 +36,6 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  CARCH=i686
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
