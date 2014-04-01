@@ -11,6 +11,7 @@ pkgbase = bitwig-studio-demo
 	depends = xcb-util-wm
 	optdepends = alsa-lib
 	optdepends = oss
+	optdepends = libav: MP3 support
 	provides = bitwig-studio
 	options = !strip
 	source = http://packs.bitwig.com/downloads/bitwig-studio-1.0.5.deb

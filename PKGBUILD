@@ -14,7 +14,11 @@ license=('custom')
 # something please tell me via mail or on Github: 
 # https://github.com/mkzero/bitwig-studio-demo-aur
 depends=( 'jack' 'xdg-utils' 'zenity' 'xcb-util-wm')
-optdepends=('alsa-lib' 'oss')
+optdepends=(
+             'alsa-lib'
+             'oss'
+             'libav: MP3 support'
+           )
 provides=('bitwig-studio')
 options=(!strip)
 source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver}.deb")
