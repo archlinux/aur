@@ -1,6 +1,6 @@
 pkgbase = perl-alien-wxwidgets
 	pkgdesc = building, finding and using wxWidgets binaries
-	pkgver = 0.64
+	pkgver = 0.65
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Alien-wxWidgets
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = perl-alien-wxwidgets
 	depends = wxgtk2.8
 	depends = perl-module-pluggable
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-0.64.tar.gz
-	md5sums = 12b6492a87cf165a4f0cd7254ccfab11
+	source = http://search.cpan.org/CPAN/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-0.65.tar.gz
+	md5sums = 219a4f572d24eaa98c3dc2d118c5d9f0
 
 pkgname = perl-alien-wxwidgets
 

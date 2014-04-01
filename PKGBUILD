@@ -2,7 +2,7 @@
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=perl-alien-wxwidgets
-pkgver=0.64
+pkgver=0.65
 pkgrel=1
 pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('perl>=5.10.0' 'wxgtk2.8' 'perl-module-pluggable') # Install perl-modul
 makedepends=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-${pkgver}.tar.gz")
-md5sums=('12b6492a87cf165a4f0cd7254ccfab11')
+md5sums=('219a4f572d24eaa98c3dc2d118c5d9f0')
 
 prepare() {
   export _src_dir="$srcdir/Alien-wxWidgets-$pkgver"
