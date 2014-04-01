@@ -4,7 +4,7 @@
 # Any suggestions welcome; please submit paches via Github:
 # https://github.com/alerque/aur/tree/master/git-crypt-git
 
-pkgname="git-crypt-git"
+pkgname=git-crypt-git
 pkgver=0.3_9_g7fe8443
 pkgrel=1
 pkgdesc="Transparent file encryption in Git"
