@@ -2,8 +2,8 @@
 # Contributors: OttoA (AUR), hoschi (AUR), samlt (AUR), andreyv (AUR)
 
 pkgname=ioquake3-git
-pkgver=20131217.gbc2efc4
-pkgrel=2
+pkgver=20140324.g63463d1
+pkgrel=1
 pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 files to play."
 url="http://ioquake3.org/"
 license=('GPL')
@@ -65,6 +65,7 @@ q3make() {
         USE_INTERNAL_JPEG=0           \
         USE_INTERNAL_OGG=0            \
         USE_INTERNAL_OPUS=0           \
+        USE_INTERNAL_VORBIS=0         \
         USE_LOCAL_HEADERS=0
 }
 
