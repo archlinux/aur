@@ -1,7 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+#
+# Any suggestions welcome; please submit paches via Github:
+# https://github.com/alerque/aur/tree/master/diradm-git
 
-_pkgname=diradm
-pkgname=${_pkgname}-git
+pkgname=diradm-git
 pkgver=1.3_1_gf4b32ed
 pkgrel=2
 _branch=devel
@@ -10,18 +12,18 @@ arch=('any')
 url="https://github.com/alerque/diradm"
 license=('GPL2')
 depends=('openldap')
-conflicts=("$_pkgname")
-source=("git://github.com/alerque/$_pkgname.git#branch=$_branch")
+conflicts=("${pkgname%-git}")
+source=("git://github.com/alerque/${pkgname%-git}.git#branch=$_branch")
 md5sums=('SKIP')
 backup=('etc/diradm.conf')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/-/_/g'
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -D -m755 diradm "$pkgdir"/usr/bin/"$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
+  install -D -m755 diradm "$pkgdir"/usr/bin/"${pkgname%-git}"
   install -D -m644 diradm.conf "$pkgdir"/etc/diradm.conf
 }
