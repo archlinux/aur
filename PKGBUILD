@@ -2,12 +2,11 @@
 # Contributor: Jon <jonathan.stott@gmail.com>
 # Contributor: <dev@chimeracoder.net>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
-# Original Author: Sairon Istyar <saironiq@gmail.com>
+# Contributor: Sairon Istyar <saironiq@gmail.com>
 #
-# Note:
-#      All suggestions welcome; please submit paches via Github:
-##      https://github.com/alerque/aur/tree/master/git-annex-bin
-#
+# Any suggestions welcome; please submit paches via Github:
+# https://github.com/alerque/aur/tree/master/git-annex-bin
+
 pkgname=git-annex-bin
 pkgver=5.20140320
 pkgrel=1
