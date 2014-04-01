@@ -1,6 +1,6 @@
 pkgbase = freecheck-git
 	pkgdesc = A blank check printer that adds MICR codes and check templates to blank stock.
-	pkgver = 0.30_5_gb5d7d15
+	pkgver = 0.30_6_g5f80e5a
 	pkgrel = 1
 	url = https://github.com/alerque/freecheck
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = freecheck-git
 	depends = gnumicr
 	optdepends = cups: printing support
 	optdepends = ghostscript: output to pdf files
+	provides = freecheck
 	conflicts = freecheck
 	source = git://github.com/alerque/freecheck.git#branch=devel
 	md5sums = SKIP
