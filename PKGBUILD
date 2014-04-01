@@ -1,22 +1,25 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+#
+# Any suggestions welcome; please submit paches via Github:
+# https://github.com/alerque/aur/tree/master/wacom-utility
+
 pkgname=wacom-utility
 pkgver=1.21
-pkgrel=3
+_uprel=3
+pkgrel=4
 pkgdesc="Graphical tablet configuration utility"
 arch=('i686' 'x86_64')
-url="http://gtk-apps.org/content/show.php/Wacom+Control+Panel?content=104309&PHPSESSID=e1fe54f464f2242b5d1f6c3661757ebf"
+url='http://gtk-apps.org/content/show.php/Wacom+Control+Panel?content=llll104309'
 license=('GPL')
 depends=('gtk2' 'python2' 'pygtk' 'xf86-input-wacom' 'gksu')
-source=("http://ppa.launchpad.net/hughescih/ppa/ubuntu/pool/main/w/${pkgname}/${pkgname}_${pkgver}-3.tar.gz" wacom-utility.desktop)
+source=("http://ppa.launchpad.net/hughescih/ppa/ubuntu/pool/main/w/${pkgname}/${pkgname}_${pkgver}-${_uprel}.tar.gz"
+    'wacom-utility.desktop')
 
 md5sums=('51ff9257b6e0c511ee57d40cd76742ec'
          '1d44b3571fd5e48b80b2dec5209fcf47')
-build() {
-  tar xvf ${pkgname}_${pkgver}-3.tar.gz
-  rm ${pkgname}_${pkgver}-3.tar.gz
-  rm -r ${srcdir}/${pkgname}/*.pyc
-  rm -r ${srcdir}/${pkgname}/debian
-  rm ${srcdir}/${pkgname}/wacom-utility.desktop
-  mkdir -p ${pkgdir}/usr/share/applications
-  cp wacom-utility.desktop ${pkgdir}/usr/share/applications
-  cp -r ${srcdir}/${pkgname} ${pkgdir}/usr/share
+package() {
+    cd "$srcdir/$pkgname"
+    install -Dm755 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+    find \( -regex '.*\.\(py\|png\|xml\|glade\)' -or -name 'keymap.txt' \) \
+        -exec install -D {} "${pkgdir}/usr/share/${pkgname}/{}" \;
 }
