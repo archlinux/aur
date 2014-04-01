@@ -3,7 +3,7 @@
 pkgname=bitwig-studio-demo
 _pkgname=bitwig-studio
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Music production system for production, remixing and performance"
 arch=( 'x86_64' )
 url="http://www.bitwig.com"
@@ -18,7 +18,7 @@ optdepends=('alsa-lib' 'oss')
 provides=('bitwig-studio')
 options=(!strip)
 source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver}.deb")
-md5sums=('c874884b96e7c6872b98cd66992a8833')
+md5sums=('7fb5fbcfa1756c0d9dfb7ad9d04d54a3')
 
 _archive=("bitwig-studio-${pkgver}.deb")
 _archive_md5="${md5sums[0]}"
