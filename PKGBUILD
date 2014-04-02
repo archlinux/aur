@@ -24,8 +24,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0004-Revert-syscalls.h-use-gcc-alias-instead-of-assembler.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            '8f487d8775e4928fb280588047b915f57f8d51542fc4fc704b1684a8bffd2903'
-            '1e8f4491912d37034b2a5b36cf6630cd38f0e6c94f37ab1c88aaf11fed0be9e5'
+            '90255694f456802d58c91ace65b934e07f9e2b8ed7d3b51b0bb79cbb1207467d'
+            'b0186a1c50038c9993fd8b22907e6b431a2661443798f6db8572996f20cebef5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '29a958c37e1fb04c49b1cc3be4f38b53ffdeef61ab049865209f6b77817302d0'
