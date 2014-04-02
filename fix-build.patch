@@ -1,0 +1,24 @@
+Index: mono-tools.git/webdoc/Makefile.am
+===================================================================
+--- mono-tools.git.orig/webdoc/Makefile.am	2013-10-10 01:14:56.927106468 +0200
++++ mono-tools.git/webdoc/Makefile.am	2013-10-10 10:48:14.179831385 +0200
+@@ -117,18 +117,14 @@
+ 	 $(INSTALL_DATA) $(srcdir)/App_Code/Plugins/*cs                                         $(DESTDIR)$(webdir)/App_Code/Plugins
+ 	 $(INSTALL_DATA) $(srcdir)/views/*css                                                   $(DESTDIR)$(webdir)/views
+ 	 $(INSTALL_DATA) $(srcdir)/views/*js                                                    $(DESTDIR)$(webdir)/views
+-	 $(INSTALL_DATA) $(srcdir)/views/*html                                                  $(DESTDIR)$(webdir)/views
+ 	 $(INSTALL_DATA) $(srcdir)/views/images/*png                                            $(DESTDIR)$(webdir)/views/images
+-	 $(INSTALL_DATA) $(srcdir)/views/images/*gif                                            $(DESTDIR)$(webdir)/views/images
++	 $(INSTALL_DATA) $(srcdir)/views/images/*ico                                            $(DESTDIR)$(webdir)/views/images
+ 	 $(INSTALL_DATA) $(srcdir)/skins/mono-external/header*                                  $(DESTDIR)$(webdir)/skins/mono-external
+ 	 $(INSTALL_DATA) $(srcdir)/skins/mono-external/footer*                                  $(DESTDIR)$(webdir)/skins/mono-external
+ 	 $(INSTALL_DATA) $(srcdir)/skins/mono-external/*css                                     $(DESTDIR)$(webdir)/skins/mono-external
+-	 $(INSTALL_DATA) $(srcdir)/skins/mono-external/*js                                      $(DESTDIR)$(webdir)/skins/mono-external
+ 	 $(INSTALL_DATA) $(srcdir)/skins/mono-external/images/*png                              $(DESTDIR)$(webdir)/skins/mono-external/images
+ 	 $(INSTALL_DATA) $(srcdir)/skins/mono-external/images/*gif                              $(DESTDIR)$(webdir)/skins/mono-external/images
+-	 $(INSTALL_DATA) $(srcdir)/plugins/iframe-plugins/*css                                  $(DESTDIR)$(webdir)/plugins/iframe-plugin
+ 	 $(INSTALL_DATA) $(srcdir)/plugins/iframe-plugin/*js                                    $(DESTDIR)$(webdir)/plugins/iframe-plugin
+-	 $(INSTALL_DATA) $(srcdir)/plugins/iframe-plugin/*html                                  $(DESTDIR)$(webdir)/plugins/iframe-plugin
+ 	 $(INSTALL_DATA) $(srcdir)/plugins/tooltip-plugin/*js                                    $(DESTDIR)$(webdir)/plugins/tooltip-plugin
+ 	 $(INSTALL_DATA) $(srcdir)/plugins/sidebar-plugin/*css                                  $(DESTDIR)$(webdir)/plugins/sidebar-plugin
+ 	 $(INSTALL_DATA) $(srcdir)/plugins/sidebar-plugin/*js                                   $(DESTDIR)$(webdir)/plugins/sidebar-plugin

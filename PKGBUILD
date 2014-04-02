@@ -9,29 +9,36 @@
 # properly.
 
 pkgname=mono-tools
-pkgver=2.10
-pkgrel=2
+pkgver=2.11
+pkgrel=1
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.mono-project.com/"
-depends=('libgnome-sharp' 'gtkhtml-sharp')
-makedepends=('gconf-sharp')
+depends=('libgnome-sharp' 'webkit-sharp')
+makedepends=('gconf-sharp' 'git' 'zip')
 install=$pkgname.install
-source=(http://download.mono-project.com/sources/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('da178df2c119c696c08c09dc9eb01994')
+options=('!makeflags')
+source=('git+https://github.com/mono/mono-tools.git#commit=d858f5f27fa8b10d734ccce7ffba631b995093e5'
+        fix-build.patch)
+md5sums=('SKIP'
+         '9b4671fbfce76d883abbf779cbc504f3')
+
+prepare() {
+  cd $pkgname
+  patch -Np1 -i ../fix-build.patch
+  mv configure.in configure.ac
+}
 
 build() {
- # get rid of that .wapi errors; thanks to brice
-  export MONO_SHARED_DIR="${srcdir}/weird"
-  mkdir -p "${MONO_SHARED_DIR}"
-  cd "$srcdir/$pkgname-$pkgver"
-  autoreconf -fi 
-  ./configure --prefix=/usr
+  cd $pkgname
+  glib-gettextize --force
+  autoreconf -fi
+  GMCS=/usr/bin/dmcs ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make GACUTIL="/usr/bin/gacutil /root $pkgdir/usr/lib" DESTDIR="$pkgdir" install
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
  }
