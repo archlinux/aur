@@ -1,7 +1,7 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 1.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,6 @@ pkgbase = roccat-tools
 	depends = udev
 	depends = hicolor-icon-theme
 	optdepends = kmod-roccat: Adds support for some devices not yet in vanilla kernel
-	conflicts = kone
-	conflicts = koneplus
-	conflicts = pyra
-	conflicts = roccat
 	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-1.4.1.tar.bz2
 	md5sums = 5edc1c936cef38c3a24de0676643010b
 

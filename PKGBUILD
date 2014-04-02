@@ -24,7 +24,7 @@ true && pkgname=('roccat-tools-common'
                  'roccat-tools-savu')
 pkgbase=roccat-tools
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Userland applications to configure and make extended use of ROCCAT devices"
 arch=('i686' 'x86_64')
 url="http://roccat.sourceforge.net"
@@ -32,7 +32,7 @@ license=('GPL2')
 depends=('libcanberra' 'gtk2' 'libnotify>=0.7.0' 'libusb' 'dbus-glib' 'udev' 'hicolor-icon-theme')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for some devices not yet in vanilla kernel')
-conflicts=(kone koneplus pyra roccat)
+conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
 md5sums=('5edc1c936cef38c3a24de0676643010b')
@@ -78,7 +78,7 @@ package_roccat-tools-isku() {
 
 package_roccat-tools-iskufx() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Isku FX devices"
-  true && depends=('roccat-tools-common' 'isku')
+  true && depends=('roccat-tools-common' 'roccat-tools-isku')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/iskufx"
@@ -111,7 +111,7 @@ package_roccat-tools-koneplus() {
 
 package_roccat-tools-konepure() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Kone Pure devices"
-  true && depends=('roccat-tools-common' 'konextd')
+  true && depends=('roccat-tools-common' 'roccat-tools-konextd')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/konepure"
@@ -122,7 +122,7 @@ package_roccat-tools-konepure() {
 
 package_roccat-tools-konepureoptical() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Kone Pure optical devices"
-  true && depends=('roccat-tools-common' 'konepure')
+  true && depends=('roccat-tools-common' 'roccat-tools-konepure')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/konepureoptical"
@@ -133,7 +133,7 @@ package_roccat-tools-konepureoptical() {
 
 package_roccat-tools-konextd() {
   true && pkgdesc="Userland applications to configure and make extended use of ROCCAT Kone XTD devices"
-  true && depends=('roccat-tools-common' 'koneplus')
+  true && depends=('roccat-tools-common' 'roccat-tools-koneplus')
   true && conflicts=('roccat-tools')
 
   cd "$srcdir/$pkgbase-$pkgver/konextd"
