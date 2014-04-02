@@ -1,0 +1,36 @@
+pkgbase = ghostpp
+	pkgdesc = GHost++ is a Warcraft III hosting bot
+	pkgver = 17.1_r602
+	pkgrel = 1
+	url = https://www.ghostpp.com/
+	install = ghostpp.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = boost
+	depends = boost-libs
+	depends = gmp
+	depends = libmysqlclient
+	source = svn+http://ghostplusplus.googlecode.com/svn/trunk@602
+	source = ghostpp.install
+	source = ghostpp.service
+	source = http://bhfiles.com/files/Battle.net/Bots/Hashes/WAR3.zip
+	source = common.j.orig::http://wiki.thehelper.net/w/index.php?title=Template:import/wc3/jass/common.j&action=raw
+	source = Blizzard.j.orig::http://wiki.thehelper.net/w/index.php?title=Template:import/wc3/jass/Blizzard.j&action=raw
+	source = config.patch
+	source = libboost.patch
+	source = common.j.patch
+	source = Blizzard.j.patch
+	sha256sums = SKIP
+	sha256sums = 5d933d698513800f19dcefe47e3640cb37df7d5330908e7424cb891381c6d812
+	sha256sums = 2f67fbb67bf19621c112bc41503627aadc995a9414312274956dadbacb520826
+	sha256sums = 94d0cf497aacd413f31ac512e8ebb3a71ace6c5646d55a1c77f78d56a11719a9
+	sha256sums = e580248f186886a2633d96b2c538e036ff2021a21b97d775d1da5095852f8476
+	sha256sums = 066b48dc4966b9a367ebb76efb969248ad49dca8b188d5c79c1465a4d3605891
+	sha256sums = 67a388943cd00158e669a982caa5f5d4b2768b91341a3ed916700c10983ab59d
+	sha256sums = 69b4b5bbfc49bbf6863ab8ab0c5e253b33953ea61e8c45472159493270d3391f
+	sha256sums = 0e9f8c76879f5cee9a1edca1907bda190da124ccdee924de6cc0a965dbec0e76
+	sha256sums = 8e6dca297cf261ae33ad8428b233e2619a6ffdd3dc32b65743d74789c9802d16
+
+pkgname = ghostpp
+

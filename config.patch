@@ -1,0 +1,62 @@
+Index: default.cfg
+===================================================================
+--- default.cfg	(revision 602)
++++ default.cfg	(working copy)
+@@ -4,7 +4,7 @@
+ 
+ ### the log file
+ 
+-bot_log = ghost.log
++bot_log = /dev/null
+ 
+ ### the log method
+ ###  set this to 1 to leave the log unlocked while GHost++ is running (may be slower, particularly on Windows)
+@@ -15,7 +15,7 @@
+ 
+ ### the language file
+ 
+-bot_language = language.cfg
++bot_language = /etc/ghostpp/language.cfg
+ 
+ ### the path to your local Warcraft III directory
+ ###  this path must contain war3.exe, storm.dll, and game.dll
+@@ -22,7 +22,7 @@
+ ###  if this path contains War3Patch.mpq the bot will attempt to extract "Scripts\common.j" and "Scripts\blizzard.j" on startup and write them to bot_mapcfgpath (which is defined later in this file)
+ ###  common.j and blizzard.j are only required for automatically calculating map_crc, you do not need them if your map config files already contain map_crc
+ 
+-bot_war3path = C:\Program Files\Warcraft III
++bot_war3path = /usr/share/ghostpp
+ 
+ ### whether to act as Warcraft III: The Frozen Throne or not
+ ###  set this to 0 to act as Warcraft III: Reign of Chaos (you WILL NOT need to enter a TFT cd key to login to battle.net)
+@@ -189,7 +189,7 @@
+ 
+ ### the IP blacklist file
+ 
+-bot_ipblacklistfile = ipblacklist.txt
++bot_ipblacklistfile = /etc/ghostpp/ipblacklist
+ 
+ ### automatically close the game lobby if a reserved player (or admin) doesn't join it for this many minutes
+ ###  games which are set to automatically start when enough players join are exempt from this limit (e.g. autohosted games)
+@@ -231,18 +231,18 @@
+ ###  the first 8 lines of this file will be displayed when a player joins the game
+ ###  if this file doesn't exist a default MOTD will be used
+ 
+-bot_motdfile = motd.txt
++bot_motdfile = /etc/ghostpp/motd
+ 
+ ### the gameloaded file
+ ###  the first 8 lines of this file will be displayed when the game finished loading (after the player loading times are displayed)
+ 
+-bot_gameloadedfile = gameloaded.txt
++bot_gameloadedfile = /etc/ghostpp/gameloaded
+ 
+ ### the gameover file
+ ###  the first 8 lines of this file will be displayed when the game is over
+ ###  this only works when using a stats class - note: at the time of this writing the only stats class is for DotA maps
+ 
+-bot_gameoverfile = gameover.txt
++bot_gameoverfile = /etc/ghostpp/gameover
+ 
+ ### whether to send "local admin messages" or not
+ ###  these messages are battle.net chat messages, whispers, and emotes which the bot receives and passes on to the "local admin"

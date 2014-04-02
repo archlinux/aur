@@ -1,0 +1,23 @@
+#/bin/sh
+
+# arg 1:  the new package version
+post_install() {
+  getent group ghostpp >/dev/null || groupadd ghostpp
+  getent passwd ghostpp >/dev/null || useradd --system --home /var/lib/ghostpp --gid ghostpp ghostpp
+  chown --recursive ghostpp:ghostpp /var/lib/ghostpp
+  echo "==> You need to edit the config in /etc/ghostpp/ghost.cfg before using the bot"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  :
+}
+
+# arg 1:  the old package version
+post_remove() {
+  userdel -f ghostpp >/dev/null 2>&1
+  groupdel ghostpp >/dev/null 2>&1
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

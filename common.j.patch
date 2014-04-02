@@ -1,0 +1,18 @@
+--- common.j.orig	2014-03-31 13:52:43.483681151 +0200
++++ common.j	2014-03-31 13:53:35.369580784 +0200
+@@ -1,8 +1,4 @@
+-<noinclude>Imported data for [[common.j]]</noinclude><includeonly>{{common.j article series}}
+-{{DISPLAYTITLE:common.j}}
+-{{JassSysSnip
+-| system=common.j
+-| code=<source lang="jass" line>//============================================================================
++//============================================================================
+ // Native types. All native functions take extended handle types when
+ // possible to help prevent passing bad values to native functions
+ //
+@@ -2420,4 +2416,3 @@
+ native PreloadGenEnd    takes string filename returns nothing
+ native Preloader        takes string filename returns nothing</source>
+ }}
+-</includeonly>
+\ No newline at end of file

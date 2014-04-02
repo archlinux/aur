@@ -1,0 +1,12 @@
+[Unit]
+Description=GHost++, a Warcraft III hosting bot
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ghost++ /etc/ghostpp/ghost.cfg
+KillSignal=SIGINT
+User=ghostpp
+WorkingDirectory=/var/lib/ghostpp
+
+[Install]
+WantedBy=multi-user.target

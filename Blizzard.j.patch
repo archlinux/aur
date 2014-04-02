@@ -1,0 +1,18 @@
+--- Blizzard.j.orig	2014-03-31 13:52:49.020265979 +0200
++++ Blizzard.j	2014-03-31 13:53:21.276455809 +0200
+@@ -1,8 +1,4 @@
+-<noinclude>Imported data for [[Blizzard.j]]</noinclude><includeonly>
+-{{DISPLAYTITLE:Blizzard.j}}
+-{{JassSysSnip
+-| system=Blizzard.j
+-| code=<source lang="jass" line>//===========================================================================
++//===========================================================================
+ // Blizzard.j ( define Jass2 functions that need to be in every map script )
+ //===========================================================================
+ 
+@@ -10233,4 +10229,3 @@
+ endfunction
+ </source>
+ }}
+-</includeonly>
+\ No newline at end of file
