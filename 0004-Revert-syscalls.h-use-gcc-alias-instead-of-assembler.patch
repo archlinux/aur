@@ -1,7 +1,7 @@
 From 268984331a319f47179d6f0b62aa0e312fe4497d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Thomas=20B=C3=A4chler?= <thomas@archlinux.org>
 Date: Tue, 1 Apr 2014 01:15:34 +0200
-Subject: [PATCH 4/4] Revert "syscalls.h: use gcc alias instead of assembler
+Subject: [PATCH 4/6] Revert "syscalls.h: use gcc alias instead of assembler
  aliases for syscalls"
 
 This reverts commit 83460ec8dcac14142e7860a01fa59c267ac4657c.
