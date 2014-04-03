@@ -1,5 +1,6 @@
 # Maintainer : Keshav Amburay <(the ddoott ridikulusddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
@@ -18,7 +19,7 @@ makedepends=('git')
 depends=('pciutils' 'efivar' 'zlib')
 conflicts=("${_pkgname}" "${_pkgname}-pjones" "${_pkgname}-pjones-git")
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-pjones=${pkgver}" "${_pkgname}-pjones-_git=${pkgver}")
-options=('!strip' 'zipman' '!emptydirs' '!libtool')
+options=('!strip' 'zipman' 'docs' '!emptydirs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
@@ -28,10 +29,19 @@ pkgver() {
 	echo "$(git describe --tags)" | sed -e 's|efibootmgr-||g' -e 's|-|\.|g'
 }
 
-build() {
+prepare() {
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
+	
+	cd "${srcdir}/${_gitname}_build/"
+	
+	git clean -x -d -f
+	echo
+	
+}
+
+build() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	

@@ -18,8 +18,8 @@ pkgbase = efibootmgr-git
 	conflicts = efibootmgr-pjones-git
 	options = !strip
 	options = zipman
+	options = docs
 	options = !emptydirs
-	options = !libtool
 	source = efibootmgr::git+https://github.com/vathpela/efibootmgr.git#branch=master
 	sha1sums = SKIP
 
