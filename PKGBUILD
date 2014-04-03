@@ -1,6 +1,6 @@
 # Maintainer: jjacky
 pkgname=donnatella
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="GTK+3 customizable file manager with advanced unique features"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL3+')
 optdepends=('gtk3-donnatella: For some advanced GUI features')
 depends=('gtk3')
 source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('f9bc605592cdfd114fd7fbaa9561b919')
+md5sums=('0a8fdb37e8f1e7dab576abca8ee5789f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
