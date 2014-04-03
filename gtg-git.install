@@ -1,4 +1,4 @@
-pkgname=gtg-bzr
+pkgname=gtg-git
 
 post_install() {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor

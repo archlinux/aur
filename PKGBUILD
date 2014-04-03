@@ -1,43 +1,68 @@
 # Contributor: Baptiste Grenier <baptiste@bapt.name>
-# Maintainer: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
-pkgname=gtg-bzr
-pkgver=1234
+# Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
+# Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
+pkgname=gtg-git
+pkgver=1
 pkgrel=1
-pkgdesc="Personal GTD like organizer for the GNOME desktop environment. bzr version."
-url="http://gtg.fritalk.com/"
+pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
+url="http://gtgnome.net/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('pygtk' 'pygobject' 'python2-configobj' 'pyxdg' 'dbus-python'
 'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
-'python2-liblarch-git')
+'python-liblarch-git')
 makedepends=('bzr' 'python2-gconf')
+optdepends=(
+"python-bugz: for Bugzilla plugin"
+"python-cheetah: for Export and print plugin"
+"pdflatex: for Export and print plugin"
+"pdftk: for Export and print plugin"
+"pdfjam: for Export and print plugin"
+"python-geoclue: for Geolocalized tasks plugin"
+"python-clutter: for Geolocalized tasks plugin"
+"python-clutter-gtk: for Geolocalized tasks plugin"
+"python-champlain: for Geolocalized tasks plugin"
+"python-champlain-gtk: for Geolocalized tasks plugin"
+"hamster-time-tracker: for Hamster Time Tracker Integration to integrate with"
+"python-appindicator: for Notification area plugin"
+"python-dbus: for Tomboy/Gnote plugin"
+"python-evolution: for Evolution synchronization service"
+"python-dateutil: for Evolution and RememberTheMilk synchronization services"
+"python-suds: for MantisBT synchronization service"
+"python-launchpadlib: for Launchpad synchronization service"
+)
 conflicts=('gtg')
-install="gtg-bzr.install"
+install="${pkgname}.install"
 source=()
 md5sums=()
 
-_bzrtrunk=lp:gtg
-_bzrmod=trunk
+_gitroot=https://github.com/getting-things-gnome/gtg
+_gitname=${pkgname}
 
-build() {
-  cd ${srcdir}
+prepare() {
+  cd "${srcdir}"
+  msg "Connecting to GIT server...."
 
-  msg "Connecting to the server...."
-  if [ ! -d ./${_bzrmod} ]; then
-    bzr co ${_bzrtrunk} ${_bzrmod} -r ${pkgver}
+  if [[ -d "${_gitname}" ]]; then
+    cd "${_gitname}" && git pull origin
+    msg "The local files are updated."
   else
-    bzr up ${_bzrmod}
+    git clone "${_gitroot}" "${_gitname}"
   fi
 
-  msg "BZR checkout done or server timeout"
-  msg "Starting packaging..."
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
 
-  cd ${srcdir}/${_bzrmod}
-  python2 setup.py install --root=${pkgdir}
+  rm -rf "${srcdir}/${_gitname}-build"
+  git clone "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-build"
+  cd "${srcdir}/${_gitname}-build"
+
+  python setup.py build
 }
 
 package() {
-  return 0
+  cd "${srcdir}/${_gitname}"
+  python setup.py install --root=${pkgdir}
 }
 
 # vim:set ts=2 sw=2 et:
