@@ -1,5 +1,5 @@
 pkgbase = efivar-git
-	pkgdesc = Library to manipulate EFI variables - GIT Version
+	pkgdesc = Tools and library to manipulate EFI variables - GIT master branch
 	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/vathpela/efivar
@@ -15,11 +15,8 @@ pkgbase = efivar-git
 	conflicts = libefivar
 	conflicts = libefivar-git
 	options = !strip
-	options = emptydirs
 	options = zipman
-	options = libtool
 	options = docs
-	options = !makeflags
 	source = efivar::git+https://github.com/vathpela/efivar.git#branch=master
 	sha1sums = SKIP
 

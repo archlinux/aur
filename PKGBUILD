@@ -1,4 +1,5 @@
 # Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor : Tobias Powalowski <tpowa@archlinux.org>
 
 _pkgname="efivar"
 pkgname="${_pkgname}-git"
@@ -7,7 +8,7 @@ _gitroot="https://github.com/vathpela/efivar.git"
 _gitname="${_pkgname}"
 _gitbranch="master"
 
-pkgdesc="Library to manipulate EFI variables - GIT Version"
+pkgdesc="Tools and library to manipulate EFI variables - GIT master branch"
 
 pkgver=0.8
 pkgrel=1
@@ -18,7 +19,7 @@ makedepends=('git')
 depends=('popt')
 conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
 provides=("${_pkgname}=${pkgver}" "libefivar=${pkgver}" "libefivar-git=${pkgver}")
-options=('!strip' 'emptydirs' 'zipman' 'libtool' 'docs' '!makeflags')
+options=('!strip' 'zipman' 'docs')
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
 sha1sums=('SKIP')
@@ -47,12 +48,6 @@ prepare() {
 build() {
 	
 	cd "${srcdir}/${_gitname}_build/"
-	
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
 	
 	make libdir="/usr/lib/" bindir="/usr/bin/" mandir="/usr/share/man/" includedir="/usr/include/" V=1 -j1
 	echo
