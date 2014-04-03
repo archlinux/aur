@@ -1,23 +1,20 @@
 pkgname=apache-flex-sdk
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="The open-source framework for building expressive web and mobile applications"
 arch=('any')
 license=('Apache')
 url='http://flex.apache.org/'
-depends=('java-runtime')
-makedepends=('python-pyquery')
+depends=('java-environment')
 source=(
-    "`python ./closer.py`"
+    "http://ftp.twaren.net/Unix/Web/apache/flex/4.12.0/binaries/apache-flex-sdk-4.12.0-bin.tar.gz"
     "http://download.macromedia.com/get/flashplayer/updaters/11/playerglobal11_1.swc"
     "apache-flex-sdk.sh"
-    "closer.py"
 )
 sha256sums=(
-    '180e440f47c73fc74e808ff044e5b37e8dc3440e1559eef45587853450a1a636'
+    '8d2715cf349b44b5028bff765902e258af4b6c0a49ee225cfcd1d28005f8c890'
     '2bbd5ffff3bb20c117db7206080079479b04c4b55d68dd21ab31b6566c99fb6b'
     '520ae01482825ef28da42c03b3cbadd3d62155ed074d737f3672980f0a97a3fd'
-    '77cb6573e511441d91c60b37558fe50b8dd60d7881e3e82f1c67f913586abed1'
 )
 install=apache-flex-sdk.install
 options=('!strip')
