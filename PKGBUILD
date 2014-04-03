@@ -9,7 +9,7 @@ _gitbranch="master"
 _src_rootdir="${_gitname}-3.0"
 
 pkgname="gnu-efi-libs-git"
-pkgver=0.33.9ae56e0
+pkgver=0.35.3c62e78
 pkgrel=1
 pkgdesc="Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
@@ -39,6 +39,9 @@ build() {
 	cd "${srcdir}/${_gitname}_build/"
 	
 	git clean -x -d -f
+	echo
+	
+	git revert --no-commit 06744d69273de4945cf0ffcaa4a6abf7cec707b6
 	echo
 	
 	## Unset all compiler FLAGS
