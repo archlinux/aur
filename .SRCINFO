@@ -32,7 +32,7 @@ pkgbase = syslinux-firmware-git
 	options = !emptydirs
 	backup = boot/syslinux/syslinux.cfg
 	source = syslinux::git+http://git.zytor.com/syslinux/syslinux.git#branch=master
-	source = gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#commit=b32a5785737023d10b2c08ad433cd2604d36bcb8
+	source = gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#branch=master
 	source = syslinux.cfg
 	source = syslinux-install_update
 	sha1sums = SKIP

@@ -38,7 +38,7 @@ optdepends=('perl-passwd-md5:  For md5pass'
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        "gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#commit=b32a5785737023d10b2c08ad433cd2604d36bcb8"
+        "gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#branch=master"
         'syslinux.cfg'
         'syslinux-install_update')
 
@@ -71,11 +71,16 @@ prepare() {
 	msg "Fix FHS manpage path"
 	sed 's|/usr/man|/usr/share/man|g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
 	
+	cd "${srcdir}/gnu-efi/"
+	
 	msg "Run git clean for gnu-efi"
-	cd "${srcdir}/${_pkgname}/gnu-efi/"
 	git clean -x -d -f
 	echo
 	
+	msg "Revert gnu-efi Makefile 'make install' problamatic commit"
+	git revert --no-commit 06744d69273de4945cf0ffcaa4a6abf7cec707b6
+	echo
+
 	msg "Prepare gnu-efi source"
 	cp -r "${srcdir}/gnu-efi/gnu-efi-3.0" "${srcdir}/${_pkgname}/gnu-efi/gnu-efi-3.0"
 	
