@@ -1,0 +1,24 @@
+pkgbase = gtg-bzr
+	pkgdesc = Personal GTD like organizer for the GNOME desktop environment. bzr version.
+	pkgver = 1234
+	pkgrel = 1
+	url = http://gtg.fritalk.com/
+	install = gtg-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	makedepends = python2-gconf
+	depends = pygtk
+	depends = pygobject
+	depends = python2-configobj
+	depends = pyxdg
+	depends = dbus-python
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = python2-gnomekeyring
+	depends = python2-liblarch-git
+	conflicts = gtg
+
+pkgname = gtg-bzr
+
