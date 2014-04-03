@@ -1,6 +1,6 @@
 pkgbase = efibootmgr-git
 	pkgdesc = Tool to modify UEFI Firmware Boot Manager Variables - GIT master branch
-	pkgver = 0.6.1.48.ga2621a4
+	pkgver = 0.7.0.1.g2a05511
 	pkgrel = 1
 	url = https://github.com/vathpela/efibootmgr
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = efibootmgr-git
 	depends = pciutils
 	depends = efivar
 	depends = zlib
-	provides = efibootmgr=0.6.1.48.ga2621a4
-	provides = efibootmgr-pjones=0.6.1.48.ga2621a4
-	provides = efibootmgr-pjones-_git=0.6.1.48.ga2621a4
+	provides = efibootmgr=0.7.0.1.g2a05511
+	provides = efibootmgr-pjones=0.7.0.1.g2a05511
+	provides = efibootmgr-pjones-_git=0.7.0.1.g2a05511
 	conflicts = efibootmgr
 	conflicts = efibootmgr-pjones
 	conflicts = efibootmgr-pjones-git
