@@ -1,6 +1,6 @@
 pkgbase = efivar-git
 	pkgdesc = Library to manipulate EFI variables - GIT Version
-	pkgver = 0.7.16.gb129911
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/vathpela/efivar
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = efivar-git
 	license = LGPL2.1
 	makedepends = git
 	depends = popt
-	provides = efivar=0.7.16.gb129911
-	provides = libefivar=0.7.16.gb129911
-	provides = libefivar-git=0.7.16.gb129911
+	provides = efivar=0.8
+	provides = libefivar=0.8
+	provides = libefivar-git=0.8
 	conflicts = efivar
 	conflicts = libefivar
 	conflicts = libefivar-git
