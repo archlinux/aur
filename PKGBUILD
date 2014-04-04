@@ -1,8 +1,9 @@
 # Contributor: Baptiste Grenier <baptiste@bapt.name>
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
+# $Id$
 pkgname=gtg-git
-pkgver=1
+pkgver=r5072.c9f89a9
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="http://gtgnome.net/"
@@ -33,35 +34,21 @@ optdepends=(
 )
 conflicts=('gtg')
 install="${pkgname}.install"
-source=()
-md5sums=()
+source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg")
+md5sums=(SKIP)
 
-_gitroot=https://github.com/getting-things-gnome/gtg
-_gitname=${pkgname}
+pkgver() {
+  cd "$srcdir/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "${_gitname}" ]]; then
-    cd "${_gitname}" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "${_gitroot}" "${_gitname}"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "${srcdir}/${_gitname}-build"
-  git clone "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-build"
-  cd "${srcdir}/${_gitname}-build"
-
+  cd "${srcdir}/${pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${pkgname}"
   python setup.py install --root=${pkgdir}
 }
 

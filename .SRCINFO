@@ -1,6 +1,6 @@
 pkgbase = gtg-git
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment. Git version.
-	pkgver = 1
+	pkgver = r5072.c9f89a9
 	pkgrel = 1
 	url = http://gtgnome.net/
 	install = gtg-git.install
@@ -36,6 +36,8 @@ pkgbase = gtg-git
 	optdepends = python-suds: for MantisBT synchronization service
 	optdepends = python-launchpadlib: for Launchpad synchronization service
 	conflicts = gtg
+	source = gtg-git::git+https://github.com/getting-things-gnome/gtg
+	md5sums = SKIP
 
 pkgname = gtg-git
 
