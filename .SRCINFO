@@ -1,6 +1,6 @@
 pkgbase = git-annex-bin
 	pkgdesc = Standalone precompiled version of git-annex with no haskel dependencies, batteries included.
-	pkgver = 5.20140320
+	pkgver = 5.20140402
 	pkgrel = 1
 	url = http://git-annex.branchable.com/
 	arch = i686
@@ -22,10 +22,10 @@ pkgbase = git-annex-bin
 	replaces = git-annex-standalone
 	source = git-annex
 	source = runshell.patch
-	source = git-annex-standalone-i386-5.20140320.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz
+	source = git-annex-standalone-i386-5.20140402.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz
 	sha256sums = c7d12ba3f3a00736d0d22e18e76721314d461561adcf48cbd102413e5e75be92
 	sha256sums = 173b3f0dc5a314559574113a2cc1242b61ff7caebbd3be52d3090b7a91e1268f
-	sha256sums = 18f0db2e2be5d96812d30bd118d62ace1ffec7305b1e8918f5f9274163ae4bab
+	sha256sums = 2ba7cf607968100b08090cf0571c991276c6b1de73554cea61c853f317c1529f
 
 pkgname = git-annex-bin
 
