@@ -81,7 +81,7 @@ build() {
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd --with-audit \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
-	--without-netcf --with-interface --with-lxc --with-sysctl=no
+	--without-netcf --with-interface --with-lxc
   make
 
   sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
@@ -96,14 +96,10 @@ package() {
 
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
-
-  # systemd stuff
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
-#  mv "$pkgdir"/lib/* "$pkgdir"/usr/lib/
 
   rm -rf \
 	"$pkgdir"/var/run \
 	"$pkgdir"/etc/sysconfig \
-	"$pkgdir"/etc/rc.d/init.d \
-	"$pkgdir"/lib
+	"$pkgdir"/etc/rc.d
 }
