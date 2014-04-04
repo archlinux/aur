@@ -1,0 +1,18 @@
+pkgbase = flens-git
+	pkgdesc = FLENS - Flexible Library for Efficient Numerical Solutions - new headers only version.
+	pkgver = 408.846b5a3
+	pkgrel = 1
+	url = http://flens.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	provides = flens
+	conflicts = flens
+	source = flens-git::git://github.com/michael-lehn/FLENS.git
+	md5sums = SKIP
+
+pkgname = flens-git
+
