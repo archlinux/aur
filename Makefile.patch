@@ -1,23 +1,26 @@
-diff --git a/Makefile b/Makefile
-index d134f26..d330d0d 100644
---- a/Makefile
-+++ b/Makefile
-@@ -12,10 +12,10 @@ all:
+diff -up a/Makefile b/Makefile
+--- a/Makefile	2014-04-03 10:36:12.920054098 -0400
++++ b/Makefile	2014-04-03 10:37:49.056724095 -0400
+@@ -12,13 +12,13 @@ all:
  	@echo "Password store is a shell script, so there is nothing to do. Try \"make install\" instead."
  
- install:
--	@mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(LIBDIR)" "$(DESTDIR)$(MANDIR)/man1" "$(DESTDIR)$(SYSCONFDIR)/bash_completion.d"
-+	@mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(LIBDIR)" "$(DESTDIR)$(MANDIR)/man1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions"
+ install-pass:
+-	@mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(LIBDIR)" "$(DESTDIR)$(MANDIR)/man1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/"
++	@mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(LIBDIR)" "$(DESTDIR)$(MANDIR)/man1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/" "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/"
  	@install -m 0755 -v src/password-store.sh "$(DESTDIR)$(BINDIR)/pass"
  	@install -m 0644 -v man/pass.1 "$(DESTDIR)$(MANDIR)/man1/pass.1"
--	@install -m 0644 -v contrib/pass.bash-completion "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/password-store"
-+	@install -m 0644 -v contrib/pass.bash-completion "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/pass"
+-	@install -m 0644 -v src/completion/pass.bash-completion "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/password-store"
++	@install -m 0644 -v src/completion/pass.bash-completion "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/pass"
  
  #	Uncomment to install the zsh completion file.
- #	@install -m 0644 -v contrib/pass.zsh-completion "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/_pass"
-@@ -35,4 +35,4 @@ install-platform:
+-#	@install -m 0644 -v src/completion/pass.zsh-completion "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/_pass"
++	@install -m 0644 -v src/completion/pass.zsh-completion "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/_pass"
+ #
+ #	Uncomment to install the fish completion file.
+ #	@install -m 0644 -v src/completion/pass.fish-completion "$(DESTDIR)$(PREFIX)/share/fish/completions/pass.fish"
+@@ -33,4 +33,4 @@ install: install-pass
  endif
  
  uninstall:
 -	@rm -vf "$(DESTDIR)$(BINDIR)/pass" "$(DESTDIR)$(MANDIR)/man1/pass.1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/password-store" "$(DESTDIR)$(LIBDIR)/password-store.platform.sh"
-+	@rm -vf "$(DESTDIR)$(BINDIR)/pass" "$(DESTDIR)$(MANDIR)/man1/pass.1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/pass" "$(DESTDIR)$(LIBDIR)/password-store.platform.sh"
++	@rm -vf "$(DESTDIR)$(BINDIR)/pass" "$(DESTDIR)$(MANDIR)/man1/pass.1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/pass" "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/_pass" "$(DESTDIR)$(LIBDIR)/password-store.platform.sh"
