@@ -1,0 +1,23 @@
+pkgbase = pass-git
+	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely
+	pkgver = 20130914.140
+	pkgrel = 2
+	url = http://zx2c4.com/projects/password-store/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = xclip
+	depends = bash
+	depends = git
+	depends = gnupg
+	depends = pwgen
+	depends = tree
+	provides = pass
+	conflicts = pass
+	source = pass-git::git://git.zx2c4.com/password-store
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = d3266ee9d64c2bb5a8517d00af777341f91c3d1f7a9a35d157f908838b086488
+
+pkgname = pass-git
+
