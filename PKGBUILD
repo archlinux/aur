@@ -1,3 +1,6 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
+
 pkgname=linux-linode
 _basekernel=3.14
 _kernelname=${pkgname#linux}
