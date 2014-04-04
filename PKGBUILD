@@ -2,9 +2,9 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20140315
+pkgver=20140403
 pkgrel=1
-_udevver=210
+_udevver=212
 provides=('eudev' "udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
 replaces=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
 conflicts=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
