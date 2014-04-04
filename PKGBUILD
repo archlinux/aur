@@ -16,28 +16,26 @@ arch=('i686' 'x86_64')
 url="http://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
-makedepends=('git')
 depends=('ruby' 'curl' 'lzo2' 'libidn' 'rtmpdump')
-source=(git://github.com/mitchellh/$pkgname.git
-        git://github.com/mitchellh/$pkgname-installers.git
-        plugins.patch
+source=(http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
         http://pkgbuild.com/~jsteel/aur/$pkgname/substrate_archlinux_$CARCH.zip)
-md5sums=('SKIP' 'SKIP'
-         'c73455203b22aaf89e3a7779ebbe81ed')
+md5sums=('169571cfb860c3ef5748c0784fdbb458')
 [[ $CARCH == i686 ]] && md5sums[3]='c04042b24de56d18a041bc005e5ecaa4'
 [[ $CARCH == x86_64 ]] && md5sums[3]='53d8a137e0b50fee8509a7d1c15fd33b'
 
-prepare() {
-  # Remove proprietary plugins
-  patch -Np1 -i "$srcdir"/plugins.patch
-}
-
 build() {
-  cd "$srcdir"/$pkgname
-    REV=$( git log --grep ^v$pkgver$ --pretty=format:"%H" | head -n 1 )
+  cd "$srcdir"/$pkgname-$pkgver
 
-  "$srcdir"/$pkgname-installers/package/support/install_$pkgname.sh \
-    "$srcdir"/substrate/ $REV "$srcdir"/substrate/${pkgname}_version
+  EMBEDDED_DIR="$srcdir"/substrate/embedded
+
+  echo -n $( cat version.txt ) > "$srcdir"/substrate/${pkgname}_version
+
+  "$EMBEDDED_DIR"/bin/gem build $pkgname.gemspec
+
+  GEM_PATH="$EMBEDDED_DIR"/gems GEM_HOME="$GEM_PATH" \
+  GEMRC="$EMBEDDED_DIR"/etc/gemrc CPPFLAGS="-I$EMBEDDED_DIR"/include \
+  LDFLAGS="-L$EMBEDDED_DIR"/lib PATH="$EMBEDDED_DIR/bin:$PATH" \
+    "$EMBEDDED_DIR"/bin/gem install $pkgname-$pkgver.gem --no-ri --no-rdoc
 }
 
 package() {
@@ -50,6 +48,6 @@ package() {
   ln -s /opt/$pkgname/embedded/gems/gems/$pkgname-$pkgver/contrib/bash/completion.sh \
     "$pkgdir"/usr/share/bash-completion/completions/$pkgname
 
-  install -Dm644 "$srcdir"/$pkgname/LICENSE \
+  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
