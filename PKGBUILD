@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -65,11 +65,6 @@ md5sums=('ad1602a2fcc3609c83b885a28f3eecbd'
          '0a96ed876ffb1fcb9dff5a9b3a609c1e'
          '020971887442ebbf1b6949e031c8dd3f')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-#  patch -p1 <"$srcdir/FS#38546.patch"
-}
-
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -86,7 +81,7 @@ build() {
 	--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
 	--with-init-script=systemd --with-audit \
 	--with-qemu-user=nobody --with-qemu-group=nobody \
-	--without-netcf --with-interface --with-lxc
+	--without-netcf --with-interface --with-lxc --with-sysctl=no
   make
 
   sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
@@ -110,6 +105,5 @@ package() {
 	"$pkgdir"/var/run \
 	"$pkgdir"/etc/sysconfig \
 	"$pkgdir"/etc/rc.d/init.d \
-	"$pkgdir"/lib \
-	"$pkgdir"/etc/sysctl.d
+	"$pkgdir"/lib
 }
