@@ -1,13 +1,13 @@
 # Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=113.7d3553d
+pkgver=1374.66ae6d3
 pkgrel=1
-pkgdesc=""
+pkgdesc="C++QED is a highly flexible framework for simulating open quantum dynamics."
 arch=('i686' 'x86_64')
 url="http://www.sourceforge.net/projects/blitz/"
-license=('GPL2')
-depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-cvs' 'python2' 'python2-numpy')
+license=('BSL')
+depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy')
 makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('cppqed')
@@ -22,21 +22,14 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  git submodule update --init
   mkdir $srcdir/$pkgname/build_release
-  mkdir $srcdir/$pkgname/build_debug
   cd $srcdir/$pkgname/build_release
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXAMPLES=Off -DREGISTRY=Off ..
-  make
-  cd $srcdir/$pkgname/build_debug
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DEXAMPLES=Off -DREGISTRY=Off ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DREGISTRY=Off ..
   make
 }
 
 package() {
   cd $srcdir/$pkgname/build_release
-  make DESTDIR=$pkgdir install || return 1
-  cd $srcdir/$pkgname/build_debug
   make DESTDIR=$pkgdir install || return 1
 }
 
