@@ -101,6 +101,8 @@ package()
     cd "${srcdir}"/"${pkgname}-${pkgver}"
     make install DESTDIR="${pkgdir}"
 
+    chmod 750 "${pkgdir}"/run/trafficserver
+
     install -D -m 644 "${srcdir}"/trafficserver.tmpfiles \
         "${pkgdir}"/usr/lib/tmpfiles.d/trafficserver.conf
 
