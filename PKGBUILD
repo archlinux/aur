@@ -101,19 +101,6 @@ package()
     cd "${srcdir}"/"${pkgname}-${pkgver}"
     make install DESTDIR="${pkgdir}"
 
-    # Remove libtool files
-    rm -f "${pkgdir}"/usr/lib/libtsmgmt.la
-    rm -f "${pkgdir}"/usr/lib/libtsutil.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/regex_remap.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/conf_remap.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/stats_over_http.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/header_filter.la
-    rm -f "${pkgdir}"/usr/lib/libatscpp11api.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/gzip.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/cacheurl.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/libloader.la
-    rm -f "${pkgdir}"/usr/lib/trafficserver/header_rewrite.la
-
     install -D -m 644 "${srcdir}"/trafficserver.tmpfiles \
         "${pkgdir}"/usr/lib/tmpfiles.d/trafficserver.conf
 
