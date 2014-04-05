@@ -1,0 +1,15 @@
+pkgbase = coveralls-lcov
+	pkgdesc = Post coverage information to coveralls.io
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/okkez/coveralls-lcov
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = coveralls-lcov-1.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/coveralls-lcov-1.1.2.gem
+	sha1sums = dab12d297cbf9464eb93ff59d72ca27cc3ae66f0
+
+pkgname = coveralls-lcov
+
