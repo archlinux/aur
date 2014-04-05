@@ -6,7 +6,7 @@
 pkgname=chromium
 pkgver=33.0.1750.152
 _toolchains_rev=12526
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -18,7 +18,10 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
              'elfutils' 'subversion')
 [[ $CARCH = x86_64 ]] && makedepends+=('lib32-gcc-libs' 'lib32-zlib')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE')
+optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+            'gnome-keyring: for storing passwords in GNOME keyring'
+            'libgnome-keyring: for storing passwords in GNOME keyring'
+            'kdeutils-kwallet: for storing passwords in KWallet')
 backup=('etc/chromium/default')
 options=('!strip')
 install=chromium.install
