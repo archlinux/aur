@@ -1,7 +1,7 @@
 # Maintainer: Galen Sampson <galen.sampson at gmail dot com>
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
-pkgname=('trafficserver')
+pkgname='trafficserver'
 pkgver=4.2.0
 pkgrel=1
 pkgdesc="Apache Traffic Server"
