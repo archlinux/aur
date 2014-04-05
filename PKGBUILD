@@ -2,7 +2,7 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname=('trafficserver')
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -14,11 +14,13 @@ makedepends=('flex')
 source=(
     http://archive.apache.org/dist/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
     trafficserver.tmpfiles
-    trafficserver.service.in.patch)
+    trafficserver.service.in.patch
+    trafficserver.e632b3a7d382008dcf27b35a05cbea0c691e834d.patch)
 
-md5sums=('cc9a4dfa88fe63f59de106602c06c9c4'
+md5sums=('a4302d1650eac9bc7d4cab27985668d1'
          'fc8ab2b6d01e22fb376832fb13137db1'
-         '74ba08091f580f8984eee8db0f7e4d27')
+         '74ba08091f580f8984eee8db0f7e4d27'
+         '9a5198d83d89b9f9d80dd360b8f26102')
 
 install=${pkgname}.install
 changelog=${pkgname}.changelog
@@ -75,6 +77,16 @@ backup=(
 build() {
     cd "${pkgname}-${pkgver}"
     patch -Np0 -u -i ../trafficserver.service.in.patch
+
+    # There are link arguments missing to link against hwloc.  Patch the
+    # automake files with the addition of the appropriate libraries.
+    patch -Np1 -u -i \
+        ../trafficserver.e632b3a7d382008dcf27b35a05cbea0c691e834d.patch
+    # Since we have modified automake Makefiles we need to regenerate
+    # everything.
+    aclocal
+    automake
+
     ./configure --with-user=tserver --enable-layout=Arch
     make
 }
