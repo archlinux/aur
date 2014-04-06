@@ -124,6 +124,7 @@ _build_syslinux_efi64() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
+	msg "Run make gnu-efi for syslinux efi64"
 	make ARCH="x86_64" -j1
 	echo
 	
