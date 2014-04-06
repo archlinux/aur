@@ -3,21 +3,20 @@
 # Contributor: Tiago Camargo <tcamargo@gmail.com>
 
 pkgname=libfat-ogc
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Library for acessing FAT filesystems from Nintendo Gamecube/Wii homebrew"
 arch=('any')
-url="http://www.devkitpro.org/"
+url="http://chishm.drunkencoders.com/libfat/"
 license=('custom')
 options=(!strip staticlibs)
-depends=('devkitppc' 'libogc')
+depends=('libogc')
 conflicts=('libfat-ogc-svn') # this is a hack to support transition, can be removed later
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/libfat-src-$pkgver.tar.bz2")
-sha256sums=('ded1a18f4b3baea1fdba3868fd79cf0189c57f3697099b9ea4727cbd1a519ae0')
+sha256sums=('b36c26766f0fe13cd1ef822242dd2de09ba4598cbd1d7ddbb48cdaeea7e621af')
 
 build() {
   source /etc/profile.d/devkitppc.sh
-
   make ogc-release
 }
 
