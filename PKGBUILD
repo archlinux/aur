@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -19,7 +19,7 @@ options=('!emptydirs')
 depends=('ruby' 'curl' 'lzo2' 'libidn' 'rtmpdump')
 source=(http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
         http://pkgbuild.com/~jsteel/aur/$pkgname/substrate_archlinux_$CARCH.zip)
-md5sums=('169571cfb860c3ef5748c0784fdbb458')
+md5sums=('217e62eb15e5ba9c4aaea394c75ad272')
 [[ $CARCH == i686 ]] && md5sums[3]='c04042b24de56d18a041bc005e5ecaa4'
 [[ $CARCH == x86_64 ]] && md5sums[3]='53d8a137e0b50fee8509a7d1c15fd33b'
 
@@ -28,7 +28,7 @@ build() {
 
   EMBEDDED_DIR="$srcdir"/substrate/embedded
 
-  echo -n $( cat version.txt ) > "$srcdir"/substrate/${pkgname}_version
+  echo -n $pkgver > "$srcdir"/substrate/${pkgname}_version
 
   "$EMBEDDED_DIR"/bin/gem build $pkgname.gemspec
 
