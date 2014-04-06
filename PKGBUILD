@@ -1,11 +1,11 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Carsten Haitzler (Rasterman)
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-_pkgname=elementary
-pkgname=$_pkgname-git
-true && pkgname=('elementary-git' 'elementary_test-git')
-pkgver=1.9.0alpha1.9390.5830b76
+pkgbase=elementary
+pkgname=$pkgbase-git
+true && pkgname=("$pkgbase-git" "elementary_test-git")
+pkgver=1.9.99.9772.b95a870
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ depends=('efl-git')
   [[ ! $(pacman -T libeweather-git) ]] && depends+=('libeweather-git') # eweather support is detected at build time
 makedepends=('git')
 options=('debug')
-source=("git://git.enlightenment.org/core/$_pkgname.git")
+source=("git://git.enlightenment.org/core/$pkgbase.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -45,14 +45,14 @@ package_elementary-git() {
   provides=("${pkgname%-*}=$pkgver")
   conflicts=("${pkgname%-*}")
 
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$pkgbase/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$pkgbase/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgbase/README"
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
@@ -73,7 +73,7 @@ package_elementary_test-git() {
   provides=("${pkgname%-*}=$pkgver")
   conflicts=("${pkgname%-*}")
 
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   make -j1 DESTDIR="$pkgdir" install
 
