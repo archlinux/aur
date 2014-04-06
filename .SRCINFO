@@ -1,9 +1,10 @@
 pkgbase = systemd-selinux
-	pkgver = 211
+	pkgver = 212
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
+	groups = selinux
 	makedepends = acl
 	makedepends = cryptsetup
 	makedepends = docbook-xsl
@@ -26,11 +27,11 @@ pkgbase = systemd-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = http://www.freedesktop.org/software/systemd/systemd-211.tar.xz
+	source = http://www.freedesktop.org/software/systemd/systemd-212.tar.xz
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
-	md5sums = 0a70c382b6089526f98073b4ee85ef75
+	md5sums = 257a75fff826ff91cb1ce567091cf270
 	md5sums = 29245f7a240bfba66e2b1783b63b6b40
 	md5sums = 5e04f468a13ae2b9d6a9dfc77c49a7d1
 	md5sums = bde43090d4ac0ef048e3eaee8202a407
@@ -50,7 +51,7 @@ pkgname = systemd-selinux
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
-	depends = libsystemd
+	depends = libsystemd-selinux
 	depends = pam-selinux
 	depends = libseccomp
 	depends = libutil-linux-selinux
@@ -62,9 +63,9 @@ pkgname = systemd-selinux
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	provides = nss-myhostname
-	provides = systemd-tools=211
-	provides = udev=211
-	provides = systemd=211-1
+	provides = systemd-tools=212
+	provides = udev=212
+	provides = systemd=212-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -88,13 +89,29 @@ pkgname = systemd-selinux
 	backup = etc/systemd/user.conf
 	backup = etc/udev/udev.conf
 
+pkgname = libsystemd-selinux
+	pkgdesc = systemd client libraries
+	license = GPL2
+	depends = glib2
+	depends = glibc
+	depends = libgcrypt
+	depends = xz
+	provides = libgudev-1.0.so
+	provides = libsystemd.so
+	provides = libsystemd-daemon.so
+	provides = libsystemd-id128.so
+	provides = libsystemd-journal.so
+	provides = libsystemd-login.so
+	provides = libudev.so
+	provides = libsystemd=212-1
+	conflicts = libsystemd
+
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd
-	groups = selinux
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=211-1
-	provides = selinux-systemd-sysvcompat=211-1
+	provides = systemd-sysvcompat=212-1
+	provides = selinux-systemd-sysvcompat=212-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat

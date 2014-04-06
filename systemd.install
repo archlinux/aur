@@ -64,8 +64,7 @@ _209_changes() {
   local new_rule=etc/udev/rules.d/80-net-setup-link.rules
 
   echo ":: Network device naming is now controlled by udev's net_setup_link"
-  echo "   builtin. Refer to the NETWORK LINK CONFIGURATION section of the"
-  echo "   udev manpage for a full description."
+  echo "   builtin. Refer to the systemd.link manpage for a full description."
 
   # not clear what action we can take here, so don't do anything
   [[ -e $new_rule ]] && return 0

@@ -4,11 +4,12 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgbase=systemd-selinux
-pkgname=('systemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=211
+pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
+pkgver=212
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
+groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
              'gtk-doc' 'intltool' 'kmod' 'libcap' 'libgcrypt'  'libmicrohttpd' 'libxslt'
              'libutil-linux' 'linux-api-headers' 'pam-selinux' 'python' 'python-lxml' 'quota-tools' 'xz'
@@ -18,7 +19,7 @@ source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-seli
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev')
-md5sums=('0a70c382b6089526f98073b4ee85ef75'
+md5sums=('257a75fff826ff91cb1ce567091cf270'
          '29245f7a240bfba66e2b1783b63b6b40'
          '5e04f468a13ae2b9d6a9dfc77c49a7d1'
          'bde43090d4ac0ef048e3eaee8202a407')
@@ -52,8 +53,8 @@ package_systemd-selinux() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1' 'MIT')
   depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
-           'libsystemd' 'pam-selinux' 'libseccomp' 'libutil-linux-selinux' 'xz'
-           'libselinux')
+           'libsystemd-selinux' 'pam-selinux' 'libseccomp'
+           'libutil-linux-selinux' 'xz' 'libselinux')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   replaces=('nss-myhostname' 'systemd-tools' 'udev' 'selinux-systemd')
@@ -131,7 +132,6 @@ package_libsystemd-selinux() {
   pkgdesc="systemd client libraries"
   depends=('glib2' 'glibc' 'libgcrypt' 'xz')
   license=('GPL2')
-  groups=('selinux')
   provides=('libgudev-1.0.so' 'libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
             'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -143,7 +143,6 @@ package_libsystemd-selinux() {
 package_systemd-sysvcompat-selinux() {
   pkgdesc="sysvinit compat for systemd"
   license=('GPL2')
-  groups=('selinux')
   conflicts=('sysvinit' "${pkgname/-selinux}" 'selinux-systemd-sysvcompat')
   depends=('systemd-selinux')
   provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
@@ -164,7 +163,7 @@ workaround_for_the_aur_webinterface='
 pkgname="systemd-selinux"
 pkgdesc="System and service manager"
 depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
-         'libsystemd' 'pam-selinux' 'libseccomp' 'libutil-linux-selinux'
+         'libsystemd-selinux' 'pam-selinux' 'libseccomp' 'libutil-linux-selinux'
          'util-linux-selinux' 'xz' 'libselinux')
 '
 
