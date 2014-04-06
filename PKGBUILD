@@ -5,7 +5,7 @@
 # SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
 
-pkgname=util-linux-selinux
+pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 pkgver=2.24.1
 pkgrel=3
@@ -13,6 +13,11 @@ pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
 groups=('selinux')
+# SELinux package maintenance note:
+#   ArchLinux base packages have a build-time cyclic dependency because
+#   systemd depends on libutil-linux and util-linux depends on libudev
+#   provided by libsystemd (FS#39767).  To break this cycle, make
+#   util-linux-selinux depend on systemd at build time.
 makedepends=('systemd' 'python')
 # checkdepends=('bc')
 license=('GPL2')
@@ -105,7 +110,7 @@ package_util-linux-selinux() {
 }
 
 package_libutil-linux-selinux() {
-  pkgdesc="util-linux runtime libraries"
+  pkgdesc="util-linux-selinux runtime libraries"
   provides=('libblkid.so' 'libmount.so' 'libuuid.so'
             "${pkgname/-selinux}=${pkgver}-${pkrel}")
   conflicts=("${pkgname/-selinux}")

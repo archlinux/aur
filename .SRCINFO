@@ -45,7 +45,7 @@ pkgname = util-linux-selinux
 	backup = etc/pam.d/su-l
 
 pkgname = libutil-linux-selinux
-	pkgdesc = util-linux runtime libraries
+	pkgdesc = util-linux-selinux runtime libraries
 	provides = libblkid.so
 	provides = libmount.so
 	provides = libuuid.so
