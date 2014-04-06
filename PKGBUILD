@@ -3,9 +3,9 @@
 # Contributor: Tiago Camargo <tcamargo@gmail.com>
 
 pkgname=libogc
-pkgver=1.8.11
+pkgver=1.8.12
 _pkgverexamples=20110620
-pkgrel=2
+pkgrel=1
 pkgdesc="Library for Nintendo Gamecube/Wii homebrew development"
 arch=('any')
 url="http://www.devkitpro.org/"
@@ -17,7 +17,7 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pk
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-examples-$_pkgverexamples.tar.bz2")
 noextract=("wii-examples-$_pkgverexamples.tar.bz2"
            "gamecube-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('05392efd54760f421b9881ec0ec1b19e1cd9585c95428576013a2f21cd76a52d'
+sha256sums=('fecfcec4a4f3d3c1c459f8fa314a6fd00e920d69968c7c1a67f7894f14ca2d4e'
             '5c48e1e847f5476bc81cf5a7f0a0e543dc9b8aeda49462210c3edb6aa2930f56'
             'ffe95676f1203ab42c45757dbbccb47527aa61db2d4c45918003cfb57d4da461')
 
