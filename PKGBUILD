@@ -1,18 +1,17 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-_pkgname=efl
-pkgname=$_pkgname-git
-pkgver=1.9.99.25005.7fd1ffc
+pkgbase=efl
+pkgname=$pkgbase-git
+pkgver=1.9.99.25214.9d87d15
 pkgrel=1
-pkgdesc="Enlightenment Foundation Libraries - Development version (Ecore, Eldbus, Edje, Eet, Eeze, Efreet, Eina, Eio, Embryo, Emotion, Eo, Ephysics, Ethumb, & Evas)"
+pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
-depends=('bullet' 'curl' 'luajit' 'shared-mime-info' 'libxkbcommon' 'wayland' 'avahi'
-         'libxcomposite' 'libxcursor' 'libxinerama' 'libxss' 'libxrandr' 'libxp'
-         'libgl' 'libwebp' 'libpulse' 'libexif' 'gst-plugins-base-libs'
-         'fribidi' 'harfbuzz' 'fontconfig')
+depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
+         'libgl' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon'
+         'libxp' 'libxrandr' 'libxss' 'shared-mime-info' 'wayland')
   [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
 makedepends=('git' 'python2')
 optdepends=('python2: compare Eina benchmarks'
@@ -22,15 +21,15 @@ optdepends=('python2: compare Eina benchmarks'
             'gst-plugins-ugly: Access more types of video in Emotion'
             'gst-libav: Access video with ffmpeg/libav in Emotion'
             'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+provides=("$pkgbase=$pkgver")
+conflicts=("$pkgbase")
 options=('debug')
-install="$_pkgname.install"
-source=("git://git.enlightenment.org/core/$_pkgname.git")
+install="$pkgbase.install"
+source=("git://git.enlightenment.org/core/$pkgbase.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
@@ -39,7 +38,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
   export CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
@@ -63,14 +62,14 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$pkgbase/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$pkgbase/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgbase/README"
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
