@@ -6,7 +6,7 @@
 
 pkgname=cfengine
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
 license=('GPL3')
