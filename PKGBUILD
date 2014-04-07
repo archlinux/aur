@@ -13,7 +13,7 @@ _UNIFONT_VER="6.3.20131217"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02.beta2
-pkgrel=2
+pkgrel=3
 epoch="1"
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -41,22 +41,23 @@ source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}
         "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#branch=master"
         "http://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"
         "http://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz.sig"
+        'grub-10_linux-detect-archlinux-initramfs.patch'
         'grub-add-GRUB_COLOR_variables.patch'
-        '10_archlinux'
         '60_memtest86+'
         'grub.default'
         'grub.cfg')
+
 md5sums=('SKIP'
          'SKIP'
          '728b7439ac733a7c0d56049adec364c7'
          'SKIP'
+         '945527e0de8d384166a4cf23439ae9ee'
          'e506ae4a9f9f7d1b765febfa84e10d48'
-         'dcf3e0b47119b0bb06ce987c8f030ffa'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46')
 
-pkgver() {
+_pkgver() {
 	cd "${srcdir}/grub-${_pkgver}/"
 	echo "$(git describe --tags)" | sed -e 's|grub.||g' -e 's|-|\.|g'
 }
@@ -64,6 +65,10 @@ pkgver() {
 prepare() {
 	
 	cd "${srcdir}/grub-${_pkgver}/"
+	
+	msg "Patch to detect of Arch Linux initramfs images by grub-mkconfig"
+	patch -Np1 -i "${srcdir}/grub-10_linux-detect-archlinux-initramfs.patch"
+	echo
 	
 	msg "Patch to enable GRUB_COLOR_* variables in grub-mkconfig"
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
@@ -233,9 +238,6 @@ _package_grub-common_and_bios() {
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.module || true
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.image || true
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/{kernel.exec,gdb_grub,gmodule.pl} || true
-	
-	msg "Install 10_archlinux helper script for grub-mkconfig"
-	install -D -m0755 "${srcdir}/10_archlinux" "${pkgdir}/etc/grub.d/10_archlinux"
 	
 	msg "Install extra /etc/grub.d/ files"
 	install -D -m0755 "${srcdir}/60_memtest86+" "${pkgdir}/etc/grub.d/60_memtest86+"
