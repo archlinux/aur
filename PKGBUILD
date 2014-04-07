@@ -1,11 +1,11 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.0.1f
+_ver=1.0.1g
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -19,7 +19,7 @@ source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         'no-rpath.patch'
         'ca-dir.patch'
         'openssl-1.0.1f-perl-5.18.patch')
-md5sums=('f26b09c028a0541cab33da697d522b25'
+md5sums=('de62b43dfcd858e66a74bee1c834e959'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
