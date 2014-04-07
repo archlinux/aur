@@ -1,10 +1,10 @@
 # Maintainer: MKzero <info at linux-web-development dot de>
 # Contributor: Bitwig GmbH <support at bitwig dot com>
-pkgname=bitwig-studio-demo
+pkgname=bitwig-studio-demo-rc
 _pkgname=bitwig-studio
-pkgver=1.0.5
+pkgver=1.0.6rc1
 pkgrel=1
-pkgdesc="Music production system for production, remixing and performance"
+pkgdesc="Music production system for production, remixing and performance. Release candidate version"
 arch=( 'x86_64' )
 url="http://www.bitwig.com"
 license=('custom')
@@ -20,11 +20,12 @@ optdepends=(
              'libav: MP3 support'
            )
 provides=('bitwig-studio')
+conflicts=('bitwig-studio-demo')
 options=(!strip)
-source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver}.deb")
-md5sums=('ab0cec34edf4ad2fb3065564ea294ccc')
+source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver/rc/-RC}.deb")
+md5sums=('067862ddad78f723067935214630be71')
 
-_archive=("bitwig-studio-${pkgver}.deb")
+_archive=("bitwig-studio-${pkgver/rc/-RC}.deb")
 _archive_md5="${md5sums[0]}"
 
 build() {
