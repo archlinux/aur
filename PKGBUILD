@@ -3,7 +3,7 @@
 pkgname=bitwig-studio-demo
 _pkgname=bitwig-studio
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Music production system for production, remixing and performance"
 arch=( 'x86_64' )
 url="http://www.bitwig.com"
@@ -20,6 +20,7 @@ optdepends=(
              'libav: MP3 support'
            )
 provides=('bitwig-studio')
+conflicts=('bitwig-studio-demo-rc')
 options=(!strip)
 source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver}.deb")
 md5sums=('ab0cec34edf4ad2fb3065564ea294ccc')
