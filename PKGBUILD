@@ -3,7 +3,8 @@
 pkgname=bitwig-studio-demo-rc
 _pkgname=bitwig-studio
 pkgver=1.0.6rc1
-pkgrel=1
+_pkgver=${pkgver/rc/-RC}
+pkgrel=2
 pkgdesc="Music production system for production, remixing and performance. Release candidate version"
 arch=( 'x86_64' )
 url="http://www.bitwig.com"
@@ -22,10 +23,10 @@ optdepends=(
 provides=('bitwig-studio')
 conflicts=('bitwig-studio-demo')
 options=(!strip)
-source=("http://packs.bitwig.com/downloads/bitwig-studio-${pkgver/rc/-RC}.deb")
+source=("http://packs.bitwig.com/downloads/bitwig-studio-${_pkgver}.deb")
 md5sums=('067862ddad78f723067935214630be71')
 
-_archive=("bitwig-studio-${pkgver/rc/-RC}.deb")
+_archive=("bitwig-studio-${_pkgver}.deb")
 _archive_md5="${md5sums[0]}"
 
 build() {
