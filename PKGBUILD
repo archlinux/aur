@@ -6,8 +6,8 @@
 # Contributor: Andrew Gregory <andrew.gregory.8@gmail.com>
 
 pkgname=midori
-pkgver=0.5.7
-pkgrel=2
+pkgver=0.5.8
+pkgrel=1
 pkgdesc='Lightweight web browser (GTK2)'
 arch=('x86_64' 'i686')
 url='http://www.midori-browser.org/'
@@ -18,11 +18,9 @@ makedepends=('bzr' 'python2' 'intltool' 'vala' 'librsvg' 'cmake')
 optdepends=('aria2: download utility')
 options=('!emptydirs')
 source=("http://www.midori-browser.org/downloads/${pkgname}_${pkgver}_all_.tar.bz2")
-sha256sums=('2875bb2aa8a8a0cce342178f04700d4ebccd13bf1b2ad4cb3ba9fec7e2bd0b4d')
+sha256sums=('af19135fd4c4b04345df4d3592e7939c20f9b40eaca24550e6cb619751aa9381')
 
 build() {
-  cd "$pkgname-$pkgver"
-
   mkdir -p build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
@@ -30,7 +28,7 @@ build() {
 }
 
 package() {
-  make -C "$pkgname-$pkgver/build" DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
