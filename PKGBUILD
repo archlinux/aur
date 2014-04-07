@@ -1,16 +1,18 @@
 # Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+
 pkgname=openmpi
-pkgver=1.6.5
+pkgver=1.8
 pkgrel=1
 pkgdesc="High performance message passing library (MPI)"
 arch=('i686' 'x86_64')
 url="http://www.open-mpi.org"
 license=('custom')
-depends=('gcc-fortran' 'openssh' 'valgrind' 'libltdl' 'hwloc')
-makedepends=('inetutils')
+depends=('libltdl' 'hwloc')
+makedepends=('inetutils' 'valgrind' 'gcc-fortran')
+optdepends=('gcc-fortran: fortran support')
 options=('staticlibs')
-source=(http://www.open-mpi.org/software/ompi/v1.6/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('93859d515b33dd9a0ee6081db285a2d1dffe21ce')
+source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('d32961b83c689e086cede6c964b312e1f3d174f0')
 
 build() {
    cd ${pkgname}-${pkgver}
@@ -20,7 +22,7 @@ build() {
 
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
-               --enable-mpi-f90 \
+               --enable-mpi-fortran=all \
                --libdir=/usr/lib/${pkgname} \
                --with-threads=posix \
                --enable-smp-locks \
@@ -51,7 +53,6 @@ package() {
    mv "${pkgdir}"/usr/bin/otfinfo{,mpi}
 
    # Remove dangling symlink and useless file
-   rm "${pkgdir}"/usr/share/man/man1/orteCC.1
    rm "${pkgdir}"/usr/share/vampirtrace/config.log
 
    install -d -m 755 "${pkgdir}"/etc/ld.so.conf.d
