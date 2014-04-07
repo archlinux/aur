@@ -1,0 +1,924 @@
+diff -ur koules1.4/koules.sndsrv.linux.c koules1.4-gcc3/koules.sndsrv.linux.c
+--- koules1.4/koules.sndsrv.linux.c	1998-03-04 19:59:19.000000000 +0100
++++ koules1.4-gcc3/koules.sndsrv.linux.c	2003-04-23 01:15:16.000000000 +0200
+@@ -136,7 +136,7 @@
+    Eventually I'll look at the koules signal handlers and
+    just trap this.
+  */
+-int
++void
+ do_nothing (void)
+ {
+   fprintf (stderr, "koules.sndsrv: doing nothing, something is broken\n");
+diff -ur koules1.4/xlib/inlstring.h koules1.4-gcc3/xlib/inlstring.h
+--- koules1.4/xlib/inlstring.h	1998-03-04 19:59:19.000000000 +0100
++++ koules1.4-gcc3/xlib/inlstring.h	2003-04-23 00:53:56.000000000 +0200
+@@ -1,292 +1,348 @@
+-
+ /* Based on functions in linux/string.h */
+ 
+-
++#ifndef INLSTRING_H
++#define INLSTRING_H
++#include <sys/types.h>	/* for size_t */
+ 
+ #if !defined(__386__)||!defined(ASSEMBLY)
+ 
+ #define __memcpy(dst,src,n)			memcpy((dst),(src),(n))
+-#define __memcpy_conventioanl(dst,src,n)	memcpy((dst),(src),(n))
++#define __memcpy_conventional(dst,src,n)	memcpy((dst),(src),(n))
+ #define __memcpyb(dst,src,n)			memcpy((dst),(src),(n))
+ #define __memsetb(dst,c,n)			memset((dst),(c),(n))
+-#define __memsetlong(dst,c,n)			memset((dst),(c),(n))
+ #define __memset(dst,c,n)			memset((dst),(c),(n))
+-#define __memset2(dst,c,n)			memset((dst),(c),2*(n))
+-#define __memset3(dst,c,n)			memset((dst),(c),3*(n))
++
++static inline void *__memsetlong(void *s, long c, size_t count) {
++    long *p=s;
++    int i;
++    for(i=0;i<count;i++)*p++=c;
++    return s;
++}
++
++static inline void *__memset2(void *s, short c, size_t count) {
++    short *p=s;
++    int i;
++    for(i=0;i<count;i++)*p++=c;
++    return s;
++}
++
++static inline void *__memset3(void *s, short c, size_t count) {
++    unsigned char *p=s;
++    int i;
++    for(i=0;i<count;i++) {
++        *p++=c&0xff;
++        *p++=(c>>8)&0xff;
++        *p++=(c>>16)&0xff;
++    }
++    return s;
++}
+ 
+ #else
+ 
+-#include <linux/types.h>	/* for size_t */
+-static INLINE void *
+-__memcpy_conventional (void *to, const void *from, size_t n)
++static inline void *
++ __memcpy_conventional(void *to, const void *from, size_t n)
+ {
+-  __asm__ ("cld\n\t"
+-	   "movl %%edi,%%ecx\n\t"
+-	   "andl $1,%%ecx\n\t"
+-	   "subl %%ecx,%%edx\n\t"
+-	   "rep ; movsb\n\t"	/* 16-bit align destination */
+-	   "movl %%edx,%%ecx\n\t"
+-	   "shrl $2,%%ecx\n\t"
+-	   "rep ; movsl\n\t"
+-	   "testb $1,%%dl\n\t"
+-	   "je 1f\n\t"
+-	   "movsb\n"
+-	   "1:\ttestb $2,%%dl\n\t"
+-	   "je 2f\n\t"
+-	   "movsw\n"
+-	   "2:\n"
+-: :	   "d" (n), "D" ((long) to), "S" ((long) from)
+-:	   "cx", "dx", "di", "si");
+-  return (to);
++  int dummy1;
++  long dummy2, dummy3;
++    __asm__ __volatile__("cld\n\t"
++    	    "cmpl $0,%%edx\n\t"
++    	    "jle 2f\n\t"
++	    "movl %%edi,%%ecx\n\t"
++	    "andl $1,%%ecx\n\t"
++	    "subl %%ecx,%%edx\n\t"
++	    "rep ; movsb\n\t"	/* 16-bit align destination */
++	    "movl %%edx,%%ecx\n\t"
++	    "shrl $2,%%ecx\n\t"
++	    "jz 3f\n\t"
++	    "rep ; movsl\n\t"
++	    "3:\n\t"
++	    "testb $1,%%dl\n\t"
++	    "je 1f\n\t"
++	    "movsb\n"
++	    "1:\ttestb $2,%%dl\n\t"
++	    "je 2f\n\t"
++	    "movsw\n"
++	    "2:\n"
++  :         "=d"(dummy1), "=D"(dummy2), "=S"(dummy3)   /* fake output */ 
++  :	    "0"(n), "1"((long) to), "2"((long) from)
++  :	    "cx"/***rjr***, "dx", "di", "si"***/
++  );
++    return (to);
+ }
+ 
+ 
+-static INLINE void *
+-__memcpyb (void *to, const void *from, size_t n)
++static inline void *
++ __memcpyb(void *to, const void *from, size_t n)
+ {
+-  __asm__ ("cld\n\t"
+-	   "rep ; movsb\n\t"
+-: :	   "c" (n), "D" ((long) to), "S" ((long) from)
+-:	   "cx", "di", "si");
+-  return (to);
++  int dummy1;
++  long dummy2, dummy3;
++    __asm__ __volatile__("cld\n\t"
++	    "rep ; movsb\n\t"
++  :         "=c"(dummy1), "=D"(dummy2), "=S"(dummy3) /* fake output */
++  :	    "0"(n), "1"((long) to), "2"((long) from)
++			 /***rjr***:	    "cx", "di", "si"***/
++  );
++    return (to);
+ }
+ 
+-static INLINE void *
+-__memsetb (void *s, char c, size_t count)
++static inline void *
++ __memsetb(void *s, char c, size_t count)
+ {
+-  __asm__ ("cld\n\t"
+-	   "rep\n\t"
+-	   "stosb"
+-: :	   "a" (c), "D" (s), "c" (count)
+-:	   "cx", "di");
+-  return s;
++    __asm__("cld\n\t"
++	    "rep\n\t"
++	    "stosb"
++  : :	    "a"(c), "D"(s), "c"(count)
++  :	    "cx", "di");
++    return s;
+ }
+ 
+-static INLINE void *
+-__memsetlong (void *s, unsigned c, size_t count)
++static inline void *
++ __memsetlong(void *s, unsigned c, size_t count)
+ {
+-  __asm__ ("cld\n\t"
+-	   "rep\n\t"
+-	   "stosl"
+-: :	   "a" (c), "D" (s), "c" (count)
+-:	   "cx", "di");
+-  return s;
++  long dummy1;
++  int dummy2;
++    __asm__ __volatile__("cld\n\t"
++	    "rep\n\t"
++	    "stosl"
++  :         "=D"(dummy1), "=c"(dummy2) /* fake outputs */
++  :	    "a"(c), "0"(s), "1"(count)
++			 /***rjr***:	    "cx", "di"***/
++  );
++    return s;
+ }
+ 
+-static INLINE void *
+-__memset (void *s, char c, size_t count)
++static inline void *
++ __memset(void *s, char c, size_t count)
+ {
+-  __asm__ (
+-	    "cld\n\t"
+-	    "cmpl $12,%%edx\n\t"
+-	    "jl 1f\n\t"		/* if (count >= 12) */
+-
+-	    "movzbl %%al,%%ax\n\t"
+-	    "movl %%eax,%%ecx\n\t"
+-	    "shll $8,%%ecx\n\t"	/* c |= c << 8 */
+-	    "orl %%ecx,%%eax\n\t"
+-	    "movl %%eax,%%ecx\n\t"
+-	    "shll $16,%%ecx\n\t"	/* c |= c << 16 */
+-	    "orl %%ecx,%%eax\n\t"
+-
+-	    "movl %%edx,%%ecx\n\t"
+-	    "negl %%ecx\n\t"
+-	    "andl $3,%%ecx\n\t"	/* (-s % 4) */
+-	    "subl %%ecx,%%edx\n\t"	/* count -= (-s % 4) */
+-	    "rep ; stosb\n\t"	/* align to longword boundary */
+-
+-	    "movl %%edx,%%ecx\n\t"
+-	    "shrl $2,%%ecx\n\t"
+-	    "rep ; stosl\n\t"	/* fill longwords */
+-
+-	    "andl $3,%%edx\n"	/* fill last few bytes */
+-	    "1:\tmovl %%edx,%%ecx\n\t"	/* <= 12 entry point */
+-	    "rep ; stosb\n\t"
+-: :	    "a" (c), "D" (s), "d" (count)
+-:	    "ax", "cx", "dx", "di");
+-  return s;
++  int dummy1;
++  long dummy2;
++  int dummy3;
++    __asm__ __volatile__(
++	       "cld\n\t"
++	       "cmpl $12,%%edx\n\t"
++	       "jl 1f\n\t"	/* if (count >= 12) */
++
++	       "movzbl %%al,%%ax\n\t"
++	       "movl %%eax,%%ecx\n\t"
++	       "shll $8,%%ecx\n\t"	/* c |= c << 8 */
++	       "orl %%ecx,%%eax\n\t"
++	       "movl %%eax,%%ecx\n\t"
++	       "shll $16,%%ecx\n\t"	/* c |= c << 16 */
++	       "orl %%ecx,%%eax\n\t"
++
++	       "movl %%edx,%%ecx\n\t"
++	       "negl %%ecx\n\t"
++	       "andl $3,%%ecx\n\t"	/* (-s % 4) */
++	       "subl %%ecx,%%edx\n\t"	/* count -= (-s % 4) */
++	       "rep ; stosb\n\t"	/* align to longword boundary */
++
++	       "movl %%edx,%%ecx\n\t"
++	       "shrl $2,%%ecx\n\t"
++	       "rep ; stosl\n\t"	/* fill longwords */
++
++	       "andl $3,%%edx\n"	/* fill last few bytes */
++	       "1:\tmovl %%edx,%%ecx\n\t"	/* <= 12 entry point */
++	       "rep ; stosb\n\t"
++  :            "=a"(dummy1), "=D"(dummy2), "=d"(dummy3) /* fake outputs */
++  :	       "0"(c), "1"(s), "2"(count)
++  :	       /***rjr***"ax",*/ "cx"/*, "dx", "di"*/
++  );
++    return s;
+ }
+ 
+-static INLINE void *
+-__memset2 (void *s, short c, size_t count)
++static inline void *
++ __memset2(void *s, short c, size_t count)
+ /* count is in 16-bit pixels */
+ /* s is assumed to be 16-bit aligned */
+ {
+-  __asm__ (
+-	    "cld\n\t"
+-	    "cmpl $12,%%edx\n\t"
+-	    "jl 1f\n\t"		/* if (count >= 12) */
+-
+-	    "movzwl %%ax,%%eax\n\t"
+-	    "movl %%eax,%%ecx\n\t"
+-	    "shll $16,%%ecx\n\t"	/* c |= c << 16 */
+-	    "orl %%ecx,%%eax\n\t"
+-
+-	    "movl %%edi,%%ecx\n\t"
+-	    "andl $2,%%ecx\n\t"	/* s & 2 */
+-	    "jz 2f\n\t"
+-	    "decl %%edx\n\t"	/* count -= 1 */
+-	    "stosw\n\t"		/* align to longword boundary */
+-
+-	    "2:\n\t"
+-	    "movl %%edx,%%ecx\n\t"
+-	    "shrl $1,%%ecx\n\t"
+-	    "rep ; stosl\n\t"	/* fill longwords */
+-
+-	    "andl $1,%%edx\n"	/* one 16-bit word left? */
+-	    "jz 3f\n\t"		/* no, finished */
+-	    "1:\tmovl %%edx,%%ecx\n\t"	/* <= 12 entry point */
+-	    "rep ; stosw\n\t"
+-	    "3:\n\t"
+-: :	    "a" (c), "D" (s), "d" (count)
+-:	    "ax", "cx", "dx", "di");
+-  return s;
++  int dummy1;
++  long dummy2;
++  int dummy3;
++    __asm__ __volatile__(
++	       "cld\n\t"
++	       "cmpl $12,%%edx\n\t"
++	       "jl 1f\n\t"	/* if (count >= 12) */
++
++	       "movzwl %%ax,%%eax\n\t"
++	       "movl %%eax,%%ecx\n\t"
++	       "shll $16,%%ecx\n\t"	/* c |= c << 16 */
++	       "orl %%ecx,%%eax\n\t"
++
++	       "movl %%edi,%%ecx\n\t"
++	       "andl $2,%%ecx\n\t"	/* s & 2 */
++	       "jz 2f\n\t"
++	       "decl %%edx\n\t"	/* count -= 1 */
++	       "movw %%ax,(%%edi)\n\t"	/* align to longword boundary */
++	       "addl $2,%%edi\n\t"
++
++	       "2:\n\t"
++	       "movl %%edx,%%ecx\n\t"
++	       "shrl $1,%%ecx\n\t"
++	       "rep ; stosl\n\t"	/* fill longwords */
++
++	       "andl $1,%%edx\n"	/* one 16-bit word left? */
++	       "jz 3f\n\t"	/* no, finished */
++	       "1:\tmovl %%edx,%%ecx\n\t"	/* <= 12 entry point */
++	       "rep ; stosw\n\t"
++	       "3:\n\t"
++  :            "=a"(dummy1), "=D"(dummy2), "=d"(dummy3) /* fake outputs */
++  :	       "0"(c), "1"(s), "2"(count)
++  :	       /***rjr***"ax",*/ "cx"/*, "dx", "di"*/
++  );
++    return s;
+ }
+ 
+-static INLINE void *
+-__memset3 (void *s, int c, size_t count)
++static inline void *
++ __memset3(void *s, int c, size_t count)
+ /* count is in 24-bit pixels (3 bytes per pixel) */
+ {
+-  __asm__ (
+-	    "cmpl $8,%%edx\n\t"
+-  /*      "jmp 2f\n\t" *//* debug */
+-	    "jl 2f\n\t"
+-
+-	    "movl %%eax,%%ebx\n\t"	/* eax = (low) BGR0 (high) */
+-	    "shll $24,%%ebx\n\t"	/* ebx = 000B */
+-	    "orl %%ebx,%%eax\n\t"	/* eax = BGRB */
+-
+-	    "movl %%eax,%%ebx\n\t"
+-	    "shrl $8,%%ebx\n\t"	/* ebx = GRB0 */
+-	    "movl %%ebx,%%ecx\n\t"
+-	    "shll $24,%%ecx\n\t"	/* ecx = 000G */
+-	    "orl %%ecx,%%ebx\n\t"	/* ebx = GRBG */
+-
+-	    "movl %%eax,%%ecx\n\t"
+-	    "shll $8,%%ecx\n\t"	/* ecx = 0BGR */
+-	    "movb %%bh,%%cl\n\t"	/* ecx = RBGR */
+-
+-	    "cmpl $16,%%edx\n\t"
+-	    "jl 1f\n\t"
+-	    "jmp 5f\n\t"
+-	    ".align 4,0x90\n\t"
+-
+-	    "5:\n\t"		/* loop unrolling */
+-	    "movl %%eax,(%%edi)\n\t"	/* write BGRB */
+-	    "movl %%ebx,4(%%edi)\n\t"	/* write GRBG */
+-	    "movl %%ecx,8(%%edi)\n\t"	/* write RBGR */
+-	    "movl %%eax,12(%%edi)\n\t"
+-	    "movl %%ebx,16(%%edi)\n\t"
+-	    "movl %%ecx,20(%%edi)\n\t"
+-	    "movl %%eax,24(%%edi)\n\t"
+-	    "movl %%ebx,28(%%edi)\n\t"
+-	    "movl %%ecx,32(%%edi)\n\t"
+-	    "movl %%eax,36(%%edi)\n\t"
+-	    "subl $16,%%edx\n\t"	/* blend end-of-loop instr. */
+-	    "movl %%ebx,40(%%edi)\n\t"
+-	    "movl %%ecx,44(%%edi)\n\t"
+-	    "addl $48,%%edi\n\t"
+-	    "cmpl $16,%%edx\n\t"
+-	    "jge 5b\n\t"
+-	    "andl %%edx,%%edx\n\t"
+-	    "jz 4f\n\t"		/* finished */
+-	    "cmpl $4,%%edx\n\t"
+-	    "jl 2f\n\t"		/* less than 4 pixels left */
+-	    "jmp 1f\n\t"
+-	    ".align 4,0x90\n\t"
+-
+-	    "1:\n\t"
+-	    "movl %%eax,(%%edi)\n\t"	/* write BGRB */
+-	    "movl %%ebx,4(%%edi)\n\t"	/* write GRBG */
+-	    "movl %%ecx,8(%%edi)\n\t"	/* write RBGR */
+-	    "addl $12,%%edi\n\t"
+-	    "subl $4,%%edx\n\t"
+-	    "cmpl $4,%%edx\n\t"
+-	    "jge 1b\n\t"
+-
+-	    "2:\n\t"
+-	    "cmpl $0,%%edx\n\t"	/* none left? */
+-	    "jle 4f\n\t"	/* finished */
+-
+-	    "mov %%eax,%%ecx\n\t"
+-	    "shrl $16,%%ecx\n\t"	/* B in cl */
+-
+-	    "3:\n\t"		/* write last few pixels */
+-	    "movw %%ax,(%%edi)\n\t"	/* write RG */
+-	    "movb %%cl,2(%%edi)\n\t"	/* write B */
+-	    "addl $3,%%edi\n\t"
+-	    "decl %%edx\n\t"
+-	    "jnz 3b\n\t"
+-
+-	    "4:\n\t"
+-: :	    "a" (c), "D" (s), "d" (count)
+-:	    "ax", "bx", "cx", "dx", "di");
+-  return s;
++  int dummy1;
++  long dummy2;
++  int dummy3;
++    __asm__ __volatile__(
++	       "cmpl $8,%%edx\n\t"
++    /*      "jmp 2f\n\t" *//* debug */
++	       "jl 2f\n\t"
++
++	       "movl %%eax,%%esi\n\t"	/* esi = (low) BGR0 (high) */
++	       "shll $24,%%eax\n\t"	/* eax = 000B */
++	       "orl %%eax,%%esi\n\t"	/* esi = BGRB */
++
++	       "movl %%esi,%%eax\n\t"
++	       "shrl $8,%%eax\n\t"	/* eax = GRB0 */
++	       "movl %%eax,%%ecx\n\t"
++	       "shll $24,%%ecx\n\t"	/* ecx = 000G */
++	       "orl %%ecx,%%eax\n\t"	/* eax = GRBG */
++
++	       "movl %%esi,%%ecx\n\t"
++	       "shll $8,%%ecx\n\t"	/* ecx = 0BGR */
++	       "movb %%ah,%%cl\n\t"	/* ecx = RBGR */
++
++	       "cmpl $16,%%edx\n\t"
++	       "jl 1f\n\t"
++	       "jmp 5f\n\t"
++	       ".align 4,0x90\n\t"
++
++	       "5:\n\t"		/* loop unrolling */
++	       "movl %%esi,(%%edi)\n\t"		/* write BGRB */
++	       "movl %%eax,4(%%edi)\n\t"	/* write GRBG */
++	       "movl %%ecx,8(%%edi)\n\t"	/* write RBGR */
++	       "movl %%esi,12(%%edi)\n\t"
++	       "movl %%eax,16(%%edi)\n\t"
++	       "movl %%ecx,20(%%edi)\n\t"
++	       "movl %%esi,24(%%edi)\n\t"
++	       "movl %%eax,28(%%edi)\n\t"
++	       "movl %%ecx,32(%%edi)\n\t"
++	       "movl %%esi,36(%%edi)\n\t"
++	       "subl $16,%%edx\n\t"	/* blend end-of-loop instr. */
++	       "movl %%eax,40(%%edi)\n\t"
++	       "movl %%ecx,44(%%edi)\n\t"
++	       "addl $48,%%edi\n\t"
++	       "cmpl $16,%%edx\n\t"
++	       "jge 5b\n\t"
++	       "andl %%edx,%%edx\n\t"
++	       "jz 4f\n\t"	/* finished */
++	       "cmpl $4,%%edx\n\t"
++	       "jl 2f\n\t"	/* less than 4 pixels left */
++	       "jmp 1f\n\t"
++	       ".align 4,0x90\n\t"
++
++	       "1:\n\t"
++	       "movl %%esi,(%%edi)\n\t"		/* write BGRB */
++	       "movl %%eax,4(%%edi)\n\t"	/* write GRBG */
++	       "movl %%ecx,8(%%edi)\n\t"	/* write RBGR */
++	       "addl $12,%%edi\n\t"
++	       "subl $4,%%edx\n\t"
++	       "cmpl $4,%%edx\n\t"
++	       "jge 1b\n\t"
++
++	       "2:\n\t"
++	       "cmpl $0,%%edx\n\t"	/* none left? */
++	       "jle 4f\n\t"	/* finished */
++
++	       "mov %%ecx,%%eax\n\t"
++	       "shrl $8,%%ecx\n\t"	/* R in cl */
++
++	       "3:\n\t"		/* write last few pixels */
++	       "movw %%cx,(%%edi)\n\t"	/* write BG */
++	       "movb %%al,2(%%edi)\n\t"		/* write R */
++	       "addl $3,%%edi\n\t"
++	       "decl %%edx\n\t"
++	       "jnz 3b\n\t"
++
++	       "4:\n\t"
++  :            "=a"(dummy1), "=D"(dummy2), "=d"(dummy3) /* fake outputs */
++  :	       "0"(c), "1"(s), "2"(count)
++  :	       /***rjr***"ax",*/ "cx", /*"dx",*/ "si"/*, "di"*/
++  );
++    return s;
+ }
+ 
+-/* Functions defined in mem.S */
+-
+-extern          memcpy4to3 (void *dest, void *src, int n);
+-extern          memcpy32shift8 (void *dest, void *src, int n);
+-
+ /* Functions for which arguments must be passed in %ebx, %edx, and %ecx. */
+-extern          __memcpyasm_regargs ();		/* nu_bytes >= 3 */
+-extern          __memcpyasm_regargs_aligned ();		/* nu_bytes >= 32 */
++#if 0				/* Why declare 'em? Just confuses the compiler and can't be called from C
++				   anyway */
++extern __memcpyasm_regargs();	/* nu_bytes >= 3 */
++extern __memcpyasm_regargs_aligned();	/* nu_bytes >= 32 */
++#endif
+ 
+ 
+ /* Always 32-bit align destination, even for a small number of bytes. */
+-static INLINE void *
+-__memcpy_aligndest (void *dest, const void *src, int n)
++static inline void *
++ __memcpy_aligndest(void *dest, const void *src, int n)
+ {
+-  __asm__         __volatile__ ("
+-				cmpl $3, %%ecx
+-				ja 1f
+-				call * __memcpy_jumptable (, %%ecx, 4)
+-				jmp 2f
+-				1:call __memcpyasm_regargs
+-				"
+-				:
+-				:"b"            (dest), "d" (src), "c" (n)
+-				:"ax", "0", "1", "2");
++    __asm__ __volatile__("cmpl $3, %%ecx\n\t"
++			 "ja 1f\n\t"
++			 "call * __memcpy_jumptable (, %%ecx, 4)\n\t"
++			 "jmp 2f\n\t"
++			 "1:call __memcpyasm_regargs\n\t"
++			 "2:":
++			 :"S"(dest), "d"(src), "c"(n)
++			 :"ax", "0", "1", "2");
++    return dest;
+ }
+ 
+ 
+ /* Optimized version for 32-bit aligned destination. */
+-static INLINE void *
+-__memcpy_destaligned (void *dest, const void *src, int n)
++static inline void *
++ __memcpy_destaligned(void *dest, const void *src, int n)
+ {
+-  __asm__         __volatile__ ("
+-				cmpl $32, %%ecx
+-				ja 1f
+-				call * __memcpy_jumptable (, %%ecx, 4)
+-				jmp 2f
+-				1:call __memcpyasm_regargs_aligned
+-				2:
+-				"
+-				:
+-				:"b"            (dest), "d" (src), "c" (n)
+-				:"ax", "0", "1", "2");
++    __asm__ __volatile__("cmpl $32, %%ecx\n\t"
++			 "ja 1f\n\t"
++			 "call * __memcpy_jumptable (, %%ecx, 4)\n\t"
++			 "jmp 2f\n\t"
++			 "1:call __memcpyasm_regargs_aligned\n\t"
++			 "2:\n\t":
++			 :"S"(dest), "d"(src), "c"(n)
++			 :"ax", "0", "1", "2");
++    return dest;
+ }
+ 
+ 
+-/* Balanced INLINE memcpy; 32-bit align destination if nu_bytes >= 20. */
+-static INLINE void *
+-__memcpy_balanced (void *dest, const void *src, int n)
++/* Balanced inline memcpy; 32-bit align destination if nu_bytes >= 20. */
++static inline void *
++ __memcpy_balanced(void *dest, const void *src, int n)
+ {
+-  __asm__         __volatile__ ("
+-				cmpl $19, %%ecx
+-				ja 1f
+-				call * __memcpy_jumptable (, %%ecx, 4)
+-				jmp 2f
+-				1:call __memcpyasm_regargs
+-				2:
+-				"
+-				:
+-	     :"b"            ((long) dest), "d" ((long) src), "c" ((long) n)
+-				:"ax", "bx", "cx", "dx");
++    __asm__ __volatile__("cmpl $19, %%ecx\n\t"
++			 "ja 1f\n\t"
++			 "call * __memcpy_jumptable (, %%ecx, 4)\n\t"
++			 "jmp 2f\n\t"
++			 "1:call __memcpyasm_regargs\n\t"
++			 "2:\n\t"
++			 :
++			 :"S"((long) dest), "d"((long) src), "c"((long) n)
++			 :"ax", "0", "1", "2");
++    return dest;
+ }
+ 
+ 
+ #define __memcpy __memcpy_conventional
+ 
+ #endif
++
++/* Functions defined in mem.S or mem.c */
++
++extern void __memcpy4to3(void *dest, void *src, int n);
++extern void __memcpy32shift8(void *dest, void *src, int n);
++
++#endif
++
+diff -ur koules1.4/xlib/shmbitmap.c koules1.4-gcc3/xlib/shmbitmap.c
+--- koules1.4/xlib/shmbitmap.c	1998-03-04 19:59:19.000000000 +0100
++++ koules1.4-gcc3/xlib/shmbitmap.c	2003-04-23 01:11:02.000000000 +0200
+@@ -139,23 +139,37 @@
+ 	  count = *dp++;
+ 	  /* __memcpy gives severe bug here */
+ 	  if (y >= ny)
++	    {
+ 	    if (x >= nx)
++	      {
+ 	      if (x + count > __clipx2 + 1)
+ 		{
+ 		  if (x <= __clipx2)
+-		    __memcpyb (vp, dp, __clipx2 - x + 1);
++		    {
++		      __memcpyb (vp, dp, __clipx2 - x + 1);
++		    }
+ 		}
+ 	      else
+-		__memcpyb (vp, dp, count);
++		{
++		  __memcpyb (vp, dp, count);
++		}
++	      }
+ 	    else if (x + count > __clipx1)
++	      {
+ 	      if (x + count > __clipx2 + 1)
++		{
+ 		__memcpyb (vp + __clipx1 - x,
+ 			   dp + __clipx1 - x,
+ 			   __clipx2 - __clipx1 + 1);
++		}
+ 	      else
++		{
+ 		__memcpy (vp + __clipx1 - x,
+ 			  dp + __clipx1 - x,
+ 			  count - __clipx1 + x);
++		}
++	      }
++	    }
+ 	  x += count;
+ 	  vp += count;
+ 	  dp += count;
+@@ -224,11 +238,7 @@
+ 
+ 
+ /*following routines are ripped from vgagl library */
+-/* We use the 32-bit to 64-bit multiply and 64-bit to 32-bit divide of the */
+-/* 386 (which gcc doesn't know well enough) to efficiently perform integer */
+-/* scaling without having to worry about overflows. */
+ #define swap(x, y) { int temp = x; x = y; y = temp; }
+-#define setpixel (*(backscreen->ff.driver_setpixel_func))
+ #undef __clipx2
+ #define __clipx2 (MAPWIDTH-1)
+ #undef __clipx1
+@@ -237,23 +247,15 @@
+ #define __clipy1 0
+ #undef __clipy2
+ #define __clipy2 (MAPHEIGHT+19)
+-#ifdef __i386__
++
+ static INLINE int
+-muldiv64 (int CONST m1, int CONST m2, int CONST d)
++muldiv64(int m1, int m2, int d)
+ {
+-/* int32 * int32 -> int64 / int32 -> int32 */
+-  int             result;
+-  __asm__ (
+-	    "imull %%edx\n\t"
+-	    "idivl %3\n\t"
+-:	    "=a" (result)	/* out */
+-:	    "a" (m1), "d" (m2), "g" (d)		/* in */
+-:	    "ax", "dx"		/* mod */
+-    );
+-  return result;
++  return (float) m1 * (float) m2 / ((float) d);
+ }
+ 
+-#define INC_IF_NEG(y)                                  \
++#ifdef __i386__
++#define INC_IF_NEG(y, result)                           \
+ {                                                       \
+         __asm__("btl $31,%1\n\t"                        \
+                 "adcl $0,%0"                            \
+@@ -264,20 +266,20 @@
+ static INLINE int
+ gl_regioncode (CONST int x, CONST int y)
+ {
+-  int             dx1, dx2, dy1, dy2;
+-  int             result;
++  int dx1, dx2, dy1, dy2;
++  int result;
+   result = 0;
+   dy2 = __clipy2 - y;
+-  INC_IF_NEG (dy2);
++  INC_IF_NEG (dy2, result);
+   result <<= 1;
+   dy1 = y - __clipy1;
+-  INC_IF_NEG (dy1);
++  INC_IF_NEG (dy1, result);
+   result <<= 1;
+   dx2 = __clipx2 - x;
+-  INC_IF_NEG (dx2);
++  INC_IF_NEG (dx2, result);
+   result <<= 1;
+   dx1 = x - __clipx1;
+-  INC_IF_NEG (dx1);
++  INC_IF_NEG (dx1, result);
+   return result;
+ }
+ 
+@@ -287,7 +289,7 @@
+ static INLINE int
+ gl_regioncode (CONST int x, CONST int y)
+ {
+-  int             result = 0;
++  int result = 0;
+   if (x < 0)
+     result |= 1;
+   else if (x > __clipx2)
+@@ -300,15 +302,44 @@
+ }
+ #endif
+ 
+-/* Partly based on vgalib by Tommy Frandsen */
+-/* This would be a lot faster if setpixel was inlined */
++#define line_loop_linear_a(m,i,u,v)	\
++	    {    \
++	    int d = ay - (ax >> 1);	\
++	    if ((x = abs (dx)))	\
++		do {	\
++		    i;	\
++		    if (d m 0) {	\
++			vp v;	\
++			d -= ax;	\
++		    }	\
++		    vp u;	\
++		    d += ay;	\
++		} while (--x);    \
++	    }
++
++#define line_loop_linear_b(m,i,u,v)	\
++		{    \
++		int d = ax - (ay >> 1);	\
++		if ((y = abs (dy)))	\
++		    do {	\
++			i;	\
++			if (d m 0) {	\
++			    vp u;	\
++			    d -= ay;	\
++			}	\
++			vp v;	\
++			d += ax;	\
++		    } while (--y);    \
++		}
++
++/* Partly based on the work which was partly based on vgalib by Tommy Frandsen */
++/* This is a lot faster now that setpixel is inlined */
+ 
+ void
+ Line (int x1, int y1, int x2, int y2, int c)
+ {
+-  int             dx, dy, ax, ay, sx, sy, x, y;
+-  int             syp;
+-  char           *point;
++  int dx, dy, ax, ay, sx, sy, x, y;
++  unsigned char *vp = NULL;
+   if (!shm)
+     {
+       qLine (x1, y1, x2, y2, c);
+@@ -319,8 +350,8 @@
+   if (Clipping)
+     for (;;)
+       {
+-	int             r1 = gl_regioncode (x1, y1);
+-	int             r2 = gl_regioncode (x2, y2);
++	int r1 = gl_regioncode (x1, y1);
++	int r2 = gl_regioncode (x2, y2);
+ 	if (!(r1 | r2))
+ 	  break;		/* completely inside */
+ 	if (r1 & r2)
+@@ -333,38 +364,22 @@
+ 	  }
+ 	if (r1 & 1)
+ 	  {			/* left */
+-#ifdef __i386__
+ 	    y1 += muldiv64 (__clipx1 - x1, y2 - y1, x2 - x1);
+-#else
+-	    y1 += (long) (__clipx1 - x1) * (long) (y2 - y1) / (long) (x2 - x1);
+-#endif
+ 	    x1 = __clipx1;
+ 	  }
+ 	else if (r1 & 2)
+ 	  {			/* right */
+-#ifdef __i386__
+ 	    y1 += muldiv64 (__clipx2 - x1, y2 - y1, x2 - x1);
+-#else
+-	    y1 += (long) (__clipx2 - x1) * (long) (y2 - y1) / (long) (x2 - x1);
+-#endif
+ 	    x1 = __clipx2;
+ 	  }
+ 	else if (r1 & 4)
+ 	  {			/* top */
+-#ifdef __i386__
+ 	    x1 += muldiv64 (__clipy1 - y1, x2 - x1, y2 - y1);
+-#else
+-	    x1 += (long) (__clipy1 - y1) * (long) (x2 - x1) / (long) (y2 - y1);
+-#endif
+ 	    y1 = __clipy1;
+ 	  }
+ 	else if (r1 & 8)
+ 	  {			/* bottom */
+-#ifdef __i386__
+ 	    x1 += muldiv64 (__clipy2 - y1, x2 - x1, y2 - y1);
+-#else
+-	    x1 += (long) (__clipy2 - y1) * (long) (x2 - x1) / (long) (y2 - y1);
+-#endif
+ 	    y1 = __clipy2;
+ 	  }
+       }
+@@ -377,45 +392,66 @@
+   x = x1;
+   y = y1;
+ 
+-  point = VScreenToBuffer (backscreen) + x + y * MAPWIDTH;
++#define insert_pixel_1 *((unsigned char *) vp) = c;
++
++  vp = VScreenToBuffer (backscreen) + y * MAPWIDTH + x;
+   if (ax > ay)
+     {
+-      int             d = ay - (ax >> 1);
+-      syp = sy * MAPWIDTH;
+-      while (x != x2)
++      if(sx > 0)
+ 	{
+-	  *point = c;
+-	  if (d > 0 || (d == 0 && sx == 1))
+-	    {
+-	      y += sy;
+-	      point += syp;
+-	      d -= ax;
+-	    }
+-	  x += sx;
+-	  point += sx;
+-	  d += ay;
++	  line_loop_linear_a(>=,insert_pixel_1,++,+=MAPWIDTH*sy);
++	} 
++      else 
++	{
++	  line_loop_linear_a(>,insert_pixel_1,--,+=MAPWIDTH*sy);
+ 	}
+     }
+   else
+     {
+-      int             sy = (dy >= 0) ? 1 : -1;
+-      int             d = ax - (ay >> 1);
+-      syp = sy * MAPWIDTH;
+-      while (y != y2)
++      if(sy > 0)
++	{
++	  line_loop_linear_b(>=,insert_pixel_1,+=sx,+=MAPWIDTH);
++	} 
++      else 
+ 	{
+-	  *(point) = c;
+-	  if (d > 0 || (d == 0 && sy == 1))
++	  line_loop_linear_b(>,insert_pixel_1,+=sx,-=MAPWIDTH);
++	}
++    }
++  insert_pixel_1;
++ 
++  if (!vp)
++    {
++      if (ax > ay)
++	{
++	  int d = ay - (ax >> 1);
++	  while (x != x2)
+ 	    {
++	      insert_pixel_1;
++	      if (d > 0 || (d == 0 && sx == 1))
++		{
++		  y += sy;
++		  d -= ax;
++		}
+ 	      x += sx;
+-	      point += sx;
+-	      d -= ay;
++	      d += ay;
++	    }
++	} 
++      else
++	{
++	  int d = ax - (ay >> 1);
++	  while (y != y2)
++	    {
++	      insert_pixel_1;
++	      if (d > 0 || (d == 0 && sy == 1))
++		{
++		  x += sx;
++		  d -= ay;
++		}
++	      y += sy;
++	      d += ax;
+ 	    }
+-	  y += sy;
+-	  point += syp;
+-	  d += ax;
+ 	}
++      insert_pixel_1;
+     }
+-  *(point) = c;
+-  point++;
+ }
+ #endif
+--- koules1.4/Iconfig	2003-07-12 00:20:13.000000000 -0400
++++ koules1.4-gcc3/Iconfig	2003-07-12 00:20:45.000000000 -0400
+@@ -36,7 +36,7 @@
+ /* directories*/
+ KOULESDIR		=/usr/bin/X11
+ SOUNDDIR		=/usr/local/lib/koules
+-MANDIR			=/usr/local/man/man6
++MANDIR			=/usr/share/man/man6
+ 
+ /*You need some extra libraryes for BSD sockets compatibility?*/
+ /* TOP_INCLUDES =                       /* Sun users with GCC need this */
