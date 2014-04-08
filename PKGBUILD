@@ -15,7 +15,7 @@ _buildtype='Release'
 
 pkgname=libechonest
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ library for interfacing with Echo Nest'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/playground/libs/libechonest'
@@ -23,6 +23,7 @@ license=('GPL')
 depends=('qjson')
 makedepends=('cmake')
 conflicts=('libechonest-git' 'libechonest2')
+replaces=('libechonest2')
 source=("http://files.lfranchi.com/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('7eecba464d7fdfa14974915b0092eb34')
 
