@@ -10,7 +10,7 @@ pkgbase = perl-alien-wxwidgets
 	depends = wxgtk2.8
 	depends = perl-module-pluggable
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-0.65.tar.gz
+	source = http://www.cpan.org/modules/by-module/Alien/Alien-wxWidgets-0.65.tar.gz
 	md5sums = 219a4f572d24eaa98c3dc2d118c5d9f0
 
 pkgname = perl-alien-wxwidgets

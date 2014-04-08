@@ -1,21 +1,24 @@
-# Contributor: Swift Geek <swiftgeek «at» gmail.com>
+# Maintainer: Swift Geek <swiftgeek «at» gmail.com>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
+# Contributor: John D Jones III (jnbek) <jnbek1972 at gmail dot com>
+
 
 pkgname=perl-alien-wxwidgets
+_cpan_name=Alien-wxWidgets
 pkgver=0.65
 pkgrel=1
 pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
-url="http://search.cpan.org/dist/Alien-wxWidgets"
+url="http://search.cpan.org/dist/${_cpan_name}"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'wxgtk2.8' 'perl-module-pluggable') # Install perl-module-pluggable from AUR
 makedepends=()
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-${pkgver}.tar.gz")
+source=("http://www.cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-${pkgver}.tar.gz")
 md5sums=('219a4f572d24eaa98c3dc2d118c5d9f0')
 
 prepare() {
-  export _src_dir="$srcdir/Alien-wxWidgets-$pkgver"
+  export _src_dir="${_cpan_name}-${pkgver}"
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
