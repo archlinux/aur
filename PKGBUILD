@@ -2,7 +2,7 @@
 
 pkgname=flens-git
 pkgver=408.846b5a3
-pkgrel=1
+pkgrel=2
 pkgdesc="FLENS - Flexible Library for Efficient Numerical Solutions - new headers only version."
 arch=('i686' 'x86_64')
 url="http://flens.sourceforge.net"
@@ -12,7 +12,7 @@ makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('flens')
 conflicts=('flens')
-source=("${pkgname}"::'git://github.com/michael-lehn/FLENS.git')
+source=("${pkgname}"::'git://github.com/michael-lehn/FLENS.git#commit=846b5a3')
 md5sums=('SKIP')
 
 pkgver() {
