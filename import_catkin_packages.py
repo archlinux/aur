@@ -159,7 +159,8 @@ class PackageBase(object):
 
 
 class Package(PackageBase):
-  BUILD_TEMPLATE = """
+  BUILD_TEMPLATE = """# Script generated with import_catkin_packages.py
+# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - %(description)s"
 url='http://www.ros.org/'
 
@@ -249,7 +250,8 @@ package() {
 
 
 class MetaPackage(PackageBase):
-  BUILD_TEMPLATE = """
+  BUILD_TEMPLATE = """# Script generated with import_catkin_packages.py
+# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - %(description)s"
 url='http://www.ros.org/'
 
