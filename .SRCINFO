@@ -1,0 +1,18 @@
+pkgbase = libmirko
+	pkgdesc = Library for GP32 homebrew development
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = http://www.devkitpro.org
+	arch = any
+	license = custom
+	depends = devkitarm
+	noextract = gp32-examples-20051021.tar.bz2
+	options = !strip
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libmirko-src-0.9.7.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/gp32-examples-20051021.tar.bz2
+	sha256sums = 65dff651f83df38ec2110f6d9d8593735ababb03603069d06ce267b3adadc3be
+	sha256sums = 7d542f3771cc6bdfef385d82aedf1bb8acf854fc96468b061e84b8dcbae1a755
+
+pkgname = libmirko
+
