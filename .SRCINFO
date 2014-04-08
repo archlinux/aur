@@ -1,0 +1,19 @@
+pkgbase = libgba
+	pkgdesc = Library for Nintendo Gameboy Advance homebrew development
+	pkgver = 20090222
+	pkgrel = 2
+	url = http://www.devkitpro.org
+	arch = any
+	license = GPL
+	license = LGPL
+	depends = devkitarm
+	noextract = gba-examples-20090222.tar.bz2
+	options = !strip
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libgba-src-20090222.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/gba-examples-20090222.tar.bz2
+	sha256sums = 9d85b64b323a5f2e8f8ec46ba8cb76ae3921e4b75b54d3b51b84a44fe41fc57a
+	sha256sums = 10759af863d4222857f98867571b8f5bf4328d44446c7b4384cd3f029bc10753
+
+pkgname = libgba
+
