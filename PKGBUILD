@@ -8,9 +8,9 @@ _pkgverexamples=20110620
 pkgrel=1
 pkgdesc="Library for Nintendo Gamecube/Wii homebrew development"
 arch=('any')
-url="http://www.devkitpro.org/"
+url="http://www.devkitpro.org"
 license=('custom')
-options=(!strip libtool staticlibs)
+options=(!strip staticlibs)
 depends=('devkitppc')
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pkgver.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/wii-examples-$_pkgverexamples.tar.bz2"
@@ -23,7 +23,6 @@ sha256sums=('fecfcec4a4f3d3c1c459f8fa314a6fd00e920d69968c7c1a67f7894f14ca2d4e'
 
 build() {
   source /etc/profile.d/devkitppc.sh
-
   make
 }
 
@@ -32,12 +31,12 @@ package() {
 
   make install
   # examples
-  mkdir -p "$DEVKITPRO"/examples/{wii,gamecube}
+  install -d "$DEVKITPRO"/examples/{wii,gamecube}
   bsdtar -x -f wii-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/wii
   bsdtar -x -f gamecube-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/gamecube
   # fix permissions
   chown -R root:root "$DEVKITPRO"/examples
   find "$DEVKITPRO"/examples -type d -exec chmod +rx "{}" \+ 
   # license
-  install -Dm644 libogc_license.txt "$pkgdir"/usr/share/licenses/$pkgname/libogc_license.txt
+  install -Dm644 libogc_license.txt "$pkgdir"/usr/share/licenses/libogc/libogc_license.txt
 }
