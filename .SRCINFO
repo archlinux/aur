@@ -1,6 +1,6 @@
 pkgbase = sensei-raw-ctl-git
 	pkgdesc = SteelSeries Sensei Raw configuration tool
-	pkgver = 1
+	pkgver = d034b7b
 	pkgrel = 1
 	url = https://github.com/pjanouch/sensei-raw-ctl
 	arch = i686

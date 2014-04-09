@@ -1,7 +1,7 @@
 # Maintainer: Dave Simons <pkgs@simonsd.org> 
 
 pkgname=sensei-raw-ctl-git
-pkgver=1
+pkgver=d034b7b
 pkgrel=1
 pkgdesc="SteelSeries Sensei Raw configuration tool"
 arch=('i686' 'x86_64')
