@@ -2,7 +2,10 @@
 
 _pkgbasename=cyphertite
 pkgname=$_pkgbasename-external-libs
-pkgver=2.0.0
+pkgver=2.0.2
+# Upstream did not release the individual package for 2.0.2.  Only changes were
+# to some unused build scripts to require newer openssl and version bump.
+_pkgsrcver=2.0.0
 pkgrel=1
 pkgdesc="A high-security scalable solution for online backups"
 arch=(i686 x86_64)
@@ -19,25 +22,28 @@ depends=('libassl'
          'libbsd'
          'libedit'
          'libevent>=2.0.10'
-         'openssl>=1.0.1.c'
+         'openssl>=1.0.1.g'
          'sqlite>=3.0.0'
 )
 makedepends=('libclens')
 conflicts=('cyphertite')
 provides=('cyphertite')
 
-source=(https://opensource.conformal.com/snapshots/cyphertite/cyphertite-$pkgver.tar.gz
-        cyphertite-dynamic-link.patch)
+source=(https://opensource.conformal.com/snapshots/cyphertite/cyphertite-$_pkgsrcver.tar.gz
+        cyphertite-dynamic-link.patch
+        cyphertite-2.0.2.patch)
 sha1sums=('91dc3ac37f6f9f0190c83d15d1e20785953a0783'
-          '2f90214c2827dd7e66bcffe7724d0415a2411822')
+          '2f90214c2827dd7e66bcffe7724d0415a2411822'
+          '447cdb8a9c0178e206d7f9992473d29e82c571bb')
 
 prepare() {
-	cd "$_pkgbasename-$pkgver"
+	cd "$_pkgbasename-$_pkgsrcver"
 	patch -u -p0 -i $srcdir/cyphertite-dynamic-link.patch
+	patch -u -p1 -i $srcdir/cyphertite-2.0.2.patch
 }
 
 build() {
-	cd "$_pkgbasename-$pkgver"
+	cd "$_pkgbasename-$_pkgsrcver"
 	make LOCALBASE=/usr obj
 
 	msg "Building ctutil..."
@@ -51,7 +57,7 @@ build() {
 }
 
 package() {
-	cd "$_pkgbasename-$pkgver"
+	cd "$_pkgbasename-$_pkgsrcver"
 	make -C cyphertite LOCALBASE=/usr DESTDIR="$pkgdir" install
 
 	mkdir -p $pkgdir/usr/share/licenses/$_pkgbasename
