@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
 pkgver=3.14
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,21 +21,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
-        '0004-Revert-syscalls.h-use-gcc-alias-instead-of-assembler.patch'
-        '0005-fs-Don-t-return-0-from-get_anon_bdev.patch'
-        '0006-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch'
+        '0004-fs-Don-t-return-0-from-get_anon_bdev.patch'
+        '0005-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch'
+        '0006-genksyms-fix-typeof-handling.patch'
+        '0007-Fix-the-use-of-code32_start-in-the-EFI-boot-stub.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            '91b05561c96e09c8c3a4ea05fdab0745f578c4bb879feae25f552306bbe6522a'
-            '00da25459826be1dced644c2215dfe2a6da53168d92aea79467c490aec4cbcae'
+            'f2131f0f5a20a6cc65a987cf5363d08c343041c859686ceb4bb93d2d2a3d6b34'
+            '3545e2754c2f55f04818bc17461ddcabaf0760c35a0fec5d1d70f75c2ac93dbe'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            'ad22f6e1a2869730828ddaf93da8b8a748421b7afdd34e1213566985fe7b01dd'
-            '29e612a8dda2b2b8af116c16b546a0e1d159f249bfd9628d640cad0f61f0cc4f'
-            '555133445de48e781ced3a450bcdf9bfbe4d66b118bbd5b28fea789fa023dd66'
-            'dc1eca93dad93c9c015332d188f5a69508c2077536b8be653d2ff45f1b034941'
-            '1f572e748d96403218e846ec469474f557f04d2f5ff137dd2a31fffa193f760e'
-            'a413700adf3b45b7d3c18d2ffed390b9e5769cb361a9a0530f98bfff29fd0aef')
+            'aa17aa9a5c663552ea047b9d2a9a916207bed361bd387418c122f6611ee576a6'
+            '48c459a2a14e8f161b79943e9ea405c4e98cd5abdab62749c4e9d65e5735382a'
+            'f15a6831736e4c0b8b355fd7887445e770500d439cb851623ea300cc50ba4d97'
+            '4b9aed8d0b7c2389d9413caa2152e6591200630c19dda8224d43eae7d863a0d6'
+            'e0666f75eabc2bbfa668cb35ee72dfbad48e5963828a444fbb50388048a8cd3c'
+            'd2c449d346ae52724d36c3224bd06fcae7775b0698a9096eb89eeaa6dbc092e5'
+            '5a175c698cfdbf942f712afeda2a6af3f4e63a742ec6b6dc3a64bc6a7fb685bb')
 
 _kernelname=${pkgbase#linux}
 
@@ -60,18 +62,22 @@ prepare() {
   patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
   patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
 
-  # Fix symbols: Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=83460ec8dcac14142e7860a01fa59c267ac4657c
-  # For details, see https://lkml.org/lkml/2014/1/26/22
-  patch -p1 -i "${srcdir}/0004-Revert-syscalls.h-use-gcc-alias-instead-of-assembler.patch"
-
   # Fix various bugs caused by rootfs having FSID 0
   # See http://www.spinics.net/lists/kernel/msg1716924.html
-  patch -p1 -i "${srcdir}/0005-fs-Don-t-return-0-from-get_anon_bdev.patch"
+  patch -p1 -i "${srcdir}/0004-fs-Don-t-return-0-from-get_anon_bdev.patch"
 
   # Disable usb autosuspend for intel btusb
   # See http://www.spinics.net/lists/kernel/msg1716461.html
   # Until a solution is found, make sure the driver leaves autosuspend alone
-  patch -p1 -i "${srcdir}/0006-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch"
+  patch -p1 -i "${srcdir}/0005-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch"
+
+  # Fix generation of symbol CRCs
+  # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
+  patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
+
+  # Fix the use of code32_start in the EFI boot stub
+  # http://permalink.gmane.org/gmane.linux.kernel/1679881
+  patch -p1 -i "${srcdir}/0007-Fix-the-use-of-code32_start-in-the-EFI-boot-stub.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
