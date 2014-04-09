@@ -1,0 +1,22 @@
+pkgbase = cabrio-git
+	pkgdesc = Emulator front-end primarily designed for use with arcade cabinets (development version)
+	pkgver = 0.8.r227.7f00726
+	pkgrel = 1
+	url = http://cabrio-fe.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	depends = zlib
+	depends = sdl_gfx
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = ffmpeg
+	depends = ffmpeg-compat
+	depends = glu
+	source = cabrio::git+https://github.com/SteveMaddison/cabrio.git
+	md5sums = SKIP
+
+pkgname = cabrio-git
+
