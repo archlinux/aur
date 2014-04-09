@@ -167,7 +167,7 @@ url='http://www.ros.org/'
 pkgname='ros-%(distro)s-%(arch_package_name)s'
 pkgver='%(package_version)s'
 _pkgver_patch=%(package_version_patch)s
-arch=('i686' 'x86_64')
+arch=('any')
 pkgrel=1
 license=('%(license)s')
 
@@ -257,7 +257,7 @@ url='http://www.ros.org/'
 
 pkgname='ros-%(distro)s-%(arch_package_name)s'
 pkgver='%(package_version)s'
-arch=('i686' 'x86_64')
+arch=('any')
 pkgrel=1
 license=('%(license)s')
 
