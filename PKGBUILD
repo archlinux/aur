@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -65,16 +65,26 @@ md5sums=('ad1602a2fcc3609c83b885a28f3eecbd'
          '0a96ed876ffb1fcb9dff5a9b3a609c1e'
          '020971887442ebbf1b6949e031c8dd3f')
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # python2 fix
-  export PYTHON=`which python2`
   for file in $(find . -name '*.py' -print); do
     sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
+  sed -i 's|/sysconfig/|/conf.d/|g' \
+    daemon/libvirtd.service.in \
+    tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
+    src/locking/virtlockd.service.in
+  sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
+  sed -i 's|#group =.*|group="kvm"|' src/qemu/qemu.conf
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  export PYTHON=`which python2`
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" --sbindir=/usr/bin \
@@ -83,10 +93,6 @@ build() {
 	--with-qemu-user=nobody --with-qemu-group=nobody \
 	--without-netcf --with-interface --with-lxc
   make
-
-  sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
-  sed -i 's|@sbindir@|/usr/bin|g' src/virtlockd.service
-  sed -i 's|#group =.*|group="kvm"|' src/qemu/qemu.conf
 }
 
 package() {
