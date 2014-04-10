@@ -4,12 +4,12 @@
 
 pkgname=pacbuilder-svn
 pkgver=138
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to massively recompile archlinux packages from sources"
 arch=('any')
 url="http://code.google.com/p/pacbuilder/"
 license=('GPL3')
-depends=('rsync')
+depends=('rsync' 'wget')
 makedepends=('subversion')
 backup=('etc/pacbuilder.conf')
 
