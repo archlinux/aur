@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=R16B03_1
+pkgver=17.0
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
@@ -19,32 +19,32 @@ optdepends=('erlang-unixodbc: database support'
             'java-environment: for Java support'
             'lksctp-tools: for SCTP support')
 options=('staticlibs')
-source=("http://www.erlang.org/download/otp_src_${pkgver/_/-}.tar.gz"
-        "http://www.erlang.org/download/otp_doc_man_${pkgver/_/-}.tar.gz"
+source=("http://www.erlang.org/download/otp_src_$pkgver.tar.gz"
+        "http://www.erlang.org/download/otp_doc_man_$pkgver.tar.gz"
         'epmd.service'
         'epmd.socket'
         'epmd.conf')
-sha256sums=('17ce53459bc5ceb34fc2da412e15ac8c23835a15fbd84e62c8d1852704747ee7'
-            '0f31bc7d7215aa4b6834b1a565cd7d6e3173e3b392fb870254bae5136499c39d'
+sha256sums=('297f2baaa65e5ed1c2492c500fe191bff852217ad57af5da2470a3218c9acadb'
+            'acf72b5876c6f505191a3fb57b7e672733f911141929c4cef050111cf8f8b399'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2')
 
 build() {
-  cd "otp_src_${pkgver/_/-}"
+  cd "otp_src_$pkgver"
 
   ./configure --prefix=/usr --enable-smp-support --with-odbc
   make
 }
 
 package() {
-  cd "otp_src_${pkgver/_/-}"
+  cd "otp_src_$pkgver"
 
   make DESTDIR="$pkgdir" install
 
   # Documentation
   install -d "$pkgdir/usr/share/doc/erlang"
-  install -m0644 "$srcdir/otp_src_${pkgver/_/-}/README.md" \
+  install -m0644 "$srcdir/otp_src_$pkgver/README.md" \
     "$srcdir"/{README,COPYRIGHT} \
     "$pkgdir/usr/share/doc/erlang"
 
@@ -53,7 +53,7 @@ package() {
   cp -r "$srcdir/man" "$pkgdir/usr/lib/erlang"
 
   # License
-  install -Dm0644 "$srcdir/otp_src_${pkgver/_/-}/EPLICENCE" \
+  install -Dm0644 "$srcdir/otp_src_$pkgver/EPLICENCE" \
     "$pkgdir/usr/share/licenses/$pkgname/EPLICENCE"
 
   # Remove files that are packaged as erlang-unixodbc
