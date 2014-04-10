@@ -1,7 +1,7 @@
 pkgname=vtigercrm
 _pkgname=vtigerCRM
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, full-featured, 100% Open Source CRM software ideal for small and medium businesses"
 arch=("any")
 url="https://www.vtiger.com/open-source/"
@@ -24,7 +24,7 @@ backup=("etc/webapps/${pkgname}/config.php"
         "etc/webapps/${pkgname}/connection.php")
 options=("!strip"
          "emptydirs")
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}${pkgver}.tar.gz")
 
 package() {
   install -dm 0755                                     "${pkgdir}/etc/webapps/${pkgname}"
@@ -42,5 +42,5 @@ package() {
   chown -R 33:33 "${pkgdir}/usr/share/webapps/${pkgname}"
 }
 
-md5sums=('09af4217b530f23a80b7cf78dce770b1')
-sha1sums=('22bdb655398a01301d2edc0ecfde8d9a7e8e071f')
+md5sums=('6eece5f8685c1f657cf051825374983c')
+sha1sums=('efd6c977e5452ca4623931fdc66c1a208f3d62db')
