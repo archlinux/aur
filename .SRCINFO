@@ -1,0 +1,21 @@
+pkgbase = zed-git
+	pkgdesc = a code editor built using web technologies
+	pkgver = 0.10.2.r37.g480b696
+	pkgrel = 1
+	url = http://zedapp.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = node-webkit
+	conflicts = zed
+	options = !strip
+	source = git+https://github.com/zedapp/zed.git
+	source = zed.sh
+	source = zed.desktop
+	md5sums = SKIP
+	md5sums = abae90ce618ed1b3f471b8d1c4b788d1
+	md5sums = 6da60b5e24427a4f5a4315c71f24e8c3
+
+pkgname = zed-git
+
