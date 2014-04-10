@@ -2,12 +2,12 @@
 
 pkgname=cppqed-git
 pkgver=1374.66ae6d3
-pkgrel=1
+pkgrel=2
 pkgdesc="C++QED is a highly flexible framework for simulating open quantum dynamics."
 arch=('i686' 'x86_64')
 url="http://cppqed.sourceforge.net"
 license=('BSL')
-depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy')
+depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy' 'python2-scipy' 'cmake')
 makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('cppqed')
