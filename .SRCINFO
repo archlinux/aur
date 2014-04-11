@@ -1,7 +1,7 @@
 pkgbase = wmitime
 	pkgdesc = A dock app showing standard time, date and Internet time
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#wmitime
 	arch = i686
 	arch = x86_64
