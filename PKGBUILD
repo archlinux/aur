@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
 pkgver=3.14
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,20 +24,26 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0004-fs-Don-t-return-0-from-get_anon_bdev.patch'
         '0005-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch'
         '0006-genksyms-fix-typeof-handling.patch'
-        '0007-Fix-the-use-of-code32_start-in-the-EFI-boot-stub.patch'
+        '0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch'
+        '0008-futex-avoid-race-between-requeue-and-wake.patch'
+        '0009-iwlwifi-mvm-rs-fix-search-cycle-rules.patch'
+        '0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'f2131f0f5a20a6cc65a987cf5363d08c343041c859686ceb4bb93d2d2a3d6b34'
             '3545e2754c2f55f04818bc17461ddcabaf0760c35a0fec5d1d70f75c2ac93dbe'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            'aa17aa9a5c663552ea047b9d2a9a916207bed361bd387418c122f6611ee576a6'
-            '48c459a2a14e8f161b79943e9ea405c4e98cd5abdab62749c4e9d65e5735382a'
-            'f15a6831736e4c0b8b355fd7887445e770500d439cb851623ea300cc50ba4d97'
-            '4b9aed8d0b7c2389d9413caa2152e6591200630c19dda8224d43eae7d863a0d6'
-            'e0666f75eabc2bbfa668cb35ee72dfbad48e5963828a444fbb50388048a8cd3c'
-            'd2c449d346ae52724d36c3224bd06fcae7775b0698a9096eb89eeaa6dbc092e5'
-            '5a175c698cfdbf942f712afeda2a6af3f4e63a742ec6b6dc3a64bc6a7fb685bb')
+            '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
+            '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
+            '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
+            '1e1ae0f31f722e80da083ecada1f1be57f9ddad133941820c4483b0240e494c1'
+            '3fffb01cf97a5a7ab9601cb277d2468c0fb1e1cceba4225915f3ffae3a5694ec'
+            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
+            'a98bc3836bcf85774a974a1585e6b64432ba8c42363ee484d14515ccd6a88e24'
+            'f8699fcf4242c0727c3c0af56928515cef9b6ce329968537ce2894b30d43eade'
+            '1d4c7b24312ed3781e5d139dfb52f0c22350bf5a2845fe747469dfa7b6ed861f'
+            'c0af4622f75c89fef62183e18b7d49998228d4eaa906c6accaf4aa4ff0134f85')
 
 _kernelname=${pkgbase#linux}
 
@@ -77,7 +83,19 @@ prepare() {
 
   # Fix the use of code32_start in the EFI boot stub
   # http://permalink.gmane.org/gmane.linux.kernel/1679881
-  patch -p1 -i "${srcdir}/0007-Fix-the-use-of-code32_start-in-the-EFI-boot-stub.patch"
+  # https://git.kernel.org/cgit/linux/kernel/git/mfleming/efi.git/commit/?h=urgent&id=7e8213c1f3acc064aef37813a39f13cbfe7c3ce7
+  patch -p1 -i "${srcdir}/0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch"
+
+  # https://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/tree/queue-3.14/futex-avoid-race-between-requeue-and-wake.patch
+  # FS#39806
+  patch -p1 -i "${srcdir}/0008-futex-avoid-race-between-requeue-and-wake.patch"
+
+  # Fix some intel wifi issues
+  # https://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/tree/queue-3.14/iwlwifi-mvm-rs-fix-search-cycle-rules.patch
+  patch -p1 -i "${srcdir}/0009-iwlwifi-mvm-rs-fix-search-cycle-rules.patch"
+  # https://git.kernel.org/cgit/linux/kernel/git/iwlwifi/iwlwifi-fixes.git/commit/?id=12f853a89e29f50b17698e17e73c328a35f1498d
+  # FS#39815
+  patch -p1 -i "${srcdir}/0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
