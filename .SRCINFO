@@ -15,7 +15,7 @@ pkgbase = zed-git
 	source = zed.desktop
 	md5sums = SKIP
 	md5sums = abae90ce618ed1b3f471b8d1c4b788d1
-	md5sums = 6da60b5e24427a4f5a4315c71f24e8c3
+	md5sums = 7755f566349b49648b3e5d5c896da83b
 
 pkgname = zed-git
 

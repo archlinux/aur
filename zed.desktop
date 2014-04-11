@@ -7,6 +7,6 @@ Exec=zed
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=/usr/share/zed-git/launcher.png
+Icon=/usr/share/zed-git/Zed.svg
 Categories=Editor;
 X-Desktop-File-Install-Version=1.3.13

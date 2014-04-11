@@ -15,7 +15,7 @@ url="http://zedapp.org/"
 source=('git+https://github.com/zedapp/zed.git' 'zed.sh' 'zed.desktop')
 md5sums=('SKIP'
          'abae90ce618ed1b3f471b8d1c4b788d1'
-         '6da60b5e24427a4f5a4315c71f24e8c3')
+         '7755f566349b49648b3e5d5c896da83b')
 
 pkgver() {
 	cd "${srcdir}/zed"
@@ -41,7 +41,7 @@ package() {
 	msg2 "Copy editor files"
 	rm -rf "${pkgdir}/usr/share/${pkgname}/app.nw"
 	cp -r "${srcdir}/zed/app" "${pkgdir}/usr/share/${pkgname}/app.nw"
-	install "${srcdir}"/zed/Zed.png "${pkgdir}/usr/share/${pkgname}/launcher.png"
+	install "${srcdir}"/zed/Zed.svg "${pkgdir}/usr/share/${pkgname}/"
 
 	# Install Launcher
 	msg2 "Install launcher to /usr/bin"
