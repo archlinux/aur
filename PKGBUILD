@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 # Repository here: https://github.com/jonhoo/zed-PKGBUILD
 pkgname=zed-git
-pkgver=0.10.2.r37.g480b696
+pkgver=0.11.0.r747.1ad52cf
 pkgrel=1
 pkgdesc="a code editor built using web technologies"
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/zed"
-	git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	major=$(cat app/manifest.json | grep '"version"' | cut -f 4 -d '"')
+	printf "%s.r%s.%s" "$major" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
