@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmitime
 pkgver=0.3
-pkgrel=3
+pkgrel=1
 pkgdesc="A dock app showing standard time, date and Internet time"
 url="http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#wmitime"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname/$pkgname"
   install -Dm0755 $pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm0644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm0644 $pkgname.desktop "$pkgdir/usr/share/applications"
 }
 
 # vim: set sw=2 et:
