@@ -1,7 +1,7 @@
 pkgbase = picard-plugins-aux
 	pkgdesc = additional plugins for MusicBrainz Picard
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
 	arch = any
 	license = GPL
@@ -20,6 +20,10 @@ pkgbase = picard-plugins-aux
 	source = https://raw.github.com/brianfreud/Picard-plugins/master/eq2.py
 	source = https://raw.github.com/brianfreud/Picard-plugins/master/ne2.py
 	source = https://raw.github.com/brianfreud/Picard-plugins/master/p.py
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/viewvariables.zip
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/albumartist_website.py
 	md5sums = 9a4f26bdc1c3e7c651255234f2bee289
 	md5sums = 1219e450a0eb04d78a5fb1c36ddd45e5
 	md5sums = 05c7dbe8f0ff5fc8e634da7db7f700c7
@@ -27,10 +31,14 @@ pkgbase = picard-plugins-aux
 	md5sums = c9099bde340ae51d5d2cb908a8ffff24
 	md5sums = 921a0ba1b5659470f907e2cfc2f72694
 	md5sums = c53be179a061dc97f56e00fea9b14bd2
-	md5sums = 3a39b178261c50ad2cd1440657a168a1
+	md5sums = 03db4455bdb92fd1bf5fdad3f99b9103
 	md5sums = c4be2eceee00f72fc5c4e848d965b2ea
 	md5sums = db4100901c9b583140e8fe81bb4d324f
 	md5sums = 3f4dad9583c7a5d935d009069c599a51
+	md5sums = faebf9e8ee0e269a67cf4b9a5ca7524e
+	md5sums = 3ec10ede17cf40baf244f3f0e56aceac
+	md5sums = 83503215f2a62c6710d41d839f876315
+	md5sums = 10ae9cc716a31748a0726c1ff05e9513
 
 pkgname = picard-plugins-aux
 
