@@ -1,6 +1,6 @@
 pkgbase = perl-jifty-dbi
 	pkgdesc = An object-relational persistence framework for Jifty
-	pkgver = 0.76
+	pkgver = 0.77
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Jifty-DBI
 	arch = any
@@ -34,8 +34,8 @@ pkgbase = perl-jifty-dbi
 	optdepends = perl-time-duration-parse>=0.06: duration filter
 	optdepends = perl-uri: URI filter
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TS/TSIBLEY/Jifty-DBI-0.76.tar.gz
-	md5sums = 161c0a7545dbd7635c3066696a9fe804
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Jifty-DBI-0.77.tar.gz
+	md5sums = 26c329a4c8fd85e33a2faf2c549ec64e
 
 pkgname = perl-jifty-dbi
 
