@@ -1,6 +1,6 @@
 pkgbase = perl-cgi-application-plugin-dbh
 	pkgdesc = Perl package for easy DBI access from CGI::Application
-	pkgver = 4.01
+	pkgver = 4.04
 	pkgrel = 1
 	url = http://search.cpan.org/dist/CGI-Application-Plugin-DBH
 	arch = any
@@ -8,13 +8,12 @@ pkgbase = perl-cgi-application-plugin-dbh
 	license = GPL
 	checkdepends = perl-test-mockobject>=1.20120301
 	checkdepends = perl-dbd-mock>=0.11
-	makedepends = perl
 	depends = perl>=5.10.1
 	depends = perl-cgi-application
 	depends = perl-dbi
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKSTOS/CGI-Application-Plugin-DBH-4.01.tar.gz
-	md5sums = ca72a77ad5ec453459db4b1e418ca0de
+	source = http://search.cpan.org/CPAN/authors/id/F/FR/FREW/CGI-Application-Plugin-DBH-4.04.tar.gz
+	md5sums = da6d7bc3b084624fffadd34834f71f77
 
 pkgname = perl-cgi-application-plugin-dbh
 
