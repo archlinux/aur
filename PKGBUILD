@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 # Repository here: https://github.com/jonhoo/zed-PKGBUILD
 pkgname=zed-git
-pkgver=0.11.0.r747.1ad52cf
+pkgver=0.11.0.r753.9527d05
 pkgrel=1
 pkgdesc="a code editor built using web technologies"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/zed"
-	make install-dep
+	make app/ace
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = zed-git
 	pkgdesc = a code editor built using web technologies
-	pkgver = 0.11.0.r747.1ad52cf
+	pkgver = 0.11.0.r753.9527d05
 	pkgrel = 1
 	url = http://zedapp.org/
 	arch = i686
