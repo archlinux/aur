@@ -1,7 +1,8 @@
-# Maintainer: Chris Mann <cshclm at gmail dot com>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Chris Mann <cshclm at gmail dot com>
 
 pkgname=unrar-free
-pkgver=20130522
+pkgver=20140412
 pkgrel=1
 pkgdesc="Free utility to extract files from RAR archives."
 url="http://gna.org/projects/unrar/"
@@ -10,7 +11,7 @@ depends=("glibc")
 makedepends=("cvs")
 license=('GPL')
 
-_cvsroot=":pserver:anonymous:@cvs.gna.org:/cvs/"
+_cvsroot=":pserver:anonymous@cvs.gna.org:/cvs"
 _cvsmod="unrar"
 
 build() {
@@ -22,7 +23,7 @@ build() {
     cd "${_cvsmod}"
     cvs -q update -dA
   else
-    cvs -q -z3 "-d${_cvsroot}/${_cvsmod}" co "${_cvsmod}"
+    cvs -q -z3 -d${_cvsroot}/${_cvsmod} co ${_cvsmod}
     cd "${_cvsmod}"
   fi
 

@@ -1,6 +1,6 @@
 pkgbase = unrar-free
 	pkgdesc = Free utility to extract files from RAR archives.
-	pkgver = 20130522
+	pkgver = 20140412
 	pkgrel = 1
 	url = http://gna.org/projects/unrar/
 	arch = i686
