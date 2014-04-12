@@ -1,0 +1,19 @@
+pkgbase = e_cho
+	pkgdesc = Simon game based on EFL
+	pkgver = 0.1.0alpha.r41.b668315
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = elementary
+	depends = etrophy
+	depends = libcanberra
+	provides = e_cho=0.1.0alpha.r41.b668315
+	conflicts = e_cho
+	source = git://git.enlightenment.org/games/e_cho.git
+	sha256sums = SKIP
+
+pkgname = e_cho-git
+
