@@ -4,40 +4,42 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname=perl-apache-logformat-compiler
-pkgver=0.13
-pkgrel=2
+pkgver=0.30
+pkgrel=1
 pkgdesc='Perl module to compile apache log format string to Perl code'
 arch=('any')
 url='http://search.cpan.org/dist/Apache-LogFormat-Compiler'
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.8.5')
 makedepends=(
-	'perl>=5.13.11' # for Module::Build >= 0.38
+	'perl-module-build>=0.38'
+	'perl-cpan-meta'	
 )
 checkdepends=(
 	'perl-http-message'
+	'perl-test-mocktime'
 	'perl-test-requires'
 	'perl-try-tiny>=0.12'
 	'perl-uri>=1.60'
 )
-source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.13.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.30.tar.gz)
 options=(!emptydirs)
-md5sums=('fd04ee3f4c2164b7f7909d85f11e467a')
+md5sums=('1963331e6a0b228ba53d86f43b08ff29')
 
 build() {
-	cd Apache-LogFormat-Compiler-0.13
+	cd Apache-LogFormat-Compiler-0.30
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT
 	PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	perl Build
 }
 
 check() {
-	cd Apache-LogFormat-Compiler-0.13
+	cd Apache-LogFormat-Compiler-0.30
 	perl Build test
 }
 
 package() {
-	cd Apache-LogFormat-Compiler-0.13
+	cd Apache-LogFormat-Compiler-0.30
 	perl Build install
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }

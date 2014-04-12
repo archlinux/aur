@@ -10,12 +10,17 @@ pkgdesc='Perl module to compile apache log format string to Perl code'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.8.5')
+depends=(
+	'perl>=5.8.5'
+	'perl-posix-strftime-compiler>=0.30'
+)
 makedepends=(
-	'perl>=5.13.11' # for Module::Build >= 0.38
+	'perl-module-build>=0.38'
+	'perl-cpan-meta'	
 )
 checkdepends=(
 	'perl-http-message'
+	'perl-test-mocktime'
 	'perl-test-requires'
 	'perl-try-tiny>=0.12'
 	'perl-uri>=1.60'
