@@ -17,18 +17,18 @@ source=([% source %])
 md5sums=('[% md5sums %]')
 
 build() {
-  cd "$srcdir/[% distdir %]"
-  PERL_MM_USE_DEFAULT=1 perl Build.PL --installdirs vendor --destdir "$pkgdir"
-  perl Build
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	perl Build
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
-  perl Build test
+	cd [% distdir %]
+	perl Build test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
-  perl Build install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd [% distdir %]
+	perl Build install
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }

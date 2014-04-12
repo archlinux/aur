@@ -1,6 +1,6 @@
 pkgbase = perl-math-gsl
 	pkgdesc = Perl module providing interface to the GNU Scientific Library
-	pkgver = 0.27
+	pkgver = 0.28
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Math-GSL
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = perl-math-gsl
 	depends = perl
 	depends = gsl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LE/LETO/Math-GSL-0.27.tar.gz
-	md5sums = 1a929dd3274d19217ed5696804c25b01
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LETO/Math-GSL-0.28.tar.gz
+	md5sums = cb6a5d3b3fbc266060aeb4a8177a3fe7
 
 pkgname = perl-math-gsl
 
