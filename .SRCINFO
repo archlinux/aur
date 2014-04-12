@@ -1,0 +1,21 @@
+pkgbase = econcentration
+	pkgdesc = Game to improve you concentration and memory skills based on EFL
+	pkgver = 0.1.0alpha.r28.3257d79
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	license = FDL
+	license = LGPL
+	license = GPL
+	makedepends = git
+	depends = elementary
+	depends = etrophy
+	provides = econcentration=0.1.0alpha.r28.3257d79
+	conflicts = econcentration
+	source = git://git.enlightenment.org/games/econcentration.git
+	sha256sums = SKIP
+
+pkgname = econcentration-git
+
