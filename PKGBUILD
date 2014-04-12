@@ -1,9 +1,9 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-_pkgname=enlightenment
-pkgname=$_pkgname-git
-pkgver=0.18.99.18185.08e2173
+pkgbase=enlightenment
+pkgname=$pkgbase-git
+pkgver=0.18.99.18286.7274ffa
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
@@ -18,17 +18,17 @@ optdepends=('acpid: power events on laptop lid close'
             'connman: network module'
             'gdb: create backtraces on crash'
             'packagekit: packagekit module')
-provides=("$_pkgname=$pkgver" 'notification-daemon')
-conflicts=("$_pkgname")
+provides=("$pkgbase=$pkgver" 'notification-daemon')
+conflicts=("$pkgbase")
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/enlightenment.menu')
 options=('debug')
 install=enlightenment.install
-source=("git://git.enlightenment.org/core/$_pkgname.git")
+source=("git://git.enlightenment.org/core/$pkgbase.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   for _i in v_maj v_min v_mic; do
     local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
@@ -40,7 +40,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -54,16 +54,15 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgbase"
 
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$pkgbase/"
+  install -m644 -t "$pkgdir/usr/share/doc/$pkgbase/" ChangeLog NEWS README
 
 # install license files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
