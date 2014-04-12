@@ -1,14 +1,15 @@
 pkgbase = perl-math-interpolate
-	pkgdesc = Routines for interpolating data sets
-	pkgver = 1.05
+	pkgdesc = Perl module providing routines for interpolating data sets
+	pkgver = 1.06
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Math-Interpolate/
+	url = http://search.cpan.org/dist/Math-Interpolate
 	arch = any
-	license = unknown
+	license = PerlArtistic
+	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BZ/BZAJAC/Math-Interpolate-1.05.tar.gz
-	md5sums = 1826c6c24b75a2a27964c3dac198adac
+	source = http://search.cpan.org/CPAN/authors/id/B/BZ/BZAJAC/Math-Interpolate-1.06.tar.gz
+	md5sums = 06529ef3b1c94f32a0da5dbe0ebdef5e
 
 pkgname = perl-math-interpolate
 
