@@ -8,7 +8,7 @@ pkgbase = eweather-git
 	license = LGPL2.1
 	makedepends = git
 	depends = libeweather-git
-	depends = enlightenment
+	depends = enlightenment<0.18.99
 	provides = eweather=0.2.0.r69.dbfe76f
 	conflicts = eweather
 	source = git://git.enlightenment.org/enlightenment/modules/eweather.git
