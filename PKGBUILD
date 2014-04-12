@@ -11,22 +11,18 @@ url='http://github.com/tonyrog/cl'
 license=('MIT')
 depends=('erlang' 'libcl' 'bash')
 replaces=('cl')
-makedepends=('opencl-headers' 'rebar')
-source=("https://github.com/tonyrog/cl/archive/cl-$pkgver.zip")
-sha256sums=('63d720995f5bfa9f6a11211bb0ec400ad28799d127d2a642f06ee33769b145ab')
+makedepends=('opencl-headers' 'rebar' 'git')
+source=("$pkgname::git://github.com/tonyrog/cl.git#tag=cl-1.2.1")
+md5sums=('SKIP')
 
 build() {
-  cd "cl-cl-$pkgver/c_src"
+  cd "$pkgname"
 
   rebar compile
-  #make configure
-  #./configure --with-wordsize="$_wordsize" --prefix=/usr
-  #[ $CARCH = x86_64 ] && make all64 || make all32
-  #rm config.*
 }
 
 package() {
-  cd "cl-cl-$pkgver"
+  cd "$pkgname"
 
   mkdir -p "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
   cp -r * "$pkgdir/usr/lib/erlang/lib/cl-$pkgver"
