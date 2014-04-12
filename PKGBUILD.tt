@@ -5,30 +5,30 @@
 pkgname=[% pkgname %]
 pkgver=[% pkgver %]
 pkgrel=[% pkgrel %]
-pkgdesc="Perl module for efficient generation of combinatorial sequences"
-arch=("i686" "x86_64")
-url="[% url %]"
-license=("GPL" "PerlArtistic")
+pkgdesc='Perl module for efficient generation of combinatorial sequences'
+arch=('i686' 'x86_64')
+url='[% url %]'
+license=('GPL' 'PerlArtistic')
 source=([% source %])
-depends=("perl")   # provides 'perl-scalar-list-utils', 'perl-xsloader'
+depends=('perl')   # provides 'perl-scalar-list-utils', 'perl-xsloader'
 makedepends=()     # provides 'perl-extutils-makemaker'
 checkdepends=()    # provides 'perl-test-simple'
 options=(!emptydirs)
-md5sums=("[% md5sums %]")
+md5sums=('[% md5sums %]')
 
 build() {
-  cd "$srcdir/[% distdir %]"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
-  make test
+	cd [% distdir %]
+	make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd [% distdir %]
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
