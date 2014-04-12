@@ -1,0 +1,17 @@
+pkgbase = perl-posix-strftime-compiler
+	pkgdesc = Perl module providing GNU C library compatible strftime for loggers and servers
+	pkgver = 0.31
+	pkgrel = 1
+	url = http://search.cpan.org/dist/POSIX-strftime-Compiler
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build>=0.38
+	makedepends = perl-cpan-meta
+	depends = perl>=5.8.4
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.31.tar.gz
+	md5sums = c8b188fe58a87628d5a800acd99c2349
+
+pkgname = perl-posix-strftime-compiler
+
