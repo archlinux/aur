@@ -4,10 +4,9 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r04
-_sdkver=4.4.2
 _apilevel=19
 pkgname=android-google-apis
-pkgver=${_sdkver}_${_rev}
+pkgver=${_apilevel}_${_rev}
 pkgrel=1
 pkgdesc="Android Google APIs, latest API"
 arch=('any')

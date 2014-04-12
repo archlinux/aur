@@ -1,6 +1,6 @@
 pkgbase = android-google-apis
 	pkgdesc = Android Google APIs, latest API
-	pkgver = 4.4.2_r04
+	pkgver = 19_r04
 	pkgrel = 1
 	url = http://code.google.com/android/add-ons/google-apis
 	arch = any
