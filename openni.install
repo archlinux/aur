@@ -1,0 +1,13 @@
+post_install() {
+	MODULES="libnimMockNodes.so libnimCodecs.so libnimRecorder.so"
+	for module in $MODULES
+	do 
+		/usr/bin/niReg /usr/lib/$module
+	done
+	
+	echo "Don't forget to install a hardware driver such as sensorkinect-git"
+}
+
+pre_remove() {
+	rm /var/lib/ni/modules.xml
+}
