@@ -5,6 +5,7 @@ pkgbase = libselinux
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	groups = selinux
 	license = GPL
 	makedepends = python2
