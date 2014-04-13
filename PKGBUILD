@@ -5,7 +5,7 @@
 
 pkgname=libselinux
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -25,7 +25,7 @@ source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgv
         "http://pkgs.fedoraproject.org/cgit/libselinux.git/plain/selinuxconlist.8"
         "libselinux.tmpfiles.d")
 sha256sums=('30ab363416806da907b86b97f1d31c252473e3200358bb1570f563c8312b5a3e'
-            'd60265f59b7fca51724e401f0ff4d1bbb9ad790ba9595ed4534942b286a7a1e4'
+            '0f7de47d54d931f73bdcfd1835bac56518f0ddc0697b3554a483418ad3f4dec8'
             'ddfbbc31f2eb107b12d2c949612b997ff7dc86aff78019493b0a3a894ff65e29'
             'df5e0b3258df0953242b19bf1712e0c9bee53badfcab9a91071c915d3edd2098'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
