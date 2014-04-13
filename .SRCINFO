@@ -1,6 +1,6 @@
 pkgbase = android-x86-system-image
 	pkgdesc = Android x86 Atom System Image, latest API
-	pkgver = 4.3_r01
+	pkgver = 18_r01
 	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/android-43-jelly-bean-x86-emulator-system-image
 	arch = any
