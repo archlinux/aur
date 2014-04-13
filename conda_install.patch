@@ -1,5 +1,5 @@
---- a/pkgs/conda-3.0.6-py27_0/lib/python2.7/site-packages/conda/install.py	2014-02-17 17:41:52.923723071 +0100
-+++ b/pkgs/conda-3.0.6-py27_0/lib/python2.7/site-packages/conda/install.py	2014-02-17 17:48:24.860474522 +0100
+--- a/pkgs/conda-3.4.1-py27_0/lib/python2.7/site-packages/conda/install.py	2014-04-13 20:09:08.204732923 +0200
++++ b/pkgs/conda-3.4.1-py27_0/lib/python2.7/site-packages/conda/install.py	2014-04-13 20:09:24.036548002 +0200
 @@ -167,12 +167,14 @@
                        # such that running this program on itself
                        # will leave it unchanged
@@ -17,16 +17,16 @@
      if new_data == data:
          return
      st = os.lstat(path)
-@@ -341,7 +343,7 @@
+@@ -375,7 +377,7 @@
          return None
  
  
 -def link(pkgs_dir, prefix, dist, linktype=LINK_HARD):
 +def link(pkgs_dir, prefix, dist, linktype=LINK_HARD, instdir=None):
      '''
-     Set up a packages in a specified (environment) prefix.  We assume that
-     the packages has been extracted (using extract() above).
-@@ -354,6 +356,8 @@
+     Set up a package in a specified (environment) prefix.  We assume that
+     the package has been extracted (using extract() above).
+@@ -388,6 +390,8 @@
          # linking or unlinking some packages
          print('Ignored: %s' % dist)
          return
@@ -35,7 +35,7 @@
  
      source_dir = join(pkgs_dir, dist)
      if not run_script(source_dir, dist, 'pre-link', prefix):
-@@ -401,7 +405,7 @@
+@@ -435,7 +439,7 @@
              return
  
          for f in sorted(has_prefix_files):
@@ -44,7 +44,7 @@
  
          mk_menus(prefix, files, remove=False)
  
-@@ -506,6 +510,10 @@
+@@ -541,6 +545,10 @@
                   default=sys.prefix,
                   help="prefix (defaults to %default)")
  
@@ -55,7 +55,7 @@
      p.add_option('--pkgs-dir',
                   action="store",
                   default=join(sys.prefix, 'pkgs'),
-@@ -535,9 +543,14 @@
+@@ -570,9 +578,14 @@
  
      pkgs_dir = opts.pkgs_dir
      prefix = opts.prefix
@@ -70,7 +70,7 @@
          print("dist    : %r" % dist)
  
      if opts.list:
-@@ -545,14 +558,14 @@
+@@ -580,14 +593,14 @@
  
      elif opts.link_all:
          for dist in sorted(extracted(pkgs_dir)):

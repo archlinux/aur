@@ -1,14 +1,14 @@
---- a/Anaconda-1.9.1-Linux-x86.sh	2013-11-26 21:41:18.648086232 +0100
-+++ b/Anaconda-1.9.1-Linux-x86.sh	2013-11-26 21:38:49.227661186 +0100
+--- a/Anaconda-1.9.2-Linux-x86.sh	2014-04-13 19:38:45.647043146 +0200
++++ b/Anaconda-1.9.2-Linux-x86.sh	2014-04-13 19:57:08.897523021 +0200
 @@ -68,9 +68,9 @@
      fi
  fi
  # verify the size of the installer
--wc -c "$THIS_PATH" | grep 431763871 >/dev/null
-+wc -c "$THIS_PATH" | grep 431763878 >/dev/null
+-wc -c "$THIS_PATH" | grep 431825310 >/dev/null
++wc -c "$THIS_PATH" | grep 431825317 >/dev/null
  if (( $? )); then
--    echo "ERROR: size of $THIS_FILE should be 431763871 bytes" >&2
-+    echo "ERROR: size of $THIS_FILE should be 431763878 bytes" >&2
+-    echo "ERROR: size of $THIS_FILE should be 431825310 bytes" >&2
++    echo "ERROR: size of $THIS_FILE should be 431825317 bytes" >&2
      exit 1
  fi
  
@@ -28,5 +28,5 @@
 -
 +exit 0
  echo "creating default environment..."
- CONDA_INSTALL="$PREFIX/pkgs/conda-3.0.6-py27_0/lib/python2.7/site-packages/conda/install.py"
+ CONDA_INSTALL="$PREFIX/pkgs/conda-3.4.1-py27_0/lib/python2.7/site-packages/conda/install.py"
  $PYTHON $CONDA_INSTALL --prefix=$PREFIX --pkgs-dir=$PREFIX/pkgs --link-all || exit 1

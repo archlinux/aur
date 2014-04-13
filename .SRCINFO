@@ -1,20 +1,20 @@
 pkgbase = anaconda2
 	pkgdesc = Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing.
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://store.continuum.io/cshop/anaconda/
 	arch = i686
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-1.9.1-Linux-x86_64.sh
+	source = http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-1.9.2-Linux-x86_64.sh
 	source = installer_sh_x86_64.patch
 	source = installer_sh_x86.patch
 	source = conda_install.patch
-	md5sums = 9d973e9ac715ce3241c3785704565971
-	md5sums = ef057ee3cfe743247ded78779724a371
-	md5sums = 56d8efdaf010862a34cb3d3c36e9f78c
-	md5sums = d11da4f9cf90c82c7a37a02531de3797
+	md5sums = 863ee49f52bda17810ab1b94a52f8c95
+	md5sums = e1977ddd9ad7a1b6a4a49be173f594dc
+	md5sums = 07bab61d808af1ff79e65e924c588df9
+	md5sums = 09e0f347aa2f1c7cf10125f836340949
 
 pkgname = anaconda2
 
