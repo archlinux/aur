@@ -1,15 +1,15 @@
 pkgbase = lcf2xml-git
 	pkgdesc = EasyRPG's converter tool (RPG Maker 2000/2003 projects<>XML, development version)
-	pkgver = r21.b436603
+	pkgver = r23.0161554
 	pkgrel = 1
 	url = https://easy-rpg.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = liblcf-git
 	depends = expat
 	depends = gcc-libs
+	depends = liblcf-git
 	provides = lcf2xml
 	conflicts = lcf2xml
 	source = lcf2xml::git+https://github.com/EasyRPG/lcf2xml.git
