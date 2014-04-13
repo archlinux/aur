@@ -4,39 +4,36 @@
 # Contributor: Geoffrey Teale <tealeg@stop-squark>
 # Contributor: Mark, Huo Mian <markhuomian[at]gmail[dot]com>
 # Contributor: Biginoz <biginoz a free dot fr>
+# Contributor: schalox <schalox at gmail dot com>
 
 pkgname=redshift-minimal
 _name=redshift
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies.."
 arch=('i686' 'x86_64')
 url='http://jonls.dk/redshift/'
 license=('GPL3')
 depends=('libxxf86vm')
-makedepends=('python2')
+makedepends=('python')
 conflicts=('redshift')
 provides=('redshift')
 source=("https://github.com/jonls/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('8f81b58da2bbe7b62092c3b473f3d9a5')
-
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  sed -i 's/python/python2/' src/redshift-gtk/redshift-gtk
-}
+md5sums=('eb64e996d48a0b3e344f6dd10689e191')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
 
   autoreconf -fi
-  PYTHON=/usr/bin/python2 ./configure --disable-gui --disable-gnome-clock \
-                                      --disable-geoclue --disable-ubuntu \
-                                      --prefix=/usr
+  PYTHON=/usr/bin/python ./configure --disable-gui --disable-geoclue \
+                                     --disable-ubuntu --disable-drm \
+                                     --prefix=/usr
   make
 }
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  rm "${pkgdir}/usr/lib/systemd/user/${_name}-gtk.service"
 }
 
