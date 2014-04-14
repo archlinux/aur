@@ -28,8 +28,8 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 ### ArchLinux
 
 ```bash
-mkdir /tmp/pia-tools; cd /tmp/pia-tools
-wget https://raw.github.com/pschmitt/pia-tools/master/PKGBUILD
+mkdir /tmp/pia-tools; cd !$
+wget https://raw.github.com/pschmitt/pia-tools/master/{PKGBUILD,pia-tools.install}
 makepkg -si
 ```
 
@@ -45,7 +45,7 @@ mv pia-tools /usr/bin
 If you also want to have the MANPAGE:
 
 ```bash
-wget -q -O- https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff | gzip -c - > pia-tools.1.gz 
+wget -q -O- https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff | gzip -c - > pia-tools.1.gz
 mv pia-tools.1.gz $MANPATH
 ```
 
@@ -68,7 +68,7 @@ mkdir -p /etc/openvpn/pia
 # Feel free to edit the up/down parameters
 cat <<EOM > /etc/openvpn/pia/pia_common
 auth-user-pass passwd
-script-security 2 
+script-security 2
 up "/usr/bin/pia-tools -g"
 down "/usr/bin/pia-tools --restore-dns"
 EOM
