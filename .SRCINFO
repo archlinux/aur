@@ -1,6 +1,6 @@
 pkgbase = emacs-pretest
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version
-	pkgver = 24.1rc
+	pkgver = 24.3.90
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	install = emacs.install
@@ -11,23 +11,21 @@ pkgbase = emacs-pretest
 	depends = gpm
 	depends = giflib
 	depends = libxpm
-	depends = gtk2
+	depends = libotf
+	depends = m17n-lib
+	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = gconf
 	depends = desktop-file-utils
 	depends = alsa-lib
-	provides = emacs=24.1
+	depends = imagemagick
+	depends = gnutls
+	provides = emacs==24.3.90
 	conflicts = emacs
-	conflicts = emacs-nox
-	conflicts = emacs-bzr
-	conflicts = emacs-git
-	conflicts = emacs-cvs
-	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-24.1-rc.tar.gz
-	source = emacs.desktop
-	md5sums = 07c36f4e3fa3394ae5a6b513800bc976
-	md5sums = 8af038d2ba4561271e935bb444ceb4e3
-	sha256sums = 83d4ea3cf59be4d672b59fa2944f7c6ab2c3790ab8644b9e5673bdfdcda20cbf
-	sha256sums = dba3652cdfd4193d264cf9ebafcef3e6be4af3f83bdf187d421f8e4c07f94b39
+	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-24.3.90.tar.xz
+	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-24.3.90.tar.xz.sig
+	md5sums = e13c66edb07327c07f0aacce5f70c74b
+	md5sums = SKIP
 
 pkgname = emacs-pretest
 
