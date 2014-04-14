@@ -4,15 +4,15 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
-pkgver=3.14
-pkgrel=5
+pkgver=3.14.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -25,25 +25,22 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0005-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch'
         '0006-genksyms-fix-typeof-handling.patch'
         '0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch'
-        '0008-futex-avoid-race-between-requeue-and-wake.patch'
-        '0009-iwlwifi-mvm-rs-fix-search-cycle-rules.patch'
         '0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch'
         )
-sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            'f2131f0f5a20a6cc65a987cf5363d08c343041c859686ceb4bb93d2d2a3d6b34'
-            '3545e2754c2f55f04818bc17461ddcabaf0760c35a0fec5d1d70f75c2ac93dbe'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
-            '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
-            '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
-            '1e1ae0f31f722e80da083ecada1f1be57f9ddad133941820c4483b0240e494c1'
-            '3fffb01cf97a5a7ab9601cb277d2468c0fb1e1cceba4225915f3ffae3a5694ec'
-            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            'a98bc3836bcf85774a974a1585e6b64432ba8c42363ee484d14515ccd6a88e24'
-            'f8699fcf4242c0727c3c0af56928515cef9b6ce329968537ce2894b30d43eade'
-            '1d4c7b24312ed3781e5d139dfb52f0c22350bf5a2845fe747469dfa7b6ed861f'
-            'c0af4622f75c89fef62183e18b7d49998228d4eaa906c6accaf4aa4ff0134f85')
+md5sums=('b621207b3f6ecbb67db18b13258f8ea8'
+         '2526eb95793ecc1c22d7e1428ef23cdc'
+         '6fbaff238ba455fa0b2b37b79e4dc328'
+         '8fa3dd14c7845ffbb190e691d4f591d3'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         '98beb36f9b8cf16e58de2483ea9985e3'
+         '6839ddec74a5300beff1709a81b0e4f3'
+         '706549e8a05f33f7fc697f28c0ca71d2'
+         'd23fc66be93ebce698bd7da844789de1'
+         'b240cc8ebb4b5d74e94b4c72d033f726'
+         'a89d593774ccb955eb8368d3bc87ce26'
+         '16a161979f846b049e90daea907c35dd'
+         '00727251b0d337a25d3ca392218afdf4'
+         '353b553d69da810ef954618aca60e1e2')
 
 _kernelname=${pkgbase#linux}
 
@@ -51,7 +48,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -86,13 +83,6 @@ prepare() {
   # https://git.kernel.org/cgit/linux/kernel/git/mfleming/efi.git/commit/?h=urgent&id=7e8213c1f3acc064aef37813a39f13cbfe7c3ce7
   patch -p1 -i "${srcdir}/0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch"
 
-  # https://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/tree/queue-3.14/futex-avoid-race-between-requeue-and-wake.patch
-  # FS#39806
-  patch -p1 -i "${srcdir}/0008-futex-avoid-race-between-requeue-and-wake.patch"
-
-  # Fix some intel wifi issues
-  # https://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/tree/queue-3.14/iwlwifi-mvm-rs-fix-search-cycle-rules.patch
-  patch -p1 -i "${srcdir}/0009-iwlwifi-mvm-rs-fix-search-cycle-rules.patch"
   # https://git.kernel.org/cgit/linux/kernel/git/iwlwifi/iwlwifi-fixes.git/commit/?id=12f853a89e29f50b17698e17e73c328a35f1498d
   # FS#39815
   patch -p1 -i "${srcdir}/0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch"
