@@ -27,9 +27,12 @@ class PackageBase(object):
     self.licenses = package.licenses
     self.run_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.run_depends]))
     self.build_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.build_depends + package.buildtool_depends]))
+
     # Build dependencies already added:
-    if 'git' in self.build_dependencies: self.build_dependencies.remove('git')
-    if 'cmake' in self.build_dependencies: self.build_dependencies.remove('cmake')
+    if 'git' in self.build_dependencies:
+      self.build_dependencies.remove('git')
+    if 'cmake' in self.build_dependencies:
+      self.build_dependencies.remove('cmake')
 
     # Remove HTML tags from description
     self.description = re.sub('<[^<]+?>', '', package.description)
@@ -43,6 +46,12 @@ class PackageBase(object):
     self.description = self.description.split(".")[0] + "."
     # Handle quotes
     self.description = self.description.replace('"', '').replace('`', '').replace('&quot;', '').replace('\'','')
+
+    # Website URL
+    self.site_url = "http://www.ros.org/"
+    for url in package.urls:
+      if url.type == "website":
+        self.site_url = url.url
 
   def _parse_package_file(self, url):
     """
@@ -162,7 +171,7 @@ class Package(PackageBase):
   BUILD_TEMPLATE = """# Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - %(description)s"
-url='http://www.ros.org/'
+url='%(site_url)s'
 
 pkgname='ros-%(distro)s-%(arch_package_name)s'
 pkgver='%(package_version)s'
@@ -237,6 +246,7 @@ package() {
       'package_url': self.repository_url,
       'license': ', '.join(self.licenses),
       'description': self.description,
+      'site_url': self.site_url,
       'ros_build_dependencies': '\n  '.join(ros_build_dep),
       'ros_run_dependencies': '\n  '.join(ros_run_dep),
       'other_build_dependencies': '\n  '.join(other_build_dep),
@@ -253,7 +263,7 @@ class MetaPackage(PackageBase):
   BUILD_TEMPLATE = """# Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - %(description)s"
-url='http://www.ros.org/'
+url='%(site_url)s'
 
 pkgname='ros-%(distro)s-%(arch_package_name)s'
 pkgver='%(package_version)s'
@@ -299,6 +309,7 @@ md5sums=()
       'package_version_patch': self.version_patch,
       'license': ', '.join(self.licenses),
       'description': self.description,
+      'site_url': self.site_url,
       'ros_build_dependencies': '\n  '.join(ros_build_dep),
       'ros_run_dependencies': '\n  '.join(ros_run_dep),
       'other_build_dependencies': '\n  '.join(other_build_dep),
@@ -376,7 +387,7 @@ class DistroDescription(object):
     if self._distro['repositories'].get(name):
       try:
         return self._distro['repositories'][name]['release']
-      except KeyError, e:
+      except KeyError as e:
         print (colored("Missing %s branch for %s" % (e, name),
                        'red', attrs=['bold']))
     else:
