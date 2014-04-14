@@ -7,8 +7,8 @@
 
 _pkgbasename=libpng
 pkgname=lib32-libpng12
-pkgver=1.2.50
-pkgrel=2
+pkgver=1.2.51
+pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files (32-bit, 1.2 branch)"
 arch=('x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -18,8 +18,16 @@ makedepends=('gcc-multilib')
 options=('!libtool')
 source=("http://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"
         "http://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
-md5sums=('a3e00fccbfe356174ab515b5c00641c7'
-         'b06ac3f6a6f982abc2036359665e82a9')
+md5sums=('4efba67fa5aa2b785c6fcec2cc3e90c9'
+         '28bde2a02e40ccdc60ff7c8e6b2118bf')
+
+prepare(){
+  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+
+  # Add animated PNG (apng) support
+  # see http://sourceforge.net/projects/libpng-apng/
+  patch -Np0 -i "${srcdir}/libpng-${pkgver}-apng.patch"
+}
 
 build() {
   export CC="gcc -m32"
@@ -27,10 +35,6 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-
-  # Add animated PNG (apng) support
-  # see http://sourceforge.net/projects/libpng-apng/
-  patch -Np0 -i "${srcdir}/libpng-${pkgver}-apng.patch"
 
   libtoolize --force --copy
   aclocal
