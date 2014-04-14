@@ -1,0 +1,11 @@
+--- smd-applet.vala.orig	2014-04-14 12:04:13.912789272 +0200
++++ smd-applet.vala	2014-04-14 12:04:39.571727312 +0200
+@@ -344,7 +344,7 @@
+ 		});
+ 
+ 		// notification system
+-		unowned List<string> l = Notify.get_server_caps();
++		List<string> l = Notify.get_server_caps();
+ 		notification_server_has_persistence = (0 <= l.index("persistence")); 
+ 
+ 		// error mode data

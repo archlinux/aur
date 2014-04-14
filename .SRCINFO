@@ -1,23 +1,32 @@
 pkgbase = syncmaildir
 	pkgdesc = Synchronize a pair of mailboxes in Maildir format via ssh
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = http://syncmaildir.sourceforge.net/
+	install = syncmaildir.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	checkdepends = moreutils
 	makedepends = txt2man
 	makedepends = vala
+	makedepends = libgee06
+	makedepends = libnotify
+	makedepends = gconf
+	makedepends = gtk3
 	depends = lua51
 	depends = xdelta
 	optdepends = gconf: for smd-applet
+	optdepends = gtk3: for smd-applet
 	optdepends = libgee06: for smd-applet
 	optdepends = libnotify: for smd-applet
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/project/syncmaildir/syncmaildir/syncmaildir-1.2.5.tar.gz
-	md5sums = 53b72cda05c5b79f197ead6ae985542b
-	sha256sums = 19ff0adea83781788a6ace212e8a615950a5a50deafdfd6967c7585cdd5c54f0
+	source = http://downloads.sourceforge.net/project/syncmaildir/syncmaildir/syncmaildir-1.2.6.tar.gz
+	source = build.patch
+	md5sums = a619d14178b4cd236a51b959fb5f3f54
+	md5sums = d88607a162e49b31301c7aa87e8f4d1c
+	sha256sums = 0c28ae16a098e5b0376717d4171f9422d0a1541e5a38873d7caf454896a8d051
+	sha256sums = 8b38cd5b64a30f11e81ad4278c21080dc1b0c79a0cfaf69742f6207085e9a5d0
 
 pkgname = syncmaildir
 
