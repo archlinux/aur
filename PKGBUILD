@@ -21,7 +21,7 @@ makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'libgnome-keyring: for storing passwords in GNOME keyring'
-            'kdeutils-kwallet: for storing passwords in KWallet')
+            'kdeutils-kwalletmanager: for storing passwords in KWallet')
 backup=('etc/chromium/default')
 options=('!strip')
 install=chromium.install
