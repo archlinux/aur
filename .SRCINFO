@@ -1,12 +1,12 @@
 pkgbase = zabbix-server-mysql
 	pkgdesc = Zabbix is an enterprise-class open source distributed monitoring solution.
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zabbix.com/
 	install = zabbix-server.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPLv2
 	depends = php
 	depends = php-gd
 	depends = fping

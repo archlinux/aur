@@ -1,13 +1,12 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
-      "x86_64"
-     )
+      "x86_64")
 url="http://www.zabbix.com/"
-license=("GPL")
+license=("GPLv2")
 depends=("php"
          "php-gd"
          "fping"
@@ -17,30 +16,23 @@ depends=("php"
          "sudo"
          "curl"
          "iksemel"
-         "libssh2"
-        )
+         "libssh2")
 optdepends=("mariadb: Fast SQL database server, drop-in replacement for MySQL"
             "apache: A high performance Unix-based HTTP server"
             "php-apache: Apache SAPI for PHP"
-            "shellinabox: Web-based ssh/telnet client"
-           )
+            "shellinabox: Web-based ssh/telnet client")
 conflicts=("${_pkgname}"
-           "zabbix-agent"
-          )
+           "zabbix-agent")
 backup=("etc/zabbix/zabbix_server.conf"
-        "etc/zabbix/zabbix_agentd.conf"
-       )
+        "etc/zabbix/zabbix_agentd.conf")
 install="${_pkgname}.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
-        "${_pkgname}.install"
-       )
+        "${_pkgname}.install")
 md5sums=("cb1bda41a742175a445e8d32d103a315"
-         "385ebe40ac42c777022ccee7543e20ca"
-        )
+         "385ebe40ac42c777022ccee7543e20ca")
 sha1sums=("23a7363e3af1d44cd74f22cdd90d16f7f235b14d"
-          "4997f1aa087e0de4869234dbacd667faf59b19d5"
-         )
+          "4997f1aa087e0de4869234dbacd667faf59b19d5")
 
 prepare() {
 cat << EOL > "${srcdir}/${_pkgname}.sudoers"
@@ -58,7 +50,7 @@ After=syslog.target network.target mysqld.service
 
 [Service]
 User=zabbix
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/zabbix_server
 ExecReload=/usr/bin/zabbix_server -R config_cache_reload
 RemainAfterExit=yes
@@ -75,7 +67,7 @@ After=syslog.target network.target
 
 [Service]
 User=zabbix
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/zabbix_agentd
 RemainAfterExit=yes
 PIDFile=/run/zabbix/zabbix_agentd.pid
