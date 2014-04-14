@@ -1,6 +1,6 @@
 pkgbase = redshift-git
 	pkgdesc = Adjusts the color temperature of your screen according to your surroundings (development version)
-	pkgver = 1.8.r30.ge26337d
+	pkgver = 1.9.r10.gf436cf6
 	pkgrel = 1
 	url = http://jonls.dk/redshift/
 	install = redshift-git.install
@@ -10,6 +10,8 @@ pkgbase = redshift-git
 	makedepends = git
 	makedepends = python
 	depends = libxxf86vm
+	depends = libdrm
+	depends = libxcb
 	depends = geoclue
 	optdepends = gtk3: for redshift-gtk
 	optdepends = python-xdg: for redshift-gtk
