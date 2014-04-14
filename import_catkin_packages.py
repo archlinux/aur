@@ -51,7 +51,11 @@ class PackageBase(object):
     self.site_url = "http://www.ros.org/"
     for url in package.urls:
       if url.type == "website":
-        self.site_url = url.url
+        # Some maintainers provide wrong URLs...
+        url.url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]'
+                             '|(?:%[0-9a-fA-F][0-9a-fA-F]))+', url.url)
+        if url.url:
+          self.site_url = url.url[0]
 
   def _parse_package_file(self, url):
     """
@@ -144,7 +148,7 @@ class PackageBase(object):
             dependency_map[package_name] = distrib["arch"]
     return dependency_map
 
-  def generate(self, exclude_dependencies=[]):
+  def generate(self, exclude_dependencies=[], rosdep_urls=[]):
     raise Exception('`generate` not implemented.')
 
   def is_same_version(self, pkgbuild_file):
