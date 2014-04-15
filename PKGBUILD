@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello Ferreira <tucho.tijucano@gmail.com>
 pkgname=neo4j
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -8,25 +8,25 @@ url="http://neo4j.org/"
 license=(GPL)
 depends=(bash lsof java-runtime)
 backup=(etc/neo4j/custom-logback.xml
-	etc/neo4j/logging.properties
-	etc/neo4j/neo4j-http-logging.xml
-	etc/neo4j/neo4j-server.properties
-	etc/neo4j/neo4j-wrapper.conf
-	etc/neo4j/neo4j.properties)
+        etc/neo4j/logging.properties
+        etc/neo4j/neo4j-http-logging.xml
+        etc/neo4j/neo4j-server.properties
+        etc/neo4j/neo4j-wrapper.conf
+        etc/neo4j/neo4j.properties)
 options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
-	bin.patch
-	conf.patch
-	neo4j.install
-	neo4j.service
-	neo4j-tmpfile.conf)
-sha256sums=(3ec7b33c198361d113fd6674afcac9b1195ae2434f5b4bb19b3825e2fe0b0862
-	    870d0fe93a07053df8edcee32c5638414336116a2a26531fa689e849032fdf9e
-	    47f7648c0d609d363ae8e4ad5317a7f37f7625c4ac05a356d2d41a9bfbde495a
-	    7cec057ea41df6333389ef5d9654fa7769ea141dbe5da5bf1b526c6de292e22f
-	    27e044354f10cb4c844b827442850326d900bc40e01443dbc0cd446bd057af27
-	    e9ecbf86072ca92129ab1889b5f91e2494b86e84248bd15a37681a3997892d7d)
+        bin.patch
+        conf.patch
+        neo4j.install
+        neo4j.service
+        neo4j-tmpfile.conf)
+sha256sums=(e137fd4f259c584f4e3ec6ed446031d80e6099874a0b5dec9440bfbb81fdd5c0
+            870d0fe93a07053df8edcee32c5638414336116a2a26531fa689e849032fdf9e
+            47f7648c0d609d363ae8e4ad5317a7f37f7625c4ac05a356d2d41a9bfbde495a
+            7cec057ea41df6333389ef5d9654fa7769ea141dbe5da5bf1b526c6de292e22f
+            27e044354f10cb4c844b827442850326d900bc40e01443dbc0cd446bd057af27
+            e9ecbf86072ca92129ab1889b5f91e2494b86e84248bd15a37681a3997892d7d)
 
 prepare() {
 
