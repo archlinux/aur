@@ -2,14 +2,14 @@
 # https://github.com/zizzfizzix/pkgbuilds
 
 pkgname=cloudprint-git
-pkgver=55.1db9fec
+pkgver=110.d55435a
 pkgrel=1
 epoch=1
-pkgdesc="Google cloudprint proxy for CUPS - development version"
+pkgdesc='Google cloudprint proxy for CUPS - development version'
 arch=('any')
-url="https://github.com/armooo/cloudprint"
+url='https://github.com/armooo/cloudprint'
 license=('GPL3')
-depends=('pycups' 'python2-distribute' 'python2-daemon')
+depends=('python2-pycups' 'python2-distribute' 'python2-daemon')
 makedepends=('git')
 provides=('cloudprint')
 conflicts=('cloudprint')
