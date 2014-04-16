@@ -2,7 +2,7 @@
 
 _pkgbase=mkxp
 pkgname=$_pkgbase-git
-pkgver=r319.b8fc5e2
+pkgver=r341.51c5ca1
 pkgrel=1
 pkgdesc="Open source implementation of the Ruby Game Scripting System of RPG Maker XP"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd $_pkgbase
 
-  cmake ./
+  cmake ./ -DMRIVERSION=2.1
   make
 }
 
