@@ -4,7 +4,7 @@
 
 pkgname=wings3d
 _pkgname=wings
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='3D modeling program'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dgud/wings/archive/master.tar.gz"
         "$pkgname.sh"
         "$pkgname.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png")
-sha256sums=('23009e113a3b6b39bee6e4a1c9e65353a1504ccbfd437f8187751f0d495e5d11'
+sha256sums=('3ea003dfea9e707e8086dd82fc34fb7ff08fb20d8fdfedc4ea1266f414b34caf'
             '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e'
             '6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a')
 
