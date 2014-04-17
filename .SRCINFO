@@ -1,6 +1,6 @@
 pkgbase = libsrsirc
 	pkgdesc = A lightweight IRC library (includes icat)
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/srsbsns/libsrsirc
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libsrsirc
 	license = BSD
 	depends = glibc
 	options = !libtool
-	source = libsrsirc-0.0.1.tar.gz::https://github.com/srsbsns/libsrsirc/blob/tar/libsrsirc-0.0.1.tar.gz?raw=true
-	sha256sums = e7b50a7940626af815672108e940d21d355bffbb008a0b8f53c42810a2f2ae5a
+	source = libsrsirc-0.0.2.tar.gz::https://github.com/srsbsns/libsrsirc/raw/tar/libsrsirc-0.0.2.tar.gz?raw=true
+	sha256sums = 1f2148f9c12fdb8e157c896e5ee7d9b829f1a55952eca853a8117326f92b7926
 
 pkgname = libsrsirc
 
