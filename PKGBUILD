@@ -4,13 +4,13 @@
 
 pkgname=network-manager-applet-gtk2
 _pkgname=network-manager-applet
-pkgver=0.9.8.10
-pkgrel=2
+pkgver=0.9.8.8
+pkgrel=5
 pkgdesc="GNOME frontends to NetWorkmanager compiled for gtk2"
 arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=(networkmanager-ifupdown libnm-glib-ifupdown libsecret dconf gtk2 libnotify
+depends=("networkmanager>=0.9.8" libsecret gtk2 libnotify
          gnome-icon-theme mobile-broadband-provider-info iso-codes)
 makedepends=(intltool gobject-introspection modemmanager)
 options=('!emptydirs')
@@ -18,7 +18,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install=network-manager-applet.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$_pkgname/0.9/$_pkgname-$pkgver.tar.xz)
-sha256sums=('46fee9a1e667d1826e6a94bb6bd2e6bdbde535fc995e534542f5f7e8b8dae0cb')
+sha256sums=('581ebf9ead919e33d7e910322c2f64919f98716d8636f1a640b72c9b2e3ba9eb')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -34,6 +34,7 @@ build() {
       --disable-more-warnings \
       --disable-maintainer-mode \
       --disable-migration \
+      --without-bluetooth \
       --with-modem-manager-1 \
       --with-gtkver=2
 
