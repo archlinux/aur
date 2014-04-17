@@ -6,19 +6,21 @@
 
 pkgname=ibus-pinyin
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Pinyin (Chinese) input method for the IBus framework'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://ibus.googlecode.com'
-depends=('ibus' 'pyzy' 'lua51' 'python-xdg')
+depends=('ibus' 'pyzy' 'lua51' 'python2-xdg')
 makedepends=('intltool')
 source=("https://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
 
 build() {
   cd ${pkgname}-${pkgver}
 
-  ./configure \
+  sed -i -e "s|python|python2|" setup/ibus-setup-pinyin.in
+
+  PYTHON=python2 ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib/ibus
 
