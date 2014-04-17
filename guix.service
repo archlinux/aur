@@ -1,0 +1,10 @@
+[Unit]
+Description=GNU Guix package manager
+
+[Service]
+ExecStart=/usr/bin/guix-daemon --build-users-group=guix-builder
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+

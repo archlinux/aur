@@ -3,15 +3,19 @@
 
 pkgname=guix
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU guix is a purely functional package manager"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
 license=('GPL')
 depends=('guile>=2.0.5' 'sqlite>=3.6.19' 'bzip2' 'libgcrypt')
 makedepends=()
-source=("ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('1315c0c5be660dbfe388385be5a8b011')
+source=(
+"ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+"guix.service")
+md5sums=(
+'1315c0c5be660dbfe388385be5a8b011'
+'4e088207919bdefff13a9d452f79467b')
 
 build() {
 	current_arch="`uname -m`"
@@ -29,5 +33,8 @@ check() {
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	make DESTDIR="${pkgdir}" install
+	mkdir -p ${pkgdir}/lib/systemd/system
+	install -m 644 "${srcdir}/guix.service" \
+		${pkgdir}/lib/systemd/system/guix.service
 	chmod -R u+w test-tmp
 }
