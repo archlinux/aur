@@ -2,7 +2,7 @@
 pkgname=wmx-svn
 _pkgname=wmx
 pkgver=r114
-pkgrel=2
+pkgrel=1
 pkgdesc="The ideal window manager for today's elegant and ascetic programmer"
 arch=('x86_64' 'i686')
 url="http://www.all-day-breakfast.com/wmx/"
@@ -23,7 +23,6 @@ prepare() {
   cd $pkgname
   autoreconf -fiv
   sed -e 's,/usr/local/bin/,,' -i wmx.desktop
-  sed -e 's,x-terminal-emulator,xterm,' -i Config.h
 }
 
 build() {
