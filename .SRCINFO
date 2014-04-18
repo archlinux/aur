@@ -1,54 +1,51 @@
 pkgbase = networkmanager-consolekit
 	pkgdesc = NetworkManager with ConsoleKit support for non-systemd systems
-	pkgver = 1.0.2
+	pkgver = 0.9.8.8
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	license = LGPL2.1
 	makedepends = intltool
+	makedepends = dhcpcd
 	makedepends = iptables
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = ppp=2.4.7
+	makedepends = git
+	makedepends = ppp
 	makedepends = modemmanager
-	makedepends = rp-pppoe
-	makedepends = vala
-	depends = libnm-glib>=1.0.2
+	depends = dbus-glib
 	depends = iproute2
 	depends = libnl
+	depends = nss
 	depends = polkit-consolekit
 	depends = consolekit
 	depends = wpa_supplicant
-	depends = dhclient
+	depends = dhcp-client
 	depends = libsoup
 	depends = libmm-glib
-	depends = libnewt
-	depends = libndp
-	depends = libteam
 	optdepends = modemmanager: for modem management service
 	optdepends = dhcpcd: alternative DHCP client; does not support DHCPv6
-	optdepends = iptables: connection sharing
-	optdepends = dnsmasq: connection sharing
-	optdepends = bluez: bluetooth support
+	optdepends = iptables: Connection sharing
+	optdepends = dnsmasq: Connection sharing
+	optdepends = bluez: Bluetooth support
 	optdepends = openresolv: resolvconf support
-	optdepends = ppp: dialup connection support
-	provides = networkmanager=1.0.2
+	optdepends = ppp: Dialup connection support
+	provides = networkmanager=0.9.8.8
 	conflicts = networkmanager
 	replaces = networkmanager
 	backup = etc/NetworkManager/NetworkManager.conf
-	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.0/NetworkManager-1.0.2.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-0.9.8.8.tar.xz
 	source = NetworkManager.conf
 	source = disable_set_hostname.patch
+	source = dnsmasq-path.patch
 	source = networkmanager.rc
-	source = 0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
-	sha256sums = 359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff
-	sha256sums = 2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b
+	sha256sums = 8a0a3de9cd2897f778193aa5f04c8a6f6f87fe07f7a088aab26d2b35baa17a55
+	sha256sums = 44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21
 	sha256sums = 25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460
+	sha256sums = 65124505048cc8396daf0242c9f5d532fa669b4bbca305998c248ab2329490cb
 	sha256sums = e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc
-	sha256sums = 4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a
 
 pkgname = networkmanager-consolekit
 

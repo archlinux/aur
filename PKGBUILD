@@ -10,25 +10,21 @@
 
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
-pkgver=1.0.2
+pkgver=0.9.8.8
 pkgrel=1
-_pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
-license=('GPL' 'LGPL2.1')
+license=('GPL')
 url="http://www.gnome.org/projects/$_pkgname/"
-depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 
-         'wpa_supplicant' 'dhclient' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 
-         'libteam')
-makedepends=('intltool' 'iptables' 'gobject-introspection' 'gtk-doc' 
-             "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala')
+depends=('dbus-glib' 'iproute2' 'libnl' 'nss' 'polkit-consolekit' 'consolekit' 'wpa_supplicant' 'dhcp-client' 'libsoup' 'libmm-glib')
+makedepends=('intltool' 'dhcpcd' 'iptables' 'gobject-introspection' 'gtk-doc' 'git' 'ppp' 'modemmanager')
 optdepends=('modemmanager: for modem management service'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
-            'iptables: connection sharing'
-            'dnsmasq: connection sharing'
-            'bluez: bluetooth support'
+            'iptables: Connection sharing'
+            'dnsmasq: Connection sharing'
+            'bluez: Bluetooth support'
             'openresolv: resolvconf support'
-            'ppp: dialup connection support')
+            'ppp: Dialup connection support')
 provides=("networkmanager=$pkgver")
 replaces=('networkmanager')
 conflicts=('networkmanager')
@@ -37,21 +33,20 @@ install=networkmanager.install
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
         NetworkManager.conf 
         disable_set_hostname.patch 
+        dnsmasq-path.patch
         networkmanager.rc
-        0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
         )
-sha256sums=('359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff'
-            '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
+sha256sums=('8a0a3de9cd2897f778193aa5f04c8a6f6f87fe07f7a088aab26d2b35baa17a55'
+            '44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
-            '4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a')
+            '65124505048cc8396daf0242c9f5d532fa669b4bbca305998c248ab2329490cb'
+            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   patch -Np1 -i ../disable_set_hostname.patch
-  patch -Np1 -i ../0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
-  NOCONFIGURE=1 ./autogen.sh
+  patch -Np1 -i ../dnsmasq-path.patch
 }
 
 build() {
@@ -62,25 +57,22 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --sbindir=/usr/bin \
     --libexecdir=/usr/lib/networkmanager \
+    --sbindir=/usr/bin \
     --with-crypto=nss \
     --with-dhclient=/usr/bin/dhclient \
-    --without-dhcpcd \
-    --with-dnsmasq=/usr/bin/dnsmasq \
+    --with-dhcpcd=/usr/bin/dhcpcd \
     --with-iptables=/usr/bin/iptables \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-udev-dir=/usr/lib/udev \
     --with-resolvconf=/usr/bin/resolvconf \
-    --with-pppd=/usr/bin/pppd \
-    --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
-    --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-session-tracking=ck \
     --disable-static \
     --enable-more-warnings=no \
     --disable-wimax \
     --enable-modify-system \
-    --enable-doc
+    --enable-doc \
+    --with-pppd-plugin-dir=/usr/lib/pppd/2.4.6
 
   make
 }
@@ -88,14 +80,6 @@ build() {
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
-
-  make DESTDIR="$pkgdir" -C libnm uninstall
-  make DESTDIR="$pkgdir" -C libnm-glib uninstall
-  make DESTDIR="$pkgdir" -C libnm-util uninstall
-  make DESTDIR="$pkgdir" -C vapi uninstall
-  
-  rm -rf "$pkgdir/usr/include"
-  rm -rf "$pkgdir/usr/lib/pkgconfig"
 
   install -D -m644 "${srcdir}/NetworkManager.conf" "${pkgdir}/etc/NetworkManager/NetworkManager.conf"
   install -D -m755 "${srcdir}/networkmanager.rc"   "${pkgdir}/etc/rc.d/networkmanager"
