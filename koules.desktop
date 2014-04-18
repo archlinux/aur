@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Koules
+GenericName=Arcade game
+GenericName[de]=Arcade-Spiel
+Icon=/usr/share/pixmaps/koules.xpm
+Exec=koules
+Categories=Game;ArcadeGame;

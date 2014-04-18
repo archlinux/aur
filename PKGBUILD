@@ -2,7 +2,7 @@
 # Contributor: Gyo <nucleogeek_at_gmail_dot_com>
 pkgname=koules
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast arcade game based on fundamental law of bodies attraction"
 arch=('i686' 'x86_64')
 url="http://www.ucw.cz/~hubicka/koules/English/"
@@ -10,9 +10,11 @@ license=('GPL')
 depends=('dialog' 'libx11' 'libxext')
 makedepends=('imake' 'xextproto' 'xproto')
 source=(http://www.ucw.cz/~hubicka/koules/packages/$pkgname$pkgver-src.tar.gz
-        $pkgname-$pkgver-gcc3.patch)
+        $pkgname-$pkgver-gcc3.patch
+        koules.desktop)
 md5sums=('0a5ac9e57c8b72e9fc200bc98273235c'
-         'ccc92d4ab7d61ca482d30192a5ee83ec')
+         'ccc92d4ab7d61ca482d30192a5ee83ec'
+         'fb3cd393464214643c239ac4350f963a')
 
 prepare() {
   cd "$srcdir/$pkgname$pkgver"
@@ -22,24 +24,18 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname$pkgver"
 
-  # some sources modifications
+  # some source modifications
   sed -i \
     -e "/^KOULESDIR/s:=.*:=/usr/bin:" \
-    -e "/^SOUNDDIR/s:=.*:=/usr/share/$pkgname:" Iconfig
+    -e "/^SOUNDDIR/s:=.*:=/usr/share/$pkgname:" \
+    -e "/SYSDEFS/s:=.*:= ${CFLAGS}:" Iconfig
   sed -i \
-    -e "s:/usr/local/bin:/usr/bin:" koules
-  sed -i \
+    -e "s:/usr/local/bin:/usr/bin:" \
     -e 's:exec.*tcl:exec xkoules -M "$@":' koules
 
-  ln -s xkoules.6 xkoules.man
-  ln -s xkoules.6 xkoules._man
-
-  # generate makefiles and building
+  # generate makefiles, then build
   xmkmf -a
-  sed -i \
-    -e '/SYSDEFS =/d' \
-    -e "/^ *CFLAGS =/s:$: ${CFLAGS}:" Makefile
-  make
+  make MANSRCSUFFIX=6
 }
 
 package() {
@@ -49,4 +45,6 @@ package() {
   install -Dm755 koules.sndsrv.linux "$pkgdir/usr/share/koules/koules.sndsrv.linux"
   install -m644 sounds/* "$pkgdir/usr/share/koules"
   install -Dm644 xkoules.6 "$pkgdir/usr/share/man/man6/xkoules.6"
+  install -Dm644 Koules.xpm "$pkgdir/usr/share/pixmaps/koules.xpm"
+  install -Dm644 "$srcdir/koules.desktop" "$pkgdir/usr/share/applications/koules.desktop"
 }
