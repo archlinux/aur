@@ -5,12 +5,15 @@
 
 pkgname=perl-apache-logformat-compiler
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to compile apache log format string to Perl code'
 arch=('any')
 url='http://search.cpan.org/dist/Apache-LogFormat-Compiler'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.8.5')
+depends=(
+	'perl>=5.8.5'
+	'perl-posix-strftime-compiler>=0.30'
+)
 makedepends=(
 	'perl-module-build>=0.38'
 	'perl-cpan-meta'	
