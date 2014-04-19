@@ -1,0 +1,40 @@
+From: Reza Jelveh <reza.jel...@tuhh.de>
+
+Contributed-under: TianoCore Contribution Agreement 1.0
+Signed-off-by: Reza Jelveh <reza.jel...@tuhh.de>
+---
+ BaseTools/Source/C/VfrCompile/VfrCompiler.cpp | 2 ++
+ BaseTools/Source/C/VfrCompile/VfrCompiler.h   | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/BaseTools/Source/C/VfrCompile/VfrCompiler.cpp 
+b/BaseTools/Source/C/VfrCompile/VfrCompiler.cpp
+index dd34a1b..ee10605 100644
+--- a/BaseTools/Source/C/VfrCompile/VfrCompiler.cpp
++++ b/BaseTools/Source/C/VfrCompile/VfrCompiler.cpp
+@@ -372,6 +372,8 @@ CVfrCompiler::CVfrCompiler (
+   mPreProcessCmd = (CHAR8 *) PREPROCESSOR_COMMAND;
+   mPreProcessOpt = (CHAR8 *) PREPROCESSOR_OPTIONS;
+ 
++  SET_RUN_STATUS (STATUS_STARTED);
++
+   OptionInitialization(Argc, Argv);
+ 
+   if ((IS_RUN_STATUS(STATUS_FAILED)) || (IS_RUN_STATUS(STATUS_DEAD))) {
+diff --git a/BaseTools/Source/C/VfrCompile/VfrCompiler.h 
+b/BaseTools/Source/C/VfrCompile/VfrCompiler.h
+index ea20bbc..3261e9c 100644
+--- a/BaseTools/Source/C/VfrCompile/VfrCompiler.h
++++ b/BaseTools/Source/C/VfrCompile/VfrCompiler.h
+@@ -60,7 +60,8 @@ typedef struct {
+ } OPTIONS;
+ 
+ typedef enum {
+-  STATUS_INITIALIZED = 1,
++  STATUS_STARTED = 0,
++  STATUS_INITIALIZED,
+   STATUS_PREPROCESSED,
+   STATUS_COMPILEED,
+   STATUS_GENBINARY,
+-- 
+1.9.2

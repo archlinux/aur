@@ -1,6 +1,6 @@
 pkgbase = ovmf-svn
 	pkgdesc = UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version
-	pkgver = 15280
+	pkgver = 15476
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF
 	install = ovmf.install
@@ -21,6 +21,7 @@ pkgbase = ovmf-svn
 	options = docs
 	options = !makeflags
 	source = http://www.openssl.org/source/openssl-0.9.8w.tar.gz
+	source = edk2-basetools-fix-vfrcompiler.patch
 	source = tianocore-edk2-svn_BaseTools::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/BaseTools
 	source = tianocore-edk2-svn_MdePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdePkg
 	source = tianocore-edk2-svn_MdeModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdeModulePkg
@@ -35,6 +36,7 @@ pkgbase = ovmf-svn
 	source = tianocore-edk2-svn_FatBinPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/FatBinPkg
 	source = tianocore-edk2-svn_OvmfPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/OvmfPkg
 	sha1sums = 6dd276534f87aaca4bee679537fef3aaa6b43069
+	sha1sums = 63a8b1e9ac54035ffc98f5c61ea3b71361a5634e
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
