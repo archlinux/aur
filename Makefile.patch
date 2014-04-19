@@ -1,13 +1,13 @@
 diff --git a/Makefile b/Makefile
-index bee69e1..80482cd 100644
+index bee69e1..f414f75 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -12,12 +12,12 @@ all:
+@@ -12,15 +12,15 @@ all:
  	@echo "Password store is a shell script, so there is nothing to do. Try \"make install\" instead."
  
  install-common:
 -	@mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(LIBDIR)" "$(DESTDIR)$(MANDIR)/man1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/"
-+	@mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(LIBDIR)" "$(DESTDIR)$(MANDIR)/man1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/" "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/"
++	@mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(LIBDIR)" "$(DESTDIR)$(MANDIR)/man1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/" "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/" "$(DESTDIR)$(PREFIX)/share/fish/completions/"
  	@install -m 0644 -v man/pass.1 "$(DESTDIR)$(MANDIR)/man1/pass.1"
  	@install -m 0644 -v src/completion/pass.bash-completion "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/pass"
  
@@ -16,10 +16,14 @@ index bee69e1..80482cd 100644
 +	@install -m 0644 -v src/completion/pass.zsh-completion "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/_pass"
  #
  #	Uncomment to install the fish completion file.
- #	@install -m 0644 -v src/completion/pass.fish-completion "$(DESTDIR)$(PREFIX)/share/fish/completions/pass.fish"
+-#	@install -m 0644 -v src/completion/pass.fish-completion "$(DESTDIR)$(PREFIX)/share/fish/completions/pass.fish"
++	@install -m 0644 -v src/completion/pass.fish-completion "$(DESTDIR)$(PREFIX)/share/fish/completions/pass.fish"
+ 
+ ifneq ($(strip $(wildcard $(PLATFORMFILE))),)
+ install: install-common
 @@ -34,4 +34,4 @@ install: install-common
  endif
  
  uninstall:
 -	@rm -vf "$(DESTDIR)$(BINDIR)/pass" "$(DESTDIR)$(MANDIR)/man1/pass.1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/password-store" "$(DESTDIR)$(LIBDIR)/password-store.platform.sh"
-+	@rm -vf "$(DESTDIR)$(BINDIR)/pass" "$(DESTDIR)$(MANDIR)/man1/pass.1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/pass" "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/_pass" "$(DESTDIR)$(LIBDIR)/password-store.platform.sh"
++	@rm -vf "$(DESTDIR)$(BINDIR)/pass" "$(DESTDIR)$(MANDIR)/man1/pass.1" "$(DESTDIR)$(PREFIX)/share/bash-completion/completions/pass" "$(DESTDIR)$(PREFIX)/share/zsh/site-functions/_pass" "$(DESTDIR)$(PREFIX)/share/fish/completions/pass.fish" "$(DESTDIR)$(LIBDIR)/password-store.platform.sh"
