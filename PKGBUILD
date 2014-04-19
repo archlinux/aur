@@ -5,7 +5,7 @@
 _rls=1
 _pkgname=gtk3
 pkgname=$_pkgname-donnatella
-pkgver=3.12.0
+pkgver=3.12.1
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (v3) w/ fixes & extra features"
 arch=(i686 x86_64)
@@ -21,10 +21,10 @@ conflicts=($_pkgname)
 license=(LGPL)
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-$pkgver.tar.xz
         settings.ini
-        http://jjacky.com/donnatella/$pkgname-${pkgver%.*}-$_rls.tar.gz)
-sha256sums=('eb69741cd4029b5a1ac9cf04d9de55dcf9e30777a63891750f5d20cc554b6e4b'
+        http://jjacky.com/donnatella/$pkgname-${pkgver}-$_rls.tar.gz)
+sha256sums=('719aae5fdb560f64cadb7e968c8c85c0823664de890c9f765ff4c0efeb0277cd'
             '14369dfd1d325c393e17c105d5d5cc5501663277bd4047ea04a50abb3cfbd119'
-            '4d83184feef20891798e97666d38484e4e85ecfc95000cc49cc820f6fd5dfbed')
+            '46789977ee7c427c4b60508135f0f396a3117cbb3fed2d2a1524b2d4e11fcd26')
 
 prepare() {
     cd "gtk+-$pkgver"
