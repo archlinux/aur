@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index bee69e1..f414f75 100644
+index 329d8b9..e7e716c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -12,15 +12,15 @@ all:
@@ -21,7 +21,7 @@ index bee69e1..f414f75 100644
  
  ifneq ($(strip $(wildcard $(PLATFORMFILE))),)
  install: install-common
-@@ -34,4 +34,4 @@ install: install-common
+@@ -36,4 +36,4 @@ install: install-common
  endif
  
  uninstall:
