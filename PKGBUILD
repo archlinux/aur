@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=1.3.8.33
+pkgver=1.3.8.40
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ provides=('icewm')
 conflicts=('icewm' 'icwm-cvs' 'icwm-ak' 'icwm-init0' 'icwm-testing' 'icwm-zstegi')
 depends=('libxft' 'libxinerama' 'gdk-pixbuf2' 'libxrandr' 'libsndfile' 'libsm')
 makedepends=('git' 'xorg-mkfontdir' 'linuxdoc-tools')
-source=("$pkgname::git://github.com/bbidulock/icewm.git")
+source=("$pkgname::git+https://github.com/bbidulock/icewm.git")
 md5sums=('SKIP')
 
 pkgver() {
