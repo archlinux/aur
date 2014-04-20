@@ -10,7 +10,7 @@ _gitbranch="master"
 
 pkgdesc="Tools and library to manipulate EFI variables - GIT master branch"
 
-pkgver=0.8
+pkgver=0.8.6.gca8c22d
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/vathpela/efivar"
@@ -41,6 +41,7 @@ prepare() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
+	sed 's|-O0|-Os|g' -i "${srcdir}/${_gitname}_build/Make.defaults" || true
 	sed 's|-rpath=$(TOPDIR)/src/|-rpath=$(libdir)|g' -i "${srcdir}/${_gitname}_build/src/test/Makefile" || true
 	
 }
