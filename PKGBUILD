@@ -2,7 +2,7 @@
 # Contributor: Simon Zimmermann <simon@insmo.com>
 
 pkgname=pass-git
-pkgver=20140418.217
+pkgver=20140419.220
 pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 url='http://zx2c4.com/projects/password-store/'
@@ -15,7 +15,7 @@ conflicts=('pass')
 source=("$pkgname::git://git.zx2c4.com/password-store"
         'Makefile.patch')
 sha256sums=('SKIP'
-            'ff8496f7f73c08c47c7099363329b771663c1874863d69377f81900f2c23c5d7')
+            'e29a3a32ee051a7c164e100c433b25a6e7532388d4060bf70e57f73d92676bb9')
 
 pkgver() {
     cd "$pkgname"
