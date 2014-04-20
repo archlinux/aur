@@ -5,7 +5,7 @@
 
 _gitname=gnupg
 pkgname=gnupg-git
-pkgver=2.1.0beta3+233+g50c98c7
+pkgver=2.1.0beta3+379+gdb85fec
 pkgrel=1
 pkgdesc="GNU Privacy Guard 2 - a PGP replacement tool. Development version. Do not use in production environments. Test new ECC algorithm by using --expert with --gen-key"
 arch=('i686' 'x86_64')
