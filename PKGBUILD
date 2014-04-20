@@ -26,7 +26,7 @@ _COMPILER="GCC48"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=15439
+pkgver=15476
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -161,13 +161,13 @@ package() {
 	_setup_env_vars
 	
 	msg "Install the UEFI Shell v2 ${_TIANO_ARCH} binary"
-	install -d "${pkgdir}/usr/share/uefi"
-	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/${_TIANO_ARCH}/Shell.efi" "${pkgdir}/usr/share/uefi/shell${_TIANO_S_ARCH}_v2.efi"
+	install -d "${pkgdir}/usr/share/uefi-shell"
+	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/${_TIANO_ARCH}/Shell.efi" "${pkgdir}/usr/share/uefi-shell/shell${_TIANO_S_ARCH}_v2.efi"
 	
 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_SHELL_IA32_ARCH_X64}" == "1" ]]; then
 		msg "Install the UEFI Shell v2 IA32 binary"
-		install -d "${pkgdir}/usr/share/uefi"
-		install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/IA32/Shell.efi" "${pkgdir}/usr/share/uefi/shellia32_v2.efi"
+		install -d "${pkgdir}/usr/share/uefi-shell"
+		install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/IA32/Shell.efi" "${pkgdir}/usr/share/uefi-shell/shellia32_v2.efi"
 	fi
 	
 }
