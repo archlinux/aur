@@ -30,6 +30,7 @@ sha512sums=('SKIP')
 #_bzrtrunk='https://code.launchpad.net/~duplicity-team/duplicity/trunk'
 #_bzrmod=${pkgname}
 conflicts=("${pkgname//-bzr/}")
+provides=('duplicity')
 
 pkgver() {
   cd "${srcdir}/${pkgname//-bzr/}"

@@ -19,6 +19,7 @@ pkgbase = duplicity-bzr
 	optdepends = python2-httplib2: Ubuntu One backend
 	optdepends = python2-oauthlib: Ubuntu One backend
 	optdepends = rsync: rsync backend
+	provides = duplicity
 	conflicts = duplicity
 	source = bzr+lp:duplicity
 	sha512sums = SKIP
