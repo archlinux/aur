@@ -13,7 +13,7 @@ _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 
 pkgname=backports-patched
-pkgver=3.13.2_1
+pkgver=3.14_1
 _upver="${pkgver//_/-}"
 pkgrel=6
 pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
@@ -28,7 +28,7 @@ install=backports.install
 source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%-*}/backports-${_upver}.tar.xz")
 # Snapshot:
 #source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-sha256sums=('fc16f3accd56de8616c68707c623268ff80f52c1017bddb94800cafb990545bb')
+sha256sums=('bb6e5dc5d59c60b7fd053da3b16c0081d7f9de5b539ffc297feb505629f24095')
 
 # Check for daily pkgver eg. 20370718
 date -d "$pkgver" > /dev/null 2>&1
@@ -45,7 +45,7 @@ _cfgdir="/etc/makepkg.d/${pkgname}/"
 _patchdir="${_cfgdir}/patches/"
 
 countdown() {
-  local i 
+  local i
   for ((i=$1; i>=1; i--)); do
     [[ ! -e /proc/$$ ]] && exit
     echo -ne "\rPress [i] to start interactive config in $i second(s) "
@@ -108,10 +108,14 @@ build() {
   # unset _selected_drivers # WARNING! DEBUGGING UNSET - MAKE SURE THAT THIS LINE IS COMMENTED
   # Get config - not in prepare beause interactive part is using cc
   if [ -n "${_selected_drivers}" ]; then
-    msg "Config detected"
-    make "${_selected_drivers[@]/#/defconfig-}"
+    msg "Defconfig(s) detected"
   else # TODO: else if not that try showing up dialog menu with checkboxes based on available defconfigs ;)
     warning "Config undetected"
+    # Check for dialog
+    if [ ! -e /usr/bin/dialog ]; then
+      error "Cannot fallback to interactive config - dialog package not installed"
+      false
+    fi
     # WAIT 10s FOR INTEACTIVE PART - PRESS I FOR INTERACTIVE CONFIG
     tty -s # Checks if user input is accesssible, otherwise fail
     countdown 10 & countdown_pid=$!
@@ -127,10 +131,9 @@ build() {
         for i in $(ls ./defconfigs/); do
           list_opts+=("$i" "off")
         done
-        echo "${list_opts[@]}"
-        _selected_drivers=$(dialog --keep-tite --backtitle "$pkgname" --no-items --checklist 'Choose driver groups to compile' 0 0 0 "${list_opts[@]}" 2>&1 >/dev/tty)
-        msg2 "Selected drivers groups: ${_selected_drivers}"
-        make "${_selected_drivers[@]/#/defconfig-}"
+        echo "${list_opts[*]}"
+        _selected_drivers=( $(dialog --keep-tite --backtitle "$pkgname" --no-items --checklist 'Choose driver groups to compile' 0 0 0 ${list_opts[*]} 2>&1 >/dev/tty) )
+        msg2 "Selected drivers groups: ${_selected_drivers[*]}"
         ;;
       menuconfig)
         make menuconfig
@@ -142,7 +145,22 @@ build() {
     esac
     # END OF THE INTERACTIVE PART
   fi
-  [[ -n "$_selected_drivers" ]] && msg "» $_selected_drivers «" # CONVERT TO MESSAGE AND ONLY IF VAR IS -n
+
+  if [[ -n "$_selected_drivers" ]]; then #THIS means that defconfigs are used! actual config has to be generated here!!
+    # Workaround - create slapped together defconfig "user" http://i.imgur.com/axyrOZH.jpg
+    (
+      cd ./defconfigs/
+      warning "Creating slapped together defconfig 'user'"
+      cat ${_selected_drivers[*]} | sort -u
+      cat ${_selected_drivers[*]} | sort -u > user
+    )
+
+    # Temporary disabled until resolved
+    # make ${_selected_drivers[*]/#/defconfig-}
+    make defconfig-user # Temporary solution
+
+    msg "» ${_selected_drivers[*]} «" # CONVERT TO MESSAGE AND ONLY IF VAR IS -n
+  fi
 
   # Actual build
   msg "Starting actual build"
