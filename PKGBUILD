@@ -3,7 +3,7 @@
 # Contributor 1: Lee.MaRS <leemars@gmail.com>
 
 pkgname=google-appengine-java
-pkgver=1.9.1
+pkgver=1.9.3
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Google App Engine SDK for Java."
@@ -13,7 +13,7 @@ depends=()
 options=('!strip')
 source=(https://commondatastorage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-${pkgver}.zip
         profile.appengine-java-sdk)
-sha1sums=('e2bcbf981b3ebcb0639b818e201fe220cadc51d5'
+sha1sums=('4f62f99c7be21637903b312ba4431c6222bfca16'
           '9d6e6c6bd7f3ec53dc08cdfacaac931cfa1cf2f3')
 
 package() {
