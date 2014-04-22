@@ -6,7 +6,7 @@
 pkgbase=linux-selinux       # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
-pkgver=3.14
+pkgver=3.14.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -15,7 +15,7 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 groups=(selinux)
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -33,6 +33,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
+            'ac56f0bff3c6ec436161f2702c7269b933e22bae0488ed709ab29e4aeb78be45'
             '4c1bacbafea62ca9db8207f1deebab3973acf6a7a1b327327f49733f7fc699da'
             'd13e8d4d85b1211ae85df42b8b1fc79ab006516c2e8de52dc9d50ff77559525f'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
@@ -54,7 +55,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -89,13 +90,6 @@ prepare() {
   # https://git.kernel.org/cgit/linux/kernel/git/mfleming/efi.git/commit/?h=urgent&id=7e8213c1f3acc064aef37813a39f13cbfe7c3ce7
   patch -p1 -i "${srcdir}/0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch"
 
-  # https://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/tree/queue-3.14/futex-avoid-race-between-requeue-and-wake.patch
-  # FS#39806
-  patch -p1 -i "${srcdir}/0008-futex-avoid-race-between-requeue-and-wake.patch"
-
-  # Fix some intel wifi issues
-  # https://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/tree/queue-3.14/iwlwifi-mvm-rs-fix-search-cycle-rules.patch
-  patch -p1 -i "${srcdir}/0009-iwlwifi-mvm-rs-fix-search-cycle-rules.patch"
   # https://git.kernel.org/cgit/linux/kernel/git/iwlwifi/iwlwifi-fixes.git/commit/?id=12f853a89e29f50b17698e17e73c328a35f1498d
   # FS#39815
   patch -p1 -i "${srcdir}/0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch"
