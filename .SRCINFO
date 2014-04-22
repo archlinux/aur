@@ -6,6 +6,7 @@ pkgbase = perl-extutils-typemap
 	arch = any
 	license = unknown
 	depends = perl
+	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-Typemap-1.00.tar.gz
 	sha256sums = b1b015772dbb068b93a0f6ffa02f5d94822365e6018ac5ed2bc53ca669071fc7
 
