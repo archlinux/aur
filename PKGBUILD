@@ -1,6 +1,6 @@
 pkgname='reop-git'
 pkgrel=1
-pkgver=3be90e2
+pkgver=11
 pkgdesc='Utility to create and verifies cryptographic signatures'
 url='https://github.com/tedu/reop/'
 license=('MIT')
@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 pkgver () {
 	cd "${srcdir}/reop"
-	git show-ref --hash --abbrev HEAD
+	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {

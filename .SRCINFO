@@ -1,6 +1,6 @@
 pkgbase = reop-git
 	pkgdesc = Utility to create and verifies cryptographic signatures
-	pkgver = 3be90e2
+	pkgver = 11
 	pkgrel = 1
 	url = https://github.com/tedu/reop/
 	arch = arm
