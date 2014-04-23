@@ -8,7 +8,7 @@
 # https://github.com/alerque/aur/tree/master/git-annex-bin
 
 pkgname=git-annex-bin
-pkgver=5.20140412
+pkgver=5.20140421
 pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no haskel dependencies, batteries included.'
 arch=('i686' 'x86_64')
@@ -32,11 +32,11 @@ depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget'
 if [[ $CARCH == "x86_64" ]] ; then
     _file=git-annex-standalone-amd64-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz")
-    sha256sums+=('dc5ce1c365fd136baf4c5ecee47a4f48ba3f080d9ed1ebd112250c489971b746')
+    sha256sums+=('15ec038807b467184e84f9023f11e6c6cb0039ca18fc1d34fa411b59d73bf382')
 else
     _file=git-annex-standalone-i386-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz")
-    sha256sums+=('a9504436a294d95429b0396b1fb8c397118a81325cc49fbcd7d2fe9661b83e9b')
+    sha256sums+=('34078d06a4e67cbf17b10caf5ca9fc23530894b7360bcd15194ff163c75ab04e')
 fi
 
 package() {
