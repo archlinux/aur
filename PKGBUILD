@@ -1,23 +1,19 @@
-# Contributor: wodim <neikokz@gmail.com>
+# Maintainer: wodim <neikokz@gmail.com>
 
 pkgname=xorsearch
-pkgver=1.8.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Program to search for a given string in an XOR, ROL or ROT encoded binary file."
 arch=('i686' 'x86_64')
 url="http://blog.didierstevens.com/programs/xorsearch/"
 license="Public domain"
-source=('http://www.didierstevens.com/files/software/XORSearch_V1_8_0.zip')
-md5sums=('0c252edebc85d8f0f9ddb8d1aa11e12e')
+source=('https://didierstevens.com/files/software/XORSearch_V1_9_2.zip')
+sha256sums=('90793BEB9D429EF40458AE224117A90E6C4282DD1C9B0456E7E7148165B8EF32')
 
 build() {
-	cd $startdir/src
-	gcc -o xorsearch XORSearch.c
+  gcc -o xorsearch XORSearch.c
 }
 
 package() {
-	cd $pkgdir
-
-	mkdir usr/bin -p
-	cp $srcdir/xorsearch usr/bin
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
