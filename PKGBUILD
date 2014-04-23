@@ -10,7 +10,7 @@
 
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
-pkgver=0.9.8.8
+pkgver=0.9.8.9
 pkgrel=1
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -33,20 +33,17 @@ install=networkmanager.install
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
         NetworkManager.conf 
         disable_set_hostname.patch 
-        dnsmasq-path.patch
         networkmanager.rc
         )
-sha256sums=('8a0a3de9cd2897f778193aa5f04c8a6f6f87fe07f7a088aab26d2b35baa17a55'
+sha256sums=('65fca0d4f5cbd3d75843ef3062bbdbee5175ad08ae38da6569dbd8422bf8c27a'
             '44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            '65124505048cc8396daf0242c9f5d532fa669b4bbca305998c248ab2329490cb'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   patch -Np1 -i ../disable_set_hostname.patch
-  patch -Np1 -i ../dnsmasq-path.patch
 }
 
 build() {
