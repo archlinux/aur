@@ -1,0 +1,71 @@
+From ea43f3c98720aeede6759113717bd03714ad1096 Mon Sep 17 00:00:00 2001
+From: Keshav Amburay <the.ridikulus.rat@gmail.com>
+Date: Tue, 22 Apr 2014 20:53:56 -0400
+Subject: [PATCH] Add new config file keyword 'efi-arch' to define the EFI
+ processor arch of the EFI image
+
+---
+ src/efi/gummiboot.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/src/efi/gummiboot.c b/src/efi/gummiboot.c
+index d405453..a2df0ec 100644
+--- a/src/efi/gummiboot.c
++++ b/src/efi/gummiboot.c
+@@ -46,6 +46,7 @@ static const char __attribute__((used)) magic[] = "#### LoaderInfo: gummiboot "
+ static const EFI_GUID global_guid = EFI_GLOBAL_VARIABLE;
+ 
+ enum loader_type {
++        LOADER_WRONG_ARCH,
+         LOADER_UNDEFINED,
+         LOADER_EFI,
+         LOADER_LINUX
+@@ -61,6 +62,7 @@ typedef struct {
+         enum loader_type type;
+         CHAR16 *loader;
+         CHAR16 *options;
++        CHAR16 *loader_arch;
+         CHAR16 *splash;
+         CHAR16 key;
+         EFI_STATUS (*call)(void);
+@@ -833,6 +835,9 @@ static BOOLEAN menu_run(Config *config, ConfigEntry **chosen_entry, EFI_FILE *ro
+                         break;
+ 
+                 case KEYPRESS(0, 0, 'e'):
++                        /* do not allow editing of options for WRONG ARCH loader entries */
++                        if (config->entries[idx_highlight]->type == LOADER_WRONG_ARCH)
++                                break;
+                         /* only the options of configured entries can be edited */
+                         if (config->entries[idx_highlight]->type == LOADER_UNDEFINED)
+                                 break;
+@@ -1128,6 +1133,18 @@ static VOID config_entry_add_from_file(Config *config, EFI_HANDLE *device, CHAR1
+                         continue;
+                 }
+ 
++                if (strcmpa((CHAR8 *)"efi-arch", key) == 0) {
++                        FreePool(entry->loader_arch);
++                        entry->loader_arch = stra_to_str(value);
++                        continue;
++
++                        if (StriCmp(entry->loader_arch, (CHAR16 *)MACHINE_TYPE_NAME) != 0) {
++                                entry->type = LOADER_WRONG_ARCH;
++                                break;
++                        }
++                        continue;
++                }
++
+                 if (strcmpa((CHAR8 *)"linux", key) == 0) {
+                         FreePool(entry->loader);
+                         entry->type = LOADER_LINUX;
+@@ -1190,7 +1207,7 @@ static VOID config_entry_add_from_file(Config *config, EFI_HANDLE *device, CHAR1
+                 }
+         }
+ 
+-        if (entry->type == LOADER_UNDEFINED) {
++        if (entry->type == LOADER_WRONG_ARCH || entry->type == LOADER_UNDEFINED) {
+                 config_entry_free(entry);
+                 FreePool(initrd);
+                 FreePool(entry);
+-- 
+1.9.2
+

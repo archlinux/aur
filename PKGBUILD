@@ -11,7 +11,7 @@ _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
 pkgver=44
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('x86_64' 'i686')
@@ -28,22 +28,34 @@ options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'gummiboot-add-efi-arch-config-option.patch'
         'loader.conf'
         'arch.conf')
 
 sha1sums=('SKIP'
+          'daf69e9cbc03721c81c48f48efb7ab6a52a66191'
           '7a44df90e4988254c518faae61a0aa259b09a3f2'
-          '99b7cd4160ab039f63ce7d8d1e05b275aa2b2965')
+          '9010301fdffabc880e1c7751461b06386f3c629c')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
 	echo "$(git describe --tags)" | sed -e 's|-|.|g'
 }
 
-build() {
+prepare() {
 	
 	rm -rf "${srcdir}/${_gitname}_build/" || true
 	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
+	
+	cd "${srcdir}/${_gitname}_build/"
+	
+	patch -Np1 -i "${srcdir}/gummiboot-add-efi-arch-config-option.patch" || true
+	echo
+	
+}
+
+build() {
+	
 	cd "${srcdir}/${_gitname}_build/"
 	
 	## Unset all compiler FLAGS
