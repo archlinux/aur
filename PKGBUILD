@@ -1,21 +1,22 @@
-# Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
+# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
-pkgdesc="High performance message passing library (MPI)"
-arch=('i686' 'x86_64')
-url="http://www.open-mpi.org"
-license=('custom')
-depends=('libltdl' 'hwloc')
-makedepends=('inetutils' 'valgrind' 'gcc-fortran')
+pkgdesc='High performance message passing library (MPI)'
+arch=(i686 x86_64)
+url='http://www.open-mpi.org'
+license=(custom)
+depends=(libltdl hwloc)
+makedepends=(inetutils valgrind gcc-fortran)
 optdepends=('gcc-fortran: fortran support')
-options=('staticlibs')
+options=(staticlibs)
 source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('d32961b83c689e086cede6c964b312e1f3d174f0')
+sha1sums=('e6e85da3e54784ee3d7b0bb0ff4d365ef2899c49')
 
 build() {
-   cd ${pkgname}-${pkgver}
+   cd $pkgname-$pkgver
 
    # Make sure we use the system ltdl library rather than the ones in the tarball
    rm -r opal/libltdl
@@ -40,23 +41,23 @@ build() {
 }
 
 package() {
-   cd ${pkgname}-${pkgver}
-   make DESTDIR="${pkgdir}" install
+   cd $pkgname-$pkgver
+   make DESTDIR="$pkgdir" install
 
    # FS#28583
-   install -d -m 755 "${pkgdir}"/usr/lib/pkgconfig
+   install -d -m 755 "$pkgdir"/usr/lib/pkgconfig
    for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-      ln -sf /usr/lib/openmpi/pkgconfig/${i} "${pkgdir}"/usr/lib/pkgconfig/
+      ln -sf /usr/lib/openmpi/pkgconfig/$i "$pkgdir"/usr/lib/pkgconfig/
    done
 
    # Openmpi's otfinfo conflicts with the one from texlive
-   mv "${pkgdir}"/usr/bin/otfinfo{,mpi}
+   mv "$pkgdir"/usr/bin/otfinfo{,mpi}
 
    # Remove dangling symlink and useless file
-   rm "${pkgdir}"/usr/share/vampirtrace/config.log
+   rm "$pkgdir"/usr/share/vampirtrace/config.log
 
-   install -d -m 755 "${pkgdir}"/etc/ld.so.conf.d
-   echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
+   install -d -m 755 "$pkgdir"/etc/ld.so.conf.d
+   echo "/usr/lib/$pkgname" > "$pkgdir"/etc/ld.so.conf.d/$pkgname.conf
 
-   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
