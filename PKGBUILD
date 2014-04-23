@@ -33,7 +33,7 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'arch.conf')
 
 sha1sums=('SKIP'
-          'daf69e9cbc03721c81c48f48efb7ab6a52a66191'
+          'baf3d999f72f9cd40b92e68127da9ccb27339904'
           '7a44df90e4988254c518faae61a0aa259b09a3f2'
           '9010301fdffabc880e1c7751461b06386f3c629c')
 
