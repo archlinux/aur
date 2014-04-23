@@ -3,7 +3,7 @@
 # Contributor: Jeremy <reebydobalina@yahoo.ca>
 
 pkgname=ruby-cairo
-pkgver=1.12.8
+pkgver=1.12.9
 pkgrel=1
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('ruby' 'cairo')
 makedepends=('ruby-pkgconfig')
 source=("http://cairographics.org/releases/rcairo-$pkgver.tar.gz")
-sha256sums=('8a6a73c9c67eb0a5b6502483c8c39ffb6acbcadd2574123a6597271c2c25736d')
+sha256sums=('ef894e2a52926c1c9d6d7f32cc1899fa21de90787a4a98493e4a004ecdb90b6e')
 
 build() {
   cd "$srcdir/rcairo-$pkgver"
@@ -24,7 +24,7 @@ build() {
 package() {
   cd "$srcdir/rcairo-$pkgver"
 
-  make DESTDIR="$pkgdir" install
+  make -j1 DESTDIR="$pkgdir" install # Workaround installation failure with -j1
   install -Dm644 ext/cairo/cairo.so \
     "$pkgdir/usr/lib/ruby/vendor_ruby/2.1.0/$CARCH-linux/cairo.so"
 }
