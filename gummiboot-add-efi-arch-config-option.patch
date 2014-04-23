@@ -1,28 +1,30 @@
-From d0f2bf730f8268887a8287ca64ccf50070223e1a Mon Sep 17 00:00:00 2001
+From 31d02fcf84d618cbd92819db62fdb6144f340148 Mon Sep 17 00:00:00 2001
 From: Keshav Amburay <the.ridikulus.rat@gmail.com>
 Date: Tue, 22 Apr 2014 21:46:18 -0400
 Subject: [PATCH] Add new config file keyword 'efi-arch' to specify the ARCH of
  the EFI image
 
 ---
- src/efi/gummiboot.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ src/efi/gummiboot.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/src/efi/gummiboot.c b/src/efi/gummiboot.c
-index d405453..1fcd699 100644
+index d405453..c31934b 100644
 --- a/src/efi/gummiboot.c
 +++ b/src/efi/gummiboot.c
-@@ -1149,6 +1149,19 @@ static VOID config_entry_add_from_file(Config *config, EFI_HANDLE *device, CHAR1
+@@ -1149,6 +1149,21 @@ static VOID config_entry_add_from_file(Config *config, EFI_HANDLE *device, CHAR1
                          continue;
                  }
  
 +                if (strcmpa((CHAR8 *)"efi-arch", key) == 0) {
-+                        CHAR16 *loader_arch;
-+                        
-+                        loader_arch = stra_to_path(value);
-+                        
-+                        /* do not add an entry for wrong EFI arch images */
-+                        if (StriCmp(loader_arch, (CHAR16 *)MACHINE_TYPE_NAME) != 0) {
++                        CHAR16 *gummiboot_arch = NULL;
++                        CHAR16 *loader_arch = NULL;
++
++                        gummiboot_arch = stra_to_str((CHAR8 *)MACHINE_TYPE_NAME);
++                        loader_arch = stra_to_str(value);
++
++                        /* do not add an entry for wrong EFI arch image */
++                        if (StriCmp(gummiboot_arch, loader_arch) != 0) {
 +                                entry->type = LOADER_UNDEFINED;
 +                                break;
 +                        }

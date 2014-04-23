@@ -11,7 +11,7 @@ _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
 pkgver=44
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('x86_64' 'i686')
@@ -33,7 +33,7 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
         'arch.conf')
 
 sha1sums=('SKIP'
-          'baf3d999f72f9cd40b92e68127da9ccb27339904'
+          '12f91346d4bd9457014d74ae8ae6128a0a43c0c7'
           '7a44df90e4988254c518faae61a0aa259b09a3f2'
           '9010301fdffabc880e1c7751461b06386f3c629c')
 
