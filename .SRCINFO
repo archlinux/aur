@@ -1,6 +1,6 @@
 pkgbase = pass-git
 	pkgdesc = Stores, retrieves, generates, and synchronizes passwords securely
-	pkgver = 20140421.224
+	pkgver = 20140424.283
 	pkgrel = 1
 	url = http://zx2c4.com/projects/password-store/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = pass-git
 	depends = gnupg
 	depends = grep
 	depends = pwgen
-	depends = tree
+	depends = tree>=1.7.0
 	depends = xclip
 	provides = pass
 	conflicts = pass

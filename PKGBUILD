@@ -2,13 +2,13 @@
 # Contributor: Simon Zimmermann <simon@insmo.com>
 
 pkgname=pass-git
-pkgver=20140421.224
+pkgver=20140424.283
 pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 url='http://zx2c4.com/projects/password-store/'
 license='GPL2'
 arch=('any')
-depends=('bash' 'git' 'gnupg' 'grep' 'pwgen' 'tree' 'xclip')
+depends=('bash' 'git' 'gnupg' 'grep' 'pwgen' 'tree>=1.7.0' 'xclip')
 makedepends=('git')
 provides=('pass')
 conflicts=('pass')
@@ -23,8 +23,5 @@ pkgver() {
 }
 package() {
     cd "$pkgname"
-    make FORCE_BASHCOMP=1 \
-         FORCE_ZSHCOMP=1 \
-         FORCE_FISHCOMP=1 \
-         DESTDIR="${pkgdir}" install
+    make FORCE_ALL=1 DESTDIR="${pkgdir}" install
 }
