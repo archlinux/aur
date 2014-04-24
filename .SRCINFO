@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 212
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -31,10 +31,18 @@ pkgbase = systemd-selinux
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
+	source = 0001-backlight-do-nothing-if-max_brightness-is-0.patch
+	source = 0002-reduce-the-amount-of-messages-logged-to-dev-kmsg-whe.patch
+	source = 0003-man-reword-Persistent-description.patch
+	source = 0004-core-Make-sure-a-stamp-file-exists-for-all-Persisten.patch
 	md5sums = 257a75fff826ff91cb1ce567091cf270
 	md5sums = 29245f7a240bfba66e2b1783b63b6b40
-	md5sums = 5e04f468a13ae2b9d6a9dfc77c49a7d1
+	md5sums = 66cca7318e13eaf37c5b7db2efa69846
 	md5sums = bde43090d4ac0ef048e3eaee8202a407
+	md5sums = 4b5d61e30b423ff5a0ec38037146b61b
+	md5sums = d9518fc6cef154ebc76555b0fb9d4412
+	md5sums = c35c7f55d41c0a8b8725785b49ce6440
+	md5sums = 2e7aee18c749727c8bbc8db86f17edc0
 
 pkgname = systemd-selinux
 	pkgdesc = system and service manager
@@ -59,13 +67,13 @@ pkgname = systemd-selinux
 	depends = libselinux
 	optdepends = python: systemd library bindings
 	optdepends = cryptsetup: required for encrypted block devices
-	optdepends = libmicrohttpd: systemd-journal-gatewayd
+	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	provides = nss-myhostname
 	provides = systemd-tools=212
 	provides = udev=212
-	provides = systemd=212-1
+	provides = systemd=212-2
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -103,15 +111,15 @@ pkgname = libsystemd-selinux
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=212-1
+	provides = libsystemd=212-2
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=212-1
-	provides = selinux-systemd-sysvcompat=212-1
+	provides = systemd-sysvcompat=212-2
+	provides = selinux-systemd-sysvcompat=212-2
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat

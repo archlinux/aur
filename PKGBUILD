@@ -2,11 +2,12 @@
 # Maintainer: Tom Gundersen <teg@jklm.no>
 # SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
+# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=212
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -18,11 +19,33 @@ options=('strip' 'debug')
 source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"
         'initcpio-hook-udev'
         'initcpio-install-systemd'
-        'initcpio-install-udev')
+        'initcpio-install-udev'
+        '0001-backlight-do-nothing-if-max_brightness-is-0.patch'
+        '0002-reduce-the-amount-of-messages-logged-to-dev-kmsg-whe.patch'
+        '0003-man-reword-Persistent-description.patch'
+        '0004-core-Make-sure-a-stamp-file-exists-for-all-Persisten.patch'
+        )
 md5sums=('257a75fff826ff91cb1ce567091cf270'
          '29245f7a240bfba66e2b1783b63b6b40'
-         '5e04f468a13ae2b9d6a9dfc77c49a7d1'
-         'bde43090d4ac0ef048e3eaee8202a407')
+         '66cca7318e13eaf37c5b7db2efa69846'
+         'bde43090d4ac0ef048e3eaee8202a407'
+         '4b5d61e30b423ff5a0ec38037146b61b'
+         'd9518fc6cef154ebc76555b0fb9d4412'
+         'c35c7f55d41c0a8b8725785b49ce6440'
+         '2e7aee18c749727c8bbc8db86f17edc0')
+
+prepare() {
+  cd "${pkgname/-selinux}-$pkgver"
+
+  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=3cadce7d33e263ec7a6a83c00c11144930258b22
+  patch -p1 -i "$srcdir/0001-backlight-do-nothing-if-max_brightness-is-0.patch"
+  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=b2103dccb354de3f38c49c14ccb637bdf665e40f
+  patch -p1 -i "$srcdir/0002-reduce-the-amount-of-messages-logged-to-dev-kmsg-whe.patch"
+  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=de41590a9bb370de92e4a1ed933bc6e38abb6787
+  patch -p1 -i "$srcdir/0003-man-reword-Persistent-description.patch"
+  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=472fc28fdade525e700ebf4b25d026a8c907796d
+  patch -p1 -i "$srcdir/0004-core-Make-sure-a-stamp-file-exists-for-all-Persisten.patch"
+}
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
@@ -62,7 +85,7 @@ package_systemd-selinux() {
              "${pkgname/-selinux}" 'selinux-systemd')
   optdepends=('python: systemd library bindings'
               'cryptsetup: required for encrypted block devices'
-              'libmicrohttpd: systemd-journal-gatewayd'
+              'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries')
   backup=(etc/dbus-1/system.d/org.freedesktop.systemd1.conf

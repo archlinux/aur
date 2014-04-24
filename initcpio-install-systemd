@@ -103,8 +103,9 @@ build() {
     add_binary /usr/lib/systemd/systemd /init
     add_binary /usr/bin/systemd-tmpfiles
 
-    # generate sysroot.mount and sysroot-usr.mount
+    # generators
     add_file "/usr/lib/systemd/system-generators/systemd-fstab-generator"
+    add_file "/usr/lib/systemd/system-generators/systemd-gpt-auto-generator"
 
     # udev rules and systemd units
     map add_udev_rule "$rules" \
