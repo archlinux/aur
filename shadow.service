@@ -1,0 +1,10 @@
+[Unit]
+Description=Verify integrity of password and group files
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pwck -r
+ExecStart=/usr/bin/grpck -r
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

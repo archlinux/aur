@@ -4,10 +4,11 @@
 # SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 # SELinux Contributor: Zezadas
+# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=shadow-selinux
 pkgver=4.1.5.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('i686' 'x86_64')
 url='http://pkg-shadow.alioth.debian.org/'
@@ -32,7 +33,7 @@ source=("ftp://ftp.archlinux.org/other/packages/${pkgname/-selinux}/${pkgname/-s
         login.defs
         newusers
         passwd
-        shadow.cron.daily
+        shadow.{timer,service}
         useradd.defaults
         xstrdup.patch
         shadow-strncpy-usage.patch
@@ -46,7 +47,8 @@ sha1sums=('81f38720b953ef9c2c100c43d02dfe19cafd6c30'
           'e92045fb75e0c21a3f294a00de0bd2cd252e9463'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
           '611be25d91c3f8f307c7fe2485d5f781e5dee75f'
-          '98f4919014b1a9eb9f01ca7731e04b1d973cedd5'
+          'a154a94b47a3d0c6c287253b98c0d10b861226d0'
+          'e40fc20894e69a07fb0070b41f567d0c27133720'
           '9ae93de5987dd0ae428f0cc1a5a5a5cd53583f19'
           '6010fffeed1fc6673ad9875492e1193b1a847b53'
           '21e12966a6befb25ec123b403cd9b5c492fe5b16'
@@ -93,8 +95,11 @@ package() {
   # useradd defaults
   install -Dm644 "$srcdir/useradd.defaults" "$pkgdir/etc/default/useradd"
 
-  # cron job
-  install -Dm744 "$srcdir/shadow.cron.daily" "$pkgdir/etc/cron.daily/shadow"
+  # systemd timer
+  install -D -m644 ${srcdir}/shadow.timer ${pkgdir}/usr/lib/systemd/system/shadow.timer
+  install -D -m644 ${srcdir}/shadow.service ${pkgdir}/usr/lib/systemd/system/shadow.service
+  install -d -m755 ${pkgdir}/usr/lib/systemd/system/multi-user.target.wants
+  ln -s ../shadow.timer ${pkgdir}//usr/lib/systemd/system/multi-user.target.wants/shadow.timer
 
   # login.defs
   install -Dm644 "$srcdir/login.defs" "$pkgdir/etc/login.defs"
