@@ -5,7 +5,7 @@ pkgname=android-apktool-git
 _gitname=Apktool
 _gitbranch=wip-2.0
 _gitauthor=iBotPeaches
-pkgver=v1.5.2.r164.g4b180bd
+pkgver=2.0.0.Beta9.g251a6bb
 pkgrel=1
 pkgdesc="a tool for reengineering Android apk files"
 arch=('i686' 'x86_64')
@@ -19,7 +19,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  # This is a heck of a line, but I found it way the only way of getting the version number properly
+  printf "$(grep "def apktoolversion_major" build.gradle | sed "s/.*'\(.*\)'.*/\1/").$(grep "def apktoolversion_minor" build.gradle | sed "s/.*'\(.*\)'.*/\1/").$(git describe | sed -n -e 's/^.*-//p')"
 }
 
 build() {
