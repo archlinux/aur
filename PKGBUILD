@@ -2,27 +2,29 @@
 # Contributor: Gyo <nucleogeek_at_gmail_dot_com>
 pkgname=koules
 pkgver=1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A fast arcade game based on fundamental law of bodies attraction"
 arch=('i686' 'x86_64')
 url="http://www.ucw.cz/~hubicka/koules/English/"
 license=('GPL')
-depends=('dialog' 'libx11' 'libxext')
+depends=('dialog' 'libx11' 'libxext' 'alsa-oss')
 makedepends=('imake' 'xextproto' 'xproto')
 source=(http://www.ucw.cz/~hubicka/koules/packages/$pkgname$pkgver-src.tar.gz
         $pkgname-$pkgver-gcc3.patch
+        $pkgname-$pkgver-alsa-oss.patch
         koules.desktop)
 md5sums=('0a5ac9e57c8b72e9fc200bc98273235c'
          'ccc92d4ab7d61ca482d30192a5ee83ec'
+         'cbb37f907f7e8726be364434b75b66a9'
          'fb3cd393464214643c239ac4350f963a')
 
 prepare() {
   cd "$srcdir/$pkgname$pkgver"
-  patch -p1 < "$srcdir/$pkgname-$pkgver-gcc3.patch"
-}
 
-build() {
-  cd "$srcdir/$pkgname$pkgver"
+  patch -p1 < "$srcdir/$pkgname-$pkgver-gcc3.patch"
+
+  rm -f oss-redir.c
+  patch -p1 < "$srcdir/$pkgname-$pkgver-alsa-oss.patch"
 
   # some source modifications
   sed -i \
@@ -32,6 +34,10 @@ build() {
   sed -i \
     -e "s:/usr/local/bin:/usr/bin:" \
     -e 's:exec.*tcl:exec xkoules -M "$@":' koules
+}
+
+build() {
+  cd "$srcdir/$pkgname$pkgver"
 
   # generate makefiles, then build
   xmkmf -a

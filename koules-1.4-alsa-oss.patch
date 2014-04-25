@@ -1,0 +1,395 @@
+From f18063b792f41a9dc95ac7be113ea6a3c43ad6bc Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Fri, 18 Apr 2014 17:58:18 +0200
+Subject: [PATCH] Port audio to ALSA OSS emulation
+
+Change the OSS syscalls (open/close/ioctl/write) to oss_pcm_ invocations
+from the alsa-oss package for reliable sound playback out of the box.
+
+Alternatives were
+1. Loading the kernel module "snd-pcm-oss" to make /dev/dsp appear for
+   kernel-level emulation, but then you still have to ensure that the
+   device is not blocked by another program. Didn't work for me when
+   Amarok was running.
+2. Using the "aoss" wrapper script with ugly LD_PRELOAD hacks.
+
+See git://git.alsa-project.org/alsa-oss.git
+---
+ Imakefile             |   2 +-
+ koules                |   1 +
+ koules.sndsrv.linux.c |  23 ++---
+ oss-redir.c           | 268 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 282 insertions(+), 12 deletions(-)
+ create mode 100644 oss-redir.c
+
+diff --git a/Imakefile b/Imakefile
+index 29674b8..50a73fd 100644
+--- a/Imakefile
++++ b/Imakefile
+@@ -91,7 +91,7 @@ ComplexProgramTarget(xkoules)
+ 
+ 
+ #ifdef SOUND
+-NormalProgramTarget($(SOUNDSERVER), $(SOUNDSERVER).o,,,)
++NormalProgramTarget($(SOUNDSERVER), $(SOUNDSERVER).o oss-redir.o,,,-ldl)
+ #endif
+ #ifdef NAS_SOUND
+ install:: $(PROGRAMS) $(SOUNDSERVER)
+diff --git a/koules b/koules
+index d947283..2b11f84 100755
+--- a/koules
++++ b/koules
+@@ -1,6 +1,7 @@
+ #!/bin/sh
+ KOULESDIR=/usr/local/bin
+ XKOULESDIR=/usr/bin/X11
++export OSS_REDIRECTOR=libalsatoss.so
+ if [ $TERM != console ]; then
+ if [ $TERM != linux ]; then
+ if [ $DISPLAY != "" ]; then
+diff --git a/koules.sndsrv.linux.c b/koules.sndsrv.linux.c
+index ad32f53..26d0eef 100644
+--- a/koules.sndsrv.linux.c
++++ b/koules.sndsrv.linux.c
+@@ -16,6 +16,7 @@
+ #include <sys/ioctl.h>
+ #include <linux/soundcard.h>
+ #include "linux_pcsp.h"		/* /usr/include/linux/pcsp.h      */
++#include <oss-redir.h>
+ #include <sys/time.h>
+ #include <signal.h>
+ #include <string.h>
+@@ -91,7 +92,7 @@ setup_dsp (char *dspdev, int *is_pcsp)
+ {
+   int             dsp, frag, value;
+ 
+-  dsp = open (dspdev, O_WRONLY);
++  dsp = oss_pcm_open (dspdev, O_WRONLY);
+   if (dsp < 0)
+     {
+       fprintf (stderr, "koules.sndsrv: Couldn't open DSP >%s<\n", dspdev);
+@@ -102,23 +103,23 @@ setup_dsp (char *dspdev, int *is_pcsp)
+   fragsize = 0;
+ 
+   frag = 0x00020007;		/* try 512 bytes, for 1/16 second frag size */
+-  ioctl(dsp, SNDCTL_DSP_SAMPLESIZE, &value);
+-  if(ioctl (dsp, SNDCTL_DSP_SETFRAGMENT, &frag)) 
++  oss_pcm_ioctl(dsp, SNDCTL_DSP_SAMPLESIZE, &value);
++  if(oss_pcm_ioctl (dsp, SNDCTL_DSP_SETFRAGMENT, &frag)) 
+   {
+       fprintf (stderr, "koules.sndsrv: Couldn't set DSP fragment. Sounds will be ugly and delayed. Use USS lite driver!\n");
+   }
+   value = 8010;
+-  if (ioctl (dsp, SNDCTL_DSP_SPEED, &value))
++  if (oss_pcm_ioctl (dsp, SNDCTL_DSP_SPEED, &value))
+     {
+       fprintf (stderr, "koules.sndsrv: Couldn't set DSP rate!\n");
+     };
+   value = 0;
+-  ioctl (dsp, SNDCTL_DSP_STEREO, &value);
++  oss_pcm_ioctl (dsp, SNDCTL_DSP_STEREO, &value);
+   value = 1;
+-  ioctl (dsp, SNDCTL_DSP_SYNC, &value);
+-  ioctl (dsp, SNDCTL_DSP_GETBLKSIZE, &fragsize);
++  oss_pcm_ioctl (dsp, SNDCTL_DSP_SYNC, &value);
++  oss_pcm_ioctl (dsp, SNDCTL_DSP_GETBLKSIZE, &fragsize);
+   value=8;
+-  ioctl(dsp, SNDCTL_DSP_SAMPLESIZE, &value);
++  oss_pcm_ioctl(dsp, SNDCTL_DSP_SAMPLESIZE, &value);
+ 
+   if (!fragsize)
+     {
+@@ -263,13 +264,13 @@ do_everything (int dsp, int is_pcsp)
+ 	   */
+ 	  memset (final, 128, sizeof (final));
+ 	};
+-      write (dsp, final, fragsize);
+-      if(!ioctl(dsp,SNDCTL_DSP_GETOSPACE,&info)) { /*this is code 
++      oss_pcm_write (dsp, final, fragsize);
++      if(!oss_pcm_ioctl(dsp,SNDCTL_DSP_GETOSPACE,&info)) { /*this is code 
+ 			drivers that does not allow to set number of
+ 			fragments to 2. (ultrasound project?)*/
+ 	while((int)info.fragments<((int)info.fragstotal-2))  {
+ 	  usleep(1000000*info.fragsize/8010);
+-          ioctl(dsp,SNDCTL_DSP_GETOSPACE,&info);
++          oss_pcm_ioctl(dsp,SNDCTL_DSP_GETOSPACE,&info);
+ 	}
+       } 
+       /*
+diff --git a/oss-redir.c b/oss-redir.c
+new file mode 100644
+index 0000000..7ae594f
+--- /dev/null
++++ b/oss-redir.c
+@@ -0,0 +1,268 @@
++/*
++ *  OSS Redirector
++ *  Copyright (c) by Jaroslav Kysela <perex@perex.cz>
++ *
++ *
++ *   This program is free software; you can redistribute it and/or modify
++ *   it under the terms of the GNU General Public License as published by
++ *   the Free Software Foundation; either version 2 of the License, or
++ *   (at your option) any later version.
++ *
++ *   This program is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *   GNU General Public License for more details.
++ *
++ *   You should have received a copy of the GNU General Public License
++ *   along with this program; if not, write to the Free Software
++ *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
++ *
++ */
++
++#define _GNU_SOURCE
++
++#include "oss-redir.h"
++#include <sys/poll.h>
++#include <sys/ioctl.h>
++#include <sys/mman.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <fcntl.h>
++#include <unistd.h>
++#include <dlfcn.h>
++#include <errno.h>
++#include <linux/soundcard.h>
++
++static int initialized = 0;
++static int native_oss = 1;
++static int open_count = 0;
++static char hal[64];
++static void *dl_handle = NULL;
++
++static void initialize(void);
++
++static int (*x_oss_pcm_open)(const char *pathname, int flags);
++static int (*x_oss_pcm_close)(int fd);
++int (*oss_pcm_nonblock)(int fd, int nonblock);
++ssize_t (*oss_pcm_read)(int fd, void *buf, size_t count);
++ssize_t (*oss_pcm_write)(int fd, const void *buf, size_t count);
++void * (*oss_pcm_mmap)(void *start, size_t length, int prot, int flags, int fd, off_t offset);
++int (*oss_pcm_munmap)(void *start, size_t length);
++int (*oss_pcm_ioctl)(int fd, unsigned long int request, ...);
++int (*oss_pcm_select_prepare)(int fd, int fmode, fd_set *readfds, fd_set *writefds, fd_set *exceptfds);
++int (*oss_pcm_select_result)(int fd, fd_set *readfds, fd_set *writefds, fd_set *exceptfds);
++int (*oss_pcm_poll_fds)(int fd);
++int (*oss_pcm_poll_prepare)(int fd, int fmode, struct pollfd *ufds);
++int (*oss_pcm_poll_result)(int fd, struct pollfd *ufds);
++
++static int (*x_oss_mixer_open)(const char *pathname, int flags);
++static int (*x_oss_mixer_close)(int fd);
++int (*oss_mixer_ioctl)(int fd, unsigned long int request, ...);
++
++static int native_pcm_nonblock(int fd, int nonblock)
++{
++	long flags;
++
++	if ((flags = fcntl(fd, F_GETFL)) < 0)
++		return -1;
++	if (nonblock)
++		flags |= O_NONBLOCK;
++	else
++		flags &= ~O_NONBLOCK;
++	if (fcntl(fd, F_SETFL, flags) < 0)
++		return -1;
++	return 0;
++}
++
++static int native_pcm_select_prepare(int fd, int fmode, fd_set *readfds, fd_set *writefds, fd_set *exceptfds)
++{
++	if (fd < 0)
++		return -EINVAL;
++	if ((fmode & O_ACCMODE) != O_WRONLY && readfds) {
++		FD_SET(fd, readfds);
++		if (exceptfds)
++			FD_SET(fd, exceptfds);
++	}
++	if ((fmode & O_ACCMODE) != O_RDONLY && writefds) {
++		FD_SET(fd, writefds);
++		if (exceptfds)
++			FD_SET(fd, exceptfds);
++	}
++	return fd;
++}
++
++static int native_pcm_select_result(int fd, fd_set *readfds, fd_set *writefds, fd_set *exceptfds)
++{
++	int result = 0;
++
++	if (fd < 0)
++		return -EINVAL;
++	if (readfds && FD_ISSET(fd, readfds))
++		result |= OSS_WAIT_EVENT_READ;
++	if (writefds && FD_ISSET(fd, writefds))
++		result |= OSS_WAIT_EVENT_WRITE;
++	if (exceptfds && FD_ISSET(fd, exceptfds))
++		result |= OSS_WAIT_EVENT_ERROR;
++	return result;
++}
++
++static int native_pcm_poll_fds(int fd)
++{
++	if (fd < 0)
++		return -EINVAL;
++	return 1;
++}
++
++static int native_pcm_poll_prepare(int fd, int fmode, struct pollfd *ufds)
++{
++	if (fd < 0)
++		return -EINVAL;
++	ufds->fd = fd;
++	ufds->events = ((fmode & O_ACCMODE) == O_WRONLY ? 0 : POLLIN) |
++		       ((fmode & O_ACCMODE) == O_RDONLY ? 0 : POLLOUT) | POLLERR;
++	return 1;
++}
++
++static int native_pcm_poll_result(int fd, struct pollfd *ufds)
++{
++	int result = 0;
++
++	if (fd < 0)
++		return -EINVAL;
++	if (ufds->events & POLLIN)
++		result |= OSS_WAIT_EVENT_READ;
++	if (ufds->events & POLLOUT)
++		result |= OSS_WAIT_EVENT_WRITE;
++	if (ufds->events & POLLERR)
++		result |= OSS_WAIT_EVENT_ERROR;
++	return result;
++}
++
++static inline void check_initialized(void)
++{
++	if (!initialized)
++		initialize();
++}
++
++int oss_pcm_open(const char *pathname, int flags, ...)
++{
++	int result;
++
++	check_initialized();
++	if (native_oss)
++		return open(pathname, flags);
++	result = x_oss_pcm_open(pathname, flags);
++	if (result >= 0) {
++		open_count++;
++	} else {
++		if (open_count == 0) {
++			dlclose(dl_handle);
++			dl_handle = NULL;
++		}
++	}
++	return result;
++}
++
++int oss_pcm_close(int fd)
++{
++	int result;
++
++	if (native_oss)
++		return close(fd);
++	result = x_oss_pcm_close(fd);
++	if (--open_count) {
++		dlclose(dl_handle);
++		dl_handle = NULL;
++	}
++	return result;
++}
++
++int oss_mixer_open(const char *pathname, int flags, ...)
++{
++	int result;
++
++	check_initialized();
++	if (native_oss)
++		return open(pathname, flags);
++	result = x_oss_mixer_open(pathname, flags);
++	if (result >= 0) {
++		open_count++;
++	} else {
++		if (open_count == 0) {
++			dlclose(dl_handle);
++			dl_handle = NULL;
++		}
++	}
++	return result;
++}
++
++int oss_mixer_close(int fd)
++{
++	int result;
++
++	if (fd < 0)
++		return -EINVAL;
++	if (native_oss)
++		return close(fd);
++	result = x_oss_mixer_close(fd);
++	if (--open_count) {
++		dlclose(dl_handle);
++		dl_handle = NULL;
++	}
++	return result;
++}
++
++static void initialize(void)
++{
++	char *s = getenv("OSS_REDIRECTOR");
++	if (s) {
++		strncpy(hal, s, sizeof(hal));
++		hal[sizeof(hal)-1] = '\0';
++		if (!strcasecmp(hal, "oss"))
++			native_oss = 1;
++		else
++			native_oss = 0;
++	} else {
++		native_oss = 1;
++	}
++	if (native_oss) {
++	      __native:
++	      	oss_pcm_nonblock = native_pcm_nonblock;
++		oss_pcm_read = read;
++		oss_pcm_write = write;
++		oss_pcm_mmap = mmap;
++		oss_pcm_munmap = munmap;
++		oss_pcm_ioctl = ioctl;
++		oss_pcm_select_prepare = native_pcm_select_prepare;
++		oss_pcm_select_result = native_pcm_select_result;
++		oss_pcm_poll_fds = native_pcm_poll_fds;
++		oss_pcm_poll_prepare = native_pcm_poll_prepare;
++		oss_pcm_poll_result = native_pcm_poll_result;
++		oss_mixer_ioctl = ioctl;
++	} else {
++		dl_handle = dlopen(hal, RTLD_NOW);
++		if (dl_handle == NULL) {
++			fprintf(stderr, "ERROR: dlopen failed for sound (OSS) redirector: %s\n", dlerror());
++			fprintf(stderr, "       reverting to native OSS mode\n");
++			native_oss = 1;
++			goto __native;
++		}
++		x_oss_pcm_open = dlsym(dl_handle, "lib_oss_pcm_open");
++		x_oss_pcm_close = dlsym(dl_handle, "lib_oss_pcm_close");
++		oss_pcm_nonblock = dlsym(dl_handle, "lib_oss_pcm_nonblock");
++		oss_pcm_read = dlsym(dl_handle, "lib_oss_pcm_read");
++		oss_pcm_write = dlsym(dl_handle, "lib_oss_pcm_write");
++		oss_pcm_mmap = dlsym(dl_handle, "lib_oss_pcm_mmap");
++		oss_pcm_munmap = dlsym(dl_handle, "lib_oss_pcm_munmap");
++		oss_pcm_ioctl = dlsym(dl_handle, "lib_oss_pcm_ioctl");
++		oss_pcm_select_prepare = dlsym(dl_handle, "lib_oss_select_prepare");
++		oss_pcm_select_result = dlsym(dl_handle, "lib_oss_select_result");
++		oss_pcm_poll_fds = dlsym(dl_handle, "lib_oss_poll_fds");
++		oss_pcm_poll_prepare = dlsym(dl_handle, "lib_oss_poll_prepare");
++		oss_pcm_poll_result = dlsym(dl_handle, "lib_oss_poll_result");
++		x_oss_mixer_open = dlsym(dl_handle, "lib_oss_mixer_open");
++		x_oss_mixer_close = dlsym(dl_handle, "lib_oss_mixer_close");
++		oss_mixer_ioctl = dlsym(dl_handle, "lib_oss_mixer_ioctl");
++	}
++}
+-- 
+1.9.2
+
