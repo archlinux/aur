@@ -11,7 +11,7 @@ _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
 pkgver=44
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('x86_64' 'i686')
@@ -28,14 +28,14 @@ options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'gummiboot-add-efi-arch-config-option.patch'
+        'gummiboot-add-architecture-config-option.patch'
         'loader.conf'
         'arch.conf')
 
 sha1sums=('SKIP'
-          'f2a5433574c0f0b3fa907addb55efe149e2a54a3'
-          '7a44df90e4988254c518faae61a0aa259b09a3f2'
-          '9010301fdffabc880e1c7751461b06386f3c629c')
+          '5b4931dbd0a60681abed2ec2dcb4683194cbdcff'
+          '8a63ae494194be7b38772269b2321bf56fff45df'
+          '6a7d4a2fd8361133ae89b53887c6ac8ce5136ecd')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -49,7 +49,7 @@ prepare() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	patch -Np1 -i "${srcdir}/gummiboot-add-efi-arch-config-option.patch" || true
+	patch -Np1 -i "${srcdir}/gummiboot-add-architecture-config-option.patch" || true
 	echo
 	
 }

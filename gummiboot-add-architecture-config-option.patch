@@ -1,0 +1,123 @@
+From 8fb717553269601a4b00bd388c3b74f9346830ff Mon Sep 17 00:00:00 2001
+From: Keshav Amburay <the.ridikulus.rat@gmail.com>
+Date: Tue, 22 Apr 2014 21:46:18 -0400
+Subject: [PATCH] Add new config file keyword 'architecture' to specify the
+ architecture of the EFI image
+
+---
+ src/efi/gummiboot.c | 45 +++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 41 insertions(+), 4 deletions(-)
+
+diff --git a/src/efi/gummiboot.c b/src/efi/gummiboot.c
+index d405453..d083c22 100644
+--- a/src/efi/gummiboot.c
++++ b/src/efi/gummiboot.c
+@@ -416,8 +416,9 @@ static VOID print_status(Config *config, EFI_FILE *root_dir, CHAR16 *loaded_imag
+         }
+ 
+         Print(L"gummiboot version:      " VERSION "\n");
++        Print(L"gummiboot arch:         " MACHINE_TYPE_NAME "\n");
+         Print(L"loaded image:           %s\n", loaded_image_path);
+-        Print(L"UEFI version:           %d.%02d\n", ST->Hdr.Revision >> 16, ST->Hdr.Revision & 0xffff);
++        Print(L"UEFI specification:     %d.%02d\n", ST->Hdr.Revision >> 16, ST->Hdr.Revision & 0xffff);
+         Print(L"firmware vendor:        %s\n", ST->FirmwareVendor);
+         Print(L"firmware version:       %d.%02d\n", ST->FirmwareRevision >> 16, ST->FirmwareRevision & 0xffff);
+         if (efivar_get_raw(&global_guid, L"SecureBoot", &b, &size) == EFI_SUCCESS) {
+@@ -554,6 +555,7 @@ static BOOLEAN menu_run(Config *config, ConfigEntry **chosen_entry, EFI_FILE *ro
+         BOOLEAN exit = FALSE;
+         BOOLEAN run = TRUE;
+         BOOLEAN wait = FALSE;
++        CHAR16 *gummiboot_arch = NULL;
+ 
+         graphics_mode(FALSE);
+         uefi_call_wrapper(ST->ConIn->Reset, 2, ST->ConIn, FALSE);
+@@ -846,8 +848,11 @@ static BOOLEAN menu_run(Config *config, ConfigEntry **chosen_entry, EFI_FILE *ro
+                         break;
+ 
+                 case KEYPRESS(0, 0, 'v'):
+-                        status = PoolPrint(L"gummiboot " VERSION ", UEFI %d.%02d, %s %d.%02d",
+-                                           ST->Hdr.Revision >> 16, ST->Hdr.Revision & 0xffff,
++                        gummiboot_arch = stra_to_str((CHAR8 *)MACHINE_TYPE_NAME);
++                        StrUpr(gummiboot_arch);
++
++                        status = PoolPrint(L"gummiboot " VERSION " (%s), UEFI Specification %d.%02d, Vendor %s %d.%02d",
++                                           gummiboot_arch, ST->Hdr.Revision >> 16, ST->Hdr.Revision & 0xffff,
+                                            ST->FirmwareVendor, ST->FirmwareRevision >> 16, ST->FirmwareRevision & 0xffff);
+                         break;
+ 
+@@ -893,6 +898,7 @@ static BOOLEAN menu_run(Config *config, ConfigEntry **chosen_entry, EFI_FILE *ro
+                 FreePool(lines[i]);
+         FreePool(lines);
+         FreePool(clearline);
++        FreePool(gummiboot_arch);
+ 
+         uefi_call_wrapper(ST->ConOut->SetAttribute, 2, ST->ConOut, EFI_WHITE|EFI_BACKGROUND_BLACK);
+         uefi_call_wrapper(ST->ConOut->ClearScreen, 1, ST->ConOut);
+@@ -1040,7 +1046,11 @@ skip:
+ static VOID config_defaults_load_from_file(Config *config, CHAR8 *content) {
+         CHAR8 *line;
+         UINTN pos = 0;
++        UINTN default_check = 0;
+         CHAR8 *key, *value;
++        CHAR16 *default_string = NULL;
++
++        default_string = PoolPrint(L"default-%s", stra_to_str((CHAR8 *)MACHINE_TYPE_NAME));
+ 
+         line = content;
+         while ((line = line_get_key_value(content, &pos, &key, &value))) {
+@@ -1054,10 +1064,17 @@ static VOID config_defaults_load_from_file(Config *config, CHAR8 *content) {
+                         continue;
+                 }
+ 
+-                if (strcmpa((CHAR8 *)"default", key) == 0) {
++                if (StriCmp(default_string, (CHAR16 *)key)) {
++                        FreePool(config->entry_default_pattern);
++                        config->entry_default_pattern = stra_to_str(value);
++                        StrLwr(config->entry_default_pattern);
++                        default_check = 1;
++                        continue;
++                } else if (strcmpa((CHAR8 *)"default", key) == 0 && default_check == 0) {
+                         FreePool(config->entry_default_pattern);
+                         config->entry_default_pattern = stra_to_str(value);
+                         StrLwr(config->entry_default_pattern);
++                        default_check = 1;
+                         continue;
+                 }
+ 
+@@ -1096,6 +1113,8 @@ static VOID config_defaults_load_from_file(Config *config, CHAR8 *content) {
+                         continue;
+                 }
+         }
++        
++        FreePool(default_string);
+ }
+ 
+ static VOID config_entry_add_from_file(Config *config, EFI_HANDLE *device, CHAR16 *file, CHAR8 *content, CHAR16 *loaded_image_path) {
+@@ -1149,6 +1168,24 @@ static VOID config_entry_add_from_file(Config *config, EFI_HANDLE *device, CHAR1
+                         continue;
+                 }
+ 
++                if (strcmpa((CHAR8 *)"architecture", key) == 0) {
++                        CHAR16 *gummiboot_arch = NULL;
++                        CHAR16 *loader_arch = NULL;
++
++                        gummiboot_arch = stra_to_str((CHAR8 *)MACHINE_TYPE_NAME);
++                        loader_arch = stra_to_str(value);
++
++                        /* do not add an entry for an EFI image of architecture not matching with that of the gummiboot image */
++                        if (StriCmp(gummiboot_arch, loader_arch) != 0) {
++                                entry->type = LOADER_UNDEFINED;
++                                break;
++                        }
++
++                        FreePool(gummiboot_arch);
++                        FreePool(loader_arch);
++                        continue;
++                }
++
+                 if (strcmpa((CHAR8 *)"initrd", key) == 0) {
+                         CHAR16 *new;
+ 
+-- 
+1.9.2
+
