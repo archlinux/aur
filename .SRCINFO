@@ -27,8 +27,8 @@ pkgbase = gummiboot-git
 	source = arch.conf
 	sha1sums = SKIP
 	sha1sums = 61a128752f63e7658837c27a3db60df647d813b2
-	sha1sums = 8a63ae494194be7b38772269b2321bf56fff45df
-	sha1sums = 6a7d4a2fd8361133ae89b53887c6ac8ce5136ecd
+	sha1sums = 9a28643459a6d11631089f265921212e6f897591
+	sha1sums = 1ffc417fb2e1db6c5b7720831a9ab6b989c4aadb
 
 pkgname = gummiboot-git
 

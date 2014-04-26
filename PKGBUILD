@@ -34,8 +34,8 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
 
 sha1sums=('SKIP'
           '61a128752f63e7658837c27a3db60df647d813b2'
-          '8a63ae494194be7b38772269b2321bf56fff45df'
-          '6a7d4a2fd8361133ae89b53887c6ac8ce5136ecd')
+          '9a28643459a6d11631089f265921212e6f897591'
+          '1ffc417fb2e1db6c5b7720831a9ab6b989c4aadb')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
