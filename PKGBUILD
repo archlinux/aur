@@ -15,11 +15,11 @@ backup=("opt/doom3/lms/cdoomcoopserver.cfg" \
         "opt/doom3/lms/roecoopserver.cfg" \
         "opt/doom3/lms/spcoopserver.cfg")
 source=('doom3-lms.desktop' 'doom3-lms.xpm' \
-        'http://www.slashbunny.com/aur/doom3-lms/lastmanstandingcoop4multiplatform.zip')
-# Download URL: http://files.filefront.com/LastManStandingCoop4Multiplatformzip/;9934113;/fileinfo.html
-md5sums=('44c655cf6989c68e746fb14b64ce30c6'
-         '25eaeb025c83690190712ecbc5377ca5'
-         '47a070f004ae6a9199bbd876a52cc7b0')
+'http://www.slashbunny.com/aur/doom3-lms/lastmanstandingcoop4multiplatform.zip')
+sha256sums=('ac3e7cceaecc26e45051af2f72d04cdf0ec2afcee32283053b4e751dca67ccaa'
+            '925893e8dee7e4d7834e1760923a7e954780e568157920d5b6014b739b627799'
+            '3e88196efc60a9046b9518a249c99021aca1c6341c654129a772b1f28f04c37e')
+PKGEXT='.pkg.tar'
 
 build() {
     cd $startdir/src/lms4/
