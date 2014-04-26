@@ -1,6 +1,6 @@
 pkgbase = konstruktor-git
 	pkgdesc = A LDraw-based virtual LEGO(r) CAD for KDE 5.
-	pkgver = 0.9.0.beta1.r95.gcb9d35f
+	pkgver = 0.9.0.beta1.r78.g67ef13e
 	pkgrel = 1
 	url = http://opendesktop.org/content/show.php?content=138138
 	install = konstruktor-git.install
@@ -16,8 +16,6 @@ pkgbase = konstruktor-git
 	depends = glu
 	depends = povray
 	depends = ldraw-parts-library
-	provides = konstruktor
-	conflicts = konstruktor
 	source = konstruktor-git::git+https://github.com/segfault87/Konstruktor.git
 	md5sums = SKIP
 
