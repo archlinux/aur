@@ -1,0 +1,11 @@
+[Unit]
+Description=Douane Daemon
+
+[Service]
+ExecStart=/etc/init.d/douane start
+ExecStop=/etc/init.d/douane stop
+TimeoutSec=0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
