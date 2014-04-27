@@ -12,7 +12,7 @@ makedepends=('git'
              'gtkmm3'
              'dbus-c++'
              'polkit')
-source=('git+https://github.com/pulser/douane-daemon.git'
+source=('git+https://github.com/Douane/douane-daemon.git'
         'git+https://github.com/Douane/douane-dbus.git'
         'douane-daemon.service')
 md5sums=('SKIP'
