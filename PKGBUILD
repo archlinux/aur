@@ -11,7 +11,7 @@ makedepends=('git'
              'log4cxx'
              'gtkmm3'
              'dbus-c++')
-source=('git+https://github.com/pulser/douane-dialog.git'
+source=('git+https://github.com/Douane/douane-dialog.git'
         'git+https://github.com/Douane/douane-dbus.git')
 md5sums=('SKIP'
          'SKIP')
