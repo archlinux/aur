@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
-pkgver=3.14.1
+pkgver=3.14.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -26,11 +26,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0006-genksyms-fix-typeof-handling.patch'
         '0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch'
         '0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch'
+        '0011-kernfs-fix-removed-error-check.patch'
+        '0012-fix-saa7134.patch'
+        '0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch'
+        '0014-fix-rtl8192se.patch'
+        '0015-fix-xsdt-validation.patch'
         )
 md5sums=('b621207b3f6ecbb67db18b13258f8ea8'
-         '2526eb95793ecc1c22d7e1428ef23cdc'
-         '6fbaff238ba455fa0b2b37b79e4dc328'
-         '8fa3dd14c7845ffbb190e691d4f591d3'
+         'f2239bf772d1b6e1c26cb03f6e056959'
+         '60dfde99c784dda18b5d95e605df7a83'
+         '60ef02ecbe2baa8ae905d6c81420905c'
          'eb14dcfd80c00852ef81ded6e826826a'
          '98beb36f9b8cf16e58de2483ea9985e3'
          '6839ddec74a5300beff1709a81b0e4f3'
@@ -40,7 +45,12 @@ md5sums=('b621207b3f6ecbb67db18b13258f8ea8'
          'a89d593774ccb955eb8368d3bc87ce26'
          '16a161979f846b049e90daea907c35dd'
          '00727251b0d337a25d3ca392218afdf4'
-         '353b553d69da810ef954618aca60e1e2')
+         '353b553d69da810ef954618aca60e1e2'
+         'b3f98eba6322463ed6644784c56893be'
+         '4f547d79fa1b2bb855dc2996be2a515e'
+         '21d25aef69f9da33c6087b7ffd97783e'
+         'de37a66f5ebcccbc13208515ccc081cb'
+         '278417ab07b6f5fe8e3e0ed656f35f3e')
 
 _kernelname=${pkgbase#linux}
 
@@ -86,6 +96,30 @@ prepare() {
   # https://git.kernel.org/cgit/linux/kernel/git/iwlwifi/iwlwifi-fixes.git/commit/?id=12f853a89e29f50b17698e17e73c328a35f1498d
   # FS#39815
   patch -p1 -i "${srcdir}/0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch"
+  
+  # fix Xorg crash with i810 chipset due to wrong removed error check
+  # References: http://lkml.kernel.org/g/533D01BD.1010200@googlemail.com
+  patch -Np1 -i "${srcdir}/0011-kernfs-fix-removed-error-check.patch"
+
+  # fix saa7134 video
+  # https://bugs.archlinux.org/task/39904
+  # https://bugzilla.kernel.org/show_bug.cgi?id=73361
+  patch -Np1 -i "${srcdir}/0012-fix-saa7134.patch"
+
+  # fix tun/openvpn performance
+  # https://bugs.archlinux.org/task/40089
+  # https://bugzilla.kernel.org/show_bug.cgi?id=74051
+  patch -Np1 -i "${srcdir}/0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch"
+
+  # fix rtl8192se authentification
+  # https://bugs.archlinux.org/task/39858
+  # https://bugzilla.kernel.org/show_bug.cgi?id=74541
+  patch -Np1 -i "${srcdir}/0014-fix-rtl8192se.patch"
+
+  # fix xsdt validation bug
+  # https://bugs.archlinux.org/task/39811
+  # https://bugzilla.kernel.org/show_bug.cgi?id=73911
+  patch -Np1 -i "${srcdir}/0015-fix-xsdt-validation.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
