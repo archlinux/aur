@@ -1,0 +1,14 @@
+pkgbase = libgcj
+	pkgdesc = Dynamically load and interpret java class files. Built from binary executables available in Debian repositories. Please report PKGBUILD bugs at https://github.com/ystein/archlinux-aur-packages.
+	pkgver = 14_4.8.2_16
+	pkgrel = 1
+	url = http://gcc.gnu.org/java/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	conflicts = gcc-gcj
+	source = http://ftp.de.debian.org/debian/pool/main/g/gcc-4.8/libgcj14_4.8.2-16_amd64.deb
+	md5sums = f378e0371f26140efb87f016c817a04a
+
+pkgname = libgcj
+
