@@ -8,7 +8,7 @@
 
 pkgname=redshift-minimal
 _name=redshift
-pkgver=1.9
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies.."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('python')
 conflicts=('redshift')
 provides=('redshift')
 source=("https://github.com/jonls/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('eb64e996d48a0b3e344f6dd10689e191')
+md5sums=('d72a44a6eb6bf356871d5f84a759337a')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
