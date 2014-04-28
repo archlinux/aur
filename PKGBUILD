@@ -52,8 +52,8 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -d "$pkgdir/usr/share/doc/$pkgbase/"
-  install -m644 -t "$pkgdir/usr/share/doc/$pkgbase/" ChangeLog NEWS README
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
