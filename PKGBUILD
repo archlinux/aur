@@ -4,7 +4,7 @@
 
 pkgname=perl-gnome2-wnck+
 pkgver=0.16
-pkgrel=5
+pkgrel=2
 pkgdesc="Perl interface to the Window Navigator Construction Kit (improved)"
 arch=('i686' 'x86_64')
 license=("GPL" "PerlArtistic")
@@ -17,7 +17,7 @@ options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-Wnck-${pkgver}.tar.gz"
 	"libwnck+.patch")
 md5sums=('439f4569ffd7af96ef1d3feaab23760e'
-         'ae7baf7c409334354d2aaa244ff316f7')
+         'ab18d2a4cc84a4294d4565e21dfee462')
 
 prepare() {
   cd Gnome2-Wnck-${pkgver}
