@@ -1,17 +1,17 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=pebble-sdk
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=2
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')
 license=('custom' 'MIT')
-depends=('arm-none-eabi-gcc' 'python2-pillow' 'python2-autobahn'
+depends=('arm-none-eabi-gcc' 'python2-pypng' 'python2-autobahn'
          'python2-pyserial' 'python2-sh' 'twisted' 'python2-freetype-py'
          'python2-websocket-client-pebble' 'arm-none-eabi-binutils')
 source=('python-waf.patch')
-_sdk_sha1sum='fc9ee49dd1773e4690488328b05bea3a5cbab88e'
+_sdk_sha1sum='c6e2cefb638ebcfffae31c6cc3b175d3e62b3c44'
 sha1sums=('cd95ccc69820eee60e8e6ff9d85d6edeb7c3b6a8')
 options=('staticlibs' '!strip')
 
