@@ -2,10 +2,11 @@
 # Contributor: Carsten Haitzler (Rasterman)
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgbase=elementary
-pkgname=$pkgbase-git
-true && pkgname=("$pkgbase-git" "elementary_test-git")
-pkgver=1.9.99.9772.b95a870
+_pkgname=elementary
+pkgbase=$_pkgname-git
+pkgname=$_pkgname-git
+true && pkgname=("$_pkgname-git" "elementary_test-git")
+pkgver=1.9.99.10012.1be3950
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -17,11 +18,11 @@ depends=('efl-git')
   [[ ! $(pacman -T libeweather-git) ]] && depends+=('libeweather-git') # eweather support is detected at build time
 makedepends=('git')
 options=('debug')
-source=("git://git.enlightenment.org/core/$pkgbase.git")
+source=("git://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
@@ -30,7 +31,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -45,14 +46,14 @@ package_elementary-git() {
   provides=("${pkgname%-*}=$pkgver")
   conflicts=("${pkgname%-*}")
 
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$pkgbase/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$pkgbase/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgbase/README"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
@@ -73,7 +74,7 @@ package_elementary_test-git() {
   provides=("${pkgname%-*}=$pkgver")
   conflicts=("${pkgname%-*}")
 
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   make -j1 DESTDIR="$pkgdir" install
 
