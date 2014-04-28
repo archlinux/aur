@@ -1,6 +1,6 @@
 pkgbase = cope-git
 	pkgdesc = A colourful wrapper for terminal programs
-	pkgver = 147.64038ce
+	pkgver = 164.06fcf63
 	pkgrel = 1
 	url = http://stuff.cytzol.org/cope/
 	install = cope-git.install
@@ -8,7 +8,7 @@ pkgbase = cope-git
 	license = GPL
 	license = PerlArtistic
 	makedepends = git
-	depends = perl>=5.1
+	depends = perl>=5.10
 	depends = perl-class-inspector
 	depends = perl-env-path
 	depends = perl-file-sharedir

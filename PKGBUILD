@@ -3,19 +3,19 @@
 # Contributor: denton <e9203.00 gmail com>
 pkgname=cope-git
 _gitname=cope
-pkgver=147.64038ce
+pkgver=164.06fcf63
 pkgrel=1
 pkgdesc='A colourful wrapper for terminal programs'
 url=http://stuff.cytzol.org/cope/
 arch=(any)
 license=('GPL' 'PerlArtistic')
-depends=("perl>=5.1" 'perl-class-inspector' 'perl-env-path' 'perl-file-sharedir'
+depends=("perl>=5.10" 'perl-class-inspector' 'perl-env-path' 'perl-file-sharedir'
          'perl-io-stty' 'perl-io-tty' 'perl-list-moreutils' 'perl-params-util'
          'perl-regexp-common' 'perl-regexp-ipv6')
 makedepends=('git')
 conflicts=($_gitname)
 provides=($_gitname)
-install=$pkgname.install
+install="${pkgname}.install"
 
 source=("git://github.com/lotrfan/${_gitname}.git")
 md5sums=('SKIP')
@@ -29,14 +29,14 @@ build() {
   cd "$_gitname"
 
   # Make
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
-  make || return 1
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 package() {
   cd "$_gitname"
 
-  make install DESTDIR=$pkgdir || return 1
+  make install DESTDIR=$pkgdir
 
   # Install the 'cope_path' command for use in bash startup scripts.
   mkdir -p $pkgdir/usr/bin
