@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/$_gitname/$_gitname"
 license=('GPL3')
 depends=('php>=4.3' 'mysql>=4.1')
-makedepends=('subversion')
+makedepends=('git')
 provides=('yourls')
 conflicts=('yourls')
 backup=('etc/webapps/yourls/config.php')

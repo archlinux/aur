@@ -6,7 +6,7 @@ pkgbase = yourls-git
 	install = yourls-git.install
 	arch = any
 	license = GPL3
-	makedepends = subversion
+	makedepends = git
 	depends = php>=4.3
 	depends = mysql>=4.1
 	provides = yourls
