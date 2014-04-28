@@ -1,18 +1,20 @@
 pkgname='dwt'
-pkgver='0.5'
+pkgver='0.5.1'
 pkgrel='1'
 pkgdesc='Simple no-frills terminal emulator based on VTE'
 license='MIT'
 url='https://github.com/aperezdc/dwt'
 source=( "http://people.igalia.com/aperez/files/${pkgname}-${pkgver}.tar.xz" )
-sha1sums=('4293ae216731ff4a4b4c5ed80c5ca147847e6aa7')
+sha1sums=('120c61e790c269711854b8ef9fc360945af764e5')
 arch=('i686' 'x86_64' 'arm')
 depends=('vte3')
 options=('strip' 'zipman')
 
 build () {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make PREFIX=/usr
+	CPPFLAGS="${CPPFLAGS} -DDWT_USE_HEADER_BAR=TRUE"
+	CPPFLAGS="${CPPFLAGS} -DDWT_USE_POPOVER=TRUE"
+	make PREFIX=/usr CPPFLAGS="${CPPFLAGS}"
 }
 
 package () {
