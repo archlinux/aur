@@ -1,4 +1,4 @@
-pkgbase = econcentration
+pkgbase = econcentration-git
 	pkgdesc = Game to improve you concentration and memory skills based on EFL
 	pkgver = 0.1.0alpha.r28.3257d79
 	pkgrel = 1
