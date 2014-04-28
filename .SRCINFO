@@ -6,6 +6,7 @@ pkgbase = dzen2-git
 	arch = i686
 	arch = x86_64
 	license = MIT/X
+	makedepends = git
 	depends = libxft
 	provides = dzen2
 	conflicts = dzen2-svn
