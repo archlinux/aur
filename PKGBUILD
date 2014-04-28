@@ -6,7 +6,7 @@ _pkgname=elementary
 pkgbase=$_pkgname-git
 pkgname=$_pkgname-git
 true && pkgname=("$_pkgname-git" "elementary_test-git")
-pkgver=1.9.99.10012.1be3950
+pkgver=1.9.99.10075.86a2fcd
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ package_elementary-git() {
 
 # install license files
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/AUTHORS" AUTHORS COMPLIANCE COPYING.images
+  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COMPLIANCE COPYING.images
   sed -n '1,/details./p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
 # remove test app
