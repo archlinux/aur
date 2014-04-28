@@ -13,6 +13,8 @@ depends=("perl>=5.1" 'perl-class-inspector' 'perl-env-path' 'perl-file-sharedir'
          'perl-io-stty' 'perl-io-tty' 'perl-list-moreutils' 'perl-params-util'
          'perl-regexp-common' 'perl-regexp-ipv6')
 makedepends=('git')
+conflicts=($_gitname)
+provides=($_gitname)
 install=$pkgname.install
 
 source=("git://github.com/lotrfan/${_gitname}.git")
