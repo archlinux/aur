@@ -8,6 +8,7 @@ pkgbase = network-ups-tools-git
 	arch = x86_64
 	license = GPL2
 	makedepends = asciidoc
+	makedepends = git
 	depends = openssl
 	depends = libusb-compat
 	provides = network-ups-tools
