@@ -83,5 +83,5 @@ package_elementary_test-git() {
   rm -rf "$pkgdir/usr/lib/elementary/modules/"{access_output,datetime_input_ctxpopup,prefs}
   rm -rf "$pkgdir/usr/share/applications/elementary_config.desktop"
   rm -rf "$pkgdir/usr/share/elementary/"{config,examples,themes,edje_externals}
-  rm -rf "$pkgdir/usr/share/"{icons,locale}
+  rm -rf "$pkgdir/usr/share/"{eolian,icons,locale}
 }
