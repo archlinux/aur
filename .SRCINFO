@@ -1,4 +1,4 @@
-pkgbase = e_cho
+pkgbase = e_cho-git
 	pkgdesc = Simon game based on EFL
 	pkgver = 0.1.0alpha.r41.b668315
 	pkgrel = 1

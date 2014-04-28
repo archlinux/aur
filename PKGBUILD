@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
-pkgbase=e_cho
-pkgname=$pkgbase-git
+_pkgname=e_cho
+pkgname=$_pkgname-git
 pkgver=0.1.0alpha.r41.b668315
 pkgrel=1
 pkgdesc="Simon game based on EFL"
@@ -10,13 +10,13 @@ url="http://www.enlightenment.org"
 license=('LGPL3')
 depends=('elementary' 'etrophy' 'libcanberra')
 makedepends=('git')
-provides=("$pkgbase=$pkgver")
-conflicts=("$pkgbase")
-source=("git://git.enlightenment.org/games/$pkgbase.git")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("git://git.enlightenment.org/games/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   for _i in v_maj v_min v_mic; do
     local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -40,11 +40,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -d "$pkgdir/usr/share/doc/$pkgbase/"
-  install -m644 -t "$pkgdir/usr/share/doc/$pkgbase/" AUTHORS ChangeLog NEWS README
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
 }
