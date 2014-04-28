@@ -45,5 +45,5 @@ package() {
 
 # install license files
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING COPYING_ARTS
+  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
