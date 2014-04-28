@@ -6,6 +6,7 @@ pkgbase = sshtunnel-git
 	install = sshtunnel-git.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = openssh
 	optdepends = autossh: More stabile connections
 	optdepends = x11-ssh-askpass: To accept host keys

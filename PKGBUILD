@@ -11,6 +11,7 @@ license=('GPL')
 depends=('openssh')
 optdepends=('autossh: More stabile connections'
             'x11-ssh-askpass: To accept host keys')
+makedepends=('git')
 provides=('sshtunnel')
 conflicts=('sshtunnel')
 backup=('etc/sshtunnel.conf')
