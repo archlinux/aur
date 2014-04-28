@@ -1,7 +1,7 @@
 pkgbase = network-ups-tools
 	pkgdesc = NUT is a collection of programs for monitoring and administering UPS hardware
-	pkgver = 2.7.1
-	pkgrel = 3
+	pkgver = 2.7.2
+	pkgrel = 1
 	url = http://www.networkupstools.org/
 	install = nut.install
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = network-ups-tools
 	backup = etc/ups/upsd.users
 	backup = etc/ups/upsmon.conf
 	backup = etc/ups/upssched.conf
-	source = http://www.networkupstools.org/source/2.7/nut-2.7.1.tar.gz
-	source = http://www.networkupstools.org/source/2.7/nut-2.7.1.tar.gz.sig
-	sha256sums = 71a6d73ad6d910808126ba7f217ec1142a0c6709c63a22a099e7338960b2c798
+	source = http://www.networkupstools.org/source/2.7/nut-2.7.2.tar.gz
+	source = http://www.networkupstools.org/source/2.7/nut-2.7.2.tar.gz.sig
+	sha256sums = 4d5365359b059d96dfcb77458f361a114d26c84f1297ffcd0c6c166f7200376d
 	sha256sums = SKIP
 
 pkgname = network-ups-tools

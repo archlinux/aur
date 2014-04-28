@@ -5,8 +5,8 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=network-ups-tools
-pkgver=2.7.1
-pkgrel=3
+pkgver=2.7.2
+pkgrel=1
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64')
 url="http://www.networkupstools.org/"
@@ -18,7 +18,7 @@ install=nut.install
 source=("http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz"
         "http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz.sig")
 options=('!emptydirs' '!libtool')
-sha256sums=('71a6d73ad6d910808126ba7f217ec1142a0c6709c63a22a099e7338960b2c798'
+sha256sums=('4d5365359b059d96dfcb77458f361a114d26c84f1297ffcd0c6c166f7200376d'
             'SKIP')
 
 build() {
@@ -64,8 +64,4 @@ package() {
   install -v -m 644 docs/*.html "$pkgdir/usr/share/doc/network-ups-tools"
   install -v -m 644 docs/images/*.png "$pkgdir/usr/share/doc/network-ups-tools/images"
   install -v -m 644 docs/images/cables/*.{png,jpg} "$pkgdir/usr/share/doc/network-ups-tools/images/cables"
-
-  # Fix broken systemd unit
-  cd "$pkgdir"
-  sed -i 's|=/upsdrvctl|=/usr/bin/upsdrvctl|' usr/lib/systemd/system/nut-driver.service
 }
