@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/claudehohl/Stikked"
 license=('GPL')
 depends=('php')
+makedepends=('git')
 provides=('stikked')
 conflicts=('stikked')
 backup=('etc/webapps/stikked/stikked.php')
