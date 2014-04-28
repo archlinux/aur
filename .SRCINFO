@@ -1,17 +1,17 @@
 pkgbase = desksanity-git
 	pkgdesc = Enlightenment module: Extra effects for the desktop
-	pkgver = 0.1.r30.90c5b70
+	pkgver = 0.6.rev38.5529266
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = efx-git
+	depends = efx
 	depends = enlightenment>=0.18.99
-	provides = desksanity=0.1.r30.90c5b70
+	provides = desksanity=0.6.rev38.5529266
 	conflicts = desksanity
-	source = git://git.enlightenment.org/devs/discomfitor/desksanity.git
+	source = git://git.enlightenment.org/enlightenment/modules/desksanity.git
 	sha256sums = SKIP
 
 pkgname = desksanity-git
