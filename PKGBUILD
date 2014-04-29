@@ -1,13 +1,13 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=pianobar-git
 _gitname=pianobar
-pkgver=670.53cef3e
-pkgrel=4
+pkgver=709.fc12245
+pkgrel=1
 pkgdesc="A free/open-source, console-based replacement for Pandora's Flash player"
-url="http://6xq.net/0017"
+url="http://6xq.net/projects/pianobar/"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('libao' 'faad2' 'libmad' 'readline' 'json-c' 'libgcrypt' 'gnutls')
+depends=('libao' 'ffmpeg' 'readline' 'json-c' 'libgcrypt' 'gnutls')
 optdepends=('libmad')
 makedepends=('pkgconfig>=0.9' 'git' 'automake')
 provides=('pianobar')
@@ -16,17 +16,22 @@ source=('git+https://github.com/PromyLOPh/pianobar.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd $srcdir/$_gitname
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
+prepare() {
+  cd $srcdir/$_gitname
+  sed -i 's/LIBAV:=undefined/LIBAV:=ffmpeg2.2/' Makefile
+}
+
 build() {
-  cd $_gitname
+  cd $srcdir/$_gitname
   make
 }
 
 package() {
-  cd $_gitname
+  cd $srcdir/$_gitname
   make DESTDIR=$pkgdir PREFIX=/usr install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
