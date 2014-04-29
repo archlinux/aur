@@ -5,7 +5,7 @@ pkgname=linux-linode
 _basekernel=3.14
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.0
+pkgver=${_basekernel}.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -13,13 +13,14 @@ license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc)
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-#        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         'config'
         'config.x86_64'
         'menu.lst'
         "preset"
         'change-default-console-loglevel.patch')
 sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
+            '72132895aa04bd3e029a490cdf6f6363f672562517afafb6c7b982e2a56b989de3684b7a59df830757025b37bfdb458b26deea03ee4ec1f7e379b97934670988'
             'f6c8033dac6bf6d268ab89c9ad114456f02963ce537b22890bbd3b8acfaf2f1c7ad93dd7aafba5fd22700ad98a353e498c6aafd2345d4c67fc6e88480d554df3'
             '262dd28cff884b9073f75f6399f4d5809f76d35a1af733b1c50861825830c8ced51e042c23e4d66163971f366d9ec10215e2e4abfd56a3dfecbcd67fb5347918'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
@@ -34,7 +35,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-#  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
