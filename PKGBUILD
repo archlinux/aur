@@ -9,7 +9,7 @@ license=("MIT")
 makedepends=('python2-setuptools')
 depends=('ffmpeg' 'imagemagick' 'opencv'
 	 'python2-decorator' 'python2-numpy' 'python2-pillow' 'python2-pygame'
-	 'scikit-image' 'python2-scipy' 'python-tqdm')
+	 'python2-scikit-image' 'python2-scipy' 'python-tqdm')
 provides=('python2-moviepy-git')
 conflicts=('python2-moviepy-git')
 source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
