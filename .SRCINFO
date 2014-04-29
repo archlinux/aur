@@ -1,7 +1,7 @@
 pkgbase = picard-plugins-aux
 	pkgdesc = additional plugins for MusicBrainz Picard
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
 	arch = any
 	license = GPL
@@ -24,6 +24,7 @@ pkgbase = picard-plugins-aux
 	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
 	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
 	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/albumartist_website.py
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
 	md5sums = 9a4f26bdc1c3e7c651255234f2bee289
 	md5sums = 1219e450a0eb04d78a5fb1c36ddd45e5
 	md5sums = 05c7dbe8f0ff5fc8e634da7db7f700c7
@@ -39,6 +40,7 @@ pkgbase = picard-plugins-aux
 	md5sums = 3ec10ede17cf40baf244f3f0e56aceac
 	md5sums = 83503215f2a62c6710d41d839f876315
 	md5sums = 10ae9cc716a31748a0726c1ff05e9513
+	md5sums = f6f0066612f1fda363f3320b5ac22718
 
 pkgname = picard-plugins-aux
 

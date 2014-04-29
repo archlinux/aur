@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -30,6 +30,7 @@ https://raw.github.com/Sophist-UK/Picard-Plugins/master/viewvariables.zip
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/albumartist_website.py
+https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
 )
 md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          '1219e450a0eb04d78a5fb1c36ddd45e5'
@@ -45,7 +46,8 @@ md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          'faebf9e8ee0e269a67cf4b9a5ca7524e'
          '3ec10ede17cf40baf244f3f0e56aceac'
          '83503215f2a62c6710d41d839f876315'
-         '10ae9cc716a31748a0726c1ff05e9513')
+         '10ae9cc716a31748a0726c1ff05e9513'
+         'f6f0066612f1fda363f3320b5ac22718')
 
 package() {
   plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
@@ -57,7 +59,8 @@ package() {
     f2k_rgscan.py metaflac_rgscan.py sidecar.py \
     removeperfectalbums.py autosave.py \
     eq2.py ne2.py p.py \
-    abbreviate_artistsort.py copy_to_comment.py albumartist_website.py
+    abbreviate_artistsort.py copy_to_comment.py albumartist_website.py \
+    musicbee_compatibility.py
 
   install -d "$plugindir"/viewvariables
   install -m644 -t "$plugindir"/viewvariables viewvariables/*.{py,ui}
