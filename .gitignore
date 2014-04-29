@@ -5,4 +5,5 @@ pkg/
 linux-*.tar.xz
 patch-*.xz
 *.log
+*.patch
 *.src.tar.gz
