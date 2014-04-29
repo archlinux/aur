@@ -18,6 +18,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config.x86_64'
         'menu.lst'
         "preset"
+        'fsid-0.patch::https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/0004-fs-Don-t-return-0-from-get_anon_bdev.patch'
         'change-default-console-loglevel.patch')
 sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
             '72132895aa04bd3e029a490cdf6f6363f672562517afafb6c7b982e2a56b989de3684b7a59df830757025b37bfdb458b26deea03ee4ec1f7e379b97934670988'
@@ -25,6 +26,7 @@ sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea5
             '0aa583bdd40dadd9dc7abee951f9db49987fdaa3c26dceb21b2cb9463a03c9f3b8daf7892fae93d39843b0435744eb948bbe8d5b83212d3e307a045f4340c485'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f'
+            '61addb73b2811a369b72ea097e310c63853f219d1384ea0e2cd2bc7b8389163e2e5679a9a198fe0977017658c18a90be0f73aaf72e9b829cc4a802a4fe7cfba0'
             '502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78')
 pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -37,6 +39,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -Np1 -i "${srcdir}/fsid-0.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
