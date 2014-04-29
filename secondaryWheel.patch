@@ -1,5 +1,5 @@
 diff --git a/doc/rxvt.1.pod b/doc/rxvt.1.pod
-index 7e2ae26..b7f993f 100644
+index 87042cd..9dfb861 100644
 --- a/doc/rxvt.1.pod
 +++ b/doc/rxvt.1.pod
 @@ -417,6 +417,11 @@ B<secondaryScreen>.
@@ -29,10 +29,10 @@ index 7e2ae26..b7f993f 100644
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
 diff --git a/src/command.C b/src/command.C
-index 542d14c..cd4066d 100644
+index 153f0e1..df22652 100644
 --- a/src/command.C
 +++ b/src/command.C
-@@ -2222,10 +2222,46 @@ rxvt_term::button_release (XButtonEvent &ev)
+@@ -2246,10 +2246,46 @@ rxvt_term::button_release (XButtonEvent &ev)
                  }
                else
  # endif
@@ -58,7 +58,7 @@ index 542d14c..cd4066d 100644
 +                       event.state       = 0;
 +                       event.keycode     = XKeysymToKeycode(ev.display,
 +                                            (dirn == UP) ? XK_Up : XK_Down);
-+                       for (lines = 0; lines < 3; ++lines)
++                       for ( ; lines > 0; --lines)
 +                         {
 +                            event.type = KeyPress;
 +                            XSendEvent (event.display, event.window, True,
