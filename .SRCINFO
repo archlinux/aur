@@ -1,6 +1,6 @@
 pkgbase = htop-git
 	pkgdesc = Interactive text-mode process viewer
-	pkgver = 312.953ec71
+	pkgver = 383.f0e2a0e
 	pkgrel = 1
 	url = https://github.com/hishamhm/htop
 	arch = i686
@@ -15,9 +15,7 @@ pkgbase = htop-git
 	conflicts = htop
 	options = !emptydirs
 	source = git+https://github.com/hishamhm/htop.git
-	source = https://projects.archlinux.org/svntogit/packages.git/plain/htop/trunk/tree-crash.patch
-	md5sums = SKIP
-	md5sums = 48eba3c0303bfd19d761b859bc69d713
+	sha256sums = SKIP
 
 pkgname = htop-git
 
