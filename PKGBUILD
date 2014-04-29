@@ -1,8 +1,11 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
+
 pkgname=linux-linode
-_basekernel=3.13
+_basekernel=3.14
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.11
+pkgver=${_basekernel}.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -15,13 +18,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config.x86_64'
         'menu.lst'
         "preset"
-        'change-default-console-loglevel.patch')
-sha512sums=('1ba223bb4b885d691a67196d86a8aaf7b4a1c351bf2a762f50f1b0c32da00dd0c28895872a66b49e8d244498d996876609268e64861d28ac4048886ef9f79b87'
-            '31a85e07ed75f68507d4d264d36314877c6304f4c9afb18173d70255c1c5514772989bcbc3582756e57c22d28dc84a610acc56edbb6d06045d9c63505fcfbc1b'
-            'c85383ae6fc9ddcfb6864ecf26a33723c39fdbf2bfda2199d18a4a362590ff63d26c50c06d57214d216b18af254e567bedf3490fe395d5f91f0f108f001567b6'
-            '9044822e0fcfcf18ed551bff61d0d42e17de783b3d7add97ac5dc8c0bac5e4cb2edf80d1116a479a4bde2c6e0caf123781bec59667b8ce9169e1ba34f3b7ec1d'
+        'fsid-0.patch::https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/0004-fs-Don-t-return-0-from-get_anon_bdev.patch'
+        'https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/change-default-console-loglevel.patch')
+sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
+            '72132895aa04bd3e029a490cdf6f6363f672562517afafb6c7b982e2a56b989de3684b7a59df830757025b37bfdb458b26deea03ee4ec1f7e379b97934670988'
+            '77c8d0cb8fd2d5346620780ff5481a6e5143563a3560f520e353836287d0dfbe22e3beac23126c27d42d7c27261b8638bf415abcf2ede347fb5abbcbe55ad5c8'
+            '577c650e06bf4891b66894fb613edd6ae37b276dbd899a2b863a98a2a89eeceeb71e4cdb0e140049fdd21bcce3ba13ab4482aedf1bb50c108bd7754a53b08105'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f'
+            '61addb73b2811a369b72ea097e310c63853f219d1384ea0e2cd2bc7b8389163e2e5679a9a198fe0977017658c18a90be0f73aaf72e9b829cc4a802a4fe7cfba0'
             '502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78')
 pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -34,6 +39,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -Np1 -i "${srcdir}/fsid-0.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
