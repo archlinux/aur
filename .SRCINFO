@@ -1,13 +1,13 @@
 pkgbase = python-natsort
 	pkgdesc = Natural sorting for python
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SethMMorton/natsort
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/SethMMorton/natsort/archive/3.1.1.tar.gz
+	source = python-natsort-3.1.1.tar.gz::https://github.com/SethMMorton/natsort/archive/3.1.1.tar.gz
 	md5sums = 926f93fc3bd8fa13e7ee2ed120341535
 
 pkgname = python-natsort
