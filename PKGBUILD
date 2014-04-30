@@ -3,8 +3,8 @@
 _python=python
 pkgname=$_python-efl-git
 _pkgname=python-efl
-pkgver=1.9.99.r561.28d1906
-pkgrel=2
+pkgver=1.9.99.r609.927320a
+pkgrel=1
 pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries - Development Version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -34,7 +34,6 @@ package() {
   $_python setup.py install --root="$pkgdir"
 
 # install text files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/${pkgname%-*}/AUTHORS"
-  install -Dm644 README "$pkgdir/usr/share/doc/${pkgname%-*}/README"
-  install -Dm644 changes.html "$pkgdir/usr/share/doc/${pkgname%-*}/changes.html"
+  install -d "$pkgdir/usr/share/doc/${pkgname%-*}/"
+  install -m644 -t "$pkgdir/usr/share/doc/${pkgname%-*}/" AUTHORS README.rst changes.html
 }
