@@ -1,0 +1,39 @@
+diff --git a/JSVM/H264Extension/include/H264AVCCommonIf.h b/JSVM/H264Extension/include/H264AVCCommonIf.h
+index 8bbee44..a0cb32c 100644
+--- a/JSVM/H264Extension/include/H264AVCCommonIf.h
++++ b/JSVM/H264Extension/include/H264AVCCommonIf.h
+@@ -90,11 +90,11 @@ class MyList : public std::list< T >
+ public:
+   typedef typename std::list<T>::iterator MyIterator;
+ 
+-  MyList& operator += ( const MyList& rcMyList) { if( ! rcMyList.empty() ) { insert( this->end(), rcMyList.begin(), rcMyList.end());} return *this; } // leszek
++  MyList& operator += ( const MyList& rcMyList) { if( ! rcMyList.empty() ) { this->insert( this->end(), rcMyList.begin(), rcMyList.end());} return *this; } // leszek
+   T popBack()                           { T cT = this->back(); this->pop_back(); return cT;  }
+   T popFront()                          { T cT = this->front(); this->pop_front(); return cT; }
+-  Void pushBack( const T& rcT )         { if( sizeof(T) == sizeof(void*) ) { if( rcT != NULL ){ push_back( rcT);} } }
+-  Void pushFront( const T& rcT )        { if( sizeof(T) == sizeof(void*) ) { if( rcT != NULL ){ push_front( rcT);} } }
++  Void pushBack( const T& rcT )         { if( sizeof(T) == sizeof(void*) ) { if( rcT != NULL ){ this->push_back( rcT);} } }
++  Void pushFront( const T& rcT )        { if( sizeof(T) == sizeof(void*) ) { if( rcT != NULL ){ this->push_front( rcT);} } }
+   MyIterator find( const T& rcT ) {  return std::find( this->begin(), this->end(), rcT ); } // leszek
+ };
+ 
+diff --git a/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadBitstreamFile.cpp b/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadBitstreamFile.cpp
+index 590b946..9de9218 100644
+--- a/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadBitstreamFile.cpp
++++ b/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadBitstreamFile.cpp
+@@ -1,4 +1,4 @@
+-
++#include <cstdio>
+ #include "ReadBitstreamFile.h"
+ 
+ 
+diff --git a/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadYuvFile.cpp b/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadYuvFile.cpp
+index 3c5e59c..45229ca 100644
+--- a/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadYuvFile.cpp
++++ b/JSVM/H264Extension/src/lib/H264AVCVideoIoLib/ReadYuvFile.cpp
+@@ -1,4 +1,4 @@
+-
++#include <cstdio>
+ #include "H264AVCVideoIoLib.h"
+ #include "ReadYuvFile.h"
+ 
