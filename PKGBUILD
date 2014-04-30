@@ -5,14 +5,14 @@
 
 pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
-pkgver=4.11.8
-_kdever=4.12.4
+pkgver=4.11.9
+_kdever=4.12.5
 pkgrel=1
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=('GPL' 'LGPL' 'FDL')
-groups=('kde')
+groups=('kde' 'kdebase')
 # note on libxdamage:
 # 	not detected by namcap because libgl depends on it
 #	but nvidia providing libgl does not depend on libxdamage
@@ -34,7 +34,7 @@ source=("http://download.kde.org/stable/${_kdever}/src/${_pkgname}-${pkgver}.tar
 	'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
 	'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
 	'khotkeys-qt4.patch')
-sha1sums=('e44b73ea1e2446258882d10694ca2896e1cc6b17'
+sha1sums=('ea4f3b3401b7304613adcc21acb92b5c3d11c9c1'
           '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
           '660eae40a707d2711d8d7f32a93214865506b795'
           '6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe'
@@ -84,7 +84,9 @@ build() {
 		-DWITH_Xmms=OFF \
 		-DWITH_libgps=OFF \
 		-DPYTHON_EXECUTABLE=/usr/bin/python2 \
-		-DWITH_CkConnector=ON
+		-DWITH_CkConnector=ON \
+		-DWITH_NepomukCore=OFF \
+		-DWITH_Soprano=OFF
 	make
 }
 
