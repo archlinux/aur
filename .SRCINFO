@@ -1,4 +1,4 @@
-pkgbase = python-pagekite
+pkgbase = python2-pagekite
 	pkgdesc = Python implementation of the PageKite remote front-end protocols.
 	pkgver = 0.5.6d
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = python-pagekite
 	source = https://pagekite.net/pk/src/pagekite-0.5.6d.tar.gz
 	md5sums = 2e1982c3fc9dc9461e7b1e24ffffe468
 
-pkgname = python-pagekite
+pkgname = python2-pagekite
 
