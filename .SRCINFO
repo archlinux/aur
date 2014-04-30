@@ -1,7 +1,7 @@
 pkgbase = freeablo
 	pkgdesc = Modern, FLOSS reimplementation of the Diablo 1 game engine
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeablo.org/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = freeablo
 	makedepends = cmake
 	depends = sdl2
 	depends = boost-libs
-	source = freeablo-0.1.tar.gz::https://github.com/wheybags/freeablo/archive/v0.1.tar.gz
+	source = freeablo-0.1.tar.gz::https://github.com/wheybags/freeablo/archive/cdv0.1.tar.gz
 	source = stormlib-for-0.1.tar.gz::https://github.com/wheybags/StormLib/archive/0857abc78c1d4bb924dc885781ca788cf64757a7.zip
-	sha256sums = b794a9d13c9800316b3c622bfff50bb158f69e33b288e5b2b2df6305841d1d22
+	sha256sums = ae9c023d296f9152cb14bf9973c367fb03a9138d636edf3d38e3c79785a6b04c
 	sha256sums = 5c47d6674354357680f6b296f0ac768846142b358a1949b58591c304737b11ce
 
 pkgname = freeablo
