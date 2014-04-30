@@ -1,33 +1,37 @@
-# Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
-pkgname=qt5-wayland-git
-pkgver=0.0.0
+_pkgname=qt5-wayland
+pkgname=$_pkgname-git
+pkgver=v5.0.0.beta1.415.g9fbaf51
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (QtWayland)"
-arch=('i686' 'x86_64')
-url="http://qt-project.org/"
-license=('GPL3' 'LGPL')
-depends=('qt5-base' 'qt5-declarative' 'libxcomposite' 'wayland')
-makedepends=('git' 'qtchooser')
-conflicts=('qt5-wayland')
-options=('!libtool' 'debug')
-source=(git://gitorious.org/qt/qtwayland.git#branch=stable)
-md5sums=('SKIP')
+arch=("i686" "x86_64")
+url="https://qt-project.org/"
+license=("GPL3" "LGPL")
+depends=("qt5-base-git" "qt5-declarative-git" "wayland")
+makedepends=("git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#branch=dev")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd qtwayland
-  git describe --always | sed 's|-|.|g'
+	cd "$srcdir/$_pkgname"
+	git describe --always | sed "s/-/./g"
 }
 
 build() {
-  export QT_SELECT=5
-
-  cd qtwayland
-  qmake CONFIG+=wayland-compositor
-  make
+	cd "$srcdir/$_pkgname"
+	mkdir -p build
+	cd build
+	qmake ..
+	make
 }
 
 package() {
-  cd qtwayland
-  make INSTALL_ROOT="${pkgdir}" install
+	cd "$srcdir/$_pkgname"
+	cd build
+	make INSTALL_ROOT="$pkgdir" install
 }
