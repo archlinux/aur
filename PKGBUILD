@@ -2,7 +2,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=steins-gate
-pkgver=0.2.0
+pkgver=0.3.2
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT' 'LGPL3' 'GPL3')
@@ -13,9 +13,9 @@ makedepends=('cmake' 'boost')
 source=(libnpa-$pkgver.tar.gz::"https://github.com/FGRE/libnpa/archive/v$pkgver.tar.gz"
         libnpengine-$pkgver.tar.gz::"https://github.com/FGRE/libnpengine/archive/v$pkgver.tar.gz"
         $pkgname-$pkgver.tar.gz::"https://github.com/FGRE/steins-gate/archive/v$pkgver.tar.gz")
-sha256sums=('85f1727bc3e2cf745275dac84b454cceb8152c27eeff24ff9de81f105e1c5668'
-            '66c79ba74e49e2286186c3e14fe2c58e170ecff321ec60fbdb5ab2864f32e981'
-            '7fb23b66f1163b5d40f07931f6045b87b2f65c767b80dc950a3414fe80c9319e')
+sha256sums=('e3ee341501fe0838396d9046747ea9bf6fe533e536934b46065e1cdf6d479ed0'
+            'd46af8c74584466e5a38f762040973fa9c14e89477b3249d5489c4468ccc85f8'
+            '2519d980ed3f0819de2b96002e99657db487365aea7e06d47ac480bcc8976e66')
 
 prepare() {
   for _name in libnpa libnpengine steins-gate; do
@@ -33,16 +33,18 @@ build() {
     msg2 "Building $_name..."
     cd "$srcdir"/$_name
 
-    cmake .
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr
     make
   done
 }
 
 package() {
-  install -Dm755 $pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm755 libnpa/libnpa.so "$pkgdir"/usr/lib/libnpa.so
-  install -Dm755 libnpengine/libnpengine.so "$pkgdir"/usr/lib/libnpengine.so
-  install -Dm644 $pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-$pkgname
-  install -Dm644 libnpa/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-libnpa
-  install -Dm644 libnpengine/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-libnpengine
+  for _name in libnpa libnpengine steins-gate; do
+    msg2 "Installing $_name..."
+    cd "$srcdir"/$_name
+
+    make DESTDIR="$pkgdir/" install
+
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-$_name
+  done
 }
