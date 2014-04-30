@@ -3,12 +3,12 @@
 pkgname=python2-pagekite
 _pkgname=pagekite
 pkgver=0.5.6d
-pkgrel=2
+pkgrel=3
 pkgdesc='Python implementation of the PageKite remote front-end protocols.'
 arch=('any')
 url='http://pagekite.org'
 license=('GPL')
-depends=('python')
+depends=('python2' 'python2-socksipychain')
 provides=('pypagekite')
 conflicts=('pagekite')
 options=(!emptydirs)
