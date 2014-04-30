@@ -1,7 +1,7 @@
 pkgbase = python2-pagekite
 	pkgdesc = Python implementation of the PageKite remote front-end protocols.
 	pkgver = 0.5.6d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pagekite.org
 	arch = any
 	license = GPL
