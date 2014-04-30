@@ -1,4 +1,5 @@
 # Maintainer: Philipp Schmitt <philipp@schmitt.co>
+# GitHub: https://github.com/pschmitt/aur-python2-pagekite
 pkgname=python2-pagekite
 _pkgname=pagekite
 pkgver=0.5.6d
