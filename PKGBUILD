@@ -4,8 +4,8 @@
 
 pkgbase=https-everywhere
 pkgname=${pkgbase}-chrome-git
-pkgver=22976.81071d2
-pkgrel=1
+pkgver=23217.787262f
+pkgrel=2
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
 url='https://www.eff.org/https-everywhere'
@@ -21,7 +21,7 @@ pkgver() {
 }
 prepare() {
 	 cd "${srcdir}/${pkgbase}"
-	 sed -i 's/python\([^2]\)/python2\1/' makecrx.sh
+	 sed -i 's/python\([^2]\)/python2\1/' makecrx.sh utils/merge-rulesets.sh
 	 sed -i 's_/usr/bin/\(\|env \)python\([^2]\|$\)_/usr/bin/\1python2\2_' utils/*.py
 }
 build() {
