@@ -3,21 +3,23 @@
 # Contributor: Gordin <9ordin @t gmail d@t com>
 
 pkgname=screenkey-git
-pkgver=0.2.c2720b9
+pkgver=0.2.b3634a2
 _pkgver=0.2
 pkgrel=1
 pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Patched version available on GitHub."
 arch=('any')
 url="https://github.com/scs3jb/screenkey"
 license=('GPL3')
-depends=('python2' 'pygtk' 'python2-xlib' 'xorg-xmodmap' 'python2-keybinder2')
-makedepends=('git')
+depends=('python2' 'pygtk' 'python2-xlib'
+         'python2-keybinder2' 'xorg-xmodmap')
+makedepends=('git' 'python2-distutils-extra')
 source=("$pkgname"::"git+https://github.com/scs3jb/screenkey.git")
 sha1sums=('SKIP')
 conflicts=('screenkey')
 replaces=('screenkey')
 
 pkgver() {
+  cd "$srcdir/$pkgname"
   _hash=`git log --pretty=format:'%h' -n 1`
   echo $_pkgver"."$_hash
 }
