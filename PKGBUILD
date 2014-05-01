@@ -3,12 +3,12 @@
 pkgname=python2-pagekite
 _pkgname=pagekite
 pkgver=0.5.6d
-pkgrel=3
+pkgrel=4
 pkgdesc='Python implementation of the PageKite remote front-end protocols.'
 arch=('any')
 url='http://pagekite.org'
 license=('GPL')
-depends=('python2' 'python2-socksipychain')
+depends=('python2' 'python2-setuptools' 'python2-socksipychain')
 provides=('pypagekite')
 conflicts=('pagekite')
 options=(!emptydirs)
@@ -17,7 +17,7 @@ md5sums=('2e1982c3fc9dc9461e7b1e24ffffe468')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
   # Fix shebangs: #!/usr/bin/python -> #!/usr/bin/python2
   cd "$pkgdir"
   sed -i '1s/\(python\)/\12/' usr/bin/*
