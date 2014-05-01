@@ -4,7 +4,7 @@
 
 pkgname=picard
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Official MusicBrainz tagger'
 url='http://musicbrainz.org/doc/MusicBrainz_Picard'
 license=('GPL')
@@ -25,5 +25,5 @@ build() {
 package() {
 	cd "${srcdir}/picard-${pkgver}"
 	python2 setup.py install --root="${pkgdir}"
-	cp -r contrib/* "${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins/"
+	cp -r contrib/plugins/* "${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins/"
 }
