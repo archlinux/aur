@@ -2,14 +2,14 @@
 # Contributor: fnord0 < fnord0 AT riseup DOT net >
 
 pkgname=hans
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="IPv4 over ICMP Echo tunnel"
 arch=('i686' 'x86_64')
 url="http://code.gerade.org/hans/"
 license=('GPL2')
 source=("https://github.com/friedrich/hans/archive/v${pkgver}.tar.gz")
-sha256sums=('5c7fb50e17144ab9195bf6925a027dd111c72af3247a80b6000252c6ec5ed44a')
+sha256sums=('68fd2497e2e0219ee17a6ee06a85efbae0139b3ba068bb4b9aa65c6ab7629d37')
 
 build() {
   cd ${srcdir}/hans-${pkgver}
