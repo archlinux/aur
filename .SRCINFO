@@ -1,7 +1,7 @@
 pkgbase = xpaint
 	pkgdesc = A color image editing tool which features most standard paint program options.
-	pkgver = 2.9.10
-	pkgrel = 2
+	pkgver = 2.9.10.2
+	pkgrel = 1
 	url = http://sourceforge.net/projects/sf-xpaint/
 	arch = i686
 	arch = x86_64
@@ -12,13 +12,14 @@ pkgbase = xpaint
 	depends = libtiff
 	depends = libxft
 	depends = libxpm
+	depends = openjpeg
 	optdepends = gv: external viewer for PostScript output
 	optdepends = imagemagick: external viewer for pixel graphics
 	options = !makeflags
-	source = xpaint.desktop
-	source = http://downloads.sourceforge.net/sourceforge/sf-xpaint/xpaint-2.9.10.tar.bz2
-	md5sums = 8833e2a72c90f3c0242f9b8335eeacef
-	md5sums = 8608e4e034aa6c09541070fcecc527e0
+	source = http://downloads.sourceforge.net/sourceforge/sf-xpaint/xpaint-2.9.10.2.tar.bz2
+	source = git+https://gist.github.com/10018613.git
+	md5sums = 68059359a756fea5914bcc541899bc5b
+	md5sums = SKIP
 
 pkgname = xpaint
 
