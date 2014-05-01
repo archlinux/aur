@@ -18,9 +18,6 @@ md5sums=('2e1982c3fc9dc9461e7b1e24ffffe468')
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
-  # Fix shebangs: #!/usr/bin/python -> #!/usr/bin/python2
-  cd "$pkgdir"
-  sed -i '1s/\(python\)/\12/' usr/bin/*
 }
 
 # vim:set ts=2 sw=2 et:
