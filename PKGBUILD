@@ -8,14 +8,14 @@ pkgdesc='A Python SOCKS/HTTP Proxy module'
 arch=('any')
 url='http://pagekite.org'
 license=('BSD')
-depends=('python2')
+depends=('python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pagekite.net/pk/src/$_pkgname-$pkgver.tar.gz")
 md5sums=('8ee8ff40e566aad9d76672a4ee745845')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
