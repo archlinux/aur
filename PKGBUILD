@@ -3,7 +3,7 @@
 
 pkgname=openmpi
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High performance message passing library (MPI)'
 arch=(i686 x86_64)
 url='http://www.open-mpi.org'
