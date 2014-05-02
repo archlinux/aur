@@ -3,7 +3,7 @@
 
 pkgname=scratch
 pkgver=1.4.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Create and share your own interactive stories, games, music and art"
 arch=('i686' 'x86_64')
 url="http://scratch.mit.edu"
@@ -13,12 +13,6 @@ depends=('squeak-vm' 'shared-mime-info' 'desktop-file-utils' 'pango'
          'gtk-update-icon-cache')
 source=(http://download.scratch.mit.edu/$pkgname-$pkgver.src.tar.gz)
 md5sums=('f948e9e6de3ec9c7c7b4cc2a1975eb5a')
-
-prepare() {
-  cd "$srcdir"/$pkgname-$pkgver.src
-
-  sed -i 's/-vm-sound-pulse/-vm-sound-ALSA/' src/$pkgname
-}
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver.src
