@@ -5,8 +5,8 @@
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 
 pkgname=cdogs
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
 arch=('i686' 'x86_64')
 url="http://cxong.github.io/cdogs-sdl/"
@@ -14,21 +14,21 @@ license=('GPL2')
 depends=('sdl_mixer' 'sdl_image')
 makedepends=('cmake')
 source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/$pkgver.tar.gz"
-        hqx-for-$pkgver.tar.gz::"https://github.com/cxong/hqx/archive/994249c8c4d1446afd9c05654bf7eafffd7a11bb.tar.gz"
-        cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/e90cdcf2ebaedabb8f5a2595d6edf7c823a4f196.tar.gz"
-        rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/97348047c4340de554bb0b5c6e0d2ab34c88f05b.tar.gz"
+        hqx-for-$pkgver.tar.gz::"https://github.com/cxong/hqx/archive/2a8a05854ad2147425d0b55a3c40e81c368c97fd.tar.gz"
+        cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/4ab8ce9fe7662c593ce92d5f99f6b60dbaeadad7.tar.gz"
+        rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/1407ec0e1775366aed527b6113dd14a02d046c09.tar.gz"
         tinydir-for-$pkgver.tar.gz::"https://github.com/cxong/tinydir/archive/5545eeb7bf5ee2b64f790a276f89aa1856a6269a.tar.gz")
-sha256sums=('675eab5e9fafe3254cd2a42435c37809d97050bd875c748184d59565a8dda276'
-            'adeef0711099da7e86c2c20b3fc40e63f32ea1e11ef0b9a98dacfc983f38f4ce'
-            '16fbb9d01d7c03701447621f51033d58e1853d622bbff2930148fadd4a8e8029'
-            'eca5ba880a64688591c556a0d125e0cc2b92c2c15b60e733a85f2a735728f9c7'
+sha256sums=('144ddf2a818f7bdac159cabb94d3aefeb9a0879ac06ff0c4987d8e5084fbfa9e'
+            'fca25adefd14af3584dcf0e48c69647aa46a924ddbfcb75ec6053528f1bd80bc'
+            'df3f546c63ab1517d2ae3053e2156f80555d3ddf96328190527965e1ca5dfc9d'
+            '42116a68a2fd8e810529df65e2703a3c3cd89d34e5e4652e3955e11f4d55abfe'
             'ebd1c2c64724f5f5e1837e42bae1f5c67a0be4df09b7974c2d6a3d64c8314ea4')
 
 prepare() {
   # copy submodules to right location
-  cp -rup hqx-994249c8c4d1446afd9c05654bf7eafffd7a11bb/* $pkgname-sdl-$pkgver/src/cdogs/hqx
-  cp -rup cbehave-e90cdcf2ebaedabb8f5a2595d6edf7c823a4f196/* $pkgname-sdl-$pkgver/src/tests/cbehave
-  cp -rup rlutil-97348047c4340de554bb0b5c6e0d2ab34c88f05b/* $pkgname-sdl-$pkgver/src/tests/cbehave/rlutil
+  cp -rup hqx-2a8a05854ad2147425d0b55a3c40e81c368c97fd/* $pkgname-sdl-$pkgver/src/cdogs/hqx
+  cp -rup cbehave-4ab8ce9fe7662c593ce92d5f99f6b60dbaeadad7/* $pkgname-sdl-$pkgver/src/tests/cbehave
+  cp -rup rlutil-1407ec0e1775366aed527b6113dd14a02d046c09/* $pkgname-sdl-$pkgver/src/tests/cbehave/rlutil
   cp -rup tinydir-5545eeb7bf5ee2b64f790a276f89aa1856a6269a/* $pkgname-sdl-$pkgver/src/tinydir
 
   cd $pkgname-sdl-$pkgver
