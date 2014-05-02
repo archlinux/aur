@@ -3,7 +3,7 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=161552
+pkgver=168122
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -55,7 +55,6 @@ build() {
   cmake . \
     -DPORT=Efl \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DSHARED_CORE=ON \
     -DENABLE_WEBKIT=ON \
