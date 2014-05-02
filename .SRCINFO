@@ -7,11 +7,20 @@ pkgbase = python-librtmp
 	arch = x86_64
 	license = custom: Simplified BSD
 	makedepends = python-setuptools
-	depends = python-singledispatch
-	depends = python-cffi
-	depends = rtmpdump
+	makedepends = python2-setuptools
+	makedepends = python-cffi
+	makedepends = python2-cffi
 	source = https://pypi.python.org/packages/source/p/python-librtmp/python-librtmp-0.2.0.tar.gz
 	sha256sums = 0a4385aa59f6f4d09ffa95cb85c1b0acd4678c8af3f21f45dd009d5f807a9635
 
 pkgname = python-librtmp
+	depends = python3
+	depends = python-cffi
+	depends = rtmpdump
+
+pkgname = python2-librtmp
+	depends = python2
+	depends = python2-singledispatch
+	depends = python2-cffi
+	depends = rtmpdump
 
