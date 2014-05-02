@@ -1,34 +1,62 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=phonon-gstreamer
+pkgbase=phonon-gstreamer
+pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
 pkgver=4.7.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
-pkgdesc="Phonon GStreamer backend"
 license=('LGPL')
-depends=('gstreamer0.10-base-plugins')
-makedepends=('cmake' 'automoc4' 'phonon-qt4')
-provides=('phonon-backend')
-install="${pkgname}.install"
+makedepends=('gstreamer0.10-base-plugins' 'cmake' 'automoc4' 'phonon-qt4' 'phonon-qt5')
 source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/phonon-backend-gstreamer-${pkgver}.tar.xz")
 md5sums=('7c0cfab4ec0bbe1f201503e6ccc7290a')
 
 prepare() {
-  mkdir build
+  mkdir build-qt4
+  mkdir build-qt5
 }
 
 build() {
-  cd build
+  cd build-qt4
   cmake ../phonon-backend-gstreamer-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_LIBDIR=lib
   make
+
+  cd ../build-qt5
+  cmake ../phonon-backend-gstreamer-${pkgver} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DPHONON_BUILD_PHONON4QT5=ON
+  make
 }
 
-package() {
-  cd build
+package_phonon-qt4-gstreamer() {
+  pkgdesc="Phonon GStreamer backend for Qt4"
+  depends=('gstreamer0.10-base-plugins')
+  provides=('phonon-backend' 'phonon-qt4-backend')
+  replaces=('phonon-gstreamer')
+  conflicts=('phonon-gstreamer')
+  install="phonon-qt4-gstreamer.install"
+
+  cd build-qt4
   make DESTDIR="${pkgdir}" install
+}
+
+package_phonon-qt5-gstreamer() {
+  pkgdesc="Phonon GStreamer backend for Qt5"
+  depends=('gstreamer0.10-base-plugins')
+  provides=('phonon-qt5-backend')
+  replaces=('phonon-gstreamer')
+  conflicts=('phonon-gstreamer')
+
+  cd build-qt5
+  make DESTDIR="${pkgdir}" install
+
+  # Those are not needed
+  rm -rf "${pkgdir}"/usr/share
 }
