@@ -3,7 +3,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=worker
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.boomerangsworld.de/worker"
 depends=('avfs' 'gcc-libs' 'libx11' 'file')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('0e33ea6813c48bc1028b27dcaa3c50e8')
+md5sums=('231de6536a0679ced0f7fb02bfecc619')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
