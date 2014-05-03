@@ -3,7 +3,7 @@
 
 pkgname=suxpanel
 pkgver=0.4b
-pkgrel=3
+pkgrel=2
 pkgdesc="A lightweight X11 desktop panel"
 arch=('x86_64' 'i686')
 url="http://suxpanel.berlios.de/"
@@ -18,7 +18,6 @@ build() {
   ./configure --prefix=/usr
   sed -e 's, -lgobject-2.0, -lgmodule-2.0 -lgobject-2.0,' -i Makefile
   sed -e 's,/usr/share/suxpanel/plugins,/usr/lib/suxpanel/plugins,' -i Makefile
-  sed -e 's, -shared , -fPIC -shared ,' -i Makefile
   sed -e 's,/usr/share/suxpanel/plugins,/usr/lib/suxpanel/plugins,' -i suxpanel-install.sh
   make
 }
