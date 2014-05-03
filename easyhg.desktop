@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=EasyMercurial
+Comment=Simple user interface for Mercurial.
+Exec=easyhg
+Icon=easyhg
+Terminal=false
+Type=Application
+Categories=Development;

@@ -1,7 +1,7 @@
 pkgbase = easyhg
 	pkgdesc = Simple user interface for the Mercurial distributed version contol system.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://easyhg.org
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = easyhg
 	optdepends = python-crypto: password store
 	optdepends = kdiff3: external diff/merge tool
 	source = https://code.soundsoftware.ac.uk/attachments/download/639/EasyMercurial-1.3.0-src.tar.gz
+	source = easyhg.desktop
 	md5sums = 728858917b2b121e2ee7ce160ff4151f
+	md5sums = d4362bd25f61606a67bbe27bbfacbeeb
 
 pkgname = easyhg
 
