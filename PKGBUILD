@@ -1,7 +1,7 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
 pkgver=4.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
@@ -14,6 +14,7 @@ optdepends=(
   'p7zip: to extract launcher from .msi'
   'perl-config-inifiles: instead of builtin'
   'perl-io-stringy: instead of builtin'
+  'cairo-nogl: if game crashes during loading/auto-setup'
 )
 conflicts=('runescape-client-bin')
 install=$pkgname.install
@@ -31,4 +32,7 @@ package() {
   cp -Rt "$_instdir" share rsu
   cp -Rt "$pkgdir"/usr/bin templates/packaging/usr/games/*
   cp -Rt "$pkgdir"/usr templates/packaging/usr/share
+
+  # these libraries are old, uptodate version is in AUR as 'cairo-nogl' package, if you need this
+  rm -rf "$_instdir"/rsu/3rdParty/linux/cairo-nogl
 }
