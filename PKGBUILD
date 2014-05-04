@@ -3,15 +3,14 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=168122
+pkgver=168241
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 _svnurl="https://svn.webkit.org/repository/webkit/trunk"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'cairo' 'efl' 'e_dbus' 'enchant' 'libtiff'
-         'gst-plugins-base-libs' 'libsoup' 'libxslt' 'libxt' 'harfbuzz-icu')
+depends=('atk' 'cairo' 'efl' 'e_dbus' 'enchant' 'harfbuzz-icu' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
