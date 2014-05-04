@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -31,6 +31,7 @@ https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/albumartist_website.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
+https://raw.github.com/Sophist-UK/Picard-Plugins/master/standardise_performers.py
 )
 md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          '1219e450a0eb04d78a5fb1c36ddd45e5'
@@ -45,9 +46,10 @@ md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          '3f4dad9583c7a5d935d009069c599a51'
          'faebf9e8ee0e269a67cf4b9a5ca7524e'
          '3ec10ede17cf40baf244f3f0e56aceac'
-         '0f6878c34cafd57f8ed62489a5a23a0b'
-         'ee121c7737e12ec264fc5979cd26ad00'
-         'f6f0066612f1fda363f3320b5ac22718')
+         '51b8537cae78fb372fb229345d8f65dc'
+         '2e20b62397ad8531e769e9f7c064b6e2'
+         'f6f0066612f1fda363f3320b5ac22718'
+         'db019df38156eba591658eddcb7c9e97')
 
 package() {
   plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
@@ -60,7 +62,7 @@ package() {
     removeperfectalbums.py autosave.py \
     eq2.py ne2.py p.py \
     abbreviate_artistsort.py copy_to_comment.py albumartist_website.py \
-    musicbee_compatibility.py
+    musicbee_compatibility.py standardise_performers.py
 
   install -d "$plugindir"/viewvariables
   install -m644 -t "$plugindir"/viewvariables viewvariables/*.{py,ui}
