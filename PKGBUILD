@@ -1,5 +1,6 @@
+# Maintainer: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Paul Mattal <paul@mattal.com>
-# Maintainer: Juergen Hoetzel <juergen@hoetzel.info>
+# Contributor: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
 pkgver=0.3.3
@@ -7,7 +8,7 @@ pkgrel=3
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
-url="http://www.openchrome.org"
+url="http://www.freedesktop.org/wiki/Openchrome/"
 depends=('libdrm' 'libxvmc' 'systemd')
 optdepends=('unichrome-dri')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=15')
