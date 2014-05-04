@@ -1,13 +1,13 @@
-post_install() {
+post_upgrade() {
   update-mime-database usr/share/mime > /dev/null
   update-desktop-database -q
-  echo "Please do not disable update checking in the initial setup"
 }
 
-post_upgrade() {
-  post_install
+post_install() {
+  echo "Please do not disable update checking in the initial setup"
+  post_upgrade
 }
 
 post_remove() {
-  post_install
+  post_upgrade
 }
