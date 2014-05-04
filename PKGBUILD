@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgbase=enlightenment
-pkgname=$pkgbase-git
+_pkgname=enlightenment
+pkgname=$_pkgname-git
 pkgver=0.18.99.18286.7274ffa
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
@@ -18,17 +18,17 @@ optdepends=('acpid: power events on laptop lid close'
             'connman: network module'
             'gdb: create backtraces on crash'
             'packagekit: packagekit module')
-provides=("$pkgbase=$pkgver" 'notification-daemon')
-conflicts=("$pkgbase")
+provides=("$_pkgname=$pkgver" 'notification-daemon')
+conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/enlightenment.menu')
 options=('debug')
 install=enlightenment.install
-source=("git://git.enlightenment.org/core/$pkgbase.git")
+source=("git://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   for _i in v_maj v_min v_mic; do
     local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
@@ -40,7 +40,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -54,13 +54,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -d "$pkgdir/usr/share/doc/$pkgbase/"
-  install -m644 -t "$pkgdir/usr/share/doc/$pkgbase/" ChangeLog NEWS README
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
   install -d "$pkgdir/usr/share/licenses/$pkgname/"

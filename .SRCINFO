@@ -1,4 +1,4 @@
-pkgbase = enlightenment
+pkgbase = enlightenment-git
 	pkgdesc = Enlightenment window manager - Development version
 	pkgver = 0.18.99.18286.7274ffa
 	pkgrel = 1
