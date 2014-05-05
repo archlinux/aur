@@ -1,0 +1,6 @@
+post_upgrade() {
+    if [[ $(vercmp $2 1.4.3-3) -le 0 ]]; then
+        chmod 750 var/log/tengine
+        chown http:log var/log/tengine
+    fi
+}
