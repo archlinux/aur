@@ -2,7 +2,7 @@
 # Contributor: birdflesh <antkoul at gmail dot com>
 
 pkgname=libkscreen
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="KDE's screen management library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('kdelibs' 'qjson')
 makedepends=('cmake' 'automoc4')
 source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-md5sums=('39f5316ef4f9203dd7a42180edbab122')
+md5sums=('7048db071d669193f8dafc9a1319998b')
 
 prepare() {
   mkdir build
