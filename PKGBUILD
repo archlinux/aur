@@ -2,7 +2,7 @@
 # Maintainer: Allen Zhong <moeallenz@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=mod_fcgid-lagacy
+pkgname=mod_fcgid-legacy
 pkgver=2.3.9
 pkgrel=1
 pkgdesc="A FastCGI module for Apache HTTP Server, build with apache httpd 2.2"
