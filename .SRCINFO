@@ -1,0 +1,23 @@
+pkgbase = mod_python2-legacy
+	pkgdesc = An Apache 2.2 module that embeds the Python2 interpreter within the server
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = http://www.modpython.org/
+	install = mod_python.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = apache22
+	depends = python2
+	conflicts = mod_python
+	conflicts = mod_python2
+	options = !strip
+	source = http://archive.apache.org/dist/httpd/modpython/mod_python-3.3.1.tgz
+	source = compile.patch
+	source = python-2.7.patch
+	md5sums = a3b0150176b726bd2833dac3a7837dc5
+	md5sums = 4786c158223c2d3a94f3b6e69826b522
+	md5sums = 71ce82d93d2685c62f5a0c17fe37985f
+
+pkgname = mod_python2-legacy
+

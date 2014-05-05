@@ -1,0 +1,57 @@
+diff -Nur mod_python-3.3.1.orig/src/connobject.c mod_python-3.3.1/src/connobject.c
+--- mod_python-3.3.1.orig/src/connobject.c	2006-12-03 15:36:37.000000000 +1100
++++ mod_python-3.3.1/src/connobject.c	2010-10-20 19:33:28.853600297 +1100
+@@ -426,7 +426,7 @@
+         return (PyObject *)self->hlo;
+     }
+     else if (strcmp(name, "_conn_rec") == 0) {
+-        return PyCObject_FromVoidPtr(self->conn, 0);
++        return PyCapsule_New(self->conn, "MpConn", 0);
+     }
+     else
+         return PyMember_Get((char *)self->conn, conn_memberlist, name);
+diff -Nur mod_python-3.3.1.orig/src/mod_python.c mod_python-3.3.1/src/mod_python.c
+--- mod_python-3.3.1.orig/src/mod_python.c	2006-11-09 17:21:23.000000000 +1100
++++ mod_python-3.3.1/src/mod_python.c	2010-10-20 19:34:44.124630590 +1100
+@@ -182,7 +182,7 @@
+     idata->istate = istate;
+     /* obcallback will be created on first use */
+     idata->obcallback = NULL; 
+-    p = PyCObject_FromVoidPtr((void *) idata, NULL);
++    p = PyCapsule_New((void *) idata, "MpInterpreterData", NULL);
+     PyDict_SetItemString(interpreters, (char *)name, p);
+     Py_DECREF(p);
+ 
+@@ -261,7 +261,7 @@
+             idata = save_interpreter(name, istate);
+     }
+     else {
+-        idata = (interpreterdata *)PyCObject_AsVoidPtr(p);
++        idata = (interpreterdata *)PyCapsule_GetPointer(p, "MpInterpreterData");
+     }
+ 
+ #ifdef WITH_THREAD
+diff -Nur mod_python-3.3.1.orig/src/requestobject.c mod_python-3.3.1/src/requestobject.c
+--- mod_python-3.3.1.orig/src/requestobject.c	2006-12-03 15:36:37.000000000 +1100
++++ mod_python-3.3.1/src/requestobject.c	2010-10-20 19:33:28.853600297 +1100
+@@ -1611,7 +1611,7 @@
+         }
+     }
+     else if (strcmp(name, "_request_rec") == 0) {
+-        return PyCObject_FromVoidPtr(self->request_rec, 0);
++        return PyCapsule_New(self->request_rec, "MpRequest", 0);
+     }
+     else
+         return PyMember_GetOne((char*)self->request_rec,
+diff -Nur mod_python-3.3.1.orig/src/serverobject.c mod_python-3.3.1/src/serverobject.c
+--- mod_python-3.3.1.orig/src/serverobject.c	2006-12-03 15:36:37.000000000 +1100
++++ mod_python-3.3.1/src/serverobject.c	2010-10-20 19:33:28.856933673 +1100
+@@ -225,7 +225,7 @@
+ static PyObject *getsrv_recmbr(serverobject *self, void *name) 
+ {
+     if (strcmp(name, "_server_rec") == 0) {
+-        return PyCObject_FromVoidPtr(self->server, 0);
++        return PyCapsule_New(self->server, "MpServer", 0);
+     }
+     return PyMember_GetOne((char*)self->server,
+                            find_memberdef(server_rec_mbrs, name));
