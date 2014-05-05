@@ -1,0 +1,19 @@
+pkgbase = mod_python2
+	pkgdesc = An Apache module that embeds the Python2 interpreter within the server
+	pkgver = 3.5.0
+	pkgrel = 2
+	url = http://www.modpython.org/
+	install = mod_python.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = apache
+	depends = python2
+	conflicts = mod_python2-legacy
+	conflicts = mod_python
+	options = !strip
+	source = http://dist.modpython.org/dist/mod_python-3.5.0.tgz
+	md5sums = 2e61621e8d030f535f112d8e739161e2
+
+pkgname = mod_python2
+
