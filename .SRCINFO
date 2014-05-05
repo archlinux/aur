@@ -1,6 +1,6 @@
 pkgbase = kalu
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = http://jjacky.com/kalu
 	install = kalu.install
@@ -17,8 +17,8 @@ pkgbase = kalu
 	depends = curl
 	depends = libnotify
 	depends = notification-daemon
-	source = http://jjacky.com/kalu/kalu-2.4.0.tar.gz
-	md5sums = b9d66af5d4f4d2f3161e919eff1ecbf0
+	source = http://jjacky.com/kalu/kalu-2.4.1.tar.gz
+	md5sums = f5758ef2e1f69d053221deb0dc5232cc
 
 pkgname = kalu
 
