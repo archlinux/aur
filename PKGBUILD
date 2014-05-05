@@ -4,7 +4,7 @@
 pkgname=mod_python2
 pkgver=3.5.0
 pkgrel=1
-pkgdesc="An Apache module that embeds the Python interpreter within the server"
+pkgdesc="An Apache module that embeds the Python2 interpreter within the server"
 arch=('i686' 'x86_64')
 url="http://www.modpython.org/"
 license=('APACHE')
