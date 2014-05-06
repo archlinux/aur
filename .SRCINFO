@@ -1,27 +1,31 @@
 pkgbase = hal
 	pkgdesc = Hardware Abstraction Layer
 	pkgver = 0.5.14
-	pkgrel = 23
+	pkgrel = 18
 	url = http://www.freedesktop.org/wiki/Software/hal
 	install = hal.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = custom
+	makedepends = pkg-config
 	makedepends = gperf
+	makedepends = libtool
 	depends = dbus-glib>=0.82
 	depends = libusb-compat
+	depends = systemd>=189
+	depends = filesystem>=2012
 	depends = hal-info>=0.20090716
 	depends = dmidecode
+	depends = pciutils>=3.0.2
+	depends = usbutils>=006
+	depends = pm-utils>=1.2.5
+	depends = util-linux>=2.24
 	depends = v4l-utils
-	depends = pciutils
-	optdepends = acpid>=2.0
-	optdepends = pm-utils>=1.2.5
 	options = !libtool
 	options = !makeflags
 	source = http://hal.freedesktop.org/releases/hal-0.5.14.tar.gz
 	source = hald
-	source = hal.service
 	source = hal.patch
 	source = udev-update.patch
 	source = hal-glib-2.3-compile-fix.patch
@@ -29,7 +33,6 @@ pkgbase = hal
 	source = badvok-compile-fix.patch
 	md5sums = e9163df591a6f38f59fdbfe33e73bf20
 	md5sums = 4cdfc673ad65ddb51919f5a757f62145
-	md5sums = ca4a7932fe7e8acbfa17245b62cc3b9b
 	md5sums = 185dd5d6ffc703ec8395b4eb3a1ae498
 	md5sums = 68209ba62b2a19537bfa459fdef70ed3
 	md5sums = c126a66766118f83a171511832d1b619
