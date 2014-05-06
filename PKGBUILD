@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
 pkgver=1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('picard')
 optdepends=('flac:        for metaflac ReplayGain'
             'foobar2000:  for foobar ReplayGain')
-conflicts=('picard-plugins<1.1')
+conflicts=('picard-plugins<1.1' 'picard>1.2')
 # removed due to crashes:
 #https://raw.github.com/mineo/mbstuff/master/picard/plugins/cue.py
 # previous location (only temporarily offline?)
@@ -26,12 +26,9 @@ https://raw.github.com/encukou/picard-plugins/master/autosave.py
 https://raw.github.com/brianfreud/Picard-plugins/master/eq2.py
 https://raw.github.com/brianfreud/Picard-plugins/master/ne2.py
 https://raw.github.com/brianfreud/Picard-plugins/master/p.py
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/viewvariables.zip
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/albumartist_website.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/standardise_performers.py
 )
 md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          '1219e450a0eb04d78a5fb1c36ddd45e5'
@@ -44,12 +41,9 @@ md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          'c4be2eceee00f72fc5c4e848d965b2ea'
          'db4100901c9b583140e8fe81bb4d324f'
          '3f4dad9583c7a5d935d009069c599a51'
-         'faebf9e8ee0e269a67cf4b9a5ca7524e'
          '3ec10ede17cf40baf244f3f0e56aceac'
          '51b8537cae78fb372fb229345d8f65dc'
-         '2e20b62397ad8531e769e9f7c064b6e2'
-         'f6f0066612f1fda363f3320b5ac22718'
-         'db019df38156eba591658eddcb7c9e97')
+         'f6f0066612f1fda363f3320b5ac22718')
 
 package() {
   plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
@@ -61,11 +55,8 @@ package() {
     f2k_rgscan.py metaflac_rgscan.py sidecar.py \
     removeperfectalbums.py autosave.py \
     eq2.py ne2.py p.py \
-    abbreviate_artistsort.py copy_to_comment.py albumartist_website.py \
-    musicbee_compatibility.py standardise_performers.py
-
-  install -d "$plugindir"/viewvariables
-  install -m644 -t "$plugindir"/viewvariables viewvariables/*.{py,ui}
+    abbreviate_artistsort.py copy_to_comment.py \
+    musicbee_compatibility.py
 }
 
 # vim:set ts=2 sw=2 et:
