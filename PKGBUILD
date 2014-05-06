@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r130.0a180d7
+pkgver=0.0.99.r193.55b34fa
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -16,7 +16,7 @@ depends=('elementary' 'xorg-xauth' 'sudo')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-backup=('etc/entrance.conf')
+backup=('etc/entrance/entrance.conf')
 source=("git://git.enlightenment.org/misc/$_pkgname.git")
 sha256sums=('SKIP')
 
@@ -33,7 +33,7 @@ prepare() {
       -e '/"shutdown"/ s|/sbin/shutdown -h now|/usr/bin/systemctl poweroff|' \
       -e '/"reboot"/ s|/sbin/shutdown -r now|/usr/bin/systemctl reboot|' \
       -e '/"suspend"/ s|/usr/sbin/pm-suspend|/usr/bin/systemctl suspend|' \
-      -i "$srcdir/$_pkgname/data/entrance.conf"
+      -i "$srcdir/$_pkgname/data/entrance.conf.in"
 }
 
 build() {

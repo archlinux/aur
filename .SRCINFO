@@ -1,6 +1,6 @@
 pkgbase = entrance-git
 	pkgdesc = Enlightenment Display Manager
-	pkgver = 0.0.99.r130.0a180d7
+	pkgver = 0.0.99.r193.55b34fa
 	pkgrel = 1
 	url = http://www.enlightenment.org/
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = entrance-git
 	depends = elementary
 	depends = xorg-xauth
 	depends = sudo
-	provides = entrance=0.0.99.r130.0a180d7
+	provides = entrance=0.0.99.r193.55b34fa
 	conflicts = entrance
-	backup = etc/entrance.conf
+	backup = etc/entrance/entrance.conf
 	source = git://git.enlightenment.org/misc/entrance.git
 	sha256sums = SKIP
 
