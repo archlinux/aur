@@ -10,6 +10,7 @@ pkgbase = entrance-git
 	depends = elementary
 	depends = xorg-xauth
 	depends = sudo
+	optdepends = ekbd-git:For virtual keyboard
 	provides = entrance=0.0.99.r193.55b34fa
 	conflicts = entrance
 	backup = etc/entrance/entrance.conf
