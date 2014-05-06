@@ -1,0 +1,19 @@
+pkgbase = picard-plugins-git
+	pkgdesc = plugins from picard-git
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins
+	arch = any
+	license = GPL
+	depends = picard
+	conflicts = picard-git
+	conflicts = picard>1.2
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/viewvariables.zip
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/albumartist_website.py
+	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/standardise_performers.py
+	md5sums = faebf9e8ee0e269a67cf4b9a5ca7524e
+	md5sums = 2e20b62397ad8531e769e9f7c064b6e2
+	md5sums = db019df38156eba591658eddcb7c9e97
+
+pkgname = picard-plugins-git
+
