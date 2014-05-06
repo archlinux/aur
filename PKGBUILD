@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
-pkgver=3.14.2
+pkgver=3.14.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0004-fs-Don-t-return-0-from-get_anon_bdev.patch'
         '0005-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch'
         '0006-genksyms-fix-typeof-handling.patch'
-        '0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch'
         '0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch'
         '0011-kernfs-fix-removed-error-check.patch'
         '0012-fix-saa7134.patch'
@@ -33,7 +32,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0015-fix-xsdt-validation.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            '1c7a8fee1674bfa6354dc6e3038ca1f16bc1327b035cd4896b795b482c7d1829'
+            'a26a25739c50d639174698ae498530205b55e5a2b11f8c33ab92a8581bc83fbd'
             'c01d212694eddcf694c55e0943bf3336b6e1ff41b90ac1cdc88b26789785ed45'
             '9a33feb450005a43bf9aa8fbb74b2e463c72ea17ad06bab3357f8a0a89088e85'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
@@ -44,7 +43,6 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '1e1ae0f31f722e80da083ecada1f1be57f9ddad133941820c4483b0240e494c1'
             '3fffb01cf97a5a7ab9601cb277d2468c0fb1e1cceba4225915f3ffae3a5694ec'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            'a98bc3836bcf85774a974a1585e6b64432ba8c42363ee484d14515ccd6a88e24'
             'c0af4622f75c89fef62183e18b7d49998228d4eaa906c6accaf4aa4ff0134f85'
             '04f44bf5c181d6dc31905937c1bdccb0f5aecaad3a579e99b302502b9cbe0f7a'
             '79359454c9d8446eb55add2b1cdbf8332bd67dafb01fefb5b1ca090225f64d18'
@@ -87,11 +85,6 @@ prepare() {
   # Fix generation of symbol CRCs
   # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
   patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
-
-  # Fix the use of code32_start in the EFI boot stub
-  # http://permalink.gmane.org/gmane.linux.kernel/1679881
-  # https://git.kernel.org/cgit/linux/kernel/git/mfleming/efi.git/commit/?h=urgent&id=7e8213c1f3acc064aef37813a39f13cbfe7c3ce7
-  patch -p1 -i "${srcdir}/0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch"
 
   # https://git.kernel.org/cgit/linux/kernel/git/iwlwifi/iwlwifi-fixes.git/commit/?id=12f853a89e29f50b17698e17e73c328a35f1498d
   # FS#39815
