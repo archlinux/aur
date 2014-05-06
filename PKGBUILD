@@ -1,4 +1,4 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: meklu <meklu at meklu dot org>
 # Contributor: Samsagax <samsagax at gmail dot com>
 # Contributor: Swift Geek <swiftgeek+spam@gmail.com>
@@ -12,7 +12,7 @@ url="http://www.enlightenment.org/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('elementary' 'xorg-xauth' 'sudo')
-optdepends=('ekbd-git:For virtual keyboard')
+optdepends=('ekbd-git: For virtual keyboard')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
