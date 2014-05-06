@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ options=('!emptydirs')
 depends=('ruby' 'curl' 'lzo2' 'libidn' 'rtmpdump')
 source=(http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
         http://pkgbuild.com/~jsteel/aur/$pkgname/substrate_archlinux_$CARCH.zip)
-md5sums=('f6c22ddf494b3bcd860a751e38a8ef1c')
+md5sums=('c3d23bc5573e0790eaebfc08e59f0384')
 [[ $CARCH == i686 ]] && md5sums[3]='c04042b24de56d18a041bc005e5ecaa4'
 [[ $CARCH == x86_64 ]] && md5sums[3]='53d8a137e0b50fee8509a7d1c15fd33b'
 
