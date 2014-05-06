@@ -10,7 +10,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
-makedepends=(xmlto docbook-xsl kmod inetutils bc)
+makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
@@ -22,8 +22,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/change-default-console-loglevel.patch')
 sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
             '1da62f5140965befb39f9565564cb00de189dd83b279632be50d8b1b4a9c59279907435b5d7f3c2fd47c13ba92468b23187f2d0433c7fbb5578f12359ed5584a'
-            '77c8d0cb8fd2d5346620780ff5481a6e5143563a3560f520e353836287d0dfbe22e3beac23126c27d42d7c27261b8638bf415abcf2ede347fb5abbcbe55ad5c8'
-            '577c650e06bf4891b66894fb613edd6ae37b276dbd899a2b863a98a2a89eeceeb71e4cdb0e140049fdd21bcce3ba13ab4482aedf1bb50c108bd7754a53b08105'
+            'cfe85ba355a4eba535bf18266657aeb0577b2d1230ddd1c5114145102522905bf81bc3aa1d1720433c3fb4df6d872f394a19e218be3c3c3c922c1f2ef7121b50'
+            '3a5f99055cd3be4b4c95d5011bd231d4992dd86574dc1676f9e8aea349adc50e28d892cc470343da4266bbd2eac8d9e6c0b8f7ae0157deb9069d65167503f59d'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f'
             '61addb73b2811a369b72ea097e310c63853f219d1384ea0e2cd2bc7b8389163e2e5679a9a198fe0977017658c18a90be0f73aaf72e9b829cc4a802a4fe7cfba0'
