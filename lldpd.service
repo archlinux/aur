@@ -9,6 +9,7 @@ RequiresMountsFor=/run
 Type=notify
 NotifyAccess=main
 ExecStart=/usr/bin/lldpd -x -c -f -s -e -l -M 2
+ExecReload=/usr/bin/lldpcli -c /etc/lldpd.conf -c /etc/lldpd.d
 Restart=on-failure
 
 [Install]
