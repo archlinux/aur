@@ -23,7 +23,7 @@ true && pkgname=('roccat-tools-common'
                  'roccat-tools-ryos'
                  'roccat-tools-savu')
 pkgbase=roccat-tools
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Userland applications to configure and make extended use of ROCCAT devices"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ optdepends=('kmod-roccat: Adds support for some devices not yet in vanilla kerne
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('aa6756a549c95d3579a8e08c0fdb5b1c')
+md5sums=('ef1c776a0add38a90a83af4e1fd4bfe2')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
