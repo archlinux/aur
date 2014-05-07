@@ -1,0 +1,24 @@
+pkgbase = prospector
+	pkgdesc = A roguelike in space.
+	pkgver = R184
+	pkgrel = 1
+	url = http://prospector.at/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = unzip
+	depends = libxpm
+	depends = libjpeg6
+	depends = ncurses
+	depends = freetype2
+	depends = libogg
+	depends = libvorbis
+	depends = libtinfo
+	noextract = R184prospector_linux.zip
+	source = http://www.prospector.at/forum/dm_eds/files/linux/R184prospector_linux.zip
+	source = prospector.sh
+	md5sums = d80b53b3e7fe387607d25a51902852e9
+	md5sums = c94de740aafaca4e77d06d91717fec06
+
+pkgname = prospector
+
