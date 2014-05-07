@@ -1,6 +1,6 @@
 pkgbase = lldpd-git
 	pkgdesc = LLDP daemon for GNU/Linux implementing both reception and sending
-	pkgver = 0.7.7.58
+	pkgver = 0.7.8.5
 	pkgrel = 1
 	url = https://vincentbernat.github.com/lldpd/
 	install = lldpd.install
