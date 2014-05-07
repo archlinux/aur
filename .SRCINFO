@@ -1,0 +1,24 @@
+pkgbase = puddletag-hg
+	pkgdesc = An audio tag editor for GNU/Linux.
+	pkgver = r725.e0d8de5bb328
+	pkgrel = 1
+	url = http://puddletag.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	depends = python2
+	depends = python2-pyqt
+	depends = python2-pyparsing
+	depends = mutagen
+	depends = python2-configobj
+	depends = python2-musicbrainz2
+	optdepends = python2-imaging: edit/view FLAC cover art
+	optdepends = quodlibet: edit a QuodLibet library
+	provides = puddletag
+	conflicts = puddletag
+	source = puddletag-hg::hg+http://hg.code.sf.net/p/puddletag/code
+	md5sums = SKIP
+
+pkgname = puddletag-hg
+
