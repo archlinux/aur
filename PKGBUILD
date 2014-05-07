@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=lldpd-git
-pkgver=0.7.8.6
+pkgver=0.7.8.12
 pkgrel=1
 pkgdesc="LLDP daemon for GNU/Linux implementing both reception and sending"
 arch=('i686' 'x86_64')
@@ -28,12 +28,6 @@ pkgver() {
   git describe --tags --always | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
 }
 
-prepare() {
-  cd $pkgname
-  sed -e '/LLDPD_CTL_SOCKET/s,/var/run,/run,' -i src/ctl.h
-  sed -e '/LLDPD_PID_FILE/s,/var/run,/run,' -i src/daemon/lldpd.h
-}
-
 build() {
   cd $pkgname
   ./autogen.sh
@@ -45,7 +39,9 @@ build() {
     --with-json \
     --with-privsep-user=lldpd \
     --with-privsep-group=lldpd \
-    --with-privsep-chroot=/run/lldpd
+    --with-privsep-chroot=/run/lldpd \
+    --with-lldpd-ctl-socket=/run/lldpd.socket \
+    --with-lldpd-pid-file=/run/lldpd.pid
   make
   echo "" >>lldpd.conf
   echo "# Place configuration files in this directory: see lldpcli(8)" >README.conf
