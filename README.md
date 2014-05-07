@@ -1,13 +1,13 @@
-# fakexrandr 
+# fakexrandr
 
 ## Description
 
-AUR package for fakexrandr 
+AUR package for fakexrandr
 
 ## Installation
 
 ```bash
-wget https://raw.github.com/pschmitt/aur-fakexrandr/PKGBUILD
+wget https://raw.githubusercontent.com/pschmitt/aur-fakexrandr/master/PKGBUILD
 makepkg -si
 ```
 
