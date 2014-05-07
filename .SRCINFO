@@ -1,0 +1,16 @@
+pkgbase = fakexrandr-git
+	pkgdesc = Fake XRandR configurations for multi-head setups with crappy video drivers, like fakexinerama but with xrandr
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/pschmitt/fakexrandr
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = glibc
+	makedepends = sed
+	depends = xorg-xrandr
+	source = fakexrandr-git::git://github.com/pschmitt/fakexrandr.git
+	sha1sums = SKIP
+
+pkgname = fakexrandr-git
+
