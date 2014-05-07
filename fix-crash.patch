@@ -1,0 +1,53 @@
+From: Aleix Pol <aleixpol@kde.org>
+Date: Mon, 05 May 2014 13:13:25 +0000
+Subject: Fix crash
+X-Git-Url: http://quickgit.kde.org/?p=libkscreen.git&a=commitdiff&h=221dff2e2f9fbd1c18eae9b59f23b1dbbdb1870b
+---
+Fix crash
+
+If we don't have a primary output, don't query it. Set a new primary
+output instead.
+
+Reviewed by Alex Fiestas
+---
+
+
+--- a/backends/xrandr/xrandrconfig.cpp
++++ b/backends/xrandr/xrandrconfig.cpp
+@@ -157,7 +157,7 @@
+         output->updateKScreenOutput(kscreenOutput);
+     }
+ 
+-    if (config->primaryOutput()->id() != m_primaryOutput) {
++    if (!config->primaryOutput() || config->primaryOutput()->id() != m_primaryOutput) {
+         config->setPrimaryOutput(config->output(m_primaryOutput));
+     }
+ }
+
+From: Aleix Pol <aleixpol@kde.org>
+Date: Tue, 06 May 2014 13:55:16 +0000
+Subject: Don't crash when printing a null KScreen::Output* from qDebug
+X-Git-Url: http://quickgit.kde.org/?p=libkscreen.git&a=commitdiff&h=31f07fd26e6091dfd37c54fef3352a95182e5bba
+---
+Don't crash when printing a null KScreen::Output* from qDebug
+
+Reviewed by Alex Fiestas
+---
+
+
+--- a/src/output.cpp
++++ b/src/output.cpp
+@@ -425,7 +425,11 @@
+ 
+ QDebug operator<<(QDebug dbg, const KScreen::Output *output)
+ {
+-    dbg << "KScreen::Output(Id:" << output->id() <<", Name:" << output->name() << ")";
++    if(output) {
++        dbg << "KScreen::Output(Id:" << output->id() <<", Name:" << output->name() << ")";
++    } else {
++        dbg << "KScreen::Output(NULL)";
++    }
+     return dbg;
+ }
+ 
+

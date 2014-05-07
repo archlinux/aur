@@ -3,18 +3,23 @@
 
 pkgname=libkscreen
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE's screen management library"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/libkscreen'
 license=('GPL')
 depends=('kdelibs' 'qjson')
 makedepends=('cmake' 'automoc4')
-source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-md5sums=('7048db071d669193f8dafc9a1319998b')
+source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.xz"
+        'fix-crash.patch')
+md5sums=('7048db071d669193f8dafc9a1319998b'
+         'fef9233861b848d569c015f6095d390a')
 
 prepare() {
   mkdir build
+
+  cd $pkgname-$pkgver
+  patch -p1 -i "$srcdir"/fix-crash.patch
 }
 
 build() {
