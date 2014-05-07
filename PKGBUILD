@@ -2,12 +2,12 @@
 
 pkgname=lldpd-git
 pkgver=0.7.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc="LLDP daemon for GNU/Linux implementing both reception and sending"
 arch=('i686' 'x86_64')
 url="http://vincentbernat.github.io/lldpd/"
 license=('custom:"ISC"')
-depends=('libxml2' 'net-snmp' 'libevent' 'libbsd' 'jansson' 'libseccomp')
+depends=('libxml2' 'net-snmp' 'libevent' 'libbsd' 'jansson')
 makedepends=('git')
 provides=('lldpd')
 conflicts=('lldpd')
@@ -19,13 +19,19 @@ source=("$pkgname::git+https://github.com/vincentbernat/lldpd.git"
 	'lldpd.install'
 	'LICENSE')
 md5sums=('SKIP'
-         'b66e7638d87ab8038dc090961ccda841'
-         '50f07ea180eea6685ed884de0eec89cb'
+         '901437508b539e49d2b73453053c1c94'
+         '76d6b0e0d5d0de3718dbca898d0db270'
          '8ae98663bac55afe5d989919d296f28a')
 
 pkgver() {
   cd $pkgname
   git describe --tags --always | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+}
+
+prepare() {
+  cd $pkgname
+  sed -e '/LLDPD_CTL_SOCKET/s,/var/run,/run,' -i src/ctl.h
+  sed -e '/LLDPD_PID_FILE/s,/var/run,/run,' -i src/daemon/lldpd.h
 }
 
 build() {
@@ -37,7 +43,6 @@ build() {
     --with-snmp \
     --with-xml \
     --with-json \
-    --with-seccomp \
     --with-privsep-user=lldpd \
     --with-privsep-group=lldpd \
     --with-privsep-chroot=/run/lldpd

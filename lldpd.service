@@ -7,8 +7,8 @@ After=snmpd.service network.target
 [Service]
 Type=notify
 NotifyAccess=main
-ExecStart=/usr/bin/lldpd -x -c -f -s -e -l -M 2
-ExecReload=/usr/bin/lldpcli -c /etc/lldpd.conf -c /etc/lldpd.d
+ExecStart=/usr/bin/lldpd -u /run/lldpd.socket -x -c -f -s -e -l -M 2
+ExecReload=/usr/bin/sh -c "/usr/bin/lldpcli -u /run/lldpd.socket -c /etc/lldpd.conf -c /etc/lldpd.d || :"
 Restart=on-failure
 
 [Install]

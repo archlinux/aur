@@ -1,17 +1,17 @@
 post_install(){
-  usr/bin/groupadd -g 142 lldpd &>/dev/null
-  usr/bin/useradd  -u 142 -g lldpd -d /run/lldpd -s /bin/false lldpd &>/dev/null
+  usr/bin/groupadd -g 142 lldpd
+  usr/bin/useradd  -u 142 -g lldpd -d /run/lldpd -s /bin/false lldpd
 }
 
 post_upgrade(){
   # old user name and group was _lldpd
-  usr/bin/getent passwd _lldpd &>/dev/null && usr/bin/userdel  _lldpd &>/dev/null
-  usr/bin/getent group  _lldpd &>/dev/null && usr/bin/groupdel _lldpd &>/dev/null
-  usr/bin/getent group  lldpd &>/dev/null || usr/bin/groupadd -g 142 lldpd &>/dev/null
-  usr/bin/getent passwd lldpd &>/dev/null || usr/bin/useradd  -u 142 -g lldpd -d /run/lldpd -s /bin/false lldpd &>/dev/null
+  usr/bin/getent passwd _lldpd >/dev/null 2>&1 && usr/bin/userdel  _lldpd
+  usr/bin/getent group  _lldpd >/dev/null 2>&1 && usr/bin/groupdel _lldpd
+  usr/bin/getent group  lldpd >/dev/null 2>&1 || usr/bin/groupadd -g 142 lldpd
+  usr/bin/getent passwd lldpd >/dev/null 2>&1 || usr/bin/useradd  -u 142 -g lldpd -d /run/lldpd -s /bin/false lldpd
 }
 
 post_remove(){
-  usr/bin/getent passwd lldpd &>/dev/null && usr/bin/userdel  lldpd &>/dev/null
-  usr/bin/getent group  lldpd &>/dev/null && usr/bin/groupdel lldpd &>/dev/null
+  usr/bin/getent passwd lldpd >/dev/null 2>&1 && usr/bin/userdel  lldpd
+  usr/bin/getent group  lldpd >/dev/null 2>&1 && usr/bin/groupdel lldpd
 }
