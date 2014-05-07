@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/mediaelch
 
 pkgname=mediaelch
-pkgver=2.1.2
+pkgver=2.2
 pkgrel=1
 pkgdesc="a Media Manager for handling Movies, TV Shows and Concerts/Music Videos in XBMC."
 arch=('x86_64' 'i686')
