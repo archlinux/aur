@@ -2,10 +2,10 @@
 
 pkgname=lldpd-git
 pkgver=0.7.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="LLDP daemon for GNU/Linux implementing both reception and sending"
 arch=('i686' 'x86_64')
-url="https://vincentbernat.github.com/lldpd/"
+url="http://vincentbernat.github.io/lldpd/"
 license=('custom:"ISC"')
 depends=('libxml2' 'net-snmp' 'libevent' 'libbsd' 'jansson' 'libseccomp')
 makedepends=('git')
@@ -19,8 +19,8 @@ source=("$pkgname::git+https://github.com/vincentbernat/lldpd.git"
 	'lldpd.install'
 	'LICENSE')
 md5sums=('SKIP'
-         'c224d5930aafc6de53b55b97cdc67a40'
-         '0b06475bc2048aa29fb1d8c660446f87'
+         'b66e7638d87ab8038dc090961ccda841'
+         '50f07ea180eea6685ed884de0eec89cb'
          '8ae98663bac55afe5d989919d296f28a')
 
 pkgver() {
@@ -38,6 +38,8 @@ build() {
     --with-xml \
     --with-json \
     --with-seccomp \
+    --with-privsep-user=lldpd \
+    --with-privsep-group=lldpd \
     --with-privsep-chroot=/run/lldpd
   make
   echo "" >>lldpd.conf

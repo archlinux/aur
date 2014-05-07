@@ -1,18 +1,17 @@
 post_install(){
-  groupadd -g 142 _lldpd &>/dev/null
-  useradd -u 142 -g _lldpd -d /var/run/lldpd -s /bin/false _lldpd &>/dev/null
+  usr/bin/groupadd -g 142 lldpd &>/dev/null
+  usr/bin/useradd  -u 142 -g lldpd -d /run/lldpd -s /bin/false lldpd &>/dev/null
 }
 
 post_upgrade(){
-  getent group _lldpd >/dev/null 2>&1 || groupadd -g 142 lldpd &>/dev/null
-  getent passwd _lldpd >/dev/null 2>&1 || useradd -u 142 -g lldpd -d /var/run/_lldpd -s /bin/false _lldpd &>/dev/null
+  # old user name and group was _lldpd
+  usr/bin/getent passwd _lldpd &>/dev/null && usr/bin/userdel  _lldpd &>/dev/null
+  usr/bin/getent group  _lldpd &>/dev/null && usr/bin/groupdel _lldpd &>/dev/null
+  usr/bin/getent group  lldpd &>/dev/null || usr/bin/groupadd -g 142 lldpd &>/dev/null
+  usr/bin/getent passwd lldpd &>/dev/null || usr/bin/useradd  -u 142 -g lldpd -d /run/lldpd -s /bin/false lldpd &>/dev/null
 }
 
 post_remove(){
-  if getent passwd _lldpd >/dev/null 2>&1; then
-    userdel _lldpd
-  fi
-  if getent group _lldpd >/dev/null 2>&1; then
-    groupdel _lldpd
-  fi
+  usr/bin/getent passwd lldpd &>/dev/null && usr/bin/userdel  lldpd &>/dev/null
+  usr/bin/getent group  lldpd &>/dev/null && usr/bin/groupdel lldpd &>/dev/null
 }
