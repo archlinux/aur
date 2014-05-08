@@ -1,7 +1,7 @@
 pkgbase = perl-spread-messaging
 	pkgdesc = CPAN/Spread::Messaging - a perl extension to the Spread Group Communications toolkit
 	pkgver = 0.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/module/Spread::Messaging
 	arch = i686
 	arch = x86_64
