@@ -1,24 +1,30 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xqproxy
-pkgver=0.1.2
-pkgrel=4
-pkgdesc="XDMCP query proxy"
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="XDCMP query proxy"
 arch=('i686' 'x86_64')
-#url="http://cgit.freedesktop.org/xqproxy"
-url="https://github.com/bbidulock/xqproxy"
+url="http://cgit.freedesktop.org/xqproxy"
 license=('MIT')
 depends=('bash' 'libx11')
 makedepends=('git')
-source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('906ce26fe99045457b59e33bfe84df5c')
+source=("$pkgname::git://anongit.freedesktop.org/xqproxy#tag=$pkgver"
+	"build.patch")
+md5sums=('SKIP'
+         'c81a0aabcb01f6a24d44196aed092d47')
 
+prepare() {
+  cd $pkgname
+  patch -Np2 -b -z .orig -i ../build.patch
+  autoreconf -fiv
+}
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   ./configure --prefix=/usr
   make
 }
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
   install -Dm755 xqssh "$pkgdir/usr/bin/xqssh"
   install -Dm644 <(head -24 xqproxy.c) "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
