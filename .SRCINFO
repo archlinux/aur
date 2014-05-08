@@ -1,7 +1,7 @@
 pkgbase = flwm
 	pkgdesc = Fast Light Window Manager
 	pkgver = 1.02
-	pkgrel = 3
+	pkgrel = 2
 	url = http://flwm.sourceforge.net/
 	arch = i686
 	arch = x86_64

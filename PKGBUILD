@@ -2,7 +2,7 @@
 # Contributor: Imanol Celaya <ilcra1989@gmail.com>
 pkgname=flwm
 pkgver=1.02
-pkgrel=3
+pkgrel=2
 pkgdesc="Fast Light Window Manager"
 arch=('i686' 'x86_64')
 url="http://flwm.sourceforge.net/"
@@ -13,7 +13,7 @@ md5sums=('33e1738441c351153a9c0a83a051bf7c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr || return 1
   make
 }
 package() {
