@@ -6,7 +6,7 @@ _protname_=pppoe
 _basename_=rp-${_protname_}
 pkgname=${_basename_}-gui
 pkgver=3.11
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI from/for Roaring Penguin's Point-to-Point Protocol over Ethernet client"
 arch=("i686" "x86_64")
 url="http://www.roaringpenguin.com/pppoe/"
@@ -19,7 +19,7 @@ sha1sums=('7b7b379c90b749cebd9fef99dff871e42d6972f9')
 build() {
 	cd "${srcdir}"/${_basename_}-${pkgver}/src
 	
-	./configure --prefix=/usr --enable-plugin=/ppp-2.4.4
+	./configure --prefix=/usr --enable-plugin=/ppp-2.4.4 --sbindir=/usr/bin
 	cd ../gui
 	make
 }
