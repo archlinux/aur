@@ -1,7 +1,7 @@
 pkgbase = waimea
 	pkgdesc = A fast and highly customizable virtual multiple desktop window manager.
 	pkgver = 0.4.0
-	pkgrel = 4
+	pkgrel = 6
 	url = http://sourceforge.net/projects/waimea
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = waimea
 	depends = libxinerama
 	depends = perl
 	source = http://downloads.sourceforge.net/sourceforge/waimea/waimea-0.4.0.tar.bz2
+	source = waimea.patch
 	md5sums = 0ce2ce92451e4e757a75c958b6acb87a
+	md5sums = e2a11deb21f3c95edd3dca2bef1148c1
 
 pkgname = waimea
 
