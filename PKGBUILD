@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=waimea-git
 _pkgname=waimea
-pkgver=0.5.0.11
-pkgrel=1
+pkgver=0.5.0.17
+pkgrel=2
 pkgdesc="An X11 window manager designed for maximum efficiency"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/waimea"
@@ -11,7 +11,7 @@ provides=('waimea')
 conflicts=('waimea' 'waimea-cvs')
 depends=('perl' 'libxrandr' 'imlib2' 'libxinerama' 'libxft')
 makedepends=('git')
-source=("$pkgname::git://github.com/bbidulock/waimea.git")
+source=("$pkgname::git+https://github.com/bbidulock/waimea.git")
 md5sums=('SKIP')
 
 pkgver() {

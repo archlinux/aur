@@ -1,7 +1,7 @@
 pkgbase = waimea-git
 	pkgdesc = An X11 window manager designed for maximum efficiency
-	pkgver = 0.5.0.11
-	pkgrel = 1
+	pkgver = 0.5.0.17
+	pkgrel = 2
 	url = https://github.com/bbidulock/waimea
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = waimea-git
 	provides = waimea
 	conflicts = waimea
 	conflicts = waimea-cvs
-	source = waimea-git::git://github.com/bbidulock/waimea.git
+	source = waimea-git::git+https://github.com/bbidulock/waimea.git
 	md5sums = SKIP
 
 pkgname = waimea-git
