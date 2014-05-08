@@ -2,7 +2,7 @@
 pkgname=perl-spread-queue
 _realname=Spread-Queue
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CPAN/Spread::Queue - one-of-many queued messaging delivery using Spread"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/module/JMAY/$_realname-$pkgver/Queue.pod"
@@ -16,6 +16,9 @@ build() {
   cd  $srcdir/$_realname-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
+}
+package() {
+  cd  $srcdir/$_realname-$pkgver
   make install DESTDIR=$pkgdir
   find $pkgdir -name '.packlist' -delete
   find $pkgdir -name '*.pod' -delete
