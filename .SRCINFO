@@ -1,9 +1,10 @@
 pkgbase = perl-x11-keyboard
 	pkgdesc = Perl keyboard support functions for X11
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 1
 	url = http://search.cpan.org/dist/X11-Keyboard/
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = MIT
 	depends = perl-x11-protocol
 	options = !emptydirs

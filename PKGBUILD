@@ -2,9 +2,9 @@
 
 pkgname=perl-x11-keyboard
 pkgver=1.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Perl keyboard support functions for X11"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/X11-Keyboard/"
 license=('MIT')
 depends=('perl-x11-protocol')
