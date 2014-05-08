@@ -1,0 +1,18 @@
+pkgbase = nikki
+	pkgdesc = Nikki and the robots. A game where you try to cross those evil plans on behalf of a secret organization.
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://joyridelabs.de/game/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = CCPL
+	depends = libsndfile
+	depends = openal
+	depends = qt4
+	options = !strip
+	source = http://updates.joyridelabs.de/nikki/default/linux/i386/nikki.tar.gz
+	sha256sums = 387bfa1d5e602686539eb2371d9d1bdeea13f263f631b26f0af8061e8daab4bb
+
+pkgname = nikki
+
