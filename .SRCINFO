@@ -1,7 +1,7 @@
 pkgbase = gchooser
 	pkgdesc = An XDM chooser writen in gtk2-perl.
-	pkgver = 0.08
-	pkgrel = 1
+	pkgver = 0.07
+	pkgrel = 2
 	url = http://github.com/bbidulock/gchooser
 	arch = any
 	license = PerlArtistic
@@ -11,7 +11,7 @@ pkgbase = gchooser
 	depends = perl-net-interface
 	depends = perl-net-ip
 	options = !emptydirs
-	source = gchooser::git+https://github.com/bbidulock/gchooser.git#tag=0.08
+	source = gchooser::git+https://github.com/bbidulock/gchooser.git#tag=0.07
 	md5sums = SKIP
 
 pkgname = gchooser
