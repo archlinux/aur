@@ -1,7 +1,7 @@
 pkgbase = xli
 	pkgdesc = An image display program for X
 	pkgver = 1.17.0+20061110
-	pkgrel = 7
+	pkgrel = 6
 	url = ftp://ftp.de.debian.org/debian/pool/main/x/xli/
 	arch = i686
 	arch = x86_64
