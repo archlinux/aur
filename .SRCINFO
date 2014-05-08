@@ -1,6 +1,6 @@
 pkgbase = perl-image-base-x11-protocol
 	pkgdesc = Draw into an X11::Protocol
-	pkgver = 14
+	pkgver = 13
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Image-Base-X11-Protocol/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-image-base-x11-protocol
 	depends = perl-x11-protocol-other
 	depends = perl-image-base
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Image-Base-X11-Protocol-14.tar.gz
-	sha256sums = a248d66d43965779d8b44fb6e5e679706c124d6b762cd91108e6f1b46d5e4bed
+	source = http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Image-Base-X11-Protocol-13.tar.gz
+	sha256sums = 9ceff8fe077e1bb1e12cff9e7804722d2f7dfa725ccb374139e463130b2ff82b
 
 pkgname = perl-image-base-x11-protocol
 
