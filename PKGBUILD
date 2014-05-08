@@ -2,16 +2,16 @@
 
 pkgname=perl-snmp-info
 _cpanname=SNMP-Info
-pkgver=3.23
+pkgver=2.11
 pkgrel=1
 pkgdesc="Perl/CPAN Module SNMP::Info"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
-license=('BSD')
+license=('unknown')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/O/OL/OLIVER/$_cpanname-$pkgver.tar.gz")
 depends=('perl' 'net-snmp')
-md5sums=('06fd59b728c6266e881a6ebeb13d228a')
+md5sums=('02d3600cae3d59297be9533f49e64115')
 
 build() {
   cd "${srcdir}/${_cpanname}-${pkgver}"
@@ -27,7 +27,6 @@ check() {
 package() {
   cd "${srcdir}/${_cpanname}-${pkgver}"
   make install DESTDIR="${pkgdir}" || return 1
-  install -Dm0644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   
   find "$pkgdir" -name '.packlist' -delete
   find "$pkgdir" -name '*.pod' -delete
