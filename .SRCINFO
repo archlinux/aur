@@ -1,7 +1,7 @@
 pkgbase = uwm
 	pkgdesc = Micro (u) Window Manager
 	pkgver = 0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://uwm.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = uwm
 	depends = libjpeg
 	depends = xcb-util-wm
 	source = uwm::git://git.code.sf.net/p/uwm/code#tag=0.30
+	source = uwm.desktop
 	md5sums = SKIP
+	md5sums = a16c73faeab8c1fc3c74f3320776789a
 
 pkgname = uwm
 
