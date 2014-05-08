@@ -2,7 +2,7 @@
 
 pkgname=perl-linux-smaps
 _pkgname=Linux-Smaps
-pkgver=0.13
+pkgver=0.12
 pkgrel=1
 pkgdesc='Linux::Smaps - a Perl interface to /proc/PID/smaps'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('perl' 'perl-class-member')
 changelog="ChangeLog"
 options=(!emptydirs)
 source=(http://search.cpan.org/CPAN/authors/id/O/OP/OPI/${_pkgname}-$pkgver.tar.gz)
-md5sums=('28bbe178b1b26935c454fa8ccdd16929')
+md5sums=('52a50e607f7904e0401ae7dd77ec79b7')
 
 build() {
   cd $srcdir/${_pkgname}-$pkgver
