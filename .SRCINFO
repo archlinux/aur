@@ -1,6 +1,6 @@
 pkgbase = bar-aint-recursive-git
 	pkgdesc = A lightweight xcb based bar.
-	pkgver = 172.a9f285f
+	pkgver = 107.a447500
 	pkgrel = 1
 	url = https://github.com/LemonBoy/bar
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = bar-aint-recursive-git
 	license = MIT
 	makedepends = git
 	depends = libxcb
-	provides = bar-aint-recursive
+	provides = bar-aint-recurisve
 	conflicts = bar-aint-recursive
 	source = bar::git+https://github.com/LemonBoy/bar.git#branch=master
 	sha256sums = SKIP
