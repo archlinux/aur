@@ -2,7 +2,7 @@
 # Contributor: ezzetabi <ezzetabi@gawab.com>
 pkgname=gfontview
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An outline font viewer for Linux."
 arch=(i686 x86_64)
 url="http://gfontview.sourceforge.net/"
