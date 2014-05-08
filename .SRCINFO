@@ -1,9 +1,8 @@
 pkgbase = polkit-git
 	pkgdesc = Application development toolkit for controlling system-wide privileges
-	pkgver = 0.112.r33.g8277d89
+	pkgver = 20120725
 	pkgrel = 1
-	epoch = 1
-	url = http://www.freedesktop.org/wiki/Software/polkit
+	url = http://www.freedesktop.org/wiki/Software/PolicyKit
 	install = polkit.install
 	arch = i686
 	arch = x86_64
@@ -15,13 +14,11 @@ pkgbase = polkit-git
 	depends = glib2
 	depends = pam
 	depends = expat
-	depends = systemd
-	depends = js17
+	depends = js
 	provides = polkit
 	conflicts = polkit
-	source = polkit-git::git+http://anongit.freedesktop.org/git/polkit.git
+	replaces = policykit
 	source = polkit.pam
-	md5sums = SKIP
 	md5sums = 6564f95878297b954f0572bc1610dd15
 
 pkgname = polkit-git
