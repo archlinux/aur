@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname='2bwm-git'
-pkgver=0.1.r110.ga461244
-pkgrel=1
+pkgver=0.1.r53.g13a50a6
+pkgrel=2
 pkgdesc="A fast floating window manager"
 arch=('i686' 'x86_64')
 url="https://github.com/venam/2bwm"
@@ -9,7 +9,7 @@ license=('ISC')
 provides=('2bwm')
 conflicts=('2bwm' 'mcwm' 'mcwm-git') # due to /usr/bin/hidden program
 depends=('xcb-util-wm' 'xcb-util-keysyms')
-makedepends=('git' 'xcb-util')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/venam/2bwm.git" '2bwm.desktop' '2bwm.copying')
 md5sums=('SKIP'
          '4342d9210effbe4bfb58722f4275aa5c'
