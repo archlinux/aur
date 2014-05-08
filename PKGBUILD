@@ -1,28 +1,27 @@
 pkgname=novnc
-epoch=1
-pkgver=0.5.1
-pkgrel=2
+pkgver=20130923
+pkgrel=1
 pkgdesc="javascript vnc client"
 arch=(i686 x86_64)
-url="https://github.com/kanaka/noVNC"
+url="http://kanaka.github.com/noVNC/"
 license=('GPL')
-depends=('bash' 'python')
-source=("https://github.com/kanaka/noVNC/archive/v${pkgver}.tar.gz")
-md5sums=('ac55b2316b2164b6e09ae3bd89c37cb6')
+depends=()
+source=("$pkgname::git://github.com/kanaka/noVNC.git")
+md5sums=('SKIP')
 
 prepare() {
-  cd $srcdir/noVNC-${pkgver}
+  cd $srcdir/novnc
   rm -f utils/*.o
   rm -rf .git
 }
 
 build() {
-  cd $srcdir/noVNC-${pkgver}
+  cd $srcdir/novnc
   make -C utils clean rebind.so
 }
 
 package() {
-  cd $srcdir/noVNC-${pkgver}
+  cd $srcdir/novnc
   mkdir -p $pkgdir/usr/share/novnc $pkgdir/usr/share/doc/novnc $pkgdir/usr/bin
   cp -a include utils images images/favicon.ico vnc.html vnc_auto.html \
 	$pkgdir/usr/share/novnc/
