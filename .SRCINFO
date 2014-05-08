@@ -3,7 +3,7 @@
 pkgbase = dzen2-xft-xpm-xinerama-svn
 	pkgdesc = X notification utility with Xinerama, XPM, XFT and gadgets, svn version
 	pkgver = 271
-	pkgrel = 3
+	pkgrel = 2
 	url = http://gotmor.googlepages.com/dzen
 	arch = i686
 	arch = x86_64
