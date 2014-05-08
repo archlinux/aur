@@ -1,6 +1,6 @@
 pkgbase = perl-sys-run
 	pkgdesc = Perl/CPAN Module Sys::Run - Run commands and handle their output
-	pkgver = 0.11
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://metacpan.org/release/Sys-Run
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = perl-sys-run
 	depends = perl-moose
 	depends = perl-namespace-autoclean
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Sys-Run-0.11.tar.gz
-	md5sums = d25613af788db05392749df3f0111dc5
+	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Sys-Run-0.15.tar.gz
+	md5sums = 48838eb41d973fb9131cc947e7f88ace
 
 pkgname = perl-sys-run
 
