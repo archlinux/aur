@@ -1,8 +1,7 @@
 pkgbase = herbstluftwm-git
 	pkgdesc = Manual tiling window manager for X
-	pkgver = 0.6.2.r48.gceeae62
+	pkgver = v0.5.3.153.g8e3ea8b
 	pkgrel = 1
-	epoch = 1
 	url = http://wwwcip.cs.fau.de/~re06huxa/herbstluftwm
 	arch = i686
 	arch = x86_64
@@ -17,9 +16,7 @@ pkgbase = herbstluftwm-git
 	optdepends = dmenu: needed by some scripts
 	optdepends = dzen2-git: needed by panel.sh
 	optdepends = dzen2-xft-xpm-xinerama-svn: view icons as tags
-	provides = herbstluftwm
-	conflicts = herbstluftwm
-	source = herbstluftwm-git::git://git.informatik.uni-erlangen.de/re06huxa/herbstluftwm
+	source = git://git.informatik.uni-erlangen.de/re06huxa/herbstluftwm
 	md5sums = SKIP
 
 pkgname = herbstluftwm-git

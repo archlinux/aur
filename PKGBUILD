@@ -1,14 +1,12 @@
 # Maintainer: thorsten w. <p@thorsten-wissmann.de>
 pkgname=herbstluftwm-git
-_pkgname=herbstluftwm
-pkgver=0.6.2.r48.gceeae62
+pkgver=v0.5.3.153.g8e3ea8b
 pkgrel=1
-epoch=1
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
-url="http://wwwcip.cs.fau.de/~re06huxa/$_pkgname"
+url="http://wwwcip.cs.fau.de/~re06huxa/herbstluftwm"
 license=('BSD')
-depends=( 'glib2>=2.24' 'libx11' 'libxinerama')
+depends=( 'glib2>=2.24' libx11 libxinerama )
 optdepends=(
         'bash: needed by most scripts'
         'xterm: used by the default autostart'
@@ -16,24 +14,26 @@ optdepends=(
         'dzen2-git: needed by panel.sh'
         'dzen2-xft-xpm-xinerama-svn: view icons as tags'
     )
-makedepends=('git' 'asciidoc')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=("$pkgname::git://git.informatik.uni-erlangen.de/re06huxa/$_pkgname")
+makedepends=( git asciidoc )
+provides=( )
+backup=( )
+source=("git://git.informatik.uni-erlangen.de/re06huxa/herbstluftwm")
 md5sums=( SKIP )
+_gitname="herbstluftwm"
 
 pkgver() {
-  cd ${pkgname}
-  git describe --tags --long | sed -r 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+  cd "${srcdir}/${_gitname}"
+  git describe --always | sed 's|-|.|g'
 }
 
 build() {
-  cd ${pkgname}
-  make PREFIX=/usr
+  cd "${srcdir}/${_gitname}"
+  make PREFIX=/usr DESTDIR="$pkgdir" VERSION_SUFFIX="-git"
 }
 
 package() {
-  cd ${pkgname}
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  cd "${srcdir}/${_gitname}"
+  pwd
+  make PREFIX=/usr DESTDIR="$pkgdir" VERSION_SUFFIX="-git" install
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
