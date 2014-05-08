@@ -2,7 +2,7 @@
 pkgname=perl-spread-client-constant
 _realname=Spread-Client-Constant
 pkgver=0.02
-pkgrel=2
+pkgrel=3
 pkgdesc="CPAN/Spread::Client::Constant - Spread::Client constants"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/module/Spread::Client::Constant"
