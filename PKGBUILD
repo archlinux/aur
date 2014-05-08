@@ -1,5 +1,4 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: J. Kuske <kuskej@yahoo.com>
+# Maintainer: J. Kuske <kuskej@yahoo.com>
 # Contributor: kperkins <kperkins257+gmixer@gmail.com>
 
 pkgname=gmixer
@@ -14,7 +13,7 @@ makedepends=('gettext' 'pkgconfig' 'intltool')
 source=(http://launchpad.net/gmixer/1.x/$pkgver/+download/$pkgname-$pkgver.tar.gz)
 md5sums=('1e0846a6f39a8476fcb1e1d4f81631b3')
 
-package() {
-	cd $pkgname-$pkgver
-	python2 setup.py install --root="$pkgdir"
+build() {
+	cd $srcdir/$pkgname-$pkgver
+	python2 setup.py install --root=$startdir/pkg || return 1
 }
