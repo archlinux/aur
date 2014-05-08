@@ -2,12 +2,12 @@
 pkgname=perl-file-configdir
 _cpanname=File-ConfigDir
 pkgver=0.004
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl/CPAN File::ConfigDir - get directories of configuration files"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
 license=('PerlArtistic')
-depends=()
+depends=('perl-file-homedir')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/R/RE/REHSACK/$_cpanname-$pkgver.tar.gz")
 md5sums=('95bbdc7222a12e5fc972a97b65c3e6eb')
