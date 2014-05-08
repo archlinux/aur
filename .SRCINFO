@@ -1,7 +1,7 @@
 pkgbase = suxpanel
 	pkgdesc = A lightweight X11 desktop panel
 	pkgver = 0.4b
-	pkgrel = 2
+	pkgrel = 3
 	url = http://suxpanel.berlios.de/
 	arch = x86_64
 	arch = i686
