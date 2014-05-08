@@ -5,7 +5,7 @@
 pkgname=perl-net-dbus-git
 _pkgname=perl-net-dbus
 _gitname=net-dbus
-pkgver=20130708
+pkgver=1.0.0.r18.geaff372
 pkgrel=1
 pkgdesc="Binding for DBus messaging protocol"
 arch=('i686' 'x86_64')
@@ -18,6 +18,11 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 source=("git://gitorious.org/$_gitname/$_gitname.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $_gitname
+  git describe --long --tags | sed -r 's,^v,,;s,([^-]*-g),r\1,;s,-,.,g'
+}
 
 build() {
   cd $_gitname
