@@ -1,8 +1,8 @@
 pkgbase = perl-hardware-sensorparser
 	pkgdesc = Simple parser for Lm-sensors output
 	pkgver = 0.01
-	pkgrel = 2
-	url = http://metacpan.org/release/Hardware-SensorsParser
+	pkgrel = 1
+	url = http://metacpan.org/dist/Hardware-SensorsParser
 	arch = any
 	license = GPL
 	license = PerlArtistic
