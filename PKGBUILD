@@ -2,14 +2,16 @@
 # Contributor: libernux <dutchman55@gmx.com>
 pkgname=wmcalc
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Dockapp that performs all the functions (and eventually more) of a simple four function calculator"
 arch=('i686' 'x86_64')
-url="http://dockapps.windowmaker.org/file.php/id/130"
+#url="http://dockapps.windowmaker.org/file.php/id/130"
+url="http://web.archive.org/web/20121025065535/http://dockapps.windowmaker.org/file.php/id/130"
 license=('GPL')
 groups=('x11')
 depends=('libxpm')
-source=("http://dockapps.windowmaker.org/download.php/id/455/$pkgname-$pkgver.tar.gz")
+#source=("http://dockapps.windowmaker.org/download.php/id/455/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz")
 md5sums=('23ecf19e956d19ef9dddb810989666c5')
 
 build() {
