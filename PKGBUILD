@@ -3,37 +3,27 @@
 
 pkgname=btscanner
 pkgver=2.1
-pkgrel=4
+pkgrel=3
 pkgdesc="Bluetooth device scanner."
 url="http://www.pentest.co.uk"
-depends=('bluez-libs' 'libxml2')
+depends=('bluez-libs' 'bluez-utils' 'libxml2' 'ncurses')
 arch=(i686 x86_64)
 license=('GPL')
-changelog=$pkgname.changelog
+changelog="btscanner.changelog"
 source=(http://www.pentest.co.uk/src/$pkgname-$pkgver.tar.bz2
-       $pkgname.patch)
+       btscanner.patch)
 md5sums=('587ec5847647d432eac1704b260af020'
-         '0b552988bffa2a843e2c52eb5f3a2f7c')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -b -z .orig -i ../$pkgname.patch
-  mv configure.in configure.ac
-  autoreconf -fiv
-}
-
+         '481f2f5b49ba83b8ab8155983c911db9')
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sysconf=/etc/btscanner --datadir=/usr/share/btscanner
-  make V=0
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < ../btscanner.patch
+  ./configure --prefix=/usr --sysconf=/etc/btscanner --datadir=/usr/share/btscanner || return 1
+  make
 }
-
 package() {
-  cd $pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="${pkgdir}" install
   # this is the only documentation
   install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -Dm644 USAGE  "${pkgdir}/usr/share/doc/${pkgname}/USAGE"
 }
-md5sums=('587ec5847647d432eac1704b260af020'
-         'c1e3d85b9a01f941a111ccf747389def')

@@ -1,18 +1,20 @@
 pkgbase = btscanner
 	pkgdesc = Bluetooth device scanner.
 	pkgver = 2.1
-	pkgrel = 4
+	pkgrel = 3
 	url = http://www.pentest.co.uk
 	changelog = btscanner.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = bluez-libs
+	depends = bluez-utils
 	depends = libxml2
+	depends = ncurses
 	source = http://www.pentest.co.uk/src/btscanner-2.1.tar.bz2
 	source = btscanner.patch
 	md5sums = 587ec5847647d432eac1704b260af020
-	md5sums = c1e3d85b9a01f941a111ccf747389def
+	md5sums = 481f2f5b49ba83b8ab8155983c911db9
 
 pkgname = btscanner
 
