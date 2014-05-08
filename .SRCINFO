@@ -1,6 +1,6 @@
 pkgbase = spacefm-gtk2
 	pkgdesc = Multi-panel tabbed file manager
-	pkgver = 1.0.2
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = http://ignorantguru.github.com/spacefm/
 	install = spacefm.install
@@ -10,18 +10,21 @@ pkgbase = spacefm-gtk2
 	makedepends = intltool
 	makedepends = gettext
 	depends = gtk2
+	depends = shared-mime-info
 	depends = desktop-file-utils
 	depends = startup-notification
-	depends = ffmpegthumbnailer
+	depends = udev
+	depends = bash
 	optdepends = lsof: device processes
 	optdepends = wget: plugin download
 	optdepends = gksu: perform as root functionality
 	optdepends = udevil: mount as non-root user and mount networks
+	optdepends = udisks: mount as non-root user
 	optdepends = udisks2: mount as non-root user
 	provides = spacefm
 	conflicts = spacefm
-	source = spacefm-1.0.2.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/1.0.2.tar.gz
-	md5sums = cef34680fc5b76d8aefc1efa5e4b8824
+	source = https://github.com/IgnorantGuru/spacefm/archive/0.9.4.tar.gz
+	md5sums = daeee7dcccea33d6258a0a9d783470c4
 
 pkgname = spacefm-gtk2
 
