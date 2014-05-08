@@ -1,19 +1,17 @@
 pkgbase = cwm
-	pkgdesc = OpenBSD fork of calmwm, a clean and lightweight window manager
-	pkgver = 5.6
-	pkgrel = 1
-	url = http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1
+	pkgdesc = A clean and simple window manager for X inspired by evilwm
+	pkgver = 3
+	pkgrel = 4
+	url = http://monkey.org/~marius/pages/?page=cwm
 	changelog = cwm.changelog
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = git
+	depends = libxext
 	depends = libxft
-	depends = libxrandr
-	depends = libxinerama
-	source = cwm::git+https://github.com/chneukirchen/cwm.git#tag=v5.6
+	source = http://monkey.org/~marius/cwm/cwm-3.tar.gz
 	source = cwm.desktop
-	sha256sums = SKIP
+	sha256sums = bd49f9f6e5497e83a9d6332c64addb3470059e6565e1fb386c790e15173cc242
 	sha256sums = 8dc947993fbf294d6f41ba2e0d4234b2321c536a75be1395f6a772cd4aa3f379
 
 pkgname = cwm
