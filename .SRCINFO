@@ -1,6 +1,6 @@
 pkgbase = slim-xdm
 	pkgdesc = Desktop-independent graphical login manager for X11 with XDM support
-	pkgver = 1.3.6.9
+	pkgver = 1.3.6.10
 	pkgrel = 1
 	url = http://slim.berlios.de/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = slim-xdm
 	depends = libxft
 	depends = libxrandr
 	depends = xorg-xauth
-	provides = slim=1.3.6.9
+	provides = slim=1.3.6.10
 	conflicts = slim
 	replaces = slim
 	replaces = wdm-slim
