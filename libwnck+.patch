@@ -1,6 +1,16 @@
+diff -up src/Gnome2-Wnck-0.16/xs/WnckScreen.xs.orig src/Gnome2-Wnck-0.16/xs/WnckScreen.xs
+--- src/Gnome2-Wnck-0.16/xs/WnckScreen.xs.orig	2007-08-02 14:18:38.000000000 -0600
++++ src/Gnome2-Wnck-0.16/xs/WnckScreen.xs	2014-05-01 22:18:49.000000000 -0600
+@@ -176,4 +176,6 @@ wnck_screen_get_workspaces (WnckScreen *
+ 
+ const char_ornull * wnck_screen_get_window_manager_name (WnckScreen *screen);
+ 
++int wnck_screen_get_window_manager_pid (WnckScreen *screen);
++
+ int wnck_screen_get_number (WnckScreen *screen);
 diff -up src/Gnome2-Wnck-0.16/xs/WnckWindow.xs.orig src/Gnome2-Wnck-0.16/xs/WnckWindow.xs
 --- src/Gnome2-Wnck-0.16/xs/WnckWindow.xs.orig	2007-08-02 14:18:38.000000000 -0600
-+++ src/Gnome2-Wnck-0.16/xs/WnckWindow.xs	2014-04-27 20:47:33.000000000 -0600
++++ src/Gnome2-Wnck-0.16/xs/WnckWindow.xs	2014-05-01 22:14:29.000000000 -0600
 @@ -114,6 +114,30 @@ gboolean
  wnck_window_is_sticky (window)
  	WnckWindow *window
