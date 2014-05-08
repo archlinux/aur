@@ -1,6 +1,6 @@
 pkgname=mrouted
 pkgver=3.9.6
-pkgrel=6
+pkgrel=7
 pkgdesc="mrouted is an implementation of the DVMRP multicast routing protocol. It turns a UNIX workstation into a DVMRP multicast router with tunnel support, in order to cross non-multicast-aware routers."
 arch=('i686' 'x86_64')
 url="http://freshmeat.net/projects/mrouted"
@@ -22,4 +22,7 @@ package() {
 	cd "$srcdir/${pkgname}-${pkgver}/"
 	make prefix=/usr DESTDIR=$pkgdir install || return 1
 	install -Dm644 $srcdir/mrouted.service "$pkgdir/usr/lib/systemd/system/mrouted.service"
+	# and this was supposed to be "easier"?
+	mv "$pkgdir/usr/bin/mtrace" "$pkgdir/usr/bin/mrtrace"
+	mv "$pkgdir/usr/share/man/man8/mtrace.8" "$pkgdir/usr/share/man/man8/mrtrace.8"
 }
