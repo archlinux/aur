@@ -1,27 +1,24 @@
 pkgbase = roxterm-git
 	pkgdesc = Tabbed, VTE-based terminal emulator
-	pkgver = 3.0.0.r22.g388ce3e
+	pkgver = 20120121
 	pkgrel = 1
-	epoch = 1
 	url = http://roxterm.sourceforge.net
-	install = roxterm.install
+	install = roxterm-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = docbook-xsl
 	makedepends = xmlto
 	makedepends = po4a
 	makedepends = python2
-	makedepends = python2-lockfile
-	makedepends = imagemagick
-	makedepends = librsvg
 	depends = dbus-glib
 	depends = vte3
-	depends = libsm
+	depends = hicolor-icon-theme
+	depends = dbus-core
+	depends = glib2
 	provides = roxterm
 	conflicts = roxterm
-	source = roxterm-git::git://git.code.sf.net/p/roxterm/code
-	md5sums = SKIP
 
 pkgname = roxterm-git
 
