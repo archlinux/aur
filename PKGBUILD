@@ -1,7 +1,7 @@
 # Contributor: DonVla <donvla@users.sourceforge.net>
 
 pkgname=pkgman
-pkgver=r188
+pkgver=r184
 pkgrel=1
 pkgdesc="A script providing centralized local package and PKGBUILD management"
 arch=('any')
@@ -12,10 +12,10 @@ optdepends=('namcap: check built packages' \
             'desktop-file-utils: validate desktop entry files'
             'tree: formatted directory listing')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('31f45848c515c13b2291d3a8c41022f7')
-sha256sums=('9a01b9026b7b69ff35128fb3df2f66b4777ce9890a5e8229efef566877848864')
+md5sums=('00867db8fc2e0e29788e88f16bd1b410')
+sha256sums=('683816a15690e56126efdab98a2dd72ea9f60d2fdaa977ac4a8f236dcfe5835e')
 
-package() {
+build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -v -D -m 0755 pkgman.bash ${pkgdir}/usr/bin/pkgman
