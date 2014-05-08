@@ -1,9 +1,10 @@
 pkgbase = perl-net-ping
 	pkgdesc = Net::Ping - check a remote host for reachability
 	pkgver = 2.41
-	pkgrel = 2
+	pkgrel = 1
 	url = https://metacpan.org/release/Net-Ping
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = unknown
 	depends = perl-test
 	options = !emptydirs
