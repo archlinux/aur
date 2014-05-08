@@ -1,6 +1,6 @@
 # Maintainer: Christian Neukirchen <chneukirchen@gmail.com>
 pkgname=cwm-git
-pkgver=20150609
+pkgver=20140314
 pkgrel=1
 pkgdesc="OpenBSD fork of calmwm, a clean and lightweight window manager"
 arch=('i686' 'x86_64')
@@ -8,11 +8,10 @@ url="http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1"
 license=('custom')
 depends=('libxft' 'libxrandr' 'libxinerama')
 makedepends=('git' 'pkg-config')
-conflicts=('cwm')
-provides=('cwm')
+replaces=('cwm' 'cwm-cvs')
+conflicts=('cwm' 'cwm-cvs')
 source=('git://github.com/chneukirchen/cwm.git#branch=linux' 'cwm.desktop')
-md5sums=('SKIP'
-         '42530ce5a23fc5f9088d891e325d99bd')
+md5sums=('SKIP' '42530ce5a23fc5f9088d891e325d99bd')
 
 pkgver() {
   cd "$srcdir/cwm"
