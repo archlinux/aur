@@ -1,6 +1,6 @@
 pkgbase = perl-glib-ex-objectbits
 	pkgdesc = Glib::Ex::ObjectBits -- misc Glib object helpers
-	pkgver = 16
+	pkgver = 15
 	pkgrel = 1
 	url = https://metacpan.org/release/Glib-Ex-ObjectBits
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = perl-glib-ex-objectbits
 	depends = gtk2-perl
 	depends = glib-perl
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/K/KR/KRYDE/Glib-Ex-ObjectBits-16.tar.gz
-	md5sums = 54be83717715e110e8934d6334d916aa
+	source = http://cpan.metacpan.org/authors/id/K/KR/KRYDE/Glib-Ex-ObjectBits-15.tar.gz
+	md5sums = 4741654d774914e9152b3255292291de
 
 pkgname = perl-glib-ex-objectbits
 
