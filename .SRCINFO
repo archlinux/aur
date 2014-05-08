@@ -1,0 +1,15 @@
+pkgbase = python-catkin-pkg
+	pkgdesc = catkin package library
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://wiki.ros.org/catkin_pkg
+	arch = any
+	license = BSD
+	makedepends = python3
+	depends = python
+	conflicts = python2-catkin_pkg
+	source = https://pypi.python.org/packages/source/c/catkin_pkg/catkin_pkg-0.2.2.tar.gz
+	md5sums = 7e6d3cb576d0841985952597ae2b9b70
+
+pkgname = python-catkin-pkg
+
