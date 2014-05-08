@@ -1,17 +1,15 @@
 pkgbase = chbg
 	pkgdesc = Periodically change background image in X11. Can be a slideshow screensaver too
 	pkgver = 1.5
-	pkgrel = 6
+	pkgrel = 5
 	url = http://chbg.sourceforge.net/about.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = gtk2
+	depends = gtk
 	depends = imlib2
 	source = http://downloads.sourceforge.net/chbg/chbg-1.5.tgz
-	source = gtk2.patch
 	md5sums = 3ee8b01a7e089570f66d89dac353cc2c
-	md5sums = 60fa92b11a575041c3a5d1a36c11f4e7
 
 pkgname = chbg
 
