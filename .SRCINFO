@@ -1,11 +1,15 @@
 pkgbase = perl-net-pcaputils
 	pkgdesc = Perl/CPAN Module Net::PcapUtils
 	pkgver = 0.01
-	pkgrel = 3
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-PcapUtils
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	depends = perl
+	depends = libpcap
+	depends = glibc
 	depends = perl-net-pcap
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/T/TI/TIMPOTTER/Net-PcapUtils-0.01.tar.gz
