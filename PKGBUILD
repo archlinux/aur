@@ -2,13 +2,14 @@
 
 pkgname=http-parser-git
 pkgver=2.3.r2.gd19e129
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for HTTP Request/Response written in C"
 arch=('i686' 'x86_64')
 url="https://github.com/joyent/http-parser"
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
+conflicts=('http-parser')
 provides=('http-parser')
 source=("$pkgname::git+https://github.com/joyent/http-parser.git")
 md5sums=('SKIP')
