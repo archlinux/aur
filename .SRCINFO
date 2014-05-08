@@ -1,19 +1,16 @@
 pkgbase = tsclient
 	pkgdesc = Terminal Server Client [tsclient] is a GTK2 frontend for rdesktop and other remote desktop tools.
 	pkgver = 0.150
-	pkgrel = 3
+	pkgrel = 2
 	url = http://sourceforge.net/projects/tsclient
-	changelog = ChangeLog
+	install = tsclient.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = perlxml
 	makedepends = sharutils
-	depends = rdesktop
-	depends = libgnomeui
-	depends = gnome-panel2
-	optdepends = tigervnc: for VNC support
-	optdepends = xorg-server-xnest: for X via Xnest support
+	depends = rdesktop>=1.3
+	depends = gnome-panel>=2.0
 	source = http://downloads.sf.net/tsclient/tsclient-0.150.tar.gz
 	md5sums = 1dc95fbdbcf4344d05114e1f43bf32ea
 

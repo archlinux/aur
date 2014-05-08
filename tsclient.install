@@ -1,0 +1,14 @@
+## arg 1:  the new package version
+#pre_install() {
+  # do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+  echo ">> tsclient: For maximum functionality install the following packages:"
+  echo "==> vncviewer (for VNC support)"
+  echo "==> xnest (for X via Xnest support)"
+}
+post_upgrade() {
+  post_install $1;
+}
