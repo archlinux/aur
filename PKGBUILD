@@ -2,7 +2,7 @@
 # Contributor: Feufochmar <feufochmar@d-20.fr>
 pkgname=wmwifi
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A wireless network interface monitor dockapp for Window Maker"
 arch=('i686' 'x86_64')
 url="http://dockapps.org/file.php/id/222"
