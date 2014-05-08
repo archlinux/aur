@@ -1,6 +1,6 @@
 pkgbase = perl-linux-lvm2
 	pkgdesc = Perl/CPAN Module Linux::LVM2 - a Linux LVM2 wrapper
-	pkgver = 0.12
+	pkgver = 0.14
 	pkgrel = 1
 	url = https://metacpan.org/release/Linux-LVM2
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = perl-linux-lvm2
 	depends = perl-sys-run
 	depends = perl-try-tiny
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Linux-LVM2-0.12.tar.gz
-	md5sums = 760c147812c9641116bc6f8a0d81478a
+	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Linux-LVM2-0.14.tar.gz
+	md5sums = 5f003d8b176186c495964bc0b50b163e
 
 pkgname = perl-linux-lvm2
 
