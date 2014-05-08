@@ -1,14 +1,13 @@
 pkgbase = gridmgr-git
 	pkgdesc = command line tool which provides keyboard-bindable commands for easy window manipulation.
-	pkgver = r27.153a7b7
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 2
 	url = http://nickbp.com/gridmgr/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
 	depends = libxinerama
 	conflicts = gridmgr
 	source = gridmgr-git::git://github.com/nickbp/gridmgr.git
