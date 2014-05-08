@@ -61,7 +61,7 @@ build() {
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libexecdir=/usr/lib \
+    --libexecdir=/lib \
     --enable-gstreamer \
     --enable-alsa \
     --enable-usb \
