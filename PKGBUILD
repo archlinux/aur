@@ -1,15 +1,15 @@
-# $Id: PKGBUILD 187898 2013-06-07 21:38:15Z heftig $
+# $Id: PKGBUILD 194798 2013-09-23 17:24:22Z heftig $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-pptp-gtk2
 _pkgname=networkmanager-pptp
-pkgver=0.9.8.2
+pkgver=0.9.8.4
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for pptp "
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=("networkmanager>=${pkgver}" 'pptpclient' 'gtk2' 'libgnome-keyring')
+depends=("networkmanager>=${pkgver::5}" 'pptpclient' 'gtk2' 'libgnome-keyring')
 makedepends=('intltool')
 optdepends=('network-manager-applet: GNOME frontends to NetWorkmanager')
 options=('!libtool')
@@ -18,7 +18,7 @@ conflicts=($_pkgname)
 install=networkmanager-pptp.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-pptp/0.9/NetworkManager-pptp-${pkgver}.tar.xz
         gtk_table_to_gtk_grid.patch)
-sha256sums=('7f46ea61376d13d03685eca3f26a26e0022f6e92e6f1fc356034ca9717eb6dac'
+sha256sums=('97ba8f6f726056c3b8e0e1c8d2ab3d32791cadd7c3a38e0478fb2bd3ecafdce8'
             '17c194c605bca780bf657711e9cff910c63ab27eae70c11cb6c53e9c75ad3215')
 
 prepare() {
