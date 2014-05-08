@@ -1,7 +1,7 @@
 pkgbase = libg3d
 	pkgdesc = A library for loading and manipulating 3D models from various file formats.
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 1
 	url = http://automagically.de/g3dviewer/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libg3d
 	depends = gtk2
 	depends = libgsf
 	depends = file
-	depends = flex
+	options = !libtool
 	source = http://automagically.de/files/libg3d-0.0.8.tar.gz
 	md5sums = 23fbb22c24b1db225a3de8b6aaf25774
 
