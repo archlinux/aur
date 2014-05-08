@@ -2,7 +2,7 @@
 
 _pkgname=sutils
 pkgname=${_pkgname}-git
-pkgver=25
+pkgver=21
 pkgrel=1
 pkgdesc='Small command-line utilities'
 arch=('i686' 'x86_64')
