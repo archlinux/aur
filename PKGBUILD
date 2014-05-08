@@ -1,15 +1,15 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=blackbox-git
-pkgver=0.71.1.0
+pkgver=0.70.2.20
 pkgrel=1
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
-url="https://github.com/bbidulock/blackboxwm"
+url="http://blackboxwm.sourceforge.net/"
 license=('MIT')
-provides=('blackbox' 'blackboxwm')
-conflicts=('blackbox' 'blackbox-cvs' 'blackboxwm')
-depends=('libxext' 'libxft')
+provides=('blackbox')
+conflicts=('blackbox' 'blackbox-cvs')
+depends=('gcc-libs' 'libxft' 'libxext')
 options=('!libtool' 'staticlibs')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/bbidulock/blackboxwm.git")
@@ -17,12 +17,18 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags --long | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+  git describe --always | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+}
+
+prepare() {
+  cd $pkgname
+  sed "s|^AC_INIT(.*$|AC_INIT([blackbox], [$pkgver], [http://github.com/bbidulock/blackboxwm])|" \
+    -i configure.ac
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh
+  autoreconf -fiv
   ./configure --prefix=/usr --mandir=/usr/share/man
   make V=0
 }
