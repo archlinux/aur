@@ -1,7 +1,7 @@
 pkgbase = aero-clone-gtk-theme
 	pkgdesc = AeroClone tehme for GTK2
 	pkgver = 57352
-	pkgrel = 4
+	pkgrel = 3
 	url = http://gnome-look.org/content/show.php/Aero-clone?content=57352
 	arch = any
 	license = GNU/GPL
