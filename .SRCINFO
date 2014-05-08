@@ -1,7 +1,7 @@
 pkgbase = gnome-vfs-nosmb
 	pkgdesc = The GNOME Virtual File System
 	pkgver = 2.24.4
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.gnome.org
 	install = gnome-vfs.install
 	arch = i686
@@ -22,7 +22,6 @@ pkgbase = gnome-vfs-nosmb
 	depends = libgcrypt
 	provides = gnome-vfs
 	conflicts = gnome-vfs
-	options = !libtool
 	options = !emptydirs
 	source = http://ftp.gnome.org/pub/gnome/sources/gnome-vfs/2.24/gnome-vfs-2.24.4.tar.bz2
 	source = gnutls-config.patch

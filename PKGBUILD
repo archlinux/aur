@@ -4,13 +4,13 @@
 pkgname=gnome-vfs-nosmb
 _pkgname=gnome-vfs
 pkgver=2.24.4
-pkgrel=7
+pkgrel=8
 pkgdesc="The GNOME Virtual File System"
 arch=(i686 x86_64)
 license=('LGPL')
 depends=('gconf' 'bzip2' 'gamin' 'dbus' 'avahi' 'gnome-mime-data' 'krb5' 'gnutls' 'libgcrypt')
 makedepends=('pkgconfig' 'intltool' 'gtk-doc' 'gnome-common')
-options=('!libtool' '!emptydirs')
+options=('!emptydirs')
 url="http://www.gnome.org"
 install=gnome-vfs.install
 provides=($_pkgname)
