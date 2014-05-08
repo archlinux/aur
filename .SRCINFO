@@ -1,7 +1,7 @@
 pkgbase = perl-net-snmp-ev
 	pkgdesc = EV event loop for Net-SNMP
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/perldoc?Net::SNMP::EV
 	arch = i686
 	arch = x86_64
