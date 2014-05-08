@@ -1,7 +1,7 @@
 pkgbase = hal
 	pkgdesc = Hardware Abstraction Layer
 	pkgver = 0.5.14
-	pkgrel = 18
+	pkgrel = 19
 	url = http://www.freedesktop.org/wiki/Software/hal
 	install = hal.install
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = hal
 	depends = dmidecode
 	depends = pciutils>=3.0.2
 	depends = usbutils>=006
-	depends = pm-utils>=1.2.5
 	depends = util-linux>=2.24
 	depends = v4l-utils
+	optdepends = pm-utils>=1.2.5: suspend, shutdown, reboot functions
 	options = !libtool
 	options = !makeflags
 	source = http://hal.freedesktop.org/releases/hal-0.5.14.tar.gz

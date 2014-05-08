@@ -6,12 +6,13 @@
 
 pkgname=hal
 pkgver=0.5.14
-pkgrel=18
+pkgrel=19
 pkgdesc="Hardware Abstraction Layer"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
 url="http://www.freedesktop.org/wiki/Software/hal"
-depends=('dbus-glib>=0.82' 'libusb-compat' 'systemd>=189' 'filesystem>=2012' 'hal-info>=0.20090716' 'dmidecode' 'pciutils>=3.0.2' 'usbutils>=006' 'pm-utils>=1.2.5' 'util-linux>=2.24' 'v4l-utils')
+depends=('dbus-glib>=0.82' 'libusb-compat' 'systemd>=189' 'filesystem>=2012' 'hal-info>=0.20090716' 'dmidecode' 'pciutils>=3.0.2' 'usbutils>=006' 'util-linux>=2.24' 'v4l-utils')
+optdepends=('pm-utils>=1.2.5: suspend, shutdown, reboot functions')
 makedepends=('pkg-config' 'gperf' 'libtool')
 options=('!libtool' '!makeflags')
 install=hal.install
