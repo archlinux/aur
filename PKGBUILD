@@ -3,16 +3,16 @@
 pkgname=perl-net-ping-external
 _cpanname=Net-Ping-External
 _module=Net::Ping::External
-pkgver=0.13
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc="$_module - cross-platform interface to ICMP ping utilities"
 arch=("i686" "x86_64")
 url="https://metacpan.org/release/$_cpanname"
 license=("GPL" "PerlArtistic")
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/C/CH/CHORNY/${_cpanname}-${pkgver}.zip")
+source=("http://cpan.metacpan.org/authors/id/C/CH/CHORNY/${_cpanname}-${pkgver}.tar.gz")
 depends=('perl' 'iputils')
-md5sums=('83710568eb209598a04674b18986b049')
+md5sums=('e58f7e6886872febac88228ef7c94aee')
 
 build() {
   cd "$srcdir/$_cpanname-$pkgver"
