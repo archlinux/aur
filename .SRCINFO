@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-absolute
 	pkgdesc = A murrine based gtk theme which is simple, clean and elegant.
 	pkgver = 0.7.7
-	pkgrel = 2
+	pkgrel = 1
 	url = http://gnome-look.org/content/show.php/absolute?content=126326
 	arch = any
 	license = GPL
