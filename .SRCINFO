@@ -1,13 +1,15 @@
 pkgbase = fluxmod-styles
 	pkgdesc = All of the fluxbox styles from the deceased fluxmod.dk site
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 4
 	url = http://tenr.de/styles/
 	arch = any
-	license = CC BY-SA 3.0
+	license = unknown
 	depends = fluxbox
 	source = http://tenr.de/styles/archives/fluxmod-styles-pkg.tar.bz2
+	source = License.txt.patch
 	md5sums = 75140735ad4e014365a57b30be4c1911
+	md5sums = 6aa4e452f125df8bef7a145627ce65ce
 
 pkgname = fluxmod-styles
 

@@ -1,0 +1,26 @@
+--- License.txt	2006-12-15 05:57:51.000000000 -0500
++++ ../../new.txt	2013-04-24 12:02:42.510477622 -0400
+@@ -8,3 +8,23 @@
+ If an author feels offended by me for providing the style please contact me
+ (tenner [at] tenr [dot] de).
+ */
++
++(Arch Linux) packager's note:
++
++	Only 4 of the themes seem to come with anything resembling a license.  
++    
++    These are:
++    
++    [1] - Bluesier: COPYING
++    [2] - BlueSky: COPYING.gz
++    [3] - Verbena: COPYING
++    [4] - Verde/pixmaps: COPYING.gz
++
++    Their locations within the filesystem should be able to be located using:
++
++    $ pacman -Ql fluxmod-styles | grep [THEME-NAME]
++
++    If you find more, please post a comment on this package's AUR page thing and let me know.  
++
++    --
++	AM
