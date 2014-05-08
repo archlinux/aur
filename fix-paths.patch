@@ -1,0 +1,29 @@
+--- main.c.orig	2014-05-08 18:34:30.502301834 +0300
++++ main.c	2014-05-08 18:34:38.992301468 +0300
+@@ -167,8 +167,8 @@
+ 	printf("SigmaVPN.\nCopyright (c) 2011 Neil Alexander T. All rights reserved.\n");
+ 	
+ 	conf = malloc(sizeof(sigma_conf));
+-	strncpy(conf->modulepath, "/usr/local/lib/sigmavpn/", 128);
+-	strncpy(conf->configfile, "/usr/local/etc/sigmavpn.conf", 128);
++	strncpy(conf->modulepath, "/usr/lib/sigmavpn/", 128);
++	strncpy(conf->configfile, "/etc/sigmavpn.conf", 128);
+ 
+ 	int arg;
+ 	
+--- sigmavpn.1.orig	2014-05-08 18:35:23.948966193 +0300
++++ sigmavpn.1	2014-05-08 18:35:34.902299052 +0300
+@@ -19,11 +19,11 @@
+ .Bl -tag -width -indent
+ .It Fl c
+ Path to the configuration file. If not specified, the default
+-.Ar /usr/local/etc/sigmavpn.conf
++.Ar /etc/sigmavpn.conf
+ is assumed.
+ .It Fl m
+ Path to the module directory. If not specified, the default
+-.Ar /usr/local/lib/sigmavpn/
++.Ar /usr/lib/sigmavpn/
+ is assumed. 
+ .El
+ .Pp
