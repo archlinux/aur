@@ -2,7 +2,7 @@
 
 pkgname=xgalaga
 pkgver=2.1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source remake of the classic arcade game Galaga"
 arch=('i686' 'x86_64')
 url="http://rumsey.org/xgal.html"
@@ -25,6 +25,8 @@ build() {
   /bin/cp -f /usr/share/automake-1.14/config.sub   .
 
   patch -Np1 -i "$srcdir"/$pkgname.patch
+
+  sed -e '/CHEATER/i#define IM_A_BIG_FAT_CHEATER' -i defs.h
 
   LDFLAGS='' ./configure \
 	--mandir=/usr/share/man \
