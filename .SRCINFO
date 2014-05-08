@@ -1,0 +1,27 @@
+pkgbase = kagbeta
+	pkgdesc = King Arthur's Gold BETA is a game about building castles and destroying your enemies (inspired by Soldat and Minecraft).
+	pkgver = 0.97
+	pkgrel = 2
+	url = http://kag2d.com/
+	install = kagbeta.install
+	arch = any
+	license = custom
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = libgl
+	depends = freetype2
+	depends = libstdc++5
+	depends = libpng15
+	source = http://dl.kag2d.com/kagbeta-linux32-client.tar.gz
+	source = kagbeta
+	source = kagbeta.desktop
+	source = irrlicht_1_32x32x24.png
+	source = LICENSE
+	md5sums = 2658f15ffebf811b2436a5ff2e5270ab
+	md5sums = 1a980207740dec09a1522152ee4f6b65
+	md5sums = f23363aa7bd01f35f1a7641ff931afe2
+	md5sums = 81f2bae53e67f9220802b1187b8f398f
+	md5sums = 35cae9aeae1c2d561677230795d0d827
+
+pkgname = kagbeta
+
