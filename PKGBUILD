@@ -1,14 +1,13 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Majki <majki@majki.hu>
 pkgname=tsclient2
 pkgver=2.0.1
-pkgrel=10
+pkgrel=8
 pkgdesc="Terminal Server Client [tsclient] is a GTK2 frontend for rdesktop and other remote desktop tools."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/tsclient"
 license=('GPL')
-depends=('gnome-desktop2' 'libgnomeui' 'libnm-glib' 'desktop-file-utils')
-makedepends=('sharutils')
+depends=('rdesktop>=1.3' 'gnome-panel>=2.0' 'networkmanager>=0.7.0')
+makedepends=('sed' 'perlxml' 'sharutils' 'pkgconfig')
 conflicts=('tsclient')
 source=(http://downloads.sourceforge.net/sourceforge/tsclient/tsclient-$pkgver.tar.bz2)
 md5sums=('3de7131156f37c5ef1028a5f03ed021b')
@@ -22,12 +21,8 @@ build() {
   sed -i '/notify_notification_new/s/, NULL//' src/plugins/default/tsc-rdp-connection.c
   sed -i '/notify_notification_new/s/, NULL//' src/plugins/default/tsc-vnc-connection.c
   sed -i 's/libnm_glib/libnm-glib/g' configure
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make
-}
-
-package() {
-  cd "$srcdir/tsclient-$pkgver"
+  ./configure --prefix=/usr
+  make || return 1
   make DESTDIR="$pkgdir" install
 }
 
