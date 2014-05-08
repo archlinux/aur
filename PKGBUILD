@@ -2,7 +2,7 @@
 
 pkgname=perl-data-flow
 pkgver='1.02'
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl extension for simple-minded recipe-controlled build of data"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?Data::Flow'
@@ -18,6 +18,9 @@ build() {
 	# install module in vendor directories
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
+}
+package() {
+	cd "$srcdir/Data-Flow-$pkgver"
 	make install DESTDIR="$pkgdir/"
 
 	#remove perllocal.pod and .packlist
