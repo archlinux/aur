@@ -4,14 +4,13 @@ Type=Application
 Name=ASClock
 GenericName=Clock
 Comment=The AfterStep clock dock app
-TryExec=asclock
-Exec=asclock -d -t shaped
+Exec=asclock -d
 Icon=GNUstep3D
 Terminal=false
 StartupNotify=false
 Categories=DockApp;WMAKER;
 StartupWMClass=asclock
-X-Arch-Package=asclock-xlib
+X-Arch-Package=asclock
 Actions=Newstone;Orb;Stone;Analog;Beats;Classic;Shaped;
 
 [Desktop Action Newstone]
