@@ -4,13 +4,15 @@
 
 pkgname=wmix
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Dockapp mixer for OSS or ALSA"
 arch=('i686' 'x86_64')
-url="http://dockapps.windowmaker.org/file.php/id/58"
+#url="http://dockapps.windowmaker.org/file.php/id/58"
+url="http://web.archive.org/web/20121102151324/http://dockapps.windowmaker.org/file.php/id/58"
 license=('GPL')
 depends=('libxpm')
-source=("http://dockapps.windowmaker.org/download.php/id/528/${pkgname}-${pkgver}.tar.gz")
+#source=("http://dockapps.windowmaker.org/download.php/id/528/${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz")
 md5sums=('ce87c48cadf51b3cd6224ef698d3f2cc')
 
 build() {
