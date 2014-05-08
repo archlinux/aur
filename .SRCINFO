@@ -1,17 +1,18 @@
 pkgbase = karmen-svn
 	pkgdesc = An easy-to-use window manager of simple design
-	pkgver = r397
+	pkgver = 386
 	pkgrel = 1
 	url = http://karmen.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = svn
+	makedepends = autoconf
+	makedepends = automake
+	depends = libsm
 	depends = libx11
 	provides = karmen
 	conflicts = karmen
-	source = karmen-svn::svn://svn.code.sf.net/p/karmen/code/trunk
-	md5sums = SKIP
 
 pkgname = karmen-svn
 
