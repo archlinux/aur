@@ -4,20 +4,20 @@
 
 pkgname=cairo-compmgr-git
 epoch=1
-pkgver=0.3.1.57.g416ae1a
-pkgrel=2
+pkgver=0.3.1.35.g719a997
+pkgrel=1
 pkgdesc="Cairo based composite manager - Git version"
 arch=(i686 x86_64)
 url="http://cairo-compmgr.tuxfamily.org/"
 license=(LGPL3)
 conflicts=(cairo-compmgr)
 provides=(cairo-compmgr)
-makedepends=(gettext git gtk-doc "intltool>=0.41" gconf vala)
-depends=("gtk2>=2.16.0" libsm)
+makedepends=(gettext git gtk-doc "intltool>=0.41" gconf)
+depends=("gtk2>=2.16.0" "vala>=0.22" libsm libgl)
 options=(!makeflags
          !libtool)
 
-source=('cairocompmgr::git+https://github.com/gandalfn/Cairo-Composite-Manager.git#branch=light')
+source=('cairocompmgr::git+https://github.com/gandalfn/Cairo-Composite-Manager.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,18 +25,13 @@ pkgver() {
   git describe --tags | sed 's|-|.|g'
 }
 
-prepare() {
-  cd "$srcdir"/cairocompmgr
-
-  #fix broken Clone plugin
-  sed -i '/^.*clone.*/d' configure.ac
-  sed -i '/^.*clone.*/d' plugins/Makefile.am
-  rm -rf plugins/clone
-
-}
-
 build() {
   cd "$srcdir"/cairocompmgr
+
+  #patch for compatibility with vala 0.22
+  sed -i 's!libvala-0.18!libvala-0.22!' configure.ac
+  sed -i 's!libvala-0.18!libvala-0.22!' vapi/cairo-compmgr.deps
+  sed -i 's!include .libiberty.h.!include <libiberty/libiberty.h>!' src/ccm-debug.c
 
   ./autogen.sh --prefix=/usr LIBS="-ldl -lgmodule-2.0 -lm -lz"
 
