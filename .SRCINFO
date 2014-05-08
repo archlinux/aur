@@ -1,14 +1,14 @@
 pkgbase = wmtimer
 	pkgdesc = A dockable WindowMaker app (docklet) alarm clock for which can be run in alarm, countdown timer, or chronograph mode.
 	pkgver = 2.92
-	pkgrel = 4
+	pkgrel = 3
 	url = http://www.darkops.net/wmtimer/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
 	depends = gtk2
-	source = https://github.com/bbidulock/wmtimer/releases/download/v2.92/wmtimer-2.92.tar.gz
+	source = http://www.darkops.net/wmtimer/wmtimer-2.92.tar.gz
 	md5sums = 425bbb4b0cc852f858da025538d7c900
 
 pkgname = wmtimer
