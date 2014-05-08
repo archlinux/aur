@@ -1,40 +1,42 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
-
+# Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwmtools-git
-pkgver=r75.4689c0b
-pkgrel=1
+pkgver=4689c0b
+pkgrel=2
 pkgdesc="Various tools for jwm window manager."
-epoch=1
 arch=('i686' 'x86_64')
 url="https://github.com/kostelnik/jwmtools"
 license=('GPL')
-provides=('jwmtools')
-conflicts=('jwmtools')
-depends=('libglade' 'libxss')
+groups=('x11')
+depends=('mdsplib' 'libglade' 'libxss')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/kostelnik/jwmtools.git"
-	build.patch)
-md5sums=('SKIP'
-         '010273979c95da69f3fcf5a35fe06cb4')
+options=('!buildflags')
+source=('git://github.com/kostelnik/jwmtools.git')
+md5sums=('SKIP') 
+install=jwmtools.install
+_gitname=jwmtools
 
 pkgver() {
-  cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $pkgname
-  patch -Np1 -b -z .orig -i ../build.patch
+  cd $_gitname
+  # Use the tag of the last commit
+  git describe --always | sed 's|-|.|g'
 }
 
 
 build() {
-  cd $pkgname
-  make PREFIX=/usr clean all
+
+  cd "$srcdir/$_gitname/movemousecursor"
+  sed -e "s|cairo|x11 cairo|" -i Makefile
+  cd "$srcdir/$_gitname/traykeymap"
+  sed -e "s|cairo|x11 cairo|" -i Makefile
+  sed -e "s|-Wstrict-prototypes||" -i Makefile
+  cd "$srcdir/$_gitname/xidletools"
+  sed -e "s|cairo|x11 cairo|" -i Makefile
+  cd "$srcdir/$_gitname/"
+  make clean all
 }
 
 package() {
-  cd $pkgname
-  make PREFIX="$pkgdir/usr" install
+  cd "$srcdir/$_gitname"
+    sed -e "s|/opt/|$pkgdir/opt/|" -i config.mk
+  make DESTDIR="$pkgdir/" install
 }

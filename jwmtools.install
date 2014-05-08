@@ -1,0 +1,22 @@
+# arg 1:  the new package version
+post_install() {
+  cat << EOF
+
+==>   The tools are installed in /opt/jwmtools/0.1/
+
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  cat << EOF
+
+==>   The tools are installed in /opt/jwmtools/0.1
+
+EOF
+}
+
+op=$1
+shift
+$op $*
