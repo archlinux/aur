@@ -1,7 +1,7 @@
 pkgbase = wmx-svn
 	pkgdesc = The ideal window manager for today's elegant and ascetic programmer
 	pkgver = r114
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.all-day-breakfast.com/wmx/
 	arch = x86_64
 	arch = i686
