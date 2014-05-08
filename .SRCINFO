@@ -1,6 +1,6 @@
 pkgbase = perl-file-xdg
 	pkgdesc = CPAN/File::XDG -- basic implementation of the XDG base directory spec
-	pkgver = 0.04
+	pkgver = 0.03
 	pkgrel = 1
 	url = https://metacpan.org/module/File::XDG
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-file-xdg
 	depends = perl-file-homedir
 	depends = perl-path-class
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/A/AE/AERDAN/File-XDG-0.04.tar.gz
-	md5sums = f2573705b55220ff7089f2d95795b9bb
+	source = http://cpan.metacpan.org/authors/id/A/AE/AERDAN/File-XDG-0.03.tar.gz
+	md5sums = 542aa72d08fa9dac2489e6e6dcbf89eb
 
 pkgname = perl-file-xdg
 
