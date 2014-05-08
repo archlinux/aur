@@ -1,7 +1,7 @@
 pkgbase = bbkeys
 	pkgdesc = Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop
 	pkgver = 0.9.1
-	pkgrel = 8
+	pkgrel = 7
 	url = http://bbkeys.sourceforge.net/
 	changelog = bbkeys.changelog
 	arch = i686
