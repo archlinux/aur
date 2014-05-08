@@ -5,11 +5,11 @@ pkgver=0.0.0
 pkgrel=1
 pkgdesc="Fake XRandR configurations for multi-head setups with crappy video drivers, like fakexinerama but with xrandr"
 arch=(any)
-url="https://github.com/pschmitt/fakexrandr"
+url="https://github.com/phillippberndt/fakexrandr"
 license=('GPL')
 depends=('xorg-xrandr')
-makedepends=('git' 'glibc' 'sed')
-source=("$pkgname"::'git://github.com/pschmitt/fakexrandr.git')
+makedepends=('git' 'glibc' 'sed' 'python2')
+source=("$pkgname"::'git://github.com/phillipberndt/fakexrandr.git')
 sha1sums=('SKIP')
 
 _pkgname=fakexrandr
@@ -29,9 +29,9 @@ prepare() {
   sed -i "s|^\(FAKE_LIBRARY_DIRECTORY=\)$|\1${_lib_dir}|" configure
   # FIXME THIS AINT WORKING
   # Fix missing target
-  sed -i "s|\(install}\) \(.*\) \(.*\);|\1 \2 \3\2;|" Makefile
+  sed -i "s|\(install\) \(.*\) \(.*\);|\1 \2 \3/\2;|" Makefile
   # Fix missing DEST_DIR in Makefile
-  sed -i "s|\(TARGET_DIR=\).*|\1${pkgdir}${_lib_dir}|" Makefile
+  sed -i "s|\(TARGET_DIR=\).*|\1${pkgdir}${_lib_dir}; \\\|" Makefile
   # Don't even try to run ldconfig now
   sed -i "s/\(ldconfig\)/#\1/" Makefile
   # Create ld.so.conf.d config file
