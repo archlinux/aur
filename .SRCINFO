@@ -1,7 +1,7 @@
 pkgbase = pnmixer
-	pkgdesc = GTK volume mixer applet that runs in the system tray.
+	pkgdesc = PNMixer is a GTK volume mixer applet that runs in the system tray.
 	pkgver = 0.5.1
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/nicklan/pnmixer
 	arch = i686
 	arch = x86_64
