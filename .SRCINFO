@@ -1,14 +1,15 @@
 pkgbase = wmpinboard
 	pkgdesc = A WindowMaker dock applet resembling a miniature pinboard.
-	pkgver = 1.0.1
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 2
 	url = http://web.archive.org/web/20121102091711/http://dockapps.windowmaker.org/file.php/id/93
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libxpm
-	source = https://github.com/bbidulock/wmpinboard/releases/download/1.0.1/wmpinboard-1.0.1.tar.gz
-	md5sums = b0f528a4e4b7debb9d3372a00c7eb7ed
+	source = wmpinboard-1.0.tar.gz
+	source = wmpinboard.patch
+	md5sums = 40b1353b213c538042660cb96cd0610a
+	md5sums = 0b13799688efc221a055a35770effd32
 
 pkgname = wmpinboard
 
