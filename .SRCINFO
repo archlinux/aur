@@ -1,7 +1,7 @@
 pkgbase = netwmpager
 	pkgdesc = A NetWM/EWMH compatible pager
 	pkgver = 2.05
-	pkgrel = 2
+	pkgrel = 1
 	url = http://onion.dynserv.net/~timo/?page=Projects/netwmpager
 	install = netwmpager.install
 	arch = i686
