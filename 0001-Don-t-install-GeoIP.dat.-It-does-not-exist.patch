@@ -1,0 +1,94 @@
+From 9d4357892eec53606c58778dbf5d4a62bbb84cbe Mon Sep 17 00:00:00 2001
+From: Yosef Or Boczko <yosefor3@walla.com>
+Date: Mon, 25 Mar 2013 15:29:46 +0200
+Subject: [PATCH] Don't install GeoIP.dat. It does not exist.
+
+---
+ data/Makefile.am   |  2 +-
+ man/geoiplookup.1  |  2 +-
+ man/geoiplookup6.1 |  2 +-
+ man/geoipupdate.1  | 11 ++++++-----
+ 4 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/data/Makefile.am b/data/Makefile.am
+index cf36bc1..3fc2560 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -18,4 +18,4 @@ uninstall-hook:
+ $(INSTALL_DATA) GeoIP.dat $(DESTDIR)$(DEFAULT_DB_FILE); \
+ 	fi
+ 
+-.PHONY: GeoIP.dat
++.PHONY: 
+diff --git a/man/geoiplookup.1 b/man/geoiplookup.1
+index ede2e51..7656a9c 100644
+--- a/man/geoiplookup.1
++++ b/man/geoiplookup.1
+@@ -20,7 +20,7 @@ will find the Country that 80.60.233.195 originates from, in the following forma
+ .IP "\-f"
+ Specify a custom path to a single GeoIP datafile.
+ .IP "\-d"
+-Specify a custom directory containing GeoIP datafile(s).  By default geoiplookup looks in DATADIR
++Specify a custom directory containing GeoIP datafile(s).  By default geoiplookup looks in /usr/share/GeoIP
+ .IP "\-v"
+ Lists the date and build number for the GeoIP datafile(s).
+ .SH AUTHOR
+diff --git a/man/geoiplookup6.1 b/man/geoiplookup6.1
+index 2a49ee1..80cceda 100644
+--- a/man/geoiplookup6.1
++++ b/man/geoiplookup6.1
+@@ -25,7 +25,7 @@ will find the Country that 2001:4860:0:1001::68 originates from, in the followin
+ .IP "\-f"
+ Specify a custom path to a single GeoIP datafile.
+ .IP "\-d"
+-Specify a custom directory containing GeoIP datafile(s).  By default geouplookup6 looks in DATADIR
++Specify a custom directory containing GeoIP datafile(s).  By default geouplookup6 looks in /usr/share/GeoIP
+ .IP "\-v"
+ Lists the date and build number for the GeoIP datafile(s).
+ .SH AUTHOR
+diff --git a/man/geoipupdate.1 b/man/geoipupdate.1
+index 57df97d..266b41e 100644
+--- a/man/geoipupdate.1
++++ b/man/geoipupdate.1
+@@ -22,10 +22,10 @@ Performs the update in verbose mode.
+ .IP "\-v"
+ Verbose mode, prints out the steps that geoipupdate takes.
+ .IP "\-d"
+-Specify a custom directory target to install the GeoIP datafile(s).  By default geoipupdate installs to DATADIR
++Specify a custom directory target to install the GeoIP datafile(s).  By default geoipupdate installs to /usr/share/GeoIP
+ .IP "\-f"
+ Specifies the configuration file that contains the license key.
+-Defaults to CONF_DIR/GeoIP.conf
++Defaults to /etc/geoip/GeoIP.conf
+ .SH USAGE
+ Typically you'll want to write a weekly crontab that will run geoipupdate.
+ Below is a sample crontab that runs geoipupdate on each Wednesday at noon:
+@@ -38,7 +38,6 @@ MAILTO=your@email.com
+ 0 12 * * 3 BIN_DIR/geoipupdate
+ .PP
+ # end of crontab
+-
+ .RE
+ To use with a proxy server, set the http_proxy environment variable.
+ E.g.
+@@ -49,13 +48,15 @@ export http_proxy="http://proxy-hostname:port"
+ geoipupdate returns 0 on success, 1 on error.
+ .SH FILES
+ .PP
+-.I CONF_DIR/GeoIP.conf
++.I /etc/geoip/GeoIP.conf
+ .PP
+ Configuration file for GeoIP, should contain license key.
++.SH AUTHOR
++Written by T.J. Mather
+ .SH "REPORTING BUGS"
+ Report bugs to <support@maxmind.com>
+ .SH COPYRIGHT
+-Copyright © 2010 MaxMind Inc
++Copyright © 2011 MaxMind LLC
+ 
+ This is free software; see the source for copying conditions.
+ There is NO warranty; not even for MERCHANTABILITY
+-- 
+1.8.2
+
