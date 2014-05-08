@@ -1,8 +1,8 @@
 pkgbase = perl-net-ipaddress
 	pkgdesc = Net::IPAddress - Functions used to manipulate IP addresses, masks and FQDNs
 	pkgver = 1.10
-	pkgrel = 3
-	url = https://metacpan.org/module/Net::IPAddress
+	pkgrel = 2
+	url = https://metcpan.org/module/Net::IPAddress
 	arch = any
 	license = PerlArtistic
 	license = GPL
