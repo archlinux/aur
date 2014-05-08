@@ -2,8 +2,8 @@
 
 pkgname=perl-coro
 _realname=Coro
-pkgver=6.23
-pkgrel=3
+pkgver=6.31
+pkgrel=1
 pkgdesc="CPAN/Coro - the only real threads in perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +12,7 @@ depends=('perl-anyevent>=5' 'perl-common-sense' 'perl-guard>=0.5')
 makedepends=()
 url="https://metacpan.org/release/${_realname}"
 source=("http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${_realname}-${pkgver}.tar.gz")
-md5sums=('904113b17a6e7a85bc49f60b8899c28a')
+md5sums=('519e3304e86ed103c167b299ab94c176')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
