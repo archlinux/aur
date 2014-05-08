@@ -2,12 +2,12 @@
 
 pkgname=wmsysmon
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A WindowMaker dock applet for system monitoring."
 arch=('i686' 'x86_64')
-url="http://dockapps.windowmaker.org/file.php/id/93"
+url="http://www.gnugeneration.com/software/"
 license=('GPL')
-depends=('libx11' 'libxext' 'libxcb' 'libxau')
+depends=('libxpm')
 source=("http://www.gnugeneration.com/software/wmsysmon/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.patch")
 md5sums=('0f8ec86a9808f5123c22ff427559fc48'
