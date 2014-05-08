@@ -1,11 +1,12 @@
 pkgname=dwm-git
 _pkgname=dwm
-pkgver=6.0.43.g14343e6
+pkgver=6.0.38.gcdec978
 pkgver(){
   cd $_pkgname
   git describe --tags |sed 's/-/./g'
 }
 pkgrel=1
+
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -17,14 +18,12 @@ install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
 epoch=1
-source=(dwm.desktop
-        "$_pkgname::git+http://git.suckless.org/dwm")
-md5sums=('939f403a71b6e85261d09fc3412269ee'
-         'SKIP')
+source=( dwm.desktop
+    "$_pkgname::git+http://git.suckless.org/dwm")
 
 prepare() {
   if [[ -f $SRCDEST/config.h ]]; then
-    cp $SRCDEST/config.h $srcdir/dwm/config.h
+    ln -sf $SRCDEST/config.h $srcdir/config.h
   fi
 }
 
@@ -41,3 +40,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('939f403a71b6e85261d09fc3412269ee'
+         'SKIP')
