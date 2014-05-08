@@ -2,30 +2,32 @@
 
 pkgname=gjdoc
 pkgver=0.7.9
-pkgrel=4
+pkgrel=2
 pkgdesc="GNU Classpath JavaDoc implementation"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://savannah.gnu.org/projects/classpath/"
-depends=('gcc-gcj>=5.1.0' 'java-environment')
-options=('!libtool' '!buildflags')
-noextract=('antlr-2.7.7.jar')
-install=$pkgname.install
+depends=('gcc-gcj>=4.3.1')
+options=('!libtool')
+noextract=('antlr-2.7.5.jar')
 source=(http://ftp.gnu.org/gnu/classpath/${pkgname}-${pkgver}.tar.gz
-	http://www.antlr2.org/download/antlr-2.7.7.jar)
+	http://www.antlr2.org/download/antlr-2.7.5.jar)
 md5sums=('24cade2efe22d5adefcbabb21f094803'
-         'f8f1352c52a4c6a500b597596501fc64')
+         '6d57df718efd2a03981c309ce3330a1f')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --with-antlr-jar=${srcdir}/antlr-2.7.7.jar
+  export -n CFLAGS
+  export -n CXXFLAGS
+  export -n LDFLAGS
+  cd ${srcdir}/${pkgname}-${pkgver}
+  ./configure --prefix=/usr --with-antlr-jar=${srcdir}/antlr-2.7.5.jar || return 1
   make || find . -type f -name '*.o' | while read f; do objcopy -L '_ZGr8_$_dummy' $f; done
   make || find . -type f -name '*.o' | while read f; do objcopy -L '_ZGr8_$_dummy' $f; done
   make || find . -type f -name '*.o' | while read f; do objcopy -L '_ZGr8_$_dummy' $f; done
   make || find . -type f -name '*.o' | while read f; do objcopy -L '_ZGr8_$_dummy' $f; done
-  make GCJFLAGS='-g -O2 -fsource=1.3'
+  make || return 1
 }
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR=${pkgdir} install
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install || return 1
 }
