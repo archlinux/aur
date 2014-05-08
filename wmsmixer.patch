@@ -1,6 +1,6 @@
-diff -up src/wmsmixer-0.5.1/Imakefile.orig src/wmsmixer-0.5.1/Imakefile
---- src/wmsmixer-0.5.1/Imakefile.orig	2003-04-12 16:08:16.000000000 -0600
-+++ src/wmsmixer-0.5.1/Imakefile	2013-09-02 18:40:52.000000000 -0600
+diff -pur wmsmixer-0.5.1.orig/Imakefile wmsmixer-0.5.1/Imakefile
+--- wmsmixer-0.5.1.orig/Imakefile	2003-04-12 16:08:16.000000000 -0600
++++ wmsmixer-0.5.1/Imakefile	2013-03-26 02:12:24.000000000 -0600
 @@ -6,8 +6,8 @@ OSSAUDIO =
  
  DEPLIBS = $(DEPXLIB) 
