@@ -1,8 +1,8 @@
 pkgbase = xqproxy-git
-	pkgdesc = XDMCP query proxy
-	pkgver = 0.1.2.r0.g5e21d36
-	pkgrel = 3
-	url = https://github.com/bbidulock/xqproxy
+	pkgdesc = XDCMP query proxy
+	pkgver = 0.1.1.0.gffcf6eb
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xqproxy
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,10 @@ pkgbase = xqproxy-git
 	depends = libx11
 	provides = xqproxy
 	conflicts = xqproxy
-	source = xqproxy-git::git+https://github.com/bbidulock/xqproxy.git
+	source = xqproxy-git::git://anongit.freedesktop.org/xqproxy
+	source = build.patch
 	md5sums = SKIP
+	md5sums = c81a0aabcb01f6a24d44196aed092d47
 
 pkgname = xqproxy-git
 

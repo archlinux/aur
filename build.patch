@@ -1,0 +1,24 @@
+diff -up src/xqproxy-git/configure.ac.orig src/xqproxy-git/configure.ac
+--- src/xqproxy-git/configure.ac.orig	2014-04-02 21:53:12.000000000 -0600
++++ src/xqproxy-git/configure.ac	2014-04-02 21:53:19.000000000 -0600
+@@ -23,7 +23,7 @@ if test "x$GCC" = "xyes"; then
+ fi
+ 
+ PKG_CHECK_MODULES(libxdmcp, [
+-        xdmcp >= 1.0.0
++        xdmcp >= 1.0.0 x11
+ ])
+ AC_SUBST(libxdmcp_LIBS)
+ AC_SUBST(libxdmcp_CFLAGS)
+diff -up src/xqproxy-git/xdmcpclient.c.orig src/xqproxy-git/xdmcpclient.c
+--- src/xqproxy-git/xdmcpclient.c.orig	2014-04-02 21:54:04.000000000 -0600
++++ src/xqproxy-git/xdmcpclient.c	2014-04-02 21:54:12.000000000 -0600
+@@ -264,7 +264,7 @@ XdmcpClientFree (XdmcpClient *client)
+     XdmcpDisposeARRAY8 (&client->DisplayClass);
+     XdmcpDisposeARRAY8 (&client->DisplayID);
+     if (client->buffer.data)
+-        Xfree (client->buffer.data);
++        XFree (client->buffer.data);
+     free (client);
+ }
+ 

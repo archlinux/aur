@@ -1,31 +1,33 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xqproxy-git
-pkgver=0.1.2.r0.g5e21d36
-pkgrel=3
-pkgdesc="XDMCP query proxy"
+pkgver=0.1.1.0.gffcf6eb
+pkgrel=1
+pkgdesc="XDCMP query proxy"
 arch=('i686' 'x86_64')
-#url="http://cgit.freedesktop.org/xqproxy"
-url="https://github.com/bbidulock/xqproxy"
+url="http://cgit.freedesktop.org/xqproxy"
 license=('MIT')
 depends=('bash' 'libx11')
 conflicts=('xqproxy')
 provides=('xqproxy')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/bbidulock/xqproxy.git")
-md5sums=('SKIP')
+source=("$pkgname::git://anongit.freedesktop.org/xqproxy"
+	"build.patch")
+md5sums=('SKIP'
+         'c81a0aabcb01f6a24d44196aed092d47')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed -r 's,([^-]*-g),r\1,;s,-,.,g'
+  git describe --long | sed 's|-|.|g'
 }
 prepare() {
   cd $pkgname
+  patch -Np2 -b -z .orig -i ../build.patch
   autoreconf -fiv
 }
 build() {
   cd $pkgname
   ./configure --prefix=/usr
-  make V=0
+  make
 }
 package() {
   cd $pkgname
