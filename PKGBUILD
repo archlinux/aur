@@ -2,7 +2,7 @@
 pkgname=perl-spread-message
 _realname=Spread-Message
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="CPAN/Spread::Message - provide messaging using the Spread toolkit"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/module/Spread::Message"
@@ -16,6 +16,9 @@ build() {
   cd  $srcdir/$_realname-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
+}
+package() {
+  cd  $srcdir/$_realname-$pkgver
   make install DESTDIR=$pkgdir
   find $pkgdir -name '.packlist' -delete
   find $pkgdir -name '*.pod' -delete
