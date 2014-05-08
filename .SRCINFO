@@ -1,7 +1,7 @@
 pkgbase = perl-spread-session
 	pkgdesc = CPAN/Spread::Session - OO wrapper for Spread messaging toolkit
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/module/Spread::Session
 	arch = i686
 	arch = x86_64
