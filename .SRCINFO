@@ -1,7 +1,7 @@
 pkgbase = piedock
 	pkgdesc = A task bar and application launcher in shape of a circular pie menu.
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.markusfisch.de/
 	install = piedock.install
 	arch = i686

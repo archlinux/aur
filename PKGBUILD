@@ -3,7 +3,7 @@
 
 pkgname=piedock
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A task bar and application launcher in shape of a circular pie menu."
 arch=(i686 x86_64)
 url="http://www.markusfisch.de/"
