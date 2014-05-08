@@ -2,13 +2,13 @@
 
 pkgname=aewm++
 pkgver=1.0.1
-pkgrel=3
+pkgrel=1
 pkgdesc="A small window manager for X11 based originally off aewm"
 arch=('i686' 'x86_64')
 url="https://github.com/frankhale/aewmpp"
 license=('GPL3')
 depends=('libxext' 'gcc-libs')
-makedepends=('git' 'clang')
+makedepends=('git')
 source=("git://github.com/frankhale/aewmpp.git")
 md5sums=('SKIP')
 _gitname="aewmpp"

@@ -1,13 +1,12 @@
 pkgbase = aewm++
 	pkgdesc = A small window manager for X11 based originally off aewm
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/frankhale/aewmpp
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = clang
 	depends = libxext
 	depends = gcc-libs
 	source = git://github.com/frankhale/aewmpp.git
