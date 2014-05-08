@@ -1,5 +1,5 @@
 pkgbase = libgcj
-	pkgdesc = Dynamically load and interpret java class files. Built from binary executables available in Debian repositories. Please report PKGBUILD bugs at https://github.com/ystein/archlinux-aur-packages.
+	pkgdesc = Dynamically load and interpret java class files. Built from binary executables available in Debian repositories.
 	pkgver = 14_4.8.2_16
 	pkgrel = 1
 	url = http://gcc.gnu.org/java/
