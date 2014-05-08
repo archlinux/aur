@@ -5,7 +5,7 @@
 
 pkgname=wdm
 pkgver=1.28
-pkgrel=7
+pkgrel=8
 pkgdesc="An replacement X window display manager similar to, and based on XDM"
 arch=(i686 x86_64)
 url="http://github.com/raorn/wdm"
@@ -13,10 +13,11 @@ license=('GPL')
 depends=('windowmaker' 'pam' 'bash' 'libxmu')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/raorn/wdm.git#tag=$pkgname-$pkgver"
-	"Makefile.in" "cy.po")
+	"Makefile.in" "cy.po" "wdm.service")
 md5sums=('SKIP'
          'b0860fca75e1c8ce7699014b4778a3f7'
-         '2e1a8d2c6bd69d1fad151d86906163bd')
+         '2e1a8d2c6bd69d1fad151d86906163bd'
+         'e176d2339acb8b5422c0369f83fd68a0')
 
 prepare() {
   cd $pkgname
@@ -28,7 +29,7 @@ prepare() {
 build() {
   cd $pkgname
   ./configure --prefix=/usr --with-nlsdir=/usr/share/locale \
-	--sysconfdir=/etc/wdm --with-wdmdir=/etc/wdm --mandir=/usr/share/man \
+	--sysconfdir=/etc --with-wdmdir=/etc/wdm --mandir=/usr/share/man \
 	--with-fakehome=/var/empty
   make V=0
 }
@@ -41,4 +42,7 @@ package() {
   echo "auth	required	pam_unix_auth.so" >"$pkgdir/etc/pam.d/wdm"
   chmod 0644 "$pkgdir/etc/wdm/wdm-config"
   chmod 0755 "$pkgdir/etc/wdm/authdir"
+  rm -f "$pkgdir/etc/wdm/wdm-config.in"
+  rm -f "$pkgdir/etc/Xclients.in"
+  install -Dm644 wdm.service "$pkgdir/usr/lib/systemd/system/wdm.service"
 }
