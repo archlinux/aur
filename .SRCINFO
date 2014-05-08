@@ -1,0 +1,18 @@
+pkgbase = mysearch
+	pkgdesc = Local search engine portal designed to anonymate your search requests and have a better display of search results
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://codingteam.net/project/mysearch
+	arch = any
+	license = AGPL
+	depends = twisted
+	depends = python2-pyopenssl
+	depends = python2-jinja
+	depends = python2
+	source = http://codingteam.net/project/mysearch/download/file/mysearch-1.0.tar.gz
+	source = mysearch
+	sha1sums = df7a8d47c4d3f6ff8099733d0a4a4db6cd3e9462
+	sha1sums = 0f785b50876af5f7e4e5b7166da39b1d72d88f27
+
+pkgname = mysearch
+
