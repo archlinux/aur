@@ -1,11 +1,12 @@
 pkgbase = wumwum
 	pkgdesc = The Window Manager manager. It can turn emwh compliant window managers into a tiling window manager while retaining all initial functionalities.
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 1
 	url = http://wumwum.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPLv3
+	depends = perl
 	depends = wmctrl
 	depends = libaosd
 	depends = libx11
