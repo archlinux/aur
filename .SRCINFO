@@ -1,20 +1,20 @@
 pkgbase = c++-gtk-utils-gtk2
 	pkgdesc = Classes and functions for programming in GTK+
-	pkgver = 2.0.24
+	pkgver = 2.0.18
 	pkgrel = 1
 	url = http://cxx-gtk-utils.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	depends = gtk2
-	provides = c++-gtk-utils=2.0.24
+	provides = c++-gtk-utils=2.0.18
 	conflicts = c++-gtk-utils
 	replaces = c++-gtk-utils
 	options = !libtool
 	options = !docs
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/2.0.24/c++-gtk-utils-2.0.24.tar.gz
-	md5sums = 61cdf1bf94a5ac3430dd5ea39946142b
+	source = http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/2.0.18/c++-gtk-utils-2.0.18.tar.gz
+	md5sums = 446a8e0120d69639b1950c72bd545116
 
 pkgname = c++-gtk-utils-gtk2
 
