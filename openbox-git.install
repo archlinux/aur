@@ -1,0 +1,9 @@
+post_install() {
+    echo "Place menu.xml, rc.xml and autostart.sh in ~/.config/openbox"
+    echo "They can be found in /etc/xdg/openbox"
+}
+
+post_upgrade() {
+  post_install
+}
+
