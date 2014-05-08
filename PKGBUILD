@@ -3,7 +3,7 @@
 
 pkgname=wmudmount
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc='A filesystem mounter dockapp that uses udisks.'
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/$pkgname/"
@@ -16,7 +16,7 @@ md5sums=('988955faca6db4f9c4d26f8b79a38744')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --disable-gtk-withdrawn-hack --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 package() {
