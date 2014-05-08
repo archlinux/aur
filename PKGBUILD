@@ -1,38 +1,46 @@
-# Maintainer: Pavlo Ilin <ilin.pa@gmail.com>
-# Contributor: swiftscythe <swiftscythe@gmail.com>
+# Mantainer: Adria Arrufat <swiftscythe@gmail.com>
 
 pkgname=gigolo-git
-pkgver=0.4.2.r34.g803dd15
+pkgver=20100915
 pkgrel=1
-epoch=1
 pkgdesc="Frontend to manage connections to remote filesystems using GIO/GVFS"
 arch=(i686 x86_64)
-url="http://goodies.xfce.org/projects/applications/gigolo"
 license=('GPL2')
+url="http://thunar.xfce.org"
 groups=('xfce4-git')
-depends=('gtk2')
-makedepends=('git' 'xfce4-dev-tools')
-provides=("gigolo")
+depends=('gtk2' 'gvfs')
+makedepends=('gettext' 'git' 'intltool' 'python')
 conflicts=('gigolo')
-source=("$pkgname::git://git.xfce.org/apps/gigolo")
+provides=("gigolo")
+source=()
+md5sums=()
 
-noextract=()
-md5sums=('SKIP')
 
-
-pkgver() {
-  cd $pkgname
-  git describe --long | sed -E 's/gigolo.//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
+_gitroot="git://git.xfce.org/apps/gigolo"
+_gitname="gigolo"
 build() {
-  cd $pkgname
+    
+    cd $srcdir
+    msg "Getting sources..."
+    
+    if [ -d "$srcdir/$_gitname" ] ; then
+	 cd $_gitname && git pull origin
+	 msg "The local files are updated."
+	else
+	 git clone $_gitroot
+	fi
+
+msg "GIT checkout done or server timeout"
+msg "Starting build..."
+
+	cd $srcdir/$_gitname
+    
   ./autogen.sh  
   ./configure --prefix=/usr
-  make
+  make || return 1
+}
+package() {
+  cd $srcdir/$_gitname
+  make DESTDIR=${pkgdir} install
 }
 
-package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir/" install
-}
