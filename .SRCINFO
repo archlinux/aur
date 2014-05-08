@@ -1,7 +1,7 @@
 pkgbase = wmbiff
 	pkgdesc = WindowMaker dock app that displays the number of read and unread messages in up to five mailboxes.
 	pkgver = 0.4.27
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wmbiff.sourceforge.net/
 	arch = i686
 	arch = x86_64

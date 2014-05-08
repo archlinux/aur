@@ -2,7 +2,7 @@
 pkgname=wmbiff
 pkgver=0.4.27
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=3
 pkgdesc="WindowMaker dock app that displays the number of read and unread messages in up to five mailboxes."
 url="http://wmbiff.sourceforge.net/"
 license=("GPL")
