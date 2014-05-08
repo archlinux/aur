@@ -1,14 +1,14 @@
 pkgbase = wmblob
 	pkgdesc = wmblob shows some blobs moving around
 	pkgver = 1.0.3
-	pkgrel = 3
-	url = http://dockapps.windowmaker.org/file.php/id/155
+	pkgrel = 4
+	url = http://web.archive.org/web/20121029030832/http://dockapps.windowmaker.org/file.php/id/155
 	arch = i686
 	arch = x86_64
 	groups = x11
 	license = GPL
 	depends = gtk2
-	source = http://dockapps.windowmaker.org/download.php/id/541/wmblob-1.0.3.tar.bz2
+	source = wmblob-1.0.3.tar.bz2
 	md5sums = 5821d20d4e4b86f8ff996320ece2424b
 
 pkgname = wmblob
