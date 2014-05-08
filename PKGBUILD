@@ -1,9 +1,10 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# $Id: PKGBUILD 61556 2009-12-19 19:16:58Z jgc $
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+
 pkgname=hal-info
 _date=20091130
 pkgver=0.${_date}
-pkgrel=3
+pkgrel=2
 pkgdesc="Hardware Abstraction Layer information files"
 arch=(any)
 options=('!emptydirs')
@@ -14,12 +15,7 @@ md5sums=('34375489a02a00b250fdc0b280be11b8')
 
 build() {
   cd "${srcdir}/${pkgname}-${_date}"
-  ./configure \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--enable-killswitch-dell-wlan=no \
-	--enable-killswitch-dell-bluetooth=no \
-	--enable-killswitch-dell-wwan=no
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-killswitch-dell-wlan=no --enable-killswitch-dell-bluetooth=no --enable-killswitch-dell-wwan=no
   make
 }
  
