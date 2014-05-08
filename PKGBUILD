@@ -1,9 +1,9 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Eric Bélanger <eric@archlinux.org>
+# $Id: PKGBUILD 197577 2013-10-27 02:25:22Z eric $
+# Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=lesstif
 pkgver=0.95.2
-pkgrel=7
+pkgrel=6
 pkgdesc="LGPL'd re-implementation of Motif"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/lesstif/"
