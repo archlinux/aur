@@ -1,6 +1,6 @@
 pkgbase = txtw-git
 	pkgdesc = Return the pixel width of the given strings for the given font
-	pkgver = 11
+	pkgver = 10
 	pkgrel = 1
 	url = https://github.com/baskerville/txtw
 	arch = i686

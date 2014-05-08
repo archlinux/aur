@@ -2,7 +2,7 @@
 
 _pkgname=txtw
 pkgname=${_pkgname}-git
-pkgver=11
+pkgver=10
 pkgrel=1
 pkgdesc='Return the pixel width of the given strings for the given font'
 arch=('i686' 'x86_64')
