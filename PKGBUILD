@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 198341 2013-10-30 14:16:46Z allan $
+# $Id: PKGBUILD 206339 2014-02-24 03:07:41Z heftig $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
@@ -10,23 +10,21 @@ pkgname=networkmanager-ifupdown
 _oldname=networkmanager
 _pkgname=NetworkManager
 pkgver=0.9.8.8
-pkgrel=1
+pkgrel=3
 pkgdesc="Network Management daemon"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnome.org/projects/$_pkgname/"
 conflicts=($_oldname)
 provides=($_oldname=$pkgver)
-depends=(dbus-glib iproute2 libnl nss polkit udev wpa_supplicant dhcp-client
-         libsoup systemd modemmanager)
-makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc git)
+depends=(dbus-glib iproute2 libnl nss polkit wpa_supplicant dhcp-client libsoup systemd libmm-glib)
+makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc git ppp modemmanager)
 optdepends=('dhclient: DHCPv6 support'
             'dnsmasq: Connection sharing'
             'bluez: Bluetooth support'
             'openresolv: resolvconf support'
             'ppp: Dialup connection support')
 backup=('etc/NetworkManager/NetworkManager.conf')
-options=('!libtool')
 install=networkmanager.install
 #source=(git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=93c1041
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
@@ -62,7 +60,8 @@ build() {
     --disable-wimax \
     --enable-modify-system \
     --enable-doc \
-    --enable-ifupdown
+    --enable-ifupdown \
+    --with-pppd-plugin-dir=/usr/lib/pppd/2.4.6
 
   make V=0
 }
