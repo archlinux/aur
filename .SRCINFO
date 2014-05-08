@@ -1,5 +1,5 @@
 pkgbase = slim-git
-	pkgver = 1.3.6.4.ga33d260
+	pkgver = v1.3.6.3.g741e439.2013.10.03
 	pkgrel = 1
 	url = http://developer.berlios.de/projects/slim/
 	arch = i686
@@ -13,16 +13,18 @@ pkgbase = slim-git
 	makedepends = libjpeg
 	makedepends = libxft
 	makedepends = libxrandr
-	source = git+https://github.com/WorMzy/slim.git
+	source = git://git.berlios.de/slim
 	source = slimlock-git.install
 	source = slim.conf
 	source = http://downloads.sourceforge.net/project/slim.berlios/slim-archlinux-simple.tar.gz
+	source = slim-1.3.6-fix-libslim-libraries.patch
 	source = slim.pam
 	source = slim.logrotate
 	md5sums = SKIP
 	md5sums = 40af4379e8b17203414356edbf57469f
 	md5sums = 3f75d2a7a85c08a41b2f75eeb548cd87
 	md5sums = 7c7aaa255561444a4ae3e9f1dfb4be5d
+	md5sums = 3b0579dccedff97bbeafa03d58666294
 	md5sums = 294bc95c215ed04151d02fa90e2bd387
 	md5sums = 43da096480bf72c3ccec8ad8400f34f0
 
