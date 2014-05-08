@@ -1,0 +1,93 @@
+diff -pur xdm-1.1.11.orig/include/dm.h xdm-1.1.11/include/dm.h
+--- xdm-1.1.11.orig/include/dm.h	2011-09-25 01:35:47.000000000 -0600
++++ xdm-1.1.11/include/dm.h	2013-03-02 03:15:10.000000000 -0700
+@@ -222,6 +222,7 @@ struct display {
+ 	char		*systemShell;	/* interpreter for startup/reset */
+ 	char		*failsafeClient;/* a client to start when the session fails */
+ 	char		*chooser;	/* chooser program */
++	char		*greeter;	/* greeter program */
+ 
+ 	/* authorization resources */
+ 	int		authorize;	/* enable authorization */
+diff -pur xdm-1.1.11.orig/man/xdm.man xdm-1.1.11/man/xdm.man
+--- xdm-1.1.11.orig/man/xdm.man	2011-09-25 01:35:47.000000000 -0600
++++ xdm-1.1.11/man/xdm.man	2013-03-02 03:22:51.000000000 -0700
+@@ -415,6 +415,10 @@ Specifies the program run to offer a hos
+ redirected to the special host name CHOOSER.
+ \fI CHOOSERPATH \fP is the default.
+ See the sections \fBXDMCP Access Control\fP and \fBChooser\fP.
++.IP "\fBDisplayManager.\fP\fIDISPLAY\fP\fB.greeter\fP"
++Specifies the program run to offer a graphical login prompt.  When
++this resource is specified, the value of \fBDisplayManager.greeterLib\fP
++is ignored for the specified \fIDISPLAY\fP.
+ .IP "\fBDisplayManager.\fP\fIDISPLAY\fP\fB.xrdb\fP"
+ Specifies the program used to load the resources.  By default,
+ .I xdm
+Only in xdm-1.1.11: wdm.patch
+diff -pur xdm-1.1.11.orig/xdm/dpylist.c xdm-1.1.11/xdm/dpylist.c
+--- xdm-1.1.11.orig/xdm/dpylist.c	2011-09-25 01:35:47.000000000 -0600
++++ xdm-1.1.11/xdm/dpylist.c	2013-03-02 03:15:58.000000000 -0700
+@@ -148,6 +148,7 @@ RemoveDisplay (struct display *old)
+ 	    free (d->systemShell);
+ 	    free (d->failsafeClient);
+ 	    free (d->chooser);
++	    free (d->greeter);
+ 	    if (d->authorizations)
+ 	    {
+ 		for (i = 0; i < d->authNum; i++)
+@@ -224,6 +225,7 @@ NewDisplay (char *name, char *class)
+     d->systemShell = NULL;
+     d->failsafeClient = NULL;
+     d->chooser = NULL;
++    d->greeter = NULL;
+     d->authorize = FALSE;
+     d->authorizations = NULL;
+     d->authNum = 0;
+diff -pur xdm-1.1.11.orig/xdm/resource.c xdm-1.1.11/xdm/resource.c
+--- xdm-1.1.11.orig/xdm/resource.c	2011-09-25 01:35:47.000000000 -0600
++++ xdm-1.1.11/xdm/resource.c	2013-03-02 03:15:42.000000000 -0700
+@@ -106,6 +106,9 @@ int	choiceTimeout;	/* chooser choice tim
+ #ifndef DEF_CHOOSER
+ # define DEF_CHOOSER "/usr/lib/X11/xdm/chooser"
+ #endif
++#ifndef DEF_GREETER
++# define DEF_GREETER ""
++#endif
+ #ifndef DEF_AUTH_NAME
+ # ifdef HASXDMAUTH
+ #  define DEF_AUTH_NAME	"XDM-AUTHORIZATION-1 MIT-MAGIC-COOKIE-1"
+@@ -280,6 +283,8 @@ struct displayResource sessionResources[
+ 				DEF_USER_AUTH_DIR },
+ { "chooser",	"Chooser",	DM_STRING,	boffset(chooser),
+ 				DEF_CHOOSER },
++{ "greeter",	"Greeter",	DM_STRING,	boffset(greeter),
++				DEF_GREETER },
+ };
+ 
+ #define NUM_SESSION_RESOURCES	(sizeof sessionResources/\
+diff -pur xdm-1.1.11.orig/xdm/session.c xdm-1.1.11/xdm/session.c
+--- xdm-1.1.11.orig/xdm/session.c	2011-09-25 01:35:47.000000000 -0600
++++ xdm-1.1.11/xdm/session.c	2013-03-02 03:16:29.000000000 -0700
+@@ -340,6 +340,22 @@ ManageSession (struct display *d)
+      */
+     LoadXloginResources (d);
+ 
++    if (d->greeter && d->greeter[0] != 0) {
++	char	**args;
++	char	**env;
++
++	args = parseArgs ((char **) 0, d->greeter);
++	env = systemEnv (d, (char *) 0, (char *) 0);
++#ifdef USE_SYSTEMD_DAEMON
++	sd_notify(1, "READY=1");
++#endif
++	Debug ("ManageSession: running %s\n", args[0]);
++	execute (args, env);
++	Debug ("ManageSession: couldn't run %s\n", args[0]);
++	LogError ("Cannot execute %s\n", args[0]);
++	exit (UNMANAGE_DISPLAY);
++    }
++
+     Debug ("ManageSession: loading greeter library %s\n", greeterLib);
+     greet_lib_handle = dlopen(greeterLib, RTLD_NOW);
+     if (greet_lib_handle != NULL)
