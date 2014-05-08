@@ -1,22 +1,17 @@
-# $Id: PKGBUILD 193939 2013-09-07 07:11:31Z lcarlier $
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Alexander Baldeck <alexander@archlinux.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+#Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xorg-twm-git
-pkgver=1.0.9.r0.gb52e404
+pkgver=1.0.8.r1.g9c09c3e
 pkgrel=1
 pkgdesc="Tab Window Manager for the X Window System"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
-backup=(usr/share/X11/twm/system.twmrc)
+backup=(etc/X11/twm/system.twmrc)
 license=('custom')
 depends=('libxmu')
 makedepends=('xorg-util-macros')
 source=($pkgname::git://anongit.freedesktop.org/xorg/app/twm)
 sha256sums=('SKIP')
-provides=('xorg-twm')
-conflicts=('xorg-twm')
 
 pkgver() {
   cd $pkgname
@@ -33,5 +28,7 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
+  install -Dm644 src/system.twmrc "$pkgdir/etc/X11/twm/system.twmrc"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
