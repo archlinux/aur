@@ -3,12 +3,12 @@
 
 pkgname=zenity-gtk2
 pkgver=2.32.1
-pkgrel=4
+pkgrel=3
 pkgdesc="Display graphical dialog boxes from shell scripts. GTK2 version."
 arch=(i686 x86_64)
 license=('LGPL')
 depends=('gtk2' 'libnotify')
-makedepends=('intltool' 'gtk-doc' 'gnome-doc-utils')
+makedepends=('intltool' 'gtk-doc')
 conflicts=('zenity')
 provides=('zenity')
 url="http://www.gnome.org"

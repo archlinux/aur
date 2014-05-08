@@ -1,14 +1,13 @@
 pkgbase = zenity-gtk2
 	pkgdesc = Display graphical dialog boxes from shell scripts. GTK2 version.
 	pkgver = 2.32.1
-	pkgrel = 4
+	pkgrel = 3
 	url = http://www.gnome.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = intltool
 	makedepends = gtk-doc
-	makedepends = gnome-doc-utils
 	depends = gtk2
 	depends = libnotify
 	provides = zenity
