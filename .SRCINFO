@@ -1,7 +1,7 @@
 pkgbase = dwt
 	pkgdesc = Simple no-frills terminal emulator based on VTE
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aperezdc/dwt
 	arch = i686
 	arch = x86_64
