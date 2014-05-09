@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/passwordsafe/"
 license=('Artistic2.0')
 #to build without yubikey support, remove ykpers and uncomment NO_YUBI in build()
-depends=('libxtst' 'wxgtk2.8' 'xerces-c') #'ykpers')
+depends=('libxtst' 'wxgtk2.8' 'xerces-c' 'ykpers')
 makedepends=('git' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe' 'pwsafe')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	NO_YUBI=1 \
+#	NO_YUBI=1 \
 	WX_CONFIG="/usr/bin/wx-config-2.8" \
 	make release help I18N
 }
