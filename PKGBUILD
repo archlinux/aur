@@ -2,7 +2,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=steins-gate
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT' 'LGPL3' 'GPL3')
@@ -13,9 +13,9 @@ makedepends=('cmake' 'boost')
 source=(libnpa-$pkgver.tar.gz::"https://github.com/FGRE/libnpa/archive/v$pkgver.tar.gz"
         libnpengine-$pkgver.tar.gz::"https://github.com/FGRE/libnpengine/archive/v$pkgver.tar.gz"
         $pkgname-$pkgver.tar.gz::"https://github.com/FGRE/steins-gate/archive/v$pkgver.tar.gz")
-sha256sums=('e3ee341501fe0838396d9046747ea9bf6fe533e536934b46065e1cdf6d479ed0'
-            'd46af8c74584466e5a38f762040973fa9c14e89477b3249d5489c4468ccc85f8'
-            '2519d980ed3f0819de2b96002e99657db487365aea7e06d47ac480bcc8976e66')
+sha256sums=('93f0e86a9d87b27df76b5f3b7ad96ffeea956126d422791db93e38965bdef9cb'
+            '46ac8ccfc9953c33b63fa1bf8c4f51c7bd8942b0254c6389058a66c76c21f825'
+            '6fb4610b0ec821791a3b28cd3f159686fb8f8072237d10fe73dd7050818d3511')
 
 prepare() {
   for _name in libnpa libnpengine steins-gate; do
@@ -24,7 +24,7 @@ prepare() {
     mv "$srcdir"/$_name-$pkgver "$srcdir"/$_name
   done
 
-  # set font path
+  # patch font path
   sed 's|cjkuni-uming|TTF|' -i libnpengine/src/nsbinterpreter.cpp
 }
 

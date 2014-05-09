@@ -1,6 +1,6 @@
 pkgbase = steins-gate
 	pkgdesc = Libre reimplementation of the Steins;Gate visual novel
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = http://dev.pulsir.eu/krofna/
 	arch = i686
@@ -14,12 +14,12 @@ pkgbase = steins-gate
 	depends = sfml
 	depends = gst-plugins-base-libs
 	depends = ttf-arphic-uming
-	source = libnpa-0.3.2.tar.gz::https://github.com/FGRE/libnpa/archive/v0.3.2.tar.gz
-	source = libnpengine-0.3.2.tar.gz::https://github.com/FGRE/libnpengine/archive/v0.3.2.tar.gz
-	source = steins-gate-0.3.2.tar.gz::https://github.com/FGRE/steins-gate/archive/v0.3.2.tar.gz
-	sha256sums = e3ee341501fe0838396d9046747ea9bf6fe533e536934b46065e1cdf6d479ed0
-	sha256sums = d46af8c74584466e5a38f762040973fa9c14e89477b3249d5489c4468ccc85f8
-	sha256sums = 2519d980ed3f0819de2b96002e99657db487365aea7e06d47ac480bcc8976e66
+	source = libnpa-0.3.3.tar.gz::https://github.com/FGRE/libnpa/archive/v0.3.3.tar.gz
+	source = libnpengine-0.3.3.tar.gz::https://github.com/FGRE/libnpengine/archive/v0.3.3.tar.gz
+	source = steins-gate-0.3.3.tar.gz::https://github.com/FGRE/steins-gate/archive/v0.3.3.tar.gz
+	sha256sums = 93f0e86a9d87b27df76b5f3b7ad96ffeea956126d422791db93e38965bdef9cb
+	sha256sums = 46ac8ccfc9953c33b63fa1bf8c4f51c7bd8942b0254c6389058a66c76c21f825
+	sha256sums = 6fb4610b0ec821791a3b28cd3f159686fb8f8072237d10fe73dd7050818d3511
 
 pkgname = steins-gate
 
