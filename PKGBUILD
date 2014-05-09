@@ -1,7 +1,7 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 # Contributor: Simon Sapin <simon dot sapin at exyr dot org>
 _pypi_name='WeasyPrint'
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Converts web documents (HTML, CSS, SVG, ...) to PDF."
 license=('BSD')
@@ -22,4 +22,4 @@ package() {
   python2 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('9721f97dfb182660362f327dd10f3242')
+md5sums=('87fcee411220f50b85079b9a5b29f53f')
