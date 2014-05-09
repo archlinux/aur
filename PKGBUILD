@@ -8,10 +8,11 @@ license=('MPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=16
+pkgrel=17
 arch=('any')
 url='https://code.google.com/p/nagioschecker/'
 depends=('firefox>=3.0')
+optdepends=('firefox-extension-addonbar')
 source=('https://addons.mozilla.org/firefox/downloads/latest/3607/addon-3607-latest.xpi'
         'tooltip_header_color.patch'
         'limit_0.patch'
