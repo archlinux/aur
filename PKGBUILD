@@ -14,7 +14,7 @@ optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe' 'pwsafe')
 source=("${pkgname}::git://git.code.sf.net/p/passwordsafe/git-code")
 md5sums=('SKIP')
-install=passwordsafe.install
+install=passwordsafe-git.install
 
 pkgver() {
 	cd "$pkgname"
