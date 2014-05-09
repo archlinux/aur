@@ -1,11 +1,10 @@
 # Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
-# Contributor: Frederic Bezies <fredbezies@gmail.com>
-# Contributor: Ronan Rabouin <darkbaboon@gmail.com>
+# Contributors: Frederic Bezies, Ronan Rabouin
 
 _pkgbase=quake2-rogue
 pkgname=yamagi-$_pkgbase
-pkgver=1.07
-pkgrel=2
+pkgver=2.00
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2"
 url="http://www.yamagi.org/quake2/"
@@ -15,7 +14,7 @@ install=$pkgname.install
 changelog=$pkgname.ChangeLog
 source=("http://deponie.yamagi.org/quake2/$_pkgbase-$pkgver.tar.xz"
         "$pkgname.sh" "$pkgname.desktop")
-sha256sums=('0b97d24ab11663abff752c73d0f87c9ce635454de396d2e6a5deb3a4ec36244d'
+sha256sums=('fa3f4ad38a73b6007cf8bd2992318952555ee7d91734bc0a7d1af6016186eac5'
             '7d43bd0ca15a6c82560153deea1df1109d0a448b226e316b6b7b5daae256241a'
             'b0347a6571748b5c1176e12b7a04f0b10e982c973bc6b7c749861146bf4d05a6')
 
