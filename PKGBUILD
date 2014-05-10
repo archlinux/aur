@@ -4,7 +4,7 @@
 pkgname=shairplay
 _gitname=shairplay
 pkgver=20140422
-pkgrel=1
+pkgrel=2
 pkgdesc='Apple airplay and raop protocol server'
 arch=('i686' 'x86_64')
 url='https://github.com/juhovh/shairplay'
@@ -17,8 +17,6 @@ source=("$_gitname::git://github.com/juhovh/shairplay.git#commit=64d59e3087f8290
 sha256sums=('SKIP'
 	'f0a176539a6c5be46dc832d054be2f18c3256e5fd34c5f1416c9463bd75c82b3')
 options=(!libtool)
-provides=('libshairport')
-conflicts=('libshairport')
 
 build() {
 	cd $_gitname
