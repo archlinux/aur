@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 102960 2013-12-25 03:04:08Z allan $
+# $Id: PKGBUILD 110035 2014-04-23 13:58:04Z heftig $
 # Maintainer: Fantix King <fantix.king@gmail.com>
 # Upstream Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
@@ -8,25 +8,23 @@
 
 pkgname='gcc-multilib-x32'
 true && pkgname=('gcc-multilib-x32' 'gcc-libs-multilib-x32' 'libx32-gcc-libs' 'gcc-fortran-multilib-x32' 'gcc-objc-multilib-x32' 'gcc-ada-multilib-x32' 'gcc-go-multilib-x32')
-pkgver=4.8.2_7
-_pkgver=4.8
+pkgver=4.9.0_1
+_pkgver=4.9
 pkgrel=1
-_snapshot=4.8-20131219
+#_snapshot=4.9.0-RC-20140411
 pkgdesc="The GNU Compiler Collection for multilib with x32 ABI support"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-makedepends=('binutils-multilib>=2.23' 'libmpc' 'cloog' 'gcc-ada-multilib' 'doxygen'
-             'lib32-glibc>=2.17' 'libx32-glibc>=2.17')
+makedepends=('binutils>=2.24' 'libmpc' 'cloog' 'gcc-ada-multilib' 'doxygen'
+             'lib32-glibc>=2.19' 'libx32-glibc>=2.19')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver%_*}/gcc-${pkgver%_*}.tar.bz2
-        ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
-        gcc-4.8-filename-output.patch
-        gcc-4.8-lambda-ICE.patch)
-md5sums=('666ef08f87649f941bc5512e13a88fdc'
-         '40cb437805e2f7a006aa0d0c3098ab0f'
-         '6eb6e080dbf7bc6825f53a0aaa6c4ef9')
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver%_*}/gcc-${pkgver%_*}.tar.bz2
+        #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+        gcc-4.8-filename-output.patch)
+md5sums=('9709b49ae0e904cbb0a6a1b62853b556'
+         '40cb437805e2f7a006aa0d0c3098ab0f')
 
 
 if [ -n "${_snapshot}" ]; then
@@ -53,13 +51,6 @@ prepare() {
 
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=57653
   patch -p0 -i ${srcdir}/gcc-4.8-filename-output.patch
-  
-  # http://gcc.gnu.org/bugzilla//show_bug.cgi?id=56710 - commit 3d1f8279
-  patch -p1 -i ${srcdir}/gcc-4.8-lambda-ICE.patch
-
-  # installing libiberty headers is broken
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=56780#c6
-  sed -i 's#@target_header_dir@#libiberty#' libiberty/Makefile.in
 
   mkdir ${srcdir}/gcc-build
 }
@@ -109,7 +100,7 @@ check() {
 package_libx32-gcc-libs()
 {
   pkgdesc="Runtime libraries shipped by GCC (x32 ABI)"
-  depends=('libx32-glibc>=2.17')
+  depends=('libx32-glibc>=2.19')
   options=('!emptydirs')
 
   cd ${srcdir}/gcc-build
@@ -117,14 +108,15 @@ package_libx32-gcc-libs()
   make -C $CHOST/x32/libgcc DESTDIR=${pkgdir} install-shared
   rm ${pkgdir}/${_libdir}/x32/libgcc_eh.a
 
-  for lib in libmudflap \
+  for lib in libatomic \
+             libcilkrts \
+             libgfortran \
              libgomp \
              libitm \
-             libatomic \
-             libstdc++-v3/src \
              libquadmath \
-             libgfortran \
-             libsanitizer/asan; do
+             libsanitizer/{a,l,ub}san \
+             libstdc++-v3/src \
+             libvtv; do
     make -C $CHOST/x32/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
   done
 
@@ -141,7 +133,7 @@ package_libx32-gcc-libs()
 package_gcc-libs-multilib-x32()
 {
   pkgdesc="Runtime libraries shipped by GCC for multilib with x32 ABI support"
-  depends=('glibc>=2.17' "lib32-gcc-libs=${pkgver//_/-}" "libx32-gcc-libs=$pkgver-$pkgrel")
+  depends=('glibc>=2.19' "lib32-gcc-libs=${pkgver//_/-}" "libx32-gcc-libs=$pkgver-$pkgrel")
   provides=("gcc-libs=${pkgver//_/-}" "gcc-libs-multilib=${pkgver//_/-}")
   conflicts=('gcc-libs')
   options=('!emptydirs')
@@ -152,14 +144,15 @@ package_gcc-libs-multilib-x32()
   make -C $CHOST/libgcc DESTDIR=${pkgdir} install-shared
   rm ${pkgdir}/${_libdir}/libgcc_eh.a
   
-  for lib in libmudflap \
+  for lib in libatomic \
+             libcilkrts \
+             libgfortran \
              libgomp \
              libitm \
-             libatomic \
-             libstdc++-v3/src \
              libquadmath \
-             libgfortran \
-             libsanitizer/asan; do
+             libsanitizer/{a,l,ub}san \
+             libstdc++-v3/src \
+             libvtv; do
     make -C $CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
   done
 
@@ -187,7 +180,7 @@ package_gcc-libs-multilib-x32()
 package_gcc-multilib-x32()
 {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support"
-  depends=("gcc-libs-multilib-x32=$pkgver-$pkgrel" 'binutils-multilib>=2.23' 'libmpc' 'cloog')
+  depends=("gcc-libs-multilib-x32=$pkgver-$pkgrel" 'binutils>=2.24' 'libmpc' 'cloog')
   groups=('x32-devel')
   options=('staticlibs')
   provides=("gcc=${pkgver//_/-}" "gcc-multilib=${pkgver//_/-}")
@@ -227,17 +220,23 @@ package_gcc-multilib-x32()
   make -C gcc DESTDIR=${pkgdir} install-mkheaders
   make -C lto-plugin DESTDIR=${pkgdir} install
 
+  make -C $CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
+    install-nodist_cilkincludeHEADERS
   make -C $CHOST/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
     install-nodist_libsubincludeHEADERS
   make -C $CHOST/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-  make -C $CHOST/libmudflap DESTDIR=${pkgdir} install-nobase_libsubincludeHEADERS
   make -C $CHOST/libquadmath DESTDIR=${pkgdir} install-nodist_libsubincludeHEADERS
+  make -C $CHOST/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C $CHOST/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+  make -C $CHOST/32/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C $CHOST/32/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C $CHOST/32/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+  make -C $CHOST/32/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C $CHOST/32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+  make -C $CHOST/x32/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C $CHOST/x32/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C $CHOST/x32/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+  make -C $CHOST/x32/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C $CHOST/x32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
 
   make -C libiberty DESTDIR=${pkgdir} install
@@ -348,17 +347,17 @@ package_gcc-ada-multilib-x32()
 
   ln -s gcc ${pkgdir}/usr/bin/gnatgcc
 
-  # insist on dynamic linking
+  # insist on dynamic linking, but keep static libraries because gnatmake complains
   mv ${pkgdir}/${_libdir}/adalib/libgna{rl,t}-${_pkgver}.so ${pkgdir}/usr/lib
   ln -s libgnarl-${_pkgver}.so ${pkgdir}/usr/lib/libgnarl.so
   ln -s libgnat-${_pkgver}.so ${pkgdir}/usr/lib/libgnat.so
-  rm ${pkgdir}/${_libdir}/adalib/libgna{rl,t}.*
+  rm ${pkgdir}/${_libdir}/adalib/libgna{rl,t}.so
 
   install -d ${pkgdir}/usr/libx32/
   mv ${pkgdir}/${_libdir}/x32/adalib/libgna{rl,t}-${_pkgver}.so ${pkgdir}/usr/libx32
   ln -s libgnarl-${_pkgver}.so ${pkgdir}/usr/libx32/libgnarl.so
   ln -s libgnat-${_pkgver}.so ${pkgdir}/usr/libx32/libgnat.so
-  rm ${pkgdir}/${_libdir}/x32/adalib/libgna{rl,t}.*
+  rm ${pkgdir}/${_libdir}/x32/adalib/libgna{rl,t}.so
 
   # Install Runtime Library Exception
   install -d ${pkgdir}/usr/share/licenses/gcc-ada-multilib-x32/
