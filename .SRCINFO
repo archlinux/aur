@@ -1,8 +1,9 @@
 pkgbase = pebble-sdk
 	pkgdesc = Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch.
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 1
 	url = https://developer.getpebble.com/2/getting-started/
+	install = pebble-sdk.install
 	arch = i386
 	arch = x86_64
 	license = custom
@@ -18,8 +19,12 @@ pkgbase = pebble-sdk
 	depends = arm-none-eabi-binutils
 	options = staticlibs
 	options = !strip
+	source = http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-2.1.1.tar.gz
 	source = python-waf.patch
+	source = build-command.patch
+	sha1sums = d22f1e62c1135fa6de6a42ce0c7b135d6dd66ce4
 	sha1sums = cd95ccc69820eee60e8e6ff9d85d6edeb7c3b6a8
+	sha1sums = 215c4e3d6b3d4649b4baae27fae66c3d596a307c
 
 pkgname = pebble-sdk
 

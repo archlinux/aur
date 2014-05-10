@@ -1,0 +1,24 @@
+--- tools/pebble/PblBuildCommand.py.old 2014-05-10 19:38:33.525057866 +0200
++++ tools/pebble/PblBuildCommand.py 2014-05-10 19:38:54.871724628 +0200
+@@ -191,21 +191,6 @@
+             os.path.join(self.sdk_path(args), "arm-cs-tools", "bin"), 
+             os.environ['PATH'])
+         
+-        # If python3 is the default and python2 is available, then plug in
+-        #  our stub 'python' shell script which passes control to python2
+-        py_version = sh.python("-c", 
+-                               "import sys;print(sys.version_info[0])",
+-                               _tty_out=False).strip()
+-        if py_version != '2':
+-            if sh.which('python2', _tty_out=False) is None:
+-                raise RuntimeError("The Pebble SDK requires python version 2.6 "
+-                    "or 2.7 (python2). You are currently running 'python%s' "
+-                    "by default and a 'python2' executable could not be found." % 
+-                    py_version)
+-            os.environ['PATH'] = "{}:{}".format(
+-                os.path.join(os.path.normpath(os.path.dirname(__file__))),
+-                os.environ['PATH'])
+-            
+         # Execute the build command
+         cmdLine = '"%s" %s' % (self.waf_path(args), self.waf_cmds)
+         retval = subprocess.call(cmdLine, shell=True)
