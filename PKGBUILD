@@ -2,13 +2,13 @@
 
 pkgname=baikal
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight CalDAV+CardDAV server"
 url="http://baikal-server.com/"
 arch=('any')
 license=('GPL')
 depends=('php')
-optdepends=('sqlite: Database' 'mariadb: Alternate database')
+optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use the sqlite backend')
 source=("http://baikal-server.com/get/baikal-regular-${pkgver}.tgz")
 sha1sums=('01eabcf0229ddffc0542f4e2a349754e778abbea')
 options=('!strip')
