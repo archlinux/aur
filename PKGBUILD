@@ -4,7 +4,7 @@
 
 pkgname='libgcj'
 pkgver=14_4.8.2_21
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamically load and interpret java class files. Built from binary \
 executables available in Debian repositories."
 url=http://gcc.gnu.org/java/
@@ -19,7 +19,7 @@ if [[ $CARCH == i686 ]]; then
 else
   _DEBARCH=amd64
   sha1sums=('75a56ef27f312839e2a29861765078c0f839db06')
-  depends=('zlib' 'gcc-libs-mutilib')
+  depends=('zlib' 'gcc-libs-multilib')
 fi
 source=(http://ftp.de.debian.org/debian/pool/main/g/gcc-4.8/$pkgname${pkgver%_*}-${pkgver##*_}_${_DEBARCH}.deb)
 
