@@ -1,7 +1,7 @@
 pkgbase = wmhdplop
 	pkgdesc = A dockapp that monitors your hard-drives
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hules.free.fr/wmhdplop/
 	arch = i686
 	arch = x86_64

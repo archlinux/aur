@@ -3,7 +3,7 @@
 
 pkgname=wmhdplop
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A dockapp that monitors your hard-drives"
 url="http://hules.free.fr/wmhdplop/"
 md5sums=('1c81cc9d438587399b6fa539e6021221')
@@ -13,6 +13,11 @@ depends=('imlib2')
 source=("http://hules.free.fr/wmhdplop/$pkgname-$pkgver.tar.gz")
 md5sums=('a64337205bc30faa45053965cc957b0e')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # imlib2-config is broken
+  sed -e 's,imlib2-config,pkg-config imlib2,g' -i configure
+}
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr
