@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 
 pkgname=cdogs
-pkgver=0.5.5
+pkgver=0.5.5.1
 pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/$pkgve
         cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/4ab8ce9fe7662c593ce92d5f99f6b60dbaeadad7.tar.gz"
         rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/1407ec0e1775366aed527b6113dd14a02d046c09.tar.gz"
         tinydir-for-$pkgver.tar.gz::"https://github.com/cxong/tinydir/archive/5545eeb7bf5ee2b64f790a276f89aa1856a6269a.tar.gz")
-sha256sums=('144ddf2a818f7bdac159cabb94d3aefeb9a0879ac06ff0c4987d8e5084fbfa9e'
+sha256sums=('3013861dc73241b2081b6f41ed3937a7afa9b19a7f8e3cc9470ba1b4f1244f8d'
             'fca25adefd14af3584dcf0e48c69647aa46a924ddbfcb75ec6053528f1bd80bc'
             'df3f546c63ab1517d2ae3053e2156f80555d3ddf96328190527965e1ca5dfc9d'
             '42116a68a2fd8e810529df65e2703a3c3cd89d34e5e4652e3955e11f4d55abfe'
