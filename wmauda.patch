@@ -1,6 +1,6 @@
 diff -up src/wmauda-0.9/Makefile.orig src/wmauda-0.9/Makefile
 --- src/wmauda-0.9/Makefile.orig	2012-03-26 16:27:20.000000000 -0600
-+++ src/wmauda-0.9/Makefile	2013-08-18 23:02:34.000000000 -0600
++++ src/wmauda-0.9/Makefile	2014-05-11 11:55:17.000000000 -0600
 @@ -7,12 +7,15 @@ INSTALL_DIR	:= $(PREFIX)/bin
  PIXMAP_DIR	:= $(PREFIX)/share/pixmaps
  MANPAGE_DIR	:= $(PREFIX)/share/man/man1
@@ -21,7 +21,18 @@ diff -up src/wmauda-0.9/Makefile.orig src/wmauda-0.9/Makefile
  
 diff -up src/wmauda-0.9/wmauda.c.orig src/wmauda-0.9/wmauda.c
 --- src/wmauda-0.9/wmauda.c.orig	2012-03-26 16:23:14.000000000 -0600
-+++ src/wmauda-0.9/wmauda.c	2013-08-18 23:04:55.000000000 -0600
++++ src/wmauda-0.9/wmauda.c	2014-05-11 11:55:38.000000000 -0600
+@@ -26,8 +26,8 @@
+ #include <string.h>
+ #include <ctype.h>
+ 
+-#include <audacious/dbus.h>
+-#include <audacious/audctrl.h>
++#include <audacious2/dbus.h>
++#include <audacious2/audctrl.h>
+ 
+ #include "dock-master.xpm"
+ 
 @@ -134,7 +134,7 @@ GdkBitmap *mask, *launch_mask;
  GdkGC *dock_gc;
  GtkTooltips *tooltips = NULL;
