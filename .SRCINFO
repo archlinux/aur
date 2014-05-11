@@ -1,6 +1,6 @@
 pkgbase = darkplaces
 	pkgdesc = An advanced Quake 1 game engine
-	pkgver = 20130304
+	pkgver = 20140507
 	pkgrel = 1
 	url = http://icculus.org/twilight/darkplaces/
 	install = darkplaces.install
@@ -17,9 +17,9 @@ pkgbase = darkplaces
 	depends = libxpm
 	depends = libxxf86vm
 	depends = sdl
-	source = http://icculus.org/twilight/darkplaces/files/darkplacesengine20130304.zip
+	source = http://icculus.org/twilight/darkplaces/files/darkplacesengine20140507.zip
 	source = darkplaces.desktop
-	sha256sums = e1858dcba033b1dfc6e685482745b7137ceb23dfd710671971cd5e34529a9f44
+	sha256sums = 80fa52b2d5eb8b3c90a16d4937697f114a253e81df5151d7e0334ea2914b5e7c
 	sha256sums = 476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37
 
 pkgname = darkplaces
