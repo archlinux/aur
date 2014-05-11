@@ -1,8 +1,8 @@
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
 pkgname=asciidoc-gtk-highlight
 pkgver=0.1
-pkgrel=1
-pkgdesc='CMake module to add Doxygen rule into Makefile'
+pkgrel=2
+pkgdesc='AsciiDoc syntax highlight for gtksourceview'
 arch=('any')
 url='https://launchpad.net/asciidoc-gtk-highlight'
 license=('LGPL')

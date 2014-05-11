@@ -1,7 +1,7 @@
 pkgbase = asciidoc-gtk-highlight
-	pkgdesc = CMake module to add Doxygen rule into Makefile
+	pkgdesc = AsciiDoc syntax highlight for gtksourceview
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/asciidoc-gtk-highlight
 	arch = any
 	license = LGPL
