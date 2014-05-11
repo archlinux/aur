@@ -3,37 +3,24 @@
 # Contributor: Erdbeerkaese <erdbeerkaese underscore arch at gmail dot com>
 
 pkgname=sparkleshare
-pkgver=1.2
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="http://sparkleshare.org/"
 license=('GPL3')
-depends=('webkit-sharp' 'notify-sharp' 'curl' 'git' 'openssh' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
-makedepends=('intltool' 'gnome-doc-utils')
+depends=('webkitgtk-sharp' 'notify-sharp-3' 'curl' 'git' 'openssh' 'desktop-file-utils')
 install=$pkgname.install
-source=(https://bitbucket.org/hbons/sparkleshare/downloads/$pkgname-linux-$pkgver.tar.gz
-        https://github.com/hbons/SparkleShare/commit/ba72a7a30.patch)
-md5sums=('befc1542079b0fc6e4b57fa7fdfab12e'
-         'b9a7fbcf0375331bc1eea5a43cb4a119')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Fix crash when we can't get the username
-  patch -Np1 -i ../ba72a7a30.patch
-}
+source=(https://bitbucket.org/hbons/sparkleshare/downloads/$pkgname-linux-$pkgver.tar.gz)
+md5sums=('66ae2b680d723f7a8b38e184d3b3dc55')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-              --disable-appindicator
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
   make DESTDIR="$pkgdir/" install
 }
