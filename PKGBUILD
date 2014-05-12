@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=4.6.1.40478
+pkgver=4.6.5.40833
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
@@ -23,26 +23,26 @@ install=firestorm.install
 options=(!strip)
 if [ "$CARCH" = "i686" ]; then
   source=(
-    "http://downloads.firestormviewer.org/linux/Phoenix_Firestorm-Release_${CARCH}_$pkgver.tar.bz2"
-    "firestorm.instasll"
+    "http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Release_${CARCH}_$pkgver.tar.bz2"
+    "firestorm.install"
     "firestorm.desktop"
     "firestorm.launcher"
   )
   sha256sums=(
-    'ea91ef1b8d8f9f9f095b45d947c881a04593a4961aa43db9e4b38ffccc316b34'
+    '5db53e07678488e0100314256d5199f812a660e87ec1912f6e6758851f997494'
     'cd919be5e2d28ff86e9b51ffe1076ba8c13acf9c0953fc2f4bb78fe7e79cdbb3'
     '6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1'
     'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530'
   )
 elif [ "$CARCH" = "x86_64" ]; then
   source=(
-    "http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Beta_${CARCH}_$pkgver.tar.bz2"
+    "http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Betax64_${CARCH}_$pkgver.tar.bz2"
     'firestorm.install'
     'firestorm.desktop'
     'firestorm.launcher'
   )
   sha256sums=(
-    'bdd60d6fc27dbb70b95efdb0809e1afa0545759aa5e149bb40fd4102becc9e0b'
+    '595bc26807542f83b03de1b9dfe5cce503e3fdcf1edf9b38a13d0f70b3772635'
     'cd919be5e2d28ff86e9b51ffe1076ba8c13acf9c0953fc2f4bb78fe7e79cdbb3'
     '6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1'
     'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530'
@@ -54,9 +54,9 @@ package() {
 
     # Rename Data Directory
     if [ "$CARCH" = "i686" ]; then
-      mv Phoenix_Firestorm-Release_${CARCH}_$pkgver firestorm
+      mv Phoenix_FirestormOS-Release_${CARCH}_$pkgver firestorm
     elif [ "$CARCH" = "x86_64" ]; then
-      mv Phoenix_FirestormOS-Beta_${CARCH}_$pkgver firestorm
+      mv Phoenix_FirestormOS-Betax64_${CARCH}_$pkgver firestorm
     fi
 
     # Fix fontconfig >= 2.9.0 issue

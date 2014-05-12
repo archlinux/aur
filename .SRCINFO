@@ -1,6 +1,6 @@
 pkgbase = firestorm-bin
 	pkgdesc = Firestorm is a feature-packed third-party viewer for Second Life.
-	pkgver = 4.6.1.40478
+	pkgver = 4.6.5.40833
 	pkgrel = 1
 	url = http://www.firestormviewer.org/
 	install = firestorm.install
