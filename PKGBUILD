@@ -7,7 +7,7 @@
 
 pkgname=doom3-data
 pkgver=1.3.1.1304
-pkgrel=2
+pkgrel=3
 pkgdesc="Doom 3 patch data files; not the full game!"
 url="http://www.idsoftware.com/"
 arch=('any')
@@ -27,11 +27,12 @@ build() {
 package() {
   cd "$srcdir/doom3-data"
 
-  install -d "$pkgdir"/usr/share/doom3/{base,d3xp}
+  install -d "$pkgdir"/usr/share/games/doom3/{base,d3xp}
   install -Dm 644 doom3.png "$pkgdir"/usr/share/icons/doom3.png
-  install -m 644 base/pak00{5,6,7,8}.pk4 "$pkgdir"/usr/share/doom3/base
-  install -m 644 d3xp/pak001.pk4 "$pkgdir"/usr/share/doom3/d3xp
-  install -m 644 ../roe_desc.txt "$pkgdir"/usr/share/doom3/d3xp/description.txt
+  install -m 644 base/pak00{5,6,7,8}.pk4 "$pkgdir"/usr/share/games/doom3/base
+  install -m 644 d3xp/pak001.pk4 "$pkgdir"/usr/share/games/doom3/d3xp
+  install -m 644 ../roe_desc.txt "$pkgdir"/usr/share/games/doom3/d3xp/description.txt
+  ln -s games/doom3 "$pkgdir"/usr/share/doom3
 
   install -Dm 644 License.txt "$pkgdir"/usr/share/licenses/doom3-data/license.txt
 }
