@@ -3,7 +3,7 @@
 pkgname=chocolate-doom-git
 _pkgname=${pkgname/-git/}
 true && pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
-pkgver=2.0.0.16.g95ef264
+pkgver=2.0.0.178.g1591773
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
@@ -53,7 +53,7 @@ package_chocolate-common-git() {
 }
 
 package_chocolate-doom-git() {
-  pkgdesc="Doom port accurately reproducing the original v1.9 EXEs."
+  pkgdesc="Doom port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
   conflicts=(chocolate-doom)
 
@@ -72,7 +72,7 @@ package_chocolate-doom-git() {
 }
 
 package_chocolate-heretic-git() {
-  pkgdesc="Heretic port accurately reproducing the original v1.3 EXE."
+  pkgdesc="Heretic port accurately reproducing the original DOS EXE."
   depends=(${depends[@]} 'chocolate-common-git')
   conflicts=(chocolate-heretic)
 
@@ -91,7 +91,7 @@ package_chocolate-heretic-git() {
 }
 
 package_chocolate-hexen-git() {
-  pkgdesc="Hexen port accurately reproducing the original v1.1 EXE."
+  pkgdesc="Hexen port accurately reproducing the original DOS EXE."
   depends=(${depends[@]} 'chocolate-common-git')
   conflicts=(chocolate-hexen)
 
@@ -110,7 +110,7 @@ package_chocolate-hexen-git() {
 }
 
 package_chocolate-strife-git() {
-  pkgdesc="Strife port accurately reproducing the original v1.31 EXE."
+  pkgdesc="Strife port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
   conflicts=(chocolate-strife)
 
