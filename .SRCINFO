@@ -1,0 +1,25 @@
+pkgbase = choreonoid
+	pkgdesc = An integrated robotics GUI environment.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://choreonoid.org
+	arch = any
+	license = LGPL2
+	makedepends = cmake
+	depends = boost
+	depends = bullet
+	depends = eigen3
+	depends = glew
+	depends = glibc
+	depends = libgl
+	depends = libpng
+	depends = libjpeg-turbo
+	depends = libyaml
+	depends = libx11
+	depends = qt4
+	depends = zlib
+	source = http://choreonoid.org/_downloads/choreonoid-1.4.0.zip
+	md5sums = e56e98cc33effbfbcbdb7e3ab4153fc3
+
+pkgname = choreonoid
+
