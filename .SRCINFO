@@ -18,6 +18,7 @@ pkgbase = enlightenment-git
 	depends = mesa
 	depends = bluez-libs
 	optdepends = acpid: power events on laptop lid close
+	optdepends = bc: calculator in everything module
 	optdepends = bluez-libs: bluetooth module
 	optdepends = connman: network module
 	optdepends = gdb: create backtraces on crash
