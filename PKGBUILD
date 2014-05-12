@@ -2,22 +2,26 @@
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
-pkgver=6.0
-pkgrel=3
+pkgver=6.1
+pkgrel=1
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
 depends=('desktop-file-utils' 'chmlib' 'kdebase-runtime' 'xdg-utils')
-makedepends=('automoc4' 'cmake')
+makedepends=('automoc4' 'cmake' 'patch')
 options=('libtool')
 install=$pkgname.install
 changelog=$pkgname.changelog
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('81c856434a86977039c36cb10f2427cc8cb1ea29a778f24fff2285d49c717979')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
+        $pkgname-build.patch)
+sha256sums=('f673c3aaca735d799d14b9f6f1b302e9bb77d5c0a0b601b4b5e0beed1c99fe78'
+            '567bdcaa1809618fe3a441345586a491247b76e4dd46db8ff8497bd53d74adbc')
 
 build() {
   cd $pkgname-$pkgver
+
+  patch -Np1 -i "${srcdir}"/$pkgname-build.patch
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
@@ -29,7 +33,7 @@ package() {
   make DESTDIR=${pkgdir} install
 
 #icon file
-  install -D -m644 ${srcdir}/$pkgname-$pkgver/packages/$pkgname.png \
+  install -D -m644 "${srcdir}"/$pkgname-$pkgver/packages/$pkgname.png \
     ${pkgdir}/usr/share/pixmaps/$pkgname.png
 
 #msits.protocol file provided by kdegraphics-okular package
