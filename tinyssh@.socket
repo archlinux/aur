@@ -1,0 +1,13 @@
+[Unit]
+Description=TinySSH service (socket-activated)
+Documentation=http://tinyssh.org
+
+[Socket]
+ListenStream=%i
+Accept=true
+KeepAlive=true
+IPTOS=low-delay
+ExecStartPre=/bin/sh -c 'test -r /etc/tinyssh/ed25519.pk || /usr/sbin/tinysshd-makekey /etc/tinyssh'
+
+[Install]
+WantedBy=network.target

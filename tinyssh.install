@@ -1,0 +1,30 @@
+#! /bin/sh
+#
+# tinyssh.install
+# Copyright (C) 2014 Adrian Perez <aperez@igalia.com>
+#
+# Distributed under terms of the MIT license.
+#
+
+post_install () {
+	cat <<-EOF
+	A generic systemd template unit has been installed, which can be used
+	to make TinySSH listen on more than one interface/address. To configure
+	it in the default port (22) on all interfaces (address 0.0.0.0), use:
+
+	  systemctl enable tinyssh@0.0.0.0:22.socket
+	  systemctl start tinyssh@0.0.0.0:22.socket
+
+  Additional interface/port combinations can be configured by writing
+  the "ipaddress:port" as the unit instance. For example:
+
+	  systemctl enable tinyssh@192.168.0.10:22222.socket
+	  systemctl start tinyssh@192.168.0.10:22222.socket
+
+EOF
+}
+
+post_upgrade () {
+	post_install
+}
+

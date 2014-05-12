@@ -1,0 +1,10 @@
+[Unit]
+Description=TinySSH daemon
+Documentation=http://tinyssh.org
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/tinysshd /etc/tinyssh
+StandardInput=socket
+StandardOutput=socket
+StandardError=journal
