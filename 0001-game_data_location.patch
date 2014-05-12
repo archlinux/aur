@@ -7,7 +7,7 @@ index 9cc20fb..fb1c882 100644
  
  // Linux info
 -#define LINUX_DEFAULT_PATH				"/usr/local/games/doom3"
-+#define LINUX_DEFAULT_PATH				"/usr/share/doom3"
++#define LINUX_DEFAULT_PATH				"/usr/share/games/doom3"
  
  // CD Key file info
  // goes into BASE_GAMEDIR whatever the fs_game is set to

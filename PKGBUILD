@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=dhewm3-git
-pkgver=20120703
+pkgver=2013.09.17.g6d8108c
 pkgrel=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
 arch=('i686' 'x86_64')
@@ -10,29 +10,20 @@ depends=('doom3-data' 'libjpeg' 'libogg' 'libvorbis' 'openal' 'sdl')
 makedepends=('cmake' 'git')
 optdepends=('curl: download support')
 install=dhewm3.install
-source=('dhewm3.desktop'
+source=('git+https://github.com/dhewm/dhewm3.git'
+        'dhewm3.desktop'
         '0001-game_data_location.patch')
-sha256sums=('7c9ae892c6cf0453fcd57731689ccedac8f8ce10f33043f7dd5fb66bd73d1287'
-            '285b91bd3ec936382f21a5b047256d730dfea7a6a9ee30bfb5a99d3d41060d3a')
+sha256sums=('SKIP'
+            '7c9ae892c6cf0453fcd57731689ccedac8f8ce10f33043f7dd5fb66bd73d1287'
+            'dbbb0607a92482a1b753cf9cac97dcc57345b92ee43449c9826f5b23af7624f9')
 
-_gitroot=git://github.com/dhewm/dhewm3.git
-_gitname=dhewm3
+pkgver() {
+  cd "${pkgname/-git/}"
+  git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  cd "$srcdir/$_gitname"
+  cd "${pkgname/-git/}"
   patch -p1 < "$srcdir"/0001-game_data_location.patch
 
   cd neo
@@ -41,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/neo"
+  cd "${pkgname/-git/}/neo"
 
   make DESTDIR="${pkgdir}" install
 
