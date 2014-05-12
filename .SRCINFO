@@ -1,7 +1,7 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = roccat-tools
 	optdepends = kmod-roccat: Adds support for some devices not yet in vanilla kernel
 	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-1.5.1.tar.bz2
 	md5sums = ef1c776a0add38a90a83af4e1fd4bfe2
+
+pkgname = roccat-tools
 
 pkgname = roccat-tools-common
 
