@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
 pkgver=1.2
-pkgrel=7
+pkgrel=8
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -43,7 +43,7 @@ md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
          '3f4dad9583c7a5d935d009069c599a51'
          '3ec10ede17cf40baf244f3f0e56aceac'
          '51b8537cae78fb372fb229345d8f65dc'
-         'f6f0066612f1fda363f3320b5ac22718')
+         '29305044b2ae41478647a72ce774bd51')
 
 package() {
   plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
