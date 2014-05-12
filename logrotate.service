@@ -1,0 +1,9 @@
+[Unit]
+Description=Rotate log files
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/logrotate /etc/logrotate.conf
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
