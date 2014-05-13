@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
-pkgver=3.14.3
-pkgrel=2
+pkgver=3.14.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -13,7 +13,6 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
-        'CVE-2014-0196.patch'
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -29,12 +28,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0011-kernfs-fix-removed-error-check.patch'
         '0012-fix-saa7134.patch'
         '0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch'
-        '0014-fix-rtl8192se.patch'
         '0015-fix-xsdt-validation.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            'a26a25739c50d639174698ae498530205b55e5a2b11f8c33ab92a8581bc83fbd'
-            '56d6dc13617645184e2a14b2ee466ccba5241961953f4950aed7377bc34902d7'
+            'af640ea64e923d525a8238832e8452381e6dc76a3bf28046411cadd67c408114'
             'c01d212694eddcf694c55e0943bf3336b6e1ff41b90ac1cdc88b26789785ed45'
             '9a33feb450005a43bf9aa8fbb74b2e463c72ea17ad06bab3357f8a0a89088e85'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
@@ -49,7 +46,6 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '04f44bf5c181d6dc31905937c1bdccb0f5aecaad3a579e99b302502b9cbe0f7a'
             '79359454c9d8446eb55add2b1cdbf8332bd67dafb01fefb5b1ca090225f64d18'
             'f2a5e22c1ba6e9b8a32a7bd4a5327ee95538aa10edcee3cd12578f8ff49bf6be'
-            'ff9df6746d7cbfe858d5b4bce932951c26414a7635cb5c26cd8d5c97df36a2a1'
             '384dd13fd4248fd6809da8c6ae29ced55d4a5cacc33ac2ae7522093ec0fb26d4')
 
 _kernelname=${pkgbase#linux}
@@ -59,9 +55,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # fix upstream CVE-2014-0196
-  patch -p1 -i "${srcdir}/CVE-2014-0196.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -108,11 +101,6 @@ prepare() {
   # https://bugs.archlinux.org/task/40089
   # https://bugzilla.kernel.org/show_bug.cgi?id=74051
   patch -Np1 -i "${srcdir}/0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch"
-
-  # fix rtl8192se authentification
-  # https://bugs.archlinux.org/task/39858
-  # https://bugzilla.kernel.org/show_bug.cgi?id=74541
-  patch -Np1 -i "${srcdir}/0014-fix-rtl8192se.patch"
 
   # fix xsdt validation bug
   # https://bugs.archlinux.org/task/39811
