@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=pianobar-git
 _gitname=pianobar
-pkgver=709.fc12245
+pkgver=711.b534a3b
 pkgrel=1
 pkgdesc="A free/open-source, console-based replacement for Pandora's Flash player"
 url="http://6xq.net/projects/pianobar/"
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$_gitname
-  sed -i 's/LIBAV:=undefined/LIBAV:=ffmpeg2.2/' Makefile
+  sed -i 's/^#LIBAV:=ffmpeg2.2/LIBAV:=ffmpeg2.2/' Makefile
 }
 
 build() {
