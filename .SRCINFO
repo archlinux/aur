@@ -1,6 +1,6 @@
 pkgbase = gnu-efi-libs-git
 	pkgdesc = Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version
-	pkgver = 0.35.3c62e78
+	pkgver = 0.41.8921ba2
 	pkgrel = 1
 	url = http://sourceforge.net/projects/gnu-efi/
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = gnu-efi-libs-git
 	options = !strip
 	options = !makeflags
 	source = gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#branch=master
+	source = gnu-efi-3.0v-revert-makefile-commit.patch
 	sha1sums = SKIP
+	sha1sums = db411a1f2f545924dc59f8a0c2331acfcb10bb54
 
 pkgname = gnu-efi-libs-git
 

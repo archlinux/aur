@@ -9,7 +9,7 @@ _gitbranch="master"
 _src_rootdir="${_gitname}-3.0"
 
 pkgname="gnu-efi-libs-git"
-pkgver=0.35.3c62e78
+pkgver=0.41.8921ba2
 pkgrel=1
 pkgdesc="Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
@@ -21,8 +21,11 @@ options=('staticlibs' '!strip' '!makeflags')
 conflicts=('gnu-efi-libs')
 provides=('gnu-efi-libs')
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
-sha1sums=('SKIP')
+source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+        'gnu-efi-3.0v-revert-makefile-commit.patch')
+
+sha1sums=('SKIP'
+          'db411a1f2f545924dc59f8a0c2331acfcb10bb54')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
@@ -41,7 +44,8 @@ build() {
 	git clean -x -d -f
 	echo
 	
-	git revert --no-commit 06744d69273de4945cf0ffcaa4a6abf7cec707b6
+	# git revert --no-commit 06744d69273de4945cf0ffcaa4a6abf7cec707b6
+	patch -Np1 -i "${srcdir}/gnu-efi-3.0v-revert-makefile-commit.patch" || true
 	echo
 	
 	## Unset all compiler FLAGS

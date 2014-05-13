@@ -1,0 +1,148 @@
+From 3100a29932662dd8b045ca0a2c3329e67b2b2df3 Mon Sep 17 00:00:00 2001
+From: Keshav Amburay <the.ridikulus.rat@gmail.com>
+Date: Tue, 13 May 2014 14:14:31 -0400
+Subject: [PATCH] Revert 06744d69273de4945cf0ffcaa4a6abf7cec707b6
+
+---
+ gnu-efi-3.0/gnuefi/Makefile | 34 ++++++++++++----------------------
+ gnu-efi-3.0/inc/Makefile    | 36 +++++++++++-------------------------
+ gnu-efi-3.0/lib/Makefile    | 13 +++----------
+ 3 files changed, 26 insertions(+), 57 deletions(-)
+
+diff --git a/gnu-efi-3.0/gnuefi/Makefile b/gnu-efi-3.0/gnuefi/Makefile
+index 71e93f9..27f43b7 100644
+--- a/gnu-efi-3.0/gnuefi/Makefile
++++ b/gnu-efi-3.0/gnuefi/Makefile
+@@ -49,19 +49,6 @@ OBJS	= $(FILES:%=%.o)
+ 
+ TARGETS	= crt0-efi-$(ARCH).o libgnuefi.a
+ 
+-INSTALLTARGETS = $(TARGETS)
+-ifneq (,$(findstring FreeBSD,$(OS)))
+- ifeq ($(ARCH),x86_64)
+-  INSTALLTARGETS += elf_$(ARCH)_fbsd_efi.lds
+- else
+-  INSTALLTARGETS += elf_$(ARCH)_efi.lds
+- endif
+-else
+-  INSTALLTARGETS += elf_$(ARCH)_efi.lds
+-endif
+-
+-LIBDIRINSTALL = $(INSTALLROOT)/$(LIBDIR)
+-
+ all:	$(TARGETS)
+ 
+ libgnuefi.a: $(patsubst %,libgnuefi.a(%),$(OBJS))
+@@ -69,14 +56,17 @@ libgnuefi.a: $(patsubst %,libgnuefi.a(%),$(OBJS))
+ clean:
+ 	rm -f $(TARGETS) *~ *.o $(OBJS)
+ 
+-$(LIBDIRINSTALL):
+-	mkdir -p $@
+-
+-.SECONDEXPANSION:
+-
+-$(LIBDIRINSTALL)/%: % | $$(dir $$@)
+-	$(INSTALL) -m 644 $< $(dir $@)
+-
+-install: $(addprefix $(LIBDIRINSTALL)/,$(INSTALLTARGETS))
++install:
++	mkdir -p $(INSTALLROOT)/$(LIBDIR)
++	$(INSTALL) -m 644 $(TARGETS) $(INSTALLROOT)/$(LIBDIR)
++ifneq (,$(findstring FreeBSD,$(OS)))
++ ifeq ($(ARCH),x86_64)
++	$(INSTALL) -m 644 $(SRCDIR)/elf_$(ARCH)_fbsd_efi.lds $(INSTALLROOT)/$(LIBDIR)
++ else
++	$(INSTALL) -m 644 $(SRCDIR)/elf_$(ARCH)_efi.lds $(INSTALLROOT)/$(LIBDIR)
++ endif
++else
++	$(INSTALL) -m 644 $(SRCDIR)/elf_$(ARCH)_efi.lds $(INSTALLROOT)/$(LIBDIR)
++endif
+ 
+ include $(SRCDIR)/../Make.rules
+diff --git a/gnu-efi-3.0/inc/Makefile b/gnu-efi-3.0/inc/Makefile
+index 526af22..273d303 100644
+--- a/gnu-efi-3.0/inc/Makefile
++++ b/gnu-efi-3.0/inc/Makefile
+@@ -8,34 +8,20 @@ TOPDIR = $(SRCDIR)/..
+ 
+ CDIR=$(TOPDIR)/..
+ 
+-INCDIRINSTALL = $(INSTALLROOT)$(PREFIX)/include/efi
+-
+-SRCHEADERS = $(wildcard $(SRCDIR)/*.h) \
+-             $(wildcard $(SRCDIR)/protocol/*.h) \
+-             $(wildcard $(SRCDIR)/$(ARCH)/*.h)
+-ifeq ($(ARCH),ia64)
+- SRCHEADERS += $(wildcard $(SRCDIR)/protocol/$(ARCH)/*.h)
+-endif
+-
+-HEADERS = $(patsubst $(SRCDIR)/%,%,$(SRCHEADERS))
+-
+ all:
+ 
+ clean:
+ 
+-	rm -f *~
+-
+-$(INCDIRINSTALL) \
+-$(INCDIRINSTALL)/protocol \
+-$(INCDIRINSTALL)/$(ARCH) \
+-$(INCDIRINSTALL)/protocol/$(ARCH):
+-	mkdir -p $@
+-
+-.SECONDEXPANSION:
+-
+-$(INCDIRINSTALL)/%.h: %.h | $$(dir $$@)
+-	$(INSTALL) -m 644 $< $(dir $@)
+-
+-install: $(addprefix $(INCDIRINSTALL)/,$(HEADERS))
++install:
++	mkdir -p $(INSTALLROOT)$(PREFIX)/include/efi
++	mkdir -p $(INSTALLROOT)$(PREFIX)/include/efi/protocol
++	mkdir -p $(INSTALLROOT)$(PREFIX)/include/efi/$(ARCH)
++	$(INSTALL) -m 644 $(SRCDIR)/*.h $(INSTALLROOT)$(PREFIX)/include/efi
++	$(INSTALL) -m 644 $(SRCDIR)/protocol/*.h $(INSTALLROOT)$(PREFIX)/include/efi/protocol
++	$(INSTALL) -m 644 $(SRCDIR)/$(ARCH)/*.h $(INSTALLROOT)$(PREFIX)/include/efi/$(ARCH)
++ifeq ($(ARCH),ia64)
++	mkdir -p $(INSTALLROOT)$(PREFIX)/include/efi/protocol/ia64
++	$(INSTALL) -m 644 $(SRCDIR)/protocol/ia64/*.h $(INSTALLROOT)$(PREFIX)/include/efi/protocol/ia64
++endif
+ 
+ include $(SRCDIR)/../Make.rules
+diff --git a/gnu-efi-3.0/lib/Makefile b/gnu-efi-3.0/lib/Makefile
+index d2635ad..e9f604e 100644
+--- a/gnu-efi-3.0/lib/Makefile
++++ b/gnu-efi-3.0/lib/Makefile
+@@ -61,11 +61,8 @@ OBJS  = $(FILES:%=%.o)
+ 
+ SUBDIRS = ia32 x86_64 ia64 runtime
+ 
+-LIBDIRINSTALL = $(INSTALLROOT)/$(LIBDIR)
+-
+ all: libsubdirs libefi.a
+ 
+-.PHONY: libsubdirs
+ libsubdirs:
+ 	for sdir in $(SUBDIRS); do mkdir -p $$sdir; done
+ 
+@@ -74,13 +71,9 @@ libefi.a: $(patsubst %,libefi.a(%),$(OBJS))
+ clean:
+ 	rm -f libefi.a *~ $(OBJS) */*.o
+ 
+-$(LIBDIRINSTALL):
+-	mkdir -p $@
+-
+-$(LIBDIRINSTALL)/libefi.a: libefi.a | $(LIBDIRINSTALL)
+-	$(INSTALL) -m 644 $< $(dir $@)
+-
+-install: $(LIBDIRINSTALL)/libefi.a
++install: libefi.a
++	mkdir -p $(INSTALLROOT)/$(LIBDIR)
++	$(INSTALL) -m 644 libefi.a $(INSTALLROOT)/$(LIBDIR)
+ 
+ include $(SRCDIR)/../Make.rules
+ 
+-- 
+1.9.2
+
