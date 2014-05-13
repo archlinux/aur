@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=gchooser
-pkgver=0.07
-pkgrel=2
+pkgver=0.08
+pkgrel=1
 pkgdesc="An XDM chooser writen in gtk2-perl."
 arch=('any')
 url="http://github.com/bbidulock/gchooser"
