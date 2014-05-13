@@ -3,7 +3,7 @@
 _python=python
 pkgname=$_python-efl-git
 _pkgname=python-efl
-pkgver=1.9.99.r609.927320a
+pkgver=1.9.99a628.1466ea7
 pkgrel=1
 pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries - Development Version"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  printf "$($_python setup.py -V).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "$($_python setup.py -V).$(git rev-parse --short HEAD)"
 }
 
 build() {
