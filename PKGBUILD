@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 110035 2014-04-23 13:58:04Z heftig $
+# $Id: PKGBUILD 110942 2014-05-10 09:33:56Z lcarlier $
 # Maintainer: Fantix King <fantix.king@gmail.com>
 # Upstream Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
@@ -8,10 +8,10 @@
 
 pkgname='gcc-multilib-x32'
 true && pkgname=('gcc-multilib-x32' 'gcc-libs-multilib-x32' 'libx32-gcc-libs' 'gcc-fortran-multilib-x32' 'gcc-objc-multilib-x32' 'gcc-ada-multilib-x32' 'gcc-go-multilib-x32')
-pkgver=4.9.0_1
+pkgver=4.9.0_2
 _pkgver=4.9
 pkgrel=1
-#_snapshot=4.9.0-RC-20140411
+_snapshot=4.9-20140507
 pkgdesc="The GNU Compiler Collection for multilib with x32 ABI support"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -20,11 +20,13 @@ makedepends=('binutils>=2.24' 'libmpc' 'cloog' 'gcc-ada-multilib' 'doxygen'
              'lib32-glibc>=2.19' 'libx32-glibc>=2.19')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver%_*}/gcc-${pkgver%_*}.tar.bz2
-        #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
-        gcc-4.8-filename-output.patch)
-md5sums=('9709b49ae0e904cbb0a6a1b62853b556'
-         '40cb437805e2f7a006aa0d0c3098ab0f')
+source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver%_*}/gcc-${pkgver%_*}.tar.bz2
+        ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+        gcc-4.8-filename-output.patch
+	gcc-4.9-tree-ssa-threadedge.patch)
+md5sums=('47dc2b91d2876daff53c20c30164c38f'
+         '40cb437805e2f7a006aa0d0c3098ab0f'
+         '311ece7f5446d550e84e28692d2fb823')
 
 
 if [ -n "${_snapshot}" ]; then
@@ -36,6 +38,13 @@ fi
 _libdir="usr/lib/gcc/$CHOST/${pkgver%_*}"
 
 prepare() {
+  if [ ! `zgrep CONFIG_X86_X32=y /proc/config.gz` ]; then
+    error "Your current kernel doesn't support X32 ABI!"
+    msg2 "You need to install a kernel with CONFIG_X86_X32=y"
+    msg2 "linux-pf from AUR for example supports X32 ABI"
+    exit 1
+  fi
+
   cd ${srcdir}/${_basedir}
 
   # Do not run fixincludes
@@ -51,6 +60,9 @@ prepare() {
 
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=57653
   patch -p0 -i ${srcdir}/gcc-4.8-filename-output.patch
+
+  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=60902
+  patch -p1 -i ${srcdir}/gcc-4.9-tree-ssa-threadedge.patch
 
   mkdir ${srcdir}/gcc-build
 }
@@ -240,6 +252,9 @@ package_gcc-multilib-x32()
   make -C $CHOST/x32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
 
   make -C libiberty DESTDIR=${pkgdir} install
+  # install PIC version of libiberty
+  install -m644 ${srcdir}/gcc-build/libiberty/pic/libiberty.a ${pkgdir}/usr/lib
+
 
   make -C gcc DESTDIR=${pkgdir} install-man install-info
   rm ${pkgdir}/usr/share/man/man1/{gccgo,gfortran}.1
@@ -248,7 +263,7 @@ package_gcc-multilib-x32()
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po
 
-  # many packages expect this symlinks
+  # many packages expect this symlink
   ln -s gcc ${pkgdir}/usr/bin/cc
 
   # POSIX conformance launcher scripts for c89 and c99
@@ -292,13 +307,14 @@ package_gcc-fortran-multilib-x32()
 {
   pkgdesc="Fortran front-end for GCC for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
-  provides=("gcc-fortran=${pkgver//_/-}")
+  provides=("gcc-fortran=${pkgver//_/-}" "gcc-fortran-multilib=${pkgver//_/-}")
   conflicts=('gcc-fortran')
   options=('staticlibs' '!emptydirs')
   install=gcc-fortran.install
 
   cd ${srcdir}/gcc-build
   make -C $CHOST/libgfortran DESTDIR=$pkgdir install-{{caf,my}execlibLTLIBRARIES,toolexeclibDATA}
+  make -C $CHOST/32/libgfortran DESTDIR=$pkgdir install-{{caf,my}execlibLTLIBRARIES,toolexeclibDATA}
   make -C $CHOST/x32/libgfortran DESTDIR=$pkgdir install-{{caf,my}execlibLTLIBRARIES,toolexeclibDATA}
   make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
   make -C gcc DESTDIR=$pkgdir fortran.install-{common,man,info}
@@ -315,7 +331,7 @@ package_gcc-objc-multilib-x32()
 {
   pkgdesc="Objective-C front-end for GCC for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
-  provides=("gcc-objc=${pkgver//_/-}")
+  provides=("gcc-objc=${pkgver//_/-}" "gcc-objc-multilib=${pkgver//_/-}")
   conflicts=('gcc-objc')
 
   cd ${srcdir}/gcc-build
@@ -332,7 +348,7 @@ package_gcc-ada-multilib-x32()
 {
   pkgdesc="Ada front-end for GCC (GNAT) for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
-  provides=("gcc-ada=${pkgver//_/-}")
+  provides=("gcc-ada=${pkgver//_/-}" "gcc-ada-multilib=${pkgver//_/-}")
   conflicts=('gcc-ada')
   options=('staticlibs' '!emptydirs')
   install=gcc-ada.install
@@ -341,7 +357,11 @@ package_gcc-ada-multilib-x32()
   make DESTDIR=$pkgdir ada.install-{common,info}
   install -m755 gnat1 $pkgdir/${_libdir}
 
-  cd ../$CHOST/x32/libada
+  cd ${srcdir}/gcc-build/$CHOST/32/libada
+  make DESTDIR=${pkgdir} INSTALL="install" \
+    INSTALL_DATA="install -m644" install-gnatlib
+
+  cd ${srcdir}/gcc-build/$CHOST/x32/libada
   make DESTDIR=${pkgdir} INSTALL="install" \
     INSTALL_DATA="install -m644" install-gnatlib
 
@@ -352,6 +372,12 @@ package_gcc-ada-multilib-x32()
   ln -s libgnarl-${_pkgver}.so ${pkgdir}/usr/lib/libgnarl.so
   ln -s libgnat-${_pkgver}.so ${pkgdir}/usr/lib/libgnat.so
   rm ${pkgdir}/${_libdir}/adalib/libgna{rl,t}.so
+
+  install -d ${pkgdir}/usr/lib32/
+  mv ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}-${_pkgver}.so ${pkgdir}/usr/lib32
+  ln -s libgnarl-${_pkgver}.so ${pkgdir}/usr/lib32/libgnarl.so
+  ln -s libgnat-${_pkgver}.so ${pkgdir}/usr/lib32/libgnat.so
+  rm ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}.so
 
   install -d ${pkgdir}/usr/libx32/
   mv ${pkgdir}/${_libdir}/x32/adalib/libgna{rl,t}-${_pkgver}.so ${pkgdir}/usr/libx32
@@ -368,18 +394,19 @@ package_gcc-go-multilib-x32()
 {
   pkgdesc="Go front-end for GCC for multilib with x32 ABI support"
   depends=("gcc-multilib-x32=$pkgver-$pkgrel")
-  provides=("gcc-go=${pkgver//_/-}")
+  provides=("gcc-go=${pkgver//_/-}" "gcc-go-multilib=${pkgver//_/-}")
   conflicts=('gcc-go')
   options=('staticlibs' '!emptydirs')
   install=gcc-go.install
 
   cd ${srcdir}/gcc-build
   make -C $CHOST/libgo DESTDIR=$pkgdir install-exec-am
+  make -C $CHOST/32/libgo DESTDIR=$pkgdir install-exec-am
   make -C $CHOST/x32/libgo DESTDIR=$pkgdir install-exec-am
   make -C gcc DESTDIR=$pkgdir go.install-{common,man,info}
   install -Dm755 gcc/go1 $pkgdir/${_libdir}/go1
 
-  rm $pkgdir/usr/lib{,x32}/libgo.a
+  rm $pkgdir/usr/lib{,32,x32}/libgo.a
 
   # Install Runtime Library Exception
   install -d ${pkgdir}/usr/share/licenses/gcc-go-multilib-x32/
