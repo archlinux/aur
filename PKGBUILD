@@ -7,7 +7,7 @@ if [[ "$CARCH" == x86_64 ]]; then
 fi
 
 pkgname=gzdoom-git
-pkgver=20130829
+pkgver=1.9pre.r605.gcd6d653
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (git version)."
 arch=('i686' 'x86_64')
@@ -50,7 +50,8 @@ _libdir=/usr/lib/gzdoom
 _sharedir=/usr/share/games/gzdoom
 
 pkgver() {
-  date +%Y%m%d
+  cd gzdoom
+  git describe --long --tags --match 'G*' | sed -r 's/^G//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
