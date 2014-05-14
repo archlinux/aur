@@ -1,0 +1,14 @@
+post_install() {
+  cat << EOF
+A sample site is available in /usr/share/awb/sample
+It is entirely built with awb
+
+A default configuration file is also available in /usr/share/awb/awb.conf
+To start building your website with it, create ${XDG_CONFIG}/awb directory and copy awb.conf there, then make the changes that you find suitable.
+
+You might like to visit :
+  - http://awb.sourceforge.net/index.html
+  - http://www.methods.co.nz/asciidoc
+  - http://powerman.name/doc/asciidoc
+EOF
+}
