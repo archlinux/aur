@@ -10,8 +10,8 @@ _gitbranch="master"
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=44.2.gac4a587
-pkgrel=2
+pkgver=45
+pkgrel=1
 pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('x86_64' 'i686')
@@ -49,8 +49,8 @@ prepare() {
 	
 	cd "${srcdir}/${_gitname}_build/"
 	
-	patch -Np1 -i "${srcdir}/gummiboot-allow-arch-specific-default-entry.patch" || true
-	echo
+	# patch -Np1 -i "${srcdir}/gummiboot-allow-arch-specific-default-entry.patch" || true
+	# echo
 	
 }
 

@@ -1,7 +1,7 @@
 pkgbase = gummiboot-git
 	pkgdesc = Simple text-mode UEFI Boot Manager - GIT Version
-	pkgver = 44.2.gac4a587
-	pkgrel = 2
+	pkgver = 45
+	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/gummiboot
 	install = gummiboot.install
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = gummiboot-git
 	depends = util-linux
 	depends = dosfstools
 	optdepends = mactel-boot: For bless command in Apple Mac systems
-	provides = gummiboot=44.2.gac4a587
-	provides = gummiboot-efi=44.2.gac4a587
-	provides = gummiboot-efi-git=44.2.gac4a587
+	provides = gummiboot=45
+	provides = gummiboot-efi=45
+	provides = gummiboot-efi-git=45
 	conflicts = gummiboot
 	conflicts = gummiboot-efi
 	conflicts = gummiboot-efi-git
