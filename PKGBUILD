@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=bzr-builddeb
 _python=python2
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=1
 pkgdesc="bzr plugin for Debian package management"
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=('bzr-svn: Subversion integration' 'python2-lzma: liblzma bindings'
 makedepends=()
 conflicts=()
 options=(!emptydirs)
-source=("http://ftp.debian.org/debian/pool/main/b/$pkgname/${pkgname}_$pkgver.tar.gz")
-md5sums=('bfcb977ce3432961b1521524df22bbb0')
+source=("http://ftp.debian.org/debian/pool/main/b/$pkgname/${pkgname}_$pkgver.tar.xz")
+md5sums=('5a63dabec6731a38dc95ccbdb1c02723')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
