@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=20140128
+pkgver=3.1.0_b4.r142.gfed50b8
 pkgrel=1
 pkgdesc="SLADE3 Doom editor."
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ md5sums=('SKIP'
          '49eb1692463e2aa93ea2754a5df7a6e4')
 
 pkgver() {
-  date +%Y%m%d
+  cd slade
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
