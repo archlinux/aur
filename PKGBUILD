@@ -7,7 +7,7 @@ if [[ "$CARCH" == x86_64 ]]; then
 fi
 
 pkgname=zdoom-git
-pkgver=20130829
+pkgver=2.8pre.r457.g85fb8c4
 pkgrel=1
 pkgdesc="An enhanced Doom port with additional support for Heretic, Hexen and Strife (git version)."
 arch=('i686' 'x86_64')
@@ -48,7 +48,8 @@ _libdir=/usr/lib/zdoom
 _sharedir=/usr/share/games/zdoom
 
 pkgver() {
-  date +%Y%m%d
+  cd zdoom
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
