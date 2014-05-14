@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
 url="http://www.infradead.org/ocserv/"
@@ -32,3 +32,5 @@ package() {
   install -Dm0644 doc/sample.config "$pkgdir/etc/ocserv.config"
   install -Dm0600 doc/sample.passwd "$pkgdir/etc/ocserv-passwd"
 }
+sha256sums=('44949e530ec9f43ba95c53ba59ff686428c575191077715cb3b8c4b39da4b3b5'
+            '81ae628d912e6edb928ce0e62d26807b319866ba0bbf0a2d8c14385a959a9203')
