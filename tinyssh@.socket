@@ -7,7 +7,7 @@ ListenStream=%i
 Accept=true
 KeepAlive=true
 IPTOS=low-delay
-ExecStartPre=/bin/sh -c 'test -r /etc/tinyssh/ed25519.pk || /usr/sbin/tinysshd-makekey /etc/tinyssh'
+ExecStartPre=/bin/sh -c 'test -d /etc/tinyssh/sshkeydir || /usr/sbin/tinysshd-makekey /etc/tinyssh/sshkeydir'
 
 [Install]
 WantedBy=network.target

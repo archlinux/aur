@@ -1,10 +1,11 @@
-#! /bin/sh
+#! /bin/bash
 #
 # tinyssh.install
 # Copyright (C) 2014 Adrian Perez <aperez@igalia.com>
 #
 # Distributed under terms of the MIT license.
 #
+set -e
 
 post_install () {
 	cat <<-EOF
@@ -21,10 +22,39 @@ post_install () {
 	  systemctl enable tinyssh@192.168.0.10:22222.socket
 	  systemctl start tinyssh@192.168.0.10:22222.socket
 
-EOF
+	EOF
 }
 
 post_upgrade () {
 	post_install
+
+	# Version numbers are NNN[.tag]-RRR
+	#   NNN: Numbers, usually a date in YYYYMMDD format.
+	#   tag: A release tag, e.g. "experimental"
+	#   RRR: Package release
+	local old_pkgrel=${2##*-}
+	local old_pkgver=${2%%-*}
+	local old_pkgtag=${old_pkgver##.*}
+	old_pkgver=${new_pkgver%%.*}
+
+	# After version 20140501.experimental-2, the keys directory is no longer
+	# /etc/tinyssh, but /etc/tinyssh/sshkeydir, so move the existing keys
+	# (if they exist) to the new location.
+	if [[ ${old_pkgver} -le 20140501 && ${old_pkgrel} -le 2 ]]
+	then
+		if [[ -r /etc/tinyssh/ed25519.pk && -r /etc/tinyssh/.ed25519.sk &&
+			  ! -r /etc/tinyssh/sshkeydir/.ed25519.sk &&
+			  ! -r /etc/tinyssh/sshkeydir/ed25519.pk ]]
+		then
+			echo "Moving existing SSH server keys..."
+			mkdir -p /etc/tinyssh/sshkeydir
+			mv -v -t /etc/tinyssh/sshkeydir \
+				       /etc/tinyssh/ed25519.pk \
+				       /etc/tinyssh/.ed25519.sk
+
+			echo "Please instruct systemd to reload its configuration files using:"
+			echo "   # systemctl daemon-reload"
+		fi
+	fi
 }
 
