@@ -35,7 +35,7 @@ source=(gzdoom::git://github.com/coelckers/gzdoom.git \
         gzdoom.desktop)
 md5sums=('SKIP'
          '220a54f330bdf3056d6207a0facf2096'
-         '2fda668ab449b7ca2d75a5b62dae6870'
+         'd1df774110f513225760b83fcb271171'
          'ed6c7d1175146bedac3f5a59d09d8f4b'
          'b83081e982b742010df0afe36b4d49b6'
          '3f5920d839086c9ad04ed1338c3fb546')

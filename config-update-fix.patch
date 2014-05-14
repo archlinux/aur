@@ -1,7 +1,7 @@
-diff -ur gzdoom-1.7.00.orig/src/m_misc.cpp gzdoom-1.7.00/src/m_misc.cpp
---- gzdoom-1.7.00.orig/src/m_misc.cpp	2012-12-29 10:13:37.691978200 +0100
-+++ gzdoom-1.7.00/src/m_misc.cpp	2012-12-29 10:15:08.318658023 +0100
-@@ -362,7 +362,7 @@
+diff -ur gzdoom.orig/src/m_specialpaths.cpp gzdoom/src/m_specialpaths.cpp
+--- gzdoom.orig/src/m_specialpaths.cpp	2014-05-14 11:14:18.348734942 +0200
++++ gzdoom/src/m_specialpaths.cpp	2014-05-14 11:21:04.005405244 +0200
+@@ -497,7 +497,7 @@
  		// This can be removed after a release or two
  		// Transfer the old zdoom directory to the new location
  		bool moved = false;
