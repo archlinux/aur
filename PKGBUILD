@@ -1,6 +1,12 @@
 # Maintainer : Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
-# Contributor: Keshav Padram Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+
+## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
+_IA32_EFI_IN_ARCH_X64="1"
+
+## "1" to enable EMU build, "0" to disable
+_GRUB_EMU_BUILD="0"
 
 _pkgver="2.02"
 _GRUB_GIT_TAG="grub-2.02-beta2"
@@ -10,10 +16,13 @@ _UNIFONT_VER="6.3.20131217"
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
 
+[[ "${CARCH}" == "x86_64" ]] && _EMU_ARCH="x86_64"
+[[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
+
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02.beta2
-pkgrel=3
+pkgrel=4
 epoch="1"
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -22,9 +31,9 @@ backup=('boot/grub/grub.cfg' 'etc/default/grub' 'etc/grub.d/40_custom')
 install="${pkgname}.install"
 options=('!makeflags')
 
-conflicts=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
-replaces=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
-provides=('grub-common' 'grub-bios' "grub-efi-${_EFI_ARCH}")
+conflicts=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
+replaces=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
+provides=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 
 makedepends=('git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
              'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse')
@@ -36,6 +45,12 @@ optdepends=('freetype2: For grub-mkfont usage'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
             'mtools: For grub-mkrescue FAT FS support')
+
+if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
+    makedepends+=('libusbx' 'sdl')
+    optdepends+=('libusbx: For grub-emu USB support'
+                 'sdl: For grub-emu SDL support')
+fi
 
 source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}"
         "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#branch=master"
@@ -212,6 +227,57 @@ _build_grub-efi() {
 	
 }
 
+_build_grub-emu() {
+	
+	msg "Copy the source for building the emu part"
+	cp -r "${srcdir}/grub-${_pkgver}/" "${srcdir}/grub-${_pkgver}-emu/"
+	
+	msg "Unset all compiler FLAGS for emu build"
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
+	cd "${srcdir}/grub-${_pkgver}-emu/"
+	
+	msg "Run autogen.sh for emu build"
+	./autogen.sh
+	echo
+	
+	msg "Run ./configure for emu build"
+	./configure \
+		--with-platform="emu" \
+		--target="${_EMU_ARCH}" \
+		--enable-mm-debug \
+		--enable-nls \
+		--enable-device-mapper \
+		--enable-cache-stats \
+		--enable-grub-mkfont \
+		--enable-grub-mount \
+		--enable-grub-emu-usb=no \
+		--enable-grub-emu-sdl=no \
+		--disable-grub-emu-pci \
+		--prefix="/usr" \
+		--bindir="/usr/bin" \
+		--sbindir="/usr/bin" \
+		--mandir="/usr/share/man" \
+		--infodir="/usr/share/info" \
+		--datarootdir="/usr/share" \
+		--sysconfdir="/etc" \
+		--program-prefix="" \
+		--with-bootdir="/boot" \
+		--with-grubdir="grub" \
+		--disable-silent-rules \
+		--disable-werror
+	echo
+	
+	msg "Run make for emu build"
+	make
+	echo
+	
+}
+
 build() {
 	
 	cd "${srcdir}/grub-${_pkgver}/"
@@ -224,6 +290,18 @@ build() {
 	_build_grub-efi
 	echo
 	
+	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
+		msg "Build grub i386 efi stuff"
+		_EFI_ARCH="i386" _build_grub-efi
+		echo
+	fi
+	
+	if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
+		msg "Build grub emu stuff"
+		_build_grub-emu
+		echo
+	fi
+    
 }
 
 _package_grub-common_and_bios() {
@@ -265,10 +343,39 @@ _package_grub-efi() {
 	
 }
 
+_package_grub-emu() {
+	
+	cd "${srcdir}/grub-${_pkgver}-emu/"
+	
+	msg "Run make install for emu build"
+	make DESTDIR="${pkgdir}/" bashcompletiondir="/usr/share/bash-completion/completions" install
+	echo
+	
+	msg "Remove gdb debugging related files for emu build"
+	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.module || true
+	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/*.image || true
+	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || true
+	
+}
+
 package() {
+	
+	cd "${srcdir}/grub-${_pkgver}/"
 	
 	msg "Package grub ${_EFI_ARCH} efi stuff"
 	_package_grub-efi
+	
+	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
+		msg "Package grub i386 efi stuff"
+		_EFI_ARCH="i386" _package_grub-efi
+		echo
+	fi
+	
+	if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
+		msg "Package grub emu stuff"
+		_package_grub-emu
+		echo
+	fi
 	
 	msg "Package grub bios stuff"
 	_package_grub-common_and_bios
