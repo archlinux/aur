@@ -1,49 +1,23 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Eric Bélanger
-# Contributor: Brad Fanella <bradfanella@archlinux.us>
-# Contributor: Bjorn Lindeijer <bjorn@lindeijer.nl>
-# Contributor: kritoke <kritoke@nospam.gmail.com>
+# Maintainer: Anatol Pomozov
 
-pkgbase=ruby-gtk3
-pkgver=2.1.0
-pkgrel=2
-pkgname=('ruby-gtk3' 'ruby-gdk3')
-depends=("ruby-atk=$pkgver" "ruby-gdkpixbuf2=$pkgver" "ruby-glib2=$pkgver" "ruby-pango=$pkgver")
-arch=('x86_64' 'i686')
-url='http://ruby-gnome2.sourceforge.jp/'
-license=('LGPL')
-makedepends=('ruby-pkgconfig' 'ruby-cairo' 'gtk3')
-source=("http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk3-$pkgver.tar.gz")
-sha256sums=('436844cc9ab3bf5e5a3027e3276fc69ff9cae5cff88bc60179c416050d5e753d')
+_gemname=gtk3
+pkgname=ruby-$_gemname
+pkgver=3.3.6
+pkgrel=1
+pkgdesc="Ruby/GTK3 is a Ruby binding of GTK+-3.x."
+arch=(i686 x86_64)
+url=https://ruby-gnome2.osdn.jp/
+license=("LGPL-2.1+")
+depends=(gobject-introspection gtk3 ruby ruby-atk ruby-cairo ruby-gdk3 ruby-gdk_pixbuf2 ruby-gio2 ruby-gobject-introspection ruby-pango)
+makedepends=(ruby-native-package-installer ruby-glib2)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('ccf5df5774749a4daf4e0a54002033093194878f')
 
-prepare() {
-	cd "$srcdir/ruby-gtk3-$pkgver"
-
-	LANG="en_US.UTF-8" ruby extconf.rb gtk3 gdk3 --vendor
+package() {
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-document --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir"/usr/bin $_gemname-$pkgver.gem 
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING.LIB" "$pkgdir/usr/share/licenses/$pkgname/COPYING.LIB"
 }
-
-build() {
-	cd "$srcdir/ruby-gtk3-$pkgver"
-	make
-}
-
-package_ruby-gtk3() {
-  pkgdesc='Ruby bindings for gtk3'
-  depends=('gtk3' "ruby-glib2=$pkgver" "ruby-pango=$pkgver" "ruby-atk=$pkgver"
-           "ruby-gdkpixbuf2=$pkgver" "ruby-gdk3=$pkgver")
-
-	cd "$srcdir/ruby-gtk3-$pkgver/gtk3"
-  mkdir -p "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$CARCH-linux"
-	make DESTDIR="$pkgdir/" install -j1
-}
-
-package_ruby-gdk3() {
-  pkgdesc='Ruby bindings for gdk3'
-  depends=('ruby' 'gtk3')
-
-	cd "$srcdir/ruby-gtk3-$pkgver/gdk3"
-  mkdir -p "$pkgdir/usr/lib/ruby/vendor_ruby/2.0.0/$CARCH-linux"
-	make DESTDIR="$pkgdir/" install -j1
-}
-
-# vim:set ts=2 sw=2 et:
