@@ -1,0 +1,48 @@
+diff -aur gigi.orig/src/CMakeLists.txt gigi.patch/src/CMakeLists.txt
+--- gigi.orig/src/CMakeLists.txt	2014-02-22 00:58:15.216080000 +0400
++++ gigi.patch/src/CMakeLists.txt	2014-05-15 14:47:48.520969763 +0400
+@@ -77,7 +77,7 @@
+     LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGI
+ )
+ 
+-if (BUILD_DEVEL_PACKAGE)
++if (BUILD_DEVEL_PACKAGE AND USE_STATIC_LIBS)
+     install(
+         TARGETS GiGi
+         ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGI_DEVEL
+diff -aur gigi.orig/src/Ogre/CMakeLists.txt gigi.patch/src/Ogre/CMakeLists.txt
+--- gigi.orig/src/Ogre/CMakeLists.txt	2013-12-30 14:44:39.554150000 +0400
++++ gigi.patch/src/Ogre/CMakeLists.txt	2014-05-15 14:48:15.360711661 +0400
+@@ -31,7 +31,7 @@
+     LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGIOGRE
+ )
+ 
+-if (BUILD_DEVEL_PACKAGE)
++if (BUILD_DEVEL_PACKAGE AND USE_STATIC_LIBS)
+     install(
+         TARGETS GiGiOgre
+         ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGIOGRE_DEVEL
+diff -aur gigi.orig/src/Ogre/Plugins/CMakeLists.txt gigi.patch/src/Ogre/Plugins/CMakeLists.txt
+--- gigi.orig/src/Ogre/Plugins/CMakeLists.txt	2013-12-30 14:44:39.554150000 +0400
++++ gigi.patch/src/Ogre/Plugins/CMakeLists.txt	2014-05-15 14:48:28.433919267 +0400
+@@ -30,7 +30,7 @@
+     LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGIOGREPLUGIN_OIS
+ )
+ 
+-if (BUILD_DEVEL_PACKAGE)
++if (BUILD_DEVEL_PACKAGE AND USE_STATIC_LIBS)
+     install(
+         TARGETS GiGiOgrePlugin_OIS
+         ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGIOGREPLUGIN_OIS_DEVEL
+diff -aur gigi.orig/src/SDL/CMakeLists.txt gigi.patch/src/SDL/CMakeLists.txt
+--- gigi.orig/src/SDL/CMakeLists.txt	2013-12-30 14:44:39.554150000 +0400
++++ gigi.patch/src/SDL/CMakeLists.txt	2014-05-15 14:48:02.897498182 +0400
+@@ -27,7 +27,7 @@
+     LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGISDL
+ )
+ 
+-if (BUILD_DEVEL_PACKAGE)
++if (BUILD_DEVEL_PACKAGE AND USE_STATIC_LIBS)
+     install(
+         TARGETS GiGiSDL
+         ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT COMPONENT_GIGISDL_DEVEL

@@ -1,0 +1,26 @@
+pkgbase = gigi
+	pkgdesc = Small, efficient and feature rich GUI for OpenGL and C++ (FreeOrion fork)
+	pkgver = 7117
+	pkgrel = 1
+	url = http://freeorion.svn.sourceforge.net/viewvc/freeorion/trunk/FreeOrion/GG/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = setconf
+	makedepends = doxygen
+	makedepends = mesa-libgl
+	depends = boost
+	depends = libpng
+	depends = libtiff
+	depends = ogre
+	depends = sdl
+	depends = python
+	source = gigi::svn+https://freeorion.svn.sourceforge.net/svnroot/freeorion/trunk/FreeOrion/GG/
+	source = gigi-cmake.patch
+	sha256sums = SKIP
+	sha256sums = a95c16709de0e645503d51ee89f5d6babbfae1da6e65d507a0d3b9b12cc33e75
+
+pkgname = gigi
+
