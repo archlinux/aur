@@ -1,17 +1,18 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='tinyssh'
 pkgver='20140501.experimental'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Small SSH server using NaCl / TweetNaCl'
 url='http://tinyssh.org'
 arch=('x86_64' 'i686' 'arm')
 license=('Public Domain')
 install='tinyssh.install'
 source=("http://mojzis.com/software/${pkgname}/${pkgname}-${pkgver//./}.tar.bz2"
-	tinyssh@.socket tinyssh@.service)
+	tinyssh@.socket tinyssh@.service tinysshgenkeys.service)
 sha1sums=('8e1f729be5764ac0b02234343c93c9271c7dae96'
-          '659115ac8159cc4b208e06d33475da90ce12448f'
-          '383c496673e0eedda9ba0b738879cf7a6a5a05f1')
+          'f4143b92b0fc3f368ab770598dd303204b1a1315'
+          '74f12721d55be0ea29bc9108ad0a83ae0095cb79'
+          'b5846cd2962f6a898537453e03cc089027ddad57')
 
 build () {
 	cd "${srcdir}/${pkgname}-${pkgver//./}"
@@ -24,6 +25,7 @@ package () {
 
 	install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
 	install -m 644 -t "${pkgdir}/usr/lib/systemd/system" \
+		"${srcdir}/tinysshgenkeys.service" \
 		"${srcdir}/tinyssh@.service" \
 		"${srcdir}/tinyssh@.socket"
 

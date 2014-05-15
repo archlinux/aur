@@ -1,7 +1,7 @@
 pkgbase = tinyssh
 	pkgdesc = Small SSH server using NaCl / TweetNaCl
 	pkgver = 20140501.experimental
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tinyssh.org
 	install = tinyssh.install
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = tinyssh
 	source = http://mojzis.com/software/tinyssh/tinyssh-20140501experimental.tar.bz2
 	source = tinyssh@.socket
 	source = tinyssh@.service
+	source = tinysshgenkeys.service
 	sha1sums = 8e1f729be5764ac0b02234343c93c9271c7dae96
-	sha1sums = 659115ac8159cc4b208e06d33475da90ce12448f
-	sha1sums = 383c496673e0eedda9ba0b738879cf7a6a5a05f1
+	sha1sums = f4143b92b0fc3f368ab770598dd303204b1a1315
+	sha1sums = 74f12721d55be0ea29bc9108ad0a83ae0095cb79
+	sha1sums = b5846cd2962f6a898537453e03cc089027ddad57
 
 pkgname = tinyssh
 

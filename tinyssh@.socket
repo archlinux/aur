@@ -1,13 +1,13 @@
 [Unit]
 Description=TinySSH service (socket-activated)
 Documentation=http://tinyssh.org
+Wants=tinysshgenkeys.service
 
 [Socket]
 ListenStream=%i
 Accept=true
 KeepAlive=true
 IPTOS=low-delay
-ExecStartPre=/bin/sh -c 'test -d /etc/tinyssh/sshkeydir || /usr/sbin/tinysshd-makekey /etc/tinyssh/sshkeydir'
 
 [Install]
-WantedBy=network.target
+WantedBy=sockets.target

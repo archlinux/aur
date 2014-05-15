@@ -11,12 +11,13 @@ post_install () {
 	cat <<-EOF
 	A generic systemd template unit has been installed, which can be used
 	to make TinySSH listen on more than one interface/address. To configure
-	it in the default port (22) on all interfaces (address 0.0.0.0), use:
+	it in the default port (22) on all interfaces, use:
 
-	  systemctl enable tinyssh@0.0.0.0:22.socket
-	  systemctl start tinyssh@0.0.0.0:22.socket
+	  systemctl enable tinyssh@22.socket
+	  systemctl start tinyssh@22.socket
 
-  Additional interface/port combinations can be configured by writing
+  Note that youn can also specify the interface address, and multiple
+  address/port combinations can be configured at the same time by writing
   the "ipaddress:port" as the unit instance. For example:
 
 	  systemctl enable tinyssh@192.168.0.10:22222.socket
@@ -46,14 +47,25 @@ post_upgrade () {
 			  ! -r /etc/tinyssh/sshkeydir/.ed25519.sk &&
 			  ! -r /etc/tinyssh/sshkeydir/ed25519.pk ]]
 		then
-			echo "Moving existing SSH server keys..."
+			cat <<-EOF
+			==================================================================
+			Moving existing SSH server keys:
+
+			EOF
 			mkdir -p /etc/tinyssh/sshkeydir
 			mv -v -t /etc/tinyssh/sshkeydir \
 				       /etc/tinyssh/ed25519.pk \
 				       /etc/tinyssh/.ed25519.sk
 
-			echo "Please instruct systemd to reload its configuration files using:"
-			echo "   # systemctl daemon-reload"
+			cat <<-EOF
+
+			==================================================================
+
+			Please instruct systemd to reload its configuration files using:
+			
+			   # systemctl daemon-reload
+			
+			EOF
 		fi
 	fi
 }
