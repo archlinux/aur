@@ -1,0 +1,11 @@
+infodir=usr/share/info
+
+post_upgrade() {
+  [ -x usr/bin/install-info ] || return 0
+  install-info $infodir/DevIL_manual.info.gz $infodir/dir 2> /dev/null
+}
+
+pre_remove() {
+  [ -x usr/bin/install-info ] || return 0
+  install-info --delete $infodir/DevIL_manual.info.gz $infodir/dir 2> /dev/null
+}

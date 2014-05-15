@@ -1,0 +1,25 @@
+pkgbase = devil-ilut
+	pkgdesc = Library for reading several different image formats (includes ILUT)
+	pkgver = 1.7.8
+	pkgrel = 2
+	url = http://openil.sourceforge.net/
+	install = devil.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	depends = libmng
+	depends = jasper
+	depends = lcms
+	depends = openexr
+	provides = devil
+	conflicts = devil
+	options = !docs
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/openil/DevIL-1.7.8.tar.gz
+	source = libpng14.patch
+	md5sums = 7918f215524589435e5ec2e8736d5e1d
+	md5sums = 0f839ccefd43b0ee8b4b3f99806147fc
+
+pkgname = devil-ilut
+
