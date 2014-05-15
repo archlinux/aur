@@ -6,7 +6,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Fcitx Wrapper for libkkc"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/fcitx"
+url="https://github.com/fcitx/fcitx-kkc"
 license=('GPL')
 depends=('fcitx>=4.2.8' 'libkkc>=0.2.3' 'libkkc-data' 'skk-jisyo' 'fcitx-qt4')
 makedepends=('cmake')
