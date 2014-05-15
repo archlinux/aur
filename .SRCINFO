@@ -1,12 +1,12 @@
 pkgbase = shaperprobe
 	pkgdesc = Detecting ISP Traffic Rate-Limiting
 	pkgver = 12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cc.gatech.edu/grads/p/partha/diffprobe/shaperprobe.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://www.cc.gatech.edu/grads/p/partha/diffprobe/shaperprobe.tgz
+	source = http://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/shaperprobe.tgz
 	md5sums = d555ace1f2e8d86ce2975457b09b17b7
 
 pkgname = shaperprobe
