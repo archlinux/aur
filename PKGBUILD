@@ -1,6 +1,6 @@
 pkgname='reop-git'
 pkgrel=1
-pkgver=11
+pkgver=22.3d924f9
 pkgdesc='Utility to create and verifies cryptographic signatures'
 url='https://github.com/tedu/reop/'
 license=('MIT')
@@ -17,13 +17,17 @@ pkgver () {
 
 build () {
 	cd "${srcdir}/reop"
-	make -f Makefile.other
+	make
+}
+
+check () {
+	cd "${srcdir}/reop/tests"
+	./test.sh
 }
 
 package () {
 	cd "${srcdir}/reop"
-	install -m 755 -d "${pkgdir}/bin"
-	install -m 755 -t "${pkgdir}/bin" reop
-	install -m 755 -d "${pkgdir}/usr/share/man/man1"
-	install -m 644 -t "${pkgdir}/usr/share/man/man1" reop.1
+	install -Dm755 reop "${pkgdir}/bin/reop"
+	install -Dm644 reop.1 "${pkgdir}/usr/share/man/man1/reop.1"
+	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
