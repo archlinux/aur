@@ -1,0 +1,14 @@
+pkgbase = python2-flowui
+	pkgdesc = A flow-based data presentation framework for terminals
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://github.com/dholm/FlowUI/
+	arch = any
+	license = BSD
+	makedepends = python2
+	depends = python2
+	source = https://pypi.python.org/packages/source/F/FlowUI/FlowUI-0.2.1.tar.gz
+	md5sums = 2f4268fbd41a80326586e8d90abaeb0c
+
+pkgname = python2-flowui
+
