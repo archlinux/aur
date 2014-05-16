@@ -151,7 +151,7 @@ getBoot() {
         exit 1
     fi
 
-    syslinux_fs=(ext2 ext3 ext4 btrfs vfat)
+    syslinux_fs=(ext2 ext3 ext4 btrfs vfat xfs)
 
     # Use DATA from findmnt see rc.sysint for more info
     if [[ -f /proc/self/mountinfo ]]; then

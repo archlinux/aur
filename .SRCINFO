@@ -1,5 +1,5 @@
-pkgbase = syslinux-firmware-git
-	pkgdesc = Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master (previously firmware) branch
+pkgbase = syslinux-git
+	pkgdesc = Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master branch
 	pkgver = 6.03pre11
 	pkgrel = 1
 	url = http://syslinux.zytor.com/
@@ -11,6 +11,7 @@ pkgbase = syslinux-firmware-git
 	makedepends = python2
 	makedepends = nasm
 	makedepends = ncurses
+	makedepends = lib32-glibc
 	depends = perl
 	depends = glibc
 	optdepends = perl-passwd-md5: For md5pass
@@ -23,11 +24,11 @@ pkgbase = syslinux-firmware-git
 	provides = syslinux=6.03pre11
 	provides = syslinux-bios=6.03pre11
 	provides = syslinux-efi=6.03pre11
-	provides = syslinux-git=6.03pre11
+	provides = syslinux-firmware-git=6.03pre11
 	conflicts = syslinux
 	conflicts = syslinux-bios
 	conflicts = syslinux-efi
-	conflicts = syslinux-git
+	conflicts = syslinux-firmware-git
 	options = !makeflags
 	options = !emptydirs
 	backup = boot/syslinux/syslinux.cfg
@@ -38,7 +39,7 @@ pkgbase = syslinux-firmware-git
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = b0f174bcc0386fdf699e03d0090e3ac841098010
-	sha1sums = 6032b30aadbd738764213e1710652d0735d93f16
+	sha1sums = cfba99d3ccac2680ce7819cb97a6695307f2ba9d
 
-pkgname = syslinux-firmware-git
+pkgname = syslinux-git
 

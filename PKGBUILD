@@ -3,27 +3,22 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
-_SYSLINUX_IA32_EFI_ARCH_X64="1"
-
-_gitroot="http://git.zytor.com/syslinux/syslinux.git"
-# _gitroot="https://git.kernel.org/pub/scm/boot/syslinux/syslinux.git"
-_gitname="syslinux"
-_gitbranch="master"
+_IA32_EFI_IN_ARCH_X64="1"
 
 _pkgname="syslinux"
-pkgname="${_pkgname}-firmware-git"
+pkgname="${_pkgname}-git"
 
 pkgver=6.03pre11
 pkgrel=1
 arch=('x86_64' 'i686')
-pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master (previously firmware) branch"
+pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master branch"
 url="http://syslinux.zytor.com/"
 license=('GPL2')
 options=('!makeflags' '!emptydirs')
 backup=('boot/syslinux/syslinux.cfg')
 
-conflicts=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-git')
-provides=("syslinux=${pkgver}" "syslinux-bios=${pkgver}" "syslinux-efi=${pkgver}" "syslinux-git=${pkgver}")
+conflicts=('syslinux' 'syslinux-bios' 'syslinux-efi' 'syslinux-firmware-git')
+provides=("syslinux=${pkgver}" "syslinux-bios=${pkgver}" "syslinux-efi=${pkgver}" "syslinux-firmware-git=${pkgver}")
 
 makedepends=('git' 'python2' 'nasm' 'ncurses')
 depends=('perl' 'glibc')
@@ -35,9 +30,13 @@ optdepends=('perl-passwd-md5:  For md5pass'
             'efibootmgr:       For EFI support'
             'dosfstools:       For EFI support')
 
+if [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
+	makedepends+=('lib32-glibc')
+fi
+
 install="${_pkgname}.install"
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
+source=("syslinux::git+http://git.zytor.com/syslinux/syslinux.git#branch=master"
         "gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#commit=3c62e78556aea01e9798380cd46794c6ca09d4bd"
         'syslinux.cfg'
         'syslinux-install_update')
@@ -45,10 +44,10 @@ source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
 sha1sums=('SKIP'
           'SKIP'
           'b0f174bcc0386fdf699e03d0090e3ac841098010'
-          '6032b30aadbd738764213e1710652d0735d93f16')
+          'cfba99d3ccac2680ce7819cb97a6695307f2ba9d')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}/"
+	cd "${srcdir}/syslinux/"
 	echo "$(git describe --tags)" | sed -e 's|syslinux-||g' -e 's|-pre|pre|g' -e 's|-|.|g'
 }
 
@@ -202,7 +201,7 @@ build() {
 		_build_syslinux_efi64
 		echo
 		
-		if [[ "${_SYSLINUX_IA32_EFI_ARCH_X64}" == "1" ]]; then
+		if [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
 			msg "Build syslinux efi32"
 			_build_syslinux_efi32
 			echo
@@ -267,7 +266,7 @@ _package_syslinux_efi() {
 		make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" OBJDIR="${srcdir}/${_pkgname}-efi64/OBJDIR" efi64 install
 		echo
 		
-		if [[ "${_SYSLINUX_IA32_EFI_ARCH_X64}" == "1" ]]; then
+		if [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
 			cd "${srcdir}/${_pkgname}-efi32/"
 			msg "Install Syslinux efi32"
 			make INSTALLROOT="${pkgdir}/" AUXDIR="/usr/lib/syslinux/" OBJDIR="${srcdir}/${_pkgname}-efi32/OBJDIR" efi32 install
