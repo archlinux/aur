@@ -1,0 +1,17 @@
+pkgbase = python2-flowui-git
+	pkgdesc = A flow-based data presentation framework for terminals. Git version.
+	pkgver = 0.2.1.d14b2af
+	pkgrel = 1
+	url = http://github.com/dholm/FlowUI/
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = git
+	depends = python2
+	provides = python2-flowui
+	conflicts = python2-flowui
+	source = FlowUI::git+https://github.com/dholm/FlowUI.git
+	md5sums = SKIP
+
+pkgname = python2-flowui-git
+
