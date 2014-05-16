@@ -1,0 +1,19 @@
+pkgbase = python2-voidwalker-git
+	pkgdesc = A GDB toolbox for low-level debugging
+	pkgver = 0.1.0.73eff8b
+	pkgrel = 1
+	url = http://github.com/dholm/voidwalker/
+	arch = any
+	license = GPLv3
+	makedepends = python2
+	makedepends = git
+	depends = python2
+	depends = python2-flowui
+	depends = gdb>=7.5
+	provides = python2-voidwalker
+	conflicts = python2-voidwalker
+	source = voidwalker::git+https://github.com/dholm/voidwalker
+	md5sums = SKIP
+
+pkgname = python2-voidwalker-git
+
