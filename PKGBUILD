@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=34.0.1847.132
+pkgver=34.0.1847.137
 _toolchains_rev=12773
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
@@ -16,7 +16,7 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'harfbuzz-icu'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
-             'elfutils' 'subversion')
+             'elfutils' 'subversion' 'clang')
 [[ $CARCH = x86_64 ]] && makedepends+=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -38,7 +38,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
 noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_translator-$_toolchains_rev.tgz)
-sha256sums=('e8930a43d2cff3cd98d4772f6b7a527b363fa9567afbe86a4c0574dc25886038'
+sha256sums=('938bf0e673101bb1aeec4c3e2e75df372cebe3d2ee93e9f4669d64ce92656027'
             '4c2adc718e53f36e38202aabf6518ceaa0244e281567433489b0a4e6dab1dc2f'
             '13cf0e23176787fcaa039c0bd230745e5cf5699877a51e77694c97392dc0973d'
             '3a087d34cf2890d85d1e2fad0d63e9db82d47c400994dfe6f0e2ee8bcedb4195'
@@ -83,6 +83,12 @@ prepare() {
     native_client/toolchain/.tars/naclsdk_pnacl_translator.tgz
   ln -s "$srcdir/naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash" \
     native_client/toolchain/pnacl_translator/SOURCE_SHA1
+
+  # Build with clang as a temporary solution to startup crash with GCC 4.9
+  mkdir -p third_party/llvm-build/Release+Asserts/bin
+  ln -s /usr/bin/clang third_party/llvm-build/Release+Asserts/bin/
+  ln -s /usr/bin/clang++ third_party/llvm-build/Release+Asserts/bin/
+  ln -s /usr/bin/llvm-symbolizer third_party/llvm-build/Release+Asserts/bin/
 }
 
 build() {
@@ -94,13 +100,15 @@ build() {
   export -n CFLAGS CXXFLAGS
 
   # Silence "typedef 'x' locally defined but not used" warnings
-  CFLAGS+=' -Wno-unused-local-typedefs'
+  #CFLAGS+=' -Wno-unused-local-typedefs'
 
   local _chromium_conf=(
     -Dgoogle_api_key=$_google_api_key
     -Dgoogle_default_client_id=$_google_default_client_id
     -Dgoogle_default_client_secret=$_google_default_client_secret
     -Dwerror=
+    -Dclang=1
+    -Dclang_use_chrome_plugins=0
     -Dpython_ver=2.7
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
