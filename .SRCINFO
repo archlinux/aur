@@ -1,7 +1,7 @@
 pkgbase = wmcliphist
 	pkgdesc = A clipboard history dockable application for Window Maker
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linux.nawebu.cz/wmcliphist/
 	install = wmcliphist.install
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = wmcliphist
 	license = GPL
 	depends = gtk2
 	source = http://linux.nawebu.cz/wmcliphist/wmcliphist-1.0.tar.gz
+	source = gtk2.patch
 	md5sums = 81c9627c2955949669d2afa547415a10
+	md5sums = c91efc33caad564242fa923ac5ad04eb
 
 pkgname = wmcliphist
 
