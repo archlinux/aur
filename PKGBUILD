@@ -4,7 +4,7 @@
 
 pkgname=alltray
 pkgver=0.7.5.1dev
-pkgrel=1
+pkgrel=3
 pkgdesc="Drops any app in the tray."
 license=('GPL')
 arch=('i686' 'x86_64')
