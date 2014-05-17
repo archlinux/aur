@@ -1,6 +1,6 @@
 pkgbase = gtk3-donnatella
 	pkgdesc = GObject-based multi-platform GUI toolkit (v3) w/ fixes & extra features
-	pkgver = 3.12.1
+	pkgver = 3.12.2
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3.install
@@ -29,12 +29,12 @@ pkgbase = gtk3-donnatella
 	optdepends = gnome-icon-theme: Default icon theme
 	provides = gtk3
 	conflicts = gtk3
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.12/gtk+-3.12.1.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.12/gtk+-3.12.2.tar.xz
 	source = settings.ini
-	source = http://jjacky.com/donnatella/gtk3-donnatella-3.12.1-1.tar.gz
-	sha256sums = 719aae5fdb560f64cadb7e968c8c85c0823664de890c9f765ff4c0efeb0277cd
+	source = http://jjacky.com/donnatella/gtk3-donnatella-3.12.2-1.tar.gz
+	sha256sums = 61d74eea74231b1ea4b53084a9d6fc9917ab0e1d71b69d92cbf60a4b4fb385d0
 	sha256sums = 14369dfd1d325c393e17c105d5d5cc5501663277bd4047ea04a50abb3cfbd119
-	sha256sums = 46789977ee7c427c4b60508135f0f396a3117cbb3fed2d2a1524b2d4e11fcd26
+	sha256sums = b0bfa30712fa16f14907cf24afddddd953430d9c97a04987930f726b8ac86ee9
 
 pkgname = gtk3-donnatella
 
