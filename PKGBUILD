@@ -1,7 +1,7 @@
 # Contributor: farid abdelnour < farid at atelier-labs.org>
 # Contributor: Evan Purkhiser <evanpurkhiser@gmail.com>
 
-pkgname=oggfwd	
+pkgname=oggfwd
 pkgver=0.2
 pkgrel=3
 pkgdesc="Pipes an ogg stream to an icecast server"
