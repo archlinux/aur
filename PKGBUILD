@@ -1,4 +1,4 @@
-# Contributor: Marti Raudsepp <marti@juffo.org>
+# Contributor (Arch): Marti Raudsepp <marti@juffo.org>
 
 pkgname=networkmanager-openswan
 _pkgname=NetworkManager-openswan
