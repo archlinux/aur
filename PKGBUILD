@@ -9,7 +9,7 @@
 pkgname=volumeicon-gtk2
 _pkgname=volumeicon
 pkgver=0.5.0
-pkgrel=3
+pkgrel=2
 pkgdesc='Volume control for your system tray (compiled for gtk2)'
 arch=('x86_64' 'i686')
 url='http://softwarebakery.com/maato/volumeicon.html'
