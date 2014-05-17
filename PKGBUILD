@@ -2,7 +2,8 @@
 
 pkgname=wmfire
 pkgver=0.0.3.8
-pkgrel=1
+pkgrel=2
+epoch=1
 pkgdesc="A dock app firey load meter"
 arch=('i686' 'x86_64')
 url="http://www.zebra.net/~dm/wmfire/"
