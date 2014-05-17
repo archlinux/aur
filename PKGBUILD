@@ -3,26 +3,26 @@
 # Contributor: Duncan Ferguson <duncan_ferguson@users.sourceforge.net>
 
 pkgname=clusterssh
-pkgver=3.28
-pkgrel=4
+_pkgver=4.02_04
+pkgver=${_pkgver/_/.}
+pkgrel=1
 pkgdesc="Cluster SSH opens terminal windows with connections to specified hosts and an administration console."
 arch=('any')
 url="http://clusterssh.sourceforge.net/"
 license=('GPL')
-depends=('perl-tk' 'perl-x11-protocol' 'xterm')
-changelog=$pkgname.changelog
-source=(http://downloads.sourceforge.net/project/$pkgname/1.%20ClusterSSH%20Series%203/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('27e7c0feb652d980229c5fe07f9d6bfe4eb1e3becafaf0e82a5409a9f67d8faf')
+depends=('xterm' 'perl-file-which' 'perl-extutils-makemaker' 'perl-test-differences'
+         'perl-test-pod' 'perl-test-pod-coverage' 'perl-test-trap' 'perl-try-tiny'
+         'perl-tk' 'perl-x11-protocol')
+source=(http://downloads.sourceforge.net/$pkgname/App-ClusterSSH-$_pkgver.tar.gz)
+sha256sums=('a16142261ca83bee871005f9293f4f54da8c24918a6b439cee1f774ed4f0eb5a')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
-
-  ./configure --prefix=/usr
+  cd App-ClusterSSH-$_pkgver
+  perl Makefile.PL
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
-
-  make DESTDIR=${pkgdir} install
+  cd App-ClusterSSH-$_pkgver
+  make DESTDIR="$pkgdir" install
 }
