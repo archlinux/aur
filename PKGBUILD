@@ -2,8 +2,8 @@
 # Contributor: lh <jason52lh@gmail.com>
 
 pkgname=fcitx-rime
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Fcitx Wrapper for librime'
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
@@ -25,4 +25,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('8dbb8fddf4d372d4af9707d2f1bbdb7c15eb29602ad5de8f0cec5dfca81074087fb2873980afd8cdd09f78316620b086708761d91b820b714539a5100bc156a8')
+sha512sums=('5d3c8fc119e1a104987a7876f3b1c54da074e34ce9feb9c02efa7c9cfd788c3735680a03cdb50d69a5512a9f075c7326bdc267cf076daa916238898da81d2388')
