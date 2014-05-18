@@ -2,15 +2,15 @@
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 _pkgname=enlightenment
-pkgname=$_pkgname-git
-pkgver=0.18.99.18286.7274ffa
+pkgname=$_pkgname-wayland-git
+pkgver=0.18.99.18447.90ecf22
 pkgrel=1
-pkgdesc="Enlightenment window manager - Development version"
+pkgdesc="Highly expermimental Enlightenment window manager for Wayland- Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
-         'desktop-file-utils' 'udisks2' 'ttf-font' 'pixman' 'mesa')
+depends=('enlightenment' 'elementary-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
+         'desktop-file-utils' 'udisks2' 'ttf-font')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
@@ -19,14 +19,12 @@ optdepends=('acpid: power events on laptop lid close'
             'connman: network module'
             'gdb: create backtraces on crash'
             'packagekit: packagekit module')
-provides=("$_pkgname=$pkgver" 'notification-daemon')
-conflicts=("$_pkgname")
-backup=('etc/enlightenment/sysactions.conf'
-        'etc/xdg/menus/enlightenment.menu')
 options=('debug')
 install=enlightenment.install
-source=("git://git.enlightenment.org/core/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git://git.enlightenment.org/core/$_pkgname.git#branch=devs/devilhorns/e_comp_wl"
+        "enlightenment_start_wayland")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -40,16 +38,24 @@ pkgver() {
   printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  sed -i '/^src_bin_enlightenment_LDADD/ s/$/ -luuid/' "$srcdir/$_pkgname/src/bin/Makefile.mk"
+}
+
 build() {
   cd "$srcdir/$_pkgname"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
   ./autogen.sh \
-    --prefix=/usr \
+    --prefix=/opt/enlightenment-wayland \
     --sysconfdir=/etc \
+    --enable-wayland-only \
     --enable-wayland-clients \
-    --enable-wayland-egl
+    --enable-wl-drm \
+    --disable-conf-randr \
+    --disable-shot \
+    --disable-xkbswitch
 
   make
 }
@@ -59,9 +65,15 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+# remove files provided by the enlightenment package
+  rm -r "$pkgdir"/{etc,usr}
+
+# install run script
+  install -Dm755 "$srcdir/enlightenment_start_wayland" "$pkgdir/usr/bin/enlightenment_start_wayland"
+
 # install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -d "$pkgdir/usr/share/doc/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" ChangeLog NEWS README README.wayland
 
 # install license files
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
