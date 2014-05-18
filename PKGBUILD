@@ -2,31 +2,27 @@
 # Contributor: lh <jason52lh@gmail.com>
 
 pkgname=fcitx-anthy
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Fcitx Wrapper for anthy."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
-depends=('fcitx>=4.2.5' 'anthy')
+depends=('fcitx' 'anthy')
 makedepends=('cmake' 'intltool')
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 install=fcitx-anthy.install
 
 build(){
-  cd "$srcdir"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
 
-  rm -rf build
-  mkdir build
-  cd build
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
-  cd "$srcdir"/${pkgname}-${pkgver}/build
+  cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
 
-md5sums=('c02e4393d6141a4d0fa1693bf38a8f79')
+md5sums=('23ce628c01c5c09f9d4f1402c50fb19b')
