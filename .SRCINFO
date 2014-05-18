@@ -1,0 +1,17 @@
+pkgbase = oggfwd-bzr
+	pkgdesc = Pipes an ogg stream to an icecast server
+	pkgver = r13
+	pkgrel = 1
+	url = http://v2v.cc/~j/oggfwd/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = libshout
+	provides = oggfwd
+	conflicts = oggfwd
+	source = bzr+http://v2v.cc/~j/oggfwd
+	md5sums = SKIP
+
+pkgname = oggfwd-bzr
+
