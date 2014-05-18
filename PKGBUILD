@@ -1,13 +1,13 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-m17n
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Fcitx Wrapper for m17n."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
-depends=('fcitx>=4.2.7' 'm17n-lib')
+depends=('fcitx' 'm17n-lib')
 makedepends=('cmake')
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}.tar.xz")
 
@@ -23,4 +23,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('f0a708a351956c3972ae7d91050e274438c5631c785e829f746629f9cf2cb4c0bfe7dcb5f4e8bcda62e7761081526a484afb533a86b1c8b5c7d063f6ecbc502a')
+sha512sums=('6e78b70fb2e3139a59f49d25026c075893a8f192dd2083641ab3e56595a4f631ff13307dd647fd0eedd510dade690d97b44cbdeca96e086855f73910dc5d02af')
