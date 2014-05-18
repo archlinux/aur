@@ -4,20 +4,18 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.8.3
-pkgrel=4
+pkgver=4.2.8.4
+pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
 license=('GPL')
 makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant')
-source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz
-        add-a-context-variable-to-disable-punc.patch)
+source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz)
 
 prepare() {
   cd ${pkgbase}-${pkgver}
-  patch -p1 -i ../add-a-context-variable-to-disable-punc.patch
 }
 
 build() {
@@ -100,5 +98,4 @@ package_fcitx-qt4() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('93c7aa5209f344e1e89addb1dca7a76cde884e4467c0db5f79e758ea8ffb0fe1207ba1c507fb6574fe8223fa873ed5d1dd44835b70cf9254f5149df8e242e92d'
-            'ceb4d1b768f2f0c90c5bcde2c00a713883bed28d0e0e1f00a00c685020794d296045690cd55939127d0e204851248fe107e8a277571a8f7dbafde0eed29c340d')
+sha512sums=('39bffcd003aebb4e0714d245c32e839833b8507eaf819d5f6ec100ba2ed35b321f38e9a6052371abf0f5b73bb2828f10ae1bd555a41c30353beaf81bd121d03b')
