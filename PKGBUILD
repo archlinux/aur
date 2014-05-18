@@ -1,5 +1,5 @@
+# Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 # Contributor: farid abdelnour < farid at atelier-labs.org>
-# Contributor: Evan Purkhiser <evanpurkhiser@gmail.com>
 
 pkgname=oggfwd
 pkgver=0.2
