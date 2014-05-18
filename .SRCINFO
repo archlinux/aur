@@ -2,8 +2,8 @@
 # Mon Jun  1 13:54:10 UTC 2015
 pkgbase = np1-mps
 	pkgdesc = Terminal based jukebox with playlist management
-	pkgver = 0.20.02
-	pkgrel = 2
+	pkgver = 0.20.14
+	pkgrel = 1
 	url = https://github.com/np1/mps
 	install = np1-mps.install
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = np1-mps
 	depends = python
 	optdepends = mpv: Alternative to mplayer for playback
 	optdepends = mplayer: Alternative to mpv for playback
-	source = https://github.com/np1/mps/archive/v0.20.02.tar.gz
-	md5sums = 32f7939c7b082f5867b874308b377eb8
+	source = https://github.com/np1/mps/archive/v0.20.14.tar.gz
+	sha256sums = 0a78a01a923ab230ffc4d09ee302cbaae6cb4c68cb0d924137e58de8224bcdf3
 
 pkgname = np1-mps
 
