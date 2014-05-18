@@ -1,5 +1,5 @@
-# Maintainer: Jakub Kozisek <nodevel at gmail dot com>
-# Contributor: Evan Purkhiser <evanpurkhiser@gmail.com>
+# Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
+# Contributor: Jakub Kozisek <nodevel at gmail dot com>
 
 pkgname=puddletag-hg
 pkgver=r725.e0d8de5bb328
