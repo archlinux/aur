@@ -1,0 +1,17 @@
+pkgbase = libmmd
+	pkgdesc = A renderlib for mikumiku dance pmd model and vmd motion files
+	pkgver = 0.7.4.3
+	pkgrel = 1
+	url = http://frostworx.de/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = cmake
+	depends = bullet
+	depends = sfml
+	source = http://frostworx.de/files/libmmd-0.7.4.3.tar.gz
+	md5sums = 324b9b906f82ae08753105be13a684aa
+
+pkgname = libmmd
+
