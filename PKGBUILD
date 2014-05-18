@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@gmail.com>
 
 pkgname=fcitx-table-other
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Provides some other tables for Fcitx, fork from ibus-table-others, scim-tables.'
 arch=('any')
@@ -13,15 +13,15 @@ install=$pkgname.install
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
 
   cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('b2827e5ddb962cdbdb2ede59d3c5752f')
+sha512sums=('bd1eff0d4bd616a142711b0a7f9373ce9fdb6e99ded5cf717831aee475c8a442287e26355a2dd72ea39397603a42a6218b4233458028f0dccf4285d0e16fdf68')
