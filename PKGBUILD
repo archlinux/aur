@@ -24,23 +24,23 @@ true && pkgname=('roccat-tools'
                  'roccat-tools-ryos'
                  'roccat-tools-savu')
 pkgbase=roccat-tools
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'libusb' 'dbus-glib' 'udev' 'hicolor-icon-theme')
+depends=('libgaminggear>=0.2.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'libusb' 'dbus-glib' 'udev' 'hicolor-icon-theme')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for some devices not yet in vanilla kernel')
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('ef1c776a0add38a90a83af4e1fd4bfe2')
+md5sums=('bfa32d3de9802e2970c13ae9eca85209')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DUDEVDIR=/usr/lib/udev/rules.d
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -CMAKE_PREFIX_PATH=/-DUDEVDIR=/usr/lib/udev/rules.d
   make
 }
 
