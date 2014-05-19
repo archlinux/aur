@@ -4,7 +4,7 @@
 
 pkgbase=django
 pkgname=('python-django' 'python2-django')
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
@@ -12,8 +12,8 @@ license=('BSD')
 url="http://www.djangoproject.com/"
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=("https://www.djangoproject.com/m/releases/${pkgver:0:3}/Django-$pkgver.tar.gz")
-md5sums=('0d23bf836d3a52d93aee9411eccaa609')
-sha256sums=('ceee0beea79b1926c767aaa837e1b9e621e5f6b7d27138d90474b3917ca5527b')
+md5sums=('e4c5b2d35ecb3807317713afa70a0c77')
+sha256sums=('36940268c087fede32d3f5887cce9af9e5d27962a0c405aacafc2a3cc1f755c5')
 
 build() {
   cd "$srcdir/Django-$pkgver"
@@ -28,6 +28,8 @@ package_python-django() {
 
   mv "$pkgdir"/usr/bin/django-admin.py "$pkgdir"/usr/bin/django-admin3.py
   install -Dm644 extras/django_bash_completion \
+    "$pkgdir"/usr/share/bash-completion/completions/django-admin3.py
+  sed -i -e "s/django-admin.py/django-admin3.py/g" \
     "$pkgdir"/usr/share/bash-completion/completions/django-admin3.py
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
