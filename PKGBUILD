@@ -1,8 +1,8 @@
 # Maintainer: Aaron Mueller <mail@aaron-mueller.de>
 
 pkgname=libgaminggear
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=3
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -10,7 +10,7 @@ url="http://sourceforge.net/projects/libgaminggear/"
 depends=()
 makedepends=('cmake' 'doxygen')
 source=(http://downloads.sourceforge.net/project/libgaminggear/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('8c930b177be18e94e99fba125399b130')
+md5sums=('f96636b01bb2d04f78682d0506d18005')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,5 +22,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
   make DESTDIR="${pkgdir}" install
 
-  mv ${pkgdir}/usr/share/cmake{,-2.8}
+  if [[ -d "${pkgdir}/usr/share/cmake" ]]; then
+     mv ${pkgdir}/usr/share/cmake{,-2.8}
+  fi
 }
