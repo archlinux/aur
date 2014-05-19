@@ -2,7 +2,7 @@
 
 pkgname=python-ujson
 pkgver=1.33
-pkgrel=1
+pkgrel=2
 _libname=${pkgname/python-/}
 pkgdesc="Ultra fast JSON encoder and decoder for Python."
 url="https://github.com/esnme/ultrajson"
@@ -12,6 +12,7 @@ source=(http://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libna
 
 build() {
 	cd "$srcdir/$_libname-$pkgver"
+	sed 's|shutil.rmtree|pass #|' -i setup.py
 	python setup.py build
 }
 
