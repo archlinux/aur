@@ -1,0 +1,11 @@
+--- Makefile	2011-03-08 01:59:21.000000000 -0500
++++ Makefile.new	2014-05-18 14:13:37.806825907 -0400
+@@ -13,7 +13,7 @@
+ 
+ ECXXFLAGS     = $(CXXFLAGS) -Os -U_FORTIFY_SOURCE $(SOUNDFLAGS) $(BULLETFLAGS)
+ 
+-LDFLAGS       = -lGLU -lXrender -lmmd -lftgl $(SOUNDLIBS) $(BULLETLIBS)
++LDFLAGS       = -lGL -lX11 -lGLU -lXrender -lmmd -lftgl $(SOUNDLIBS) $(BULLETLIBS)
+ INCLUDES      = -I/usr/include/mmd -I/usr/include/freetype2
+ 
+ LD	      = g++

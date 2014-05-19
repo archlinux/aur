@@ -1,0 +1,20 @@
+pkgbase = dunan
+	pkgdesc = Animated 3D MMD models on the desktop
+	pkgver = 0.6
+	pkgrel = 2
+	url = http://frostworx.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = ftgl
+	depends = libmmd
+	depends = sdl_mixer
+	depends = mesa
+	source = http://frostworx.de/dunan/dunan-0.6.tar.bz2
+	source = Makefile.patch
+	md5sums = b9ffe36eb29f33b751413c36b3830d86
+	md5sums = dfa88c7adb29a32074dfba546421af1e
+
+pkgname = dunan
+
