@@ -3,16 +3,12 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
-_gitroot="git://anongit.freedesktop.org/gummiboot"
-_gitname="gummiboot"
-_gitbranch="master"
-
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=45
+pkgver=45.1.geb3daf2
 pkgrel=1
-pkgdesc="Simple text-mode UEFI Boot Manager - GIT Version"
+pkgdesc="Simple UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
 arch=('x86_64' 'i686')
 license=('LGPL2.1')
@@ -27,36 +23,33 @@ provides=("${_pkgname}=${pkgver}" "gummiboot-efi=${pkgver}" "gummiboot-efi-git=$
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}"
-        'gummiboot-allow-arch-specific-default-entry.patch'
+source=("${_pkgname}::git+git://anongit.freedesktop.org/gummiboot#branch=master"
         'loader.conf'
         'arch.conf')
 
 sha1sums=('SKIP'
-          '9bf77c97911cc571aab6ced7742540ec1682cecd'
           '9a28643459a6d11631089f265921212e6f897591'
           '1ffc417fb2e1db6c5b7720831a9ab6b989c4aadb')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}/"
+	cd "${srcdir}/${_pkgname}/"
 	echo "$(git describe --tags)" | sed -e 's|-|.|g'
 }
 
 prepare() {
 	
-	rm -rf "${srcdir}/${_gitname}_build/" || true
-	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
+	rm -rf "${srcdir}/${_pkgname}_build/" || true
+	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}_build"
 	
-	cd "${srcdir}/${_gitname}_build/"
+	cd "${srcdir}/${_pkgname}_build/"
 	
-	# patch -Np1 -i "${srcdir}/gummiboot-allow-arch-specific-default-entry.patch" || true
-	# echo
+	# ln -s "/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/include/stdarg.h" "${srcdir}/${_pkgname}_build/stdarg.h"
 	
 }
 
 build() {
 	
-	cd "${srcdir}/${_gitname}_build/"
+	cd "${srcdir}/${_pkgname}_build/"
 	
 	## Unset all compiler FLAGS
 	unset CFLAGS
@@ -87,7 +80,7 @@ build() {
 
 package() {
 	
-	cd "${srcdir}/${_gitname}_build/"
+	cd "${srcdir}/${_pkgname}_build/"
 	make DESTDIR="${pkgdir}/" install
 	echo
 	
