@@ -1,0 +1,20 @@
+--- stun.cxx~	2012-01-26 13:02:46.000000000 +0200
++++ stun.cxx	2014-05-19 23:00:16.896870461 +0300
+@@ -669,16 +669,8 @@
+       tick = hightick;
+       tick <<= 32;
+       tick |= lowtick;
+-#elif defined(__GNUC__) && ( defined(__i686__) || defined(__i386__) )
+-      asm("rdtsc" : "=A" (tick));
+-#elif defined (__SUNPRO_CC) || defined( __sparc__ )	
+-      tick = gethrtime();
+-#elif defined(__MACH__)  || defined(__linux)
+-      int fd=open("/dev/random",O_RDONLY);
+-      read(fd,&tick,sizeof(tick));
+-      closesocket(fd);
+ #else
+-#     error Need some way to seed the random number generator 
++      tick = time(NULL);
+ #endif 
+       int seed = int(tick);
+ #ifdef WIN32

@@ -1,13 +1,15 @@
 pkgbase = stund
 	pkgdesc = STUN Server and Client
-	pkgver = 0.96
-	pkgrel = 0
+	pkgver = 0.97
+	pkgrel = 1
 	url = http://downloads.sourceforge.net/project/stun/stun/
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	source = http://downloads.sourceforge.net/project/stun/stun/0.96/stund_0.96_Aug13.tgz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fstun%2F&ts=1299326697&use_mirror=puzzle
-	md5sums = 3273abb1a6f299f4e611b658304faefa
+	source = http://iweb.dl.sourceforge.net/project/stun/stun/0.97/stund-0.97.tgz
+	source = fix_non_i386.patch
+	md5sums = 097fd27829e357c005afcafd51564bd1
+	md5sums = da4912d40ab4fb58c2800c2260bf3a5e
 
 pkgname = stund
 
