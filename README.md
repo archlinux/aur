@@ -1,16 +1,16 @@
-# python2-hpilo
+# python2-crontab
 
 ## Description
 
-AUR package for python2-hpilo
+AUR package for python2-crontab
 
 ## Installation
 
 ```bash
-wget https://raw.github.com/pschmitt/aur-python-hpilo/python2/PKGBUILD
+wget https://raw.github.com/pschmitt/aur-python2-crontab/master/PKGBUILD
 makepkg -si
 ```
 
 ## Links
-* Upstream: https://pythonhosted.org/python-hpilo
-* AUR: https://aur.archlinux.org/packages/python2-hpilo
+* Upstream: https://pypi.python.org/pypi/python-crontab
+* AUR: https://aur.archlinux.org/packages/python2-crontab
