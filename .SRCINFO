@@ -1,0 +1,18 @@
+pkgbase = sensorkinect
+	pkgdesc = PrimeSensor Modules for OpenNI
+	pkgver = 0.93.5.1.2.1
+	pkgrel = 1
+	url = https://github.com/avin2/SensorKinect
+	install = sensorkinect.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openni
+	conflicts = sensorkinect-git
+	source = SensorKinect.tar.gz::https://github.com/avin2/SensorKinect/archive/v0.93-5.1.2.1.tar.gz
+	source = XnSensorDepthGenerator.patch
+	md5sums = de701b5bd7a7ee087c1078c777564bfa
+	md5sums = 618ad209969f870a43d628e80ac835fd
+
+pkgname = sensorkinect
+

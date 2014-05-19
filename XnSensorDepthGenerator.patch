@@ -1,0 +1,109 @@
+From 94d6ed38751571051b3acbdad4ea874f41deb375 Mon Sep 17 00:00:00 2001
+From: Tu-Hoa Pham <pham.main@gmail.com>
+Date: Thu, 24 Oct 2013 14:53:52 +0200
+Subject: [PATCH] Fixed missing virtual function
+
+---
+ Source/XnDeviceSensorV2/XnSensorDepthGenerator.cpp | 15 ++++++++++-----
+ Source/XnDeviceSensorV2/XnSensorDepthGenerator.h   |  9 +++++----
+ 2 files changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/Source/XnDeviceSensorV2/XnSensorDepthGenerator.cpp b/Source/XnDeviceSensorV2/XnSensorDepthGenerator.cpp
+index 546b3f7..a972b08 100644
+--- a/Source/XnDeviceSensorV2/XnSensorDepthGenerator.cpp
++++ b/Source/XnDeviceSensorV2/XnSensorDepthGenerator.cpp
+@@ -50,11 +50,11 @@ XnSensorDepthGenerator::~XnSensorDepthGenerator()
+ XnStatus XnSensorDepthGenerator::Init()
+ {
+ 	XnStatus nRetVal = XN_STATUS_OK;
+-	
++
+ 	nRetVal = XnSensorMapGenerator::Init();
+ 	XN_IS_STATUS_OK(nRetVal);
+ 
+-	const XnChar* aProps[] = 
++	const XnChar* aProps[] =
+ 	{
+ 		XN_STREAM_PROPERTY_ZERO_PLANE_DISTANCE,
+ 		XN_STREAM_PROPERTY_ZERO_PLANE_PIXEL_SIZE,
+@@ -180,7 +180,7 @@ XnStatus XnSensorDepthGenerator::GetUserPosition(XnUInt32 nIndex, XnBoundingBox3
+ 
+ XnStatus XnSensorDepthGenerator::RegisterToUserPositionChange(XnModuleStateChangedHandler handler, void* pCookie, XnCallbackHandle& hCallback)
+ {
+-	const XnChar* aProps[] = 
++	const XnChar* aProps[] =
+ 	{
+ 		XN_STREAM_PROPERTY_AGC_BIN,
+ 		NULL
+@@ -244,6 +244,11 @@ XnStatus XnSensorDepthGenerator::SetViewPoint(xn::ProductionNode& OtherNode)
+ 	}
+ }
+ 
++XnStatus XnSensorDepthGenerator::GetPixelCoordinatesInViewPoint(xn::ProductionNode& other, XnUInt32 x, XnUInt32 y, XnUInt32& altX, XnUInt32& altY)
++{
++    return 0;
++}
++
+ XnStatus XnSensorDepthGenerator::ResetViewPoint()
+ {
+ 	return SetIntProperty(XN_STREAM_PROPERTY_REGISTRATION, FALSE);
+@@ -259,7 +264,7 @@ XnBool XnSensorDepthGenerator::IsViewPointAs(xn::ProductionNode& OtherNode)
+ 
+ XnStatus XnSensorDepthGenerator::RegisterToViewPointChange(XnModuleStateChangedHandler handler, void* pCookie, XnCallbackHandle& hCallback)
+ {
+-	const XnChar* aProps[] = 
++	const XnChar* aProps[] =
+ 	{
+ 		XN_STREAM_PROPERTY_REGISTRATION,
+ 		NULL
+@@ -306,7 +311,7 @@ XnBool XnSensorDepthGenerator::IsFrameSyncedWith(xn::ProductionNode& OtherNode)
+ 
+ XnStatus XnSensorDepthGenerator::RegisterToFrameSyncChange(XnModuleStateChangedHandler handler, void* pCookie, XnCallbackHandle& hCallback)
+ {
+-	const XnChar* aProps[] = 
++	const XnChar* aProps[] =
+ 	{
+ 		XN_MODULE_PROPERTY_FRAME_SYNC,
+ 		NULL
+diff --git a/Source/XnDeviceSensorV2/XnSensorDepthGenerator.h b/Source/XnDeviceSensorV2/XnSensorDepthGenerator.h
+index 66b6f50..070bf75 100644
+--- a/Source/XnDeviceSensorV2/XnSensorDepthGenerator.h
++++ b/Source/XnDeviceSensorV2/XnSensorDepthGenerator.h
+@@ -36,8 +36,8 @@
+ #pragma warning (push)
+ #pragma warning (disable: 4250)
+ 
+-class XnSensorDepthGenerator : 
+-	public XnSensorMapGenerator, 
++class XnSensorDepthGenerator :
++	public XnSensorMapGenerator,
+ 	virtual public xn::ModuleDepthGenerator,
+ 	virtual public xn::ModuleUserPositionInterface,
+ 	virtual public xn::ModuleAlternativeViewPointInterface,
+@@ -68,6 +68,7 @@ class XnSensorDepthGenerator :
+ 	xn::ModuleAlternativeViewPointInterface* GetAlternativeViewPointInterface() { return this; }
+ 	XnBool IsViewPointSupported(xn::ProductionNode& OtherNode);
+ 	XnStatus SetViewPoint(xn::ProductionNode& OtherNode);
++    XnStatus GetPixelCoordinatesInViewPoint(xn::ProductionNode& other, XnUInt32 x, XnUInt32 y, XnUInt32& altX, XnUInt32& altY);
+ 	XnStatus ResetViewPoint();
+ 	XnBool IsViewPointAs(xn::ProductionNode& OtherNode);
+ 	XnStatus RegisterToViewPointChange(XnModuleStateChangedHandler handler, void* pCookie, XnCallbackHandle& hCallback);
+@@ -83,7 +84,7 @@ class XnSensorDepthGenerator :
+ 
+ protected:
+ 	virtual void FilterProperties(XnActualPropertiesHash* pHash);
+-	
++
+ private:
+ 	XnStatus UpdateRealWorldTranslationData();
+ 	XnBool IsSensorImageNode(xn::ProductionNode& Other);
+@@ -106,4 +107,4 @@ class XnExportedSensorDepthGenerator : public XnExportedSensorGenerator
+ 
+ #pragma warning (pop)
+ 
+-#endif // __XN_SENSOR_DEPTH_GENERATOR_H__
+\ No newline at end of file
++#endif // __XN_SENSOR_DEPTH_GENERATOR_H__
+-- 
+1.9.3
+
