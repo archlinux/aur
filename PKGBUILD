@@ -5,7 +5,7 @@
 
 pkgname=patchage
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular patch bay for audio and MIDI systems based on Jack and Alsa"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/patchage"
@@ -15,6 +15,14 @@ makedepends=('boost' 'python2')
 install="$pkgname.install"
 source=("http://download.drobilla.net/$pkgname-$pkgver.tar.bz2")
 md5sums=('d16a3fc045faff7fd70f3b4769b65698')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  # FS#40311
+  # disable jack metadata support for jack2 capability
+  sed -i '/jack_get_property/,/False/d' wscript
+}
 
 build() {
   cd $pkgname-$pkgver
