@@ -1,6 +1,6 @@
 pkgbase = postgresql-testing
 	pkgdesc = Beta version of the PostgreSQL database (includes both server and libs)
-	pkgver = 9.3.0
+	pkgver = 9.4beta1
 	pkgrel = 1
 	url = https://wiki.postgresql.org/wiki/HowToBetaTest
 	install = postgresql.install
@@ -14,28 +14,28 @@ pkgbase = postgresql-testing
 	depends = openssl>=1.0.0
 	optdepends = python2: for PL/Python support
 	optdepends = perl: for PL/Perl support
-	provides = postgresql-libs=9.3.0
-	provides = postgresql=9.3.0
+	provides = postgresql-libs=9.4beta1
+	provides = postgresql=9.4beta1
 	conflicts = postgresql-libs
 	conflicts = postgresql
 	conflicts = postgresql-testing
 	options = !strip
 	backup = etc/pam.d/postgresql
 	backup = etc/logrotate.d/postgresql
-	source = http://ftp.postgresql.org/pub/source/v9.3.0/postgresql-9.3.0.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v9.4beta1/postgresql-9.4beta1.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql.tmpfiles.conf
 	source = postgresql-check-db-dir
-	md5sums = 09aee56f3a15ce4a7ea32044fb845b53
+	md5sums = 35588e19e4578700a179542d093b5da6
 	md5sums = 75c579eed03ffb2312631f0b649175b4
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
 	md5sums = d28e443f9f65a5712c52018b84e27137
 	md5sums = 89b48774b0dae7c37fbb0e907c3c1db8
 	md5sums = 1c5a1f99e8e93776c593c468e2612985
-	md5sums = ea7f9f914900e60835d20cb95010e63c
+	md5sums = ba9b7d804500dffc095eac78c4a2a00f
 
 pkgname = postgresql-testing
 

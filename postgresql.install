@@ -10,6 +10,10 @@ post_install() {
     passwd -l postgres >/dev/null
   fi
   systemd-tmpfiles --create postgresql.conf
+  if [ ! -d '/var/lib/postgres/data' ]; then
+    mkdir -p '/var/lib/postgres/data'
+    chown postgres:postgres '/var/lib/postgres/data'
+  fi
 }
 
 post_upgrade() {

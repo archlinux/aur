@@ -2,9 +2,9 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-testing
-pkgver=9.3.0
+pkgver=9.4beta1
 pkgrel=1
-_majorver=9.3
+_majorver=9.4
 pkgdesc="Beta version of the PostgreSQL database (includes both server and libs)"
 arch=('i686' 'x86_64')
 url="https://wiki.postgresql.org/wiki/HowToBetaTest"
@@ -67,10 +67,10 @@ package() {
   install -D -m644 "${srcdir}/postgresql.logrotate" \
     "${pkgdir}/etc/logrotate.d/postgresql"
 }
-md5sums=('09aee56f3a15ce4a7ea32044fb845b53'
+md5sums=('35588e19e4578700a179542d093b5da6'
          '75c579eed03ffb2312631f0b649175b4'
          '96f82c38f3f540b53f3e5144900acf17'
          'd28e443f9f65a5712c52018b84e27137'
          '89b48774b0dae7c37fbb0e907c3c1db8'
          '1c5a1f99e8e93776c593c468e2612985'
-         'ea7f9f914900e60835d20cb95010e63c')
+         'ba9b7d804500dffc095eac78c4a2a00f')
