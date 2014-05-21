@@ -1,18 +1,23 @@
 # Author: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='signify'
-pkgver='4'
+pkgver='5'
 pkgrel='1'
 pkgdesc='OpenBSD tool to signs and verify signatures on files. Portable version.'
 url='https://github.com/aperezdc/signify'
 license=('BSD')
 arch=('i686' 'x86_64' 'arm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('92cb35f47c62ab6f3b931e4bf99c4e93')
+sha1sums=('1deb40f412227b42b32baa48404abb07b663747b')
 depends=('libbsd')
 
 build () {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make PREFIX='/usr'
+	if [ -r /etc/makepkg.conf ] ; then
+		eval "$(sed -e '/^CFLAGS=/s/^/EXTRA_/p' -e d /etc/makepkg.conf)"
+		eval "$(sed -e '/^LDFLAGS=/s/^/EXTRA_/p' -e d /etc/makepkg.conf)"
+	fi
+	make PREFIX='/usr' LTO=1 \
+		EXTRA_CFLAGS="${EXTRA_CFLAGS}" EXTRA_LDFLAGS="${EXTRA_LDFLAGS}"
 }
 
 package () {
