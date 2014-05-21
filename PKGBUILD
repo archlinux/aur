@@ -4,19 +4,19 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=34.0.1847.137
-_toolchains_rev=12773
+pkgver=35.0.1916.114
+_toolchains_rev=12935
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'opus' 'snappy'
-         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'harfbuzz-icu'
+         'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
+         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
-             'elfutils' 'subversion' 'clang')
+             'elfutils' 'subversion' 'ninja' 'clang')
 [[ $CARCH = x86_64 ]] && makedepends+=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -32,21 +32,19 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz.sha1hash
         chromium.desktop
         chromium.default
-        chromium-gn-r1.patch
-        chromium-depot-tools-r0.patch
+        chromium-nacl-bootstrap-cflags.patch
         chromium.sh)
 noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
            naclsdk_pnacl_translator-$_toolchains_rev.tgz)
-sha256sums=('938bf0e673101bb1aeec4c3e2e75df372cebe3d2ee93e9f4669d64ce92656027'
-            '4c2adc718e53f36e38202aabf6518ceaa0244e281567433489b0a4e6dab1dc2f'
-            '13cf0e23176787fcaa039c0bd230745e5cf5699877a51e77694c97392dc0973d'
-            '3a087d34cf2890d85d1e2fad0d63e9db82d47c400994dfe6f0e2ee8bcedb4195'
-            '581fb67410dad60fbe484294e4da2fed0de2487caabe33d595fa7abdf72e0f59'
+sha256sums=('566fcdc05d53c551d142ac9742ef69ba7c6d5a450d8ec41c0efd4fc8249f77af'
+            '2d72245cf0fc5aec95dcf315d88d787aaeff85e2fae28b8521d60a3dd95e28d4'
+            '6baee05d11e353aac83a94125722d1f85c1aaa5fae0bfea55f996bd1d9c2a6eb'
+            '142108d8ce184c3e2b18126a01bed14e286f953d90897a6d1c97f2bf7802cc0a'
+            '67005b390ba80b736b48fb1511bdf3fccd8fc808f4928e7fcca69f5677148b83'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
-            'b1ca3f17959be4fb6c031563b1ee587b7e990166c41b9d5b9dce2f91bf01fe1c'
-            '14d86770eaaead42e244007ebe5a94d188f8668c2598fa6042ada87a90cae671'
+            'd82bafd8d4d6517c2d420b2987fdbe1dfcc32d5fed74a6c0011bcb2f868225c3'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -60,9 +58,9 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Build fixes (patches from Gentoo)
-  patch -Np0 -i "$srcdir/chromium-gn-r1.patch"
-  patch -Np0 -i "$srcdir/chromium-depot-tools-r0.patch"
+  # Filter out -fstack-protector-strong for nacl_helper_bootstrap
+  # https://code.google.com/p/chromium/issues/detail?id=104569
+  patch -Np0 -i ../chromium-nacl-bootstrap-cflags.patch
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -89,6 +87,8 @@ prepare() {
   ln -s /usr/bin/clang third_party/llvm-build/Release+Asserts/bin/
   ln -s /usr/bin/clang++ third_party/llvm-build/Release+Asserts/bin/
   ln -s /usr/bin/llvm-symbolizer third_party/llvm-build/Release+Asserts/bin/
+  # clang 3.4 doesn't support this option
+  sed -i '/-Wno-absolute-value/d' build/common.gypi
 }
 
 build() {
@@ -98,9 +98,6 @@ build() {
 
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
-
-  # Silence "typedef 'x' locally defined but not used" warnings
-  #CFLAGS+=' -Wno-unused-local-typedefs'
 
   local _chromium_conf=(
     -Dgoogle_api_key=$_google_api_key
@@ -130,20 +127,20 @@ build() {
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
     -Duse_system_libxml=0
-    -Duse_system_opus=1
     -Duse_system_snappy=1
     -Duse_system_ssl=0
     -Duse_system_xdg_utils=1
     -Duse_system_yasm=1
     -Duse_system_zlib=0
+    -Duse_mojo=0
     -Duse_gconf=0
-    -Ddisable_glibc=1
-    -Ddisable_sse2=1)
+    -Ddisable_fatal_linker_warnings=1
+    -Ddisable_glibc=1)
 
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
-  build/gyp_chromium -f make --depth=. "${_chromium_conf[@]}"
+  build/gyp_chromium --depth=. "${_chromium_conf[@]}"
 
-  make BUILDTYPE=Release chrome chrome_sandbox chromedriver
+  ninja -C out/Release chrome chrome_sandbox chromedriver
 }
 
 package() {
