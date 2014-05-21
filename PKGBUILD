@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r193.55b34fa
+pkgver=0.0.99.r230.f54f218
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -29,10 +29,10 @@ pkgver() {
 }
 
 prepare() {
-  sed -e '/"session_path"/ s|/bin:/usr/bin:/usr/local/bin|/usr/local/sbin:/usr/local/bin:/usr/bin|' \
-      -e '/"shutdown"/ s|/sbin/shutdown -h now|/usr/bin/systemctl poweroff|' \
-      -e '/"reboot"/ s|/sbin/shutdown -r now|/usr/bin/systemctl reboot|' \
-      -e '/"suspend"/ s|/usr/sbin/pm-suspend|/usr/bin/systemctl suspend|' \
+  sed -e '/"session_path"/ s|:.*|: "/usr/local/sbin:/usr/local/bin:/usr/bin";|' \
+      -e '/"shutdown"/ s|:.*|: "/usr/bin/systemctl poweroff";|' \
+      -e '/"reboot"/ s|:.*|: "/usr/bin/systemctl reboot";|' \
+      -e '/"suspend"/ s|:.*|: "/usr/bin/systemctl suspend";|' \
       -i "$srcdir/$_pkgname/data/entrance.conf.in"
 }
 
