@@ -27,11 +27,13 @@ build() {
 
 package_python-d2to1() {
     cd ${pkgbase#*-}-$pkgver/
+    depends=(python)
     python setup.py install --prefix=/usr --root="$pkgdir"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 package_python2-d2to1() {
     cd ${pkgbase}2-$pkgver/
+    depends=(python2)
     python2 setup.py install --prefix=/usr --root="$pkgdir"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
