@@ -2,9 +2,10 @@
 # Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
 # Contributor: angelux/xangelux (xangelux <at> gmail <dot> com)
+# Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=policycoreutils
-pkgver=2.2.5
+pkgver=2.3
 pkgrel=1
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
@@ -17,13 +18,13 @@ optdepends=('hicolor-icon-theme: needed for graphical tools')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgver}.tar.gz"
+source=("http://userspace.selinuxproject.org/releases/20140506/${pkgname}-${pkgver}.tar.gz"
         'restorecond.service')
-sha256sums=('bbf850a8c3c2f371f439d6525663eecdd3a737acd594d2f27f8d8f3a07830cc4'
+sha256sums=('864cfaee58b5d2f15b140c354e59666e57143293c89f2b2e85bc0d0e4beefcd2'
             '20572c2cc09c8af5239f26cfea3eb2648d87d9927e55791f13572ea2184e857e')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
 #  sed -i -e "s/-Werror -Wall -W/-Werror -Wall -W ${CFLAGS}/" setfiles/Makefile
 #  sed -i -e "s/-Werror -Wall -W/-Werror -Wall -W ${CFLAGS}/" sestatus/Makefile
@@ -40,13 +41,13 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   make PYTHON=python2 LSPP_PRIV=y SEMODULE_PATH="/usr/sbin" all
 }
 
 package(){
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   make PYTHON=python2 DESTDIR="${pkgdir}" LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib SEMODULE_PATH="/usr/sbin" install
 
