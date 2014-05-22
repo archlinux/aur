@@ -1,18 +1,18 @@
 pkgbase = jsvm-git
 	pkgdesc = Reference software for the Scalable Video Coding codec
-	pkgver = da983ce
-	pkgrel = 1
-	url = https://github.com/kierank/${_gitname}
+	pkgver = 3d01c8b
+	pkgrel = 2
+	url = http://www.hhi.fraunhofer.de/de/kompetenzfelder/image-processing/research-groups/image-video-coding/svc-extension-of-h264avc/jsvm-reference-software.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
 	depends = gcc-libs
 	provides = jsvm
-	source = git://github.com/kierank/jsvm.git
-	source = gcc.patch
+	source = git://github.com/floriandejonckheere/jsvm.git
+	source = git://github.com/floriandejonckheere/jsvm-patch.git
 	md5sums = SKIP
-	md5sums = 2056b96c292aa3e9be0f01c5824b3cba
+	md5sums = SKIP
 
 pkgname = jsvm-git
 

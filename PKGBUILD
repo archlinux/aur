@@ -3,19 +3,19 @@
 
 pkgname=jsvm-git
 _gitname=jsvm
-pkgver=da983ce
-pkgrel=1
+pkgver=3d01c8b
+pkgrel=2
 pkgdesc='Reference software for the Scalable Video Coding codec'
 arch=('i686' 'x86_64')
-url='https://github.com/kierank/${_gitname}'
+url='http://www.hhi.fraunhofer.de/de/kompetenzfelder/image-processing/research-groups/image-video-coding/svc-extension-of-h264avc/jsvm-reference-software.html'
 license=('custom')
 depends=('gcc-libs')
 makedepends=('git')
 provides=('jsvm')
-source=("git://github.com/kierank/${_gitname}.git"
-	"gcc.patch")
+source=("git://github.com/floriandejonckheere/${_gitname}.git"
+	"git://github.com/floriandejonckheere/${_gitname}-patch.git")
 md5sums=('SKIP'
-	'2056b96c292aa3e9be0f01c5824b3cba')
+	'SKIP')
 
 pkgver(){
 	cd "${srcdir}/${_gitname}"
@@ -25,7 +25,7 @@ pkgver(){
 prepare(){
 	cd "${srcdir}/${_gitname}"
 	# GCC quirks
-	git apply "../gcc.patch"
+	git apply "../${_gitname}-patch/jsvm.patch"
 }
 
 build(){
