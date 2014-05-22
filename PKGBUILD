@@ -6,7 +6,7 @@
 pkgbase=linux-selinux       # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
-pkgver=3.14.2
+pkgver=3.14.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -27,18 +27,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0004-fs-Don-t-return-0-from-get_anon_bdev.patch'
         '0005-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch'
         '0006-genksyms-fix-typeof-handling.patch'
-        '0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch'
         '0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch'
         '0011-kernfs-fix-removed-error-check.patch'
         '0012-fix-saa7134.patch'
         '0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch'
-        '0014-fix-rtl8192se.patch'
         '0015-fix-xsdt-validation.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            '1c7a8fee1674bfa6354dc6e3038ca1f16bc1327b035cd4896b795b482c7d1829'
-            'db62a32d53b424cf6ac353e9b0defba285232ee2bc73a2bd50518240cf07e5d6'
-            'b12dbc3e0ce057a3f68a129b6c97fe29f62adca8c1fcc82166968278214e4091'
+            'af640ea64e923d525a8238832e8452381e6dc76a3bf28046411cadd67c408114'
+            '68d36c33637d0431372d8f679b61d6641b36ccc079419405024dfc3b88e37ba4'
+            '3bad2b8b6c2c3e1879422046abd6b28a0964996b0544cb8c36c3d19f252e47ad'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
@@ -47,12 +45,10 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '1e1ae0f31f722e80da083ecada1f1be57f9ddad133941820c4483b0240e494c1'
             '3fffb01cf97a5a7ab9601cb277d2468c0fb1e1cceba4225915f3ffae3a5694ec'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            'a98bc3836bcf85774a974a1585e6b64432ba8c42363ee484d14515ccd6a88e24'
             'c0af4622f75c89fef62183e18b7d49998228d4eaa906c6accaf4aa4ff0134f85'
             '04f44bf5c181d6dc31905937c1bdccb0f5aecaad3a579e99b302502b9cbe0f7a'
             '79359454c9d8446eb55add2b1cdbf8332bd67dafb01fefb5b1ca090225f64d18'
             'f2a5e22c1ba6e9b8a32a7bd4a5327ee95538aa10edcee3cd12578f8ff49bf6be'
-            'ff9df6746d7cbfe858d5b4bce932951c26414a7635cb5c26cd8d5c97df36a2a1'
             '384dd13fd4248fd6809da8c6ae29ced55d4a5cacc33ac2ae7522093ec0fb26d4')
 
 _kernelname=${pkgbase#linux}
@@ -91,11 +87,6 @@ prepare() {
   # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
   patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
 
-  # Fix the use of code32_start in the EFI boot stub
-  # http://permalink.gmane.org/gmane.linux.kernel/1679881
-  # https://git.kernel.org/cgit/linux/kernel/git/mfleming/efi.git/commit/?h=urgent&id=7e8213c1f3acc064aef37813a39f13cbfe7c3ce7
-  patch -p1 -i "${srcdir}/0007-x86-efi-Correct-EFI-boot-stub-use-of-code32_start.patch"
-
   # https://git.kernel.org/cgit/linux/kernel/git/iwlwifi/iwlwifi-fixes.git/commit/?id=12f853a89e29f50b17698e17e73c328a35f1498d
   # FS#39815
   patch -p1 -i "${srcdir}/0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch"
@@ -113,11 +104,6 @@ prepare() {
   # https://bugs.archlinux.org/task/40089
   # https://bugzilla.kernel.org/show_bug.cgi?id=74051
   patch -Np1 -i "${srcdir}/0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch"
-
-  # fix rtl8192se authentification
-  # https://bugs.archlinux.org/task/39858
-  # https://bugzilla.kernel.org/show_bug.cgi?id=74541
-  patch -Np1 -i "${srcdir}/0014-fix-rtl8192se.patch"
 
   # fix xsdt validation bug
   # https://bugs.archlinux.org/task/39811
