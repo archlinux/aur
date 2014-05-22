@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-privacybadger
 	pkgdesc = Privacy Badger blocks spying ads and invisible trackers.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://www.eff.org/privacybadger
 	arch = any
 	license = GPL3
 	depends = firefox
-	source = https://s.eff.org/files/privacy-badger-0.1.2.xpi
-	md5sums = b843bda32c140597e625a508fedf54e2
+	source = https://s.eff.org/files/privacy-badger-0.1.3.xpi
+	md5sums = 6f663a2668021d709f9e54cb79e6e010
 
 pkgname = firefox-extension-privacybadger
 
