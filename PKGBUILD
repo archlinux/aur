@@ -7,8 +7,8 @@
 # SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=shadow-selinux
-pkgver=4.1.5.1
-pkgrel=8
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('i686' 'x86_64')
 url='http://pkg-shadow.alioth.debian.org/'
@@ -25,7 +25,7 @@ backup=(etc/login.defs
         etc/default/useradd)
 options=(strip debug)
 install='shadow.install'
-source=("ftp://ftp.archlinux.org/other/packages/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.bz2"{,.sig}
+source=("http://pkg-shadow.alioth.debian.org/releases/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig}
         LICENSE
         chgpasswd
         chpasswd
@@ -38,7 +38,7 @@ source=("ftp://ftp.archlinux.org/other/packages/${pkgname/-selinux}/${pkgname/-s
         xstrdup.patch
         shadow-strncpy-usage.patch
         lastlog.tmpfiles)
-sha1sums=('81f38720b953ef9c2c100c43d02dfe19cafd6c30'
+sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
           'SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
@@ -54,27 +54,26 @@ sha1sums=('81f38720b953ef9c2c100c43d02dfe19cafd6c30'
           '21e12966a6befb25ec123b403cd9b5c492fe5b16'
           'f57ecde3f72b4738fad75c097d19cf46a412350f')
 
-build() {
+prepare() {
   cd "${pkgname/-selinux}-$pkgver"
-
-  # avoid transitive linking issues with binutils 2.22
-  sed -i '/^user\(mod\|add\)_LDADD/s|$| -lattr|' src/Makefile.am
-
-  # link to glibc's crypt(3)
-  export LIBS="-lcrypt -lselinux"
 
   # need to offer these upstream
   patch -Np1 <"$srcdir/xstrdup.patch"
   patch -Np1 <"$srcdir/shadow-strncpy-usage.patch"
 
   # supress etc/pam.d/*, we provide our own
-  sed -i '/^SUBDIRS/s/pam.d//' etc/Makefile.in
+  sed -i '/^SUBDIRS/s/pam\.d//' etc/Makefile.in
+}
+
+build() {
+  cd "${pkgname/-selinux}-$pkgver"
 
   ./configure \
+    LIBS="-lcrypt" \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
-    --libdir=/lib \
+    --libdir=/usr/lib \
     --mandir=/usr/share/man \
     --sysconfdir=/etc \
     --with-libpam \
@@ -96,10 +95,10 @@ package() {
   install -Dm644 "$srcdir/useradd.defaults" "$pkgdir/etc/default/useradd"
 
   # systemd timer
-  install -D -m644 ${srcdir}/shadow.timer ${pkgdir}/usr/lib/systemd/system/shadow.timer
-  install -D -m644 ${srcdir}/shadow.service ${pkgdir}/usr/lib/systemd/system/shadow.service
-  install -d -m755 ${pkgdir}/usr/lib/systemd/system/multi-user.target.wants
-  ln -s ../shadow.timer ${pkgdir}//usr/lib/systemd/system/multi-user.target.wants/shadow.timer
+  install -D -m644 "$srcdir/shadow.timer" "$pkgdir/usr/lib/systemd/system/shadow.timer"
+  install -D -m644 "$srcdir/shadow.service" $pkgdir/usr/lib/systemd/system/shadow.service
+  install -d -m755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
+  ln -s ../shadow.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/shadow.timer"
 
   # login.defs
   install -Dm644 "$srcdir/login.defs" "$pkgdir/etc/login.defs"
@@ -118,7 +117,7 @@ package() {
   done
 
   # lastlog log file creation
-  install -Dm644 "$srcdir/lastlog.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/lastlog.conf"
+  install -Dm644 "$srcdir/lastlog.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/lastlog.conf"
 
   # Remove evil/broken tools
   rm "$pkgdir"/usr/sbin/logoutd

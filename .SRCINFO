@@ -1,7 +1,7 @@
 pkgbase = shadow-selinux
 	pkgdesc = Password and account management tool suite with support for shadow files and PAM - SELinux support
-	pkgver = 4.1.5.1
-	pkgrel = 8
+	pkgver = 4.2.1
+	pkgrel = 1
 	url = http://pkg-shadow.alioth.debian.org/
 	install = shadow.install
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = shadow-selinux
 	depends = pam-selinux
 	depends = acl
 	depends = libselinux
-	provides = shadow=4.1.5.1-8
-	provides = selinux-shadow=4.1.5.1-8
+	provides = shadow=4.2.1-1
+	provides = selinux-shadow=4.2.1-1
 	conflicts = shadow
 	conflicts = selinux-shadow
 	options = strip
@@ -33,8 +33,8 @@ pkgbase = shadow-selinux
 	backup = etc/pam.d/chgpasswd
 	backup = etc/pam.d/groupmems
 	backup = etc/default/useradd
-	source = ftp://ftp.archlinux.org/other/packages/shadow/shadow-4.1.5.1.tar.bz2
-	source = ftp://ftp.archlinux.org/other/packages/shadow/shadow-4.1.5.1.tar.bz2.sig
+	source = http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
+	source = http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz.sig
 	source = LICENSE
 	source = chgpasswd
 	source = chpasswd
@@ -48,7 +48,7 @@ pkgbase = shadow-selinux
 	source = xstrdup.patch
 	source = shadow-strncpy-usage.patch
 	source = lastlog.tmpfiles
-	sha1sums = 81f38720b953ef9c2c100c43d02dfe19cafd6c30
+	sha1sums = 0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d
 	sha1sums = SKIP
 	sha1sums = 33a6cf1e44a1410e5c9726c89e5de68b78f5f922
 	sha1sums = 4ad0e059406a305c8640ed30d93c2a1f62c2f4ad
