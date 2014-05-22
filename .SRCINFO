@@ -1,0 +1,16 @@
+pkgbase = polkit-efl-authentication-agent-git
+	pkgdesc = Polkit authentication agent using EFL
+	pkgver = 0.1.r64.b7f2e22
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-efl>=1.9.99
+	provides = polkit-efl-authentication-agent=0.1.r64.b7f2e22
+	conflicts = polkit-efl-authentication-agent
+	source = git://git.enlightenment.org/devs/kuuko/polkit-efl-authentication-agent.git
+	sha256sums = SKIP
+
+pkgname = polkit-efl-authentication-agent-git
+
