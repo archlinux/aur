@@ -3,10 +3,11 @@
 # Contributor: judd <jvinet@zeroflux.org>
 # SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
+# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=pam-selinux
 pkgver=1.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -19,15 +20,31 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/default/passwd etc/environment)
 groups=('selinux')
 source=(https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-$pkgver.tar.bz2
-        #http://www.kernel.org/pub/linux/libs/pam/library/Linux-PAM-$pkgver.tar.bz2
         ftp://ftp.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
         pam_unix2-glibc216.patch
+        pam-1.1.8-cve-2013-7041.patch
+        pam-1.1.8-cve-2014-2583.patch
         pam_unix2-rm_selinux_check_access.patch)
-options=('!emptydirs')
 md5sums=('35b6091af95981b1b2cd60d813b5e4ee'
          'da6a46e5f8cd3eaa7cbc4fc3a7e2b555'
          'dac109f68e04a4df37575fda6001ea17'
+         '653661bea920de3bb2713bb85b408bc2'
+         '144ea8e2f9d49a0f4021027ca2c1558f'
          '6a0a6bb6f6f249ef14f6b21ab9880916')
+
+options=('!emptydirs')
+
+prepare () {
+  cd $srcdir/Linux-PAM-$pkgver
+  # fix CVEs in pam
+  patch -Np1 -i  "${srcdir}/pam-1.1.8-cve-2013-7041.patch"
+  patch -Np1 -i  "${srcdir}/pam-1.1.8-cve-2014-2583.patch"
+
+  # fix pam_unix2 building
+  cd $srcdir/pam_unix2-2.9.1
+  patch -Np1 -i "${srcdir}/pam_unix2-glibc216.patch"
+  patch -Np1 -i "${srcdir}/pam_unix2-rm_selinux_check_access.patch"
+}
 
 build() {
   cd $srcdir/Linux-PAM-$pkgver
@@ -36,9 +53,6 @@ build() {
   make
 
   cd $srcdir/pam_unix2-2.9.1
-  patch -Np1 -i ../pam_unix2-glibc216.patch
-  patch -Np1 -i ../pam_unix2-rm_selinux_check_access.patch
-
   # modify flags to build against the pam compiled here, not a system lib.
   ./configure \
       CFLAGS="$CFLAGS -I$srcdir/Linux-PAM-$pkgver/libpam/include/" \
