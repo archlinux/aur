@@ -4,16 +4,18 @@ _pkgname=polkit-efl-authentication-agent
 pkgname=$_pkgname-git
 pkgver=0.1.r64.b7f2e22
 pkgrel=1
-pkgdesc="Polkit authentication agent using EFL"
+pkgdesc="Polkit Authentication Agent using EFL"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3')
-depends=('python-efl>=1.9.99')
+depends=('python-efl>=1.9.99a')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/devs/kuuko/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git://git.enlightenment.org/devs/kuuko/$_pkgname.git"
+        "polkit-efl.desktop")
+sha256sums=('SKIP'
+            '8507850d20bbb684aa6707045d2fd44e31764d73904f2d3ed4975b52f0179ce5')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -33,4 +35,5 @@ package() {
   python setup.py install --root="$pkgdir"
 
   install -Dm644 data/theme/default.edj "$pkgdir/usr/share/polkit-efl/theme/default.edj"
+  install -Dm644 "$srcdir/polkit-efl.desktop" "$pkgdir/etc/xdg/autostart/polkit-efl.desktop"
 }
