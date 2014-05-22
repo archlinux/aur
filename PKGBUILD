@@ -4,9 +4,10 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
+# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=sudo-selinux
-_sudover=1.8.10p2
+_sudover=1.8.10p3
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -23,7 +24,7 @@ install=${pkgname/-selinux}.install
 source=(http://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.tmpfiles.conf
         sudo.pam)
-sha256sums=('ba6cb8db6dccdb92a96e8ae63ca65c410f8b61270b603ab9af4b1154fef379f1'
+sha256sums=('6eda135fa68163108f1c24de6975de5ddb09d75730bb62d6390bda7b04345400'
             'SKIP'
             '080dd97111b3149f8d140ffac68c88acd63da9eacc81fbcc7c43591be13b42fe'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
@@ -70,7 +71,7 @@ package() {
 }
 
 workaround_for_the_aur_webinterface='
-pkgver=1.8.10.p2
+pkgver=1.8.10.p3
 '
 
 # vim:set ts=2 sw=2 et:
