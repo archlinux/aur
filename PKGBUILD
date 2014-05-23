@@ -60,7 +60,7 @@ pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
 _patchver=${_mozcver}.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
@@ -78,7 +78,7 @@ source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=
         http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcoderel}.zip
         http://protobuf.googlecode.com/files/protobuf-${_protobuf_ver}.tar.bz2
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_patchver}.patch
-        http://download.fcitx-im.org/data/fcitx-mozc-icon.tar.gz)
+        http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
 build() {
   #source /etc/profile.d/qt4.sh

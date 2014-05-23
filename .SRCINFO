@@ -1,7 +1,7 @@
 pkgbase = fcitx-mozc-ut
 	pkgdesc = Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)
 	pkgver = 1.15.1785.102.20140506
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.geocities.jp/ep3797/mozc_01.html
 	arch = i686
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = fcitx-mozc-ut
 	source = http://downloads.sourceforge.net/pnsft-aur/jigyosyo-201404.zip
 	source = http://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2
 	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-1.15.1785.102.1.patch
-	source = http://download.fcitx-im.org/data/fcitx-mozc-icon.tar.gz
+	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 5285ed338f66c84d0087c6cb11b5a38e1a7ea635febac8358665085d247cafbe6deaf0d91594aa52e86d0be9af57665cdea5b3176dd04124a0ce81fac968f5d8
