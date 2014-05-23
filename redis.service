@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=forking
-PIDFile=/run/redis-x32.pid
+User=redis
+PIDFile=/run/redis-x32/redis-x32.pid
 ExecStartPre=/bin/mkdir -p /var/lib/redis-x32
 ExecStart=/usr/bin/redis-server-x32 /etc/redis-x32.conf
 ExecStop=/usr/bin/redis-cli-x32 shutdown
