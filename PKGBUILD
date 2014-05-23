@@ -8,7 +8,7 @@ _IA32_EFI_IN_ARCH_X64="1"
 _pkgname="syslinux"
 pkgname="${_pkgname}-git"
 
-pkgver=6.03pre11
+pkgver=6.03pre11.3.g7e71397
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master branch"
@@ -66,6 +66,7 @@ prepare() {
 	sed 's|dos/syslinux.com||g' -i "${srcdir}/${_pkgname}/Makefile" || true
 	sed 's|INSTALLSUBDIRS = com32 utils dosutil|INSTALLSUBDIRS = com32 utils|g' -i "${srcdir}/${_pkgname}/Makefile" || true
 	sed 's|install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|# install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|g' -i "${srcdir}/${_pkgname}/Makefile" || true
+	sed 's|-include $(MAKEDIR)/devel.mk||g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
 	
 	msg "Fix FHS manpage path"
 	sed 's|/usr/man|/usr/share/man|g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
