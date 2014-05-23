@@ -1,10 +1,11 @@
-# $Id: PKGBUILD 70251 2012-05-03 08:40:13Z pschmitz $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# $Id: PKGBUILD 89550 2013-04-29 23:08:08Z lcarlier $
+# Upstream Maintainer: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=zlib
 pkgname=libx32-$_pkgbasename
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1.1
 pkgdesc='Compression library implementing the deflate compression method found in gzip and PKZIP (x32 ABI)'
 arch=('x86_64')
@@ -13,7 +14,7 @@ url="http://www.zlib.net/"
 depends=('libx32-glibc' "$_pkgbasename")
 makedepends=('gcc-multilib-x32')
 source=("http://zlib.net/current/zlib-${pkgver}.tar.gz")
-md5sums=('60df6a37c56e7c1366cca812414f7b85')
+md5sums=('44d667c142d7cda120332623eab69f40')
 
 build() {
 	export CC="gcc -mx32"
