@@ -15,10 +15,13 @@ post_install() {
   chown -R neo4j.neo4j /etc/neo4j
 
   /usr/bin/systemd-tmpfiles --create neo4j.conf
+
+  warn_about_java_home
 }
 
 post_upgrade() {
   assert_user_and_group_exist
+  warn_about_java_home
 }
 
 post_remove() {
@@ -28,4 +31,15 @@ post_remove() {
   if getent group neo4j >/dev/null; then
     groupdel neo4j
   fi
+}
+
+warn_about_java_home() {
+  echo "------------------------------"
+  echo "--- ACHTUNG ACHTUNG ALARM! ---"
+  echo "------------------------------"
+  echo "Before starting the Neo4j service, please edit"
+  echo "'/usr/lib/systemd/system/neo4j.service', changing"
+  echo "'Environment=JAVA_HOME=/your/java/home/path' to your"
+  echo "actual JAVA_HOME path. Do not forget to uncomment"
+  echo "that line too and then run 'systemctl daemon-reload'."  
 }
