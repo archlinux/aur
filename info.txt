@@ -93,3 +93,20 @@ $ make DESTDIR="$pkgdir" install
 
 g++ -fPIC -shared -o mymodule.so mymodule.cpp `pkg-config --cflags --libs python` `pkg-config --cflags --libs opencv` -I/usr/local/include/opencv2/legacy 
 g++ -fPIC -shared -o mymodule.so mymodule.cpp `pkg-config --cflags --libs python` `pkg-config --cflags --libs opencv` -I/usr/local/include/opencv2/legacy
+
+
+"I would recommend Setuptools". Но в проекте используется distutils.
+
+Произвольные файлы можно запаковать через манифест или package_data. Или неймспейсы.
+
+setup(
+  # ...
+  namespace_packages  = ["root"]
+)
+
+Предоставить выбор python2/3 swig -py3
+python2 setup.py install
+И дальше чёрт с ним, с makefile'ом.
+
+***
+May 22, 2014 13250d0d9c99319e202a80a859bb46f2f3c427fa

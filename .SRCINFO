@@ -1,6 +1,6 @@
 pkgbase = micromanager-git
 	pkgdesc = Software package for control of automated microscopes. CMMCore and python2 bindings only.
-	pkgver = 1.4.13.r2306.gf5e50bd
+	pkgver = 1.4.13.r3204.g13250d0
 	pkgrel = 1
 	url = http://www.micro-manager.org
 	install = mm.install
@@ -16,13 +16,9 @@ pkgbase = micromanager-git
 	depends = python2-numpy
 	provides = micromanager
 	conflicts = micromanager
-	source = micromanager-git::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=f5e50bd
-	source = python_makefile.diff
-	source = python_setup.diff
+	source = micromanager-git::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=13250d0
 	source = micromanager-lib.conf
 	md5sums = SKIP
-	md5sums = 76a9fb824728a8397e3b5245ffe4ddaf
-	md5sums = e14361cc344c2fb0d03f3458d53eb152
 	md5sums = b7b6a68ce53d8ea1a4a29d187174ee4c
 
 pkgname = micromanager-git
