@@ -24,7 +24,7 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15537
+pkgver=15547
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
@@ -214,10 +214,24 @@ build() {
 	echo
 	
 	if [[ "${CARCH}" == "x86_64" ]]; then
+		msg "Unset all compiler FLAGS"
+		unset CFLAGS
+		unset CPPFLAGS
+		unset CXXFLAGS
+		unset LDFLAGS
+		unset MAKEFLAGS
+		
 		msg "Compile OVMF X64 binary"
 		"${_UDK_DIR}/OvmfPkg/build.sh" -a "X64" -b "${_UDK_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
 		echo
 	fi
+	
+	msg "Unset all compiler FLAGS"
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
 	
 	msg "Compile OVMF IA32 binary"
 	"${_UDK_DIR}/OvmfPkg/build.sh" -a "IA32" -b "${_UDK_TARGET}" -t "${_COMPILER}" -D "SECURE_BOOT_ENABLE=TRUE" -D "FD_SIZE_2MB" --enable-flash
