@@ -1,33 +1,34 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+# $Id: PKGBUILD 104719 2014-01-24 21:00:48Z bluewind $
 # Upstream Maintainer: Florian Pritz <flo@xinu.at>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=krb5
 pkgname=libx32-$_pkgbasename
-pkgver=1.10.3
-pkgrel=1.1
+pkgver=1.12.1
+pkgrel=1
 pkgdesc="The Kerberos network authentication system (x32 ABI)"
 arch=('x86_64')
 url="http://web.mit.edu/kerberos/"
 license=('custom')
 depends=('libx32-e2fsprogs' 'libx32-libldap' 'libx32-keyutils' "$_pkgbasename")
-makedepends=('perl' 'gcc-multilib-x32')
-source=("http://web.mit.edu/kerberos/dist/${_pkgbasename}/1.10/${_pkgbasename}-${pkgver}-signed.tar"
-        'krb5-1.10.1-gcc47.patch')
-sha1sums=('04ab9837e5d1958158bcb30bd6480201089a0cbb'
-          '78b759d566b1fdefd9bbcd06df14f07f12effe96')
+makedepends=('perl' 'gcc-multilib-x32' 'bison')
+source=("http://web.mit.edu/kerberos/dist/${_pkgbasename}/1.12/${_pkgbasename}-${pkgver}-signed.tar"
+        krb5-config_LDFLAGS.patch)
+sha1sums=('d59e8dc0fc9e1890e109cd033756539984e3d3fe'
+          '09e478cddfb9d46d2981dd25ef96b8c3fd91e1aa')
 options=('!emptydirs')
 
-build() {
+prepare() {
    tar zxvf ${_pkgbasename}-${pkgver}.tar.gz
    cd "${srcdir}/${_pkgbasename}-${pkgver}/src"
 
-   # With gcc47 : deltat.c:1694:12: error: 'yylval' may be used uninitialized
-   # in this function [-Werror=maybe-uninitialized]
-   # As this is generated code, just ignore the complaint.
-   patch -Np2 -i ../../krb5-1.10.1-gcc47.patch
-   rm lib/krb5/krb/deltat.c
+   # cf https://bugs.gentoo.org/show_bug.cgi?id=448778
+   (cd build-tools; patch -Np2 -i "${srcdir}"/krb5-config_LDFLAGS.patch; cd ..)
+}
+
+build() {
+   cd "${srcdir}/${_pkgbasename}-${pkgver}/src"
 
    export CC="gcc -mx32"
    export CXX="g++ -mx32"
@@ -37,8 +38,7 @@ build() {
    export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all"
    export CPPFLAGS+=" -I/usr/include/et"
    ./configure --prefix=/usr \
-               --sysconfdir=/etc/krb5 \
-               --mandir=/usr/share/man \
+               --sysconfdir=/etc \
                --localstatedir=/var/lib \
                --libdir=/usr/libx32 \
                --enable-shared \
@@ -53,11 +53,13 @@ build() {
    make
 }
 
-check() {
+#check() {
    # We can't do this in the build directory.
-   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-   make -C src check
-}
+
+   # only works if the hostname is set properly/resolves to something. whatever...
+   #cd "${srcdir}/${_pkgbasename}-${pkgver}"
+   #make -C src check
+#}
 
 package() {
    cd "${srcdir}/${_pkgbasename}-${pkgver}/src"
