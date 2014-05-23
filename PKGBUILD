@@ -1,15 +1,15 @@
-# $Id: PKGBUILD 70628 2012-05-13 11:42:39Z bluewind $
+# $Id: PKGBUILD 108953 2014-04-08 03:49:31Z pierre $
 # Upstream Maintainer: Pierre Schmitz <pierre@archlinux.de>
 # Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=openssl
 pkgname=libx32-$_pkgbasename
-_ver=1.0.1c
+_ver=1.0.1g
 # use a pacman compatible version scheme
-pkgver=1.0.1.c
+pkgver=1.0.1.g
 true && pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1.2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (x32 ABI)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -25,18 +25,14 @@ source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"
         'openssl-1.0.1-x32.patch'
         'opensslconf-stub.h'
 )
-md5sums=('ae412727c8c15b67880aef7bd2999b2e'
-         'a3d90bc42253def61cd1c4237f1ce5f7'
+md5sums=('de62b43dfcd858e66a74bee1c834e959'
+         'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
          '10d0cebf2d9c0f64c307e82542f519e3'
          'dbb0b2e285f9ba95f189a0eaf3586011')
 
-build() {
-	export CC="gcc -mx32"
-	export CXX="g++ -mx32"
-	export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
-
+prepare() {
 	cd $srcdir/$_pkgbasename-$_ver
 
     # x32 patch
@@ -46,13 +42,20 @@ build() {
 	patch -p0 -i $srcdir/no-rpath.patch
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
+}
+
+build() {
+	export CC="gcc -mx32"
+	export CXX="g++ -mx32"
+	export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
+
+	cd $srcdir/$_pkgbasename-$_ver
+
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
-	# workaround for PR#2771: OPENSSL_NO_TLS1_2_CLIENT
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=libx32 \
-		shared zlib enable-md2 \
+		shared zlib \
 		linux-x32 \
-		-Wa,--noexecstack "${CFLAGS}" "${LDFLAGS}" \
-		-DOPENSSL_NO_TLS1_2_CLIENT
+		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
 	make MAKEDEPPROG="${CC}" depend
 	make
@@ -71,10 +74,10 @@ package() {
     install="${pkgname}.install"
 
 	cd $srcdir/$_pkgbasename-$_ver
-	make INSTALL_PREFIX=$pkgdir install
+	make INSTALL_PREFIX=$pkgdir install_sw
 
     mv "${pkgdir}/usr/include/openssl/opensslconf.h" "${srcdir}/opensslconf-x32.h"
-	rm -rf ${pkgdir}/{usr/{include,share,bin},etc}
+	rm -rf ${pkgdir}/{usr/{include,bin},etc}
     install -Dm644 "${srcdir}/opensslconf-x32.h" "${pkgdir}/usr/include/openssl/opensslconf-x32.h"
     install -Dm644 "${srcdir}/opensslconf-stub.h" "${pkgdir}/usr/include/openssl/opensslconf-stub.h"
 
