@@ -26,7 +26,7 @@ _COMPILER="GCC48"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=15537
+pkgver=15547
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -150,11 +150,25 @@ build() {
 	make -C "${EDK_TOOLS_PATH}"
 	echo
 	
+	msg "Unset all compiler FLAGS"
+	unset CFLAGS
+	unset CPPFLAGS
+	unset CXXFLAGS
+	unset LDFLAGS
+	unset MAKEFLAGS
+	
 	msg "Compile UEFI Shell v2 ${_TIANO_ARCH} binary"
 	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "${_TIANO_ARCH}" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
 	echo
 	
 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_SHELL_IA32_ARCH_X64}" == "1" ]]; then
+		msg "Unset all compiler FLAGS"
+		unset CFLAGS
+		unset CPPFLAGS
+		unset CXXFLAGS
+		unset LDFLAGS
+		unset MAKEFLAGS
+		
 		msg "Compile UEFI Shell v2 IA32 binary"
 		"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "IA32" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
 		echo
