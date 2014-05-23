@@ -1,4 +1,6 @@
 # Upstream Maintainer: Bill Fraser <wfraser@codewise.org>
+# Contributor: Felipe Contreras <felipe.contreras@gmail.com>
+# Contributor: jtts
 #
 # From flex's PKGBUILD:
 #   Maintainer: Allan McRae <allan@archlinux.org>
@@ -8,19 +10,22 @@
 
 _pkgbasename=flex
 pkgname=libx32-flex
-pkgver=2.5.37
-pkgrel=0.1
+pkgver=2.5.39
+pkgrel=1
 pkgdesc="A tool for generating text-scanning programs"
 arch=('x86_64')
 url="http://flex.sourceforge.net"
 license=('custom')
 groups=('base-devel')
 depends=('libx32-glibc' 'm4' 'sh' $_pkgbasename)
+options=(libtool staticlibs)
 makedepends=('gcc-multilib-x32')
 source=(http://downloads.sourceforge.net/sourceforge/flex/flex-$pkgver.tar.bz2 
-        flex-2.5.37-no-bison.patch)
-md5sums=('c75940e1fc25108f2a7b3ef42abdae06'
-         'bd54cf8a1896da4efda41d6e27282ce7')
+        flex-2.5.38-no-bison.patch
+        lex.sh)
+sha256sums=('add2b55f3bc38cb512b48fad7d72f43b11ef244487ff25fc00aabec1e32b617f'
+            '5ee23f97533c991b82e2aadc06d4682d7d05d99ee2abaf1ef9a82225ba9d0858'
+            '9d03016a7c4ae1adb051f50f94407b3d7dee9d55924b5c1904261c9f0c1f86f6')
 
 build() {
   export CC="gcc -mx32"
@@ -30,7 +35,12 @@ build() {
 
   cd $srcdir/$_pkgbasename-$pkgver
 
-  patch -Np1 -i $srcdir/flex-2.5.37-no-bison.patch
+# These are no longer needed!
+#  patch -Np1 -i $srcdir/flex-2.5.35-gcc44.patch
+#  patch -Np1 -i $srcdir/flex-2.5.35-hardening.patch
+#  patch -Np1 -i $srcdir/flex-2.5.35-missing-prototypes.patch
+
+  patch -Np1 -i $srcdir/flex-2.5.38-no-bison.patch
 
   ./configure --prefix=/usr --libdir=/usr/libx32 \
     --mandir=/usr/share/man --infodir=/usr/share/info
