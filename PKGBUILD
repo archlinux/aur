@@ -8,7 +8,7 @@ epoch=
 pkgdesc="Software package for control of automated microscopes. CMMCore and python2 bindings only."
 arch=('x86_64' 'i686')
 url="http://www.micro-manager.org"
-license=('LGPL-2.1 BSD GPL-3')
+license=('BSD LGPL')
 groups=()
 depends=('zlib' 'boost' 'libdc1394' 'python2' 'python2-numpy')
 makedepends=('git' 'swig')
@@ -67,7 +67,9 @@ package() {
         python2 -O -m compileall "$SPDIR"
 
         # We need to update ldconfig cache with new libs.
-        install -D -m644 "$srcdir/micromanager-lib.conf" "$pkgdir/etc/ld.so.conf.d/micromanager-lib.conf"
+        install -Dm644 "$srcdir/micromanager-lib.conf" "$pkgdir/etc/ld.so.conf.d/micromanager-lib.conf"
+
+        install -Dm644 "$srcdir/$pkgname/doc/copyright.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # This script print 'DemoCamera' property list if CMMCore and python bindings
