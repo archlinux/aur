@@ -1,14 +1,14 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=autorevision
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Extracts metadata about the head of a repository; useful for build scripts."
 arch=('any')
 url="http://www.catb.org/~esr/autorevision/"
 license=('BSD')
 makedepends=('asciidoc')
-source=(http://www.catb.org/~esr/autorevision/autorevision-$pkgver.tgz)
-sha256sums=('fd5a82fe1017119bd277aca74ded6ef899baf636a5c1277c2cd4e12ffce8c90c')
+source=(https://github.com/Autorevision/autorevision/releases/download/v%2F${pkgver}/autorevision-${pkgver}.tgz)
+sha256sums=('b76eff2ff9701d988721367c12a7045944c82ca342754f65caa4f7dea8e91d62')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
