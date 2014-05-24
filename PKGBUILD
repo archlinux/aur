@@ -6,13 +6,13 @@
 pkgbase=python-soappy
 pkgname=python2-soappy
 pkgver=0.12.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A module which implements a high-level interface to SOAP functions"
 arch=('any')
 url="http://pywebsvcs.sourceforge.net/"
 license=('custom')
 makedepends=("python2-setuptools")
-depends=('python2-fpconst' 'python2-wstools')
+depends=('python2-wstools' 'python2-defusedxml')
 conflicts=('python-soappy<=0.12.0-10')
 replaces=('python-soappy<=0.12.0-10')
 optdepends=('python2-m2crypto: for support for server-side SSL')
