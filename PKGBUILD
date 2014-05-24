@@ -2,13 +2,13 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=2.3.8
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
 url='http://grails.org/'
 license=('APACHE')
-makedepends=('setconf' 'apache-ant' 'unzip')
+makedepends=('apache-ant' 'unzip')
 optdepends=('groovy: the groovy programming language'
             'grails-docs: documentation for grails')
 options=('!emptydirs')
@@ -16,16 +16,12 @@ noextract=("${pkgname[1]}-$pkgver.zip")
 source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[0]}-$pkgver.zip"
         "http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[1]}-$pkgver.zip"
         "$pkgbase.sh")
-sha256sums=('7da33dc1c5095a06e9ede4c077670a63d99035f3901472cbf756d6a240d5fb04'
-            '9548ee55604105429aac576a8b4c9ce2207ee0259541f2da80c3c49d0d4ac312'
+sha256sums=('5526764443a252530efcf2d7e7e9c566ff08d595ecdc76534ac611d7ae7ebf7d'
+            'c5ec90cfc12c39528830629178b5ab70ae7253a3cb41b993ee5a9d1d4b984b08'
             '15553ae56fd39f049edfa65a05413ef6d68ae37ed1ccc69570bf81e888239bf4')
 
 prepare() {
   cd "${pkgname[0]}-$pkgver"
-
-  # configure paths
-  setconf bin/grails DIRNAME /usr/share/grails
-  setconf bin/grails-debug DIRNAME /usr/share/grails
 
   # profile.d script
   echo 'export GRAILS_HOME=/usr/share/grails' > "$srcdir/$pkgbase.profile"
