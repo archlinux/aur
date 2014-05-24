@@ -1,0 +1,16 @@
+2014-05-24 Eugene Dvoretsky <radioxoma at gmail com>
+
+    1.4.13.r3204.g13250d0 (newer than 1.4.17 released in April 30, 2014)
+    * Micromanager devs switched to pure autotools, so previous patches
+      were removed.
+    * Python distutils install function replaced by own PKGBUILD commands.
+    * With MMCore, device adapters, Python 2 wrapper (MMCorePy).
+    * Without Java wrapper (MMCoreJ), MMStudio (Java GUI)
+      and closed-source device adapters.
+
+2014-01-25 Eugene Dvoretsky <radioxoma at gmail com>
+
+    1.4.13.r2306.gf5e50bd
+    Initial Micromanager PKGBUILD release.
+    * Patches for distutils and Autotools.
+    * CMMCore, MMCorePy (python 2).

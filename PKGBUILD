@@ -20,7 +20,7 @@ replaces=()
 backup=()
 options=()
 install=mm.install
-changelog=
+changelog=ChangeLog
 source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=13250d0
         'micromanager-lib.conf')
 noextract=()
@@ -58,9 +58,14 @@ package() {
         mkdir -p "$pkgdir/usr/lib/micro-manager"
         make install DESTDIR="$pkgdir"
 
-        mkdir -p "$pkgdir/usr/lib/python2.7/site-packages"
-        mv "$pkgdir/usr/lib/micro-manager/MMCorePy.py" "$pkgdir/usr/lib/python2.7/site-packages"
-        mv "$pkgdir/usr/lib/micro-manager/_MMCorePy.so" "$pkgdir/usr/lib/python2.7/site-packages"
+        # Install MMCorePy
+        SPDIR="$pkgdir/usr/lib/python2.7/site-packages"
+        mkdir -p "$SPDIR"
+        mv "$pkgdir/usr/lib/micro-manager/MMCorePy.py" "$SPDIR"
+        mv "$pkgdir/usr/lib/micro-manager/_MMCorePy.so" "$SPDIR"
+        python2 -m compileall "$SPDIR"
+        python2 -O -m compileall "$SPDIR"
+
         # We need to update ldconfig cache with new libs.
         install -D -m644 "$srcdir/micromanager-lib.conf" "$pkgdir/etc/ld.so.conf.d/micromanager-lib.conf"
 }

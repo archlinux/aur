@@ -4,6 +4,7 @@ pkgbase = micromanager-git
 	pkgrel = 1
 	url = http://www.micro-manager.org
 	install = mm.install
+	changelog = ChangeLog
 	arch = x86_64
 	arch = i686
 	license = LGPL-2.1 BSD GPL-3
