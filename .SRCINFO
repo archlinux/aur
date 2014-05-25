@@ -1,7 +1,7 @@
 pkgbase = perl-config-general
 	pkgdesc = Config::General - Generic Config Module
 	pkgver = 2.56
-	pkgrel = 2
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Config-General
 	arch = any
 	license = GPL
