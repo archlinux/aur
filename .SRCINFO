@@ -1,0 +1,17 @@
+pkgbase = idevicerestore-git
+	pkgdesc = Restores firmware and filesystem to iPhone/iPod Touch
+	pkgver = 107.fde8082
+	pkgrel = 1
+	url = http://github.com/posixninja/idevicerestore
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = usbmuxd
+	depends = libirecovery-git
+	depends = libimobiledevice>=1.1.0
+	source = git://github.com/posixninja/idevicerestore.git
+	md5sums = SKIP
+
+pkgname = idevicerestore-git
+
