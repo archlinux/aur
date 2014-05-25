@@ -7,7 +7,7 @@ pkgdesc="SLADE3 Doom editor."
 arch=('i686' 'x86_64')
 url="http://slade.mancubus.net/"
 license=('GPL')
-depends=('fluidsynth' 'freeimage' 'ftgl' 'libmodplug' 'sfml' 'wxgtk>=3.0')
+depends=('fluidsynth' 'freeimage' 'ftgl' 'libmodplug' 'sfml' 'webkitgtk2' 'wxgtk>=3.0')
 makedepends=('cmake' 'imagemagick' 'zip')
 source=(https://github.com/sirjuddington/SLADE/archive/$pkgver.tar.gz
         slade.desktop)
