@@ -12,6 +12,11 @@ import yaml
 import re
 from collections import OrderedDict
 from termcolor import colored, cprint
+import pickle
+
+updates_packages_dir = "/tmp/import_catkin_packages"
+updated_packages_file = os.path.join(updates_packages_dir,
+                                     "updated_packages.dump")
 
 class PackageBase(object):
 
@@ -455,10 +460,10 @@ def generate_pkgbuild(distro, package, directory, force=False,
                       no_overwrite=False, recursive=False, update=False,
                       exclude_dependencies=[], rosdep_urls=[], generated=None):
   if generated is None:
-    generated = []
+    generated = set()
   elif package.name in generated:
     return
-  generated.append(package.name)
+  generated.add(package.name)
   if package.packages:
     for child_package in package.packages:
       generate_pkgbuild(distro, child_package, directory,
@@ -539,13 +544,31 @@ def main():
     list_packages(distro)
     return
   elif args:
+    generated = set()
+    if os.path.isfile(updated_packages_file):
+      # Load dump of already updated packages to speedup updates
+      print('Loading set of previously updated packages: %s'
+            % (colored(updated_packages_file, 'white',
+                       attrs=['bold'])))
+      updated_packages = open(updated_packages_file, "r")
+      generated = pickle.load(updated_packages)
+      updated_packages.close()
+      for package in generated:
+        print('Ignoring %s'
+              % (colored(package, 'yellow', attrs=['bold'])))
+
     for package in args:
       generate_pkgbuild(distro, distro.package(package),
                         os.path.abspath(options.output_directory),
                         exclude_dependencies=options.exclude_dependencies.split(','),
                         force=options.force, no_overwrite=options.no_overwrite,
                         update=options.update, recursive=options.recursive,
-                        rosdep_urls=options.rosdep_urls)
+                        rosdep_urls=options.rosdep_urls, generated=generated)
+    if not os.path.exists(updates_packages_dir):
+      os.makedirs(updates_packages_dir)
+    updated_packages = open(updated_packages_file, "w+")
+    pickle.dump(generated, updated_packages)
+    updated_packages.close()
   else:
     parser.error('No package specified.')
 
