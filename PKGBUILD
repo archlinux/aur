@@ -2,7 +2,7 @@
 
 pkgname=http-parser
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for HTTP Request/Response written in C"
 arch=('i686' 'x86_64')
 url="https://github.com/joyent/http-parser"
@@ -24,11 +24,11 @@ package() {
   install -Dm644 LICENSE-MIT \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 AUTHORS \
-        "${pkgdir}/usr/share/doc/${_pkgname}/AUTHORS"
+        "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
   install -Dm644 CONTRIBUTIONS \
-        "${pkgdir}/usr/share/doc/${_pkgname}/CONTRIBUTIONS"
+        "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTIONS"
   install -Dm644 README.md \
-        "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+        "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 http_parser.h "${pkgdir}/usr/include/http_parser.h"
   install -Dm644 libhttp_parser.so.$pkgver "${pkgdir}/usr/lib/libhttp_parser.so.$pkgver"
