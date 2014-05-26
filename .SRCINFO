@@ -1,16 +1,19 @@
 pkgbase = idevicerestore-git
-	pkgdesc = Restores firmware and filesystem to iPhone/iPod Touch
-	pkgver = 107.fde8082
+	pkgdesc = Restore/upgrade firmware of iOS devices
+	pkgver = 481.704afa3
 	pkgrel = 1
-	url = http://github.com/posixninja/idevicerestore
+	url = http://www.libimobiledevice.org
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LGPL3
 	makedepends = git
-	depends = usbmuxd
+	depends = usbmuxd-git
 	depends = libirecovery-git
-	depends = libimobiledevice>=1.1.0
-	source = git://github.com/posixninja/idevicerestore.git
+	depends = libimobiledevice-git
+	depends = libzip
+	depends = openssl
+	depends = curl
+	source = git://git.sukimashita.com/idevicerestore.git
 	md5sums = SKIP
 
 pkgname = idevicerestore-git

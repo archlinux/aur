@@ -1,33 +1,39 @@
+# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 # Contributor: Matthew Bauer <mjbauer95@gmail.com>
 
-_pkgname=idevicerestore
-pkgname=$_pkgname-git
-pkgver=107.fde8082
+pkgname=idevicerestore-git
+pkgver=481.704afa3
 pkgrel=1
-pkgdesc="Restores firmware and filesystem to iPhone/iPod Touch"
+pkgdesc="Restore/upgrade firmware of iOS devices"
 arch=('i686' 'x86_64')
-url="http://github.com/posixninja/$_pkgname"
-license=('custom')
-depends=('usbmuxd' 'libirecovery-git' 'libimobiledevice>=1.1.0')
+url="http://www.libimobiledevice.org"
+license=('LGPL3')
+depends=('usbmuxd-git' 'libirecovery-git' 'libimobiledevice-git' 'libzip' 'openssl' 'curl')
 makedepends=('git')
-source=(git://github.com/posixninja/$_pkgname.git)
+source=("git://git.sukimashita.com/idevicerestore.git")
 md5sums=('SKIP')
 
-
 pkgver() {
-	cd $_pkgname
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd idevicerestore
+
+	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd idevicerestore
+
+	sed -re 's|automake|& --add-missing|' -i autogen.sh
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+	cd idevicerestore
 
-	#sed -i -e 's/\/usr\/local\//\/usr\//g' src/Makefile.am
 	./autogen.sh --prefix=/usr
 	make libirecovery_CFLAGS="-I/usr/include" libirecovery_LIBS="-L/usr/lib -lirecovery -lusb-1.0"
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make DESTDIR=$pkgdir install
+	cd idevicerestore
+
+	make DESTDIR="$pkgdir" install
 }
