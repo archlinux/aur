@@ -4,8 +4,8 @@
 
 _pkgname=evas_generic_loaders
 pkgname=$_pkgname-git
-pkgver=1.9.99.122.acc2090
-pkgrel=2
+pkgver=1.10.99.132.ed93671
+pkgrel=1
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -16,7 +16,8 @@ optdepends=('gstreamer0.10-base-plugins: Video thumbnails'
             'gstreamer0.10-good-plugins: Video thumbnails'
             'gstreamer0.10-bad-plugins: Video thumbnails'
             'gstreamer0.10-ugly-plugins: Video thumbnails'
-            'gstreamer0.10-ffmpeg: Video thumbnails')
+            'gstreamer0.10-ffmpeg: Video thumbnails'
+            'libreoffice-common: Office document thumbnails')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('debug')
