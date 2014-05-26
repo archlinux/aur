@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgbase=efl
-pkgname=$pkgbase-git
+_pkgname=efl
+pkgname=$_pkgname-git
 pkgver=1.9.99.25214.9d87d15
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
@@ -21,15 +21,15 @@ optdepends=('python2: compare Eina benchmarks'
             'gst-plugins-ugly: Access more types of video in Emotion'
             'gst-libav: Access video with ffmpeg/libav in Emotion'
             'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
-provides=("$pkgbase=$pkgver")
-conflicts=("$pkgbase")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 options=('debug')
-install="$pkgbase.install"
-source=("git://git.enlightenment.org/core/$pkgbase.git")
+install="$_pkgname.install"
+source=("git://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
@@ -38,7 +38,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
   export CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
@@ -62,14 +62,14 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$pkgbase/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$pkgbase/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgbase/README"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
+  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
 
 # install license files
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"

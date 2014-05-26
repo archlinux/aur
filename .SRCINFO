@@ -1,4 +1,4 @@
-pkgbase = efl
+pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
 	pkgver = 1.9.99.25214.9d87d15
 	pkgrel = 1
