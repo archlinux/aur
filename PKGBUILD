@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.9.99.25214.9d87d15
+pkgver=1.10.99.25802.b8ca758
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -67,17 +67,13 @@ package() {
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$_pkgname"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  install -Dm644 COMPLIANCE "$pkgdir/usr/share/licenses/$pkgname/COMPLIANCE"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  install -Dm644 licenses/COPYING.BSD "$pkgdir/usr/share/licenses/$pkgname/COPYING.BSD"
-  install -Dm644 licenses/COPYING.SMALL "$pkgdir/usr/share/licenses/$pkgname/COPYING.SMALL"
-  sed -n '1,/.details/p' licenses/COPYING.LGPL > "$pkgdir/usr/share/licenses/$pkgname/COPYING.LGPL"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COMPLIANCE COPYING licenses/COPYING.{BSD,SMALL}
+  sed -n '1,/details./p' licenses/COPYING.LGPL > "$pkgdir/usr/share/licenses/$pkgname/COPYING.LGPL"
   ln -s ../common/GPL2/license.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.GPL"
 
   python2 -m compileall -q "$pkgdir"
