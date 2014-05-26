@@ -407,7 +407,7 @@ class DistroDescription(object):
 
 
 def list_packages(distro_description):
-  print(*distro_description.package_names(), sep='\n')
+  print(*sorted(distro_description.package_names()), sep='\n')
 
 
 ### From http://code.activestate.com/recipes/577058/ (r2)
