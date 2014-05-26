@@ -1,35 +1,30 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+# $Id: PKGBUILD 86926 2013-03-24 22:42:26Z lcarlier $
 # Upstream Maintainer: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Fantix King <fantix.king at gmail.com>
 
 pkgname=libx32-libffi
-pkgver=3.0.11
-pkgrel=1.1
-pkgdesc="A portable, high level programming interface to various calling conventions (x32 ABI version)"
+pkgver=3.0.13
+pkgrel=1
+pkgdesc="A portable, high level programming interface to various calling conventions (x32 ABI)"
 arch=('x86_64')
 license=('MIT')
-url="http://sourceware.org/libffi"
+url="http://sourceware.org/libffi/"
 depends=('libx32-glibc')
 checkdepends=('dejagnu')
 options=('!libtool')
 source=(
 ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz
-189626.patch
 )
-md5sums=(
-'f69b9693227d976835b4857b1ba7d0e3'
-'e01126c78cefe99498ff1e04fa728a2b'
-)
+sha1sums=('f5230890dc0be42fb5c58fbf793da253155de106')
 
 build() {
   cd "${srcdir}/libffi-${pkgver}"
 
-  patch -p2 -i ${srcdir}/189626.patch
-
   export CC="gcc -mx32"
 
   ./configure --prefix=/usr \
-    --libdir=/usr/libx32 --libexecdir=/usr/libx32
+    --libdir=/usr/libx32 --libexecdir=/usr/libx32 \
+    --disable-static --host=x86_64-unknown-linux-gnux32
 
   make
 }
