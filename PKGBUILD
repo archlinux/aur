@@ -1,8 +1,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 
-pkgname=('poppler-minimal')
-pkgver=0.24.5
+pkgname='poppler-minimal'
+pkgver=0.26.0
 pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
@@ -14,7 +14,7 @@ conflicts=("poppler")
 provides=("poppler")
 url="http://poppler.freedesktop.org/"
 source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz)
-sha1sums=('7b7cabee85bd81a7e55c939740d5d7ccd7c0dda5')
+sha1sums=('1f5d08ee01683c309688f17116d18bf47b13f001')
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
@@ -38,4 +38,3 @@ package() {
   cd "${srcdir}/poppler-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
-
