@@ -1,14 +1,10 @@
 # Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git"
-_gitname="efitools"
-_gitbranch="master"
-
 _pkgname="efitools"
 pkgname="${_pkgname}-git"
 
 pkgver=1.4.2.1.g9af07a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
 arch=('x86_64')
@@ -24,20 +20,28 @@ provides=("${_pkgname}=${pkgver}")
 options=('!strip' '!makeflags')
 install="${_pkgname}.install"
 
-source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
+source=("${_pkgname}::git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git#branch=master")
 
 sha1sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}/"
+	cd "${srcdir}/${_pkgname}/"
 	echo "$(git describe --tags)" | sed -e 's|^v||g' -e 's|-|.|g'
+}
+
+prepare() {
+	
+	rm -rf "${srcdir}/${_pkgname}_build/" || true
+	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}_build"
+	cd "${srcdir}/${_pkgname}_build/"
+	
+	sed 's|-DEFI_FUNCTION_WRAPPER|-DEFI_FUNCTION_WRAPPER -DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args|g' -i "${srcdir}/${_pkgname}_build/Make.rules"
+	
 }
 
 build() {
 	
-	rm -rf "${srcdir}/${_gitname}_build/" || true
-	cp -r "${srcdir}/${_gitname}" "${srcdir}/${_gitname}_build"
-	cd "${srcdir}/${_gitname}_build/"
+	cd "${srcdir}/${_pkgname}_build/"
 	
 	## Unset all compiler FLAGS
 	unset CFLAGS
@@ -46,8 +50,6 @@ build() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 	
-	sed 's|-DEFI_FUNCTION_WRAPPER|-DEFI_FUNCTION_WRAPPER -DGNU_EFI_USE_MS_ABI|g' -i "${srcdir}/${_gitname}_build/Make.rules"
-	
 	make V=1 -j1
 	echo
 	
@@ -55,7 +57,8 @@ build() {
 
 package() {
 	
-	cd "${srcdir}/${_gitname}_build/"
+	cd "${srcdir}/${_pkgname}_build/"
+	
 	make DESTDIR="${pkgdir}/" install
 	echo
 	
