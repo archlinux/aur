@@ -4,7 +4,7 @@ _pkgname="elilo"
 pkgname="${_pkgname}-efi"
 
 pkgver="3.16"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="UEFI version of LILO Boot Loader"
 arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/elilo/"
@@ -37,7 +37,7 @@ build() {
 	rm -f "${srcdir}/elilo-${pkgver}-source.tar.gz" || true
 	
 	## Enable gnu-efi ms_abi support
-	sed 's|-fno-stack-protector|-DGNU_EFI_USE_MS_ABI -fno-stack-protector|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
+	sed 's|-fno-stack-protector|-DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args -fno-stack-protector|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
 	
 	## Use "uname -m" to determine ARCH
 	sed 's|dpkg-architecture -qDEB_BUILD_ARCH|uname -m|g' -i "${srcdir}/elilo-${pkgver}-source/Make.defaults" || true
