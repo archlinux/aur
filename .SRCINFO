@@ -1,17 +1,19 @@
 pkgbase = libirecovery-git
-	pkgdesc = Console library for iBoot/iBSS used by iPhone & iPod touch
-	pkgver = 20110213
+	pkgdesc = Library and utility to talk to iBoot/iBSS via USB
+	pkgver = 0.1.117.g14a268c
 	pkgrel = 1
-	url = http://github.com/Chronic-Dev/libirecovery
+	epoch = 1
+	url = http://www.libimobiledevice.org/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LGPL2.1
 	makedepends = git
-	depends = usbmuxd
-	depends = libimobiledevice
+	depends = usbmuxd-git
+	depends = libimobiledevice-git
 	provides = libirecovery
 	conflicts = libirecovery
-	replaces = libirecovery
+	source = git://git.sukimashita.com/libirecovery.git
+	md5sums = SKIP
 
 pkgname = libirecovery-git
 
