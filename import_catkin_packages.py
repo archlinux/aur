@@ -553,7 +553,7 @@ def main():
       updated_packages = open(updated_packages_file, "r")
       generated = pickle.load(updated_packages)
       updated_packages.close()
-      for package in generated:
+      for package in sorted(generated):
         print('Ignoring %s'
               % (colored(package, 'yellow', attrs=['bold'])))
 
