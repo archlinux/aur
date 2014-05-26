@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=0.0.99.r230.f54f218
+pkgver=0.0.99.r242.6c82c43
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -58,6 +58,9 @@ package() {
 
 # install correct PAM file
   install -Dm644 "data/entrance.arch" "$pkgdir/etc/pam.d/entrance"
+
+# fix permissions on /etc/sudoers.d/ to match sudo package
+  chmod 750 "$pkgdir/etc/sudoers.d/"
 
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"

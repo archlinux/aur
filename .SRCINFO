@@ -1,6 +1,6 @@
 pkgbase = entrance-git
 	pkgdesc = Enlightenment Display Manager
-	pkgver = 0.0.99.r230.f54f218
+	pkgver = 0.0.99.r242.6c82c43
 	pkgrel = 1
 	url = http://www.enlightenment.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = entrance-git
 	depends = xorg-xauth
 	depends = sudo
 	optdepends = ekbd-git: For virtual keyboard
-	provides = entrance=0.0.99.r230.f54f218
+	provides = entrance=0.0.99.r242.6c82c43
 	conflicts = entrance
 	backup = etc/entrance/entrance.conf
 	source = git://git.enlightenment.org/misc/entrance.git
