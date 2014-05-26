@@ -66,6 +66,10 @@ package() {
 
   make -j1 DESTDIR="$pkgdir" install
 
+# compile python files
+  python2 -m compileall -q "$pkgdir"
+  python2 -O -m compileall -q "$pkgdir"
+
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname"
   install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
@@ -75,6 +79,4 @@ package() {
   install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COMPLIANCE COPYING licenses/COPYING.{BSD,SMALL}
   sed -n '1,/details./p' licenses/COPYING.LGPL > "$pkgdir/usr/share/licenses/$pkgname/COPYING.LGPL"
   ln -s ../common/GPL2/license.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.GPL"
-
-  python2 -m compileall -q "$pkgdir"
 }
