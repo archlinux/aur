@@ -1,2 +1,2 @@
 #!/bin/sh -e
-exec wine /usr/lib/openrct2/openrct2.exe
+exec wine /usr/share/openrct2/openrct2.exe
