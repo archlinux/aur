@@ -7,6 +7,7 @@ pkgbase = polkit-efl-authentication-agent-git
 	license = GPL3
 	makedepends = git
 	depends = python-efl>=1.9.99a
+	depends = polkit
 	provides = polkit-efl-authentication-agent=0.1.r64.b7f2e22
 	conflicts = polkit-efl-authentication-agent
 	source = git://git.enlightenment.org/devs/kuuko/polkit-efl-authentication-agent.git

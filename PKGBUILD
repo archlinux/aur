@@ -8,7 +8,7 @@ pkgdesc="Polkit Authentication Agent using EFL"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3')
-depends=('python-efl>=1.9.99a')
+depends=('python-efl>=1.9.99a' 'polkit')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
