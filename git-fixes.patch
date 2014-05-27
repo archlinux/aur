@@ -1,0 +1,1242 @@
+diff --git a/build/win32/vs10/README.txt b/build/win32/vs10/README.txt
+index 72e25b0..13303df 100644
+--- a/build/win32/vs10/README.txt
++++ b/build/win32/vs10/README.txt
+@@ -5,7 +5,7 @@ its dependencies can be found on the following GNOME Live! page:
+ 
+ https://live.gnome.org/GTK%2B/Win32/MSVCCompilationOfGTKStack
+ 
+-Please do not attempt to compile COGL in a path that contains spaces
++Please do not attempt to compile Cogl in a path that contains spaces
+ to avoid potential problems during compilation, linking or usage.
+ 
+ This VS10 solution and the projects it includes are intented to be used
+@@ -18,7 +18,10 @@ You will need the parts from GNOME: GDK-Pixbuf, Pango* and GLib.
+ External dependencies are at least zlib, libpng,
+ gettext-runtime* and Cairo*, and glext.h from
+ http://www.opengl.org/registry/api/glext.h (which need to be in the GL folder
+-in your include directories or in <root>\vs10\<PlatformName>\include\GL).
++in your include directories or in <root>\vs10\<PlatformName>\include\GL).  Please
++note that although the Cogl source package does allow one to build Cogl without
++a previously built and installed GLib, the Visual Studio projects only support
++builds that does depend on GLib.
+ 
+ Please see the README file in the root directory of this Cogl source package
+ for the versions of the dependencies required.  See also
+@@ -27,11 +30,16 @@ where to unpack them.  It is recommended that at least the dependencies
+ from GNOME are also built with VS10 to avoid crashes caused by mixing different
+ CRTs-please see also the build/win32/vs10/README.txt in those respective packages.
+ 
+-If building the SDL winsys is desired, you will also need the SDL libraries
+-from www.libsdl.org-building the SDL source package with Visual C++ 2010
+-is recommended (working Visual C++ 2005 projects are included with it, upgrade
+-the projects one prompted), but one may want to use the VC8 binary packages
+-from that website.
++If building the SDL2 winsys is desired (the *_SDL configs), you will also need the
++SDL2 libraries from www.libsdl.org-building the SDL source package with Visual C++ 2010
++is recommended via CMake, but one may want to use the Visual C++ binary packages
++from that website.  Since Cogl-1.18.x, the Visual Studio Projects have been updated
++to support the build of the SDL2 winsys in place of the original SDL-1.3 winsys
++as SDL-2.x has been released for some time.  Please note, as builds with the SDL2
++winsys includes the SDL2 headers, main() will be defined to SDL2's special main()
++implementation on Windows, which will require linking to SDL2.lib and SDL2main.lib
++for all apps that link to Cogl, unless SDL_MAIN_HANDLED is defined in your
++"preprocessor definitions" options.
+ 
+ The recommended build sequence of the dependencies are as follows (the non-GNOME
+ packages that are not downloaded as binaries from ftp://ftp.gnome.org have
+@@ -46,9 +54,10 @@ in the next unstable release):
+ -libpng
+ -(optional for GLib) PCRE (8.12 or later, building PCRE using CMake is
+  recommended-please see build/win32/vs10/README.txt in the GLib source package)
+--(for gdk-pixbuf, if GDI+ is not to be used) IJG JPEG
++-(for gdk-pixbuf, if GDI+ is not to be used) IJG JPEG or libjpeg-turbo
+ -(for gdk-pixbuf, if GDI+ is not to be used) jasper [JPEG-2000 library]
+--(for gdk-pixbuf, if GDI+ is not to be used, requires zlib and IJG JPEG) libtiff
++-(for gdk-pixbuf, if GDI+ is not to be used, requires zlib and IJG JPEG/libjpeg-turbo)
++ libtiff
+ -GLib
+ -Cairo
+ -Pango
+diff --git a/build/win32/vs10/cogl-build-defines.props b/build/win32/vs10/cogl-build-defines.props
+index 27b2e4c..eefe1a6 100644
+--- a/build/win32/vs10/cogl-build-defines.props
++++ b/build/win32/vs10/cogl-build-defines.props
+@@ -11,6 +11,7 @@
+     <CoglBuildDefines>G_LOG_DOMAIN="Cogl";COGL_HAS_WIN32_SUPPORT;COGL_BUILD_EXP;COGL_GL_LIBNAME="";COGL_LOCALEDIR="/some/random/dir"</CoglBuildDefines>
+     <CoglPathBuildDefines>G_LOG_DOMAIN="CoglPath"</CoglPathBuildDefines>
+     <CoglPangoBuildDefines>G_LOG_DOMAIN="Cogl-Pango"</CoglPangoBuildDefines>
++    <CoglAppAvoidForcedSDLLinkingDefines>SDL_MAIN_HANDLED</CoglAppAvoidForcedSDLLinkingDefines>
+   </PropertyGroup>
+   <PropertyGroup>
+     <_PropertySheetDisplayName>coglbuilddefinesprops</_PropertySheetDisplayName>
+@@ -51,5 +52,8 @@
+     <BuildMacro Include="CoglPangoBuildDefines">
+       <Value>$(CoglPangoBuildDefines)</Value>
+     </BuildMacro>
++    <BuildMacro Include="CoglAppAvoidForcedSDLLinkingDefines">
++      <Value>$(CoglAppAvoidForcedSDLLinkingDefines)</Value>
++    </BuildMacro>
+   </ItemGroup>
+ </Project>
+diff --git a/build/win32/vs10/cogl-crate.vcxproj b/build/win32/vs10/cogl-crate.vcxproj
+index a64e669..d99a487 100644
+--- a/build/win32/vs10/cogl-crate.vcxproj
++++ b/build/win32/vs10/cogl-crate.vcxproj
+@@ -75,7 +75,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -94,7 +94,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -118,7 +118,7 @@
+     <ClCompile>
+       <Optimization>MaxSpeed</Optimization>
+       <IntrinsicFunctions>true</IntrinsicFunctions>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <FunctionLevelLinking>true</FunctionLevelLinking>
+       <PrecompiledHeader>
+@@ -137,7 +137,7 @@
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+     <ClCompile>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA="../share/cogl-$(ApiVersion)/examples-data/";$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <PrecompiledHeader>
+       </PrecompiledHeader>
+diff --git a/build/win32/vs10/cogl-gen-srcs.props b/build/win32/vs10/cogl-gen-srcs.props
+index b68b92c..0ec0e63 100644
+--- a/build/win32/vs10/cogl-gen-srcs.props
++++ b/build/win32/vs10/cogl-gen-srcs.props
+@@ -48,15 +48,15 @@ cd $(SolutionDir)
+     </GenCoglEnumsC>
+     <GenerateCoglDef>
+ echo EXPORTS &gt; $(DefDir)\cogl.def
+-cl -EP -D_COGL_SUPPORTS_GTYPE_INTEGRATION -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def
++cl -EP -DCOGL_HAS_GTYPE_SUPPORT -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def
+     </GenerateCoglDef>
+     <GenerateCoglSDLDef>
+ echo EXPORTS &gt; $(DefDir)\cogl.def
+-cl -EP -D_COGL_SUPPORTS_GTYPE_INTEGRATION -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_HAS_SDL_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def
++cl -EP -DCOGL_HAS_GTYPE_SUPPORT -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_HAS_SDL_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def
+     </GenerateCoglSDLDef>
+     <GenerateCoglPathDef>
+ echo EXPORTS &gt; $(DefDir)\cogl-path.def
+-cl -EP ..\..\..\cogl-path\cogl-path.symbols &gt;&gt; $(DefDir)\cogl-path.def
++cl -EP -DCOGL_HAS_GTYPE_SUPPORT ..\..\..\cogl-path\cogl-path.symbols &gt;&gt; $(DefDir)\cogl-path.def
+      </GenerateCoglPathDef>
+     <GenerateCoglPangoDef>
+ echo EXPORTS &gt; $(DefDir)\cogl-pango.def
+diff --git a/build/win32/vs10/cogl-hello.vcxproj b/build/win32/vs10/cogl-hello.vcxproj
+index 4b6c732..a754c0d 100644
+--- a/build/win32/vs10/cogl-hello.vcxproj
++++ b/build/win32/vs10/cogl-hello.vcxproj
+@@ -75,7 +75,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -93,7 +93,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+       <PrecompiledHeader>
+@@ -110,7 +110,7 @@
+     <ClCompile>
+       <Optimization>MaxSpeed</Optimization>
+       <IntrinsicFunctions>true</IntrinsicFunctions>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <FunctionLevelLinking>true</FunctionLevelLinking>
+       <PrecompiledHeader>
+@@ -130,7 +130,7 @@
+     <ClCompile>
+       <Optimization>MaxSpeed</Optimization>
+       <IntrinsicFunctions>true</IntrinsicFunctions>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <FunctionLevelLinking>true</FunctionLevelLinking>
+       <PrecompiledHeader>
+diff --git a/build/win32/vs10/cogl-info.vcxproj b/build/win32/vs10/cogl-info.vcxproj
+index 17b3ba8..45f75ff 100644
+--- a/build/win32/vs10/cogl-info.vcxproj
++++ b/build/win32/vs10/cogl-info.vcxproj
+@@ -75,7 +75,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -93,7 +93,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -116,7 +116,7 @@
+     <ClCompile>
+       <Optimization>MaxSpeed</Optimization>
+       <IntrinsicFunctions>true</IntrinsicFunctions>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <FunctionLevelLinking>true</FunctionLevelLinking>
+       <PrecompiledHeader>
+@@ -134,7 +134,7 @@
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+     <ClCompile>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <PrecompiledHeader>
+       </PrecompiledHeader>
+diff --git a/build/win32/vs10/cogl-msaa.vcxproj b/build/win32/vs10/cogl-msaa.vcxproj
+index 4518872..28de260 100644
+--- a/build/win32/vs10/cogl-msaa.vcxproj
++++ b/build/win32/vs10/cogl-msaa.vcxproj
+@@ -75,7 +75,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -93,7 +93,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -116,7 +116,7 @@
+     <ClCompile>
+       <Optimization>MaxSpeed</Optimization>
+       <IntrinsicFunctions>true</IntrinsicFunctions>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <FunctionLevelLinking>true</FunctionLevelLinking>
+       <PrecompiledHeader>
+@@ -134,7 +134,7 @@
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+     <ClCompile>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines);$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <PrecompiledHeader>
+       </PrecompiledHeader>
+diff --git a/build/win32/vs10/test-conformance-cogl.vcxprojin b/build/win32/vs10/test-conformance-cogl.vcxprojin
+index 753a188..a4aded6 100644
+--- a/build/win32/vs10/test-conformance-cogl.vcxprojin
++++ b/build/win32/vs10/test-conformance-cogl.vcxprojin
+@@ -76,7 +76,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\..\..\test-fixtures;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -96,7 +96,7 @@
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+       <AdditionalIncludeDirectories>..\..\..\test-fixtures;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>_DEBUG;COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+@@ -121,7 +121,7 @@
+       <Optimization>MaxSpeed</Optimization>
+       <AdditionalIncludeDirectories>..\..\..\test-fixtures;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+       <IntrinsicFunctions>true</IntrinsicFunctions>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <FunctionLevelLinking>true</FunctionLevelLinking>
+       <PrecompiledHeader>
+@@ -141,7 +141,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+     <ClCompile>
+       <AdditionalIncludeDirectories>..\..\..\test-fixtures;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+       <PrecompiledHeader>
+       </PrecompiledHeader>
+diff --git a/build/win32/vs9/README.txt b/build/win32/vs9/README.txt
+index cd1695d..f277f97 100644
+--- a/build/win32/vs9/README.txt
++++ b/build/win32/vs9/README.txt
+@@ -5,7 +5,7 @@ its dependencies can be found on the following GNOME Live! page:
+ 
+ https://live.gnome.org/GTK%2B/Win32/MSVCCompilationOfGTKStack
+ 
+-Please do not attempt to compile COGL in a path that contains spaces
++Please do not attempt to compile Cogl in a path that contains spaces
+ to avoid potential problems during compilation, linking or usage.
+ 
+ This VS9 solution and the projects it includes are intented to be used
+@@ -14,31 +14,33 @@ first need to use some Unix-like environment or manual work to expand
+ the files needed, like config.h.win32.in into config.h.win32 and the
+ .vcprojin files here into corresponding actual .vcproj files.
+ 
+-Decide whether you want to build the SDL winsys with your COGL build, and
+-use one of the .sln for building COGL (note that both will build the Windows
+-OpenGL (WGL) winsys):
+--cogl.sln for building COGL without the SDL winsys
+--cogl_sdl.sln for building COGL with the SDL winsys
+-
+ You will need the parts from GNOME: GDK-Pixbuf, Pango* and GLib.
+ External dependencies are at least zlib, libpng,
+ gettext-runtime* and Cairo*, and glext.h from
+ http://www.opengl.org/registry/api/glext.h (which need to be in the GL folder
+-in your include directories or in <root>\vs9\<PlatformName>\include\GL).
++in your include directories or in <root>\vs9\<PlatformName>\include\GL).  Please
++note that although the Cogl source package does allow one to build Cogl without
++a previously built and installed GLib, the Visual Studio projects only support
++builds that does depend on GLib.
+ 
+-As Cogl 1.99.x and later will now use C99 types in lieu of GLib types, a
+-compatible implementation of stdint.h for Visual C++ is required, such
+-as the one from http://code.google.com/p/msinttypes/, so one would need
+-to download and extract the .zip file from that website and extract stdint.h
+-into <root>\vs9\<PlatformName>\include or somewhere where it can be
++As Cogl use C99 types in lieu of GLib types, a compatible implementation of
++stdint.h for Visual C++ is required, such as the one from
++http://code.google.com/p/msinttypes/, so one would need to download and extract
++the .zip file from that website and extract stdint.h into
++<root>\vs9\<PlatformName>\include or somewhere where it can be found
+ automatically found by the compiler.  Note that Visual C++ 2010 and later
+ ships with stdint.h, so it is only required for Visual C++ 2008 builds.
+ 
+-If building the SDL winsys is desired, you will also need the SDL libraries
+-from www.libsdl.org-building the SDL source package with Visual C++ 2008
+-is recommended (working Visual C++ 2005 projects are included with it, upgrade
+-the projects one prompted), but one may want to use the VC8 binary packages
+-from that website.
++If building the SDL2 winsys is desired (the *_SDL configs), you will also need the
++SDL2 libraries from www.libsdl.org-building the SDL source package with Visual C++ 2008
++is recommended via CMake, but one may want to use the Visual C++ binary packages
++from that website.  Since Cogl-1.18.x, the Visual Studio Projects have been updated
++to support the build of the SDL2 winsys in place of the original SDL-1.3 winsys
++as SDL-2.x has been released for some time.  Please note, as builds with the SDL2
++winsys includes the SDL2 headers, main() will be defined to SDL2's special main()
++implementation on Windows, which will require linking to SDL2.lib and SDL2main.lib
++for all apps that link to Cogl, unless SDL_MAIN_HANDLED is defined in your
++"preprocessor definitions" options.
+ 
+ Please see the README file in the root directory of this Cogl source package
+ for the versions of the dependencies required.  See also
+@@ -60,9 +62,10 @@ in the next unstable release):
+ -libpng
+ -(optional for GLib) PCRE (8.12 or later, building PCRE using CMake is
+  recommended-please see build/win32/vs9/README.txt in the GLib source package)
+--(for gdk-pixbuf, if GDI+ is not to be used) IJG JPEG
++-(for gdk-pixbuf, if GDI+ is not to be used) IJG JPEG or libjpeg-turbo
+ -(for gdk-pixbuf, if GDI+ is not to be used) jasper [JPEG-2000 library]
+--(for gdk-pixbuf, if GDI+ is not to be used, requires zlib and IJG JPEG) libtiff
++-(for gdk-pixbuf, if GDI+ is not to be used, requires zlib and IJG JPEG/libjpeg-turbo)
++ libtiff
+ -GLib
+ -Cairo
+ -Pango
+@@ -75,15 +78,13 @@ built DLLs go into <root>\vs9\<PlatformName>\bin, built LIBs into
+ <root>\vs9\<PlatformName>\include\Cogl-2.0.
+ 
+ *There is no known official VS9 build support for fontconfig
+- (required for Pango and Pango at the moment-I will see whether this
+- requirement can be made optional for VS builds)
+  (along with freetype and expat) and gettext-runtime, so
+  please use the binaries from: 
+ 
+   ftp://ftp.gnome.org/pub/GNOME/binaries/win32/dependencies/ (32 bit)
+   ftp://ftp.gnome.org/pub/GNOME/binaries/win64/dependencies/ (64 bit)
+ 
+-Note: If you see C4819 warnings and you are compiling Cogl on a DBCS
++Note: If you see C4819 errors and you are compiling Cogl on a DBCS
+ (Chinese/Korean/Japanese) version of Windows, you may need to switch
+ to an English locale in Control Panel->Region and Languages->System->
+ Change System Locale, reboot and rebuild to ensure Cogl and its
+diff --git a/build/win32/vs9/cogl-build-defines.vsprops b/build/win32/vs9/cogl-build-defines.vsprops
+index fc68d47..5fc6282 100644
+--- a/build/win32/vs9/cogl-build-defines.vsprops
++++ b/build/win32/vs9/cogl-build-defines.vsprops
+@@ -46,4 +46,8 @@
+ 		Name="CoglPangoBuildDefines"
+ 		Value="G_LOG_DOMAIN=\&quot;Cogl-Pango\&quot;"
+ 	/>
++	<UserMacro
++		Name="CoglAppAvoidForcedSDLLinkingDefines"
++		Value="SDL_MAIN_HANDLED"
++	/>
+ </VisualStudioPropertySheet>
+diff --git a/build/win32/vs9/cogl-crate.vcproj b/build/win32/vs9/cogl-crate.vcproj
+index 0fa2382..359289c 100644
+--- a/build/win32/vs9/cogl-crate.vcproj
++++ b/build/win32/vs9/cogl-crate.vcproj
+@@ -31,7 +31,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -60,7 +60,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -94,7 +94,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="2"
+ 				EnableIntrinsicFunctions="true"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				EnableFunctionLevelLinking="true"
+ 				UsePrecompiledHeader="0"
+@@ -124,7 +124,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;COGL_EXAMPLES_DATA=\&quot;../share/cogl-$(ApiVersion)/examples-data/\&quot;;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="3"
+diff --git a/build/win32/vs9/cogl-gen-srcs.vsprops b/build/win32/vs9/cogl-gen-srcs.vsprops
+index e7f0a15..cfd33a4 100644
+--- a/build/win32/vs9/cogl-gen-srcs.vsprops
++++ b/build/win32/vs9/cogl-gen-srcs.vsprops
+@@ -75,21 +75,21 @@ cd $(SolutionDir)&#x0D;&#x0A;
+ 		Name="GenerateCoglDef"
+ 		Value="
+ echo EXPORTS &gt; $(DefDir)\cogl.def&#x0D;&#x0A;
+-cl -EP -D_COGL_SUPPORTS_GTYPE_INTEGRATION -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def&#x0D;&#x0A;
++cl -EP -DCOGL_HAS_GTYPE_SUPPORT -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def&#x0D;&#x0A;
+ 			  "
+ 	/>
+ 	<UserMacro
+ 		Name="GenerateCoglSDLDef"
+ 		Value="
+ echo EXPORTS &gt; $(DefDir)\cogl.def&#x0D;&#x0A;
+-cl -EP -D_COGL_SUPPORTS_GTYPE_INTEGRATION -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_HAS_SDL_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def&#x0D;&#x0A;
++cl -EP -DCOGL_HAS_GTYPE_SUPPORT -DCOGL_HAS_WIN32_SUPPORT -DCOGL_HAS_GLIB_SUPPORT -DCOGL_HAS_SDL_SUPPORT -DCOGL_ENABLE_EXPERIMENTAL_API ..\..\..\cogl\cogl.symbols &gt;&gt; $(DefDir)\cogl.def&#x0D;&#x0A;
+ 			  "
+ 	/>
+ 	<UserMacro
+ 		Name="GenerateCoglPathDef"
+ 		Value="
+ echo EXPORTS &gt; $(DefDir)\cogl-path.def&#x0D;&#x0A;
+-cl -EP ..\..\..\cogl-path\cogl-path.symbols &gt;&gt; $(DefDir)\cogl-path.def&#x0D;&#x0A;
++cl -EP -DCOGL_HAS_GTYPE_SUPPORT ..\..\..\cogl-path\cogl-path.symbols &gt;&gt; $(DefDir)\cogl-path.def&#x0D;&#x0A;
+ 			  "
+ 	/>
+ 	<UserMacro
+diff --git a/build/win32/vs9/cogl-hello.vcproj b/build/win32/vs9/cogl-hello.vcproj
+index cb3b039..cd850a5 100644
+--- a/build/win32/vs9/cogl-hello.vcproj
++++ b/build/win32/vs9/cogl-hello.vcproj
+@@ -31,7 +31,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -59,7 +59,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -92,7 +92,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="2"
+ 				EnableIntrinsicFunctions="true"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				EnableFunctionLevelLinking="true"
+ 				UsePrecompiledHeader="0"
+@@ -121,7 +121,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="3"
+diff --git a/build/win32/vs9/cogl-info.vcproj b/build/win32/vs9/cogl-info.vcproj
+index 680abc9..3c69e31 100644
+--- a/build/win32/vs9/cogl-info.vcproj
++++ b/build/win32/vs9/cogl-info.vcproj
+@@ -31,7 +31,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -59,7 +59,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -92,7 +92,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="2"
+ 				EnableIntrinsicFunctions="true"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				EnableFunctionLevelLinking="true"
+ 				UsePrecompiledHeader="0"
+@@ -121,7 +121,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="3"
+diff --git a/build/win32/vs9/cogl-msaa.vcproj b/build/win32/vs9/cogl-msaa.vcproj
+index ee65a83..d3fd6f1 100644
+--- a/build/win32/vs9/cogl-msaa.vcproj
++++ b/build/win32/vs9/cogl-msaa.vcproj
+@@ -31,7 +31,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -59,7 +59,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -92,7 +92,7 @@
+ 				Name="VCCLCompilerTool"
+ 				Optimization="2"
+ 				EnableIntrinsicFunctions="true"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				EnableFunctionLevelLinking="true"
+ 				UsePrecompiledHeader="0"
+@@ -121,7 +121,7 @@
+ 			/>
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(BaseBuildDefines)"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_2_0_API;$(CoglAppAvoidForcedSDLLinkingDefines);$(BaseBuildDefines)"
+ 				RuntimeLibrary="2"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="3"
+diff --git a/build/win32/vs9/test-conformance-cogl.vcprojin b/build/win32/vs9/test-conformance-cogl.vcprojin
+index 98e7259..c664217 100644
+--- a/build/win32/vs9/test-conformance-cogl.vcprojin
++++ b/build/win32/vs9/test-conformance-cogl.vcprojin
+@@ -32,7 +32,7 @@
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\test-fixtures"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_API"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -62,7 +62,7 @@
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\test-fixtures"
+ 				Optimization="0"
+-				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_API"
++				PreprocessorDefinitions="_DEBUG;COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines)"
+ 				MinimalRebuild="true"
+ 				BasicRuntimeChecks="3"
+ 				RuntimeLibrary="3"
+@@ -97,7 +97,7 @@
+ 				AdditionalIncludeDirectories="..\..\..\test-fixtures"
+ 				Optimization="2"
+ 				EnableIntrinsicFunctions="true"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_API"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines)"
+ 				RuntimeLibrary="2"
+ 				EnableFunctionLevelLinking="true"
+ 				UsePrecompiledHeader="0"
+@@ -128,7 +128,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="..\..\..\test-fixtures"
+-				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_API"
++				PreprocessorDefinitions="COGL_ENABLE_EXPERIMENTAL_API;$(CoglAppAvoidForcedSDLLinkingDefines)"
+ 				RuntimeLibrary="2"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="3"
+diff --git a/cogl-path/cogl-path.symbols b/cogl-path/cogl-path.symbols
+index fd56795..b643ec0 100644
+--- a/cogl-path/cogl-path.symbols
++++ b/cogl-path/cogl-path.symbols
+@@ -11,6 +11,9 @@ cogl_path_ellipse
+ cogl_path_fill
+ cogl_path_fill_preserve
+ cogl_path_get_fill_rule
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_path_get_gtype
++#endif
+ cogl_path_line
+ cogl_path_line_to
+ cogl_path_move_to
+diff --git a/cogl/cogl-atlas-texture.c b/cogl/cogl-atlas-texture.c
+index beaaf24..1c8b569 100644
+--- a/cogl/cogl-atlas-texture.c
++++ b/cogl/cogl-atlas-texture.c
+@@ -746,15 +746,25 @@ allocate_space (CoglAtlasTexture *atlas_tex,
+ 
+   /* Look for an existing atlas that can hold the texture */
+   for (l = ctx->atlases; l; l = l->next)
+-    /* Try to make some space in the atlas for the texture */
+-    if (_cogl_atlas_reserve_space (atlas = l->data,
+-                                   /* Add two pixels for the border */
+-                                   width + 2, height + 2,
+-                                   atlas_tex))
+-      {
+-        cogl_object_ref (atlas);
+-        break;
+-      }
++    {
++      /* We need to take a reference on the atlas before trying to
++       * reserve space because in some circumstances atlas migration
++       * can cause the atlas to be freed */
++      atlas = cogl_object_ref (l->data);
++      /* Try to make some space in the atlas for the texture */
++      if (_cogl_atlas_reserve_space (atlas,
++                                     /* Add two pixels for the border */
++                                     width + 2, height + 2,
++                                     atlas_tex))
++        {
++          /* keep the atlas reference */
++          break;
++        }
++      else
++        {
++          cogl_object_unref (atlas);
++        }
++    }
+ 
+   /* If we couldn't find a suitable atlas then start another */
+   if (l == NULL)
+diff --git a/cogl/cogl-gtype-private.h b/cogl/cogl-gtype-private.h
+index 03832ef..8498385 100644
+--- a/cogl/cogl-gtype-private.h
++++ b/cogl/cogl-gtype-private.h
+@@ -133,9 +133,9 @@ cogl_##name##_get_gtype (void)                                      \
+     return type_id__volatile;                                           \
+   }
+ 
+-#define COGL_GTYPE_DEFINE_BASE_CLASS(Name,name,interfaces...)      \
+-  _COGL_GTYPE_DEFINE_BASE_CLASS_BEGIN(Name,name)                   \
+-  {interfaces;}                                                    \
++#define COGL_GTYPE_DEFINE_BASE_CLASS(Name,name,...)      \
++  _COGL_GTYPE_DEFINE_BASE_CLASS_BEGIN(Name,name)         \
++  {__VA_ARGS__;}                                         \
+   _COGL_GTYPE_DEFINE_BASE_CLASS_END()
+ 
+ #define _COGL_GTYPE_DEFINE_INTERFACE_EXTENDED_BEGIN(Name,name)          \
+@@ -230,7 +230,7 @@ cogl_##name##_get_gtype (void)                                      \
+     } /* closes name##_get_type() */
+ 
+ 
+-#define COGL_GTYPE_DEFINE_CLASS(Name,name,interfaces...)                \
++#define COGL_GTYPE_DEFINE_CLASS(Name,name,...)                          \
+   typedef struct _Cogl##Name##Class Cogl##Name##Class;                  \
+   struct _Cogl##Name##Class {                                           \
+     CoglObjectClass parent_class;                                       \
+@@ -239,7 +239,7 @@ cogl_##name##_get_gtype (void)                                      \
+                                          cogl_##name,                   \
+                                          cogl_object_get_gtype(),       \
+                                          0)                             \
+-  {interfaces;}                                                         \
++  {__VA_ARGS__;}                                                        \
+   _COGL_GTYPE_DEFINE_TYPE_EXTENDED_END()                                \
+   static void                                                           \
+   cogl_##name##_init (Cogl##Name *instance)                             \
+diff --git a/cogl/cogl-sdl.h b/cogl/cogl-sdl.h
+index 220e004..44d308d 100644
+--- a/cogl/cogl-sdl.h
++++ b/cogl/cogl-sdl.h
+@@ -52,15 +52,6 @@
+ #include <cogl/cogl-onscreen.h>
+ #include <SDL.h>
+ 
+-#ifdef _MSC_VER
+-/* We need to link to SDL.lib/SDLmain.lib
+- * if we are using Cogl
+- * that uses the SDL winsys
+- */
+-#pragma comment (lib, "SDL.lib")
+-#pragma comment (lib, "SDLmain.lib")
+-#endif
+-
+ COGL_BEGIN_DECLS
+ 
+ /**
+diff --git a/cogl/cogl.symbols b/cogl/cogl.symbols
+index d1eb319..c48314a 100644
+--- a/cogl/cogl.symbols
++++ b/cogl/cogl.symbols
+@@ -4,14 +4,25 @@
+ cogl_android_set_native_window
+ #endif
+ 
+-/* cogl-atlas-texture.h */
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_atlas_texture_get_gtype
++#endif
+ cogl_atlas_texture_new_with_size
+ cogl_atlas_texture_new_from_file
+ cogl_atlas_texture_new_from_data
+ cogl_atlas_texture_new_from_bitmap
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_attribute_buffer_get_gtype
++#endif
+ cogl_attribute_buffer_new_with_size
+ 
++cogl_attribute_buffer_new
++cogl_attribute_get_buffer
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_attribute_get_gtype
++#endif
++cogl_attribute_get_normalized
+ cogl_attribute_new
+ cogl_attribute_new_const_1f
+ cogl_attribute_new_const_2f
+@@ -23,9 +34,6 @@ cogl_attribute_new_const_3x3fv
+ cogl_attribute_new_const_4f
+ cogl_attribute_new_const_4fv
+ cogl_attribute_new_const_4x4fv
+-cogl_attribute_buffer_new
+-cogl_attribute_get_buffer
+-cogl_attribute_get_normalized
+ cogl_attribute_set_buffer
+ cogl_attribute_set_normalized
+ cogl_attribute_type_get_type
+@@ -35,6 +43,9 @@ cogl_begin_gl
+ cogl_bitmap_error_get_type
+ cogl_bitmap_get_buffer
+ cogl_bitmap_get_format
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_bitmap_get_gtype
++#endif
+ cogl_bitmap_get_height
+ cogl_bitmap_get_rowstride
+ cogl_bitmap_get_size_from_file
+@@ -111,6 +122,9 @@ cogl_color_get_blue_float
+ cogl_color_get_green
+ cogl_color_get_green_byte
+ cogl_color_get_green_float
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_color_get_gtype
++#endif
+ cogl_color_get_red
+ cogl_color_get_red_byte
+ cogl_color_get_red_float
+@@ -149,6 +163,9 @@ cogl_glx_context_get_glx_context
+ #endif
+ 
+ cogl_context_get_display
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_context_get_gtype
++#endif
+ cogl_context_get_renderer
+ cogl_context_new
+ 
+@@ -172,6 +189,9 @@ cogl_depth_test_function_get_type
+ 
+ cogl_disable_fog
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_display_get_gtype
++#endif
+ cogl_display_get_renderer
+ cogl_display_new
+ cogl_display_setup
+@@ -188,6 +208,9 @@ cogl_error_matches
+ cogl_euler_copy
+ cogl_euler_equal
+ cogl_euler_free
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_euler_get_gtype
++#endif
+ cogl_euler_init
+ cogl_euler_init_from_matrix
+ #if 0
+@@ -239,6 +262,9 @@ cogl_framebuffer_get_depth_texture_enabled
+ cogl_framebuffer_get_depth_write_enabled
+ cogl_framebuffer_get_dither_enabled
+ cogl_framebuffer_get_green_bits
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_framebuffer_get_gtype
++#endif
+ cogl_framebuffer_get_height
+ cogl_framebuffer_get_modelview_matrix
+ cogl_framebuffer_get_projection_matrix
+@@ -284,7 +310,14 @@ cogl_framebuffer_translate
+ cogl_framebuffer_vdraw_attributes
+ /* cogl_framebuffer_vdraw_indexed_attributes */ /* Not Implemented! */
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_frame_closure_get_gtype
++#endif
+ cogl_frame_info_get_frame_counter
++
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_frame_info_get_gtype
++#endif
+ cogl_frame_info_get_output
+ cogl_frame_info_get_presentation_time
+ cogl_frame_info_get_refresh_rate
+@@ -311,6 +344,9 @@ cogl_get_static_identity_quaternion
+ cogl_get_static_zero_quaternion
+ cogl_get_viewport
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_gles2_context_get_gtype
++#endif
+ cogl_gles2_context_get_vtable
+ cogl_gles2_context_new
+ cogl_gles2_get_current_vtable
+@@ -322,8 +358,8 @@ cogl_glib_renderer_source_new
+ cogl_glib_source_new
+ #endif
+ 
+-#ifdef _COGL_SUPPORTS_GTYPE_INTEGRATION
+-/* cogl_gtype_matrix_get_type */ /* Not Implemented */
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_gtype_matrix_get_type
+ #endif
+ 
+ cogl_handle_get_type
+@@ -333,8 +369,14 @@ cogl_handle_unref
+ cogl_has_feature
+ cogl_has_features
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_index_buffer_get_gtype
++#endif
+ cogl_index_buffer_new
+ cogl_indices_get_buffer
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_indices_get_gtype
++#endif
+ cogl_indices_get_offset
+ cogl_indices_get_type
+ cogl_indices_new
+@@ -448,6 +490,9 @@ cogl_matrix_copy
+ cogl_matrix_entry_calculate_translation
+ cogl_matrix_entry_equal
+ cogl_matrix_entry_get
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_matrix_entry_get_gtype
++#endif
+ cogl_matrix_entry_is_identity
+ cogl_matrix_entry_ref
+ cogl_matrix_entry_unref
+@@ -455,6 +500,9 @@ cogl_matrix_equal
+ cogl_matrix_free
+ cogl_matrix_frustum
+ cogl_matrix_get_array
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_matrix_get_gtype
++#endif
+ cogl_matrix_get_inverse
+ cogl_matrix_init_from_array
+ cogl_matrix_init_translation
+@@ -481,6 +529,9 @@ cogl_matrix_scale
+ cogl_matrix_stack_frustum
+ cogl_matrix_stack_get
+ cogl_matrix_stack_get_entry
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_matrix_stack_get_gtype
++#endif
+ cogl_matrix_stack_get_inverse
+ cogl_matrix_stack_load_identity
+ cogl_matrix_stack_multiply
+@@ -504,11 +555,17 @@ cogl_matrix_view_2d_in_perspective
+ 
+ cogl_meta_texture_foreach_in_region
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_object_get_gtype
++#endif
+ cogl_object_get_user_data
+ cogl_object_ref
+ cogl_object_set_user_data
+ cogl_object_unref
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_offscreen_get_gtype
++#endif
+ cogl_offscreen_new_to_texture
+ cogl_offscreen_new_with_texture
+ 
+@@ -519,8 +576,14 @@ cogl_onscreen_add_swap_buffers_callback
+ #ifndef COGL_WINSYS_INTEGRATED
+ cogl_onscreen_clutter_backend_set_size_CLUTTER
+ #endif
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_onscreen_dirty_closure_get_gtype
++#endif
+ cogl_onscreen_get_buffer_age
+ cogl_onscreen_get_frame_counter
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_onscreen_get_gtype
++#endif
+ cogl_onscreen_get_resizable
+ cogl_onscreen_hide
+ cogl_onscreen_new
+@@ -529,18 +592,27 @@ cogl_onscreen_remove_dirty_callback
+ cogl_onscreen_remove_frame_callback
+ cogl_onscreen_remove_resize_callback
+ cogl_onscreen_remove_swap_buffers_callback
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_onscreen_resize_closure_get_gtype
++#endif
+ cogl_onscreen_set_resizable
+ cogl_onscreen_set_swap_throttled
+ cogl_onscreen_show
+ cogl_onscreen_swap_buffers
+ cogl_onscreen_swap_buffers_with_damage
+ cogl_onscreen_swap_region
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_onscreen_template_get_gtype
++#endif
+ cogl_onscreen_template_new
+ cogl_onscreen_template_set_samples_per_pixel
+ cogl_onscreen_template_set_swap_throttled
+ 
+ cogl_ortho
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_output_get_gtype
++#endif
+ cogl_output_get_height
+ cogl_output_get_mm_height
+ cogl_output_get_mm_width
+@@ -566,6 +638,9 @@ cogl_pipeline_get_depth_state
+ cogl_pipeline_get_diffuse
+ cogl_pipeline_get_emission
+ cogl_pipeline_get_front_face_winding
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_pipeline_get_gtype
++#endif
+ cogl_pipeline_get_layer_mag_filter
+ cogl_pipeline_get_layer_min_filter
+ cogl_pipeline_get_layer_point_sprite_coords_enabled
+@@ -618,6 +693,9 @@ cogl_pipeline_set_uniform_1f
+ cogl_pipeline_set_uniform_1i
+ cogl_pipeline_set_user_program
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_pixel_buffer_get_gtype
++#endif
+ cogl_pixel_buffer_new
+ #if 0
+ /* not exported in the main APIs for now */
+@@ -641,6 +719,9 @@ cogl_pop_source
+ cogl_primitive_copy
+ cogl_primitive_foreach_attribute
+ cogl_primitive_get_first_vertex
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_primitive_get_gtype
++#endif
+ cogl_primitive_get_indices
+ cogl_primitive_get_mode
+ cogl_primitive_get_n_vertices
+@@ -701,6 +782,9 @@ cogl_quaternion_copy
+ cogl_quaternion_dot_product
+ cogl_quaternion_equal
+ cogl_quaternion_free
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_quaternion_get_gtype
++#endif
+ cogl_quaternion_get_rotation_angle
+ cogl_quaternion_get_rotation_axis
+ cogl_quaternion_init
+@@ -733,6 +817,9 @@ cogl_renderer_check_onscreen_template
+ cogl_renderer_connect
+ cogl_renderer_foreach_output
+ cogl_renderer_get_driver
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_renderer_get_gtype
++#endif
+ cogl_renderer_get_n_fragment_texture_units
+ cogl_renderer_error_get_type
+ cogl_renderer_get_winsys_id
+@@ -793,6 +880,9 @@ cogl_snippet_get_hook
+ cogl_snippet_get_post
+ cogl_snippet_get_pre
+ cogl_snippet_get_replace
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_snippet_get_gtype
++#endif
+ cogl_snippet_new
+ cogl_snippet_set_declarations
+ cogl_snippet_set_post
+@@ -801,9 +891,15 @@ cogl_snippet_set_replace
+ 
+ cogl_sqrti
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_sub_texture_get_gtype
++#endif
+ cogl_sub_texture_get_parent
+ cogl_sub_texture_new
+ 
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_swap_chain_get_gtype
++#endif
+ cogl_swap_chain_new
+ cogl_swap_chain_set_has_alpha
+ cogl_swap_chain_set_length
+@@ -811,12 +907,16 @@ cogl_swap_chain_set_length
+ cogl_system_error_get_type
+ 
+ cogl_texture_allocate
++cogl_texture_components_get_type
+ cogl_texture_error_get_type
+ cogl_texture_flags_get_type
+ cogl_texture_get_components
+ cogl_texture_get_data
+ cogl_texture_get_format
+ cogl_texture_get_gl_texture
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_texture_get_gtype
++#endif
+ cogl_texture_get_height
+ cogl_texture_get_max_waste
+ cogl_texture_get_premultiplied
+@@ -831,11 +931,17 @@ cogl_texture_new_from_sub_texture
+ cogl_texture_new_with_size
+ #ifdef COGL_HAS_X11
+ cogl_texture_pixmap_x11_error_domain
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_texture_pixmap_x11_get_gtype
++#endif
+ cogl_texture_pixmap_x11_is_using_tfp_extension
+ cogl_texture_pixmap_x11_new
+ cogl_texture_pixmap_x11_set_damage_object
+ cogl_texture_pixmap_x11_update_area
+ #endif
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_texture_rectangle_get_gtype
++#endif
+ cogl_texture_rectangle_new_from_bitmap
+ cogl_texture_rectangle_new_from_foreign
+ cogl_texture_rectangle_new_with_size
+@@ -851,14 +957,23 @@ cogl_texture_type_get_type
+ #ifndef COGL_DISABLE_DEPRECATED
+ cogl_texture_unref
+ #endif
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_texture_2d_get_gtype
++#endif
+ cogl_texture_2d_new_from_bitmap
+ cogl_texture_2d_new_from_data
+ cogl_texture_2d_new_from_file
+ cogl_texture_2d_new_with_size
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_texture_2d_sliced_get_gtype
++#endif
+ cogl_texture_2d_sliced_new_from_bitmap
+ cogl_texture_2d_sliced_new_from_data
+ cogl_texture_2d_sliced_new_from_file
+ cogl_texture_2d_sliced_new_with_size
++#ifdef COGL_HAS_GTYPE_SUPPORT
++cogl_texture_3d_get_gtype
++#endif
+ cogl_texture_3d_new_from_bitmap
+ cogl_texture_3d_new_from_data
+ cogl_texture_3d_new_with_size
+diff --git a/cogl/deprecated/cogl-framebuffer-deprecated.h b/cogl/deprecated/cogl-framebuffer-deprecated.h
+index 2ac29b1..68ed9d3 100644
+--- a/cogl/deprecated/cogl-framebuffer-deprecated.h
++++ b/cogl/deprecated/cogl-framebuffer-deprecated.h
+@@ -33,6 +33,8 @@
+ 
+ #include <cogl/cogl-macros.h>
+ 
++COGL_BEGIN_DECLS
++
+ /**
+  * cogl_set_framebuffer:
+  * @buffer: A #CoglFramebuffer object, either onscreen or offscreen.
+@@ -257,4 +259,6 @@ COGL_DEPRECATED_IN_1_18
+ CoglPixelFormat
+ cogl_framebuffer_get_color_format (CoglFramebuffer *framebuffer);
+ 
++COGL_END_DECLS
++
+ #endif /* __COGL_FRAMEBUFFER_DEPRECATED_H__ */
+diff --git a/cogl/winsys/cogl-winsys-egl-kms.c b/cogl/winsys/cogl-winsys-egl-kms.c
+index 8c4176e..ec54095 100644
+--- a/cogl/winsys/cogl-winsys-egl-kms.c
++++ b/cogl/winsys/cogl-winsys-egl-kms.c
+@@ -196,6 +196,31 @@ free_current_bo (CoglOnscreen *onscreen)
+ }
+ 
+ static void
++queue_swap_notify_for_onscreen (CoglOnscreen *onscreen)
++{
++  CoglOnscreenEGL *egl_onscreen = onscreen->winsys;
++  CoglOnscreenKMS *kms_onscreen = egl_onscreen->platform;
++  CoglContext *context = COGL_FRAMEBUFFER (onscreen)->context;
++  CoglRenderer *renderer = context->display->renderer;
++  CoglRendererEGL *egl_renderer = renderer->winsys;
++  CoglRendererKMS *kms_renderer = egl_renderer->platform;
++
++  /* We only want to notify that the swap is complete when the
++   * application calls cogl_context_dispatch so instead of
++   * immediately notifying we queue an idle callback */
++  if (!kms_renderer->swap_notify_idle)
++    {
++      kms_renderer->swap_notify_idle =
++        _cogl_poll_renderer_add_idle (renderer,
++                                      flush_pending_swap_notify_idle,
++                                      context,
++                                      NULL);
++    }
++
++  kms_onscreen->pending_swap_notify = TRUE;
++}
++
++static void
+ page_flip_handler (int fd,
+                    unsigned int frame,
+                    unsigned int sec,
+@@ -217,19 +242,7 @@ page_flip_handler (int fd,
+       CoglRendererEGL *egl_renderer = renderer->winsys;
+       CoglRendererKMS *kms_renderer = egl_renderer->platform;
+ 
+-      /* We only want to notify that the swap is complete when the
+-       * application calls cogl_context_dispatch so instead of
+-       * immediately notifying we queue an idle callback */
+-      if (!kms_renderer->swap_notify_idle)
+-        {
+-          kms_renderer->swap_notify_idle =
+-            _cogl_poll_renderer_add_idle (renderer,
+-                                          flush_pending_swap_notify_idle,
+-                                          context,
+-                                          NULL);
+-        }
+-
+-      kms_onscreen->pending_swap_notify = TRUE;
++      queue_swap_notify_for_onscreen (onscreen);
+ 
+       free_current_bo (onscreen);
+ 
+@@ -283,12 +296,6 @@ _cogl_winsys_renderer_connect (CoglRenderer *renderer,
+   egl_renderer->platform = g_slice_new0 (CoglRendererKMS);
+   kms_renderer = egl_renderer->platform;
+ 
+-  /* The EGL API doesn't provide for a way to explicitly select a
+-   * platform when the driver can support multiple. Mesa allows
+-   * selection using an environment variable though so that's what
+-   * we're doing here... */
+-  g_setenv ("EGL_PLATFORM", "drm", 1);
+-
+   kms_renderer->fd = -1;
+   kms_renderer->opened_fd = -1;
+ 
+@@ -909,6 +916,8 @@ _cogl_winsys_onscreen_swap_buffers_with_damage (CoglOnscreen *onscreen,
+       kms_onscreen->next_fb_id = 0;
+       g_slice_free (CoglFlipKMS, flip);
+       flip = NULL;
++
++      queue_swap_notify_for_onscreen (onscreen);
+     }
+   else
+     {
+diff --git a/cogl/winsys/cogl-winsys-egl-wayland.c b/cogl/winsys/cogl-winsys-egl-wayland.c
+index c631080..2b359cb 100644
+--- a/cogl/winsys/cogl-winsys-egl-wayland.c
++++ b/cogl/winsys/cogl-winsys-egl-wayland.c
+@@ -242,12 +242,6 @@ _cogl_winsys_renderer_connect (CoglRenderer *renderer,
+ 
+   egl_renderer->platform_vtable = &_cogl_winsys_egl_vtable;
+ 
+-  /* The EGL API doesn't provide for a way to explicitly select a
+-   * platform when the driver can support multiple. Mesa allows
+-   * selection using an environment variable though so that's what
+-   * we're doing here... */
+-  g_setenv ("EGL_PLATFORM", "wayland", 1);
+-
+   if (renderer->foreign_wayland_display)
+     {
+       wayland_renderer->wayland_display = renderer->foreign_wayland_display;
