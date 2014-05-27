@@ -1,9 +1,9 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 _python=python
-pkgname=$_python-efl-git
 _pkgname=python-efl
-pkgver=1.9.99a628.1466ea7
+pkgname=$_python-efl-git
+pkgver=1.9.99a642.cfc2053
 pkgrel=1
 pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries - Development Version"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' "${_python/p/c}")
 provides=("${pkgname%-*}=$pkgver")
 conflicts=("${pkgname%-*}")
 source=("git://git.enlightenment.org/bindings/python/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -30,8 +30,8 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  
-  $_python setup.py install --root="$pkgdir"
+
+  $_python setup.py install --root="$pkgdir" --optimize=1
 
 # install text files
   install -d "$pkgdir/usr/share/doc/${pkgname%-*}/"
