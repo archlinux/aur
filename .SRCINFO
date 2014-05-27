@@ -1,0 +1,17 @@
+pkgbase = stikkit-git
+	pkgdesc = Commandline tool to upload pastes to stikked pastebins
+	pkgver = 1.0.4.r6.g446a4ee
+	pkgrel = 1
+	url = http://github.com/benapetr/stikkit
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	provides = stikkit
+	conflicts = stikkit
+	source = stikkit-git::git+https://github.com/benapetr/stikkit.git
+	md5sums = SKIP
+
+pkgname = stikkit-git
+
