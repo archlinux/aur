@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=python-markups
-pkgver=0.2.4
+pkgver=0.4
 pkgrel=1
 _libname=Markups
 pkgdesc='Wrapper around various text markups'
@@ -23,4 +23,4 @@ package() {
     python setup.py install --root="$pkgdir"
 }
 
-sha256sums=('0aab138698035e699fad1c88bebb3fa5e90a1876bc7d8fefb3491513fe13f16b')
+sha256sums=('3c33a19200a224b9c320e48557ec29e13dbe8094c6670da2851b75d6657950b8')
