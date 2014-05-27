@@ -1,0 +1,6 @@
+post_install() {
+  cat <<EOF
+For OpenRCT2 to run you must install a retail copy of RollerCoaster Tycoon 2
+with Wine.
+EOF
+}
