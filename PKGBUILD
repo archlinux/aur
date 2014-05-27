@@ -1,11 +1,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 #
 # WARNING: Unfinished, aguilas has a lot of stuff in the makefile that needs
-# fixing (hard coded Debian paths) before use
-#
+# fixing (e.g. hard coded Debian paths) before this should be released
+
 pkgname=aguilas
 pkgver=1.0.2
-pkgrel=1
+pkgrel=0
 url=https://code.google.com/p/aguilas/
 pkgdesc="An LDAP user manager and password self-service webaapp."
 arch=('any')
