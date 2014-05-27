@@ -1,5 +1,5 @@
 _gitname=morituri-whatcd
-_gituser=supermanvelo
+_gituser=RecursiveForest
 pkgname=$_gitname-git
 pkgver=23.97dfae8
 pkgrel=1
