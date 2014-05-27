@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
 _python=python
-pkgname=$_python-efl
 _pkgname=python-efl
+pkgname=$_python-efl
 pkgver=1.9.0
 pkgrel=2
 pkgdesc="$_python bindings for the Enlightenment Foundataion Libraries"
@@ -22,7 +22,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  $_python setup.py install --root="$pkgdir"
+  $_python setup.py install --root="$pkgdir" --optimize=1
 
 # install text files
   install -d "$pkgdir/usr/share/doc/$pkgname/"
