@@ -1,7 +1,7 @@
 pkgbase = wacom-utility
 	pkgdesc = Graphical tablet configuration utility
 	pkgver = 1.21
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gtk-apps.org/content/show.php/Wacom+Control+Panel?content=llll104309
 	arch = i686
 	arch = x86_64

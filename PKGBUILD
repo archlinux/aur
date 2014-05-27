@@ -6,7 +6,7 @@
 pkgname=wacom-utility
 pkgver=1.21
 _uprel=3
-pkgrel=4
+pkgrel=5
 pkgdesc="Graphical tablet configuration utility"
 arch=('i686' 'x86_64')
 url='http://gtk-apps.org/content/show.php/Wacom+Control+Panel?content=llll104309'
@@ -19,7 +19,8 @@ md5sums=('51ff9257b6e0c511ee57d40cd76742ec'
          '1d44b3571fd5e48b80b2dec5209fcf47')
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    install -Dm755 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     find \( -regex '.*\.\(py\|png\|xml\|glade\)' -or -name 'keymap.txt' \) \
         -exec install -D {} "${pkgdir}/usr/share/${pkgname}/{}" \;
 }
