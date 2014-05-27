@@ -5,12 +5,13 @@
 
 pkgname=stund
 pkgver=0.97
-pkgrel=1
+pkgrel=2
 pkgdesc="STUN Server and Client"
 url="http://downloads.sourceforge.net/project/stun/stun/"
 source=("http://iweb.dl.sourceforge.net/project/stun/stun/0.97/stund-0.97.tgz" "fix_non_i386.patch")
 makedepends=()
 optdepends=()
+conflicts=(libnice)
 arch=('x86_64' 'i686')
 license=('GPL2')
 md5sums=('097fd27829e357c005afcafd51564bd1'
