@@ -25,7 +25,6 @@ package() {
   $_python setup.py install --root="$pkgdir"
 
 # install text files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
-  install -Dm644 changes.html "$pkgdir/usr/share/doc/$pkgname/changes.html"
+  install -d "$pkgdir/usr/share/doc/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS README changes.html
 }
