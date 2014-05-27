@@ -1,4 +1,4 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 _python=python
 _pkgname=python-efl
