@@ -1,7 +1,7 @@
 _gitname=morituri-whatcd
 _gituser=RecursiveForest
 pkgname=$_gitname-git
-pkgver=23.97dfae8
+pkgver=31.b0a5fd2
 pkgrel=1
 pkgdesc='morituri logger meant for What.CD submissions'
 arch=('any')

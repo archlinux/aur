@@ -1,6 +1,6 @@
 pkgbase = morituri-whatcd-git
 	pkgdesc = morituri logger meant for What.CD submissions
-	pkgver = 23.97dfae8
+	pkgver = 31.b0a5fd2
 	pkgrel = 1
 	url = https://github.com/RecursiveForest/morituri-whatcd
 	arch = any
