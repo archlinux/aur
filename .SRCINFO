@@ -1,6 +1,6 @@
 pkgbase = syslinux-git
 	pkgdesc = Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master branch
-	pkgver = 6.03pre11.3.g7e71397
+	pkgver = 6.03pre12.2.gb8f6181
 	pkgrel = 1
 	url = http://syslinux.zytor.com/
 	install = syslinux.install
@@ -21,10 +21,10 @@ pkgbase = syslinux-git
 	optdepends = util-linux: For isohybrid
 	optdepends = efibootmgr: For EFI support
 	optdepends = dosfstools: For EFI support
-	provides = syslinux=6.03pre11.3.g7e71397
-	provides = syslinux-bios=6.03pre11.3.g7e71397
-	provides = syslinux-efi=6.03pre11.3.g7e71397
-	provides = syslinux-firmware-git=6.03pre11.3.g7e71397
+	provides = syslinux=6.03pre12.2.gb8f6181
+	provides = syslinux-bios=6.03pre12.2.gb8f6181
+	provides = syslinux-efi=6.03pre12.2.gb8f6181
+	provides = syslinux-firmware-git=6.03pre12.2.gb8f6181
 	conflicts = syslinux
 	conflicts = syslinux-bios
 	conflicts = syslinux-efi
