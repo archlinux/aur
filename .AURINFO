@@ -15,16 +15,12 @@ pkgbase = lldpd-git
 	depends = jansson
 	provides = lldpd
 	conflicts = lldpd
-	options = !libtool
-	backup = etc/lldpd.conf
 	source = lldpd-git::git+https://github.com/vincentbernat/lldpd.git
 	source = lldpd.service
 	source = lldpd.install
 	source = LICENSE
-	md5sums = SKIP
-	md5sums = 73eaa8101f84e787138aee3927455c36
-	md5sums = 18d76cccdbbfed66c9c39232dd5f81ae
-	md5sums = 8ae98663bac55afe5d989919d296f28a
+	options = !libtool
+	backup = etc/lldpd.conf
 
 pkgname = lldpd-git
 
