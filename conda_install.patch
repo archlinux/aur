@@ -1,32 +1,37 @@
---- a/pkgs/conda-3.4.1-py27_0/lib/python2.7/site-packages/conda/install.py	2014-04-13 20:09:08.204732923 +0200
-+++ b/pkgs/conda-3.4.1-py27_0/lib/python2.7/site-packages/conda/install.py	2014-04-13 20:09:24.036548002 +0200
-@@ -167,12 +167,14 @@
-                       # such that running this program on itself
-                       # will leave it unchanged
-                       'anaconda3')
--def update_prefix(path, new_prefix):
-+def update_prefix(path, new_prefix, instdir=None):
+--- a/pkgs/conda-3.5.2-py27_0/lib/python2.7/site-packages/conda/install.py	2014-05-29 00:42:12.573344766 +0200
++++ b/pkgs/conda-3.5.2-py27_0/lib/python2.7/site-packages/conda/install.py	2014-05-29 01:08:51.803978206 +0200
+@@ -205,16 +205,18 @@
+     return res
+ 
+ def update_prefix(path, new_prefix, placeholder=prefix_placeholder,
+-                  mode='text'):
++                  mode='text', instdir=None):
 +    if instdir is None:
 +        instdir = new_prefix
      path = os.path.realpath(path)
      with open(path, 'rb') as fi:
          data = fi.read()
-     new_data = data.replace(prefix_placeholder.encode('utf-8'),
--                            new_prefix.encode('utf-8'))
-+                            instdir.encode('utf-8'))
-     if new_data == data:
-         return
-     st = os.lstat(path)
-@@ -375,7 +377,7 @@
+     if mode == 'text':
+         new_data = data.replace(placeholder.encode('utf-8'),
+-                                new_prefix.encode('utf-8'))
++                                instdir.encode('utf-8'))
+     elif mode == 'binary':
+         new_data = binary_replace(data, placeholder.encode('utf-8'),
+-                                  new_prefix.encode('utf-8'))
++                                  instdir.encode('utf-8'))
+     else:
+         sys.exit("Invalid mode:" % mode)
+ 
+@@ -431,7 +433,7 @@
          return None
  
  
--def link(pkgs_dir, prefix, dist, linktype=LINK_HARD):
-+def link(pkgs_dir, prefix, dist, linktype=LINK_HARD, instdir=None):
+-def link(pkgs_dir, prefix, dist, linktype=LINK_HARD, index=None):
++def link(pkgs_dir, prefix, dist, linktype=LINK_HARD, index=None, instdir=None):
      '''
      Set up a package in a specified (environment) prefix.  We assume that
      the package has been extracted (using extract() above).
-@@ -388,6 +390,8 @@
+@@ -445,6 +447,8 @@
          # linking or unlinking some packages
          print('Ignored: %s' % dist)
          return
@@ -35,16 +40,16 @@
  
      source_dir = join(pkgs_dir, dist)
      if not run_script(source_dir, dist, 'pre-link', prefix):
-@@ -435,7 +439,7 @@
-             return
- 
+@@ -483,7 +487,7 @@
          for f in sorted(has_prefix_files):
--            update_prefix(join(prefix, f), prefix)
-+            update_prefix(join(prefix, f), prefix, instdir=instdir)
- 
-         mk_menus(prefix, files, remove=False)
- 
-@@ -541,6 +545,10 @@
+             placeholder, mode = has_prefix_files[f]
+             try:
+-                update_prefix(join(prefix, f), prefix, placeholder, mode)
++                update_prefix(join(prefix, f), prefix, placeholder, mode, instdir=instdir)
+             except PaddingError:
+                 sys.exit("ERROR: placeholder '%s' too short in: %s\n" %
+                          (placeholder, dist))
+@@ -588,6 +592,10 @@
                   default=sys.prefix,
                   help="prefix (defaults to %default)")
  
@@ -55,7 +60,7 @@
      p.add_option('--pkgs-dir',
                   action="store",
                   default=join(sys.prefix, 'pkgs'),
-@@ -570,9 +578,14 @@
+@@ -617,9 +625,14 @@
  
      pkgs_dir = opts.pkgs_dir
      prefix = opts.prefix
@@ -67,15 +72,15 @@
          print("pkgs_dir: %r" % pkgs_dir)
          print("prefix  : %r" % prefix)
 +        print("instdir : %r" % instdir)
-         print("dist    : %r" % dist)
  
      if opts.list:
-@@ -580,14 +593,14 @@
- 
-     elif opts.link_all:
-         for dist in sorted(extracted(pkgs_dir)):
--            link(pkgs_dir, prefix, dist)
-+            link(pkgs_dir, prefix, dist, instdir=instdir)
+         pprint(sorted(linked(prefix)))
+@@ -634,14 +647,14 @@
+         for dist in dists:
+             if opts.verbose or linktype == LINK_COPY:
+                 print("linking: %s" % dist)
+-            link(pkgs_dir, prefix, dist, linktype)
++            link(pkgs_dir, prefix, dist, linktype, instdir=instdir)
          messages(prefix)
  
      elif opts.extract:
