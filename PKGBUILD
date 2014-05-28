@@ -37,9 +37,9 @@ backup=('etc/amavisd/amavisd.conf' 'etc/amavisd/amavisd-custom.conf')
 source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.gz"
         "service"
         "tmpfiles")
-md5sums=('fb0ef2f0d502790ccb9144f7db4ec27a'
-         '3d0c094230621dfa04922afb482e638c'
-         '7114b97b5b2b0d8f98a0a3039e2ef8fe')
+sha256sums=('1604c175843e2c1856cd786a8dce99d257e2bf1093dec3ed82848a4929c87abb'
+            'b803ac76501a68775395c7f80aed5633b98ea7a851f926e0edb169e4c2e38b24'
+            'a7ea2c73f2dbdd7d79bcb06aa950410f8e214afa01629a0717e0a81489441e6d')
 install=install
 
 prepare() {
