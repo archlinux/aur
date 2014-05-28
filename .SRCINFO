@@ -1,0 +1,13 @@
+pkgbase = arcctl
+	pkgdesc = CLI tools to manage Areca's ARC11xx/ARC12xx/ARC16xx/ARC18xx RAID controllers
+	pkgver = 1.14.2
+	pkgrel = 1
+	url = http://www.areca.com.tw/support/s_linux/linux.htm
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://www.areca.us/support/s_linux/cli/linuxcli_V1.14.2_140528.zip
+	sha256sums = ee7dc5a300c3e4eaf47c80a9987a8842405d3da8735e78e9c294dad725254b26
+
+pkgname = arcctl
+
