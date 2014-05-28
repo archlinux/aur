@@ -4,9 +4,8 @@
 
 _pkgname=elementary
 pkgbase=$_pkgname-git
-pkgname=$_pkgname-git
-true && pkgname=("$_pkgname-git" "elementary_test-git")
-pkgver=1.9.99.10075.86a2fcd
+pkgname=("$_pkgname-git" "elementary_test-git")
+pkgver=1.10.99.10200.2112ed2
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -67,8 +66,8 @@ package_elementary-git() {
 }
 
 package_elementary_test-git() {
-  true && pkgdesc="Test application for Elementary"
-  true && depends=('elementary')
+  pkgdesc="Test application for Elementary"
+  depends=('elementary')
   provides=("${pkgname%-*}=$pkgver")
   conflicts=("${pkgname%-*}")
 
