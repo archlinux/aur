@@ -2,14 +2,14 @@
 # Contributor: Peter Nguyen <peter.hieu.nguyen@gmail.com>
 
 pkgname=mongrel2
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Application, language, and network architecture agnostic web server"
 url="http://mongrel2.org"
 license=("BSD")
 arch=("i686" "x86_64")
 depends=("sqlite3" "zeromq")
-source=("https://github.com/zedshaw/mongrel2/releases/download/v1.9.0/$pkgname-v$pkgver.tar.gz")
+source=("https://github.com/zedshaw/mongrel2/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
 
 prepare() {
 	cd "$srcdir/$pkgname-v$pkgver"
@@ -36,4 +36,4 @@ package() {
 	make PREFIX="$pkgdir/usr" install;
 }
 
-sha256sums=('7a18abba633a105eff29e135acf6e07b25bdababec1ed37d9463d0ae4718e2b4')
+sha256sums=('dc491c9b06f1b32020fd977737fa16f99af6d99e7bfb2f80fcc53278dd44f398')
