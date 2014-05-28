@@ -1,0 +1,14 @@
+# -*- mode: shell-script; indent-tabs-mode: nil; -*-
+
+post_install() {
+  cat <<EOF
+>>> The Windows drivers and agent are installed as a disk image.
+
+>>> Mount /usr/share/spice-guest-tools/spice-guest-tools.iso
+>>> in your virtual machine in order to install it.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
