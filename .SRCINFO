@@ -1,0 +1,14 @@
+pkgbase = beancount-hg
+	pkgdesc = Double-Entry Accounting from Text Input
+	pkgver = r1443.0512ce36d618
+	pkgrel = 1
+	url = http://furius.ca/beancount/
+	arch = any
+	license = GPL
+	depends = python-bottle
+	depends = wget
+	source = beancount-hg::hg+https://hg.furius.ca/public/beancount/
+	sha1sums = SKIP
+
+pkgname = beancount-hg
+
