@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "Currently, you need to copy the templates folder from /usr/share/easyrpg-editor-qt"
+  echo "to your project folder."
+}
+
+post_upgrade() {
+  post_install
+}
