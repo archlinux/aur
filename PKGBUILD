@@ -3,16 +3,16 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
 url="http://www.swig.org/"
 license=('custom')
 depends=('pcre' 'gcc-libs')
-#checkdepends=('ruby' 'python' 'python2' 'java-environment' 'tcl' 'php' 'lua' 'ocaml' 'r' 'go')
+checkdepends=('ruby' 'python2' 'java-environment' 'tcl' 'php' 'lua' 'ocaml' 'r' 'go')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('10a1cc5ba6abbc7282b8146ccc0d8eefe233bfab')
+sha1sums=('68a70cc80a75bc8e08a5d7a9ec22cb6d7b034c2c')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -20,13 +20,10 @@ build() {
   make
 }
 
-# Testcases fail a LOT...
-<<EOF
 check() {
   cd ${pkgname}-${pkgver}
-  make check
+  make check || warning "Tests failed"
 }
-EOF
 
 package() {
   cd ${pkgname}-${pkgver}
