@@ -1,15 +1,15 @@
-# Maintainer: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Old Maintainer: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
 pkgname=fatattr
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Display or change attributes on a FAT filesystem"
 arch=('i686' 'x86_64')
 url="http://kernel.org/pub/linux/utils/fs/fat/fatattr/"
-license=('GPL')
-depends=('glibc')
+license=('GPL2')
 changelog='ChangeLog'
-source=(http://ftp.us.debian.org/debian/pool/main/f/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz)
+source=(http://ftp.debian.org/debian/pool/main/f/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz)
 sha256sums=('2dd7208dc259118dffa761ebd9ea509de635578b57cb871f836aa8dd66651d11')
 
 build() {

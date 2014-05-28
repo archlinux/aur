@@ -1,3 +1,15 @@
+2014-05-28 Mike Swanson <mikeonthecomputer@gmail.com>
+
+	* 1.0.1-5 :
+	Remove dependency on glibc, it's a base package and
+	unnecessary to explicitly specify it.
+
+	Remove ".us" from the Debian mirror URL. Debian's geo-
+	location servers should sort out the best mirror for any
+	given person in the world.
+
+	Change license to GPL2 explicitly.
+
 2012-11-21 Mike Swanson <mikeonthecomputer@gmail.com>
 
 	* 1.0.1-4 :
