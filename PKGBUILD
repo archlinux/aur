@@ -4,7 +4,7 @@
 
 _pkgname=evas_generic_loaders
 pkgname=$_pkgname-git
-pkgver=1.10.99.132.ed93671
+pkgver=1.10.99.135.d42fdc4
 pkgrel=1
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
@@ -42,7 +42,8 @@ build() {
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
   ./autogen.sh \
-    --prefix=/usr
+    --prefix=/usr \
+    --disable-gstreamer1
 
   make
 }
