@@ -29,9 +29,12 @@ class PackageBase(object):
     self.name = package.name
     self.version = package.version
     self.version_patch = version_patch
+    self.package_release = str(int(version_patch) + 1)
     self.licenses = package.licenses
     self.run_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.run_depends]))
     self.build_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.build_depends + package.buildtool_depends]))
+    # This may be the case for some metapackages
+    self.is_virtual = False
 
     # Build dependencies already added:
     if 'git' in self.build_dependencies:
@@ -69,8 +72,7 @@ class PackageBase(object):
     Arguments:
     - `url`: Valid URL pointing to a package.xml file.
     """
-    return catkin_pkg.package.parse_package_string(
-      urllib2.urlopen(url).read())
+    return catkin_pkg.package.parse_package_string(urllib2.urlopen(url).read())
 
   def _fix_dependencies(self, rosdep_urls, build_dep, run_dep):
     # Fix usual non-ROS dependencies:
@@ -186,7 +188,7 @@ pkgname='ros-%(distro)s-%(arch_package_name)s'
 pkgver='%(package_version)s'
 _pkgver_patch=%(package_version_patch)s
 arch=('any')
-pkgrel=1
+pkgrel=%(package_release)s
 license=('%(license)s')
 
 ros_makedepends=(%(ros_build_dependencies)s)
@@ -252,6 +254,7 @@ package() {
       'package_name': self.name,
       'package_version': self.version,
       'package_version_patch': self.version_patch,
+      'package_release': self.package_release,
       'package_url': self.repository_url,
       'license': ', '.join(self.licenses),
       'description': self.description,
@@ -277,7 +280,7 @@ url='%(site_url)s'
 pkgname='ros-%(distro)s-%(arch_package_name)s'
 pkgver='%(package_version)s'
 arch=('any')
-pkgrel=1
+pkgrel=%(package_release)s
 license=('%(license)s')
 
 ros_makedepends=(%(ros_build_dependencies)s)
@@ -294,7 +297,13 @@ md5sums=()
 """
 
   def __init__(self, distro, repository_url, name, version, version_patch):
-    super(MetaPackage, self).__init__(distro, repository_url, name, version, version_patch)
+    try:
+      super(MetaPackage, self).__init__(distro, repository_url, name, version, version_patch)
+    except urllib2.HTTPError:
+      # Virtual metapackage
+      # TODO: there should be a cleaner way to deal with this...
+      self.name = name
+      self.is_virtual = True
     self.packages = [Package(distro, repository_url, child_name, version, version_patch)
                      for child_name in distro.meta_package_package_names(name)]
 
@@ -316,6 +325,7 @@ md5sums=()
       'package_name': self.name,
       'package_version': self.version,
       'package_version_patch': self.version_patch,
+      'package_release': self.package_release,
       'license': ', '.join(self.licenses),
       'description': self.description,
       'site_url': self.site_url,
@@ -470,6 +480,11 @@ def generate_pkgbuild(distro, package, directory, force=False,
                         force=force, exclude_dependencies=exclude_dependencies,
                         no_overwrite=no_overwrite, recursive=recursive,
                         update=update, rosdep_urls=rosdep_urls, generated=generated)
+
+  # If this is a virtual package (i.e. not an actual package)
+  if package.is_virtual:
+    return
+
   if recursive:
     for dependency in package.run_dependencies + package.build_dependencies:
       if distro.is_package(dependency):
