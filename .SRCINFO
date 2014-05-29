@@ -1,7 +1,7 @@
 pkgbase = tor-browser-en
 	pkgdesc = Tor Browser Bundle: Anonymous browsing using firefox and tor
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	install = tor-browser-en.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = tor-browser-en
 	sha256sums = b89d89749c71dbc1c762148b20edd6cbd0e77a7e20e948c5a742effd7059a5d3
 	sha256sums = 3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7
 	sha256sums = 17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b
-	sha256sums = f25fedfa77b19a96488529e6d387411fb49a82e99e3a1a9708b88ad8b6e7d2aa
+	sha256sums = 84187ff6a6d0e74005b2bacbabb76187a926dee31e154dff633ee1f9f49f1c89
 
 pkgname = tor-browser-en
 

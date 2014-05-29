@@ -9,7 +9,7 @@ pkgver='3.6.1'
 _realpkgver='3.6.1'
 _realpkgver_i686='3.6.1'
 _language='en-US'
-pkgrel='1'
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
@@ -43,7 +43,7 @@ else
 fi
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
 			'17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
-			'f25fedfa77b19a96488529e6d387411fb49a82e99e3a1a9708b88ad8b6e7d2aa')
+			'84187ff6a6d0e74005b2bacbabb76187a926dee31e154dff633ee1f9f49f1c89')
 
 noextract=("tor-browser-linux${_pkgarch}-${_realpkgver}_${_language}.tar.xz")
 
