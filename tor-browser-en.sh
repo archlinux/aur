@@ -69,14 +69,12 @@ Options:
 EOF
 }
 
-while getopts ':hu' opt; do
-	case "$opt" in
-		h) usage; exit 0 ;;
-		u) update=1 ;;
-		:) echo "$0: Option '-$OPTARG' requires an argument" >&2
-			exit 1 ;;
-		*) echo "$0: Invalid option '-$OPTARG'" >&2
-			usage; exit 1 ;;
+args=()
+for arg; do
+	case "$arg" in
+		-h) usage; exit 0 ;;
+		-u) update=1 ;;
+		*) args+=("$arg") ;;
 	esac
 done
 
@@ -103,4 +101,4 @@ else
 fi
 
 # start tor-browser
-cd $INSTALL_DIRECTORY && './start-tor-browser'
+cd $INSTALL_DIRECTORY && './start-tor-browser' "${args[@]}"
