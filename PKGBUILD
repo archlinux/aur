@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -46,7 +46,8 @@ build() {
     --with-pidfile-dir=/run \
     --disable-spoof-source \
     --enable-ipv6 \
-    --disable-systemd
+    --disable-systemd \
+    --disable-json # non-buildable with current json-c package version
 
   make
 }

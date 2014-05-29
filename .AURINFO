@@ -25,20 +25,15 @@ pkgbase = syslog-ng-nosystemd
 	conflicts = syslog-ng-eudev
 	replaces = syslog-ng
 	replaces = syslog-ng-eudev
-	backup = etc/syslog-ng/scl.conf
-	backup = etc/syslog-ng/syslog-ng.conf
-	backup = etc/conf.d/syslog-ng
-	backup = etc/logrotate.d/syslog-ng
 	source = http://www.balabit.com/downloads/files/syslog-ng/sources/3.5.3/source/syslog-ng_3.5.3.tar.gz
 	source = syslog-ng.conf
 	source = syslog-ng.conf.d
 	source = syslog-ng.logrotate
 	source = syslog-ng.rc
-	sha1sums = 7a8070f384e0dba1dfd6622c40bc6e402fa6178f
-	sha1sums = cf61571ffde34ecf36be76881fce20944fd3efa4
-	sha1sums = eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd
-	sha1sums = 949128fe3d7f77a7aab99048061f885bc758000c
-	sha1sums = 94af81a84e3add6653755122cdd5080694de059d
+	backup = etc/syslog-ng/scl.conf
+	backup = etc/syslog-ng/syslog-ng.conf
+	backup = etc/conf.d/syslog-ng
+	backup = etc/logrotate.d/syslog-ng
 
 pkgname = syslog-ng-nosystemd
 
