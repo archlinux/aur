@@ -3,6 +3,7 @@
 # Copyright (C) 2009 Benjamin Drung <bdrung at ubuntu dot com>
 # Copyright (C) 2012 Alessio Sergi <al3hex at gmail dot com>
 # modified 2012 for tor-browser (Max Roder <maxroder at web dot de>)
+# modified 2014 by Yardena Cohen <yardenack at gmail dot com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
