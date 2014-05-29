@@ -63,8 +63,8 @@ usage() {
 Usage: ${0##*/} [option]
 
 Options:
-  -h				Show this help message and exit
-  -u				Force update of the copy in your home directory
+  -h|--help         Show this help message and exit
+  -u|--update       Force update of the copy in your home directory
   -r <directory>	The Tor-Browser directory to use
 EOF
 }
@@ -72,8 +72,8 @@ EOF
 args=()
 for arg; do
 	case "$arg" in
-		-h) usage; exit 0 ;;
-		-u) update=1 ;;
+		-h|--help)   usage; exit 0 ;;
+		-u|--update) update=1 ;;
 		*) args+=("$arg") ;;
 	esac
 done
