@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -44,7 +44,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-1.6.2-statedir.patch
         # Debian
         get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
-md5sums=('f06a997d4b71b81b23324e27174f93e7'
+md5sums=('d498c3020acda0904ab0c13b6389a1ec'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'f861b18f4446c43918c8643dcbbd7f6d'
          '96f82c38f3f540b53f3e5144900acf17'
