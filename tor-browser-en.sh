@@ -63,6 +63,8 @@ Options:
   -h|--help         Show this help message and exit
   -u|--update       Force update of the copy in your home directory
   --dir=<directory> The Tor-Browser directory to use
+
+  All unrecognized arguments will be passed to the browser.
 EOF
 }
 
