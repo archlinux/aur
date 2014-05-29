@@ -25,10 +25,6 @@ VERSION='REPL_VERSION'
 LANGUAGE="REPL_LANGUAGE"
 PKGARCH="REPL_ARCH"
 
-DIRECTORY=~/.$NAME
-INSTALL_DIRECTORY=$DIRECTORY/INSTALL
-VERSION_FILE=$DIRECTORY/VERSION
-LOG_FILE=$DIRECTORY/LOG
 ARCH=$(getconf LONG_BIT)
 
 notify() {
@@ -65,18 +61,24 @@ Usage: ${0##*/} [option]
 Options:
   -h|--help         Show this help message and exit
   -u|--update       Force update of the copy in your home directory
-  -r <directory>	The Tor-Browser directory to use
+  --dir=<directory> The Tor-Browser directory to use
 EOF
 }
 
+DIRECTORY=~/.$NAME
 args=()
 for arg; do
 	case "$arg" in
 		-h|--help)   usage; exit 0 ;;
 		-u|--update) update=1 ;;
+		--dir=*)     DIRECTORY="${arg#*=}" ;;
 		*) args+=("$arg") ;;
 	esac
 done
+
+INSTALL_DIRECTORY=$DIRECTORY/INSTALL
+VERSION_FILE=$DIRECTORY/VERSION
+LOG_FILE=$DIRECTORY/LOG
 
 # create directory, if it is missing (e.g. first run)
 [[ ! -d "$INSTALL_DIRECTORY" ]] && mkdir -p "$INSTALL_DIRECTORY"
