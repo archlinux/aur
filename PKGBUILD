@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -77,6 +77,10 @@ package_libpurple(){
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
   done
+
+  # Remove GConf schema file
+  rm "$pkgdir/etc/gconf/schemas/purple.schemas"
+  rmdir "$pkgdir"/etc{/gconf{/schemas,},}
 }
 
 package_finch(){
