@@ -3,7 +3,7 @@
 
 pkgname=snapper
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('i686' 'x86_64')
 url="http://snapper.io"
@@ -14,12 +14,19 @@ optdepends=('pam: pam_snapper')
 backup=('etc/conf.d/snapper')
 source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2")
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # boost fixlets - Arch doesn't use -mt suffix
-  sed -i -e 's@lboost_thread-mt@lboost_thread@g' snapper/Makefile.am
-  sed -i -e 's@lboost_system-mt@lboost_system@g' snapper/Makefile.am
+  sed -e 's@lboost_thread-mt@lboost_thread@g' \
+      -e 's@lboost_system-mt@lboost_system@g' \
+      -i snapper/Makefile.am
+
+  # cron names
+  sed -e 's@suse.de-snapper@snapper@g' -i scripts/Makefile.am
+
+  # fix sysconf dir
+  sed -e 's@/etc/sysconfig@/etc/conf.d@g' -i scripts/*snapper*
 
   # fix pam plugin install location
   sed -i -e 's@shell echo /@shell echo /usr/@g' pam/Makefile.am
@@ -32,6 +39,10 @@ build() {
 
   # man pages sysconfig location
   sed -i -e 's@/etc/sysconfig@/etc/conf.d@g' doc/*
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
 
   aclocal
   libtoolize --force --automake --copy
@@ -60,4 +71,3 @@ package() {
 }
 
 sha256sums=('0fbe2b5520d7a22e6212ef41304b5ec43006ab47cf99800d3266a00bc53e56b9')
-
