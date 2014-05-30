@@ -7,7 +7,7 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=212
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -49,6 +49,9 @@ prepare() {
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
+
+  # LTO currently breaks the build because of libtool failures
+  CFLAGS+=' -fno-lto'
 
   ./configure \
       --libexecdir=/usr/lib \
