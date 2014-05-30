@@ -1,12 +1,11 @@
-# $Id: PKGBUILD 193957 2013-09-08 17:18:11Z bisson $
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 
 pkgname=xpdf
-#pkgver=3.03_pl1
-pkgver=3.03
-pkgrel=4
+pkgver=3.04
+pkgrel=1
 pkgdesc='Viewer for Portable Document Format (PDF) files'
 url='http://www.foolabs.com/xpdf/'
 license=('GPL2')
@@ -14,14 +13,9 @@ arch=('i686' 'x86_64')
 depends=('lesstif' 'gsfonts' 'libxt')
 optdepends=('poppler: tools that used to be included in xpdf'
             'desktop-file-utils: for desktop environments')
-#       "ftp://ftp.foolabs.com/pub/${pkgname}/${pkgname}-${pkgver%_*}pl1.patch"
 source=("ftp://ftp.foolabs.com/pub/${pkgname}/${pkgname}-${pkgver%_*}.tar.gz"
-        'sanitize.patch'
-        'char.patch'
         'desktop')
-sha1sums=('499423e8a795e0efd76ca798239eb4d0d52fe248'
-          '2face78a2f550fd15eeceb8a1ce47c566104f457'   
-          '5c471944685a6b24a2b0c0e000562d1a3263aeeb'
+sha1sums=('b9b1dbb0335742a09d0442c60fd02f4f934618bd'
           '17ebbfe457cb92e97b12b7362e8ce961526012d9')
 
 install=install
@@ -29,10 +23,6 @@ backup=('etc/xpdfrc')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver%_*}"
-
-#	patch -p1 -i "../${pkgname}-${_srcver}pl1.patch"
-	patch -p1 -i ../sanitize.patch
-	patch -p1 -i ../char.patch
 
 	sed -i 's:/usr/share/fonts/type1/gsfonts:/usr/share/fonts/Type1:' xpdf/GlobalParams.cc
 	sed -i 's:times-medium-r-normal--16:times-medium-r-normal--14:' xpdf/XPDFViewer.cc # FS#14217
