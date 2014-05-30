@@ -6,7 +6,7 @@ pkgbase=python-biopython
 pkgname=('python-biopython' 'python2-biopython')
 _pkgname=biopython
 pkgver=1.64
-pkgrel=1
+pkgrel=2
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('i686' 'x86_64')
 url="http://www.biopython.org"
@@ -32,6 +32,7 @@ build() {
 
 package_python-biopython() {
   depends=('python-numpy')
+  optdepends=('python-mysql-connector: for BioSQL module')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}"
@@ -41,6 +42,7 @@ package_python-biopython() {
 package_python2-biopython() {
   depends=('python2-numpy')
   optdepends=('python2-reportlab: for pdf graphics code'
+              'python2-mysql-connector: for BioSQL module'
               'mysql-python: for BioSQL module')
 
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
