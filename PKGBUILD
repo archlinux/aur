@@ -7,6 +7,7 @@
 # Contributor: Sandman <the0sandman@hotmail.com>
 # Contributor: raw <spam@rw23.de>
 # Contributor: Dave Simons <miouhpi@gmail.com>
+# Contributor: Dominik Hannen <cantares1+github@gmail.com>
 #
 # NOTE: To request changes to this package, please submit a pull request
 #       to the GitHub repository at https://github.com/ido/packages-archlinux
@@ -14,7 +15,7 @@
 #
 
 pkgname=ceph-git
-pkgver=0.72.255.g574cb61
+pkgver=0.80.693.g3b884be
 pkgrel=1
 epoch=1
 pkgdesc='Distributed, fault-tolerant file system delivering object, block, and file storage in one unified system.'
@@ -61,6 +62,20 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%%-git}"
+
+  git clean -fdx && git reset --hard
+  git submodule foreach 'git clean -fdx && git reset --hard'
+  rm -rf ceph-object-corpus
+  rm -rf src/leveldb
+  rm -rf src/libs3
+  rm -rf src/mongoose
+  rm -rf src/civetweb
+  rm -rf src/erasure-code/jerasure/gf-complete
+  rm -rf src/erasure-code/jerasure/jerasure
+  rm -rf .git/modules/
+  git submodule sync
+  git submodule update --init
+  git clean -fdx
 
   ./autogen.sh
   LIBS="-lpthread -lboost_system" ./configure \

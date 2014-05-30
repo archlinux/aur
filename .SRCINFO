@@ -1,6 +1,6 @@
 pkgbase = ceph-git
 	pkgdesc = Distributed, fault-tolerant file system delivering object, block, and file storage in one unified system.
-	pkgver = 0.72.255.g574cb61
+	pkgver = 0.80.693.g3b884be
 	pkgrel = 1
 	epoch = 1
 	url = http://ceph.newdream.net/
