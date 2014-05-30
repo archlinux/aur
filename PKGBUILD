@@ -43,7 +43,7 @@ else
 fi
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
 			'17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
-			'84187ff6a6d0e74005b2bacbabb76187a926dee31e154dff633ee1f9f49f1c89')
+			'1c1fbfa21973a2991db8a58f718656fc835dda03257c951432500bbd5dd8d3f5')
 
 noextract=("tor-browser-linux${_pkgarch}-${_realpkgver}_${_language}.tar.xz")
 

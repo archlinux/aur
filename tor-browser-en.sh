@@ -108,4 +108,4 @@ else
 fi
 
 # start tor-browser
-cd $INSTALL_DIRECTORY && ./start-tor-browser --class Tor-Browser "${args[@]}"
+cd $INSTALL_DIRECTORY && ./start-tor-browser --class Tor\ Browser "${args[@]}"
