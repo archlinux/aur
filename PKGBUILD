@@ -8,8 +8,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-pkgver=2.24.1
-pkgrel=4
+pkgver=2.24.2
+pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -27,26 +27,12 @@ source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.24/${pkgnam
         uuidd.tmpfiles
         pam-login
         pam-common
-        pam-su
-        move_is_mountinfo.patch
-        0001-switch_root-verify-initramfs-by-f_type-not-devno.patch
-        0001-libmount-FS-id-and-parent-ID-could-be-zero.patch)
-md5sums=('88d46ae23ca599ac5af9cf96b531590f'
+        pam-su)
+md5sums=('3f191727a0d28f7204b755cf1b6ea0aa'
          'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
-         'fa85e5cce5d723275b14365ba71a8aad'
-         '4cdc5f9a6e51b032274761a82937d438'
-         'b7ca79a0d5318b7cd813bb2573a3f9a9'
-         '2f4bc305bd11d6bfaa81e6c1eb0c6f1b')
-
-prepare() {
-  cd "${pkgname/-selinux}-$pkgver"
-
-  patch -p1 -i "${srcdir}/move_is_mountinfo.patch"
-  patch -p1 -i "${srcdir}/0001-libmount-FS-id-and-parent-ID-could-be-zero.patch"
-  patch -p1 -i "${srcdir}/0001-switch_root-verify-initramfs-by-f_type-not-devno.patch"
-}
+         'fa85e5cce5d723275b14365ba71a8aad')
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
