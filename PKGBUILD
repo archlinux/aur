@@ -10,21 +10,21 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.4.17
-_pkgver=2055
+pkgver=1.5.0
+_pkgver=2278
 pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++')
+depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++' 'libxkbcommon-x11')
 makedepends=('libxt' 'cmake' 'qt5-base' 'unzip')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
-source=("http://fossfiles.com/synergy/synergy-${pkgver}-r${_pkgver}-Source.tar.gz"
+source=("http://synergy-project.org/files/packages/synergy-${pkgver}-r${_pkgver}-Source.tar.gz"
         "synergys.socket"
         "synergys.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
-sha1sums=('a28fd5c7e709e6ee85501e9ed4496d060d3e5c22'
+sha1sums=('808f1d793e5e977241bbef7e28fd02990adf8a47'
           '947406e72351145c65ba9884ed175bf781482d46'
           '00f2259c31c9551c0830d9e889fd0a0790cf9045'
           '8e321e664ae4b7a763175524dd938a88d85c7909')
