@@ -3,7 +3,7 @@
 
 pkgname=perl-crypt-ssleay
 pkgver=0.72
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSSL glue that provides LWP https support"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Crypt-SSLeay"
