@@ -50,6 +50,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname%%-git}"
+  git submodule sync
+  git submodule update --init
+
   # Fix for newer version of automake.
   #find . -name 'Makefile.am' | while read makefile ; do
   #  if grep -q AUTOMAKE_OPTIONS "$makefile" ; then
@@ -62,20 +65,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname%%-git}"
-
-  git clean -fdx && git reset --hard
-  git submodule foreach 'git clean -fdx && git reset --hard'
-  rm -rf ceph-object-corpus
-  rm -rf src/leveldb
-  rm -rf src/libs3
-  rm -rf src/mongoose
-  rm -rf src/civetweb
-  rm -rf src/erasure-code/jerasure/gf-complete
-  rm -rf src/erasure-code/jerasure/jerasure
-  rm -rf .git/modules/
-  git submodule sync
-  git submodule update --init
-  git clean -fdx
 
   ./autogen.sh
   LIBS="-lpthread -lboost_system" ./configure \
