@@ -3,7 +3,7 @@
 
 pkgname="cups-nosystemd"
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -46,7 +46,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
 md5sums=('d498c3020acda0904ab0c13b6389a1ec'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
-         'f861b18f4446c43918c8643dcbbd7f6d'
+         '26e9b4e65c0a4d76db5737c9b156fd80'
          '96f82c38f3f540b53f3e5144900acf17'
          '3ba9e3410df1dc3015463d615ef91b3b'
          'cc4101beccb5ed6deb1c92707a575925'

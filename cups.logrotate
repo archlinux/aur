@@ -1,8 +1,4 @@
-/var/log/cups/*log {
+/var/log/cups/*_log {
    missingok
    notifempty
-   delaycompress
-   postrotate
-      /bin/kill -HUP `cat /var/run/cups.pid 2>/dev/null` 2>/dev/null || true
-   endscript
 }
