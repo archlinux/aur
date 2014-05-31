@@ -1,9 +1,11 @@
 #!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 
 from __future__ import print_function
 
 import catkin_pkg.package
 from optparse import OptionParser
+import sys
 import os
 import os.path
 import urllib2
@@ -402,7 +404,9 @@ class DistroDescription(object):
         return (self._distro['repositories'][name]['release'].get('packages') != None)
 
   def _get_package_data(self, name):
-    """Searches for `name` in all known packages and metapackages."""
+    """
+    Searches for `name` in all known packages and metapackages.
+    """
     if self._distro['repositories'].get(name):
       try:
         return self._distro['repositories'][name]['release']
@@ -416,13 +420,25 @@ class DistroDescription(object):
           return self._distro['repositories'][package]['release']
 
 
-def list_packages(distro_description):
-  print(*sorted(distro_description.package_names()), sep='\n')
+def list_packages(distro_desc, distro_dir=None):
+  """
+  List available packages.
+  """
+  if not distro_dir or not os.path.isdir(distro_dir):
+    print(*sorted(distro_desc.package_names()), sep='\n')
+  else:
+    # For each package, check if a PKGBUILD has already been generated
+    for name in sorted(distro_desc.package_names()):
+      if os.path.isfile(os.path.join(distro_dir, name, "PKGBUILD")):
+        print("[✓] %s" % (colored(name, 'green', attrs=['bold'])))
+      else:
+        print("[ ] %s" % name)
 
 
 ### From http://code.activestate.com/recipes/577058/ (r2)
 def query_yes_no(question, default="yes"):
-  """Ask a yes/no question via raw_input() and return their answer.
+  """
+  Ask a yes/no question via raw_input() and return their answer.
 
   "question" is a string that is presented to the user.
   "default" is the presumed answer if the user just hits <Enter>.
@@ -469,6 +485,9 @@ def github_raw_url(repo_url, path, commitish):
 def generate_pkgbuild(distro, package, directory, force=False,
                       no_overwrite=False, recursive=False, update=False,
                       exclude_dependencies=[], rosdep_urls=[], generated=None):
+  """
+  Generate a PKGBUILD file for the given package and the given ROS distribution.
+  """
   if generated is None:
     generated = set()
   elif package.name in generated:
@@ -524,28 +543,36 @@ def main():
                     help='Select the ROS distro to use.')
   parser.add_option('--list-packages', dest='list_packages', action='store_true',
                     default=False, help='Lists all available packages.')
-  parser.add_option('--output-directory', metavar='output_directory', default='.',
-                    help='The output directory. Packages are put into <output-directory>/<name>')
+  parser.add_option('--output-directory', metavar='output_directory',
+                    default=None,
+                    help='The output directory. Packages are put into '
+                         '<output-directory>/<name>')
   default_distro_url = 'https://raw.github.com/ros/rosdistro/master/%s/distribution.yaml'
-  parser.add_option(
-    '--distro-url', metavar='distro_url', default=default_distro_url,
-    help='The URL of the distro description. %s is replaced by the actual distro name')
+  parser.add_option('--distro-url', metavar='distro_url',
+                    default=default_distro_url,
+                    help='The URL of the distro description. %s is replaced by '
+                         'the actual distro name')
   default_rosdep_url = 'https://raw.github.com/ros/rosdistro/master/rosdep/%s.yaml'
-  parser.add_option(
-    '--rosdep-urls', metavar='rosdep_urls',
-    default=[default_rosdep_url % 'base', default_rosdep_url % 'python', default_rosdep_url % 'ruby'],
-    help='The URLs of the rosdep mapping files.')
-  parser.add_option(
-    '--exclude-dependencies', metavar='exclude_dependencies',
-    default='',
-    help='Comma-separated list of (source) package dependencies to exclude from the generated PKGBUILD file.')
-  parser.add_option('-f', '--force', dest='force', action='store_true', default=False,
+  parser.add_option('--rosdep-urls', metavar='rosdep_urls',
+                    default=[default_rosdep_url % 'base',
+                             default_rosdep_url % 'python',
+                             default_rosdep_url % 'ruby'],
+                    help='The URLs of the rosdep mapping files.')
+  parser.add_option('--exclude-dependencies', metavar='exclude_dependencies',
+                    default='',
+                    help='Comma-separated list of (source) package dependencies'
+                    ' to exclude from the generated PKGBUILD file.')
+  parser.add_option('-f', '--force', dest='force', action='store_true',
+                    default=False,
                     help='Always overwrite exiting PKGBUILD files.')
-  parser.add_option('-n', '--no-overwrite', dest='no_overwrite', action='store_true', default=False,
+  parser.add_option('-n', '--no-overwrite', dest='no_overwrite',
+                    action='store_true', default=False,
                     help='Do not overwrite PKGBUILD files.')
-  parser.add_option('-r','--recursive', dest='recursive', action='store_true', default=False,
+  parser.add_option('-r','--recursive', dest='recursive',
+                    action='store_true', default=False,
                     help='Recursively import dependencies')
-  parser.add_option('-u','--update', dest='update', action='store_true', default=False,
+  parser.add_option('-u','--update', dest='update',
+                    action='store_true', default=False,
                     help='Update PKGBUILD if a newer version is found.')
   options, args = parser.parse_args()
 
@@ -553,12 +580,25 @@ def main():
     # Use legagy fuerte URL
     options.distro_url = 'https://raw.github.com/ros/rosdistro/master/releases/%s.yaml'
 
-  distro = DistroDescription(
-    options.distro, url=options.distro_url % options.distro)
+  distro = DistroDescription(options.distro,
+                             url=options.distro_url % options.distro)
+
+  if options.output_directory:
+    if os.path.isdir(options.output_directory):
+      distro_dir = os.path.abspath(options.output_directory)
+    else:
+      print("Invalid --output-directory. Exiting.")
+      sys.exit()
+  else:
+    distro_dir = None
+
   if options.list_packages:
-    list_packages(distro)
+    list_packages(distro, distro_dir)
     return
   elif args:
+    if not distro_dir:
+      print("Missing mandatory --output-directory. Exiting.")
+      sys.exit()
     generated = set()
     if os.path.isfile(updated_packages_file):
       # Load dump of already updated packages to speedup updates
@@ -573,8 +613,7 @@ def main():
               % (colored(package, 'yellow', attrs=['bold'])))
 
     for package in args:
-      generate_pkgbuild(distro, distro.package(package),
-                        os.path.abspath(options.output_directory),
+      generate_pkgbuild(distro, distro.package(package), distro_dir,
                         exclude_dependencies=options.exclude_dependencies.split(','),
                         force=options.force, no_overwrite=options.no_overwrite,
                         update=options.update, recursive=options.recursive,

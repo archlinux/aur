@@ -26,7 +26,7 @@ pkgbase = ros-build-tools
 	md5sums = d257f7f20384e894b0431ee61068aa96
 	md5sums = 563c9d1320a3a997db25d3087303dcfb
 	md5sums = 8d6d7eb89a12c449497b209f1a06655b
-	md5sums = 39d8cf11d84e172048bbefd79b71e33c
+	md5sums = 77844d066c1aedf9b3373ad9ab81fcaa
 	md5sums = 07f5253eb3f8cb5295c32026a20ab6c0
 
 pkgname = ros-build-tools
