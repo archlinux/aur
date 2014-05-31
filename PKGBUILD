@@ -21,6 +21,10 @@ pkgver() {
   printf "$(python setup.py -V).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  sed -i 's|libexec|lib/polkit-efl|' "$srcdir/$_pkgname/setup.py"
+}
+
 build() {
   cd "$srcdir/$_pkgname"
 
