@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname='2bwm-git'
-pkgver=0.1.r53.g13a50a6
-pkgrel=2
+pkgver=0.1.r69.g29dbc7a
+pkgrel=1
 pkgdesc="A fast floating window manager"
 arch=('i686' 'x86_64')
 url="https://github.com/venam/2bwm"
