@@ -6,7 +6,7 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 
 pkgname=tengine-extra
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ optdepends=(
 source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate)
-sha256sums=('03aaf217d9ddd43f19f3effb9784e031900e41feb5ef399e3e7b0dabc1b89ec7'
+sha256sums=('ed024b6040e8f03df575fe7d7a9d274159e2543cd6854d89e173935e930fdfdb'
             '622205fb90998de2ebacac61c8eee748f89c193d14be44ee39e08ae1e257c90f'
             '245c23906db2a9642fed996ff969e127989a6dcae865c1dd8b422e23ebc94f42')
 
