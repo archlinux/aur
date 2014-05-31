@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Polkit-EFL
-GenericName=Polkit Authentication Agent
-NoDisplay=1
-Comment=Polkit Authentication Agent for EFL
-Exec=/usr/bin/polkit-efl-authentication-agent-1
