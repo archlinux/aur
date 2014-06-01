@@ -9,7 +9,6 @@ pkgbase = xde-styles
 	makedepends = git
 	depends = m4
 	source = xde-styles::git://github.com/bbidulock/xde-styles.git
-	md5sums = SKIP
 
 pkgname = xde-styles
 
