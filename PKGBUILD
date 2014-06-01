@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect
-pkgver=0.4.0
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ makedepends=('cmake' 'libxmu' 'python2-numpy')
 optdepends=('opencv: support for python demos'
             'python2-matplotlib: support for python demos')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/OpenKinect/libfreenect/archive/v${pkgver}.tar.gz)
-md5sums=(dcc66679e6c82612f8d1187e606277c2)
-sha256sums=(291da3812dfa7bea70b19ca3dc51bce8d403c21e0a11ca57641f4df1392c40a8)
-sha384sums=(0baa8bdc8cf89175e43c004c24a91ec62198795973a2b4e8c90787a4d4924a3edde45f2959d311754f0bc464d113333a)
-sha512sums=(d7ec3425c73e2a863e6a5880e85cf559dfe0b08e03b8851bde40afcfc9c2fc9a84eb941cda0a4de6e3a1bd31a2d272bf566c8f34588f0b66bd3986502f9bd7fd)
+md5sums=('751ee097a4dc3ecc0f412d6592f14858')
+sha256sums=('65a67ae16c0c5c39ab33302a5d25bfe126b69bdf19063eb526db908f912c6410')
+sha384sums=('a451927e6c1382651ecd6bd0dda8b5a55699fad4113b20aa40aa9ec5f48f559fa87d97e06e355712c69b573d070d6253')
+sha512sums=('3139d29d6dd39b51a4c75bf95097f59f4fd7feb85fcfa7c999987c1c11fde8c4977380fa28d7c83ae54e32ba23488950a6a8bb1ebff09a69c465a42e4dba6c6b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
