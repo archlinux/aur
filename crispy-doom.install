@@ -1,0 +1,11 @@
+post_install() {
+  cat <<EOF
+>>> Copy any IWAD files to the global default /usr/share/games/doom
+>>>
+>>> In order to allow co-existence with Chocolate Doom, the following
+>>> manual pages have been removed:
+>>>   default.cfg heretic.cfg hexen.cfg strife.cfg
+>>> They are identical to and are available in the Chocolate Doom packages
+>>> instead.
+EOF
+}

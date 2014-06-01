@@ -1,0 +1,49 @@
+pkgbase = crispy-doom
+	pkgdesc = Chocolate Doom with vanilla-compatible enhancements
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://fabiangreffrath.github.io/crispy-doom
+	install = crispy-doom.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = python
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	source = https://github.com/fabiangreffrath/crispy-doom/archive/crispy-doom-1.3.tar.gz
+	sha256sums = e9930b0b22f20f2f2df030b77fb53a4af597223ae278a04c8636dd014d55dd43
+
+pkgname = crispy-doom
+	pkgdesc = Doom port accurately reproducing the original v1.9 EXEs.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = crispy-common
+
+pkgname = crispy-heretic
+	pkgdesc = Heretic port accurately reproducing the original v1.3 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = crispy-common
+
+pkgname = crispy-hexen
+	pkgdesc = Hexen port accurately reproducing the original v1.1 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = crispy-common
+
+pkgname = crispy-strife
+	pkgdesc = Strife port accurately reproducing the original v1.31 EXE.
+	depends = libsamplerate
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = crispy-common
+
+pkgname = crispy-common
+	pkgdesc = Files shared in common with Crispy Doom-based games.
+	depends = sdl_net
+
