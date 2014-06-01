@@ -1,0 +1,18 @@
+pkgbase = istatd
+	pkgdesc = iStat Server for Linux
+	pkgver = 0.5.8
+	pkgrel = 2
+	url = http://bjango.com/iphone/istat/
+	install = istatd.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libxml2
+	provides = istatd
+	source = https://github.com/downloads/tiwilliam/istatd/istatd-0.5.8.tar.gz
+	source = istatd.service
+	sha256sums = 6ef28191b4bdfc3dcf21ec21111853cc70e7d8fee7b0ced5d4e174b92637bf51
+	sha256sums = a72b9624055e6e6749ca9907c54d82caa84ae72e510345758aedd120dcb52b10
+
+pkgname = istatd
+

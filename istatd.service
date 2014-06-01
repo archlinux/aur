@@ -1,0 +1,9 @@
+[Install]
+Description=iStat Mobile server
+WantedBy=multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/istatd -d --pid=/var/run/istat/istatd.pid
+PIDFile=/var/run/istat/istatd.pid
+

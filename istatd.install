@@ -1,0 +1,6 @@
+post_install() {
+useradd istat
+mkdir -p /var/{run,cache}/istat
+chown istat.istat /var/{run,cache}/istat
+echo "Remember to edit istat.conf and change the server_code before running"
+}
