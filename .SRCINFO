@@ -1,0 +1,16 @@
+pkgbase = ectool-svn
+	pkgdesc = ectool is a small utility that dumps the RAM of a laptop's Embedded/Environmental Controller (EC)
+	pkgver = r6637
+	pkgrel = 1
+	url = http://www.coreboot.org/Ectool
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	conflicts = ectool
+	replaces = ectool
+	source = svn://coreboot.org/coreboot/trunk/util/ectool
+	md5sums = SKIP
+
+pkgname = ectool-svn
+
