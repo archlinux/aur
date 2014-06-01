@@ -33,13 +33,10 @@ pkgbase = networkmanager-ifupdown
 	optdepends = ppp: Dialup connection support
 	provides = networkmanager=0.9.8.10
 	conflicts = networkmanager
-	backup = etc/NetworkManager/NetworkManager.conf
 	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-0.9.8.10.tar.xz
 	source = NetworkManager.conf
 	source = disable_set_hostname.patch
-	sha256sums = 064d27223d3824859df12e1fb25b787fec1c68bbc864dc52a0289b9211c4c972
-	sha256sums = 44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21
-	sha256sums = 25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460
+	backup = etc/NetworkManager/NetworkManager.conf
 
 pkgname = networkmanager-ifupdown
 
