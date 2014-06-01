@@ -13,7 +13,6 @@ pkgbase = xde-theme
 	depends = libxrandr
 	optdepends = xde-styles: for styles that work with xde-style
 	source = xde-theme::git://github.com/bbidulock/xde-theme.git
-	md5sums = SKIP
 
 pkgname = xde-theme
 
