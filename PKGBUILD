@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
-_pkgname=polkit-efl-authentication-agent
+_pkgname=polkit-efl
 pkgname=$_pkgname-git
-pkgver=0.1.r71.d990ed0
+pkgver=0.1.r72.b814ee2
 pkgrel=1
 pkgdesc="Polkit Authentication Agent using EFL"
 arch=('any')
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('python-efl' 'polkit')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/devs/kuuko/$_pkgname.git")
+conflicts=("$_pkgname" "polkit-efl-authentication-agent-git")
+source=("git://git.enlightenment.org/misc/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
