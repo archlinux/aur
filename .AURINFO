@@ -16,7 +16,6 @@ pkgbase = tsclient2
 	depends = desktop-file-utils
 	conflicts = tsclient
 	source = http://downloads.sourceforge.net/sourceforge/tsclient/tsclient-2.0.1.tar.bz2
-	md5sums = 3de7131156f37c5ef1028a5f03ed021b
 
 pkgname = tsclient2
 
