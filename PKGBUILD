@@ -1,5 +1,6 @@
 # Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: PHAM Van Diep <imeo at favadi dot com>
+# Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=volti
 pkgver=0.2.3
@@ -8,7 +9,7 @@ pkgdesc="GTK+ mixer application for controlling alsa audio volume from system tr
 arch=('any')
 url="http://code.google.com/p/volti/"
 license=('GPL3')
-depends=('pygtk' 'python2-pyalsaaudio' 'dbus-python')
+depends=('pygtk' 'python2-pyalsaaudio' 'python2-dbus')
 optdepends=('python2-xlib: Multimedia keys support')
 source=("http://volti.googlecode.com/files/volti-$pkgver.tar.gz")
 sha256sums=('216ca23cd4e8921ea73922125048e4f23fd3146045c0ef17cc4e10108dbd80dc')
