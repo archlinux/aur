@@ -2,7 +2,7 @@
 # Based on a PKGBUILD by: Rich Li <rich at dranek com>
 pkgname=python-pyshp
 _pkgname=pyshp
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Python read/write support for ESRI Shapefile format"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-setuptools')
 options=('!emptydirs')
 source=(https://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('16e9a9b5caae5b69149c7be09415381b61af4f85f2087d08c0698c75e70000e7')
+sha256sums=('eb4a1999f7c7bd573f3c8920344f50bd86221114980f07f521858d23654a33b0')
 
 package() {
 	 cd "$srcdir/$_pkgname-$pkgver"
