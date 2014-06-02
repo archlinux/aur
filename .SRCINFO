@@ -1,0 +1,17 @@
+pkgbase = python2-xlib-svn
+	pkgdesc = A fully functional X client library for Python programs (development version)
+	pkgver = 0.15rc1.r171
+	pkgrel = 1
+	url = http://python-xlib.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = python2
+	depends = libx11
+	provides = python2-xlib
+	conflicts = python2-xlib
+	source = python2-xlib-svn::svn+https://svn.code.sf.net/p/python-xlib/code/trunk
+	md5sums = SKIP
+
+pkgname = python2-xlib-svn
+
