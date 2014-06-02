@@ -10,6 +10,7 @@ url="http://www.enlightenment.org"
 license=('GPL3')
 depends=('python-efl' 'polkit')
 makedepends=('git')
+optdepends=('python-psutil: For process details')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "polkit-efl-authentication-agent-git")
 source=("git://git.enlightenment.org/misc/$_pkgname.git")

@@ -8,6 +8,7 @@ pkgbase = polkit-efl-git
 	makedepends = git
 	depends = python-efl
 	depends = polkit
+	optdepends = python-psutil: For process details
 	provides = polkit-efl=0.1.r72.b814ee2
 	conflicts = polkit-efl
 	conflicts = polkit-efl-authentication-agent-git
