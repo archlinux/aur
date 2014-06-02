@@ -1,19 +1,19 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=distro-info
 _python=python2
-pkgver=0.11
+pkgver=0.13
 pkgrel=1
 pkgdesc="provides information about the distributions' releases"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/distro-info"
 license=('MIT')
-depends=('distro-info-data')
+depends=('distro-info-data>=0.21')
 makedepends=('shunit2' 'perl' 'python-distribute' 'python2-distribute' 'python-pylint')
 provides=('python-distro-info' 'python2-distro-info' 'perl-distro-info')
 conflicts=('python-distro-info' 'python2-distro-info' 'perl-distro-info')
 options=(!emptydirs)
-source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.gz)
-md5sums=('9256261319aea276310d6d3f2b042697')
+source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
+sha256sums=('f4d458563d2efdb0249aad0b7ab25ee8368653f4543f4dd22fb2bd2d740d5fb7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
