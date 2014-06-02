@@ -2,7 +2,7 @@
 
 pkgname=easyrpg-player
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
@@ -22,5 +22,5 @@ build () {
 }
 
 package () {
-  make -C $_name DESTDIR="$pkgdir/" install
+  make -C $pkgname-$pkgver DESTDIR="$pkgdir/" install
 }

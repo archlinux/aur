@@ -1,7 +1,7 @@
 pkgbase = easyrpg-player
 	pkgdesc = FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://easy-rpg.org/
 	install = easyrpg-player.install
 	arch = i686
