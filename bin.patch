@@ -1,6 +1,6 @@
-diff -Naur neo4j-community-2.0.1.orig/bin/neo4j neo4j-community-2.0.1/bin/neo4j
---- neo4j-community-2.0.1.orig/bin/neo4j	2014-02-03 12:27:28.000000000 -0200
-+++ neo4j-community-2.0.1/bin/neo4j	2014-02-06 11:19:45.627080264 -0200
+diff -Naur neo4j-community-2.1.1-orig/bin/neo4j neo4j-community-2.1.1-mod/bin/neo4j
+--- neo4j-community-2.1.1-orig/bin/neo4j	2014-05-29 13:24:28.000000000 -0300
++++ neo4j-community-2.1.1-mod/bin/neo4j	2014-06-01 11:21:42.668017211 -0300
 @@ -46,10 +46,11 @@
      cd "$(dirname "$SCRIPT")"
      SCRIPT=`basename "$SCRIPT"`
@@ -86,9 +86,9 @@ diff -Naur neo4j-community-2.0.1.orig/bin/neo4j neo4j-community-2.0.1/bin/neo4j
    fi
  }
  
-diff -Naur neo4j-community-2.0.1.orig/bin/neo4j-shell neo4j-community-2.0.1/bin/neo4j-shell
---- neo4j-community-2.0.1.orig/bin/neo4j-shell	2014-02-03 12:27:28.000000000 -0200
-+++ neo4j-community-2.0.1/bin/neo4j-shell	2014-02-06 11:23:15.362633139 -0200
+diff -Naur neo4j-community-2.1.1-orig/bin/neo4j-shell neo4j-community-2.1.1-mod/bin/neo4j-shell
+--- neo4j-community-2.1.1-orig/bin/neo4j-shell	2014-05-29 13:24:28.000000000 -0300
++++ neo4j-community-2.1.1-mod/bin/neo4j-shell	2014-06-01 11:23:17.293095310 -0300
 @@ -86,7 +86,7 @@
  
  if [ -z "$REPO" ]
@@ -98,10 +98,10 @@ diff -Naur neo4j-community-2.0.1.orig/bin/neo4j-shell neo4j-community-2.0.1/bin/
  fi
  
  LIBRARY_JARS=""
-diff -Naur neo4j-community-2.0.1.orig/bin/utils neo4j-community-2.0.1/bin/utils
---- neo4j-community-2.0.1.orig/bin/utils	2014-02-03 12:27:28.000000000 -0200
-+++ neo4j-community-2.0.1/bin/utils	2014-02-06 11:28:38.775733143 -0200
-@@ -325,11 +325,11 @@
+diff -Naur neo4j-community-2.1.1-orig/bin/utils neo4j-community-2.1.1-mod/bin/utils
+--- neo4j-community-2.1.1-orig/bin/utils	2014-05-29 13:24:28.000000000 -0300
++++ neo4j-community-2.1.1-mod/bin/utils	2014-06-01 11:24:51.224800589 -0300
+@@ -324,11 +324,11 @@
  # in place.
  checkandrepairenv() {
      # Create data/log if missing, change owner if created.

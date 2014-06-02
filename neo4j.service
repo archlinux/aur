@@ -8,7 +8,6 @@ ExecStart=/usr/bin/neo4j start
 ExecStop=/usr/bin/neo4j stop
 PIDFile=/run/neo4j/neo4j-service.pid
 LimitNOFILE=40000
-# Environment=JAVA_HOME=/your/java/home/path
 
 [Install]
 WantedBy=multi-user.target

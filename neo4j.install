@@ -1,12 +1,3 @@
-assert_user_and_group_exist() {
-  if ! getent group neo4j >/dev/null; then
-    groupadd --system neo4j
-  fi
-  if ! getent passwd neo4j >/dev/null; then
-    useradd --system -g neo4j -d /var/lib/neo4j -s /bin/false neo4j
-  fi
-}
-
 post_install() {
   assert_user_and_group_exist
 
@@ -33,13 +24,27 @@ post_remove() {
   fi
 }
 
+assert_user_and_group_exist() {
+  if ! getent group neo4j >/dev/null; then
+    groupadd --system neo4j
+  fi
+  if ! getent passwd neo4j >/dev/null; then
+    useradd --system -g neo4j -d /var/lib/neo4j -s /bin/false neo4j
+  fi
+}
+
 warn_about_java_home() {
   echo "------------------------------"
   echo "--- ACHTUNG ACHTUNG ALARM! ---"
   echo "------------------------------"
-  echo "Before starting the Neo4j service, please edit"
-  echo "'/usr/lib/systemd/system/neo4j.service', changing"
-  echo "'Environment=JAVA_HOME=/your/java/home/path' to your"
-  echo "actual JAVA_HOME path. Do not forget to uncomment"
-  echo "that line too and then run 'systemctl daemon-reload'."  
+  echo "Before starting the Neo4j service, create this file"
+  echo ""
+  echo "/etc/systemd/system/neo4j.service.d/java_home.conf"
+  echo ""
+  echo "with the following content:"
+  echo ""
+  echo "[Service]"
+  echo "Environment=JAVA_HOME=/your/java/home/path"
+  echo ""
+  echo "changing '/your/java/home/path' to your actual JAVA_HOME path."
 }
