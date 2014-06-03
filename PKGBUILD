@@ -1,8 +1,7 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
-_pkgbase=cdogs
-pkgname=$_pkgbase-git
-pkgver=0.5.4.r31.g193972f
+pkgname=cdogs-git
+pkgver=0.5.5.1.r49.g1701c54
 pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2", development version)'
 arch=('i686' 'x86_64')
@@ -10,29 +9,30 @@ url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
 depends=('sdl_mixer' 'sdl_image')
 makedepends=('git' 'cmake')
-conflicts=("$_pkgbase")
-provides=("$_pkgbase")
-source=($_pkgbase::"git+https://github.com/cxong/cdogs-sdl.git"
+conflicts=('cdogs')
+provides=('cdogs')
+source=(cdogs::"git+https://github.com/cxong/cdogs-sdl.git"
         "git+https://github.com/cxong/hqx.git"
-        "git+https://github.com/cxong/tinydir.git"
         "git+https://github.com/cxong/cbehave.git"
-        "git+https://github.com/cxong/rlutil.git")
+        "git+https://github.com/cxong/rlutil.git"
+        "git+https://github.com/cxong/tinydir.git")
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd $_pkgbase
+  cd cdogs
 
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_pkgbase
+  cd cdogs
 
-  # disable -Werror (aborts build)
-  sed 's|add_definitions(-Winline -Werror)|add_definitions(-Winline)|' -i CMakeLists.txt
+  # disable -Werror (aborts build) and change data directory
+  sed 's| -Werror||;s|CDOGS_DATA_DIR "../"|CDOGS_DATA_DIR "/usr/share/cdogs/"|' \
+    -i CMakeLists.txt
 
   # fix name in .desktop file
-  sed 's|Exec=cdogs-sdl|Exec=cdogs|g' -i build/linux/cdogs-sdl.desktop
+  sed 's|cdogs-sdl|cdogs|g' -i build/linux/cdogs-sdl.desktop
 
   # submodules magic
   git submodule init
@@ -46,25 +46,24 @@ prepare() {
 }
 
 build() {
-  cd $_pkgbase
+  cd cdogs
 
-  cmake ./ -DDESTDIR=/opt/cdogs/bin
+  cmake ./
   make
 }
 
 package() {
-  cd $_pkgbase
+  cd cdogs
 
-  # launcher + binary
-  install -Dm755 build/linux/cdogs-sdl "$pkgdir"/usr/bin/cdogs
-  install -Dm755 src/cdogs-sdl "$pkgdir"/opt/cdogs/bin/cdogs-sdl
+  # binary
+  install -Dm755 src/cdogs-sdl "$pkgdir"/usr/bin/cdogs
   # data
-  cp -r dogfights graphics missions music sounds "$pkgdir"/opt/cdogs/
+  install -d "$pkgdir"/usr/share/cdogs
+  cp -r doc dogfights graphics missions music sounds "$pkgdir"/usr/share/cdogs
   # doc
-  install -d "$pkgdir"/usr/share/doc/cdogs
-  cp -r doc/* "$pkgdir"/usr/share/doc/cdogs
-  ln -s /usr/share/doc/cdogs/ "$pkgdir"/opt/cdogs/doc
+  install -d "$pkgdir"/usr/share/doc
+  ln -s /usr/share/cdogs/doc "$pkgdir"/usr/share/doc/cdogs
   # .desktop file
-  install -Dm644 build/linux/cdogs-icon.48.png "$pkgdir"/usr/share/pixmaps/cdogs_icon.png
+  install -Dm644 build/linux/cdogs-icon.48.png "$pkgdir"/usr/share/pixmaps/cdogs.png
   install -Dm644 build/linux/cdogs-sdl.desktop "$pkgdir"/usr/share/applications/cdogs.desktop
 }
