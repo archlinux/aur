@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libgdata
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="GLib-based library for accessing online service APIs using the GData protocol"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('libsoup' 'liboauth' 'gcr' 'gnome-online-accounts')
 makedepends=('intltool' 'gobject-introspection' 'vala' 'uhttpmock')
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('4845359248d8623d51e766fdc3eceaffaafa7a8a1fe8bec426b7604b711ae198')
+sha256sums=('28b08e7e546bcf2978c7f32ce79b86e9fcc096104f1d7563276d28cd83c0758b')
 
 build() {
   cd "$pkgname-$pkgver"
