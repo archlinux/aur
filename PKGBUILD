@@ -8,7 +8,7 @@ arch=('any')
 url="http://projects.puppetlabs.com/projects/hiera"
 license=('APACHE')
 depends=('ruby')
-source=(http://github.com/puppetlabs/$pkgname/archive/$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::http://github.com/puppetlabs/$pkgname/archive/$pkgver.tar.gz)
 backup=('etc/hiera.yaml')
 md5sums=('1286bd7e1d8d161146430367b105319a')
 
