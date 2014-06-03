@@ -1,12 +1,12 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=duckmarines-git
-pkgver=r137.gc55d104
+pkgver=r163.g2a7d589
 pkgrel=1
 pkgdesc="Free software remake of Sonic Team's ChuChu Rocket (development version)"
 arch=('any')
 url="http://tangramgames.dk/games/duckmarines/"
-license=('UNKNOWN')
+license=('zlib' 'CCPL')
 depends=('love')
 makedepends=('zip')
 source=("git+https://github.com/SimonLarsen/duckmarines.git"
@@ -33,12 +33,12 @@ prepare() {
 package() {
   cd duckmarines
 
-  # copy generated love package
+  # generated love package + launcher
   install -Dm644 duckmarines.love "$pkgdir"/usr/share/duckmarines/duckmarines.love
-  # launcher
   install -Dm755 ../duckmarines.sh "$pkgdir"/usr/bin/duckmarines
-  # readme
+  # readme + license
   install -Dm644 README.md "$pkgdir"/usr/share/doc/duckmarines/README.md
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
   # desktop entry
   install -Dm644 ../duckmarines.desktop "$pkgdir"/usr/share/applications/duckmarines.desktop
   install -Dm644 ../duckmarines.png "$pkgdir"/usr/share/pixmaps/duckmarines.png

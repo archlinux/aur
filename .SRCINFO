@@ -1,10 +1,11 @@
 pkgbase = duckmarines-git
 	pkgdesc = Free software remake of Sonic Team's ChuChu Rocket (development version)
-	pkgver = r137.gc55d104
+	pkgver = r163.g2a7d589
 	pkgrel = 1
 	url = http://tangramgames.dk/games/duckmarines/
 	arch = any
-	license = UNKNOWN
+	license = zlib
+	license = CCPL
 	makedepends = zip
 	depends = love
 	source = git+https://github.com/SimonLarsen/duckmarines.git
