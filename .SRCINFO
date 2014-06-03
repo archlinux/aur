@@ -1,0 +1,18 @@
+pkgbase = dynamite-git
+	pkgdesc = PKWARE Data Compression decompressor tool and library (development version)
+	pkgver = r35.g9d268c9
+	pkgrel = 1
+	url = https://github.com/twogood/dynamite
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = dynamite
+	provides = dynamite-svn
+	conflicts = dynamite
+	source = dynamite::git+https://github.com/twogood/dynamite.git
+	md5sums = SKIP
+
+pkgname = dynamite-git
+
