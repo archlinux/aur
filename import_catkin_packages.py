@@ -95,9 +95,13 @@ class PackageBase(object):
         else:
           fixed_dependencies.add(dep)
 
-      # Fix some possibly missing Python 2 package conflicts
-      fixed_dependencies = [self._ensure_python2_dependency(dependency)
-                            for dependency in fixed_dependencies]
+      # Fix some possibly missing Python 2/3 package conflicts
+      if self.distro.python_major() == "2":
+        fixed_dependencies = [self._ensure_python2_dependency(dependency)
+                              for dependency in fixed_dependencies]
+      elif self.distro.python_major() == "3":
+        fixed_dependencies = [self._ensure_python3_dependency(dependency)
+                              for dependency in fixed_dependencies]
       return fixed_dependencies
 
     fixed_build_dep = _fix_dependencies_with_map(build_dep)
@@ -132,7 +136,14 @@ class PackageBase(object):
     return name.replace('_', '-')
 
   def _ensure_python2_dependency(self, dependency):
-    return dependency.replace('python-', 'python2-')
+    # python     ---> python2
+    # python-foo ---> python2-foo
+    return re.sub(r'python(?!2)([a-zA-Z0-9\-]*)', r'python2\1', dependency)
+
+  def _ensure_python3_dependency(self, dependency):
+    # python2     ---> python
+    # python2-foo ---> python-foo
+    return re.sub(r'python2([a-zA-Z0-9\-]*)', r'python\1', dependency)
 
   def _get_package_xml_url(self, url, name, version):
     if url.find('github'):
@@ -410,6 +421,12 @@ class DistroDescription(object):
 
   def meta_package_package_names(self, name):
     return self._distro['repositories'][name]['release']['packages']
+
+  def python_major(self):
+    """
+    Return the major version number of Python.
+    """
+    return self.python_version.split('.')[0]
 
   def _is_meta_package(self, name):
     if self._distro['repositories'].get(name) != None:
