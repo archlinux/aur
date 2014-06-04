@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-ros
+	pkgdesc = ROS - ROS packaging system.
+	pkgver = 1.11.1
+	pkgrel = 2
+	url = http://www.ros.org/wiki/ROS
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rosmake
+	depends = ros-indigo-rosclean
+	depends = ros-indigo-rosbuild
+	depends = ros-indigo-rosunit
+	depends = ros-indigo-roslib
+	depends = ros-indigo-mk
+	depends = ros-indigo-catkin
+	depends = ros-indigo-roslang
+	depends = ros-indigo-roscreate
+	depends = ros-indigo-rosboost-cfg
+	depends = ros-indigo-rosbash
+	source = ros::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/ros/1.11.1-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-ros
+
