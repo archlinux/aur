@@ -27,7 +27,7 @@ md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
-  /usr/share/ros-build-tools/clear-ros-env.sh
+  source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
 
   # Create build directory
