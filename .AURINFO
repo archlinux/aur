@@ -12,9 +12,8 @@ pkgbase = perl-net-dbus-git
 	depends = perl-xml-twig
 	provides = perl-net-dbus
 	conflicts = perl-net-dbus
-	options = !emptydirs
 	source = git://gitorious.org/net-dbus/net-dbus.git
-	md5sums = SKIP
+	options = !emptydirs
 
 pkgname = perl-net-dbus-git
 
