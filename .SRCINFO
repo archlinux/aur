@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-catkin
+	pkgdesc = ROS - Low-level build system macros and infrastructure for ROS.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://www.ros.org/wiki/catkin
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = python-catkin-pkg
+	makedepends = python-empy
+	makedepends = python
+	depends = gtest
+	depends = python-nose
+	depends = python-catkin-pkg
+	depends = python-empy
+	depends = python
+	source = catkin::git+https://github.com/ros-gbp/catkin-release.git#tag=release/indigo/catkin/0.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-catkin
+
