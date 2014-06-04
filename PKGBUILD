@@ -49,7 +49,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python3.4m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.4.so \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.4m.so \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
