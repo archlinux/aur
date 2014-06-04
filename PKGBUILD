@@ -34,7 +34,7 @@ package() {
     done
 }
 
-md5sums=('b30a6d9a49bf50fad3db45b8753fb17a'
+md5sums=('ed01573e0ecc0f7ca451d7e2849cc5ee'
          '79ae7fb600e116623a42631d15d66a87'
          'ac82eca7efc9f0ff7e8b976a83692868'
          'f3378832c3ba121f7c9e17dc43c8b1d4'

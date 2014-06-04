@@ -5,11 +5,11 @@ if [ -z "$1" ]; then
     echo ""
     echo "Makes sure that all Python scripts use the right python command."
     echo "PYTHON_VERSION: either 2 or 3 (default = 2)."
-    echo
-    echo "Note that according to PEP 394, developers should use \"python\" in
-          the shebang line for code compatible with both Python 2 and 3, but
-          since this may not be the case, we always overwrite the shebang line.
-          For more information: http://legacy.python.org/dev/peps/pep-0394/"
+    echo "
+Note that according to PEP 394, developers should use \"python\" in
+the shebang line for code compatible with both Python 2 and 3, but
+since this may not be the case, we always overwrite the shebang line.
+For more information: http://legacy.python.org/dev/peps/pep-0394/"
     exit 1
 fi
 
