@@ -5,8 +5,9 @@
 # https://github.com/alerque/aur/tree/master/git-crypt-git
 
 pkgname=git-crypt-git
-pkgver=0.3_9_g7fe8443
+pkgver=0.3_15_g8c77209
 pkgrel=1
+_branch=revamp
 pkgdesc="Transparent file encryption in Git"
 arch=('i686' 'x86_64')
 url="http://www.agwa.name/projects/${pkgname%-git}/"
@@ -14,7 +15,7 @@ license=('GPL3')
 makedepends=('git' 'openssl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/AGWA/${pkgname%-git}")
+source=("git://github.com/AGWA/${pkgname%-git}.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
