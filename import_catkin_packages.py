@@ -18,7 +18,7 @@ import pickle
 
 updates_packages_dir = "/tmp/import_catkin_packages"
 updated_packages_file = os.path.join(updates_packages_dir,
-                                     "updated_packages.dump")
+                                     "updated_packages_%(distro)s.dump")
 
 class PackageBase(object):
 
@@ -35,6 +35,7 @@ class PackageBase(object):
     self.licenses = package.licenses
     self.run_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.run_depends]))
     self.build_dependencies = list(OrderedDict.fromkeys([dependency.name for dependency in package.build_depends + package.buildtool_depends]))
+
     # This may be the case for some metapackages
     self.is_virtual = False
 
@@ -217,16 +218,16 @@ build() {
   cd ${srcdir}/build
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v %(python_version_major)s ${srcdir}/${_dir}
 
   # Build project
   cmake ${srcdir}/${_dir} \\
         -DCMAKE_BUILD_TYPE=Release \\
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \\
         -DCMAKE_INSTALL_PREFIX=/opt/ros/%(distro)s \\
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \\
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \\
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \\
+        -DPYTHON_EXECUTABLE=%(python_executable)s \\
+        -DPYTHON_INCLUDE_DIR=%(python_include_dir)s \\
+        -DPYTHON_LIBRARY=%(python_library)s \\
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
@@ -237,7 +238,7 @@ package() {
 }
 """
 
-  def generate(self, exclude_dependencies=[], rosdep_urls=[]):
+  def generate(self, python_version, exclude_dependencies=[], rosdep_urls=[]):
     raw_build_dep, raw_run_dep = self._get_ros_dependencies()
     ros_build_dep = [dependency for dependency in raw_build_dep
                      if dependency not in exclude_dependencies]
@@ -249,6 +250,12 @@ package() {
                      if dependency not in exclude_dependencies]
     other_run_dep = [dependency for dependency in other_raw_run_dep
                    if dependency not in exclude_dependencies]
+
+    python_version_major = python_version.split('.')[0]
+    python_version_include = python_version
+    # Python 3 include directory is /usr/include/python3.4m... Because why not?
+    if python_version_major == "3":
+      python_version_include = "%s%s" % (python_version_include, "m")
 
     pkgbuild = self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
@@ -264,7 +271,11 @@ package() {
       'ros_build_dependencies': '\n  '.join(ros_build_dep),
       'ros_run_dependencies': '\n  '.join(ros_run_dep),
       'other_build_dependencies': '\n  '.join(other_build_dep),
-      'other_run_dependencies': '\n  '.join(other_run_dep)
+      'other_run_dependencies': '\n  '.join(other_run_dep),
+      'python_version_major': python_version_major,
+      'python_executable': '/usr/bin/python%s' % python_version_major,
+      'python_include_dir': '/usr/include/python%s' % python_version_include,
+      'python_library': '/usr/lib/libpython%s.so' % python_version
       }
 
     # Post-processing:
@@ -300,7 +311,8 @@ md5sums=()
 
   def __init__(self, distro, repository_url, name, version, version_patch):
     try:
-      super(MetaPackage, self).__init__(distro, repository_url, name, version, version_patch)
+      super(MetaPackage, self).__init__(distro, repository_url, name, version,
+                                        version_patch)
     except urllib2.HTTPError:
       # Virtual metapackage
       # TODO: there should be a cleaner way to deal with this...
@@ -346,11 +358,12 @@ md5sums=()
 
 class DistroDescription(object):
 
-  def __init__(self, name, url):
+  def __init__(self, name, url, python_version):
     stream = urllib2.urlopen(url)
     self.name = name
     self._distro = yaml.load(stream)
     self._package_cache = {}
+    self.python_version = python_version
     if self.name == "fuerte":
       if self.name != self._distro['release-name']:
         raise Exception('ROS distro names do not match (%s != %s)' % (self.name, self._distro['release-name']))
@@ -534,12 +547,13 @@ def generate_pkgbuild(distro, package, directory, force=False,
            colored(package.version + '-' + package.version_patch, 'white',
                    attrs=['bold'])))
   with open(pkgbuild_file, 'w') as pkgbuild:
-    pkgbuild.write(package.generate(exclude_dependencies, rosdep_urls))
+    pkgbuild.write(package.generate(distro.python_version, exclude_dependencies,
+                                    rosdep_urls))
 
 
 def main():
   parser = OptionParser(usage='usage: %prog [options] PACKAGE...')
-  parser.add_option('--distro', default='groovy', metavar='distro',
+  parser.add_option('--distro', default='hydro', metavar='distro',
                     help='Select the ROS distro to use.')
   parser.add_option('--list-packages', dest='list_packages', action='store_true',
                     default=False, help='Lists all available packages.')
@@ -562,6 +576,9 @@ def main():
                     default='',
                     help='Comma-separated list of (source) package dependencies'
                     ' to exclude from the generated PKGBUILD file.')
+  parser.add_option('--python-version', metavar='python_version', default='',
+                    help='Python version that will be used. Accepted values are'
+                    ' 2.7 or 3. Note that Python 3 is only supported in Indigo.')
   parser.add_option('-f', '--force', dest='force', action='store_true',
                     default=False,
                     help='Always overwrite exiting PKGBUILD files.')
@@ -580,10 +597,34 @@ def main():
     # Use legagy fuerte URL
     options.distro_url = 'https://raw.github.com/ros/rosdistro/master/releases/%s.yaml'
 
+  # Dictionary containing valid Python versions
+  valid_python_versions = {"fuerte": ["2.7"],
+                           "groovy": ["2.7"],
+                           "hydro":  ["2.7"],
+                           "indigo": ["2.7", "3.4"]}
+
+  # Default Python version that will be used
+  default_python_version = {"fuerte": "2.7",
+                            "groovy": "2.7",
+                            "hydro":  "2.7",
+                            "indigo": "3.4"}
+
+  python_version = default_python_version[options.distro]
+  if options.python_version != "":
+    if options.python_version in valid_python_versions[options.distro]:
+      python_version = options.python_version
+    else:
+      print("Invalid Python version (%s) for %s, using version %s instead."
+            % options.python_version % options.distro % python_version)
+
   distro = DistroDescription(options.distro,
+                             python_version=python_version,
                              url=options.distro_url % options.distro)
 
   if options.output_directory:
+    if not os.path.exists(options.output_directory):
+      os.makedirs(options.output_directory)
+
     if os.path.isdir(options.output_directory):
       distro_dir = os.path.abspath(options.output_directory)
     else:
@@ -600,12 +641,13 @@ def main():
       print("Missing mandatory --output-directory. Exiting.")
       sys.exit()
     generated = set()
-    if os.path.isfile(updated_packages_file):
+    distro_dump_file = updated_packages_file % {'distro': options.distro}
+    if os.path.isfile(distro_dump_file):
       # Load dump of already updated packages to speedup updates
       print('Loading set of previously updated packages: %s'
-            % (colored(updated_packages_file, 'white',
+            % (colored(distro_dump_file, 'white',
                        attrs=['bold'])))
-      updated_packages = open(updated_packages_file, "r")
+      updated_packages = open(distro_dump_file, "r")
       generated = pickle.load(updated_packages)
       updated_packages.close()
       for package in sorted(generated):
@@ -620,7 +662,7 @@ def main():
                         rosdep_urls=options.rosdep_urls, generated=generated)
     if not os.path.exists(updates_packages_dir):
       os.makedirs(updates_packages_dir)
-    updated_packages = open(updated_packages_file, "w+")
+    updated_packages = open(distro_dump_file, "w+")
     pickle.dump(generated, updated_packages)
     updated_packages.close()
   else:
