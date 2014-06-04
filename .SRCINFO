@@ -1,6 +1,6 @@
 pkgbase = networkmanager-openswan
 	pkgdesc = NetworkManager plugin for IPSec VPN tunnels
-	pkgver = 0.9.8.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://ftp.acc.umu.se/pub/GNOME/sources/NetworkManager-openswan/
 	arch = i686
@@ -11,8 +11,10 @@ pkgbase = networkmanager-openswan
 	depends = gtk3
 	depends = networkmanager
 	depends = libgnome-keyring
-	source = http://ftp.acc.umu.se/pub/GNOME/sources/NetworkManager-openswan/0.9/NetworkManager-openswan-0.9.8.0.tar.xz
-	md5sums = 6a373868f85ac3b7c953f7fd6c76e637
+	depends = libnm-gtk
+	depends = libsecret
+	source = http://ftp.acc.umu.se/pub/GNOME/sources/NetworkManager-openswan/1.0/NetworkManager-openswan-1.0.0.tar.xz
+	sha256sums = baac8816c95cc8d50aa00cbe8a78d8ddeb0b8ce710367e7e776ef36dd80c97fd
 
 pkgname = networkmanager-openswan
 
