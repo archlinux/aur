@@ -1,12 +1,17 @@
 pkgbase = git-crypt
-	pkgdesc = transparent file encryption in git
+	pkgdesc = Transparent file encryption in Git
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.agwa.name/projects/git-crypt/
-	arch = any
-	license = unknown
+	arch = i686
+	arch = x86_64
+	license = GPL3
 	depends = git
 	depends = openssl
+	provides = {git-crypt}
+	conflicts = git-crypt-git
+	source = https://github.com/AGWA/git-crypt/archive/0.3.tar.gz
+	sha256sums = 6b2a03d28240c06ce4c06c3fc73ecd88f61b638e42f8534a9f2d1dbd17132755
 
 pkgname = git-crypt
 
