@@ -10,9 +10,8 @@ pkgbase = perl-ev-glib
 	makedepends = perl-extutils-pkgconfig
 	depends = glib-perl
 	depends = perl-ev
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/EV-Glib-2.01.tar.gz
-	md5sums = 20c0196095062a5e0f27a455ac32d8f5
+	options = !emptydirs
 
 pkgname = perl-ev-glib
 
