@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-rospack
+	pkgdesc = ROS - ROS Package Tool.
+	pkgver = 2.2.3
+	pkgrel = 2
+	url = http://wiki.ros.org/rospack
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-cmake-modules
+	makedepends = gtest
+	makedepends = tinyxml
+	makedepends = pkg-config
+	makedepends = boost
+	makedepends = python
+	depends = python-catkin-pkg
+	depends = python-rosdep
+	depends = boost
+	depends = python
+	depends = tinyxml
+	depends = pkg-config
+	source = rospack::git+https://github.com/ros-gbp/rospack-release.git#tag=release/indigo/rospack/2.2.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-rospack
+
