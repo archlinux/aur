@@ -4,7 +4,7 @@
 pkgname=rbdoom-3-bfg
 pkgver=1.0.2~ati_hotfix1
 _pkgver=1.0.2-ATI-hotfix1
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom 3 BFG source code (Robert Beckebans repo)."
 arch=('i686' 'x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -21,7 +21,7 @@ source=("https://github.com/RobertBeckebans/RBDOOM-3-BFG/archive/v${_pkgver}.tar
         'rbdoom-3-bfg.desktop')
 sha256sums=('a276d1bfd6cc55f3bb62c15992973ceafaed49cbca7bb1257e51970efe4ba988'
             '8e0aa8ade8d58f3b3e5b6917d6d1d501d20752a7966842c468cedd53b14ebfed'
-            '8a4cb1dbdcdfa4a8434513c8a31f3a28af75e102e5a6ed619b59ab5c18d9e7a2')
+            'b138577e7716e770e189acc58ac145d7426bd2c0719236630e93743ff1345bb3')
 
 build() {
   cd RBDOOM-3-BFG-${_pkgver}/neo

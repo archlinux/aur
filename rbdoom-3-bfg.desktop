@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=RBDOOM-3-BFG
 GenericName=Doom 3: BFG Edition
-Exec=/usr/bin/RBDoom3BFG "$@"
+Exec=/usr/bin/RBDoom3BFG
 Icon=/usr/share/pixmaps/rbdoom-3-bfg.png
 StartupNotify=true
 Terminal=false
