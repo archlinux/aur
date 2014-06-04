@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-roslang
+	pkgdesc = ROS - roslang is a common package that all ROS client libraries depend on.
+	pkgver = 1.11.1
+	pkgrel = 2
+	url = http://ros.org/wiki/roslang
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-catkin
+	depends = ros-indigo-genmsg
+	source = roslang::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/roslang/1.11.1-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-roslang
+
