@@ -1,0 +1,19 @@
+pkgbase = lab3d-sdl
+	pkgdesc = Enhanced port of Ken's Labyrinth with hi-res texture support
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://www.jspenguin.org/software/lab3d_sdl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl2_image
+	depends = glu
+	source = http://s3.jspenguin.org/LAB3D-SDL-3.0-src.tar.gz
+	source = lab3d-sdl-datadir.patch
+	source = lab3d-sdl.sh
+	sha256sums = 9b358dc75054e34c19e442a6af389415b1a2ae06780a1e6b11364467f40a5daf
+	sha256sums = 03de7ab26787eb64af0e20d00effe79efd924e6395923f58c797a3f725550f88
+	sha256sums = bf15793b64711138c0eb23591b93d82df7fb41aed8bceb0d90c8b2a705d0ff73
+
+pkgname = lab3d-sdl
+
