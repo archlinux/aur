@@ -1,0 +1,12 @@
+pkgbase = git-crypt
+	pkgdesc = transparent file encryption in git
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.agwa.name/projects/git-crypt/
+	arch = any
+	license = unknown
+	depends = git
+	depends = openssl
+
+pkgname = git-crypt
+
