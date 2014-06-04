@@ -8,9 +8,8 @@ pkgbase = perl-io-interface
 	license = GPL
 	license = PerlArtistic
 	depends = perl
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/L/LD/LDS/IO-Interface-1.06.tar.gz
-	md5sums = 7d77d0f23ee7f577109fc5f0e67e0a4b
+	options = !emptydirs
 
 pkgname = perl-io-interface
 
