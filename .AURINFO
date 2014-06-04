@@ -8,9 +8,8 @@ pkgbase = perl-audio-mixer
 	license = PerlArtistic
 	license = GPL
 	depends = perl
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/S/SE/SERGEY/Audio-Mixer-0.7.tar.gz
-	md5sums = 5aaa808a4852ed68f952705172ece2a8
+	options = !emptydirs
 
 pkgname = perl-audio-mixer
 
