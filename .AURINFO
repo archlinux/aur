@@ -15,9 +15,8 @@ pkgbase = perl-x11-xcb
 	depends = perl-mouse
 	depends = perl-mousex-nativetraits
 	depends = perl-try-tiny
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/X11-XCB-0.09.tar.gz
-	md5sums = 49644e149df020e5b6a70f16a71cc9fe
+	options = !emptydirs
 
 pkgname = perl-x11-xcb
 

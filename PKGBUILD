@@ -3,7 +3,7 @@
 pkgname=perl-x11-xcb
 _cpanname=X11-XCB
 pkgver=0.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl bindings for libxcb"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
