@@ -7,9 +7,8 @@ pkgbase = perl-xs-object-magic
 	arch = x86_64
 	license = Perl Artistic
 	makedepends = perl-extutils-depends
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/F/FL/FLORA/XS-Object-Magic-0.04.tar.gz
-	md5sums = ce2e38addab1c7e541ca842019cba4a4
+	options = !emptydirs
 
 pkgname = perl-xs-object-magic
 
