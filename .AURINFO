@@ -12,8 +12,6 @@ pkgbase = wumwum
 	depends = xorg-utils
 	source = http://downloads.sourceforge.net/wumwum/wumwum-0.9.tgz
 	source = wumwum.sh
-	md5sums = a2bcc7c22a7f2083cbda0d5e00849cc0
-	md5sums = 21b18364ec9e6d0ec580329fb483cc29
 
 pkgname = wumwum
 
