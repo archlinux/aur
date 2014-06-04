@@ -1,0 +1,30 @@
+diff -Naur ecwolf.old/src/wl_iwad.cpp ecwolf/src/wl_iwad.cpp
+--- ecwolf.old/src/wl_iwad.cpp	2014-05-25 09:17:58.000000000 +0200
++++ ecwolf/src/wl_iwad.cpp	2014-06-04 11:24:40.778863092 +0200
+@@ -430,7 +430,7 @@
+ 	int defaultIWad = config.GetSetting("DefaultIWad")->GetInteger();
+ 
+ 	bool useProgdir = false;
+-	FResourceFile *datawadRes = FResourceFile::OpenResourceFile(datawad, NULL, true);
++	FResourceFile *datawadRes = FResourceFile::OpenResourceFile("/usr/share/ecwolf/ecwolf.pk3", NULL, true);
+ 	if(!datawadRes)
+ 	{
+ 		useProgdir = true;
+@@ -493,7 +493,7 @@
+ 	}
+ 	while(split != 0);
+ 
+-	LookForGameData(datawadRes, basefiles, "/usr/local/share/games/wolf3d");
++	LookForGameData(datawadRes, basefiles, "/usr/share/wolf3d");
+ 
+ 	// Look for a steam install. (Basically from ZDoom)
+ 	{
+@@ -558,7 +558,7 @@
+ 	selectedGame = &iwadTypes[base.Type];
+ 
+ 	if(!useProgdir)
+-		wadfiles.Push(datawad);
++		wadfiles.Push("/usr/share/ecwolf/ecwolf.pk3");
+ 	else
+ 		wadfiles.Push(progdir + "/" + datawad);
+ 	for(unsigned int i = 0;i < base.Path.Size();++i)
