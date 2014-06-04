@@ -1,5 +1,8 @@
-# Author: Daniel Perez <tuvistavie@gmail.com>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Daniel Perez <tuvistavie@gmail.com>
+#
+# Any suggestions welcome; please submit paches via Github:
+# https://github.com/alerque/aur/tree/master/git-crypt-git
 
 pkgname=git-crypt
 pkgver=0.3
