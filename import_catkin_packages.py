@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
@@ -8,8 +8,7 @@ from optparse import OptionParser
 import sys
 import os
 import os.path
-import urllib2
-import urlparse
+import urllib3
 import yaml
 import re
 from collections import OrderedDict
@@ -19,6 +18,7 @@ import pickle
 updates_packages_dir = "/tmp/import_catkin_packages"
 updated_packages_file = os.path.join(updates_packages_dir,
                                      "updated_packages_%(distro)s.dump")
+http = urllib3.PoolManager()
 
 class PackageBase(object):
 
@@ -54,7 +54,7 @@ class PackageBase(object):
     # Multiple consecutive spaces turned into one
     self.description = re.sub('([ ]+)', ' ', self.description)
     # Only take the first sentence (keep short description)
-    self.description = self.description.split(".")[0] + "."
+    self.description = re.split("\. |\.$", self.description)[0] + "."
     # Handle quotes
     self.description = self.description.replace('"', '').replace('`', '').replace('&quot;', '').replace('\'','')
 
@@ -75,7 +75,7 @@ class PackageBase(object):
     Arguments:
     - `url`: Valid URL pointing to a package.xml file.
     """
-    return catkin_pkg.package.parse_package_string(urllib2.urlopen(url).read())
+    return catkin_pkg.package.parse_package_string(http.request('GET', url).data)
 
   def _fix_dependencies(self, rosdep_urls, build_dep, run_dep):
     # Fix usual non-ROS dependencies:
@@ -157,7 +157,7 @@ class PackageBase(object):
   def _get_rosdep_dictionary(self, rosdep_urls):
     dependency_map = {}
     for rosdep_url in rosdep_urls:
-      stream = urllib2.urlopen(rosdep_url)
+      stream = http.request('GET', rosdep_url).data
       rosdep_file = yaml.load(stream)
       for package_name, distrib in rosdep_file.items():
         if 'arch' in distrib:
@@ -221,7 +221,7 @@ md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
-  /usr/share/ros-build-tools/clear-ros-env.sh
+  source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/%(distro)s/setup.bash ] && source /opt/ros/%(distro)s/setup.bash
 
   # Create build directory
@@ -263,10 +263,10 @@ package() {
                    if dependency not in exclude_dependencies]
 
     python_version_major = python_version.split('.')[0]
-    python_version_include = python_version
+    python_version_full = python_version
     # Python 3 include directory is /usr/include/python3.4m... Because why not?
     if python_version_major == "3":
-      python_version_include = "%s%s" % (python_version_include, "m")
+      python_version_full = "%s%s" % (python_version_full, "m")
 
     pkgbuild = self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
@@ -285,8 +285,8 @@ package() {
       'other_run_dependencies': '\n  '.join(other_run_dep),
       'python_version_major': python_version_major,
       'python_executable': '/usr/bin/python%s' % python_version_major,
-      'python_include_dir': '/usr/include/python%s' % python_version_include,
-      'python_library': '/usr/lib/libpython%s.so' % python_version
+      'python_include_dir': '/usr/include/python%s' % python_version_full,
+      'python_library': '/usr/lib/libpython%s.so' % python_version_full
       }
 
     # Post-processing:
@@ -324,7 +324,7 @@ md5sums=()
     try:
       super(MetaPackage, self).__init__(distro, repository_url, name, version,
                                         version_patch)
-    except urllib2.HTTPError:
+    except urllib3.HTTPError:
       # Virtual metapackage
       # TODO: there should be a cleaner way to deal with this...
       self.name = name
@@ -370,7 +370,7 @@ md5sums=()
 class DistroDescription(object):
 
   def __init__(self, name, url, python_version):
-    stream = urllib2.urlopen(url)
+    stream = http.request('GET', url).data
     self.name = name
     self._distro = yaml.load(stream)
     self._package_cache = {}
@@ -503,9 +503,9 @@ def github_raw_url(repo_url, path, commitish):
   Returns the URL of the file blob corresponding to `path` in the
   github repository `repo_url` in branch, commit or tag `commitish`.
   """
-  url = urlparse.urlsplit(repo_url)
+  url = urllib3.util.parse_url(repo_url)
   return 'https://raw.%(host)s%(repo_path)s/%(branch)s/%(path)s' % {
-    'host': url.hostname,
+    'host': url.host,
     'repo_path': url.path.replace('.git', ''),
     'branch': commitish,
     'path': path
@@ -664,7 +664,7 @@ def main():
       print('Loading set of previously updated packages: %s'
             % (colored(distro_dump_file, 'white',
                        attrs=['bold'])))
-      updated_packages = open(distro_dump_file, "r")
+      updated_packages = open(distro_dump_file, "rb")
       generated = pickle.load(updated_packages)
       updated_packages.close()
       for package in sorted(generated):
@@ -679,7 +679,7 @@ def main():
                         rosdep_urls=options.rosdep_urls, generated=generated)
     if not os.path.exists(updates_packages_dir):
       os.makedirs(updates_packages_dir)
-    updated_packages = open(distro_dump_file, "w+")
+    updated_packages = open(distro_dump_file, "wb")
     pickle.dump(generated, updated_packages)
     updated_packages.close()
   else:

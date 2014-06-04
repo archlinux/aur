@@ -1,37 +1,43 @@
-# Maintainer: Sean Greenslade <zootboysean@gmail.com>
+# Maintainer: Benjamin Chretien <chretien+aur at lirmm dot fr>
+# Contributor: Sean Greenslade <zootboysean@gmail.com>
 
 pkgdesc='Utilities for building arch packages for ROS stacks.'
 url=http://www.ros.org
 
 pkgname='ros-build-tools'
-pkgver='0.0.7'
+pkgver='0.1.0'
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
 makedepends=()
 depends=()
-optdepends=('python2' 'python2-catkin_pkg' 'python2-termcolor' 'python2-yaml')
+optdepends=('python: package generation'
+            'python-catkin-pkg: package generation'
+            'python-termcolor: package generation'
+            'python-urllib3: package generation'
+            'python-yaml: package generation')
 
 pkg_destination_dir="/usr/share/ros-build-tools"
 
 source=('fix-python-scripts.sh'
-    'stack-install-tools.sh'
-    'create-arch-ros-package-legacy.sh'
-    'PKGBUILD.rostemplate'
-    'get_stack_dependencies.py'
-    'generate_packages_makefile.py'
-    'generate-python-patch.sh'
-    'import_catkin_packages.py'
-    'clear-ros-env.sh')
+        'stack-install-tools.sh'
+        'create-arch-ros-package-legacy.sh'
+        'PKGBUILD.rostemplate'
+        'get_stack_dependencies.py'
+        'generate_packages_makefile.py'
+        'generate-python-patch.sh'
+        'import_catkin_packages.py'
+        'clear-ros-env.sh')
 
 build() {
-	return 0
+  return 0
 }
+
 package() {
-    mkdir -p ${pkgdir}${pkg_destination_dir}
-    for file in "${source[@]}"; do
-        cp $file ${pkgdir}${pkg_destination_dir}/$file
-    done
+  mkdir -p ${pkgdir}${pkg_destination_dir}
+  for file in "${source[@]}"; do
+    cp $file ${pkgdir}${pkg_destination_dir}/$file
+  done
 }
 
 md5sums=('ed01573e0ecc0f7ca451d7e2849cc5ee'
@@ -41,5 +47,5 @@ md5sums=('ed01573e0ecc0f7ca451d7e2849cc5ee'
          'd257f7f20384e894b0431ee61068aa96'
          '563c9d1320a3a997db25d3087303dcfb'
          '8d6d7eb89a12c449497b209f1a06655b'
-         '54bcd1051cc6b1d38f034f21864475c5'
+         '458ce5436e549235bfa295c5ab37eeaf'
          '07f5253eb3f8cb5295c32026a20ab6c0')
