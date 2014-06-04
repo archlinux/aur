@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-message-generation
+	pkgdesc = ROS - Package modeling the build-time dependencies for generating language bindings of messages.
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = http://ros.org/wiki/message_generation
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-gencpp
+	depends = ros-indigo-genlisp
+	depends = ros-indigo-genpy
+	depends = ros-indigo-genmsg
+	source = message_generation::git+https://github.com/ros-gbp/message_generation-release.git#tag=release/indigo/message_generation/0.2.10-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-message-generation
+
