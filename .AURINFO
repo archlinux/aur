@@ -13,9 +13,8 @@ pkgbase = perl-spread
 	depends = perl-extutils-pkgconfig
 	depends = libunique
 	depends = spread-daemon
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/J/JE/JESUS/Spread-3.17.4.4.tar.gz
-	md5sums = 751314b7494530ad8feff2c10ac23010
+	options = !emptydirs
 
 pkgname = perl-spread
 

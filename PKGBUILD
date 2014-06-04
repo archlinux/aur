@@ -2,7 +2,7 @@
 pkgname=perl-spread
 _realname=Spread
 pkgver=3.17.4.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl extension for the Spread group communication system"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~jesus/Spread-3.17.4.4/Spread.pm"
