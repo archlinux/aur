@@ -2,7 +2,7 @@
 
 pkgname=perl-glib-ev
 pkgver=2.02
-pkgrel=3
+pkgrel=4
 pkgdesc="Coerce Glib into using the EV module as event loop"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?Glib::EV'

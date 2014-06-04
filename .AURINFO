@@ -9,9 +9,8 @@ pkgbase = perl-glib-ev
 	license = PerlArtistic
 	depends = glib-perl
 	depends = perl-ev
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Glib-EV-2.02.tar.gz
-	md5sums = 550417252d37af703095855aadbf8558
+	options = !emptydirs
 
 pkgname = perl-glib-ev
 
