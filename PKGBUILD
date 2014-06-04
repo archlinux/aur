@@ -2,14 +2,16 @@
 
 pkgname=ecwolf
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL'
 arch=('i686' 'x86_64')
 url="http://maniacsvault.net/ecwolf"
 license=('GPL' 'custom: ID')
 depends=('sdl_mixer' 'libjpeg' 'gtk2')
 makedepends=('cmake')
+optdepends=('wolf3d-shareware: Demo version of Wolfenstein 3D')
 install=$pkgname.install
+changelog=$pkgname.ChangeLog
 source=("http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$pkgver-src.7z")
 sha256sums=('d258195dd1d971a256f5c354be764d05e6f076d231d230f61ff258d853c01e66')
 
@@ -21,7 +23,7 @@ prepare() {
   # data dir hack
   sed -e 's|OpenResourceFile(datawad|OpenResourceFile("/usr/share/ecwolf/ecwolf.pk3"|' \
     -e 's|Push(datawad|Push("/usr/share/ecwolf/ecwolf.pk3"|' \
-    -e 's|/usr/local/share/games/wolf3d|/usr/share/ecwolf|' \
+    -e 's|/usr/local/share/games/wolf3d|/usr/share/wolf3d|' \
     -i ecwolf-$pkgver-src/src/wl_iwad.cpp
 }
 
