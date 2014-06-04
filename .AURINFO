@@ -13,11 +13,9 @@ pkgbase = perl-gnome2-wnck+
 	depends = libwnck+
 	provides = perl-gnome2-wnck
 	conflicts = perl-gnome2-wnck
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-Wnck-0.16.tar.gz
 	source = libwnck+.patch
-	md5sums = 439f4569ffd7af96ef1d3feaab23760e
-	md5sums = ae7baf7c409334354d2aaa244ff316f7
+	options = !emptydirs
 
 pkgname = perl-gnome2-wnck+
 
