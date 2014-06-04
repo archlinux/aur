@@ -1,0 +1,17 @@
+pkgbase = ros-indigo-rosclean
+	pkgdesc = ROS - rosclean: cleanup filesystem resources (e.
+	pkgver = 1.11.1
+	pkgrel = 2
+	url = http://ros.org/wiki/rosclean
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = python-rospkg
+	source = rosclean::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosclean/1.11.1-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosclean
+
