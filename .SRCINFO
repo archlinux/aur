@@ -1,0 +1,13 @@
+pkgbase = python2-flask-cors
+	pkgdesc = A Flask extension adding a decorator for CORS support
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Flask-Cors
+	arch = any
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/F/Flask-Cors/Flask-Cors-1.3.1.tar.gz
+	md5sums = 70adebadf9e21930c50b89965b7c9973
+
+pkgname = python2-flask-cors
+
