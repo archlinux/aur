@@ -7,9 +7,8 @@ pkgbase = perl-net-pcaputils
 	license = GPL
 	license = PerlArtistic
 	depends = perl-net-pcap
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/T/TI/TIMPOTTER/Net-PcapUtils-0.01.tar.gz
-	md5sums = eeba67266dbe155b504df3c2de1d657f
+	options = !emptydirs
 
 pkgname = perl-net-pcaputils
 
