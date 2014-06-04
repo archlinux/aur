@@ -10,9 +10,8 @@ pkgbase = perl-coro
 	depends = perl-anyevent>=5
 	depends = perl-common-sense
 	depends = perl-guard>=0.5
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Coro-6.39.tar.gz
-	md5sums = bf9790a4ff1fdff9e232f1c8a6fa4e9a
+	options = !emptydirs
 
 pkgname = perl-coro
 
