@@ -8,9 +8,8 @@ pkgbase = perl-spread-client-constant
 	license = Perl
 	depends = perl
 	depends = perl-spread
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/MB/MBAILEY/Spread-Client-Constant-0.02.tar.gz
-	md5sums = ac6e3358fcddffa0382647422d490c6e
+	options = !emptydirs
 
 pkgname = perl-spread-client-constant
 
