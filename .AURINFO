@@ -12,8 +12,6 @@ pkgbase = asclock-xlib
 	conflicts = asclock-gtk
 	source = http://gentoo.osuosl.org/distfiles/asclock-2.0.12.tar.gz
 	source = asclock.desktop
-	md5sums = 99cb6491358bb0044e9b75b2e06b043b
-	md5sums = 54149bbbef522b2bc5d5e65ef76f4cbd
 
 pkgname = asclock-xlib
 
