@@ -3,7 +3,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('pcre' 'gcc-libs')
 checkdepends=('ruby' 'python2' 'java-environment' 'tcl' 'php' 'lua' 'ocaml' 'r' 'go')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('68a70cc80a75bc8e08a5d7a9ec22cb6d7b034c2c')
+sha1sums=('e695a14acf39b25f3ea2d7303e23e39dfe284e31')
 
 build() {
   cd ${pkgname}-${pkgver}
