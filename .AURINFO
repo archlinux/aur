@@ -7,9 +7,8 @@ pkgbase = perl-spread-session
 	license = PerlArtistic
 	depends = perl
 	depends = perl-spread
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/J/JM/JMAY/Spread-Session-0.4.tar.gz
-	md5sums = 861a93c1a07053eec07ab40512b32a01
+	options = !emptydirs
 
 pkgname = perl-spread-session
 
