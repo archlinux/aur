@@ -7,9 +7,8 @@ pkgbase = perl-net-ipaddress
 	license = PerlArtistic
 	license = GPL
 	depends = perl
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/S/SA/SARENNER/Net-IPAddress-1.10.tar.gz
-	md5sums = 512117d3f6bcc027bd11f70d71f6f844
+	options = !emptydirs
 
 pkgname = perl-net-ipaddress
 
