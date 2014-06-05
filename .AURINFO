@@ -12,8 +12,6 @@ pkgbase = windwm-git
 	conflicts = windwm
 	source = git://git.code.sf.net/p/windwm/code
 	source = windwm.desktop
-	md5sums = SKIP
-	md5sums = 9568e6caf809710bf147f5e947ac1517
 
 pkgname = windwm-git
 

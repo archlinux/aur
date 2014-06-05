@@ -2,8 +2,8 @@
 
 pkgname=windwm-git
 _pkgname=windwm
-pkgver=1.4.49
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Wind is window manager  implements most parts of the ICCCM and EWMH/NetWM standards"
 arch=('x86_64' 'i686')
 url="http://windwm.sourceforge.net/"
