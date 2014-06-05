@@ -2,14 +2,14 @@
 
 pkgname=perl-data-flow
 pkgver='1.02'
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl extension for simple-minded recipe-controlled build of data"
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://search.cpan.org/perldoc?Data::Flow'
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/Data-Flow-${pkgver}.tar.gz")
-depends=('perl')
+depends=()
 md5sums=('aa453ab013681206bccf43e8e267d63b')
 
 build() {

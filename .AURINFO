@@ -6,9 +6,8 @@ pkgbase = perl-data-flow
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/Data-Flow-1.02.tar.gz
-	md5sums = aa453ab013681206bccf43e8e267d63b
+	options = !emptydirs
 
 pkgname = perl-data-flow
 
