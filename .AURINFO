@@ -7,9 +7,8 @@ pkgbase = perl-spread-message
 	license = PerlArtistic
 	depends = perl
 	depends = perl-spread
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/MA/MARKPF/Spread-Message-0.21.tar.gz
-	md5sums = 995863a6415049cfd7f7ece9c61b5574
+	options = !emptydirs
 
 pkgname = perl-spread-message
 
