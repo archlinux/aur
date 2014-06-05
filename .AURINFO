@@ -11,7 +11,6 @@ pkgbase = http-parser-git
 	provides = http-parser
 	conflicts = http-parser
 	source = http-parser-git::git+https://github.com/joyent/http-parser.git
-	md5sums = SKIP
 
 pkgname = http-parser-git
 
