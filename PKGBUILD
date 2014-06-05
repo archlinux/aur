@@ -2,7 +2,7 @@
 
 pkgname=perl-alpm
 pkgver=3.01
-pkgrel=2
+pkgrel=3
 pkgdesc='ArchLinux Package Manager backend library.'
 arch=(i686 x86_64)
 license=(PerlArtistic GPL)

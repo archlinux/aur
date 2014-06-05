@@ -8,10 +8,8 @@ pkgbase = perl-alpm
 	license = PerlArtistic
 	license = GPL
 	depends = perl
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/J/JU/JUSTER/ALPM-3.01.tar.gz
-	md5sums = 1f5804d33ba93afddaf88a020cd9e71a
-	sha512sums = 823e444c0e124d9be0ab4d806590fe40e434db24ad29f18c55a476e47d09896ff85c1ab8c420821d39d223b93c4acb08ca521ac1d29a8c22c4174a898909d55a
+	options = !emptydirs
 
 pkgname = perl-alpm
 
