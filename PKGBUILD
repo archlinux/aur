@@ -4,8 +4,8 @@
 # Maintainer: Sean Greenslade <zootboysean@gmail.com>
 
 pkgname=python2-rospkg
-pkgver=1.0.19
-pkgrel=3
+pkgver=1.0.28
+pkgrel=1
 pkgdesc="ROS - provides basic utilities for querying information about ROS packages, stacks, and distributions."
 url="http://ros.org/doc/api/rospkg/html/python_api.html"
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=('python2-distribute')
 conflicts=()
 replaces=()
 backup=()
-source=(http://pr.willowgarage.com/downloads/rospkg/rospkg-${pkgver}.tar.gz)
-md5sums=('3315b1b2129ec6844452a4eae752b9a5')
+source=(http://download.ros.org/downloads/rospkg/rospkg-${pkgver}.tar.gz)
+md5sums=('16d44fb29c494e8609c8c86fc4e75f4d')
 
 build() {
   cd ${srcdir}/rospkg-${pkgver}
