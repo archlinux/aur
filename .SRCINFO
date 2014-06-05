@@ -1,7 +1,7 @@
 pkgbase = chocolate-doom
-	pkgdesc = Doom, Heretic, Hexen, Strife port accurately reproducing the originals.
+	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
 	arch = i686
@@ -16,28 +16,28 @@ pkgbase = chocolate-doom
 	sha256sums = 85c58b77dad933013253b453ef01907492b4719acd56cf8cb6c76f4a361ab60c
 
 pkgname = chocolate-doom
-	pkgdesc = Doom port accurately reproducing the original v1.9 EXEs.
+	pkgdesc = Doom port accurately reproducing the original DOS EXEs.
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common
 
 pkgname = chocolate-heretic
-	pkgdesc = Heretic port accurately reproducing the original v1.3 EXE.
+	pkgdesc = Heretic port accurately reproducing the original DOS EXEs.
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common
 
 pkgname = chocolate-hexen
-	pkgdesc = Hexen port accurately reproducing the original v1.1 EXE.
+	pkgdesc = Hexen port accurately reproducing the original DOS EXEs.
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common
 
 pkgname = chocolate-strife
-	pkgdesc = Strife port accurately reproducing the original v1.31 EXE.
+	pkgdesc = Strife port accurately reproducing the original DOS EXEs.
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
