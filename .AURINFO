@@ -8,9 +8,8 @@ pkgbase = perl-net-snmp-ev
 	license = PerlArtistic
 	depends = perl-net-snmp
 	depends = perl-ev
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Net-SNMP-EV-0.12.tar.gz
-	md5sums = 74d887e49914a5ab48fa1f07094b08ac
+	options = !emptydirs
 
 pkgname = perl-net-snmp-ev
 

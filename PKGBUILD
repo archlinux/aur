@@ -2,9 +2,9 @@
 
 pkgname=perl-net-snmp-ev
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="EV event loop for Net-SNMP"
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://search.cpan.org/perldoc?Net::SNMP::EV'
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
