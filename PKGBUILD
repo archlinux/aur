@@ -3,11 +3,11 @@
 pkgname=perl-hardware-sensorparser
 _cpanname=Hardware-SensorsParser
 pkgver=0.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple parser for Lm-sensors output"
 arch=('any')
 license=("GPL" "PerlArtistic")
-url="http://metacpan.org/dist/Hardware-SensorsParser"
+url="http://metacpan.org/release/Hardware-SensorsParser"
 depends=('lm_sensors')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/D/DA/DAVEGEE/$_cpanname-$pkgver.tar.gz")

@@ -7,9 +7,8 @@ pkgbase = perl-hardware-sensorparser
 	license = GPL
 	license = PerlArtistic
 	depends = lm_sensors
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/D/DA/DAVEGEE/Hardware-SensorsParser-0.01.tar.gz
-	md5sums = 0ddbc1b94cab78565f8327300529aa58
+	options = !emptydirs
 
 pkgname = perl-hardware-sensorparser
 
