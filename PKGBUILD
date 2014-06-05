@@ -3,7 +3,7 @@
 
 pkgname=snapper
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('i686' 'x86_64')
 url="http://snapper.io"
@@ -53,10 +53,7 @@ build() {
               --sbindir=/usr/bin \
               --with-conf=/etc/conf.d \
               --disable-zypp \
-              --disable-silent-rules \
-              --disable-rollback
-  # rollback disabled until patch applied in next btrfs-progs release
-  # http://www.spinics.net/lists/linux-btrfs/msg33434.html
+              --disable-silent-rules
   make
 }
 
