@@ -6,9 +6,8 @@ pkgbase = perl-net-ping
 	arch = any
 	license = unknown
 	depends = perl-test
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/S/SM/SMPETERS/Net-Ping-2.41.tar.gz
-	md5sums = e8e1709d3ec8f697e7aa5ca481b1317a
+	options = !emptydirs
 
 pkgname = perl-net-ping
 
