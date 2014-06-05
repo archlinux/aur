@@ -9,9 +9,8 @@ pkgbase = perl-linux-smaps
 	license = PerlArtistic
 	depends = perl
 	depends = perl-class-member
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/O/OP/OPI/Linux-Smaps-0.12.tar.gz
-	md5sums = 52a50e607f7904e0401ae7dd77ec79b7
+	options = !emptydirs
 
 pkgname = perl-linux-smaps
 
