@@ -12,8 +12,6 @@ pkgbase = asclock-gtk
 	conflicts = asclock-xlib
 	source = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/asclock-gtk-2.1.10beta.tar.gz
 	source = asclock.desktop
-	md5sums = afa682d7954cb4d5c443202ffdd04b17
-	md5sums = 00cbeb63e46bc7c402e20680e0aa1fec
 
 pkgname = asclock-gtk
 
