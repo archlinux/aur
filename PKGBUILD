@@ -1,7 +1,7 @@
 # Maintainer: Immae <ismael.bouya@normalesup.org>
 
 pkgname=mysearch
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Local search engine portal designed to anonymate your search requests and have a better display of search results"
 arch=("any")
@@ -19,5 +19,5 @@ package() {
 	install -Dm755 mysearch ${pkgdir}/usr/bin/mysearch
 }
 
-sha1sums=('df7a8d47c4d3f6ff8099733d0a4a4db6cd3e9462'
+sha1sums=('838b45ba3eff6f83849373224cfec473eadb42b0'
           '0f785b50876af5f7e4e5b7166da39b1d72d88f27')
