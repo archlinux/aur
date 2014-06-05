@@ -7,9 +7,8 @@ pkgbase = perl-snmp-info
 	license = BSD
 	depends = perl
 	depends = net-snmp
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/O/OL/OLIVER/SNMP-Info-3.13.tar.gz
-	md5sums = 99ab6ba5f991c81adb0c59ac776d88d3
+	options = !emptydirs
 
 pkgname = perl-snmp-info
 
