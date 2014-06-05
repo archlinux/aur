@@ -16,9 +16,8 @@ pkgbase = afterstep-git
 	depends = librsvg
 	provides = afterstep
 	conflicts = afterstep
-	options = !emptydirs
 	source = afterstep::git+https://github.com/sashavasko/afterstep-devel.git
-	md5sums = SKIP
+	options = !emptydirs
 
 pkgname = afterstep-git
 
