@@ -8,9 +8,8 @@ pkgbase = perl-apireference
 	license = PerlArtistic
 	depends = perl
 	depends = perl-class-xsaccessor
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Perl-APIReference-0.14.tar.gz
-	md5sums = b1aae3f5d6cf33448854b0fe56c80246
+	options = !emptydirs
 
 pkgname = perl-apireference
 
