@@ -13,8 +13,6 @@ pkgbase = larswm-git
 	conflicts = larswm
 	source = larswm-git::git+https://github.com/jpinon/larswm.git
 	source = larswm.desktop
-	md5sums = SKIP
-	md5sums = 528a346582657f7cae09fc89d143e634
 
 pkgname = larswm-git
 
