@@ -18,8 +18,6 @@ pkgbase = uwm-git
 	conflicts = uwm
 	source = uwm-git::git://git.code.sf.net/p/uwm/code
 	source = uwm.desktop
-	md5sums = SKIP
-	md5sums = a16c73faeab8c1fc3c74f3320776789a
 
 pkgname = uwm-git
 

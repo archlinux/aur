@@ -2,7 +2,7 @@
 
 pkgname=uwm-git
 pkgver=0.30.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Micro (u) Window Manager"
 arch=('i686' 'x86_64')
 url="http://uwm.sourceforge.net/"
@@ -11,8 +11,10 @@ provides=('uwm')
 conflicts=('uwm')
 depends=('xcb-util-renderutil' 'xcb-util-image' 'xcb-util-keysyms' 'bash' 'libpng' 'libjpeg' 'xcb-util-wm')
 makedepends=('git')
-source=("$pkgname::git://git.code.sf.net/p/uwm/code")
-md5sums=('SKIP')
+source=("$pkgname::git://git.code.sf.net/p/uwm/code"
+        "uwm.desktop")
+md5sums=('SKIP'
+         'a16c73faeab8c1fc3c74f3320776789a')
 
 pkgver() {
   cd $pkgname
@@ -40,6 +42,8 @@ package() {
   install -Dm0644 uwmrc.5 "$pkgdir/usr/share/man/man5/uwmrc.5"
   install -Dm0644 contrib/uwmrc.example "$pkgdir/etc/X11/system.uwmrc"
   install -Dm0644 contrib/uwm16x16.xpm "$pkgdir/usr/share/pixmaps/uwm16x16.xpm"
+  cd "$srcdir"
+  install -Dm0644 uwm.desktop "$pkgdir/usr/share/xsessions/uwm.desktop"
 }
 
 
