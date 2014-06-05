@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xorg-twm-git
-pkgver=1.0.8.r1.g9c09c3e
+pkgver=1.0.8.r3.g0cb43e8
 pkgrel=1
 pkgdesc="Tab Window Manager for the X Window System"
 arch=(i686 x86_64)

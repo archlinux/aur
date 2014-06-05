@@ -8,9 +8,8 @@ pkgbase = xorg-twm-git
 	license = custom
 	makedepends = xorg-util-macros
 	depends = libxmu
-	backup = etc/X11/twm/system.twmrc
 	source = xorg-twm-git::git://anongit.freedesktop.org/xorg/app/twm
-	sha256sums = SKIP
+	backup = etc/X11/twm/system.twmrc
 
 pkgname = xorg-twm-git
 
