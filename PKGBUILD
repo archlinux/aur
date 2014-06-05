@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.0.1g
+_ver=1.0.1h
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -17,9 +17,8 @@ backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
-        'ca-dir.patch'
-        'openssl-1.0.1f-perl-5.18.patch')
-md5sums=('de62b43dfcd858e66a74bee1c834e959'
+        'ca-dir.patch')
+md5sums=('8d6d684a9430d5cc98a62a5d8fbda8cf'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
@@ -32,8 +31,6 @@ prepare() {
 	patch -p0 -i $srcdir/no-rpath.patch
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
-
-	patch -p1 -i $srcdir/openssl-1.0.1f-perl-5.18.patch
 }
 
 build() {
