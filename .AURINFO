@@ -19,9 +19,8 @@ pkgbase = perlpanel-git
 	provides = perlpanel
 	conflicts = perlpanel
 	conflicts = perlpanel-light
-	options = !emptydirs
 	source = perlpanel-git::git+https://github.com/bbidulock/perlpanel.git
-	md5sums = SKIP
+	options = !emptydirs
 
 pkgname = perlpanel-git
 
