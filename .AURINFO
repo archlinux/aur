@@ -7,9 +7,8 @@ pkgbase = perl-spread-messaging
 	license = PerlArtistic
 	depends = perl
 	depends = perl-spread
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/K/KE/KESTEB/Spread-Messaging-0.03.tar.gz
-	md5sums = 9d8e30c081c70cab93f2383625e79890
+	options = !emptydirs
 
 pkgname = perl-spread-messaging
 
