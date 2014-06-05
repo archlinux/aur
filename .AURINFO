@@ -13,10 +13,9 @@ pkgbase = blackbox-git
 	provides = blackbox
 	conflicts = blackbox
 	conflicts = blackbox-cvs
+	source = blackbox-git::git+https://github.com/bbidulock/blackboxwm.git
 	options = !libtool
 	options = staticlibs
-	source = blackbox-git::git+https://github.com/bbidulock/blackboxwm.git
-	md5sums = SKIP
 
 pkgname = blackbox-git
 
