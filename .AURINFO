@@ -7,9 +7,8 @@ pkgbase = perl-spread-queue
 	license = PerlArtistic
 	depends = perl
 	depends = perl-spread
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/J/JM/JMAY/Spread-Queue-0.4.tar.gz
-	md5sums = 82b60345fc05e8c2ced86b229154482b
+	options = !emptydirs
 
 pkgname = perl-spread-queue
 
