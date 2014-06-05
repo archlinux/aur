@@ -16,7 +16,6 @@ pkgbase = waimea-git
 	conflicts = waimea
 	conflicts = waimea-cvs
 	source = waimea-git::git+https://github.com/bbidulock/waimea.git
-	md5sums = SKIP
 
 pkgname = waimea-git
 
