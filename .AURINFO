@@ -9,7 +9,6 @@ pkgbase = mantis-wm-git
 	makedepends = git
 	depends = libx11
 	source = mantis-wm-git::git+https://github.com/andreas-volker/mantis-wm.git
-	md5sums = SKIP
 
 pkgname = mantis-wm-git
 
