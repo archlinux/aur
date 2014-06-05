@@ -1,0 +1,19 @@
+pkgbase = twobwm-git
+	pkgdesc = A fast floating window manager
+	pkgver = r349.3e0b5a7
+	pkgrel = 1
+	url = https://github.com/venam/2bwm
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	source = twobwm-git::git+https://github.com/venam/2bwm.git#branch=devel
+	source = twobwm.desktop
+	source = twobwm.copying
+	options = !buildflags
+
+pkgname = twobwm-git
+
