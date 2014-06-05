@@ -1,6 +1,6 @@
 pkgbase = chocolate-doom-git
-	pkgdesc = Doom, Heretic, Hexen, Strife port accurately reproducing the originals.
-	pkgver = 2.0.0.178.g1591773
+	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
+	pkgver = 2.0.0.184.gea6bc74
 	pkgrel = 1
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
@@ -25,7 +25,7 @@ pkgname = chocolate-doom-git
 	conflicts = chocolate-doom
 
 pkgname = chocolate-heretic-git
-	pkgdesc = Heretic port accurately reproducing the original DOS EXE.
+	pkgdesc = Heretic port accurately reproducing the original DOS EXEs.
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
@@ -33,7 +33,7 @@ pkgname = chocolate-heretic-git
 	conflicts = chocolate-heretic
 
 pkgname = chocolate-hexen-git
-	pkgdesc = Hexen port accurately reproducing the original DOS EXE.
+	pkgdesc = Hexen port accurately reproducing the original DOS EXEs.
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net

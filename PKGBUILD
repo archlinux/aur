@@ -1,13 +1,14 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-pkgname=chocolate-doom-git
-_pkgname=${pkgname/-git/}
-true && pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
-pkgver=2.0.0.178.g1591773
+pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
+_pkgname=${pkgname[0]/-git/}
+pkgver=2.0.0.184.gea6bc74
 pkgrel=1
+pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
+depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('git' 'autoconf' 'python')
 install=${_pkgname}.install
 source=(git+https://github.com/chocolate-doom/chocolate-doom.git)
@@ -72,7 +73,7 @@ package_chocolate-doom-git() {
 }
 
 package_chocolate-heretic-git() {
-  pkgdesc="Heretic port accurately reproducing the original DOS EXE."
+  pkgdesc="Heretic port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
   conflicts=(chocolate-heretic)
 
@@ -91,7 +92,7 @@ package_chocolate-heretic-git() {
 }
 
 package_chocolate-hexen-git() {
-  pkgdesc="Hexen port accurately reproducing the original DOS EXE."
+  pkgdesc="Hexen port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
   conflicts=(chocolate-hexen)
 
@@ -127,6 +128,3 @@ package_chocolate-strife-git() {
   rm -f man/man?/chocolate-{doom,heretic,hexen,setup,server}* \
     man/man5/{default,heretic,hexen}.cfg*
 }
-
-pkgdesc="Doom, Heretic, Hexen, Strife port accurately reproducing the originals."
-depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
