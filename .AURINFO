@@ -8,9 +8,8 @@ pkgbase = perl-sub-name
 	license = PerlArtistic
 	license = GPL
 	depends = perl>=5.5.0
-	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Sub-Name-0.05.tar.gz
-	md5sums = 26077202597620e4a6068c8087f3e09f
+	options = !emptydirs
 
 pkgname = perl-sub-name
 
