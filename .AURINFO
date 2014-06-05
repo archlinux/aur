@@ -1,13 +1,14 @@
 pkgbase = perl-devel-findref
 	pkgdesc = Devel::FindRef -- where is that reference to my variable hiding?
-	pkgver = 1.422
-	pkgrel = 4
+	pkgver = 1.44
+	pkgrel = 1
+	epoch = 1
 	url = https://metacpan.org/release/Devel-FindRef
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	license = PerlArtistic
-	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Devel-FindRef-1.422.tar.gz
+	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Devel-FindRef-1.44.tar.gz
 	options = !emptydirs
 
 pkgname = perl-devel-findref

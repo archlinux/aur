@@ -3,16 +3,17 @@
 pkgname=perl-devel-findref
 _realname=Devel-FindRef
 _module=Devel::FindRef
-pkgver=1.422
-pkgrel=4
+pkgver=1.44
+pkgrel=1
 pkgdesc="${_module} -- where is that reference to my variable hiding?"
+epoch=1
 arch=(i686 x86_64)
 url="https://metacpan.org/release/${_realname}"
 license=('LGPL' 'PerlArtistic')
 depends=()
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${_realname}-${pkgver}.tar.gz")
-md5sums=('2c92401767653f1ba8b98f36f23fae8d')
+md5sums=('92902fc532153b8aadb94ace75367e5b')
 
 build() {
   cd  "$srcdir/$_realname-$pkgver"
