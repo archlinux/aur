@@ -6,9 +6,8 @@ pkgbase = perl-net-netmask
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/MU/MUIR/modules/Net-Netmask-1.9019.tar.gz
-	md5sums = 406995de27f55980f50f0bfbeb3c2d27
+	options = !emptydirs
 
 pkgname = perl-net-netmask
 
