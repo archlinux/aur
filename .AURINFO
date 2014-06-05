@@ -10,11 +10,10 @@ pkgbase = c++-gtk-utils-gtk2
 	provides = c++-gtk-utils=2.0.24
 	conflicts = c++-gtk-utils
 	replaces = c++-gtk-utils
+	source = http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/2.0.24/c++-gtk-utils-2.0.24.tar.gz
 	options = !libtool
 	options = !docs
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/2.0.24/c++-gtk-utils-2.0.24.tar.gz
-	md5sums = 61cdf1bf94a5ac3430dd5ea39946142b
 
 pkgname = c++-gtk-utils-gtk2
 
