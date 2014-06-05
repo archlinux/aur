@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=perl-apireference
 _realname=Perl-APIReference
-pkgver=0.14
-pkgrel=2
+pkgver=0.16
+pkgrel=1
 pkgdesc="Programatically query the perlapi"
 arch=('any')
 url="https://metacpan.org/release/Perl-APIReference"
@@ -10,7 +10,7 @@ license=('LGPL' 'PerlArtistic')
 depends=('perl' 'perl-class-xsaccessor')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/S/SM/SMUELLER/$_realname-$pkgver.tar.gz")
-md5sums=('b1aae3f5d6cf33448854b0fe56c80246')
+md5sums=('972ca4a08567254615c7722e007ab940')
 
 build() {
   cd  "$srcdir/$_realname-$pkgver"
