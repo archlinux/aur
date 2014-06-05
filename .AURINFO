@@ -8,7 +8,6 @@ pkgbase = libdbh2
 	license = GPL3
 	depends = glibc
 	source = http://downloads.sourceforge.net/project/dbh/dbh/5.0.15/libdbh2-5.0.15.tar.gz
-	md5sums = b6ed5511742e6ec99f1e1b1bd0a82da1
 
 pkgname = libdbh2
 
