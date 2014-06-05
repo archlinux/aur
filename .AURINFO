@@ -11,9 +11,8 @@ pkgbase = perl-net-libdnet
 	depends = perl>=5.5.0
 	depends = perl-class-gomor
 	depends = libdnet
-	options = !emptydirs
 	source = http://www.cpan.org/authors/id/G/GO/GOMOR/Net-Libdnet-0.98.tar.gz
-	md5sums = 556bb84c712f0b65b8c0b252cae4fc16
+	options = !emptydirs
 
 pkgname = perl-net-libdnet
 
