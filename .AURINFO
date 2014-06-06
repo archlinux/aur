@@ -1,0 +1,21 @@
+pkgbase = sscrotwm-git
+	pkgdesc = Shriveled scrotwm: A minimalist fork of scrotwm/spectrwm.
+	pkgver = r33.07c58bf
+	pkgrel = 1
+	url = http://github.com/sporkexec/sscrotwm
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	depends = libxrandr
+	depends = bash
+	optdepends = scrot: screenshots
+	optdepends = xlockmore: screenlocking
+	optdepends = dmenu: program launching
+	provides = sscrotwm
+	conflicts = sscrotwm
+	source = sscrotwm-git::git+https://github.com/sporkexec/sscrotwm.git
+	backup = etc/sscrotwm.conf
+
+pkgname = sscrotwm-git
+
