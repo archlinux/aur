@@ -1,6 +1,6 @@
 pkgname=windwm
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="Wind is window manager  implements most parts of the ICCCM and EWMH/NetWM standards"
 arch=('x86_64' 'i686')
 url="http://windwm.sourceforge.net/"
@@ -8,7 +8,7 @@ license=('custom')
 depends=('libxft')
 source=("http://downloads.sourceforge.net/project/windwm/wind-${pkgver}.tar.gz"
 	"windwm.desktop")
-sha1sums=('a82170712bac5427efeae9d0fac28df7fdfc8b9d'
+sha1sums=('7924ee392c531674b94efa44a49787e1e377763a'
           'fdf5db200cf880328254dd01015e06c0de807655')
 
 build() {
