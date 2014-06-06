@@ -1,0 +1,19 @@
+pkgbase = spip
+	pkgdesc = A publishing system for the Internet in which great importance is attached to collaborative working, to multilingual environments, and to simplicity of use for web authors.
+	pkgver = 3.0.16
+	pkgrel = 1
+	url = http://www.spip.net/
+	arch = x86
+	arch = x86_64
+	license = GPL
+	depends = php
+	options = !strip
+	source = http://files.spip.org/spip/archives/SPIP-v3.0.16.zip
+	source = httpd-spip.conf
+	source = mes_options.php
+	sha256sums = 42e9cdb6a6d2a38ff2ad22606a264d88545e2c23969bca8d2f8ef72ed450aab1
+	sha256sums = 0dfd06634f748eba922f24a99f42253663fa2c3939f727e073a052dc51e49764
+	sha256sums = 1b1ac9dcd33e5c6605ed8319dfca5111bea8a53e9822db3219b60b870c13d5f8
+
+pkgname = spip
+
