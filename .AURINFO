@@ -14,8 +14,6 @@ pkgbase = xorg-grandr-git
 	conflicts = xorg-grandr
 	source = git://anongit.freedesktop.org/git/xorg/app/grandr.git
 	source = xlib_dep.patch
-	md5sums = SKIP
-	md5sums = 0a272a3f108a1c646838178610ef998b
 
 pkgname = xorg-grandr-git
 

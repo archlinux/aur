@@ -3,7 +3,7 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 
 pkgname=xorg-grandr-git
-pkgver=0.1.5.g2aa67e3
+pkgver=grandr.0.1.5.g2aa67e3
 pkgrel=1
 pkgdesc="Provides a friendly interface to monitor configuration and includes controls for video mode, rotation and monitor position."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ _gitname="grandr"
 
 pkgver() {
   cd $_gitname
-  git describe --tags --long | sed 's,^[^0-9]*,,;s,-,.,g'
+  git describe --always | sed 's|-|.|g'
 }
 
 build() {
