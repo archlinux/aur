@@ -21,11 +21,9 @@ pkgbase = windowmaker-crm-git
 	provides = windowmaker
 	conflicts = windowmaker
 	conflicts = windowmaker-git
-	options = !libtool
 	source = windowmaker-crm-git::git://repo.or.cz/wmaker-crm.git#branch=next
 	source = wmaker.desktop
-	md5sums = SKIP
-	md5sums = 2fba97bebfd691836b92b8f0db79ff13
+	options = !libtool
 
 pkgname = windowmaker-crm-git
 

@@ -2,7 +2,7 @@
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.5.r269.gdf22014
+pkgver=0.95.5.r440.gf33c89e
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=(i686 x86_64)
