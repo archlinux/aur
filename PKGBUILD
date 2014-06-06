@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=lxpolkit-git
-pkgver=0.1.0.21.g42efb56
-pkgrel=1
+pkgver=0.1.0.34.g55fc5d4
+pkgrel=2
 pkgdesc='A simple PolicyKit authentication agent for LXDE'
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
@@ -13,26 +13,22 @@ depends=('gtk2>=2.12.0' 'polkit')
 makedepends=('git' 'intltool')
 options=('!emptydirs')
 
-source=('git://lxde.git.sourceforge.net/gitroot/lxde/lxpolkit'
-	'automake-1.12.patch'
-	'autogen.patch')
-md5sums=('SKIP'
-         'c8855c4c750e8b60a9870fa3ef23fd29'
-         '0d8669579c04cd3f29dbf69a263c8ac4')
-
-_gitname="lxpolkit"
+source=("$pkgname::git://lxde.git.sourceforge.net/gitroot/lxde/lxpolkit")
+md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd $pkgname
   git describe --always | sed 's|-|.|g'
 }
 
+prepare() {
+  cd $pkgname
+  sed -e '/AM_INIT_AUTOMAKE/s,-Werror,,' -i configure.ac
+  sed -e '/AM_INSTALLED_VERSION/s,1.11,1.14,' -i autogen.sh
+}
+
 build() {
-  cd $_gitname
-
-  patch -p1 < ${srcdir}/automake-1.12.patch
-  patch -p1 < ${srcdir}/autogen.patch
-
+  cd $pkgname
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc
   make

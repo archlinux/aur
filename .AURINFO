@@ -13,9 +13,8 @@ pkgbase = lxpolkit-git
 	depends = polkit
 	provides = lxpolkit
 	conflicts = lxpolkit
-	options = !emptydirs
 	source = lxpolkit-git::git://lxde.git.sourceforge.net/gitroot/lxde/lxpolkit
-	md5sums = SKIP
+	options = !emptydirs
 
 pkgname = lxpolkit-git
 
