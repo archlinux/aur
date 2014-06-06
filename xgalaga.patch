@@ -1,6 +1,53 @@
-diff -up xgalaga-2.1.1.0/Makefile.in.orig xgalaga-2.1.1.0/Makefile.in
---- xgalaga-2.1.1.0/Makefile.in.orig	2008-03-05 14:58:16.000000000 -0700
-+++ xgalaga-2.1.1.0/Makefile.in	2013-06-16 15:12:24.000000000 -0600
+diff -up src/xgalaga-2.1.1.0/defs.h.orig src/xgalaga-2.1.1.0/defs.h
+--- src/xgalaga-2.1.1.0/defs.h.orig	2008-03-05 14:58:16.000000000 -0700
++++ src/xgalaga-2.1.1.0/defs.h	2014-05-17 03:42:38.000000000 -0600
+@@ -3,6 +3,7 @@
+ /* Area for setting flags to enable changes by Bryce and Neelix */
+ 
+ /*#define ORIGINAL_XGALAGA */
++#define IM_A_BIG_FAT_CHEATER
+ /*#define IM_A_BIG_FAT_CHEATER*/
+ 
+ #ifndef ORIGINAL_XGALAGA
+@@ -15,9 +16,15 @@
+ # define NO_PRIZE_WHILE_DEAD
+ #endif
+ 
++#ifdef ORIGINAL_XGALAGA
+ #define MAXTORPS 10
+ #define MINTORPS 3
+ #define TORPSPEED 12
++#else
++#define MAXTORPS 16
++#define MINTORPS 3
++#define TORPSPEED 16
++#endif
+ 
+ #define ETORPSPEED 8
+ 
+diff -up src/xgalaga-2.1.1.0/main.c.orig src/xgalaga-2.1.1.0/main.c
+--- src/xgalaga-2.1.1.0/main.c.orig	2008-03-05 14:58:16.000000000 -0700
++++ src/xgalaga-2.1.1.0/main.c	2014-05-17 03:43:25.000000000 -0600
+@@ -1046,9 +1046,13 @@ int mx, my, but;
+                 break;
+             case 't':
+             case 256+'t':       //372:
+-                maxtorps++;
+-                if(maxtorps > MAXTORPS)
+-                    maxtorps = MINTORPS;
++                if (maxtorps < MAXTORPS)
++                    maxtorps++;
++                break;
++            case 'z':
++            case 256+'z':
++                if (movespeed < MAXSPEED)
++                    movespeed++;
+                 break;
+ #endif /* IM_A_BIG_FAT_CHEATER */
+             case '\r'+256:
+diff -up src/xgalaga-2.1.1.0/Makefile.in.orig src/xgalaga-2.1.1.0/Makefile.in
+--- src/xgalaga-2.1.1.0/Makefile.in.orig	2008-03-05 14:58:16.000000000 -0700
++++ src/xgalaga-2.1.1.0/Makefile.in	2014-05-17 03:42:38.000000000 -0600
 @@ -15,8 +15,7 @@ exec_prefix = @exec_prefix@
  bindir = $(exec_prefix)
  libdir = $(prefix)/lib
