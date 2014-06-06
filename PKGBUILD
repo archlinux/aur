@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=vtwm-git
 pkgver=5.5.0.rc8.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, customizable window manager with a virtual desktop"
 arch=('i686' 'x86_64')
 url="http://www.vtwm.org"
@@ -11,7 +11,7 @@ conflicts=('vtwm')
 depends=('libxpm' 'libxmu' 'libxft' 'libxinerama' 'libxrandr' 'esound' 'rplay')
 optdepends=('m4: for config file preprocessing')
 makedepends=('git')
-backup=('usr/share/X11/vtwm/system.vtwmrc')
+backup=('etc/X11/vtwm/system.vtwmrc')
 options=('!makeflags')
 source=("$pkgname::git://git.code.sf.net/p/vtwm/code"
 	"vtwm.desktop")
@@ -35,7 +35,7 @@ build() {
   automake --foreign --add-missing
   autoconf
   ./configure --prefix=/usr --sysconfdir=/etc
-  make V=0
+  make V=0 rcdir=/etc/X11/vtwm
   head -n 26 add_window.c > EH_MIT
   head -n 20 applets.c > MIT
   head -n 18 desktop.c > DE_ICSTM
@@ -45,7 +45,7 @@ build() {
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" rcdir=/etc/X11/vtwm install
   install -Dm0644 EH_MIT    "$pkgdir/usr/share/licenses/$pkgname/EH_MIT"
   install -Dm0644 MIT	    "$pkgdir/usr/share/licenses/$pkgname/MIT"
   install -Dm0644 DE_ICSTM  "$pkgdir/usr/share/licenses/$pkgname/DE_ICSTM"

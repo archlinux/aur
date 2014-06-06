@@ -17,12 +17,10 @@ pkgbase = vtwm-git
 	optdepends = m4: for config file preprocessing
 	provides = vtwm
 	conflicts = vtwm
-	options = !makeflags
-	backup = etc/X11/vtwm/system.vtwmrc
 	source = vtwm-git::git://git.code.sf.net/p/vtwm/code
 	source = vtwm.desktop
-	md5sums = SKIP
-	md5sums = 7b4fcabdd4cf2b3a03683c37cb0fa82b
+	options = !makeflags
+	backup = etc/X11/vtwm/system.vtwmrc
 
 pkgname = vtwm-git
 
