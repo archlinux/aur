@@ -12,9 +12,8 @@ pkgbase = lxkb_config-git
 	depends = gtk2
 	provides = lxkb_config
 	conflicts = lxkb_config
-	options = !emptydirs
 	source = lxkb_config-git::git://lxde.git.sourceforge.net/gitroot/lxde/lxkb_config
-	md5sums = SKIP
+	options = !emptydirs
 
 pkgname = lxkb_config-git
 
