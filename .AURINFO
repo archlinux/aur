@@ -15,8 +15,6 @@ pkgbase = mcwm-git
 	conflicts = 2bwm-git
 	source = mcwm-git::git://hack.org/mcwm
 	source = mcwm.desktop
-	md5sums = SKIP
-	md5sums = 8daed020f1a9df4b774207b30d954c53
 
 pkgname = mcwm-git
 
