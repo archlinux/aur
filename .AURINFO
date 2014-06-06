@@ -13,7 +13,6 @@ pkgbase = velox-git
 	provides = velox
 	conflicts = velox
 	source = velox-git::git+https://github.com/michaelforney/velox.git
-	md5sums = SKIP
 
 pkgname = velox-git
 
