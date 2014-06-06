@@ -10,9 +10,8 @@ pkgbase = perl-extutils-cchecker
 	makedepends = perl-test-fatal
 	depends = perl
 	depends = perl-extutils-cbuilder
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/P/PE/PEVANS/ExtUtils-CChecker-0.09.tar.gz
-	md5sums = 2c7b30a367fc67851be44f9b4c98b652
+	options = !emptydirs
 
 pkgname = perl-extutils-cchecker
 

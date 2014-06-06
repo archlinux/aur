@@ -2,7 +2,7 @@
 
 pkgname=perl-extutils-cchecker
 _realname=ExtUtils-CChecker
-pkgver=0.08
+pkgver=0.09
 pkgrel=1
 pkgdesc="CPAN/ExtUtils::CChecker - configure-time utilities for using C headers,
 libraries, or OS features"
@@ -13,7 +13,7 @@ depends=('perl' 'perl-extutils-cbuilder')
 makedepends=('perl-test-exception' 'perl-test-fatal')
 url="https://metacpan.org/release/${_realname}"
 source=("http://cpan.metacpan.org/authors/id/P/PE/PEVANS/${_realname}-${pkgver}.tar.gz")
-md5sums=('29df0875a60e2635f39f49b84aeaa502')
+md5sums=('2c7b30a367fc67851be44f9b4c98b652')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
