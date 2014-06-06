@@ -1,19 +1,20 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
 pkgver=4.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
 license=(GPL2)
-depends=('java-runtime' 'perl' 'perl-wx' 'wget')
+depends=(
+  'java-runtime' 'perl' 'perl-wx' 'wget'
+  'perl-config-inifiles' 'perl-io-stringy' 'perl-archive-extract'
+)
 optdepends=(
   'wine: for "compatibility mode" fix'
   'alsa-oss: for "force alsa" fix'
   'pulseaudio: for "force pulseaudio" fix'
   'p7zip: to extract launcher from .msi'
-  'perl-config-inifiles: instead of builtin'
-  'perl-io-stringy: instead of builtin'
   'cairo-nogl: if game crashes during loading/auto-setup'
 )
 conflicts=('runescape-client-bin')
