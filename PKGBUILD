@@ -21,8 +21,7 @@ source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
 md5sums=('8d6d684a9430d5cc98a62a5d8fbda8cf'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
-         '3bf51be3a1bbd262be46dc619f92aa90'
-         'ea2a61c8bd43788d81d98f1ac36c98ac')
+         '3bf51be3a1bbd262be46dc619f92aa90')
 
 prepare() {
 	cd $srcdir/$pkgname-$_ver
