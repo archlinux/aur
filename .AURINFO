@@ -6,9 +6,8 @@ pkgbase = perl-file-configdir
 	arch = any
 	license = PerlArtistic
 	depends = perl-file-homedir
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/R/RE/REHSACK/File-ConfigDir-0.013.tar.gz
-	md5sums = d88577cde204468a91e2466ef8302d61
+	options = !emptydirs
 
 pkgname = perl-file-configdir
 
