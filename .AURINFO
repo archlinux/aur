@@ -7,9 +7,8 @@ pkgbase = perl-extutils-cbuilder
 	license = PerlArtistic
 	license = GPL
 	depends = perl
-	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/A/AM/AMBS/ExtUtils/ExtUtils-CBuilder-0.280216.tar.gz
-	md5sums = e213485bc24bf8fb3db35847977d07bd
+	options = !emptydirs
 
 pkgname = perl-extutils-cbuilder
 
