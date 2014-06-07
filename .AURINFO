@@ -1,12 +1,12 @@
 pkgbase = networkmanager-ifupdown
 	pkgdesc = Network Management daemon
 	pkgver = 0.9.8.10
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.gnome.org/projects/NetworkManager/
-	install = networkmanager.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	license = LGPL2.1
 	makedepends = intltool
 	makedepends = dhcpcd
 	makedepends = dhclient
@@ -16,15 +16,29 @@ pkgbase = networkmanager-ifupdown
 	makedepends = git
 	makedepends = ppp
 	makedepends = modemmanager
-	depends = dbus-glib
+	makedepends = dbus-glib
+	makedepends = iproute2
+	makedepends = libnl
+	makedepends = nss
+	makedepends = polkit
+	makedepends = wpa_supplicant
+	makedepends = dhcp-client
+	makedepends = libsoup
+	makedepends = systemd
+	makedepends = libmm-glib
+	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-0.9.8.10.tar.xz
+	source = NetworkManager.conf
+	source = disable_set_hostname.patch
+
+pkgname = networkmanager-ifupdown
+	install = networkmanager.install
+	depends = libnm-glib
 	depends = iproute2
 	depends = libnl
-	depends = nss
 	depends = polkit
 	depends = wpa_supplicant
 	depends = dhcp-client
 	depends = libsoup
-	depends = systemd
 	depends = libmm-glib
 	optdepends = dhclient: DHCPv6 support
 	optdepends = dnsmasq: Connection sharing
@@ -33,10 +47,14 @@ pkgbase = networkmanager-ifupdown
 	optdepends = ppp: Dialup connection support
 	provides = networkmanager=0.9.8.10
 	conflicts = networkmanager
-	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-0.9.8.10.tar.xz
-	source = NetworkManager.conf
-	source = disable_set_hostname.patch
 	backup = etc/NetworkManager/NetworkManager.conf
 
-pkgname = networkmanager-ifupdown
+pkgname = libnm-glib-ifupdown
+	pkgdesc = NetworkManager library
+	depends = libsystemd
+	depends = nss
+	depends = dbus-glib
+	depends = libutil-linux
+	provides = libnm-glib=0.9.8.10
+	conflicts = libnm-glib
 

@@ -7,46 +7,36 @@
 # Contributor: Will Rea <sillywilly@gmail.com>
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
-pkgname=networkmanager-ifupdown
-_oldname=networkmanager
-_pkgname=NetworkManager
+pkgbase=networkmanager-ifupdown
+pkgname=(networkmanager-ifupdown libnm-glib-ifupdown)
 pkgver=0.9.8.10
-pkgrel=1
+pkgrel=3
 pkgdesc="Network Management daemon"
-arch=('i686' 'x86_64')
-license=('GPL')
-url="http://www.gnome.org/projects/$_pkgname/"
-conflicts=($_oldname)
-provides=($_oldname=$pkgver)
-depends=(dbus-glib iproute2 libnl nss polkit wpa_supplicant dhcp-client libsoup systemd libmm-glib)
-makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc git ppp modemmanager)
-optdepends=('dhclient: DHCPv6 support'
-            'dnsmasq: Connection sharing'
-            'bluez: Bluetooth support'
-            'openresolv: resolvconf support'
-            'ppp: Dialup connection support')
-backup=('etc/NetworkManager/NetworkManager.conf')
-install=networkmanager.install
+arch=(i686 x86_64)
+license=(GPL2 LGPL2.1)
+url="http://www.gnome.org/projects/NetworkManager/"
+makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc git ppp modemmanager
+	     dbus-glib iproute2 libnl nss polkit wpa_supplicant dhcp-client libsoup systemd
+	     libmm-glib)
 #source=(git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=93c1041
-source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
+source=(http://ftp.gnome.org/pub/gnome/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         NetworkManager.conf disable_set_hostname.patch)
 sha256sums=('064d27223d3824859df12e1fb25b787fec1c68bbc864dc52a0289b9211c4c972'
             '44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
 
 prepare() {
-  cd $_pkgname-$pkgver
+  cd NetworkManager-$pkgver
   patch -Np1 -i ../disable_set_hostname.patch
 }
 
 build() {
-  cd $_pkgname-$pkgver
-  ./configure \
-    --prefix=/usr \
+  cd NetworkManager-$pkgver
+  ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libexecdir=/usr/lib/networkmanager \
     --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/networkmanager \
     --with-crypto=nss \
     --with-dhclient=/usr/bin/dhclient \
     --with-dhcpcd=/usr/bin/dhcpcd \
@@ -67,12 +57,46 @@ build() {
   make V=0
 }
 
-package() {
-  cd $_pkgname-$pkgver
+package_networkmanager-ifupdown() {
+  depends=(libnm-glib iproute2 libnl polkit wpa_supplicant dhcp-client libsoup libmm-glib)
+  optdepends=('dhclient: DHCPv6 support'
+              'dnsmasq: Connection sharing'
+              'bluez: Bluetooth support'
+              'openresolv: resolvconf support'
+              'ppp: Dialup connection support')
+  provides=(networkmanager=$pkgver)
+  conflicts=(networkmanager)
+  install=networkmanager.install
+  backup=('etc/NetworkManager/NetworkManager.conf')
+
+  cd NetworkManager-$pkgver
   make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" -C libnm-glib uninstall
+  make DESTDIR="$pkgdir" -C libnm-util uninstall
+  make DESTDIR="$pkgdir" -C vapi uninstall
+
+  # Some stuff to move is left over
+  mv "$pkgdir/usr/include" ..
+  mv "$pkgdir/usr/lib/pkgconfig" ..
 
   install -m644 ../NetworkManager.conf "$pkgdir/etc/NetworkManager/"
   install -m755 -d "$pkgdir/etc/NetworkManager/dnsmasq.d"
 
   rm -r "$pkgdir/var/run"
+}
+
+package_libnm-glib-ifupdown() {
+  pkgdesc="NetworkManager library"
+  depends=(libsystemd nss dbus-glib libutil-linux)
+  provides=(libnm-glib=$pkgver)
+  conflicts=(libnm-glib)
+
+  install -d "$pkgdir/usr/lib"
+  mv include "$pkgdir/usr"
+  mv pkgconfig "$pkgdir/usr/lib"
+
+  cd NetworkManager-$pkgver
+  make DESTDIR="$pkgdir" -C libnm-util install
+  make DESTDIR="$pkgdir" -C libnm-glib install
+  make DESTDIR="$pkgdir" -C vapi install
 }
