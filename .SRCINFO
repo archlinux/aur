@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-stereo-msgs
+	pkgdesc = ROS - stereo_msgs contains messages specific to stereo processing, such as disparity images.
+	pkgver = 1.11.3
+	pkgrel = 2
+	url = http://ros.org/wiki/stereo_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-sensor-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-sensor-msgs
+	source = stereo_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/stereo_msgs/1.11.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-stereo-msgs
+
