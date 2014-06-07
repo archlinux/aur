@@ -7,23 +7,23 @@ pkgname='ros-indigo-catkin'
 pkgver='0.6.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python-catkin-pkg
-  python-empy
-  python)
+  python2-catkin_pkg
+  python2-empy
+  python2)
 
 ros_depends=()
 depends=(${ros_depends[@]}
   gtest
-  python-nose
-  python-catkin-pkg
-  python-empy
-  python)
+  python2-nose
+  python2-catkin_pkg
+  python2-empy
+  python2)
 
 _tag=release/indigo/catkin/${pkgver}-${_pkgver_patch}
 _dir=catkin
@@ -40,16 +40,16 @@ build() {
   cd ${srcdir}/build
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=OFF \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.4m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.4m.so \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
