@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rosbuild
 	pkgdesc = ROS - rosbuild contains scripts for managing the CMake-based build system for ROS.
 	pkgver = 1.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rosbuild
 	arch = any
 	license = BSD
@@ -10,9 +10,9 @@ pkgbase = ros-indigo-rosbuild
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
 	makedepends = pkg-config
-	depends = ros-indigo-catkin
 	depends = ros-indigo-message-generation
 	depends = ros-indigo-message-runtime
+	depends = ros-indigo-catkin
 	source = rosbuild::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosbuild/1.11.1-1
 	md5sums = SKIP
 
