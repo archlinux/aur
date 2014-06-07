@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-dynamic-reconfigure
+	pkgdesc = ROS - This unary stack contains the dynamic_reconfigure package which provides a means to change node parameters at any time without having to restart the node.
+	pkgver = 1.5.36
+	pkgrel = 2
+	url = http://ros.org/wiki/dynamic_reconfigure
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = boost
+	depends = ros-indigo-rosservice
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	depends = ros-indigo-roslib
+	depends = boost
+	source = dynamic_reconfigure::git+https://github.com/ros-gbp/dynamic_reconfigure-release.git#tag=release/indigo/dynamic_reconfigure/1.5.36-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-dynamic-reconfigure
+
