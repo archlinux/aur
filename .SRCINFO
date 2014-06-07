@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-rqt-moveit
+	pkgdesc = ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motion planner developers and users.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_moveit
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-rqt-py-common
+	depends = ros-indigo-rqt-gui-py
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rostopic
+	depends = ros-indigo-rqt-topic
+	depends = ros-indigo-rosnode
+	source = rqt_moveit::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/indigo/rqt_moveit/0.3.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-moveit
+
