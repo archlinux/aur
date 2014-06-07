@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-orocos-kdl
+	pkgdesc = ROS - This package contains a recent version of the Kinematics and Dynamics Library (KDL), distributed by the Orocos Project.
+	pkgver = 1.2.2
+	pkgrel = 3
+	url = http://wiki.ros.org/orocos_kdl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = eigen3
+	depends = ros-indigo-catkin
+	depends = eigen3
+	depends = pkg-config
+	source = orocos_kdl::git+https://github.com/smits/orocos-kdl-release.git#tag=release/indigo/orocos_kdl/1.2.2-2
+	md5sums = SKIP
+
+pkgname = ros-indigo-orocos-kdl
+
