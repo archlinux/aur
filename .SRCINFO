@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rosbash
 	pkgdesc = ROS - Assorted shell commands for using ros with bash.
 	pkgver = 1.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/rosbash
 	arch = any
 	license = BSD
