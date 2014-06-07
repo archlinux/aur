@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-rqt-image-view
+	pkgdesc = ROS - rqt_image_view provides a GUI plugin for displaying images using image_transport.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_image_view
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rqt-gui-cpp
+	makedepends = ros-indigo-rqt-gui
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-sensor-msgs
+	depends = ros-indigo-rqt-gui-cpp
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-cv-bridge
+	source = rqt_image_view::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_image_view/0.3.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-image-view
+
