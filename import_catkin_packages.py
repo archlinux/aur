@@ -138,12 +138,12 @@ class PackageBase(object):
   def _ensure_python2_dependency(self, dependency):
     # python     ---> python2
     # python-foo ---> python2-foo
-    return re.sub(r'python(?!2)([a-zA-Z0-9\-]*)', r'python2\1', dependency)
+    return re.sub(r'^python(?!2)([a-zA-Z0-9\-]*)', r'python2\1', dependency)
 
   def _ensure_python3_dependency(self, dependency):
     # python2     ---> python
     # python2-foo ---> python-foo
-    return re.sub(r'python2([a-zA-Z0-9\-]*)', r'python\1', dependency)
+    return re.sub(r'^python2([a-zA-Z0-9\-]*)', r'python\1', dependency)
 
   def _get_package_xml_url(self, url, name, version):
     if url.find('github'):
