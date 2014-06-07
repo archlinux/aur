@@ -1,0 +1,31 @@
+pkgbase = ros-indigo-topic-tools
+	pkgdesc = ROS - Tools for directing, throttling, selecting, and otherwise messing with ROS topics at a meta level.
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://ros.org/wiki/topic_tools
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosunit
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-rostime
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-cpp-common
+	makedepends = ros-indigo-xmlrpcpp
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rostime
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-xmlrpcpp
+	source = topic_tools::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/topic_tools/1.11.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-topic-tools
+
