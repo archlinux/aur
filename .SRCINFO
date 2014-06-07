@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-python-qt-binding
+	pkgdesc = ROS - This stack provides Python bindings for Qt.
+	pkgver = 0.2.13
+	pkgrel = 1
+	url = http://ros.org/wiki/python_qt_binding
+	arch = any
+	license = BSD, LGPL, GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rosbuild
+	makedepends = python2-pyqt4
+	makedepends = qt4
+	depends = python2-pyqt4
+	source = python_qt_binding::git+https://github.com/ros-gbp/python_qt_binding-release.git#tag=release/indigo/python_qt_binding/0.2.13-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-python-qt-binding
+
