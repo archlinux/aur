@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-actionlib
+	pkgdesc = ROS - The actionlib stack provides a standardized interface for interfacing with preemptable tasks.
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/actionlib
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-actionlib-msgs
+	makedepends = boost
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-rostest
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rospy
+	depends = ros-indigo-actionlib-msgs
+	depends = boost
+	source = actionlib::git+https://github.com/ros-gbp/actionlib-release.git#tag=release/indigo/actionlib/1.11.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-actionlib
+
