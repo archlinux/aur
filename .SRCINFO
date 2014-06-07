@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-rosservice
+	pkgdesc = ROS - rosservice contains the rosservice command-line tool for listing and querying ROS Services.
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosservice
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-roslib
+	depends = ros-indigo-genpy
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rosmsg
+	source = rosservice::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosservice/1.11.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosservice
+
