@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-rqt-tf-tree
+	pkgdesc = ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF frame tree.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_tf_tree
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-rqt-gui-py
+	depends = ros-indigo-rospy
+	depends = ros-indigo-tf2-msgs
+	depends = ros-indigo-qt-dotgraph
+	depends = ros-indigo-rqt-graph
+	depends = ros-indigo-tf2-ros
+	depends = ros-indigo-tf2
+	depends = python2-rospkg
+	source = rqt_tf_tree::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/indigo/rqt_tf_tree/0.3.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-tf-tree
+
