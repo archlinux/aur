@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-media-export
+	pkgdesc = ROS - Placeholder package enabling generic export of media paths.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://ros.org/wiki/media_export
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	source = media_export::git+https://github.com/ros-gbp/media_export-release.git#tag=release/indigo/media_export/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-media-export
+
