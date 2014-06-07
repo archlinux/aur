@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-rqt-gui-cpp
+	pkgdesc = ROS - rqt_gui_cpp enables GUI plugins to use the C++ client library for ROS.
+	pkgver = 0.2.14
+	pkgrel = 2
+	url = http://ros.org/wiki/rqt_gui_cpp
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-qt-gui-cpp
+	makedepends = ros-indigo-qt-gui
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-qt-gui-cpp
+	depends = ros-indigo-qt-gui
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	source = rqt_gui_cpp::git+https://github.com/ros-gbp/rqt-release.git#tag=release/indigo/rqt_gui_cpp/0.2.14-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-gui-cpp
+
