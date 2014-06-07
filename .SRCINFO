@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rosboost-cfg
 	pkgdesc = ROS - Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc.
 	pkgver = 1.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rosboost_cfg
 	arch = any
 	license = BSD
