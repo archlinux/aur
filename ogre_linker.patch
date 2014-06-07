@@ -1,0 +1,19 @@
+commit 06ba6cafe20989d83087d13d669aeae00c82499e
+Author: Benjamin Chrétien <chretien@lirmm.fr>
+Date:   Fri Jan 17 22:26:24 2014 +0100
+
+    Fix link directories for Ogre 1.8.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7729ba5..184df80 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,6 +47,8 @@ execute_process(COMMAND
+   OUTPUT_STRIP_TRAILING_WHITESPACE
+ )
+ 
++link_directories(${OGRE_LIBRARY_DIRS})
++
+ catkin_python_setup()
+ 
+ generate_dynamic_reconfigure_options(
