@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-cmake-modules
 	pkgdesc = ROS - A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
