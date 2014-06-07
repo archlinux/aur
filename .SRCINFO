@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-std-msgs
+	pkgdesc = ROS - Standard ROS Messages including common message types representing primitive data types and other basic message constructs, such as multiarrays.
+	pkgver = 0.5.9
+	pkgrel = 2
+	url = http://www.ros.org/wiki/std_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-message-runtime
+	source = std_msgs::git+https://github.com/ros-gbp/std_msgs-release.git#tag=release/indigo/std_msgs/0.5.9-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-std-msgs
+
