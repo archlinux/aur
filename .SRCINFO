@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-genmsg
 	pkgdesc = ROS - Standalone Python library for generating ROS message and service data structures for various languages.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/genmsg
 	arch = any
 	license = BSD
