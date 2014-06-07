@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
@@ -624,7 +624,7 @@ def main():
   default_python_version = {"fuerte": "2.7",
                             "groovy": "2.7",
                             "hydro":  "2.7",
-                            "indigo": "3.4"}
+                            "indigo": "2.7"}
 
   python_version = default_python_version[options.distro]
   if options.python_version != "":
