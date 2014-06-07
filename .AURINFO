@@ -14,9 +14,8 @@ pkgbase = perl-tk-git
 	depends = perl
 	provides = perl-tk
 	conflicts = perl-tk
-	options = !emptydirs
 	source = perl-tk-git::git+https://github.com/eserte/perl-tk.git
-	md5sums = SKIP
+	options = !emptydirs
 
 pkgname = perl-tk-git
 
