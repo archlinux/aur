@@ -1,0 +1,29 @@
+pkgbase = ros-indigo-rosconsole
+	pkgdesc = ROS - ROS console output library.
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rosconsole
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosunit
+	makedepends = ros-indigo-rostime
+	makedepends = ros-indigo-cpp-common
+	makedepends = ros-indigo-catkin
+	makedepends = apr
+	makedepends = apr-util
+	makedepends = boost
+	makedepends = log4cxx
+	depends = ros-indigo-rostime
+	depends = ros-indigo-cpp-common
+	depends = ros-indigo-rosbuild
+	depends = apr
+	depends = apr-util
+	depends = log4cxx
+	source = rosconsole::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosconsole/1.11.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosconsole
+
