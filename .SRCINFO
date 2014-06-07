@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-console-bridge
 	pkgdesc = ROS - Lightweight tool for forwarding output from libraries to other logging systems.
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros/console_bridge
 	arch = any
 	license = BSD
