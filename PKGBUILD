@@ -7,7 +7,7 @@ pkgname='ros-indigo-ros'
 pkgver='1.11.1'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -15,16 +15,16 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosmake
+  ros-indigo-roslang
+  ros-indigo-rosunit
+  ros-indigo-roscreate
+  ros-indigo-catkin
+  ros-indigo-rosboost-cfg
   ros-indigo-rosclean
   ros-indigo-rosbuild
-  ros-indigo-rosunit
   ros-indigo-roslib
-  ros-indigo-mk
-  ros-indigo-catkin
-  ros-indigo-roslang
-  ros-indigo-roscreate
-  ros-indigo-rosboost-cfg
-  ros-indigo-rosbash)
+  ros-indigo-rosbash
+  ros-indigo-mk)
 depends=(${ros_depends[@]})
 
 _tag=release/indigo/ros/${pkgver}-${_pkgver_patch}
@@ -42,16 +42,16 @@ build() {
   cd ${srcdir}/build
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/indigo \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.4m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.4m.so \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
