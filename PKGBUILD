@@ -6,7 +6,7 @@
 pkgbase=linux-selinux       # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.14
-pkgver=3.14.4
+pkgver=3.14.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,17 +24,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
         '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
-        '0004-fs-Don-t-return-0-from-get_anon_bdev.patch'
         '0005-Revert-Bluetooth-Enable-autosuspend-for-Intel-Blueto.patch'
         '0006-genksyms-fix-typeof-handling.patch'
         '0010-iwlwifi-mvm-delay-enabling-smart-FIFO-until-after-be.patch'
         '0011-kernfs-fix-removed-error-check.patch'
         '0012-fix-saa7134.patch'
-        '0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch'
         '0015-fix-xsdt-validation.patch'
         )
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
-            'af640ea64e923d525a8238832e8452381e6dc76a3bf28046411cadd67c408114'
+            'ecc00856830c05736b3f99609bc6d80353c29d2db9b0dffb91eb2d169808cac4'
             '68d36c33637d0431372d8f679b61d6641b36ccc079419405024dfc3b88e37ba4'
             '3bad2b8b6c2c3e1879422046abd6b28a0964996b0544cb8c36c3d19f252e47ad'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
@@ -42,13 +40,11 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
             '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
             '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
-            '1e1ae0f31f722e80da083ecada1f1be57f9ddad133941820c4483b0240e494c1'
             '3fffb01cf97a5a7ab9601cb277d2468c0fb1e1cceba4225915f3ffae3a5694ec'
             'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
             'c0af4622f75c89fef62183e18b7d49998228d4eaa906c6accaf4aa4ff0134f85'
             '04f44bf5c181d6dc31905937c1bdccb0f5aecaad3a579e99b302502b9cbe0f7a'
             '79359454c9d8446eb55add2b1cdbf8332bd67dafb01fefb5b1ca090225f64d18'
-            'f2a5e22c1ba6e9b8a32a7bd4a5327ee95538aa10edcee3cd12578f8ff49bf6be'
             '384dd13fd4248fd6809da8c6ae29ced55d4a5cacc33ac2ae7522093ec0fb26d4')
 
 _kernelname=${pkgbase#linux}
@@ -74,10 +70,6 @@ prepare() {
   patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
   patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
 
-  # Fix various bugs caused by rootfs having FSID 0
-  # See http://www.spinics.net/lists/kernel/msg1716924.html
-  patch -p1 -i "${srcdir}/0004-fs-Don-t-return-0-from-get_anon_bdev.patch"
-
   # Disable usb autosuspend for intel btusb
   # See http://www.spinics.net/lists/kernel/msg1716461.html
   # Until a solution is found, make sure the driver leaves autosuspend alone
@@ -99,11 +91,6 @@ prepare() {
   # https://bugs.archlinux.org/task/39904
   # https://bugzilla.kernel.org/show_bug.cgi?id=73361
   patch -Np1 -i "${srcdir}/0012-fix-saa7134.patch"
-
-  # fix tun/openvpn performance
-  # https://bugs.archlinux.org/task/40089
-  # https://bugzilla.kernel.org/show_bug.cgi?id=74051
-  patch -Np1 -i "${srcdir}/0013-net-Start-with-correct-mac_len-in-skb_network_protocol.patch"
 
   # fix xsdt validation bug
   # https://bugs.archlinux.org/task/39811
