@@ -1,0 +1,37 @@
+pkgbase = ros-indigo-ros-comm
+	pkgdesc = ROS - ROS communications-related packages, including core client libraries (roscpp, rospy) and graph introspection tools (rostopic, rosnode, rosservice, rosparam).
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://www.ros.org/wiki/ros_comm
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rosout
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-rospy
+	depends = ros-indigo-topic-tools
+	depends = ros-indigo-ros
+	depends = ros-indigo-rosservice
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-rostopic
+	depends = ros-indigo-rosmsg
+	depends = ros-indigo-rosgraph-msgs
+	depends = ros-indigo-rosparam
+	depends = ros-indigo-rosbag
+	depends = ros-indigo-roswtf
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-rosmaster
+	depends = ros-indigo-xmlrpcpp
+	depends = ros-indigo-rostest
+	depends = ros-indigo-roslaunch
+	depends = ros-indigo-rosnode
+	depends = ros-indigo-message-filters
+	source = ros_comm::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/ros_comm/1.11.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ros-comm
+
