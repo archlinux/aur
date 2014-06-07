@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-perception
+	pkgdesc = ROS - A metapackage to aggregate several packages.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-image-transport-plugins
+	depends = ros-indigo-image-pipeline
+	depends = ros-indigo-image-common
+	depends = ros-indigo-vision-opencv
+	depends = ros-indigo-laser-pipeline
+	depends = ros-indigo-ros-base
+	depends = ros-indigo-perception-pcl
+	source = perception::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/indigo/perception/1.1.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-perception
+
