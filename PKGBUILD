@@ -2,7 +2,7 @@
 
 pkgname=econnman-git
 _pkgname=${pkgname%-*}
-pkgver=1.1.0.r4.g240c1a3
+pkgver=1.1.0.r19.g5959946
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
@@ -37,10 +37,8 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
 
   chmod 666 "$pkgdir/var/lib/connman/econnman.config"
 }

@@ -1,6 +1,6 @@
 pkgbase = econnman-git
 	pkgdesc = Enlightenment ConnMan user interface - Development version
-	pkgver = 1.1.0.r4.g240c1a3
+	pkgver = 1.1.0.r19.g5959946
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = econnman-git
 	makedepends = git
 	depends = python-efl
 	depends = connman
-	provides = econnman=1.1.0.r4.g240c1a3
+	provides = econnman=1.1.0.r19.g5959946
 	conflicts = econnman
 	source = git://git.enlightenment.org/apps/econnman.git
 	sha256sums = SKIP
