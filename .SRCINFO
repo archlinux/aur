@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-pcl-msgs
+	pkgdesc = ROS - Package containing PCL (Point Cloud Library)-related ROS messages.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://wiki.ros.org/pcl_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-sensor-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-sensor-msgs
+	source = pcl_msgs::git+https://github.com/ros-gbp/pcl_msgs-release.git#tag=release/indigo/pcl_msgs/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pcl-msgs
+
