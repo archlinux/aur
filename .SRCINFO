@@ -1,0 +1,36 @@
+pkgbase = ros-indigo-rosbag
+	pkgdesc = ROS - This is a set of tools for recording from and playing back to ROS topics.
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosbag
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp-serialization
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-rosbag-storage
+	makedepends = ros-indigo-cpp-common
+	makedepends = ros-indigo-topic-tools
+	makedepends = ros-indigo-xmlrpcpp
+	makedepends = python2-pillow
+	makedepends = boost
+	depends = ros-indigo-genpy
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-genmsg
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-rosbag-storage
+	depends = ros-indigo-roslib
+	depends = ros-indigo-topic-tools
+	depends = ros-indigo-xmlrpcpp
+	depends = python2-rospkg
+	depends = boost
+	source = rosbag::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosbag/1.11.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosbag
+
