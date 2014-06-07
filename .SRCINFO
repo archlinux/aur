@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-rqt-topic
+	pkgdesc = ROS - rqt_topic provides a GUI plugin for displaying debug information about ROS topics including publishers, subscribers, publishing rate, and ROS Messages.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_topic
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-gui-py
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-rostopic
+	depends = ros-indigo-std-msgs
+	depends = python2-rospkg
+	source = rqt_topic::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_topic/0.3.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-topic
+
