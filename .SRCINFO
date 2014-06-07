@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-simulators
+	pkgdesc = ROS - A metapackage to aggregate several packages.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-robot-plugins
+	depends = ros-indigo-stage-ros
+	depends = ros-indigo-robot
+	depends = ros-indigo-gazebo-ros-pkgs
+	depends = ros-indigo-rqt-common-plugins
+	source = simulators::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/indigo/simulators/1.1.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-simulators
+
