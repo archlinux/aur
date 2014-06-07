@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-rqt
+	pkgdesc = ROS - rqt is a Qt-based framework for GUI development for ROS.
+	pkgver = 0.2.14
+	pkgrel = 2
+	url = http://ros.org/wiki/rqt
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-gui-py
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-rqt-gui-cpp
+	source = rqt::git+https://github.com/ros-gbp/rqt-release.git#tag=release/indigo/rqt/0.2.14-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt
+
