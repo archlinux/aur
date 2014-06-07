@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-kdl-parser
+	pkgdesc = ROS - The Kinematics and Dynamics Library (KDL) defines a tree structure to represent the kinematic and dynamic parameters of a robot mechanism.
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = http://ros.org/wiki/kdl_parser
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-orocos-kdl
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-urdf
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-urdf
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-orocos-kdl
+	source = kdl_parser::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/kdl_parser/1.11.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-kdl-parser
+
