@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-executive-smach
+	pkgdesc = ROS - This metapackage depends on the SMACH library and ROS SMACH integration packages.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://ros.org/wiki/smach
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-smach
+	depends = ros-indigo-smach-msgs
+	depends = ros-indigo-smach-ros
+	source = executive_smach::git+https://github.com/ros-gbp/executive_smach-release.git#tag=release/indigo/executive_smach/2.0.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-executive-smach
+
