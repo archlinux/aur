@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-pluginlib-tutorials
+	pkgdesc = ROS - The pluginlib_tutorials package.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = http://www.ros.org/wiki/pluginlib/Tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-pluginlib
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-pluginlib
+	source = pluginlib_tutorials::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/indigo/pluginlib_tutorials/0.1.7-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pluginlib-tutorials
+
