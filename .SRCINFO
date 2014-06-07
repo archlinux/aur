@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-diagnostic-common-diagnostics
+	pkgdesc = ROS - diagnostic_common_diagnostics.
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = http://ros.org/wiki/diagnostic_common_diagnostics
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-tf
+	depends = ros-indigo-diagnostic-updater
+	depends = ros-indigo-rospy
+	depends = hddtemp
+	source = diagnostic_common_diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/diagnostic_common_diagnostics/1.8.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-diagnostic-common-diagnostics
+
