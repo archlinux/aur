@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-rqt-gui
+	pkgdesc = ROS - rqt_gui provides the main to start an instance of the ROS integrated graphical user interface provided by qt_gui.
+	pkgver = 0.2.14
+	pkgrel = 2
+	url = http://ros.org/wiki/rqt_gui
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-qt-gui
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-qt-gui
+	depends = ros-indigo-catkin
+	source = rqt_gui::git+https://github.com/ros-gbp/rqt-release.git#tag=release/indigo/rqt_gui/0.2.14-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-gui
+
