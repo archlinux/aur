@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-angles
+	pkgdesc = ROS - This package provides a set of simple math utilities to work with angles.
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = http://ros.org/wiki/angles
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	source = angles::git+https://github.com/ros-gbp/geometry_angles_utils-release.git#tag=release/indigo/angles/1.9.9-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-angles
+
