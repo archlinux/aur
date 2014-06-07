@@ -1,0 +1,36 @@
+pkgbase = ros-indigo-stereo-image-proc
+	pkgdesc = ROS - Stereo and single image rectification and disparity processing.
+	pkgver = 1.12.5
+	pkgrel = 1
+	url = http://www.ros.org/wiki/stereo_image_proc
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-image-geometry
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-stereo-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-image-proc
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-nodelet
+	makedepends = opencv
+	depends = ros-indigo-image-geometry
+	depends = ros-indigo-cv-bridge
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-stereo-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-image-proc
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-nodelet
+	depends = opencv
+	source = stereo_image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/indigo/stereo_image_proc/1.12.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-stereo-image-proc
+
