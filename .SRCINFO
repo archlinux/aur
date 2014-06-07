@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-rqt-rviz
+	pkgdesc = ROS - rqt_rviz provides a GUI plugin embedding RViz.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_rviz
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rqt-gui
+	makedepends = ros-indigo-rviz
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-pluginlib
+	makedepends = ros-indigo-rqt-gui-cpp
+	makedepends = boost
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-rviz
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-rqt-gui-cpp
+	depends = boost
+	source = rqt_rviz::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/indigo/rqt_rviz/0.3.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-rviz
+
