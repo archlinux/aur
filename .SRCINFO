@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-camera-calibration
+	pkgdesc = ROS - camera_calibration allows easy calibration of monocular or stereo cameras using a checkerboard calibration target.
+	pkgver = 1.12.5
+	pkgrel = 1
+	url = http://www.ros.org/wiki/camera_calibration
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-image-geometry
+	depends = ros-indigo-cv-bridge
+	depends = ros-indigo-rospy
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-message-filters
+	depends = opencv
+	source = camera_calibration::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/indigo/camera_calibration/1.12.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-camera-calibration
+
