@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-rqt-gui-py
+	pkgdesc = ROS - rqt_gui_py enables GUI plugins to use the Python client library for ROS.
+	pkgver = 0.2.14
+	pkgrel = 2
+	url = http://ros.org/wiki/rqt_gui_py
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rqt-gui
+	makedepends = ros-indigo-qt-gui
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-gui
+	depends = ros-indigo-qt-gui
+	depends = ros-indigo-rospy
+	source = rqt_gui_py::git+https://github.com/ros-gbp/rqt-release.git#tag=release/indigo/rqt_gui_py/0.2.14-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-gui-py
+
