@@ -1,0 +1,25 @@
+pkgbase = ros-indigo-filters
+	pkgdesc = ROS - This library provides a standardized interface for processing data as a sequence of filters.
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = http://ros.org/wiki/filters
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-roslib
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-roslib
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-roscpp
+	source = filters::git+https://github.com/ros-gbp/filters-release.git#tag=release/indigo/filters/1.7.4-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-filters
+
