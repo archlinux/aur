@@ -1,0 +1,28 @@
+pkgbase = ros-indigo-tf-conversions
+	pkgdesc = ROS - This package contains a set of conversion functions to convert common tf datatypes (point, vector, pose, etc) into semantically identical datatypes used by other libraries.
+	pkgver = 1.11.3
+	pkgrel = 2
+	url = http://www.ros.org/wiki/tf_conversions
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-kdl-conversions
+	makedepends = ros-indigo-orocos-kdl
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-tf
+	makedepends = eigen3
+	depends = ros-indigo-kdl-conversions
+	depends = ros-indigo-tf
+	depends = ros-indigo-python-orocos-kdl
+	depends = ros-indigo-orocos-kdl
+	depends = ros-indigo-geometry-msgs
+	depends = eigen3
+	source = tf_conversions::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/tf_conversions/1.11.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf-conversions
+
