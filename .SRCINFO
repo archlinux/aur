@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-urdf-tutorial
+	pkgdesc = ROS - This package contains a number of URDF tutorials.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://ros.org/wiki/urdf_tutorial
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-urdf
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-urdf
+	source = urdf_tutorial::git+https://github.com/ros-gbp/urdf_tutorial-release.git#tag=release/indigo/urdf_tutorial/0.2.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-urdf-tutorial
+
