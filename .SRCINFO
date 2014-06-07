@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-octomap
+	pkgdesc = ROS - The OctoMap library implements a 3D occupancy grid mapping approach, providing data structures and mapping algorithms in C++.
+	pkgver = 1.6.6
+	pkgrel = 1
+	url = http://octomap.github.io
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	depends = ros-indigo-catkin
+	source = octomap::git+https://github.com/ros-gbp/octomap-release.git#tag=release/indigo/octomap/1.6.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-octomap
+
