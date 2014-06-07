@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-interactive-marker-tutorials
+	pkgdesc = ROS - The interactive_marker_tutorials package.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://ros.org/wiki/interactive_marker_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-interactive-markers
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-visualization-msgs
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-interactive-markers
+	depends = ros-indigo-tf
+	depends = ros-indigo-visualization-msgs
+	depends = ros-indigo-roscpp
+	source = interactive_marker_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/indigo/interactive_marker_tutorials/0.9.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-interactive-marker-tutorials
+
