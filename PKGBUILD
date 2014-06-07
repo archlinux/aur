@@ -3,7 +3,7 @@
 # Contributor: Patrik Hautala <phloyd@iki.fi>
 
 pkgname=moe
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='A powerful, 8-bit clean, text editor. Supports ISO-8859-15 and ASCII.'
 arch=('i686' 'x86_64')
@@ -13,16 +13,16 @@ depends=('ncurses')
 makedepends=('texinfo')
 install=moe.install
 backup=('etc/moerc')
-source=(http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('9657248473d04549d6e85e6d36a3e3c3')
+source=(http://ftpmirror.gnu.org/moe/$pkgname-$pkgver.tar.lz)
+md5sums=('6b2a5bb4d7f2936d22bf7c6fdd799356')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make
+	cd $pkgname-$pkgver
+	./configure --prefix=/usr --sysconfdir=/etc
+	make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+	cd $pkgname-$pkgver
+	make DESTDIR="$pkgdir" install
 }
