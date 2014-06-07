@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-mk
 	pkgdesc = ROS - A collection of .mk include files for building ROS architectural elements.
 	pkgver = 1.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/ROS
 	arch = any
 	license = BSD
