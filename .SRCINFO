@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-collada-parser
+	pkgdesc = ROS - This package contains a C++ parser for the Collada robot description format.
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = http://ros.org/wiki/collada_parser
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-urdf-parser-plugin
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-urdfdom-headers
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-class-loader
+	makedepends = collada-dom
+	depends = ros-indigo-urdf-parser-plugin
+	depends = ros-indigo-urdfdom-headers
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-class-loader
+	depends = collada-dom
+	source = collada_parser::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/collada_parser/1.11.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-collada-parser
+
