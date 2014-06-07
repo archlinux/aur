@@ -1,0 +1,44 @@
+pkgbase = ros-indigo-pcl-ros
+	pkgdesc = ROS - PCL (Point Cloud Library) ROS interface stack.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://ros.org/wiki/perception_pcl
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-rosbag
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-pcl-msgs
+	makedepends = ros-indigo-pcl-conversions
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-pluginlib
+	makedepends = ros-indigo-nodelet-topic-tools
+	makedepends = eigen3
+	makedepends = pcl
+	depends = ros-indigo-tf
+	depends = ros-indigo-nodelet-topic-tools
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-rosbag
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-pcl-msgs
+	depends = ros-indigo-pcl-conversions
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-nodelet
+	depends = eigen3
+	depends = pcl
+	source = pcl_ros::git+https://github.com/ros-gbp/perception_pcl-release.git#tag=release/indigo/pcl_ros/1.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pcl-ros
+
