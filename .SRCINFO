@@ -1,0 +1,38 @@
+pkgbase = ros-indigo-image-view
+	pkgdesc = ROS - A simple viewer for ROS image topics.
+	pkgver = 1.12.5
+	pkgrel = 1
+	url = http://www.ros.org/wiki/image_view
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-stereo-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-camera-calibration-parsers
+	makedepends = ros-indigo-message-filters
+	makedepends = opencv
+	makedepends = gtk2
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-cv-bridge
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-camera-calibration-parsers
+	depends = ros-indigo-message-filters
+	depends = opencv
+	depends = gtk2
+	source = image_view::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/indigo/image_view/1.12.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-image-view
+
