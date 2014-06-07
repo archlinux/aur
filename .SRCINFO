@@ -1,0 +1,38 @@
+pkgbase = ros-indigo-tf
+	pkgdesc = ROS - tf is a package that lets the user keep track of multiple coordinate frames over time.
+	pkgver = 1.11.3
+	pkgrel = 2
+	url = http://www.ros.org/wiki/tf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf2-ros
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-angles
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-tf2
+	depends = ros-indigo-tf2-ros
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-roswtf
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-tf2
+	depends = graphviz
+	source = tf::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/tf/1.11.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf
+
