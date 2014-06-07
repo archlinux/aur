@@ -1,15 +1,15 @@
 pkgbase = ros-indigo-gencpp
 	pkgdesc = ROS - C++ ROS message and service generators.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = git
 	makedepends = ros-build-tools
-	makedepends = ros-indigo-catkin
 	makedepends = ros-indigo-genmsg
+	makedepends = ros-indigo-catkin
 	depends = ros-indigo-genmsg
 	source = gencpp::git+https://github.com/ros-gbp/gencpp-release.git#tag=release/indigo/gencpp/0.5.2-0
 	md5sums = SKIP
