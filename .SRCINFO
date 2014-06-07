@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rostime
 	pkgdesc = ROS - Time and Duration implementations for C++ libraries, including roscpp.
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rostime
 	arch = any
 	license = BSD
