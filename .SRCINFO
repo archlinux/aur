@@ -1,0 +1,18 @@
+pkgbase = ros-indigo-nodelet-core
+	pkgdesc = ROS - Nodelet Core Metapackage.
+	pkgver = 1.8.3
+	pkgrel = 2
+	url = http://www.ros.org/wiki/nodelet_core
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-nodelet-topic-tools
+	source = nodelet_core::git+https://github.com/ros-gbp/nodelet_core-release.git#tag=release/indigo/nodelet_core/1.8.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-nodelet-core
+
