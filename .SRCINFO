@@ -1,0 +1,36 @@
+pkgbase = ros-indigo-turtlesim
+	pkgdesc = ROS - turtlesim is a tool made for teaching ROS and ROS packages.
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://www.ros.org/wiki/turtlesim
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp-serialization
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostime
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-roslib
+	makedepends = ros-indigo-catkin
+	makedepends = qt4
+	depends = ros-indigo-roscpp-serialization
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rostime
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-roslib
+	depends = qt4
+	source = turtlesim::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/indigo/turtlesim/0.5.1-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-turtlesim
+
