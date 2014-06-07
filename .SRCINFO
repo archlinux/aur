@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-trajectory-msgs
+	pkgdesc = ROS - This package defines messages for defining robot trajectories.
+	pkgver = 1.11.3
+	pkgrel = 2
+	url = http://ros.org/wiki/trajectory_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-geometry-msgs
+	depends = ros-indigo-rosbag-migration-rule
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-geometry-msgs
+	source = trajectory_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/trajectory_msgs/1.11.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-trajectory-msgs
+
