@@ -1,0 +1,33 @@
+pkgbase = ros-indigo-laser-assembler
+	pkgdesc = ROS - Provides nodes to assemble point clouds from either LaserScan or PointCloud messages.
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = http://ros.org/wiki/laser_assembler
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-filters
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-laser-geometry
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-filters
+	depends = ros-indigo-laser-geometry
+	depends = ros-indigo-tf
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-pluginlib
+	source = laser_assembler::git+https://github.com/ros-gbp/laser_assembler-release.git#tag=release/indigo/laser_assembler/1.7.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-laser-assembler
+
