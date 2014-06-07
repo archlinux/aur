@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-tf2-geometry-msgs
+	pkgdesc = ROS - tf2_geometry_msgs.
+	pkgver = 0.5.4
+	pkgrel = 2
+	url = http://www.ros.org/wiki/tf2_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf2-ros
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-orocos-kdl
+	makedepends = ros-indigo-tf2
+	makedepends = ros-indigo-geometry-msgs
+	depends = ros-indigo-tf2-ros
+	depends = ros-indigo-orocos-kdl
+	depends = ros-indigo-tf2
+	depends = ros-indigo-geometry-msgs
+	source = tf2_geometry_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_geometry_msgs/0.5.4-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf2-geometry-msgs
+
