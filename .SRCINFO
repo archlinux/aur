@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-shape-tools
+	pkgdesc = ROS - Tools for operating on shape messages.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://www.ros.org/wiki/shape_tools
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-shape-msgs
+	makedepends = ros-indigo-visualization-msgs
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-visualization-msgs
+	source = shape_tools::git+https://github.com/ros-gbp/shape_tools-release.git#tag=release/indigo/shape_tools/0.2.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-shape-tools
+
