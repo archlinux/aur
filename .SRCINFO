@@ -1,0 +1,37 @@
+pkgbase = ros-indigo-rqt-common-plugins
+	pkgdesc = ROS - rqt_common_plugins metapackage provides ROS backend graphical tools suite that can be used on/off of robot runtime.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_common_plugins
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-top
+	depends = ros-indigo-rqt-publisher
+	depends = ros-indigo-rqt-dep
+	depends = ros-indigo-rqt-shell
+	depends = ros-indigo-rqt-launch
+	depends = ros-indigo-rqt-py-common
+	depends = ros-indigo-rqt-msg
+	depends = ros-indigo-rqt-action
+	depends = ros-indigo-rqt-bag
+	depends = ros-indigo-rqt-console
+	depends = ros-indigo-rqt-logger-level
+	depends = ros-indigo-rqt-bag-plugins
+	depends = ros-indigo-rqt-plot
+	depends = ros-indigo-rqt-service-caller
+	depends = ros-indigo-rqt-reconfigure
+	depends = ros-indigo-rqt-graph
+	depends = ros-indigo-rqt-topic
+	depends = ros-indigo-rqt-image-view
+	depends = ros-indigo-rqt-srv
+	depends = ros-indigo-rqt-web
+	depends = ros-indigo-rqt-py-console
+	source = rqt_common_plugins::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_common_plugins/0.3.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-common-plugins
+
