@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-camera-calibration-parsers
+	pkgdesc = ROS - camera_calibration_parsers contains routines for reading and writing camera calibration parameters.
+	pkgver = 1.11.3
+	pkgrel = 2
+	url = http://ros.org/wiki/camera_calibration_parsers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = boost
+	makedepends = yaml-cpp
+	makedepends = pkg-config
+	depends = ros-indigo-sensor-msgs
+	depends = yaml-cpp
+	source = camera_calibration_parsers::git+https://github.com/ros-gbp/image_common-release.git#tag=release/indigo/camera_calibration_parsers/1.11.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-camera-calibration-parsers
+
