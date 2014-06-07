@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-laser-pipeline
+	pkgdesc = ROS - Meta-package of libraries for processing laser data, including converting laser data into 3D representations.
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://www.ros.org/wiki/laser_pipeline
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-laser-assembler
+	depends = ros-indigo-laser-filters
+	depends = ros-indigo-laser-geometry
+	source = laser_pipeline::git+https://github.com/ros-gbp/laser_pipeline-release.git#tag=release/indigo/laser_pipeline/1.6.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-laser-pipeline
+
