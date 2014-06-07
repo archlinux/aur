@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rosunit
 	pkgdesc = ROS - Unit-testing package for ROS.
 	pkgver = 1.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rosunit
 	arch = any
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = ros-indigo-rosunit
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-roslib
-	depends = python-rospkg
+	depends = python2-rospkg
 	source = rosunit::git+https://github.com/ros-gbp/ros-release.git#tag=release/indigo/rosunit/1.11.1-1
 	md5sums = SKIP
 
