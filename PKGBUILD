@@ -8,7 +8,7 @@
 pkgname=perl-tk-git
 _pkgname=perl-tk
 pkgver=804.032.r8.g2eaf2e3
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical user interface toolkit for Perl"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Tk"
@@ -31,10 +31,10 @@ build() {
   make
 }
 
-check() {
-  cd $pkgname
-  make test
-}
+#check() {
+#  cd $pkgname
+#  make test
+#}
 
 package() {
   cd $pkgname
