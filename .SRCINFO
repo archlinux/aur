@@ -1,0 +1,25 @@
+pkgbase = ros-indigo-robot
+	pkgdesc = ROS - A metapackage which extends ros_base and includes ROS libaries for any robot hardware.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-control-msgs
+	depends = ros-indigo-robot-model
+	depends = ros-indigo-xacro
+	depends = ros-indigo-diagnostics
+	depends = ros-indigo-geometry
+	depends = ros-indigo-filters
+	depends = ros-indigo-ros-base
+	depends = ros-indigo-robot-state-publisher
+	depends = ros-indigo-executive-smach
+	source = robot::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/indigo/robot/1.1.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-robot
+
