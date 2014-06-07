@@ -1,0 +1,32 @@
+commit 2d39cb20f09c2f2dd1cb6abbe228b0756c2a7e32
+Author: Benjamin Chrétien <chretien@lirmm.fr>
+Date:   Fri May 23 10:43:14 2014 +0200
+
+    Fix clash with assimp 3.1 in CMake.
+
+diff --git a/collada_urdf/CMakeLists.txt b/collada_urdf/CMakeLists.txt
+index fc93e4c..524f2e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,9 +12,6 @@ catkin_package(
+ 
+ include_directories(include)
+ 
+-find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
+-include_directories(${Boost_INCLUDE_DIR})
+-
+ find_package(assimp QUIET)
+ if ( NOT ASSIMP_FOUND )
+   find_package(Assimp QUIET)
+@@ -42,6 +39,11 @@ else()
+   set(ASSIMP_INCLUDE_DIRS)
+ endif()
+ 
++# Note: assimp 3.1 overwrites CMake Boost variables, so we need to check for
++# Boost after assimp.
++find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
++include_directories(${Boost_INCLUDE_DIR})
++
+ find_package(COLLADA_DOM 2.3 COMPONENTS 1.5)
+ if( COLLADA_DOM_FOUND )
+   include_directories(${COLLADA_DOM_INCLUDE_DIRS})
