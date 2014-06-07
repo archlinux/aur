@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-polled-camera
+	pkgdesc = ROS - polled_camera contains a service and C++ helper classes for implementing a polled camera driver node and requesting images from it.
+	pkgver = 1.11.3
+	pkgrel = 2
+	url = http://ros.org/wiki/polled_camera
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-sensor-msgs
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-sensor-msgs
+	source = polled_camera::git+https://github.com/ros-gbp/image_common-release.git#tag=release/indigo/polled_camera/1.11.3-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-polled-camera
+
