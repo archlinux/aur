@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-tf2
+	pkgdesc = ROS - tf2 is the second generation of the transform library, which lets the user keep track of multiple coordinate frames over time.
+	pkgver = 0.5.4
+	pkgrel = 2
+	url = http://www.ros.org/wiki/tf2
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf2-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rostime
+	makedepends = ros-indigo-console-bridge
+	makedepends = ros-indigo-geometry-msgs
+	depends = ros-indigo-tf2-msgs
+	depends = ros-indigo-rostime
+	depends = ros-indigo-console-bridge
+	depends = ros-indigo-geometry-msgs
+	source = tf2::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2/0.5.4-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf2
+
