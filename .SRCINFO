@@ -1,6 +1,6 @@
 pkgbase = ecrire-git
 	pkgdesc = Simple text editor based on EFL
-	pkgver = 0.1.0.106.317bca3
+	pkgver = 0.1.0.108.6442cb8
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = ecrire.install
@@ -10,7 +10,7 @@ pkgbase = ecrire-git
 	makedepends = git
 	makedepends = cmake
 	depends = elementary
-	provides = ecrire=0.1.0.106.317bca3
+	provides = ecrire=0.1.0.108.6442cb8
 	conflicts = ecrire
 	source = git://git.enlightenment.org/apps/ecrire.git
 	sha256sums = SKIP
