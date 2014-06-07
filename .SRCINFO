@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-nodelet-tutorial-math
+	pkgdesc = ROS - Package for Nodelet tutorial.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = http://www.ros.org/wiki/nodelet_tutorial_math
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	source = nodelet_tutorial_math::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/indigo/nodelet_tutorial_math/0.1.7-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-nodelet-tutorial-math
+
