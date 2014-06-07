@@ -1,0 +1,38 @@
+pkgbase = ros-indigo-tf2-ros
+	pkgdesc = ROS - This package contains the ROS bindings for the tf2 library, for both Python and C++.
+	pkgver = 0.5.4
+	pkgrel = 2
+	url = http://www.ros.org/wiki/tf2_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosgraph
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-tf2-py
+	makedepends = ros-indigo-tf2-msgs
+	makedepends = ros-indigo-actionlib
+	makedepends = ros-indigo-actionlib-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-tf2
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-rospy
+	depends = ros-indigo-tf2-py
+	depends = ros-indigo-tf2-msgs
+	depends = ros-indigo-actionlib
+	depends = ros-indigo-actionlib-msgs
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-tf2
+	source = tf2_ros::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_ros/0.5.4-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf2-ros
+
