@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-pcl-conversions
+	pkgdesc = ROS - Provides conversions from PCL data types and ROS message types.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://wiki.ros.org/pcl_conversions
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-pcl-msgs
+	makedepends = pcl
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-pcl-msgs
+	depends = pcl
+	source = pcl_conversions::git+https://github.com/ros-gbp/pcl_conversions-release.git#tag=release/indigo/pcl_conversions/0.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pcl-conversions
+
