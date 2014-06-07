@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-map-msgs
+	pkgdesc = ROS - This package defines messages commonly used in mapping packages.
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = http://ros.org/wiki/map_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-nav-msgs
+	makedepends = ros-indigo-std-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-nav-msgs
+	depends = ros-indigo-sensor-msgs
+	source = map_msgs::git+https://github.com/ros-gbp/map_msgs-release.git#tag=release/indigo/map_msgs/0.0.2-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-map-msgs
+
