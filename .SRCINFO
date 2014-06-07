@@ -1,0 +1,37 @@
+pkgbase = ros-indigo-laser-filters
+	pkgdesc = ROS - Assorted filters designed to operate on 2D planar laser scanners, which use the sensor_msgs/LaserScan type.
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = http://ros.org/wiki/laser_filters
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-angles
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-laser-geometry
+	makedepends = ros-indigo-filters
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-pluginlib
+	makedepends = eigen3
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-angles
+	depends = ros-indigo-laser-geometry
+	depends = ros-indigo-filters
+	depends = ros-indigo-cmake-modules
+	depends = ros-indigo-tf
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-pluginlib
+	depends = eigen3
+	source = laser_filters::git+https://github.com/ros-gbp/laser_filters-release.git#tag=release/indigo/laser_filters/1.7.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-laser-filters
+
