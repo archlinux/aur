@@ -1,0 +1,36 @@
+pkgbase = ros-indigo-roscpp
+	pkgdesc = ROS - roscpp is a C++ implementation of ROS.
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://ros.org/wiki/roscpp
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roslang
+	makedepends = ros-indigo-roscpp-serialization
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostime
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-cpp-common
+	makedepends = ros-indigo-roscpp-traits
+	makedepends = ros-indigo-rosgraph-msgs
+	makedepends = ros-indigo-xmlrpcpp
+	makedepends = pkg-config
+	depends = ros-indigo-roscpp-serialization
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-rostime
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-cpp-common
+	depends = ros-indigo-roscpp-traits
+	depends = ros-indigo-rosgraph-msgs
+	depends = ros-indigo-xmlrpcpp
+	source = roscpp::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/roscpp/1.11.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-roscpp
+
