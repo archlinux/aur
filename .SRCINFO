@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-rqt-action
+	pkgdesc = ROS - rqt_action provides a feature to introspect all available ROS action (from actionlib) types.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://ros.org/wiki/rqt_action
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rqt-msg
+	depends = ros-indigo-rospy
+	depends = ros-indigo-rqt-py-common
+	source = rqt_action::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_action/0.3.6-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rqt-action
+
