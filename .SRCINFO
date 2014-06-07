@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-rosout
+	pkgdesc = ROS - System-wide logging mechanism for messages sent to the /rosout topic.
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = http://ros.org/wiki/rosout
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-rosgraph-msgs
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-roscpp
+	source = rosout::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rosout/1.11.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosout
+
