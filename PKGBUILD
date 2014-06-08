@@ -2,9 +2,9 @@
 pkgname=kicad-pretty-git
 pkgver=1
 pkgrel=1
-pkgdesc="KiCad .pretty repos"
+pkgdesc="KiCad .pretty repos. Theese are the new footprint library."
 arch=('any')
-url=""
+url="https://github.com/KiCad"
 license=('GPL')
 makedepends=('git')
 options=('!strip')
