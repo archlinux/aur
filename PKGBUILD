@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a class for converting from a 2D laser scan
 url='http://ros.org/wiki/laser_geometry'
 
 pkgname='ros-indigo-laser-geometry'
-pkgver='1.6.1'
+pkgver='1.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,6 +26,7 @@ ros_depends=(ros-indigo-tf
   ros-indigo-roscpp
   ros-indigo-sensor-msgs)
 depends=(${ros_depends[@]}
+  python2-numpy
   boost
   eigen3)
 
