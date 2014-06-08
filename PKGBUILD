@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0006-genksyms-fix-typeof-handling.patch'
         '0012-fix-saa7134.patch'
         )
-# vim:set ts=8 sts=2 sw=2 et:
+
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'b8de86f64a62ec1f5d62ef7b0caf302546be0d397e7c7d29e4b1e260220462d7'
             '73056e6f23119c53c79f36f4c2faf37dd5a195d63605fa26392aa11ae9edfb62'
