@@ -21,7 +21,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0012-fix-saa7134.patch'
         )
 sha256sums=('c3927e87be4040fa8aca1b58663dc0776aaf00485604ff88a623be2f3fb07794'
-            '3d3833b51196d3ea35225ddeec5ba4e3fb82f0f308854ca11247d449d8ac732e'
+            'f6e8770188314d953c42dc929f4a6d91ce3a18375d49d673969aaf5c3eb2924a'
             '1cfedc1c777ef0d3543abeb58fbee2284b8b5738754bd0ba747a2a2c75efe0f6'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
