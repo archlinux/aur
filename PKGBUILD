@@ -19,7 +19,7 @@ md5sums=('2d118ab6328cb5d26c94f53478672cd3'
 
 build() {
   cd "$srcdir"
-  unzip -j "Sleeksnap-${_gitsha}.jar" icon32x32.png
+  unzip -jo "Sleeksnap-${_gitsha}.jar" icon32x32.png
 }
 
 package() {
