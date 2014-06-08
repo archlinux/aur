@@ -1,0 +1,17 @@
+pkgbase = perl-unicode-linebreak
+	pkgdesc = Perl package implementing UAX #14 Unicode line breaking algorithm
+	pkgver = 2013.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Unicode-LineBreak
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.8
+	depends = perl-mime-charset>=1.006.2
+	depends = sombok
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEZUMI/Unicode-LineBreak-2013.11.tar.gz
+	md5sums = 994da3b6dab60486249034d2502fba28
+
+pkgname = perl-unicode-linebreak
+

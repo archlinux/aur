@@ -1,0 +1,32 @@
+# CPAN Name  : Unicode::LineBreak
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl package implementing UAX #14 Unicode line breaking algorithm'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl>=5.8.8' 'perl-mime-charset>=1.006.2' 'sombok')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+build() {
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
+}
+
+check() {
+	cd [% distdir %]
+	make test
+}
+
+package() {
+	cd [% distdir %]
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
