@@ -1,7 +1,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=openocd-git-libftdi
-pkgver=20121019
+pkgver=20140604
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices -using libftdi instead of ftd2xx"
 arch=('i686' 'x86_64')
@@ -42,7 +42,8 @@ build() {
 	--prefix=/usr \
 	--enable-maintainer-mode \
 	--enable-parport \
-	--enable-ft2232_libftdi \
+	--enable-ftdi \
+	--enable-legacy-ft2232_libftdi \
 	--enable-amtjtagaccel \
 	--enable-ep93xx \
 	--enable-at91rm9200 \
