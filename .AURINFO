@@ -10,7 +10,6 @@ pkgbase = xqproxy
 	depends = bash
 	depends = libx11
 	source = xqproxy::git+https://github.com/bbidulock/xqproxy.git#tag=0.1.2
-	md5sums = SKIP
 
 pkgname = xqproxy
 
