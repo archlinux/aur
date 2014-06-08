@@ -1,0 +1,12 @@
+pkgbase = kicad-pretty-git
+	pkgdesc = KiCad .pretty repos
+	pkgver = 1
+	pkgrel = 1
+	install = kicad.install
+	arch = any
+	license = GPL
+	makedepends = git
+	options = !strip
+
+pkgname = kicad-pretty-git
+
