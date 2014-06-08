@@ -1,6 +1,6 @@
 pkgbase = fped-git
 	pkgdesc = Footprint Editor for KiCad used by Qi Hardware developers
-	pkgver = 20120325
+	pkgver = 20130217
 	pkgrel = 1
 	url = http://svn.openmoko.org/trunk/eda/fped
 	install = fped.install

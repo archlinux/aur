@@ -1,7 +1,7 @@
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=fped-git
-pkgver=20120325
+pkgver=20130217
 pkgrel=1
 pkgdesc="Footprint Editor for KiCad used by Qi Hardware developers"
 arch=('i686' 'x86_64')
