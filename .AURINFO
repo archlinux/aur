@@ -12,7 +12,6 @@ pkgbase = xqproxy-git
 	provides = xqproxy
 	conflicts = xqproxy
 	source = xqproxy-git::git+https://github.com/bbidulock/xqproxy.git
-	md5sums = SKIP
 
 pkgname = xqproxy-git
 
