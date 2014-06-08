@@ -1,15 +1,15 @@
 # GnuPG2 GIT version
-# Contributor: alphazo@gmail.com
+# Maintainer: alphazo@gmail.com
 # Based on official package maintained by Tobias Powalowski <tpowa@archlinux.org>
 # Cleanup from @holos
 
 _gitname=gnupg
 pkgname=gnupg-git
-pkgver=2.1.0beta3+379+gdb85fec
+pkgver=2.1.0+beta442+2+gb67e4e5
 pkgrel=1
 pkgdesc="GNU Privacy Guard 2 - a PGP replacement tool. Development version. Do not use in production environments. Test new ECC algorithm by using --expert with --gen-key"
 arch=('i686' 'x86_64')
-depends=('libldap' 'curl' 'bzip2' 'zlib' 'libksba>=1.2' 'libgpg-error>=1.1' 'libgcrypt>=1.5'
+depends=('libldap' 'curl' 'bzip2' 'zlib' 'libksba>=1.2' 'libgpg-error>=1.1' 'libgcrypt-git'
          'pth' 'libusb-compat' 'libassuan-git' 'npth-git' 'texinfo' 'readline' 'pinentry')
 license=('GPL')
 url="http://www.gnupg.org/"
