@@ -2,7 +2,7 @@
 
 pkgname=python2-catkin-lint
 _name=catkin_lint
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Check catkin packages for common errors"
 url="https://github.com/fkie/catkin_lint"
@@ -11,7 +11,7 @@ makedepends=('python2')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/c/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('004e19bdb754d36ceec17dd9d6d4ae93')
+md5sums=('cfcd7c26382851aceeb3af2edfa890d3')
 conflicts=(python-catkin-lint)
 
 build() {
