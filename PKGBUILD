@@ -11,7 +11,15 @@ depends=('python' 'mutagen')
 source=("http://garr.dl.sourceforge.net/project/covergrabber/${pkgname}-${pkgver}.tar.gz")
 md5sums=('3d173171cb3c19e3f33cb42dbae224b6')
 
-package(){
+prepare()
+{
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	sed '1 s/python$/python2/' -i bin/covergrabber
+	sed '1 s/python$/python2/' -i setup.py
+}
+
+package()
+{
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./setup.py install --root="${pkgdir}"
 }
