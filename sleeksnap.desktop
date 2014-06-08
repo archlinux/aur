@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Sleeksnap
+Comment=The user-friendly screenshot program
+Exec=sleeksnap
+Icon=/usr/share/pixmaps/sleeksnap.png
+Terminal=false
+Categories=Utility;

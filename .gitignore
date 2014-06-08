@@ -1,0 +1,6 @@
+/src
+/pkg
+*.jar
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+*.src.tar.gz
