@@ -1,12 +1,14 @@
 pkgbase = python2-rosdistro
-	pkgdesc = ROS - python rosdistro package
-	pkgver = 0.2.8
+	pkgdesc = A tool to work with rosdistro files
+	pkgver = 0.3.5
 	pkgrel = 1
-	url = http://github.com/ros-infrastructure/rosdistro/
+	url = http://wiki.ros.org/rosdistro
 	arch = any
-	license = Apache
-	makedepends = python2-distribute
+	license = BSD, MIT
+	makedepends = python2
 	depends = python2
+	source = https://pypi.python.org/packages/source/r/rosdistro/rosdistro-0.3.5.tar.gz
+	md5sums = 23ab4292ee777a56962b6ae9ebff306a
 
 pkgname = python2-rosdistro
 
