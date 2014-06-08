@@ -25,7 +25,7 @@ true && pkgname=('roccat-tools'
                  'roccat-tools-savu')
 pkgbase=roccat-tools
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -40,7 +40,7 @@ md5sums=('bfa32d3de9802e2970c13ae9eca85209')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -CMAKE_PREFIX_PATH=/-DUDEVDIR=/usr/lib/udev/rules.d
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DUDEVDIR=/usr/lib/udev/rules.d -DWITHOUT_PYTHON=TRUE
   make
 }
 
