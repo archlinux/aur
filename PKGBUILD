@@ -1,8 +1,7 @@
 # Maintainer: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=pilight
-pkgver=4.0
-_pkgver_major=$(sed -n 's/\(^[0-9]\+\)\.*.*$/\1/p' <<< $pkgver)
+pkgver=5.0
 pkgrel=1
 pkgdesc='Modular domotica with the Raspberry Pi'
 arch=('x86_64' 'armv6h')
@@ -11,24 +10,21 @@ license=('GPL3')
 makedepends=('cmake' 'git' 'gcc' 'glibc')
 source=("https://github.com/pilight/pilight/archive/v${pkgver}.tar.gz"
         'https://raw.github.com/pschmitt/aur-pilight/master/pilight.service')
-sha256sums=('c016f35afcfd8d3a4c3806c6c6707e1c7b2581f67af07fea2fc5e6d5d997d92f'
+sha256sums=('5567ac37281abae461e6c7b8b2a0215a5c1b246af9f3966eedd3063eb785389b'
             '25ffe32693a9a68be4234f63248f6e72e1704cbb74646f77672d02ba19e7f179')
 conflicts=('pilight-git')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    # Fix zlib path
-    sed -i 's|\(/usr/lib/\).*/\(libz.so\)|\1\2|g' CMakeLists.txt
+    # Don't execute ldconfig when running make (requires root)
+    sed -i 's/\(^.*COMMAND ldconfig.*\)/# \1/g' CMakeLists.txt
+    # Change default webserver location
     sed -i 's|\("webserver-root"\): "/usr/local/share/pilight/"|\1: "/usr/share/webapps/pilight"|' settings.json-default
-    sed -i 's|\("pid-file"\): "/var\(/run/pilight.pid\)"|\1: "\2"|' settings.json-default
-    # Dirty fix for hardcoded interface name (try to guess default network interface name)
-    local default_net_interface=$(route | grep default | tail -1 | awk '{ print $NF }')
-    sed -i "s/eth0/${default_net_interface}/g" libs/pilight/ssdp.c
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr
     make
 }
 
@@ -40,8 +36,8 @@ package() {
 
     # Fix paths
     cd "${pkgdir}"
-    mv usr/lib/pilight/libpilight.so.${_pkgver_major} usr/lib/libpilight.so.${_pkgver_major}
-    ln -s usr/lib/libpilight.so.${_pkgver_major} usr/lib/libpilight.so
+    mv usr/lib/pilight/libpilight.so.${pkgver} usr/lib/libpilight.so.${pkgver}
+    ln -s usr/lib/libpilight.so.${pkgver} usr/lib/libpilight.so
     mkdir -p usr/share/webapps/${pkgname}
     mv usr/local/share/${pkgname}/default usr/share/webapps/${pkgname}
 

@@ -1,6 +1,6 @@
 pkgbase = pilight
 	pkgdesc = Modular domotica with the Raspberry Pi
-	pkgver = 4.0
+	pkgver = 5.0
 	pkgrel = 1
 	url = http://pilight.org/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = pilight
 	makedepends = gcc
 	makedepends = glibc
 	conflicts = pilight-git
-	source = https://github.com/pilight/pilight/archive/v4.0.tar.gz
+	source = https://github.com/pilight/pilight/archive/v5.0.tar.gz
 	source = https://raw.github.com/pschmitt/aur-pilight/master/pilight.service
-	sha256sums = c016f35afcfd8d3a4c3806c6c6707e1c7b2581f67af07fea2fc5e6d5d997d92f
+	sha256sums = 5567ac37281abae461e6c7b8b2a0215a5c1b246af9f3966eedd3063eb785389b
 	sha256sums = 25ffe32693a9a68be4234f63248f6e72e1704cbb74646f77672d02ba19e7f179
 
 pkgname = pilight
