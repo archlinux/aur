@@ -3,29 +3,23 @@
 # Contributor: Xpander <xpander0@gmail.com>
 # Contributor: Stefan Achatz <erazor_de@users.soruceforge.net>
 
-pkgname=roccat-tools
-
-# To trick the AUR package parser (on the website), we need to "cover" the pkgname
-# list with the "true &&" hack. This way, the package will be displayed as
-# "roccat-tools" on the website.
-true && pkgname=('roccat-tools'
-                 'roccat-tools-common'
-                 'roccat-tools-arvo'
-                 'roccat-tools-isku'
-                 'roccat-tools-iskufx'
-                 'roccat-tools-kone'
-                 'roccat-tools-koneplus'
-                 'roccat-tools-konepure'
-                 'roccat-tools-konepureoptical'
-                 'roccat-tools-konextd'
-                 'roccat-tools-kovaplus'
-                 'roccat-tools-lua'
-                 'roccat-tools-pyra'
-                 'roccat-tools-ryos'
-                 'roccat-tools-savu')
+pkgname=('roccat-tools-common'
+         'roccat-tools-arvo'
+         'roccat-tools-isku'
+         'roccat-tools-iskufx'
+         'roccat-tools-kone'
+         'roccat-tools-koneplus'
+         'roccat-tools-konepure'
+         'roccat-tools-konepureoptical'
+         'roccat-tools-konextd'
+         'roccat-tools-kovaplus'
+         'roccat-tools-lua'
+         'roccat-tools-pyra'
+         'roccat-tools-ryos'
+         'roccat-tools-savu')
 pkgbase=roccat-tools
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -49,7 +43,7 @@ package_roccat-tools() {
 }
 
 package_roccat-tools-common() {
-  true && pkgdesc='ROCCAT tools common files'
+  pkgdesc='ROCCAT tools common files'
 install=roccat-tools.install
 
   for i in icons sounds libroccat libroccathelper libroccatwidget roccateventhandler; do
@@ -59,8 +53,8 @@ install=roccat-tools.install
 }
 
 package_roccat-tools-arvo() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Arvo devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Arvo devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/arvo"
   make DESTDIR="$pkgdir/" install
@@ -69,8 +63,8 @@ package_roccat-tools-arvo() {
 }
 
 package_roccat-tools-isku() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Isku devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Isku devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/isku"
   make DESTDIR="$pkgdir/" install
@@ -79,8 +73,8 @@ package_roccat-tools-isku() {
 }
 
 package_roccat-tools-iskufx() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Isku FX devices'
-  true && depends=('roccat-tools-common' 'roccat-tools-isku')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Isku FX devices'
+  depends=('roccat-tools-common' 'roccat-tools-isku')
 
   cd "$srcdir/$pkgbase-$pkgver/iskufx"
   make DESTDIR="$pkgdir/" install
@@ -89,8 +83,8 @@ package_roccat-tools-iskufx() {
 }
 
 package_roccat-tools-kone() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/kone"
   make DESTDIR="$pkgdir/" install
@@ -99,8 +93,8 @@ package_roccat-tools-kone() {
 }
 
 package_roccat-tools-koneplus() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone[+] devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone[+] devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/koneplus"
   make DESTDIR="$pkgdir/" install
@@ -109,8 +103,8 @@ package_roccat-tools-koneplus() {
 }
 
 package_roccat-tools-konepure() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone Pure devices'
-  true && depends=('roccat-tools-common' 'roccat-tools-konextd')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone Pure devices'
+  depends=('roccat-tools-common' 'roccat-tools-konextd')
 
   cd "$srcdir/$pkgbase-$pkgver/konepure"
   make DESTDIR="$pkgdir/" install
@@ -119,8 +113,8 @@ package_roccat-tools-konepure() {
 }
 
 package_roccat-tools-konepureoptical() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone Pure optical devices'
-  true && depends=('roccat-tools-common' 'roccat-tools-konepure')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone Pure optical devices'
+  depends=('roccat-tools-common' 'roccat-tools-konepure')
 
   cd "$srcdir/$pkgbase-$pkgver/konepureoptical"
   make DESTDIR="$pkgdir/" install
@@ -129,8 +123,8 @@ package_roccat-tools-konepureoptical() {
 }
 
 package_roccat-tools-konextd() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone XTD devices'
-  true && depends=('roccat-tools-common' 'roccat-tools-koneplus')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone XTD devices'
+  depends=('roccat-tools-common' 'roccat-tools-koneplus')
 
   cd "$srcdir/$pkgbase-$pkgver/konextd"
   make DESTDIR="$pkgdir/" install
@@ -139,8 +133,8 @@ package_roccat-tools-konextd() {
 }
 
 package_roccat-tools-kovaplus() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Kova[+] devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kova[+] devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/kovaplus"
   make DESTDIR="$pkgdir/" install
@@ -149,8 +143,8 @@ package_roccat-tools-kovaplus() {
 }
 
 package_roccat-tools-lua() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Lua devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Lua devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/lua"
   make DESTDIR="$pkgdir/" install
@@ -159,8 +153,8 @@ package_roccat-tools-lua() {
 }
 
 package_roccat-tools-pyra() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Pyra devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Pyra devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/pyra"
   make DESTDIR="$pkgdir/" install
@@ -169,8 +163,8 @@ package_roccat-tools-pyra() {
 }
 
 package_roccat-tools-ryos() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Ryos devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Ryos devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/ryos"
   make DESTDIR="$pkgdir/" install
@@ -179,8 +173,8 @@ package_roccat-tools-ryos() {
 }
 
 package_roccat-tools-savu() {
-  true && pkgdesc='Userland applications to configure and make extended use of ROCCAT Savu devices'
-  true && depends=('roccat-tools-common')
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Savu devices'
+  depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/savu"
   make DESTDIR="$pkgdir/" install

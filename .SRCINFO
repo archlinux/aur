@@ -1,7 +1,7 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -19,33 +19,63 @@ pkgbase = roccat-tools
 	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-1.6.0.tar.bz2
 	md5sums = bfa32d3de9802e2970c13ae9eca85209
 
-pkgname = roccat-tools
-
 pkgname = roccat-tools-common
+	pkgdesc = ROCCAT tools common files
+	install=roccat-tools.install
 
 pkgname = roccat-tools-arvo
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Arvo devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-isku
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Isku devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-iskufx
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Isku FX devices
+	depends = roccat-tools-common
+	depends = roccat-tools-isku
 
 pkgname = roccat-tools-kone
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-koneplus
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone[+] devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-konepure
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone Pure devices
+	depends = roccat-tools-common
+	depends = roccat-tools-konextd
 
 pkgname = roccat-tools-konepureoptical
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone Pure optical devices
+	depends = roccat-tools-common
+	depends = roccat-tools-konepure
 
 pkgname = roccat-tools-konextd
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone XTD devices
+	depends = roccat-tools-common
+	depends = roccat-tools-koneplus
 
 pkgname = roccat-tools-kovaplus
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kova[+] devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-lua
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Lua devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-pyra
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Pyra devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-ryos
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Ryos devices
+	depends = roccat-tools-common
 
 pkgname = roccat-tools-savu
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Savu devices
+	depends = roccat-tools-common
 
