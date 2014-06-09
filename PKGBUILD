@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="pesign"
 pkgname="${_pkgname}-git"
 
-pkgver=0.109.26.g984707c
+pkgver=0.109.31.gc877f01
 pkgrel=1
 pkgdesc="Tools for manipulating signed PE-COFF binaries - GIT Version"
 url="https://github.com/vathpela/pesign"
