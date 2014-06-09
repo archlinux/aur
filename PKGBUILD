@@ -17,7 +17,7 @@ if [[ $CARCH == i686 ]]; then
   sha1sums=('01994a84c9ab40831834e5fd59679567e8ca03fd')
 else
   _DEBARCH=amd64
-  sha1sums=('01994a84c9ab40831834e5fd59679567e8ca03fd')
+  sha1sums=('5e6e4dc1d6af7e4fa8c9217b416b88aa2ed76216')
 fi
 source=(http://ftp.debian.org/debian/pool/main/g/gcc-4.8/$pkgname${pkgver%_*}-${pkgver##*_}_${_DEBARCH}.deb)
 
