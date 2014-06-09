@@ -9,14 +9,14 @@
 
 pkgname=cmdpack
 pkgver=1.03
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of command line utilities, most for emulation or disk images (bin2iso, bincomp, brrrip, byteshuf, byteswap, cdpatch, ecm, fakecrc, hax65816, id3point, pecompat, rels, screamf, subfile, uips, usfv, vb2rip, wordadd, zerofill)"
 arch=('i686' 'x86_64')
 url="http://www.neillcorlett.com/cmdpack/"
 license=('GPL3')
 provides=('ecm' 'unecm')
 install=cmdpack.install
-source=("http://www.neillcorlett.com/downloads/${pkgname}-${pkgver}-src.tar.gz")
+source=("http://www6.frugalware.org/mirrors/linux/frugalware/frugalware-current/source/apps-extra/${pkgname}/${pkgname}-${pkgver}-src.tar.gz")
 sha256sums=('56a806f075dded183e29e85c9cda2c4662644a310e6916aea688a7b26f4e0a6c')
 
 _utilties=('bin2iso' 'bincomp' 'brrrip' 'byteshuf' 'byteswap'
@@ -28,7 +28,7 @@ build() {
 
   for elem in ${_utilties[@]}
   do
-    gcc $CFLAGS $elem.c -o $elem
+    make $elem
   done
 }
 
