@@ -8,7 +8,7 @@ _IA32_EFI_IN_ARCH_X64="1"
 _pkgname="syslinux"
 pkgname="${_pkgname}-git"
 
-pkgver=6.03pre12.2.gb8f6181
+pkgver=6.03pre13.1.g415d571
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master branch"
