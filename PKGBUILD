@@ -1,8 +1,8 @@
 # Maintainer: Aaron Mueller <mail@aaron-mueller.de>
 
 pkgname=libgaminggear
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -10,7 +10,7 @@ url="http://sourceforge.net/projects/libgaminggear/"
 depends=()
 makedepends=('cmake' 'doxygen')
 source=(http://downloads.sourceforge.net/project/libgaminggear/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('f96636b01bb2d04f78682d0506d18005')
+md5sums=('c0210cf4b14e5edaabcf0d7207a97995')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
