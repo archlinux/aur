@@ -1,0 +1,38 @@
+# CPAN Name  : XML::Compile::SOAP
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl package for SOAP implementations'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=(
+	'perl-xml-compile>=1.42'
+	'perl-xml-compile-tester>=0.90'
+	'perl-xml-compile-cache>=0.995'
+	'perl-log-report>=1.00'
+	'perl-libwww>=5.816'
+	'perl-file-slurp-tiny')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+build() {
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
+}
+
+check() {
+	cd [% distdir %]
+	make test
+}
+
+package() {
+	cd [% distdir %]
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

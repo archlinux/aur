@@ -1,0 +1,20 @@
+pkgbase = perl-xml-compile-soap
+	pkgdesc = Perl package for SOAP implementations
+	pkgver = 3.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Compile-SOAP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-xml-compile>=1.42
+	depends = perl-xml-compile-tester>=0.90
+	depends = perl-xml-compile-cache>=0.995
+	depends = perl-log-report>=1.00
+	depends = perl-libwww>=5.816
+	depends = perl-file-slurp-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-SOAP-3.05.tar.gz
+	md5sums = dab0560c40b0e196b424f34ed7caa74f
+
+pkgname = perl-xml-compile-soap
+
