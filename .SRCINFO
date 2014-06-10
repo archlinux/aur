@@ -1,0 +1,18 @@
+pkgbase = perl-xml-compile-cache
+	pkgdesc = Perl package providing cache for compiled XML translators
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Compile-Cache
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-xml-compile>=1.41
+	depends = perl-xml-compile-tester>=0.02
+	depends = perl-xml-libxml-simple>=0.13
+	depends = perl-log-report>=0.19
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-Cache-1.02.tar.gz
+	md5sums = a72a4b5e726c51d8060438baf70e815d
+
+pkgname = perl-xml-compile-cache
+

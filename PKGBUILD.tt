@@ -1,0 +1,32 @@
+# CPAN Name  : XML::Compile::Cache
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl package providing cache for compiled XML translators'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl-xml-compile>=1.41' 'perl-xml-compile-tester>=0.02' 'perl-xml-libxml-simple>=0.13' 'perl-log-report>=0.19')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+build() {
+	cd [% distdir %]
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
+}
+
+check() {
+	cd [% distdir %]
+	make test
+}
+
+package() {
+	cd [% distdir %]
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
