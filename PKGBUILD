@@ -10,8 +10,10 @@ pkgname=('roccat-tools-common'
          'roccat-tools-kone'
          'roccat-tools-koneplus'
          'roccat-tools-konepure'
+	 'roccat-tools-konepuremilitary'
          'roccat-tools-konepureoptical'
          'roccat-tools-konextd'
+	 'roccat-tools-konextdoptical'
          'roccat-tools-kovaplus'
          'roccat-tools-lua'
          'roccat-tools-pyra'
@@ -19,12 +21,12 @@ pkgname=('roccat-tools-common'
          'roccat-tools-savu')
 pkgbase=roccat-tools
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear=0.3.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'libusb' 'dbus-glib' 'udev' 'hicolor-icon-theme')
+depends=('libgaminggear=0.3.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for some devices not yet in vanilla kernel')
 conflicts=
@@ -36,10 +38,6 @@ build() {
   cd "$srcdir/$pkgbase-$pkgver"
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DUDEVDIR=/usr/lib/udev/rules.d -DWITHOUT_PYTHON=TRUE
   make
-}
-
-package_roccat-tools() {
-  /bin/true
 }
 
 package_roccat-tools-common() {
@@ -122,6 +120,16 @@ package_roccat-tools-konepureoptical() {
   install -Dm644 udev/90-roccat-konepureoptical.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konepureoptical.rules
 }
 
+package_roccat-tools-konepuremilitary() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone Pure Military devices'
+  depends=('roccat-tools-common' 'roccat-tools-konepure')
+
+  cd "$srcdir/$pkgbase-$pkgver/konepuremilitary"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-savu.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konepuremilitary.rules
+}
+
 package_roccat-tools-konextd() {
   pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone XTD devices'
   depends=('roccat-tools-common' 'roccat-tools-koneplus')
@@ -130,6 +138,16 @@ package_roccat-tools-konextd() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-konextd.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konextd.rules
+}
+
+package_roccat-tools-konextdoptical() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kone XTD Optical devices'
+  depends=('roccat-tools-common' 'roccat-tools-konepuremilitary')
+
+  cd "$srcdir/$pkgbase-$pkgver/konextdoptical"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-savu.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-konextdoptical.rules
 }
 
 package_roccat-tools-kovaplus() {

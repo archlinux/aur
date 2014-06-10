@@ -1,7 +1,7 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = roccat-tools
 	depends = libcanberra
 	depends = gtk2
 	depends = libnotify>=0.7.0
-	depends = libusb
 	depends = dbus-glib
 	depends = udev
 	depends = hicolor-icon-theme
@@ -49,6 +48,11 @@ pkgname = roccat-tools-konepure
 	depends = roccat-tools-common
 	depends = roccat-tools-konextd
 
+pkgname = roccat-tools-konepuremilitary
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone Pure Military devices
+	depends = roccat-tools-common
+	depends = roccat-tools-konepure
+
 pkgname = roccat-tools-konepureoptical
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone Pure optical devices
 	depends = roccat-tools-common
@@ -58,6 +62,11 @@ pkgname = roccat-tools-konextd
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone XTD devices
 	depends = roccat-tools-common
 	depends = roccat-tools-koneplus
+
+pkgname = roccat-tools-konextdoptical
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kone XTD Optical devices
+	depends = roccat-tools-common
+	depends = roccat-tools-konepuremilitary
 
 pkgname = roccat-tools-kovaplus
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Kova[+] devices
