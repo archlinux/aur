@@ -1,0 +1,18 @@
+pkgbase = perl-log-report
+	pkgdesc = Perl package to log/report a problem with exceptions, pluggable handlers and translation support
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Log-Report
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.10.1
+	depends = perl-devel-globaldestruction>=0.09
+	depends = perl-log-report-optional>=1.01
+	depends = perl-string-print>=0.13
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/Log-Report-1.04.tar.gz
+	md5sums = 369b8fd6d4c4d62f6cdad550a5ef784d
+
+pkgname = perl-log-report
+
