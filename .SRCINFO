@@ -1,15 +1,15 @@
 pkgbase = libgaminggear
 	pkgdesc = Provides functionality for gaming input devices
-	pkgver = 0.2.0
-	pkgrel = 1
+	pkgver = 0.3.0
+	pkgrel = 3
 	url = http://sourceforge.net/projects/libgaminggear/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = doxygen
-	source = http://downloads.sourceforge.net/project/libgaminggear/libgaminggear-0.2.0.tar.bz2
-	md5sums = f96636b01bb2d04f78682d0506d18005
+	source = http://downloads.sourceforge.net/project/libgaminggear/libgaminggear-0.3.0.tar.bz2
+	md5sums = c0210cf4b14e5edaabcf0d7207a97995
 
 pkgname = libgaminggear
 
