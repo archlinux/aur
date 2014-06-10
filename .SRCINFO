@@ -1,0 +1,19 @@
+pkgbase = perl-xml-compile-soap12
+	pkgdesc = Perl package that handles SOAP v1.2 protocol
+	pkgver = 3.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Compile-SOAP12
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0.095
+	depends = perl-xml-compile>=1.40
+	depends = perl-xml-compile-tester>=0.05
+	depends = perl-xml-compile-cache>=0.995
+	depends = perl-xml-compile-soap>=3.04
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-SOAP12-3.02.tar.gz
+	md5sums = 0a5b398bb35541152e324b4e7b4063f1
+
+pkgname = perl-xml-compile-soap12
+
