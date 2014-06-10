@@ -2,12 +2,12 @@
 
 _pkgname=polkit-efl
 pkgname=$_pkgname-git
-pkgver=0.1.r72.b814ee2
+pkgver=0.1.r84.db3f7f4
 pkgrel=1
 pkgdesc="Polkit Authentication Agent using EFL"
 arch=('any')
 url="http://www.enlightenment.org"
-license=('GPL3')
+license=('GPL3' 'LGPL: Icons')
 depends=('python-efl' 'polkit')
 makedepends=('git')
 optdepends=('python-psutil: For process details')
