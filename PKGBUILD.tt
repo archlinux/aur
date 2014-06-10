@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=(
 	'perl-module-build>=0.38'
-	'perl-cpan-meta'	
+	'perl-cpan-meta'
 )
 checkdepends=(
 	'perl-http-message'
