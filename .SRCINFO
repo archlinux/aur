@@ -1,6 +1,6 @@
 pkgbase = flashplugin-beta
 	pkgdesc = Adobe Flash Player 11 Beta
-	pkgver = 11.2.202.341
+	pkgver = 11.2.202.378
 	pkgrel = 1
 	url = http://labs.adobe.com/downloads/flashplayer11-2.html
 	install = flashplugin.install
@@ -19,10 +19,10 @@ pkgbase = flashplugin-beta
 	conflicts = flashplugin
 	options = !strip
 	backup = etc/adobe/mms.cfg
-	source = flash_player_beta-11.2.202.341.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.341/install_flash_player_11_linux.i386.tar.gz
+	source = flash_player_beta-11.2.202.378.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/11.2.202.378/install_flash_player_11_linux.i386.tar.gz
 	source = mms.cfg
 	source = LICENSE
-	md5sums = 7f1483d6c4b2b0ec6d79197dcbbe7777
+	md5sums = c9d92d88e21b8ecacf284efab5c12477
 	md5sums = 245c04e582a6cb993a2c2a1c3f62e7a2
 	md5sums = 05ccdb2de8f04af6641675975a807cf5
 

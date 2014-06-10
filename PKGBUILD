@@ -2,7 +2,7 @@
 
 pkgname=flashplugin-beta
 _licensefile='PlatformClients_PC_WWEULA_Combined_20100108_1657.pdf'
-pkgver=11.2.202.341
+pkgver=11.2.202.378
 pkgrel=1
 
 pkgdesc='Adobe Flash Player 11 Beta'
@@ -13,13 +13,13 @@ arch=('i686' 'x86_64')
 source=(flash_player_beta-${pkgver}.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/$pkgver/install_flash_player_11_linux.i386.tar.gz
 	mms.cfg
 	LICENSE)
-md5sums=('7f1483d6c4b2b0ec6d79197dcbbe7777'
+md5sums=('c9d92d88e21b8ecacf284efab5c12477'
 	 '245c04e582a6cb993a2c2a1c3f62e7a2'
 	 '05ccdb2de8f04af6641675975a807cf5')
 _lib=lib
 if [[ $CARCH == x86_64 ]]; then
 source[0]=flash_player_beta-${pkgver}.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/$pkgver/install_flash_player_11_linux.x86_64.tar.gz
-md5sums[0]=a7926b09f721ed87a3c21063ecc76e51
+md5sums[0]=9cfeb8c86b471e72e8ff3046a11225a9
 _lib=lib64
 fi
 _licensefile='LICENSE'
