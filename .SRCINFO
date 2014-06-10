@@ -1,13 +1,13 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = libgaminggear>=0.2.0
+	depends = libgaminggear=0.2.0
 	depends = libcanberra
 	depends = gtk2
 	depends = libnotify>=0.7.0
