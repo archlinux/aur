@@ -1,8 +1,8 @@
 pkgbase = perl-algorithm-permute
-	pkgdesc = Perl module for handy and fast permutations with object oriented interface
+	pkgdesc = Perl package for handy and fast permutations with object oriented interface
 	pkgver = 0.12
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Algorithm-Permute/
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Algorithm-Permute
 	arch = i686
 	arch = x86_64
 	license = GPL
