@@ -2,7 +2,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=steins-gate
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT' 'LGPL3' 'GPL3')
@@ -13,9 +13,9 @@ makedepends=('cmake' 'boost')
 source=(libnpa-$pkgver.tar.gz::"https://github.com/FGRE/libnpa/archive/v$pkgver.tar.gz"
         libnpengine-$pkgver.tar.gz::"https://github.com/FGRE/libnpengine/archive/v$pkgver.tar.gz"
         $pkgname-$pkgver.tar.gz::"https://github.com/FGRE/steins-gate/archive/v$pkgver.tar.gz")
-sha256sums=('93f0e86a9d87b27df76b5f3b7ad96ffeea956126d422791db93e38965bdef9cb'
-            '46ac8ccfc9953c33b63fa1bf8c4f51c7bd8942b0254c6389058a66c76c21f825'
-            '6fb4610b0ec821791a3b28cd3f159686fb8f8072237d10fe73dd7050818d3511')
+sha256sums=('94bbeb21f283d1963dc80467e674739cdc072ff8b52268ddf48e5f8d13281265'
+            '9b7e049c6cb78140e9d91a18231afa6197b9412fcf9e45cdf3cb4ec4f12a2b8c'
+            '5078b2e8b47284da0521eca1326eb72a9afd9cd88939fe3222f73a9b510e6288')
 
 prepare() {
   for _name in libnpa libnpengine steins-gate; do
