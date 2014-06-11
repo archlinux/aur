@@ -1,0 +1,16 @@
+pkgbase = epad-git
+	pkgdesc = Simple text editor using Python and EFL
+	pkgver = r22.0c6abff
+	pkgrel = 1
+	url = https://github.com/JeffHoogland/ePad
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python-efl
+	provides = ePad=r22.0c6abff
+	conflicts = ePad
+	source = git://github.com/JeffHoogland/ePad.git
+	sha256sums = SKIP
+
+pkgname = epad-git
+
