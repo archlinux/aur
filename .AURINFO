@@ -48,7 +48,6 @@ pkgbase = kdebase-workspace-consolekit
 	optdepends = appmenu-qt: menu applications over dbus
 	provides = kdebase-workspace=4.11.10
 	conflicts = kdebase-workspace
-	backup = usr/share/config/kdm/kdmrc
 	source = http://download.kde.org/stable/4.13.2/src/kde-workspace-4.11.10.tar.xz
 	source = kdm
 	source = kde.pam
@@ -60,17 +59,7 @@ pkgbase = kdebase-workspace-consolekit
 	source = terminate-server.patch
 	source = kdm-xinitrd.patch
 	source = khotkeys-qt4.patch
-	sha1sums = 2968043563e25d2d2618c9f49fdfbab5fa14c8cd
-	sha1sums = 5db3a245201bd4a50e65aa2ef583cf5490e4f646
-	sha1sums = 660eae40a707d2711d8d7f32a93214865506b795
-	sha1sums = 6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe
-	sha1sums = 106635aa1aae51d6f0668b1853f6c49a4fe9d3d8
-	sha1sums = b6f8e8692737b11eec1f8022ce74b5b23e247b1b
-	sha1sums = bbe55f2000217474ce7246f12ee437ceaaf7e9ae
-	sha1sums = c079ebd157c836ba996190f0d2bcea1a7828d02c
-	sha1sums = ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee
-	sha1sums = d509dac592bd8b310df27991b208c95b6d907514
-	sha1sums = aa9d2e5a69986c4c3d47829721ea99edb473be12
+	backup = usr/share/config/kdm/kdmrc
 
 pkgname = kdebase-workspace-consolekit
 

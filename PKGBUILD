@@ -5,9 +5,9 @@
 
 pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
-pkgver=4.11.9
-_kdever=4.12.5
-pkgrel=2
+pkgver=4.11.10
+_kdever=4.13.2
+pkgrel=1
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -33,8 +33,8 @@ backup=('usr/share/config/kdm/kdmrc')
 source=("http://download.kde.org/stable/${_kdever}/src/${_pkgname}-${pkgver}.tar.xz"
 	'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
 	'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
-	'khotkeys-qt4.patch' 'kdm-desktopnames.patch')
-sha1sums=('ea4f3b3401b7304613adcc21acb92b5c3d11c9c1'
+	'khotkeys-qt4.patch')
+sha1sums=('2968043563e25d2d2618c9f49fdfbab5fa14c8cd'
           '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
           '660eae40a707d2711d8d7f32a93214865506b795'
           '6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe'
@@ -44,8 +44,7 @@ sha1sums=('ea4f3b3401b7304613adcc21acb92b5c3d11c9c1'
           'c079ebd157c836ba996190f0d2bcea1a7828d02c'
           'ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee'
           'd509dac592bd8b310df27991b208c95b6d907514'
-          'aa9d2e5a69986c4c3d47829721ea99edb473be12'
-          '51d3a3a83e01ce1998c57b0389e7b094d8e9d7b8')
+          'aa9d2e5a69986c4c3d47829721ea99edb473be12')
 
 # avoid linking error when libsystemd-journal.so.0 doesn't exist in
 # user's system
@@ -70,9 +69,6 @@ prepare() {
 
 	# KDEBUG#202629
 	patch -p0 -i "${srcdir}"/terminate-server.patch
-
-	# KDEBUG#334159
-	patch -p1 -i "${srcdir}"/kdm-desktopnames.patch
 
 	cd ../
 }
