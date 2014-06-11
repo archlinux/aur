@@ -1,0 +1,33 @@
+# CPAN Name  : Games::Poker::HandEvaluator
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl package for evaluating of poker hands'
+arch=('i686' 'x86_64')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl' 'poker-eval')
+source=([% source %] makefile.patch)
+options=(!emptydirs)
+md5sums=('[% md5sums %]' '8c79763e912a894a9bc5ddbd6932e4ba')
+
+build() {
+	cd [% distdir %]
+	patch -i ../makefile.patch
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
+}
+
+check() {
+	cd [% distdir %]
+	make test
+}
+
+package() {
+	cd [% distdir %]
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

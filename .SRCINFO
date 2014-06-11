@@ -1,12 +1,12 @@
 pkgbase = perl-games-poker-handevaluator
-	pkgdesc = Perl module for evaluating of poker hands
+	pkgdesc = Perl package for evaluating of poker hands
 	pkgver = 1.1
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Games-Poker-HandEvaluator/
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Games-Poker-HandEvaluator
 	arch = i686
 	arch = x86_64
-	license = GPL
 	license = PerlArtistic
+	license = GPL
 	depends = perl
 	depends = poker-eval
 	options = !emptydirs
