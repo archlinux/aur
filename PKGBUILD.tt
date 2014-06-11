@@ -1,14 +1,14 @@
 # CPAN Name  : Plack
 # Contributor: Christian Sturm <reezer@reezer.org>
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
 
-pkgname=perl-plack
-pkgver=1.0030
-pkgrel=1
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
 pkgdesc='Perl Superglue for Web frameworks and Web Servers'
 arch=('any')
-url='http://search.cpan.org/dist/Plack'
+url='[% url %]'
 license=('PerlArtistic' 'GPL')
 
 depends=(
@@ -45,23 +45,23 @@ checkdepends=(
 	'perl-mime-types'
 	'perl-test-tcp>=2.00'
 )
-source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0030.tar.gz)
+source=([% source %])
 options=(!emptydirs)
-md5sums=('162b8d59c870871969b1a4e4754fc180')
+md5sums=('[% md5sums %]')
 
 build() {
-	cd Plack-1.0030
+	cd [% distdir %]
 	PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd Plack-1.0030
+	cd [% distdir %]
 	make test
 }
 
 package() {
-	cd Plack-1.0030
+	cd [% distdir %]
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
