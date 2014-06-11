@@ -11,12 +11,12 @@
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
 pkgver=0.9.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL' 'LGPL2.1')
 url="http://www.gnome.org/projects/$_pkgname/"
-depends=('dbus-glib' 'iproute2' 'libnl' 'nss' 'polkit-consolekit' 'consolekit' 'wpa_supplicant' 'dhcp-client' 'libsoup' 'libmm-glib')
+depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 'wpa_supplicant' 'dhcp-client' 'libsoup' 'libmm-glib')
 makedepends=('intltool' 'dhcpcd' 'iptables' 'gobject-introspection' 'gtk-doc' 'git' 'ppp' 'modemmanager')
 optdepends=('modemmanager: for modem management service'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
@@ -54,8 +54,8 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libexecdir=/usr/lib/networkmanager \
     --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/networkmanager \
     --with-crypto=nss \
     --with-dhclient=/usr/bin/dhclient \
     --with-dhcpcd=/usr/bin/dhcpcd \
@@ -77,6 +77,13 @@ build() {
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
+
+  make DESTDIR="$pkgdir" -C libnm-glib uninstall
+  make DESTDIR="$pkgdir" -C libnm-util uninstall
+  make DESTDIR="$pkgdir" -C vapi uninstall
+  
+  rm -rf "$pkgdir/usr/include"
+  rm -rf "$pkgdir/usr/lib/pkgconfig"
 
   install -D -m644 "${srcdir}/NetworkManager.conf" "${pkgdir}/etc/NetworkManager/NetworkManager.conf"
   install -D -m755 "${srcdir}/networkmanager.rc"   "${pkgdir}/etc/rc.d/networkmanager"
