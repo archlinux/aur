@@ -8,7 +8,7 @@ license=('MPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=17
+pkgrel=18
 arch=('any')
 url='https://code.google.com/p/nagioschecker/'
 depends=('firefox>=3.0')
@@ -42,5 +42,7 @@ package() {
   cp -dpr --no-preserve=ownership * $dstdir
 
   rm $dstdir/addon-3607-latest.xpi
+  rm $dstdir/*.patch
+
   chmod -R 755 $dstdir
 }

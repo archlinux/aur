@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-nagioschecker
 	pkgdesc = Plugin for firefox, statusbar indicator of the events from the network monitoring system Nagios.
 	pkgver = 0.16
-	pkgrel = 17
+	pkgrel = 18
 	url = https://code.google.com/p/nagioschecker/
 	arch = any
 	license = MPL
