@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.18.99.18286.7274ffa
+pkgver=0.19.0.18507.1a321b8
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
@@ -22,7 +22,8 @@ optdepends=('acpid: power events on laptop lid close'
 provides=("$_pkgname=$pkgver" 'notification-daemon')
 conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
-        'etc/xdg/menus/enlightenment.menu')
+        'etc/xdg/menus/enlightenment.menu'
+        'etc/xdg/menus/e-applications.menu')
 options=('debug')
 install=enlightenment.install
 source=("git://git.enlightenment.org/core/$_pkgname.git")
