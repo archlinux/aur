@@ -5,7 +5,7 @@
 
 pkgname=perl-plack
 pkgver=1.0030
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl Superglue for Web frameworks and Web Servers'
 arch=('any')
 url='http://search.cpan.org/dist/Plack'
@@ -31,7 +31,7 @@ makedepends=(
 	'perl-file-sharedir-install>=0.03'
 )
 checkdepends=(
-	'perl-cgi-compile'
+#	'perl-cgi-compile'
 	'perl-http-request-ascgi'
 	'perl-fcgi'
 	'perl-fcgi-procmanager'

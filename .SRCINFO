@@ -1,12 +1,11 @@
 pkgbase = perl-plack
 	pkgdesc = Perl Superglue for Web frameworks and Web Servers
 	pkgver = 1.0030
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Plack
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-cgi-compile
 	checkdepends = perl-http-request-ascgi
 	checkdepends = perl-fcgi
 	checkdepends = perl-fcgi-procmanager
