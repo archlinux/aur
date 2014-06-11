@@ -2,13 +2,13 @@
 
 pkgname=easyrpg-player
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
 license=('GPL3')
 makedepends=('boost')
-depends=('liblcf>=0.2' 'sdl2_mixer' 'pixman')
+depends=('liblcf>=0.2' 'sdl2_mixer' 'pixman' 'freetype2')
 install=$pkgname.install
 source=("https://easy-rpg.org/downloads/player/$pkgname-$pkgver.tar.gz")
 sha256sums=('b3592df3334554f6ab8f1e3972dc844305e48daf2722c4b0876288e474ce3300')
