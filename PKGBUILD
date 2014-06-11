@@ -1,15 +1,17 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: kevku <kevku@gmx.com>
 
 pkgbase=python-librtmp
 pkgname=(python-librtmp python2-librtmp)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to librtmp"
 arch=('i686' 'x86_64')
 url="https://github.com/chrippa/python-librtmp"
 license=('custom: Simplified BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-cffi' 'python2-cffi')
+makedepends=('python-setuptools' 'python-cffi'
+             'python2-setuptools' 'python2-cffi' 'python2-singledispatch'
+             'rtmpdump')
 source=("https://pypi.python.org/packages/source/p/$pkgbase/$pkgbase-$pkgver.tar.gz")
 sha256sums=('0a4385aa59f6f4d09ffa95cb85c1b0acd4678c8af3f21f45dd009d5f807a9635')
 
@@ -21,7 +23,7 @@ prepare() {
 build() {
   # build for python 3
   cd python-librtmp-$pkgver
-  python3 setup.py build
+  python setup.py build
 
   # build for python 2
   cd ../python2-librtmp-$pkgver
@@ -30,7 +32,8 @@ build() {
 
 # package for python 3
 package_python-librtmp() {
-  depends=('python3' 'python-cffi' 'rtmpdump')
+  depends=('python' 'python-cffi' 'rtmpdump')
+  pkgdesc+=" (python3 version)"
 
   cd python-librtmp-$pkgver
 
@@ -41,6 +44,7 @@ package_python-librtmp() {
 # package for python 2
 package_python2-librtmp() {
   depends=('python2' 'python2-singledispatch' 'python2-cffi' 'rtmpdump')
+  pkgdesc+=" (python2 version)"
 
   cd python2-librtmp-$pkgver
 
