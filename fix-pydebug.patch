@@ -1,0 +1,11 @@
+--- python-apt-0.8.8.1/tests/test_all.py	2013-01-29 17:19:38.706662531 +0100
++++ python-apt-0.8.8.1_new/tests/test_all.py	2013-01-29 17:17:22.816301842 +0100
+@@ -12,7 +12,7 @@
+ # workaround for py3.2 that apparently does not have this anymore
+ # it has "abiflags" 
+ if not hasattr(sys, "pydebug"):
+-    if sys.abiflags.startswith("d"):
++    if hasattr(sys, "abiflags") and sys.abiflags.startswith("d"):
+         sys.pydebug = True
+     else:
+         sys.pydebug = False
