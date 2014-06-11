@@ -1,8 +1,8 @@
 pkgbase = perl-object-declare
-	pkgdesc = Perl module providing a declarative object constructor
+	pkgdesc = Perl package providing a declarative object constructor
 	pkgver = 0.22
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Object-Declare/
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Object-Declare
 	arch = any
 	license = MIT
 	depends = perl
