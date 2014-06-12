@@ -3,7 +3,7 @@
 # Contributor: Guilherme Nogueira <guilherme@nirev.org>
 
 pkgname=ruby-treetop
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='A Ruby-based text parsing and interpretation DSL'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby-polyglot')
 options=('!emptydirs')
 source=("http://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
 noextract=("${pkgname#*-}-$pkgver.gem")
-sha256sums=('0ceaa4c41efe3fca33d23b8743b086696df2cab7a2f334f3ba2a1a262f55b921')
+sha256sums=('ab3c49c3a39e7c9bea88a90524545e39bed032758a130295f8d6a433c62ff472')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
