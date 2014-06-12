@@ -34,7 +34,8 @@ build() {
 
 check () {
   cd "$_src_dir"
-  make test
+  #make test
+  prove -Iblib/arch -Iblib/lib/ t/
 }
 
 package () {

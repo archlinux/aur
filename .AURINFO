@@ -1,0 +1,16 @@
+pkgbase = perl-wx-glcanvas
+	pkgdesc = Wx::GLCanvas - interface to wxWidgets' OpenGL canvas
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/~mbarbon/Wx-GLCanvas/
+	install = 
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-alien-wxwidgets
+	source = http://search.cpan.org/CPAN/authors/id/M/MB/MBARBON/Wx-GLCanvas-0.09.tar.gz
+	options = !emptydirs
+
+pkgname = perl-wx-glcanvas
+
