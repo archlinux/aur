@@ -1,0 +1,23 @@
+pkgbase = python-pymunk
+	pkgdesc = A wrapper around the 2d physics library Chipmunk
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.pymunk.org/en/latest/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	source = http://pymunk.googlecode.com/files/pymunk-4.0.0.zip
+	sha256sums = 7102b1a63d4eeb9eb459d4733663bc0af4ea59f664e3fac2228c704ec6768937
+
+pkgname = python-pymunk
+	depends = python
+	depends = chipmunk
+
+pkgname = python2-pymunk
+	depends = python2
+	depends = chipmunk
+	provides = pymunk
+	conflicts = pymunk
+	replaces = pymunk
+
