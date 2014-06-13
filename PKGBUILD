@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 
 pkgname=cub
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A flexible library of cooperative threadblock primitives and other utilities for CUDA kernel programming."
 arch=('any')
@@ -14,7 +14,7 @@ _dir=${pkgname}
 source=("${_dir}"::"git+https://github.com/NVlabs/cub.git"#branch=${pkgver}
         "cub.pc")
 sha1sums=('SKIP'
-          '1da49bb3434a79a7dd7c36620725f60537a01bb1')
+          'cbb2a588943a2a850205ab2e2a107fd74f9491a6')
 
 package() {
   cd ${srcdir}
