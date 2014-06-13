@@ -1,0 +1,16 @@
+pkgbase = dantalian
+	pkgdesc = Transparent tag-based file organization system.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://darkfeline.github.io/dantalian/
+	changelog = Changelog
+	arch = any
+	license = mit
+	makedepends = python-sphinx
+	depends = python
+	optdepends = fuse: additional features
+	source = https://github.com/darkfeline/dantalian/archive/0.5.tar.gz
+	sha256sums = 9a35f45d2f0b14e723b751edb879f0c407e6a2a3c60769839d19b49e5e9548d0
+
+pkgname = dantalian
+
