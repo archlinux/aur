@@ -1,0 +1,17 @@
+pkgbase = git-ftp-git
+	pkgdesc = A shell script for pushing git tracked changed files to a remote host by FTP
+	pkgver = 0.8.0.r137.ga7ee732
+	pkgrel = 1
+	url = https://github.com/git-ftp/git-ftp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = curl
+	depends = git
+	provides = git-ftp-git
+	conflicts = git-ftp
+	source = git+git://github.com/git-ftp/git-ftp.git
+	md5sums = SKIP
+
+pkgname = git-ftp-git
+
