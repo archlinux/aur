@@ -1,22 +1,39 @@
 pkgbase = gtkhash
 	pkgdesc = A GTK+ utility for computing message digests or checksums
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gtkhash.sourceforge.net/
-	install = gtkhash.install
 	arch = i686
 	arch = x86_64
 	arch = mips64el
 	license = GPL
 	makedepends = intltool
 	makedepends = nemo
+	makedepends = libnautilus-extension
+	makedepends = thunar
 	depends = dconf
-	depends = gtk2
-	optdepends = nemo: filemanager plugin
+	depends = nettle
+	depends = gtk3
 	source = http://downloads.sourceforge.net/gtkhash/gtkhash-0.7.0.tar.xz
 	source = gtkhash.desktop
 	sha256sums = 161d4f27f2d412c8cb3f566ca3aa8144942bbf836c18bcb1e5f79451e6f5dfdd
 	sha256sums = f0312086093f0dd5ce0cfd6c9312abd42b57401960c39c19377372c154a32388
 
 pkgname = gtkhash
+	install = gtkhash.install
+
+pkgname = gtkhash-nemo
+	pkgdesc = A GTK+ utility for computing message digests or checksums (Nemo filemanager plugin)
+	depends = gtkhash
+	depends = nemo
+
+pkgname = gtkhash-nautilus
+	pkgdesc = A GTK+ utility for computing message digests or checksums (Nautilus filemanager plugin)
+	depends = gtkhash
+	depends = nautilus
+
+pkgname = gtkhash-thunar
+	pkgdesc = A GTK+ utility for computing message digests or checksums (Thunar filemanager plugin)
+	depends = gtkhash
+	depends = thunar
 

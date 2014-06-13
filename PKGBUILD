@@ -3,71 +3,57 @@
 # Contributor: Frédérik Paradis <fredy_14@live.fr>
 # Contributor: GI_Jack <GI_Jack@hushmail.com>
 
-##### OPTIONS #####
-_gtk_version=2
-_nemo_plugin=y
-_nautilus_plugin=n
-_thunar_plugin=n
-###################
-
-pkgname=gtkhash
+pkgbase=gtkhash
+pkgname=(gtkhash gtkhash-nemo gtkhash-nautilus gtkhash-thunar)
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('i686' 'x86_64' 'mips64el')
 url="http://gtkhash.sourceforge.net/"
 license=('GPL')
-makedepends=('intltool')
-depends=('dconf')
-install=$pkgname.install
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz"
+makedepends=('intltool' 'nemo' 'libnautilus-extension' 'thunar') # ← remove FMs here!
+depends=('dconf' 'nettle' 'gtk3')
+source=("http://downloads.sourceforge.net/gtkhash/gtkhash-$pkgver.tar.xz"
         "gtkhash.desktop")
 sha256sums=('161d4f27f2d412c8cb3f566ca3aa8144942bbf836c18bcb1e5f79451e6f5dfdd'
             'f0312086093f0dd5ce0cfd6c9312abd42b57401960c39c19377372c154a32388')
 
-# gtk version
-if [ "$_gtk_version" = "3" ]; then
-  _pkgoptions="$_pkgoptions --with-gtk=3.0"
-  depends=("${depends[@]}" "gtk3")
-else
-  _pkgoptions="$_pkgoptions --with-gtk=2.0"
-  depends=("${depends[@]}" "gtk2")
-fi
-
-# nemo plugin
-if [ "$_nemo_plugin" = "y" ]; then
-  _pkgoptions="$_pkgoptions --enable-nemo"
-  makedepends=("${makedepends[@]}" "nemo")
-  optdepends=("${optdepends[@]}" "nemo: filemanager plugin")
-fi
-
-# nautilus plugin
-if [ "$_nautilus_plugin" = "y" ]; then
-  _pkgoptions="$_pkgoptions --enable-nautilus"
-  makedepends=("${makedepends[@]}" "libnautilus-extension")
-  optdepends=("${optdepends[@]}" "nautilus: filemanager plugin")
-fi
-
-# thunar plugin
-if [ "$_thunar_plugin" = "y" ]; then
-  _pkgoptions="$_pkgoptions --enable-thunar"
-  makedepends=("${makedepends[@]}" "thunar")
-  optdepends=("${optdepends[@]}" "thunar: filemanager plugin")
-fi
-
 build() {
-  cd $pkgname-$pkgver
+  cd gtkhash-$pkgver
 
   ./configure --prefix=/usr --disable-schemas-compile --enable-gtkhash \
-              --enable-linux-crypto --enable-nettle $_pkgoptions
+              --enable-linux-crypto --enable-nettle --with-gtk=3.0 \
+              --enable-nemo --enable-nautilus --enable-thunar # ← remove FMs here!
   make
 }
 
-package() {
-  cd $pkgname-$pkgver
+package_gtkhash() {
+  install=gtkhash.install
 
-  make DESTDIR="$pkgdir/" install
-
+  make -C gtkhash-$pkgver DESTDIR="$pkgdir/" install
   # install desktop entry
-  install -Dm644 ../gtkhash.desktop "$pkgdir"/usr/share/applications/gtkhash.desktop
+  install -Dm644 gtkhash.desktop "$pkgdir"/usr/share/applications/gtkhash.desktop
+  # remove filemanager plugins
+  rm -rf "$pkgdir"/usr/lib
+}
+
+package_gtkhash-nemo() {
+  pkgdesc+=' (Nemo filemanager plugin)'
+  depends=('gtkhash' 'nemo')
+
+  make -C gtkhash-$pkgver/src/nemo DESTDIR="$pkgdir/" install
+}
+
+package_gtkhash-nautilus() {
+  pkgdesc+=' (Nautilus filemanager plugin)'
+  depends=('gtkhash' 'nautilus')
+
+  make -C gtkhash-$pkgver/src/nautilus DESTDIR="$pkgdir/" install
+}
+
+package_gtkhash-thunar() {
+  pkgdesc+=' (Thunar filemanager plugin)'
+  depends=('gtkhash' 'thunar')
+
+  make -C gtkhash-$pkgver/src/thunar DESTDIR="$pkgdir/" install
 }
