@@ -1,0 +1,17 @@
+diff -ru a/src/libfootball/fb_http.c b/src/libfootball/fb_http.c
+--- a/src/libfootball/fb_http.c
++++ b/src/libfootball/fb_http.c
+@@ -926,10 +926,10 @@
+ 
+     /* Send the header */
+     /* Date formatted per RFC2616 sec 3.3.1: Sun, 06 Nov 1994 08:49:37 GMT */
+-    gmtime_r (&info.st_mtimespec.tv_sec, &modtime);
++    gmtime_r (&info.st_mtim.tv_sec, &modtime);
+     strftime (date, sizeof (date), "%a, %d %b %Y %H:%M:%S GMT", &modtime);
+-    info.st_mtimespec.tv_sec += 86400;
+-    gmtime_r (&info.st_mtimespec.tv_sec, &exptime);
++    info.st_mtim.tv_sec += 86400;
++    gmtime_r (&info.st_mtim.tv_sec, &exptime);
+     strftime (expiration, sizeof (expiration), "%a, %d %b %Y %H:%M:%S GMT", &exptime);
+ 
+     char *header;
