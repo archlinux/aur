@@ -1,11 +1,12 @@
 # Maintainer: schalox <schalox at gmail dot com>
 # Contributor: Simon Zimmermann <simon@insmo.com>
+# Contributor: Jon Yamokoski <jon.yamokoski@startmail.com>
 
 pkgname=pass-git
-pkgver=20140424.283
+pkgver=20140527.323
 pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
-url='http://zx2c4.com/projects/password-store/'
+url='http://www.passwordstore.org/'
 license='GPL2'
 arch=('any')
 depends=('bash' 'git' 'gnupg' 'grep' 'pwgen' 'tree>=1.7.0' 'xclip')
