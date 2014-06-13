@@ -1,17 +1,19 @@
 pkgbase = gtkhash-git
 	pkgdesc = A GTK+ utility for computing message digests or checksums (development version).
-	pkgver = 0.7.0.4.ga01ad64
+	pkgver = 0.7.0.r4.ga01ad64
 	pkgrel = 1
 	url = http://gtkhash.sourceforge.net/
-	install = gtkhash.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	makedepends = git
 	makedepends = nemo
+	makedepends = libnautilus-extension
+	makedepends = thunar
 	depends = dconf
+	depends = nettle
 	depends = gtk3
-	optdepends = nemo: filemanager plugin
 	provides = gtkhash
 	conflicts = gtkhash
 	source = gtkhash::git+https://github.com/tristanheaven/gtkhash.git
@@ -20,4 +22,20 @@ pkgbase = gtkhash-git
 	sha256sums = f0312086093f0dd5ce0cfd6c9312abd42b57401960c39c19377372c154a32388
 
 pkgname = gtkhash-git
+	install = gtkhash.install
+
+pkgname = gtkhash-nemo-git
+	pkgdesc = A GTK+ utility for computing message digests or checksums (development version). - Nemo filemanager plugin
+	depends = gtkhash-git
+	depends = nemo
+
+pkgname = gtkhash-nautilus-git
+	pkgdesc = A GTK+ utility for computing message digests or checksums (development version). - Nautilus filemanager plugin
+	depends = gtkhash-git
+	depends = nautilus
+
+pkgname = gtkhash-thunar-git
+	pkgdesc = A GTK+ utility for computing message digests or checksums (development version). - Thunar filemanager plugin
+	depends = gtkhash-git
+	depends = thunar
 
