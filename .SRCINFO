@@ -1,7 +1,7 @@
 pkgbase = fs2_open
 	pkgdesc = An enhancement of the FreeSpace 2 engine
 	pkgver = 3.7.2~rc3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://scp.indiegames.us
 	install = fs2_open.install
@@ -29,7 +29,7 @@ pkgbase = fs2_open
 	source = options
 	source = osapi_unix.patch
 	sha256sums = 999de332f90608a4d54d6c6b771a39cc680427da6cbbe8f41014bef763cb60e3
-	sha256sums = c978c91ced574a0904a883d41c72248796e0cf50a0c5e06bc5f890d92bb244c1
+	sha256sums = 0d6617923eb3ed485970d1ee15c3cfde9774826383e7ce3d5f666a09a8185adf
 	sha256sums = 6e85bffb776b7daf707d45741a5da5311f211885bfdb8ea44202691256b1d1b4
 	sha256sums = cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372
 	sha256sums = 750d9e51054e4c88679a9690a10d06a7fceaa29b7afa2f31cfcd022d6aa74041
