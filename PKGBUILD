@@ -14,14 +14,14 @@
 pkgname=fs2_open
 pkgver=3.7.2~rc3
 _pkgver=3_7_2_RC3 # Upstream's url/dirs ...
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="An enhancement of the FreeSpace 2 engine"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
 license=('custom:fs2_open')
-depends=('fs2_open-data' 'glu' 'libjpeg' 'libpng'
-         'libtheora' 'libvorbis' 'lua51' 'openal' 'sdl')
+depends=('fs2_open-data' 'glu' 'libjpeg' 'libpng' 'libtheora'
+         'libvorbis' 'lua51' 'jansson' 'openal' 'sdl')
 optdepends=('fs2_open-mediavps: extensive audiovisual enhancements')
 conflicts=('fs2_open_3614')
 replaces=('fs2_open_3614')

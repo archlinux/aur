@@ -1,7 +1,7 @@
 pkgbase = fs2_open
 	pkgdesc = An enhancement of the FreeSpace 2 engine
 	pkgver = 3.7.2~rc3
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://scp.indiegames.us
 	install = fs2_open.install
@@ -16,6 +16,7 @@ pkgbase = fs2_open
 	depends = libtheora
 	depends = libvorbis
 	depends = lua51
+	depends = jansson
 	depends = openal
 	depends = sdl
 	optdepends = fs2_open-mediavps: extensive audiovisual enhancements
