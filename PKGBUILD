@@ -9,7 +9,7 @@
 
 pkgname=cairo-compmgr
 pkgver=0.3.1
-pkgrel=7
+pkgrel=8
 epoch=2
 pkgdesc="A Cairo based composite manager"
 arch=(i686 x86_64)
@@ -19,8 +19,13 @@ makedepends=(gettext gtk-doc "intltool>=0.41" git)
 depends=("gtk2>=2.16.0" "vala>=0.24" libsm libgl gconf)
 install=cairo-compmgr.install
 options=(!libtool)
-source=(https://github.com/downloads/gandalfn/Cairo-Composite-Manager/$pkgname-$pkgver.tar.bz2)
-md5sums=('4ef285e0735b1a61b5db2205a2d8f8b3')
+source=(https://github.com/downloads/gandalfn/Cairo-Composite-Manager/$pkgname-$pkgver.tar.bz2
+        'https://github.com/gandalfn/Cairo-Composite-Manager/pull/4.diff'
+        'bfd_ansidecl.patch'
+)
+md5sums=('4ef285e0735b1a61b5db2205a2d8f8b3'
+         '011074cd9687475ebf9ac93fc1f535aa'
+         'b316779ffe9f86ada7ed601ae433789b')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -29,8 +34,11 @@ prepare() {
   sed -i 's!libvala-0.16!libvala-0.24!' configure.ac
   sed -i 's!libvala-0.16!libvala-0.24!' vapi/cairo-compmgr.deps
 
-  #patch for libiberty path bug
-  sed -i 's!<libiberty.h>!<libiberty/libiberty.h>!' src/ccm-debug.c
+  #patch needed to build with newer deps version
+  patch -p1 < ../4.diff
+
+  #bfd.h should include ansidecl.h
+  patch -p2 < ../bfd_ansidecl.patch
 }
 
 build() {
