@@ -18,7 +18,6 @@ pkgbase = roxterm-gtk2
 	depends = vte
 	depends = hicolor-icon-theme
 	source = http://downloads.sourceforge.net/roxterm/roxterm-2.8.3.tar.bz2
-	md5sums = 0f775a11f01e38be22ae5a080800c5f7
 
 pkgname = roxterm-gtk2
 
