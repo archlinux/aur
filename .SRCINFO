@@ -3,7 +3,6 @@ pkgbase = dantalian
 	pkgver = 0.5
 	pkgrel = 1
 	url = http://darkfeline.github.io/dantalian/
-	changelog = Changelog
 	arch = any
 	license = mit
 	makedepends = python-sphinx

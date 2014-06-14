@@ -10,7 +10,6 @@ license=('mit')
 depends=('python')
 optdepends=('fuse: additional features')
 makedepends=('python-sphinx')
-changelog=Changelog
 source=("https://github.com/darkfeline/dantalian/archive/${pkgver}.tar.gz")
 sha256sums=('9a35f45d2f0b14e723b751edb879f0c407e6a2a3c60769839d19b49e5e9548d0')
 
