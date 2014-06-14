@@ -2,7 +2,7 @@
 
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
-pkgver=2.0.0.184.gea6bc74
+pkgver=2.0.0.189.ga2c75d2
 pkgrel=1
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 arch=('i686' 'x86_64')
@@ -47,8 +47,8 @@ package_chocolate-common-git() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc man/man5
-  rm -rf applications/chocolate-doom.desktop applications/screensavers \
-    icons/chocolate-doom.png
+  rm -rf applications/chocolate-{doom,heretic,hexen,strife}.desktop \
+    applications/screensavers
   cd man/man6
   rm -f chocolate-{doom,heretic,hexen,strife}{,-setup}.6
 }
@@ -67,7 +67,7 @@ package_chocolate-doom-git() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{heretic,hexen,strife}
-  rm -f applications/chocolate-setup.desktop icons/chocolate-setup.png
+  rm -rf applications/chocolate-{setup,heretic,hexen,strife}.desktop icons
   rm -f man/man?/chocolate-{heretic,hexen,strife,setup,server}* \
     man/man5/{heretic,hexen,strife}.cfg*
 }
@@ -86,7 +86,8 @@ package_chocolate-heretic-git() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{doom,hexen,strife}
-  rm -rf applications icons
+  rm -rf applications/chocolate-{setup,doom,hexen,strife}.desktop \
+    applications/screensavers icons
   rm -f man/man?/chocolate-{doom,hexen,strife,setup,server}* \
     man/man5/{default,hexen,strife}.cfg*
 }
@@ -105,7 +106,8 @@ package_chocolate-hexen-git() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{doom,heretic,strife}
-  rm -rf applications icons
+  rm -rf applications/chocolate-{setup,doom,heretic,strife}.desktop \
+    applications/screensavers icons
   rm -f man/man?/chocolate-{doom,heretic,strife,setup,server}* \
     man/man5/{default,heretic,strife}.cfg*
 }
@@ -124,7 +126,8 @@ package_chocolate-strife-git() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/chocolate-{doom,heretic,hexen}
-  rm -rf applications icons
+  rm -rf applications/chocolate-{setup,doom,heretic,hexen}.desktop \
+    applications/screensavers icons
   rm -f man/man?/chocolate-{doom,heretic,hexen,setup,server}* \
     man/man5/{default,heretic,hexen}.cfg*
 }
