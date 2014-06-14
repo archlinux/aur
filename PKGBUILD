@@ -1,14 +1,14 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
 pkgver=4.6.5.40833
-pkgrel=2
+pkgrel=3
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
 depends=(
-  'openal' 'gnome-vfs' 'gtk2' 'libpng' 'libxml2' 'dbus-glib'
+  'openal' 'gnome-vfs' 'gtk2' 'libpng' 'libxml2' 'dbus-glib' 'gcc-libs'
   'libidn' 'sdl' 'mesa' 'apr-util' 'libgl' 'libjpeg-turbo'
-  'nss' 'glu' 'pangox-compat'
+  'nss' 'glu' 'pangox-compat' 'util-linux' 'zlib'
 )
 optdepends=(
   'libpulse: for PulseAudio support'
@@ -35,7 +35,8 @@ if [ "$CARCH" = "i686" ]; then
     'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530'
   )
 elif [ "$CARCH" = "x86_64" ]; then
-  depends=("${depends[@]}" 'lib32-libidn')
+  depends=("${depends[@]}"
+    'lib32-libidn' 'lib32-gcc-libs' 'lib32-util-linux' 'lib32-zlib')
   source=(
     "http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Betax64_${CARCH}_$pkgver.tar.bz2"
     'firestorm.install'
