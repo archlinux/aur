@@ -6,7 +6,7 @@
 
 pkgname=policycoreutils
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -43,13 +43,13 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  make PYTHON=python2 LSPP_PRIV=y SEMODULE_PATH="/usr/sbin" all
+  make PYTHON=python2 LSPP_PRIV=y SEMODULE_PATH="/usr/bin" all
 }
 
 package(){
   cd "${pkgname}-${pkgver}"
 
-  make PYTHON=python2 DESTDIR="${pkgdir}" LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib SEMODULE_PATH="/usr/sbin" install
+  make PYTHON=python2 DESTDIR="${pkgdir}" LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib SEMODULE_PATH="/usr/bin" install
 
   install -Dm644 "${srcdir}"/restorecond.service "${pkgdir}/usr/lib/systemd/system/restorecond.service"
 
