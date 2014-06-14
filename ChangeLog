@@ -1,5 +1,12 @@
 Revision history for Perl extension Linux::Smaps.
 
+0.13  Sun  1 Dec 20:34:43 CET 2013
+      - some kernels allow the user to open /proc/*/smaps for reading even
+        if the process is not allowed to read the content. In the latter case
+        /proc/*/smaps then appears to be empty. Linux::Smaps turns that into
+        an EACCES.
+      - drop 05.t because it's obsolete
+
 0.12  Mon May 20 20:44:08 CEST 2013
       - on some platforms /proc/1/smaps is readable for the ordinary user
         t/04.t used to fail in this case.
