@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=FreeSpace Port + MediaVPs
+Type=Application
+Comment=FreeSpace 1 in FS2 Open, with enhanced resources
+Icon=freespace2
+Exec=fsport-mediavps
+Categories=Game;
