@@ -16,8 +16,6 @@ pkgbase = pkgman
 	optdepends = desktop-file-utils: validate desktop entry files
 	optdepends = tree: formatted directory listing
 	source = http://downloads.sourceforge.net/sourceforge/pkgman/pkgman-r188.tar.gz
-	md5sums = 31f45848c515c13b2291d3a8c41022f7
-	sha256sums = 9a01b9026b7b69ff35128fb3df2f66b4777ce9890a5e8229efef566877848864
 
 pkgname = pkgman
 
