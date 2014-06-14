@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/fs2_open "$@" -mod mediavps_2014

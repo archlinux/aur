@@ -1,0 +1,8 @@
+2014-06-14 Mike Swanson <mikeonthecomputer@gmail.com>
+	* 2014-1:
+	New upstream release
+
+2013-05-12 Rene Schoebel <schoebel.r@gmail.com>
+
+	* 3.6.12-2 :
+	modified launcherscript so it may finds any fs2_open version.

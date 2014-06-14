@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=FS2 Open + MediaVPs
+Type=Application
+Comment=FreeSpace 2 with enhanced resources
+Exec=fs2_open-mediavps
+Icon=freespace2
+Categories=Game;
