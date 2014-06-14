@@ -24,7 +24,7 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15547
+pkgver=15559
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
@@ -138,9 +138,9 @@ _prepare_tianocore_sources() {
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
-	msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
-	sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf64Convert.c"
-	sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf32Convert.c"
+	# msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
+	# sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf64Convert.c"
+	# sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf32Convert.c"
 	# sed 's|_GCC48_IA32_OBJCOPY_FLAGS        =|_GCC48_IA32_OBJCOPY_FLAGS        = --section-alignment=0x20 |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	# sed 's|_GCC48_X64_OBJCOPY_FLAGS        =|_GCC48_X64_OBJCOPY_FLAGS        = --section-alignment=0x20 |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
