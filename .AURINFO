@@ -30,9 +30,6 @@ pkgbase = dbus-nosystemd
 	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.4.tar.gz
 	source = 30-dbus
 	source = dbus
-	md5sums = 4717cb8ab5b80978fcadf2b4f2f72e1b
-	md5sums = 3314d727fa57fc443fce25b5cbeebbcc
-	md5sums = 6f116e46adcbe99326ee67e597598d29
 
 pkgname = dbus-nosystemd
 
