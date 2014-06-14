@@ -11,9 +11,8 @@ pkgbase = xdg-launch
 	makedepends = pkgconfig
 	depends = libxrandr
 	depends = libxinerama
-	options = !libtool
 	source = xdg-launch::git+https://github.com/bbidulock/xdg-launch
-	md5sums = SKIP
+	options = !libtool
 
 pkgname = xdg-launch
 
