@@ -11,9 +11,8 @@ pkgbase = xdg-traymenu
 	optdepends = perl-gtk2-unique: for xdg-traymenu
 	optdepends = xde-theme: style menus and wm detection
 	optdepends = xdg-launch: startup notification for menu items
-	options = !emptydirs
 	source = xdg-traymenu::git+https://github.com/bbidulock/xdg-traymenu.git
-	md5sums = SKIP
+	options = !emptydirs
 
 pkgname = xdg-traymenu
 
