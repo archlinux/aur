@@ -22,12 +22,12 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=4
+pkgrel=5
 pkgdesc="Freespace 2 retail data for fs2_open"
 arch=('any')
 url="http://www.gog.com/en/gamecard/freespace_2"
 license=('custom:freespace2')
-makedepends=('innoextract' 'recode')
+makedepends=('graphicsmagick' 'innoextract' 'p7zip' 'recode')
 
 # This package is about 2 GiB uncompressed and takes
 #	a while to recompress for not too much space savings;
@@ -59,6 +59,15 @@ prepare() {
  from the retail CD and try again."
     return 1
   fi
+
+  # Extract and convert the icon
+  # Untested with the CD version
+  if [[ -f readme.txt ]]; then
+    7z e FreeSpace2.exe .rsrc/ICON/3.ico
+  else
+    7z e app/FreeSpace2.exe .rsrc/ICON/3.ico
+  fi
+  gm convert 3.ico freespace2.png
 }
 
 package() {
@@ -70,6 +79,8 @@ package() {
   fi
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 freespace2.png "$pkgdir/usr/share/icons/freespace2.png"
+  rm -f freespace2.png
 
   # This whole thing goes in /opt/fs2_open as a lot of upstream stuff
   #   expects binaries and data to be together like in Windows
