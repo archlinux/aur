@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=FS2 Open
+Type=Application
+Comment=FreeSpace 2
+Exec=fs2_open
+Icon=freespace2
+Categories=Game;

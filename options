@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# This file is read by the standard launcher scripts included in the
+#   various fs2_open packages; wxLauncher does not look at this at all.
+#   Do not set -mod here, as this will conflict with the mod launcher scripts!
+
+# Full command line reference available at:
+# http://www.hard-light.net/wiki/index.php/Command-Line_Reference
+
+# A lot of graphical and gameplay options are set via these flags - you should
+#   really take a look.
+
+FS2OPTS=""
