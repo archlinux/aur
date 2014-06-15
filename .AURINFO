@@ -13,11 +13,9 @@ pkgbase = dwm-git
 	depends = libxinerama
 	provides = dwm
 	conflicts = dwm
-	options = zipman
 	source = dwm.desktop
 	source = dwm::git+http://git.suckless.org/dwm
-	md5sums = 939f403a71b6e85261d09fc3412269ee
-	md5sums = SKIP
+	options = zipman
 
 pkgname = dwm-git
 
