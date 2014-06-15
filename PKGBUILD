@@ -1,7 +1,7 @@
 # Maintainer: ledti <antegist at gmail.com>
 
 pkgname=bar-aint-recursive-git
-pkgver=107.a447500
+pkgver=117.970332a
 pkgrel=1
 pkgdesc="A lightweight xcb based bar."
 arch=('i686' 'x86_64')
