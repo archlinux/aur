@@ -16,13 +16,9 @@ pkgbase = fluxbox-git
 	optdepends = xorg-xmessage: for using the fbsetbg and fluxbox-generate_menu utilities
 	provides = fluxbox=1.3.5.46.gf3e82ca
 	conflicts = fluxbox
-	options = !libtool
 	source = fluxbox-git::git://git.fluxbox.org/fluxbox.git
 	source = fluxbox-git.desktop
-	sha256sums = SKIP
-	sha256sums = 32ed3d444c938a3778520a641d5e0196a0fdf2984390d69a6546f8b86805c841
-	sha512sums = SKIP
-	sha512sums = 4c46bb22745849982b2e1ea02cc84f77bf81eeac827b10574eabcb5f2375805fe8b204a58aed15555b2477b1b9cc3f9e0aa4575a92ad9315495735a8e7ba40d1
+	options = !libtool
 
 pkgname = fluxbox-git
 
