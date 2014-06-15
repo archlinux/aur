@@ -1,37 +1,27 @@
 # Contributor: Yosef Or Boczko <yoseforb@gmail.com>
 
-_pkgname=geoip
-pkgname=$_pkgname-git
-pkgver=v1.4.8.119.gea0dc0f
+pkgname=geoip-git
+pkgver=1.6.0.r14.gb7f1bb3
 pkgrel=1
 pkgdesc="Non-DNS IP-to-country resolver C library & utils"
+epoch=1
 arch=('i686' 'x86_64')
 url="http://www.maxmind.com/app/c"
 license=('GPL')
 depends=('zlib' 'geoip-database')
-backup=('etc/geoip/GeoIP.conf')
-options=('!libtool' '!emptydirs')
-source=('git://github.com/maxmind/geoip-api-c.git#branch=bz/pre-1.5.2'
-        '0001-Don-t-install-GeoIP.dat.-It-does-not-exist.patch')
-sha256sums=('SKIP'
-            '004984ce2b015acedec03a0fd54f309fa546903994dc7a0585471ff18c2bebc1')
+source=("$pkgname::git://github.com/maxmind/geoip-api-c.git")
+sha256sums=('SKIP')
 conflicts=('geoip')
-replaces=('geoip')
-provides=('geoip' 'geoip=1.5.2')
+provides=('geoip')
 
- pkgver() {
-  cd "$srcdir/geoip-api-c"
-  git describe --always | sed 's/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/geoip-api-c"
-  patch -Np1 -i "$srcdir/0001-Don-t-install-GeoIP.dat.-It-does-not-exist.patch"
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/geoip-api-c"
-  autoreconf -vi
+  cd $pkgname
+  autoreconf -fiv
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
@@ -41,6 +31,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/geoip-api-c"
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
