@@ -25,7 +25,6 @@ pkgbase = bspwm-git
 	provides = bspwm
 	conflicts = bspwm
 	source = git://github.com/baskerville/bspwm.git
-	md5sums = SKIP
 
 pkgname = bspwm-git
 
