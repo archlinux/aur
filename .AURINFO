@@ -1,0 +1,22 @@
+pkgbase = gdk-pixbuf
+	pkgdesc = Image loading and manipulation library
+	pkgver = 0.22.0
+	pkgrel = 12
+	url = http://www.gtk.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = libxt
+	depends = gtk
+	depends = libtiff
+	depends = libpng
+	source = ftp://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/0.22/gdk-pixbuf-0.22.0.tar.bz2
+	source = gdk-pixbuf-0.22.0-bmp_reject_corrupt.patch
+	source = gdk-pixbuf-0.22.0-bmp_secure.patch
+	source = gdk-pixbuf-0.22.0-loaders.patch
+	source = gdk-pixbuf-0.22.0.patch
+	source = libpng15.patch
+
+pkgname = gdk-pixbuf
+
