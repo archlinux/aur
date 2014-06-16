@@ -3,7 +3,7 @@
 
 pkgname=cmake
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -40,6 +40,7 @@ package() {
   ln -s /usr/share/cmake-3.0/editors/vim/cmake-syntax.vim "${vimpath}"/syntax/
 
   emacs -batch -f batch-byte-compile "${pkgdir}"/usr/share/cmake-3.0/editors/emacs/cmake-mode.el
+  ln -s /usr/share/cmake-3.0/editors/emacs/cmake-mode.el "${pkgdir}"/usr/share/emacs/site-lisp/
 
   install -Dm644 Copyright.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
