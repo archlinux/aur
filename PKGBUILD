@@ -34,11 +34,12 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   vimpath="${pkgdir}/usr/share/vim/vimfiles"
-  mkdir -p "${vimpath}"/{help,indent,syntax}
+  install -d "${vimpath}"/{help,indent,syntax}
   ln -s /usr/share/cmake-3.0/editors/vim/cmake-help.vim "${vimpath}"/help/
   ln -s /usr/share/cmake-3.0/editors/vim/cmake-indent.vim "${vimpath}"/indent/
   ln -s /usr/share/cmake-3.0/editors/vim/cmake-syntax.vim "${vimpath}"/syntax/
 
+  install -d "${pkgdir}"/usr/share/emacs/site-lisp/
   emacs -batch -f batch-byte-compile "${pkgdir}"/usr/share/cmake-3.0/editors/emacs/cmake-mode.el
   ln -s /usr/share/cmake-3.0/editors/emacs/cmake-mode.el "${pkgdir}"/usr/share/emacs/site-lisp/
 
