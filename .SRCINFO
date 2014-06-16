@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-chucknorris
+	pkgdesc = Fortune cookies: Chuck Norris facts.
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.k-lug.org/~kessler/projects.html
+	arch = any
+	license = gpl
+	makedepends = coreutils
+	depends = fortune-mod
+	source = http://www.k-lug.org/~kessler/chucknorris.tar.gz
+	md5sums = fa85d9f2062712b2431c9d42780265fd
+
+pkgname = fortune-mod-chucknorris
+
