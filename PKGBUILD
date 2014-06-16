@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=1.3.8.53
+pkgver=1.3.8.69
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
@@ -24,7 +24,8 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
     --enable-shaped-decorations --enable-gradients \
-    --enable-guievents --with-icesound=ALSA,OSS
+    --enable-guievents --with-icesound=ALSA,OSS \
+    --disable-menus-gnome2
   make V=0
 }
 
