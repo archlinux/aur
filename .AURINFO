@@ -23,7 +23,6 @@ pkgbase = icewm-git
 	conflicts = icwm-testing
 	conflicts = icwm-zstegi
 	source = icewm-git::git+https://github.com/bbidulock/icewm.git
-	md5sums = SKIP
 
 pkgname = icewm-git
 
