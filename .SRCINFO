@@ -1,0 +1,16 @@
+pkgbase = tt-rss-feedmod
+	pkgdesc = Article Filter plugin for Tiny-Tiny-RSS to replace article stubs by website contents
+	pkgver = f668480
+	pkgrel = 1
+	url = https://github.com/mbirth/ttrss_plugin-af_feedmod
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = tt-rss
+	provides = tt-rss-feedmod
+	conflicts = tt-rss-feedmod
+	source = git+https://github.com/mbirth/ttrss_plugin-af_feedmod
+	md5sums = SKIP
+
+pkgname = tt-rss-feedmod
+
