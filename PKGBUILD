@@ -2,7 +2,7 @@
 
 pkgname=htmlcxx
 pkgver=0.85
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple non-validating css1 and html parser for C++."
 arch=('i686' 'x86_64')
 url="http://htmlcxx.sourceforge.net/"
@@ -22,6 +22,8 @@ build() {
 	cd "$srcdir/htmlcxx-$pkgver"
 	
 	patch -p1 -i "$srcdir/missing-header.patch"
+	
+	LDFLAGS="$LDFLAGS -Wl,--no-as-needed"
 	./configure --prefix=/usr
 	make
 }
