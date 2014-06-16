@@ -3,28 +3,22 @@
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 
 pkgname=libgadu
-pkgver=1.11.4
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="This library implements the client side of the Gadu-Gadu protocol"
 arch=('i686' 'x86_64')
 url="http://libgadu.net/"
 license=('LGPL2.1')
-depends=('openssl' 'zlib')
+depends=('gnutls' 'protobuf-c')
 source=("http://github.com/wojtekka/libgadu/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('feef622126e21601798c7e4497890ca3')
+md5sums=('e4569a0ed26136c4634fa8c4013910e3')
 
 build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
-    --disable-static \
-    --enable-shared \
-    --with-pthread
+    --disable-tests \
+    --disable-static
   make
-}
-
-check() {
-  cd ${pkgname}-${pkgver}
-  make check
 }
 
 package() {
