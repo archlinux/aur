@@ -2,7 +2,7 @@
 
 pkgname=spip
 pkgver=3.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A publishing system for the Internet in which great importance is attached to collaborative working, to multilingual environments, and to simplicity of use for web authors."
 arch=('x86' 'x86_64')
 url="http://www.spip.net/"
@@ -13,8 +13,8 @@ source=("http://files.spip.org/spip/archives/SPIP-v${pkgver}.zip"
         "mes_options.php")
 options=(!strip)
 sha256sums=('42e9cdb6a6d2a38ff2ad22606a264d88545e2c23969bca8d2f8ef72ed450aab1'
-            '0dfd06634f748eba922f24a99f42253663fa2c3939f727e073a052dc51e49764'
-            '1b1ac9dcd33e5c6605ed8319dfca5111bea8a53e9822db3219b60b870c13d5f8')
+            '18c625bf2192ceb7647617593285c9fbfc110197c0179ac8ae4bc70c414b9582'
+            '9c2eed4d009faef9128ec60135b4ff03c3c2d09387a7ac7f4887748f0d85ce75')
 
 package() {
     install -d ${pkgdir}/usr/share/webapps/
@@ -30,8 +30,8 @@ package() {
     install -m 644 ${srcdir}/mes_options.php ${pkgdir}/etc/webapps/${pkgname}/base
     install -m 644 ${srcdir}/httpd-spip.conf ${pkgdir}/etc/webapps/${pkgname}/
 
-    install -d ${pkgdir}/var/lib/${pkgname}
-    ln -s /var/lib/${pkgname} ${pkgdir}/usr/share/webapps/${pkgname}/sites
-    chown -R http:http ${pkgdir}/etc/webapps/${pkgname}/ ${pkgdir}/var/lib/${pkgname}
+    install -d ${pkgdir}/srv/${pkgname}
+    ln -s /srv/${pkgname} ${pkgdir}/usr/share/webapps/${pkgname}/sites
+    chown -R http:http ${pkgdir}/etc/webapps/${pkgname}/ ${pkgdir}/srv/${pkgname}
 
 }

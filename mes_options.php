@@ -9,7 +9,7 @@ if ( preg_match(',^/([\.a-zA-Z0-9_-]+)/,', $_SERVER['REQUEST_URI'], $r)
       $site = $_SERVER['HTTP_HOST'];
 }
 
-// This is a symlink to /var/lib/spip/
+// This is a symlink to /srv/spip/
 // Sites are of the form <host> or <host>__<folder> (cf. above)
 $rep = 'sites/';
 $path = _DIR_RACINE . $rep . $site . '/';
