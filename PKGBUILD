@@ -14,7 +14,7 @@ url="http://www.k-lug.org/~kessler/projects.html"
 md5sums=(fa85d9f2062712b2431c9d42780265fd)
 
 package() {
-  cd $startdir/src
+  cd $srcdir/src
   mkdir -p $pkgdir/usr/share/fortune
   fold -w 80 -s fortune-chucknorris/chucknorris > \
   	$pkgdir/usr/share/fortune/chucknorris || exit 1
