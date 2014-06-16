@@ -15,7 +15,7 @@ depends=('elementary-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
             'bc: calculator in everything module'
-            'bluez-libs: bluetooth module'
+            'bluez4: bluetooth module'
             'connman: network module'
             'gdb: create backtraces on crash'
             'packagekit: packagekit module')
