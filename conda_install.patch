@@ -1,5 +1,5 @@
---- a/pkgs/conda-3.5.2-py27_0/lib/python2.7/site-packages/conda/install.py	2014-05-29 00:42:12.573344766 +0200
-+++ b/pkgs/conda-3.5.2-py27_0/lib/python2.7/site-packages/conda/install.py	2014-05-29 01:08:51.803978206 +0200
+--- a/pkgs/conda-3.5.5-py27_0/lib/python2.7/site-packages/conda/install.py	2014-05-29 00:42:12.573344766 +0200
++++ b/pkgs/conda-3.5.5-py27_0/lib/python2.7/site-packages/conda/install.py	2014-05-29 01:08:51.803978206 +0200
 @@ -205,16 +205,18 @@
      return res
  

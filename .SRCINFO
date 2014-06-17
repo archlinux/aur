@@ -1,6 +1,6 @@
 pkgbase = anaconda2
 	pkgdesc = Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://store.continuum.io/cshop/anaconda/
 	arch = x86
@@ -8,14 +8,14 @@ pkgbase = anaconda2
 	license = custom
 	makedepends = patch
 	options = !strip
-	source = http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.0.0-Linux-x86_64.sh
+	source = http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.0.1-Linux-x86_64.sh
 	source = installer_sh_x86.patch
 	source = installer_sh_x86_64.patch
 	source = conda_install.patch
-	sha256sums = 3aa27ddf4a0ba5046ba52b97da99e20eb0614273d905bd73e016852451908917
-	sha256sums = a4242826556d8455338fe8a70632fe649b780b733adb453494b674ef1e96a112
-	sha256sums = 592f67f506e9c5c266b43e0c6a4630ec641ba7d682ad239707b808bb616a3bd0
-	sha256sums = 92161cc7c504ebfd52f6246ca4b8c253d90f68dd16317163aec414db78e3adfc
+	sha256sums = 074204fa26872b4a946123071d15b8390c0e5441352c6b65b2abd32511bff240
+	sha256sums = 01185e9dcf20506c0dd615a947fae85d8e3bed83426f5a6dec15b99a7ef0122f
+	sha256sums = b3dffa8adaba6cad0375209819b9dcd166271bdac4a66425e73e74cc968cd210
+	sha256sums = 7b5a6654068a52e0b622d078d1d8bd8b614c6fa2f4bea9c26e7f1eb61f9150bb
 
 pkgname = anaconda2
 
