@@ -17,7 +17,6 @@ pkgbase = systemd-ui-git
 	provides = systemd-ui
 	conflicts = systemd-ui
 	source = git://anongit.freedesktop.org/systemd/systemd-ui.git
-	md5sums = SKIP
 
 pkgname = systemd-ui-git
 

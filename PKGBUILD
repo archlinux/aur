@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=systemd-ui-git
-pkgver=3.0.gbd1d897
+pkgver=3.2.g4e6ab2e
 pkgrel=1
 pkgdesc="Systemd Session and Startup Manager GUI (Git version)"
 arch=('i686' 'x86_64')
