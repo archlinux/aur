@@ -11,16 +11,12 @@ pkgbase = smcroute-git
 	provides = mcsender
 	conflicts = smcroute
 	conflicts = mcsender
-	backup = etc/smcroute.conf
-	backup = etc/conf.d/smcrouted
 	source = smcroute-git::git+https://github.com/troglobit/smcroute.git
 	source = smcroute.conf.example
 	source = smcrouted.conf.d
 	source = smcrouted.rc.d
-	md5sums = SKIP
-	md5sums = 59fdb2baf1184d0cb5c59b576b1b5e1c
-	md5sums = aed88a7472e9daef0b783d017735c8f4
-	md5sums = b925ad844fe57f017ed5f840b86e701d
+	backup = etc/smcroute.conf
+	backup = etc/conf.d/smcrouted
 
 pkgname = smcroute-git
 
