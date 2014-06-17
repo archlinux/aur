@@ -5,42 +5,30 @@
 # Contributor: Renato Aguiar
 
 pkgbase=slim-git
-pkgname=slim-git
-true && pkgname=('slim-git' 'slimlock-git')
+pkgname=('slim-git' 'slimlock-git')
 _gitname=slim
-pkgver=v1.3.6.3.g741e439.2013.10.03
+pkgver=1.3.6.4.ga33d260
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://developer.berlios.de/projects/slim/"
 license=('GPL2')
 makedepends=('git' 'cmake' 'pam' 'libxmu' 'libpng' 'libjpeg' 'libxft' 'libxrandr')
-source=('git://git.berlios.de/slim'
+source=(git+'https://github.com/WorMzy/slim.git'
         'slimlock-git.install'
         'slim.conf'
         'http://downloads.sourceforge.net/project/slim.berlios/slim-archlinux-simple.tar.gz'
-        'slim-1.3.6-fix-libslim-libraries.patch'
         'slim.pam'
         'slim.logrotate')
 md5sums=('SKIP'
          '40af4379e8b17203414356edbf57469f'
          '3f75d2a7a85c08a41b2f75eeb548cd87'
          '7c7aaa255561444a4ae3e9f1dfb4be5d'
-         '3b0579dccedff97bbeafa03d58666294'
          '294bc95c215ed04151d02fa90e2bd387'
          '43da096480bf72c3ccec8ad8400f34f0')
 
 pkgver() {
   cd "$_gitname"
-  echo $(git describe --tags).$(git log -1 --format="%cd" --date=short) | sed 's:-:.:g'
-}
-
-prepare() {
-  cd "$srcdir/$_gitname"
-
-  # Fix installation path of slim.service
-  sed -i 's|set(LIBDIR "/lib")|set(LIBDIR "/usr/lib")|' CMakeLists.txt
-
-  patch -Np1 -i "$srcdir/slim-1.3.6-fix-libslim-libraries.patch"
+  echo $(git describe --tags) | sed -e 's:v::' -e 's:-:.:g'
 }
 
 build() {
