@@ -21,7 +21,6 @@ pkgbase = roxterm-git
 	provides = roxterm
 	conflicts = roxterm
 	source = roxterm-git::git://git.code.sf.net/p/roxterm/code
-	md5sums = SKIP
 
 pkgname = roxterm-git
 
