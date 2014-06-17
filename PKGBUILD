@@ -8,7 +8,7 @@
 
 pkgname='perl-convert-uulib'
 pkgver='1.4'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Perl interface to the uulib library (a.k.a. uudeview/uuenview).'
 _dist=Convert-UUlib
 arch=('any')
