@@ -23,9 +23,8 @@ pkgbase = libsoup-gnome-git
 	replaces = libsoup-newest
 	replaces = libsoup-git
 	replaces = libsoup-gnome
-	options = !libtool
 	source = libsoup-gnome-git::git://git.gnome.org/libsoup
-	md5sums = SKIP
+	options = !libtool
 
 pkgname = libsoup-gnome-git
 
