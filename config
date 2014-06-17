@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 3.15.0-1 Kernel Configuration
+# Linux/x86 3.15.1-1 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -139,7 +139,7 @@ CONFIG_CGROUP_CPUACCT=y
 CONFIG_RESOURCE_COUNTERS=y
 CONFIG_MEMCG=y
 # CONFIG_MEMCG_SWAP is not set
-CONFIG_MEMCG_KMEM=y
+# CONFIG_MEMCG_KMEM is not set
 # CONFIG_CGROUP_PERF is not set
 CONFIG_CGROUP_SCHED=y
 CONFIG_FAIR_GROUP_SCHED=y
