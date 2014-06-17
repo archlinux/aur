@@ -16,7 +16,6 @@ pkgbase = vicious-git
 	provides = vicious
 	conflicts = vicious
 	source = vicious-git::git+http://git.sysphere.org/vicious
-	sha1sums = SKIP
 
 pkgname = vicious-git
 
