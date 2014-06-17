@@ -19,7 +19,6 @@ pkgbase = libwnck+-git
 	conflicts = libwnck
 	conflicts = libwnck+
 	source = libwnck+-git::git+https://github.com/bbidulock/libwnck.git#branch=libwnck+
-	sha256sums = SKIP
 
 pkgname = libwnck+-git
 
