@@ -3,7 +3,7 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
 pkgname=gtg-git
-pkgver=r5072.c9f89a9
+pkgver=r5106.8814fb2
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="http://gtgnome.net/"
@@ -34,8 +34,9 @@ optdepends=(
 )
 conflicts=('gtg')
 install="${pkgname}.install"
-source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg")
-md5sums=(SKIP)
+source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg"
+        "0001-Use-better-default-preferences.patch"
+        "0001-Use-str-as-unicode-if-missing.patch")
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -44,6 +45,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  patch -p 1 < "${srcdir}/0001-Use-better-default-preferences.patch"
+  patch -p 1 < "${srcdir}/0001-Use-str-as-unicode-if-missing.patch"
   python setup.py build
 }
 
@@ -53,3 +56,6 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('SKIP'
+         '7cb958cbfbbc0c4b94a73868cea915ba'
+         '6ccda926c78dc1811fc86a40881520a6')
