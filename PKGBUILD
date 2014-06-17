@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=3.14
+_basekernel=3.15
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.8
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -19,10 +19,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'menu.lst'
         "preset"
         'https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/change-default-console-loglevel.patch')
-sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
-            'a71fdb5391d664ecccef6602df638588e6202992415a788ad85fab9878ec6b76034c37de824069cfc6d6d502a1fab0eba98c69170f410d28951335e19d94db72'
-            'cfe85ba355a4eba535bf18266657aeb0577b2d1230ddd1c5114145102522905bf81bc3aa1d1720433c3fb4df6d872f394a19e218be3c3c3c922c1f2ef7121b50'
-            '3a5f99055cd3be4b4c95d5011bd231d4992dd86574dc1676f9e8aea349adc50e28d892cc470343da4266bbd2eac8d9e6c0b8f7ae0157deb9069d65167503f59d'
+sha512sums=('d5dc477cad4584e56e2e2ef9e0950c2b22e76e5cf5090a896ba099cb7c5e5db1853a4aeb96b199189653dc66d461557e95198e37516a619f7ddc01ba6b308e02'
+            '0951546a3651a0f573d90b835e449eb7ab49cfb3447a05a63d0187f8b9e3a9c873aeeba77af3ff1dd1ea83114ad33c18a4a32b7bba042ac16c4250117cf371e5'
+            '4e776dc622cfd519f00ce161c046dfaea15f81942d37a4e591d539c207b716e560596105798a41a75d6fdcd4b24a3492f6b047c8c1c116a936e6bebff5995463'
+            '5f070711bed8e00c158bea167245be4a39b46095354225d7ddfcabec019fdc550cde242225571ae11ed3ce455fa1c01a8af568f1990ec8eb52423302587c01f5'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f'
             '502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78')
