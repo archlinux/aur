@@ -1,0 +1,12 @@
+--- a/ttrss_plugin-af_feedmod/init.php	2014-06-16 14:21:06.995480038 +0200
++++ b/ttrss_plugin-af_feedmod/init.php	2014-06-16 14:22:00.151027654 +0200
+@@ -147,6 +147,9 @@
+                         }
+                     }
+                     break;
++                case 'replace':
++                    $article['content'] = preg_replace("/".$config['pattern']."/",$config['replacement'],$article['content']);
++                    break;
+ 
+                 default:
+                     // unknown type or invalid config
