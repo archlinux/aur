@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Frank <ben+aur@pipsfrank.de>
 
 pkgname=muttvcardsearch
-pkgver=1.5
+pkgver=1.7
 pkgrel=1
 pkgdesc="A small mutt carddav search utility."
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ depends=('curl' 'sqlite3')
 makedepends=('cmake')
 provides=(muttvcardsearch)
 source=("https://github.com/tfl/muttvcardsearch/archive/v${pkgver}.tar.gz")
-sha1sums=('1fee29ba15a61549a268b784e42b1b7a31d2ad11')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,3 +23,4 @@ package() {
   make DESTDIR="${pkgdir}/" install
   install -Dm644 manual/muttvcardsearch.man ${pkgdir}/usr/share/man/man8/muttvcardsearch.8
 }
+sha256sums=('bd8cf5e51fa7237007dd12e8ac89e4ce6d66bb1be7c7d17f12c81fecb1caa6cf')
