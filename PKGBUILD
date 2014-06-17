@@ -10,7 +10,7 @@
 
 pkgname=fs2_open-mediavps
 pkgver=2014
-pkgrel=1
+pkgrel=2
 pkgdesc="Dramatic audiovisual enhancements for fs2_open"
 arch=('any')
 url="http://www.hard-light.net/forums/index.php?board=120.0"
@@ -30,7 +30,7 @@ source=(http://www.lunardigitalproductions.com/downloads/MediaVPs2014/MV_Root.7z
   fs2_open-mediavps
   fs2_open-mediavps.changelog
   fs2_open-mediavps.desktop)
-sha256sums=('e9df38ed516a65e0a8ee8b3fe28d9d7073b937150b9d62c77b5cc85c2b960ed8'
+sha256sums=('060502b07d60c0b559f021e66f51e8da73043a9d9828d535bff88a3c4f2ca36c'
             'db08f784e4331cf5a919a510a0858b996a13185ec6a11f7e63fa290433142565'
             '96a313701a0bbbc3acbd05f2bc526bbafce5ddf67f28864324c96a3717ac7361'
             '620c4feb9eb31a9e43069dae22b65d6538ca7960f25aa84fff516ebc641682b9'
