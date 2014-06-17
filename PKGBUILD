@@ -1,6 +1,6 @@
 pkgname=amavisd-new
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -12,7 +12,7 @@ depends=(
     'perl-compress-zlib>=1.35'
     'perl-compress-raw-zlib>=2.0.17'
     'perl-convert-tnef'
-    'perl-convert-uulib>=1.4'
+    'perl-convert-uulib>=1.4-5'
     'perl-mime-base64'
     'perl-mime-tools'
     'perl-mailtools>=1.58'
@@ -20,7 +20,7 @@ depends=(
     'perl-digest-md5>=2.22'
     'perl-io-stringy'
     'perl-time-hires>=1.49'
-    'perl-unix-syslog'
+    'perl-unix-syslog>=1.1-4'
     'perl-mail-dkim>=0.31'
     'perl-berkeleydb>=0.42'
 	 'bzip2'
