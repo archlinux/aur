@@ -40,13 +40,13 @@ source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg"
 
 pkgver() {
   cd "$srcdir/${pkgname}"
-  patch -p1 < ${srcdir}/0001-plugin-API-Open-preference-file-for-reading-as-binar.patch
-  patch -p1 < ${srcdir}/0002-No-need-to-use-unicode-on-strs.patch
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  patch -p1 < ${srcdir}/0001-plugin-API-Open-preference-file-for-reading-as-binar.patch
+  patch -p1 < ${srcdir}/0002-No-need-to-use-unicode-on-strs.patch
   python setup.py build
 }
 
