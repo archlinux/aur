@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/bin/fsport "$@" -mod fsport-mediavps
+/usr/bin/fs2_open-mediavps "$@" -mod fsport -mod fsport-mediavps
