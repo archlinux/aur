@@ -1,7 +1,7 @@
 pkgbase = gconf-gtk2
 	pkgdesc = A configuration database system compiled for GTK2
 	pkgver = 3.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnome.org
 	install = gconf.install
 	arch = i686
@@ -17,14 +17,11 @@ pkgbase = gconf-gtk2
 	depends = gtk2
 	provides = gconf=3.2.6
 	conflicts = gconf
-	replaces = gconf
 	source = http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-3.2.6.tar.xz
 	source = gconf-merge-schema
 	source = gconfpkg
 	source = gconf-reload.patch
 	source = 01_xml-gettext-domain.patch
-	options = !libtool
-	options = emptydirs
 
 pkgname = gconf-gtk2
 

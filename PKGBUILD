@@ -1,17 +1,17 @@
+# $Id: PKGBUILD 197971 2013-10-30 12:00:18Z allan $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor:  Jan de Groot <jan@archlinux.org>
 
 pkgname=gconf-gtk2
 pkgver=3.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A configuration database system compiled for GTK2"
 arch=(i686 x86_64)
 license=('LGPL')
 provides=("gconf=$pkgver")
 conflicts=('gconf')
-replaces=('gconf')
 depends=('libxml2' 'polkit' 'libldap' 'dbus-glib' 'gtk2')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
-options=('!libtool' 'emptydirs')
 install=gconf.install
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-$pkgver.tar.xz
