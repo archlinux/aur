@@ -1,0 +1,12 @@
+post_install() {
+  getent group knot &>/dev/null || groupadd -r knot >/dev/null
+  getent passwd knot &>/dev/null || useradd -r -g knot -d /dev/null -s /bin/false -c knot knot >/dev/null
+  chown knot:knot /var/lib/knot
+  chmod 700 /var/lib/knot
+}
+
+post_remove() {
+  getent passwd knot &>/dev/null && userdel knot >/dev/null
+  getent group knot &>/dev/null && groupdel knot >/dev/null
+  true
+}

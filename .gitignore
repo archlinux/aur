@@ -1,0 +1,4 @@
+/knot-*.tar.*
+/src/
+/pkg/
+*~

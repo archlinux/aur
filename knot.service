@@ -1,0 +1,12 @@
+[Unit]
+Description=Knot DNS server
+After=syslog.target network.target
+
+[Service]
+#EnvironmentFile=/etc/conf.d/knot
+ExecStart=/usr/bin/knotd -c /etc/knot/knot.conf $OPTIONS
+ExecReload=/usr/bin/knotc reload
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

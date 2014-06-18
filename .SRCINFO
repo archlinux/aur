@@ -1,0 +1,24 @@
+pkgbase = knot
+	pkgdesc = high-performance authoritative-only DNS server
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://www.knot-dns.cz/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf>=2.65
+	makedepends = libtool
+	makedepends = flex>=2.5.3
+	makedepends = bison>=2.3
+	depends = liburcu>=0.5.4
+	depends = openssl>=1.0.0
+	depends = zlib
+	depends = liblmdb
+	source = https://secure.nic.cz/files/knot-dns/knot-1.6.4.tar.xz
+	source = knot.service
+	sha256sums = 7d0809ad489bbbc3f7904687559ee750f3c1f3a7180fab238ba06fcedd00d8af
+	sha256sums = caa870a9c93c57c6311f9e8fb5685a9179bb9839a27a30cc1712c91df0d15090
+
+pkgname = knot
+
