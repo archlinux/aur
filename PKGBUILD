@@ -1,7 +1,7 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=lcf2xml-git
-pkgver=r23.0161554
+pkgver=r25.762d235
 pkgrel=1
 pkgdesc="EasyRPG's converter tool (RPG Maker 2000/2003 projects<>XML, development version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('lcf2xml')
 provides=('lcf2xml')
 makedepends=('git')
-depends=('expat' 'gcc-libs' 'liblcf-git')
+depends=('gcc-libs' 'liblcf-git')
 source=(lcf2xml::"git+https://github.com/EasyRPG/lcf2xml.git")
 md5sums=('SKIP')
 
