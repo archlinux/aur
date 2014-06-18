@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=http-parser-git
-pkgver=2.3.r3.g8d9e5db
+pkgver=2.3.r4.g158dd3b
 pkgrel=1
 pkgdesc="Parser for HTTP Request/Response written in C"
 arch=('i686' 'x86_64')
@@ -31,8 +31,6 @@ package() {
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 AUTHORS \
         "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
-  install -Dm644 CONTRIBUTIONS \
-        "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTIONS"
   install -Dm644 README.md \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 

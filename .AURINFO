@@ -1,6 +1,6 @@
 pkgbase = http-parser-git
 	pkgdesc = Parser for HTTP Request/Response written in C
-	pkgver = 2.3.r3.g8d9e5db
+	pkgver = 2.3.r4.g158dd3b
 	pkgrel = 1
 	url = https://github.com/joyent/http-parser
 	arch = i686
