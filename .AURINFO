@@ -1,11 +1,12 @@
 pkgbase = jwmtools
 	pkgdesc = Various tools for jwm window manager.
 	pkgver = 0.1.78
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kostelnik/jwmtools
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = mdsplib
 	depends = libglade
 	depends = libxss
 	conflicts = jwmtools-git
