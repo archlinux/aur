@@ -1,25 +1,26 @@
+# $Id: PKGBUILD 212820 2014-05-15 14:29:12Z eric $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 _pkgname=avahi
 pkgname=avahi-gtk2
 pkgver=0.6.31
-pkgrel=11
+pkgrel=12
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
 url='http://www.avahi.org/'
 license=('LGPL')
 arch=('i686' 'x86_64')
 options=('!emptydirs')
-depends=('expat' 'libdaemon' 'glib2' 'libcap' 'gdbm')
+depends=('expat' 'libdaemon' 'glib2' 'libcap' 'gdbm' 'dbus')
 replaces=(${_pkgname})
-optdepends=('dbus: communicating with client applications'
-            'gtk2: avahi-discover-standalone, bshell, bssh, bvnc, gtk2 bindings'
-            'qt3: qt3 bindings'
+optdepends=('gtk2: avahi-discover-standalone, bshell, bssh, bvnc, gtk2 bindings'
             'qt4: qt4 bindings'
             'pygtk: avahi-bookmarks, avahi-discover'
             'twisted: avahi-bookmarks'
             'python2-dbus: avahi-discover'
             'nss-mdns: NSS support for mDNS')
-makedepends=('qt3' 'qt4' 'pygtk' 'intltool' 'python2-dbus'
+makedepends=('qt4' 'pygtk' 'intltool' 'python2-dbus'
              'gobject-introspection' 'gtk2' 'xmltoman')
 backup=('etc/avahi/hosts'
         'etc/avahi/avahi-daemon.conf'
@@ -45,7 +46,6 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	export MOC_QT3=/usr/bin/moc-qt3
 	export MOC_QT4=/usr/bin/moc-qt4
 	export PYTHON=/usr/bin/python2
 
@@ -56,8 +56,8 @@ build() {
 		--sbindir=/usr/bin \
 		--disable-mono \
 		--disable-gtk3 \
-		--disable-static \
 		--disable-monodoc \
+		--disable-qt3 \
 		--enable-compat-libdns_sd \
 		--enable-compat-howl \
 		--with-distro=archlinux \
