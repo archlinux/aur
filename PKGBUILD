@@ -5,7 +5,7 @@
 
 pkgname=windowmaker-git
 pkgver=0.95.5.r231.gd30b942
-pkgrel=1
+pkgrel=2
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
