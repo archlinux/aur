@@ -17,7 +17,6 @@ pkgbase = herbstluftwm-git
 	optdepends = dzen2-git: needed by panel.sh
 	optdepends = dzen2-xft-xpm-xinerama-svn: view icons as tags
 	source = git://git.informatik.uni-erlangen.de/re06huxa/herbstluftwm
-	md5sums = SKIP
 
 pkgname = herbstluftwm-git
 
