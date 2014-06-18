@@ -16,7 +16,6 @@ pkgbase = linuxstopmotion-git
 	depends = libxml2
 	conflicts = stopmotion
 	source = linuxstopmotion::git+http://git.code.sf.net/p/linuxstopmotion/code
-	md5sums = SKIP
 
 pkgname = linuxstopmotion-git
 
