@@ -24,7 +24,6 @@ pkgbase = jwm-git
 	conflicts = jwm-flashfixed
 	conflicts = jwm-snapshot-lite
 	source = git://github.com/joewing/jwm.git
-	md5sums = SKIP
 
 pkgname = jwm-git
 
