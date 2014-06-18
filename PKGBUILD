@@ -2,7 +2,7 @@
 
 _name=easyrpg-player
 pkgname=$_name-git
-pkgver=0.2.r3.g6b3a8d5
+pkgver=0.2.r82.g85f39ed
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,8 @@ conflicts=("$_name")
 provides=("$_name=${pkgver%.r*}")
 makedepends=('boost' 'git')
 depends=('liblcf-git' 'sdl2_mixer' 'pixman')
-install=$_name.install
+optdepends=('wine: for installing the run time packages (RTP)')
+install=$pkgname.install
 source=($_name::"git+https://github.com/EasyRPG/Player.git")
 md5sums=('SKIP')
 

@@ -1,9 +1,9 @@
 pkgbase = easyrpg-player-git
 	pkgdesc = FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)
-	pkgver = 0.2.r3.g6b3a8d5
+	pkgver = 0.2.r82.g85f39ed
 	pkgrel = 1
 	url = https://easy-rpg.org/
-	install = easyrpg-player.install
+	install = easyrpg-player-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = easyrpg-player-git
 	depends = liblcf-git
 	depends = sdl2_mixer
 	depends = pixman
+	optdepends = wine: for installing the run time packages (RTP)
 	provides = easyrpg-player=0.2
 	conflicts = easyrpg-player
 	source = easyrpg-player::git+https://github.com/EasyRPG/Player.git
