@@ -1,6 +1,6 @@
 pkgbase = gtg-git
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment. Git version.
-	pkgver = r5106.8814fb2
+	pkgver = r5107.767bfca
 	pkgrel = 1
 	url = http://gtgnome.net/
 	install = gtg-git.install
@@ -37,11 +37,11 @@ pkgbase = gtg-git
 	optdepends = python-launchpadlib: for Launchpad synchronization service
 	conflicts = gtg
 	source = gtg-git::git+https://github.com/getting-things-gnome/gtg
-	source = 0001-Use-better-default-preferences.patch
-	source = 0001-Use-str-as-unicode-if-missing.patch
+	source = 0001-plugin-API-Open-preference-file-for-reading-as-binar.patch
+	source = 0002-No-need-to-use-unicode-on-strs.patch
 	md5sums = SKIP
-	md5sums = 7cb958cbfbbc0c4b94a73868cea915ba
-	md5sums = 6ccda926c78dc1811fc86a40881520a6
+	md5sums = 443cf942f731a97c031a0118d3a2c895
+	md5sums = 6850a96df56027f7eee02054ad2554af
 
 pkgname = gtg-git
 

@@ -3,7 +3,7 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
 pkgname=gtg-git
-pkgver=r5106.8814fb2
+pkgver=r5107.767bfca
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="http://gtgnome.net/"
@@ -35,18 +35,18 @@ optdepends=(
 conflicts=('gtg')
 install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg"
-        "0001-Use-better-default-preferences.patch"
-        "0001-Use-str-as-unicode-if-missing.patch")
+        "0001-plugin-API-Open-preference-file-for-reading-as-binar.patch"
+        "0002-No-need-to-use-unicode-on-strs.patch")
 
 pkgver() {
   cd "$srcdir/${pkgname}"
+  patch -p1 < ${srcdir}/0001-plugin-API-Open-preference-file-for-reading-as-binar.patch
+  patch -p1 < ${srcdir}/0002-No-need-to-use-unicode-on-strs.patch
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -p 1 < "${srcdir}/0001-Use-better-default-preferences.patch"
-  patch -p 1 < "${srcdir}/0001-Use-str-as-unicode-if-missing.patch"
   python setup.py build
 }
 
@@ -57,5 +57,5 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 md5sums=('SKIP'
-         '7cb958cbfbbc0c4b94a73868cea915ba'
-         '6ccda926c78dc1811fc86a40881520a6')
+         '443cf942f731a97c031a0118d3a2c895'
+         '6850a96df56027f7eee02054ad2554af')
