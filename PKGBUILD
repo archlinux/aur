@@ -3,7 +3,7 @@
 # Contributor: UnCO <undercooled AT lavabit com>
 pkgname='pekwm-git'
 _pkgname='pekwm'
-pkgver=20140221.931
+pkgver=20140418.933
 pkgrel=1
 pkgdesc="A small, fast, functional, and flexible window manager - GIT Version"
 url="http://pekwm.org/"

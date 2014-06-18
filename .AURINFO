@@ -19,8 +19,6 @@ pkgbase = pekwm-git
 	conflicts = pekwm
 	source = pekwm::git+http://projects.pekdon.net/git/pekwm.git
 	source = harbour-no-border.patch
-	md5sums = SKIP
-	md5sums = 74c74a53743dab90e605eb73e0579528
 
 pkgname = pekwm-git
 
