@@ -3,7 +3,7 @@
 # Contributor: Roberto Calabrese <robertocalabrese75 [at] gmail.com>
 
 pkgname='libgcj'
-pkgver=15_4.9.0_6
+pkgver=15_4.9.0_7
 pkgrel=1
 pkgdesc="Dynamically load and interpret java class files. Built from binary \
 executables available in Debian repositories."
@@ -14,10 +14,10 @@ conflicts=(gcc-gcj)
 
 if [[ $CARCH == i686 ]]; then
   _DEBARCH=i386
-  sha1sums=('319701c602c135e9b8627200d330f28f30068097')
+  sha1sums=('c8c47f757f11ca6af57545dd76f7c0c06ec0bf2c')
 else
   _DEBARCH=amd64
-  sha1sums=('480182c3e5875a996757665b91893733fa044de4')
+  sha1sums=('fdca5b813698fcf4945e362c5a345f734242fb75')
 fi
 source=(http://ftp.debian.org/debian/pool/main/g/gcc-4.9/$pkgname${pkgver%_*}-${pkgver##*_}_${_DEBARCH}.deb)
 
