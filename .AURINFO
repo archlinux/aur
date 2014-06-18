@@ -10,7 +10,6 @@ pkgbase = jwmtools
 	depends = libglade
 	depends = libxss
 	source = https://github.com/bbidulock/jwmtools/releases/download/0.1/jwmtools-0.1.78.tar.xz
-	md5sums = 30759916e99fb9f4805e795a4e4aca68
 
 pkgname = jwmtools
 
