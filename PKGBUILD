@@ -5,8 +5,8 @@
 # Contributor: Christian Berendt <christian@thorlin.de>
 
 pkgname=cfengine
-pkgver=3.5.3
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
 license=('GPL3')
@@ -15,11 +15,11 @@ depends=('qdbm' 'openssl' 'pcre' 'libxml2')
 makedepends=('which')
 optdepends=('tokyocabinet' 'libvirt' 'postgresql-libs' 'libmariadbclient' 'acl')
 install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::http://cfengine.com/source-code/download?file=${pkgname}-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://s3.amazonaws.com/cfengine.package-repos/tarballs/${pkgname}-${pkgver}.tar.gz"
         'cf-execd.service'
         'cf-monitord.service'
         'cf-serverd.service')
-md5sums=('c840eb0163924ca657ab180fe5a170b4'
+md5sums=('42b0d3a90a1b60bf25cf63ccd6366f59'
          'dba17dc5133b8fa86de11577120d46c5'
          'a2f9db31408f288cb934397ffb474db3'
          'ff28f7de9b81b4673082a2640a318896')
