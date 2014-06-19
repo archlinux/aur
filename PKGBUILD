@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="http://dartsim.github.io"
-license=('(L)GPL2')
+license=('BSD')
 depends=('assimp' 'boost' 'eigen>=3' 'fcl' 'flann' 'glut' 'libccd' 'libgl')
 optdepends=('bullet: Bullet support'
             'ipopt: Ipopt support'
@@ -15,7 +15,7 @@ _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz
         "ipopt.patch")
 md5sums=('41547fc96f5f2c85ee3672ddb2ec7376'
-         '9a497cceb18ecd8b83fe56af477c4096')
+         'e6f7d4c4b26c7dc0751266a8a611325f')
 
 # Build type
 _buildtype="Release"

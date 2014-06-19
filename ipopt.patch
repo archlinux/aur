@@ -1,4 +1,4 @@
-commit 0a1a79a5b49d0c2619b80f8a2a9856405a60f5f8
+commit 12e6127821515e0dec956a7e288fdc205787f97e
 Author: Benjamin Chrétien <chretien@lirmm.fr>
 Date:   Thu Jun 19 12:55:53 2014 +0200
 
@@ -9,16 +9,13 @@ Date:   Thu Jun 19 12:55:53 2014 +0200
     Lapack, etc.).
 
 diff --git a/cmake/FindIPOPT.cmake b/cmake/FindIPOPT.cmake
-index ebfebd3..3e4bf48 100644
+index ebfebd3..766fa4f 100644
 --- a/cmake/FindIPOPT.cmake
 +++ b/cmake/FindIPOPT.cmake
-@@ -14,10 +14,7 @@ find_path(IPOPT_INCLUDE_DIR IpIpoptNLP.hpp
-     HINTS ${PC_IPOPT_INCLUDEDIR} ${PC_IPOPT_INCLUDE_DIRS}
-     PATHS "${CMAKE_INSTALL_PREFIX}/include")
+@@ -17,7 +17,7 @@ find_path(IPOPT_INCLUDE_DIR IpIpoptNLP.hpp
+ find_library(IPOPT_LIBRARY NAMES ipopt
+              HINTS ${PC_IPOPT_LIBDIR} ${PC_IPOPT_LIBRARY_DIRS} )
  
--find_library(IPOPT_LIBRARY NAMES ipopt
--             HINTS ${PC_IPOPT_LIBDIR} ${PC_IPOPT_LIBRARY_DIRS} )
--
 -set(IPOPT_LIBRARIES ${IPOPT_LIBRARY})
 +set(IPOPT_LIBRARIES ${PC_IPOPT_LIBRARIES})
  set(IPOPT_INCLUDE_DIRS ${IPOPT_INCLUDE_DIR})

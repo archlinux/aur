@@ -5,7 +5,7 @@ pkgbase = libdart
 	url = http://dartsim.github.io
 	arch = i686
 	arch = x86_64
-	license = (L)GPL2
+	license = BSD
 	makedepends = cmake
 	makedepends = doxygen
 	depends = assimp
@@ -22,7 +22,7 @@ pkgbase = libdart
 	source = https://github.com/dartsim/dart/archive/v4.0.tar.gz
 	source = ipopt.patch
 	md5sums = 41547fc96f5f2c85ee3672ddb2ec7376
-	md5sums = 9a497cceb18ecd8b83fe56af477c4096
+	md5sums = e6f7d4c4b26c7dc0751266a8a611325f
 
 pkgname = libdart
 
