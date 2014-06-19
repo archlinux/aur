@@ -2,24 +2,28 @@
 pkgdesc="Flexible Collision Library."
 url='https://github.com/flexible-collision-library'
 pkgname=fcl
-pkgver=0.2.9
+pkgver=0.3.1
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
 makedepends=('cmake')
 depends=('boost' 'libccd')
 optdepends=('octomap: collision detection with octrees'
-            'tinyxml: support for global penetration depth test'
-            'flann: support for fast approximate nearest neighbor searches')
+'tinyxml: support for global penetration depth test'
+'flann: support for fast approximate nearest neighbor searches')
 _dir=fcl-${pkgver}
 source=(https://github.com/flexible-collision-library/fcl/archive/${pkgver}.tar.gz)
-md5sums=('SKIP')
+md5sums=('2f3c6f45a2eb482e4f2cddb4cfa4aba0')
 
 build() {
-    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-    cd ${srcdir}/build
-    cmake ${srcdir}/${_dir} -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  rm -rf ${srcdir}/build && mkdir -p ${srcdir}/build
+  cd ${srcdir}/build
+
+  cmake ${srcdir}/${_dir} \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+
+  make
 }
 
 #check() {
@@ -28,6 +32,7 @@ build() {
 #}
 
 package() {
-    cd "${srcdir}/build"
-    make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}/build"
+
+  make DESTDIR="${pkgdir}/" install
 }
