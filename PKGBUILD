@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=urdfdom-headers
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="The URDF (U-Robot Description Format) headers provides core data structure headers for URDF."
 arch=('i686' 'x86_64')
