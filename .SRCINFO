@@ -1,0 +1,36 @@
+pkgbase = nginx-oboe
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server
+	pkgver = 1.8.0
+	pkgrel = 0
+	url = http://nginx.org
+	install = nginx.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = hardening-wrapper
+	depends = pcre
+	depends = zlib
+	depends = openssl
+	provides = nginx
+	conflicts = nginx
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/mime.types
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+	source = http://nginx.org/download/nginx-1.8.0.tar.gz
+	source = service
+	source = logrotate
+	source = https://files.tracelytics.com/src/nginx_oboe-latest..tar.gz
+	md5sums = 3ca4a37931e9fa301964b8ce889da8cb
+	md5sums = 5dd4d09914a4403b9df778ec1d66167c
+	md5sums = 19a26a61c8afe78defb8b4544f79a9a0
+	md5sums = 737c7ba2581cfd6f5b310913ed2374fc
+
+pkgname = nginx-oboe
+
