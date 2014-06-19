@@ -1,6 +1,6 @@
 pkgbase = libccd
 	pkgdesc = Library for collision detection between two convex shapes.
-	pkgver = 1.4
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://libccd.danfis.cz/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libccd
 	makedepends = cmake
 	provides = libccd
 	conflicts = libccd-git
-	source = http://libccd.danfis.cz/files/libccd-1.4.tar.gz
-	md5sums = 684a9f2f44567a12a30af383de992a89
+	source = http://libccd.danfis.cz/files/libccd-2.0.tar.gz
+	md5sums = 919415277e3baa1d157e713c0b597ab0
 
 pkgname = libccd
 
