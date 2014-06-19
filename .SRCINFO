@@ -1,0 +1,28 @@
+pkgbase = libdart
+	pkgdesc = Dynamic Animation and Robotics Toolkit
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://dartsim.github.io
+	arch = i686
+	arch = x86_64
+	license = (L)GPL2
+	makedepends = cmake
+	makedepends = doxygen
+	depends = assimp
+	depends = boost
+	depends = eigen>=3
+	depends = fcl
+	depends = flann
+	depends = glut
+	depends = libccd
+	depends = libgl
+	optdepends = bullet: Bullet support
+	optdepends = ipopt: Ipopt support
+	optdepends = nlopt: NLopt support
+	source = https://github.com/dartsim/dart/archive/v4.0.tar.gz
+	source = ipopt.patch
+	md5sums = 41547fc96f5f2c85ee3672ddb2ec7376
+	md5sums = 9a497cceb18ecd8b83fe56af477c4096
+
+pkgname = libdart
+
