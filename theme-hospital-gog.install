@@ -1,0 +1,14 @@
+
+post_install() {
+  echo "If you want to play the original executable, you need to install dosbox. Also"
+  echo "your user needs to be in the games group to be allowed to save."
+  echo "You can choose the language of the game in '/opt/theme-hospital/hospital.cfg',"
+  echo "for example GER for german."
+  echo "Alternatively, you can install and use the reimplementation corsix-th(-git),"
+  echo "it has various improvements. When you start corsix-th the first time, you need"
+  echo "to choose the game folder '/opt/theme-hospital'."
+}
+
+post_upgrade() {
+  post_install
+}

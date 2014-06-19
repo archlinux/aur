@@ -1,0 +1,22 @@
+pkgbase = theme-hospital-gog
+	pkgdesc = Manage a hospital in this humoristic business simulation game (gog.com version)
+	pkgver = 2.0.0.5
+	pkgrel = 1
+	url = http://gog.com
+	install = theme-hospital-gog.install
+	arch = any
+	license = custom: commercial
+	makedepends = innoextract
+	makedepends = icoutils
+	depends = bash
+	optdepends = corsix-th: to play it natively
+	optdepends = dosbox=0.74: to play with the original executable
+	source = gog://setup_theme_hospital_2.0.0.5.exe
+	source = theme-hospital-gog.desktop
+	source = theme-hospital-gog.sh
+	sha256sums = c41a77632ca1c33389b57d7210936eb5151ceb6d540707420a4de2d55bd47497
+	sha256sums = 22b24005cc952ae0a7ff92a63c9791567206ebde58740ebc66dfad65060a39b5
+	sha256sums = e47f1ce9b24d1154d0748bbbefdc2a9979f90ff051404f666897968ec7d5c5aa
+
+pkgname = theme-hospital-gog
+

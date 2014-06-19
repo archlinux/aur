@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Theme Hospital
+Exec=theme-hospital
+Icon=theme-hospital
+Categories=Game;
+Terminal=false
