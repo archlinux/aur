@@ -8,7 +8,7 @@
 # https://github.com/alerque/aur/tree/master/git-annex-bin
 
 pkgname=git-annex-bin
-pkgver=5.20140613
+pkgver=5.20140610
 pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no haskel dependencies, batteries included.'
 arch=('i686' 'x86_64')
