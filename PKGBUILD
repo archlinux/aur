@@ -1,7 +1,7 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
 
 pkgname=dhcptest-git
-pkgver=20140406
+pkgver=0.3.r1.ga34cf82
 pkgrel=1
 pkgdesc="DHCP test client"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
