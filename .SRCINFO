@@ -1,5 +1,5 @@
 pkgbase = polkit-efl-git
-	pkgdesc = Polkit Authentication Agent using EFL
+	pkgdesc = Polkit Authentication Agent using EFL - Development version
 	pkgver = 0.1.0.r0.gf7519f8
 	pkgrel = 1
 	url = http://www.enlightenment.org
