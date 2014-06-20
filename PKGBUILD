@@ -1,4 +1,4 @@
-# Maintainer: lestb <tkhdlstfl.l+aur@gmail.com at gmail dot com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
