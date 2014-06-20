@@ -1,6 +1,6 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname=snmpsim
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="a software that would act like a multitude of real physical devices from SNMP Manager's point of view"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('python' 'python-pysnmp' 'python-pyasn1')
 optdepends=('pycrypto: SNMPv3 support')
 options=(!emptydirs)
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('95a0a5c43fb282c6e33588acaedc814a')
+md5sums=('08981639fe50638197a77c156ff4e427')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
