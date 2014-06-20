@@ -1,51 +1,41 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=etwm-git
-pkgver=3.8.1
-pkgrel=2
+pkgver=3.8.3.r0.g3488e96
+pkgrel=1
 pkgdesc="Claude's Tab Window Manager with full ICCCM/EMWH support."
 arch=('i686' 'x86_64')		
-url="https://github.com/bbidulock/ctwm/"
+url="https://github.com/bbidulock/etwm/"
 license=('custom:MIT/X Consortium')
-provides=('ctwm')
-conflicts=('ctwm' 'etwm' 'ctwm-git')
-depends=('libxmu' 'libxpm' 'libjpeg' 'rplay')
-makedepends=('imake' 'setconf' 'git' 'bison' 'flex')
-backup=('etc/X11/ctwm/system.ctwmrc')
-source=("$pkgname::git+https://github.com/bbidulock/ctwm.git#branch=ewmh")
+provides=('etwm')
+conflicts=('etwm')
+depends=('libxinerama' 'libxrandr' 'libxmu' 'libxpm' 'libjpeg')
+makedepends=('git')
+backup=('etc/X11/etwm/system.etwmrc')
+options=('!emptydirs')
+source=("$pkgname::git+https://github.com/bbidulock/etwm.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags --always |sed 's,^[^0-9]*,,;s,-,.,g;s,\.g[a-f0-9]*$,,'
+  git describe --long --tags | sed -r 's,([^-]*-g),r\1,;s,-,.,g'
 }
 
 prepare() {
   cd $pkgname
-  MANWIDTH=80 man ./ctwm.man | cat | sed -n '/COPYRIGHT/,/^$/p;/AUTHORS/,/^$/p' >COPYRIGHT
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  setconf Imakefile CONFDIR /etc/X11/ctwm
-  setconf Imakefile PIXMAPDIR /etc/X11/ctwm/pixmaps
-  cat>Imakefile.local<<EOF
-#define USEM4
-#define XPM
-#define JPEG
-#define GNOME
-#define USE_SOUND
-#define USE_GNU_REGEX
-EOF
-  xmkmf
-  make
+  ./configure --silent --prefix=/usr --sysconfdir=/etc
+  make V=0
 }
 
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
-  make DESTDIR="$pkgdir" install.man
-  install -Dm0644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  install -Dm0644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set et sw=2:
