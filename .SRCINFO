@@ -1,12 +1,12 @@
 pkgbase = dsmidiwifi
 	pkgdesc = DSMI Server
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dsmidiwifi.tobw.net/
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	depends = qt4
+	depends = qt5-base
 	depends = alsa-lib
 	source = https://dsmi.googlecode.com/files/dsmidiwifi-v1.01.tgz
 	md5sums = e45703b1a37602d6326916d2ce1b404c
