@@ -6,7 +6,7 @@
 pkgname=ocaml-zip
 pkgver=1.05
 pkgrel=2
-pkgdesc="zip and gzip library for ocaml"
+pkgdesc="ZIP and gzip library for OCaml"
 arch=('i686' 'x86_64')
 url="http://cristal.inria.fr/~xleroy/software.html#camlzip"
 license=('GPL')

@@ -1,5 +1,5 @@
 pkgbase = ocaml-zip
-	pkgdesc = zip and gzip library for ocaml
+	pkgdesc = ZIP and gzip library for OCaml
 	pkgver = 1.05
 	pkgrel = 2
 	url = http://cristal.inria.fr/~xleroy/software.html#camlzip
