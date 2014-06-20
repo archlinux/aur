@@ -1,4 +1,4 @@
-# Maintainer: lestb <tkhdlstfl.l+aur@gmail.com at gmail dot com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 
 _rev=r02
 _sdkver=4.3
