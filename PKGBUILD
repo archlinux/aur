@@ -1,17 +1,18 @@
-# Maintainer: Serge Zirukin <ftrvxmtrx@gmail.com>
+# Maintainer: Marek Kubica <marek@xivilization.net>
+# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Sylvester Johansson <scj(at)archlinux(dot)us>
 pkgname=ocaml-zip
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 pkgdesc="zip and gzip library for ocaml"
 arch=('i686' 'x86_64')
 url="http://cristal.inria.fr/~xleroy/software.html#camlzip"
 license=('GPL')
 depends=('ocaml' 'zlib')
 makedepends=('ocaml-findlib')
-options=(!strip)
+options=(!strip staticlibs)
 source=(http://forge.ocamlcore.org/frs/download.php/1037/camlzip-$pkgver.tar.gz)
 md5sums=('e85c179d5dc79821e6e8d90e636599f1')
 
