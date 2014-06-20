@@ -1,4 +1,4 @@
-# Maintainer: lestb <tkhdlstfl.l+aur@gmail.com at gmail dot com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Denis Kobozev <d.v.kobozev at gmail dot com>
 
 pkgname=xapian-omega
