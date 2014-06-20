@@ -1,4 +1,4 @@
-# Maintainer: lestb <tkhdlstfl.l+aur@gmail.com at gmail dot com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: 謝致邦<Yeking@Red54.com>
 
 pkgname=lubuntu-artwork
