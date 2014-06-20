@@ -1,6 +1,6 @@
 pkgbase = eudev-git
 	pkgdesc = The userspace dev tools (udev) forked by Gentoo
-	pkgver = 20140601
+	pkgver = 20140619
 	pkgrel = 1
 	url = https://github.com/gentoo/eudev
 	install = eudev-git.install
@@ -19,10 +19,6 @@ pkgbase = eudev-git
 	depends = hwids
 	depends = bash
 	provides = eudev
-	provides = udev=213
-	provides = systemd=213
-	provides = libsystemd=213
-	provides = systemd-tools=213
 	conflicts = eudev
 	conflicts = udev
 	conflicts = systemd
@@ -43,4 +39,9 @@ pkgbase = eudev-git
 	backup = etc/udev/rules.d/80-net-name-slot.rules
 
 pkgname = eudev-git
+	provides = eudev
+	provides = udev=
+	provides = systemd=
+	provides = libsystemd=
+	provides = systemd-tools=
 

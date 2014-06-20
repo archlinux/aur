@@ -2,10 +2,9 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20140601
+pkgver=20140619
 pkgrel=1
-_udevver=213
-provides=('eudev' "udev=${_udevver}" "systemd=${_udevver}" "libsystemd=${_udevver}" "systemd-tools=${_udevver}")
+provides=('eudev')
 replaces=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
 conflicts=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
 groups=('base')
@@ -78,8 +77,18 @@ package() {
                s#GROUP="cdrom"#GROUP="optical"#g' "${i}"
   done
 
+  # input group is not used in Arch Linux at this moment
+  sed '/GROUP="input"/d' -i "${pkgdir}/usr/lib/udev/rules.d/50-udev-default.rules"
+
   # Make new interface naming policy disabled by default
   rm -f "${pkgdir}/usr/lib/udev/rules.d/80-net-name-slot.rules"
   install -Dm644 "${srcdir}/80-net-name-slot.rules" "${pkgdir}/etc/udev/rules.d/80-net-name-slot.rules"
+
+  # Getting udev version
+  udevver=$(grep UDEV_VERSION configure.ac | egrep -o "[0-9]{3}")
+  provides+=("udev=$udevver")
+  provides+=("systemd=$udevver")
+  provides+=("libsystemd=$udevver")
+  provides+=("systemd-tools=$udevver")
 }
 
