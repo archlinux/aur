@@ -2,7 +2,7 @@
 
 _pkgname=polkit-efl
 pkgname=$_pkgname-git
-pkgver=0.1.r84.db3f7f4
+pkgver=0.1.0.r0.gf7519f8
 pkgrel=1
 pkgdesc="Polkit Authentication Agent using EFL"
 arch=('any')
@@ -12,14 +12,14 @@ depends=('python-efl' 'polkit')
 makedepends=('git')
 optdepends=('python-psutil: For process details')
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname" "polkit-efl-authentication-agent-git")
+conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/misc/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  printf "$(python setup.py -V).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 prepare() {
