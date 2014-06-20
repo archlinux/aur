@@ -1,0 +1,15 @@
+pkgbase = dsmidiwifi-cli
+	pkgdesc = DSMI Server with GUI Removed
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/ids1024/dsmidiwifi-cli
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = qt5-base
+	depends = alsa-lib
+	source = https://github.com/ids1024/dsmidiwifi-cli/archive/v1.0.tar.gz
+	md5sums = 2c652ebd4d05689621da1a934ee20cc8
+
+pkgname = dsmidiwifi-cli
+
