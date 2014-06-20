@@ -11,10 +11,9 @@ pkgbase = etwm
 	depends = libxmu
 	depends = libxpm
 	depends = libjpeg
+	source = https://github.com/bbidulock/etwm/releases/download/3.8.3/etwm-3.8.3.tar.bz2
 	options = !emptydirs
 	backup = etc/X11/etwm/system.etwmrc
-	source = https://github.com/bbidulock/etwm/releases/download/3.8.3/etwm-3.8.3.tar.bz2
-	md5sums = 0e4122799dc141fe803b8632821377d9
 
 pkgname = etwm
 
