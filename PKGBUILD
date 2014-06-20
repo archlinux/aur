@@ -5,7 +5,7 @@
 
 pkgbase=python-soappy
 pkgname=python2-soappy
-pkgver=0.12.21
+pkgver=0.12.22
 pkgrel=1
 pkgdesc="A module which implements a high-level interface to SOAP functions"
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=('python-soappy<=0.12.0-10')
 replaces=('python-soappy<=0.12.0-10')
 source=("https://pypi.python.org/packages/source/S/SOAPpy/SOAPpy-${pkgver}.zip"
         "https://raw.githubusercontent.com/kiorky/SOAPpy/develop/LICENSE")
-md5sums=('659797fc5bcb01e9ef0cd74b93496e5c'
+md5sums=('7a8d7199af72539d14168dd249a91a64'
          '43f41fd631f225d8cd67eca52f38514f')
 
 build() {
