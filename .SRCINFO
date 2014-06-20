@@ -1,6 +1,6 @@
 pkgbase = polkit-efl-git
 	pkgdesc = Polkit Authentication Agent using EFL - Development version
-	pkgver = 0.1.0.r0.gf7519f8
+	pkgver = 0.1.0.r4.gf74c2d4
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = polkit-efl-git
 	depends = python-efl
 	depends = polkit
 	optdepends = python-psutil: For process details
-	provides = polkit-efl=0.1.0.r0.gf7519f8
+	provides = polkit-efl=0.1.0.r4.gf74c2d4
 	conflicts = polkit-efl
 	source = git://git.enlightenment.org/misc/polkit-efl.git
 	sha256sums = SKIP

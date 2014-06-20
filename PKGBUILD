@@ -2,7 +2,7 @@
 
 _pkgname=polkit-efl
 pkgname=$_pkgname-git
-pkgver=0.1.0.r0.gf7519f8
+pkgver=0.1.0.r4.gf74c2d4
 pkgrel=1
 pkgdesc="Polkit Authentication Agent using EFL - Development version"
 arch=('any')
@@ -20,10 +20,6 @@ pkgver() {
   cd "$srcdir/$_pkgname"
 
   git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./g'
-}
-
-prepare() {
-  sed -i 's|libexec|lib/polkit-efl|' "$srcdir/$_pkgname/setup.py"
 }
 
 build() {
