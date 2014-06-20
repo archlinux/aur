@@ -2,7 +2,7 @@
 
 pkgname=libcec-git
 epoch=1
-pkgver=2.0.4.77.g3ff78be
+pkgver=2.1.4.4.ga560d24
 pkgrel=1
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')

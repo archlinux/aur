@@ -1,6 +1,6 @@
 pkgbase = libcec-git
 	pkgdesc = Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter
-	pkgver = 2.0.4.77.g3ff78be
+	pkgver = 2.1.4.4.ga560d24
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Pulse-Eight/libcec
