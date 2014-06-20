@@ -1,4 +1,4 @@
-# Maintainer: lestb <tkhdlstfl.l+aur@gmail.com at gmail dot com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
