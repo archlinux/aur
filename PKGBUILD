@@ -7,7 +7,7 @@
 
 pkgname=pam-selinux
 pkgver=1.1.8
-pkgrel=4
+pkgrel=5
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -90,4 +90,7 @@ _EOT
 
   # set unix_chkpwd uid
   chmod +s $pkgdir/usr/bin/unix_chkpwd
+  # remove doc which is not used anymore
+  # FS #40749
+  rm $pkgdir/usr/share/doc/Linux-PAM/sag-pam_userdb.html
 }
