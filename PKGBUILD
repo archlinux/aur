@@ -36,9 +36,9 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  chmod 666 "$pkgdir/var/lib/connman/econnman.config"
+
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
-
-  chmod 666 "$pkgdir/var/lib/connman/econnman.config"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS ChangeLog NEWS README
 }
