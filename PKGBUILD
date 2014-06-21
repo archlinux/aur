@@ -1,18 +1,17 @@
 # Maintainer: Ian D. Scott <ian@perebruin.com>
 pkgname=dsmidiwifi-cli
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="DSMI Server with GUI Removed"
 url="http://github.com/ids1024/dsmidiwifi-cli"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('qt5-base' 'alsa-lib')
+depends=('alsa-lib')
 source=("https://github.com/ids1024/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('2c652ebd4d05689621da1a934ee20cc8')
+md5sums=('bf1b79ac3e7cb5f5c32f18f8cc1d436f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake-qt5
   make
 }
 
