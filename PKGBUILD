@@ -1,7 +1,7 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
-pkgname=econnman-git
-_pkgname=${pkgname%-*}
+_pkgname=econnman
+pkgname=$_pkgname-git
 pkgver=1.1.0.r19.g5959946
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
