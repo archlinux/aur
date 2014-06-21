@@ -4,6 +4,7 @@
 # Contributor: Dennis Brendel <buddabrod at gmail dot com>
 # Contributor: Mathias Buren <mathias.buren at gmail dot com>
 # Contributor: Benjamin Mtz (Cruznick) <cruznick at archlinux dot us>
+# Contributor: t3kk3n <corp at hush dot ai>
 
 #TODO: Investigate empty dir - /usr/lib/modules/3.12.9-2-ARCH/
 #TODO: Document and finish automation for patching and config
@@ -13,9 +14,9 @@ _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 
 pkgname=backports-patched
-pkgver=3.14_1
+pkgver=3.15.1_1
 _upver="${pkgver//_/-}"
-pkgrel=6
+pkgrel=7
 pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
 url='https://backports.wiki.kernel.org/index.php/Main_Page'
 arch=('i686' 'x86_64')
@@ -28,7 +29,7 @@ install=backports.install
 source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%-*}/backports-${_upver}.tar.xz")
 # Snapshot:
 #source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-sha256sums=('bb6e5dc5d59c60b7fd053da3b16c0081d7f9de5b539ffc297feb505629f24095')
+sha256sums=('bc1d46b3c74d79868c92df310af3d493e395bf4228cd647879e0e7f11e02a7aa')
 
 # Check for daily pkgver eg. 20370718
 date -d "$pkgver" > /dev/null 2>&1
@@ -83,14 +84,13 @@ cd "${srcdir}/backports-${_upver}"
 patch -p0 <<'EOF'
 --- Makefile.real	2013-07-13 18:50:46.000000000 +0200
 +++ Makefile.real.fixed	2013-07-28 01:52:51.922779881 +0200
-@@ -87,15 +87,6 @@
+@@ -87,14 +87,6 @@
  	@$(MAKE) -C $(KLIB_BUILD) M=$(BACKPORT_PWD)			\
  		INSTALL_MOD_DIR=$(KMODDIR) $(KMODPATH_ARG)		\
  		modules_install
 -	@./scripts/blacklist.sh $(KLIB)/ $(KLIB)/$(KMODDIR)
 -	@./scripts/compress_modules.sh $(KLIB)/$(KMODDIR)
 -	@./scripts/check_depmod.sh
--	@./scripts/backport_firmware_install.sh
 -	@/sbin/depmod -a
 -	@./scripts/update-initramfs.sh $(KLIB)
 -	@echo
@@ -179,10 +179,7 @@ package() {
   #install -d "${pkgdir}"/usr/lib/compat-drivers
   #install scripts/modlib.sh "${pkgdir}"/usr/lib/compat-drivers
 
-  install -d "${pkgdir}"/usr/lib/udev/rules.d
-  install udev/compat_firmware.sh	"${pkgdir}"/usr/lib/udev
-  install udev/50-compat_firmware.rules "${pkgdir}"/usr/lib/udev/rules.d
-
   # Preparation for future
   install -d "${pkgdir}"/etc/makepkg.d/"${pkgname}"/patches
 }
+

@@ -8,11 +8,10 @@ pkgbase = backports-patched
 	arch = x86_64
 	license = GPL
 	makedepends = linux-api-headers
-	makedepends = linux-headers>=4.0
+	makedepends = linux-headers>=3.14
 	depends = linux
 	optdepends = backports-frag+ack: wl-frag+ack patch
 	source = http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v3.15.1/backports-3.15.1-1.tar.xz
-	sha256sums = bc1d46b3c74d79868c92df310af3d493e395bf4228cd647879e0e7f11e02a7aa
 
 pkgname = backports-patched
 
