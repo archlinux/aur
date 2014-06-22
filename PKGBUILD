@@ -1,52 +1,41 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=ctwm-git
-pkgver=3.8.1.12
-pkgrel=2
+pkgver=3.8.2.r167.ga02db82
+pkgrel=1
 pkgdesc="Claude's Tab Window Manager"
 arch=('i686' 'x86_64')		
-url="http://ctwm.free.lp.se/"
+url="http://ctwm.org/"
 license=('custom:MIT/X Consortium')
 provides=('ctwm')
 conflicts=('ctwm')
-depends=('libxmu' 'libxpm' 'libjpeg' 'rplay')
-makedepends=('imake' 'setconf' 'git' 'bison' 'flex')
-backup=('etc/X11/ctwm/system.ctwmrc')
-source=("$pkgname::git+https://github.com/bbidulock/ctwm.git#branch=ctwm.rhialto.cleanup")
-md5sums=('SKIP')
+depends=('libxmu' 'libxpm' 'libjpeg')
+makedepends=('git' 'cmake')
+backup=('usr/lib/X11/twm/system.ctwmrc')
+source=("$pkgname::git+https://github.com/fullermd/ctwm-mirror.git"
+        copyright)
+md5sums=('SKIP'
+         '27dfbec8866ff55e54f6232a2d2d2de8')
 
 pkgver() {
   cd $pkgname
-  git describe --tags --always |sed 's,^[^0-9]*,,;s,-,.,g;s,\.g[a-f0-9]*$,,'
-}
-
-prepare() {
-  cd $pkgname
-  MANWIDTH=80 man ./ctwm.man | cat | sed -n '/COPYRIGHT/,/^$/p;/AUTHORS/,/^$/p' >COPYRIGHT
-  sed -i 's,#include "sounds.h",#include "sound.h",' events.c
+  git describe --long --tags --match 'ctwm-*' | sed -r 's,^ctwm-,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
 build() {
   cd $pkgname
-  setconf Imakefile CONFDIR /etc/X11/ctwm
-  setconf Imakefile PIXMAPDIR /etc/X11/ctwm/pixmaps
-  cat>Imakefile.local<<EOF
-#define USEM4
-#define XPM
-#define JPEG
-#define GNOME
-#define USE_SOUND
-#define USE_GNU_REGEX
-EOF
-  xmkmf
+  mkdir build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
   cd $pkgname
+  cd build
+  sed -e 's,/lib64/,/lib/,g' -i cmake_install.cmake
   make DESTDIR="$pkgdir" install
-  make DESTDIR="$pkgdir" install.man
-  install -Dm0644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  install -Dm0644 "$srcdir/copyright" "$pkgdir/usr/share/licenses/$pkgname/copyright"
 }
 
 # vim:set et sw=2:

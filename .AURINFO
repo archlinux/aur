@@ -13,11 +13,9 @@ pkgbase = ctwm-git
 	depends = libjpeg
 	provides = ctwm
 	conflicts = ctwm
-	backup = usr/lib/X11/twm/system.ctwmrc
 	source = ctwm-git::git+https://github.com/fullermd/ctwm-mirror.git
 	source = copyright
-	md5sums = SKIP
-	md5sums = 27dfbec8866ff55e54f6232a2d2d2de8
+	backup = usr/lib/X11/twm/system.ctwmrc
 
 pkgname = ctwm-git
 
