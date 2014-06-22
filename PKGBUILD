@@ -2,12 +2,12 @@
 
 pkgname=minecraft
 pkgver=latest
-pkgrel=21
-pkgdesc="Minecraft is a game about placing blocks while running from skeletons. Or something like that..."
+pkgrel=23
+pkgdesc="An open-world game whose gameplay revolves around breaking and placing blocks"
 arch=(any)
 license=('custom')
 url="http://www.minecraft.net/"
-depends=('java-runtime' 'xorg-server-utils' 'openal')
+depends=('java-runtime' 'xorg-xrandr' 'ttf-dejavu')
 noextract=('minecraft.jar')
 source=(minecraft http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
          minecraft.desktop minecraft.png minecraft.install LICENSE)
