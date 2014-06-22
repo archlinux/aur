@@ -1,22 +1,22 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 _pkgname=evas_generic_loaders
 pkgname=$_pkgname-git
-pkgver=1.10.99.135.d42fdc4
+pkgver=1.10.99.138.3236aeb
 pkgrel=1
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('GPL2')
-depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg' 'gstreamer0.10')
-makedepends=('git' 'gstreamer0.10-base')
-optdepends=('gstreamer0.10-base-plugins: Video thumbnails'
-            'gstreamer0.10-good-plugins: Video thumbnails'
-            'gstreamer0.10-bad-plugins: Video thumbnails'
-            'gstreamer0.10-ugly-plugins: Video thumbnails'
-            'gstreamer0.10-ffmpeg: Video thumbnails'
+depends=('efl-git' 'poppler' 'libraw' 'libspectre' 'librsvg')
+makedepends=('git')
+optdepends=('gst-plugins-base: Video thumbnails'
+            'gst-plugins-good: Video thumbnails'
+            'gst-plugins-bad: Video thumbnails'
+            'gst-plugins-ugly: Video thumbnails'
+            'gst-libav: Video thumbnails'
             'libreoffice-common: Office document thumbnails')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -42,8 +42,7 @@ build() {
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
   ./autogen.sh \
-    --prefix=/usr \
-    --disable-gstreamer1
+    --prefix=/usr
 
   make
 }
