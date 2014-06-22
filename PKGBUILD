@@ -2,16 +2,15 @@
 
 _pkgbasename=alsa-oss
 pkgname=lib32-${_pkgbasename}
-pkgver=1.0.25
+pkgver=1.0.28
 pkgrel=1
 pkgdesc="OSS compatibility library (32 bit)"
 arch=(x86_64)
 license=('GPL')
 url="http://www.alsa-project.org"
-options=(!libtool)
 depends=('lib32-glibc' 'lib32-alsa-lib' 'alsa-oss')
 source=(ftp://ftp.alsa-project.org/pub/oss-lib/${_pkgbasename}-$pkgver.tar.bz2)
-md5sums=('922ea177db15c72f1b5037181c73f934')
+md5sums=('91f57e8cee1ad4cc956caa8b62ac5d43')
 
 build() {
   cd $srcdir/${_pkgbasename}-$pkgver
