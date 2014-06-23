@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='http://www.ros.org/wiki/ros_comm'
 
 pkgname='ros-indigo-ros-comm'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
