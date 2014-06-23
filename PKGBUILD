@@ -4,7 +4,7 @@ pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
 url='http://xmlrpcpp.sourceforge.net'
 
 pkgname='ros-indigo-xmlrpcpp'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
