@@ -4,10 +4,10 @@ pkgdesc="ROS - Base dependencies and support libraries for ROS."
 url='http://ros.org/wiki/roslib'
 
 pkgname='ros-indigo-roslib'
-pkgver='1.11.1'
-_pkgver_patch=1
+pkgver='1.11.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rospack
@@ -23,20 +23,13 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/roslib/${pkgver}-${_pkgver_patch}
 _dir=roslib
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag}
-        "python.patch")
-md5sums=('SKIP'
-         'a77b0082d8951c13c6693fd87186590a')
+source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
-
-  # Apply patch
-  msg "Patching source code"
-  cd ${srcdir}/${_dir}
-  git apply ${srcdir}/python.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
