@@ -1,8 +1,8 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=d-feet
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://wiki.gnome.org/Apps/DFeet"
@@ -11,7 +11,7 @@ depends=('gtk3' 'python-gobject' 'hicolor-icon-theme')
 makedepends=('python-setuptools' 'intltool' 'itstool' 'pep8-python3')
 install=d-feet.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('e8423feb18fdff9b1465bf8442b78994ba13c12f8fa3b08e6a2f05768b4feee5')
+sha256sums=('6df917fc1c2ef43217fbeea94dc12ecfc2d136cac4c84dac2c89f03dfbca7953')
 
 build() {
   cd $pkgname-$pkgver
