@@ -4,7 +4,7 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='http://ros.org/wiki/rospy'
 
 pkgname='ros-indigo-rospy'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
