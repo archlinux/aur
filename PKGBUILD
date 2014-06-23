@@ -4,10 +4,10 @@ pkgdesc="ROS - Common-Lisp ROS message and service generators."
 url='http://www.ros.org/wiki/roslisp'
 
 pkgname='ros-indigo-genlisp'
-pkgver='0.4.13'
+pkgver='0.4.14'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-genmsg
