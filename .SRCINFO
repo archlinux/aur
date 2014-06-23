@@ -1,0 +1,24 @@
+pkgbase = geeknote-git
+	pkgdesc = Work with Evernote from command line
+	pkgver = r205.192a0c5
+	pkgrel = 1
+	url = http://www.geeknote.me
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = thrift-python2
+	depends = python2-beautifulsoup4
+	depends = python-markdown2
+	depends = python2-sqlalchemy
+	depends = python2-html2text
+	depends = python2-oauth2
+	depends = evernote-sdk-python-git
+	provides = geeknote
+	options = !emptydirs
+	source = geeknote::git://github.com/VitaliyRodnenko/geeknote.git
+	md5sums = SKIP
+
+pkgname = geeknote-git
+
