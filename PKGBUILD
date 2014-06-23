@@ -4,10 +4,10 @@ pkgdesc="ROS - rosmake is a ros dependency aware build tool which can be used to
 url='http://ros.org/wiki/rosmake'
 
 pkgname='ros-indigo-rosmake'
-pkgver='1.11.1'
-_pkgver_patch=1
+pkgver='1.11.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
