@@ -4,10 +4,10 @@ pkgdesc="ROS - roslang is a common package that all ROS client libraries depend 
 url='http://ros.org/wiki/roslang'
 
 pkgname='ros-indigo-roslang'
-pkgver='1.11.1'
-_pkgver_patch=1
+pkgver='1.11.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
