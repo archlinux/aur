@@ -4,10 +4,10 @@ pkgdesc="ROS - roscreate contains a tool that assists in the creation of ROS fil
 url='http://ros.org/wiki/roscreate'
 
 pkgname='ros-indigo-roscreate'
-pkgver='1.11.1'
-_pkgver_patch=1
+pkgver='1.11.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
