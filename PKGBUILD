@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="gscanbus is a little bus scanning, testing and topology visualizing tool for the Linux IEEE1394 subsystem"
 arch=('i686' 'x86_64')
 depends=('libraw1394>=1.2.0' 'gtk2')
-source=(http://download.berlios.de/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/project/gscanbus.berlios/$pkgname-$pkgver.tar.gz)
 md5sums=('086bed2bcfb43f2ae892a12de699630e')
 url="http://gscanbus.berlios.de/"
 license=('GPL')

@@ -8,7 +8,7 @@ pkgbase = gscanbus
 	license = GPL
 	depends = libraw1394>=1.2.0
 	depends = gtk2
-	source = http://download.berlios.de/gscanbus/gscanbus-0.8.tar.gz
+	source = http://downloads.sourceforge.net/project/gscanbus.berlios/gscanbus-0.8.tar.gz
 	md5sums = 086bed2bcfb43f2ae892a12de699630e
 
 pkgname = gscanbus
