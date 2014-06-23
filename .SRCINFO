@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-driver-base
 	pkgdesc = ROS - A framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test.
 	pkgver = 1.6.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/driver_base
 	arch = any
 	license = BSD
@@ -21,7 +21,7 @@ pkgbase = ros-indigo-driver-base
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-self-test
 	depends = ros-indigo-dynamic-reconfigure
-	source = driver_base::git+https://github.com/ros-gbp/driver_common-release.git#tag=release/indigo/driver_base/1.6.8-1
+	source = driver_base::git+https://github.com/ros-gbp/driver_common-release.git#tag=release/indigo/driver_base/1.6.8-2
 	md5sums = SKIP
 
 pkgname = ros-indigo-driver-base

@@ -5,9 +5,9 @@ url='http://www.ros.org/wiki/driver_base'
 
 pkgname='ros-indigo-driver-base'
 pkgver='1.6.8'
-_pkgver_patch=1
+_pkgver_patch=2
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-diagnostic-updater
