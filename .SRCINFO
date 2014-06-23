@@ -1,0 +1,14 @@
+pkgbase = check-manifest
+	pkgdesc = Tool to check the completeness of MANIFEST.in for Python packages.
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://github.com/mgedmin/check-manifest
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/mgedmin/check-manifest/archive/0.20.tar.gz
+	sha1sums = a1f3e0483189eee33e70a3c350444d5384710ab3
+
+pkgname = check-manifest
+
