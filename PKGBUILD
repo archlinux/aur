@@ -2,7 +2,7 @@
 
 pkgname=devkitppc
 pkgver=r27
-pkgrel=1
+pkgrel=2
 pkgdesc='PowerPC toolchain for Nintendo Gamecube/Wii homebrew development'
 arch=('i686' 'x86_64')
 url="http://www.devkitpro.org/"
@@ -21,6 +21,7 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-201
         "http://downloads.sourceforge.net/sourceforge/devkitpro/wiiload-0.5.1.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/elf2dol-1.0.0.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/general-tools-1.0.0.tar.bz2"
+        "devkitppc-skip-libs.patch"
         "devkitppc.sh")
 sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
             'e5e8c5be9664e7f7f96e0d09919110ab5ad597794f5b1809871177a0f0f14137'
@@ -32,14 +33,17 @@ sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
             '95557ecae364d189fb771702af56c1c6f9ee076696046b78e7a2e931974533cc'
             '957bc20fea6a09915504a1a8cf99a36dba0de9427218b9f5e6c021a6f27c7adf'
             '09474dfc1537e1008ee95b1a39a53715b8a740ee5ee37f4376607d6b110343c4'
+            '54c0d89610614a725c4505aed2bc5bab7eb5a6db729cc29878fe98a575b1e831'
             'a7bb9f8050601cf1fad4a8bcb04c2bf24b1d29f93c7dc567ddb7e610388a04a0')
 noextract=('binutils-2.24.tar.bz2' 'gcc-4.8.2.tar.bz2' 'newlib-2.0.0.tar.gz'
            'gdb-7.7.tar.bz2' 'gxtexconv-0.1.9.tar.bz2' 'gcdspsuite-1.4.0.tar.bz2'
            'wiiload-0.5.1.tar.bz2' 'elf2dol-1.0.0.tar.bz2' 'general-tools-1.0.0.tar.bz2')
 
 prepare() {
-  # reset build dir
+  # reset build dir and force reinstalling already built tools
   rm -rf build
+  [ -d buildscripts/.devkitPPC ] && find buildscripts/.devkitPPC \
+    \( -name "installed-*" -o -name "installed" \) -delete
 
   # generate config file for automatic build
   cat << END > buildscripts/config.sh
@@ -51,11 +55,12 @@ BUILD_DKPRO_SRCDIR=$PWD
 BUILD_DKPRO_AUTOMATED=1
 END
 
-  # hack to disable libogc+libfat building
-  tar cjf libogc-src-1.8.12.tar.bz2 buildscripts/README.TXT
-  cp libogc-src-1.8.12.tar.bz2 libfat-src-1.0.12.tar.bz2
-  mkdir -p buildscripts/.devkitPPC/lib{ogc-1.8.12,fat-1.0.12}
-  touch buildscripts/.devkitPPC/lib{ogc-1.8.12,fat-1.0.12}/installed
+  # fix search path to use correct tools
+  sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
+    buildscripts/build-devkit.sh
+
+  # disable building of libogc and libfat, we have seperate packages
+  patch -Np0 < devkitppc-skip-libs.patch
 }
 
 build() {

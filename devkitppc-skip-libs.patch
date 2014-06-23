@@ -1,0 +1,52 @@
+diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
+--- buildscripts.old/build-devkit.sh	2014-04-02 23:16:25.000000000 +0200
++++ buildscripts/build-devkit.sh	2014-06-23 03:17:22.141219993 +0200
+@@ -218,7 +218,7 @@
+ fi
+ 
+ cd "$SRCDIR"
+-for archive in $archives $targetarchives $hostarchives
++for archive in $archives $hostarchives
+ do
+ 	echo $archive
+ 	if [ ! -f $archive ]; then
+@@ -236,16 +236,6 @@
+ extract_and_patch newlib $NEWLIB_VER gz
+ extract_and_patch gdb $GDB_VER bz2
+ 
+-for archive in $targetarchives
+-do
+-	destdir=$(echo $archive | sed -e 's/\(.*\)-src-\(.*\)\.tar\.bz2/\1-\2/' )
+-	echo $destdir
+-	if [ ! -d $destdir ]; then
+-		mkdir -p $destdir
+-		bzip2 -cd "$SRCDIR/$archive" | tar -xf - -C $destdir || { echo "Error extracting "$archive; exit 1; }
+-	fi
+-done
+-
+ for archive in $hostarchives
+ do
+ 	tar -xjf "$SRCDIR/$archive"
+diff -Naur buildscripts.old/dkppc/scripts/build-crtls.sh buildscripts/dkppc/scripts/build-crtls.sh
+--- buildscripts.old/dkppc/scripts/build-crtls.sh	2012-04-04 14:39:28.000000000 +0200
++++ buildscripts/dkppc/scripts/build-crtls.sh	2014-06-23 03:17:56.721643961 +0200
+@@ -14,19 +14,3 @@
+ #---------------------------------------------------------------------------------
+ cp $BUILDSCRIPTDIR/dkppc/rules/* $prefix
+ 
+-cd $BUILDDIR/libogc-$LIBOGC_VER
+-
+-if [ ! -f installed ]; then
+-	echo "Building & installing libogc"
+-	$MAKE install || { echo "libogc install failed"; exit 1; }
+-	touch installed
+-fi
+-
+-cd $BUILDDIR/libfat-$LIBFAT_VER
+-
+-if [ ! -f installed ]; then
+-	echo "Building & installing libfat"
+-	$MAKE ogc-install || { echo "libfat install failed"; exit 1; }
+-	touch installed
+-fi
+-
