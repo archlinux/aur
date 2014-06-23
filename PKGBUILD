@@ -4,10 +4,10 @@ pkgdesc="ROS - visualization_msgs is a set of messages used by higher level pack
 url='http://ros.org/wiki/visualization_msgs'
 
 pkgname='ros-indigo-visualization-msgs'
-pkgver='1.11.3'
-_pkgver_patch=1
+pkgver='1.11.4'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-message-generation
