@@ -4,10 +4,10 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-indigo-mk'
-pkgver='1.11.1'
-_pkgver_patch=1
+pkgver='1.11.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
