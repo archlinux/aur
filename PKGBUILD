@@ -4,10 +4,10 @@ pkgdesc="ROS - This package holds the diagnostic messages which provide the stan
 url='http://ros.org/wiki/diagnostic_msgs'
 
 pkgname='ros-indigo-diagnostic-msgs'
-pkgver='1.11.3'
-_pkgver_patch=1
+pkgver='1.11.4'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-message-generation
