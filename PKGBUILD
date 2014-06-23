@@ -4,10 +4,10 @@ pkgdesc="ROS - This package defines messages for commonly used sensors, includin
 url='http://ros.org/wiki/sensor_msgs'
 
 pkgname='ros-indigo-sensor-msgs'
-pkgver='1.11.3'
-_pkgver_patch=1
+pkgver='1.11.4'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-message-generation
