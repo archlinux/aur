@@ -1,6 +1,6 @@
 pkgbase = python2-requests-git
 	pkgdesc = Python HTTP for Humans.
-	pkgver = 20130206
+	pkgver = v2.3.0.41.gfcb735f
 	pkgrel = 1
 	url = http://python-requests.org
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = python2-requests-git
 	optdepends = python2-simplejson
 	provides = python2-requests
 	conflicts = python2-requests
+	source = requests::git+https://github.com/kennethreitz/requests.git
 	source = certs.patch
+	sha256sums = SKIP
 	sha256sums = 482fc40ba146d2200771a690b3bedf6eddc9c3224d6f7b5ba529124039b07246
 
 pkgname = python2-requests-git

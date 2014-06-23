@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=python2-requests-git
-pkgver=20130206
+pkgver=v2.3.0.41.gfcb735f
 pkgrel=1
 _libname=${pkgname/python2-/}
 pkgdesc="Python HTTP for Humans."
@@ -16,44 +16,40 @@ provides=('python2-requests')
 license=('custom: ISC')
 arch=('any')
 
-source=(certs.patch)
-sha256sums=('482fc40ba146d2200771a690b3bedf6eddc9c3224d6f7b5ba529124039b07246')
+source=('requests::git+https://github.com/kennethreitz/requests.git'
+         certs.patch
+)
+sha256sums=('SKIP'
+            '482fc40ba146d2200771a690b3bedf6eddc9c3224d6f7b5ba529124039b07246'
+)
 
-_gitroot=https://github.com/kennethreitz/requests.git
-_gitname=requests
+pkgver() {
+  cd "$srcdir"/requests
+  git describe --tags | sed 's|-|.|g'
+}
 
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+prepare() {
+  cd "$srcdir"/requests
 
   patch -p0 -i "$srcdir/certs.patch"
   find -type f -exec sed -i '1 s|python$|python2|' {} +
   sed -r 's#(\W|^)requests/cacert\.pem(\W|$)##' -i MANIFEST.in
   rm -f requests/cacert.pem
+
+}
+
+build(){
+  cd "$srcdir"/requests
   python2 setup.py build
 }
 
 check() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir"/requests
   test -f "$(python2 -m requests.certs)"
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir"/requests
   python2 setup.py install --root="$pkgdir"
   install -m0644 -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
