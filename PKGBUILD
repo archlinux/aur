@@ -4,10 +4,10 @@ pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-indigo-rosclean'
-pkgver='1.11.1'
-_pkgver_patch=1
+pkgver='1.11.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
