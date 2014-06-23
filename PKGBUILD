@@ -4,10 +4,10 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='http://www.ros.org/wiki/nodelet_core'
 
 pkgname='ros-indigo-nodelet-core'
-pkgver='1.8.3'
-_pkgver_patch=1
+pkgver='1.9.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
