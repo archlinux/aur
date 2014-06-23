@@ -4,10 +4,10 @@ pkgdesc="ROS - nav_msgs defines the common messages used to interact with the na
 url='http://ros.org/wiki/nav_msgs'
 
 pkgname='ros-indigo-nav-msgs'
-pkgver='1.11.3'
-_pkgver_patch=1
+pkgver='1.11.4'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-message-generation
