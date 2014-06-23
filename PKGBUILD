@@ -4,16 +4,18 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='http://ros.org/wiki/dynamic_reconfigure'
 
 pkgname='ros-indigo-dynamic-reconfigure'
-pkgver='1.5.36'
-_pkgver_patch=1
+pkgver='1.5.37'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-message-generation
-  ros-indigo-catkin
+ros_makedepends=(ros-indigo-roscpp-serialization
   ros-indigo-roscpp
-  ros-indigo-std-msgs)
+  ros-indigo-std-msgs
+  ros-indigo-rostest
+  ros-indigo-catkin
+  ros-indigo-message-generation)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
