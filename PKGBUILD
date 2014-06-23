@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains common nodelet tools such as a mux, demux a
 url='http://ros.org/wiki/nodelet_topic_tools'
 
 pkgname='ros-indigo-nodelet-topic-tools'
-pkgver='1.8.3'
-_pkgver_patch=1
+pkgver='1.9.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-dynamic-reconfigure
