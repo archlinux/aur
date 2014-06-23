@@ -1,6 +1,6 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname=ledmon
-pkgver=20110126
+pkgver=r6.d4b6a09
 pkgrel=1
 pkgdesc="Monitor your keyboard LED [C] (unmaintained)"
 arch=('i686' 'x86_64')
@@ -9,32 +9,21 @@ license=('GPL')
 depends=('libx11')
 makedepends=('git')
 
-_gitroot="https://github.com/jgoerzen/ledmon.git"
-_gitname="ledmon"
+source=('ledmon::git+https://github.com/jgoerzen/ledmon.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir"/ledmon
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd "$srcdir"/ledmon
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir"/ledmon
   install -d "$pkgdir/usr/bin/"
   cp ledmon "$pkgdir/usr/bin/"
 } 
