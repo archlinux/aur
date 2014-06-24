@@ -36,10 +36,6 @@ pkgver() {
   printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  sed -i '/^src_bin_enlightenment_LDADD/ s/$/ -luuid/' "$srcdir/$_pkgname/src/bin/Makefile.mk"
-}
-
 build() {
   cd "$srcdir/$_pkgname"
 
