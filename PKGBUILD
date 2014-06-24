@@ -2,7 +2,7 @@
 # Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 
 pkgname='poppler-minimal'
-pkgver=0.26.0
+pkgver=0.26.2
 pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
@@ -14,7 +14,7 @@ conflicts=("poppler")
 provides=("poppler")
 url="http://poppler.freedesktop.org/"
 source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz)
-sha1sums=('1f5d08ee01683c309688f17116d18bf47b13f001')
+sha1sums=('d4a3a5c2f97217a5de250d53ef810f26ab581673')
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
