@@ -2,7 +2,7 @@
 # Contributor: Joakim Hernberg <jhernberg at alchemy dot lu>
 _pkgbasename=gettext
 pkgname=lib32-$_pkgbasename
-pkgver=0.18.3.2
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="GNU internationalization library (32-bit)"
 arch=('x86_64')
@@ -10,10 +10,9 @@ url="http://www.gnu.org/software/gettext/"
 license=('GPL')
 depends=('lib32-acl' lib32-gcc-libs $_pkgbasename)
 makedepends=(gcc-multilib)
-optdepends=('cvs: for autopoint tool')
 options=(!libtool !docs)
 source=(ftp://ftp.gnu.org/pub/gnu/gettext/${_pkgbasename}-${pkgver}.tar.gz{,.sig})
-md5sums=('241aba309d07aa428252c74b40a818ef'
+md5sums=('8949a57e82abe88274a93174ade515e4'
          'SKIP')
 
 build() {
