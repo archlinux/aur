@@ -1,21 +1,19 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 _pkgname=enlightenment
 pkgname=$_pkgname-wayland-git
-pkgver=0.18.99.18447.90ecf22
+pkgver=0.19.0.18634.437a22c
 pkgrel=1
 pkgdesc="Highly expermimental Enlightenment window manager for Wayland- Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('enlightenment' 'elementary-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
-         'desktop-file-utils' 'udisks2' 'ttf-font')
-  [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
+depends=('enlightenment' 'elementary-git')
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
             'bc: calculator in everything module'
-            'bluez-libs: bluetooth module'
+            'bluez4: bluetooth module'
             'connman: network module'
             'gdb: create backtraces on crash'
             'packagekit: packagekit module')
