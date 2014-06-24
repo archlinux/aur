@@ -1,7 +1,7 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
 pkgname=libtrace
-pkgver=3.0.15
+pkgver=3.0.19
 pkgrel=1
 pkgdesc="libtrace is a library for trace processing"
 arch=(i686 x86_64)
@@ -16,8 +16,12 @@ build() {
 
   ./configure --prefix=/usr
   make || return 1
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
   make DESTDIR="$pkgdir/" install
 }
 
-md5sums=('277125db3f976e03b1b774b5607c890e')
-md5sums=('9bc158307419c36aa2c98f2f030427f1')
+md5sums=('9faf68b140491e88d2f398816ca8a784')
