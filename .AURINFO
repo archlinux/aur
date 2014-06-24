@@ -14,9 +14,8 @@ pkgbase = adwm-git
 	depends = libxpm
 	depends = startup-notification
 	depends = imlib2
-	options = !libtool
 	source = adwm-git::git+https://github.com/bbidulock/adwm
-	md5sums = SKIP
+	options = !libtool
 
 pkgname = adwm-git
 
