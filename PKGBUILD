@@ -49,7 +49,7 @@
 _bldtype=Release
 
 _mozcver=1.15.1785.102
-_utdicver=20140506
+_utdicver=20140623
 _zipcoderel=201404
 _protobuf_ver=2.5.0
 _gyp_rev=1828
@@ -60,7 +60,7 @@ pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
 _patchver=${_mozcver}.1
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
@@ -179,8 +179,8 @@ package() {
 
 sha512sums=('SKIP'
             'SKIP'
-            '5285ed338f66c84d0087c6cb11b5a38e1a7ea635febac8358665085d247cafbe6deaf0d91594aa52e86d0be9af57665cdea5b3176dd04124a0ce81fac968f5d8'
-            'f4bea9c27e61e599664e9218ab1c5e2b864be76034bc1014ffe0c723b2df165a904daaa56e2497cfc55aba3e671144f5c1f93319b5d8df79d70e539b610a94dc'
+            '7d7c9e39bd874a323f033ba9101662f124a2e204ca942cea3ce45a4b8a30c0664431face1fdf78a1c355810fd32a003ce1cfddf8bc5659937ce7f077abaff6a3'
+            'e7b2cc7cc4f22276b350f17bc86333728e80d48ef583ff5e0c3d62b5e4ff923c28791352d189f351f8b9a43485bed7f270912753eed723a888a17fa304f7e50d'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             '10089bcae1ff2ce063cdc04900523f7a2b3c6e386eadf92c7295575688db938d602aa6e94c3401ece229f4023511d0fd5543eb45a09dc6474ed185dbfedf592f'
             '3a868b8f34c6651221db585f3338c9d5ac5c832781fa23f299d6dbe24c8ec1b506e8284c113256330d340fd63e770458ff9212953a290c588ca2f3dab1a706ec'
