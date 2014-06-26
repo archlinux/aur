@@ -10,7 +10,6 @@ pkgbase = wmsystemtray
 	depends = libxfixes
 	depends = libxpm
 	source = http://downloads.sourceforge.net/wmsystemtray/wmsystemtray-1.4.tar.gz
-	md5sums = 5f04edd3989b5030176492943795b6b0
 
 pkgname = wmsystemtray
 
