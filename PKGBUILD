@@ -2,7 +2,7 @@
 
 pkgname=cvs-fast-export
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Export RCS or CVS history as a fastimport stream."
 arch=('i686' 'x86_64')
 depends=('python')
@@ -16,6 +16,7 @@ build() {
   cd ${pkgname}-${pkgver}
 
   make $pkgname{,.1} cvssync.1
+  2to3 -w cvssync
 }
 
 package() {
