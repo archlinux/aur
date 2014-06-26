@@ -2,8 +2,8 @@
 
 pkgname=vimb
 pkgver=2.5
-pkgrel=1
-pkgdesc="Vimb is a WebKit-based web browser"
+pkgrel=2
+pkgdesc="The vim like browser"
 arch=('i686' 'x86_64')
 url="http://fanglingsu.github.io/vimb"
 license=('GPL3')
