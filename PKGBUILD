@@ -4,7 +4,7 @@
 pkgname=cuneiform
 pkgver=1.1.0
 _dpkgver=1.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Linux port of an OCR system developed in Russia. Supports more than 20 languages."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/cuneiform-linux"
