@@ -24,7 +24,7 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15559
+pkgver=15601
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
@@ -43,7 +43,9 @@ install="${_pkgname}.install"
 source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
         'edk2-basetools-fix-vfrcompiler.patch')
 
-for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
+source+=("${_TIANO_DIR_}_BaseTools::svn+https://svn.code.sf.net/p/edk2-buildtools/code/trunk/BaseTools")
+
+for _DIR_ in MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
