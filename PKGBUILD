@@ -1,26 +1,26 @@
 # Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=sienna-git
-pkgver=r51.gba33bd8
+pkgver=1.0b.r0.g57bee5c
 pkgrel=1
 pkgdesc="Simple, fast-paced one-button platformer (development version)"
 arch=('any')
 url="http://tangramgames.dk/games/sienna/"
 license=('CCPL:by-nc' 'CCPL:by-nc-nd' 'zlib')
-depends=('love08')
+depends=('love')
 makedepends=('zip')
 source=("git+https://github.com/SimonLarsen/sienna.git"
         "sienna.sh"
         "sienna.desktop"
         "sienna.png")
 sha256sums=('SKIP'
-            'c8dc5b2fbd8bf30c9632b814fe6577a6ba9618b52b22364ff611e160a73d3b91'
+            'ec57e73af7b9246d865853cf094a18fff548e1a88576f2dee006576c4f7eabe4'
             'd0107f767feeb3228217513c99088799c8a57b79de8574aabdee57fa69d6a22b'
             '4aea1186e5a19c03ab19a5b2ec85a873503b069c123a69b903789806526ba040')
 
 pkgver() {
   cd sienna
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {

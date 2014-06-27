@@ -1,6 +1,6 @@
 pkgbase = sienna-git
 	pkgdesc = Simple, fast-paced one-button platformer (development version)
-	pkgver = r51.gba33bd8
+	pkgver = 1.0b.r0.g57bee5c
 	pkgrel = 1
 	url = http://tangramgames.dk/games/sienna/
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = sienna-git
 	license = CCPL:by-nc-nd
 	license = zlib
 	makedepends = zip
-	depends = love08
+	depends = love
 	source = git+https://github.com/SimonLarsen/sienna.git
 	source = sienna.sh
 	source = sienna.desktop
 	source = sienna.png
 	sha256sums = SKIP
-	sha256sums = c8dc5b2fbd8bf30c9632b814fe6577a6ba9618b52b22364ff611e160a73d3b91
+	sha256sums = ec57e73af7b9246d865853cf094a18fff548e1a88576f2dee006576c4f7eabe4
 	sha256sums = d0107f767feeb3228217513c99088799c8a57b79de8574aabdee57fa69d6a22b
 	sha256sums = 4aea1186e5a19c03ab19a5b2ec85a873503b069c123a69b903789806526ba040
 
