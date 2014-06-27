@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=duckmarines-git
-pkgver=r163.g2a7d589
+pkgver=1.0.rc2.r0.gacafef8
 pkgrel=1
 pkgdesc="Free software remake of Sonic Team's ChuChu Rocket (development version)"
 arch=('any')
@@ -15,12 +15,12 @@ source=("git+https://github.com/SimonLarsen/duckmarines.git"
         "duckmarines.png")
 sha256sums=('SKIP'
             '0023f4949c45a9fdbef807a0295340c01f97d288bd1ce1d78e8c1a5fad0f6045'
-            'f33ca99a1c4c3f165755100e1b797b09bc900245add2b8b342128dd7c875ba6a'
+            '1a7bd7e614f147a117622f42854048c36afe24dad3c9e2e5a3b206b43104bad4'
             'aa5983e79d0677d8dbf2c3c62cad59d9c7af8fa4cd1dcb95321fa44c621c24c8')
 
 pkgver() {
   cd duckmarines
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
