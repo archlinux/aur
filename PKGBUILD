@@ -7,7 +7,7 @@
 
 pkgname=tengine-extra
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -108,5 +108,8 @@ package() {
     install -Dm644 "$srcdir"/service "$pkgdir"/usr/lib/systemd/system/tengine.service
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/tengine/LICENSE
     rmdir "$pkgdir"/run
+
+    install -d "$pkgdir"/usr/share/man/man8/
+    gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
 }
 
