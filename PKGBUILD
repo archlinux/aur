@@ -26,7 +26,7 @@ _COMPILER="GCC48"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=15565
+pkgver=15601
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -42,7 +42,9 @@ provides=("uefi-shell")
 
 install="${_pkgname}.install"
 
-for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
+source=("${_TIANO_DIR_}_BaseTools::svn+https://svn.code.sf.net/p/edk2-buildtools/code/trunk/BaseTools")
+
+for _DIR_ in MdePkg MdeModulePkg ShellPkg ; do
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
