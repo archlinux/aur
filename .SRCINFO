@@ -1,6 +1,6 @@
 pkgbase = easyrpg-editor-qt-git
 	pkgdesc = EasyRPG's Game Editor (QT, development version)
-	pkgver = r279.85dcf89
+	pkgver = r298.98a486d
 	pkgrel = 1
 	url = https://easy-rpg.org/
 	install = easyrpg-editor-qt-git.install

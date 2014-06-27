@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=easyrpg-editor-qt-git
-pkgver=r279.85dcf89
+pkgver=r298.98a486d
 pkgrel=1
 pkgdesc="EasyRPG's Game Editor (QT, development version)"
 arch=('i686' 'x86_64')
@@ -25,16 +25,6 @@ prepare() {
   # set include folder for liblcf and reorder libraries
   sed -e 's|$$PWD/libs/liblcf/src|/usr/include/liblcf|;/liblcf\/generated/d' \
     -e 's|-lexpat -llcf|-llcf -lexpat|' -i EasyRPG-Editor.pro
-  # build fixes for file names (Mariano does not know the difference between
-  # lowercase and uppercase or develops under dos)
-  sed 's|QGraphicsCharaItem.h|qgraphicscharaitem.h|' \
-    -i src/{{dialogcharapicker,tools/qeventpagewidget}.h,tools/QGraphicsCharaItem.cpp}
-  sed 's|QGraphicsFaceItem.h|qgraphicsfaceitem.h|' -i src/dialogfacepicker.h
-  sed 's|QGraphicsMapScene.h|qgraphicsmapscene.h|' -i src/{mainwindow.h,core.cpp}
-  sed 's|DialogEvent.h|dialogEvent.h|' -i src/{dialogEvent,tools/qgraphicsmapscene}.cpp
-  sed 's|ui_qeventpagewidget.h|ui_qeventpageWidget.h|' -i src/tools/qeventpagewidget.cpp
-  sed 's|qgraphicspaletescene.h|QGraphicsPaleteScene.h|' -i src/tools/qgraphicspaletescene.cpp
-  sed 's|ui_QDbPageClasses.h|ui_qdbpageclasses.h|' -i src/tools/qdbpageclasses.cpp
 }
 
 build () {
