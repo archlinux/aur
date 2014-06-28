@@ -15,7 +15,7 @@ makedepends=("python2-setuptools")
 conflicts=('python-soappy<=0.12.0-10')
 replaces=('python-soappy<=0.12.0-10')
 source=("https://pypi.python.org/packages/source/S/SOAPpy/SOAPpy-${pkgver}.zip"
-        "https://raw.githubusercontent.com/kiorky/SOAPpy/develop/LICENSE")
+        "$pkgbase-LICENSE::https://raw.githubusercontent.com/kiorky/SOAPpy/develop/LICENSE")
 md5sums=('7a8d7199af72539d14168dd249a91a64'
          '43f41fd631f225d8cd67eca52f38514f')
 
@@ -31,5 +31,5 @@ package_python2-soappy() {
   cd SOAPpy-${pkgver}
 
   python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ../$pkgbase-LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
