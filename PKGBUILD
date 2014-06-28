@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément de Saint-Marcq <vleclement AT gmail·com>
 _pkgname=arch-luks-suspend
 pkgname=$_pkgname-git
-pkgver=20130528.gdd13c91
+pkgver=20140628.g15420df
 pkgrel=1
 pkgdesc="Lock encrypted root volume on suspend"
 arch=('any')
