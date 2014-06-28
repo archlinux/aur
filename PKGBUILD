@@ -1,6 +1,6 @@
 pkgname=amavisd-new
-pkgver=2.9.0
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -37,7 +37,7 @@ backup=('etc/amavisd/amavisd.conf' 'etc/amavisd/amavisd-custom.conf')
 source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.gz"
         "service"
         "tmpfiles")
-sha256sums=('1604c175843e2c1856cd786a8dce99d257e2bf1093dec3ed82848a4929c87abb'
+sha256sums=('dcb599fef892493f2add7fd50743c51850ed462037525edd5aea2fe2a52f9eb7'
             'b803ac76501a68775395c7f80aed5633b98ea7a851f926e0edb169e4c2e38b24'
             'a7ea2c73f2dbdd7d79bcb06aa950410f8e214afa01629a0717e0a81489441e6d')
 install=install
