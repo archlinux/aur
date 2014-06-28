@@ -1,0 +1,19 @@
+pkgbase = rockbot
+	pkgdesc = Open Source Megaman/Rockman game engine with editor
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://rockbot.upperland.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = qt4
+	source = Rockbot_Source_1.0.1.tar.gz::http://rockbot.upperland.net/?download=1.0.1%20Source%20Code
+	source = rockbot-editor.sh
+	sha256sums = d532274c26a8bb793cdb14ff208de6429a18ff05a2e0c1b15389c3e2297f4a9f
+	sha256sums = 06efaebdd36ef2197385fb8bb62901d5f1fc8b4a1b2d0dc490511833aa9d59b8
+
+pkgname = rockbot
+
