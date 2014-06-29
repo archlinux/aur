@@ -1,0 +1,17 @@
+--- docker/docker.go.orig	2014-06-28 08:46:43.261485969 +0800
++++ docker/docker.go	2014-06-28 08:48:33.424222468 +0800
+@@ -263,9 +263,11 @@
+ 
+ func checkKernelAndArch() error {
+ 	// Check for unsupported architectures
+-	if runtime.GOARCH != "amd64" {
+-		return fmt.Errorf("The Docker runtime currently only supports amd64 (not %s). This will change in the future. Aborting.", runtime.GOARCH)
+-	}
++	/*
++		if runtime.GOARCH != "amd64" {
++			return fmt.Errorf("The Docker runtime currently only supports amd64 (not %s). This will change in the future. Aborting.", runtime.GOARCH)
++		}
++	*/
+ 	// Check for unsupported kernel versions
+ 	// FIXME: it would be cleaner to not test for specific versions, but rather
+ 	// test for specific functionalities.
