@@ -6,52 +6,27 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=212
-pkgrel=3
+pkgver=214
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
              'gtk-doc' 'intltool' 'kmod' 'libcap' 'libgcrypt'  'libmicrohttpd' 'libxslt'
-             'libutil-linux' 'linux-api-headers' 'pam-selinux' 'python' 'python-lxml' 'quota-tools' 'xz'
-             'libselinux')
+             'libutil-linux' 'linux-api-headers' 'pam-selinux' 'python' 'python-lxml' 'quota-tools'
+             'shadow-selinux' 'xz' 'libselinux')
 options=('strip' 'debug')
 source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"
         'initcpio-hook-udev'
         'initcpio-install-systemd'
-        'initcpio-install-udev'
-        '0001-backlight-do-nothing-if-max_brightness-is-0.patch'
-        '0002-reduce-the-amount-of-messages-logged-to-dev-kmsg-whe.patch'
-        '0003-man-reword-Persistent-description.patch'
-        '0004-core-Make-sure-a-stamp-file-exists-for-all-Persisten.patch'
-        )
-md5sums=('257a75fff826ff91cb1ce567091cf270'
+        'initcpio-install-udev')
+md5sums=('eac4f9fc5bd18a0efc3fc20858baacf3'
          '29245f7a240bfba66e2b1783b63b6b40'
          '66cca7318e13eaf37c5b7db2efa69846'
-         'bde43090d4ac0ef048e3eaee8202a407'
-         '4b5d61e30b423ff5a0ec38037146b61b'
-         'd9518fc6cef154ebc76555b0fb9d4412'
-         'c35c7f55d41c0a8b8725785b49ce6440'
-         '2e7aee18c749727c8bbc8db86f17edc0')
-
-prepare() {
-  cd "${pkgname/-selinux}-$pkgver"
-
-  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=3cadce7d33e263ec7a6a83c00c11144930258b22
-  patch -p1 -i "$srcdir/0001-backlight-do-nothing-if-max_brightness-is-0.patch"
-  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=b2103dccb354de3f38c49c14ccb637bdf665e40f
-  patch -p1 -i "$srcdir/0002-reduce-the-amount-of-messages-logged-to-dev-kmsg-whe.patch"
-  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=de41590a9bb370de92e4a1ed933bc6e38abb6787
-  patch -p1 -i "$srcdir/0003-man-reword-Persistent-description.patch"
-  # http://cgit.freedesktop.org/systemd/systemd/commit/?id=472fc28fdade525e700ebf4b25d026a8c907796d
-  patch -p1 -i "$srcdir/0004-core-Make-sure-a-stamp-file-exists-for-all-Persisten.patch"
-}
+         'bde43090d4ac0ef048e3eaee8202a407')
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
-
-  # LTO currently breaks the build because of libtool failures
-  CFLAGS+=' -fno-lto'
 
   ./configure \
       --libexecdir=/usr/lib \
@@ -76,7 +51,7 @@ check() {
 }
 
 package_systemd-selinux() {
-  pkgdesc="system and service manager"
+  pkgdesc="system and service manager with SELinux support"
   license=('GPL2' 'LGPL2.1' 'MIT')
   depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
            'libsystemd-selinux' 'pam-selinux' 'libseccomp'
@@ -102,17 +77,25 @@ package_systemd-selinux() {
           etc/systemd/journald.conf
           etc/systemd/logind.conf
           etc/systemd/system.conf
+          etc/systemd/timesyncd.conf
+          etc/systemd/resolved.conf
           etc/systemd/user.conf
           etc/udev/udev.conf)
   install="systemd.install"
 
   make -C "${pkgname/-selinux}-$pkgver" DESTDIR="$pkgdir" install
 
-  # don't write units to /etc by default -- we'll enable the getty on
-  # post_install as a sane default.
-  rm "$pkgdir/etc/systemd/system/getty.target.wants/getty@tty1.service"
-  rm "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-networkd.service"
-  rmdir "$pkgdir/etc/systemd/system/getty.target.wants"
+  # don't write units to /etc by default. some of these will be re-enabled on
+  # post_install.
+  rm "$pkgdir/etc/systemd/system/getty.target.wants/getty@tty1.service" \
+      "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-networkd.service" \
+      "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-resolved.service" \
+      "$pkgdir/etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service"
+  rmdir "$pkgdir/etc/systemd/system/getty.target.wants" \
+      "$pkgdir/etc/systemd/system/network-online.target.wants"
+
+  # remove the coredump rule until minidumps are a thing.
+  rm "$pkgdir/usr/lib/sysctl.d/50-coredump.conf"
 
   # get rid of RPM macros
   rm -r "$pkgdir/usr/lib/rpm"
@@ -155,7 +138,7 @@ package_systemd-selinux() {
 }
 
 package_libsystemd-selinux() {
-  pkgdesc="systemd client libraries"
+  pkgdesc="systemd client libraries with SELinux support"
   depends=('glib2' 'glibc' 'libgcrypt' 'xz')
   license=('GPL2')
   provides=('libgudev-1.0.so' 'libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
@@ -167,7 +150,7 @@ package_libsystemd-selinux() {
 }
 
 package_systemd-sysvcompat-selinux() {
-  pkgdesc="sysvinit compat for systemd"
+  pkgdesc="sysvinit compat for systemd with SELinux support"
   license=('GPL2')
   conflicts=('sysvinit' "${pkgname/-selinux}" 'selinux-systemd-sysvcompat')
   depends=('systemd-selinux')
@@ -187,7 +170,7 @@ package_systemd-sysvcompat-selinux() {
 
 workaround_for_the_aur_webinterface='
 pkgname="systemd-selinux"
-pkgdesc="System and service manager"
+pkgdesc="System and service manager with SELinux support"
 depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
          'libsystemd-selinux' 'pam-selinux' 'libseccomp' 'libutil-linux-selinux'
          'util-linux-selinux' 'xz' 'libselinux')

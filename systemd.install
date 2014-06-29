@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 sd_booted() {
-  [ -d /run/systemd/system ]
+  [[ -d run/systemd/system ]]
 }
 
 add_privs() {
@@ -13,13 +13,13 @@ add_privs() {
 
 add_journal_acls() {
   # ignore errors, since the filesystem might not support ACLs
-  setfacl -Rnm g:wheel:rx,d:g:wheel:rx,g:adm:rx,d:g:adm:rx /var/log/journal/ 2>/dev/null
+  setfacl -Rnm g:wheel:rx,d:g:wheel:rx,g:adm:rx,d:g:adm:rx var/log/journal/ 2>/dev/null
   :
 }
 
 maybe_reexec() {
   # don't reexec on 209-1 upgrade due to large infrastructural changes.
-  if [ "$(vercmp 209-1 "$2")" -eq 1 ]; then
+  if [[ $(vercmp 209-1 "$2") -eq 1 ]]; then
     echo ':: systemd has not been reexecuted. It is recommended that you'
     echo '   reboot at your earliest convenience.'
     return
@@ -32,32 +32,47 @@ maybe_reexec() {
 
 _dir_empty() {
   set -- "$1"/*
-  [ ! -e "$1" ] && [ ! -L "$1" ]
+  [[ ! -e $1  && ! -L $1 ]]
 }
 
 post_common() {
   systemd-machine-id-setup
 
-  add_privs usr/bin/systemd-detect-virt 'cap_dac_override,cap_sys_ptrace+ep'
-
   udevadm hwdb --update
   journalctl --update-catalog
 }
 
-_208_changes() {
-  chown root:systemd-journal var/log/journal
-  chmod 2755 var/log/journal
+_204_1_changes() {
+  printf '==> The /bin/systemd symlink has been removed. Any references in your\n'
+  printf '    bootloader (or elsewhere) must be updated to /usr/lib/systemd/systemd.\n'
+}
 
-  if [ -e var/lib/backlight ] && [ ! -e var/lib/systemd/backlight ]; then
+_205_1_changes() {
+  printf '==> systemd 205 restructures the cgroup hierarchy and changes internal\n'
+  printf '    protocols. You should reboot at your earliest convenience.\n'
+}
+
+_206_1_changes() {
+  printf '==> The "timestamp" hook for mkinitcpio no longer exists. If you used\n'
+  printf '    this hook, you must remove it from /etc/mkinitcpio.conf. A "systemd"\n'
+  printf '    hook has been added which provides this functionality, and more.\n'
+}
+
+_208_1_changes() {
+  if [[ -e var/lib/backlight && ! -e var/lib/systemd/backlight ]]; then
     mv -T var/lib/backlight var/lib/systemd/backlight
   fi
 
-  if [ -e var/lib/random-seed ] && [ ! -e var/lib/systemd/random-seed ]; then
+  if [[ -e var/lib/random-seed && ! -e var/lib/systemd/random-seed ]]; then
     mv -T var/lib/random-seed var/lib/systemd/random-seed
   fi
 }
 
-_209_changes() {
+_208_8_changes() {
+  add_journal_acls
+}
+
+_209_1_changes() {
   # attempt to preserve existing behavior
 
   local old_rule=etc/udev/rules.d/80-net-name-slot.rules
@@ -81,7 +96,7 @@ _209_changes() {
   fi
 }
 
-_210_changes() {
+_210_1_changes() {
   if sd_booted; then
     # If /etc/systemd/network is non-empty, then this is a 209 user who used
     # networkd. Re-enable it for them.
@@ -89,6 +104,37 @@ _210_changes() {
       systemctl enable systemd-networkd
     fi
   fi
+}
+
+_213_4_changes() {
+  if sd_booted; then
+    # if /etc/resolv.conf is a symlink, just assume that it was being managed
+    # by systemd-networkd, and re-enable systemd-resolved.
+    if [[ -L etc/resolv.conf ]]; then
+      systemctl enable systemd-resolved
+    fi
+  fi
+}
+
+_214_2_changes() {
+  # /run/systemd/network/resolv.conf -> /run/systemd/resolve/resolv.conf
+  if [[ etc/resolv.conf -ef run/systemd/network/resolv.conf ]]; then
+    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+
+    if sd_booted; then
+      if [[ ! -d run/systemd/resolve ]]; then
+        mkdir run/systemd/resolve
+      fi
+
+      if [[ -f run/systemd/network/resolv.conf ]]; then
+        mv run/systemd/{network,resolve}/resolv.conf
+      fi
+    fi
+  fi
+
+  echo ':: coredumps are no longer sent to the journal by default. To re-enable:'
+  echo '   echo >/etc/sysctl.d/50-coredump.conf \'
+  echo '       "kernel.core_pattern=|/usr/lib/systemd/systemd-coredump %p %u %g %s %t %e"'
 }
 
 post_install() {
@@ -108,37 +154,21 @@ post_upgrade() {
 
   maybe_reexec "$@"
 
-  if [ "$(vercmp 204-1 "$2")" -eq 1 ]; then
-    printf '==> The /bin/systemd symlink has been removed. Any references in your\n'
-    printf '    bootloader (or elsewhere) must be updated to /usr/lib/systemd/systemd.\n'
-  fi
+  local v upgrades=(204-1
+                    205-1
+                    206-1
+                    208-1
+                    208-8
+                    209-1
+                    210-1
+                    213-4
+                    214-2)
 
-  if [ "$(vercmp 205-1 "$2")" -eq 1 ]; then
-    printf '==> systemd 205 restructures the cgroup hierarchy and changes internal\n'
-    printf '    protocols. You should reboot at your earliest convenience.\n'
-  fi
-
-  if [ "$(vercmp 206-1 "$2")" -eq 1 ]; then
-    printf '==> The "timestamp" hook for mkinitcpio no longer exists. If you used\n'
-    printf '    this hook, you must remove it from /etc/mkinitcpio.conf. A "systemd"\n'
-    printf '    hook has been added which provides this functionality, and more.\n'
-  fi
-
-  if [ "$(vercmp 208-1 "$2")" -eq 1 ]; then
-    _208_changes
-  fi
-
-  if [ "$(vercmp 208-8 "$2")" -eq 1 ]; then
-    add_journal_acls
-  fi
-
-  if [ "$(vercmp 209-1 "$2")" -eq 1 ]; then
-    _209_changes
-  fi
-
-  if [ "$(vercmp 210-1 "$2")" -eq 1 ]; then
-    _210_changes
-  fi
+  for v in "${upgrades[@]}"; do
+    if [[ $(vercmp "$v" "$2") -eq 1 ]]; then
+      "_${v//-/_}_changes"
+    fi
+  done
 }
 
 # vim:set ts=2 sw=2 et:
