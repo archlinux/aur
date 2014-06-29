@@ -4,7 +4,7 @@
 pkgname=sfml
 _commit=4a300547f3
 pkgver=2.1.0.$_commit
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
 url='http://www.sfml-dev.org/'
@@ -23,6 +23,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DSFML_BUILD_EXAMPLES=1 \
       -DSFML_BUILD_DOC=1 \
+      -DSFML_INSTALL_PKGCONFIG_FILES=1 \
       -DCMAKE_CXX_FLAGS="-DGLXContextID=XID $CXXFLAGS"
   make
   make doc
