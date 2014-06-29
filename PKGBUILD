@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=gigalomania
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
 pkgdesc="2D real time strategy game that is a clone of Mega-Lo-Mania"
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ url="http://homepage.ntlworld.com/mark.harman/comp_gigalomania.html"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer')
 source=(http://launchpad.net/gigalomania/trunk/${pkgver}/+download/gigalomaniasrc.zip)
-md5sums=('db2320188a13212f5d55c657ddeacf74')
-sha256sums=('198c4fc41341cc7e408c3b942600cecdce4d5913903ac1ab0071393837c3c60b')
-sha384sums=('b3ed36ade53e65dfcb4660604f20687d776605b94cefdfd3efeac8ede848b601813d4e6eb3b7c8e1df415d16a0417e20')
-sha512sums=('8838e4f1eb44f8c51966854e5235adee0b39ee3bc41af72dbdc077d7297990ac09ce84e746d03088e329c1ca8e94c91892f05efb208d8ebf1261494b45ccc4b2')
+md5sums=('d537c8206e85a02750253243b592f422')
+sha256sums=('8912b12aa6397f396954c6b742a1842f6bc671a60c843975b341fc22d3211ecf')
+sha384sums=('d59627a15d6f4e5eca81e86b4c62fb5e8b0534a694c26571b951c5b4b976bfded9fea4268ac8028d5840f9bffd427b8a')
+sha512sums=('e956c7f6b5a05db238959f879f8f043c07d1a51300a23992290c1561d3e4904cf106fa55e1230ebfea86acd9e8def3ccd4dfb0045bb1bbfc9b0e8be822951e85')
 
 build() {
   cd ${srcdir}/${pkgname}src
