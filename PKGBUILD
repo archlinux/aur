@@ -15,7 +15,7 @@
 #
 
 pkgname=ceph-git
-pkgver=0.80.693.g3b884be
+pkgver=0.82.354.g62027ec
 pkgrel=1
 epoch=1
 pkgdesc='Distributed, fault-tolerant file system delivering object, block, and file storage in one unified system.'
