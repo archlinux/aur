@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 _pkgname=jbig2enc
 pkgname=$_pkgname-git
-pkgver=0.28.2.gf6a5c48
+pkgver=0.28.9.g0693dcd
 pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
