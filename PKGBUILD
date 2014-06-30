@@ -4,7 +4,7 @@
 
 pkgname=unoconv
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Libreoffice-based document converter"
 depends=('python' 'libreoffice-common')
 makedepends=('asciidoc')
