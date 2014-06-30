@@ -1,6 +1,6 @@
 pkgbase = gcc-multilib-x32
 	pkgdesc = The GNU Compiler Collection for multilib with x32 ABI support
-	pkgver = 4.9.0_4
+	pkgver = 4.9.0_5
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = x86_64
@@ -20,19 +20,21 @@ pkgbase = gcc-multilib-x32
 	options = !emptydirs
 	source = ftp://gcc.gnu.org/pub/gcc/snapshots/4.9-20140604/gcc-4.9-20140604.tar.bz2
 	source = gcc-4.8-filename-output.patch
+	source = gcc-4.9-isl-0.13-hack.patch
 	md5sums = 57aa4ff81c56262dc89994853c4d0149
 	md5sums = 40cb437805e2f7a006aa0d0c3098ab0f
+	md5sums = f26ae06b9cbc8abe86f5ee4dc5737da8
 
 pkgname = gcc-multilib-x32
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support
 	install = gcc.install
 	groups = x32-devel
-	depends = gcc-libs-multilib-x32=4.9.0_4-1
+	depends = gcc-libs-multilib-x32=4.9.0_5-1
 	depends = binutils>=2.24
 	depends = libmpc
 	depends = cloog
-	provides = gcc=4.9.0-4
-	provides = gcc-multilib=4.9.0-4
+	provides = gcc=4.9.0-5
+	provides = gcc-multilib=4.9.0-5
 	conflicts = gcc
 	conflicts = gcc-x32-seed
 	conflicts = gcc-multilib
@@ -42,10 +44,10 @@ pkgname = gcc-libs-multilib-x32
 	pkgdesc = Runtime libraries shipped by GCC for multilib with x32 ABI support
 	install = gcc-libs.install
 	depends = glibc>=2.19
-	depends = lib32-gcc-libs=4.9.0-4
-	depends = libx32-gcc-libs=4.9.0_4-1
-	provides = gcc-libs=4.9.0-4
-	provides = gcc-libs-multilib=4.9.0-4
+	depends = lib32-gcc-libs=4.9.0-5
+	depends = libx32-gcc-libs=4.9.0_5-1
+	provides = gcc-libs=4.9.0-5
+	provides = gcc-libs-multilib=4.9.0-5
 	conflicts = gcc-libs
 	options = !emptydirs
 
@@ -57,26 +59,26 @@ pkgname = libx32-gcc-libs
 pkgname = gcc-fortran-multilib-x32
 	pkgdesc = Fortran front-end for GCC for multilib with x32 ABI support
 	install = gcc-fortran.install
-	depends = gcc-multilib-x32=4.9.0_4-1
-	provides = gcc-fortran=4.9.0-4
-	provides = gcc-fortran-multilib=4.9.0-4
+	depends = gcc-multilib-x32=4.9.0_5-1
+	provides = gcc-fortran=4.9.0-5
+	provides = gcc-fortran-multilib=4.9.0-5
 	conflicts = gcc-fortran
 	options = staticlibs
 	options = !emptydirs
 
 pkgname = gcc-objc-multilib-x32
 	pkgdesc = Objective-C front-end for GCC for multilib with x32 ABI support
-	depends = gcc-multilib-x32=4.9.0_4-1
-	provides = gcc-objc=4.9.0-4
-	provides = gcc-objc-multilib=4.9.0-4
+	depends = gcc-multilib-x32=4.9.0_5-1
+	provides = gcc-objc=4.9.0-5
+	provides = gcc-objc-multilib=4.9.0-5
 	conflicts = gcc-objc
 
 pkgname = gcc-ada-multilib-x32
 	pkgdesc = Ada front-end for GCC (GNAT) for multilib with x32 ABI support
 	install = gcc-ada.install
-	depends = gcc-multilib-x32=4.9.0_4-1
-	provides = gcc-ada=4.9.0-4
-	provides = gcc-ada-multilib=4.9.0-4
+	depends = gcc-multilib-x32=4.9.0_5-1
+	provides = gcc-ada=4.9.0-5
+	provides = gcc-ada-multilib=4.9.0-5
 	conflicts = gcc-ada
 	options = staticlibs
 	options = !emptydirs
@@ -84,9 +86,9 @@ pkgname = gcc-ada-multilib-x32
 pkgname = gcc-go-multilib-x32
 	pkgdesc = Go front-end for GCC for multilib with x32 ABI support
 	install = gcc-go.install
-	depends = gcc-multilib-x32=4.9.0_4-1
-	provides = gcc-go=4.9.0-4
-	provides = gcc-go-multilib=4.9.0-4
+	depends = gcc-multilib-x32=4.9.0_5-1
+	provides = gcc-go=4.9.0-5
+	provides = gcc-go-multilib=4.9.0-5
 	conflicts = gcc-go
 	options = staticlibs
 	options = !emptydirs
