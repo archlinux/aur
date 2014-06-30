@@ -2,7 +2,7 @@
 
 pkgname=gnu-netcat
 pkgver=0.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU rewrite of netcat, the network piping application"
 depends=('glibc' 'texinfo')
 arch=('i686' 'x86_64')
