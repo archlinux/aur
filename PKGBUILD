@@ -1,6 +1,6 @@
 # Maintainer: thorsten w. <p@thorsten-wissmann.de>
 pkgname=herbstluftwm-git
-pkgver=v0.6.2.19.g68aa44a
+pkgver=v0.6.2.29.ge32dfc1
 pkgrel=1
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
@@ -15,7 +15,8 @@ optdepends=(
         'dzen2-xft-xpm-xinerama-svn: view icons as tags'
     )
 makedepends=( git asciidoc )
-provides=( )
+provides=( herbstluftwm )
+conflicts=( herbstluftwm )
 backup=( )
 source=("git://git.informatik.uni-erlangen.de/re06huxa/herbstluftwm")
 md5sums=( SKIP )
