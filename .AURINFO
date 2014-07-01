@@ -1,0 +1,12 @@
+pkgbase = xcursor-archcursorblue
+	pkgdesc = ArchLinux cursor theme for X
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://xfce-look.org/content/show.php/Arch+Cursor+Theme+%28simple%29?content=135902
+	arch = any
+	license = GPL
+	source = http://xfce-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz
+	noextract = 135902-ArchCursorTheme.tar.gz
+
+pkgname = xcursor-archcursorblue
+
