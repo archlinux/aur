@@ -3,7 +3,7 @@
 
 pkgname=dbus-sharp-glib
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="C# GLib implementation of D-Bus"
 arch=('any')
 url="http://github.com/mono/dbus-sharp/"
