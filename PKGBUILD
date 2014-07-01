@@ -2,7 +2,7 @@
 
 pkgname=libepc
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy Publish and Consume Library"
 arch=(i686 x86_64)
 license=('LGPL')
