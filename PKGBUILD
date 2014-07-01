@@ -2,7 +2,7 @@
 
 pkgname=libcroco
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A CSS parsing library"
 arch=('x86_64' 'i686')
 depends=('glib2' 'libxml2')
