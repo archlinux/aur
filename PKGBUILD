@@ -2,7 +2,7 @@
 
 pkgname=sbxkb
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple tray XKB indicator"
 arch=('i686' 'x86_64')
 license=('GPL2')
