@@ -1,7 +1,7 @@
 pkgbase = xcursor-base
 	pkgdesc = Subtle xcursor themes
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://customize.org/xcursors/34799
 	arch = any
 	license = GPL3
