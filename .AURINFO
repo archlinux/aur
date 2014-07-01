@@ -14,7 +14,6 @@ pkgbase = xplanetfx
 	optdepends = libnotify: status messages
 	optdepends = acpi: check battery state before rendering
 	source = http://repository.mein-neues-blog.de:9000/archive/xplanetfx-2.5.30_all.tar.gz
-	md5sums = 1fed9050155ca1c8aad1a508323666c0
 
 pkgname = xplanetfx
 
