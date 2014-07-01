@@ -3,7 +3,7 @@
 
 pkgname=pidgin-kwallet
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="KWallet plugin for Pidgin"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/Pidgin+KWallet+Plugin?content=127136"
