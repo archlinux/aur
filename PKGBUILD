@@ -3,7 +3,7 @@
 
 pkgname=osdlyrics
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A lyric show compatible with various media players"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/osd-lyrics/"
@@ -15,16 +15,14 @@ install=$pkgname.install
 source=("http://osd-lyrics.googlecode.com/files/$pkgname-$pkgver.tar.gz")
 md5sums=('a14a3fbfe07eb7137074126db63b9aa2')
 
-build()
-{
-    cd "$srcdir/$pkgname-$pkgver"
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
 
-    ./configure --prefix=/usr
-    make
+  ./configure --prefix=/usr
+  make
 }
 
-package()
-{
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
