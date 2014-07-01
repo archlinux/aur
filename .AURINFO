@@ -6,7 +6,6 @@ pkgbase = xcursor-base
 	arch = any
 	license = GPL3
 	source = http://archive.customize.org/files/xcursors/BASE0-3.tar.bz2
-	md5sums = b34f8ef3ac08b29174ddc244d74a25cf
 
 pkgname = xcursor-base
 
