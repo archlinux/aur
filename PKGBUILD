@@ -26,7 +26,7 @@ _COMPILER="GCC48"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=15601
+pkgver=15613
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -38,7 +38,7 @@ makedepends=('subversion' 'python2')
 options=('!strip' '!makeflags')
 
 conflicts=('uefi-shell')
-provides=("uefi-shell")
+provides=("uefi-shell=${pkgver}")
 
 install="${_pkgname}.install"
 
