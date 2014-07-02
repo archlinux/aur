@@ -1,20 +1,20 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
-pkgname=epour-git
-_pkgname=${pkgname%-*}
-pkgver=0.5.2.0.r10.gfcb3922
+_pkgname=epour
+pkgname=$_pkgname-git
+pkgver=0.5.2.0.r24.gab1d793
 pkgrel=1
 pkgdesc="Torrent client based on EFL"
 arch=('any')
 url="http://www.enlightenment.org"
-license=('GPL3' 'MIT')
+license=('GPL3')
 depends=('python2-efl' 'libtorrent' 'hicolor-icon-theme')
 makedepends=('git' 'python2-distutils-extra')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install=$_pkgname.install
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -34,9 +34,6 @@ package() {
   python2 setup.py install --root="$pkgdir"
 
 # install text files
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
-
-# install license files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  install -Dm644 epour/gui/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" README AUTHORS
 }
