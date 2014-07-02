@@ -1,10 +1,10 @@
 # CPAN Name  : Clipboard
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.19
+# Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname=perl-clipboard
 pkgver=0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl clipboard module"
 arch=("any")
 url="http://search.cpan.org/dist/Clipboard"

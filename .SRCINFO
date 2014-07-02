@@ -1,7 +1,7 @@
 pkgbase = perl-clipboard
 	pkgdesc = Perl clipboard module
 	pkgver = 0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Clipboard
 	arch = any
 	license = PerlArtistic
