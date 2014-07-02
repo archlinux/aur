@@ -1,7 +1,7 @@
 pkgbase = xqproxy
-	pkgdesc = XDCMP query proxy
+	pkgdesc = XDMCP query proxy
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cgit.freedesktop.org/xqproxy
 	arch = i686
 	arch = x86_64
