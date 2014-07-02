@@ -1,4 +1,4 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=epour
 pkgver=0.5.2.0
@@ -11,7 +11,7 @@ depends=('python2-efl' 'libtorrent' 'hicolor-icon-theme')
 makedepends=('git' 'python2-distutils-extra')
 install=$pkgname.install
 source=("git://git.enlightenment.org/apps/$pkgname.git#tag=epour-$pkgver")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -22,9 +22,9 @@ prepare() {
 package() {
   cd "$srcdir/$pkgname"
 
-  python2 setup.py install --root="$pkgdir"
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
 # install text files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS README
 }

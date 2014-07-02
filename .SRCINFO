@@ -12,7 +12,7 @@ pkgbase = epour
 	depends = libtorrent
 	depends = hicolor-icon-theme
 	source = git://git.enlightenment.org/apps/epour.git#tag=epour-0.5.2.0
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = epour
 
