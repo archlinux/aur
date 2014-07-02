@@ -1,0 +1,17 @@
+pkgbase = lib32-smpeg2
+	pkgdesc = SDL2 MPEG Player Library (32 bit)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://icculus.org/smpeg/
+	arch = x86_64
+	license = LGPL
+	makedepends = svn
+	depends = smpeg2=1:2.0.0
+	depends = bash
+	depends = lib32-sdl2
+	depends = lib32-gcc-libs
+	source = lib32-smpeg2-2.0.0::svn://svn.icculus.org/smpeg/tags/release_2_0_0
+	md5sums = SKIP
+
+pkgname = lib32-smpeg2
+
