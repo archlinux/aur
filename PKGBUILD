@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=17.0
+pkgver=17.1
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
@@ -24,8 +24,8 @@ source=("http://www.erlang.org/download/otp_src_$pkgver.tar.gz"
         'epmd.service'
         'epmd.socket'
         'epmd.conf')
-sha256sums=('297f2baaa65e5ed1c2492c500fe191bff852217ad57af5da2470a3218c9acadb'
-            'acf72b5876c6f505191a3fb57b7e672733f911141929c4cef050111cf8f8b399'
+sha256sums=('b806f5b2b5cc2d0c0d5dd1a65657c21c10dc3a0535ef60adecdac9cd73b9c356'
+            '4a230277f135e3730593e7bffdd5ca92596568340f02a5b3134f1d083b34eaab'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2')
