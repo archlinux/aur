@@ -2,7 +2,7 @@
 
 _pkgname=epour
 pkgname=$_pkgname-git
-pkgver=0.5.2.0.r24.gab1d793
+pkgver=0.5.2.0.r25.gab89f1a
 pkgrel=1
 pkgdesc="Torrent client based on EFL"
 arch=('any')
@@ -22,16 +22,10 @@ pkgver() {
   git describe --tags --long | awk -F '-' '{print $2 ".r" $3 "." $4}'
 }
 
-prepare() {
-  cd "$srcdir/$_pkgname"
-
-  sed -i 's/env python$/&2/' bin/epour epour/*.py epour/gui/*.py
-}
-
 package() {
   cd "$srcdir/$_pkgname"
 
-  python2 setup.py install --root="$pkgdir"
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
