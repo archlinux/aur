@@ -1,0 +1,46 @@
+--- a/makefile	2007-11-06 08:42:45.000000000 -0200
++++ b/makefile	2011-06-07 06:29:49.535149047 -0300
+@@ -4,7 +4,7 @@
+ #
+ # Change these if you want to install somewhere else.
+ 
+-INSTALL_PLUGINS_DIR	=	/usr/lib/ladspa/
++INSTALL_PLUGINS_DIR	=	/usr/lib32/ladspa/
+ INSTALL_INCLUDE_DIR	=	/usr/include/
+ INSTALL_BINARY_DIR	=	/usr/bin/
+ 
+@@ -14,7 +14,7 @@
+ #
+ 
+ INCLUDES	=	-I.
+-LIBRARIES	=	-ldl -lm
+-CFLAGS		=	$(INCLUDES) -Wall -Werror -O3 -fPIC
++LIBRARIES	=	-ldl -lm -L/usr/lib32
++CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC
+ CXXFLAGS	=	$(CFLAGS)
+ PLUGINS		=	../plugins/amp.so				\
+@@ -25,8 +25,9 @@
+ PROGRAMS	=	../bin/analyseplugin				\
+ 			../bin/applyplugin 				\
+ 			../bin/listplugins
+-CC		=	cc
+-CPP		=	c++
++CC		=	gcc -m32
++CPP		=	g++ -m32
++LD		=	ld -m elf_i386
+ 
+ ###############################################################################
+ #
+@@ -59,9 +60,9 @@
+ 	@echo Test complete.
+ 
+ install:	targets
+-	-mkdirhier $(INSTALL_PLUGINS_DIR)
+-	-mkdirhier $(INSTALL_INCLUDE_DIR)
+-	-mkdirhier $(INSTALL_BINARY_DIR)
++	-mkdir -p $(INSTALL_PLUGINS_DIR)
++	-mkdir -p $(INSTALL_INCLUDE_DIR)
++	-mkdir -p $(INSTALL_BINARY_DIR)
+ 	cp ../plugins/* $(INSTALL_PLUGINS_DIR)
+ 	cp ladspa.h $(INSTALL_INCLUDE_DIR)
+ 	cp ../bin/* $(INSTALL_BINARY_DIR)

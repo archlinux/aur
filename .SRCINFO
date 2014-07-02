@@ -1,0 +1,19 @@
+pkgbase = lib32-ladspa
+	pkgdesc = Linux Audio Developer's Simple Plugin API (LADSPA) (32 bit)
+	pkgver = 1.13
+	pkgrel = 5
+	url = http://www.ladspa.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = lib32-gcc-libs
+	depends = ladspa=1.13
+	source = http://www.ladspa.org/download/ladspa_sdk_1.13.tgz
+	source = hardcode-path.patch
+	source = fix-lib32-makefile.patch
+	sha256sums = b5ed3f4f253a0f6c1b7a1f4b8cf62376ca9f51d999650dd822650c43852d306b
+	sha256sums = 48f438b4d688038a3e7216dd48500447b783b4f4c9ba8de5ee401f8b09b4ffd8
+	sha256sums = 998a18030ca3cf2e24a0aae0e7abc53cae1ae2a520c7c92aedc018a60e8251cb
+
+pkgname = lib32-ladspa
+
