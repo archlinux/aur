@@ -3,7 +3,7 @@
 
 pkgname=xfwm4-themes
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of additional themes for the Xfce window manager"
 arch=('any')
 url="http://www.xfce.org/"
@@ -20,8 +20,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static
+    --localstatedir=/var
   make
 }
 
