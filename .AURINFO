@@ -18,7 +18,6 @@ pkgbase = xdg-launch-git
 	provides = xdg-launch
 	conflicts = xdg-launch
 	source = xdg-launch-git::git+https://github.com/bbidulock/xdg-launch
-	md5sums = SKIP
 
 pkgname = xdg-launch-git
 
