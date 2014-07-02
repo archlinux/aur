@@ -24,7 +24,7 @@ _OPENSSL_VERSION="0.9.8w"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15601
+pkgver=15613
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
@@ -36,12 +36,11 @@ makedepends=('subversion' 'python2' 'iasl')
 options=('!strip' 'docs' '!makeflags')
 
 conflicts=('ovmf' 'ovmf-tianocore-edk2' 'ovmf-tianocore-edk2-svn')
-provides=('ovmf' 'ovmf-tianocore-edk2' 'ovmf-tianocore-edk2-svn')
+provides=("ovmf=${pkgver}" "ovmf-tianocore-edk2=${pkgver}" "ovmf-tianocore-edk2-svn=${pkgver}")
 
 install="${_pkgname}.install"
 
-source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
-        'edk2-basetools-fix-vfrcompiler.patch')
+source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 source+=("${_TIANO_DIR_}_BaseTools::svn+https://svn.code.sf.net/p/edk2-buildtools/code/trunk/BaseTools")
 
@@ -54,7 +53,6 @@ for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellP
 done
 
 sha1sums=('6dd276534f87aaca4bee679537fef3aaa6b43069'
-          '63a8b1e9ac54035ffc98f5c61ea3b71361a5634e'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -118,10 +116,6 @@ _prepare_tianocore_sources() {
 	rm -rf "${_UDK_DIR}/Conf/" || true
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
-	
-	msg "Fix EDK2 Basetools VfrCompiler issue"
-	patch -Np1 --binary -i "${srcdir}/edk2-basetools-fix-vfrcompiler.patch" || true
-	echo
 	
 	msg "Use python2 for UDK BaseTools"
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
