@@ -1,0 +1,15 @@
+pkgbase = lib32-libwebp
+	pkgdesc = WebP library (32 bit)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://developers.google.com/speed/webp/
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-multilib
+	depends = libwebp=0.4.0
+	depends = lib32-glibc
+	source = http://webp.googlecode.com/files/libwebp-0.4.0.tar.gz
+	sha256sums = 31913577e96386556855b41d210736449445fe96cfbe9289014e9b8afa944d69
+
+pkgname = lib32-libwebp
+
