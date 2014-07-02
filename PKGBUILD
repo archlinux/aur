@@ -1,9 +1,9 @@
 # Maintainer: schalox <schalox at gmail dot com>
 # Contributor: Simon Zimmermann <simon@insmo.com>
-# Contributor: Jon Yamokoski <jon.yamokoski@startmail.com>
+# Contributor: Jon Yamokoski <code@jonyamo.us>
 
 pkgname=pass-git
-pkgver=20140527.323
+pkgver=20140701.337
 pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 url='http://www.passwordstore.org/'
