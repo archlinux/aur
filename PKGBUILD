@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xqproxy-git
 pkgver=0.1.2.r0.g5e21d36
-pkgrel=1
-pkgdesc="XDCMP query proxy"
+pkgrel=2
+pkgdesc="XDMCP query proxy"
 arch=('i686' 'x86_64')
 url="http://cgit.freedesktop.org/xqproxy"
 license=('MIT')
