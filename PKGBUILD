@@ -3,26 +3,26 @@
 
 pkgname=slim-themes
 pkgver=1.2.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Themes Pack for Simple Login Manager"
 arch=('any')
-url='http://slim.berlios.de'
+url='http://sourceforge.net/projects/slim.berlios/'
 depends=('slim')
 license=('GPL')
-source=(http://download.berlios.de/slim/slim-$pkgver-themepack1a.tar.gz \
-        http://download.berlios.de/slim/slim-lake.tar.gz \
-        http://download.berlios.de/slim/slim-fingerprint.tar.gz \
-        http://download.berlios.de/slim/slim-flat.tar.gz \
-        http://download.berlios.de/slim/slim-lunar-0.4.tar.bz2 \
-        http://download.berlios.de/slim/slim-previous.tar.gz \
-        http://download.berlios.de/slim/slim-rainbow.tar.gz \
-        http://download.berlios.de/slim/slim-rear-window.tar.gz \
-        http://download.berlios.de/slim/slim-scotland-road.tar.gz \
-        http://download.berlios.de/slim/slim-subway.tar.gz \
-        http://download.berlios.de/slim/slim-wave.tar.gz \
-        http://download.berlios.de/slim/slim-zenwalk.tar.gz \
-        http://download.berlios.de/slim/slim-archlinux-simple.tar.gz \
-        http://download.berlios.de/slim/slim-debian-moreblue.tar.bz2)
+source=(http://downloads.sourceforge.net/project/slim.berlios/slim-$pkgver-themepack1a.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-lake.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-fingerprint.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-flat.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-lunar-0.4.tar.bz2 \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-previous.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-rainbow.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-rear-window.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-scotland-road.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-subway.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-wave.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-zenwalk.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-archlinux-simple.tar.gz \
+        http://downloads.sourceforge.net/project/slim.berlios/slim-debian-moreblue.tar.bz2)
 md5sums=('fd1295d3a260849790dc17081da4a34f'
          'c0cef9e7b95bdf2df3fb303d155f8476'
          '2981627a5822a535f3ebd0e21dba9f76'
