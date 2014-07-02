@@ -13,9 +13,8 @@ pkgbase = adwm
 	depends = libxpm
 	depends = startup-notification
 	depends = imlib2
-	options = !libtool
 	source = https://github.com/bbidulock/adwm/releases/download/0.5.0/adwm-0.5.0.tar.xz
-	md5sums = 4d8e0b3b2f866a41d7515f90d51891a1
+	options = !libtool
 
 pkgname = adwm
 
