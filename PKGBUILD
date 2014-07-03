@@ -1,29 +1,28 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
-_name=easyrpg-player
-pkgname=$_name-git
-pkgver=0.2.r82.g85f39ed
+pkgname=easyrpg-player-git
+pkgver=0.2.1.r0.g865f469
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
 license=('GPL3')
-conflicts=("$_name")
-provides=("$_name=${pkgver%.r*}")
+conflicts=("${pkgname%-*}")
+provides=("${pkgname%-*}=${pkgver%.r*}")
 makedepends=('boost' 'git')
 depends=('liblcf-git' 'sdl2_mixer' 'pixman')
 optdepends=('wine: for installing the run time packages (RTP)')
 install=$pkgname.install
-source=($_name::"git+https://github.com/EasyRPG/Player.git")
+source=(${pkgname%-*}::"git+https://github.com/EasyRPG/Player.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_name
+  cd ${pkgname%-*}
   git describe --long | sed 's/-/.r/;s/-/./'
 }
 
 build () {
-  cd $_name
+  cd ${pkgname%-*}
 
   autoreconf -i
   ./configure --prefix=/usr
@@ -31,5 +30,5 @@ build () {
 }
 
 package () {
-  make -C $_name DESTDIR="$pkgdir/" install
+  make -C ${pkgname%-*} DESTDIR="$pkgdir/" install
 }
