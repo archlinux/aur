@@ -1,5 +1,5 @@
 pkgbase = git-annex-bin
-	pkgdesc = Standalone precompiled version of git-annex with no haskel dependencies, batteries included.
+	pkgdesc = Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.
 	pkgver = 5.20140610
 	pkgrel = 1
 	url = http://git-annex.branchable.com/

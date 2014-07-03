@@ -11,7 +11,7 @@
 pkgname=git-annex-bin
 pkgver=5.20140610
 pkgrel=1
-pkgdesc='Standalone precompiled version of git-annex with no haskel dependencies, batteries included.'
+pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64')
 url='http://git-annex.branchable.com/'
 license=('GPL3')
