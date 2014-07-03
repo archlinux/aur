@@ -14,12 +14,10 @@ pkgbase = xorg-xinit-git
 	optdepends = xterm
 	provides = xorg-xinit
 	conflicts = xorg-xinit
-	options = !emptydirs
-	backup = etc/X11/xinit/xinitrc
 	source = xorg-xinit-git::git://anongit.freedesktop.org/git/xorg/app/xinit
 	source = fs25361.patch
-	sha256sums = SKIP
-	sha256sums = 7cd5941b962542117fada9bbb80f76db99eee14fa951d1a4a09e0f386fcef562
+	options = !emptydirs
+	backup = etc/X11/xinit/xinitrc
 
 pkgname = xorg-xinit-git
 
