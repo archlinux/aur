@@ -7,9 +7,8 @@ pkgbase = wmfsm
 	arch = x86_64
 	license = GPL
 	depends = libxpm
-	backup = usr/share/X11/wmfsm/system.wmfsmrc
 	source = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/wmfsm-0.31.tar.gz
-	md5sums = 9b47b44ed9102b8b659168383a0c379e
+	backup = usr/share/X11/wmfsm/system.wmfsmrc
 
 pkgname = wmfsm
 
