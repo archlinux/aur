@@ -2,8 +2,8 @@
 post_install() {
   echo "You can play a RPG Maker 2000/2003 game by executing 'easyrpg-player' in it's"
   echo "directory. Remember you may need RTP(E) for some games. Easyrpg-player will"
-  echo "notice installed RTPs when you set the environment variables RPG2K_RTP_PATH,"
-  echo "RPG2K3_RTP_PATH or RPG_RTP_PATH (for both RTP's) accordingly."
+  echo "notice installed RTPs with wine or when you set the environment variables"
+  echo "RPG2K_RTP_PATH, RPG2K3_RTP_PATH or RPG_RTP_PATH (for both RTP's) accordingly."
 }
 
 post_upgrade() {
