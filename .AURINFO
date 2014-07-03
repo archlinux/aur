@@ -12,9 +12,6 @@ pkgbase = wmbiff
 	source = http://downloads.sourceforge.net/wmbiff/wmbiff-0.4.27.tar.gz
 	source = libgnutls-config
 	source = gnutls.patch
-	md5sums = 50466b6e4a143cf4e55546b34d5792e6
-	md5sums = e549721cfa4f39956f1f8c8c612e4e5e
-	md5sums = 74ec98339fde3534ed5a2761c84e8ea6
 
 pkgname = wmbiff
 
