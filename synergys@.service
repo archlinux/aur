@@ -1,0 +1,10 @@
+[Unit]
+Description=Synergy Server Daemon
+After=network.target
+
+[Service]
+User=%i
+ExecStart=/usr/bin/synergys --no-daemon --config /etc/synergy.conf
+
+[Install]
+WantedBy=multi-user.target

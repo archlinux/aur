@@ -12,7 +12,7 @@
 pkgname=synergy
 pkgver=1.5.0
 _pkgver=2278
-pkgrel=1
+pkgrel=2
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ makedepends=('libxt' 'cmake' 'qt5-base' 'unzip')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
 source=("http://synergy-project.org/files/packages/synergy-${pkgver}-r${_pkgver}-Source.tar.gz"
-        "synergys.socket"
-        "synergys.service"
+        "synergys@.socket"
+        "synergys@.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
 sha1sums=('808f1d793e5e977241bbef7e28fd02990adf8a47'
-          '947406e72351145c65ba9884ed175bf781482d46'
-          '00f2259c31c9551c0830d9e889fd0a0790cf9045'
+          '7ec33221725fc496b807e0f435c5e87b590beb5d'
+          '4bd12cd0674ef317af1f7df32d84e94582855140'
           '8e321e664ae4b7a763175524dd938a88d85c7909')
 
 build() {
@@ -63,8 +63,8 @@ package() {
 
   # install systemd service and socket
   install -d "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 "$srcdir/synergys.service" "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 "$srcdir/synergys.socket" "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$srcdir/synergys@.service" "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$srcdir/synergys@.socket" "$pkgdir/usr/lib/systemd/system/"
 
   # install desktop/icon stuff
   cd ../res
