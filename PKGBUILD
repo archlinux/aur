@@ -1,8 +1,8 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.18.2
+pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
 url="http://www.clutter-project.org/"
@@ -10,14 +10,11 @@ license=('GPL2')
 depends=('mesa' 'libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango' 'libxrandr')
 makedepends=('gobject-introspection')
 options=(!emptydirs)
-source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz
-        git-fixes.patch)
-sha256sums=('a4d91ebf7e7aba362eb5c6e4ffebbf1167ff4ac87fabae104912d879a5390f5e'
-            '40f8cd44858e8e604248c1a1c86b1f499ba15562102bf5974401369961d82849')
+source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
+sha256sums=('9278e519d5480eb0379efd48db024e8fdbf93f01dff48a7e756b85b508a863aa')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i ../git-fixes.patch
 }
 
 build() {
