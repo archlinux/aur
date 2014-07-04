@@ -1,26 +1,19 @@
 # Maintainer: Ian D. Scott <ian@perebruin.com>
 pkgname=pianod
-pkgver=158
-pkgrel=2
+pkgver=165
+pkgrel=1
 pkgdesc="Pandora Client Daemon"
 url="http://deviousfish.com/pianod/"
 arch=('x86_64' 'i686')
 license=('mit')
 depends=('mksh' 'libao' 'libgcrypt' 'gnutls' 'json-c' 'faad2' 'libmad' 'libbsd')
-source=("http://deviousfish.com/Downloads/pianod/${pkgname}-${pkgver}.tar.gz" 
-       "mtim.patch"
-       "patch-json-c-0.12.diff")
-md5sums=('68ed14772e0caa1391da5aac9bbbf056'
-        'a4f433a16ea2bc9a64dde9b035507b97'
-        'a93d668815249a36710df53c9ca5a789')
+source=("http://deviousfish.com/Downloads/pianod/${pkgname}-${pkgver}.tar.gz" )
+md5sums=('afb219bacdcf7e025c0915653451892f')
 backup=('etc/pianod.startscript' 'etc/pianod.env')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/contrib"
   sed -i 's|/bin/ksh|/bin/mksh|' piano runmix
-  cd ..
-  patch -p1 -i ../mtim.patch
-  patch -p0 -i ../patch-json-c-0.12.diff
 }
 
 build() {
