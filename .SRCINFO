@@ -11,11 +11,7 @@ pkgbase = efibootmgr-git
 	depends = efivar
 	depends = zlib
 	provides = efibootmgr=0.7.0.8.g15a46a8
-	provides = efibootmgr-pjones=0.7.0.8.g15a46a8
-	provides = efibootmgr-pjones-_git=0.7.0.8.g15a46a8
 	conflicts = efibootmgr
-	conflicts = efibootmgr-pjones
-	conflicts = efibootmgr-pjones-git
 	options = !strip
 	options = zipman
 	options = docs
