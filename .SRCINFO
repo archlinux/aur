@@ -1,0 +1,19 @@
+pkgbase = python2-libpebble-git
+	pkgdesc = Python library to interact with the Pebble smartwatch
+	pkgver = r162.e935e9a
+	pkgrel = 1
+	url = https://github.com/Hexxeh/libpebble
+	arch = any
+	license = custom
+	makedepends = python2
+	depends = python2-pyserial
+	depends = python2-sh
+	depends = python2-websocket-client-pebble
+	depends = lib-lightblue
+	depends = bluez-utils
+	conflicts = python2-libpebble
+	source = python2-libpebble-git::git+https://github.com/Hexxeh/libpebble.git
+	md5sums = SKIP
+
+pkgname = python2-libpebble-git
+
