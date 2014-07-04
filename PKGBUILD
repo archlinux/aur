@@ -21,8 +21,8 @@ makedepends=('libxt' 'cmake' 'qt5-base' 'unzip')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
 source=("http://synergy-project.org/files/packages/synergy-${pkgver}-r${_pkgver}-Source.tar.gz"
-        "synergys@.socket"
-        "synergys@.service"
+        "synergys_at.socket"
+        "synergys_at.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
 sha1sums=('808f1d793e5e977241bbef7e28fd02990adf8a47'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
@@ -62,9 +62,8 @@ package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}s.man" "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
 
   # install systemd service and socket
-  install -d "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 "$srcdir/synergys@.service" "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 "$srcdir/synergys@.socket" "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$srcdir/synergys_at.service" "$pkgdir/usr/lib/systemd/system/synergys@.service"
+  install -Dm644 "$srcdir/synergys_at.socket" "$pkgdir/usr/lib/systemd/system/synergys@.socket"
 
   # install desktop/icon stuff
   cd ../res
