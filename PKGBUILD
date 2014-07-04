@@ -11,7 +11,7 @@ depends=(python2-pyserial python2-sh python2-websocket-client-pebble lib-lightbl
 makedepends=(python2)
 source=(${pkgname}::git+https://github.com/Hexxeh/libpebble.git)
 md5sums=(SKIP)
-conflicts=(=python2-libpebble)
+conflicts=(python2-libpebble)
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -30,7 +30,8 @@ package() {
   install -d $pkgdir/usr/lib/python${_python2ver}/site-packages/
   cp -r pebble/ $pkgdir/usr/lib/python${_python2ver}/site-packages/
   install -D pebble.py $pkgdir/usr/bin/pebble
-  install -D LICENSE "$pkgdir/usr/share/licenses/pkgname/LICENSE"
+  install -D LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -D README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
 
 # vim: sw=2
