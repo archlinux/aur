@@ -1,7 +1,7 @@
 pkgbase = vtwm-git
 	pkgdesc = A lightweight, customizable window manager with a virtual desktop
 	pkgver = 5.5.0.rc8.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.vtwm.org
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = vtwm-git
 	source = vtwm-git::git://git.code.sf.net/p/vtwm/code
 	source = vtwm.desktop
 	options = !makeflags
-	backup = etc/X11/vtwm/system.vtwmrc
+	backup = usr/share/X11/vtwm/system.vtwmrc
 
 pkgname = vtwm-git
 
