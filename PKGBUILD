@@ -11,8 +11,8 @@
 #
 
 pkgname=gnupg-largekeys
-pkgver=2.0.24
-pkgrel=2
+pkgver=2.0.25
+pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
 license=('GPL')
@@ -23,14 +23,10 @@ optdepends=('curl: gpg2keys_curl'
 makedepends=('curl' 'libldap' 'libusb-compat')
 depends=('bzip2' 'libksba' 'libgcrypt' 'pth' 'libassuan' 'readline' 'pinentry' 'dirmngr')
 source=("ftp://ftp.gnupg.org/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largekeys}-${pkgver}.tar.bz2"{,.sig}
-        'protect-tool-env.patch'{,.sig}
-        'filter.patch'{,.sig}
         'gnupg2-large-keys.patch'{,.sig}
         'install'{,.sig}
         'PKGBUILD.sig')
-sha1sums=('010e027d5f622778cadc4c124013fe515ed705cf' 'SKIP'
-          '2ec97ba55ae47ff0d63bc813b8c64cb79cef11db' 'SKIP'
-          'e99aa2b725342aee188d706b42d392efb2389cf4' 'SKIP'
+sha1sums=('890d77d89f2d187382f95e83e386f2f7ba789436' 'SKIP'
           'a77b9616d238fbdd5488e7024e5e1f36ce8ed586' 'SKIP'
           'ff80fc79329cfa631c19ae1ea6fc4a390ab851f7' 'SKIP'
           'SKIP')
@@ -43,8 +39,6 @@ replaces=('gnupg2' 'gnupg')
 
 prepare() {
 	cd "${srcdir}/${pkgname%%-largekeys}-${pkgver}"
-	patch -p1 -i ../protect-tool-env.patch # FS#31900
-	patch -p1 -i ../filter.patch
 	patch -p1 -i ../gnupg2-large-keys.patch
 }
 
