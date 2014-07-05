@@ -12,7 +12,7 @@ pkgbase = eweather-git
 	provides = eweather=0.2.0.r69.dbfe76f
 	conflicts = eweather
 	source = git://git.enlightenment.org/enlightenment/modules/eweather.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = eweather-git
 
