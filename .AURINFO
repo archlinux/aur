@@ -14,11 +14,9 @@ pkgbase = uwm
 	depends = libpng
 	depends = libjpeg
 	depends = xcb-util-wm
-	backup = usr/share/X11/uwm/system.uwmrc
 	source = uwm::git://git.code.sf.net/p/uwm/code#tag=0.30
 	source = uwm.desktop
-	md5sums = SKIP
-	md5sums = a16c73faeab8c1fc3c74f3320776789a
+	backup = usr/share/X11/uwm/system.uwmrc
 
 pkgname = uwm
 
