@@ -6,7 +6,7 @@
 pkgname=larswm-git
 _pkgname=larswm
 pkgver=7.5.3.r15.g0d2c93d
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling window manager based on 9wm"
 arch=('i686' 'x86_64')
 url="http://porneia.free.fr/larswm/larswm.html"
@@ -15,6 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('libxmu')
 makedepends=('imake' 'git')
+backup=(usr/share/X11/larswm/system.larswmrc)
 source=("$pkgname::git+https://github.com/jpinon/larswm.git"
 	"$_pkgname.desktop")
 md5sums=('SKIP'
@@ -26,8 +27,8 @@ pkgver() {
 prepare() {
   cd $pkgname
   sed -n "/9wm is free/,/nice day/p" README.9wm > LICENSE
-  sed -e 's,/etc/X11/larswmrc,/etc/X11/system.larswmrc,' -i dat.h
-  sed -e 's,/etc/X11/larswmrc,/etc/X11/system.larswmrc,' -i larswm.man
+  sed -e 's,/etc/X11/larswmrc,/usr/share/X11/larswm/system.larswmrc,' -i dat.h
+  sed -e 's,/etc/X11/larswmrc,/usr/share/X11/larswm/system.larswmrc,' -i larswm.man
   xmkmf -a
 }
 build() {
@@ -38,7 +39,7 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install install.man
   install -Dm0644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/xsessions/$_pkgname.desktop"
-  install -Dm0644 sample.larswmrc "$pkgdir/etc/X11/system.larswmrc"
+  install -Dm0644 sample.larswmrc "$pkgdir/usr/share/X11/larswm/system.larswmrc"
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

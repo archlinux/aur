@@ -1,7 +1,7 @@
 pkgbase = larswm-git
 	pkgdesc = A tiling window manager based on 9wm
 	pkgver = 7.5.3.r15.g0d2c93d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://porneia.free.fr/larswm/larswm.html
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = larswm-git
 	conflicts = larswm
 	source = larswm-git::git+https://github.com/jpinon/larswm.git
 	source = larswm.desktop
+	backup = usr/share/X11/larswm/system.larswmrc
 
 pkgname = larswm-git
 
