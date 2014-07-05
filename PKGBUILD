@@ -1,9 +1,9 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: twa022 <twa022 at gmail dot com>
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=168241
+pkgver=170806
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -55,9 +55,6 @@ build() {
     -DPORT=Efl \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DSHARED_CORE=ON \
-    -DENABLE_WEBKIT=ON \
-    -DENABLE_WEBKIT2=ON \
     -DENABLE_TOOLS=OFF
 
   make
