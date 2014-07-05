@@ -1,7 +1,7 @@
 pkgbase = kdebase-workspace-consolekit
 	pkgdesc = kdebase-workspace with ConsoleKit support for non-systemd systems
 	pkgver = 4.11.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = kdebase-workspace.install
 	arch = i686
@@ -59,6 +59,7 @@ pkgbase = kdebase-workspace-consolekit
 	source = terminate-server.patch
 	source = kdm-xinitrd.patch
 	source = khotkeys-qt4.patch
+	source = KDEBUG-336589.patch
 	backup = usr/share/config/kdm/kdmrc
 
 pkgname = kdebase-workspace-consolekit
