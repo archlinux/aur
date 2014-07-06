@@ -4,10 +4,10 @@ pkgdesc="ROS - Time and Duration implementations for C++ libraries, including ro
 url='http://ros.org/wiki/rostime'
 
 pkgname='ros-indigo-rostime'
-pkgver='0.5.0'
-_pkgver_patch=1
+pkgver='0.5.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cpp-common
