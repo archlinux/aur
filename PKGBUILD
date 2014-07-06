@@ -4,10 +4,10 @@ pkgdesc="ROS - tf2_msgs."
 url='http://www.ros.org/wiki/tf2_msgs'
 
 pkgname='ros-indigo-tf2-msgs'
-pkgver='0.5.4'
-_pkgver_patch=1
+pkgver='0.5.5'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-message-generation

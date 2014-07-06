@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-tf2-msgs
 	pkgdesc = ROS - tf2_msgs.
-	pkgver = 0.5.4
-	pkgrel = 2
+	pkgver = 0.5.5
+	pkgrel = 1
 	url = http://www.ros.org/wiki/tf2_msgs
 	arch = any
 	license = BSD
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-tf2-msgs
 	depends = ros-indigo-message-generation
 	depends = ros-indigo-actionlib-msgs
 	depends = ros-indigo-geometry-msgs
-	source = tf2_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_msgs/0.5.4-1
+	source = tf2_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_msgs/0.5.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-tf2-msgs
