@@ -4,7 +4,7 @@
 # Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=bitlbee-bzr
-pkgver=1005
+pkgver=1025
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
@@ -60,7 +60,7 @@ build() {
 
 package() {
   cd "$srcdir/$_bzrmod"
-  make DESTDIR="$pkgdir" install{,-etc,-dev}
+  make DESTDIR="$pkgdir" install{,-etc,-dev,-systemd}
 
   install -o65 -g65 -dm770 "$pkgdir/var/lib/bitlbee"
   install -Dm644 "$srcdir/xinetd" "$pkgdir/etc/xinetd.d/bitlbee"
