@@ -1,24 +1,18 @@
 post_install() {
-    # Check if user/group polkitd exists
-    getent group polkitd > /dev/null || groupadd polkitd
-    getent passwd polkitd > /dev/null || useradd -c "Polkitd system" -g polkitd -s /bin/false -d / polkitd
-    # Fix permissions
-    chown -R polkitd:polkitd /etc/polkit-1/rules.d
-    chmod 700 /etc/polkit-1/rules.d
-
-    chown -R polkitd:polkitd /var/lib/polkit-1/rules.d
-    chmod 700 /etc/polkit-1/rules.d
+       getent group polkitd >/dev/null || groupadd -g 102 polkitd
+       getent passwd polkitd >/dev/null || useradd -c 'Policy Kit Daemon' -u 102 -g polkitd -d '/' -s /bin/false polkitd
+       passwd -l polkitd &>/dev/null
 }
 
 post_upgrade() {
-    # Check if user/group polkitd exists
-    getent group polkitd > /dev/null || groupadd polkitd
-    getent passwd polkitd > /dev/null || useradd -c "Polkitd system" -g polkitd -s /bin/false -d / polkitd
-    # Fix permissions
-    chown -R polkitd:polkitd /etc/polkit-1/rules.d
-    chmod 700 /etc/polkit-1/rules.d
-
-    chown -R polkitd:polkitd /var/lib/polkit-1/rules.d
-    chmod 700 /etc/polkit-1/rules.d
+       post_install
 }
 
+post_remove() {
+       if getent passwd polkitd >/dev/null; then
+               userdel polkitd
+       fi
+       if getent group polkitd >/dev/null; then
+               groupdel polkitd
+       fi
+}

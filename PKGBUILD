@@ -5,7 +5,7 @@
 
 pkgname=polkit-git
 pkgver=0.112.r16.ga68f5df
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 arch=(i686 x86_64)
