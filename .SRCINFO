@@ -1,13 +1,13 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = libgaminggear=0.3.0
+	depends = libgaminggear=0.4.0
 	depends = libcanberra
 	depends = gtk2
 	depends = libnotify>=0.7.0
@@ -15,8 +15,8 @@ pkgbase = roccat-tools
 	depends = udev
 	depends = hicolor-icon-theme
 	optdepends = kmod-roccat: Adds support for some devices not yet in vanilla kernel
-	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-2.0.0.tar.bz2
-	md5sums = f87dbd1a909b783b0e2cb75b39dee403
+	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-2.1.0.tar.bz2
+	md5sums = a4f0e37574fa7a8d242452617f70100c
 
 pkgname = roccat-tools-common
 	pkgdesc = ROCCAT tools common files

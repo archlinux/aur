@@ -20,19 +20,19 @@ pkgname=('roccat-tools-common'
          'roccat-tools-ryos'
          'roccat-tools-savu')
 pkgbase=roccat-tools
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear=0.3.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
+depends=('libgaminggear=0.4.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for some devices not yet in vanilla kernel')
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('f87dbd1a909b783b0e2cb75b39dee403')
+md5sums=('a4f0e37574fa7a8d242452617f70100c')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
