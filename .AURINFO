@@ -21,8 +21,6 @@ pkgbase = polkit-git
 	conflicts = polkit
 	source = polkit-git::git+http://anongit.freedesktop.org/git/polkit.git
 	source = polkit.pam
-	md5sums = SKIP
-	md5sums = 6564f95878297b954f0572bc1610dd15
 
 pkgname = polkit-git
 
