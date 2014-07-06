@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=dollz
 pkgver=3.0
@@ -7,8 +7,8 @@ pkgdesc='Gamecube executable compressor'
 arch=('x86_64' 'i686')
 url='http://wiibrew.org/wiki/Dollz'
 license=('custom: freeware')
-depends=('glibc')
-[[ $CARCH == x86_64 ]] && depends=('lib32-glibc')
+depends=('lib32-glibc')
+[ "$CARCH" == "i686" ] && depends=('glibc')
 options=(!strip)
 source=("http://wiibrew.org/w/images/e/ef/Dollz3.zip")
 sha256sums=('1bf206b36ba15aa4977c0f7e7d037bbbad2c45b5aa0dcd3790ce26f8cac0b65a')
