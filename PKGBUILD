@@ -1,16 +1,16 @@
 # Maintainer: Aaron Mueller <mail@aaron-mueller.de>
 
 pkgname=libgaminggear
-pkgver=0.3.0
-pkgrel=4
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://sourceforge.net/projects/libgaminggear/"
 depends=()
-makedepends=('cmake' 'doxygen' 'gtk2' 'sqlite3>=3.7')
+makedepends=('cmake=3.0' 'doxygen' 'gtk2' 'sqlite3>=3.7')
 source=(http://downloads.sourceforge.net/project/libgaminggear/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('c0210cf4b14e5edaabcf0d7207a97995')
+md5sums=('25d083553a579665f4cd4b5357544c21')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,6 +23,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   if [[ -d "${pkgdir}/usr/share/cmake" ]]; then
-     mv ${pkgdir}/usr/share/cmake{,-2.8}
+     mv ${pkgdir}/usr/share/cmake{,-3.0}
   fi
 }
