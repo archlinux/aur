@@ -1,26 +1,22 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - C++ Headers for URDF."
+pkgdesc="ROS - Temporary package redirecting to C++ Headers for URDF."
 url='http://wiki.ros.org/urdf'
 
 pkgname='ros-indigo-urdfdom-headers'
 pkgver='0.3.0'
-_pkgver_patch=1
+_pkgver_patch=2
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
-ros_makedepends=(ros-indigo-console-bridge)
+ros_makedepends=()
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  boost
-  tinyxml)
+  ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-console-bridge
-  ros-indigo-catkin)
+ros_depends=()
 depends=(${ros_depends[@]}
-  boost
-  tinyxml)
+  urdfdom-headers)
 
 _tag=release/indigo/urdfdom_headers/${pkgver}-${_pkgver_patch}
 _dir=urdfdom_headers
@@ -53,5 +49,5 @@ build() {
 
 package() {
   cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+  #make DESTDIR="${pkgdir}/" install
 }
