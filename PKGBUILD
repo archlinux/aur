@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage which extends ros_core and includes other basic non
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-ros-base'
-pkgver='1.1.2'
+pkgver='1.1.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
