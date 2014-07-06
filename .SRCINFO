@@ -1,6 +1,6 @@
 pkgbase = android-google-apis
 	pkgdesc = Android Google APIs, latest API
-	pkgver = 19_r05
+	pkgver = 19_r06
 	pkgrel = 1
 	url = http://code.google.com/android/add-ons/google-apis
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = android-google-apis
 	provides = android-google-apis-19
 	conflicts = android-google-apis-19
 	options = !strip
-	source = http://dl.google.com/android/repository/google_apis-19_r05.zip
-	sha1sums = 5609457b52a2afdbf9aa830c8c30c2ef70e90b74
+	source = http://dl.google.com/android/repository/google_apis-19_r06.zip
+	sha1sums = b91fced8b348df7fb505a687084ec16d03ad9b1c
 
 pkgname = android-google-apis
 
