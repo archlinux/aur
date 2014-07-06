@@ -1,23 +1,15 @@
 pkgbase = ros-indigo-urdfdom
-	pkgdesc = ROS - A library to access URDFs using the DOM model.
+	pkgdesc = ROS - A temporary pass through to the urdfdom rosdep.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/urdf
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = git
 	makedepends = ros-build-tools
-	makedepends = ros-indigo-urdfdom-headers
-	makedepends = ros-indigo-console-bridge
-	makedepends = boost
-	makedepends = tinyxml
-	depends = ros-indigo-urdfdom-headers
-	depends = ros-indigo-console-bridge
-	depends = ros-indigo-catkin
-	depends = boost
-	depends = tinyxml
-	source = urdfdom::git+https://github.com/ros-gbp/urdfdom-release.git#tag=release/indigo/urdfdom/0.3.0-1
+	depends = urdfdom
+	source = urdfdom::git+https://github.com/ros-gbp/urdfdom-release.git#tag=release/indigo/urdfdom/0.3.0-2
 	md5sums = SKIP
 
 pkgname = ros-indigo-urdfdom

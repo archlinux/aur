@@ -1,28 +1,22 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - A library to access URDFs using the DOM model."
+pkgdesc="ROS - A temporary pass through to the urdfdom rosdep."
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-indigo-urdfdom'
 pkgver='0.3.0'
-_pkgver_patch=1
+_pkgver_patch=2
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
-ros_makedepends=(ros-indigo-urdfdom-headers
-  ros-indigo-console-bridge)
+ros_makedepends=()
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  boost
-  tinyxml)
+  ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-urdfdom-headers
-  ros-indigo-console-bridge
-  ros-indigo-catkin)
+ros_depends=()
 depends=(${ros_depends[@]}
-  boost
-  tinyxml)
+  urdfdom)
 
 _tag=release/indigo/urdfdom/${pkgver}-${_pkgver_patch}
 _dir=urdfdom
@@ -55,5 +49,5 @@ build() {
 
 package() {
   cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+  #make DESTDIR="${pkgdir}/" install
 }
