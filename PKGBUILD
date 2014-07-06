@@ -4,20 +4,21 @@ pkgdesc="ROS - The class_loader package is a ROS-independent package for loading
 url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-indigo-class-loader'
-pkgver='0.2.5'
-_pkgver_patch=1
+pkgver='0.3.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-console-bridge
-  ros-indigo-catkin)
+ros_makedepends=(ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
+  console-bridge
   poco)
 
-ros_depends=(ros-indigo-console-bridge)
+ros_depends=()
 depends=(${ros_depends[@]}
+  console-bridge
   poco)
 
 _tag=release/indigo/class_loader/${pkgver}-${_pkgver_patch}
