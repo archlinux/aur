@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-indigo-collada-urdf'
-pkgver='1.11.2'
+pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,18 +41,13 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/collada_urdf/${pkgver}-${_pkgver_patch}
 _dir=collada_urdf
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag}
-        "assimp.patch")
-md5sums=('SKIP'
-         '17a9ba03b0d8332073d748e15f20f95d')
+source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
-
-  cd ${srcdir}/${_dir}
-  git apply ${srcdir}/assimp.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
