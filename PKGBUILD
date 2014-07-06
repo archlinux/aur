@@ -6,7 +6,7 @@ _basekernel=3.15
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
 pkgver=${_basekernel}.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
@@ -14,6 +14,7 @@ makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        'ptrace.patch::https://github.com/torvalds/linux/commit/b9cd18de4db3c9ffa7e17b0dc0ca99ed5aa4d43a.patch'
         'config'
         'config.x86_64'
         'menu.lst'
@@ -21,6 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/change-default-console-loglevel.patch')
 sha512sums=('d5dc477cad4584e56e2e2ef9e0950c2b22e76e5cf5090a896ba099cb7c5e5db1853a4aeb96b199189653dc66d461557e95198e37516a619f7ddc01ba6b308e02'
             'ef9bcf11241102d744e35c303a1267dc197b8f9ef9f9ecc344327a0d725b36348ebacfd64ef57b47f795bb7db9f101589db57216a5e0aef6741f1fb03a634e29'
+            '694450662a405c604e2078a0b842602edc082121e334bf57d5b8a31139df0d14b30397484121be7bed2c88384d31e53299056fc2e43242459da679e26f78adcf'
             '4e776dc622cfd519f00ce161c046dfaea15f81942d37a4e591d539c207b716e560596105798a41a75d6fdcd4b24a3492f6b047c8c1c116a936e6bebff5995463'
             '5f070711bed8e00c158bea167245be4a39b46095354225d7ddfcabec019fdc550cde242225571ae11ed3ce455fa1c01a8af568f1990ec8eb52423302587c01f5'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
@@ -37,6 +39,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -Np1 -i "${srcdir}/ptrace.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
