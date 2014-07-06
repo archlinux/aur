@@ -4,10 +4,10 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-indigo-rviz'
-pkgver='1.11.2'
-_pkgver_patch=1
+pkgver='1.11.3'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -20,17 +20,16 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-std-msgs
   ros-indigo-map-msgs
   ros-indigo-rosconsole
-  ros-indigo-urdfdom
+  ros-indigo-laser-geometry
   ros-indigo-cmake-modules
   ros-indigo-tf
   ros-indigo-urdf
   ros-indigo-image-geometry
   ros-indigo-rosbag
-  ros-indigo-laser-geometry
+  ros-indigo-sensor-msgs
   ros-indigo-std-srvs
   ros-indigo-pluginlib
   ros-indigo-resource-retriever
-  ros-indigo-sensor-msgs
   ros-indigo-catkin
   ros-indigo-image-transport
   ros-indigo-roslib
@@ -54,17 +53,16 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-std-msgs
   ros-indigo-map-msgs
   ros-indigo-rosconsole
-  ros-indigo-urdfdom
+  ros-indigo-laser-geometry
   ros-indigo-media-export
   ros-indigo-tf
   ros-indigo-urdf
   ros-indigo-image-geometry
   ros-indigo-rosbag
-  ros-indigo-laser-geometry
+  ros-indigo-sensor-msgs
   ros-indigo-std-srvs
   ros-indigo-pluginlib
   ros-indigo-resource-retriever
-  ros-indigo-sensor-msgs
   ros-indigo-image-transport
   ros-indigo-roslib
   ros-indigo-message-filters)
