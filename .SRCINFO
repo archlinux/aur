@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-joystick-drivers
+	pkgdesc = ROS - This metapackage depends on packages for interfacing common joysticks and human input devices with ROS.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/joystick_drivers
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-joy
+	depends = ros-indigo-spacenav-node
+	depends = ros-indigo-ps3joy
+	depends = ros-indigo-wiimote
+	source = joystick_drivers::git+https://github.com/ros-gbp/joystick_drivers-release.git#tag=release/indigo/joystick_drivers/1.10.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-joystick-drivers
+
