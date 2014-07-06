@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-qt-gui
 	pkgdesc = ROS - qt_gui provides the infrastructure for an integrated graphical user interface based on Qt.
 	pkgver = 0.2.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/qt_gui
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = ros-indigo-qt-gui
 	makedepends = git
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
-	makedepends = python2-pyqt4
+	makedepends = python2-pyqt4-10
 	makedepends = qt4
 	depends = ros-indigo-python-qt-binding
 	depends = python2-rospkg
