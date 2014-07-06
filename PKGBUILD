@@ -5,6 +5,7 @@
 pkgname=lxpolkit-git
 pkgver=0.1.0.r34.g55fc5d4
 pkgrel=1
+epoch=1
 pkgdesc="Simple polkit authentication agent for LXDE"
 arch=('i686' 'x86_64')
 url="http://blog.lxde.org/?p=674"
