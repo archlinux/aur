@@ -7,7 +7,7 @@ pkgname='ros-indigo-rqt-pose-view'
 pkgver='0.3.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -22,7 +22,7 @@ ros_depends=(ros-indigo-rqt-gui
   ros-indigo-rostopic
   ros-indigo-tf)
 depends=(${ros_depends[@]}
-  python2-pyqt4
+  python2-pyqt4-10
   python2-rospkg
   python2-opengl)
 

@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rqt-pose-view
 	pkgdesc = ROS - rqt_pose_view provides a GUI plugin for visualizing 3D poses.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/rqt_pose_view
 	arch = any
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = ros-indigo-rqt-pose-view
 	depends = ros-indigo-rqt-gui-py
 	depends = ros-indigo-rostopic
 	depends = ros-indigo-tf
-	depends = python2-pyqt4
+	depends = python2-pyqt4-10
 	depends = python2-rospkg
 	depends = python2-opengl
 	source = rqt_pose_view::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/indigo/rqt_pose_view/0.3.5-0
