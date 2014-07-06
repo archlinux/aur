@@ -4,25 +4,25 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-indigo-tf2'
-pkgver='0.5.4'
-_pkgver_patch=1
+pkgver='0.5.5'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-msgs
   ros-indigo-catkin
   ros-indigo-rostime
-  ros-indigo-console-bridge
   ros-indigo-geometry-msgs)
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+  console-bridge)
 
 ros_depends=(ros-indigo-tf2-msgs
   ros-indigo-rostime
-  ros-indigo-console-bridge
   ros-indigo-geometry-msgs)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  console-bridge)
 
 _tag=release/indigo/tf2/${pkgver}-${_pkgver_patch}
 _dir=tf2
