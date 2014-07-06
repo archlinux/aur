@@ -1,23 +1,22 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Lightweight tool for forwarding output from libraries to other logging systems."
+pkgdesc="ROS - This package has been released upstream."
 url='https://github.com/ros/console_bridge'
 
 pkgname='ros-indigo-console-bridge'
-pkgver='0.2.7'
+pkgver='0.2.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=()
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  boost)
+  ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-catkin)
+ros_depends=()
 depends=(${ros_depends[@]}
-  boost)
+  console-bridge)
 
 _tag=release/indigo/console_bridge/${pkgver}-${_pkgver_patch}
 _dir=console_bridge
@@ -50,5 +49,5 @@ build() {
 
 package() {
   cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+  #make DESTDIR="${pkgdir}/" install
 }

@@ -1,17 +1,15 @@
 pkgbase = ros-indigo-console-bridge
-	pkgdesc = ROS - Lightweight tool for forwarding output from libraries to other logging systems.
-	pkgver = 0.2.7
-	pkgrel = 2
+	pkgdesc = ROS - This package has been released upstream.
+	pkgver = 0.2.8
+	pkgrel = 1
 	url = https://github.com/ros/console_bridge
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = git
 	makedepends = ros-build-tools
-	makedepends = boost
-	depends = ros-indigo-catkin
-	depends = boost
-	source = console_bridge::git+https://github.com/ros-gbp/console_bridge-release.git#tag=release/indigo/console_bridge/0.2.7-0
+	depends = console-bridge
+	source = console_bridge::git+https://github.com/ros-gbp/console_bridge-release.git#tag=release/indigo/console_bridge/0.2.8-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-console-bridge
