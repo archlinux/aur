@@ -1,0 +1,15 @@
+pkgbase = maxmod
+	pkgdesc = A complete music and sound solution library for NDS and GBA
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = http://devkitpro.org/maxmod.org/
+	arch = any
+	license = custom
+	depends = devkitarm
+	options = !strip
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/maxmod-src-1.0.9.tar.bz2
+	sha256sums = 4c950e99a38ddacd3e33330dc9e117e7db40bb51c0e57f2efc9729dd5517db7f
+
+pkgname = maxmod
+
