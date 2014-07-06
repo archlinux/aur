@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-geometric-shapes
 	pkgdesc = ROS - This package contains generic definitions of geometric shapes and bodies.
-	pkgver = 0.3.8
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = http://ros.org/wiki/geometric_shapes
 	arch = any
 	license = BSD
@@ -33,7 +33,7 @@ pkgbase = ros-indigo-geometric-shapes
 	depends = boost
 	depends = eigen3
 	depends = qhull
-	source = geometric_shapes::git+https://github.com/ros-gbp/geometric_shapes-release.git#tag=release/indigo/geometric_shapes/0.3.8-2
+	source = geometric_shapes::git+https://github.com/ros-gbp/geometric_shapes-release.git#tag=release/indigo/geometric_shapes/0.4.0-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-geometric-shapes

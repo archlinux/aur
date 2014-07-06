@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-indigo-geometric-shapes'
-pkgver='0.3.8'
-_pkgver_patch=2
+pkgver='0.4.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-shape-tools
