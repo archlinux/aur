@@ -4,7 +4,7 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-indigo-laser-filters'
-pkgver='1.7.1'
+pkgver='1.7.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
