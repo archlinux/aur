@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosconsole-bridge
 	pkgdesc = ROS - rosconsole_bridge is a package used in conjunction with console_bridge and rosconsole for connecting console_bridge-based logging to rosconsole-based logging.
-	pkgver = 0.3.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://www.ros.org/wiki/rosconsole_bridge
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = ros-indigo-rosconsole-bridge
 	makedepends = git
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-rosconsole
-	makedepends = ros-indigo-console-bridge
 	makedepends = ros-indigo-catkin
+	makedepends = console-bridge
 	depends = ros-indigo-rosconsole
-	depends = ros-indigo-console-bridge
-	source = rosconsole_bridge::git+https://github.com/ros-gbp/rosconsole_bridge-release.git#tag=release/indigo/rosconsole_bridge/0.3.4-0
+	depends = console-bridge
+	source = rosconsole_bridge::git+https://github.com/ros-gbp/rosconsole_bridge-release.git#tag=release/indigo/rosconsole_bridge/0.4.1-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosconsole-bridge

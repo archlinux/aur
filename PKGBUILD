@@ -4,21 +4,21 @@ pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_b
 url='http://www.ros.org/wiki/rosconsole_bridge'
 
 pkgname='ros-indigo-rosconsole-bridge'
-pkgver='0.3.4'
+pkgver='0.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosconsole
-  ros-indigo-console-bridge
   ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+  console-bridge)
 
-ros_depends=(ros-indigo-rosconsole
-  ros-indigo-console-bridge)
-depends=(${ros_depends[@]})
+ros_depends=(ros-indigo-rosconsole)
+depends=(${ros_depends[@]}
+  console-bridge)
 
 _tag=release/indigo/rosconsole_bridge/${pkgver}-${_pkgver_patch}
 _dir=rosconsole_bridge
