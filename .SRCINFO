@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-spacenav-node
+	pkgdesc = ROS - ROS interface to the 3Dconnexion SpaceNavigator 6DOF joystick.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/spacenav_node
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = libspnav
+	makedepends = libx11
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = spacenavd
+	depends = libspnav
+	depends = libx11
+	source = spacenav_node::git+https://github.com/ros-gbp/joystick_drivers-release.git#tag=release/indigo/spacenav_node/1.10.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-spacenav-node
+
