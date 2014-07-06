@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-perception'
-pkgver='1.1.2'
+pkgver='1.1.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
