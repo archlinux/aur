@@ -1,0 +1,34 @@
+pkgbase = ros-indigo-wiimote
+	pkgdesc = ROS - The wiimote package allows ROS nodes to communicate with a Nintendo Wiimote and its related peripherals, including the Nunchuk, Motion Plus, and (experimentally) the Classic.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/wiimote
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-genmsg
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-std-srvs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-roslib
+	makedepends = ros-indigo-catkin
+	makedepends = cwiid
+	makedepends = python2-numpy
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-genmsg
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-rospy
+	depends = ros-indigo-std-srvs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-roslib
+	depends = cwiid
+	depends = python2-numpy
+	source = wiimote::git+https://github.com/ros-gbp/joystick_drivers-release.git#tag=release/indigo/wiimote/1.10.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-wiimote
+
