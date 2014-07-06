@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate the packages required to use publish /
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-ros-core'
-pkgver='1.1.2'
+pkgver='1.1.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,13 +27,12 @@ ros_depends=(ros-indigo-genpy
   ros-indigo-genmsg
   ros-indigo-rosconsole-bridge
   ros-indigo-gencpp
-  ros-indigo-ros-tutorials
   ros-indigo-cmake-modules
   ros-indigo-ros
   ros-indigo-rosgraph-msgs
   ros-indigo-common-msgs
   ros-indigo-rospack
-  ros-indigo-console-bridge
+  ros-indigo-ros-tutorials
   ros-indigo-rosbag-migration-rule)
 depends=(${ros_depends[@]})
 
