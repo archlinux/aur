@@ -1,6 +1,6 @@
 pkgbase = ewebkit-svn
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries - Development version
-	pkgver = 170806
+	pkgver = 170826
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -23,8 +23,12 @@ pkgbase = ewebkit-svn
 	depends = libsoup
 	depends = libxslt
 	depends = libxt
-	provides = ewebkit=170806
+	provides = ewebkit=170826
 	conflicts = ewebkit
+	source = ewebkit-CMakeLists.txt::https://svn.webkit.org/repository/webkit/trunk/CMakeLists.txt
+	source = ewebkit-Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ewebkit-svn
 

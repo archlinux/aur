@@ -3,49 +3,38 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=170806
+pkgver=170826
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
-_svnurl="https://svn.webkit.org/repository/webkit/trunk"
 license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'cairo' 'efl' 'e_dbus' 'enchant' 'harfbuzz-icu' 'libsoup' 'libxslt' 'libxt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-  source=("$_pkgname::svn+$_svnurl")
-  sha256sums=('SKIP')
+source=("$_pkgname-CMakeLists.txt::https://svn.webkit.org/repository/webkit/trunk/CMakeLists.txt"
+        "$_pkgname-Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source")
+sha256sums=('SKIP'
+            'SKIP')
+
+# make sure CMakeLists.txt gets re-downloaded every time
+if [[ -z $_removed ]]; then
+  [[ -e "$SRCDEST/$_pkgname-CMakeLists.txt" ]] && rm "$SRCDEST/$_pkgname-CMakeLists.txt"
+  export _removed=1
 fi
 
 pkgver() {
-  if [[ -d "$SRCDEST/$_pkgname/.svn" ]]; then
-    svnversion "$srcdir/$_pkgname" | tr -d '[[:alpha:]]'
-  else
-    LC_ALL=C svn info "$_svnurl" | awk '/Revision/ {print $2}'
-  fi
+  svnversion "$srcdir/$_pkgname-Source" | tr -d '[[:alpha:]]'
 }
 
 prepare() {
-  if [[ ! -d "$SRCDEST/$_pkgname/.svn" ]]; then
-#   if this is the first run, checkout only what we need from the repo
-    msg2 "Cloning $_pkgname svn repo..."
-    cd "$SRCDEST"
-    mkdir -p "$_pkgname/.makepkg"
-    svn co --depth immediates --config-dir "$_pkgname/.makepkg" -r "$pkgver" "$_svnurl" "$_pkgname"
-    cd "$_pkgname"
-    svn up --set-depth infinity -r "$pkgver" Source
-
-#   and create a working copy
-    msg2 "Creating working copy of $_pkgname svn repo..."
-    rm -rf "$srcdir/$_pkgname"
-    cp -a "$SRCDEST/$_pkgname" "$srcdir/$_pkgname"
-  fi
+  ln -s $_pkgname-Source "$srcdir/Source"
+  ln -s $_pkgname-CMakeLists.txt "$srcdir/CMakeLists.txt"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir"
 
 # build with glib 2.38/libsoup 2.44
   export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
@@ -61,11 +50,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir"
 
   make DESTDIR="$pkgdir" install
 
 # install license files
-  install -Dm644 Source/WebCore/LICENSE-APPLE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APPLE"
-  install -Dm644 Source/WebCore/LICENSE-LGPL-2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE-LGPL-2"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" Source/WebCore/LICENSE-{APPLE,LGPL-2}
 }
