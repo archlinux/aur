@@ -1,0 +1,32 @@
+pkgbase = ros-indigo-ps3joy
+	pkgdesc = ROS - Playstation 3 SIXAXIS or DUAL SHOCK 3 joystick driver.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/ps3joy
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rosgraph
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-diagnostic-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = linuxconsole
+	makedepends = bluez
+	makedepends = libusb-compat
+	makedepends = python2-pybluez
+	depends = ros-indigo-rosgraph
+	depends = ros-indigo-rospy
+	depends = ros-indigo-diagnostic-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = linuxconsole
+	depends = bluez
+	depends = libusb-compat
+	depends = python2-pybluez
+	source = ps3joy::git+https://github.com/ros-gbp/joystick_drivers-release.git#tag=release/indigo/ps3joy/1.10.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ps3joy
+
