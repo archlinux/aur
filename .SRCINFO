@@ -1,8 +1,8 @@
 pkgbase = python2-rospkg
 	pkgdesc = ROS - provides basic utilities for querying information about ROS packages, stacks, and distributions.
 	pkgver = 1.0.29
-	pkgrel = 1
-	url = http://ros.org/doc/api/rospkg/html/python_api.html
+	pkgrel = 2
+	url = http://docs.ros.org/independent/api/rospkg/html/
 	arch = any
 	license = BSD
 	makedepends = python2-distribute

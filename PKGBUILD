@@ -5,9 +5,9 @@
 
 pkgname=python2-rospkg
 pkgver=1.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="ROS - provides basic utilities for querying information about ROS packages, stacks, and distributions."
-url="http://ros.org/doc/api/rospkg/html/python_api.html"
+url="http://docs.ros.org/independent/api/rospkg/html/"
 arch=('any')
 license=('BSD')
 depends=('python2')
