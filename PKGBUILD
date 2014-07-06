@@ -4,7 +4,7 @@ pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necess
 url='http://www.ros.org/wiki/cpp_common'
 
 pkgname='ros-indigo-cpp-common'
-pkgver='0.5.2'
+pkgver='0.5.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,10 +13,12 @@ license=('BSD')
 ros_makedepends=(ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
+  boost
   console-bridge)
 
 ros_depends=()
 depends=(${ros_depends[@]}
+  boost
   console-bridge)
 
 _tag=release/indigo/cpp_common/${pkgver}-${_pkgver_patch}
