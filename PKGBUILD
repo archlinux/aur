@@ -14,12 +14,12 @@ ros_makedepends=(ros-indigo-catkin
   ros-indigo-rosbuild)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-pyqt4
+  python2-pyqt4-10
   qt4)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-pyqt4)
+  python2-pyqt4-10)
 
 _tag=release/indigo/python_qt_binding/${pkgver}-${_pkgver_patch}
 _dir=python_qt_binding

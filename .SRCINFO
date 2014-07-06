@@ -10,9 +10,9 @@ pkgbase = ros-indigo-python-qt-binding
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
 	makedepends = ros-indigo-rosbuild
-	makedepends = python2-pyqt4
+	makedepends = python2-pyqt4-10
 	makedepends = qt4
-	depends = python2-pyqt4
+	depends = python2-pyqt4-10
 	source = python_qt_binding::git+https://github.com/ros-gbp/python_qt_binding-release.git#tag=release/indigo/python_qt_binding/0.2.13-0
 	md5sums = SKIP
 
