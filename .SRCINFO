@@ -1,12 +1,12 @@
 pkgbase = libgaminggear
 	pkgdesc = Provides functionality for gaming input devices
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/libgaminggear/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = cmake=3.0
+	makedepends = cmake>=3.0
 	makedepends = doxygen
 	makedepends = gtk2
 	makedepends = sqlite3>=3.7
