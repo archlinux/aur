@@ -4,7 +4,7 @@
 
 pkgname=subdl
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line tool for downloading subtitles from opensubtitles.org"
 arch=('any')
 url="http://code.google.com/p/$pkgname/"
