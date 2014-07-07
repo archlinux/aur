@@ -2,7 +2,7 @@
 _pypiname=wheel
 pkgbase=python-wheel
 pkgname=('python-wheel' 'python2-wheel')
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A built-package format for Python"
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/w/wheel/$_pypiname-$pkgver.tar.gz")
-md5sums=('273374d28127b821d61cdfe56e7c35dd')
+md5sums=('3b0d66f0d127ea8befaa5d11453107fd')
 
 package_python-wheel() {
   depends=('python')
@@ -25,9 +25,7 @@ package_python2-wheel() {
 
   cd "$srcdir/$_pypiname-$pkgver"
   /usr/bin/python2 setup.py install --root="$pkgdir/" --optimize=1
-  mv "$pkgdir/usr/bin/egg2wheel" "$pkgdir/usr/bin/egg2wheel2"
   mv "$pkgdir/usr/bin/wheel" "$pkgdir/usr/bin/wheel2"
-  mv "$pkgdir/usr/bin/wininst2wheel" "$pkgdir/usr/bin/wininst2wheel2"
 }
 
 # vim:set ts=2 sw=2 et:
