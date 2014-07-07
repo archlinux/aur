@@ -1,18 +1,18 @@
 pkgbase = easyrpg-editor-qt-git
 	pkgdesc = EasyRPG's Game Editor (QT, development version)
-	pkgver = r298.98a486d
+	pkgver = r308.5b413b5
 	pkgrel = 1
 	url = https://easy-rpg.org/
 	install = easyrpg-editor-qt-git.install
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = GPL3
 	makedepends = git
 	depends = liblcf-git
 	depends = qt5-multimedia
 	provides = easyrpg-editor-qt
 	conflicts = easyrpg-editor-qt
-	source = easyrpg-editor-qt::git+https://github.com/EasyRPG/editor-qt.git
+	source = easyrpg-editor-qt::git+https://github.com/EasyRPG/Editor-QT.git
 	md5sums = SKIP
 
 pkgname = easyrpg-editor-qt-git
