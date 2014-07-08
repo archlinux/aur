@@ -62,6 +62,8 @@ pkgbase = git-annex-git
 	conflicts = git-annex
 	conflicts = git-annex-bin
 	options = !makeflags
+	source = git://git.kitenet.net/git-annex
+	md5sums = SKIP
 
 pkgname = git-annex-git
 

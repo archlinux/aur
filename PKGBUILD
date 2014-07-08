@@ -72,6 +72,8 @@ options=(!makeflags)
 conflicts=(git-annex git-annex-bin)
 makedepends=(ghc)
 optdepends=('quvi: Enable use of quvi to download videos')
+source=("git://git.kitenet.net/${pkgname%-git}")
+md5sums=('SKIP')
 
 _features=()
 
@@ -223,9 +225,6 @@ gitannexfeature $_cryptohash CryptoHash
 
 (( ! _build_docs )) || makedepends=("${makedepends[@]}" ikiwiki)
 
-_gitroot=git://git.kitenet.net/git-annex
-_gitname=git-annex
-
 asking() {
   read -p "$@ (Y/n)" answer
   case "$answer" in
@@ -248,26 +247,12 @@ _restore-home(){
 }
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long | sed 's/^v//;s/-/_/g'
 }
 
 build() {
-  cd $srcdir
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname
-    git fetch origin || return 1
-    git reset --hard origin/master || return 1
-    msg "The local files are updated."
-  else
-    # --depth=1 should only be used when no merge is done
-    git clone "${_gitroot}" $_gitname || return 1
-  fi
-  cd "${srcdir}/$_gitname"
-  git checkout master || return 1
-  rsync -aH --del "${srcdir}/$_gitname/" "${srcdir}/build/" || return 1
-  cd "${srcdir}/build"
+  cd "$srcdir/${pkgname%-git}"
 
   msg "Git checkout done or server timeout"
 
@@ -299,7 +284,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/build
+  cd "$srcdir/${pkgname%-git}"
   _localize-home
   make DESTDIR=$pkgdir install
   _restore-home
