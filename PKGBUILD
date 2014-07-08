@@ -72,7 +72,7 @@ depends=(
          util-linux
          )
 options=(!makeflags)
-conflicts=(git-annex-git)
+conflicts=(git-annex-bin git-annex-git)
 makedepends=(ghc)
 optdepends=('quvi: Enable use of quvi to download videos')
 

@@ -59,6 +59,7 @@ pkgbase = git-annex
 	depends = rsync
 	depends = util-linux
 	optdepends = quvi: Enable use of quvi to download videos
+	conflicts = git-annex-bin
 	conflicts = git-annex-git
 	options = !makeflags
 
