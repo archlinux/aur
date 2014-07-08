@@ -51,8 +51,8 @@ _haskell_core=1
 _haskell_web=0
 
 pkgname=git-annex
-pkgver=5.20140210
-pkgrel=1
+pkgver=5.20140707
+pkgrel=0
 pkgdesc='manage files with git, without checking their contents into git'
 arch=('i686' 'x86_64')
 url="http://git-annex.branchable.com/"
