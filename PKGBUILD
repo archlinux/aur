@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xorg-xsm-git
 pkgdesc="X Session Manager"
-pkgver=1.0.3.r7.g6c335e1
+pkgver=1.0.3.r6.g0caed2f
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://xorg.freedesktop.org/"

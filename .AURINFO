@@ -18,7 +18,6 @@ pkgbase = xorg-xsm-git
 	provides = xorg-xsm
 	conflicts = xorg-xsm
 	source = xorg-xsm-git::git://anongit.freedesktop.org/git/xorg/app/xsm
-	md5sums = SKIP
 
 pkgname = xorg-xsm-git
 
