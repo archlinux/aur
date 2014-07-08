@@ -1,5 +1,7 @@
 # Maintainer: Nicolas Pouillard <nicolas.pouillard@gmail.com>
-# Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
+#
+# Contributor: Elena “of Valhalla” Grandi <elena.valhalla@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 # Cabal Flags:
 # The git-annex assistant requires significantly more dependencies.
