@@ -1,11 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=vtwm-git
 pkgver=5.5.0.rc8.15
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight, customizable window manager with a virtual desktop"
 arch=('i686' 'x86_64')
 url="http://www.vtwm.org"
-license=('custom')
+license=('MIT')
 provides=('vtwm')
 conflicts=('vtwm')
 depends=('libxpm' 'libxmu' 'libxft' 'libxinerama' 'libxrandr' 'esound' 'rplay')
@@ -27,6 +27,14 @@ prepare() {
   cd $pkgname
   sed -e "/^AC_INIT/s|^.*$|AC_INIT([vtwm],[$pkgver], [mailto:vtwm-hackers@lists.sandelman.ca],[vtwm])|" \
     -i configure.ac
+  (
+	  head -n 26 add_window.c
+	  head -n 20 applets.c
+	  head -n 18 desktop.c
+	  head -n 22 sound.c
+	  cat contrib/nexpm/xpm.COPYRIGHT
+
+  ) >COPYRIGHT
 }
 
 build() {
@@ -36,21 +44,11 @@ build() {
   autoconf
   ./configure --prefix=/usr --sysconfdir=/etc
   make V=0
-  head -n 26 add_window.c > EH_MIT
-  head -n 20 applets.c > MIT
-  head -n 18 desktop.c > DE_ICSTM
-  head -n 24 gram.c > Bison_GPL
-  head -n 22 sound.c > DJHJ
 }
 
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
-  install -Dm0644 EH_MIT    "$pkgdir/usr/share/licenses/$pkgname/EH_MIT"
-  install -Dm0644 MIT	    "$pkgdir/usr/share/licenses/$pkgname/MIT"
-  install -Dm0644 DE_ICSTM  "$pkgdir/usr/share/licenses/$pkgname/DE_ICSTM"
-  install -Dm0644 Bison_GPL "$pkgdir/usr/share/licenses/$pkgname/Bison_GPL"
-  install -Dm0644 DJHJ	    "$pkgdir/usr/share/licenses/$pkgname/DJHJ"
-  install -Dm0644 contrib/nexpm/xpm.COPYRIGHT    "$pkgdir/usr/share/licenses/$pkgname/xpm.COPYRIGHT"
+  install -Dm0644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   install -Dm0644 ../vtwm.desktop "$pkgdir/usr/share/xsessions/vtwm.desktop"
 }

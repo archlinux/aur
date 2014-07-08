@@ -1,11 +1,11 @@
 pkgbase = vtwm-git
 	pkgdesc = A lightweight, customizable window manager with a virtual desktop
 	pkgver = 5.5.0.rc8.15
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.vtwm.org
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = git
 	depends = libxpm
 	depends = libxmu
