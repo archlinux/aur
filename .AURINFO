@@ -11,11 +11,9 @@ pkgbase = vtwm
 	depends = libxmu
 	depends = flex
 	depends = rplay
-	backup = usr/share/X11/vtwm/system.vtwmrc
 	source = http://www.vtwm.org/downloads/vtwm-5.4.7.tar.gz
 	source = vtwm.desktop
-	md5sums = 707f8d93b19b46fb3d036053be66288b
-	md5sums = 7b4fcabdd4cf2b3a03683c37cb0fa82b
+	backup = usr/share/X11/vtwm/system.vtwmrc
 
 pkgname = vtwm
 
