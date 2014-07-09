@@ -1,4 +1,3 @@
 #!/bin/sh
 
-cd /usr/share/freeplane
-exec ./freeplane.sh
+exec /usr/share/freeplane/freeplane.sh "$@"
