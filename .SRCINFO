@@ -1,13 +1,16 @@
 pkgbase = kicad-pretty-git
 	pkgdesc = KiCad .pretty repos. Theese are the new footprint library.
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KiCad
 	install = kicad.install
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = curl
 	options = !strip
+	source = https://raw.githubusercontent.com/KiCad/kicad-library/master/template/fp-lib-table.for-pretty
+	md5sums = SKIP
 
 pkgname = kicad-pretty-git
 
