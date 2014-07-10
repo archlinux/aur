@@ -14,8 +14,6 @@ pkgbase = jwmtools-git
 	conflicts = jwmtools
 	source = jwmtools-git::git+https://github.com/kostelnik/jwmtools.git
 	source = build.patch
-	md5sums = SKIP
-	md5sums = 010273979c95da69f3fcf5a35fe06cb4
 
 pkgname = jwmtools-git
 
