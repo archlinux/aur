@@ -1,9 +1,9 @@
-2013-09-11 | J0k3r <moebius282 e4at gmail D0_T com>
+2013-09-11 | J0k3r <moebius282 at gmail dot com>
 
 	* fez-1378846930-1:
 		- Inital Release ( fez-09102013-linux-1378846930-bin )
 
-2013-09-12 | J0k3r <moebius282 e4at gmail D0_T com>
+2013-09-12 | J0k3r <moebius282 at gmail dot com>
 
 	* fez-1378846930-2:
 		- Added Changelog
@@ -11,21 +11,27 @@
 		- Removed the bundled openal and sdl2 libs. Can't remove the bundled mono,
 		  as the version in the repos is too old ( for monogame-sdl2 i guess).
 
-	* fez-20130911-1:
+	* fez-1:20130911-1:
 		- Updated to latest release ( fez-09112013-bin )
 
 		- Changed to new versioning scheme; set epoch. geez..
 
-2013-09-13 | J0k3r <moebius282 e4at gmail D0_T com>
+2013-09-13 | J0k3r <moebius282 at gmail dot com>
 
-	* fez-20130912-1
+	* fez-1:20130912-1
 		- Updated to latest release ( fez-09122013-1379017964-bin )
 
 		- Kept the date-based versioning, let's see if this will cause any troubles in the future..
 		  ( I guess it's too hard to name the archives consistently!? )
 
-2013-09-16 | J0k3r <moebius282 e4at gmail D0_T com>
+2013-09-16 | J0k3r <moebius282 at gmail dot com>
 
-	* fez-20130915-1
+	* fez-1:20130915-1
 		- Updated to latest release ( fez-09152013-bin )
-	
+
+2014-06-29 | J0k3r <moebius282 at gmail dot com>
+
+	* fez-1:20140624-1
+		- Updated to latest release ( fez-06242014-bin ) ( this is version 1.11 )
+
+		- Changelog formatting changes
