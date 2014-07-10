@@ -19,8 +19,8 @@ source=("hib://${_archivename}"
         "${pkgname}.desktop"
         "${pkgname}.changelog")
 sha256sums=('e9f2306bbbf8908b1dd4d09519959316a31df38002e80bfb74116cd338c50584'
-            '91e5b44bed07a180f591687d199fb88507a80f91cbea6cb6b42d19bfce73323a'
-            'SKIP')
+            '066e9af39f583bf1906e40966b59db22e61097d970fba146933bbf4f92fc1bbb'
+            '258da37d9afe688f9a7a093d9ba9be82b8c92ae94c74660840d3f282ebc44da7')
 PKGEXT=".pkg.tar"
 
 
