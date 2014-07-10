@@ -1,45 +1,40 @@
 # Contributor: Mark Grimes <mark_aur@peculier.com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
+# Contributor: macxcool
 
 pkgname=stopmotion
-pkgver=0.6.2
-pkgrel=3
+_realname=linuxstopmotion
+pkgver=0.8.0
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Stop motion animation creation program"
-url="http://stopmotion.bjoernen.com"
+url="http://linuxstopmotion.org/index.html"
 license=('GPL')
 makedepends=('pkgconfig')
-depends=('qt' 'sdl_image' 'libxml2' 'libvorbis' 'inotify-tools')
-source=(http://developer.skolelinux.no/info/studentgrupper/2005-hig-stopmotion/project_management/webpage/releases/$pkgname-$pkgver.tar.gz
-        add-x11-lib.patch add-unistd.patch)
-md5sums=('a139f036286f31bba21effb2b6553d1e' 'e8943488fec6994aee11ac9f25d04d45'
-         '87bbc308a7c3146560fd3cf1dc7ceb78' )
-
-_qt4profile=/etc/profile.d/qt4.sh
+depends=('qt4' 'sdl_image' 'libxml2' 'libvorbis')
+# 'inotify-tools'
+makedepends=('git' 'libtar')
+conflicts=('linuxstopmotion-git')
+source=($_realname::git+http://git.code.sf.net/p/$_realname/code#tag=$pkgver)
+#         add-unistd.patch)
+md5sums=('SKIP')
 
 build() {
-    [ -e $_qt4profile ] && . $_qt4profile
-    cd "$srcdir/$pkgname-$pkgver"
-
-    patch -p1 < "${srcdir}/add-x11-lib.patch"
-    patch -p1 < "${srcdir}/add-unistd.patch"
-
-    ./configure --prefix=/usr --with-html-dir=/usr/share/$pkgname/html
-    make -j1
-}
-
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make -k check
+    cd "$srcdir/$_realname"
+    lrelease-qt4 stopmotion.pro
+    qmake-qt4 PREFIX=/usr stopmotion.pro
+    sed -i '/^LIBS/s|$| -lX11|' Makefile
+    make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make prefix=$startdir/pkg install
-
-    # Makefile doesn't seem to install the man file
-    gzip ${pkgname}.1
-    mkdir -p $startdir/pkg/usr/share/man/man1
-    install -m 644 -p ${pkgname}.1.gz $startdir/pkg/usr/share/man/man1
+    cd "$srcdir/$_realname"
+    sed -e 's/install_desktop install_dummy/install_desktop/' -i Makefile.Release
+    make INSTALL_ROOT="$pkgdir" install
+    install -D -m644 stopmotion.desktop "$pkgdir"/usr/share/applications/stopmotion.desktop
+    install -D -m644 graphics/stopmotion.png "$pkgdir"/usr/share/pixmaps/stopmotion.png
+    install -D -m644 stopmotion.mime "$pkgdir"/usr/share/mime-info/stopmotion.mime
+    install -D -m644 stopmotion.1 "$pkgdir"/usr/share/man/man1/stopmotion.1
+    gzip "$pkgdir"/usr/share/man/man1/stopmotion.1
 }
 
