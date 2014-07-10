@@ -1,0 +1,18 @@
+pkgbase = pnapi
+	pkgdesc = C++ library encapsulating Petri net-related functions
+	pkgver = 4.03
+	pkgrel = 1
+	url = http://service-technology.org/pnapi/
+	install = pnapi.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = petrify
+	optdepends = graphviz: for svg output with petri
+	optdepends = lola1: to use the cdnf tool
+	backup = etc/petri.conf
+	source = http://download.gna.org/service-tech/pnapi/pnapi-4.03.tar.gz
+	sha256sums = 2235be39b1c0615ded0197e57661a5127337681f034a8d29bed833f376c8a836
+
+pkgname = pnapi
+
