@@ -1,13 +1,22 @@
-2013-04-26 | J0k3r <moebius282 e4at gmail D0_T com>
+2013-04-26 | J0k3r <moebius282 at gmail dot com>
 
 	* kairo-1.4-1:
 		- Inital Release ( kairo-linux-1.4.tar.gz )
 
-2013-09-17 | J0k3r <moebius282 e4at gmail D0_T com>
+2013-09-17 | J0k3r <moebius282 at gmail dot com>
 
 	* kairo-2.1-1:
 		- Updated to latest release ( kairo-linux-2.1.tar.gz )
-		
+
 		- Added Changelog
 
 		- Cleanups; Using the included icon
+
+2014-07-10 | J0k3r <moebius282 at gmail dot com>
+
+	* kairo-1:20140102-1:
+		- Updated to latest release ( kairo_linux_01022014.gz )
+
+		- Changelog formatting changes
+
+		- Added license file

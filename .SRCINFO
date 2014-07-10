@@ -1,23 +1,26 @@
 pkgbase = kairo
 	pkgdesc = A game about exploring the lost world of Kairo
-	pkgver = 2.1
+	pkgver = 20140102
 	pkgrel = 1
+	epoch = 1
 	url = http://kairo.lockeddoorpuzzle.com/
 	changelog = kairo.changelog
 	arch = i686
 	arch = x86_64
 	groups = games
-	license = unknown
-	makedepends = imagemagick
+	license = custom
 	depends = glu
 	depends = gcc-libs
 	depends = libxcursor
-	source = file://kairo-linux-2.1.tar.gz
+	depends = gtk2
+	source = file://kairo_linux_01022014.gz
 	source = kairo.desktop
 	source = kairo.changelog
-	sha256sums = c91cec58b194ad009afe27653fcab648fa5e7cd5c0bf037489a0f5c8c796b77b
-	sha256sums = d3e938b20997c6a26ad9102d56a74d943b35ce47ff155e705a4464f79ca76813
-	sha256sums = 356dbb435640c73a55f6f00521c1033064fa41de995f664378eaa5e238a6c269
+	source = kairo.license
+	sha256sums = 87f2bd4946a4c2525c02a300e76865b15058f334b76cbf6326b433d7002175d8
+	sha256sums = 3e3c8e4a6387fbebf8840219ccadbdf6a06febf2524c2dc50a239750b6a6c267
+	sha256sums = b785da983359c325b1d6c1e4e16626f3c5dd4596f50432b0b353c0645448d751
+	sha256sums = 9acb1f5ff635ee1815322a4fe43b9ddc2a2a6f5fb74e35fa8d1494807b24a80c
 
 pkgname = kairo
 
