@@ -1,7 +1,7 @@
 pkgbase = reportbug
 	pkgdesc = report bugs in the Debian distribution + python modules
 	pkgver = 6.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/sid/reportbug
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = reportbug
 	depends = python2-support
 	depends = apt
 	depends = sensible-utils
-	provides = python2-reportbug=6.4.3
+	provides = python2-reportbug=6.5.0
 	conflicts = python2-reportbug
 	options = !emptydirs
 	source = http://ftp.debian.org/debian/pool/main/r/reportbug/reportbug_6.5.0.tar.bz2
