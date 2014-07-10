@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
 pkgname=perl-file-fcntllock
 _perlmod=File-FcntlLock
-pkgver=0.14
+pkgver=0.20
 pkgrel=1
 pkgdesc="Perl module for file locking with fcntl(2)"
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(http://search.cpan.org/CPAN/authors/id/J/JT/JTT/$_perlmod-$pkgver.tar.gz)
-md5sums=('261aa44a9806181ae8fdf49bead7f828')
+sha256sums=('3870e6fe47d1cea4de063af10676593dcd8b91aecf95fc94b64edd657f9a9e10')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"

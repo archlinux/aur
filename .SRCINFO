@@ -1,6 +1,6 @@
 pkgbase = perl-file-fcntllock
 	pkgdesc = Perl module for file locking with fcntl(2)
-	pkgver = 0.14
+	pkgver = 0.20
 	pkgrel = 1
 	url = http://search.cpan.org/dist/File-FcntlLock/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-file-fcntllock
 	license = PerlArtistic
 	depends = perl>=5.10.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JT/JTT/File-FcntlLock-0.14.tar.gz
-	md5sums = 261aa44a9806181ae8fdf49bead7f828
+	source = http://search.cpan.org/CPAN/authors/id/J/JT/JTT/File-FcntlLock-0.20.tar.gz
+	sha256sums = 3870e6fe47d1cea4de063af10676593dcd8b91aecf95fc94b64edd657f9a9e10
 
 pkgname = perl-file-fcntllock
 
