@@ -1,6 +1,6 @@
 pkgbase = dh-make
 	pkgdesc = tool that converts source archives into Debian package source
-	pkgver = 0.63
+	pkgver = 1.20140617
 	pkgrel = 1
 	url = http://packages.debian.org/sid/dh-make
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = dh-make
 	depends = dpkg
 	depends = perl
 	depends = make
-	source = http://ftp.debian.org/debian/pool/main/d/dh-make/dh-make_0.63.tar.gz
-	md5sums = aa0e6502d682d3c6d97b81ce2d414c87
+	source = http://ftp.debian.org/debian/pool/main/d/dh-make/dh-make_1.20140617.tar.xz
+	sha256sums = 1b33c7fadacbe629889aec54d3a1a9cc1a3dd20b5ef04abdde9f14a1c3ea399e
 
 pkgname = dh-make
 
