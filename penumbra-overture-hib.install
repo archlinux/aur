@@ -1,5 +1,4 @@
 post_install() {
-  echo "You can find the license in '/usr/share/licenses/penumbra-overture-hib/license'"
   update-desktop-database -q
 }
 
@@ -10,5 +9,3 @@ post_upgrade() {
 post_remove() {
   update-desktop-database -q
 }
-
-# vim:set ts=2 sw=2 et:

@@ -2,25 +2,33 @@
 
 pkgname=penumbra-overture-hib
 pkgver=1.1
-pkgrel=1
-pkgdesc='A first person adventure/survival horror game'
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc="A first person adventure/survival horror game"
 url='http://www.penumbragame.com/'
 license=('custom')
+arch=('i686' 'x86_64')
+groups=("games")
+_purgelibs=('libGLU.so' 'libSDL' 'libjpeg.so' 'libogg.so' 'libopenal.so' 'libpng' 'libstdc++.so'
+            'libvorbis' 'libCg' 'libalut')
+if [ "$CARCH" = "x86_64" ]; then
+  depends=('lib32-sdl_ttf' 'lib32-glu' 'lib32-freealut' 'lib32-nvidia-cg-toolkit' 'lib32-libxft'
+           'lib32-sdl_image' 'lib32-libpng12' 'lib32-libvorbis')
+else
+  depends=('sdl_ttf' 'glu' 'freealut' 'nvidia-cg-toolkit' 'libxft' 'sdl_image' 'libpng12'
+           'libvorbis')
+fi
+makedepends=('xz' 'desktop-file-utils')
+# changelog="${pkgname}.changelog"
 install="${pkgname}.install"
-PKGEXT='.pkg.tar'
-#options=('!strip')
-makedepends=('xz')
-
-source=("hib://penumbra_overture_${pkgver}.sh" 
+_archivename="penumbra_overture_${pkgver}.sh"
+source=("hib://${_archivename}"
         "${pkgname}.desktop"
-        "${pkgname}.install"
-        "http://arm.konnichi.com/extra/os/i686/libvorbis-1.3.2-1-i686.pkg.tar.xz")
-
+        "${pkgname}.install")
 sha256sums=('959aa4e4a277503c01bfc06058d027e784ce6630bb2cea0ea7a006068ecacc77'
             '22d1287bfc9287ba16121503c1b6ebf108bec73f291e0a06324a9eb7ab43a21a'
-            'e29d5fe2eec29a0ee92cb8d21676443d43f6e150b3b0997f2f566da1c2ee558a'
-            'edfa389d9f8a7f0331da3c82b8d90a8c738973be7b279745b6bde41c0f26a3f2')
+            '98e2b035499843cc5c83da67536a770c0701c1d426268c4958f1d953e7cd212e')
+PKGEXT=".pkg.tar"
+
 
 # You can download the Humble Indie Bundle file manually, or you can configure
 # DLAGENTS in makepkg.conf to auto-download.
@@ -34,43 +42,10 @@ sha256sums=('959aa4e4a277503c01bfc06058d027e784ce6630bb2cea0ea7a006068ecacc77'
 # DLAGENTS=('hib::/usr/bin/find /path/to/downloads -name $(echo %u | cut -c 7-) -exec ln -s \{\} %o \; -quit')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
-if [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-sdl_ttf'
-           'lib32-glu'
-           'lib32-libjpeg'
-           'lib32-freealut'
-           'lib32-nvidia-cg-toolkit'
-           'lib32-libxft'
-           'bash'
-           'lib32-gcc-libs'
-           # 'lib32-libvorbis'
-           'lib32-openal'
-           'lib32-libgl'
-           'lib32-sdl_image'
-           'desktop-file-utils'
-           'lib32-libpng12')
-else
-  depends=('sdl_ttf'
-          'glu'
-          'libjpeg'
-          'freealut'
-          'nvidia-cg-toolkit'
-          'libxft'
-          'bash'
-          'gcc-libs'
-          # 'libvorbis'
-          'openal'
-          'libgl'
-          'sdl_image'
-          'desktop-file-utils'
-          'libpng12')
-fi
 
 package() {
 
-#Extract double packed game files 
-
-  msg 'Extracting archive...'
+#Extract double packed game files
 
   mkdir -p "${srcdir}/${pkgname}"
   sh penumbra_overture_1.1.sh --tar -xf -C "${srcdir}/${pkgname}"
@@ -84,32 +59,26 @@ package() {
 # Remove all but 'libfltk.so.1.1', as there is no 32-bit package available for it on x86_64 systems
 # and I'm too lazy too write a pkgbuild for it ;)
 
-  msg 'Removing unneeded bundled libraries...'
-
-  for i in 'libGLU.so' 'libSDL' 'libjpeg.so' 'libogg.so' 'libopenal.so' 'libpng' \
-  'libstdc++.so' 'libvorbis' 'libCg' 'libalut'; do
+  for i in "${_purgelibs[@]}"; do
     rm "${pkgdir}/opt/${pkgname}/lib/${i}"*
   done
 
-#We need this old version of libvorbis because the game is broken with the new one -> crashes shortly after intro
-
-  tar --recursion --exclude 'pkgconfig' --strip-components 2 -Jxf "${srcdir}/`basename ${source[3]}`" -C "${pkgdir}/opt/${pkgname}/lib/" "usr/lib/" &>/dev/null
-
 # Fix the path in the startup script.
 
-  sed -i -e 's|`dirname ${0}`|/opt/'"$pkgname"'/|' "${pkgdir}/opt/${pkgname}/penumbra" 
+  sed -i -e 's|`dirname ${0}`|/opt/'"$pkgname"'/|' "${pkgdir}/opt/${pkgname}/penumbra"
 
 #Changing the owner of the files, as the default is 500:500
 
   chown -R 0:0 ${pkgdir}/opt/${pkgname}
 
 #Copy around some files
-  install -D -m644 "${srcdir}/${pkgname}/config/license" "${pkgdir}/usr/share/licenses/${pkgname}/license"
-  install -D -m755 "${pkgdir}/opt/${pkgname}/penumbra" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m644 "${srcdir}/${pkgname}/config/license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # install -D -m755 "${pkgdir}/opt/${pkgname}/penumbra" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 "${pkgdir}/opt/${pkgname}/penumbra.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-  rm "${pkgdir}/opt/${pkgname}/penumbra.png"
-  rm "${pkgdir}/opt/${pkgname}/penumbra"
+  # rm "${pkgdir}/opt/${pkgname}/penumbra.png"
+  install -d "${pkgdir}/usr/bin/"
+  ln -s "/opt/${pkgname}/penumbra" "${pkgdir}/usr/bin/${pkgname}"
 
 }
