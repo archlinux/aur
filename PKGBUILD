@@ -1,9 +1,10 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 # Contributor: Jean Azzopardi 'LordIllidan' <aragorn@waldonet.net.mt>
 
 pkgname=netwmpager
 pkgver=2.05
-pkgrel=1
+pkgrel=2
 pkgdesc="A NetWM/EWMH compatible pager"
 arch=('i686' 'x86_64')
 url="http://onion.dynserv.net/~timo/?page=Projects/netwmpager"
