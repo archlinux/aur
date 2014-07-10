@@ -1,0 +1,14 @@
+pkgbase = lola1
+	pkgdesc = A Low Level Petri Net Analyzer
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://service-technology.org/lola/
+	install = lola1.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	source = http://download.gna.org/service-tech/lola/lola-1.18.tar.gz
+	sha256sums = 33c8ebfb1ddcee0e661370622ea8c1d9c7188f8c8bd09e6ee7c0dea5329c227f
+
+pkgname = lola1
+
