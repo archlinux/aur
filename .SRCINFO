@@ -1,6 +1,6 @@
 pkgbase = python2-debianbts
 	pkgdesc = Python interface to Debians Bug Tracking System
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 1
 	url = http://packages.debian.org/sid/python-debianbts
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-debianbts
 	depends = python2-soappy
 	depends = python2-support
 	options = !emptydirs
-	source = http://ftp.debian.org/debian/pool/main/p/python-debianbts/python-debianbts_1.11.tar.gz
-	md5sums = 6f24b4f2185a1ea6c7d7cf039ff85543
+	source = http://ftp.debian.org/debian/pool/main/p/python-debianbts/python-debianbts_1.12.tar.xz
+	sha256sums = 1b3e6b8a9618e63bb9f6f945230588cdcb273fb1fcb959c9811d435e1b0e896f
 
 pkgname = python2-debianbts
 
