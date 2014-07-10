@@ -9,7 +9,6 @@ pkgbase = fbmix
 	depends = alsa-lib
 	depends = vte
 	source = fbmix-0.4.tar.bz2
-	md5sums = 3aee7ddc68facc966f0146d1a8f7e6c8
 
 pkgname = fbmix
 
