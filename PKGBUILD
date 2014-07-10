@@ -17,7 +17,7 @@ _archivename="LittleInferno-${pkgver}"
 source=("hib://${_archivename}.sh"
 		"${pkgname}.desktop")
 sha256sums=('3848f4037652699c162ebf3ae78f6dce81772394911483c9f1ef49cb51f6a198'
-            '32a630a295a136552f748156ba981154d04d1695d8f8dab316928c40a55d6a95')
+            '62f78d2af293917a121b2650f9a7f1bb6687cdb7f1326be6242084298ca90595')
 PKGEXT=".pkg.tar"
 
 
@@ -62,7 +62,7 @@ package()
 
 	install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m644 "${pkgdir}/opt/${pkgname}/LittleInferno.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	
+
 	install -d "${pkgdir}/usr/bin/"
 	ln -s "/opt/${pkgname}/LittleInferno.bin.x86" "${pkgdir}/usr/bin/${pkgname}"
 }
