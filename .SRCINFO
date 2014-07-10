@@ -23,7 +23,7 @@ pkgbase = hotlinemiami
 	source = hotlinemiami.png
 	source = hotlinemiami.changelog
 	sha256sums = 338268eecbd63ab5cf168d85ef6c7b36f2a6999adb359222b5372651b08ba805
-	sha256sums = ca65c11bc9e06f438b2da2bb44c40424537e60b704656a155f672b16fde5f8de
+	sha256sums = 3f20c1ee2cd09240553c075b74c2bcda570e10927ad1fe51625762f181ba410d
 	sha256sums = 01432c725bd258761e67fe1db94531465ba0480e250724cf6b939669e13b0e8a
 	sha256sums = SKIP
 

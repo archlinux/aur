@@ -26,7 +26,7 @@ source=("hib://${_archivename}.tar.gz"
 		"${pkgname}.png"
 		"${pkgname}.changelog")
 sha256sums=('338268eecbd63ab5cf168d85ef6c7b36f2a6999adb359222b5372651b08ba805'
-			'ca65c11bc9e06f438b2da2bb44c40424537e60b704656a155f672b16fde5f8de'
+			'3f20c1ee2cd09240553c075b74c2bcda570e10927ad1fe51625762f181ba410d'
 			'01432c725bd258761e67fe1db94531465ba0480e250724cf6b939669e13b0e8a'
 			'SKIP')
 noextract=("${source[0]:6}")
@@ -69,7 +69,7 @@ package()
 
 # I extracted this from the windows executable; couldn't find one anywhere else
 	install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	
+
 # We need this as the program expect to be launched from the same directory it resides in
 	install -d "${pkgdir}/usr/bin/"
 
