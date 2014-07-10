@@ -18,8 +18,8 @@ source=("hib://${_archivename}"
         "${pkgname}.desktop"
         "${pkgname}.install")
 sha256sums=('2c6dfba53cb0dd58bcbff519862af8bf7af67475845bb43207e9d32032efa104'
-            'c4584c99f2c29b7b5eb9258789a98427f22786eff5c286f7bfca2c98d71ee2e6'
-            'c6ba824f73917be27af3fa1d0e57ef1651d70e7a0473a98a02dae3df05e2e625')
+            '5a17e0ecb042af80754de5d9724521207cf1b49f0bceeeb9abe3e125a586bfef'
+            'ba4062a89d569bc4af4d21c6660093e10d189715031630c4f7c6712452a03b40')
 #PKGEXT=".pkg.tar"
 
 
