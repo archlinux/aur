@@ -22,7 +22,7 @@ source=("hib://${_archivename}"
         "${pkgname}.desktop"
         "${pkgname}.changelog")
 sha256sums=('4973acf3b995ee015ce12908c368acd10db86614e45088a6ccdb53b60e8c235e'
-            '5b2a809bc1c70f50fc372571db5048bbc428f893e7e861fac572d622b588d82a'
+            'e1f2f711d735e0dce6261c14c9ebf8ecd910c329ef4514d5f29ce1df44906b69'
             'SKIP')
 PKGEXT=".pkg.tar"
 
@@ -64,4 +64,3 @@ package()
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 "${pkgdir}/opt/${pkgname}/AntichamberIcon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
-

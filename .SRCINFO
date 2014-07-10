@@ -15,7 +15,7 @@ pkgbase = antichamber
 	source = antichamber.desktop
 	source = antichamber.changelog
 	sha256sums = 4973acf3b995ee015ce12908c368acd10db86614e45088a6ccdb53b60e8c235e
-	sha256sums = 5b2a809bc1c70f50fc372571db5048bbc428f893e7e861fac572d622b588d82a
+	sha256sums = e1f2f711d735e0dce6261c14c9ebf8ecd910c329ef4514d5f29ce1df44906b69
 	sha256sums = SKIP
 
 pkgname = antichamber
