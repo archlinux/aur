@@ -1,8 +1,7 @@
 # Maintainer: Johannes Dewender   arch at JonnyJD dot net
 pkgname=python-debian
 _python=python
-pkgver=0.1.21_nmu2
-_pkgver=0.1.21-nmu2
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="Python modules to work with Debian-related data formats"
 arch=('any')
@@ -13,15 +12,15 @@ optdepends=("$_python-apt: interface to libapt-pkg")
 makedepends=()
 conflicts=()
 options=(!emptydirs)
-source=(http://pypi.python.org/packages/source/p/$pkgname/$pkgname-$_pkgver.tar.gz)
-md5sums=('09c0b6ce10bf473c54fff9e6c62fe1d6')
+source=(http://ftp.debian.org/debian/pool/main/p/$pkgname/${pkgname}_$pkgver.tar.xz)
+sha256sums=('c055dccdc5d9a762f90ce82eeab6610727cd56a29f6db2b68fce763ac5b942e0')
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname"
   $_python setup.py build
 }
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname"
   $_python setup.py install --root="$pkgdir/" --optimize=1
 }
 
