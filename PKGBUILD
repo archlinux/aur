@@ -6,7 +6,7 @@
 _pkgname=xorg-xinit
 pkgname=xorg-xinit-git
 pkgver=1.3.3.r9.g5502aaf
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="X.Org initialisation program "
 arch=('i686' 'x86_64')
@@ -20,10 +20,12 @@ backup=(
 conflicts=('xorg-xinit')
 provides=('xorg-xinit')
 source=("$pkgname::git://anongit.freedesktop.org/git/xorg/app/xinit"
-        fs25361.patch)
+        fs25361.patch
+        xserverrc)
 options=(!emptydirs)
 sha256sums=('SKIP'
-            '7cd5941b962542117fada9bbb80f76db99eee14fa951d1a4a09e0f386fcef562')
+            '7cd5941b962542117fada9bbb80f76db99eee14fa951d1a4a09e0f386fcef562'
+            '5e87bff928c143d9db9966048f6530e83e9e9a1cac09ce4c25f8aabc08611b6f')
 
 pkgver() {
   cd $pkgname
@@ -47,6 +49,7 @@ package() {
   cd $pkgname
   make DESTDIR="${pkgdir}" install
 
+  install -m644 ../xserverrc "${pkgdir}/etc/X11/xinit/xserverrc"
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
