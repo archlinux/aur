@@ -4,7 +4,7 @@
 
 pkgname=gmrun
 pkgver=0.9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple program which provides a run program window"
 arch=('i686' 'x86_64')
 url="http://sf.net/projects/gmrun"
@@ -27,4 +27,4 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	make DESTDIR="${pkgdir}" install
-} 
+}
