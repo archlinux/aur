@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'avahi' 'yajl' 'libpciaccess' 'udev' 'dbus-core' 'libxau' 'libxdmcp' 'libpcap'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
-	 'iproute2' 'libnl' 'libx11' 'numactl')
+	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext')
 	# 'audit'
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi')
 optdepends=('bridge-utils: for briged networking (default)'
