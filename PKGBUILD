@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot  <jgc@archlinux.org>
 pkgname=libwnck+-git
 pkgver=2.31.0.r17.gc9f5dda
-pkgrel=1
+pkgrel=2
 pkgdesc="Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -23,11 +23,14 @@ build() {
   cd $pkgname
   ./autogen.sh --prefix=/usr --sysconfdir=/etc \
 	--localstatedir=/var --disable-static \
-	--disable-tools
+	--enable-tools
   make
 }
 
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
+  # libwnck3 installs these with the normal names linked against wrong library
+  mv "${pkgdir}"/usr/bin/wnckprop "${pkgdir}"/usr/bin/wnckprop2
+  mv "${pkgdir}"/usr/bin/wnck-urgency-monitor "${pkgdir}"/usr/bin/wnck-urgency-monitor2
 }

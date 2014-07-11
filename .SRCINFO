@@ -1,7 +1,7 @@
 pkgbase = libwnck+-git
 	pkgdesc = Window Navigator Construction Kit
 	pkgver = 2.31.0.r17.gc9f5dda
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org/
 	arch = i686
 	arch = x86_64
