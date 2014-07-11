@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.15
 pkgver=3.15.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -18,13 +18,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0013-efistub-fix.patch'
         )
 sha256sums=('c3927e87be4040fa8aca1b58663dc0776aaf00485604ff88a623be2f3fb07794'
             '9b0d000e0bdec7a25ee6303afdab8d2af77439995876eadd6ce248e5c954037d'
             'ec593326ac4dad420b0b45a472ba3d6be2ce66b9b4d7cccf1453d02d5eb01b19'
             'cf10550fe511c534ec7f820f12c3345086b1ef64ac7f3b8b0d8d49bc3ea1f166'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182')
+            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
+            '937dc895b4f5948381775a75bd198ed2f157a9f356da0ab5a5006f9f1dacde5c')
 
 _kernelname=${pkgbase#linux}
 
@@ -41,6 +43,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix efistub hang #33745
+  # https://git.kernel.org/cgit/linux/kernel/git/mfleming/efi.git/patch/?id=c7fb93ec51d462ec3540a729ba446663c26a0505
+  patch -Np1 -i "${srcdir}/0013-efistub-fix.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
