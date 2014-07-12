@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot  <jgc@archlinux.org>
 pkgname=libwnck+-git
 pkgver=2.31.0.r18.g54c5fe6
-pkgrel=1
+pkgrel=2
 pkgdesc="Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -23,7 +23,7 @@ build() {
   cd $pkgname
   ./autogen.sh --prefix=/usr --sysconfdir=/etc \
 	--localstatedir=/var --disable-static \
-	--enable-tools
+	--enable-tools --enable-gtk-doc
   make
 }
 
