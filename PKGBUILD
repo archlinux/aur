@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
 pkgver=1.4.4
-pkgrel=2.1
+pkgrel=3
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
 arch=('i686' 'x86_64')
 url="http://nspluginwrapper.davidben.net/"
@@ -17,7 +17,7 @@ install="install"
 source=(http://nspluginwrapper.davidben.net/download/$pkgname-$pkgver.tar.gz
         'fix_missing_lib.patch')
 md5sums=('36f3e290fc4ce56f65ee695078961188'
-         'd40ad2f55d9989e04e3ef0cf4326b1df')
+         '00ca2d1ab0d7348e3157cb7b72f30e1a')
 
 if [[ $CARCH == i686 ]]; then
   # Strip lib32 etc. on i686
@@ -30,7 +30,7 @@ fi
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  patch -p0 -i "$srcdir/fix_missing_lib.patch"
+  patch -p1 -i "$srcdir/fix_missing_lib.patch"
 
   configure_args=""
   if [[ $CARCH == x86_64 ]]; then
