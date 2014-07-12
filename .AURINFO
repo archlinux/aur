@@ -19,10 +19,9 @@ pkgbase = ocserv-git
 	depends = libseccomp
 	provides = ocserv
 	conflicts = ocserv
+	source = ocserv-git::git://git.infradead.org/ocserv.git
 	backup = etc/ocserv.config
 	backup = etc/ocserv-passwd
-	source = ocserv-git::git://git.infradead.org/ocserv.git
-	md5sums = SKIP
 
 pkgname = ocserv-git
 
