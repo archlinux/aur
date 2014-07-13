@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-collada-urdf
 	pkgdesc = ROS - This package contains a tool to convert Unified Robot Description Format (URDF) documents into COLLAborative Design Activity (COLLADA) documents.
-	pkgver = 1.11.3
+	pkgver = 1.11.4
 	pkgrel = 1
 	url = http://ros.org/wiki/collada_urdf
 	arch = any
@@ -14,25 +14,25 @@ pkgbase = ros-indigo-collada-urdf
 	makedepends = ros-indigo-resource-retriever
 	makedepends = ros-indigo-angles
 	makedepends = ros-indigo-catkin
-	makedepends = ros-indigo-urdfdom
 	makedepends = ros-indigo-cmake-modules
 	makedepends = ros-indigo-collada-parser
 	makedepends = ros-indigo-urdf
-	makedepends = ros-indigo-urdfdom-headers
 	makedepends = assimp
 	makedepends = collada-dom
-	depends = ros-indigo-tf
+	makedepends = urdfdom
+	makedepends = urdfdom-headers
+	depends = ros-indigo-collada-parser
 	depends = ros-indigo-geometric-shapes
 	depends = ros-indigo-roscpp
 	depends = ros-indigo-resource-retriever
 	depends = ros-indigo-angles
-	depends = ros-indigo-urdfdom
-	depends = ros-indigo-collada-parser
+	depends = ros-indigo-tf
 	depends = ros-indigo-urdf
-	depends = ros-indigo-urdfdom-headers
 	depends = assimp
 	depends = collada-dom
-	source = collada_urdf::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/collada_urdf/1.11.3-0
+	depends = urdfdom
+	depends = urdfdom-headers
+	source = collada_urdf::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/collada_urdf/1.11.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-collada-urdf
