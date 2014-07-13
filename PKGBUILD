@@ -4,7 +4,7 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='http://ros.org/wiki/python_qt_binding'
 
 pkgname='ros-indigo-python-qt-binding'
-pkgver='0.2.13'
+pkgver='0.2.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
