@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-rosbag-storage'
-pkgver='1.11.5'
+pkgver='1.11.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,9 +18,9 @@ ros_makedepends=(ros-indigo-roscpp-serialization
   ros-indigo-roslz4)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  console-bridge
   bzip2
-  boost)
+  boost
+  console-bridge)
 
 ros_depends=(ros-indigo-roslz4
   ros-indigo-roscpp-serialization
@@ -28,9 +28,9 @@ ros_depends=(ros-indigo-roslz4
   ros-indigo-cpp-common
   ros-indigo-roscpp-traits)
 depends=(${ros_depends[@]}
-  console-bridge
   bzip2
-  boost)
+  boost
+  console-bridge)
 
 _tag=release/indigo/rosbag_storage/${pkgver}-${_pkgver_patch}
 _dir=rosbag_storage
