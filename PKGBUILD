@@ -4,7 +4,7 @@ pkgdesc="ROS - This rqt plugin ROS package provides easy view of .launch files."
 url='http://ros.org/wiki/rqt_launch'
 
 pkgname='ros-indigo-rqt-launch'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
