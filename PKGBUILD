@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-indigo-geometric-shapes'
-pkgver='0.4.0'
+pkgver='0.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,14 +17,14 @@ ros_makedepends=(ros-indigo-shape-tools
   ros-indigo-catkin
   ros-indigo-shape-msgs
   ros-indigo-cmake-modules
-  ros-indigo-octomap
-  ros-indigo-console-bridge)
+  ros-indigo-octomap)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   qhull
-  boost
-  eigen3
   assimp
+  eigen3
+  boost
+  console-bridge
   pkg-config)
 
 ros_depends=(ros-indigo-shape-tools
@@ -32,12 +32,12 @@ ros_depends=(ros-indigo-shape-tools
   ros-indigo-resource-retriever
   ros-indigo-eigen-stl-containers
   ros-indigo-shape-msgs
-  ros-indigo-octomap
-  ros-indigo-console-bridge)
+  ros-indigo-octomap)
 depends=(${ros_depends[@]}
   assimp
   boost
   eigen3
+  console-bridge
   qhull)
 
 _tag=release/indigo/geometric_shapes/${pkgver}-${_pkgver_patch}
