@@ -4,10 +4,10 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-indigo-catkin'
-pkgver='0.6.7'
-_pkgver_patch=0
+pkgver='0.6.9'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
