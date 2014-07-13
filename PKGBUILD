@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Unified Robot Descript
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-indigo-urdf'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,20 +15,20 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-catkin
   ros-indigo-urdf-parser-plugin
   ros-indigo-rosconsole-bridge
-  ros-indigo-urdfdom-headers
-  ros-indigo-urdfdom
   ros-indigo-cmake-modules
   ros-indigo-pluginlib)
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+  urdfdom
+  urdfdom-headers)
 
-ros_depends=(ros-indigo-roscpp
-  ros-indigo-urdf-parser-plugin
+ros_depends=(ros-indigo-urdf-parser-plugin
   ros-indigo-rosconsole-bridge
-  ros-indigo-urdfdom-headers
-  ros-indigo-urdfdom
-  ros-indigo-pluginlib)
-depends=(${ros_depends[@]})
+  ros-indigo-pluginlib
+  ros-indigo-roscpp)
+depends=(${ros_depends[@]}
+  urdfdom
+  urdfdom-headers)
 
 _tag=release/indigo/urdf/${pkgver}-${_pkgver_patch}
 _dir=urdf
