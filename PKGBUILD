@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='http://ros.org/wiki/rqt_image_view'
 
 pkgname='ros-indigo-rqt-image-view'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
