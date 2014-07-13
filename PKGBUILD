@@ -5,9 +5,9 @@ url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-indigo-pluginlib'
 pkgver='1.10.0'
-_pkgver_patch=1
+_pkgver_patch=3
 arch=('any')
-pkgrel=2
+pkgrel=4
 license=('BSD, Boost Software License')
 
 ros_makedepends=(ros-indigo-roslib
