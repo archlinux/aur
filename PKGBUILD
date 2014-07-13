@@ -4,7 +4,7 @@ pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying d
 url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-indigo-rostopic'
-pkgver='1.11.5'
+pkgver='1.11.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
