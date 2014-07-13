@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_pose_view provides a GUI plugin for visualizing 3D poses."
 url='http://ros.org/wiki/rqt_pose_view'
 
 pkgname='ros-indigo-rqt-pose-view'
-pkgver='0.3.5'
+pkgver='0.3.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
