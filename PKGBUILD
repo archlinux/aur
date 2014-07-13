@@ -4,10 +4,10 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-indigo-rospack'
-pkgver='2.2.3'
-_pkgver_patch=1
+pkgver='2.2.4'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules
