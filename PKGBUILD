@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_nav_view provides a gui for viewing navigation maps and paths
 url='http://ros.org/wiki/rqt_nav_view'
 
 pkgname='ros-indigo-rqt-nav-view'
-pkgver='0.3.5'
+pkgver='0.3.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
