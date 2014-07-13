@@ -1,0 +1,215 @@
+set -e
+
+VARLIB=/var/aegir
+
+pre_install() {
+  if [ -d $VARLIB/.drush/drush_make ]; then
+    echo "existing drush_make install in $VARLIB/.drush/drush_make detected"
+    echo "this needs to be removed or moved away for the install to be completed"
+    echo "try: rm -rf $VARLIB/.drush/drush_make"
+    exit 1
+  fi
+  if [ -d $VARLIB/.drush/provision ]; then
+    echo "existing provision install in $VARLIB/.drush/provision detected"
+    echo "this needs to be removed or moved away for the install to be completed"
+    echo "try: rm -rf $VARLIB/.drush/provision"
+    exit 1
+  fi
+
+}
+
+post_install() {
+  if ! getent passwd aegir >/dev/null ; then
+    useradd --system --groups http --no-create-home --no-user-group \
+            --home-dir "${VARLIB}" aegir
+    chmod -R 755 /var/aegir
+  fi
+
+  mkdir /var/aegir/.drush
+  cp /etc/php/php.ini /var/aegir/.drush/
+  
+  echo -e "Defaults:aegir  !requiretty\naegir ALL=NOPASSWD: /usr/bin/apachectl" > /etc/sudoers.d/aegir
+  chmod 0440 /etc/sudoers.d/aegir
+
+  # HOSTMASTER POST-INSTALL
+      AEGIRHOME="$(su aegir -s /bin/sh -c 'echo $HOME')"
+
+      case "$1" in
+          configure)
+              # fetch the version number from provision. the line we're looking for looks like this
+              # version=6.x-1.9
+              # this obviously doesn't work for git releases
+              VERSION=`sed -n '/^version/{s/^.*= *//;p}' /usr/share/drush/commands/provision/provision.info`
+
+              FLAGS="--yes"
+              if [ "$DPKG_DEBUG" = "developer" ]; then
+                  FLAGS="$FLAGS --debug"
+              fi
+              db_get "aegir/makefile"
+              if [ ! -z "$RET" ]; then
+                  FLAGS="$FLAGS --makefile='$RET'"
+              fi
+              db_get "aegir/webserver"
+              if [ ! -z "$RET" ]; then
+                  if [ "$RET" = 'apache2' ]; then
+                      RET='apache' # convert argument to something aegir can understand
+                  fi
+                  FLAGS="$FLAGS --http_service_type='$RET'"
+                  WEBSERVER="$RET"
+              fi
+
+              # make sure the configuration file exists before symlinking it in place (below)
+              touch $AEGIRHOME/config/$WEBSERVER.conf
+              # fix permissions on installed directories
+              chown aegir:aegir "$AEGIRHOME" "$AEGIRHOME/config" "$AEGIRHOME/config/$WEBSERVER.conf"
+
+              # flush the drush cache to find new commands
+              su -s /bin/sh aegir -c 'drush cc drush'
+              TEMPFILE=`tempfile`
+              su -s /bin/sh aegir -c 'drush --pipe @hostmaster status 2>/dev/null | egrep "site_uri|drupal_root"' >> $TEMPFILE || true
+              if grep -q 'site_uri' $TEMPFILE; then
+                  # upgrade
+                  db_stop
+                  . $TEMPFILE
+                  echo "Aegir frontend (@hostmaster) site detected in $drupal_root"
+                  # make those paths canonical to make sure we can compare correctly
+                  NEW_PLATFORM=`readlink -f "$AEGIRHOME/hostmaster-$VERSION"`
+                  drupal_root=`readlink -f $drupal_root`
+                  # we upgrade only if the target platform doesn't exit *OR*
+                  # if it's not the current platform
+                  if [ -d "$NEW_PLATFORM" ] && [ "$drupal_root" = "$NEW_PLATFORM" ]; then
+                      echo "it seems to be the same version as the one we're trying to install, not upgrading"
+                  else
+                      echo "upgrading the frontend from $drupal_root to $NEW_PLATFORM"
+                      if su -s /bin/sh aegir -c 'drush @hostmaster pm-list --status=enabled --pipe' | grep -q hosting_queued; then
+                          service hosting-queued stop
+                      fi
+                      cd "$drupal_root"
+                      su -s /bin/sh aegir -c "drush hostmaster-migrate $FLAGS '$site_uri' '$NEW_PLATFORM'"
+                      echo "upgrade finished, old platform left in $drupal_root"
+                      # restart daemon if enabled
+                      if su -s /bin/sh aegir -c 'drush @hostmaster pm-list --status=enabled --pipe' | grep -q hosting_queued; then
+                          service hosting-queued start
+                      fi
+                  fi
+              else
+                  # fresh install
+                  db_get "aegir/site"
+                  if [ ! -z "$RET" ]; then
+                      site_uri="$RET"
+                  fi
+                  db_get "aegir/db_host"
+                  AEGIR_DB_HOST="$RET"
+                  db_get "aegir/db_user"
+                  AEGIR_DB_USER="$RET"
+                  db_get "aegir/db_password"
+                  AEGIR_DB_PASS="$RET"
+                  db_get "aegir/email"
+                  EMAIL="$RET"
+
+                  db_go
+
+                  # forget the DB password in debconf storage
+                  db_reset aegir/db_password || true
+                  db_fset aegir/db_password "seen" "true" || true
+                  db_stop
+                  
+                  if [ -d $AEGIRHOME/.drush/provision ]; then
+                      echo "existing provision in $AEGIRHOME/.drush/provision detected, move away and try again"
+                      exit 1
+                  fi
+                  echo "installing the Aegir frontend (Drupal with the hostmaster profile), please wait..."
+                  if [ "$DPKG_DEBUG" = "developer" ]; then
+                      DEBUG="--debug"
+                  fi
+
+                  # pass data through JSON for extra security
+                  su -s /bin/sh aegir -c "cd $AEGIRHOME && drush hostmaster-install $FLAGS --backend $site_uri 2>&1 | drush backend-parse $DEBUG" <<EOF
+      { "yes": 1,
+        "version": "$VERSION",
+        "aegir_db_host": "$AEGIR_DB_HOST",
+        "aegir_db_user": "$AEGIR_DB_USER",
+        "aegir_db_pass": "$AEGIR_DB_PASS",
+        "client_email": "$EMAIL"
+      }
+      EOF
+                  # on new installs, we default to having the daemon enabled
+                  echo 'Enabling hosting-queued daemon'
+                  su -s /bin/sh aegir -c 'drush @hostmaster pm-enable -y hosting_queued'
+                  service hosting-queued start
+              fi
+              rm -f $TEMPFILE
+
+              case $WEBSERVER in
+                  apache)
+                      # apache 2.2 || 2.4
+                      ln -sf $AEGIRHOME/config/$WEBSERVER.conf /etc/apache2/conf.d/aegir.conf \
+                        || ln -sf $VARLIB/config/$WEBSERVER.conf /etc/apache2/conf-enabled/aegir.conf
+                      a2enmod ssl rewrite
+                      apache2ctl graceful
+                      ;;
+                  nginx)
+                      ln -sf $AEGIRHOME/config/$WEBSERVER.conf /etc/nginx/conf.d/aegir.conf
+                      service nginx reload
+                      ;;
+              esac
+
+              # this will ensure that this script aborts if the site can't be bootstrapped
+              if su -s /bin/sh aegir -c 'drush @hostmaster status' 2>&1 | grep -q 'Drupal bootstrap.*Successful'; then
+                  echo 'Aegir frontend bootstrap correctly, operation was a success!'
+                  echo 'Use this URL to login on your new site:'
+                  su -s /bin/sh aegir -c 'drush @hostmaster uli'
+              else
+                  echo 'Aegir frontend failed to bootstrap, something went wrong!'
+                  echo 'Look at the log above for clues or run with DPKG_DEBUG=developer'
+                  exit 1
+              fi
+          ;;
+
+          abort-upgrade|abort-remove|abort-deconfigure)
+          ;;
+
+          *)
+              echo "postinst called with unknown argument \`$1'" >&2
+              exit 1
+          ;;
+      esac
+
+      # dh_installdeb will replace this with shell code automatically
+      # generated by other debhelper scripts.
+
+      # Automatically added by dh_installinit
+      if [ -x "/etc/init.d/hosting-queued" ]; then
+        update-rc.d hosting-queued defaults >/dev/null
+        invoke-rc.d hosting-queued start || exit $?
+      fi
+      # End automatically added section
+
+
+      exit 0
+
+
+
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+pre_remove() {
+  systemctl --system stop hosting-queued >/dev/null
+}
+
+post_remove() {
+  userdel aegir
+  rm -f /etc/sudoers.d/aegir
+
+  systemctl --system disable hosting-queued >/dev/null
+  systemctl --system daemon-reload >/dev/null
+}
