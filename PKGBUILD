@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_py_common provides common functionality for GUI plugins wr
 url='http://ros.org/wiki/qt_gui_py_common'
 
 pkgname='ros-indigo-qt-gui-py-common'
-pkgver='0.2.24'
+pkgver='0.2.25'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
