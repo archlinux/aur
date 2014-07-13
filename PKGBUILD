@@ -4,7 +4,7 @@ pkgdesc="ROS - Xacro (XML Macros) Xacro is an XML macro language."
 url='http://ros.org/wiki/xacro'
 
 pkgname='ros-indigo-xacro'
-pkgver='1.9.1'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
