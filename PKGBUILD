@@ -4,7 +4,7 @@ pkgdesc="ROS - RQT plugin for monitoring ROS processes."
 url='http://ros.org/wiki/rqt_top'
 
 pkgname='ros-indigo-rqt-top'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
