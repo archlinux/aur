@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArra
 url='http://ros.org/wiki/rqt_runtime_monitor'
 
 pkgname='ros-indigo-rqt-runtime-monitor'
-pkgver='0.3.5'
+pkgver='0.3.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
