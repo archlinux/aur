@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_service_caller provides a GUI plugin for calling arbitrary se
 url='http://ros.org/wiki/rqt_service_caller'
 
 pkgname='ros-indigo-rqt-service-caller'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
