@@ -1,0 +1,20 @@
+pkgbase = crosstool-ng-git
+	pkgdesc = crosstool-NG aims at building toolchains.
+	pkgver = 1.1.0.2420.g1a8ca5b
+	pkgrel = 1
+	url = http://crosstool-ng.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = flex
+	makedepends = bison
+	depends = ncurses
+	depends = gperf
+	provides = crosstool-ng
+	conflicts = crosstool-ng
+	source = git://crosstool-ng.org/crosstool-ng
+	md5sums = SKIP
+
+pkgname = crosstool-ng-git
+
