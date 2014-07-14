@@ -1,17 +1,15 @@
 pkgbase = weex
 	pkgdesc = A non-interactive FTP client for updating web pages
 	pkgver = 2.6.1.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://weex.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	source = http://downloads.sourceforge.net/sourceforge/weex/weex-2.6.1.5.tar.gz
-	source = http://git.sv.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=lib/regex.h
 	source = weex-2.6.1.5-formatstring.patch
 	source = weex-2.6.1.5-va_list.patch
 	md5sums = c10192608ab9f715c4c1ea63cf6ad2da
-	md5sums = 63dc5065aa90e787153804229e7da1c2
 	md5sums = a12d955c5a4d6b059395a0da22942114
 	md5sums = 522552e03b82ab5669fd21c558290691
 
