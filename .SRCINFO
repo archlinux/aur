@@ -1,0 +1,17 @@
+pkgbase = reiser4progs
+	pkgdesc = Reiser4 filesystem programs
+	pkgver = 1.0.8
+	pkgrel = 3
+	url = http://sourceforge.net/projects/reiser4/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = e2fsprogs
+	depends = libaal
+	depends = readline
+	options = !libtool
+	source = http://sourceforge.net/projects/reiser4/files/reiser4-utils/reiser4progs/reiser4progs-1.0.8.tar.gz
+	md5sums = 61ed01da90faf50f960844e26d9bbab2
+
+pkgname = reiser4progs
+
