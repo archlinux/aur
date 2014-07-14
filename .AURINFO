@@ -28,12 +28,11 @@ pkgbase = initscripts-fork
 	conflicts = initscripts
 	replaces = initscripts-systemd
 	replaces = initscripts
+	source = https://bitbucket.org/TZ86/initscripts-fork/get/2014.07.1.tar.bz2
 	backup = etc/inittab
 	backup = etc/rc.conf
 	backup = etc/rc.local
 	backup = etc/rc.local.shutdown
-	source = https://bitbucket.org/TZ86/initscripts-fork/get/2014.07.1.tar.bz2
-	md5sums = b1580af4ebf41926e48e6ae0ea7a1b65
 
 pkgname = initscripts-fork
 
