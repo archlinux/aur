@@ -1,6 +1,6 @@
 pkgbase = git-annex
 	pkgdesc = manage files with git, without checking their contents into git
-	pkgver = 5.20140707
+	pkgver = 5.20140709
 	pkgrel = 0
 	url = http://git-annex.branchable.com/
 	arch = i686
