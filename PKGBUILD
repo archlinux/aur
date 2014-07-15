@@ -2,13 +2,13 @@
 
 pkgname=libgaminggear
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://sourceforge.net/projects/libgaminggear/"
-depends=()
-makedepends=('cmake>=3.0' 'doxygen' 'gtk2' 'sqlite3>=3.7')
+depends=('libnotify' 'libcanberra' 'gtk2' 'sqlite3>=3.7')
+makedepends=('cmake>=3.0' 'doxygen')
 source=(http://downloads.sourceforge.net/project/libgaminggear/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('25d083553a579665f4cd4b5357544c21')
 
