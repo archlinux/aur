@@ -1,0 +1,15 @@
+pkgbase = python2-creepy-git
+	pkgdesc = Dead simple web crawler for Python
+	pkgver = r25.dece1aa
+	pkgrel = 1
+	url = https://github.com/Aitjcize/creepy
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	options = !emptydirs
+	source = creepy::git+https://github.com/aitjcize/creepy.git
+	md5sums = SKIP
+
+pkgname = python2-creepy-git
+
