@@ -2,7 +2,7 @@ pkgbase = biosdisk-git
 	pkgdesc = Utility for creating Dell BIOS flash disks
 	pkgver = v0.75.18.g42a22fe
 	pkgrel = 1
-	url = https://linux.dell.com/biosdisk
+	url = http://linux.dell.com/cgi-bin/cgit.cgi/biosdisk.git
 	arch = any
 	license = GPL
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = biosdisk-git
 	conflicts = biosdisk
 	options = !strip
 	backup = etc/biosdisk.conf
-	source = git+http://linux.dell.com/git/biosdisk.git
+	source = git+http://linux.dell.com/cgi-bin/cgit.cgi/biosdisk.git
 	md5sums = SKIP
 
 pkgname = biosdisk-git
