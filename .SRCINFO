@@ -1,35 +1,16 @@
 pkgbase = aegir
-	pkgver = 2.1
+	pkgdesc = Aegir systemd target for a dedicated Aegir VPS.
+	pkgver = 0.1
 	pkgrel = 1
-	url = http://aegirproject.org/
+	url = http://aegirproject.org
 	arch = any
 	license = GPL
-	options = !strip
+	depends = systemd
+	depends = aegir-hostmaster
+	source = aegir.target
+	source = stop-when-unneeded.conf
+	md5sums = 80773e4278e09b14cc6843e346540a9d
+	md5sums = 7e34786351f538d2db0bd2d3e64db43f
 
 pkgname = aegir
-	pkgdesc = Meta-Drupal hosting system
-	install = aegir.install
-	depends = aegir-hostmaster>=2.1
-
-pkgname = aegir-hostmaster
-	pkgdesc = Meta-Drupal hosting system - front end
-	install = aegir-hostmaster.install
-	depends = aegir-provision>=2.1
-
-pkgname = aegir-provision
-	pkgdesc = Meta-Drupal hosting system - back end
-	install = aegir-provision.install
-	depends = apache
-	depends = drush>=5.10
-	depends = git
-	depends = php
-	depends = php-gd
-	depends = php-pear
-	depends = mysql-clients
-	depends = rsync
-	depends = sudo
-	depends = smtp-forwarder
-	depends = unzip
-	optdepends = apache: asdf
-	optdepends = php-apache:
 

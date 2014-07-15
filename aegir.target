@@ -1,0 +1,8 @@
+[Unit]
+Description=Aegir Hosting System
+Requires=aegir.service mysqld.service nginx.service php-fpm.service
+After=aegir.service mysqld.service nginx.service php-fpm.service
+PropagatesReloadTo=aegir.service mysqld.service nginx.service php-fpm.service
+
+[Install]
+WantedBy=multi-user.target
