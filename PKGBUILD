@@ -17,7 +17,7 @@ conflicts=("${gitname}")
 provides=("${gitname}")
 backup=("etc/biosdisk.conf")
 options=('!strip')
-source=("git+http://linux.dell.com/cgi-bin/cgit.cgi/${gitname}.git")
+source=("git+http://linux.dell.com/cgi-bin/cgit.cgi/${gitname}.git#commit=42a22fe0785e9f4a8e5285733bc8e2f8e5a18104")
 md5sums=('SKIP')
 
 pkgver() {
