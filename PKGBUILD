@@ -6,6 +6,10 @@
 ##
 ## ニコニコ大百科IME辞書 (NICONICOPEDIA IME dictionary, see below)
 #_NICODIC="true"
+#
+## If you want to use an English-Japanese dictionary,
+## uncomment the following line.
+#_EJDIC="true"
 
 
 #***********************************************************************
@@ -48,14 +52,15 @@
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=1.15.1785.102
-_utdicver=20140623
-_zipcoderel=201404
+_mozcver=1.15.1834.102
+_utdicver=20140715
+_zipcoderel=201406
 _protobuf_ver=2.5.0
-_gyp_rev=1828
+_gyp_rev=1950
+_japanese_usage_dictionary_rev=0
+_revision=271
 
 _pkgbase=mozc
-_revision=178
 pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
@@ -65,13 +70,14 @@ arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
 depends=('qt4' 'fcitx' 'zinnia')
-makedepends=('pkg-config' 'python2' 'gtest' 'curl' 'gtk2' 'mesa' 'svn' 'ruby')
+makedepends=('pkg-config' 'python2' 'gtest' 'curl' 'gtk2' 'mesa' 'svn' 'ninja' 'ruby')
 replaces=('mozc-fcitx' 'fcitx-mozc')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc')
 source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=$_revision
+        japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=$_japanese_usage_dictionary_rev
         gyp::svn+http://gyp.googlecode.com/svn/trunk#revision=$_gyp_rev
-        http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut-${_utdicver}.tar.bz2
-        http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
+        http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-${_utdicver}.tar.bz2
+        edict-${_utdicver}.gz::http://ftp.monash.edu.au/pub/nihongo/edict.gz
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcoderel}.zip
@@ -80,21 +86,12 @@ source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_patchver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
-build() {
-  #source /etc/profile.d/qt4.sh
-
-  # Update: Fix qt4 include path too
-  # Fix compatibility with google-glog 0.3.3 (symbol conflict)
-  #CFLAGS="${CFLAGS} -DFLAGS_log_dir=FLAGS_mozc_log_dir"
-  #CXXFLAGS="${CXXFLAGS} -DFLAGS_log_dir=FLAGS_mozc_log_dir"
-  CFLAGS="${CFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
-  CXXFLAGS="${CXXFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
-
+prepare() {
   cd "${srcdir}/mozcdic-ut-${_utdicver}"
 
   "${srcdir}"/mod-generate-mozc-ut.sh
   msg "Generating UT dictionary seed..."
-  MOZCVER="$_mozcver" DICVER="$_utdicver" NICODIC="$_NICODIC" \
+  MOZCVER="$_mozcver" DICVER="$_utdicver" NICODIC="$_NICODIC" EJDIC="$_EJDIC" \
     ./generate-mozc-ut.sh
   msg "Done."
 
@@ -112,25 +109,37 @@ build() {
   find . -name  \*.py        -type f -exec sed -i -e "1s|python.*$|python2|"  {} +
   find . -regex '.*\.gypi?$' -type f -exec sed -i -e "s|'python'|'python2'|g" {} +
 
+  # Copy japanese_usage_dictionary
+  mkdir third_party/japanese_usage_dictionary
+  cp -a "$srcdir"/japanese_usage_dictionary/* third_party/japanese_usage_dictionary
+
+  # Copy gyp
+  mkdir third_party/gyp
+  cp -a "${srcdir}"/gyp/* third_party/gyp
+
+  # Copy protobuf to be linked statically
+  mkdir third_party/protobuf
+  cp -rf "${srcdir}/protobuf-${_protobuf_ver}"/* third_party/protobuf
+}
+
+build() {
+  # Update: Fix qt4 include path too
+  # Fix compatibility with google-glog 0.3.3 (symbol conflict)
+  CFLAGS="${CFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
+  CXXFLAGS="${CXXFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
+
+  cd "${srcdir}/mozc-ut-${pkgver}"
+
   # Generate zip code seed
   msg "Generating zip code seed..."
   python2 dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
   msg "Done."
 
-  # Copy gyp
-  mkdir third_party/gyp
-  cp -rf "${srcdir}"/gyp/* third_party/gyp
-
-  # Copy protobuf to be linked statically
-  mkdir third_party/protobuf
-  cp -rf "${srcdir}/protobuf-${_protobuf_ver}"/* third_party/protobuf
-
   msg "Starting make..."
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc"
 
-  QTDIR=/usr GYP_DEFINES="document_dir=/usr/share/licenses/$pkgname" python2 build_mozc.py gyp --channel_dev=0
-  python2 build_mozc.py build_tools -c $_bldtype
+  QTDIR=/usr GYP_DEFINES="document_dir=/usr/share/licenses/$pkgname" python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype $_targets
 
   # Extract license part of mozc
@@ -153,7 +162,7 @@ package() {
   install -m 644 ${srcdir}/EDICT_license.html "${pkgdir}/usr/share/licenses/dictionary/edict/license.html"
 
   cd "${srcdir}/mozc-ut-${pkgver}"
-  for mofile in out_linux/${_bldtype}/obj/gen/unix/fcitx/po/*.mo
+  for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
   do
     filename=`basename $mofile`
     lang=${filename/.mo/}
@@ -179,12 +188,13 @@ package() {
 
 sha512sums=('SKIP'
             'SKIP'
-            '7d7c9e39bd874a323f033ba9101662f124a2e204ca942cea3ce45a4b8a30c0664431face1fdf78a1c355810fd32a003ce1cfddf8bc5659937ce7f077abaff6a3'
-            'e7b2cc7cc4f22276b350f17bc86333728e80d48ef583ff5e0c3d62b5e4ff923c28791352d189f351f8b9a43485bed7f270912753eed723a888a17fa304f7e50d'
+            'SKIP'
+            'fb93a7a8349d4d73962f08a5d3c7b9b4ff0049265616147383c460adf840ebbca85d410f6ff2692bbcd7f7ed8f067a99ebacf6e8b9bfe9b0cf9fca65c035f70b'
+            '65b8ce7f514caae6a61d7f42c49e632f6e9a48f6e9392e0297ae09fb55b844a5866ec9cbb88a0cdc74015880fcb05e811826f1539fd3fbf692248b07ca9a518a'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
-            '10089bcae1ff2ce063cdc04900523f7a2b3c6e386eadf92c7295575688db938d602aa6e94c3401ece229f4023511d0fd5543eb45a09dc6474ed185dbfedf592f'
-            '3a868b8f34c6651221db585f3338c9d5ac5c832781fa23f299d6dbe24c8ec1b506e8284c113256330d340fd63e770458ff9212953a290c588ca2f3dab1a706ec'
-            '84c4c05b0a54df6cd3dbee1f7194779cdac90c3bff46bc34f4e0bb7edbcbd030fced03766f3e93a76f3c23905666d90fa80e1c69d1cc7f4a3b526fad44a42f7a'
+            'f74d2ddf95706b2925d87b3effa9490aa7cba1f5ce2c20e537f2ac4dfc4c6b6b531f90f8c128bca0f1eafd9197abb6e1f004c11a1ea7a978b2ccad5e85ad0d55'
+            'bdfebfd2a72ea1e8bd5e29c7e065b4ed45c1e5bc6f43e8fbdbf454f24fdf7d44b4f10f8a8f0ca5b6e433bb87877e77a3998a6b25ad9f904f2529d0d2e0ae4b76'
+            'bbfd5a48426bfa4a1d438d6d640ceb76174aac4d503dc9de64e6cd1d72c5e081588a2893ba7a558444a38c0f6a132acb0e5a3aed61ad79744efb3aa9dbb6c523'
             '5994b3669808b82fef5c860ecad36358c0767f84acac877e7bfcf722e59d972835a955714149bdd4158fbd1328a51d01397a563991d26475351ee72be48142ee'
-            '04d695e06f895d737cf161ac00ddc774ffbf0c91c0e8a827a14f23dbe83f4a609becd6b834557befb83b923ee1a72ba237b688ee46e6b17d953f41955d985301'
+            '7a5bcedc8c3174fb65bdfd2126abae0f7432bc5b10dfdce7cd9703bdeac4a5652cc3be59b2a6829184a1b4e0199bf9606db79c2cef7858c2ccc6a5a367b229c6'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
