@@ -1,0 +1,29 @@
+pkgbase = nmead
+	pkgdesc = Service that distributes NMEA data over the network
+	pkgver = 01.03.00
+	pkgrel = 2
+	url = http://home.hiwaay.net/~taylorc/gps/nmea-server/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	backup = etc/conf.d/nmead
+	source = http://home.hiwaay.net/~taylorc/gps/nmea-server/nmead.src.01.03.00.tar.gz
+	source = nmead-01.03.00-makefile.patch
+	source = nmead-01.03.00-115200.patch
+	source = nmead-01.03.00-trigraphs.patch
+	source = nmead-01.03.00-types.patch
+	source = nmead.service
+	source = nmead.script
+	source = nmead.conf
+	md5sums = 80274744764fc637b08d3d67bf9f9ad0
+	md5sums = 83a2bbc8c38f4c2c958b5dfe42202b0b
+	md5sums = 912367456b0d1c0ac1c67b1e1b0cf965
+	md5sums = 7488313dc8784679c54566d97a1b815a
+	md5sums = f9c39c6f53dd625093f93ae48566e847
+	md5sums = 9bc23011a395f6e64623b2c7f72a6da0
+	md5sums = 3a7158004de6513c79afae9bf51c9ef7
+	md5sums = 3a4e6ccd40b93e27038e1a67849f06b7
+
+pkgname = nmead
+

@@ -1,0 +1,13 @@
+diff -aur nmead-01.03.00/main.c nmead-01.03.00-patched/main.c
+--- nmead-01.03.00/main.c	2004-07-27 04:28:32.000000000 +0400
++++ nmead-01.03.00-patched/main.c	2014-07-02 10:46:07.844835705 +0400
+@@ -302,6 +302,9 @@
+     case 19200:
+         ttybaud = B19200;
+         break;
++    case 115200:
++        ttybaud = B115200;
++        break;
+     default:
+         ttybaud = B4800;
+         break;

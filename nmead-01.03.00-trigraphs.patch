@@ -1,0 +1,12 @@
+diff -aur nmead-01.03.00/main.c nmead-01.03.00-patched/main.c
+--- nmead-01.03.00/main.c	2014-07-02 10:47:00.534310242 +0400
++++ nmead-01.03.00-patched/main.c	2014-07-02 10:47:13.850844110 +0400
+@@ -356,7 +356,7 @@
+     fprintf (stderr, "       default/current value is %d\n", ttybaud);
+     fprintf (stderr, "    -i serial_port  sets name of serial input device\n");
+     fprintf (stderr, "       default/current value is %s\n", ttyport);
+-    fprintf (stderr, "       (normally a symbolic link to /dev/tty??????)\n");
++    fprintf (stderr, "       (normally a symbolic link to /dev/ttyXXX)\n");
+     fprintf (stderr, "    -p tcp_port  sets port number on which the server will listen\n");
+     fprintf (stderr, "       default/current value is %d\n", port);
+     fprintf (stderr, "    -s file  simulate data stream by reading log file\n");

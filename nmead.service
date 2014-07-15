@@ -1,0 +1,8 @@
+[Unit]
+Description=Service that distributes NMEA data over the network
+
+[Service]
+ExecStart=/usr/lib/systemd/scripts/nmead
+
+[Install]
+WantedBy=multi-user.target
