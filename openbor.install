@@ -1,0 +1,13 @@
+
+post_install() {
+  echo "This package contains a launcher script that will setup OpenBOR to use the"
+  echo "folder ~/.OpenBOR for all data files. Put your PAK files and configs there."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Remember to clean up your ~/.OpenBOR folder."
+}
