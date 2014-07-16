@@ -2,7 +2,7 @@
 
 _pkgname=epour
 pkgname=$_pkgname-git
-pkgver=0.5.2.0.r48.gc40f6d2
+pkgver=0.6.0.r0.g305d119
 pkgrel=1
 pkgdesc="Torrent client based on EFL"
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  git describe --tags --long | awk -F '-' '{print $2 ".r" $3 "." $4}'
+  git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 package() {
