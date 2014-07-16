@@ -8,13 +8,13 @@ arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3')
 depends=('python2-efl' 'python2-xdg' 'libtorrent' 'hicolor-icon-theme')
-makedepends=('git' 'python2-distutils-extra')
+makedepends=('python2-distutils-extra')
 install=$pkgname.install
-source=("git://git.enlightenment.org/apps/$pkgname.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("http://download.enlightenment.org/rel/apps/$pkgname/$pkgname-$pkgver.tar.xz")
+sha1sums=('7cfa8bbaf01bd6106ead24391a5deea23996e29a')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
 
