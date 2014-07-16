@@ -1,5 +1,5 @@
 pkgbase = epour-git
-	pkgdesc = Torrent client based on EFL
+	pkgdesc = Torrent client based on EFL - Development version
 	pkgver = 0.6.0.r0.g305d119
 	pkgrel = 1
 	url = http://www.enlightenment.org
