@@ -1,9 +1,10 @@
 pkgname='sigmavpn'
 pkgver='0.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Light-weight, secure and modular VPN solution'
 url='http://frozenriver.net/SigmaVPN'
 license=('BSD')
+depends=('libsodium')
 source=(
 	"http://sigmavpn.googlecode.com/files/${pkgname}-${pkgver}.tar.gz"
 	fix-paths.patch

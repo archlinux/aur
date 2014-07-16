@@ -1,12 +1,13 @@
 pkgbase = sigmavpn
 	pkgdesc = Light-weight, secure and modular VPN solution
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://frozenriver.net/SigmaVPN
 	arch = x86_64
 	arch = i686
 	arch = arm
 	license = BSD
+	depends = libsodium
 	source = http://sigmavpn.googlecode.com/files/sigmavpn-0.2.tar.gz
 	source = fix-paths.patch
 	source = Makefile
