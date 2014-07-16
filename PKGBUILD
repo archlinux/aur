@@ -1,23 +1,17 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=epour
-pkgver=0.5.2.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Torrent client based on EFL"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3')
-depends=('python2-efl' 'libtorrent' 'hicolor-icon-theme')
+depends=('python2-efl' 'python2-xdg' 'libtorrent' 'hicolor-icon-theme')
 makedepends=('git' 'python2-distutils-extra')
 install=$pkgname.install
-source=("git://git.enlightenment.org/apps/$pkgname.git#tag=epour-$pkgver")
+source=("git://git.enlightenment.org/apps/$pkgname.git#tag=v$pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-
-  sed -i 's/env python$/&2/' bin/epour epour/*.py epour/gui/*.py
-}
 
 package() {
   cd "$srcdir/$pkgname"
