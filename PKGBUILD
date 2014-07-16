@@ -1,6 +1,6 @@
 # Maintainer: Sean Greenslade <zootboysean[at]gmail[dot]com>
 pkgname=python2-rosdep
-pkgver=0.10.27
+pkgver=0.10.28
 pkgrel=1
 pkgdesc="Command-line tool for installing system dependencies on a variety of platforms."
 url="http://ros.org/doc/api/rosdep2/html/"
