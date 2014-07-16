@@ -3,7 +3,7 @@
 
 pkgname=gqrx
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=('i686' 'x86_64')
 url="http://gqrx.dk/"
@@ -19,8 +19,8 @@ md5sums=('ff771b9c31ee17f704859398362b8cc0'
 
 prepare() {
   cd "$srcdir"
-  cp -r gqrx-2.2.0 gqrx-2.2.0-alsa
-  cd gqrx-2.2.0-alsa
+  cp -r gqrx-$pkgver gqrx-$pkgver-alsa
+  cd gqrx-$pkgver-alsa
   sed -i 's/AUDIO_BACKEND = pulse/#&/' gqrx.pro
 }
 
