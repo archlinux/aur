@@ -1,6 +1,6 @@
 pkgbase = perl-www-shorten
 	pkgdesc = Interface to URL shortening sites
-	pkgver = 3.04
+	pkgver = 3.05
 	pkgrel = 1
 	url = http://search.cpan.org/dist/WWW-Shorten
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = perl-www-shorten
 	depends = perl-libwww
 	optdepends = perl-config-auto: for configuration file support
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/WWW-Shorten-3.04.tar.gz
-	md5sums = a30a87a8d99fc2e8642a9bff2d752563
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/WWW-Shorten-3.05.tar.gz
+	md5sums = bdc5be1fac9ec6310e7c8163f29f4d47
 
 pkgname = perl-www-shorten
 
