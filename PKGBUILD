@@ -5,13 +5,14 @@
 # Contributor: seblu <seblu+arch (at) seblu.net>
 # Contributor: squiddo <squiddo (at) intheocean.net>
 # Contributor: dront78 <dront78 (at) gmail.com>
+# Contributor: hugelgupf <ckoch (at) cs.nmt.edu>
 #
 # NOTE: To request changes to this package, please submit a pull request
 #       to the GitHub repository at https://github.com/ido/packages-archlinux
 #       Otherwise, open a GitHub issue.  Thank you! -Ido
 #
 pkgname=dpkg
-pkgver=1.16.12
+pkgver=1.16.15
 pkgrel=1
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
@@ -26,7 +27,7 @@ source=(
 	http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
 	dpkg-gzip-rsyncable.patch
 )
-md5sums=('b7e9cac52ff7882b088a3058b52081b5'
+md5sums=('0e7d105a57839cdab2b0bf5e3612442f'
          '5ab63758999e9bb10f84bce79a0307b2')
 
 build() {
