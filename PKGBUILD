@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=cdogs-git
-pkgver=0.5.5.1.r49.g1701c54
+pkgver=0.5.5.1.r149.gff32d3d
 pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2", development version)'
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ package() {
   install -Dm755 src/cdogs-sdl "$pkgdir"/usr/bin/cdogs
   # data
   install -d "$pkgdir"/usr/share/cdogs
-  cp -r doc dogfights graphics missions music sounds "$pkgdir"/usr/share/cdogs
+  cp -r doc dogfights graphics missions music sounds *.json "$pkgdir"/usr/share/cdogs
   # doc
   install -d "$pkgdir"/usr/share/doc
   ln -s /usr/share/cdogs/doc "$pkgdir"/usr/share/doc/cdogs
