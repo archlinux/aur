@@ -1,6 +1,6 @@
 pkgbase = fcitx-mozc-ut
 	pkgdesc = Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)
-	pkgver = 1.15.1834.102.20140715
+	pkgver = 1.15.1834.102.20140716
 	pkgrel = 1
 	url = http://www.geocities.jp/ep3797/mozc_01.html
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = fcitx-mozc-ut
 	source = mozc-1.15.1834.102::svn+http://mozc.googlecode.com/svn/trunk/src#revision=271
 	source = japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=0
 	source = gyp::svn+http://gyp.googlecode.com/svn/trunk#revision=1950
-	source = http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-20140715.tar.bz2
-	source = edict-20140715.gz::http://ftp.monash.edu.au/pub/nihongo/edict.gz
+	source = http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-20140716.tar.bz2
+	source = edict-20140716.gz::http://ftp.monash.edu.au/pub/nihongo/edict.gz
 	source = EDICT_license.html
 	source = mod-generate-mozc-ut.sh
 	source = http://downloads.sourceforge.net/pnsft-aur/x-ken-all-201406.zip
@@ -41,8 +41,8 @@ pkgbase = fcitx-mozc-ut
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = fb93a7a8349d4d73962f08a5d3c7b9b4ff0049265616147383c460adf840ebbca85d410f6ff2692bbcd7f7ed8f067a99ebacf6e8b9bfe9b0cf9fca65c035f70b
-	sha512sums = 65b8ce7f514caae6a61d7f42c49e632f6e9a48f6e9392e0297ae09fb55b844a5866ec9cbb88a0cdc74015880fcb05e811826f1539fd3fbf692248b07ca9a518a
+	sha512sums = b2bb614532a0e0216e47e4a39a265f955388af8b7b9d23ddf86a7f4349e8bdbf47b7f8f11bbc19e15e1ea8e0b2ee44b3d76b1416c0133a2a71a0e7563b59ffd1
+	sha512sums = 9e048271036bc4e5cd5db851007e0698e98a4701cc9f04473b59ad409df980007d9d4587893cb76cd8d0a555740d49ca864c61b49b03faba50f4bf494ba1e145
 	sha512sums = 4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb
 	sha512sums = f74d2ddf95706b2925d87b3effa9490aa7cba1f5ce2c20e537f2ac4dfc4c6b6b531f90f8c128bca0f1eafd9197abb6e1f004c11a1ea7a978b2ccad5e85ad0d55
 	sha512sums = bdfebfd2a72ea1e8bd5e29c7e065b4ed45c1e5bc6f43e8fbdbf454f24fdf7d44b4f10f8a8f0ca5b6e433bb87877e77a3998a6b25ad9f904f2529d0d2e0ae4b76
