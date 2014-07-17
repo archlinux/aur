@@ -1,7 +1,7 @@
 pkgbase = boswars
 	pkgdesc = Futuristic real-time strategy game
 	pkgver = 2.7
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.boswars.org
 	arch = i686
 	arch = x86_64

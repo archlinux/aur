@@ -1,9 +1,9 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
 pkgname=boswars
 pkgver=2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Futuristic real-time strategy game"
 url="http://www.boswars.org"
 license=('GPL')
@@ -46,11 +46,16 @@ package(){
   # data
   install -d "$pkgdir"/opt/bos/languages
   install -m644 languages/*.po "$pkgdir"/opt/bos/languages
-  cp -r campaigns doc graphics intro maps scripts sounds units "$pkgdir"/opt/bos
+  cp -r campaigns doc graphics intro maps patches scripts sounds units "$pkgdir"/opt/bos
 
-  # executable, launcher and .desktop entry
+  # binary + launcher
   install -Dm755 fbuild/release/boswars "$pkgdir"/opt/bos/boswars
   install -Dm755 ../boswars.sh "$pkgdir"/usr/bin/boswars
+  # .desktop entry
   install -Dm644 ../boswars.png "$pkgdir"/usr/share/pixmaps/boswars.png
   install -Dm644 ../boswars.desktop "$pkgdir"/usr/share/applications/boswars.desktop
+  # license + doc
+  install -d "$pkgdir"/usr/share/{licenses/$pkgname,doc}
+  install -m644 COPYRIGHT.txt "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s /opt/bos/doc "$pkgdir"/usr/share/doc/$pkgname
 }
