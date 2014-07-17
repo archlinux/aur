@@ -18,8 +18,10 @@ pkgbase = smc-git
 	conflicts = smc
 	source = smc::git+https://github.com/FluXy/SMC.git
 	source = smc.desktop
+	source = smc-get-to-world2.patch
 	sha256sums = SKIP
 	sha256sums = 291fca2243262c24cf086bec60ae77fd53f58bc42e876b224d58e96a5a35d79a
+	sha256sums = 04d2b8850005fea4cf8a66be48f2f3ffc3848851dabdc8d2294b6e65e021bca0
 
 pkgname = smc-git
 
