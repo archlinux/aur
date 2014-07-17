@@ -1,3 +1,4 @@
+# $Id: PKGBUILD 113089 2014-06-13 12:23:37Z lcarlier $
 # Upstream Maintainer: Biru Ionut <ionut@archlinux.ro>
 # Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
 # Contributor: Kaos < gianlucaatlas dot gmail dot com >
@@ -5,39 +6,35 @@
 
 _pkgbasename=sqlite
 pkgname=libx32-sqlite
-_amalgamationver=3071401
-#_docver=${_amalgamationver}
-_docver=3071400
-pkgver=3.7.14.1
-pkgrel=1.1
+_amalgamationver=3080500
+_docver=${_amalgamationver}
+#_docver=3080401
+pkgver=3.8.5
+pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (x32 ABI)"
 arch=('x86_64')
 license=('custom')
 url="http://www.sqlite.org/"
 depends=(libx32-glibc $_pkgbasename)
 makedepends=('tcl' 'gcc-multilib-x32' 'libx32-readline')
-source=(http://www.sqlite.org/sqlite-autoconf-${_amalgamationver}.tar.gz)
-options=(!libtool)
-md5sums=('4cf3fd434bbb6e50777019ff3507bfa5')
+source=(http://www.sqlite.org/2014/sqlite-autoconf-${_amalgamationver}.tar.gz)
+sha1sums=('7f667e10ccebc26ab2086b8a30cb0a600ca0acae')
 provides=("libx32-sqlite3=$pkgver")
 replaces=("libx32-sqlite3")
 conflicts=("libx32-sqlite3")
 
 build() {
+  cd ${srcdir}/sqlite-autoconf-${_amalgamationver}
+
   export CC="gcc -mx32"
   export CXX="g++ -mx32"
   export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
 
-  cd ${srcdir}/sqlite-autoconf-${_amalgamationver}
   export LTLINK_EXTRAS="-ldl"
   export CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_SECURE_DELETE"
-  ./configure --prefix=/usr --libdir=/usr/libx32 \
-    --enable-threadsafe \
-    --disable-static
 
-  # rpath removal
-  sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-  sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+  ./configure --prefix=/usr --libdir=/usr/libx32 \
+    --disable-static
 
   make
 }
@@ -45,6 +42,7 @@ build() {
 
 package() {
   cd ${srcdir}/sqlite-autoconf-${_amalgamationver}
+
   make DESTDIR=${pkgdir} install
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
