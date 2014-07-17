@@ -1,6 +1,6 @@
 pkgbase = waimea-git
 	pkgdesc = An X11 window manager designed for maximum efficiency
-	pkgver = 0.5.0.18
+	pkgver = 0.5.0.19
 	pkgrel = 1
 	url = https://github.com/bbidulock/waimea
 	arch = i686

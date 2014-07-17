@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=waimea-git
 _pkgname=waimea
-pkgver=0.5.0.18
+pkgver=0.5.0.19
 pkgrel=1
 pkgdesc="An X11 window manager designed for maximum efficiency"
 arch=('i686' 'x86_64')
