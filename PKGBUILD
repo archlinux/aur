@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://icculus.org/SDL_sound/"
 license=('LGPL')
 depends=('sdl2' 'libmodplug' 'libvorbis' 'flac' 'speex')
+makedepends=('mercurial')
 conflicts=("$_name")
 provides=("$_name")
 source=($_name::"hg+http://hg.icculus.org/icculus/SDL_sound"
