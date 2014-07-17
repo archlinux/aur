@@ -4,15 +4,14 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=35.0.1916.153
-_toolchains_rev=12935
+pkgver=36.0.1985.125
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
+         'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
@@ -26,22 +25,11 @@ backup=('etc/chromium/default')
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
-        naclsdk_nacl_linux_x86-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_linux_x86.tgz
-        naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_linux_x86.tgz
-        naclsdk_pnacl_translator-$_toolchains_rev.tgz::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz
-        naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash::https://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/$_toolchains_rev/naclsdk_pnacl_translator.tgz.sha1hash
         chromium.desktop
         chromium.default
         chromium-nacl-bootstrap-cflags.patch
         chromium.sh)
-noextract=(naclsdk_nacl_linux_x86-$_toolchains_rev.tgz
-           naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz
-           naclsdk_pnacl_translator-$_toolchains_rev.tgz)
-sha256sums=('280ceb4307ba334918aacd1c5672e6ce6538bf229f90415245ede5b569e5e70e'
-            '2d72245cf0fc5aec95dcf315d88d787aaeff85e2fae28b8521d60a3dd95e28d4'
-            '6baee05d11e353aac83a94125722d1f85c1aaa5fae0bfea55f996bd1d9c2a6eb'
-            '142108d8ce184c3e2b18126a01bed14e286f953d90897a6d1c97f2bf7802cc0a'
-            '67005b390ba80b736b48fb1511bdf3fccd8fc808f4928e7fcca69f5677148b83'
+sha256sums=('1782d0a5397e94313dee9e456de38bdfccf575c4e565f064a6ed7f9c509d5023'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             'd82bafd8d4d6517c2d420b2987fdbe1dfcc32d5fed74a6c0011bcb2f868225c3'
@@ -71,16 +59,9 @@ prepare() {
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
 
-  # Prepare NaCL toolchain
-  mkdir native_client/toolchain/{.tars,pnacl_translator}
-  ln -s "$srcdir/naclsdk_nacl_linux_x86-$_toolchains_rev.tgz" \
-    native_client/toolchain/.tars/naclsdk_linux_x86.tgz
-  ln -s "$srcdir/naclsdk_pnacl_linux_x86-$_toolchains_rev.tgz" \
-    native_client/toolchain/.tars/naclsdk_pnacl_linux_x86.tgz
-  ln -s "$srcdir/naclsdk_pnacl_translator-$_toolchains_rev.tgz" \
-    native_client/toolchain/.tars/naclsdk_pnacl_translator.tgz
-  ln -s "$srcdir/naclsdk_pnacl_translator-$_toolchains_rev.tgz.sha1hash" \
-    native_client/toolchain/pnacl_translator/SOURCE_SHA1
+  # Download NaCL toolchains
+  python2 build/download_nacl_toolchains.py \
+    --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator
 
   # Build with clang as a temporary solution to startup crash with GCC 4.9
   mkdir -p third_party/llvm-build/Release+Asserts/bin
@@ -112,7 +93,8 @@ build() {
     -Dlinux_link_libspeechd=1
     -Dlinux_link_pulseaudio=1
     -Dlinux_strip_binary=1
-    -Dlinux_use_gold_binary=0
+    -Dlinux_use_bundled_binutils=0
+    -Dlinux_use_bundled_gold=0
     -Dlinux_use_gold_flags=0
     -Dlogging_like_official_build=1
     -Drelease_extra_cflags="$CFLAGS"
@@ -132,6 +114,7 @@ build() {
     -Duse_system_xdg_utils=1
     -Duse_system_yasm=1
     -Duse_system_zlib=0
+    -Dusb_ids_path=/usr/share/hwdata/usb.ids
     -Duse_mojo=0
     -Duse_gconf=0
     -Ddisable_fatal_linker_warnings=1
