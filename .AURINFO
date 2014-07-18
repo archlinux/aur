@@ -1,7 +1,7 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
-	pkgver = 1.7.3
-	pkgrel = 2
+	pkgver = 1.7.4
+	pkgrel = 1
 	url = http://www.cups.org/
 	install = cups-nosystemd.install
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = cups-nosystemd
 	makedepends = inetutils
 	depends = acl
 	depends = pam
-	depends = libcups>=1.7.3
+	depends = libcups>=1.7.4
 	depends = cups-filters
 	depends = bc
 	depends = colord
@@ -30,12 +30,12 @@ pkgbase = cups-nosystemd
 	depends = libpaper
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = cups-openrc: cups openrc initscript
-	provides = cups=1.7.3
+	provides = cups=1.7.4
 	conflicts = cups
 	conflicts = cups-eudev
 	replaces = cups
 	replaces = cups-eudev
-	source = http://www.cups.org/software/1.7.3/cups-1.7.3-source.tar.bz2
+	source = http://www.cups.org/software/1.7.4/cups-1.7.4-source.tar.bz2
 	source = cups
 	source = cups.logrotate
 	source = cups.pam

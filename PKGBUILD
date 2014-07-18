@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.7.4
+pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -44,7 +44,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-1.6.2-statedir.patch
         # Debian
         get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
-md5sums=('d498c3020acda0904ab0c13b6389a1ec'
+md5sums=('1a2295c2b2d2f422db2e50f40ed2fb99'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          '26e9b4e65c0a4d76db5737c9b156fd80'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -122,8 +122,6 @@ build() {
 #check() {
 #  cd "$srcdir/cups-$pkgver"
 #  
-#  #./run-stp-tests.sh: line 782:  6307 Aborted                 (core dumped) $VALGRIND ../scheduler/cupsd -c /tmp/cups-$user/cupsd.conf -f > /tmp/cups-$user/log/debug_log 2>&1
-#  #FAIL: 87 error messages, expected 33.
 #  make -k check || /bin/true
 #}
 
