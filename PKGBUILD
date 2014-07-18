@@ -13,7 +13,7 @@ url="http://openshot.org/"
 license=('LGPL3')
 depends=('imagemagick' 'ffmpeg' 'libx264' 'libopenshot-audio' 'qt5-base' 'qt5-multimedia')
 makedepends=('cmake' 'swig' 'unittestpp')
-source=("https://launchpad.net/libopenshot/0.0/${pkgver}/+download/$_{pkgname}-${pkgver}.tar.gz")
+source=("https://launchpad.net/libopenshot/0.0/${pkgver}/+download/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('05b3b9ef07ec8ecc9c5850851af900fa')
 
 build() {
