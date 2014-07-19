@@ -1,0 +1,14 @@
+pkgbase = uw-ttyp0-font
+	pkgver = 1.2
+	pkgrel = 0
+	url = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0
+	install = font.install
+	arch = any
+	license = custom
+	makedepends = xorg-bdftopcf
+	makedepends = perl
+	source = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/uw-ttyp0-1.2.tar.gz
+	sha512sums = aff3f70fd381921bf4e6394a16b112675ca269930e6b293180c9ec421b2af1ea2b09eccc2f579fde8d51f4541f1a83718f80e589764cbe55316d4cc1fdd98d82
+
+pkgname = uw-ttyp0-font
+
