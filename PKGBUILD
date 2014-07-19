@@ -2,12 +2,12 @@
 
 pkgname=epour
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Torrent client based on EFL"
 arch=('any')
 url="http://www.enlightenment.org"
 license=('GPL3')
-depends=('python2-efl' 'python2-xdg' 'libtorrent' 'hicolor-icon-theme')
+depends=('python2-efl' 'python2-xdg' 'libtorrent-rasterbar' 'hicolor-icon-theme')
 makedepends=('python2-distutils-extra')
 install=$pkgname.install
 source=("http://download.enlightenment.org/rel/apps/$pkgname/$pkgname-$pkgver.tar.xz")
