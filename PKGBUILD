@@ -1,5 +1,5 @@
 pkgname=otrs
-pkgver=3.3.7
+pkgver=3.3.8
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -101,14 +101,14 @@ package() {
   sed -i "s/\/opt/\/usr\/share\/webapps/g" $(grep -rl "/opt" "${pkgdir}/usr/share/webapps/${pkgname}")
 }
 md5sums=('6ae7c4f13927318f80c838b6ac4c9e0c'
-         '97751bb66f95c922057a6c7984937ac4'
-         '03b43db5c79a91ef1490e934f6bc022e'
-         '573eeb71ae847301566d09f748448e38'
-         '34aba5079b53ed8f04a5af98d155202f'
-         '2c152a1f1da2d39906b413030bf86206'
-         '2db260cf9c88e18871c90c4f1f2e7294'
-         '3ea4fdd8065a8aa37a13358f3a00e4cf'
-         '5520d9d891bfcaea2fbb6d82f818f2e8'
+         '89e5b7eec71daf8e6eec67cff9764c18'
+         '42adfcd5f073a68bc07b1a44c8a3789d'
+         'e1256486a6eb397336d82263f254f122'
+         '548fdc06cc2fe809ba994c298c525ffd'
+         '4b3fca03417815f6debd22890113ebe0'
+         '3e2fe25f967c28b3c89194ccd06c69e9'
+         'eb33ac708c835a93f662690c3126ae53'
+         'd67dce8fe5b90389609ba2baf169a6c6'
          'c095828fb4aade210835fb1250fcaf6b'
          '3a9342a8b7347bf47f832d58020beb9c'
          '377ff2d210bc78872c1eddd4a2543368'
@@ -126,14 +126,14 @@ md5sums=('6ae7c4f13927318f80c838b6ac4c9e0c'
          '7083a797c1a6a7da73fde4b3f289a9fe'
          '273707110ec37179288fcbb67c71fc7e')
 sha1sums=('aa8e024dcf6dc0f29fe421ca5f0451b701ede0b8'
-          '8da99cfb36512e530e259692423f0c78d783360d'
-          '88c72b111e210fc85884b4778128b40b14352106'
-          'ca30bcf2fcfde997701fb77266626ee0b9c54fa0'
-          '153955d5ddb87d1a2bfa36a9dd463baef9650de4'
-          'f15e163f026cd53e86b772e26d5ee1df28abe79b'
-          'aca514857e90b299d6cad0e7fb8135cb3ea27c66'
-          '25d26f6cbea2e743b21e363f59828fa45f948a03'
-          'd67fdb0bb10bba380b90d91f05e97b349d3fa79c'
+          'dfd588d131cba1e3b0c156ef56e2fbd95fe41979'
+          'e6701f143b70f852f8551b1421d474cf3b8d770f'
+          '2c5a33083f9f7f257c9da32bf663a262c1f2e783'
+          '9b10c65e72caf83da6d732363a7eb39404eb9a08'
+          'bb700a401eb054e77725c148e36bb9e36f8994b6'
+          '3386e6075cab08d28071b2251453c57b1203c8a4'
+          'b138c732092b4905b77a01ae1934c64079d49e63'
+          '55a1dd0943afd0d267b3ab59a2947f6762da1f55'
           '232a8412b361b8cc0c3faf0ab24cb19bce2dd6bc'
           '5362cc6fc56d8b5e2a9b208c8d5789213bba5576'
           '816e63f37ae2f216869dc1ed69144e349781343e'
