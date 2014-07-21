@@ -2,13 +2,14 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
-pkgver=1.1.11.37.g9a5e96c
+pkgver=1.1.11.42.g73acda3
 pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('libbsd' 'pam' 'libxaw' 'libxinerama' 'xorg-xrdb' 'xorg-sessreg' 'libxft' 'systemd')
+optdepends=('slim-xdm: for separate greeter')
 provides=('xorg-xdm' 'xorg-xdm-xlogin')
 conflicts=('xorg-xdm' 'xorg-xdm-xlogin' 'xorg-xdm-git')
 makedepends=('git' 'pkgconfig' 'xorg-util-macros' 'xtrans')
