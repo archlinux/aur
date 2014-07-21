@@ -15,16 +15,13 @@ pkgbase = slim-xdm
 	depends = xorg-xauth
 	provides = slim=1.3.6.21
 	conflicts = slim
+	source = slim-xdm::git://github.com/bbidulock/slim.git
+	source = slim.pam
+	source = slim.logrotate
 	backup = etc/slim.conf
 	backup = etc/logrotate.d/slim
 	backup = etc/pam.d/slim
 	backup = etc/slimlock.conf
-	source = slim-xdm::git://github.com/bbidulock/slim.git
-	source = slim.pam
-	source = slim.logrotate
-	sha256sums = SKIP
-	sha256sums = b9a77a614c451287b574c33d41e28b5b149c6d2464bdb3a5274799842bca51a4
-	sha256sums = 5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def
 
 pkgname = slim-xdm
 

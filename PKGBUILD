@@ -2,16 +2,16 @@
 
 pkgname=slim-xdm
 _pkgname=slim
-pkgver=1.3.6.10
+pkgver=1.3.6.21
 pkgrel=1
 pkgdesc="Desktop-independent graphical login manager for X11 with XDM support"
 arch=('i686' 'x86_64')
-url="http://slim.berlios.de/"
+#url="http://slim.berlios.de/"
+url="https://github.com/bbidulock/slim"
 license=('GPL2')
 depends=('libjpeg' 'libxft' 'libxrandr' 'xorg-xauth')
 provides=("${_pkgname}=${pkgver}")
 conflicts=($_pkgname)
-replaces=($_pkgname 'wdm-slim')
 makedepends=('git' 'cmake' 'freeglut')
 backup=('etc/slim.conf' 'etc/logrotate.d/slim' 'etc/pam.d/slim'
         'etc/slimlock.conf')
