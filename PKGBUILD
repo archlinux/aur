@@ -66,6 +66,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
   install -Dm644 data/sysconfig.snapper "$pkgdir"/etc/conf.d/snapper
+  install -Dm755 client/.libs/systemd-helper "$pkgdir"/usr/lib/snapper/systemd-helper
 
   rm -f "$pkgdir"/etc/snapper/zypp-plugin.conf
   rm -f "$pkgdir"/usr/share/man/man*/snapper-zypp-plugin.*.gz
@@ -78,5 +79,5 @@ package() {
 sha256sums=('6c78fc57ac018f7536a03971927f2b17f1f048f87e26689609028f51500c9c6a'
             '7c0a695b4d70b3d6aa25789b478ceca86ac3dab6f678045df4907b2c020341f9'
             'd2f2571e92ffe612529d69a96bd725b4bd040fc36043d98dc1e09b6efcb65894'
-            'ae609064e586b7b553f3ee5d9bd692fa125cdb60bc71e04a42c567cdfb76fa68'
+            'b62f61261e45587a38bcbe6468b8932259740984151db1636d299ddafbe3f7a9'
             'fb01465a6ba7c202c5b1aecb92b99bfcbcd7cdceb0448d84224a108481805bd5')
