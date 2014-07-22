@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_publisher provides a GUI plugin for publishing arbitrary mess
 url='http://ros.org/wiki/rqt_publisher'
 
 pkgname='ros-indigo-rqt-publisher'
-pkgver='0.3.7'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
