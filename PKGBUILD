@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains the python bindings PyKDL for the Kinematic
 url='http://wiki.ros.org/python_orocos_kdl'
 
 pkgname='ros-indigo-python-orocos-kdl'
-pkgver='1.2.2'
-_pkgver_patch=2
+pkgver='1.3.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('LGPL')
 
 ros_makedepends=(ros-indigo-orocos-kdl)

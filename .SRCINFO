@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-python-orocos-kdl
 	pkgdesc = ROS - This package contains the python bindings PyKDL for the Kinematics and Dynamics Library (KDL), distributed by the Orocos Project.
-	pkgver = 1.2.2
-	pkgrel = 3
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = http://wiki.ros.org/python_orocos_kdl
 	arch = any
 	license = LGPL
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-python-orocos-kdl
 	depends = ros-indigo-catkin
 	depends = sip
 	depends = python2-sip
-	source = python_orocos_kdl::git+https://github.com/smits/orocos-kdl-release.git#tag=release/indigo/python_orocos_kdl/1.2.2-2
+	source = python_orocos_kdl::git+https://github.com/smits/orocos-kdl-release.git#tag=release/indigo/python_orocos_kdl/1.3.0-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-python-orocos-kdl
