@@ -1,16 +1,16 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libnpa
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
 pkgdesc='Free library for manipulating Nitroplus game files'
 url='http://dev.pulsir.eu/krofna/'
-depends=('boost-libs')
+depends=('boost-libs' 'zlib')
 makedepends=('cmake' 'boost')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/libnpa/archive/v$pkgver.tar.gz")
-sha256sums=('94bbeb21f283d1963dc80467e674739cdc072ff8b52268ddf48e5f8d13281265')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('3aaae30d65ae4f138e88cdc6ff0845160ff2e7c57601b8bbad1af8abb8255ea1')
 
 build() {
   cd $pkgname-$pkgver
