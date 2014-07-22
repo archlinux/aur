@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_console provides a GUI plugin for displaying and filtering RO
 url='http://ros.org/wiki/rqt_console'
 
 pkgname='ros-indigo-rqt-console'
-pkgver='0.3.7'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
