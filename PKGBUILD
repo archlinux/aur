@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS ba
 url='http://ros.org/wiki/rqt_bag'
 
 pkgname='ros-indigo-rqt-bag'
-pkgver='0.3.7'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
