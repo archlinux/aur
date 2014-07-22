@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of plugins for publishing and subscribing to sensor_msgs/Im
 url='http://www.ros.org/wiki/image_transport_plugins'
 
 pkgname='ros-indigo-image-transport-plugins'
-pkgver='1.9.0'
+pkgver='1.9.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
