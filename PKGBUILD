@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cf
 url='http://ros.org/wiki/rosboost_cfg'
 
 pkgname='ros-indigo-rosboost-cfg'
-pkgver='1.11.2'
+pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
