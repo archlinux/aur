@@ -4,7 +4,7 @@ pkgdesc="ROS - Assorted shell commands for using ros with bash."
 url='http://www.ros.org/wiki/rosbash'
 
 pkgname='ros-indigo-rosbash'
-pkgver='1.11.2'
+pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
