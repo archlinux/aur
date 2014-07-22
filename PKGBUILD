@@ -4,10 +4,10 @@ pkgdesc="ROS - Compressed_image_transport provides a plugin to image_transport f
 url='http://www.ros.org/wiki/image_transport_plugins'
 
 pkgname='ros-indigo-compressed-image-transport'
-pkgver='1.9.0'
+pkgver='1.9.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-image-transport
