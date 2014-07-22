@@ -1,6 +1,6 @@
 pkgbase = xorg-xdm-xlogin-git
 	pkgdesc = X Display Manager
-	pkgver = 1.1.11.42.g73acda3
+	pkgver = 1.1.11.43.g688d58b
 	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = i686

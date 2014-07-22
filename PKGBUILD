@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
-pkgver=1.1.11.42.g73acda3
+pkgver=1.1.11.43.g688d58b
 pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
@@ -31,7 +31,7 @@ build() {
       --with-xdmconfigdir=/etc/X11/xdm \
       --with-xdmscriptdir=/etc/X11/xdm \
       --with-pixmapdir=/usr/share/xdm/pixmaps
-  make
+  make CWARNFLAGS=""
 }
 
 package() {
