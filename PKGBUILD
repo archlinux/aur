@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_common_plugins metapackage provides ROS backend graphical too
 url='http://ros.org/wiki/rqt_common_plugins'
 
 pkgname='ros-indigo-rqt-common-plugins'
-pkgver='0.3.7'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
