@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a recent version of the Kinematics and Dyna
 url='http://wiki.ros.org/orocos_kdl'
 
 pkgname='ros-indigo-orocos-kdl'
-pkgver='1.2.2'
-_pkgver_patch=2
+pkgver='1.3.0'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('LGPL')
 
 ros_makedepends=()
