@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-theora-image-transport
 	pkgdesc = ROS - Theora_image_transport provides a plugin to image_transport for transparently sending an image stream encoded with the Theora codec.
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = http://www.ros.org/wiki/image_transport_plugins
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = ros-indigo-theora-image-transport
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-tf
 	makedepends = ros-indigo-rosbag
+	makedepends = ros-indigo-std-msgs
 	makedepends = ros-indigo-cv-bridge
 	makedepends = ros-indigo-message-generation
 	makedepends = ros-indigo-catkin
@@ -20,6 +21,7 @@ pkgbase = ros-indigo-theora-image-transport
 	makedepends = libtheora
 	depends = ros-indigo-tf
 	depends = ros-indigo-rosbag
+	depends = ros-indigo-std-msgs
 	depends = ros-indigo-cv-bridge
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-image-transport
@@ -27,7 +29,7 @@ pkgbase = ros-indigo-theora-image-transport
 	depends = ros-indigo-pluginlib
 	depends = libogg
 	depends = libtheora
-	source = theora_image_transport::git+https://github.com/ros-gbp/image_transport_plugins-release.git#tag=release/indigo/theora_image_transport/1.9.0-0
+	source = theora_image_transport::git+https://github.com/ros-gbp/image_transport_plugins-release.git#tag=release/indigo/theora_image_transport/1.9.1-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-theora-image-transport

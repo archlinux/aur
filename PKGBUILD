@@ -4,7 +4,7 @@ pkgdesc="ROS - Theora_image_transport provides a plugin to image_transport for t
 url='http://www.ros.org/wiki/image_transport_plugins'
 
 pkgname='ros-indigo-theora-image-transport'
-pkgver='1.9.0'
+pkgver='1.9.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,6 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-tf
   ros-indigo-rosbag
+  ros-indigo-std-msgs
   ros-indigo-cv-bridge
   ros-indigo-message-generation
   ros-indigo-catkin
@@ -25,6 +26,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-indigo-tf
   ros-indigo-rosbag
+  ros-indigo-std-msgs
   ros-indigo-cv-bridge
   ros-indigo-message-runtime
   ros-indigo-image-transport
