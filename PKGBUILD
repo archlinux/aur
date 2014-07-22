@@ -14,7 +14,7 @@ _UDK_OVMF_IA32_PKG="OvmfIa32"
 _UDK_OVMF_IA32_DSC="OvmfPkg/OvmfPkgIa32.dsc"
 
 _UDK_TARGET="RELEASE"
-_COMPILER="GCC48"
+_COMPILER="GCC49"
 ################
 
 ################
@@ -24,7 +24,7 @@ _OPENSSL_VERSION="0.9.8za"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15664
+pkgver=15668
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
@@ -40,7 +40,9 @@ provides=("ovmf=${pkgver}" "ovmf-tianocore-edk2=${pkgver}" "ovmf-tianocore-edk2-
 
 install="${_pkgname}.install"
 
-source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
+source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
+        'edk2-basetools-add-gcc4.9-support.patch'
+        'edk2-ovmfpkg-add-gcc4.9-support.patch')
 
 source+=("${_TIANO_DIR_}_BaseTools::svn+https://svn.code.sf.net/p/edk2-buildtools/code/trunk/BaseTools")
 
@@ -53,6 +55,8 @@ for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellP
 done
 
 sha1sums=('aadca1eb1a103a5536b24e1ed7e45051e2939731'
+          'fd92560dbc2f5c8c7bd36def1f836441e7529b30'
+          '662d4136ddf4dbc051242b84f8a9ae956fae61b1'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -117,6 +121,10 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
 	
+	msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
+	patch -Np1 -i "${srcdir}/edk2-basetools-add-gcc4.9-support.patch" || true
+	patch -Np1 -i "${srcdir}/edk2-ovmfpkg-add-gcc4.9-support.patch" || true
+	
 	msg "Use python2 for UDK BaseTools"
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/Tests/GNUmakefile"
@@ -133,12 +141,6 @@ _prepare_tianocore_sources() {
 	msg "Remove GCC -g debug option and add -O0 -mabi=ms -maccumulate-outgoing-args"
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	sed 's|DEFINE GCC44_ALL_CC_FLAGS            = -g |DEFINE GCC44_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	
-	# msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
-	# sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf64Convert.c"
-	# sed 's|Error (NULL, 0, 3000, "Invalid", "Unsupported section alignment.");|continue;|g' -i "${EDK_TOOLS_PATH}/Source/C/GenFw/Elf32Convert.c"
-	# sed 's|_GCC48_IA32_OBJCOPY_FLAGS        =|_GCC48_IA32_OBJCOPY_FLAGS        = --section-alignment=0x20 |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	# sed 's|_GCC48_X64_OBJCOPY_FLAGS        =|_GCC48_X64_OBJCOPY_FLAGS        = --section-alignment=0x20 |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
 	msg "Fix UDK Target Platform"
 	sed "s|ACTIVE_PLATFORM       = Nt32Pkg/Nt32Pkg.dsc|ACTIVE_PLATFORM       = ${_UDK_OVMF_X64_DSC}|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true

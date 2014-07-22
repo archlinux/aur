@@ -1,0 +1,42 @@
+commit 674f3849d6e49ee515cdd05d54174b19536eda60
+Author: Jordan Justen <jordan.l.justen@intel.com>
+Date:   Mon Jul 21 12:02:22 2014 -0700
+
+    BaseTools: Add GCC49 toolchain; align data sections to 0x40
+    
+    GCC 4.9 may use 64-byte (0x40) alignment for data sections.
+    
+    Therefore we use a different link script for GCC 4.9. The only
+    difference from the gcc4.4-ld-script is the alignment for data
+    sections.
+    
+    When using the GCC48 toolchain with GCC 4.9, this error would be
+    encountered by GenFw:
+    > GenFw: ERROR 3000: Invalid
+    >   Unsupported section alignment.
+    
+    Contributed-under: TianoCore Contribution Agreement 1.0
+    Signed-off-by: Jordan Justen <jordan.l.justen@intel.com>
+    Cc: edk2-buildtools-devel@lists.sourceforge.net
+    Cc: Alain Kalker <a.c.kalker@gmail.com>
+    Cc: Keshav Amburay <the.ridikulus.rat@gmail.com>
+    Cc: "Mendyke, DanielX" <danielx.mendyke@intel.com>
+
+diff --git a/OvmfPkg/build.sh b/OvmfPkg/build.sh
+index 5bfee72..c3cc72e 100755
+--- a/OvmfPkg/build.sh
++++ b/OvmfPkg/build.sh
+@@ -85,9 +85,12 @@ case `uname` in
+       4.7.*)
+         TARGET_TOOLS=GCC47
+         ;;
+-      4.[8-9].*)
++      4.8.*)
+         TARGET_TOOLS=GCC48
+         ;;
++      4.9.*|4.1[0-9].*)
++        TARGET_TOOLS=GCC49
++        ;;
+       *)
+         TARGET_TOOLS=GCC44
+         ;;
