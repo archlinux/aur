@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-indigo-roscpp'
-pkgver='1.11.6'
+pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
