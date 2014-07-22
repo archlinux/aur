@@ -4,7 +4,7 @@ pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfi
 url='http://ros.org/wiki/rqt_reconfigure'
 
 pkgname='ros-indigo-rqt-reconfigure'
-pkgver='0.3.7'
+pkgver='0.3.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
