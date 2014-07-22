@@ -4,7 +4,7 @@ pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_b
 url='http://www.ros.org/wiki/rosconsole_bridge'
 
 pkgname='ros-indigo-rosconsole-bridge'
-pkgver='0.4.1'
+pkgver='0.4.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
