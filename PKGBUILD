@@ -1,7 +1,7 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
 
 pkgname=dhcptest-git
-pkgver=0.3.r1.ga34cf82
+pkgver=0.4.r0.ga2e034e
 pkgrel=1
 pkgdesc="DHCP test client"
 arch=('i686' 'x86_64')
