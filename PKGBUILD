@@ -7,7 +7,7 @@
 # https://github.com/jkl1337/packages-archlinux.git
 
 pkgname=mma
-pkgver=13.12
+pkgver=14.07
 pkgrel=1
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
@@ -17,18 +17,15 @@ arch=('any')
 install=mma.install
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --user-agent "Mozilla/4.0" -o %o %u ')
 source=("http://www.mellowood.ca/mma/mma-bin-$pkgver.tar.gz"
-  fix-mmastart-path.patch
   mmarc)
-sha1sums=('8db89bb03228c4567bc28add52336a24728280ee'
-          '59e4abe8a192e919b141cefbdf9660257266387f'
+sha1sums=('daa430fed5264584d2a9ab1c2a5206143be4d7ef'
           '3c03107c2a1b380f66ed68458d9b9def8371c0f6')
-options=(!strip !zipman)
+options=(!strip)
 backup=(etc/mmarc)
 
 build () {
   cd "$srcdir/$pkgname-bin-$pkgver"
 
-  patch -p1 -i "$srcdir/fix-mmastart-path.patch"
   for file in $(grep -rl 'env python *$' .); do sed -i 's/env python *$/env python2/g' $file ;done
 }
 
