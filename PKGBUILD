@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -19,10 +19,17 @@ options=('!emptydirs')
 depends=('ruby' 'curl' 'lzo2' 'libidn' 'rtmpdump')
 makedepends=('git')
 source=(http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
+        nfs.patch
         http://pkgbuild.com/~jsteel/aur/$pkgname/substrate_archlinux_$CARCH.zip)
-md5sums=('55a91a9d9cba7b8b9d126c75b114e510')
+md5sums=('55a91a9d9cba7b8b9d126c75b114e510' 'a670dd93057fbd782176e0275b034bee')
 [[ $CARCH == i686 ]] && md5sums[3]='c04042b24de56d18a041bc005e5ecaa4'
 [[ $CARCH == x86_64 ]] && md5sums[3]='53d8a137e0b50fee8509a7d1c15fd33b'
+
+prepare() {
+  cd "$srcdir"/$pkgname-$pkgver
+
+  patch -Np0 -i "$srcdir"/nfs.patch
+}
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
