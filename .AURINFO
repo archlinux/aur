@@ -15,13 +15,6 @@ pkgbase = lshwd
 	source = pcitable
 	source = pcmciatable
 	source = usbtable
-	md5sums = 493ae06aada341f0bde063aab3c4167f
-	md5sums = e7c4cdd75aa75aae140f6c578109b830
-	md5sums = 42d52005cce7b05c528d07424313769e
-	md5sums = bf672bb7288d67ec5bc1502390d810ca
-	md5sums = 93099e0be779545b0b82b880293b7a7f
-	md5sums = f0819596a4d9ee67c728f40c0a78d662
-	md5sums = 244b6b223b42b36a22040cc1c453509c
 
 pkgname = lshwd
 

@@ -1,0 +1,181 @@
+diff -up src/lshwd-1.1.3/lshwd.c.orig src/lshwd-1.1.3/lshwd.c
+--- src/lshwd-1.1.3/lshwd.c.orig	2005-03-04 01:11:29.000000000 -0700
++++ src/lshwd-1.1.3/lshwd.c	2014-06-27 19:42:20.000000000 -0600
+@@ -166,7 +166,9 @@ sort_pci_list(void)
+ 	
+ 	/* counting number of total devices */
+ 	for(cnt=0,d=first_dev; d; d=d->next)
+-		cnt++;
++	{	cnt++;
++		pci_fill_info(d, PCI_FILL_IDENT | PCI_FILL_BASES);	/* Fill in header info we need 	*/
++        }
+ 	/* allocating memory for all pci devices */
+ 	h = index = alloca(sizeof(struct pci_dev *) * cnt);
+ 	for(d=first_dev; d; d=d->next)
+@@ -307,7 +309,7 @@ lookup_module(int vendorid, int deviceid
+ 				module[i] = '\0';
+ 				/* check if module name should be replaced according to updated_modules */
+ 				updated_module_name(module);
+-				*buf++;
++				(void) *buf++;
+ 				for (; *buf++ != '\"'; );
+ 				for (i=0; (i < sizeofdesc) && (*buf != '\n') && (*buf != '\"') ; description[i++] = *buf++);
+ 				description[i] = '\0';
+@@ -335,13 +337,15 @@ init_lookup_block(char *filename)
+ 	sprintf(sharedfile, "%s/%s", SHARED_PATH, filename);
+ 	lookup_block_len = 0;
+ 	FILE *f;
++	int num;
+ 	if ((f=fopen(filename, "r")) || (f=fopen(sharedfile,"r")))
+ 	{
+ 		fseek(f, 0L, SEEK_END);
+ 		lookup_block_len = ftell(f);
+ 		rewind(f);
+ 		lookup_block = (char*)realloc(lookup_block, lookup_block_len);
+-		fread(lookup_block, sizeof(char), lookup_block_len, f);
++		num = fread(lookup_block, sizeof(char), lookup_block_len, f);
++		(void) num;
+ 		fclose(f);
+ 	}
+ }
+@@ -438,6 +442,7 @@ isLoaded(const char *module)
+ 		}
+ 
+ 		scanned = sscanf(line, "%s %lu %lu", name, &size, &refs);
++		(void) scanned;
+ 		DEBUG("%s %s\n",name, module);
+ 		if (strcmp(name, module) == 0)
+ 		{
+@@ -521,8 +526,8 @@ find_ethernet_devices(char *module)
+ 
+ /* copied getxinfo from hwsetup, by  Klaus Knopper <knopper@knopper.net> */
+ #define CARDSDB "/usr/share/hwdata/Cards"
+-#define XPATH "/usr/X11R6/bin/"
+-#define XMODPATH "/usr/X11R6/lib/modules/drivers/"
++#define XPATH "/usr/bin/"
++#define XMODPATH "/usr/lib/xorg/modules/drivers/"
+ 
+ int exists(char *filename)
+ {
+@@ -542,7 +547,7 @@ struct xinfo {
+ struct xinfo *
+ getxinfo ( char* devdesc, char* devdriver )
+ {
+-	const char *xfree4 = "XFree86", *xvesa4 = "vesa";
++	const char *xfree4 = "Xorg", *xvesa4 = "vesa";
+ 	const char *xpath = XPATH;
+ 	static struct xinfo xi;
+ 	int rescanned = 0;
+@@ -616,7 +621,7 @@ getxinfo ( char* devdesc, char* devdrive
+ 							char xmodule[ 32 ];
+ 							char fullpath[ 128 ];
+ 							sscanf ( &buffer[ 7 ], "%31s", xmodule );
+-							sprintf ( fullpath, XMODPATH "%.31s_drv.o", xmodule );
++							sprintf ( fullpath, XMODPATH "%.31s_drv.so", xmodule );
+ 							if ( exists ( fullpath ) )
+ 							{
+ 								strncpy ( xi.xmodule, xmodule, sizeof( xi.xmodule ) );
+@@ -750,7 +755,7 @@ int
+ check_module(char *module)
+ {
+ 	struct pci_dev *d;
+-	byte descbuf[128], modulebuf[128];
++	char descbuf[128], modulebuf[128];
+ 	
+ 	for(d=first_dev; d; d=d->next)
+ 	{
+@@ -772,8 +777,8 @@ list_pci(void)
+ 	unsigned int c;
+ 	struct pci_access *pacc;
+ 	struct pci_dev *dev;
+-	byte lastclassbuf[128]={0};
+-	byte classbuf[128], descbuf[128], modulebuf[128];
++	char lastclassbuf[128]={0};
++	char classbuf[128], descbuf[128], modulebuf[128];
+ 	char idstring[20]={0};
+ 
+ 	init_lookup_block("pcitable");
+@@ -814,7 +819,6 @@ list_pci(void)
+ 	for(dev=first_dev; dev; dev=dev->next)			/* Iterate over all devices 		*/
+ 	{
+ 		/* look for pci information : name, module, description  */
+-		pci_fill_info(dev, PCI_FILL_IDENT | PCI_FILL_BASES);	/* Fill in header info we need 	*/
+ 		c = pci_read_word(dev, PCI_CLASS_DEVICE);	/* Read config register directly 	*/
+ 		char *pclassbuf =
+ 			pci_lookup_name(pacc, classbuf, sizeof(classbuf),
+@@ -905,8 +909,8 @@ list_usb(void)
+ 	usb_dev_handle *udev; 
+ 	struct usb_device *dev; 
+ 	struct usb_interface_descriptor desc;
+-	byte lastclassbuf[128]={0};
+-	byte string[128],classbuf[128], descbuf[128], modulebuf[128];
++	char lastclassbuf[128]={0};
++	char string[128],classbuf[128], descbuf[128], modulebuf[128];
+ 	char idstring[20]={0};
+ 
+ 	/* TODO: the approp modules are loaded anyway if usb controllers were found, so 
+@@ -1041,7 +1045,7 @@ out_list_usb:
+ void
+ list_mouse(void)
+ {
+-	byte devicebuf[128], descbuf[128], modulebuf[128];
++	char devicebuf[128], descbuf[128], modulebuf[128];
+ 	char idstring[20]={0};
+ 	
+ 	if (psauxProbe( devicebuf, modulebuf, descbuf))
+@@ -1087,8 +1091,8 @@ list_pcmcia(void)
+ 	cistpl_funcid_t *funcid = &arg.tuple_parse.parse.funcid;
+ 	config_info_t config;
+ 	int fd[MAX_SOCKS];
+-	byte lastclassbuf[128]={0};
+-	byte string[128],classbuf[128], descbuf[128], modulebuf[128];
++	char lastclassbuf[128]={0};
++	char string[128],classbuf[128], descbuf[128], modulebuf[128];
+ 	char idstring[20]={0};
+ 	static char *pcmcia_fn[] = 
+ 	{
+@@ -1110,6 +1114,7 @@ list_pcmcia(void)
+ 		if (vers->ns <= 0) continue;
+ 
+ 		string[0] = classbuf[0] = modulebuf[0] = descbuf[0] = 0;
++		(void) string;
+ 	
+ 		*manfid = (cistpl_manfid_t) { 0, 0 };
+ 		get_tuple(fd[ns], CISTPL_MANFID, &arg);
+@@ -1171,8 +1176,8 @@ list_firewire(void)
+ {
+ 	//int loaded_driver = 0;
+ 	unsigned long specid, version;
+-	byte lastclassbuf[128]={0};
+-	byte node[16],classbuf[128], descbuf[128], modulebuf[128];
++	char lastclassbuf[128]={0};
++	char node[16],classbuf[128], descbuf[128], modulebuf[128];
+ 	char idstring[20]={0};
+ 	
+ 	char *next, *buf = NULL, *tmp;
+diff -up src/lshwd-1.1.3/psaux.c.orig src/lshwd-1.1.3/psaux.c
+--- src/lshwd-1.1.3/psaux.c.orig	2005-03-03 23:38:21.000000000 -0700
++++ src/lshwd-1.1.3/psaux.c	2014-06-27 19:41:19.000000000 -0600
+@@ -58,8 +58,12 @@
+  }
+ 
+ */
+-#include <unistd.h>
+ #include <stdio.h>
++#include <stdlib.h>
++#include <sys/time.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <sys/select.h>
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <string.h>
+@@ -107,8 +111,6 @@
+ #define QP_DATA         0x310           /* Data Port I/O Address */
+ #define QP_STATUS       0x311           /* Status Port I/O Address */
+ 
+-#include <stdio.h>
+-#include <unistd.h>
+ #include <asm/io.h>
+ 
+ static int qp_data = QP_DATA;
