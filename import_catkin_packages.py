@@ -20,6 +20,19 @@ updated_packages_file = os.path.join(updates_packages_dir,
                                      "updated_packages_%(distro)s.dump")
 http = urllib3.PoolManager()
 
+try:
+    import certifi
+
+    # Make verified HTTPS requests
+    http = urllib3.PoolManager(
+        cert_reqs='CERT_REQUIRED', # Force certificate check.
+        ca_certs=certifi.where(),  # Path to the Certifi bundle.
+    )
+except ImportError as e:
+    # HTTPS requests will not be verified
+    pass
+
+
 class PackageBase(object):
 
   def __init__(self, distro, repository_url, name, version, version_patch):
