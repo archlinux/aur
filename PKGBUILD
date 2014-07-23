@@ -1,8 +1,8 @@
 # Maintainer: Joris Steyn <jorissteyn@gmail.com>
 
 pkgname=vim-gitgutter-git
-pkgver=118.878c342
-pkgrel=1
+pkgver=217.83ace20
+pkgrel=2
 pkgdesc="A Vim plugin which shows a git diff in the 'gutter'"
 arch=('any')
 url="https://github.com/airblade/vim-gitgutter.git"
@@ -19,7 +19,18 @@ pkgver() {
 }
 
 package() {
-    install -Dm644 "${srcdir}"/vim-gitgutter/plugin/gitgutter.vim "${pkgdir}"/usr/share/vim/vimfiles/plugin/gitgutter.vim
-    install -Dm644 "${srcdir}"/vim-gitgutter/doc/gitgutter.txt "${pkgdir}"/usr/share/vim/vimfiles/doc/gitgutter.txt
-}
+    install -d "$pkgdir"/usr/share/vim/vimfiles/autoload/gitgutter
 
+    install -Dm644 "$srcdir"/vim-gitgutter/autoload/gitgutter.vim \
+        "$pkgdir"/usr/share/vim/vimfiles/autoload/gitgutter.vim
+
+    install -Dm644 "$srcdir"/vim-gitgutter/plugin/gitgutter.vim \
+        "$pkgdir"/usr/share/vim/vimfiles/plugin/gitgutter.vim
+
+    install -Dm644 "$srcdir"/vim-gitgutter/doc/gitgutter.txt \
+        "$pkgdir"/usr/share/vim/vimfiles/doc/gitgutter.txt
+
+    for file in $(find "$srcdir"/vim-gitgutter/autoload/gitgutter/ -type f -name *.vim); do
+        install -Dm644 "$file" "$pkgdir"/usr/share/vim/vimfiles/"${file#${srcdir}/vim-gitgutter}"
+    done
+}
