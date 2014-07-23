@@ -3,7 +3,7 @@
 # Contributor: Ryan Lee <ryan@swyro.com>
 
 pkgname=apache-flex-sdk
-pkgver=4.12.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="The open-source framework for building expressive web and mobile applications"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     "apache-flex-sdk.sh"
 )
 sha256sums=(
-    '7dae49bbd20edde9d52aa53c144ccb33b44fa0884bab6033872f9b4c623deaab'
+    'e24701c1cac6b6c1cf442ee5f8597a77c2bd362fb0060f55aded72f8476511b2'
     '2bbd5ffff3bb20c117db7206080079479b04c4b55d68dd21ab31b6566c99fb6b'
     '520ae01482825ef28da42c03b3cbadd3d62155ed074d737f3672980f0a97a3fd'
 )
