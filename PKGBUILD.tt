@@ -9,7 +9,7 @@ pkgdesc='Perl module providing GNU C library compatible strftime for loggers and
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.8.4')
+depends=('perl>=5.8.1')
 makedepends=(
 	'perl-module-build>=0.38'
 	'perl-cpan-meta'	
