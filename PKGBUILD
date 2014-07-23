@@ -5,7 +5,7 @@
 
 pkgname=ddclient
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 arch=('any')
 url="http://ddclient.sourceforge.net"
@@ -16,6 +16,13 @@ source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.t
         $pkgname.service)
 md5sums=('62cd5fe93ced2c794d5f441f9d908841'
          '1bcd3e75309e658931532adef2a0608a')
+
+prepare() {
+  cd "$srcdir"/$pkgname-$pkgver
+
+  # Fix FS#40645
+  sed -i '2977s/http:/https:/' $pkgname
+}
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
