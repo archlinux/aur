@@ -2,8 +2,8 @@
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
 pkgname=gtk2-perl
-pkgver=1.249
-pkgrel=2
+pkgver=1.2492
+pkgrel=1
 pkgdesc="Perl bindings for GTK+ 2.x"
 arch=(i686 x86_64)
 license=('LGPL')
@@ -13,7 +13,7 @@ depends=('gtk2' 'pango-perl')
 checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gtk2-${pkgver}.tar.gz)
-md5sums=('605b419fca92c5166f0d0077663c7c98')
+md5sums=('36ac652001392f67bf6b1539b67d5edc')
 
 prepare() {
   cd Gtk2-$pkgver
@@ -29,9 +29,7 @@ build() {
 
 check() {
   cd Gtk2-$pkgver
-  LD_PRELOAD="" Xvfb -nolisten tcp -extension GLX -screen 0 1280x1024x24 :99 2>/dev/null &
-  LD_PRELOAD="" DISPLAY=:99 make test
-  kill $!
+  xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" make test
 }
 
 package() {
