@@ -18,14 +18,16 @@ sha256sums=('7b18bcd70beaced1e004594be46c8cff95795318f6f5830dd2a8a700410fc149')
 build() {
   cd "Gauche-$pkgver"
 
-  ./configure --enable-multibyte=utf-8 --enable-threads=pthreads --prefix=/usr
-  make -j1
+  # does not compile with --enable-threads=pthreads
+  ./configure --enable-multibyte=utf-8 --prefix=/usr
+
+  make
 }
 
 package() {
   cd "Gauche-$pkgver"
 
-  make -j1 DESTDIR="$pkgdir" install-pkg install-doc
+  make DESTDIR="$pkgdir" install-pkg install-doc
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
