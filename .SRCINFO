@@ -9,6 +9,7 @@ pkgbase = cdogs
 	makedepends = cmake
 	depends = sdl_mixer
 	depends = sdl_image
+	depends = sdl_net
 	source = cdogs-0.5.6.tar.gz::https://github.com/cxong/cdogs-sdl/archive/0.5.6.tar.gz
 	source = hqx-for-0.5.6.tar.gz::https://github.com/cxong/hqx/archive/2a8a05854ad2147425d0b55a3c40e81c368c97fd.tar.gz
 	source = cbehave-for-0.5.6.tar.gz::https://github.com/cxong/cbehave/archive/4ab8ce9fe7662c593ce92d5f99f6b60dbaeadad7.tar.gz

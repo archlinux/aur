@@ -8,7 +8,7 @@ pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
 arch=('i686' 'x86_64')
 url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
-depends=('sdl_mixer' 'sdl_image')
+depends=('sdl_mixer' 'sdl_image' 'sdl_net')
 makedepends=('cmake')
 source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/$pkgver.tar.gz"
         hqx-for-$pkgver.tar.gz::"https://github.com/cxong/hqx/archive/2a8a05854ad2147425d0b55a3c40e81c368c97fd.tar.gz"
