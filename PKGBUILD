@@ -3,7 +3,7 @@
 pkgname=python-empy
 realname=empy
 pkgver=3.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful and robust templating system for Python."
 arch=(i686 x86_64)
 url="http://www.alcyone.com/software/empy"
@@ -20,4 +20,7 @@ build() {
 package() {
     cd ${srcdir}/empy-$pkgver
     python3 setup.py install -O2 --skip-build --prefix=/usr --root=${pkgdir}
+
+    # Make em.py executable
+    chmod a+x ${pkgdir}/usr/lib/python3.4/site-packages/em.py
 }
