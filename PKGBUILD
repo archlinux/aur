@@ -4,7 +4,7 @@ pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necess
 url='http://www.ros.org/wiki/cpp_common'
 
 pkgname='ros-indigo-cpp-common'
-pkgver='0.5.3'
+pkgver='0.5.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
