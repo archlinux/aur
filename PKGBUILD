@@ -4,7 +4,7 @@
 # Contributor: nkoizu <nkoizu@gmail.com>
 
 pkgname=gauche
-pkgver=0.9.3.3
+pkgver=0.9.4
 pkgrel=1
 url='http://practical-scheme.net/gauche/'
 pkgdesc='R5RS Scheme implementation (provides gosh)'
@@ -13,18 +13,17 @@ license=('BSD')
 arch=('x86_64' 'i686')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/$pkgname/Gauche-$pkgver.tgz")
-sha256sums=('3d8b70075faa0f7a24f8d112cc102ee3e1066680cdd19d324d59f33fab79caac')
+sha256sums=('7b18bcd70beaced1e004594be46c8cff95795318f6f5830dd2a8a700410fc149')
 
 build() {
-  cd "$srcdir/Gauche-$pkgver"
+  cd "Gauche-$pkgver"
 
-  ./configure --prefix=/usr --enable-multibyte=utf-8 \
-    --enable-threads=pthreads
+  ./configure --enable-multibyte=utf-8 --enable-threads=pthreads --prefix=/usr
   make -j1
 }
 
 package() {
-  cd "$srcdir/Gauche-$pkgver"
+  cd "Gauche-$pkgver"
 
   make -j1 DESTDIR="$pkgdir" install-pkg install-doc
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
