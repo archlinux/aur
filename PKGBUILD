@@ -18,9 +18,9 @@ sha256sums=('7b18bcd70beaced1e004594be46c8cff95795318f6f5830dd2a8a700410fc149')
 build() {
   cd "Gauche-$pkgver"
 
-  # does not compile with --enable-threads=pthreads
-  ./configure --enable-multibyte=utf-8 --prefix=/usr
-
+  [ $CARCH == 'i686' ] && ./configure --enable-multibyte=utf-8 --prefix=/usr \
+    --enable-threads=none || ./configure --enable-multibyte=utf-8 \
+    --prefix=/usr --enable-threads=pthreads
   make
 }
 
