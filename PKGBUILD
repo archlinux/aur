@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_serialization contains the code for serialization as descr
 url='http://ros.org/wiki/roscpp_serialization'
 
 pkgname='ros-indigo-roscpp-serialization'
-pkgver='0.5.3'
+pkgver='0.5.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
