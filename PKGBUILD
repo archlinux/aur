@@ -4,7 +4,7 @@ pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-indigo-rosclean'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
