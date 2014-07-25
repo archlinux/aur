@@ -11,16 +11,14 @@ pkgdesc='R5RS Scheme implementation (provides gosh)'
 depends=('gdbm' 'zlib' 'slib')
 license=('BSD')
 arch=('x86_64' 'i686')
-install="$pkgname.install"
+install=$pkgname.install
 source=("http://downloads.sourceforge.net/$pkgname/Gauche-$pkgver.tgz")
 sha256sums=('7b18bcd70beaced1e004594be46c8cff95795318f6f5830dd2a8a700410fc149')
 
 build() {
   cd "Gauche-$pkgver"
 
-  [ $CARCH == 'i686' ] && ./configure --enable-multibyte=utf-8 --prefix=/usr \
-    --enable-threads=none || ./configure --enable-multibyte=utf-8 \
-    --prefix=/usr --enable-threads=pthreads
+  ./configure --enable-multibyte=utf-8 --prefix=/usr
   make
 }
 
