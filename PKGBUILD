@@ -2,7 +2,7 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-testing
-pkgver=9.4beta1
+pkgver=9.4beta2
 pkgrel=1
 _majorver=9.4
 pkgdesc="Beta version of the PostgreSQL database (includes both server and libs)"
@@ -67,7 +67,7 @@ package() {
   install -D -m644 "${srcdir}/postgresql.logrotate" \
     "${pkgdir}/etc/logrotate.d/postgresql"
 }
-md5sums=('35588e19e4578700a179542d093b5da6'
+md5sums=('7e71996c7ccb5b6097623da0a11db554'
          '75c579eed03ffb2312631f0b649175b4'
          '96f82c38f3f540b53f3e5144900acf17'
          'd28e443f9f65a5712c52018b84e27137'
