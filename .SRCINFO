@@ -1,0 +1,16 @@
+pkgbase = python2-fte
+	pkgdesc = Implementation of Format-Transforming Encryption (FTE)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpdyer/libfte
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-setuptools
+	depends = python2
+	depends = gmp>=5.1
+	source = https://pypi.python.org/packages/source/f/fte/fte-0.1.0.tar.gz
+	sha256sums = 6c4900b2ce4554d6101665a446ca5bd2ca84bb6786913a855edcedb1b142e740
+
+pkgname = python2-fte
+
