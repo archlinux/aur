@@ -3,7 +3,7 @@
 # Based on aur/morituri PKGBUILD by Mantas Mikulėnas <grawity@gmail.com>
 pkgname=morituri-git
 _gitname=morituri
-pkgver=0.2.2.r60.gb461d8a
+pkgver=0.2.3.r3.gb1d685f
 pkgrel=1
 pkgdesc='a CD ripper aiming for accuracy over speed, modelled after Exact Audio Copy'
 arch=(i686 x86_64)
@@ -42,7 +42,7 @@ build() {
 
   ./autogen.sh
 
-  export PYTHON='python2'
+  export PYTHON=$(which python2)
   ./configure --prefix=/usr --sysconfdir=/etc 
   make
 }

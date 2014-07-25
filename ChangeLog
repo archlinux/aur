@@ -1,3 +1,8 @@
+2014-07-25 Frederik "Freso" S. Olesen <archlinux@freso.dk>
+
+	* 0.2.3.r3.gb1d685f-1 :
+	- Fixed issue with morituri's `make` failing.
+
 2013-12-09 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 0.2.2.r60.gb461d8a-1 :
