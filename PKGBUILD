@@ -6,7 +6,7 @@
 pkgbase=linux-selinux       # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.15
-pkgver=3.15.1
+pkgver=3.15.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,15 +21,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
         'change-default-console-loglevel.patch'
-        '0012-fix-saa7134.patch'
+        '0013-efistub-fix.patch'
         )
 sha256sums=('c3927e87be4040fa8aca1b58663dc0776aaf00485604ff88a623be2f3fb07794'
-            '36590c1a522375cd1bf90bd013bf8b600e08680ac4e6c94926f4fa7c8f65328f'
+            '9b0d000e0bdec7a25ee6303afdab8d2af77439995876eadd6ce248e5c954037d'
             '2ccda045312149bbb19ad6ebd3d4d5cf97f43a4eff30038d2c4f67fa57eee442'
             'e40b95e6c41031cdb2da4ae77dc5f4bc8cc06407263d004ee49fef2e80909a21'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            '79359454c9d8446eb55add2b1cdbf8332bd67dafb01fefb5b1ca090225f64d18')
+            '937dc895b4f5948381775a75bd198ed2f157a9f356da0ab5a5006f9f1dacde5c')
 
 _kernelname=${pkgbase#linux}
 
@@ -47,10 +47,9 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # fix saa7134 video
-  # https://bugs.archlinux.org/task/39904
-  # https://bugzilla.kernel.org/show_bug.cgi?id=73361
-  patch -Np1 -i "${srcdir}/0012-fix-saa7134.patch"
+  # fix efistub hang #33745
+  # https://git.kernel.org/cgit/linux/kernel/git/mfleming/efi.git/patch/?id=c7fb93ec51d462ec3540a729ba446663c26a0505
+  patch -Np1 -i "${srcdir}/0013-efistub-fix.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
