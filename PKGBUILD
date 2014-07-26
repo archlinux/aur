@@ -26,7 +26,7 @@ _COMPILER="GCC49"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=15668
+pkgver=15686
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -42,15 +42,14 @@ provides=("uefi-shell=${pkgver}")
 
 install="${_pkgname}.install"
 
-source=("${_TIANO_DIR_}_BaseTools::svn+https://svn.code.sf.net/p/edk2-buildtools/code/trunk/BaseTools"
-        'edk2-basetools-add-gcc4.9-support.patch')
+source=('edk2-basetools-add-gcc4.9-support.patch')
 
-for _DIR_ in MdePkg MdeModulePkg ShellPkg ; do
+for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
-sha1sums=('SKIP'
-          'fd92560dbc2f5c8c7bd36def1f836441e7529b30'
+sha1sums=('fd92560dbc2f5c8c7bd36def1f836441e7529b30'
+          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP')
