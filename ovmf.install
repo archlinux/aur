@@ -17,6 +17,10 @@ post_install() {
     \$ qemu-system-i386 -enable-kvm -net none -m 1024 -pflash ~/ovmf_ia32.bin
     
 EOF
+
+## TODO: Split OVMF_CODE.fd and OVMF_VARS.fd usage
+## http://git.qemu.org/?p=qemu.git;a=commit;h=637a5acb46b36a25b506ba6545e9a53350585b03
+
 	
 }
 
