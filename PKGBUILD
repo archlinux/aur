@@ -5,7 +5,7 @@
 
 pkgname=findutils-selinux
 pkgver=4.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="GNU utilities to locate files with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL3')
