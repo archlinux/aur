@@ -24,7 +24,7 @@ _OPENSSL_VERSION="0.9.8za"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=15668
+pkgver=15686
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
@@ -44,9 +44,7 @@ source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
         'edk2-basetools-add-gcc4.9-support.patch'
         'edk2-ovmfpkg-add-gcc4.9-support.patch')
 
-source+=("${_TIANO_DIR_}_BaseTools::svn+https://svn.code.sf.net/p/edk2-buildtools/code/trunk/BaseTools")
-
-for _DIR_ in MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
+for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
@@ -241,14 +239,18 @@ package() {
 	
 	_setup_env_vars
 	
-	install -d "${pkgdir}/usr/share/ovmf/"
-	
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		msg "Install the OVMF X64 image"
-		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/ovmf_x64.bin"
+		install -d "${pkgdir}/usr/share/ovmf/x64/"
+		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/x64/ovmf_x64.bin"
+		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_CODE.fd" "${pkgdir}/usr/share/ovmf/x64/ovmf_code_x64.bin"
+		install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_X64_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_VARS.fd" "${pkgdir}/usr/share/ovmf/x64/ovmf_vars_x64.bin"
 	fi
 	
 	msg "Install the OVMF IA32 image"
-	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/ovmf_ia32.bin"
+	install -d "${pkgdir}/usr/share/ovmf/ia32/"
+	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF.fd" "${pkgdir}/usr/share/ovmf/ia32/ovmf_ia32.bin"
+	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_CODE.fd" "${pkgdir}/usr/share/ovmf/ia32/ovmf_code_ia32.bin"
+	install -D -m0644 "${_UDK_DIR}/Build/${_UDK_OVMF_IA32_PKG}/${_UDK_TARGET}_${_COMPILER}/FV/OVMF_VARS.fd" "${pkgdir}/usr/share/ovmf/ia32/ovmf_vars_ia32.bin"
 	
 }
