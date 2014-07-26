@@ -6,8 +6,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=214
-pkgrel=1
+pkgver=215
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -19,11 +19,19 @@ options=('strip' 'debug')
 source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"
         'initcpio-hook-udev'
         'initcpio-install-systemd'
-        'initcpio-install-udev')
-md5sums=('eac4f9fc5bd18a0efc3fc20858baacf3'
+        'initcpio-install-udev'
+        '0001-networkd-properly-track-addresses-when-first-added.patch')
+md5sums=('d2603e9fffd8b18d242543e36f2e7d31'
          '29245f7a240bfba66e2b1783b63b6b40'
          '66cca7318e13eaf37c5b7db2efa69846'
-         'bde43090d4ac0ef048e3eaee8202a407')
+         'bde43090d4ac0ef048e3eaee8202a407'
+         '2d237a277a12b3801c88d159d64a7413')
+
+prepare() {
+  cd "${pkgname/-selinux}-$pkgver"
+
+  patch -Np1 <"$srcdir"/0001-networkd-properly-track-addresses-when-first-added.patch
+}
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
@@ -90,6 +98,7 @@ package_systemd-selinux() {
   rm "$pkgdir/etc/systemd/system/getty.target.wants/getty@tty1.service" \
       "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-networkd.service" \
       "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-resolved.service" \
+      "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-timesyncd.service" \
       "$pkgdir/etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service"
   rmdir "$pkgdir/etc/systemd/system/getty.target.wants" \
       "$pkgdir/etc/systemd/system/network-online.target.wants"
@@ -107,6 +116,9 @@ package_systemd-selinux() {
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;
           s#GROUP="tape"#GROUP="storage"#g;
           s#GROUP="cdrom"#GROUP="optical"#g' "$pkgdir"/usr/lib/udev/rules.d/*.rules
+  sed -i 's/dialout/uucp/g;
+          s/tape/storage/g;
+          s/cdrom/optical/g' "$pkgdir"/usr/lib/sysusers.d/basic.conf
 
   # add mkinitcpio hooks
   install -Dm644 "$srcdir/initcpio-install-systemd" "$pkgdir/usr/lib/initcpio/install/systemd"

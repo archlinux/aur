@@ -137,6 +137,11 @@ _214_2_changes() {
   echo '       "kernel.core_pattern=|/usr/lib/systemd/systemd-coredump %p %u %g %s %t %e"'
 }
 
+_215_2_changes() {
+  # create at least the symlink from /etc/os-release to /usr/lib/os-release
+  systemd-tmpfiles --create etc.conf
+}
+
 post_install() {
   post_common "$@"
 
@@ -162,7 +167,8 @@ post_upgrade() {
                     209-1
                     210-1
                     213-4
-                    214-2)
+                    214-2
+                    215-2)
 
   for v in "${upgrades[@]}"; do
     if [[ $(vercmp "$v" "$2") -eq 1 ]]; then
