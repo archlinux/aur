@@ -1,7 +1,7 @@
 # Maintainer: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=wallabag
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Self hostable application for saving web pages'
 arch=('any')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 options=(!strip)
 source=("https://github.com/wallabag/wallabag/archive/${pkgver}.tar.gz"
         "vendor.zip::http://wllbg.org/vendor")
-sha256sums=('c8374578489fc36b4f93852c8a1eaa0184330f8bf84e37fc54e01c48cc4a5dbf'
+sha256sums=('1bbef1dc2d1359fa19975c25a70cc1dd4144ba11882ebda70a1939aa1c39ebb8'
             'bd3e843290de28f1c20fa19ed746ca221c9174cb7f0a9723618f21bddb883e12')
 
 package() {
