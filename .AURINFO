@@ -1,0 +1,12 @@
+pkgbase = clearlooks-colors-gtk-theme
+	pkgdesc = A GTK theme that works well with the gnome-colors icon theme
+	pkgver = 2.0
+	pkgrel = 6
+	url = http://www.gnome-look.org/content/show.php/Clearlooks-Colors?content=75417
+	arch = any
+	license = GPL
+	optdepends = gnome-colors-icon-theme: GNOME Colors icon theme
+	source = http://www.gnome-look.org/CONTENT/content-files/75417-Clearlooks-Colors.tar.gz
+
+pkgname = clearlooks-colors-gtk-theme
+
