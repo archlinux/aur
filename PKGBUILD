@@ -1,4 +1,5 @@
-# Maintainer: Marti Raudsepp <marti@juffo.org>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Contributor: Marti Raudsepp <marti@juffo.org>
 
 pkgname=flashbench-git
 pkgver=20110219
