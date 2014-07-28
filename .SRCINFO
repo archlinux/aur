@@ -1,0 +1,14 @@
+pkgbase = flashbench-git
+	pkgdesc = Tool for benchmarking and classifying flash memory drives
+	pkgver = 20110219
+	pkgrel = 1
+	url = https://lwn.net/SubscriberLink/428584/354d16fe00c90072/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	provides = flashbench
+	conflicts = flashbench
+	replaces = flashbench
+
+pkgname = flashbench-git
+
