@@ -1,7 +1,7 @@
 pkgbase = libx32-expat
 	pkgdesc = An XML Parser library written in C (x32 ABI)
 	pkgver = 2.1.0
-	pkgrel = 1.1
+	pkgrel = 2.1
 	url = http://expat.sourceforge.net/
 	arch = x86_64
 	license = custom

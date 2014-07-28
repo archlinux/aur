@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+# $Id: PKGBUILD 115436 2014-07-11 10:22:04Z bluewind $
 # Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=expat
 pkgname=libx32-${_pkgbasename}
 pkgver=2.1.0
-pkgrel=1.1
+pkgrel=2.1
 pkgdesc="An XML Parser library written in C (x32 ABI)"
 arch=('x86_64')
 url="http://expat.sourceforge.net/"
