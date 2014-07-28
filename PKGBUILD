@@ -2,41 +2,30 @@
 # Contributor: Marti Raudsepp <marti@juffo.org>
 
 pkgname=flashbench-git
-pkgver=20110219
+pkgver=r62.2e30b19
 pkgrel=1
 pkgdesc="Tool for benchmarking and classifying flash memory drives"
 arch=(i686 x86_64)
-license=('unknown')
+license=('GPL2')
 url="https://lwn.net/SubscriberLink/428584/354d16fe00c90072/"
-depends=()
-makedepends=()
 replaces=('flashbench')
 provides=('flashbench')
 conflicts=('flashbench')
-source=()
+source=('git+http://git.linaro.org/git-ro/people/arnd.bergmann/flashbench.git')
+md5sums=('SKIP')
 
-_gitroot="git://git.linaro.org/people/arnd/flashbench.git"
-_gitname="flashbench"
+pkgver() {
+  cd "${srcdir}/flashbench"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd "${srcdir}/flashbench"
   make
-  mkdir -p $pkgdir/usr/bin
-  install -m755 flashbench erase $pkgdir/usr/bin/
+}
+
+package() {
+  cd "${srcdir}/flashbench"
+  mkdir -p "${pkgdir}/usr/bin"
+  install -m755 flashbench erase "${pkgdir}/usr/bin/"
 }
