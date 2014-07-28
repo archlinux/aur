@@ -1,4 +1,4 @@
-#$Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+#$Id: PKGBUILD 115001 2014-07-05 03:26:11Z fyan $
 # Upstream Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: TryA <tryagainprod {at} gmail.com>
 # Maintainer: Fantix King <fantix.king at gmail.com>
@@ -6,7 +6,7 @@
 _pkgbasename=bzip2
 pkgname=libx32-bzip2
 pkgver=1.0.6
-pkgrel=1.1
+pkgrel=2.1
 pkgdesc="A high-quality data compression program (x32 ABI)"
 arch=('x86_64')
 license=('custom')
@@ -41,4 +41,6 @@ package(){
   ln -s libbz2.so.1.0.6 "${pkgdir}"/usr/libx32/libbz2.so.1.0
 
   install -Dm644 libbz2.a ${pkgdir}/usr/libx32/libbz2.a
+
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
