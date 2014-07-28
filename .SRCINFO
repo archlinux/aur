@@ -1,23 +1,26 @@
 pkgbase = libx32-libxcb
 	pkgdesc = X11 client-side library (x32 ABI)
-	pkgver = 1.9
-	pkgrel = 1.1
+	pkgver = 1.10
+	pkgrel = 3
 	url = http://xcb.freedesktop.org/
 	arch = x86_64
 	license = custom
 	makedepends = pkgconfig
 	makedepends = libx32-libxslt
-	makedepends = binx32-python2
+	makedepends = python
 	makedepends = gcc-multilib-x32
 	makedepends = autoconf
 	depends = libx32-libxdmcp
 	depends = libx32-libxau
 	depends = libxcb
-	options = !libtool
-	source = http://xcb.freedesktop.org//dist/libxcb-1.9.tar.bz2
+	source = http://xcb.freedesktop.org//dist/libxcb-1.10.tar.bz2
 	source = libxcb-1.1-no-pthread-stubs.patch
-	sha1sums = ad2fb95eeec41ba3d39502a4f7460c3b64fdf061
-	sha1sums = d2df03ddf3e949c10c2c185256b0eb7fa02837ab
+	source = Ensure-xcb-owns-socket-and-no-other-threads-are-writ.patch
+	source = Force-XCB-event-structures-with-64-bit-extended-fiel.patch
+	sha256sums = 98d9ab05b636dd088603b64229dd1ab2d2cc02ab807892e107d674f9c3f2d5b5
+	sha256sums = 748ed83af60468a0eb6785222e4a5ca589d28f20b9bfc60d5936ec93b8eef356
+	sha256sums = 47de1025bb16446b9e69ff7b6b262a0a1af957d350afe897421b9105c89befeb
+	sha256sums = 7dd84c631da541e2dc708323071c3306ceaf79ee807aa457c1cdc7e069b7ccb9
 
 pkgname = libx32-libxcb
 
