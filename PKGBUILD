@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
+# $Id: PKGBUILD 115614 2014-07-12 17:33:50Z fyan $
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libxdmcp
 pkgname=libx32-$_pkgbasename
 pkgver=1.1.1
-pkgrel=1.1
+pkgrel=2
 pkgdesc="X11 Display Manager Control Protocol library (x32 ABI)"
 arch=(x86_64)
 url="http://xorg.freedesktop.org/"
