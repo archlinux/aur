@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: Alexander Baldeck <alexander@archlinux.org>
+# $Id: PKGBUILD 91755 2013-05-27 09:10:06Z bluewind $
+# Maintainer: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 _pkgbasename=libxau
 pkgname=libx32-$_pkgbasename
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1.1
 pkgdesc="X11 authorisation library (x32 ABI)"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=('pkgconfig' 'xproto>=7.0.15' 'gcc-multilib-x32')
 license=('custom')
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXau-${pkgver}.tar.bz2)
-sha1sums=('29c47207fd246425b906f525b2220235ce4cd0f6')
+sha1sums=('d9512d6869e022d4e9c9d33f6d6199eda4ad096b')
 
 build() {
   cd "${srcdir}/libXau-${pkgver}"
