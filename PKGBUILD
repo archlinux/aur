@@ -1,27 +1,28 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: Jan de Groot <jgc@archlinux.org>
+# $Id: PKGBUILD 114599 2014-07-02 07:47:19Z bluewind $
+# Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Travis Willard <travis@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libpng
 pkgname=libx32-$_pkgbasename
-pkgver=1.5.13
-_apngver=1.5.13
-_libversion=15
-pkgrel=1.1
+pkgver=1.6.12
+_apngver=1.6.12
+_libversion=16
+pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files (x32 ABI)"
 arch=('x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('libx32-zlib' $_pkgbasename)
-makedepends=(gcc-multilib)
+makedepends=(gcc-multilib-x32)
 options=('!libtool')
-source=("http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz"
+source=("http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz"{,.asc}
         "http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-${_apngver}-apng.patch.gz")
-md5sums=('0b607a685da977f1bfc96e1c47055183'
-         '23c8765aa6ca188c0575386d5ea8fe70')
+md5sums=('ee752da8aa75076500e4cf31318e636e'
+         'SKIP'
+         'f959e8b1cb9876ce946a2701e8aca519')
 
 build() {
   export CC="gcc -mx32"
@@ -34,7 +35,7 @@ build() {
   # see http://sourceforge.net/projects/libpng-apng/
   patch -p1 -i "${srcdir}/libpng-${_apngver}-apng.patch"
 
-  ./configure --prefix=/usr --libdir=/usr/libx32 --program-suffix=-x32
+  ./configure --prefix=/usr --libdir=/usr/libx32 --program-suffix=-x32 --disable-static
   make
 }
 
