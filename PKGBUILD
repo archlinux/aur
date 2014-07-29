@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# $Id: PKGBUILD 116430 2014-07-27 16:12:15Z bluewind $
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libxext
 pkgname=libx32-$_pkgbasename
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1.1
 pkgdesc="X11 miscellaneous extensions library (x32 ABI)"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=('libx32-libx11' $_pkgbasename)
 makedepends=('xorg-util-macros' 'gcc-multilib-x32')
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXext-${pkgver}.tar.bz2)
-sha1sums=('764ac472ae19a0faade193717a9e0938d3430aaa')
+sha256sums=('b518d4d332231f313371fdefac59e3776f4f0823bcb23cf7c7305bfb57b16e35')
 
 build() {
   cd "${srcdir}/libXext-${pkgver}"
