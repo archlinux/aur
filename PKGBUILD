@@ -1,19 +1,22 @@
-# $Id: PKGBUILD 77409 2012-10-09 17:09:48Z bluewind $
+# $Id: PKGBUILD 115672 2014-07-14 07:16:56Z lcarlier $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
-pkgname=libx32-dbus-core
-_pkgbasename=dbus-core
-pkgver=1.6.8
-pkgrel=1.1
-pkgdesc="Freedesktop.org message bus system (x32 ABI)"
+pkgname=libx32-libdbus
+_pkgbasename=libdbus
+pkgver=1.8.6
+pkgrel=1
+pkgdesc="DBus library (x32 ABI)"
 arch=('x86_64')
 url="http://www.freedesktop.org/Software/dbus"
 license=('GPL' 'custom')
-depends=('libx32-glibc' 'libx32-expat' 'dbus-core')
-makedepends=('gcc-multilib-x32' libx32-libx11)
-options=(!libtool)
+depends=('libx32-glibc' 'libx32-expat' 'libdbus')
+makedepends=('gcc-multilib-x32' 'libx32-libx11')
+provides=('libx32-dbus-core' 'libx32-dbus')
+conflicts=('libx32-dbus-core' 'libx32-dbus')
+replaces=('libx32-dbus-core' 'libx32-dbus')
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-${pkgver}.tar.gz)
-md5sums=('3bf059c7dd5eda5f539a1b7cfe7a14a2')
+md5sums=('6a08ba555d340e9dfe2d623b83c0eea8')
 
 build() {
     export CC="gcc -mx32"
@@ -24,11 +27,11 @@ build() {
 
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libdir=/usr/libx32 \
         --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=81 \
-        --with-system-pid-file=/var/run/dbus.pid \
+        --with-system-pid-file=/run/dbus.pid \
+        --with-console-auth-dir=/run/console/ \
         --enable-inotify --disable-dnotify \
         --disable-verbose-mode --disable-static \
-        --disable-tests --disable-asserts --disable-systemd \
-		--with-console-auth-dir=/run/console/
+        --disable-tests --disable-asserts --disable-systemd		
 
     make
 }
