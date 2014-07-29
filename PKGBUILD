@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: judd <jvinet@zeroflux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# $Id: PKGBUILD 112795 2014-06-07 12:09:04Z bluewind $
+# Maintainer: judd <jvinet@zeroflux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libgpg-error
 pkgname=libx32-$_pkgbasename
-pkgver=1.10
-pkgrel=1.1
+pkgver=1.13
+pkgrel=1
 pkgdesc="Support library for libgcrypt (x32 ABI)"
 arch=(x86_64)
 url="http://www.gnupg.org"
@@ -15,7 +15,7 @@ makedepends=(gcc-multilib-x32)
 options=(!libtool)
 source=(ftp://ftp.gnupg.org/gcrypt/libgpg-error/${_pkgbasename}-${pkgver}.tar.bz2)
   #ftp://ftp.franken.de/pub/crypt/mirror/ftp.gnupg.org/gcrypt/libgpg-error/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('736a03daa9dc5873047d4eb4a9c22a16')
+sha1sums=('50fbff11446a7b0decbf65a6e6b0eda17b5139fb')
 
 
 build() {
@@ -26,6 +26,10 @@ build() {
   cd "${srcdir}"/${_pkgbasename}-${pkgver}
   ./configure --prefix=/usr --libdir=/usr/libx32
   make
+}
+check() {
+  cd "${srcdir}"/${_pkgbasename}-${pkgver}
+  make check
 }
 
 package() {
