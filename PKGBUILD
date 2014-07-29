@@ -1,21 +1,20 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: Ionut Biru <ibiru@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# $Id: PKGBUILD 109541 2014-04-15 14:58:31Z bluewind $
+# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=pcre
 pkgname=libx32-$_pkgbasename
-pkgver=8.31
-pkgrel=1.1
+pkgver=8.35
+pkgrel=1
 pkgdesc="A library that implements Perl 5-style regular expressions (x32 ABI)"
 arch=('x86_64')
 url="http://pcre.sourceforge.net"
 license=('custom')
 depends=('libx32-gcc-libs' $_pkgbasename)
 makedepends=('gcc-multilib-x32')
-options=('!libtool')
 source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${_pkgbasename}-${pkgver}.tar.bz2{,.sig})
-md5sums=('1c9a276af932b5599157f96e945391f0'
-         '873bcd2cd9f1e0aa1e28e256b3e31506')
+md5sums=('6aacb23986adccd9b3bc626c00979958'
+         'SKIP')
 
 build() {
   cd "${srcdir}"/${_pkgbasename}-${pkgver}
@@ -24,8 +23,14 @@ build() {
   export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
 
   ./configure --prefix=/usr --libdir=/usr/libx32 \
-    --enable-utf8 --enable-unicode-properties --enable-pcre16 --enable-jit
+    --enable-utf --enable-unicode-properties --enable-pcre16 --enable-pcre32 --enable-jit
   make
+}
+
+check() {
+  cd "${srcdir}"/${_pkgbasename}-${pkgver}
+
+  make -j1 check
 }
 
 package() {

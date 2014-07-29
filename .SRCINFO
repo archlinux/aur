@@ -1,18 +1,17 @@
 pkgbase = libx32-pcre
 	pkgdesc = A library that implements Perl 5-style regular expressions (x32 ABI)
-	pkgver = 8.31
-	pkgrel = 1.1
+	pkgver = 8.35
+	pkgrel = 1
 	url = http://pcre.sourceforge.net
 	arch = x86_64
 	license = custom
 	makedepends = gcc-multilib-x32
 	depends = libx32-gcc-libs
 	depends = pcre
-	options = !libtool
-	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.31.tar.bz2
-	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.31.tar.bz2.sig
-	md5sums = 1c9a276af932b5599157f96e945391f0
-	md5sums = 873bcd2cd9f1e0aa1e28e256b3e31506
+	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.35.tar.bz2
+	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.35.tar.bz2.sig
+	md5sums = 6aacb23986adccd9b3bc626c00979958
+	md5sums = SKIP
 
 pkgname = libx32-pcre
 
