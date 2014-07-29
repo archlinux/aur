@@ -1,15 +1,16 @@
 pkgbase = libx32-libffi
 	pkgdesc = A portable, high level programming interface to various calling conventions (x32 ABI)
-	pkgver = 3.0.13
+	pkgver = 3.1
 	pkgrel = 1
 	url = http://sourceware.org/libffi/
 	arch = x86_64
 	license = MIT
 	checkdepends = dejagnu
 	depends = libx32-glibc
-	options = !libtool
-	source = ftp://sourceware.org/pub/libffi/libffi-3.0.13.tar.gz
-	sha1sums = f5230890dc0be42fb5c58fbf793da253155de106
+	source = ftp://sourceware.org/pub/libffi/libffi-3.1.tar.gz
+	source = 0001-Fix-paths-in-libffi.pc.in.patch
+	sha1sums = cb373ef2115ec7c57913b84ca72eee14b10ccdc3
+	sha1sums = 85b406c5208a7b8fdba9c8a4782ab524f5c5eec4
 
 pkgname = libx32-libffi
 
