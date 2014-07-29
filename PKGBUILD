@@ -1,41 +1,44 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=oblige
-pkgver=4.28b
+pkgver=6.10
 pkgrel=1
 pkgdesc="A random level maker for games based on the Doom engine"
 arch=('i686' 'x86_64')
 url="http://oblige.sourceforge.net/"
 license=('GPL')
 depends=('fltk>=1.3.0')
-makedepends=('glbsp>=2.24' 'imagemagick')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-428b-source.zip
+makedepends=('imagemagick')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-610-source.zip
         compile-fix.patch
         unix-fix.patch
         oblige.desktop)
-md5sums=('ae89031dcff12958bb866505c266c49f'
-         'adb49faac3febc5bed2dbd3b79f7ad1c'
+md5sums=('a826aa76d573b74bce59440dd3232e5a'
+         '94f94c1d48dc42f030c2b5f74de0fde4'
          '3211b2b8dcbfde6a84af2adfb288da9a'
          'ee8efdcf10d4e71bf5b0f3ba45be5d4f')
 
-build() {
+prepare() {
   cd "$srcdir/Oblige-$pkgver-source"
 
   patch -p1 <"$srcdir/compile-fix.patch"
   patch -p1 <"$srcdir/unix-fix.patch"
+}
 
-  make -f Makefile.local \
-    CXXFLAGS="$CXXFLAGS -Wall -DUNIX -Ilua_src `fltk-config --use-images --cxxflags` -DFHS_INSTALL" \
-    GLBSP_OBJS= \
+build() {
+  cd "$srcdir/Oblige-$pkgver-source"
+
+  g++ -o obj_linux/oblige_res.o -x c++ -c - <<<''
+  make -f Makefile.xming \
+    PROGRAM=Oblige \
+    OBJ_DIR=obj_linux \
+    OS=UNIX \
+    CXX=g++ \
+    CXXFLAGS="$CXXFLAGS -Wall -DUNIX -Ilua_src -Iglbsp_src -Iajpoly_src `fltk-config --use-images --cxxflags`" \
     LDFLAGS="`fltk-config --use-images --ldflags`" \
-    LIBS="-lm -lz /usr/lib/libglbsp.a"
+    LIBS="-lm -lz"
 
-  pushd tools/qsavetex
-
-  make \
-    CXXFLAGS="$CXXFLAGS -Wall -fno-rtti -DUNIX"
-
-  popd
+  (cd tools/qsavetex && exec make CXXFLAGS="$CXXFLAGS -Wall -DUNIX")
 
   convert "gui/oblige.ico[0]" oblige.png
 }
@@ -48,7 +51,7 @@ package() {
   install -Dm755 tools/qsavetex/qsavetex "$pkgdir/usr/bin/qsavetex"
 
   local _dir
-  for _dir in data scripts games engines prefabs modules; do
+  for _dir in data scripts games engines modules; do
     find $_dir -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/oblige/{}" \;
   done
 
