@@ -1,0 +1,17 @@
+pkgbase = libx32-harfbuzz
+	pkgdesc = OpenType text shaping engine. (x32 ABI)
+	pkgver = 0.9.32
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/HarfBuzz
+	arch = x86_64
+	license = MIT
+	makedepends = gcc-multilib-x32
+	depends = libx32-icu
+	depends = libx32-glib2
+	depends = libx32-freetype2
+	depends = harfbuzz
+	source = http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.32.tar.bz2
+	sha256sums = 430c81744e2d87b36f529b16f18efd0d0140aee9df59b2ee312f5de1994b9db4
+
+pkgname = libx32-harfbuzz
+
