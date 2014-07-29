@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# $Id: PKGBUILD 92732 2013-06-14 06:38:04Z lcarlier $
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libxrender
 pkgname=libx32-$_pkgbasename
-pkgver=0.9.7
-pkgrel=1.1
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="X Rendering Extension client library (x32 ABI)"
 arch=('x86_64')
 url="http://xorg.freedesktop.org/"
@@ -14,7 +14,7 @@ depends=('libx32-libx11>=1.3.4' $_pkgbasename)
 makedepends=('pkgconfig' 'gcc-multilib-x32' renderproto)
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXrender-${pkgver}.tar.bz2)
-sha1sums=('6e4d75d8316d5217324258f555eba3a5d383feb2')
+sha256sums=('1d14b02f0060aec5d90dfdcf16a996f17002e515292906ed26e3dcbba0f4fc62')
 
 build() {
   export CC="gcc -mx32"
