@@ -78,7 +78,7 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${srcdir}"/"${pkgname}-${pkgver}"
 
     ./configure --with-user=tserver --enable-layout=Arch
     make
