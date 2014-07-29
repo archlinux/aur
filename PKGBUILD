@@ -72,9 +72,13 @@ backup=(
     'etc/trafficserver/log_hosts.config'
     'etc/trafficserver/ip_allow.config')
 
+prepare() {
+    cd "${srcdir}"/"${pkgname}-${pkgver}"
+    patch -Np0 -u -i ../trafficserver.service.in.patch
+}
+
 build() {
     cd "${pkgname}-${pkgver}"
-    patch -Np0 -u -i ../trafficserver.service.in.patch
 
     ./configure --with-user=tserver --enable-layout=Arch
     make
