@@ -2,7 +2,7 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=4.2.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -16,7 +16,7 @@ source=(
     trafficserver.tmpfiles
     trafficserver.service.in.patch)
 
-md5sums=('18f7d56650cba260c8cce3bf4abfa56c'
+md5sums=('76d5d7fea7ab1e3e1a09169ad0941767'
          'fc8ab2b6d01e22fb376832fb13137db1'
          '74ba08091f580f8984eee8db0f7e4d27')
 
@@ -31,6 +31,7 @@ backup=(
     'etc/trafficserver/records.config'
     'etc/trafficserver/socks.config'
     'etc/trafficserver/trafficserver-release'
+    'etc/trafficserver/prefetch.config'
     'etc/trafficserver/splitdns.config'
     'etc/trafficserver/vaddrs.config'
     'etc/trafficserver/cluster.config'
@@ -65,6 +66,7 @@ backup=(
     'etc/trafficserver/body_factory/default/urlrouting#no_mapping'
     'etc/trafficserver/body_factory/default/request#no_host'
     'etc/trafficserver/body_factory/default/connect#hangup'
+    'etc/trafficserver/body_factory/default/request#invalid_content_length'
     'etc/trafficserver/body_factory/default/congestion#retryAfter'
     'etc/trafficserver/body_factory/default/access#redirect_url'
     'etc/trafficserver/plugin.config'
@@ -95,6 +97,8 @@ package()
     make install DESTDIR="${pkgdir}"
 
     chmod 750 "${pkgdir}"/run/trafficserver
+
+    chown root:root "${pkgdir}"/usr/share/trafficserver
 
     install -D -m 644 "${srcdir}"/trafficserver.tmpfiles \
         "${pkgdir}"/usr/lib/tmpfiles.d/trafficserver.conf
