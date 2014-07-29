@@ -1,7 +1,7 @@
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=np1-mps
-pkgver=0.20.14
+pkgver=0.20.16
 pkgrel=1
 pkgdesc="Terminal based jukebox with playlist management"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('mpv: Alternative to mplayer for playback'
 			'mplayer: Alternative to mpv for playback')
 install=np1-mps.install
 source=("https://github.com/np1/mps/archive/v$pkgver.tar.gz")
-sha256sums=('0a78a01a923ab230ffc4d09ee302cbaae6cb4c68cb0d924137e58de8224bcdf3')
+sha256sums=('23542f7dc7ae418ff41ea86debedfe5051d47efec3d0bc170ad0d59b5ec668d0')
 
 package() {
 	cd mps-$pkgver
