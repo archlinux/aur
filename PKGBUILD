@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: Florian Pritz <flo@xssn.at>
+# $Id: PKGBUILD 115616 2014-07-12 17:35:28Z fyan $
+# Maintainer: Florian Pritz <flo@xssn.at>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libxss
 pkgname=libx32-$_pkgbasename
 pkgver=1.2.2
-pkgrel=1.1
+pkgrel=2.1
 pkgdesc="X11 Screen Saver extension library (x32 ABI)"
 arch=(x86_64)
 license=('custom')
