@@ -1,6 +1,6 @@
 pkgbase = libx32-libxft
 	pkgdesc = FreeType-based font drawing library for X (x32 ABI)
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1.1
 	url = http://xorg.freedesktop.org/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = libx32-libxft
 	depends = libx32-fontconfig
 	depends = libx32-libxrender
 	options = !libtool
-	source = http://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.1.tar.bz2
-	sha256sums = 7fce32b92dcb7b2869bed567af2abc7bbad0d5d6fcf471b8a3e137964a31bbbd
+	source = http://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.2.tar.bz2
+	sha256sums = f5a3c824761df351ca91827ac221090943ef28b248573486050de89f4bfcdc4c
 
 pkgname = libx32-libxft
 

@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Upstream Maintainer: Ionut Biru <ibiru@archlinux.org>
-# Maintainer: Fantix King <fantix.king at gmail.com>
+# $Id: PKGBUILD 112785 2014-06-07 11:59:09Z bluewind $
+# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 _pkgbasename=libxft
 pkgname=libx32-$_pkgbasename
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1.1
 pkgdesc="FreeType-based font drawing library for X (x32 ABI)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libx32-fontconfig' 'libx32-libxrender')
 makedepends=('gcc-multilib-x32')
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXft-${pkgver}.tar.bz2)
-sha256sums=('7fce32b92dcb7b2869bed567af2abc7bbad0d5d6fcf471b8a3e137964a31bbbd')
+sha256sums=('f5a3c824761df351ca91827ac221090943ef28b248573486050de89f4bfcdc4c')
 
 build() {
   export CC="gcc -mx32"
