@@ -1,41 +1,27 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-
+_pkgname=vim-eunuch
 pkgname=vim-eunuch-git
-pkgver=20130302
+pkgver=1403562539
 pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
+url='https://github.com/tpope/vim-eunuch'
+license=('custom:vim')
 depends=('vim')
 makedepends=('git')
-groups=('vim-plugins')
-url="https://github.com/tpope/vim-eunuch"
-license=('custom:vim')
-source=(git+https://github.com/tpope/vim-eunuch)
-sha256sums=('SKIP')
 provides=('vim-eunuch')
 conflicts=('vim-eunuch')
-install=vimdoc.install
+
+source=('git://github.com/tpope/vim-eunuch.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
-}
-
-prepare() {
-  cd ${pkgname%-git}
-
-  msg 'Removing unneeded files...'
-  rm -f README.markdown
+  cd -- "$srcdir/$_pkgname"
+  git log -n1 --pretty=format:%ct
 }
 
 package() {
-  cd ${pkgname%-git}
-
-  msg 'Installing...'
-  install -dm 755 ${pkgdir}/usr/share/vim/vimfiles/
-  tar -c . | tar -x -C ${pkgdir}/usr/share/vim/vimfiles
-
-  msg 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  cd "$srcdir/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/vim/vimfiles"
+  find * -maxdepth 0 -type d -exec cp -R -t "$pkgdir/usr/share/vim/vimfiles" '{}' \+
 }
+
