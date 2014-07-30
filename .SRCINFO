@@ -1,0 +1,16 @@
+pkgbase = vim-sensible-git
+	pkgdesc = vim defaults everyone can agree on
+	pkgver = 1404706506
+	pkgrel = 1
+	url = https://github.com/tpope/vim-sensible
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-sensible
+	conflicts = vim-sensible
+	source = git://github.com/tpope/vim-sensible.git
+	sha512sums = SKIP
+
+pkgname = vim-sensible-git
+
