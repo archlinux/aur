@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -108,6 +108,9 @@ package() {
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
+
+  chown -R 0:78 $pkgdir/var/lib/libvirt/qemu/channel/target/
+  chmod 0770 $pkgdir/var/lib/libvirt/qemu/channel/target/
 
   rm -rf \
 	"$pkgdir"/var/run \
