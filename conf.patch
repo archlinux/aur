@@ -1,6 +1,6 @@
-diff -Naur neo4j-community-2.1.1-orig/conf/logging.properties neo4j-community-2.1.1-mod/conf/logging.properties
---- neo4j-community-2.1.1-orig/conf/logging.properties	2014-05-29 13:24:27.000000000 -0300
-+++ neo4j-community-2.1.1-mod/conf/logging.properties	2014-06-01 11:29:56.386956419 -0300
+diff -U 3 -H -d -r -N -- neo4j-community-2.1.3-orig/conf/logging.properties neo4j-community-2.1.3-mod/conf/logging.properties
+--- neo4j-community-2.1.3-orig/conf/logging.properties	2014-07-24 10:16:30.000000000 -0300
++++ neo4j-community-2.1.3-mod/conf/logging.properties	2014-07-30 09:44:52.691749854 -0300
 @@ -51,7 +51,7 @@
  #    "%g" the generation number to distinguish rotated logs
  #    "%u" a unique number to resolve conflicts
@@ -10,9 +10,9 @@ diff -Naur neo4j-community-2.1.1-orig/conf/logging.properties neo4j-community-2.
  
  # Specifies whether the FileHandler should append onto any existing files
  # (defaults to false):
-diff -Naur neo4j-community-2.1.1-orig/conf/neo4j-http-logging.xml neo4j-community-2.1.1-mod/conf/neo4j-http-logging.xml
---- neo4j-community-2.1.1-orig/conf/neo4j-http-logging.xml	2014-05-29 13:24:27.000000000 -0300
-+++ neo4j-community-2.1.1-mod/conf/neo4j-http-logging.xml	2014-06-01 11:31:01.271469303 -0300
+diff -U 3 -H -d -r -N -- neo4j-community-2.1.3-orig/conf/neo4j-http-logging.xml neo4j-community-2.1.3-mod/conf/neo4j-http-logging.xml
+--- neo4j-community-2.1.3-orig/conf/neo4j-http-logging.xml	2014-07-24 10:16:30.000000000 -0300
++++ neo4j-community-2.1.3-mod/conf/neo4j-http-logging.xml	2014-07-30 09:45:44.372206150 -0300
 @@ -21,9 +21,9 @@
  -->
  <configuration>
@@ -25,9 +25,9 @@ diff -Naur neo4j-community-2.1.1-orig/conf/neo4j-http-logging.xml neo4j-communit
        <maxHistory>30</maxHistory>
      </rollingPolicy>
  
-diff -Naur neo4j-community-2.1.1-orig/conf/neo4j-server.properties neo4j-community-2.1.1-mod/conf/neo4j-server.properties
---- neo4j-community-2.1.1-orig/conf/neo4j-server.properties	2014-05-29 13:24:27.000000000 -0300
-+++ neo4j-community-2.1.1-mod/conf/neo4j-server.properties	2014-06-01 11:38:24.366230654 -0300
+diff -U 3 -H -d -r -N -- neo4j-community-2.1.3-orig/conf/neo4j-server.properties neo4j-community-2.1.3-mod/conf/neo4j-server.properties
+--- neo4j-community-2.1.3-orig/conf/neo4j-server.properties	2014-07-24 10:16:30.000000000 -0300
++++ neo4j-community-2.1.3-mod/conf/neo4j-server.properties	2014-07-30 09:48:17.506884800 -0300
 @@ -8,7 +8,7 @@
  #***************************************************************
  
@@ -80,9 +80,9 @@ diff -Naur neo4j-community-2.1.1-orig/conf/neo4j-server.properties neo4j-communi
 -org.neo4j.server.http.log.config=conf/neo4j-http-logging.xml
 +org.neo4j.server.http.log.config=/etc/neo4j/neo4j-http-logging.xml
  
-diff -Naur neo4j-community-2.1.1-orig/conf/neo4j-wrapper.conf neo4j-community-2.1.1-mod/conf/neo4j-wrapper.conf
---- neo4j-community-2.1.1-orig/conf/neo4j-wrapper.conf	2014-05-29 13:24:27.000000000 -0300
-+++ neo4j-community-2.1.1-mod/conf/neo4j-wrapper.conf	2014-06-01 11:38:11.545994632 -0300
+diff -U 3 -H -d -r -N -- neo4j-community-2.1.3-orig/conf/neo4j-wrapper.conf neo4j-community-2.1.3-mod/conf/neo4j-wrapper.conf
+--- neo4j-community-2.1.3-orig/conf/neo4j-wrapper.conf	2014-07-24 10:16:30.000000000 -0300
++++ neo4j-community-2.1.3-mod/conf/neo4j-wrapper.conf	2014-07-30 10:48:48.062984108 -0300
 @@ -1,6 +1,6 @@
 -wrapper.java.additional=-Dorg.neo4j.server.properties=conf/neo4j-server.properties
 -wrapper.java.additional=-Djava.util.logging.config.file=conf/logging.properties
@@ -102,16 +102,17 @@ diff -Naur neo4j-community-2.1.1-orig/conf/neo4j-wrapper.conf neo4j-community-2.
  #wrapper.java.additional=-XX:+PrintGCDetails
  #wrapper.java.additional=-XX:+PrintGCDateStamps
  #wrapper.java.additional=-XX:+PrintGCApplicationStoppedTime
-@@ -32,7 +32,7 @@
+@@ -27,8 +27,7 @@
+ #********************************************************************
  # Wrapper settings
  #********************************************************************
- # path is relative to the bin dir
+-# path is relative to the bin dir
 -wrapper.pidfile=../data/neo4j-server.pid
 +wrapper.pidfile=/var/lib/neo4j/data/neo4j-server.pid
  
  #********************************************************************
  # Wrapper Windows NT/2000/XP Service Properties
-@@ -47,5 +47,5 @@
+@@ -43,5 +42,5 @@
  
  # User account to be used for linux installs. Will default to current
  # user if not set.
