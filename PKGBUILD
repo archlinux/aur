@@ -10,21 +10,25 @@
 
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
-pkgver=0.9.8.10
-pkgrel=2
+pkgver=0.9.10.0
+pkgrel=1
+_pppver=2.4.6
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
 url="http://www.gnome.org/projects/$_pkgname/"
-depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 'wpa_supplicant' 'dhcp-client' 'libsoup' 'libmm-glib')
-makedepends=('intltool' 'dhcpcd' 'iptables' 'gobject-introspection' 'gtk-doc' 'git' 'ppp' 'modemmanager')
+depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 
+         'wpa_supplicant' 'dhcp-client' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 
+         'libteam')
+makedepends=('intltool' 'dhcpcd' 'iptables' 'gobject-introspection' 'gtk-doc' 'git' 
+             "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala')
 optdepends=('modemmanager: for modem management service'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
-            'iptables: Connection sharing'
-            'dnsmasq: Connection sharing'
-            'bluez: Bluetooth support'
+            'iptables: connection sharing'
+            'dnsmasq: connection sharing'
+            'bluez: bluetooth support'
             'openresolv: resolvconf support'
-            'ppp: Dialup connection support')
+            'ppp: dialup connection support')
 provides=("networkmanager=$pkgver")
 replaces=('networkmanager')
 conflicts=('networkmanager')
@@ -34,16 +38,20 @@ source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
+        git-fixes.patch
         )
-sha256sums=('064d27223d3824859df12e1fb25b787fec1c68bbc864dc52a0289b9211c4c972'
-            '44b048804c7c0b8b3b0c29b8632b6ad613c397d0a1635ec918e10c0fbcdadf21'
+sha256sums=('66a88346bb04d4f402540281181340313b2ec433e75aa9d9ea13f31697f9487e'
+            '759db295ddae7a6dc6b29211fc0ec08695f875584d456dd146d3679e2c33e2e3'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
+            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
+            '854b5f06fed30cbab2d71544197d53a8aacdeee12ec78a7f48acb9ff31b40889')
 
 prepare() {
   cd $_pkgname-$pkgver
 
+  patch -Np1 -i ../git-fixes.patch
   patch -Np1 -i ../disable_set_hostname.patch
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -59,17 +67,20 @@ build() {
     --with-crypto=nss \
     --with-dhclient=/usr/bin/dhclient \
     --with-dhcpcd=/usr/bin/dhcpcd \
+    --with-dnsmasq=/usr/bin/dnsmasq \
     --with-iptables=/usr/bin/iptables \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-udev-dir=/usr/lib/udev \
     --with-resolvconf=/usr/bin/resolvconf \
+    --with-pppd=/usr/bin/pppd \
+    --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
+    --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-session-tracking=ck \
     --disable-static \
     --enable-more-warnings=no \
     --disable-wimax \
     --enable-modify-system \
-    --enable-doc \
-    --with-pppd-plugin-dir=/usr/lib/pppd/2.4.6
+    --enable-doc
 
   make
 }

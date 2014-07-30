@@ -1,0 +1,265 @@
+diff --git a/configure.ac b/configure.ac
+index 94b0758..e61657d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,7 +4,7 @@ dnl The NM version number
+ m4_define([nm_major_version], [0])
+ m4_define([nm_minor_version], [9])
+ m4_define([nm_micro_version], [10])
+-m4_define([nm_nano_version],  [0])
++m4_define([nm_nano_version],  [1])
+ m4_define([nm_version],
+           [nm_major_version.nm_minor_version.nm_micro_version.nm_nano_version])
+ m4_define([nm_git_sha], [m4_esyscmd([ ( [ -d ./.git/ ] && [ "$(readlink -f ./.git/)" = "$(readlink -f "$(git rev-parse --git-dir 2>/dev/null)" 2>/dev/null)" ] && git rev-parse --verify -q HEAD 2>/dev/null ) || true ])])
+diff --git a/src/devices/nm-device-team.c b/src/devices/nm-device-team.c
+index f3b25e3..51778c1 100644
+--- a/src/devices/nm-device-team.c
++++ b/src/devices/nm-device-team.c
+@@ -51,7 +51,7 @@ G_DEFINE_TYPE (NMDeviceTeam, nm_device_team, NM_TYPE_DEVICE)
+ 
+ #define NM_DEVICE_TEAM_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_DEVICE_TEAM, NMDeviceTeamPrivate))
+ 
+-#define NM_TEAM_ERROR (nm_team_error_quark ())
++#define NM_DEVICE_TEAM_ERROR (nm_device_team_error_quark ())
+ 
+ static gboolean teamd_start (NMDevice *dev, NMSettingTeam *s_team);
+ 
+@@ -75,7 +75,7 @@ enum {
+ /******************************************************************/
+ 
+ static GQuark
+-nm_team_error_quark (void)
++nm_device_team_error_quark (void)
+ {
+ 	static GQuark quark = 0;
+ 	if (!quark)
+@@ -890,5 +890,5 @@ nm_device_team_class_init (NMDeviceTeamClass *klass)
+ 	                                        G_TYPE_FROM_CLASS (klass),
+ 	                                        &dbus_glib_nm_device_team_object_info);
+ 
+-	dbus_g_error_domain_register (NM_TEAM_ERROR, NULL, NM_TYPE_TEAM_ERROR);
++	dbus_g_error_domain_register (NM_DEVICE_TEAM_ERROR, NULL, NM_TYPE_TEAM_ERROR);
+ }
+diff --git a/src/devices/nm-device-team.h b/src/devices/nm-device-team.h
+index fe1275c..32bc5fd 100644
+--- a/src/devices/nm-device-team.h
++++ b/src/devices/nm-device-team.h
+@@ -35,9 +35,9 @@ G_BEGIN_DECLS
+ #define NM_DEVICE_TEAM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  NM_TYPE_DEVICE_TEAM, NMDeviceTeamClass))
+ 
+ typedef enum {
+-	NM_TEAM_ERROR_CONNECTION_NOT_TEAM = 0, /*< nick=ConnectionNotTeam >*/
+-	NM_TEAM_ERROR_CONNECTION_INVALID,      /*< nick=ConnectionInvalid >*/
+-	NM_TEAM_ERROR_CONNECTION_INCOMPATIBLE, /*< nick=ConnectionIncompatible >*/
++	NM_DEVICE_TEAM_ERROR_CONNECTION_NOT_TEAM = 0, /*< nick=ConnectionNotTeam >*/
++	NM_DEVICE_TEAM_ERROR_CONNECTION_INVALID,      /*< nick=ConnectionInvalid >*/
++	NM_DEVICE_TEAM_ERROR_CONNECTION_INCOMPATIBLE, /*< nick=ConnectionIncompatible >*/
+ } NMTeamError;
+ 
+ #define NM_DEVICE_TEAM_SLAVES "slaves"
+diff --git a/src/dhcp-manager/nm-dhcp-dhclient-utils.c b/src/dhcp-manager/nm-dhcp-dhclient-utils.c
+index 8527e6c..bc9de12 100644
+--- a/src/dhcp-manager/nm-dhcp-dhclient-utils.c
++++ b/src/dhcp-manager/nm-dhcp-dhclient-utils.c
+@@ -225,7 +225,6 @@ nm_dhcp_dhclient_create_config (const char *interface,
+ 		add_also_request (alsoreq, "dhcp6.name-servers");
+ 		add_also_request (alsoreq, "dhcp6.domain-search");
+ 		add_also_request (alsoreq, "dhcp6.client-id");
+-		add_also_request (alsoreq, "dhcp6.server-id");
+ 	} else {
+ 		add_ip4_config (new_contents, dhcp_client_id, hostname);
+ 		add_also_request (alsoreq, "rfc3442-classless-static-routes");
+diff --git a/src/nm-manager.c b/src/nm-manager.c
+index 09a1985..0cf78e3 100644
+--- a/src/nm-manager.c
++++ b/src/nm-manager.c
+@@ -1879,42 +1879,116 @@ factory_component_added_cb (NMDeviceFactory *factory,
+ #define PLUGIN_PATH_TAG "NMManager-plugin-path"
+ #define PLUGIN_TYPEFUNC_TAG "typefunc"
+ 
+-static void
+-load_device_factories (NMManager *self)
++struct read_device_factory_paths_data {
++	char *path;
++	struct stat st;
++};
++
++static gint
++read_device_factory_paths_sort_fcn (gconstpointer a, gconstpointer b)
++{
++	const struct read_device_factory_paths_data *da = a;
++	const struct read_device_factory_paths_data *db = b;
++	time_t ta, tb;
++
++	ta = MAX (da->st.st_mtime, da->st.st_ctime);
++	tb = MAX (db->st.st_mtime, db->st.st_ctime);
++
++	if (ta < tb)
++		return 1;
++	if (ta > tb)
++		return -1;
++	return 0;
++}
++
++static char**
++read_device_factory_paths ()
+ {
+-	NMManagerPrivate *priv = NM_MANAGER_GET_PRIVATE (self);
+ 	GDir *dir;
+ 	GError *error = NULL;
+ 	const char *item;
+-	char *path;
+-	GSList *iter;
++	GArray *paths;
++	char **result;
++	guint i;
+ 
+ 	dir = g_dir_open (NMPLUGINDIR, 0, &error);
+ 	if (!dir) {
+-		nm_log_warn (LOGD_HW, "Failed to open plugin directory %s: %s",
++		nm_log_warn (LOGD_HW, "device plugin: failed to open directory %s: %s",
+ 		             NMPLUGINDIR,
+ 		             (error && error->message) ? error->message : "(unknown)");
+ 		g_clear_error (&error);
+-		return;
++		return NULL;
+ 	}
+ 
++	paths = g_array_new (FALSE, FALSE, sizeof (struct read_device_factory_paths_data));
++
+ 	while ((item = g_dir_read_name (dir))) {
+-		GModule *plugin;
+-		NMDeviceFactory *factory;
+-		NMDeviceFactoryCreateFunc create_func;
+-		NMDeviceFactoryDeviceTypeFunc type_func;
+-		NMDeviceType dev_type;
+-		const char *found = NULL;
++		struct read_device_factory_paths_data data;
+ 
+ 		if (!g_str_has_prefix (item, PLUGIN_PREFIX))
+ 			continue;
+ 		if (g_str_has_suffix (item, ".la"))
+ 			continue;
+ 
+-		path = g_module_build_path (NMPLUGINDIR, item);
+-		g_assert (path);
+-		plugin = g_module_open (path, G_MODULE_BIND_LOCAL);
+-		g_free (path);
++		data.path = g_build_filename (NMPLUGINDIR, item, NULL);
++
++		if (stat (data.path, &data.st) != 0)
++			goto continue_with_error;
++		if (!S_ISREG (data.st.st_mode))
++			goto continue_silently;
++		if (data.st.st_uid != 0)
++			goto continue_with_error;
++		if (data.st.st_mode & (S_IWGRP | S_IWOTH | S_ISUID))
++			goto continue_with_error;
++
++		g_array_append_val (paths, data);
++		continue;
++
++continue_with_error:
++		nm_log_dbg (LOGD_HW, "device plugin: skip invalid file %s", data.path);
++continue_silently:
++		g_free (data.path);
++	}
++	g_dir_close (dir);
++
++	/* sort filenames by modification time. */
++	g_array_sort (paths, read_device_factory_paths_sort_fcn);
++
++	result = g_new (char *, paths->len + 1);
++	for (i = 0; i < paths->len; i++)
++		result[i] = g_array_index (paths, struct read_device_factory_paths_data, i).path;
++	result[i] = NULL;
++
++	g_array_free (paths, TRUE);
++	return result;
++}
++
++static void
++load_device_factories (NMManager *self)
++{
++	NMManagerPrivate *priv = NM_MANAGER_GET_PRIVATE (self);
++	char **path;
++	char **paths;
++
++	paths = read_device_factory_paths ();
++	if (!paths)
++		return;
++
++	for (path = paths; *path; path++) {
++		GError *error = NULL;
++		GModule *plugin;
++		NMDeviceFactory *factory;
++		NMDeviceFactoryCreateFunc create_func;
++		NMDeviceFactoryDeviceTypeFunc type_func;
++		NMDeviceType dev_type;
++		const char *found = NULL;
++		GSList *iter;
++		const char *item;
++
++		item = strrchr (*path, '/');
++		g_assert (item);
++
++		plugin = g_module_open (*path, G_MODULE_BIND_LOCAL);
+ 
+ 		if (!plugin) {
+ 			nm_log_warn (LOGD_HW, "(%s): failed to load plugin: %s", item, g_module_error ());
+@@ -1939,7 +2013,7 @@ load_device_factories (NMManager *self)
+ 			}
+ 		}
+ 		if (found) {
+-			nm_log_warn (LOGD_HW, "Found multiple device plugins for same type: %s vs %s",
++			nm_log_warn (LOGD_HW, "Found multiple device plugins for same type: use '%s' instead of '%s'",
+ 			             found, g_module_name (plugin));
+ 			g_module_close (plugin);
+ 			continue;
+@@ -1978,7 +2052,7 @@ load_device_factories (NMManager *self)
+ 
+ 		nm_log_info (LOGD_HW, "Loaded device plugin: %s", g_module_name (plugin));
+ 	};
+-	g_dir_close (dir);
++	g_strfreev (paths);
+ 
+ 	priv->factories = g_slist_reverse (priv->factories);
+ }
+diff --git a/src/platform/nm-linux-platform.c b/src/platform/nm-linux-platform.c
+index f73ff32..7b11a6b 100644
+--- a/src/platform/nm-linux-platform.c
++++ b/src/platform/nm-linux-platform.c
+@@ -1584,7 +1584,9 @@ announce_object (NMPlatform *platform, const struct nl_object *object, NMPlatfor
+ 			 */
+ 			switch (change_type) {
+ 			case NM_PLATFORM_SIGNAL_REMOVED:
+-				check_cache_items (platform, priv->route_cache, address.ifindex);
++				check_cache_items (platform,
++				                   priv->route_cache,
++				                   rtnl_addr_get_ifindex ((struct rtnl_addr *) object));
+ 				break;
+ 			default:
+ 				break;
+@@ -3500,7 +3502,8 @@ _route_match (struct rtnl_route *rtnlroute, int family, int ifindex)
+ 	    rtnl_route_get_table (rtnlroute) != RT_TABLE_MAIN ||
+ 	    rtnl_route_get_protocol (rtnlroute) == RTPROT_KERNEL ||
+ 	    rtnl_route_get_family (rtnlroute) != family ||
+-	    rtnl_route_get_nnexthops (rtnlroute) != 1)
++	    rtnl_route_get_nnexthops (rtnlroute) != 1 ||
++	    rtnl_route_get_flags (rtnlroute) & RTM_F_CLONED)
+ 		return FALSE;
+ 
+ 	nexthop = rtnl_route_nexthop_n (rtnlroute, 0);
+diff --git a/vapi/NMClient-1.0.metadata b/vapi/NMClient-1.0.metadata
+index 12f1469..2d894d8 100644
+--- a/vapi/NMClient-1.0.metadata
++++ b/vapi/NMClient-1.0.metadata
+@@ -1,6 +1,6 @@
+-RemoteSettings.new_async skip
++RemoteSettings.new_finish symbol_type="function"
+ RemoteConnection.updated#virtual_method skip
+-Client.new_async skip
++Client.new_finish symbol_type="function"
+ 
+ ACTIVE_CONNECTION_* cheader_filename="nm-active-connection.h" name="ACTIVE_CONNECTION_(.+)" parent="NM.ActiveConnection"
+ CLIENT_*            cheader_filename="nm-client.h"            name="CLIENT_(.+)"       parent="NM.Client"
