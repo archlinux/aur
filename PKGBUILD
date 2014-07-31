@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_common_diagnostics."
 url='http://ros.org/wiki/diagnostic_common_diagnostics'
 
 pkgname='ros-indigo-diagnostic-common-diagnostics'
-pkgver='1.8.3'
+pkgver='1.8.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
