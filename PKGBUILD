@@ -1,4 +1,4 @@
-# Contributor: Slash <youremail@domain.com>
+# Maintainer: Slash <demodevil5 [at] yahoo [dot] com>
 
 pkgname=prey-demo
 pkgver=02192009
@@ -6,21 +6,21 @@ pkgrel=1
 pkgdesc="Prey is a first person shooter based on the id Tech 4 engine using portals and variable gravity (Demo Version)."
 arch=('i686' 'x86_64')
 url="http://icculus.org/prey/"
-license=('GPL')
+license=('custom')
 if [ "$CARCH" = "x86_64" ]; then
-    depends=('lib32-libstdc++5' 'lib32-libxext')
+    depends=('lib32-libstdc++5' 'lib32-libxext' 'lib32-openal' 'lib32-sdl')
 else
-    depends=('libstdc++5' 'libxext')
+    depends=('libstdc++5' 'libxext' 'openal' 'sdl')
 fi
 makedepends=('unzip')
 install=prey-demo.install
 source=("prey-demo.desktop" "prey-demo.launcher" \
 "http://icculus.org/prey/downloads/$pkgname-installer-$pkgver.bin")
-md5sums=('076b4092529d9cc7d092c4630fced700'
-         '637b319535afb902d4645030153acfbe'
-         'dded67270bc59248f2b8fedd7d51156d')
+sha256sums=('f6df59507716e780fc5055356616d7b9310639a0332ca4830bef71cb7e72b074'
+            '9ad1b50e362bc9843b54b237722be10332e902a32b0839f2c01a700f82ef0fd7'
+            'cd2c179bb69224157411d90d7b613a3ce7a8214813c947ed7ccb2df5e15835f4')
 
-build() {
+package() {
   # Extract Files
   unzip $srcdir/$pkgname-installer-$pkgver.bin && true
 

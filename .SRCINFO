@@ -6,16 +6,18 @@ pkgbase = prey-demo
 	install = prey-demo.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = custom
 	makedepends = unzip
 	depends = libstdc++5
 	depends = libxext
+	depends = openal
+	depends = sdl
 	source = prey-demo.desktop
 	source = prey-demo.launcher
 	source = http://icculus.org/prey/downloads/prey-demo-installer-02192009.bin
-	md5sums = 076b4092529d9cc7d092c4630fced700
-	md5sums = 637b319535afb902d4645030153acfbe
-	md5sums = dded67270bc59248f2b8fedd7d51156d
+	sha256sums = f6df59507716e780fc5055356616d7b9310639a0332ca4830bef71cb7e72b074
+	sha256sums = 9ad1b50e362bc9843b54b237722be10332e902a32b0839f2c01a700f82ef0fd7
+	sha256sums = cd2c179bb69224157411d90d7b613a3ce7a8214813c947ed7ccb2df5e15835f4
 
 pkgname = prey-demo
 
