@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ base class for URDF parsers."
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-indigo-urdf-parser-plugin'
-pkgver='1.11.4'
+pkgver='1.11.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
