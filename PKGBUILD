@@ -4,7 +4,7 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-indigo-cv-bridge'
-pkgver='1.11.3'
+pkgver='1.11.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
