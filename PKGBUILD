@@ -9,7 +9,7 @@ license=('custom')
 arch=('any')
 depends=('quake3')
 source=('quake3-cpma.launcher' 'http://promode.ru/files/cpma148-nomaps.zip')
-sha256sums=('73307f10927bef8cd29000303e1448383d1003727121fd1f7840d6db98ddca92'
+sha256sums=('436f0545efc0edaaf5aad884dfe103e13363f25be276471b6c57c8932575e245'
             '1f0aafcaa48a16880ab4541aaa8b9d017c6c0b90c8fc0b4de871f976c05598d5')
 
 package() {
