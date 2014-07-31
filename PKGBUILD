@@ -4,7 +4,7 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-indigo-robot-state-publisher'
-pkgver='1.10.2'
+pkgver='1.10.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
