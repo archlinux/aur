@@ -4,7 +4,7 @@ pkgdesc="ROS - The diagnostic_analysis package can convert a log of diagnostics 
 url='http://www.ros.org/wiki/diagnostics_analysis'
 
 pkgname='ros-indigo-diagnostic-analysis'
-pkgver='1.8.3'
+pkgver='1.8.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
