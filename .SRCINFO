@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-tf2-geometry-msgs
 	pkgdesc = ROS - tf2_geometry_msgs.
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/tf2_ros
 	arch = any
 	license = BSD

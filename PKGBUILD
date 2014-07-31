@@ -7,7 +7,7 @@ pkgname='ros-indigo-tf2-geometry-msgs'
 pkgver='0.5.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-ros
