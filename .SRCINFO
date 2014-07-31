@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-kdl-conversions
 	pkgdesc = ROS - Conversion functions between KDL and geometry_msgs types.
 	pkgver = 1.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/kdl_conversions
 	arch = any
 	license = BSD
