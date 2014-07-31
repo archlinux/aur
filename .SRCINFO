@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-tf-conversions
 	pkgdesc = ROS - This package contains a set of conversion functions to convert common tf datatypes (point, vector, pose, etc) into semantically identical datatypes used by other libraries.
 	pkgver = 1.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/tf_conversions
 	arch = any
 	license = BSD
