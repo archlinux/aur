@@ -7,7 +7,7 @@ pkgname='ros-indigo-eigen-conversions'
 pkgver='1.11.3'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules
