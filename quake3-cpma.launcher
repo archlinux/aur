@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd "/usr/bin"
-./quake3 +set fs_basegame cpma $*
-exit $? 
+./quake3 +set fs_game cpma $*
+exit $?
