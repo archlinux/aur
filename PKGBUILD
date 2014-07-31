@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains nodelets for processing depth images such as those produ
 url='http://ros.org/wiki/depth_image_proc'
 
 pkgname='ros-indigo-depth-image-proc'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,6 +30,7 @@ ros_depends=(ros-indigo-tf2-ros
   ros-indigo-nodelet
   ros-indigo-cv-bridge
   ros-indigo-image-transport
+  ros-indigo-eigen-conversions
   ros-indigo-tf2
   ros-indigo-image-geometry)
 depends=(${ros_depends[@]}
