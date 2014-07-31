@@ -4,7 +4,7 @@ pkgdesc="ROS - image_pipeline fills the gap between getting raw images from a ca
 url='http://www.ros.org/wiki/image_pipeline'
 
 pkgname='ros-indigo-image-pipeline'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
