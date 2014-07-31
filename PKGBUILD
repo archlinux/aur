@@ -1,6 +1,6 @@
 # Maintainer: Max Bruckner
 pkgname=ssl-fetch
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="python-ssl-fetch, a dependency of gentoo-mirrorselect."
 arch=('any' )
