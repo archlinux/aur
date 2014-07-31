@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_aggregator."
 url='http://www.ros.org/wiki/diagnostic_aggregator'
 
 pkgname='ros-indigo-diagnostic-aggregator'
-pkgver='1.8.3'
+pkgver='1.8.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
