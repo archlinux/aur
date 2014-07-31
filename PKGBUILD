@@ -5,7 +5,7 @@
 # https://github.com/alerque/aur/tree/master/git-crypt-git
 
 pkgname=git-crypt-git
-pkgver=0.3_15_g8c77209
+pkgver=0.3_34_g3d0e757
 pkgrel=1
 _branch=revamp
 pkgdesc="Transparent file encryption in Git"
