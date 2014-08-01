@@ -1,0 +1,6 @@
+/php-*.tar.gz
+/php-*.tar.gz.asc
+/php-wddx-*.pkg.tar.xz
+/php-wddx-*.src.tar.gz
+/pkg/
+/src/
