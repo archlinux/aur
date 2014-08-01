@@ -1,5 +1,5 @@
 pkgname='dwt-git'
-pkgver=0.5.1.r22.g6f3268d
+pkgver=0.5.1.r27.g01db773
 pkgrel=1
 pkgdesc='Simple no-frills terminal emulator based on VTE - Git build'
 license='MIT'
@@ -19,10 +19,9 @@ pkgver () {
 
 build () {
 	cd "${srcdir}/${pkgname}"
-	CPPFLAGS='-DDWT_DEFAULT_FONT=\"Inconsolata\ 12\"'
-	CPPFLAGS="${CPPFLAGS} -DDWT_USE_HEADER_BAR=TRUE"
-	CPPFLAGS="${CPPFLAGS} -DDWT_USE_POPOVER=TRUE"
-	make PREFIX=/usr 
+	flags='-DDWT_DEFAULT_FONT=\"Inconsolata\ 12\"'
+	flags="${flags} -DDWT_USE_POPOVER=TRUE"
+	make PREFIX=/usr EXTRA_CFLAGS="${flags}"
 }
 
 package () {

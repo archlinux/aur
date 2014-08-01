@@ -1,6 +1,6 @@
 pkgbase = dwt-git
 	pkgdesc = Simple no-frills terminal emulator based on VTE - Git build
-	pkgver = 0.5.1.r22.g6f3268d
+	pkgver = 0.5.1.r27.g01db773
 	pkgrel = 1
 	url = https://github.com/aperezdc/dwt
 	arch = i686
