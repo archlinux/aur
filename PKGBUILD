@@ -3,12 +3,12 @@
  
 pkgname=io
 pkgver=2013.12.04
-pkgrel=1
+pkgrel=2
 pkgdesc='IO programming language'
 arch=('x86_64' 'i686')
 url='http://iolanguage.com/'
 license=('BSD')
-depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 'libevent' 'yajl' 'libmysqlclient' 'lzo2' 'libpng' 'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora')
+depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 'libevent' 'yajl' 'libmysqlclient' 'lzo' 'libpng' 'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stevedekorte/io/tarball/$pkgver")
 options=('!makeflags' '!buildflags')
