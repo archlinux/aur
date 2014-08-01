@@ -1,24 +1,9 @@
-diff -purN btscanner-2.1.orig/btscanner.xml btscanner-2.1/btscanner.xml
---- btscanner-2.1.orig/btscanner.xml	2004-11-01 04:56:41.000000000 -0700
-+++ btscanner-2.1/btscanner.xml	2013-04-10 23:54:38.000000000 -0600
-@@ -1,9 +1,9 @@
- <?xml version="1.0" encoding="UTF-8"?>
--<!DOCTYPE btscanner SYSTEM "file:///usr/local/etc/btscanner.dtd">
-+<!DOCTYPE btscanner SYSTEM "file:///etc/btscanner/btscanner.dtd">
- <btscanner>
- <files>
- 	<log>btscanner.log</log>
--	<oui>/usr/local/share/oui.txt</oui>
-+	<oui>/usr/share/btscanner/oui.txt</oui>
- 	<store>~/bts</store>
- </files>
- 
-diff -purN btscanner-2.1.orig/configure btscanner-2.1/configure
---- btscanner-2.1.orig/configure	2005-11-21 06:57:26.000000000 -0700
-+++ btscanner-2.1/configure	2013-04-10 23:55:37.000000000 -0600
-@@ -5308,14 +5308,14 @@ fi
- ac_cv_lib_xml2=ac_cv_lib_xml2_main
- 
+diff -up btscanner-2.1/configure.in.orig btscanner-2.1/configure.in
+--- btscanner-2.1/configure.in.orig	2005-11-21 06:56:56.000000000 -0700
++++ btscanner-2.1/configure.in	2014-08-01 05:20:15.000000000 -0600
+@@ -62,15 +62,6 @@ AC_CHECK_HEADERS([libxml/parser.h libxml
+   [AC_MSG_ERROR([libxml2 headers MIA])])
+ AC_HAVE_LIBRARY(xml2,,[AC_MSG_ERROR([libxml2 not found])])
  
 -# CFLAGS
 -CFLAGS="$CFLAGS -Wall -pthread -Wshadow -Wbad-function-cast \
@@ -28,14 +13,45 @@ diff -purN btscanner-2.1.orig/configure btscanner-2.1/configure
 -  -Wcast-qual -falign-functions -falign-labels -falign-loops\
 -  -pedantic -fstrict-aliasing -D_GNU_SOURCE -std=c99"
 -#  -fstack-check -fbounds-check"
-+## CFLAGS
-+#CFLAGS="$CFLAGS -Wall -pthread -Wshadow -Wbad-function-cast \
-+#  -Wformat -Wparentheses -Wsign-compare \
-+#  -Wstrict-prototypes -Wtrigraphs -Wundef -Wuninitialized \
-+#  -W -Wunused -Wformat-security -Wmissing-braces -Wbad-function-cast \
-+#  -Wcast-qual -falign-functions -falign-labels -falign-loops\
-+#  -pedantic -fstrict-aliasing -D_GNU_SOURCE -std=c99"
-+##  -fstack-check -fbounds-check"
- 
+-
  # cfg
- echo "$as_me:$LINENO: checking the location of the config file" >&5
+ AC_MSG_CHECKING(the location of the config file)
+ AC_ARG_WITH(cfgfile,
+@@ -86,7 +77,7 @@ AC_ARG_WITH(cfgdtd,
+   [ cfgdtd="file://$sysconfdir/btscanner.dtd" ])
+ AC_MSG_RESULT($cfgdtd)
+ 
+-CFLAGS="$CFLAGS -DCFG_FILE=\\\"$cfgfile\\\" -DCFG_DTD=\\\"$cfgdtd\\\""
++CPPFLAGS="$CPPFLAGS -DCFG_FILE=\\\"$cfgfile\\\" -DCFG_DTD=\\\"$cfgdtd\\\""
+ 
+ # output
+ AC_CONFIG_FILES([Makefile])
+diff -up btscanner-2.1/Makefile.am.orig btscanner-2.1/Makefile.am
+--- btscanner-2.1/Makefile.am.orig	2004-11-01 04:55:33.000000000 -0700
++++ btscanner-2.1/Makefile.am	2014-08-01 05:21:11.000000000 -0600
+@@ -23,7 +23,8 @@
+ 
+ bin_PROGRAMS = btscanner
+ 
+-INCLUDES = -I$(top_srcdir)
++AM_CFLAGS = -Wall -pthread
++AM_CPPFLAGS = -D_GNU_SOURCE
+ 
+ btscanner_SOURCES = main.c main.h \
+ 	threader.c threader.h \
+diff -up btscanner-2.1/screen.c.orig btscanner-2.1/screen.c
+--- btscanner-2.1/screen.c.orig	2005-08-17 15:15:59.000000000 -0600
++++ btscanner-2.1/screen.c	2014-08-01 05:20:15.000000000 -0600
+@@ -985,9 +985,9 @@ int screen_init_bf(void)
+ 	bdaddr_t start, end;
+ 
+ 	screen_init_bf_retry:
+-	memset(&cb, 0, sizeof(cbuf_t));
+-	memset(&start, 0, sizeof(cbuf_t));
+-	memset(&end, 0, sizeof(cbuf_t));
++	memset(&cb, 0, sizeof(cb));
++	memset(&start, 0, sizeof(start));
++	memset(&end, 0, sizeof(end));
+ 	ret = 0;
+ 	for (dl = 1; dl && bts_run; ) {
+ 		switch(screen_textbox("Start address", BD_RE, &cb)) {

@@ -11,8 +11,6 @@ pkgbase = btscanner
 	depends = libxml2
 	source = http://www.pentest.co.uk/src/btscanner-2.1.tar.bz2
 	source = btscanner.patch
-	md5sums = 587ec5847647d432eac1704b260af020
-	md5sums = c1e3d85b9a01f941a111ccf747389def
 
 pkgname = btscanner
 
