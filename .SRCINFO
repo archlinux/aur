@@ -1,6 +1,6 @@
 pkgbase = xapian-omega
 	pkgdesc = Indexers and CGI search frontend for Xapian
-	pkgver = 1.2.17
+	pkgver = 1.2.18
 	pkgrel = 1
 	url = http://www.xapian.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = xapian-omega
 	depends = xapian-core
 	depends = perl
 	depends = pcre
-	source = http://oligarchy.co.uk/xapian/1.2.17/xapian-omega-1.2.17.tar.xz
-	md5sums = d6cb99c7ef5664c8995627d390b90039
+	source = http://oligarchy.co.uk/xapian/1.2.18/xapian-omega-1.2.18.tar.xz
+	sha256sums = 528feb8021a52ab06c7833cb9ebacefdb782f036e99e7ed5342046c3a82380c2
 
 pkgname = xapian-omega
 
