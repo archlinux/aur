@@ -15,7 +15,6 @@ license=('custom' 'GPL2')
 url='https://www.redhat.com/promo/fonts/'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 optdepends=('ttf-liberation: Main liberation fonts')
-makedepends=('fontforge')
 provides=('ttf-font')
 install=ttf.install
 source=("https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-$pkgver.tar.gz"

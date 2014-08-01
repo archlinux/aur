@@ -7,7 +7,6 @@ pkgbase = ttf-liberation-sans-narrow
 	arch = any
 	license = custom
 	license = GPL2
-	makedepends = fontforge
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
