@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 url="http://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
-depends=('ruby' 'curl' 'lzo2' 'libidn' 'rtmpdump')
+depends=('ruby' 'curl' 'lzo' 'libidn' 'rtmpdump')
 makedepends=('git')
 source=(http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
         nfs.patch
