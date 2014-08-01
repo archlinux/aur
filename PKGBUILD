@@ -20,8 +20,8 @@ provides=('ttf-font')
 install=ttf.install
 source=("https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-$pkgver.tar.gz"
         30-0-liberation-sans-narrow.conf)
-md5sums=('b3174b11c2b6a341f5c99b31088bd67b'
-         'c99ab610c6c6f1616417ff67f26624df')
+sha256sums=('5773d2d48c425819374219268a429088ac628dd316882c0bc2445679923d7962'
+            'b9da42411e2035d87a366c7de9f85004e681a2fc4ea7dd82a17e7a1ce9715908')
 
 package() {
   cd "$srcdir/liberation-fonts-ttf-$pkgver"
