@@ -1,6 +1,6 @@
 pkgbase = mcwm-git
 	pkgdesc = A minimalist floating window manager written on top of the XCB
-	pkgver = 20130209.2.r9.g33bd901
+	pkgver = 20130209.2.r11.gee7d9df
 	pkgrel = 1
 	url = http://hack.org/mc/hacks/mcwm/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = mcwm-git
 	conflicts = mcwm
 	conflicts = 2bwm
 	conflicts = 2bwm-git
-	source = mcwm-git::git://hack.org/mcwm
+	source = mcwm-git::git+https://github.com/bbidulock/mcwm.git
 	source = mcwm.desktop
 	md5sums = SKIP
 	md5sums = 8daed020f1a9df4b774207b30d954c53
