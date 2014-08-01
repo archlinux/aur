@@ -1,6 +1,6 @@
---- docker/docker.go.orig	2014-06-28 08:46:43.261485969 +0800
-+++ docker/docker.go	2014-06-28 08:48:33.424222468 +0800
-@@ -263,9 +263,11 @@
+--- a/daemon/daemon.go
++++ b/daemon/daemon.go
+@@ -1177,9 +1177,11 @@ func (daemon *Daemon) ImageGetCached(imgID string, config *runconfig.Config) (*i
  
  func checkKernelAndArch() error {
  	// Check for unsupported architectures
