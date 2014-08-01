@@ -1,7 +1,7 @@
 # Maintainer: Ian D. Scott <ian@perebruin.com>
 # Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
 pkgname=dantalian
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Transparent tag-based file organization system."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 optdepends=('fuse: additional features')
 makedepends=('python-sphinx')
 source=("https://github.com/darkfeline/dantalian/archive/${pkgver}.tar.gz")
-sha256sums=('9a35f45d2f0b14e723b751edb879f0c407e6a2a3c60769839d19b49e5e9548d0')
+sha256sums=('8769f91a5bb41a441ba543313924d1790e7f9ab34c73c1d82c5746d85f717e98')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/doc"
