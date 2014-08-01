@@ -14,8 +14,6 @@ pkgbase = mcwm
 	conflicts = 2bwm-git
 	source = http://hack.org/mc/hacks/mcwm/mcwm-20130209-2.tar.bz2
 	source = mcwm.desktop
-	md5sums = d36a625c966067c80cf9f14609a21921
-	md5sums = 8daed020f1a9df4b774207b30d954c53
 
 pkgname = mcwm
 
