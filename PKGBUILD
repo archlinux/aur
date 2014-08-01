@@ -7,7 +7,7 @@
 # Contributor: Stefan Husmann < stefan-husmann@t-online.de>
 
 pkgname=ttf-liberation-sans-narrow
-pkgver=1.07.3
+pkgver=1.07.4
 pkgrel=1
 pkgdesc="Red Hat's Liberation Sans Narrow"
 arch=('any')
@@ -20,7 +20,7 @@ provides=('ttf-font')
 install=ttf.install
 source=("https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-$pkgver.tar.gz"
         30-0-liberation-sans-narrow.conf)
-sha256sums=('5773d2d48c425819374219268a429088ac628dd316882c0bc2445679923d7962'
+sha256sums=('61a7e2b6742a43c73e8762cdfeaf6dfcf9abdd2cfa0b099a9854d69bc4cfee5c'
             'b9da42411e2035d87a366c7de9f85004e681a2fc4ea7dd82a17e7a1ce9715908')
 
 package() {
