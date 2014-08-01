@@ -1,12 +1,12 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=mcwm-git
 pkgver=20130209.2.r11.gee7d9df
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist floating window manager written on top of the XCB"
 arch=('i686' 'x86_64')
 url="http://hack.org/mc/hacks/mcwm/"
 license=('ISC')
-depends=('xcb-util-wm' 'xcb-util-keysyms')
+depends=('xcb-util-wm' 'xcb-util-keysyms' 'bash')
 makedepends=('git')
 provides=('mcwm')
 conflicts=('mcwm' '2bwm' '2bwm-git') # because of /usr/bin/hidden program
@@ -24,7 +24,7 @@ prepare() {
 }
 build() {
   cd $pkgname
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --libexecdir=/usr/lib
   make V=0
 }
 package() {
