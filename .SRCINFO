@@ -1,21 +1,19 @@
 pkgbase = clips
-	pkgdesc = A Tool for Building Expert Systems
-	pkgver = 6.24
-	pkgrel = 3
+	pkgdesc = A forward-chaining rule-based programming language written in C that also provides procedural and object-oriented programming facilities.
+	pkgver = 6.30
+	pkgrel = 1
 	url = http://clipsrules.sourceforge.net/
-	install = clips.install
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = GPL
 	depends = termcap
 	depends = libxaw
 	depends = xbitmaps
-	source = http://downloads.sourceforge.net/clipsrules/clips_core_source_624.tar.Z
-	source = http://downloads.sourceforge.net/clipsrules/x_windows_ide_source_624.tar.Z
-	source = http://downloads.sourceforge.net/clipsrules/make_and_help_files_624.zip
-	sha256sums = 80852a0df97597f710e90ca8bf5ecdc250c2034bf9dd3044bbedee111ad2e4ab
-	sha256sums = 66429eb818559323f5e90bd7b3c1e4f88af409a30a3433111a1d85bc7c789d09
-	sha256sums = 302712bbc2634cc437e6a7617d41ba54933ad6ffe5e01f0f869e9d7bc2cae9b8
+	source = http://downloads.sourceforge.net/project/clipsmm/clips/6.30.0.20090722svn/clips-6.30.0.20090722svn.tar.gz
+	md5sums = ff2e140deb47e3c0141f21fb238e2e61
+	sha256sums = 9114c371eb4e5a6bb32d746acb8d22591cba7502af2536a994e58a6349b30b2e
+	sha384sums = fe868fce6b8809d69eda21035aaf415b8ed04e460aab20e42bebaac55e2787634e843e94aa5b52eaa02f89b96601a654
+	sha512sums = df614f9a9611db31cb056160285af9bda88294b75ed378a71bdc395436cb511ddd9460d3aaaf0a54338c0e7c2c025ef53e3aa93701f1980d90010b61891f32d7
 
 pkgname = clips
 
