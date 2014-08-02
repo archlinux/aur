@@ -1,13 +1,12 @@
 # Maintainer: Marek Kubica <marek@xivilization.net>
 pkgname=git-cal-git
-pkgver=0.0.r71.d2cdf42
+pkgver=0.0.r87.53fd622
 pkgrel=1
 pkgdesc='github like contributions calendar on terminal'
 arch=('any')
 url='https://github.com/k4rthik/git-cal'
 license=('MIT')
-depends=('perl>=5.10.0'
-         'perl-libwww')
+depends=('perl>=5.10.0')
 makedepends=("git")
 options=('!emptydirs')
 source=("$pkgname"::"git+https://github.com/k4rthik/git-cal.git")
