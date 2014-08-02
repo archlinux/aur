@@ -1,0 +1,31 @@
+diff -aur a/initscript/archlinux/avahi-daemon.in b/initscript/archlinux/avahi-daemon.in
+--- a/initscript/archlinux/avahi-daemon.in	2010-08-26 04:51:39.034153001 +0400
++++ b/initscript/archlinux/avahi-daemon.in	2014-08-02 09:07:53.468117966 +0400
+@@ -26,13 +26,14 @@
+ . /etc/rc.conf
+ . /etc/rc.d/functions
+ 
+-PATH=/sbin:/bin:/usr/sbin:/usr/bin
++PATH=/usr/bin
+ DESC="Avahi mDNS/DNS-SD Daemon"
+ NAME="avahi-daemon"
+ DAEMON="@sbindir@/$NAME"
+ 
+ case "$1" in
+     start)
++        ck_daemon dbus && { echo -n "Start dbus first." >&2; stat_die; }
+         stat_busy "Starting $DESC"
+         $DAEMON -D > /dev/null 2>&1
+         if [ $? -gt 0 ]; then
+diff -aur a/initscript/archlinux/avahi-dnsconfd.in b/initscript/archlinux/avahi-dnsconfd.in
+--- a/initscript/archlinux/avahi-dnsconfd.in	2010-08-26 04:51:39.035153001 +0400
++++ b/initscript/archlinux/avahi-dnsconfd.in	2014-08-02 09:08:15.898117665 +0400
+@@ -26,7 +26,7 @@
+ . /etc/rc.conf
+ . /etc/rc.d/functions
+ 
+-PATH=/sbin:/bin:/usr/sbin:/usr/bin
++PATH=/usr/bin
+ DESC="Avahi mDNS/DNS-SD DNS Server Configuration Daemon"
+ NAME="avahi-dnsconfd"
+ DAEMON="@sbindir@/$NAME"

@@ -39,6 +39,8 @@ pkgbase = avahi-nosystemd
 	replaces = avahi
 	replaces = howl
 	replaces = mdnsresponder
+	source = http://www.avahi.org/download/avahi-0.6.31.tar.gz
+	source = rc.d.patch
 	options = !emptydirs
 	backup = etc/avahi/hosts
 	backup = etc/avahi/avahi-daemon.conf
@@ -46,10 +48,6 @@ pkgbase = avahi-nosystemd
 	backup = etc/avahi/services/sftp-ssh.service
 	backup = usr/lib/avahi/service-types.db
 	backup = usr/share/avahi/service-types
-	source = http://www.avahi.org/download/avahi-0.6.31.tar.gz
-	source = rc.d.patch
-	sha1sums = 7e05bd78572c9088b03b1207a0ad5aba38490684
-	sha1sums = d40050547c5637e77ef51fcf11936f0724bd7844
 
 pkgname = avahi-nosystemd
 

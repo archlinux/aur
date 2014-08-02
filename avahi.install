@@ -1,8 +1,6 @@
 post_install() {
-	if ! getent passwd avahi &>/dev/null; then
-		groupadd -r -g 84 avahi
-		useradd -r -u 84 -g avahi -d / -s /bin/nologin -c avahi av
-	fi
+	getent group avahi &>/dev/null || groupadd -r -g 84 avahi >/dev/null
+	getent passwd avahi &>/dev/null || useradd -r -u 84 -g avahi -d / -s /bin/false -c avahi avahi >/dev/null
 
 	cat <<EOF
 ==> The following daemons may be added to DAEMONS in /etc/rc.conf:
@@ -12,5 +10,11 @@ post_install() {
 ==>                 configuration on dhcp-less networks.
 EOF
 
+	true
+}
+
+post_remove() {
+	getent passwd avahi &>/dev/null && userdel avahi >/dev/null
+	getent group avahi &>/dev/null && groupdel avahi >/dev/null
 	true
 }
