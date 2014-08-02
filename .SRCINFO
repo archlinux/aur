@@ -1,0 +1,15 @@
+pkgbase = python2-hoep
+	pkgdesc = A Python binding for the Hoedown Markdown library.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Anomareh/Hoep
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2>=2.7
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/hoep/hoep-1.0.2.tar.gz
+	sha256sums = 712d6f890138e4f785bcfa8147f7e8eac802ae5543f533edbd810c5beabf7c7a
+
+pkgname = python2-hoep
+
