@@ -1,0 +1,21 @@
+pkgbase = clips
+	pkgdesc = A Tool for Building Expert Systems
+	pkgver = 6.24
+	pkgrel = 3
+	url = http://clipsrules.sourceforge.net/
+	install = clips.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = termcap
+	depends = libxaw
+	depends = xbitmaps
+	source = http://downloads.sourceforge.net/clipsrules/clips_core_source_624.tar.Z
+	source = http://downloads.sourceforge.net/clipsrules/x_windows_ide_source_624.tar.Z
+	source = http://downloads.sourceforge.net/clipsrules/make_and_help_files_624.zip
+	sha256sums = 80852a0df97597f710e90ca8bf5ecdc250c2034bf9dd3044bbedee111ad2e4ab
+	sha256sums = 66429eb818559323f5e90bd7b3c1e4f88af409a30a3433111a1d85bc7c789d09
+	sha256sums = 302712bbc2634cc437e6a7617d41ba54933ad6ffe5e01f0f869e9d7bc2cae9b8
+
+pkgname = clips
+
