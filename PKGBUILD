@@ -4,19 +4,15 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=cxxtest
-pkgver=4.3
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 pkgdesc='Unit testing framework for C++'
 arch=('any')
 url='http://cxxtest.com/'
 license=('LGPL')
 depends=('python')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('356d0f4810e8eb5c344147a0cca50fc0d84122c286e7644b61cb365c2ee22083')
-
-prepare() {
-  sed -i 's:env python:python3:g' "$pkgname-$pkgver/bin/cxxtestgen"
-}
+sha256sums=('1c154fef91c65dbf1cd4519af7ade70a61d85a923b6e0c0b007dc7f4895cf7d8')
 
 package() {
   cd "$pkgname-$pkgver"
