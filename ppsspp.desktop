@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PPSSPP
+GenericName=PSP Emulator
+Comment=Playstation Portable Emulator
+Exec=ppsspp-sdl %f
+Terminal=false
+Type=Application
+Icon=ppsspp
+Categories=Application;Game;
+StartupNotify=false
