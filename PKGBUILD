@@ -1,25 +1,26 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hpsmh
-pkgver=7.1.0_16
+pkgver=7.3.1_4
 pkgrel=1
 pkgdesc="HP System Management Homepage"
 arch=(i686 x86_64)
-url="http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack"
-depends=(bash perl)
+url="http://downloads.linux.hp.com/SDR/downloads/mcp"
+depends=(bash perl expat zlib pam libidn)
 groups=(hpproliant)
 license=("CUSTOM")
 options=(!strip)
 
-[ $CARCH = "x86_64" ] \
-	&& depends=(${depends[@]} lib32-glibc lib32-expat lib32-zlib lib32-pam lib32-libidn lib32-util-linux lib32-curl) \
-	|| depends=(${depends[@]} expat zlib pam libidn)
+pkgarch=$CARCH
+sha256sums=('0db6982d252b159c0bc6cbe105aa8f30c24c86102fb7d49b16261bcb1650d0d6')
+if [ "$CARCH" = "i686" ]; then
+	pkgarch=i386
+	sha256sums=('8f6bd5b034789fdbdca6523671151f54f894d2a47e0fce0e576066c67cc46d7e')
+fi
 
-source=(http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack/RedHatEnterpriseServer/6.2/packages/i386/${pkgname}-${pkgver//_/-}.i386.rpm)
+source=(http://downloads.linux.hp.com/SDR/downloads/mcp/centos/6/$pkgarch/current/${pkgname}-${pkgver//_/-}.$pkgarch.rpm)
 
 package() {
 	cp -a "$srcdir/"{etc,opt,usr,var} "$pkgdir"
 }
-
-sha256sums=('cf13d032330a234dbf960df6c7126517713e695be95e98b2e098d756f243884f')
 
