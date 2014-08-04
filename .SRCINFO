@@ -1,0 +1,26 @@
+pkgbase = webui-aria2-git
+	pkgdesc = Pure HTML/CSS/JS frontend for aria2
+	pkgver = r305.091fbb0
+	pkgrel = 1
+	url = https://github.com/ziahamza/webui-aria2
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = aria2: download utility backend
+	optdepends = chromium: browser to access front end
+	optdepends = epiphany: browser to access front end
+	optdepends = firefox: browser to access front end
+	optdepends = google-chrome: browser to access front end
+	optdepends = midori: browser to access front end
+	optdepends = netsurf: browser to access front end
+	optdepends = opera: browser to access front end
+	optdepends = rekonq: browser to access front end
+	source = webui-aria2-git::git+https://github.com/ziahamza/webui-aria2.git
+	source = aria2d.service
+	source = webui-aria2
+	md5sums = SKIP
+	md5sums = e66a1b86f501ae22b41ab69d97a0c4ee
+	md5sums = da1de4952903892fc0f0b00df1aebb5c
+
+pkgname = webui-aria2-git
+
