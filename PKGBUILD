@@ -21,6 +21,6 @@ fi
 source=(http://downloads.linux.hp.com/SDR/downloads/mcp/centos/6/$pkgarch/current/${pkgname}-${pkgver//_/-}.$pkgarch.rpm)
 
 package() {
-	cp -a "$srcdir/"{etc,opt,usr,var} "$pkgdir"
+	cp -a "$srcdir/"{etc,opt,usr} "$pkgdir"
 }
 
