@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec love08 /usr/share/iyfct/iyfct.love "$@"
+exec love /usr/share/iyfct/iyfct.love "$@"

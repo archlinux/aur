@@ -1,17 +1,19 @@
 pkgbase = iyfct-git
 	pkgdesc = In Your Face City Trains - survive as long as you can (development version)
-	pkgver = r36.gae0aa39
+	pkgver = 1.02.r0.g7f40df1
 	pkgrel = 1
 	url = http://simonlarsen.github.io/2011/05/29/in-your-face-city-trains.html
 	arch = any
 	license = CCPL:by
 	license = GPL3
 	makedepends = zip
-	depends = love08
+	depends = love
+	provides = iyfct
+	conflicts = iyfct
 	source = git+https://github.com/SimonLarsen/iyfct.git
 	source = iyfct.sh
 	sha256sums = SKIP
-	sha256sums = 8a10e898f242c6966a20ff1727dbbd4af2d30f870aa64d6b53e532b5845846f3
+	sha256sums = 89a21553f5a47f1a5d43a32eafb4261e5fc169292319214d68d9748f25f08e28
 
 pkgname = iyfct-git
 
