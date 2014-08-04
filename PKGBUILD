@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
 url="http://www.infradead.org/ocserv/"
@@ -27,4 +27,5 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm0644 doc/sample.config "$pkgdir/etc/ocserv.config"
   install -Dm0600 doc/sample.passwd "$pkgdir/etc/ocserv-passwd"
+  install -Dm0644 doc/systemd/standalone/ocserv.service "$pkgdir/usr/lib/systemd/system/ocserv.service"
 }
