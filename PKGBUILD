@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv-git
-pkgver=0.8.1.r5.g6079cdb
+pkgver=0.8.2.r7.gce2258b
 pkgrel=1
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
@@ -35,4 +35,5 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm0644 doc/sample.config "$pkgdir/etc/ocserv.config"
   install -Dm0600 doc/sample.passwd "$pkgdir/etc/ocserv-passwd"
+  install -Dm0644 doc/systemd/standalone/ocserv.service "$pkgdir/usr/lib/systemd/system/ocserv.service"
 }
