@@ -3,12 +3,12 @@
 pkgname=mingw-w64-sfml
 _commit=4a300547f3
 pkgver=2.1.0.$_commit
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)"
 arch=(any)
 url="http://www.sfml-dev.org"
 license=("zlib")
-makedepends=(mingw-w64-gcc cmake mingw-w64-cmake)
+makedepends=(mingw-w64-gcc cmake mingw-w64-cmake git)
 depends=(mingw-w64-crt mingw-w64-libsndfile mingw-w64-libjpeg-turbo mingw-w64-openal mingw-w64-glew mingw-w64-freetype)
 conflicts=(mingw-w64-sfml-static)
 provides=(mingw-w64-sfml-static)
@@ -23,14 +23,14 @@ build() {
   unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-cmake \
-			-DCMAKE_BUILD_TYPE=Release \
-			-DFREETYPE_LIBRARY=/usr/${_arch}/lib/libfreetype.dll.a \
-			-DGLEW_LIBRARY=/usr/${_arch}/lib/libglew32.dll.a \
-			-DJPEG_LIBRARY=/usr/${_arch}/lib/libjpeg.dll.a \
-			-DOPENAL_LIBRARY=/usr/${_arch}/lib/libOpenAL32.dll.a \
-			-DSNDFILE_LIBRARY=/usr/${_arch}/lib/libsndfile.dll.a \
-			..
+    ${_arch}-cmake --no-warn-unused-cli \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DFREETYPE_LIBRARY=/usr/${_arch}/lib/libfreetype.dll.a \
+      -DGLEW_LIBRARY=/usr/${_arch}/lib/libglew32.dll.a \
+      -DJPEG_LIBRARY=/usr/${_arch}/lib/libjpeg.dll.a \
+      -DOPENAL_LIBRARY=/usr/${_arch}/lib/libOpenAL32.dll.a \
+      -DSNDFILE_LIBRARY=/usr/${_arch}/lib/libsndfile.dll.a \
+      ..
     make
     popd
   done
@@ -40,10 +40,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/SFML/build-$_arch"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
-    find "$pkgdir/usr/${_arch}" -name '*.txt' | xargs -rtl1 rm
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} +
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' -exec ${_arch}-strip -g {} +
+    find "$pkgdir/usr/${_arch}" -name '*.txt' -delete
     rm -f "$pkgdir/usr/$_arch/bin/"{libsndfile-1,openal32}.dll
-    rm -f "$pkgdir/usr/$_arch/lib/"{libglew32,libfreetype,libjpeg,libsndfile}.a
+    rm -f "$pkgdir/usr/$_arch/lib/lib"{glew32,freetype,jpeg,sndfile}.a
   done
 }
