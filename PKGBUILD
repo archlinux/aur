@@ -1,22 +1,22 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hponcfg
-pkgver=4.2.0_0
+pkgver=4.3.0_0
 pkgrel=1
 pkgdesc="RILOE II/iLo online configuration utility"
 arch=(i686 x86_64)
-url="http://downloads.linux.hp.com/SDR/downloads/ProLiantSupportPack"
+url="http://downloads.linux.hp.com/SDR/downloads/mcp"
 depends=(libxslt)
 groups=(hpproliant)
 license=("CUSTOM")
 
-[ $CARCH = "i686" ] && pkgarch=i386 || pkgarch=$CARCH
+[ "$CARCH" = "i686" ] && pkgarch=i386 || pkgarch=$CARCH
 
-source=(http://downloads.linux.hp.com/SDR/downloads/ServicePackforProLiant/RHEL/6.4/$CARCH/current/$pkgname-${pkgver//_/-}.$pkgarch.rpm)
+source=(http://downloads.linux.hp.com/SDR/downloads/mcp/centos/6/$CARCH/current/$pkgname-${pkgver//_/-}.$pkgarch.rpm)
 
-sha256sums=('3cdd67cba1545617db0cd39fb9a7c15b8f72e4aeaac16fc0a3c0624f8f723f6d')
-if [ $CARCH = "i686" ]; then
-	sha256sums=('fcac62f2bf74fc1fea531a0e6280c15a590cd80c15aa829246d54a54080a3997')
+sha256sums=('f751a3efdd15272a65166d238a94285272dd26072336be6426579b8cc87b5931')
+if [ "$CARCH" = "i686" ]; then
+	sha256sums=('36bb399e5232a7ca3eef53491584838fe215e712433d5d0ad500de45ac13e054')
 fi
 
 package() {
