@@ -2,7 +2,7 @@
 # Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
 pkgname=dantalian
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Transparent tag-based file organization system."
 arch=('any')
 url="http://darkfeline.github.io/dantalian/"
@@ -26,7 +26,8 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/dantalian/LICENSE"
 
     # man page
-    install -Dm644 doc/_build/man/dantalian.1 "$pkgdir/usr/share/man/man1/dantalian.1"
+    mkdir -p "$pkgdir/usr/share/man/man1/"
+    install -Dm644 doc/_build/man/* "$pkgdir/usr/share/man/man1/"
 
     # html documentation
     install -dm755 "$pkgdir/usr/share/doc/dantalian"

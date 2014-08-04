@@ -1,7 +1,7 @@
 pkgbase = dantalian
 	pkgdesc = Transparent tag-based file organization system.
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://darkfeline.github.io/dantalian/
 	arch = any
 	license = mit
