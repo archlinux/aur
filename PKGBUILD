@@ -1,20 +1,17 @@
-# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
-# Contributor: Josh Cartwright <joshc@eso.teric.us>
-
 pkgname=irker
-pkgver=2.7
+pkgver=2.11
 pkgrel=1
 
 pkgdesc="An IRC client daemon accepting JSON notification requests presented to a socket."
-arch=('any')
 url="http://www.catb.org/esr/irker/"
+arch=('any')
 license=('BSD')
 
 depends=('python2')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
 
 source=("http://www.catb.org/~esr/irker/$pkgname-$pkgver.tar.gz")
-md5sums=('34dc7b64d20c18d9e50806501a441213')
+md5sums=('5cad68c7ab6bf7b23d9bdc9aeb110632')
 
 build() {
 	cd irker-$pkgver
