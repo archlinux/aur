@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Duck Marines
+Comment=ChuChu Rocket remake
+Exec=duckmarines
+Icon=duckmarines
+Terminal=false
+StartupNotify=false
+Categories=Game;

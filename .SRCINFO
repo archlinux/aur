@@ -1,0 +1,20 @@
+pkgbase = duckmarines
+	pkgdesc = Free software remake of Sonic Team's ChuChu Rocket
+	pkgver = 1.0b
+	pkgrel = 1
+	url = http://tangramgames.dk/games/duckmarines/
+	arch = any
+	license = zlib
+	license = CCPL
+	depends = love
+	source = https://github.com/SimonLarsen/duckmarines/releases/download/v1.0b/duckmarines-1.0-love.zip
+	source = duckmarines.sh
+	source = duckmarines.desktop
+	source = duckmarines.png::https://raw.githubusercontent.com/SimonLarsen/duckmarines/master/res/icons/48x48.png
+	sha256sums = 9b9a4d4565b2e2c38bccbbb5679118fc45999881dfbfe41c0d952f989f5eff3a
+	sha256sums = 0023f4949c45a9fdbef807a0295340c01f97d288bd1ce1d78e8c1a5fad0f6045
+	sha256sums = 1a7bd7e614f147a117622f42854048c36afe24dad3c9e2e5a3b206b43104bad4
+	sha256sums = c12ed26d6c2a2f5233580f4fd2899c50c822cc36ec14344fc6c6d4c3c54724ea
+
+pkgname = duckmarines
+
