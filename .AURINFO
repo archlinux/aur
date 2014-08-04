@@ -1,7 +1,7 @@
 pkgbase = kdebase-workspace-consolekit
 	pkgdesc = kdebase-workspace with ConsoleKit support for non-systemd systems
-	pkgver = 4.11.10
-	pkgrel = 2
+	pkgver = 4.11.11
+	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = kdebase-workspace.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = kdebase-workspace-consolekit
 	makedepends = boost
 	makedepends = kdebindings-python2
 	makedepends = networkmanager
-	depends = kdelibs>=4.11.10
+	depends = kdelibs>=4.11.11
 	depends = kdepim-runtime
 	depends = lm_sensors
 	depends = libraw1394
@@ -46,9 +46,9 @@ pkgbase = kdebase-workspace-consolekit
 	depends = glu
 	optdepends = kde-wallpapers: wallpapers for KDE Plasma Workspaces
 	optdepends = appmenu-qt: menu applications over dbus
-	provides = kdebase-workspace=4.11.10
+	provides = kdebase-workspace=4.11.11
 	conflicts = kdebase-workspace
-	source = http://download.kde.org/stable/4.13.2/src/kde-workspace-4.11.10.tar.xz
+	source = http://download.kde.org/stable/4.13.3/src/kde-workspace-4.11.11.tar.xz
 	source = kdm
 	source = kde.pam
 	source = kde-np.pam
@@ -59,7 +59,6 @@ pkgbase = kdebase-workspace-consolekit
 	source = terminate-server.patch
 	source = kdm-xinitrd.patch
 	source = khotkeys-qt4.patch
-	source = KDEBUG-336589.patch
 	backup = usr/share/config/kdm/kdmrc
 
 pkgname = kdebase-workspace-consolekit
