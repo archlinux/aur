@@ -4,7 +4,7 @@
 
 pkgname=dantalian-git
 _pkgname=dantalian
-pkgver=f677a70
+pkgver=78f4cb9
 pkgrel=1
 pkgdesc="Transparent tag-based file organization system."
 arch=('any')
@@ -38,7 +38,8 @@ package()
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
 	# man page
-	install -Dm644 doc/_build/man/${_pkgname}.1 "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+	mkdir -p "${pkgdir}/usr/share/man/man1/"
+	install -Dm644 doc/_build/man/* "${pkgdir}/usr/share/man/man1/"
 
 	# html documentation
 	install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"

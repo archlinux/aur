@@ -1,6 +1,6 @@
 pkgbase = dantalian-git
 	pkgdesc = Transparent tag-based file organization system.
-	pkgver = f677a70
+	pkgver = 78f4cb9
 	pkgrel = 1
 	url = http://darkfeline.github.io/dantalian/
 	arch = any
