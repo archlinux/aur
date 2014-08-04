@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Maxwell Anselm <silverhammermba+aur@gmail.com>
 
 pkgname=mingw-w64-sfml
 _commit=4a300547f3
