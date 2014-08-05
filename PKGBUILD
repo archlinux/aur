@@ -4,17 +4,20 @@
 
 pkgname=poldi
 pkgver=0.4.1
-pkgrel=5
+pkgrel=6
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
 url="http://www.g10code.com/p-poldi.html"
 license="GPL"
 depends=('libgcrypt' 'libgpg-error' 'libksba' 'pam')
 makedepends=()
+optdepends=(logrotate: To avoid giant logfiles)
 options=()
 backup=("etc/poldi/poldi.conf" "etc/pam.d/system-auth-poldi")
 install=poldi.install
-source=("ftp://ftp.gnupg.org/gcrypt/alpha/poldi/$pkgname-$pkgver.tar.bz2" "poldi-arch.patch")
+source=("ftp://ftp.gnupg.org/gcrypt/alpha/poldi/$pkgname-$pkgver.tar.bz2"
+	"poldi-arch.patch"
+	"poldi.logrotate")
 
 build() {
 
@@ -43,7 +46,11 @@ package() {
   install -d -m 755 "$pkgdir/etc/pam.d"
   echo -e "auth\tsufficient\tpam_poldi.so" > $pkgdir/etc/pam.d/system-auth-poldi
 
+  install -d -m 755 "$pkgdir/etc/logrotate.d"
+  install -m 755 ${srcdir}/poldi.logrotate $pkgdir/etc/logrotate.d/poldi
+
   rm "$pkgdir/usr/share/info/dir"
 }
 md5sums=('197986f9ba6aec9a91ee4610f4c6be8b'
-         'a4187baaacc764d20909345865668280')
+         'a4187baaacc764d20909345865668280'
+         '57009cc5211088396d2521fc1997792b')
