@@ -1,8 +1,8 @@
 pkgbase = blackbox-git
 	pkgdesc = A window manager for X11
 	pkgver = 0.70.2.23
-	pkgrel = 1
-	url = http://blackboxwm.sourceforge.net/
+	pkgrel = 2
+	url = https://github.com/bbidulock/blackboxwm
 	arch = i686
 	arch = x86_64
 	license = MIT

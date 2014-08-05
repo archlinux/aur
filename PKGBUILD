@@ -2,10 +2,10 @@
 
 pkgname=blackbox-git
 pkgver=0.70.2.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
-url="http://blackboxwm.sourceforge.net/"
+url="https://github.com/bbidulock/blackboxwm"
 license=('MIT')
 provides=('blackbox')
 conflicts=('blackbox' 'blackbox-cvs')
