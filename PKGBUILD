@@ -2,10 +2,10 @@
 pkgname=flwm-git
 _pkgname=flwm
 pkgver=1.14.r7.g50e1b2b
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast Light Window Manager"
 arch=('i686' 'x86_64')
-url="http://flwm.sourceforge.net/"
+url="https://github.com/bbidulock/flwm"
 license=('GPL')
 provides=('flwm')
 conflicts=('flwm' 'flwm-tc')
