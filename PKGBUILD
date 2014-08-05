@@ -18,7 +18,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config.x86_64'
         'menu.lst'
         "preset"
-        'https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/change-default-console-loglevel.patch?h=packages/linux&id=80b436a10640b47f9ab25af4926d2d16d55a8001')
 sha512sums=('d5dc477cad4584e56e2e2ef9e0950c2b22e76e5cf5090a896ba099cb7c5e5db1853a4aeb96b199189653dc66d461557e95198e37516a619f7ddc01ba6b308e02'
             '2f2787976f0f273f83513422dd3f443cca73b50faceea8f075b5afa9bd61fa7073b608063501792ec24b60f0b65da6a93df3acc5422c16ed6dc2fcc258d6d21f'
             '13d721e31fa0a83760bc43bf0c1c269bd32e973132ef7cd0bdbf3759b3bd9968707fe9cac01015ff1143a57d8750a59f119b142be7a24bfa88bf2115bb1aed31'
