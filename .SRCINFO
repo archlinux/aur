@@ -1,0 +1,18 @@
+pkgbase = sfutils
+	pkgdesc = Solarflare Utilities for Linux (sfupdate, sfboot, sfctool, etc.)
+	pkgver = 4.1.2.1009
+	pkgrel = 1
+	url = http://www.solarflare.com/
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	options = !libtool
+	options = !strip
+	options = !makeflags
+	options = !buildflags
+	options = staticlibs
+	source = https://support.solarflare.com/index.php?option=com_cognidox&file=SF-107601-LS-24_Solarflare_Linux_Utilities_RPM_64bit.zip&task=download&format=raw&id=1945&Itemid=11
+	sha512sums = 4f3df0f797a344dc5e5dceb4e762de4cae6a646f72aca54014be1dabeff9c6f6286dd626a10083ef1c85f0cf94b1baf0da187992ba3c40138c4c4094b065b348
+
+pkgname = sfutils
+
