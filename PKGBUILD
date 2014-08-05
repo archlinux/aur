@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='http://www.ros.org/wiki/ros_comm'
 
 pkgname='ros-indigo-ros-comm'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 
 # roslisp cannot be installed on ARM
 if test "$CARCH" == x86_64 || test "$CARCH" == i686 ; then
-  ros_depends+=('ros-hydro-roslisp')
+  ros_depends+=('ros-indigo-roslisp')
 fi
 
 _tag=release/indigo/ros_comm/${pkgver}-${_pkgver_patch}
