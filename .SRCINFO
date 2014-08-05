@@ -1,8 +1,8 @@
 pkgbase = xqproxy-git
 	pkgdesc = XDMCP query proxy
 	pkgver = 0.1.2.r0.g5e21d36
-	pkgrel = 2
-	url = http://cgit.freedesktop.org/xqproxy
+	pkgrel = 3
+	url = https://github.com/bbidulock/xqproxy
 	arch = i686
 	arch = x86_64
 	license = MIT
