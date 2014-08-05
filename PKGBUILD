@@ -3,10 +3,11 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
 pkgver=1.1.11.46.g2c10cbb
-pkgrel=1
+pkgrel=2
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
-url="http://xorg.freedesktop.org/"
+#url="http://xorg.freedesktop.org/"
+url="https://github.com/bbidulock/xdm"
 license=('custom')
 depends=('libbsd' 'pam' 'libxaw' 'libxinerama' 'xorg-xrdb' 'xorg-sessreg' 'libxft' 'systemd')
 optdepends=('slim-xdm: for separate greeter')
