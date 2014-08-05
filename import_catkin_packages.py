@@ -15,9 +15,17 @@ from collections import OrderedDict
 from termcolor import colored, cprint
 import pickle
 
+# Directory containing some data files
 updates_packages_dir = "/tmp/import_catkin_packages"
-updated_packages_file = os.path.join(updates_packages_dir,
-                                     "updated_packages_%(distro)s.dump")
+
+# File that contains the dump file of updated packages
+updated_packages_filename = os.path.join(updates_packages_dir,
+                                         "updated_packages_%(distro)s.dump")
+
+# File that contains the list of packages to install
+makepkg_filename = os.path.join(updates_packages_dir,
+                                "makepkg_%(distro)s.dump")
+
 http = urllib3.PoolManager()
 
 try:
@@ -527,7 +535,8 @@ def github_raw_url(repo_url, path, commitish):
 
 def generate_pkgbuild(distro, package, directory, force=False,
                       no_overwrite=False, recursive=False, update=False,
-                      exclude_dependencies=[], rosdep_urls=[], generated=None):
+                      exclude_dependencies=[], rosdep_urls=[], generated=None,
+                      written=None):
   """
   Generate a PKGBUILD file for the given package and the given ROS distribution.
   """
@@ -535,13 +544,16 @@ def generate_pkgbuild(distro, package, directory, force=False,
     generated = set()
   elif package.name in generated:
     return
+
   generated.add(package.name)
+
   if package.packages:
     for child_package in package.packages:
       generate_pkgbuild(distro, child_package, directory,
                         force=force, exclude_dependencies=exclude_dependencies,
                         no_overwrite=no_overwrite, recursive=recursive,
-                        update=update, rosdep_urls=rosdep_urls, generated=generated)
+                        update=update, rosdep_urls=rosdep_urls,
+                        generated=generated, written=written)
 
   # If this is a virtual package (i.e. not an actual package)
   if package.is_virtual:
@@ -553,10 +565,16 @@ def generate_pkgbuild(distro, package, directory, force=False,
         generate_pkgbuild(distro, distro.package(dependency), directory,
                           force=force, no_overwrite=no_overwrite, recursive=recursive,
                           exclude_dependencies=exclude_dependencies, update=update,
-                          rosdep_urls=rosdep_urls, generated=generated)
+                          rosdep_urls=rosdep_urls, generated=generated,
+                          written=written)
+
   output_directory = os.path.join(directory, package.name)
+
+  # If the directory does not exist, create it
   if not os.path.exists(output_directory):
     os.mkdir(output_directory)
+
+  # If PKGBUILD already exists
   if os.path.exists(os.path.join(output_directory, 'PKGBUILD')):
     if no_overwrite:
       return
@@ -564,7 +582,10 @@ def generate_pkgbuild(distro, package, directory, force=False,
       "Directory '%s' already contains a PKGBUILD file. Overwrite?" % (
         output_directory)) == "no":
       return
+
   pkgbuild_file = os.path.join(output_directory, 'PKGBUILD')
+
+  # If we are merely updating packages
   if update:
     if package.is_same_version(pkgbuild_file):
       print('PKGBUILD for package %s already up-to-date (%s)'
@@ -572,13 +593,21 @@ def generate_pkgbuild(distro, package, directory, force=False,
                colored(package.version + '-' + package.version_patch, 'white',
                        attrs=['bold'])))
       return
+
   print('Generating PKGBUILD for package %s (%s)'
         % (colored(package.name, 'green', attrs=['bold']),
            colored(package.version + '-' + package.version_patch, 'white',
                    attrs=['bold'])))
+
+  # Write PKGBUILD file
   with open(pkgbuild_file, 'w') as pkgbuild:
     pkgbuild.write(package.generate(distro.python_version, exclude_dependencies,
                                     rosdep_urls))
+
+  # Add the package to the txt file containing packages to install
+  if written:
+      written["packages"].append(package.name)
+
 
 
 def main():
@@ -670,31 +699,54 @@ def main():
     if not distro_dir:
       print("Missing mandatory --output-directory. Exiting.")
       sys.exit()
+
     generated = set()
-    distro_dump_file = updated_packages_file % {'distro': options.distro}
-    if os.path.isfile(distro_dump_file):
+
+    # Dump file containing the ordered list of packages to install
+    distro_makepkg_filename = makepkg_filename % {'distro': options.distro}
+    written = {"directory": distro_dir,
+               "packages": list()}
+
+    if os.path.isfile(distro_makepkg_filename):
+      makepkg_dump = open(distro_makepkg_filename, "rb")
+      written = pickle.load(makepkg_dump)
+      makepkg_dump.close()
+
+    # Dump file containing previously generated packages
+    distro_generated_filename = updated_packages_filename % {'distro': options.distro}
+
+    if os.path.isfile(distro_generated_filename):
       # Load dump of already updated packages to speedup updates
       print('Loading set of previously updated packages: %s'
-            % (colored(distro_dump_file, 'white',
+            % (colored(distro_generated_filename, 'white',
                        attrs=['bold'])))
-      updated_packages = open(distro_dump_file, "rb")
-      generated = pickle.load(updated_packages)
-      updated_packages.close()
+      updated_packages_dump = open(distro_generated_filename, "rb")
+      generated = pickle.load(updated_packages_dump)
+      updated_packages_dump.close()
       for package in sorted(generated):
         print('Ignoring %s'
               % (colored(package, 'yellow', attrs=['bold'])))
 
-    for package in args:
-      generate_pkgbuild(distro, distro.package(package), distro_dir,
-                        exclude_dependencies=options.exclude_dependencies.split(','),
-                        force=options.force, no_overwrite=options.no_overwrite,
-                        update=options.update, recursive=options.recursive,
-                        rosdep_urls=options.rosdep_urls, generated=generated)
+    try:
+      for package in args:
+        generate_pkgbuild(distro, distro.package(package), distro_dir,
+                          exclude_dependencies=options.exclude_dependencies.split(','),
+                          force=options.force, no_overwrite=options.no_overwrite,
+                          update=options.update, recursive=options.recursive,
+                          rosdep_urls=options.rosdep_urls, generated=generated,
+                          written=written)
+    except KeyboardInterrupt:
+      pass
+
     if not os.path.exists(updates_packages_dir):
       os.makedirs(updates_packages_dir)
-    updated_packages = open(distro_dump_file, "wb")
-    pickle.dump(generated, updated_packages)
-    updated_packages.close()
+
+    makepkg_dump = open(distro_makepkg_filename, "wb")
+    updated_packages_dump = open(distro_generated_filename, "wb")
+    pickle.dump(generated, updated_packages_dump)
+    pickle.dump(written, makepkg_dump)
+    updated_packages_dump.close()
+    makepkg_dump.close()
   else:
     parser.error('No package specified.')
 
