@@ -1,15 +1,14 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers
-pkgver=1.1.195
+pkgver=1.1.58
 pkgrel=1
 arch=('any')
 license=('GPL')
 url="http://github.com/bbidulock/xde-helpers"
 groups=('xde')
 depends=('xde-icons' 'xdg-utils' 'gxmessage')
-makedepends=('git')
-install="xde-helpers.install"
+#install="xde-helpers.install"
 source=("$pkgname::git+https://github.com/bbidulock/$pkgname.git")
 md5sums=('SKIP')
 
