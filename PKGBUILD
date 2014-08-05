@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-indigo-roslaunch'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,6 +15,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosout
+  ros-indigo-rosunit
   ros-indigo-rosclean
   ros-indigo-roslib
   ros-indigo-rosmaster
