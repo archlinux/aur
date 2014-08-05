@@ -2,10 +2,10 @@
 
 pkgname=icewm-git
 pkgver=1.3.8.83
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
-url="http://icewm.org/"
+url="https://github.com/bbidulock/icewm"
 license=('LGPL')
 provides=('icewm')
 conflicts=('icewm' 'icwm-cvs' 'icwm-ak' 'icwm-init0' 'icwm-testing' 'icwm-zstegi')
