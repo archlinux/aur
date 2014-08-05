@@ -1,10 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=mcwm-git
 pkgver=20130209.2.r11.gee7d9df
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist floating window manager written on top of the XCB"
 arch=('i686' 'x86_64')
-url="http://hack.org/mc/hacks/mcwm/"
+#url="http://hack.org/mc/hacks/mcwm/"
+url="https://github.com/bbidulock/mcwm"
 license=('ISC')
 depends=('xcb-util-wm' 'xcb-util-keysyms' 'bash')
 makedepends=('git')
