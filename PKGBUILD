@@ -25,38 +25,38 @@ install=install
 backup=('etc/xpdfrc')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver%_*}"
+  cd "${srcdir}/${pkgname}-${pkgver%_*}"
 
   patch -p1 -i ../02-permissions.patch
 
-	sed -i 's:/usr/share/fonts/type1/gsfonts:/usr/share/fonts/Type1:' xpdf/GlobalParams.cc
-	sed -i 's:times-medium-r-normal--16:times-medium-r-normal--14:' xpdf/XPDFViewer.cc # FS#14217
+  sed -i 's:/usr/share/fonts/type1/gsfonts:/usr/share/fonts/Type1:' xpdf/GlobalParams.cc
+  sed -i 's:times-medium-r-normal--16:times-medium-r-normal--14:' xpdf/XPDFViewer.cc # FS#14217
 
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--mandir=/usr/share/man \
-		--enable-multithreaded \
-		--enable-wordlist \
-		--with-freetype2-library=/usr/lib \
-		--with-freetype2-includes=/usr/include/freetype2 \
-		--x-includes=/usr/include \
-		--with-Xm-library=/usr/lib \
-		--with-Xm-includes=/usr/include \
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --enable-multithreaded \
+    --enable-wordlist \
+    --with-freetype2-library=/usr/lib \
+    --with-freetype2-includes=/usr/include/freetype2 \
+    --x-includes=/usr/include \
+    --with-Xm-library=/usr/lib \
+    --with-Xm-includes=/usr/include \
 
-	make
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver%_*}"
+  cd "${srcdir}/${pkgname}-${pkgver%_*}"
 
-	make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 
-	install -Dm644 ../desktop "${pkgdir}/usr/share/applications/xpdf.desktop"
-	install -Dm644 xpdf/xpdfIcon.xpm "${pkgdir}/usr/share/pixmaps/xpdf.xpm"
+  install -Dm644 ../desktop "${pkgdir}/usr/share/applications/xpdf.desktop"
+  install -Dm644 xpdf/xpdfIcon.xpm "${pkgdir}/usr/share/pixmaps/xpdf.xpm"
 
-	# stuff provided by poppler
-	for tool in pdfdetach pdffonts pdfimages pdfinfo pdftoppm pdftops pdftotext; do
-		rm "${pkgdir}/usr/bin/${tool}" "${pkgdir}/usr/share/man/man1/${tool}.1"
-	done
+  # stuff provided by poppler
+  for tool in pdfdetach pdffonts pdfimages pdfinfo pdftoppm pdftops pdftotext; do
+    rm "${pkgdir}/usr/bin/${tool}" "${pkgdir}/usr/share/man/man1/${tool}.1"
+  done
 }
