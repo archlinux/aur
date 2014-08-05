@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-indigo-rosconsole'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
