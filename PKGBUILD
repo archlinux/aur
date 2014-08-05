@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.16
 pkgver=3.16
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,11 +17,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        'change-default-console-loglevel.patch'
         )
 sha256sums=('4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0'
             '487dc1fd428b5793f4f5216fd76bd3640b12c50ea52c6fb909da24baf3612d9b'
             '1db5856f6c29380e828e3026a0ed8c344f0386fde83f03bf27ecb8fd6880ff32'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 
 _kernelname=${pkgbase#linux}
 
@@ -33,6 +35,11 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
+  # remove this when a Kconfig knob is made available by upstream
+  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
+  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
