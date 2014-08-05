@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot  <jgc@archlinux.org>
 pkgname=libwnck+-git
 pkgver=2.31.0.r18.g54c5fe6
-pkgrel=2
+pkgrel=3
 pkgdesc="Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -10,7 +10,7 @@ provides=('libwnck=2.31.0' 'libwnck+=2.31.0')
 conflicts=('libwnck' 'libwnck+')
 depends=('gtk2' 'startup-notification' 'libxres')
 makedepends=('git' 'libxt' 'intltool' 'gobject-introspection' 'gnome-common')
-url="http://www.gnome.org/"
+url="https://github.com/bbidulock/libwnck"
 source=("$pkgname::git+https://github.com/bbidulock/libwnck.git#branch=libwnck+")
 sha256sums=('SKIP')
 

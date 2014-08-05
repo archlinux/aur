@@ -1,8 +1,8 @@
 pkgbase = libwnck+-git
 	pkgdesc = Window Navigator Construction Kit
 	pkgver = 2.31.0.r18.g54c5fe6
-	pkgrel = 2
-	url = http://www.gnome.org/
+	pkgrel = 3
+	url = https://github.com/bbidulock/libwnck
 	arch = i686
 	arch = x86_64
 	license = LGPL
