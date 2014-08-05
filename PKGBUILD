@@ -4,7 +4,7 @@
 
 _gemname=posix-spawn
 pkgname=ruby-$_gemname
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc='posix_spawnp(2) for ruby'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ca26e990432efcaf866651d56c8bf600c38882a2')
+sha1sums=('b11506c364806ed12938353690cfab5a2fc3a272')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
