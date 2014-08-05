@@ -1,7 +1,7 @@
 pkgbase = xpdf
 	pkgdesc = Viewer for Portable Document Format (PDF) files
 	pkgver = 3.04
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.foolabs.com/xpdf/
 	install = install
 	arch = i686
@@ -14,8 +14,10 @@ pkgbase = xpdf
 	optdepends = desktop-file-utils: for desktop environments
 	backup = etc/xpdfrc
 	source = ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.04.tar.gz
+	source = 02-permissions.patch
 	source = desktop
 	sha1sums = b9b1dbb0335742a09d0442c60fd02f4f934618bd
+	sha1sums = f192728680aaf575c178ce25c4aefa92e798a879
 	sha1sums = 17ebbfe457cb92e97b12b7362e8ce961526012d9
 
 pkgname = xpdf

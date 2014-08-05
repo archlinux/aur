@@ -2,10 +2,11 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
+# Xpdf-nodrm: Mark Pustjens <pustjens@dds.nl>
 
 pkgname=xpdf
 pkgver=3.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Viewer for Portable Document Format (PDF) files'
 url='http://www.foolabs.com/xpdf/'
 license=('GPL2')
@@ -14,8 +15,10 @@ depends=('lesstif' 'gsfonts' 'libxt')
 optdepends=('poppler: tools that used to be included in xpdf'
             'desktop-file-utils: for desktop environments')
 source=("ftp://ftp.foolabs.com/pub/${pkgname}/${pkgname}-${pkgver%_*}.tar.gz"
+        '02-permissions.patch'
         'desktop')
 sha1sums=('b9b1dbb0335742a09d0442c60fd02f4f934618bd'
+          'f192728680aaf575c178ce25c4aefa92e798a879'
           '17ebbfe457cb92e97b12b7362e8ce961526012d9')
 
 install=install
@@ -23,6 +26,8 @@ backup=('etc/xpdfrc')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver%_*}"
+
+  patch -p1 -i ../02-permissions.patch
 
 	sed -i 's:/usr/share/fonts/type1/gsfonts:/usr/share/fonts/Type1:' xpdf/GlobalParams.cc
 	sed -i 's:times-medium-r-normal--16:times-medium-r-normal--14:' xpdf/XPDFViewer.cc # FS#14217
