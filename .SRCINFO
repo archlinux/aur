@@ -6,7 +6,6 @@ pkgbase = mopidy-git
 	arch = any
 	license = APACHE
 	makedepends = git
-	makedepends = python2
 	depends = python2
 	depends = python2-pykka
 	depends = python2-setuptools

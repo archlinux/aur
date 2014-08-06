@@ -16,7 +16,7 @@ depends=('python2'
          'gstreamer0.10-base-plugins'
          'gstreamer0.10-good-plugins'
          'gstreamer0.10-ugly-plugins')
-makedepends=('git' 'python2')
+makedepends=('git')
 optdepends=('gstreamer0.10-ffmpeg: AAC+ and WMA support.'
             'mopidy-spotify: Spotify backend'
             'mopidy-scrobbler: Last.FM scrobbler'
