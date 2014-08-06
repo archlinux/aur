@@ -10,7 +10,7 @@
 pkgbase=networkmanager-ifupdown
 pkgname=(networkmanager-ifupdown libnm-glib-ifupdown)
 pkgver=0.9.8.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -58,7 +58,7 @@ build() {
 }
 
 package_networkmanager-ifupdown() {
-  depends=(libnm-glib iproute2 libnl polkit wpa_supplicant dhcp-client libsoup libmm-glib)
+  depends=(libnm-glib-ifupdown iproute2 libnl polkit wpa_supplicant dhcp-client libsoup libmm-glib)
   optdepends=('dhclient: DHCPv6 support'
               'dnsmasq: Connection sharing'
               'bluez: Bluetooth support'

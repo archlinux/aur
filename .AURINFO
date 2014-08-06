@@ -1,7 +1,7 @@
 pkgbase = networkmanager-ifupdown
 	pkgdesc = Network Management daemon
 	pkgver = 0.9.8.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = networkmanager-ifupdown
 
 pkgname = networkmanager-ifupdown
 	install = networkmanager.install
-	depends = libnm-glib
+	depends = libnm-glib-ifupdown
 	depends = iproute2
 	depends = libnl
 	depends = polkit
