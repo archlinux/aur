@@ -1,4 +1,4 @@
-\# Maintainer: Ronald van Haren <ronald@archlinux.org>
+# Maintainer: Ronald van Haren <ronald@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
