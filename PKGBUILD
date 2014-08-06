@@ -1,10 +1,10 @@
-# Maintainer: Ronald van Haren <ronald@archlinux.org>
+\# Maintainer: Ronald van Haren <ronald@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('b2cd7acca4e9b4d7924a5c5f76009846b8b3b6e0')
+sha1sums=('4a54136629bed3b30cf4e9355e8d5b498b0d4e54')
 
 prepare() {
   mkdir build
