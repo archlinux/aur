@@ -2,7 +2,7 @@ post_install() {
 	
 	cat << EOF
     
-    UEFI Shell v2 binary installed at /usr/share/uefi-shell/*.efi
+    UEFI Shell v2 binaries are installed at /usr/share/uefi-shell/*.efi
     
 EOF
 	

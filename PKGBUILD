@@ -26,7 +26,7 @@ _COMPILER="GCC49"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=15686
+pkgver=15761
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -89,8 +89,8 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
 	
-	msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
-	patch -Np1 -i "${srcdir}/edk2-basetools-add-gcc4.9-support.patch" || true
+	# msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
+	# patch -Np1 -i "${srcdir}/edk2-basetools-add-gcc4.9-support.patch" || true
 	sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
 	
 	msg "Use python2 for UDK BaseTools"
