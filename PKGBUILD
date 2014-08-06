@@ -4,7 +4,7 @@
 pkgname=mopidy-git
 _gitname=mopidy
 pkgver=0.19.3.r57.g4c60c6b
-pkgrel=1
+pkgrel=2
 pkgdesc="A music server which can play music from Spotify"
 arch=('any')
 url="http://www.mopidy.com"
@@ -12,6 +12,7 @@ license=('APACHE')
 depends=('python2'
          'python2-pykka'
          'python2-setuptools'
+         'python2-tornado'
          'gstreamer0.10-python'
          'gstreamer0.10-base-plugins'
          'gstreamer0.10-good-plugins'
@@ -20,8 +21,7 @@ makedepends=('git')
 optdepends=('gstreamer0.10-ffmpeg: AAC+ and WMA support.'
             'mopidy-spotify: Spotify backend'
             'mopidy-scrobbler: Last.FM scrobbler'
-            'mopidy-MPRIS: MPRIS frontend'
-            'python2-tornado: HTTP frontend')
+            'mopidy-MPRIS: MPRIS frontend')
 conflicts=('mopidy')
 provides=('mopidy')
 source=('git+https://github.com/mopidy/mopidy.git'
