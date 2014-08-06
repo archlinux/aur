@@ -3,23 +3,23 @@
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgbase=python-boto
-pkgname=python2-boto
-pkgver=2.32.0
+pkgname=(python-boto python2-boto)
+pkgver=2.32.1
 pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
 url='https://github.com/boto/boto'
 license=('MIT')
-depends=('python2')
-makedepends=('python2-setuptools' 'git')
-checkdepends=('python2-nose' 'python2-mock' 'python2-requests' 'python2-httpretty')
-conflicts=('python-boto>=2.5.2-1')
-replaces=('python-boto>=2.5.2-1')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
+checkdepends=('python-nose' 'python2-nose' 'python-mock' 'python2-mock' 'python-requests'
+              'python2-requests' 'python-httpretty' 'python2-httpretty')
 source=("git+https://github.com/boto/boto.git#tag=$pkgver")
+sha512sums=('SKIP')
 
 prepare() {
-  cd boto
+  cp -a boto{,-py2}
 
+  cd boto-py2
   # python2 fix
   find . -name '*.py' -type f -print0 | xargs -0 \
     sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_'
@@ -27,14 +27,31 @@ prepare() {
 
 check() {
   cd boto
-  python2 tests/test.py tests/unit
+  python tests/test.py default
+
+  cd ../boto-py2
+  python2 tests/test.py default
+}
+
+package_python-boto() {
+  depends=('python')
+
+  cd boto
+
+  python setup.py install -O1 --root="$pkgdir"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Remove (somewhat deprecated) tools that conflicts with the python 2 version.
+  rm -r "$pkgdir/usr/bin"
 }
 
 package_python2-boto() {
-  cd boto
+  depends=('python2')
+  conflicts=('python-boto<2.32.1-1')
+  replaces=('python-boto<2.32.1-1')
+
+  cd boto-py2
 
   python2 setup.py install -O1 --root="$pkgdir"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-sha512sums=('SKIP')
