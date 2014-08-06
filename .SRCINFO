@@ -1,7 +1,7 @@
 pkgbase = network-manager-applet-gtk2
 	pkgdesc = GNOME frontends to NetWorkmanager compiled for gtk2
 	pkgver = 0.9.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = network-manager-applet.install
 	arch = i686
@@ -10,7 +10,8 @@ pkgbase = network-manager-applet-gtk2
 	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = modemmanager
-	depends = networkmanager>=0.9.8
+	depends = networkmanager-ifupdown
+	depends = libnm-glib-ifupdown
 	depends = libsecret
 	depends = dconf
 	depends = gtk2
