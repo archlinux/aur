@@ -1,6 +1,6 @@
 pkgbase = xorg-xdm-xlogin-git
 	pkgdesc = X Display Manager
-	pkgver = 1.1.11.52.gd16e999
+	pkgver = 1.1.11.53.g88d0af0
 	pkgrel = 1
 	url = https://github.com/bbidulock/xdm
 	arch = i686
