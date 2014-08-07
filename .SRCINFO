@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
 	pkgver = 1.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/rviz
 	arch = any
 	license = BSD, Creative Commons
