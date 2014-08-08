@@ -1,0 +1,16 @@
+pkgbase = nova-xvpvncviewer-git
+	pkgdesc = Java vnc viewer for Openstack Nova
+	pkgver = fc29208
+	pkgrel = 1
+	url = https://github.com/cloudbuilders/nova-xvpvncviewer
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = java-runtime
+	source = git://github.com/cloudbuilders/nova-xvpvncviewer.git
+	source = xvpvncviewer
+	sha256sums = SKIP
+	sha256sums = a6d5c21bf2ffe8c2e2e3b0894fd3e1c64c330ca541e66f35391e20191ec95608
+
+pkgname = nova-xvpvncviewer-git
+
