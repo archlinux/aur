@@ -3,7 +3,7 @@
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r06
+_rev=r07
 _apilevel=19
 pkgname=android-google-apis
 pkgver=${_apilevel}_${_rev}
@@ -17,7 +17,7 @@ provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/google_apis-${_apilevel}_${_rev}.zip")
-sha1sums=('b91fced8b348df7fb505a687084ec16d03ad9b1c')
+sha1sums=('150f5a3fec4f03313ca770b90126605619bd713c')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/add-ons/"
