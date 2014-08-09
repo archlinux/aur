@@ -9,8 +9,9 @@ arch=('any')
 url="https://github.com/DaveMDS/epymc"
 license=('GPL3')
 depends=('python2-efl')
-optdepends=('mutagen: music module'
-            'lirc: remote contol support'
+optdepends=('lirc: remote contol support'
+            'mutagen: Music module'
+            'python2-beautifulsoup4: Online Channels module'
             'sdlmame: MAME module')
 source=("https://github.com/DaveMDS/$pkgname/archive/v$_pkgver.tar.gz")
 sha256sums=('SKIP')
