@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Frank <ben+aur@pipsfrank.de>
 
 pkgname=muttvcardsearch
-pkgver=1.7
+pkgver=1.9
 pkgrel=1
 pkgdesc="A small mutt carddav search utility."
 arch=('i686' 'x86_64')
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="${pkgdir}/" install
   install -Dm644 manual/muttvcardsearch.man ${pkgdir}/usr/share/man/man8/muttvcardsearch.8
 }
-sha256sums=('bd8cf5e51fa7237007dd12e8ac89e4ce6d66bb1be7c7d17f12c81fecb1caa6cf')
+sha256sums=('4c099938dd02f577d8289bbc5e82f0af6f290a564a30f6fdcb5cc880cd02fc8d')
