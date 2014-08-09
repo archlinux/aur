@@ -2,15 +2,16 @@
 
 _pkgname=epymc
 pkgname=$_pkgname-git
-pkgver=1.0.0beta1.r1.ge213b2b
+pkgver=1.0.0beta1.r74.gf36a9b4
 pkgrel=1
 pkgdesc="Media Center based on EFL - Development version"
 arch=('any')
 url="https://github.com/DaveMDS/epymc"
 license=('GPL3')
 depends=('python2-efl')
-optdepends=('mutagen: music module'
-            'lirc: remote contol support'
+optdepends=('lirc: remote contol support'
+            'mutagen: Music module'
+            'python2-beautifulsoup4: Online Channels module'
             'sdlmame: MAME module')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
