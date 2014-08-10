@@ -5,9 +5,9 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-en'
-pkgver='3.6.3'
-_realpkgver='3.6.3'
-_realpkgver_i686='3.6.3'
+pkgver='3.6.4'
+_realpkgver='3.6.4'
+_realpkgver_i686='3.6.4'
 _language='en-US'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -40,11 +40,11 @@ source=("https://www.torproject.org/dist/torbrowser/${pkgver}/tor-browser-linux$
 		"${pkgname}.sh")
 
 if [[ "$CARCH" == 'x86_64' ]]; then
-   sha256sums=('19501eb4673eba497a2daf474d61dc09f2428d346ab37b2dd7b05830f6ab58b7'
-               '2052aec594118b6755c1e3b4489ba902da0c113a59e6a5b054614886776246b6')
+   sha256sums=('be522b629b2d5c77ec9d62f480db394c73975611c2af1b45ed903e99e23c6674'
+               '6ebc44dd63c16ccb07134f3a5223e3739e564753bcb96c32472a2772c8fc2c73')
 else
-   sha256sums=('b5cd1bab13a5f1713b111ac0e5a9b018e2faf20f2af9e5eb55e0aaaff2570191'
-               'a4e7b9a9d49af16b1b41408e5731a3e940371929d9a66869d0fcfd093dd7dbe3')
+   sha256sums=('607949b2cf942af0e0d59b5154d5157f8ea6b781c76f90a1480bf3f946b36dcc'
+               'd804c7ab3ee18d34c87741e2f04541a408a9d7f12425615a47a5dc4561922546')
 fi
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
 			'17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
