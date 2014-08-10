@@ -1,0 +1,16 @@
+pkgbase = fala
+	pkgdesc = Fala - A simple text reader
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://sourceforge.net/projects/fala/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = festival
+	depends = pygtk
+	source = http://downloads.sourceforge.net/project/fala/fala/0.1/fala_0.1-1.tar.gz
+	md5sums = dd5fc2c786c524b984a6185e000178bf
+
+pkgname = fala
+
