@@ -1,7 +1,7 @@
 pkgbase = htmldoc
 	pkgdesc = Produce PDF or Postscript from HTML documents including TOCs and Indices
-	pkgver = 1.8.27
-	pkgrel = 4
+	pkgver = 1.8.28
+	pkgrel = 1
 	url = http://www.htmldoc.org
 	install = htmldoc.install
 	changelog = Changelog
@@ -14,18 +14,10 @@ pkgbase = htmldoc
 	depends = openssl
 	depends = shared-mime-info
 	conflicts = htmldoc-svn
-	source = http://www.msweet.org/files/project1/htmldoc-1.8.27-source.tar.gz
-	source = cve-2009-3050.patch
-	source = fortify-fail.patch
-	source = libpng15.patch
-	source = manpage-fixes.patch
-	source = useful-build-info.patch
-	sha256sums = 64f6d9f40f00f9cc68df6508123e88ed30fef924881fd28dca45358ecd79d320
-	sha256sums = a742b1d66d0832ee8aa5ea8e854a31eb2c6e3417d196f8c2ecfac411bfaef6c1
-	sha256sums = d8d5a5d9ebf5225a32b4f00d80e89a5576122d8c70c5ef60f36c3717c3770746
-	sha256sums = 69a08e3f349b518081109c47b38672f9c8a19a1957b614d7eac8e420fe3bc817
-	sha256sums = df92c446af6c4d7aef9b69c70e62a31cd992dc8a04f13734bedb1d83257f0e5a
-	sha256sums = e3494c1cb21dc7daf8774f60060e4fb67d85d563ff294fcf81656718018021e5
+	source = http://www.msweet.org/files/project1/htmldoc-1.8.28-source.tar.gz
+	source = errno.patch
+	md5sums = 1c2f379e4535734ececd59d6629b4d2d
+	md5sums = 2f48488fd485f2583e02b519d6cef553
 
 pkgname = htmldoc
 
