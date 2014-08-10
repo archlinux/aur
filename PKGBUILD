@@ -22,7 +22,7 @@ build() {
   ./autogen.sh
 
   ./configure --prefix=/usr --bindir=/usr/bin --sysconfdir=/etc \
-    --mandir=/usr/share/man
+    --mandir=/usr/share/man --enable-simd=sse2
 
   make
 }
