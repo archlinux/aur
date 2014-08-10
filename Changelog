@@ -1,0 +1,24 @@
+2013-09-17  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	1.8.27-4:
+	* remove htmldoc.ps - it saves us a LOT of space (~150M)
+
+2013-08-27  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	1.8.27-3:
+	* merged htmldoc and htmldoc-patched
+	* surrounded paths with variables with quotation marks
+
+2013-06-17  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	1.8.27-2:
+	* new maintainer
+	* updated PKGBUILD
+	* included patches from Debian and one from Fedora
+	* added documentation
+	* added mime file
+	* fixed dependencies
+	* changed the way icons are installed
+	* added .install file updateing mime,desktop,icons
+	* added Changelog
+
