@@ -3,16 +3,16 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=3.0.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/user_guide/installation__requirements.html
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
-         'intel-tbb>=3.0' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre-1.8' 'protobuf>=2.3.0' 'qt4' 'sdformat'
+         'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
+         'ogre-1.8' 'protobuf>=2.3.0' 'qt4' 'sdformat>=2.0.1'
          'tinyxml>=2.6.2')
 optdepends=('bullet>=2.82: Bullet support'
             'simbody>=3.3: simbody support'
@@ -23,14 +23,15 @@ optdepends=('bullet>=2.82: Bullet support'
             'gdal: digital elevation terrains support')
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="${pkgname}.install"
-source=(http://gazebosim.org/assets/distributions/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('c90e962c91494bdb5283873fa15e6d82')
+source=(http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('65a3599321f76006518dafb1630b5b40')
 provides=('gazebo')
 conflicts=('gazebo')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  # Fix gdal includes
   find . -type f -exec sed -i 's|include <gdal/|include <|g' {} \;
 
   # Create build directory
@@ -39,7 +40,8 @@ build() {
   # Adapt paths for Ogre 1.8
   export PKG_CONFIG_PATH="/opt/OGRE-1.8/lib/pkgconfig:$PKG_CONFIG_PATH"
 
-  # Run CMake. We skip unit tests.
+  # Run CMake
+  # Note: we skip unit tests (else set to TRUE)
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX=/usr \
            -DENABLE_TESTS_COMPILATION:BOOL=False
@@ -50,11 +52,13 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
+
+  # Install Gazebo
   make DESTDIR="${pkgdir}" install
 
   # Add paths for OGRE-1.8
   echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo/setup.sh
-  echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo-3.0/setup.sh
+  echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/OGRE-1.8/lib" >> ${pkgdir}/usr/share/gazebo-4.0/setup.sh
 }
 
 # vim:set ts=2 sw=2 et:

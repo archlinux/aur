@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -15,13 +15,14 @@ pkgbase = gazebo
 	depends = freeglut
 	depends = freeimage>=3.0
 	depends = intel-tbb>=3.0
+	depends = libccd>=1.4
 	depends = libltdl>=2.4.2
 	depends = libtar>=1.2
 	depends = libxml2>=2.7.7
 	depends = ogre-1.8
 	depends = protobuf>=2.3.0
 	depends = qt4
-	depends = sdformat
+	depends = sdformat>=2.0.1
 	depends = tinyxml>=2.6.2
 	optdepends = bullet>=2.82: Bullet support
 	optdepends = simbody>=3.3: simbody support
@@ -32,8 +33,8 @@ pkgbase = gazebo
 	optdepends = gdal: digital elevation terrains support
 	provides = gazebo
 	conflicts = gazebo
-	source = http://gazebosim.org/assets/distributions/gazebo-3.0.0.tar.bz2
-	md5sums = c90e962c91494bdb5283873fa15e6d82
+	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-4.0.0.tar.bz2
+	md5sums = 65a3599321f76006518dafb1630b5b40
 
 pkgname = gazebo
 
