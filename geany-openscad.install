@@ -15,7 +15,7 @@ post_install() {
                         sort -f`"
         local after="`sed "1,/^\[${heading}]/d;1,/^\s*$/d" "${file}"`"
 
-        echo "${before}" "${section}" $'\n' $'\n' "${after}" > "${file}"
+        echo -e "${before}\n${section}\n\n${after}" > "${file}"
     else
         sed -i "s/^\(${key}=.*;\)/\1${value};/" "${file}"
     fi
