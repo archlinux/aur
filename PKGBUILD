@@ -1,8 +1,8 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libmp3splt
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1a
+pkgrel=1
 pkgdesc="Library for splitting mp3 and ogg files without decoding"
 arch=('i686' 'x86_64')
 url="http://mp3splt.sourceforge.net"
@@ -27,4 +27,4 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir/ install
 }
-md5sums=('b9b9677ababf823e0739e5caff68aa86')
+md5sums=('a8b0de4de80d915fa02ab9bed890d6be')
