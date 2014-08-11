@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=cfr
-pkgver=0_82
+pkgver=0_85
 pkgrel=1
 pkgdesc='Another Java decompiler'
 arch=('any')
