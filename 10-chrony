@@ -8,7 +8,7 @@ CHRONY=/usr/bin/chronyc
 CONFIG=/etc/chrony.conf
 KEYFILE=`grep ^keyfile $CONFIG | sed 's/[^ ]* //' -`
 COMMANDKEY=`grep ^commandkey $CONFIG | sed 's/[^ ]* //' -`
-PASSWORD=`grep ^$COMMANDKEY $KEYFILE | sed 's/[^ ]* //' -`
+PASSWORD=`grep ^$COMMANDKEY $KEYFILE | sed 's/.*[^ ] //' -`
 
 chrony_cmd() {
 	echo Chrony going $1.
