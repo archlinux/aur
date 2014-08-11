@@ -2,7 +2,7 @@
 
 pkgname=slim-xdm
 _pkgname=slim
-pkgver=1.3.6.25
+pkgver=1.3.6.27
 pkgrel=1
 pkgdesc="Desktop-independent graphical login manager for X11 with XDM support"
 arch=('i686' 'x86_64')
