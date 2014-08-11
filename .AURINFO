@@ -1,6 +1,6 @@
 pkgbase = slim-xdm
 	pkgdesc = Desktop-independent graphical login manager for X11 with XDM support
-	pkgver = 1.3.6.28
+	pkgver = 1.3.6.29
 	pkgrel = 1
 	url = https://github.com/bbidulock/slim
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = slim-xdm
 	depends = libxft
 	depends = libxrandr
 	depends = xorg-xauth
-	provides = slim=1.3.6.28
+	provides = slim=1.3.6.29
 	conflicts = slim
 	source = slim-xdm::git://github.com/bbidulock/slim.git
 	backup = etc/slim.conf
