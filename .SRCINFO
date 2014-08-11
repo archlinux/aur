@@ -1,6 +1,6 @@
 pkgbase = sdformat
 	pkgdesc = SDF Converter for gazebo
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://gazebosim.org/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = sdformat
 	makedepends = doxygen
 	depends = boost
 	depends = tinyxml
-	source = https://bitbucket.org/osrf/sdformat/get/sdformat_2.0.0.tar.bz2
-	md5sums = d3b98b2296f3f234019c551af6a27bf9
+	source = https://bitbucket.org/osrf/sdformat/get/sdformat2_2.0.1.tar.bz2
+	md5sums = a29ee0a99f0e9b9a55ffd3b976b26b0a
 
 pkgname = sdformat
 

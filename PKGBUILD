@@ -1,5 +1,5 @@
 pkgname=sdformat
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
@@ -8,9 +8,9 @@ license=('Apache')
 depends=('boost' 'tinyxml')
 makedepends=('cmake' 'doxygen')
 
-_commit=a5ee0244239d
-source=("https://bitbucket.org/osrf/${pkgname}/get/${pkgname}_${pkgver}.tar.bz2")
-md5sums=(d3b98b2296f3f234019c551af6a27bf9)
+_commit=d79259b26096
+source=("https://bitbucket.org/osrf/${pkgname}/get/${pkgname}2_${pkgver}.tar.bz2")
+md5sums=(a29ee0a99f0e9b9a55ffd3b976b26b0a)
 
 build() {
   cd "${srcdir}/osrf-${pkgname}-${_commit}"
