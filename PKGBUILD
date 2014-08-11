@@ -10,7 +10,7 @@ depends=('java-runtime')
 source=("http://www.benf.org/other/cfr/cfr_${pkgver}.jar"
         'cfr' 'LICENSE')
 noextract=("cfr_${pkgver}.jar")
-md5sums=('136d662ed74431e6247e7a4457578626'
+md5sums=('349504f5029a5ade58a56b756ff3c04e'
          'd0f7cff1f51f2b25139e4855bf0520ee'
          '023543479a311ba82f63192d82d4ef92')
 
