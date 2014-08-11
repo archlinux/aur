@@ -1,0 +1,11 @@
+pkgbase = vncproto
+	pkgdesc = X11 extention protocol headers for the VNC extension
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/bbidulock/vncproto
+	arch = any
+	license = GPL
+	source = https://github.com/bbidulock/vncproto/releases/download/vncproto-1.1/vncproto-1.1.tar.bz2
+
+pkgname = vncproto
+
