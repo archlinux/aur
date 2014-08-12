@@ -11,6 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 
 source=(https://github.com/frewsxcv/python-geojson/archive/$pkgver.tar.gz)
+
 md5sums=('60f01b2c00bdb7e1eabee67dbb7cfd32')
 
 package() {
