@@ -12,6 +12,7 @@ depends=('python')
 conflicts=('python-pafy')
 
 source=('git+https://github.com/np1/pafy.git')
+
 md5sums=('SKIP')
 
 pkgver() {
