@@ -1,7 +1,7 @@
 # Maintainer: Max Bruckner
 pkgname=easyhg
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple user interface for the Mercurial distributed version contol system."
 arch=('i686' 'x86_64')
 url="http://easyhg.org"
@@ -13,8 +13,8 @@ optdepends=('pyqt: authentication extension'
 source=("https://code.soundsoftware.ac.uk/attachments/download/639/EasyMercurial-$pkgver-src.tar.gz"
     easyhg.desktop
 )
-md5sums=('728858917b2b121e2ee7ce160ff4151f'
-         'd4362bd25f61606a67bbe27bbfacbeeb')
+sha512sums=('abb1eff1b5e0427006d6bdbf6d9d2b8ffde4b5095d8606b12b49c4aa2d4203a4eec230c2cdda7211077d14bd128374a7a116b51c2699fc6f05c456108f4772ae'
+            'a26479bbb83f85874f057889a42d6aea1f4998b1f79c2b817bcc8ab10cbe6d93e1798f05b3724c85a3b2c60793d33d62df8db2af5c6010c38e1b8a6314528f2e')
 
 build() {
   cd "$srcdir/EasyMercurial-$pkgver-src"
