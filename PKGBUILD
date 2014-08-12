@@ -14,10 +14,10 @@ provides=('urxvt-tabbedex')
 conflicts=('urxvt-tabbedex')
 
 install=urxvt-tabbedex-git.install
-
 source=('git+https://github.com/stepb/urxvt-tabbedex.git'
         '0001-make-urxvt-tabbedex-work-with-perl-5.18.patch'
         'urxvt-tabbedex-git.install')
+
 md5sums=('SKIP'
          '92d581a40779da3127c88fdc7d10257f'
          '6ea57fa7db9cc912b3759f1ef8c064b0')
