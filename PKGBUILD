@@ -14,8 +14,8 @@ optdepends=('mpv: Alternative to mplayer for playback'
 conflicts=('mps-youtube')
 
 install=mps-youtube-git.install
-
 source=('git+https://github.com/np1/mps-youtube.git')
+
 md5sums=('SKIP')
 
 pkgver() {
