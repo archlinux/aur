@@ -8,6 +8,7 @@ arch=('any')
 license=('GPL')
 
 source=("http://tlundqvist.org/sv_dvorak/drivers/dvorak-se.map")
+
 md5sums=('722e35f7fcbe5e066e51d2971ab21745')
 
 package() {
