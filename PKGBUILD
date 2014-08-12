@@ -4,11 +4,11 @@
 _gitname=httpie-oauth
 pkgname=python-httpie-oauth
 pkgver=5.6cf6ed4
-pkgrel=1
+pkgrel=2
 pkgdesc="OAuth plugin for httpie"
 url="https://github.com/jakubroztocil/httpie-oauth"
 source=(git://github.com/jakubroztocil/httpie-oauth.git)
-depends=(python-oauthlib)
+depends=(python-oauthlib python-requests-oauthlib)
 makedepends=(python-distribute git)
 md5sums=('SKIP')
 license=('BSD')
