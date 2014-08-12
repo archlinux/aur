@@ -4,8 +4,8 @@
 # muflax <muflax@gmail.com>
 
 pkgname=mdk
-pkgver=1.2.7
-pkgrel=2
+pkgver=1.2.8
+pkgrel=1
 pkgdesc="An emulation of Donald Knuth's mythical MIX computer."
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/mdk/mdk.html'
@@ -15,7 +15,7 @@ optdepends=('guile')
 makedepends=('intltool' 'glib2' 'texinfo')
 install=mdk.install
 source=("http://ftp.gnu.org/gnu/mdk/v${pkgver}/mdk-${pkgver}.tar.gz")
-md5sums=('ab5ceb4363958261fd5e0614c9c11701')
+md5sums=('86057f1b05c7673ee000d7b15231f5a6')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
