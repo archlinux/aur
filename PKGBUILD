@@ -17,9 +17,9 @@ provides=('pcmanfm')
 conflicts=('pcmanfm')
 
 install=pcmanfm.install
-
 source=('git://git.lxde.org/git/lxde/pcmanfm'
         pcmanfm.install)
+
 md5sums=('SKIP'
          'fc9ea2af71f55f32c8b22bf5ea879e69')
 
