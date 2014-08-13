@@ -5,9 +5,9 @@
 
 pkgname=imapfilter
 pkgver=2.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A mail filtering utility for processing IMAP mailboxes"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/lefcha/imapfilter"
 license=('MIT')
 depends=('lua' 'pcre' 'openssl')
