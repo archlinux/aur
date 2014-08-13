@@ -18,12 +18,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'compal-laptop-hwmon-fix.patch'
         )
 sha256sums=('4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0'
-            '487dc1fd428b5793f4f5216fd76bd3640b12c50ea52c6fb909da24baf3612d9b'
-            '1db5856f6c29380e828e3026a0ed8c344f0386fde83f03bf27ecb8fd6880ff32'
+            '060a07957201a04faa98b13e99a260c326c76660cb0dc7a724f644dabfae9eff'
+            'f519556d8272e0be3064a255adf0b3533dbcdab24f02426786a7d9366ae1f82e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'f36f61a0a72bcb0a9c04264343503bfbf927c9ea0db819e66734a3933b060588')
 
 _kernelname=${pkgbase#linux}
 
@@ -40,6 +42,9 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # #41458 fix hwmon for compal-laptop module
+  patch -p1 -i "${srcdir}/compal-laptop-hwmon-fix.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
