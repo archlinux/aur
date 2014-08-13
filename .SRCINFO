@@ -1,6 +1,6 @@
 pkgbase = python-rosdep
 	pkgdesc = Package manager abstraction tool for ROS.
-	pkgver = 0.10.28
+	pkgver = 0.10.30
 	pkgrel = 1
 	url = http://wiki.ros.org/rosdep
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-rosdep
 	depends = python
 	provides = python2-rosdep
 	conflicts = python2-rosdep
-	source = https://pypi.python.org/packages/source/r/rosdep/rosdep-0.10.28.tar.gz
-	md5sums = 353fa206c60e6b6703da3b74f0724132
+	source = https://pypi.python.org/packages/source/r/rosdep/rosdep-0.10.30.tar.gz
+	md5sums = 94193044ca2aa4be78e6826598d48fba
 
 pkgname = python-rosdep
 
