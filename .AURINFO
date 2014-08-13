@@ -1,12 +1,12 @@
 pkgbase = libxvnc
 	pkgdesc = X11 extention protocol library for the VNC extension
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/libxvnc
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = vncproto
+	depends = vncproto
 	depends = libxext
 	source = https://github.com/bbidulock/libxvnc/releases/download/libxvnc-1.1/libXvnc-1.1.tar.bz2
 
