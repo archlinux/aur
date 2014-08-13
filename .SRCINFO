@@ -1,0 +1,16 @@
+pkgbase = geany-snippets
+	pkgdesc = Snippets for Geany
+	pkgver = 1
+	pkgrel = 5
+	url = http://www.geany.org/Download/Extras#snippets
+	install = geany-snippets.install
+	arch = any
+	license = GPL
+	depends = geany
+	source = http://lara.craft.net.br/snippets.conf
+	source = geany-snippets.install
+	md5sums = e6c32d7cb454deffe86cb32f62840f34
+	md5sums = 2011316bb069109d9fc3dbcfb784a73f
+
+pkgname = geany-snippets
+

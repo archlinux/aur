@@ -1,0 +1,8 @@
+post_install() {
+	echo "Snippets installed on /usr/share/geany/snippets.conf.new"
+	echo "To use, rename snippets.conf.new to snippets.conf"
+}
+
+post_upgrade() {
+	post_install
+}
