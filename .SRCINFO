@@ -1,6 +1,6 @@
 pkgbase = python2-pyassimp
 	pkgdesc = Portable Open Source library to import various well-known 3D model formats in an uniform manner. Python bindings.
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://assimp.sourceforge.net/index.html
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python2-pyassimp
 	license = BSD
 	depends = assimp
 	depends = python2
-	source = https://github.com/assimp/assimp/archive/v3.1.tar.gz
-	md5sums = b2d382a5fb15f247d0d8c8afd5744f5e
+	source = https://github.com/assimp/assimp/archive/v3.1.1.tar.gz
+	md5sums = ab9977edf95e9b2910d7cca286926e85
 
 pkgname = python2-pyassimp
 
