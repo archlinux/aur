@@ -1,8 +1,8 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 # Based on package by Jelle van der Waa <jelle vdwaa nl>.
 pkgname=networkmanager-dispatcher-chrony
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Dispatcher Script for chrony"
 arch=(any)
 license=('BSD')
@@ -11,7 +11,7 @@ depends=('networkmanager' 'chrony')
 backup=(etc/NetworkManager/dispatcher.d/10-chrony)
 changelog=ChangeLog
 source=("10-chrony")
-sha256sums=('2d6d9a47d19cd26255afc1d5bd8699ba8d21f4184d4ab919ae5e3d4bc9545e13')
+sha256sums=('cb05a26a79f7830850ad1a7cb54e24c765acadfe6297fb8b803b1c223ef3a224')
 
 package() {
   install -Dm700 $srcdir/10-chrony $pkgdir/etc/NetworkManager/dispatcher.d/10-chrony
