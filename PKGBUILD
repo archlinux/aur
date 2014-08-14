@@ -3,13 +3,13 @@
 _pkgname=webui-aria2
 pkgname="$_pkgname-git"
 pkgver=r305.091fbb0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure HTML/CSS/JS frontend for aria2"
 arch=('any')
 url="https://github.com/ziahamza/webui-aria2"
 license=('MIT')
+depends=('aria2')
 optdepends=(
-    'aria2: download utility backend'
     'chromium: browser to access front end'
     'epiphany: browser to access front end'
     'firefox: browser to access front end'
@@ -18,16 +18,20 @@ optdepends=(
     'netsurf: browser to access front end'
     'opera: browser to access front end'
     'rekonq: browser to access front end'
+    'xdg-utils: launch main webui-aria2 web page.'
 )
 makedepends=('git')
+changelog=ChangeLog
 source=(
     "$pkgname"::"git+https://github.com/ziahamza/$_pkgname.git"
     aria2d.service
     $_pkgname
+    ChangeLog
 )
 md5sums=('SKIP'
          'e66a1b86f501ae22b41ab69d97a0c4ee'
-         'da1de4952903892fc0f0b00df1aebb5c')
+         'da1de4952903892fc0f0b00df1aebb5c'
+         '8a11be6666d3fb7fb830b1982a95cbdb')
 
 pkgver() {
     cd "$pkgname"
@@ -46,6 +50,8 @@ package() {
     # install package files
     install -dm755 "$pkgdir/usr/share"
     cp -R "$pkgname" "$pkgdir/usr/share/$_pkgname"
+    rm -rf "$pkgdir/usr/bin/$_pkgname/.gitignore"
+    rm -rf "$pkgdir/usr/bin/$_pkgname/screenshots"
     find "$pkgdir/usr/share/" -type f -exec chmod 0644 {} +
     find "$pkgdir/usr/share/" -type d -exec chmod 0755 {} +
 

@@ -1,0 +1,15 @@
+2014-08-14 James An <james@jamesan.ca>
+
+    * r305.091fbb0-2 :
+    removed .gitignore and screnshots from package.
+    added ChangeLog.
+    added xdg-utils as optional dependencies for shell script.
+    changed aria2 from optional to required dependency.
+
+2014-08-04 James An <james@jamesan.ca>
+
+    * r305.091fbb0-1 :
+    first version of this package.
+    added aria2 and various web browsers as optional depednencies.
+    added a systemd service unit to start aria2 as an RPC-enabled daemon.
+    Added shell script in /usr/bin to launch the main webui-aria2 URL in its default application.
