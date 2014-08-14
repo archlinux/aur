@@ -1,15 +1,24 @@
 pkgbase = geany-snippets
 	pkgdesc = Snippets for Geany
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.geany.org/Download/Extras#snippets
 	install = geany-snippets.install
+	changelog = ChangeLog
 	arch = any
 	license = GPL
 	depends = geany
-	source = http://lara.craft.net.br/snippets.conf
+	source = ChangeLog
+	source = tcl.conf::http://advamacs.com/pub/snippets.conf
+	source = python.conf::http://download.geany.org/contrib/python_snippets.conf
+	source = htmlphp.conf::https://dl.dropboxusercontent.com/u/668529/conf/snippets.conf
+	source = latex.conf::http://download.geany.org/contrib/latex_snippets.conf
 	source = geany-snippets.install
+	md5sums = 7f3b01c191a525394508a1ecd33387e1
+	md5sums = 2703567c4b47e3c27404033034829ae7
+	md5sums = 0fd08ca51cbf862f3fb74c87ea455077
 	md5sums = e6c32d7cb454deffe86cb32f62840f34
+	md5sums = 2dce08133c30e6beca4b5a398dbb0676
 	md5sums = 2011316bb069109d9fc3dbcfb784a73f
 
 pkgname = geany-snippets

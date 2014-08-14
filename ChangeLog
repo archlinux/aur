@@ -1,0 +1,6 @@
+2014-08-13 James An <james@jamesan.ca>
+
+    * 1-6 :
+    new maintainer.
+    added ChangeLog.
+    replaced concatenation of source files with individual source files.
