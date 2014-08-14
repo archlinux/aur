@@ -4,7 +4,7 @@
 # SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
-pkgver=3.14.0
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="IP Routing Utilities with SELinux support"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 source=(http://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz
         iproute2-fhs.patch
 	unwanted-link-help.patch)
-sha1sums=('0b7d9db9e17da77a5bd8c2c75f6ddd607449ba3e'
+sha1sums=('82dce736488dac5af0f4b5659ae905fef87ed308'
           '35b8cf2dc94b73eccad427235c07596146cd6f6c'
           '3b1335f4025f657f388fbf4e5a740871e3129c2a')
 
