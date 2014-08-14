@@ -2,24 +2,16 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=ewebkit
-pkgver=1.11.0alpha1
+pkgver=1.11.0beta1
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'cairo' 'elementary' 'enchant' 'harfbuzz-icu' 'libsoup' 'libxslt' 'libxt')
+depends=('atk' 'elementary' 'enchant' 'harfbuzz-icu' 'libsoup' 'libxslt')
 makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf')
-source=("http://download.enlightenment.org/rel/libs/webkit-efl/$pkgname-1.11.0-alpha1.tar.xz"
-        '3e431a5bdd20c264a4636ddaa6b4d5a331020695.patch')
-sha256sums=('3392b1d2e8b9acd9e0461f8235c22fde42420ae4e6c964aa7ec33695d3ceb10c'
-            '2e1f0b7e9cd322a32c6d4464263f0ad2fd485871ba5417c41e53503edb60b4dd')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-
-  patch -Np1 < ../3e431a5bdd20c264a4636ddaa6b4d5a331020695.patch
-}
+source=("http://download.enlightenment.org/rel/libs/webkit-efl/$pkgname-1.11.0-beta1.tar.xz")
+sha256sums=('7d0545f79be3633973eb7340318552f80a213c5afddd2c3fee5ccd543cc0418d')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -34,7 +26,7 @@ build() {
   make
 }
 
-package_ewebkit() {
+package() {
   cd "$srcdir/$pkgname"
 
   make DESTDIR="$pkgdir" install
