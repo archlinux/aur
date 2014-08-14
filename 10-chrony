@@ -3,6 +3,9 @@
 INTERFACE=$1
 STATUS=$2
 
+# Make sure we're always getting the standard response strings
+LANG='C'
+
 # Chrony set-up
 CHRONY=/usr/bin/chronyc
 CONFIG=/etc/chrony.conf
