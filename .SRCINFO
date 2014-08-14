@@ -1,6 +1,6 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.24.2
+	pkgver = 2.25
 	pkgrel = 1
 	url = http://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
@@ -11,16 +11,18 @@ pkgbase = util-linux-selinux
 	makedepends = python
 	options = strip
 	options = debug
-	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.2.tar.xz
+	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.tar.xz
 	source = uuidd.tmpfiles
 	source = pam-login
 	source = pam-common
 	source = pam-su
-	md5sums = 3f191727a0d28f7204b755cf1b6ea0aa
+	source = 0001-fdisk-fix-l-device.patch
+	md5sums = 4c78fdef4cb882caafad61e33cafbc14
 	md5sums = a39554bfd65cccfd8254bb46922f4a67
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4
 	md5sums = fa85e5cce5d723275b14365ba71a8aad
+	md5sums = 93cf977a7abc6f30152295e2aef453fa
 
 pkgname = util-linux-selinux
 	install = util-linux.install
@@ -30,10 +32,10 @@ pkgname = util-linux-selinux
 	depends = libsystemd-selinux
 	depends = libutil-linux-selinux
 	optdepends = python: python bindings to libmount
-	provides = util-linux-ng=2.24.2
+	provides = util-linux-ng=2.25
 	provides = eject
-	provides = util-linux=2.24.2-
-	provides = selinux-util-linux=2.24.2-
+	provides = util-linux=2.25-
+	provides = selinux-util-linux=2.25-
 	conflicts = util-linux-ng
 	conflicts = eject
 	conflicts = util-linux
@@ -48,7 +50,8 @@ pkgname = libutil-linux-selinux
 	pkgdesc = util-linux-selinux runtime libraries
 	provides = libblkid.so
 	provides = libmount.so
+	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.24.2-
+	provides = libutil-linux=2.25-
 	conflicts = libutil-linux
 

@@ -8,7 +8,7 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-pkgver=2.24.2
+pkgver=2.25
 pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
@@ -20,19 +20,26 @@ groups=('selinux')
 #   provided by libsystemd (FS#39767).  To break this cycle, make
 #   util-linux-selinux depend on systemd at build time.
 makedepends=('systemd' 'python')
-# checkdepends=('bc')
 license=('GPL2')
 options=('strip' 'debug')
-source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.24/${pkgname/-selinux}-$pkgver.tar.xz"
+source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.25/${pkgname/-selinux}-$pkgver.tar.xz"
         uuidd.tmpfiles
         pam-login
         pam-common
-        pam-su)
-md5sums=('3f191727a0d28f7204b755cf1b6ea0aa'
+        pam-su
+        0001-fdisk-fix-l-device.patch)
+md5sums=('4c78fdef4cb882caafad61e33cafbc14'
          'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
-         'fa85e5cce5d723275b14365ba71a8aad')
+         'fa85e5cce5d723275b14365ba71a8aad'
+         '93cf977a7abc6f30152295e2aef453fa')
+
+prepare() {
+  cd "${pkgname/-selinux}-$pkgver"
+
+  patch -Np1 <"$srcdir"/0001-fdisk-fix-l-device.patch
+}
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
@@ -52,17 +59,8 @@ build() {
               --with-selinux \
               --with-python=3
 
-#              --enable-reset \ # part of ncurses
-#              --enable-last \ # not compat
-
   make
 }
-
-#check() {
-# fails for some reason in chroot, works outside
-#  make -C "${pkgname/-selinux}-$pkgver" check
-#}
-
 
 package_util-linux-selinux() {
   conflicts=('util-linux-ng' 'eject'
@@ -112,7 +110,7 @@ package_util-linux-selinux() {
 
 package_libutil-linux-selinux() {
   pkgdesc="util-linux-selinux runtime libraries"
-  provides=('libblkid.so' 'libmount.so' 'libuuid.so'
+  provides=('libblkid.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so'
             "${pkgname/-selinux}=${pkgver}-${pkrel}")
   conflicts=("${pkgname/-selinux}")
 
