@@ -1,5 +1,5 @@
 pkgbase = linux-selinux
-	pkgver = 3.15.5
+	pkgver = 3.16
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -12,20 +12,16 @@ pkgbase = linux-selinux
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.15.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.15.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.16.tar.xz
 	source = config
 	source = config.x86_64
 	source = linux-selinux.preset
 	source = change-default-console-loglevel.patch
-	source = 0013-efistub-fix.patch
-	sha256sums = c3927e87be4040fa8aca1b58663dc0776aaf00485604ff88a623be2f3fb07794
-	sha256sums = 9b0d000e0bdec7a25ee6303afdab8d2af77439995876eadd6ce248e5c954037d
-	sha256sums = 2ccda045312149bbb19ad6ebd3d4d5cf97f43a4eff30038d2c4f67fa57eee442
-	sha256sums = e40b95e6c41031cdb2da4ae77dc5f4bc8cc06407263d004ee49fef2e80909a21
+	sha256sums = 4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0
+	sha256sums = a8c670844bb42876df5e5ccb3a0ddfc506ce52095fa777130db0dfa56b71e727
+	sha256sums = 975e41b6ac7a003b8d4972cbbeb30125b3d166bd8ecd012189d33995f0daf20f
 	sha256sums = 375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9
-	sha256sums = faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182
-	sha256sums = 937dc895b4f5948381775a75bd198ed2f157a9f356da0ab5a5006f9f1dacde5c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-selinux
 

@@ -1,8 +1,8 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
-KERNEL_NAME=-selinux
-KERNEL_VERSION=3.15.5-1-selinux
+KERNEL_NAME=
+KERNEL_VERSION=
 
 post_install () {
   # updating module dependencies
