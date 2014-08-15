@@ -1,13 +1,14 @@
 pkgbase = sddm-futuristic-theme
 	pkgdesc = Futuristic Theme for SDDM
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://github.com/bchretien/sddm-futuristic-theme
+	install = sddm-futuristic-theme.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = sddm-qt5
+	depends = sddm>=0.9.0
 	source = sddm-futuristic-theme::git://github.com/bchretien/sddm-futuristic-theme.git#tag=v0.1
 	md5sums = SKIP
 
