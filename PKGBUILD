@@ -7,7 +7,7 @@
 
 pkgname=tengine-extra
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -45,7 +45,7 @@ build() {
         --conf-path=/etc/tengine/tengine.conf \
         --sbin-path=/usr/bin/tengine \
 	--dso-path=/etc/tengine/modules \
-	--dso-tool-path=/etc/tengine/sbin \
+	--dso-tool-path=/sbin/dso_tool \
         --pid-path=/run/tengine.pid \
         --lock-path=/run/lock/tengine.lock \
         --user=http \
