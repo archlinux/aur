@@ -13,6 +13,7 @@ pkgbase = ewebkit
 	makedepends = python2
 	makedepends = ruby
 	makedepends = gperf
+	makedepends = chrpath
 	depends = atk
 	depends = elementary
 	depends = enchant

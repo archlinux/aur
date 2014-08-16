@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'elementary' 'enchant' 'harfbuzz-icu' 'libsoup' 'libxslt')
-makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf')
+makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf' 'chrpath')
 source=("http://download.enlightenment.org/rel/libs/webkit-efl/$pkgname-1.11.0-beta1.tar.xz")
 sha256sums=('7d0545f79be3633973eb7340318552f80a213c5afddd2c3fee5ccd543cc0418d')
 
@@ -30,6 +30,8 @@ package() {
   cd "$srcdir/$pkgname"
 
   make DESTDIR="$pkgdir" install
+
+  chrpath --delete bin/MiniBrowser
   install -m755 bin/MiniBrowser "$pkgdir/usr/bin/MiniBrowser-ewk"
 
 # install license files
