@@ -1,0 +1,22 @@
+pkgbase = daphne-svn
+	pkgdesc = Command-line multiple arcade laserdisc emulator (development version)
+	pkgver = 4276
+	pkgrel = 1
+	url = http://daphne-emulator.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = glew
+	depends = libvorbis
+	depends = libgl
+	provides = daphne
+	conflicts = daphne
+	options = !buildflags
+	source = daphne.sh
+	sha256sums = 193553cd02a6d3e02c295a4ae2462ddb178819db3e155eaabae430355e1ba2b1
+
+pkgname = daphne-svn
+
