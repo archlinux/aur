@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
 depends=('atk' 'elementary' 'e_dbus' 'enchant' 'geoclue2' 'harfbuzz-icu' 'libxslt')
-makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
+makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf' 'chrpath')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname-Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools"
@@ -70,6 +70,8 @@ package() {
   cd "$srcdir"
 
   make DESTDIR="$pkgdir" install
+
+  chrpath --delete bin/MiniBrowser
   install -m755 bin/MiniBrowser "$pkgdir/usr/bin/MiniBrowser-ewk"
 
 # install license files
