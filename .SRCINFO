@@ -1,0 +1,21 @@
+pkgbase = catacombsdl
+	pkgdesc = SDL2 source port for Catacomb II / The Catacomb
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://github.com/Blzut3/CatacombSDL
+	install = catacombsdl.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl2
+	source = catacombsdl-1.03.tar.gz::https://github.com/Blzut3/CatacombSDL/archive/1.03.tar.gz
+	source = catacombsdl.sh
+	source = catacombsdl.desktop
+	source = catacombsdl.png
+	sha256sums = 8c77d2a82448e163c80971015ace425dabbe1831a647d6034d270dd6892343d8
+	sha256sums = c042d617739a3c63bf0696bda95d48cc34598592db091b832130f552726950dd
+	sha256sums = e0bda5ad8ed14469d5329283240c189f72a4beeed7e34fd82cb54604305f5664
+	sha256sums = b2b305edc0fa7c4e9f884987040ca20e4f2124719ffdb27ad322bc9257def67b
+
+pkgname = catacombsdl
+

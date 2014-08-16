@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "Remember you need the data files to play. Put all .CA2 files under '~/.catacombsdl',"
+  echo "all filenames are expected to be uppercase currently."
+}
+
+post_upgrade() {
+  post_install
+}

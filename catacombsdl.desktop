@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CatacombSDL
+Exec=catacombsdl windowed 800 600
+Icon=catacombsdl
+Type=Application
+Comment=SDL Port of 'The Catacomb' aka 'Catacomb II'
+Categories=Game;
+Terminal=false
