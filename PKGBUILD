@@ -4,7 +4,7 @@
 # Contributor: Bruno Carlin <self at aerdhyl dot eu>
 
 pkgname=python-setuptools_git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Setuptools revision control system plugin for Git"
 arch=(any)
@@ -12,7 +12,7 @@ url="http://pypi.python.org/pypi/setuptools-git"
 license=('BSD')
 depends=('python' 'python-setuptools' 'git')
 source=("http://pypi.python.org/packages/source/s/setuptools-git/setuptools-git-$pkgver.tar.gz")
-md5sums=('de63b541a10c2b83caa478c687458b16')
+md5sums=('7b5967e9527c789c3113b07a1f196f6e')
 
 package() {
   cd $srcdir/setuptools-git-$pkgver
