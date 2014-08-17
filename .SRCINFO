@@ -2,7 +2,7 @@
 # Fri Dec  4 11:56:09 UTC 2015
 pkgbase = xde-theme-airforce
 	pkgdesc = Airforce theme pack for XDE
-	pkgver = 1.1.8
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = http://www.unexicon.com/
 	arch = any
