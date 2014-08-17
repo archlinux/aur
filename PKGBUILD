@@ -1,7 +1,7 @@
 # Maintainer: Yaron de Leeuw <jdlmail at gmail >
 pkgname=python-isort
 _pkgname=isort
-pkgver=3.8.1
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="isort your python imports for you so you don't have to."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python python-pies python-natsort)
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha1sums=('fa02965cbbd9edc87239bd880f66b325e0e0152b')
+sha1sums=('342fb84146501a865779f39dfe38a9ded2e7a4ae')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
