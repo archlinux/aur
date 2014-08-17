@@ -1,9 +1,9 @@
-# Maintainer: Aaron Mueller <mail@aaron-mueller.de>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: J. W. Birdsong  <jwbirdsong AT gmail DOT com>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=worker
-pkgver=3.5.0rc1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.boomerangsworld.de/worker"
 depends=('avfs' 'gcc-libs' 'libx11' 'file')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('a1d2eee83ac6b21865e6e864e28dffd3')
+md5sums=('8fc1f261f9cf9b68e3f3c4e6b2e2d79e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
