@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="SR-71 Blackbird theme pack for XDE"
 pkgname=xde-theme-blackbirds
-pkgver=1.1.7
+pkgver=1.1.3
 pkgrel=1
 url="http://www.unexicon.com/"
 license=('CCPL:by-nc-nd')
