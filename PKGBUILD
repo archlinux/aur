@@ -3,7 +3,7 @@
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 pkgname=python-natsort
 _pkgname=natsort
-pkgver=3.2.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Natural sorting for python"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=(python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('f8fa83a534e7907f1f1a5e4efd0523f9')
+md5sums=('4744e3831ed1b62255cd9b0658ce109a')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
