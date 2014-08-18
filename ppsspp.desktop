@@ -2,7 +2,7 @@
 Name=PPSSPP
 GenericName=PSP Emulator
 Comment=Playstation Portable Emulator
-Exec=ppsspp-sdl %f
+Exec=PPSSPPSDL %f
 Terminal=false
 Type=Application
 Icon=ppsspp
