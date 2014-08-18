@@ -3,12 +3,12 @@
 
 pkgname=libebur128
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that implements the EBU R 128 standard for loudness normalisation."
 arch=('i686' 'x86_64')
 url="https://github.com/jiixyj/libebur128"
 license=('MIT')
-depends=('')
+depends=('speex')
 makedepends=('cmake')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/jiixyj/$pkgname/archive/v$pkgver.tar.gz"
