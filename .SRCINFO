@@ -1,26 +1,27 @@
 pkgbase = ciphershed-nogui-git
-	pkgdesc = Free encryption software for keeping your data secure and private (a fork of the now-discontinued TrueCrypt Project).
-	pkgver = 7.1a
+	pkgdesc = Free encryption software for keeping your data secure and private, a fork of the now-discontinued TrueCrypt Project (CLI)
+	pkgver = tc7.1a.r107.ge8529e9
 	pkgrel = 1
 	url = https://ciphershed.org/
 	arch = i686
 	arch = x86_64
-	license = custom:Truecrypt License 3.0
+	license = custom:truecrypt
 	makedepends = nasm
 	makedepends = git
 	depends = fuse>=2.8.0
-	depends = wxgtk2.8>=2.8.9
-	depends = libsm
 	depends = device-mapper
-	depends = p11-kit
 	optdepends = sudo: mounting encrypted volumes as nonroot users
 	conflicts = truecrypt
 	conflicts = truecrypt-utils,
+	conflicts = truecrypt-nogui,
 	conflicts = ciphershed,
 	conflicts = ciphershed-nogui
 	replaces = truecrypt
-	replaces = truecrypt-utils
+	replaces = truecrypt-utils,
+	replaces = truecrypt-nogui
 	source = git+https://github.com/CipherShed/CipherShed.git
+	source = https://github.com/wxWidgets/wxWidgets/archive/WX_2_8_12.tar.gz
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ciphershed-nogui-git
