@@ -1,0 +1,18 @@
+pkgbase = elbow-git
+	pkgdesc = EFL based browser
+	pkgver = r63.b41fd0b
+	pkgrel = 1
+	url = https://github.com/bunhere/elbow
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = elementary
+	depends = ewebkit
+	provides = elbow=r63.b41fd0b
+	conflicts = elbow
+	source = git://github.com/bunhere/elbow.git
+	sha256sums = SKIP
+
+pkgname = elbow-git
+
