@@ -1,0 +1,29 @@
+pkgbase = raine
+	pkgdesc = A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo
+	pkgver = 0.63.10
+	pkgrel = 2
+	url = http://rainemu.swishparty.co.uk
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = nasm
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_sound
+	depends = muparser
+	depends = glu
+	depends = mesa
+	optdepends = raine-artwork: additional background graphics for some games
+	optdepends = raine-emudx: improved graphic and sound files for some classic games
+	optdepends = arcade-history-dat: database with various information about the loaded rom
+	provides = neoraine
+	conflicts = neoraine
+	replaces = neoraine
+	options = emptydirs
+	source = raine-0.63.10.tar.gz::http://rainemu.swishparty.co.uk/cgi-bin/gitweb.cgi?p=raine;a=snapshot;h=a0375f2;sf=tgz
+	source = http://rainemu.swishparty.co.uk/html/archive/debian/dists/unstable/main/binary-i386/raine_0.63.10_i386.deb
+	sha256sums = c6f9accd06a843bebbcc7e5a34e0aad1c29ea102eaa46946eeedba2ca565a06a
+	sha256sums = e6b2f13bf47f241c316f65e8ee3eb9083df4f1a8bb4518885f18db0dbd4d82ca
+
+pkgname = raine
+
