@@ -17,12 +17,15 @@ depends=(
 source=(
     https://3ca168a01ea8d36f578893ffd5d45ba8daef8381.googledrive.com/host/0B0YvUuHHn3MnbFl6N0k1UXcwdVk/gam-3.21-python-src.zip
     fhs.patch
+    python2.patch
 )
 md5sums=('63f076b05051d3f85ae4aadfcc87733d'
-         '10752b2e864ba5791e9bf9f42c2759ef')
+         '10752b2e864ba5791e9bf9f42c2759ef'
+         'aa9621532ec5052a9569b7b5e1e1da4f')
 
 prepare() {
     patch -i fhs.patch
+    patch -i python2.patch
 }
 
 package() {
