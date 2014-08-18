@@ -3,7 +3,7 @@
 pkgname=(crispy-{doom,heretic,hexen,strife,common})
 _pkgname=${pkgname[0]}
 pkgdesc="Chocolate Doom with vanilla-compatible enhancements"
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
@@ -12,7 +12,7 @@ depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('autoconf' 'python')
 install=crispy-doom.install
 source=(https://github.com/fabiangreffrath/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('11c0e892d08427365d671602f3f96b06caa1b0eded40695782f8074edb01ff3c')
+sha256sums=('43f3f58266b1744a361df8678cf97a83839952a8dc0f5ecbfd68345abc90313a')
 
 build() {
   # GitHub's generated archive prefix kind of sucks.
@@ -40,8 +40,8 @@ package_crispy-common() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc man/man5
-  rm -rf applications/crispy-doom.desktop applications/screensavers \
-    icons/crispy-doom.png
+  rm -rf applications/crispy-{doom,heretic,hexen,strife}.desktop \
+    applications/screensavers
   cd man/man6
   rm -f crispy-{doom,heretic,hexen,strife}{,-setup}.6
   mv {chocolate,crispy}-server.6
@@ -49,7 +49,7 @@ package_crispy-common() {
 }
 
 package_crispy-doom() {
-  pkgdesc="Doom port accurately reproducing the original v1.9 EXEs."
+  pkgdesc="Doom port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
 
   cd "${_pkgname}-${pkgver}"
@@ -61,14 +61,14 @@ package_crispy-doom() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{heretic,hexen,strife}
-  rm -f applications/crispy-setup.desktop icons/crispy-setup.png
+  rm -rf applications/crispy-{setup,heretic,hexen,strife}.desktop icons
   rm -rf man/man5
   rm -f man/man?/crispy-{heretic,hexen,strife,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
 }
 
 package_crispy-heretic() {
-  pkgdesc="Heretic port accurately reproducing the original v1.3 EXE."
+  pkgdesc="Heretic port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
 
   cd "${_pkgname}-${pkgver}"
@@ -80,14 +80,15 @@ package_crispy-heretic() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{doom,hexen,strife}
-  rm -rf applications icons
+  rm -rf applications/crispy-{setup,doom,hexen,strife}.desktop \
+    applications/screensavers icons
   rm -rf man/man5
   rm -f man/man?/crispy-{doom,hexen,strife,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
 }
 
 package_crispy-hexen() {
-  pkgdesc="Hexen port accurately reproducing the original v1.1 EXE."
+  pkgdesc="Hexen port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
 
   cd "${_pkgname}-${pkgver}"
@@ -99,14 +100,15 @@ package_crispy-hexen() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{doom,heretic,strife}
-  rm -rf applications icons
+  rm -rf applications/crispy-{setup,doom,heretic,strife}.desktop \
+    applications/screensavers icons
   rm -rf man/man5
   rm -f man/man?/crispy-{doom,heretic,strife,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
 }
 
 package_crispy-strife() {
-  pkgdesc="Strife port accurately reproducing the original v1.31 EXE."
+  pkgdesc="Strife port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
 
   cd "${_pkgname}-${pkgver}"
@@ -118,7 +120,8 @@ package_crispy-strife() {
 
   cd "${pkgdir}"/usr/share
   rm -rf doc/crispy-{doom,heretic,hexen}
-  rm -rf applications icons
+  rm -rf applications/crispy-{setup,doom,heretic,hexen}.desktop \
+    applications/screensavers icons
   rm -rf man/man5
   rm -f man/man?/crispy-{doom,heretic,hexen,setup,server}* \
     man/man6/chocolate* man/man6/*-setup.6
