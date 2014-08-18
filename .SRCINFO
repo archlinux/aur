@@ -1,11 +1,13 @@
 pkgbase = libogc
 	pkgdesc = Library for Nintendo Gamecube/Wii homebrew development
 	pkgver = 1.8.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.devkitpro.org
 	arch = any
 	license = custom
 	depends = devkitppc
+	optdepends = libfat-ogc: fat filesystem access from homebrew
+	optdepends = devkitppc-portlibs: various ported libraries for homebrew use
 	noextract = wii-examples-20110620.tar.bz2
 	noextract = gamecube-examples-20110620.tar.bz2
 	options = !strip
