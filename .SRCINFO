@@ -1,0 +1,16 @@
+pkgbase = lib32-muparser
+	pkgdesc = Fast math parser library (32 bit)
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://muparser.sourceforge.net
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = gcc-libs-multilib
+	depends = muparser
+	options = !makeflags
+	source = http://downloads.sourceforge.net/muparser/muparser_v2_2_3.zip
+	sha256sums = dfe831b69392ab0b1eb59d3601b7b1575554a85057cf2f234f64f930c4148902
+
+pkgname = lib32-muparser
+
