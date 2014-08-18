@@ -1,0 +1,369 @@
+--- gam.py	2014-08-18 04:03:28.459709665 -0400
++++ gam.py	2014-08-18 04:10:08.773170211 -0400
+@@ -139,31 +139,30 @@
+ 
+ '''
+ 
++def getEtcPath():
++  return /etc/google-apps-manager/
++def getFlagPath():
++  return getEtcPath()/flags/
++def getCachePath():
++  return /var/cache/google-apps-manager
+ def getGamPath():
+-  is_frozen = getattr(sys, 'frozen', '')
+-  if is_frozen == 'console_exe':
+-    return os.path.dirname(sys.executable)+'\\'
+-  if os.name == 'windows' or os.name == 'nt':
+-    divider = '\\'
+-  else:
+-    divider = '/'
+-  return os.path.dirname(os.path.realpath(sys.argv[0]))+divider
++  return /usr/share/google-apps-manager/
+ 
+ def doGAMVersion():
+   import struct
+-  print u'Dito GAM %s\n%s\nPython %s.%s.%s %s-bit %s\ngoogle-api-python-client %s\n%s %s\nPath: %s' % (__version__, __author__,
++  print u'Dito GAM %s\n%s\nPython %s.%s.%s %s-bit %s\ngoogle-api-python-client %s\n%s %s' % (__version__, __author__,
+                    sys.version_info[0], sys.version_info[1], sys.version_info[2], struct.calcsize('P')*8, sys.version_info[3], apiclient.__version__,
+-                   platform.platform(), platform.machine(), getGamPath())
++                   platform.platform(), platform.machine())
+ 
+ def doGAMCheckForUpdates():
+   import urllib2
+-  if os.path.isfile(getGamPath()+'noupdatecheck.txt'): return
++  if os.path.isfile(getFlagPath()+'noupdatecheck.txt'): return
+   try:
+     current_version = float(__version__)
+   except ValueError:
+     return
+-  if os.path.isfile(getGamPath()+'lastupdatecheck.txt'):
+-    f = open(getGamPath()+'lastupdatecheck.txt', 'r')
++  if os.path.isfile(getEtcPath()+'lastupdatecheck.txt'):
++    f = open(getEtcPath()+'lastupdatecheck.txt', 'r')
+     last_check_time = int(f.readline())
+     f.close()
+   else:
+@@ -178,20 +177,20 @@
+     except ValueError:
+       return
+     if latest_version <= current_version:
+-      f = open(getGamPath()+u'lastupdatecheck.txt', 'w')
++      f = open(getEtcPath()+u'lastupdatecheck.txt', 'w')
+       f.write(str(now_time))
+       f.close()
+       return
+     a = urllib2.urlopen(u'https://gam-update.appspot.com/latest-version-announcement.txt?v=%s')
+     announcement = a.read()
+     sys.stderr.write(announcement)
+-    visit_gam = raw_input(u"\n\nHit Y to visit the GAM website and download the latest release. Hit Enter to just continue with this boring old version. GAM won't bother you with this announcemnt for 1 week or you can create a file named noupdatecheck.txt in the same location as gam.py or gam.exe and GAM won't ever check for updates: ")
++    visit_gam = raw_input(u"\n\nHit Y to visit the GAM website and download the latest release. Hit Enter to just continue with this boring old version. GAM won't bother you with this announcemnt for 1 week or you can create /etc/google-apps-manager/noupdatecheck.txt and GAM won't ever check for updates: ")
+     if visit_gam.lower() == u'y':
+       import webbrowser
+       webbrowser.open(u'http://google-apps-manager.googlecode.com')
+       print u'GAM is now exiting so that you can overwrite this old version with the latest release'
+       sys.exit(0)
+-    f = open(getGamPath()+u'lastupdatecheck.txt', 'w')
++    f = open(getEtcPath()+u'lastupdatecheck.txt', 'w')
+     f.write(str(now_time))
+     f.close()
+   except urllib2.HTTPError:
+@@ -205,7 +204,7 @@
+                    sys.version_info[0], sys.version_info[1], sys.version_info[2], sys.version_info[3],
+                    platform.platform(), platform.machine())
+   #Show debugging output if debug.gam exists
+-  if os.path.isfile(getGamPath()+u'debug.gam'):
++  if os.path.isfile(getFlagPath()+u'debug.gam'):
+     appsObj.debug = True
+   return appsObj
+ 
+@@ -313,9 +312,9 @@
+   import gdata.apps.service
+   global domain
+   global customerId
+-  oauth2file = getGamPath()+u'oauth2.txt'
++  oauth2file = getEtcPath()+u'oauth2.txt'
+   try:
+-    oauth2file = getGamPath()+os.environ[u'OAUTHFILE']
++    oauth2file = os.environ[u'OAUTHFILE']
+   except KeyError:
+     pass
+   storage = oauth2client.file.Storage(oauth2file)
+@@ -325,9 +324,9 @@
+     credentials = storage.get()
+   if credentials.access_token_expired:
+     disable_ssl_certificate_validation = False
+-    if os.path.isfile(getGamPath()+u'noverifyssl.txt'):
++    if os.path.isfile(getFlagPath()+u'noverifyssl.txt'):
+       disable_ssl_certificate_validation = True
+-    credentials.refresh(httplib2.Http(ca_certs=getGamPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation))
++    credentials.refresh(httplib2.Http(ca_certs=getEtcPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation))
+   gdataObject.additional_headers = {u'Authorization': u'Bearer %s' % credentials.access_token}
+   try:
+     domain = os.environ[u'GA_DOMAIN'].lower()
+@@ -399,9 +398,9 @@
+         if n > 3: sys.stderr.write(u'attempt %s/%s\n' % (n+1, retries))
+         continue
+       '''if reason == 'insufficientPermissions':
+-        oauth2file = getGamPath()+'oauth2.txt'
++        oauth2file = getEtcath()+'oauth2.txt'
+         try:
+-          oauth2file = getGamPath()+os.environ['OAUTHFILE']
++          oauth2file = os.environ['OAUTHFILE']
+         except KeyError:
+           pass
+         doRequestOAuth(incremental_auth=True)
+@@ -420,7 +419,7 @@
+       sys.stderr.write(u'Error: Authentication Token Error - %s' % e)
+       sys.exit(403)
+     except httplib2.CertificateValidationUnsupported:
+-      print u'\nError: You don\'t have the Python ssl module installed so we can\'t verify SSL Certificates.\n\nYou can fix this by installing the Python SSL module or you can live on dangerously and turn SSL validation off by creating a file called noverifyssl.txt in the same location as gam.exe / gam.py'
++      print u'\nError: You don\'t have the Python ssl module installed so we can\'t verify SSL Certificates.\n\nYou can fix this by installing the Python SSL module or you can live on dangerously and turn SSL validation off by creating /etc/google-apps-manager/noverifyssl.txt'
+       sys.exit(8)
+     except TypeError, e:
+       print u'Error: %s' % e
+@@ -502,9 +501,9 @@
+ 
+ def buildGAPIObject(api):
+   global domain, customerId, prettyPrint
+-  oauth2file = getGamPath()+u'oauth2.txt'
++  oauth2file = getEtcPath()+u'oauth2.txt'
+   try:
+-    oauth2file = getGamPath()+os.environ[u'OAUTHFILE']
++    oauth2file = os.environ[u'OAUTHFILE']
+   except KeyError:
+     pass
+   storage = oauth2client.file.Storage(oauth2file)
+@@ -516,13 +515,13 @@
+                    sys.version_info[0], sys.version_info[1], sys.version_info[2], sys.version_info[3],
+                    platform.platform(), platform.machine())
+   disable_ssl_certificate_validation = False
+-  if os.path.isfile(getGamPath()+u'noverifyssl.txt'):
++  if os.path.isfile(getFlagPath()+u'noverifyssl.txt'):
+     disable_ssl_certificate_validation = True
+   cache = None
+-  if not os.path.isfile(getGamPath()+u'nocache.txt'):
+-    cache = u'%sgamcache' % getGamPath()
+-  http = httplib2.Http(ca_certs=getGamPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation, cache=cache)
+-  if os.path.isfile(getGamPath()+u'debug.gam'):
++  if not os.path.isfile(getFlagPath()+u'nocache.txt'):
++    cache = getCachePath()
++  http = httplib2.Http(ca_certs=getEtcPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation, cache=cache)
++  if os.path.isfile(getFlagPath()+u'debug.gam'):
+     httplib2.debuglevel = 4
+     prettyPrint = True
+   else:
+@@ -534,7 +533,7 @@
+   try:
+     service = apiclient.discovery.build(api, version, http=http)
+   except apiclient.errors.UnknownApiNameOrVersion:
+-    disc_file = getGamPath()+u'%s-%s.json' % (api, version)
++    disc_file = getEtcPath()+u'%s-%s.json' % (api, version)
+     if os.path.isfile(disc_file):
+       f = file(disc_file, 'rb')
+       discovery = f.read()
+@@ -543,7 +542,7 @@
+     else:
+       raise
+   except httplib2.CertificateValidationUnsupported:
+-    print u'Error: You don\'t have the Python ssl module installed so we can\'t verify SSL Certificates. You can fix this by installing the Python SSL module or you can live on the edge and turn SSL validation off by creating a file called noverifyssl.txt in the same location as gam.exe / gam.py'
++    print u'Error: You don\'t have the Python ssl module installed so we can\'t verify SSL Certificates. You can fix this by installing the Python SSL module or you can live on the edge and turn SSL validation off by creating /etc/google-apps-manager/noverifyssl.txt'
+     sys.exit(8)
+   try:
+     domain = os.environ[u'GA_DOMAIN']
+@@ -560,9 +559,9 @@
+ 
+ def buildGAPIServiceObject(api, act_as=None):
+   global prettyPrint
+-  oauth2servicefile = getGamPath()+u'oauth2service'
++  oauth2servicefile = getEtcPath()+u'oauth2service'
+   try:
+-    oauth2servicefile = getGamPath()+os.environ[u'OAUTHSERVICEFILE']
++    oauth2servicefile = os.environ[u'OAUTHSERVICEFILE']
+   except KeyError:
+     pass
+   oauth2servicefilejson = u'%s.json' % oauth2servicefile
+@@ -589,13 +588,13 @@
+                    sys.version_info[0], sys.version_info[1], sys.version_info[2], sys.version_info[3],
+                    platform.platform(), platform.machine())
+   disable_ssl_certificate_validation = False
+-  if os.path.isfile(getGamPath()+u'noverifyssl.txt'):
++  if os.path.isfile(getFlagPath()+u'noverifyssl.txt'):
+     disable_ssl_certificate_validation = True
+   cache = None
+-  if not os.path.isfile(getGamPath()+u'nocache.txt'):
+-    cache = '%sgamcache' % getGamPath()
+-  http = httplib2.Http(ca_certs=getGamPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation, cache=cache)
+-  if os.path.isfile(getGamPath()+u'debug.gam'):
++  if not os.path.isfile(getFlagPath()+u'nocache.txt'):
++    cache = getCachePath()
++  http = httplib2.Http(ca_certs=getEtcPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation, cache=cache)
++  if os.path.isfile(getFlagPath()+u'debug.gam'):
+     httplib2.debuglevel = 4
+     prettyPrint = True
+   else:
+@@ -621,12 +620,12 @@
+       'apiVersion': version
+       }
+   disable_ssl_certificate_validation = False
+-  if os.path.isfile(getGamPath()+u'noverifyssl.txt'):
++  if os.path.isfile(getFlagPath()+u'noverifyssl.txt'):
+     disable_ssl_certificate_validation = True
+   cache = None
+-  if not os.path.isfile(getGamPath()+u'nocache.txt'):
+-    cache = u'%sgamcache' % getGamPath()
+-  http = httplib2.Http(ca_certs=getGamPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation, cache=cache)
++  if not os.path.isfile(getFlagPath()+u'nocache.txt'):
++    cache = getCachePath()
++  http = httplib2.Http(ca_certs=getEtcPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation, cache=cache)
+   requested_url = uritemplate.expand(apiclient.discovery.DISCOVERY_URI, params)
+   resp, content = http.request(requested_url)
+   if resp.status == 404:
+@@ -2246,7 +2245,7 @@
+   i = 5
+   query = fileIds = None
+   gdownload_format = u'openoffice'
+-  target_folder = getGamPath()
++  target_folder = getEtcPath()
+   while i < len(sys.argv):
+     if sys.argv[i].lower() == u'id':
+       fileIds = [sys.argv[i+1],]
+@@ -4325,9 +4324,9 @@
+     try:
+       user_email = sys.argv[3]
+     except IndexError:
+-      oauth2file = getGamPath()+u'oauth2.txt'
++      oauth2file = getEtcPath()+u'oauth2.txt'
+       try:
+-        oauth2file = getGamPath()+os.environ[u'OAUTHFILE']
++        oauth2file = os.environ[u'OAUTHFILE']
+       except KeyError:
+         pass
+       storage = oauth2client.file.Storage(oauth2file)
+@@ -5343,7 +5342,7 @@
+     media = apiclient.http.MediaInMemoryUpload(string_data, mimetype=u'text/csv')
+     result = callGAPI(service=drive.files(), function=u'insert', convert=convert, body={u'description': u' '.join(sys.argv), u'title': u'%s - %s' % (domain, list_type), u'mimeType': u'text/csv'}, media_body=media)
+     file_url = result[u'alternateLink']
+-    if os.path.isfile(getGamPath()+u'nobrowser.txt'):
++    if os.path.isfile(getFlagPath()+u'nobrowser.txt'):
+       msg_txt = u'Drive file uploaded to:\n %s' % file_url
+       msg_subj = u'%s - %s' % (domain, list_type)
+       send_email(msg_subj, msg_txt)
+@@ -6514,7 +6513,7 @@
+   msg[u'From'] = sender_email
+   msg[u'To'] = msg_rcpt
+   smtp_conn = smtplib.SMTP(u'smtp.gmail.com', 587)
+-  if os.path.isfile(getGamPath()+u'debug.gam'):
++  if os.path.isfile(getFlagPath()+u'debug.gam'):
+     smtp_conn.set_debuglevel(4)
+   smtp_conn.ehlo(u'gam')
+   smtp_conn.starttls()
+@@ -6696,9 +6695,9 @@
+   try:
+     access_token = sys.argv[3]
+   except IndexError:
+-    oauth2file = getGamPath()+u'oauth2.txt'
++    oauth2file = getEtcPath()+u'oauth2.txt'
+     try:
+-      oauth2file = getGamPath()+os.environ[u'OAUTHFILE']
++      oauth2file = os.environ[u'OAUTHFILE']
+     except KeyError:
+       pass
+     storage = oauth2client.file.Storage(oauth2file)
+@@ -6714,10 +6713,10 @@
+                      sys.version_info[0], sys.version_info[1], sys.version_info[2],
+                      sys.version_info[3], platform.platform(), platform.machine())
+     disable_ssl_certificate_validation = False
+-    if os.path.isfile(getGamPath()+u'noverifyssl.txt'):
++    if os.path.isfile(getFlagPath()+u'noverifyssl.txt'):
+       disable_ssl_certificate_validation = True
+-    http = httplib2.Http(ca_certs=getGamPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation)
+-    if os.path.isfile(getGamPath()+u'debug.gam'):
++    http = httplib2.Http(ca_certs=getEtcPath()+u'cacert.pem', disable_ssl_certificate_validation=disable_ssl_certificate_validation)
++    if os.path.isfile(getFlagPath()+u'debug.gam'):
+       httplib2.debuglevel = 4
+     if credentials.access_token_expired:
+       credentials.refresh(http)
+@@ -6739,9 +6738,9 @@
+     print u'Google Apps Admin: Unknown'
+ 
+ def doDeleteOAuth():
+-  oauth2file = getGamPath()+u'oauth2.txt'
++  oauth2file = getEtcPath()+u'oauth2.txt'
+   try:
+-    oauth2file = getGamPath()+os.environ[u'OAUTHFILE']
++    oauth2file = os.environ[u'OAUTHFILE']
+   except KeyError:
+     pass
+   storage = oauth2client.file.Storage(oauth2file)
+@@ -6751,12 +6750,12 @@
+   except AttributeError:
+     print u'Error: Authorization doesn\'t exist'
+     sys.exit(1)
+-  certFile = getGamPath()+u'cacert.pem'
++  certFile = getEtcPath()+u'cacert.pem'
+   disable_ssl_certificate_validation = False
+-  if os.path.isfile(getGamPath()+u'noverifyssl.txt'):
++  if os.path.isfile(getFlagPath()+u'noverifyssl.txt'):
+     disable_ssl_certificate_validation = True
+   http = httplib2.Http(ca_certs=certFile, disable_ssl_certificate_validation=disable_ssl_certificate_validation)
+-  if os.path.isfile(getGamPath()+u'debug.gam'):
++  if os.path.isfile(getFlagPath()+u'debug.gam'):
+     httplib2.debuglevel = 4
+   sys.stderr.write(u'This OAuth token will self-destruct in 3...')
+   time.sleep(1)
+@@ -6780,13 +6779,13 @@
+     self.auth_host_port = [8080, 9090]
+ 
+ def doRequestOAuth(incremental_auth=False):
+-  if not os.path.isfile(getGamPath()+u'nodito.txt'):
++  if not os.path.isfile(getFlagPath()+u'nodito.txt'):
+     print u"\n\nGAM is made possible and maintained by the work of Dito. Who is Dito?\n\nDito is solely focused on moving organizations to Google's cloud.  After hundreds of successful deployments over the last 5 years, we have gained notoriety for our complete understanding of the platform, our change management & training ability, and our rock-star deployment engineers.  We are known worldwide as the Google Apps Experts.\n"
+     visit_dito = raw_input(u"Want to learn more about Dito? Hit Y to visit our website (you can switch back to this window when you're done). Hit Enter to continue without visiting Dito: ")
+     if visit_dito.lower() == u'y':
+       import webbrowser
+       webbrowser.open(u'http://www.ditoweb.com?s=gam')
+-  CLIENT_SECRETS = getGamPath()+u'client_secrets.json'
++  CLIENT_SECRETS = getEtcPath()+u'client_secrets.json'
+   MISSING_CLIENT_SECRETS_MESSAGE = u"""
+ WARNING: Please configure OAuth 2.0
+ 
+@@ -6910,23 +6909,23 @@
+   FLOW = oauth2client.client.flow_from_clientsecrets(CLIENT_SECRETS,
+     scope=scopes,
+     message=MISSING_CLIENT_SECRETS_MESSAGE)
+-  oauth2file = getGamPath()+u'oauth2.txt'
++  oauth2file = getEtcPath()+u'oauth2.txt'
+   try:
+-    oauth2file = getGamPath()+os.environ[u'OAUTHFILE']
++    oauth2file = os.environ[u'OAUTHFILE']
+   except KeyError:
+     pass
+   storage = oauth2client.file.Storage(oauth2file)
+   credentials = storage.get()
+   flags = cmd_flags()
+-  if os.path.isfile(getGamPath()+u'nobrowser.txt'):
++  if os.path.isfile(getFlagPath()+u'nobrowser.txt'):
+     flags.noauth_local_webserver = True
+   if credentials is None or credentials.invalid or incremental_auth:
+-    certFile = getGamPath()+u'cacert.pem'
++    certFile = getEtcPath()+u'cacert.pem'
+     disable_ssl_certificate_validation = False
+-    if os.path.isfile(getGamPath()+u'noverifyssl.txt'):
++    if os.path.isfile(getFlagPath()+u'noverifyssl.txt'):
+       disable_ssl_certificate_validation = True
+     http = httplib2.Http(ca_certs=certFile, disable_ssl_certificate_validation=disable_ssl_certificate_validation)
+-    if os.path.isfile(getGamPath()+u'debug.gam'):
++    if os.path.isfile(getFlagPath()+u'debug.gam'):
+       httplib2.debuglevel = 4
+       prettyPrint = True
+     else:
+@@ -6934,7 +6933,7 @@
+     try:
+       credentials = oauth2client.tools.run_flow(flow=FLOW, storage=storage, flags=flags, http=http)
+     except httplib2.CertificateValidationUnsupported:
+-      print u'\nError: You don\'t have the Python ssl module installed so we can\'t verify SSL Certificates.\n\nYou can fix this by installing the Python SSL module or you can live on dangerously and turn SSL validation off by creating a file called noverifyssl.txt in the same location as gam.exe / gam.py'
++      print u'\nError: You don\'t have the Python ssl module installed so we can\'t verify SSL Certificates.\n\nYou can fix this by installing the Python SSL module or you can live on dangerously and turn SSL validation off by creating /etc/google-apps-manager/noverifyssl.txt'
+       sys.exit(8)
+ 
+ def batch_worker():

@@ -1,0 +1,19 @@
+pkgbase = google-apps-manager
+	pkgdesc = Command line tool for managing Google Apps accounts
+	pkgver = 3.21
+	pkgrel = 1
+	url = https://code.google.com/p/google-apps-manager
+	arch = any
+	license = apache
+	depends = python2-google-api-python-client
+	depends = python2-httplib2
+	depends = python2-simplejson
+	depends = python2-gdata
+	depends = perl-mozilla-ca
+	source = https://3ca168a01ea8d36f578893ffd5d45ba8daef8381.googledrive.com/host/0B0YvUuHHn3MnbFl6N0k1UXcwdVk/gam-3.21-python-src.zip
+	source = fhs.patch
+	md5sums = 63f076b05051d3f85ae4aadfcc87733d
+	md5sums = 10752b2e864ba5791e9bf9f42c2759ef
+
+pkgname = google-apps-manager
+
