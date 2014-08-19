@@ -4,7 +4,7 @@
 pkgname=sfml
 _commit=4a300547f3
 pkgver=2.1.0.$_commit
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
 url='http://www.sfml-dev.org/'
