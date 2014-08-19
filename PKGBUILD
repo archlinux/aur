@@ -1,17 +1,13 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
-# Contributor: Schnouki <thomas.jost@gmail.com>
-# Contributor: Vithon <ratm@archlinux.us>
-# Contributor: Aaron <aaron@aaronlindsay.com>
-# Contributor: TheGuy <lowelink26381@gmail.com>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkitarm
 pkgver=r42
 pkgrel=1
 pkgdesc="An ARM toolchain for GP32, Nintendo DS and GBA homebrew development"
 arch=('i686' 'x86_64')
-url="http://www.devkitpro.org/"
+url="http://www.devkitpro.org"
 license=('GPL')
-options=(!strip libtool staticlibs)
+options=(!strip libtool staticlibs emptydirs)
 depends=('xz' 'freeimage' 'python' 'cloog' 'flex' 'libmpc' 'libusb')
 install=devkitarm.install
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20140402.tar.bz2"
@@ -28,6 +24,7 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-201
         "http://downloads.sourceforge.net/sourceforge/devkitpro/mmutil-1.8.6.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/dfu-util-0.7.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/stlink-0.5.7.tar.bz2"
+        "devkitarm-skip-libs.patch"
         "devkitarm.sh")
 sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
             'e5e8c5be9664e7f7f96e0d09919110ab5ad597794f5b1809871177a0f0f14137'
@@ -43,6 +40,7 @@ sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
             '5b9182accb99abc03c1a31c39c003fbc5cb0d4af65a44102ede6098828cd045e'
             '33a1922cf7fb57c3d80e873dc20cabd550d1285476ab5a0efa4d910aceafd2f0'
             '8ac33627490158ba32c4b18bd8ceba1ac083658c6005c3cbae077045af9f1033'
+            '14027a13b9f048c87b5d86e4e60c19eff514feda41cc249cda5a071646b4863a'
             'a6f33eaf2d89493f5bb557ef82c6286793c7e69dd3f6de6be85733835b193bd7')
 noextract=('binutils-2.24.tar.bz2' 'gcc-4.8.2.tar.bz2' 'newlib-2.1.0.tar.gz'
            'gdb-7.7.tar.bz2' 'gbatools-1.0.0.tar.bz2' 'dstools-1.0.0.tar.bz2'
@@ -69,9 +67,12 @@ END
   sed 's/Error installing newlib"; exit 1; }/newlib, second try"; $MAKE install || { echo "& }/' \
     -i buildscripts/dkarm-eabi/scripts/build-gcc.sh
 
+  # fix search path to use correct tools
+  sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
+    buildscripts/build-devkit.sh
+
   # disable building of libraries, we have seperate packages
-  sed '25,$d' -i buildscripts/dkarm-eabi/scripts/build-crtls.sh
-  sed '239,247d;s|$targetarchives ||' -i buildscripts/build-devkit.sh
+  patch -Np0 < devkitarm-skip-libs.patch
 }
 
 build() {
