@@ -1,7 +1,7 @@
 pkgbase = baikal
 	pkgdesc = Lightweight CalDAV+CardDAV server
 	pkgver = 0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://baikal-server.com/
 	arch = any
 	license = GPL

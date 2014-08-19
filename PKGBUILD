@@ -2,7 +2,7 @@
 
 pkgname=baikal
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight CalDAV+CardDAV server"
 url="http://baikal-server.com/"
 arch=('any')
@@ -17,7 +17,6 @@ package() {
   cd "${srcdir}/baikal-regular"
   mkdir -p "$pkgdir/usr/share/webapps/$pkgname"
   cp -R * "$pkgdir/usr/share/webapps/$pkgname"
-  chown -R http:http "$pkgdir/usr/share/webapps/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
