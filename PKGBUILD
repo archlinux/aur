@@ -2,7 +2,7 @@
 
 pkgname=ppsspp
 pkgver=0.9.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='PSP emulator written in C++'
 arch=('i686' 'x86_64')
 url='http://www.ppsspp.org/'
@@ -34,14 +34,13 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgbase -DCMAKE_BUILD_TYPE=Release -DHEADLESS=ON
+  cmake ../$pkgbase -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
   install -Dm755 build/PPSSPPSDL "$pkgdir"/usr/bin/PPSSPPSDL
-  install -Dm755 build/PPSSPPHeadless "$pkgdir"/usr/bin/PPSSPPHeadless
-  chrpath -d "$pkgdir"/usr/bin/PPSSPP{SDL,Headless}
+  chrpath -d "$pkgdir"/usr/bin/PPSSPPSDL
 
   install -d "$pkgdir"/usr/share/ppsspp "$pkgdir"/usr/share/icons/
   cp -r build/assets "$pkgdir"/usr/share/ppsspp/
