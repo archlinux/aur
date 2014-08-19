@@ -5,7 +5,7 @@
 pkgname='frogatto'
 arch=('i686' 'x86_64')
 pkgver=1.3.1
-pkgrel=7
+pkgrel=8
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
