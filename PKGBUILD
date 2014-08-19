@@ -4,13 +4,14 @@
 
 pkgname='libgcj'
 pkgver=15_4.9.1_7
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamically load and interpret java class files. Built from binary \
 executables available in Debian repositories."
 url=http://gcc.gnu.org/java/
 arch=(i686 x86_64)
 license=(GPL)
 conflicts=(gcc-gcj)
+depends=(zlib)
 
 if [[ $CARCH == i686 ]]; then
   _DEBARCH=i386
