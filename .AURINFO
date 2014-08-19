@@ -10,9 +10,8 @@ pkgbase = fred
 	makedepends = hivex
 	depends = qt4
 	depends = hivex
-	options = !emptydirs
 	source = http://files.pinguin.lu/fred-0.1.0beta4.tar.gz
-	md5sums = 47a86274228d83b2e4544c4caf1a8f98
+	options = !emptydirs
 
 pkgname = fred
 
