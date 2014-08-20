@@ -1,7 +1,7 @@
 pkgbase = syncmaildir
 	pkgdesc = Synchronize a pair of mailboxes in Maildir format via ssh
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://syncmaildir.sourceforge.net/
 	install = syncmaildir.install
 	arch = i686

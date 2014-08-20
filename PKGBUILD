@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=syncmaildir
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize a pair of mailboxes in Maildir format via ssh"
 arch=(i686 x86_64)
 url="http://syncmaildir.sourceforge.net/"
@@ -27,17 +27,17 @@ install="syncmaildir.install"
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p0 < "$srcdir/build.patch"
-  make update-smd-config
+  make PREFIX=usr update-smd-config
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make PREFIX=usr VALAC=valac
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  make test
+  make PREFIX=usr test
 }
 
 package() {
