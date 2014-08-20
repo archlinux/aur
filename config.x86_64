@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 3.16.0-1 Kernel Configuration
+# Linux/x86 3.16.1-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -1620,7 +1620,7 @@ CONFIG_X86_VERBOSE_BOOTUP=y
 # CONFIG_X86_PTDUMP is not set
 CONFIG_DEBUG_RODATA=y
 # CONFIG_DEBUG_RODATA_TEST is not set
-# CONFIG_DEBUG_SET_MODULE_RONX is not set
+CONFIG_DEBUG_SET_MODULE_RONX=y
 # CONFIG_DEBUG_NX_TEST is not set
 CONFIG_DOUBLEFAULT=y
 # CONFIG_DEBUG_TLBFLUSH is not set
