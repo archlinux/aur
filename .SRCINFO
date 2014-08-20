@@ -1,0 +1,16 @@
+pkgbase = last-mission-sdl-git
+	pkgdesc = Side-view arcade game (inspired by Underwurlde and Starquake, development version)
+	pkgver = r25.00d2625
+	pkgrel = 1
+	url = https://github.com/dmitrysmagin/last-mission
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	provides = last-mission-sdl
+	conflicts = last-mission-sdl
+	source = last-mission-sdl::git+https://github.com/dmitrysmagin/last-mission.git
+	md5sums = SKIP
+
+pkgname = last-mission-sdl-git
+
