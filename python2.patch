@@ -1,0 +1,250 @@
+diff --git a/alarm.py b/alarm.py
+index 8477b6f..2b0d895 100755
+--- a/alarm.py
++++ b/alarm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Alarm script
+diff --git a/dictionary/dictionary.py b/dictionary/dictionary.py
+index 2d3297a..0de5868 100755
+--- a/dictionary/dictionary.py
++++ b/dictionary/dictionary.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ A very simple lookup of a word.
+diff --git a/dropbox/dropbox_permissions.py b/dropbox/dropbox_permissions.py
+index 5db44b6..5c1e137 100755
+--- a/dropbox/dropbox_permissions.py
++++ b/dropbox/dropbox_permissions.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Setting file permissions in your Dropbox folder recursively
+diff --git a/dropbox/get_public_link.py b/dropbox/get_public_link.py
+index 5514a9b..e5fad9b 100755
+--- a/dropbox/get_public_link.py
++++ b/dropbox/get_public_link.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # encoding: utf-8
+ 
+ """
+diff --git a/firefox/export_firefox_cookies.py b/firefox/export_firefox_cookies.py
+index cb1c1c8..8cd4b26 100755
+--- a/firefox/export_firefox_cookies.py
++++ b/firefox/export_firefox_cookies.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Extract Firefox cookies
+diff --git a/get_alap.py b/get_alap.py
+index 2bf96bd..53aa4ca 100755
+--- a/get_alap.py
++++ b/get_alap.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ import sys
+diff --git a/get_images.py b/get_images.py
+index 478b5d7..a1cdae4 100755
+--- a/get_images.py
++++ b/get_images.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Extract image links from a web page
+diff --git a/get_links.py b/get_links.py
+index a8046d4..dc76de8 100755
+--- a/get_links.py
++++ b/get_links.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Extract all links from a web page
+diff --git a/img_to_base64.py b/img_to_base64.py
+index ac1c130..91ab1e4 100755
+--- a/img_to_base64.py
++++ b/img_to_base64.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Image to BASE64
+diff --git a/markdown.py b/markdown.py
+index 21312dc..ae63af0 100755
+--- a/markdown.py
++++ b/markdown.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Markdown previewer
+diff --git a/mouse/mousepos_gui.py b/mouse/mousepos_gui.py
+index a59f890..a96bbbf 100755
+--- a/mouse/mousepos_gui.py
++++ b/mouse/mousepos_gui.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Monitor the mouse position.
+diff --git a/open_in_tabs.py b/open_in_tabs.py
+index 102d5a0..3515deb 100755
+--- a/open_in_tabs.py
++++ b/open_in_tabs.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Open URLs in tabs
+diff --git a/prettify.py b/prettify.py
+index bc01b96..dc71e9b 100755
+--- a/prettify.py
++++ b/prettify.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Website: https://pythonadventures.wordpress.com/2011/04/03/prettify-html-with-beautifulsoup/
+ # Laszlo Szathmary, 2011 (jabba.laci@gmail.com)
+diff --git a/py2rtf.py b/py2rtf.py
+index 1b01add..6f50913 100755
+--- a/py2rtf.py
++++ b/py2rtf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ py2rtf
+diff --git a/radio/radio.py b/radio/radio.py
+index 991f7eb..78efa8d 100755
+--- a/radio/radio.py
++++ b/radio/radio.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Play online radio stations
+diff --git a/reddit/reddit_get_all_pages.py b/reddit/reddit_get_all_pages.py
+index c824561..5a2f2d6 100755
+--- a/reddit/reddit_get_all_pages.py
++++ b/reddit/reddit_get_all_pages.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Reddit, browse all pages of a subreddit
+diff --git a/reddit/reddit_get_posts.py b/reddit/reddit_get_posts.py
+index 19afbe7..9272042 100755
+--- a/reddit/reddit_get_posts.py
++++ b/reddit/reddit_get_posts.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Reddit, get posts
+diff --git a/reddit/reddit_top10.py b/reddit/reddit_top10.py
+index 0db4e0a..41dbaab 100755
+--- a/reddit/reddit_top10.py
++++ b/reddit/reddit_top10.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ """
+diff --git a/reddit/submit_to_reddit_gui/01_submit.py b/reddit/submit_to_reddit_gui/01_submit.py
+index f083f1f..582ffeb 100755
+--- a/reddit/submit_to_reddit_gui/01_submit.py
++++ b/reddit/submit_to_reddit_gui/01_submit.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #Boa:Frame:Frame1
+ 
+diff --git a/reddit/submit_to_reddit_gui/config.py b/reddit/submit_to_reddit_gui/config.py
+index 6fa7e7b..21bab8d 100755
+--- a/reddit/submit_to_reddit_gui/config.py
++++ b/reddit/submit_to_reddit_gui/config.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ 
+diff --git a/redirect_to.py b/redirect_to.py
+index 40b725f..c17dfb5 100755
+--- a/redirect_to.py
++++ b/redirect_to.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+ Where does a URL redirect?
+diff --git a/sp.py b/sp.py
+index d304ddb..ef502f9 100755
+--- a/sp.py
++++ b/sp.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Website: https://ubuntuincident.wordpress.com/2011/03/17/show-the-absolute-path-of-a-file/
+ # Laszlo Szathmary, 2011 (jabba.laci@gmail.com)
+diff --git a/templates/alap.py b/templates/alap.py
+index cbd6ea7..9772484 100644
+--- a/templates/alap.py
++++ b/templates/alap.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ 
+ def main():
+diff --git a/tocb.py b/tocb.py
+index 5e501a9..5283d50 100755
+--- a/tocb.py
++++ b/tocb.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Website: https://pythonadventures.wordpress.com/2011/03/05/copy-string-to-x-clipboards/
+ # Laszlo Szathmary, 2011--2012 (jabba.laci@gmail.com)
+diff --git a/us.py b/us.py
+index 980be68..8771961 100755
+--- a/us.py
++++ b/us.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Change spaces to underscores.
+ # When to use: creating directories/files and we want to avoid spaces
