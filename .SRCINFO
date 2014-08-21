@@ -1,0 +1,22 @@
+pkgbase = perl-xml-xsh
+	pkgdesc = XSH - XML editing shell
+	pkgver = 2.1.17
+	pkgrel = 1
+	url = http://xsh.sourceforge.net/
+	arch = any
+	license = GPL
+	license = Artistic
+	depends = perl>=5.10.0
+	depends = perl-io-stringy
+	depends = perl-term-readline
+	depends = perl-parse-recdescent
+	depends = perl-xml-libxslt
+	depends = perl-xml-sax-writer
+	depends = perl-xml-xupdate-libxml
+	depends = perl-xml-filter-domfilter-libxml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHOROBA/XML-XSH2-2.1.17.tar.gz
+	md5sums = 0d1b30e7f6182afe81124448853d08a5
+
+pkgname = perl-xml-xsh
+
