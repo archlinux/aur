@@ -3,7 +3,7 @@
 pkgname=auto-xflux
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="TODO"
+pkgdesc='Inputless xflux daemon that geocodes based on your external IP address.'
 arch=('any')
 url="https://github.com/jamesan/${pkgname}"
 license=('GPL')
