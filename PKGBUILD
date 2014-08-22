@@ -2,13 +2,13 @@
 # Contributor: Thomas Kinnen <thomas.kinnen@gmail.com>
 
 pkgname=unknown-horizons-git
-pkgver=2013.3.830.g9367178
+pkgver=2013.3.832.ge886e11
 pkgrel=1
 pkgdesc="Open source real-time strategy game with the comfy Anno1602 feeling."
 arch=("i686" "x86_64")
 url="http://www.unknown-horizons.org"
 license=('GPL' 'CCPL')
-depends=('fife' 'python2' 'python2-yaml' 'python2-pillow')
+depends=('fife-git' 'python2' 'python2-yaml' 'python2-pillow')
 makedepends=('git' 'intltool')
 conflicts=('unknown-horizons-svn' 'unknown-horizons')
 replaces=('unknown-horizons-svn' 'unknown-horizons')

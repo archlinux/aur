@@ -1,6 +1,6 @@
 pkgbase = unknown-horizons-git
 	pkgdesc = Open source real-time strategy game with the comfy Anno1602 feeling.
-	pkgver = 2013.3.830.g9367178
+	pkgver = 2013.3.832.ge886e11
 	pkgrel = 1
 	url = http://www.unknown-horizons.org
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = unknown-horizons-git
 	license = CCPL
 	makedepends = git
 	makedepends = intltool
-	depends = fife
+	depends = fife-git
 	depends = python2
 	depends = python2-yaml
 	depends = python2-pillow
