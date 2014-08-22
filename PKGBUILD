@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/swenzel2/pyswip3'
 license=('MIT')
 depends=('python' 'swi-prolog')
-makedepends=('setuptools')
+makedepends=('setuptools' 'git')
 source=("git://github.com/swenzel2/pyswip3.git#commit=0145fd1f70")
 sha256sums=('SKIP')
 
