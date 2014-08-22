@@ -1,9 +1,10 @@
+#!/bin/bash
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 # Contributor: Yannik Stein <yannik.stein [at] gmail.com>
 # Contributor: Roberto Calabrese <robertocalabrese75 [at] gmail.com>
 
 pkgname='libgcj'
-pkgver=15_4.9.1_7
+pkgver=15_4.9.1_8
 pkgrel=2
 pkgdesc="Dynamically load and interpret java class files. Built from binary \
 executables available in Debian repositories."
@@ -15,10 +16,10 @@ depends=(zlib)
 
 if [[ $CARCH == i686 ]]; then
   _DEBARCH=i386
-  sha1sums=('db8273e3605a9b569b847db80e40e2cb6494ca30')
+  sha1sums=('e3a54835d8e71f11dd3b4b05f7da15ed1bbf302d')
 else
   _DEBARCH=amd64
-  sha1sums=('a06e26a29a0dad6a215ab7dc57ab0a313360493e')
+  sha1sums=('d54106f33c1d01b4b16ecc1e50cee05d041bd2f4')
 fi
 source=(http://ftp.debian.org/debian/pool/main/g/gcc-4.9/$pkgname${pkgver%_*}-${pkgver##*_}_${_DEBARCH}.deb)
 
