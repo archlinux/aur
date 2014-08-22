@@ -1,6 +1,6 @@
 # Maintainer: Jason Staten <jstaten07 gmail>
 pkgname=sauceconnect
-pkgver=4.1
+pkgver=4.3
 pkgrel=1
 pkgdesc='Sauce Connect untility for Sauce Labs testing'
 url='https://saucelabs.com/docs/connect'
@@ -10,7 +10,7 @@ depends=()
 makedepends=()
 optdepends=()
 source=("https://saucelabs.com/downloads/sc-${pkgver}-linux.tar.gz")
-md5sums=('f087925c62220d7e450d4181362fe05d')
+md5sums=('978dc49aa70d3daf8f8c512366cf5d6e')
 
 package() {
   cd "${srcdir}/sc-${pkgver}-linux/"
