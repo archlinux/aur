@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.10.99.25802.b8ca758
+pkgver=1.11.99.27394.974e3af
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
          'libgl' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon'
-         'libxp' 'libxrandr' 'libxss' 'shared-mime-info' 'wayland')
+         'libxp' 'libxrandr' 'libxss' 'lz4' 'shared-mime-info' 'wayland')
   [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
 makedepends=('git' 'python2')
 optdepends=('python2: compare Eina benchmarks'
@@ -56,7 +56,8 @@ build() {
     --enable-systemd \
     --enable-harfbuzz \
     --enable-xinput22 \
-    --enable-multisense
+    --enable-multisense \
+    --enable-liblz4
 
   make
 }
