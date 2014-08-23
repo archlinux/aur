@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 url="http://www.alcyone.com/software/empy"
 depends=('python2>=2.4')
 license=('LGPL')
-source=("http://www.alcyone.com/software/empy/empy-$pkgver.tar.gz"
+source=("https://pypi.python.org/packages/source/E/EmPy/empy-$pkgver.tar.gz"
         "python2.patch")
 md5sums=('fbb34761cdf9acc4c65e298c9eced395'
          '198d743409b18c0d024851ca80829a1d')
