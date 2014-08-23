@@ -4,16 +4,16 @@
 
 _pkgbasename=openal
 pkgname=lib32-$_pkgbasename
-pkgver=1.15.1
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
 url="http://www.openal.org/"
 license=(LGPL)
 depends=(lib32-glibc $_pkgbasename)
-makedepends=(lib32-alsa-lib lib32-sdl lib32-libpulse pkgconfig cmake gcc-multilib)
+makedepends=(lib32-alsa-lib lib32-sdl lib32-libpulse lib32-portaudio pkgconfig cmake gcc-multilib)
 source=(http://kcat.strangesoft.net/openal-releases/openal-soft-$pkgver.tar.bz2)
-md5sums=('ea83dec3b9655a27d28e7bc7cae9cd71')
+md5sums=('14db4b0d12f07252070b4fe5eb5911f6')
 
 build() {
   export CC="gcc -m32"
