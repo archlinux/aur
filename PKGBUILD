@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS ba
 url='http://ros.org/wiki/rqt_bag'
 
 pkgname='ros-indigo-rqt-bag-plugins'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -24,7 +24,8 @@ ros_depends=(ros-indigo-rqt-gui
   ros-indigo-sensor-msgs
   ros-indigo-roslib)
 depends=(${ros_depends[@]}
-  python2-pillow)
+  python2-pillow
+  python2-cairo)
 
 _tag=release/indigo/rqt_bag_plugins/${pkgver}-${_pkgver_patch}
 _dir=rqt_bag_plugins
