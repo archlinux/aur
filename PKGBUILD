@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_shell is a Python GUI plugin providing an interactive shell."
 url='http://ros.org/wiki/rqt_shell'
 
 pkgname='ros-indigo-rqt-shell'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
