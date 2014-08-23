@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_py_console is a Python GUI plugin providing an interactive Py
 url='http://ros.org/wiki/rqt_py_console'
 
 pkgname='ros-indigo-rqt-py-console'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
