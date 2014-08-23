@@ -2,13 +2,13 @@
 # Contributor: flu
 
 pkgname=mpc-git
-pkgver=0.25.3.gffcbf13
+pkgver=0.26
 pkgrel=1
 pkgdesc="A minimalist command line interface to MPD"
 arch=('i686' 'x86_64')
 url="http://mpd.wikia.com"
 license=('GPL2')
-depends=('libmpdclient-git')
+depends=('libmpdclient')
 makedepends=('git')
 optdepends=('bash-completion')
 conflicts=('mpc')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "${srcdir}/mpc"
 
-    git describe | sed 's/^release-//; s/-/./g'
+    git describe | sed 's/^release-//; s/-/./g; s/^v//g'
 }
 
 build() {
