@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-indigo-qt-gui-cpp'
-pkgver='0.2.25'
+pkgver='0.2.26'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
