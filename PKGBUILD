@@ -4,7 +4,7 @@ pkgdesc="ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motio
 url='http://ros.org/wiki/rqt_moveit'
 
 pkgname='ros-indigo-rqt-moveit'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
