@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D
 url='http://ros.org/wiki/rqt_plot'
 
 pkgname='ros-indigo-rqt-plot'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
