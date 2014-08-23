@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_robot_steering provides a GUI plugin for steering a robot usi
 url='http://ros.org/wiki/rqt_robot_steering'
 
 pkgname='ros-indigo-rqt-robot-steering'
-pkgver='0.3.6'
+pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
