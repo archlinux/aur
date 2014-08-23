@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
 url='http://ros.org/wiki/qt_dotgraph'
 
 pkgname='ros-indigo-qt-dotgraph'
-pkgver='0.2.25'
+pkgver='0.2.26'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
