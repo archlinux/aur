@@ -4,7 +4,7 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/wiki/Tutorials'
 
 pkgname='ros-indigo-gazebo-plugins'
-pkgver='2.4.4'
+pkgver='2.4.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
