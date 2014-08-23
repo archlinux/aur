@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_web is a simple web content viewer for rqt."
 url='http://ros.org/wiki/rqt_web'
 
 pkgname='ros-indigo-rqt-web'
-pkgver='0.3.8'
+pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
