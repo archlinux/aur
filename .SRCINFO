@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rosgraph-msgs
 	pkgdesc = ROS - Messages relating to the ROS Computation Graph.
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = http://ros.org/wiki/rosgraph_msgs
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-rosgraph-msgs
 	makedepends = ros-indigo-std-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
-	source = rosgraph_msgs::git+https://github.com/ros-gbp/ros_comm_msgs-release.git#tag=release/indigo/rosgraph_msgs/1.10.2-0
+	source = rosgraph_msgs::git+https://github.com/ros-gbp/ros_comm_msgs-release.git#tag=release/indigo/rosgraph_msgs/1.10.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rosgraph-msgs
