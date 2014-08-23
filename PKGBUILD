@@ -4,7 +4,7 @@ pkgdesc="ROS - Common service definitions."
 url='http://ros.org/wiki/std_srvs'
 
 pkgname='ros-indigo-std-srvs'
-pkgver='1.10.2'
+pkgver='1.10.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-std-srvs
 	pkgdesc = ROS - Common service definitions.
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = http://ros.org/wiki/std_srvs
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-std-srvs
 	makedepends = ros-indigo-message-generation
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-message-runtime
-	source = std_srvs::git+https://github.com/ros-gbp/ros_comm_msgs-release.git#tag=release/indigo/std_srvs/1.10.2-0
+	source = std_srvs::git+https://github.com/ros-gbp/ros_comm_msgs-release.git#tag=release/indigo/std_srvs/1.10.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-std-srvs
