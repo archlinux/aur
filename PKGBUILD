@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Master implementation."
 url='http://ros.org/wiki/rosmaster'
 
 pkgname='ros-indigo-rosmaster'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
