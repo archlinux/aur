@@ -1,6 +1,6 @@
 pkgbase = ewebkit
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries
-	pkgver = 1.11.0beta1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = ewebkit
 	depends = harfbuzz-icu
 	depends = libsoup
 	depends = libxslt
-	source = http://download.enlightenment.org/rel/libs/webkit-efl/ewebkit-1.11.0-beta1.tar.xz
-	sha256sums = 7d0545f79be3633973eb7340318552f80a213c5afddd2c3fee5ccd543cc0418d
+	source = http://download.enlightenment.org/rel/libs/webkit-efl/ewebkit-1.11.0.tar.xz
+	sha256sums = d8d21e27f4a21cd77c41914548c184ddb98693ba23851aa66c8e51c0be4b90b7
 
 pkgname = ewebkit
 
