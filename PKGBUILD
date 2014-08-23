@@ -4,7 +4,7 @@ pkgdesc="ROS - Standalone Python library for generating ROS message and service 
 url='http://www.ros.org/wiki/genmsg'
 
 pkgname='ros-indigo-genmsg'
-pkgver='0.5.3'
+pkgver='0.5.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
