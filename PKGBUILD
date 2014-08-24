@@ -9,7 +9,6 @@ arch=('any')
 url='https://github.com/sivel/speedtest-cli'
 license=('Apache')
 depends=('python')
-optdepends=('python2: alternative ')
 makedepends=('git')
 provides=($_gitname)
 provides=($_gitname)
