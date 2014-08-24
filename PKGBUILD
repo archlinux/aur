@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Aaron Lindsay <aaron@aaronlindsay.com>
 
 pkgname=devkitppc-portlibs-libpng
@@ -18,7 +18,6 @@ build() {
 
   source /etc/profile.d/devkitppc.sh
   export CFLAGS="-g -O2 -I$DEVKITPRO/portlibs/ppc/include -L$DEVKITPRO/portlibs/ppc/lib"
-
   ./configure --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
     --disable-shared --enable-static
   make
@@ -28,6 +27,8 @@ package() {
   cd libpng-$pkgver
 
   make DESTDIR="$pkgdir" install
+  # license
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   # remove useless stuff
   rm -r "$pkgdir"/opt/devkitpro/portlibs/ppc/share
 }
