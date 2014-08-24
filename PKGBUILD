@@ -1,14 +1,14 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 _pkgname=rage
 pkgname=$_pkgname-git
-pkgver=0.1.0.r26.b68c300
+pkgver=0.1.0.r63.f15ebca
 pkgrel=1
-pkgdesc="Video Player based on EFL"
+pkgdesc="Video Player based on EFL - Development version"
 arch=('i686' 'x86_64')
-url="http://www.enlightenment.org"
+url="https://www.enlightenment.org/p.php?p=about/rage"
 license=('BSD')
-depends=('elementary')
+depends=('elementary>=1.11')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -41,11 +41,10 @@ package() {
   make -j1 DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
