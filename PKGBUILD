@@ -18,14 +18,11 @@ build() {
 
   source /etc/profile.d/devkitppc.sh
   export CFLAGS="-g -O2 -I$DEVKITPRO/portlibs/ppc/include -L$DEVKITPRO/portlibs/ppc/lib"
-
   ./configure --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
     --disable-shared --enable-static
   make
 }
 
 package() {
-  cd freetype-$pkgver
-
-  make DESTDIR="$pkgdir" install
+  make -C freetype-$pkgver DESTDIR="$pkgdir" install
 }
