@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=3.15
+_basekernel=3.16
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.10
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -17,15 +17,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config'
         'config.x86_64'
         'menu.lst'
-        "preset"
-        'change-default-console-loglevel.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/change-default-console-loglevel.patch?h=packages/linux&id=80b436a10640b47f9ab25af4926d2d16d55a8001')
-sha512sums=('d5dc477cad4584e56e2e2ef9e0950c2b22e76e5cf5090a896ba099cb7c5e5db1853a4aeb96b199189653dc66d461557e95198e37516a619f7ddc01ba6b308e02'
-            '555e7cf9661bd0a518ad071b84b94a90a4a673e51b1cd764219da6092757e22ae6f87b66884fde29ffd034d713f28634b4922fd221b45dd309fdf08e6360f07b'
-            'bfe297fd94a54591d90627ecc708b6925328c2fa6d738e75c4374d8ca1188523396049855ec7a77911380d79feb94651714b4b435b3e861845da4094b2c7a2c0'
-            '2ab344f792f45913fd4ae4c3929ec25d796257c91a6d58141b9f60b2fd4680f1653210a8cbff6d8fe967666b645773bfea9a6ba149807ab18d7e89cd2c342a2d'
+        'preset'
+        'https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/change-default-console-loglevel.patch')
+sha512sums=('64033e741d3f42ed06010e63e69d66e1d3d9414ef20f76834508878d4218b72619541a18ef4fd377204af2859e52198310998109b20ed9b67722586b28c9a231'
+            '01715f6c276611184c2a41d0736c4b91b155daa5c3b67e0f3646e5a795ec22b9ff8cd4db8508eac71b0eb6a3c194fbf02b7bdeeb09626931bf34ebc03d224026'
+            'f41356b42cc6b1e2e462fa07d78c3f88d3b161fc634b69f458e4bd6cbebf940d080ee5c9dfadab598f656434bfd9a02e9ea10ee8f12d3d88d7c17201f6c3e172'
+            '2eb7bbcf4af00bec79950f714fe80f5ffe5fa363e189f64860fc9efc8ce21a8bf5e41dcc07256301029d36a74c09d34da6e89d5b4cb6147a2df4d4a241dc9c44'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f'
-            '502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78')
+            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8')
 pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(linux)
