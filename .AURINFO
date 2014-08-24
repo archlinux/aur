@@ -1,6 +1,6 @@
 pkgbase = syslog-ng-nosystemd
 	pkgdesc = Next-generation syslogd with advanced networking and filtering capabilities
-	pkgver = 3.5.5
+	pkgver = 3.5.6
 	pkgrel = 1
 	url = http://www.balabit.com/network-security/syslog-ng/
 	arch = i686
@@ -20,12 +20,12 @@ pkgbase = syslog-ng-nosystemd
 	depends = udev
 	optdepends = logrotate: for rotating log files
 	optdepends = syslog-ng-openrc: syslog-ng openrc initscript
-	provides = syslog-ng=3.5.5
+	provides = syslog-ng=3.5.6
 	conflicts = syslog-ng
 	conflicts = syslog-ng-eudev
 	replaces = syslog-ng
 	replaces = syslog-ng-eudev
-	source = http://www.balabit.com/downloads/files/syslog-ng/sources/3.5.5/source/syslog-ng_3.5.5.tar.gz
+	source = http://www.balabit.com/downloads/files/syslog-ng/sources/3.5.6/source/syslog-ng_3.5.6.tar.gz
 	source = syslog-ng.conf
 	source = syslog-ng.conf.d
 	source = syslog-ng.logrotate
