@@ -1,7 +1,7 @@
 pkgbase = cannonball
 	pkgdesc = Enhanced OutRun Engine
 	pkgver = 0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://reassembler.blogspot.de/
 	install = cannonball.install
 	arch = i686
@@ -9,12 +9,14 @@ pkgbase = cannonball
 	license = custom
 	makedepends = cmake
 	makedepends = boost
+	makedepends = chrpath
 	depends = sdl
+	depends = gcc-libs
 	depends = bash
 	source = cannonball-0.22.tar.gz::https://github.com/djyt/cannonball/archive/v0.22.tar.gz
 	source = cannonball.sh
-	md5sums = 27b0a94bc9330ab529df8404f3b476fa
-	md5sums = 06ea516bc9a4454da988074465e25943
+	sha256sums = c3624bca9e7ef72eb3fcbfef22549231a7d124f470160efa5a449443a844e0c7
+	sha256sums = 3400daeb32033967e2e6a8202ab38943786f8b9d61b662e77d4caaeb47d89277
 
 pkgname = cannonball
 
