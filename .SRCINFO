@@ -1,7 +1,7 @@
 pkgbase = kdebase-workspace-consolekit
 	pkgdesc = kdebase-workspace with ConsoleKit support for non-systemd systems
 	pkgver = 4.11.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = kdebase-workspace.install
 	arch = i686
@@ -60,6 +60,7 @@ pkgbase = kdebase-workspace-consolekit
 	source = terminate-server.patch
 	source = kdm-xinitrd.patch
 	source = khotkeys-qt4.patch
+	source = fix-intel-driver.patch
 	sha1sums = 84d70bb81a5d3b42869b666a12963dea14a33722
 	sha1sums = 5db3a245201bd4a50e65aa2ef583cf5490e4f646
 	sha1sums = 660eae40a707d2711d8d7f32a93214865506b795
@@ -71,6 +72,7 @@ pkgbase = kdebase-workspace-consolekit
 	sha1sums = ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee
 	sha1sums = d509dac592bd8b310df27991b208c95b6d907514
 	sha1sums = aa9d2e5a69986c4c3d47829721ea99edb473be12
+	sha1sums = 0b7d847a3df097d066620d5da58b23bbbdc68dc9
 
 pkgname = kdebase-workspace-consolekit
 

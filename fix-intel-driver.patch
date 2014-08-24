@@ -1,0 +1,29 @@
+From: Martin Gräßlin <mgraesslin@kde.org>
+Date: Fri, 22 Aug 2014 05:37:42 +0000
+Subject: [libkwineffects] Require strict binding for intel driver
+X-Git-Url: http://quickgit.kde.org/?p=kde-workspace.git&a=commitdiff&h=04157f13de8d9b3028bca3a1832276ba96ae45fd
+---
+[libkwineffects] Require strict binding for intel driver
+
+According to driver devs it's a "buggy micro-optimisation", see
+https://bugs.freedesktop.org/show_bug.cgi?id=80349#c1
+
+CCBUG: 336589
+
+Backport from kwin.git e8241313fc979aefafc8c2a0207570d6394f1580
+---
+
+
+--- a/kwin/libkwineffects/kwinglplatform.cpp
++++ b/kwin/libkwineffects/kwinglplatform.cpp
+@@ -818,7 +818,8 @@
+             m_supportsGLSL = false;
+ 
+         m_limitedGLSL = m_supportsGLSL && m_chipClass < I965;
+-        m_looseBinding = true;
++        // see https://bugs.freedesktop.org/show_bug.cgi?id=80349#c1
++        m_looseBinding = false;
+ 
+         if (m_chipClass < I965) {
+             m_recommendedCompositor = OpenGL1Compositing;
+

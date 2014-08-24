@@ -7,7 +7,7 @@ pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
 pkgver=4.11.11
 _kdever=4.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -33,7 +33,7 @@ backup=('usr/share/config/kdm/kdmrc')
 source=("http://download.kde.org/stable/${_kdever}/src/${_pkgname}-${pkgver}.tar.xz"
 	'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
 	'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
-	'khotkeys-qt4.patch')
+	'khotkeys-qt4.patch' 'fix-intel-driver.patch')
 sha1sums=('84d70bb81a5d3b42869b666a12963dea14a33722'
           '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
           '660eae40a707d2711d8d7f32a93214865506b795'
@@ -44,7 +44,8 @@ sha1sums=('84d70bb81a5d3b42869b666a12963dea14a33722'
           'c079ebd157c836ba996190f0d2bcea1a7828d02c'
           'ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee'
           'd509dac592bd8b310df27991b208c95b6d907514'
-          'aa9d2e5a69986c4c3d47829721ea99edb473be12')
+          'aa9d2e5a69986c4c3d47829721ea99edb473be12'
+          '0b7d847a3df097d066620d5da58b23bbbdc68dc9')
 
 # avoid linking error when libsystemd-journal.so.0 doesn't exist in
 # user's system
@@ -69,6 +70,8 @@ prepare() {
 
 	# KDEBUG#202629
 	patch -p0 -i "${srcdir}"/terminate-server.patch
+	# KDEBUG#336589
+	patch -p1 -i "${srcdir}"/fix-intel-driver.patch
 
 	cd ../
 }
