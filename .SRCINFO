@@ -10,14 +10,16 @@ pkgbase = cannonball-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
+	makedepends = chrpath
 	depends = sdl
+	depends = gcc-libs
 	depends = bash
 	provides = cannonball
 	conflicts = cannonball
 	source = cannonball::git+https://github.com/djyt/cannonball.git
 	source = cannonball.sh
-	md5sums = SKIP
-	md5sums = 06ea516bc9a4454da988074465e25943
+	sha256sums = SKIP
+	sha256sums = 3400daeb32033967e2e6a8202ab38943786f8b9d61b662e77d4caaeb47d89277
 
 pkgname = cannonball-git
 
