@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Aaron Lindsay <aaron@aaronlindsay.com>
 
 pkgname=devkitppc-portlibs-zlib
@@ -17,9 +17,8 @@ build() {
   cd zlib-$pkgver
 
   source /etc/profile.d/devkitppc.sh
-  export CFLAGS="-g -O2"
-
-  CHOST=powerpc-eabi ./configure --prefix="$DEVKITPRO/portlibs/ppc" --static
+  CFLAGS="-g -O2" CHOST=powerpc-eabi \
+    ./configure --prefix="$DEVKITPRO/portlibs/ppc" --static
   make libz.a # only build library, no programs
 }
 
@@ -27,6 +26,9 @@ package() {
   cd zlib-$pkgver
 
   make DESTDIR="$pkgdir" install
+  # license
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  tail -n 31 README > "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   # remove useless stuff
   rm -r "$pkgdir"/opt/devkitpro/portlibs/ppc/share
 }
