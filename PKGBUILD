@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Micael Soder <zoulnix@gmail.com>
 
@@ -8,7 +8,7 @@ pkgrel=5
 _pkgdate=20081018
 pkgdesc="A classic Bomberman-like game with multiplayer support"
 arch=('i686' 'x86_64')
-url="http://$pkgname.sourceforge.net/"
+url="http://$pkgname.sourceforge.net"
 license=('GPL3')
 depends=('sdl_mixer')
 install=$pkgname.install
@@ -29,43 +29,35 @@ prepare() {
   # copy data files for generated library
   cp -r ../Bombermaaan_${pkgver}_${_pkgdate}_res/RES32 .
 
+  cd Bombermaaan
   # type fix
-  sed -i "s|\tchar \*backslash|\tconst char \*backslash|" Bombermaaan/winreplace.cpp
-
-  # set correct dir
-  sed -i "s|share/games/bombermaaan|share/bombermaaan|" Bombermaaan/CGame.cpp
-
-  # force our cflags/ldflags
-  sed -e "s|SDL_CFLAGS := |& $CXXFLAGS |" \
-    -e "s|SDL_LDFLAGS := |& $LDFLAGS |" -i Bombermaaan/Makefile
+  sed "s|\tchar \*backslash|\tconst char \*backslash|" -i winreplace.cpp
+  # adapt directory to arch standards
+  sed "s|share/games/bombermaaan|share/bombermaaan|" -i CGame.cpp
+  # add our cflags/ldflags
+  sed "s|SDL_CFLAGS :=|& $CXXFLAGS |;s|SDL_LDFLAGS :=|& $LDFLAGS |" -i Makefile
 }
 
 build() {
-  cd Bombermaaan_${pkgver}_${_pkgdate}_src
-
-  make
+  make -C Bombermaaan_${pkgver}_${_pkgdate}_src
 }
 
 package() {
   cd Bombermaaan_${pkgver}_${_pkgdate}_src
 
-  # install executable
+  # binary
   install -Dm755 Bombermaaan/Bombermaaan "$pkgdir"/usr/bin/bombermaaan
-
-  # install library
+  # library
   install -Dm644 RESGEN/libbombermaaan.so.1.0.0 "$pkgdir"/usr/lib/libbombermaaan.so.1.0.0
   ln -s libbombermaaan.so.1.0.0 "$pkgdir"/usr/lib/libbombermaaan.so.1
   ln -s libbombermaaan.so.1 "$pkgdir"/usr/lib/libbombermaaan.so
-
-  # install a level pack (by feillyne)
-  install -d "$pkgdir"/usr/share/$pkgname/Levels
-  # http://www.moddb.com/games/bombermaaan/addons/level-pack-151-levels
-  install -m644 ../Levels/* "$pkgdir"/usr/share/$pkgname/Levels/
-
-  # install desktop entry
-  install -Dm644 ../$pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-  install -Dm644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-
-  # install readme file
+  # doc
   install -Dm644 Readme.html "$pkgdir"/usr/share/doc/$pkgname/README.html
+  cd ..
+  # level pack by feillyne: http://www.moddb.com/games/bombermaaan/addons/level-pack-151-levels
+  install -d "$pkgdir"/usr/share/$pkgname/Levels
+  install -m644 Levels/* "$pkgdir"/usr/share/$pkgname/Levels
+  # .desktop entry
+  install -Dm644 $pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
