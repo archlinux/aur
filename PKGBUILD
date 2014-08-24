@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Aaron Lindsay <aaron@aaronlindsay.com>
 
 pkgname=devkitppc-portlibs-tremor-lowmem
@@ -17,10 +17,8 @@ build() {
   cd tremor-lowmem
 
   source /etc/profile.d/devkitppc.sh
-  export CFLAGS="-g -O2 -I$DEVKITPRO/portlibs/ppc/include -L$DEVKITPRO/portlibs/ppc/lib"
-
-  ./autogen.sh --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
-    --disable-shared --enable-static
+  CFLAGS="-g -O2" ./autogen.sh --prefix="$DEVKITPRO/portlibs/ppc" \
+    --host=powerpc-eabi --disable-shared --enable-static
   make
 }
 
@@ -28,4 +26,6 @@ package() {
   cd tremor-lowmem
 
   make DESTDIR="$pkgdir" install
+  # license
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
