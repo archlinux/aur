@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: rabyte <rabyte__gmail>
 
@@ -19,11 +19,9 @@ package() {
   # data
   install -d "$pkgdir"/usr/share/drascula
   install -m644 PACKET.* "$pkgdir"/usr/share/drascula
-
   # readme
   install -Dm644 readme.txt "$pkgdir"/usr/share/doc/$pkgname/readme.txt
-
   # license
-  install -Dm644 readme.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  sed '32,69!d' -i "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  tail -n 37 readme.txt > "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
