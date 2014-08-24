@@ -1,0 +1,16 @@
+pkgbase = drupal-l10n
+	pkgdesc = Drupal core translation files
+	pkgver = 7.31
+	pkgrel = 1
+	url = https://localize.drupal.org/translate/projects/drupal
+	arch = any
+	groups = drupal
+	license = nonfree
+	depends = drupal
+	source = get-locales-names.php
+	md5sums = 9849c031dd27ff240e31d8c153e898eb
+
+pkgname = drupal-l10n
+	pkgdesc = Drupal core translation: meta package
+	depends = drupal-l10n
+
