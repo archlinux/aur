@@ -1,0 +1,16 @@
+pkgbase = subbrute-git
+	pkgdesc = A (fast) multi-threaded python tool for enumerating subdomains
+	pkgver = 77.r8.gd4aab4f
+	pkgrel = 1
+	url = https://github.com/TheRook/subbrute
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python-dnspython
+	provides = subbrute
+	options = !emptydirs
+	source = subbrute::git+https://github.com/TheRook/subbrute.git
+	md5sums = SKIP
+
+pkgname = subbrute-git
+
