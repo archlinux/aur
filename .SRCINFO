@@ -1,0 +1,16 @@
+pkgbase = pyhamcrest
+	pkgdesc = A framework for writing matcher objects, allowing you to declaratively define "match" rules
+	pkgver = 1.8.0.r5.gf2786ca
+	pkgrel = 1
+	url = https://github.com/hamcrest/PyHamcrest
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = git+https://github.com/hamcrest/PyHamcrest.git
+	md5sums = SKIP
+
+pkgname = python2-hamcrest-git
+
+pkgname = python-hamcrest-git
+
