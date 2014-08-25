@@ -3,17 +3,17 @@
 # Contributor: M Rawash <mrawash@gmail.com>
 
 pkgname=urxvt-tabbedex-git
-pkgver=0.4.r9.g49c1514
-pkgrel=2
+pkgver=0.4.r36.g3b82917
+pkgrel=1
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
 arch=("any")
-url='http://github.com/stepb/urxvt-tabbedex'
+url='https://github.com/mina86/urxvt-tabbedex'
 license=("GPL")
 depends=('rxvt-unicode')
 makedepends=('git')
 provides=('urxvt-tabbedex')
 conflicts=('urxvt-tabbedex')
-source=('git+https://github.com/stepb/urxvt-tabbedex.git')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
