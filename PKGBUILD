@@ -1,5 +1,5 @@
 pkgname=libesedb
-pkgver=20140406
+pkgver=20140803
 pkgrel=1
 pkgdesc="Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format."
 url="http://code.google.com/p/libesedb/"
@@ -12,8 +12,8 @@ conflicts=()
 replaces=()
 backup=()
 install=''
-source=("https://googledrive.com/host/0B3fBvzttpiiSN082cmxsbHB0anc/libesedb-experimental-20140406.tar.gz")
-sha1sums=('4649cdc6798e93b634ebe1e2c99af5c9fa4b5662')
+source=("https://255adcba056b7d59fd55a94f0ea02de0cf110bfb.googledrive.com/host/0B3fBvzttpiiSN082cmxsbHB0anc/libesedb-experimental-20140803.tar.gz")
+sha1sums=('9ba9e56ad3822dd32942a62d7f162e9910a3ef08')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
