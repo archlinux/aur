@@ -2,7 +2,7 @@
 
 pkgname=wallabag
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Self hostable application for saving web pages'
 arch=('any')
 url='http://www.wallabag.org/'

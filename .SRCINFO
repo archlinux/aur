@@ -1,7 +1,7 @@
 pkgbase = wallabag
 	pkgdesc = Self hostable application for saving web pages
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wallabag.org/
 	install = wallabag.install
 	arch = any
