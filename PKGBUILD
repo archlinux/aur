@@ -22,10 +22,7 @@ _package() {
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_python2-hamcrest() {
-    _package python2
-}
-
-package_python-hamcrest() {
-    _package python
-}
+for _name in "${pkgname[@]}"; do
+    _splitname=(${_name//-/ }) # For retriving the python version needed
+    eval "package_${_name}() { _package ${_splitname[0]}; }"
+done
