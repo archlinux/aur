@@ -1,0 +1,14 @@
+post_install () {
+	echo "==> To enable tabbedex, place the following line in your X resources file"
+	echo "==> URxvt.perl-ext-common:  default,tabbedex"
+	echo "==> If you don't have a X resources file set up, check the wiki."
+	echo "==> For documentation see the urxvtperl man page (section on the tabbed"
+	echo "==> extension), and also see the comments at the top of the tabbedex"
+	echo "==> source code in /usr/lib/urxvt/perl/tabbedex."
+}
+
+post_upgrade () {
+	post_install $1
+}
+
+# vim: set ts=4 sw=4 noet:
