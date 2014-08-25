@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Java Runtime
 Comment=Java Runtime Jar Executor
-Exec=/usr/lib/jvm/java-7-openjdk/jre/bin/java -jar %f
+Exec=/usr/lib/jvm/java-default-runtime/jre/bin/java -jar %f
 Icon=javaws
 Terminal=false
 Type=Application
