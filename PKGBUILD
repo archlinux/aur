@@ -29,7 +29,7 @@ prepare() {
   cd "$srcdir/rsu-client-$pkgver"
 
   # patch commited upstream: cfb6286ad7fbb36b5745fa7b16cf523cd1fc1cee
-  patch -p1 -i "$srcdir/rsu-client-2.4.9-combo-fix.patch"
+  patch -p1 -i "$srcdir/rsu-client-4.2.9-combo-fix.patch"
 }
 
 package() {
