@@ -4,20 +4,20 @@
 # Contributor: twa022 <twa022@gmail.com>
 
 pkgname=usb-creator
-pkgver=0.2.59
+pkgver=0.2.61
 pkgrel=1
 pkgdesc="Create bootable USB from a LiveCD or disc image of Ubuntu"
 arch=('any')
 url="https://launchpad.net/usb-creator"
 license=('GPL3')
-depends=('udisks2' 'syslinux' 'dosfstools' 'mtools' 'cdrkit' 'python-dbus' 'python-gobject'
-         'hicolor-icon-theme')
+depends=('udisks2' 'syslinux' 'parted' 'dosfstools' 'mtools' 'cdrkit'
+         'python-dbus' 'python-gobject' 'hicolor-icon-theme')
 makedepends=('python-distutils-extra')
 optdepends=('kdebindings-python: for KDE frontend' 'gtk3: for GTK frontend')
 install=usb-creator.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz"
         "remove-ubuntu-version-check.patch")
-sha256sums=('5cc13df772cb59a146d346ea0d4cd20bca51e110c8c49b0009541fe2428dcd09'
+sha256sums=('51cd61f18a7695deab639bcde56a18d7be1485c5fcc27e7e403888f65152576e'
             'bdc29966cda4921e395b07530e0d6a0bda81f99d4b0948fadfda983e05ab51cb')
 
 prepare() {
