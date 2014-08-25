@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xde-theme
-pkgver=1.1.123
+pkgver=1.1.125
 pkgrel=1
 pkgdesc="Theme and style setting utilities for the X Desktop Environment (XDE)"
 groups=('xde')
