@@ -15,20 +15,13 @@ provides=('urxvt-tabbedex')
 conflicts=('urxvt-tabbedex')
 install=urxvt-tabbedex-git.install
 source=('git+https://github.com/stepb/urxvt-tabbedex.git'
-		'0001-make-urxvt-tabbedex-work-with-perl-5.18.patch'
 		'urxvt-tabbedex-git.install')
 md5sums=('SKIP'
-         '92d581a40779da3127c88fdc7d10257f'
          'a07c8a1c46379ab763a113d3d9f4111e')
 
 pkgver() {
 	cd urxvt-tabbedex
 	git describe --tags --long | sed 's/^tabbedex-//; s/-/-r/; s/-/./g'
-}
-
-prepare() {
-	cd urxvt-tabbedex
-	git apply ../0001-make-urxvt-tabbedex-work-with-perl-5.18.patch
 }
 
 package() {

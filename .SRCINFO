@@ -13,10 +13,8 @@ pkgbase = urxvt-tabbedex-git
 	provides = urxvt-tabbedex
 	conflicts = urxvt-tabbedex
 	source = git+https://github.com/stepb/urxvt-tabbedex.git
-	source = 0001-make-urxvt-tabbedex-work-with-perl-5.18.patch
 	source = urxvt-tabbedex-git.install
 	md5sums = SKIP
-	md5sums = 92d581a40779da3127c88fdc7d10257f
 	md5sums = a07c8a1c46379ab763a113d3d9f4111e
 
 pkgname = urxvt-tabbedex-git
