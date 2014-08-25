@@ -1,7 +1,7 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
-pkgver=4.2.8
-pkgrel=3
+pkgver=4.2.9
+pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
@@ -19,8 +19,18 @@ optdepends=(
 )
 conflicts=('runescape-client-bin')
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v$pkgver.tar.gz")
-md5sums=('1277f3c56260107cc1231ed7627bda6b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v$pkgver.tar.gz"
+  "rsu-client-4.2.9-combo-fix.patch"
+)
+md5sums=('07bab08f979705c7c85a99cd4233654f'
+         'bcfb82e511a902dbcff955bc5bde5fb7')
+
+prepare() {
+  cd "$srcdir/rsu-client-$pkgver"
+
+  # patch commited upstream: cfb6286ad7fbb36b5745fa7b16cf523cd1fc1cee
+  patch -p1 -i "$srcdir/rsu-client-2.4.9-combo-fix.patch"
+}
 
 package() {
   local _instdir="$pkgdir"/opt/runescape
