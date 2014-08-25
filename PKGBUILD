@@ -13,11 +13,8 @@ depends=('rxvt-unicode')
 makedepends=('git')
 provides=('urxvt-tabbedex')
 conflicts=('urxvt-tabbedex')
-install=urxvt-tabbedex-git.install
-source=('git+https://github.com/stepb/urxvt-tabbedex.git'
-		'urxvt-tabbedex-git.install')
-md5sums=('SKIP'
-         'a07c8a1c46379ab763a113d3d9f4111e')
+source=('git+https://github.com/stepb/urxvt-tabbedex.git')
+md5sums=('SKIP')
 
 pkgver() {
 	cd urxvt-tabbedex
@@ -27,5 +24,3 @@ pkgver() {
 package() {
 	install -Dm644 urxvt-tabbedex/tabbedex "$pkgdir"/usr/lib/urxvt/perl/tabbedex
 }
-
-# vim: set ts=4 sw=4 noet:

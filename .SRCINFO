@@ -5,7 +5,6 @@ pkgbase = urxvt-tabbedex-git
 	pkgver = 0.4.r9.g49c1514
 	pkgrel = 2
 	url = http://github.com/stepb/urxvt-tabbedex
-	install = urxvt-tabbedex-git.install
 	arch = any
 	license = GPL
 	makedepends = git
@@ -13,9 +12,7 @@ pkgbase = urxvt-tabbedex-git
 	provides = urxvt-tabbedex
 	conflicts = urxvt-tabbedex
 	source = git+https://github.com/stepb/urxvt-tabbedex.git
-	source = urxvt-tabbedex-git.install
 	md5sums = SKIP
-	md5sums = a07c8a1c46379ab763a113d3d9f4111e
 
 pkgname = urxvt-tabbedex-git
 
