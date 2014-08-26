@@ -5,6 +5,7 @@ pkgbase = networkmanager-openswan
 	url = http://ftp.acc.umu.se/pub/GNOME/sources/NetworkManager-openswan/
 	arch = i686
 	arch = x86_64
+	arch = mips64el
 	license = GPL
 	makedepends = intltool
 	depends = openswan
