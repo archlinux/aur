@@ -14,10 +14,20 @@ source=("https://pypi.python.org/packages/source/P/${_pkgname}/${_pkgname}-${pkg
 md5sums=('2a999f6909060cb6b81b894b57be7a91')
 sha256sums=('0ffdff8385e2b5efb00e50478e5f41aeecb3b55e934b16817c2536704bbd2a2f')
 
+build() {
+    for pybin in python python2; do
+        _dir="${srcdir}/${pybin}-${_pkgname}-${pkgver}"
+        mkdir -p "${_dir}"
+        cd "${_dir}"
+        cp -r "${srcdir}/${_pkgname}-${pkgver}"/. .
+        ${pybin} setup.py build
+    done
+}
+
 _package() {
     pybin=$1
     depends=(${pybin})
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pybin}-${_pkgname}-${pkgver}"
     ${pybin} setup.py install --root="${pkgdir}" --optimize=1
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
