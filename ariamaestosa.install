@@ -1,0 +1,19 @@
+post_install() {
+  cd /usr/share/ariamaestosa/
+  xdg-icon-resource install --context mimetypes --size 64 aria_doc.png application-x-ariamaestosa
+  xdg-mime install application-x-ariamaestosa.xml
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  update-desktop-database /usr/share/applications
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  xdg-mime uninstall /usr/share/ariamaestosa/application-x-ariamaestosa.xml
+  xdg-icon-resource uninstall --context mimetypes --size 64 application-x-ariamaestosa
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  update-desktop-database /usr/share/applications
+}
+# vim:set ts=2 sw=2 et:
