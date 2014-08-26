@@ -10,9 +10,9 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.5.0
-_pkgver=2278
-pkgrel=2
+pkgver=1.5.1
+_pkgver=2398
+pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=("http://synergy-project.org/files/packages/synergy-${pkgver}-r${_pkgver}
         "synergys_at.socket"
         "synergys_at.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
-sha1sums=('808f1d793e5e977241bbef7e28fd02990adf8a47'
+sha1sums=('b7bf0384d914772da9f8c49453a47cf3405612fa'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
           '4bd12cd0674ef317af1f7df32d84e94582855140'
           '8e321e664ae4b7a763175524dd938a88d85c7909')
