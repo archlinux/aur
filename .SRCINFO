@@ -1,7 +1,7 @@
 pkgbase = zxtune-git
 	pkgdesc = Portable toolkit for ZX-Spectrum music playing
 	pkgver = r3077.r0.g0e3007d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zxtune.bitbucket.org
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = zxtune-git
 	depends = boost-libs
 	depends = gcc-libs
 	depends = qt4
+	depends = zlib
 	optdepends = alsa-lib: for ALSA output support
 	optdepends = lame: for conversion to .mp3 format
 	optdepends = libvorbis: for conversion to .ogg format
