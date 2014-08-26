@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=pagmo-git
-pkgver=20140320
-pkgrel=2
+pkgver=20140826
+pkgrel=1
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model."
 arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo"
@@ -16,7 +16,7 @@ conflicts=('pagmo')
 _gitroot="git://github.com/esa/pagmo"
 _gitname="pagmo"
 
-source=("${_gitname}"::${_gitroot}#branch=development)
+source=("${_gitname}"::${_gitroot}#branch=master)
 md5sums=('SKIP')
 
 # Build type
@@ -31,6 +31,9 @@ _cmake_options=(
   -D ENABLE_TESTS=OFF
   -D INSTALL_HEADERS=ON
   -D PYGMO_PYTHON_VERSION=3
+  -D PYTHON_LIBRARY=/usr/bin/python
+  -D PYTHON_INCLUDE_DIR=/usr/lib
+  -D PYTHON_EXECUTABLE=/usr/bin/python
 )
 
 pkgver() {
