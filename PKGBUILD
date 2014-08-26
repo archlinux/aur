@@ -18,10 +18,20 @@ pkgver() {
     git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^V//'
 }
 
+build() {
+    for pybin in python python2; do
+        _dir="${srcdir}/${pybin}-${_pkgname}-${pkgver}"
+        mkdir -p "${_dir}"
+        cd "${_dir}"
+        cp -r "${srcdir}/${_pkgname}-${pkgver}"/. .
+        ${pybin} setup.py build
+    done
+}
+
 _package() {
     pybin=$1
     depends=(${pybin})
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${pybin}-${_pkgname}-${pkgver}"
     ${pybin} setup.py install --root="${pkgdir}" --optimize=1
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
