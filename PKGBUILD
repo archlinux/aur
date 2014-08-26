@@ -10,7 +10,7 @@
 pkgbase=networkmanager-ifupdown
 pkgname=(networkmanager-ifupdown libnm-glib-ifupdown)
 pkgver=0.9.8.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
