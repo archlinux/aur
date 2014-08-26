@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=percona-nagios-plugins
-pkgver=1.0.2
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Enterprise-grade MySQL monitoring plugins for nagios"
 arch=("any")
@@ -18,4 +18,4 @@ package() {
 	done
 }
 
-sha256sums=('da84cfe89637292da15ddb1e66f67ad9703fa21392d8d49e664ad08f7aa45585')
+sha256sums=('ce6b6f19ac6d6c0cbeead5bd3a54adcc91dc51bc14e81c4f0e5109cc5ee8a495')
