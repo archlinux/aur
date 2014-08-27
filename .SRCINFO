@@ -1,6 +1,6 @@
 pkgbase = cdebootstrap-static
 	pkgdesc = Bootstrap a Debian system
-	pkgver = 0.5.10
+	pkgver = 0.6.3
 	pkgrel = 2
 	url = http://packages.debian.org/search?keywords=cdebootstrap
 	arch = i686
