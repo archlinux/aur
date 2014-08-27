@@ -1,3 +1,4 @@
 export E_WL_FORCE=drm
-export ELM_ENGINE=wayland_shm
-/opt/enlightenment-wayland/bin/enlightenment_start -profile ~/.e-wayland
+export ELM_DISPLAY=wl
+export ELM_ACCEL=none
+/opt/enlightenment-wayland/bin/enlightenment_start -profile
