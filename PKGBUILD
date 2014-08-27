@@ -14,7 +14,6 @@ depends=('elementary-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
-            'bc: calculator in everything module'
             'bluez4: bluetooth module'
             'connman: network module'
             'gdb: create backtraces on crash'
