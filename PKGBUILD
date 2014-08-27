@@ -14,7 +14,7 @@ optdepends=(
 'flac: for conversion to .flac format'
 'curl: for accessing data via network schemes'
 )
-makedepends=('subversion' 'gcc' 'zip' 'boost')
+makedepends=('git' 'gcc' 'zip' 'boost')
 provides=('zxtune')
 options=(!strip !docs !libtool !emptydirs !zipman makeflags)
 source=('git+https://bitbucket.org/zxtune/zxtune.git')
