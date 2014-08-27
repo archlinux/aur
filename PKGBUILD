@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=36.0.1985.143
+pkgver=37.0.2062.94
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.default
         chromium-nacl-bootstrap-cflags.patch
         chromium.sh)
-sha256sums=('0631d7442991f0b4b942477c58a9294e9e3eb21ffd3c8626e4ab663b8345c316'
+sha256sums=('d27c19580b74cbe143131f0bc097557b3b2fb3d2be966e688d8af51a779ce533'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             'd82bafd8d4d6517c2d420b2987fdbe1dfcc32d5fed74a6c0011bcb2f868225c3'
@@ -69,7 +69,9 @@ prepare() {
   ln -s /usr/bin/clang++ third_party/llvm-build/Release+Asserts/bin/
   ln -s /usr/bin/llvm-symbolizer third_party/llvm-build/Release+Asserts/bin/
   # clang 3.4 doesn't support this option
-  sed -i '/-Wno-absolute-value/d' build/common.gypi
+  sed -i '/-Wno-absolute-value/d' \
+    build/common.gypi \
+    third_party/ffmpeg/ffmpeg.gyp
 }
 
 build() {
@@ -120,6 +122,9 @@ build() {
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1)
 
+  # https://code.google.com/p/chromium/issues/detail?id=386097
+  third_party/libaddressinput/chromium/tools/update-strings.py
+
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
   build/gyp_chromium --depth=. "${_chromium_conf[@]}"
 
@@ -138,6 +143,7 @@ package() {
 
   cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} \
     out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} \
+    out/Release/libpdf.so \
     "$pkgdir/usr/lib/chromium/"
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
@@ -145,7 +151,8 @@ package() {
     "$pkgdir/usr/lib/chromium/chromedriver" \
     "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
   strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so" \
-    "$pkgdir/usr/lib/chromium/libppGoogleNaClPluginChrome.so"
+    "$pkgdir/usr/lib/chromium/libppGoogleNaClPluginChrome.so" \
+    "$pkgdir/usr/lib/chromium/libpdf.so"
 
   # Allow users to override command-line options
   install -Dm644 "$srcdir/chromium.default" "$pkgdir/etc/chromium/default"
