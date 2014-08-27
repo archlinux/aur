@@ -1,0 +1,20 @@
+pkgbase = wargus-bzr
+	pkgdesc = Warcraft 2 Mod that allows you to play Warcraft2 with the Stratagus engine
+	pkgver = r1757
+	pkgrel = 1
+	url = https://launchpad.net/wargus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = stratagus-bzr
+	depends = ffmpeg2theora
+	depends = cdparanoia
+	depends = timidity++
+	depends = gtk2
+	provides = wargus
+	conflicts = wargus
+	source = wargus::bzr+http://bazaar.launchpad.net/~stratagus/wargus/trunk/
+	sha256sums = SKIP
+
+pkgname = wargus-bzr
+
