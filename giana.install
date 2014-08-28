@@ -1,13 +1,7 @@
 
 post_install() {
   # display some info
-  echo "You must be a member of the games group for the save functionality to work."
-  echo "For command line options see /usr/share/doc/giana/options.txt"
-
-  # allow saving of highscore and config (doing it here, so the do not get deleted on update)
-  touch /opt/giana/{giana.cfg,hiscores.dat,passwd.dat}
-  chgrp games /opt/giana/{giana.cfg,hiscores.dat,passwd.dat}
-  chmod g+w /opt/giana/{giana.cfg,hiscores.dat,passwd.dat}
+  echo "For command line options see '/usr/share/doc/giana/options.txt'."
 }
 
 post_upgrade() {
@@ -15,7 +9,11 @@ post_upgrade() {
 }
 
 post_remove() {
-  if [ -d /opt/giana ]; then
-    echo "You may delete /opt/giana if you do not want to preserve settings and highscores."
+  echo "You may safely delete the '~/.giana' directory containing the config/highscore"
+  echo "files, if you do not want to preserve them."
+
+  # leftover files from old behaviour
+  if [ -d opt/giana ]; then
+    echo "You may also safely delete /opt/giana and it's contents."
   fi
 }
