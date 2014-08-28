@@ -5,9 +5,10 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.11.2
-_pkgver=$pkgver
-pkgrel=2
+pkgver=4.12.0_rc1
+#_pkgver=$pkgver
+_pkgver=4.12.0-rc1
+pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
 url=("http://www.rpm.org/")
@@ -17,10 +18,10 @@ makedepends=('python2' 'python')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
-#source=(http://rpm.org/releases/testing/rpm-${_pkgver}.tar.bz2
-source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
+#source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
+source=(http://rpm.org/releases/testing/rpm-${_pkgver}.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch)
-md5sums=('876ac9948a88367054f8ddb5c0e87173'
+md5sums=('fbc9b72ddfdafe07230e6d54a9b50f09'
          '1f7f4f3b3a93ff6d2f600c7751ae25ef'
          '62a62de128345a8a7a6195fd59f8cd71')
 
