@@ -1,7 +1,7 @@
 pkgbase = cairo-clock
-	pkgdesc = An analog clock displaying the system-time, running counter-clockwise.
+	pkgdesc = An analog clock displaying the system-time
 	pkgver = 0.3.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://macslow.org
 	arch = i686
 	arch = x86_64
