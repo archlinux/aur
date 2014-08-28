@@ -14,10 +14,6 @@ pkgbase = xli
 	source = ftp://ftp2.de.debian.org/debian/pool/main/x/xli/xli_1.17.0+20061110-4.diff.gz
 	source = c_includes.diff
 	source = makefile.patch
-	md5sums = 2cdef0c420f54f0cf668f751fd581706
-	md5sums = fc1985c39e6c8ae7bacce5aa1d9cb190
-	md5sums = 4d0db38476f7fd80ae66fb7cd431e0bd
-	md5sums = b366cc06ed57bb04e3f4293dccb70aff
 
 pkgname = xli
 
