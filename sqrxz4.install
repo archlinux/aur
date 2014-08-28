@@ -1,0 +1,5 @@
+
+post_remove() {
+  echo "You may safely delete the '~/.sqrxz4' directory containing the config/highscore"
+  echo "files, if you do not want to preserve them."
+}
