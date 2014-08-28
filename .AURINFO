@@ -16,8 +16,6 @@ pkgbase = hal
 	depends = v4l-utils
 	optdepends = acpid>=2.0
 	optdepends = pm-utils>=1.2.5
-	options = !libtool
-	options = !makeflags
 	source = http://hal.freedesktop.org/releases/hal-0.5.14.tar.gz
 	source = hald
 	source = hal.service
@@ -26,14 +24,8 @@ pkgbase = hal
 	source = hal-glib-2.3-compile-fix.patch
 	source = hal-libudev-events.patch
 	source = badvok-compile-fix.patch
-	md5sums = e9163df591a6f38f59fdbfe33e73bf20
-	md5sums = 4cdfc673ad65ddb51919f5a757f62145
-	md5sums = ca4a7932fe7e8acbfa17245b62cc3b9b
-	md5sums = 185dd5d6ffc703ec8395b4eb3a1ae498
-	md5sums = 68209ba62b2a19537bfa459fdef70ed3
-	md5sums = c126a66766118f83a171511832d1b619
-	md5sums = d115a2f1793121b08dd58527c1530d0b
-	md5sums = 7acfdd590c98272930ddfd37f1c7f5a3
+	options = !libtool
+	options = !makeflags
 
 pkgname = hal
 
