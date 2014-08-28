@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=xump - The Final Run
+Exec=xump
+Icon=xump
+Type=Application
+Categories=Game;
+Terminal=false
