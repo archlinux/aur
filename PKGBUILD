@@ -8,15 +8,15 @@
 _pkgname=rxvt-unicode
 pkgname=${_pkgname}-better-wheel-scrolling
 pkgver=9.20
-pkgrel=2
+pkgrel=3
 pkgdesc="An unicode enabled rxvt-clone terminal emulator (urxvt) w/ better wheel scrolling (VTE-like) (& no utmp/wtmp support)"
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
 license=('GPL')
-depends=('gcc-libs' 'libxft' 'gdk-pixbuf2')
+depends=('rxvt-unicode-terminfo' 'gcc-libs' 'libxft' 'gdk-pixbuf2')
 optdepends=('perl: lots of utilities') # 'gtk2-perl: to use the urxvt-tabbed')
-provides=('rxvt-unicode')
-conflicts=('rxvt-unicode')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2 \
         ${_pkgname}.desktop
         clear.patch secondaryWheel.patch)
@@ -57,8 +57,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  install -d "${pkgdir}/usr/share/terminfo"
-  export TERMINFO="${pkgdir}/usr/share/terminfo"
+  export TERMINFO=/dev/null
   make DESTDIR="${pkgdir}" install
 #  # for utmp/wtmp support
 #  chgrp utmp $pkgdir/usr/bin/urxvt
