@@ -1,6 +1,6 @@
 pkgbase = python-configshell-fb
 	pkgdesc = python framework for building simple CLI applications (free branch)
-	pkgver = 1.1.fb13
+	pkgver = 1.1.fb14
 	pkgrel = 1
 	url = https://github.com/agrover/configshell-fb
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-configshell-fb
 	depends = python-urwid
 	provides = python-configshell
 	conflicts = python-configshell
-	source = https://fedorahosted.org/releases/t/a/targetcli-fb/configshell-fb-1.1.fb13.tar.gz
-	md5sums = a10cdd7bc418bb86c71aebff112bc63a
+	source = https://fedorahosted.org/releases/t/a/targetcli-fb/configshell-fb-1.1.fb14.tar.gz
+	sha256sums = 280b6a1361a0d27804e281d54d5513f7dc2258a7a8404ebd9ae53f97ae992d26
 
 pkgname = python-configshell-fb
 
