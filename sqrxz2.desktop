@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=sqrxz2
+Name=sqrxz2 - Two seconds until death
 Exec=sqrxz2
 Icon=sqrxz2
 Type=Application
-Comment=A fast paced jump'n'run which will please the hardcore gamer amongst you (Part II).
+Comment=A fast paced jump'n'run (Part II).
 Categories=Game;
 Terminal=false

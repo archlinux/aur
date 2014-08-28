@@ -1,14 +1,10 @@
 
-post_install() {
-  echo "You need to be in the games group for save functionality"
-}
-
-post_upgrade() {
-  post_install
-}
-
 post_remove() {
-  if [ -d /opt/sqrxz2 ]; then
-    echo "You may safely delete /opt/sqrxz2 and it's contents (config/highscore files) if you don't need them."
+  echo "You may safely delete the '~/.sqrxz2' directory containing the config/highscore"
+  echo "files, if you do not want to preserve them."
+
+  # leftover files from old behaviour
+  if [ -d opt/sqrxz2 ]; then
+    echo "You may also safely delete /opt/sqrxz2 and it's contents."
   fi
 }
