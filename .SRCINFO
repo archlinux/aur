@@ -1,19 +1,26 @@
 pkgbase = srb2
 	pkgdesc = A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = http://www.srb2.org
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = subversion
 	makedepends = mesa
 	makedepends = glu
 	depends = sdl2_mixer
 	depends = libpng
-	depends = srb2-data=2.1.10
-	source = https://github.com/STJr/SRB2/archive/SRB2_release_2.1.10.zip
-	sha256sums = 9a39b994af6775d519e6e3bc8888c92da23e49db24538ad4f9063fe63fb51acf
+	depends = srb2-data=2.1.11
+	source = https://github.com/STJr/SRB2/archive/SRB2_release_2.1.11.zip
+	source = http://rosenthalcastle.org/srb2/SRB2-v2111-patch.zip
+	source = https://raw.githubusercontent.com/STJr/SRB2/SRB2_release_2.1.11/src/sdl/SDL_icon.xpm
+	source = srb2.desktop
+	source = srb2-opengl.desktop
+	sha256sums = 675074b1e326f064e62fe5367c03c970504c1b8aa851760cd4c2e1ecc6be44d1
+	sha256sums = 49a5af21f772938c39082942b1376c901f9ceeec2b5d971977d7d493152a8101
+	sha256sums = 25b73393baa18ac60782c3b4172c1d4345649322e420bbfe284e542445987d3f
+	sha256sums = ac9fa63f29ad9413797da8c6f0a4f76fa6f4dd0710d1e84a457a8c42cf6df4f9
+	sha256sums = f696bab390d2b1028bf2f5c5d4d838c0981dc211cec4c4a8f349b7ec0580e701
 
 pkgname = srb2
 
