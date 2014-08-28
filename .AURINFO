@@ -13,7 +13,6 @@ pkgbase = mlpack
 	depends = lapack
 	depends = libxml2>=2.6.0
 	source = http://www.mlpack.org/files/mlpack-1.0.9.tar.gz
-	md5sums = d32b7e3f3366e8ff06094853251f7710
 
 pkgname = mlpack
 
