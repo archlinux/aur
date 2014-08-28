@@ -7,13 +7,13 @@
 pkgname=rpm-org
 pkgver=4.11.2
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
 url=("http://www.rpm.org/")
 license=('GPL2')
 depends=('lua' 'file' 'nss>=3.12' 'popt' 'elfutils' 'libarchive')
-makedepends=('python2')
+makedepends=('python2' 'python')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
@@ -61,4 +61,10 @@ package() {
 	ln -s rpm rpmquery
 	ln -s rpm rpmverify
 	rm -r ${pkgdir}/bin/
+
+	# also install python 3 files
+	# building with python 3 files as default doesn't seem to work
+	cd ${srcdir}/rpm-${_pkgver}
+	cd python
+	python setup.py install --root="$pkgdir/" --optimize=1
 }

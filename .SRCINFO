@@ -1,12 +1,13 @@
 pkgbase = rpm-org
 	pkgdesc = RPM Package Manager - RPM.org fork, used in major RPM distros
 	pkgver = 4.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rpm.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = python2
+	makedepends = python
 	depends = lua
 	depends = file
 	depends = nss>=3.12
