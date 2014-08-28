@@ -2,8 +2,8 @@
 
 pkgname=cairo-clock
 pkgver=0.3.4
-pkgrel=4
-pkgdesc='An analog clock displaying the system-time'
+pkgrel=3
+pkgdesc='An analog clock displaying the system-time, running counter-clockwise.'
 arch=('i686' 'x86_64')
 url='http://macslow.org'
 license=('GPL')
