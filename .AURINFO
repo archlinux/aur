@@ -1,0 +1,16 @@
+pkgbase = xasteroids
+	pkgdesc = Classical asteroids game for X11
+	pkgver = 5
+	pkgrel = 1
+	url = http://packages.debian.org/en/source/squeeze/xasteroids
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx11
+	source = http://www.ibiblio.org/pub/Linux/games/arcade/asteroids/xasteroids.tgz
+	source = 01_legacy.patch
+	source = 02_xast.patch
+	source = COPYING
+
+pkgname = xasteroids
+
