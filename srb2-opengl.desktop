@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Sonic Robo Blast 2 (OpenGL)
-Exec=srb2 -opengl
-Icon=srb2
-Terminal=false
-Categories=Game;
