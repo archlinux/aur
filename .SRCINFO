@@ -1,8 +1,8 @@
 pkgbase = sqrxz3
-	pkgdesc = A fast paced jump'n'run which will please the hardcore gamer amongst you (Part III)
+	pkgdesc = A fast paced jump'n'run (Part III - 'Adventure for Love')
 	pkgver = 1.05r
-	pkgrel = 1
-	url = http://sqrxz.de/
+	pkgrel = 2
+	url = http://sqrxz.de
 	install = sqrxz3.install
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = sqrxz3
 	source = sqrxz3.png
 	source = sqrxz3.sh
 	source = sqrxz3.desktop
-	sha256sums = b74a4bc4010e283a6c01380aa3bb49b98d228640d73319f5c75e036dcd1ac14a
+	sha256sums = 4fae264c4ba16c4d55f9fdad4a9925181c77135c55e4e30e1ff20ca7db3beed9
 	sha256sums = d07ee6bb33dfd8187b23450bad58a2f4d68e217284d345e341a761aca14eb8c2
-	sha256sums = 0019a50f899f9534c1abc2e0e6519d558d239fa5f0e2c50fdb3d3f23d566c6a0
-	sha256sums = 194164042e5d394ce1492548002351c23da0b274f64a92851d87fec4ecb1d440
+	sha256sums = 0468a24a04256865381f5dd0c92dfed4ed6f594270760f32678ebe2cb9bc1b5c
+	sha256sums = 65991c5ccf77f31b012be5d7e8ce4a34c5dc2714e2700ebe11e81b42bfec9130
 
 pkgname = sqrxz3
 
