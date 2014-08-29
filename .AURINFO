@@ -12,7 +12,6 @@ pkgbase = xtitle-git
 	provides = xtitle
 	conflicts = xtitle
 	source = git://github.com/baskerville/xtitle.git
-	md5sums = SKIP
 
 pkgname = xtitle-git
 
