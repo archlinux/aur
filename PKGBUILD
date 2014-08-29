@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=blackbox-git
-pkgver=0.70.2.23
-pkgrel=2
+pkgver=0.70.2.27
+pkgrel=1
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/blackboxwm"
@@ -20,15 +20,9 @@ pkgver() {
   git describe --always | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
 }
 
-prepare() {
-  cd $pkgname
-  sed "s|^AC_INIT(.*$|AC_INIT([blackbox], [$pkgver], [http://github.com/bbidulock/blackboxwm])|" \
-    -i configure.ac
-}
-
 build() {
   cd $pkgname
-  autoreconf -fiv
+  ./autogen.sh
   ./configure --prefix=/usr --mandir=/usr/share/man
   make V=0
 }
