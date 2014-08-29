@@ -1,0 +1,16 @@
+pkgbase = ruby-guard-nanoc
+	pkgdesc = Guard helper gem for nanoc static site generator
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/guard/guard-nanoc
+	arch = any
+	license = MIT
+	depends = ruby-guard
+	depends = nanoc
+	noextract = guard-nanoc-1.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/guard-nanoc-1.0.2.gem
+	sha256sums = 48366c0176ffdaa560401f609e724a1fbe62500ba9ff6366906c0531f8b1d185
+
+pkgname = ruby-guard-nanoc
+
