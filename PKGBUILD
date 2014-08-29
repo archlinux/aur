@@ -5,7 +5,7 @@
 
 pkgname=usb-creator
 pkgver=0.2.61
-pkgrel=1
+pkgrel=2
 pkgdesc="Create bootable USB from a LiveCD or disc image of Ubuntu"
 arch=('any')
 url="https://launchpad.net/usb-creator"
@@ -24,6 +24,8 @@ prepare() {
   cd $pkgname-$pkgver
 
   patch -Np1 < ../remove-ubuntu-version-check.patch
+  # fix location of bootsector for syslinux 6.xx
+  sed 's|mbr/mbr.bin|bios/mbr.bin|' -i bin/usb-creator-helper
 }
 
 package() {
