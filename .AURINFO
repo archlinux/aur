@@ -1,7 +1,7 @@
 pkgbase = afterstep-git
 	pkgdesc = A Window Manager based on NextStep Interface
-	pkgver = 2.2.12.r10.ge8ac3c9
-	pkgrel = 3
+	pkgver = 2.2.12.r11.g8e4c423
+	pkgrel = 1
 	url = http://www.afterstep.org
 	arch = i686
 	arch = x86_64

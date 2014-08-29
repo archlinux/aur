@@ -3,8 +3,8 @@
 pkgname=afterstep-git
 _name=AfterStep
 _pkgname=afterstep
-pkgver=2.2.12.r10.ge8ac3c9
-pkgrel=3
+pkgver=2.2.12.r11.g8e4c423
+pkgrel=1
 pkgdesc="A Window Manager based on NextStep Interface"
 arch=('i686' 'x86_64')
 url="http://www.afterstep.org"
