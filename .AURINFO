@@ -1,7 +1,7 @@
 pkgbase = polkit-git
 	pkgdesc = Application development toolkit for controlling system-wide privileges
-	pkgver = 0.112.r16.ga68f5df
-	pkgrel = 2
+	pkgver = 0.112.r17.g6c992bc
+	pkgrel = 1
 	epoch = 1
 	url = http://www.freedesktop.org/wiki/Software/polkit
 	install = polkit.install
