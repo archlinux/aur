@@ -3,7 +3,7 @@
 pkgname=git-bzr-kfish-git
 pkgver=1.1.r62.gf798106
 pkgrel=1
-pkgepoch=1
+epoch=1
 pkgdesc="a bidirectional git - bazaar gateway"
 arch=('any')
 url="https://github.com/kfish/git-bzr"

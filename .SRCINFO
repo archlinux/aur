@@ -2,6 +2,7 @@ pkgbase = git-bzr-kfish-git
 	pkgdesc = a bidirectional git - bazaar gateway
 	pkgver = 1.1.r62.gf798106
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/kfish/git-bzr
 	arch = any
 	license = GPL
