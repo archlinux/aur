@@ -1,0 +1,19 @@
+pkgbase = pev-git
+	pkgdesc = Command line based tool for PE32/PE32+ file analysis
+	pkgver = r495.a141faf
+	pkgrel = 1
+	url = http://pev.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = glibc
+	depends = openssl
+	depends = pcre
+	source = pev-git::git+https://github.com/thermi/pev
+	source = libpe-git::git+https://github.com/merces/libpe
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pev-git
+
