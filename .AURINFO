@@ -1,7 +1,7 @@
 pkgbase = xorg-twm-git
 	pkgdesc = Tab Window Manager for the X Window System
-	pkgver = 1.0.8.r3.g0cb43e8
-	pkgrel = 2
+	pkgver = 1.0.8.r4.g76f6ad6
+	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
