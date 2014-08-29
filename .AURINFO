@@ -6,13 +6,10 @@ pkgbase = libvncserver-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	options = !emptydirs
 	source = libvncserver-git::git+http://github.com/LibVNC/libvncserver.git
 	source = build.patch
 	source = service
-	sha1sums = SKIP
-	sha1sums = dc92d478631acfe1a8404c7258c60d4233c7fdf7
-	sha1sums = 53e1ed7f84518a699a29607a03bee2321f9f9624
+	options = !emptydirs
 
 pkgname = libvncserver-git
 	depends = libpng
