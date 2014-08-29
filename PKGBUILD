@@ -1,34 +1,24 @@
-# Maintainer: Mitchel Humpherys <mitch.special@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=git-bzr-kfish-git
-pkgver=20120319
+pkgver=1.1.r62.gf798106
 pkgrel=1
+pkgepoch=1
 pkgdesc="a bidirectional git - bazaar gateway"
 arch=('any')
 url="https://github.com/kfish/git-bzr"
 license=('GPL')
 depends=('git' 'bzr' 'bzr-fastimport')
-source=()
-md5sums=()
+source=("$pkgname::git+https://github.com/kfish/git-bzr.git")
+md5sums=('SKIP')
 
-_gitroot='https://github.com/kfish/git-bzr.git'
-_gitname='git-bzr'
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to git server..."
-  if [[ -d $_gitname ]]; then
-	cd $_gitname && git pull origin
-	msg "The local files are up-to-date"
-  else
-	git clone $_gitroot $_gitname --depth=1
-	cd $_gitname
-  fi
-
+pkgver() {
+  cd $pkgname
+  git describe --long --tags|sed -r 's,^[a-zA-Z]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $pkgname
   mkdir -p "${pkgdir}/usr/bin/"
   install git-bzr "${pkgdir}/usr/bin/"
 }
