@@ -1,8 +1,9 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# vim: ft=sh
 
 pkgname=pebble-sdk
-pkgver=2.1.1
-pkgrel=3
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')
@@ -15,7 +16,7 @@ source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/Peb
         'python-waf.patch'
         'build-command.patch'
         'pebble-sdk.install')
-sha1sums=('d22f1e62c1135fa6de6a42ce0c7b135d6dd66ce4'
+sha1sums=('405a38b955bab73b5666640be42dca294f36af95'
           'cd95ccc69820eee60e8e6ff9d85d6edeb7c3b6a8'
           '215c4e3d6b3d4649b4baae27fae66c3d596a307c'
           'a78207f3f9d316950db8979f1045cceabd0f3fa7')
