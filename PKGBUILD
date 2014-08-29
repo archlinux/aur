@@ -1,6 +1,6 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 pkgname=obnam-git
-pkgver=4189.8e50f17
+pkgver=4380.bdc923b
 pkgrel=1
 pkgdesc="Obnam is an easy, secure backup program."
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  sed -ri 's|python|python2|g' check setup.py README tests/*.script
-  find . -type f -exec sed -ri "s|^#!/usr/bin/python$|&2|g" '{}' '+'
+  sed -ri 's|python|python2|g' check setup.py README
+  find . -type f -exec sed -ri 's|^#!/usr/bin/python$|&2|g;s|#!/usr/bin/env python|#!/usr/bin/python2|' '{}' '+'
   python2 setup.py build
 }
 
