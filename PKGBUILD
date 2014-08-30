@@ -2,7 +2,7 @@
 
 _pkgname=edgar
 pkgname=$_pkgname-git
-pkgver=0.2.0.r5.af2bd6a
+pkgver=0.2.0.r6.06dd897
 pkgrel=1
 pkgdesc="Enlightenment module: Load Python gadgets"
 arch=('i686' 'x86_64')
@@ -57,6 +57,10 @@ package() {
     popd
   done
   popd
+
+# compile python files
+  python -m compileall -q "$pkgdir"
+  python -O -m compileall -q "$pkgdir"
 
 # install text files
   install -d "$pkgdir/usr/share/doc/$_pkgname/"
