@@ -11,10 +11,9 @@ pkgbase = blackboxwm
 	provides = blackbox
 	conflicts = blackbox
 	replaces = blackbox
+	source = https://github.com/bbidulock/blackboxwm/releases/download/0.71/blackbox-0.71.tar.bz2
 	options = !libtool
 	options = staticlibs
-	source = https://github.com/bbidulock/blackboxwm/releases/download/0.71/blackbox-0.71.tar.bz2
-	md5sums = a37d187fbc30841634877a8db642c97d
 
 pkgname = blackboxwm
 
