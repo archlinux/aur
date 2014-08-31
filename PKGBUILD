@@ -2,14 +2,14 @@
 
 pkgname=blackbox-git
 pkgver=0.70.2.70
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/blackboxwm"
 license=('MIT')
-provides=('blackbox')
-conflicts=('blackbox' 'blackbox-cvs')
-depends=('gcc-libs' 'libxft' 'libxext')
+provides=('blackbox' 'blackboxwm')
+conflicts=('blackbox' 'blackbox-cvs' 'blackboxwm')
+depends=('libxext' 'libxft')
 options=('!libtool' 'staticlibs')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/bbidulock/blackboxwm.git")
