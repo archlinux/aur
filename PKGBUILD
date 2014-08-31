@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=blackbox-git
-pkgver=0.70.2.78
+pkgver=0.71.0
 pkgrel=1
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --always | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+  git describe --tags --long | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
 }
 
 build() {
