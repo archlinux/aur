@@ -12,11 +12,12 @@
 
 pkgname='mosek'
 pkgdesc="A tool for solving mathematical optimization problems."
-pkgver=7.0.90
+pkgver=7.0.0.128
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mosek.com/'
 license=('custom')
+epoch=1
 
 # XXX: Matlab is a dependency (libmex, libmat, etc.)
 depends=('gcc-libs' 'java-environment' 'bash')
@@ -25,13 +26,13 @@ options=('!libtool' '!strip')
 
 if test "$CARCH" == "x86_64"; then
   _mosekarch=linux64x86
-  sha512sums=('eb895fa6314956e405d068fb8f2e84dc081192093af1856ffd25b31078fb0a303d8b78459ba020c7ae654d4073857b466c33b846d883e7f50f25701f93c23e80')
+  sha512sums=('fb0a3e96e5bba55fbf0289fe4a4f10b5feca760b2e96007167bcecbddf47b159a2961ba9a3cde5da5d59542da86c1b6b686ec38799828d6e7eb8d82fc610c39d')
 elif test "$CARCH" == "i686"; then
   _mosekarch=linux32x86
-  sha512sums=('5dfc92d5fda0db2ab53296ab00f3ea9087b23a48ab5ac651faffd06a54ee437061d0564d30d18c945c4bc26bbdf8a359f8c9a659579961bf0a5dfb92daf8c2ed')
+  sha512sums=('9e64284d3e56608b15f181f58b282e3894940b6eb984d97fcdf5144611902fdb9d0253600beab6e75b19be5e7e5b52a1f6ca61b84ef2dc67937f465eb34b758b')
 fi
 
-source=("http://download.mosek.com/stable/7/mosektools${_mosekarch}.tar.bz2")
+source=("http://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
 
 check() {
   cd "${srcdir}/"
