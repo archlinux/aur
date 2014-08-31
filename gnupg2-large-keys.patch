@@ -12,10 +12,19 @@ index 1a8e6e7..0d1e15e 100644
  #if defined(HAVE_GETUID) && defined(HAVE_GETEUID)
      /* There should be no way to get to this spot while still carrying
 diff --git a/g10/keygen.c b/g10/keygen.c
-index 6d3dfa6..71bdd03 100644
+index 6d3dfa6..6d362c0 100644
 --- a/g10/keygen.c
 +++ b/g10/keygen.c
 @@ -1175,7 +1175,7 @@ gen_elg (int algo, unsigned int nbits,
+       nbits = 2048;
+       log_info (_("keysize invalid; using %u bits\n"), nbits );
+     }
+-  else if (nbits > 4096)
++  else if (nbits > 65535)
+     {
+       nbits = 4096;
+       log_info (_("keysize invalid; using %u bits\n"), nbits );
+@@ -1442,7 +1442,7 @@ gen_rsa (int algo, unsigned nbits, KBNODE pub_root, KBNODE sec_root, DEK *dek,
        nbits = 2048;
        log_info (_("keysize invalid; using %u bits\n"), nbits );
      }

@@ -27,7 +27,7 @@ source=("ftp://ftp.gnupg.org/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largekeys
         'install'{,.sig}
         'PKGBUILD.sig')
 sha1sums=('3ff5b38152c919724fd09cf2f17df704272ba192' 'SKIP'
-          '05ecf25e4ce1df859a33e7cb3f773e78bbc09da6' 'SKIP'
+          '5932d322a6d4ec5eeafa4ac472f19c07bf4502af' 'SKIP'
           'ff80fc79329cfa631c19ae1ea6fc4a390ab851f7' 'SKIP'
           'SKIP')
 
