@@ -1,0 +1,18 @@
+pkgbase = xbak
+	pkgdesc = A fan-made remake of the classic Sierra computer RPG "Betrayal at Krondor"
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = http://xbak.sourceforge.net
+	install = xbak.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_sound
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/xbak/xbak-0.1.5.tar.bz2
+	source = xbak.sh
+	sha256sums = fa1044f30478b4a771aa12f7b2dc15c76408e243ac35083e0f8fd1817b225be2
+	sha256sums = 8e232e2024c5fdaa9ffd994e04335cf15cd4b92637935a54db29941582335460
+
+pkgname = xbak
+

@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "Remember you need 'Betrayal at Krondor' data files to play. You can put them"
+  echo "under '~/.xbak' for yourself or '/opt/krondor' for all users."
+}
+
+post_upgrade() {
+  post_install
+}
