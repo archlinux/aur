@@ -1,7 +1,8 @@
-diff -rupN old/g10/gpg.c new/g10/gpg.c
---- old/g10/gpg.c	2013-10-04 08:32:53.000000000 -0400
-+++ new/g10/gpg.c	2013-11-03 21:36:43.271787518 -0500
-@@ -2050,7 +2050,7 @@ main (int argc, char **argv)
+diff --git a/g10/gpg.c b/g10/gpg.c
+index 1a8e6e7..0d1e15e 100644
+--- a/g10/gpg.c
++++ b/g10/gpg.c
+@@ -2059,7 +2059,7 @@ main (int argc, char **argv)
  #endif
  
      /* Initialize the secure memory. */
@@ -10,10 +11,20 @@ diff -rupN old/g10/gpg.c new/g10/gpg.c
        got_secmem = 1;
  #if defined(HAVE_GETUID) && defined(HAVE_GETEUID)
      /* There should be no way to get to this spot while still carrying
-diff -rupN old/g10/keygen.c new/g10/keygen.c
---- old/g10/keygen.c	2013-10-04 09:00:22.000000000 -0400
-+++ new/g10/keygen.c	2013-11-03 21:36:59.932182593 -0500
-@@ -1771,7 +1771,7 @@ ask_algo (int addmode, int *r_subkey_alg
+diff --git a/g10/keygen.c b/g10/keygen.c
+index 6d3dfa6..71bdd03 100644
+--- a/g10/keygen.c
++++ b/g10/keygen.c
+@@ -1175,7 +1175,7 @@ gen_elg (int algo, unsigned int nbits,
+       nbits = 2048;
+       log_info (_("keysize invalid; using %u bits\n"), nbits );
+     }
+-  else if (nbits > 4096)
++  else if (nbits > 65535)
+     {
+       nbits = 4096;
+       log_info (_("keysize invalid; using %u bits\n"), nbits );
+@@ -1781,7 +1781,7 @@ ask_algo (int addmode, int *r_subkey_algo, unsigned int *r_usage)
  static unsigned
  ask_keysize (int algo, unsigned int primary_keysize)
  {
