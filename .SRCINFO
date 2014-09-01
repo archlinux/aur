@@ -1,0 +1,14 @@
+pkgbase = ruby-kwalify
+	pkgdesc = a parser, schema validator, and data-binding tool for YAML and JSON.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://www.kuwata-lab.com/kwalify/
+	arch = any
+	depends = ruby
+	noextract = kwalify-0.7.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/kwalify-0.7.2.gem
+	sha1sums = 82b158dc89852c717a0c3e8394331181c46f0864
+
+pkgname = ruby-kwalify
+
