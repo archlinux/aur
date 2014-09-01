@@ -2,13 +2,13 @@
 
 pkgname=icewm-git
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/icewm"
 license=('LGPL')
-provides=('icewm')
-conflicts=('icewm' 'icwm-cvs' 'icwm-ak' 'icwm-init0' 'icwm-testing' 'icwm-zstegi')
+provides=('icewm' 'icewm2')
+conflicts=('icewm' 'icewm2' 'icwm-cvs' 'icwm-ak' 'icwm-init0' 'icwm-testing' 'icwm-zstegi')
 depends=('libxft' 'libxinerama' 'gdk-pixbuf2' 'libxrandr' 'libsndfile' 'libsm')
 makedepends=('git' 'xorg-mkfontdir' 'linuxdoc-tools')
 source=("$pkgname::git+https://github.com/bbidulock/icewm.git")
