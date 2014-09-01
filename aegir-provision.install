@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+VARLIB=/var/lib
+
+post_install() {
+    post_upgrade
+    passwd -l aegir &>/dev/null
+}
+
+post_upgrade() {
+    getent passwd aegir > /dev/null || useradd -b $VARLIB -r -G http aegir
+	su -s /bin/sh aegir -c 'drush cc drush'
+}
