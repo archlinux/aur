@@ -4,8 +4,10 @@
 # TODO: move libs to lib32 ?
 # User lib32-gtk2 properly
 
+DLAGENTS=('http::/usr/bin/curl -d "agree=We luv You" -fLC - --retry 3 --retry-delay 3 -o %o %u')
+
 pkgname=netfabb-basic
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="view and repair STL files"
 arch=('i686' 'x86_64')
@@ -14,10 +16,10 @@ license=('custom:freeware')
 depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 install='netfabb-basic.install'
 
-md5sums=('10b53ba2e5a9f40dd61051d9abf14d8c') # 32-bit
+md5sums=('c9b1fff8747281a49919a11340138924') # 32-bit
 nARCH=32
 if [ "$CARCH" == x86_64 ] ; then
-   md5sums=('e8037bd5db76806e72a239418509e5bc') # 64-bit
+   md5sums=('a9049838321559450bf0a9e0c5be7cb8') # 64-bit
    depends[0]="lib32-gtk2"
    nARCH=64
 fi
@@ -31,7 +33,7 @@ if [ -z "$pikey" ]; then
   msg2 "pikey: $pikey"
 fi
 
-source=("netfabb-basic_${pkgver}_linux${nARCH}.tar.gz::http://www.netfabb.com/download.php?pikey=$pikey")
+source=("netfabb-basic_${pkgver}_linux${nARCH}.tar.gz::http://www.netfabb.com/download.php?pikey=$pikey#agree=I+have+read+and+accept+the+terms+and+conditions.")
 
 
 prepare() {
