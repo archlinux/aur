@@ -9,7 +9,7 @@ pkgdesc='Perl module to determine the type of a mail folder'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.8.9' 'perl-email-simple')
+depends=('perl>=5.8.9' 'perl-module-pluggable')
 checkdepends=('perl>=5.13.4' 'perl-capture-tiny')
 source=([% source %])
 options=(!emptydirs)
