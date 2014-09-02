@@ -1,8 +1,9 @@
 pkgbase = baikal
 	pkgdesc = Lightweight CalDAV+CardDAV server
 	pkgver = 0.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://baikal-server.com/
+	install = baikal.install
 	arch = any
 	license = GPL
 	depends = php
@@ -11,7 +12,9 @@ pkgbase = baikal
 	optdepends = php-sqlite: To use the sqlite backend
 	options = !strip
 	source = http://baikal-server.com/get/baikal-regular-0.2.7.tgz
+	source = baikal.install
 	sha1sums = 01eabcf0229ddffc0542f4e2a349754e778abbea
+	sha1sums = 242048f78fde70f1bde1c51dce4a73ad42a21f28
 
 pkgname = baikal
 
