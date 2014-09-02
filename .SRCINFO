@@ -2,7 +2,7 @@
 # Wed Dec 30 18:02:57 UTC 2015
 pkgbase = django
 	pkgdesc = A high-level Python Web framework that encourages rapid development and clean design
-	pkgver = 1.6.5
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = http://www.djangoproject.com/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = django
 	makedepends = python2-setuptools
 	makedepends = python
 	makedepends = python-setuptools
-	source = https://www.djangoproject.com/m/releases/1.6/Django-1.6.5.tar.gz
-	md5sums = e4c5b2d35ecb3807317713afa70a0c77
-	sha256sums = 36940268c087fede32d3f5887cce9af9e5d27962a0c405aacafc2a3cc1f755c5
+	source = https://www.djangoproject.com/m/releases/1.6/Django-1.6.6.tar.gz
+	md5sums = d14fd332f31799fff39acc0c79e8421c
+	sha256sums = 536cbd54e533ba3563d205f0c91988b24e7d74b8b253d7825e42214b50ba7e90
 
 pkgname = python-django
 	depends = python

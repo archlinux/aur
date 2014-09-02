@@ -4,7 +4,7 @@
 
 pkgbase=django
 pkgname=('python-django' 'python2-django')
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
@@ -12,11 +12,21 @@ license=('BSD')
 url="http://www.djangoproject.com/"
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=("https://www.djangoproject.com/m/releases/${pkgver:0:3}/Django-$pkgver.tar.gz")
-md5sums=('e4c5b2d35ecb3807317713afa70a0c77')
-sha256sums=('36940268c087fede32d3f5887cce9af9e5d27962a0c405aacafc2a3cc1f755c5')
+md5sums=('d14fd332f31799fff39acc0c79e8421c')
+sha256sums=('536cbd54e533ba3563d205f0c91988b24e7d74b8b253d7825e42214b50ba7e90')
+
+prepare() {
+  cp -a "$srcdir/Django-$pkgver" "$srcdir/Django-$pkgver-python2"
+
+  find "$srcdir/Django-$pkgver-python2" -name '*.py' | \
+    xargs sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|"
+}
 
 build() {
   cd "$srcdir/Django-$pkgver"
+  python setup.py build
+
+  cd "$srcdir/Django-$pkgver-python2"
   python2 setup.py build
 }
 
@@ -41,7 +51,7 @@ package_python2-django() {
               'python2-psycopg2: for PostgreSQL backend')
   replaces=('django')
   conflicts=('django')
-  cd "$srcdir/Django-$pkgver"
+  cd "$srcdir/Django-$pkgver-python2"
   python2 setup.py install --root="$pkgdir" --optimize=1
 
   ln -s django-admin.py "$pkgdir"/usr/bin/django-admin2.py
@@ -49,9 +59,6 @@ package_python2-django() {
     "$pkgdir"/usr/share/bash-completion/completions/django-admin.py
   ln -s django-admin.py \
     "$pkgdir"/usr/share/bash-completion/completions/manage.py
-
-  find "$pkgdir"/usr/lib/python2.7/site-packages/django/ -name '*.py' | \
-    xargs sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|"
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
