@@ -7,7 +7,7 @@
 # Contributor: hack.augusto <hack.augusto@gmail.com>
 
 pkgname=depot-tools-git
-pkgver=r2379.05fb911
+pkgver=r2457.34504a1
 pkgrel=1
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
@@ -49,6 +49,8 @@ prepare () {
 		        -e 's/from third_party import colorama/import colorama/' \
 			  	  -e 's/from third_party.colorama import Fore/from colorama import Fore/' \
 		gclient.py
+	sed -i -e 's/exec python/exec python2/' \
+		gclient
 
 	# Fixing repo
 	sed -r -i -e 's/"exec" python/"exec" python2/' repo
