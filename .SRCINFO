@@ -1,6 +1,6 @@
 pkgbase = uefi-shell-svn
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - SVN Version
-	pkgver = 15761
+	pkgver = 16039
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg
 	install = uefi-shell.install
@@ -9,7 +9,7 @@ pkgbase = uefi-shell-svn
 	license = BSD
 	makedepends = subversion
 	makedepends = python2
-	provides = uefi-shell=15761
+	provides = uefi-shell=16039
 	conflicts = uefi-shell
 	options = !strip
 	options = !makeflags
