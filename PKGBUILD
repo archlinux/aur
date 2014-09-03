@@ -1,4 +1,4 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Ido Rosen <ido@kernel.org>
 # Contributor: Brett Hoerner <brett@bretthoerner.com>
 # Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
@@ -9,8 +9,8 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.6.4
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -18,18 +18,11 @@ license=('MIT')
 options=('!emptydirs')
 depends=('ruby' 'curl' 'lzo' 'libidn' 'rtmpdump')
 makedepends=('git')
-source=(http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        nfs.patch
-        http://pkgbuild.com/~jsteel/aur/$pkgname/substrate_archlinux_$CARCH.zip)
-md5sums=('55a91a9d9cba7b8b9d126c75b114e510' 'a670dd93057fbd782176e0275b034bee')
+source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
+        http://pkgbuild.com/~jsteel/arch/$pkgname/substrate_archlinux_$CARCH.zip)
+md5sums=('a7981a9ead12f67db3c4720e0322af80')
 [[ $CARCH == i686 ]] && md5sums[3]='c04042b24de56d18a041bc005e5ecaa4'
 [[ $CARCH == x86_64 ]] && md5sums[3]='53d8a137e0b50fee8509a7d1c15fd33b'
-
-prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
-
-  patch -Np0 -i "$srcdir"/nfs.patch
-}
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
