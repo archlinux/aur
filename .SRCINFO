@@ -1,0 +1,15 @@
+pkgbase = ruby-hpricot
+	pkgdesc = A swift, liberal HTML parser with a fantastic library
+	pkgver = 0.8.6
+	pkgrel = 2
+	url = http://code.whytheluckystiff.net/hpricot/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = hpricot-0.8.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hpricot-0.8.6.gem
+	sha1sums = 87ce2c17960a5e1d7ceaa16d0591ca6a28379ce0
+
+pkgname = ruby-hpricot
