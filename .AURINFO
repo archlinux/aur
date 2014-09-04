@@ -1,6 +1,6 @@
 pkgbase = xtitle-git
 	pkgdesc = Outputs X window titles
-	pkgver = 18
+	pkgver = 20
 	pkgrel = 1
 	url = https://github.com/baskerville/xtitle
 	arch = i686
