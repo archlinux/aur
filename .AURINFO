@@ -12,8 +12,6 @@ pkgbase = cwm
 	depends = libxft
 	source = cwm::git+https://github.com/chneukirchen/cwm.git#tag=v5.5
 	source = cwm.desktop
-	sha256sums = SKIP
-	sha256sums = 8dc947993fbf294d6f41ba2e0d4234b2321c536a75be1395f6a772cd4aa3f379
 
 pkgname = cwm
 
