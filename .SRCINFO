@@ -1,0 +1,18 @@
+pkgbase = lsyncd
+	pkgdesc = Live Syncing (Mirror) Daemon
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/axkibe/lsyncd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = asciidoc
+	depends = lua
+	depends = rsync
+	source = https://github.com/axkibe/lsyncd/archive/release-2.1.5.tar.gz
+	source = configure-a2x-fix.patch
+	sha1sums = 2b8eb169365edc54488a97435bbd39ae4a6731b8
+	sha1sums = f76243d96dc7930eadd59a81aea516b666569749
+
+pkgname = lsyncd
+
