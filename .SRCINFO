@@ -1,15 +1,16 @@
 pkgbase = cwm
 	pkgdesc = OpenBSD fork of calmwm, a clean and lightweight window manager
 	pkgver = 5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1
 	changelog = cwm.changelog
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = libxext
 	depends = libxft
+	depends = libxrandr
+	depends = libxinerama
 	source = cwm::git+https://github.com/chneukirchen/cwm.git#tag=v5.5
 	source = cwm.desktop
 	sha256sums = SKIP
