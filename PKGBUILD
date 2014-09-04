@@ -24,14 +24,14 @@ _OPENSSL_VERSION="0.9.8zb"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=16039
+pkgver=16056
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
 arch=('x86_64' 'i686')
 license=('BSD')
 
-makedepends=('subversion' 'python2' 'iasl')
+makedepends=('subversion' 'python2' 'iasl' 'nasm')
 
 options=('!strip' 'docs' '!makeflags')
 
@@ -40,9 +40,7 @@ provides=("ovmf=${pkgver}" "ovmf-tianocore-edk2=${pkgver}" "ovmf-tianocore-edk2-
 
 install="${_pkgname}.install"
 
-source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
-        'edk2-basetools-add-gcc4.9-support.patch'
-        'edk2-ovmfpkg-add-gcc4.9-support.patch')
+source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
@@ -53,8 +51,6 @@ for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellP
 done
 
 sha1sums=('4f0079d4d924ab618d5f846cb91f413184bf8dea'
-          'fd92560dbc2f5c8c7bd36def1f836441e7529b30'
-          '662d4136ddf4dbc051242b84f8a9ae956fae61b1'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -118,10 +114,6 @@ _prepare_tianocore_sources() {
 	rm -rf "${_UDK_DIR}/Conf/" || true
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
-	
-	msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
-	patch -Np1 -i "${srcdir}/edk2-basetools-add-gcc4.9-support.patch" || true
-	patch -Np1 -i "${srcdir}/edk2-ovmfpkg-add-gcc4.9-support.patch" || true
 	
 	msg "Use python2 for UDK BaseTools"
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
