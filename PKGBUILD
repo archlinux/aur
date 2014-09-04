@@ -26,14 +26,14 @@ _COMPILER="GCC49"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-svn"
 
-pkgver=16039
+pkgver=16056
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - SVN Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
 arch=('x86_64' 'i686')
 license=('BSD')
 
-makedepends=('subversion' 'python2')
+makedepends=('subversion' 'python2' 'nasm')
 
 options=('!strip' '!makeflags')
 
@@ -42,14 +42,13 @@ provides=("uefi-shell=${pkgver}")
 
 install="${_pkgname}.install"
 
-source=('edk2-basetools-add-gcc4.9-support.patch')
+source=()
 
 for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
-sha1sums=('fd92560dbc2f5c8c7bd36def1f836441e7529b30'
-          'SKIP'
+sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP')
@@ -89,8 +88,6 @@ _prepare_tianocore_sources() {
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
 	
-	# msg "Fix GenFw: ERROR 3000: Invalid, Unsupported section alignment"
-	# patch -Np1 -i "${srcdir}/edk2-basetools-add-gcc4.9-support.patch" || true
 	sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
 	
 	msg "Use python2 for UDK BaseTools"

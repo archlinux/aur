@@ -1,6 +1,6 @@
 pkgbase = uefi-shell-svn
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - SVN Version
-	pkgver = 16039
+	pkgver = 16056
 	pkgrel = 1
 	url = http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg
 	install = uefi-shell.install
@@ -9,16 +9,15 @@ pkgbase = uefi-shell-svn
 	license = BSD
 	makedepends = subversion
 	makedepends = python2
-	provides = uefi-shell=16039
+	makedepends = nasm
+	provides = uefi-shell=16056
 	conflicts = uefi-shell
 	options = !strip
 	options = !makeflags
-	source = edk2-basetools-add-gcc4.9-support.patch
 	source = tianocore-edk2-svn_BaseTools::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/BaseTools
 	source = tianocore-edk2-svn_MdePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdePkg
 	source = tianocore-edk2-svn_MdeModulePkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/MdeModulePkg
 	source = tianocore-edk2-svn_ShellPkg::svn+https://svn.code.sf.net/p/edk2/code/trunk/edk2/ShellPkg
-	sha1sums = fd92560dbc2f5c8c7bd36def1f836441e7529b30
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
