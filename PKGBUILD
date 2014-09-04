@@ -4,16 +4,16 @@
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
 pkgver=3.0.21
-pkgrel=2
+pkgrel=3
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="http://kombu.readthedocs.org/"
 license=('BSD')
 options=('!emptydirs')
-makedepends=('python' 'python2')
+makedepends=('python-anyjson' 'python2-anyjson')
 checkdepends=('python-redis' 'python2-redis' 'python-yaml' 'python2-yaml' 'python-msgpack' 'python2-msgpack'
               'python-boto' 'python2-boto' 'python-pycurl' 'python2-pycurl' 'python-nose' 'python2-nose'
-              'python-anyjson' 'python2-anyjson' 'python-amqp' 'python2-amqp' 'python-mock' 'python2-mock')
+              'python-amqp' 'python2-amqp' 'python-mock' 'python2-mock')
 source=("http://pypi.python.org/packages/source/k/kombu/kombu-${pkgver}.tar.gz"{,.asc})
 sha256sums=('2eaca88496bcfcf9b6d597999776853792ef35f919c37e2f0f151dfe38a60d3a'
             'SKIP')
@@ -31,7 +31,7 @@ check() {
 }
 
 package_python-kombu() {
-  depends=('python-amqp')
+  depends=('python-amqp' 'python-anyjson')
   optdepends=('python-pymongo: for MongoDB support'
               'python-msgpack: for MessagePack support'
               'python-pyro: for Pyro support'
@@ -52,7 +52,7 @@ package_python-kombu() {
 }
 
 package_python2-kombu() {
-  depends=('python2-amqp')
+  depends=('python2-amqp' 'python2-anyjson')
   optdepends=('python2-pymongo: for MongoDB support'
               'python2-msgpack: for MessagePack support'
               'python2-pyro: for Pyro support'
