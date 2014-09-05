@@ -1,6 +1,6 @@
 pkgbase = python-sphinx
-	pkgver = 1.2.2
-	pkgrel = 3
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = GPL
@@ -15,8 +15,8 @@ pkgbase = python-sphinx
 	makedepends = python2-docutils
 	makedepends = python2-jinja
 	makedepends = python2-pygments
-	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.2.2.tar.gz
-	md5sums = 3dc73ccaa8d0bfb2d62fb671b1f7e8a4
+	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.2.1.tar.gz
+	md5sums = 104494f036889122c9f403ae065ae7a9
 
 pkgname = python-sphinx
 	pkgdesc = Python3 documentation generator
