@@ -1,7 +1,7 @@
 pkgbase = ocserv
 	pkgdesc = OpenConnect VPN Server
-	pkgver = 0.8.2
-	pkgrel = 2
+	pkgver = 0.8.4
+	pkgrel = 1
 	url = http://www.infradead.org/ocserv/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = ocserv
 	depends = libseccomp
 	backup = etc/ocserv.config
 	backup = etc/ocserv-passwd
-	source = ftp://ftp.infradead.org/pub/ocserv/ocserv-0.8.2.tar.xz
-	sha256sums = e90577495e88883aae22abaad74183a2ffed669e9725a62b88e41ef845e7a5c6
+	source = ftp://ftp.infradead.org/pub/ocserv/ocserv-0.8.4.tar.xz
+	sha256sums = 455a77e09ca4a947e81ed278c57711a1fbe3ce058c79d240e6386b3d7109ad79
 
 pkgname = ocserv
 
