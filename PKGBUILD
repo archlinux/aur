@@ -7,7 +7,7 @@
 # Contributor: Bob Finch <w9ya@arrl.net>
 
 pkgname=dosemu-git
-pkgver=1.4.0.8.180.g35054ba
+pkgver=1.4.0.8.739.gc8f96f3
 pkgrel=1
 epoch=1
 pkgdesc="DOS emulator"
@@ -19,9 +19,9 @@ makedepends=('subversion')
 conflicts=('dosemu')
 provides=('dosemu')
 backup=('etc/dosemu/dosemu.conf'
-	'etc/dosemu/dosemu.users'
-	'etc/dosemu/global.conf')
-source=('dosemu::git://git.code.sf.net/p/dosemu/code'
+        'etc/dosemu/dosemu.users'
+        'etc/dosemu/global.conf')
+source=('dosemu::git://git.code.sf.net/p/dosemu/code#branch=devel'
         https://dl.dropboxusercontent.com/u/13513277/dosemu/dosemu-freedos-1.1-bin.tgz
         debianize.patch
         xdosemu.desktop)
