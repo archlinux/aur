@@ -6,8 +6,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=215
-pkgrel=4
+pkgver=216
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -19,19 +19,11 @@ options=('strip' 'debug')
 source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"
         'initcpio-hook-udev'
         'initcpio-install-systemd'
-        'initcpio-install-udev'
-        '0001-networkd-properly-track-addresses-when-first-added.patch')
-md5sums=('d2603e9fffd8b18d242543e36f2e7d31'
+        'initcpio-install-udev')
+md5sums=('04fda588a04f549da0f397dce3ae6a39'
          '29245f7a240bfba66e2b1783b63b6b40'
          '66cca7318e13eaf37c5b7db2efa69846'
-         'bde43090d4ac0ef048e3eaee8202a407'
-         '2d237a277a12b3801c88d159d64a7413')
-
-prepare() {
-  cd "${pkgname/-selinux}-$pkgver"
-
-  patch -Np1 <"$srcdir"/0001-networkd-properly-track-addresses-when-first-added.patch
-}
+         'bde43090d4ac0ef048e3eaee8202a407')
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
@@ -82,6 +74,7 @@ package_systemd-selinux() {
           etc/dbus-1/system.d/org.freedesktop.timedate1.conf
           etc/pam.d/systemd-user
           etc/systemd/bootchart.conf
+          etc/systemd/coredump.conf
           etc/systemd/journald.conf
           etc/systemd/logind.conf
           etc/systemd/system.conf
@@ -98,13 +91,10 @@ package_systemd-selinux() {
   rm "$pkgdir/etc/systemd/system/getty.target.wants/getty@tty1.service" \
       "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-networkd.service" \
       "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-resolved.service" \
-      "$pkgdir/etc/systemd/system/multi-user.target.wants/systemd-timesyncd.service" \
+      "$pkgdir/etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service" \
       "$pkgdir/etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service"
   rmdir "$pkgdir/etc/systemd/system/getty.target.wants" \
       "$pkgdir/etc/systemd/system/network-online.target.wants"
-
-  # remove the coredump rule until minidumps are a thing.
-  rm "$pkgdir/usr/lib/sysctl.d/50-coredump.conf"
 
   # get rid of RPM macros
   rm -r "$pkgdir/usr/lib/rpm"
@@ -125,12 +115,15 @@ package_systemd-selinux() {
   install -Dm644 "$srcdir/initcpio-install-udev" "$pkgdir/usr/lib/initcpio/install/udev"
   install -Dm644 "$srcdir/initcpio-hook-udev" "$pkgdir/usr/lib/initcpio/hooks/udev"
 
-  # ensure proper permissions for /var/log/journal
+  # ensure proper permissions for /var/log/journal. This is only to placate
   chown root:systemd-journal "$pkgdir/var/log/journal"
-  chmod 2755 "$pkgdir/var/log/journal"
+  chmod 2755 "$pkgdir/var/log/journal"{,/remote}
 
   # fix pam file
   sed 's|system-auth|system-login|g' -i "$pkgdir/etc/pam.d/systemd-user"
+
+  # ship default policy to leave services disabled
+  echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
   ### split out manpages for sysvcompat
   rm -rf "$srcdir/_sysvcompat"
