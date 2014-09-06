@@ -12,8 +12,6 @@ pkgbase = gputest
 	optdepends = tk: tkinter gui
 	source = http://www.ozone3d.net/gputest/dl/GpuTest_Linux_x64_0.7.0.zip
 	source = gputest.sh
-	md5sums = 54bdaa11c73fa08f2e0a47d639f4bdb8
-	md5sums = SKIP
 
 pkgname = gputest
 
