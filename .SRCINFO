@@ -1,14 +1,14 @@
 pkgbase = journalwatch
 	pkgdesc = Filter error messages from systemd journal, similar to logcheck/logwatch.
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/journalwatch/
 	arch = any
 	license = GPL
 	depends = python
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/j/journalwatch/journalwatch-0.1.1.tar.gz
-	source = https://pypi.python.org/packages/source/j/journalwatch/journalwatch-0.1.1.tar.gz.asc
+	source = https://pypi.python.org/packages/source/j/journalwatch/journalwatch-0.2.tar.gz
+	source = https://pypi.python.org/packages/source/j/journalwatch/journalwatch-0.2.tar.gz.asc
 	md5sums = SKIP
 	md5sums = SKIP
 

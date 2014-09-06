@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et:
 
 pkgname=journalwatch
-pkgver=0.1.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Filter error messages from systemd journal, similar to logcheck/logwatch."
 arch=(any)
