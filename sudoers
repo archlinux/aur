@@ -1,2 +1,0 @@
-aegir ALL=NOPASSWD: /usr/bin/apachectl
-aegir ALL=NOPASSWD: /usr/bin/nginx
