@@ -1,0 +1,11 @@
+pkgbase = aegir-hostmaster
+	pkgdesc = mass Drupal hosting system - frontend
+	pkgver = 7.x_3.0_beta2
+	pkgrel = 1
+	url = http://aegirproject.org
+	arch = any
+	license = GPL
+	depends = drush>=7
+
+pkgname = aegir-hostmaster
+
