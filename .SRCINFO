@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n
 	pkgdesc = Universal i18n for firefox-nightly - xpi version
-	pkgver = 34.0a1.20140722
+	pkgver = 35.0a1.20140905
 	pkgrel = 1
 	url = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/
 	arch = i686
