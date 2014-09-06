@@ -1,0 +1,58 @@
+pkgbase = drush-extensions
+	pkgdesc = Various Drush extensions
+	pkgver = 7.x
+	pkgrel = 2
+	url = http://github.com/drush-ops/drush/
+	install = install
+	arch = any
+	groups = drupal
+	license = GPL
+	depends = drush
+	source = install
+	source = http://ftp.drupal.org/files/projects/aegir-up-7.x-2.0-rc3.tar.gz
+	source = http://ftp.drupal.org/files/projects/drupal-up-7.x-1.0-beta3.tar.gz
+	source = http://ftp.drupal.org/files/projects/drush-hosts-7.x-1.1.tar.gz
+	source = http://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.2.tar.gz
+	source = http://ftp.drupal.org/files/projects/drush-vagrant-7.x-2.0-rc4.tar.gz
+	source = http://ftp.drupal.org/files/projects/drush_entity-7.x-5.0-alpha2.tar.gz
+	md5sums = f68c7407446bc4dfe95fbe1741928a15
+	md5sums = 29bd5f0bab1911aca72708165590fd94
+	md5sums = 0ecb568037d3425c25f971234359c4eb
+	md5sums = 44401d4fdc8bd5b18919f1db17716664
+	md5sums = 6057703bd4a5bec81e397e19602e2756
+	md5sums = 8d735f9e8f864424f292d4866a70b8f1
+	md5sums = b121cc7779ba3fd346e4ca90fd6db19a
+
+pkgname = drush-aegir-up
+	pkgdesc = Blueprint provider for Drush Vagrant to build a local Aegir VMs
+	url = https://www.drupal.org/project/aegir_up
+	depends = drush-vagrant
+
+pkgname = drush-drupal-up
+	pkgdesc = Blueprint provider for Drush Vagrant to build local Drupal VMs
+	url = https://www.drupal.org/project/drupal_up
+	depends = drush-vagrant
+
+pkgname = drush-hosts
+	pkgdesc = Simple commands for managing entries in /etc/hosts
+	url = https://www.drupal.org/project/drush_hosts
+	depends = drush
+
+pkgname = drush-registry-rebuild
+	pkgdesc = Simple command for rebuilding a Drupal site system registry
+	url = https://www.drupal.org/project/registry_rebuild
+	depends = drush
+
+pkgname = drush-vagrant
+	pkgdesc = Vagrant templating framework to use Vagrant blueprints to build and test projects like Drupal and Puppet modules
+	url = https://www.drupal.org/project/drush-vagrant
+	depends = drush-hosts
+	depends = vagrant
+	depends = virtualbox
+	optdepends = nfs-utils: NFS support
+
+pkgname = drush-entity
+	pkgdesc = Query and manipulate entities directly.
+	url = https://www.drupal.org/project/drush-entity
+	depends = drush
+

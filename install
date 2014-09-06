@@ -1,0 +1,6 @@
+post_install() {
+    post_upgrade
+}
+post_upgrade() {
+    echo "Drush must have its cache cleared to be able to invoke any new commands."
+}
