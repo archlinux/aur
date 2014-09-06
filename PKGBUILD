@@ -3,7 +3,7 @@
 
 pkgname=baikal
 pkgver=0.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Lightweight CalDAV+CardDAV server"
 url="http://baikal-server.com/"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use
 source=("http://baikal-server.com/get/baikal-regular-${pkgver}.tgz"
         'baikal.install')
 sha1sums=('01eabcf0229ddffc0542f4e2a349754e778abbea'
-          '242048f78fde70f1bde1c51dce4a73ad42a21f28')
+          'a1d2f36b6c4a282d23477dccb957c3ad3995f116')
 options=('!strip')
 install=baikal.install
 
@@ -24,8 +24,6 @@ package() {
   cp -R Core html vendor "$pkgdir/usr/share/webapps/$pkgname"
   install -Dm644 ChangeLog.md INSTALL.md README.md TROUBLESHOOTING.md \
     "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 -o http -g http Specific/ENABLE_INSTALL \
-    "$pkgdir/var/lib/$pkgname"
   for conf in Specific/virtualhosts/*; do
     basename=${conf##*/}
     basename=${basename/baikal./}.example.conf

@@ -1,7 +1,7 @@
 pkgbase = baikal
 	pkgdesc = Lightweight CalDAV+CardDAV server
 	pkgver = 0.2.7
-	pkgrel = 4
+	pkgrel = 5
 	url = http://baikal-server.com/
 	install = baikal.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = baikal
 	source = http://baikal-server.com/get/baikal-regular-0.2.7.tgz
 	source = baikal.install
 	sha1sums = 01eabcf0229ddffc0542f4e2a349754e778abbea
-	sha1sums = 242048f78fde70f1bde1c51dce4a73ad42a21f28
+	sha1sums = a1d2f36b6c4a282d23477dccb957c3ad3995f116
 
 pkgname = baikal
 

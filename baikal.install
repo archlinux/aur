@@ -10,6 +10,7 @@ post_install() {
       /var/lib/baikal/db
     chown -R http:http /var/lib/baikal/db
   fi
+  # Now create install file
   touch /var/lib/baikal/ENABLE_INSTALL
   echo "Please add /var/lib/baikal to open_basedir in your /etc/php.ini."
   echo
@@ -21,6 +22,12 @@ post_install() {
   echo "Note: If you complete the setup more in than an hour, you'll need to"
   echo "execute this manually so baikal allows you to install:"
   echo "  touch /var/lib/baikal/ENABLE_INSTALL"
+}
+
+post_upgrade() {
+  if [[ $2 < '0.2.7-5' ]]; then
+    echo "Please add /var/lib/baikal to open_basedir in your /etc/php.ini."
+  fi
 }
 
 # vim:set ts=2 sw=2 et ft=sh:
