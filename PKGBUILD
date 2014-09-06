@@ -3,15 +3,15 @@
 
 pkgname=pebble-sdk
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')
 license=('custom' 'MIT')
 install='pebble-sdk.install'
-depends=('arm-none-eabi-gcc' 'python2-pypng' 'python2-autobahn'
-         'python2-pyserial' 'python2-sh' 'twisted' 'python2-freetype-py'
+depends=('arm-none-eabi-gcc' 'python2-pypng' 'python2-sh' 'python2-freetype-py'
          'python2-websocket-client' 'arm-none-eabi-binutils')
+optdepends=('python2-pyserial: To connect to the Pebble via serial port')
 source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver}.tar.gz"
         'python-waf.patch'
         'build-command.patch'
