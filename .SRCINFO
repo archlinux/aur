@@ -1,0 +1,19 @@
+pkgbase = lib-lightblue-pebble-git
+	pkgdesc = LightBlue is a cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations; Pebble fork
+	pkgver = 0.4.r30.86b5c89
+	pkgrel = 1
+	url = http://lightblue.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = python2-pybluez
+	depends = openobex
+	provides = lib-lightblue
+	conflicts = lib-lightblue
+	conflicts = lib-lightblue-pebble
+	source = git+https://github.com/pebble/lightblue-0.4.git
+	md5sums = SKIP
+
+pkgname = lib-lightblue-pebble-git
+
