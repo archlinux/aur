@@ -5,7 +5,7 @@
 
 pkgname=zathura-pdf-mupdf
 pkgver=0.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Adds pdf support to zathura by using the mupdf library"
 arch=('i686' 'x86_64')
 url="https://pwmt.org/projects/zathura/plugins/zathura-pdf-mupdf/"
