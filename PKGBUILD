@@ -7,7 +7,7 @@ pkgname='ros-indigo-rviz-plugin-tutorials'
 pkgver='0.9.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rviz

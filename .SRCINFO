@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rviz-plugin-tutorials
 	pkgdesc = ROS - Tutorials showing how to write plugins for RViz.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/rviz_plugin_tutorials
 	arch = any
 	license = BSD
