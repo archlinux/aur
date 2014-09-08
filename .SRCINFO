@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-tf2-py
 	pkgdesc = ROS - The tf2_py package.
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/tf2_py
 	arch = any
 	license = BSD
