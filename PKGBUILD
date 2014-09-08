@@ -2,7 +2,7 @@
 # Contributor: Bitwig GmbH <support at bitwig dot com>
 pkgname=bitwig-studio-demo-rc
 _pkgname=bitwig-studio
-pkgver=1.0.12rc1
+pkgver=1.0.14rc1
 _pkgver=${pkgver/rc/-RC}
 pkgrel=1
 pkgdesc="Music production system for production, remixing and performance. Release candidate version"
@@ -24,7 +24,7 @@ provides=('bitwig-studio')
 conflicts=('bitwig-studio-demo')
 options=(!strip)
 source=("http://packs.bitwig.com/downloads/bitwig-studio-${_pkgver}.deb")
-md5sums=('f3f159b888a2928979520896a62e10a8')
+md5sums=('36875f9c965619e8ede81d65e834bd16')
 
 _archive=("bitwig-studio-${_pkgver}.deb")
 _archive_md5="${md5sums[0]}"
