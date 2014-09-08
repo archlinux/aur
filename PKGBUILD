@@ -7,7 +7,7 @@ pkgname='ros-indigo-bondcpp'
 pkgver='1.7.14'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-bond
