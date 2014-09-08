@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rospack
 	pkgdesc = ROS - ROS Package Tool.
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = http://wiki.ros.org/rospack
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = ros-indigo-rospack
 	depends = python2
 	depends = boost
 	depends = pkg-config
-	source = rospack::git+https://github.com/ros-gbp/rospack-release.git#tag=release/indigo/rospack/2.2.4-0
+	source = rospack::git+https://github.com/ros-gbp/rospack-release.git#tag=release/indigo/rospack/2.2.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rospack
