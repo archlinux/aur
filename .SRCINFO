@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-robot-state-publisher
 	pkgdesc = ROS - This package allows you to publish the state of a robot to tf.
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/robot_state_publisher
 	arch = any
 	license = BSD
