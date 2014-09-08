@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-nodelet-tutorial-math
 	pkgdesc = ROS - Package for Nodelet tutorial.
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/nodelet_tutorial_math
 	arch = any
 	license = BSD
