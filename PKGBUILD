@@ -12,6 +12,10 @@ source=(http://brick.kernel.dk/snaps/$pkgname-$pkgver.tar.bz2)
 build() {
   cd $srcdir/$pkgname-$pkgver/
   make
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver/
   make prefix=/usr mandir=/usr/share/man DESTDIR=$pkgdir/ install
 
   install -dm 755 $pkgdir/usr/share/doc/$pkgname
