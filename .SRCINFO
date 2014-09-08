@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-collada-parser
 	pkgdesc = ROS - This package contains a C++ parser for the Collada robot description format.
 	pkgver = 1.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/collada_parser
 	arch = any
 	license = BSD
