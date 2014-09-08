@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-actionlib
 	pkgdesc = ROS - The actionlib stack provides a standardized interface for interfacing with preemptable tasks.
 	pkgver = 1.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/actionlib
 	arch = any
 	license = BSD
