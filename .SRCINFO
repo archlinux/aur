@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-roscpp
 	pkgdesc = ROS - roscpp is a C++ implementation of ROS.
 	pkgver = 1.11.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/roscpp
 	arch = any
 	license = BSD
