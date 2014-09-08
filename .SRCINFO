@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-tf
 	pkgdesc = ROS - tf is a package that lets the user keep track of multiple coordinate frames over time.
 	pkgver = 1.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/tf
 	arch = any
 	license = BSD
