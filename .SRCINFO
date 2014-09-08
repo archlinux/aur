@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-compressed-image-transport
 	pkgdesc = ROS - Compressed_image_transport provides a plugin to image_transport for transparently sending images encoded as JPEG or PNG.
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/image_transport_plugins
 	arch = any
 	license = BSD
