@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-class-loader
 	pkgdesc = ROS - The class_loader package is a ROS-independent package for loading plugins during runtime and the foundation of the higher level ROS pluginlib library.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/class_loader
 	arch = any
 	license = BSD
