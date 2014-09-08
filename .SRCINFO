@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-camera-info-manager
 	pkgdesc = ROS - This package provides a C++ interface for camera calibration information.
 	pkgver = 1.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/camera_info_manager
 	arch = any
 	license = BSD
