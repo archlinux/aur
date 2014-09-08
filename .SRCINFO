@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rqt-gui-cpp
 	pkgdesc = ROS - rqt_gui_cpp enables GUI plugins to use the C++ client library for ROS.
 	pkgver = 0.2.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/rqt_gui_cpp
 	arch = any
 	license = BSD

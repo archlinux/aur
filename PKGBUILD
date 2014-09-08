@@ -7,7 +7,7 @@ pkgname='ros-indigo-rqt-gui-cpp'
 pkgver='0.2.14'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-qt-gui-cpp
