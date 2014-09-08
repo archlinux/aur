@@ -3,32 +3,30 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=3.14.1
-_basever=3.14
+pkgver=3.16.2
+_basever=3.16
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
 source=(http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.xz
-        http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz
-        linux-3.14-xattr_header.patch)
+        http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz)
         
-        # NOTE: signatures are not automatically verified by makepkg yet
+        # NOTE: signatures are not automatically verified until pacman-4.2
         #http://www.kernel.org/pub/linux/kernel/v3.x/linux-${_basever}.tar.sign
         #http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign
 
-md5sums=('b621207b3f6ecbb67db18b13258f8ea8'
-         '2526eb95793ecc1c22d7e1428ef23cdc'
-         '22926521588b2e95f3c2a2cb428e7cf9')
+md5sums=('5c569ed649a0c9711879f333e90c5386'
+         '926e6e2ee0634ce53730701da749b040')
 
 prepare() {
   cd ${srcdir}/linux-${_basever}
   [[ $pkgver != $_basever ]] && patch -p1 -i ${srcdir}/patch-${pkgver}
 
   # fix xattr.h dual inclusion issues
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/patch/?id=ea1a8217
-  patch -p1 -i $srcdir/linux-3.14-xattr_header.patch
+  # https://github.com/torvalds/linux/commit/bfcfd44c
+  sed -i "/__UAPI_DEF_XATTR/s/ifdef/if/" include/uapi/linux/xattr.h
 }
 
 build() {
