@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rqt-rviz
 	pkgdesc = ROS - rqt_rviz provides a GUI plugin embedding RViz.
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/rqt_rviz
 	arch = any
 	license = BSD
