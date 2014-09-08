@@ -1,6 +1,6 @@
 # Maintainer: Ian D, Scott <ian@perebruin.com>
 pkgname=wikicurses-git
-pkgver=67a3daf
+pkgver=0f23f6b
 pkgrel=1
 pkgdesc="A simple curses interface for accessing Wikipedia."
 arch=('any')
@@ -18,6 +18,6 @@ pkgver () {
 
 package() {
   cd "$srcdir/$_gitname"
-  install -Dm655 "wikicurses" "$pkgdir/usr/bin/wikicurses"
+  python setup.py install --root="$pkgdir"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
