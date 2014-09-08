@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-roslib
 	pkgdesc = ROS - Base dependencies and support libraries for ROS.
 	pkgver = 1.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/roslib
 	arch = any
 	license = BSD
