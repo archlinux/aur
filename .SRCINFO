@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-interactive-markers
 	pkgdesc = ROS - 3D interactive marker communication library for RViz and similar tools.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/interactive_markers
 	arch = any
 	license = BSD

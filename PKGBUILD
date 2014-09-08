@@ -7,7 +7,7 @@ pkgname='ros-indigo-interactive-markers'
 pkgver='1.11.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
