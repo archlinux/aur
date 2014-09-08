@@ -4,7 +4,7 @@ pkgdesc="ROS - This library contains wrappers for generating floating point valu
 url='http://ros.org/wiki/random_numbers'
 
 pkgname='ros-indigo-random-numbers'
-pkgver='0.2.0'
+pkgver='0.3.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
