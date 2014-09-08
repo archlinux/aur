@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-laser-geometry
 	pkgdesc = ROS - This package contains a class for converting from a 2D laser scan as defined by sensor_msgs/LaserScan into a point cloud as defined by sensor_msgs/PointCloud or sensor_msgs/PointCloud2.
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/laser_geometry
 	arch = any
 	license = BSD
