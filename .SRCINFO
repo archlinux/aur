@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-nodelet-topic-tools
 	pkgdesc = ROS - This package contains common nodelet tools such as a mux, demux and throttle.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/nodelet_topic_tools
 	arch = any
 	license = BSD
