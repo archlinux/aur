@@ -1,6 +1,6 @@
 # Maintainer: Ian D, Scott <ian@perebruin.com>
 pkgname=wikicurses-git
-pkgver=0f23f6b
+pkgver=r39.0f23f6b
 pkgrel=1
 pkgdesc="A simple curses interface for accessing Wikipedia."
 arch=('any')
@@ -13,7 +13,7 @@ _gitname="wikicurses"
 
 pkgver () {
   cd $srcdir/$_gitname
-  echo $(git describe --always | sed 's/-/./g')
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
