@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-compressed-depth-image-transport
 	pkgdesc = ROS - Compressed_depth_image_transport provides a plugin to image_transport for transparently sending depth images (raw, floating-point) using PNG compression.
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/image_transport_plugins
 	arch = any
 	license = BSD
