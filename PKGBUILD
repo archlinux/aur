@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/wiki/Tutorials'
 
 pkgname='ros-indigo-gazebo-ros'
-pkgver='2.4.5'
+pkgver='2.4.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
