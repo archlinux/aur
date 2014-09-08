@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-urdf
 	pkgdesc = ROS - This package contains a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model.
 	pkgver = 1.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/urdf
 	arch = any
 	license = BSD
