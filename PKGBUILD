@@ -7,7 +7,7 @@ pkgname='ros-indigo-rviz'
 pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -37,7 +37,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4
-  ogre
+  "ogre>=1.9"
   assimp
   eigen3
   tinyxml
@@ -68,7 +68,7 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-message-filters)
 depends=(${ros_depends[@]}
   qt4
-  ogre
+  "ogre>=1.9"
   assimp
   eigen3
   tinyxml
