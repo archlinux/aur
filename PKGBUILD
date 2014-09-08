@@ -4,7 +4,7 @@ pkgdesc="ROS - Message and service data structures for interacting with Gazebo f
 url='http://gazebosim.org/wiki/Tutorials'
 
 pkgname='ros-indigo-gazebo-msgs'
-pkgver='2.4.5'
+pkgver='2.4.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
