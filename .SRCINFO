@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-filters
 	pkgdesc = ROS - This library provides a standardized interface for processing data as a sequence of filters.
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/filters
 	arch = any
 	license = BSD
