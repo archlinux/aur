@@ -6,7 +6,7 @@ After=network.target
 Type=forking
 PIDFile=/var/run/tomcat8.pid
 Environment=CATALINA_PID=/var/run/tomcat8.pid
-Environment=TOMCAT_JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+Environment=TOMCAT_JAVA_HOME=/usr/lib/jvm/default-runtime
 Environment=CATALINA_HOME=/usr/share/tomcat8
 Environment=CATALINA_BASE=/usr/share/tomcat8
 Environment=CATALINA_OPTS=
