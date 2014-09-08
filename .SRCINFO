@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-depth-image-proc
 	pkgdesc = ROS - Contains nodelets for processing depth images such as those produced by OpenNI camera.
 	pkgver = 1.12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/depth_image_proc
 	arch = any
 	license = BSD
