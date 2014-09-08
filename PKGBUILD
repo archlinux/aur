@@ -4,7 +4,7 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/wiki/Tutorials'
 
 pkgname='ros-indigo-gazebo-plugins'
-pkgver='2.4.5'
+pkgver='2.4.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -23,6 +23,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-diagnostic-updater
   ros-indigo-std-srvs
   ros-indigo-angles
+  ros-indigo-camera-info-manager
   ros-indigo-polled-camera
   ros-indigo-tf2-ros
   ros-indigo-tf
@@ -31,7 +32,6 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-cv-bridge
   ros-indigo-catkin
   ros-indigo-image-transport
-  ros-indigo-pcl-conversions
   ros-indigo-dynamic-reconfigure
   ros-indigo-driver-base)
 makedepends=('cmake' 'git' 'ros-build-tools'
@@ -53,6 +53,7 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-gazebo-ros
   ros-indigo-std-srvs
   ros-indigo-angles
+  ros-indigo-camera-info-manager
   ros-indigo-polled-camera
   ros-indigo-tf2-ros
   ros-indigo-tf
