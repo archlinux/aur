@@ -7,7 +7,7 @@ pkgname='ros-indigo-stereo-image-proc'
 pkgver='1.12.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-image-geometry

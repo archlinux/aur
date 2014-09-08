@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-stereo-image-proc
 	pkgdesc = ROS - Stereo and single image rectification and disparity processing.
 	pkgver = 1.12.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/stereo_image_proc
 	arch = any
 	license = BSD
