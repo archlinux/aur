@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rqt-image-view
 	pkgdesc = ROS - rqt_image_view provides a GUI plugin for displaying images using image_transport.
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/rqt_image_view
 	arch = any
 	license = BSD

@@ -7,7 +7,7 @@ pkgname='ros-indigo-rqt-image-view'
 pkgver='0.3.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rqt-gui-cpp
