@@ -4,7 +4,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=vinagre
-pkgver=3.12.2
+pkgver=3.13.90
 pkgrel=1
 pkgdesc="A VNC Client for the GNOME Desktop"
 arch=(i686 x86_64)
@@ -12,14 +12,13 @@ license=(GPL)
 url="http://www.gnome.org/projects/vinagre/"
 install=vinagre.install
 depends=(libsecret gtk-vnc vte3 telepathy-glib avahi desktop-file-utils dconf shared-mime-info
-         gnome-icon-theme spice-gtk3 gnutls)
-optdepends=('openssh: SSH plugin'
-            'freerdp: RDP plugin')
-makedepends=(docbook-xsl intltool freerdp openssh itstool spice-protocol)
+         spice-gtk3 gnutls freerdp)
+optdepends=('openssh: SSH plugin')
+makedepends=(docbook-xsl intltool openssh itstool spice-protocol)
 groups=(gnome-extra)
 options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d1959bfa7b82aad79b96ed92d11f37209a0f5cccdb025c91574a9a85381d82fc')
+sha256sums=('7f3ba8d6aa978bc7986e3d7d72e90b4feeec1ee890b47ce850f187c37c2a5df5')
 
 build() {
   cd $pkgname-$pkgver
