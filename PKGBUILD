@@ -3,22 +3,12 @@
 pkgname=aegir-provision
 _pkgname=provision
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
 depends=('drush')
-optdepends=(
-    #'rsync: asdf'
-    #'mariadb: '
-    #'php-apache'
-    #'nginx: '
-    #'php-fpm: '
-    #'sudo'
-    #'smtp-forwarder'
-    #'unzip'
-)
 source=("http://ftp.drupal.org/files/projects/${_pkgname}-6.x-${pkgver}.tar.gz")
 md5sums=('83d3022e6cbf36ecdc7733dec308d427')
 
