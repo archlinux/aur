@@ -11,8 +11,8 @@
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
 pkgver=0.9.10.0
-pkgrel=1
-_pppver=2.4.6
+pkgrel=2
+_pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')

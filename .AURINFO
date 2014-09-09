@@ -1,7 +1,7 @@
 pkgbase = networkmanager-consolekit
 	pkgdesc = NetworkManager with ConsoleKit support for non-systemd systems
 	pkgver = 0.9.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = networkmanager-consolekit
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = git
-	makedepends = ppp=2.4.6
+	makedepends = ppp=2.4.7
 	makedepends = modemmanager
 	makedepends = rp-pppoe
 	makedepends = vala
