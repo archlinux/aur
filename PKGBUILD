@@ -2,14 +2,14 @@
 
 pkgbase=phonon-gstreamer
 pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
-pkgver=4.7.2
+pkgver=4.8.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
-makedepends=('gstreamer0.10-base-plugins' 'cmake' 'automoc4' 'phonon-qt4' 'phonon-qt5')
-source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/src/phonon-backend-gstreamer-${pkgver}.tar.xz")
-md5sums=('d437478c3ef2da2cda0da0abda20ef11')
+makedepends=('gst-plugins-base' 'cmake' 'automoc4' 'phonon-qt4' 'phonon-qt5')
+source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/phonon-backend-gstreamer-${pkgver}.tar.xz")
+md5sums=('fad1ae2accbc2affee174fb8b52630ed')
 
 prepare() {
   mkdir build-qt4
@@ -37,7 +37,7 @@ build() {
 
 package_phonon-qt4-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt4"
-  depends=('gstreamer0.10-base-plugins')
+  depends=('gst-plugins-base' 'pulseaudio')
   provides=('phonon-backend' 'phonon-qt4-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
@@ -49,7 +49,7 @@ package_phonon-qt4-gstreamer() {
 
 package_phonon-qt5-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt5"
-  depends=('gstreamer0.10-base-plugins')
+  depends=('gst-plugins-base')
   provides=('phonon-qt5-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
