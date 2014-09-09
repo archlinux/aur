@@ -3,7 +3,7 @@
 pkgbase=phonon-gstreamer
 pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
@@ -37,7 +37,8 @@ build() {
 
 package_phonon-qt4-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt4"
-  depends=('gst-plugins-base' 'pulseaudio')
+  depends=('gst-plugins-base' 'libpulse')
+  optdepends=('pulseaudio: PulseAudio support')
   provides=('phonon-backend' 'phonon-qt4-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
@@ -49,7 +50,8 @@ package_phonon-qt4-gstreamer() {
 
 package_phonon-qt5-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt5"
-  depends=('gst-plugins-base')
+  depends=('gst-plugins-base' 'libpulse')
+  optdepends=('pulseaudio: PulseAudio support')
   provides=('phonon-qt5-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
