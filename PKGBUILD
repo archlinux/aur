@@ -3,9 +3,9 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.63.10
-_gitver=a0375f2
-pkgrel=2
+pkgver=0.63.11
+_gitver=363cf98
+pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo"
 url="http://rainemu.swishparty.co.uk"
 license=('custom')
@@ -24,8 +24,8 @@ optdepends=('raine-artwork: additional background graphics for some games'
             'arcade-history-dat: database with various information about the loaded rom')
 source=(raine-$pkgver.tar.gz::"$url/cgi-bin/gitweb.cgi?p=raine;a=snapshot;h=$_gitver;sf=tgz"
         "$url/html/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}_i386.deb")
-sha256sums=('c6f9accd06a843bebbcc7e5a34e0aad1c29ea102eaa46946eeedba2ca565a06a'
-            'e6b2f13bf47f241c316f65e8ee3eb9083df4f1a8bb4518885f18db0dbd4d82ca')
+sha256sums=('cba21039848027e2aff655c549c1ce51bd587c9d4e1496ecd7af335fe9d0eb0e'
+            '2929e2fdafd517f73338a9378d6739c6b126194c0ae94d9d059aa4d99d97b239')
 options=('emptydirs')
 
 prepare() {
@@ -45,8 +45,8 @@ prepare() {
   # -O3 optimizations cause segfaults, use -O2 instead
   sed 's|-O3|-O2|g' -i makefile
 
-  # link to the dynamic library of SDL_sound
-  sed 's|LIBS += /usr/local/lib/libSDL_sound.a -lFLAC -logg -lspeex -lmikmod -lvorbisfile -lmodplug|LIBS += -lSDL_sound|' -i makefile
+  # link to the dynamic library of SDL_sound, not only for gentoo
+  sed 's|ifeq ("$(shell uname -n)","gentoo")|ifdef RAINE_UNIX|' -i makefile
 
   # 'detect-cpu' script does not recognize most recent cpus, use generic optimizing
   echo "_MARCH=-march=${CARCH/x86_64/x86-64} -mtune=generic" > cpuinfo
