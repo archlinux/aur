@@ -17,7 +17,6 @@ pkgbase = lib32-boost-libs
 	depends = lib32-icu
 	depends = lib32-gcc-libs
 	source = http://downloads.sourceforge.net/sourceforge/boost/boost_1_56_0.tar.gz
-	sha1sums = 1639723c6bdff873cdb6d747f8f8c9d9f066434d
 
 pkgname = lib32-boost-libs
 

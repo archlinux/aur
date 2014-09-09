@@ -3,7 +3,7 @@
 # Contributor  : andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.55.0
+pkgver=1.56.0
 _boostver=${pkgver//./_}
 pkgrel=1
 url="http://www.boost.org"
@@ -14,7 +14,7 @@ groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-icu' 'lib32-gcc-libs')
 makedepends=('lib32-icu>=51.1' 'lib32-bzip2' 'lib32-zlib' 'gcc-multilib' 'python' 'python2')
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
-sha1sums=('61ed0e57d3c7c8985805bb0682de3f4c65f4b6e5')
+sha1sums=('1639723c6bdff873cdb6d747f8f8c9d9f066434d')
 
 
 
@@ -31,33 +31,19 @@ build() {
 
    cd "${srcdir}/boost_${_boostver}"
 
-   # Shut up strict aliasing warnings
-   echo "using gcc : : : <compileflags>-fno-strict-aliasing ;" >> ./tools/build/v2/user-config.jam
-   # Add an extra python version. This does not replace anything and python 2.x need to be the default.
-   #echo "using python : 3.3 : /usr/bin/python3 : /usr/include/python3.3m : /usr/lib ;" >> ./tools/build/v2/user-config.jam
-   # Support for OpenMPI
-   #echo "using mpi ;" >> ./tools/build/v2/user-config.jam
-
-   ./bootstrap.sh --with-toolset=cc --with-icu --with-python=
+   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=
    # --with-python=/usr/bin/python2
 
-   sed -i 's/cc/gcc/g' project-config.jam
+	_bindir="bin.linuxx86_64"
+    install -Dm755 tools/build/src/engine/$_bindir/b2 "${_stagedir}"/bin/b2
 
-	_bindir="bin.linuxx86"
+   # Add an extra python version. This does not replace anything and python 2.x need to be the default.
+   #echo "using python : 3.4 : /usr/bin/python3 : /usr/include/python3.4m : /usr/lib ;" >> project-config.jam
 
-	install -d -m 755 "${_stagedir}"/bin
-	install "${srcdir}"/boost_${_boostver}/tools/build/v2/engine/${_bindir}/bjam "${_stagedir}"/bin/bjam
+   # Support for OpenMPI
+   #echo "using mpi ;" >> project-config.jam
 
-   pushd tools
-   for _tool in bcp inspect quickbook process_jam_log wave; do
-      "${_stagedir}"/bin/bjam --toolset=gcc $_tool
-   done
-   "${_stagedir}"/bin/bjam --toolset=gcc cflags="-std=gnu++11" compiler_status
-   "${_stagedir}"/bin/bjam --toolset=gcc cflags="-std=gnu++11" library_status
-   popd
-   cp -a dist/bin/* "${_stagedir}"/bin
-
-   #boostbook is needed by quickbook
+   # boostbook is needed by quickbook
    install -d -m 755 "${_stagedir}"/share/boostbook
    cp -a tools/boostbook/{xsl,dtd} "${_stagedir}"/share/boostbook/
 
@@ -67,22 +53,23 @@ build() {
 	# and installs includes in /usr/include/boost.
 	# --layout=system no longer adds the -mt suffix for multi-threaded libs.
 	# install to ${_stagedir} in preparation for split packaging
-	"${_stagedir}"/bin/bjam \
+	"${_stagedir}"/bin/b2 \
 		variant=release \
 		debug-symbols=off \
 		threading=multi \
 		runtime-link=shared \
-		link=shared \
+		link=shared,static \
 		toolset=gcc \
 		address-model=32 \
 		--without-python \
 		--without-mpi \
+        cflags="${CPPFLAGS} ${CFLAGS} -O3" linkflags="${LDFLAGS}" \
 		--layout=system \
 		--prefix="${_stagedir}" \
 		${JOBS} \
 		install
 
-   find ${_stagedir} -name \*.a -exec rm -f {} \;
+   #find ${_stagedir} -name \*.a -exec rm -f {} \;
 }
 
 package() {
