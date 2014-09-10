@@ -3,7 +3,7 @@
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.7.2
+pkgver=4.7.3
 pkgrel=1
 pkgdesc='Scheme R5RS interpreter and compiler (via C)'
 arch=('x86_64' 'i686')
@@ -11,8 +11,9 @@ url='http://dynamo.iro.umontreal.ca/wiki/index.php/Main_Page'
 license=('LGPL2.1' 'Apache')
 depends=('bash')
 install="$pkgname.install"
+options=('staticlibs')
 source=("http://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/it-}-v${pkgver//./_}.tgz")
-sha256sums=('c09597fa423602eb9d06b1ab3c1a63cd9c612b89f7f6d718f2c0a96da4d4ac1a')
+sha256sums=('59c4c62f2cfaf698b54a862e7af9c1b3e4cc27e46d386f31c66e00fed4701777')
 
 build() {
  cd "${pkgname/it-}-v${pkgver//./_}"
