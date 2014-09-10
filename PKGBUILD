@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=37.0.2062.94
+pkgver=37.0.2062.120
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.default
         chromium-nacl-bootstrap-cflags.patch
         chromium.sh)
-sha256sums=('d27c19580b74cbe143131f0bc097557b3b2fb3d2be966e688d8af51a779ce533'
+sha256sums=('b3073758b6caf384d30de20ba7514ee52cce5c1460bc768cd28d15f53f0c6efb'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             'd82bafd8d4d6517c2d420b2987fdbe1dfcc32d5fed74a6c0011bcb2f868225c3'
