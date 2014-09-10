@@ -5,7 +5,7 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -26,7 +26,7 @@ checkdepends=(
   'texlive-latexextra'
 )
 source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
-md5sums=('104494f036889122c9f403ae065ae7a9')
+md5sums=('a98c93124035b4cd7183604aec656cb3')
 
 prepare() {
   # souce duplication is required because makefile modify source code
