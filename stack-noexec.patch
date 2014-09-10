@@ -1,6 +1,6 @@
-diff -ur gzdoom-1.6.00.orig/src/asm_ia32/a.asm gzdoom-1.6.00/src/asm_ia32/a.asm
---- gzdoom-1.6.00.orig/src/asm_ia32/a.asm	2012-11-06 15:17:27.061263504 +0100
-+++ gzdoom-1.6.00/src/asm_ia32/a.asm	2012-11-06 15:24:25.474601731 +0100
+diff -ur a/src/asm_ia32/a.asm b/src/asm_ia32/a.asm
+--- a/src/asm_ia32/a.asm	2014-09-10 16:00:39.331095163 +0200
++++ b/src/asm_ia32/a.asm	2014-09-10 16:00:50.571095050 +0200
 @@ -810,3 +810,13 @@
  GLOBAL _rtext_a_end
  _rtext_a_end:
@@ -15,9 +15,9 @@ diff -ur gzdoom-1.6.00.orig/src/asm_ia32/a.asm gzdoom-1.6.00/src/asm_ia32/a.asm
 +%ifidn __OUTPUT_FORMAT__,elf64  
 +section .note.GNU-stack noalloc noexec nowrite progbits
 +%endif
-diff -ur gzdoom-1.6.00.orig/src/asm_ia32/misc.asm gzdoom-1.6.00/src/asm_ia32/misc.asm
---- gzdoom-1.6.00.orig/src/asm_ia32/misc.asm	2012-11-06 15:17:27.064596838 +0100
-+++ gzdoom-1.6.00/src/asm_ia32/misc.asm	2012-11-06 15:24:25.474601731 +0100
+diff -ur a/src/asm_ia32/misc.asm b/src/asm_ia32/misc.asm
+--- a/src/asm_ia32/misc.asm	2014-09-10 16:00:39.331095163 +0200
++++ b/src/asm_ia32/misc.asm	2014-09-10 16:00:50.571095050 +0200
 @@ -198,3 +198,13 @@
  		pop		ebx
  		emms
@@ -32,9 +32,9 @@ diff -ur gzdoom-1.6.00.orig/src/asm_ia32/misc.asm gzdoom-1.6.00/src/asm_ia32/mis
 +%ifidn __OUTPUT_FORMAT__,elf64  
 +section .note.GNU-stack noalloc noexec nowrite progbits
 +%endif
-diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap.asm gzdoom-1.6.00/src/asm_ia32/tmap.asm
---- gzdoom-1.6.00.orig/src/asm_ia32/tmap.asm	2012-11-06 15:17:27.061263504 +0100
-+++ gzdoom-1.6.00/src/asm_ia32/tmap.asm	2012-11-06 15:24:25.474601731 +0100
+diff -ur a/src/asm_ia32/tmap.asm b/src/asm_ia32/tmap.asm
+--- a/src/asm_ia32/tmap.asm	2014-09-10 16:00:39.334428497 +0200
++++ b/src/asm_ia32/tmap.asm	2014-09-10 16:00:50.571095050 +0200
 @@ -1891,3 +1891,13 @@
  		selfmod rtext_start, rtext_end
  		call	setpitch3
@@ -49,9 +49,9 @@ diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap.asm gzdoom-1.6.00/src/asm_ia32/tma
 +%ifidn __OUTPUT_FORMAT__,elf64  
 +section .note.GNU-stack noalloc noexec nowrite progbits
 +%endif
-diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap2.asm gzdoom-1.6.00/src/asm_ia32/tmap2.asm
---- gzdoom-1.6.00.orig/src/asm_ia32/tmap2.asm	2012-11-06 15:17:27.061263504 +0100
-+++ gzdoom-1.6.00/src/asm_ia32/tmap2.asm	2012-11-06 15:24:25.474601731 +0100
+diff -ur a/src/asm_ia32/tmap2.asm b/src/asm_ia32/tmap2.asm
+--- a/src/asm_ia32/tmap2.asm	2014-09-10 16:00:39.334428497 +0200
++++ b/src/asm_ia32/tmap2.asm	2014-09-10 16:00:50.571095050 +0200
 @@ -638,3 +638,13 @@
  GLOBAL _rtext_tmap2_end
  _rtext_tmap2_end:
@@ -66,9 +66,9 @@ diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap2.asm gzdoom-1.6.00/src/asm_ia32/tm
 +%ifidn __OUTPUT_FORMAT__,elf64  
 +section .note.GNU-stack noalloc noexec nowrite progbits
 +%endif
-diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap3.asm gzdoom-1.6.00/src/asm_ia32/tmap3.asm
---- gzdoom-1.6.00.orig/src/asm_ia32/tmap3.asm	2012-11-06 15:17:27.061263504 +0100
-+++ gzdoom-1.6.00/src/asm_ia32/tmap3.asm	2012-11-06 15:24:25.474601731 +0100
+diff -ur a/src/asm_ia32/tmap3.asm b/src/asm_ia32/tmap3.asm
+--- a/src/asm_ia32/tmap3.asm	2014-09-10 16:00:39.334428497 +0200
++++ b/src/asm_ia32/tmap3.asm	2014-09-10 16:00:50.574428383 +0200
 @@ -342,3 +342,13 @@
  GLOBAL _rtext_tmap3_end
  _rtext_tmap3_end:
@@ -83,9 +83,9 @@ diff -ur gzdoom-1.6.00.orig/src/asm_ia32/tmap3.asm gzdoom-1.6.00/src/asm_ia32/tm
 +%ifidn __OUTPUT_FORMAT__,elf64
 +section .note.GNU-stack noalloc noexec nowrite progbits
 +%endif
-diff -ur gzdoom-1.6.00.orig/src/asm_x86_64/tmap3.s gzdoom-1.6.00/src/asm_x86_64/tmap3.s
---- gzdoom-1.6.00.orig/src/asm_x86_64/tmap3.s	2012-11-06 15:17:30.497930211 +0100
-+++ gzdoom-1.6.00/src/asm_x86_64/tmap3.s	2012-11-06 15:24:25.474601731 +0100
+diff -ur a/src/asm_x86_64/tmap3.s b/src/asm_x86_64/tmap3.s
+--- a/src/asm_x86_64/tmap3.s	2014-09-10 16:00:39.334428497 +0200
++++ b/src/asm_x86_64/tmap3.s	2014-09-10 16:00:50.574428383 +0200
 @@ -139,3 +139,4 @@
  		.align 16
  

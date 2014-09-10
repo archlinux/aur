@@ -8,13 +8,13 @@ if [[ "$CARCH" == x86_64 ]]; then
 fi
 
 pkgname=gzdoom
-pkgver=1.8.2
-pkgrel=3
+pkgver=2.0.02
+pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
 license=('custom')
-depends=('fluidsynth' 'gxmessage' 'sdl' 'glu')
+depends=('fluidsynth' 'glew' 'gtk2' 'gxmessage' 'sdl')
 makedepends=('nasm' 'cmake' 'git' 'imagemagick' 'mesa')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -28,19 +28,15 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
 source=(gzdoom::git://github.com/coelckers/gzdoom.git#tag=g${pkgver}
         http://www.fmod.org/download/fmodex/api/Linux/fmodapi${_fmodver}${_fmodarch}.tar.gz \
-        git-3a477f69.patch \
-        git-276ca5b7.patch \
         config-update-fix.patch \
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
 md5sums=('SKIP'
          '355cba00a34eb5f7d027da68b452f6d9'
-         '3d179ed90288fc1fa0df07ed6c45cf77'
-         '5824e98be50e63519325ef555aa1ae30'
-         '2fda668ab449b7ca2d75a5b62dae6870'
-         'ed6c7d1175146bedac3f5a59d09d8f4b'
-         'b83081e982b742010df0afe36b4d49b6'
+         'eed301389f533effbd127681a3ddc2c5'
+         '3ee3d6bb1f777445438bc40ae81a95df'
+         '4778bb22190c445a4ed764c64432de12'
          '3f5920d839086c9ad04ed1338c3fb546')
 
 if [[ "$CARCH" == i?86 ]]; then
@@ -55,8 +51,6 @@ _sharedir=/usr/share/games/gzdoom
 prepare() {
   cd gzdoom
 
-  patch -p1 <"$srcdir/git-3a477f69.patch"
-  patch -p1 <"$srcdir/git-276ca5b7.patch"
   patch -p1 <"$srcdir/config-update-fix.patch"
   patch -p1 <"$srcdir/doom-share-dir.patch"
   patch -p1 <"$srcdir/stack-noexec.patch"

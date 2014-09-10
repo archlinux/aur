@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Doom source port based on ZDoom with an OpenGL renderer.
-	pkgver = 1.8.2
-	pkgrel = 3
+	pkgver = 2.0.02
+	pkgrel = 1
 	url = http://www.osnanet.de/c.oelckers/gzdoom/
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = gzdoom
 	makedepends = imagemagick
 	makedepends = mesa
 	depends = fluidsynth
+	depends = glew
+	depends = gtk2
 	depends = gxmessage
 	depends = sdl
-	depends = glu
 	optdepends = blasphemer: Blasphemer (free Heretic) game data
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data
@@ -25,21 +26,17 @@ pkgbase = gzdoom
 	optdepends = hexen1-wad: Hexen demo game data
 	optdepends = strife0-wad: Strife shareware game data
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g1.8.2
+	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g2.0.02
 	source = http://www.fmod.org/download/fmodex/api/Linux/fmodapi42636linux.tar.gz
-	source = git-3a477f69.patch
-	source = git-276ca5b7.patch
 	source = config-update-fix.patch
 	source = doom-share-dir.patch
 	source = stack-noexec.patch
 	source = gzdoom.desktop
 	md5sums = SKIP
 	md5sums = 355cba00a34eb5f7d027da68b452f6d9
-	md5sums = 3d179ed90288fc1fa0df07ed6c45cf77
-	md5sums = 5824e98be50e63519325ef555aa1ae30
-	md5sums = 2fda668ab449b7ca2d75a5b62dae6870
-	md5sums = ed6c7d1175146bedac3f5a59d09d8f4b
-	md5sums = b83081e982b742010df0afe36b4d49b6
+	md5sums = eed301389f533effbd127681a3ddc2c5
+	md5sums = 3ee3d6bb1f777445438bc40ae81a95df
+	md5sums = 4778bb22190c445a4ed764c64432de12
 	md5sums = 3f5920d839086c9ad04ed1338c3fb546
 
 pkgname = gzdoom
