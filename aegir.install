@@ -1,0 +1,24 @@
+post_install() {
+    post_upgrade
+    passwd -l aegir &>/dev/null
+
+    echo '>>> This machine's hostname must be a FQDN that resolves to its IP address.'
+    echo '>>> MariaDB must be initialised with:'
+    echo '>>>   # /usr/bin/mysql_secure_installation'
+    echo '>>> before Aegir can be used.'
+    echo '>>> It's strongly recommended to create a separate, password-protected MySQL'
+    echo '>>> root account for Aegir by running as MySQL root:'
+    echo ">>>   # GRANT ALL PRIVILEGES ON *.* TO 'aegir_root'@'%' IDENTIFIED BY "
+    echo ">>>     'password' WITH GRANT OPTION;"
+    echo '>>>   $ drush hostmaster-install --web_group=http [--http_service_type=nginx] \'
+    echo '>>>       [--aegir_db_user=root --aegir_db_pass=root] \'
+    echo '>>>       --aegir_host=FQDN [--client_email=email] FQDN'
+}
+
+post_upgrade() {
+    # create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
+    getent group aegir >/dev/null || groupadd aegir
+    getent passwd aegir >/dev/null || useradd -g aegir -b '/var/lib' -s /bin/false aegir
+
+    su -c 'drush cc drush' - aegir
+}
