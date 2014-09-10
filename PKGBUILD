@@ -10,6 +10,7 @@ url='http://aegirproject.org'
 license=('GPL')
 depends=(
     'aegir-provision'
+    'cron'
     'rsync'
     'mariadb'
     'sudo'
@@ -23,6 +24,7 @@ optdepends=(
     'nginx: for nginx support'
     'php-fpm: for nginx support'
 )
+install=$pkgname.install
 source=(
     "http://ftp.drupal.org/files/projects/${_pkgname}-6.x-${pkgver}-core.tar.gz"
     'aegir.ini'
@@ -33,7 +35,7 @@ source=(
 )
 md5sums=(
     '381e904e8eed14c9aa574c6ed133d38b'
-    '9ea30474db8fa537d2264d422194f01a'
+    '6bd6a1c6264fe7c06d79d1f5159b1e68'
     'a849c7594eedec0ef415b972da048815'
     'e8b6c3748c26caf4af21d402e7a0b947'
     '21178d56a58133e39309dd98d94409cc'
@@ -59,7 +61,8 @@ package() {
     msg2 'Adding misc config files'
     cd ..
     install -Dm644 aegir.ini       "${pkgdir}/etc/php/conf.d/10-aegir.ini"
-    install -Dm644 nginx.sudoers   "${pkgdir}/etc/sudoers.d/aegir-nginx"
+    install -dm750                 "${pkgdir}/etc/sudoers.d"
+    install -Dm440 nginx.sudoers   "${pkgdir}/etc/sudoers.d/aegir"
     install -Dm644 nginx.conf      "${pkgdir}/etc/nginx/aegir.conf"
     install -Dm644 systemd.service "${pkgdir}/usr/lib/systemd/system/aegir.service"
     install -Dm644 nginx.svc.conf  "${pkgdir}/usr/lib/systemd/system/nginx.service.d/aegir.conf"
