@@ -1,0 +1,20 @@
+pkgbase = ros-indigo-bfl
+	pkgdesc = ROS - This package contains a recent version of the Bayesian Filtering Library (BFL), distributed by the Orocos Project.
+	pkgver = 0.7.0
+	pkgrel = 7
+	url = http://ros.org/wiki/bfl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = boost
+	makedepends = cppunit
+	depends = ros-indigo-catkin
+	depends = boost
+	depends = cppunit
+	source = bfl::git+https://github.com/ros-gbp/bfl-release.git#tag=release/indigo/bfl/0.7.0-6
+	md5sums = SKIP
+
+pkgname = ros-indigo-bfl
+
