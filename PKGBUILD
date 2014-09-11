@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
 license=('custom')
 depends=('fluidsynth' 'glew' 'gtk2' 'gxmessage' 'sdl')
-makedepends=('nasm' 'cmake' 'git' 'imagemagick' 'mesa')
+makedepends=('nasm' 'cmake' 'imagemagick' 'mesa')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
@@ -26,13 +26,13 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'hexen1-wad: Hexen demo game data'
             'strife0-wad: Strife shareware game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
-source=(gzdoom::git://github.com/coelckers/gzdoom.git#tag=g${pkgver}
+source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
         http://www.fmod.org/download/fmodex/api/Linux/fmodapi${_fmodver}${_fmodarch}.tar.gz \
         config-update-fix.patch \
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
-md5sums=('SKIP'
+md5sums=('a4921e4a18feaa1b959f55201cd325a4'
          '355cba00a34eb5f7d027da68b452f6d9'
          'eed301389f533effbd127681a3ddc2c5'
          '3ee3d6bb1f777445438bc40ae81a95df'
@@ -49,7 +49,7 @@ _libdir=/usr/lib/gzdoom
 _sharedir=/usr/share/games/gzdoom
 
 prepare() {
-  cd gzdoom
+  cd gzdoom-g$pkgver
 
   patch -p1 <"$srcdir/config-update-fix.patch"
   patch -p1 <"$srcdir/doom-share-dir.patch"
@@ -59,7 +59,7 @@ prepare() {
 }
 
 build() {
-  cd gzdoom
+  cd gzdoom-g$pkgver
 
   local _fmodlib
   if [[ "$CARCH" == i?86 ]]; then
@@ -82,7 +82,7 @@ build() {
 }
 
 package() {
-  cd gzdoom
+  cd gzdoom-g$pkgver
 
   install -Dm755 libgzdoom-fmodex.so "$pkgdir/usr/lib/libgzdoom-fmodex.so"
 
