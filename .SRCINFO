@@ -1,0 +1,13 @@
+pkgbase = fmodex4.26.36
+	pkgdesc = An advanced audio engine (version 4.26.36)
+	pkgver = 4.26.36
+	pkgrel = 1
+	url = http://www.fmod.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://www.fmod.org/download/fmodex/api/Linux/fmodapi42636linux.tar.gz
+	md5sums = 220a54f330bdf3056d6207a0facf2096
+
+pkgname = fmodex4.26.36
+
