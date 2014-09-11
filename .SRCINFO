@@ -1,0 +1,17 @@
+pkgbase = docker-enter-git
+	pkgdesc = nsenter for Docker
+	pkgver = r35.76a789a
+	pkgrel = 1
+	url = https://github.com/jpetazzo/nsenter
+	arch = any
+	license = (unknown)
+	depends = docker
+	depends = sh
+	depends = util-linux>=2.25
+	provides = docker-enter
+	conflicts = docker-enter
+	source = nsenter::git+https://github.com/jpetazzo/nsenter
+	md5sums = SKIP
+
+pkgname = docker-enter-git
+
