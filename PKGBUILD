@@ -1,7 +1,7 @@
 # Maintainer: J0k3r <moebius282 at gmail dot com>
 
 pkgname=fez
-_datever="06242014"
+_datever="1409159048"
 # _binver="1379017964"
 pkgver="20140624"
 pkgrel=1
@@ -23,7 +23,7 @@ source=("hib://${_archivename}"
 noextract=("${_archivename}")
 sha256sums=('1c29de47db568c1e0abc9997ccaa41ce490857db18dd9c3aaad79a5367330895'
             'f2dc00693860653ee62da751e1004c7240a9ac454ece8e72b354fdda259b047d'
-            '196a59ba8954a459097279c64e694fc9982f8ea128f91aa2721ac57a6c4ecd35')
+            '9560decb9387cc9b85c43ca4c04fd79c9521c7f2eecc8acdf5ae9acb075ecc75')
 PKGEXT=".pkg.tar"
 
 

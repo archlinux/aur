@@ -35,3 +35,8 @@
 		- Updated to latest release ( fez-06242014-bin ) ( this is version 1.11 )
 
 		- Changelog formatting changes
+
+2014-09-11 | J0k3r <moebius282 at gmail dot com>
+
+	* fez-1:20140624-1
+		- Binary name changed; still same file and package, therefore no pkgver/pkgrel increase ( fez-1409159048-bin )
