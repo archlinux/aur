@@ -1,11 +1,5 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-_fmodver=42636
-_fmodarch=linux
-if [[ "$CARCH" == x86_64 ]]; then
-  _fmodarch=linux64
-fi
-
 pkgname=zdoom-git
 pkgver=2.8pre.r636.g79d9a57
 pkgrel=1
@@ -13,7 +7,7 @@ pkgdesc="An enhanced Doom port with additional support for Heretic, Hexen and St
 arch=('i686' 'x86_64')
 url="http://www.zdoom.org/"
 license=('custom')
-depends=('fluidsynth' 'gtk2' 'gxmessage' 'sdl')
+depends=('fluidsynth' 'fmodex4.26.36' 'gtk2' 'gxmessage' 'sdl')
 makedepends=('nasm' 'cmake' 'git' 'imagemagick')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -28,22 +22,15 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
 provides=('zdoom')
 conflicts=('zdoom')
 source=(zdoom::git://github.com/rheit/zdoom.git \
-        http://www.fmod.org/download/fmodex/api/Linux/fmodapi${_fmodver}${_fmodarch}.tar.gz \
         doom-share-dir.patch \
         stack-noexec.patch \
         zdoom.desktop)
 md5sums=('SKIP'
-         '220a54f330bdf3056d6207a0facf2096'
          'c8a3905f172f6d9de548e70fa660a300'
          'e1e1160df8dcf969d9acae76dab27bed'
          '83e47fdae2768da78cd4ac151ec92ad1')
 
-if [[ "$CARCH" == i?86 ]]; then
-  md5sums[1]='220a54f330bdf3056d6207a0facf2096'
-elif [[ "$CARCH" == x86_64 ]]; then
-  md5sums[1]='355cba00a34eb5f7d027da68b452f6d9'
-fi
-
+_fmodver=4.26.36
 _libdir=/usr/lib/zdoom
 _sharedir=/usr/share/games/zdoom
 
@@ -64,22 +51,10 @@ prepare() {
 build() {
   cd zdoom
 
-  local _fmodlib
-  if [[ "$CARCH" == i?86 ]]; then
-    _fmodlib=libfmodex-${_fmodver:0:1}.${_fmodver:1:2}.${_fmodver:3:2}.so
-  elif [[ "$CARCH" == x86_64 ]]; then
-    _fmodlib=libfmodex64-${_fmodver:0:1}.${_fmodver:1:2}.${_fmodver:3:2}.so
-  fi
-
-  cp "$srcdir/fmodapi${_fmodver}${_fmodarch}/api/lib/$_fmodlib" libfmodex.so
-
-  cmake -DFMOD_INCLUDE_DIR="$srcdir/fmodapi${_fmodver}${_fmodarch}/api/inc" \
-        -DFMOD_LIBRARY=libfmodex.so \
+  cmake -DFMOD_INCLUDE_DIR=/usr/include/fmodex-$_fmodver \
+        -DFMOD_LIBRARY=/usr/lib/libfmodex-$_fmodver.so \
         -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"$_sharedir\\\"" \
         -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"$_sharedir\\\"" \
-        -DCMAKE_INSTALL_RPATH=$_libdir \
-        -DCMAKE_BUILD_WITH_INSTALL_RPATH=1 \
-        -DCMAKE_SKIP_BUILD_RPATH=1 \
         .
   make
 
@@ -88,8 +63,6 @@ build() {
 
 package() {
   cd zdoom
-
-  install -Dm755 libfmodex.so "$pkgdir/$_libdir/libfmodex.so"
 
   install -Dm755 zdoom "$pkgdir/usr/bin/zdoom"
   install -Dm755 liboutput_sdl.so "$pkgdir/$_libdir/liboutput_sdl.so"
