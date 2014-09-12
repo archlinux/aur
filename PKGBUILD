@@ -2,7 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 install="${pkgname}.install"
 source=("http://www.cmake.org/files/v3.0/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e2e05d84cb44a42f1371d9995631dcf5')
+md5sums=('db4c687a31444a929d2fdc36c4dfb95f')
 
 build() {
   cd ${pkgname}-${pkgver}
