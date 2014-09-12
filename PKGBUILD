@@ -14,13 +14,13 @@ depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext')
 	# 'audit'
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi')
-optdepends=('bridge-utils: for briged networking (default)'
-	    'dnsmasq: for NAT/DHCP for guests'
+optdepends=('ebtables: required for default NAT networking'
+	    'dnsmasq: required for default NAT/DHCP for guests'
+	    'bridge-utils: for brigded networking'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
 	    'radvd'
 	    'dmidecode'
-	    'ebtables: for networking'
 	    'pm-utils: host power management')
 options=('emptydirs')
 backup=('etc/conf.d/libvirt-guests'
@@ -117,3 +117,4 @@ package() {
 	"$pkgdir"/etc/sysconfig \
 	"$pkgdir"/etc/rc.d
 }
+
