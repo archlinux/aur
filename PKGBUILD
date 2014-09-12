@@ -3,7 +3,7 @@
 # Contributor: denton <e9203.00 gmail com>
 pkgname=cope-git
 _gitname=cope
-pkgver=164.06fcf63
+pkgver=168.a0e6692
 pkgrel=1
 pkgdesc='A colourful wrapper for terminal programs'
 url=http://stuff.cytzol.org/cope/
