@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='KInit'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('kio')
 makedepends=('extra-cmake-modules' 'kdoctools')
 groups=('kf5')
 source=("http://download.kde.org/stable/frameworks/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('cfcd0d12dd7f107fcf56643945336824')
+md5sums=('56d0c84fc3001890f8540ff04f276af0')
 
 prepare() {
   mkdir -p build
