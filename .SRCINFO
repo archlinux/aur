@@ -1,0 +1,15 @@
+pkgbase = python-pympv-git
+	pkgdesc = A python wrapper for libmpv.
+	pkgver = r77.8ba9b61
+	pkgrel = 1
+	url = https://github.com/ids1024/wikicurses
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = python
+	depends = python-urwid
+	source = git://github.com/andre-d/pympv.git
+	md5sums = SKIP
+
+pkgname = python-pympv-git
+
