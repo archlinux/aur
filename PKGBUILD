@@ -23,6 +23,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
+    -DLOCALE_INSTALL_DIR=/usr/share/locale/kf5 \
     -DBUILD_TESTING=OFF
   make
 }
