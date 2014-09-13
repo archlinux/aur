@@ -7,7 +7,6 @@ pkgbase = python-pympv-git
 	arch = x86_64
 	license = gpl
 	depends = python
-	depends = python-urwid
 	source = git://github.com/andre-d/pympv.git
 	md5sums = SKIP
 
