@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=37.0.2062.120
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -28,11 +28,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.desktop
         chromium.default
         chromium-nacl-bootstrap-cflags.patch
+        chromium-sanitize-referrer-in-context-menus.patch
+        chromium-use-correct-referrer-policy.patch
         chromium.sh)
 sha256sums=('b3073758b6caf384d30de20ba7514ee52cce5c1460bc768cd28d15f53f0c6efb'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             'd82bafd8d4d6517c2d420b2987fdbe1dfcc32d5fed74a6c0011bcb2f868225c3'
+            'c5d793dbaaaee8455ffc5cf008239b0b0bb8fe32e2e7b2b44d181cebb432f28e'
+            '9f5b73070b1d360c1d7915115c6829e11361d243e424c24179ca39b28ae03f85'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -48,7 +52,15 @@ prepare() {
 
   # Filter out -fstack-protector-strong for nacl_helper_bootstrap
   # https://code.google.com/p/chromium/issues/detail?id=104569
-  patch -Np0 -i ../chromium-nacl-bootstrap-cflags.patch
+  patch -Np0 <../chromium-nacl-bootstrap-cflags.patch
+
+  # URL request check fails for save-as command (FS#41033)
+  # https://code.google.com/p/chromium/issues/detail?id=357473
+  patch -Np1 <../chromium-sanitize-referrer-in-context-menus.patch
+
+  # Make sure to use the correct referrer policy in the FrameFetchContext
+  # https://code.google.com/p/chromium/issues/detail?id=407510
+  patch -d third_party/WebKit -Np1 <../chromium-use-correct-referrer-policy.patch
 
   # Use Python 2
   find . -type f -exec sed -i -r \
