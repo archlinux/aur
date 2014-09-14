@@ -2,33 +2,32 @@
 # Contributor: kevku <kevku@gmx.com>
 
 pkgname=xsd
-pkgver=3.3.0
-_pkgver=3.3.0-2+dep
-pkgrel=11
+pkgver=4.0.0
+_pkgver=4.0.0+dep
+pkgrel=1
 pkgdesc="An open-source, cross-platform W3C XML Schema to C++ data binding compiler"
 arch=('i686' 'x86_64')
 url="http://www.codesynthesis.com/products/xsd"
 license=('GPL2')
-depends=('boost-libs' 'xerces-c')
-makedepends=('boost')
-source=("http://www.codesynthesis.com/download/${pkgname}/3.3/${pkgname}-${_pkgver}.tar.bz2"
+depends=('xerces-c')
+source=("http://www.codesynthesis.com/download/${pkgname}/4.0/${pkgname}-${_pkgver}.tar.bz2"
         "xsdcxx.patch")
-sha1sums=('1c9de9271f589b8ecf2be18f2e9ac87330fc8281'
-          '8f7ca8bf0440b30d8f5823e0f528db19810706f2')
+sha1sums=('ad3de699eb140e747a0a214462d95fc81a21b494'
+          'afeb30904eb36efe6751f46cf1dd1ef4cfe45e9f')
 
 prepare() {
-  cd "${pkgname}-${_pkgver}"
-  patch -p0 -i "${srcdir}/xsdcxx.patch"
+  cd ${pkgname}-${_pkgver}
+  patch -p1 -i "${srcdir}/xsdcxx.patch"
 }
 
 build() {
-  cd "${pkgname}-${_pkgver}"
+  cd ${pkgname}-${_pkgver}
   make CXXFLAGS="${CXXFLAGS}"
 }
 
 package() {
   cd ${pkgname}-${_pkgver}
-  make install_prefix="$pkgdir/usr" install
+  make install_prefix="${pkgdir}/usr" install
 
   # Fix conflicts with mono
   mv "${pkgdir}"/usr/bin/xsd{,cxx}
