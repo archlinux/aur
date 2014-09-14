@@ -1,5 +1,6 @@
 post_install() {
 	 echo "The KISYSMOD environmet variable is set in profile.d," 
 	 echo "so make sure to restart your desktop session to reaload."
-	 echo "And copy /usr/share/kicad/footprints/fp-lib-table to \$HOME"
+	 echo "And copy /usr/share/kicad/footprints/fp-lib-table to"
+	 echo "\$HOME/.config/kicad/fp-lib-table"
 }
