@@ -14,10 +14,9 @@ pkgbase = lib32-eudev-git
 	depends = eudev-git
 	conflicts = lib32-systemd
 	replaces = lib32-systemd
+	source = git://github.com/gentoo/eudev.git
 	options = !makeflags
 	options = !libtool
-	source = git://github.com/gentoo/eudev.git
-	md5sums = SKIP
 
 pkgname = lib32-eudev-git
 	provides = 
