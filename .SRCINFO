@@ -1,0 +1,23 @@
+pkgbase = hotline-miami-gog
+	pkgdesc = 2D top-down action video game (gog.com version)
+	pkgver = 1.0.0.2
+	pkgrel = 1
+	url = http://gog.com
+	arch = x86_64
+	arch = i686
+	license = custom: commercial
+	depends = bash
+	depends = libxrandr
+	depends = fontconfig
+	depends = libxi
+	depends = glu
+	depends = libvorbis
+	depends = openal
+	depends = nvidia-cg-toolkit
+	source = gog://gog_hotline_miami_1.0.0.2.tar.gz
+	source = hotline-miami-gog.sh
+	sha256sums = 57d468be7bf6dd2b779519ba7883ac8ef03a8b88a346e31e5050b5537cb75f19
+	sha256sums = a306f962134e56702e3211724b51e9a4d4abc99d55bb369f9c7a41d77e561bb7
+
+pkgname = hotline-miami-gog
+
