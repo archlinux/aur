@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Application;Game;BoardGame;
+Name=Opengotha
+GenericName=Open Go Tournaments Editor
+Comment=A KGS client and SGF aditor
+Version=3.38
+Encoding=UTF-8
+Exec=java -jar /usr/local/opengotha/opengotha.jar
+Icon=/usr/local/opengotha/resources/gothalogo64.jpg
+StartupNotify=true
+Terminal=false
+Type=Application
+MimeType=application/x-go-sgf;text/sgf;text/x-sgf;
