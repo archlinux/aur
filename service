@@ -8,7 +8,7 @@ PIDFile=/run/tengine.pid
 PrivateDevices=yes
 SyslogLevel=err
 
-ExecStart=/usr/bin/tengine -g 'pid /run/tengine.pid; error_log stderr;'
+ExecStart=/usr/bin/tengine -g 'pid /run/tengine.pid;'
 ExecReload=/usr/bin/kill -HUP $MAINPID
 KillSignal=SIGQUIT
 KillMode=mixed
