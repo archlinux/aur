@@ -5,7 +5,7 @@
 
 pkgname=checkpolicy
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy compiler"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -16,7 +16,7 @@ depends=('libsepol' 'libselinux')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("http://userspace.selinuxproject.org/releases/20140506/${pkgname}-${pkgver}.tar.gz")
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('90632d11afecb66997971d4c5c5d70dfb02d3969ec610ee2918ba6df99c8207b')
 
 build() {
