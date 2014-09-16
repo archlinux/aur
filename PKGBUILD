@@ -4,7 +4,7 @@
 
 pkgname=sepolgen
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy generator"
 groups=('selinux')
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python2')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("http://userspace.selinuxproject.org/releases/20131030/${pkgname}-${pkgver}.tar.gz")
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('438c246bdc6b3cf1b12116831f4c601aaae6e93decb007dddab212a3c88781b0')
 
 prepare() {

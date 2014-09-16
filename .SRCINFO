@@ -1,15 +1,15 @@
 pkgbase = sepolgen
 	pkgdesc = SELinux policy generator
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	arch = any
 	groups = selinux
 	license = GPL
 	depends = python2
-	provides = selinux-usr-sepolgen=1.2.1-1
+	provides = selinux-usr-sepolgen=1.2.1-2
 	conflicts = selinux-usr-sepolgen
-	source = http://userspace.selinuxproject.org/releases/20131030/sepolgen-1.2.1.tar.gz
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/sepolgen-1.2.1.tar.gz
 	sha256sums = 438c246bdc6b3cf1b12116831f4c601aaae6e93decb007dddab212a3c88781b0
 
 pkgname = sepolgen
