@@ -6,7 +6,7 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.18.13
+pkgver=0.18.14
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi'
 url='http://www.musicpd.org/'
@@ -20,7 +20,7 @@ replaces=('mpd')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha1sums=('0ddf8c55228fcc67522ecdd7710f93dc146c99a7'
+sha1sums=('5a4b5f5b0447994f3fc186ffd7c16cabeeed2978'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           '9e132269d11e03b0f2ec85a7013cba200be6f5c1')
 backup=('etc/mpd.conf')
