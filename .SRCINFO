@@ -1,7 +1,7 @@
 pkgbase = libselinux
 	pkgdesc = SELinux library and simple utilities
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = libselinux
 	optdepends = python2: python2 bindings
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libselinux=2.3-1
+	provides = selinux-usr-libselinux=2.3-2
 	conflicts = selinux-usr-libselinux
 	options = !emptydirs
-	source = http://userspace.selinuxproject.org/releases/20140506/libselinux-2.3.tar.gz
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/libselinux-2.3.tar.gz
 	source = http://pkgs.fedoraproject.org/cgit/libselinux.git/plain/selinuxdefcon.8
 	source = http://pkgs.fedoraproject.org/cgit/libselinux.git/plain/selinuxconlist.8
 	source = libselinux.tmpfiles.d

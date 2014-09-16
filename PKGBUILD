@@ -6,7 +6,7 @@
 
 pkgname=libselinux
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
@@ -20,7 +20,7 @@ optdepends=('python2: python2 bindings'
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("http://userspace.selinuxproject.org/releases/20140506/${pkgname}-${pkgver}.tar.gz"
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz"
         "http://pkgs.fedoraproject.org/cgit/libselinux.git/plain/selinuxdefcon.8"
         "http://pkgs.fedoraproject.org/cgit/libselinux.git/plain/selinuxconlist.8"
         "libselinux.tmpfiles.d")
