@@ -1,7 +1,7 @@
 pkgbase = libsemanage
 	pkgdesc = SELinux binary policy manipulation library
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = libsemanage
 	depends = ustr
 	depends = libselinux>=2.1.0
 	depends = audit
-	provides = selinux-usr-libsemanage=2.3-1
+	provides = selinux-usr-libsemanage=2.3-2
 	conflicts = selinux-usr-libsemanage
 	options = !emptydirs
-	source = http://userspace.selinuxproject.org/releases/20140506/libsemanage-2.3.tar.gz
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/libsemanage-2.3.tar.gz
 	sha256sums = 03e09e35e611c286e446bef92b6023ef2623815996f5a53394bb02e49a312e4b
 
 pkgname = libsemanage

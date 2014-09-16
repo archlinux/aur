@@ -5,7 +5,7 @@
 
 pkgname=libsemanage
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -15,7 +15,7 @@ depends=('ustr' 'libselinux>=2.1.0' 'audit')
 options=(!emptydirs)
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("http://userspace.selinuxproject.org/releases/20140506/${pkgname}-${pkgver}.tar.gz")
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('03e09e35e611c286e446bef92b6023ef2623815996f5a53394bb02e49a312e4b')
 
 build() {
