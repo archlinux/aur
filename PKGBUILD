@@ -6,7 +6,7 @@
 
 pkgname=policycoreutils
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -18,7 +18,7 @@ optdepends=('hicolor-icon-theme: needed for graphical tools')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("http://userspace.selinuxproject.org/releases/20140506/${pkgname}-${pkgver}.tar.gz"
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz"
         'restorecond.service')
 sha256sums=('864cfaee58b5d2f15b140c354e59666e57143293c89f2b2e85bc0d0e4beefcd2'
             '20572c2cc09c8af5239f26cfea3eb2648d87d9927e55791f13572ea2184e857e')

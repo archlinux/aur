@@ -1,7 +1,7 @@
 pkgbase = policycoreutils
 	pkgdesc = SELinux policy core utilities
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = policycoreutils
 	depends = setools
 	depends = sepolgen
 	optdepends = hicolor-icon-theme: needed for graphical tools
-	provides = selinux-usr-policycoreutils=2.3-2
+	provides = selinux-usr-policycoreutils=2.3-3
 	conflicts = selinux-usr-policycoreutils
 	options = !emptydirs
-	source = http://userspace.selinuxproject.org/releases/20140506/policycoreutils-2.3.tar.gz
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/policycoreutils-2.3.tar.gz
 	source = restorecond.service
 	sha256sums = 864cfaee58b5d2f15b140c354e59666e57143293c89f2b2e85bc0d0e4beefcd2
 	sha256sums = 20572c2cc09c8af5239f26cfea3eb2648d87d9927e55791f13572ea2184e857e
