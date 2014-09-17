@@ -1,28 +1,28 @@
 pkgbase = libx32-glibc
 	pkgdesc = GNU C Library (x32 ABI)
-	pkgver = 2.19_5
-	pkgrel = 1
+	pkgver = 2.20
+	pkgrel = 2.1
 	url = http://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = gcc-multilib-x32>=4.8
+	makedepends = gcc-multilib-x32>=4.9
 	provides = glibc-x32-seed
 	conflicts = glibc-x32-seed
 	options = !strip
-	options = !emptydirs
 	options = staticlibs
-	source = http://ftp.gnu.org/gnu/libc/glibc-2.19.tar.xz
-	source = http://ftp.gnu.org/gnu/libc/glibc-2.19.tar.xz.sig
-	source = glibc-2.19-xattr_header.patch
-	source = glibc-2.19-fix-sign-in-bsloww1-input.patch
-	source = glibc-2.19-tzselect-default.patch
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.20.tar.xz
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.20.tar.xz.sig
+	source = glibc-2.20-getifaddrs_internal-segfault.patch
+	source = glibc-2.20-linux-3.16-additions.patch
+	source = glibc-2.20-do_ftell_wide-memleak.patch
 	source = libx32-glibc.conf
-	md5sums = e26b8cc666b162f999404b03970f14e4
+	md5sums = 948a6e06419a01bd51e97206861595b0
 	md5sums = SKIP
-	md5sums = 39a4876837789e07746f1d84cd8cb46a
-	md5sums = 755a1a9d7844a5e338eddaa9a5d974cd
-	md5sums = c772dc99ddd8032ecbf43884ae0cf42e
+	md5sums = 1c5d5c2017445c75dbc5c6d0c1e45ddb
+	md5sums = 8f1059f431b842e54b12bde689620df8
+	md5sums = b50feeab78fa6ce0a8cfb41ee8dc1fd8
 	md5sums = 34a4169d2bdc5a3eb83676a0831aae57
 
 pkgname = libx32-glibc
