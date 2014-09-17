@@ -15,7 +15,6 @@ pkgbase = xcircuit-git
 	provides = xcircuit
 	conflicts = xcircuit
 	source = xcircuit-git::git://opencircuitdesign.com/xcircuit-3.9
-	md5sums = SKIP
 
 pkgname = xcircuit-git
 
