@@ -1,6 +1,6 @@
 pkgbase = xde-styles
 	pkgdesc = Four consistent styles across light-weight WMs for XDE
-	pkgver = 1.1.73
+	pkgver = 1.1.74
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-styles
 	arch = any

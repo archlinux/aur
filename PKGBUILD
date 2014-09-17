@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xde-styles
-pkgver=1.1.73
+pkgver=1.1.74
 pkgrel=1
 pkgdesc="Four consistent styles across light-weight WMs for XDE"
 groups=('xde')
