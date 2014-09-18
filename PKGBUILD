@@ -1,13 +1,13 @@
-# Maintainer:
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Ben <contrasutra@myrealbox.com>
 
 pkgname=xfce4-artwork
 pkgver=0.1.1a_git20110420
 _debian_pkgver=0.1.1a~git+20110420
-pkgrel=3
+pkgrel=4
 pkgdesc="Backdrops for the Xfce4 desktop"
 arch=('any')
-url="http://xfce-goodies.berlios.de/"
+url="http://goodies.xfce.org/projects/artwork/xfce4-artwork"
 license=('GPL2')
 groups=('xfce4-goodies')
 source=(http://ftp.debian.org/debian/pool/main/x/$pkgname/${pkgname}_$_debian_pkgver.orig.tar.gz)
