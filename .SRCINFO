@@ -1,0 +1,16 @@
+pkgbase = sddm-archlinux-theme-git
+	pkgdesc = Archlinux Theme for SDDM
+	pkgver = r11.8898d77
+	pkgrel = 2
+	url = https://github.com/absturztaube/sddm-archlinux-theme
+	install = sddm-archlinux-theme.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sddm>=0.9.0
+	source = sddm-archlinux-theme-git::git+https://github.com/absturztaube/sddm-archlinux-theme.git
+	md5sums = SKIP
+
+pkgname = sddm-archlinux-theme-git
+
