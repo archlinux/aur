@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.12.2
+pkgver=3.13.92
 pkgrel=1
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
@@ -15,12 +15,12 @@ options=('!emptydirs')
 url="http://www.gnome.org/projects/cheese/"
 install=cheese.install
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('a7b45369e75e222e3bd5e9a4408a0e6c230be0c49d359a387d36a42e17e3bc64')
+sha256sums=('b981cff301b839abf046497a953c5998f0c7e30ae863c5f4faa0b76ac1a59c75')
 
 build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --disable-static --disable-schemas-compile
+      --disable-static --disable-schemas-compile --libexecdir=/usr/lib/cheese
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
