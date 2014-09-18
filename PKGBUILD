@@ -2,8 +2,8 @@
 
 _pkgname=sddm-archlinux-theme
 pkgname=$_pkgname-git
-pkgver=r11.8898d77
-pkgrel=2
+pkgver=0.1.r11.8898d77
+pkgrel=1
 pkgdesc="Archlinux Theme for SDDM"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  printf "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  local _ver=$(awk -F '=' '/Version/ {print $2}' archlinux/metadata.desktop)
+  printf "$_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
