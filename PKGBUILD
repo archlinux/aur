@@ -1,18 +1,19 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.8.4
+pkgver=4.2.8.5
 pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
-license=('GPL')
+license=('GPL' 'LGPL')
 makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant')
 source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz)
+sha512sums=('ee6612a34087135065537fa14f09078bad9f029f69b636fb2221193f23d86c5431a9d8a848b264bdcb259680f6bda41d08d58dcf67d19e5a200cb11fa4a26ffe')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
@@ -98,4 +99,3 @@ package_fcitx-qt4() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('39bffcd003aebb4e0714d245c32e839833b8507eaf819d5f6ec100ba2ed35b321f38e9a6052371abf0f5b73bb2828f10ae1bd555a41c30353beaf81bd121d03b')
