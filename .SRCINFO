@@ -8,9 +8,9 @@ pkgbase = sddm-archlinux-theme-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = sddm>=0.9.0
-	source = sddm-archlinux-theme-git::git+https://github.com/absturztaube/sddm-archlinux-theme.git
-	md5sums = SKIP
+	depends = sddm
+	source = git://github.com/absturztaube/sddm-archlinux-theme.git
+	sha256sums = SKIP
 
 pkgname = sddm-archlinux-theme-git
 
