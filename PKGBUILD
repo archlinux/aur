@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello Ferreira <tucho.tijucano@gmail.com>
 pkgname=neo4j
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -22,7 +22,7 @@ source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=(33e7dcc669b23b2398f6b8e08333b11588e11f1d8614f58dec1b23eb95f19e3d
+sha256sums=(e27709a2f9cc84d9529a6b7fcbb77e39fd84355e4a8457530360a59630814840
             61e36b7695cc214d192de6d8c81c68fadd7dab90394eb2cd94fd8c916da5fc77
             e5fe9c34ff9052be68bb66acbdf04cc2e3dfd18cfdc62d78d01688d72dd55773
             60863d1da348dd07ac7c321c51819596f73bb326cb686b85661e1165daea86e9
@@ -32,7 +32,7 @@ sha256sums=(33e7dcc669b23b2398f6b8e08333b11588e11f1d8614f58dec1b23eb95f19e3d
 prepare() {
 
   cd $srcdir/neo4j-community-$pkgver
-  
+
   rm conf/windows-wrapper-logging.properties
   rm bin/neo4j-installer
   rm bin/org.neo4j.server.plist
@@ -45,7 +45,7 @@ prepare() {
 package() {
 
   cd $srcdir/neo4j-community-$pkgver
-  
+
   # Config files
   install -dm755 $pkgdir/etc/neo4j
   cp -r conf/* $pkgdir/etc/neo4j
@@ -57,7 +57,7 @@ package() {
   cp -r system/* $pkgdir/usr/share/java/neo4j/system
   install -dm755 $pkgdir/usr/share/java/neo4j/plugins
   cp -r plugins/* $pkgdir/usr/share/java/neo4j/plugins
-  
+
   # Executable files
   install -dm755 $pkgdir/usr/share/neo4j/bin
   cp -r bin/* $pkgdir/usr/share/neo4j/bin
@@ -65,19 +65,19 @@ package() {
   install -dm755 $pkgdir/usr/bin
   ln -s /usr/share/neo4j/bin/neo4j $pkgdir/usr/bin/neo4j
   ln -s /usr/share/neo4j/bin/neo4j-shell $pkgdir/usr/bin/neo4j-shell
-  
+
   # Data and log files
   install -dm755 $pkgdir/var/lib/neo4j/data
   install -dm755 $pkgdir/var/log/neo4j
-  
+
   # License files
   install -dm755 $pkgdir/usr/share/licenses/neo4j
   cp LICENSE.txt LICENSES.txt NOTICE.txt $pkgdir/usr/share/licenses/neo4j
-  
+
   # Service definition files
   cd $srcdir
   install -Dm644 neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service
-  
+
   # Runtime files
   install -Dm644 neo4j-tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/neo4j.conf
 }
