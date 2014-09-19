@@ -3,7 +3,7 @@
 pkgbase=grantlee
 pkgname=('grantlee-qt4' 'grantlee-qt5')
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A string template engine based on the Django template system and written in Qt"
 arch=('i686' 'x86_64')
 url="https://www.gitorious.org/grantlee/pages/Home"
@@ -36,6 +36,7 @@ build() {
 
 package_grantlee-qt5() {
   depends=('qt5-script')
+  conflicts=('grantlee-qt4')
 
   cd build
   make DESTDIR="${pkgdir}" install
