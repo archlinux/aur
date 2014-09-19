@@ -1,7 +1,7 @@
 pkgbase = libwnck+-git
 	pkgdesc = Window Navigator Construction Kit
-	pkgver = 2.31.0.r18.g54c5fe6
-	pkgrel = 3
+	pkgver = 2.31.0.r19.g7357429
+	pkgrel = 1
 	url = https://github.com/bbidulock/libwnck
 	arch = i686
 	arch = x86_64
