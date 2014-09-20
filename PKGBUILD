@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-3.16
-pkgver=3.16.1
+pkgver=3.16.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,9 +23,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'compal-laptop-hwmon-fix.patch'
         )
 sha256sums=('4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0'
-            'd2bf33289acf5c05b57aaca1fd8bb1935ac280c5c4090874e84806d35e17012e'
-            '2975fdb93a69bc11b06a2d07d9b27804b24427b0e957766e2cda3bf7edafbbee'
-            'c985fcf6e978f7623db4c73c895108f64008f0d03825c3afc7c3ed8e51433ad1'
+            '3fbe03714f943605d711ff317aa52053e29bc50e63a8e6a17c2504cde1160208'
+            '19f703141aacbd61ed3b913b24dee794950b2978e0b2d60c3f4a717e45922f4e'
+            'c1841e14ff98ff63052949ab97331d535180e94db7c5bc94e2d8154e286e5b6a'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'f36f61a0a72bcb0a9c04264343503bfbf927c9ea0db819e66734a3933b060588')
