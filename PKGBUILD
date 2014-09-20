@@ -1,5 +1,5 @@
 pkgname=urxvt-tabbedex-git
-pkgver=0.4.r9.g49c1514
+pkgver=0.4.r9.g49c1541
 pkgrel=1
 
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
