@@ -1,7 +1,7 @@
 pkgbase = ideviceactivate-git
 	pkgdesc = Restores firmware and filesystem to iPhone/iPod Touch
 	pkgver = 13.c450643
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/posixninja/ideviceactivate
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ideviceactivate-git
 	makedepends = git
 	depends = usbmuxd
 	depends = libirecovery-git
-	depends = libimobiledevice>=1.1.0
+	depends = libimobiledevice-git
 	source = git://github.com/posixninja/ideviceactivate
 	md5sums = SKIP
 
