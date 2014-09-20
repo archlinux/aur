@@ -1,5 +1,5 @@
 pkgname=np1-mps-git
-pkgver=0.20.16.r2.gbe0c89b
+pkgver=0.20.16.r2.gbe0c8b9
 pkgrel=1
 
 pkgdesc="Terminal based jukebox with playlist management"
