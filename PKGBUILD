@@ -1,5 +1,5 @@
 pkgname=pcmanfm-git
-pkgver=1.2.1.r3.g8a2c730
+pkgver=1.2.1.r3.g8a2c79c
 pkgrel=1
 
 pkgdesc="An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing"

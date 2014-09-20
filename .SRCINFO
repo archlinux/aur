@@ -2,7 +2,7 @@
 # Mon Jun  1 13:54:21 UTC 2015
 pkgbase = pcmanfm-git
 	pkgdesc = An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing
-	pkgver = 1.2.1.r3.g8a2c730
+	pkgver = 1.2.1.r3.g8a2c79c
 	pkgrel = 1
 	url = http://pcmanfm.sourceforge.net/
 	install = pcmanfm.install
