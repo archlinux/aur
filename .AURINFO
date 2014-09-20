@@ -1,6 +1,6 @@
 pkgbase = xorg-xinit-git
 	pkgdesc = X.Org initialisation program
-	pkgver = 1.3.3.r10.g94b0022
+	pkgver = 1.3.4.r0.g6f6747d
 	pkgrel = 1
 	epoch = 1
 	url = http://xorg.freedesktop.org/
