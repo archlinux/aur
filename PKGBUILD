@@ -4,7 +4,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.5.r524.g51b342f
+pkgver=0.95.6.r15.g7c52775
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
