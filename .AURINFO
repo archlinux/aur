@@ -1,6 +1,6 @@
 pkgbase = perl-apireference
 	pkgdesc = Programatically query the perlapi
-	pkgver = 0.16
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://metacpan.org/release/Perl-APIReference
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = perl-apireference
 	license = PerlArtistic
 	depends = perl
 	depends = perl-class-xsaccessor
-	source = http://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Perl-APIReference-0.16.tar.gz
+	source = http://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Perl-APIReference-0.18.tar.gz
 	options = !emptydirs
 
 pkgname = perl-apireference
