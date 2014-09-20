@@ -1,11 +1,11 @@
---- waflib/extras/process_resources.py.old	2014-02-13 11:22:30.297340531 +0100
-+++ waflib/extras/process_resources.py	2014-02-13 11:20:29.948327768 +0100
-@@ -26,14 +26,14 @@
+--- waflib/extras/process_resources.py.ori	2014-09-20 23:50:10.247599441 +0200
++++ waflib/extras/process_resources.py	2014-09-20 23:56:01.127600704 +0200
+@@ -28,14 +28,14 @@
  		elif res_type=="png":
  			output_pbi=resources_path_node.get_bld().make_node(input_file+'.pbi')
  			pack_entries.append((output_pbi,def_name))
 -			bld(rule="python '{}' pbi '{}' '{}'".format(bitmap_script.abspath(),input_node.abspath(),output_pbi.abspath()),source=[input_node,bitmap_script],target=output_pbi)
-+			bld(rule="'{}' '{}' pbi '{}' '{}'".format(sys.executable,bitmap_script.abspath(),input_node.abspath(),output_pbi.abspath()),source=[input_node,bitmap_script],target=output_pbi)
++			bld(rule="'{}' '{}' pbi '{}' '{}'".format(sys.executable, bitmap_script.abspath(),input_node.abspath(),output_pbi.abspath()),source=[input_node,bitmap_script],target=output_pbi)
  		elif res_type=="png-trans":
  			output_white_pbi=resources_path_node.get_bld().make_node(input_file+'.white.pbi')
  			output_black_pbi=resources_path_node.get_bld().make_node(input_file+'.black.pbi')
@@ -13,42 +13,42 @@
  			pack_entries.append((output_black_pbi,def_name+"_BLACK"))
 -			bld(rule="python '{}' white_trans_pbi '{}' '{}'".format(bitmap_script.abspath(),input_node.abspath(),output_white_pbi.abspath()),source=[input_node,bitmap_script],target=output_white_pbi)
 -			bld(rule="python '{}' black_trans_pbi '{}' '{}'".format(bitmap_script.abspath(),input_node.abspath(),output_black_pbi.abspath()),source=[input_node,bitmap_script],target=output_black_pbi)
-+			bld(rule="'{}' '{}' white_trans_pbi '{}' '{}'".format(sys.executable,bitmap_script.abspath(),input_node.abspath(),output_white_pbi.abspath()),source=[input_node,bitmap_script],target=output_white_pbi)
-+			bld(rule="'{}' '{}' black_trans_pbi '{}' '{}'".format(sys.executable,bitmap_script.abspath(),input_node.abspath(),output_black_pbi.abspath()),source=[input_node,bitmap_script],target=output_black_pbi)
++			bld(rule="'{}' '{}' white_trans_pbi '{}' '{}'".format(sys.executable, bitmap_script.abspath(),input_node.abspath(),output_white_pbi.abspath()),source=[input_node,bitmap_script],target=output_white_pbi)
++			bld(rule="'{}' '{}' black_trans_pbi '{}' '{}'".format(sys.executable, bitmap_script.abspath(),input_node.abspath(),output_black_pbi.abspath()),source=[input_node,bitmap_script],target=output_black_pbi)
  		elif res_type=="font":
  			output_pfo=resources_path_node.get_bld().make_node(input_file+'.'+str(def_name)+'.pfo')
  			m=re.search('([0-9]+)',def_name)
-@@ -53,7 +53,7 @@
- 				characterRegexArg='--filter "%s"'%(entry['characterRegex'].encode('utf8'))
+@@ -63,7 +63,7 @@
+ 				character_list='--list "%s"'%os.path.join(os.path.dirname(input_node.abspath()),entry['characterList'])
  			else:
- 				characterRegexArg=''
--			bld(rule="python '{}' pfo {} {} {} '{}' '{}'".format(font_script.abspath(),height,trackingAdjustArg,characterRegexArg,input_node.abspath(),output_pfo.abspath()),source=[input_node,font_script],target=output_pfo)
-+			bld(rule="'{}' '{}' pfo {} {} {} '{}' '{}'".format(sys.executable,font_script.abspath(),height,trackingAdjustArg,characterRegexArg,input_node.abspath(),output_pfo.abspath()),source=[input_node,font_script],target=output_pfo)
+ 				character_list=''
+-			bld(rule="python '{}' pfo {} {} {} {} {} '{}' '{}'".format(font_script.abspath(),extended,height,tracking_adjust,character_regex,character_list,input_node.abspath(),output_pfo.abspath()),source=[input_node,font_script],target=output_pfo)
++			bld(rule="'{}' '{}' pfo {} {} {} {} {} '{}' '{}'".format(sys.executable, font_script.abspath(),extended,height,tracking_adjust,character_regex,character_list,input_node.abspath(),output_pfo.abspath()),source=[input_node,font_script],target=output_pfo)
  		else:
  			waflib.Logs.error("Error Generating Resources: File: "+input_file+" has specified invalid type: "+res_type)
  			waflib.Logs.error("Must be one of (raw, png, png-trans, font)")
-@@ -71,8 +71,8 @@
+@@ -81,8 +81,8 @@
  	resource_code_script=tools_path.find_node('generate_resource_code.py')
  	data_sources=[]
  	cat_string="cat"
 -	table_string="python '{}' table '{}'".format(md_script.abspath(),table_node.abspath())
 -	resource_header_string="python '{script}' resource_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),version_def_name='--version_def_name=SYSTEM_RESOURCE_VERSION'if is_system else'',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
-+	table_string="'{}' '{}' table '{}'".format(sys.executable,md_script.abspath(),table_node.abspath())
-+	resource_header_string="'{}' '{script}' resource_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(sys.executable,script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),version_def_name='--version_def_name=SYSTEM_RESOURCE_VERSION'if is_system else'',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
++	table_string="'{}' '{}' table '{}'".format(sys.executable, md_script.abspath(),table_node.abspath())
++	resource_header_string="'{}' '{script}' resource_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(sys.executable, script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),version_def_name='--version_def_name=SYSTEM_RESOURCE_VERSION'if is_system else'',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
  	for entry in pack_entries:
  		cat_string+=' "%s" '%entry[0].abspath()
  		data_sources.append(entry[0])
-@@ -83,10 +83,10 @@
+@@ -93,10 +93,10 @@
  		open(task.outputs[0].abspath(),'a').close()
  	bld(rule=cat_string if pack_entries else touch,source=data_sources,target=data_node)
  	bld(rule=table_string,source=data_sources+[md_script],target=table_node)
 -	bld(rule="python '{script}' manifest '{output_file}' {num_files} ""{timestamp} '{data_chunk_file}'".format(script=md_script.abspath(),output_file=manifest_node.abspath(),num_files=len(pack_entries),timestamp=timestamp,data_chunk_file=data_node.abspath()),source=[data_node,md_script],target=manifest_node)
-+	bld(rule="'{}' '{script}' manifest '{output_file}' {num_files} ""{timestamp} '{data_chunk_file}'".format(sys.executable,script=md_script.abspath(),output_file=manifest_node.abspath(),num_files=len(pack_entries),timestamp=timestamp,data_chunk_file=data_node.abspath()),source=[data_node,md_script],target=manifest_node)
++	bld(rule="'{}' '{script}' manifest '{output_file}' {num_files} ""{timestamp} '{data_chunk_file}'".format(sys.executable, script=md_script.abspath(),output_file=manifest_node.abspath(),num_files=len(pack_entries),timestamp=timestamp,data_chunk_file=data_node.abspath()),source=[data_node,md_script],target=manifest_node)
  	bld(rule="cat '{}' '{}' '{}' > '{}'".format(manifest_node.abspath(),table_node.abspath(),data_node.abspath(),output_pack_node.abspath()),source=[manifest_node,table_node,data_node],target=output_pack_node)
  	bld(rule=resource_header_string,source=data_sources+[resource_code_script,data_node],target=output_id_header_node,before=['c'])
  	if font_key_header_node and font_key_table_node and font_key_include_path:
  		key_list_string=" ".join(font_keys)
 -		bld(rule="python '{script}' font_key_header '{font_key_header}' ""{key_list}".format(script=resource_code_script.abspath(),font_key_header=font_key_header_node.abspath(),key_list=key_list_string),source=resource_code_script,target=font_key_header_node)
 -		bld(rule="python '{script}' font_key_table '{font_key_table}' "" '{resource_id_header}' '{font_key_header}' {key_list}".format(script=resource_code_script.abspath(),font_key_table=font_key_table_node.abspath(),resource_id_header=output_id_header_node.abspath(),font_key_header=font_key_include_path,key_list=key_list_string),source=resource_code_script,target=font_key_table_node)
-+		bld(rule="'{}' '{script}' font_key_header '{font_key_header}' ""{key_list}".format(sys.executable,script=resource_code_script.abspath(),font_key_header=font_key_header_node.abspath(),key_list=key_list_string),source=resource_code_script,target=font_key_header_node)
-+		bld(rule="'{}' '{script}' font_key_table '{font_key_table}' "" '{resource_id_header}' '{font_key_header}' {key_list}".format(sys.executable,script=resource_code_script.abspath(),font_key_table=font_key_table_node.abspath(),resource_id_header=output_id_header_node.abspath(),font_key_header=font_key_include_path,key_list=key_list_string),source=resource_code_script,target=font_key_table_node)
++		bld(rule="'{}' '{script}' font_key_header '{font_key_header}' ""{key_list}".format(sys.executable, script=resource_code_script.abspath(),font_key_header=font_key_header_node.abspath(),key_list=key_list_string),source=resource_code_script,target=font_key_header_node)
++		bld(rule="'{}' '{script}' font_key_table '{font_key_table}' "" '{resource_id_header}' '{font_key_header}' {key_list}".format(sys.executable, script=resource_code_script.abspath(),font_key_table=font_key_table_node.abspath(),resource_id_header=output_id_header_node.abspath(),font_key_header=font_key_include_path,key_list=key_list_string),source=resource_code_script,target=font_key_table_node)

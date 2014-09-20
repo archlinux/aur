@@ -9,6 +9,10 @@ appear in the menu and will not run on Pebble firmware 2.0."
         echo "Tracking via Google Analytics is now disabled by default."
         echo "If you want to enable it, remove /opt/pebble/NO_TRACKING"
     fi
+    if [[ $2 == 2.5-* ]]; then
+        echo "Note you'll need to run 'pebble clean' in your existing "
+        echo "projects after this upgrade."
+    fi
 }
 
 post_install() {
