@@ -3,7 +3,7 @@
 # This is now a git package, as the developers don't provide a tarball for the 0.71 release.
 
 pkgname=pev-git
-pkgver=r495.a141faf
+pkgver=r507.a6d4b19
 pkgrel=1
 pkgdesc='Command line based tool for PE32/PE32+ file analysis'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('unzip')
 depends=('glibc' 'openssl' 'pcre')
 source=('pev-git::git+https://github.com/thermi/pev'
-	'libpe-git::git+https://github.com/merces/libpe'
+	'libpe-git::git+https://github.com/thermi/libpe'
 )
 md5sums=('SKIP'
 	 'SKIP')
@@ -34,5 +34,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make DESTDIR=${pkgdir} install
+  make DESTDIR=${pkgdir}/usr install
 }
