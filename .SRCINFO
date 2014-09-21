@@ -1,6 +1,6 @@
 pkgbase = adwm
 	pkgdesc = Advanced dynamic window manager for X
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://github.com/bbidulock/adwm
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = adwm
 	depends = startup-notification
 	depends = imlib2
 	options = !libtool
-	source = https://github.com/bbidulock/adwm/releases/download/0.5.1/adwm-0.5.1.tar.xz
-	md5sums = 386184ad2090ba4580a9426c7689508c
+	source = https://github.com/bbidulock/adwm/releases/download/0.5.2/adwm-0.5.2.tar.xz
+	md5sums = 8dfc37ab902de66008cb2ee245ce58a3
 
 pkgname = adwm
 
