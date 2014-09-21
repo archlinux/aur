@@ -1,0 +1,12 @@
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/3rdparty/reflexxes_otg/CMakeLists.txt stanford_wbc-stanford_wbc-1.1/3rdparty/reflexxes_otg/CMakeLists.txt
+--- stanford_wbc-stanford_wbc-1.1.orig/3rdparty/reflexxes_otg/CMakeLists.txt	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/3rdparty/reflexxes_otg/CMakeLists.txt	2014-09-22 01:33:03.171152330 +0200
+@@ -17,3 +17,8 @@
+   add_executable (trjgen src/trjgen.cpp)
+   target_link_libraries (trjgen reflexxes_otg)
+ # not so trivial... # endif (EXISTS $ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
++
++install (TARGETS reflexxes_otg trjgen
++         RUNTIME DESTINATION bin
++         LIBRARY DESTINATION lib
++         ARCHIVE DESTINATION lib)

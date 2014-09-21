@@ -1,0 +1,87 @@
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/CMakeLists.txt stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/CMakeLists.txt
+--- stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/CMakeLists.txt	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/CMakeLists.txt	2014-09-22 01:00:47.060038151 +0200
+@@ -34,7 +34,7 @@
+   set(_library_dir lib)
+ endif(WIN32)
+ 
+-set(INCLUDE_INSTALL_DIR include/yaml-cpp)
++set(INCLUDE_INSTALL_DIR include/wbc-yaml-cpp)
+ set(LIB_INSTALL_DIR ${_library_dir}${LIB_SUFFIX})
+ 
+ #
+@@ -49,29 +49,29 @@
+ file(GLOB sources src/[a-z]*.cpp)
+ 
+ include_directories(${YAML_CPP_SOURCE_DIR}/include)
+-add_library(yaml-cpp
++add_library(wbc-yaml-cpp
+ 	${LIB_TYPE}
+ 	${public_headers}
+ 	${private_headers}
+ 	${sources}
+ )
+-set_target_properties(yaml-cpp PROPERTIES
++set_target_properties(wbc-yaml-cpp PROPERTIES
+ 	VERSION "${YAML_CPP_VERSION}"
+ 	SOVERSION "${YAML_CPP_VERSION_MAJOR}.${YAML_CPP_VERSION_MINOR}"
+ )
+ 
+ if(IPHONE)
+-set_target_properties(yaml-cpp PROPERTIES XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET "3.0")
++set_target_properties(wbc-yaml-cpp PROPERTIES XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET "3.0")
+ endif(IPHONE)
+ 
+-install(TARGETS yaml-cpp ${_INSTALL_DESTINATIONS})
++install(TARGETS wbc-yaml-cpp ${_INSTALL_DESTINATIONS})
+ install(
+ 	FILES ${public_headers}
+ 	DESTINATION ${INCLUDE_INSTALL_DIR}
+ )
+ 
+ if(UNIX)
+-	set(PC_FILE ${CMAKE_BINARY_DIR}/yaml-cpp.pc)
++	set(PC_FILE ${CMAKE_BINARY_DIR}/wbc-yaml-cpp.pc)
+ 	configure_file("yaml-cpp.pc.cmake" ${PC_FILE} @ONLY)
+ 	install(FILES ${PC_FILE} DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
+ endif(UNIX)
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/test/CMakeLists.txt stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/test/CMakeLists.txt
+--- stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/test/CMakeLists.txt	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/test/CMakeLists.txt	2014-09-22 00:47:22.989265874 +0200
+@@ -5,6 +5,6 @@
+ 	${test_sources}
+ 	${test_headers}
+ )
+-target_link_libraries(run-tests yaml-cpp)
++target_link_libraries(run-tests wbc-yaml-cpp)
+ 
+ add_test(yaml-reader-test run-tests)
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/util/CMakeLists.txt stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/util/CMakeLists.txt
+--- stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/util/CMakeLists.txt	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/util/CMakeLists.txt	2014-09-22 00:47:36.232447158 +0200
+@@ -1,2 +1,2 @@
+ add_executable(parse parse.cpp)
+-target_link_libraries(parse yaml-cpp)
++target_link_libraries(parse wbc-yaml-cpp)
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/yaml-cpp.pc.cmake stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/yaml-cpp.pc.cmake
+--- stanford_wbc-stanford_wbc-1.1.orig/3rdparty/yaml-cpp/yaml-cpp.pc.cmake	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/3rdparty/yaml-cpp/yaml-cpp.pc.cmake	2014-09-21 22:34:03.234405727 +0200
+@@ -7,5 +7,5 @@
+ Description: A YAML parser and emitter for C++
+ Version: @YAML_CPP_VERSION@
+ Requires:
+-Libs: -L${libdir} -lyaml-cpp
++Libs: -L${libdir} -lwbc-yaml-cpp
+ Cflags: -I${includedir}
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/opspace/CMakeLists.txt stanford_wbc-stanford_wbc-1.1/opspace/CMakeLists.txt
+--- stanford_wbc-stanford_wbc-1.1.orig/opspace/CMakeLists.txt	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/opspace/CMakeLists.txt	2014-09-22 00:46:17.493350780 +0200
+@@ -19,7 +19,7 @@
+   src/parse_yaml.cpp
+   src/Skill.cpp
+   )
+-target_link_libraries (opspace jspace reflexxes_otg yaml-cpp)
++target_link_libraries (opspace jspace reflexxes_otg wbc-yaml-cpp)
+ 
+ if (HAVE_GTEST)
+ 

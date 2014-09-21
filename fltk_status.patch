@@ -1,0 +1,23 @@
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/tutorials/tut05_opspace_and_parameters.cpp stanford_wbc-stanford_wbc-1.1/tutorials/tut05_opspace_and_parameters.cpp
+--- stanford_wbc-stanford_wbc-1.1.orig/tutorials/tut05_opspace_and_parameters.cpp	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/tutorials/tut05_opspace_and_parameters.cpp	2014-09-22 00:57:31.945610649 +0200
+@@ -63,6 +63,7 @@
+ #include <FL/fl_draw.H>
+ #include <err.h>
+ 
++#undef Status
+ 
+ namespace tut05 {
+   
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/tutorials/tut06_eepos.cpp stanford_wbc-stanford_wbc-1.1/tutorials/tut06_eepos.cpp
+--- stanford_wbc-stanford_wbc-1.1.orig/tutorials/tut06_eepos.cpp	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/tutorials/tut06_eepos.cpp	2014-09-22 00:46:46.049689729 +0200
+@@ -56,6 +56,8 @@
+ #include <FL/fl_draw.H>
+ #include <err.h>
+ 
++#undef Status
++
+ 
+ static std::string model_filename(TUTROB_XML_PATH_STR);
+ static boost::shared_ptr<jspace::Model> model;

@@ -1,0 +1,12 @@
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/tutorials/CMakeLists.txt stanford_wbc-stanford_wbc-1.1/tutorials/CMakeLists.txt
+--- stanford_wbc-stanford_wbc-1.1.orig/tutorials/CMakeLists.txt	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/tutorials/CMakeLists.txt	2014-09-22 01:28:23.111033021 +0200
+@@ -34,3 +34,8 @@
+ 
+ add_executable (tut06_eepos tut06_eepos.cpp)
+ target_link_libraries (tut06_eepos tut opspace jspace_test yaml-cpp ${FLTK_LIBRARIES})
++
++install (TARGETS tut00_test tut01_joint_coupling tut02_jtask tut03_gravity_compensation tut04_inertia_coriolis tut05_opspace_and_parameters tut06_eepos
++         RUNTIME DESTINATION bin
++         LIBRARY DESTINATION lib
++         ARCHIVE DESTINATION lib)

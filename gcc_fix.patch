@@ -1,0 +1,11 @@
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/jspace/jspace/test/util.cpp stanford_wbc-stanford_wbc-1.1/jspace/jspace/test/util.cpp
+--- stanford_wbc-stanford_wbc-1.1.orig/jspace/jspace/test/util.cpp	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/jspace/jspace/test/util.cpp	2014-09-22 00:45:43.953735687 +0200
+@@ -28,6 +28,7 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ using namespace std;
+ 

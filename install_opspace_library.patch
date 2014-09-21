@@ -1,0 +1,19 @@
+diff -Nur stanford_wbc-stanford_wbc-1.1.orig/opspace/CMakeLists.txt stanford_wbc-stanford_wbc-1.1/opspace/CMakeLists.txt
+--- stanford_wbc-stanford_wbc-1.1.orig/opspace/CMakeLists.txt	2011-04-30 02:20:22.000000000 +0200
++++ stanford_wbc-stanford_wbc-1.1/opspace/CMakeLists.txt	2014-09-22 01:13:31.011270910 +0200
+@@ -19,7 +19,15 @@
+   src/parse_yaml.cpp
+   src/Skill.cpp
+   )
+ target_link_libraries (opspace jspace reflexxes_otg wbc-yaml-cpp)
++
++file (GLOB headers "include/opspace/*.hpp")
++install (FILES ${headers} DESTINATION include/opspace)
++
++install (TARGETS opspace
++         RUNTIME DESTINATION bin
++         LIBRARY DESTINATION lib
++         ARCHIVE DESTINATION lib)
+ 
+ if (HAVE_GTEST)
+ 
