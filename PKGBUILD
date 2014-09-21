@@ -7,7 +7,7 @@
 # Contributor: hack.augusto <hack.augusto@gmail.com>
 
 pkgname=depot-tools-git
-pkgver=r2457.34504a1
+pkgver=r2484.c15fe57
 pkgrel=1
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
@@ -24,6 +24,25 @@ md5sums=('SKIP'
          '39d5d3e78fa7456a1d8dd5ac10a1c8bb'
          'fb0c546a078c312aa64c1f2a31599557')
 install="depot_tools.install"
+
+scripts_to_fix=(
+	apply_issue
+	drover
+	gcl
+	git-cl
+	git-gs
+	git-try
+	hammer
+	weekly
+	wtf
+	update_depot_tools
+	fetch
+	download_from_google_storage
+	gn
+	clang-format
+	git-runhooks
+	roll-dep
+)
 
 pkgver () {
 	cd "${pkgname}"
@@ -56,7 +75,7 @@ prepare () {
 	sed -r -i -e 's/"exec" python/"exec" python2/' repo
 
 	# Fixing scripts in root folder
-	for script in {apply_issue,drover,gcl,git-cl,git-gs,git-try,hammer,weekly,wtf,update_depot_tools}
+	for script in "${scripts_to_fix[@]}"
 	do
 		sed -r -i -e 's/exec python/exec python2/' \
 			        -e 's/#!(.*)python.*/#!\1python2/' \
