@@ -1,0 +1,12 @@
+--- src/ompl/control/ODESolver.h
++++ src/ompl/control/ODESolver.h
+@@ -318,7 +318,9 @@ namespace ompl
+             {
+                 ODESolver::ODEFunctor odefunc (ode_, control);
+ 
+-                odeint::controlled_runge_kutta< Solver > solver (odeint::default_error_checker<double>(maxError_, maxEpsilonError_));
++                odeint::controlled_runge_kutta< Solver > solver (
++                  odeint::default_error_checker<double,odeint::range_algebra,odeint::default_operations>(maxError_, maxEpsilonError_)
++                );
+                 odeint::integrate_adaptive (solver, odefunc, state, 0.0, duration, intStep_);
+             }
