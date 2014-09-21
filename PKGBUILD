@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=cccc
 pkgver=3.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="C and C++ Code Counter, code metrics also for Ada and Java files"
 arch=('i686' 'x86_64')
 url="http://cccc.sourceforge.net/"
@@ -16,6 +16,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   sed -e 's/su root -c "make -f install.mak"/make -f install.mak/' \
+      -e 's/all : pccts cccc test install/all : pccts cccc test/' \
     -i makefile || return 1
   sed -e 's:/usr/local/bin:'$pkgdir'/usr/bin:' \
     -e 's/\$(MKDIR)/\$(MKDIR) -p/' -i install/install.mak || return 1
