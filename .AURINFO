@@ -1,6 +1,6 @@
 pkgbase = cwm-git
 	pkgdesc = OpenBSD fork of calmwm, a clean and lightweight window manager
-	pkgver = 20140907
+	pkgver = 20140918
 	pkgrel = 1
 	url = http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1
 	arch = i686
