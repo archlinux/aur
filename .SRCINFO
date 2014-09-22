@@ -1,6 +1,6 @@
 pkgbase = rpm-org
 	pkgdesc = RPM Package Manager - RPM.org fork, used in major RPM distros
-	pkgver = 4.12.0_rc1
+	pkgver = 4.12.0.1
 	pkgrel = 1
 	url = http://www.rpm.org/
 	arch = i686
@@ -8,23 +8,25 @@ pkgbase = rpm-org
 	license = GPL2
 	makedepends = python2
 	makedepends = python
-	depends = lua
+	depends = lua>=5.1
 	depends = file
 	depends = nss>=3.12
 	depends = popt
 	depends = elfutils
 	depends = libarchive
-	provides = rpm=4.12.0_rc1
+	depends = libcap
+	optdepends = libdbus: systemd inhibit plugin
+	provides = rpm=4.12.0.1
 	provides = rpmextract=1.0-4
 	conflicts = rpm
 	conflicts = rpmextract
 	options = !libtool
-	source = http://rpm.org/releases/testing/rpm-4.12.0-rc1.tar.bz2
+	source = http://rpm.org/releases/rpm-4.12.x/rpm-4.12.0.1.tar.bz2
 	source = rpmextract.sh
 	source = rpmlib-filesystem-check.patch
-	md5sums = fbc9b72ddfdafe07230e6d54a9b50f09
-	md5sums = 1f7f4f3b3a93ff6d2f600c7751ae25ef
-	md5sums = 62a62de128345a8a7a6195fd59f8cd71
+	sha1sums = d416bdb249b246b00b2d5d34c66e7f5a68a62524
+	sha1sums = 74849919207885ae024f1ab8ed68a76474d67ad7
+	sha1sums = 0c5fa516dde1f10211af896c729e4b00c313e12b
 
 pkgname = rpm-org
 

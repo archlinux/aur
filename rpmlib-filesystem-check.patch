@@ -1,7 +1,7 @@
 diff -up rpm-4.10.90.git11978/lib/depends.c.rpmlib-filesystem-check rpm-4.10.90.git11978/lib/depends.c
 --- rpm-4.10.90.git11978/lib/depends.c.rpmlib-filesystem-check	2012-11-01 09:40:26.000000000 +0200
 +++ rpm-4.10.90.git11978/lib/depends.c	2012-11-05 10:53:42.294733695 +0200
-@@ -537,6 +537,109 @@ static int rpmdbProvides(rpmts ts, depCa
+@@ -589,6 +589,109 @@ static int rpmdbProvides(rpmts ts, depCa
      return rc;
  }
  
@@ -111,7 +111,7 @@ diff -up rpm-4.10.90.git11978/lib/depends.c.rpmlib-filesystem-check rpm-4.10.90.
  /**
   * Check dep for an unsatisfied dependency.
   * @param ts		transaction set
-@@ -560,8 +663,10 @@ retry:
+@@ -612,8 +715,10 @@ retry:
       * Check those dependencies now.
       */
      if (dsflags & RPMSENSE_RPMLIB) {

@@ -5,25 +5,26 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.12.0_rc1
-#_pkgver=$pkgver
-_pkgver=4.12.0-rc1
+pkgver=4.12.0.1
+_pkgver=$pkgver
+#_pkgver=4.12.0-rc1
 pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
 url=("http://www.rpm.org/")
 license=('GPL2')
-depends=('lua' 'file' 'nss>=3.12' 'popt' 'elfutils' 'libarchive')
+depends=('lua>=5.1' 'file' 'nss>=3.12' 'popt' 'elfutils' 'libarchive' 'libcap')
 makedepends=('python2' 'python')
+optdepends=('libdbus: systemd inhibit plugin')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
-#source=(http://rpm.org/releases/rpm-4.11.x/rpm-${pkgver}.tar.bz2
-source=(http://rpm.org/releases/testing/rpm-${_pkgver}.tar.bz2
+#source=(http://rpm.org/releases/testing/rpm-${_pkgver}.tar.bz2
+source=(http://rpm.org/releases/rpm-4.12.x/rpm-${pkgver}.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch)
-md5sums=('fbc9b72ddfdafe07230e6d54a9b50f09'
-         '1f7f4f3b3a93ff6d2f600c7751ae25ef'
-         '62a62de128345a8a7a6195fd59f8cd71')
+sha1sums=('d416bdb249b246b00b2d5d34c66e7f5a68a62524'
+          '74849919207885ae024f1ab8ed68a76474d67ad7'
+          '0c5fa516dde1f10211af896c729e4b00c313e12b')
 
 prepare() {
 	cd ${srcdir}/rpm-${_pkgver}
