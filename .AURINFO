@@ -1,11 +1,12 @@
 pkgbase = x11vnc-git
 	pkgdesc = VNC server for real X displays
 	pkgver = 0.9.14.r348.g25f5076
-	pkgrel = 1
+	pkgrel = 2
 	url = https://LibVNC.github.io
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = autoconf-archive
 	depends = libvncserver
 	depends = libxtst
 	depends = libxinerama

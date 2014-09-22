@@ -5,7 +5,7 @@
 
 pkgname=x11vnc-git
 pkgver=0.9.14.r348.g25f5076
-pkgrel=1
+pkgrel=2
 pkgdesc='VNC server for real X displays'
 url="https://LibVNC.github.io"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ options=('!emptydirs')
 provides=(x11vnc)
 conflicts=(x11vnc)
 depends=(libvncserver libxtst libxinerama libxdamage libxrandr avahi)
+makedepends=(autoconf-archive)
 optdepends=('tk: GUI support'
 	    'net-tools: -auth guess'
 	    'xf86-video-dummy: Xdummy script'
