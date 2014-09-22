@@ -1,17 +1,12 @@
 pkgbase = libvncserver-git
 	pkgdesc = VNC server for real X displays
-	pkgver = 0.9.9.r65.g50dbe1d
+	pkgver = 0.9.9.r87.g79a064f
 	pkgrel = 1
-	url = https://.github.io
+	url = https://LibVNC.github.io
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = libvncserver-git::git+http://github.com/LibVNC/libvncserver.git
-	source = build.patch
-	source = service
-	options = !emptydirs
-
-pkgname = libvncserver-git
+	makedepends = autoconf-archive
 	depends = libpng
 	depends = libjpeg
 	depends = gnutls
@@ -19,19 +14,8 @@ pkgname = libvncserver-git
 	depends = openssl
 	provides = libvncserver
 	conflicts = libvncserver
+	source = libvncserver-git::git+https://github.com/bbidulock/libvncserver.git
+	options = !emptydirs
 
-pkgname = x11vnc-git
-	depends = libvncserver-git
-	depends = libxtst
-	depends = libxinerama
-	depends = libxdamage
-	depends = libxrandr
-	depends = avahi
-	depends = openssl
-	optdepends = tk: GUI support
-	optdepends = net-tools: -auth guess
-	optdepends = xf86-video-dummy: Xdummy script
-	optdepends = java-environment: java-applet support
-	provides = x11vnc
-	conflicts = x11vnc
+pkgname = libvncserver-git
 
