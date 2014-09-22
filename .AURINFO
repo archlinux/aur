@@ -18,9 +18,8 @@ pkgbase = x11vnc-git
 	optdepends = java-environment: java-applet support
 	provides = x11vnc
 	conflicts = x11vnc
-	options = !emptydirs
 	source = x11vnc-git::git+https://github.com/bbidulock/x11vnc.git
-	sha1sums = SKIP
+	options = !emptydirs
 
 pkgname = x11vnc-git
 
