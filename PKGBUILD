@@ -1,8 +1,9 @@
-# Maintainer: Bruno Galeotti <bgaleotti at gmail dot com>
+# Maintainer: Florian Bruhin <archlinux.org@the-compiler.org>
+# Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
 
 pkgname=python2-websocket-client
-pkgver=0.14.1
-pkgrel=3
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="Websocket client for Python."
 url="https://github.com/liris/websocket-client"
 license=('LGPL')
@@ -11,7 +12,7 @@ depends=('python2>=2.7' 'python2-backports.ssl_match_hostname' 'python2-six')
 
 makedepends=('python2-distribute')
 source=(http://pypi.python.org/packages/source/w/websocket-client/websocket-client-$pkgver.tar.gz)
-sha512sums=('5efb6fdef3560d546aadeadecd4a3f26b08af2086381d92c36b66e956c6ca581187afba8c892fe637483dc1590053c8a7989722f93557d8bd0701560bf980120')
+sha512sums=('5524271067fd3b89ddbe3ab6cdb2491a1387a54ff569b043a1daffe8b50b0c470c9b6c2671b3d77f2b6261e4125e753410eed818f492e2669df2a84c92bf805a')
 
 build() {
   cd "$srcdir/websocket-client-$pkgver"
@@ -27,4 +28,4 @@ package() {
 }
 
 
-# vim:ts=2:sw=2:et
+# vim: ts=2 sts=2 sw=2 et ft=sh
