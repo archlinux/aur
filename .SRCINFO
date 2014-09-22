@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-pcl-conversions
 	pkgdesc = ROS - Provides conversions from PCL data types and ROS message types.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/pcl_conversions
 	arch = any
 	license = BSD

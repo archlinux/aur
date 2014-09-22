@@ -7,7 +7,7 @@ pkgname='ros-indigo-pcl-conversions'
 pkgver='0.2.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
