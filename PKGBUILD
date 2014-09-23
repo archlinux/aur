@@ -4,10 +4,10 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-indigo-tf2'
-pkgver='0.5.5'
+pkgver='0.5.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-msgs
