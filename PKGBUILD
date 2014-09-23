@@ -4,10 +4,10 @@ pkgdesc="ROS - image_transport should always be used to subscribe to and publish
 url='http://ros.org/wiki/image_transport'
 
 pkgname='ros-indigo-image-transport'
-pkgver='1.11.3'
-_pkgver_patch=1
+pkgver='1.11.4'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
