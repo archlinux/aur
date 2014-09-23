@@ -4,11 +4,13 @@
 pkgbase=vbam
 pkgname=('vbam-cli' 'vbam-gtk' 'vbam-wx')
 pkgver=1.8.0.1202
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
-url="http://vba-m.com"
+url='http://vba-m.com'
 license=('GPL2')
-makedepends=('cmake' 'desktop-file-utils' 'freetype2' 'gtkglextmm' 'imagemagick' 'glew' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr' 'mesa' 'openal' 'wxgtk2.8' 'zip')
+makedepends=('cmake' 'desktop-file-utils' 'freetype2' 'gtkglextmm'
+             'imagemagick' 'glew' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr'
+             'openal' 'wxgtk2.8' 'zip')
 [[ $CARCH == i686 ]] && makedepends+=('nasm')
 source=("http://downloads.sourceforge.net/project/vbam/vbam-src/vbam-r${pkgver##*.}-src.tar.bz2"
         'http://downloads.sourceforge.net/sfml/SFML-1.6-sdk-linux-64.tar.gz'
@@ -29,7 +31,7 @@ prepare() {
 
 build() {
 # Build static SOIL
-  pushd "Simple OpenGL Image Library/src"
+  pushd 'Simple OpenGL Image Library/src'
   make -f "../projects/makefile/alternate Makefile.txt"
   make -f "../projects/makefile/alternate Makefile.txt" DESTDIR="${srcdir}/staging" install
   popd
@@ -46,8 +48,11 @@ build() {
   fi
   mkdir build && cd build
 
-  local _cmakeargs="-DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_CXX_FLAGS=-I${srcdir}/staging/usr/include -DENABLE_GTK='ON' -DENABLE_WX='ON' \
-                    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-2.8' -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-2.8'
+  local _cmakeargs="-DCMAKE_INSTALL_PREFIX='/usr' \
+                    -DCMAKE_CXX_FLAGS=-I${srcdir}/staging/usr/include \
+                    -DENABLE_GTK='ON' -DENABLE_WX='ON' \
+                    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-2.8' \
+                    -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-2.8'
                     -DSFML_INCLUDE_DIR='../staging/usr/include/SFML' \
                     -DSFML_AUDIO_INCLUDE_DIR='../staging/usr/include/SFML/Audio' \
                     -DSFML_AUDIO_LIBRARY='../staging/usr/lib/libsfml-audio-s.a' \
@@ -67,8 +72,8 @@ build() {
 }
 
 package_vbam-cli() {
-pkgdesc="Nintendo GameBoy Advance emulator - SDL version"
-depends=('mesa' 'libpng' 'sdl')
+pkgdesc='Nintendo GameBoy Advance emulator'
+depends=('libgl' 'libpng' 'sdl')
 backup=('etc/vbam.cfg')
 
   cd build
@@ -78,7 +83,7 @@ backup=('etc/vbam.cfg')
 }
 
 package_vbam-gtk() {
-pkgdesc="Nintendo GameBoy Advance emulator - GTK version"
+pkgdesc='Nintendo GameBoy Advance emulator'
 depends=('desktop-file-utils' 'gtkglextmm' 'sdl')
 conflicts=('vbam-wx')
 install='vbam-gtk.install'
@@ -91,7 +96,7 @@ install='vbam-gtk.install'
 }
 
 package_vbam-wx() {
-pkgdesc="Nintendo GameBoy Advance emulator - wx version"
+pkgdesc='Nintendo GameBoy Advance emulator'
 depends=('wxgtk2.8')
 conflicts=('vbam-gtk')
 options=('!emptydirs')
