@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-image-proc
 	pkgdesc = ROS - Single image rectification and color processing.
-	pkgver = 1.12.8
-	pkgrel = 2
+	pkgver = 1.12.9
+	pkgrel = 1
 	url = http://www.ros.org/wiki/image_proc
 	arch = any
 	license = BSD
@@ -27,7 +27,7 @@ pkgbase = ros-indigo-image-proc
 	depends = ros-indigo-dynamic-reconfigure
 	depends = ros-indigo-nodelet
 	depends = opencv
-	source = image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/indigo/image_proc/1.12.8-0
+	source = image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/indigo/image_proc/1.12.9-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-image-proc
