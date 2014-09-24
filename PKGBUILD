@@ -9,12 +9,12 @@ fi
 
 pkgname=zdoom
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An enhanced Doom port with additional support for Heretic, Hexen and Strife."
 arch=('i686' 'x86_64')
 url="http://www.zdoom.org/"
 license=('custom')
-depends=('fluidsynth' 'gxmessage' 'sdl')
+depends=('fluidsynth' 'gtk2' 'gxmessage' 'sdl')
 makedepends=('nasm' 'cmake' 'imagemagick' 'p7zip')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
