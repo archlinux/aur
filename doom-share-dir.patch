@@ -1,0 +1,11 @@
+diff -ur a/src/gameconfigfile.cpp b/src/gameconfigfile.cpp
+--- a/src/gameconfigfile.cpp	2014-09-10 15:49:16.484435366 +0200
++++ b/src/gameconfigfile.cpp	2014-09-10 15:49:28.591101911 +0200
+@@ -139,6 +139,7 @@
+ #else
+ 		SetValueForKey ("Path", "~/" GAME_DIR, true);
+ 		SetValueForKey ("Path", SHARE_DIR, true);
++		SetValueForKey ("Path", "/usr/share/doom", true);
+ #endif
+ 	}
+ 

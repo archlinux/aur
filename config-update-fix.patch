@@ -1,0 +1,12 @@
+diff -ur a/src/m_specialpaths.cpp b/src/m_specialpaths.cpp
+--- a/src/m_specialpaths.cpp	2014-09-10 15:35:08.217777234 +0200
++++ b/src/m_specialpaths.cpp	2014-09-10 15:39:12.774441440 +0200
+@@ -497,7 +497,7 @@
+ 		// This can be removed after a release or two
+ 		// Transfer the old zdoom directory to the new location
+ 		bool moved = false;
+-		FString oldpath = NicePath("~/.zdoom/");
++		FString oldpath = NicePath("~/.gzdoom/");
+ 		if (stat (oldpath, &extrainfo) != -1)
+ 		{
+ 			if (rename(oldpath, path) == -1)
