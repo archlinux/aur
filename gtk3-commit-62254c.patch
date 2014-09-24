@@ -1,0 +1,72 @@
+From 62254ca3061a1309e836939df242140b53c79603 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Fri, 15 Aug 2014 17:56:39 +0200
+Subject: util/extract-strings: Use autotools syntax for building
+
+Always refer to it as "extract-strings$(EXEEXT)" where needed to take
+cross-compilation into account.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=731013
+
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 3e0d5f8..45de10c 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -1336,7 +1336,7 @@ template_headers = $(COMPOSITE_TEMPLATES:.ui=.ui.h)
+ 
+ %.ui.h: %.ui
+ 	$(AM_V_GEN) mkdir -p $(dir $@) \
+-	&& $(top_builddir)/util/extract-strings$(BUILD_EXEEXT) $< > $@
++	&& $(top_builddir)/util/extract-strings$(EXEEXT) $< > $@
+ 
+ #
+ # rules to generate built sources
+@@ -1566,7 +1566,6 @@ distclean-local:
+ 	if test $(srcdir) != .; then \
+ 	  rm -f $(MAINTAINERCLEANFILES); \
+ 	  rm -rf stock-icons; \
+-	  rm -f extract-strings$(EXEEXT); \
+ 	  rm -f $(template_headers); \
+ 	fi
+ 
+diff --git a/gtk/inspector/Makefile.am b/gtk/inspector/Makefile.am
+index 9e14945..25580e6 100644
+--- a/gtk/inspector/Makefile.am
++++ b/gtk/inspector/Makefile.am
+@@ -114,10 +114,8 @@ templates = 				\
+ 
+ template_headers = $(templates:.ui=.ui.h)
+ 
+-extract_strings = $(top_builddir)/util/extract-strings
+-
+ %.ui.h : %.ui 
+-	$(AM_V_GEN) $(extract_strings) $< > $@
++	$(AM_V_GEN) $(top_builddir)/util/extract-strings$(EXEEXT) $< > $@
+ 
+ EXTRA_DIST += 				\
+ 	inspector.gresource.xml 	\
+diff --git a/util/Makefile.am b/util/Makefile.am
+index e8cf8fd..414dc68 100644
+--- a/util/Makefile.am
++++ b/util/Makefile.am
+@@ -1,13 +1,9 @@
+ # The extract_strings tool is a build utility that runs on the build system.
+-extract_strings_sources = extract-strings.c
+-extract_strings_cppflags =
+-extract_strings_cflags = $(GLIB_CFLAGS_FOR_BUILD)
+-extract_strings_ldadd = $(GLIB_LIBS_FOR_BUILD)
+-
+-extract-strings$(EXEEXT): $(extract_strings_sources)
+-	@rm -f extract-strings
+-	$(AM_V_CCLD)$(CC_FOR_BUILD) $(extract_strings_cppflags) $(CPPFLAGS_FOR_BUILD) $(extract_strings_cflags) $(CFLAGS_FOR_BUILD) $^ $(LDFLAGS_FOR_BUILD) $(extract_strings_ldadd) $(LIBS_FOR_BUILD) -o $@
+ 
+ noinst_PROGRAMS = extract-strings
+ 
++extract_strings_SOURCES = extract-strings.c
++extract_strings_CFLAGS = $(GLIB_CFLAGS_FOR_BUILD)
++extract_strings_LDADD = $(GLIB_LIBS_FOR_BUILD)
++
+ -include $(top_srcdir)/git.mk
+-- 
+cgit v0.10.1
+

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GObject-based multi-platform GUI toolkit (v3) (mingw-w64)
-	pkgver = 3.12.2
+	pkgver = 3.14.0
 	pkgrel = 1
 	url = http://www.gtk.org
 	arch = any
@@ -13,19 +13,21 @@ pkgbase = mingw-w64-gtk3
 	makedepends = automake
 	makedepends = libtool
 	depends = mingw-w64-crt
-	depends = mingw-w64-atk>=2.7.5
-	depends = mingw-w64-pango>=1.32.4
-	depends = mingw-w64-glib2>=2.39.5
+	depends = mingw-w64-atk>=2.12.0
+	depends = mingw-w64-pango>=1.36.7
+	depends = mingw-w64-glib2>=2.41.2
 	depends = mingw-w64-cairo>=1.12.0
-	depends = mingw-w64-gdk-pixbuf2>=2.27.1
+	depends = mingw-w64-gdk-pixbuf2>=2.30.0
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.12/gtk+-3.12.2.tar.xz
-	source = 0004-BURN-THE-.DEF.patch
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.0.tar.xz
+	source = gtk3-commit-62254c.patch
+	source = 0001-Bug-731013-cross-compilation-broken-when-building-ex.patch
 	source = 0005-Remove-gobject-introspection.patch
-	sha256sums = 61d74eea74231b1ea4b53084a9d6fc9917ab0e1d71b69d92cbf60a4b4fb385d0
-	sha256sums = b35ecacab70680391e06af85893b7aa8612f0812ded35395b6e93f49e8eab92b
+	sha256sums = 68d6b57d15c16808d0045e96b303f3dd439cc22a9c06fdffb07025cd713a82bc
+	sha256sums = 1c8812f68446d509e019b3f26863348f2cfc469dbb8866bbdfa3213e55a7c433
+	sha256sums = d2825227188cf60740540086cd71c56f8e5c6d9c9b9ad7c0869e6746ad0caebe
 	sha256sums = ae632ad20c87032c326dbb1cda086e33a5078909f89174b2ba232be1b48c32a3
 
 pkgname = mingw-w64-gtk3
