@@ -7,13 +7,13 @@ if [[ "$CARCH" == x86_64 ]]; then
 fi
 
 pkgname=zdoom-git
-pkgver=2.8pre.r457.g85fb8c4
+pkgver=2.8pre.r636.g79d9a57
 pkgrel=1
 pkgdesc="An enhanced Doom port with additional support for Heretic, Hexen and Strife (git version)."
 arch=('i686' 'x86_64')
 url="http://www.zdoom.org/"
 license=('custom')
-depends=('fluidsynth' 'gxmessage' 'sdl')
+depends=('fluidsynth' 'gtk2' 'gxmessage' 'sdl')
 makedepends=('nasm' 'cmake' 'git' 'imagemagick')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
