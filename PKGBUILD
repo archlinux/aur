@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net 
 pkgname=python-configshell-fb
 _pkgname=configshell-fb
-pkgver=1.1.fb14
+pkgver=1.1.fb15
 pkgrel=1
 pkgdesc="python framework for building simple CLI applications (free branch)"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('python-configshell')
 conflicts=('python-configshell')
 options=()
 source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz)
-sha256sums=('280b6a1361a0d27804e281d54d5513f7dc2258a7a8404ebd9ae53f97ae992d26')
+sha256sums=('7e645509acff3e92d4b824be48cdca1ba059e94ae9f9e0bdedd5829c310518d9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
