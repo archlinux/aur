@@ -7,13 +7,13 @@ if [[ "$CARCH" == x86_64 ]]; then
 fi
 
 pkgname=gzdoom-git
-pkgver=1.9pre.r796.g8169991
+pkgver=1.9pre.r1026.g48da2f8
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (git version)."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
 license=('custom')
-depends=('fluidsynth' 'gxmessage' 'sdl' 'glew')
+depends=('fluidsynth' 'glew' 'gtk2' 'gxmessage' 'sdl')
 makedepends=('nasm' 'cmake' 'git' 'imagemagick' 'mesa')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
