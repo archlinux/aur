@@ -3,26 +3,24 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=1.11.0.r172342
+pkgver=1.11.0.r173935
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'elementary' 'e_dbus' 'enchant' 'geoclue2' 'harfbuzz-icu' 'libxslt')
-makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf' 'chrpath')
+depends=('atk' 'efl' 'e_dbus' 'enchant' 'espeak' 'geoclue2' 'harfbuzz-icu' 'libxslt')
+makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$_pkgname-Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools"
-        "$_pkgname-Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source")
-sha256sums=('SKIP'
-            'SKIP')
+source=("$pkgname/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname-Source"
+  cd "$srcdir/Source/cmake"
 
   for _i in PROJECT_VERSION_{MAJOR,MINOR,MICRO}; do
-    local v_ver=${v_ver#.}.$(grep -m1 $_i cmake/OptionsEfl.cmake | grep -o "[[:digit:]]*")
+    local v_ver=${v_ver#.}.$(grep -m1 $_i OptionsEfl.cmake | grep -o "[[:digit:]]*")
   done
 
   printf "$v_ver.r$(svnversion | tr -d '[[:alpha:]]')"
@@ -37,14 +35,11 @@ prepare() {
   else
     msg2 "Cloning $_pkgname svn repo..."
     mkdir -p $_pkgname/.makepkg
-    svn checkout --depth immediates --config-dir $_pkgname/.makepkg --revision ${pkgver#*.r} \
+    svn checkout --depth files --config-dir $_pkgname/.makepkg --revision ${pkgver#*.r} \
       "https://svn.webkit.org/repository/webkit/trunk/" $_pkgname
   fi
 
   cp $_pkgname/CMakeLists.txt "$srcdir/CMakeLists.txt"
-
-  cd "$srcdir"
-  for _dir in $_pkgname-*; do ln -sf $_dir ${_dir#*-}; done
 }
 
 build() {
@@ -70,9 +65,6 @@ package() {
   cd "$srcdir"
 
   make DESTDIR="$pkgdir" install
-
-  chrpath --delete bin/MiniBrowser
-  install -m755 bin/MiniBrowser "$pkgdir/usr/bin/MiniBrowser-ewk"
 
 # install license files
   install -d "$pkgdir/usr/share/licenses/$pkgname/"

@@ -1,6 +1,6 @@
 pkgbase = ewebkit-svn
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries - Development version
-	pkgver = 1.11.0.r172342
+	pkgver = 1.11.0.r173935
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -14,19 +14,17 @@ pkgbase = ewebkit-svn
 	makedepends = python2
 	makedepends = ruby
 	makedepends = gperf
-	makedepends = chrpath
 	depends = atk
-	depends = elementary
+	depends = efl
 	depends = e_dbus
 	depends = enchant
+	depends = espeak
 	depends = geoclue2
 	depends = harfbuzz-icu
 	depends = libxslt
-	provides = ewebkit=1.11.0.r172342
+	provides = ewebkit=1.11.0.r173935
 	conflicts = ewebkit
-	source = ewebkit-Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools
-	source = ewebkit-Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source
-	sha256sums = SKIP
+	source = ewebkit-svn/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source
 	sha256sums = SKIP
 
 pkgname = ewebkit-svn
