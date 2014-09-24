@@ -2,7 +2,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=2.0.02
+pkgver=2.0.03
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
-md5sums=('a4921e4a18feaa1b959f55201cd325a4'
+md5sums=('5dcf5caf02f16306e8bfaf6fa7a95434'
          'eed301389f533effbd127681a3ddc2c5'
          '3ee3d6bb1f777445438bc40ae81a95df'
          '4778bb22190c445a4ed764c64432de12'
