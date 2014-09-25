@@ -9,15 +9,11 @@ pkgbase = opendds
 	license = custom
 	depends = perl
 	depends = bash
-	options = !buildflags
 	source = http://download.ociweb.com/TAO-2.2a/ACE+TAO-2.2a_with_latest_patches_NO_makefiles.tar.gz
 	source = http://download.ociweb.com/OpenDDS/OpenDDS-3.5.1.tar.gz
 	source = build.patch
 	source = tao-cosnaming.service
-	md5sums = ba295977283364c4e03375442d2c1648
-	md5sums = aac9eaf951b9eabdd75c4365946f06d0
-	md5sums = fe01901b585b7d52724847aab9402775
-	md5sums = 63fba1c486fb3ed8b216e0b456b50988
+	options = !buildflags
 
 pkgname = opendds
 

@@ -3,8 +3,8 @@
 pkgname=opendds
 _pkgname=OpenDDS
 pkgver=3.5.1
-pkgrel=2
-pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
+pkgrel=1
+pkgdesc="Open source C++ implementaiton of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
 url="http://www.opendds.org/"
 license=('custom')
@@ -29,13 +29,6 @@ prepare() {
 
 build() {
   cd DDS
-  DOC_ROOT="$srcdir/ACE_wrappers" \
-  ACE_ROOT="$DOC_ROOT/ACE" \
-  TAO_ROOT="$DOC_ROOT/ACE/TAO" \
-  CIAO_ROOT="$DOC_ROOT/ACE/CIAO" \
-  DANCE_ROOT="$DOC_ROOT/ACE/DAnCE" \
-  DDS_ROOT="$srcdir/DDS" \
-  MPC_ROOT="$DOC_ROOT/MPC" \
   ./configure \
     --ace="$srcdir/ACE_wrappers" \
     --tao="$srcdir/ACE_wrappers/TAO"
