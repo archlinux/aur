@@ -7,7 +7,7 @@
 
 pkgname=mpd-light
 pkgver=0.18.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi'
 url='http://www.musicpd.org/'
 license=('GPL')
@@ -22,7 +22,7 @@ source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
         'mpd.conf')
 sha1sums=('5a4b5f5b0447994f3fc186ffd7c16cabeeed2978'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
-          '9e132269d11e03b0f2ec85a7013cba200be6f5c1')
+          'fd581b976f4931abf9b849224dcb38a73af14af0')
 backup=('etc/mpd.conf')
 install=mpd.install
 
@@ -58,5 +58,8 @@ package() {
 	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd/playlists
 
 	install -Dm644 "${pkgdir}"/usr/lib/systemd/{system,user}/mpd.service
-	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
+	sed \
+		-e '/\[Service\]/a User=mpd' \
+		-e '/WantedBy=/c WantedBy=default.target' \
+		-i "${pkgdir}"/usr/lib/systemd/user/mpd.service
 }
