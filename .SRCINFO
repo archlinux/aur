@@ -1,16 +1,16 @@
 pkgbase = genders
 	pkgdesc = Static cluster configuration database used for cluster configuration management.
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = https://computing.llnl.gov/linux/genders.html
 	arch = x86_64
 	arch = i686
 	license = GPL
 	options = !makeflags
-	source = http://sourceforge.net/projects/genders/files/genders/1.20-1/genders-1.20.tar.gz
+	source = http://sourceforge.net/projects/genders/files/genders/1.21-1/genders-1.21.tar.gz
 	source = 624078.patch
-	md5sums = 26a3bc4b6d5eeae3ade7b719c6165d85
-	md5sums = 76431ec248c0ee9a2d1b9971cc13ce57
+	md5sums = 8915780924dc4fa83432ea1c25907835
+	md5sums = 4c5c7b85ee0641a66e885b647fd669fd
 
 pkgname = genders
 
