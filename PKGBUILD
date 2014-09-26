@@ -1,19 +1,24 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgbase=grantlee
-pkgname=('grantlee-qt4' 'grantlee-qt5')
-pkgver=0.5.0
-pkgrel=2
-pkgdesc="A string template engine based on the Django template system and written in Qt"
+pkgname=grantlee
+pkgver=5.1.0
+pkgrel=1
+pkgdesc="A string template engine based on the Django template system and written in Qt5"
 arch=('i686' 'x86_64')
 url="https://www.gitorious.org/grantlee/pages/Home"
 license=('LGPL3')
-makedepends=('qt4' 'qt5-script' 'cmake' 'doxygen')
-source=("http://downloads.grantlee.org/${pkgbase}-${pkgver}.tar.gz")
-md5sums=('3664b26b747be69ae77aae89829d1db1')
+depends=('qt5-script')
+makedepends=('cmake' 'doxygen')
+conflicts=('grantlee-qt5')
+provides=('grantlee-qt5')
+replaces=('grantlee-qt5')
+source=("http://downloads.grantlee.org/grantlee-$pkgver.tar.gz")
+md5sums=('57989ae9f7c113e682ef1713a6f1e92a')
 
 prepare() {
-  mkdir build{,-qt4}
+  mkdir -p build
 }
 
 build() {
@@ -50,4 +55,9 @@ package_grantlee-qt4() {
 
   cd build-qt4
   make DESTDIR="${pkgdir}" install
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
 }
