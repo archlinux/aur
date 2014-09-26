@@ -1,11 +1,12 @@
 pkgbase = perl-c-scan
 	pkgdesc = scan C language files for easily recognized constructs
 	pkgver = 0.74
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/perldoc?C::Scan
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	depends = perl-data-flow
 	source = http://search.cpan.org/CPAN/authors/id/H/HV/HVDS/C-Scan-0.74.tar.gz
 	options = !emptydirs
 
