@@ -1,7 +1,7 @@
 pkgbase = opendds
-	pkgdesc = Open source C++ implementaiton of OMG Data Distribution Service (DDS)
+	pkgdesc = Open source C++ implementation of OMG Data Distribution Service (DDS)
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opendds.org/
 	install = opendds.install
 	arch = i686
