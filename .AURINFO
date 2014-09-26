@@ -1,0 +1,21 @@
+pkgbase = opendds-git
+	pkgdesc = Open source C++ implementation of OMG Data Distribution Service (DDS)
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = http://www.opendds.org/
+	install = opendds.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = perl
+	depends = bash
+	source = MPC::git+https://github.com/bbidulock/MPC.git
+	source = ORB::git+https://github.com/bbidulock/Middleware.git
+	source = DDS::git+https://github.com/bbidulock/DDS.git
+	source = build.patch
+	source = tao-cosnaming.service
+	options = !buildflags
+
+pkgname = opendds-git
+
