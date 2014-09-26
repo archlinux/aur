@@ -1,13 +1,13 @@
 # Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=1374.66ae6d3
+pkgver=1475.2.100.2_16_gbbb7cf6
 pkgrel=3
 pkgdesc="C++QED is a highly flexible framework for simulating open quantum dynamics."
 arch=('i686' 'x86_64')
 url="http://cppqed.sourceforge.net"
 license=('BSL')
-depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy' 'python2-scipy' 'cmake', 'gsl')
+depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy' 'python2-scipy' 'cmake' 'gsl')
 makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('cppqed')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
    cd "${pkgname}"
-   echo "$(git rev-list --count HEAD).$(git describe --always )"
+   echo "$(git rev-list --count HEAD).$(git describe --always | sed  's/-/_/g')"
 }
 
 build() {
