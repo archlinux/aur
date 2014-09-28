@@ -1,8 +1,7 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=epymc
-_pkgver=1.0.0-beta2
-pkgver=1.0.0beta2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Media Center based on EFL"
 arch=('any')
@@ -13,17 +12,18 @@ optdepends=('lirc: remote contol support'
             'mutagen: Music module'
             'python2-beautifulsoup4: Online Channels module'
             'sdlmame: MAME module')
-source=("https://github.com/DaveMDS/$pkgname/archive/v$_pkgver.tar.gz")
-sha256sums=('346cef9d379d42c5d466160ad5cd1d557ca36da4068fd321fe4afc1016eb8c75')
+install=$pkgname.install
+source=("https://github.com/DaveMDS/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('062d1ad370f0abeb08d537e5d89d4895ea03eff3363262ab26dfee37b6d55a7d')
 
 prepare() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  find -name "*.py" -exec sed -i 's/env python$/&2/' {} \;
+  sed -i 's/env python$/&2/' $(find -name "*.py" 2> /dev/null) epymc/extapi/youtube-dl
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
