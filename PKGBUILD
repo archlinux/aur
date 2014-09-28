@@ -8,6 +8,7 @@ arch=('any')
 license=('GPL3')
 
 depends=('python' 'python-pafy-git')
+makedepends=('python-setuptools')
 optdepends=('mpv: Alternative to mplayer for playback'
             'mplayer: Alternative to mpv for playback')
 
