@@ -1,8 +1,9 @@
 pkgbase = epymc-git
 	pkgdesc = Media Center based on EFL - Development version
-	pkgver = 1.0.0beta1.r74.gf36a9b4
+	pkgver = 1.0.0.r0.g65b28b7
 	pkgrel = 1
 	url = https://github.com/DaveMDS/epymc
+	install = epymc.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -11,7 +12,7 @@ pkgbase = epymc-git
 	optdepends = mutagen: Music module
 	optdepends = python2-beautifulsoup4: Online Channels module
 	optdepends = sdlmame: MAME module
-	provides = epymc=1.0.0beta1.r74.gf36a9b4
+	provides = epymc=1.0.0.r0.g65b28b7
 	conflicts = epymc
 	source = git://github.com/DaveMDS/epymc.git
 	sha256sums = SKIP

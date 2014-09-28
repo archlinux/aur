@@ -2,7 +2,7 @@
 
 _pkgname=epymc
 pkgname=$_pkgname-git
-pkgver=1.0.0beta1.r74.gf36a9b4
+pkgver=1.0.0.r0.g65b28b7
 pkgrel=1
 pkgdesc="Media Center based on EFL - Development version"
 arch=('any')
@@ -16,6 +16,7 @@ optdepends=('lirc: remote contol support'
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+install=$_pkgname.install
 source=("git://github.com/DaveMDS/epymc.git")
 sha256sums=('SKIP')
 
@@ -28,7 +29,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  find -name "*.py" -exec sed -i 's/env python$/&2/' {} \;
+  sed -i 's/env python$/&2/' $(find -name "*.py" 2> /dev/null) epymc/extapi/youtube-dl
 }
 
 package() {
