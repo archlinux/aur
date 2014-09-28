@@ -6,16 +6,16 @@
 # Contributor: Sergey Plaksin <serp256(at)gmail(dot)com>
 
 pkgname=ocaml-batteries
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A comprehensive standard library for OCaml"
 arch=('i686' 'x86_64')
 url="https://forge.ocamlcore.org/projects/batteries/"
 license=('LGPL')
-depends=('ocaml>=4.01' 'ocaml-findlib' 'ocaml-camomile>=0.7.0' 'ocaml-ounit')
+depends=('ocaml>=4.02' 'ocaml-findlib>=1.5.3')
 install=ocaml-batteries.install
-source=("http://forge.ocamlcore.org/frs/download.php/1363/batteries-$pkgver.tar.gz")
-sha512sums=('023d919cbb402e1386334865dfbd17a5a7a2eb07f8ddce682bab37b1d4b140bf5ce90519744d026ae012da20abbddf65707cff5e2568c9682b8fc69cf3f0977a')
+source=("http://forge.ocamlcore.org/frs/download.php/1465/batteries-$pkgver.tar.gz")
+sha512sums=('0f55e75cc8057ec4ba9683aee91509a3bf2ee93d1990a932cd3924cd602aeeea80a5da50b0651500fc153285b1d80b9378ec1fa656e7f94311e992e9ba308c88')
 options=(!strip !makeflags)
 
 build(){
