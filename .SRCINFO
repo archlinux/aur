@@ -1,11 +1,12 @@
 pkgbase = adwm
 	pkgdesc = Advanced dynamic window manager for X
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bbidulock/adwm
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = libxfixes
 	depends = libxft
 	depends = libxrandr
 	depends = libxinerama
