@@ -1,0 +1,16 @@
+pkgbase = ruby-smarter_csv
+	pkgdesc = Ruby Gem for smarter importing of CSV Files (and CSV-like files), with lots of optional features, e.g. chunked processing for huge CSV files
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/tilo/smarter_csv
+	arch = any
+	license = MIT
+	license = GPL2
+	depends = ruby
+	noextract = smarter_csv-1.0.17.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/smarter_csv-1.0.17.gem
+	sha256sums = 6bfd97c36e200ea86b90eb8d512c2623f8e4a07c260b4968aa5807c9f053dac5
+
+pkgname = ruby-smarter_csv
+
