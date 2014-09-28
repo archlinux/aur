@@ -2,7 +2,7 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
 arch=(i686 x86_64)
@@ -12,14 +12,22 @@ depends=(libltdl hwloc)
 makedepends=(inetutils valgrind gcc-fortran)
 optdepends=('gcc-fortran: fortran support')
 options=(staticlibs)
-source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('55067856b351cbeb5ebe8a430bfe0656115a04ed')
+source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/${pkgname}-${pkgver}.tar.bz2
+        system_ltdl.patch)
+sha1sums=('4be9c5d2a8baee6a80bde94c6485931979a428fe'
+          'd5f8a3d463f1a1f29ca4725d6fb3b9f8c40799dc')
 
-build() {
+prepare() {
    cd $pkgname-$pkgver
 
    # Make sure we use the system ltdl library rather than the ones in the tarball
    rm -r opal/libltdl
+   patch -p1 < ../system_ltdl.patch
+   ./autogen.pl
+}
+
+build() {
+   cd $pkgname-$pkgver
 
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
@@ -29,7 +37,6 @@ build() {
                --enable-smp-locks \
                --with-valgrind \
                --enable-memchecker \
-               --enable-debug \
                --enable-pretty-print-stacktrace \
                --without-slurm \
                --with-hwloc=/usr \
@@ -38,6 +45,12 @@ build() {
                LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
 
    make
+}
+
+check() {
+   cd $pkgname-$pkgver
+
+   make check
 }
 
 package() {
