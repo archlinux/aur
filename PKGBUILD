@@ -2,12 +2,14 @@
 
 pkgname=adwm-git
 pkgver=0.5.2.r0.g4895a76
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/adwm"
 license=('GPL')
-depends=('libxft' 'libxrandr' 'libxinerama' 'libxpm' 'startup-notification' 'imlib2')
+provides=('adwm')
+conflicts=('adwm')
+depends=('libxfixes' 'libxft' 'libxrandr' 'libxinerama' 'libxpm' 'startup-notification' 'imlib2')
 options=('!libtool')
 makedepends=('git' 'pkgconfig')
 source=("$pkgname::git+https://github.com/bbidulock/adwm")
