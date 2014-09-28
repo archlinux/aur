@@ -289,6 +289,7 @@ pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
   }"
 done
 
