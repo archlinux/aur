@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-stereo-image-proc
 	pkgdesc = ROS - Stereo and single image rectification and disparity processing.
-	pkgver = 1.12.9
+	pkgver = 1.12.10
 	pkgrel = 1
 	url = http://www.ros.org/wiki/stereo_image_proc
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = ros-indigo-stereo-image-proc
 	depends = ros-indigo-message-filters
 	depends = ros-indigo-nodelet
 	depends = opencv
-	source = stereo_image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/indigo/stereo_image_proc/1.12.9-0
+	source = stereo_image_proc::git+https://github.com/ros-gbp/image_pipeline-release.git#tag=release/indigo/stereo_image_proc/1.12.10-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-stereo-image-proc
