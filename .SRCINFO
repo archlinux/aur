@@ -1,0 +1,12 @@
+pkgbase = mscompress
+	pkgdesc = Microsoft "compress.exe/expand.exe" compatible (de)compressor
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://martin.hinner.info/mscompress/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = https://mirrors.kernel.org/gentoo/distfiles/mscompress-0.3.tar.bz2
+
+pkgname = mscompress
+
