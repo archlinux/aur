@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains nodelets for processing depth images such as those produ
 url='http://ros.org/wiki/depth_image_proc'
 
 pkgname='ros-indigo-depth-image-proc'
-pkgver='1.12.9'
+pkgver='1.12.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
