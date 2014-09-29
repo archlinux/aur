@@ -4,7 +4,7 @@ pkgdesc="ROS - A simple viewer for ROS image topics."
 url='http://www.ros.org/wiki/image_view'
 
 pkgname='ros-indigo-image-view'
-pkgver='1.12.9'
+pkgver='1.12.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
