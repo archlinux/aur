@@ -4,7 +4,7 @@ pkgdesc="ROS -  Contains a node that rotates an image stream in a way that minim
 url='http://ros.org/wiki/image_rotate'
 
 pkgname='ros-indigo-image-rotate'
-pkgver='1.12.9'
+pkgver='1.12.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
