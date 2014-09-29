@@ -1,0 +1,203 @@
+Description: Fix build with upcoming Libav 10 release
+ Drops support for pre-0.8 releases to reduce clutter, but those are over
+ three years old now and no current distros carry them.
+Forwarded: https://bitbucket.org/acoustid/acoustid-fingerprinter/pull-request/3/fix-build-with-upcoming-libav-10-release/diff
+Author: Anton Khirnov <anton@khirnov.net> 
+diff --git a/decoder.h b/decoder.h
+index 028f58f..310fe2d 100644
+--- a/decoder.h
++++ b/decoder.h
+@@ -28,6 +28,12 @@
+ extern "C" {
+ #include <libavcodec/avcodec.h>
+ #include <libavformat/avformat.h>
++
++#define NEW_AVFRAME_API (LIBAVCODEC_VERSION_MAJOR >= 55)
++#if NEW_AVFRAME_API
++#include <libavutil/frame.h>
++#endif
++
+ #ifdef HAVE_AV_AUDIO_CONVERT
+ #include "ffmpeg/audioconvert.h"
+ #include "ffmpeg/samplefmt.h"
+@@ -35,10 +41,6 @@ extern "C" {
+ }
+ #include "fingerprintcalculator.h"
+ 
+-#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(52, 64, 0)
+-#define AV_SAMPLE_FMT_S16 SAMPLE_FMT_S16
+-#endif
+-
+ class Decoder
+ {
+ public:
+@@ -67,8 +69,6 @@ public:
+     static void initialize();
+ 
+ private:
+-	static const int BUFFER_SIZE = AVCODEC_MAX_AUDIO_FRAME_SIZE * 2;
+-	uint8_t *m_buffer1;
+ 	uint8_t *m_buffer2;
+ 	std::string m_file_name;
+ 	std::string m_error;
+@@ -77,6 +77,7 @@ private:
+ 	bool m_codec_open;
+ 	AVStream *m_stream;
+     static QMutex m_mutex;
++    AVFrame *m_frame;
+ #ifdef HAVE_AV_AUDIO_CONVERT
+ 	AVAudioConvert *m_convert_ctx;
+ #endif
+@@ -114,8 +115,15 @@ inline Decoder::Decoder(const std::string &file_name)
+ 	, m_convert_ctx(0)
+ #endif
+ {
+-	m_buffer1 = (uint8_t *)av_malloc(BUFFER_SIZE + 16);
+-	m_buffer2 = (uint8_t *)av_malloc(BUFFER_SIZE + 16);
++#ifdef HAVE_AV_AUDIO_CONVERT
++	m_buffer2 = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE * 2 + 16);
++#endif
++
++#if NEW_AVFRAME_API
++    m_frame = av_frame_alloc();
++#else
++    m_frame = avcodec_alloc_frame();
++#endif
+ }
+ 
+ inline Decoder::~Decoder()
+@@ -125,39 +133,32 @@ inline Decoder::~Decoder()
+ 		avcodec_close(m_codec_ctx);
+ 	}
+ 	if (m_format_ctx) {
+-#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(53, 17, 0)
+-		av_close_input_file(m_format_ctx);
+-#else
+ 		avformat_close_input(&m_format_ctx);
+-#endif
+ 	}
+ #ifdef HAVE_AV_AUDIO_CONVERT
+ 	if (m_convert_ctx) {
+ 		av_audio_convert_free(m_convert_ctx);
+ 	}
+-#endif
+-	av_free(m_buffer1);
+ 	av_free(m_buffer2);
++#endif
++
++#if NEW_AVFRAME_API
++    av_frame_free(&m_frame);
++#else
++    av_freep(&m_frame);
++#endif
+ }
+ 
+ inline bool Decoder::Open()
+ {
+     QMutexLocker locker(&m_mutex); 
+ 
+-#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(53, 2, 0)
+-	if (av_open_input_file(&m_format_ctx, m_file_name.c_str(), NULL, 0, NULL) != 0) {
+-#else
+ 	if (avformat_open_input(&m_format_ctx, m_file_name.c_str(), NULL, NULL) != 0) {
+-#endif
+ 		m_error = "Couldn't open the file." + m_file_name;
+ 		return false;
+ 	}
+ 
+-#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(53, 6, 0)
+-	if (av_find_stream_info(m_format_ctx) < 0) {
+-#else
+ 	if (avformat_find_stream_info(m_format_ctx, NULL) < 0) {
+-#endif
+ 		m_error = "Couldn't find stream information in the file.";
+ 		return false;
+ 	}
+@@ -166,11 +167,7 @@ inline bool Decoder::Open()
+ 
+ 	for (int i = 0; i < m_format_ctx->nb_streams; i++) {
+ 		AVCodecContext *avctx = m_format_ctx->streams[i]->codec;
+-#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(52, 64, 0)
+-                if (avctx && avctx->codec_type == CODEC_TYPE_AUDIO) {
+-#else
+                 if (avctx && avctx->codec_type == AVMEDIA_TYPE_AUDIO) {
+-#endif
+ 			m_stream = m_format_ctx->streams[i];
+ 			m_codec_ctx = avctx;
+ 			break;
+@@ -187,11 +184,7 @@ inline bool Decoder::Open()
+ 		return false;
+ 	}
+ 
+-#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(53, 8, 0)
+-    if (avcodec_open(m_codec_ctx, codec) < 0) {
+-#else
+ 	if (avcodec_open2(m_codec_ctx, codec, NULL) < 0) {
+-#endif
+         m_error = "Couldn't open the codec.";
+         return false;
+     }
+@@ -244,17 +237,9 @@ inline void Decoder::Decode(FingerprintCalculator *consumer, int max_length)
+ 		packet_temp.data = packet.data;
+ 		packet_temp.size = packet.size;
+ 		while (packet_temp.size > 0) {
+-			int buffer_size = BUFFER_SIZE;
+-#if LIBAVCODEC_VERSION_INT <= AV_VERSION_INT(52, 25, 0)
+-                        int consumed = avcodec_decode_audio2(
+-                                m_codec_ctx, (int16_t *)m_buffer1, &buffer_size,
+-                                packet_temp.data, packet_temp.size);
+-#else
+-                        int consumed = avcodec_decode_audio3(
+-                                m_codec_ctx, (int16_t *)m_buffer1, &buffer_size,
+-                                &packet_temp);
+-#endif
+-
++            int got_output;
++            int consumed = avcodec_decode_audio4(m_codec_ctx, m_frame,
++                                                 &got_output, &packet_temp);
+ 			if (consumed < 0) {
+ 				break;
+ 			}
+@@ -262,36 +247,31 @@ inline void Decoder::Decode(FingerprintCalculator *consumer, int max_length)
+ 			packet_temp.data += consumed;
+ 			packet_temp.size -= consumed;
+ 
+-			if (buffer_size <= 0) {
++			if (!got_output) {
+ 				continue;
+ 			}
+ 
+ 			int16_t *audio_buffer;
+ #ifdef HAVE_AV_AUDIO_CONVERT
+ 			if (m_convert_ctx) {
+-				const void *ibuf[6] = { m_buffer1 };
++				const void *ibuf[6] = { m_frame->data[0] };
+ 				void *obuf[6] = { m_buffer2 };
+-#if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(51, 8, 0)
+-				int istride[6] = { av_get_bits_per_sample_format(m_codec_ctx->sample_fmt) / 8 };
+-#else
+ 				int istride[6] = { av_get_bytes_per_sample(m_codec_ctx->sample_fmt) };
+-#endif
+ 				int ostride[6] = { 2 };
+-				int len = buffer_size / istride[0];
++				int len = m_frame->nb_samples;
+ 				if (av_audio_convert(m_convert_ctx, obuf, ostride, ibuf, istride, len) < 0) {
+ 					break;
+ 				}
+ 				audio_buffer = (int16_t *)m_buffer2;
+-				buffer_size = len * ostride[0];
+ 			}
+ 			else {
+-				audio_buffer = (int16_t *)m_buffer1;
++				audio_buffer = (int16_t *)m_frame->data[0];
+ 			}
+ #else
+-			audio_buffer = (int16_t *)m_buffer1;
++			audio_buffer = (int16_t *)m_frame->data[0];
+ #endif
+ 
+-			int length = buffer_size / 2;
++			int length = m_frame->nb_samples;
+ 			if (max_length) {
+ 				length = std::min(remaining, length);
+ 			}
