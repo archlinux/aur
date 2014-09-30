@@ -1,5 +1,5 @@
 pkgbase = python-efl
-	pkgdesc = Python bindings for the Enlightenment Foundataion Libraries
+	pkgdesc = Python bindings for the Enlightenment Foundation Libraries
 	pkgver = 1.11.0
 	pkgrel = 1
 	url = http://www.enlightenment.org
