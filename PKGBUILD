@@ -18,21 +18,22 @@ pkgname=('roccat-tools-common'
          'roccat-tools-lua'
          'roccat-tools-pyra'
          'roccat-tools-ryos'
-         'roccat-tools-savu')
+         'roccat-tools-savu'
+         'roccat-tools-tyon')
 pkgbase=roccat-tools
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear=0.4.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
+depends=('libgaminggear=0.5.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
 makedepends=('cmake')
-optdepends=('kmod-roccat: Adds support for some devices not yet in vanilla kernel')
+optdepends=('kmod-roccat: Adds support for the old kone device.')
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('a4f0e37574fa7a8d242452617f70100c')
+md5sums=('30a23859aab14737059aa9f4b805aa10')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -198,4 +199,14 @@ package_roccat-tools-savu() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-savu.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-savu.rules
+}
+
+package_roccat-tools-tyon() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Tyon devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/tyon"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-tyon.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-tyon.rules
 }
