@@ -1,22 +1,20 @@
 pkgbase = smcroute-git
 	pkgdesc = A command line tool to manipulate the multicast routes of a UNIX kernel. It supports both IPv4 and IPv6 multicast routing.
-	pkgver = 1.99.2.r65.ga8326b7
+	pkgver = 1.99.2.r91.gff0a2c0
 	pkgrel = 1
 	url = https://github.com/troglobit/smcroute
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = bash
+	depends = glibc
 	provides = smcroute
 	provides = mcsender
 	conflicts = smcroute
 	conflicts = mcsender
 	source = smcroute-git::git+https://github.com/troglobit/smcroute.git
 	source = smcroute.conf.example
-	source = smcrouted.conf.d
-	source = smcrouted.rc.d
+	source = smcroute.service
 	backup = etc/smcroute.conf
-	backup = etc/conf.d/smcrouted
 
 pkgname = smcroute-git
 
