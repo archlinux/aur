@@ -38,7 +38,7 @@ package_python2-configshell-fb() {
   provides=('python2-configshell')
   conflicts=('python2-configshell')
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --skip-build --root="$pkgdir/" --optimize=1
+  python2 setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
