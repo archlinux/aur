@@ -1,7 +1,7 @@
 pkgbase = kdebase-workspace-consolekit
 	pkgdesc = kdebase-workspace with ConsoleKit support for non-systemd systems
-	pkgver = 4.11.11
-	pkgrel = 2
+	pkgver = 4.11.12
+	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = kdebase-workspace.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = kdebase-workspace-consolekit
 	makedepends = boost
 	makedepends = kdebindings-python2
 	makedepends = networkmanager
-	depends = kdelibs>=4.11.11
+	depends = kdelibs>=4.11.12
 	depends = kdepim-runtime
 	depends = lm_sensors
 	depends = libraw1394
@@ -46,10 +46,10 @@ pkgbase = kdebase-workspace-consolekit
 	depends = glu
 	optdepends = kde-wallpapers: wallpapers for KDE Plasma Workspaces
 	optdepends = appmenu-qt: menu applications over dbus
-	provides = kdebase-workspace=4.11.11
+	provides = kdebase-workspace=4.11.12
 	conflicts = kdebase-workspace
 	backup = usr/share/config/kdm/kdmrc
-	source = http://download.kde.org/stable/4.13.3/src/kde-workspace-4.11.11.tar.xz
+	source = http://download.kde.org/stable/4.14.1/src/kde-workspace-4.11.12.tar.xz
 	source = kdm
 	source = kde.pam
 	source = kde-np.pam
@@ -60,8 +60,7 @@ pkgbase = kdebase-workspace-consolekit
 	source = terminate-server.patch
 	source = kdm-xinitrd.patch
 	source = khotkeys-qt4.patch
-	source = fix-intel-driver.patch
-	sha1sums = 84d70bb81a5d3b42869b666a12963dea14a33722
+	sha1sums = 64765044c0b0c487420594280eda379e7216eb8d
 	sha1sums = 5db3a245201bd4a50e65aa2ef583cf5490e4f646
 	sha1sums = 660eae40a707d2711d8d7f32a93214865506b795
 	sha1sums = 6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe
@@ -72,7 +71,6 @@ pkgbase = kdebase-workspace-consolekit
 	sha1sums = ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee
 	sha1sums = d509dac592bd8b310df27991b208c95b6d907514
 	sha1sums = aa9d2e5a69986c4c3d47829721ea99edb473be12
-	sha1sums = 0b7d847a3df097d066620d5da58b23bbbdc68dc9
 
 pkgname = kdebase-workspace-consolekit
 
