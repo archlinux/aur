@@ -3,7 +3,7 @@
 # Contributor: Daniele Paolella <dp@mcrservice.it>
 
 pkgname='pypy-virtualenv'
-pkgver=1.9.1
+pkgver=1.11.6
 pkgrel=1
 pkgdesc="Virtual Python Environment builder"
 url="http://www.virtualenv.org/"
@@ -26,6 +26,4 @@ package() {
   install -D -m644 LICENSE.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-md5sums=('07e09df0adfca0b2d487e39a4bf2270a')
-sha256sums=('d04f750c968e18de42ff15f50759f15ba22800b12247b95826e2f8b160f7d99a')
+md5sums=('f61cdd983d2c4e6aeabb70b1060d6f49')
