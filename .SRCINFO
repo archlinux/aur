@@ -1,6 +1,6 @@
 pkgbase = kmod-roccat
-	pkgdesc = Kernel modules for ROCCAT devices
-	pkgver = 0.11.0
+	pkgdesc = Kernel module for the old kone ROCCAT device.
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://roccat.sourceforge.net
 	install = kmod-roccat.install
@@ -10,8 +10,8 @@ pkgbase = kmod-roccat
 	makedepends = linux-headers>=3.11
 	optdepends = roccat-tools: graphical tools to adjust the mouse settings
 	conflicts = roccat-dkms
-	source = http://downloads.sourceforge.net/project/roccat/linux/kmod-roccat/kmod-roccat-0.11.0.tar.bz2
-	md5sums = 5e709cef3107b8f8492d36c8b39efc6f
+	source = http://downloads.sourceforge.net/project/roccat/linux/kmod-roccat/kmod-roccat-1.0.0.tar.bz2
+	md5sums = 6874ef9b5047209364215aecee0af74d
 
 pkgname = kmod-roccat
 
