@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.14.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (v3) (mingw-w64)"
 arch=(any)
@@ -28,7 +28,7 @@ source=(
 
 # The second and the third patch are downloaded from Fedora Project
 
-sha256sums=('68d6b57d15c16808d0045e96b303f3dd439cc22a9c06fdffb07025cd713a82bc'
+sha256sums=('7e86eb7c8acc18524d7758ca2340b723ddeee1d0cd2cadd56de5a13322770a52'
             '1c8812f68446d509e019b3f26863348f2cfc469dbb8866bbdfa3213e55a7c433'
             'd2825227188cf60740540086cd71c56f8e5c6d9c9b9ad7c0869e6746ad0caebe'
             'ae632ad20c87032c326dbb1cda086e33a5078909f89174b2ba232be1b48c32a3')
