@@ -11,14 +11,21 @@
 #
 # Syntax:
 #   mgroup from IFNAME group MCGROUP
-#   mroute from IFNAME source ADDRESS group MCGROUP to IFNAME [IFNAME ...]
+#   mroute from IFNAME [source ADDRESS] group MCGROUP to IFNAME [IFNAME ...]
 #
 # The following example instructs the kernel to join the multicast
 # group 225.1.2.3 on interface eth0.  Followed by setting up an
 # mroute of the same multicast stream, but from the explicit sender
 # 192.168.1.42 on the eth0 network and forward to eth1 and eth2.
 #
-
 # mgroup from eth0 group 225.1.2.3
 # mroute from eth0 group 225.1.2.3 source 192.168.1.42 to eth1 eth2
+
+# Here we allow routing of multicast to group 225.3.2.1 from ANY
+# source coming in from interface eth0 and forward to eth1 and eth2.
+# NOTE: Routing from ANY source is currently only available for IPv4
+#       multicast.
+#
+# mgroup from eth0 group 225.3.2.1
+# mroute from eth0 group 225.3.2.1 to eth1 eth2
 

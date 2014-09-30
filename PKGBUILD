@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Julien Sopena (jsopena.archlinux@free.fr)
 pkgname="smcroute"
-pkgver="1.99.2"
+pkgver="2.0.0"
 pkgrel=1
 pkgdesc="A command line tool to manipulate the multicast routes of a UNIX kernel. It supports both IPv4 and IPv6 multicast routing."
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('GPL2')
 provides=('smcroute' 'mcsender')
 backup=('etc/smcroute.conf')
 depends=('glibc')
-source=("ftp://troglobit.com/smcroute/$pkgname-$pkgver.tar.bz2"
+source=("ftp://troglobit.com/smcroute/$pkgname-$pkgver.tar.xz"
         'smcroute.conf.example'
         'smcroute.service')
-md5sums=('47e2a8157b32a8b9aa34133878ffe3b5'
-         '59fdb2baf1184d0cb5c59b576b1b5e1c'
+md5sums=('cbf478e52ab9ae411adca41b9d22f68a'
+         '98bdb5bbd222686761e318ee04825b7a'
          '7b28500642045b2482f5ac873da0f86b')
 
 build() {
@@ -29,6 +29,8 @@ package() {
 
   install -Dm644 "${srcdir}/smcroute.conf.example" "${pkgdir}/etc/smcroute.conf"
   install -Dm644 "${srcdir}/smcroute.service" "${pkgdir}/usr/lib/systemd/system/smcroute.service"
+  # nothing useful here
+  rm -fr "${pkgdir}/usr/share/doc"
 }
 
 # vim:set ts=2 sw=2 et:
