@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	cp ${src}/gcs $pkgdir/usr/bin
-	mkdir $pkgdir/usr/share/gcs
-	cp -r ${src}/{Library,support} $pkdir/usr/share/gcs/
+	install -d $pkgdir/usr/{bin,share}
+	cp -dr --no-preserve=ownership ${src} $pkgdir/usr/share/gcs
+	ln -s $pkgdir/usr/share/gcs/gcs $pkgdir/usr/bin/gcs
 }
