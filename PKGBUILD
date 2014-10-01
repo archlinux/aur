@@ -3,7 +3,7 @@
 pkgname=gcs
 pkgver=4.0.1
 pkgrel=1
-pkgdesc="An editor for building character sheets for the GURPS 4th Edition RPG system."
+pkgdesc="A WYSIWYG editor for building character sheets for GURPS 4th Edition."
 arch=('i686' 'x86_64')
 url="http://gurpscharactersheet.com"
 license=('MPL')
