@@ -7,6 +7,7 @@ pkgdesc="An editor for building character sheets for the GURPS 4th Edition RPG s
 arch=('i686' 'x86_64')
 url="http://gurpscharactersheet.com"
 license=('MPL')
+depends=('java-runtime')
 src="gcs-$pkgver-linux"
 if test "$CARCH" == i686; then
 src+='-32'
