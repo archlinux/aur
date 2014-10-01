@@ -1,0 +1,33 @@
+From cde0278e1566909da78c60fe6043f328cb590134 Mon Sep 17 00:00:00 2001
+From: Max <silverhammermba@gmail.com>
+Date: Wed, 1 Oct 2014 09:35:57 -0400
+Subject: [PATCH] Set app path using GCS_HOME env var
+
+---
+ src/com/trollworks/toolkit/ui/App.java | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/src/com/trollworks/toolkit/ui/App.java b/src/com/trollworks/toolkit/ui/App.java
+index 87a81f1..c1b6d22 100644
+--- a/src/com/trollworks/toolkit/ui/App.java
++++ b/src/com/trollworks/toolkit/ui/App.java
+@@ -53,15 +53,7 @@ public class App implements KeyEventDispatcher, Runnable {
+ 		BundleInfo.setDefault(new BundleInfo(theClass));
+ 		Path path;
+ 		try {
+-			URI uri = theClass.getProtectionDomain().getCodeSource().getLocation().toURI();
+-			path = Paths.get(uri).normalize().getParent().toAbsolutePath();
+-			if (path.endsWith("support/jars")) { //$NON-NLS-1$
+-				path = path.getParent().getParent();
+-			}
+-			if (path.endsWith("Contents/MacOS")) { //$NON-NLS-1$
+-				// Note: we go up 3 levels, not 2, to account for the .app dir
+-				path = path.getParent().getParent().getParent();
+-			}
++			path = Paths.get(System.getenv("GCS_HOME"));
+ 		} catch (Throwable throwable) {
+ 			path = Paths.get("."); //$NON-NLS-1$
+ 		}
+-- 
+2.1.1
+
