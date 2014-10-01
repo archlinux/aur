@@ -15,6 +15,13 @@ fi
 source=("${src}.zip::http://sourceforge.net/projects/gcs-java/files/${src}.zip/download")
 md5sums=('SKIP')
 
+build() {
+	pushd $srcdir/$src
+	rm -r support/jre
+	ln -s /usr/lib/jvm/default/jre support/jre
+	popd
+}
+
 package() {
 	cp ${src}/gcs $pkgdir/usr/bin
 	mkdir $pkgdir/usr/share/gcs
