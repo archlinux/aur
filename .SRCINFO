@@ -1,0 +1,13 @@
+pkgbase = gcs
+	pkgdesc = An editor for building character sheets for the GURPS 4th Edition RPG system.
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = http://gurpscharactersheet.com
+	arch = i686
+	arch = x86_64
+	license = MPL
+	source = gcs-4.0.1-linux.zip::http://sourceforge.net/projects/gcs-java/files/gcs-4.0.1-linux.zip/download
+	md5sums = SKIP
+
+pkgname = gcs
+
