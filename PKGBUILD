@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://gurpscharactersheet.com"
 license=('MPL')
 depends=('java-runtime')
-src="gcs-$pkgver-linux"
+src="$pkgname-$pkgver-linux"
 if test "$CARCH" == i686; then
 src+='-32'
 fi
@@ -16,10 +16,9 @@ source=("${src}.zip::http://sourceforge.net/projects/gcs-java/files/${src}.zip/d
 md5sums=('SKIP')
 
 build() {
-	pushd $srcdir/$src
+	cd "$src"
 	rm -r support/jre
 	ln -s /usr/lib/jvm/default/jre support/jre
-	popd
 }
 
 package() {
