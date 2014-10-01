@@ -2,7 +2,7 @@
 
 pkgname=cv-git
 pkgver=f107805
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows running coreutils basic commands and displays stats"
 arch=('i686' 'x86_64')
 url="https://github.com/Xfennec/cv"
