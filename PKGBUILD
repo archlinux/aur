@@ -11,8 +11,8 @@ makedepends=('git' 'apache-ant')
 depends=('java-runtime')
 source=(
 	'git://code.trollworks.com/apple_stubs.git'
-	'git://code.trollworks.com/gcs.git'
-	'git://code.trollworks.com/toolkit.git'
+	"git://code.trollworks.com/gcs.git#tag=$pkgver"
+	"git://code.trollworks.com/toolkit.git#tag=$pkgver"
 )
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
@@ -33,7 +33,7 @@ build() {
 package() {
 	install -d "$pkgdir/usr/share/java/gcs"
 	find "$srcdir" -name '*.jar' ! -name '*-src.*' -execdir install -m644 {} "$pkgdir/usr/share/java/gcs" \;
-	mv "$pkgdir/usr/share/java/gcs/gcs-${pkgver}.jar" "$pkgdir/usr/share/java/gcs/gcs.jar"
+	mv $pkgdir/usr/share/java/gcs/gcs-*.jar "$pkgdir/usr/share/java/gcs/gcs.jar"
 
 	install -d "$pkgdir/usr/share/gcs"
 	cp -dr --no-preserve=ownership "$srcdir/gcs/Library" "$pkgdir/usr/share/gcs"
