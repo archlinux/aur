@@ -32,7 +32,7 @@ build() {
 
 package() {
 	install -d "$pkgdir/usr/share/java/gcs"
-	find "$srcdir" -name '*.jar' ! -name '*-src.' -execdir install -m644 {} "$pkgdir/usr/share/java/gcs" \;
+	find "$srcdir" -name '*.jar' ! -name '*-src.*' -execdir install -m644 {} "$pkgdir/usr/share/java/gcs" \;
 	mv "$pkgdir/usr/share/java/gcs/gcs-${pkgver}.jar" "$pkgdir/usr/share/java/gcs/gcs.jar"
 
 	install -d "$pkgdir/usr/share/gcs"
