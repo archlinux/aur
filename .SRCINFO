@@ -1,0 +1,14 @@
+pkgbase = cv-git
+	pkgdesc = Shows running coreutils basic commands and displays stats
+	pkgver = f107805
+	pkgrel = 1
+	url = https://github.com/Xfennec/cv
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = git://github.com/Xfennec/cv
+	md5sums = SKIP
+
+pkgname = cv-git
+
