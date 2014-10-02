@@ -1,7 +1,7 @@
 pkgbase = retrovol
-	pkgdesc = An sound volume mixer
+	pkgdesc = A sound volume mixer
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://puppylinux.svn.sourceforge.net/viewvc/puppylinux/retrovol/
 	install = 
 	arch = i686

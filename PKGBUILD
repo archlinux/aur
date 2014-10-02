@@ -3,8 +3,8 @@
 
 pkgname=retrovol
 pkgver=0.14
-pkgrel=1
-pkgdesc="An sound volume mixer"
+pkgrel=2
+pkgdesc="A sound volume mixer"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://puppylinux.svn.sourceforge.net/viewvc/puppylinux/retrovol/"
