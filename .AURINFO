@@ -3,6 +3,7 @@ pkgbase = retrovol
 	pkgver = 0.14
 	pkgrel = 1
 	url = http://puppylinux.svn.sourceforge.net/viewvc/puppylinux/retrovol/
+	install = 
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,7 +11,6 @@ pkgbase = retrovol
 	depends = gtk2
 	depends = alsa-lib
 	source = http://www.browserloadofcoolness.com/software/retrovol/retrovol-0.14.tar.gz
-	md5sums = e92997c2be0049b0d768ba6a228e1737
 
 pkgname = retrovol
 

@@ -2,8 +2,8 @@
 # Contributor: Leonid Selivanov <bravebug at gmail dot com>
 
 pkgname=retrovol
-pkgver=0.13.1
-pkgrel=2
+pkgver=0.14
+pkgrel=1
 pkgdesc="An sound volume mixer"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -15,7 +15,7 @@ optdepends=()
 options=()
 install=
 source=("http://www.browserloadofcoolness.com/software/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('7a8eccb09ebf55544fcb88b875120a81')
+md5sums=('e92997c2be0049b0d768ba6a228e1737')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
