@@ -1,0 +1,17 @@
+pkgbase = planner9-git
+	pkgdesc = A distributed hierarchical task network planner.
+	pkgver = 20111207
+	pkgrel = 1
+	url = https://gitorious.org/planner9
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	optdepends = qt4
+	provides = planner9
+	conflicts = planner9
+
+pkgname = planner9-git
+
