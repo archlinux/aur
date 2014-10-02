@@ -22,6 +22,9 @@ prepare() {
 }
 
 build() {
+	echo "Checking that Java is version 8..."
+	java -version 2>&1 | grep 'version "1.8' >/dev/null
+
 	cd "$srcdir/apple_stubs"
 	ant
 	cd "$srcdir/toolkit"
