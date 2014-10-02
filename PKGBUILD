@@ -8,7 +8,7 @@ arch=('any')
 url="http://gurpscharactersheet.com"
 license=('MPL')
 depends=('java-runtime=8')
-makedepends=('git' 'apache-ant' 'java-environment=8')
+makedepends=('git' 'apache-ant' 'java-environment=8' 'imagemagick')
 source=(
 	'git://code.trollworks.com/apple_stubs.git'
 	"git://code.trollworks.com/gcs.git#tag=$pkgver"
@@ -34,12 +34,24 @@ build() {
 }
 
 package() {
+	# jars
 	install -d "$pkgdir/usr/share/java/gcs"
 	find "$srcdir" -name '*.jar' ! -name '*-src.*' -execdir install -m644 {} "$pkgdir/usr/share/java/gcs" \;
-	mv $pkgdir/usr/share/java/gcs/gcs-*.jar "$pkgdir/usr/share/java/gcs/gcs.jar"
+	# remove version from main jar name
+	mv "$pkgdir/usr/share/java/gcs/gcs-${pkgver}.jar" "$pkgdir/usr/share/java/gcs/gcs.jar"
 
+	# library
 	install -d "$pkgdir/usr/share/gcs"
 	cp -dr --no-preserve=ownership "$srcdir/gcs/Library" "$pkgdir/usr/share/gcs"
 
+	# launcher
 	install -Dm755 "$startdir/gcs.sh" "$pkgdir/usr/bin/gcs"
+
+	# .desktop
+	install -d "$pkgdir/usr/share/applications"
+	install -m644 "$startdir/gcs.desktop" "$pkgdir/usr/share/applications"
+
+	# icon
+	install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+	convert "$srcdir/gcs/src/com/trollworks/gcs/app/images/app_1024.png" -resize 128 "$pkgdir/usr/share/icons/hicolor/128x128/apps/gcs.png"
 }
