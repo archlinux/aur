@@ -13,7 +13,6 @@ pkgbase = retrovol-git
 	provides = retrovol
 	conflicts = retrovol
 	source = retrovol-git::git+https://github.com/pizzasgood/retrovol.git
-	md5sums = SKIP
 
 pkgname = retrovol-git
 
