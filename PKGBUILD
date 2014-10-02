@@ -1,13 +1,15 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='beancount-hg'
 pkgdesc='Double-Entry Accounting from Text Input'
-pkgver=r1443.0512ce36d618
+pkgver=r1711.26890d8c857d
 pkgrel=1
 arch=('any')
 url="http://furius.ca/beancount/"
 license=('GPL')
 source=("${pkgname}::hg+https://hg.furius.ca/public/beancount/")
 sha1sums=('SKIP')
+depends=('python-dateutil')
+makedepends=('mercurial')
 
 export HGOPTIONS=--insecure
 
