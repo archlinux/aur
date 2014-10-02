@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -46,10 +46,10 @@ package_digikam() {
   make DESTDIR="${pkgdir}" install
 
   # Put these in the relevant splitted packages
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/kipiplugin*.mo
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/libkgeomap*.mo
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/kipiplugin*.mo
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/libkipi.mo  
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
 }
 
 package_libkface() {
@@ -70,10 +70,10 @@ package_libkgeomap() {
   cd ../../../build/po
   make DESTDIR="${pkgdir}" install
   # Put these in the relevant splitted packages
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/kipiplugin*.mo
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/digikam.mo
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/kipiplugin*.mo
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/libkipi.mo  
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
 }
 
 package_libkvkontakte() {
@@ -111,8 +111,8 @@ package_kipi-plugins() {
   cd ../../../build/po
   make DESTDIR="${pkgdir}" install
   # Put these in the relevant splitted packages
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/libkgeomap.mo
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/digikam.mo
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap.mo
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
-  rm "${pkgdir}"/usr/share/locale/*/LC_MESSAGES/libkipi.mo  
+  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
 }
