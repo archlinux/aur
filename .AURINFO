@@ -1,0 +1,14 @@
+pkgbase = cairo-msg
+	pkgdesc = A small splash program for UNIX like OS
+	pkgver = r14.a39942e
+	pkgrel = 1
+	url = https://github.com/01micko/cairo-msg
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = cairo
+	source = cairo-msg::git+https://github.com/01micko/cairo-msg.git
+
+pkgname = cairo-msg
+
