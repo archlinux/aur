@@ -3,12 +3,12 @@
 _appname=quickterminal
 pkgname=$_appname-git
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Qt-based terminal emulator'
 arch=('i686' 'x86_64')
 url='https://github.com/trollixx/quickterminal'
 license=('GPL2')
-depends=('qtermwidget-qt5-git')
+depends=('qtermwidget-git')
 makedepends=('git')
 provides=($_appname)
 conflicts=($_appname)

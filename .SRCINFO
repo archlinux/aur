@@ -1,13 +1,13 @@
 pkgbase = quickterminal-git
 	pkgdesc = Lightweight Qt-based terminal emulator
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trollixx/quickterminal
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = qtermwidget-qt5-git
+	depends = qtermwidget-git
 	provides = quickterminal
 	conflicts = quickterminal
 	source = git://github.com/trollixx/quickterminal.git
