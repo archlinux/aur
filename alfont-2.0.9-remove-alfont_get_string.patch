@@ -1,0 +1,284 @@
+Remove alfont_get_string
+
+alfont_get_string has a weird, weird API where its destination is char **out,
+yet it does not return an allocated buffer in out, instead it uses _msize
+on it to check if the passed in buffer is big enough ?? Which means the
+parameter could have been a char * just as well ??
+
+Anyways we don't have _msize on Linux, and no alfont using apps actually use
+alfont_get_string(), so this patch just removes it completely, fixing the
+_msize problem.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+diff -up alfont-2.0.9/include/alfont.h~ alfont-2.0.9/include/alfont.h
+--- alfont-2.0.9/include/alfont.h~	2012-07-29 11:51:08.000000000 +0200
++++ alfont-2.0.9/include/alfont.h	2012-07-29 11:58:53.194121909 +0200
+@@ -103,8 +103,6 @@ ALFONT_DLL_DECLSPEC int alfont_ugetc(ALF
+ ALFONT_DLL_DECLSPEC int alfont_ugetx(ALFONT_FONT *f, char **s);									//Returns the character pointered by `s' in the current encoding format, and advances the pointer to the next character after the one just returned
+ ALFONT_DLL_DECLSPEC int alfont_ugetxc(ALFONT_FONT *f, const char **s);							//Returns the character pointered by `s' in the current encoding format, and advances the pointer to the next character after the one just returned
+ 
+-ALFONT_DLL_DECLSPEC void alfont_get_string(ALFONT_FONT *f, const char *s , char **out);			//Gets the converted string pointered by `s' in the current encoding format
+-
+ ALFONT_DLL_DECLSPEC void alfont_set_font_outline_top(ALFONT_FONT *f, int w);					//Sets Font top outline width
+ ALFONT_DLL_DECLSPEC int alfont_get_font_outline_top(ALFONT_FONT *f);							//Returns Font top outline width
+ ALFONT_DLL_DECLSPEC void alfont_set_font_outline_bottom(ALFONT_FONT *f, int w);					//Sets Font bottom outline width
+diff -up alfont-2.0.9/src/alfont.c~ alfont-2.0.9/src/alfont.c
+--- alfont-2.0.9/src/alfont.c~	2012-07-29 11:51:08.000000000 +0200
++++ alfont-2.0.9/src/alfont.c	2012-07-29 11:58:44.277233388 +0200
+@@ -4156,256 +4156,6 @@ int alfont_ugetxc(ALFONT_FONT *f, const
+   return character;
+ }
+ 
+-void alfont_get_string(ALFONT_FONT *f, const char *s , char **out){
+-  char *lpszW;
+-  char *lpszW_pointer=NULL; //used for freeing string
+-  char *s_pointer=NULL; //used for original string fixed by autofix
+-  char *s_pointer_temp=NULL; //temporary used for autofix string
+-  char *precedingchar_pointer=NULL; //used for precedingchar character
+-  int nLen;
+-  int ret; //decide that if the ASCII Code convert to Unicode Code is all OK when used for autofix string or used for general convert.
+-  int curr_uformat;
+-
+-  #ifdef ALFONT_DOS
+-  iconv_t c_pt;
+-  size_t fromlen, tolen;
+-  char *sin, *sout;
+-  #endif
+-  
+-  if (s == NULL) {
+-	return;
+-  }
+-
+-  nLen = strlen(s) + 1;
+-  s_pointer = (char *)malloc(nLen*sizeof(char));
+-  memset(s_pointer, 0, nLen);
+-  strcpy(s_pointer, s);
+-  
+-  //Auto Fix for cutted string
+-  //For ASCII convert to unicode
+-  //Add the previous character to the s string
+-  //If find the cutted character, store it from the converted s string and remove it from the original s string
+-  if (f->autofix==TRUE) {
+-	if (f->type==2) {
+-		curr_uformat=get_uformat();
+-
+-		#ifdef ALFONT_DOS
+-		if ((c_pt = iconv_open("UTF-16LE", f->language)) != (iconv_t)-1) {
+-  			
+-			fromlen  = strlen(s) + 1;
+-			tolen = MB_CUR_MAX * fromlen * (sizeof(wchar_t) + 1);
+-			
+-			//add the previous character to the s string
+-			if (f->precedingchar != 0) {
+-				free(s_pointer);
+-				fromlen  = strlen(s) + 1 + 1;
+-				tolen = MB_CUR_MAX * fromlen * (sizeof(wchar_t) + 1);
+-				s_pointer = (char *)malloc(tolen*sizeof(char));
+-				memset(s_pointer, 0, tolen);		
+-				precedingchar_pointer=(char *)malloc(2*sizeof(char));
+-				memset(precedingchar_pointer, 0, 2);
+-				sprintf(precedingchar_pointer, "%c", f->precedingchar);
+-				strcpy(s_pointer,precedingchar_pointer);
+-				if (precedingchar_pointer) {
+-					free(precedingchar_pointer);
+-					precedingchar_pointer = NULL;
+-				}
+-				strcat(s_pointer, s);
+-				f->precedingchar = 0;
+-			}
+-
+-			iconv(c_pt, NULL, NULL, NULL, NULL);
+-  			lpszW = (char *)malloc(tolen*sizeof(char));
+-			memset(lpszW, 0, tolen);
+-  			sin = s;
+-  			sout = lpszW;
+-  			ret = iconv(c_pt, &sin, &fromlen, &sout, &tolen);
+-  			iconv_close(c_pt);
+-
+-			s_pointer_temp = s_pointer;
+-
+-			if (ret == -1) { //If the ret is -1, the final one will can be a shortcutted character.
+-				//store the last character to precedingchar character
+-				//get the final character
+-				set_uformat(curr_uformat);
+-				while (*s_pointer_temp != '\0') {
+-					f->precedingchar = *s_pointer_temp;
+-					s_pointer_temp++;
+-				}
+-				//remove the final character
+-				s_pointer_temp--;
+-				*s_pointer_temp = '\0';
+-        	}
+-			if (lpszW) {
+-				free(lpszW);
+-				lpszW = NULL;
+-			}
+-  		}
+-		#else
+-		
+-
+-		#ifdef ALFONT_LINUX
+-		nLen = strlen(s_pointer) * 5 + 1;
+-		#else
+-		nLen = strlen(s_pointer) + 1;
+-		#endif
+-		
+-		//add the previous character to the s string
+-		if (f->precedingchar != 0) {
+-			free(s_pointer);
+-			nLen = strlen(s) + 1 + 1;
+-			s_pointer = (char *)malloc(nLen*sizeof(char));
+-			memset(s_pointer, 0, nLen);
+-			precedingchar_pointer=(char *)malloc(2*sizeof(char));
+-			memset(precedingchar_pointer, 0, 2);
+-			sprintf(precedingchar_pointer, "%c", f->precedingchar);
+-			strcpy(s_pointer,precedingchar_pointer);
+-			if (precedingchar_pointer) {
+-				free(precedingchar_pointer);
+-				precedingchar_pointer = NULL;
+-			}
+-			strcat(s_pointer, s);
+-			f->precedingchar = 0;
+-		}
+-		
+-		setlocale(LC_CTYPE,f->language);
+-		set_uformat(U_UNICODE);
+-
+-		lpszW = (char *)malloc(nLen*sizeof(wchar_t));
+-		memset(lpszW, 0, nLen);
+-		ret = mbstowcs((wchar_t *)lpszW, s_pointer, nLen);
+-
+-		s_pointer_temp = s_pointer;
+-
+-		if (ret == -1) { //If the ret is -1, the final one will can be a shortcutted character.
+-			//store the last character to precedingchar character
+-			//get the final character
+-			set_uformat(curr_uformat);
+-			while (*s_pointer_temp != '\0') {
+-				f->precedingchar = *s_pointer_temp;
+-				s_pointer_temp++;
+-			}
+-			//remove the final character
+-			s_pointer_temp--;
+-			*s_pointer_temp = '\0';
+-		}
+-		if (lpszW) {
+-			free(lpszW);
+-			lpszW = NULL;
+-		}
+-		#endif
+-		//recover to original codepage
+-		set_uformat(curr_uformat);
+-	}
+-  }
+-
+-
+-  //Font Code Convert
+-
+-  
+-  if (f->type==1) {
+-  	
+-	#ifdef ALFONT_DOS
+-	if ((c_pt = iconv_open(f->language, "UTF-16LE")) == (iconv_t)-1) {
+-     	lpszW = (char *)s_pointer;
+-  	}
+-  	else {
+-		iconv(c_pt, NULL, NULL, NULL, NULL);
+-  		fromlen  = strlen(s_pointer) + 1;
+-		tolen = MB_CUR_MAX * fromlen * (sizeof(wchar_t) + 1);
+-  		lpszW = (char *)malloc(tolen*sizeof(char));
+-		memset(lpszW, 0, tolen);
+-  		sin = s_pointer;
+-  		sout = lpszW;
+-  		ret = iconv(c_pt, &sin, &fromlen, &sout, &tolen);
+-  		iconv_close(c_pt);
+-  		if (ret == -1) {
+-           	lpszW = (char *)s_pointer;
+-        }
+-	}
+-	#else
+-	setlocale(LC_CTYPE,f->language);
+-	nLen= MB_CUR_MAX * wcslen((const wchar_t*)s_pointer) + 1;
+-	lpszW = (char *)malloc(nLen*sizeof(char));
+-	memset(lpszW, 0, nLen);
+-	wcstombs(lpszW, (const wchar_t *)s_pointer, nLen);
+-	#endif
+-  }
+-  else if(f->type==2) {
+-  	curr_uformat=get_uformat();
+-  	
+-  	#ifdef ALFONT_DOS
+-	if ((c_pt = iconv_open("UTF-16LE", f->language)) == (iconv_t)-1) {	
+-     	lpszW = (char *)s_pointer;
+-  	}
+-  	else {
+-  		iconv(c_pt, NULL, NULL, NULL, NULL);
+-  		fromlen  = strlen(s_pointer) + 1;
+-		tolen = MB_CUR_MAX * fromlen * (sizeof(wchar_t) + 1);
+-  		lpszW = (char *)malloc(tolen*sizeof(char));
+-		memset(lpszW, 0, tolen);
+-  		sin = s_pointer;
+-  		sout = lpszW;
+-  		ret = iconv(c_pt, &sin, &fromlen, &sout, &tolen);
+-  		iconv_close(c_pt);
+-  		if (ret == -1) {
+-           	lpszW = (char *)s_pointer;
+-        }
+-        else {
+-			set_uformat(U_UNICODE);
+-        }
+-  	}
+-	#else
+-	setlocale(LC_CTYPE,f->language);
+-	set_uformat(U_UNICODE);
+-	
+-	#ifdef ALFONT_LINUX
+-	nLen = strlen(s_pointer) * 5 + 1;
+-	#else
+-	nLen= strlen(s_pointer) + 1;
+-	#endif
+-
+-	lpszW = (char *)malloc(nLen*sizeof(wchar_t));
+-	memset(lpszW, 0, nLen);
+-	mbstowcs((wchar_t *)lpszW, s_pointer, nLen);
+-	#endif
+-  }
+-  else {
+-    #ifdef ALFONT_LINUX
+-	set_uformat(U_UTF8);
+-	nLen= ustrlen(s_pointer) + 1;
+-    #endif
+-    lpszW = (char *)s_pointer;
+-  }
+-
+-  memset(*out, 0, _msize(*out));
+-  if (_msize(*out) > 0 && _msize(lpszW) >= _msize(*out))
+-  {
+-	memcpy(*out, lpszW, _msize(*out));
+-  }
+-  else if (_msize(*out) > 0 && _msize(*out) > _msize(lpszW))
+-  {
+-	memcpy(*out, lpszW, _msize(lpszW));
+-  }
+-
+-  if ((f->type==1)||(f->type==2)) {
+-  	if (lpszW)
+-	free(lpszW);
+-  }
+-
+-  if(s_pointer) {
+-	free(s_pointer);
+-  }
+-
+-  #ifndef ALFONT_DOS
+-  setlocale(LC_CTYPE,"");
+-  #endif
+-
+-  if (f->type==2) {
+-	set_uformat(curr_uformat);
+-  }
+-}
+-
+ int alfont_need_uconvert(ALFONT_FONT *f, const char *str) {
+   char *lpszW;
+   char *str_pointer=NULL; //used for original string fixed by autofix

@@ -1,0 +1,36 @@
+diff -up alfont-2.0.9.orig/src/alfont.c alfont-2.0.9/src/alfont.c
+--- alfont-2.0.9.orig/src/alfont.c	2009-02-04 22:40:24.000000000 +0100
++++ alfont-2.0.9/src/alfont.c	2012-07-05 12:09:47.299021581 +0200
+@@ -468,7 +468,7 @@ ALFONT_FONT *alfont_load_font(const char
+   alfont_set_char_extra_spacing(font, 0);
+ 
+   //Initial Font attribute
+-  font->language="";		   /* Initial Language */
++  font->language=NULL;		   /* Initial Language */
+   font->type=0;				   /* Initial Code Convert */
+   font->outline_top=0;		   /* Initial Font top outline width */
+   font->outline_bottom=0;	   /* Initial Font bottom outline width */
+@@ -548,7 +548,7 @@ ALFONT_FONT *alfont_load_font_from_mem(c
+   alfont_set_char_extra_spacing(font, 0);
+ 
+   //Initial Font attribute
+-  font->language="";		   /* Initial Language */
++  font->language=NULL;		   /* Initial Language */
+   font->type=0;				   /* Initial Code Convert */
+   font->outline_top=0;		   /* Initial Font top outline width */
+   font->outline_bottom=0;	   /* Initial Font bottom outline width */
+@@ -4823,12 +4823,13 @@ void alfont_set_char_extra_spacing(ALFON
+ 
+ 
+ void alfont_set_language(ALFONT_FONT *f, const char *language) {
++  free(f->language);
+   if (language == NULL) {
+ 	f->language = NULL;
+   }
+   else
+   {
+-	f->language=(char *)malloc(strlen(language)*sizeof(char));
++	f->language=(char *)malloc((strlen(language)+1)*sizeof(char));
+ 	strcpy(f->language,language);
+   }
+ }

@@ -1,0 +1,21 @@
+pkgbase = alfont
+	pkgdesc = Allegro wrapper for FreeType2 enabling the use of various font formats
+	pkgver = 2.0.9
+	pkgrel = 7
+	url = http://opensnc.sourceforge.net/alfont/mirror/
+	arch = i686
+	arch = x86_64
+	license = custom: FreeType2
+	makedepends = unrar
+	depends = allegro4
+	depends = freetype2
+	noextract = AlFont209.rar
+	source = http://opensnc.sourceforge.net/alfont/mirror/AlFont209.rar
+	source = alfont-2.0.9-fix-memory-leaks.patch
+	source = alfont-2.0.9-remove-alfont_get_string.patch
+	sha256sums = 734f7f9758dfb3b80979baf010245d931c9cd2a7557683906c7fc616353f960d
+	sha256sums = 1d94d1609ab082b2289ac7051290fa33d38023de0411c369e2e1b9cafc1c5b36
+	sha256sums = bf2f309317c741a252e11003e12df0de26d71894149c548cd815e5d3258429ca
+
+pkgname = alfont
+
