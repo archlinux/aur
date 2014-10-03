@@ -1,0 +1,21 @@
+pkgbase = opensurge-svn
+	pkgdesc = Retro-style 2D sidescroller inspired by old-school sonic games (development version)
+	pkgver = r765
+	pkgrel = 1
+	url = http://opensnc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = svn
+	depends = alure
+	depends = alfont
+	source = opensurge::svn+http://svn.code.sf.net/p/opensnc/code/opensurge/trunk
+	source = opensurge.desktop
+	source = opensurge.sh
+	sha256sums = SKIP
+	sha256sums = 04bc0d01613bb61553a753c0cbbc7be727ea4ee57078284832faaea32d3bd2fb
+	sha256sums = accfeeaf152bed5332c1c5e87fae3f4f1f344ed195dd18089b8bd38bf6fa3813
+
+pkgname = opensurge-svn
+

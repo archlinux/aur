@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Open Surge
+Exec=opensurge
+Icon=opensurge
+Comment=Game based on the "Sonic the Hedgehog" universe
+Categories=Game;ArcadeGame;
