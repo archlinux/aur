@@ -5,9 +5,9 @@
 
 _gitname=gnupg
 pkgname=gnupg-git
-pkgver=2.1.0+beta834+4+g1d33d03
+pkgver=2.1.0+beta834+21+g688a903
 pkgrel=1
-pkgdesc="GNU Privacy Guard 2 - a PGP replacement tool. Development version. Do not use in production environments. Test new ECC algorithm by using --expert with --gen-key"
+pkgdesc="GNU Privacy Guard 2 - a PGP replacement tool. Development version. Do not use in production environments. Test new ECC algorithms by using \"gpg --full-gen-key --expert\""
 arch=('i686' 'x86_64')
 depends=('libldap' 'curl' 'bzip2' 'zlib' 'libksba>=1.2' 'libgpg-error-git' 'libgcrypt-git'
          'pth' 'libusb-compat' 'libassuan-git' 'npth-git' 'texinfo' 'readline' 'pinentry')
