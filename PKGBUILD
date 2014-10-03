@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=sudo-selinux
-_sudover=1.8.10p3
+_sudover=1.8.11
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -24,7 +24,7 @@ install=${pkgname/-selinux}.install
 source=(http://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.tmpfiles.conf
         sudo.pam)
-sha256sums=('6eda135fa68163108f1c24de6975de5ddb09d75730bb62d6390bda7b04345400'
+sha256sums=('a3177de7b5fbebfb43b32fc30aecaaf434762bf23e313de4c4a39e5ff715c845'
             'SKIP'
             '080dd97111b3149f8d140ffac68c88acd63da9eacc81fbcc7c43591be13b42fe'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
@@ -67,11 +67,7 @@ package() {
 
   install -Dm644 "$srcdir/sudo.pam" "$pkgdir/etc/pam.d/sudo"
 
-  install -Dm644 doc/LICENSE "$pkgdir/usr/share/licenses/sudo/LICENSE"
+  install -Dm644 doc/LICENSE "$pkgdir/usr/share/licenses/sudo-selinux/LICENSE"
 }
-
-workaround_for_the_aur_webinterface='
-pkgver=1.8.10.p3
-'
 
 # vim:set ts=2 sw=2 et:
