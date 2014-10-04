@@ -1,6 +1,6 @@
 pkgbase = ezquake
 	pkgdesc = One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play.
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = http://ezquake.sourceforge.net/
 	install = ezquake.install
@@ -13,15 +13,18 @@ pkgbase = ezquake
 	provides = quake
 	provides = fuhquake
 	conflicts = fuhquake
-	noextract = ezquake_linux32_2.1.tar.gz
-	source = http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux32_2.1.tar.gz
+	noextract = ezquake_linux64_2.2.tar.gz
+	noextract = ezquake_linux64_2.1.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux64_2.2.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/ezquake/ezquake_linux64_2.1.tar.gz
 	source = ezquake.launcher
 	source = ezquake.desktop
 	source = ezquake.ico
-	md5sums = e238c2c0985a96598bd26a6ee116bee3
-	md5sums = bad99b7adc7c238f1df2fc4973c00ae6
-	md5sums = 75cfa823bf495fe4cdb755c6b5546f2a
-	md5sums = b3fd62bf6f56f139257544cab74ba71e
+	sha256sums = b7735c680403678955f7d04a51265d216fb787fbdb343628b69418bfdb5c7203
+	sha256sums = b3f2de84bd71904895910be9be621cd5462cf689007e9a5e8a6ed3acdfa8b981
+	sha256sums = b5099392cc02ac0b4a7f073542b7e240b78842c36ac8d0921bbb85a1221e5d45
+	sha256sums = e92b9cdeac5eadced50a6167eb53b1343b0772d3bf8afa310eb281b88bf7e677
+	sha256sums = 2a6a5484ddb4cfaf8518b51df39ffd1fa8ce768402eab6401415bececb8e8ab2
 
 pkgname = ezquake
 
