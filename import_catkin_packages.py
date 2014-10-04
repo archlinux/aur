@@ -260,6 +260,7 @@ build() {
         -DPYTHON_EXECUTABLE=%(python_executable)s \\
         -DPYTHON_INCLUDE_DIR=%(python_include_dir)s \\
         -DPYTHON_LIBRARY=%(python_library)s \\
+        -DPYTHON_BASENAME=%(python_basename)s \\
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
@@ -289,6 +290,14 @@ package() {
     if python_version_major == "3":
       python_version_full = "%s%s" % (python_version_full, "m")
 
+    # PYTHON_BASENAME for PySide:
+    # If Python 2.7
+    python_basename = "-lpython2.7"
+    if python_version_major == "3":
+        # If Python 3.4: .cpython-34m
+        python_basename = ".cpython-%s" % (python_version_full.replace(".", ""))
+
+
     pkgbuild = self.BUILD_TEMPLATE % {
       'distro': self.distro.name,
       'arch_package_name': self._rosify_package_name(self.name),
@@ -307,7 +316,8 @@ package() {
       'python_version_major': python_version_major,
       'python_executable': '/usr/bin/python%s' % python_version_major,
       'python_include_dir': '/usr/include/python%s' % python_version_full,
-      'python_library': '/usr/lib/libpython%s.so' % python_version_full
+      'python_library': '/usr/lib/libpython%s.so' % python_version_full,
+      'python_basename': python_basename
       }
 
     # Post-processing:
