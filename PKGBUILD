@@ -4,9 +4,9 @@ pkgdesc="ROS - Lisp client library for ROS, the Robot Operating System."
 url='http://ros.org/wiki/roslisp'
 
 pkgname='ros-indigo-roslisp'
-pkgver='1.9.15'
+pkgver='1.9.17'
 _pkgver_patch=0
-arch=('i686' 'x86_64')
+arch=('any')
 pkgrel=1
 license=('BSD')
 
@@ -46,6 +46,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
