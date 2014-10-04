@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_service_caller provides a GUI plugin for calling arbitrary se
 url='http://ros.org/wiki/rqt_service_caller'
 
 pkgname='ros-indigo-rqt-service-caller'
-pkgver='0.3.9'
+pkgver='0.3.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -46,6 +46,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
