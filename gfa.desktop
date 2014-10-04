@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=gfa
+Comment=GTK+ fast address
+Exec=gfa
+Terminal=false
+MultipleArgs=false
+Type=Application
+Icon=/usr/share/gfa/pixmaps/person.png
+Categories=Application;Utility
