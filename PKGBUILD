@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS ba
 url='http://ros.org/wiki/rqt_bag'
 
 pkgname='ros-indigo-rqt-bag'
-pkgver='0.3.9'
+pkgver='0.3.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,6 +48,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
