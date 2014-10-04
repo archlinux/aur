@@ -5,7 +5,7 @@
 _pkgname=libdwarf
 pkgname=${_pkgname}-git
 pkgver=20140910
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for handling DWARF Debugging Information Format"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -15,6 +15,7 @@ source=("libdwarf"::"git://git.code.sf.net/p/libdwarf/code")
 md5sums=('SKIP')
 provides=('libdwarf')
 conflicts=('libdwarf')
+options+=('staticlibs')
 
 build() {
   cd "$srcdir"/libdwarf
