@@ -2,7 +2,7 @@
 # Contributors: OttoA (AUR), hoschi (AUR), samlt (AUR), andreyv (AUR)
 
 pkgname=ioquake3-git
-pkgver=20140827.gbb64bd7
+pkgver=20140829.gc621589
 pkgrel=1
 pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 files to play."
 url="http://ioquake3.org/"
@@ -15,7 +15,7 @@ conflicts=('quake3' 'quake3-icculus-svn' 'quake3-svn' 'ioquake3-svn')
 provides=('quake3' 'ioquake3')
 replaces=('quake3-icculus-svn' 'ioquake3-svn')
 install=quake3.install
-source=('quake3.desktop' \
+source=('quake3.desktop'
 'http://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/linux/linuxq3apoint-1.32b-3.x86.run'
 'quake3::git+https://github.com/ioquake/ioq3.git')
 sha256sums=('12dbd31e9de1493642d120bfd1548dfc4935e47fec806003cfc04b9d84b85673'
@@ -37,8 +37,6 @@ prepare() {
 }
 
 q3make() {
-    export CFLAGS="${CFLAGS} $(pkg-config --cflags opusfile)"
-
     make $@ \
         BUILD_CLIENT=1                \
         BUILD_SERVER=1                \
@@ -60,13 +58,7 @@ q3make() {
         USE_FREETYPE=1                \
         USE_MUMBLE=1                  \
         USE_VOIP=1                    \
-        USE_INTERNAL_SPEEX=0          \
-        USE_INTERNAL_ZLIB=0           \
-        USE_INTERNAL_JPEG=0           \
-        USE_INTERNAL_OGG=0            \
-        USE_INTERNAL_OPUS=0           \
-        USE_INTERNAL_VORBIS=0         \
-        USE_LOCAL_HEADERS=0
+        USE_INTERNAL_LIBS=0
 }
 
 build() {
@@ -98,6 +90,14 @@ package() {
     # Link Executables in /usr/bin
     ln -sf "/opt/quake3/ioquake3" "${pkgdir}/usr/bin/quake3"
     ln -sf "/opt/quake3/ioq3ded" "${pkgdir}/usr/bin/q3ded"
+
+    # Install systemd service file
+    install -D -m 644 "${srcdir}/quake3/misc/linux/q3a.service" \
+        "${pkgdir}/usr/lib/systemd/system/q3a.service"
+
+    # Patch systemd service file
+    sed -i -e "s/ioq3ded.x86_64/q3ded/" \
+        "${pkgdir}/usr/lib/systemd/system/q3a.service"
 
     # Install Desktop File
     install -D -m 644 "${srcdir}/quake3.desktop" \
