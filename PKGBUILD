@@ -1,4 +1,4 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Piero Sartini <piero@sartini.de>
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 # Contributor: knut
@@ -6,15 +6,13 @@
 
 pkgname=squeak-vm
 pkgver=4.10.2.2614
-pkgrel=2
+pkgrel=3
 pkgdesc="Full-featured implementation of the Smalltalk programming language and environment"
 arch=('i686' 'x86_64')
 url="http://squeakvm.org"
 license=('custom:MIT' 'APACHE')
-conflicts=('squeak')
-provides=('squeak')
-depends=('alsa-lib' 'dbus-core' 'libxrender' 'mesa' 'util-linux')
-makedepends=('cmake' 'libpulse' 'mesa-libgl')
+depends=('libgl' 'libpulse' 'libxrender')
+makedepends=('cmake') 
 source=(http://squeakvm.org/unix/release/Squeak-$pkgver-src.tar.gz)
 md5sums=('8a5cb1d6899d55df56154fab8716e034')
 
