@@ -3,11 +3,11 @@
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r03
+_rev=r04
 _sdkver=4.4.2
 _apilevel=19
 pkgname=android-platform
-pkgver=${_sdkver}_${_rev}
+pkgver=${_apilevel}_${_rev}
 pkgrel=1
 pkgdesc="Android SDK Platform, latest API"
 arch=('any')
@@ -18,7 +18,7 @@ provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/android-${_apilevel}_${_rev}.zip")
-sha1sums=('5f33d8fd36a384fe2b170035e04a29c274a9ef95')
+sha1sums=('2ff20d89e68f2f5390981342e009db5a2d456aaa')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
