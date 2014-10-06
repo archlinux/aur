@@ -3,7 +3,7 @@
 pkgname=aegir-hostmaster
 _pkgname=hostmaster
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -11,9 +11,9 @@ license=('GPL')
 depends=(
     'aegir-provision'
     'cron'
+    'php-gd'
     'rsync'
     'mariadb'
-    'php-gd'
     'sudo'
     'smtp-forwarder'
     'unzip'
@@ -37,8 +37,8 @@ source=(
     'sudoers'
 )
 md5sums=('381e904e8eed14c9aa574c6ed133d38b'
-         '782e36c40b3432dafc37f69926c28237'
-         'c6035a7b509a41fbd19100de12fae49d'
+         '6bd6a1c6264fe7c06d79d1f5159b1e68'
+         'c6d35d7fde52d628b13d1d65be8ff782'
          'e052eeae1565fcd35550900003ffa840'
          'a849c7594eedec0ef415b972da048815'
          'e8b6c3748c26caf4af21d402e7a0b947'
@@ -59,7 +59,6 @@ package() {
     mv * "${pkgdir}/usr/share/webapps/aegir"
     find "${pkgdir}/usr/share/webapps/aegir" -type f -exec chmod 0644 {} +
     find "${pkgdir}/usr/share/webapps/aegir" -type d -exec chmod 0755 {} +
-    chown -R http:http "${pkgdir}/usr/share/webapps/aegir"
 
     msg2 'Adding misc config files'
     cd ..
@@ -75,11 +74,11 @@ package() {
     install -dm755 "${pkgdir}/var/lib/aegir/config"
     ln -sr /var/lib/aegir/config/server_master/nginx.conf "${pkgdir}/var/lib/aegir/config/nginx.conf"
 
-    msg2 'Applying file mode bits'
-    find  "${pkgdir}/var/lib/aegir" \
-          "${pkgdir}/usr/share/webapps/aegir" -type f -exec chmod 0644 {} +
-    find  "${pkgdir}/var/lib/aegir" \
-          "${pkgdir}/usr/share/webapps/aegir" -type d -exec chmod 0755 {} +
-    chown -R 640:640 "${pkgdir}/var/lib/aegir" \
-                     "${pkgdir}/usr/share/webapps/aegir"
+    msg2 'Applying file permissions'
+    chown -R 170:170 "${pkgdir}/usr/share/webapps/aegir"
+    chown -R 170:170 "${pkgdir}/var/lib/aegir"
+    find "${pkgdir}/usr/share/webapps/aegir" -type f -exec chmod 0644 {} +
+    find "${pkgdir}/usr/share/webapps/aegir" -type d -exec chmod 0755 {} +
+    find "${pkgdir}/var/lib/aegir" -type f -exec chmod 0644 {} +
+    find "${pkgdir}/var/lib/aegir" -type d -exec chmod 0755 {} +
 }
