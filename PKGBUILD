@@ -10,6 +10,7 @@ url='http://ioflo.com'
 license=('APACHE')
 source=("https://pypi.python.org/packages/source/i/ioflo/ioflo-$pkgver.tar.gz")
 md5sums=('16dd420250da24f45ffe0bb786dc6536')
+makedepends=(python-setuptools python2-setuptools)
 
 prepare() {
   cd $srcdir
