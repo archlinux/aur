@@ -7,26 +7,13 @@ STATUS=$2
 LANG='C'
 
 CHRONY=/usr/bin/chronyc
-STATECMD='nmcli -t --fields STATE g'
+
+nm_connected() { [ "$(nmcli -t --fields STATE g)" == "connected" ]; }
 
 
 case "$STATUS" in
-  up)
-    $CHRONY -a online
-  ;;
-  vpn-up)
-    $CHRONY -a online
-  ;;
-  down)
-    # Check for active interface, take offline if none is active
-    if [ ! `${STATECMD}` = 'connected' ]; then
-      $CHRONY -a offline
-    fi
-  ;;
-  vpn-down)
-    # Check for active interface, take offline if none is active
-    if [ ! `${STATECMD}` = 'connected' ]; then
-      $CHRONY -a offline
-    fi
-  ;;
+	up)		$CHRONY -a online;;
+	vpn-up)		$CHRONY -a online;;
+	down)		nm_connected || $CHRONY -a offline;;
+	vpn-down)	nm_connected || $CHRONY -a offline;;
 esac
