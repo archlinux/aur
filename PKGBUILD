@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.16
-pkgver=3.16.3
+pkgver=3.16.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'compal-laptop-hwmon-fix.patch'
         )
 sha256sums=('4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0'
-            '3fbe03714f943605d711ff317aa52053e29bc50e63a8e6a17c2504cde1160208'
+            'bfd65be726f596c0e46f472efa33c46c01be5d44ed93ef645c313a6823e6e6fb'
             '441fddfd56c28efbf6b61f0f2777ce14e259b9215bae7729800507d98cc223ad'
             'e47377279009637e95ae25858e195dc0654b647d4e30ad30f9880b46b74ec078'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
