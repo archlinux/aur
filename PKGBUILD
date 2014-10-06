@@ -11,10 +11,9 @@ license=('APACHE')
 depends=('libsodium')
 makedepends=(python-setuptools python2-setuptools)
 source=("https://pypi.python.org/packages/source/l/libnacl/libnacl-$pkgver.tar.gz")
-md5sums=('625124dd981c81ac1075b161247547e5')
+md5sums=('40f325586373e91213cb9ecd36ee8bba')
 
-build() {
-  cd $srcdir
+prepare() {
   cp -r libnacl-$pkgver python2-libnacl-$pkgver
 }
 
