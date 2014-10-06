@@ -17,14 +17,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config'
         'config.x86_64'
         'menu.lst'
-        'preset'
-        'https://projects.archlinux.org/svntogit/packages.git/plain/linux/trunk/change-default-console-loglevel.patch')
+        'preset')
 sha512sums=('29c99764e371f7005dbbe2bbe4458b4deeae5297da7e5b719b0f29f6f018629338b608369162ae6bd76bec4d8719cf491257ac57fdd5277cce8941b7f90246a0'
             '56fa3467a686309eb41a0132e215cd211a2932ba07fc35d35405f95b93dc147540e5d3b9c4ec5d6e77bba396851c275da68a37c5c8ae973149c5dc16ac623145'
             '62763219bd6e96c50e7099c7ee7f838bb6691614b77e38f9f5a9f2b270648c73627ab24408a65ac7d0755b3da63bb8bb58781d71f4742a78d6075ee1f5d56668'
             'f4191d63f71920a4c366c6c291205a780b7ddca952b4420dfb52b9e6d33c818b431830afe990df3ef3601458959a1b39b88c084b416a814cb7a957187670b733'
-            'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f'
-            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8')
+            'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
 pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(linux)
@@ -35,7 +33,6 @@ install=install
 prepare() {
   cd "${srcdir}/${_srcname}"
 #  patch -p1 -i "${srcdir}/patch-${pkgver}"
-  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
