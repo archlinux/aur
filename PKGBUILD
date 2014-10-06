@@ -10,27 +10,27 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.5.1
-_pkgver=2398
+pkgver=1.6.0
+_pkgver=2449
 pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++' 'libxkbcommon-x11')
-makedepends=('libxt' 'cmake' 'qt5-base' 'unzip')
+depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++' 'libxkbcommon-x11' 'avahi')
+makedepends=('libxt' 'cmake' 'qt5-base' 'unzip' 'subversion')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
-source=("http://synergy-project.org/files/packages/synergy-${pkgver}-r${_pkgver}-Source.tar.gz"
+source=("synergy-trunk::svn+http://svn.synergy-project.org/trunk/#revision=${_pkgver}"
         "synergys_at.socket"
         "synergys_at.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
-sha1sums=('b7bf0384d914772da9f8c49453a47cf3405612fa'
+sha1sums=('SKIP'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
           '4bd12cd0674ef317af1f7df32d84e94582855140'
           '8e321e664ae4b7a763175524dd938a88d85c7909')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}-Source"
+  cd "${srcdir}/synergy-trunk"
 
   # Unfuck the bundled cryptopp stuff. Thanks a lot, Gentoo!
   # You and Fedora are our only friends in this crazy world.
@@ -45,28 +45,27 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-Source/bin"
+  cd "${srcdir}/synergy-trunk"
 
   # install binary
-  install -Dm755 synergy "$pkgdir/usr/bin/synergy"
-  install -Dm755 synergyc "$pkgdir/usr/bin/synergyc"
-  install -Dm755 synergys "$pkgdir/usr/bin/synergys"
+  install -Dm755 bin/synergy "$pkgdir/usr/bin/synergy"
+  install -Dm755 bin/synergyc "$pkgdir/usr/bin/synergyc"
+  install -Dm755 bin/synergys "$pkgdir/usr/bin/synergys"
 
   # install config
-  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}.conf.example" 
-  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}.conf.example-advanced" "${pkgdir}/etc/${pkgname}.conf.example-advanced"
-  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}.conf.example-basic" "${pkgdir}/etc/${pkgname}.conf.example-basic" 
+  install -Dm644 "doc/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}.conf.example" 
+  install -Dm644 "doc/${pkgname}.conf.example-advanced" "${pkgdir}/etc/${pkgname}.conf.example-advanced"
+  install -Dm644 "doc/${pkgname}.conf.example-basic" "${pkgdir}/etc/${pkgname}.conf.example-basic" 
 
   # install manfiles
-  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}c.man" "${pkgdir}/usr/share/man/man1/${pkgname}c.1"
-  install -Dm644 "$srcdir/$pkgname-$pkgver-Source/doc/${pkgname}s.man" "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
+  install -Dm644 "doc/${pkgname}c.man" "${pkgdir}/usr/share/man/man1/${pkgname}c.1"
+  install -Dm644 "doc/${pkgname}s.man" "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
 
   # install systemd service and socket
   install -Dm644 "$srcdir/synergys_at.service" "$pkgdir/usr/lib/systemd/system/synergys@.service"
   install -Dm644 "$srcdir/synergys_at.socket" "$pkgdir/usr/lib/systemd/system/synergys@.socket"
 
   # install desktop/icon stuff
-  cd ../res
-  install -Dm644 "synergy.ico" "$pkgdir/usr/share/icons/synergy.ico"
-  install -Dm644 "synergy.desktop" "$pkgdir/usr/share/applications/synergy.desktop"
+  install -Dm644 "res/synergy.ico" "$pkgdir/usr/share/icons/synergy.ico"
+  install -Dm644 "res/synergy.desktop" "$pkgdir/usr/share/applications/synergy.desktop"
 }
