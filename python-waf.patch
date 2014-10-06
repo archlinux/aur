@@ -1,6 +1,6 @@
---- waflib/extras/process_resources.py.ori	2014-09-20 23:50:10.247599441 +0200
-+++ waflib/extras/process_resources.py	2014-09-20 23:56:01.127600704 +0200
-@@ -28,14 +28,14 @@
+--- waflib/extras/process_resources.py	2014-09-30 18:36:48.000000000 +0200
++++ waflib/extras/process_resources.py.new	2014-10-06 13:59:22.009465477 +0200
+@@ -29,14 +29,14 @@
  		elif res_type=="png":
  			output_pbi=resources_path_node.get_bld().make_node(input_file+'.pbi')
  			pack_entries.append((output_pbi,def_name))
@@ -18,7 +18,7 @@
  		elif res_type=="font":
  			output_pfo=resources_path_node.get_bld().make_node(input_file+'.'+str(def_name)+'.pfo')
  			m=re.search('([0-9]+)',def_name)
-@@ -63,7 +63,7 @@
+@@ -64,7 +64,7 @@
  				character_list='--list "%s"'%os.path.join(os.path.dirname(input_node.abspath()),entry['characterList'])
  			else:
  				character_list=''
@@ -27,7 +27,7 @@
  		else:
  			waflib.Logs.error("Error Generating Resources: File: "+input_file+" has specified invalid type: "+res_type)
  			waflib.Logs.error("Must be one of (raw, png, png-trans, font)")
-@@ -81,8 +81,8 @@
+@@ -90,8 +90,8 @@
  	resource_code_script=tools_path.find_node('generate_resource_code.py')
  	data_sources=[]
  	cat_string="cat"
@@ -38,7 +38,7 @@
  	for entry in pack_entries:
  		cat_string+=' "%s" '%entry[0].abspath()
  		data_sources.append(entry[0])
-@@ -93,10 +93,10 @@
+@@ -104,15 +104,15 @@
  		open(task.outputs[0].abspath(),'a').close()
  	bld(rule=cat_string if pack_entries else touch,source=data_sources,target=data_node)
  	bld(rule=table_string,source=data_sources+[md_script],target=table_node)
@@ -52,3 +52,9 @@
 -		bld(rule="python '{script}' font_key_table '{font_key_table}' "" '{resource_id_header}' '{font_key_header}' {key_list}".format(script=resource_code_script.abspath(),font_key_table=font_key_table_node.abspath(),resource_id_header=output_id_header_node.abspath(),font_key_header=font_key_include_path,key_list=key_list_string),source=resource_code_script,target=font_key_table_node)
 +		bld(rule="'{}' '{script}' font_key_header '{font_key_header}' ""{key_list}".format(sys.executable, script=resource_code_script.abspath(),font_key_header=font_key_header_node.abspath(),key_list=key_list_string),source=resource_code_script,target=font_key_header_node)
 +		bld(rule="'{}' '{script}' font_key_table '{font_key_table}' "" '{resource_id_header}' '{font_key_header}' {key_list}".format(sys.executable, script=resource_code_script.abspath(),font_key_table=font_key_table_node.abspath(),resource_id_header=output_id_header_node.abspath(),font_key_header=font_key_include_path,key_list=key_list_string),source=resource_code_script,target=font_key_table_node)
+ 	if pfs_resources_header_node:
+ 		pfs_resources_string=''
+ 		for(first_name,last_name,filename,id_offset)in pfs_resources:
+ 			pfs_resources_string+="%s %s %s %s "%(first_name,last_name,filename,id_offset)
+-		bld(rule="python '{script}' pfs_files_header '{header}' ""'{resource_id_header}' {pfs_resources_string}".format(script=resource_code_script.abspath(),header=pfs_resources_header_node.abspath(),resource_id_header=output_id_header_node.abspath(),pfs_resources_string=pfs_resources_string),target=pfs_resources_header_node)
++		bld(rule="'{}' '{script}' pfs_files_header '{header}' ""'{resource_id_header}' {pfs_resources_string}".format(sys.executable, script=resource_code_script.abspath(),header=pfs_resources_header_node.abspath(),resource_id_header=output_id_header_node.abspath(),pfs_resources_string=pfs_resources_string),target=pfs_resources_header_node)
