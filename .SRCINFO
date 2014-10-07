@@ -1,7 +1,7 @@
 pkgbase = python2-websocket-client
 	pkgdesc = Websocket client for Python.
 	pkgver = 0.18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/liris/websocket-client
 	arch = any
 	license = LGPL

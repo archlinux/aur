@@ -3,7 +3,7 @@
 
 pkgname=python2-websocket-client
 pkgver=0.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Websocket client for Python."
 url="https://github.com/liris/websocket-client"
 license=('LGPL')
@@ -29,9 +29,7 @@ build() {
 package() {
   cd "$srcdir/websocket-client-$pkgver"
   python2 setup.py install --root="$pkgdir" --optimize=1
-
-  find "$pkgdir" -name "*.py" -exec \
-    sed -i '1s|env python|env python2|' {} \;
+  rm "$pkgdir/usr/bin/wsdump.py"  # provided by python3 package
 }
 
 
