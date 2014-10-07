@@ -23,9 +23,6 @@ pkgver() {
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-}
-
 package() {
   cd "$pkgname"
 
