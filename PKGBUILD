@@ -1,9 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Tess 'socketwench' Flynn <tess@deninet.com>
+# Contributor: James An <james@jamesan.ca>
+
 pkgname=drush-git
 pkgver=7.0.0.alpha5.r34.g7928b9b
 pkgrel=1
