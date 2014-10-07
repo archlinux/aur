@@ -1,0 +1,16 @@
+pkgbase = htcat
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/htcat/htcat
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = !emptydirs
+	source = https://github.com/htcat/htcat/archive/v1.0.0.tar.gz
+	sha512sums = 582928236207255d9b65e579e61385f1de10085f537a1921ff167e96089141060a155bb8f38da01cde0512970af285260d90ace68427dda2319853fdb0ee546f
+
+pkgname = htcat
+
