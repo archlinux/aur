@@ -1,0 +1,19 @@
+pkgbase = python-websocket-client
+	pkgdesc = WebSocket client library for Python
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/liris/websocket-client
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	provides = python-websocket-client
+	conflicts = python-websocket-client
+	options = !emptydirs
+	source = https://github.com/liris/websocket-client/archive/v0.12.0-py3.zip
+	md5sums = 63c7d2157cbad1f68e1f3de90969f0d6
+
+pkgname = python-websocket-client
+
