@@ -20,7 +20,7 @@ package() {
   _instdir=$pkgdir/usr/share/webapps/drupal8
   mkdir -p ${_instdir}
   cd ${_instdir}
-  cp -r $srcdir/$_pkgname-$pkgver/{*,.htaccess} ${_instdir}
+  cp -r $srcdir/$_pkgname-${pkgver/_/-}/{*,.htaccess} ${_instdir}
 
   # move .htaccess
   mkdir -p $pkgdir/etc/webapps/drupal8
