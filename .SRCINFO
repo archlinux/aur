@@ -1,0 +1,15 @@
+pkgbase = drupal8
+	pkgdesc = A PHP-based content management platform
+	pkgver = 8.0.0_beta1
+	pkgrel = 1
+	url = http://www.drupal.org/
+	install = drupal8.install
+	arch = any
+	license = GPL
+	depends = php
+	options = !strip
+	source = http://www.drupal.org/files/projects/drupal-8.0.0-beta1.tar.gz
+	md5sums = 9efea37c74bed8208133dc1aae76e53f
+
+pkgname = drupal8
+
