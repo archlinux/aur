@@ -1,6 +1,4 @@
 post_install() {
-  cd /usr/share/webapps/drush
-  composer install
   echo "-----------------"
   echo "Drush is meant to be run from the root directory of your Drupal "
   echo "install by default. Look at /usr/share/doc/drush/ for the "

@@ -5,13 +5,14 @@
 
 # Maintainer: Tess 'socketwench' Flynn <tess@deninet.com>
 pkgname=drush-git
-pkgver=6.0.0.r500.gbf45cb4
+pkgver=7.0.0.alpha5.r34.g7928b9b
 pkgrel=1
 pkgdesc="The Drupal command-line shell, git version."
 arch=('any')
 url="https://github.com/drush-ops/drush"
 license=('GPL')
-depends=('php' 'bash' 'php-composer')
+depends=('bash' 'php-composer')
+provides=('drush')
 conflicts=('drush5' 'drush')
 install=${pkgname}.install
 source=("$pkgname"::'git://github.com/drush-ops/drush.git')
@@ -19,11 +20,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
 }
 
 package() {
@@ -66,4 +66,6 @@ package() {
   ln -s /usr/share/webapps/drush/drush ${pkgdir}/usr/bin/drush
   #Make directory for eventual packaged drush extensions
   #mkdir -p ${pkgdir}/usr/share/webapps/drush/commands
+
+  composer install -d ${pkgdir}/usr/share/webapps/drush
 }
