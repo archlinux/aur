@@ -14,7 +14,7 @@ depends=('php')
 install='drupal8.install'
 options=(!strip)
 source=(http://www.drupal.org/files/projects/$_pkgname-${pkgver/_/-}.tar.gz)
-md5sums=('33d738678f81a86d9e31ae8af23b45e5')
+md5sums=('9efea37c74bed8208133dc1aae76e53f')
 
 package() {
   _instdir=$pkgdir/usr/share/webapps/drupal8
