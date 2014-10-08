@@ -3,8 +3,8 @@
 
 pkgname=cloud66-toolbelt
 pkgver=0.1.9
-pkgrel=1
-pkgdesc='Sauce Connect untility for Sauce Labs testing'
+pkgrel=2
+pkgdesc='Cloud66 Toolbelt'
 url='http://help.cloud66.com/toolbelt/introduction.html'
 license=('unknown')
 arch=('x86_64')
