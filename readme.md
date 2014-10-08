@@ -1,4 +1,4 @@
-#sauceconnect
+#cloud66-toolbelt
 
 AUR PKGBUILD for `cloud66-toolbelt`
 
