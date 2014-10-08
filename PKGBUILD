@@ -1,4 +1,6 @@
 # Maintainer: Jason Staten <jstaten07 gmail>
+# PKGBUILD Source: https://github.com/statianzo/PKGBUILD-cloud66-toolbelt
+
 pkgname=cloud66-toolbelt
 pkgver=0.1.9
 pkgrel=1
