@@ -4,13 +4,13 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=37.0.2062.120
-pkgrel=2
+pkgver=38.0.2125.101
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz'
          'desktop-file-utils' 'hicolor-icon-theme')
@@ -27,16 +27,10 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium.desktop
         chromium.default
-        chromium-nacl-bootstrap-cflags.patch
-        chromium-sanitize-referrer-in-context-menus.patch
-        chromium-use-correct-referrer-policy.patch
         chromium.sh)
-sha256sums=('b3073758b6caf384d30de20ba7514ee52cce5c1460bc768cd28d15f53f0c6efb'
+sha256sums=('d3303519ab471a3bc831e9b366e64dc2fe651894e52ae5d1e74de60ee2a1198a'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
-            'd82bafd8d4d6517c2d420b2987fdbe1dfcc32d5fed74a6c0011bcb2f868225c3'
-            'c5d793dbaaaee8455ffc5cf008239b0b0bb8fe32e2e7b2b44d181cebb432f28e'
-            '9f5b73070b1d360c1d7915115c6829e11361d243e424c24179ca39b28ae03f85'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -50,17 +44,10 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Filter out -fstack-protector-strong for nacl_helper_bootstrap
-  # https://code.google.com/p/chromium/issues/detail?id=104569
-  patch -Np0 <../chromium-nacl-bootstrap-cflags.patch
-
-  # URL request check fails for save-as command (FS#41033)
-  # https://code.google.com/p/chromium/issues/detail?id=357473
-  patch -Np1 <../chromium-sanitize-referrer-in-context-menus.patch
-
-  # Make sure to use the correct referrer policy in the FrameFetchContext
-  # https://code.google.com/p/chromium/issues/detail?id=407510
-  patch -d third_party/WebKit -Np1 <../chromium-use-correct-referrer-policy.patch
+  # Remove bundled ICU; its header files appear to get picked up instead of
+  # the system ones, leading to errors during the final link stage
+  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
+  find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 
   # Use Python 2
   find . -type f -exec sed -i -r \
@@ -74,16 +61,6 @@ prepare() {
   # Download NaCL toolchains
   python2 build/download_nacl_toolchains.py \
     --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator
-
-  # Build with clang as a temporary solution to startup crash with GCC 4.9
-  mkdir -p third_party/llvm-build/Release+Asserts/bin
-  ln -s /usr/bin/clang third_party/llvm-build/Release+Asserts/bin/
-  ln -s /usr/bin/clang++ third_party/llvm-build/Release+Asserts/bin/
-  ln -s /usr/bin/llvm-symbolizer third_party/llvm-build/Release+Asserts/bin/
-  # clang 3.4 doesn't support this option
-  sed -i '/-Wno-absolute-value/d' \
-    build/common.gypi \
-    third_party/ffmpeg/ffmpeg.gyp
 }
 
 build() {
@@ -93,6 +70,11 @@ build() {
 
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
+
+  # Build with clang as a temporary solution to startup crash with GCC 4.9
+  # https://code.google.com/p/chromium/issues/detail?id=412967
+  export CC=clang
+  export CXX=clang++
 
   local _chromium_conf=(
     -Dgoogle_api_key=$_google_api_key
@@ -110,6 +92,7 @@ build() {
     -Dlinux_use_bundled_binutils=0
     -Dlinux_use_bundled_gold=0
     -Dlinux_use_gold_flags=0
+    -Dicu_use_data_file_flag=0
     -Dlogging_like_official_build=1
     -Drelease_extra_cflags="$CFLAGS"
     -Dlibspeechd_h_prefix=speech-dispatcher/
@@ -119,6 +102,7 @@ build() {
     -Duse_system_flac=1
     -Duse_system_ffmpeg=0
     -Duse_system_harfbuzz=1
+    -Duse_system_icu=1
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
@@ -133,9 +117,6 @@ build() {
     -Duse_gconf=0
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1)
-
-  # https://code.google.com/p/chromium/issues/detail?id=386097
-  third_party/libaddressinput/chromium/tools/update-strings.py
 
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
   build/gyp_chromium --depth=. "${_chromium_conf[@]}"
@@ -154,7 +135,7 @@ package() {
   install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
 
   cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} \
-    out/Release/{libppGoogleNaClPluginChrome.so,nacl_irt_*.nexe} \
+    out/Release/nacl_irt_*.nexe \
     out/Release/libpdf.so \
     "$pkgdir/usr/lib/chromium/"
 
@@ -163,13 +144,12 @@ package() {
     "$pkgdir/usr/lib/chromium/chromedriver" \
     "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
   strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so" \
-    "$pkgdir/usr/lib/chromium/libppGoogleNaClPluginChrome.so" \
     "$pkgdir/usr/lib/chromium/libpdf.so"
 
   # Allow users to override command-line options
   install -Dm644 "$srcdir/chromium.default" "$pkgdir/etc/chromium/default"
 
-  cp -a out/Release/locales out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
+  cp -a out/Release/locales "$pkgdir/usr/lib/chromium/"
 
   install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
 
