@@ -2,7 +2,7 @@
 # Contributor: Federico Cinelli <cinelli@aur.archlinux.org>
 
 pkgname=texmaker-qt4
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc='Free cross-platform LaTeX editor'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('ghostscript: LaTeX to HTML conversion command'
             'poppler: PDF rendering support')
 install="$pkgname.install"
 source=("http://www.xm1math.net/texmaker/texmaker-$pkgver.tar.bz2")
-md5sums=('9297da00423e341b76295f208a91096c')
+md5sums=('f2ba669a886c01ed594c0e7e787b55df')
 conflicts=('texmaker')
 provides=('texmaker')
 

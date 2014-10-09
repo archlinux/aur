@@ -1,6 +1,6 @@
 pkgbase = texmaker-qt4
 	pkgdesc = Free cross-platform LaTeX editor
-	pkgver = 4.2
+	pkgver = 4.3
 	pkgrel = 1
 	url = http://www.xm1math.net/texmaker/index.html
 	install = texmaker-qt4.install
@@ -14,8 +14,8 @@ pkgbase = texmaker-qt4
 	optdepends = poppler: PDF rendering support
 	provides = texmaker
 	conflicts = texmaker
-	source = http://www.xm1math.net/texmaker/texmaker-4.2.tar.bz2
-	md5sums = 9297da00423e341b76295f208a91096c
+	source = http://www.xm1math.net/texmaker/texmaker-4.3.tar.bz2
+	md5sums = f2ba669a886c01ed594c0e7e787b55df
 
 pkgname = texmaker-qt4
 
