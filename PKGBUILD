@@ -13,8 +13,11 @@ source=(
 	'git://code.trollworks.com/apple_stubs.git'
 	"git://code.trollworks.com/gcs.git#tag=$pkgver"
 	"git://code.trollworks.com/toolkit.git#tag=$pkgver"
+	'gcs.sh'
+	'gcs.desktop'
+	'set_app_path_from_env.patch'
 )
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
 	cd "$srcdir/toolkit"
