@@ -21,7 +21,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
 	cd "$srcdir/toolkit"
-	git apply "$startdir/set_app_path_from_env.patch"
+	git apply "$srcdir/set_app_path_from_env.patch"
 }
 
 build() {
@@ -48,11 +48,11 @@ package() {
 	cp -dr --no-preserve=ownership "$srcdir/gcs/Library" "$pkgdir/usr/share/gcs"
 
 	# launcher
-	install -Dm755 "$startdir/gcs.sh" "$pkgdir/usr/bin/gcs"
+	install -Dm755 "$srcdir/gcs.sh" "$pkgdir/usr/bin/gcs"
 
 	# .desktop
 	install -d "$pkgdir/usr/share/applications"
-	install -m644 "$startdir/gcs.desktop" "$pkgdir/usr/share/applications"
+	install -m644 "$srcdir/gcs.desktop" "$pkgdir/usr/share/applications"
 
 	# icon
 	install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
