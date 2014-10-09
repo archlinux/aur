@@ -10,8 +10,7 @@ url="http://www.xm1math.net/texmaker/index.html"
 license=('GPL')
 depends=('poppler-qt4' 'qtwebkit' 'desktop-file-utils')
 optdepends=('ghostscript: LaTeX to HTML conversion command'
-      'ibus-qt: accented characters support'
-      'poppler: PDF rendering support')
+            'poppler: PDF rendering support')
 install="$pkgname.install"
 source=("http://www.xm1math.net/texmaker/texmaker-$pkgver.tar.bz2")
 md5sums=('9297da00423e341b76295f208a91096c')
