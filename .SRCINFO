@@ -1,6 +1,7 @@
 pkgbase = htcat
+	pkgdesc = Utility to perform parallel, pipelined execution of a single HTTP GET
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/htcat/htcat
 	arch = i686
 	arch = x86_64

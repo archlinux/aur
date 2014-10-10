@@ -2,8 +2,8 @@
 
 pkgname='htcat'
 pkgver='1.0.0'
-pkgrel='1'
-pkgdesc=''
+pkgrel='2'
+pkgdesc='Utility to perform parallel, pipelined execution of a single HTTP GET'
 arch=('i686' 'x86_64')
 url='https://github.com/htcat/htcat'
 license=('custom')
