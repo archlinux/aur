@@ -4,7 +4,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.6.r15.g7c52775
+pkgver=0.95.6.r34.gefb7c6b
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL' 'custom')
 provides=('windowmaker')
 conflicts=('windowmaker' 'windowmaker-git')
 makedepends=('git')
-depends=('libxinerama' 'libxrandr' 'libxmu' 'libxpm' 'libxft' 'libtiff' 'giflib' 'libexif')
+depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libtiff' 'giflib' 'libexif')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git#branch=next"
 	wmaker.desktop
 	giflib-5.1.0.patch)
