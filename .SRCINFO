@@ -1,6 +1,7 @@
 pkgbase = uw-ttyp0-font
+	pkgdesc = Bitmap monospaced font with unicode support and Powerline symbols
 	pkgver = 1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0
 	install = font.install
 	arch = any

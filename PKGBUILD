@@ -5,8 +5,9 @@ _centered_tilde=true
 _encodings='uni i15'
 
 pkgname='uw-ttyp0-font'
+pkgdesc='Bitmap monospaced font with unicode support and Powerline symbols'
 pkgver='1.2'
-pkgrel='0'
+pkgrel='1'
 arch='any'
 url='http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0'
 source=("${url}/uw-ttyp0-${pkgver}.tar.gz")
