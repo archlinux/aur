@@ -1,0 +1,11 @@
+
+post_install() {
+  echo "OpenRaider needs a config file to function. You can copy the default config file"
+  echo "and change it to suit your needs:"
+  echo " $ cp -r /usr/share/OpenRaider/ ~/.OpenRaider"
+  echo " $ \$EDITOR ~/.OpenRaider/OpenRaider.ini"
+}
+
+post_upgrade() {
+  post_install
+}
