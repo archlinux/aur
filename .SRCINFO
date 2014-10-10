@@ -1,0 +1,21 @@
+pkgbase = lib32-gtk-engine-murrine-git
+	pkgdesc = The marvelous gtk2 cairo engine (development version, 32 bit)
+	pkgver = 0.98.2.r406.2032a9b
+	pkgrel = 1
+	url = http://cimitan.com/murrine/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = gcc-multilib
+	depends = lib32-gtk2
+	depends = gtk-engine-murrine
+	provides = lib32-gtk-engine-murrine
+	conflicts = lib32-gtk-engine-murrine
+	source = lib32-gtk-engine-murrine::git+https://git.gnome.org/browse/murrine
+	source = newer-automakes.patch
+	sha256sums = SKIP
+	sha256sums = f36037693603ca450a8bc7e2c0ba7269af18640123b87fc6dd2eb11b3e423be3
+
+pkgname = lib32-gtk-engine-murrine-git
+
