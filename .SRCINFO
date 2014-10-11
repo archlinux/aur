@@ -1,0 +1,30 @@
+pkgbase = lib32-sdl2-hg
+	pkgdesc = A library for portable low-level access to video, audio and input (Version 2, 32 bit, development version)
+	pkgver = 2.0.3.r528.3331d2f57704
+	pkgrel = 1
+	url = http://www.libsdl.org
+	arch = x86_64
+	license = ZLIB
+	makedepends = mercurial
+	makedepends = cmake
+	makedepends = gcc-multilib
+	makedepends = lib32-alsa-lib
+	makedepends = lib32-mesa
+	makedepends = lib32-libpulse
+	makedepends = lib32-libxinerama
+	makedepends = lib32-libxkbcommon
+	makedepends = lib32-libxrandr
+	depends = lib32-libxext
+	depends = lib32-libxrender
+	depends = lib32-libx11
+	depends = lib32-libgl
+	depends = lib32-libxcursor
+	optdepends = lib32-alsa-lib: ALSA audio driver
+	optdepends = lib32-libpulse: PulseAudio audio driver
+	provides = lib32-sdl2
+	conflicts = lib32-sdl2
+	source = lib32-sdl2::hg+http://hg.libsdl.org/SDL
+	md5sums = SKIP
+
+pkgname = lib32-sdl2-hg
+
