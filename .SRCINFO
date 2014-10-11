@@ -1,6 +1,6 @@
 pkgbase = keepass-plugin-rpc
 	pkgdesc = RPC plugin for Keepass (used by the KeeFox addon for Firefox)
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://keefox.org/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = keepass-plugin-rpc
 	makedepends = unzip
 	depends = keepass
 	noextract = keefox.zip
-	source = keefox.zip::https://addons.mozilla.org/firefox/downloads/file/262080/keefox-1.4.2-tb+fx-linux.xpi?src=version-history
-	md5sums = 4a3e03a21f236681e6af7b3629344e5e
+	source = keefox.zip::https://addons.mozilla.org/firefox/downloads/file/274580/keefox-1.4.3-fx+tb-linux.xpi?src=external-kforg-download
+	md5sums = 90617c58a8c11bb51433fe44a107fbfe
 
 pkgname = keepass-plugin-rpc
 
