@@ -1,7 +1,6 @@
 pkgname=vtigercrm
-_pkgname=vtigerCRM
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="A free, full-featured, 100% Open Source CRM software ideal for small and medium businesses"
 arch=("any")
 url="https://www.vtiger.com/open-source/"
@@ -27,10 +26,10 @@ options=("!strip"
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}${pkgver}.tar.gz")
 
 package() {
-  install -dm 0755                                     "${pkgdir}/etc/webapps/${pkgname}"
-  install -dm 0755                                     "${pkgdir}/usr/share/webapps/${pkgname}"
-  install -Dm 0644 "${srcdir}/${_pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cp      -r        ${srcdir}/${_pkgname}/*             ${pkgdir}/usr/share/webapps/${pkgname}
+  install -dm 0755                                    "${pkgdir}/etc/webapps/${pkgname}"
+  install -dm 0755                                    "${pkgdir}/usr/share/webapps/${pkgname}"
+  install -Dm 0644 "${srcdir}/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp      -Ra      "${srcdir}/${pkgname}"             "${pkgdir}/usr/share/webapps"
 
   for _CFGFILE in {config,config.db,config.inc,config.template,config.performance,connection}.php
   do
@@ -42,5 +41,5 @@ package() {
   chown -R 33:33 "${pkgdir}/usr/share/webapps/${pkgname}"
 }
 
-md5sums=('6eece5f8685c1f657cf051825374983c')
-sha1sums=('efd6c977e5452ca4623931fdc66c1a208f3d62db')
+md5sums=('49b0405a9e2385ffc25522ee613fd79a')
+sha1sums=('5f26ccf8d7c87fd6bc355f93136aeb4d76c68e68')
