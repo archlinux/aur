@@ -2,7 +2,7 @@
 pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver='0.9.0'
-pkgrel='1'
+pkgrel='2'
 arch='any'
 url='http://www.sile-typesetter.org/'
 license='custom'
@@ -15,7 +15,8 @@ depends=('lua51-lpeg'
          'lua51-inspect'
          'lua51-epnf'
          'lua51-repl'
-         'lua51-cassowary')
+         'lua51-cassowary'
+         'pango')
 
 prepare () {
 	cd "${pkgname}-${pkgver}"
