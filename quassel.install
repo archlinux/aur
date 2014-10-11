@@ -1,0 +1,14 @@
+post_install() {
+	useradd -r -s /bin/sh -d /var/lib/quassel quassel
+	mkdir -p /var/lib/quassel && chown -R quassel:quassel /var/lib/quassel
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+pre_remove() {
+	systemctl disable quassel.service
+	systemctl stop quassel.service
+}
+
+post_remove() {
+	userdel quassel
+}

@@ -1,0 +1,27 @@
+pkgbase = quassel-light
+	pkgdesc = Modern, cross-platform, distributed IRC client; built with few dependencies
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://quassel-irc.org/
+	install = quassel.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = qt4
+	optdepends = qca-ossl
+	provides = quassel-core
+	provides = quassel-client
+	conflicts = quassel-core
+	conflicts = quassel-client
+	backup = etc/conf.d/quassel
+	source = http://quassel-irc.org/pub/quassel-0.11.0.tar.bz2
+	source = quassel.service
+	source = quassel.conf
+	sha256sums = 99a191b8bc2a410f7020b890ec57e0be49313f539da9f4843675bb108b0f4504
+	sha256sums = 91a1aaae47d41c11aa418dd560039ddbbfb659e02b86379d8c4789c5ada362d3
+	sha256sums = f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8
+
+pkgname = quassel-light
+
