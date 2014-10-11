@@ -1,12 +1,12 @@
 pkgbase = lfs-me
 	pkgdesc = A simple fakeroot based package manager for LFS inspired by Archlinux.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/FSMaxB/lfs-me
 	arch = any
 	license = GPL3
 	depends = rsync
-	source = git+https://github.com/FSMaxB/lfs-me.git#tag=1.0.0
+	source = git+https://github.com/FSMaxB/lfs-me.git#tag=1.0.1
 	md5sums = SKIP
 
 pkgname = lfs-me
