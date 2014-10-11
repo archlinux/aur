@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=fteproxy
-pkgver=0.2.16
-pkgrel=2
+pkgver=0.2.18
+pkgrel=1
 pkgdesc="A tool that provides transport-layer protection to resist censorship"
 arch=('any')
 url="https://fteproxy.org/"
@@ -11,7 +11,7 @@ depends=('python2' 'python2-pyptlib' 'python2-crypto' 'python2-fte' 'obfsproxy'
 makedepends=('python2-setuptools')
 optdepends=('tor: to use fteproxy as a pluggable transport')
 source=("https://fteproxy.org/dist/${pkgver}/fteproxy-${pkgver}-src.tar.gz"{,.asc})
-sha256sums=('77083975036c3d5beb30dc989b0150903da30f7a1449986140b4d232fa62b43d'
+sha256sums=('4c8493525cafaea73240fbcd072e9290c14916b277ae6e58d98576fb9ac41073'
             'SKIP')
 
 package() {
