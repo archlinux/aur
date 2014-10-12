@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.17
 pkgver=3.17
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,8 +20,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         )
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
-            'a66e1cab5c41a83fb0e9e04dfa5c7097ab3ca61aa03a50bc5c67390d859c4c3a'
-            '719279c08f6d421c66f2bd58843b985c35291f8c3d3dbd25b3580f456f534cc2'
+            '3c7e07a1e8e9eabff522c84e889b931a0323e34a4574fd23f8ff3af2e2b928c1'
+            'ddf6bdc3390ded35765ccdfa130b0fac91d8ee268c73fc275b921ec8d169010c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 
