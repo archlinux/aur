@@ -1,0 +1,14 @@
+pkgbase = mongroup
+	pkgdesc = Monitor a group of processes with mon
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/jgallen23/mongroup
+	arch = any
+	license = MIT
+	depends = mon
+	depends = bash
+	source = mongroup-0.4.1.tar.gz::https://github.com/jgallen23/mongroup/archive/0.4.1.tar.gz
+	sha256sums = 50c6fb0eb6880fa837238a2036f9bc77d2f6db8c66b8c9a041479e2771a925ae
+
+pkgname = mongroup
+
