@@ -7,8 +7,8 @@ pkgbase = epad-git
 	license = unknown
 	makedepends = git
 	depends = python-efl
-	provides = ePad=r22.0c6abff
-	conflicts = ePad
+	provides = epad=r22.0c6abff
+	conflicts = epad
 	source = git://github.com/JeffHoogland/ePad.git
 	sha256sums = SKIP
 

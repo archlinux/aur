@@ -10,8 +10,8 @@ url="https://github.com/JeffHoogland/ePad"
 license=('unknown')
 depends=('python-efl')
 makedepends=('git')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+provides=("${_pkgname,,}=$pkgver")
+conflicts=("${_pkgname,,}")
 source=("git://github.com/JeffHoogland/ePad.git")
 sha256sums=('SKIP')
 
@@ -19,10 +19,6 @@ pkgver() {
   cd "$srcdir/$_pkgname"
 
   printf "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  sed -i '1i #!/usr/bin/python\n' "$srcdir/$_pkgname/ePad.py"
 }
 
 package() {
