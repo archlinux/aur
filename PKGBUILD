@@ -22,7 +22,5 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
   install -Dm755 "$srcdir/$_pkgname/ePad.py" "$pkgdir/usr/bin/ePad.py"
 }
