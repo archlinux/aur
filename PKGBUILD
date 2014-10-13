@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Simple text editor using Python and EFL"
 arch=('any')
 url="https://github.com/JeffHoogland/ePad"
-license=('unknown')
+license=('GPL3')
 depends=('python-efl')
 makedepends=('git')
 provides=("${_pkgname,,}=$pkgver")
