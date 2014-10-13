@@ -1,6 +1,6 @@
 # Maintainer: Max Bruckner
 pkgname=lfs-me
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A simple fakeroot based package manager for LFS inspired by Archlinux."
 arch=( 'any' )
