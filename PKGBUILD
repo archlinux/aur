@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=sudo-selinux
-_sudover=1.8.11
+_sudover=1.8.11p1
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -24,7 +24,7 @@ install=${pkgname/-selinux}.install
 source=(http://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.tmpfiles.conf
         sudo.pam)
-sha256sums=('a3177de7b5fbebfb43b32fc30aecaaf434762bf23e313de4c4a39e5ff715c845'
+sha256sums=('44c275772595a119185336164bb76b6e08f23d38aa0fe0d6bab48812e75d6a43'
             'SKIP'
             '080dd97111b3149f8d140ffac68c88acd63da9eacc81fbcc7c43591be13b42fe'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
