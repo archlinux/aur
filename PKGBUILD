@@ -2,7 +2,7 @@
 
 _pkgname=ePad
 pkgname=${_pkgname,,}-git
-pkgver=r22.0c6abff
+pkgver=0.5.7.r53.618f5ac
 pkgrel=1
 pkgdesc="Simple text editor using Python and EFL"
 arch=('any')
@@ -18,7 +18,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  printf "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  local v_ver=$(awk -F '"' '/^__version__/ {print $2}' ePad.py)
+
+  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
