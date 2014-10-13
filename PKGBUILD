@@ -3,7 +3,7 @@
 # Contributor: Stefan Betz <info@stefan-betz.net>
 
 pkgname=peervpn
-pkgver=0.039
+pkgver=0.040
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="An open source peer-to-peer VPN"
@@ -14,7 +14,7 @@ depends=('openssl')
 backup=('etc/peervpn/peervpn.conf')
 source=("http://www.peervpn.net/files/peervpn-${_pkgver}.tar.gz"
         'peervpn@.service')
-sha1sums=('4d763987cd6907d4538ed3dcb3e4c283c0db1d19'
+sha1sums=('45f815445a2d654e2da56de965633743d25f3468'
           '6fbbebb760d510b11fd8142712c4d6985cb0d6ca')
 
 build() {
