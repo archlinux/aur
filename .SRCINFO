@@ -1,0 +1,21 @@
+pkgbase = freedoom
+	pkgdesc = Free game based on the Doom engine
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://freedoom.github.io/
+	arch = any
+	license = BSD
+	source = https://dl.dropboxusercontent.com/u/13513277/freedoom/dist.tar.xz
+	source = https://github.com/freedoom/freedoom/releases/download/v0.9/freedm-0.9.zip
+	source = https://github.com/freedoom/freedoom/releases/download/v0.9/freedoom-0.9.zip
+	sha256sums = 079ae7933ffcea9a3d198e6e8ee9d99a045ce9202e8b9ac7071b4d92d3960425
+	sha256sums = 2fabcf6f1d957d48f81f508788bd1c6a780632dda41b837f9cae32972bdad56c
+	sha256sums = 959695b428992feea180942e510e7a6f0109cc7fd47b0d5293d2dbce951743b6
+
+pkgname = freedm
+
+pkgname = freedoom1
+
+pkgname = freedoom2
+	provides = freedoom
+
