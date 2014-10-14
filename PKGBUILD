@@ -6,25 +6,31 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.18.14
-pkgrel=2
+pkgver=0.19
+pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi'
 url='http://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient')
-makedepends=('doxygen')
+depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
+         'boost-libs')
+makedepends=('doxygen' 'boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
 replaces=('mpd')
-source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
+source=("http://www.musicpd.org/download/mpd/${pkgver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha1sums=('5a4b5f5b0447994f3fc186ffd7c16cabeeed2978'
+sha1sums=('1e86d7a724394e81ca0c248f032fc042aee9d2dc'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           'fd581b976f4931abf9b849224dcb38a73af14af0')
 backup=('etc/mpd.conf')
 install=mpd.install
+
+prepare() {
+	cd "${srcdir}/mpd-${pkgver}"
+	touch systemd/mpd.socket
+}
 
 build() {
 	cd "${srcdir}/mpd-${pkgver}"
@@ -58,8 +64,6 @@ package() {
 	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd/playlists
 
 	install -Dm644 "${pkgdir}"/usr/lib/systemd/{system,user}/mpd.service
-	sed \
-		-e '/\[Service\]/a User=mpd' \
-		-e '/WantedBy=/c WantedBy=default.target' \
-		-i "${pkgdir}"/usr/lib/systemd/user/mpd.service
+	sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
+	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/{system,user}/mpd.service
 }
