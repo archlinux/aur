@@ -3,7 +3,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=35.0a1
+pkgver=36.0a1.20141014
+_version=36.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build"
 arch=('i686' 'x86_64')
@@ -11,15 +12,24 @@ license=('MPL' 'GPL' 'LGPL')
 url="http://www.mozilla.org/thunderbird"
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg' 'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss' 'shared-mime-info' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
-provides=("thunderbird=$pkgver")
+provides=("thunderbird=$_version")
 install=$pkgname.install
 source=($pkgname.desktop
         vendor.js)
 sha1sums=('9373c6b8e57692f62bac9f738351407ff27aa6f3'
           '4243393daf5bd5a68644034001f512178cad09cc')
 
+pkgver(){
+  FX_SRC="thunderbird-${_version}.en-US.linux-${CARCH}.txt"
+  FX_SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/thunderbird/nightly/latest-comm-central/${FX_SRC}"
+  msg "Getting last nightly date..."
+  curl -ORz ${FX_SRC} ${FX_SRC_URI}
+  echo "${_version}.$(head -n1 ${FX_SRC} | cut -c -8)"
+
+}
+
 package() {
-  FX_SRC="thunderbird-${pkgver}.en-US.linux-${CARCH}.tar.bz2"
+  FX_SRC="thunderbird-${_version}.en-US.linux-${CARCH}.tar.bz2"
   FX_SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/thunderbird/nightly/latest-comm-central/${FX_SRC}"
 
   msg "Downloading..."
