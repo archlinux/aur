@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GObject-based multi-platform GUI toolkit (v3) (mingw-w64)
-	pkgver = 3.14.1
+	pkgver = 3.14.3
 	pkgrel = 1
 	url = http://www.gtk.org
 	arch = any
@@ -9,9 +9,6 @@ pkgbase = mingw-w64-gtk3
 	makedepends = mingw-w64-pkg-config
 	makedepends = gtk-update-icon-cache
 	makedepends = python2
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = libtool
 	depends = mingw-w64-crt
 	depends = mingw-w64-atk>=2.12.0
 	depends = mingw-w64-pango>=1.36.7
@@ -21,11 +18,11 @@ pkgbase = mingw-w64-gtk3
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.1.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.3.tar.xz
 	source = gtk3-commit-62254c.patch
 	source = 0001-Bug-731013-cross-compilation-broken-when-building-ex.patch
 	source = 0005-Remove-gobject-introspection.patch
-	sha256sums = 7e86eb7c8acc18524d7758ca2340b723ddeee1d0cd2cadd56de5a13322770a52
+	sha256sums = 5e8c62b932f4f0384c3c8cbf251f65978bdecde3211bb16e4c2bde5d8b3af72f
 	sha256sums = 1c8812f68446d509e019b3f26863348f2cfc469dbb8866bbdfa3213e55a7c433
 	sha256sums = d2825227188cf60740540086cd71c56f8e5c6d9c9b9ad7c0869e6746ad0caebe
 	sha256sums = ae632ad20c87032c326dbb1cda086e33a5078909f89174b2ba232be1b48c32a3
