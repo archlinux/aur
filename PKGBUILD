@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=flashplayer-standalone-debug
-pkgver=11.2.202.406
+pkgver=11.2.202.411
 pkgrel=1
 pkgdesc="Standalone, debug version of Adobe Flash Player"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(gtk2 libxt nss curl)
 source=("http://fpdownload.macromedia.com/pub/flashplayer/updaters/11/flashplayer_11_sa_debug.i386.tar.gz"
         "https://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf")
 options=(!strip)
-md5sums=('4cc365fa7e95685e966bc70452e52cce'
+md5sums=('a0963ff1e96ce40cf6cfb7bda5b6d7da'
          '620a140c7e85af655f39f1b583fbf932')
 
 package () {
