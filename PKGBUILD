@@ -5,7 +5,7 @@
 pkgname=clusterssh
 _pkgver=4.02_04
 pkgver=${_pkgver/_/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Cluster SSH opens terminal windows with connections to specified hosts and an administration console"
 arch=('any')
 url="http://sourceforge.net/projects/clusterssh/"
@@ -19,11 +19,13 @@ sha256sums=('a16142261ca83bee871005f9293f4f54da8c24918a6b439cee1f774ed4f0eb5a')
 
 build() {
   cd App-ClusterSSH-$_pkgver
-  perl Makefile.PL
+
+  perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
   cd App-ClusterSSH-$_pkgver
-  make DESTDIR="$pkgdir" install
+
+  make DESTDIR="${pkgdir}" install
 }
