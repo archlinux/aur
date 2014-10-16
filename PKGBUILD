@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=("ftp://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/$pkgname-$pkgver.tar.gz")
+source=("http://distcache.FreeBSD.org/ports-distfiles/$pkgname-$pkgver.tar.gz")
 md5sums=('d2ceb7ca58d998645a4bdc04d986139c')
 
 build() {

@@ -7,7 +7,7 @@ pkgbase = birthday
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = ftp://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/birthday-1.5.tar.gz
+	source = http://distcache.FreeBSD.org/ports-distfiles/birthday-1.5.tar.gz
 	md5sums = d2ceb7ca58d998645a4bdc04d986139c
 
 pkgname = birthday
