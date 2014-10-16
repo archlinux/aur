@@ -1,6 +1,6 @@
 pkgbase = openjazz-svn
 	pkgdesc = A free, open-source version of the classic Jazz Jackrabbit™ games (development version)
-	pkgver = r189
+	pkgver = 20140731.r201
 	pkgrel = 1
 	url = http://alister.eu/jazz/oj/
 	install = openjazz.install

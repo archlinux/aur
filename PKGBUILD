@@ -2,7 +2,7 @@
 # Contributor: Paul Dino Jones "ZitZ" <Raptorman18@gmail.com>
 
 pkgname=openjazz-svn
-pkgver=r189
+pkgver=20140731.r201
 pkgrel=1
 pkgdesc="A free, open-source version of the classic Jazz Jackrabbit™ games (development version)"
 arch=('i686' 'x86_64')
@@ -19,8 +19,9 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd openjazz
+  local date="$(svn log -ql1 | grep -oE "[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}" | tr -d -)"
   local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  printf "$date.r%s" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
@@ -28,6 +29,8 @@ prepare() {
 
   # set global datapath and enable looking in home directory
   patch -Np1 < ../openjazz-datafolders.diff
+  # modplug has changed the header file directory
+  sed 's|<modplug.h>|<libmodplug/modplug.h>|' -i src/io/sound.cpp
 }
 
 build() {
