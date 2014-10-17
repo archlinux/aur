@@ -1,14 +1,14 @@
 pkgbase = vimb
 	pkgdesc = The vim like browser
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fanglingsu.github.io/vimb
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = libsoup
 	depends = webkitgtk
-	source = vimb-2.8.tar.gz::https://codeload.github.com/fanglingsu/vimb/tar.gz/2.8
+	source = vimb-2.8.tar.gz::https://github.com/fanglingsu/vimb/archive/2.8.tar.gz
 	sha256sums = d398b0e772e1c3751ef76dc833e84b4abaa19f6b9b5e75afa63ace8b9ff12e12
 
 pkgname = vimb
