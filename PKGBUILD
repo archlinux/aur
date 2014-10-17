@@ -12,7 +12,7 @@ depends=('openssl')
 backup=('opt/yadifa/etc/yadifad.conf')
 options=(!libtool)
 source=(
-	"http://cdn.yadifa.eu/sites/default/files/releases/$pkgname-$pkgver-$_buildnr.tar.gz"
+	"http://cdn.yadifa.eu/sites/default/files/releases/$pkgname-$pkgver-$_buildnr.tgz"
 	'yadifa.rc'
 	'yadifa.service'
 	'yadifad.conf'
