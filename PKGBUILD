@@ -5,12 +5,16 @@
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Sairon Istyar <saironiq@gmail.com>
 # Contributor: Andreas B. Wagner <andreasbwagner@pointfree.net>
+# Contributor: Samuel Tardieu <sam@rfc1149.net>
 #
 # Any suggestions welcome; please submit paches via Github:
 # https://github.com/alerque/aur/tree/master/git-annex-bin
+#
+# Warning: some builds not up-to-date: x86_64: 5.20141016, i686: 5.20141016, armv6h: 5.20141013
+
 
 pkgname=git-annex-bin
-pkgver=5.20140920
+pkgver=5.20141016
 pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h')
@@ -34,15 +38,15 @@ depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget'
 if [[ $CARCH == "x86_64" ]] ; then
     _file=git-annex-standalone-amd64-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz")
-    sha256sums+=('a1f6185a44e4fc492717cc1678c5d5e4518a5a04e6f62b54a7d1e9505d9a4f84')
+    sha256sums+=('9bfe27d3179fe8f36281b2defaa9747e4904952c9467245b98a1d250da297d90')
 elif [[ $CARCH == "i686" ]] ; then
     _file=git-annex-standalone-i386-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz")
-    sha256sums+=('abe38ed51d581291595067f5a194db45ea785ef8fe09ae7771914c9b16a95bca')
+    sha256sums+=('6ddd0c3d74a360ab4dae69d0ba7b58387fc6b7350ce55d7fc82451922dba4ea0')
 elif [[ $CARCH == "armv6h" ]] ; then
     _file=git-annex-standalone-armel-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz")
-    sha256sums+=('3a0f654439fbf50f2a52000de1455f905172e06f99e3b622fb59dc46df279061')
+    sha256sums+=('bb1e7dabbc1634d7a0fee49467387699f06860c299e2561152cbf580e7c699c9')
 fi
 
 package() {
