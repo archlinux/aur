@@ -17,7 +17,11 @@ source=(
 	'gcs.desktop'
 	'set_app_path_from_env.patch'
 )
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP'
+	'a624fb16a1694c651b392cba91ff120b99ddf3dd1005b4174baca81770a8785c'
+	'15f4bb0caaa0752cceba69c615e16848eba35f18b4d705caae0419a2aa0072f9'
+	'f0a4f484f006da3f70fc26af15647478f6e721de113557f2cb1a93522a5f6d59'
+)
 
 prepare() {
 	msg2 "Patching out hardcoded paths"
