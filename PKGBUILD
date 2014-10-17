@@ -1,32 +1,30 @@
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=yadifa
-pkgver=1.0.3
-_buildnr=2880
+pkgver=2.0.0
+_buildnr=4192
 pkgrel=1
 pkgdesc="lightweight authoritative Name Server with DNSSEC capabilities"
 arch=('i686' 'x86_64')
 url="http://www.yadifa.eu"
 license=('FreeBSD')
 depends=('openssl')
-backup=('opt/yadifa/etc/yadifad.conf')
+backup=('etc/yadifad.conf')
 options=(!libtool)
 source=(
 	"http://cdn.yadifa.eu/sites/default/files/releases/$pkgname-$pkgver-$_buildnr.tgz"
 	'yadifa.service'
-	'yadifad.conf'
-)
-sha256sums=(
-	'11a841620be8a2cb882a904686e48c3c6b49877942a906edffa24130600b4ba3'
-	'095bc19013101c74b7f6e5d79a3ef147a10dc3c362e0c7e1454a9bede6fd00d2'
-	'431f16695abd0e99973edecffecaf730d1bd17dd8ed9006790345542c2c6a231'
 )
 
 build() {
 	cd $pkgname-$pkgver-$_buildnr
 	./configure \
-		--prefix=/opt/$pkgname \
-		LIBS='-ldl'
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--enable-dynamic-provisioning \
+		--enable-rrl
 	make
 }
 
@@ -34,9 +32,13 @@ package(){
 	cd $pkgname-$pkgver-$_buildnr
 	make DESTDIR="$pkgdir" install
 
-	# install default empty config (will not make it work)
-	install -Dm644 "$srcdir/yadifad.conf" "$pkgdir/opt/yadifa/etc/yadifad.conf"
-
 	# systemd service file
 	install -Dm644 "$srcdir/yadifa.service" "$pkgdir/usr/lib/systemd/system/yadifa.service"
+
+	# little cleanup
+	rm -rf "$pkgdir/var/run"
+	rm -rf "$pkgdir/var/log"
 }
+
+sha256sums=('ef98afcfa544474c6634a3177af402fc37453dd3244c084bc9e4b323997ef61c'
+            '438fff4a6c81cb5d2bd35d276abdae6cf5de04c997b7b7d893fdbf3372034130')

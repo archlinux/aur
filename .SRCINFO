@@ -1,6 +1,6 @@
 pkgbase = yadifa
 	pkgdesc = lightweight authoritative Name Server with DNSSEC capabilities
-	pkgver = 1.0.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://www.yadifa.eu
 	arch = i686
@@ -8,13 +8,11 @@ pkgbase = yadifa
 	license = FreeBSD
 	depends = openssl
 	options = !libtool
-	backup = opt/yadifa/etc/yadifad.conf
-	source = http://cdn.yadifa.eu/sites/default/files/releases/yadifa-1.0.3-2880.tgz
+	backup = etc/yadifad.conf
+	source = http://cdn.yadifa.eu/sites/default/files/releases/yadifa-2.0.0-4192.tgz
 	source = yadifa.service
-	source = yadifad.conf
-	sha256sums = 11a841620be8a2cb882a904686e48c3c6b49877942a906edffa24130600b4ba3
-	sha256sums = 095bc19013101c74b7f6e5d79a3ef147a10dc3c362e0c7e1454a9bede6fd00d2
-	sha256sums = 431f16695abd0e99973edecffecaf730d1bd17dd8ed9006790345542c2c6a231
+	sha256sums = ef98afcfa544474c6634a3177af402fc37453dd3244c084bc9e4b323997ef61c
+	sha256sums = 438fff4a6c81cb5d2bd35d276abdae6cf5de04c997b7b7d893fdbf3372034130
 
 pkgname = yadifa
 

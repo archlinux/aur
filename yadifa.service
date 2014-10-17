@@ -2,7 +2,7 @@
 Description=yadifa nameserver
 
 [Service]
-ExecStart=/opt/yadifa/sbin/yadifad
+ExecStart=/usr/bin/yadifad
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 
