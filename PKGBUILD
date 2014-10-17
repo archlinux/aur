@@ -5,13 +5,13 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.8.5
-pkgrel=2
+pkgrel=3
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
 license=('GPL' 'LGPL')
 makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
-             'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant')
+             'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
 source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz
         custom-translation-install-dir.patch)
 sha512sums=('ee6612a34087135065537fa14f09078bad9f029f69b636fb2221193f23d86c5431a9d8a848b264bdcb259680f6bda41d08d58dcf67d19e5a200cb11fa4a26ffe'
