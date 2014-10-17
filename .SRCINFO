@@ -10,11 +10,9 @@ pkgbase = yadifa
 	options = !libtool
 	backup = opt/yadifa/etc/yadifad.conf
 	source = http://cdn.yadifa.eu/sites/default/files/releases/yadifa-1.0.3-2880.tgz
-	source = yadifa.rc
 	source = yadifa.service
 	source = yadifad.conf
 	sha256sums = 11a841620be8a2cb882a904686e48c3c6b49877942a906edffa24130600b4ba3
-	sha256sums = 0ce5dde0768cc333a141314bef726faf053dc83dd6dc5354f288605b6e349895
 	sha256sums = 095bc19013101c74b7f6e5d79a3ef147a10dc3c362e0c7e1454a9bede6fd00d2
 	sha256sums = 431f16695abd0e99973edecffecaf730d1bd17dd8ed9006790345542c2c6a231
 
