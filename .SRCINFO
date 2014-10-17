@@ -1,6 +1,6 @@
 pkgbase = cvs-fast-export
 	pkgdesc = Export RCS or CVS history as a fastimport stream.
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = http://www.catb.org/esr/cvs-fast-export/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cvs-fast-export
 	license = GPL2
 	makedepends = asciidoc
 	depends = python
-	source = http://www.catb.org/~esr/cvs-fast-export/cvs-fast-export-1.20.tar.gz
-	sha256sums = c87ba8bcaaeee1fa1e11f1139cfa1450b5d01156167d74fc4f097e2673a1e69c
+	source = http://www.catb.org/~esr/cvs-fast-export/cvs-fast-export-1.21.tar.gz
+	sha256sums = a79c55da6d642317a2d4363e64ad3422888b8d8462ecb8fb598b7c2f32c28579
 
 pkgname = cvs-fast-export
 
