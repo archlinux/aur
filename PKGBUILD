@@ -1,3 +1,4 @@
+# Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
@@ -7,9 +8,11 @@ pkgdesc='KSysGuard'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/ksysguard'
 license=('LGPL')
-depends=('knewstuff' 'libksysguard' 'lm_sensors')
+depends=('knewstuff' 'libksysguard' 'lm_sensors' 'xdg-utils' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
+groups=('plasma-next')
+install="${pkgname}.install"
 source=("http://download.kde.org/stable/plasma/5.1.0/$pkgname-$pkgver.tar.xz")
 md5sums=('48e32cec871bc7ab670df3ddef37bf6b')
 
@@ -24,7 +27,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DSYSCONF_INSTALL_DIR=/etc \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
   make
 }
 
