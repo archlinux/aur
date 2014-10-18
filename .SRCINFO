@@ -1,0 +1,18 @@
+pkgbase = python2-pychromecast-git
+	pkgdesc = Library for Python 2 and 3 to communicate with the Google Chromecast.
+	pkgver = 88.702017d
+	pkgrel = 1
+	url = https://github.com/balloob/pychromecast
+	arch = any
+	license = MIT
+	depends = python2>=2.7
+	depends = python2-requests
+	depends = python2-protobuf
+	provides = python2-pychromecast
+	conflicts = python2-pychromecast
+	options = !emptydirs
+	source = git+https://github.com/balloob/pychromecast.git
+	sha256sums = SKIP
+
+pkgname = python2-pychromecast-git
+
