@@ -1,7 +1,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 _pkgbasename=v4l-utils
 pkgname=lib32-$_pkgbasename
-pkgver=1.2.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('gcc-multilib')
 depends=('lib32-gcc-libs' $_pkgbasename lib32-libjpeg-turbo)
 source=(http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2
         http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2.asc)
-sha256sums=('9b658fbcaaf8127115316e07fea314aebc21dd6dc3491cd8753a768521c4b9af'
+sha256sums=('6054d3120c67a1524993e699b3b02036c817bb000b742c332682163966dc7605'
             'SKIP')
 
 build() {
