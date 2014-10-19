@@ -2,7 +2,7 @@
 # Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
 
 pkgname=python2-websocket-client
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Websocket client for Python."
 url="https://github.com/liris/websocket-client"
@@ -12,7 +12,7 @@ depends=('python2>=2.7' 'python2-backports.ssl_match_hostname' 'python2-six')
 
 makedepends=('python2-distribute')
 source=(http://pypi.python.org/packages/source/w/websocket-client/websocket-client-$pkgver.tar.gz)
-sha512sums=('74a970cf8391b70a61e07887d86eadf3c85a44d6e6877975a7135992e878ff56a1110eef63ea9a4f4b3513cfad109c954c4bcd77c68f741bffd569367f10cfe9')
+sha512sums=('dee89e4da67f28137ffd7d014142876ad4265f3bc21aa608b848c5f6f8dd06a592e818ea3a5fc62a9c0ccd5fa142aade0efc20c8556653003c09d9bd46c00695')
 
 build() {
   cd "$srcdir/websocket-client-$pkgver"
