@@ -3,7 +3,7 @@ timeout 10
 
 title Linux-Linode %VER%
 root (hd0)
-kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro
+kernel /boot/vmlinuz-linux-linode root=/dev/xvda console=hvc0 loglevel=4 ro rootflags=noatime,nodiratime,data=journal,barrier=0,commit=5,journal=update,errors=remount-ro kaslr
 initrd /boot/initramfs-linux-linode.img
 
 title Linux-Linode %VER% - rescue-ish
