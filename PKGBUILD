@@ -2,11 +2,12 @@
 pkgname='irssi-xmpp-git'
 pkgdesc='irssi plugin to connect to the Jabber network (cdidier version)'
 pkgver=r0.52.26.g4df4194
-pkgrel=1
+pkgrel=2
 arch=('arm' 'i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/cdidier/irssi-xmpp"
 depends=('loudmouth' 'irssi')
+makepdends=('pkg-config')
 conflicts=('irssi-xmpp-cvs' 'irssi-xmpp')
 provides=('irssi-xmpp')
 source=("${pkgname}::git+${url}")
