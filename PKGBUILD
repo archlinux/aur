@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=flwm-git
 _pkgname=flwm
-pkgver=1.14.r7.g50e1b2b
-pkgrel=2
+pkgver=1.14.r8.gc896405
+pkgrel=1
 pkgdesc="Fast Light Window Manager"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/flwm"
