@@ -1,7 +1,7 @@
 pkgbase = libdart
 	pkgdesc = Dynamic Animation and Robotics Toolkit
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dartsim.github.io
 	arch = i686
 	arch = x86_64
