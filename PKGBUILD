@@ -3,12 +3,12 @@
 
 pkgname=libgnome-keyring
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME keyring client library"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
-depends=('dbus-core' 'glib2' 'libgcrypt')
-makedepends=('intltool' 'gobject-introspection' 'vala')
+depends=('dbus' 'glib2' 'libgcrypt')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'python2')
 optdepends=('gnome-keyring: key storage service (or use any other service implementing org.freedesktop.secrets)')
 options=('!emptydirs')
 url="http://www.gnome.org"
