@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=choreonoid
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated robotics GUI environment."
 arch=('any')
 url="http://choreonoid.org"
