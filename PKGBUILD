@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=perlpanel-git
-pkgver=0.9.1.34
-pkgrel=3
+pkgver=0.9.1.37
+pkgrel=1
 pkgdesc="The ideal accompaniment to a light-weight Window Manager such as OpenBox, or a desktop-drawing program like iDesk."
 arch=('any')
 #url="http://savannah.nongnu.org/projects/perlpanel"
