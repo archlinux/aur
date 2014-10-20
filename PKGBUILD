@@ -2,7 +2,7 @@
 
 pkgname=rbdyn-git
 _name=rbdyn
-pkgver=20131221
+pkgver=20140925
 pkgver() {
   date +%Y%m%d
 }
@@ -25,8 +25,13 @@ build()
 
   mkdir -p ${srcdir}/build && cd ${srcdir}/build
 
-  cmake "${srcdir}/${_name}" -DCMAKE_INSTALL_PREFIX="/usr" \
-                             -DCMAKE_BUILD_TYPE="Release"
+  cmake "${srcdir}/${_name}" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_BUILD_TYPE="Release" \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so
+
   make
 }
 
