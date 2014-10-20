@@ -1,6 +1,6 @@
 pkgbase = prboom-plus-svn
 	pkgdesc = An enhanced version of the PrBoom Doom engine port
-	pkgver = 4355
+	pkgver = 4403
 	pkgrel = 1
 	url = http://prboom-plus.sourceforge.net/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = prboom-plus-svn
 	depends = sdl_mixer
 	depends = sdl_net
 	conflicts = prboom-plus
-	source = prboom-plus::svn+http://www.crowproductions.de/repos/prboom/branches/prboom-plus-24/prboom2
+	source = prboom-plus::svn+https://svn.prboom.org/repos/branches/prboom-plus-24/prboom2
 	source = prboom-plus.desktop
 	source = prboom-plus-game-server.desktop
 	sha256sums = SKIP

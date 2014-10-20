@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=prboom-plus-svn
-pkgver=4355
+pkgver=4403
 pkgrel=1
 pkgdesc="An enhanced version of the PrBoom Doom engine port"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libgl' 'libmad' 'mesa' 'portmidi' 'sdl_image' 'sdl_mixer' 'sdl_net')
 makedepends=('subversion' 'make' 'autoconf' 'automake' 'deutex-devel' 'unzip' 'imagemagick')
 conflicts=('prboom-plus')
-source=('prboom-plus::svn+http://www.crowproductions.de/repos/prboom/branches/prboom-plus-24/prboom2'
+source=('prboom-plus::svn+https://svn.prboom.org/repos/branches/prboom-plus-24/prboom2'
         prboom-plus.desktop prboom-plus-game-server.desktop)
 sha256sums=('SKIP'
             'a858c1dbb4fb10f87d1348ae5a521726e5e6f9ba4e41a392af57aa5b9b6d791d'
