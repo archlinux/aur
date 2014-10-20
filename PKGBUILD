@@ -5,7 +5,7 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.8.5
-pkgrel=3
+pkgrel=4
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
@@ -51,7 +51,7 @@ package_fcitx() {
   pkgdesc="Flexible Context-aware Input Tool with eXtension"
   depends=('pango' 'libxinerama' 'gtk-update-icon-cache' 'shared-mime-info' \
            'hicolor-icon-theme' 'desktop-file-utils' 'libxkbfile' \
-           'libxfixes' 'dbus-core' 'icu')
+           'libxfixes' 'dbus' 'icu')
   optdepends=('enchant: for word predication support'
               'opencc: optional engine to do chinese convert'
               'gettext: for fcitx-po-parser')
