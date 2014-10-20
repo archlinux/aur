@@ -1,10 +1,11 @@
 pkgbase = dmon
 	pkgdesc = Toolset for daemonizing and supervising processes
 	pkgver = 0.4.2
-	pkgrel = 2
-	url = http://gitorious.org/dmon
+	pkgrel = 3
+	url = https://github.com/aperezdc/dmon
 	arch = i686
 	arch = x86_64
+	arch = arm
 	license = MIT
 	makedepends = make
 	depends = glibc
