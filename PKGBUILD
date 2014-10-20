@@ -1,8 +1,8 @@
 # Maintainer: Doug Newgard <scimmia22 at outlook dot com>
 
-pkgname=eruler-git
-_pkgname=${pkgname%-*}
-pkgver=0.1.0.r4.e8fee1a
+_pkgname=eruler
+pkgname=$_pkgname-git
+pkgver=0.1.0.r9.386f9e7
 pkgrel=1
 pkgdesc="On-Screen Ruler and Measurement Tools using EFL"
 arch=('i686' 'x86_64')
@@ -17,10 +17,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  
-  local _ver=$(awk -F , '/^AC_INIT/ {print $2}' configure.ac | tr -d '[ ]-')
-  
-  echo $_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+
+  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+
+  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -39,6 +39,6 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS README
 }
