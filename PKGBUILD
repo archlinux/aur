@@ -1,6 +1,6 @@
 # Maintainer: Max Bruckner
 pkgname=lfs-me
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A simple fakeroot based package manager for LFS inspired by Archlinux."
 arch=( 'any' )
@@ -17,4 +17,5 @@ package() {
     install -Dm 644 Changelog.md   "${pkgdir}/usr/share/doc/${pkgname}/Changelog.md"
     install -Dm 644 README.md      "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 KNOWN_ISSUES   "${pkgdir}/usr/share/doc/${pkgname}/KNOWN_ISSUES"
+	#TODO install examples
 }
