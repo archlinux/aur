@@ -5,8 +5,8 @@
 
 pkgname=larswm-git
 _pkgname=larswm
-pkgver=7.5.3.r15.g0d2c93d
-pkgrel=2
+pkgver=7.5.3.r17.gefa957c
+pkgrel=1
 pkgdesc="A tiling window manager based on 9wm"
 arch=('i686' 'x86_64')
 url="http://porneia.free.fr/larswm/larswm.html"
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 depends=('libxmu')
 makedepends=('imake' 'git')
 backup=(usr/share/X11/larswm/system.larswmrc)
-source=("$pkgname::git+https://github.com/jpinon/larswm.git"
+source=("$pkgname::git+https://github.com/bbidulock/larswm.git"
 	"$_pkgname.desktop")
 md5sums=('SKIP'
          '528a346582657f7cae09fc89d143e634')
