@@ -1,6 +1,6 @@
 pkgname=sdformat
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
