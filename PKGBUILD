@@ -8,7 +8,7 @@ pkgdesc="client to upload data to an acousticbrainz server"
 arch=('x86_64' 'i686')
 url="http://acousticbrainz.org/"
 license=('GPL3')
-depends=('python2-requests')
+depends=('essentia-acousticbrainz' 'python2-requests')
 makedepends=('git')
 provides=()
 conflicts=()
@@ -17,24 +17,18 @@ options=()
 source=("git+https://github.com/MTG/$_pkgname.git")
 md5sums=('SKIP')
 
-# use binary essentia for now
-_EXT_HASH=21ef5f41f15ed1f80c8f9b36802430055d3b93e9
-_EXT="http://acousticbrainz.org/static/download/essentia-extractor-$_EXT_HASH-linux-$CARCH"
-source+=("$_EXT.tar.gz")
-if [ "$CARCH" = "x86_64" ]; then
-  md5sums+=('4aabb509dfc86530cdbecbdfdff6ab7d')
-else
-  md5sums+=('4fd57bc2fd9ed3755d62b016c72e68bc')
-fi
-
 pkgver() {
   cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$srcdir/$_pkgname"
+  # we have that in essentia-acousticbrainz
+  sed -i -e "s/, 'streaming_extractor_music'//" setup.py
+}
+
 build() {
-  cd "$srcdir/$_EXT"
-  cp streaming_extractor_music ../$_pkgname
   cd "$srcdir/$_pkgname"
   $_python setup.py build
 }

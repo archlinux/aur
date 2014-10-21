@@ -7,11 +7,10 @@ pkgbase = acousticbrainz-client-git
 	arch = i686
 	license = GPL3
 	makedepends = git
+	depends = essentia-acousticbrainz
 	depends = python2-requests
 	source = git+https://github.com/MTG/acousticbrainz-client.git
-	source = http://acousticbrainz.org/static/download/essentia-extractor-21ef5f41f15ed1f80c8f9b36802430055d3b93e9-linux-.tar.gz
 	md5sums = SKIP
-	md5sums = 4fd57bc2fd9ed3755d62b016c72e68bc
 
 pkgname = acousticbrainz-client-git
 
