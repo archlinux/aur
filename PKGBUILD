@@ -7,7 +7,7 @@ pkgdesc="DHCP test client"
 arch=('i686' 'x86_64')
 url="https://github.com/CyberShadow/dhcptest"
 license=('BSL1.0')
-makedepends=('dmd')
+makedepends=('dmd' 'git')
 source=("$pkgname"::'git://github.com/CyberShadow/dhcptest'
         'http://www.boost.org/LICENSE_1_0.txt')
 md5sums=('SKIP'
