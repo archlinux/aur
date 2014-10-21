@@ -11,6 +11,7 @@ arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://www.prevanders.net/dwarf.html"
 depends=('elfutils')
+makedepends=('git')
 source=("libdwarf"::"git://git.code.sf.net/p/libdwarf/code")
 md5sums=('SKIP')
 provides=('libdwarf')
