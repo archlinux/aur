@@ -30,7 +30,7 @@ fi
 source=("http://www.vernier.com/files/downloads/LPL-${_buildnum}-${_archbits}.tar.gz"
         "wrapper.sh")
 
-sha256sums+=('c3a9c71911db64929e934f84757e6c09591fa29bc56da50d8cd4b347dde4f802')
+sha256sums+=('b195e4d410643d19095dfaa5dc3810c9f18b8fb59a2191853a47a2fa701406b4')
 
 # _extract_deb
 # Extract a .deb file into the geivn folder.

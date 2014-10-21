@@ -10,7 +10,7 @@ pkgbase = logger-pro-beta
 	options = !strip
 	source = http://www.vernier.com/files/downloads/LPL-3846-.tar.gz
 	source = wrapper.sh
-	sha256sums = c3a9c71911db64929e934f84757e6c09591fa29bc56da50d8cd4b347dde4f802
+	sha256sums = b195e4d410643d19095dfaa5dc3810c9f18b8fb59a2191853a47a2fa701406b4
 
 pkgname = logger-pro-beta
 	install = logger-pro.install
