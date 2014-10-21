@@ -1,5 +1,5 @@
 pkgbase = essentia-acousticbrainz
-	pkgdesc = Open-source C++ library for audio analysis and audio-based music information retrieval
+	pkgdesc = audio analysis and audio-based music information retrieval for acousticbrainz
 	pkgver = 2.1_beta1.r28.g21ef5f4
 	pkgrel = 1
 	url = http://essentia.upf.edu/

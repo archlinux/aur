@@ -8,7 +8,7 @@ _AB_COMMIT=21ef5f41f15ed1f80c8f9b36802430055d3b93e9
 
 pkgver=2.1_beta1.r28.g21ef5f4
 pkgrel=1
-pkgdesc="Open-source C++ library for audio analysis and audio-based music information retrieval"
+pkgdesc="audio analysis and audio-based music information retrieval for acousticbrainz"
 url="http://essentia.upf.edu/"
 arch=('x86_64' 'i686')
 license=('GPL')
