@@ -1,0 +1,7 @@
+post_upgrade() {
+	gtk-update-icon-cache /usr/share/icons/hicolor/
+	gtk-update-icon-cache /usr/share/icons/gnome/
+	update-mime-database /usr/share/mime
+
+	update-desktop-database -q
+}
