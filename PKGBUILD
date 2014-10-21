@@ -24,11 +24,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    #PYTHON=/usr/bin/python2 python2 waf configure \
     $_python waf configure \
 	    --mode=release --prefix=/usr/ \
 	    --with-example=streaming_extractor_music
-    #PYTHON=/usr/bin/python2 python2 waf --prefix=/usr/
     $_python waf --prefix=/usr/
 }
 
