@@ -12,7 +12,7 @@ pkgdesc="Open-source C++ library for audio analysis and audio-based music inform
 url="http://essentia.upf.edu/"
 arch=('x86_64' 'i686')
 license=('GPL')
-makedepends=('python2')
+makedepends=('python2' 'git')
 depends=('libyaml' 'fftw' 'ffmpeg' 'taglib' 'libsamplerate')
 source=("git+https://github.com/MTG/$_pkgname.git#commit=$_AB_COMMIT")
 md5sums=('SKIP')
