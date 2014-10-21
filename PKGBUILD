@@ -20,6 +20,7 @@ _buildnum="$pkgver"
 if [ "$CARCH" = 'i686' ] ; then
 	_archbits="32"
 	_archname="i386"
+	sha256sums=('d405e1a2135c0b3fd3a0893ef32ff66f2e446a37f8a8d4d0aa184538a3b1cfb4')
 elif [ "$CARCH" = 'x86_64' ] ; then
 	_archbits="64"
 	_archname="amd64"
