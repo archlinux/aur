@@ -1,6 +1,11 @@
---- waflib/extras/process_resources.py	2014-09-30 18:36:48.000000000 +0200
-+++ waflib/extras/process_resources.py.new	2014-10-06 13:59:22.009465477 +0200
-@@ -29,14 +29,14 @@
+--- waflib/extras/process_resources.py	2014-10-16 19:57:13.000000000 +0200
++++ waflib/extras/process_resources.py.new	2014-10-21 08:14:38.228700159 +0200
+@@ -29,18 +29,18 @@
+ 		elif res_type=="png-color":
+ 			output_pbi=resources_path_node.get_bld().make_node(input_file+'.pbi')
+ 			pack_entries.append((output_pbi,def_name))
+-			bld(rule="python '{}' pbi-color '{}' '{}'".format(bitmap_script.abspath(),input_node.abspath(),output_pbi.abspath()),source=[input_node,bitmap_script],target=output_pbi)
++			bld(rule="'{}' '{}' pbi-color '{}' '{}'".format(sys.executable, bitmap_script.abspath(),input_node.abspath(),output_pbi.abspath()),source=[input_node,bitmap_script],target=output_pbi)
  		elif res_type=="png":
  			output_pbi=resources_path_node.get_bld().make_node(input_file+'.pbi')
  			pack_entries.append((output_pbi,def_name))
@@ -18,7 +23,7 @@
  		elif res_type=="font":
  			output_pfo=resources_path_node.get_bld().make_node(input_file+'.'+str(def_name)+'.pfo')
  			m=re.search('([0-9]+)',def_name)
-@@ -64,7 +64,7 @@
+@@ -68,7 +68,7 @@
  				character_list='--list "%s"'%os.path.join(os.path.dirname(input_node.abspath()),entry['characterList'])
  			else:
  				character_list=''
@@ -27,7 +32,7 @@
  		else:
  			waflib.Logs.error("Error Generating Resources: File: "+input_file+" has specified invalid type: "+res_type)
  			waflib.Logs.error("Must be one of (raw, png, png-trans, font)")
-@@ -90,8 +90,8 @@
+@@ -94,8 +94,8 @@
  	resource_code_script=tools_path.find_node('generate_resource_code.py')
  	data_sources=[]
  	cat_string="cat"
@@ -38,7 +43,7 @@
  	for entry in pack_entries:
  		cat_string+=' "%s" '%entry[0].abspath()
  		data_sources.append(entry[0])
-@@ -104,15 +104,15 @@
+@@ -108,15 +108,15 @@
  		open(task.outputs[0].abspath(),'a').close()
  	bld(rule=cat_string if pack_entries else touch,source=data_sources,target=data_node)
  	bld(rule=table_string,source=data_sources+[md_script],target=table_node)

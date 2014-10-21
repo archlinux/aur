@@ -2,7 +2,7 @@
 # vim: ft=sh
 
 pkgname=pebble-sdk
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
@@ -16,8 +16,8 @@ source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/Peb
         'python-waf.patch'
         'build-command.patch'
         'pebble-sdk.install')
-sha1sums=('e60efe8bc73ed3a8490a4590232bf1fbe448afc0'
-          'e80fbabbe4e137f9bc49ec4feb0ef45f51ea228f'
+sha1sums=('e39d5533993e755a87c4f1c2a34f5324b1b082fe'
+          'fadae5eeb3465f4576e2c7a7139d7330240b0343'
           '215c4e3d6b3d4649b4baae27fae66c3d596a307c'
           '7ea5244f828e682d073434078569fab62a1ad996')
 options=('staticlibs' '!strip')
