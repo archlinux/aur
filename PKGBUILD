@@ -1,7 +1,7 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python2-lineprofiler
-pkgver=1.0b3
+pkgver=1.0
 pkgrel=1
 pkgdesc="Line-by-line profiler."
 url="http://pypi.python.org/pypi/line_profiler"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=( 'python2' )
 makedepends=('cython2')
 source=(http://pypi.python.org/packages/source/l/line_profiler/line_profiler-$pkgver.tar.gz)
-md5sums=('63fc2a757192eb5e577559cfdff5b831')
+md5sums=('2f8352acfedf83f701a564583db5e14d')
 
 build() {
   cd "${srcdir}/line_profiler-${pkgver}"
