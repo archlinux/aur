@@ -1,0 +1,25 @@
+pkgbase = chrome-remote-desktop
+	pkgdesc = Allows you to securely access your computer over the Internet through Chrome.
+	pkgver = 40.0.2214.44
+	pkgrel = 1
+	url = https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp
+	install = chrome-remote-desktop.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	depends = python2-psutil
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = xorg-xdpyinfo
+	depends = xorg-setxkbmap
+	depends = xorg-server-xvfb
+	depends = xorg-xauth
+	source = chrome-remote-desktop.service
+	source = https://dl.google.com/linux/direct/chrome-remote-desktop_current_i386.deb
+	md5sums = cde1758e875ff114cc8153edb7087d2a
+	md5sums = SKIP
+
+pkgname = chrome-remote-desktop
+
