@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 185036 2013-05-10 14:39:15Z bpiotrowski $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=1.2.1
+pkgver=2.4.2
 pkgrel=1
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix"
@@ -15,10 +15,14 @@ license=('GPL')
 depends=(
       'lib32-alsa-lib' 'lib32-bzip2' 'lib32-fontconfig'
       'lib32-zlib'
+      'lib32-enca' 'lib32-ass' 'lib32-libbluray' 'lib32-fribidi'
+      'lib32-gsm' 'lib32-libmodplug' 'lib32-lame'
+      'lib32-opus' 'lib32-rtmpdump' 'lib32-schroedinger'
+      'lib32-libtheora' 'lib32-libx264' 'lib32-xvidcore'
       )
 makedepends=('yasm')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
-sha256sums=('0302375c3a64e9c2facfa7cbeb1aa333a39fdf6bbacda228cd48e04bf9ee32ca')
+sha256sums=('974f90a9d7bde835213ab970c2190402e5d6566e47a7bb657d756ee92540fa7e')
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -29,45 +33,44 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib32 \
     --shlibdir=/usr/lib32 \
+    --cc="gcc -m32" \
     --disable-debug \
     --disable-static \
-    --disable-avresample \
-    --disable-dxva2 \
+    --disable-stripping \
+    --enable-avisynth \
+    --enable-avresample \
     --enable-fontconfig \
+    --enable-gnutls \
     --enable-gpl \
-    --disable-libass \
-    --disable-libfreetype \
-    --disable-libgsm \
-    --disable-libmodplug \
-    --disable-libmp3lame \
-    --disable-libopencore_amrnb \
-    --disable-libopencore_amrwb \
-    --disable-libopenjpeg \
-    --disable-libopus \
-    --disable-libpulse \
-    --disable-librtmp \
-    --disable-libschroedinger \
-    --disable-libspeex \
-    --disable-libtheora \
-    --disable-libv4l2 \
-    --disable-libvorbis \
-    --disable-libvpx \
-    --disable-libx264 \
-    --disable-libxvid \
-    --disable-postproc \
+    --enable-libass \
+    --enable-libbluray \
+    --enable-libfreetype \
+    --enable-libfribidi \
+    --enable-libgsm \
+    --enable-libmodplug \
+    --enable-libmp3lame \
+    --enable-libopus \
+    --enable-libpulse \
+    --enable-librtmp \
+    --enable-libschroedinger \
+    --enable-libtheora \
+    --enable-libv4l2 \
+    --enable-libvorbis \
+    --enable-libx264 \
+    --enable-libxvid \
     --enable-runtime-cpudetect \
     --enable-shared \
-    --disable-vdpau \
+    --enable-swresample \
+    --enable-vdpau \
     --enable-version3 \
-    --disable-x11grab \
-    --disable-programs \
-    --disable-doc \
-    --disable-everything \
-    --enable-encoder=ac3 \
-    --enable-encoder=ac3_fixed \
-    --enable-muxer=ac3 \
-    --enable-parser=ac3 \
-    --cc="gcc -m32"
+    --enable-x11grab
+
+#    --enable-libopencore_amrnb \
+#    --enable-libopencore_amrwb \
+#    --enable-libopenjpeg \
+#    --enable-libspeex \
+#    --enable-libvpx \
+#    --enable-libx265 \
 
   make
 }
@@ -75,7 +78,7 @@ build() {
 package() {
   cd $_pkgbasename-$pkgver
   make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/include"
+  rm -rf "$pkgdir"/usr/{include,share,bin}
 }
 
 # vim:set ts=2 sw=2 et:
