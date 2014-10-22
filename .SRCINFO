@@ -1,6 +1,6 @@
 pkgbase = python-debian
 	pkgdesc = Python modules to work with Debian-related data formats
-	pkgver = 0.1.22
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = http://packages.debian.org/sid/python-debian
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-debian
 	depends = python-six
 	optdepends = python-apt: interface to libapt-pkg
 	options = !emptydirs
-	source = http://ftp.debian.org/debian/pool/main/p/python-debian/python-debian_0.1.22.tar.xz
-	sha256sums = c055dccdc5d9a762f90ce82eeab6610727cd56a29f6db2b68fce763ac5b942e0
+	source = http://ftp.debian.org/debian/pool/main/p/python-debian/python-debian_0.1.24.tar.xz
+	sha256sums = da36ac47d8b929af12d6889c974159e00c9f7372b84041b6663bb9114e83b854
 
 pkgname = python-debian
 

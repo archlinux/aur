@@ -1,7 +1,7 @@
 # Maintainer: Johannes Dewender   arch at JonnyJD dot net
 pkgname=python-debian
 _python=python
-pkgver=0.1.22
+pkgver=0.1.24
 pkgrel=1
 pkgdesc="Python modules to work with Debian-related data formats"
 arch=('any')
@@ -13,14 +13,14 @@ makedepends=()
 conflicts=()
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/p/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('c055dccdc5d9a762f90ce82eeab6610727cd56a29f6db2b68fce763ac5b942e0')
+sha256sums=('da36ac47d8b929af12d6889c974159e00c9f7372b84041b6663bb9114e83b854')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   $_python setup.py build
 }
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   $_python setup.py install --root="$pkgdir/" --optimize=1
 }
 
