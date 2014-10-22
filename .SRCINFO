@@ -6,11 +6,11 @@ pkgbase = android-armv7a-eabi-system-image
 	arch = any
 	license = custom
 	depends = android-platform
-	provides = android-armv7a-eabi-system-image-19
-	conflicts = android-armv7a-eabi-system-image-19
+	provides = android-armv7a-eabi-system-image-21
+	conflicts = android-armv7a-eabi-system-image-21
 	options = !strip
-	source = http://dl.google.com/android/repository/sysimg_armv7a-19_r02.zip
-	sha1sums = e0d375397e28e3d5d9577a00132463a4696248e5
+	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_arm-21_r02.zip
+	sha1sums = 3b86f52b0141e3d9d52ae80af6e12037cc4a670f
 
 pkgname = android-armv7a-eabi-system-image
 

@@ -5,7 +5,7 @@
 
 _rev=r02
 _sdkver=4.4.2
-_apilevel=19
+_apilevel=21
 pkgname=android-armv7a-eabi-system-image
 pkgver=${_sdkver}_${_rev}
 pkgrel=1
@@ -17,8 +17,8 @@ depends=("android-platform")
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sysimg_armv7a-${_apilevel}_${_rev}.zip")
-sha1sums=('e0d375397e28e3d5d9577a00132463a4696248e5')
+source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_arm-${_apilevel}_${_rev}.zip")
+sha1sums=('3b86f52b0141e3d9d52ae80af6e12037cc4a670f')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/"
