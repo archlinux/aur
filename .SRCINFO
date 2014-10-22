@@ -1,9 +1,8 @@
 pkgbase = chocolate-doom
 	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
-	pkgver = 2.0.0
-	pkgrel = 4
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://www.chocolate-doom.org/
-	install = chocolate-doom.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,8 +11,8 @@ pkgbase = chocolate-doom
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
-	source = http://chocolate-doom.org/downloads/2.0.0/chocolate-doom-2.0.0.tar.gz
-	sha256sums = 85c58b77dad933013253b453ef01907492b4719acd56cf8cb6c76f4a361ab60c
+	source = http://chocolate-doom.org/downloads/2.1.0/chocolate-doom-2.1.0.tar.gz
+	sha256sums = 629305e7f328659f3e93e89b93adc9da4e99b5a351e51ceb749dcf3e3da8bcd3
 
 pkgname = chocolate-doom
 	pkgdesc = Doom port accurately reproducing the original DOS EXEs.
@@ -21,6 +20,9 @@ pkgname = chocolate-doom
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common
+	optdepends = freedm: Free deathmatch game
+	optdepends = freedoom1: Free Ultimate Doom-compatible game (not vanilla compatible, but useful for mods)
+	optdepends = freedoom2: Free Doom II/Final Doom-compatible game (not vanilla compatible, but useful for mods)
 
 pkgname = chocolate-heretic
 	pkgdesc = Heretic port accurately reproducing the original DOS EXEs.
@@ -28,6 +30,7 @@ pkgname = chocolate-heretic
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = chocolate-common
+	optdepends = blasphemer: Free Heretic-compatible game
 
 pkgname = chocolate-hexen
 	pkgdesc = Hexen port accurately reproducing the original DOS EXEs.
@@ -45,5 +48,6 @@ pkgname = chocolate-strife
 
 pkgname = chocolate-common
 	pkgdesc = Files shared in common with Chocolate Doom-based games.
+	install = chocolate-doom.install
 	depends = sdl_net
 
