@@ -13,12 +13,13 @@ arch=('x86_64')
 url="http://ffmpeg.org/"
 license=('GPL')
 depends=(
-      'lib32-alsa-lib' 'lib32-bzip2' 'lib32-fontconfig'
-      'lib32-zlib'
-      'lib32-enca' 'lib32-ass' 'lib32-libbluray' 'lib32-fribidi'
+      'lib32-alsa-lib' 'lib32-fontconfig'
+      'lib32-gnutls' 'lib32-sdl'
+      'lib32-libass' 'lib32-libbluray' 'lib32-fribidi'
       'lib32-gsm' 'lib32-libmodplug' 'lib32-lame'
-      'lib32-opus' 'lib32-rtmpdump' 'lib32-schroedinger'
-      'lib32-libtheora' 'lib32-libx264' 'lib32-xvidcore'
+      'lib32-opus' 'lib32-libpulse' 'lib32-rtmpdump' 'lib32-schroedinger'
+      'lib32-libtheora' 'lib32-v4l-utils' 'lib32-libxv'
+      'lib32-libx264' 'lib32-xvidcore' 'lib32-libvdpau'
       )
 makedepends=('yasm')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
