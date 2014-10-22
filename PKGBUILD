@@ -4,10 +4,9 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r02
-_sdkver=4.4.2
 _apilevel=21
 pkgname=android-armv7a-eabi-system-image
-pkgver=${_sdkver}_${_rev}
+pkgver=${_apilevel}_${_rev}
 pkgrel=1
 pkgdesc='Android ARM EABI v7a System Image, latest API'
 arch=('any')

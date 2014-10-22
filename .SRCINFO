@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-system-image
 	pkgdesc = Android ARM EABI v7a System Image, latest API
-	pkgver = 4.4.2_r02
+	pkgver = 21_r02
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
