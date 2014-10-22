@@ -2,7 +2,7 @@
 
 _rev=r02
 _sdkver=4.3
-_apilevel=19
+_apilevel=21
 pkgname=android-x86-system-image
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -15,8 +15,8 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("https://dl-ssl.google.com/android/repository/sys-img/x86/sysimg_x86-${_apilevel}_${_rev}.zip")
-sha1sums=('8889cb418984a2a7916a359da7c429d2431ed060')
+source=("https://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-${_apilevel}_${_rev}.zip")
+sha1sums=('bb00e3d8675a80b09dfbdef813789efdaa1304a8')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/"

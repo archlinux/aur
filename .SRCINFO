@@ -1,6 +1,6 @@
 pkgbase = android-x86-system-image
 	pkgdesc = Android x86 Atom System Image, latest API
-	pkgver = 19_r02
+	pkgver = 21_r02
 	pkgrel = 1
 	url = https://software.intel.com/en-us/articles/android-4-4-kitkat-x86-emulator-system-image
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = android-x86-system-image
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
-	provides = android-x86-system-image-19
-	conflicts = android-x86-system-image-19
+	provides = android-x86-system-image-21
+	conflicts = android-x86-system-image-21
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/sys-img/x86/sysimg_x86-19_r02.zip
-	sha1sums = 8889cb418984a2a7916a359da7c429d2431ed060
+	source = https://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-21_r02.zip
+	sha1sums = bb00e3d8675a80b09dfbdef813789efdaa1304a8
 
 pkgname = android-x86-system-image
 
