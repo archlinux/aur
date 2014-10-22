@@ -2,15 +2,15 @@
 
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
-pkgver=2.0.0.189.ga2c75d2
-pkgrel=1
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
+pkgver=2.1.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('git' 'autoconf' 'python')
-install=${_pkgname}.install
+install=chocolate-doom.install
 source=(git+https://github.com/chocolate-doom/chocolate-doom.git)
 sha256sums=('SKIP')
 
@@ -56,6 +56,9 @@ package_chocolate-common-git() {
 package_chocolate-doom-git() {
   pkgdesc="Doom port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
+  optdepends=('freedm: Free deathmatch game'
+    'freedoom1: Free Ultimate Doom-compatible game (not vanilla compatible, but useful for mods)'
+    'freedoom2: Free Doom II/Final Doom-compatible game (not vanilla compatible, but useful for mods)')
   conflicts=(chocolate-doom)
 
   cd "${_pkgname}"
@@ -75,6 +78,7 @@ package_chocolate-doom-git() {
 package_chocolate-heretic-git() {
   pkgdesc="Heretic port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'chocolate-common-git')
+  optdepends=('blasphemer: Free Heretic-compatible game')
   conflicts=(chocolate-heretic)
 
   cd "${_pkgname}"
