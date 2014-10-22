@@ -1,0 +1,33 @@
+post_install() {
+  if [ -z "$(getent group nrpe)" ]; then
+    groupadd -g 31 nrpe
+  fi
+  if [ -z "$(getent passwd nrpe)" ]; then
+    useradd -u 31 -g nrpe -c "Nagios NRPE" -d /dev/null -s /bin/false nrpe
+  fi
+
+  grep -Pq '^nrpe\s+' /etc/services || \
+    echo "nrpe      5666/tcp     # nagios nrpe service" >> /etc/services
+
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/nrpe.conf
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  userdel nrpe &> /dev/null
+  groupdel nrpe &> /dev/null
+}
+
+post_remove() {
+  # remove the line we added to /etc/services
+  sed -e '/nrpe      5666\/tcp/d' \
+      -i /etc/services || true
+}
+
+op=$1
+shift
+
+$op $*

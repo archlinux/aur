@@ -1,0 +1,22 @@
+diff --git a/src/nrpe.c b/src/nrpe.c
+index 381f0ac..bc6b227 100644
+--- a/src/nrpe.c
++++ b/src/nrpe.c
+@@ -1131,7 +1131,16 @@ void wait_for_connections(void){
+ 
+ 					/* log info to syslog facility */
+ 					if(debug==TRUE) {
+-						syslog(LOG_DEBUG,"Connection from %s closed.",ipstr);
++						switch(addr.ss_family) {
++							case AF_INET:
++								syslog(LOG_DEBUG,"Connection from %s closed.",
++									inet_ntoa(nptr->sin_addr));
++								break;
++							case AF_INET6:
++								syslog(LOG_DEBUG,"Connection from %s closed.",
++									ipstr);
++								break;
++							}
+ 						}
+ 
+ 					/* close socket prior to exiting */

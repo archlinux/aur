@@ -1,0 +1,8 @@
+[Unit]
+Description=NRPE Per-Connection Server
+
+[Service]
+ExecStart=-/usr/bin/nrpe -c /etc/nrpe/nrpe.cfg --inetd
+User=nrpe
+Group=nrpe
+StandardInput=socket
