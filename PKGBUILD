@@ -2,7 +2,7 @@
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 
 pkgname=python-sandman
-pkgver=0.9.6
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Makes things REST"
 arch=(any)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=("python-distribute")
 source=(http://pypi.python.org/packages/source/s/sandman/sandman-$pkgver.tar.gz)
-sha256sums=('2935f918cb3e58c8402dceee3e6eaa16785d5240e5a3c9a9534995388b618012')
+sha256sums=('83507666077c0ba784b6e388d4eea3d565a6b684300322780c8cf90328026d57')
 
 build() {
 	cd "$srcdir/sandman-$pkgver"
