@@ -1,7 +1,6 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 
 _rev=r02
-_sdkver=4.3
 _apilevel=21
 pkgname=android-x86-system-image
 pkgver=${_apilevel}_${_rev}
