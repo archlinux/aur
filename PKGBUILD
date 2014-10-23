@@ -1,10 +1,10 @@
 # $Id$
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Maintainer: Aaron Griffin <aaron@archlinux.org>
-# SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 # SELinux Contributor: Zezadas
-# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=shadow-selinux
 pkgver=4.2.1
