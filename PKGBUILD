@@ -7,8 +7,8 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=openssh-selinux
-pkgver=6.6p1
-pkgrel=2
+pkgver=6.7p1
+pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
@@ -22,14 +22,12 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
-        'curve25519pad.patch'
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
         'sshd.socket'
         'sshd.pam')
-sha1sums=('b850fd1af704942d9b3c2eff7ef6b3a59b6a6b6e' 'SKIP'
-          '13b74b57b3d9b9a256eeb44b4fca29a8f27aa7ad'
+sha1sums=('14e5fbed710ade334d65925e080d1aaeb9c85bf6' 'SKIP'
           'cc1ceec606c98c7407e7ac21ade23aed81e31405'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
@@ -39,11 +37,6 @@ sha1sums=('b850fd1af704942d9b3c2eff7ef6b3a59b6a6b6e' 'SKIP'
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
 install=install
-
-prepare() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-	patch -p0 -i ../curve25519pad.patch
-}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
