@@ -3,9 +3,9 @@
 # Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
-# SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
-# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=coreutils-selinux
 pkgver=8.23
