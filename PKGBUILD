@@ -7,14 +7,14 @@ pkgrel=2
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu, and other monitoring applications."
 arch=('i686' 'x86_64')
 url="http://www.monitoring-plugins.org"
-license=('GPL')
+license=('GPL3')
 depends=('libldap')
 makedepends=('net-snmp')
 optdepends=('net-snmp: for SNMP checking')
 provides=('nagios-plugins')
 conflicts=('nagios-plugins')
 replaces=('nagios-plugins')
-source=("https://www.monitoring-plugins.org/download/$pkgname-$pkgver.tar.gz")
+source=(https://www.monitoring-plugins.org/download/$pkgname-$pkgver.tar.gz)
 md5sums=('9dc3f7d39cfdea60f3929ecdbb4cbb4a')
 
 build() {
