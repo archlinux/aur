@@ -1,4 +1,5 @@
-# Maintainer: Timothée Ravier <tim@siosm.fr>
+# Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
 
