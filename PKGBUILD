@@ -2,9 +2,9 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
-# SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
-# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=sudo-selinux
 _sudover=1.8.11p1
