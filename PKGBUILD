@@ -1,6 +1,6 @@
 # $Id:$
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
-# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=logrotate-selinux
 pkgver=3.8.7
