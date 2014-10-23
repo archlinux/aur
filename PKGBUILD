@@ -2,9 +2,9 @@
 # Maintainer: Tom Gundersen <teg@jklm.no>
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
-# SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
-# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
