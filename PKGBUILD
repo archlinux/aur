@@ -1,7 +1,7 @@
 # $Id: PKGBUILD 210619 2014-04-15 20:43:33Z ronald $
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
-# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
 pkgver=3.15.0
