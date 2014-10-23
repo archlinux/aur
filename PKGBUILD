@@ -6,13 +6,13 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.10
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
-             'libidn' 'python2' 'hicolor-icon-theme' 'farstream-0.1' 'avahi'
-             'tk' 'ca-certificates' 'intltool' 'networkmanager')
+             'libidn' 'libgadu' 'python2' 'hicolor-icon-theme' 'farstream-0.1'
+             'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
 source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc})
 sha256sums=('dc6b95512eaec75aef170aabce471491fc70584932599dfead20f1f1c45c822d'
             'SKIP')
@@ -66,7 +66,7 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farstream-0.1' 'libsasl' 'libidn' 'dbus-glib' 'nss')
+  depends=('farstream-0.1' 'libsasl' 'libidn' 'libgadu' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
               'python2-dbus: for purple-remote and purple-url-handler'
@@ -85,7 +85,7 @@ package_libpurple(){
 
 package_finch(){
   pkgdesc="A ncurses-based messaging client"
-  depends=("libpurple=$pkgver-$pkgrel" 'libx11' 'python2')
+  depends=('libpurple' 'libx11' 'python2')
 
   cd "$srcdir/pidgin-$pkgver"
 
