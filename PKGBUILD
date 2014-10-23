@@ -1,7 +1,8 @@
 # $Id$
 # Contributor: Kaiting Chen <kaiting.chen@kiwilight.com>
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
-# SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=cronie-selinux
