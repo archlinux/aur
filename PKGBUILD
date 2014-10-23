@@ -1,9 +1,9 @@
 # $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
-# SELinux Maintainer: Timothée Ravier <tim@siosm.fr>
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
-# SELinux Contributor: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=pam-selinux
 pkgver=1.1.8
