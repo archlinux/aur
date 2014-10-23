@@ -5,9 +5,9 @@ url='http://ros.org/wiki/rviz'
 
 pkgname='ros-indigo-rviz'
 pkgver='1.11.3'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -78,11 +78,6 @@ _tag=release/indigo/rviz/${pkgver}-${_pkgver_patch}
 _dir=rviz
 source=("${_dir}"::"git+https://github.com/ros-gbp/rviz-release.git"#tag=${_tag})
 md5sums=('SKIP')
-
-# Fix PySide bug
-_cmake_options=(
-  -DPYTHON_BASENAME=-python2.7
-)
 
 build() {
   # Use ROS environment variables
