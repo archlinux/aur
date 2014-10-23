@@ -1,6 +1,7 @@
 # $Id$
 # Maintainer:
-# SELinux Maintainer: Timothée Ravier
+# SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
+# SELinux Contributor: Timothée Ravier
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=findutils-selinux
