@@ -7,7 +7,7 @@ url=http://www.ros.org
 pkgname='ros-build-tools'
 pkgver='0.1.0'
 arch=('i686' 'x86_64')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 makedepends=()
 depends=()
@@ -48,5 +48,5 @@ md5sums=('ed01573e0ecc0f7ca451d7e2849cc5ee'
          'd257f7f20384e894b0431ee61068aa96'
          '563c9d1320a3a997db25d3087303dcfb'
          '8d6d7eb89a12c449497b209f1a06655b'
-         '02c47940a12ad713ee220978635ef117'
+         '303d4d13848e1e2ab6a477635ae26e3e'
          '07f5253eb3f8cb5295c32026a20ab6c0')

@@ -291,10 +291,10 @@ package() {
       python_version_full = "%s%s" % (python_version_full, "m")
 
     # PYTHON_BASENAME for PySide:
-    # If Python 2.7
-    python_basename = "-lpython2.7"
+    # If Python 2.7: PySideConfig{-python2.7}.cmake
+    python_basename = "-python2.7"
     if python_version_major == "3":
-        # If Python 3.4: .cpython-34m
+        # If Python 3.4: PySideConfig{.cpython-34m}.cmake
         python_basename = ".cpython-%s" % (python_version_full.replace(".", ""))
 
 
