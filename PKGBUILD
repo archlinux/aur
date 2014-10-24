@@ -1,14 +1,14 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
 pkgname=acousticbrainz-client-git
 _pkgname=acousticbrainz-client
-_python=python2
-pkgver=r36.58014e9
+_python=python
+pkgver=r49.e5017ec
 pkgrel=1
 pkgdesc="client to upload data to an acousticbrainz server"
-arch=('x86_64' 'i686')
+arch=('any')
 url="http://acousticbrainz.org/"
 license=('GPL3')
-depends=('essentia-acousticbrainz' 'python2-requests')
+depends=('essentia-acousticbrainz' 'python-requests')
 makedepends=('git')
 provides=()
 conflicts=()
