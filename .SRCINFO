@@ -1,0 +1,20 @@
+pkgbase = selinux-refpolicy-src
+	pkgdesc = SELinux reference policy sources
+	pkgver = 20130424
+	pkgrel = 1
+	url = http://oss.tresys.com/projects/refpolicy
+	arch = any
+	groups = selinux
+	groups = selinux-policies
+	license = GPL
+	makedepends = selinux-usr-checkpolicy>=2.1.8
+	makedepends = selinux-usr-policycoreutils>=2.1.10
+	makedepends = selinux-usr-libsepol>=2.1.4
+	makedepends = selinux-usr-libsemanage>=2.0.29
+	makedepends = pyxml
+	depends = linux-selinux
+	source = http://oss.tresys.com/files/refpolicy/refpolicy-2.20130424.tar.bz2
+	sha256sums = 6039ba854f244a39dc727cc7db25632f7b933bb271c803772d754d4354f5aef4
+
+pkgname = selinux-refpolicy-src
+
