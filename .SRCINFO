@@ -1,0 +1,19 @@
+pkgbase = lastpass-cli-git
+	pkgdesc = LastPass command line interface tool (git version)
+	pkgver = 2014.10.22.g70acc1b
+	pkgrel = 1
+	url = https://lastpass.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = asciidoc
+	depends = openssl
+	depends = curl
+	depends = libxml2
+	optdepends = xclip: clipboard support
+	optdepends = pinentry: securelly read passwords
+	source = git+https://github.com/lastpass/lastpass-cli.git
+	md5sums = SKIP
+
+pkgname = lastpass-cli-git
+
