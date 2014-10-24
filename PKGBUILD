@@ -3,7 +3,7 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 # $Id$
 pkgname=gtg-git
-pkgver=r5107.767bfca
+pkgver=r5112.1328f1d
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="http://gtgnome.net/"
@@ -35,8 +35,7 @@ optdepends=(
 conflicts=('gtg')
 install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg"
-        "0001-plugin-API-Open-preference-file-for-reading-as-binar.patch"
-        "0002-No-need-to-use-unicode-on-strs.patch")
+        "0001-Remove-has_separator-property.patch")
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -45,8 +44,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -p1 < ${srcdir}/0001-plugin-API-Open-preference-file-for-reading-as-binar.patch
-  patch -p1 < ${srcdir}/0002-No-need-to-use-unicode-on-strs.patch
+  patch -p1 < ${srcdir}/0001-Remove-has_separator-property.patch
   python setup.py build
 }
 
@@ -57,5 +55,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 md5sums=('SKIP'
-         '443cf942f731a97c031a0118d3a2c895'
-         '6850a96df56027f7eee02054ad2554af')
+         'a79aab175a0434928e5da2c12f94abb8')
