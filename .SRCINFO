@@ -1,5 +1,5 @@
 pkgbase = linux-selinux
-	pkgver = 3.16.4
+	pkgver = 3.17.1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -12,20 +12,18 @@ pkgbase = linux-selinux
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.16.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.16.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.17.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.17.1.xz
 	source = config
 	source = config.x86_64
 	source = linux-selinux.preset
 	source = change-default-console-loglevel.patch
-	source = compal-laptop-hwmon-fix.patch
-	sha256sums = 4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0
-	sha256sums = bfd65be726f596c0e46f472efa33c46c01be5d44ed93ef645c313a6823e6e6fb
-	sha256sums = 19f703141aacbd61ed3b913b24dee794950b2978e0b2d60c3f4a717e45922f4e
-	sha256sums = c1841e14ff98ff63052949ab97331d535180e94db7c5bc94e2d8154e286e5b6a
+	sha256sums = f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251
+	sha256sums = 3b0651951cdc0a81a69b46db99239bc9f00d6a5ae403e0e41c7a1cc177544ec2
+	sha256sums = 1331d1b35309c8905ab53c82204580bd7c74d5aac11c8e29fe27e6c4b50399e0
+	sha256sums = 0dd66b478fcaa8f0ce88debf4681443b82336445af2215b87f186ac8f2a9ff48
 	sha256sums = 375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = f36f61a0a72bcb0a9c04264343503bfbf927c9ea0db819e66734a3933b060588
 
 pkgname = linux-selinux
 	pkgdesc = The Linux-selinux kernel and modules
@@ -36,20 +34,20 @@ pkgname = linux-selinux
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-selinux=3.16.4
+	provides = kernel26-selinux=3.17.1
 	conflicts = kernel26-selinux
 	replaces = kernel26-selinux
 	backup = etc/mkinitcpio.d/linux-selinux.preset
 
 pkgname = linux-selinux-headers
 	pkgdesc = Header files and scripts for building modules for Linux-selinux kernel
-	provides = kernel26-selinux-headers=3.16.4
+	provides = kernel26-selinux-headers=3.17.1
 	conflicts = kernel26-selinux-headers
 	replaces = kernel26-selinux-headers
 
 pkgname = linux-selinux-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-selinux kernel
-	provides = kernel26-selinux-docs=3.16.4
+	provides = kernel26-selinux-docs=3.17.1
 	conflicts = kernel26-selinux-docs
 	replaces = kernel26-selinux-docs
 
