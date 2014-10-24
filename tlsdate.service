@@ -5,9 +5,9 @@ After=network.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/conf.d/tlsdate
-ExecStart=/usr/bin/tlsdated ${TLSDATED_OPTS}
-ExecReload=/bin/kill -HUP ${MAINPID}
-ExecStop=/bin/kill -INT ${MAINPID}
+ExecStart=/usr/bin/tlsdated $TLSDATED_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -INT $MAINPID
 
 [Install]
 WantedBy=multi-user.target

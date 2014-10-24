@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 # Contributor: skydrome <skydrome@tormail.org>
 pkgname=tlsdate-git
-pkgver=666.c0f51d4
+pkgver=692.5be06de
 pkgrel=1
 pkgdesc="A secure rdate replacement to update local time over HTTPS, git version"
 arch=('i686' 'x86_64' 'armv6l' 'armv6h' 'arm7l' 'arm7h')
@@ -19,7 +19,7 @@ source=('git+https://github.com/ioerror/tlsdate.git'
         'tlsdate.service')
 sha256sums=('SKIP'
             '1498a74913feb66c6e2e7d982f43b07fc48881947543969668a75ef4323503aa'
-            '4f26258284522036975f04f41094257953a8e34e767df456caa2939df4d053fb')
+            'fe3fb8181be0a9214f351c64461680f603ea27b7b7c566c9eec189084783aa92')
 
 pkgver() {
   cd "$srcdir/tlsdate"
