@@ -3,7 +3,7 @@
 pkgname=tlsdate-git
 pkgver=666.c0f51d4
 pkgrel=1
-pkgdesc="A secure rdate replacement to update local time over HTTPS"
+pkgdesc="A secure rdate replacement to update local time over HTTPS, git version"
 arch=('i686' 'x86_64' 'armv6l' 'armv6h' 'arm7l' 'arm7h')
 url="https://github.com/ioerror/tlsdate"
 license=('BSD')
@@ -27,32 +27,31 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/tlsdate"
-    ./autogen.sh
+  cd "$srcdir/tlsdate"
+  ./autogen.sh
 }
 
 build() {
-    cd "$srcdir/tlsdate"
+  cd "$srcdir/tlsdate"
 
-    ./configure \
-        --prefix=/usr \
-        --sbindir=/usr/bin \
-        --sysconfdir=/etc \
-        --with-dbus-client-group=tlsdate \
-        --with-unpriv-group=tlsdate \
-        --with-unpriv-user=tlsdate \
-        --without-polarssl
-    make
+  ./configure \
+      --prefix=/usr \
+      --sbindir=/usr/bin \
+      --sysconfdir=/etc \
+      --with-dbus-client-group=tlsdate \
+      --with-unpriv-group=tlsdate \
+      --with-unpriv-user=tlsdate \
+      --without-polarssl
+  make
 }
 
 package() {
-    cd "$srcdir/tlsdate"
+  cd "$srcdir/tlsdate"
 
-    make DESTDIR="$pkgdir" install
-    #rm -rf "$pkgdir/usr/lib/libtlsdate_compat.a"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/tlsdate/LICENSE"
-    install -Dm644 "$srcdir/tlsdate.conf.d"  "$pkgdir/etc/conf.d/tlsdate"
-    install -Dm644 "$srcdir/tlsdate.service" "$pkgdir/usr/lib/systemd/system/tlsdate.service"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/tlsdate/LICENSE"
+  install -Dm644 "$srcdir/tlsdate.conf.d"  "$pkgdir/etc/conf.d/tlsdate"
+  install -Dm644 "$srcdir/tlsdate.service" "$pkgdir/usr/lib/systemd/system/tlsdate.service"
 }
 
 # vim:set ts=2 sw=2 et:
