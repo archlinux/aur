@@ -2,7 +2,7 @@
 
 pkgname=kinit
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='KInit'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kinit'
@@ -23,6 +23,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
+    -DLIBEXEC_INSTALL_DIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
