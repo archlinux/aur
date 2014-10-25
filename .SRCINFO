@@ -1,7 +1,7 @@
 pkgbase = android-x86-system-image
 	pkgdesc = Android x86 Atom System Image, latest API
 	pkgver = 21_r02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.android.com/tools/devices/emulator.html
 	arch = any
 	license = custom
@@ -12,7 +12,9 @@ pkgbase = android-x86-system-image
 	conflicts = android-x86-system-image-21
 	options = !strip
 	source = https://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-21_r02.zip
+	source = source.properties
 	sha1sums = bb00e3d8675a80b09dfbdef813789efdaa1304a8
+	sha1sums = 15d4392cada9b437fcd75ad542d4017f26e71eb5
 
 pkgname = android-x86-system-image
 
