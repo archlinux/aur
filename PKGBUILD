@@ -2,7 +2,7 @@
 # quick update check: https://git.wikimedia.org/log/pywikibot%2Fcore/refs%2Fheads%2Fmaster
 
 pkgname=('python2-pywikibot-git')
-pkgver=2750.94fe50d
+pkgver=4362.bd2b9b0
 pkgrel=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 arch=('any')
