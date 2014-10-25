@@ -1,7 +1,7 @@
 pkgbase = android-google-apis
 	pkgdesc = Android Google APIs, latest API
 	pkgver = 21_r01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/android/add-ons/google-apis
 	arch = any
 	license = custom
@@ -10,7 +10,9 @@ pkgbase = android-google-apis
 	conflicts = android-google-apis-21
 	options = !strip
 	source = http://dl.google.com/android/repository/google_apis-21_r01.zip
+	source = source.properties
 	sha1sums = 66a754efb24e9bb07cc51648426443c7586c9d4a
+	sha1sums = 15c66b396eae5eda6886574f3894105a6f7e9e13
 
 pkgname = android-google-apis
 

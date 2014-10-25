@@ -7,7 +7,7 @@ _rev=r01
 _apilevel=21
 pkgname=android-google-apis
 pkgver=${_apilevel}_${_rev}
-pkgrel=1
+pkgrel=2
 pkgdesc="Android Google APIs, latest API"
 arch=('any')
 url="http://code.google.com/android/add-ons/google-apis"
@@ -16,12 +16,17 @@ depends=("android-platform")
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/google_apis-${_apilevel}_${_rev}.zip")
-sha1sums=('66a754efb24e9bb07cc51648426443c7586c9d4a')
+source=("http://dl.google.com/android/repository/google_apis-${_apilevel}_${_rev}.zip"
+        "source.properties")
+sha1sums=('66a754efb24e9bb07cc51648426443c7586c9d4a'
+          '15c66b396eae5eda6886574f3894105a6f7e9e13')
 
 package() {
-  mkdir -p "${pkgdir}/opt/android-sdk/add-ons/"
-  mv "${srcdir}"/google_apis-[0-9]*-mac-x86 "${pkgdir}/opt/android-sdk/add-ons/addon-google_apis-google_inc_-${_apilevel}"
+  _destdir="${pkgdir}/opt/android-sdk/add-ons/"
+  _apidir="addon-google_apis-google_inc_-${_apilevel}"
+  mkdir -p "${_destdir}"
+  mv "${srcdir}"/google_phone_x86-[0-9]*-linux-x86 "${_destdir}/${_apidir}"
+  mv 'source.properties' "${_destdir}/${_apidir}"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
