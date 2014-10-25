@@ -1,5 +1,5 @@
 pkgname=amavisd-new
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
     'perl-mime-base64'
     'perl-mime-tools'
     'perl-mailtools>=1.58'
+    'perl-net-libidn'
     'perl-net-server>=0.88'
     'perl-digest-md5>=2.22'
     'perl-io-stringy'
@@ -34,10 +35,10 @@ optdepends=(
 	 'rpmextract: Decoder for: .rpm'
 )
 backup=('etc/amavisd/amavisd.conf' 'etc/amavisd/amavisd-custom.conf')
-source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.gz"
+source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.xz"
         "service"
         "tmpfiles")
-sha256sums=('dcb599fef892493f2add7fd50743c51850ed462037525edd5aea2fe2a52f9eb7'
+sha256sums=('21038111a7b3d97a124c49ea5d686cf68f39997f8d8907c8b76bb6a93ebfe2cc'
             'b803ac76501a68775395c7f80aed5633b98ea7a851f926e0edb169e4c2e38b24'
             'a7ea2c73f2dbdd7d79bcb06aa950410f8e214afa01629a0717e0a81489441e6d')
 install=install
