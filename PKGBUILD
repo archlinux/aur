@@ -1,16 +1,16 @@
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
 pkgname=xyscan
-pkgver=3.3.1
-pkgrel=3
+pkgver=3.3.3
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tool to extract data points from graphical plots'
 url='http://star.physics.yale.edu/~ullrich/xyscanDistributionPage/'
 license=('GPL')
-depends=('qt4>=4.6.0')
-source=(http://star.physics.yale.edu/~ullrich/xyscanDistributionPage/3.31/$pkgname-3.31-src.tar.gz
-        xyscan-$pkgver-docs.patch
-        xyscan.desktop)
-md5sums=('af25ded942dbfdc4e73c5f9986db6e2e'
+depends=('qt5-base>=5.2.0')
+source=(http://star.physics.yale.edu/~ullrich/xyscanDistributionPage/3.33/$pkgname-3.33-src.tar.gz
+	xyscan-$pkgver-docs.patch
+	xyscan.desktop)
+md5sums=('d236ee95950edbf0dfef895ea59aafcd'
 	'22093f1c22b73f95de1cbfee14d74dc4'
 	'2df01c952f8425d05e0d138778ca5be9')
 install=xyscan.install
@@ -18,7 +18,7 @@ install=xyscan.install
 build() {
 	cd $pkgname
 	patch -i ../$pkgname-$pkgver-docs.patch
-	qmake-qt4 -o Makefile xyscan.pro
+	qmake-qt5
 	make
 }
 
