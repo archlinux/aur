@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
-pkgver=1.2
-pkgrel=8
+pkgver=1.3
+pkgrel=1
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -16,6 +16,7 @@ conflicts=('picard-plugins<1.1')
 #http://kalou.net/unix/picard/metaflac_rgscan.py
 source=(
 https://raw.github.com/mineo/mbstuff/master/picard/plugins/padded.py
+https://raw.github.com/mineo/mbstuff/master/picard/plugins/keep.py
 https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titlesort.py
 https://raw.github.com/voiceinsideyou/creaps-picard-plugins/master/titleversion.py
 https://raw.github.com/weisslj/picardplugins/master/f2k_rgscan.py
@@ -30,7 +31,8 @@ https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
 )
-md5sums=('9a4f26bdc1c3e7c651255234f2bee289'
+md5sums=('a0a8800a0dc978bc38cc7fa05044575e'
+         '1b9f145664fb74021e85aeaf13aff057'
          '1219e450a0eb04d78a5fb1c36ddd45e5'
          '05c7dbe8f0ff5fc8e634da7db7f700c7'
          'deb3dcba323915f6e18de8904c7d3cd8'
@@ -50,7 +52,7 @@ package() {
   cd "$srcdir"
   install -d "$plugindir"
   install -m644 -t "$plugindir" \
-    padded.py \
+    padded.py keep.py \
     titlesort.py titleversion.py \
     f2k_rgscan.py metaflac_rgscan.py sidecar.py \
     removeperfectalbums.py autosave.py \
