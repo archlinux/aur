@@ -1,31 +1,37 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-git
-pkgver=1.2
+pkgver=1.3.r11.5e6d796
+_pkgver=1.3
 pkgrel=1
-pkgdesc="plugins from picard-git"
+pkgdesc="plugins from picard-plugins repository (except contrib)"
 arch=('any')
-url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
+url="http://picard.musicbrainz.org/plugins/"
 license=('GPL')
 depends=('picard')
-conflicts=('picard-git' 'picard>1.2')
-source=(
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/viewvariables.zip
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/albumartist_website.py
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/standardise_performers.py
-)
-md5sums=('faebf9e8ee0e269a67cf4b9a5ca7524e'
-         '2e20b62397ad8531e769e9f7c064b6e2'
-         'db019df38156eba591658eddcb7c9e97')
+conflicts=('picard-git<=1.3')
+source=(git+https://github.com/musicbrainz/picard-plugins.git)
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/picard-plugins"
+  printf "%s.r%s.%s" "$_pkgver" "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 
 package() {
   plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
-  cd "$srcdir"
+  cd "$srcdir/picard-plugins/plugins"
   install -d "$plugindir"
-  install -m644 -t "$plugindir" \
-    albumartist_website.py standardise_performers.py
+  # copy all plugins
+  cp -r * "$plugindir"
 
-  install -d "$plugindir"/viewvariables
-  install -m644 -t "$plugindir"/viewvariables viewvariables/*.{py,ui}
+  # remove plugins already in Picard package (contrib)
+  cd "$plugindir"
+  rm -r addrelease albumartist_website classicdiscnumber \
+    cuesheet discnumber featartist featartistsintitles \
+    lastfm lastfmplus no_release release_type replaygain \
+    sort_multivalue_tags standardise_performers titlecase \
+    tracks2clipboard viewvariables
 }
 
 # vim:set ts=2 sw=2 et:
