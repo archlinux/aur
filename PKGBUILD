@@ -10,7 +10,6 @@ epoch=1
 pkgdesc="Logger Pro for Linux Public Beta from Vernier Software"
 arch=('i686' 'x86_64')
 url='http://www.vernier.com/downloads/logger-pro-linux/'
-# This is a guess; waiting on Vernier support for actual license type
 license=('unknown')
 options=(!strip)
 
