@@ -1,7 +1,7 @@
 pkgbase = perl-plack
 	pkgdesc = Perl Superglue for Web frameworks and Web Servers
-	pkgver = 1.0030
-	pkgrel = 2
+	pkgver = 1.0033
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Plack
 	arch = any
 	license = PerlArtistic
@@ -19,7 +19,7 @@ pkgbase = perl-plack
 	checkdepends = perl-mime-types
 	checkdepends = perl-test-tcp>=2.00
 	makedepends = perl-extutils-makemaker>=6.30
-	makedepends = perl-file-sharedir-install>=0.03
+	makedepends = perl-file-sharedir-install>=0.06
 	depends = perl>=5.10.1
 	depends = perl-apache-logformat-compiler>=0.12
 	depends = perl-devel-stacktrace>=1.23
@@ -34,8 +34,8 @@ pkgbase = perl-plack
 	depends = perl-try-tiny
 	depends = perl-uri>=1.59
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0030.tar.gz
-	md5sums = 162b8d59c870871969b1a4e4754fc180
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0033.tar.gz
+	md5sums = 41292d3c33f637773369daeac86a48b8
 
 pkgname = perl-plack
 

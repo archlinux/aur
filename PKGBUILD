@@ -1,11 +1,11 @@
 # CPAN Name  : Plack
 # Contributor: Christian Sturm <reezer@reezer.org>
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname=perl-plack
-pkgver=1.0030
-pkgrel=2
+pkgver=1.0033
+pkgrel=1
 pkgdesc='Perl Superglue for Web frameworks and Web Servers'
 arch=('any')
 url='http://search.cpan.org/dist/Plack'
@@ -28,7 +28,7 @@ depends=(
 )
 makedepends=(
 	'perl-extutils-makemaker>=6.30'
-	'perl-file-sharedir-install>=0.03'
+	'perl-file-sharedir-install>=0.06'
 )
 checkdepends=(
 #	'perl-cgi-compile'
@@ -45,23 +45,28 @@ checkdepends=(
 	'perl-mime-types'
 	'perl-test-tcp>=2.00'
 )
-source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0030.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0033.tar.gz)
 options=(!emptydirs)
-md5sums=('162b8d59c870871969b1a4e4754fc180')
+md5sums=('41292d3c33f637773369daeac86a48b8')
 
 build() {
-	cd Plack-1.0030
-	PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" perl Makefile.PL INSTALLDIRS=vendor
+	cd Plack-1.0033
+	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps"
+	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd Plack-1.0030
+	cd Plack-1.0033
+	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1
 	make test
 }
 
 package() {
-	cd Plack-1.0030
+	cd Plack-1.0033
+	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
