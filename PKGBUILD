@@ -4,22 +4,32 @@ pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
-makedepends=('autoconf' 'python')
-source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('629305e7f328659f3e93e89b93adc9da4e99b5a351e51ceb749dcf3e3da8bcd3')
+makedepends=('python')
+source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz
+        0001-Ignore-loop-tags-on-non-looping-substitute-tracks.patch
+        0002-Ignore-metadata-loop-tags-if-both-are-zero.patch)
+sha256sums=('629305e7f328659f3e93e89b93adc9da4e99b5a351e51ceb749dcf3e3da8bcd3'
+            'cb611700a63a3d4cb58b030d4801c6f331ce7bd08708c281b9385fe1f82066f5'
+            '6330a3b1e6cde2db2554ca709925f2eb63f91df8f14b84946a7f50cff2f52ca3')
+
+prepare() {
+  cd "${pkgbase}-${pkgver}"
+
+  # Change binary dir from /usr/games to /usr/bin
+  sed 's|/games|/bin|g' -i src{,/setup}/Makefile.in
+
+  patch -p1 -i ../0001-Ignore-loop-tags-on-non-looping-substitute-tracks.patch
+  patch -p1 -i ../0002-Ignore-metadata-loop-tags-if-both-are-zero.patch
+}
 
 build() {
   cd "${pkgbase}-${pkgver}"
 
-  # Change binary dir from /usr/games to /usr/bin
-  sed 's|/games|/bin|g' -i src{,/setup}/Makefile.am
-
-  autoreconf -i
   ./configure --prefix=/usr
   make
 }

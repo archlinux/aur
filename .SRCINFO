@@ -1,18 +1,21 @@
 pkgbase = chocolate-doom
 	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chocolate-doom.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = autoconf
 	makedepends = python
 	depends = libsamplerate
 	depends = sdl_mixer
 	depends = sdl_net
 	source = http://chocolate-doom.org/downloads/2.1.0/chocolate-doom-2.1.0.tar.gz
+	source = 0001-Ignore-loop-tags-on-non-looping-substitute-tracks.patch
+	source = 0002-Ignore-metadata-loop-tags-if-both-are-zero.patch
 	sha256sums = 629305e7f328659f3e93e89b93adc9da4e99b5a351e51ceb749dcf3e3da8bcd3
+	sha256sums = cb611700a63a3d4cb58b030d4801c6f331ce7bd08708c281b9385fe1f82066f5
+	sha256sums = 6330a3b1e6cde2db2554ca709925f2eb63f91df8f14b84946a7f50cff2f52ca3
 
 pkgname = chocolate-doom
 	pkgdesc = Doom port accurately reproducing the original DOS EXEs.
