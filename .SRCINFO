@@ -1,0 +1,25 @@
+pkgbase = etui-git
+	pkgdesc = Multi-document rendering application and library using the EFL
+	pkgver = 0.0.2.r183.b2ebc49
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	install = etui.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = AGPL3
+	makedepends = git
+	depends = elementary
+	depends = freetype2
+	depends = openjpeg
+	depends = libarchive
+	depends = djvulibre
+	depends = ewebkit
+	depends = ghostscript
+	provides = etui=0.0.2.r183.b2ebc49
+	conflicts = etui
+	source = git://github.com/vtorri/etui.git
+	sha256sums = SKIP
+
+pkgname = etui-git
+

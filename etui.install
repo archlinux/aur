@@ -1,0 +1,13 @@
+post_upgrade() {
+  [[ -x /usr/bin/update-desktop-database ]] && update-desktop-database -q
+  [[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+post_install() {
+  post_upgrade
+  printf "Please check the README file for information about running this software.\n"
+}
+
+post_remove() {
+  post_upgrade
+}
