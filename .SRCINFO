@@ -24,6 +24,9 @@ pkgbase = picard-plugins-aux
 	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
 	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
 	source = https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
+	source = https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/zh_cn_convert.py
+	source = https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/zh_wiki.py
+	source = https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/langconv.py
 	md5sums = a0a8800a0dc978bc38cc7fa05044575e
 	md5sums = 1b9f145664fb74021e85aeaf13aff057
 	md5sums = 1219e450a0eb04d78a5fb1c36ddd45e5
@@ -39,6 +42,9 @@ pkgbase = picard-plugins-aux
 	md5sums = 3ec10ede17cf40baf244f3f0e56aceac
 	md5sums = 51b8537cae78fb372fb229345d8f65dc
 	md5sums = 29305044b2ae41478647a72ce774bd51
+	md5sums = 6c4d4f24541b90a6dffb53eec513d6c1
+	md5sums = d66e3f114cff82e95458be486db73198
+	md5sums = 947a93e1595344ac4914509e9307f91c
 
 pkgname = picard-plugins-aux
 

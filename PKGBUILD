@@ -30,6 +30,9 @@ https://raw.github.com/brianfreud/Picard-plugins/master/p.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
 https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
+https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/zh_cn_convert.py
+https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/zh_wiki.py
+https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/langconv.py
 )
 md5sums=('a0a8800a0dc978bc38cc7fa05044575e'
          '1b9f145664fb74021e85aeaf13aff057'
@@ -45,7 +48,10 @@ md5sums=('a0a8800a0dc978bc38cc7fa05044575e'
          '3f4dad9583c7a5d935d009069c599a51'
          '3ec10ede17cf40baf244f3f0e56aceac'
          '51b8537cae78fb372fb229345d8f65dc'
-         '29305044b2ae41478647a72ce774bd51')
+         '29305044b2ae41478647a72ce774bd51'
+         '6c4d4f24541b90a6dffb53eec513d6c1'
+         'd66e3f114cff82e95458be486db73198'
+         '947a93e1595344ac4914509e9307f91c')
 
 package() {
   plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
@@ -59,6 +65,9 @@ package() {
     eq2.py ne2.py p.py \
     abbreviate_artistsort.py copy_to_comment.py \
     musicbee_compatibility.py
+
+  install -Dm644 zh_cn_convert.py "$plugindir"/zh_cn_convert/__init__.py
+  install -m644 -t "$plugindir"/zh_cn_convert zh_wiki.py langconv.py
 }
 
 # vim:set ts=2 sw=2 et:
