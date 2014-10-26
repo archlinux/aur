@@ -26,7 +26,7 @@ source=("synergy-trunk::svn+http://svn.synergy-project.org/trunk/#revision=${_pk
         "unfuck-cryptopp-thanks-gentoo.patch")
 sha1sums=('SKIP'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
-          '4bd12cd0674ef317af1f7df32d84e94582855140'
+          '65ab58cc3546d6374a05a6a260f15045632e43ce'
           '8e321e664ae4b7a763175524dd938a88d85c7909')
 
 build() {
