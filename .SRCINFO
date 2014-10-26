@@ -1,14 +1,16 @@
-pkgbase = python2-crontab
+pkgbase = python-crontab
 	pkgdesc = Crontab module for read and writing crontab files and accessing the system cron automatically and simply using a direct API.
-	pkgver = 1.7.2
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/python-crontab
 	arch = any
 	license = GPL
 	depends = python2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/python-crontab/python-crontab-1.7.2.tar.gz
-	md5sums = 794dfd7d16c9db4af675e12ca6383c5e
+	source = https://pypi.python.org/packages/source/p/python-crontab/python-crontab-1.8.1.tar.gz
+	md5sums = 44c27ddfb4084cff337d4c24419bc313
+
+pkgname = python-crontab
 
 pkgname = python2-crontab
 
