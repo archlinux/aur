@@ -1,0 +1,17 @@
+pkgbase = acousticbrainz-gui-git
+	pkgdesc = Submit audio features to the AcousticBrainz project.
+	pkgver = r21.1b839cb
+	pkgrel = 1
+	url = http://acousticbrainz.org/
+	arch = any
+	license = GPL2
+	depends = qt4
+	depends = qjson
+	depends = essentia-acousticbrainz
+	provides = acousticbrainz-gui
+	conflicts = acousticbrainz-gui
+	source = git+https://github.com/MTG/acousticbrainz-gui.git
+	md5sums = SKIP
+
+pkgname = acousticbrainz-gui-git
+
