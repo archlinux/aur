@@ -1,26 +1,29 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=(crispy-{doom,heretic,hexen,strife,common})
-_pkgname=${pkgname[0]}
+pkgbase=${pkgname[0]}
 pkgdesc="Chocolate Doom with vanilla-compatible enhancements"
-pkgver=1.5
+pkgver=2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('autoconf' 'python')
-install=crispy-doom.install
-source=(https://github.com/fabiangreffrath/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('43f3f58266b1744a361df8678cf97a83839952a8dc0f5ecbfd68345abc90313a')
+source=(https://github.com/fabiangreffrath/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz)
+sha256sums=('9de6519981cd83e62e12948c3a4e40d5ac663f14a9b8f19cabff5e2ce593d85f')
 
-build() {
+prepare() {
   # GitHub's generated archive prefix kind of sucks.
-  mv "${_pkgname}-${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}"
-  cd "${_pkgname}-${pkgver}"
+  mv "${pkgbase}-${pkgbase}-${pkgver}" "${pkgbase}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
 
   # Change binary dir from /usr/games to /usr/bin
   sed 's|/games|/bin|g' -i src{,/setup}/Makefile.am
+}
+
+build() {
+  cd "${pkgbase}-${pkgver}"
 
   ./autogen.sh --prefix=/usr
   make
@@ -29,8 +32,9 @@ build() {
 package_crispy-common() {
   pkgdesc="Files shared in common with Crispy Doom-based games."
   depends=('sdl_net')
+  install=crispy-doom.install
 
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -dm 755 "${pkgdir}"/usr/share/games/doom
 
@@ -51,8 +55,11 @@ package_crispy-common() {
 package_crispy-doom() {
   pkgdesc="Doom port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
+  optdepends=('freedm: Free deathmatch game'
+    'freedoom1: Free Ultimate Doom-compatible game (not vanilla compatible, but useful for mods)'
+    'freedoom2: Free Doom II/Final Doom-compatible game (not vanilla compatible, but useful for mods)')
 
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}"/usr/bin
@@ -70,8 +77,9 @@ package_crispy-doom() {
 package_crispy-heretic() {
   pkgdesc="Heretic port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
+  optdepends=('blasphemer: Free Heretic-compatible game')
 
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}"/usr/bin
@@ -91,7 +99,7 @@ package_crispy-hexen() {
   pkgdesc="Hexen port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
 
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}"/usr/bin
@@ -111,7 +119,7 @@ package_crispy-strife() {
   pkgdesc="Strife port accurately reproducing the original DOS EXEs."
   depends=(${depends[@]} 'crispy-common')
 
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}"/usr/bin

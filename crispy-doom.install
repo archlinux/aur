@@ -1,6 +1,6 @@
 post_install() {
   cat <<EOF
->>> Copy any IWAD files to the global default /usr/share/games/doom
+>>> Install IWADs into /usr/share/games/doom or /usr/local/share/games/doom
 >>>
 >>> In order to allow co-existence with Chocolate Doom, the following
 >>> manual pages have been removed:
