@@ -40,6 +40,11 @@ package() {
   msg2 'Install icons.'
   install -d "$pkgdir/usr/share/pixmaps/"
   install -t "$pkgdir/usr/share/pixmaps/" images/*
+
+  msg2 'Make symlink to the extractor.'
+  install -d "$pkgdir/usr/bin/extractor"
+  cd "$pkgdir/usr/bin/extractor"
+  ln -s ../streaming_extractor_music
 }
 
 # vim:set ts=2 sw=2 et:
