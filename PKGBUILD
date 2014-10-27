@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname="smcroute-git"
-pkgver=2.0.0.r0.gd48d64d
+pkgver=2.0.0.r3.gd6280e6
 pkgrel=1
 pkgdesc="A command line tool to manipulate the multicast routes of a UNIX kernel. It supports both IPv4 and IPv6 multicast routing."
 arch=('i686' 'x86_64')
