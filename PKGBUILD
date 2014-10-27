@@ -14,8 +14,10 @@ license=('GPL2')
 depends=('qt4' 'qjson' 'essentia-acousticbrainz')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/MTG/${_pkgname}.git")
-md5sums=('SKIP')
+source=("git+https://github.com/MTG/${_pkgname}.git"
+        "${_pkgname}.sh")
+md5sums=('SKIP'
+         'e36726d348e1859eae26323d7f3cc223')
 
 build() {
   cd "$_pkgname"
@@ -34,8 +36,8 @@ package() {
   cd "$_pkgname"
 
   msg2 'Install acousticbrainz-gui binary.'
-  install -d "$pkgdir/usr/bin"
-  install acousticbrainz-gui "$pkgdir/usr/bin/"
+  install -D acousticbrainz-gui "$pkgdir/usr/bin/acousticbrainz-gui.bin"
+  install -D "../${_pkgname}.sh" "$pkgdir/usr/bin/acousticbrainz-gui"
 
   msg2 'Install icons.'
   install -d "$pkgdir/usr/share/pixmaps/"
