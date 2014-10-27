@@ -19,9 +19,12 @@ md5sums=('SKIP')
 
 build() {
   cd "$_pkgname"
+
+  msg2 'Build acousticbrainz-gui binary.'
   cmake -DCMAKE_BUILD_TYPE=Release .
   make
-  # Prepare icons
+
+  msg2 'Rename icons.'
   cd images/
   rename 'acoustid-fp' 'acousticbrainz-gui' *.*
   mv acoustid-fingerprinter.svg acousticbrainz-gui.svg
@@ -29,9 +32,12 @@ build() {
 
 package() {
   cd "$_pkgname"
+
+  msg2 'Install acousticbrainz-gui binary.'
   install -d "$pkgdir/usr/bin"
   install acousticbrainz-gui "$pkgdir/usr/bin/"
-  # Install icons
+
+  msg2 'Install icons.'
   install -d "$pkgdir/usr/share/pixmaps/"
   install -t "$pkgdir/usr/share/pixmaps/" images/*
 }
