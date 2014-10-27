@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=38.0.2125.104
-pkgrel=2
+pkgver=38.0.2125.111
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.desktop
         chromium.default
         chromium.sh)
-sha256sums=('fcd35aef570d3304798a44f00751aa5724eba775596a8795df1a10a6db83d454'
+sha256sums=('e6b43c86c0dff8451c532d7411546f973aa94d755fc2ce6574d8eabe55d35a1f'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
