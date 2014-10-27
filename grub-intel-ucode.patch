@@ -1,0 +1,26 @@
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index d2e2a8f..f67e50f 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -65,6 +65,12 @@ case x"$GRUB_FS" in
+ 	;;
+ esac
+ 
++intel_ucode=
++if test -e "/boot/intel-ucode.img" ; then
++    gettext_printf "Found Intel Microcode image\n" >&2
++    intel_ucode="$(make_system_path_relative_to_its_root /boot/intel-ucode.img)"
++fi
++
+ title_correction_code=
+ 
+ linux_entry ()
+@@ -136,7 +142,7 @@ EOF
+     message="$(gettext_printf "Loading initial ramdisk ...")"
+     sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+-	initrd	${rel_dirname}/${initrd}
++	initrd	${intel_ucode} ${rel_dirname}/${initrd}
+ EOF
+   fi
+   sed "s/^/$submenu_indentation/" << EOF
