@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="audio analysis and audio-based music information retrieval for acousticbrainz"
 url="http://essentia.upf.edu/"
 arch=('x86_64' 'i686')
-license=('GPL')
+license=('AGPL')
 makedepends=('python2' 'git')
 depends=('libyaml' 'fftw' 'ffmpeg' 'taglib' 'libsamplerate')
 source=("git+https://github.com/MTG/$_pkgname.git#commit=$_AB_COMMIT")
