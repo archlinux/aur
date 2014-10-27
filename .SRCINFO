@@ -12,8 +12,10 @@ pkgbase = acousticbrainz-gui-git
 	conflicts = acousticbrainz-gui
 	source = git+https://github.com/MTG/acousticbrainz-gui.git
 	source = acousticbrainz-gui.sh
+	source = acousticbrainz-gui.desktop
 	md5sums = SKIP
 	md5sums = e36726d348e1859eae26323d7f3cc223
+	md5sums = 63ab9d6ffeda180688d1ad8f2f0559d8
 
 pkgname = acousticbrainz-gui-git
 
