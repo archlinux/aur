@@ -16,10 +16,10 @@ Request a new forwarding port
 Request port forwarding [default]
 .TP
 \fB\-a\fR, \fB \-\-allow\fR
-Block all non-VPN traffic 
+Unblock all non-VPN traffic [default]
 .TP
 \fB\-d\fR, \fB \-\-disallow\fR
-Unblock all non-VPN traffic [default]
+Block all non-VPN traffic
 .TP
 \fB\-g\fR, \fB \-\-pia\-dns\fR
 Backup /etc/resolv.conf and create a new using PIA's DNS service
