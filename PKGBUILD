@@ -5,8 +5,8 @@
 # https://github.com/radioxoma/aur/tree/master/fiji-binary
 
 pkgname="fiji-binary"
-pkgver="20130715"
-pkgrel="7"
+pkgver="20140602"
+pkgrel="1"
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
 arch=('i686' 'x86_64')
 url='http://fiji.sc/'
@@ -22,11 +22,10 @@ source=(
         "http://fiji.sc/downloads/Life-Line/fiji-nojre-${pkgver}.zip"
         # "http://jenkins.imagej.net/job/Stable-Fiji/lastSuccessfulBuild/artifact/fiji-nojre.zip" ## This one is the "continuous build".
         "fiji.desktop"
-       )
-md5sums=(
-         'abdcbf387ccd76015558ccfcc0b79d29'
-         '4c59f5f24368b179aab17eac1e1dfd2a'
         )
+md5sums=('0b33c507ec65ff1f7bd888c27a4db3ab'
+         '4c59f5f24368b179aab17eac1e1dfd2a')
+
 _userexecutable="fiji" # That name to be presented to the user.
 
 _executablebase="ImageJ-linux"
@@ -41,8 +40,19 @@ build()
   _extractdir="${srcdir}/Fiji.app"
 
   cd "${_extractdir}" || exit 11
-  _removefrompackage=('Contents' 'ImageJ-linux32' 'ImageJ-linux64' 'ImageJ-win32.exe' 'ImageJ-win64.exe') # Remove executables not suiting our architecture, and an ampty dir.
+  # Remove:
+  #   * executables not suiting our architecture
+  #   * an ampty dir
+  #   * useless updater
+  _removefrompackage=('Contents' 'ImageJ-linux32' 'ImageJ-linux64'
+                      'ImageJ-win32.exe' 'ImageJ-win64.exe'
+                      'plugins/Fiji_Updater.jar'
+                      )
   _executablebak="$(mktemp)" || exit 21 # Save the executable matching our architecture.
+  
+  # Dry run to update plugins status
+  "./${_executable}" --update list-local-only
+
   cp "${_executable}" "${_executablebak}" || exit 31
   rm -Rf "${_removefrompackage[@]}" || exit 41
   mv "${_executablebak}" "${_executable}" || exit 51
