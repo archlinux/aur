@@ -1,9 +1,10 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Felip Manyer i Ballester <archlinux at res hyphen telae dot cat>
+# Contributor: Andy Weidenbaum <archbaum at gmail.com>
 
 pkgname=vim-eunuch
-pkgver=1.0
-_srcid=18948
-pkgrel=2
+pkgver=1.1
+_srcid=21847
+pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
 depends=('vim')
@@ -11,7 +12,7 @@ groups=('vim-plugins')
 url="http://www.vim.org/scripts/script.php?script_id=4300"
 license=('custom:vim')
 source=(${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=${_srcid})
-sha256sums=('e2280726aa8e6ee108d2e3f46f8a5fd3f206561ceae3faa8e10f4c5c4f31e9c5')
+sha256sums=('687f615c3b7c204f14560d9df75ff20c310a49253152e2d72452682489707c8b')
 provides=('vim-eunuch')
 install=vimdoc.install
 
