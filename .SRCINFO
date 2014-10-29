@@ -7,6 +7,7 @@ pkgbase = epad-git
 	license = GPL3
 	makedepends = git
 	depends = python-efl
+	depends = bash
 	provides = epad=0.5.7.r62.7692223
 	conflicts = epad
 	source = git://github.com/JeffHoogland/ePad.git

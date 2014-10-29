@@ -8,7 +8,7 @@ pkgdesc="Simple text editor using Python and EFL"
 arch=('any')
 url="https://github.com/JeffHoogland/ePad"
 license=('GPL3')
-depends=('python-efl')
+depends=('python-efl' 'bash')
 makedepends=('git')
 provides=("${_pkgname,,}=$pkgver")
 conflicts=("${_pkgname,,}")
@@ -24,5 +24,10 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/ePad.py" "$pkgdir/usr/bin/ePad.py"
+  cd "$srcdir/$_pkgname"
+
+  install -d "$pkgdir/usr/share/epad/"
+  install -m644 *.py "$pkgdir/usr/share/epad/"
+  install -Dm755 epad "$pkgdir/usr/bin/epad"
+  install -Dm644 epad.1 "$pkgdir/usr/share/man/man1/epad.1"
 }
