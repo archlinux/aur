@@ -2,7 +2,7 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush-git
-pkgver=7.0.0.alpha5.r34.g7928b9b
+pkgver=7.0.0.alpha5.r84.g0b0fe46
 pkgrel=1
 pkgdesc="The Drupal command-line shell, git version."
 arch=('any')
