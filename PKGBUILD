@@ -2,7 +2,7 @@
 
 _pkgname=ePad
 pkgname=${_pkgname,,}-git
-pkgver=0.5.7.r53.618f5ac
+pkgver=0.5.7.r62.7692223
 pkgrel=1
 pkgdesc="Simple text editor using Python and EFL"
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 
   local v_ver=$(awk -F '"' '/^__version__/ {print $2}' ePad.py)
 
-  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "${v_ver%-*}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
