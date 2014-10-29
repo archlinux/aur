@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 _pkgname=acousticbrainz-gui
 pkgname=$_pkgname-git
-pkgver=r26.deca180
+pkgver=r30.8c6ae08
 pkgver(){
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -15,11 +15,9 @@ depends=('qt4' 'qjson' 'essentia-acousticbrainz')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/MTG/${_pkgname}.git"
-        "${_pkgname}.sh"
-        "${_pkgname}.desktop")
+        "${_pkgname}.sh")
 md5sums=('SKIP'
-         'e36726d348e1859eae26323d7f3cc223'
-         '63ab9d6ffeda180688d1ad8f2f0559d8')
+         'e36726d348e1859eae26323d7f3cc223')
 
 build() {
   cd "$_pkgname"
@@ -35,7 +33,7 @@ package() {
   install -D "../${_pkgname}.sh" "$pkgdir/usr/bin/acousticbrainz-gui"
 
   msg2 'Install desktop file.'
-  install -D "../${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -D "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
   msg2 'Install icons.'
   install -d "$pkgdir/usr/share/pixmaps/"
