@@ -5,15 +5,16 @@
 _rls=1
 _pkgname=gtk3
 pkgname=$_pkgname-donnatella
-pkgver=3.12.2
+pkgver=3.14.4
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (v3) w/ fixes & extra features"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
 install=gtk3.install
 depends=(atk cairo gtk-update-icon-cache libcups libxcursor libxinerama libxrandr libxi
-         libxcomposite libxdamage pango shared-mime-info colord at-spi2-atk wayland libxkbcommon)
-makedepends=(gobject-introspection gtk-doc)
+         libxcomposite libxdamage pango shared-mime-info colord at-spi2-atk
+         wayland libxkbcommon adwaita-icon-theme)
+makedepends=(gobject-introspection python2 gtk-doc)
 optdepends=('gnome-themes-standard: Default widget theme'
             'gnome-icon-theme: Default icon theme')
 provides=($_pkgname)
@@ -22,9 +23,9 @@ license=(LGPL)
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-$pkgver.tar.xz
         settings.ini
         http://jjacky.com/donnatella/$pkgname-${pkgver}-$_rls.tar.gz)
-sha256sums=('61d74eea74231b1ea4b53084a9d6fc9917ab0e1d71b69d92cbf60a4b4fb385d0'
+sha256sums=('a006c716d723dab0c623491566e3292af84c87d9198a30199051d23cfc7bef2f'
             '14369dfd1d325c393e17c105d5d5cc5501663277bd4047ea04a50abb3cfbd119'
-            'b0bfa30712fa16f14907cf24afddddd953430d9c97a04987930f726b8ac86ee9')
+            'ead634fc7cb0972eaae1535ede2fc4d092cf37573b69fc72c858ad242b291f36')
 
 prepare() {
     cd "gtk+-$pkgver"
@@ -55,5 +56,4 @@ build() {
 package() {
     cd "gtk+-$pkgver"
     make DESTDIR="$pkgdir" install
-    install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
 }
