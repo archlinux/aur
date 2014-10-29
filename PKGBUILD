@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 _pkgname=acousticbrainz-gui
 pkgname=$_pkgname-git
-pkgver=r21.1b839cb
+pkgver=r26.deca180
 pkgver(){
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -23,15 +23,8 @@ md5sums=('SKIP'
 
 build() {
   cd "$_pkgname"
-
-  msg2 'Build acousticbrainz-gui binary.'
   cmake -DCMAKE_BUILD_TYPE=Release .
   make
-
-  msg2 'Rename icons.'
-  cd images/
-  rename 'acoustid-fp' 'acousticbrainz-gui' *.*
-  mv acoustid-fingerprinter.svg acousticbrainz-gui.svg
 }
 
 package() {
