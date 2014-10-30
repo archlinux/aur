@@ -1,5 +1,5 @@
 pkgname=moonshine
-pkgver=0.0.11
+pkgver=0.1.3
 pkgrel=1
 
 pkgdesc="A lightweight Lua VM for the browser"
@@ -9,12 +9,12 @@ license=('GPL3')
 
 depends=('lua' 'nodejs')
 
-source=(http://registry.npmjs.org/moonshine/-/moonshine-$pkgver.tgz)
+source=("https://github.com/gamesys/moonshine/archive/$pkgver.tar.gz")
 
-noextract=(moonshine-$pkgver.tgz)
+noextract=("$pkgver.tgz")
 
-sha1sums=(ae822c99c67974e323c98607cc3caef0b2d5f6ad)
+sha1sums=('3068f8bd95a32626dda2907792fce6bae2aaddcf')
 
 package() {
-	npm install -g --prefix "$pkgdir"/usr moonshine-$pkgver.tgz
+	npm install -g --prefix "$pkgdir"/usr "$pkgver.tar.gz"
 }
