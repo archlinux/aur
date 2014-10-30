@@ -5,7 +5,7 @@
 #TODO: integrate with makepkg.d/
 
 pkgname=slic3r-git
-pkgver=0
+pkgver=a
 pkgrel=13
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
@@ -32,6 +32,8 @@ md5sums=('SKIP'
          '1371d698799ee97a43d22f6436a2e619')
 
 _gitname="Slic3r"
+#TODO: derrive this from pkgbuild "fragment", skip checkout/reset if fragment is set in source (no need for doing this twice)
+_gitfragment="stable"
 
 countdown() {
   local i
@@ -53,9 +55,11 @@ prepare() {
 
 # TODO: After all done ramp up pkgver++
 # TODO: Remind user about stable branch and others
-# TODO: ASK for disabling checks
+# TODO: ASK for disabling checks in case of failure (or even press something to ignore for N seconds)
 #------------------------------------------------------
 # Welcome new interactive config overlord
+
+  #TODO: Display warning with current branch/commit, just before prompt to press key
 
   [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s && {
     countdown 3 & countdown_pid=$!
@@ -69,6 +73,7 @@ prepare() {
       "branch/commit")
         cd "$_src_dir"
         # Pick a branch - default is stable… for now
+        # TODO: derrive actual current state of selection (commit/branch from fragment)
         branches=( $(git ls-remote --heads origin  | sed 's?.*refs/heads/??' | awk '{printf $1; if ($1 == "stable") printf " on ";else printf " off "}') )
         branch=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Pick branch' 0 0 0 ${branches[*]} 2>&1 >/dev/tty)
         unset branches
@@ -102,7 +107,7 @@ prepare() {
     esac
   else
     cd "$_src_dir"
-    git checkout stable -f
+    git checkout "${_gitfragment}" -f
   fi
 
   cd "$_src_dir"
