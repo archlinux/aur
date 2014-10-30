@@ -2,15 +2,15 @@
 # Mon Jun  1 13:54:22 UTC 2015
 pkgbase = python-geojson
 	pkgdesc = Python bindings and utlities for GeoJSON
-	pkgver = 1.0.7
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/frewsxcv/python-geojson
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/frewsxcv/python-geojson/archive/1.0.7.tar.gz
-	md5sums = 60f01b2c00bdb7e1eabee67dbb7cfd32
+	source = https://github.com/frewsxcv/python-geojson/archive/1.0.9.tar.gz
+	sha1sums = ab717c085e3983f58b170a5e94816eb78bbc15c3
 
 pkgname = python-geojson
 
