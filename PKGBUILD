@@ -1,8 +1,8 @@
 pkgname=irker
-pkgver=2.11
+pkgver=2.12
 pkgrel=1
 
-pkgdesc="An IRC client daemon accepting JSON notification requests presented to a socket."
+pkgdesc="IRC client daemon accepting JSON notification requests"
 url="http://www.catb.org/esr/irker/"
 arch=('any')
 license=('BSD')
@@ -10,9 +10,9 @@ license=('BSD')
 depends=('python2')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
 
-source=("http://www.catb.org/~esr/irker/$pkgname-$pkgver.tar.gz")
+source=("http://www.catb.org/~esr/irker/irker-$pkgver.tar.gz")
 
-md5sums=('5cad68c7ab6bf7b23d9bdc9aeb110632')
+sha1sums=('332b1e647b3f06755f02c03262409909d278c372')
 
 build() {
 	cd irker-$pkgver
@@ -23,7 +23,7 @@ build() {
 package() {
 	cd irker-$pkgver
 	make DESTDIR="$pkgdir" install
-	install -Dm 755 irkerhook.py "$pkgdir/usr/bin/irkerhook.py"
-	install -Dm 755 irk "$pkgdir/usr/bin/irk"
-	install -Dm 644 COPYING "$pkgdir/usr/share/licenses/irker/LICENSE"
+	install -Dm 755 irkerhook.py "$pkgdir"/usr/bin/irkerhook.py
+	install -Dm 755 irk "$pkgdir"/usr/bin/irk
+	install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/irker/LICENSE
 }
