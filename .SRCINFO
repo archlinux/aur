@@ -1,0 +1,18 @@
+pkgbase = kanboard
+	pkgdesc = Simple visual task board
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = http://kanboard.net/
+	install = kanboard.install
+	arch = any
+	license = AGL3
+	depends = php
+	optdepends = mariadb: For MySQL storage
+	optdepends = php-sqlite: For sqlite storage
+	optdepends = php-pgsql: For postgres storage
+	options = !strip
+	source = https://github.com/fguillot/kanboard/archive/v1.0.8.tar.gz
+	sha256sums = f89fa950930837ba11bdca0c08f805658cc2e0bdd675a36e8f719ff432ec0054
+
+pkgname = kanboard
+

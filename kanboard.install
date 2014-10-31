@@ -1,0 +1,10 @@
+post_install() {
+    echo 'To get started you need to:
+- Configure nginx or apache
+- Enable the required database driver in /etc/php/php.ini (the default driver is sqlite)
+- OPTIONAL: Configure kanboard by editing /etc/webapps/kanboard/config.php
+    This is required when using another DB driver than sqlite
+    More info:
+    * http://kanboard.net/documentation/mysql-configuration
+    * http://kanboard.net/documentation/postgresql-configuration'
+}
