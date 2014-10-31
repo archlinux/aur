@@ -1,6 +1,6 @@
 pkgbase = acousticbrainz-client-git
 	pkgdesc = client to upload data to an acousticbrainz server
-	pkgver = r49.e5017ec
+	pkgver = r56.d49bfb6
 	pkgrel = 1
 	url = http://acousticbrainz.org/
 	arch = any

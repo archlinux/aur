@@ -2,7 +2,7 @@
 pkgname=acousticbrainz-client-git
 _pkgname=acousticbrainz-client
 _python=python
-pkgver=r49.e5017ec
+pkgver=r56.d49bfb6
 pkgrel=1
 pkgdesc="client to upload data to an acousticbrainz server"
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
   # we have that in essentia-acousticbrainz
-  sed -i -e "s/, 'streaming_extractor_music'//" setup.py
+  sed -i -e "/streaming_extractor_music/d" setup.py
 }
 
 build() {
