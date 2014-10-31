@@ -2,13 +2,13 @@
 
 pkgname=dhcptest-git
 pkgver=0.4.r0.ga2e034e
-pkgrel=1
+pkgrel=2
 pkgdesc="DHCP test client"
 arch=('i686' 'x86_64')
 url="https://github.com/CyberShadow/dhcptest"
 license=('BSL1.0')
 makedepends=('dmd' 'git')
-source=("$pkgname"::'git://github.com/CyberShadow/dhcptest'
+source=("$pkgname"::'git+https://github.com/CyberShadow/dhcptest'
         'http://www.boost.org/LICENSE_1_0.txt')
 md5sums=('SKIP'
          'e4224ccaecb14d942c71d31bef20d78c')
