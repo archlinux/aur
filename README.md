@@ -1,18 +1,18 @@
-# wallabag
+# kanboard
 
 ## Description
 
-AUR package for wallabag
+AUR package for kanboard
 
 ## Installation
 
 ``` bash
-git clone https://github.com/pschmitt/aur-wallabag /tmp/wallabag
-cd /tmp/wallabag
+git clone https://github.com/pschmitt/aur-kanboard /tmp/kanboard
+cd /tmp/kanboard
 makepkg -si
 ```
 
 ## Links
 
-* AUR page: https://aur.archlinux.org/packages/wallabag
-* Upstream: http://www.wallabag.org/ and https://github.com/wallabag/wallabag
+* AUR page: https://aur.archlinux.org/packages/kanboard
+* Upstream: http://kanboard.net and https://github.com/fguillot/kanboard
