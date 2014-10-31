@@ -1,5 +1,5 @@
 pkgbase = python-discid
-	pkgdesc = Python binding of Libdiscid
+	pkgdesc = Python binding of MusicBrainz libdiscid (Picard optdep)
 	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://python-discid.readthedocs.org/
