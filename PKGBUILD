@@ -4,10 +4,10 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-indigo-rviz'
-pkgver='1.11.3'
-_pkgver_patch=1
+pkgver='1.11.4'
+_pkgver_patch=0
 arch=('any')
-pkgrel=5
+pkgrel=1
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -41,6 +41,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   assimp
   eigen3
   tinyxml
+  mesa
   yaml-cpp)
 
 ros_depends=(ros-indigo-geometry-msgs
@@ -72,6 +73,7 @@ depends=(${ros_depends[@]}
   assimp
   eigen3
   tinyxml
+  mesa
   yaml-cpp)
 
 _tag=release/indigo/rviz/${pkgver}-${_pkgver_patch}
@@ -99,8 +101,8 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        ${_cmake_options[@]}
+        -DPYTHON_BASENAME=-python2.7 \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
 

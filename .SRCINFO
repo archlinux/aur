@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
-	pkgver = 1.11.3
-	pkgrel = 5
+	pkgver = 1.11.4
+	pkgrel = 1
 	url = http://ros.org/wiki/rviz
 	arch = any
 	license = BSD, Creative Commons
@@ -37,6 +37,7 @@ pkgbase = ros-indigo-rviz
 	makedepends = assimp
 	makedepends = eigen3
 	makedepends = tinyxml
+	makedepends = mesa
 	makedepends = yaml-cpp
 	depends = ros-indigo-geometry-msgs
 	depends = ros-indigo-python-qt-binding
@@ -66,8 +67,9 @@ pkgbase = ros-indigo-rviz
 	depends = assimp
 	depends = eigen3
 	depends = tinyxml
+	depends = mesa
 	depends = yaml-cpp
-	source = rviz::git+https://github.com/ros-gbp/rviz-release.git#tag=release/indigo/rviz/1.11.3-1
+	source = rviz::git+https://github.com/ros-gbp/rviz-release.git#tag=release/indigo/rviz/1.11.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rviz
