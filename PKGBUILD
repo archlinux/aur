@@ -4,7 +4,7 @@ pkgdesc="ROS - camera_calibration allows easy calibration of monocular or stereo
 url='http://www.ros.org/wiki/camera_calibration'
 
 pkgname='ros-indigo-camera-calibration'
-pkgver='1.12.10'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,6 +48,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
