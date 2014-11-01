@@ -4,7 +4,7 @@ pkgdesc="ROS - Stereo and single image rectification and disparity processing."
 url='http://www.ros.org/wiki/stereo_image_proc'
 
 pkgname='ros-indigo-stereo-image-proc'
-pkgver='1.12.10'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -61,6 +61,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
