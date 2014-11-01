@@ -1,6 +1,6 @@
 pkgbase = bspwm-git
 	pkgdesc = A tiling window manager based on binary space partitioning
-	pkgver = 961
+	pkgver = 963
 	pkgrel = 1
 	url = https://github.com/baskerville/bspwm
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = bspwm-git
 	provides = bspwm
 	conflicts = bspwm
 	source = git://github.com/baskerville/bspwm.git
+	md5sums = SKIP
 
 pkgname = bspwm-git
 
