@@ -8,7 +8,7 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-pkgver=2.25.1
+pkgver=2.25.2
 pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
@@ -25,7 +25,7 @@ options=('strip' 'debug')
 source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.25/${pkgname/-selinux}-$pkgver.tar.xz"
         uuidd.tmpfiles
         pam-{login,common,su})
-md5sums=('2ff36a8f8ede70f66c5ad0fb09e40e79'
+md5sums=('cab3d7be354000f629bc601238b629b3'
          'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
@@ -107,8 +107,3 @@ package_libutil-linux-selinux() {
 
   mv "$srcdir/_libutil-linux"/* "$pkgdir"
 }
-
-workaround_for_the_aur_webinterface='
-pkgname="util-linux-selinux"
-depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux' 'glibc' 'libselinux')
-'

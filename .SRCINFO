@@ -1,6 +1,6 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.25.1
+	pkgver = 2.25.2
 	pkgrel = 1
 	url = http://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
@@ -12,12 +12,12 @@ pkgbase = util-linux-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.1.tar.xz
+	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.2.tar.xz
 	source = uuidd.tmpfiles
 	source = pam-login
 	source = pam-common
 	source = pam-su
-	md5sums = 2ff36a8f8ede70f66c5ad0fb09e40e79
+	md5sums = cab3d7be354000f629bc601238b629b3
 	md5sums = a39554bfd65cccfd8254bb46922f4a67
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4
@@ -31,10 +31,10 @@ pkgname = util-linux-selinux
 	depends = libsystemd-selinux
 	depends = libutil-linux-selinux
 	optdepends = python: python bindings to libmount
-	provides = util-linux-ng=2.25.1
+	provides = util-linux-ng=2.25.2
 	provides = eject
-	provides = util-linux=2.25.1-
-	provides = selinux-util-linux=2.25.1-
+	provides = util-linux=2.25.2-
+	provides = selinux-util-linux=2.25.2-
 	conflicts = util-linux-ng
 	conflicts = eject
 	conflicts = util-linux
@@ -52,6 +52,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.25.1-
+	provides = libutil-linux=2.25.2-
 	conflicts = libutil-linux
 
