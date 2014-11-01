@@ -4,7 +4,7 @@ pkgdesc="ROS - actionlib_msgs defines the common messages to interact with an ac
 url='http://ros.org/wiki/actionlib_msgs'
 
 pkgname='ros-indigo-actionlib-msgs'
-pkgver='1.11.4'
+pkgver='1.11.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -46,6 +46,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
