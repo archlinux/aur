@@ -4,7 +4,7 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-indigo-pcl-ros'
-pkgver='1.2.1'
+pkgver='1.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -25,6 +25,7 @@ ros_makedepends=(ros-indigo-tf
   ros-indigo-nodelet-topic-tools)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
+  vtk
   eigen3
   pcl)
 
@@ -41,8 +42,9 @@ ros_depends=(ros-indigo-tf
   ros-indigo-pluginlib
   ros-indigo-nodelet)
 depends=(${ros_depends[@]}
-  eigen3
-  pcl)
+  vtk
+  pcl
+  eigen3)
 
 _tag=release/indigo/pcl_ros/${pkgver}-${_pkgver_patch}
 _dir=pcl_ros
@@ -69,6 +71,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
