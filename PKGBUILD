@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 210619 2014-04-15 20:43:33Z ronald $
+# $Id:$
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
-pkgver=3.15.0
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="IP Routing Utilities with SELinux support"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 source=(http://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz
         iproute2-fhs.patch
 	unwanted-link-help.patch)
-sha1sums=('82dce736488dac5af0f4b5659ae905fef87ed308'
+sha1sums=('90de527b041fb2e909ee93e8c1d9c52fee55e88c'
           '35b8cf2dc94b73eccad427235c07596146cd6f6c'
           '3b1335f4025f657f388fbf4e5a740871e3129c2a')
 
