@@ -10,6 +10,7 @@ pkgbase = iproute2-selinux
 	makedepends = linux-atm
 	depends = glibc
 	depends = iptables
+	depends = libselinux
 	optdepends = linux-atm: ATM support
 	provides = iproute
 	provides = iproute2=3.17.0-1
