@@ -1,6 +1,6 @@
 pkgbase = ctwm-git
 	pkgdesc = Claude's Tab Window Manager
-	pkgver = 3.8.2.r331.gca12ada
+	pkgver = 3.8.2.r448.g349ac04
 	pkgrel = 1
 	url = http://ctwm.org/
 	arch = i686
@@ -13,9 +13,11 @@ pkgbase = ctwm-git
 	depends = libjpeg
 	provides = ctwm
 	conflicts = ctwm
+	backup = usr/lib/X11/twm/system.ctwmrc
 	source = ctwm-git::git+https://github.com/fullermd/ctwm-mirror.git
 	source = copyright
-	backup = usr/lib/X11/twm/system.ctwmrc
+	md5sums = SKIP
+	md5sums = 27dfbec8866ff55e54f6232a2d2d2de8
 
 pkgname = ctwm-git
 
