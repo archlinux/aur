@@ -1,0 +1,14 @@
+pkgbase = aspell-tr
+	pkgdesc = Turkish dictionary for aspell
+	pkgver = 0.50
+	pkgrel = 1
+	url = http://turkce.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/tr/aspell-tr-0.50-0.tar.bz2
+	md5sums = 432ecdc4e5233da0a4c1a52ed9103fa2
+
+pkgname = aspell-tr
+
