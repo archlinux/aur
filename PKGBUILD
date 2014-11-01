@@ -4,10 +4,10 @@ pkgdesc="ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/
 url='http://smc.sourceforge.net/'
 
 pkgname='ros-indigo-smclib'
-pkgver='1.7.14'
-_pkgver_patch=1
+pkgver='1.7.16'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Mozilla Public License Version 1.1')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -42,6 +42,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
