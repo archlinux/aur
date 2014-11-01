@@ -4,10 +4,10 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-indigo-nodelet'
-pkgver='1.9.0'
+pkgver='1.9.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -17,6 +17,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-catkin
   ros-indigo-message-generation
   ros-indigo-rosconsole
+  ros-indigo-cmake-modules
   ros-indigo-pluginlib)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -60,6 +61,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

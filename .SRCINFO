@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-nodelet
 	pkgdesc = ROS - The nodelet package is designed to provide a way to run multiple algorithms in the same process with zero copy transport between algorithms.
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.9.2
+	pkgrel = 1
 	url = http://ros.org/wiki/nodelet
 	arch = any
 	license = BSD
@@ -15,6 +15,7 @@ pkgbase = ros-indigo-nodelet
 	makedepends = ros-indigo-catkin
 	makedepends = ros-indigo-message-generation
 	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-cmake-modules
 	makedepends = ros-indigo-pluginlib
 	makedepends = util-linux
 	makedepends = boost
@@ -28,7 +29,7 @@ pkgbase = ros-indigo-nodelet
 	depends = util-linux
 	depends = boost
 	depends = tinyxml
-	source = nodelet::git+https://github.com/ros-gbp/nodelet_core-release.git#tag=release/indigo/nodelet/1.9.0-0
+	source = nodelet::git+https://github.com/ros-gbp/nodelet_core-release.git#tag=release/indigo/nodelet/1.9.2-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-nodelet
