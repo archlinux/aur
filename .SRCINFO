@@ -1,6 +1,6 @@
 pkgbase = cdogs-git
 	pkgdesc = SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2", development version)
-	pkgver = 0.5.6.r46.ga580487
+	pkgver = 0.5.6.r215.ga1ac1b7
 	pkgrel = 1
 	url = http://cxong.github.io/cdogs-sdl/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = cdogs-git
 	makedepends = cmake
 	depends = sdl_mixer
 	depends = sdl_image
+	depends = physfs
 	provides = cdogs
 	conflicts = cdogs
 	source = cdogs::git+https://github.com/cxong/cdogs-sdl.git

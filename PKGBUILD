@@ -1,13 +1,13 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=cdogs-git
-pkgver=0.5.6.r46.ga580487
+pkgver=0.5.6.r215.ga1ac1b7
 pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2", development version)'
 arch=('i686' 'x86_64')
 url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
-depends=('sdl_mixer' 'sdl_image')
+depends=('sdl_mixer' 'sdl_image' 'physfs')
 makedepends=('git' 'cmake')
 conflicts=('cdogs')
 provides=('cdogs')
@@ -20,7 +20,6 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd cdogs
-
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -31,7 +30,7 @@ prepare() {
   sed 's| -Werror||;s|CDOGS_DATA_DIR "../"|CDOGS_DATA_DIR "/usr/share/cdogs/"|' \
     -i CMakeLists.txt
 
-  # fix name in .desktop file
+  # change name in .desktop file
   sed 's|cdogs-sdl|cdogs|g' -i build/linux/cdogs-sdl.desktop
 
   # submodules magic
@@ -63,7 +62,7 @@ package() {
   # doc
   install -d "$pkgdir"/usr/share/doc
   ln -s /usr/share/cdogs/doc "$pkgdir"/usr/share/doc/cdogs
-  # .desktop file
+  # .desktop entry
   install -Dm644 build/linux/cdogs-icon.48.png "$pkgdir"/usr/share/pixmaps/cdogs.png
   install -Dm644 build/linux/cdogs-sdl.desktop "$pkgdir"/usr/share/applications/cdogs.desktop
 }
