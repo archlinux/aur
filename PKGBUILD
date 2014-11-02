@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://mbm.sourceforge.net/"
 license=('GPL')
 depends=('networkmanager' 'network-manager-applet' 'intltool' 'gtk-doc' 'libnl1')
-makedepends=('git' 'autoconf')
+makedepends=('git')
 provides=("${_gitname}")
 source=(
 "git://mbm.git.sourceforge.net/gitroot/mbm/${_gitname}/"

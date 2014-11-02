@@ -7,7 +7,6 @@ pkgbase = mbm-gpsd-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = autoconf
 	depends = networkmanager
 	depends = network-manager-applet
 	depends = intltool
