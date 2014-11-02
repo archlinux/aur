@@ -1,4 +1,4 @@
-# Maintainer: Yaron de Leeuw < me@jarondl.net .com>
+# Maintainer: Yaron de Leeuw < me@jarondl.net >
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 # Contributor: J. W. Birdsong <jwbirdsong AT gmail DOT com>
 # Contributor: Frikilinux <frikilinux at frikilinux.com.ar>
@@ -6,7 +6,7 @@
 # Contributor: Ismael Carnales <icarnales@gamail.com
 
 pkgname=pidgin-light
-pkgver=2.10.9
+pkgver=2.10.10
 pkgrel=1
 pkgdesc="A light pidgin version: msn, jabber, irc supported protocols without gstreamer, tcl, tk, xscreensaver support.No video/voice.  Includes finch "
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=('!libtool')
 install=pidgin-light.install
 source=(http://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/pidgin-$pkgver.tar.bz2 pidgin-light.install )
 
-md5sums=('10a4a69d077893f6dd3438cd8af94e81'
+md5sums=('5030d4750c73b211c7e82bb67ea3d016'
          '8cc4ec58d3288bb171fc8359c25674f7')
 
 build() {
