@@ -1,4 +1,4 @@
-# Maintainer: Yaron de Leeuw <jdlmail@gmail.com>
+# Maintainer: Yaron de Leeuw < me@jarondl.net .com>
 
 pkgname=zimlib-git
 pkgver=0.0.0
