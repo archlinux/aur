@@ -1,4 +1,4 @@
-# Maintainer: Yaron de Leeuw <jdlmail at gmail >
+# Maintainer: Yaron de Leeuw < me@jarondl.net  >
 pkgname=python-isort
 _pkgname=isort
 pkgver=3.9.0
