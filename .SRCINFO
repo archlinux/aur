@@ -1,6 +1,6 @@
 pkgbase = auto-rsync-backups
 	pkgdesc = little script to handle/rotate rsync backups
-	pkgver = 0.2
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://bitbucket.org/jjacky/backups
 	install = install
@@ -8,8 +8,8 @@ pkgbase = auto-rsync-backups
 	license = GPL3
 	depends = bash
 	depends = rsync
-	source = https://bitbucket.org/jjacky/backups/get/0.2.tar.gz
-	md5sums = 013edc9f160098e27bd94b9ec754c7e7
+	source = https://bitbucket.org/jjacky/backups/get/1.0.2.tar.gz
+	sha1sums = eacc0d7db3ffa4539f0db013e3dc3e036a8b5e86
 
 pkgname = auto-rsync-backups
 
