@@ -1,4 +1,4 @@
-# Maintainer: Yaron de Leeuw <jdlmail@gmail.com>
+# Maintainer: Yaron de Leeuw < me@jarondl.net .com>
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 # Contributor: J. W. Birdsong <jwbirdsong AT gmail DOT com>
 # Contributor: Frikilinux <frikilinux at frikilinux.com.ar>
