@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://lastpass.com/"
 license=('GPL2')
 depends=('openssl' 'curl' 'libxml2')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'git')
 optdepends=('xclip: clipboard support'
        'pinentry: securelly read passwords')
 source=("git+https://github.com/lastpass/${_gitname}.git")
