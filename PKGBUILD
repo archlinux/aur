@@ -2,7 +2,7 @@
 
 pkgname=liblcf
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
