@@ -1,6 +1,6 @@
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 
-# Maintainer: Yaron de Leeuw <jdlmail at gmail >
+# Maintainer: Yaron de Leeuw < me@jarondl.net  >
 # Contributor: Bruno Carlin <self at aerdhyl dot eu>
 
 pkgname=python-setuptools_git
