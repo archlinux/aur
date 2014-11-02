@@ -1,4 +1,9 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+#
 # Contributor: unlucu <unlucu at gmail dot com>
+#
+# Any suggestions welcome; please submit paches via Github:
+# https://github.com/alerque/aur/tree/master/git-annex-bin
 
 pkgname=aspell-tr
 pkgver=0.50
@@ -11,7 +16,7 @@ depends=('aspell')
 source=('ftp://ftp.gnu.org/gnu/aspell/dict/tr/aspell-tr-0.50-0.tar.bz2')
 md5sums=('432ecdc4e5233da0a4c1a52ed9103fa2')
 
-build() {
+package () {
   cd $startdir/src/aspell-tr-${pkgver}-0
   ./configure
   make || return 1
