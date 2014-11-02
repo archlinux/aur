@@ -1,4 +1,4 @@
-# Maintainer: Yaron de Leeuw <jdlmail@gmail.com>
+# Maintainer: Yaron de Leeuw < me@jarondl.net .com>
 
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 
