@@ -1,11 +1,11 @@
---- factor-old/misc/fuel/fuel-listener.el	2010-08-23 23:36:18.160000006 +0200
-+++ factor/misc/fuel/fuel-listener.el	2010-08-23 23:37:44.653333434 +0200
-@@ -36,7 +36,7 @@
-                            "factor.com")
-                           ((eq system-type 'darwin)
-                            "Factor.app/Contents/MacOS/factor")
--                          (t "factor"))
-+                          (t "/usr/bin/factor-vm"))
-                     fuel-factor-root-dir)
-   "Full path to the factor executable to use when starting a listener."
-   :type '(file :must-match t)
+--- factor-old/misc/fuel/fuel-listener.el	2014-11-03 06:55:20.312970158 +0100
++++ factor/misc/fuel/fuel-listener.el	2014-11-03 06:58:01.156389907 +0100
+@@ -85,7 +85,7 @@
+                                "factor.com")
+                               ((eq system-type 'darwin)
+                                "Factor.app/Contents/MacOS/factor")
+-                              (t "factor"))
++                              (t "/usr/bin/factor-vm"))
+                         fuel-factor-root-dir)))
+ 
+ (defun fuel-listener-factor-image ()
