@@ -7,22 +7,15 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.56.0
+pkgver=1.57.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 url='http://www.boost.org/'
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('icu>=53.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
-source=(http://downloads.sourceforge.net/${pkgbase}/${pkgbase}_${_boostver}.tar.gz
-        boost-1.56.0-add-missing-headers-to-shared_ptr_helper.patch)
-sha1sums=('1639723c6bdff873cdb6d747f8f8c9d9f066434d'
-          '5d611ad72005d1fb939ea783603861d2cb29433a')
-
-prepare() {
-   cd ${pkgbase}_${_boostver}
-   patch -p2 -i ../boost-1.56.0-add-missing-headers-to-shared_ptr_helper.patch
-}
+source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2)
+sha1sums=('e151557ae47afd1b43dc3fac46f8b04a8fe51c12')
 
 build() {
    export _stagedir="${srcdir}/stagedir"
@@ -81,7 +74,7 @@ package_boost() {
    cp -a "${_stagedir}"/{bin,include,share} "${pkgdir}"/usr
 
    install -d "${pkgdir}"/usr/lib
-   find "${_stagedir}"/lib -name \*.a -exec mv {} "${pkgdir}"/usr/lib \;
+   cp -a "${_stagedir}"/lib/*.a "${pkgdir}"/usr/lib/
 
    install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost/LICENSE_1_0.txt
@@ -96,6 +89,7 @@ package_boost-libs() {
 
    install -dm755 "${pkgdir}"/usr
    cp -a "${_stagedir}"/lib "${pkgdir}"/usr
+   rm "${pkgdir}"/usr/lib/*.a
 
    install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost-libs/LICENSE_1_0.txt
