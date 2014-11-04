@@ -2,11 +2,12 @@
 
 pkgname=pqp
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for performing proximity queries on a pair of geometric models composed of triangles"
 arch=('i686' 'x86_64')
 url="http://gamma.cs.unc.edu/SSV/"
 license=('Custom')
+options=(staticlibs)
 source=(http://gamma.cs.unc.edu/software/downloads/SSV/${pkgname}-${pkgver}.tar.gz
         LICENSE
         fpic.patch)
