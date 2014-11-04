@@ -1,7 +1,7 @@
 pkgbase = pdftk-bin
 	pkgdesc = Swiss army knife for PDFs. Built from binary executables available in Debian repositories.
-	pkgver = 2.02_1
-	pkgrel = 4
+	pkgver = 2.02_2
+	pkgrel = 1
 	url = http://www.pdfhacks.com/pdftk
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = pdftk-bin
 	provides = pdftk
 	conflicts = pdftk
 	conflicts = pdfchain-all-inclusive
-	source = http://ftp.debian.org/debian/pool/main/p/pdftk/pdftk_2.02-1_amd64.deb
-	sha512sums = 3f834c4e5a4396fbeda8c32e1e634804ae32bfd4b63d05468a6d48b0b21cd3214e2abdc2ed1ff881306feb0e72abbb9c4c21b89c45d500a50700d90dda074185
+	source = http://ftp.debian.org/debian/pool/main/p/pdftk/pdftk_2.02-2_amd64.deb
+	sha512sums = f9b061c46e3a6cb2451c8e6925e73cf2680c34169b20334374ed41516eabd1b7d4d73e8c2a66403118672cf06f672037c312b71f88af68454dfe15bd9be3b225
 
 pkgname = pdftk-bin
 
