@@ -2,7 +2,7 @@
 
 pkgname=graspit
 pkgver=2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Environment for grasp analysis and planning."
 arch=('i686' 'x86_64')
 url="http://www.cs.columbia.edu/~cmatei/graspit/"
@@ -23,12 +23,12 @@ build() {
   cd "${srcdir}/Graspit"
 
   qmake-qt4 graspit.pro EXT_DESTDIR="${pkgdir}/usr/share/graspit" ADDITIONAL_INCLUDE_DIR=/usr/include/libqhull ADDITIONAL_LINK_FLAGS=-ldl
-  make
 }
 
 package() {
   cd "${srcdir}/Graspit"
 
+  make
   make install
 
   # include 3D models and worlds
