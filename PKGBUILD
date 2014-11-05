@@ -66,7 +66,7 @@ pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac a
 pkgver=${_mozcver}.${_utdicver}
 #_patchver=${_mozcver}.1
 _patchver=1.15.1834.102.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
@@ -78,7 +78,7 @@ source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=
         japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=$_japanese_usage_dictionary_rev
         gyp::svn+http://gyp.googlecode.com/svn/trunk#revision=$_gyp_rev
         http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-${_utdicver}.tar.bz2
-        edict-${_utdicver}.gz::http://ftp.monash.edu.au/pub/nihongo/edict.gz
+        http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcoderel}.zip
@@ -191,7 +191,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'a60f05b9cc7542e7e07fc45c6b2d1288444b71b6fb6e038403e59aa2eec4749bc609fa7f6bb5dc0a03d4f0c32174b03bc59f88afcc547d611fd845061fab7329'
-            'b49742bb293ceae6f0e9f73d04b196e98cb0768651fc3c5942b9df9d63143f5736be419d1894b1c572854418a688231d6df0ac551a6eb5dfa0e38889a6f51c77'
+            '19f34b94148bd20bb063e889e54a15722235d6af2fb8e52fa0891dcd6d4081811ebccc5a83f06ec6191c11a92d858db34a291cfe60297585b610b5fa8f2d3607'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             'f74d2ddf95706b2925d87b3effa9490aa7cba1f5ce2c20e537f2ac4dfc4c6b6b531f90f8c128bca0f1eafd9197abb6e1f004c11a1ea7a978b2ccad5e85ad0d55'
             '2befbb40957f9fdd2454af7cbde1c27da4570fd7f8519237d344b014f42504b642f95e31308a1a4b62f2ac327609270015a572dbc7de7a6a5a0a6ade889a39a0'
