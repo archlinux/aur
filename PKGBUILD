@@ -20,7 +20,7 @@ depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++' 'libxkbcommon-x11' 'avahi
 makedepends=('libxt' 'cmake' 'qt5-base' 'unzip' 'subversion')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
-source=("synergy-trunk::svn+http://svn.synergy-project.org/trunk/#revision=${_pkgver}"
+source=("synergy-${pkgver}::https://github.com/synergy/synergy/archive/1.6.0.tar.gz"
         "synergys_at.socket"
         "synergys_at.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
@@ -30,7 +30,7 @@ sha1sums=('SKIP'
           '8e321e664ae4b7a763175524dd938a88d85c7909')
 
 build() {
-  cd "${srcdir}/synergy-trunk"
+  cd "${srcdir}/synergy-${pkgver}"
 
   # Unfuck the bundled cryptopp stuff. Thanks a lot, Gentoo!
   # You and Fedora are our only friends in this crazy world.
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/synergy-trunk"
+  cd "${srcdir}/synergy-${pkgver}"
 
   # install binary
   install -Dm755 bin/synergy "$pkgdir/usr/bin/synergy"
