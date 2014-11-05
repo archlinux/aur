@@ -4,7 +4,7 @@ _python=python
 _pkgname=python-efl
 pkgname=$_python-efl
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -16,12 +16,14 @@ sha1sums=('7007178fedc5f7eb0ee5886e63ba0e533cfe86f0')
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
 
+  DISABLE_CYTHON=1 \
   $_python setup.py build
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
+  DISABLE_CYTHON=1 \
   $_python setup.py install --root="$pkgdir" --optimize=1
 
 # install text files
