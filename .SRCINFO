@@ -1,0 +1,15 @@
+pkgbase = httpry
+	pkgdesc = A specialized packet sniffer designed for displaying and logging HTTP traffic.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://dumpsterventures.com/jason/httpry/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libpcap
+	optdepends = perl: if you want to use the scripts/plugins
+	source = http://dumpsterventures.com/jason/httpry/httpry-0.1.8.tar.gz
+	sha256sums = ef53454f895f68005f7b9ab634d1b433c4df839eacea9109e4ee48d4296fb613
+
+pkgname = httpry
+
