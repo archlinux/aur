@@ -1,14 +1,14 @@
 pkgbase = espionage-git
 	pkgdesc = PyEFL D-Bus inspector
-	pkgver = 0.9.r13.04c9800
+	pkgver = 0.9.r17.c7fa0fb
 	pkgrel = 1
-	url = http://www.enlightenment.org
+	url = https://phab.enlightenment.org/w/projects/espionage/
 	install = espionage.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python-efl
-	provides = espionage=0.9.r13.04c9800
+	provides = espionage=0.9.r17.c7fa0fb
 	conflicts = espionage
 	source = git://git.enlightenment.org/apps/espionage.git
 	sha256sums = SKIP

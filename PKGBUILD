@@ -2,11 +2,11 @@
 
 _pkgname=espionage
 pkgname=$_pkgname-git
-pkgver=0.9.r13.04c9800
+pkgver=0.9.r17.c7fa0fb
 pkgrel=1
 pkgdesc="PyEFL D-Bus inspector"
 arch=('any')
-url="http://www.enlightenment.org"
+url="https://phab.enlightenment.org/w/projects/espionage/"
 license=('GPL3')
 depends=('python-efl')
 makedepends=('git')
