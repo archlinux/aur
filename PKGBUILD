@@ -52,25 +52,26 @@
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=1.15.1834.102
+_mozcver=1.15.1917.102
 _utdicver=20140929
-_zipcoderel=201406
-_protobuf_ver=2.5.0
-_gyp_rev=1950
+_zipcoderel=201410
+_protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
+_gyp_rev=1987
 _japanese_usage_dictionary_rev=0
-_revision=271
+_revision=373
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
-_patchver=${_mozcver}.1
+#_patchver=${_mozcver}.1
+_patchver=1.15.1834.102.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
 depends=('qt4' 'fcitx' 'zinnia')
-makedepends=('pkg-config' 'python2' 'gtest' 'curl' 'gtk2' 'mesa' 'svn' 'ninja' 'ruby')
+makedepends=('pkg-config' 'python2' 'gtest' 'curl' 'gtk2' 'mesa' 'svn' 'ninja' 'ruby' 'git')
 replaces=('mozc-fcitx' 'fcitx-mozc')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc')
 source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=$_revision
@@ -82,7 +83,7 @@ source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=
         mod-generate-mozc-ut.sh
         http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcoderel}.zip
         http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcoderel}.zip
-        http://protobuf.googlecode.com/files/protobuf-${_protobuf_ver}.tar.bz2
+        git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_patchver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
@@ -119,7 +120,7 @@ prepare() {
 
   # Copy protobuf to be linked statically
   mkdir third_party/protobuf
-  cp -rf "${srcdir}/protobuf-${_protobuf_ver}"/* third_party/protobuf
+  cp -rf "${srcdir}/protobuf"/* third_party/protobuf
 }
 
 build() {
@@ -140,7 +141,7 @@ build() {
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc"
 
   QTDIR=/usr GYP_DEFINES="document_dir=/usr/share/licenses/$pkgname" python2 build_mozc.py gyp
-  python2 build_mozc.py build -c $_bldtype $_targets
+  python2 build_mozc.py build -c $_bldtype -j 8 $_targets
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
@@ -193,8 +194,8 @@ sha512sums=('SKIP'
             'b49742bb293ceae6f0e9f73d04b196e98cb0768651fc3c5942b9df9d63143f5736be419d1894b1c572854418a688231d6df0ac551a6eb5dfa0e38889a6f51c77'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             'f74d2ddf95706b2925d87b3effa9490aa7cba1f5ce2c20e537f2ac4dfc4c6b6b531f90f8c128bca0f1eafd9197abb6e1f004c11a1ea7a978b2ccad5e85ad0d55'
-            'bdfebfd2a72ea1e8bd5e29c7e065b4ed45c1e5bc6f43e8fbdbf454f24fdf7d44b4f10f8a8f0ca5b6e433bb87877e77a3998a6b25ad9f904f2529d0d2e0ae4b76'
-            'bbfd5a48426bfa4a1d438d6d640ceb76174aac4d503dc9de64e6cd1d72c5e081588a2893ba7a558444a38c0f6a132acb0e5a3aed61ad79744efb3aa9dbb6c523'
-            '5994b3669808b82fef5c860ecad36358c0767f84acac877e7bfcf722e59d972835a955714149bdd4158fbd1328a51d01397a563991d26475351ee72be48142ee'
+            '2befbb40957f9fdd2454af7cbde1c27da4570fd7f8519237d344b014f42504b642f95e31308a1a4b62f2ac327609270015a572dbc7de7a6a5a0a6ade889a39a0'
+            'f5a479fa9f27465acd7fb6b787339d1f6f0f478c6fccf42384c4675d26495c9bc7839233e7b8b0c9a37818af37bc4e2de4d9483e923a067055015d587a009f60'
+            'SKIP'
             '7a5bcedc8c3174fb65bdfd2126abae0f7432bc5b10dfdce7cd9703bdeac4a5652cc3be59b2a6829184a1b4e0199bf9606db79c2cef7858c2ccc6a5a367b229c6'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
