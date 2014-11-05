@@ -14,8 +14,8 @@ post_remove() {
 }
 
 update_icons() {
-  type -p gtk-update-icon-cache > /dev/null 2>&1 && usr/bin/gtk-update-icon-cache -qtf usr/share/icons/hicolor
-  type -p update-desktop-database > /dev/null 2>&1 && usr/bin/update-desktop-database -q usr/share/applications
+  type -p gtk-update-icon-cache > /dev/null 2>&1 && /usr/bin/gtk-update-icon-cache -qtf /usr/share/icons/hicolor
+  type -p update-desktop-database > /dev/null 2>&1 && /usr/bin/update-desktop-database -q /usr/share/applications
   return 0
 }
 
