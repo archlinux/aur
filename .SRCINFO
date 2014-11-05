@@ -1,7 +1,7 @@
 pkgbase = check_lm_sensors
 	pkgdesc = Nagios plugin to monitor the values of on board sensors and hard disk temperatures
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trac.id.ethz.ch/projects/nagios_plugins/wiki/check_lm_sensors
 	arch = any
 	license = GPL
