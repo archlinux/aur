@@ -13,18 +13,19 @@ _buildtype='Release'
 ##############################################################
 
 pkgname=tomahawk
-pkgver=0.7.0
-pkgrel=7
+pkgver=0.8.0
+pkgrel=2
 pkgdesc='A Music Player App written in C++/Qt'
 arch=('i686' 'x86_64')
 url='http://tomahawk-player.org/'
 license=('GPL3')
-depends=('phonon-qt4' 'taglib' 'boost' 'clucene' 'libechonest' 'jreen' 'qtweetlib' 'quazip' 'attica' 'qtwebkit' 'liblastfm')
-makedepends=('cmake' 'automoc4')
+depends=('phonon-qt4' 'taglib' 'lucene++' 'libechonest' 'jreen' 'quazip' 'attica' 'qtwebkit' 'liblastfm' 'qtkeychain' 'qca')
+makedepends=('cmake' 'automoc4' 'sparsehash' 'boost' 'websocketpp')
+optdepends=('kdelibs: integration with Plasma Desktop' 'telepathy-qt4: integration with Telepathy')
 provides=('tomahawk')
 conflicts=('tomahawk-git')
 source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('98b7f5bc43e017379f5cd3834f19e90d')
+md5sums=('18b2f6f3a629877c124098a61d35bb22')
 install=tomahawk.install
 
 if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
@@ -39,8 +40,7 @@ prepare() {
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}-build
 
-  cmake -DBUILD_WITH_QT4=on \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib/${pkgname} \
         -DCMAKE_BUILD_TYPE=${_buildtype} \
