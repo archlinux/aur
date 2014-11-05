@@ -1,14 +1,14 @@
 pkgbase = enventor-git
 	pkgdesc = Editor for EDC files (edje/efl) - Development version
-	pkgver = 0.2.0.r0.g640b20f
+	pkgver = 0.4.0.r2.gb1259eb
 	pkgrel = 1
-	url = http://www.enlightenment.org
+	url = https://phab.enlightenment.org/w/projects/enventor/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = elementary
-	provides = enventor=0.2.0.r0.g640b20f
+	provides = enventor=0.4.0.r2.gb1259eb
 	conflicts = enventor
 	source = git://git.enlightenment.org/tools/enventor.git
 	sha256sums = SKIP

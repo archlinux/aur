@@ -2,11 +2,11 @@
 
 _pkgname=enventor
 pkgname=$_pkgname-git
-pkgver=0.2.0.r0.g640b20f
+pkgver=0.4.0.r2.gb1259eb
 pkgrel=1
 pkgdesc="Editor for EDC files (edje/efl) - Development version"
 arch=('i686' 'x86_64')
-url="http://www.enlightenment.org"
+url="https://phab.enlightenment.org/w/projects/enventor/"
 license=('BSD')
 depends=('elementary')
 makedepends=('git')
