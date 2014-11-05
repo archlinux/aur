@@ -4,21 +4,21 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=glom
-pkgver=1.24.2
-pkgrel=3
+pkgver=1.28.0
+pkgrel=1
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
 url="http://www.glom.org/"
 license=('GPL')
 depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python2-gobject' 'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql')
-makedepends=('intltool' 'gnome-doc-utils' 'python-sphinx' 'boost')
+makedepends=('intltool' 'gnome-doc-utils' 'python-sphinx' 'boost' 'itstool')
 install=$pkgname.install
 changelog=$pkgname.changelog
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/1.24/$pkgname-$pkgver.tar.xz)
-sha256sums=('7bd16c9ac0db15d273667c1a39c1f5056669281d69e9c779548b1f6bdaef798b')
+source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/1.28/$pkgname-$pkgver.tar.xz)
+sha256sums=('bac4c97cdcca57c8eb1fb41263a7c5de4af84c6a266802f25fee338cf1b9081b')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}"/$pkgname-$pkgver
 
   ./configure --prefix=/usr \
     --with-postgres-utils=/usr/bin \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }
