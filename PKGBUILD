@@ -2,11 +2,11 @@
 
 _pkgname=epour
 pkgname=$_pkgname-git
-pkgver=0.6.0.r4.g5541a2a
+pkgver=0.6.0.r6.g9cbd83f
 pkgrel=1
 pkgdesc="Torrent client based on EFL - Development version"
 arch=('any')
-url="http://www.enlightenment.org"
+url="https://phab.enlightenment.org/w/projects/epour/"
 license=('GPL3')
 depends=('python2-efl' 'python2-xdg' 'libtorrent-rasterbar' 'hicolor-icon-theme')
 makedepends=('git' 'python2-distutils-extra')

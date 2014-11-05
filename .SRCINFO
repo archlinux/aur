@@ -1,8 +1,8 @@
 pkgbase = epour-git
 	pkgdesc = Torrent client based on EFL - Development version
-	pkgver = 0.6.0.r4.g5541a2a
+	pkgver = 0.6.0.r6.g9cbd83f
 	pkgrel = 1
-	url = http://www.enlightenment.org
+	url = https://phab.enlightenment.org/w/projects/epour/
 	install = epour.install
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = epour-git
 	depends = python2-xdg
 	depends = libtorrent-rasterbar
 	depends = hicolor-icon-theme
-	provides = epour=0.6.0.r4.g5541a2a
+	provides = epour=0.6.0.r6.g9cbd83f
 	conflicts = epour
 	source = git://git.enlightenment.org/apps/epour.git
 	sha256sums = SKIP
