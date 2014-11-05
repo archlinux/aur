@@ -6,14 +6,14 @@ _rls=1
 _pkgname=gtk3
 pkgname=$_pkgname-donnatella
 pkgver=3.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (v3) w/ fixes & extra features"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
 install=gtk3.install
 depends=(atk cairo gtk-update-icon-cache libcups libxcursor libxinerama libxrandr libxi
          libxcomposite libxdamage pango shared-mime-info colord at-spi2-atk
-         wayland libxkbcommon adwaita-icon-theme)
+         wayland libxkbcommon adwaita-icon-theme json-glib rest)
 makedepends=(gobject-introspection python2 gtk-doc)
 optdepends=('gnome-themes-standard: Default widget theme'
             'gnome-icon-theme: Default icon theme')

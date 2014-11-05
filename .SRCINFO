@@ -1,7 +1,7 @@
 pkgbase = gtk3-donnatella
 	pkgdesc = GObject-based multi-platform GUI toolkit (v3) w/ fixes & extra features
 	pkgver = 3.14.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gtk.org/
 	install = gtk3.install
 	arch = i686
@@ -27,6 +27,8 @@ pkgbase = gtk3-donnatella
 	depends = wayland
 	depends = libxkbcommon
 	depends = adwaita-icon-theme
+	depends = json-glib
+	depends = rest
 	optdepends = gnome-themes-standard: Default widget theme
 	optdepends = gnome-icon-theme: Default icon theme
 	provides = gtk3
