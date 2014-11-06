@@ -1,4 +1,4 @@
 export E_WL_FORCE=drm
 export ELM_DISPLAY=wl
 export ELM_ACCEL=none
-/opt/enlightenment-wayland/bin/enlightenment_start -profile
+/opt/enlightenment-wayland/bin/enlightenment_start

@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-wayland-git
-pkgver=0.19.0.18810.6b56465
+pkgver=0.19.99.19125.5172b7f
 pkgrel=1
 pkgdesc="Highly expermimental Enlightenment window manager for Wayland - Development version"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ install=enlightenment.install
 source=("git://git.enlightenment.org/core/$_pkgname.git"
         "enlightenment_start_wayland")
 sha256sums=('SKIP'
-            'c9e3b3791174f53af429f8adf734a30ad44be9fb35adad50c46f5e5b37f12ccc')
+            '87a2a6f68d91b73e3c838f11b09a1156cd4e2525a6e00a53af30cc7638ae7311')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
