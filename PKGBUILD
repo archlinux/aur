@@ -9,13 +9,22 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.57.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url='http://www.boost.org/'
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('icu>=53.1' 'python' 'python2' 'bzip2' 'zlib' 'openmpi')
-source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2)
-sha1sums=('e151557ae47afd1b43dc3fac46f8b04a8fe51c12')
+source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2
+        0001-Add-missing-include-to-signals2-trackable.hpp.patch)
+sha1sums=('e151557ae47afd1b43dc3fac46f8b04a8fe51c12'
+          '35bc8ad7493a641ec708a691036fe5319aec70cd')
+
+prepare() {
+   cd ${pkgbase}_${_boostver}
+
+   # https://github.com/boostorg/signals2/pull/8
+   patch -Np2 -i ../0001-Add-missing-include-to-signals2-trackable.hpp.patch
+}
 
 build() {
    export _stagedir="${srcdir}/stagedir"
