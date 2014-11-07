@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 _pkgname=acousticbrainz-gui
 pkgname=$_pkgname-git
-pkgver=r33.22379f8
+pkgver=r43.708e2de
 pkgver(){
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -11,7 +11,7 @@ pkgdesc='Submit audio features to the AcousticBrainz project.'
 arch=('any')
 url='http://acousticbrainz.org/'
 license=('GPL2')
-depends=('qt4' 'qjson' 'essentia-acousticbrainz')
+depends=('qt5-base' 'essentia-acousticbrainz')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/MTG/${_pkgname}.git")

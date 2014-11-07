@@ -1,12 +1,11 @@
 pkgbase = acousticbrainz-gui-git
 	pkgdesc = Submit audio features to the AcousticBrainz project.
-	pkgver = r33.22379f8
+	pkgver = r43.708e2de
 	pkgrel = 1
 	url = http://acousticbrainz.org/
 	arch = any
 	license = GPL2
-	depends = qt4
-	depends = qjson
+	depends = qt5-base
 	depends = essentia-acousticbrainz
 	provides = acousticbrainz-gui
 	conflicts = acousticbrainz-gui
