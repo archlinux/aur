@@ -5,7 +5,7 @@
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
 pkgver=4.2.8.5
-pkgrel=5
+pkgrel=6
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
@@ -13,14 +13,17 @@ license=('GPL' 'LGPL')
 makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
 source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz
-        custom-translation-install-dir.patch)
+        custom-translation-install-dir.patch
+        opencc-1.0.patch)
 sha512sums=('ee6612a34087135065537fa14f09078bad9f029f69b636fb2221193f23d86c5431a9d8a848b264bdcb259680f6bda41d08d58dcf67d19e5a200cb11fa4a26ffe'
-            'c57ef118b72accdfc42a0035a5318bf4b0ebe082af46efff7bfea4b063d382cc92bef0205555e42d140a6ffcbbdb87d43db833e1a221c5d3a97f12c8720e759a')
+            'c57ef118b72accdfc42a0035a5318bf4b0ebe082af46efff7bfea4b063d382cc92bef0205555e42d140a6ffcbbdb87d43db833e1a221c5d3a97f12c8720e759a'
+            'f652e81e5a28107903b3a65601a507eace59aa147ffc19fa6471c902241110209dceb902d659de312c9b16e0efd1b2873316aca652534ba6fb27af81d9f4c08d')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
 
   patch -p1 -i ../custom-translation-install-dir.patch
+  patch -p1 -i ../opencc-1.0.patch
 }
 
 build() {
