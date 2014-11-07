@@ -2,7 +2,7 @@
 
 _pkgbasename=tdb
 pkgname=lib32-$_pkgbasename
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Trivial Database similar to GDBM but allows simultaneous commits (32-bit)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(lib32-glibc $_pkgbasename)
 makedepends=(gcc-multilib libxslt python2)
 source=(http://samba.org/ftp/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz
         0001-tdb-include-include-stdbool.h-in-tdb.h.patch)
-md5sums=('f18cd6afc4f5670edfe58f72d2665f94'
+md5sums=('f597190451d976fe013dfae9934fb9ad'
          '2b0b6003b3d8ca03adccd4aa1a3b8313')
 
 prepare() {
