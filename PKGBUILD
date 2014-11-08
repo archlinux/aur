@@ -3,8 +3,8 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.63.12
-_gitver=f71d72e
+pkgver=0.63.13
+_gitver=a196b90
 pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo"
 url="http://rainemu.swishparty.co.uk"
@@ -21,11 +21,12 @@ if [ "$CARCH" == "x86_64" ]; then
 fi
 optdepends=('raine-artwork: additional background graphics for some games'
             'raine-emudx: improved graphic and sound files for some classic games'
-            'arcade-history-dat: database with various information about the loaded rom')
+            'arcade-history-dat: database with various information about the loaded rom'
+            'arcade-command-dat: database with button combinations for special moves in (mostly fighting) games')
 source=(raine-$pkgver.tar.gz::"$url/cgi-bin/gitweb.cgi?p=raine;a=snapshot;h=$_gitver;sf=tgz"
         "$url/html/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}_i386.deb")
-sha256sums=('c3fef37487ebb9af01029def62c4fa4e6cd1666bfd77946a85a46b588c4f0d97'
-            '01a0e022ac524dcf74205c606d8f291a8122ea886d3be2c2f8f6cc651c7c2f79')
+sha256sums=('85ccd5ec8dd0a9530ffbd96d6b1f1f4882b76142ce758885fc9674cc03bf9750'
+            '25089231d22fcf7777d84c0947d19a28f6c2cd0ec4dc4d261d8f849a369f86d7')
 options=('emptydirs')
 
 prepare() {
@@ -64,6 +65,7 @@ package() {
   install -d "$pkgdir"/usr/share/{doc,licenses}/raine
   install -m644 docs/* changes/* "$pkgdir"/usr/share/doc/raine
   head -n5 source/raine.c > "$pkgdir"/usr/share/licenses/raine/LICENSE
-  # symlink neoraine, both projects have been merged
+  # deprecate neoraine, both projects have been merged
   ln -s raine "$pkgdir"/usr/bin/neoraine
+  rm "$pkgdir"/usr/share/{applications,pixmaps}/neoraine.*
 }
