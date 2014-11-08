@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-3.17
-pkgver=3.17.1
+pkgver=3.17.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         )
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
-            '3b0651951cdc0a81a69b46db99239bc9f00d6a5ae403e0e41c7a1cc177544ec2'
+            '4576c30a46c016502cdd007d28dde4f2d141c0f8096be8623a9ff519323db777'
             '1331d1b35309c8905ab53c82204580bd7c74d5aac11c8e29fe27e6c4b50399e0'
             '0dd66b478fcaa8f0ce88debf4681443b82336445af2215b87f186ac8f2a9ff48'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
