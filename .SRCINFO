@@ -1,0 +1,14 @@
+pkgbase = src
+	pkgdesc = Simple Revision Control with modern UI for single-file projects
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.catb.org/esr/src/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = rcs
+	source = http://www.catb.org/esr/src/src-0.2.tar.gz
+	sha256sums = d4c47fc70bfae5da3266d0cf74d7b01de4796365f463657621371df6ec1a2e54
+
+pkgname = src
+
