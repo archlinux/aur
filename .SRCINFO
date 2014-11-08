@@ -1,0 +1,13 @@
+pkgbase = arcade-command-dat
+	pkgdesc = Arcade Database file to display fighting move commands in Emulators
+	pkgver = 20070221
+	pkgrel = 1
+	url = http://home.comcast.net/~plotor/command.html
+	arch = any
+	license = unknown
+	optdepends = raine: for use in raine
+	source = http://home.comcast.net/~plotor/commandsh.zip
+	sha256sums = cc39822daa0c68cf659ebcdc0edf6d09cd5a41c8cb503c3db745114969907120
+
+pkgname = arcade-command-dat
+
