@@ -1,19 +1,19 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=src
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
 arch=('any')
-url="http://www.catb.org/esr/src/"
+url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 depends=('python2' 'rcs')
+optdepends=('rcs-fast-import: required for src fast-import')
 source=("$url$pkgname-$pkgver.tar.gz")
-sha256sums=('d4c47fc70bfae5da3266d0cf74d7b01de4796365f463657621371df6ec1a2e54')
+sha256sums=('485372c10cb2ea309bb4c4024a1faf4d3a5c55fd74bba5f8e51ab0bb636c3503')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 src "$pkgdir/usr/bin/src"
-  install -Dm644 src.1 "$pkgdir/usr/share/man/man1/src.1"
+  make DESTDIR="$pkgdir" prefix=/usr install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
