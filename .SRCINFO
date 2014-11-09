@@ -1,0 +1,14 @@
+pkgbase = rcs-fast-import
+	pkgdesc = Simple Revision Control with modern UI for single-file projects
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.catb.org/esr/rcs-fast-import/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = rcs
+	source = http://www.catb.org/esr/rcs-fast-import/rcs-fast-import-0.3.tar.gz
+	sha256sums = 5d013d344b8ba3cc43030b90ed2cb6a89efc1a05c226f7b5d988c53408087490
+
+pkgname = rcs-fast-import
+
