@@ -3,13 +3,13 @@
 
 pkgname=python-retrying
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose Python retyring library"
 arch=('any')
 url="https://github.com/rholder/retrying/releases"
 license=('Apache')
 groups=()
-depends=('python')
+depends=('python' 'python-six')
 options=(!emptydirs)
 source=(https://github.com/rholder/retrying/archive/v$pkgver.tar.gz)
 md5sums=(5ca60e1b2520377b56b2aeeb63c481ed)
