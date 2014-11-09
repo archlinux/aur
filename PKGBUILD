@@ -19,13 +19,13 @@ sha512sums=('91fc24049c36d02e1b724f4397e6f13e6bc76ada043d76a410b2b39a7d373391155
 options=(!strip !makeflags)
 
 build(){
-  cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
+  cd "$srcdir/${pkgname/ocaml-/}-included-$pkgver"
 
   OCAMLBUILD="ocamlbuild -no-links" make all doc
 }
 
 package(){
-  cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
+  cd "$srcdir/${pkgname/ocaml-/}-included-$pkgver"
 
   export DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
   export OCAMLFIND_DESTDIR="$DESTDIR"
