@@ -2,7 +2,7 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=5.0.1
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -16,7 +16,7 @@ source=(
     trafficserver.tmpfiles
     trafficserver.service.in.patch)
 
-md5sums=('76d5d7fea7ab1e3e1a09169ad0941767'
+md5sums=('d8f6a5923ffc37ba2e327438c4f2756d'
          'fc8ab2b6d01e22fb376832fb13137db1'
          '74ba08091f580f8984eee8db0f7e4d27')
 
