@@ -39,8 +39,8 @@ if [[ -z "$PIA_OPEN_PORT_FILE" ]]; then
     PIA_OPEN_PORT_FILE="$PIA_CONFIG_DIR/open_port"
 fi
 PIA_OPEN_PORT="$(cat $PIA_OPEN_PORT_FILE 2>/dev/null)"
-if [[ -z "$NET_DEV" ]]; then
-    NET_DEV='enp104s0'
+if [[ -z "$NETWORK_DEVICES" ]]; then
+    NETWORK_DEVICES=$(ifconfig | awk -F ":" 'BEGIN {ORS = " "} /(^e|^w)/ {print $1}' | sed 's/ *$//')
 fi
 if [[ -z "$VIRT_NET_DEV" ]]; then
     VIRT_NET_DEV='tun0'
@@ -138,15 +138,19 @@ ufw_update() {
 
 ufw_allow_non_vpn() {
     echo -n 'Allowing non-VPN traffic ... '
-    ufw delete deny out on $NET_DEV > /dev/null 2>&1
-    ufw delete deny in on $NET_DEV > /dev/null 2>&1
+    for i in $NETWORK_DEVICES; do
+        ufw delete deny out on $i > /dev/null 2>&1
+        ufw delete deny in on $i > /dev/null 2>&1
+    done
     echo 'Done!'
 }
 
 ufw_deny_non_vpn() {
     echo -n 'Denying non-VPN traffic ... '
-    ufw deny out on $NET_DEV > /dev/null 2>&1
-    ufw deny in on $NET_DEV > /dev/null 2>&1
+    for i in $NETWORK_DEVICES; do
+        ufw deny out on $i > /dev/null 2>&1
+        ufw deny in on $i > /dev/null 2>&1
+    done
     echo 'Done!'
 }
 
