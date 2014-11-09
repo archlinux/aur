@@ -2,8 +2,8 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.1.0.1
-pkgrel=2
+pkgver=5.1.1
+pkgrel=1
 pkgdesc='KSysGuard'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/ksysguard'
@@ -13,8 +13,8 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma-next')
 install="${pkgname}.install"
-source=("http://download.kde.org/stable/plasma/5.1.0/$pkgname-$pkgver.tar.xz")
-md5sums=('48e32cec871bc7ab670df3ddef37bf6b')
+source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
+md5sums=('3b2e23fc9e758741f26d1edb6120ea3d')
 
 prepare() {
   mkdir -p build
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-5.1.0 \
+  cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
