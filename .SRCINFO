@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-gazebo-plugins
 	pkgdesc = ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
 	pkgver = 2.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gazebosim.org/wiki/Tutorials
 	arch = any
 	license = BSD
