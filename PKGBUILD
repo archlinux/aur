@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for defining robot trajectories."
 url='http://ros.org/wiki/trajectory_msgs'
 
 pkgname='ros-indigo-trajectory-msgs'
-pkgver='1.11.5'
+pkgver='1.11.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
