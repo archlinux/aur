@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-nodelet
 	pkgdesc = ROS - The nodelet package is designed to provide a way to run multiple algorithms in the same process with zero copy transport between algorithms.
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/nodelet
 	arch = any
 	license = BSD
