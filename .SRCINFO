@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-image-proc
 	pkgdesc = ROS - Single image rectification and color processing.
 	pkgver = 1.12.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/image_proc
 	arch = any
 	license = BSD
