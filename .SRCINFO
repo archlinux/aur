@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-turtle-actionlib
 	pkgdesc = ROS - turtle_actionlib demonstrates how to write an action server and client with the turtlesim.
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = http://ros.org/wiki/turtle_actionlib
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = ros-indigo-turtle-actionlib
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-turtlesim
 	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
 	makedepends = ros-indigo-std-msgs
 	makedepends = ros-indigo-angles
 	makedepends = ros-indigo-catkin
@@ -19,13 +20,14 @@ pkgbase = ros-indigo-turtle-actionlib
 	makedepends = ros-indigo-actionlib-msgs
 	depends = ros-indigo-turtlesim
 	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-angles
 	depends = ros-indigo-rosconsole
 	depends = ros-indigo-actionlib
 	depends = ros-indigo-actionlib-msgs
-	source = turtle_actionlib::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/indigo/turtle_actionlib/0.1.7-0
+	source = turtle_actionlib::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/indigo/turtle_actionlib/0.1.8-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-turtle-actionlib
