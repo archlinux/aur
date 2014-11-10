@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rqt-robot-dashboard
 	pkgdesc = ROS - rqt_robot_dashboard provides an infrastructure for building robot dashboard plugins in rqt.
-	pkgver = 0.3.7
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_robot_dashboard
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ros-indigo-rqt-robot-dashboard
 	depends = ros-indigo-rospy
 	depends = ros-indigo-diagnostic-msgs
 	depends = ros-indigo-rqt-gui-py
-	source = rqt_robot_dashboard::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/indigo/rqt_robot_dashboard/0.3.7-0
+	source = rqt_robot_dashboard::git+https://github.com/ros-gbp/rqt_robot_plugins-release.git#tag=release/indigo/rqt_robot_dashboard/0.4.0-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rqt-robot-dashboard
