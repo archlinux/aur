@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-actionlib-tutorials
 	pkgdesc = ROS - The actionlib_tutorials package.
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = http://www.ros.org/wiki/actionlib/Tutorials
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ros-indigo-actionlib-tutorials
 	depends = ros-indigo-actionlib
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-roscpp
-	source = actionlib_tutorials::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/indigo/actionlib_tutorials/0.1.7-0
+	source = actionlib_tutorials::git+https://github.com/ros-gbp/common_tutorials-release.git#tag=release/indigo/actionlib_tutorials/0.1.8-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-actionlib-tutorials
