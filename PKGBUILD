@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArra
 url='http://ros.org/wiki/rqt_runtime_monitor'
 
 pkgname='ros-indigo-rqt-runtime-monitor'
-pkgver='0.3.7'
+pkgver='0.4.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -47,6 +47,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
