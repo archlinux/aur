@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='http://ros.org/wiki/rqt_tf_tree'
 
 pkgname='ros-indigo-rqt-tf-tree'
-pkgver='0.3.7'
+pkgver='0.4.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -51,6 +51,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
