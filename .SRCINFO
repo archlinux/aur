@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-diagnostic-msgs
 	pkgdesc = ROS - This package holds the diagnostic messages which provide the standardized interface for the diagnostic and runtime monitoring systems in ROS.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://ros.org/wiki/diagnostic_msgs
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-diagnostic-msgs
 	makedepends = ros-indigo-std-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
-	source = diagnostic_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/diagnostic_msgs/1.11.5-0
+	source = diagnostic_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/diagnostic_msgs/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-diagnostic-msgs
