@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_rviz provides a GUI plugin embedding RViz."
 url='http://ros.org/wiki/rqt_rviz'
 
 pkgname='ros-indigo-rqt-rviz'
-pkgver='0.3.7'
+pkgver='0.4.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rqt-gui
@@ -51,6 +51,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
