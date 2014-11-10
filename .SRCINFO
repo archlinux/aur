@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-geometry-msgs
 	pkgdesc = ROS - geometry_msgs provides messages for common geometric primitives such as points, vectors, and poses.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://ros.org/wiki/geometry_msgs
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-geometry-msgs
 	makedepends = ros-indigo-std-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
-	source = geometry_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/geometry_msgs/1.11.5-0
+	source = geometry_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/geometry_msgs/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-geometry-msgs
