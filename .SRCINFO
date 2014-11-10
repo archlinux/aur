@@ -1,0 +1,27 @@
+pkgbase = pingus-git
+	pkgdesc = A Lemmings clone, i.e. a level-based puzzle game (development version)
+	pkgver = 0.7.6.r80.g6a1153a
+	pkgrel = 1
+	url = http://pingus.seul.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = scons
+	makedepends = coreutils
+	makedepends = boost
+	makedepends = mesa
+	makedepends = glu
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = libgl
+	depends = boost-libs
+	depends = libpng
+	optdepends = cwiid: to play with your wiimote (requires rebuild)
+	source = git+https://code.google.com/p/pingus/
+	source = pingus.desktop
+	sha256sums = SKIP
+	sha256sums = c00aef6d6f95449955e1367a5912e211f09dc345bb154084d0f13137e2089dce
+
+pkgname = pingus-git
+

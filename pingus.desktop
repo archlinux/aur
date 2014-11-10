@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Pingus
+Exec=pingus
+Icon=pingus
+Comment=A free Lemmings[tm] clone
+Categories=Game;LogicGame;
+Terminal=false
