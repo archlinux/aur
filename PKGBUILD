@@ -7,7 +7,7 @@ pkgname='ros-indigo-roscpp'
 pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roslang
