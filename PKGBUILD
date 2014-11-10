@@ -4,10 +4,10 @@ pkgdesc="ROS - Package for Nodelet tutorial."
 url='http://www.ros.org/wiki/nodelet_tutorial_math'
 
 pkgname='ros-indigo-nodelet-tutorial-math'
-pkgver='0.1.7'
+pkgver='0.1.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-std-msgs
@@ -47,6 +47,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
