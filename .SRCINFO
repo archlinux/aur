@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-pcl-ros
 	pkgdesc = ROS - PCL (Point Cloud Library) ROS interface stack.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/perception_pcl
 	arch = any
 	license = BSD
