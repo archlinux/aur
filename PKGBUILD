@@ -7,7 +7,7 @@ pkgname='ros-indigo-collada-parser'
 pkgver='1.11.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-urdf-parser-plugin
