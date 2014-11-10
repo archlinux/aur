@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-nav-msgs
 	pkgdesc = ROS - nav_msgs defines the common messages used to interact with the navigation stack.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://ros.org/wiki/nav_msgs
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ros-indigo-nav-msgs
 	depends = ros-indigo-actionlib-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-geometry-msgs
-	source = nav_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/nav_msgs/1.11.5-0
+	source = nav_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/nav_msgs/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-nav-msgs
