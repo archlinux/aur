@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-shape-msgs
 	pkgdesc = ROS - This package contains messages for defining shapes, such as simple solid object primitives (cube, sphere, etc), planes, and meshes.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://ros.org/wiki/shape_msgs
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-shape-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-geometry-msgs
-	source = shape_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/shape_msgs/1.11.5-0
+	source = shape_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/shape_msgs/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-shape-msgs
