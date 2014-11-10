@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-visualization-msgs
 	pkgdesc = ROS - visualization_msgs is a set of messages used by higher level packages, such as rviz, that deal in visualization-specific data.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://ros.org/wiki/visualization_msgs
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-visualization-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-geometry-msgs
-	source = visualization_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/visualization_msgs/1.11.5-0
+	source = visualization_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/visualization_msgs/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-visualization-msgs
