@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-actionlib-msgs
 	pkgdesc = ROS - actionlib_msgs defines the common messages to interact with an action server and an action client.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://ros.org/wiki/actionlib_msgs
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-actionlib-msgs
 	depends = ros-indigo-message-generation
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-std-msgs
-	source = actionlib_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/actionlib_msgs/1.11.5-0
+	source = actionlib_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/actionlib_msgs/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-actionlib-msgs
