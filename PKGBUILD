@@ -7,7 +7,7 @@ pkgname='ros-indigo-rostime'
 pkgver='0.5.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cpp-common
