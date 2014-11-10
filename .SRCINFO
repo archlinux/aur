@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-image-view
 	pkgdesc = ROS - A simple viewer for ROS image topics.
 	pkgver = 1.12.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/image_view
 	arch = any
 	license = BSD
