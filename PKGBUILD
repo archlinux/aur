@@ -7,7 +7,7 @@ pkgname='ros-indigo-tf2-ros'
 pkgver='0.5.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosgraph
