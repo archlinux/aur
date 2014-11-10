@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=rcs-fast-import
-pkgver=0.3
+pkgver=1.0
 pkgrel=1
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 depends=('python2' 'rcs')
 source=("$url$pkgname-$pkgver.tar.gz")
-sha256sums=('5d013d344b8ba3cc43030b90ed2cb6a89efc1a05c226f7b5d988c53408087490')
+sha256sums=('57bb2771ecc534f71e479af0cbcb4a9b4b75d106b3fe7259191ead8c261f0604')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
