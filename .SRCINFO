@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-sensor-msgs
 	pkgdesc = ROS - This package defines messages for commonly used sensors, including cameras and scanning laser rangefinders.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://ros.org/wiki/sensor_msgs
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-sensor-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-geometry-msgs
-	source = sensor_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/sensor_msgs/1.11.5-0
+	source = sensor_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/sensor_msgs/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-sensor-msgs

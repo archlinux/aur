@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for commonly used sensors, includin
 url='http://ros.org/wiki/sensor_msgs'
 
 pkgname='ros-indigo-sensor-msgs'
-pkgver='1.11.5'
+pkgver='1.11.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
