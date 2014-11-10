@@ -9,6 +9,7 @@ url="http://keefox.org/"
 license=('GPL')
 depends=(keepass)
 makedepends=(unzip)
+install="${pkgname}.install"
 source=("keefox.zip::https://addons.mozilla.org/firefox/downloads/file/281598/keefox-1.4.4-tb+fx.xpi?src=version-history")
 noextract=(keefox.zip)
 

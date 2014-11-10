@@ -3,6 +3,7 @@ pkgbase = keepass-plugin-rpc
 	pkgver = 1.4.4
 	pkgrel = 1
 	url = http://keefox.org/
+	install = keepass-plugin-rpc.install
 	arch = i686
 	arch = x86_64
 	license = GPL
