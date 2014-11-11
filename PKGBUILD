@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.11.99.27394.974e3af
+pkgver=1.12.99.28371.513d6f3
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -14,15 +14,16 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 
          'libxp' 'libxrandr' 'libxss' 'lz4' 'shared-mime-info' 'wayland')
   [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
 makedepends=('git' 'python2')
-optdepends=('python2: compare Eina benchmarks'
+optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
+            'geoclue: For elocation'
             'gst-plugins-base: Access more types of video in Emotion'
             'gst-plugins-good: Access more types of video in Emotion'
             'gst-plugins-bad: Access more types of video in Emotion'
             'gst-plugins-ugly: Access more types of video in Emotion'
             'gst-libav: Access video with ffmpeg/libav in Emotion'
-            'evas_generic_loaders-git: More video/graphic/icon loaders for Evas')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+            'python2: Compare Eina benchmarks')
+provides=("$_pkgname=$pkgver" 'elocation-git')
+conflicts=("$_pkgname" 'elocation-git')
 options=('debug')
 install="$_pkgname.install"
 source=("git://git.enlightenment.org/core/$_pkgname.git")
