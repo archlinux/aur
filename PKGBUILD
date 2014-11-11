@@ -5,7 +5,7 @@
 _pkgname=elementary
 pkgbase=$_pkgname-git
 pkgname=("$_pkgname-git" "elementary_test-git")
-pkgver=1.10.99.10200.2112ed2
+pkgver=1.12.99.10708.6c8e152
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ url="http://www.enlightenment.org"
 license=('LGPL2.1' 'CCPL:cc-by-sa')
 depends=('efl-git')
   [[ ! $(pacman -T ewebkit) ]] && depends+=('ewebkit')                 # webkit-efl support is detected at build time
-  [[ ! $(pacman -T elocation-git) ]] && depends+=('elocation-git')     # elocation support is detected at build time
   [[ ! $(pacman -T libeweather-git) ]] && depends+=('libeweather-git') # eweather support is detected at build time
 makedepends=('git')
 options=('debug')
