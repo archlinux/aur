@@ -58,10 +58,10 @@ package_elementary-git() {
   sed -n '1,/details./p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
 # remove test app
-  rm -rf "$pkgdir/usr/bin/"elementary_test
-  rm -rf "$pkgdir/usr/lib/elementary/modules/"{test_entry,test_map}
-  rm -rf "$pkgdir/usr/share/applications/elementary_test.desktop"
-  rm -rf "$pkgdir/usr/share/elementary/"{examples,images,objects}
+  rm -rf "$pkgdir/usr/bin/"elementary_test \
+         "$pkgdir/usr/lib/elementary/modules/"{test_entry,test_map} \
+         "$pkgdir/usr/share/applications/elementary_test.desktop" \
+         "$pkgdir/usr/share/elementary/"{examples,images,objects}
 }
 
 package_elementary_test-git() {
@@ -75,11 +75,11 @@ package_elementary_test-git() {
   make -j1 DESTDIR="$pkgdir" install
 
 # remove elementary
-  rm -rf "$pkgdir/usr/include"
-  rm -rf "$pkgdir/usr/bin/"{elementary_codegen,elementary_config,elementary_quicklaunch,elementary_run,elm_prefs_cc}
-  rm -rf "$pkgdir/usr/lib/"{cmake,edje,libelementary.so*,pkgconfig}
-  rm -rf "$pkgdir/usr/lib/elementary/modules/"{access_output,datetime_input_ctxpopup,prefs}
-  rm -rf "$pkgdir/usr/share/applications/elementary_config.desktop"
-  rm -rf "$pkgdir/usr/share/elementary/"{config,examples,themes,edje_externals}
-  rm -rf "$pkgdir/usr/share/"{eolian,icons,locale}
+  rm -rf "$pkgdir/usr/include" \
+         "$pkgdir/usr/bin/"{elementary_codegen,elementary_config,elementary_quicklaunch,elementary_run,elm_prefs_cc} \
+         "$pkgdir/usr/lib/"{cmake,edje,libelementary.so*,pkgconfig} \
+         "$pkgdir/usr/lib/elementary/modules/"{access_output,datetime_input_ctxpopup,prefs} \
+         "$pkgdir/usr/share/applications/elementary_config.desktop" \
+         "$pkgdir/usr/share/elementary/"{config,examples,themes,edje_externals} \
+         "$pkgdir/usr/share/"{eolian,icons,locale}
 }
