@@ -2,17 +2,17 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=1.7.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.cups.org/"
 groups=('eudev-base')
-depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord' 'libusb'
+depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord'
          'dbus' 'hicolor-icon-theme' 'libpaper')
 makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd'
-             'gzip' 'autoconf' 'avahi' 'openssl' 'inetutils')
+             'gzip' 'autoconf' 'avahi' 'gnutls' 'inetutils')
 optdepends=('xdg-utils: xdg .desktop file support'
             'cups-openrc: cups openrc initscript')
 provides=("cups=${pkgver}")
@@ -35,59 +35,55 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-no-export-ssllibs.patch
         cups-no-gcrypt.patch
         cups-no-gzip-man.patch
-        # FC
-        cups-res_init.patch
-        cups-avahi-address.patch
-        cups-enum-all.patch
-        # Gentoo
-        cups-1.6.0-fix-install-perms.patch
-        cups-1.6.2-statedir.patch
-        # Debian
-        get-ppd-file-for-statically-configured-ipp-shared-queues.patch)
-md5sums=('5d893edc2957005f78e2b2423fdace2e'
+	cups-1.6.0-fix-install-perms.patch
+	cups-1.6.2-statedir.patch
+	# bugfixes
+	str4495.patch
+	str4500.patch # FC
+	)
+md5sums=('2cdd81fea23e9e29555c24bdfd0d7c89'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
-         '26e9b4e65c0a4d76db5737c9b156fd80'
+         'fc8286f185e2cc5f7e1f6843bf193e2b'
          '96f82c38f3f540b53f3e5144900acf17'
          '3ba9e3410df1dc3015463d615ef91b3b'
-         'cc4101beccb5ed6deb1c92707a575925'
+         '1beb4896f217bc241bc08a422274ec0c'
          '90c30380d4c8cd48a908cfdadae1ea24'
-         '8fe27d4248cacbc02824e7937cab4088'
-         'df0c367c0022e3c7d8e01827e8a6c5e7'
-         'f30c2a161caaf27854581507cde8cac6'
          '5117f65342fcc69c6a506529e4daca9e'
          '451609db34f95209d64c38474de27ce1'
-         'b578bcd17949a7203237ba1e31f78ef9')
+         '84da6459947d4fb62398e9bad7922a11'
+         '8c0514e41c3b50b2b838b218f683e227')
 
 prepare() {
   cd cups-${pkgver}
 
+  # improve build and linking
   # Do not export SSL libs in cups-config
   patch -Np1 -i "${srcdir}/cups-no-export-ssllibs.patch"
-
+  # https://www.cups.org/str.php?L4399
   patch -Np1 -i "${srcdir}/cups-no-gcrypt.patch"
 
   # don't zip man pages in make install, let makepkg do that / Fedora
   patch -Np1 -i ${srcdir}/cups-no-gzip-man.patch
 
-  # various bugfixes (upstream reports/SVN or Fedora/Debian
-
-  # Applications could not get the PPD file for statically-configured IPP-shared print queues
-  patch -Np1 -i ${srcdir}/get-ppd-file-for-statically-configured-ipp-shared-queues.patch
-
-  # fix permissions on some files - alternative: cups-0755.patch by FC
-  patch -Np0 -i ${srcdir}/cups-1.6.0-fix-install-perms.patch
-
   # move /var/run -> /run for pid file
   patch -Np1 -i ${srcdir}/cups-1.6.2-statedir.patch
 
-  # Re-initialise the resolver on failure in httpAddrGetList()
-  patch -Np1 -i ${srcdir}/cups-res_init.patch
+  # fix permissions on some files (by Gentoo)
+  patch -Np0 -i ${srcdir}/cups-1.6.0-fix-install-perms.patch
 
-  # Use IP address when resolving DNSSD URIs
-  patch -Np1 -i ${srcdir}/cups-avahi-address.patch
 
-  # Return from cupsEnumDests() once all records have been returned.
-  patch -Np1 -i ${srcdir}/cups-enum-all.patch
+  # bugfixes
+  # https://bugs.archlinux.org/task/40937 - https://www.cups.org/str.php?L4495
+  # adds a warning to the config file and honors the FatalErrors directive
+  patch -Np0 -i "${srcdir}/str4495.patch"
+
+  # https://www.cups.org/str.php?L4500
+  # /etc/cups/ppd/*.ppd not world-readable, cupsGetPPD() returns symlink
+  patch -Np1 -i "${srcdir}/str4500.patch"
+
+
+  # set MaxLogSize to 0 to prevent using cups internal log rotation
+  sed -i -e '1iMaxLogSize 0' conf/cupsd.conf.in
 
   # Rebuild configure script for not zipping man-pages.
   aclocal -I config-scripts
@@ -109,7 +105,7 @@ build() {
      --enable-pam=yes \
      --enable-raw-printing \
      --enable-dbus --with-dbusdir=/etc/dbus-1 \
-     --enable-ssl=yes --enable-openssl \
+     --enable-ssl=yes \
      --disable-gnutls \
      --enable-threads \
      --enable-avahi \

@@ -1,6 +1,6 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
-	pkgver = 1.7.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://www.cups.org/
 	install = cups-nosystemd.install
@@ -16,21 +16,20 @@ pkgbase = cups-nosystemd
 	makedepends = gzip
 	makedepends = autoconf
 	makedepends = avahi
-	makedepends = openssl
+	makedepends = gnutls
 	makedepends = inetutils
 	depends = acl
 	depends = pam
-	depends = libcups>=1.7.5
+	depends = libcups>=2.0.0
 	depends = cups-filters
 	depends = bc
 	depends = colord
-	depends = libusb
 	depends = dbus
 	depends = hicolor-icon-theme
 	depends = libpaper
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = cups-openrc: cups openrc initscript
-	provides = cups=1.7.5
+	provides = cups=2.0.0
 	conflicts = cups
 	conflicts = cups-eudev
 	replaces = cups
@@ -45,32 +44,28 @@ pkgbase = cups-nosystemd
 	backup = etc/logrotate.d/cups
 	backup = etc/pam.d/cups
 	backup = etc/xinetd.d/cups-lpd
-	source = http://www.cups.org/software/1.7.5/cups-1.7.5-source.tar.bz2
+	source = http://www.cups.org/software/2.0.0/cups-2.0.0-source.tar.bz2
 	source = cups
 	source = cups.logrotate
 	source = cups.pam
 	source = cups-no-export-ssllibs.patch
 	source = cups-no-gcrypt.patch
 	source = cups-no-gzip-man.patch
-	source = cups-res_init.patch
-	source = cups-avahi-address.patch
-	source = cups-enum-all.patch
 	source = cups-1.6.0-fix-install-perms.patch
 	source = cups-1.6.2-statedir.patch
-	source = get-ppd-file-for-statically-configured-ipp-shared-queues.patch
-	md5sums = 5d893edc2957005f78e2b2423fdace2e
+	source = str4495.patch
+	source = str4500.patch
+	md5sums = 2cdd81fea23e9e29555c24bdfd0d7c89
 	md5sums = 9657daa21760bb0b5fa3d8b51d5e01a1
-	md5sums = 26e9b4e65c0a4d76db5737c9b156fd80
+	md5sums = fc8286f185e2cc5f7e1f6843bf193e2b
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
 	md5sums = 3ba9e3410df1dc3015463d615ef91b3b
-	md5sums = cc4101beccb5ed6deb1c92707a575925
+	md5sums = 1beb4896f217bc241bc08a422274ec0c
 	md5sums = 90c30380d4c8cd48a908cfdadae1ea24
-	md5sums = 8fe27d4248cacbc02824e7937cab4088
-	md5sums = df0c367c0022e3c7d8e01827e8a6c5e7
-	md5sums = f30c2a161caaf27854581507cde8cac6
 	md5sums = 5117f65342fcc69c6a506529e4daca9e
 	md5sums = 451609db34f95209d64c38474de27ce1
-	md5sums = b578bcd17949a7203237ba1e31f78ef9
+	md5sums = 84da6459947d4fb62398e9bad7922a11
+	md5sums = 8c0514e41c3b50b2b838b218f683e227
 
 pkgname = cups-nosystemd
 
