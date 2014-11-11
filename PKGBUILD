@@ -1,9 +1,8 @@
 # Maintainer  : Jan Was < janek.jan@gmail.com >
 # Contributor : Dan Vratil <dan@progdan.cz>
 # Contributor  : andy123 < ajs AT online DOT de >
-
 pkgname=lib32-boost-libs
-pkgver=1.56.0
+pkgver=1.57.0
 _boostver=${pkgver//./_}
 pkgrel=1
 url="http://www.boost.org"
@@ -14,7 +13,7 @@ groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-icu' 'lib32-gcc-libs')
 makedepends=('lib32-icu>=51.1' 'lib32-bzip2' 'lib32-zlib' 'gcc-multilib' 'python' 'python2')
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
-sha1sums=('1639723c6bdff873cdb6d747f8f8c9d9f066434d')
+sha1sums=('55366a96bb76440ab140047065650f1d73dbfd8c')
 
 
 
@@ -77,6 +76,7 @@ package() {
 
 	install -d -m 755 "${pkgdir}/usr/lib32"
 	cp -a "${_stagedir}"/lib/*.so{,.*} "${pkgdir}/usr/lib32/"
+	cp -a "${_stagedir}"/lib/*.a "${pkgdir}/usr/lib32/"
 
 	install -D -m 644 "${srcdir}/boost_${_boostver}/LICENSE_1_0.txt" \
 		"${pkgdir}"/usr/share/licenses/lib32-boost-libs/LICENSE_1_0.txt
