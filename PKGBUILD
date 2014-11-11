@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=procps-ng-nosystemd
-pkgver=3.3.9
+pkgver=3.3.10
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes'
 url='http://sourceforge.net/projects/procps-ng/'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('ncurses')
 source=("http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz"
         'sysctl.conf')
-sha1sums=('088c77631745fc75ee41fc29c254a4069be4869a'
+sha1sums=('484db198d6a18a42b4011d5ecb2cb784a81b0e4f'
           '674282245d8ab2e09017b8f8cdce20a3ff81e631')
 groups=('base')
 conflicts=('procps' 'procps-ng' 'sysvinit-tools' 'sysctl-default-conf')
