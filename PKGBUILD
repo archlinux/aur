@@ -6,31 +6,26 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.19
+pkgver=0.19.2
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi'
 url='http://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
-         'boost-libs')
+         'icu' 'libupnp' 'libnfs')
 makedepends=('doxygen' 'boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
 replaces=('mpd')
-source=("http://www.musicpd.org/download/mpd/${pkgver}/mpd-${pkgver}.tar.xz"
+source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha1sums=('1e86d7a724394e81ca0c248f032fc042aee9d2dc'
+sha1sums=('47616949d1617f467c31fb10df8ddd5a5c4ddc84'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           'fd581b976f4931abf9b849224dcb38a73af14af0')
 backup=('etc/mpd.conf')
 install=mpd.install
-
-prepare() {
-	cd "${srcdir}/mpd-${pkgver}"
-	touch systemd/mpd.socket
-}
 
 build() {
 	cd "${srcdir}/mpd-${pkgver}"
