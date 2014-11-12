@@ -3,25 +3,24 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.2
-pkgrel=3
+pkgver=1.2.20141112
+pkgrel=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/rimeime/"
 license=('GPL3')
 depends=('boost-libs' 'google-glog' 'kyotocabinet' 'opencc' 'yaml-cpp' 'marisa')
 optdepends=('brise: Rime schema repository')
-makedepends=('cmake' 'boost')
-source=("https://github.com/lotem/librime/archive/rime-$pkgver.tar.gz")
-sha512sums=('98fe4d0d0429eb027c1846b8be9866c207b8050526d5b8e0b85ab93a8d45bee65cbbf6b28302f1b79f0044a4a7f17e27e3b2300c3ebb6b1b58c7c34220f7e229')
+makedepends=('cmake' 'boost' 'git')
+source=("git+https://github.com/lotem/librime.git#commit=1e708aef32b0915b257963ccd5a836d37a7d636a")
+sha512sums=('SKIP')
 
 build() {
-  cd $pkgname-rime-$pkgver
+  cd $pkgname
   make
 }
 
 package() {
-  cd $pkgname-rime-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
-
