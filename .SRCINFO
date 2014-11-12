@@ -1,0 +1,21 @@
+pkgbase = anaconda
+	pkgdesc = Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://store.continuum.io/cshop/anaconda/
+	arch = x86
+	arch = x86_64
+	license = custom
+	makedepends = patch
+	options = !strip
+	source = http://repo.continuum.io/anaconda3/Anaconda3-2.1.0-Linux-x86_64.sh
+	source = installer_sh_x86.patch
+	source = installer_sh_x86_64.patch
+	source = conda_install.patch
+	sha256sums = af3225ccbe8df0ffb918939e009aa57740e35058ebf9dfcf5fec794a77556c3c
+	sha256sums = 5f7bcde6f9580212bf6dd86d8b62c61bbada68a3e1ef9989169ba8a43de092c1
+	sha256sums = aacb20eb47b85430c9ec30ee09ada2f148cb43166be39b6998ae864e7fd17127
+	sha256sums = 2ca6eeef44065f3ea0b4761bf2f40557af9db70eedae890e436be4a28f713c5c
+
+pkgname = anaconda
+
