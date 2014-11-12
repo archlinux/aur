@@ -10,8 +10,7 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.6.0
-_pkgver=2449
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
@@ -20,11 +19,11 @@ depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++' 'libxkbcommon-x11' 'avahi
 makedepends=('libxt' 'cmake' 'qt5-base' 'unzip' 'subversion')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
-source=("synergy-${pkgver}::https://github.com/synergy/synergy/archive/1.6.0.tar.gz"
+source=("synergy-${pkgver}.tar.gz::https://github.com/synergy/synergy/archive/${pkgver}.tar.gz"
         "synergys_at.socket"
         "synergys_at.service"
         "unfuck-cryptopp-thanks-gentoo.patch")
-sha1sums=('SKIP'
+sha1sums=('b509c4302ad68d656dfe29711baaca79b835c14a'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
           '65ab58cc3546d6374a05a6a260f15045632e43ce'
           '8e321e664ae4b7a763175524dd938a88d85c7909')
