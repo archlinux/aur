@@ -6,13 +6,14 @@
 
 pkgname=eigen3-hg
 _name=eigen3
-pkgver=3.2.r5816
+pkgver=3.2.90.r6545
 pkgver() {
-    cd ${_name}
-    # Remove after hyphen
-    _latesttag=$(hg parents --template '{latesttag}' | sed "s/-[^-]*$//g")
-    _revision=$(hg identify -n)
-    echo ${_latesttag}.r${_revision}
+  cd ${_name}
+  _revision=$(hg identify -n)
+  _world_version=$(sed -ne "s/^\s*#\s*define\s*EIGEN_WORLD_VERSION\s*\([0-9]\+\)/\1/p" ${srcdir}/${_name}/Eigen/src/Core/util/Macros.h)
+  _major_version=$(sed -ne "s/^\s*#\s*define\s*EIGEN_MAJOR_VERSION\s*\([0-9]\+\)/\1/p" ${srcdir}/${_name}/Eigen/src/Core/util/Macros.h)
+  _minor_version=$(sed -ne "s/^\s*#\s*define\s*EIGEN_MINOR_VERSION\s*\([0-9]\+\)/\1/p" ${srcdir}/${_name}/Eigen/src/Core/util/Macros.h)
+  echo ${_world_version}.${_major_version}.${_minor_version}.r${_revision}
 }
 pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. Mercurial version."
@@ -22,19 +23,19 @@ license=('MPL2')
 makedepends=('cmake' 'pkg-config' 'mercurial')
 source=("${_name}::hg+https://bitbucket.org/eigen/eigen")
 sha1sums=('SKIP')
-provides=('eigen3')
-conflicts=('eigen3')
+provides=('eigen3' 'eigen=3')
+conflicts=('eigen3' 'eigen')
 
 build() {
-    mkdir -p build
-    cd build
-    cmake ../${_name} \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+  mkdir -p ${srcdir}/build
+  cd ${srcdir}/build
+  cmake ../${_name} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir" install
-    install -Dm644 ../${_name}/COPYING.MPL2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${srcdir}/build
+  make DESTDIR="$pkgdir" install
+  install -Dm644 ../${_name}/COPYING.MPL2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
