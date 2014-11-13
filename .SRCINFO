@@ -1,0 +1,14 @@
+pkgbase = nodejs-termcolors
+	pkgdesc = Convert terminal color schemes
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/stayradiated/termcolors
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = termcolors-0.2.10.tgz
+	source = http://registry.npmjs.org/termcolors/-/termcolors-0.2.10.tgz
+	sha1sums = c4f07d75e708c30c3b2a2a3807cba69795697607
+
+pkgname = nodejs-termcolors
+
