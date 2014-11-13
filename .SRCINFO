@@ -1,0 +1,14 @@
+pkgbase = boost-compute
+	pkgdesc = A C++ GPU Computing Library for OpenCL
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/kylelutz/compute
+	arch = i686
+	arch = x86_64
+	license = boost
+	depends = boost
+	source = https://github.com/kylelutz/compute/archive/v0.3.tar.gz
+	md5sums = 7b070d95f06c0dc41e4952a0a4113561
+
+pkgname = boost-compute
+
