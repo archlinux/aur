@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=libdart
-pkgver=4.0
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="http://dartsim.github.io"
@@ -14,7 +14,7 @@ makedepends=('cmake' 'doxygen')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz
         "ipopt.patch")
-md5sums=('41547fc96f5f2c85ee3672ddb2ec7376'
+md5sums=('20cfc066c1a272f3e2e85458546d1458'
          'e6f7d4c4b26c7dc0751266a8a611325f')
 
 # Build type
