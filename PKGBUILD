@@ -17,17 +17,13 @@ build() {
 	sed -i -e 's/-Werror//' configure.ac
 
 	./autogen.sh --prefix=/usr
-	./configure --prefix=/usr
+	./configure --prefix=/usr \
+	            --includedir=/usr/include/ios-webkit-debug-proxy
 	make
 }
 
 package() {
 	cd ios-webkit-debug-proxy-$pkgver
 	make DESTDIR="$pkgdir" install
-
-	# copy license
 	install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
-
-	install -dm755 "$pkgdir"/usr/include/ios-webkit-debug-proxy
-	mv "$pkgdir"/usr/include/*.h "$pkgdir"/usr/include/ios-webkit-debug-proxy
 }
