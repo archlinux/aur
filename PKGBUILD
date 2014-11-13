@@ -3,7 +3,7 @@
 pkgname=(crispy-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Chocolate Doom with vanilla-compatible enhancements"
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('autoconf' 'python')
 source=(https://github.com/fabiangreffrath/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('9de6519981cd83e62e12948c3a4e40d5ac663f14a9b8f19cabff5e2ce593d85f')
+sha256sums=('d357c39117fe903b0f5735fff537567863eb0d4bdbb1ee7f4168087e215aae2a')
 
 prepare() {
   # GitHub's generated archive prefix kind of sucks.
