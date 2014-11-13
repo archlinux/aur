@@ -1,0 +1,14 @@
+pkgbase = ios-webkit-debug-proxy
+	pkgdesc = DevTools proxy (WebKit Remote Debugging) for iOS devices (Safari Remote Web Inspector)
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/google/ios-webkit-debug-proxy
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libimobiledevice
+	source = https://github.com/google/ios-webkit-debug-proxy/archive/1.4.tar.gz
+	sha256sums = d9112c59fec966dc60db2d153844b643ca00dbbc547105798ca4696c87166c70
+
+pkgname = ios-webkit-debug-proxy
+
