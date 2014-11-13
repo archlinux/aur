@@ -1,7 +1,7 @@
 pkgbase = choreonoid
 	pkgdesc = An integrated robotics GUI environment.
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://choreonoid.org
 	arch = any
 	license = LGPL2
