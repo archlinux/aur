@@ -1,40 +1,33 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver='0.9.0'
-pkgrel='2'
-arch='any'
+pkgver='0.9.1'
+pkgrel='1'
+arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license='custom'
-source=("https://github.com/simoncozens/sile/archive/v${pkgver}.tar.gz")
-sha512sums=('2752ba3f08e814fede187e90b3c0ea559c682fabef085affc6afe0077b0c85195484b6dfe722040321f75f33dc01a876d15c5b7e37e6ca485ee1901b30e04195')
-depends=('lua51-lpeg'
-         'lua51-lgi'
-         'lua51-stdlib'
-         'lua51-expat'
-         'lua51-inspect'
-         'lua51-epnf'
-         'lua51-repl'
-         'lua51-cassowary'
-         'pango')
+source=("https://github.com/simoncozens/sile/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('c03ddcd80383e1b44a8aa35dff52950cb492adf8f78ec39ce00acf3f33ad3c56ffcfe82a8af5e6074d1d4a8a1d4b227c7de61843ecf83ca8e709558ff9935094')
+depends=('lua'
+         'lua-lpeg'
+         'lua-expat'
+         'libpng'
+         'libpaper'
+         'fontconfig'
+         'freetype2'
+         'pango'
+         'harfbuzz')
 
-prepare () {
+build () {
 	cd "${pkgname}-${pkgver}"
-	cat > sile.sh <<-EOF
-	#! /bin/sh
-	export SILE_PATH=/usr/lib/sile
-	exec /usr/bin/lua5.1 /usr/lib/sile/sile "\$@"
-	EOF
+	./configure --prefix=/usr
+	make
 }
 
 package () {
 	cd "${pkgname}-${pkgver}"
 
-	# Program. This is taken from the "install.lua" script
-	install -m755 -d "${pkgdir}/usr/lib/sile"
-	cp -ar classes core packages languages sile \
-		"${pkgdir}/usr/lib/sile"
-	install -Dm755 sile.sh "${pkgdir}/usr/bin/sile"
+	make install DESTDIR="${pkgdir}"
 
 	# Documentation and examples
 	for file in README.md ROADMAP documentation/sile.pdf ; do
