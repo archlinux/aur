@@ -13,7 +13,7 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
-	     'libbaloo4')
+	     'libbaloo4' 'libpgf')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('ba735f4b7bb0437c1676141ab78ea958e46f135e')
 
@@ -25,14 +25,16 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_tests=OFF \
-    -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF
+    -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
+    -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON
   make
 }
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
   depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr'
-           'libkipi' 'libkexiv2' 'libkdcraw' 'libkface' 'libkgeomap' 'lensfun' 'libbaloo4')
+           'libkipi' 'libkexiv2' 'libkdcraw' 'libkface' 'libkgeomap' 'lensfun' 
+	   'libpgf' 'libbaloo4')
   optdepends=('kipi-plugins: more tools and plugins' 'kdebase-workspace: Theme configuration dialog')
   install=digikam.install
 
