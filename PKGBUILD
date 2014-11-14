@@ -20,7 +20,7 @@ sha256sums=('c08060016f83679ce08947942d31af0e3b5d105525d0df5e993ec6f1a81fdd8e'
             '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e')
 
 prepare() {
-  gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name 'Wings3D' \
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name 'Wings3D' \
     --genericname '3D Modeler' --categories 'Graphics;3DGraphics'
   convert "$_pkgname-$pkgver/win32/wings.ico" "$pkgname.png"
 }
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$pkgname-3.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
