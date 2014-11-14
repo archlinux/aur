@@ -5,25 +5,24 @@
 pkgname=wings3d
 _pkgname=wings
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='3D modeling program'
 arch=('x86_64' 'i686')
 url='http://www.wings3d.com/'
 license=('GPL')
 depends=('erlang-sdl' 'erlang-cl' 'bash' 'desktop-file-utils' 'erlang')
-makedepends=('gendesk')
+makedepends=('gendesk' 'imagemagick')
 optdepends=('povray: rendering support via POV-Ray')
-install=$pkgname.install
+install="$pkgname.install"
 source=("http://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
-        "$pkgname.sh"
-        "$pkgname.png::http://img299.imageshack.us/img299/2538/wingsiconblackshiningew5.png")
+        "$pkgname.sh")
 sha256sums=('c08060016f83679ce08947942d31af0e3b5d105525d0df5e993ec6f1a81fdd8e'
-            '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e'
-            '6658977cc3bc8db2c9358edf3a2d6cb6bb8084c9a1d96ca573a83dd4e8781f1a')
+            '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e')
 
 prepare() {
   gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name 'Wings3D' \
     --genericname '3D Modeler' --categories 'Graphics;3DGraphics'
+  convert "$_pkgname-$pkgver/win32/wings.ico" "$pkgname.png"
 }
 
 build() {
