@@ -1,15 +1,17 @@
 pkgbase = qstat
-	pkgdesc = Qstat is a command line utility that displays the status of internet game servers including Quake
+	pkgdesc = A command line utility that displays the status of internet game servers
 	pkgver = 2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.qstat.org/
 	arch = i686
 	arch = x86_64
 	license = custom:Artistic
 	depends = glibc
+	conflicts = qstat-cvs
+	conflicts = qstat-svn
 	backup = etc/qstat.cfg
 	source = http://downloads.sourceforge.net/sourceforge/qstat/qstat-2.11.tar.gz
-	md5sums = 26c09831660ef9049fe74b786b80d091
+	sha256sums = 16f0c0f55567597d7f2db5136a0858c56effb4481a2c821a48cd0432ea572150
 
 pkgname = qstat
 
