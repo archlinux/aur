@@ -1,0 +1,20 @@
+pkgbase = xqf
+	pkgdesc = A game server browser and launcher for Unix/X11 for many popular games (a qstat frontend)
+	pkgver = 1.0.6.2
+	pkgrel = 2
+	url = http://www.linuxgames.com/xqf/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gtk2
+	depends = qstat
+	depends = geoip
+	conflicts = xqf-cvs
+	conflicts = xqf-svn
+	conflicts = xqf-git
+	source = https://github.com/XQF/xqf/archive/xqf-1.0.6.2.tar.gz
+	sha256sums = bcfb87c9a452993b13bd1019b0c61459a37cbc37b13b951b73f2a93b2b1c83ad
+
+pkgname = xqf
+
