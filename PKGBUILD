@@ -4,7 +4,7 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
@@ -12,18 +12,13 @@ license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
-             'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2" "digikam_libkexiv2.patch")
-sha1sums=('1feb43120addda314e09761440ec2058e430171c'
-          '39a09a8e7de1612eb47f3ef0966c6fa02b7e3284')
-
-prepare() {
-  mkdir build
-  cd ${pkgname}-${pkgver}/core
-  patch -Np1 -i "${srcdir}/digikam_libkexiv2.patch"
-}
+             'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
+	     'libbaloo4')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha1sums=('ba735f4b7bb0437c1676141ab78ea958e46f135e')
 
 build() {
+  mkdir build
   cd build
   cmake ../${pkgname}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -37,7 +32,7 @@ build() {
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
   depends=('kdebase-runtime' 'kdepimlibs' 'libgphoto2' 'opencv' 'liblqr'
-           'libkipi' 'libkexiv2' 'libkdcraw' 'libkface' 'libkgeomap' 'lensfun')
+           'libkipi' 'libkexiv2' 'libkdcraw' 'libkface' 'libkgeomap' 'lensfun' 'libbaloo4')
   optdepends=('kipi-plugins: more tools and plugins' 'kdebase-workspace: Theme configuration dialog')
   install=digikam.install
 
