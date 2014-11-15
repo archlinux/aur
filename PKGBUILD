@@ -3,7 +3,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=logrotate-selinux
-pkgver=3.8.7
+pkgver=3.8.8
 pkgrel=1
 pkgdesc="Rotates system logs automatically with SELinux support"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ url="https://fedorahosted.org/logrotate/"
 license=('GPL')
 groups=('selinux')
 depends=('popt' 'gzip' 'acl' 'libselinux')
-optdepends=('cron: scheduled log rotation')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -20,7 +19,7 @@ source=("https://fedorahosted.org/releases/l/o/logrotate/logrotate-${pkgver}.tar
         'paths.patch'
         'logrotate.conf'
         logrotate.{timer,service})
-md5sums=('99e08503ef24c3e2e3ff74cc5f3be213'
+md5sums=('49846e873dddea15964cd0355b9943ca'
          'e76526bcd6fc33c9d921e1cb1eff1ffb'
          '94dae4d3eded2fab9ae879533d3680db'
          '287c2ad9b074cb5478db7692f385827c'
@@ -31,7 +30,14 @@ build() {
 
 	patch -p0 -i "$srcdir/paths.patch"
 
-	make WITH_ACL=yes WITH_SELINUX=yes RPM_OPT_FLAGS="$CFLAGS" EXTRA_LDFLAGS="$LDFLAGS"
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--mandir=/usr/share/man \
+		--with-acl \
+		--with-selinux
+	make
 }
 
 check() {
@@ -41,8 +47,8 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname/-selinux}-${pkgver}"
-	make PREFIX="$pkgdir" MANDIR="/usr/share/man" install
-	mv ${pkgdir}/usr/sbin ${pkgdir}/usr/bin
+
+	make DESTDIR="$pkgdir" install
 
 	install -dm755 "$pkgdir/etc/logrotate.d"
 	install -Dm644 "$srcdir/logrotate.conf" "$pkgdir/etc/logrotate.conf"
