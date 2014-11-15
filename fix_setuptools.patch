@@ -1,0 +1,19 @@
+--- a/distribute_setup.py	2013-08-17 22:57:41.227220859 +0800
++++ b/distribute_setup.py	2013-08-17 22:57:29.343673408 +0800
+@@ -133,6 +133,16 @@
+     try:
+         try:
+             import pkg_resources
++
++            # Setuptools 0.7b and later is a suitable (and preferable)
++            # substitute for any Distribute version.
++            try:
++                pkg_resources.require("setuptools>=0.7b")
++                return
++            except (pkg_resources.DistributionNotFound,
++                    pkg_resources.VersionConflict):
++                pass
++
+             if not hasattr(pkg_resources, '_distribute'):
+                 if not no_fake:
+                     _fake_setuptools()
