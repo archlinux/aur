@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-cv-bridge
 	pkgdesc = ROS - This contains CvBridge, which converts between ROS Image messages and OpenCV images.
 	pkgver = 1.11.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/cv_bridge
 	arch = any
 	license = BSD
