@@ -1,5 +1,5 @@
 pkgname=youtube-dl-git
-pkgver=2014.11.09
+pkgver=2014.11.13.r0.g2d42905
 pkgrel=1
 
 pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites'
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd youtube-dl
-	git describe | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
