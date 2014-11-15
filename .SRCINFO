@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-image-geometry
 	pkgdesc = ROS - image_geometry contains C++ and Python libraries for interpreting images geometrically.
 	pkgver = 1.11.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/image_geometry
 	arch = any
 	license = BSD
