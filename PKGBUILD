@@ -6,27 +6,59 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=216
-pkgrel=3
+pkgver=217
+pkgrel=6
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
-             'gtk-doc' 'intltool' 'kmod' 'libcap' 'libgcrypt'  'libmicrohttpd' 'libxslt'
-             'libutil-linux' 'linux-api-headers' 'pam-selinux' 'python' 'python-lxml' 'quota-tools'
-             'shadow-selinux' 'xz' 'libselinux')
+             'gtk-doc' 'intltool' 'kmod' 'libcap' 'libidn' 'libgcrypt' 'libmicrohttpd'
+             'libxslt' 'util-linux' 'linux-api-headers' 'lz4' 'pam-selinux' 'python'
+             'python-lxml' 'quota-tools' 'shadow-selinux' 'xz' 'libselinux')
 options=('strip' 'debug')
 source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"
+        '0001-nspawn-ignore-EEXIST-when-creating-mount-point.patch'
+        '0001-sd-dhcp-client-clean-up-raw-socket-sd_event_source-w.patch'
+        '0001-shared-install-avoid-prematurely-rejecting-missing-u.patch'
+        '0001-sd-bus-properly-handle-removals-of-non-existing-matc.patch'
+        '0001-units-don-t-order-journal-flushing-afte-remote-fs.ta.patch'
+        '0001-units-order-sd-journal-flush-after-sd-remount-fs.patch'
+        '0001-units-make-systemd-journald.service-Type-notify.patch'
+        '0001-shutdown-fix-arguments-to-run-initramfs-shutdown.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev')
-md5sums=('04fda588a04f549da0f397dce3ae6a39'
+md5sums=('e68dbff3cc19f66e341572d9fb2ffa89'
+         'ca9e33118fd8d456563854d95512a577'
+         'ade8c1b5b2c85d0a83b7bcf5aa6d131a'
+         '7aaf44ce842deb449fca0f2595bbc1e4'
+         '4adc3ddce027693bafa53089322e859b'
+         '42ff9d59bb057637355b202157d59991'
+         '92497d06e0af615be4b368fe615109c0'
+         'a321d62d6ffada9e6976bdd339fa3219'
+         'f72e8d086172177c224f0ce48ef54222'
          '29245f7a240bfba66e2b1783b63b6b40'
-         '66cca7318e13eaf37c5b7db2efa69846'
+         '107c489f27c667be4101aecd3369b355'
          'bde43090d4ac0ef048e3eaee8202a407')
+
+
+prepare() {
+  cd "${pkgname/-selinux}-$pkgver"
+
+  patch -Np1 <../0001-nspawn-ignore-EEXIST-when-creating-mount-point.patch
+  patch -Np1 <../0001-sd-dhcp-client-clean-up-raw-socket-sd_event_source-w.patch
+  patch -Np1 <../0001-shared-install-avoid-prematurely-rejecting-missing-u.patch
+  patch -Np1 <../0001-sd-bus-properly-handle-removals-of-non-existing-matc.patch
+  patch -Np1 <../0001-units-don-t-order-journal-flushing-afte-remote-fs.ta.patch
+  patch -Np1 <../0001-units-order-sd-journal-flush-after-sd-remount-fs.patch
+  patch -Np1 <../0001-units-make-systemd-journald.service-Type-notify.patch
+  patch -Np1 <../0001-shutdown-fix-arguments-to-run-initramfs-shutdown.patch
+}
 
 build() {
   cd "${pkgname/-selinux}-$pkgver"
+
+  local timeservers=({0..3}.arch.pool.ntp.org)
 
   ./configure \
       --libexecdir=/usr/lib \
@@ -35,13 +67,14 @@ build() {
       --enable-audit \
       --enable-introspection \
       --enable-gtk-doc \
+      --enable-lz4 \
       --enable-compat-libs \
       --enable-selinux \
       --disable-ima \
       --disable-kdbus \
       --with-sysvinit-path= \
       --with-sysvrcnd-path= \
-      --with-firmware-path="/usr/lib/firmware/updates:/usr/lib/firmware"
+      --with-ntp-servers="${timeservers[*]}"
 
   make
 }
@@ -54,8 +87,8 @@ package_systemd-selinux() {
   pkgdesc="system and service manager with SELinux support"
   license=('GPL2' 'LGPL2.1' 'MIT')
   depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
-           'libsystemd-selinux' 'pam-selinux' 'libseccomp'
-           'libutil-linux-selinux' 'xz' 'libselinux')
+           'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libseccomp'
+           'util-linux-selinux' 'xz' 'libselinux')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   replaces=('nss-myhostname' 'systemd-tools' 'udev' 'selinux-systemd')
@@ -65,7 +98,8 @@ package_systemd-selinux() {
               'cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat: symlink package to provide sysvinit binaries')
+              'systemd-sysvcompat: symlink package to provide sysvinit binaries'
+              'polkit: allow administration as unprivileged user')
   backup=(etc/dbus-1/system.d/org.freedesktop.systemd1.conf
           etc/dbus-1/system.d/org.freedesktop.hostname1.conf
           etc/dbus-1/system.d/org.freedesktop.login1.conf
@@ -172,13 +206,5 @@ package_systemd-sysvcompat-selinux() {
 
   ln -s '../lib/systemd/systemd' "$pkgdir/usr/bin/init"
 }
-
-workaround_for_the_aur_webinterface='
-pkgname="systemd-selinux"
-pkgdesc="System and service manager with SELinux support"
-depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
-         'libsystemd-selinux' 'pam-selinux' 'libseccomp' 'libutil-linux-selinux'
-         'util-linux-selinux' 'xz' 'libselinux')
-'
 
 # vim: ft=sh syn=sh et
