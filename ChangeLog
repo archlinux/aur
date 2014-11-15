@@ -1,3 +1,10 @@
+2014-11-15 Eugene Dvoretsky <radioxoma at gmail com>
+
+    1.4.18.r636.g42ff01b
+    * Version bump to 1.4.19 (SVN trunk r14582)
+    * Building Micro-Manager no longer requires zlib (Mark Tsuchida) 
+
+
 2014-05-24 Eugene Dvoretsky <radioxoma at gmail com>
 
     1.4.13.r3204.g13250d0 (newer than 1.4.17 released in April 30, 2014)
@@ -7,6 +14,7 @@
     * With MMCore, device adapters, Python 2 wrapper (MMCorePy).
     * Without Java wrapper (MMCoreJ), MMStudio (Java GUI)
       and closed-source device adapters.
+
 
 2014-01-25 Eugene Dvoretsky <radioxoma at gmail com>
 

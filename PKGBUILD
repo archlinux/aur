@@ -1,8 +1,8 @@
-# Maintainer: radioxoma <radioxoma from gmail com>
+# Maintainer: Eugene Dvoretsky <radioxoma from gmail com>
 # Visit https://github.com/radioxoma/aur for pull requests or issue solving.
 
 pkgname=micromanager-git
-pkgver=1.4.13.r3204.g13250d0
+pkgver=1.4.18.r636.g42ff01b
 pkgrel=1
 epoch=
 pkgdesc="Software package for control of automated microscopes. CMMCore and python2 bindings only."
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="http://www.micro-manager.org"
 license=('BSD LGPL')
 groups=()
-depends=('zlib' 'boost' 'libdc1394' 'python2' 'python2-numpy')
+depends=('boost' 'libdc1394' 'python2' 'python2-numpy')
 makedepends=('git' 'swig')
 checkdepends=()
 optdepends=()
@@ -21,7 +21,8 @@ backup=()
 options=()
 install=mm.install
 changelog=ChangeLog
-source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=13250d0
+# Alternative repo: https://github.com/openspim/micromanager/tree/svn/git-svn
+source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=42ff01b
         'micromanager-lib.conf')
 noextract=()
 md5sums=('SKIP'
@@ -68,7 +69,6 @@ package() {
 
         # We need to update ldconfig cache with new libs.
         install -Dm644 "$srcdir/micromanager-lib.conf" "$pkgdir/etc/ld.so.conf.d/micromanager-lib.conf"
-
         install -Dm644 "$srcdir/$pkgname/doc/copyright.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
