@@ -2,7 +2,7 @@
 # Contributor: DeedleFake <yisszev at beckforce dot com>
 
 pkgname=srb2
-pkgver=2.1.11
+pkgver=2.1.12
 _dataver=2.1.11
 pkgrel=1
 pkgdesc='A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")'
@@ -17,17 +17,14 @@ source=("https://github.com/STJr/SRB2/archive/SRB2_release_$pkgver.zip"
         "https://raw.githubusercontent.com/STJr/SRB2/SRB2_release_$pkgver/src/sdl/SDL_icon.xpm"
         "srb2.desktop"
         "srb2-opengl.desktop")
-sha256sums=('675074b1e326f064e62fe5367c03c970504c1b8aa851760cd4c2e1ecc6be44d1'
-            '49a5af21f772938c39082942b1376c901f9ceeec2b5d971977d7d493152a8101'
+sha256sums=('d2728949e75aaab04eec82d4d4bf0a488ec5141e72f469bdf5460aa0474ed659'
+            'ada0e6cb959d3a37834fafb6e822699f6e4500a341ebd3e6d775d62d398274e1'
             '25b73393baa18ac60782c3b4172c1d4345649322e420bbfe284e542445987d3f'
             'ac9fa63f29ad9413797da8c6f0a4f76fa6f4dd0710d1e84a457a8c42cf6df4f9'
             'f696bab390d2b1028bf2f5c5d4d838c0981dc211cec4c4a8f349b7ec0580e701')
 
 prepare() {
   cd SRB2-SRB2_release_$pkgver/src
-  # backport of a commit, that fixes the sdl2 build
-  # https://github.com/STJr/SRB2/commit/b1e1163b91fc8237dd2005a018fa2b0b60f30118
-  sed 's|INTERFACE=sdl2|INTERFACE=sdl|' -i Makefile.cfg
   # disable Animated PNG saving support, allows build with libpng16
   sed 's|#define USE_APNG|/* & */|' -i m_misc.c
 }
@@ -45,7 +42,7 @@ package() {
   install -Dm755 SRB2-SRB2_release_$pkgver/bin/Linux$IS64BIT/Release/lsdl2srb2 \
     "$pkgdir"/usr/bin/srb2
 
-  # data patch 2.1.10 → 2.1.11
+  # data patch 2.1.10 → 2.1.12
   install -Dm644 patch.dta "$pkgdir"/usr/share/games/SRB2/patch.dta
 
   # icon + .desktop
