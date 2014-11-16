@@ -14,7 +14,7 @@ groups=('selinux')
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
              'gtk-doc' 'intltool' 'kmod' 'libcap' 'libidn' 'libgcrypt' 'libmicrohttpd'
              'libxslt' 'util-linux' 'linux-api-headers' 'lz4' 'pam-selinux' 'python'
-             'python-lxml' 'quota-tools' 'shadow-selinux' 'xz' 'libselinux')
+             'python-lxml' 'quota-tools' 'shadow-selinux' 'xz' 'audit' 'libselinux')
 options=('strip' 'debug')
 source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"
         '0001-nspawn-ignore-EEXIST-when-creating-mount-point.patch'
@@ -88,7 +88,7 @@ package_systemd-selinux() {
   license=('GPL2' 'LGPL2.1' 'MIT')
   depends=('acl' 'bash' 'dbus' 'glib2' 'kbd' 'kmod' 'hwids' 'libcap' 'libgcrypt'
            'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libseccomp'
-           'util-linux-selinux' 'xz' 'libselinux')
+           'util-linux-selinux' 'xz' 'audit' 'libselinux')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   replaces=('nss-myhostname' 'systemd-tools' 'udev' 'selinux-systemd')
@@ -173,7 +173,7 @@ package_systemd-selinux() {
 
   # include MIT license, since it's technically custom
   install -Dm644 "$srcdir/${pkgname/-selinux}-$pkgver/LICENSE.MIT" \
-      "$pkgdir/usr/share/licenses/systemd/LICENSE.MIT"
+      "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.MIT"
 }
 
 package_libsystemd-selinux() {
