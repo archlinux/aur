@@ -1,0 +1,18 @@
+pkgbase = papers-please-gog
+	pkgdesc = A Dystopian Document Thriller (gog.com version)
+	pkgver = 1.0.0.4
+	pkgrel = 1
+	url = http://gog.com/game/papers_please
+	arch = x86_64
+	arch = i686
+	license = custom: commercial
+	depends = bash
+	depends = libgl
+	depends = gcc-libs
+	source = gog://gog_papers_please_1.0.0.4.tar.gz
+	source = papers-please-gog.sh
+	sha256sums = a6929625cc8d6a87464cf8b099824e03990e1bef6e33f61cec24cb867cf6e387
+	sha256sums = 9227f364836b975d05609481c0d67e7b6fd8e52f7bb931b39af98d864b296d2e
+
+pkgname = papers-please-gog
+
