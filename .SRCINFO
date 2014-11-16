@@ -1,0 +1,29 @@
+pkgbase = warzone2100-git
+	pkgdesc = 3D realtime strategy game on a future Earth (Git version)
+	pkgver = master.SDL.r4032.g9cc1d33
+	pkgrel = 1
+	url = http://wz2100.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = zip
+	makedepends = unzip
+	depends = gettext
+	depends = qt4
+	depends = libtheora
+	depends = openal
+	depends = libvorbis
+	depends = glew
+	depends = physfs
+	depends = quesoglc
+	depends = ttf-dejavu
+	provides = warzone
+	provides = warzone2100
+	provides = warzone-svn
+	provides = warzone2100-beta
+	conflicts = warzone2100
+	source = git://github.com/Warzone2100/warzone2100.git
+	md5sums = SKIP
+
+pkgname = warzone2100-git
+
