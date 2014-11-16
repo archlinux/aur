@@ -2,20 +2,20 @@
 # Contributors: jose riha, Christoph Zeiler, nut543 and Dany Martineau
 
 pkgname=cdogs
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
 arch=('i686' 'x86_64')
 url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
-depends=('sdl_mixer' 'sdl_image' 'sdl_net')
+depends=('sdl_mixer' 'sdl_image' 'physfs')
 makedepends=('cmake')
 source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/$pkgver.tar.gz"
         hqx-for-$pkgver.tar.gz::"https://github.com/cxong/hqx/archive/2a8a05854ad2147425d0b55a3c40e81c368c97fd.tar.gz"
         cbehave-for-$pkgver.tar.gz::"https://github.com/cxong/cbehave/archive/4ab8ce9fe7662c593ce92d5f99f6b60dbaeadad7.tar.gz"
         rlutil-for-$pkgver.tar.gz::"https://github.com/cxong/rlutil/archive/1407ec0e1775366aed527b6113dd14a02d046c09.tar.gz"
         tinydir-for-$pkgver.tar.gz::"https://github.com/cxong/tinydir/archive/53aab97d6a11d70d669ce9c36d0d90ec6937c33d.tar.gz")
-sha256sums=('7ead552ed98ce0606ec671f783e3b192cefd0ed37a0b2c8e856eda6d5e9ede1c'
+sha256sums=('ff87ba01d4d6cc19b471f089e54324630df32432e91b2fbccf9f6fb72c93201b'
             'fca25adefd14af3584dcf0e48c69647aa46a924ddbfcb75ec6053528f1bd80bc'
             'df3f546c63ab1517d2ae3053e2156f80555d3ddf96328190527965e1ca5dfc9d'
             '42116a68a2fd8e810529df65e2703a3c3cd89d34e5e4652e3955e11f4d55abfe'
@@ -34,7 +34,7 @@ prepare() {
   sed 's| -Werror||;s|CDOGS_DATA_DIR "../"|CDOGS_DATA_DIR "/usr/share/cdogs/"|' \
     -i CMakeLists.txt
 
-  # fix name in .desktop file
+  # change name in .desktop file
   sed 's|cdogs-sdl|cdogs|g' -i build/linux/cdogs-sdl.desktop
 }
 
@@ -52,11 +52,11 @@ package() {
   install -Dm755 src/cdogs-sdl "$pkgdir"/usr/bin/cdogs
   # data
   install -d "$pkgdir"/usr/share/cdogs
-  cp -r doc dogfights graphics missions music sounds *.json "$pkgdir"/usr/share/cdogs
+  cp -r data doc dogfights graphics missions music sounds cdogs_icon.bmp "$pkgdir"/usr/share/cdogs
   # doc
   install -d "$pkgdir"/usr/share/doc
   ln -s /usr/share/cdogs/doc "$pkgdir"/usr/share/doc/cdogs
-  # .desktop file
+  # .desktop entry
   install -Dm644 build/linux/cdogs-icon.48.png "$pkgdir"/usr/share/pixmaps/cdogs.png
   install -Dm644 build/linux/cdogs-sdl.desktop "$pkgdir"/usr/share/applications/cdogs.desktop
 }
