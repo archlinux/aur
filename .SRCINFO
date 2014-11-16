@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-rosping
+	pkgdesc = ROS - rosping is the tool to send ICMP ECHO_REQUEST to network hosts where roscore is running, and send back to you as rostopic message.
+	pkgver = 1.0.54
+	pkgrel = 1
+	url = http://ros.org/wiki/rosping
+	arch = any
+	license = Boost Software License, Version 1.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rosboost-cfg
+	makedepends = ros-indigo-rosbuild
+	makedepends = ros-indigo-mk
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-roscpp
+	source = rosping::git+https://github.com/tork-a/jsk_common-release.git#tag=release/indigo/rosping/1.0.54-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rosping
+
