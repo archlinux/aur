@@ -13,8 +13,8 @@ _buildtype='Release'
 ##############################################################
 
 pkgname=tomahawk
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='A Music Player App written in C++/Qt'
 arch=('i686' 'x86_64')
 url='http://tomahawk-player.org/'
@@ -25,7 +25,7 @@ optdepends=('kdelibs: integration with Plasma Desktop' 'telepathy-qt4: integrati
 provides=('tomahawk')
 conflicts=('tomahawk-git')
 source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('18b2f6f3a629877c124098a61d35bb22')
+md5sums=('48ad6bafb266ae23946423dc69ca2951')
 install=tomahawk.install
 
 if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
