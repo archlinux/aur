@@ -1,6 +1,6 @@
 pkgbase = dunedynasty-git
 	pkgdesc = Enhanced continuation of the classic real-time strategy game Dune II (development version)
-	pkgver = 1.5.7.r186.g9bf26be
+	pkgver = 1.5.7.r263.g6f925e9
 	pkgrel = 1
 	url = http://dunedynasty.sourceforge.net/
 	install = dunedynasty.install
@@ -17,7 +17,7 @@ pkgbase = dunedynasty-git
 	optdepends = libmad: for mp3 music support
 	provides = dunedynasty
 	conflicts = dunedynasty
-	source = dunedynasty::git+http://git.code.sf.net/p/dunedynasty/dunedynasty
+	source = git+http://git.code.sf.net/p/dunedynasty/dunedynasty
 	source = dunedynasty.desktop
 	sha256sums = SKIP
 	sha256sums = 4bc37a890a354e274b152a03fffa61d2da1609131c848742e1e4bca537176493
