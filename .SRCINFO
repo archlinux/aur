@@ -1,7 +1,7 @@
 pkgbase = microchip-libraries-for-applications-legacy
 	pkgdesc = Microchip Libraries for Applications (Legacy)
 	pkgver = v2013_06_15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microchip.com/MLA
 	install = microchip-libraries-for-applications-legacy.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = microchip-libraries-for-applications-legacy
 	options = !zipman
 	source = http://ww1.microchip.com/downloads/en/softwarelibrary/microchip-libraries-for-applications-v2013-06-15-linux-installer.run
 	source = LICENSE
-	md5sums = 2b4d56053e22b47196ff370267f3505e
+	md5sums = d3d6597c7aebe122325dd491b41022d6
 	md5sums = dd2eec20ed33d2924fa301cea78467fa
 
 pkgname = microchip-libraries-for-applications-legacy
