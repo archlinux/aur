@@ -1,17 +1,15 @@
 # Maintainer: Johannes Dewender	arch at JonnyJD dot net
 pkgname=image-id
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A tool to compute the MusicBrainz disc ID from a CD image"
 arch=('x86_64' 'i686')
 url="https://github.com/kepstin/image-id"
 license=('GPL2')
-groups=()
-depends=('libdiscid' 'libmirage>=3.0.0')
-makedepends=()
+depends=('libdiscid' 'libmirage>=2.1.0')
 options=()
 source=(https://github.com/kepstin/image-id/releases/download/v$pkgver/$pkgname-${pkgver}.tar.gz)
-sha256sums=('63164c26689c5b48d8f6621d08f1e0f45e8ac6107faba95ab8818b0fc66f6d77')
+sha256sums=('9ae16f4a938d351df5468e8d0ba732fde648dc4f1a1212e05d79ab312f8d7947')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -19,10 +17,11 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make CFLAGS="${CFLAGS} -Wall" LDFLAGS="${LDFLAGS}"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -D image_id $pkgdir/usr/bin/image_id
+	make DESTDIR="$pkgdir/" install
 }
