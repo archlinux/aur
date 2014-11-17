@@ -3,13 +3,13 @@
 # Contributor: Federico Cinelli <cinelli.federico@gmail.com>
 
 pkgname=velox-git
-pkgver=0.0.2.r203.g882271d
-pkgrel=2
+pkgver=0.0.2.r242.g5313d92
+pkgrel=1
 pkgdesc="A simple xcb window manager inspired by awesome, xmonad, and dwm."
 arch=('i686' 'x86_64')
 url="http://www.ohloh.net/p/velox-wm"
 license=('GPL2')
-depends=('libpulse' 'libxkbcommon' 'libyaml' 'libmpdclient')
+depends=('swc-git')
 conflicts=('velox')
 provides=('velox')
 source=("$pkgname::git+https://github.com/michaelforney/velox.git")
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd $pkgname
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make PREFIX=/usr
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make PREFIX=/usr LIBEXECDIR=/usr/lib DESTDIR="$pkgdir" install
 }
 
 # vim: ft=sh syn=sh et
