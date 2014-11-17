@@ -1,14 +1,18 @@
-# Maintainer: Sergey Mamonov <mrqwer88@gmail.com>
+# Maintainer: Matt Harrison <matt@mistbyte.com>
+# Contributor: Sergey Mamonov <mrqwer88@gmail.com>
+# This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/maldet
+
 pkgname=maldet
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Malware Detect"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 arch=('x86_64' 'i686')
-license=('GPLv2')
+license=('GPL')
+depends=('lib32-glibc' 'perl')
 
 source=("http://www.rfxn.com/downloads/maldetect-1.4.2.tar.gz")
-md5sums=('6dd1372668766fa4332f8376c4e627e1')
+sha256sums=('dd2badb95f75ae90ed94892d799aedadc79498a72ef3502ab87f35509c76c094')
 
 package() {
   cd "${srcdir}/${pkgname}ect-${pkgver}"
