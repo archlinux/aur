@@ -3,7 +3,7 @@ pkgname=maldet
 pkgver=1.4.2
 pkgrel=1
 pkgdesc="Linux Malware Detect"
-url="http://www.rfxn.com"
+url="https://www.rfxn.com/projects/linux-malware-detect/"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 
