@@ -1,0 +1,59 @@
+From 1ee25d8e41581ac178545bde6dfa00229e3f809a Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Tue, 15 Nov 2011 15:02:59 +0100
+Subject: [PATCH 1/8] Add compilation option for login completion
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ include/config.h | 1 +
+ src/xlsh.c       | 6 ++++++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/include/config.h b/include/config.h
+index 743eaf0..3f6567e 100644
+--- a/include/config.h
++++ b/include/config.h
+@@ -25,6 +25,7 @@
+ #define XLSH_PAM_TTY   "login"
+ #define XLSH_PAM_X11   "xlshd"
+ 
++#define XLSH_COMPLETION_LOGIN    0
+ #define XLSH_COMPLETION_SHOWROOT 1
+ #define XLSH_COMPLETION_MINUID   1000
+ #define XLSH_COMPLETION_MAXUID   65534
+diff --git a/src/xlsh.c b/src/xlsh.c
+index b8181e2..b22b4e4 100644
+--- a/src/xlsh.c
++++ b/src/xlsh.c
+@@ -516,6 +516,7 @@ static char* xlsh_cmd_match_command(const char* text, int state)
+   return NULL;
+ }
+ 
++#if XLSH_COMPLETION_LOGIN
+ static char* xlsh_cmd_match_user(const char* text, int state)
+ {
+   static size_t len;
+@@ -540,6 +541,7 @@ static char* xlsh_cmd_match_user(const char* text, int state)
+   endpwent();
+   return NULL;
+ }
++#endif
+ 
+ static char** xlsh_cmd_complete(const char* text, int start, int end)
+ {
+@@ -552,8 +554,12 @@ static char** xlsh_cmd_complete(const char* text, int start, int end)
+     return rl_completion_matches(const_cast.c,
+ 				 xlsh_cmd_match_command);
+   else
++#if XLSH_COMPLETION_LOGIN
+     return rl_completion_matches(const_cast.c,
+ 				 xlsh_cmd_match_user);
++#else
++    return NULL;
++#endif
+ }
+ 
+ int xlsh_cmd_loop(void)
+-- 
+2.1.3
+

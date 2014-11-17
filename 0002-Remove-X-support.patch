@@ -1,0 +1,599 @@
+From 45ea617f995180bf704a760709efa86401b9394a Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Tue, 15 Nov 2011 15:42:46 +0100
+Subject: [PATCH 2/8] Remove X support
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ Makefile         |  22 +-----
+ etc/Xresources   |   5 --
+ etc/pam.d/xlshd  |   8 ---
+ etc/xlshrc       |  25 -------
+ include/config.h |  13 ----
+ include/xlsh.h   |   1 -
+ src/xlsh.c       | 113 ++-----------------------------
+ src/xlshd.c      | 199 -------------------------------------------------------
+ 8 files changed, 6 insertions(+), 380 deletions(-)
+ delete mode 100644 etc/Xresources
+ delete mode 100644 etc/pam.d/xlshd
+ delete mode 100644 etc/xlshrc
+ delete mode 100644 src/xlshd.c
+
+diff --git a/Makefile b/Makefile
+index 3cabb06..8fae9a2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,9 +7,7 @@
+ prefix = /usr/local
+ 
+ exec_prefix = $(prefix)
+-bindir      = $(exec_prefix)/bin
+ sbindir     = $(exec_prefix)/sbin
+-sysconfdir  = /etc
+ 
+ SHELL = /bin/sh
+ INSTALL = install
+@@ -26,49 +24,33 @@ ALL_CFLAGS = -I./include $(CFLAGS) $(CMACROS)
+ .SUFFIXES: .o
+ vpath %.c ./src
+ 
+-PROGRAMS      = xlsh xlshd
++PROGRAMS      = xlsh
+ 
+ XLSH_OBJ      = xlsh.o libxlsh.o
+ XLSH_SOURCE   = xlsh.c libxlsh.c
+ XLSH_HEADERS  = xlsh.h libxlsh.h config.h
+ XLSH_LIBS     = -lreadline -lpam
+ 
+-XLSHD_OBJ     = xlshd.o libxlsh.o
+-XLSHD_SOURCE  = xlshd.c libxlsh.c
+-XLSHD_HEADERS = config.h libxlsh.h
+-
+ all: $(PROGRAMS)
+ 
+ xlsh: $(XLSH_OBJ)
+ xlsh: LDLIBS=$(XLSH_LIBS)
+ 
+-xlshd: $(XLSHD_OBJ)
+-
+ install: installdirs
+ 	$(INSTALL_PROGRAM) xlsh $(DESTDIR)$(sbindir)
+-	$(INSTALL_PROGRAM) xlshd $(DESTDIR)$(sbindir)
+-	$(INSTALL_DATA) etc/xlshrc $(DESTDIR)$(sysconfdir)/xlsh
+-	$(INSTALL_DATA) etc/Xresources $(DESTDIR)$(sysconfdir)/xlsh
+-	$(INSTALL_DATA) etc/pam.d/xlshd $(DESTDIR)$(sysconfdir)/pam.d
+ 
+ install-strip: installdirs
+ 	$(INSTALL_PROGRAM_STRIP) xlsh $(DESTDIR)$(sbindir)
+-	$(INSTALL_PROGRAM_STRIP) xlshd $(DESTDIR)$(sbindir)
+-	$(INSTALL_DATA) etc/xlshrc $(DESTDIR)$(sysconfdir)/xlsh
+-	$(INSTALL_DATA) etc/Xresources $(DESTDIR)$(sysconfdir)/xlsh
+ 
+ installdirs:
+ 	$(INSTALL_DIR) $(DESTDIR)$(sbindir)
+-	$(INSTALL_DIR) $(DESTDIR)$(sysconfdir)/xlsh
+-	$(INSTALL_DIR) $(DESTDIR)$(sysconfdir)/pam.d
+ 
+ uninstall:
+ 	rm -f ${DESTDIR}$(sbindir)/xlsh
+-	rm -f ${DESTDIR}$(sbindir)/xlshd
+ 
+ clean:
+ 	rm -f $(PROGRAMS)
+-	rm -f $(XLSH_OBJ) $(XLSHD_OBJ)
++	rm -f $(XLSH_OBJ)
+ 
+ %.o: %.c
+ 	$(CC) -c $(CPPFLAGS) $(ALL_CFLAGS) $< -o $@
+diff --git a/etc/Xresources b/etc/Xresources
+deleted file mode 100644
+index c2f3e0b..0000000
+--- a/etc/Xresources
++++ /dev/null
+@@ -1,5 +0,0 @@
+-! Default resources for XLSH xterm instance.
+-*foreground:  #FFD7AF
+-*background:  #1F1F1F
+-*cursorColor: #B99B86
+-*visualBell:  off
+diff --git a/etc/pam.d/xlshd b/etc/pam.d/xlshd
+deleted file mode 100644
+index 862b83f..0000000
+--- a/etc/pam.d/xlshd
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#%PAM-1.0
+-auth		required	pam_unix.so
+-auth		required	pam_nologin.so
+-auth		required	pam_env.so
+-account		required	pam_unix.so
+-password	required	pam_unix.so
+-session		required	pam_unix.so
+-session		required	pam_limits.so
+diff --git a/etc/xlshrc b/etc/xlshrc
+deleted file mode 100644
+index ca9fbba..0000000
+--- a/etc/xlshrc
++++ /dev/null
+@@ -1,25 +0,0 @@
+-#!/bin/sh
+-# XLSH default startup script for X11.
+-TERMINAL=xterm
+-XRESFILE=/etc/xlsh/Xresources
+-BGCOLOR="rgb:1E/23/1F"
+-
+-screen_w=$(xwininfo -root | grep Width | cut -f2 -d':')
+-screen_h=$(xwininfo -root | grep Height | cut -f2 -d':')
+-px=$(($screen_w/2 - 240))
+-py=$(($screen_h/2 - 120))
+-
+-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin
+-export PATH
+-if ! which xlsh; then
+-  xmessage -center "xlsh cannot be found in PATH!"
+-  exit 1
+-fi
+-
+-xrdb -merge "$XRESFILE"
+-xsetroot -solid "$BGCOLOR"
+-if which xdotool; then
+-  ( xwindow=$(xdotool search --sync --class $TERMINAL)
+-    xdotool windowfocus "$xwindow" )&
+-fi
+-exec $TERMINAL -g 80x15+$px+$py -e $(which xlsh)
+diff --git a/include/config.h b/include/config.h
+index 3f6567e..ec20fc5 100644
+--- a/include/config.h
++++ b/include/config.h
+@@ -17,27 +17,14 @@
+ #define XLSH_PATH      "/bin:/usr/bin:/usr/local/bin"
+ #define XLSH_REBOOT    "/sbin/shutdown -r now"
+ #define XLSH_HALT      "/sbin/shutdown -h now"
+-#define XLSH_XRDB      "/usr/bin/xrdb -remove"
+ #define XLSH_XTTY      "/dev/console"
+-#define XLSH_XTTY_NAME "X11"
+ #define XLSH_DATEFMT   "%Y-%m-%d"
+ #define XLSH_TIMEFMT   "%H:%M"
+ #define XLSH_PAM_TTY   "login"
+-#define XLSH_PAM_X11   "xlshd"
+ 
+ #define XLSH_COMPLETION_LOGIN    0
+ #define XLSH_COMPLETION_SHOWROOT 1
+ #define XLSH_COMPLETION_MINUID   1000
+ #define XLSH_COMPLETION_MAXUID   65534
+ 
+-#define XLSHD_TMPDIR   XLSH_TMPDIR
+-#define XLSHD_SHELL    "/bin/sh"
+-#define XLSHD_PIDFILE  "/var/run/xlshd.pid"
+-#define XLSHD_XSERVER  "/usr/bin/X"
+-#define XLSHD_XOPTIONS "-nolisten tcp -noreset"
+-#define XLSHD_XDISPLAY ":0"
+-#define XLSHD_XLSHRC   "/etc/xlsh/xlshrc"
+-#define XLSHD_XWAIT    1
+-#define XLSHD_XRETRY   2
+-
+ #endif
+diff --git a/include/xlsh.h b/include/xlsh.h
+index 14191ba..a536996 100644
+--- a/include/xlsh.h
++++ b/include/xlsh.h
+@@ -58,7 +58,6 @@ int xlsh_session_close(pam_handle_t* handle);
+ int xlsh_session_exec(pam_handle_t* handle, const char* session, const char* arg0);
+ 
+ int xlsh_session_tty(const char* user, const char* shell);
+-int xlsh_session_x(const char* user, const char* shell);
+ 
+ int xlsh_sys_getinfo(xlsh_system_t* sysinfo);
+ int xlsh_sys_issue(const char* issuefile);
+diff --git a/src/xlsh.c b/src/xlsh.c
+index b22b4e4..ab20703 100644
+--- a/src/xlsh.c
++++ b/src/xlsh.c
+@@ -51,7 +51,6 @@ static xlsh_command_t xlsh_commands[] = {
+   { NULL, NULL, NULL },
+ };
+ 
+-static int xlsh_X = 0;
+ 
+ static void xlsh_usage(char* argv0)
+ {
+@@ -99,18 +98,11 @@ int xlsh_func_login(int argc, char** argv)
+     return XLSH_EARG;
+   }
+ 
+-  if(xlsh_X) {
+-    if(!arg_shell)
+-      arg_shell = xlsh_config[XLSH_ID_EXEC].value;
+-    return xlsh_session_x(arg_user, arg_shell);
+-  }
+-  else
+     return xlsh_session_tty(arg_user, arg_shell);
+ }
+ 
+ int xlsh_func_reboot(int argc, char** argv)
+ {
+-  pid_t xlshd_pid;
+ 
+   printf("Initiating system reboot ...\n");
+   if(libxlsh_proc_exec(XLSH_REBOOT, XLSH_DETACH) == -1) {
+@@ -118,28 +110,18 @@ int xlsh_func_reboot(int argc, char** argv)
+     return XLSH_ERROR;
+   }
+ 
+-  xlshd_pid = libxlsh_pid_read(XLSHD_PIDFILE);
+-  if(xlshd_pid > 0)
+-    kill(xlshd_pid, SIGTERM);
+-
+   pause();
+   return XLSH_EDONE;
+ }
+ 
+ int xlsh_func_shutdown(int argc, char** argv)
+ {
+-  pid_t xlshd_pid;
+-
+   printf("Initiating system shutdown ...\n");
+   if(libxlsh_proc_exec(XLSH_HALT, XLSH_DETACH) == -1) {
+     fprintf(stderr, "Failed to execute: %s\n", XLSH_HALT);
+     return XLSH_ERROR;
+   }
+ 
+-  xlshd_pid = libxlsh_pid_read(XLSHD_PIDFILE);
+-  if(xlshd_pid > 0)
+-    kill(xlshd_pid, SIGTERM);
+-
+   pause();
+   return XLSH_EDONE;
+ }
+@@ -241,11 +223,7 @@ int xlsh_session_open(const char* service, const char* user,
+ 
+   if(pam_start(service, user, &conv, &pam_handle) != PAM_SUCCESS)
+     return XLSH_ERROR;
+-  
+-  if(xlsh_X)
+-    pam_set_item(pam_handle, PAM_TTY, XLSH_XTTY);
+-  else
+-    pam_set_item(pam_handle, PAM_TTY, ttyname(0));
++  pam_set_item(pam_handle, PAM_TTY, ttyname(0));
+ 
+   if(pam_authenticate(pam_handle, 0) != PAM_SUCCESS) {
+     pam_end(pam_handle, 0);
+@@ -287,7 +265,6 @@ int xlsh_session_exec(pam_handle_t* handle, const char* session, const char* arg
+   const char* pwname;
+   char terminal[256];
+   pid_t proc_shell;
+-  int   proc_wait = 0;
+ 
+   const char* _arg0 = arg0;
+   if(!arg0) _arg0 = session;
+@@ -318,14 +295,7 @@ int xlsh_session_exec(pam_handle_t* handle, const char* session, const char* arg
+     setenv("HOME", pwinfo->pw_dir, 1);
+     setenv("PATH", xlsh_config[XLSH_ID_PATH].value, 1);
+     
+-    if(xlsh_X) {
+-      setenv("SHELL", pwinfo->pw_shell, 1);
+-      setenv("DISPLAY", xlsh_config[XLSH_ID_DISPLAY].value, 1);
+-      if(libxlsh_proc_exec(XLSH_XRDB, 0) > 0)
+-	wait(&proc_wait);
+-    }
+-    else
+-      setenv("SHELL", session, 1);
++    setenv("SHELL", session, 1);
+ 		
+     if(*terminal)
+       setenv("TERM", terminal, 1);
+@@ -382,70 +352,6 @@ int xlsh_session_tty(const char* user, const char* shell)
+   return XLSH_EDONE;
+ }
+ 
+-int xlsh_session_x(const char* user, const char* shell)
+-{
+-  pid_t proc_session;
+-  int   proc_result;
+-  char  buffer[PATH_MAX];
+-
+-  sigset_t sigset[2];
+-  int      waitflag;
+-  
+-  pam_handle_t* pam_handle;
+-  
+-  if((proc_session = fork()) == 0) {
+-    if(xlsh_session_open(XLSH_PAM_X11, user, &pam_handle) != XLSH_EOK) {
+-      fprintf(stderr, "Authorization failed\n");
+-      exit(EXIT_FAILURE);
+-    }
+-
+-    setsid();
+-    if(xlsh_session_exec(pam_handle, shell, NULL) != XLSH_EOK) {
+-      fprintf(stderr, "Cannot execute shell process: %s\n", shell);
+-      exit(EXIT_FAILURE);
+-    }
+-
+-    waitflag = 0;
+-    kill(getppid(), SIGUSR1);
+-    wait(&waitflag);
+-    
+-    xlsh_session_close(pam_handle);
+-    exit(EXIT_SUCCESS);
+-  }
+-  else {
+-    if(proc_session == -1) {
+-      fprintf(stderr, "Could not fork child process: %s\n", strerror(errno));
+-      return XLSH_ERROR;
+-    }
+-
+-    sigemptyset(&sigset[0]);
+-    sigaddset(&sigset[0], SIGCHLD);
+-    sigaddset(&sigset[0], SIGUSR1);
+-    sigprocmask(SIG_BLOCK, &sigset[0], &sigset[1]);
+-    
+-    snprintf(buffer, PATH_MAX, "%s/.xlsh-%d.pid",
+-	     xlsh_config[XLSH_ID_TMPDIR].value, getppid());
+-    libxlsh_pid_lock(buffer, proc_session, 1);
+-    
+-    proc_result = sigwaitinfo(&sigset[0], NULL);
+-    sigprocmask(SIG_SETMASK, &sigset[1], NULL);
+-
+-    switch(proc_result) {
+-    case SIGCHLD:
+-      unlink(buffer);
+-      return XLSH_ERROR;
+-    case SIGUSR1:
+-      return XLSH_EDONE;
+-    default:
+-      fprintf(stderr, "wait() syscall failed for session process: %s\n",
+-	      strerror(errno));
+-      unlink(buffer);
+-      return XLSH_ERROR;
+-    }
+-  }
+-    
+-  return XLSH_EOK;
+-}
+ 
+ // Configuration
+ void xlsh_config_init(char* exec_arg)
+@@ -616,7 +522,7 @@ int xlsh_sys_getinfo(xlsh_system_t* sysinfo)
+   struct tm *tminfo;
+   time_t timeval;
+   
+-  char* disp_name, *tty_name;
++  char *tty_name;
+   char  tty_path[PATH_MAX];
+   
+   memset(sysinfo, 0, sizeof(xlsh_system_t));
+@@ -629,15 +535,7 @@ int xlsh_sys_getinfo(xlsh_system_t* sysinfo)
+     strcpy(tty_path, XLSH_XTTY);
+   strncpy(sysinfo->ttypath, tty_path + 5, sizeof(sysinfo->ttypath));
+   
+-  if(xlsh_X) {
+-    disp_name = getenv("DISPLAY");
+-    if(disp_name[0] == ':')
+-      disp_name++;
+-    sprintf(tty_path, "%s/%s", XLSH_XTTY_NAME, disp_name);
+-    tty_name = tty_path;
+-  }
+-  else
+-    tty_name = tty_path + 5;
++  tty_name = tty_path + 5;
+   strncpy(sysinfo->ttyname, tty_name, sizeof(sysinfo->ttyname));
+   
+   timeval = time(NULL);
+@@ -727,9 +625,6 @@ int main(int argc, char** argv)
+   sigaddset(&sigmask, SIGHUP);
+   sigprocmask(SIG_BLOCK, &sigmask, NULL);
+ 
+-  if(getenv("DISPLAY"))
+-    xlsh_X = 1;
+-  
+   xlsh_config_init(opt_exec);
+   xlsh_sys_issue(xlsh_config[XLSH_ID_ISSUE].value);
+   
+diff --git a/src/xlshd.c b/src/xlshd.c
+deleted file mode 100644
+index 3c79581..0000000
+--- a/src/xlshd.c
++++ /dev/null
+@@ -1,199 +0,0 @@
+-/* eXtended Login Shell (X daemon)
+- * (c) 2011 Michał Siejak
+- *
+- * See COPYING file for license details.
+- */
+-
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <memory.h>
+-#include <string.h>
+-#include <signal.h>
+-#include <unistd.h>
+-#include <errno.h>
+-#include <limits.h>
+-#include <sys/types.h>
+-#include <sys/stat.h>
+-#include <sys/wait.h>
+-
+-#include <config.h>
+-#include <libxlsh.h>
+-
+-static void xlshd_usage(const char* argv0)
+-{
+-  fprintf(stderr, "eXtended Login Shell X daemon, version %s\n", XLSH_VERSION_STRING);
+-  fprintf(stderr, "usage: %s [-f|-h] [display]\n", argv0);
+-  exit(EXIT_FAILURE);
+-}
+-
+-static void xlshd_sig_daemonize(int signum)
+-{
+-  switch(signum) {
+-  case SIGALRM: exit(EXIT_FAILURE);
+-  case SIGCHLD: exit(EXIT_FAILURE);
+-  case SIGUSR1: exit(EXIT_SUCCESS);
+-  }
+-}
+-
+-static volatile sig_atomic_t xlshd_quit = 0;
+-static void xlshd_sig_quit(int signum)
+-{
+-  xlshd_quit = 1;
+-}
+-
+-void xlshd_daemonize(const char* argv0)
+-{
+-  pid_t pid;
+-  struct sigaction sighandler;
+-  struct sigaction def_sigchld, def_sigusr1, def_sigalrm;
+-  
+-  memset(&sighandler, 0, sizeof(struct sigaction));
+-  sighandler.sa_handler = xlshd_sig_daemonize;
+-
+-  sigaction(SIGCHLD, &sighandler, &def_sigchld);
+-  sigaction(SIGUSR1, &sighandler, &def_sigusr1);
+-  sigaction(SIGALRM, &sighandler, &def_sigalrm);
+-
+-  pid = fork();
+-  if(pid < 0) {
+-    fprintf(stderr, "%s: Could not daemonize: %s\n", argv0, strerror(errno));
+-    exit(EXIT_FAILURE);
+-  }
+-  if(pid > 0) {
+-    alarm(2);
+-    pause();
+-    exit(EXIT_FAILURE);
+-  }
+-
+-  sigaction(SIGCHLD, &def_sigchld, NULL);
+-  sigaction(SIGUSR1, &def_sigusr1, NULL);
+-  sigaction(SIGALRM, &def_sigalrm, NULL);
+-
+-  umask(S_IWGRP | S_IWOTH);
+-  chdir("/");
+-  if(setsid() < 0)
+-    exit(EXIT_FAILURE);
+-
+-  kill(getppid(), SIGUSR1);
+-}
+-
+-int main(int argc, char** argv)
+-{
+-  int  opt_index          = 1;
+-  int  opt_nodaemon       = 0;
+-  
+-  const char* opt_display = XLSHD_XDISPLAY;
+-
+-  char buffer[PATH_MAX];
+-  pid_t xserver_pid  = 0;
+-  pid_t xrc_pid      = 0;
+-  pid_t xsession_pid = 0;
+-
+-  sigset_t sigmask;
+-  struct sigaction sighandler;
+-  int waitflag, retval;
+-  
+-  if(argc > opt_index && strcmp(argv[opt_index], "-h")==0)
+-    xlshd_usage(argv[0]);
+-  if(argc > opt_index && strcmp(argv[opt_index], "-f")==0) {
+-    opt_nodaemon = 1;
+-    opt_index++;
+-  }
+-  if(argc > opt_index)
+-    opt_display = argv[opt_index];
+-
+-  if(geteuid() != 0) {
+-    fprintf(stderr, "%s: You need to have root privileges\n", argv[0]);
+-    return EXIT_FAILURE;
+-  }
+-
+-  switch(libxlsh_pid_lock(XLSHD_PIDFILE, getpid(), 0)) {
+-  case XLSH_EFOUND:
+-    fprintf(stderr, "%s: Pidfile %s exists, aborted\n",
+-	    argv[0], XLSHD_PIDFILE);
+-    return EXIT_FAILURE;
+-  case XLSH_ERROR:
+-    fprintf(stderr, "%s: Cannot create pidfile: %s\n",
+-	    argv[0], XLSHD_PIDFILE);
+-    return EXIT_FAILURE;
+-  }
+-  
+-  if(!opt_nodaemon) {
+-    xlshd_daemonize(argv[0]);
+-    libxlsh_pid_lock(XLSHD_PIDFILE, getpid(), XLSH_OVERWRITE);
+-  }
+-  
+-  stdin  = freopen("/dev/null", "r", stdin);
+-  stdout = freopen("/dev/null", "w", stdout);
+-  stderr = freopen("/dev/null", "w", stderr);
+-
+-  libxlsh_proc_sigmask();
+-
+-  sigemptyset(&sigmask);
+-  sigaddset(&sigmask, SIGHUP);
+-  sigaddset(&sigmask, SIGUSR1);
+-  sigaddset(&sigmask, SIGUSR2);
+-  sigprocmask(SIG_BLOCK, &sigmask, NULL);
+-
+-  memset(&sighandler, 0, sizeof(struct sigaction));
+-  sighandler.sa_handler = xlshd_sig_quit;
+-  sigaction(SIGTERM, &sighandler, NULL);
+-  sigaction(SIGINT, &sighandler, NULL);
+-
+-  retval = EXIT_SUCCESS;
+-  while(!xlshd_quit) {
+-    xserver_pid  = 0;
+-    xsession_pid = 0;
+-    xrc_pid      = 0;
+-    
+-    snprintf(buffer, PATH_MAX, "%s %s %s", XLSHD_XSERVER, XLSHD_XOPTIONS, opt_display);
+-    if((xserver_pid = libxlsh_proc_exec(buffer, 0)) < 0) {
+-      retval = EXIT_FAILURE;
+-      break;
+-    }
+-  
+-    setenv("DISPLAY", opt_display, 1);
+-    sleep(XLSHD_XWAIT);
+-
+-    snprintf(buffer, PATH_MAX, "%s %s", XLSHD_SHELL, XLSHD_XLSHRC);
+-    if((xrc_pid = libxlsh_proc_exec(buffer, 0)) < 0) {
+-      kill(xserver_pid, SIGTERM);
+-      retval = EXIT_FAILURE;
+-      break;
+-    }
+-
+-    waitflag = 1;
+-    waitpid(xrc_pid, &waitflag, 0);
+-    if(xlshd_quit) break;
+-
+-    snprintf(buffer, PATH_MAX, "%s/.xlsh-%d.pid", XLSHD_TMPDIR, xrc_pid);
+-    xsession_pid = libxlsh_pid_read(buffer);
+-    if(xsession_pid > 0) {
+-      while(!kill(xsession_pid, 0) && !xlshd_quit)
+-	sleep(XLSHD_XWAIT);
+-      unlink(buffer);
+-    }
+-
+-    if(xlshd_quit) break;
+-
+-    waitflag = -1;
+-    kill(xserver_pid, SIGTERM);
+-    wait(&waitflag);
+-    sleep(XLSHD_XRETRY);
+-  }
+-
+-  if(xsession_pid > 0) {
+-    kill(xsession_pid, SIGTERM);
+-    sleep(XLSHD_XWAIT);
+-  }
+-  if(xrc_pid > 0)
+-    kill(xrc_pid, SIGTERM);
+-  if(xserver_pid > 0) {
+-    waitflag = -1;
+-    kill(xserver_pid, SIGTERM);
+-    wait(&waitflag);
+-  }
+-
+-  unlink(XLSHD_PIDFILE);
+-  return retval;
+-}
+-- 
+2.1.3
+

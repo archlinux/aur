@@ -1,0 +1,25 @@
+From 9fcf959b7b3634ea7496e7cd141a34db449550d8 Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sun, 16 Nov 2014 18:18:54 +0100
+Subject: [PATCH 7/8] Add .gitignore
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ .gitignore | 5 +++++
+ 1 file changed, 5 insertions(+)
+ create mode 100644 .gitignore
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..542369b
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,5 @@
++*.o
++*.lo
++*.la
++*.swp
++/xlsh
+-- 
+2.1.3
+

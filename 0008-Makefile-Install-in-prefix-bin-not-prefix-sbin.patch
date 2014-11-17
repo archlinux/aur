@@ -1,0 +1,47 @@
+From 99969e2f933da2131fc21db94d2792d90072f4b8 Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sun, 16 Nov 2014 18:23:42 +0100
+Subject: [PATCH 8/8] Makefile: Install in $prefix/bin not $prefix/sbin
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ Makefile | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index f4fd67c..12364ef 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,7 +7,7 @@
+ prefix = /usr
+ 
+ exec_prefix = $(prefix)
+-sbindir     = $(exec_prefix)/sbin
++bindir     = $(exec_prefix)/bin
+ 
+ SHELL = /bin/sh
+ INSTALL = install
+@@ -37,16 +37,16 @@ xlsh: $(XLSH_OBJ)
+ xlsh: LDLIBS=$(XLSH_LIBS)
+ 
+ install: installdirs
+-	$(INSTALL_PROGRAM) xlsh $(DESTDIR)$(sbindir)
++	$(INSTALL_PROGRAM) xlsh $(DESTDIR)$(bindir)
+ 
+ install-strip: installdirs
+-	$(INSTALL_PROGRAM_STRIP) xlsh $(DESTDIR)$(sbindir)
++	$(INSTALL_PROGRAM_STRIP) xlsh $(DESTDIR)$(bindir)
+ 
+ installdirs:
+-	$(INSTALL_DIR) $(DESTDIR)$(sbindir)
++	$(INSTALL_DIR) $(DESTDIR)$(bindir)
+ 
+ uninstall:
+-	rm -f ${DESTDIR}$(sbindir)/xlsh
++	rm -f ${DESTDIR}$(bindir)/xlsh
+ 
+ clean:
+ 	rm -f $(PROGRAMS)
+-- 
+2.1.3
+

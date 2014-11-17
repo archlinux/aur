@@ -1,0 +1,96 @@
+From b3f9bdb405acef29cefd4b3f3d02a1903ba80d09 Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sun, 16 Nov 2014 18:09:28 +0100
+Subject: [PATCH 5/8] Don't block signals, as it caused issues
+
+Blocking signals doesn't seem to be required (xlsh will be restarted
+automatically anyways, just as when using command exit (login doesn't
+block them either)) but blocking them can cause trouble, e.g. when
+using systemd, it could lead to systemd sending a signal and wait, but
+since it was blocked one needed to manually use command exit for xlsh
+to end/system to shutdown.
+
+(There was also the issue that blocking SIGINT/SIGHUP was not restoring
+them upon login would have them still blocked with the session, leading
+to issues thereafter.)
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ include/libxlsh.h | 1 -
+ src/libxlsh.c     | 8 --------
+ src/xlsh.c        | 7 -------
+ 3 files changed, 16 deletions(-)
+
+diff --git a/include/libxlsh.h b/include/libxlsh.h
+index 4a5d6ee..16ca799 100644
+--- a/include/libxlsh.h
++++ b/include/libxlsh.h
+@@ -23,7 +23,6 @@
+ #define XLSH_DETACH    0x02
+ 
+ size_t libxlsh_strnlen(const char* s, size_t maxlen);
+-void   libxlsh_proc_sigmask(void);
+ pid_t  libxlsh_proc_exec(const char* cmdline, int flags);
+ pid_t  libxlsh_pid_read(const char* filename);
+ int    libxlsh_pid_lock(const char* filename, pid_t pid, int flags);
+diff --git a/src/libxlsh.c b/src/libxlsh.c
+index 8f7556b..1a26e32 100644
+--- a/src/libxlsh.c
++++ b/src/libxlsh.c
+@@ -16,8 +16,6 @@
+ #include <config.h>
+ #include <libxlsh.h>
+ 
+-static sigset_t xlsh_default_sigmask;
+-
+ // Compatibility functions
+ size_t libxlsh_strnlen(const char* s, size_t maxlen)
+ {
+@@ -27,11 +25,6 @@ size_t libxlsh_strnlen(const char* s, size_t maxlen)
+ }
+ 
+ // Process functions
+-void libxlsh_proc_sigmask(void)
+-{
+-  sigprocmask(0, NULL, &xlsh_default_sigmask);
+-}
+-
+ pid_t libxlsh_proc_exec(const char* cmdline, int flags)
+ {
+   pid_t pid;
+@@ -52,7 +45,6 @@ pid_t libxlsh_proc_exec(const char* cmdline, int flags)
+ 
+   if(flags & XLSH_DETACH)
+     setsid();
+-  sigprocmask(SIG_SETMASK, &xlsh_default_sigmask, NULL);
+   execv(argv[0], argv);  
+   exit(EXIT_FAILURE);
+ }
+diff --git a/src/xlsh.c b/src/xlsh.c
+index ab20703..e4fbf7c 100644
+--- a/src/xlsh.c
++++ b/src/xlsh.c
+@@ -606,7 +606,6 @@ int main(int argc, char** argv)
+ {
+   char*    opt_exec = NULL;
+   int      retvalue;
+-  sigset_t sigmask;
+   
+   if(argc > 1) {
+     if(strcmp(argv[1], "-h") == 0)
+@@ -618,12 +617,6 @@ int main(int argc, char** argv)
+     fprintf(stderr, "%s: You need to have root privileges\n", argv[0]);
+     return EXIT_FAILURE;
+   }
+-  
+-  libxlsh_proc_sigmask();
+-  sigemptyset(&sigmask);
+-  sigaddset(&sigmask, SIGINT);
+-  sigaddset(&sigmask, SIGHUP);
+-  sigprocmask(SIG_BLOCK, &sigmask, NULL);
+ 
+   xlsh_config_init(opt_exec);
+   xlsh_sys_issue(xlsh_config[XLSH_ID_ISSUE].value);
+-- 
+2.1.3
+

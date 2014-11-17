@@ -1,0 +1,92 @@
+From bdfd5079433180aac28b68be796d52c5bfbd7c8c Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sun, 16 Nov 2014 18:13:27 +0100
+Subject: [PATCH 6/8] Set environment from PAM
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ src/xlsh.c | 48 ++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 32 insertions(+), 16 deletions(-)
+
+diff --git a/src/xlsh.c b/src/xlsh.c
+index e4fbf7c..3fc1711 100644
+--- a/src/xlsh.c
++++ b/src/xlsh.c
+@@ -259,11 +259,31 @@ int xlsh_session_close(pam_handle_t* handle)
+   return XLSH_EOK;
+ }
+ 
++static void _putenv (pam_handle_t *handle, const char *name, const char *value)
++{
++    char buf[256], *b = buf;
++    size_t len;
++
++    if (!value)
++        return;
++
++    len = strlen (name) + strlen (value) + 2; /* '=' + NUL */
++    if (len > 256)
++        b = malloc (sizeof (char) * len);
++
++    strcpy (b, name);
++    strcat (b, "=");
++    strcat (b, value);
++    pam_putenv(handle, b);
++
++    if (b != buf)
++        free(b);
++}
++
+ int xlsh_session_exec(pam_handle_t* handle, const char* session, const char* arg0)
+ {
+   struct passwd* pwinfo;
+   const char* pwname;
+-  char terminal[256];
+   pid_t proc_shell;
+ 
+   const char* _arg0 = arg0;
+@@ -275,6 +295,8 @@ int xlsh_session_exec(pam_handle_t* handle, const char* session, const char* arg
+     return XLSH_ERROR;
+ 
+   if((proc_shell = fork()) == 0) {
++    char **envp;
++
+     chdir(pwinfo->pw_dir);
+     
+     if(initgroups(pwname, pwinfo->pw_gid) == -1)
+@@ -284,23 +306,17 @@ int xlsh_session_exec(pam_handle_t* handle, const char* session, const char* arg
+     if(setuid(pwinfo->pw_uid) == -1)
+       exit(EXIT_FAILURE);
+ 
++    _putenv(handle, "USER", pwinfo->pw_name);
++    _putenv(handle, "LOGNAME", pwinfo->pw_name);
++    _putenv(handle, "HOME", pwinfo->pw_dir);
++    _putenv(handle, "SHELL", session);
++    if(!pam_getenv(handle, "PATH"))
++        _putenv(handle, "PATH", xlsh_config[XLSH_ID_PATH].value);
+     if(getenv("TERM"))
+-      strncpy(terminal, getenv("TERM"), 256);
+-    else
+-      *terminal = 0;
+-    
+-    clearenv();
+-    setenv("USER", pwinfo->pw_name, 1);
+-    setenv("LOGNAME", pwinfo->pw_name, 1);
+-    setenv("HOME", pwinfo->pw_dir, 1);
+-    setenv("PATH", xlsh_config[XLSH_ID_PATH].value, 1);
+-    
+-    setenv("SHELL", session, 1);
+-		
+-    if(*terminal)
+-      setenv("TERM", terminal, 1);
++        _putenv(handle, "TERM", getenv("TERM"));
+ 
+-    execlp(session, _arg0, (char*)0);
++    envp = pam_getenvlist(handle);
++    execle(session, _arg0, (char*)0, envp);
+     exit(EXIT_FAILURE);
+   }
+   else if(proc_shell == -1)
+-- 
+2.1.3
+

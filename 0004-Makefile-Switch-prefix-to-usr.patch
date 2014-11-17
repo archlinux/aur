@@ -1,0 +1,26 @@
+From 00915458dd640b9d3cf538ae48f308d9ff65448e Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sun, 16 Nov 2014 18:02:38 +0100
+Subject: [PATCH 4/8] Makefile: Switch prefix to /usr
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8fae9a2..f4fd67c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ .DEFAULT_GOAL = all
+ .PHONY: all install install-strip installdirs uninstall clean
+ 
+-prefix = /usr/local
++prefix = /usr
+ 
+ exec_prefix = $(prefix)
+ sbindir     = $(exec_prefix)/sbin
+-- 
+2.1.3
+
