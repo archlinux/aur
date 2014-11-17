@@ -1,15 +1,15 @@
 pkgbase = image-id
 	pkgdesc = A tool to compute the MusicBrainz disc ID from a CD image
-	pkgver = 1.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/kepstin/image-id
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	depends = libdiscid
-	depends = libmirage>=2.0.0
-	source = https://github.com/kepstin/image-id/releases/download/v1.0.1/image-id-1.0.1.tar.gz
-	md5sums = c805ad7e59d2d8bbcde867f7a65a8f05
+	depends = libmirage>=3.0.0
+	source = https://github.com/kepstin/image-id/releases/download/v2.0.0/image-id-2.0.0.tar.gz
+	sha256sums = 63164c26689c5b48d8f6621d08f1e0f45e8ac6107faba95ab8818b0fc66f6d77
 
 pkgname = image-id
 
