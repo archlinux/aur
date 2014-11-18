@@ -2,7 +2,7 @@
 # Contributor: Dmitrij D. Czarkoff <czarkoff@gmail.com>
 pkgname=gmpc-plugins
 pkgver=11.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="official plugins for GMPC"
 arch=(i686 x86_64)
 url="http://gmpclient.org/"
@@ -16,7 +16,7 @@ options=(!libtool)
 build() {
   cd ${srcdir}/$pkgname-$pkgver
   ./configure --prefix=/usr
-  make
+  make CFLAGS="${CFLAGS} -DHAVE_STRNDUP"
 }
 
 package(){
