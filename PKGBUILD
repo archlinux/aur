@@ -1,9 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=python-librabbitmq
 pkgname=python2-librabbitmq
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="AMQP Client using the rabbitmq-c library"
 arch=('i686' 'x86_64')
 url="http://pypi.python.org/pypi/librabbitmq"
@@ -11,6 +11,7 @@ license=('MPL')
 makedepends=('python2-setuptools' 'python2-amqp')
 checkdepends=('python2-nose-cover3')
 source=("http://pypi.python.org/packages/source/l/librabbitmq/librabbitmq-$pkgver.tar.gz")
+md5sums=('716f05388d4747ea605c1a31f8541e3b')
 
 check() {
   cd "$srcdir/librabbitmq-$pkgver"
@@ -33,5 +34,3 @@ package_python2-librabbitmq() {
   cd "$pkgdir/usr/lib/python2.7/site-packages/"
   mv funtests librabbitmq/
 }
-
-md5sums=('842aea204fcfb5d7a541ae72d5ad38bc')
