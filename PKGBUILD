@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python>=3.4' 'python-setuptools' 'python-pyqt5>=5.2' 'qt5-base>=5.2'
          'qt5-webkit>=5.2' 'libxkbcommon-x11' 'python-pypeg2' 'python-jinja'
          'python-pygments')
-makedepends=('python' 'python-setuptools' 'asciidoc')
+makedepends=('asciidoc')
 optdepends=('python-colorlog: colored logging output')
 options=(!emptydirs)
 source=('qutebrowser::git://the-compiler.org/qutebrowser')

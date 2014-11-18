@@ -5,8 +5,6 @@ pkgbase = qutebrowser-git
 	url = http://www.qutebrowser.org/
 	arch = any
 	license = GPL
-	makedepends = python
-	makedepends = python-setuptools
 	makedepends = asciidoc
 	depends = python>=3.4
 	depends = python-setuptools
