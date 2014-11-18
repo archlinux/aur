@@ -1,6 +1,6 @@
 pkgbase = qelly-git
 	pkgdesc = Beautiful cross-platform BBS client
-	pkgver = 1.0b.5.g76c0435
+	pkgver = 1.0b.18.g1dbb09b
 	pkgrel = 1
 	url = https://github.com/uranusjr/Qelly
 	arch = x86_64

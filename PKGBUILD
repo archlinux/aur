@@ -2,7 +2,7 @@
 
 pkgname=qelly-git
 _pkgname=Qelly
-pkgver=1.0b.5.g76c0435
+pkgver=1.0b.18.g1dbb09b
 pkgrel=1
 pkgdesc="Beautiful cross-platform BBS client"
 arch=('x86_64' 'i686')
