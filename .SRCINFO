@@ -17,7 +17,7 @@ pkgbase = qutebrowser-git
 	depends = python-pygments
 	optdepends = python-colorlog: colored logging output
 	options = !emptydirs
-	source = qutebrowser::git://the-compiler.org/qutebrowser
+	source = git+https://github.com/The-Compiler/qutebrowser.git
 	md5sums = SKIP
 
 pkgname = qutebrowser-git
