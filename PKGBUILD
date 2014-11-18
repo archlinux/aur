@@ -6,7 +6,7 @@
 
 pkgname=freeimage
 pkgver=3.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:FIPL')
@@ -18,6 +18,9 @@ md5sums=('1a2d1fff6204adbd479cc98818892fc1')
 
 build() {
   cp -r FreeImage FreeImagefip
+
+  export CFLAGS+=" -O3 -fPIC -fexceptions -fvisibility=hidden -DNO_LCMS"
+  export CXXFLAGS+=" -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy"
 
   cd FreeImage
   make
