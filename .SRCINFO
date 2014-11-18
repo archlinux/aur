@@ -1,6 +1,6 @@
 pkgbase = qutebrowser-git
 	pkgdesc = A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
-	pkgver = r3199.4925a3f
+	pkgver = r3206.3622f35
 	pkgrel = 1
 	url = http://www.qutebrowser.org/
 	arch = any
