@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=38.0.2125.122
+pkgver=39.0.2171.65
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.desktop
         chromium.default
         chromium.sh)
-sha256sums=('3ea94fb3151f59c2d5088f832f8e894897489922a63bfa04f0068ee2fc0e36f3'
+sha256sums=('b15746316f2abef40792395d9a0da28ef17713289b9bd334a8ad3ee8b764f451'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
@@ -41,6 +41,15 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
+# We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
+# instructions to build the toolchain from source don't work that well (at least
+# from within the Chromium 39 source tree).
+# https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
+_build_nacl=1
+if [[ $CARCH == i686 ]]; then
+  _build_nacl=0
+fi
+
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -50,17 +59,16 @@ prepare() {
   find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 
   # Use Python 2
-  find . -type f -exec sed -i -r \
-    -e 's|/usr/bin/python$|&2|g' \
-    -e 's|(/usr/bin/python2)\.4$|\1|g' \
-    {} +
+  find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
   # There are still a lot of relative calls which need a workaround
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
 
-  # Download NaCL toolchains
-  python2 build/download_nacl_toolchains.py \
-    --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator
+  # Download the PNaCL toolchain on x86_64; i686 toolchain is no longer provided
+  if (( $_build_nacl )); then
+    python2 build/download_nacl_toolchains.py \
+      --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator
+  fi
 }
 
 build() {
@@ -71,18 +79,12 @@ build() {
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
 
-  # Build with clang as a temporary solution to startup crash with GCC 4.9
-  # https://code.google.com/p/chromium/issues/detail?id=412967
-  export CC=clang
-  export CXX=clang++
-
   local _chromium_conf=(
     -Dgoogle_api_key=$_google_api_key
     -Dgoogle_default_client_id=$_google_default_client_id
     -Dgoogle_default_client_secret=$_google_default_client_secret
     -Dwerror=
-    -Dclang=1
-    -Dclang_use_chrome_plugins=0
+    -Dclang=0
     -Dpython_ver=2.7
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
@@ -118,6 +120,13 @@ build() {
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1)
 
+  if (( ! $_build_nacl )); then
+    _chromium_conf+=(
+      -Ddisable_nacl=1
+      -Ddisable_pnacl=1
+    )
+  fi
+
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
   build/gyp_chromium --depth=. "${_chromium_conf[@]}"
 
@@ -134,17 +143,22 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
 
-  cp out/Release/{*.pak,libffmpegsumo.so,nacl_helper{,_bootstrap}} \
-    out/Release/nacl_irt_*.nexe \
-    out/Release/libpdf.so \
-    "$pkgdir/usr/lib/chromium/"
+  cp out/Release/{*.pak,libffmpegsumo.so,libpdf.so} "$pkgdir/usr/lib/chromium/"
+
+  if (( $_build_nacl )); then
+    cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
+      "$pkgdir/usr/lib/chromium/"
+  fi
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
   strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
-    "$pkgdir/usr/lib/chromium/chromedriver" \
-    "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
+    "$pkgdir/usr/lib/chromium/chromedriver"
   strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so" \
     "$pkgdir/usr/lib/chromium/libpdf.so"
+
+  if (( $_build_nacl )); then
+    strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
+  fi
 
   # Allow users to override command-line options
   install -Dm644 "$srcdir/chromium.default" "$pkgdir/etc/chromium/default"
