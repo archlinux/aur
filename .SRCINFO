@@ -7,6 +7,7 @@ pkgbase = mingw-w64-gtk2
 	license = LGPL
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
+	makedepends = mingw-w64-configure
 	makedepends = gtk-update-icon-cache
 	depends = mingw-w64-crt
 	depends = mingw-w64-atk>=1.29.2
