@@ -1,0 +1,15 @@
+pkgbase = zeal-git
+	pkgdesc = An offline API documentation browser
+	pkgver = 0.0.0.83.94b2096
+	pkgrel = 2
+	url = http://zealdocs.org/
+	arch = i686,
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-webkit
+	source = git+http://github.com/jkozera/zeal
+	sha1sums = SKIP
+
+pkgname = zeal-git
+
