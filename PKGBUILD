@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	./configure --prefix /usr --with-doxywizard --python python2
+	QTDIR=/usr/lib/qt4 ./configure --prefix /usr --with-doxywizard --python python2
 	make
 }
 
