@@ -7,6 +7,7 @@ pkgbase = mingw-w64-gdk-pixbuf2
 	license = LGPL
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
+	makedepends = mingw-w64-configure
 	depends = mingw-w64-crt
 	depends = mingw-w64-glib2>=2.37.6
 	depends = mingw-w64-jasper
