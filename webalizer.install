@@ -1,8 +1,6 @@
 post_install () {
 	echo
 	echo " * Geolocation can be enabled with the following options:"
-	echo "     GeoDB yes"
-	echo "     GeoDBDatabase /usr/share/GeoGB/GeoDB.dat"
 	echo "     GeoIP yes"
 	echo "     GeoIPDatabase /usr/share/GeoIP/GeoIP.dat"
 	echo

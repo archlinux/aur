@@ -1,6 +1,6 @@
 pkgbase = webalizer-xtended
 	pkgdesc = A web server log file analysis program producing HTML reports, xtended
-	pkgver = 2.23.08.20141101
+	pkgver = 2.23.08.RB30
 	pkgrel = 1
 	url = http://www.patrickfrei.ch/webalizer/
 	install = webalizer.install
@@ -14,11 +14,9 @@ pkgbase = webalizer-xtended
 	conflicts = webalizer
 	source = ftp://ftp.mrunix.net/pub/webalizer/webalizer-2.23-08-src.tgz
 	source = http://www.patrickfrei.ch/webalizer/rb30/webalizer-2.23-08-RB30-patch.tar.gz
-	source = ftp://ftp.mrunix.net/pub/webalizer/geodb/webalizer-geodb-20141101.tgz
 	source = ftp://ftp.mrunix.net/pub/webalizer/webalizer-flags.tgz
 	sha256sums = edaddb5aa41cc4a081a1500e3fa96615d4b41bc12086bcedf9938018ce79ed8d
 	sha256sums = cfd12f33a869e6eb2cf94165a75f733f205d85ba78345ce35b0b1bbce1a6aa93
-	sha256sums = 5a04ea0d0338234ec566de42a1ad6f1b88290ef0449b9b6fdc5bf383226d5e84
 	sha256sums = df9961fec7da2c16ed3faefb763f912c2db5ddce6a24e4f46647d7e64b8ab29a
 
 pkgname = webalizer-xtended
