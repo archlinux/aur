@@ -1,0 +1,35 @@
+diff -ur vsqlite++-0.3.13/configure.ac vsqlite++-0.3.13-mod/configure.ac
+--- vsqlite++-0.3.13/configure.ac	2014-04-24 21:06:08.000000000 +0800
++++ vsqlite++-0.3.13-mod/configure.ac	2014-11-20 12:28:53.806419854 +0800
+@@ -3,7 +3,7 @@
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_PROG_CXX
+-LT_INIT
++LT_INIT([win32-dll])
+ 
+ dnl -------------------------------------------
+ dnl test "$prefix" = "NONE" && prefix=/usr/local
+diff -ur vsqlite++-0.3.13/Makefile.am vsqlite++-0.3.13-mod/Makefile.am
+--- vsqlite++-0.3.13/Makefile.am	2014-02-17 04:32:26.000000000 +0800
++++ vsqlite++-0.3.13-mod/Makefile.am	2014-11-20 13:37:29.829890745 +0800
+@@ -5,8 +5,8 @@
+ 
+ lib_LTLIBRARIES = libvsqlitepp.la
+ 
+-libvsqlitepp_la_CXXFLAGS = -I include $(AM_CXXFLAGS)
+-libvsqlitepp_la_LDFLAGS = -lsqlite3 -Wl,--as-needed -Wl,-soname -Wl,libvsqlitepp.so.3 -version-info 3:0:0
++libvsqlitepp_la_CXXFLAGS = -I $(srcdir)/include $(AM_CXXFLAGS)
++libvsqlitepp_la_LDFLAGS = -lsqlite3 -Wl,--as-needed -Wl,-soname -Wl,libvsqlitepp.so.3 -version-info 3:0:0 -no-undefined
+ libvsqlitepp_la_SOURCES = \
+ 	src/sqlite/command.cpp \
+ 	src/sqlite/connection.cpp \
+@@ -19,7 +19,7 @@
+ 	$(NULL)
+ 
+ noinst_PROGRAMS=vsqlitepp_example
+-vsqlitepp_example_CXXFLAGS=-I include $(AM_CXXFLAGS)
++vsqlitepp_example_CXXFLAGS=-I $(srcdir)/include $(AM_CXXFLAGS)
+ vsqlitepp_example_LDADD = libvsqlitepp.la
+ vsqlitepp_example_SOURCES = \
+ 	examples/sqlite_wrapper.cpp \
