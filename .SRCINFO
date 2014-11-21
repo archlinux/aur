@@ -1,0 +1,30 @@
+pkgbase = qemu-ugent
+	pkgdesc = QEMU 0.13.0 required for UGent 'Besturingssystemen' course
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = http://wiki.qemu.org/Index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	license = BSD
+	makedepends = texi2html
+	makedepends = perl
+	depends = sdl
+	depends = alsa-lib
+	depends = esound
+	depends = gnutls>=2.4.1
+	depends = bluez
+	depends = vde2
+	depends = util-linux-ng
+	depends = curl
+	depends = libsasl
+	conflicts = qemu
+	conflicts = seabios
+	source = http://wiki.qemu-project.org/download/qemu-0.13.0.tar.gz
+	source = qemu.patch
+	md5sums = 397a0d665da8ba9d3b9583629f3d6421
+	md5sums = ce1f43c4d76f426ba796a6524fe9fc65
+
+pkgname = qemu-ugent
+

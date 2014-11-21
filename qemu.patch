@@ -1,0 +1,56 @@
+diff -rupN A/configure B/configure
+--- A/configure	2010-10-15 22:56:09.000000000 +0200
++++ B/configure	2014-11-21 12:12:50.121607406 +0100
+@@ -2002,18 +2002,21 @@ fi
+ cat > $TMPC <<EOF
+ #include <signal.h>
+ #include <time.h>
+-int main(void) { clockid_t id; return clock_gettime(id, NULL); }
++int main(void) {
++  timer_create(CLOCK_REALTIME, NULL, NULL);
++  return clock_gettime(CLOCK_REALTIME, NULL);
++}
+ EOF
+-
+ if compile_prog "" "" ; then
+-  :
+-elif compile_prog "" "-lrt" ; then
++:
++# we need pthread for static linking. use previous pthread test result
++elif compile_prog "" "-lrt $pthread_lib" ; then
+   LIBS="-lrt $LIBS"
++  libs_qga="-lrt $libs_qga"
+ fi
+-
+ if test "$darwin" != "yes" -a "$mingw32" != "yes" -a "$solaris" != yes -a \
+-        "$aix" != "yes" ; then
+-    libs_softmmu="-lutil $libs_softmmu"
++  "$aix" != "yes" -a "$haiku" != "yes" ; then
++  libs_softmmu="-lutil $libs_softmmu"
+ fi
+ 
+ ##########################################
+diff -rupN A/hw/eepro100.c B/hw/eepro100.c
+--- A/hw/eepro100.c	2010-10-15 22:56:09.000000000 +0200
++++ B/hw/eepro100.c	2014-11-21 12:12:50.121607406 +0100
+@@ -95,7 +95,7 @@
+ #define PCI_IO_SIZE             64
+ #define PCI_FLASH_SIZE          (128 * KiB)
+ 
+-#define BIT(n) (1 << (n))
++//#define BIT(n) (1 << (n))
+ #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
+ 
+ /* The SCB accepts the following controls for the Tx and Rx units: */
+diff -rupN A/qemu-common.h B/qemu-common.h
+--- A/qemu-common.h	2010-10-15 22:56:09.000000000 +0200
++++ B/qemu-common.h	2014-11-21 12:12:50.121607406 +0100
+@@ -56,6 +56,8 @@ typedef struct DeviceState DeviceState;
+ #define ENOTSUP 4096
+ #endif
+ 
++#define BIT(n) (1 << (n))
++
+ #ifndef CONFIG_IOVEC
+ #define CONFIG_IOVEC
+ struct iovec {
