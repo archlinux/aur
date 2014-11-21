@@ -1,8 +1,8 @@
-# Maintainer: Aaron Mueller <mail@aaron-mueller.de>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Mark Pustjens <pustjens@dds.nl>
 
 pkgname=prospector
-pkgver=R189
+pkgver=R191
 pkgrel=1
 pkgdesc="A roguelike in space."
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ makedepends=("unzip")
 source=("http://www.prospector.at/forum/dm_eds/files/linux/${pkgver}prospector_l.zip"
         "prospector.sh")
 noextract=("${pkgver}prospector_linux.zip")
-md5sums=("8667e3696760d4a4701f00de6cab09bc"
+md5sums=("b5e695a8dd4e9ec06e7dc09871579609 "
          "c94de740aafaca4e77d06d91717fec06")
 
 package() {
