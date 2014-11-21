@@ -1,5 +1,5 @@
 pkgname=shaman-git
-pkgver=0.r248.cb98a17
+pkgver=2.0.0.α.r2.g233d194
 pkgrel=1
 
 pkgdesc="A small, native C library and utility to fetch weather"
@@ -8,14 +8,15 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 
 depends=('curl' 'jansson')
-makedepends=('git' 'tup' 'clang')
+makedepends=('git' 'tup' 'clang' 'python-sphinx')
 
 source=('git+https://github.com/HalosGhost/shaman.git')
+
 sha256sums=('SKIP')
 
 pkgver () {
 	cd shaman
-	printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed -r 's/([^-]*-g)/r\1/; s/-/./g'
 }
 
 build () {
