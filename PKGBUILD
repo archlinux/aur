@@ -1,32 +1,35 @@
-# Maintainer: Lucas De Marchi <lucas.de.marchi@gmail.com
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Contributor: Lucas De Marchi <lucas.de.marchi@gmail.com
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Igor Scabini <furester at gmail.com>
 
 pkgname=lightmediascanner
-pkgver=0.4.5.0
-pkgrel=1
+pkgver=0.4.5
+pkgrel=2
 pkgdesc="A lightweight library to scan media"
 arch=('i686' 'x86_64')
-url="http://lms.garage.maemo.org/"
+url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
 depends=('sqlite3' 'libvorbis' 'libmp4v2' 'flac')
-source=("http://packages.profusion.mobi/lightmediascanner/$pkgname-$pkgver.tar.bz2")
-md5sums=('cb51f52ac8ba514987ae3f5278b628b2')
+source=("https://github.com/profusion/lightmediascanner/archive/release_$pkgver.tar.gz")
+sha256sums=('73d9e86aa506f89084f6132e32c58b15dc9a364b8c812a160896c44d36392949')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-release_$pkgver"
 
-  ./configure \
+  ./autogen.sh \
     --prefix=/usr \
-    --disable-static \
-    --enable-video-dummy \
-    --enable-audio-dummy
+    --disable-static
 
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-release_$pkgver"
 
   make DESTDIR="$pkgdir" install
+
+# install text files
+  install -d "$pkgdir/usr/share/doc/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS NEWS README
 }

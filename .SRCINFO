@@ -1,8 +1,8 @@
 pkgbase = lightmediascanner
 	pkgdesc = A lightweight library to scan media
-	pkgver = 0.4.5.0
-	pkgrel = 1
-	url = http://lms.garage.maemo.org/
+	pkgver = 0.4.5
+	pkgrel = 2
+	url = https://github.com/profusion/lightmediascanner
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -10,8 +10,8 @@ pkgbase = lightmediascanner
 	depends = libvorbis
 	depends = libmp4v2
 	depends = flac
-	source = http://packages.profusion.mobi/lightmediascanner/lightmediascanner-0.4.5.0.tar.bz2
-	md5sums = cb51f52ac8ba514987ae3f5278b628b2
+	source = https://github.com/profusion/lightmediascanner/archive/release_0.4.5.tar.gz
+	sha256sums = 73d9e86aa506f89084f6132e32c58b15dc9a364b8c812a160896c44d36392949
 
 pkgname = lightmediascanner
 
