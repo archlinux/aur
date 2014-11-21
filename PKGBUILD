@@ -2,7 +2,7 @@
 pkgname=acousticbrainz-client-git
 _pkgname=acousticbrainz-client
 _python=python
-pkgver=r56.d49bfb6
+pkgver=0.1.r2.g366bdd1
 pkgrel=1
 pkgdesc="client to upload data to an acousticbrainz server"
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
