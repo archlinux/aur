@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=1.3.9.4
+pkgver=1.3.9.14
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
