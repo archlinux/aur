@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.17
-pkgver=3.17.3
+pkgver=3.17.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,9 +21,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'fix_CPU0_microcode_on_resume.patch'
         )
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
-            '3c1ba3cc89d0f2d5f7303f448495f64db1ab96efea5f5fdd4b4c8c547600f85d'
-            '0f1cd431115a2ce84629298d054d5e6f6e78095a3aeda4d1335740c9402efb7e'
-            'fb688bc7ccfa636990b26aecfe62500bc1e0f6c410a837eef03014c161df2ec8'
+            'eeef37397a15245bd143569908be40622a87dc7673965e623e811ea3f68b8434'
+            'ea9de72fe335055f6e8eebd1d85cad150a47a81004bb27d78f18f2591fd3bbd5'
+            '66fc95823d3c99167532f37c07e9582d305961103997fcc61cfc7f6a86b34130'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '43668fe46147fe93f41b919db673574427ce5a8c376cd28ddddcbf3a00326491')
@@ -296,3 +296,10 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
+            'eeef37397a15245bd143569908be40622a87dc7673965e623e811ea3f68b8434'
+            'ea9de72fe335055f6e8eebd1d85cad150a47a81004bb27d78f18f2591fd3bbd5'
+            '66fc95823d3c99167532f37c07e9582d305961103997fcc61cfc7f6a86b34130'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '43668fe46147fe93f41b919db673574427ce5a8c376cd28ddddcbf3a00326491')
