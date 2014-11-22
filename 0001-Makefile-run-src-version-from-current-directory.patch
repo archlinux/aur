@@ -1,0 +1,27 @@
+From 325e1b914c3caee23547f12c0c0ed3f9918a8d46 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Johannes=20L=C3=B6thberg?= <johannes@kyriasis.com>
+Date: Sat, 22 Nov 2014 22:26:04 +0100
+Subject: [PATCH] Makefile: run `src version` from current directory
+
+Relying on $PATH here is broken because either another executable called
+src or an old version of src itself could be in $PATH
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 5d23d10..4d89ee1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@ prefix?=/usr/local
+ mandir?=/share/man
+ target=$(DESTDIR)$(prefix)
+ 
+-VERS=$(shell src version)
++VERS=$(shell ./src version)
+ 
+ SOURCES = README INSTALL COPYING NEWS TODO src srctest src.asc FAQ.asc Makefile control
+ 
+-- 
+2.1.3
+
