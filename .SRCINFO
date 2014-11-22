@@ -1,12 +1,13 @@
 pkgbase = wikicurses-git
 	pkgdesc = A simple curses interface for accessing Wikipedia.
-	pkgver = r157.6bcdc9f
+	pkgver = r285.1a7cd75
 	pkgrel = 1
 	url = https://github.com/ids1024/wikicurses
 	arch = any
 	license = mit
 	depends = python
 	depends = python-urwid
+	depends = python-beautifulsoup4
 	backup = etc/wikicurses.conf
 	source = git://github.com/ids1024/wikicurses.git
 	md5sums = SKIP
