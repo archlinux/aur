@@ -2,7 +2,7 @@
 # Contributors: Giuseppe Calà, Jan Alexander Steffens, Alexander Rødseth, Jon Nordby
 
 pkgname=lib32-libwebp
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="WebP library (32 bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=("${pkgname#*-}=$pkgver" 'lib32-glibc')
 makedepends=('gcc-multilib')
 source=("http://downloads.webmproject.org/releases/webp/${pkgname#*-}-$pkgver.tar.gz")
-sha256sums=('00b646e6f66550a8faa998711fe70aabee9ed3bc562a8437c89042901674d027')
+sha256sums=('14d825d7c2ef7d49621bcb6b83466be455585e671ae0a2ebc1f2e07775a1722d')
 
 build() {
   cd ${pkgname#*-}-$pkgver
