@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 
 _pkgname=vsqlite++
 pkgname=mingw-w64-${_pkgname}
