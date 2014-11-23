@@ -1,7 +1,7 @@
 pkgbase = libnds
 	pkgdesc = Library for Nintendo DS homebrew development
-	pkgver = 1.5.8
-	pkgrel = 2
+	pkgver = 1.5.9
+	pkgrel = 1
 	url = http://www.devkitpro.org
 	arch = any
 	license = custom
@@ -11,9 +11,9 @@ pkgbase = libnds
 	noextract = nds-examples-20140401.tar.bz2
 	options = !strip
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libnds-src-1.5.8.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libnds-src-1.5.9.tar.bz2
 	source = http://downloads.sourceforge.net/sourceforge/devkitpro/nds-examples-20140401.tar.bz2
-	sha256sums = a89910dbbaabbe4051abac9f85429a1df5077141cd33dfa5ad18c774706dc386
+	sha256sums = 7d79462c7cc69c929087a26d0c089648a0cc8a972d8463aa1894b0647204b3e0
 	sha256sums = 51ef0e5a5c278a3fba59e43b8e8d8cb27e2f622f5f82655eb16b0d46bf1f3c77
 
 pkgname = libnds
