@@ -1,7 +1,7 @@
 diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
---- buildscripts.old/build-devkit.sh	2014-04-02 23:16:25.000000000 +0200
-+++ buildscripts/build-devkit.sh	2014-08-19 02:43:59.867864270 +0200
-@@ -218,7 +218,7 @@
+--- buildscripts.old/build-devkit.sh	2014-11-21 18:55:02.000000000 +0100
++++ buildscripts/build-devkit.sh	2014-11-23 13:31:04.702390386 +0100
+@@ -220,7 +220,7 @@
  fi
  
  cd "$SRCDIR"
@@ -10,7 +10,7 @@ diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
  do
  	echo $archive
  	if [ ! -f $archive ]; then
-@@ -236,15 +236,6 @@
+@@ -238,15 +238,6 @@
  extract_and_patch newlib $NEWLIB_VER gz
  extract_and_patch gdb $GDB_VER bz2
  
@@ -27,12 +27,13 @@ diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
  for archive in $hostarchives
  do
 diff -Naur buildscripts.old/dkarm-eabi/scripts/build-crtls.sh buildscripts/dkarm-eabi/scripts/build-crtls.sh
---- buildscripts.old/dkarm-eabi/scripts/build-crtls.sh	2013-01-05 14:10:23.000000000 +0100
-+++ buildscripts/dkarm-eabi/scripts/build-crtls.sh	2014-08-19 02:43:51.807763871 +0200
-@@ -22,34 +22,3 @@
+--- buildscripts.old/dkarm-eabi/scripts/build-crtls.sh	2014-11-21 10:44:39.000000000 +0100
++++ buildscripts/dkarm-eabi/scripts/build-crtls.sh	2014-11-23 13:35:57.892675791 +0100
+@@ -22,40 +22,3 @@
  $MAKE CRT=ds_arm9
  $MAKE CRT=ds_cart
- 
+ $MAKE CRT=3dsx
+-
 -cd $BUILDDIR/libgba-$LIBGBA_VER
 -$MAKE || { echo "error building libgba"; exit 1; }
 -$MAKE install || { echo "error installing libgba"; exit 1; }
@@ -64,3 +65,8 @@ diff -Naur buildscripts.old/dkarm-eabi/scripts/build-crtls.sh buildscripts/dkarm
 -cd $BUILDDIR/libfilesystem-$FILESYSTEM_VER
 -$MAKE || { echo "error building libfilesystem"; exit 1; }
 -$MAKE install || { echo "error installing libfilesystem"; exit 1; }
+-
+-cd $BUILDDIR/libctru-$LIBCTRU_VER
+-$MAKE || { echo "error building libctru"; exit 1; }
+-$MAKE install || { echo "error installing libctru"; exit 1; }
+-

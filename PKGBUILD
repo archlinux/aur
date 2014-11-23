@@ -1,20 +1,20 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkitarm
-pkgver=r42
+pkgver=r43
 pkgrel=1
 pkgdesc="An ARM toolchain for GP32, Nintendo DS and GBA homebrew development"
 arch=('i686' 'x86_64')
 url="http://www.devkitpro.org"
 license=('GPL')
 options=(!strip libtool staticlibs emptydirs)
-depends=('xz' 'freeimage' 'python' 'cloog' 'flex' 'libmpc' 'libusb')
+depends=('freeimage' 'python' 'flex' 'libmpc' 'libusb')
 install=devkitarm.install
-source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20140402.tar.bz2"
+source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20141121.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/binutils-2.24.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gcc-4.8.2.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/gcc-4.9.2.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/newlib-2.1.0.tar.gz"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gdb-7.7.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/gdb-7.7.1.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gbatools-1.0.0.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/dstools-1.0.0.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/grit-0.8.12.tar.bz2"
@@ -22,15 +22,16 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-201
         "http://downloads.sourceforge.net/sourceforge/devkitpro/general-tools-1.0.0.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/dlditool-1.24.0.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/mmutil-1.8.6.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/dfu-util-0.7.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/stlink-0.5.7.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/dfu-util-0.7.1.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/stlink-0.5.8.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/3dstools-1.0.0.tar.bz2"
         "devkitarm-skip-libs.patch"
         "devkitarm.sh")
-sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
+sha256sums=('de5e8443693c7fee99f2b06ef6011bb208ee123f66c80fdf2bc39929af468a6c'
             'e5e8c5be9664e7f7f96e0d09919110ab5ad597794f5b1809871177a0f0f14137'
-            '09dc2276c73424bbbfda1dbddc62bbbf900c9f185acf7f3e1d773ce2d7e3cdc8'
+            '2020c98295856aa13fda0f2f3a4794490757fc24bcca918d52cc8b4917b972dd'
             '3e4d5ab9f0508942b6231b8ade4f8e5048cf92c96ed574c2bd6bd3320a599a48'
-            '0404d1c6ee6b3ddd811722b5197944758d37b4591c216030effbac204f5a6c23'
+            '0dbd5260406f1b0c70fcf027c6488527fadde0cd9bb574593491fe076eb03aa5'
             '5e39c58f610410f19312d3fd4380418929912d2173dfa79fb7fe36a192988632'
             '478ebf21f5b63fda920118370f14bf4057c93617e281a2f2901f6405f9d58220'
             '6fedae3c9737a8aa81a898aff52f775ee199befa4eea238adea5029f85f73929'
@@ -38,15 +39,16 @@ sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
             '09474dfc1537e1008ee95b1a39a53715b8a740ee5ee37f4376607d6b110343c4'
             '5ecf67bcd5e2088ad31cd27fa14db575001388abc19510c4297aae42e9cd5d2f'
             '5b9182accb99abc03c1a31c39c003fbc5cb0d4af65a44102ede6098828cd045e'
-            '33a1922cf7fb57c3d80e873dc20cabd550d1285476ab5a0efa4d910aceafd2f0'
-            '8ac33627490158ba32c4b18bd8ceba1ac083658c6005c3cbae077045af9f1033'
-            '14027a13b9f048c87b5d86e4e60c19eff514feda41cc249cda5a071646b4863a'
-            'a6f33eaf2d89493f5bb557ef82c6286793c7e69dd3f6de6be85733835b193bd7')
-noextract=('binutils-2.24.tar.bz2' 'gcc-4.8.2.tar.bz2' 'newlib-2.1.0.tar.gz'
-           'gdb-7.7.tar.bz2' 'gbatools-1.0.0.tar.bz2' 'dstools-1.0.0.tar.bz2'
+            'c406878c2bdf5b592b84a125a6184148bd9bf92da014fceaf1e6674449302388'
+            'f528cdaf328b74e1814e88f0fcbe04f4ee221d45c740dc1456de4e4036047bb9'
+            '74ebc28c7e8ab369efb36afa711dd801fc850387322e935123d1c92d890a270e'
+            '2ffb027cc26d60db4f75ac4888f5fb8a949ea6966235d448c1ffe17261be26b8'
+            'fc5489fab5ee4ce5cd53c2e1549fd2958872a6777324920b89e03b88584072db')
+noextract=('binutils-2.24.tar.bz2' 'gcc-4.9.2.tar.bz2' 'newlib-2.1.0.tar.gz'
+           'gdb-7.7.1.tar.bz2' 'gbatools-1.0.0.tar.bz2' 'dstools-1.0.0.tar.bz2'
            'grit-0.8.12.tar.bz2' 'ndstool-1.50.1.tar.bz2' 'general-tools-1.0.0.tar.bz2'
-           'dlditool-1.24.0.tar.bz2' 'mmutil-1.8.6.tar.bz2' 'dfu-util-0.7.tar.bz2'
-           'stlink-0.5.7.tar.bz2')
+           'dlditool-1.24.0.tar.bz2' 'mmutil-1.8.6.tar.bz2' 'dfu-util-0.7.1.tar.bz2'
+           'stlink-0.5.8.tar.bz2' '3dstools-1.0.0.tar.bz2')
 
 prepare() {
   # reset build dir
@@ -71,7 +73,7 @@ END
   sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
     buildscripts/build-devkit.sh
 
-  # disable building of libraries, we have seperate packages
+  # disable building of libraries, we have separate packages
   patch -Np0 < devkitarm-skip-libs.patch
 }
 

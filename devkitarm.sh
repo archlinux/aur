@@ -1,5 +1,5 @@
 
-# allow per-user override
+# allow override
 if [ -z $DEVKITPRO ]; then
   export DEVKITPRO=/opt/devkitpro
 fi
