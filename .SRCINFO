@@ -1,7 +1,7 @@
 pkgbase = cc65
 	pkgdesc = C compiler for 6502 family microprocessors
 	pkgver = 2.13.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cc65.org/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = cc65
 	source = ftp://ftp.musoftware.de/pub/uz/cc65/cc65-sources-2.13.3.tar.bz2
 	source = patch-2.13.3.diff
 	source = license
-	md5sums = 99de534c4a9e04b45a82c239ed4ded20
-	md5sums = 7847d388e8b128ed2fb5025ef199956d
-	md5sums = 8319a72050fb79daf7e1b2bcf5a9e69d
+	sha256sums = a98a1b69d3fa15551fe7d53d5bebfc5f9b2aafb9642ee14b735587a421e00468
+	sha256sums = b4bf9bba08ec3a8b6bad8e75be98b136556de72beaee3a99016bb20a1bed929c
+	sha256sums = 4b1eb4cf61617a78256b5225784a73077c238aea02d6b949ef6f1ea06d9b40d3
 
 pkgname = cc65
 
