@@ -1,0 +1,15 @@
+pkgbase = libctru
+	pkgdesc = Library for Nintendo 3DS homebrew development
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.devkitpro.org
+	arch = any
+	license = custom: zlib
+	depends = devkitarm
+	options = !strip
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libctru-src-0.1.0.tar.bz2
+	sha256sums = 9306cb9ac0b9d070511e0bb4a82c5050770f67b288513ba8b449dc596a0e08f7
+
+pkgname = libctru
+
