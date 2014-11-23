@@ -1,6 +1,6 @@
 pkgbase = devkitarm-bin
 	pkgdesc = ARM toolchain for GP32, Nintendo DS and GBA homebrew development (precompiled)
-	pkgver = r42
+	pkgver = r43
 	pkgrel = 1
 	url = http://www.devkitpro.org/
 	install = devkitarm.install
@@ -8,7 +8,6 @@ pkgbase = devkitarm-bin
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
-	depends = libusb
 	depends = sh
 	optdepends = libtinfo: for arm-none-eabi-gdb
 	provides = devkitarm
@@ -16,10 +15,11 @@ pkgbase = devkitarm-bin
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/devkitARM_r42--linux.tar.bz2
+	options = emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/devkitARM_r43--linux.tar.bz2
 	source = devkitarm.sh
-	sha256sums = 189fbb8ac0b289c1e370e0e128945e2447031521dcef0730312ef1e124127b49
-	sha256sums = a6f33eaf2d89493f5bb557ef82c6286793c7e69dd3f6de6be85733835b193bd7
+	sha256sums = 7e6a253dc4cf7c97779965b6fc917035e3ad44b17fb60c09212d2696f283d77e
+	sha256sums = fc5489fab5ee4ce5cd53c2e1549fd2958872a6777324920b89e03b88584072db
 
 pkgname = devkitarm-bin
 
