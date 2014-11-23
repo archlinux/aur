@@ -1,10 +1,10 @@
-# Maintainer: Alex Brinister <alex_brinister at yahoo dot com>
-# Contributor: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Contributor: Alex Brinister <alex_brinister at yahoo dot com>
 
 pkgname=usbmuxd-git
 epoch=1
-pkgver=1.0.8.63.g5927823
-pkgrel=1
+pkgver=1.0.8.114.g50cb347
+pkgrel=2
 pkgdesc="USB Multiplex Daemon"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("git://git.sukimashita.com/usbmuxd.git"
         '39-usbmuxd.rules')
 sha512sums=('SKIP'
             '9771b422e9b48e11a0c2ecaafda06ea9acee651afd4f7e7589e9704d60bd9eb014f6b737d1e279735225f68d910183c698949ee153275e0873940dae00911210'
-            'aa5e9f6caf8978ff458d789e549ab931d41d4443ae7802eca27b736db812d12938d2a23999d15d7fcbe4ec993495cd1bc88f2c40c3e44710e575e792669179cd')
+            'dc5af2442584e51ddd5828dc7f0d9d670da7026eedf1a3694f59a07741bd9280b90932c73b6ee8e95b993304c4ca3b787119f23125a232fbc5527c44dde64641')
 
 pkgver() {
 	cd usbmuxd
@@ -38,16 +38,6 @@ build() {
 package() {
 	cd usbmuxd
 	make DESTDIR="${pkgdir}" install
-	
-	# fix for /lib -> /usr/lib move
-	mkdir -p "${pkgdir}/usr/lib"
-	mv "${pkgdir}/lib"/* "${pkgdir}/usr/lib"
-	rm -rf "${pkgdir}/lib"
-
-	# fix for bindir -> /usr/bin move
-	mkdir -p "${pkgdir}/usr/bin"
-	mv "${pkgdir}/usr/sbin"/* "${pkgdir}/usr/bin"
-	rm -rf "${pkgdir}/usr/sbin"
 
 	# install systemd service file
 	install -Dm644 "${srcdir}/usbmuxd.service" "${pkgdir}/usr/lib/systemd/system/usbmuxd.service"

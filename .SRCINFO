@@ -1,7 +1,7 @@
 pkgbase = usbmuxd-git
 	pkgdesc = USB Multiplex Daemon
-	pkgver = 1.0.8.63.g5927823
-	pkgrel = 1
+	pkgver = 1.0.8.114.g50cb347
+	pkgrel = 2
 	epoch = 1
 	url = http://www.libimobiledevice.org/
 	install = usbmuxd.install
@@ -20,7 +20,7 @@ pkgbase = usbmuxd-git
 	source = 39-usbmuxd.rules
 	sha512sums = SKIP
 	sha512sums = 9771b422e9b48e11a0c2ecaafda06ea9acee651afd4f7e7589e9704d60bd9eb014f6b737d1e279735225f68d910183c698949ee153275e0873940dae00911210
-	sha512sums = aa5e9f6caf8978ff458d789e549ab931d41d4443ae7802eca27b736db812d12938d2a23999d15d7fcbe4ec993495cd1bc88f2c40c3e44710e575e792669179cd
+	sha512sums = dc5af2442584e51ddd5828dc7f0d9d670da7026eedf1a3694f59a07741bd9280b90932c73b6ee8e95b993304c4ca3b787119f23125a232fbc5527c44dde64641
 
 pkgname = usbmuxd-git
 
