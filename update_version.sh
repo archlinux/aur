@@ -9,3 +9,4 @@ updpkgsums
 makepkg -s
 mkaurball -f
 namcap purescript-bin*.pkg.tar.xz
+aurploader
