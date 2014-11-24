@@ -2,7 +2,7 @@
 # Mon Jun  1 13:54:26 UTC 2015
 pkgbase = src-git
 	pkgdesc = Simple Revision Control with modern UI for single-file projects
-	pkgver = 0.12.r2.g80ab9e0
+	pkgver = 0.13.r0.g51d7a34
 	pkgrel = 1
 	url = http://www.catb.org/esr/src/
 	arch = any

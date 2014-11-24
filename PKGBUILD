@@ -1,5 +1,5 @@
 pkgname=src-git
-pkgver=0.12.r2.g80ab9e0
+pkgver=0.13.r0.g51d7a34
 pkgrel=1
 
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
@@ -18,6 +18,11 @@ sha1sums=('SKIP')
 pkgver() {
 	cd src-vcs
 	git describe --long | sed -r 's/([^-]*-g)/r\1/; s/-/./g'
+}
+
+check() {
+	cd src-vcs
+	make check
 }
 
 package() {
