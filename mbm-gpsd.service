@@ -1,9 +1,9 @@
-# $Id$
 # Contributed by skrat on AUR
 
 [Unit]
 Description=DBus system service to communicate with GPS
 Before=gpsd.service
+StopWhenUnneeded=true
 
 [Service]
 ExecStart=/usr/bin/mbm-gpsd -f
