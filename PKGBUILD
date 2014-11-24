@@ -1,5 +1,5 @@
 pkgname=src-git
-pkgver=0.12.r0.g1cb9e4d
+pkgver=0.12.r2.g80ab9e0
 pkgrel=1
 
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
@@ -8,23 +8,16 @@ arch=('any')
 license=('BSD')
 
 depends=('python2' 'rcs')
-makedepends=('asciidoc')
 optdepends=('rcs-fast-import: required for src fast-import')
+makedepends=('asciidoc')
 
-source=('git+https://gitorious.org/src-vcs/src-vcs.git'
-        '0001-Makefile-run-src-version-from-current-directory.patch')
+source=('git+https://gitorious.org/src-vcs/src-vcs.git')
 
-sha1sums=('SKIP'
-          '633120c7c72c778113664636075699b1999ed30a')
+sha1sums=('SKIP')
 
 pkgver() {
 	cd src-vcs
 	git describe --long | sed -r 's/([^-]*-g)/r\1/; s/-/./g'
-}
-
-prepare() {
-	cd src-vcs
-	git am "$srcdir"/0001-Makefile-run-src-version-from-current-directory.patch
 }
 
 package() {
