@@ -1,0 +1,21 @@
+pkgbase = qstat-git
+	pkgdesc = A command line utility that displays the status of internet game servers
+	pkgver = r391.60dc5e4
+	pkgrel = 1
+	url = https://github.com/multiplay/qstat
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	makedepends = subversion
+	depends = glibc
+	provides = qstat
+	conflicts = qstat
+	conflicts = qstat-cvs
+	conflicts = qstat-svn
+	replaces = qstat-cvs
+	replaces = qstat-svn
+	source = qstat::git+https://github.com/multiplay/qstat.git
+	sha256sums = SKIP
+
+pkgname = qstat-git
+
