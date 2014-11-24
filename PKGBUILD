@@ -39,7 +39,7 @@ countdown() {
   local i
   for ((i=$1; i>=1; i--)); do
     [[ ! -e /proc/$$ ]] && exit
-    echo -ne "\rPress [i] to start interactive config in $i second(s) or any key to skip "
+    echo -ne "\rPress [i] to start interactive config in $i second(s) or any key to skip. Default _gitfragment=${_gitfragment}"
     sleep 1
   done
 }
@@ -61,12 +61,16 @@ prepare() {
 
   #TODO: Display warning with current branch/commit, just before prompt to press key
 
-  [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s && {
+  if [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s ; then
     countdown 3 & countdown_pid=$!
     read -s -n 1 -t 3 ikey || true
     kill -s SIGHUP $countdown_pid > /dev/null || true # Any key below 1sec fix
     echo -e -n "\n"
-  }
+  elif [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]]; then
+    error "Interactivity prompt in make process is impossible with your AUR helper - change _gitfragment value to needed branch/tag/commit. Default value is ${_gitfragment}"
+  else
+    warning "Interactivity prompt skipped (noconfirm)"
+  fi
   if [ "$ikey" = "i" -o "$ikey" = "I" ]; then
     select_mode=$(dialog --keep-tite --backtitle "$pkgname" --noitem --radiolist 'Specify revision based on:' 0 0 0 branch/commit on tag off  2>&1 >/dev/tty)
     case $select_mode in
