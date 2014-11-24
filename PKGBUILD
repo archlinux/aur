@@ -5,8 +5,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.10.10
-pkgrel=2
+pkgver=2.10.11
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -14,7 +14,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python2' 'hicolor-icon-theme' 'farstream-0.1'
              'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
 source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('dc6b95512eaec75aef170aabce471491fc70584932599dfead20f1f1c45c822d'
+sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007'
             'SKIP')
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -58,8 +58,6 @@ package_pidgin(){
 
   # Remove files that are packaged in libpurle
   make -C libpurple DESTDIR="$pkgdir" uninstall-libLTLIBRARIES
-
-  install -Dm644 pidgin.desktop "$pkgdir"/usr/share/applications/pidgin.desktop
 
   rm "$pkgdir/usr/share/man/man1/finch.1"
 }
