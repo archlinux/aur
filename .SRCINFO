@@ -1,6 +1,6 @@
 pkgbase = src
 	pkgdesc = Simple Revision Control with modern UI for single-file projects
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = http://www.catb.org/esr/src/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = src
 	depends = python2
 	depends = rcs
 	optdepends = rcs-fast-import: required for src fast-import
-	source = http://www.catb.org/esr/src/src-0.12.tar.gz
-	sha256sums = 3a644a4a6c0cab717c0ac882a6493d317f5a989633b518ad4da9c6dec44f13f1
+	source = http://www.catb.org/esr/src/src-0.13.tar.gz
+	sha256sums = a1dc40a6531fed41c540b0f179ca38f20255a5a10b2777ac7bdf2e131fd5a00f
 
 pkgname = src
 
