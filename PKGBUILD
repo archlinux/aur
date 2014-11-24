@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Tom <tomgparchaur@gmail.com>
 pkgname=cacti-spine
-pkgver=0.8.8_b
+pkgver=0.8.8_c
 pkgrel=1
 pkgdesc="Faster poller for Cacti."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libmariadbclient' 'net-snmp' "cacti=${pkgver}")
 backup=('etc/spine.conf')
 source=("http://www.cacti.net/downloads/spine/${pkgname}-${pkgver/_/}.tar.gz")
-md5sums=('245eef2561a4939006cba8991a3ad6d5')
+md5sums=('448c813422f943dc09b237bd8022002a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver/_/}"
