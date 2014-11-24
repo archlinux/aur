@@ -5,7 +5,7 @@
 pkgname=pandoc-static
 _pkgname=pandoc
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
 license=('GPL')
@@ -21,9 +21,9 @@ options=(strip !makeflags !distcc !emptydirs)
 source=(https://repo.parabolagnulinux.org/other/${pkgname}/${pkgname}-${pkgver}.tar.xz)
 md5sums=('dd2667b233b5f97b2841ae09895c2ac2')
 
-declare -A flags
+declare -gA _flags
 _flags[pandoc]='https make-pandoc-man-pages'
-_flags[pandoc-citeproc]='small_base bibutils hexpat unicode_collation'
+_flags[pandoc_citeproc]='small_base bibutils hexpat unicode_collation'
 
 _packages=(hs-bibutils network hexpat text text-icu hsb2hs
   http-client-0.3.8.2
@@ -62,13 +62,18 @@ prepare() {
 
 build() (
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir ../build
+  mkdir -p ../build
 
   export LANG="en_US.utf8"
   export HOME="${srcdir}"
   export PATH="${srcdir}/build/usr/bin:${PATH}"
 
   while read hkpkg; do
+    if [ -d "$srcdir"/build/usr/share/doc/*/"$hkpkg" ]; then
+      msg2 'Skipping %s' "$hkpkg"
+      continue
+    fi
+
     msg2 'Building %s' "$hkpkg"
     pushd "$hkpkg" >/dev/null
     case "$hkpkg" in
@@ -83,7 +88,7 @@ build() (
         ;;
       pandoc-citeproc-*)
         cabal configure -v \
-          --flags="embed_data_files ${_flags[pandoc-citeproc]}" \
+          --flags="embed_data_files ${_flags[pandoc_citeproc]}" \
           --prefix=/usr
         cabal build
         ;;
@@ -100,21 +105,19 @@ package() {
 
   msg2 "Installing pandoc..."
   cd ${_pkgname}-${pkgver}
-  runghc Setup.hs copy --destdir="${pkgdir}/"
+  cabal copy --destdir="${pkgdir}/"
+  install -Dm644 {,"$pkgdir"/usr/share/}man/man1/pandoc.1
+  install -Dm644 {,"$pkgdir"/usr/share/}man/man5/pandoc_markdown.5
 
   msg2 "Installing pandoc-citeproc..."
   cd ../pandoc-citeproc-*
-  runghc Setup.hs copy --destdir="${pkgdir}/"
+  cabal copy --destdir="${pkgdir}/"
 
   msg2 "Installing extra executables..."
   cp -av "${srcdir}"/build/usr/bin/* "${pkgdir}"/usr/bin/
 
   msg2 "Removing library files..."
   rm -rfv "$pkgdir"/usr/lib
-
-  msg2 "Correctiong file permissions in /usr/share/..."
-  find "${pkgdir}"/usr/share -type f -exec chmod -v 644 -- {} +
-  find "${pkgdir}"/usr/share -type d -exec chmod -v 755 -- {} +
 
   msg2 "Installing licenses..."
   install -d                                 "${pkgdir}"/usr/share/licenses/${pkgname}
