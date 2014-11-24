@@ -10,7 +10,6 @@ pkgdesc="A 2-pass assembler for the Zilog 8-bit Z80 CPU"
 arch=('i686' 'x86_64')
 url="http://k1.spdns.de/Develop/Projects/zasm/"
 license=('BSD')
-groups=(devel)
 source=(http://k1.spdns.de/Develop/Projects/zasm/Distributions/zasm-3.0.22-source-2014-02-12.zip
        Makefile.aur)
 sha1sums=('74951569c783006cb2624b6bf8f1960e9be62cee'
