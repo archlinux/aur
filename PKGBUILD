@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
-# $Id$
 
 pkgname=openwince-jtag
 pkgver=0.5.1
