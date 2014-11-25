@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
-# $Id$
 # Mostly based on the Gentoo ebuild
 # http://sources.gentoo.org/viewcvs.py/gentoo-x86/app-arch/ipkg-utils/ipkg-utils-1.7.050831.ebuild?rev=1.3&view=markup
 
