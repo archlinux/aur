@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 pkgname=jopenchart
 pkgver=0.94
 pkgrel=1
