@@ -1,24 +1,15 @@
-
 post_install() {
-    echo ">>> If you use software mixing on your sound card, uncomment the"
-    echo ">>>   first export statement in /usr/bin/nwn to make that work"
-    echo ">>>"
-    echo ">>> Some of the additional modules create .ini files the first time"
-    echo ">>>   they start. You may have to restart nwn a few times for it"
-    echo ">>>   load successfully. This is normal. Run 'nwn' from a terminal the"
-    echo ">>>   first few times until the game starts running correctly."
+    echo "Before running Neverwinter Nights, you must edit /opt/nwn/nwncdkey.ini"
+    echo "  and enter the 3 CD keys that came with your NWN Diamond DVD"
+    echo ""
+
+    echo "Some of the additional linux modules create .ini files the first time"
+    echo "  they start. You may have to run 'nwn' a few times for the game"
+    echo "  load successfully. Run 'nwn' from a terminal initially so you can"
+    echo "  inspect the output."
+    echo ""
+
+    echo "If you use software mixing on your sound card, uncomment the"
+    echo "  first export statement in /usr/bin/nwn"
 }
-
-post_upgrade() {
-    post_install $1
-}
-
-pre_remove() {
-    /bin/true
-}
-
-op=$1
-shift
-
-$op $*
 

@@ -1,5 +1,8 @@
-src/
-pkg/
-*.pkg.tar.xz
-*.pkg.tar
-*.src.tar.gz
+nwlogger/
+nwmouse/
+nwmovies/
+nwuser/
+English_linuxclient169_xp2.tar.gz
+nwclientgold.tar.gz
+nwclienthotu.tar.gz
+

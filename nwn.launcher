@@ -2,7 +2,7 @@
 
 # Create user directory if it doesn't exist
 if [ ! -d "$HOME/.nwn/" ]; then
-    mkdir $HOME/.nwn/
+    mkdir "$HOME/.nwn/"
 fi
 
 cd "/opt/nwn"
