@@ -1,6 +1,5 @@
 # Contributor: Stephen Caraher <moskvax@gmail.com>
 # Maintainer: Olivier Mehani <shtrom-arch@ssji.net>
-# $Id$
 
 pkgname=gnuplot-cvs-pdflib
 pkgver=20100805
