@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
-# $Id$
 
 pkgname=olsrd-plugins
 pkgver=0.4.10
