@@ -1,6 +1,5 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 # Contributor: florianbw <florian.bw@gmail.com>
-# $Id$
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
