@@ -1,5 +1,4 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 # vim:set ts=2 sw=2 et:
 pkgname=gkrellm-snmp
 pkgver=1.1
