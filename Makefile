@@ -1,6 +1,5 @@
 # Simple Makefile to ease the compilation of flv2mpeg4
 # Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 # 
 CFLAGS+=-I/usr/include/ffmpeg -L/usr/lib
 LDFLAGS+=-lavformat -lavcodec -lavutil

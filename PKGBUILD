@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 
 pkgname=flv2mpeg4-svn
 pkgver=3
