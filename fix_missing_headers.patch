@@ -1,4 +1,3 @@
-$Id$
 Include headers for missing prototypes due to the C++ header cleanup in GCC 4.3.
 ====
 diff -urN gw6c-5_1-RELEASE-src.orig/gw6c-config/src/gw6c_c_wrapper.cc gw6c-5_1-RELEASE-src/gw6c-config/src/gw6c_c_wrapper.cc

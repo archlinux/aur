@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <shtrom-arch@ssji.net>
-# $Id$
 
 pkgname=tspc
 pkgver=5.1

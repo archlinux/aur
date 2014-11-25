@@ -1,5 +1,4 @@
 #! /bin/sh
-# $Id$
 # Startup script from the Debian tspc package
 #	Written by Martin Waitz <tali@debian.org>
 
