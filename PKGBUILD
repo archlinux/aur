@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 pkgname=xkeyboard-config-gitshtrom
 pkgver=20100413
