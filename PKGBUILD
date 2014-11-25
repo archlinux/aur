@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
-# $Id$
 
 _archivename=binutils
 _target=mipsel-linux
