@@ -1,7 +1,6 @@
 # Contributor: Baptiste Grenier <baptiste@bapt.name>
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 pkgname=gtg-git
 pkgver=r5112.1328f1d
 pkgrel=1
