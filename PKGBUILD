@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <shtrom-arch@ssji.net>
-# $Id$
 pkgname=msva-perl-git
 pkgver=20110926
 pkgrel=1
