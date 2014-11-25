@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: nbags <neilbags@gmail.com>
 # Maintainer: Olivier Mehani <shtrom-arch@ssji.net>:
 pkgname=fortune-mod-chucknorris
