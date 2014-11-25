@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 pkgname=libtrace
 pkgver=3.0.19
 pkgrel=1
