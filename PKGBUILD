@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=rox-thumbnailers
 pkgver=1.0
