@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=ruby-rmagick
 pkgver=2.13.1
