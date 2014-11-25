@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 # vim:set ts=2 sw=2 et:
 pkgname=ndt
 pkgver=3.6.4
