@@ -1,4 +1,3 @@
-# $Id$
 # Contributro: Peter Lewis <prlewis@letterboxes.org>
 # Maintainer: Olivier Mehani <shtrom-arch@ssji.net>
 
