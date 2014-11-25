@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
-# $Id$
 
 _nylonpkgname=nylon-build-stable
 _nylonpkgver=1.0
