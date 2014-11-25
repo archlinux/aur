@@ -1,5 +1,4 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 pkgname=pdfsizeopt-svn
 pkgver=221
 pkgrel=2
