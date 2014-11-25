@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Maintainer: Olivier Mehani <shtrom-arch@ssji.net>
 
