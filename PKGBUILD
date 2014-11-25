@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 # PKGBUILD generated  with gem2arch-1.0-1
 # vim:set ts=2 sw=2 et:
