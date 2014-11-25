@@ -1,5 +1,4 @@
 # Contributor: Olivire Mehani <shtrom-arch@ssji.net>
-# $Id$
 # Generator  : CPANPLUS::Dist::Arch 1.06
 pkgname=perl-crypt-x509
 pkgver=0.50
