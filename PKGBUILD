@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
-# $Id$
 
 pkgname=nylon-build-stable
 pkgver=1.0
