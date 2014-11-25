@@ -3,15 +3,15 @@
 _python=python
 _pkgname=python-efl
 pkgname=$_python-efl
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
 depends=('elementary' "$_python-dbus")
-source=("http://download.enlightenment.org/rel/bindings/python/$_pkgname-$pkgver.tar.xz")
-sha1sums=('7007178fedc5f7eb0ee5886e63ba0e533cfe86f0')
+source=("http://download.enlightenment.org/rel/bindings/python/$_pkgname-$pkgver.tar.bz2")
+sha1sums=('aefd5131a4efae12fc16ce80c06bac44aa10b898')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
