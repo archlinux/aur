@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
