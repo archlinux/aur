@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
-# $Id$
 
 pkgname=arch-gdm-theme-list
 pkgver=0.1
