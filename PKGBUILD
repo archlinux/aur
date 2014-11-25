@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 # Maintainer: Olivier Mehani <shtrom-arch@ssj.net>
