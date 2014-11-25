@@ -1,5 +1,4 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 pkgname=collectd-graphite-git
 pkgver=20120730
 pkgrel=1
