@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
@@ -14,8 +14,8 @@ optdepends=(
   'p7zip: for 7z/CB7 support'
 )
 source=(https://github.com/ciromattia/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('fa731061dbe1c3339aab054943bf2ee1')
-sha256sums=('ee6d8fc2339f3372aebcc26df68c51e41c438896e5e468d29ff42f24fe5079ca')
+md5sums=('75a73708f3a624bb4f44a7e61673b26a')
+sha256sums=('b3cab29fa17d06e84b16981d66e792b8060b738462cacfdce485984e8ae81be3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
