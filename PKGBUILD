@@ -1,4 +1,3 @@
-# $Id$
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=mip6d-umip.org-git
 _umipname=mipv6-daemon-umip
