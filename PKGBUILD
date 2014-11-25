@@ -1,5 +1,4 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
-# $Id$
 pkgname=mpdris-git
 pkgver=20110110
 pkgrel=1
