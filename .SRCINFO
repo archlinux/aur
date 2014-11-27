@@ -1,6 +1,6 @@
 pkgbase = qt5-wayland-git
 	pkgdesc = A cross-platform application and UI framework (QtWayland)
-	pkgver = v5.0.0.beta1.415.g9fbaf51
+	pkgver = a
 	pkgrel = 1
 	url = https://qt-project.org/
 	arch = i686
@@ -8,9 +8,8 @@ pkgbase = qt5-wayland-git
 	license = GPL3
 	license = LGPL
 	makedepends = git
-	depends = qt5-base-git
-	depends = qt5-declarative-git
-	depends = wayland
+	depends = qt5-declarative
+	depends = libxcomposite
 	provides = qt5-wayland
 	conflicts = qt5-wayland
 	source = qt5-wayland::git://gitorious.org/qt/qtwayland.git#branch=dev
