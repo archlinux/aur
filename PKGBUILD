@@ -9,7 +9,7 @@
 # properly.
 
 pkgname=mono-tools
-pkgver=2.11
+pkgver=3.10
 pkgrel=1
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
@@ -19,19 +19,20 @@ depends=('libgnome-sharp' 'webkit-sharp')
 makedepends=('gconf-sharp' 'git' 'zip')
 install=$pkgname.install
 options=('!makeflags')
-source=('git+https://github.com/mono/mono-tools.git#commit=d858f5f27fa8b10d734ccce7ffba631b995093e5'
-        fix-build.patch)
-md5sums=('SKIP'
+source=(https://github.com/mono/mono-tools/archive/3.10.tar.gz
+	fix-build.patch)
+#source=(http://download.mono-project.com/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+md5sums=('8df1eed41d5ff6dc6d48541f1c593319'
          '9b4671fbfce76d883abbf779cbc504f3')
 
 prepare() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   patch -Np1 -i ../fix-build.patch
   mv configure.in configure.ac
 }
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   glib-gettextize --force
   autoreconf -fi
   GMCS=/usr/bin/dmcs ./configure --prefix=/usr
@@ -39,6 +40,6 @@ build() {
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
  }
