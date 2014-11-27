@@ -3,9 +3,9 @@
 
 pkgname=android-apktool-git
 _gitname=Apktool
-_gitbranch=wip-2.0
+_gitbranch=master
 _gitauthor=iBotPeaches
-pkgver=2.0.0.Beta9.g251a6bb
+pkgver=2.0.0.RC2.g02b5c7c
 pkgrel=1
 pkgdesc="a tool for reengineering Android apk files"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://code.google.com/p/android-apktool/"
 license=('Apache 2.0')
 depends=('java-runtime' 'android-sdk-build-tools')
 conflicts=('android-apktool')
-makedepends=('git' 'jdk7') # openjdk does not work for some unknown reason
+makedepends=('git' 'java-environment') # openjdk has had issues in the past, be warned!
 source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch")
 sha512sums=('SKIP')
 
@@ -24,9 +24,14 @@ pkgver() {
 }
 
 build() {
+  pacman -Qs openjdk &> /dev/null && printf "\033[31;1mWarning, there has been issues in the past with OpenJDK and apktool. Please install Oracle's JDK before marking the package as broken.\n\033[0m\n"
+
+  # Ideally this should be fixed in the build script of apktool and not here; without it, aapt cannot be found
+  PATH="/opt/android-sdk/build-tools/$(ls -1 /opt/android-sdk/build-tools/ | head -1):$PATH"
+  
   cd "$srcdir/$_gitname"
 
-  # Build (this is the part where openjdk fails)
+  # Build (OpenJDK sometimes fails to find aapt)
    ./gradlew build fatJar proguard # proguard isn't needed, but makes the binary a little bit smaller
 }
 

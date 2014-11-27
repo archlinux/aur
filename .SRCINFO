@@ -1,17 +1,17 @@
 pkgbase = android-apktool-git
 	pkgdesc = a tool for reengineering Android apk files
-	pkgver = 2.0.0.Beta9.g251a6bb
+	pkgver = 2.0.0.RC2.g02b5c7c
 	pkgrel = 1
 	url = https://code.google.com/p/android-apktool/
 	arch = i686
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = git
-	makedepends = jdk7
+	makedepends = java-environment
 	depends = java-runtime
 	depends = android-sdk-build-tools
 	conflicts = android-apktool
-	source = git://github.com/iBotPeaches/Apktool.git#branch=wip-2.0
+	source = git://github.com/iBotPeaches/Apktool.git#branch=master
 	sha512sums = SKIP
 
 pkgname = android-apktool-git
