@@ -1,9 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: lh <jason52lh@gmail.com>
 
 pkgname=fcitx-rime
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fcitx Wrapper for librime'
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
