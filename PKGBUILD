@@ -7,7 +7,7 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=217
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -25,6 +25,7 @@ source=("http://www.freedesktop.org/software/${pkgname/-selinux}/${pkgname/-seli
         '0001-units-order-sd-journal-flush-after-sd-remount-fs.patch'
         '0001-units-make-systemd-journald.service-Type-notify.patch'
         '0001-shutdown-fix-arguments-to-run-initramfs-shutdown.patch'
+        '0001-udev-hwdb-Change-error-message-regarding-missing-hwd.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev')
@@ -37,7 +38,8 @@ md5sums=('e68dbff3cc19f66e341572d9fb2ffa89'
          '92497d06e0af615be4b368fe615109c0'
          'a321d62d6ffada9e6976bdd339fa3219'
          'f72e8d086172177c224f0ce48ef54222'
-         '29245f7a240bfba66e2b1783b63b6b40'
+         '6326988822e9d18217525b2cb25cec1d'
+         '90ea67a7bb237502094914622a39e281'
          '107c489f27c667be4101aecd3369b355'
          'bde43090d4ac0ef048e3eaee8202a407')
 
@@ -53,6 +55,7 @@ prepare() {
   patch -Np1 <../0001-units-order-sd-journal-flush-after-sd-remount-fs.patch
   patch -Np1 <../0001-units-make-systemd-journald.service-Type-notify.patch
   patch -Np1 <../0001-shutdown-fix-arguments-to-run-initramfs-shutdown.patch
+  patch -Np1 <../0001-udev-hwdb-Change-error-message-regarding-missing-hwd.patch
 }
 
 build() {

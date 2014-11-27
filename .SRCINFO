@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 217
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -40,6 +40,7 @@ pkgbase = systemd-selinux
 	source = 0001-units-order-sd-journal-flush-after-sd-remount-fs.patch
 	source = 0001-units-make-systemd-journald.service-Type-notify.patch
 	source = 0001-shutdown-fix-arguments-to-run-initramfs-shutdown.patch
+	source = 0001-udev-hwdb-Change-error-message-regarding-missing-hwd.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -52,7 +53,8 @@ pkgbase = systemd-selinux
 	md5sums = 92497d06e0af615be4b368fe615109c0
 	md5sums = a321d62d6ffada9e6976bdd339fa3219
 	md5sums = f72e8d086172177c224f0ce48ef54222
-	md5sums = 29245f7a240bfba66e2b1783b63b6b40
+	md5sums = 6326988822e9d18217525b2cb25cec1d
+	md5sums = 90ea67a7bb237502094914622a39e281
 	md5sums = 107c489f27c667be4101aecd3369b355
 	md5sums = bde43090d4ac0ef048e3eaee8202a407
 
@@ -89,7 +91,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=217
 	provides = udev=217
-	provides = systemd=217-6
+	provides = systemd=217-7
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -130,15 +132,15 @@ pkgname = libsystemd-selinux
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=217-6
+	provides = libsystemd=217-7
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=217-6
-	provides = selinux-systemd-sysvcompat=217-6
+	provides = systemd-sysvcompat=217-7
+	provides = selinux-systemd-sysvcompat=217-7
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
