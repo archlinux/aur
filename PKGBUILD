@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-3.17
-pkgver=3.17.3
+pkgver=3.17.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,9 +23,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'fix_CPU0_microcode_on_resume.patch'
         )
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
-            '3c1ba3cc89d0f2d5f7303f448495f64db1ab96efea5f5fdd4b4c8c547600f85d'
-            '1331d1b35309c8905ab53c82204580bd7c74d5aac11c8e29fe27e6c4b50399e0'
-            '0dd66b478fcaa8f0ce88debf4681443b82336445af2215b87f186ac8f2a9ff48'
+            'eeef37397a15245bd143569908be40622a87dc7673965e623e811ea3f68b8434'
+            'c9dc48e71e559207379667cab0190dea261524eeb6df80c4a5bf4e8d45f4e689'
+            '6fb0da74a061f300031c34466a187d44ae484e2ce07f4408cdd4625e1bcf4c02'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '43668fe46147fe93f41b919db673574427ce5a8c376cd28ddddcbf3a00326491')
