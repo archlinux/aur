@@ -4,7 +4,7 @@
 
 pkgname=archey3
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Output a logo and various system information'
 arch=('any')
 url='http://bluepeppers.github.com/archey3'
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('git' 'python-distribute')
 optdepends=('imagemagick: for default screenshot command')
 # AUR optdeps: python-logbook-git and python-mpd-git
-source=('git://github.com/bluepeppers/archey3.git#commit=c1d1fedccc843ada034d7bcbfe89d00cfc58fea3')
+source=('git://github.com/bluepeppers/archey3.git#commit=94b3d549ef')
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,7 +23,6 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-
   python setup.py install --root="$pkgdir"
 } 
 
