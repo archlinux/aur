@@ -1,0 +1,40 @@
+--- src/Makefile	2008-02-10 18:02:36.000000000 +0100
+***************
+*** 481,490 ****
+  	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
+  	tags uninstall uninstall-am uninstall-binPROGRAMS
+  
+- 
+- install-exec-local:
+- 	strip $(DESTDIR)$(bindir)/gringotts
+- 	chmod u+s $(DESTDIR)$(bindir)/gringotts
+  # Tell versions [3.59,3.63) of GNU make to not export all variables.
+  # Otherwise a system limit (for SysV at least) may be exceeded.
+  .NOEXPORT:
+--- 481,486 ----
+--- src/Makefile.am	2008-02-10 18:03:06.000000000 +0100
+***************
+*** 29,36 ****
+  	grg_defs.h
+  
+  gringotts_LDADD = @POPT@ @GTK2_LIBS@ @GDKPIX_LIBS@ @LIBGRG_LIBS@
+- 
+- install-exec-local:
+- 	strip $(DESTDIR)$(bindir)/gringotts
+- 	chmod u+s $(DESTDIR)$(bindir)/gringotts
+- 	
+--- 29,31 ----
+--- src/Makefile.in	2008-02-10 18:03:24.000000000 +0100
+***************
+*** 481,490 ****
+  	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
+  	tags uninstall uninstall-am uninstall-binPROGRAMS
+  
+- 
+- install-exec-local:
+- 	strip $(DESTDIR)$(bindir)/gringotts
+- 	chmod u+s $(DESTDIR)$(bindir)/gringotts
+  # Tell versions [3.59,3.63) of GNU make to not export all variables.
+  # Otherwise a system limit (for SysV at least) may be exceeded.
+  .NOEXPORT:
+--- 481,486 ----

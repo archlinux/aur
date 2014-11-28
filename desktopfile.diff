@@ -1,0 +1,13 @@
+--- gringotts.desktop.orig	2008-09-04 17:48:18.000000000 +0200
++++ gringotts.desktop	2008-09-04 17:52:50.000000000 +0200
+@@ -5,4 +5,3 @@
+ Version=1.0
+-Encoding=UTF-8
+-Icon=/usr/share/pixmaps/gringotts.xpm
++Icon=gringotts
+ Exec=gringotts
+@@ -21 +20,4 @@
+ Comment[de]=Ein elektronischer "Tresor"
++Name[cs]=Gringotovi
++GenericName[cs]=Elektronický "trezor"
++Comment[cs]=Elektronický trezor

@@ -1,0 +1,22 @@
+pkgbase = gringotts
+	pkgdesc = Secure notes manager for UNIX-like systems.
+	pkgver = 1.2.10
+	pkgrel = 2
+	url = http://sourceforge.net/projects/gringotts.berlios/
+	install = gringotts.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = libgringotts
+	depends = gtk2
+	depends = popt
+	source = http://sourceforge.net/projects/gringotts.berlios/files/gringotts-1.2.10.tar.gz
+	source = gringotts.diff
+	source = desktopfile.diff
+	sha256sums = 19784f68f76b211d076124c74d2f5ca5a156e4af7ed32d72a1ba45547782179d
+	sha256sums = 44e26544d3d80db2804db6b769f53fc31d78cfd3a04c04b6f51c107bb09bac4f
+	sha256sums = 2068f465170d80ea4e2ed18addfd82c0fb73fed073f4926e45e91c99092292c1
+
+pkgname = gringotts
+
