@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BeeDiff
+GenericName=Beesoft Differ
+Exec=beediff
+Comment=A program for file comparing
+Comment[cs]=Program pro porovnávání souborů
+Terminal=false
+Type=Application
+Categories=Utility;Qt;
+Icon=beediff
