@@ -1,0 +1,33 @@
+pkgbase = arno-iptables-firewall
+	pkgdesc = A secure stateful firewall for both single and multi-homed machine
+	pkgver = 2.0.1e
+	pkgrel = 1
+	url = http://rocky.eld.leidenuniv.nl/joomla/
+	arch = any
+	license = GPL
+	makedepends = patch
+	depends = iptables
+	depends = iproute2
+	source = http://rocky.eld.leidenuniv.nl/arno-iptables-firewall/arno-iptables-firewall_2.0.1e.tar.gz
+	source = arno-iptables-firewall.patch
+	source = arno-iptables-firewall.service
+	backup = etc/arno-iptables-firewall/firewall.conf
+	backup = etc/arno-iptables-firewall/custom-rules
+	backup = etc/arno-iptables-firewall/plugins/dmz-dnat.conf
+	backup = etc/arno-iptables-firewall/plugins/dsl-ppp-modem.conf
+	backup = etc/arno-iptables-firewall/plugins/dyndns-host-open.conf
+	backup = etc/arno-iptables-firewall/plugins/ids-protection.conf
+	backup = etc/arno-iptables-firewall/plugins/ipsec-vpn.conf
+	backup = etc/arno-iptables-firewall/plugins/ipv6-over-ipv4.conf
+	backup = etc/arno-iptables-firewall/plugins/linux-upnp-igd.conf
+	backup = etc/arno-iptables-firewall/plugins/mac-address-filter.conf
+	backup = etc/arno-iptables-firewall/plugins/multiroute.conf
+	backup = etc/arno-iptables-firewall/plugins/sip-voip.conf
+	backup = etc/arno-iptables-firewall/plugins/ssh-brute-force-protection.conf
+	backup = etc/arno-iptables-firewall/plugins/traffic-accounting.conf
+	backup = etc/arno-iptables-firewall/plugins/traffic-shaper.conf
+	backup = etc/arno-iptables-firewall/plugins/transparent-dnat.conf
+	backup = etc/arno-iptables-firewall/plugins/transparent-proxy.conf
+
+pkgname = arno-iptables-firewall
+

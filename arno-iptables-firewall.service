@@ -1,0 +1,14 @@
+[Unit]
+Description=A secure stateful firewall for both single and multi-homed machine
+Before=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/arno-iptables-firewall start
+ExecStop=/usr/bin/arno-iptables-firewall stop
+ExecReload=/usr/bin/arno-iptables-firewall force-reload
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
