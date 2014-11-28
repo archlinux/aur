@@ -1,0 +1,13 @@
+pkgbase = deco-archive
+	pkgdesc = A collection of extractor wrappers for the deco file extraction framework
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://hartlich.com/deco/archive/
+	arch = any
+	license = GPL3
+	depends = deco
+	source = http://hartlich.com/deco/archive/download/deco-archive-1.6.tar.gz
+	sha256sums = 128253a1b232ac10993d7a20b6cb31dfc1f4ad9d9015b0483a33fb6ea558844d
+
+pkgname = deco-archive
+
