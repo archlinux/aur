@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BSCommander
+GenericName=Beesoft Commander
+Exec=bsc
+Comment=File manager with two panels
+Comment[de]=Dateiverwaltung mit zwei Ansichten
+Comment[cs]=Dvoupanelový správce souborů
+Type=Application
+Categories=Utility;FileManager;Qt;
+Icon=bsc
