@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-cs-reddwarf
+	pkgdesc = Czech and Slovak fortune cookie files (Red Dwarf)
+	pkgver = 0.0
+	pkgrel = 1
+	url = http://download.cirkva.net/fortune/
+	arch = any
+	license = unknown
+	depends = fortune-mod-cs
+	source = reddwarf
+	source = reddwarf.dat
+	md5sums = 3ee2b3353dac54f4ab7a2e3a8c85e281
+	md5sums = 364ecc9d930b9ceac6fbe14a03cd0dc6
+
+pkgname = fortune-mod-cs-reddwarf
+
