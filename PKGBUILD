@@ -12,7 +12,7 @@ install="hprest.install"
 # strip was corrupting the already stripped binary
 options=('!strip')
 
-source=("http://ftp.hp.com/pub/softlib2/software1/pubsw-linux/p2048115036/v95054/RPMS/$CARCH/$pkgname-${pkgver//_/-}.$CARCH.rpm"
+source=("http://ftp.hp.com/pub/softlib2/software1/pubsw-linux/p2048115036/v95054/RPMS/x86_64/${pkgname}-${pkgver//_/-}.x86_64.rpm"
         "HPSLA.txt")
 md5sums=('1f8e40620733cde65b798e633974ae79'
          'e1bee1f098fdf483db8dc9b9b132bcb6')
