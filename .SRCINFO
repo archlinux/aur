@@ -1,0 +1,14 @@
+pkgbase = photomolo
+	pkgdesc = Frontend to manage connections to remote filesystems using GIO/GVFS
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = http://www.nic.funet.fi/pub/sci/graphics/packages/photomolo/photomolo.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libjpeg-turbo
+	source = http://www.nic.funet.fi/pub/sci/graphics/packages/photomolo/photomolo-1.2.4.tar.gz
+	md5sums = 8e277b95023b2e32171edeae5367e7f5
+
+pkgname = photomolo
+
