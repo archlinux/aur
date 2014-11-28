@@ -1,0 +1,14 @@
+pkgbase = libghttp
+	pkgdesc = HTTP protocol client library.
+	pkgver = 1.0.9
+	pkgrel = 3
+	url = http://ftp.gnome.org/pub/gnome/sources/libghttp/1.0
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = ftp://ftp.gnome.org/pub/gnome/sources/libghttp/1.0/libghttp-1.0.9.tar.gz
+	md5sums = 0690e7456f9a15c635f240f3d6d5dab2
+
+pkgname = libghttp
+
