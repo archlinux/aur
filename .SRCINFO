@@ -1,0 +1,29 @@
+pkgbase = galapix
+	pkgdesc = A zoomable image viewer for large collections of images
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://code.google.com/p/galapix/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = scons
+	makedepends = patch
+	makedepends = gtkglextmm
+	makedepends = libglademm
+	depends = boost
+	depends = curl
+	depends = glew
+	depends = imagemagick
+	depends = libexif
+	depends = libjpeg
+	depends = libpng
+	depends = mesa
+	depends = sdl
+	depends = sqlite3
+	source = http://galapix.googlecode.com/files/galapix-0.1.2.tar.bz2
+	source = galapix-gcc44.patch
+	md5sums = f55fa7c87dabe132b3493220fa0d9d8d
+	md5sums = 8189e68e656a82e890242395416f9e34
+
+pkgname = galapix
+
