@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bitext2tmx
+GenericName=bitext2tmx
+Exec=bitext2tmx.sh
+Type=Application
+Comment=Bitext aligner/converter to TMX
+Comment[cs]=Převaděč bitextu do TMX
+Terminal=false
+Categories=Development;Translation;Java;
+Icon=bitext2tmx

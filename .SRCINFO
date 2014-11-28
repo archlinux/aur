@@ -1,0 +1,18 @@
+pkgbase = bitext2tmx
+	pkgdesc = Generate a TMX translation memory for use in computer-assisted translation.
+	pkgver = 1.0M0
+	pkgrel = 4
+	url = http://sourceforge.net/projects/bitext2tmx
+	install = bitext2tmx.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/sourceforge/bitext2tmx/bitext2tmx-1.0M0-080229.7z
+	source = bitext2tmx.desktop
+	sha256sums = a1dba2de5fa5a3477fdc591d298f50e1c2494197830c7ab2cf5a4681487837d5
+	sha256sums = 280b35dbf4002f76c963bb2cdb979efba0f7bbf43e6d4d311ec5846ebecfa289
+
+pkgname = bitext2tmx
+
