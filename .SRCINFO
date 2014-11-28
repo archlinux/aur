@@ -1,0 +1,15 @@
+pkgbase = afick
+	pkgdesc = Alternative to tripwire
+	pkgver = 2.14
+	pkgrel = 1
+	url = http://afick.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-tk
+	source = http://downloads.sourceforge.net/afick/afick-2.14-1.tgz
+	md5sums = 74b85916767a45c024a4dc125547f6a2
+
+pkgname = afick
+
