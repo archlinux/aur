@@ -1,0 +1,20 @@
+pkgbase = rdiff-backup-devel
+	pkgdesc = A utility for local/remote mirroring and incremental backups
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = http://www.nongnu.org/rdiff-backup/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = librsync
+	optdepends = pylibacl: access control list support
+	optdepends = pyxattr: extended attribute support
+	provides = rdiff-backup
+	conflicts = rdiff-backup
+	source = http://savannah.nongnu.org/download/rdiff-backup/rdiff-backup-1.3.3.tar.gz
+	md5sums = e3ec506c01e12b693adb79751daa7c63
+	sha256sums = ee030ce638df0eb1047cf72578e0de15d9a3ee9ab24da2dc0023e2978be30c06
+
+pkgname = rdiff-backup-devel
+
