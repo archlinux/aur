@@ -1,0 +1,21 @@
+pkgbase = osmo-svn
+	pkgdesc = Development version of a handy personal organizer.
+	pkgver = 777
+	pkgrel = 1
+	url = http://clayo.org/osmo/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = autoconf
+	depends = gtk2>=2.10
+	depends = libxml2
+	optdepends = libical
+	optdepends = libgringotts>=1.2.1
+	optdepends = libsyncml
+	optdepends = libnotify
+	provides = osmo
+	conflicts = osmo
+
+pkgname = osmo-svn
+
