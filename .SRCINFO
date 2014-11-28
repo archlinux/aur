@@ -1,0 +1,16 @@
+pkgbase = evad-svn
+	pkgdesc = SVN version of a text-based client to the powerful MPD music server.
+	pkgver = 112
+	pkgrel = 1
+	url = http://sourceforge.net/projects/evad/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = python2
+	depends = mpd
+	provides = evad
+	conflicts = evad
+
+pkgname = evad-svn
+
