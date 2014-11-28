@@ -1,0 +1,20 @@
+pkgbase = urlview
+	pkgdesc = A curses URL parser for text files
+	pkgver = 0.9
+	pkgrel = 9
+	url = http://packages.qa.debian.org/u/urlview.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	makedepends = automake-1.11
+	makedepends = autoconf
+	depends = bash
+	depends = ncurses
+	source = http://ftp.debian.org/debian/pool/main/u/urlview/urlview_0.9.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/u/urlview/urlview_0.9-19.diff.gz
+	sha256sums = 746ff540ccf601645f500ee7743f443caf987d6380e61e5249fc15f7a455ed42
+	sha256sums = 056883c17756f849fb9235596d274fbc5bc0d944fcc072bdbb13d1e828301585
+
+pkgname = urlview
+
