@@ -1,0 +1,12 @@
+pkgbase = drascula-audio-mp3
+	pkgdesc = Lossless music addon for Drascula
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://scummvm.sourceforge.net/
+	arch = any
+	license = custom
+	source = http://downloads.sourceforge.net/scummvm/drascula-audio-mp3-2.0.zip
+	md5sums = 805c0c46b4efbea2a2f592d36736f9be
+
+pkgname = drascula-audio-mp3
+
