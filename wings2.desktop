@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Wings2
+GenericName=Wings2
+Comment=Fly small and agile ships in varied maps
+Comment[cs]=Poraž protivníky v bitvě malých vesmírných lodí
+Comment[pl]=Stań się pilotem małego i zwinnego pojazdu
+Icon=/opt/Wings2/graphics/icon.png
+Exec=Wings
+StartupNotify=true
+Terminal=false
+MimeType=application/x-executable;
+Categories=Game;

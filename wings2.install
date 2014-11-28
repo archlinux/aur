@@ -1,0 +1,5 @@
+post_install() {
+  echo -n "Updating desktop and mime database ..."
+  update-desktop-database -q
+  echo "done."
+}
