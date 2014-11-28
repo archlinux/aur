@@ -1,0 +1,29 @@
+--- configure.orig	2008-08-31 02:00:02.000000000 +0200
++++ configure	2008-08-31 02:01:23.000000000 +0200
+@@ -2627,7 +2627,7 @@
+ ac_config_headers="$ac_config_headers config.h"
+ 
+ 
+-CFLAGS="-g -Wall -fno-exceptions"
++CFLAGS+=" -fno-exceptions"
+ CPPFLAGS=""
+ DEFS=""
+ 
+@@ -23056,16 +23055,7 @@
+    { echo "$as_me:$LINENO: checking for Python's dependencies" >&5
+ echo $ECHO_N "checking for Python's dependencies... $ECHO_C" >&6; }
+ 
+-   if test x$haveldd != x ; then
+-
+-       py_deps=`ldd $PYPACKAGE | sed 's/\( *.*lib\([^\/]*\)\.so.*=.*$\)/-l\2/p; d' | grep -v 'stdc++'`
+-       for py_lib in $py_deps ; do
+-         if test "$py_lib" != "-lm" && test "$py_lib" != "-lc" ; then
+-            PY_DEPS="$PY_DEPS $py_lib"
+-         fi
+-      done
+-
+-   fi
++   PY_DEPS="$PY_DEPS `python-config --libs` -lutil"
+ 
+    case $target in
+        *-sun-solaris*)

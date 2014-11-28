@@ -1,0 +1,18 @@
+pkgbase = adonthell
+	pkgdesc = A 2D graphical, single player role playing game engine
+	pkgver = 0.3.5
+	pkgrel = 6
+	url = http://adonthell.linuxgames.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer>=1.2
+	depends = sdl_ttf>=2
+	depends = python>=2
+	source = http://savannah.nongnu.org/download/adonthell/adonthell-src-0.3.5.tar.gz
+	source = configure.diff
+	md5sums = 64a344b1ed8a7808d7adafa337120a00
+	md5sums = 196c9fd4240b3c2633dce3c864aa70fe
+
+pkgname = adonthell
+
