@@ -1,0 +1,13 @@
+pkgbase = http-replicator
+	pkgdesc = A caching proxy to serve http files to multiple clients at once
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://gertjan.freezope.org/replicator/
+	arch = any
+	license = GPL
+	depends = python2
+	source = ftp://ftp.fit.vutbr.cz/pub/systems/gentoo/distfiles/http-replicator_3.0.tar.gz
+	md5sums = 5db9882611f34ea2a104a86db142ceec
+
+pkgname = http-replicator
+
