@@ -1,0 +1,30 @@
+pkgbase = gltron
+	pkgdesc = A tron-like lightcycle game with a nice 3D perspective
+	pkgver = 0.70
+	pkgrel = 4
+	url = http://www.gltron.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = libgl
+	depends = gcc-libs
+	depends = smpeg
+	depends = sdl_sound
+	depends = libpng
+	depends = glu
+	source = http://downloads.sourceforge.net/sourceforge/gltron/gltron-0.70-source.tar.gz
+	source = http://upload.wikimedia.org/wikipedia/commons/thumb/5/58/GLTron.png/120px-GLTron.png
+	source = gltron-0.70-configure.patch
+	source = gltron-0.70-prototypes.patch
+	source = gltron-0.70-debian.patch
+	source = gltron.desktop
+	md5sums = 300e54914844f36c199415d6d8b0372a
+	md5sums = 794e6160e815040951af7ec7fcba9278
+	md5sums = 9cd844f561d537df49a35fac21d5b51c
+	md5sums = 744c0f80394f8713aebdf7038044570e
+	md5sums = d53c903bba366af12c1fdcc578d32da1
+	md5sums = 1f36bf3e65cc8791301b79b9024ab51a
+
+pkgname = gltron
+

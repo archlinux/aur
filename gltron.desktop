@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=GLTron
+GenericName=GLTron
+Comment=Lightcycle game with a nice 3D perspective.
+Icon=/usr/share/gltron/pics/gltron.png
+Exec=gltron
+StartupNotify=true
+Terminal=False
+Categories=Application;Game;
