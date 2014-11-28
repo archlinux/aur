@@ -1,0 +1,15 @@
+pkgbase = lk4b
+	pkgdesc = A small program which locks your keyboard but leaves your mouse free.
+	pkgver = 20080706
+	pkgrel = 1
+	url = http://csincock.customer.netspace.net.au/lock-keyboard-for-baby.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2-perl
+	noextract = lock-keyboard-for-baby-20080706.pl
+	source = http://downloads.sourceforge.net/sourceforge/lk4b/lock-keyboard-for-baby-20080706.pl
+	md5sums = 0498aaf7cd4adc34f6d7593b96282d85
+
+pkgname = lk4b
+
