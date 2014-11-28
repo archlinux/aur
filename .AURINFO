@@ -1,0 +1,13 @@
+pkgbase = dslib
+	pkgdesc = Free Python library for accessing Datove schranky
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://labs.nic.cz/page/740/dsgui/
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2-pyopenssl
+	source = http://www.nic.cz/public_media/datove_schranky/releases/src/dslib-3.1.tar.gz
+
+pkgname = dslib
+
