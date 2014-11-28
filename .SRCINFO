@@ -1,0 +1,14 @@
+pkgbase = cstools
+	pkgdesc = Tools for dealing with Czech texts in Perl.
+	pkgver = 3.42
+	pkgrel = 2
+	url = http://www.fi.muni.cz/~adelton/perl/#cstools
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = perl
+	source = http://www.fi.muni.cz/~adelton/perl/Cstools-3.42.tar.gz
+	md5sums = ea18f2a24ef5de92483a5e03ed9d2659
+
+pkgname = cstools
+
