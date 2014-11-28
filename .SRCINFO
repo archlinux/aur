@@ -1,0 +1,13 @@
+pkgbase = photorecover
+	pkgdesc = Restore Jpeg/Exif/Jfif files from FAT filesystem
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://www.ee.oulu.fi/~iiska/projects/photorecover/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.ee.oulu.fi/~iiska/projects/photorecover/photorecover-0.9.0.tar.gz
+	sha256sums = d1b25ddd5b06e20581ab84710275029c71f3b830f85d9d99177379b39b724b6b
+
+pkgname = photorecover
+
