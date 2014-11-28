@@ -1,0 +1,23 @@
+pkgbase = tuxtype
+	pkgdesc = An educational typing tutorial game starring Tux
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://tux4kids.alioth.debian.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = audiofile
+	depends = esound
+	depends = libjpeg
+	depends = libpng
+	depends = libvorbis
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_pango
+	source = http://pkgs.fedoraproject.org/repo/pkgs/tuxtype2/tuxtype_w_fonts-1.8.1.tar.gz/ce96616ba0c9e619ce0071a528301e94/tuxtype_w_fonts-1.8.1.tar.gz
+	sha256sums = 2687b858679b4f0b4f42204211d162234568198544bd95a9b71ec96e788d1481
+
+pkgname = tuxtype
+
