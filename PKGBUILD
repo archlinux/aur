@@ -18,7 +18,7 @@ depends=('icu>=54' 'icu<55' 'gmp' 'libffi' 'zlib')
 makedepends=('ghc' 'sh' 'cabal-install' 'alex' 'happy')
 optdepends=('texlive-most: for PDF creation')
 options=(strip !makeflags !distcc !emptydirs)
-source=(https://repo.parabolagnulinux.org/other/${pkgname}/${pkgname}-${pkgver}.tar.xz)
+source=(https://repo.parabola.nu/other/${pkgname}/${pkgname}-${pkgver}.tar.xz)
 md5sums=('dd2667b233b5f97b2841ae09895c2ac2')
 
 declare -gA _flags
