@@ -1,0 +1,51 @@
+# arg 1:  the new package version
+post_install()
+{
+  cat << _EOF
+  
+    Link-Backup is a backup utility that creates hard links between a
+    series of backed-up trees, and intelligently handles renames, moves,
+    and duplicate files without additional storage or transfer.
+
+    Transfer occurs over standard i/o locally or remotely between a client
+    and server instance of this script. Remote backups rely on the secure
+    remote shell program ssh. 
+
+    NOTE: Open /usr/bin/lb in a text editor to read the documentation.
+    
+    To install the cron job script, issue:
+        cp /usr/share/lb/lb.cron /etc/cron.daily/lb
+    
+    To install the sample exclude rules file, issue:
+        cp /usr/share/lb/lb.exclude /etc/lb.exclude
+
+    For additional information and a CGI script to view the backups see:
+      http://www.scottlu.com/Content/Link-Backup.html
+
+_EOF
+}
+
+post_upgrade()
+{
+  post_install
+}
+
+post_remove() {
+  cat << _EOF
+
+    NOTE: You will have to manually take care of a number of
+    steps such as removing the cron job script, removing the
+    exclude rules file if you have chosen to use them.
+
+    To remove the cron job script, issue:
+        rm /etc/cron.daily/lb
+    
+    To remove the exclude rules file, issue:
+        rm /etc/lb.exclude
+
+_EOF
+}
+
+op=$1
+shift
+$op $*
