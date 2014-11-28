@@ -1,0 +1,25 @@
+pkgbase = simon
+	pkgdesc = Open-source speech recognition program for replacing mouse and keyboard
+	pkgver = 0.4.1
+	pkgrel = 3
+	url = http://simon.kde.org/
+	install = simon.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = flex
+	makedepends = docbook-xml
+	makedepends = boost
+	depends = portaudio
+	depends = qwt
+	depends = kdebase-runtime
+	depends = kdepimlibs
+	optdepends = htk: create and modify the speech models
+	optdepends = julius: for speech recognition
+	source = http://download.kde.org/stable/simon/0.4.1/src/simon-0.4.1.tar.bz2
+	sha256sums = 8d55bc3f607a89e15efd51b844d93daf67d9967ad243f54efae324754859342d
+
+pkgname = simon
+
