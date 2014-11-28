@@ -1,0 +1,16 @@
+pkgbase = hotwire
+	pkgdesc = An intelligent hybrid text/graphical shell for developers and system administrators
+	pkgver = 0.721
+	pkgrel = 2
+	url = http://code.google.com/p/hotwire-shell/
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = pygtk
+	depends = dbus-python
+	depends = sqlite3
+	source = http://hotwire-shell.googlecode.com/files/hotwire-0.721.tar.gz
+	md5sums = 077a32573b32c91d591b668d2dcb9645
+
+pkgname = hotwire
+
