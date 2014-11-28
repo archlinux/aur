@@ -1,0 +1,15 @@
+pkgbase = adesklet-adeskclock
+	pkgdesc = A skinnable analog clock adesklet
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = http://adesklets.sourceforge.net/desklets.html
+	arch = any
+	groups = adesklet-desklets
+	license = GPL
+	depends = adesklets
+	backup = usr/share/adesklets/adeskclock/config.txt
+	source = http://downloads.sourceforge.net/adesklets/adeskclock-0.2.0.tar.bz2
+	md5sums = 53fa9587bbfeceb60e95be4ad0c198f4
+
+pkgname = adesklet-adeskclock
+
