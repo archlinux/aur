@@ -1,0 +1,13 @@
+pkgbase = w2do
+	pkgdesc = A simple-to-use commandline todo manager that can export to HTML and plain text
+	pkgver = 2.3.1
+	pkgrel = 2
+	url = http://w2do.blackened.cz/
+	arch = any
+	license = GPL3
+	depends = perl
+	source = http://w2do.googlecode.com/files/w2do-2.3.1.tar.gz
+	sha256sums = 59ed2c75446fa7456b4252e602265477538c02e64f00e3c7f61cc4d9ad8e5c02
+
+pkgname = w2do
+
