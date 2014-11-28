@@ -1,0 +1,18 @@
+pkgbase = mudmagic
+	pkgdesc = A GTK2 mud client with automapper
+	pkgver = 1.9
+	pkgrel = 4
+	url = http://www.mudmagic.com/mud-client/
+	arch = i686
+	license = GPL
+	makedepends = pkgconfig
+	depends = libglade>=2
+	depends = libmxp
+	depends = pcre
+	depends = sqlite3
+	options = !libtool
+	source = http://downloads.sourceforge.net/kyndig/mudmagic-1.9.tar.gz
+	md5sums = 25d106683edaf8241700aea22de27e83
+
+pkgname = mudmagic
+
