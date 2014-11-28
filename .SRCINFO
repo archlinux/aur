@@ -1,0 +1,15 @@
+pkgbase = aaphoto
+	pkgdesc = Automatic photo adjusting
+	pkgver = 0.43
+	pkgrel = 1
+	url = http://log69.com/aaphoto_en.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = jasper
+	depends = libpng
+	source = https://github.com/log69/aaphoto/archive/v0.43.tar.gz
+	sha256sums = 3405144c20b7376e1ba1be44333f55a6409a22c190bf3b17c620ea588ace9f29
+
+pkgname = aaphoto
+
