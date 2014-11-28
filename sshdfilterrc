@@ -1,0 +1,222 @@
+# sshdfilter config, V1.5.6
+# Config parser is simple, so don't try anything fancy.
+
+SECTION OPTIONS
+# These options set the general behaviour of sshdfilter, more specific
+# options are set in the named sections below this OPTIONS section.
+
+# Any character matching this expression is removed from the username
+# before matching, to ensure odd characters aren't processed.
+# If sanitisation changes a username, the username is called DIRTY and 
+# matches the DIRTY pattern below.
+sanitise='[^-a-zA-Z0-9_]'
+
+# iptables command to add and remove blocks on particular IPs.
+# These commands are executed, the following variables are available:
+# $ip - IP address of the offending machine.
+# $chain - Chain to add this IP to (when using iptables)
+# $idx - the next free ipfw index number (when using ipfw).
+# Add a block rule:
+firewalladd='iptables -A $chain -p tcp -s $ip --dport 22 -j DROP'
+# Delete a block rule:
+firewalldel='iptables -D $chain -p tcp -s $ip --dport 22 -j DROP'
+
+# Add/remove commands for ipfw, see ip6toip4 below. These pair are
+# untested, does anybody actually use ip6?
+#firewalladd='iptables6 -A $chain -p tcp -s $ip --dport 22 -j DROP'
+#firewalldel='iptables6 -D $chain -p tcp -s $ip --dport 22 -j DROP'
+
+# Add/remove commands for ipfw, see ipfwmin/ipfwmax below.
+#firewalladd='ipfw add $idx drop tcp from $ip to any dst-port 22'
+#firewalldel='ipfw delete $idx drop tcp from $ip to any dst-port 22'
+
+# path to the firewall command (iptables, iptables6 or ipfw).
+# Not normally needed, $PATH is searched by default.
+#fwcmdpath="/some/where/unusual/"
+
+
+# Name of iptables chain where sshdfilter will store its rules. If you 
+# want to run multiple isolated instances of sshdfilter then you will
+# need to change this, your iptables setup and use the SSHFILTERRC 
+# environment variable (see INSTALL).
+chain='SSHD'
+
+# Email any block events. Runs this line with some more details on stdin.
+# Note perl executes this line, so be careful with escaping. Using the
+# debug option might be a good idea to get this working, as would 
+# logging debug level syslog events (thats /etc/syslog.conf).
+#mail='mail -s \"sshdfilter event for $ip, $event\" greg\@abatis.flint'
+
+# convert any IPv6 addresses to IPv4, necessary for iptables, as only
+# ip6tables knows about IPv6. Setting this option to 0 also enables
+# calling ip6tables instead of iptables, so you should generally leave it
+# set to 1.
+ip6toip4=1
+
+# Enable the use of ipfw (for BSD, Solaris, Mac) instead of iptables.
+# This pair specify the range of index numbers used by the rules. Pick
+# a range of numbers that fit into your firewall. Read INSTALL.ipfw
+#ipfwmin=1002
+#ipfwmax=1999
+
+# Where the sshd log messages come from, either from STDIN (sshd -e -D | sshdfilter),
+# or via syslog, in which case the messages are read from a named pipe and you need to
+# look at the sshdname and logpid options below.
+#logsource='/var/run/sshd.fifo'
+logsource='STDIN'
+
+# where sshd lives
+sshdpath='/usr/sbin/sshd'
+
+# The name of the sshd process, only needed to identify the sshd process 
+# from a none STDIN logsource. See also logpid below, which isn't required
+# if you have only one sshd daemon process.
+sshdname='sshd'
+
+# Assuming standard sshd behaviour, children of sshd (one sshd per
+# connection) log to syslog directly, so the pid reported by syslog will
+# change every time. The parent of the reported pid will be constant, and
+# that is what this value should be. Or, set to <=0, and all sshdname
+# processes will be interpretted as the same sshd. Can be given on the
+# command line, sshdfilter logpid=`cat /var/run/sshd.pid`
+logpid=0
+
+# debug? >0 turns on debugging, setting to 1 should help diagnose unexpected 
+# behaviour. 4 is the most verbose.
+debug=1
+
+SECTION USERPOLICY
+# Action policy says what happens when different users try to log in. The
+# right hand side of the = is a regular expression that matches either 
+# usernames or is a special word DEFAULT, INVALID, NOID or DIRTY.
+# The format is:
+# [number of failures],[block time] = <regular expression>
+# [number of failures] is the maximum number of failures (password or 
+# invalid usernames) before an iptables block rule is created. Here twice 
+# what it should be, 'sshd -e -D', likes to output failures and successes 
+# twice. [block time] is how long that block will last. After this time, 
+# the iptables rule will be removed. This is specified as <number>d, 
+# <number>h, <number>m or <number>s, for days, hours, minutes or seconds
+# respectively.
+# This list is read from top to bottom, the first match wins. But,
+# DEFAULT sets the current default values and can be used multiple times
+# to set the ongoing default values for following lines. INVALID works in
+# the same way, any options provide defaults for future matches against
+# users that match the given regular expression but are also invalid
+# user names.
+
+# On my RedHat 7.3 system, sshd message doublings (when using the sshd 
+# options -eD, which is sshdfilter install route 1) follow this pattern
+#(actual attempts at password=>log messages):
+# FAILVAL: 1=>2, 2=>4, 3=>6
+# INVALID: 0=>5, 1=>7, 2=>9, 3=>11, and repeat
+# INVALID: 0=>4, 1=>6, 2=>8, 3=>10, and repeat
+
+5,3d = DEFAULT   # catch all
+0,10d = DIRTY         # username sanitising was necessary? instant long term block
+0,10d = '^(nobody|test|guest|mythtv|admin|adm|sshadmin|services|setup|mine|user|nu|webmaster|demo|deploy)$'   # common brute force names, instant block for 10 days. Some attacks also try the hostname.
+#6 = '^greg$'        # My username, so give me more chances, block for the default 3 days.
+#3 = '^g[reg]{3}$'   # allow 3 guesses of greg, grge, ggre, gger, gerg, gegr,
+                    # even if they are invalid usernames.
+2,5d = '^root$'     # allow two guesses of root, block for 5 days.
+#,1h = '^ian$'      # default of 3 guesses, only block for 1 hour.
+3,5d = DEFAULT   # change defaults from this point on, 3 guesses, block for 5 days.
+3,6d = INVALID    # Sets the dafault for Invalid user names, three chances, and a 6 day block time.
+                  # If any of the below are Invalid and missing a value, this value, not the DEFAULT
+                  # value is used.
+#4 =  '^(peter|ian)$' # peter would get 4 chances and would be blocked for 7 days. ian would have matched
+		   # the line above and so is redundant here.
+#, = '^bob$'        # If bob exists, gets 3 chances and is blocked for 5 days, all values based on last DEFAULT.
+                   # If bob is Illegal, gets 3 chances and is blocked for 7 days, values based on last INVALID.
+3,7d = INVALID    # Catch all for Invalid usernames, if none of the above matched, these numbers will apply.
+0,10d = NOID      # Catch all No ssh id events, instant block for 10 days.
+
+
+SECTION IPPOLICY
+# Good nets(+) and bad nets(-), by regular expression matching IP addresses.
+# This matches the same addresses as reported in sshdfilter logs, ie, the
+# same IP version as used by your iptables command, which will most likely
+# be version 4. No hostname lookup is done, or proper subnet matching.
+# If you want any of that you need to be using iptables.
+#-'^192\.168\.7\.9$'  # drop a test #
+#+'^192\.168\.7\.[0-9]+$'       # always accept, never block LAN connections
+#+'^192\.168\.8\.[0-9]+$'       # always accept, never block LAN connections
+#+'^192\.168\.0\.[0-9]+$'       # always accept, never block LAN connections
++'^127.0.0.1$'                # always accept loopback connections
+-'^207\.46\.[0-9]+.[0-9]+$'    # Block known evil domain
+
+
+SECTION EMAILPOLICY
+# When to send emails about block events. + means send email, - means don't.
+# Read from top to bottom, the first match is the action. Except DEFAULT, 
+# which only matches after none of the others have matched. But for DEFAULT,
+# INVALID and NOID, the surrounding '' are required.
+
+#-'^peter$'   # If peter ever fails to login, don't email.
++DEFAULT     # Email in most circumstances.
+#+'^greg$'    # Email if the user is greg, redundant as this is the default.
++INVALID     # Email all invalid users
+-NOID        # Don't email if there was no ssh id given.
+
+
+
+SECTION SSHDLOG
+# The SSHDLOG section maps sshd messages into one of several types, No Id string, Invalid User, Bad password for valid user, and Good password for valid user. Each version and distribution uses different message formats, so the exact format needs to be user configurable. These are already supplied for quite a few distributions.
+
+# Starting with sshdfilter 1.5.6, all variants of log messages are already
+# present in the hope that a working set will be amongst them. You can 
+# delete all those that aren't used on your distro, but rememeber, even 
+# distro updates can change sshd messages, turning a working sshdfilter 
+# configuration into a defunct configuration - long after you have 
+# disabled most logging secure in the knowledge that sshdfilter is working.
+# Note: DropBear (lightweight sshd) patterns are not included below, see
+# patterns/dbear.partconf
+
+# Illegal user (non-existant user)
+msg_invalid='\nIllegal user (.*) from ([0-9a-fA-F:\.]+) *$'
+map_invalid='push @res,$1;  push @res,$2;'
+msg_invalid='\nInvalid user (.*) from ([0-9a-fA-F:\.]+) *$'
+map_invalid='push @res,$1;  push @res,$2;'
+msg_invalid='\nFailed [^ ]+ for illegal user (.*) from ([0-9a-fA-F:\.]+) port [0-9]+ ssh2 *$'
+map_invalid='push @res,$1;  push @res,$2;'
+msg_invalid='\nFailed [^ ]+ for invalid user (.*) from ([0-9a-fA-F:\.]+) port [0-9]+ ssh2 *$'
+map_invalid='push @res,$1;  push @res,$2;'
+msg_invalid='\nUser (.*) from ([0-9a-fA-F:\.]+) not allowed because not listed in AllowUsers *$'
+map_invalid='push @res,$1;  push @res,$2;'
+msg_invalid='\nPostponed .* for invalid user (.*) from ([0-9a-fA-F:\.]+) port [0-9]+ ssh2 *$'
+map_invalid='push @res,$1;  push @res,$2;'
+msg_invalid='\nPostponed .* for illegal user (.*) from ([0-9a-fA-F:\.]+) port [0-9]+ ssh2 *$'
+map_invalid='push @res,$1;  push @res,$2;'
+#msg_invaled='User (.*) is unknown\ncoming from ([0-9a-fA-F:\.]+) *$'
+#map_invalid='push @res,$1;  push @res,$2;'
+
+# Valid user, wrong password
+msg_failed_valid='\nFailed [^ ]+ for (.*) from ([0-9a-fA-F:\.]+) port [0-9]+ ssh2 *$'
+map_failed_valid='push @res,$1;  push @res,$2;'
+msg_failed_valid='\nPostponed .* for (.*) from ([0-9a-fA-F:\.]+) port [0-9]+ ssh2 *$'
+map_failed_valid='push @res,$1;  push @res,$2;'
+msg_failed_valid='\nerror: PAM: Have exhasted maximum number of retries for service. for (.*) from ([^ ]*) *$'
+map_failed_valid='push @res,$1;  push @res,$2;'
+msg_failed_valid='\nerror: PAM: Authentication failure for (.*) from ([^ ]*) *$'
+map_failed_valid='push @res,$1;  push @res,$2;'
+msg_failed_valid='\nPAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=([0-9a-fA-F:\.]+) +user=(.*) *$'
+map_failed_valid='push @res,$2;  push @res,$1;'
+msg_failed_valid='\npam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=([0-9a-fA-F:\.]+) +user=(.*) *$'
+map_failed_valid='push @res,$2;  push @res,$1;'
+
+# Valid user, correct password
+msg_accepted_user='\nAccepted [^ ]* for (.*) from ([0-9a-fA-F:\.]+) port [0-9]+ ssh2 *$'
+map_accepted_user='push @res,$1;  push @res,$2;'
+
+# No ID
+msg_no_id_string='\nDid not receive identification string from ([0-9a-fA-F:\.]+) *$'
+map_no_id_string='push @res,$1;'
+msg_no_id_string='\nChild connection from ([0-9a-fA-F:\.]+):[0-9]+\nexit before auth: Failed to get remote version *$'
+map_no_id_string='push @res,$1;'
+
+# sshd exit
+msg_quit='\nReceived signal ([0-9]+); terminating. *$'
+map_quit='push @res,$1;'
+
+
+

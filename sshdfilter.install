@@ -1,0 +1,11 @@
+post_install() {
+  echo ">>> You should add a SSHD chain to your firewall setup before starting sshd with sshdfilter."
+  echo ">>>"
+  echo ">>> # iptables -N SSHD"
+  echo ">>> # iptables -I INPUT -p tcp -m tcp --dport 22 -j SSHD"
+  echo ">>>"
+  echo ">>> To start sshd with sshdfilter, first stop sshd and then start sshdfilter."
+  echo ">>>"
+  echo ">>> # /etc/rc.d/sshd stop"
+  echo ">>> # /etc/rc.d/sshdfilter start"
+}
