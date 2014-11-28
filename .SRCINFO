@@ -1,0 +1,16 @@
+pkgbase = urxvtcd
+	pkgdesc = A script to start urxvt (rxvt-unicode) in daemon-client mode.
+	pkgver = 2
+	pkgrel = 2
+	url = http://packages.debian.org/unstable/x11/rxvt-unicode
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = rxvt-unicode
+	source = urxvtcd.sh
+	source = urxvtcd.1
+	md5sums = 6ed3f7379d592031204530071861384a
+	md5sums = fb28f0aae8279b64b40cd155381fe611
+
+pkgname = urxvtcd
+
