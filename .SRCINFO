@@ -1,0 +1,15 @@
+pkgbase = srtm2osm
+	pkgdesc = Generates elevation contours (isohypses) of a selected terrain from Shuttle Radar Topography Mission (SRTM) digital elevation model (DEM)
+	pkgver = 1.11.25.0
+	pkgrel = 1
+	url = http://wiki.openstreetmap.org/wiki/Srtm2osm
+	arch = any
+	license = GPL
+	depends = mono
+	source = http://osm.michis-pla.net/code/Srtm2Osm-1.11.25.0.zip
+	source = srtm2osm.sh
+	sha256sums = 3c486c6ca3a369fbac2ccfe43735c135498afaec4d4c6b0fcb5379069bc3e650
+	sha256sums = 46b126b476a6b7624c4e4271a660dcede892cbcc6ea1e2a9c09eaf274cef0bb6
+
+pkgname = srtm2osm
+
