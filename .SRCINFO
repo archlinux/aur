@@ -1,0 +1,18 @@
+pkgbase = gdeskcal
+	pkgdesc = Little eye-candy calendar for your desktop
+	pkgver = 1.01
+	pkgrel = 5
+	url = http://customize.org/gDeskCal
+	arch = any
+	license = GPL
+	makedepends = perlxml
+	makedepends = patch
+	makedepends = pkg-config
+	depends = pygtk
+	source = http://dl.fedoraproject.org/pub/fedora/linux/releases/15/Everything/source/SRPMS/gdeskcal-1.01-7.fc15.src.rpm
+	source = gdeskcal-utf8.diff
+	sha256sums = b2ec8ef9c384fce5aee8de220308e6b80351396ca3e137e851ebd2a25016480f
+	sha256sums = 507102c5381f854a6164f3ec0da945f61b312ade0676217dcfe0e29ff2c8d4ff
+
+pkgname = gdeskcal
+
