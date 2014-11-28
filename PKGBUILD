@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=3.17
+pkgver=3.18
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('bzr'
             'src'
             'subversion')
 source=($url$pkgname-$pkgver.tar.gz)
-sha256sums=('d024fcdcdd1d6bbd32758aec802c15dd63b9543010e238bfe76ba3455e9aef6b')
+sha256sums=('e1350ab9d0e892a307e8e7e90f76b11317f9af2cd5a6fea20f81d24d44e7512a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
