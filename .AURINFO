@@ -1,0 +1,13 @@
+pkgbase = ggmud
+	pkgdesc = GTK2 mud client inspired by tintin and sclient
+	pkgver = 0.8.0
+	pkgrel = 3
+	url = http://www.ggsoft.org/ggmud/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://downloads.sourceforge.net/ggmud/GGMud-0.8.0-src.tar.gz
+
+pkgname = ggmud
+
