@@ -1,0 +1,13 @@
+pkgbase = lite2do
+	pkgdesc = A lightweight command-line todo manager written in Perl
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://w2do.blackened.cz/
+	arch = any
+	license = GPL3
+	depends = perl
+	source = http://w2do.googlecode.com/files/lite2do-1.1.1.tar.gz
+	md5sums = 370bcf901aef70faca6de7dcccb412a3
+
+pkgname = lite2do
+
