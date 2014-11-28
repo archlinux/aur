@@ -1,0 +1,18 @@
+pkgbase = assh
+	pkgdesc = SSH client which uses SSL proxies to establish anonymous connections
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://assh.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	provides = corkscrew
+	conflicts = corkscrew
+	source = http://downloads.sourceforge.net/assh/assh-2.3.tgz
+	source = destdir.patch
+	md5sums = 9ce2dbb55416a9b1c38307b101067275
+	md5sums = b90b180edbbaa2237aa0f664ea7a47fd
+
+pkgname = assh
+

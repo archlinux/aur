@@ -1,0 +1,11 @@
+--- assh/Makefile	2010-03-30 22:47:12.000000000 +0200
++++ Makefile	2010-12-18 17:53:46.232999739 +0100
+@@ -12,7 +12,7 @@
+ 	cc ${CFLAGS} corkscrew.c -o corkscrew
+ 
+ install:
+-	cp -f ${PROGS} /usr/bin/
++	cp -f ${PROGS} ${DESTDIR}/usr/bin
+ 
+ clean:
+ 	rm -f ${PROGS} *.o
