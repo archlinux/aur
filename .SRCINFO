@@ -1,0 +1,13 @@
+pkgbase = shorten
+	pkgdesc = An established low complexity waveform coder which uses a lossless compression scheme, superior to that of mp3.
+	pkgver = 3.6.1
+	pkgrel = 2
+	url = http://www.etree.org/shnutils/shorten/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://www.etree.org/shnutils/shorten/dist/src/shorten-3.6.1.tar.gz
+	md5sums = fb59c16fcedc4f4865d277f6e45866a7
+
+pkgname = shorten
+
