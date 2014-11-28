@@ -1,0 +1,17 @@
+pkgbase = sclient
+	pkgdesc = A small GTK-based MUD client for X.
+	pkgver = 0.7.2
+	pkgrel = 5
+	url = http://home.swipnet.se/heathen/linux/sclient.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = gtk
+	source = http://home.swipnet.se/heathen/linux/sclient-0.7.2.tar.gz
+	source = gcc34.patch.bz2
+	md5sums = e399bad04fb5837c5be1d9874fbfac32
+	md5sums = b50782f37002b6e310f173b8c617c3f6
+
+pkgname = sclient
+
