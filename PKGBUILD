@@ -1,0 +1,34 @@
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: Dale Blount <dale@archlinux.org>
+# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+
+pkgname=moon-buggy
+pkgver=1.0.51
+pkgrel=1
+pkgdesc="Moon Buggy is a simple game for the text mode"
+arch=('i686' 'x86_64')
+url="http://seehuhn.de/comp/moon-buggy"
+license=('GPL2')
+depends=('ncurses')
+options=('!emptydirs')
+install=$pkgname.install
+source=(http://seehuhn.de/data/$pkgname-$pkgver.tar.gz Makefile.in.patch)
+md5sums=('bfe23ef5cfa838ac261eee34ea5322f3'
+         '8c8cb8a25e12f574243778dac8e376a1')
+
+build() {
+  cd ${srcdir}/$pkgname-$pkgver
+
+  patch -Np0 -i ${srcdir}/Makefile.in.patch
+
+  ./configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info
+  make
+}
+
+package() {
+  cd ${srcdir}/$pkgname-$pkgver
+
+  make DESTDIR=${pkgdir} install
+	
+  rm ${pkgdir}/usr/share/info/dir
+}
