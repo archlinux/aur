@@ -1,0 +1,81 @@
+From 92e686badce5c549699a30e82458a42dbcd99183 Mon Sep 17 00:00:00 2001
+From: Sylvain <syfou@users.sourceforge.net>
+Date: Wed, 2 May 2007 13:23:18 -0400
+Subject: [PATCH] Definitive fix for the signal module importation problem
+ ...from posix_signal on some amd64 systems. Many thanks to Jason
+ Pontious for his support and patience.
+
+---
+ scripting/python/posix_signal.c |   34 ++++++++++++++++++----------------
+ 1 files changed, 18 insertions(+), 16 deletions(-)
+
+diff --git a/scripting/python/posix_signal.c b/scripting/python/posix_signal.c
+index 620248f..7c5ac25 100644
+--- a/scripting/python/posix_signal.c
++++ b/scripting/python/posix_signal.c
+@@ -1,16 +1,17 @@
+ /*--- posix_signal.c -----------------------------------------------------------
+-This is nothing but a forward port from older python code by Lance Ellinghaus,
+-Guido van Rossum & al., reformatted and put back together by Sylvain Fourmanoit <syfou@users.sourceforge.net>
+-for recent (2.2.0 final and newer) python implementations.
+-
+-The ability to temporarily delay signals delivery is a very usefull feature -
+-not all C functions are reentrant (in fact, only a few need to be 'safe' 
+-according to the POSIX 1003.1-2003 list), so being able to create critical
+-code sections is a must. Although I am convinced Python's developpers 
+-had good reasons, I do not know myself why 'sigprocmask' and associated 
+-functions support was dropped from the signal module on systems which 
+-implemented them... Since I needed them in my blissful ignorance, 
+-here they are, alive and kicking. :-)
++This is nothing but a forward port from older python code by Lance
++Ellinghaus, Guido van Rossum & al., reformatted and put back together
++by Sylvain Fourmanoit <syfou@users.sourceforge.net> for recent (2.2.0
++final and newer) python implementations.
++
++The ability to temporarily delay signals delivery is a very usefull
++feature - not all C functions are reentrant (in fact, only a few need
++to be 'safe' according to the POSIX 1003.1-2003 list), so being able
++to create critical code sections is a must. Although I am convinced
++Python's developpers had good reasons, I do not know myself why
++'sigprocmask' and associated functions support was dropped from the
++signal module on systems which implemented them... Since I needed them
++in my blissful ignorance, here they are, alive and kicking. :-)
+ 
+ ------------------------------------------------------------------------------*/
+ #include <Python.h>
+@@ -214,8 +215,9 @@ PyMODINIT_FUNC
+ initposix_signal(void)
+ {
+   const char * KEYS [] = { "__doc__", "__name__" , NULL};
+-  int i, pos=0;
++  int i;
+   char * key_str, * doc_str , * new_str;
++  Py_ssize_t pos = 0;
+   PyObject * m, * mDoc, *d,  
+     * pName, * pModule, * pDict,
+     * key, * value, *x;
+@@ -236,7 +238,6 @@ initposix_signal(void)
+   /* The chunk of code below roughly perfoms python equivalent of:
+      'from signal import *' inside what would be a pure python posix_signal
+      module ... */
+-  pName=PyString_FromString("signal");
+   if ((pModule=PyImport_Import((pName=PyString_FromString("signal"))))) {
+     pDict=PyModule_GetDict(pModule);
+     while (PyDict_Next(pDict, &pos, &key, &value))
+@@ -246,10 +247,11 @@ initposix_signal(void)
+ 	for(i=0;KEYS[i];++i)
+ 	  if (strncmp(key_str,KEYS[i],strlen(KEYS[i]))==0)
+ 	    break;
+-	if (!KEYS[i])
++	if (!KEYS[i]) {
+ 	  /* This needs python 2.2 and up */
++	  Py_INCREF(value);
+ 	  PyModule_AddObject(m,key_str,value);
+-	else {
++	} else {
+ 	  if (i==0) {
+ 	    /* Append signal module documentation */
+ 	    if ((mDoc=PyDict_GetItemString(d,KEYS[0]))) {
+-- 
+1.6.5.GIT
+

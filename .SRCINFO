@@ -1,0 +1,25 @@
+pkgbase = adesklets
+	pkgdesc = An imlib2-based system to have interactive 'desklets'.
+	pkgver = 0.6.1
+	pkgrel = 12
+	url = http://adesklets.sourceforge.net/
+	install = adesklets.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = imlib2
+	depends = fontconfig
+	depends = python2
+	depends = perl
+	depends = ttf-bitstream-vera
+	depends = libx11
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/adesklets/adesklets-0.6.1.tar.bz2
+	source = fontconfig-2.4.patch
+	source = posix_signal.patch
+	md5sums = cd390c9398449c5566033e2e4792bccb
+	md5sums = 0374aec97670c90713fcabc2710e2160
+	md5sums = d9ac15cc92f833f2446218e487e6c607
+
+pkgname = adesklets
+
