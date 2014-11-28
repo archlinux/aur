@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Periodic Calendar
+Name[uk]=Періодичний Календар
+Comment=Periodic Calendar Version
+Comment[uk]=Періодичний Календар
+Exec=periodiccalendar
+Icon=periodiccalendar
+Terminal=false
+Type=Application
+Categories=Utility;
