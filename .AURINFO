@@ -1,0 +1,16 @@
+pkgbase = file-rename-utils
+	pkgdesc = Set of file renaming utils written in bash
+	pkgver = 1.7.3
+	pkgrel = 2
+	url = http://filerenameutils.sourceforge.net
+	arch = any
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = sed
+	depends = mariadb
+	source = http://downloads.sourceforge.net/filerenameutils/file-rename-utils-1.7.3.tgz
+
+pkgname = file-rename-utils
+
