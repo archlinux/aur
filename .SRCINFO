@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-pandora
+	pkgdesc = A GIMP plug-in which helps in stitching together multiple images to make a panorama.
+	pkgver = 0.9.3
+	pkgrel = 2
+	url = http://www.shallowsky.com/software/pandora/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gimp
+	source = http://www.shallowsky.com/software/pandora/pandora-combine-0.9.3.scm
+	sha256sums = 603041ad27da450a58898b70b0b664a7f0d052ac36fde2aa58f4ea86922acf21
+
+pkgname = gimp-plugin-pandora
+
