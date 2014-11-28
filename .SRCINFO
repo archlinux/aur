@@ -1,0 +1,15 @@
+pkgbase = zfo-editor
+	pkgdesc = ZFO editor allows user to interact with ZFO forms
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://labs.nic.cz/page/768/zfo-editor/
+	arch = any
+	license = GPL2
+	makedepends = python2-distribute
+	depends = python-lxml
+	depends = pywebkitgtk
+	source = http://labs.nic.cz/files/labs/zfo_editor/zfo-editor-0.3.2.tar.gz
+	sha256sums = 36dda2e12f790c4a84ee81844ab226e8accbe8868ddbeabe0753112656b0a2c5
+
+pkgname = zfo-editor
+
