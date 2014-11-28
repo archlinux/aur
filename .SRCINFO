@@ -1,0 +1,14 @@
+pkgbase = mimms
+	pkgdesc = Download streams using the MMS protocol and save them to your computer
+	pkgver = 3.2.1
+	pkgrel = 2
+	url = http://savannah.nongnu.org/projects/mimms/
+	arch = any
+	license = GPL3
+	depends = libmms
+	depends = python2
+	source = http://download.savannah.gnu.org/releases/mimms/mimms-3.2.1.tar.bz2
+	md5sums = ec629d8899551b4789ba15c17402c36f
+
+pkgname = mimms
+
