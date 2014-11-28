@@ -1,0 +1,14 @@
+pkgbase = deco
+	pkgdesc = A command-line utility to extract various archive file formats
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://hartlich.com/deco/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	optdepends = deco-archive: extractor wrappers for various formats
+	source = http://hartlich.com/deco/download/deco-1.6.3.tar.gz
+	sha256sums = 18caa51d3a967076a93d4f287f70071cc40c06eb68cc7f663e9ce3269ddad6f5
+
+pkgname = deco
+
