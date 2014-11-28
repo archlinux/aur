@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Dlume
+GenericName=dlume
+Comment=Nice gtk2-based addressbook.
+Comment[cs]=Pěkný a jednoduchý adresář.
+Icon=dlume
+Exec=dlume
+StartupNotify=true
+Terminal=false
+Categories=Office;ContactManagement;

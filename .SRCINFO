@@ -1,0 +1,19 @@
+pkgbase = dlume
+	pkgdesc = A handy and easy to use addressbook.
+	pkgver = 0.2.4
+	pkgrel = 4
+	url = http://directory.fsf.org/project/dlume/
+	install = dlume.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libxml2
+	depends = desktop-file-utils
+	source = http://cvsup.theplanet.com/distfiles/dlume-0.2.4.tar.gz
+	source = dlume.desktop
+	md5sums = 6b2a3ef0eff622a412395187d1c5d178
+	md5sums = 89d386aa13fe8633379d90c9bb67f523
+
+pkgname = dlume
+
