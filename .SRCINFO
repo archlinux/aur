@@ -1,0 +1,16 @@
+pkgbase = lzlib
+	pkgdesc = A library providing in-memory LZMA compression and decompression functions
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.nongnu.org/lzip/lzlib.html
+	install = lzlib.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	options = !emptydirs
+	source = http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.6.tar.gz
+	sha256sums = c187ef5ffa9ffb01abaec667dda4d8c8b378291c68ad094c63bd75ee049e4780
+
+pkgname = lzlib
+
