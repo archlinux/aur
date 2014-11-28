@@ -1,0 +1,14 @@
+pkgbase = libpuzzle
+	pkgdesc = The Puzzle library is designed to quickly find visually similar images.
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://libpuzzle.pureftpd.org/project/libpuzzle
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gd
+	source = http://download.pureftpd.org/pub/pure-ftpd/misc/libpuzzle/releases/libpuzzle-0.11.tar.bz2
+	md5sums = f9edc7322c6f422be395244eefbda180
+
+pkgname = libpuzzle
+
