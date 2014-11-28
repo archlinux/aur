@@ -1,11 +1,12 @@
 pkgbase = python-pympv-git
 	pkgdesc = A python wrapper for libmpv.
-	pkgver = r77.8ba9b61
+	pkgver = r83.95efe30
 	pkgrel = 1
 	url = https://github.com/andre-d/pympv
 	arch = i686
 	arch = x86_64
 	license = gpl
+	makedepends = cython
 	depends = python
 	source = git://github.com/andre-d/pympv.git
 	md5sums = SKIP
