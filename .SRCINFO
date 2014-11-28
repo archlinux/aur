@@ -1,0 +1,13 @@
+pkgbase = newstap
+	pkgdesc = Retrieve news from NNTP and deliver them to one or more destinations as regular electronic mail messages.
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://amtrickey.net/newstap/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/sourceforge/newstap/newstap-1.0.0.tar.gz
+	md5sums = ec431267678a8cfdb6231895cac34ff6
+
+pkgname = newstap
+
