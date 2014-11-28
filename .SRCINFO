@@ -1,0 +1,17 @@
+pkgbase = mmucl
+	pkgdesc = MUD client programmed in tcl.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://mmucl.sourceforge.net/
+	install = mmucl.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = tcl
+	source = http://downloads.sourceforge.net/mmucl/mmucl-1.5.2.tar.gz
+	source = mmucl.install
+	md5sums = d38ad0b1a51325dada8ac6b1b15113e2
+	md5sums = 1b6e24eb94357959362faf41f8e0edd1
+
+pkgname = mmucl
+
