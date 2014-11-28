@@ -1,0 +1,18 @@
+pkgbase = sshconf
+	pkgdesc = A graphical frontend to manage ssh configurations for different hosts
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://sourceforge.net/apps/trac/sshconf
+	install = sshconf.install
+	arch = any
+	license = GPL3
+	depends = desktop-file-utils
+	depends = kdebindings-python
+	depends = openssh
+	depends = python2
+	depends = qt
+	source = http://download.sourceforge.net/project/sshconf/sshconf_0.6.2.tar.gz
+	sha256sums = a1a2437212391237d1d3e60db934570791a3b117e9512287ecc8bc1d172993a2
+
+pkgname = sshconf
+
