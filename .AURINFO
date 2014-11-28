@@ -1,0 +1,19 @@
+pkgbase = vegastrike-data-svn
+	pkgdesc = SVN version of a 3D OpenGL Action-Space-Sim allowing players to trade and bounty hunt in a vast universe.
+	pkgver = 13681
+	pkgrel = 1
+	url = http://vegastrike.sourceforge.net/
+	install = vegastrike-data-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = desktop-file-utils
+	depends = vegastrike
+	optdepends = vegastrike-svn: development version of the game binaries
+	conflicts = vegastrike-data
+	source = vegastrike-data-svn.desktop
+	md5sums = 4ccd4180c57a5544841e3365330a61d9
+
+pkgname = vegastrike-data-svn
+

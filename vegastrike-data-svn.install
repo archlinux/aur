@@ -1,0 +1,6 @@
+post_install() {
+  echo -n "Updating desktop and mime database ..."
+  update-desktop-database -q
+  echo " done!"
+  echo "==> Before running VegaStrike, you may adjust game preferences with the 'vssetup' command."
+}

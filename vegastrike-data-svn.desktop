@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Vega Strike SVN
+Comment=Play a 3D space combat and simulation
+Comment[cs]=Hraj 3D vesmírnou simulaci
+Comment[es]=Juega un combate y una simulación del espacio 3D
+Exec=vegastrike
+Icon=vegastrike
+StartupNotify=true
+Terminal=false
+Categories=Game;StrategyGame;
