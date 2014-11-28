@@ -1,0 +1,13 @@
+pkgbase = aoetools
+	pkgdesc = ATA over Ethernet Tools
+	pkgver = 36
+	pkgrel = 1
+	url = http://aoetools.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/aoetools/aoetools-36.tar.gz
+	sha256sums = fb5e2cd0de7644cc1ec04ee3aeb43211cf7445a0c19e13d6b3ed5a8fbdf215ff
+
+pkgname = aoetools
+
