@@ -1,0 +1,13 @@
+pkgbase = ggps
+	pkgdesc = Program using the GTK+ toolkit to display GPS satellite position and signal strength information
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.brouhaha.com/~eric/software/ggps/
+	arch = i686
+	license = GPL
+	depends = gtk
+	source = http://www.brouhaha.com/~eric/software/ggps/ggps-0.2.tar.gz
+	sha256sums = 3fe65ea0e5b5928f7c74ca9f58812f9482a6a3a6b3261f0e32fba19eca957b9c
+
+pkgname = ggps
+
