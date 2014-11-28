@@ -1,0 +1,13 @@
+pkgbase = stardict-cz
+	pkgdesc = Czech dictionary of foreign words for stardict
+	pkgver = 20140101
+	pkgrel = 1
+	url = http://slovnik-cizich-slov.abz.cz/
+	arch = any
+	license = GPL
+	depends = stardict
+	source = http://dl.cihar.com/slovnik/stardict-czech-20140101.tar.gz
+	sha256sums = 6b6044475ed113020994774ba5dfa87c94dd361fac7921787c2bc78d0781329a
+
+pkgname = stardict-cz
+
