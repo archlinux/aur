@@ -1,0 +1,26 @@
+# atool(1) completion by Roman G <chesercat@gmail.com>
+
+_atool() 
+{
+	local cur
+
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+
+	case "$cur" in
+	    -*)
+		COMPREPLY=( $( compgen -W '-l -x -X -a -c- -d -r \
+		-e -F -D -f -q -v -p -o -E -S --list --extract --extract-to= \
+                --add --cat --diff --repack --each --format= --subdir --force \
+                --quiet --verbose --page --null --explain --simulate --config=' -- $cur ) )
+		;;
+	    *)
+		_filedir '@(rar|RAR|zip|ZIP|tar.gz|tgz|tar.bz|tbz|tar.Z|tZ|tar.lzo|tzo|tar.7z|t7z|tar|jar|JAR|war|lha|lzh|7z|ace|ACE|arj|ARJ|a|arc|ARC|rpm|deb|gz|bz|bz2|Z|lzo|cpio)'
+		;;
+	esac
+  
+	return 0
+
+}
+complete -F _atool -o filenames atool acat arepack als aunpack adiff
+

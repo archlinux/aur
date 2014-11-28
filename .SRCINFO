@@ -1,0 +1,14 @@
+pkgbase = bash-completion-atool
+	pkgdesc = bash completion for atool
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://linux4all.blogsome.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash-completion
+	source = atool
+	md5sums = b90e91fd266a4bdde15479281283620c
+
+pkgname = bash-completion-atool
+
