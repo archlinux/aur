@@ -1,0 +1,16 @@
+pkgbase = ssh-installkeys
+	pkgdesc = Set up password-less SSH logins
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://www.catb.org/~esr/ssh-installkeys
+	arch = any
+	license = BSD
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	depends = python2
+	depends = openssh
+	source = http://www.catb.org/~esr/ssh-installkeys/ssh-installkeys-1.9.tar.gz
+	sha256sums = e2c47688df8628bcfa946d98a94f31812e9c5f90a90d8596f85dc3c935f7346f
+
+pkgname = ssh-installkeys
+
