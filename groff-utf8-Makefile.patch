@@ -1,0 +1,11 @@
+--- Makefile.orig	2005-07-03 01:27:25.000000000 +0200
++++ Makefile	2008-09-02 22:40:56.000000000 +0200
+@@ -24 +24 @@
+-	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	install -d -m755 $(DESTDIR)$(PREFIX)/bin
+@@ -30 +30 @@
+-	  cp $$f $(DESTDIR)$(PREFIX)/bin/$$f || exit 1; \
++	  install -m755 $$f $(DESTDIR)$(PREFIX)/bin/$$f || exit 1; \
+@@ -34 +34 @@
+-	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	install -d -m 755 $(DESTDIR)$(PREFIX)/bin

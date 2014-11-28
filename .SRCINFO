@@ -1,0 +1,17 @@
+pkgbase = groff-utf8
+	pkgdesc = An extension of groff that permits to view UTF-8 encoded man pages.
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.haible.de/bruno/packages-groff-utf8.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = groff
+	source = http://www.haible.de/bruno/gnu/groff-utf8.tar.gz
+	source = groff-utf8-Makefile.patch
+	md5sums = acbf66fcf1df906e42c1b42f3e7d20dc
+	md5sums = 68d794e84ca95642560d6f7daa3c3894
+
+pkgname = groff-utf8
+
