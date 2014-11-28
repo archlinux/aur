@@ -1,0 +1,28 @@
+pkgbase = ignuit
+	pkgdesc = A memorization aid based on the Leitner flashcard system
+	pkgver = 2.20.0
+	pkgrel = 1
+	url = http://homepages.ihug.co.nz/~trmusson/programs.html#ignuit
+	install = ignuit.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gconf
+	depends = gnome-doc-utils
+	depends = gstreamer0.10-base
+	depends = hicolor-icon-theme
+	depends = intltool
+	depends = libgnomeui
+	depends = libglade
+	depends = libxslt
+	source = http://homepages.ihug.co.nz/~trmusson/stuff/ignuit-2.20.0.tar.gz
+	source = ignuit.desktop
+	source = http://homepages.ihug.co.nz/~trmusson/ignuit/countries_and_capitals-en.xml
+	source = http://homepages.ihug.co.nz/~trmusson/ignuit/numbers_days_months-en_ru-without_audio.xml
+	sha256sums = 5dc75cef0707677421c272c430cebf5c3730cbcfaeba6428fe14f6bd085d3630
+	sha256sums = 89c160391f5d39b47a9b0ce6dc28080d96acebee356d1a7372a18a8511fea935
+	sha256sums = 60f82b36b02bfa504f5a3f9f0c1c1d96856f675470ecd5fd56dbf4c185e381e7
+	sha256sums = 77523badda6c08af9728f1f45defc04c1c609154cdb285088228f96dc1930191
+
+pkgname = ignuit
+

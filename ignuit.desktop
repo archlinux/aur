@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Ignuit
+GenericName=ignuit
+Exec=ignuit
+Icon=ignuit
+Type=Application
+Comment=A memorization aid based on the Leitner flashcard system
+Terminal=false
+Categories=Education;
