@@ -1,0 +1,12 @@
+pkgbase = jobqueue
+	pkgdesc = Executes jobs in parallel to complete all jobs as fast as possible.
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://zakalwe.fi/~shd/foss/jobqueue/
+	arch = i686
+	license = custom
+	source = http://zakalwe.fi/~shd/foss/jobqueue/jobqueue-0.04.tar.bz2
+	md5sums = 1359411da77ab5e40d20a3cad2e94745
+
+pkgname = jobqueue
+
