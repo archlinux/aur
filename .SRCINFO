@@ -1,0 +1,13 @@
+pkgbase = adesklet-calendar
+	pkgdesc = A simple desklet that displays a calendar.
+	pkgver = 0.5.3
+	pkgrel = 8
+	url = http://adesklets.sourceforge.net/desklets.html
+	arch = any
+	license = GPL
+	depends = adesklets
+	source = http://downloads.sourceforge.net/sourceforge/adesklets/Calendar-0.5.3.tar.bz2
+	sha256sums = 2ed3875cd3fc701a65ec1ffca885e2adf4f8a26e314bf2fa56ae447dfdeae49f
+
+pkgname = adesklet-calendar
+
