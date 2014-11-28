@@ -1,0 +1,14 @@
+pkgbase = gps2photo
+	pkgdesc = Geotags digital photos by using GPS track data recorded at the same time
+	pkgver = 1.160
+	pkgrel = 1
+	url = http://www.carto.net/projects/photoTools/gpsPhoto/
+	arch = any
+	license = GPL
+	depends = perl-image-exiftool
+	depends = perl-xml-parser
+	source = http://gps2photo.cvs.sourceforge.net/*checkout*/gps2photo/gpsPhoto/src/gpsPhoto.pl
+	sha256sums = d202bc00a70317dd3cafce7c2a9d770ac1c7071dd18a2e001693c5e492af98af
+
+pkgname = gps2photo
+
