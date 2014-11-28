@@ -1,0 +1,21 @@
+pkgbase = emptyclip
+	pkgdesc = A top-down 2D Action RPG
+	pkgver = 1.0.3
+	pkgrel = 3
+	url = http://emptyclip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	depends = sdl_image
+	depends = fmodex
+	depends = ftgl
+	source = http://downloads.sourceforge.net/emptyclip/emptyclip-1.0.3-src.tar.gz
+	source = emptyclip.png
+	source = emptyclip.desktop
+	md5sums = 8e4d4733ba44a9a56304da906e4e8d77
+	md5sums = 85843f03bfc766cf9bbb3c54eaead48b
+	md5sums = eedc8fda09550502c0468e575d9a9002
+
+pkgname = emptyclip
+
