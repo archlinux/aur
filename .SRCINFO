@@ -1,0 +1,14 @@
+pkgbase = pngslice
+	pkgdesc = The program performs this slicing for png images and writes a fragment of html to handle the image inclusion.
+	pkgver = 0.66
+	pkgrel = 1
+	url = http://sview01.wiredworkplace.net/pub/jjg/en/code/pngslice.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	source = http://sview01.wiredworkplace.net/pub/jjg/code/pngslice.tar.gz
+	md5sums = 816313410dee225f417765b1af0e6186
+
+pkgname = pngslice
+
