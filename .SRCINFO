@@ -1,0 +1,19 @@
+pkgbase = lostirc
+	pkgdesc = A simple, yet very useful IRC client
+	pkgver = 0.4.6
+	pkgrel = 3
+	url = http://lostirc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = gtk2
+	depends = gtkmm
+	depends = libsigc++
+	source = http://downloads.sourceforge.net/sourceforge/lostirc/lostirc-0.4.6.tar.gz
+	source = lostirc-0.4.6-gcc.diff
+	md5sums = 501cd56bc0740d599540fb415718b939
+	md5sums = 5ac26f2e3beaa233b350de2cf8330923
+
+pkgname = lostirc
+

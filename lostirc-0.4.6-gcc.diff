@@ -1,0 +1,8 @@
+--- src/libirc/Parser.cpp.orig	2004-10-14 00:00:49.000000000 +0200
++++ src/libirc/Parser.cpp	2008-05-28 19:33:31.000000000 +0200
+@@ -18,0 +19 @@
++#include <ctime>
+--- src/libirc/Socket.cpp.orig	2005-04-15 03:28:30.000000000 +0200
++++ src/libirc/Socket.cpp	2008-05-28 19:33:31.000000000 +0200
+@@ -27,0 +28 @@
++#include <cstring>
