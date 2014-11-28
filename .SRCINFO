@@ -1,0 +1,13 @@
+pkgbase = dslib-git
+	pkgdesc = Free Python library for accessing Datove schranky
+	pkgver = 20140930
+	pkgrel = 1
+	url = https://labs.nic.cz/page/969/datovka/
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	makedepends = git
+	depends = python2-pyopenssl
+
+pkgname = dslib-git
+
