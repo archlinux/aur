@@ -1,0 +1,13 @@
+pkgbase = aft
+	pkgdesc = Almost Free Text: a document preparation system, mostly free from intrusive markup
+	pkgver = 5.098
+	pkgrel = 1
+	url = http://www.maplefish.com/todd/aft.html
+	arch = any
+	license = custom: "The Clarified Artistic License"
+	depends = perl
+	source = http://www.maplefish.com/todd/aft-5.098.tar.gz
+	md5sums = ef6178d35978625a5cd00663740d63cc
+
+pkgname = aft
+
