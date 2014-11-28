@@ -1,0 +1,15 @@
+pkgbase = tmx2txt
+	pkgdesc = Simple tcl/tk command-line script for converting TMX files to plain text.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.omegat.org/en/resources.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = tcl
+	depends = tk
+	source = http://www.omegat.org/omegatk/tmx2txt.zip
+	md5sums = 4e23eb754a7a08b6a537ff45e41ff8fd
+
+pkgname = tmx2txt
+
