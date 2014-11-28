@@ -1,0 +1,21 @@
+pkgbase = superswitcher
+	pkgdesc = Powerful window and workspace switching using the Super key
+	pkgver = 0.6
+	pkgrel = 4
+	url = http://code.google.com/p/superswitcher/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = patch
+	depends = gconf
+	depends = libwnck
+	depends = dbus-glib
+	options = !emptydirs
+	source = http://superswitcher.googlecode.com/files/superswitcher-0.6.tar.gz
+	source = superswitcher_0.6_arch_linux_patch.patch
+	md5sums = e8620c8502dccc3f3d3d84e0eb359142
+	md5sums = c8e046fecb2d19e83402647bc3bc78da
+
+pkgname = superswitcher
+

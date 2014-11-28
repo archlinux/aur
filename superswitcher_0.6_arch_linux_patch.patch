@@ -1,0 +1,245 @@
+diff -rupN src/superswitcher-0.6/configure.in src/superswitcher-0.6/configure.in
+--- src/superswitcher-0.6/configure.in	2007-09-01 02:36:04.000000000 +0200
++++ src/superswitcher-0.6/configure.in	2013-05-25 15:10:45.235527947 +0200
+@@ -17,7 +17,6 @@ AM_MAINTAINER_MODE
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ GNOME_COMPILE_WARNINGS(yes)
+ 
+diff -rupN src/superswitcher-0.6/src/dbus-object.h src/superswitcher-0.6/src/dbus-object.h
+--- src/superswitcher-0.6/src/dbus-object.h	2007-09-01 02:36:04.000000000 +0200
++++ src/superswitcher-0.6/src/dbus-object.h	2013-05-25 15:08:56.886986671 +0200
+@@ -4,7 +4,7 @@
+ #ifndef SUPERSWITCHER_DBUS_OBJECT_H
+ #define SUPERSWITCHER_DBUS_OBJECT_H
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #include "forward_declarations.h"
+ 
+diff -rupN src/superswitcher-0.6/src/forward_declarations.h src/superswitcher-0.6/src/forward_declarations.h
+--- src/superswitcher-0.6/src/forward_declarations.h	2007-09-01 02:36:04.000000000 +0200
++++ src/superswitcher-0.6/src/forward_declarations.h	2013-05-25 15:08:56.886986671 +0200
+@@ -18,8 +18,7 @@ typedef struct _SSXineramaScreen SSXiner
+ #define ABNORMAL_EXIT_CODE_ANOTHER_INSTANCE_IS_RUNNING  1
+ #define ABNORMAL_EXIT_CODE_UNKNOWN_COMMAND_LINE_OPTION  2
+ 
+-#include <glib/gerror.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ gboolean   superswitcher_hide_popup     (void *, GError **);
+ gboolean   superswitcher_show_popup     (void *, GError **);
+ gboolean   superswitcher_toggle_popup   (void *, GError **);
+diff -rupN src/superswitcher-0.6/src/screen.c src/superswitcher-0.6/src/screen.c
+--- src/superswitcher-0.6/src/screen.c	2007-09-01 02:36:04.000000000 +0200
++++ src/superswitcher-0.6/src/screen.c	2013-05-25 15:09:36.237667503 +0200
+@@ -505,6 +505,7 @@ add_workspace_to_screen (SSScreen *scree
+ static SSWindow *
+ add_window_to_screen (SSScreen *screen, WnckWindow *wnck_window)
+ {
++  WnckWorkspace *wnck_workspace;
+   SSWindow *window;
+   SSWorkspace *workspace;
+   int n;
+@@ -513,7 +514,13 @@ add_window_to_screen (SSScreen *screen,
+     return NULL;
+   }
+ 
+-  n = wnck_workspace_get_number (wnck_window_get_workspace (wnck_window));
++  wnck_workspace = wnck_window_get_workspace (wnck_window);
++
++  if (wnck_workspace == NULL) {
++    return NULL;
++  }
++
++  n = wnck_workspace_get_number (wnck_workspace);
+   workspace = ss_screen_get_nth_workspace (screen, n);
+ 
+   window = ss_window_new (workspace, wnck_window);
+diff -rupN src/superswitcher-0.6/src/superswitcher.c src/superswitcher-0.6/src/superswitcher.c
+--- src/superswitcher-0.6/src/superswitcher.c	2007-09-01 02:36:04.000000000 +0200
++++ src/superswitcher-0.6/src/superswitcher.c	2013-05-25 15:10:01.661440710 +0200
+@@ -45,7 +45,7 @@ filter_func (GdkXEvent *gdk_xevent, GdkE
+       popup_keycode_to_free = x_event->xkey.keycode;
+       popup = popup_create (screen);
+     } else {
+-      popup_on_key_press (popup, gdk_display, &x_event->xkey);
++      popup_on_key_press (popup, GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &x_event->xkey);
+     }
+     break;
+   case KeyRelease:
+@@ -68,8 +68,8 @@ filter_func (GdkXEvent *gdk_xevent, GdkE
+ static void
+ grab (int keyval)
+ {
+-  XGrabKey (gdk_display,
+-            XKeysymToKeycode (gdk_display, keyval),
++  XGrabKey (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
++            XKeysymToKeycode (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), keyval),
+             AnyModifier,
+             x_root_window,
+             False,
+@@ -86,13 +86,13 @@ disable_caps_lock_default_behavior ()
+   XModifierKeymap *map;
+ 	char *error_msg;
+ 
+-  keycode = XKeysymToKeycode (gdk_display, XK_Caps_Lock);
++  keycode = XKeysymToKeycode (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), XK_Caps_Lock);
+ 
+-  map = XGetModifierMapping (gdk_display);
++  map = XGetModifierMapping (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()));
+   map = XDeleteModifiermapEntry (map, keycode, LockMapIndex);
+ 
+   error_msg = NULL;
+-  switch (XSetModifierMapping (gdk_display, map)) {
++  switch (XSetModifierMapping (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), map)) {
+     case MappingSuccess:
+       break;
+     case MappingBusy:
+@@ -215,7 +215,7 @@ main (int argc, char **argv)
+     grab (XK_Caps_Lock);
+   }
+ 
+-  screen = ss_screen_new (wnck_screen_get_default (), gdk_display, x_root_window);
++  screen = ss_screen_new (wnck_screen_get_default (), GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), x_root_window);
+ 
+   gtk_main ();
+ 
+diff -rupN src/superswitcher-0.6/src/thumbnailer.c src/superswitcher-0.6/src/thumbnailer.c
+--- src/superswitcher-0.6/src/thumbnailer.c	2007-09-01 02:36:04.000000000 +0200
++++ src/superswitcher-0.6/src/thumbnailer.c	2013-05-25 15:10:01.664774101 +0200
+@@ -34,27 +34,27 @@ init_composite (void)
+   int version_major;
+   int version_minor;
+ 
+-  if (!XCompositeQueryExtension (gdk_display, &event_base, &error_base)) {
++  if (!XCompositeQueryExtension (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &event_base, &error_base)) {
+     return FALSE;
+   }
+ 
+   // We need at least version 0.2, for XCompositeNameWindowPixmap.
+-  XCompositeQueryVersion (gdk_display, &version_major, &version_minor);
++  XCompositeQueryVersion (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &version_major, &version_minor);
+   if (version_major <= 0 && version_minor < 2) {
+     return FALSE;
+   }
+ 
+-  if (!XRenderQueryExtension (gdk_display, &event_base, &error_base)) {
++  if (!XRenderQueryExtension (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &event_base, &error_base)) {
+     return FALSE;
+   }
+ 
+   // We need at least version 0.6, for XRenderSetPictureTransform.
+-  XRenderQueryVersion (gdk_display, &version_major, &version_minor);
++  XRenderQueryVersion (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), &version_major, &version_minor);
+   if (version_major <= 0 && version_minor < 6) {
+     return FALSE;
+   }
+ 
+-  XCompositeRedirectSubwindows (gdk_display,
++  XCompositeRedirectSubwindows (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+       GDK_WINDOW_XWINDOW (gdk_get_default_root_window ()),
+       CompositeRedirectAutomatic);
+   return TRUE;
+@@ -65,7 +65,7 @@ init_composite (void)
+ gboolean
+ uninit_composite (void)
+ {
+-  XCompositeUnredirectSubwindows (gdk_display,
++  XCompositeUnredirectSubwindows (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+       GDK_WINDOW_XWINDOW (gdk_get_default_root_window ()),
+       CompositeRedirectAutomatic);
+   return TRUE;
+@@ -83,20 +83,20 @@ initialize_thumbnailer_pictures (SSThumb
+   XRenderPictureAttributes pa;
+ 
+   screen = gtk_widget_get_screen (thumbnailer->drawing_area);
+-  format = XRenderFindVisualFormat (gdk_display, DefaultVisual (
+-      gdk_display, gdk_screen_get_number (screen)));
++  format = XRenderFindVisualFormat (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), DefaultVisual (
++      GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), gdk_screen_get_number (screen)));
+ 
+   thumbnailer->thumbnail_pixmap = gdk_pixmap_new (
+       thumbnailer->drawing_area->window, THUMBNAIL_SIZE, THUMBNAIL_SIZE, -1);
+ 
+-  thumbnailer->thumbnail_picture = XRenderCreatePicture (gdk_display,
++  thumbnailer->thumbnail_picture = XRenderCreatePicture (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+       GDK_DRAWABLE_XID (thumbnailer->thumbnail_pixmap), format, 0, NULL);
+ 
+   pa.subwindow_mode = IncludeInferiors;
+-  thumbnailer->window_picture = XRenderCreatePicture (gdk_display,
++  thumbnailer->window_picture = XRenderCreatePicture (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+       wnck_window_get_xid (thumbnailer->wnck_window),
+       format, CPSubwindowMode, &pa);
+-  XRenderSetPictureFilter (gdk_display, thumbnailer->window_picture,
++  XRenderSetPictureFilter (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), thumbnailer->window_picture,
+       "good", NULL, 0);
+ }
+ 
+@@ -146,10 +146,10 @@ on_expose_event (GtkWidget *widget, GdkE
+   transform.matrix[2][0] = XDoubleToFixed (0.0);
+   transform.matrix[2][1] = XDoubleToFixed (0.0);
+   transform.matrix[2][2] = XDoubleToFixed (1.0);
+-  XRenderSetPictureTransform (gdk_display, thumbnailer->window_picture,
++  XRenderSetPictureTransform (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), thumbnailer->window_picture,
+       &transform);
+ 
+-  XRenderComposite (gdk_display, PictOpSrc,
++  XRenderComposite (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), PictOpSrc,
+     thumbnailer->window_picture, None, thumbnailer->thumbnail_picture,
+     0, 0, 0, 0, 0, 0, THUMBNAIL_SIZE, THUMBNAIL_SIZE);
+ 
+@@ -206,11 +206,11 @@ ss_thumbnailer_free (SSThumbnailer *thum
+     thumbnailer->thumbnail_pixmap = NULL;
+   }
+   if (thumbnailer->thumbnail_picture != None) {
+-    XRenderFreePicture (gdk_display, thumbnailer->thumbnail_picture);
++    XRenderFreePicture (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), thumbnailer->thumbnail_picture);
+     thumbnailer->thumbnail_picture = None;
+   }
+   if (thumbnailer->window_picture != None) {
+-    XRenderFreePicture (gdk_display, thumbnailer->window_picture);
++    XRenderFreePicture (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), thumbnailer->window_picture);
+     thumbnailer->window_picture = None;
+   }
+ 
+diff -rupN src/superswitcher-0.6/src/window.c src/superswitcher-0.6/src/window.c
+--- src/superswitcher-0.6/src/window.c	2007-09-01 02:36:04.000000000 +0200
++++ src/superswitcher-0.6/src/window.c	2013-05-25 15:09:36.241000894 +0200
+@@ -254,6 +254,7 @@ on_state_changed (WnckWindow *wnck_windo
+ static void
+ on_workspace_changed (WnckWindow *wnck_window, gpointer data)
+ {
++  WnckWorkspace *wnck_workspace;
+   SSWindow *window;
+   SSWorkspace *old_workspace;
+   SSWorkspace *new_workspace;
+@@ -261,12 +262,19 @@ on_workspace_changed (WnckWindow *wnck_w
+ 
+   window = (SSWindow *) data;
+   old_workspace = window->workspace;
+-  new_workspace_id = wnck_workspace_get_number (wnck_window_get_workspace (wnck_window));
+-  new_workspace = ss_screen_get_nth_workspace (old_workspace->screen, new_workspace_id);
+-
+   ss_workspace_remove_window (old_workspace, window);
+-  window->workspace = new_workspace;
+-  ss_workspace_add_window (new_workspace, window);
++
++  wnck_workspace = wnck_window_get_workspace (wnck_window);
++  if (wnck_workspace) {
++    new_workspace_id = wnck_workspace_get_number (wnck_workspace);
++    new_workspace = ss_screen_get_nth_workspace (old_workspace->screen, new_workspace_id);
++
++    ss_workspace_add_window (new_workspace, window);
++    window->workspace = new_workspace;
++  } else {
++    window->workspace = NULL;
++  }
++
+   window->new_window_index = -1;
+   gtk_widget_queue_draw (gtk_widget_get_toplevel (window->widget));
+ }
