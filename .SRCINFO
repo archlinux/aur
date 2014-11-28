@@ -1,0 +1,15 @@
+pkgbase = adesklet-aurnotify
+	pkgdesc = Displays the latest updated packages from Arch Linux User Repository
+	pkgver = 0.0.6
+	pkgrel = 2
+	url = http://adesklets.sourceforge.net/desklets.html
+	arch = any
+	groups = adesklet-desklets
+	license = GPL
+	depends = adesklets
+	backup = usr/share/adesklets/aurnotify/config.txt
+	source = http://downloads.sourceforge.net/adesklets/aurnotify-0.0.6.tar.bz2
+	md5sums = 5935d94159c7b0d670e843598732206d
+
+pkgname = adesklet-aurnotify
+
