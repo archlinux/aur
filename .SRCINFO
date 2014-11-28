@@ -1,0 +1,19 @@
+pkgbase = brother-hl2270dw
+	pkgdesc = Brother HL-2270DW CUPS Driver
+	pkgver = 2.0.4_2
+	pkgrel = 4
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = a2ps
+	depends = cups
+	source = http://www.brother.com/pub/bsc/linux/dlf/hl2270dwlpr-2.1.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2270DW-2.0.4-2.i386.rpm
+	source = HL2270DW.ppd.patch
+	md5sums = 69c1987c0636a64fb48f3c6826a3ae28
+	md5sums = 5a7cc60cafaf60d722d9bce3f2751164
+	md5sums = 7c701d586af8dac410cce86678ddfe96
+
+pkgname = brother-hl2270dw
+
