@@ -1,0 +1,12 @@
+pkgbase = drascula-audio-flac
+	pkgdesc = Lossless music addon for Drascula
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://scummvm.sourceforge.net/
+	arch = any
+	license = custom
+	source = http://downloads.sourceforge.net/scummvm/drascula-audio-flac-2.0.zip
+	md5sums = ca13eba7d0d1441631bd4c42a5714e32
+
+pkgname = drascula-audio-flac
+
