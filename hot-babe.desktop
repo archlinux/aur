@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hot Babe
+GenericName=Hot Babe
+Comment=A system load monitor
+Comment[cs]=Ukazatel vytížení systému
+Icon=hot-babe
+Exec=hot-babe --geometry -0+0
+Categories=System;Utility;

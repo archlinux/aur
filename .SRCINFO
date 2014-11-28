@@ -1,0 +1,19 @@
+pkgbase = hot-babe
+	pkgdesc = A system load monitor that displays the system activity in a very special way
+	pkgver = 0.2.2
+	pkgrel = 11
+	url = http://packages.medibuntu.org/maverick/hot-babe.html
+	install = hot-babe.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = pkgconfig
+	depends = gtk2
+	depends = desktop-file-utils
+	source = http://packages.medibuntu.org/pool/free/h/hot-babe/hot-babe_0.2.2.orig.tar.gz
+	source = hot-babe.desktop
+	md5sums = 70d50f5d22e3637a2f623d37e9a473ab
+	md5sums = 8768a6a7c5ebfc4eda791ea8be1a615a
+
+pkgname = hot-babe
+
