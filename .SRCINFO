@@ -1,0 +1,15 @@
+pkgbase = wings2-musicpack
+	pkgdesc = Music pack for the wings2 game.
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://www.wings2.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = wings2>=1.3.0
+	source = http://www.wings2.net/util/download_music.php?file=Complete_Wings2_Music_Pack.zip
+	md5sums = 74399ee341e501a7f81622d46267ee13
+
+pkgname = wings2-musicpack
+
