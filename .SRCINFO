@@ -1,0 +1,34 @@
+pkgbase = mutt-utils
+	pkgdesc = A bunch of scripts and config files to coordinate mutt with external apps
+	pkgver = 1
+	pkgrel = 4
+	url = http://spocom.com/users/gjohnson/mutt/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	optdepends = xlhtml: Excel (xlhtml) and Powerpoint (ppthtml) to html converter
+	optdepends = wv: to load and parse Word 2000, 97, 95 and 6 file formats
+	source = http://www.spocom.com/users/gjohnson/mutt/excel2text
+	source = http://www.spocom.com/users/gjohnson/mutt/mailcap
+	source = http://www.spocom.com/users/gjohnson/mutt/mail-to-filter
+	source = http://www.spocom.com/users/gjohnson/mutt/mutt_bgrun
+	source = http://www.spocom.com/users/gjohnson/mutt/mutt_expires_editor
+	source = http://www.spocom.com/users/gjohnson/mutt/mutt_netscape
+	source = http://www.spocom.com/users/gjohnson/mutt/mutt_octet_view
+	source = http://www.spocom.com/users/gjohnson/mutt/ppt2text
+	source = http://www.spocom.com/users/gjohnson/mutt/word2text
+	source = http://www.fiction.net/blong/programs/mutt/autoview/RunningX.c
+	md5sums = afb12cef3b38ccee6f354b6a4a1090f2
+	md5sums = 1380d5b3958d0fc5504ec068fcc900e1
+	md5sums = b076d50c353fbb4da78522e190c4d798
+	md5sums = fc31578879fe0527335311f01b2d4fba
+	md5sums = d8786450669e8b45eef09d58ff766f54
+	md5sums = fff09a07cbf5ae30bee2d09837d19096
+	md5sums = 5f6aa89757e2326e2ecb2f779bf708f1
+	md5sums = dcde1a7757fdc51316398900b6be182f
+	md5sums = 49300fe71db49158bed89c14e611040c
+	md5sums = 31fa80ae98c0fefe11e4786b2d7e4e79
+
+pkgname = mutt-utils
+
