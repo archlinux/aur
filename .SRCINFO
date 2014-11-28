@@ -1,0 +1,13 @@
+pkgbase = magicrescue
+	pkgdesc = Find and recover deleted files on block devices
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = http://freshmeat.net/projects/magicrescue/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.itu.dk/people/jobr/magicrescue/release/magicrescue-1.1.9.tar.gz
+	md5sums = 093ac491bc5f70c4b050e57e3437ab07
+
+pkgname = magicrescue
+
