@@ -1,0 +1,13 @@
+pkgbase = polygen-data
+	pkgdesc = Data files for polygen
+	pkgver = 1.0.6
+	pkgrel = 3
+	url = http://polygen.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://lapo.it/polygen/polygen-1.0.6-20110201-grm.zip
+	md5sums = cdb53a913772868ea453205497a852da
+
+pkgname = polygen-data
+
