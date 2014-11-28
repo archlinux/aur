@@ -1,0 +1,15 @@
+pkgbase = eviltris
+	pkgdesc = A tetris like game, but the 'random' order of piece selection is different than the standard 'random' number generator method.
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://sourceforge.net/projects/eviltris
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = mesa
+	source = http://downloads.sourceforge.net/eviltris/eviltris-0.7.tar.gz
+	md5sums = d824425e19836dd2ae95c99268614d83
+
+pkgname = eviltris
+
