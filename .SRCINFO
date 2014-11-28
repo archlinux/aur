@@ -1,0 +1,21 @@
+pkgbase = wbxml2
+	pkgdesc = Library and Tools to parse, encode and handle WBXML documents
+	pkgver = 0.9.2
+	pkgrel = 5
+	url = http://libwbxml.aymerick.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = m4
+	makedepends = automake
+	depends = zlib
+	depends = expat
+	depends = popt
+	depends = libxml2
+	source = http://downloads.sourceforge.net/sourceforge/wbxmllib/wbxml2-0.9.2.tar.gz
+	md5sums = 67a48fd9b69db8818a4dca5375c7993a
+
+pkgname = wbxml2
+
