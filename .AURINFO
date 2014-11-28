@@ -1,0 +1,35 @@
+pkgbase = vegastrike-svn
+	pkgdesc = SVN version of an Open Source 3D Action-Space-Sim allowing players to trade and bounty hunt in a vast universe.
+	pkgver = 13681
+	pkgrel = 1
+	url = http://vegastrike.sourceforge.net/
+	install = vegastrike-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = cmake
+	depends = expat
+	depends = ffmpeg
+	depends = freeglut
+	depends = gtk2
+	depends = libjpeg
+	depends = libpng
+	depends = libxcb
+	depends = libxmu
+	depends = openal
+	depends = python2
+	depends = sdl
+	depends = xvidcore
+	depends = glu
+	optdepends = vegastrike-data: original dataset
+	optdepends = vegastrike-data-svn: original dataset, svn version
+	optdepends = paralleluniverse: revival of Privateer
+	provides = vegastrike
+	conflicts = vegastrike
+	options = !makeflags
+	source = vegastrike-svn-gcc44.diff
+	md5sums = 286cdfd30eb37d8e716f812851abbced
+
+pkgname = vegastrike-svn
+
