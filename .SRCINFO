@@ -1,0 +1,14 @@
+pkgbase = buildtorrent
+	pkgdesc = A simple commandline torrent creator
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://mathr.co.uk/blog/torrent.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://mathr.co.uk/blog/code/buildtorrent-0.8.tar.gz
+	sha256sums = e8e27647bdb38873ac570d46c1a9689a92b01bb67f59089d1cdd08784f7052d0
+
+pkgname = buildtorrent
+
