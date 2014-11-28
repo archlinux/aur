@@ -42,7 +42,7 @@ package() {
   sed -i -e 's/Brother HL2270DW for CUPS/Brother HL-2270DW/' "$srcdir/usr/share/cups/model/HL2270DW.ppd"
 
   # Add margin correction (alignmargins output: https://wiki.linuxfoundation.org/en/OpenPrinting/Database/CUPSDocumentation)
-  patch "$srcdir/usr/share/cups/model/HL2270DW.ppd" < "$srcdir/../HL2270DW.ppd.patch"
+  patch "$srcdir/usr/share/cups/model/HL2270DW.ppd" < "$srcdir/HL2270DW.ppd.patch"
 
   # Replace references to $srcdir
   sed -i -e "s#$srcdir/usr#/usr#" "$srcdir/usr/lib/cups/filter/brlpdwrapperHL2270DW"
