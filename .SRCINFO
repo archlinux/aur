@@ -1,0 +1,16 @@
+pkgbase = loqui
+	pkgdesc = IRC client for the Gtk+-2.0 environment
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://launchpad.net/loqui
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = glib2
+	depends = gnet
+	source = http://launchpad.net/loqui/0.5/0.5.5/+download/loqui-0.5.5.tar.gz
+	md5sums = e2ffbac4703de998c85ac68cb0b2fd86
+
+pkgname = loqui
+
