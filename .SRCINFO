@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-cs
+	pkgdesc = Collection of Czech and Slovak fortune cookie files.
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = http://ftp.phil.muni.cz/pub/local/fortune
+	arch = any
+	groups = fortune-mods
+	license = GPL
+	depends = fortune-mod
+	source = http://ftp.phil.muni.cz/pub/local/fortune/fortune-cs-2.0.9.tar.bz2
+	md5sums = 0de253dc2670c7bf5670c7c820f5a90d
+
+pkgname = fortune-mod-cs
+
