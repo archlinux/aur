@@ -1,0 +1,15 @@
+pkgbase = fotaq
+	pkgdesc = "Flight of the Amazon Queen" is a graphical point-and-click adventure game
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://en.wikipedia.org/wiki/Flight_of_the_amazon_queen
+	arch = any
+	license = custom
+	depends = scummvm>=1.0.0
+	source = http://downloads.sourceforge.net/scummvm/FOTAQ_Talkie-1.1.zip
+	source = fotaq.sh
+	md5sums = 4d94f62a907123b77819010117444332
+	md5sums = ed893eb708085122f5a77774672f2d99
+
+pkgname = fotaq
+
