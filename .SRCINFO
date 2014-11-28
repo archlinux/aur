@@ -1,0 +1,17 @@
+pkgbase = xmms-scrobbler
+	pkgdesc = Audioscrobbler plugin for XMMS.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://xmms-scrobbler.sommitrealweird.co.uk/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xmms
+	depends = musicbrainz
+	depends = taglib
+	depends = curl
+	source = http://xmms-scrobbler.sommitrealweird.co.uk//download/xmms-scrobbler-0.4.0.tar.gz
+	md5sums = a50de221dfb2cd87d803d22655df3dad
+
+pkgname = xmms-scrobbler
+
