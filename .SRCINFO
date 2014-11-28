@@ -1,0 +1,15 @@
+pkgbase = wings2-levelpack
+	pkgdesc = Level pack for the Wings2 game.
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://www.wings2.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = wings2>=1.3.0
+	source = http://www.wings2.net/util/download_levels.php?file=Wings2_Level_Collection_v1.zip
+	md5sums = d38aa08efefff60f1af9a5b656118475
+
+pkgname = wings2-levelpack
+
