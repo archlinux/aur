@@ -1,0 +1,15 @@
+pkgbase = ttfsampler
+	pkgdesc = A GUI and CLI utility that takes a list of TrueType fonts and generates a sample sheet in PDF.
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://www.dlitz.net/software/ttfsampler/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python-reportlab
+	depends = tk
+	source = http://ftp.dlitz.net/pub/dlitz/ttfsampler/ttfsampler-0.5.zip
+	md5sums = f625ebd9b29e5c6d1b81b05104b00929
+
+pkgname = ttfsampler
+
