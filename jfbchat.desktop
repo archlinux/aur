@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon[it_IT]=/opt/jfbchat_0.2.4/jfbchat-icon.png
+Name[it_IT]=jfbchat
+Exec=java -jar /opt/jfbchat_0.2.4/jfbchat.jar
+Name=Jfbchat
+Icon=/opt/jfbchat_0.2.4/jfbchat.png
