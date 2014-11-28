@@ -1,0 +1,17 @@
+pkgbase = jpilot
+	pkgdesc = A desktop organizer application for the palm pilot
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = http://www.jpilot.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = openssl
+	depends = gtk2
+	depends = pilot-link
+	source = http://jpilot.org/jpilot-1.8.2.tar.gz
+	options = !libtool
+
+pkgname = jpilot
+
