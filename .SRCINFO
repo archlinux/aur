@@ -1,0 +1,13 @@
+pkgbase = throttle
+	pkgdesc = Copies the standard input to the standard output while limiting bandwidth to the specified maximum.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://klicman.org/throttle/
+	arch = i686
+	license = GPL
+	depends = glibc
+	source = http://klicman.org/throttle/throttle-1.2.tar.gz
+	md5sums = bb8abf5a9a63ed7d80951f056543a88c
+
+pkgname = throttle
+
