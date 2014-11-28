@@ -1,0 +1,20 @@
+pkgbase = datovka-git
+	pkgdesc = GUI application allowing access to a 'Databox' - an electronic communication interface endorsed by the Czech government
+	pkgver = 20140930
+	pkgrel = 1
+	url = https://labs.nic.cz/page/969/datovka/
+	install = datovka-git.install
+	arch = any
+	license = GPL2
+	makedepends = python2-distribute
+	makedepends = git
+	depends = dslib-git
+	depends = pygtk
+	depends = python2-pyasn1
+	depends = python2-sqlalchemy
+	depends = sudsds
+	depends = hicolor-icon-theme
+	optdepends = python-reportlab
+
+pkgname = datovka-git
+
