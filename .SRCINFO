@@ -1,0 +1,12 @@
+pkgbase = drascula-audio
+	pkgdesc = Music addon for Drascula
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://scummvm.sourceforge.net/
+	arch = any
+	license = custom
+	source = http://downloads.sourceforge.net/scummvm/drascula-audio-2.0.zip
+	md5sums = 4098145ef089e65f88a5f9f1e980073f
+
+pkgname = drascula-audio
+
