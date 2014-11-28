@@ -1,0 +1,17 @@
+pkgbase = unworkable
+	pkgdesc = A BitTorrent client aiming for efficiency, simplicity and high code quality
+	pkgver = 0.53
+	pkgrel = 2
+	url = http://code.google.com/p/unworkable/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = scons
+	makedepends = bison
+	depends = openssl
+	depends = libevent
+	source = http://unworkable.googlecode.com/files/unworkable-0.53.tar.gz
+	sha256sums = 80640df2319c128c2bf35f2279fb099985bd8c269808e97b5b0d420f38af6a34
+
+pkgname = unworkable
+
