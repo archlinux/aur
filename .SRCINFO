@@ -1,0 +1,14 @@
+pkgbase = antiwm
+	pkgdesc = A small and simple window manager inspired by Ratpoison
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/antiwm/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	source = http://downloads.sourceforge.net/antiwm/antiwm-0.0.5.tar.gz
+	md5sums = 455c79bf4379371bb5bba78553b64432
+
+pkgname = antiwm
+
