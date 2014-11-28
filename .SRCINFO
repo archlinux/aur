@@ -1,0 +1,19 @@
+pkgbase = safekeep
+	pkgdesc = A client/server backup system which enhances the power of rdiff-backup
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://safekeep.sourceforge.net
+	install = safekeep.install
+	arch = any
+	license = GPL
+	makedepends = asciidoc
+	makedepends = docbook-xsl
+	makedepends = xmlto
+	depends = python2
+	depends = rdiff-backup
+	depends = openssh
+	source = http://downloads.sourceforge.net/sourceforge/safekeep/safekeep-1.4.2.tar.gz
+	sha256sums = ab17c3b00248b99ba9015a75c0c816bf12f77108551f95da3de609112ab124dd
+
+pkgname = safekeep
+
