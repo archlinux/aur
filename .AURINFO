@@ -1,0 +1,12 @@
+pkgbase = pkgextract
+	pkgdesc = This script extracts rpm and deb archives
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://www.archlinux.org
+	arch = any
+	license = unknown
+	depends = libarchive
+	source = pkgextract.sh
+
+pkgname = pkgextract
+
