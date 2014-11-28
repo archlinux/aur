@@ -1,0 +1,17 @@
+pkgbase = beecrypt
+	pkgdesc = A strong and fast cryptography toolkit
+	pkgver = 4.2.1
+	pkgrel = 5
+	url = http://beecrypt.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = automake
+	makedepends = python2
+	depends = icu
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/beecrypt/beecrypt-4.2.1.tar.gz
+	md5sums = 8441c014170823f2dff97e33df55af1e
+
+pkgname = beecrypt
+
