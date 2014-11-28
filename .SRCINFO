@@ -1,0 +1,17 @@
+pkgbase = dclib
+	pkgdesc = Libraries for the Direct Connect 4 Linux (Valknut) File Sharing program.
+	pkgver = 0.3.23
+	pkgrel = 1
+	url = http://sourceforge.net/projects/wxdcgui/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	depends = bzip2
+	depends = libxml2
+	depends = libstdc++5
+	source = http://downloads.sourceforge.net/sourceforge/wxdcgui/dclib-0.3.23.tar.bz2
+	md5sums = 6852e420e48d09b514fcb9f783611cdc
+
+pkgname = dclib
+
