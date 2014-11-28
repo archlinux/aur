@@ -1,0 +1,18 @@
+pkgbase = janet
+	pkgdesc = A Digital life assistant (DLA) that provides a framework allowing various components to communicate, inspired by Iron Man's JARVIS
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://sites.google.com/site/projectjanet
+	arch = i686
+	arch = x86_64
+	license = CCPL:by-nc
+	license = GPL
+	depends = monodevelop
+	depends = festival
+	depends = simon
+	optdepends = htk: For customizing simon
+	source = http://sourceforge.net/projects/project-janet/files/Binaries/Bin.tar.gz
+	sha256sums = f0281fa070afc61d7f2ca2f8eac0cba782b5167b2de93a6267b29242ee40877b
+
+pkgname = janet
+
