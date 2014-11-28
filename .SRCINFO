@@ -1,0 +1,13 @@
+pkgbase = ck4up
+	pkgdesc = Command-line utility to monitor web pages for updates
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://jue.li/crux/ck4up/
+	arch = any
+	license = GPL
+	depends = ruby
+	source = http://jue.li/crux/ck4up/ck4up-1.3.tar.gz
+	md5sums = c3a3e36dc7a32b23a56390db00c963ac
+
+pkgname = ck4up
+
