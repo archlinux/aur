@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lostlabyrinth
+Exec=lostlabyrinth
+Comment=RPG turn based game
+Comment[cs]=Tahová RPG hra
+Terminal=false
+Type=Application
+Categories=Game;RolePlaying;
+Icon=lostlabyrinth
