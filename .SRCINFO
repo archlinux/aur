@@ -1,0 +1,17 @@
+pkgbase = draci-historie-en
+	pkgdesc = The first Czech CD-ROM-based 2D point-and-click adventure game - english version
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.ucw.cz/draci-historie/index-en.html
+	install = draci-historie-en.install
+	arch = any
+	license = GPL2
+	depends = scummvm
+	optdepends = draci-historie-dubbing-cz: czech dubbing files for the game
+	conflicts = draci-historie-cz
+	conflicts = draci-historie-pl
+	source = http://www.ucw.cz/draci-historie/binary/dh-en.zip
+	md5sums = b43a31c486e3b29fb05130a8eef65531
+
+pkgname = draci-historie-en
+
