@@ -1,0 +1,18 @@
+pkgbase = gmimms
+	pkgdesc = Frontend to MiMMS (Multimedia Stream ripper)
+	pkgver = 0.0.9
+	pkgrel = 2
+	url = http://gmimms.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = gtk2
+	depends = mimms
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/gmimms/gmimms/gmimms-0.0.9/gmimms-0.0.9.tar.bz2
+	md5sums = 2b676c828822158208732e147488504a
+
+pkgname = gmimms
+
