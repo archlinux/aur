@@ -1,0 +1,15 @@
+pkgbase = desklaunch
+	pkgdesc = Small utility for creating desktop icons using pixmaps
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = http://www.oroborus.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libxpm
+	options = !emptydirs
+	source = http://ftp.debian.org/debian/pool/main/d/desklaunch/desklaunch_1.1.7.tar.gz
+	sha256sums = 4f5805a58398ce0b3807e52c44783529a7fca690848a3ed6e5eabbd568f45c9e
+
+pkgname = desklaunch
+
