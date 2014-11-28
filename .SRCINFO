@@ -1,0 +1,18 @@
+pkgbase = zangband
+	pkgdesc = Roguelike computer role playing game based on Angband
+	pkgver = 2.7.5pre1
+	pkgrel = 1
+	url = http://www.zangband.org
+	install = zangband.install
+	arch = i686
+	license = custom
+	makedepends = ncurses
+	depends = ncurses
+	depends = lesstif
+	source = http://downloads.sourceforge.net/zangband/zangband-2.7.5pre1.tar.gz
+	source = LICENSE
+	md5sums = 8ea43c1b13c54157558bfd0ad3cee295
+	md5sums = 74183fd3880704df6ab64e4c2887b852
+
+pkgname = zangband
+

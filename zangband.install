@@ -1,0 +1,36 @@
+# arg 1:  the new package version
+post_install() {
+touch /usr/lib/zangband/apex/scores.raw
+chown root:users /usr/lib/zangband/apex/scores.raw
+chmod 664 /usr/lib/zangband/apex/scores.raw
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+find /usr/share/zangband -type d -exec chmod 774 {} \;
+find /usr/share/zangband -type f -exec chmod 664 {} \;
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+mv /usr/share/zangband/lib/apex/* /usr/lib/zangband/apex
+mv /usr/share/zangband/lib/data/* /usr/lib/zangband/data
+mv /usr/share/zangband/lib/save/* /usr/lib/zangband/save
+rm -fr /usr/share/zangband
+}
+
+# arg 1:  the old package version
+post_remove() {
+rm -fr /usr/lib/zangband
+cat << EOM
+
+==> All data from /usr/lib/zangband erased
+
+EOM
+}
+
+op=$1
+shift
+[ "$(type -t "$op")" = "function" ] && $op "$@"
