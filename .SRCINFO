@@ -1,0 +1,13 @@
+pkgbase = dirsync
+	pkgdesc = Directory Synchronizer this utility take two argument the source directory and the destination and make recursively the two directories identical
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://www.viara.eu/en/dirsync.htm
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://www.viara.eu/download/dirsync-1_11.tar.gz
+	md5sums = 2eb3745f674fb71047ca4e64110ceb68
+
+pkgname = dirsync
+
