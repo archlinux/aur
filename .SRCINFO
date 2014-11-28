@@ -1,0 +1,15 @@
+pkgbase = evad
+	pkgdesc = A text-based client to the powerful MPD music server
+	pkgver = 0.0.2
+	pkgrel = 3
+	url = http://sourceforge.net/projects/evad/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = mpd
+	source = http://downloads.sourceforge.net/evad/evad-0.0.2.tar.bz2
+	sha256sums = 4d49c3ad4574a0660b0b5a3153d22206c35800835a0318233875d9b1407dbae8
+
+pkgname = evad
+
