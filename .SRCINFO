@@ -1,0 +1,17 @@
+pkgbase = pipewalker
+	pkgdesc = Pieces of a computer network are to be turned, to make all computers connected to the same network
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://pipewalker.sourceforge.net/
+	install = pipewalker.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mesa
+	depends = sdl
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/pipewalker/pipewalker-0.9.4.tar.gz
+	sha256sums = d6d7717f1f333847cc4a2e9d83e97b971b3bfb539d99d4ae30a5140de6e386f4
+
+pkgname = pipewalker
+
