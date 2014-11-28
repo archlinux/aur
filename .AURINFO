@@ -1,0 +1,18 @@
+pkgbase = castget-unstable
+	pkgdesc = A simple, command-line based RSS enclosure downloader
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.nongnu.org/castget/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	depends = libxml2
+	depends = curl
+	depends = id3lib
+	provides = castget
+	conflicts = castget
+	source = http://savannah.nongnu.org/download/castget/castget-1.2.0.tar.bz2
+
+pkgname = castget-unstable
+
