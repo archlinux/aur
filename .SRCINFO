@@ -1,0 +1,23 @@
+pkgbase = opencachemanager
+	pkgdesc = Easy to use, linux based program for managing your geocaches
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = http://opencachemanage.sourceforge.net/
+	install = opencachemanager.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnome-sharp
+	depends = gpsbabel
+	depends = mono
+	depends = ndesk-dbus-glib
+	depends = shared-mime-info
+	depends = webkit-sharp
+	depends = desktop-file-utils
+	optdepends = qlandkartegt: display cache on map
+	optdepends = gpsbabel: send cache to GPS
+	source = http://downloads.sourceforge.net/project/opencachemanage/OpenCacheManager/1.0.15/opencachemanager-1.0.15.tar.gz
+	sha256sums = 621c8dd8fe8be27937177175b3a1c0f495aca5fa94d7d9817aec002429a1999e
+
+pkgname = opencachemanager
+
