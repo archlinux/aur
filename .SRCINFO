@@ -1,0 +1,18 @@
+pkgbase = drascula
+	pkgdesc = "Drascula: The Vampire Strikes Back", classic comical 2D point & click adventure
+	pkgver = 1.0
+	pkgrel = 5
+	url = http://scummvm.sourceforge.net/
+	arch = any
+	license = custom
+	depends = scummvm>=1.0.0
+	optdepends = drascula-audio: audio files
+	optdepends = drascula-audio-flac: lossless audio files
+	optdepends = drascula-audio-mp3: mp3 audio files
+	source = http://downloads.sourceforge.net/scummvm/drascula-1.0.zip
+	source = drascula.sh
+	md5sums = fe2ee0948159c3acb923c89a1af7cc84
+	md5sums = 52b843b9acce56eaf8a84ebe83ed0a40
+
+pkgname = drascula
+
