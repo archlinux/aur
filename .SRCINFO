@@ -1,0 +1,21 @@
+pkgbase = transolution
+	pkgdesc = Computer Aided Translation (CAT) suite supporting the XLIFF standard
+	pkgver = 0_4b8
+	pkgrel = 1
+	url = http://sourceforge.net/projects/eviltrans/
+	install = transolution.install
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = 4suite
+	source = transolution.zip::http://bitbucket.org/fredrik_corneliusson/transolution/get/d91da181993c.zip
+	source = transolution.desktop
+	sha256sums = f8bb8a45d79212d649d619991eb5e3800142a79f68e73e3a20dafa251d905d11
+	sha256sums = 672bf984c3d12b3bf967d3980ea591c22c710f4a5bb80ffe33753f9d904238d5
+
+pkgname = transolution
+

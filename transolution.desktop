@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Transolution
+GenericName=xliffeditor
+Exec=xliffeditor.py
+Type=Application
+Comment=An Open Source Translation Suite
+Comment[cs]=Open source CAT program
+Terminal=false
+Categories=Development;Translation;
+Icon=transolution

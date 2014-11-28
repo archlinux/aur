@@ -1,0 +1,9 @@
+post_install() {
+  echo "Updating desktop and mime database ..."
+  update-desktop-database -q
+  which xdg-icon-resource 1>/dev/null 2>/dev/null && xdg-icon-resource forceupdate || true
+}
+
+post_remove() {
+  post_install $1
+}
