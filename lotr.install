@@ -1,0 +1,17 @@
+post_install() {
+	cat <<- EOF
+		:: You need the data files from either
+		:: the CD-, floppy or demo-version to play.
+		:: Copy the files to the respective directory:
+		::
+		::     CD --> /usr/share/lotr/cd
+		:: floppy --> /usr/share/lotr
+		::   demo --> /usr/share/lotr
+		::
+		:: Then type 'lotr', 'lotr-cd', or 'lotr-demo'.
+	EOF
+}
+
+post_upgrade() {
+  post_install $1
+}

@@ -1,0 +1,17 @@
+pkgbase = lotr
+	pkgdesc = A free game engine for Interplays RPG "The Lord of the Rings"
+	pkgver = 0.6.5
+	pkgrel = 2
+	url = http://www.wonderland.cz/lotr/
+	install = lotr.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = sdl_mixer
+	depends = libxml2
+	optdepends = timidity++: for playing sound
+	source = http://download.wonderland.cz/lotr-0.6.5.tgz
+	md5sums = 762f7e6954f99612124ae2fbc74841de
+
+pkgname = lotr
+
