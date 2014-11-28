@@ -3,7 +3,7 @@
 
 pkgname=brother-hl2270dw
 pkgver=2.0.4_2
-pkgrel=4
+pkgrel=5
 pkgdesc="Brother HL-2270DW CUPS Driver"
 arch=('i686' 'x86_64')
 url='http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html'
