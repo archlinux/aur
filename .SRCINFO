@@ -1,0 +1,20 @@
+pkgbase = gpicsync-svn
+	pkgdesc = Automatically geocode pictures from your camera and a GPS track log
+	pkgver = 965
+	pkgrel = 1
+	url = http://code.google.com/p/gpicsync/
+	install = gpicsync-svn.install
+	arch = any
+	license = GPL2
+	makedepends = svn
+	depends = python2
+	depends = python2-pillow
+	depends = python2-unidecode
+	depends = wxpython
+	source = gpicsync
+	source = gpicsync.desktop
+	md5sums = 7bb84135e4b289628d9dd65b8c05d897
+	md5sums = a5d4ffa8df81587674d2f4d2b178086f
+
+pkgname = gpicsync-svn
+

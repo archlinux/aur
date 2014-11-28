@@ -1,0 +1,7 @@
+post_install() {
+cat << EOF
+==> Copy the /usr/share/gpicsync/gpicsync.conf file to your \$HOME/.gpicsync.conf
+==> to avoid receiving error message about missing conf file by executing 
+==>   cp /usr/share/gpicsync/gpicsync.conf ~/.gpicsync.conf
+EOF
+}
