@@ -1,0 +1,16 @@
+pkgbase = cappuccino
+	pkgdesc = Run this software on your computer when you are not motivated to work, and enjoy doing something different
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = https://www.cgabriel.org/software/wiki/Cappuccino
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = polygen
+	depends = pygtk
+	depends = python
+	source = http://www.sourcefiles.org/Toys/Miscellaenous/cappuccino-0.5.1.tar.gz
+	md5sums = e99094e278c2facc9d0f5f58086cd932
+
+pkgname = cappuccino
+
