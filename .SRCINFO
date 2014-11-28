@@ -1,0 +1,16 @@
+pkgbase = picturesort
+	pkgdesc = Sorts pictures on how they look, not by their metadata
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.vanheusden.com/picturesort/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fftw
+	depends = gcc-libs
+	depends = imagemagick
+	source = http://www.vanheusden.com/picturesort//picturesort-0.2.tgz
+	md5sums = f92580b48bf858207b17603124db449e
+
+pkgname = picturesort
+
