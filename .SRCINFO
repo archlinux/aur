@@ -1,0 +1,21 @@
+pkgbase = vitetris
+	pkgdesc = A terminal-based Tetris clone with 2-player mode
+	pkgver = 0.57
+	pkgrel = 2
+	url = http://victornils.net/tetris
+	install = vitetris.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = patch
+	depends = ncurses
+	options = !makeflags
+	source = http://victornils.net/tetris/vitetris-0.57.tar.gz
+	source = vitetris-makefile.patch
+	source = vitetris.tmpfiles.conf
+	md5sums = 07d02ee03e2edd66a8741729e237f21f
+	md5sums = 23be30294af1dbc43c594a8b737091c8
+	md5sums = c4c6a6d4250c0aa3bbf3c4a7d911fa1c
+
+pkgname = vitetris
+
