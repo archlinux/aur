@@ -1,0 +1,5 @@
+# arg 1:  the new package version
+post_install() {
+  echo "=> To play the game, start scummvm, click on \"Add game\""
+  echo "=> and point it to /usr/share/dragon_history/ directory."
+}
