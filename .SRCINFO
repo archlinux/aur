@@ -1,0 +1,15 @@
+pkgbase = nzb
+	pkgdesc = A library and graphical Usenet client for nzb based NNTP downloading and streaming
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.nzb.fi/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	depends = qt
+	source = http://downloads.sourceforge.net/sourceforge/nzb/nzb-0.2.tar.gz
+	sha256sums = df27606e8e016485a7e9cfb3aa7a2cea9f453d1f26901c02d53731ef0c816497
+
+pkgname = nzb
+
