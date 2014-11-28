@@ -1,0 +1,12 @@
+pkgbase = sudsds
+	pkgdesc = Fork of the suds library, modified to meet the needs for interaction with the servers of Datové schránky
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://labs.nic.cz/page/969/datovka/
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	source = http://www.nic.cz/public_media/datove_schranky/releases/src/sudsds-1.0.1.tar.gz
+
+pkgname = sudsds
+
