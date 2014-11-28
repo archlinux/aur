@@ -1,0 +1,15 @@
+pkgbase = pigterm
+	pkgdesc = Remote assistant for Linux console
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://pigterm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = qca-ossl
+	source = http://sourceforge.net/projects/pigterm/files/pigterm_1.0.1.tar.gz
+	sha256sums = 1ac1809264cb7efaf8e47c993d6d879a347388a288c6599d1aa35d24fef1084f
+
+pkgname = pigterm
+
