@@ -1,0 +1,13 @@
+pkgbase = gpsdings
+	pkgdesc = Set of free applications that let you manipulate and analyse GPS data from the command line
+	pkgver = 6.9.4
+	pkgrel = 1
+	url = http://gpstools.sourceforge.net/
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	source = http://sourceforge.net/projects/gpstools/files/gpsdings/6.9.4/gpsdings-6.9.4-jar.zip
+	md5sums = b801c7e450819dfec5e0666ac90d0940
+
+pkgname = gpsdings
+
