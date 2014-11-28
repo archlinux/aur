@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OmegaT
+GenericName=OmegaT-beta
+Exec=omegat
+Type=Application
+Comment=Beta version of free translation memory application.
+Comment[cs]=Beta verze svobodné aplikace překladové paměti.
+Terminal=false
+Categories=Development;Translation;Java;
+Icon=omegat
