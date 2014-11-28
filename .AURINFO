@@ -1,0 +1,20 @@
+pkgbase = datovka
+	pkgdesc = GUI application allowing access to a 'Databox' - an electronic communication interface endorsed by the Czech government
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://labs.nic.cz/page/969/datovka/
+	install = datovka.install
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = dslib
+	depends = pygtk
+	depends = python2-pyasn1
+	depends = python2-sqlalchemy
+	depends = sudsds
+	depends = hicolor-icon-theme
+	optdepends = python-reportlab
+	source = http://www.nic.cz/public_media/datove_schranky/releases/src/datovka-3.1.tar.gz
+
+pkgname = datovka
+
