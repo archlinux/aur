@@ -1,0 +1,23 @@
+pkgbase = rip
+	pkgdesc = A command-line based audio CD track ripper and MP3, FLAC, or Ogg Vorbis encoder
+	pkgver = 1.07
+	pkgrel = 3
+	url = http://rip.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = perl
+	depends = cddb_get
+	depends = perl-mp3-info
+	optdepends = cdparanoia
+	optdepends = cdda2wav
+	optdepends = bladeenc
+	optdepends = gogo
+	optdepends = lame
+	optdepends = oggenc
+	optdepends = flac
+	optdepends = notlame
+	source = http://rip.sourceforge.net/download/rip-1.07.tar.gz
+	md5sums = dd8c967220c854163279881b020dde69
+
+pkgname = rip
+
