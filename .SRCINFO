@@ -1,0 +1,13 @@
+pkgbase = safecopy
+	pkgdesc = A disk data recovery tool to extract data from damaged media
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://safecopy.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/safecopy/safecopy-1.7.tar.gz
+	sha256sums = 42fbed5d4764020eb0f34d95e97a0e14e62d801c3ef80f89bd497d94d39cc4fd
+
+pkgname = safecopy
+
