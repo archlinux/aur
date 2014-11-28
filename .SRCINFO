@@ -1,0 +1,28 @@
+pkgbase = acidrip
+	pkgdesc = A Gtk2::Perl application for ripping and encoding DVD's
+	pkgver = 0.14
+	pkgrel = 10
+	url = http://sourceforge.net/projects/acidrip/
+	arch = any
+	license = GPL
+	depends = mplayer
+	depends = lsdvd
+	depends = lame
+	depends = libdvdcss
+	depends = gtk2-perl
+	depends = perl
+	depends = mencoder
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/acidrip/acidrip-0.14.tar.gz
+	source = acidrip.desktop
+	source = acidrip.png
+	source = crop-fixes.patch
+	source = xvidencopts.patch
+	md5sums = c1c27bbf658e5c30f43e067a8ae283de
+	md5sums = f6896612df224a325d66c5f8fa8553e7
+	md5sums = 7498602e2a3838cf35b94af85d9954d3
+	md5sums = 1a8470702e2e0eda8ecbc473141aa08f
+	md5sums = 8cdf13f4bf0fd7b8c3c6adfd22480706
+
+pkgname = acidrip
+
