@@ -1,0 +1,13 @@
+pkgbase = pscpug
+	pkgdesc = A unix utility designed to graph a given process's CPU usage over time.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = http://www.diablonet.net/~mercadal/projects/pscpug/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://www.diablonet.net/~mercadal/projects/pscpug/pscpug035.tgz
+	md5sums = 625d23fc9b27e12f0a6411893e4d85d3
+
+pkgname = pscpug
+
