@@ -1,0 +1,14 @@
+pkgbase = flactagger
+	pkgdesc = A Ruby script for tagging FLAC files
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = http://flactagger.berlios.de/
+	arch = any
+	license = GPL3
+	depends = ruby
+	depends = flac
+	source = http://download.berlios.de/flactagger/flactagger-3.1.1.tar.bz2
+	md5sums = 72282bb6b0b7a29249f9193795cd6d6e
+
+pkgname = flactagger
+
