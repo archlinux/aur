@@ -6,12 +6,11 @@ pkgbase = beecrypt
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = automake
 	makedepends = python2
 	depends = icu
 	options = !libtool
 	source = http://downloads.sourceforge.net/sourceforge/beecrypt/beecrypt-4.2.1.tar.gz
-	md5sums = 8441c014170823f2dff97e33df55af1e
+	sha256sums = 286f1f56080d1a6b1d024003a5fa2158f4ff82cae0c6829d3c476a4b5898c55d
 
 pkgname = beecrypt
 
