@@ -11,14 +11,14 @@ source=(http://www.ee.oulu.fi/~iiska/projects/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('d1b25ddd5b06e20581ab84710275029c71f3b830f85d9d99177379b39b724b6b')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   make
 }
 
 package () {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  install -d ${pkgdir}/usr/{bin,share/man/man1}
-  make prefix=${pkgdir}/usr install
+  install -d "${pkgdir}"/usr/{bin,share/man/man1}
+  make prefix="${pkgdir}"/usr install
 }
