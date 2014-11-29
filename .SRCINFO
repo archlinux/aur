@@ -1,15 +1,18 @@
 pkgbase = detox
 	pkgdesc = An utility designed to clean up filenames by replacing characters with standard equivalents
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://detox.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = flex
 	options = !makeflags
+	backup = etc/detox/detoxrc
 	source = http://downloads.sourceforge.net/sourceforge/detox/detox-1.2.0.tar.bz2
+	source = http://sourceforge.net/p/detox/patches/_discuss/thread/02e5e473/ae23/attachment/detox-1.2.0.fix-invalid-memory-access.patch
 	md5sums = da34c6bc3c68ce2fb008e25066e72927
+	md5sums = 98f2c7cf5610bd4568d6e0e75af505af
 
 pkgname = detox
 
