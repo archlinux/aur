@@ -3,7 +3,7 @@
 
 pkgname=specto-bzr
 pkgver=126
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application that will watch configurable events"
 arch=('any')
 url="http://code.launchpad.net/specto"
@@ -12,6 +12,7 @@ depends=('python2-notify' 'gnome-python-extras' 'dbus-python' 'pygtk' 'gnome-ico
 makedepends=('bzr' 'librsvg')
 conflicts=('specto' 'specto-svn')
 provides=('specto')
+install=$pkgname.install
 
 source=()
 md5sums=()

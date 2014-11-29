@@ -1,8 +1,9 @@
 pkgbase = specto-bzr
 	pkgdesc = A desktop application that will watch configurable events
 	pkgver = 126
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.launchpad.net/specto
+	install = specto-bzr.install
 	arch = any
 	license = GPL2
 	makedepends = bzr
