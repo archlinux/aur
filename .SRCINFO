@@ -1,18 +1,16 @@
 pkgbase = qirssi
 	pkgdesc = A Qt trayicon and notifier for irssi
 	pkgver = 20090305
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/qirssi
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = qt
+	depends = qt4
 	depends = irssi
 	depends = screen
 	source = http://qirssi.googlecode.com/files/qirssi-20090305.tar.gz
-	source = LICENSE
 	md5sums = 96ff164721d6b293e37f0dffdcfa43f2
-	md5sums = 1c2fd6de6283a135030535a6c753c023
 
 pkgname = qirssi
 
