@@ -5,6 +5,7 @@ pkgbase = acidrip
 	url = http://sourceforge.net/projects/acidrip/
 	arch = any
 	license = GPL
+	makedepends = patch
 	depends = mplayer
 	depends = lsdvd
 	depends = lame
