@@ -1,5 +1,5 @@
 pkgbase = shorten
-	pkgdesc = An established low complexity waveform coder which uses a lossless compression scheme, superior to that of mp3.
+	pkgdesc = An established low complexity waveform coder which uses a lossless compression scheme, superior to that of mp3
 	pkgver = 3.6.1
 	pkgrel = 2
 	url = http://www.etree.org/shnutils/shorten/
