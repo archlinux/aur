@@ -19,31 +19,31 @@ sha256sums=('1d46864449c36dcf98915117276a4c40547a215a3a0a314e794e79bb8fb30b7e'
             'ac480a8244c1a5171b7f2d5892585360067d78e3113ccb45aad6afe7ed69aec5')
 
 package() {
-  cd ${srcdir}
-  install -d ${pkgdir}/usr/share/java/$pkgname \
-             ${pkgdir}/usr/bin
+  cd "${srcdir}"
+  install -d "${pkgdir}"/usr/share/java/$pkgname \
+             "${pkgdir}"/usr/bin
 
   find . -type f -exec chmod 644 "{}" \;
-  mv *.txt ${srcdir}/docs
-  cp -r * ${pkgdir}/usr/share/java/$pkgname
-  chmod 755 ${pkgdir}/usr/share/java/$pkgname/OmegaT
+  mv *.txt "${srcdir}"/docs
+  cp -r * "${pkgdir}"/usr/share/java/$pkgname
+  chmod 755 "${pkgdir}"/usr/share/java/$pkgname/OmegaT
 
 #.desktop file + icon
-  install -D -m644 ${srcdir}/$pkgname.desktop \
-    ${pkgdir}/usr/share/applications/$pkgname.desktop
-  install -D -m644 ${srcdir}/icons/OmegaT_Icon.png \
-    ${pkgdir}/usr/share/pixmaps/$pkgname.png
+  install -D -m644 "${srcdir}"/$pkgname.desktop \
+    "${pkgdir}"/usr/share/applications/$pkgname.desktop
+  install -D -m644 "${srcdir}"/icons/OmegaT_Icon.png \
+    "${pkgdir}"/usr/share/pixmaps/$pkgname.png
 
 #more images
-  install -m644 ${pkgdir}/usr/share/java/$pkgname/icons/*.png \
-    ${pkgdir}/usr/share/java/$pkgname/images/
+  install -m644 "${pkgdir}"/usr/share/java/$pkgname/icons/*.png \
+    "${pkgdir}"/usr/share/java/$pkgname/images/
 
 #removing obsolete files
-  rm -rf ${pkgdir}/usr/share/java/$pkgname/{*.{zip,desktop},OmegaT,OmegaT.bat,icons}
+  rm -rf "${pkgdir}"/usr/share/java/$pkgname/{*.{zip,desktop},OmegaT,OmegaT.bat,icons}
 
 #making executable file
-  echo "#!/bin/sh" > ${pkgdir}/usr/bin/$pkgname
-  echo "cd /usr/share/java/$pkgname/" >> ${pkgdir}/usr/bin/$pkgname
-  echo "java -jar OmegaT.jar \$*" >> ${pkgdir}/usr/bin/$pkgname
-  chmod 755 ${pkgdir}/usr/bin/$pkgname
+  echo "#!/bin/sh" > "${pkgdir}"/usr/bin/$pkgname
+  echo "cd /usr/share/java/$pkgname/" >> "${pkgdir}"/usr/bin/$pkgname
+  echo "java -jar OmegaT.jar \$*" >> "${pkgdir}"/usr/bin/$pkgname
+  chmod 755 "${pkgdir}"/usr/bin/$pkgname
 }
