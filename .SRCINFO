@@ -1,13 +1,13 @@
 pkgbase = chk4mail
 	pkgdesc = A CLI utility, which quickly checks multiple folders for new mail
-	pkgver = 2.25
+	pkgver = 2.27
 	pkgrel = 1
-	url = ftp://ftp.stack.nl/pub/users/johans/chk4mail/
+	url = http://freecode.com/projects/chk4mail
 	arch = i686
 	arch = x86_64
 	license = custom: MIT
-	source = ftp://mud.stack.nl/pub/chk4mail/chk4mail-2.25.tar.gz
-	md5sums = a9c26e4a05511b510577799060837994
+	source = ftp://ftp.stack.nl/pub/users/johans/chk4mail/chk4mail-2.27.tar.gz
+	md5sums = d5b3d8f48a1180b58081b4a223f35f59
 
 pkgname = chk4mail
 
