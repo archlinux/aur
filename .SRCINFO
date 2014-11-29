@@ -1,20 +1,13 @@
 pkgbase = essentia-acousticbrainz
-	pkgdesc = audio analysis and audio-based music information retrieval for acousticbrainz
-	pkgver = 2.1_beta1.r28.g21ef5f4
+	pkgdesc = audio analysis and audio-based music information retrieval (binary for acousticbrainz)
+	pkgver = 2.1_beta2
 	pkgrel = 1
-	url = http://essentia.upf.edu/
+	url = http://acousticbrainz.org/download
 	arch = x86_64
 	arch = i686
 	license = AGPL
-	makedepends = python2
-	makedepends = git
-	depends = libyaml
-	depends = fftw
-	depends = ffmpeg
-	depends = taglib
-	depends = libsamplerate
-	source = git+https://github.com/MTG/essentia.git#commit=21ef5f41f15ed1f80c8f9b36802430055d3b93e9
-	md5sums = SKIP
+	source = http://acousticbrainz.org/static/download/essentia-extractor-v2.1_beta2-linux-.tar.gz
+	sha256sums = 46deb0a053b4910c4e68737a7b6556ff5360260c8f86652f91a0130445f5c949
 
 pkgname = essentia-acousticbrainz
 
