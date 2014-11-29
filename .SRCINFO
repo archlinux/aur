@@ -1,5 +1,5 @@
 pkgbase = xmms-scrobbler
-	pkgdesc = Audioscrobbler plugin for XMMS.
+	pkgdesc = Audioscrobbler plugin for XMMS
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://xmms-scrobbler.sommitrealweird.co.uk/
