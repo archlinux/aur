@@ -1,16 +1,16 @@
 pkgbase = nzbperl
-	pkgdesc = nzb based nntp/usenet downloader in perl
+	pkgdesc = NZB based nntp/usenet downloader in perl
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://noisybox.net/computers/nzbperl/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = perl-term-readkey
-	depends = perl-xml-dom
-	depends = uudeview
+	depends = perl-xml-dom uudeview
 	source = http://noisybox.net/computers/nzbperl/nzbperl-0.6.8.pl
+	source = http://noisybox.net/computers/nzbperl/nzbperlrc.sample
 	md5sums = 70e64b7cd4ff9c7c098bf8dffeb62578
+	md5sums = b5ec89f58637d4ec34fcbab53065e1c5
 
 pkgname = nzbperl
 
