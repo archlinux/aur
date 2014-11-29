@@ -1,5 +1,5 @@
 pkgbase = osmo-svn
-	pkgdesc = Development version of a handy personal organizer.
+	pkgdesc = Development version of a handy personal organizer
 	pkgver = 777
 	pkgrel = 1
 	url = http://clayo.org/osmo/
@@ -8,10 +8,10 @@ pkgbase = osmo-svn
 	license = GPL
 	makedepends = subversion
 	makedepends = autoconf
-	depends = gtk2>=2.10
+	depends = gtk2
 	depends = libxml2
 	optdepends = libical
-	optdepends = libgringotts>=1.2.1
+	optdepends = libgringotts
 	optdepends = libsyncml
 	optdepends = libnotify
 	provides = osmo
