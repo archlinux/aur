@@ -12,10 +12,10 @@ makedepends=('intltool')
 source=(http://hotwire-shell.googlecode.com/files/$pkgname-$pkgver.tar.gz)
 md5sums=('077a32573b32c91d591b668d2dcb9645')
 
-build() {
-  cd ${srcdir}/$pkgname-$pkgver
-
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
   python2 setup.py bdist
-  cd ${pkgdir}
-  tar zxvf ${srcdir}/$pkgname-$pkgver/dist/*.tar.gz
+
+  cd "${pkgdir}"
+  tar zxvf "${srcdir}"/$pkgname-$pkgver/dist/*.tar.gz
 }
