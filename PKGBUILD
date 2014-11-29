@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=geo
-pkgver=141025181953
+pkgver=141123142931
 pkgrel=1
 pkgdesc="Various tools for geocaching"
 arch=('i686' 'x86_64')
@@ -13,21 +13,23 @@ optdepends=('gpsd: for GPS management'
             'gpsdrive: for GPS management'
             'tangogps: for GPS management'
             'viking: for GPS management')
-source=(http://geo.rkkda.com/$pkgname-14-10-25-18-19-53.tar.gz
+source=(http://geo.rkkda.com/$pkgname-14-11-23-14-29-31.tar.gz
         geo-install-patch.diff)
-sha256sums=('1cb96c11a18e46357e5c6c8d92cd19e12ce2c69a7e85f382f8666e6762887b08'
-            '7996a998a0ce23764e870e1f63dd76a067488fe90e54d3955caf33623994cf8c')
+sha256sums=('934ef5a9b3a11076be05ddb3ae55f17ade12ab5e2ddcd0f536b0085a51551144'
+            'e50e8d05c3f845c4e6667eb3b76f7c757353d9a1df720bda8b687a1a430e1bc4')
+
+prepare() {
+  cd "${srcdir}"/$pkgname
+  patch -Np0 -i "${srcdir}"/geo-install-patch.diff
+}
 
 build() {
   cd "${srcdir}"/$pkgname
-
   make
 }
 
 package(){
   cd "${srcdir}"/$pkgname
-
-  patch -Np0 -i "${srcdir}"/geo-install-patch.diff
 
   install -d "${pkgdir}"/usr/bin
   make PREFIX="${pkgdir}"/usr install
