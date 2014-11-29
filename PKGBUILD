@@ -2,7 +2,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python2-lineprofiler
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Line-by-line profiler."
 url="http://pypi.python.org/pypi/line_profiler"
 arch=('i686' 'x86_64')
@@ -23,4 +23,5 @@ package() {
   python2 setup.py install --prefix=/usr --root="${pkgdir}"
   install -d ${license_dir}
   install -m644 LICENSE{,_Python}.txt "${license_dir}"
+  mv "${pkgdir}"/usr/bin/kernprof{,2}
 }
