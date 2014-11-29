@@ -13,6 +13,7 @@ pkgbase = gltron
 	depends = sdl_sound
 	depends = libpng
 	depends = glu
+	options = !makeflags
 	source = http://downloads.sourceforge.net/sourceforge/gltron/gltron-0.70-source.tar.gz
 	source = http://upload.wikimedia.org/wikipedia/commons/thumb/5/58/GLTron.png/120px-GLTron.png
 	source = gltron-0.70-configure.patch
