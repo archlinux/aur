@@ -1,12 +1,13 @@
 pkgbase = mudix
-	pkgdesc = MUDix is a lightweight and very stable MUD client for the linux console.
+	pkgdesc = A lightweight and very stable MUD client for the linux console
 	pkgver = 4.3
 	pkgrel = 2
 	url = http://dw.nl.eu.org/mudix.html
 	arch = i686
+	arch = x86_64
 	license = GPL
 	depends = ncurses
-	source = http://freebsd.unixfreunde.de/sources/mudix-4.3.tar.gz
+	source = ftp://ftp.uni-kl.de/pub/linux/gentoo/distfiles/mudix-4.3.tar.gz
 	md5sums = 8a360b6fd1207c5aa4d8775c16a38705
 
 pkgname = mudix
