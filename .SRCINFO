@@ -1,12 +1,12 @@
 pkgbase = kudus
-	pkgdesc = Sudoku puzzle generator and solver for KDE.
+	pkgdesc = Sudoku puzzle generator and solver for KDE
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.leonscape.co.uk/linux/kudus
 	arch = i686
+	arch = x86_64
 	license = GPL
-	makedepends = kdegames
-	depends = kdelibs
+	depends = kdelibs3
 	depends = qt3
 	source = http://www.leonscape.co.uk/linux/kudus/kudus-0.3.0.tar.bz2
 	md5sums = 0244e9d4b282d193cffb86bbfe8fa10b
