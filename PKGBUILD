@@ -9,6 +9,7 @@ license=('GPL3')
 
 depends=('python')
 
+provides=('python-pafy')
 conflicts=('python-pafy')
 
 source=('git+https://github.com/np1/pafy.git')
