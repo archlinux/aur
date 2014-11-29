@@ -11,12 +11,16 @@ source=(http://www.itu.dk/people/jobr/$pkgname/release/$pkgname-$pkgver.tar.gz)
 md5sums=('093ac491bc5f70c4b050e57e3437ab07')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
-  install -d ${pkgdir}/usr || return 1
+  cd "${srcdir}"/$pkgname-$pkgver
 
   ./configure --prefix=/usr
-  make PREFIX=${pkgdir}/usr || return 1
+  make PREFIX="${pkgdir}"/usr
+}
 
-  sed -i 's|$(PREFIX)/man/man1|$(PREFIX)/share/man/man1|' Makefile || return 1
-  make PREFIX=${pkgdir}/usr install
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  sed -i 's|$(PREFIX)/man/man1|$(PREFIX)/share/man/man1|' Makefile
+  install -d "${pkgdir}"/usr
+  make PREFIX="${pkgdir}"/usr install
 }
