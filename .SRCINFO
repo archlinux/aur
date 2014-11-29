@@ -1,11 +1,11 @@
 pkgbase = exiftags
 	pkgdesc = Parses a JPEG file looking for Exif (Exchangeable Image File) data, formatting, and printing image properties.
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://johnst.org/sw/exiftags/
 	arch = i686
+	arch = x86_64
 	license = BSD
-	depends = glibc
 	source = http://johnst.org/sw/exiftags/exiftags-1.01.tar.gz
 	md5sums = 9d5bce968fdde2dc24ba49c0024dc0cc
 
