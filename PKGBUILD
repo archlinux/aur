@@ -9,7 +9,9 @@ license=('GPL3')
 
 depends=('python' 'python-setuptools' 'python-pafy')
 optdepends=('mpv: Alternative to mplayer for playback'
-            'mplayer: Alternative to mpv for playback')
+            'mplayer: Alternative to mpv for playback'
+            'ffmpeg: for transcoding downloaded content'
+            'xclip: for copying content to the clipboard')
 
 conflicts=('mps-youtube')
 
