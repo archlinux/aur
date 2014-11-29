@@ -1,4 +1,4 @@
-# Maintainer: Dragonlord <dragonlord at seznam dot cz>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=mudix
 pkgver=4.3
