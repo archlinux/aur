@@ -1,14 +1,14 @@
 pkgbase = sshdfilter
 	pkgdesc = SSH brute force attack blocker
 	pkgver = 1.5.7
-	pkgrel = 1
-	url = http://www.csc.liv.ac.uk/~greg/sshdfilter/
+	pkgrel = 2
+	url = http://freecode.com/projects/sshdfilter
 	install = sshdfilter.install
 	arch = any
 	license = GPL
 	depends = openssh
 	depends = perl
-	source = http://www.csc.liv.ac.uk/~greg/sshdfilter-1.5.7.tar.gz
+	source = http://fossies.org/linux/privat/sshdfilter-1.5.7.tar.gz
 	source = sshdfilter
 	source = sshdfilterrc
 	sha256sums = 19252f789b8eb39a39cb4ea27f64c4ba5e1822bd75d1daddca95a297f1d9ea9e
