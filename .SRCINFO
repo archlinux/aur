@@ -1,12 +1,12 @@
 pkgbase = iotop-git
 	pkgdesc = Python program with a top like UI used to show of behalf of which process is the I/O going on
-	pkgver = 20110105
+	pkgver = 20141018
 	pkgrel = 1
 	url = http://guichaz.free.fr/iotop/
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = python2
+	depends = python
 	provides = iotop
 	conflicts = iotop
 
