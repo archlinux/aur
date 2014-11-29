@@ -26,7 +26,7 @@ package() {
   _apidir="addon-google_apis-google_inc_-${_apilevel}"
   mkdir -p "${_destdir}"
   mv "${srcdir}"/google_phone_x86-[0-9]*-linux-x86 "${_destdir}/${_apidir}"
-  mv 'source.properties' "${_destdir}/${_apidir}"
+  install -Dm644 "${srcdir}/source.properties"  "${_destdir}/${_apidir}"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
