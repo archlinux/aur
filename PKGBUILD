@@ -18,8 +18,8 @@ backup=(etc/$pkgname/arch.conf)
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
 sha256sums=('de48cb2021c9ec199cf943d6cf764a550527fff775ae3ed817e4f25164709f53')
 
-build() {
-  cd ${srcdir}/$pkgname-$pkgver
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root="${pkgdir}"
 }
