@@ -1,0 +1,20 @@
+pkgbase = android-google-apis-armv7a-eabi
+	pkgdesc = Android Google APIs ARM EABI v7a System Image, latest API
+	pkgver = 21_r02
+	pkgrel = 1
+	url = http://code.google.com/android/add-ons/google-apis
+	arch = any
+	license = custom
+	depends = android-platform
+	provides = android-google-apis-armv7a-eabi-21
+	provides = android-google-apis-armv7-eabi-21
+	conflicts = android-google-apis-armv7a-eabi-21
+	conflicts = android-google-apis-armv7-eabi-21
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_arm-21_r02.zip
+	source = source.properties
+	sha1sums = 3b86f52b0141e3d9d52ae80af6e12037cc4a670f
+	sha1sums = 5a4fef29d81edf276de020d2d587d0a4c83edc40
+
+pkgname = android-google-apis-armv7a-eabi
+
