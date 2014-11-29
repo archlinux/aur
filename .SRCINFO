@@ -1,15 +1,13 @@
 pkgbase = gnopaster
-	pkgdesc = gnopaste's submitter
+	pkgdesc = Free pastebin programm for http://nopaste.info
 	pkgver = 0.0.9
 	pkgrel = 2
 	url = http://gnopaste.sourceforge.net/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
-	depends = perl
 	depends = perl-libwww
 	depends = perl-config-simple
-	source = http://dl.sourceforge.net/sourceforge/gnopaste/gnopaster-0.0.9.pl.gz
+	source = http://nopaste.info/apps/gnopaster-0.0.9.pl.gz
 	md5sums = f4dc2382fb96feb8894f1f8c346c5987
 
 pkgname = gnopaster
