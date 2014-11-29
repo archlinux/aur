@@ -1,25 +1,33 @@
-# Contributor: Jaroslav Lichtblau <tu@dragonlord.cz>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=cstools
 pkgver=3.42
-pkgrel=2
-pkgdesc="Tools for dealing with Czech texts in Perl."
-arch=('i686' 'x86_64')
-url="http://www.fi.muni.cz/~adelton/perl/#cstools"
-license=('unknown')
+pkgrel=3
+pkgdesc="Tools for dealing with Czech texts in Perl"
+arch=('any')
+url="https://metacpan.org/release/Cstools"
+license=('custom')
 depends=('perl')
-source=(http://www.fi.muni.cz/~adelton/perl/Cstools-$pkgver.tar.gz)
-
+options=('!emptydirs')
+source=(https://cpan.metacpan.org/authors/id/J/JA/JANPAZ/Cstools-$pkgver.tar.gz)
 md5sums=('ea18f2a24ef5de92483a5e03ed9d2659')
 
 build() {
-  cd "${srcdir}/Cstools-$pkgver"
-  install -d ${srcdir}/build
-  cp -rf ${srcdir}/Cstools-$pkgver/* ${srcdir}/build/
+  cd "${srcdir}"/Cstools-$pkgver
+  perl Makefile.PL
+  make
+}
 
-  cd ${srcdir}/build
-  perl Makefile.PL || return 1
-  make || return 1
-  make test || return 1
-  make DESTDIR=${pkgdir} install || return 1
+check() {
+  cd "${srcdir}"/Cstools-$pkgver
+  make test
+}
+
+package() {
+  cd "${srcdir}"/Cstools-$pkgver
+  make DESTDIR="${pkgdir}" install
+
+#license
+  install -d "${pkgdir}"/usr/share/licenses/${pkgname}/
+  sed '84,86p;d' README > "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
