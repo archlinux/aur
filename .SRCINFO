@@ -1,14 +1,13 @@
 pkgbase = mm2odt
-	pkgdesc = Plugin which exports a FreeMind mindmap to an OOorg format and can use users document templates
-	pkgver = 0.8.0
+	pkgdesc = Export a FreeMind mindmap to an OpenOffice.org format .odt and .odp
+	pkgver = 0.9.0beta9
 	pkgrel = 1
 	url = http://sourceforge.net/projects/mm2odtfreemind/
-	arch = i686
+	arch = any
 	license = GPL
-	makedepends = unzip
-	depends = freemind>=$pkgver
-	source = http://downloads.sourceforge.net/mm2odtfreemind/Plugin_odt_FM0.8.0.zip
-	md5sums = 61dc748d262fb95ed2fd56798d9ed925
+	depends = freemind
+	source = http://sourceforge.net/projects/mm2odtfreemind/files/Export%20to%20ODT/for%20FreeMind%200.9.0%20beta%209/Plugin_ODT_FM0.9.0beta9.zip
+	md5sums = 17aaccb79771163dffbbfa12e17eb34a
 
 pkgname = mm2odt
 

@@ -1,22 +1,25 @@
-# Contributor: Dragonlord <dragonlord[at]seznam[.]cz>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+
 pkgname=mm2odt
-pkgver=0.8.0
+pkgver=0.9.0beta9
 pkgrel=1
-pkgdesc="Plugin which exports a FreeMind mindmap to an OOorg format and can use users document templates"
-arch=('i686')
+pkgdesc="Export a FreeMind mindmap to an OpenOffice.org format .odt and .odp"
+arch=('any')
 url="http://sourceforge.net/projects/mm2odtfreemind/"
 license=('GPL')
-depends=('freemind>=$pkgver')
-makedepends=('unzip')
-source=(http://downloads.sourceforge.net/mm2odtfreemind/Plugin_odt_FM$pkgver.zip)
-md5sums=('61dc748d262fb95ed2fd56798d9ed925')
+depends=('freemind')
+source=(http://sourceforge.net/projects/mm2odtfreemind/files/Export%20to%20ODT/for%20FreeMind%200.9.0%20beta%209/Plugin_ODT_FM0.9.0beta9.zip)
+md5sums=('17aaccb79771163dffbbfa12e17eb34a')
 
-build() {
-  cd "$startdir/src"
+prepare() {
+  cd "${srcdir}"
   find . -type f -exec chmod -x {} \;
+}
 
-  install -d "$startdir/pkg/usr/share/freemind/plugins"
-  cp -r "$startdir/src/odt" "$startdir/pkg/usr/share/freemind/plugins"
-  install -D -m644 "$startdir/src/ExportOdt.xml" \
-    "$startdir/pkg/usr/share/freemind/plugins/ExportOdt.xml"
+package() {
+  cd "${srcdir}"
+
+  install -d "${pkgdir}"/usr/share/freemind/plugins
+  cp -a "${srcdir}"/* "${pkgdir}"/usr/share/freemind/plugins
+  rm "${pkgdir}"/usr/share/freemind/plugins/Plugin_ODT_FM0.9.0beta9.zip
 }
