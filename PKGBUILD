@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  
+
   ./configure --prefix="${pkgdir}"/usr --docdir="${pkgdir}"/usr/share/${pkgname} --without-x --with-ncurses
   make
   make gameserver
