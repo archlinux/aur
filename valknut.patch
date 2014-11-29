@@ -1,0 +1,12 @@
+diff --git a/valknut/main.cpp b/valknut/main.cpp
+index a14009e..f3066b8 100644
+--- a/valknut/main.cpp
++++ b/valknut/main.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include <stdlib.h>
+ #ifndef WIN32
++#include <unistd.h>
+ #include <signal.h>
+ #endif
+ 
