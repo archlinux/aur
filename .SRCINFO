@@ -5,6 +5,7 @@ pkgbase = zangband
 	url = http://www.zangband.org
 	install = zangband.install
 	arch = i686
+	arch = x86_64
 	license = custom
 	makedepends = ncurses
 	depends = ncurses

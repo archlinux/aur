@@ -30,7 +30,3 @@ cat << EOM
 
 EOM
 }
-
-op=$1
-shift
-[ "$(type -t "$op")" = "function" ] && $op "$@"
