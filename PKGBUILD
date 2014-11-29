@@ -3,7 +3,7 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 
 pkgname=byacc
-pkgver=20141006
+pkgver=20141128
 pkgrel=1
 pkgdesc="A Berkeley reimplementation of the Unix parser generator Yacc"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 provides=('bison')
 conflicts=('bison' 'byacc-noconflict')
 source=(ftp://invisible-island.net/$pkgname/$pkgname.tar.gz)
-sha256sums=('391b0ac550e94920a86960c6973ec539784dc84849e7c2bb1645ae6d8178b14d')
+sha256sums=('f517fc21f08c1a1f010177357df58fc64eb1131011e5dcd48c19fe44c47198d0')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
