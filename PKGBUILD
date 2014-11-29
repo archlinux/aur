@@ -6,7 +6,7 @@ pkgname=gdm-themes
 pkgver=2.4
 pkgrel=5
 pkgdesc="Nice themes for GDM"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://art.gnome.org/themes/gdm_greeter/"
 license=('unknown')
 depends=('gdm-old')
@@ -20,7 +20,7 @@ source=(${_theme_url}GDM-AproachOne.tar.gz \
         ${_theme_url}GDM-CleanLinux.tar.gz \
         ${_theme_url}GDM-CleanX.tar.gz \
         ${_theme_url}GDM-CompetingEntities.tar.gz \
-#        ${_theme_url}GDM-DarkGno.tar.gz \
+        ${_theme_url}GDM-DarkGno.tar.gz \
         ${_theme_url}GDM-DroplineFun.tar.bz2 \
         ${_theme_url}GDM-EarthLights.tar.gz \
         ${_theme_url}GDM-Earth.tar.gz \
@@ -39,7 +39,7 @@ source=(${_theme_url}GDM-AproachOne.tar.gz \
         ${_theme_url}GDM-GreenForest.tar.gz \
         ${_theme_url}GDM-Insectz.tar.gz \
         ${_theme_url}GDM-Kabooom.tar.gz \
-#        ${_theme_url}GDM-LandingClearance.tar.gz \
+        ${_theme_url}GDM-LandingClearance.tar.gz \
         ${_theme_url}GDM-LoznicaSerbia.tar.gz \
         ${_theme_url}GDM-ManzanaTuxBlack.tar.gz \
         ${_theme_url}GDM-ManzanaTux.tar.gz \
@@ -47,7 +47,7 @@ source=(${_theme_url}GDM-AproachOne.tar.gz \
         ${_theme_url}GDM-Northside.tar.gz \
         ${_theme_url}GDM-NOTAV.tar.gz \
         ${_theme_url}GDM-PiratesOfGnome.tar.gz \
-#        ${_theme_url}GDM-RedmondLogin.tar.gz \
+        ${_theme_url}GDM-RedmondLogin.tar.gz \
         ${_theme_url}GDM-Sakura.tar.gz \
         ${_theme_url}GDM-SimpleElegance.tar.gz \
         ${_theme_url}GDM-SoftFlowerGdm.tar.gz \
@@ -57,7 +57,7 @@ source=(${_theme_url}GDM-AproachOne.tar.gz \
         ${_theme_url}GDM-VarietyBrushed.tar.gz \
         ${_theme_url}GDM-WhiteFootOnGreen.tar.gz \
         ${_theme_url}GDM-Wolf.tar.gz \
-#        ${_theme_url}GDM-XPeelike.tar.gz \
+        ${_theme_url}GDM-XPeelike.tar.gz \
         ${_theme_url}GDM-ZX6R.tar.bz2)
 md5sums=('6e1c25bcdb99ce53d0f0be18567be779'
          '6988a5c0506e4b5f5633c1c60c5f5476'
@@ -68,6 +68,7 @@ md5sums=('6e1c25bcdb99ce53d0f0be18567be779'
          'f4555dffe8fcbe13f71b39e9758abfab'
          'e4c3c4c23dea93ce038bdf1e5d399de3'
          '1374c6a528f92569046bd197e0541ebb'
+         '2bb9530fee91f800c76298cea5f92c8d'
          'dfd1c34b74ec98298658872c0ccc238e'
          '337c57bdff371f6c912b5ee42d7233d5'
          '779056d7b683a75d283a466c78975647'
@@ -86,6 +87,7 @@ md5sums=('6e1c25bcdb99ce53d0f0be18567be779'
          '978349209e7a4ca05b2a6a9db97ee9f1'
          'bab782dcedf87eb9c701d93d8915b089'
          '6ac9e83c7c640ff4f9570565f143a6e8'
+         'c578e3b4335c1776619705b750c8c8b5'
          'a895837ea64a4d27ba49140591e686fc'
          '3049cd183d4a93b8ccf4ba61f8f47bea'
          'd725cb1afc0b8635215029d7d46946b9'
@@ -93,6 +95,7 @@ md5sums=('6e1c25bcdb99ce53d0f0be18567be779'
          'fdd2286ac41e7015b62509eb3d67f403'
          '30cbef0fe41266260431549fb2d1d1f9'
          '22b7b7e6ca8ff97165af363d2544f611'
+         '85f38c96c9eabe1ee6b04da8f880def8'
          '97669efb4cf5c49169a14b6765dc70ce'
          '5d2f9720162aedf17080abb98e9b6c41'
          '2b58d5d9d14e07fe7bc7b89edb210f3b'
@@ -102,15 +105,16 @@ md5sums=('6e1c25bcdb99ce53d0f0be18567be779'
          '216f0361bcfbbbb17c33fac737de40e4'
          'fc4bc8e2d6ccfc685217c13c1059e084'
          '10eb00d299e88fb7c8a603991fd0c610'
+         'bf743653c2293f6395ddd829b807e64f'
          'c683838a2924ec08ed888e88c995b1d3')
 
-build() {
-  cd ${srcdir}
+package() {
+  cd "${srcdir}"
 
-  rm *.gz *.bz2 || return 1
-  install -d ${pkgdir}/usr/share/gdm/themes || return 1
-  cp -R * ${pkgdir}/usr/share/gdm/themes || return 1
-  rm ${pkgdir}/usr/share/gdm/themes/*/{INSTALL,README,license.txt,readme,*~,.DS_Store} || return 1
-  chmod 755 ${pkgdir}/usr/share/gdm/themes/* || return 1
-  chmod 644 ${pkgdir}/usr/share/gdm/themes/*/*  || return 1
+  rm *.gz *.bz2
+  install -d "${pkgdir}"/usr/share/gdm/themes
+  cp -R * "${pkgdir}"/usr/share/gdm/themes
+  rm "${pkgdir}"/usr/share/gdm/themes/*/{INSTALL,README,license.txt,readme,*~,.DS_Store}
+  chmod 755 "${pkgdir}"/usr/share/gdm/themes/*
+  chmod 644 "${pkgdir}"/usr/share/gdm/themes/*/*
 }
