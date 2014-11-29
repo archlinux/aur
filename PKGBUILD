@@ -16,19 +16,22 @@ source=(http://seehuhn.de/data/$pkgname-$pkgver.tar.gz Makefile.in.patch)
 md5sums=('bfe23ef5cfa838ac261eee34ea5322f3'
          '8c8cb8a25e12f574243778dac8e376a1')
 
-build() {
-  cd ${srcdir}/$pkgname-$pkgver
+prepare() {
+  cd "${srcdir}"/$pkgname-$pkgver
 
   patch -Np0 -i ${srcdir}/Makefile.in.patch
+}
+
+build() {
+  cd "${srcdir}"/$pkgname-$pkgver
 
   ./configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR=${pkgdir} install
-	
-  rm ${pkgdir}/usr/share/info/dir
+  make DESTDIR="${pkgdir}" install
+  rm "${pkgdir}"/usr/share/info/dir
 }
