@@ -1,13 +1,13 @@
 pkgbase = pngslice
-	pkgdesc = The program performs this slicing for png images and writes a fragment of html to handle the image inclusion.
+	pkgdesc = Slice a png image for text-flow in html
 	pkgver = 0.66
-	pkgrel = 1
-	url = http://sview01.wiredworkplace.net/pub/jjg/en/code/pngslice.html
+	pkgrel = 2
+	url = http://download.openpkg.org/components/versioned/pngslice/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libpng
-	source = http://sview01.wiredworkplace.net/pub/jjg/code/pngslice.tar.gz
+	source = http://download.openpkg.org/components/versioned/pngslice/pngslice-20081018.tar.gz
 	md5sums = 816313410dee225f417765b1af0e6186
 
 pkgname = pngslice
