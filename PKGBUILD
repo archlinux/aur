@@ -8,17 +8,16 @@ pkgdesc='"Flight of the Amazon Queen" is a graphical point-and-click adventure g
 arch=('any')
 url="http://en.wikipedia.org/wiki/Flight_of_the_amazon_queen"
 license=('custom')
-depends=('scummvm>=1.0.0')
-source=(http://downloads.sourceforge.net/scummvm/FOTAQ_Talkie-$pkgver.zip \
-	$pkgname.sh)
+depends=('scummvm')
+source=(http://downloads.sourceforge.net/scummvm/FOTAQ_Talkie-$pkgver.zip
+        $pkgname.sh)
 md5sums=('4d94f62a907123b77819010117444332'
          'ed893eb708085122f5a77774672f2d99')
 
-build() {
-  cd ${srcdir}
+package() {
+  cd "${srcdir}"
 
-  install -D -m644 ${srcdir}/queen.1c ${pkgdir}/usr/share/$pkgname/queen.1c || return 1
-  install -D -m644 ${srcdir}/readme.txt ${pkgdir}/usr/share/licenses/$pkgname/readme.txt || return 1
-
-  install -D -m755 ${srcdir}/$pkgname.sh ${pkgdir}/usr/bin/$pkgname || return 1
+  install -D -m644 "${srcdir}"/queen.1c "${pkgdir}"/usr/share/$pkgname/queen.1c
+  install -D -m644 "${srcdir}"/readme.txt "${pkgdir}"/usr/share/licenses/$pkgname/readme.txt
+  install -D -m755 "${srcdir}"/$pkgname.sh "${pkgdir}"/usr/bin/$pkgname
 }

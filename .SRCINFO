@@ -5,7 +5,7 @@ pkgbase = fotaq
 	url = http://en.wikipedia.org/wiki/Flight_of_the_amazon_queen
 	arch = any
 	license = custom
-	depends = scummvm>=1.0.0
+	depends = scummvm
 	source = http://downloads.sourceforge.net/scummvm/FOTAQ_Talkie-1.1.zip
 	source = fotaq.sh
 	md5sums = 4d94f62a907123b77819010117444332
