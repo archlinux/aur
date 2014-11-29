@@ -1,13 +1,13 @@
 pkgbase = ranpwd
-	pkgdesc = A tool to generate random passwords.
-	pkgver = 1.2
-	pkgrel = 2
+	pkgdesc = A tool to generate random passwords
+	pkgver = 1.1
+	pkgrel = 3
 	url = http://www.kernel.org/pub/software/utils/admin/ranpwd
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://ftp.cvut.cz/pub/software/utils/admin/ranpwd/ranpwd-1.2.tar.bz2
-	md5sums = ce5bb201130aad92f0f9a90fc8be624f
+	source = https://www.kernel.org/pub/software/utils/admin/ranpwd/ranpwd-1.1.tar.gz
+	md5sums = 94e376973b36071f2be661ae22f67e8c
 
 pkgname = ranpwd
 
