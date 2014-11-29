@@ -13,6 +13,6 @@ depends=('binutils' 'pacman')
 source=($pkgname-$pkgver.sh)
 md5sums=('ee683c467e4881736ed60a15ebbcc7a5')
 
-build() {
+package() {
   install -Dm755 $pkgname-$pkgver.sh "${pkgdir}"/usr/bin/$pkgname
 }
