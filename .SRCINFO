@@ -12,7 +12,9 @@ pkgbase = android-x86-system-image
 	conflicts = android-x86-system-image-21
 	options = !strip
 	source = http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86-21_r01.zip
+	source = source.properties
 	sha1sums = 1b5d4228736afc32c7ad1439740abb39b1bc0fae
+	sha1sums = f5c8ed5a05b94dac9146e85f1bc262dc5db8d65c
 
 pkgname = android-x86-system-image
 

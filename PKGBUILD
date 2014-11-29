@@ -14,13 +14,16 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86-21_r01.zip")
-sha1sums=('1b5d4228736afc32c7ad1439740abb39b1bc0fae')
+source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86-21_r01.zip"
+        "source.properties")
+sha1sums=('1b5d4228736afc32c7ad1439740abb39b1bc0fae'
+          'f5c8ed5a05b94dac9146e85f1bc262dc5db8d65c')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
   mkdir -p "${_destdir}"
   mv "${srcdir}/x86" "${_destdir}"
+  install -Dm644 "${srcdir}/source.properties" "${_destdir}/x86"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
