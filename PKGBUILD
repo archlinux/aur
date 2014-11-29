@@ -1,15 +1,16 @@
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=picturesort
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Sorts pictures on how they look, not by their metadata"
 arch=('i686' 'x86_64')
 url="http://www.vanheusden.com/$pkgname/"
 license=('GPL')
 depends=('fftw' 'gcc-libs' 'imagemagick')
-source=($url/$pkgname-$pkgver.tgz)
-md5sums=('f92580b48bf858207b17603124db449e')
+source=(http://www.vanheusden.com/$pkgname/$pkgname-$pkgver.tgz)
+md5sums=('1d98b7a81ee2f94b4cf0ab70d3f35df6')
 
 build() {
   cd $pkgname-$pkgver
@@ -18,8 +19,11 @@ build() {
 	-e 's|Graphics||g' \
 	-i Makefile
 
-  make || return 1
-  install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
+  make
 }
 
-# vim:set ts=2 sw=2 et:
+build() {
+  cd $pkgname-$pkgver
+
+  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
+}
