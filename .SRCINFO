@@ -1,14 +1,13 @@
 pkgbase = specto-bzr
-	pkgdesc = A desktop application that will watch configurable events.
+	pkgdesc = A desktop application that will watch configurable events
 	pkgver = 126
 	pkgrel = 1
 	url = http://code.launchpad.net/specto
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL2
 	makedepends = bzr
 	makedepends = librsvg
-	depends = python-notify
+	depends = python2-notify
 	depends = gnome-python-extras
 	depends = dbus-python
 	depends = pygtk
