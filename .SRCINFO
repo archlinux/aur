@@ -1,6 +1,6 @@
 pkgbase = lostlabyrinth
 	pkgdesc = RPG turn based game
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = http://www.lostlabyrinth.com/
 	install = lostlabyrinth.install
@@ -13,10 +13,10 @@ pkgbase = lostlabyrinth
 	depends = sdl_image
 	depends = sdl_ttf
 	depends = sdl_mixer
-	source = http://www.lostlabyrinth.com/download_5.2.0/lostlabyrinth_5.2.0.tar.gz
+	source = http://www.lostlabyrinth.com/download_5.2.1/lostlabyrinth_5.2.1.tar.gz
 	source = lostlabyrinth.desktop
 	source = lostlabyrinth.sh
-	md5sums = ef88eff10c3477ddd6aa83fbf4cc7e59
+	md5sums = 58fd0fb2b8a10d023f824f02989b8f9c
 	md5sums = 8feeeb9c84fdfcbc78875c6938e80c0c
 	md5sums = ea650ff17191f4adff8bcf7b8a2cf439
 
