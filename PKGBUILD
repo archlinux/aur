@@ -1,25 +1,38 @@
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+
 pkgname=mmucl
 pkgver=1.5.2
-pkgrel=1
-pkgdesc="MUD client programmed in tcl."
+pkgrel=2
+pkgdesc="MUD client programmed in tcl"
 arch=('i686' 'x86_64')
-depends=('tcl')
-license=('GPL2')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
-	mmucl.install)
 url="http://mmucl.sourceforge.net/"
-md5sums=('d38ad0b1a51325dada8ac6b1b15113e2'
-         '1b6e24eb94357959362faf41f8e0edd1')
-install=mmucl.install
+license=('GPL2')
+depends=('tcl')
+install=$pkgname.install
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('d38ad0b1a51325dada8ac6b1b15113e2')
 
-build() {
-  cd $startdir/src/$pkgname-$pkgver
-  mkdir -p $startdir/pkg/usr/share/mmucl
-  sed -i "s|/usr/local|$startdir/pkg/usr|" Makefile
+prepare() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  sed -i "s|/usr/local|${pkgdir}/usr|" Makefile
   grep -v "/mmucl.info" Makefile &> Makefile2
   mv Makefile2 Makefile
-  make || return 1
-  make install || return 1
-  install -Dm644 $startdir/src/$pkgname-$pkgver/mmucl.html $startdir/pkg/usr/share/mmucl/ || return 1
-  sed -i "s|$startdir/pkg||" $startdir/pkg/usr/bin/mmucl2
+}
+
+build() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  make
+}
+
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  install -d "${pkgdir}"/usr/share/mmucl
+
+  make install
+
+  install -Dm644 "${srcdir}"/$pkgname-$pkgver/mmucl.html "${pkgdir}"/usr/share/mmucl/
+  sed -i "s|${pkgdir}||" "${pkgdir}"/usr/bin/mmucl2
 }

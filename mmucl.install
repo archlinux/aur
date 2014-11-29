@@ -1,16 +1,7 @@
-
 post_install() {
-	echo "> Note: Only the text interface appears"
-	echo "> to function. If you know how to get"
-	echo "> the others to work, let me know."
+	echo "> Note: Only the text interface appears to function."
 }
 
 post_upgrade() {
 	post_install
 }
-
-op=$1
-shift
-$op $*
-
-#EOF
