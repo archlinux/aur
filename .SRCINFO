@@ -15,6 +15,7 @@ pkgbase = mps-youtube-git
 	optdepends = mplayer: Alternative to mpv for playback
 	optdepends = ffmpeg: for transcoding downloaded content
 	optdepends = xclip: for copying content to the clipboard
+	provides = mps-youtube
 	conflicts = mps-youtube
 	source = git+https://github.com/np1/mps-youtube.git
 	md5sums = SKIP

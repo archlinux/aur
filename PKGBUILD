@@ -13,6 +13,7 @@ optdepends=('mpv: Alternative to mplayer for playback'
             'ffmpeg: for transcoding downloaded content'
             'xclip: for copying content to the clipboard')
 
+provides=('mps-youtube')
 conflicts=('mps-youtube')
 
 install=mps-youtube-git.install
