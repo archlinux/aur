@@ -1,4 +1,4 @@
-# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Baptiste Daroussin <baptiste.daroussin@gmail.com>
 
 pkgname=pkgextract
@@ -6,7 +6,7 @@ pkgver=0.2
 pkgrel=3
 pkgdesc="This script extracts rpm and deb archives"
 arch=('any')
-url="http://www.archlinux.org"
+url="http://www.archlinux.org/"
 license=('unknown')
 depends=('libarchive')
 source=(pkgextract.sh)
