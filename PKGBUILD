@@ -25,7 +25,7 @@ package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
   mkdir -p "${_destdir}"
   mv "${srcdir}/armeabi-v7a" "${_destdir}"
-  mv "${srcdir}/source.properties" "${_destdir}/armeabi-v7a/"
+  install -Dm644 "${srcdir}/source.properties" "${_destdir}/armeabi-v7a/"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
