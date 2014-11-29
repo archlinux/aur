@@ -10,24 +10,23 @@ license=('custom')
 depends=('gtk2' 'desktop-file-utils')
 makedepends=('pkgconfig')
 install=$pkgname.install
-source=(http://packages.medibuntu.org/pool/free/h/$pkgname/${pkgname}_${pkgver}.orig.tar.gz \
+source=(http://jolicloud.mirror.dkm.cz/pub/jolicloud/apt/mirrors/pool/free/h/$pkgname/${pkgname}_${pkgver}.orig.tar.gz
         $pkgname.desktop)
 md5sums=('70d50f5d22e3637a2f623d37e9a473ab'
          '8768a6a7c5ebfc4eda791ea8be1a615a')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   sed -i -e 's|/local||g' -e 's|-g||g' Makefile
-
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
-  install -D -m644 ${srcdir}/$pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
-  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+  install -D -m644 "${srcdir}"/$pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.desktop
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
