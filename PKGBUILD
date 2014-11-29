@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://xmms-scrobbler.sommitrealweird.co.uk/"
 license=('GPL')
 depends=('xmms' 'musicbrainz' 'taglib' 'curl')
-source=(http://xmms-scrobbler.sommitrealweird.co.uk//download/$pkgname-$pkgver.tar.gz)
+source=(http://xmms-scrobbler.sommitrealweird.co.uk/download/$pkgname-$pkgver.tar.gz)
 md5sums=('a50de221dfb2cd87d803d22655df3dad')
 
 build() {
