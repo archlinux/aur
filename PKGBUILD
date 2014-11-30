@@ -22,7 +22,7 @@ build() {
   make
 }
 
-build() {
+package() {
   cd $pkgname-$pkgver
 
   install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
