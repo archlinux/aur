@@ -1,5 +1,5 @@
 pkgbase = groff-utf8
-	pkgdesc = An extension of groff that permits to view UTF-8 encoded man pages.
+	pkgdesc = An extension of groff that permits to view UTF-8 encoded man pages
 	pkgver = 1
 	pkgrel = 1
 	url = http://www.haible.de/bruno/packages-groff-utf8.html
