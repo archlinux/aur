@@ -1,5 +1,5 @@
 pkgbase = tmx2txt
-	pkgdesc = Simple tcl/tk command-line script for converting TMX files to plain text.
+	pkgdesc = Simple tcl/tk command-line script for converting TMX files to plain text
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.omegat.org/en/resources.html
