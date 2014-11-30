@@ -18,7 +18,7 @@ conflicts=('rdiff-backup')
 source=(http://savannah.nongnu.org/download/$_pkgname/$_pkgname-$pkgver.tar.gz)
 md5sums=('e3ec506c01e12b693adb79751daa7c63')
 
-build() {
+package() {
   cd "${srcdir}"/$_pkgname-$pkgver
 
   python2 setup.py install --root="${pkgdir}"
