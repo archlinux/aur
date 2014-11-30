@@ -1,18 +1,17 @@
-pkgbase = madx-svn
-	pkgdesc = Accelerator Optics simulation code, svn trunk version
-	pkgver = 4727
+pkgbase = madx-dev
+	pkgdesc = Accelerator Optics simulation code, latest development release
+	pkgver = 5.02.04
 	pkgrel = 1
 	url = http://cern.ch/mad
 	arch = x86_64
 	license = custom
-	makedepends = subversion
 	makedepends = cmake
 	depends = gcc-libs
 	depends = libx11
 	provides = madx
-	conflicts = madx-dev
-	source = madX::svn+http://svnweb.cern.ch/guest/madx/trunk/madX
+	conflicts = madx-svn
+	source = http://madx.web.cern.ch/madx/releases/5.02.04/madx-5.02.04.tgz
 	md5sums = SKIP
 
-pkgname = madx-svn
+pkgname = madx-dev
 
