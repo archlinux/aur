@@ -1,10 +1,9 @@
 pkgbase = diff2colorhtml
-	pkgdesc = Convert diff output to colorized HTML.
+	pkgdesc = Convert diff output to colorized HTML
 	pkgver = 0.1
 	pkgrel = 1
 	url = http://www.linuxjournal.com/content/convert-diff-output-colorized-html
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = unknown
 	depends = diffutils
 	source = diff2colorhtml.sh
