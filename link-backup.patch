@@ -1,18 +1,12 @@
---- lb.py~	2008-03-04 19:14:37.000000000 -0500
-+++ lb.py	2008-05-13 22:05:54.000000000 -0400
-@@ -6,7 +6,7 @@
- of backed-up trees, and intelligently handles renames, moves, and
- duplicate files without additional storage or transfer.
- 
+--- lb	2014-11-30 11:51:38.517692925 +0100
++++ lb.py.n	2014-11-30 11:51:08.968511062 +0100
+@@ -0,0 +1,2 @@
++#!/usr/bin/python
++
+@@ -9 +11 @@
 -Transfer occurs over standard i/o locally or remotely between a client and
 +Transfer occurs over standard I/O locally or remotely between a client and
- server instance of this script. Remote backups rely on the secure remote
- shell program ssh.
- 
-@@ -28,18 +28,21 @@
- 
- Options:
- 
+@@ -31,12 +33,15 @@
 -    --verify          Run rsync with --dry-run to cross-verify
 -    --numeric-ids     Keep uid/gid values instead of mapping; requires root
 -    --minutes <mins>  Only run for <mins> minutes. Incremental backup.
@@ -40,87 +34,47 @@
 +  --ssh-p       <port>      ssh port on remote host (ssh -p)
 +  --verbose                 Show what is happening
 +  --verify                  Run rsync with --dry-run to cross-verify
- 
- Comments:
- 
-@@ -69,19 +72,19 @@
- 
- Example 1:
- 
+@@ -72 +77 @@
 -python lb.py pictures pictures-backup
 +lb pictures pictures-backup
- 
- Makes a new backup of pictures in pictures-backup.
- 
- Example 2:
- 
+@@ -78 +83 @@
 -python lb.py pictures me@fluffy:~/pictures-backup
 +lb pictures me@fluffy:~/pictures-backup
- 
- Backs up on remote machine fluffy instead of locally.
- 
- Example 3:
- 
+@@ -84 +89 @@
 -python lb.py --minutes 240 pictures me@remote:~/pictures-backup
 +lb --minutes 240 pictures me@remote:~/pictures-backup
- 
- Same as above except for 240 minutes only. This is useful if backing up over
- the internet only during specific times (at night for example). Does what it
-@@ -89,22 +92,22 @@
- hardlinked to the catalog.
- 
- Example 4:
+@@ -92,2 +97,2 @@
 -python lb.py --showfiles pictures pictures-backup | \
 -python lb.py --filelist - pictures pictures-backup
 +lb --showfiles pictures pictures-backup | \
 +lb --filelist - pictures pictures-backup
- 
- Same as example #1.
- 
- Example 5:
- 
- 1)
+@@ -100,2 +105,2 @@
 -python lb.py --showfiles pictures me@remote:~/pictures-backup | \
 -python lb.py --filelist - pictures me@laptop:~/pictures-transfer
 +lb --showfiles pictures me@remote:~/pictures-backup | \
 +lb --filelist - pictures me@laptop:~/pictures-transfer
- 
- 2)
+@@ -104 +109 @@
 -python lb.py --catalogonly pictures-transfer me@remote:~/pictures-backup
 +lb --catalogonly pictures-transfer me@remote:~/pictures-backup
- 
- 3)
+@@ -107 +112 @@
 -python lb.py pictures me@remote:~/pictures-backup
 +lb pictures me@remote:~/pictures-backup
- 
- If the difference between pictures and pictures-backup (for example) is too
- large for internet backup, the steps above can be used. Step 1 transfers only
-@@ -118,11 +121,11 @@
- since only the catalog is being updated (however it would be a speedup).
-  
- History:
+@@ -121 +126 @@
 -
 +  
- v 0.8 12/23/2006 scottlu
+@@ -123,3 +128,3 @@
 -  - allow backups to occur while files are changing
 -  - minor --verify command bug
 -  - added --verbose logging to tree building
 +  - Allow backups to occur while files are changing
 +  - Minor --verify command bug
 +  - Added --verbose logging to tree building
- 
- v 0.7 09/02/2006 scottlu
-   - Ignore pipe, socket, and device file types
-@@ -159,14 +162,14 @@
-   - Added backup stat query methods
-   - Changed log file format
-   - Added viewlb.cgi, a web interface for viewing backups
+@@ -162,2 +167,2 @@
 -  - added gzip compression of filemap
 -  - added --numeric-ids
 +  - Added gzip compression of filemap
 +  - Added --numeric-ids
- 
- v 0.2 8/28/2004 scottlu
+@@ -166,4 +171,4 @@
 -  - filemap format change
 -  - added --rmempty
 -  - added --verify to run rsync in verify mode
@@ -129,13 +83,10 @@
 +  - Added --rmempty
 +  - Added --verify to run rsync in verify mode
 +  - Added uid/gid mapping by default unless --numeric-ids is specified
- 
- v 0.1 8/19/2004 scottlu
-   - Fully working backup, hardlinking between trees
-@@ -747,55 +750,68 @@
-     if stat.S_ISSOCK(mode):
-         return False
-     return True
+@@ -283,0 +289,2 @@
++	if self.path == os.sep:
++		self.path = ""
+@@ -749,0 +757,9 @@
 +    
 +def is_excluded(filepath, exclude_rules):
 +	exclude_filepath = False
@@ -145,15 +96,15 @@
 +				exclude_filepath = True
 +				break
 +	return exclude_filepath
- 
+@@ -751 +767 @@
 -def build_filelist_from_tree(treepath):
 +def build_filelist_from_tree(treepath, exclude_rules):
-     class ListBuilder:
- 	def __init__(self, basepath):
- 	    self.lenbase = len('%s%s' % (basepath, os.sep))
- 
-         def callback(self, arg, dirpath, filelist):
-             for file in filelist:
+@@ -754 +770,3 @@
+-	    self.lenbase = len('%s%s' % (basepath, os.sep))
++		if basepath == os.sep:
++			basepath = ""
++		self.lenbase = len('%s%s' % (basepath, os.sep))
+@@ -758,13 +776,15 @@
 -		# Sometimes a stat may fail, like if there are broken
 -		# symlinks in the file system
 -		try:
@@ -182,57 +133,28 @@
 +					arg.append((filepath[self.lenbase:], [s.st_mode, s.st_size, s.st_mtime, s.st_uid, s.st_gid]))
 +				except:
 +					pass
- 
-     treepath_abs = os.path.abspath(treepath)
-     filelist = []
-     os.path.walk(treepath_abs, ListBuilder(treepath_abs).callback, filelist)
-     return filelist
- 
+@@ -777 +797 @@
 -def build_filelist_from_file(treepath, file):
 +def build_filelist_from_file(treepath, file, exclude_rules):
-     filelist = []
-     for line in file.readlines():
- 	filepath_rel = line.rstrip('\n')
+@@ -780,0 +801,2 @@
 +	if is_excluded(filepath_rel, exclude_rules):
 +		continue
- 	s = os.stat(join(treepath, filepath_rel))
- 	if not is_mode_ok(s.st_mode):
- 	    continue
- 	filelist.append((filepath_rel, [s.st_mode, s.st_size, s.st_mtime, s.st_uid, s.st_gid]))
-     return filelist
- 
+@@ -787 +809 @@
 -def build_filelist(treepath):
 +def build_filelist(treepath, exclude_rules):
-     verbose_log('building filelist...')
-     for n in xrange(len(sys.argv)):
- 	if sys.argv[n] == '--filelist':
- 	    if sys.argv[n + 1] == '-':
+@@ -792 +814 @@
 -		return build_filelist_from_file(treepath, sys.stdin)
 +		return build_filelist_from_file(treepath, sys.stdin, exclude_rules)
- 	    else:
- 		file = open(sys.argv[n + 1])
+@@ -795 +817 @@
 -		filelist = build_filelist_from_file(treepath, file)
 +		filelist = build_filelist_from_file(treepath, file, exclude_rules)
- 		file.close()
- 		return filelist
+@@ -798 +820 @@
 -    return build_filelist_from_tree(treepath)
 +    return build_filelist_from_tree(treepath, exclude_rules)
- 
- def build_uidgidmap(filelist):
-     """Build a map of uid's to names and gid's to names
-@@ -973,7 +989,7 @@
-     if not treepath_last:
- 	verbose_log('tree not equal: no last tree!')
- 	return False
+@@ -976 +998 @@
 -    filelist_old = build_filelist_from_tree(treepath_last)
 +    filelist_old = build_filelist_from_tree(treepath_last, None)
-     if len(filelist) != len(filelist_old):
- 	verbose_log('tree not equal: filelists different sizes!')
- 	return False
-@@ -1006,9 +1022,29 @@
-     if is_source:
- 	# Sending side
- 	# Create filelist, calc name map, send both
+@@ -1009 +1031,21 @@
 -
 +	
 +	exclude_rules_file_path = None
@@ -255,9 +177,6 @@
 +		else:
 +			error('excludes file "' + exclude_rules_file_path + '" not found')
 +		
- 	srcpath = os.path.abspath(os.path.expanduser(src['path']))
+@@ -1011 +1053 @@
 -	filelist = build_filelist(srcpath)
 +	filelist = build_filelist(srcpath, exclude_rules)
- 	send_object(filelist)
- 	idname_map = build_uidgidmap(filelist)
- 	send_object(idname_map)
