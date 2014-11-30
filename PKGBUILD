@@ -1,33 +1,31 @@
-# Contributor: Dragonlord <archlinux[at]dragonlord[.]cz>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=wings2-levelpack
 pkgver=1.0
 pkgrel=3
-pkgdesc="Level pack for the Wings2 game."
-arch=('i686' 'x86_64')
+pkgdesc="Level pack for the Wings2 game"
+arch=('any')
 url="http://www.wings2.net/"
 license=('custom')
-depends=('wings2>=1.3.0')
-makedepends=('unzip')
-source=(http://www.wings2.net/util/download_levels.php?file=Wings2_Level_Collection_v1.zip)
-
+depends=('wings2')
+source=(Wings2_Level_Collection_v1.zip::http://www.wings2.net/util/download_levels.php?file=Wings2_Level_Collection_v1.zip)
 md5sums=('d38aa08efefff60f1af9a5b656118475')
 
-build() {
-  cd "$startdir/src"
+package() {
+  cd "${srcdir}"
 
-  install -d "$startdir/pkg/opt/Wings2/levels"
-  cp -r $startdir/src/* $startdir/pkg/opt/Wings2/levels || return 1
-  rm $startdir/pkg/opt/Wings2/levels/*.zip || return 1
+  install -d "${pkgdir}"/opt/Wings2/levels
+  cp -r "${srcdir}"/* "${pkgdir}"/opt/Wings2/levels
+  rm "${pkgdir}"/opt/Wings2/levels/*.zip
 
 #remove unneeded level files
-  rm "$startdir/pkg/opt/Wings2/levels/africa.lev" || return 1
-  rm "$startdir/pkg/opt/Wings2/levels/cerulean.lev" || return 1
-  rm "$startdir/pkg/opt/Wings2/levels/frozen.lev" || return 1
-  rm "$startdir/pkg/opt/Wings2/levels/furious.lev" || return 1
-  rm "$startdir/pkg/opt/Wings2/levels/stones_n_shit.lev" || return 1
+  rm "${pkgdir}"/opt/Wings2/levels/africa.lev
+  rm "${pkgdir}"/opt/Wings2/levels/cerulean.lev
+  rm "${pkgdir}"/opt/Wings2/levels/frozen.lev
+  rm "${pkgdir}"/opt/Wings2/levels/furious.lev
+  rm "${pkgdir}"/opt/Wings2/levels/stones_n_shit.lev
 
-#right permissions
-  find $startdir/pkg/opt -type d -exec chmod 755 "{}" \; || return 1
-  find $startdir/pkg/opt -type f -exec chmod 644 "{}" \; || return 1
+#fix permissions
+  find "${pkgdir}"/opt -type d -exec chmod 755 "{}" \;
+  find "${pkgdir}"/opt -type f -exec chmod 644 "{}" \;
 }
