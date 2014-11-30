@@ -1,14 +1,14 @@
 pkgbase = lmarbles
-	pkgdesc = An Atomix clone with a slight change in concept.
-	pkgver = 1.0.7
-	pkgrel = 4
+	pkgdesc = An Atomix clone with a slight change in concept
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = http://lgames.sourceforge.net/index.php?project=LMarbles
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sdl_mixer
-	source = http://downloads.sourceforge.net/sourceforge/lgames/lmarbles-1.0.7.tar.gz
-	md5sums = b29156bc5021877d080e5e268012f4ec
+	source = http://downloads.sourceforge.net/sourceforge/lgames/lmarbles-1.0.8.tar.gz
+	md5sums = 2735ef0cbf39ac79194321ff49e02f0e
 
 pkgname = lmarbles
 
