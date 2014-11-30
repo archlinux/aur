@@ -1,5 +1,5 @@
 pkgbase = libpuzzle
-	pkgdesc = The Puzzle library is designed to quickly find visually similar images.
+	pkgdesc = The Puzzle library is designed to quickly find visually similar images
 	pkgver = 0.11
 	pkgrel = 1
 	url = http://libpuzzle.pureftpd.org/project/libpuzzle
