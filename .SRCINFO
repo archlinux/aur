@@ -1,13 +1,12 @@
 pkgbase = spelt
-	pkgdesc = A simple graphical program that can be used to classify words in a language.
+	pkgdesc = A simple graphical program that can be used to classify words in a language
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://translate.sourceforge.net/wiki/spelt/index
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = gtk2
-	depends = python
+	depends = python2
 	source = http://downloads.sourceforge.net/translate/spelt-0.1.tar.gz
 	md5sums = 63c6ed29a6bbd04906241e6d27a3a74f
 
