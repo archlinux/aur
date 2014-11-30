@@ -1,19 +1,15 @@
 pkgbase = wordforge
-	pkgdesc = A user friendly translation program (CAT), that makes the translation process simpler.
-	pkgver = 0.5_rc1
-	pkgrel = 2
+	pkgdesc = A user friendly translation program (CAT), that makes the translation process simpler
+	pkgver = 0.8rc1
+	pkgrel = 1
 	url = http://translate.sourceforge.net/wiki/wordforge/index
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
-	makedepends = patch
-	depends = python
-	depends = pyqt
+	depends = python2-pyqt4
+	depends = python2-pyenchant
 	depends = translate-toolkit
-	source = http://downloads.sourceforge.net/wordforge2/WordForge-0.5-rc1.tar
-	source = wordforge.diff
-	md5sums = fcf99c0221a3140aca57d58b677efc73
-	md5sums = 5c41bdb82236d625b9d3fc151fc1e09f
+	source = http://downloads.sourceforge.net/wordforge2/wordforge-0.8-rc1.tar.gz
+	md5sums = 91dffd250c3bf8351f4cf48f53eecb7c
 
 pkgname = wordforge
 
