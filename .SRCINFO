@@ -1,13 +1,13 @@
 pkgbase = beediff
-	pkgdesc = A program for file comparing.
+	pkgdesc = A program for file comparing
 	pkgver = 1.9
-	pkgrel = 1
-	url = http://www.beesoft.org/index.php?id=beediff
+	pkgrel = 2
+	url = http://freecode.com/projects/beediff
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt
-	source = http://www.beesoft.org/download/beediff_1.9_src.tar.gz
+	depends = qt4
+	source = ftp://ftp.openbsd.com/ports/distfiles/beediff_1.9_src.tar.gz
 	source = beediff.desktop
 	md5sums = be89d5d512920347ad04ef76dd8458a7
 	md5sums = dde69ea8eb1607560bd934f51d32545c
