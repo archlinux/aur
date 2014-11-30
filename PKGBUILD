@@ -11,7 +11,7 @@ depends=('wings2')
 source=(Complete_Wings2_Music_Pack.zip::http://www.wings2.net/util/download_music.php?file=Complete_Wings2_Music_Pack.zip)
 md5sums=('74399ee341e501a7f81622d46267ee13')
 
-build() {
+package() {
   cd "${srcdir}"
 
   install -d "${pkgdir}"/opt/Wings2/music
