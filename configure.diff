@@ -5,7 +5,7 @@
  
  
 -CFLAGS="-g -Wall -fno-exceptions"
-+CFLAGS+=" -fno-exceptions"
++CFLAGS+=" -fno-exceptions -fpermissive"
  CPPFLAGS=""
  DEFS=""
  
