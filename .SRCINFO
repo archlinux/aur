@@ -6,6 +6,7 @@ pkgbase = android-google-apis-armv7a-eabi
 	arch = any
 	license = custom
 	depends = android-platform
+	depends = android-google-apis
 	optdepends = qemu
 	optdepends = libvirt
 	provides = android-google-apis-armv7a-eabi-21
