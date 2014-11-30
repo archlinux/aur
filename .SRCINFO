@@ -17,7 +17,7 @@ pkgbase = android-google-apis-x86-64
 	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86_64-21_r02.zip
 	source = source.properties
 	sha1sums = b8117ebeae1a9eddfe19cbb30a853dbc713ec1b6
-	sha1sums = 16c518d236d1ed6acd428cfc6dbbcb0b9b103e32
+	sha1sums = 96cb15b0bf8ae492f6b075b074b5b210f288062d
 
 pkgname = android-google-apis-x86-64
 
