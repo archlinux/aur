@@ -1,10 +1,9 @@
 pkgbase = netstiff
-	pkgdesc = A powerful Web and FTP site update checker.
+	pkgdesc = A powerful Web and FTP site update checker
 	pkgver = 20080331
 	pkgrel = 2
 	url = http://pkqs.net/~sbeyer/#netstiff
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	depends = ruby
 	source = http://pkqs.net/~sbeyer/tools/netstiff/netstiff_20080331.orig.tar.gz
