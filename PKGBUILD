@@ -22,8 +22,8 @@ sha1sums=('bb00e3d8675a80b09dfbdef813789efdaa1304a8'
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
   mkdir -p "${_destdir}"
-  mv "${srcdir}"/armeabi-v7a "${_destdir}/"
-  install -Dm644 "${srcdir}/source.properties" "${_destdir}/${_apidir}/armeabi-v7a"
+  mv "${srcdir}"/x86 "${_destdir}/"
+  install -Dm644 "${srcdir}/source.properties" "${_destdir}/${_apidir}/x86"
 
   chmod -R ugo+rX "${pkgdir}/opt"
 }
