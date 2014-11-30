@@ -1,0 +1,11 @@
+--- src/SQUIRREL3/squirrel/Makefile.orig	2012-04-28 17:53:44.692923733 +0200
++++ src/SQUIRREL3/squirrel/Makefile	2012-04-28 17:54:52.326256786 +0200
+@@ -3,7 +3,7 @@
+ 
+ OUT= $(SQUIRREL)/lib/libsquirrel.a
+ INCZ= -I$(SQUIRREL)/include -I. -Iinclude
+-DEFS= 
++DEFS= -fpermissive -fPIC 
+ LIB=	
+ 
+ OBJS= \
