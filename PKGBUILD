@@ -17,7 +17,7 @@ options=('!strip')
 source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-21_r02.zip"
         "source.properties")
 sha1sums=('bb00e3d8675a80b09dfbdef813789efdaa1304a8'
-          '0e3a9717c2242def85cfc9b737d34ad6258dab5f')
+          '39991f0861654fc5e118a87514503c3ce2368223')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
