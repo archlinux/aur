@@ -1,5 +1,5 @@
 pkgbase = wings2
-	pkgdesc = Fly small and agile ships in varied maps.
+	pkgdesc = Fly small and agile ships in varied maps
 	pkgver = 1.3.6
 	pkgrel = 1
 	url = http://www.wings2.net/
