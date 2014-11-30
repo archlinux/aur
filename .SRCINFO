@@ -1,8 +1,8 @@
 pkgbase = dbhub
-	pkgdesc = Direct Connect hub software, based on Open DC Hub but with many enhancements.
+	pkgdesc = Direct Connect hub software, based on Open DC Hub but with many enhancements
 	pkgver = 0.451
 	pkgrel = 1
-	url = http://www.dbhub.org
+	url = http://sourceforge.net/projects/dbhub/
 	arch = i686
 	arch = x86_64
 	license = GPL
