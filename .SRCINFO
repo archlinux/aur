@@ -1,9 +1,10 @@
 pkgbase = cdspeed
-	pkgdesc = Change the speed of you cdrom.
+	pkgdesc = Change the speed of you cdrom
 	pkgver = 0.4
 	pkgrel = 2
 	url = http://linuxfocus.org/~guido/#cdspeed
 	arch = i686
+	arch = x86_64
 	license = GPL
 	depends = sed
 	source = http://linuxfocus.org/~guido/cdspeed-0.4.tar.gz
