@@ -1,9 +1,9 @@
 pkgbase = shn2make
-	pkgdesc = A tool for working with sets of shn and flac audio files - automate the process of burning shn archive CD-R's, audio CD-R's and the encoding of lossy mp3 and ogg-vorbis files.
+	pkgdesc = A tool for working with sets of shn and flac audio files
 	pkgver = 2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeengineer.org/shn2make.html
-	arch = i686
+	arch = any
 	license = GPL
 	depends = perl
 	depends = shorten
@@ -12,9 +12,7 @@ pkgbase = shn2make
 	depends = vorbis-tools
 	depends = cdrtools
 	source = ftp://ftp.freeengineer.org/pub/shn2make/shn2make-2.15.tar.gz
-	source = Makefile.diff
 	md5sums = 3e2f47a48673aea1fe3458547cd52108
-	md5sums = af5bd95670a355469a20ce6e8ff90c83
 
 pkgname = shn2make
 
