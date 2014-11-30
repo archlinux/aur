@@ -1,16 +1,13 @@
 pkgbase = squirrel
-	pkgdesc = A light-weight scripting language that fits in the size, memory bandwidth, and real-time requirements of applications like video games.
-	pkgver = 3.0.4
+	pkgdesc = A light-weight scripting language that fits in the size, memory bandwidth, and real-time requirements of applications like video games
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = http://www.squirrel-lang.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	options = strip
-	source = http://squirrel.googlecode.com/files/squirrel_3_0_4_stable.tar.gz
-	source = patch-0.2.diff
-	md5sums = e75feaed79c203d027708e2067ca1dcc
-	md5sums = af31d80d92f6f30eae4871f389c95a15
+	source = http://sourceforge.net/projects/squirrel/files/squirrel3/squirrel%203.0.6%20stable/squirrel_3_0_6_stable.tar.gz
+	md5sums = a873eaf63a8d40af696eb055fa184d76
 
 pkgname = squirrel
 
