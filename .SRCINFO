@@ -1,5 +1,5 @@
 pkgbase = eviltris
-	pkgdesc = A tetris like game, but the 'random' order of piece selection is different than the standard 'random' number generator method.
+	pkgdesc = A tetris like game, but the 'random' order of piece selection is different than the standard 'random' number generator method
 	pkgver = 0.7
 	pkgrel = 1
 	url = http://sourceforge.net/projects/eviltris
