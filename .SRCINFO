@@ -1,12 +1,11 @@
 pkgbase = checkpassword
-	pkgdesc = A simple, uniform password-checking interface to all root applications.
+	pkgdesc = A simple, uniform password-checking interface to all root applications
 	pkgver = 0.90
 	pkgrel = 1
 	url = http://cr.yp.to/checkpwd.html
 	arch = i686
 	arch = x86_64
 	license = custom: as-is
-	depends = glibc
 	source = http://cr.yp.to/checkpwd/checkpassword-0.90.tar.gz
 	md5sums = e75842e908f96571ae56c3da499ba1fc
 
