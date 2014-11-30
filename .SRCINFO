@@ -1,12 +1,11 @@
 pkgbase = jtoolkit
-	pkgdesc = Python web application framework built on modpython and Apache.
+	pkgdesc = Python web application framework built on modpython and Apache
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jtoolkit.sourceforge.net/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
-	depends = python
+	depends = python2
 	source = http://jtoolkit.sourceforge.net/snapshots/jToolkit-0.7.8/jToolkit-0.7.8.tar.gz
 	md5sums = 47d0c1fd2f7a4e3f990cdc4917e56138
 
