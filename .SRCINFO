@@ -1,5 +1,5 @@
 pkgbase = sclient
-	pkgdesc = A small GTK-based MUD client for X.
+	pkgdesc = A small GTK-based MUD client for X
 	pkgver = 0.7.2
 	pkgrel = 5
 	url = http://home.swipnet.se/heathen/linux/sclient.htm
