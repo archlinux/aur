@@ -1,22 +1,37 @@
+# Maintainer:Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Rorschach <r0rschach@lavabit.com
-# Maintainer: Nathan Owe <ndowens04+AUR @ gmail.com>
+# Contributor: Nathan Owe <ndowens04+AUR @ gmail.com>
+
 pkgname=afick
-pkgver=2.14
-_realpkgver=2.14-1
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Alternative to tripwire"
-url="http://afick.sourceforge.net"
-arch=('i686' 'x86_64')
+arch=('any')
+url="http://afick.sourceforge.net/"
 license=('GPL')
-depends=('perl' 'perl-tk')
-source=(http://downloads.sourceforge.net/afick/afick-$_realpkgver.tgz)
-md5sums=('74b85916767a45c024a4dc125547f6a2') 
+depends=('perl')
+backup=('etc/afick.conf')
+source=(http://sourceforge.net/projects/afick/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
+md5sums=('5836efdb7e9980a53e2cfac7d2934967')
+
+prepare() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  install -d Afick
+  cp -a *.pm Afick
+}
 
 build() {
-  cd $srcdir/$pkgname-$_realpkgver
+  cd "${srcdir}"/$pkgname-$pkgver
+
   perl Makefile.pl
-  make || return 1
-  make DESTDIR=$pkgdir/ install
-  chmod a+r $pkgdir/etc/{afick.conf,cron.daily/afick_cron}
-  chmod a+rx $pkgdir/{etc/logrotate.d,var/{log/afick,lib/afick,lib/afick/archive}}
+}
+
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  make DESTDIR="${pkgdir}" install
+
+  chmod a+r "${pkgdir}"/etc/{afick.conf,cron.daily/afick_cron}
+  chmod a+rx "${pkgdir}"/{etc/logrotate.d,var/{log/afick,lib/afick,lib/afick/archive},usr/lib/afick/lib/Afick}
 }
