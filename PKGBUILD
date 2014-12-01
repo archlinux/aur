@@ -13,14 +13,16 @@ source=(http://www.maplefish.com/todd/$pkgname-$pkgver.tar.gz)
 md5sums=('ef6178d35978625a5cd00663740d63cc')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
+
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  make DESTDIR="${pkgdir}" install
 #License
-  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/$pkgname/COPYING || return 1
+  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/$pkgname/COPYING
 }
