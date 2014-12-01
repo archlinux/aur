@@ -1,6 +1,7 @@
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: dorphell <dorphell@archlinux.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rip
 pkgver=1.07
@@ -14,7 +15,8 @@ optdepends=('cdparanoia' 'cdda2wav' 'bladeenc' 'gogo' 'lame' 'oggenc' 'flac' 'no
 source=(http://$pkgname.sourceforge.net/download/$pkgname-$pkgver.tar.gz)
 md5sums=('dd8c967220c854163279881b020dde69')
 
-build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  install -Dm755 ./rip "$pkgdir"/usr/bin/rip
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
+  
+  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
 }
