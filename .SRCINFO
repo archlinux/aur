@@ -1,8 +1,8 @@
 pkgbase = swish-e
-	pkgdesc = Fast, flexible and free open source system for indexing collections of Web pages or other files.
+	pkgdesc = Fast, flexible and free open source system for indexing collections of Web pages or other files
 	pkgver = 2.4.7
 	pkgrel = 1
-	url = http://www.swish-e.org
+	url = http://www.swish-e.org/
 	arch = i686
 	arch = x86_64
 	license = custom
