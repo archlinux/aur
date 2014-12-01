@@ -1,5 +1,5 @@
 pkgname='tappet-git'
-pkgver=0
+pkgver=0.r81
 pkgrel=1
 pkgdesc='Simple encrypted UDP tunnel using TweetNaCl'
 license='MIT'
@@ -14,7 +14,9 @@ conflicts=('tappet')
 
 pkgver () {
 	cd "${srcdir}/${pkgname}"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	local v=$(git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g')
+	[[ -z ${v} ]] && v=0
+	printf "%s.r%s" "${v}" "$(git rev-list --count HEAD)"
 }
 
 build () {

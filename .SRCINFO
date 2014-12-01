@@ -1,6 +1,6 @@
 pkgbase = tappet-git
 	pkgdesc = Simple encrypted UDP tunnel using TweetNaCl
-	pkgver = 0
+	pkgver = 0.r81
 	pkgrel = 1
 	url = https://github.com/amenonsen/tappet
 	arch = i686
