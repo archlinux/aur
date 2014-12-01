@@ -1,5 +1,5 @@
 pkgbase = android-x86-64-system-image
-	pkgdesc = Android x86 Atom System Image, latest API
+	pkgdesc = Android x86-64 System Image, latest API
 	pkgver = 21_r01
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
