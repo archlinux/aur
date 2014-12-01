@@ -5,22 +5,21 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r01
-_sdkver=5.0
-_sdkint=21
+_apilevel=21
 pkgname=android-sources
-pkgver=${_sdkint}_${_sdkver}_${_rev}
+pkgver=${_apilevel}_${_rev}
 pkgrel=1
-pkgdesc="Last Android SDK Sources."
+pkgdesc="Android SDK Sources, latest API"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
 options=('!strip')
-source=("http://dl.google.com/android/repository/sources-${_sdkint}_${_rev}.zip")
-sha512sums=('c80de09369161ffad77ecf641bf1f833add758e8161de077665331b20f635ad926ce792a79a136a020a21643df49b54861e1de46965be0d2cad13c59a41ac380')
+source=("https://dl-ssl.google.com/android/repository/sources-21_r01.zip")
+sha1sums=('137a5044915d32bea297a8c1552684802bbc2e25')
 
 package() {
-  install -d $pkgdir/opt/android-sdk/sources/
-  mv $srcdir/src $pkgdir/opt/android-sdk/sources/android-$_sdkint
+  install -d "${pkgdir}/opt/android-sdk/sources/"
+  mv "${srcdir}/src" "${pkgdir}/opt/android-sdk/sources/android-${_apilevel}"
 
-  chmod -R ugo+rX $pkgdir/opt
+  chmod -R ugo+rX "${pkgdir}/opt"
 }

@@ -1,13 +1,13 @@
 pkgbase = android-sources
-	pkgdesc = Last Android SDK Sources.
-	pkgver = 21_5.0_r01
+	pkgdesc = Android SDK Sources, latest API
+	pkgver = 21_r01
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = custom
 	options = !strip
-	source = http://dl.google.com/android/repository/sources-21_r01.zip
-	sha512sums = c80de09369161ffad77ecf641bf1f833add758e8161de077665331b20f635ad926ce792a79a136a020a21643df49b54861e1de46965be0d2cad13c59a41ac380
+	source = https://dl-ssl.google.com/android/repository/sources-21_r01.zip
+	sha1sums = 137a5044915d32bea297a8c1552684802bbc2e25
 
 pkgname = android-sources
 
