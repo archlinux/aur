@@ -1,0 +1,27 @@
+pkgbase = eric4-i18n
+	pkgdesc = Translations for the Eric IDE (cs-de-es-it-fr-ru-tr-zh_cn)
+	pkgver = 4.5.25
+	pkgrel = 1
+	url = http://eric-ide.python-projects.org/index.html
+	arch = any
+	license = GPL
+	depends = eric4
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-cs-4.5.25.tar.gz
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-de-4.5.25.tar.gz
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-es-4.5.25.tar.gz
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-fr-4.5.25.tar.gz
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-it-4.5.25.tar.gz
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-ru-4.5.25.tar.gz
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-tr-4.5.25.tar.gz
+	source = http://downloads.sourceforge.net/eric-ide/eric4-i18n-zh_CN.GB2312-4.5.25.tar.gz
+	md5sums = 7e62ddae2bd85fe14888dbbf4a8c4f2f
+	md5sums = 6fdde79ecaf8d19c12078406d0f72b80
+	md5sums = f97682c7b1eb973b07f1c7c5e55e5280
+	md5sums = d2995d9157c3adbcc2673479155492e2
+	md5sums = 2c4d8776010fe03888453051f717286c
+	md5sums = fc45341b525363af7f8abe6e731515d9
+	md5sums = caf114f5c217125b6567fb71dbd9d7bf
+	md5sums = 4b6bc9dd37a002be1b8adf3ddb489bc3
+
+pkgname = eric4-i18n
+
