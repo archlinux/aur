@@ -2,13 +2,15 @@ pkgbase = efte
 	pkgdesc = Fast configurable programmers editor
 	pkgver = 1.1
 	pkgrel = 1
-	url = http://efte.sourceforge.net/
+	url = http://sourceforge.net/projects/efte/
+	install = efte.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = custom
 	makedepends = cmake
 	depends = libxpm
+	depends = desktop-file-utils
 	source = http://downloads.sourceforge.net/sourceforge/efte/efte-1.1.tar.bz2
 	md5sums = f92974f8f438842bae3b837fe6eff099
 
