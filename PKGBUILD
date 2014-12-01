@@ -1,4 +1,5 @@
-# Maintainer:  danyf90 <daniele.formichelli@gmail.com>
+# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Contributor:  danyf90 <daniele.formichelli@gmail.com>
 # Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
