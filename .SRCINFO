@@ -1,0 +1,19 @@
+pkgbase = tappet-git
+	pkgdesc = Simple encrypted UDP tunnel using TweetNaCl
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/amenonsen/tappet
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = MIT
+	depends = glibc
+	depends = iproute2
+	provides = tappet
+	conflicts = tappet
+	options = strip
+	source = tappet-git::git+https://github.com/amenonsen/tappet.git
+	sha512sums = SKIP
+
+pkgname = tappet-git
+
