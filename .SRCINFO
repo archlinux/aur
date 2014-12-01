@@ -1,15 +1,15 @@
 pkgbase = grpn
 	pkgdesc = A graphical reverse polish notation (RPN) calculator
-	pkgver = 1.3.4
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://www.getreu.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gtk2
-	source = http://www.getreu.net/public/downloads/software/grpn/grpn-1.3.4/grpn_1.3.4-1.tar.gz
+	source = http://www.getreu.net/public/downloads/software/grpn/grpn-1.4.0/grpn_1.4.0-1.tar.gz
 	source = grpn.desktop
-	sha256sums = e26c9c4648c11d35d3a0ba8bb7855b016e2559fa291036eb2dac0a9d4b2caa6f
+	sha256sums = 51fe7800cecab5119c94a87f6b263cc65073cfa7d655f538e7adf5273d092947
 	sha256sums = 2c0f7685e7423e14f93c38fca951b8497009da4705f4b629f01c4048b32697ab
 
 pkgname = grpn
