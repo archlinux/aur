@@ -1,0 +1,37 @@
+pkgbase = xournalpp-git
+	pkgdesc = A C++ rewrite of tablet note-taking software Xournal - GTK3 branch
+	pkgver = 1.0.0.170.gc3c7c87
+	pkgrel = 1
+	url = https://github.com/xournalpp/xournalpp
+	install = xournalpp.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = openjpeg2
+	depends = libgnomecanvas>=2.30.1
+	depends = ghostscript
+	depends = shared-mime-info
+	depends = poppler-glib>=0.14.0
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = xournalpp=1.0.0.170.gc3c7c87
+	provides = xournalpp-gtk3=1.0.0.170.gc3c7c87
+	provides = xournal-gtk3
+	provides = xournal
+	conflicts = xournalpp
+	conflicts = xournalpp-gtk3
+	conflicts = xournal-gtk3
+	conflicts = xournal
+	options = !strip
+	options = zipman
+	options = docs
+	options = !emptydirs
+	source = xournalpp::git+https://github.com/xournalpp/xournalpp.git#branch=gtk3
+	source = xournalpp_fix_libopenjpeg.patch
+	sha1sums = SKIP
+	sha1sums = e6a219270d550200331389c8010641c8902e8e84
+
+pkgname = xournalpp-git
+
