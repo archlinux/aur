@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-view-controller-msgs
+	pkgdesc = ROS - Messages for (camera) view controllers.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://ros.org/wiki/view_controller_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-genmsg
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-geometry-msgs
+	source = view_controller_msgs::git+https://github.com/ros-gbp/view_controller_msgs-release.git#tag=release/indigo/view_controller_msgs/0.1.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-view-controller-msgs
+
