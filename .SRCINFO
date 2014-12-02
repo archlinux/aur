@@ -1,14 +1,14 @@
 pkgbase = codemetre
 	pkgdesc = A console-based tool counting lines of code in a file
-	pkgver = 0.29.2
+	pkgver = 0.31.2
 	pkgrel = 1
 	url = http://wiki.github.com/seventh/codemetre
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = glibc
-	source = http://codemetre.free.fr/codemetre-0.29.2.tar.bz2
-	md5sums = cad68e30055f49155c345e69429afac2
+	source = http://codemetre.free.fr/codemetre-0.31.2.tar.bz2
+	md5sums = 8037be694f697f00b98ba7fe262097f0
 
 pkgname = codemetre
 
