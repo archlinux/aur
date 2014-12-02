@@ -11,11 +11,11 @@ depends=('perl')
 source=(http://w2do.googlecode.com/files/$pkgname-$pkgver.tar.gz)
 md5sums=('370bcf901aef70faca6de7dcccb412a3')
 
-build() {
+package() {
   cd $pkgname-$pkgver
 
   make INSTALL=/bin/install \
        POD2MAN=/usr/lib/perl5/core_perl/bin/pod2man \
-       prefix=${pkgdir}/usr \
+       prefix="${pkgdir}"/usr \
        install
 }
