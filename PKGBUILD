@@ -22,11 +22,10 @@ build() {
 package() {
   cd $pkgname
 
-  install -D -m755 $pkgname ${pkgdir}/usr/bin/$pkgname
-  install -D -m644 $pkgname.1 ${pkgdir}/usr/share/man/man1/$pkgname.1
+  install -D -m755 $pkgname "${pkgdir}"/usr/bin/$pkgname
+  install -D -m644 $pkgname.1 "${pkgdir}"/usr/share/man/man1/$pkgname.1
 
 # License
-  install -d ${pkgdir}/usr/share/licenses/$pkgname
-  cat ${srcdir}/$pkgname/main.c | tail -n+3 | head -n13 > \
-      ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+  install -d "${pkgdir}"/usr/share/licenses/$pkgname
+  sed '2,16p;d' main.c > "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
