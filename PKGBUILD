@@ -1,19 +1,19 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=sshconf
-pkgver=0.6.2
+pkgver=0.6.2.1
 pkgrel=1
 pkgdesc="A graphical frontend to manage ssh configurations for different hosts"
 arch=('any')
 url="http://sourceforge.net/apps/trac/sshconf"
 license=('GPL3')
-depends=('desktop-file-utils' 'kdebindings-python' 'openssh' 'python2' 'qt')
+depends=('desktop-file-utils' 'kdebindings-python2' 'openssh' 'python2' 'qt4')
 install=$pkgname.install
 source=(http://download.sourceforge.net/project/$pkgname/${pkgname}_${pkgver}.tar.gz)
-sha256sums=('a1a2437212391237d1d3e60db934570791a3b117e9512287ecc8bc1d172993a2')
+sha256sums=('68467c5af80e04cf7168bc666bcb18f5df6d389ccbe78ef39156a63f204a0d3d')
 
-build() {
-  cd ${srcdir}/$pkgname-$pkgver
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
 
 #Python2 fix
   for file in $(find . -name '*.py' -print); do
@@ -21,5 +21,5 @@ build() {
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root="${pkgdir}"
 }
