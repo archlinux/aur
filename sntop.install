@@ -1,4 +1,4 @@
 post_install() {
   echo "=> See the example configuration file, ammend it to your"
-  echo "=> needs and place in /etc or in your $HOME directory."
+  echo "=> needs and place in /etc or in your \$HOME directory."
 }

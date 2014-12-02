@@ -5,6 +5,7 @@ pkgbase = sntop
 	url = http://sntop.sourceforge.net/
 	install = sntop.install
 	arch = i686
+	arch = x86_64
 	license = GPL
 	depends = ncurses
 	depends = fping
