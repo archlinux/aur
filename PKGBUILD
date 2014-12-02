@@ -17,6 +17,6 @@ package() {
 
   make INSTALL=/usr/bin/install \
        POD2MAN=/usr/bin/core_perl/pod2man \
-       prefix=${pkgdir}/usr \
+       prefix="${pkgdir}"/usr \
        install
 }
