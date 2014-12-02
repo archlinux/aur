@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade
-pkgver=3.1.0
+pkgver=3.1.0.1
 pkgrel=1
 pkgdesc="SLADE3 Doom editor."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('fluidsynth' 'freeimage' 'ftgl' 'libmodplug' 'sfml' 'webkitgtk2' 'wxgtk
 makedepends=('cmake' 'imagemagick' 'zip')
 source=(https://github.com/sirjuddington/SLADE/archive/$pkgver.tar.gz
         slade.desktop)
-md5sums=('27370e91b0b248232fbbaabaec061d2f'
+md5sums=('c1248aee68586636b0b6002516032122'
          '49eb1692463e2aa93ea2754a5df7a6e4')
 
 build() {
