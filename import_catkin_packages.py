@@ -545,10 +545,11 @@ def github_raw_url(repo_url, path, commitish):
 
 def generate_pkgbuild(distro, package, directory, force=False,
                       no_overwrite=False, recursive=False, update=False,
-                      exclude_dependencies=[], rosdep_urls=[], generated=None,
-                      written=None):
+                      exclude_dependencies=[], rosdep_urls=[],
+                      generated=None, written=None):
   """
-  Generate a PKGBUILD file for the given package and the given ROS distribution.
+  Generate a PKGBUILD file for the given package and the given ROS
+  distribution.
   """
   if generated is None:
     generated = set()
@@ -560,7 +561,8 @@ def generate_pkgbuild(distro, package, directory, force=False,
   if package.packages:
     for child_package in package.packages:
       generate_pkgbuild(distro, child_package, directory,
-                        force=force, exclude_dependencies=exclude_dependencies,
+                        force=force,
+                        exclude_dependencies=exclude_dependencies,
                         no_overwrite=no_overwrite, recursive=recursive,
                         update=update, rosdep_urls=rosdep_urls,
                         generated=generated, written=written)
@@ -691,11 +693,12 @@ def main():
                              url=options.distro_url % options.distro)
 
   if options.output_directory:
-    if not os.path.exists(options.output_directory):
-      os.makedirs(options.output_directory)
+    output_directory = os.path.expanduser(options.output_directory)
+    if not os.path.exists(output_directory):
+      os.makedirs(output_directory)
 
-    if os.path.isdir(options.output_directory):
-      distro_dir = os.path.abspath(options.output_directory)
+    if os.path.isdir(output_directory):
+      distro_dir = os.path.abspath(output_directory)
     else:
       print("Invalid --output-directory. Exiting.")
       sys.exit()
@@ -741,10 +744,11 @@ def main():
       for package in args:
         generate_pkgbuild(distro, distro.package(package), distro_dir,
                           exclude_dependencies=options.exclude_dependencies.split(','),
-                          force=options.force, no_overwrite=options.no_overwrite,
+                          force=options.force,
+                          no_overwrite=options.no_overwrite,
                           update=options.update, recursive=options.recursive,
-                          rosdep_urls=options.rosdep_urls, generated=generated,
-                          written=written)
+                          rosdep_urls=options.rosdep_urls,
+                          generated=generated, written=written)
     except KeyboardInterrupt:
       pass
 
