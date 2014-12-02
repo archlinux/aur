@@ -11,14 +11,14 @@ source=(http://idlebox.net/2009/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('448ab2f490cda7694a86769be0217a4c')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 }
