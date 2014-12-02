@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-rviz-animated-view-controller
+	pkgdesc = ROS - A rviz view controller featuring smooth transitions.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://ros.org/wiki/rviz_animated_view_controller
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-rviz
+	makedepends = ros-indigo-view-controller-msgs
+	makedepends = ros-indigo-pluginlib
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rviz
+	depends = ros-indigo-view-controller-msgs
+	depends = ros-indigo-pluginlib
+	source = rviz_animated_view_controller::git+https://github.com/ros-gbp/rviz_animated_view_controller-release.git#tag=release/indigo/rviz_animated_view_controller/0.1.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rviz-animated-view-controller
+
