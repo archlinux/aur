@@ -1,6 +1,6 @@
 pkgbase = gtg-git
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment. Git version.
-	pkgver = r5112.1328f1d
+	pkgver = r5128.284b387
 	pkgrel = 1
 	url = http://gtgnome.net/
 	install = gtg-git.install
@@ -18,6 +18,8 @@ pkgbase = gtg-git
 	depends = desktop-file-utils
 	depends = python2-gnomekeyring
 	depends = python-liblarch-git
+	depends = python-dbus
+	depends = python-cairo
 	optdepends = python-bugz: for Bugzilla plugin
 	optdepends = python-cheetah: for Export and print plugin
 	optdepends = pdflatex: for Export and print plugin
@@ -37,9 +39,7 @@ pkgbase = gtg-git
 	optdepends = python-launchpadlib: for Launchpad synchronization service
 	conflicts = gtg
 	source = gtg-git::git+https://github.com/getting-things-gnome/gtg
-	source = 0001-Remove-has_separator-property.patch
 	md5sums = SKIP
-	md5sums = a79aab175a0434928e5da2c12f94abb8
 
 pkgname = gtg-git
 

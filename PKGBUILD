@@ -2,7 +2,7 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=gtg-git
-pkgver=r5112.1328f1d
+pkgver=r5128.284b387
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="http://gtgnome.net/"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('pygtk' 'pygobject' 'python2-configobj' 'pyxdg' 'dbus-python'
 'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
-'python-liblarch-git')
+'python-liblarch-git' 'python-dbus' 'python-cairo')
 makedepends=('bzr' 'python2-gconf')
 optdepends=(
 "python-bugz: for Bugzilla plugin"
@@ -33,8 +33,7 @@ optdepends=(
 )
 conflicts=('gtg')
 install="${pkgname}.install"
-source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg"
-        "0001-Remove-has_separator-property.patch")
+source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg")
 
 pkgver() {
   cd "$srcdir/${pkgname}"
@@ -43,7 +42,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -p1 < ${srcdir}/0001-Remove-has_separator-property.patch
   python setup.py build
 }
 
@@ -53,5 +51,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('SKIP'
-         'a79aab175a0434928e5da2c12f94abb8')
+md5sums=('SKIP')
