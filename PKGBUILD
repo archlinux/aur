@@ -7,7 +7,7 @@ pkgname='ros-indigo-roscpp-tutorials'
 pkgver='0.5.1'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp-serialization
