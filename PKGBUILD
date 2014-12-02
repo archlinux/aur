@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ install=openvpn.install
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
         http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz.asc
         openvpn@.service)
-sha256sums=('d93b447b014a41ec1550c3b760871aa72d7c09f1b5c6fc1e013d3073ac29ca21'
+sha256sums=('7baed2ff39c12e1a1a289ec0b46fcc49ff094ca58b8d8d5f29b36ac649ee5b26'
             'SKIP'
             '860976d954bd1db95861b95f0ef42e4e80618aa23a9f2aed26d17ee3d09110df')
 
