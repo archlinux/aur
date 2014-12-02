@@ -3,7 +3,7 @@
 
 pkgname=poldi
 pkgver=0.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
 url="http://www.g10code.com/p-poldi.html"
@@ -17,6 +17,13 @@ install=poldi.install
 source=("ftp://ftp.gnupg.org/gcrypt/alpha/poldi/$pkgname-$pkgver.tar.bz2"
 	"poldi-arch.patch"
 	"poldi.logrotate")
+
+prepare() {
+	sed -i \
+		-e 's!\(#define GNUPG_DEFAULT_SCD\).*!\1 "/usr/lib/gnupg/scdaemon"!' \
+		-e 's!\(#define GNUPG_DEFAULT_DIRMNGR\).*!\1 "/usr/lib/gnupg/dirmngr_ldap"!' \
+		$srcdir/poldi-0.4.1/config.h.in
+}
 
 build() {
 
