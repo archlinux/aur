@@ -1,5 +1,5 @@
 pkgbase = adesklet-calendar
-	pkgdesc = A simple desklet that displays a calendar.
+	pkgdesc = A simple desklet that displays a calendar
 	pkgver = 0.5.3
 	pkgrel = 8
 	url = http://adesklets.sourceforge.net/desklets.html
