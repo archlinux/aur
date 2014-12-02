@@ -4,6 +4,7 @@ pkgbase = ggps
 	pkgrel = 1
 	url = http://www.brouhaha.com/~eric/software/ggps/
 	arch = i686
+	arch = x86_64
 	license = GPL
 	depends = gtk
 	source = http://www.brouhaha.com/~eric/software/ggps/ggps-0.2.tar.gz
