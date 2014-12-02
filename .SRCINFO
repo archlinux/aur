@@ -1,6 +1,6 @@
 pkgbase = cyphertite-external-libs
 	pkgdesc = A high-security scalable solution for online backups
-	pkgver = 2.0.2
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://opensource.conformal.com/wiki/cyphertite
 	arch = i686
@@ -21,12 +21,10 @@ pkgbase = cyphertite-external-libs
 	depends = sqlite>=3.0.0
 	provides = cyphertite
 	conflicts = cyphertite
-	source = https://opensource.conformal.com/snapshots/cyphertite/cyphertite-2.0.0.tar.gz
+	source = https://opensource.conformal.com/snapshots/cyphertite/cyphertite-2.0.4.tar.gz
 	source = cyphertite-dynamic-link.patch
-	source = cyphertite-2.0.2.patch
-	sha1sums = 91dc3ac37f6f9f0190c83d15d1e20785953a0783
+	sha1sums = 95941fe3f1e18c7639405b0c0f16409b4ddab91a
 	sha1sums = 2f90214c2827dd7e66bcffe7724d0415a2411822
-	sha1sums = 447cdb8a9c0178e206d7f9992473d29e82c571bb
 
 pkgname = cyphertite-external-libs
 
