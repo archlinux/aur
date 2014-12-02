@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 216742 2014-07-09 13:17:31Z giovanni $
+# $Id: PKGBUILD 226292 2014-11-15 14:56:22Z bpiotrowski $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
@@ -6,7 +6,7 @@
 _pkgname=vlc
 pkgname=vlc-decklink
 pkgver=2.1.5
-pkgrel=1
+pkgrel=5
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -61,14 +61,21 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        'vlc-2.0.7-vaapi-compat.patch')
+        'vlc-2.0.7-vaapi-compat.patch'
+        'vlc-2.1.5-ffmpeg-2.4.patch'
+        'vlc-2.1.5-avformat-initialize-probe-data-fixes-11851.patch')
 md5sums=('3941b561f590cc95ca5e795213cba2f2'
-         '6df10774bb7acf20e09d6139e5c7839e')
+         '6df10774bb7acf20e09d6139e5c7839e'
+         '068a1b792064bb1aff0765a3ffa8a27a'
+         '787a854f3acde37cd6e76a8fa8e6f1d0')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  patch -Np1 -i "${srcdir}/vlc-2.0.7-vaapi-compat.patch"
+  patch -p1 -i "${srcdir}/vlc-2.0.7-vaapi-compat.patch"
+  patch -p1 -i "${srcdir}/vlc-2.1.5-ffmpeg-2.4.patch"
+  patch -p1 -i "${srcdir}/vlc-2.1.5-avformat-initialize-probe-data-fixes-11851.patch"
+  autoreconf -fi
 
   # dirty hack because of VLC's configure
   [ -d decklink-sdk ] || mkdir decklink-sdk
