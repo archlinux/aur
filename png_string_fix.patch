@@ -1,0 +1,11 @@
+--- src/plugins/png.cpp	2013-10-14 21:28:34.109215677 +0900
++++ src/plugins/png.cpp.new	2013-10-14 21:33:43.261057151 +0900
+@@ -20,7 +20,7 @@
+ 
+ #include <png.h>
+ #include <stdexcept>
+-
++#include <string.h>
+ #include "util/log.hpp"
+ 
+ struct PNGReadMemory
