@@ -15,15 +15,15 @@ source=(http://downloads.sourceforge.net/adesklets/adeskclock-$pkgver.tar.bz2)
 md5sums=('53fa9587bbfeceb60e95be4ad0c198f4')
 
 package() {
-  cd $srcdir/adeskclock-$pkgver
+  cd "${srcdir}"/adeskclock-$pkgver
 
 #Python2 fix
   sed -i 's_env python_env python2_' adeskclock.py
 
-  install -d ${pkgdir}/usr/share/adesklets/adeskclock
-  cp -r COPYING  GNUmakefile  README skins/ ${pkgdir}/usr/share/adesklets/adeskclock/
-  chmod -R 644 ${pkgdir}/usr/share/adesklets/adeskclock/
-  chown -R :adesklets ${pkgdir}/usr/share/adesklets/adeskclock/
+  install -d "${pkgdir}"/usr/share/adesklets/adeskclock
+  cp -r COPYING  GNUmakefile  README skins/ "${pkgdir}"/usr/share/adesklets/adeskclock/
+  chmod -R 644 "${pkgdir}"/usr/share/adesklets/adeskclock/
+  chown -R :adesklets "${pkgdir}"/usr/share/adesklets/adeskclock/
 
-  install -m775 -g adesklets adeskclock.py ${pkgdir}/usr/share/adesklets/adeskclock/
+  install -m775 -g adesklets adeskclock.py "${pkgdir}"/usr/share/adesklets/adeskclock/
 }
