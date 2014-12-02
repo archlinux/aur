@@ -22,9 +22,13 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  make DESTDIR=${pkgdir} install
+  for _f in Cat Cut Dump Length Silence Slideshow Transcode; do
+    sed -i '24a #else' ./src/ogg${_f}.cpp
+    sed -i '25a #include <unistd.h>' ./src/ogg${_f}.cpp
+  done
 
+  make DESTDIR="${pkgdir}" install
 #man pages location fix
-  install -d $pkgdir/usr/share
-  mv $pkgdir/usr/man $pkgdir/usr/share
+  install -d "${pkgdir}"/usr/share
+  mv "${pkgdir}"/usr/man "${pkgdir}"/usr/share
 }
