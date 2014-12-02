@@ -1,14 +1,13 @@
 pkgbase = libhtp
-	pkgdesc = HTP library
-	pkgver = 0.2.8
+	pkgdesc = HTP library - a security-aware parser for the HTTP protocol
+	pkgver = 0.5.15
 	pkgrel = 1
 	url = http://www.openinfosecfoundation.org/index.php/downloads
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	options = !libtool
-	source = http://www.openinfosecfoundation.org/download/htp-0.2.8.tar.gz
-	sha256sums = ea5107a3e6e1994a29b69f82bcf853273ecfd45100189ddb7959c291f0572f17
+	source = https://github.com/ironbee/libhtp/archive/0.5.15.tar.gz
+	sha256sums = ccd2e18e1efd3c31ae4a8967a630fb2a8339c082f66ecf79f50e44e8f120c64f
 
 pkgname = libhtp
 
