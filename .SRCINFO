@@ -1,0 +1,21 @@
+pkgbase = ros-indigo-rviz-fixed-view-controller
+	pkgdesc = ROS - A simple rviz view controller that follows a TF frame.
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = http://ros.org/wiki/rviz_fixed_view_controller
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-rviz
+	makedepends = ros-indigo-pluginlib
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-rviz
+	depends = ros-indigo-pluginlib
+	source = rviz_fixed_view_controller::git+https://github.com/ros-gbp/rviz_fixed_view_controller-release.git#tag=release/indigo/rviz_fixed_view_controller/0.0.2-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-rviz-fixed-view-controller
+
