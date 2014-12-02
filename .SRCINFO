@@ -1,13 +1,13 @@
 pkgbase = mencal
 	pkgdesc = A simple variation of the well-known unix command cal, with periodically repeating days highlighted in color
-	pkgver = 2.4
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://kyberdigi.cz/projects/mencal
 	arch = any
 	license = GPL
 	depends = perl
-	source = http://kyberdigi.cz/projects/mencal/files/mencal-2.4.tar.gz
-	sha256sums = dcb603fcfb36f5bdce69e22ff52ff12b953de08531392d94557c29e5de492c69
+	source = http://kyberdigi.cz/projects/mencal/files/mencal-3.0.tar.gz
+	sha256sums = 9328d0b2f3f57847e8753c5184531f4832be7123d1b6623afdff892074c03080
 
 pkgname = mencal
 
