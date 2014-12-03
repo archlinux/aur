@@ -1,0 +1,21 @@
+post_install() {
+  groupadd -r sabayon &>/dev/null
+  useradd -r -g sabayon -d /var/lib/sabayon -s /bin/false sabayon &>/dev/null
+  xdg-icon-resource forceupdate
+}
+
+post_upgrade() {
+  getent group sabayon >/dev/null 2>&1 || groupadd -r sabayon &>/dev/null
+  getent passwd sabayon >/dev/null 2>&1 || useradd -r -g sabayon -d /var/lib/sabayon -s /bin/false sabayon &>/dev/null
+  xdg-icon-resource forceupdate
+}
+
+post_remove() {
+  if getent passwd sabayon >/dev/null 2>&1; then
+    userdel sabayon
+  fi
+  if getent group sabayon >/dev/null 2>&1; then
+    groupdel sabayon
+  fi
+  xdg-icon-resource forceupdate
+}

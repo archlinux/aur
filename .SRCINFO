@@ -1,0 +1,24 @@
+pkgbase = sabayon
+	pkgdesc = A system administration tool to define and deploy desktop profiles for the GNOME desktop environment
+	pkgver = 2.30.1
+	pkgrel = 2
+	url = https://wiki.gnome.org/Apps/Sabayon
+	install = sabayon.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	depends = pyxdg
+	depends = pessulus
+	depends = xorg-server-xephyr
+	depends = libsm
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = gksu: to run sabayon directly from menu
+	options = !libtool
+	source = http://ftp.gnome.org/pub/GNOME/sources/sabayon/2.30/sabayon-2.30.1.tar.bz2
+	sha256sums = eff725ae2dad3d55a3580a83b821e2279787b5e3dfb280a1c38fa39d40dcc73a
+
+pkgname = sabayon
+
