@@ -13,17 +13,17 @@ source=(ftp://ftp.fit.vutbr.cz/pub/systems/gentoo/distfiles/${pkgname}_${pkgver}
 md5sums=('5db9882611f34ea2a104a86db142ceec')
 
 package() {
-  cd ${srcdir}/${pkgname}_${pkgver}
+  cd "${srcdir}"/${pkgname}_${pkgver}
 
 # python2 fix
   for file in $(find . -name 'http-*' -print); do
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-  
-  install -D -m755 $pkgname ${pkgdir}/usr/bin/$pkgname
-  install -D -m755 ${pkgname}_maintenance ${pkgdir}/usr/bin/${pkgname}_maintenance
-  
-  install -D -m644 $pkgname.1 ${pkgdir}/usr/share/man/man1/$pkgname.1
-  install -D -m644 ${pkgname}_maintenance.1 ${pkgdir}/usr/share/man/man1/${pkgname}_maintenance.1  
+
+  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
+  install -Dm755 ${pkgname}_maintenance "${pkgdir}"/usr/bin/${pkgname}_maintenance
+
+  install -Dm644 $pkgname.1 "${pkgdir}"/usr/share/man/man1/$pkgname.1
+  install -Dm644 ${pkgname}_maintenance.1 "${pkgdir}"/usr/share/man/man1/${pkgname}_maintenance.1
 }
