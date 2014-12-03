@@ -1,10 +1,10 @@
-# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=evad-svn
 pkgver=112
 pkgrel=1
-pkgdesc="SVN version of a text-based client to the powerful MPD music server."
-arch=('i686' 'x86_64')
+pkgdesc="SVN version of a text-based client to the powerful MPD music server"
+arch=('any')
 url="http://sourceforge.net/projects/evad/"
 license=('GPL')
 depends=('python2' 'mpd')
@@ -18,7 +18,7 @@ _svntrunk=http://evad.svn.sourceforge.net/svnroot/evad/trunk
 _svnmod=evad
 
 prepare() {
-  cd ${srcdir}
+  cd "${srcdir}"
 
   if [ -d $_svnmod/.svn ]; then
     (cd $_svnmod && svn up -r $pkgver)
@@ -30,14 +30,14 @@ prepare() {
   msg "Starting make..."
 
   if [ -d $_svnmod-build ]; then
-    (rm -r ${srcdir}/$_svnmod-build && cp -r $_svnmod $_svnmod-build)
+    (rm -r "${srcdir}"/$_svnmod-build && cp -r $_svnmod $_svnmod-build)
   else
     cp -r $_svnmod $_svnmod-build
   fi
 }
 
 package() {
-  cd ${srcdir}/$_svnmod-build
+  cd "${srcdir}"/$_svnmod-build
 
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root="${pkgdir}"
 }
