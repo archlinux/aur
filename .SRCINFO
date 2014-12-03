@@ -1,6 +1,6 @@
 pkgbase = vym-devel
 	pkgdesc = A mindmapping tool
-	pkgver = 2.3.20
+	pkgver = 2.3.24
 	pkgrel = 1
 	url = http://www.insilmaril.de/vym/
 	install = vym-devel.install
@@ -12,9 +12,9 @@ pkgbase = vym-devel
 	depends = zip
 	conflicts = vym
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/vym/vym-2.3.20.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/vym/vym-2.3.24.tar.bz2
 	source = vym.desktop
-	sha256sums = 24b1e874fbe2fb8909e9571132f2fb246efddc990d09515da41e50cecf84fb0d
+	sha256sums = b719521b97cd1cf1ab881a46325519bd9c48191537eadac8d4251a08a0741e06
 	sha256sums = e299c69c213e7aac3f5b5d0ab088132b4ec7cb63a391f272e75ed64f049d541b
 
 pkgname = vym-devel
