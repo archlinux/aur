@@ -17,8 +17,8 @@ md5sums=('7bb84135e4b289628d9dd65b8c05d897'
 _svntrunk=http://gpicsync.googlecode.com/svn/trunk/
 _svnmod=gpicsync-read-only
 
-build() {
-  cd "$srcdir"
+prepare() {
+  cd "${srcdir}"
   msg "Connecting to SVN server...."
 
   if [[ -d "$_svnmod/.svn" ]]; then
@@ -30,25 +30,23 @@ build() {
   msg "SVN checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf "$srcdir/$_svnmod-build"
-  svn export "$srcdir/$_svnmod" "$srcdir/$_svnmod-build"
-  cd "$srcdir/$_svnmod-build"
-}
-
-package() {
-  cd "$srcdir/$_svnmod-build"
+  rm -rf "${srcdir}"/$_svnmod-build
+  svn export "${srcdir}"/$_svnmod "${srcdir}"/$_svnmod-build
+  cd "${srcdir}"/$_svnmod-build
 
   for file in $(find . -name '*.py' -print); do
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-  
-  install -Dm755 "$srcdir/gpicsync" "$pkgdir/usr/bin/gpicsync"
-  install -Dm644 "$srcdir/gpicsync.desktop" "$pkgdir/usr/share/applications/gpicsync.desktop"
-  install -Dm644 "gpicsync.ico" "$pkgdir/usr/share/pixmaps/gpicsync.ico"
-  cp -r locale "$pkgdir/usr/share"
-  install -d "$pkgdir/usr/share/gpicsync"
-  cp {*.py,*.jpg,*.ico,*.conf} "$pkgdir/usr/share/gpicsync"
 }
 
-# vim:set ts=2 sw=2 et
+package() {
+  cd "${srcdir}"/$_svnmod-build
+
+  install -Dm755 "${srcdir}"/gpicsync "${pkgdir}"/usr/bin/gpicsync
+  install -Dm644 "${srcdir}"/gpicsync.desktop "${pkgdir}"/usr/share/applications/gpicsync.desktop
+  install -Dm644 gpicsync.ico "${pkgdir}"/usr/share/pixmaps/gpicsync.ico
+  cp -r locale "${pkgdir}"/usr/share
+  install -d "${pkgdir}"/usr/share/gpicsync
+  cp {*.py,*.jpg,*.ico,*.conf} "${pkgdir}"/usr/share/gpicsync
+}
