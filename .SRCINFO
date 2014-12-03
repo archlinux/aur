@@ -1,6 +1,6 @@
 pkgbase = coverity-submit
 	pkgdesc = Submitting Coverity builds
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = http://www.catb.org/esr/coverity-submit/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = coverity-submit
 	makedepends = pychecker
 	depends = python2
 	depends = curl
-	source = http://www.catb.org/~esr/coverity-submit/coverity-submit-1.12.tar.gz
-	md5sums = 6b2c61a809bef8f83b4b90c6eaff4ef0
+	source = http://www.catb.org/~esr/coverity-submit/coverity-submit-1.13.tar.gz
+	sha256sums = c540d2fac0334ba58d01954e6de849738aaa84365a0f1f3bf0f3c37a400d41f8
 
 pkgname = coverity-submit
 
