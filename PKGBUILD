@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python2' 'curl')
 makedepends=('pychecker')
 source=(http://www.catb.org/~esr/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('c540d2fac0334ba58d01954e6de849738aaa84365a0f1f3bf0f3c37a400d41f8')
+md5sums=('afc40b86f9911617b5c309d3330a65c8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
