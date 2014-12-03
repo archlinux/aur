@@ -12,6 +12,8 @@ pkgbase = safekeep
 	depends = python2
 	depends = rdiff-backup
 	depends = openssh
+	backup = etc/safekeep/safekeep.conf
+	backup = etc/cron.daily/safekeep
 	source = http://downloads.sourceforge.net/sourceforge/safekeep/safekeep-1.4.2.tar.gz
 	sha256sums = ab17c3b00248b99ba9015a75c0c816bf12f77108551f95da3de609112ab124dd
 

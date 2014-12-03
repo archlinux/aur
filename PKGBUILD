@@ -10,24 +10,26 @@ license=('GPL')
 depends=('python2' 'rdiff-backup' 'openssh')
 makedepends=('asciidoc' 'docbook-xsl' 'xmlto')
 install=$pkgname.install
+backup=('etc/safekeep/safekeep.conf'
+        'etc/cron.daily/safekeep')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('ab17c3b00248b99ba9015a75c0c816bf12f77108551f95da3de609112ab124dd')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   make docs
 }
 
 package () {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
 #Python2 fix
   sed -i 's_env python_env python2_' $pkgname
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
 #installing files
-  install -D -m644 samples/sample.backup ${pkgdir}/etc/safekeep/backup.d/sample.backup
-  install -D -m644 samples/client-script-sample.sh ${pkgdir}/etc/safekeep/backup.d/client-script-sample.sh
+  install -D -m644 samples/sample.backup "${pkgdir}"/etc/safekeep/backup.d/sample.backup
+  install -D -m644 samples/client-script-sample.sh "${pkgdir}"/etc/safekeep/backup.d/client-script-sample.sh
 }
