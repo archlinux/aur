@@ -1,43 +1,64 @@
 # vim:set ft=sh:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: ruario <ruario AT opera DOT com>
 # Contributor: Daniel Isenmann <daniel AT archlinux DOT org>
 # Contributor: dorphell <dorphell AT archlinux DOT org>
 # Contributor: Sigitas Mazaliauskas <sigis AT gmail DOT com>
+# Contributor: eworm
 
 pkgname=opera
-_ver=12.16
-_build=1860
-pkgver=$_ver.$_build
-pkgrel=2
-pkgdesc='Fast and secure web browser and Internet suite'
-arch=('i686' 'x86_64')
-url='http://www.opera.com/browser/'
-license=('custom:opera')
-depends=('gcc-libs' 'libxt' 'freetype2' 'libxext' 'glib2' 'ttf-font'
-         'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils')
-optdepends=('gstreamer0.10-base-plugins: HTML5 Video support'
-            'gstreamer0.10-good: HTML5 Video support')
-install=$pkgname.install
+pkgver=26.0.1656.32
+pkgrel=1
+pkgdesc="A fast and secure web browser and Internet suite."
+url="http://www.opera.com/"
+install=${pkgname}.install
 options=(!strip !zipman)
+license=('custom:opera')
+backup=("etc/$pkgname/default")
+arch=('x86_64')
+source=(
+	"http://deb.opera.com/opera/pool/non-free/o/${pkgname}-stable/${pkgname}-stable_${pkgver}_amd64.deb"
+	"opera"
+	"default"
+)
 
-
-  #source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.i386.linux.tar.xz
-  #http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.x86_64.linux.tar.xz)
-
-if [[ $CARCH == i686 ]]; then
-  _arch=i386
-  source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('df640656a52b7c714faf25de92d84992116ce8f82b7a67afc1121eb3c428489d')
-elif [[ $CARCH == x86_64 ]]; then
-  _arch=$CARCH
-  source=(http://get.geo.opera.com/pub/opera/linux/${_ver/./}/opera-${_ver}-${_build}.${_arch}.linux.tar.xz)
-  sha256sums=('b3b5cada3829d2b3b0e2da25e9444ce9dff73dc6692586ce72cfd4f6431e639e')
-fi
+prepare() {
+	sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
+	sed -e "s/%operabin%/x86_64-linux-gnu\/$pkgname\/$pkgname/g" \
+		-i "$srcdir/opera"
+}
 
 package() {
-  opera-${_ver}-${_build}.${_arch}.linux/install --prefix /usr --repackage $pkgdir/usr
-  install -Dm 644 $pkgdir/usr/share/$pkgname/defaults/license.txt $pkgdir/usr/share/licenses/$pkgname/license.txt
+	depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'gcc-libs' 'alsa-lib' 'nss' 'freetype2' 'ttf-font')
+	optdepends=(
+		'curl: opera crash reporter and autoupdate checker'
+		'ffmpeg: playback of not really open formats'
+	)
+
+	tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
+
+    # soname fix for libsystemd (udev)
+    sed -e 's/libudev.so.0/libudev.so.1/g' \
+        -i "$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/$pkgname"
+
+	# suid opera_sandbox
+	chmod 4755 "$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/opera_sandbox"
+
+	# install default options
+	install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
+
+	# install opera wrapper
+	rm "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/opera" "$pkgdir/usr/bin/$pkgname"
+
+	# license
+	install -Dm644 \
+		"$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/opera_autoupdate.licenses" \
+		"$pkgdir/usr/share/licenses/$pkgname/opera_autoupdate.licenses"
 }
+
+sha256sums=('e2ea368709f2ac10c3997dd361440cb39b4735b6dfe77e29a271e27f6df78a6a'
+            '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
+            '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
