@@ -2,12 +2,12 @@ pkgbase = bsc
 	pkgdesc = A file manager for Linux based on Qt-GUI
 	pkgver = 4.1.0
 	pkgrel = 2
-	url = http://www.beesoft.org/index.php?id=bsc
+	url = http://sourceforge.net/projects/besc/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt4
-	source = http://www.beesoft.org/download/bsc_4.1.0_src.tar.bz2
+	source = ftp://ftp.home.vim.org/vol/2/metalab/distributions/tinycorelinux/2.x/tce/src/bsc/bsc_4.1.0_src.tar.bz2
 	source = bsc.desktop
 	sha256sums = a07c26c64a251051be43d403359f1ac1675e0a16e2f19a84dee446b31a183393
 	sha256sums = 4349a1833d2894ca234858780c365e01d665bd40cb57ed7254947cbbf3fb6bfc
