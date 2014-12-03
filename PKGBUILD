@@ -7,9 +7,9 @@ pkgver=0
 pkgrel=3
 pkgdesc="A collection of fortune cookies from X-Files"
 arch=('any')
-depends=('fortune-mod')
 url="http://www.splitbrain.org/projects/fortunes/xfiles"
 license=('unknown')
+depends=('fortune-mod')
 source=(http://www.splitbrain.org/_media/projects/fortunes/fortune-xfiles.tgz)
 md5sums=('dfbe17a0b0b78e5914d0838852becb7b')
 
