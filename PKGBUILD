@@ -13,14 +13,14 @@ source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
 sha256sums=('5b799a1da39de1e6aa28674e3c2a2359df630c42f9d9b3fa051dee0db4aace4c')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  ./configure -prefix ${pkgdir}/usr
+  ./configure -prefix "${pkgdir}"/usr
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
-  
-   make DESTDIR=${pkgdir} install
+  cd "${srcdir}"/$pkgname-$pkgver
+
+   make DESTDIR="${pkgdir}" install
 }
