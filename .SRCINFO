@@ -1,8 +1,8 @@
 pkgbase = selinux-refpolicy-src
 	pkgdesc = SELinux reference policy sources
-	pkgver = 20140311
+	pkgver = 20141203
 	pkgrel = 1
-	url = http://oss.tresys.com/projects/refpolicy
+	url = https://github.com/TresysTechnology/refpolicy/wiki
 	arch = any
 	groups = selinux
 	groups = selinux-policies
@@ -12,8 +12,8 @@ pkgbase = selinux-refpolicy-src
 	makedepends = libsepol>=2.1.4
 	makedepends = libsemanage>=2.0.29
 	depends = linux-selinux
-	source = https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20140311.tar.bz2
-	sha256sums = f69437db95548c78a5dec44c236397146b144153149009ea554d2e536e5436f7
+	source = https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20141203.tar.bz2
+	sha256sums = f438209c430d8a2d4ddcbe4bdd3edb46f6af7dc4913637af0b73c635e40c1522
 
 pkgname = selinux-refpolicy-src
 
