@@ -12,17 +12,17 @@ source=(http://www.nic.funet.fi/pub/sci/graphics/packages/$pkgname/$pkgname-$pkg
 md5sums=('8e277b95023b2e32171edeae5367e7f5')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   make PREFIX="${pkgdir}"/usr install installman
-  
-  install -d "$pkgdir"/usr/share/doc/$pkgname
-  cp -r examples "$pkgdir"/usr/share/doc/$pkgname
-  chmod -x "$pkgdir"/usr/share/doc/$pkgname/examples/*
+
+  install -d "${pkgdir}"/usr/share/doc/$pkgname
+  cp -r examples "${pkgdir}"/usr/share/doc/$pkgname
+  chmod -x "${pkgdir}"/usr/share/doc/$pkgname/examples/*
 }
