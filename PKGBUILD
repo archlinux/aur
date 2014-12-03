@@ -13,14 +13,14 @@ source=(http://mathr.co.uk/blog/code/$pkgname-$pkgver.tar.gz)
 sha256sums=('e8e27647bdb38873ac570d46c1a9689a92b01bb67f59089d1cdd08784f7052d0')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 }
