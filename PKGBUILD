@@ -12,7 +12,10 @@ source=(http://gps2photo.cvs.sourceforge.net/*checkout*/$pkgname/gpsPhoto/src/gp
 sha256sums=('d202bc00a70317dd3cafce7c2a9d770ac1c7071dd18a2e001693c5e492af98af')
 
 package() {
-  cd ${srcdir}
+  cd "${srcdir}"
 
-  install -D -m755 ${srcdir}/gpsPhoto.pl ${pkgdir}/usr/bin/gpsPhoto.pl
+  install -Dm755 gpsPhoto.pl "${pkgdir}"/usr/bin/gpsPhoto.pl
+
+  cd "${pkgdir}"/usr/bin/
+  ln -s gpsPhoto.pl $pkgname
 }
