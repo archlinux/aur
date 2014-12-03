@@ -21,7 +21,6 @@ source=("ftp://ftp.gnupg.org/gcrypt/alpha/poldi/$pkgname-$pkgver.tar.bz2"
 prepare() {
 	sed -i \
 		-e 's!\(#define GNUPG_DEFAULT_SCD\).*!\1 "/usr/lib/gnupg/scdaemon"!' \
-		-e 's!\(#define GNUPG_DEFAULT_DIRMNGR\).*!\1 "/usr/lib/gnupg/dirmngr_ldap"!' \
 		$srcdir/poldi-0.4.1/config.h.in
 }
 
