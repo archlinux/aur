@@ -13,19 +13,18 @@ source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('d6d7717f1f333847cc4a2e9d83e97b971b3bfb539d99d4ae30a5140de6e386f4')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
-  install -D -m644 ChangeLog ${pkgdir}/usr/share/doc/$pkgname/ChangeLog
-
+  install -Dm644 ChangeLog "${pkgdir}"/usr/share/doc/$pkgname/ChangeLog
 #removing unneeded
-  rm -rf ${pkgdir}/usr/share/menu
+  rm -rf "${pkgdir}"/usr/share/menu
 }
