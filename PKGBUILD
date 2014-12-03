@@ -1,27 +1,15 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net 
 pkgname=('python-configshell-fb' 'python2-configshell-fb')
 _pkgname=configshell-fb
-pkgver=1.1.fb15
-pkgrel=2
+pkgver=1.1.fb16
+pkgrel=1
 pkgdesc="python framework for building simple CLI applications (free branch)"
 arch=('any')
 url="https://github.com/agrover/configshell-fb"
 license=('Apache')
 options=()
 source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz)
-sha256sums=('7e645509acff3e92d4b824be48cdca1ba059e94ae9f9e0bdedd5829c310518d9')
-
-
-build_python-configshell-fb() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
-}
-
-build_python2-configshell-fb() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python2 setup.py build
-}
-
+sha256sums=('391187e213bcec4eb81d34baad973afd6ff544af1fe07816ff784a3eb278e0c5')
 
 package_python-configshell-fb() {
   depends=('python-pyparsing' 'python-urwid')
@@ -29,7 +17,7 @@ package_python-configshell-fb() {
   provides=('python-configshell')
   conflicts=('python-configshell')
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --skip-build --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-configshell-fb() {
@@ -38,7 +26,7 @@ package_python2-configshell-fb() {
   provides=('python2-configshell')
   conflicts=('python2-configshell')
   cd "$srcdir/$_pkgname-$pkgver"
-  python2 setup.py install --skip-build --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
