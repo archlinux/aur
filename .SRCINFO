@@ -1,5 +1,5 @@
 pkgbase = newstap
-	pkgdesc = Retrieve news from NNTP and deliver them to one or more destinations as regular electronic mail messages.
+	pkgdesc = Retrieve news from NNTP and deliver them to one or more destinations as regular electronic mail messages
 	pkgver = 1.0.0
 	pkgrel = 3
 	url = http://amtrickey.net/newstap/
