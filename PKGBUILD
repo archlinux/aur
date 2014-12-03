@@ -1,5 +1,5 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributer: Jan Kròávek <wamba@centrum.cz>
+# Contributer: Jan Krnávek <wamba@centrum.cz>
 
 pkgname=fortune-mod-cs-reddwarf
 pkgver=0.0
