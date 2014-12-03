@@ -1,10 +1,9 @@
 pkgbase = pessulus
 	pkgdesc = A lockdown editor for GNOME
-	pkgver = 2.30.2
-	pkgrel = 5
-	url = http://live.gnome.org/Pessulus
+	pkgver = 2.30.4
+	pkgrel = 1
+	url = https://wiki.gnome.org/action/show/Apps/Attic/Pessulus
 	install = pessulus.install
-	changelog = pessulus.changelog
 	arch = any
 	license = GPL
 	makedepends = pkgconfig
@@ -13,8 +12,8 @@ pkgbase = pessulus
 	depends = python2-bonobo
 	depends = python2-gconf
 	depends = hicolor-icon-theme
-	source = http://ftp.gnome.org/pub/GNOME/sources/pessulus/2.30/pessulus-2.30.2.tar.gz
-	sha256sums = 660611ce0bf34039ac2bbdc73f58d4098c4fc72a4b1301dba6004a43944e0871
+	source = http://ftp.gnome.org/pub/GNOME/sources/pessulus/2.30/pessulus-2.30.4.tar.gz
+	sha256sums = 887ebf0510f44430e3feb053242521218db07bbb623e6d07f7f4414812ceff06
 
 pkgname = pessulus
 
