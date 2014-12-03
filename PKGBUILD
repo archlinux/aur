@@ -1,6 +1,6 @@
 # vim:set ft=sh:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
-# Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: ruario <ruario AT opera DOT com>
 # Contributor: Daniel Isenmann <daniel AT archlinux DOT org>
