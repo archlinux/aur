@@ -4,31 +4,34 @@
 pkgname=gdeskcal
 _pkgname=gDeskCal
 pkgver=1.01
-pkgrel=5
+pkgrel=6
 pkgdesc="Little eye-candy calendar for your desktop"
-arch=(any)
+arch=('any')
 license=('GPL')
 url="http://customize.org/gDeskCal"
 depends=('pygtk')
 makedepends=('perlxml' 'patch' 'pkg-config')
-source=(http://dl.fedoraproject.org/pub/fedora/linux/releases/15/Everything/source/SRPMS/$pkgname-$pkgver-7.fc15.src.rpm
+source=(http://pkgs.fedoraproject.org/repo/pkgs/gdeskcal/$_pkgname-$pkgver.tar.gz/6198d3fb3b28eec6ec430564defda781/$_pkgname-$pkgver.tar.gz
         gdeskcal-utf8.diff)
-sha256sums=('b2ec8ef9c384fce5aee8de220308e6b80351396ca3e137e851ebd2a25016480f'
+sha256sums=('cdf480a8252db2bc81098cbe14e9278297a6e14c8dd455a91a8c8d1455d57184'
             '507102c5381f854a6164f3ec0da945f61b312ade0676217dcfe0e29ff2c8d4ff')
 
-build() {
-  cd ${srcdir}
-  
-  tar xzf $_pkgname-$pkgver.tar.gz
-  cd ${srcdir}/$_pkgname-$pkgver
+prepare() {
+  cd "${srcdir}"/$_pkgname-$pkgver
+
   patch -p1 < ../gdeskcal-utf8.diff
   sed -i 's#python#python2#' $pkgname
+}
+
+build() {
+  cd "${srcdir}"/$_pkgname-$pkgver
+
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd ${srcdir}/$_pkgname-$pkgver
-  
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}"/$_pkgname-$pkgver
+
+  make DESTDIR="${pkgdir}" install
 }
