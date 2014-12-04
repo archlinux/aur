@@ -4,14 +4,14 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.5.6
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 groups=('eudev-base')
 url="http://www.balabit.com/network-security/syslog-ng/"
-depends=('awk' 'eventlog' 'glib2' 'libcap' 'libdbi' 'udev')
+depends=('awk' 'eventlog' 'glib2' 'libcap' 'libdbi' 'pcre' 'udev')
 makedepends=('flex' 'pkg-config' 'python2' 'libxslt')
 optdepends=('logrotate: for rotating log files'
             'syslog-ng-openrc: syslog-ng openrc initscript')
@@ -27,8 +27,8 @@ source=("http://www.balabit.com/downloads/files/syslog-ng/sources/$pkgver/source
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha1sums=('8f291432800db90a50206bf7da4462ef874ea54f'
-          'cf61571ffde34ecf36be76881fce20944fd3efa4'
+sha1sums=('be7e95696ed172db1d0f44904e173d25769daa93'
+          '3e7ec4f3f68265aaa98f37338f801c5c22b85c17'
           'eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd'
           '949128fe3d7f77a7aab99048061f885bc758000c'
           '94af81a84e3add6653755122cdd5080694de059d')
@@ -47,8 +47,7 @@ build() {
     --disable-spoof-source \
     --enable-ipv6 \
     --enable-sql \
-    --disable-systemd \
-    --disable-json # non-buildable with current json-c package version
+    --disable-systemd
 
   make
 }
