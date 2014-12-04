@@ -1,17 +1,13 @@
-# arg 1:  the new package version
 post_install() {
 cat <<EOF
   >> To make gringotts work, the soft- and hard-memory limits need to be raised. Please read '/usr/share/doc/gringotts/README' for detailed information.
 EOF
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
 post_upgrade() {
   post_install $1
 }
 
-# arg 1:  the old package version
 post_remove() {
 cat <<EOF
   >> Check your '/etc/security/limits.conf' file for any changes made for the gringotts package. If you will not use this software in the future, those changes can be deleted.

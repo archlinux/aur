@@ -22,20 +22,20 @@ build() {
 
   ./configure --prefix=/usr
 
-#patching source code and the gringotts.desktop file
-  patch -Np0 -i "${srcdir}"/$pkgname.diff
-  patch -Np0 -i "${srcdir}"/desktopfile.diff
-
   make
 }
 
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
+#patching source code and the gringotts.desktop file
+  patch -Np0 -i "${srcdir}"/$pkgname.diff
+  patch -Np0 -i "${srcdir}"/desktopfile.diff
+
   make DESTDIR="${pkgdir}" install
 
 #.desktop file
-  install -D -m644 $pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.desktop
+  install -Dm644 $pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.desktop
 
 #adding suid bit to the executable
   chmod u+s "${pkgdir}"/usr/bin/$pkgname
