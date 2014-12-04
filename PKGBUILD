@@ -16,5 +16,5 @@ package() {
 
   install -d "${pkgdir}"/usr/share/drascula/
   install -m644 audio/*.ogg "${pkgdir}"/usr/share/drascula/
-  install -D -m644 readme.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 readme.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
