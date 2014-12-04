@@ -1,5 +1,5 @@
 pkgbase = retty
-	pkgdesc = Tiny tool, that lets you attach processes running on other terminals.
+	pkgdesc = Tiny tool, that lets you attach processes running on other terminals
 	pkgver = 1.0
 	pkgrel = 3
 	url = http://pasky.or.cz/~pasky/dev/retty

@@ -3,7 +3,7 @@
 pkgname=retty
 pkgver=1.0
 pkgrel=3
-pkgdesc="Tiny tool, that lets you attach processes running on other terminals."
+pkgdesc="Tiny tool, that lets you attach processes running on other terminals"
 arch=('i686')
 url="http://pasky.or.cz/~pasky/dev/retty"
 license=('GPL')
@@ -20,7 +20,7 @@ build() {
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  install -D -m755 $pkgname "${pkgdir}/usr/bin/$pkgname"
-  install -D -m755 blindtty "${pkgdir}/usr/bin/blindtty"
-  install -D -m644 $pkgname.1 "${pkgdir}/usr/share/man/man1/$pkgname.1"
+  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
+  install -Dm755 blindtty "${pkgdir}"/usr/bin/blindtty
+  install -Dm644 $pkgname.1 "${pkgdir}"/usr/share/man/man1/$pkgname.1
 }
