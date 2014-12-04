@@ -11,7 +11,6 @@ url="http://www.jpilot.org/"
 license=('GPL2')
 depends=('openssl' 'gtk2' 'pilot-link')
 makedepends=('intltool')
-options=('!libtool')
 source=(http://jpilot.org/$pkgname-$pkgver.tar.gz)
 sha256sums=('2c28ed7acea27ae3d541036f2e2ca5ed7e0121badf477e3cfa5ec8d282337e23')
 
