@@ -2,23 +2,24 @@
 
 pkgname=python2-stomp.py
 _libname=${pkgname/python2-/}
-pkgver=4.0.9
+pkgver=4.0.13
 pkgrel=1
-pkgdesc="Python STOMP client, supporting versions 1.0, 1.1 and 1.2 of the protocol"
+pkgdesc="Python2 STOMP client, supporting versions 1.0, 1.1 and 1.2 of the protocol"
 arch=(any)
 url="https://github.com/jasonrbriggs/stomp.py"
-license=(Apache 2.0)
+license=(Apache)
 depends=(python2)
 source=(https://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
 
 build() {
-	cd "$srcdir/$_libname-$pkgver"
+	cd "$srcdir"/$_libname-$pkgver
 	python2 setup.py build
 }
 
 package() {
-	cd "$srcdir/$_libname-$pkgver"
+	cd "$srcdir"/$_libname-$pkgver
 	python2 setup.py install --skip-build -O1 --root="$pkgdir"
+	install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('40e89df032535572c04dc62f640a017717717875f7adbd9960048f5a89ba6677')
+sha256sums=('c8edcb41beab667027cfe7865a434c5881532ab5a4059a88ae3df1dd5197184a')
