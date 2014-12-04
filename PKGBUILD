@@ -15,14 +15,14 @@ source=(http://downloads.sourceforge.net/project/opencachemanage/OpenCacheManage
 sha256sums=('621c8dd8fe8be27937177175b3a1c0f495aca5fa94d7d9817aec002429a1999e')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
-  ./configure --prefix=/usr
+  cd "${srcdir}"/$pkgname-$pkgver
 
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 }
