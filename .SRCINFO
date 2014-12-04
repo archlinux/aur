@@ -1,0 +1,18 @@
+pkgbase = eercase
+	pkgdesc = Enhanced Entity-Relationship (EER) modelling application
+	pkgver = 20140702
+	pkgrel = 1
+	url = http://www.cin.ufpe.br/~eercase
+	arch = x86_64
+	license = unknown
+	depends = java-environment>=7
+	depends = glibc
+	source = https://www.dropbox.com/s/4tql379hfammtve/eercase_linux_02072014.zip?dl=1
+	source = eercase.desktop
+	source = eercase.png
+	md5sums = f1ea245a87152f244af735cd054d22d0
+	md5sums = 982dbb5a3400c4a67caf22a2c43c8763
+	md5sums = 2bb69e6ae6f1644f12783afb87124fcc
+
+pkgname = eercase
+

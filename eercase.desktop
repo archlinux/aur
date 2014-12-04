@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Icon=/usr/share/icons/eercase.png
+Name=EERCASE
+Comment=Enhanced Entity-Relationship (EER) Computer Aided Software Engineering application
+Exec=/usr/bin/eercase
+Categories=Development;
