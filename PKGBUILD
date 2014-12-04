@@ -5,9 +5,9 @@
 # https://github.com/alerque/aur/tree/master/git-crypt-git
 
 pkgname=git-crypt-git
-pkgver=0.3_34_g3d0e757
+pkgver=0.4_1_g1b1715b
 pkgrel=1
-_branch=revamp
+_branch=master
 pkgdesc="Transparent file encryption in Git"
 arch=('i686' 'x86_64')
 url="http://www.agwa.name/projects/${pkgname%-git}/"
