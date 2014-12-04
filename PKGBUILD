@@ -14,31 +14,36 @@ install=$pkgname.install
 source=(http://download.wonderland.cz/$pkgname-$pkgver.tgz)
 md5sums=('762f7e6954f99612124ae2fbc74841de')
 
-build() {
+prepare() {
   cd $pkgname-$pkgver
 
   sed 's|games/||g' -i lotr.h
-
   export CFLAGS+=" -DFULLSCREEN"
+}
+
+build() {
+  cd $pkgname-$pkgver
 
 # compile floppy version
   make clean
   make PREFIX=/usr CFLAGS="${CFLAGS}"
   mv -f lotr lotr-floppy
-
 # compile cd version
   make clean
   make PREFIX=/usr CFLAGS="${CFLAGS} -DCD_VERSION"
   mv -f lotr lotr-cd
-
 # compile demo version
   make clean
   make PREFIX=/usr CFLAGS="${CFLAGS} -DDEMO=1"
   mv -f lotr lotr-demo
+}
+
+package() {
+  cd $pkgname-$pkgver
 
 # install files
-  install -Dm755 lotr-floppy ${pkgdir}/usr/bin/lotr
-  install -m755 lotr-{cd,demo} ${pkgdir}/usr/bin/
-  install -d ${pkgdir}/usr/share/{doc,lotr/cd}
-  cp -rf doc/ ${pkgdir}/usr/share/doc/lotr/
-}
+  install -Dm755 lotr-floppy "${pkgdir}"/usr/bin/lotr
+  install -m755 lotr-{cd,demo} "${pkgdir}"/usr/bin/
+  install -d "${pkgdir}"/usr/share/{doc,lotr/cd}
+  cp -rf doc/ "${pkgdir}"/usr/share/doc/lotr/
+} 
