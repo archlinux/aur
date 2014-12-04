@@ -1,14 +1,14 @@
 pkgbase = libshrink
 	pkgdesc = Library provides a single API into several compression algorithms (LZO, LZ77, LZMA)
 	pkgver = 0.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opensource.conformal.com/wiki/shrink
 	arch = i686
 	arch = x86_64
 	license = ISC
 	makedepends = libclens
 	depends = zlib
-	depends = lzo2
+	depends = lzo>=2.0
 	depends = xz
 	source = https://opensource.conformal.com/snapshots/shrink/shrink-0.5.4.tar.gz
 	sha1sums = e6f71d477e1550cc7b683e878b471c665ade692a
