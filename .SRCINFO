@@ -18,7 +18,6 @@ pkgbase = rainlendar-lite
 	depends = rtmpdump
 	depends = libidn
 	provides = rainlendar2
-	conflicts = rainlendar-beta-unstable
 	conflicts = rainlendar-pro
 	source = http://www.rainlendar.net/download/Rainlendar-Lite-2.12.2-i386.tar.bz2
 	md5sums = 6c6e645f4ec0b9e35f0c2463deb76d65

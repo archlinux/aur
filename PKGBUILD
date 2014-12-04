@@ -11,7 +11,7 @@ url="http://www.rainlendar.net/"
 license=('custom')
 depends=('curl' 'gtk2' 'glibc' 'expat' 'libsm' 'libstdc++5' 'libpng12' 'libjpeg6' 'sdl' 'rtmpdump' 'libidn')
 provides=('rainlendar2')
-conflicts=('rainlendar-beta-unstable' 'rainlendar-pro')
+conflicts=('rainlendar-pro')
 
 if [ "${CARCH}" = 'x86_64' ]; then
     source=(http://www.rainlendar.net/download/Rainlendar-Lite-$pkgver-amd64.tar.bz2)
