@@ -26,9 +26,9 @@ package() {
   make PREFIX="${pkgdir}"/usr install
 
 # license file
-  install -D -m644 COPYRIGHT "${pkgdir}"/usr/share/licenses/$pkgname/COPYRIGHT
+  install -Dm644 COPYRIGHT "${pkgdir}"/usr/share/licenses/$pkgname/COPYRIGHT
 
 # docs
-  install -D -m644 CHANGELOG "${pkgdir}"/usr/share/doc/$pkgname/CHANGELOG
-  install -D -m644 README "${pkgdir}"/usr/share/doc/$pkgname/README
+  install -Dm644 CHANGELOG "${pkgdir}"/usr/share/doc/$pkgname/CHANGELOG
+  install -Dm644 README "${pkgdir}"/usr/share/doc/$pkgname/README
 }
