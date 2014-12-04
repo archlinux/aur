@@ -2,7 +2,7 @@
 
 pkgname=cyphertite
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-security scalable solution for online backups"
 arch=(i686 x86_64)
 url="https://opensource.conformal.com/wiki/cyphertite"
@@ -18,7 +18,7 @@ depends=('libassl'
          'libbsd'
          'libedit'
          'libevent>=2.0.10'
-         'openssl>=1.0.1.g'
+         'openssl>=1.0.1.j'
          'sqlite>=3.0.0'
 )
 makedepends=('libclens')

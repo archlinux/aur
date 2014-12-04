@@ -1,7 +1,7 @@
 pkgbase = cyphertite
 	pkgdesc = A high-security scalable solution for online backups
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opensource.conformal.com/wiki/cyphertite
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cyphertite
 	depends = libbsd
 	depends = libedit
 	depends = libevent>=2.0.10
-	depends = openssl>=1.0.1.g
+	depends = openssl>=1.0.1.j
 	depends = sqlite>=3.0.0
 	replaces = cyphertite-external-libs
 	source = https://opensource.conformal.com/snapshots/cyphertite/cyphertite-2.0.4.tar.gz
