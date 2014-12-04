@@ -5,7 +5,7 @@ pkgbase = drascula
 	url = http://scummvm.sourceforge.net/
 	arch = any
 	license = custom
-	depends = scummvm>=1.0.0
+	depends = scummvm
 	optdepends = drascula-audio: audio files
 	optdepends = drascula-audio-flac: lossless audio files
 	optdepends = drascula-audio-mp3: mp3 audio files

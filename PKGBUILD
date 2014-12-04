@@ -8,7 +8,7 @@ pkgdesc='"Drascula: The Vampire Strikes Back", classic comical 2D point & click 
 arch=('any')
 url="http://scummvm.sourceforge.net/"
 license=('custom')
-depends=('scummvm>=1.0.0')
+depends=('scummvm')
 optdepends=('drascula-audio: audio files'
             'drascula-audio-flac: lossless audio files'
             'drascula-audio-mp3: mp3 audio files')
@@ -22,7 +22,7 @@ package() {
 
   install -d "${pkgdir}"/usr/share/$pkgname/
   install -m644 Packet.001 drascula.doc "${pkgdir}"/usr/share/$pkgname/
-  install -D -m644 readme.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 readme.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 
-  install -D -m755 $pkgname.sh "${pkgdir}"/usr/bin/$pkgname
+  install -Dm755 $pkgname.sh "${pkgdir}"/usr/bin/$pkgname
 }
