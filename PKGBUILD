@@ -12,14 +12,14 @@ source=(http://sourceforge.net/projects/$pkgname/files/${pkgname}_${pkgver}.tar.
 sha256sums=('1ac1809264cb7efaf8e47c993d6d879a347388a288c6599d1aa35d24fef1084f')
 
 build() {
-  cd "${srcdir}/$pkgname"
+  cd "${srcdir}"/$pkgname
 
   qmake-qt4
   make
 }
 
 package() {
-  cd "${srcdir}/$pkgname"
+  cd "${srcdir}"/$pkgname
 
-  install -D -m755 $pkgname ${pkgdir}/usr/bin/$pkgname
+  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
 }
