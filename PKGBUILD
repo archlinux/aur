@@ -27,8 +27,8 @@ package() {
   make DESTDIR="${pkgdir}" install
 
 #icon + desktop files
-  install -D -m644 "${srcdir}"/${pkgname}_w_fonts-${pkgver}/$pkgname.desktop \
+  install -Dm644 "${srcdir}"/${pkgname}_w_fonts-${pkgver}/$pkgname.desktop \
     "${pkgdir}"/usr/share/applications/$pkgname.desktop
-  install -D -m644 "${srcdir}"/${pkgname}_w_fonts-${pkgver}/icon.png \
+  install -Dm644 "${srcdir}"/${pkgname}_w_fonts-${pkgver}/icon.png \
     "${pkgdir}"/usr/share/pixmaps/$pkgname.png
 }
