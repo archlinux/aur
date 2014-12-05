@@ -21,9 +21,9 @@ source=(
 
 md5sums=(
     '37ea169495c100db12a4bd101c7af740'
-    '4a5517164256e05726e86e048991f005'
+    '4277339e3ed59e1970eea3939c9874a2'
     'f4be785322fefea711af2e2eab04dbd2'
-    '1f7a24b084f2461f3875a3bde85b2c9c'
+    '355e210dd48be33233e6a119e4a1d5bf'
 )
 
 package () {
