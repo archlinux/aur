@@ -1,7 +1,7 @@
 pkgbase = poldi
 	pkgdesc = PAM module for authentication using a smartcard
 	pkgver = 0.4.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.g10code.com/p-poldi.html
 	install = poldi.install
 	arch = i686
