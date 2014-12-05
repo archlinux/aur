@@ -2,14 +2,14 @@
 
 pkgbase=phonon-gstreamer
 pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
-pkgver=4.8.0
-pkgrel=2
+pkgver=4.8.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
 makedepends=('gst-plugins-base' 'cmake' 'automoc4' 'phonon-qt4' 'phonon-qt5')
-source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/phonon-backend-gstreamer-${pkgver}.tar.xz")
-md5sums=('fad1ae2accbc2affee174fb8b52630ed')
+source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/src/phonon-backend-gstreamer-${pkgver}.tar.xz")
+md5sums=('b17e916b4558adc3ed2d7143b37cf904')
 
 prepare() {
   mkdir build-qt4
