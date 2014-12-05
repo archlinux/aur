@@ -13,7 +13,7 @@ optdepends=('xcftools: XCF format support'
             'gimp-ufraw: RAW format support')
 source=(http://galapix.googlecode.com/archive/$pkgname-$pkgver.tar.gz
         imagemagick_plugin.patch png_string_fix.patch)
-md5sums=('d58ef6c5e1f51efe37886a734750b9d5'
+md5sums=('SKIP'
          '9f2397caa6bea257ca0cd09a31f96dbf'
          '34f0386d3247edc62e3ff4e55892d286')
 

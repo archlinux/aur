@@ -25,7 +25,7 @@ pkgbase = galapix
 	source = http://galapix.googlecode.com/archive/galapix-0.2.1.tar.gz
 	source = imagemagick_plugin.patch
 	source = png_string_fix.patch
-	md5sums = d58ef6c5e1f51efe37886a734750b9d5
+	md5sums = SKIP
 	md5sums = 9f2397caa6bea257ca0cd09a31f96dbf
 	md5sums = 34f0386d3247edc62e3ff4e55892d286
 
