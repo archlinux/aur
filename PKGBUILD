@@ -7,7 +7,7 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=217
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -181,7 +181,7 @@ package_systemd-selinux() {
 
 package_libsystemd-selinux() {
   pkgdesc="systemd client libraries with SELinux support"
-  depends=('glib2' 'glibc' 'libgcrypt' 'xz')
+  depends=('glib2' 'glibc' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
   provides=('libgudev-1.0.so' 'libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
             'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so'
