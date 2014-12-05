@@ -1,0 +1,17 @@
+pkgbase = librfid-dpavlin-git
+	pkgdesc = This library intends to provide a reader and (as much as possible) PICC / tag independent API for RFID applications.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://openmrtd.org/projects/librfid/
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	depends = libusb
+	provides = librfid=0.2.0
+	options = !libtool
+	source = git+https://github.com/dpavlin/librfid
+	md5sums = SKIP
+
+pkgname = librfid-dpavlin-git
+
