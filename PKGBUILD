@@ -6,8 +6,8 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=cronie-selinux
-pkgver=1.4.11
-pkgrel=2
+pkgver=1.4.12
+pkgrel=1
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://fedorahosted.org/cronie/'
 license=('custom:BSD')
@@ -20,7 +20,7 @@ source=("https://fedorahosted.org/releases/c/r/${pkgname/-selinux}/${pkgname/-se
         'service'
         'pam.d'
         'deny')
-sha1sums=('1a8d3648f5b7082c50128a06377a1194da668899'
+sha1sums=('3bffa899d2c14ac0848cac40e9ecbcb7912e784a'
           'eb8ed1e22dbe9c02075fe4bbe925b6eeb9954649'
           '5eff7fb31f6bc0a924243ff046704726cf20c221'
           '0f279b8fb820340267d578dc85511c980715f91e')
