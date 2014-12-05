@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=picard-plugins-aux
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="additional plugins for MusicBrainz Picard"
 arch=('any')
 url="http://musicbrainz.org/doc/MusicBrainz_Picard/Plugins"
@@ -27,15 +27,15 @@ https://raw.github.com/encukou/picard-plugins/master/autosave.py
 https://raw.github.com/brianfreud/Picard-plugins/master/eq2.py
 https://raw.github.com/brianfreud/Picard-plugins/master/ne2.py
 https://raw.github.com/brianfreud/Picard-plugins/master/p.py
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/abbreviate_artistsort.py
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/copy_to_comment.py
-https://raw.github.com/Sophist-UK/Picard-Plugins/master/musicbee_compatibility.py
+https://raw.githubusercontent.com/Sophist-UK/sophist-picard-plugins/master/abbreviate_artistsort.py
+https://raw.githubusercontent.com/Sophist-UK/sophist-picard-plugins/master/copy_to_comment.py
+https://raw.githubusercontent.com/Sophist-UK/sophist-picard-plugins/master/musicbee_compatibility.py
 https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/zh_cn_convert.py
 https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/zh_wiki.py
 https://raw.githubusercontent.com/alswl/musicbrainz_picard_zh_cn_convert_plugin/master/langconv.py
 )
 md5sums=('a0a8800a0dc978bc38cc7fa05044575e'
-         '1b9f145664fb74021e85aeaf13aff057'
+         '062e91af3470dac50b2fff3f6d9037e4'
          '1219e450a0eb04d78a5fb1c36ddd45e5'
          '05c7dbe8f0ff5fc8e634da7db7f700c7'
          'deb3dcba323915f6e18de8904c7d3cd8'
