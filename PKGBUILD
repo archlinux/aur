@@ -2,18 +2,18 @@
 pkgname=('python-configshell-fb' 'python2-configshell-fb')
 _pkgname=configshell-fb
 pkgver=1.1.fb16
-pkgrel=1
+pkgrel=2
 pkgdesc="python framework for building simple CLI applications (free branch)"
 arch=('any')
 url="https://github.com/agrover/configshell-fb"
 license=('Apache')
 options=()
+makedepends=('python-setuptools' 'python2-setuptools')
 source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz)
 sha256sums=('391187e213bcec4eb81d34baad973afd6ff544af1fe07816ff784a3eb278e0c5')
 
 package_python-configshell-fb() {
   depends=('python-pyparsing' 'python-urwid')
-  makedepends=('python-setuptools')
   provides=('python-configshell')
   conflicts=('python-configshell')
   cd "$srcdir/$_pkgname-$pkgver"
@@ -22,7 +22,6 @@ package_python-configshell-fb() {
 
 package_python2-configshell-fb() {
   depends=('python2-pyparsing' 'python2-urwid')
-  makedepends=('python2-setuptools')
   provides=('python2-configshell')
   conflicts=('python2-configshell')
   cd "$srcdir/$_pkgname-$pkgver"
