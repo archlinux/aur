@@ -5,12 +5,12 @@ _month=07
 _day=02
 # Reverse the filename's date for version continuity
 pkgver=${_year}${_month}${_day}
-pkgrel=1
+pkgrel=2
 pkgdesc="Enhanced Entity-Relationship (EER) modelling application"
 arch=('x86_64')
 url="http://www.cin.ufpe.br/~eercase"
 license=('unknown')
-depends=('java-environment>=7' 'glibc')
+depends=('java-runtime>=7' 'glibc')
 source=("https://www.dropbox.com/s/4tql379hfammtve/${pkgname}_linux_${_day}${_month}${_year}.zip?dl=1"
 	"eercase.desktop"
 	"eercase.png")
@@ -23,8 +23,8 @@ package(){
 	install -Dm0644 "eercase.png" "${pkgdir}/usr/share/icons/eercase.png"
 	install -Dm0644 "eercase.desktop" "${pkgdir}/usr/share/applications/eercase.desktop"
 
-	mkdir -p "${pkgdir}/usr/lib"
+	mkdir -p "${pkgdir}/usr/share"
 	mkdir -p "${pkgdir}/usr/bin"
-	cp -r "${pkgname}"/ "${pkgdir}/usr/lib/"
-	ln -s "/usr/lib/eercase/eercase" "${pkgdir}/usr/bin/eercase"
+	cp -r "${pkgname}"/ "${pkgdir}/usr/share/"
+	ln -s "/usr/share/eercase/eercase" "${pkgdir}/usr/bin/eercase"
 }
