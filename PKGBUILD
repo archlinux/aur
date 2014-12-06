@@ -2,7 +2,7 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
 
 pkgname=openmw-git
-pkgver=0.31.497.gfe0c9ec
+pkgver=0.33.1.462.gab693f1
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --always | sed 's|openmw-\([0-9]\+.[0-9]\+\).0|\1|' | sed 's|-|.|g'
+  git describe --always | sed 's|openmw-\([0-9]\+.[0-9]\+.[0-9]\+\)|\1|' | sed 's|-|.|g'
 }
 
 build() {
