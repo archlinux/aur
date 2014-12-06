@@ -1,0 +1,15 @@
+pkgbase = mgw
+	pkgdesc = Image viewer with tiny filters
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/mgw/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libgnomeui
+	depends = gtk2
+	source = http://sourceforge.net/projects/mgw/files/mgw/mgw-1.0.2/mgw-1.0.2.tar.gz
+	sha256sums = 7a53de53a56d538112f38e75b06157b5f6c0ca4417af9d6ac177a33e2dd466ac
+
+pkgname = mgw
+
