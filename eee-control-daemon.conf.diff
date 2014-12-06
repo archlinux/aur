@@ -1,0 +1,16 @@
+*** a/etc/dbus-1/system.d/eee-control-daemon.conf	Sat Apr 25 17:37:21 2009
+--- b/etc/dbus-1/system.d/eee-control-daemon.conf	Mon Apr 27 22:26:25 2009
+***************
+*** 11,21 ****
+                  <allow send_destination="org.eee.Eee"/>
+                  <allow send_interface="org.eee.Eee"/>
+          </policy>
+-         <!-- Debian still needs group-based permissions -->
+-         <policy group="powerdev">
+-                 <allow send_destination="org.eee.Eee"/>
+-                 <allow send_interface="org.eee.Eee"/>
+-         </policy>
+          <policy context="default">
+                  <deny own="org.eee.Eee"/>
+                  <deny send_destination="org.eee.Eee"/>
+--- 11,16 ----

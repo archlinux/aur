@@ -1,0 +1,28 @@
+pkgbase = eee-control
+	pkgdesc = A utility for the EeePC family which allows the user to modify the FSB, toggle hardware on and off and more.
+	pkgver = 0.9.7.2
+	pkgrel = 2
+	url = http://launchpad.net/eee-control/
+	arch = i686
+	arch = x86_64
+	license = BSDL
+	makedepends = bzr
+	depends = python2
+	depends = dbus-python
+	depends = gconf
+	depends = python-wnck
+	depends = pygtk
+	depends = python-notify
+	depends = acpid
+	depends = consolekit
+	depends = python2-gconf
+	backup = etc/eee-control.conf
+	source = eee-control-daemon.rc
+	source = eee-control-daemon.conf.diff
+	source = eee-control-daemon.diff
+	md5sums = f66a56858f0e9ee4b274c55df5fcf7fc
+	md5sums = 9a03658a5c1d358fc4d0a12fd95305ea
+	md5sums = b22072d36fb4febae53698d841115112
+
+pkgname = eee-control
+

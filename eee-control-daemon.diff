@@ -1,0 +1,11 @@
+--- a/usr/bin/eee-control-daemon	2011-05-12 18:29:18.000000000 +0100
++++ b/usr/bin/eee-control-daemon	2011-07-31 22:19:12.255166646 +0100
+@@ -84,6 +84,8 @@
+         brn_path = os.path.join(acpi_base, "brn")
+     elif os.path.exists("/sys/class/backlight/eeepc/brightness"):
+         brn_path = "/sys/class/backlight/eeepc/brightness"
++    elif os.path.exists("/sys/class/backlight/acpi_video0/brightness"):
++        brn_path = "/sys/class/backlight/acpi_video0/brightness"
+     elif os.path.exists("/sys/class/backlight/psblvds/brightness"):
+         brn_path = "/sys/class/backlight/psblvds/brightness"
+     elif os.path.exists(os.path.join(acpi_base, "backlight/eeepc/brightness")):
