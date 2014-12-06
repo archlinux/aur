@@ -1,0 +1,16 @@
+pkgbase = backdup
+	pkgdesc = Duplicity front-end
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://backdup.sourceforge.net
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = duplicity
+	source = http://sourceforge.net/projects/backdup/files/backdup.tar.bz2
+	source = backdup.desktop
+	sha256sums = 0462e1f64c85be6f05bb419895506edcb609ea7d85dd52db2a44f3616e6dca04
+	sha256sums = 362a5275cea56b036969a5da70c729b1723b950744de4826ec990dcce2b27fb8
+
+pkgname = backdup
+

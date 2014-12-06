@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=BackDup - Duplicity frontend
+Comment=Duplicity frontend.
+Icon=backdup
+Exec=backdup
+StartupNotify=true
+Type=Application
+Categories=System;Utility;
+NotShowIn=GNOME;Unity;
+Keywords=BackDup;
+X-AppInstall-Ignore=true
