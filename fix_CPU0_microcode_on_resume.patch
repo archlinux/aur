@@ -1,7 +1,7 @@
 From fb86b97300d930b57471068720c52bfa8622eab7 Mon Sep 17 00:00:00 2001
 From: Borislav Petkov <bp@suse.de>
 Date: Tue, 18 Nov 2014 10:46:57 +0100
-Subject: [PATCH] x86, microcode: Update BSPs microcode on resume
+Subject: x86, microcode: Update BSPs microcode on resume
 
 In the situation when we apply early microcode but do *not* apply late
 microcode, we fail to update the BSP's microcode on resume because we
@@ -18,9 +18,6 @@ Cc: <stable@vger.kernel.org> # v3.9
 Signed-off-by: Borislav Petkov <bp@suse.de>
 Link: http://lkml.kernel.org/r/20141118094657.GA6635@pd.tnic
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
----
- arch/x86/kernel/cpu/microcode/core.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/microcode/core.c b/arch/x86/kernel/cpu/microcode/core.c
 index dd9d619..2ce9051 100644
@@ -42,5 +39,54 @@ index dd9d619..2ce9051 100644
  
  static struct syscore_ops mc_syscore_ops = {
 -- 
-2.1.3
+cgit v0.10.1
+
+From 02ecc41abcea4ff9291d548f6f846b29b354ddd2 Mon Sep 17 00:00:00 2001
+From: Borislav Petkov <bp@suse.de>
+Date: Sun, 30 Nov 2014 14:26:39 +0100
+Subject: x86, microcode: Limit the microcode reloading to 64-bit for now
+
+First, there was this: https://bugzilla.kernel.org/show_bug.cgi?id=88001
+
+The problem there was that microcode patches are not being reapplied
+after suspend-to-ram. It was important to reapply them, though, because
+of for example Haswell's TSX erratum which disabled TSX instructions
+with a microcode patch.
+
+A simple fix was fb86b97300d9 ("x86, microcode: Update BSPs microcode
+on resume") but, as it is often the case, simple fixes are too
+simple. This one causes 32-bit resume to fail:
+
+https://bugzilla.kernel.org/show_bug.cgi?id=88391
+
+Properly fixing this would require more involved changes for which it
+is too late now, right before the merge window. Thus, limit this to
+64-bit only temporarily.
+
+Signed-off-by: Borislav Petkov <bp@suse.de>
+Link: http://lkml.kernel.org/r/1417353999-32236-1-git-send-email-bp@alien8.de
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+
+diff --git a/arch/x86/kernel/cpu/microcode/core.c b/arch/x86/kernel/cpu/microcode/core.c
+index 2ce9051..08fe6e8 100644
+--- a/arch/x86/kernel/cpu/microcode/core.c
++++ b/arch/x86/kernel/cpu/microcode/core.c
+@@ -465,6 +465,7 @@ static void mc_bp_resume(void)
+ 
+ 	if (uci->valid && uci->mc)
+ 		microcode_ops->apply_microcode(cpu);
++#ifdef CONFIG_X86_64
+ 	else if (!uci->mc)
+ 		/*
+ 		 * We might resume and not have applied late microcode but still
+@@ -473,6 +474,7 @@ static void mc_bp_resume(void)
+ 		 * applying patches early on the APs.
+ 		 */
+ 		load_ucode_ap();
++#endif
+ }
+ 
+ static struct syscore_ops mc_syscore_ops = {
+-- 
+cgit v0.10.1
 

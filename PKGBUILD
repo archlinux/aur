@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.17
-pkgver=3.17.4
-pkgrel=2
+pkgver=3.17.5
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,12 +21,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'fix_CPU0_microcode_on_resume.patch'
         )
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
-            'eeef37397a15245bd143569908be40622a87dc7673965e623e811ea3f68b8434'
+            '435a8a3c4faad53b5f9f0349629358a7d273e6ca94ffeb226c1d360787cc7278'
             'ea9de72fe335055f6e8eebd1d85cad150a47a81004bb27d78f18f2591fd3bbd5'
             '66fc95823d3c99167532f37c07e9582d305961103997fcc61cfc7f6a86b34130'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '4eb64c2520e9bcdff47d757946011b4bf9896186d285361f18364c7ff9b2c699')
+            'fa48f83498bbef85dbe4b39eb88f89aac4dd2591232a3f13ec029fc44b0f497a')
 
 _kernelname=${pkgbase#linux}
 
