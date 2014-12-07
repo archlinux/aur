@@ -4,13 +4,13 @@
 _pkgname=stratagus
 pkgname=$_pkgname-bzr
 pkgver=r8917
-pkgrel=1
+pkgrel=2
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/stratagus"
 license=('GPL')
 depends=('gcc-libs' 'libgl' 'sdl' 'libpng' 'libmng' 'libvorbis' 'libtheora' 'libmikmod' 'lua51' 'sqlite')
-makedepends=('cmake' 'tolua++')
+makedepends=('cmake' 'tolua++' 'bzr')
 conflicts=$_pkgname
 provides=$_pkgname
 source=("${pkgname%-*}::bzr+http://bazaar.launchpad.net/~stratagus/stratagus/trunk/")
