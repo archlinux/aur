@@ -13,7 +13,7 @@ arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
 license=('custom')
 depends=('ncurses' 'openssl')
-makedepends=('perl' 'lksctp-tools' 'unixodbc')
+makedepends=('perl' 'lksctp-tools' 'unixodbc' 'git')
 conflicts=('erlang')
 optdepends=('erlang-unixodbc: database support'
             'java-environment: for Java support'
