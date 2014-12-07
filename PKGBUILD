@@ -4,11 +4,12 @@
 _pkgname=wargus
 pkgname=$_pkgname-bzr
 pkgver=r1757
-pkgrel=1
+pkgrel=2
 pkgdesc="Warcraft 2 Mod that allows you to play Warcraft2 with the Stratagus engine"
 arch=("i686" "x86_64")
 url="https://launchpad.net/wargus"
 license=('GPL')
+makedepends=('bzr')
 depends=('stratagus-bzr' 'ffmpeg2theora' 'cdparanoia' 'timidity++' 'gtk2' )
 conflicts=$_pkgname
 provides=$_pkgname
