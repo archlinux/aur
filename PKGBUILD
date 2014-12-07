@@ -18,7 +18,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'fix_CPU0_microcode_on_resume.patch'
+        '0001-x86-microcode-Update-BSPs-microcode-on-resume.patch'
+        '0002-x86-microcode-Limit-the-microcode-reloading-to-64-bi.patch'
         )
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
             '435a8a3c4faad53b5f9f0349629358a7d273e6ca94ffeb226c1d360787cc7278'
@@ -26,7 +27,8 @@ sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
             '66fc95823d3c99167532f37c07e9582d305961103997fcc61cfc7f6a86b34130'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'fa48f83498bbef85dbe4b39eb88f89aac4dd2591232a3f13ec029fc44b0f497a')
+            'fb120d3031886afd86a2054f551545898758b18f8bad1f6fee1c49e1ce23a760'
+            '529ffe2f52cba3ce8d7ab07bd85361d804d377464ee878ac085d6032336e4918')
 
 _kernelname=${pkgbase#linux}
 
@@ -46,7 +48,9 @@ prepare() {
 
   # Fix FS#42689
   # https://bugzilla.kernel.org/show_bug.cgi?id=88001
-  patch -p1 -i "${srcdir}/fix_CPU0_microcode_on_resume.patch"
+  #
+  patch -p1 -i "${srcdir}/0001-x86-microcode-Update-BSPs-microcode-on-resume.patch"
+  patch -p1 -i "${srcdir}/0002-x86-microcode-Limit-the-microcode-reloading-to-64-bi.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
