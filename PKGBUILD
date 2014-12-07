@@ -64,6 +64,7 @@ build() {
 		--enable-maintainer-mode \
 		--enable-symcryptrun \
 		--enable-gpgtar \
+		--enable-large-secmem \
 
 	make
 }
