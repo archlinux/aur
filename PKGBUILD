@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=cvs-fast-export
-pkgver=1.27
+pkgver=1.28
 pkgrel=1
 pkgdesc="Export RCS or CVS history as a fastimport stream."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('asciidoc')
 url="http://www.catb.org/esr/$pkgname/"
 license=('GPL2')
 source=(http://www.catb.org/esr/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('9fe9e19fa08b43af060d314bf22fcf3a766dda3dabc0fae3fe8a35851040080f')
+sha256sums=('9b197c84de767aeebab547cbf3acf9a2d4966101f648316e721bfecd739bfa0d')
 
 build() {
   cd ${pkgname}-${pkgver}
