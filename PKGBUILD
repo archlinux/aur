@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.17
-pkgver=3.17.5
+pkgver=3.17.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0002-x86-microcode-Limit-the-microcode-reloading-to-64-bi.patch'
         )
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
-            '435a8a3c4faad53b5f9f0349629358a7d273e6ca94ffeb226c1d360787cc7278'
+            '30d8e0da16ac7cc8be13cd6da72ddc487e8c24fb662caf69da7f6d375fdc1aab'
             'ea9de72fe335055f6e8eebd1d85cad150a47a81004bb27d78f18f2591fd3bbd5'
             '66fc95823d3c99167532f37c07e9582d305961103997fcc61cfc7f6a86b34130'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
