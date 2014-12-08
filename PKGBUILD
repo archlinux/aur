@@ -4,7 +4,7 @@
 pkgbase=vbam
 pkgname=('vbam-cli' 'vbam-gtk' 'vbam-wx')
 pkgver=1.8.0.1202
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://vba-m.com'
 license=('GPL2')
@@ -48,7 +48,9 @@ build() {
   fi
   mkdir build && cd build
 
-  local _cmakeargs="-DCMAKE_INSTALL_PREFIX='/usr' \
+  local _cmakeargs="-DCMAKE_BUILD_TYPE='Release' \
+                    -DCMAKE_SKIP_RPATH='TRUE' \
+                    -DCMAKE_INSTALL_PREFIX='/usr' \
                     -DCMAKE_CXX_FLAGS=-I${srcdir}/staging/usr/include \
                     -DENABLE_GTK='ON' -DENABLE_WX='ON' \
                     -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-2.8' \
