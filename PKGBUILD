@@ -5,8 +5,8 @@
 
 pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
-pkgver=4.11.13
-_kdever=4.14.2
+pkgver=4.11.14
+_kdever=4.14.3
 pkgrel=1
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -33,8 +33,8 @@ backup=('usr/share/config/kdm/kdmrc' 'etc/pam.d/kde' 'etc/pam.d/kde-np' 'etc/pam
 source=("http://download.kde.org/stable/${_kdever}/src/${_pkgname}-${pkgver}.tar.xz"
 	'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
 	'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
-	'khotkeys-qt4.patch' 'CVE-2014-8651.patch' 'CVE-2014-8651-2.patch')
-sha1sums=('34dcc710ad8628fefa1cf0fa8eab4efc98ff138f'
+	'khotkeys-qt4.patch')
+sha1sums=('ec79a5d638a93b1abbb99b22a7bea52d9a2c26eb'
           '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
           '660eae40a707d2711d8d7f32a93214865506b795'
           '6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe'
@@ -44,9 +44,7 @@ sha1sums=('34dcc710ad8628fefa1cf0fa8eab4efc98ff138f'
           'c079ebd157c836ba996190f0d2bcea1a7828d02c'
           'ac7bc292c865bc1ab8c02e6341aa7aeaf1a3eeee'
           'd509dac592bd8b310df27991b208c95b6d907514'
-          'aa9d2e5a69986c4c3d47829721ea99edb473be12'
-          '9aa1cff4d69317debe83fc9ff1ea07fff350e717'
-          '9c025005d7830c54b99674bfcbfbc54155d6ecc1')
+          'aa9d2e5a69986c4c3d47829721ea99edb473be12')
 
 # avoid linking error when libsystemd-journal.so.0 doesn't exist in
 # user's system
@@ -72,16 +70,14 @@ prepare() {
 	# KDEBUG#202629
 	patch -p0 -i "${srcdir}"/terminate-server.patch
 
-	# Fixed in 4.11.14
-	patch -p1 -i "${srcdir}"/CVE-2014-8651.patch
-	patch -p1 -i "${srcdir}"/CVE-2014-8651-2.patch
-
 	cd ../
 }
 
 build() {
 	mkdir build
 	cd build
+
+	export CXXFLAGS="$CXXFLAGS -Wno-cpp -Wno-dev"
 
 	cmake ../${_pkgname}-${pkgver} \
 		-DCMAKE_BUILD_TYPE=Release \
