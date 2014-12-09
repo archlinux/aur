@@ -1,0 +1,22 @@
+pkgbase = stultitiasimplex-bin
+	pkgdesc = Simple soundboard application.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://stultitiasimple.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libsndfile
+	depends = portaudio
+	depends = pulseaudio
+	depends = qt4
+	provides = stultitiasimplex
+	conflicts = stultitiasimplex
+	conflicts = stultitiasimplex-git
+	source = https://downloads.sourceforge.net/project/stultitiasimple/releases/1.3.1/stultitiasimplex_linux.tar.gz
+	source = stultitiasimplex.desktop
+	md5sums = be6e5dbc3aa21b8a63e210264a9f9bb4
+	md5sums = ac1e278bd2c6f6fb384ea29fe9cb8dc4
+
+pkgname = stultitiasimplex-bin
+

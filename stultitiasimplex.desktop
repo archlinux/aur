@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=StultitiaSimplex
+Comment=Simple soundboard application.
+TryExec=StultitiaSimplex
+Exec=StultitiaSimplex
+Terminal=false
+Categories=Audio;Player;Recorder;Amusement;Qt;
+Keywords=soundboard;
