@@ -1,6 +1,6 @@
 pkgbase = android-apktool-git
 	pkgdesc = a tool for reengineering Android apk files
-	pkgver = 2.0.0.RC2.g02b5c7c
+	pkgver = 2.0.0.RC3
 	pkgrel = 1
 	url = https://code.google.com/p/android-apktool/
 	arch = i686
