@@ -1,7 +1,7 @@
 pkgbase = reportbug
 	pkgdesc = report bugs in the Debian distribution + python modules
 	pkgver = 6.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/sid/reportbug
 	arch = any
 	license = MIT

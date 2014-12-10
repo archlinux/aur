@@ -2,7 +2,7 @@
 pkgname=reportbug
 _python=python2
 pkgver=6.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="report bugs in the Debian distribution + python modules"
 arch=('any')
 url="http://packages.debian.org/sid/reportbug"
@@ -19,9 +19,13 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   $_python setup.py build
 }
+
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   $_python setup.py install --root="$pkgdir/" --optimize=1
+  mkdir -p $pkgdir/usr/share/man/man1/ $pkgdir/usr/share/man/man5/
+  install -m644 -t $pkgdir/usr/share/man/man1/ man/*.1
+  install -m644 -t $pkgdir/usr/share/man/man5/ man/*.5
 }
 
 # vim:set ts=2 sw=2 et:
