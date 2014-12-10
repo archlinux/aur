@@ -8,4 +8,4 @@ fi
 
 cd /opt/fs2_open
 
-/opt/fs2_open/fs2_open_3.7.2_RC3 "$@" "$FS2OPTS"
+/opt/fs2_open/fs2_open_3.7.2_RC4 "$@" "$FS2OPTS"

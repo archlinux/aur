@@ -1,8 +1,7 @@
-Index: code/controlconfig/controlsconfigcommon.cpp
-===================================================================
---- code/controlconfig/controlsconfigcommon.cpp	(revision 8781)
-+++ code/controlconfig/controlsconfigcommon.cpp	(working copy)
-@@ -234,12 +234,23 @@
+diff -u -r fs2_open_3_7_2_RC4.orig/code/controlconfig/controlsconfigcommon.cpp fs2_open_3_7_2_RC4/code/controlconfig/controlsconfigcommon.cpp
+--- fs2_open_3_7_2_RC4.orig/code/controlconfig/controlsconfigcommon.cpp	2014-08-15 10:07:55.000000000 -0700
++++ fs2_open_3_7_2_RC4/code/controlconfig/controlsconfigcommon.cpp	2014-12-10 00:20:38.582592151 -0800
+@@ -238,12 +238,23 @@
  };
  
  char *Joy_button_text_german[] = {
@@ -32,16 +31,18 @@ Index: code/controlconfig/controlsconfigcommon.cpp
  };
  
  char *Scan_code_text_french[] = {
-@@ -286,11 +297,22 @@
+@@ -289,12 +300,23 @@
+ };
  
  char *Joy_button_text_french[] = {
- 	"Bouton 1",		"Bouton 2",		"Bouton 3",		"Bouton 4",		"Bouton 5",		"Bouton 6",
+-	"Bouton 1",		"Bouton 2",		"Bouton 3",		"Bouton 4",		"Bouton 5",		"Bouton 6",
 -	"Bouton 7",		"Bouton 8",		"Bouton 9",		"Bouton 10",		"Bouton 11",		"Bouton 12",
 -	"Bouton 13",		"Bouton 14",		"Bouton 15",		"Bouton 16",		"Bouton 17",		"Bouton 18",
 -	"Bouton 19",		"Bouton 20",		"Bouton 21",		"Bouton 22",		"Bouton 23",		"Bouton 24",
 -	"Bouton 25",		"Bouton 26",		"Bouton 27",		"Bouton 28",		"Bouton 29",		"Bouton 30",
--	"Bouton 31",		"Bouton 32",		"Chapeau Arriere",		"Chapeau Avant",		"Chapeau Gauche",		"Chapeau Droite"
-+	"Bouton 7",		"Bouton 8",		"Bouton 9",		"Bouton 10",	"Bouton 11",	"Bouton 12",
+-	"Bouton 31",		"Bouton 32",		"Chapeau Arri\x8Are",		"Chapeau Avant",		"Chapeau Gauche",		"Chapeau Droite"
++	"Bouton 1",	"Bouton 2",	"Bouton 3",	"Bouton 4",	"Bouton 5",	"Bouton 6",
++	"Bouton 7",	"Bouton 8",	"Bouton 9",	"Bouton 10",	"Bouton 11",	"Bouton 12",
 +	"Bouton 13",	"Bouton 14",	"Bouton 15",	"Bouton 16",	"Bouton 17",	"Bouton 18",
 +	"Bouton 19",	"Bouton 20",	"Bouton 21",	"Bouton 22",	"Bouton 23",	"Bouton 24",
 +	"Bouton 25",	"Bouton 26",	"Bouton 27",	"Bouton 28",	"Bouton 29",	"Bouton 30",
@@ -56,11 +57,11 @@ Index: code/controlconfig/controlsconfigcommon.cpp
 +	"Bouton 79",	"Bouton 80",	"Bouton 81",	"Bouton 82",	"Bouton 83",	"Bouton 84",
 +	"Bouton 85",	"Bouton 86",	"Bouton 87",	"Bouton 88",	"Bouton 89",	"Bouton 90",
 +	"Bouton 91",	"Bouton 92",	"Bouton 93",	"Bouton 94",	"Bouton 95",	"Bouton 96",
-+	"Bouton 97",	"Bouton 98",	"Chapeau Arriere",		"Chapeau Avant",		"Chapeau Gauche",		"Chapeau Droite"
++	"Bouton 97",	"Bouton 98",	"Chapeau Arri\x8Are",	"Chapeau Avant",	"Chapeau Gauche",	"Chapeau Droite"
  };
  
- //	This is the text that is displayed on the screen for the keys a player selects
-@@ -342,7 +364,18 @@
+ //!	This is the text that is displayed on the screen for the keys a player selects
+@@ -346,7 +368,18 @@
  	"Button 13",	"Button 14",	"Button 15",	"Button 16",	"Button 17",	"Button 18",
  	"Button 19",	"Button 20",	"Button 21",	"Button 22",	"Button 23",	"Button 24",
  	"Button 25",	"Button 26",	"Button 27",	"Button 28",	"Button 29",	"Button 30",
@@ -80,11 +81,9 @@ Index: code/controlconfig/controlsconfigcommon.cpp
  };
  
  char **Scan_code_text = Scan_code_text_english;
-
-Index: code/io/joy.h
-===================================================================
---- code/io/joy.h	(revision 8781)
-+++ code/io/joy.h	(working copy)
+diff -u -r fs2_open_3_7_2_RC4.orig/code/io/joy.h fs2_open_3_7_2_RC4/code/io/joy.h
+--- fs2_open_3_7_2_RC4.orig/code/io/joy.h	2009-06-20 01:08:20.000000000 -0700
++++ fs2_open_3_7_2_RC4/code/io/joy.h	2014-12-10 00:16:17.319816830 -0800
 @@ -12,7 +12,7 @@
  #ifndef __JOY_H__
  #define __JOY_H__
@@ -94,3 +93,4 @@ Index: code/io/joy.h
  #define JOY_NUM_HAT_POS		4
  #define JOY_TOTAL_BUTTONS	(JOY_NUM_BUTTONS + JOY_NUM_HAT_POS)
  #define JOY_NUM_AXES			6
+Only in fs2_open_3_7_2_RC4/code/io: joy.h~
