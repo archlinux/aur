@@ -2,7 +2,7 @@
 pkgname=reportbug
 _python=python2
 pkgver=6.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="report bugs in the Debian distribution + python modules"
 arch=('any')
 url="http://packages.debian.org/sid/reportbug"
@@ -12,6 +12,7 @@ depends=('python2-debian' 'python2-debianbts' 'python2-support' 'apt'
 provides=("python2-reportbug=$pkgver")
 conflicts=('python2-reportbug')
 options=(!emptydirs)
+backup=('etc/reportbug.conf')
 source=(http://ftp.debian.org/debian/pool/main/r/$pkgname/${pkgname}_$pkgver.tar.bz2)
 sha256sums=('aff6272f17a05455d94e57b4ce3ce8782519aa3c0e5ec5036af89788df533d31')
 
@@ -26,6 +27,7 @@ package() {
   mkdir -p $pkgdir/usr/share/man/man1/ $pkgdir/usr/share/man/man5/
   install -m644 -t $pkgdir/usr/share/man/man1/ man/*.1
   install -m644 -t $pkgdir/usr/share/man/man5/ man/*.5
+  install -Dm644 conf/reportbug.conf $pkgdir/etc/reportbug.conf
 }
 
 # vim:set ts=2 sw=2 et:
