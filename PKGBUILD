@@ -4,11 +4,12 @@ pkgname=(
     'drush-aegir-up'
     'drush-drupal-up'
     'drush-hosts'
+    'drush-registry-rebuild'
     'drush-vagrant'
 )
-pkgbase='drush'
+pkgbase='drush-extensions'
 pkgver='7.x'
-pkgrel=1
+pkgrel=2
 pkgdesc="Various Drush extensions"
 arch=('any')
 url='http://github.com/drush-ops/drush/'
@@ -21,12 +22,14 @@ source=(
     'http://ftp.drupal.org/files/projects/aegir-up-7.x-2.0-rc3.tar.gz'
     'http://ftp.drupal.org/files/projects/drupal-up-7.x-1.0-beta3.tar.gz'
     'http://ftp.drupal.org/files/projects/drush-hosts-7.x-1.1.tar.gz'
+    'http://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.2.tar.gz'
     'http://ftp.drupal.org/files/projects/drush-vagrant-7.x-2.0-rc4.tar.gz'
 )
 md5sums=('f68c7407446bc4dfe95fbe1741928a15'
          '29bd5f0bab1911aca72708165590fd94'
          '0ecb568037d3425c25f971234359c4eb'
          '44401d4fdc8bd5b18919f1db17716664'
+         '6057703bd4a5bec81e397e19602e2756'
          '8d735f9e8f864424f292d4866a70b8f1')
 
 
@@ -52,6 +55,14 @@ package_drush-hosts() {
     url='https://www.drupal.org/project/drush_hosts'
     depends=('drush')
     _dirname=drush-hosts
+    _package
+}
+package_drush-registry-rebuild() {
+    pkgver=2.2
+    pkgdesc='Simple command for rebuilding a Drupal site system registry'
+    url='https://www.drupal.org/project/registry_rebuild'
+    depends=('drush')
+    _dirname=registry_rebuild
     _package
 }
 package_drush-vagrant() {
