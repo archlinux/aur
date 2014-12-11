@@ -1,0 +1,13 @@
+pkgbase = aegir-provision-tasks-extra
+	pkgdesc = Extends Aegir provision backend with additional commands
+	pkgver = 6.x_2.1
+	pkgrel = 1
+	url = https://www.drupal.org/project/provision_tasks_extra
+	arch = any
+	license = GPL
+	depends = aegir-provision
+	source = http://ftp.drupal.org/files/projects/provision_tasks_extra-6.x-2.1.tar.gz
+	md5sums = d206a628af4891063b434ac792c813ec
+
+pkgname = aegir-provision-tasks-extra
+
