@@ -7,21 +7,27 @@
 
 pkgname=htmldoc
 pkgver=1.8.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Produce PDF or Postscript from HTML documents including TOCs and Indices"
 arch=('i686' 'x86_64')
 url="http://www.htmldoc.org"
 license=('GPL2')
 depends=('libxpm' 'fltk' 'libjpeg' 'openssl' 'shared-mime-info')
 conflicts=('htmldoc-svn')
-changelog=Changelog
+changelog=ChangeLog
 install=$pkgname.install
 source=(
     "http://www.msweet.org/files/project1/htmldoc-${pkgver}-source.tar.gz"
     'errno.patch'
+    "$pkgname.install"
+    'ChangeLog'
 )
-md5sums=('1c2f379e4535734ececd59d6629b4d2d'
-         '2f48488fd485f2583e02b519d6cef553')
+md5sums=(
+    '1c2f379e4535734ececd59d6629b4d2d'
+    '2f48488fd485f2583e02b519d6cef553'
+    '808c3a6920824fdab7b2519d567c92f9'
+    '3aa5e68c037fd05eaaa44478f438d051'
+)
 
 prepare() {
     cd "$pkgname-$pkgver"
