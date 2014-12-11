@@ -1,8 +1,9 @@
 pkgbase = ciphershed-nogui-git
 	pkgdesc = Free encryption software for keeping your data secure and private, a fork of the now-discontinued TrueCrypt Project (CLI)
 	pkgver = tc7.1a.r107.ge8529e9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ciphershed.org/
+	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = custom:truecrypt
@@ -21,8 +22,10 @@ pkgbase = ciphershed-nogui-git
 	replaces = truecrypt-nogui
 	source = git+https://github.com/CipherShed/CipherShed.git
 	source = https://github.com/wxWidgets/wxWidgets/archive/WX_2_8_12.tar.gz
+	source = ChangeLog
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 063c8519d4216a7fed9de8fd1b4fee3e
+	md5sums = d93642c780ce59a41afa77dff13decd2
 
 pkgname = ciphershed-nogui-git
 
