@@ -2,9 +2,8 @@
 # Contributor: Ondrej Martinak <omartinak@gmail.com>
 
 pkgname=sfml
-_commit=4a300547f3
-pkgver=2.1.0.$_commit
-pkgrel=5
+pkgver=2.2
+pkgrel=1
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
 url='http://www.sfml-dev.org/'
@@ -12,7 +11,7 @@ license=('zlib')
 depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2')
 makedepends=('mesa' 'cmake' 'doxygen' 'git')
 install=sfml.install
-source=("git+https://github.com/LaurentGomila/SFML.git#commit=${_commit}")
+source=("git+https://github.com/LaurentGomila/SFML.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
@@ -23,8 +22,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DSFML_BUILD_EXAMPLES=1 \
       -DSFML_BUILD_DOC=1 \
-      -DSFML_INSTALL_PKGCONFIG_FILES=1 \
-      -DCMAKE_CXX_FLAGS="-DGLXContextID=XID $CXXFLAGS"
+      -DSFML_INSTALL_PKGCONFIG_FILES=1
   make
   make doc
 }
