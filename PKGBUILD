@@ -6,7 +6,7 @@
 #
 pkgbase=dbus-selinux
 pkgname=('dbus-selinux' 'libdbus-selinux')
-pkgver=1.8.10
+pkgver=1.8.12
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="http://www.freedesktop.org/Software/dbus"
@@ -16,7 +16,7 @@ groups=('selinux')
 makedepends=('libx11' 'systemd-selinux' 'xmlto' 'docbook-xsl' 'audit')
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc}
         30-dbus)
-md5sums=('6be5ef99ae784de9d04589eb067fe038'
+md5sums=('0ca23fc84c09cb3d29b9c27811ff4475'
          'SKIP'
          '3314d727fa57fc443fce25b5cbeebbcc')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90')
