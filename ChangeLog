@@ -1,5 +1,10 @@
 2014-08-18 James An <james@jamesan.ca>
 
+    * tc7.1a.r107.ge8529e9-2 :
+    committed rel-1 changes to AUR.
+
+2014-08-18 James An <james@jamesan.ca>
+
     * tc7.1a.r107.ge8529e9-1 :
     first instance of this package.
     modified ciphershed's PKGBUILD to build as CLI-only binary
