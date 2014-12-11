@@ -1,8 +1,8 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=(
-    'aegir-up'
-    'drupal-up'
+    'drush-aegir-up'
+    'drush-drupal-up'
     'drush-hosts'
     'drush-vagrant'
 )
@@ -30,35 +30,42 @@ md5sums=('f68c7407446bc4dfe95fbe1741928a15'
          '8d735f9e8f864424f292d4866a70b8f1')
 
 
-package_aegir-up() {
+package_drush-aegir-up() {
     pkgver=2.0_rc3
     pkgdesc='Blueprint provider for Drush Vagrant to build a local Aegir VMs'
     url='https://www.drupal.org/project/aegir_up'
     depends=('drush-vagrant')
+    _dirname=aegir-up
     _package
 }
-package_drupal-up() {
+package_drush-drupal-up() {
     pkgver=1.0_beta3
     pkgdesc='Blueprint provider for Drush Vagrant to build local Drupal VMs'
     url='https://www.drupal.org/project/drupal_up'
     depends=('drush-vagrant')
+    _dirname=drupal-up
     _package
 }
 package_drush-hosts() {
     pkgver=1.1
     pkgdesc='Simple commands for managing entries in /etc/hosts'
     url='https://www.drupal.org/project/drush_hosts'
+    depends=('drush')
+    _dirname=drush-hosts
     _package
 }
 package_drush-vagrant() {
     pkgver=2.0_rc4
     pkgdesc='Vagrant templating framework to use Vagrant blueprints to build and test projects like Drupal and Puppet modules'
     url='https://www.drupal.org/project/drush-vagrant'
+    depends=('drush-hosts' 'vagrant' 'virtualbox')
+    optdepends=('nfs-utils: NFS support')
+    _dirname=drush-vagrant
     _package
 }
 
 _package() {
-    cd $pkgname
+    cd $_dirname
 
     rm LICENSE.txt
     for doc in docs README.md; do
@@ -69,6 +76,6 @@ _package() {
     done
 
     msg2 'Adding main files'
-    install -m755 -d "$pkgdir/usr/share/drush/commands/$pkgname"
-    cp -R . "$pkgdir/usr/share/drush/commands/$pkgname"
+    install -m755 -d "$pkgdir/usr/share/webapps/drush/commands/$_dirname"
+    cp -R . "$pkgdir/usr/share/webapps/drush/commands/$_dirname"
 }
