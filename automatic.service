@@ -1,5 +1,6 @@
 [Unit]
 Description=RSS downloader that adds torrents directly to Transmission
+After=transmission.service
 
 [Service]
 Type=simple

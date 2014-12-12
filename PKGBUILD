@@ -2,7 +2,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=automatic
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="RSS downloader for Linux based systems, capable of adding downloaded torrents directly to Transmission"
 arch=('i686' 'x86_64')
 url="http://forum.dsmg600.info/viewtopic.php?id=2291"
@@ -15,7 +15,7 @@ source=(https://github.com/1100101/Automatic/archive/v$pkgver.tar.gz
         automatic.service)
 sha256sums=('1b5c5c65989d12dc7dcdd031dd7d0c1efad80062d615f63836ac86bd010908b8'
             'ed4cdf8ef72840fdb57b7670d114372bb68153cdfae731d1102687b568a71940'
-            'eea406171cd80ca5efae3b7a95a87eb316836550fd6f6fd42c16697738ff02b0')
+            'f9bcd54c4def0865898bf71abbef1107f442478a4d2bcef28b1c5061dae05af1')
 
 build() {
   cd "$srcdir/Automatic-$pkgver"
