@@ -1,6 +1,6 @@
 pkgbase = python2-moviepy
 	pkgdesc = Script-based movie editing with python2
-	pkgver = 0.2.1.6.93
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://zulko.github.io/moviepy/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python2-moviepy
 	depends = python-tqdm
 	provides = python2-moviepy-git
 	conflicts = python2-moviepy-git
-	source = https://pypi.python.org/packages/source/m/moviepy/moviepy-0.2.1.6.93.tar.gz
-	sha256sums = 78c56352ec5bddf5d60dc78b05a9be22bd25e2ab9cef24e0b40b1c4e986faa7b
+	source = https://pypi.python.org/packages/source/m/moviepy/moviepy-0.2.2.tar.gz
+	sha256sums = 7211b27da68a5cd21dd7d1f03131181287a82060fbccdbb72b22337bcc204186
 
 pkgname = python2-moviepy
 
