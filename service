@@ -6,6 +6,8 @@ After=network.target
 
 [Service]
 PIDFile=/run/amavis/pid
+RuntimeDirectory=amavis
+RuntimeDirectoryMode=750
 ExecStart=/usr/bin/amavisd -c /etc/amavisd/amavisd.conf foreground
 ExecReload=/usr/bin/amavisd -c /etc/amavisd/amavisd.conf reload
 
