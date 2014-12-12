@@ -3,7 +3,7 @@
 
 pkgname=qutebrowser-git
 pkgver=r3206.3622f35
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
 url="http://www.qutebrowser.org/"
@@ -12,7 +12,14 @@ depends=('python>=3.4' 'python-setuptools' 'python-pyqt5>=5.2' 'qt5-base>=5.2'
          'qt5-webkit>=5.2' 'libxkbcommon-x11' 'python-pypeg2' 'python-jinja'
          'python-pygments')
 makedepends=('asciidoc')
-optdepends=('python-colorlog: colored logging output')
+optdepends=(
+  'python-colorlog: colored logging output'
+  'gst-libav: media playback'
+  'gst-plugins-base: media playback'
+  'gst-plugins-good: media playback'
+  'gst-plugins-bad: media playback'
+  'gst-plugins-ugly: media playback'
+)
 options=(!emptydirs)
 source=('git+https://github.com/The-Compiler/qutebrowser.git')
 md5sums=('SKIP')
