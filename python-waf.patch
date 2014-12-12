@@ -1,6 +1,15 @@
---- waflib/extras/process_resources.py	2014-10-16 19:57:13.000000000 +0200
-+++ waflib/extras/process_resources.py.new	2014-10-21 08:14:38.228700159 +0200
-@@ -29,18 +29,18 @@
+--- waflib/extras/process_resources.py	2014-12-10 02:26:56.000000000 +0100
++++ waflib/extras/process_resources.py.new	2014-12-12 14:26:40.448399388 +0100
+@@ -20,7 +20,7 @@
+ 	character_regex='--filter "%s"'%entry['characterRegex'].encode('utf8')if'characterRegex'in entry else''
+ 	character_list='--list "%s"'%entry['characterList']if'characterList'in entry else''
+ 	legacy='--legacy'if entry.get('compatibility')=="2.7"else''
+-	cmd="python '{}' pfo {} {} {} {} {} {} '{}' '{}'".format(script,extended,height,tracking_adjust,character_regex,character_list,legacy,ttf,pfo)
++	cmd="'{}' '{}' pfo {} {} {} {} {} {} '{}' '{}'".format(sys.executable, script,extended,height,tracking_adjust,character_regex,character_list,legacy,ttf,pfo)
+ 	return cmd
+ def gen_resource_deps(bld,resources_dict,resources_path_node,output_pack_node,output_id_header_node,resource_header_path,tools_path,is_system=False,pfs_resources_header_node=None,font_key_header_node=None,font_key_table_node=None,font_key_include_path=None,timestamp=None):
+ 	bitmap_script=tools_path.find_node('bitmapgen.py')
+@@ -45,18 +45,18 @@
  		elif res_type=="png-color":
  			output_pbi=resources_path_node.get_bld().make_node(input_file+'.pbi')
  			pack_entries.append((output_pbi,def_name))
@@ -22,34 +31,23 @@
 +			bld(rule="'{}' '{}' black_trans_pbi '{}' '{}'".format(sys.executable, bitmap_script.abspath(),input_node.abspath(),output_black_pbi.abspath()),source=[input_node,bitmap_script],target=output_black_pbi)
  		elif res_type=="font":
  			output_pfo=resources_path_node.get_bld().make_node(input_file+'.'+str(def_name)+'.pfo')
- 			m=re.search('([0-9]+)',def_name)
-@@ -68,7 +68,7 @@
- 				character_list='--list "%s"'%os.path.join(os.path.dirname(input_node.abspath()),entry['characterList'])
- 			else:
- 				character_list=''
--			bld(rule="python '{}' pfo {} {} {} {} {} '{}' '{}'".format(font_script.abspath(),extended,height,tracking_adjust,character_regex,character_list,input_node.abspath(),output_pfo.abspath()),source=[input_node,font_script],target=output_pfo)
-+			bld(rule="'{}' '{}' pfo {} {} {} {} {} '{}' '{}'".format(sys.executable, font_script.abspath(),extended,height,tracking_adjust,character_regex,character_list,input_node.abspath(),output_pfo.abspath()),source=[input_node,font_script],target=output_pfo)
- 		else:
- 			waflib.Logs.error("Error Generating Resources: File: "+input_file+" has specified invalid type: "+res_type)
- 			waflib.Logs.error("Must be one of (raw, png, png-trans, font)")
-@@ -94,8 +94,8 @@
+ 			fontgen_cmd=process_font_cmd(font_script.abspath(),input_node.abspath(),output_pfo.abspath(),entry)
+@@ -89,10 +89,10 @@
+ 	md_script=tools_path.find_node('pbpack_meta_data.py')
  	resource_code_script=tools_path.find_node('generate_resource_code.py')
  	data_sources=[]
- 	cat_string="cat"
 -	table_string="python '{}' table '{}'".format(md_script.abspath(),table_node.abspath())
+-	manifest_string="python '{}' manifest {} '{}'".format(md_script.abspath(),manifest_node.abspath(),timestamp)
+-	content_string="python '{}' content '{}'".format(md_script.abspath(),data_node.abspath())
 -	resource_header_string="python '{script}' resource_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),version_def_name='--version_def_name=SYSTEM_RESOURCE_VERSION'if is_system else'',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
 +	table_string="'{}' '{}' table '{}'".format(sys.executable, md_script.abspath(),table_node.abspath())
++	manifest_string="'{}' '{}' manifest {} '{}'".format(sys.executable, md_script.abspath(),manifest_node.abspath(),timestamp)
++	content_string="'{}' '{}' content '{}'".format(sys.executable, md_script.abspath(),data_node.abspath())
 +	resource_header_string="'{}' '{script}' resource_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(sys.executable, script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),version_def_name='--version_def_name=SYSTEM_RESOURCE_VERSION'if is_system else'',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
  	for entry in pack_entries:
- 		cat_string+=' "%s" '%entry[0].abspath()
  		data_sources.append(entry[0])
-@@ -108,15 +108,15 @@
- 		open(task.outputs[0].abspath(),'a').close()
- 	bld(rule=cat_string if pack_entries else touch,source=data_sources,target=data_node)
- 	bld(rule=table_string,source=data_sources+[md_script],target=table_node)
--	bld(rule="python '{script}' manifest '{output_file}' {num_files} ""{timestamp} '{data_chunk_file}'".format(script=md_script.abspath(),output_file=manifest_node.abspath(),num_files=len(pack_entries),timestamp=timestamp,data_chunk_file=data_node.abspath()),source=[data_node,md_script],target=manifest_node)
-+	bld(rule="'{}' '{script}' manifest '{output_file}' {num_files} ""{timestamp} '{data_chunk_file}'".format(sys.executable, script=md_script.abspath(),output_file=manifest_node.abspath(),num_files=len(pack_entries),timestamp=timestamp,data_chunk_file=data_node.abspath()),source=[data_node,md_script],target=manifest_node)
- 	bld(rule="cat '{}' '{}' '{}' > '{}'".format(manifest_node.abspath(),table_node.abspath(),data_node.abspath(),output_pack_node.abspath()),source=[manifest_node,table_node,data_node],target=output_pack_node)
+ 		table_string+=' "%s" '%entry[0].abspath()
+@@ -110,10 +110,10 @@
  	bld(rule=resource_header_string,source=data_sources+[resource_code_script,data_node],target=output_id_header_node,before=['c'])
  	if font_key_header_node and font_key_table_node and font_key_include_path:
  		key_list_string=" ".join(font_keys)
@@ -59,7 +57,7 @@
 +		bld(rule="'{}' '{script}' font_key_table '{font_key_table}' "" '{resource_id_header}' '{font_key_header}' {key_list}".format(sys.executable, script=resource_code_script.abspath(),font_key_table=font_key_table_node.abspath(),resource_id_header=output_id_header_node.abspath(),font_key_header=font_key_include_path,key_list=key_list_string),source=resource_code_script,target=font_key_table_node)
  	if pfs_resources_header_node:
  		pfs_resources_string=''
- 		for(first_name,last_name,filename,id_offset)in pfs_resources:
+ 		for(first_name,last_name,filename,id_offset)in pfs_files:
  			pfs_resources_string+="%s %s %s %s "%(first_name,last_name,filename,id_offset)
 -		bld(rule="python '{script}' pfs_files_header '{header}' ""'{resource_id_header}' {pfs_resources_string}".format(script=resource_code_script.abspath(),header=pfs_resources_header_node.abspath(),resource_id_header=output_id_header_node.abspath(),pfs_resources_string=pfs_resources_string),target=pfs_resources_header_node)
 +		bld(rule="'{}' '{script}' pfs_files_header '{header}' ""'{resource_id_header}' {pfs_resources_string}".format(sys.executable, script=resource_code_script.abspath(),header=pfs_resources_header_node.abspath(),resource_id_header=output_id_header_node.abspath(),pfs_resources_string=pfs_resources_string),target=pfs_resources_header_node)
