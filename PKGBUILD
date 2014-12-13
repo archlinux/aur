@@ -3,7 +3,7 @@
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r01
+_rev=r02
 _apilevel=21
 pkgname=android-platform
 pkgver=${_apilevel}_${_rev}
@@ -16,8 +16,8 @@ depends=('android-sdk' 'android-sdk-platform-tools')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/android-${_apilevel}_${_rev}.zip")
-sha1sums=('218ca22f8cb744396fa11e65b8a3d2d1ae07f10e')
+source=("https://dl-ssl.google.com/android/repository/android-21_r02.zip")
+sha1sums=('53536556059bb29ae82f414fd2e14bc335a4eb4c')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
