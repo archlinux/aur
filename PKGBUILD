@@ -2,9 +2,8 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=mingw-w64-sfml
-_commit=4a300547f3
-pkgver=2.1.0.$_commit
-pkgrel=3
+pkgver=2.2
+pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)"
 arch=(any)
 url="http://www.sfml-dev.org"
@@ -14,7 +13,7 @@ depends=(mingw-w64-crt mingw-w64-libsndfile mingw-w64-libjpeg-turbo mingw-w64-op
 conflicts=(mingw-w64-sfml-static)
 provides=(mingw-w64-sfml-static)
 options=(staticlibs !strip !buildflags)
-source=("git+https://github.com/LaurentGomila/SFML.git#commit=${_commit}")
+source=("git+https://github.com/LaurentGomila/SFML.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
