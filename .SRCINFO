@@ -1,6 +1,6 @@
 pkgbase = worker
 	pkgdesc = A file manager for the X Window System
-	pkgver = 3.5.1
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = http://www.boomerangsworld.de/worker
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = worker
 	depends = gcc-libs
 	depends = libx11
 	depends = file
-	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-3.5.1.tar.bz2
-	md5sums = 2b5e153d2a79b1833092a7e47e2aa688
+	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-3.5.2.tar.bz2
+	md5sums = a839a9c784cfd777eeef313eb841b07e
 
 pkgname = worker
 
