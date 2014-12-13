@@ -1,6 +1,6 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 
-_rev=r02
+_rev=r03
 _apilevel=21
 pkgname=android-google-apis-x86
 pkgver=${_apilevel}_${_rev}
@@ -14,10 +14,10 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-21_r02.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86-21_r03.zip"
         "source.properties")
-sha1sums=('bb00e3d8675a80b09dfbdef813789efdaa1304a8'
-          '39991f0861654fc5e118a87514503c3ce2368223')
+sha1sums=('19c29fbe96fbffbf1f15ac03147fd3053a4450f7'
+          '10126046cfa315bdda5330e8361adf952f027737')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
