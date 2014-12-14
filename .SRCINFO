@@ -1,0 +1,17 @@
+pkgbase = python2-git-up
+	pkgdesc = A HTML to markdown-structured text converter
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://github.com/msiemens/PyGitUp
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-termcolor
+	depends = python2-colorama
+	depends = python2-docopt
+	depends = python2-gitpython
+	source = https://github.com/msiemens/PyGitUp/archive/v1.2.0.tar.gz
+	sha256sums = 963d4dc5745a4c9c74c38e9aafdf8ac0ab3b3946454b4736b39f976a52218dde
+
+pkgname = python2-git-up
+
