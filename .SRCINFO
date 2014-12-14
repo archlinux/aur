@@ -1,0 +1,14 @@
+pkgbase = gitfs
+	pkgdesc = Version controlled file system
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://www.presslabs.com/gitfs/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = http://github.com/PressLabs/gitfs/archive/0.2.5.tar.gz
+	sha1sums = a54056c1ba4095daae63e3a6e3c2505943691a34
+
+pkgname = gitfs
+
