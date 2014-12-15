@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-diagnostic-common-diagnostics
 	pkgdesc = ROS - diagnostic_common_diagnostics.
-	pkgver = 1.8.5
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = http://ros.org/wiki/diagnostic_common_diagnostics
 	arch = any
@@ -8,13 +8,18 @@ pkgbase = ros-indigo-diagnostic-common-diagnostics
 	makedepends = cmake
 	makedepends = git
 	makedepends = ros-build-tools
+	makedepends = ros-indigo-diagnostic-updater
 	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-roscpp
 	makedepends = ros-indigo-catkin
+	makedepends = lm_sensors
 	depends = ros-indigo-tf
 	depends = ros-indigo-diagnostic-updater
 	depends = ros-indigo-rospy
+	depends = ros-indigo-roscpp
 	depends = hddtemp
-	source = diagnostic_common_diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/diagnostic_common_diagnostics/1.8.5-0
+	depends = lm_sensors
+	source = diagnostic_common_diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/diagnostic_common_diagnostics/1.8.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-diagnostic-common-diagnostics
