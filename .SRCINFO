@@ -1,6 +1,6 @@
 pkgbase = kodi-git
 	pkgdesc = media player and entertainment hub (master branch)
-	pkgver = 20141213.88f9fb0
+	pkgver = 20141214.9f83097
 	pkgrel = 1
 	url = http://xbmc.org
 	install = kodi-git.install
