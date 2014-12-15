@@ -1,14 +1,14 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components."
-url='http://gazebosim.org/wiki/Tutorials'
+url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-plugins'
-pkgver='2.4.6'
+pkgver='2.4.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
-license=('BSD')
+pkgrel=1
+license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-rospy
@@ -61,7 +61,6 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-trajectory-msgs
   ros-indigo-cv-bridge
   ros-indigo-image-transport
-  ros-indigo-pcl-conversions
   ros-indigo-dynamic-reconfigure
   ros-indigo-driver-base)
 depends=(${ros_depends[@]}
@@ -104,6 +103,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
         -DCMAKE_LIBRARY_PATH="/opt/OGRE-1.8/lib"
   make
