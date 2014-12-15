@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=debian-archive-keyring
-pkgver=2014.1
+pkgver=2014.3
 pkgrel=2
 pkgdesc="GnuPG archive keys of the Debian archive"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gnupg')
 
 source=(http://ftp.fr.debian.org/debian/pool/main/d/debian-archive-keyring/${pkgname}_${pkgver}_all.deb)
-md5sums=('9b646da32ce579dd06fcb25d31339888')
+md5sums=('02b6818bd7cada9ef9d24534290b559c')
 
 package() {
   tar xvf ${srcdir}/data.tar.xz -C ${pkgdir}/
