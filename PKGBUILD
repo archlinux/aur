@@ -4,7 +4,7 @@ pkgdesc="ROS - Packages for interfacing ROS with OpenCV, a library of programmin
 url='http://www.ros.org/wiki/vision_opencv'
 
 pkgname='ros-indigo-vision-opencv'
-pkgver='1.11.6'
+pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

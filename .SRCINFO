@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-vision-opencv
 	pkgdesc = ROS - Packages for interfacing ROS with OpenCV, a library of programming functions for real time computer vision.
-	pkgver = 1.11.6
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://www.ros.org/wiki/vision_opencv
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-vision-opencv
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-image-geometry
 	depends = ros-indigo-cv-bridge
-	source = vision_opencv::git+https://github.com/ros-gbp/vision_opencv-release.git#tag=release/indigo/vision_opencv/1.11.6-0
+	source = vision_opencv::git+https://github.com/ros-gbp/vision_opencv-release.git#tag=release/indigo/vision_opencv/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-vision-opencv
