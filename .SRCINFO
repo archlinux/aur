@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-self-test
 	pkgdesc = ROS - self_test.
-	pkgver = 1.8.5
-	pkgrel = 2
+	pkgver = 1.8.6
+	pkgrel = 1
 	url = http://www.ros.org/wiki/self_test
 	arch = any
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = ros-indigo-self-test
 	depends = ros-indigo-diagnostic-updater
 	depends = ros-indigo-roscpp
 	depends = ros-indigo-diagnostic-msgs
-	source = self_test::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/self_test/1.8.5-0
+	source = self_test::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/self_test/1.8.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-self-test
