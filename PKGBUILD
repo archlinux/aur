@@ -14,6 +14,7 @@ depends=(
     python2-gdata
     perl-mozilla-ca
 )
+install=google-apps-manager.install
 source=(
     https://3ca168a01ea8d36f578893ffd5d45ba8daef8381.googledrive.com/host/0B0YvUuHHn3MnbFl6N0k1UXcwdVk/gam-3.21-python-src.zip
     fhs.patch

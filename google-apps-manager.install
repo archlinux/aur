@@ -1,0 +1,9 @@
+#!/bin/sh
+
+post_install() {
+    echo 'GAM requires Google Apps Business, Education, Partner or Government Edition. Google Apps Free Edition has limited API support and not all GAM commands work.'
+
+    echo 'You must be an administrator of the Google Apps account and its specific Administrative APIs must be enabled for the various GAM commands to function properly.'
+
+    echo 'You must also generate your own /etc/google-apps-manager/client_secrets.json file as explained here:' + $'\n' + 'https://code.google.com/p/google-apps-manager/wiki/CreatingClientSecretsFile'
+}

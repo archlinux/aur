@@ -3,6 +3,7 @@ pkgbase = google-apps-manager
 	pkgver = 3.21
 	pkgrel = 1
 	url = https://code.google.com/p/google-apps-manager
+	install = google-apps-manager.install
 	arch = any
 	license = apache
 	depends = python2-google-api-python-client
