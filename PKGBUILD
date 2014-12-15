@@ -1,13 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS."
-url='http://gazebosim.org/wiki/Tutorials'
+url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-ros'
-pkgver='2.4.6'
+pkgver='2.4.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Apache 2.0')
 
 ros_makedepends=(ros-indigo-rosgraph-msgs
@@ -66,6 +66,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
