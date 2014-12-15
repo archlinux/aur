@@ -2,7 +2,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,9 @@ depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python2'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
 	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext')
 	# 'audit'
-makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi')
+makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'lxc'
+	     'libiscsi' 'open-iscsi'
+	     'perl-xml-xpath' 'libxslt')
 optdepends=('ebtables: required for default NAT networking'
 	    'dnsmasq: required for default NAT/DHCP for guests'
 	    'bridge-utils: for brigded networking'
@@ -61,7 +63,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
-md5sums=('1338a14c1cf2935f9485abc41b107ef9'
+md5sums=('616ad039f212c02f7e055c5cf28c0a76'
          '5e31269067dbd12ca871234450bb66bb'
          '384fff96c6248d4f020f6fa66c32b357'
          '020971887442ebbf1b6949e031c8dd3f')
