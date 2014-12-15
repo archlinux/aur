@@ -1,0 +1,15 @@
+pkgbase = ttf-dugfont
+	pkgdesc = Neverhood game font
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://neverhood.etomite.cz/download.htm
+	install = ttf-dugfont.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	source = http://neverhood.etomite.cz/files/dugfont.ttf.zip
+	md5sums = e04e6dbacb19125199be9c7ac9a71937
+
+pkgname = ttf-dugfont
+
