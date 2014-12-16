@@ -17,7 +17,7 @@
 
 pkgname=kodi-git
 _gitname='xbmc'
-pkgver=20141214.9f83097
+pkgver=20141215.f981c1d
 pkgrel=1
 pkgdesc="media player and entertainment hub (master branch)"
 provides=('xbmc')
