@@ -3,8 +3,7 @@ Description=mopidy
 After=network.target
 
 [Service]
-User=%I
 ExecStart=/usr/bin/mopidy
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
