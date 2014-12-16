@@ -6,15 +6,15 @@ STATUS=$2
 # Make sure we're always getting the standard response strings
 LANG='C'
 
-CHRONY=/usr/bin/chronyc
+CHRONY=$(which chronyc)
 
 chrony_cmd() {
-	echo Chrony going $1.
-	exec $CHRONY -a $1
+  echo "Chrony going $1."
+  exec $CHRONY -a $1
 }
 
 nm_connected() {
-	[ "$(nmcli -t --fields STATE g)" = "connected" ];
+  [ "$(nmcli -t --fields STATE g)" = 'connected' ]
 }
 
 case "$STATUS" in
