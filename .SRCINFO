@@ -1,0 +1,14 @@
+pkgbase = python2-jsonpickle
+	pkgdesc = a library for the two-way conversion of complex Python objects and JSON
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://jsonpickle.github.com/
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	source = http://pypi.python.org/packages/source/j/jsonpickle/jsonpickle-0.6.1.tar.gz
+	md5sums = 13684df11d9bc768b05146abcc947853
+
+pkgname = python2-jsonpickle
+
