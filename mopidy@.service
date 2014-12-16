@@ -3,7 +3,6 @@ Description=mopidy
 After=network.target
 
 [Service]
-Type=simple
 User=%I
 ExecStart=/usr/bin/mopidy
 
