@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='KSysGuard'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('kdebase-workspace')
 groups=('plasma-next')
 install="${pkgname}.install"
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
-md5sums=('3b2e23fc9e758741f26d1edb6120ea3d')
+md5sums=('90ac274e1cc5a078fd8c285cef130a95')
 
 prepare() {
   mkdir -p build
@@ -26,7 +26,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
-    -DSYSCONF_INSTALL_DIR=/etc \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
