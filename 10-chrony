@@ -6,13 +6,15 @@ STATUS=$2
 # Make sure we're always getting the standard response strings
 LANG='C'
 
-# Chrony set-up
 CHRONY=/usr/bin/chronyc
-STATECMD='nmcli -t --fields STATE g'
 
 chrony_cmd() {
 	echo Chrony going $1.
 	exec $CHRONY -a $1
+}
+
+nm_connected() {
+	[ "$(nmcli -t --fields STATE g)" == "connected" ];
 }
 
 case "$STATUS" in
@@ -24,14 +26,10 @@ case "$STATUS" in
   ;;
   down)
     # Check for active interface, take offline if none is active
-    if [ ! `${STATECMD}` = 'connected' ]; then
-      chrony_cmd offline
-    fi
+    nm_connected || chrony_cmd offline
   ;;
   vpn-down)
     # Check for active interface, take offline if none is active
-    if [ ! `${STATECMD}` = 'connected' ]; then
-      chrony_cmd offline
-    fi
+    nm_connected || chrony_cmd offline
   ;;
 esac
