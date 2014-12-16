@@ -2,8 +2,8 @@
 # Contributor: Jakub Kozisek <nodevel at gmail dot com>
 
 pkgname=puddletag-hg
-pkgver=r725.e0d8de5bb328
-pkgrel=1
+pkgver=0.0
+pkgrel=2
 pkgdesc="An audio tag editor for GNU/Linux."
 arch=('i686' 'x86_64')
 url="http://puddletag.sourceforge.net/"
@@ -24,6 +24,10 @@ pkgver() {
 
 package() {
     cd "$srcdir/$pkgname/source"
+
+    export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages"
+    mkdir -p "$PYTHONPATH"
+
     python2 setup.py config
     python2 setup.py install --prefix="$pkgdir/usr" --optimize=1 || return 1
 }

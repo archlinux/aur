@@ -1,7 +1,7 @@
 pkgbase = puddletag-hg
 	pkgdesc = An audio tag editor for GNU/Linux.
-	pkgver = r725.e0d8de5bb328
-	pkgrel = 1
+	pkgver = 0.0
+	pkgrel = 2
 	url = http://puddletag.sourceforge.net/
 	arch = i686
 	arch = x86_64
