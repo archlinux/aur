@@ -14,7 +14,7 @@ chrony_cmd() {
 }
 
 nm_connected() {
-	[ "$(nmcli -t --fields STATE g)" == "connected" ];
+	[ "$(nmcli -t --fields STATE g)" = "connected" ];
 }
 
 case "$STATUS" in
