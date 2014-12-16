@@ -1,0 +1,9 @@
+[Unit]
+Description=mopidy
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/mopidy
+
+[Install]
+WantedBy=default.target
