@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 # Based on package by Jelle van der Waa <jelle vdwaa nl>.
 pkgname=networkmanager-dispatcher-chrony
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Dispatcher Script for chrony"
 arch=(any)

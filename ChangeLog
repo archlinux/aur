@@ -1,3 +1,11 @@
+2014-12-16 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+	* 2.0-1 :
+	Now utilises the new "-a" parameter of chronyc and various other improvements,
+	including fixing a bashism in the connectivity testing.
+	Thanks to Adam Mendlik, cgtx, and teffalump for helping to
+	bring this update about!
+
 2014-08-14 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 1.1-1 :
