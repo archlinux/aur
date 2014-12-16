@@ -1,6 +1,6 @@
 pkgbase = libgcj
 	pkgdesc = Dynamically load and interpret java class files. Built from binary executables available in Debian repositories.
-	pkgver = 15_4.9.2_7
+	pkgver = 15_4.9.2_8
 	pkgrel = 1
 	url = http://gcc.gnu.org/java/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libgcj
 	license = GPL
 	depends = zlib
 	conflicts = gcc-gcj
-	source = http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libgcj15_4.9.2-7_amd64.deb
-	sha1sums = 9b592d5512dec0af6ae84d6cbb7f5b7595aa9210
+	source = http://ftp.debian.org/debian/pool/main/g/gcc-4.9/libgcj15_4.9.2-8_amd64.deb
+	sha1sums = 732a0f6e954241584c69c86f6a9ac3cae7f0c128
 
 pkgname = libgcj
 
