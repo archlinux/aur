@@ -11,7 +11,7 @@ depends=('networkmanager' 'chrony')
 backup=(etc/NetworkManager/dispatcher.d/10-chrony)
 changelog=ChangeLog
 source=("10-chrony")
-sha256sums=('cb05a26a79f7830850ad1a7cb54e24c765acadfe6297fb8b803b1c223ef3a224')
+sha256sums=('676cc8a1b770c4e4d6985d194e3bf82d47794809d49ffa2bfbb2190f10ed7885')
 
 package() {
   install -Dm700 $srcdir/10-chrony $pkgdir/etc/NetworkManager/dispatcher.d/10-chrony
