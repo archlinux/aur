@@ -1,7 +1,7 @@
 pkgbase = mopidy-git
 	pkgdesc = A music server which can play music from Spotify
-	pkgver = 0.19.3.r57.g4c60c6b
-	pkgrel = 2
+	pkgver = 0.19.4.r249.g84897dd
+	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
 	license = APACHE
