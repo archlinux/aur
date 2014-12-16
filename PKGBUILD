@@ -23,7 +23,7 @@ optdepends=('gstreamer0.10-ffmpeg: AAC+ and WMA support.'
             'mopidy-scrobbler: Last.FM scrobbler'
             'mopidy-MPRIS: MPRIS frontend')
 conflicts=('mopidy')
-provides=('mopidy')
+provides=('mopidy=$pkgver-$pkgrel')
 source=('git+https://github.com/mopidy/mopidy.git'
         'mopidy@.service')
 md5sums=('SKIP'
