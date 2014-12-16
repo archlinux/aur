@@ -22,8 +22,10 @@ pkgbase = mopidy-git
 	conflicts = mopidy
 	source = git+https://github.com/mopidy/mopidy.git
 	source = mopidy@.service
+	source = mopidy-user.service
 	md5sums = SKIP
-	md5sums = eee7b58b4eb5ca7de27f67e174ab7f9a
+	md5sums = cdda1474b91b1e35a909e93fc8305599
+	md5sums = 81de34714bf80d638df34fc3469bd3f5
 
 pkgname = mopidy-git
 

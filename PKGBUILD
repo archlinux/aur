@@ -25,9 +25,11 @@ optdepends=('gstreamer0.10-ffmpeg: AAC+ and WMA support.'
 conflicts=('mopidy')
 provides=('mopidy=$pkgver-$pkgrel')
 source=('git+https://github.com/mopidy/mopidy.git'
-        'mopidy@.service')
+        'mopidy@.service'
+        'mopidy-user.service')
 md5sums=('SKIP'
-         'eee7b58b4eb5ca7de27f67e174ab7f9a')
+         'cdda1474b91b1e35a909e93fc8305599'
+         '81de34714bf80d638df34fc3469bd3f5')
 
 pkgver() {
   cd "$_gitname"
@@ -39,6 +41,7 @@ package() {
   python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 
   install -Dm644 "$srcdir/mopidy@.service" "$pkgdir/usr/lib/systemd/system/mopidy@.service"
+  install -Dm644 "$srcdir/mopidy-user.service" "$pkgdir/usr/lib/systemd/user/mopidy.service"
   install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
