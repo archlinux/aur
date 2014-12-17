@@ -1,6 +1,6 @@
 # vim:set ft=sh:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: ruario <ruario AT opera DOT com>
 # Contributor: Daniel Isenmann <daniel AT archlinux DOT org>
@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=26.0.1656.32
+pkgver=26.0.1656.60
 pkgrel=1
 pkgdesc="A fast and secure web browser and Internet suite."
 url="http://www.opera.com/"
@@ -57,8 +57,12 @@ package() {
 	install -Dm644 \
 		"$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/opera_autoupdate.licenses" \
 		"$pkgdir/usr/share/licenses/$pkgname/opera_autoupdate.licenses"
+
+	install -Dm644 \
+		"$pkgdir/usr/share/doc/${pkgname}-stable/copyright" \
+		"$pkgdir/usr/share/licenses/$pkgname/copyright"
 }
 
-sha256sums=('e2ea368709f2ac10c3997dd361440cb39b4735b6dfe77e29a271e27f6df78a6a'
+sha256sums=('d21e5c3878c610bc45bbb79d09c0e47fded7b8aabf0225153738473d247594be'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
