@@ -1,7 +1,7 @@
 pkgbase = qutebrowser-git
 	pkgdesc = A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 	pkgver = r3206.3622f35
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.qutebrowser.org/
 	install = qutebrowser-git.install
 	arch = any
@@ -22,6 +22,8 @@ pkgbase = qutebrowser-git
 	optdepends = gst-plugins-good: media playback
 	optdepends = gst-plugins-bad: media playback
 	optdepends = gst-plugins-ugly: media playback
+	provides = qutebrowser
+	conflicts = qutebrowser
 	options = !emptydirs
 	source = git+https://github.com/The-Compiler/qutebrowser.git
 	source = qutebrowser-git.install
