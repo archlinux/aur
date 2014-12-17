@@ -1,0 +1,14 @@
+pkgbase = wakeonlan
+	pkgdesc = Utility for waking up computers using UDP Wake-on-Lan packets
+	pkgver = 0.41
+	pkgrel = 4
+	url = http://gsd.di.uminho.pt/jpo/software/wakeonlan/
+	arch = any
+	license = GPL
+	depends = perl
+	options = docs
+	source = ftp://ftp.hu.debian.org/pub/linux/distributions/frugalware/frugalware-current/source/network-extra/wakeonlan/wakeonlan-0.41.tar.gz
+	md5sums = d3143c5fe92d16196ac853b55dd421b5
+
+pkgname = wakeonlan
+
