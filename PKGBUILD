@@ -2,8 +2,8 @@
 # Contributor: Jakub Kozisek <nodevel at gmail dot com>
 
 pkgname=puddletag-hg
-pkgver=0.0
-pkgrel=2
+pkgver=r746.0c708b024a1e
+pkgrel=1
 pkgdesc="An audio tag editor for GNU/Linux."
 arch=('i686' 'x86_64')
 url="http://puddletag.sourceforge.net/"
