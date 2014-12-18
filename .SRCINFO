@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-turtle-tf
 	pkgdesc = ROS - turtle_tf demonstrates how to write a tf broadcaster and listener with the turtlesim.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = http://ros.org/wiki/turtle_tf
 	arch = any
 	license = BSD
@@ -21,7 +21,7 @@ pkgbase = ros-indigo-turtle-tf
 	depends = ros-indigo-rospy
 	depends = ros-indigo-turtlesim
 	depends = ros-indigo-tf
-	source = turtle_tf::git+https://github.com/ros-gbp/geometry_tutorials-release.git#tag=release/indigo/turtle_tf/0.2.0-0
+	source = turtle_tf::git+https://github.com/ros-gbp/geometry_tutorials-release.git#tag=release/indigo/turtle_tf/0.2.1-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-turtle-tf
