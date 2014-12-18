@@ -6,26 +6,26 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=17.3.4
+pkgver=17.4
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
 license=('custom')
 depends=('ncurses' 'openssl')
-makedepends=('perl' 'lksctp-tools' 'unixodbc' 'git')
+makedepends=('perl' 'lksctp-tools' 'unixodbc' 'git' 'libxslt' 'fop')
 conflicts=('erlang')
 optdepends=('erlang-unixodbc: database support'
             'java-environment: for Java support'
             'lksctp-tools: for SCTP support')
 options=('staticlibs')
 source=("git://github.com/erlang/otp.git#tag=OTP-$pkgver"
-        "http://www.erlang.org/download/otp_doc_man_${pkgver%.*}.tar.gz"
+        "http://www.erlang.org/download/otp_doc_man_$pkgver.tar.gz"
         'epmd.service'
         'epmd.socket'
         'epmd.conf')
 sha256sums=('SKIP'
-            '3fabdac0b0594432fdd8186fa2c74ff49a629a9bcc4174e3bd605a3d4002dab7'
+            '6c1cdb8e9d367c7b6dc6b20706de9fd0a0f0b7dffd66532663b2a24ed7679a58'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2')
