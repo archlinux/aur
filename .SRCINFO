@@ -1,0 +1,19 @@
+pkgbase = python2-webassets-0.10
+	pkgdesc = Media asset management for Python, with glue code for various web frameworks
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://github.com/miracle2k/webassets/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = django-1.4
+	optdepends = python2-pillow: support for image manipulation
+	optdepends = python2-nose: required to run tests
+	optdepends = python2-mock: required to run tests
+	provides = python2-webassets
+	conflicts = python2-webassets
+	source = http://pypi.python.org/packages/source/w/webassets/webassets-0.10.tar.gz
+	md5sums = 27bdefac7e640ab5752ba0c34212b9dc
+
+pkgname = python2-webassets-0.10
+
