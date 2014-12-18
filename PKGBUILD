@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
-         'libgl' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon'
-         'libxp' 'libxrandr' 'libxss' 'lz4' 'shared-mime-info' 'wayland')
+         'libgl' 'libinput' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama'
+         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'shared-mime-info' 'wayland')
   [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
 makedepends=('git' 'python2')
 optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
