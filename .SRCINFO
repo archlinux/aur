@@ -1,6 +1,6 @@
 pkgbase = wikicurses-git
 	pkgdesc = A simple curses interface for accessing Wikipedia.
-	pkgver = r285.1a7cd75
+	pkgver = r311.c784f33
 	pkgrel = 1
 	url = https://github.com/ids1024/wikicurses
 	arch = any
