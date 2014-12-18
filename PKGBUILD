@@ -88,6 +88,12 @@ package() {
   install -Dm644 "$srcdir/ceph-mds@.service" "$pkgdir/usr/lib/systemd/system/ceph-mds@.service"
   install -Dm755 "src/init-ceph" "$pkgdir/etc/rc.d/ceph"
 
+  # Ceph udev rules.
+  install -Dm644 "udev/50-rbd.rules" "$pkgdir/usr/lib/udev/rules.d/50-rbd.rules"
+  install -Dm644 "udev/60-ceph-partuuid-workaround.rules" \
+    "$pkgdir/usr/lib/udev/rules.d/60-ceph-partuuid-workaround.rules"
+  install -Dm644 "udev/95-ceph-osd-alt.rules" "$pkgdir/usr/lib/udev/rules.d/95-ceph-osd.rules"
+
   # Fix bin directory.
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
 
