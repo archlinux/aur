@@ -3,14 +3,14 @@
 # Contributor: goodmen <goodmenzy@gmail.com>
 
 pkgname=crosstool-ng-git
-pkgver=1.20.0.6.g82b9677
-pkgrel=1
+pkgver=1.20.0.33.g7275900
+pkgrel=2
 pkgdesc="crosstool-NG aims at building toolchains."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://crosstool-ng.org/"
 license=('GPL')
 depends=('ncurses' 'make')
-makedepends=('git' 'flex' 'bison')
+makedepends=('git' 'flex' 'bison' 'gperf')
 provides=('crosstool-ng')
 conflicts=('crosstool-ng')
 source=('git://crosstool-ng.org/crosstool-ng')
