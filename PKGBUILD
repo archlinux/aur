@@ -4,7 +4,7 @@ pkgdesc="ROS - Metapackage of geometry tutorials ROS."
 url='http://www.ros.org/wiki/geometry_tutorials'
 
 pkgname='ros-indigo-geometry-tutorials'
-pkgver='0.2.0'
+pkgver='0.2.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,8 @@ ros_makedepends=(ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-turtle-tf)
+ros_depends=(ros-indigo-turtle-tf2
+  ros-indigo-turtle-tf)
 depends=(${ros_depends[@]})
 
 _tag=release/indigo/geometry_tutorials/${pkgver}-${_pkgver_patch}
@@ -42,6 +43,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
