@@ -1,15 +1,13 @@
 pkgbase = django-taggit
 	pkgdesc = Simple tagging application for Django
-	pkgver = 0.9.1
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = http://github.com/alex/django-taggit/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	depends = python2
-	depends = django
-	source = http://pypi.python.org/packages/source/d/django-taggit/django-taggit-0.9.1.tar.gz
-	md5sums = 1ddca9dd55fb629a0cc03c4b0481a1ea
+	depends = python2-django
+	source = http://pypi.python.org/packages/source/d/django-taggit/django-taggit-0.11.1.tar.gz
+	md5sums = b8f77660c6b401e86ae986acecef46a1
 
 pkgname = django-taggit
 
