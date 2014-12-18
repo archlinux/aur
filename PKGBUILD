@@ -2,7 +2,7 @@
 # Maintainer: Arvedui <arvedui@posteo.de>
 
 pkgname=python-retrying
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A general purpose Python retyring library"
 arch=('any')
@@ -12,7 +12,7 @@ groups=()
 depends=('python' 'python-six')
 options=(!emptydirs)
 source=(https://github.com/rholder/retrying/archive/v$pkgver.tar.gz)
-md5sums=(47cabb34219837dc7341f53d693fc227)
+md5sums=(85ccf5a3a8b32d4091bcde8dabfce060)
 
 package() {
   cd "$srcdir/retrying-$pkgver"
