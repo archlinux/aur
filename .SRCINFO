@@ -1,0 +1,22 @@
+pkgbase = pootle
+	pkgdesc = An online translation management tool with translation interface
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://pootle.translatehouse.org
+	arch = any
+	license = GPL
+	depends = python2-setuptools
+	depends = translate-toolkit
+	depends = python2-cssmin
+	depends = python2-django-assets
+	depends = python2-webassets-0.10
+	depends = python2-argparse
+	depends = python2-south-0.7
+	depends = django-taggit
+	depends = django-voting-0.1
+	depends = django-1.4
+	source = http://sourceforge.net/projects/translate/files/Pootle/2.5.1/Pootle-2.5.1.tar.bz2
+	sha256sums = 524743972edd20fd63c3bedbb250007147ee63ed20568857dbe5e711b524aa9e
+
+pkgname = pootle
+
