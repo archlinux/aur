@@ -9,6 +9,7 @@
 # Contributor: Dave Simons <miouhpi@gmail.com>
 # Contributor: Dominik Hannen <cantares1+github@gmail.com>
 # Contributor: David Anderson <dave@natulte.net>
+# Contributor: Joe Julian <me@joejulian.name>
 #
 # NOTE: To request changes to this package, please submit a pull request
 #       to the GitHub repository at https://github.com/ido/packages-archlinux
