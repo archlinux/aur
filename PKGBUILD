@@ -7,7 +7,7 @@
 
 pkgname=tengine-extra
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -78,7 +78,6 @@ build() {
         --with-http_degradation_module \
         --with-http_flv_module=shared \
         --with-http_mp4_module=shared\
-        --with-http_secure_link_module \
         --with-http_sub_module=shared \
         --with-http_sysguard_module=shared
 
