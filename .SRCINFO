@@ -3,7 +3,7 @@
 pkgbase = jasper
 	pkgdesc = A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard
 	pkgver = 1.900.1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.ece.uvic.ca/~mdadams/jasper/
 	arch = i686
 	arch = x86_64
@@ -19,11 +19,13 @@ pkgbase = jasper
 	source = jasper-1.900.1-CVE-2008-3520.patch
 	source = jpc_dec.c.patch
 	source = jasper-1.900.1-CVE-2008-3522.patch
+	source = jasper-1.900.1-CVE-2014-9029.patch
 	sha1sums = 9c5735f773922e580bf98c7c7dfda9bbed4c5191
 	sha1sums = f298566fef08c8a589d072582112cd51c72c3983
 	sha1sums = 2483dba925670bf29f531d85d73c4e5ada513b01
 	sha1sums = c1a0176a15210c0af14d85e55ce566921957d780
 	sha1sums = 0e7b6142cd9240ffb15a1ed7297c43c76fa09ee4
+	sha1sums = f5fe80c8576379d34f372f6a7c6a76630ab9fdcd
 
 pkgname = jasper
 
