@@ -1,6 +1,7 @@
 /var/log/tengine/*log {
 	missingok
         create 640 http log
+        su http log
 	sharedscripts
 	compress
 	postrotate
