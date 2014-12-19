@@ -1,0 +1,14 @@
+pkgbase = diffxml
+	pkgdesc = Tools for comparing and patching XML files
+	pkgver = 0.96B
+	pkgrel = 1
+	url = http://diffxml.sourceforge.net
+	arch = any
+	license = GPL
+	makedepends = apache-ant
+	depends = java-runtime
+	source = http://sourceforge.net/projects/diffxml/files/diffxml/0.96%20BETA/diffxml-0.96B.tar.gz
+	md5sums = 9fb4bd8b2861d14edccc45ad143011be
+
+pkgname = diffxml
+
