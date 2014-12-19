@@ -7,7 +7,7 @@ _rev=r02
 _apilevel=21
 pkgname=android-platform
 pkgver=${_apilevel}_${_rev}
-pkgrel=1
+pkgrel=2
 pkgdesc="Android SDK Platform, latest API"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
@@ -21,7 +21,7 @@ sha1sums=('53536556059bb29ae82f414fd2e14bc335a4eb4c')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
-  find "${srcdir}" -maxdepth 1 -mindepth 1 -type d | grep -P 'android-[0-9]+(\.[0-9]*)?$' | while read directory; do
+  find "${srcdir}" -maxdepth 1 -mindepth 1 -type d | grep -P 'android-[0-9]+(\.[0-9]*)*$' | while read directory; do
       mv "${directory}" "${pkgdir}/opt/android-sdk/platforms/android-${_apilevel}"
   done
 
