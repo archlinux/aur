@@ -1,0 +1,14 @@
+pkgbase = omegat-plugin-okapi
+	pkgdesc = Additional file filters such as TTX, IDML, JSON, etc.
+	pkgver = 0.25
+	pkgrel = 1
+	url = http://okapi.opentag.com
+	arch = any
+	license = GPL
+	depends = omegat
+	options = !strip
+	source = https://bintray.com/artifact/download/okapi/Distribution/okapi-pluginForOmegaT_all-platforms_0.25.zip
+	sha256sums = fbf6e57b04f0e76681ad3bb9eea5a5a526c5573008308d38998cc6bb20453b52
+
+pkgname = omegat-plugin-okapi
+
