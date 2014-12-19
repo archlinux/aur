@@ -1,0 +1,5 @@
+post_install() {
+cat <<EOF
+  >> Take a look at the http://wiki.archlinux.org/index.php/JaNET to see voice festival and simon settings
+EOF
+}
