@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-gazebo-ros
 	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
 	pkgver = 2.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
 	license = Apache 2.0
@@ -34,7 +34,7 @@ pkgbase = ros-indigo-gazebo-ros
 	depends = ros-indigo-rosgraph-msgs
 	depends = gazebo
 	depends = tinyxml
-	source = gazebo_ros::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_ros/2.4.7-0
+	source = gazebo_ros::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_ros/2.4.7-1
 	md5sums = SKIP
 
 pkgname = ros-indigo-gazebo-ros
