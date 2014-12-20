@@ -1,0 +1,18 @@
+pkgbase = crosstool-ng-linaro
+	pkgdesc = crosstool-NG aims at building toolchains (Linaro source)
+	pkgver = 2014.09
+	pkgrel = 1
+	url = http://linaro.org
+	arch = any
+	license = GPL
+	makedepends = flex
+	makedepends = bison
+	depends = ncurses
+	depends = make
+	provides = crosstool-ng
+	conflicts = crosstool-ng
+	source = http://releases.linaro.org/14.09/components/toolchain/binaries/crosstool-ng-linaro-1.13.1-4.9-2014.09.tar.bz2
+	md5sums = 8a01fde555f1127885b16b55793cfb65
+
+pkgname = crosstool-ng-linaro
+
