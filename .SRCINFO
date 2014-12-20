@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-gazebo-msgs
 	pkgdesc = ROS - Message and service data structures for interacting with Gazebo from ROS.
 	pkgver = 2.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
 	license = BSD
@@ -23,7 +23,7 @@ pkgbase = ros-indigo-gazebo-msgs
 	depends = ros-indigo-std-srvs
 	depends = ros-indigo-message-generation
 	depends = ros-indigo-sensor-msgs
-	source = gazebo_msgs::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_msgs/2.4.7-0
+	source = gazebo_msgs::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_msgs/2.4.7-1
 	md5sums = SKIP
 
 pkgname = ros-indigo-gazebo-msgs
