@@ -1,0 +1,23 @@
+pkgbase = cpyrit-cuda-svn
+	pkgdesc = CUDA backend for accelerated attack against WPA-PSK authentication. (SVN version)
+	pkgver = 308
+	pkgrel = 1
+	url = http://code.google.com/p/pyrit/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cuda
+	makedepends = svn
+	depends = pyrit-svn
+	depends = nvidia-utils
+	depends = python2
+	provides = cpyrit-cuda
+	conflicts = cpyrit-calpp-svn
+	conflicts = cpyrit-calpp
+	conflicts = cpyrit-cuda
+	conflicts = cpyrit-opencl
+	source = svn+http://pyrit.googlecode.com/svn/trunk/cpyrit_cuda
+	md5sums = SKIP
+
+pkgname = cpyrit-cuda-svn
+
