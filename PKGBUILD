@@ -5,9 +5,9 @@ url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-plugins'
 pkgver='2.4.7'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-indigo-geometry-msgs
