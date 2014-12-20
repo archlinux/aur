@@ -1,9 +1,0 @@
-
-post_install() {
-  cat <<EOF
- You can now use backups.sh and restore.sh
- An example of configuration file is available as /usr/share/auto-rsync-backups/backups.conf
- An example of excludes file is available as /usr/share/auto-rsync-backups/backups.exclude
-EOF
-}
-

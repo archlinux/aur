@@ -1,20 +1,21 @@
 # Maintainer: jjacky
 pkgname=auto-rsync-backups
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="little script to handle/rotate rsync backups"
 arch=('any')
-url="https://bitbucket.org/jjacky/backups"
+url="https://github.com/jjk-jacky/auto-rsync-backups"
 license=('GPL3')
 depends=('bash' 'rsync')
-install='install'
-source=(https://bitbucket.org/jjacky/backups/get/$pkgver.tar.gz)
-sha1sums=('eacc0d7db3ffa4539f0db013e3dc3e036a8b5e86')
+source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
+sha1sums=('2f72124fd20cd20967ea3053b6c3c2fc2e3f914d')
 
 package() {
-  install -D -m755 backups.sh "${pkgdir}/usr/bin/backups.sh"
-  install -D -m755 restore.sh "${pkgdir}/usr/bin/restore.sh"
-  install -D -m644 backups.common "${pkgdir}/usr/bin/backups.common"
-  install -D -m644 backups.sample.conf "${pkgdir}/usr/share/${pkgname}/backups.conf"
-  install -D -m644 backups.excludes "${pkgdir}/usr/share/${pkgname}/backups.excludes"
+    cd $pkgname-$pkgver
+    for f in auto-rsync-{backups,restore}.sh auto-rsync-backups.common; do
+        install -D -m755 $f "${pkgdir}/usr/bin/$f"
+    done
+    for f in backups.{sample.conf,excludes} AUTHORS COPYING HISTORY LICENSE README.md; do
+        install -D -m644 $f "${pkgdir}/usr/share/${pkgname}/$f"
+    done
 }
