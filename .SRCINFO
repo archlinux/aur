@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-gazebo-ros-pkgs
 	pkgdesc = ROS - Interface for using ROS with the Gazebo simulator.
 	pkgver = 2.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
 	license = BSD,LGPL,Apache 2.0
@@ -12,7 +12,7 @@ pkgbase = ros-indigo-gazebo-ros-pkgs
 	depends = ros-indigo-gazebo-plugins
 	depends = ros-indigo-gazebo-ros
 	depends = ros-indigo-gazebo-msgs
-	source = gazebo_ros_pkgs::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_ros_pkgs/2.4.7-0
+	source = gazebo_ros_pkgs::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_ros_pkgs/2.4.7-1
 	md5sums = SKIP
 
 pkgname = ros-indigo-gazebo-ros-pkgs
