@@ -1,0 +1,26 @@
+From 4d9fde3105eba615785238b6766e0220333cccd3 Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Sun, 21 Dec 2014 14:51:00 +0800
+Subject: [PATCH] reftests: Fix typo
+
+It causes build failure on MinGW.
+---
+ testsuite/reftests/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/testsuite/reftests/Makefile.am b/testsuite/reftests/Makefile.am
+index 7479dae..b4b2bc8 100644
+--- a/testsuite/reftests/Makefile.am
++++ b/testsuite/reftests/Makefile.am
+@@ -42,7 +42,7 @@ noinst_LTLIBRARIES =		\
+ endif
+ 
+ libgtkreftestprivate_la_CFLAGS = $(gtk_reftest_CFLAGS)
+-libgtkreftestprivate_la_LDLAGS = $(no_undefined)
++libgtkreftestprivate_la_LDFLAGS = $(no_undefined)
+ libgtkreftestprivate_la_LIBADD =	\
+ 	$(top_builddir)/gdk/libgdk-3.la \
+ 	$(top_builddir)/gtk/libgtk-3.la \
+-- 
+2.1.0
+

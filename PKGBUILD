@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.14.5
+pkgver=3.14.6
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
 arch=(any)
@@ -26,23 +26,20 @@ source=(
   "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
   "0005-Remove-gobject-introspection.patch"
   "gtk3-bug-731013-fix-cross-compilation.patch"
-  "window-GtkPlug-is-conditionally-supported-on-X11-o.patch")
+  "gtk3-bug-741827-reftests-fix-typo.patch")
 
-# The third patch is downloaded from Fedora Project
-# The fourth patch: https://bugzilla.gnome.org/show_bug.cgi?id=739885
-
-sha256sums=('ba70f5ccde6646c6d8aa5a6398794b7bcf23fc45af22580a215d258f392dbbe2'
+sha256sums=('cfc424e6e10ffeb34a33762aeb77905c3ed938f0b4006ddb7e880aad234ef119'
             'ae632ad20c87032c326dbb1cda086e33a5078909f89174b2ba232be1b48c32a3'
             '2dd763d32f7b7de08a325d32b811e87266277edb6055a043632d10c146ffc6d3'
-            '32be72eb4e6cead4c94a90a23c636adc76f41ac33fc6328740c0764ae02fdd9b')
+            '839ac6fa6613d0daf6e8eac6ef8d07b8f825a6556640fa480c597bd7c88e3e82')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  patch -Np1 < "../0005-Remove-gobject-introspection.patch"
-  patch -Np1 < "../gtk3-bug-731013-fix-cross-compilation.patch"
-  patch -Np1 < "../window-GtkPlug-is-conditionally-supported-on-X11-o.patch"
+  patch -Np1 < "../${source[1]}"
+  patch -Np1 < "../${source[2]}"
+  patch -Np1 < "../${source[3]}"
   autoreconf -i
   for _arch in ${_architectures}; do
     unset LDFLAGS
