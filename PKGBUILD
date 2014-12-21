@@ -15,5 +15,5 @@ source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/${pkgname}/${pkgname}_
 sha256sums=('eb1820a7d61dce54a8513c177eb09811893089517ff0c8b40dcdee909691e413')
 
 package(){
-    cp -r "${srcdir}/${pkgname}-${pkgver}/usr" "${pkgdir}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/src/usr" "${pkgdir}"
 }
