@@ -1,7 +1,7 @@
 # Contributor: Tilman Blumenbach <tilman@ax86.net>
 pkgname=tsocks-tools
 pkgver='1.8beta5'
-pkgrel=2
+pkgrel=3
 pkgdesc='Misc. tools from the tsocks package'
 arch=('i686' 'x86_64')
 url="http://tsocks.sf.net"
@@ -10,13 +10,22 @@ depends=('glibc')
 source=("http://downloads.sf.net/tsocks/tsocks-${pkgver}.tar.gz"
         prognames.patch)
 
-build()
-{
+prepare() {
     cd "${srcdir}/tsocks-1.8"
 
     patch -Np 1 -i "${srcdir}/prognames.patch" || return 1
+}
+
+build() {
+    cd "${srcdir}/tsocks-1.8"
+
+    autoreconf
     ./configure
     make inspectsocks saveme validateconf || return 1
+}
+
+package() {
+    cd "${srcdir}/tsocks-1.8"
 
     install -D saveme "${pkgdir}/usr/bin/tsocks-saveme"
     install validateconf "${pkgdir}/usr/bin/tsocks-validateconf"

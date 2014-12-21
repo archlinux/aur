@@ -1,7 +1,7 @@
 pkgbase = tsocks-tools
 	pkgdesc = Misc. tools from the tsocks package
 	pkgver = 1.8beta5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tsocks.sf.net
 	arch = i686
 	arch = x86_64
