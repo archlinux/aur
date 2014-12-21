@@ -1,7 +1,7 @@
 pkgbase = keepass-plugin-rpc
 	pkgdesc = RPC plugin for Keepass (used by the KeeFox addon for Firefox)
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://keefox.org/
 	install = keepass-plugin-rpc.install
 	arch = i686

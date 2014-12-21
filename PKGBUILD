@@ -2,7 +2,7 @@
 
 pkgname=keepass-plugin-rpc
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="RPC plugin for Keepass (used by the KeeFox addon for Firefox)"
 arch=(i686 x86_64)
 url="http://keefox.org/"
@@ -22,7 +22,7 @@ prepare() {
 package() {
     cd "$srcdir/keefox/deps"
 
-    install -m 644 -D KeePassRPC.plgx "${pkgdir}/usr/share/keepass/plugins/rpc/KeePassRPC.plgx"
+    install -m 644 -D KeePassRPC.plgx "${pkgdir}/usr/share/keepass/plugins/KeePassRPC.plgx"
 }
 
 md5sums=('874d111743c2e430ddfc9ef211a726b8')

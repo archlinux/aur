@@ -1,9 +1,25 @@
 ## arg 1:  the new package version
 post_install() {
     echo "> The plugin has been installed to the following location:"
-    echo ">     /usr/share/keepass/plugins/rpc/"
+    echo ">     /usr/share/keepass/plugins/"
     echo ">"
     echo "> If you are using KeePass for Firefox, please set this as"
     echo "> the KeePassRPC installation directory in the KeeFox addon"
     echo "> options on the \"KeePass\" tab."
+}
+
+## arg 1:  new package full version string
+## arg 2:  old package full version string
+post_upgrade() {
+    if [ "$2" = "1.4.4-1" ]; then
+        echo "> Important change:"
+        echo "> -----------------"
+        echo ">"
+        echo "> The plugin has been moved to the following location:"
+        echo ">     /usr/share/keepass/plugins/"
+        echo ">"
+        echo "> If you are using KeePass for Firefox, please set this as"
+        echo "> the KeePassRPC installation directory in the KeeFox addon"
+        echo "> options on the \"KeePass\" tab."
+    fi
 }
