@@ -3,8 +3,8 @@
 pkgbase='selfhtml'
 pkgname=('selfhtml-de' 'selfhtml-fr')
 pkgver='8.1.2'
-pkgrel=2
 pkgdesc='An excellent HTML reference which also covers other web topics'
+pkgrel=3
 arch=('any')
 url='http://selfhtml.org'
 license=('custom')
@@ -28,11 +28,7 @@ prepare() {
 }
 
 # $1: Language code
-# $2: Language name
 _do_package() {
-    pkgdesc="An excellent HTML reference which also covers other web topics ($2 version)"
-    url="http://${1}.selfhtml.org"
-
     cd "$srcdir/selfhtml_$1"
     
     # Fix permissions
@@ -47,11 +43,19 @@ _do_package() {
 }
 
 package_selfhtml-de() {
-    _do_package de German
+    # Need to do this here so that mkaurball correctly extracts these variables.
+    pkgdesc="An excellent HTML reference which also covers other web topics (German version)"
+    url="http://de.selfhtml.org"
+
+    _do_package de
 }
 
 package_selfhtml-fr() {
-    _do_package fr French
+    # Need to do this here so that mkaurball correctly extracts these variables.
+    pkgdesc="An excellent HTML reference which also covers other web topics (French version)"
+    url="http://fr.selfhtml.org"
+
+    _do_package fr
 }
 
 md5sums=('81806920c148ace4f24e8a8239f075ac'

@@ -1,7 +1,7 @@
 pkgbase = selfhtml
 	pkgdesc = An excellent HTML reference which also covers other web topics
 	pkgver = 8.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://selfhtml.org
 	arch = any
 	license = custom
@@ -19,6 +19,10 @@ pkgbase = selfhtml
 	sha384sums = e2a80badab761e93ffa068053ab1540d1ca5eeb931bef7c6f2f6be9d1f1858d7eac2985d7a5e344c916bfc7d0a866ca7
 
 pkgname = selfhtml-de
+	pkgdesc = An excellent HTML reference which also covers other web topics (German version)
+	url = http://de.selfhtml.org
 
 pkgname = selfhtml-fr
+	pkgdesc = An excellent HTML reference which also covers other web topics (French version)
+	url = http://fr.selfhtml.org
 
