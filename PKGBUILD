@@ -7,7 +7,7 @@
 
 pkgname=gcalcli
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Calendar Command Line Interface"
 arch=('any')
 url="https://github.com/insanum/gcalcli"
@@ -28,7 +28,8 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/LICENSE.gcalcli" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir"/LICENSE.gcalcli \
+    "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
