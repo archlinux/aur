@@ -21,16 +21,16 @@ source=('git://kernel.ubuntu.com/cking/powerstat.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd powerstat
+    cd "${srcdir}/powerstat"
     git describe | sed 's/^V//; s/-/.r/; s/-/./'
 }
 
 build() {
-    cd powerstat
+    cd "${srcdir}/powerstat"
     make
 }
 
 package() {
-    cd powerstat
+    cd "${srcdir}/powerstat"
     make DESTDIR="$pkgdir" install
 }
