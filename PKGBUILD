@@ -7,13 +7,13 @@ pkgname='ros-indigo-qt-gui'
 pkgver='0.2.26'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-pyqt4-10
+  python2-pyqt4
   qt4)
 
 ros_depends=(ros-indigo-python-qt-binding)
