@@ -24,7 +24,7 @@ options=(!strip !buildflags staticlibs)
 
 source=(
   "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-  "0005-Remove-gobject-introspection.patch"
+  "gtk3-aur-remove-gobject-introspection.patch"
   "gtk3-bug-731013-fix-cross-compilation.patch"
   "gtk3-bug-741827-reftests-fix-typo.patch")
 
