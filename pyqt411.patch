@@ -1,0 +1,97 @@
+commit 2a0bf86d5b88948fea2a6d4c7be0599b36d9ba0b
+Author: pallegro <hollense@cs.dal.ca>
+Date:   Tue Aug 19 15:15:00 2014 -0300
+
+    PyQt 4.11 compatibility
+
+diff --git a/cmake/sip_configure.py b/cmake/sip_configure.py
+index dc2020d..7c0eec7 100644
+--- a/cmake/sip_configure.py
++++ b/cmake/sip_configure.py
+@@ -2,7 +2,49 @@ import os
+ import re
+ import subprocess
+ import sys
+-from PyQt4 import pyqtconfig
++import sipconfig
++try:
++    from PyQt4.pyqtconfig import Configuration
++except ImportError:
++    # PyQt>=4.11 has no pyqtconfig
++    import PyQt4
++    from PyQt4 import QtCore
++    class Configuration(sipconfig.Configuration):
++        """The class that represents PyQt configuration values.
++        """
++        def __init__(self):
++            qtconfig = subprocess.check_output(["qmake-qt4", "-query"], universal_newlines=True)
++            qtconfig = dict(x.split(":", 1) for x in qtconfig.splitlines())
++            
++            pyqtconfig = {
++                "pyqt_config_args":   "--confirm-license -v /usr/share/sip --qsci-api -q /usr/bin/qmake-qt4",
++                "pyqt_version":       QtCore.PYQT_VERSION,
++                "pyqt_version_str":   QtCore.PYQT_VERSION_STR,
++                "pyqt_bin_dir":       PyQt4.__path__[0],
++                "pyqt_mod_dir":       PyQt4.__path__[0],
++                "pyqt_sip_dir":       "/usr/share/sip",
++                "pyqt_modules":       "QtCore QtGui",   #... and many more
++                "pyqt_sip_flags":     QtCore.PYQT_CONFIGURATION['sip_flags'],
++                "qt_version":         QtCore.QT_VERSION,
++                "qt_edition":         "free",
++                "qt_winconfig":       "shared",
++                "qt_framework":       0,
++                "qt_threaded":        1,
++                "qt_dir":             qtconfig['QT_INSTALL_PREFIX'],
++                "qt_data_dir":        qtconfig['QT_INSTALL_DATA'],
++                "qt_archdata_dir":    qtconfig['QT_INSTALL_DATA'],
++                "qt_inc_dir":         qtconfig['QT_INSTALL_HEADERS'],
++                "qt_lib_dir":         qtconfig['QT_INSTALL_LIBS']
++            }
++            
++            macros = sipconfig._default_macros.copy()
++            macros['INCDIR_QT'] = qtconfig['QT_INSTALL_HEADERS']
++            macros['LIBDIR_QT'] = qtconfig['QT_INSTALL_LIBS']
++            macros['MOC'] = os.path.join(qtconfig['QT_INSTALL_BINS'], 'moc-qt4')
++
++            sipconfig.Configuration.__init__(self, [pyqtconfig])
++            self.set_build_macros(macros)
++
+ 
+ if len(sys.argv) != 8:
+     print('usage: %s build-dir sip-file output_dir include_dirs libs lib_dirs ldflags' % sys.argv[0])
+@@ -15,7 +57,7 @@ build_dir, sip_file, output_dir, include_dirs, libs, lib_dirs, ldflags = sys.arg
+ build_file = 'pyqtscripting.sbf'
+ 
+ # Get the PyQt configuration information.
+-config = pyqtconfig.Configuration()
++config = Configuration()
+ 
+ # Get the extra SIP flags needed by the imported qt module.  Note that
+ # this normally only includes those flags (-x and -t) that relate to SIP's
+@@ -43,21 +85,22 @@ subprocess.check_call(cmd)
+ # Create the Makefile.  The QtModuleMakefile class provided by the
+ # pyqtconfig module takes care of all the extra preprocessor, compiler and
+ # linker flags needed by the Qt library.
+-makefile = pyqtconfig.QtGuiModuleMakefile(
++makefile = sipconfig.SIPModuleMakefile(
+     dir=build_dir,
+     configuration=config,
+-    build_file=build_file
++    build_file=build_file,
++    qt=['QtCore', 'QtGui']
+ )
+ 
+ # hack to override makefile behavior which always prepend -l to libraries which is wrong for absolute paths
+-default_platform_lib_function = pyqtconfig.QtGuiModuleMakefile.platform_lib
++default_platform_lib_function = sipconfig.SIPModuleMakefile.platform_lib
+ 
+ 
+ def custom_platform_lib_function(self, clib, framework=0):
+     if os.path.isabs(clib):
+         return clib
+     return default_platform_lib_function(self, clib, framework)
+-pyqtconfig.QtGuiModuleMakefile.platform_lib = custom_platform_lib_function
++sipconfig.SIPModuleMakefile.platform_lib = custom_platform_lib_function
+ 
+ 
+ # split paths on whitespace
