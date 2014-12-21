@@ -1,6 +1,6 @@
 gitname=s3cmd
 pkgname=${gitname}-git
-pkgver=250.8a2936b
+pkgver=1060.86ebf01
 pkgrel=1
 pkgdesc="A command line client for Amazon S3 (git)"
 arch=('any')
@@ -9,6 +9,8 @@ license=('GPL')
 depends=('python2' 'python2-dateutil')
 makedepends=(git)
 optdepends=('gnupg: encrypted file storage')
+provides=('s3cmd')
+conflicts=('s3cmd')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
