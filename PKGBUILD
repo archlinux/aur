@@ -7,7 +7,7 @@
 
 pkgname=tengine-extra
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -31,11 +31,18 @@ optdepends=(
 	'geoip: needed by http_geoip_module'
 	'memcached: needed by http_memcached_module')
 source=($url/download/tengine-$pkgver.tar.gz
+        fix-syslog-crash-in-http.patch::https://github.com/alibaba/tengine/pull/557.patch
         service
         logrotate)
 sha256sums=('2f73a325b536b2bec6c6501f3230efa692a5f2fa346dde41d43ed2303de46a64'
+            '4d32f23461b45d8a8bdae273108291921f77e33f816df0b42eddaf4711af3940'
             '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
             '9458ffedde9454beb73c7a9b3c297c2e777debafe45ae38eda1e83a6b8933351')
+
+prepare(){
+    cd $srcdir/tengine-$pkgver
+    patch -Np1 -i ../fix-syslog-crash-in-http.patch
+}
 
 build() {
     cd tengine-$pkgver
