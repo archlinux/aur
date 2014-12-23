@@ -1,4 +1,5 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Package Repository: https://github.com/mij-aur-packages/android-google-apis-x86
 
 _rev=r03
 _apilevel=21
