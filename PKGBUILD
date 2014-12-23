@@ -1,4 +1,5 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Package Repository: https://github.com/mij-aur-packages/android-google-apis-armv7a-eabi
 
 _rev=r03
 _apilevel=21
