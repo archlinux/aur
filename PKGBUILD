@@ -1,5 +1,6 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Denis Kobozev <d.v.kobozev at gmail dot com>
+# Package Repository: https://github.com/mij-aur-packages/xapian-omega
 
 pkgname=xapian-omega
 pkgver=1.2.19
