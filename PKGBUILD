@@ -1,5 +1,6 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: 謝致邦<Yeking@Red54.com>
+# Package Repository: https://github.com/mij-aur-packages/lubuntu-artwork
 
 pkgname=lubuntu-artwork
 pkgver=0.50
