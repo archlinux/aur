@@ -2,6 +2,7 @@
 # Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
+# Package Repository: https://github.com/mij-aur-packages/android-google-apis
 
 _rev=r01
 _apilevel=21
