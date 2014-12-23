@@ -1,0 +1,25 @@
+post_install() {
+    echo "Creating user and group upsource..."
+    getent group upsource &>/dev/null || groupadd -r upsource >/dev/null
+    getent passwd upsource &>/dev/null || useradd -r -g upsource -d '/var/lib/upsource' -s /bin/bash -G upsource upsource >/dev/null
+    chown -R upsource '/opt/upsource'
+    chown -R upsource '/var/lib/upsource'
+    echo "Make sure /usr/lib/jvm/default-java symlinks to your prefered Java environment."
+    echo "If you want to use a different Java, set it in /etc/conf.d/upsource"
+    echo ""
+    echo "To start your instance:"
+    echo "  systemctl start upsource"
+    echo 
+    echo "After that you can access Upsource by opening http://localhost:8080/"
+}
+
+post_upgrade() {
+    echo "Make sure /usr/lib/jvm/default-java symlinks to your prefered Java environment."
+    echo "If you want to use a different Java, set it in /etc/conf.d/upsource"
+}
+
+post_remove() {
+    echo "Removing upsource user and group..."
+    getent passwd upsource &>/dev/null && userdel upsource >/dev/null
+    echo "Please check for remaining files in /var/lib/upsource and /opt/upsource"
+}

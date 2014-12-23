@@ -1,0 +1,18 @@
+[Unit]
+Description=Upsource server
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/upsource
+ExecStart=/opt/upsource/bin/upsource.sh start
+ExecStop=/opt/upsource/bin/upsource.sh stop
+Type=forking
+PIDFile=/opt/upsource/logs/upsource.pid
+Restart=no
+TimeoutSec=30
+RemainAfterExit=yes
+User=upsource
+
+[Install]
+WantedBy=multi-user.target
+
