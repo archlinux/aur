@@ -1,4 +1,4 @@
-# Maintainer: Jaroslav Lichtblau <svetlemory@archlinux.org>
+# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
