@@ -1,0 +1,17 @@
+pkgbase = projectx
+	pkgdesc = DVB demux tool for repairing and analyzing different stream types
+	pkgver = 0.91.0.08
+	pkgrel = 2
+	url = http://sourceforge.net/projects/project-x
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = java-environment apache-ant
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/project-x/project-x/ProjectX_0.91.0.00/ProjectX_0.91.0.zip
+	source = http://gentoo.sbriesen.de/distfiles/projectx-idctfast.tar.xz
+	source = IDCTFast.patch
+	source = projectx
+
+pkgname = projectx
+

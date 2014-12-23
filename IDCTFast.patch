@@ -1,0 +1,70 @@
+diff -ur Project-X_0.91.0/noguisources.lst Project-X_0.91.0.new/noguisources.lst
+--- Project-X_0.91.0/noguisources.lst	2011-07-31 13:18:13.000000000 +0200
++++ Project-X_0.91.0.new/noguisources.lst	2013-08-20 23:39:29.786982535 +0200
+@@ -66,6 +66,7 @@
+ src/net/sourceforge/dvb/projectx/thirdparty/TS.java
+ src/net/sourceforge/dvb/projectx/video/IDCTRefNative.java
+ src/net/sourceforge/dvb/projectx/video/IDCTSseNative.java
++src/net/sourceforge/dvb/projectx/video/IDCTFast.java
+ src/net/sourceforge/dvb/projectx/video/MpvDecoder.java
+ src/net/sourceforge/dvb/projectx/video/Preview.java
+ src/net/sourceforge/dvb/projectx/video/PreviewObject.java
+diff -ur Project-X_0.91.0/sources.lst Project-X_0.91.0.new/sources.lst
+--- Project-X_0.91.0/sources.lst	2009-01-15 19:53:35.000000000 +0100
++++ Project-X_0.91.0.new/sources.lst	2013-08-20 23:39:25.703599480 +0200
+@@ -66,6 +66,7 @@
+ src/net/sourceforge/dvb/projectx/thirdparty/TS.java
+ src/net/sourceforge/dvb/projectx/video/IDCTRefNative.java
+ src/net/sourceforge/dvb/projectx/video/IDCTSseNative.java
++src/net/sourceforge/dvb/projectx/video/IDCTFast.java
+ src/net/sourceforge/dvb/projectx/video/MpvDecoder.java
+ src/net/sourceforge/dvb/projectx/video/Preview.java
+ src/net/sourceforge/dvb/projectx/video/PreviewObject.java
+diff -ur Project-X_0.91.0/src/net/sourceforge/dvb/projectx/video/MpvDecoder.java Project-X_0.91.0.new/src/net/sourceforge/dvb/projectx/video/MpvDecoder.java
+--- Project-X_0.91.0/src/net/sourceforge/dvb/projectx/video/MpvDecoder.java	2011-07-31 13:18:14.000000000 +0200
++++ Project-X_0.91.0.new/src/net/sourceforge/dvb/projectx/video/MpvDecoder.java	2013-08-20 23:39:18.993517806 +0200
+@@ -74,6 +74,7 @@
+ 
+ 	private IDCTRefNative idct;
+ 	private IDCTSseNative idctsse;
++	private IDCTFast      idctfast;
+ 
+ 	private int preview_horizontal_size = 512;
+ 	private int preview_vertical_size = 288;
+@@ -136,11 +137,15 @@
+ 
+ 		idct = new IDCTRefNative();
+ 		idctsse = new IDCTSseNative();
++		idctfast = new IDCTFast();
+ 
+ 		if (IDCTRefNative.isLibraryLoaded())
+ 			idct.init();
+ 
+-		if (IDCTRefNative.isLibraryLoaded() || IDCTSseNative.isLibraryLoaded())
++                if (IDCTFast.isLibraryLoaded())
++                        idctfast.init();
++
++		if (IDCTRefNative.isLibraryLoaded() || IDCTSseNative.isLibraryLoaded() || IDCTFast.isLibraryLoaded())
+ 			acceleration = true;
+ 	}
+ 
+@@ -2420,6 +2425,19 @@
+ 			}
+ 		}
+ 
++                else if (IDCTFast.isLibraryLoaded() && isAccelerated())
++                {
++                        /* copy or add block data into picture */
++                        for (comp=0; comp<block_count; comp++)
++                        {
++                                /* ISO/IEC 13818-2 section Annex A: inverse DCT */
++                                idctfast.referenceIDCT(block[comp]);
++
++                                /* ISO/IEC 13818-2 section 7.6.8: Adding prediction and coefficient data */
++                                Add_Block(comp, bx, by, dct_type, (macroblock_type[0] & MACROBLOCK_INTRA)==0);
++                        }
++                }
++
+ 		else
+ 		{
+ 			/* copy or add block data into picture */
