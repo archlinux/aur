@@ -5,6 +5,7 @@
 # Contributor: Andreas Zwinkau
 # Contributor: rabyte <rabyte__gmail>
 # Contributor: Stefan Husmann < stefan-husmann@t-online.de>
+# Package Repository: https://github.com/mij-aur-packages/ttf-liberation-sans-narrow
 
 pkgname=ttf-liberation-sans-narrow
 pkgver=1.07.4
