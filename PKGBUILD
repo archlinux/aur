@@ -1,4 +1,5 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Package Repository: https://github.com/mij-aur-packages/android-x86-system-image
 
 _rev=r01
 _apilevel=21
