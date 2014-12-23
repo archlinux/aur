@@ -3,7 +3,7 @@
 
 pkgname=lubuntu-artwork
 pkgver=0.50
-pkgrel=1
+pkgrel=2
 pkgdesc='artwork of Lubuntu'
 arch=('any')
 url='http://wiki.ubuntu.com/Lubuntu/Artwork'

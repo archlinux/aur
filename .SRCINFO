@@ -1,7 +1,7 @@
 pkgbase = lubuntu-artwork
 	pkgdesc = artwork of Lubuntu
 	pkgver = 0.50
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ubuntu.com/Lubuntu/Artwork
 	arch = any
 	license = GPL
