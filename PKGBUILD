@@ -1,5 +1,6 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Sebastien Binet <binet@lblbox>
+# Package Repository: https://github.com/mij-aur-packages/python2-lineprofiler
 pkgname=python2-lineprofiler
 pkgver=1.0
 pkgrel=2
