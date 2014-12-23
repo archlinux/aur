@@ -1,4 +1,5 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Package Repository: https://github.com/mij-aur-packages/pyhamcrest-git
 
 _pkgname=PyHamcrest
 pkgbase=${_pkgname,,}
