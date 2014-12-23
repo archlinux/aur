@@ -1,5 +1,6 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Marti Raudsepp <marti@juffo.org>
+# Package Repository: https://github.com/mij-aur-packages/flashbench-git
 
 pkgname=flashbench-git
 pkgver=r62.2e30b19
