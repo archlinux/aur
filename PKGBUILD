@@ -11,20 +11,20 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('bash' 'libjpeg' 'sdl' 'libxxf86vm' 'libxxf86dga')
 install="quake2.install"
-source=("http://www.icculus.org/quake2/files/quake2-${pkgver}.tar.gz" \
-    'http://cesium.di.uminho.pt/pub/games/quake2/source/xatrixsrc320.shar.Z' \
-    'http://cesium.di.uminho.pt/pub/games/quake2/source/roguesrc320.shar.Z' \
-    'ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full-ctf.exe' \
-    'http://www.icculus.org/quake2/files/maxpak.pak' \
-    'http://www.icculus.org/quake2/files/pak10.pak' \
-    'http://www.icculus.org/quake2/files/pak11.pak' \
-    'http://www.icculus.org/quake2/files/pak12.pak' \
-    'http://www.icculus.org/quake2/files/pak13.pak' \
-    'http://www.icculus.org/quake2/files/pak14.pak' \
-    'http://www.icculus.org/quake2/files/pak16.pak' \
-    'http://www.icculus.org/quake2/files/pak17.pak' \
-    'http://www.icculus.org/quake2/files/pak19.pak' \
-    'quake2.sh' 'q2ded.sh' 'xatrix.sh' 'rogue.sh' 'ctf.sh' 'snd_alsa.c' \
+source=("http://www.icculus.org/quake2/files/quake2-${pkgver}.tar.gz"
+    'ftp://ftp.idsoftware.com/idstuff/quake2/source/xatrixsrc320.shar.Z'
+    'ftp://ftp.idsoftware.com/idstuff/quake2/source/roguesrc320.shar.Z'
+    'ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full-ctf.exe'
+    'http://www.icculus.org/quake2/files/maxpak.pak'
+    'http://www.icculus.org/quake2/files/pak10.pak'
+    'http://www.icculus.org/quake2/files/pak11.pak'
+    'http://www.icculus.org/quake2/files/pak12.pak'
+    'http://www.icculus.org/quake2/files/pak13.pak'
+    'http://www.icculus.org/quake2/files/pak14.pak'
+    'http://www.icculus.org/quake2/files/pak16.pak'
+    'http://www.icculus.org/quake2/files/pak17.pak'
+    'http://www.icculus.org/quake2/files/pak19.pak'
+    'quake2.sh' 'q2ded.sh' 'xatrix.sh' 'rogue.sh' 'ctf.sh' 'snd_alsa.c'
     'gnusource.patch')
 sha256sums=('98cea3cbd70bd1f195e5190d0ae047c636e00e21dbc6cc5bdee4acd52876d3e9'
             '94bf596cd85d38ea294b99ccb0ebb5e4b9776cca335001b3803e2d8407395589'
@@ -52,35 +52,35 @@ PKGEXT='.pkg.tar'
 [ "${CARCH}" = "i686" ] && _dirarch=i386
 [ "${CARCH}" = "x86_64" ] && _dirarch=x86_64
 
-build() {
-    cd ${srcdir}
+prepare() {
+    cd "${srcdir}"
 
     # Create Temporary Directories
-    install -d ${pkgname}-${pkgver}/src/xatrix ${pkgname}-${pkgver}/src/rogue
+    install -d "${pkgname}-${pkgver}/src/xatrix" "${pkgname}-${pkgver}/src/rogue"
 
-    # Decompress and patch The Reckoning (xatrix) and Ground Zero (rouge) Expansions
+    # Extract and patch The Reckoning (xatrix) and Ground Zero (rouge) Expansions
     for _addon in xatrix rogue; do
-        _shar=${_addon}src320.shar
+        _shar="${_addon}src320.shar"
 
-        cp ${srcdir}/${_shar}.Z ${srcdir}/${pkgname}-${pkgver}/src/${_addon}
-        cd ${srcdir}/${pkgname}-${pkgver}/src/${_addon}
+        cp "${srcdir}/${_shar}.Z" "${srcdir}/${pkgname}-${pkgver}/src/${_addon}"
+        cd "${srcdir}/${pkgname}-${pkgver}/src/${_addon}"
 
-        # Decompress
+        # Extract
         msg "Unpacking ${_shar}.Z"
-        uncompress ${_shar}.Z
+        uncompress "${_shar}.Z"
 
         # Remove Prompts
-        /bin/sed -i -e 's:^read ans:ans=yes :' ${_shar}
-        /bin/sed -i -e 's:^more <<EOF:cat <<EOF:' ${_shar}
+        /bin/sed -i -e 's:^read ans:ans=yes :' "${_shar}"
+        /bin/sed -i -e 's:^more <<EOF:cat <<EOF:' "${_shar}"
 
         # Run Installer
         msg "Running ${_shar}"
-        sh ${_shar}
+        sh "${_shar}"
 
         msg "Patching ${_addon}"
 
         # Patch (rogue-only)
-        if [ ${_addon} = "rogue" ]; then
+        if [ "${_addon}" = "rogue" ]; then
             /bin/sed -e "s/#include <nan.h>/#include <bits\/nan.h>/" -i g_local.h
         fi
 
@@ -90,78 +90,91 @@ build() {
         /bin/sed -e "s/extern\tint\tbody_armor_index/static\tint\tbody_armor_index/" -i g_local.h
     done
 
-    msg "The Reckoning and Ground Zero Expansion install complete"
+    msg "The Reckoning and Ground Zero Expansion patching complete"
 
-    cd ${srcdir}/${pkgname}-${pkgver}/
+    cd "${srcdir}/${pkgname}-${pkgver}/"
 
     # Patch from SVN
-    cp ${srcdir}/snd_alsa.c ./src/linux/snd_alsa.c
+    cp "${srcdir}/snd_alsa.c" ./src/linux/snd_alsa.c
 
     # x86_64 patch from Gentoo
-    patch -p1 < ${srcdir}/gnusource.patch
+    patch -p1 < "${srcdir}/gnusource.patch"
 
     # libjpeg Fix
     /bin/sed -i -e 's:jpeg_mem_src:_&:' \
-        ${srcdir}/${pkgname}-${pkgver}/src/ref_candygl/gl_image.c
+        "${srcdir}/${pkgname}-${pkgver}/src/ref_candygl/gl_image.c"
+
+    msg "Quake 2 patching complete"
+}
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}/"
 
     msg "Compiling Quake 2"
 
     # Compile Quake 2
-    make -s BUILD_XATRIX=YES BUILD_ROGUE=YES BUILD_DEDICATED=YES BUILD_CTF=YES BUILD_QMAX=YES build_release
+    make -s BUILD_XATRIX=YES \
+        BUILD_ROGUE=YES \
+        BUILD_DEDICATED=YES \
+        BUILD_CTF=YES \
+        BUILD_QMAX=YES \
+        build_release
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}/release${_dirarch}
+    cd "${srcdir}/${pkgname}-${pkgver}/release${_dirarch}"
 
     # Create Destination Directories
-    install -d ${pkgdir}/opt/quake2/{baseq2,ctf,xatrix,rogue}
+    install -d "${pkgdir}/opt/quake2/"{baseq2,ctf,xatrix,rogue}
 
     # Install Binary
-    install -m 755 quake2 ${pkgdir}/opt/quake2/quake2
+    install -m 755 quake2 "${pkgdir}/opt/quake2/quake2"
 
     # Install Binary (SDL)
-    install -m 755 sdlquake2 ${pkgdir}/opt/quake2/sdlquake2
+    install -m 755 sdlquake2 "${pkgdir}/opt/quake2/sdlquake2"
 
     # Install Base Game Library
-    install -m 755 game${_dirarch}.so ${pkgdir}/opt/quake2/baseq2/
+    install -m 755 "game${_dirarch}.so" "${pkgdir}/opt/quake2/baseq2/"
 
     # Install CTF Library
-    install -m 755 ctf/game${_dirarch}.so ${pkgdir}/opt/quake2/ctf/
+    install -m 755 "ctf/game${_dirarch}.so" "${pkgdir}/opt/quake2/ctf/"
 
     # Install Xatrix Library
-    install -m 755 xatrix/game${_dirarch}.so ${pkgdir}/opt/quake2/xatrix/
+    install -m 755 "xatrix/game${_dirarch}.so" "${pkgdir}/opt/quake2/xatrix/"
 
     # Install Rogue Library
-    install -m 755 rogue/game${_dirarch}.so ${pkgdir}/opt/quake2/rogue/
+    install -m 755 "rogue/game${_dirarch}.so" "${pkgdir}/opt/quake2/rogue/"
 
     # Install Additional Libraries
-    cp ref_*.so ${pkgdir}/opt/quake2/
+    cp ref_*.so "${pkgdir}/opt/quake2/"
 
-    cd ${srcdir}
+    cd "${srcdir}"
 
-    # Decompress and Install CTF Patch Data
-    mkdir ${srcdir}/q2
-    cp ${srcdir}/q2-3.20-x86-full-ctf.exe ${srcdir}/q2
-    cd ${srcdir}/q2
+    # Extract CTF Patch Data
+    mkdir "${srcdir}/q2"
+    cp "${srcdir}/q2-3.20-x86-full-ctf.exe" "${srcdir}/q2"
+    cd "${srcdir}/q2"
     unzip -L q2-3.20-x86-full-ctf.exe
-    cp baseq2/pak1.pak baseq2/pak2.pak ${pkgdir}/opt/quake2/baseq2/
-    cp -r baseq2/players ${pkgdir}/opt/quake2/baseq2/
-    cp ctf/* ${pkgdir}/opt/quake2/ctf/
+
+    # Install CTF Patch Data
+    cp baseq2/pak1.pak baseq2/pak2.pak "${pkgdir}/opt/quake2/baseq2/"
+    cp -r baseq2/players "${pkgdir}/opt/quake2/baseq2/"
+    cp ctf/* "${pkgdir}/opt/quake2/ctf/"
 
     # Install Q2Max Pak File
-    install ${srcdir}/maxpak.pak ${pkgdir}/opt/quake2/baseq2/
+    install "${srcdir}/maxpak.pak" "${pkgdir}/opt/quake2/baseq2/"
 
     # Install Additional pak Files
     for i in {10,11,12,13,14,16,17,19}; do
-        install -m 644 ${srcdir}/pak${i}.pak \
-            ${pkgdir}/opt/quake2/baseq2/pak${i}.pak
+        install -m 644 "${srcdir}/pak${i}.pak" \
+            "${pkgdir}/opt/quake2/baseq2/pak${i}.pak"
     done;
 
     # Install Game Launchers
-    install -D -m 755 ${srcdir}/quake2.sh ${pkgdir}/usr/bin/quake2
-    install -D -m 755 ${srcdir}/q2ded.sh  ${pkgdir}/usr/bin/q2ded
-    install -D -m 755 ${srcdir}/xatrix.sh ${pkgdir}/usr/bin/quake2-the-reckoning
-    install -D -m 755 ${srcdir}/rogue.sh  ${pkgdir}/usr/bin/quake2-ground-zero
-    install -D -m 755 ${srcdir}/ctf.sh    ${pkgdir}/usr/bin/quake2-ctf
+    install -D -m 755 "${srcdir}/quake2.sh" "${pkgdir}/usr/bin/quake2"
+    install -D -m 755 "${srcdir}/q2ded.sh"  "${pkgdir}/usr/bin/q2ded"
+    install -D -m 755 "${srcdir}/xatrix.sh" "${pkgdir}/usr/bin/quake2-the-reckoning"
+    install -D -m 755 "${srcdir}/rogue.sh"  "${pkgdir}/usr/bin/quake2-ground-zero"
+    install -D -m 755 "${srcdir}/ctf.sh"    "${pkgdir}/usr/bin/quake2-ctf"
 }
 
