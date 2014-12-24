@@ -4,8 +4,8 @@
 
 pkgname=pandoc-static
 _pkgname=pandoc
-pkgver=1.13.1
-pkgrel=2
+pkgver=1.13.2
+pkgrel=1
 pkgdesc='Conversion between markup formats (no Haskell libraries)'
 url='http://johnmacfarlane.net/pandoc/'
 license=('GPL')
@@ -32,7 +32,9 @@ _packages=(hs-bibutils network hexpat text text-icu hsb2hs
 mkdepends=('ghc' 'cabal-install')
 mksource() (
   set -o pipefail
-  export LANG="en_US.utf8"
+  # building haddock requires an utf8 lang, if you use anything else you
+  # have to enable an utf8 locale and run locale-gen
+  test "${LANG#*.}" != "utf8" && export LANG="en_US.utf8"
   export HOME="$srcdir"
 
   mkdir $pkgname-$pkgver
@@ -64,7 +66,9 @@ build() (
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p ../build
 
-  export LANG="en_US.utf8"
+  # building haddock requires an utf8 lang, if you use anything else you
+  # have to enable an utf8 locale and run locale-gen
+  test "${LANG#*.}" != "utf8" && export LANG="en_US.utf8"
   export HOME="${srcdir}"
   export PATH="${srcdir}/build/usr/bin:${PATH}"
 
@@ -124,3 +128,4 @@ package() {
   cp -rv "${srcdir}"/build/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
   mv -v        "${pkgdir}"/usr/share/doc/*/* "${pkgdir}"/usr/share/licenses/${pkgname}
 }
+md5sums=('6c763fae16e10400874b15d7b084ad82')
