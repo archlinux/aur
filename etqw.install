@@ -10,6 +10,8 @@ post_install() {
     echo ">>>    Setup/Data/base/megatextures/* to /opt/etqw/base/megatextures"
     echo ">>>    Setup/Data/base/video/*        to /opt/etqw/base/video"
     echo ">>>"
+    echo ">>> Alternatively, you may use the etqw-data PKGBUILD on the AUR"
+    echo ">>>"
     echo ">>> When you have the data files installed, start the game:"
     echo ">>>   Client: etqw"
     echo ">>>   Server: etqw-dedicated"
