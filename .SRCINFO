@@ -1,0 +1,17 @@
+pkgbase = mopidy-notifier-git
+	pkgdesc = Mopidy extension for showing song changes in notifications.
+	pkgver = 0.r40.357f92d
+	pkgrel = 1
+	url = https://github.com/sauberfred/mopidy-notifier
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2
+	depends = mopidy
+	depends = libnotify
+	provides = mopidy-notifier
+	source = git+https://github.com/sauberfred/mopidy-notifier.git
+	md5sums = SKIP
+
+pkgname = mopidy-notifier-git
+
