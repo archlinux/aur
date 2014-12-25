@@ -1,6 +1,6 @@
 pkgbase = perl-test-email
 	pkgdesc = Perl package to test Email contents
-	pkgver = 0.04
+	pkgver = 0.07
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Test-Email
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = perl-test-email
 	depends = perl-mail-sendmail>=0.79
 	depends = perl-mime-tools>=5.4
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAMES/Test-Email-0.04.tar.gz
-	md5sums = bb409977cffb292cd85d80d10506f59e
+	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAMES/Test-Email-0.07.tar.gz
+	md5sums = be2f80d2dbdd2f9c3329237402ebcf14
 
 pkgname = perl-test-email
 
