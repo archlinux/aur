@@ -3,7 +3,7 @@
 # Contributor: Jeremy <reebydobalina@yahoo.ca>
 
 pkgname=ruby-cairo
-pkgver=1.12.9
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Ruby bindings for cairo'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('ruby' 'cairo')
 makedepends=('ruby-pkgconfig')
 source=("http://cairographics.org/releases/rcairo-$pkgver.tar.gz")
-sha256sums=('ef894e2a52926c1c9d6d7f32cc1899fa21de90787a4a98493e4a004ecdb90b6e')
+sha256sums=('7ce10e7f6b0c432497723636d7ded399caf3b807b6b6f9d3ee9c2e34a2dabbee')
 
 build() {
   cd "$srcdir/rcairo-$pkgver"
