@@ -6,6 +6,7 @@ pkgname=(
     'drush-hosts'
     'drush-registry-rebuild'
     'drush-vagrant'
+    'drush-entity'
 )
 pkgbase='drush-extensions'
 pkgver='7.x'
@@ -24,13 +25,17 @@ source=(
     'http://ftp.drupal.org/files/projects/drush-hosts-7.x-1.1.tar.gz'
     'http://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.2.tar.gz'
     'http://ftp.drupal.org/files/projects/drush-vagrant-7.x-2.0-rc4.tar.gz'
+    'http://ftp.drupal.org/files/projects/drush_entity-7.x-5.0-alpha2.tar.gz'
 )
-md5sums=('f68c7407446bc4dfe95fbe1741928a15'
-         '29bd5f0bab1911aca72708165590fd94'
-         '0ecb568037d3425c25f971234359c4eb'
-         '44401d4fdc8bd5b18919f1db17716664'
-         '6057703bd4a5bec81e397e19602e2756'
-         '8d735f9e8f864424f292d4866a70b8f1')
+md5sums=(
+    'f68c7407446bc4dfe95fbe1741928a15'
+    '29bd5f0bab1911aca72708165590fd94'
+    '0ecb568037d3425c25f971234359c4eb'
+    '44401d4fdc8bd5b18919f1db17716664'
+    '6057703bd4a5bec81e397e19602e2756'
+    '8d735f9e8f864424f292d4866a70b8f1'
+    'b121cc7779ba3fd346e4ca90fd6db19a'
+)
 
 
 package_drush-aegir-up() {
@@ -72,6 +77,14 @@ package_drush-vagrant() {
     depends=('drush-hosts' 'vagrant' 'virtualbox')
     optdepends=('nfs-utils: NFS support')
     _dirname=drush-vagrant
+    _package
+}
+package_drush-entity() {
+    pkgver=5.0_alpha2
+    pkgdesc='Query and manipulate entities directly.'
+    url='https://www.drupal.org/project/drush-entity'
+    depends=('drush')
+    _dirname=drush_entity
     _package
 }
 
