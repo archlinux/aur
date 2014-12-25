@@ -8,7 +8,7 @@
 _gemname=hpricot
 pkgname=ruby-$_gemname
 pkgver=0.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A swift, liberal HTML parser with a fantastic library'
 arch=(i686 x86_64)
 url='http://code.whytheluckystiff.net/hpricot/'
