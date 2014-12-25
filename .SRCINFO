@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 217
-	pkgrel = 8
+	pkgver = 218
+	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -31,31 +31,13 @@ pkgbase = systemd-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = http://www.freedesktop.org/software/systemd/systemd-217.tar.xz
-	source = 0001-nspawn-ignore-EEXIST-when-creating-mount-point.patch
-	source = 0001-sd-dhcp-client-clean-up-raw-socket-sd_event_source-w.patch
-	source = 0001-shared-install-avoid-prematurely-rejecting-missing-u.patch
-	source = 0001-sd-bus-properly-handle-removals-of-non-existing-matc.patch
-	source = 0001-units-don-t-order-journal-flushing-afte-remote-fs.ta.patch
-	source = 0001-units-order-sd-journal-flush-after-sd-remount-fs.patch
-	source = 0001-units-make-systemd-journald.service-Type-notify.patch
-	source = 0001-shutdown-fix-arguments-to-run-initramfs-shutdown.patch
-	source = 0001-udev-hwdb-Change-error-message-regarding-missing-hwd.patch
+	source = http://www.freedesktop.org/software/systemd/systemd-218.tar.xz
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
-	md5sums = e68dbff3cc19f66e341572d9fb2ffa89
-	md5sums = ca9e33118fd8d456563854d95512a577
-	md5sums = ade8c1b5b2c85d0a83b7bcf5aa6d131a
-	md5sums = 7aaf44ce842deb449fca0f2595bbc1e4
-	md5sums = 4adc3ddce027693bafa53089322e859b
-	md5sums = 42ff9d59bb057637355b202157d59991
-	md5sums = 92497d06e0af615be4b368fe615109c0
-	md5sums = a321d62d6ffada9e6976bdd339fa3219
-	md5sums = f72e8d086172177c224f0ce48ef54222
-	md5sums = 6326988822e9d18217525b2cb25cec1d
+	md5sums = 4e2c511b0a7932d7fc9d79822273aac6
 	md5sums = 90ea67a7bb237502094914622a39e281
-	md5sums = 107c489f27c667be4101aecd3369b355
+	md5sums = c9db3010602913559295de3481019681
 	md5sums = bde43090d4ac0ef048e3eaee8202a407
 
 pkgname = systemd-selinux
@@ -89,9 +71,9 @@ pkgname = systemd-selinux
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=217
-	provides = udev=217
-	provides = systemd=217-8
+	provides = systemd-tools=218
+	provides = udev=218
+	provides = systemd=218-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -133,15 +115,15 @@ pkgname = libsystemd-selinux
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=217-8
+	provides = libsystemd=218-1
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=217-8
-	provides = selinux-systemd-sysvcompat=217-8
+	provides = systemd-sysvcompat=218-1
+	provides = selinux-systemd-sysvcompat=218-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
