@@ -9,21 +9,22 @@ pkgdesc='A Moose role for processing command line options'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-builddepends=('perl-module-build-tiny>=0.030')
+builddepends=('perl-module-build-tiny>=0.037')
 depends=('perl>=5.8.9'
-	'perl-getopt-long-descriptive>=0.081'
+	'perl-getopt-long-descriptive>=0.088'
 	'perl-moose>=0.56'
 	'perl-moosex-role-parameterized'
 	'perl-try-tiny')
-# checkdepends=('perl-cpan-meta-check>=0.007'
-#	'perl-module-runtime'
-#	'perl-path-tiny>=0.009'
-#	'perl-test-checkdeps>=0.006'
-#	'perl-test-deep'
-#	'perl-test-fatal>=0.003'
-#	'perl-test-requires' 
-#	'perl-test-trap'
-#	'perl-test-warnings')
+checkdepends=('perl-cpan-meta-check>=0.007'
+	'perl-module-runtime'
+	'perl-path-tiny>=0.009'
+	'perl-test-checkdeps>=0.006'
+	'perl-test-deep'
+	'perl-test-fatal>=0.003'
+	'perl-test-requires' 
+	'perl-test-trap'
+	'perl-test-warnings'
+	'perl-namespace-autoclean')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
@@ -35,10 +36,10 @@ build() {
 	perl Build
 }
 
-# check() {
-#	cd [% distdir %]
-#	perl Build test
-# }
+check() {
+	cd [% distdir %]
+	perl Build test
+}
 
 package() {
 	cd [% distdir %]
