@@ -6,13 +6,13 @@
 
 pkgname=psmisc-selinux
 pkgver=22.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Miscellaneous procfs tools with SELinux support"
 arch=('i686' 'x86_64')
 url="http://psmisc.sourceforge.net/index.html"
 license=('GPL')
 groups=('selinux')
-depends=('ncurses')
+depends=('ncurses' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
