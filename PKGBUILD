@@ -8,13 +8,13 @@
 
 pkgname=shadow-selinux
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('i686' 'x86_64')
 url='http://pkg-shadow.alioth.debian.org/'
 license=('BSD')
 groups=('selinux')
-depends=('bash' 'pam-selinux' 'acl' 'libselinux')
+depends=('bash' 'pam-selinux' 'acl' 'libsemanage')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -89,7 +89,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # license
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/shadow/LICENSE"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # useradd defaults
   install -Dm644 "$srcdir/useradd.defaults" "$pkgdir/etc/default/useradd"
