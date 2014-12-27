@@ -1,7 +1,7 @@
 pkgbase = libx32-glibc
 	pkgdesc = GNU C Library (x32 ABI)
 	pkgver = 2.20
-	pkgrel = 4.1
+	pkgrel = 6.1
 	url = http://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = libx32-glibc
 	source = libx32-glibc.conf
 	md5sums = 948a6e06419a01bd51e97206861595b0
 	md5sums = SKIP
-	md5sums = 8cfa2a0fa2a9aad8b86a138587d6261f
+	md5sums = f7a5faf2911ae7c13f584bd60c802873
 	md5sums = 34a4169d2bdc5a3eb83676a0831aae57
 
 pkgname = libx32-glibc
