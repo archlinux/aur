@@ -4,8 +4,8 @@
 
 _pkgname=libdwarf
 pkgname=${_pkgname}-git
-pkgver=20140910
-pkgrel=2
+pkgver=20141210
+pkgrel=1
 pkgdesc="A library for handling DWARF Debugging Information Format"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
