@@ -2,7 +2,7 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-webkit-git"
-pkgver=0.16.440
+pkgver=0.16.441
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (with webkit support)"
 url="http://psi-plus.com"
@@ -18,13 +18,11 @@ install=psi-plus-git.install
 source=('git://github.com/psi-im/psi.git'
 	'psi-plus::git://github.com/psi-plus/main.git'
 	'git://github.com/psi-im/iris.git'
-	'git://github.com/psi-im/libpsi.git'
-	'revert-align-to-the-right.patch')
+	'git://github.com/psi-im/libpsi.git')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         'de3bd323c940743cc5f0c5dd7ebb90e6')
+	 'SKIP')
 
 pkgver() {
   cd psi-plus
@@ -43,7 +41,7 @@ prepare() {
   git submodule update
 
   # patches from Psi+ project
-  for patch in "$srcdir"/revert-align-to-the-right.patch "$srcdir"/psi-plus/patches/*.diff; do
+  for patch in "$srcdir"/psi-plus/patches/*.diff; do
     echo "* Appling ${patch##*/}"
     patch -p1 -i "$patch"
   done
@@ -64,7 +62,7 @@ build() {
               --libdir=/usr/lib \
               --enable-webkit \
               --enable-plugins \
-              --disable-enchant # enchant spell engine doesn't support multi-language spelling, use aspell instead
+              --disable-enchant
   make
 }
 
