@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom1
-pkgver=1.8.07
+pkgver=1.8.09
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (legacy version)."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
-md5sums=('a73d1e00f0e884985cb373d315e276c8'
+md5sums=('ddc1dd8aef254312031184be6dec21e6'
          'eed301389f533effbd127681a3ddc2c5'
          '3ee3d6bb1f777445438bc40ae81a95df'
          '4778bb22190c445a4ed764c64432de12'
