@@ -2,7 +2,7 @@
 
 pkgname=omegat
 pkgver=3.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform CAT tool application, written in Java"
 arch=('any')
 url="http://www.omegat.org/en/omegat.html"
@@ -46,6 +46,10 @@ package() {
 #removing obsolete files
   rm -rf "${pkgdir}"/usr/share/java/$pkgname/{*.{zip,desktop,sh,kaptn},OmegaT,OmegaT.bat,icons}
   rm "${pkgdir}"/usr/share/java/$pkgname/native/*.{dll,dylib}
-[[ "$CARCH" = "i686" ]] && rm "${pkgdir}"/usr/share/java/$pkgname/native/libhunspell-linux64.so
-[[ "$CARCH" = "x86_64" ]] && rm "${pkgdir}"/usr/share/java/$pkgname/native/libhunspell-linux32.so
+
+if [[ "$CARCH" == "x86_64" ]]; then
+  rm "${pkgdir}"/usr/share/java/$pkgname/native/libhunspell-linux32.so
+else
+  rm "${pkgdir}"/usr/share/java/$pkgname/native/libhunspell-linux64.so
+fi
 }
