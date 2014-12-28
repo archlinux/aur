@@ -4,7 +4,7 @@
 
 pkgname=cool-retro-term-git
 pkgrel=1
-pkgver=0.9.r336.16768cf
+pkgver=1.0.0RC1.r0.g9364aa3
 pkgdesc='A good looking terminal emulator which mimics the old cathode display'
 arch=('i686' 'x86_64')
 url='https://github.com/Swordfish90/cool-retro-term'
@@ -29,8 +29,7 @@ prepare() {
 pkgver () {
   cd "$srcdir/${pkgname%-*}"
 
-  local v_ver=$(awk -F '"' '/version:/ {print $2}' app/qml/ApplicationSettings.qml)
-  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed -r 's/^v//;s/-RC/RC/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
