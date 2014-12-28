@@ -11,7 +11,7 @@ arch=(any)
 url="http://pypi.python.org/pypi/setuptools-git"
 license=('BSD')
 depends=('python' 'python-setuptools' 'git')
-source=("http://pypi.python.org/packages/source/s/setuptools-git/setuptools-git-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/s/setuptools-git/setuptools-git-$pkgver.tar.gz")
 md5sums=('7b5967e9527c789c3113b07a1f196f6e')
 
 package() {
