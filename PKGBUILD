@@ -2,7 +2,7 @@
 
 pkgname=django-1.4
 pkgver=1.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
 license=('BSD')
@@ -12,6 +12,7 @@ makedepends=('python2-setuptools')
 optdepends=('mysql-python: for MySQL backend'
             'python2-psycopg2: for PostgreSQL backend')
 conflicts=('python2-django')
+provides=('python2-django=1.4.16')
 source=(https://www.djangoproject.com/m/releases/1.4/Django-$pkgver.tar.gz)
 sha256sums=('482315cf32c65ed4a4ee2de257d453430d48ffca9a01b17d984ee0d67354ad12')
 

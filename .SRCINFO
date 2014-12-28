@@ -1,7 +1,7 @@
 pkgbase = django-1.4
 	pkgdesc = A high-level Python Web framework that encourages rapid development and clean design
 	pkgver = 1.4.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.djangoproject.com/
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = django-1.4
 	depends = python2
 	optdepends = mysql-python: for MySQL backend
 	optdepends = python2-psycopg2: for PostgreSQL backend
+	provides = python2-django=1.4.16
 	conflicts = python2-django
 	source = https://www.djangoproject.com/m/releases/1.4/Django-1.4.16.tar.gz
 	sha256sums = 482315cf32c65ed4a4ee2de257d453430d48ffca9a01b17d984ee0d67354ad12
