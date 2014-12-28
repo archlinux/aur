@@ -3,7 +3,7 @@
 pkgname=omegat-beta
 _pkgname=omegat
 pkgver=3.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Beta version of a multiplatform CAT tool application, written in Java"
 arch=('any')
 url="http://www.omegat.org/en/omegat.html"
@@ -46,8 +46,12 @@ package() {
   chmod 755 "${pkgdir}"/usr/bin/${_pkgname}
 
 #removing obsolete files
-  rm -rf "${pkgdir}"/usr/share/java/$_pkgname/{*.{zip,desktop,sh,kaptn},OmegaT,OmegaT.bat,icons}
-  rm "${pkgdir}"/usr/share/java/$_pkgname/native/*.{dll,dylib}
-[[ "$CARCH" = "i686" ]] && rm "${pkgdir}"/usr/share/java/$_pkgname/native/libhunspell-linux64.so
-[[ "$CARCH" = "x86_64" ]] && rm "${pkgdir}"/usr/share/java/$_pkgname/native/libhunspell-linux32.so
+  rm -rf "${pkgdir}"/usr/share/java/${_pkgname}/{*.{zip,desktop,sh,kaptn},OmegaT,OmegaT.bat,icons}
+  rm "${pkgdir}"/usr/share/java/${_pkgname}/native/*.{dll,dylib}
+
+if [[ "$CARCH" == "x86_64" ]]; then
+  rm "${pkgdir}"/usr/share/java/${_pkgname}/native/libhunspell-linux32.so
+else
+  rm "${pkgdir}"/usr/share/java/${_pkgname}/native/libhunspell-linux64.so
+fi
 }
