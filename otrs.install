@@ -1,54 +1,20 @@
 post_install() {
+  getent passwd otrs > /dev/null || useradd -g http -d /usr/share/webapps/otrs otrs -M -N > /dev/null
   /usr/share/webapps/otrs/bin/./otrs.SetPermissions.pl \
-    --otrs-user=http \
-    --otrs-group=http \
-    --web-user=http \
-    --web-group=http \
+    --otrs-user=otrs  \
+    --web-group=http  \
       /usr/share/webapps/otrs > /dev/null
-
-cat << EOM
-
--------------------------------------------------------------------------------------
-Manual post-installation steps:
--------------------------------------------------------------------------------------
-Read /usr/share/webapps/otrs/INSTALL.md
-     /usr/share/webapps/otrs/README.database.md
-     /usr/share/webapps/otrs/README.webserver.md
--------------------------------------------------------------------------------------
-Extentions ITSM     is located /usr/share/webapps/otrs/extentions/itsm
-Extentions Packages is located /usr/share/webapps/otrs/extentions/packages
--------------------------------------------------------------------------------------
-
-EOM
+  chmod 2775 /usr/share/webapps/otrs
 }
 
-pre_upgrade(){
-  if [ ! -h /usr/share/webapps/otrs/Kernel/Config.pm ]
-  then
-    mkdir -p /etc/webapps/otrs
-    cp /usr/share/webapps/otrs/Kernel/Config.pm /etc/webapps/otrs/Config.pm
-    chown http:http -R /etc/webapps/otrs
-  fi
+post_remove() {
+   userdel -rf otrs
 }
 
 post_upgrade() {
   /usr/share/webapps/otrs/bin/./otrs.SetPermissions.pl \
-    --otrs-user=http \
-    --otrs-group=http \
-    --web-user=http \
-    --web-group=http \
+    --otrs-user=otrs  \
+    --web-group=http  \
       /usr/share/webapps/otrs > /dev/null
-
-cat << EOM
-
--------------------------------------------------------------------------------------
-Manual post-upgrade steps:
--------------------------------------------------------------------------------------
-Read /usr/share/webapps/otrs/UPGRADING.md
--------------------------------------------------------------------------------------
-Extentions ITSM     is located /usr/share/webapps/otrs/extentions/itsm
-Extentions Packages is located /usr/share/webapps/otrs/extentions/packages
--------------------------------------------------------------------------------------
-
-EOM
+  chmod 2775 /usr/share/webapps/otrs
 }
