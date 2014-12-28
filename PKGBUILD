@@ -5,7 +5,8 @@ pkgrel=1
 pkgdesc="A simple curses interface for accessing Wikipedia."
 arch=('any')
 url="https://github.com/ids1024/wikicurses"
-license=('mit')
+license=('MIT')
+makedepends=('git')
 depends=('python' 'python-urwid' 'python-beautifulsoup4')
 backup=('etc/wikicurses.conf')
 source=('git://github.com/ids1024/wikicurses.git')
@@ -20,5 +21,6 @@ pkgver () {
 package() {
   cd "$srcdir/$_gitname"
   python setup.py install --root="$pkgdir"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/wikicurses-git/LICENSE"
 }
