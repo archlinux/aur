@@ -2,7 +2,7 @@
 
 _pkgname=mopidy-notifier
 pkgname=${_pkgname}-git
-pkgver=0.r40.357f92d
+pkgver=0.r45.df9032f
 pkgrel=1
 pkgdesc='Mopidy extension for showing song changes in notifications.'
 arch=('any')
@@ -17,11 +17,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  wget -O - https://github.com/sauberfred/mopidy-notifier/pull/3.patch | git am
 }
 
 package() {
