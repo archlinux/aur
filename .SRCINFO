@@ -1,6 +1,6 @@
 pkgbase = haskell-fclabels
 	pkgdesc = First class accessor labels.
-	pkgver = 2.0.0.5
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/fclabels
 	install = haskell-fclabels.install
@@ -12,8 +12,8 @@ pkgbase = haskell-fclabels
 	depends = haskell-template-haskell>=2.5.0.0
 	depends = haskell-transformers>=0.2.2.0
 	options = strip
-	source = http://hackage.haskell.org/packages/archive/fclabels/2.0.0.5/fclabels-2.0.0.5.tar.gz
-	sha256sums = ab6149f16dd52efa91a273201c58b4343aca3c2ce3ca210bd801a56ae65ee0f5
+	source = http://hackage.haskell.org/packages/archive/fclabels/2.0.2/fclabels-2.0.2.tar.gz
+	sha256sums = b7bd4e6aad908dd2d6c6872a5d3f0b5f538d2fe69e42008025e4af88a8690a81
 
 pkgname = haskell-fclabels
 
