@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-editor-qt-git
-pkgver=r308.5b413b5
+pkgver=r316.155aaf6
 pkgrel=1
 pkgdesc="EasyRPG's Game Editor (QT, development version)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ package () {
   cd ${pkgname%-*}/bin
 
   # binary
-  install -Dm755 EasyRPG-Editor "$pkgdir"/usr/bin/${pkgname%-*}
+  install -Dm755 easyrpg-editor "$pkgdir"/usr/bin/${pkgname%-*}
   # templates
   install -d "$pkgdir"/usr/share/${pkgname%-*}/templates
   install -m644 templates/* "$pkgdir"/usr/share/${pkgname%-*}/templates
