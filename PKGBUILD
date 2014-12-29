@@ -3,14 +3,14 @@
 _python=python
 _pkgname=python-efl
 pkgname=$_python-efl-git
-pkgver=1.10.99a654.fcbba66
+pkgver=1.12.99a720.b642c60
 pkgrel=1
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries - Development Version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
 depends=('elementary>=1.10.99' "$_python-dbus")
-makedepends=('git' "${_python/p/c}")
+makedepends=('git' "${_python/p/c}<=0.21")
 provides=("${pkgname%-*}=$pkgver")
 conflicts=("${pkgname%-*}")
 source=("git://git.enlightenment.org/bindings/python/$_pkgname.git")
@@ -35,5 +35,5 @@ package() {
 
 # install text files
   install -d "$pkgdir/usr/share/doc/${pkgname%-*}/"
-  install -m644 -t "$pkgdir/usr/share/doc/${pkgname%-*}/" AUTHORS README.rst changes.html
+  install -m644 -t "$pkgdir/usr/share/doc/${pkgname%-*}/" AUTHORS README changes.html
 }
