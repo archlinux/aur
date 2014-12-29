@@ -1,7 +1,7 @@
 _hkgname=tagged
 pkgname=haskell-${_hkgname}
-pkgver=0.7
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Provides newtype wrappers for phantom types to avoid unsafely passing dummy arguments"
 url="http://hackage.haskell.org/package/tagged"
 license=('BSD3')
@@ -10,7 +10,7 @@ makedepends=('ghc')
 depends=('haskell-base')
 options=('strip' 'staticlibs')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('f51b0ff097dadfa0508d4fff889f96e274743876c33f13c08335aca80d85e8bc')
+sha256sums=('eb544fc509fbb98100500f9c61617c0afee32854a6fc88bd873d017e34ffcb04')
 install="install"
 
 build() {

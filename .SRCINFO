@@ -1,7 +1,7 @@
 pkgbase = haskell-tagged
 	pkgdesc = Provides newtype wrappers for phantom types to avoid unsafely passing dummy arguments
-	pkgver = 0.7
-	pkgrel = 2
+	pkgver = 0.7.3
+	pkgrel = 1
 	url = http://hackage.haskell.org/package/tagged
 	install = install
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = haskell-tagged
 	depends = haskell-base
 	options = strip
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/tagged/0.7/tagged-0.7.tar.gz
-	sha256sums = f51b0ff097dadfa0508d4fff889f96e274743876c33f13c08335aca80d85e8bc
+	source = http://hackage.haskell.org/packages/archive/tagged/0.7.3/tagged-0.7.3.tar.gz
+	sha256sums = eb544fc509fbb98100500f9c61617c0afee32854a6fc88bd873d017e34ffcb04
 
 pkgname = haskell-tagged
 
