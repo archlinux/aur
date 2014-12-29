@@ -7,7 +7,7 @@
 #
 
 pkgname=spdlog-git
-pkgver=.545.267c9c6
+pkgver=0.545.267c9c6
 pkgrel=1
 pkgdesc='Super fast C++ logging library'
 arch=('any')
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/spdlog"
-  printf "%s.%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "${_pkgver:=0}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = spdlog-git
 	pkgdesc = Super fast C++ logging library
-	pkgver = .545.267c9c6
+	pkgver = 0.545.267c9c6
 	pkgrel = 1
 	url = https://github.com/gabime/spdlog
 	arch = any
