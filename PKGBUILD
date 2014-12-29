@@ -9,7 +9,7 @@ pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries - Devel
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
-depends=('elementary>=1.10.99' "$_python-dbus")
+depends=("elementary>=${pkgver%%a*}" "$_python-dbus")
 makedepends=('git' "${_python/p/c}<=0.21")
 provides=("${pkgname%-*}=$pkgver")
 conflicts=("${pkgname%-*}")
