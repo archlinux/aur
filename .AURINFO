@@ -1,0 +1,16 @@
+pkgbase = cloog
+	pkgdesc = Library that generates loops for scanning polyhedra
+	pkgver = 0.18.1
+	pkgrel = 3
+	url = http://www.bastoul.net/cloog/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = isl
+	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.1.tar.gz
+	source = cloog-0.18.1-isl-compat.patch
+	md5sums = e34fca0540d840e5d0f6427e98c92252
+	md5sums = 976c999b44c6e364455a670d12523242
+
+pkgname = cloog
+
