@@ -2,17 +2,17 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 pkgname=mailgraph
 pkgver=1.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A very simple mail statistics RRDtool frontend for Postfix and Sendmail"
 url="http://mailgraph.schweikert.ch/"
 arch=('any')
 license=('GPL')
 options=(emptydirs)
-depends=('rrdtool' 'perl-file-tail' 'syslog-ng')
+depends=('rrdtool' 'perl-file-tail')
 source=("http://mailgraph.schweikert.ch/pub/$pkgname-$pkgver.tar.gz"
 mailgraph.service)
 md5sums=('0f0ae91968ea7ae0c1d14985c560530b'
-         '0517acd06d86112806fd9ac81c2d6e0e')
+         '92d411ab7f14083a77faa07b2ade653f')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
