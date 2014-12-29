@@ -2,19 +2,19 @@
 # Contributor: DonOregano <lars@foldspace.nu>
 
 pkgname=subgit
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Provides smooth Subversion to Git migration and synchronisation"
 arch=('any')
 url="http://subgit.com"
 license=('custom')
 depends=('bash' 'java-runtime>=5')
 optdepends=('subversion' 'git')
-source=("$url/download/$pkgname-$pkgver.zip")
-sha256sums=('6266c05aa212701c7bb605d44daa94b805aedbfa6ebd222b2c74d8dc232c66f6')
+source=("http://old.subgit.com/download/subgit-$pkgver.zip")
+sha256sums=('691891e20d20f494a95c1718fc9670a5effe40654dd7313a8854584bfbe13ba0')
 
 package() {
-  cd $pkgname-$pkgver
+  cd subgit-$pkgver
 
   # folders
   install -d "$pkgdir"/usr/{bin,share/{{licenses,doc}/subgit,subgit/lib}}
