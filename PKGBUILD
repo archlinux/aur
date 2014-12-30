@@ -3,7 +3,7 @@
 
 pkgname="phpcpd"
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Copy/Paste Detector (CPD) for PHP code."
 url="https://github.com/sebastianbergmann/phpcpd"
 license="BSD"
@@ -13,6 +13,7 @@ source=(
   "https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
   "LICENSE"
 )
+install="${pkgname}.install"
 sha1sums=(
   "f9fb98b688092603adff5ca0f1264fcf77674f90"
   "6e7d5c0718a2559eb09bd1456606cd1d5ac90dc7"
