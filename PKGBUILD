@@ -12,8 +12,8 @@ arch=('any')
 url="https://github.com/insanum/gcalcli"
 license=('MIT')
 depends=('python2-google-api-python-client' 'python2-dateutil' 'python2-gflags')
-optdepends=('python2-vobject: For ics/vcal importing'
-            'python2-parsedatetime: For fuzzy dates/times like "now", "today",
+optdepends=('python2-vobject: for ics/vcal importing'
+            'python2-parsedatetime: for fuzzy dates/times like "now", "today",
               "eod tomorrow", etc.')
 source=("https://github.com/insanum/$pkgname/archive/v$pkgver.tar.gz"
         'LICENSE.gcalcli')
