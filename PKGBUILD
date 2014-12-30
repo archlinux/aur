@@ -3,7 +3,7 @@
 
 pkgname="phpdcd"
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Dead Code Detector (DCD) for PHP code."
 url="https://github.com/sebastianbergmann/phpdcd"
 license="BSD"
@@ -13,6 +13,7 @@ source=(
   "https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
   "LICENSE"
 )
+install="${pkgname}.install"
 sha1sums=(
   "f2052a9c143d79057257497e5fcf3c7275ebd065"
   "11946e2ec7349724cf1cd711cd7fddf2dae82475"
