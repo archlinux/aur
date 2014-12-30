@@ -1,0 +1,12 @@
+pkgbase = autorandr-git
+	pkgdesc = Auto-detect connected display hardware and load appropriate X11 setup using xrandr or disper. Formerly auto-disper.
+	pkgver = 20120301
+	pkgrel = 1
+	url = http://github.com/wertarbyte/autorandr
+	arch = any
+	license = None
+	optdepends = disper
+	conflicts = auto-disper-git
+
+pkgname = autorandr-git
+
