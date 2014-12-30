@@ -4,14 +4,14 @@
 
 pkgbase=redshift-git
 pkgname=('redshift-git' 'redshift-gtk-git')
-pkgver=1.9.1.r24.g4697c37
+pkgver=1.9.1.r91.g59023d8
 pkgrel=1
 pkgdesc='Adjusts the color temperature of your screen according to your surroundings (development version)'
 arch=('i686' 'x86_64')
 url='http://jonls.dk/redshift/'
 license=('GPL3')
 depends=('libxxf86vm' 'libdrm' 'libxcb' 'geoclue')
-makedepends=('git' 'intltool' 'python') # python needed for redshift-gtk
+makedepends=('git' 'intltool' 'python')
 source=(redshift::"git+https://github.com/jonls/redshift.git")
 md5sums=('SKIP')
 
@@ -24,7 +24,8 @@ build() {
   cd redshift
 
   ./bootstrap
-  ./configure --prefix=/usr --enable-randr --enable-drm
+  ./configure --prefix=/usr --enable-randr --enable-drm --enable-vidmode --enable-geoclue \
+    --with-systemduserunitdir=/usr/lib/systemd/user
   make
 }
 
@@ -36,7 +37,7 @@ package_redshift-git() {
 
   # remove duplicate redshift-gtk stuff
   rm -rf "$pkgdir"/usr/{bin/redshift-gtk,lib/{python*,systemd/user/redshift-gtk.service}}
-  rm -rf "$pkgdir"/usr/share/{applications,icons}
+  rm -rf "$pkgdir"/usr/share/{applications,icons,appdata}
 }
 
 package_redshift-gtk-git() {
