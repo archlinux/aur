@@ -1,4 +1,4 @@
-# Maintainer: Chris Warrick <chris@chriswarrick.com>
+# Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=mkvimball
 pkgver=1
 pkgrel=1
