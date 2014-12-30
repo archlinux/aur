@@ -3,7 +3,7 @@
 
 pkgname="phpmd"
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Takes a given PHP source code base and look for several potential problems within that source."
 url="http://phpmd.org/"
 license="BSD"
@@ -13,7 +13,7 @@ source=(
   "${pkgname}-${pkgver}.phar::http://static.phpmd.org/php/${pkgver}/${pkgname}.phar"
   "LICENSE"
 )
-install="$pkgname.install"
+install="${pkgname}.install"
 sha1sums=(
   "a390c80f8108a07fb2d2bb91dfc175fa3a44371c"
   "49a94fd699270de8599423fd3302cb6880f9c224"
