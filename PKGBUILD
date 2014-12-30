@@ -25,8 +25,6 @@ package() {
   cd "$srcdir/rcairo-$pkgver"
 
   make -j1 DESTDIR="$pkgdir" install # Workaround installation failure with -j1
-  install -Dm644 ext/cairo/cairo.so \
-    "$pkgdir/usr/lib/ruby/vendor_ruby/2.1.0/$CARCH-linux/cairo.so"
 }
 
 # vim:set ts=2 sw=2 et:
