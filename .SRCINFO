@@ -1,0 +1,23 @@
+pkgbase = nxengine
+	pkgdesc = A clone/engine-rewrite of the classic jump-and-run platformer Cave Story/Doukutsu Monogatari
+	pkgver = 1.0.0.6
+	pkgrel = 1
+	url = http://nxengine.sourceforge.net/
+	install = nxengine.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_ttf
+	source = http://nxengine.sourceforge.net/dl/nx-src-1006.tar.bz2
+	source = http://www.cavestory.org/downloads/cavestoryen.zip
+	source = nxengine.desktop
+	source = nxengine.sh
+	source = nxengine.png
+	sha256sums = cf9cbf15dfdfdc9936720a714876bb1524afbd2931e3eaa4c89984a40b21ad68
+	sha256sums = aa87fa30bee9b4980640c7e104791354e0f1f6411ee0d45a70af70046aa0685f
+	sha256sums = e9fa26e7e893d557f7805965e8d60ae7d4478d3b4ebb0d1e50bcfa232046cf0b
+	sha256sums = a77974864a17e69881e14567a899318b32c8b26cf54e9df3bf47803750afe91f
+	sha256sums = d6d8866939c10342bd3feebef311648586bed38f0390acbe16fd42f5240ff4e7
+
+pkgname = nxengine
+

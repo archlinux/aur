@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=NXEngine
+Comment=A clone/engine-rewrite of the classic jump-and-run platformer Cave Story/Doukutsu Monogatari
+Exec=nxengine
+Icon=nxengine
+Terminal=false
+Categories=Game;AdventureGame;

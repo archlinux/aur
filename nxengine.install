@@ -1,0 +1,14 @@
+
+post_install() {
+  echo "To be able to save files without elevated rights, a jail folder (~/.nxengine) is"
+  echo "used. Therefore, you do not have to delete Doukutsu.exe after the first run."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "You may safely delete the '~/.nxengine' directory containing the config/save"
+  echo "and extracted data files, if you do not want to preserve them."
+}
