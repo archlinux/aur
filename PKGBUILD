@@ -1,13 +1,13 @@
 # Maintainer: Ian D, Scott <ian@perebruin.com>
 pkgname=wikicurses-git
-pkgver=r311.c784f33
+pkgver=r320.f052bb8
 pkgrel=1
 pkgdesc="A simple curses interface for accessing Wikipedia."
 arch=('any')
 url="https://github.com/ids1024/wikicurses"
 license=('MIT')
 makedepends=('git')
-depends=('python' 'python-urwid' 'python-beautifulsoup4')
+depends=('python' 'python-urwid' 'python-beautifulsoup4' 'python-lxml')
 backup=('etc/wikicurses.conf')
 source=('git://github.com/ids1024/wikicurses.git')
 md5sums=('SKIP')
