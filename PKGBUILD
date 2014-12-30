@@ -17,19 +17,19 @@ replaces=('libclc')
 conflicts=('libclc')
 
 pkgver() {
-  cd libclc
+  cd "${srcdir}/libclc"
   svnversion | tr -d [A-z]
 }
 
 prepare() {
-  cd libclc
+  cd "${srcdir}/libclc"
 
   # http://www.pcc.me.uk/pipermail/libclc-dev/2014-December/000794.html
   sed -i "s:metadata ::g" r600/lib/workitem/get_work_dim.ll
 }
 
 build() {
-  cd libclc
+  cd "${srcdir}/libclc"
 
   sed -i 's/"python < $in >/sys.executable + " < $in >/g' configure.py
 
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  cd libclc
+  cd "${srcdir}/libclc"
 
   make install DESTDIR="${pkgdir}"
   install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
