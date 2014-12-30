@@ -1,0 +1,14 @@
+pkgbase = trashman
+	pkgdesc = A Python trash manager.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/Kwpolska/trashman
+	arch = any
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/t/trashman/trashman-1.0.4.tar.gz
+	md5sums = 7ffe7357547132883db1da39ba0d5103
+
+pkgname = trashman
+
