@@ -7,24 +7,24 @@
 pkgname=alephone
 _pkgdate=20140104
 pkgver=1.1_$_pkgdate
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="http://marathon.sourceforge.net/"
 license=('GPL3')
 depends=('sdl_ttf' 'sdl_image' 'sdl_net' 'libmad' 'glu' 'mesa' 'zziplib'
-         'ffmpeg' 'ffmpeg-compat')
+         'ffmpeg')
 # todo: figure out, if they are all compatible
 optdepends=('alephone-emr: community-made scenario'
-            'alephone-eternalx: community-made scenario'
-            'alephone-evil: community-made scenario'
+            'alephone-eternalx: community-made scenario' # ok!
+            'alephone-evil: community-made scenario' # ok!
             'alephone-infinity: original data for Marathon Infinity' # ok!
             'alephone-marathon: M1A1 data converted for AlephOne' # ok!
             'alephone-marathon2: original data for Marathon 2: Durandal' # ok!
             'alephone-red: community-made scenario'
             'alephone-rubiconx: community-made scenario'
             'alephone-tempus_irae: community-made scenario')
-makedepends=('boost' 'lua')
+makedepends=('boost' 'lua' 'icoutils')
 source=("http://downloads.sourceforge.net/marathon/AlephOne-$_pkgdate.tar.bz2"
         "http://downloads.sourceforge.net/marathon/README.md"
         "$pkgname-r5002-remove-deprecated-ffmpeg-quality-setting.diff"
@@ -49,6 +49,13 @@ prepare() {
 
   # lowercase for (folder) name
   sed "s|PACKAGE='AlephOne'|PACKAGE='alephone'|g" -i configure
+
+  # convert the windows icons
+  cd Resources/Windows
+  icotool -x -w 48 alephone.ico -o ../alephone.png
+  icotool -x -w 48 marathon.ico -o ../alephone-marathon.png
+  icotool -x -w 48 marathon2.ico -o ../alephone-marathon2.png
+  icotool -x -w 48 marathon-infinity.ico -o ../alephone-infinity.png
 }
 
 build() {
@@ -62,6 +69,11 @@ package() {
   cd AlephOne-$_pkgdate
 
   make DESTDIR="$pkgdir/" install
+
+  # icons
+  install -d "$pkgdir"/usr/share/icons
+  install -m644 Resources/*.png "$pkgdir"/usr/share/icons
+
   # docs
   install -Dm644 ../README.md "$pkgdir"/usr/share/doc/$pkgname/README-1.1.md
   install -m644 README docs/*.html "$pkgdir"/usr/share/doc/$pkgname
