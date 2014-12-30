@@ -1,0 +1,94 @@
+pkgbase = avidemux-git
+	pkgdesc = A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)
+	pkgver = 2.6.10.150607.4c23a42c229
+	pkgrel = 1
+	url = http://www.avidemux.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = subversion
+	makedepends = yasm
+	makedepends = aften
+	makedepends = dcaenc
+	makedepends = faac
+	makedepends = faad2
+	makedepends = fribidi
+	makedepends = jack2
+	makedepends = lame
+	makedepends = libdca
+	makedepends = libpulse
+	makedepends = libva
+	makedepends = libvpx
+	makedepends = libx264
+	makedepends = opencore-amr
+	makedepends = twolame
+	makedepends = xvidcore
+	makedepends = x265
+	makedepends = sqlite
+	makedepends = qt4
+	makedepends = glu
+	makedepends = qt5-script
+	makedepends = qt5-tools
+	makedepends = libxv
+	source = avidemux::git+https://github.com/mean00/avidemux2.git
+	sha1sums = SKIP
+
+pkgname = avidemux-core-git
+	pkgdesc = Core libs for Avidemux. (GIT version)
+	depends = aften
+	depends = dcaenc
+	depends = faac
+	depends = faad2
+	depends = fribidi
+	depends = jack2
+	depends = lame
+	depends = libdca
+	depends = libpulse
+	depends = libva
+	depends = libvpx
+	depends = opencore-amr
+	depends = twolame
+	depends = xvidcore
+	depends = sqlite
+	depends = libx264
+	depends = x265
+	optdepends = avidemux-qt4-git: a Qt4 GUI for Avidemux. (GIT Version) (install from "avidemux-git" package)
+	optdepends = avidemux-qt5-git: a Qt5 GUI for Avidemux. (GIT Version) (install from "avidemux-git" package)
+	optdepends = avidemux-gtk-git: a Gtk3 GUI for Avidemux. (GIT Version) (install from "avidemux-git" package)
+	optdepends = avidemux-cli-git: a CLI frontend for Avidemux. (GIT Version) (install from "avidemux-git" package)
+	optdepends = wine: AVSload
+	provides = avidemux-core-git=2.6.10.150607.4c23a42c229
+	provides = avidemux-core
+
+pkgname = avidemux-qt4-git
+	pkgdesc = Qt4 GUI for Avidemux. (GIT version)
+	install = avidemux.install
+	depends = avidemux-core-git=2.6.10.150607.4c23a42c229
+	depends = qt4
+	depends = glu
+	depends = libx264
+	depends = x265
+	provides = avidemux-qt4-git=2.6.10.150607.4c23a42c229
+	conflicts = avidemux-qt4
+
+pkgname = avidemux-qt5-git
+	pkgdesc = Qt5 GUI for Avidemux. (GIT version)
+	install = avidemux.install
+	depends = avidemux-core-git=2.6.10.150607.4c23a42c229
+	depends = qt5-script
+	depends = libxv
+	depends = desktop-file-utils
+	depends = libx264
+	depends = x265
+	provides = avidemux-qt5-git=2.6.10.150607.4c23a42c229
+	conflicts = avidemux-qt5
+
+pkgname = avidemux-cli-git
+	pkgdesc = CLI frontend for Avidemux. (GIT version)
+	depends = avidemux-core-git=2.6.10.150607.4c23a42c229
+	provides = avidemux-cli-git=2.6.10.150607.4c23a42c229
+	provides = avidemux-cli
+	conflicts = avidemux-cli
+
