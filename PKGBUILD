@@ -1,31 +1,40 @@
-# Maintainer: Ng Oon-Ee <ngoonee.talk@gmail.com>
-# Contributor (auto-disper-git): Byron Clark <byron@theclarkfamily.name>
-pkgname=autorandr-git
-pkgver=20120301
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
+# Contributor: Byron Clark <byron@theclarkfamily.name> (auto-disper-git)
+# Contributor: phillipberndt (maintainer of the current autorandr)
+# Contributor: wertarbyte (original author of auto-disper and autorandr)
+
+_pkgname=autorandr
+pkgname="$_pkgname-git"
+pkgver=r96.8429886
 pkgrel=1
-pkgdesc="Auto-detect connected display hardware and load appropriate X11 setup using xrandr or disper. Formerly auto-disper."
-url="http://github.com/wertarbyte/autorandr"
-arch=('any')
-license=('None')
-optdepends=('disper')
-conflicts=('auto-disper-git')
-makdepends=('git')
+pkgdesc="Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr or disper. Formerly autodisper."
+arch=('i686' 'x86_64')
+url="https://github.com/phillipberndt/$_pkgname"
+license=('GPL')
+depends=()
+makedepends=('git')
+optdepends=('disper' 'pm-utils')
+provides=("$_pkgname")
+conflicts=(
+    "$_pkgname"
+    'autorandr-asch-git'
+    'autorandr-phillipberndt-git'
+)
+source=("$_pkgname"::"git+https://github.com/phillipberndt/$_pkgname.git")
+md5sums=('SKIP')
 
-_gitroot="http://github.com/wertarbyte/autorandr.git"
-_gitname=autorandr
-         
-build() {
-  cd ${srcdir}
-  
-  if [ -d ${_gitname} ]; then
-    cd ${_gitname} && git pull origin
-  else
-    git clone ${_gitroot} ${_gitname}
-  fi
-
-  install -D -m 0755 ${srcdir}/${_gitname}/autorandr ${pkgdir}/usr/bin/autorandr
-  ln -s /usr/bin/autorandr ${pkgdir}/usr/bin/auto-disper
-  install -D -m 0755 ${srcdir}/${_gitname}/pm-utils/40autorandr ${pkgdir}/etc/pm/sleep.d/40autorandr
-  install -D -m 0755 ${srcdir}/${_gitname}/bash_completion/autorandr ${pkgdir}/etc/bash_completion.d/autorandr
+pkgver() {
+    cd "$_pkgname"
+    (
+        set -o pipefail
+        git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
-# vim: set ft=sh ts=2 sw=2 et:
+
+package() {
+    cd "$_pkgname"
+    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" hotplug
+}
