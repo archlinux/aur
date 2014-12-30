@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!vapoursynth-editor-git.install
+!vsedit.desktop
