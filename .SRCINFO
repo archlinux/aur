@@ -1,0 +1,14 @@
+pkgbase = ob-autostart
+	pkgdesc = A simple autostart application for Openbox
+	pkgver = 1
+	pkgrel = 3
+	url = http://crunchbanglinux.org/forums/topic/2614/
+	arch = any
+	license = GPL2
+	depends = python
+	depends = pygtk
+	source = ob-autostart
+	md5sums = 7e19c8d8c02f296e7235e2dbe31b7b00
+
+pkgname = ob-autostart
+
