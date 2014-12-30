@@ -156,9 +156,9 @@ package_mesa-git () {
  
   install -v -m755 -d "${pkgdir}/usr/lib/mesa"
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
-  mv -v "${pkgdir}"/usr/lib/libGL.so*     "${pkgdir}/usr/lib/mesa/"
-  mv -v "${pkgdir}"/usr/lib/libEGL.so*    "${pkgdir}/usr/lib/mesa/"
-  mv -v "${pkgdir}"/usr/lib/libGLES*.so*  "${pkgdir}/usr/lib/mesa/"
+  mv -v "${pkgdir}"/usr/lib/libGL.so*    "${pkgdir}/usr/lib/mesa/"
+  mv -v "${pkgdir}"/usr/lib/libEGL.so*   "${pkgdir}/usr/lib/mesa/"
+  mv -v "${pkgdir}"/usr/lib/libGLES*.so* "${pkgdir}/usr/lib/mesa/"
 
   install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa"
   install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa/"
@@ -189,9 +189,9 @@ package_mesa-libgl-git () {
   ln -sfv libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
   ln -sfv libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so"
 
-  ln -sfv /usr/lib/mesa/libGLESv2.so.2.0.0	"${pkgdir}/usr/lib/libGLESv2.so.2.0.0"
-  ln -sfv libGLESv2.so.2.0.0			"${pkgdir}/usr/lib/libGLESv2.so.2"
-  ln -sfv libGLESv2.so.2.0.0			"${pkgdir}/usr/lib/libGLESv2.so"
+  ln -sfv /usr/lib/mesa/libGLESv2.so.2.0.0 "${pkgdir}/usr/lib/libGLESv2.so.2.0.0"
+  ln -sfv libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so.2"
+  ln -sfv libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so"
 
   install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-libgl"
   install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-libgl/"
