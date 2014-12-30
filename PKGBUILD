@@ -1,4 +1,4 @@
-# Maintainer: Chris Warrick <chris@chriswarrick.com>
+# Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=pkgbuilder-git
 _pyname=pkgbuilder
 _gitname=pkgbuilder
