@@ -1,0 +1,16 @@
+pkgbase = libsnl-svn
+	pkgdesc = libSNL is a library of routines used for the manipulation of NURBS curves and surfaces.
+	pkgver = 18
+	pkgrel = 4
+	url = http://libsnl.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	provides = libsnl
+	conflicts = libsnl
+	source = libsnl::svn://svn.code.sf.net/p/libsnl/code/trunk
+	md5sums = SKIP
+
+pkgname = libsnl-svn
+
