@@ -1,0 +1,22 @@
+pkgbase = lxnstack
+	pkgdesc = A program usefull to align and stack astronomical images
+	pkgver = 1.4.4
+	pkgrel = 3
+	url = http://sourceforge.net/p/lxnstack/wiki/Home/
+	install = lxnstack.install
+	arch = any
+	license = GPL3
+	depends = python2-scipy
+	depends = python2-pyqt4
+	depends = opencv
+	depends = python2-pillow
+	depends = v4l-utils
+	optdepends = python2-astropy: to read/write FITS file
+	provides = lxnstack
+	conflicts = lxnstack
+	options = docs
+	source = http://master.dl.sourceforge.net/project/lxnstack/tarballs/lxnstack-1.4.4.tar.gz
+	sha256sums = d8eec139b3b9006e82b6e78fb18b47ce255155a6022245225a64507ee9b49675
+
+pkgname = lxnstack
+
