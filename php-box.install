@@ -1,0 +1,8 @@
+post_install() {
+  echo
+  echo "php-box is installed as executable 'php-box'."
+}
+
+post_upgrade() {
+    post_install
+}
