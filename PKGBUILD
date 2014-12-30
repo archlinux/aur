@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: polyzen <polycitizen@gmail.com>
 # Contributor: Army
 # Contributor: Dan Serban
