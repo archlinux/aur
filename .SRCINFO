@@ -1,0 +1,17 @@
+pkgbase = php-go
+	pkgdesc = A simple PHP build tool.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/herrera-io/php-go
+	install = php-go.install
+	arch = any
+	license = MIT
+	makedepends = php-box
+	makedepends = php-composer
+	makedepends = git
+	depends = php>=5.3.3
+	source = git+https://github.com/herrera-io/php-go.git#tag=2.2.1
+	sha1sums = SKIP
+
+pkgname = php-go
+

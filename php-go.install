@@ -1,0 +1,8 @@
+post_install() {
+  echo
+  echo "php-go is installed as executable 'php-go'."
+}
+
+post_upgrade() {
+    post_install
+}
