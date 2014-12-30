@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=vimb
