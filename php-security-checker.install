@@ -1,0 +1,8 @@
+post_install() {
+  echo
+  echo "php-security-checker is installed as executable 'php-security-checker'."
+}
+
+post_upgrade() {
+    post_install
+}
