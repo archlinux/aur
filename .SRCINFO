@@ -1,0 +1,16 @@
+pkgbase = python-pyroma
+	pkgdesc = Test your project's packaging friendliness
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://bitbucket.org/regebro/pyroma
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	depends = python-docutils
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/pyroma/pyroma-1.7.zip
+	md5sums = 436b1401c5d4a9c7d307336128ccfd30
+
+pkgname = python-pyroma
+
