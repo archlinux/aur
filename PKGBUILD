@@ -2,6 +2,8 @@
 # Contributors: M0Rf30 <morf3089@gmail.com>
 # Contributors: hoban
 # Contributors: Nrm
+#
+# This package can be found at https://github.com/thomwiggers/aur-subsonic-beta/
 
 pkgname=subsonic-beta
 pkgver=5.1.beta1
