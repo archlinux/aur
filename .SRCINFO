@@ -1,0 +1,23 @@
+pkgbase = ejabberd-git
+	pkgdesc = An Erlang Jabber server (git HEAD)
+	pkgver = 20120322
+	pkgrel = 2
+	url = http://www.ejabberd.im/
+	install = ejabberd-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = erlang
+	depends = expat
+	depends = net-tools
+	depends = openssl
+	depends = pam
+	depends = zlib
+	conflicts = ejabberd
+	conflicts = ejabberd-svn
+	source = ejabberd.rc.d
+	md5sums = c49bb73bdcb50ea7fcf411bbfed7629a
+
+pkgname = ejabberd-git
+
