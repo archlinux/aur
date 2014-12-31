@@ -1,0 +1,30 @@
+pkgbase = python-nikola
+	pkgdesc = A modular, fast, simple, static website generator.
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = http://getnikola.com/
+	arch = any
+	license = custom
+	depends = python
+	depends = python-doit
+	depends = python-pygments
+	depends = python-pillow
+	depends = python-docutils
+	depends = python-mako
+	depends = python-unidecode
+	depends = python-lxml
+	depends = python-yapsy
+	depends = python-pyrss2gen
+	depends = python-dateutil
+	depends = python-logbook
+	depends = python-blinker
+	depends = python-natsort
+	conflicts = python2-nikola
+	conflicts = python-nikola-git
+	conflicts = python2-nikola-git
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/N/Nikola/nikola-7.2.0.tar.gz
+	md5sums = 5072daeea0336534f7d34dd0226839f6
+
+pkgname = python-nikola
+
