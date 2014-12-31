@@ -1,0 +1,8 @@
+post_install() {
+  echo "*************************************************"
+  echo "* Edit /var/subsonic/subsonic.sh to configure   *"
+  echo "* subsonic                                      *"
+  echo "*************************************************"
+  
+}
+
