@@ -1,0 +1,17 @@
+pkgbase = python-yapsy-hg
+	pkgdesc = Yet another plugin system (hg version)
+	pkgver = 306.b04552174a5f
+	pkgrel = 1
+	url = http://yapsy.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	depends = python
+	provides = python-yapsy
+	conflicts = python-yapsy
+	options = !emptydirs
+	source = hg+http://hg.code.sf.net/p/yapsy/code
+	md5sums = SKIP
+
+pkgname = python-yapsy-hg
+
