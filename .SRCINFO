@@ -1,0 +1,17 @@
+pkgbase = python2-pyrss2gen
+	pkgdesc = A Python library for generating RSS 2.0 feeds.
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.dalkescientific.com/Python/PyRSS2Gen.html
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	provides = pyrss2gen
+	conflicts = pyrss2gen
+	options = !emptydirs
+	source = http://www.dalkescientific.com/Python/PyRSS2Gen-1.1.tar.gz
+	md5sums = c56b9453d52b0a70be4f3e95112058aa
+
+pkgname = python2-pyrss2gen
+
