@@ -3,7 +3,8 @@ Description=Subsonic
 After=network.target
  
 [Service]
-ExecStart=/var/subsonic/subsonic.sh
+User=subsonic
+ExecStart=/var/lib/subsonic/subsonic.sh
 ExecStop=/bin/kill -15 $MAINPID
 Type=forking
  
