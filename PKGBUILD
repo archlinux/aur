@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -27,8 +27,8 @@ backup=(etc/cups/cupsd.conf
         etc/cups/subscriptions.conf
         etc/dbus-1/system.d/cups.conf
         etc/logrotate.d/cups
-        etc/pam.d/cups
-        etc/xinetd.d/cups-lpd)
+	etc/pam.d/cups)
+	#etc/xinetd.d/cups-lpd)
 source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups cups.logrotate cups.pam
         # improve build and linking
@@ -37,11 +37,8 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-no-gzip-man.patch
 	cups-1.6.0-fix-install-perms.patch
 	cups-1.6.2-statedir.patch
-	# bugfixes
-	str4495.patch
-	str4500.patch # FC
 	)
-md5sums=('2cdd81fea23e9e29555c24bdfd0d7c89'
+md5sums=('7f7c33071035fb20d0879929a42da711'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'fc8286f185e2cc5f7e1f6843bf193e2b'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -49,9 +46,7 @@ md5sums=('2cdd81fea23e9e29555c24bdfd0d7c89'
          '1beb4896f217bc241bc08a422274ec0c'
          '90c30380d4c8cd48a908cfdadae1ea24'
          '5117f65342fcc69c6a506529e4daca9e'
-         '451609db34f95209d64c38474de27ce1'
-         '84da6459947d4fb62398e9bad7922a11'
-         '8c0514e41c3b50b2b838b218f683e227')
+         '451609db34f95209d64c38474de27ce1')
 
 prepare() {
   cd cups-${pkgver}
@@ -70,17 +65,6 @@ prepare() {
 
   # fix permissions on some files (by Gentoo)
   patch -Np0 -i "$srcdir"/cups-1.6.0-fix-install-perms.patch
-
-
-  # bugfixes
-  # https://bugs.archlinux.org/task/40937 - https://www.cups.org/str.php?L4495
-  # adds a warning to the config file and honors the FatalErrors directive
-  patch -Np0 -i "$srcdir"/str4495.patch
-
-  # https://www.cups.org/str.php?L4500
-  # /etc/cups/ppd/*.ppd not world-readable, cupsGetPPD() returns symlink
-  patch -Np1 -i "$srcdir"/str4500.patch
-
 
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in
@@ -108,7 +92,6 @@ build() {
      --enable-raw-printing \
      --enable-dbus --with-dbusdir=/etc/dbus-1 \
      --enable-ssl=yes \
-     --disable-gnutls \
      --enable-threads \
      --enable-avahi \
      --enable-libpaper \

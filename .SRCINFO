@@ -1,7 +1,7 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = http://www.cups.org/
 	install = cups-nosystemd.install
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = cups-nosystemd
 	makedepends = inetutils
 	depends = acl
 	depends = pam
-	depends = libcups>=2.0.0
+	depends = libcups>=2.0.1
 	depends = cups-filters
 	depends = bc
 	depends = colord
@@ -29,7 +29,7 @@ pkgbase = cups-nosystemd
 	depends = libpaper
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = cups-openrc: cups openrc initscript
-	provides = cups=2.0.0
+	provides = cups=2.0.1
 	conflicts = cups
 	conflicts = cups-eudev
 	replaces = cups
@@ -43,8 +43,7 @@ pkgbase = cups-nosystemd
 	backup = etc/dbus-1/system.d/cups.conf
 	backup = etc/logrotate.d/cups
 	backup = etc/pam.d/cups
-	backup = etc/xinetd.d/cups-lpd
-	source = http://www.cups.org/software/2.0.0/cups-2.0.0-source.tar.bz2
+	source = http://www.cups.org/software/2.0.1/cups-2.0.1-source.tar.bz2
 	source = cups
 	source = cups.logrotate
 	source = cups.pam
@@ -53,9 +52,7 @@ pkgbase = cups-nosystemd
 	source = cups-no-gzip-man.patch
 	source = cups-1.6.0-fix-install-perms.patch
 	source = cups-1.6.2-statedir.patch
-	source = str4495.patch
-	source = str4500.patch
-	md5sums = 2cdd81fea23e9e29555c24bdfd0d7c89
+	md5sums = 7f7c33071035fb20d0879929a42da711
 	md5sums = 9657daa21760bb0b5fa3d8b51d5e01a1
 	md5sums = fc8286f185e2cc5f7e1f6843bf193e2b
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
@@ -64,8 +61,6 @@ pkgbase = cups-nosystemd
 	md5sums = 90c30380d4c8cd48a908cfdadae1ea24
 	md5sums = 5117f65342fcc69c6a506529e4daca9e
 	md5sums = 451609db34f95209d64c38474de27ce1
-	md5sums = 84da6459947d4fb62398e9bad7922a11
-	md5sums = 8c0514e41c3b50b2b838b218f683e227
 
 pkgname = cups-nosystemd
 
