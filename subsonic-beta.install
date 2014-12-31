@@ -18,6 +18,7 @@ post_install() {
     echo "* Edit /etc/subsonic.conf to configure subsonic *"
     echo "*************************************************"
 
+    systemctl daemon-reload
 }
 
 post_remove() {
@@ -55,7 +56,6 @@ post_upgrade() {
         echo "   You might need to change configs"
     fi
 
-    systemctl daemon-reload
     if [ -e /tmp/subsonic-was-active ]; then
         echo "Starting subsonic"
         systemctl start subsonic
