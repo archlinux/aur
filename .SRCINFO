@@ -1,0 +1,19 @@
+pkgbase = python-doit-git
+	pkgdesc = Automation Tool (git version)
+	pkgver = 0.26.0.r22.g6a945db
+	pkgrel = 1
+	url = http://pydoit.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyinotify
+	depends = python-six
+	options = !emptydirs
+	source = git://github.com/pydoit/doit.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 7d6fd7c8e022bae9010af272c31eb45f
+
+pkgname = python-doit-git
+
