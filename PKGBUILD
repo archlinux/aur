@@ -2,14 +2,14 @@
 
 pkgname=speedtest-cli-git
 _gitname=speedtest-cli
-pkgver=0.3.1.r2.g60c3ec2
+pkgver=0.3.1.r3.gb0e1e58
 pkgrel=1
 pkgdesc='Command line interface for testing internet bandwidth using speedtest.net - git devel branch'
 arch=('any')
 url='https://github.com/sivel/speedtest-cli'
 license=('Apache')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=($_gitname)
 provides=($_gitname)
 source=("git+https://github.com/sivel/speedtest-cli.git#branch=devel")
