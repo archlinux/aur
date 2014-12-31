@@ -9,7 +9,7 @@ pkgver='4.0.2'
 _realpkgver=$pkgver
 _realpkgver_i686=$pkgver
 _language='en-US'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
@@ -33,6 +33,7 @@ else
 	_pkgarch='64'
 fi
 
+validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659')
 source=("https://www.torproject.org/dist/torbrowser/${pkgver}/tor-browser-linux${_pkgarch}-${_realpkgver}_${_language}.tar.xz"
 		"https://www.torproject.org/dist/torbrowser/${pkgver}/tor-browser-linux${_pkgarch}-${_realpkgver}_${_language}.tar.xz.asc"
 		"${pkgname}.desktop"
