@@ -1,0 +1,24 @@
+pkgbase = log4cxx
+	pkgdesc = A C++ port of Log4j
+	pkgver = 0.10.0
+	pkgrel = 3
+	url = http://logging.apache.org/log4cxx
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = patch
+	makedepends = zip
+	makedepends = gzip
+	makedepends = sed
+	depends = apr-util
+	depends = libxml2
+	source = http://archive.apache.org/dist/logging/log4cxx/0.10.0/apache-log4cxx-0.10.0.tar.gz
+	source = log4cxx-0.10.0-missing_includes.patch
+	md5sums = b30ffb8da3665178e68940ff7a61084c
+	md5sums = dfa17719a57b19f12cbef94419a2aac8
+
+pkgname = log4cxx
+
