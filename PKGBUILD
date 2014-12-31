@@ -7,12 +7,12 @@
 
 pkgname=subsonic-beta
 pkgver=5.1.beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('i686' 'x86_64')
 url="http://subsonic.org/"
 license=('GPL')
-depends=('jre7-openjdk-headless' 'libcups')
+depends=('java-runtime-headless')
 conflicts=('subsonic')
 source=(http://prdownloads.sourceforge.net/subsonic/subsonic-${pkgver}-standalone.tar.gz      
 	    'subsonic.service')
