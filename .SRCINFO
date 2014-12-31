@@ -1,14 +1,13 @@
 pkgbase = subsonic-beta
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 5.1.beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://subsonic.org/
 	install = subsonic-beta.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = jre7-openjdk-headless
-	depends = libcups
+	depends = java-runtime-headless
 	conflicts = subsonic
 	backup = var/lib/subsonic/db
 	source = http://prdownloads.sourceforge.net/subsonic/subsonic-5.1.beta1-standalone.tar.gz
