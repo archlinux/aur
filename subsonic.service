@@ -1,0 +1,11 @@
+[Unit]
+Description=Subsonic
+After=network.target
+ 
+[Service]
+ExecStart=/var/subsonic/subsonic.sh
+ExecStop=/bin/kill -15 $MAINPID
+Type=forking
+ 
+[Install]
+WantedBy=multi-user.target
