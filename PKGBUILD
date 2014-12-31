@@ -53,6 +53,10 @@ sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
           '6010fffeed1fc6673ad9875492e1193b1a847b53'
           '21e12966a6befb25ec123b403cd9b5c492fe5b16'
           'f57ecde3f72b4738fad75c097d19cf46a412350f')
+# List of valid PGP keys in http://pkg-shadow.alioth.debian.org/download.php
+validpgpkeys=('96F7A8CCA87F0EB8349701B25A0A399AEA7CF5AD'
+              'F972A168A2703B34CC23E09FD4E5EDACC0143D2D'
+              'D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')
 
 prepare() {
   cd "${pkgname/-selinux}-$pkgver"
