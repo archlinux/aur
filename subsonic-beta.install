@@ -21,6 +21,12 @@ post_install() {
     systemctl daemon-reload
 }
 
+pre_remove() {
+    if [[ `systemctl is-active subsonic` == 'active' ]]; then
+        systemctl stop subsonic
+    fi
+}
+
 post_remove() {
     getent passwd subsonic &>/dev/null && userdel subsonic >/dev/null
     getent group subsonic &>/dev/null && groupdel subsonic >/dev/null

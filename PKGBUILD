@@ -7,7 +7,7 @@
 
 pkgname=subsonic-beta
 pkgver=5.1.beta1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('i686' 'x86_64')
 url="http://subsonic.org/"
