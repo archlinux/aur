@@ -14,6 +14,7 @@ source=(http://youtube-dl.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz
         http://youtube-dl.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz.sig)
 sha1sums=('7e5f71535979b2bf627bf71020075b53b9e19d40'
           'SKIP')
+validpgpkeys=('7D33D762FD6C35130481347FDB4B54CBA4826A18')
 
 prepare() {
   cd ${pkgname}
