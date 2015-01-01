@@ -1,16 +1,16 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: vuslkopp <vuslkopp@i2pmail.org>
 
 pkgname=irclog2html
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Converts IRC log files to HTML with pretty colours.'
 arch=('any')
 license=('GPL')
 url='http://mg.pov.lt/irclog2html/'
 depends=('python')
-source=("http://pypi.python.org/packages/source/i/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('9714287c284d7b960a5c7082d11cd9d60dcfd9b80ce9029f7a5e015a9d0b7757')
+source=("https://pypi.python.org/packages/source/i/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('d905790ee62319f441e34e4460f2c67d8d47e45bc24c3f0e0d743f83eaae69a7')
 
 package() {
   cd $pkgname-$pkgver
