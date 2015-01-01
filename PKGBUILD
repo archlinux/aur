@@ -1,29 +1,25 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libnpengine
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL3')
 pkgdesc='Free implementation of Nitroplus Visual Novel game engine'
 url='http://dev.pulsir.eu/krofna/'
-depends=("libnpa=$pkgver" 'boost-libs' 'sfml' 'gst-plugins-base-libs' 'ttf-arphic-uming')
+depends=("libnpa=$pkgver" 'boost-libs' 'sdl2' 'glew' 'libjpeg-turbo' 'libpng'
+        'gst-plugins-base-libs' 'pango')
 makedepends=('cmake' 'boost')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('299136dbb8dcda89ca7368ecc655112a0b771f3f0162dec85068745f58ba23d3')
-
-prepare() {
-  # patch font path
-  sed 's|cjkuni-uming|TTF|' -i $pkgname-$pkgver/src/nsbinterpreter.cpp
-}
+source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/$pkgname-new/archive/v$pkgver.tar.gz")
+sha256sums=('094e605ffe82f601ed827504710515dad1c3450e5aa44d57355d376a62017e21')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname-new-$pkgver
 
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  make -C $pkgname-$pkgver DESTDIR="$pkgdir/" install
+  make -C $pkgname-new-$pkgver DESTDIR="$pkgdir/" install
 }
