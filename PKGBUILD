@@ -3,8 +3,8 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.63.15
-_gitver=30a4c46
+pkgver=0.64.00
+_gitver=405b6f0
 pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo"
 url="http://rainemu.swishparty.co.uk"
@@ -25,8 +25,8 @@ optdepends=('raine-artwork: additional background graphics for some games'
             'arcade-command-dat: database with button combinations for special moves in (mostly fighting) games')
 source=(raine-$pkgver.tar.gz::"$url/cgi-bin/gitweb.cgi?p=raine;a=snapshot;h=$_gitver;sf=tgz"
         "$url/html/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}_i386.deb")
-sha256sums=('7ca85096490153f6e4efb0971fb46ba3c44dbef18c19595f44ea08cf3e12fe36'
-            'e10b3f0132c35f92b14cdac99b5aa18498e4e3fb14f6901db02335e88b26c4e0')
+sha256sums=('61ffcef15aa01fde8a22ab0dfa499081ea3622c69fa091066e5bafbf54e93886'
+            '27d51c1f26f031fd35b977b69b4294f2f35fa70e094bcf4b3dff8106a0949523')
 options=('emptydirs')
 
 prepare() {
@@ -35,9 +35,10 @@ prepare() {
   bsdtar xf data.tar.xz -C raine-bin
 
   cd raine-$_gitver
-  # copy bitmaps and fonts from raine's deb package
-  cp -r "$srcdir"/raine-bin/usr/share/games/raine/bitmaps .
-  cp -r "$srcdir"/raine-bin/usr/share/games/raine/fonts .
+  # copy bitmaps, blend files and fonts from raine's deb package
+  cp -rup "$srcdir"/raine-bin/usr/share/games/raine/bitmaps .
+  cp -rup "$srcdir"/raine-bin/usr/share/games/raine/blend .
+  cp -rup "$srcdir"/raine-bin/usr/share/games/raine/fonts .
 
   # adapt folder structure to arch standards
   sed 's|$(prefix)/games|\$(prefix)/bin|;s|$(prefix)/share/games|\$(prefix)/share|' -i makefile
