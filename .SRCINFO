@@ -1,6 +1,6 @@
 pkgbase = homeshick-git
 	pkgdesc = bash stand-in for homesick by technicalpickles
-	pkgver = 0.0.r250.d66a34f
+	pkgver = 0.0.r372.dd9a0fd
 	pkgrel = 1
 	url = https://github.com/andsens/homeshick
 	arch = any
