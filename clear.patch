@@ -1,8 +1,8 @@
 diff --git a/src/command.C b/src/command.C
-index 153f0e1..24c7ad0 100644
+index d212764..b1a5ab1 100644
 --- a/src/command.C
 +++ b/src/command.C
-@@ -2922,6 +2922,10 @@ rxvt_term::process_csi_seq ()
+@@ -2913,6 +2913,10 @@ rxvt_term::process_csi_seq ()
        return;
      }
  
@@ -13,7 +13,7 @@ index 153f0e1..24c7ad0 100644
    switch (ch)
      {
          /*
-@@ -2985,6 +2989,12 @@ rxvt_term::process_csi_seq ()
+@@ -2976,6 +2980,12 @@ rxvt_term::process_csi_seq ()
  
        case CSI_CUP:		/* 8.3.21: (1,1) CURSOR POSITION */
        case CSI_HVP:		/* 8.3.64: (1,1) CHARACTER AND LINE POSITION */
@@ -26,7 +26,7 @@ index 153f0e1..24c7ad0 100644
          scr_gotorc (arg[0] - 1, nargs < 2 ? 0 : (arg[1] - 1), 0);
          break;
  
-@@ -2996,6 +3006,16 @@ rxvt_term::process_csi_seq ()
+@@ -2987,6 +2997,16 @@ rxvt_term::process_csi_seq ()
          break;
  
        case CSI_ED:		/* 8.3.40: (0) ERASE IN PAGE */
@@ -43,7 +43,7 @@ index 153f0e1..24c7ad0 100644
          scr_erase_screen (arg[0]);
          break;
  
-@@ -3144,6 +3164,16 @@ rxvt_term::process_csi_seq ()
+@@ -3135,6 +3155,16 @@ rxvt_term::process_csi_seq ()
        default:
          break;
      }

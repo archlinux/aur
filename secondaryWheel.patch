@@ -1,8 +1,8 @@
 diff --git a/doc/rxvt.1.pod b/doc/rxvt.1.pod
-index 87042cd..9dfb861 100644
+index 169e104..4bb13b3 100644
 --- a/doc/rxvt.1.pod
 +++ b/doc/rxvt.1.pod
-@@ -417,6 +417,11 @@ B<secondaryScreen>.
+@@ -427,6 +427,11 @@ B<secondaryScreen>.
  Turn on/off secondary screen scroll (default enabled); resource
  B<secondaryScroll>.
  
@@ -14,7 +14,7 @@ index 87042cd..9dfb861 100644
  =item B<-hold>|B<+hold>
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
-@@ -1029,6 +1034,13 @@ option is enabled, scrolls on the secondary screen will change the
+@@ -1044,6 +1049,13 @@ option is enabled, scrolls on the secondary screen will change the
  scrollback buffer and, when secondaryScreen is off, switching
  to/from the secondary screen will instead scroll the screen up.
  
@@ -29,10 +29,10 @@ index 87042cd..9dfb861 100644
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
 diff --git a/src/command.C b/src/command.C
-index 153f0e1..df22652 100644
+index d212764..3b7e266 100644
 --- a/src/command.C
 +++ b/src/command.C
-@@ -2246,10 +2246,46 @@ rxvt_term::button_release (XButtonEvent &ev)
+@@ -2237,10 +2237,46 @@ rxvt_term::button_release (XButtonEvent &ev)
                  }
                else
  # endif
@@ -82,10 +82,10 @@ index 153f0e1..df22652 100644
              break;
  #endif
 diff --git a/src/optinc.h b/src/optinc.h
-index d814035..a365037 100644
+index 09f9a26..c79a5be 100644
 --- a/src/optinc.h
 +++ b/src/optinc.h
-@@ -26,6 +26,7 @@
+@@ -27,6 +27,7 @@
   def(cursorBlink)
   def(secondaryScreen)
   def(secondaryScroll)
@@ -94,10 +94,10 @@ index d814035..a365037 100644
   def(cursorUnderline)
  #if ENABLE_FRILLS
 diff --git a/src/rsinc.h b/src/rsinc.h
-index 1483955..10f6642 100644
+index 682322c..6325057 100644
 --- a/src/rsinc.h
 +++ b/src/rsinc.h
-@@ -103,6 +103,7 @@
+@@ -104,6 +104,7 @@
  #ifndef NO_SECONDARY_SCREEN
    def (secondaryScreen)
    def (secondaryScroll)
@@ -106,10 +106,10 @@ index 1483955..10f6642 100644
  #if OFF_FOCUS_FADING
    def (fade)
 diff --git a/src/xdefaults.C b/src/xdefaults.C
-index 69acdd8..3e858de 100644
+index 2308844..0f5d2d0 100644
 --- a/src/xdefaults.C
 +++ b/src/xdefaults.C
-@@ -262,6 +262,7 @@ optList[] = {
+@@ -264,6 +264,7 @@ optList[] = {
  #ifndef NO_SECONDARY_SCREEN
                BOOL (Rs_secondaryScreen, "secondaryScreen", "ssc", Opt_secondaryScreen, 0, "enable secondary screen"),
                BOOL (Rs_secondaryScroll, "secondaryScroll", "ssr", Opt_secondaryScroll, 0, "enable secondary screen scroll"),
