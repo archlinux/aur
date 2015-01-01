@@ -3,14 +3,14 @@
 
 pkgname=warzone2100-git
 _gitname=warzone2100
-pkgver=master.SDL.r4032.g9cc1d33
+pkgver=master.SDL.r4078.g8c6dde4
 pkgrel=1
 pkgdesc="3D realtime strategy game on a future Earth (Git version)"
 arch=('i686' 'x86_64')
 url="http://wz2100.net/"
 license=('GPL')
-depends=('gettext' 'qt4' 'libtheora' 'openal' 'libvorbis' 'glew' 'physfs' 'quesoglc' 'ttf-dejavu')
-makedepends=('zip' 'unzip')
+depends=('gettext' 'qt5-base' 'qt5-script' 'sdl' 'libtheora' 'openal' 'libvorbis' 'glew' 'physfs' 'quesoglc' 'ttf-dejavu')
+makedepends=('zip' 'unzip' 'git')
 provides=('warzone' 'warzone2100' 'warzone-svn' 'warzone2100-beta')
 conflicts=('warzone2100')
 source=('git://github.com/Warzone2100/warzone2100.git')
@@ -24,7 +24,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
-  CCFLAGS= CXXFLAGS= ./configure --prefix=/usr
+  sed -i 's/-Werror/-Werror -Wno-error=clobbered/g' configure
+  ./configure --prefix=/usr
   make
 }
 
