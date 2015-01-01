@@ -14,6 +14,7 @@ source=(http://ftp.gnu.org/gnu/gv/${pkgname}-${pkgver}.tar.gz{,.sig} gv.desktop)
 sha1sums=('d5bc11a37136dff69248f943a632544a4036b63f'
           '7d8b7edd60617b189ba39ca982252b0d59c0755d'
           'b40ccad8a8d837791598075f543edce9aa1f4352')
+validpgpkeys=('5A15E3DBE8D7DE6F2AC69EB5B1AF90204976D4CD')
 
 prepare() {
   cd ${pkgname}-${pkgver}
