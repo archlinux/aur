@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=reicast-git
-pkgver=r791.823cd76
+pkgver=r1078.0783875
 pkgrel=1
 pkgdesc="A multiplatform Sega Dreamcast emulator (development version)"
 arch=('i686' 'x86_64')
@@ -18,6 +18,12 @@ md5sums=('SKIP')
 pkgver() {
   cd reicast
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd reicast/shell/lin86
+  # uncomment the following line to build with GLES instead of GL 3.1
+  #sed '/-DGLES/s/^#//;/-lGL /s/.*/# &/;/-lEGL/s/^#//' -i Makefile
 }
 
 build () {
