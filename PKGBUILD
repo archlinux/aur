@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libnpa
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -10,7 +10,7 @@ url='http://dev.pulsir.eu/krofna/'
 depends=('boost-libs' 'zlib')
 makedepends=('cmake' 'boost')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3aaae30d65ae4f138e88cdc6ff0845160ff2e7c57601b8bbad1af8abb8255ea1')
+sha256sums=('38367514f0a070bd3f2869c58c3603cb91a19633818aad9f01aa6f467f690e64')
 
 build() {
   cd $pkgname-$pkgver
