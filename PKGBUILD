@@ -4,17 +4,17 @@
 
 pkgname=nikki
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Nikki and the robots. A game where you try to cross those evil plans on behalf of a secret organization."
 arch=("i686" "x86_64")
-url="http://joyridelabs.de/game/"
+url="http://abandon"
 license=("LGPL" "CCPL")
 depends=("libsndfile" "openal" "qt4")
-source=("http://updates.joyridelabs.de/nikki/default/linux/i386/$pkgname.tar.gz")
+source=("http://dl.gamux.org/game/download/games/i386/clientgame/nikki/$pkgname.tar.gz")
 sha256sums=("387bfa1d5e602686539eb2371d9d1bdeea13f263f631b26f0af8061e8daab4bb")
 
 if [ "$CARCH" == "x86_64" ]; then
-  source=("http://updates.joyridelabs.de/nikki/default/linux/x86_64/$pkgname.tar.gz")
+  source=("http://dl.gamux.org/game/download/games/i386/clientgame/nikki/$pkgname-64.tar.gz")
   sha256sums=("6d642c03959afc4bcd6d846c61d80eae27d58dded5a957858d18ca7d7d5c9df7")
 fi
 
