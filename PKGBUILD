@@ -1,7 +1,7 @@
 # Contributor: Leonidas <marek@xivilization.net>
 _gemname=homesick
 pkgname=${_gemname}
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A man's home is his castle. Never leave your dotfiles behind."
 arch=(any)
@@ -10,9 +10,9 @@ license=('MIT')
 depends=(ruby ruby-thor git)
 # well, rubygems is part of the ruby package nowadays, but *shrug*
 makedepends=(rubygems)
-source=(http://rubygems.org/downloads/${pkgname}-${pkgver}.gem)
+source=(https://rubygems.org/downloads/${pkgname}-${pkgver}.gem)
 noextract=(${pkgname}-${pkgver}.gem)
-sha512sums=('15f16c2b3a3f8f1ac6d0db3155513ebaa2ffd6e21bf0915bf03cbfc7952185e053e500202a44117c982f3f6f89454c6d0a875e8855dd48d17922c5474ad3cbd1')
+sha512sums=('13eb0f1da5a724179e44b052a151623c813a3dffbde7bade54d82d6cc532ab8ba15e11acda606d49ff75667d18cdd8d46c32637001fc89d883b81d91e669e5c8')
 
 package() {
   cd "${srcdir}"
