@@ -4,16 +4,16 @@
 pkgname=python2-gvgen
 _pythonname='gvgen'
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Generates dot language files for easy scripting, to be processed with graphviz.'
 arch=('any')
-url='http://www.picviz.com/sections/opensource/gvgen.html'
+url='http://www.picviz.com/en/community/gvgen/gvgen.html'
 license=('GPL2')
 depends=('python2')
 makedepends=()
-source=("http://www.picviz.com/sections/community/${_pythonname}-latest.tar.gz")
+source=("http://www.picviz.com/downloads/${_pythonname}-latest.tar.gz")
 
-build() {
+package() {
     cd "$srcdir/${_pythonname}-latest"
     python2 setup.py install --prefix=/usr --root=$pkgdir
 }
