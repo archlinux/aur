@@ -21,11 +21,9 @@ optdepends=(
   'gst-plugins-ugly: media playback'
 )
 options=(!emptydirs)
-source=("http://qutebrowser.org/releases/v$pkgver/qutebrowser-${pkgver}.tar.gz.asc"
-        "http://qutebrowser.org/releases/v$pkgver/qutebrowser-${pkgver}.tar.gz"
+source=("http://qutebrowser.org/releases/v$pkgver/qutebrowser-${pkgver}.tar.gz"
         'qutebrowser.install')
-sha256sums=('SKIP'
-            'a755a7642d908bf63fe79c858f4a0e83528203f4f7a7376084368f778be78863'
+sha256sums=('a755a7642d908bf63fe79c858f4a0e83528203f4f7a7376084368f778be78863'
             '3622243cf88eef2bb3381fec5e3cede59288b263a0ef6387510e0ad92e2cb690')
 install=qutebrowser.install
 
