@@ -31,14 +31,6 @@ md5sums=('5cf7bb227abe2c16d34e8e9c84915291'
 
 
 build() {
-    if [ -f /etc/profile.d/openjdk6.sh ];
-    then
-        source /etc/profile.d/openjdk6.sh
-    elif [ -f /etc/profile.d/jdk.sh ];
-    then
-        source /etc/profile.d/jdk.sh
-    fi
-
     cd ${srcdir}
     mv Project-X/lib/PORTABLE Project-X_0.91.0/lib
     mv Project-X/src/net/sourceforge/dvb/projectx/video/IDCTFast.java Project-X_0.91.0/src/net/sourceforge/dvb/projectx/video
@@ -49,6 +41,7 @@ build() {
     sh ./build.sh
     if [ ${_idct} != "none" ]; then
        cd lib/PORTABLE/
+       export JAVA_HOME="/usr/lib/jvm/`archlinux-java get`/"
        make clean
        make PROJECTX_HOME=${srcdir}/Project-X_0.91.0 IDCT=${_idct} CPLAT="$CFLAGS -fPIC"
        cd ${srcdir}/Project-X_0.91.0
