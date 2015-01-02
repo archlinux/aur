@@ -14,12 +14,14 @@ source=("http://pypi.python.org/packages/source/c/${_pythonname}/${_pythonname}-
 md5sums=('c2798658a4f69663365a3e70c3b8250b'
          '7f9dbc2d22a3975e22fd6ce0f3d6268f')
 
-build() {
+prepare() {
   cd $srcdir/${_pythonname}-${pkgver}
-
   # necessary in cssmin.py
   find -name '*\.py' -exec sed -e 's@#!\(\s\)*/usr/bin/env python@&2@' -i {} \;
+}
 
+package() {
+  cd $srcdir/${_pythonname}-${pkgver}
   python2 setup.py install --prefix=/usr --root=$pkgdir --optimize=1
 
   # this package contains BSD-licensed parts
