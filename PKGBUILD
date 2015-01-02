@@ -3,11 +3,11 @@
 
 pkgname=retrovol-git
 pkgver=0.14.1.r0.g4649279
-pkgrel=1
+pkgrel=2
 pkgdesc="A sound volume mixer"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
-url="http://puppylinux.svn.sourceforge.net/viewvc/puppylinux/retrovol/"
+url="https://github.com/pizzasgood/retrovol"
 depends=('gtk2' 'alsa-lib')
 makedepends=('git')
 provides=('retrovol')
