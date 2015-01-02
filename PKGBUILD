@@ -3,12 +3,12 @@
 
 pkgname=python2-websocket-client
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Websocket client for Python."
 url="https://github.com/liris/websocket-client"
 license=('LGPL')
 arch=('any')
-depends=('python2>=2.7' 'python2-backports.ssl_match_hostname' 'python2-six')
+depends=('python2>=2.7.9' 'python2-six')
 
 makedepends=('python2-distribute')
 source=(http://pypi.python.org/packages/source/w/websocket-client/websocket-client-$pkgver.tar.gz)
