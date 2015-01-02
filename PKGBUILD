@@ -1,14 +1,14 @@
 # Contributor: Leonidas <marek@xivilization.net>
 pkgname=homeshick-git
 pkgver=0.0.r372.dd9a0fd
-pkgrel=1
+pkgrel=2
 pkgdesc="bash stand-in for homesick by technicalpickles"
 arch=(any)
 url="https://github.com/andsens/homeshick"
 license=('BSD')
-makedepends=('git')
+depends=('git')
 source=("$pkgname"::'git+https://github.com/andsens/homeshick.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -16,9 +16,8 @@ pkgver() {
 }
 
 build() {
+  # patch the location of the library scripts
   sed -i 's|homeshick="\$repos/homeshick"|homeshick=/usr/lib/homeshick|' "$srcdir"/$pkgname/bin/homeshick
-  # sed -i "s|for file in \$homeshick/lib/\*.sh;|for file in /usr/lib/homeshick/*.sh;|" "$srcdir"/$pkgname/bin/homeshick
-  # sed -i "s|source \$homeshick|source /usr/lib/homeshick|" "$srcdir"/$pkgname/bin/homeshick
 }
 
 package() {
