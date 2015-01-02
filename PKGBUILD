@@ -3,7 +3,7 @@
 
 pkgname=qutebrowser-git
 pkgver=r3557.6d1ac5d
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
 url="http://www.qutebrowser.org/"
@@ -45,26 +45,26 @@ package() {
   cd "$srcdir/qutebrowser"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 doc/qutebrowser.1 "$pkgdir/usr/share/man/man1/qutebrowser.1"
-  install -Dm755 qutebrowser.desktop \
+  install -Dm644 qutebrowser.desktop \
     "$pkgdir/usr/share/applications/qutebrowser.desktop"
-  install -Dm755 icons/qutebrowser-16x16.png \
+  install -Dm644 icons/qutebrowser-16x16.png \
     "$pkgdir/usr/share/icons/hicolor/16x16/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-24x24.png \
+  install -Dm644 icons/qutebrowser-24x24.png \
     "$pkgdir/usr/share/icons/hicolor/24x24/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-32x32.png \
+  install -Dm644 icons/qutebrowser-32x32.png \
     "$pkgdir/usr/share/icons/hicolor/32x32/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-48x48.png \
+  install -Dm644 icons/qutebrowser-48x48.png \
     "$pkgdir/usr/share/icons/hicolor/48x48/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-64x64.png \
+  install -Dm644 icons/qutebrowser-64x64.png \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-96x96.png \
+  install -Dm644 icons/qutebrowser-96x96.png \
     "$pkgdir/usr/share/icons/hicolor/96x96/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-128x128.png \
+  install -Dm644 icons/qutebrowser-128x128.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-256x256.png \
+  install -Dm644 icons/qutebrowser-256x256.png \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser-512x512.png \
+  install -Dm644 icons/qutebrowser-512x512.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/qutebrowser.png"
-  install -Dm755 icons/qutebrowser.svg \
+  install -Dm644 icons/qutebrowser.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/qutebrowser.svg"
 }
