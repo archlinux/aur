@@ -2,8 +2,8 @@
 # Contributor: Leonid Selivanov <bravebug at gmail dot com>
 
 pkgname=retrovol-git
-pkgver=0.14.r0.g6579b8c
-pkgrel=2
+pkgver=0.14.1.r0.g4649279
+pkgrel=1
 pkgdesc="A sound volume mixer"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
