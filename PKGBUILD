@@ -15,46 +15,23 @@
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
-pkgname=kodi-git
+pkgbase=kodi-git
+pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
 pkgver=20150102.3870d97
-pkgrel=1
-pkgdesc="media player and entertainment hub (master branch)"
-provides=('xbmc')
-conflicts=('xbmc' 'xbmc-pulse' 'xbmc-svn' 'xbmc-git')
-replaces=('xbmc-svn' 'xbmc-git')
+pkgrel=2
 arch=('i686' 'x86_64')
-url="http://xbmc.org"
+url="http://kodi.tv"
 license=('GPL2')
-depends=(
-'bluez-libs' 'curl' 'flac' 'glew' 'hicolor-icon-theme' 'lame' 'libaacs'
-'libass' 'libbluray' 'libcdio' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
-'libmpeg2' 'libpulse' 'libsamplerate' 'libssh' 'libva' 'libvdpau' 'libvorbis'
-'libxrandr' 'libxslt' 'lzo' 'mesa' 'mesa-demos' 'python2-pillow'
-'python2-simplejson' 'rtmpdump' 'sdl_image' 'smbclient' 'taglib' 'tinyxml'
-'xorg-xdpyinfo' 'yajl'
-)
 makedepends=(
-'afpfs-ng' 'boost' 'cmake' 'doxygen' 'git' 'gperf' 'jasper'
-'java-runtime' 'libcec' 'libnfs' 'libplist' 'nasm' 'shairplay'
-'swig' 'unzip' 'upower' 'zip'
+  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
+  'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass'
+  'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
+  'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libssh' 'libva'
+  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
+  'python2-pybluez' 'python2-simplejson' 'rtmpdump' 'sdl2' 'sdl_image'
+  'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
 )
-optdepends=(
-'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
-'afpfs-ng: Apple shares support'
-'bluez: Blutooth support'
-'libnfs: NFS shares support'
-'libplist: AirPlay support'
-'libcec: Pulse-Eight USB-CEC adapter support'
-'lirc: Remote controller support'
-'pulseaudio: PulseAudio support'
-'shairplay: AirPlay support'
-'udisks: Automount external drives'
-'unrar: Archives support'
-'unzip: Archives support'
-'upower: Display battery level'
-)
-install="$pkgname.install"
 source=(
 	"$_gitname::git://github.com/xbmc/xbmc.git"
 )
@@ -66,7 +43,6 @@ _prefix='/usr'
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	# suggested by marzoul
 	git log -1 --date=short --format="%cd.%h" | tr -d '-'
 }
 
@@ -82,39 +58,15 @@ build() {
 	cd ${_gitname}
 
 	# Bootstrapping
-	./bootstrap
+	MAKEFLAGS=-j1 ./bootstrap
 
 	# Configuring XBMC
 	export PYTHON_VERSION=2  # external python v2
 	./configure --prefix=$_prefix --exec-prefix=$_prefix \
 		--enable-debug \
 		--disable-optimizations \
-		--enable-gl \
-		--enable-vaapi \
-		--enable-vdpau \
-		--enable-joystick \
-		--enable-xrandr \
-		--enable-rsxs \
-		--enable-projectm \
-		--enable-x11 \
-		--enable-pulse \
-		--enable-rtmp \
-		--enable-samba \
-		--enable-nfs \
-		--enable-afpclient \
-		--enable-airplay \
-		--enable-airtunes \
-		--enable-ffmpeg-libvorbis \
-		--enable-dvdcss \
-		--disable-hal \
-		--enable-avahi \
-		--enable-webserver \
-		--enable-optical-drive \
 		--enable-libbluray \
 		--enable-texturepacker \
-		--enable-udev \
-		--enable-libusb \
-		--enable-libcec \
 		--enable-external-libraries \
 		--with-lirc-device=/run/lirc/lircd
 
@@ -122,14 +74,44 @@ build() {
 	make
 }
 
-package() {
+package_kodi-git() {
+	pkgdesc="A software media player and entertainment hub for digital media"
+
+	# depends expected for kodi plugins:
+	# 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+	# depends expeced in FEH.py
+	# 'mesa-demos' 'xorg-xdpyinfo'
+	depends=(
+		'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+		'mesa-demos' 'xorg-xdpyinfo'
+		'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libcdio'
+		'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
+		'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
+		'yajl'
+	)
+	optdepends=(
+		'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
+		'afpfs-ng: Apple shares support'
+		'bluez: Blutooth support'
+		'libnfs: NFS shares support'
+		'libplist: AirPlay support'
+		'libcec: Pulse-Eight USB-CEC adapter support'
+		'lirc: Remote controller support'
+		'pulseaudio: PulseAudio support'
+		'shairplay: AirPlay support'
+		'udisks: Automount external drives'
+		'unrar: Archives support'
+		'unzip: Archives support'
+		'upower: Display battery level'
+	)
+	install="kodi-git.install"
+	provides=('xbmc' 'kodi')
+	conflicts=('xbmc' 'kodi')
+	replaces=('xbmc-svn' 'xbmc-git')
+
 	cd ${_gitname}
 	# Running make install
 	make DESTDIR="$pkgdir" install
-
-	# Tools
-	install -Dm755 $srcdir/$_gitname/tools/TexturePacker/TexturePacker \
-		${pkgdir}${_prefix}/lib/kodi/
 
 	# Licenses
 	install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
@@ -137,4 +119,18 @@ package() {
 		mv ${pkgdir}${_prefix}/share/doc/kodi/${licensef} \
 			${pkgdir}${_prefix}/share/licenses/${pkgname}
 	done
+}
+
+package_kodi-eventclients-git() {
+	pkgdesc="Kodi Event Clients (master branch)"
+
+	depends=('cwiid')
+
+	cd ${_gitname}
+
+	make DESTDIR="$pkgdir" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
+
+	install -dm755 "$pkgdir/usr/share/$pkgbase/eventclients"
+	mv "$pkgdir/kodi"/* "$pkgdir/usr/share/$pkgbase/eventclients"
+	rmdir "$pkgdir/kodi"
 }
