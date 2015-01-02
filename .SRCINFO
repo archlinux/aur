@@ -16,10 +16,8 @@ pkgbase = findutils-selinux
 	conflicts = findutils
 	conflicts = selinux-findutils
 	source = ftp://ftp.gnu.org/pub/gnu/findutils/findutils-4.4.2.tar.gz
-	source = ftp://ftp.gnu.org/pub/gnu/findutils/findutils-4.4.2.tar.gz.sig
 	source = http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/findutils/files/findutils-4.4.2-selinux.diff
 	sha1sums = e8dd88fa2cc58abffd0bfc1eddab9020231bb024
-	sha1sums = 77d9585d9feea0814752a31bf109fe287f528243
 	sha1sums = 96318be5586d324a13805da81907406a95c6514c
 
 pkgname = findutils-selinux
