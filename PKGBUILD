@@ -12,7 +12,7 @@ depends=('python' 'python-numpy')
 conflicts=('python2-openopt')
 source=("http://openopt.org/images/3/33/${_pythonname}.zip")
 
-build() {
+package() {
   cd "$srcdir/${_pythonname}"
 
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
