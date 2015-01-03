@@ -2,7 +2,7 @@
 # Wed Dec 30 18:02:57 UTC 2015
 pkgbase = django
 	pkgdesc = A high-level Python Web framework that encourages rapid development and clean design
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = http://www.djangoproject.com/
 	arch = any
@@ -11,16 +11,18 @@ pkgbase = django
 	makedepends = python2-setuptools
 	makedepends = python
 	makedepends = python-setuptools
-	source = https://www.djangoproject.com/m/releases/1.7/Django-1.7.1.tar.gz
-	md5sums = 81dae89f21647b9aa5c46c6b7dbfa349
-	sha256sums = 3de62e71ce2cfbcdecb6e344cad04948506c8410ea5c6eab15c8f3b31b8ac1c0
+	source = https://www.djangoproject.com/m/releases/1.7/Django-1.7.2.tar.gz
+	md5sums = 855a53a9a5581c62b6031c9b3bd80ec5
+	sha256sums = 31c6c3c229f8c04b3be87e6afc3492903b57ec8f1188a47b6ae160d90cf653c8
 
 pkgname = python-django
 	depends = python
+	depends = python-setuptools
 	optdepends = python-psycopg2: for PostgreSQL backend
 
 pkgname = python2-django
 	depends = python2
+	depends = python2-setuptools
 	optdepends = mysql-python: for MySQL backend
 	optdepends = python2-psycopg2: for PostgreSQL backend
 	conflicts = django

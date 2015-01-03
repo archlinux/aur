@@ -4,7 +4,7 @@
 
 pkgbase=django
 pkgname=('python-django' 'python2-django')
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
@@ -12,8 +12,8 @@ license=('BSD')
 url="http://www.djangoproject.com/"
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=("https://www.djangoproject.com/m/releases/${pkgver:0:3}/Django-$pkgver.tar.gz")
-md5sums=('81dae89f21647b9aa5c46c6b7dbfa349')
-sha256sums=('3de62e71ce2cfbcdecb6e344cad04948506c8410ea5c6eab15c8f3b31b8ac1c0')
+md5sums=('855a53a9a5581c62b6031c9b3bd80ec5')
+sha256sums=('31c6c3c229f8c04b3be87e6afc3492903b57ec8f1188a47b6ae160d90cf653c8')
 
 prepare() {
   cp -a "$srcdir/Django-$pkgver" "$srcdir/Django-$pkgver-python2"
@@ -31,7 +31,7 @@ build() {
 }
 
 package_python-django() {
-  depends=('python')
+  depends=('python' 'python-setuptools')
   optdepends=('python-psycopg2: for PostgreSQL backend')
   cd "$srcdir/Django-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
@@ -49,7 +49,7 @@ package_python-django() {
 }
 
 package_python2-django() {
-  depends=('python2')
+  depends=('python2' 'python2-setuptools')
   optdepends=('mysql-python: for MySQL backend'
               'python2-psycopg2: for PostgreSQL backend')
   replaces=('django')
