@@ -1,6 +1,6 @@
 # Maintainer: thorsten w. <p@thorsten-wissmann.de>
 pkgname=herbstluftwm-git
-pkgver=v0.6.2.39.g82f56f7
+pkgver=v0.6.2.46.g903635d
 pkgrel=1
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
