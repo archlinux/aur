@@ -4,10 +4,10 @@ pkgdesc="ROS - Single image rectification and color processing."
 url='http://www.ros.org/wiki/image_proc'
 
 pkgname='ros-indigo-image-proc'
-pkgver='1.12.11'
+pkgver='1.12.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-image-geometry
