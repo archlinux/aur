@@ -4,10 +4,10 @@ pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
 url='http://www.ros.org/wiki/turtlesim'
 
 pkgname='ros-indigo-turtlesim'
-pkgver='0.5.1'
-_pkgver_patch=1
+pkgver='0.5.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp-serialization
@@ -61,6 +61,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
