@@ -3,17 +3,17 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=roxterm-gtk2
-pkgver=2.8.3
+pkgver=2.9.3
 pkgrel=1
 pkgdesc='Tabbed, VTE-based terminal emulator (GTK2 version)'
 arch=('i686' 'x86_64')
 url='http://roxterm.sourceforge.net/'
 license=('GPL3')
-depends=('dbus-glib' 'vte' 'hicolor-icon-theme')
+depends=('dbus-glib' 'vte' 'hicolor-icon-theme' 'libsm')
 makedepends=('docbook-xsl' 'xmlto' 'po4a' 'python2' 'python2-lockfile' 'imagemagick' 'librsvg')
 install=roxterm.install
 source=("http://downloads.sourceforge.net/roxterm/roxterm-$pkgver.tar.bz2")
-md5sums=('0f775a11f01e38be22ae5a080800c5f7')
+md5sums=('b42d633332ce0c71665f87bc734107d0')
 
 build() {
   cd "${srcdir}/roxterm-${pkgver}"

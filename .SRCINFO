@@ -1,6 +1,6 @@
 pkgbase = roxterm-gtk2
 	pkgdesc = Tabbed, VTE-based terminal emulator (GTK2 version)
-	pkgver = 2.8.3
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = http://roxterm.sourceforge.net/
 	install = roxterm.install
@@ -17,8 +17,9 @@ pkgbase = roxterm-gtk2
 	depends = dbus-glib
 	depends = vte
 	depends = hicolor-icon-theme
-	source = http://downloads.sourceforge.net/roxterm/roxterm-2.8.3.tar.bz2
-	md5sums = 0f775a11f01e38be22ae5a080800c5f7
+	depends = libsm
+	source = http://downloads.sourceforge.net/roxterm/roxterm-2.9.3.tar.bz2
+	md5sums = b42d633332ce0c71665f87bc734107d0
 
 pkgname = roxterm-gtk2
 
