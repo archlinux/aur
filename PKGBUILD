@@ -1,10 +1,10 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
-pkgname=lwjgl
+pkgname=lwjgl2
 pkgver=2.9.1
 pkgrel=1
 pkgdesc='Lightweight Java Game Library - for use in game projects in Java.'
 arch=(any)
-url='http://lwjgl.org/'
+url='http://legacy.lwjgl.org/'
 license=('BSD')
 changelog=ChangeLog
 options=(!strip)
