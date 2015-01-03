@@ -4,10 +4,10 @@ pkgdesc="ROS - The pluginlib package provides tools for writing and dynamically 
 url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-indigo-pluginlib'
-pkgver='1.10.0'
-_pkgver_patch=3
+pkgver='1.10.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD, Boost Software License')
 
 ros_makedepends=(ros-indigo-roslib
@@ -52,6 +52,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
