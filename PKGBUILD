@@ -4,8 +4,8 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.6.r34.gefb7c6b
-pkgrel=2
+pkgver=0.95.6.r192.g796b557
+pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
@@ -15,11 +15,9 @@ conflicts=('windowmaker' 'windowmaker-git')
 makedepends=('git')
 depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'giflib' 'libexif')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git#branch=next"
-	wmaker.desktop
-	giflib-5.1.0.patch)
+	wmaker.desktop)
 md5sums=('SKIP'
-         '2fba97bebfd691836b92b8f0db79ff13'
-         '59ec642cd64a1b5222ba672a19afe489')
+         '2fba97bebfd691836b92b8f0db79ff13')
 
 pkgver() {
   cd $pkgname
@@ -28,7 +26,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np2 -b -z .orig -i ../giflib-5.1.0.patch
   
   autoreconf -fi
   
