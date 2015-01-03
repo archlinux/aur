@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-roscpp-traits
 	pkgdesc = ROS - roscpp_traits contains the message traits code as described in MessagesTraits.
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = http://ros.org/wiki/roscpp_traits
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-roscpp-traits
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-rostime
 	depends = ros-indigo-cpp-common
-	source = roscpp_traits::git+https://github.com/ros-gbp/roscpp_core-release.git#tag=release/indigo/roscpp_traits/0.5.4-0
+	source = roscpp_traits::git+https://github.com/ros-gbp/roscpp_core-release.git#tag=release/indigo/roscpp_traits/0.5.5-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roscpp-traits
