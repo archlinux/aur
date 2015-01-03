@@ -3,7 +3,9 @@ pkg/
 *~
 *.part
 linux-*.tar.xz
+linux-*.tar.sign
 patch-*.xz
+patch-*.sign
 *.log
 *.patch
 *.src.tar.gz

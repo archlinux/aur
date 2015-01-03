@@ -13,17 +13,23 @@ license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
         'config'
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('2f0b72466e9bc538a675738aa416573d41bbbd7e3e2ffd5b5b127afde609ebc278cec5a3c37e73479607e957c13f1b4ed9782a3795e0dcc2cf8e550228594009'
-            '3c83cbf12a0c68607405ab253a85ef792d00bdca563a538069a5d4628d31dd0391ea4b4302cdd38cf5f5d6c7455df94ecd5d2ba77a5148e35d646c03bec3a31f'
+sha512sums=('2f0b72466e9bc538a675738aa416573d41bbbd7e3e2ffd5b5b127afde609ebc278cec5a3c37e73479607e957c13f1b4ed9782a3795e0dcc2cf8e550228594009' 'SKIP'
+            '3c83cbf12a0c68607405ab253a85ef792d00bdca563a538069a5d4628d31dd0391ea4b4302cdd38cf5f5d6c7455df94ecd5d2ba77a5148e35d646c03bec3a31f' 'SKIP'
             '17652104279fdb66e751fe091570fe2f15096994840de6da539d516c457006233790900761b5b54bd2ecb89d42699b29032b44673d00753f303216a75895ded0'
             'd275ecb877ec4e1fcc1fc590e1da58d37a2ef3b81bf74abbcc142a49c4a5702f3b37a04f5449e1d1f4222c0c81cac2ce43d5f51cac39907a1827d95973bca7b1'
             '0ddff435474213f6c6e62576b6b3042aeffd1df84c47ca6195714a92c2655c33c56ce211c14934f4268afdf246077e1ea04e0958efc263c71aabfb497481022c'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
+validpgpkeys=(
+              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+)
 pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(linux)
