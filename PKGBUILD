@@ -123,7 +123,13 @@ prepare() {
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
 
   # Why true? cuz pacman is crazy... and it still doesn't work as intended
-  true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
+  if grep -sq '#define SLIC3R_VERSION' ./xs/src/libslic3r/libslic3r.h; then
+    # 6adc3477c9d08d2cfa0e6902b3d241a9193e50d4 intruduces libslic3r.h in that directory BUT
+    # 8b6a8e63079978646cd98a96d6ad178b28f3067c introduces version in that header
+    true && pkgver="$(awk '/#define SLIC3R_VERSION/ {gsub(/"/, "", $3); print $3 }' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
+  else
+    true && pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
+  fi
   export _pkgver="$pkgver"
   msg2 "Fetched $_pkgver"
 }
