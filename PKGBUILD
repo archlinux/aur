@@ -4,7 +4,7 @@ pkgdesc="ROS - A common repository for CMake Modules which are not distributed w
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-cmake-modules'
-pkgver='0.3.2'
+pkgver='0.3.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
