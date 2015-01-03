@@ -1,5 +1,6 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
-pkgname=lwjgl2
+_pkgname=lwjgl
+pkgname=${_pkgname}2
 pkgver=2.9.2
 pkgrel=1
 pkgdesc='Lightweight Java Game Library - for use in game projects in Java.'
@@ -8,12 +9,12 @@ url='http://legacy.lwjgl.org/'
 license=('BSD')
 changelog=ChangeLog
 options=(!strip)
-source=("https://downloads.sourceforge.net/project/java-game-lib/Official Releases/LWJGL $pkgver/lwjgl-${pkgver}.zip")
+source=("https://downloads.sourceforge.net/project/java-game-lib/Official Releases/LWJGL $pkgver/$_pkgname-${pkgver}.zip")
 md5sums=('97e35a2ab8ae88e6ec1b27674209d5bb')
 sha1sums=('5544c0bec56f4920fb4694ae650eb7ace5dfaf19')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   _sharedir="$pkgdir/usr/share"
   # Install licenses
   install -d $_sharedir/licenses/$pkgname/3rdparty
