@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-geometry
 	pkgdesc = ROS - Geometry Library.
-	pkgver = 1.11.3
-	pkgrel = 2
+	pkgver = 1.11.4
+	pkgrel = 1
 	url = http://www.ros.org/wiki/geometry
 	arch = any
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-geometry
 	depends = ros-indigo-eigen-conversions
 	depends = ros-indigo-angles
 	depends = ros-indigo-tf-conversions
-	source = geometry::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/geometry/1.11.3-1
+	source = geometry::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/geometry/1.11.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-geometry
