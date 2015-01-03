@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <Stefan-Husmann@t-online.de>
 pkgname=xpaint
 pkgver=2.9.10.2
-pkgrel=2
+pkgrel=4
 pkgdesc="A color image editing tool which features most standard \
 paint program options."
 arch=('i686' 'x86_64')
@@ -16,8 +16,6 @@ options=('!makeflags')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  [ -f config.status ] && rm configure
-  [ -f config.status ] && rm config.status
   [ -L xaw_incdir ] && rm xaw_incdir
   ln -s /usr/include/X11/Xaw3dxft xaw_incdir 
   patch -p1 < $srcdir/X11app.patch
@@ -27,7 +25,7 @@ build() {
   cd $srcdir/$pkgname-$pkgver
   aclocal 
   XAPPLOADIR=$SHAREDIR/X11 automake --add-missing
-  ./configure --prefix=/usr
+  CC=gcc ./configure --prefix=/usr
   make 
 }
 

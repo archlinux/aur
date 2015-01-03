@@ -1,7 +1,7 @@
 pkgbase = xpaint
 	pkgdesc = A color image editing tool which features most standard paint program options.
 	pkgver = 2.9.10.2
-	pkgrel = 2
+	pkgrel = 4
 	url = http://sourceforge.net/projects/sf-xpaint/
 	arch = i686
 	arch = x86_64
