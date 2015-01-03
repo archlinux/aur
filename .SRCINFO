@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rostopic
 	pkgdesc = ROS - rostopic contains the rostopic command-line tool for displaying debug information about ROS Topics, including publishers, subscribers, publishing rate, and ROS Messages.
-	pkgver = 1.11.9
+	pkgver = 1.11.10
 	pkgrel = 1
 	url = http://ros.org/wiki/rostopic
 	arch = any
@@ -10,9 +10,10 @@ pkgbase = ros-indigo-rostopic
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-rostest
 	makedepends = ros-indigo-catkin
+	depends = ros-indigo-genpy
 	depends = ros-indigo-rospy
 	depends = ros-indigo-rosbag
-	source = rostopic::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rostopic/1.11.9-0
+	source = rostopic::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/indigo/rostopic/1.11.10-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rostopic

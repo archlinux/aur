@@ -4,7 +4,7 @@ pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying d
 url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-indigo-rostopic'
-pkgver='1.11.9'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,8 @@ ros_makedepends=(ros-indigo-rostest
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-rospy
+ros_depends=(ros-indigo-genpy
+  ros-indigo-rospy
   ros-indigo-rosbag)
 depends=(${ros_depends[@]})
 
@@ -44,6 +45,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
