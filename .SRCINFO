@@ -1,7 +1,7 @@
 pkgbase = vtigercrm
 	pkgdesc = A free, full-featured, 100% Open Source CRM software ideal for small and medium businesses
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vtiger.com/open-source/
 	arch = any
 	license = custom
@@ -24,8 +24,8 @@ pkgbase = vtigercrm
 	backup = etc/webapps/vtigercrm/config.performance.php
 	backup = etc/webapps/vtigercrm/connection.php
 	source = http://downloads.sourceforge.net/vtigercrm/vtigercrm6.1.0.tar.gz
-	md5sums = 49b0405a9e2385ffc25522ee613fd79a
-	sha1sums = 5f26ccf8d7c87fd6bc355f93136aeb4d76c68e68
+	md5sums = ccceaa42d48f4265d1878c8b162c04ee
+	sha1sums = 3295962fe191bddfbb3d036c23ddbe1de3c78f03
 
 pkgname = vtigercrm
 
