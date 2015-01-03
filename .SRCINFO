@@ -1,6 +1,6 @@
 pkgbase = libvncserver-git
 	pkgdesc = VNC server for real X displays
-	pkgver = 0.9.9.r106.ga6c559b
+	pkgver = 0.9.10.r12.g57c524d
 	pkgrel = 1
 	url = https://LibVNC.github.io
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = libvncserver-git
 	provides = libvncserver
 	conflicts = libvncserver
 	options = !emptydirs
-	source = libvncserver-git::git+https://github.com/bbidulock/libvncserver.git
+	source = libvncserver-git::git+https://github.com/libvnc/libvncserver.git
 	sha1sums = SKIP
 
 pkgname = libvncserver-git
