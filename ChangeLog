@@ -1,7 +1,9 @@
 2015-01-03 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
-	* lwjgl2-2.9.1-1 :
+	* lwjgl2-2.9.2-1 :
+	Version bump to 2.9.2.
 	Renamed package to lwjgl2.
+	See http://forum.lwjgl.org/index.php?topic=5617 for version changes.
 
 2013-12-12 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
