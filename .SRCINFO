@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-tf2-py
 	pkgdesc = ROS - The tf2_py package.
-	pkgver = 0.5.6
-	pkgrel = 2
+	pkgver = 0.5.7
+	pkgrel = 1
 	url = http://ros.org/wiki/tf2_py
 	arch = any
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-tf2-py
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-rospy
 	depends = ros-indigo-tf2
-	source = tf2_py::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_py/0.5.6-0
+	source = tf2_py::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_py/0.5.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-tf2-py
