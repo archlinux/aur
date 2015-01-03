@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_msgs."
 url='http://www.ros.org/wiki/tf2_msgs'
 
 pkgname='ros-indigo-tf2-msgs'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -47,6 +47,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
