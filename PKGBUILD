@@ -4,10 +4,10 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='http://www.ros.org/wiki/actionlib'
 
 pkgname='ros-indigo-actionlib'
-pkgver='1.11.2'
+pkgver='1.11.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -55,6 +55,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
