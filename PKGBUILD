@@ -4,10 +4,10 @@ pkgdesc="ROS - This package attempts to show the features of ROS step-by-step, i
 url='http://www.ros.org/wiki/roscpp_tutorials'
 
 pkgname='ros-indigo-roscpp-tutorials'
-pkgver='0.5.1'
-_pkgver_patch=1
+pkgver='0.5.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp-serialization
@@ -53,6 +53,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-roscpp-tutorials
 	pkgdesc = ROS - This package attempts to show the features of ROS step-by-step, including using messages, servers, parameters, etc.
-	pkgver = 0.5.1
-	pkgrel = 3
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = http://www.ros.org/wiki/roscpp_tutorials
 	arch = any
 	license = BSD
@@ -21,7 +21,7 @@ pkgbase = ros-indigo-roscpp-tutorials
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-rostime
 	depends = ros-indigo-rosconsole
-	source = roscpp_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/indigo/roscpp_tutorials/0.5.1-1
+	source = roscpp_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/indigo/roscpp_tutorials/0.5.2-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roscpp-tutorials
