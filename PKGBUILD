@@ -4,22 +4,25 @@ pkgdesc="ROS - The class_loader package is a ROS-independent package for loading
 url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-indigo-class-loader'
-pkgver='0.3.0'
+pkgver='0.3.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-catkin)
+ros_makedepends=(ros-indigo-cmake-modules
+  ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  console-bridge
-  poco)
+  poco
+  boost
+  console-bridge)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  console-bridge
-  poco)
+  poco
+  boost
+  console-bridge)
 
 _tag=release/indigo/class_loader/${pkgver}-${_pkgver_patch}
 _dir=class_loader
@@ -46,6 +49,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
