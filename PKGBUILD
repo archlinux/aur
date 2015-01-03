@@ -4,7 +4,7 @@
 _author="Daniel P. Berrange"
 _perlmod="sys-virt"
 pkgname=perl-${_perlmod}
-pkgver=1.2.6
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="Represent and manage a libvirt hypervisor connection"
 arch=('any')
@@ -37,4 +37,4 @@ package() {
   find "${pkgdir}" -type f \( -name .packlist -o -name '*.bs' -empty \) | xargs rm -vf
 }
 
-md5sums=('c7023228f4e5f870b7c36c4ab1668b27')
+md5sums=('366672f8ac4abd2cc814a32fb10fa929')
