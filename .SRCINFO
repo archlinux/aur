@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rospy-tutorials
 	pkgdesc = ROS - This package attempts to show the features of ROS python API step-by-step, including using messages, servers, parameters, etc.
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = http://www.ros.org/wiki/rospy_tutorials
 	arch = any
 	license = BSD
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-rospy-tutorials
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-rospy
-	source = rospy_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/indigo/rospy_tutorials/0.5.1-1
+	source = rospy_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/indigo/rospy_tutorials/0.5.2-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rospy-tutorials
