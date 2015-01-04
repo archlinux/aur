@@ -37,7 +37,7 @@ package() {
         "${pkgdir}/usr/bin/maraschino"
 
     # Install systemd Script
-    install -D -m755 "${srcdir}/maraschino.service" \
+    install -D -m644 "${srcdir}/maraschino.service" \
         "${pkgdir}/usr/lib/systemd/system/maraschino.service"
 
     # Install Daemon Configuration
