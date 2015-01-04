@@ -2,7 +2,7 @@
 
 pkgname=aegir-hostmaster
 _pkgname=hostmaster
-pkgver=3.0_alpha1
+pkgver=3.0_alpha2
 pkgrel=1
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
@@ -33,10 +33,10 @@ source=(
     'service'
     'sudoers'
     'http://ftp.drupal.org/files/projects/eldir-7.x-3.0-alpha1.tar.gz'
-    'http://ftp.drupal.org/files/projects/hosting-7.x-3.0-alpha1.tar.gz'
+    'http://ftp.drupal.org/files/projects/hosting-7.x-3.0-alpha2.tar.gz'
     'http://ftp.drupal.org/files/projects/hosting_platform_pathauto-7.x-2.1.tar.gz'
 )
-md5sums=('ec94749f5b4d2243bba9ceda8ee62ca8'
+md5sums=('cc1039871c38efeef918b3facecf2d86'
          'f06c912eb4edbd48fbcc2867516726a3'
          '6bd6a1c6264fe7c06d79d1f5159b1e68'
          'e3c0a33e3ce714b4fdbd2e30416456c2'
@@ -46,7 +46,7 @@ md5sums=('ec94749f5b4d2243bba9ceda8ee62ca8'
          '675f8f7b0bec18b3a02c6a5db5de5360'
          '21178d56a58133e39309dd98d94409cc'
          '5f168aedc6800fd3620fbc46d48c88a9'
-         '665c01ba1a5b44b2ccb163d99a518240'
+         '5aafb84a768533b7389fa704f20afd02'
          '70d7c42d55588e59646526a4afc2a7f5')
 
 package() {
