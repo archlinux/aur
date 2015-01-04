@@ -1,3 +1,17 @@
+2015-01-04 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+
+	* 3.7-1 :
+	Version bump.
+	See https://github.com/skiphs/AMIDST/releases/tag/3.7
+
+	Upstream changelog:
+	- Several minor fixes to the open and save dialog boxes.
+	- New icon for jungle temples
+	- Additional CLI options added (-mcjar and -mcjson)
+	- Added support for Minecraft 1.8.
+	- Added support for custom world parameters when loading from a 1.8 (or greater) world.
+
+
 2014-02-07 Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
 	* 3.7_beta_1-1 :
