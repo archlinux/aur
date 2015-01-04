@@ -1,0 +1,22 @@
+diff -Naur SRB2-SRB2_release_2.1.14.old/src/sdl/i_system.c SRB2-SRB2_release_2.1.14/src/sdl/i_system.c
+--- SRB2-SRB2_release_2.1.14.old/src/sdl/i_system.c	2015-01-01 20:51:38.000000000 +0100
++++ SRB2-SRB2_release_2.1.14/src/sdl/i_system.c	2015-01-04 20:00:51.209473479 +0100
+@@ -746,7 +746,9 @@
+ 	// If these defines don't exist,
+ 	// then compilation would have failed above us...
+ 	signal(SIGINT , quit_handler);
++#if !defined (__linux__)
+ 	signal(SIGBREAK , quit_handler);
++#endif
+ 	signal(SIGTERM , quit_handler);
+ 	signal(SIGILL , signal_handler);
+ 	signal(SIGSEGV , signal_handler);
+@@ -2332,7 +2334,7 @@
+ void I_Error(const char *error, ...)
+ {
+ 	va_list argptr;
+-#if (defined (MAC_ALERT) || defined (_WIN32) || (defined (_WIN32_WCE) && !defined (__GNUC__))) && !defined (_XBOX)
++#if (defined (MAC_ALERT) || defined (_WIN32) || defined (__linux__) || (defined (_WIN32_WCE) && !defined (__GNUC__))) && !defined (_XBOX)
+ 	char buffer[8192];
+ #endif
+ 
