@@ -1,0 +1,29 @@
+pkgbase = btrfs-progs-unstable-integration
+	pkgdesc = Btrfs filesystem utilities - David Sterba's unstable 'integration' branch
+	pkgver = 20141218
+	pkgrel = 1
+	url = http://btrfs.wiki.kernel.org/index.php/Main_Page
+	changelog = changelog.txt
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = glibc
+	depends = e2fsprogs
+	depends = lzo2
+	depends = zlib
+	provides = btrfs-progs
+	conflicts = btrfs-progs
+	conflicts = btrfs-progs-git
+	conflicts = btrfs-progs-integration-git
+	source = btrfs-progs-unstable::git+http://repo.or.cz/r/btrfs-progs-unstable/devel.git#branch=integration-20141218
+	source = initcpio-hook-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-hook-btrfs?h=packages/btrfs-progs
+	source = initcpio-install-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-install-btrfs?h=packages/btrfs-progs
+	md5sums = SKIP
+	md5sums = b09688a915a0ec8f40e2f5aacbabc9ad
+	md5sums = 7241ba3a4286d08da0d50b7176941112
+
+pkgname = btrfs-progs-unstable-integration
+
