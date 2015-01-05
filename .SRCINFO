@@ -6,8 +6,9 @@ pkgbase = perl-wx-glcanvas
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl-alien-wxwidgets
 	depends = perl>=5.10.0
-	depends = perl-alien-wxwidgets
+	depends = perl-wx
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/M/MB/MBARBON/Wx-GLCanvas-0.09.tar.gz
 	md5sums = 4f6475010bd6e4231e2dbb3fb52bc642

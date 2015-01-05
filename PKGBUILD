@@ -6,8 +6,8 @@ pkgdesc="Wx::GLCanvas - interface to wxWidgets' OpenGL canvas"
 arch=('any')
 url="http://search.cpan.org/~mbarbon/Wx-GLCanvas/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0' 'perl-alien-wxwidgets')
-makedepends=()
+depends=('perl>=5.10.0' 'perl-wx')
+makedepends=('perl-alien-wxwidgets')
 provides=()
 conflicts=()
 replaces=()
@@ -28,13 +28,13 @@ prepare() {
 
 build() {
   cd "$_src_dir"
-  /usr/bin/perl Makefile.PL
-  make
+  /usr/bin/perl Makefile.PL || true
+  make || true
 }
 
 check () {
   cd "$_src_dir"
-  #make test
+  warning "If tests do fail - uninstall this package before compiling"
   prove -Iblib/arch -Iblib/lib/ t/
 }
 
