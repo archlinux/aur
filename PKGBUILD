@@ -2,16 +2,17 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgbase=vbam
-pkgname=('vbam-cli' 'vbam-gtk' 'vbam-wx')
+pkgname=('vbam-sdl' 'vbam-gtk' 'vbam-wx')
 pkgver=1.8.0.1229
-pkgrel=1
+pkgrel=2
+pkgdesc='Nintendo GameBoy Advance emulator'
 arch=('i686' 'x86_64')
 url='http://vba-m.com'
 license=('GPL2')
 makedepends=('cmake' 'desktop-file-utils' 'ffmpeg' 'freetype2' 'gtkglextmm'
              'imagemagick' 'glew' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr'
              'openal' 'subversion' 'wxgtk2.8' 'zip')
-[[ $CARCH == i686 ]] && makedepends+=('nasm')
+makedepends_i686=('nasm')
 source=("vbam::svn+http://svn.code.sf.net/p/vbam/code/trunk#revision=${pkgver##*.}"
         'http://www.sfml-dev.org/files/SFML-1.6-sdk-linux-64.tar.gz'
         'http://www.lonesock.net/files/soil.zip'
@@ -39,19 +40,16 @@ prepare() {
 }
 
 build() {
-# Build static SOIL
   pushd 'Simple OpenGL Image Library/src'
   make -f "../projects/makefile/alternate Makefile.txt"
   make -f "../projects/makefile/alternate Makefile.txt" DESTDIR="${srcdir}/staging" install
   popd
 
-# Build static SFML
   pushd SFML-1.6
   make
   make DESTDIR="${srcdir}/staging/usr" install
   popd
 
-# Build VBA-M
   cd vbam
 
   if [[ -d build ]]; then
@@ -59,23 +57,23 @@ build() {
   fi
   mkdir build && cd build
 
-  local _cmakeargs="-DCMAKE_BUILD_TYPE='Release' \
-                    -DCMAKE_CXX_FLAGS=-I${srcdir}/staging/usr/include \
-                    -DCMAKE_INSTALL_PREFIX='/usr' \
-                    -DCMAKE_SKIP_RPATH='TRUE' \
-                    -DENABLE_GTK='TRUE' -DENABLE_WX='TRUE' \
-                    -DENABLE_FFMPEG='TRUE' -DENABLE_LINK='TRUE' \
-                    -DSFML_INCLUDE_DIR='../../staging/usr/include/SFML' \
-                    -DSFML_AUDIO_INCLUDE_DIR='../../staging/usr/include/SFML/Audio' \
-                    -DSFML_AUDIO_LIBRARY='../../staging/usr/lib/libsfml-audio-s.a' \
-                    -DSFML_GRAPHICS_INCLUDE_DIR='../../staging/usr/include/SFML/Graphics' \
-                    -DSFML_GRAPHICS_LIBRARY='../../staging/usr/lib/libsfml-graphics-s.a' \
-                    -DSFML_NETWORK_INCLUDE_DIR='../../staging/usr/include/SFML/Network' \
-                    -DSFML_NETWORK_LIBRARY='../../staging/usr/lib/libsfml-network-s.a' \
-                    -DSFML_SYSTEM_INCLUDE_DIR='../../staging/usr/include/SFML/System' \
-                    -DSFML_SYSTEM_LIBRARY='../../staging/usr/lib/libsfml-system-s.a' \
-                    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-2.8' \
-                    -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-2.8'"
+  _cmakeargs="-DCMAKE_BUILD_TYPE='Release' \
+              -DCMAKE_CXX_FLAGS=-I${srcdir}/staging/usr/include \
+              -DCMAKE_INSTALL_PREFIX='/usr' \
+              -DCMAKE_SKIP_RPATH='TRUE' \
+              -DENABLE_GTK='TRUE' -DENABLE_WX='TRUE' \
+              -DENABLE_FFMPEG='TRUE' -DENABLE_LINK='TRUE' \
+              -DSFML_INCLUDE_DIR='../../staging/usr/include/SFML' \
+              -DSFML_AUDIO_INCLUDE_DIR='../../staging/usr/include/SFML/Audio' \
+              -DSFML_AUDIO_LIBRARY='../../staging/usr/lib/libsfml-audio-s.a' \
+              -DSFML_GRAPHICS_INCLUDE_DIR='../../staging/usr/include/SFML/Graphics' \
+              -DSFML_GRAPHICS_LIBRARY='../../staging/usr/lib/libsfml-graphics-s.a' \
+              -DSFML_NETWORK_INCLUDE_DIR='../../staging/usr/include/SFML/Network' \
+              -DSFML_NETWORK_LIBRARY='../../staging/usr/lib/libsfml-network-s.a' \
+              -DSFML_SYSTEM_INCLUDE_DIR='../../staging/usr/include/SFML/System' \
+              -DSFML_SYSTEM_LIBRARY='../../staging/usr/lib/libsfml-system-s.a' \
+              -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-2.8' \
+              -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-2.8'"
 
   if [[ $CARCH == i686 ]]; then
     cmake .. ${_cmakeargs} -DENABLE_ASM_{CORE,SCALERS}='TRUE'
@@ -85,9 +83,9 @@ build() {
   make
 }
 
-package_vbam-cli() {
-pkgdesc='Nintendo GameBoy Advance emulator'
+package_vbam-sdl() {
 depends=('libgl' 'libpng' 'sdl')
+replaces=('vbam-cli')
 backup=('etc/vbam.cfg')
 
   cd vbam/build
@@ -97,7 +95,6 @@ backup=('etc/vbam.cfg')
 }
 
 package_vbam-gtk() {
-pkgdesc='Nintendo GameBoy Advance emulator'
 depends=('desktop-file-utils' 'gtkglextmm' 'sdl')
 conflicts=('vbam-wx')
 install='vbam-gtk.install'
@@ -110,7 +107,6 @@ install='vbam-gtk.install'
 }
 
 package_vbam-wx() {
-pkgdesc='Nintendo GameBoy Advance emulator'
 depends=('ffmpeg' 'wxgtk2.8')
 conflicts=('vbam-gtk')
 options=('!emptydirs')
