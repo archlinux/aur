@@ -10,7 +10,7 @@ url="https://github.com/X0rg/CPU-X"
 license=('GPL3')
 depends=('gtk3' 'ncurses' 'libcpuid-git' 'procps-ng')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/X0rg/CPU-X/archive/v$pkgver.tar.gz")
 md5sums=('825ae76c82bc8972aa6ab4fddda68252')
 
 prepare() {
