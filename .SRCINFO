@@ -15,7 +15,7 @@ pkgbase = mcrecover
 	source = http://gerbilsoft.soniccenter.org/gc-tools/mcrecover/v0.2/mcrecover-0.2.tar.gz
 	source = http://gerbilsoft.soniccenter.org/gc-tools/mcrecover/v0.2/mcrecover-0.2.tar.gz.asc
 	sha256sums = 6c9897553bae6794c27aab3d1978c50e2d38df6f54e80f06e587f339e6bb66a9
-	sha256sums = 43898f11b2d9012d97685c7637d4a337ff3852c9e4ee9d1c9df12cae5a69543b
+	sha256sums = SKIP
 
 pkgname = mcrecover
 

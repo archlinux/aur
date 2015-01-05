@@ -10,11 +10,10 @@ license=('GPL2')
 depends=('qt4' 'libpng' 'pcre' 'hicolor-icon-theme')
 makedepends=('cmake')
 install=$pkgname.install
-source=("http://gerbilsoft.soniccenter.org/gc-tools/$pkgname/v$pkgver/$pkgname-$pkgver.tar.gz"
-        "http://gerbilsoft.soniccenter.org/gc-tools/$pkgname/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-# the checksums are provided by the autor:
+source=("http://gerbilsoft.soniccenter.org/gc-tools/$pkgname/v$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
 sha256sums=('6c9897553bae6794c27aab3d1978c50e2d38df6f54e80f06e587f339e6bb66a9'
-            '43898f11b2d9012d97685c7637d4a337ff3852c9e4ee9d1c9df12cae5a69543b')
+            'SKIP')
+validpgpkeys=('C91368749D79DFF18E3A492137D5937255358F32') # David Korth
 
 prepare() {
   # reset build folder
