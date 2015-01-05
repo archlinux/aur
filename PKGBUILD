@@ -6,15 +6,15 @@
 
 pkgname=gkrellm
 pkgver=2.3.5
-pkgrel=5
+pkgrel=6
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
-url="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html"
+url="http://gkrellm.srcbox.net/"
 license=('GPL3')
 depends=('gtk2' 'libsm' 'lm_sensors')
 makedepends=('gettext')
 backup=('etc/gkrellmd.conf')
-source=("http://members.dslextreme.com/users/billw/$pkgname/$pkgname-$pkgver.tar.bz2"
+source=("${url}/releases/$pkgname-$pkgver.tar.bz2"
         "gkrellm.service")
 sha256sums=('702b5b0e9c040eb3af8e157453f38dd6f53e1dcd8b1272d20266cda3d4372c8b'
             '2829931127632d0391f6749024809594b78c138fe4f03c98cd65fdbd47cea376')
