@@ -1,0 +1,26 @@
+pkgbase = automake-1.13
+	pkgdesc = A GNU tool for automatically creating Makefiles
+	pkgver = 1.13.4
+	pkgrel = 2
+	url = http://www.gnu.org/software/automake
+	install = automake.install
+	arch = any
+	groups = base-devel
+	license = GPL
+	checkdepends = dejagnu
+	checkdepends = python2
+	checkdepends = java-environment
+	checkdepends = vala
+	checkdepends = emacs
+	checkdepends = cscope
+	makedepends = autoconf
+	depends = perl
+	depends = bash
+	provides = automake=1.13.4
+	source = ftp://ftp.gnu.org/gnu/automake/automake-1.13.4.tar.xz
+	source = ftp://ftp.gnu.org/gnu/automake/automake-1.13.4.tar.xz.sig
+	md5sums = 71b03c1bc4f587add12604587d9276d1
+	md5sums = SKIP
+
+pkgname = automake-1.13
+
