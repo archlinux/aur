@@ -7,11 +7,15 @@ pkgbase = perl-alien-wxwidgets
 	license = GPL
 	license = PerlArtistic
 	depends = perl>=5.10.0
-	depends = wxgtk2.8
+	depends = wxgtk
 	depends = perl-module-pluggable
 	options = !emptydirs
 	source = http://www.cpan.org/modules/by-module/Alien/Alien-wxWidgets-0.65.tar.gz
+	source = https://rt.cpan.org/Ticket/Attachment/1400329/743429/wx-config-version-and-env.patch
+	source = https://rt.cpan.org/Ticket/Attachment/1239555/655334/Alien-wxWidgets-0.64-returnor.patch
 	md5sums = 219a4f572d24eaa98c3dc2d118c5d9f0
+	md5sums = 1d21142e0a60bec1a4fab11dc545f955
+	md5sums = 0011e91d60a7a669426341687cb6a5e2
 
 pkgname = perl-alien-wxwidgets
 
