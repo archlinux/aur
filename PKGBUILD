@@ -10,8 +10,10 @@ url="https://developers.google.com/speed/webp/"
 license=('BSD')
 depends=("${pkgname#*-}=$pkgver" 'lib32-glibc')
 makedepends=('gcc-multilib')
-source=("http://downloads.webmproject.org/releases/webp/${pkgname#*-}-$pkgver.tar.gz")
-sha256sums=('14d825d7c2ef7d49621bcb6b83466be455585e671ae0a2ebc1f2e07775a1722d')
+source=("http://downloads.webmproject.org/releases/webp/${pkgname#*-}-$pkgver.tar.gz"{,.asc})
+sha256sums=('14d825d7c2ef7d49621bcb6b83466be455585e671ae0a2ebc1f2e07775a1722d'
+            'SKIP')
+validpgpkeys=("6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D") # WebP release signing key
 
 build() {
   cd ${pkgname#*-}-$pkgver

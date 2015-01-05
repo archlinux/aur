@@ -9,7 +9,9 @@ pkgbase = lib32-libwebp
 	depends = libwebp=0.4.2
 	depends = lib32-glibc
 	source = http://downloads.webmproject.org/releases/webp/libwebp-0.4.2.tar.gz
+	source = http://downloads.webmproject.org/releases/webp/libwebp-0.4.2.tar.gz.asc
 	sha256sums = 14d825d7c2ef7d49621bcb6b83466be455585e671ae0a2ebc1f2e07775a1722d
+	sha256sums = SKIP
 
 pkgname = lib32-libwebp
 
