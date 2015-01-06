@@ -1,12 +1,13 @@
 pkgname=novnc
-pkgver=20130923
+pkgepoch=1
+pkgver=0.5
 pkgrel=1
 pkgdesc="javascript vnc client"
 arch=(i686 x86_64)
-url="http://kanaka.github.com/noVNC/"
+url="https://github.com/kanaka/noVNC"
 license=('GPL')
 depends=()
-source=("$pkgname::git://github.com/kanaka/noVNC.git")
+source=("$pkgname::git+https://github.com/kanaka/noVNC.git#tag=v0.5")
 md5sums=('SKIP')
 
 prepare() {
