@@ -1,0 +1,38 @@
+--- src/engine/iso-4217-currencies.c.orig	2015-01-02 18:34:12.445021803 +0100
++++ src/engine/iso-4217-currencies.c	2015-01-02 18:38:34.565784519 +0100
+@@ -4142,6 +4142,24 @@
+   }
+ 
+   {
++    const char *fullname = "Bitcoin";
++    gnc_commodity *c = gnc_commodity_new(book,
++                     CUR_I18N(fullname),
++                                         "ISO4217",
++                                         "XBT",
++                                         "nil",
++                                         1000000);
++
++    if(!c) {
++      PWARN("failed to create commodity for currency %s", fullname);
++    } else {
++      if(!gnc_commodity_table_insert(table, c)) {
++        PWARN("failed to insert %s into commodity table", fullname);
++      }
++    }
++  }
++
++  {
+     const char *fullname = "Silver";
+     gnc_commodity *c = gnc_commodity_new(book,
+ CUR_I18N(fullname),
+
+--- src/engine/iso-4217-currencies.scm.orig	2015-01-02 18:34:12.448355147 +0100
++++ src/engine/iso-4217-currencies.scm	2015-01-02 18:36:30.718765059 +0100
+@@ -245,6 +245,7 @@
+ ( "CFP Franc" "franc" "centime" "ISO4217" "XPF" "953" 1 100 "" ) ;; Communauté Financière du Pacifique
+ ( "Code for testing purposes" "TEST" "test" "ISO4217" "XTS" "963" 1 1000000 "" ) ;; Code reserved for testing purposes
+ ( "No currency" "" "" "ISO4217" "XXX" "999" 1 1000000 "" )
++( "Bitcoin" "bitcoin" "microbitcoin" "ISO4217" "XBT" "nil" 1000000 1000000 "XBT" )
+ 
+ ;; precious metals
+ ( "Silver" "ounce" "ounce" "ISO4217" "XAG" "961" 1 1000000 "" )
