@@ -1,8 +1,8 @@
 pkgbase = cloud66-toolbelt
 	pkgdesc = Cloud66 Toolbelt
 	pkgver = 0.1.13
-	pkgrel = 1
-	url = http://help.cloud66.com/toolbelt/introduction.html
+	pkgrel = 2
+	url = https://help.cloud66.com/toolbelt/toolbelt-introduction
 	arch = x86_64
 	license = unknown
 	source = http://downloads.cloud66.com/cx/cx_0.1.13_linux_amd64.tar.gz
