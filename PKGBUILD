@@ -1,6 +1,7 @@
 # Maintainer: Benedykt 'b3niup' Przybyło <b3niup@gmail.com>
 
 pkgname=gnucash-xbt
+_pkgname=gnucash
 pkgver=2.6.5
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
@@ -13,16 +14,16 @@ optdepends=('evince: for print preview'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
-conflicts=('gnucash', 'gnucash-devel')
+conflicts=('gnucash' 'gnucash-devel')
 provides=('gnucash')
 install=gnucash.install
-source=("http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-${pkgver}.tar.bz2"
+source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
 		"xbt.patch")
 sha1sums=('c9a5184603e41c6582f8342d4be9e392eceef33f'
 		  '3556218003a0caa823ea87c8c19e2a8e99c244d5')
 
 prepare() {
-  cd "${srcdir}/gnucash-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -Np0 -i "${srcdir}/xbt.patch"
 }
 
@@ -34,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/gnucash-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
   cd src/doc/design
   make DESTDIR="${pkgdir}" install-info
