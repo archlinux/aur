@@ -2,6 +2,7 @@ pkgbase = novnc
 	pkgdesc = javascript vnc client
 	pkgver = 0.5
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/kanaka/noVNC
 	arch = i686
 	arch = x86_64

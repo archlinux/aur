@@ -1,5 +1,5 @@
 pkgname=novnc
-pkgepoch=1
+epoch=1
 pkgver=0.5
 pkgrel=1
 pkgdesc="javascript vnc client"
