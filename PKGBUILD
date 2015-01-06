@@ -2,7 +2,7 @@
 
 pkgname=perl-x11-protocol-more
 _cpanname=X11-Protocol-More
-pkgver=0.01
+pkgver=0.05
 pkgrel=1
 pkgdesc="CPAN/X11::Protocol::Enhanced -- extensions to X11::Protocol"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('perl-x11-protocol')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/B/BI/BIDULOCK/$_cpanname-$pkgver.tar.gz")
-md5sums=('0e79d1d7d3886f864ea354f6af88b456')
+md5sums=('1d7befe159a0b6fbe7ea6e59b9fc641e')
 
 build() {
   cd "$srcdir/$_cpanname-$pkgver"
