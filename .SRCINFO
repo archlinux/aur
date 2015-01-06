@@ -1,6 +1,6 @@
 pkgbase = openvswitch-git
 	pkgdesc = Production Quality, Multilayer Open Virtual Switch
-	pkgver = 2.3.1.r55.g1cb39f3
+	pkgver = 2.3.1.r7.g8091d03
 	pkgrel = 1
 	epoch = 1
 	url = http://openvswitch.org
