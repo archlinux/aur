@@ -2,7 +2,7 @@
 
 pkgname=xcircuit-git
 _pkgname=xcircuit
-pkgver=3.9.27.r0.gc1e56fd
+pkgver=3.9.34.r0.g215a610
 pkgrel=1
 pkgdesc="A program for drawing publishable-quality electrical circuit schematic diagrams (development version)"
 arch=('i686' 'x86_64')
