@@ -1,4 +1,4 @@
-# Maintainer: carstene1ns <arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Heine Laursen <zannvip at gmail dot com>
 # Contributor: Dany Martineau <dany.luc.martineau gmail com>
 
@@ -10,8 +10,10 @@ arch=('any')
 url="http://www.gnu.org/software/liquidwar6/"
 license=('GPL')
 depends=("liquidwar6=$pkgver")
-source=("http://download.savannah.gnu.org/releases/liquidwar6/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('32ffe94781aade93ca26919220b434a26dbde9260655bf6733f19d5df41abc65')
+source=("http://download.savannah.gnu.org/releases/liquidwar6/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
+sha256sums=('32ffe94781aade93ca26919220b434a26dbde9260655bf6733f19d5df41abc65'
+            'SKIP')
+validpgpkeys=("47621EBA5FA3E62F299CB0BBDE3F2BCDFD409E94") # Christian Mauduit
 
 build() {
   cd $pkgname-$pkgver
@@ -21,7 +23,5 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  make DESTDIR="$pkgdir/" install
+  make -C $pkgname-$pkgver DESTDIR="$pkgdir/" install
 }

@@ -7,7 +7,9 @@ pkgbase = liquidwar6-extra-maps
 	license = GPL
 	depends = liquidwar6=0.4.3681
 	source = http://download.savannah.gnu.org/releases/liquidwar6/0.4.3681/liquidwar6-extra-maps-0.4.3681.tar.gz
+	source = http://download.savannah.gnu.org/releases/liquidwar6/0.4.3681/liquidwar6-extra-maps-0.4.3681.tar.gz.sig
 	sha256sums = 32ffe94781aade93ca26919220b434a26dbde9260655bf6733f19d5df41abc65
+	sha256sums = SKIP
 
 pkgname = liquidwar6-extra-maps
 
