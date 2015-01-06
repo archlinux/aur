@@ -27,9 +27,14 @@ prepare() {
 }
 
 build() {
+  #TODO: how to reload PATH?
+  if [[ "$PATH" != *"vendor_perl"* ]]; then
+    warning "Fresh installation of perl detected, please relogin/reboot"
+    source /etc/profile.d/perlbin.sh
+  fi
   cd "$_src_dir"
   /usr/bin/perl Makefile.PL || true
-  make || true
+  make
 }
 
 check () {
