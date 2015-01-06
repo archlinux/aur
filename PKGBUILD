@@ -14,6 +14,7 @@ makedepends=('gcc-multilib')
 depends=('lib32-gcc-libs' $_pkgbasename lib32-libjpeg-turbo)
 source=(http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2
         http://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2.asc)
+validpgpkeys=(05D0169C26E41593418129DF199A64FADFB500FF)
 sha256sums=('6054d3120c67a1524993e699b3b02036c817bb000b742c332682163966dc7605'
             'SKIP')
 
