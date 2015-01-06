@@ -1,0 +1,13 @@
+pkgbase = qtcreator-src
+	pkgdesc = Source code of QtCreator IDE needed to build plugins
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://qt-project.org/wiki/Category:Tools::QtCreator
+	arch = any
+	license = LGPL
+	options = !strip
+	source = https://download.qt.io/official_releases/qtcreator/3.3/3.3.0/qt-creator-opensource-src-3.3.0.tar.gz
+	md5sums = 5e33988908282c779f2e6e4dca2bba3e
+
+pkgname = qtcreator-src
+
