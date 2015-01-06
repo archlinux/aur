@@ -1,7 +1,6 @@
 # Maintainer: Swift Geek <swiftgeek «at» gmail.com>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 # Contributor: John D Jones III (jnbek) <jnbek1972 at gmail dot com>
-# Contributor: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=perl-alien-wxwidgets
 _cpan_name=Alien-wxWidgets
