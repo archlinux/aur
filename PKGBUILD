@@ -12,8 +12,10 @@ license=('GPL')
 depends=('sdl_image' 'sdl_mixer' 'sdl_ttf' 'gtk2' 'sqlite3' 'guile' 'glu' 'curl')
 optdepends=("liquidwar6-extra-maps: contributed extra maps")
 install=$pkgname.install
-source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('942f5547199462fea521717b94517d6415d90573d948e94922f7b15271a4a8e0')
+source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
+sha256sums=('942f5547199462fea521717b94517d6415d90573d948e94922f7b15271a4a8e0'
+            'SKIP')
+validpgpkeys=("47621EBA5FA3E62F299CB0BBDE3F2BCDFD409E94") # Christian Mauduit
 
 build() {
   cd $pkgname-$pkgver
@@ -24,7 +26,5 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  make DESTDIR="$pkgdir/" install
+  make -C $pkgname-$pkgver DESTDIR="$pkgdir/" install
 }

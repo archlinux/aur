@@ -17,7 +17,9 @@ pkgbase = liquidwar6
 	depends = curl
 	optdepends = liquidwar6-extra-maps: contributed extra maps
 	source = http://download.savannah.gnu.org/releases/liquidwar6/0.4.3681/liquidwar6-0.4.3681.tar.gz
+	source = http://download.savannah.gnu.org/releases/liquidwar6/0.4.3681/liquidwar6-0.4.3681.tar.gz.sig
 	sha256sums = 942f5547199462fea521717b94517d6415d90573d948e94922f7b15271a4a8e0
+	sha256sums = SKIP
 
 pkgname = liquidwar6
 
