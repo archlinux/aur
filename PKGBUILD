@@ -1,12 +1,13 @@
 pkgname=novnc
 epoch=1
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="javascript vnc client"
 arch=(i686 x86_64)
 url="https://github.com/kanaka/noVNC"
 license=('GPL')
-depends=()
+depends=('bash' 'python')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/kanaka/noVNC.git#tag=v0.5")
 md5sums=('SKIP')
 
