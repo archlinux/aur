@@ -1,0 +1,26 @@
+pkgbase = psensor
+	pkgdesc = A graphical hardware temperature monitor for Linux
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://wpitchoune.net/psensor
+	install = psensor.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = help2man
+	depends = lm_sensors
+	depends = dconf
+	depends = gtk3>=3.4
+	depends = udisks2
+	optdepends = asciidoc: required to produce the HTML version of the FAQ
+	optdepends = libnotify: support for notifications on desktop
+	optdepends = libappindicator3: allow Psensor to export a menu into the Unity Menu bar
+	optdepends = libxnvctrl: NVIDIA X Ctrl library
+	optdepends = json-c: required for remote monitoring
+	optdepends = curl: required for remote monitoring
+	optdepends = libgtop: required for CPU usage
+	source = http://wpitchoune.net/psensor/files/psensor-1.1.3.tar.gz
+	md5sums = c3a3c1dea4dbfe12bbfb8088b86c3d4f
+
+pkgname = psensor
+
