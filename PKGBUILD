@@ -8,24 +8,25 @@
 
 pkgname=redshift-minimal
 _name=redshift
-pkgver=1.9.1
-pkgrel=1
+pkgver=1.10
+pkgrel=2
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies.."
 arch=('i686' 'x86_64')
 url='http://jonls.dk/redshift/'
 license=('GPL3')
 depends=('libxxf86vm')
-makedepends=('python')
+makedepends=('python' 'intltool')
 conflicts=('redshift')
 provides=('redshift')
 source=("https://github.com/jonls/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('d72a44a6eb6bf356871d5f84a759337a')
+sha256sums=('f7a1ca1eccf662995737e14f894c2b15193923fbbe378d151e346a8013644f16')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
 
-  autoreconf -fi
-  PYTHON=/usr/bin/python ./configure --disable-gui --disable-geoclue \
+  ./bootstrap
+  PYTHON=/usr/bin/python ./configure --disable-gui \
+                                     --disable-geoclue --enable-geoclue2 \
                                      --disable-ubuntu --disable-drm \
                                      --prefix=/usr
   make
