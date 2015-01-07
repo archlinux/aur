@@ -3,7 +3,7 @@
 pkgname=dmg2dir
 pkgver=3.0.1
 pkgrel=1
-pkgdesc="A shell script which extract OS X application from .dmg file."
+pkgdesc="A shell script which extract OS X application from .dmg file"
 arch=('any')
 url="https://github.com/X0rg/dmg2dir"
 license=('unknow')
