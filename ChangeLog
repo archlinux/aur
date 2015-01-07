@@ -1,0 +1,27 @@
+2013-04-05 FoolEcho <foolecho at gmail dot com>
+
+	* 2.2.12-3 :
+
+	Patching AfterStep.desktop (Slim by example was unable to launch it properly, otherwise).
+	
+	* 2.2.12-2 :
+
+	Move AfterStep.desktop from /etc/X11/sessions/ to /usr/share/xsessions/.
+
+	* 2.2.12-1 :
+
+	New release (no need for libpng patch anymore but doesn't yet like x86_64, maintain of the param -j1 for the make).
+	Removed the makedepends to pkg-config (part of base-devel)
+
+	* 2.2.11-5 :
+
+	Realized that afterstep doesn't like x86_64 compilation (random files was lacking in the package). Fixed using -j1.
+
+	* 2.2.11-4 :
+
+	Compilation for libpng16.
+
+	* 2.2.11-3 :
+
+	Added ChangeLog.
+	Code presentation (using prepare()/build()/package() functions. ¬_¬
