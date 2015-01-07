@@ -67,5 +67,5 @@ package() {
 	install -Dm644 contrib/0hourly "${pkgdir}"/etc/cron.d/0hourly
 	install -Dm755 contrib/0anacron "${pkgdir}"/etc/cron.hourly/0anacron
 
-	install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/cronie/COPYING
+	install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
 }
