@@ -2,7 +2,7 @@
 
 pkgname=perl-snmp-info
 _cpanname=SNMP-Info
-pkgver=3.13
+pkgver=3.23
 pkgrel=1
 pkgdesc="Perl/CPAN Module SNMP::Info"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/O/OL/OLIVER/$_cpanname-$pkgver.tar.gz")
 depends=('perl' 'net-snmp')
-md5sums=('99ab6ba5f991c81adb0c59ac776d88d3')
+md5sums=('06fd59b728c6266e881a6ebeb13d228a')
 
 build() {
   cd "${srcdir}/${_cpanname}-${pkgver}"
