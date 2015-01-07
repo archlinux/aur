@@ -12,6 +12,8 @@ url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
 depends=('ustr' 'libselinux>=2.1.0' 'audit')
+optdepends=('python2: python2 bindings'
+            'python: python bindings')
 options=(!emptydirs)
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")

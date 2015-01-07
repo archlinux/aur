@@ -10,6 +10,8 @@ pkgbase = libsemanage
 	depends = ustr
 	depends = libselinux>=2.1.0
 	depends = audit
+	optdepends = python2: python2 bindings
+	optdepends = python: python bindings
 	provides = selinux-usr-libsemanage=2.3-2
 	conflicts = selinux-usr-libsemanage
 	options = !emptydirs
