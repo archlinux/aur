@@ -1,0 +1,18 @@
+pkgbase = lariza-git
+	pkgdesc = Simple WebKit2GTK+ Browser
+	pkgver = 15.01.2.gfeb90a2
+	pkgrel = 1
+	url = https://github.com/vain/lariza
+	install = lariza.install
+	arch = i686
+	arch = x86_64
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = webkit2gtk
+	provides = lariza
+	conflicts = lariza
+	source = git://github.com/vain/lariza.git
+	md5sums = SKIP
+
+pkgname = lariza-git
+

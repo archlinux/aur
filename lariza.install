@@ -1,0 +1,8 @@
+# arg 1:  the new package version
+post_install() {
+  echo 'If you wish to use any web extensions, please create appropriate'
+  echo 'symlinks in your ~/.local/share/lariza/web_extensions/. For example:'
+  echo
+  echo '  $ cd ~/.local/share/lariza/web_extensions'
+  echo '  $ ln -s /usr/share/lariza/web_extensions/we_adblock.so'
+}
