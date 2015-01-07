@@ -1,0 +1,18 @@
+pkgbase = jauth-git
+	pkgdesc = A reference desktop client for the google authenticator
+	pkgver = r63.bbe0a11
+	pkgrel = 1
+	url = https://github.com/mclamp/jauth
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = java-runtime
+	depends = sh
+	depends = jgoodies-forms
+	provides = jauth
+	conflicts = jauth
+	source = jauth::git+https://github.com/mclamp/jauth.git
+	md5sums = SKIP
+
+pkgname = jauth-git
+
