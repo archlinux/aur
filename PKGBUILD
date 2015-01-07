@@ -8,6 +8,7 @@ url="https://github.com/vain/lariza"
 license=('custom:PIZZA-WARE')
 depends=('webkit2gtk')
 makedepends=('git')
+optdepends=('tabbed: for grouping multiple web views into one window')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=lariza.install
