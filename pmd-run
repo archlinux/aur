@@ -1,0 +1,61 @@
+#!/bin/bash
+
+usage() {
+	echo "Usage:"
+	echo "    $(basename $0) <application-name> [-h|-v] ..."
+	echo ""
+	echo "application-name: valid options are: $(valid_app_options)"
+	echo "-h print this help"
+	echo "-v display PMD's version"
+}
+
+valid_app_options () {
+	echo "pmd, cpd, cpdgui, designer, bgastviewer"
+}
+
+java_heapsize_settings() {
+	local heapsize=${HEAPSIZE:-512m}
+	case "${heapsize}" in
+		[1-9]*[mgMG])
+			readonly HEAPSIZE="-Xmx${heapsize}"
+			;;
+		'')
+			;;
+		*)
+			echo "HEAPSIZE '${HEAPSIZE}' unknown (try: 512m)"
+			exit 1
+			;;
+	esac
+}
+
+readonly APPNAME="${1}"
+if [ -z "${APPNAME}" ]; then
+	usage
+	exit 1
+fi
+shift
+
+case "${APPNAME}" in
+  "pmd")
+		readonly CLASSNAME="net.sourceforge.pmd.PMD"
+		;;
+  "cpd")
+		readonly CLASSNAME="net.sourceforge.pmd.cpd.CPD"
+		;;
+  "designer")
+		readonly CLASSNAME="net.sourceforge.pmd.util.designer.Designer"
+		;;
+  "bgastviewer")
+		readonly CLASSNAME="net.sourceforge.pmd.util.viewer.Viewer"
+		;;
+  "cpdgui")
+		readonly CLASSNAME="net.sourceforge.pmd.cpd.GUI"
+		;;
+  *)
+		echo "${APPNAME} is NOT a valid application name, valid options are:$(valid_app_options)"
+		;;
+esac
+
+java_heapsize_settings
+
+$JAVA_HOME/bin/java "${HEAPSIZE}" -Djava.ext.dirs='/usr/share/java/pmd' "${CLASSNAME}" "${@}"

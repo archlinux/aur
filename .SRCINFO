@@ -1,0 +1,25 @@
+pkgbase = pmd
+	pkgdesc = A java source code scanner for detecting possible bugs, dead code, overcomplicated expressions and more
+	pkgver = 5.1.2
+	pkgrel = 1
+	url = http://pmd.sourceforge.net/
+	arch = any
+	license = custom:BSD-style
+	depends = java-environment
+	source = http://sourceforge.net/projects/pmd/files/pmd/5.1.2/pmd-bin-5.1.2.zip
+	source = bgastviewer
+	source = cpd
+	source = cpdgui
+	source = pmd
+	source = pmd-designer
+	source = pmd-run
+	md5sums = 5cdd25c7d2eb0c3083ef353e58a94aea
+	md5sums = bb127d9c841bdae7c89a52c5a94e06cc
+	md5sums = 249cc68dbab0b512d7bf36255ca29c65
+	md5sums = 972d2ca7bfb874c26b7c17a4c3dad70c
+	md5sums = 94198cb540d22e06ef123c38d6672303
+	md5sums = 0fe4e9103ea1ad6ad4d01c484a5fb294
+	md5sums = a4cc2f616906fd617bf99fe784f2152f
+
+pkgname = pmd
+
