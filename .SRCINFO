@@ -1,6 +1,6 @@
 pkgbase = microchip-libraries-for-applications
 	pkgdesc = Microchip Libraries for Applications (Current)
-	pkgver = v2013_12_20
+	pkgver = v2014_07_22
 	pkgrel = 1
 	url = http://www.microchip.com/MLA
 	install = microchip-libraries-for-applications.install
@@ -14,9 +14,9 @@ pkgbase = microchip-libraries-for-applications
 	options = staticlibs
 	options = emptydirs
 	options = !zipman
-	source = http://ww1.microchip.com/downloads/en/softwarelibrary/mla_v2013_12_20_linux_installer.run
+	source = http://ww1.microchip.com/downloads/en/softwarelibrary/mla_v2014_07_22_linux_installer.run
 	source = LICENSE
-	md5sums = 7367558d0c37989d9ec26497229f4929
+	md5sums = 3a829a4d57ed0d6794e5ccd18995b863
 	md5sums = a79e3095ffcc446517b27707c8a60d7b
 
 pkgname = microchip-libraries-for-applications
