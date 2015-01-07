@@ -1,7 +1,7 @@
 pkgbase = 2bwm
 	pkgdesc = A fast floating window manager
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/venam/2bwm
 	arch = i686
 	arch = x86_64
