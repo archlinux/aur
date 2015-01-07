@@ -9,7 +9,7 @@
 pkgname=sudo-selinux
 _sudover=1.8.11p2
 pkgver=${_sudover/p/.p}
-pkgrel=1
+pkgrel=2
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
 arch=('i686' 'x86_64')
 url="http://www.sudo.ws/sudo/"
@@ -21,6 +21,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
+validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4')
 source=(http://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.tmpfiles.conf
         sudo.pam)
