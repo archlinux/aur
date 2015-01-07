@@ -2,7 +2,7 @@
 pkgname=aero-clone-gtk-theme
 _pkgname=aero
 pkgver=57352
-pkgrel=3
+pkgrel=4
 pkgdesc="AeroClone tehme for GTK2"
 url="http://gnome-look.org/content/show.php/Aero-clone?content=${pkgver}"
 license="GNU/GPL"
