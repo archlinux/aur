@@ -3,7 +3,7 @@
 pkgname=perl-glib-ex-objectbits
 _realname=Glib-Ex-ObjectBits
 _module=Glib::Ex::ObjectBits
-pkgver=15
+pkgver=16
 pkgrel=1
 pkgdesc="${_module} -- misc Glib object helpers"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL' 'Perl')
 depends=('perl' 'gtk2-perl' 'glib-perl')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/K/KR/KRYDE/${_realname}-${pkgver}.tar.gz")
-md5sums=('4741654d774914e9152b3255292291de')
+md5sums=('54be83717715e110e8934d6334d916aa')
 
 build() {
   cd  "$srcdir/$_realname-$pkgver"
