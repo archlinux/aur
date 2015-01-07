@@ -2,7 +2,7 @@
 # Contributor: Hanspeter Portner <ventosus at airpost dot net>
 
 pkgname=linuxptp-git
-pkgver=1.5.r13.g572438b
+pkgver=1.5.r0.ga1e2a08
 pkgrel=1
 pkgdesc="An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux."
 arch=(i686 x86_64)
@@ -10,8 +10,6 @@ url="http://linuxptp.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
 makedepends=()
-provides=('linuxptp')
-conflicts=('linuxptp')
 source=("$pkgname::git+http://git.code.sf.net/p/linuxptp/code"
 	"prefix.patch")
 md5sums=("SKIP"
