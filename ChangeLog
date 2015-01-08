@@ -1,4 +1,6 @@
-2013-04-05 FoolEcho <foolecho at gmail dot com>
+	* 2.2.12-4 :
+
+	Added staticlibs to options (now required).
 
 	* 2.2.12-3 :
 
@@ -21,6 +23,8 @@
 
 	Compilation for libpng16.
 
+2013-04-05 FoolEcho <foolecho at gmail dot com>
+	
 	* 2.2.11-3 :
 
 	Added ChangeLog.
