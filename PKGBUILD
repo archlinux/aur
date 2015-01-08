@@ -3,7 +3,7 @@
 
 pkgname=aewm
 pkgver=1.3.12
-pkgrel=5
+pkgrel=6
 pkgdesc="Minimal window manager - includes separate utilities"
 arch=('x86_64' 'i686')
 url="http://www.red-bean.com/decklin/aewm"
