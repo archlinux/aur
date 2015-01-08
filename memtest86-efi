@@ -1,0 +1,111 @@
+#!/usr/bin/bash
+
+CONFFILE=/etc/memtest86-efi.conf
+source $CONFFILE
+[[ "$(uname -m)" == "i686" ]]   && ARCH=ia32
+[[ "$(uname -m)" == "x86_64" ]] && ARCH=x64
+
+install() {
+	if [[ $install == 1 ]]; then
+		echo "MemTest86 is already installed in ESP." > /dev/stderr
+		exit 1
+	fi
+
+	partition=$(fdisk -l | grep "EFI System" | awk '{print $1}' | tail -n1)
+	echo -e  "Welcome in $0. This script is to easily use MemTest86 with your UEFI. \033[1;31mNote: this can be dangerous! \033[0m\n"
+	echo -en "If \033[1m$partition\033[0m is your ESP partition, press Enter. Else, enter device, then press Enter: "
+	read choice
+	[[ -n $choice ]] && partition=$choice
+	esp=$(mount | grep $partition | awk '{print $3}' | tail -n1)
+	echo -e "Your choice is: \033[1m$partition\033[0m. So your ESP is mounted on: \033[1m$esp\033[0m\n"
+	[[ -z $esp ]] && echo -e "\033[1;31mNo ESP mounted found !\033[0m" && exit 1
+
+	echo "Please, how do you want to use $0 ?"
+	echo -e "\033[1m1\033[0m: from \033[1mLaunch EFI Shell\033[0m (in UEFI Setup)"
+	echo -e "\033[1m2\033[0m: add a new boot entry"
+	echo -e "\033[1m3: Cancel\033[0m"
+	choice=0; while [[ $choice < 1 ]] || [[ $choice > 3 ]]; do
+		read -n 1 choice
+		echo
+	done
+
+	if [[ $choice == 1 ]]; then
+		echo -e "MemTest86 will be installed in \033[1m$esp\033[0m."
+		[[ -f "$esp/shell$ARCH.efi" ]] && mv -v "$esp/shell$ARCH.efi" "$esp/shell$ARCH.efi.bak"
+		cp -v "$MEMTEST86_PATH/"*		"$esp/"
+		mv -v "$esp/"boot*.efi			"$esp/shell$ARCH.efi"
+	elif [[ $choice == 2 ]]; then
+		echo -e "MemTest86 will be installed in \033[1m$esp/EFI/memtest86\033[0m."
+		mkdir -pv "$esp/EFI/memtest86"
+		cp -v "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/"
+		mv -v "$esp/EFI/memtest86/"boot*.efi	"$esp/EFI/memtest86/memtest$ARCH.efi"
+		efibootmgr -c -d ${partition:0:8} -p ${partition:8} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi"
+	elif [[ $choice == 3 ]]; then
+		echo -e "Canceled. MemTest86 will not be installed."
+		exit 1
+	fi
+
+	echo "Write configuration..."
+	sed -i "s|@PARTITION@|$partition|g" "$CONFFILE"
+	sed -i "s|@ESP@|$esp|g" "$CONFFILE"
+	sed -i "s|@CHOICE@|$choice|g" "$CONFFILE"
+	sed -i "s|install=0|install=1|g" "$CONFFILE"
+
+	echo -e "MemTest86 has been installed in ESP."
+}
+
+update() {
+	if [[ $install == 0 ]]; then
+		echo "MemTest86 is not installed in ESP: it can't be updated." > /dev/stderr
+		exit 1
+	fi
+
+	if [[ $choice == 1 ]]; then 
+		echo -e "MemTest86 will be updated in \033[1m$esp\033[0m."
+		cp -fv "$MEMTEST86_PATH/"*		"$esp/"
+		mv -fv "$esp/"boot*.efi			"$esp/shell$ARCH.efi"
+	elif [[ $choice == 2 ]]; then
+		echo -e "MemTest86 will be updated in \033[1m$esp/EFI/memtest86\033[0m."
+		cp -fv "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/"
+		mv -fv "$esp/EFI/memtest86/"boot*.efi	"$esp/EFI/memtest86/memtest$ARCH.efi"
+	fi
+
+	echo -e "MemTest86 has been updated in ESP."
+}
+
+remove() {
+	if [[ $install == 0 ]]; then
+		echo "MemTest86 is not installed in ESP: it can't be removed." > /dev/stderr
+		exit 1
+	fi
+
+	if [[ $choice == 1 ]]; then
+		echo -e "MemTest86 will be removed from \033[1m$esp\033[0m."
+		rm -v "$esp/mt86.png" "$esp/shell$ARCH.efi"
+		[[ -f "$esp/shell$ARCH.efi.bak" ]] && mv -v "$esp/shell$ARCH.efi.bak" "$esp/shell$ARCH.efi"
+	elif [[ $choice == 2 ]]; then
+		echo -e "MemTest86 will be removed from \033[1m$esp/EFI/memtest86\033[0m."
+		rm -rfv "$esp/EFI/memtest86/"
+		efibootmgr -b $(efibootmgr | grep MemTest86 | cut -c 5-8) -B
+	fi
+
+	echo "Write configuration..."
+	sed -i "s|$partition|@PARTITION@|g" "/etc/memtest86-efi.conf"
+	sed -i "s|$esp|@ESP@|g" "/etc/memtest86-efi.conf"
+	sed -i "s|$choice|@CHOICE@|g" "/etc/memtest86-efi.conf"
+	sed -i "s|install=1|install=0|g" "/etc/memtest86-efi.conf"
+
+	echo -e "MemTest86 has been removed from ESP."
+}
+
+if [[ $EUID -ne 0 ]]; then
+  echo -e "You must be root" > /dev/stderr
+  exit 1
+fi
+
+case "$1" in
+	-i|--install)		install; exit 0;;
+	-u|--update)		update; exit 0;;
+	-r|--remove)		remove; exit 0;;
+	*)			echo -e "Usage: $0 [argument]\n\nArgument:\n\t-i, --install\n\t-u, --update\n\t-r, --remove"; exit 1;;
+esac

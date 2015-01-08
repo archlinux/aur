@@ -1,0 +1,13 @@
+post_install() {
+	echo -e "You can use command \033[4mmemtest86-efi --install\033[0m as root to install MemTest86 in your ESP."
+}
+
+post_upgrade() {
+	[[ "$(grep install= /etc/memtest86-efi.conf)" == *"1" ]] && /usr/bin/memtest86-efi --update
+	exit 0
+}
+
+pre_remove() {
+	[[ "$(grep install= /etc/memtest86-efi.conf)" == *"1" ]] && /usr/bin/memtest86-efi --remove
+	exit 0
+}

@@ -1,0 +1,19 @@
+pkgbase = memtest86-efi
+	pkgdesc = A free, thorough, stand alone memory test as an EFI application
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = http://www.memtest86.com
+	install = memtest86-efi.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	backup = etc/memtest86-efi.conf
+	source = memtest86-5.1.0.iso.gz::http://www.memtest86.com/downloads/memtest86-iso.gz
+	source = memtest86-efi
+	source = memtest86-efi.conf
+	md5sums = 483b1066de1f631b3d4222b95bcbfb5e
+	md5sums = 786ecb9dd8fb1fe4cebcfebef22cc323
+	md5sums = 16cb53c7132214cdd848d83433ef6462
+
+pkgname = memtest86-efi
+
