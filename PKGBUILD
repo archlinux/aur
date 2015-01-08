@@ -6,7 +6,7 @@
 _pkgname=avahi
 pkgname=avahi-gtk2
 pkgver=0.6.31
-pkgrel=12
+pkgrel=14
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
 url='http://www.avahi.org/'
 license=('LGPL')
@@ -15,18 +15,12 @@ options=('!emptydirs')
 depends=('expat' 'libdaemon' 'glib2' 'libcap' 'gdbm' 'dbus')
 replaces=(${_pkgname})
 optdepends=('gtk2: avahi-discover-standalone, bshell, bssh, bvnc, gtk2 bindings'
-            'qt4: qt4 bindings'
-            'pygtk: avahi-bookmarks, avahi-discover'
-            'twisted: avahi-bookmarks'
-            'python2-dbus: avahi-discover'
             'nss-mdns: NSS support for mDNS')
-makedepends=('qt4' 'pygtk' 'intltool' 'python2-dbus'
-             'gobject-introspection' 'gtk2' 'xmltoman')
+makedepends=('intltool' 'gobject-introspection' 'gtk2' 'xmltoman')
 backup=('etc/avahi/hosts'
         'etc/avahi/avahi-daemon.conf'
         'etc/avahi/services/ssh.service'
         'etc/avahi/services/sftp-ssh.service'
-	'usr/lib/avahi/service-types.db'
 	'usr/share/avahi/service-types')
 source=("http://www.avahi.org/download/avahi-${pkgver}.tar.gz")
 sha1sums=('7e05bd78572c9088b03b1207a0ad5aba38490684')
@@ -54,10 +48,18 @@ build() {
 		--sysconfdir=/etc \
 		--localstatedir=/var \
 		--sbindir=/usr/bin \
-		--disable-mono \
-		--disable-gtk3 \
 		--disable-monodoc \
 		--disable-qt3 \
+		--disable-qt4 \
+		--disable-gtk3 \
+		--disable-python \
+		--disable-pygtk \
+		--disable-python-dbus \
+		--disable-mono \
+		--disable-doxygen-doc \
+		--disable-doxygen-dot \
+		--disable-doxygen-xml \
+		--disable-doxygen-html \
 		--enable-compat-libdns_sd \
 		--enable-compat-howl \
 		--with-distro=archlinux \
@@ -77,4 +79,7 @@ package() {
 	# howl and mdnsresponder compatability
 	cd "${pkgdir}"/usr/include; ln -s avahi-compat-libdns_sd/dns_sd.h dns_sd.h; ln -s avahi-compat-howl howl
 	cd "${pkgdir}"/usr/lib/pkgconfig; ln -s avahi-compat-howl.pc howl.pc
+
+	# see FS#42638
+	ln avahi-daemon.service -s "${pkgdir}"/usr/lib/systemd/system/dbus-org.freedesktop.Avahi.service
 }
