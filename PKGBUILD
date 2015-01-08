@@ -2,7 +2,7 @@
 
 pkgname=aewm++
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A small window manager for X11 based originally off aewm"
 arch=('i686' 'x86_64')
 url="https://github.com/frankhale/aewmpp"
