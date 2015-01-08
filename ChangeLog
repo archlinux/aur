@@ -1,0 +1,21 @@
+2013-02-28 FoolEcho <foolecho at gmail dot com>
+
+	* 1.8-4 :
+	Added prepare() (pacman 4.1).
+	Code presentation.
+
+	* 1.8-3 :
+	Added ChangeLog.
+	Patched the sources to save and restore the game settings (volumes and ranks ; not tested but ranks should be also accrued with ranks from Return of the Hylian and Oni Link Begins) in your HOME (with the saves).
+	Patched the sources to be able to remove old saves from the game menu.
+
+2013-02-26 FoolEcho <foolecho at gmail dot com>
+
+	* 1.8-2 :
+	Added timidity++ as dependency in order to have music in game (musics are .mid ; you need to install and configure a soundfont such as timidity-freepats or fluidr3);
+	Corrections of the PKGBUILD (.install)
+
+2013-02-14 FoolEcho <foolecho at gmail dot com>
+
+	* 1.8-1 :
+	First release (PKGBUILD initially based on zelda-roth-en and so on)

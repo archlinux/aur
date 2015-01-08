@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Zelda3T
+GeneralName=Zelda: A Time to Triumph
+Comment=Third Game in a trilogy of fan made Zelda Games
+Comment[fr]=Troisième jeu dans une trilogie de jeu Zelda fait par des fans
+Exec=zelda-3t
+Icon=zelda-3t.png
+Terminal=false
+Type=Application
+Categories=Game
