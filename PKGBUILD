@@ -6,7 +6,7 @@
 _pkgname=avahi
 pkgname=avahi-gtk2
 pkgver=0.6.31
-pkgrel=14
+pkgrel=15
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
 url='http://www.avahi.org/'
 license=('LGPL')
@@ -16,11 +16,12 @@ depends=('expat' 'libdaemon' 'glib2' 'libcap' 'gdbm' 'dbus')
 replaces=(${_pkgname})
 optdepends=('gtk2: avahi-discover-standalone, bshell, bssh, bvnc, gtk2 bindings'
             'nss-mdns: NSS support for mDNS')
-makedepends=('intltool' 'gobject-introspection' 'gtk2' 'xmltoman')
+makedepends=('intltool' 'gobject-introspection' 'gtk2' 'xmltoman' 'python2')
 backup=('etc/avahi/hosts'
         'etc/avahi/avahi-daemon.conf'
         'etc/avahi/services/ssh.service'
         'etc/avahi/services/sftp-ssh.service'
+        'usr/lib/avahi/service-types.db'
 	'usr/share/avahi/service-types')
 source=("http://www.avahi.org/download/avahi-${pkgver}.tar.gz")
 sha1sums=('7e05bd78572c9088b03b1207a0ad5aba38490684')
@@ -52,7 +53,6 @@ build() {
 		--disable-qt3 \
 		--disable-qt4 \
 		--disable-gtk3 \
-		--disable-python \
 		--disable-pygtk \
 		--disable-python-dbus \
 		--disable-mono \
