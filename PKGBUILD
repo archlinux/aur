@@ -1,8 +1,8 @@
 # Maintainer: Maxwell Anselm <silverhammermba+aur@gmail.com>
 
 pkgname=gcs
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 arch=('any')
 url="http://gurpscharactersheet.com"
@@ -11,8 +11,8 @@ depends=('java-runtime=8')
 makedepends=('git' 'apache-ant' 'java-environment=8' 'imagemagick')
 source=(
 	'git://code.trollworks.com/apple_stubs.git'
-	"git://code.trollworks.com/gcs.git#tag=$pkgver"
-	"git://code.trollworks.com/toolkit.git#tag=$pkgver"
+	"git://code.trollworks.com/gcs.git#tag=gcs-$pkgver"
+	"git://code.trollworks.com/toolkit.git#tag=gcs-$pkgver"
 	'gcs.sh'
 	'gcs.desktop'
 	'set_app_path_from_env.patch'
