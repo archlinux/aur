@@ -2,7 +2,7 @@
 
 pkgname=aterm
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="An xterm replacement with transparency support"
 arch=('i686' 'x86_64')
 url="http://aterm.sourceforge.net/"
