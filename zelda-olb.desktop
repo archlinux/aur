@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=ZeldaOLB
+GeneralName=Zelda: Oni Link Begins
+Comment=Second Game in a trilogy of fan made Zelda Games
+Comment[fr]=Deuxième jeu dans une trilogie de jeu Zelda fait par des fans
+Exec=zelda-olb
+Icon=zelda-olb.png
+Terminal=false
+Type=Application
+Categories=Game
