@@ -3,18 +3,18 @@
 
 pkgname=java-gcj-compat
 pkgver=1.0.80
-pkgrel=4
+pkgrel=2
 pkgdesc="Wrapper package to wrap free tools into a java 1.5.0.0 compatible java environment"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.eclipse.org/"
-depends=('gcc-gcj>=5.1.0' 'gjdoc>=0.7.9')
+depends=('gcc-gcj>=4.9.2' 'gjdoc>=0.7.9')
 makedepends=('perl' 'python2')
 provides=('java-environment=5' 'java-runtime=5')
 conflicts=('java-environment' 'java-runtime')
 source=(ftp://sources.redhat.com/pub/rhug/${pkgname}-${pkgver}.tar.gz
 	java-gcj-compat.profile
-	'https://gist.githubusercontent.com/bbidulock/93d0b5e65a957c9d0905/raw/8ad70648954c65bf8b26c5912ae61eb599b6677d/ca-bundle.crt')
+	ca-bundle.crt)
 options=('!makeflags')
 md5sums=('34369925c7a22e21c3d3b91e8b774396'
          'eee3645b754a5dc77644e8973c077c0e'
