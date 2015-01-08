@@ -4,7 +4,7 @@
 #
 pkgname=bbkeys
 pkgver=0.9.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop"
 arch=('i686' 'x86_64')
 url="http://bbkeys.sourceforge.net/"
