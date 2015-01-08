@@ -3,7 +3,7 @@
 pkgname=blackboxwm
 _realname=blackbox
 pkgver=0.71
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for X11 (maintained fork of blackbox)"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/blackboxwm"
@@ -15,6 +15,11 @@ depends=('libxext' 'libxft')
 options=('!libtool' 'staticlibs')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$_realname-$pkgver.tar.bz2")
 md5sums=('a37d187fbc30841634877a8db642c97d')
+
+prepare() {
+  cd $_realname-$pkgver
+  sed -i 's,@XFT_PKGCONFIG@,xft >= 2.0.0,;s,@LDFLAGS@,,;s,@ICONV@,,;s,@LOCALE@,,' lib/libbt.pc.in
+}
 
 build() {
   cd $_realname-$pkgver

@@ -1,7 +1,7 @@
 pkgbase = blackboxwm
 	pkgdesc = A window manager for X11 (maintained fork of blackbox)
 	pkgver = 0.71
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bbidulock/blackboxwm
 	arch = i686
 	arch = x86_64
