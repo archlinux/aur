@@ -9,3 +9,4 @@ patch-*.sign
 *.log
 *.patch
 *.src.tar.gz
+*.src.tar.gz.sig
