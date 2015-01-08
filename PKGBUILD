@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=asclock-gtk
 pkgver=2.1.10beta
-pkgrel=3
+pkgrel=4
 pkgdesc="The AfterStep clock dock app - Gtk version"
 url="http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#asclock"
 arch=('i686' 'x86_64')

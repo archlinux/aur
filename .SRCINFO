@@ -1,7 +1,7 @@
 pkgbase = asclock-gtk
 	pkgdesc = The AfterStep clock dock app - Gtk version
 	pkgver = 2.1.10beta
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#asclock
 	arch = i686
 	arch = x86_64
