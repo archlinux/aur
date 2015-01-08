@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=ZeldaROTH
+GeneralName=Zelda: Return of the Hylian
+Comment=First Game in a trilogy of fan made Zelda Games
+Comment[fr]=Premier jeu dans une trilogie de jeu Zelda fait par des fans
+Exec=zelda-roth
+Icon=zelda-roth.png
+Terminal=false
+Type=Application
+Categories=Game

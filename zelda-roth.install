@@ -1,0 +1,18 @@
+post_install() {
+  echo "update mime database..."
+  update-mime-database /usr/share/mime/ > /dev/null
+  echo "update desktop database..."
+  update-desktop-database -q
+  echo "update icon cache..."
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+  echo ""
+  echo "Don't forget to install the package timidity-freepats or fluidr3 and configure /etc/timidity++/timidity.cfg in order to have music in game"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
