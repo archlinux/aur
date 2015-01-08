@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=AutopanoGiga
+Comment=A program for creating panoramic images
+Exec=autopanogiga
+Icon=/opt/autopanogiga/Resources/UI/autopano_giga.png
+Terminal=false
+Type=Application
+Categories=Application;Graphics;

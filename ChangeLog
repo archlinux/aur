@@ -1,0 +1,8 @@
+2014-06-08 FoolEcho <foolecho at gmail dot com>
+
+	* 3.6.0-1 :
+	Moved Copyright to usr/share/licenses/$pkgname/.
+	
+	* 3.5.1-1 :
+	Added ChangeLog.
+	End of 32 bits support for Linux.
