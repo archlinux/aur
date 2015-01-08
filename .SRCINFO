@@ -1,7 +1,7 @@
 pkgbase = bbdock
 	pkgdesc = An application launcher dockapp supporting PNG files and transparency
 	pkgver = 0.2.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bbdock.nethence.com/
 	changelog = ChangeLog
 	arch = i686

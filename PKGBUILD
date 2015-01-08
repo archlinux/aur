@@ -5,7 +5,7 @@
 
 pkgname=bbdock
 pkgver=0.2.9
-pkgrel=3
+pkgrel=4
 pkgdesc="An application launcher dockapp supporting PNG files and transparency"
 arch=('i686' 'x86_64')
 url="http://bbdock.nethence.com/"
