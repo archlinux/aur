@@ -1,7 +1,7 @@
 pkgbase = balsa-gtk2
 	pkgdesc = An e-mail client for GNOME (GTK2 version)
 	pkgver = 2.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pawsa.fedorapeople.org/balsa/
 	install = balsa.install
 	arch = i686
