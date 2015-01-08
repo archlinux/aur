@@ -2,7 +2,7 @@
 pkgname=asclock-xlib
 _pkgname=asclock
 pkgver=2.0.12
-pkgrel=4
+pkgrel=5
 pkgdesc="The AfterStep clock dock app - Xlib version"
 url="http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#asclock"
 arch=('i686' 'x86_64')
