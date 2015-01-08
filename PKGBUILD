@@ -1,6 +1,6 @@
 # Maintainer: Hardy Jones <jones3 dot hardy at gmail dot com>
 pkgname=purescript-bin
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A strongly, statically typed language compiling to JavaScript."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'gmp' 'gcc-libs' 'libtinfo')
 provides=('purescript')
 source=("https://github.com/purescript/purescript/releases/download/v$pkgver/linux64.tar.gz")
-sha512sums=('8d62c89444ddcf0e1dcfe23e1ab6ae0e081419118366ab8336b367d70148ee4c43a2bef64030363b277d2651587d629389f21bf0de50cab4e1246da335664577')
+sha512sums=('6c46d5017d117481f95c6ef62b078320f96383388a56825e21003c05f4f25c9ac0502eeb9008c75eccef8cbda4d0a998bc3d3a66949077fdedd8bc6c690ee308')
 
 package() {
   cd "${srcdir}"/purescript
