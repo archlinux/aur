@@ -1,7 +1,7 @@
 pkgbase = esetroot
 	pkgdesc = Eterm's root background setter, packaged separately.
 	pkgver = 20030422
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.eterm.org/
 	arch = i686
 	arch = x86_64
