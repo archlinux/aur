@@ -9,7 +9,7 @@
 
 pkgname=coreutils-selinux
 pkgver=8.23
-pkgrel=1
+pkgrel=2
 pkgdesc="The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -20,6 +20,7 @@ install=${pkgname/-selinux}.install
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
+validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9')
 source=("ftp://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig})
 md5sums=('abed135279f87ad6762ce57ff6d89c41'
          'SKIP')
