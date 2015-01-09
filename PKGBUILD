@@ -2,7 +2,7 @@
 
 pkgname=libgaminggear
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -23,6 +23,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   if [[ -d "${pkgdir}/usr/share/cmake" ]]; then
-     mv ${pkgdir}/usr/share/cmake{,-3.0}
+     mv ${pkgdir}/usr/share/cmake{,-3.1}
   fi
 }
