@@ -8,7 +8,7 @@
 
 pkgname=openssh-selinux
 pkgver=6.7p1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
@@ -21,6 +21,7 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
+validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
 source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
         'sshdgenkeys.service'
         'sshd@.service'
