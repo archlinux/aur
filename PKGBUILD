@@ -3,7 +3,7 @@
 # Contributor: Nathan Owe <ndowens04+AUR @ gmail.com>
 
 pkgname=afick
-pkgver=3.4.1
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="Alternative to tripwire"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('perl')
 backup=('etc/afick.conf')
 source=(http://sourceforge.net/projects/afick/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
-md5sums=('5836efdb7e9980a53e2cfac7d2934967')
+md5sums=('63be575dadc77a6a7d92fb815edbc5ca')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
