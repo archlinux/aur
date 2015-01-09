@@ -2,15 +2,14 @@
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
 pkgname=goattracker
-pkgver=2.72
-pkgrel=2
+pkgver=2.73
+pkgrel=1
 pkgdesc="Crossplatform C64 music tracker. Included in this package are also the tools betaconv ins2snd2  mod2sng  sngspli2"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/goattracker2/"
 license=('GPL')
 depends=('sdl')
 source=("${pkgname}-${pkgver}.zip::http://sourceforge.net/projects/goattracker2/files/GoatTracker%202/${pkgver}/GoatTracker_${pkgver}.zip/download")
-md5sums=('5f4b330cf74aa7293286165eac6315c7')
 
 prepare(){
 	cd ${srcdir}/src
@@ -36,3 +35,4 @@ package(){
 	install -d "${srcdir}/examples" "${pkgdir}/usr/share/goattracker/"
 	install -Dm644 "${srcdir}/readme.txt" "${pkgdir}/usr/share/goattracker/README"
 }
+md5sums=('4f765c03b8a8103f85585dcb9230ce1f')
