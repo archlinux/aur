@@ -4,7 +4,7 @@
 # Originally contributed by champus, madeye, Ranguvar and ninja_pt
 
 pkgname=ipmiutil
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 pkgdesc="A simple program that lists results from the hardware detection library."
 arch=('i686' 'x86_64')
@@ -12,9 +12,9 @@ url="http://sourceforge.net/projects/ipmiutil/"
 license=('BSD')
 depends=('openssl')
 options=('!emptydirs')
-changelog=ChangeLog
+changelog=CHANGELOG
 source=("http://prdownloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9d6435e943d1597469994167a0c7f22c')
+md5sums=('cbfcb548493bc43abe165e34b874b3b3')
 
 build()
 {
@@ -28,6 +28,11 @@ package()
 {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
+
+	cd "${pkgdir}"
+pwd
+	mv -v usr/sbin/* usr/bin/
+	rmdir -v usr/sbin/
 
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/ipmiutil/LICENSE"
 }

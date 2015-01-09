@@ -1,16 +1,16 @@
 pkgbase = ipmiutil
 	pkgdesc = A simple program that lists results from the hardware detection library.
-	pkgver = 2.9.4
+	pkgver = 2.9.5
 	pkgrel = 1
 	url = http://sourceforge.net/projects/ipmiutil/
-	changelog = ChangeLog
+	changelog = CHANGELOG
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = openssl
 	options = !emptydirs
-	source = http://prdownloads.sourceforge.net/ipmiutil/ipmiutil-2.9.4.tar.gz
-	md5sums = 9d6435e943d1597469994167a0c7f22c
+	source = http://prdownloads.sourceforge.net/ipmiutil/ipmiutil-2.9.5.tar.gz
+	md5sums = cbfcb548493bc43abe165e34b874b3b3
 
 pkgname = ipmiutil
 
