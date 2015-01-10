@@ -1,20 +1,32 @@
-# Contributor: Tim Buecher <timbuecher.dev@gmail.com>
+# Maintainer: Tim Buecher <timbuecher.dev@gmail.com>
+# Contributor: James An <james@jamesan.ca>
 
 pkgname=geany-astyle
 pkgver=0.2.1
-pkgrel=1
-pkgdesc="Sourcecode formater/beautifier based on AStyle for Geany"
-url="https://launchpad.net/geany-astyle"
-arch=("i686" "x86_64")
-license="GPL"
+pkgrel=2
+pkgdesc='Sourcecode formatter/beautifier based on AStyle for Geany'
+url='https://launchpad.net/geany-astyle'
+arch=('i686' 'x86_64')
+license='GPL3'
 depends=('geany' 'astyle')
-source=("https://github.com/downloads/m0jo/geany-astyle/$pkgname-$pkgver.tar.gz")
-md5sums=('80aea4b1bba2189708fe068c0d3b6fc1')
+makedepends=('unzip')
+source=("https://launchpad.net/$pkgname/trunk/0.2.1/+download/astyle-plugin-src-$pkgver.zip")
+md5sums=('d3ef9979426d217a3c6becb5ecad4422')
+noextract=("astyle-plugin-src-$pkgver.zip")
 
-build() {  
-  tar -xvf $pkgname-$pkgver.tar.gz
-  cd "$srcdir/$pkgname-$pkgver"
-  gcc main.c -O2 -fPIC `pkg-config --cflags geany` -lastyle -shared `pkg-config --libs geany` -o "astyle_plugin.so"
+prepare() {
+    unzip -o "astyle-plugin-src-$pkgver.zip"
+}
 
-  install -Dm755 astyle_plugin.so "$pkgdir/usr/lib/geany/astyle_plugin.so"
+build() {
+    cd "astyle-plugin-src-$pkgver/src"
+
+    gcc main.c -O2 -fPIC `pkg-config --cflags geany` -lastyle-2.05.1 -shared `pkg-config --libs geany` -o "astyle_plugin.so"
+}
+
+package() {
+    cd "astyle-plugin-src-$pkgver"
+
+    install -Dm644 readme.txt "$pkgdir/usr/share/doc/geany/README.txt"
+    install -Dm644 src/astyle_plugin.so "$pkgdir/usr/share/geany/astyle_plugin.so"
 }
