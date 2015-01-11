@@ -4,6 +4,7 @@ pkgbase = ruby-kwalify
 	pkgrel = 1
 	url = http://www.kuwata-lab.com/kwalify/
 	arch = any
+	license = MIT
 	depends = ruby
 	noextract = kwalify-0.7.2.gem
 	options = !emptydirs
