@@ -1,0 +1,13 @@
+[Unit]
+Description=WPA supplicant daemon (interface- and wext driver-specific version)
+Requires=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+# NetworkManager users will probably want the dbus version instead.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-wext-%I.conf -Dwext -i%I
+
+[Install]
+Alias=multi-user.target.wants/wpa_supplicant-wext@%i.service
