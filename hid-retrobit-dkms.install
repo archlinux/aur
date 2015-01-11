@@ -1,0 +1,26 @@
+PKGVER="$(ls /usr/src/ | grep hid-retrobit | sed 's/^.*-//')"
+_dkms="/usr/bin/dkms"
+
+post_install() {
+  ${_dkms} add -m "hid-retrobit/${PKGVER}"
+  ${_dkms} build -m "hid-retrobit/${PKGVER}"
+  ${_dkms} install -m "hid-retrobit/${PKGVER}"
+
+  echo "Please add hid-retrobit to modules-load.d or equivalent in order to use the driver"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  ${_dkms} remove -m "hid-retrobit/${PKGVER}" --all
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_remove() {
+  depmod -a
+}
