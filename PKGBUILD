@@ -2,14 +2,14 @@
 # Contributor: Ilgrim <ilgrim at gmail dot com>
 
 pkgname=squirrel
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="A light-weight scripting language that fits in the size, memory bandwidth, and real-time requirements of applications like video games"
 arch=('i686' 'x86_64')
 url="http://www.squirrel-lang.org/"
 license=('MIT')
-source=(http://sourceforge.net/projects/squirrel/files/squirrel3/squirrel%203.0.6%20stable/${pkgname}_3_0_6_stable.tar.gz)
-md5sums=('a873eaf63a8d40af696eb055fa184d76')
+source=(http://sourceforge.net/projects/squirrel/files/squirrel3/squirrel%20${pkgver}%20stable/${pkgname}_3_0_7_stable.tar.gz)
+md5sums=('526fd98afb5dd680d6aadb64ecdeb11b')
 
 build() {
   cd "${srcdir}"/SQUIRREL3
