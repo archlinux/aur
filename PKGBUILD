@@ -13,23 +13,23 @@ depends=('pygtk' 'pygobject' 'python2-configobj' 'pyxdg' 'dbus-python'
 'python-liblarch-git' 'python-dbus' 'python-cairo')
 makedepends=('bzr' 'python2-gconf')
 optdepends=(
-"python-bugz: for Bugzilla plugin"
-"python-cheetah: for Export and print plugin"
-"pdflatex: for Export and print plugin"
-"pdftk: for Export and print plugin"
-"pdfjam: for Export and print plugin"
-"python-geoclue: for Geolocalized tasks plugin"
-"python-clutter: for Geolocalized tasks plugin"
-"python-clutter-gtk: for Geolocalized tasks plugin"
-"python-champlain: for Geolocalized tasks plugin"
-"python-champlain-gtk: for Geolocalized tasks plugin"
-"hamster-time-tracker: for Hamster Time Tracker Integration to integrate with"
-"python-appindicator: for Notification area plugin"
-"python-dbus: for Tomboy/Gnote plugin"
-"python-evolution: for Evolution synchronization service"
-"python-dateutil: for Evolution and RememberTheMilk synchronization services"
-"python-suds: for MantisBT synchronization service"
-"python-launchpadlib: for Launchpad synchronization service"
+'python-bugz: for Bugzilla plugin'
+'python-cheetah: for Export and print plugin'
+'pdflatex: for Export and print plugin'
+'pdftk: for Export and print plugin'
+'pdfjam: for Export and print plugin'
+'python-geoclue: for Geolocalized tasks plugin'
+'python-clutter: for Geolocalized tasks plugin'
+'python-clutter-gtk: for Geolocalized tasks plugin'
+'python-champlain: for Geolocalized tasks plugin'
+'python-champlain-gtk: for Geolocalized tasks plugin'
+'hamster-time-tracker: for Hamster Time Tracker Integration to integrate with'
+'python-appindicator: for Notification area plugin'
+'python-dbus: for Tomboy/Gnote plugin'
+'python-evolution: for Evolution synchronization service'
+'python-dateutil: for Evolution and RememberTheMilk synchronization services'
+'python-suds: for MantisBT synchronization service'
+'python-launchpadlib: for Launchpad synchronization service'
 )
 conflicts=('gtg')
 install="${pkgname}.install"
