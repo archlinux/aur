@@ -1,0 +1,20 @@
+pkgbase = systemd-resolved-public-dns
+	pkgdesc = Config files defining IPv4 public DNS for systemd's DNS resolver
+	pkgver = 1
+	pkgrel = 2
+	url = https://github.com/jamesan/aur-pkgs/tree/master/systemd-resolved-public-dns
+	arch = any
+	license = GPL
+	source = comodo-secure-dns.conf
+	source = dns-advantage.conf
+	source = google-public-dns.conf
+	source = norton-dns.conf
+	source = opendns.conf
+	md5sums = f1b6009234ac60f118ee92d332efc00b
+	md5sums = 92ae9aef034229d1ae1a7356760dc5b0
+	md5sums = 915793b1f0dafa3d1c2c22ab224b353d
+	md5sums = 1aafbfd2514aa39351d38c266085e320
+	md5sums = 910578ec675036e85cf493a9bfd2afb0
+
+pkgname = systemd-resolved-public-dns
+
