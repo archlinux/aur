@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 # Change DNS settings right away
-pia-tools --google-dns
+pia-tools --pia-dns
 # Port forward request will fail if asked too early
 (sleep 5 && pia-tools -r)&
 # Update conky
