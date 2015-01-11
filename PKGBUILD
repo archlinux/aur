@@ -7,7 +7,7 @@ pkgname=zeal-git
 # Guess it's safe to use 3-digit for now.
 _appname=zeal
 _pkgver=0.0.0
-pkgver=0.0.0.383.8fd7a8b
+pkgver=0.0.0.465.63bb10a
 pkgrel=1
 pkgdesc="An offline API documentation browser"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url="http://zealdocs.org/"
 license=('GPL3')
 depends=('qt5-webkit')
 makedepends=('git')
-source=("git://github.com/jkozera/$_appname")
+source=("git://github.com/zealdocs/$_appname")
 sha1sums=('SKIP')
 
 pkgver() {
