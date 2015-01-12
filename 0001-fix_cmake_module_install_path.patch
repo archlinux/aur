@@ -1,0 +1,12 @@
+--- CMakeLists.txt.orig	2015-01-12 21:34:37.788280159 +0100
++++ CMakeLists.txt	2015-01-12 21:36:44.646681413 +0100
+@@ -242,7 +242,8 @@
+ install(FILES license.txt DESTINATION ${INSTALL_MISC_DIR})
+ install(FILES readme.txt DESTINATION ${INSTALL_MISC_DIR})
+ if(NOT SFML_OS_ANDROID)
+-    install(FILES cmake/Modules/FindSFML.cmake DESTINATION ${INSTALL_MISC_DIR}/cmake/Modules)
++    set(CM_VER ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
++		install(FILES cmake/Modules/FindSFML.cmake DESTINATION share/cmake-${CM_VER}/Modules)
+ endif()
+ 
+ # install 3rd-party libraries and tools
