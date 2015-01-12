@@ -2,7 +2,7 @@
 
 pkgname=networkmanager-openvpn
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,11 +16,10 @@ sha256sums=('d0ad918c8d3736b690f0ed031c03251829fa110aa339e0e531e47100551f1bf0')
 
 build() {
   cd NetworkManager-openvpn-${pkgver}
-  ./configure --prefix=/usr \
-  	--sysconfdir=/etc \
-	--libexecdir=/usr/lib/networkmanager \
-        --enable-more-warnings=yes \
-	--disable-static
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --libexecdir=/usr/lib/networkmanager \
+    --enable-more-warnings=yes \
+    --disable-static
   make
 }
 
