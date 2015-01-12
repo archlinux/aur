@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.14.6
+pkgver=3.14.7
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
 arch=(any)
@@ -25,13 +25,11 @@ options=(!strip !buildflags staticlibs)
 source=(
   "http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
   "gtk3-aur-remove-gobject-introspection.patch"
-  "gtk3-bug-731013-fix-cross-compilation.patch"
-  "gtk3-bug-741827-reftests-fix-typo.patch")
+  "gtk3-bug-731013-fix-cross-compilation.patch")
 
-sha256sums=('cfc424e6e10ffeb34a33762aeb77905c3ed938f0b4006ddb7e880aad234ef119'
+sha256sums=('fb9914b04f218c1afb4820ea492f3c6ab6d6993cc6634ecade8303678d05a46e'
             'ae632ad20c87032c326dbb1cda086e33a5078909f89174b2ba232be1b48c32a3'
-            '2dd763d32f7b7de08a325d32b811e87266277edb6055a043632d10c146ffc6d3'
-            '839ac6fa6613d0daf6e8eac6ef8d07b8f825a6556640fa480c597bd7c88e3e82')
+            '2dd763d32f7b7de08a325d32b811e87266277edb6055a043632d10c146ffc6d3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -39,7 +37,6 @@ build() {
   cd "${srcdir}/gtk+-${pkgver}"
   patch -Np1 < "../${source[1]}"
   patch -Np1 < "../${source[2]}"
-  patch -Np1 < "../${source[3]}"
   autoreconf -i
   for _arch in ${_architectures}; do
     unset LDFLAGS
