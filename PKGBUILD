@@ -102,7 +102,6 @@ package_lib32-libnm-glib() {
   make DESTDIR="$pkgdir" -C libnm install
   make DESTDIR="$pkgdir" -C libnm-util install
   make DESTDIR="$pkgdir" -C libnm-glib install
-  make DESTDIR="$pkgdir" -C vapi install
 
   rm -rf "$pkgdir"/usr/{bin,lib,include,share} "$pkgdir/etc"
 }
