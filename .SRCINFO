@@ -1,0 +1,15 @@
+pkgbase = python-frosted
+	pkgdesc = A simple program which checks Python source files for errors.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/timothycrosley/frosted
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pies
+	source = frosted-1.4.1.tar.gz::https://github.com/timothycrosley/frosted/archive/1.4.1.tar.gz
+	sha256sums = 987ab6f8db3123664f65328f112b3ea26c22963cb8b1264a83e9a2437a58a952
+
+pkgname = python-frosted
+
