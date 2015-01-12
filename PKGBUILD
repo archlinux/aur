@@ -3,7 +3,7 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='http://picard.musicbrainz.org/'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('python2-pyqt' 'mutagen')
 optdepends=('chromaprint: fingerprinting')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('5dce8f75c9d008fcc80f10088ae7be7afdfe3074')
+sha1sums=('adf41e3b272c325569b5368568bf2bd4c2419246')
 
 install=install
 
