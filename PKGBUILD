@@ -4,7 +4,7 @@
 
 _pkgname=evdev
 pkgname=python-$_pkgname
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Python bindings for the linux input handling subsystem"
 arch=(any)
@@ -16,7 +16,7 @@ provides=(python-$_pkgname=$pkgver)
 conflicts=(python-$_pkgname)
 source=(http://pypi.python.org/packages/source/e/$_pkgname/$_pkgname-$pkgver.tar.gz
         https://github.com/gvalkov/python-evdev/raw/d9110552d6d03bd657d876b40a066b6790e82ebb/LICENSE)
-sha256sums=('4846e536e218d7df6434ae0425058174b11cffae55fb55c4b63222f647f67f21'
+sha256sums=('339c5bfadfa92dc50786ac6bdfacdb8061ad01bdea482be6e281f5cbac63e8d7'
             '6aebc0c215cb6b73660175704579011215a7ca8f4e35a6c129169de217faf7fb')
 
 package() {
