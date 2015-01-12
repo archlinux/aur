@@ -3,7 +3,7 @@
 _python=python
 _pkgname=python-efl
 pkgname=$_python-efl-git
-pkgver=1.12.99a741.1910563
+pkgver=1.12.99a771.132b772
 pkgrel=1
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries - Development Version"
 arch=('i686' 'x86_64')
@@ -35,5 +35,5 @@ package() {
 
 # install text files
   install -d "$pkgdir/usr/share/doc/${pkgname%-*}/"
-  install -m644 -t "$pkgdir/usr/share/doc/${pkgname%-*}/" AUTHORS README changes.html
+  install -m644 -t "$pkgdir/usr/share/doc/${pkgname%-*}/" AUTHORS README ChangeLog
 }
