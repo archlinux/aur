@@ -1,7 +1,7 @@
 pkgbase = janet
 	pkgdesc = A Digital life assistant (DLA) that provides a framework allowing various components to communicate, inspired by Iron Man's JARVIS
 	pkgver = 0.2.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://sites.google.com/site/projectjanet
 	install = janet.install
 	arch = i686
