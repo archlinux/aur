@@ -1,0 +1,22 @@
+pkgbase = sfgui-git
+	pkgdesc = SFGUI (Simple and Fast Graphical User Interface), a C++ GUI library for SFML.
+	pkgver = 0.2.3.r1.g5a17f40
+	pkgrel = 3
+	url = http://sfgui.sfml-dev.org/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = cmake
+	makedepends = git
+	depends = sfml-git
+	provides = sfgui
+	conflicts = sfgui
+	replaces = sfgui
+	options = debug
+	source = git+https://github.com/TankOs/SFGUI.git
+	source = 0001-add_cmake_module_install.patch
+	sha256sums = SKIP
+	sha256sums = 7015fd528b2f40f35dc917bc76364a92dd34aaacdd86e1571d2855c3e235a8f1
+
+pkgname = sfgui-git
+
