@@ -5,10 +5,10 @@ _libname=${pkgname/python2-/python-}
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Library to implement a well-behaved Unix daemon process"
-license=("PSF-2+")
+license=("PSF")
 url="http://pypi.python.org/pypi/python-daemon"
 depends=('python2-lockfile')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'python2-docutils')
 source=(http://pypi.python.org/packages/source/p/python-daemon/python-daemon-$pkgver.tar.gz)
 arch=('any')
 
