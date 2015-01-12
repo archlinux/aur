@@ -2,13 +2,13 @@
 # This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/screamingfrogseospider
 
 pkgname=screamingfrogseospider
-pkgver=2.40
+pkgver=2.55
 pkgrel=1
 pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('any')
 url="http://www.screamingfrog.co.uk/seo-spider/"
 license=('custom')
-depends=('java-environment' 'shared-mime-info' 'desktop-file-utils')
+depends=('java-environment' 'shared-mime-info' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=()
 install=screamingfrogseospider.install
 source=(
@@ -16,7 +16,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  '7f699d3162540f6a2ac3be8ce0345b1e8e6945b2f47cf4bda98a6af0741c364d'
+  '9ecc8183d348a61160c2455ad7005b0c38e353fd484b341ac8e301cd3b307421'
   '5f32a7baef326d88754c6581883800a8d68a753bec846a1d0c190460ab7a2424'
 )
 

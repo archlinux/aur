@@ -1,4 +1,5 @@
 post_install () {
+	gtk-update-icon-cache
 	update-mime-database usr/share/mime
 	update-desktop-database -q
 }
