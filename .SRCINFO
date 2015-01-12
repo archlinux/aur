@@ -1,6 +1,6 @@
 pkgbase = zeal-git
 	pkgdesc = An offline API documentation browser
-	pkgver = 0.0.0.465.63bb10a
+	pkgver = 0.0.0.487.b9a234c
 	pkgrel = 1
 	url = http://zealdocs.org/
 	arch = i686

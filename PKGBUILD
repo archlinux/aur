@@ -7,7 +7,7 @@ pkgname=zeal-git
 # Guess it's safe to use 3-digit for now.
 _appname=zeal
 _pkgver=0.0.0
-pkgver=0.0.0.465.63bb10a
+pkgver=0.0.0.487.b9a234c
 pkgrel=1
 pkgdesc="An offline API documentation browser"
 arch=('i686' 'x86_64')
@@ -24,12 +24,12 @@ pkgver() {
 }
 
 build() {
-	cd ${srcdir}/${_appname}/${_appname}
-	qmake PREFIX=/usr CONFIG+=no_libappindicator
+	cd ${srcdir}/${_appname}
+	qmake PREFIX=/usr
 	make
 }
 
 package() {
-	cd ${srcdir}/${_appname}/${_appname}
+	cd ${srcdir}/${_appname}
 	make INSTALL_ROOT="$pkgdir" install
 }
