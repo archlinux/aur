@@ -1,6 +1,6 @@
 pkgbase = bitwig-studio-demo
 	pkgdesc = Music production system for production, remixing and performance
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = http://www.bitwig.com
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = bitwig-studio-demo
 	provides = bitwig-studio
 	conflicts = bitwig-studio-demo-rc
 	options = !strip
-	source = http://downloads.bitwig.com/bitwig-studio-1.1.3.deb
-	md5sums = 0d1db67307ea674180ea7234334f7269
+	source = http://downloads.bitwig.com/bitwig-studio-1.1.4.deb
+	md5sums = 81662279c5ccdbbb481a646e4589a1cb
 
 pkgname = bitwig-studio-demo
 
