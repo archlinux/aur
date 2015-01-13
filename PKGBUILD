@@ -3,7 +3,7 @@
 
 pkgname=cloog
 pkgver=0.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Library that generates loops for scanning polyhedra"
 arch=('i686' 'x86_64')
 url="http://www.bastoul.net/cloog/"
@@ -27,10 +27,11 @@ build() {
   make
 }
 
-check() {
-  cd $srcdir/$pkgname-$pkgver
-  make check
-}
+# https://github.com/periscop/cloog/issues/25
+# check() {
+#   cd $srcdir/$pkgname-$pkgver
+#   make check
+# }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
