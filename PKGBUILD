@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
-pkgver=20150109.9d1a15d
+pkgver=20150113.f185a3a
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -66,9 +66,9 @@ build() {
 		--enable-debug \
 		--disable-optimizations \
 		--enable-libbluray \
-		--enable-texturepacker \
 		--enable-external-libraries \
 		--with-lirc-device=/run/lirc/lircd
+		#--enable-texturepacker \
 
 	# Now (finally) build
 	make
