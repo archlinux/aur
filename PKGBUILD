@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -23,6 +23,12 @@ source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$
 md5sums=('5fdb20727a3c3c31f33432ba7d5283a4')
 [[ $CARCH == i686 ]] && md5sums+=('c04042b24de56d18a041bc005e5ecaa4')
 [[ $CARCH == x86_64 ]] && md5sums+=('53d8a137e0b50fee8509a7d1c15fd33b')
+
+prepare() {
+  # Fix FS#43419
+  sed -i 's/hexdigest(path)/hexdigest(path.to_s)/' \
+    $pkgname-$pkgver/plugins/provisioners/puppet/provisioner/puppet.rb
+}
 
 build() {
   cd $pkgname-$pkgver
