@@ -4,7 +4,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ source=("http://www.balabit.com/downloads/files/syslog-ng/sources/$pkgver/source
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha1sums=('be7e95696ed172db1d0f44904e173d25769daa93'
+sha1sums=('36eeaf920383ee8cb1c17d945205b7562f9fbbb2'
           '3e7ec4f3f68265aaa98f37338f801c5c22b85c17'
           'eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd'
           '949128fe3d7f77a7aab99048061f885bc758000c'
