@@ -3,7 +3,7 @@
 pkgname=aegir-hostmaster
 _pkgname=hostmaster
 pkgver=3.0_alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -35,6 +35,7 @@ source=(
     'http://ftp.drupal.org/files/projects/eldir-7.x-3.0-alpha1.tar.gz'
     'http://ftp.drupal.org/files/projects/hosting-7.x-3.0-alpha2.tar.gz'
     'http://ftp.drupal.org/files/projects/hosting_platform_pathauto-7.x-2.1.tar.gz'
+    'http://ftp.drupal.org/files/projects/devel_debug_log-7.x-1.2.tar.gz'
 )
 md5sums=('cc1039871c38efeef918b3facecf2d86'
          'f06c912eb4edbd48fbcc2867516726a3'
@@ -47,7 +48,8 @@ md5sums=('cc1039871c38efeef918b3facecf2d86'
          '21178d56a58133e39309dd98d94409cc'
          '5f168aedc6800fd3620fbc46d48c88a9'
          '5aafb84a768533b7389fa704f20afd02'
-         '70d7c42d55588e59646526a4afc2a7f5')
+         '70d7c42d55588e59646526a4afc2a7f5'
+         '19561aa1a0f2e549acf5c44a8cad8e14')
 
 package() {
     cd "${_pkgname}-7.x-${pkgver/_/-}"
@@ -69,9 +71,9 @@ package() {
     mv devel "${pkgdir}/var/lib/aegir/hostmaster/sites/all/modules"
 
     # Upgrading modules
-    mv eldir "${pkgdir}/var/lib/aegir/hostmaster/sites/all/modules"
-    mv hosting "${pkgdir}/var/lib/aegir/hostmaster/sites/all/modules"
-    mv hosting_platform_pathauto "${pkgdir}/var/lib/aegir/hostmaster/sites/all/modules"
+    for MOD in devel_debug_log eldir hosting hosting_platform_pathauto; do
+        mv $MOD "${pkgdir}/var/lib/aegir/hostmaster/sites/all/modules"
+    done
 
     msg2 'Adding misc config files'
     cd $srcdir
