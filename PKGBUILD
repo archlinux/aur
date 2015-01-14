@@ -5,7 +5,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-en'
-pkgver='4.0.2'
+pkgver='4.0.3'
 _realpkgver=$pkgver
 _realpkgver_i686=$pkgver
 _language='en-US'
@@ -41,11 +41,11 @@ source=("https://www.torproject.org/dist/torbrowser/${pkgver}/tor-browser-linux$
 		"${pkgname}.sh")
 
 if [[ "$CARCH" == 'x86_64' ]]; then
-   sha256sums=('b01e1248baba84c70cf6443c52876af5ed301bc830e9fb7a2bb93283ddbc2b0a'
-               'a816bde4a2fe8d370de527249f93a5e7c38031eed09ff20cb00b27660fbf361a')
+   sha256sums=('85ac7e80d47e2996b63ef25510fc2a0e4811b215b86e666d4ce59fb211645274'
+               'e97a7f81f3d6b2fc9d5c4afe32484d11af7bb5cabc90a1b52a8bf44c0b29b083')
 else
-   sha256sums=('3e4f9d08c4b194cbe9efd879e25c1581c6f58b6bd034ce037aae479edb9ab0b3'
-               'ccfa8a05fb3aa6bf9b9e8bb8e02e5e644e63f305adc944d1eb071f882bafafef')
+   sha256sums=('0a4291023123075459529c5013f10167d039c35341d6861779ec2590e043e71d'
+               '01d68dba3348e0e237a019ce45373eece92c5a58331cb0be6c53857df21c4596')
 fi
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
 			'17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
