@@ -2,7 +2,7 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush-git
-pkgver=7.0.0.alpha5.r84.g0b0fe46
+pkgver=7.0.0.alpha7.r88.g9dd205d
 pkgrel=1
 pkgdesc="The Drupal command-line shell, git version."
 arch=('any')
@@ -52,7 +52,6 @@ package() {
   install -Dm644 ./drush_logo-black.png ${pkgdir}/usr/share/webapps/doc/drush/drush_logo-black.png || return 1
   install -Dm644 ./README.md ${pkgdir}/usr/share/webapps/doc/drush/README.txt || return 1
   install -Dm644 ./unish.sh ${pkgdir}/usr/share/webapps/doc/drush/unish.sh || return 1
-  install -Dm644 ./docs/drush.api.php ${pkgdir}/usr/share/webapps/drush/drush.api.php || return 1
   install -Dm644 ./examples/example.drushrc.php ${pkgdir}/usr/share/webapps/drush/example.drushrc.php || return 1
   install -Dm644 ./examples/example.aliases.drushrc.php ${pkgdir}/usr/share/webapps/drush/example.aliases.drushrc.php || return 1
   install -Dm644 ./examples/example.drush.ini ${pkgdir}/usr/share/webapps/drush/example.drush.ini || return 1
