@@ -1,7 +1,7 @@
-# Maintainer: Chris Warrick <aur@chriswarrick.com>
+# Maintainer: Chris Warrick <a@chriswarrick.com>
 pkgname=python2-natsort
 _pyname=natsort
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=2
 pkgdesc='Sort lists naturally.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python2')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e5c00646244c2186d7c19e2f8047a003')
+md5sums=('27c850113c1cca4bcd78cede9930a937')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
