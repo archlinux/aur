@@ -3,9 +3,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
-pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
+pkgname=('digikam' 'kipi-plugins' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
 pkgver=4.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
-	     'libbaloo4' 'libpgf' 'libusb-compat')
+	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	"libkexiv2.patch")
 sha1sums=('ba735f4b7bb0437c1676141ab78ea958e46f135e'
@@ -57,14 +57,6 @@ package_digikam() {
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
-}
-
-package_libkface() {
-  pkgdesc="A Qt/C++ wrapper around LibFace library to perform face recognition and detection over pictures"
-  depends=('kdelibs' 'opencv')
-
-  cd build/extra/libkface
-  make DESTDIR="${pkgdir}" install
 }
 
 package_libkgeomap() {
