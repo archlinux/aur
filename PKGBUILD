@@ -6,8 +6,8 @@
 # This package can be found at https://github.com/thomwiggers/aur-subsonic-beta/
 
 pkgname=subsonic-beta
-pkgver=5.1.beta1
-pkgrel=3
+pkgver=5.1.beta2
+pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
@@ -19,9 +19,6 @@ source=(http://prdownloads.sourceforge.net/subsonic/subsonic-${pkgver}-standalon
 backup=('var/lib/subsonic/db')
 install=$pkgname.install
 
-sha512sums=('935317342bb608ebb29d3ab2050ec867340d68a5c1fc831d8099ed70bebfb260823b556719fef1c90e7f638c795fb6c6021ec4190506bb7134e48d84bb9f79d4'
-            '9026ea4e216f359146cf325083ddbf051d1d141bf6342ec750723ab891e5a212f55411ce8d0dd9697b8636541618220498fc8aa9b4c680a8d2c34ab7ee4db02e')
- 
 package() {
   cd ${srcdir}
   mkdir -p $pkgdir/var/lib/subsonic
@@ -35,3 +32,10 @@ package() {
   cp $srcdir/subsonic.service $pkgdir/usr/lib/systemd/system
   chmod +x $pkgdir/var/lib/subsonic/subsonic.sh
 }
+
+md5sums=('287ad8222abb7f68c1aef63e8ff2bd03'
+         '7cbbb9c8357992385c929e9f05be00be')
+sha1sums=('9744234c747e5747d899af7b86b0ae2fc57f9da8'
+          '71a3cb05a686e97423a7a5195ff05ad5f2a1cb30')
+sha512sums=('337056914750eec6de6d3970a20c3739df31c7c7825448dedff5dd12b35c407e78382a9316dab4597c9054a14cec363f62cc0566203511a993b9ccc8b70cb833'
+            '9026ea4e216f359146cf325083ddbf051d1d141bf6342ec750723ab891e5a212f55411ce8d0dd9697b8636541618220498fc8aa9b4c680a8d2c34ab7ee4db02e')
