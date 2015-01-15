@@ -11,6 +11,11 @@ post_remove() {
    userdel -rf otrs
 }
 
+pre_upgrade() {
+    chown 0:0 -R /etc/webapps/otrs
+    chown 0:0 -R /usr/share/webapps/otrs
+}
+
 post_upgrade() {
   /usr/share/webapps/otrs/bin/./otrs.SetPermissions.pl \
     --otrs-user=otrs  \
