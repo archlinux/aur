@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-pyuv
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 _libname=${pkgname/python-/}
 pkgdesc="A Python module which provides an interface to libuv."
@@ -22,4 +22,4 @@ package() {
 	install -m0644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('061ad7b49824e52b6f3199a54a536ee099cddd12254809bf16ae7dfdcd7b4ef2')
+sha256sums=('8b205c5a3095c627fb8561968b27f7070df824fa935e1ea65ac3658c0510a3b1')
