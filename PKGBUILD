@@ -138,6 +138,10 @@ build() {
       menuconfig)
         make menuconfig
         ;;
+      "")
+        error "Nothing selected!\nPerhaps You used [enter] instead of [space] to select menu item?"
+        false
+        ;;
       *)
         echo Break out from the PKGBUILD
         false
