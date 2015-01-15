@@ -8,8 +8,8 @@ pkgdesc="Open Source C++ FIX Engine"
 arch=('x86_64')
 url="https://github.com/fix8/fix8"
 license=('LGPL3')
-depends=('poco-dev' 'gperftools' 'intel-tbb' 'gtest')
-makedepends=('doxygen')
+depends=('poco-dev' 'intel-tbb')
+makedepends=('doxygen' 'gtest' 'db' 'gperftools')
 optdepends=('hiredis: Redis message persistence'
             'libmemcached: Memcached message persistence'
             'db: Berkeley DB message persistence'
