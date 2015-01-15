@@ -1,0 +1,13 @@
+diff --git a/util/Makefile.am b/util/Makefile.am
+index 198100f..0724884 100644
+--- a/util/Makefile.am
++++ b/util/Makefile.am
+@@ -37,7 +37,7 @@ seqedit_SOURCES = seqedit.cpp precomp.cpp
+ CLEANFILES =
+ AM_CPPFLAGS = -I$(top_srcdir)/include
+ 
+-GEN_LIBS = -lstdc++
++GEN_LIBS = -lstdc++ -lPocoNet
+ 
+ ALL_LIBS = $(GEN_LIBS) -L$(top_srcdir)/runtime
+ 
