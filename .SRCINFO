@@ -1,6 +1,6 @@
 pkgbase = lightmediascanner-git
 	pkgdesc = Lightweight library to scan media - Development version
-	pkgver = 0.4.5.99.r357.b05729d
+	pkgver = 0.5.0.r0.g5c5e896
 	pkgrel = 1
 	url = https://github.com/profusion/lightmediascanner
 	arch = i686
@@ -10,7 +10,8 @@ pkgbase = lightmediascanner-git
 	depends = sqlite3
 	depends = libmp4v2
 	depends = ffmpeg
-	provides = lightmediascanner=0.4.5.99.r357.b05729d
+	depends = file
+	provides = lightmediascanner=0.5.0.r0.g5c5e896
 	conflicts = lightmediascanner
 	source = git://github.com/profusion/lightmediascanner.git
 	sha256sums = SKIP

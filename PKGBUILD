@@ -1,15 +1,15 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: furester <furester at gmail.com>
 
 _pkgname=lightmediascanner
 pkgname=$_pkgname-git
-pkgver=0.4.5.99.r357.b05729d
+pkgver=0.5.0.r0.g5c5e896
 pkgrel=1
 pkgdesc="Lightweight library to scan media - Development version"
 arch=('i686' 'x86_64')
 url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
-depends=('sqlite3' 'libmp4v2' 'ffmpeg')
+depends=('sqlite3' 'libmp4v2' 'ffmpeg' 'file')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -19,9 +19,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+  git describe --tags --long | sed 's/^release_//;s/-/.r/;s/-/./g'
+}
 
-  printf "$v_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+prepare() {
+  sed -i '/AC_INIT/ s/0\.5,/0.5.0,/' "$srcdir/$_pkgname/configure.ac"
 }
 
 build() {
@@ -41,7 +43,6 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS NEWS README TODO
 }
