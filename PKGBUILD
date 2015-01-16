@@ -2,7 +2,7 @@
 
 pkgname=libquvi-scripts
 pkgver=0.9.20131130
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for parsing video download links.'
 arch=('any')
 url='http://quvi.sourceforge.net/'
@@ -11,6 +11,7 @@ depends=('lua-socket' 'lua-bitop' 'lua-expat')
 source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
 md5sums=('46ddfd887260a515199c2e1ba8c46d8a'
          'SKIP')
+validpgpkeys=('E220FCFF9EADBA326FD6B23BBF1D59CCAD00BE50')
 
 build() {
   cd "${pkgname}-${pkgver}"
