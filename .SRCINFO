@@ -1,14 +1,15 @@
 pkgbase = hid-retrobit-dkms
 	pkgdesc = kernel module to support useful but broken Retrobit console control adapters
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/retuxx/hid-retrobit
 	install = hid-retrobit-dkms.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = dkms
-	depends = linux-headers
+	optdepends = linux-headers: needed if using archlinux default kernel
+	optdepends = linux-lts-headers: needed if using the archlinux lts kernel
 	provides = hid-retrobit
 	conflicts = hid-atari-retrobit
 	replaces = hid-atari-retrobit
