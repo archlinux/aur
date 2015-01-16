@@ -6,8 +6,8 @@
 
 _pkgname=autorandr
 pkgname="$_pkgname-git"
-pkgver=r96.8429886
-pkgrel=1
+pkgver=r123.664d140
+pkgrel=2
 pkgdesc="Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr or disper. Formerly autodisper."
 arch=('i686' 'x86_64')
 url="https://github.com/phillipberndt/$_pkgname"
@@ -21,8 +21,15 @@ conflicts=(
     'autorandr-asch-git'
     'autorandr-phillipberndt-git'
 )
-source=("$_pkgname"::"git+https://github.com/phillipberndt/$_pkgname.git")
-md5sums=('SKIP')
+install="$pkgname.install"
+source=(
+    "$_pkgname"::"git+https://github.com/phillipberndt/$_pkgname.git"
+    "$pkgname.install"
+)
+md5sums=(
+    'SKIP'
+    'bedb41a350cdf6983872119aef71fed6'
+)
 
 pkgver() {
     cd "$_pkgname"
@@ -35,6 +42,6 @@ pkgver() {
 
 package() {
     cd "$_pkgname"
-    make DESTDIR="$pkgdir/" install
-    make DESTDIR="$pkgdir/" hotplug
+    make DESTDIR="$pkgdir/" INSTALL_PATH=/usr/bin install >/dev/null
+    make DESTDIR="$pkgdir/" hotplug >/dev/null
 }
