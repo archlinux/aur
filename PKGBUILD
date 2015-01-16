@@ -4,8 +4,8 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-3.17
-pkgver=3.17.6
+_srcname=linux-3.18
+pkgver=3.18.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -14,23 +14,29 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 groups=(selinux)
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
         'change-default-console-loglevel.patch'
-        '0001-x86-microcode-Update-BSPs-microcode-on-resume.patch'
-        '0002-x86-microcode-Limit-the-microcode-reloading-to-64-bi.patch'
+        '0001-drm-i915-Disallow-pin-ioctl-completely-for-kms-drive.patch'
         )
-sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
-            '30d8e0da16ac7cc8be13cd6da72ddc487e8c24fb662caf69da7f6d375fdc1aab'
-            'c9dc48e71e559207379667cab0190dea261524eeb6df80c4a5bf4e8d45f4e689'
-            '6fb0da74a061f300031c34466a187d44ae484e2ce07f4408cdd4625e1bcf4c02'
+sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
+            'SKIP'
+            '927a30c152a193d22242de21b99c9765fb0086b0aa3fabd31938ffc6e1b3f37c'
+            'SKIP'
+            '1c041a377ad790f109da22595ea1a9cf35d86e8a508f71ab16f7ba053349e678'
+            '6d40ef42dc4b89fd1eb3656235bfb24d4f8fe16dd5fb6387c2b6240f4256f403'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'fb120d3031886afd86a2054f551545898758b18f8bad1f6fee1c49e1ce23a760'
-            '529ffe2f52cba3ce8d7ab07bd85361d804d377464ee878ac085d6032336e4918')
+            '0bda45a3ef0f2780bbe588f2e53ab2b79814d29e9c6fc7bfff3b0dbdaa9e710d')
+validpgpkeys=(
+              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+             )
 
 _kernelname=${pkgbase#linux}
 
@@ -43,16 +49,13 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # fix #43143
+  patch -p1 -i "${srcdir}/0001-drm-i915-Disallow-pin-ioctl-completely-for-kms-drive.patch"
+  
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # Fix FS#42689
-  # https://bugzilla.kernel.org/show_bug.cgi?id=88001
-  #
-  patch -p1 -i "${srcdir}/0001-x86-microcode-Update-BSPs-microcode-on-resume.patch"
-  patch -p1 -i "${srcdir}/0002-x86-microcode-Limit-the-microcode-reloading-to-64-bi.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
