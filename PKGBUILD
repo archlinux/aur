@@ -4,22 +4,27 @@
 # Contributor: Igor Scabini <furester at gmail.com>
 
 pkgname=lightmediascanner
-pkgver=0.4.5
-pkgrel=2
-pkgdesc="A lightweight library to scan media"
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="Lightweight library to scan media"
 arch=('i686' 'x86_64')
 url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
-depends=('sqlite3' 'libvorbis' 'libmp4v2' 'flac')
+depends=('sqlite3' 'libmp4v2' 'ffmpeg' 'file')
 source=("https://github.com/profusion/lightmediascanner/archive/release_$pkgver.tar.gz")
-sha256sums=('73d9e86aa506f89084f6132e32c58b15dc9a364b8c812a160896c44d36392949')
+sha256sums=('694e73d8c7128f08f3dafbe57f5d1ade9a80337d7ac5b82c4e06d0effb9e5d51')
+
+prepare() {
+  sed -i '/AC_INIT/ s/0\.5,/0.5.0,/' "$srcdir/$pkgname-release_$pkgver/configure.ac"
+}
 
 build() {
   cd "$srcdir/$pkgname-release_$pkgver"
 
+  export CFLAGS="$CFLAGS -fvisibility=hidden"
+
   ./autogen.sh \
-    --prefix=/usr \
-    --disable-static
+    --prefix=/usr
 
   make
 }
@@ -31,5 +36,5 @@ package() {
 
 # install text files
   install -d "$pkgdir/usr/share/doc/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS NEWS README
+  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS NEWS README TODO
 }
