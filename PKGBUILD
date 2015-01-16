@@ -2,7 +2,7 @@
 
 pkgname=libquvi
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for parsing video download links.'
 arch=('i686' 'x86_64')
 url='http://quvi.sourceforge.net/'
@@ -12,6 +12,7 @@ conflicts=('quvi<0.9.0')
 source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
 md5sums=('8e3f2134a6b3376934bd884b07dcdac5'
          'SKIP')
+validpgpkeys=('E220FCFF9EADBA326FD6B23BBF1D59CCAD00BE50')
 
 build() {
   cd "${pkgname}-${pkgver}"
