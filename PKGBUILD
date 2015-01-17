@@ -6,7 +6,7 @@ _pkgbase=quassel
 pkgbase=${_pkgbase}-light
 pkgname=('quassel-client-light' 'quassel-core-light' 'quassel-monolithic-light')
 pkgver=0.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Next-generation distributed IRC client (minimal dependencies)"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -32,13 +32,10 @@ build() {
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
     -DCMAKE_BUILD_TYPE="Release" \
-    -DWITH_OPENSSL=ON \
     -DWANT_CORE=ON \
     -DWANT_MONO=OFF \
     -DWANT_QTCLIENT=OFF \
-    -DWITH_DBUS=OFF \
     -DWITH_OXYGEN=OFF \
-    -DWITH_PHONON=OFF \
     -DWITH_WEBKIT=OFF \
     -DCMAKE_BUILD_TYPE="Release" \
     ../quassel-${pkgver}/ \
@@ -51,14 +48,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
-    -DWITH_OPENSSL=ON \
     -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=ON \
     -DWANT_MONO=OFF \
-    -DWITH_DBUS=OFF \
     -DWITH_OXYGEN=OFF \
-    -DWITH_PHONON=OFF \
     -DWITH_WEBKIT=OFF \
     ../quassel-${pkgver}/ \
     -Wno-dev
@@ -70,14 +64,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
-    -DWITH_OPENSSL=ON \
     -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=OFF \
     -DWANT_MONO=ON \
-    -DWITH_DBUS=OFF \
     -DWITH_OXYGEN=OFF \
-    -DWITH_PHONON=OFF \
     -DWITH_WEBKIT=OFF \
     ../quassel-${pkgver}/ \
     -Wno-dev
