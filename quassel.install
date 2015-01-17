@@ -1,14 +1,21 @@
 post_install() {
-	useradd -r -s /bin/sh -d /var/lib/quassel quassel
-	mkdir -p /var/lib/quassel && chown -R quassel:quassel /var/lib/quassel
-	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+  useradd -r -s /bin/false -d /var/lib/quassel quassel
+  mkdir -p /var/lib/quassel && chown -R quassel:quassel /var/lib/quassel
+#  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
 
-pre_remove() {
-	systemctl disable quassel.service
-	systemctl stop quassel.service
+post_upgrade() {
+  [ `vercmp $2 0.5.2-1` -le 0 ] && (
+    cat <<EOF
+
+==> - quasselcore now runs as the quassel user
+==> - quasselcore now listens to port 127.0.0.1 by default
+==> - both of above are configurable: /etc/conf.d/quassel
+EOF
+    post_install
+  ) || true
 }
 
 post_remove() {
-	userdel quassel
+  userdel quassel
 }
