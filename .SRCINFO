@@ -9,7 +9,6 @@ pkgbase = quassel-light
 	license = GPL
 	makedepends = cmake
 	depends = qt5-base
-	optdepends = qca-ossl
 	provides = quassel-core
 	provides = quassel-client
 	conflicts = quassel-core

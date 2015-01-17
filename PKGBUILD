@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
 license=('GPL')
 depends=('qt5-base')
-optdepends=('qca-ossl')
 makedepends=('cmake')
 provides=('quassel-core' 'quassel-client')
 conflicts=('quassel-core' 'quassel-client')
@@ -35,6 +34,7 @@ build() {
     -DWITH_WEBKIT=OFF \
     -DWITH_PHONON=OFF \
     -DWITH_LIBINDICATE=OFF \
+    -DWITH_OPENSSL=ON \
     -DCMAKE_BUILD_TYPE="Release" \
     ../quassel-${pkgver}/ \
     -Wno-dev
