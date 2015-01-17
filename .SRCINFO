@@ -1,15 +1,14 @@
 pkgbase = quassel-light
 	pkgdesc = Modern, cross-platform, distributed IRC client; built with few dependencies
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://quassel-irc.org/
 	install = quassel.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = automoc4
-	depends = qt4
+	depends = qt5-base
 	optdepends = qca-ossl
 	provides = quassel-core
 	provides = quassel-client
