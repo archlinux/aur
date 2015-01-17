@@ -1,0 +1,1402 @@
+manpages-fr-extra (20141109) unstable; urgency=medium
+
+  [ David Prévot ]
+  * Replace realpath (Closes: #768224)
+  * glibc: Sync with 2.19-12
+  * lilo:
+    - Sync with version 1:24.1-1
+    - Update translation.
+  * coreutils:
+    - Sync with 8.23-3
+    - Trivial unfuzzy
+  * cron:
+    - Sync with 3.0pl1-127
+    - Update translation
+  * Add ddate (restore ddate.1)
+  * util-linux:
+    - Sync with 2.25.2-2
+    - Update translation
+  * sysvinit:
+    - Sync with 2.88dsf-57
+    - Trivial unfuzzy
+
+  [ Jean-Paul Guillonneau ]
+  * lilo: Proofread
+
+  [ Jean-Pierre Giraud ]
+  * cron: Proofread
+  * util-linux: Proofread
+  * lilo: Proofread
+
+ -- David Prévot <taffit@debian.org>  Sun, 09 Nov 2014 10:28:47 -0400
+
+manpages-fr-extra (20141022) unstable; urgency=medium
+
+  [ David Prévot ]
+  * bash: Sync with 4.3-11
+  * dosfstools: Sync with version 3.0.26-4
+  * glibc:
+    - Re-add pages (not yet shipped in manpages-fr actually):
+      + iconv.1
+      + localedef.1
+      + sprof.1
+      + iconvconfig.8
+    - Remove validlocale(8) (shipped directly by glibc)
+  * grep: Sync with 2.20-4
+  * openssl:
+    - Sync with 1.0.1j-1
+    - Update translation
+  * util-linux: Sync with 2.24.2-1
+    - New pages:
+      + nsenter.1
+      + prlimit.1
+      + runuser.1
+      + utmpdump.1
+      + terminal-colors.d.5
+      + blkdiscard.8
+      + chcpu.8
+      + fsck.cramfs.8
+      + lslocks.8
+      + mkfs.cramfs.8
+      + readprofile.8
+      + resizepart.8
+      + wdctl.8
+    - Deleted pages:
+      + chkdupexe.1
+      + ddate.1
+      + readprofile.1 (replaced by readprofile.8)
+      + cytune.8
+      + getty.8 (replaced by a symlink to agetty.8)
+      + clock.8 (no longer a symlink to hwclock.8)
+    - Update translation
+    - Proofread by Jean-Paul Guillonneau and Jean-Pierre Giraud
+
+  [ Jean-Paul Guillonneau ]
+  * openssl: Proofread
+  * lilo: Proofread
+
+ -- David Prévot <taffit@debian.org>  Wed, 22 Oct 2014 12:29:48 -0400
+
+manpages-fr-extra (20141008) unstable; urgency=medium
+
+  * at: Sync with 3.1.16-1
+  * bash: Sync with 4.3-10
+  * procps: Sync with 2:3.3.9-8
+  * util-linux: Sync with 2.20.1-5.11
+
+  [ Cédric Boutillier ]
+  * e2fsprogs: update translation
+
+  [ Jean-Paul Guillonneau ]
+  * coreutils: Proofread
+
+  [ David Prévot ]
+  * Bump standards version to 3.9.6
+
+ -- David Prévot <taffit@debian.org>  Wed, 08 Oct 2014 18:51:03 -0400
+
+manpages-fr-extra (20140930) unstable; urgency=medium
+
+  * bash: Sync with 4.3-9.2
+  * coreutils: Sync with 8.23-2
+    - Add new realpath.1
+  * e2fsprogs: Sync with 1.42.12-1
+  * glibc: Sync with 2.19-11
+    - Deleted pages (soon to be moved to manpages-fr):
+      + iconv.1
+      + localedef.1
+      + sprof.1
+      + iconvconfig.8
+  * grep: Sync with 2.20-3
+
+  [ David Prévot ]
+  * coreutils: Update translation
+
+  [ Baptiste Jammet ]
+  * coreutils: Proofread
+
+  [ Jacques Defelice ]
+  * e2fsprogs: Proofread
+
+  [ Jean-Paul Guillonneau ]
+  * openssl: Update SSL_CTX_set translation
+    - New translations:
+      + SSL_CTX_set_cert_verify_callback.3
+      + SSL_CTX_set_client_CA_list.3
+      + SSL_CTX_set_client_cert_cb.3
+      + SSL_CTX_set_default_passwd_cb.3
+      + SSL_CTX_set_generate_session_id.3
+      + SSL_CTX_set_info_callback.3
+      + SSL_CTX_set_max_cert_list.3
+      + SSL_CTX_set_mode.3
+      + SSL_CTX_set_msg_callback.3
+      + SSL_CTX_set_options.3
+      + SSL_CTX_set_quiet_shutdown.3
+      + SSL_CTX_set_session_cache_mode.3
+      + SSL_CTX_set_session_id_context.3
+      + SSL_CTX_set_tlsext_ticket_key_cb.3
+      + SSL_CTX_set_tmp_dh_callback.3
+      + SSL_CTX_set_tmp_rsa_callback.3
+      + SSL_CTX_set_verify.3
+
+ -- David Prévot <taffit@debian.org>  Tue, 30 Sep 2014 18:02:27 -0400
+
+manpages-fr-extra (20140831) unstable; urgency=medium
+
+  * at: Sync with version 3.1.15-1
+  * cron: Sync with version 3.0pl1-124.2
+  * bash: Sync with version 4.3-9
+  * dosfstools: Sync with 3.0.26-3
+  * glibc: Sync with 2.19-9
+  * grep: Sync with version 2.20-2
+  * nfs-utils: Sync with 1:1.2.8-9
+  * openssl: Sync with 1.0.1i-2
+  * reiser4progs: Sync with 1.0.9-2
+  * sysvinit: Sync with 2.88dsf-53.4
+
+  [ Baptiste Jammet ]
+  * reiser4progs: Proofread
+  * e2fsprogs: proofread
+  * openssl:
+    - Update x509
+    - New translations:
+      + x509.1
+      + x509v3_config.5
+      + x509.3
+      + X509_NAME_add_entry_by_txt.3
+      + X509_NAME_get_index_by_NID.3
+      + X509_NAME_print_ex.3
+      + X509_STORE_CTX_get_error.3
+      + X509_STORE_CTX_new.3
+      + X509_VERIFY_PARAM_set_flags.3
+
+  [ Jean-Pierre Giraud ]
+  * reiser4progs: Proofread
+
+ -- David Prévot <taffit@debian.org>  Sun, 31 Aug 2014 17:42:51 -0400
+
+manpages-fr-extra (20140801) unstable; urgency=medium
+
+  * e2fsprogs: Sync with 1.42.11-2
+  * findutils: Sync with 4.4.2-9
+  * glibc: Sync with 2.19-7
+  * procps: Sync with 1:3.3.9-7
+  * x11-xserver-utils: Sync with 7.7+3
+
+  [ Cédric Boutillier ]
+  * e2fsprogs: Update translation
+
+  [ Oliver Hamm ]
+  * openssl:
+    - Update crypto
+    - New translations:
+      + CONF_modules_load_file.3
+      + OBJ_nid2obj.3
+      + blowfish.3
+      + buffer.3
+      + crypto.3
+      + des.3
+      + engine.3
+      + hmac.3
+      + lh_stats.3
+      + lhash.3
+      + pem.3
+      + rc4.3
+      + threads.3
+      + ui.3
+
+  [ Baptiste Jammet ]
+  * glibc: Proofread translation
+  * openssl: Proofread apps
+
+  [ Jean-Pierre Giraud ]
+  * openssl: Proofread apps, ciphers and crypto
+
+ -- David Prévot <taffit@debian.org>  Fri, 01 Aug 2014 13:52:09 -0400
+
+manpages-fr-extra (20140702) unstable; urgency=medium
+
+  [ David Prévot ]
+  * cron: Sync with 3.0pl1-124.1
+  * e2fsprogs: Sync with 1.42.10-1.1
+  * glibc:
+    - Source moved from eglibc
+    - Sync with 2.19.4
+  * openssl:
+    - Sync with 1.0.1h-3
+    - Proofread apps
+    - Update ciphers
+  * procps: Sync with 1:3.3.9-5
+  * sysvinit: Sync with 2.88dsf-53.2
+  * util-linux: Sync with 2.20.1-5.8
+
+  [ Celia Boudjemai ]
+  * openssl:
+    - Update apps
+    - New translations:
+      + ocsp.1
+      + ts.1
+      + tsget.1
+      + config.5
+
+  [ Thomas Blein ]
+  * eglibc:
+    - Update translation
+    - Proofread by Jean-Pierre Giraud
+
+  [ Jean-Paul Guillonneau ]
+  * openssl: Proofread apps and ciphers
+
+ -- David Prévot <taffit@debian.org>  Wed, 02 Jul 2014 12:06:28 -0400
+
+manpages-fr-extra (20140601) unstable; urgency=medium
+
+  * openssl: Sync with 1.0.1g-4
+  * e2fsprogs: Sync with 1.42.10-1
+  * eglibc:
+    - Sync with 2.18-7
+    - New page: sotruss.1
+    - Deleted page: locale.1 (now provided by manpages-fr)
+
+  [ Vincent Blut ]
+  * tar: Proofread tar.1 (Closes: #748135)
+
+  [ Lucas Laugier ]
+  * openssl:
+    - Update SSL_set translation
+    - New translation of SSL_set_shutdown.3
+    - Proofread by Baptiste Jamet and Jean-Paul Guillonneau
+
+  [ Thomas Blein ]
+  * eglibc:
+    - Update translation
+    - Proofread by Jean-Paul Guillonneau
+
+  [ Cédric Boutillier ]
+  * e2fsprogs:
+    - Update translation
+    - Proofread by Jean-Pierre Giraud
+
+ -- David Prévot <taffit@debian.org>  Sun, 01 Jun 2014 11:31:26 -0400
+
+manpages-fr-extra (20140506) unstable; urgency=medium
+
+  [ Jean-Paul Guillonneau ]
+  * openssl: Proofread pkcs
+
+  [ Laurent Lyaudet ]
+  * util-linux: tfix flock.1 (LP: #1315036)
+
+  [ David Prévot ]
+  * bash: Sync with version 4.3-7
+  * coreutils: Sync with 8.21-1.2
+  * eglibc: Sync with 2.18-5
+  * findutils: Sync with 4.4.2-8
+  * grep: Sync with 2.18-2
+  * openssl: Sync with version 1.0.1g-3
+  * startpar:
+    - Initial infrastructure
+    - Split from sysvinit
+    - Add manpages:
+      + startpar-upstart-inject.8
+      + startpar.8
+  * sysvinit:
+    - Sync with 2.88dsf-53.
+    - Delete manpages:
+      + startpar-upstart-inject.8
+      + startpar.8
+
+ -- David Prévot <taffit@debian.org>  Tue, 06 May 2014 14:38:09 -0400
+
+manpages-fr-extra (20140411) unstable; urgency=medium
+
+  [ Thomas Vincent ]
+  * sysvinit: proofread by Baptiste Jammet, Jean-Paul Guillonneau, and
+    Jean-Pierre Giraud.
+
+  [ David Prévot ]
+  * bash: Sync with version 4.3-5
+  * coreutils: Sync with version 8.21-1.1
+  * dosfstools:
+    - Sync with 3.0.26-2
+    - Remove pages (replaced by symlinks):
+      + dosfslabel.8
+      + dosfsck.8
+      + mkdosfs.8
+    - Replace by:
+      + fatlabel.8
+      + fsck.fat.8
+      + mkfs.fat.8
+    - Update translation
+    - proofread by Baptiste Jammet
+  * openssl:
+    - Sync with 1.0.1g-2
+    - Update translation
+  * tar: Sync with 1.27.1-2
+  * util-linux: Sync with version 2.20.1-5.7
+
+ -- David Prévot <taffit@debian.org>  Fri, 11 Apr 2014 11:39:00 -0400
+
+manpages-fr-extra (20140317) unstable; urgency=medium
+
+  [ David Prévot ]
+  * bash:
+    - Sync with 4.3-2
+    - Update translation
+    - Proofread by Baptiste Jammet, Jean-Paul Guillonneau, and
+      Jean-Pierre Giraud
+  * e2fsprogs: Sync with 1.42.9-3
+  * eglibc: Sync with 2.18-4
+  * grep: Sync with 2.18-1
+  * nfs-utils: Sync with 1:1.2.8-6
+  * procps:
+    - Sync with version 1:3.3.9-2
+    - Update translation
+    - Proofread by Baptiste Jammet, Jean-Paul Guillonneau, and
+      Jean-Pierre Giraud
+  * reiserfsprogs: Sync with 1.0.8-1
+  * sysvinit:
+    - Sync with 2.88dsf-51
+    - Add new manpages:
+      + init-d-script.5
+      + startpar-upstart-inject.8
+  * tar: Sync with 1.27.1-1
+
+  [ Thomas Blein ]
+  * tar:
+    - Update translation
+    - Proofread by Jean-Paul Guillonneau and Jean-Pierre Giraud
+
+  [ Thomas Vincent ]
+  * sysvinit: Update translation
+
+  [ Cédric Boutillier ]
+  * e2fsprogs
+    - Update translation
+    - Proofread by Jean-Pierre Giraud
+
+ -- David Prévot <taffit@debian.org>  Mon, 17 Mar 2014 19:41:47 -0400
+
+manpages-fr-extra (20140201) unstable; urgency=medium
+
+  [ Thomas Blein ]
+  * openssl:
+    - Complete pkcs translation
+    - New translation of PKCS7_verify.3
+    - Proofread by: Jean-Paul Guillonneau and Jean-Pierre Giraud
+
+  [ Cédric Boutillier ]
+  * e2fsprogs:
+    - Sync with 1.42.9-2
+    - Add ext4.5
+    - Update translation
+    - Proofread by: Baptiste Jammet and Jean-Pierre Giraud
+
+  [ David Prévot ]
+  * grep: Sync with version 2.16-1
+  * nfs-utils: Sync with version 1:1.2.8-5
+  * openssl: Sync with version 1.0.1f-1
+  * reiserfsprogs: Sync with 1:3.6.24-1
+  * sysvinit: Sync with 2.88dsf-45
+  * util-linux: Sync with version 2.20.1-5.6
+  * x11-xserver-utils: Sync with version 7.7+2
+
+ -- David Prévot <taffit@debian.org>  Sat, 01 Feb 2014 12:15:02 -0400
+
+manpages-fr-extra (20131231) unstable; urgency=medium
+
+  [ Jean-Paul Guillonneau, Baptiste Jammet, Jean-Pierre Giraud ]
+  * openssl: Proofread pkey
+
+  [ David Prévot ]
+  * eglibc: Sync with version 2.17-97
+  * findutils: Sync with version 4.4.2-7
+  * openssl: Sync with version 1.0.1e-6
+
+ -- David Prévot <taffit@debian.org>  Tue, 31 Dec 2013 18:43:40 -0400
+
+manpages-fr-extra (20131201) unstable; urgency=low
+
+  * eglibc: Sync with version 2.17-93
+  * grep: Sync with version 2.15-2
+  * most: Sync with version 5.0.0a-2.3
+  * openssl: Sync with version 1.0.1e-4
+  * openssl:
+    - Complete pkey translation
+    - New translation of some files:
+      + genpkey.1
+      + pkeyutl.1
+      + EVP_PKEY_CTX_ctrl.3
+      + EVP_PKEY_set1_RSA.3
+  * Bump standards version to 3.9.5
+
+ -- David Prévot <taffit@debian.org>  Sun, 01 Dec 2013 19:05:47 -0400
+
+manpages-fr-extra (20131002) unstable; urgency=low
+
+  [ Raphaël Bleuse ]
+  * tfix: s/vielle/vieille/ (Closes: #722386)
+
+  [ David Prévot ]
+  * at: Sync with version 3.1.14-1
+  * diffutils: Sync with version 1:3.3-1
+  * x11-xserver-utils:
+    - Sync with version 7.7+1
+    - Update translation
+
+  [ Proofread ]
+  * Thanks to Baptiste Jammet, Jean-Paul Guillonneau and Jean-Pierre Giraud
+
+ -- David Prévot <taffit@debian.org>  Wed, 02 Oct 2013 15:25:01 -0400
+
+manpages-fr-extra (20130901) unstable; urgency=low
+
+  [ David Prévot ]
+  * coreutils: Sync with version 8.21-1
+    - Add numfmt.1
+  * e2fsprogs: Sync with version 1.42.8-1
+  * eglibc: Sync with version 2.17-92
+    - Deleted pages:
+      - ldd.1
+      - zdump.1
+      - gai.conf.5
+      - ld.so.8
+      - ldconfig.8
+      - zic.8
+  * grep: Sync with version 2.14-3
+  * sysvinit: Sync with version 2.88dsf-42
+  * tar: Sync with version 1.26+dfsg-8
+
+  [ Cédric Boutillier ]
+  * e2fsprogs: Update translation
+
+  [ Thomas Vincent ]
+  * sysvinit: Update translation
+
+  [ Bastien Scher ]
+  * coreutils: Update translation
+
+  [ Proofread ]
+  * Thanks to Simon Paillard, Stéphane Blondon, Baptiste Jammet and Jean-Paul
+    Guillonneau
+
+ -- David Prévot <taffit@debian.org>  Sun, 01 Sep 2013 10:22:23 -0400
+
+manpages-fr-extra (20130721) unstable; urgency=low
+
+  [ David Prévot ]
+  * Bump compat to 9
+  * Convert to dh short rules
+  * Switch to dpkg-source 3.0 (native) format
+  * Switch to xz compression for the source package
+  * eglibc: Sync with version 2.17-7
+  * findutils: Sync with version 4.4.2-6
+  * lilo: Sync with version 1:24.0-2
+  * openssl:
+    - Complete ciphers and rand translations
+    - New translation of some pages:
+      + s_client.1
+      + s_server.1
+      + rand.3
+      + RAND_set_rand_method.3
+  * util-linux: Sync with version 2.20.1-5.5
+
+  [ Thomas Preud'homme ]
+  * coreutils: Fix typo in install.1 (Closes: #716704)
+
+  [ Proofread ]
+    Thanks to Baptiste and Jean-Paul Guillonneau
+
+ -- David Prévot <taffit@debian.org>  Sun, 21 Jul 2013 19:11:41 -0400
+
+manpages-fr-extra (20130618) unstable; urgency=low
+
+  [ David Prévot ]
+  * debian/control: Drop sysv-rc from Replaces
+  * debian/gbp.conf: Add a git-buildpackage configuration file
+  * eglibc:
+    - Sync with version 2.17-3
+    - Remove rpcinfo.8 (untranslated)
+    - Add pldd.1
+  * grep: Sync with version 2.14-2
+  * nfs-utils:
+    - Sync with version 1:1.2.8-4
+    - Add nfsdcltrack.8
+  * openssl:
+    - Sync with version 1.0.1e-3
+    - Update configuration into 27 PO files
+    - Complete asn1, dsa, openssl and smime translations
+    - New translation of some files:
+      + smime.1
+      + ASN1_STRING_length.3
+      + ASN1_STRING_print_ex.3
+      + DSA_generate_parameters.3
+      + DSA_set_method.3
+      + DSA_sign.3
+      + dsa.3
+      + ecdsa.3
+      + EVP_PKEY_decrypt.3
+      + EVP_PKEY_derive.3
+      + EVP_PKEY_encrypt.3
+      + EVP_PKEY_keygen.3
+      + EVP_PKEY_sign.3
+      + EVP_PKEY_verify.3
+      + EVP_PKEY_verify_recover.3
+      + OPENSSL_VERSION_NUMBER.3
+      + OPENSSL_config.3
+      + OpenSSL_add_all_algorithms.3
+  * tar: Sync with version 1.26+dfsg-6
+  * util-linux: Sync with version 2.20.1-5.4
+
+  [ Simon Paillard ]
+  * findutils: typo fix (Closes: #710392)
+
+  [ Cédric Boutillier ]
+  * nfsutils: Update translation
+
+  [ Bastien Scher ]
+  * openssl:
+    - Complete SSL_session translation
+    - New translation of:
+      + SSL_SESSION_get_time.3
+
+  [ Proofread ]
+  * Thanks to Baptiste, Étienne Gilli, Jean-Paul Guillonneau, Jean-Pierre
+    Giraud
+
+ -- David Prévot <taffit@debian.org>  Tue, 18 Jun 2013 16:53:53 -0400
+
+manpages-fr-extra (20130508) unstable; urgency=low
+
+  [ David Prévot ]
+  * bash: Sync with version 4.2+dfsg-1
+  * coreutils: Proofread timeout.1, thanks to Vincent Danjean
+    (closes: #703400)
+  * diffutils: Sync with version 1:3.2-8
+  * dosfstools: Sync with version 3.0.16-2
+  * e2fsprogs:
+    - Add missing mkfs.ext4.8 symlink
+    - Sync with version 1.42.5-1.1
+  * findutils: Sync with version 4.4.2-5
+  * grep: Sync with version 2.14-1
+  * openssl:
+    - Sync with version 1.0.1e-2
+    - New translation of some files
+      + BIO_new.3
+      + BIO_new_CMS.3
+      + BIO_push.3
+      + BIO_read.3
+      + BN_add_word.3
+      + BN_bn2bin.3
+      + BN_rand.3
+      + BN_zero.3
+      + SSL_COMP_add_compression_method.3
+      + SSL_CTX_set_psk_client_callback.3
+      + SSL_CTX_use_psk_identity_hint.3
+      + SSL_get_psk_identity.3
+  * procps:
+    - Sync with version 1:3.3.4-2
+    - Update translation
+  * tar:
+    - Sync with version 1.26+dfsg-5
+    - Add tarcat.1
+  * debian/control:
+    - Bump Standards-Version to 3.9.4
+    - Remove duplicated Section and Priority entries
+
+  [ Cédric Boutillier ]
+  * grep: Update translation
+
+  [ Thomas Blein ]
+  * tar: Update translation
+
+ -- David Prévot <taffit@debian.org>  Thu, 09 May 2013 00:30:41 -0400
+
+manpages-fr-extra (20130226) unstable; urgency=low
+
+  * bash: Sync with version 4.2+dfsg-0.1
+  * coreutils: Sync with version 8.13-3.5
+  * eglibc: Sync with version 2.13-38
+  * openssl:
+    - Sync with version 1.0.1e-1
+    - EVP_PKEY_verifyrecover.3 renamed as EVP_PKEY_verify_recover.3
+    - Update translation:
+      + CA.pl.3
+      + EVP_PKEY_get_default_digest.3
+      + verify.3
+    - New translation of some files.
+      + BIO_f_buffer.3
+      + BIO_s_null.3
+      + BN_CTX_new.3
+      + BN_CTX_start.3
+      + BN_cmp.3
+      + BN_new.3
+      + BN_num_bytes.3
+      + CMS_add1_recipient_cert.3
+      + CMS_decrypt.3
+      + CMS_get0_type.pod.po
+      + CMS_get1_ReceiptRequest.3
+      + CMS_uncompress.3
+      + d2i_PKCS8PrivateKey.3
+      + d2i_RSAPublicKey.3
+      + d2i_SSL_SESSION.3
+      + d2i_X509.3
+      + DH_generate_key.3
+      + DH_generate_parameters.3
+      + DH_new.3
+      + DH_set_method.3
+      + DSA_do_sign.3
+      + DSA_get_ex_new_index.3
+      + DSA_SIG_new.3
+      + ERR_GET_LIB.3
+      + ERR_get_error.3
+      + ERR_load_crypto_strings.3
+      + ERR_load_strings.3
+      + ERR_print_errors.3
+      + ERR_put_error.3
+      + ERR_remove_state.3
+      + ERR_set_mark.3
+      + evp.3
+      + EVP_BytesToKey.3
+      + EVP_OpenInit.3
+      + EVP_PKEY_cmp.3
+      + EVP_PKEY_CTX_new.3
+      + EVP_PKEY_get_default_digest.3
+      + EVP_PKEY_new.3
+      + EVP_PKEY_print_private.3
+      + i2d_CMS_bio_stream.3
+      + i2d_PKCS7_bio_stream.3
+      + OPENSSL_load_builtin_modules.3
+      + PEM_write_bio_CMS_stream.3
+      + PEM_write_bio_PKCS7_stream.3
+      + PKCS7_decrypt.3
+      + PKCS7_encrypt.3
+      + PKCS7_sign.3
+      + PKCS7_sign_add_signer.3
+      + RAND_add.3
+      + RAND_bytes.3
+      + RAND_cleanup.3
+      + RAND_egd.3
+      + RAND_load_file.3
+      + RSA_blinding_on.3
+      + RSA_print.3
+      + RSA_sign.3
+      + RSA_sign_ASN1_OCTET_STRING.3
+      + RSA_size.3
+      + SMIME_read_CMS.3
+      + SMIME_read_PKCS7.3
+      + SMIME_write_CMS.3
+      + SMIME_write_PKCS7.3
+      + SSL_clear.3
+      + SSL_CTX_add_extra_chain_cert.3
+      + SSL_CTX_ctrl.3
+      + SSL_CTX_flush_sessions.3
+      + SSL_CTX_free.3
+      + SSL_CTX_get_ex_new_index.3
+      + SSL_CTX_set_cipher_list.3
+      + SSL_CTX_set_ssl_version.3
+      + SSL_CTX_set_timeout.3
+      + SSL_get_ciphers.3
+      + SSL_get_current_cipher.3
+      + SSL_get_default_timeout.3
+      + SSL_get_ex_new_index.3
+      + SSL_get_peer_cert_chain.3
+      + SSL_SESSION_get_ex_new_index.3
+      + SSL_set_fd.3
+      + SSL_set_verify_result.3
+      + SSL_state_string.3
+      + X509_NAME_ENTRY_get_object.3
+      + X509_STORE_CTX_set_verify_cb.3
+      + X509_STORE_set_verify_cb_func.3
+      + X509_verify_cert.3
+    Thanks to Étienne Gilli, Stéphane Blondon, Jean Paul Guilloneau, Baptiste
+    and Jean-Baka Domelevo Entfellner for their proofread.
+  * sysvinit: Sync with version 2.88dsf-41
+  * tar: Sync with version 1.26+dfsg-0.1
+  * util-linux: Sync with version 2.20.1-5.3
+
+ -- David Prévot <taffit@debian.org>  Tue, 26 Feb 2013 15:13:32 -0400
+
+manpages-fr-extra (20121129) unstable; urgency=low
+
+  * openssl:
+    - Handle section 7 and 5 of manual pages
+    - New translation of some files:
+      + CMS_final.3
+      + CMS_sign_receipt.3
+      + CMS_verify_receipt.3
+      + d2i_DSAPublicKey.3
+      + SSL_CTX_set_cert_store.3
+      + SSL_set_session.3
+      + ui_compat.3
+      + des_modes.7
+  * sysvinit: Sync with version 2.88dsf-34
+  * eglibc: Sync with version 2.13-37
+  * util-linux, tar: Typo and format fixes
+
+ -- David Prévot <taffit@debian.org>  Thu, 29 Nov 2012 11:25:01 -0400
+
+manpages-fr-extra (20121027) unstable; urgency=low
+
+  [ Thomas Blein ]
+  * openssl: New translation of some files: PKCS12_create.3, PKCS12_parse.3,
+    and ssl.3
+
+  [ David Prévot ]
+  * openssl: Sync with version 1.0.1c-4
+  * openssl: Update translation of some files: ca.1, ciphers.1, dgst.1, enc.1,
+    openssl.1, pkcs12.1, req.1, and verify.1
+  * openssl: New translation of some files: pkey.1, pkeyparam.1,
+    CRYPTO_set_ex_data.3, SSL_accept.3, SSL_connect.3,
+    SSL_CTX_get_verify_mode.3, SSL_CTX_sess_set_cache_size.3,
+    SSL_do_handshake.3, SSL_get_client_CA_list.3,
+    SSL_get_ex_data_X509_STORE_CTX_idx.3, SSL_get_peer_certificate.3,
+    SSL_get_session.3, SSL_library_init.3, SSL_pending.3,
+    SSL_set_connect_state.3, SSL_want.3, and X509_STORE_CTX_get_ex_new_index.3
+    Special thanks to Jean-Paul Guilloneau and Stéphane Blondon for their
+    numerous proofreads.
+  * at: Fix AA instead of YY (LP: #1050426)
+  * tar: Proofread translation and formatting of tar.1
+  * sysvinit: Sync with version 2.88dsf-32
+  * util-linux: Sync with version 2.20.1-5.2
+  * util-linux: Fix formatting in fstab.5
+
+ -- David Prévot <taffit@debian.org>  Sat, 27 Oct 2012 11:05:16 -0400
+
+manpages-fr-extra (20120831) unstable; urgency=low
+
+  [ David Prévot ]
+  * Update translation of procps 1:3.3.3-2
+  * Update translation of bash 4.2-4
+  * Update translation of some files from openssl:
+    - CONF_modules_free.pod.po
+    - d2i_X509_CRL.pod.po
+    - d2i_X509_REQ.pod.po
+    - enc.pod.po
+    - verify.pod.po (added)
+  * Update translation of sysvinit 2.88dsf-31:
+    - add tmpfs.5
+  * Sync with util-linux 2.20.1-5.1
+  * Sync with dosfstools 3.0.13-1
+  * Sync with cron 3.0pl1-124
+  * Sync with nfs-utils 1:1.2.6-3
+  * Sync with eglibc 2.13-35
+
+  [ Cédric Boutillier ]
+  * Update translation of e2fsprogs 1.42.5-1
+
+ -- David Prévot <taffit@debian.org>  Fri, 31 Aug 2012 18:49:32 -0400
+
+manpages-fr-extra (20120623) unstable; urgency=low
+
+  [ David Prévot ]
+  * util-linux:
+     + add hwclock.5;
+     + update translation to 2.20.1-5.
+  * Update translation of e2fsprogs 1.42.4-3.
+  * Sync with coreutils 8.13-3.2.
+  * Sync with x11-xserver-utils 7.7~2.
+  * Sync with grep 2.12-2.
+  * Sync with eglibc 2.13-33.
+  * Sync with at 3.1.13-2.
+
+  [ Simon Paillard ]
+  * Fix double words in bash, e2fsprogs, findutils and x11-xserver-utils.
+
+  [ Cédric Boutillier ]
+  * Update translation of nfs-utils 1:1.2.6-2.
+
+ -- David Prévot <taffit@debian.org>  Sat, 23 Jun 2012 18:51:45 -0400
+
+manpages-fr-extra (20120505) unstable; urgency=low
+
+  [ David Prévot ]
+  * util-linux: typo fix. Closes: #665716
+  * Update translation of openssl (ASN1_generate_nconf).
+  * Update translation of lilo.
+  * Update translation of grep.
+  * eglibc:
+     + remove getent.1
+     + update translation
+  * Update version of sysvinit.
+  * Update version of bash.
+  * Update version of diffutils.
+
+  [ Cédric Boutillier ]
+  * Update translation of e2fsprogs.
+
+ -- David Prévot <taffit@debian.org>  Sat, 05 May 2012 20:44:33 -0400
+
+manpages-fr-extra (20120324) unstable; urgency=low
+
+  [ David Prévot ]
+  * util-linux:
+     + add back ddate.1 and line.1
+     + update translation
+  * Update translation of lilo.
+  * Update translation of e2fsprogs.
+  * procps:
+     + adapt configuration to handle last version of top.1
+     + update translation
+  * Update translation of eglibc.
+  * Update version of diffutils.
+  * Update version of coreutils.
+  * debian/control: Standards-Version bumped to 3.9.3 (no changes).
+  * debian/rules: Add build-arch and build-indep targets.
+
+ -- David Prévot <taffit@debian.org>  Sat, 24 Mar 2012 11:31:03 -0400
+
+manpages-fr-extra (20120212) unstable; urgency=low
+
+  [ Simon Paillard ]
+  * Fix typo: entête -> en-tête
+
+  [ Cédric Boutillier ]
+  * Update translation of grep.
+  * Update translation of e2fsprogs.
+
+  [ David Prévot ]
+  * Update translation of tar.
+  * Update translation of sysvinit.
+  * Update translation of dosfstools.
+  * Update translation of most.
+  * Update translation of nfs-utils.
+  * Update translation of eglibc.
+  * Update translation of bash.
+  * Update translation of findutils.
+  * util-linux:
+     + add uuid_generate_time_safe.3 and x86_64.8
+     + remove ddate.1 and line.1
+     + update translation
+  * Quick proofread of coreutils (Closes: #659218).
+  * Update translation of cron.
+
+ -- Simon Paillard <spaillard@debian.org>  Sun, 12 Feb 2012 13:58:25 +0100
+
+manpages-fr-extra (20111118) unstable; urgency=low
+
+  [ Simon Paillard ]
+  * utils-linux: translate blkid 'device' when not a parameter. See #635737
+  * nfs-utils: add nfsidmap.5, blkmapd.8
+
+  [ David Prévot ]
+  * e2fsprog:
+     + remove check-links
+     + add new e4defrag.8 man page
+  * util-linux:
+     + add indmnt.8, findmnt.8, fsfreeze.8, fstrim.8, lsblk.8, swaplabel.8
+       mkfs.bfs.8, raw.8, rtcwake.8, tunelp.8
+     + update translation 
+  * lilo:
+     + global review (mainly lilo.conf.5)
+     + update translation
+  * Update translation of at.
+  * Update translation of cron.
+  * Update translation of diffutils.
+  * Update translation of util-linux.
+  * Synchronize manpages against testing (instead of sid), to avoid situation
+    where English manpages didn't migrate to testing.
+
+  [ Thomas Blein ]
+  * Update translation of eglibc.
+
+  [ Cédric Boutillier ]
+  * Update translation of e2fsprogs.
+
+  [ Denis Mugnier ]
+  * Update translation of nfs-utils.
+
+  [ Bastien Scher ]
+  * Update translation of coreutils.
+
+ -- Simon Paillard <spaillard@debian.org>  Fri, 18 Nov 2011 21:09:01 +0100
+
+manpages-fr-extra (20110730) unstable; urgency=low
+
+  [ Simon Paillard ]
+  * Fix typos regarding plural. Closes: #619277
+  * Updated translation of the cron manpages.
+  * Updated translation of the e2fsprogs manpages.
+  * Updated translation of the sysvinit manpages (Romain Doumenc).
+  * debian/control: Update Vcs-* after git migration
+  * utils-linux: don't translate 'device' blkid parameter Closes: #635737
+
+  [ David Prévot ]
+  * Updated translation of the procps manpages.
+  * Updated translation of the x11-xserver-utils manpages.
+  * Updated translation of the eglibc manpages.
+  * Updated translation of the lilo manpages.
+  * Updated translation of the util-linux manpages.
+  * debian/control:
+    - drop version relationship of po4a in Build-Depends
+      (a higher version is already in oldstable);
+    - drop belocs-locales-bin (<< 2.4-3) in Replaces
+      (this version is not in oldstable anymore);
+    - Standards-Version bumped to 3.9.2.
+  * debian/copyright: add BSD license text.
+  * Fix expand(1) -t translation, thanks to Éric Araujo. Closes: #614157
+
+  [ Stéphane Blondon ]
+  * Updated translation of the most manpages.
+
+  [ Thomas Blein ]
+  * Updated translation of the tar manpages.
+
+ -- Simon Paillard <spaillard@debian.org>  Sat, 30 Jul 2011 16:10:37 +0200
+
+manpages-fr-extra (20101103) unstable; urgency=low
+
+  [ Denis Barbier ]
+  * eglibc: Add symlinks for ld-linux.8 and ld-linux.so.8,
+    those symlinks are shipped in the manpages Debian package
+    but cannot be set in manpages-fr, otherwise manpages-fr
+    should depend on manpages-fr-extra.
+
+  [David Prévot]
+  * --line-buffered definition, thanks to Nicolas Caval. Closes: #590206
+  * Provide UTF-8 manual pages.
+  * Updated translation of the bash manpages.
+  * Updated translation of the procps manpages. 
+  * Updated translation of the sysvinit manpages. 
+  * Updated translation of the x11-server-utils manpages.
+  * Updated translation of the cron manpages.
+  * Updated translation of the tar manpages (Thomas Blein).
+  * Updated translation of the util-linux manpages (Alexandre Normand).
+  * Updated translation of the e2fsprogs manpages (Romain Doumenc).
+  * Updated translation of the nfs-utils manpages (Romain Doumenc).
+  * Fix manpages titles for more consistency
+
+  [ Simon Paillard ]
+  * Fix typos in findutils. 
+
+ -- Simon Paillard <spaillard@debian.org>  Wed, 03 Nov 2010 00:40:25 +0100
+
+manpages-fr-extra (20100723) unstable; urgency=low
+
+  [ Nicolas FRANCOIS ]
+  * Updated translation of the bash manpages.
+    The bash-minimal.1 man page is gone.
+  * Updated translation of the dosfstools manpages.
+  * Updated translation of the sysvinit manpages.
+  * Updated translation of the findutils manpages.
+  * Updated translation of the coreutils manpages.
+  * Updated translation of the diffutils manpages.
+  * Updated translation of the cron manpages.
+  * Updated translation of the grep manpages.
+
+  [ Florentin Duneau ]
+  * Updated translation of the util-linux manpages.
+  * Updated translation of the eglibc manpages.
+
+  [ Denis Barbier ]
+  * debian/control: Add missing trailing slash to Vcs-Browser
+  * debian/control: Remove Replaces: manpages-fr (<< 2.33.2-1).
+    This version is older than the one in oldstable.
+  * Proofread util-linux manpages.  Closes: #583253
+
+  [ Simon Paillard ]
+  * debian/control: add myself as one of the Uploaders.
+
+ -- Simon Paillard <spaillard@debian.org>  Fri, 23 Jul 2010 14:21:59 +0200
+
+manpages-fr-extra (20091227) unstable; urgency=low
+
+  [ Nicolas FRANCOIS ]
+  * Fix encoding of openssl manpages.
+  * coreutils: Fixed wrong non breaking spaces. Closes: #558699
+  * findutils: Fixed typo in xargs(1) -O is -0. Closes: #566322
+  * x11-xserver-utils: New translations.
+  * debian/control: Standards-Version bumped to 3.8.4 (no changes).
+  * debian/control: Added dependency on ${misc:Depends}, even if I assume
+    there would be no dependencies for a manpages package.
+
+  [ Simon Paillard ]
+  * Fix [2-9]ème in [2-9]e
+
+  [ Christian Perrier ]
+  * Add "Replaces: sysv-rc (<< 2.87dsf-3)" to allow safe upgrades from
+    lenny as sysv-rc is providing /usr/share/man/fr/man8/update-rc.d.8.gz
+    Closes: #571027
+
+ -- Nicolas FRANCOIS (Nekral) <nicolas.francois@centraliens.net>  Thu, 15 Apr 2010 22:09:12 +0200
+
+manpages-fr-extra (20090906) unstable; urgency=low
+
+  [ Nicolas FRANCOIS ]
+  * Fix typo in the diff(1) manpage. Closes: #511583
+  * Activate the distribution of the sysvinit manpages. No news from the
+    sysvinit maintainers.
+  * source glibc changed to eglibc.
+  * Updated manpages according to current debian packages.
+  * Added reiser4progs and reiserfsprogs manpages.
+  * Translation of updateddb.findutils.1 removed because it may conflict
+    disturb users of mlocate (updateddb.8)
+
+  [ Florentin Duneau ]
+  * Fix mistake in mount(8). Closes: #518935
+  
+ -- Simon Paillard <spaillard@debian.org>  Mon, 14 Sep 2009 19:55:37 +0200
+
+manpages-fr-extra (20080921) unstable; urgency=low
+
+  [ Nicolas FRANCOIS ]
+  * Updated translation of the coreutils manpages.
+  * Updated translation of the bash manpages.
+  
+  [ Cyril Chaboisseau ]
+  * Fixed typo in tail(1). Closes: #498147
+
+  [ Sylvain Cherrier ]
+  * Updated nfs-utils translation, updated maintainer's name.
+
+  [ Florentin Duneau ]
+  * Updated translation of the glibc manpages.
+  * Updated translation of the procps manpages.
+  * Updated translation of the util-linux manpages.
+
+ -- Nicolas FRANCOIS (Nekral) <nicolas.francois@centraliens.net>  Sun, 21 Sep 2008 17:59:34 +0200
+
+manpages-fr-extra (20080719) unstable; urgency=low
+
+  * Updated to new upstream versions.
+  * debian/control: Replace belocs-locales-bin (<< 2.4-3), which used to
+    provide translation of the locales-related manpages. Thanks to Frank
+    Lichtenheld. Closes: #491251
+
+ -- Nicolas FRANCOIS (Nekral) <nicolas.francois@centraliens.net>  Sun, 20 Jul 2008 21:24:07 +0200
+
+manpages-fr-extra (20080618) unstable; urgency=low
+
+  [ Nicolas FRANCOIS ]
+  * Added addendum for the flock(1), ionice(1) and setarch(8) manpages.
+  * Fix the generation of OpenSSL manpages (name and section name).
+
+  [ Lyes ZEMMOUCHE ]
+  * Fix in the ionice(1) manpage.
+
+ -- Nicolas FRANCOIS (Nekral) <nicolas.francois@centraliens.net>  Wed, 18 Jun 2008 21:48:32 +0200
+
+manpages-fr-extra (20080616) unstable; urgency=low
+
+  [ Sylvain Cherrier ]
+  * Updated translation of the findutils manpages.
+
+  [ Nicolas FRANCOIS ]
+  * Updated translation of the cron manpages.
+  * Updated translation of the grep manpages.
+  * Added translation of glibc manpages: catchsegv.1, gai.conf.5, gencat.1,
+    getconf.1, getent.1, iconvconfig.8, locale.1, localedef.1, locale.gen.5,
+    locale-gen.8, mtrace.1, sprof.1, update-locale.8, and validlocale.8
+  * Added translation of openssl manpages: X509_new, d2i_X509_NAME, verify,
+    bn, sha, ciphers, CONF_modules_free, asn1parse, BN_swap, spkac,
+    d2i_DHparams, md5, d2i_ASN1_OBJECT, d2i_X509_ALGOR, d2i_X509_SIG,
+    d2i_X509_REQ, mdc2, ripemd, ecparam, rsautl, BN_copy, BIO_f_null,
+    SSL_library_init, BN_mod_inverse, SSL_session_reused, SSL_get_SSL_CTX,
+    SSL_CTX_get_verify_mode, SSL_do_handshake, ui_compat, SSL_SESSION_free,
+    SSL_accept, RSA_new, SSL_pending, SSL_CTX_set_cert_store, SSL_get_fd,
+    OPENSSL_Applink, rsa, SSL_CTX_sess_set_cache_size, SSL_connect,
+    SSL_get_rbio, OPENSSL_ia32cap, SSL_get_client_CA_list, SSL_CTX_sessions,
+    SSL_set_bio, SSL_get_ex_data_X509_STORE_CTX_idx, SSL_set_connect_state,
+    d2i_X509_CRL, SSL_new, SSL_get_peer_certificate, ASN1_STRING_new.
+  * Workaround for a po4a bug which breaks the formatting of locale.1.
+  * Updated to upstream manpages on 2008-06-16
+
+  [ Florentin Duneau ]
+  * Updated translation of the glibc manpages.
+
+  [ Remi Denis-Courmont ]
+  * Fix the description of EDEADLK error code in the glibc's
+    pthread_mutex_lock manpage. Closes: #485813
+
+  [ Sylvain Cherrier ]
+  * Updated nfs-utils manpages.
+  * Updated findutils manpages.
+
+  [ Lyes Zemmouche ]
+  * Added translation of the util-linux's flock.1, ionice.1, and setarch.8
+    manpages.
+
+  [ Stéphane Blondon ]
+  * Updated translation of the most.1 manpage.
+
+  [ Frederic Lehobey ]
+  * Updated translation of bash.
+
+ -- Nicolas FRANCOIS (Nekral) <nicolas.francois@centraliens.net>  Sat, 10 May 2008 13:37:13 +0200
+
+manpages-fr-extra (20080429) unstable; urgency=low
+
+  * Fix the sections of OpenSSL manpages. The sections should be 1ssl and 3ssl
+    to avoid overlap with other packages (e.g. passwd). Closes: #478272
+
+ -- Nicolas FRANCOIS (Nekral) <nicolas.francois@centraliens.net>  Mon, 28 Apr 2008 22:31:40 +0200
+
+manpages-fr-extra (20080428) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Sync with packages in unstable
+  * debian/control: add Vcs information
+  * Update coreutils, grep, util-linux
+  * Install manpages in utf-8
+  * Fix incorrect font handlers (Closes: #470349)
+
+  [ Nicolas FRANCOIS (Nekral) ]
+  * debian/control: set myself as Maintainer, and Thomas as one of the
+    Uploaders.
+  * Makefile: Make sure the build fails if a command fails.
+  * findutils/po4a/po/fr.po: Fix other incorrect font handlers.
+  * Makefile: Added OpenSSL manpages translation.
+  * Import and update existing translations of some OpenSSL manpages.
+
+  [ Alexandre Kuoch ]
+  * Add the translation of chrt.1, taskset.1, rename.ul.1, addpart.8,
+    ctrlaltdel.8, delpart.8, partx.8, and pivot_root.8 from the util-linux
+    package.
+
+  [ David Montanes ]
+  * Add sess_id.1 translation to OpenSSL.
+
+  [ Guillaume Quesnel ]
+  * Add s_time.1 translation to OpenSSL.
+
+ -- Nicolas FRANCOIS (Nekral) <nicolas.francois@centraliens.net>  Mon, 28 Apr 2008 02:16:25 +0200
+
+manpages-fr-extra (20071229) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Sync with packages in unstable
+  * Update procps, coreutils, nfs-utils, tar
+  * Bump Standards-Version (no changes needed)
+
+  [ Florentin Duneau ]
+  * Update glibc
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sat, 29 Dec 2007 11:58:41 +0100
+
+manpages-fr-extra (20071013) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Sync with packages in unstable
+
+  [ Nicolas François ]
+  * Add translations of cytune.8, pg.1, script.1, scriptreplay.1 and
+    getty.8 (incomplete) to util-linux.
+  * Add existing translations from Michel Quercia and Christophe Sauthier:
+    cal.1, col.1, and tailf.1 to util-linux.
+
+  [Sylvain Cherrier ]
+  * Update findutils
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sat, 13 Oct 2007 11:32:06 +0200
+
+manpages-fr-extra (20070901) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Sync with packages in unstable
+
+  [ Nicolas François ]
+  * Add --previous to the po4a calls. po4a 0.31 is sufficient.
+
+  [ Sylvain Cherrier ]
+  * Update nfs-utils
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sat, 01 Sep 2007 11:39:38 +0200
+
+manpages-fr-extra (20070714) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Sync with packages in unstable
+  * Fix "fixed-width" translation in bash.1 (Closes: #427673)
+  * Use po4a 0.31
+  * Use unknown_macros for exportfs.5
+  * Fix glibc configuration file
+
+  [ Nicolas François ]
+  * util-linux: Add translation of getopt.1
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sat, 14 Jul 2007 13:16:11 +0200
+
+manpages-fr-extra (20070512) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Sync with packages in unstable
+  * fix nscd.8 headers, reported by Florentin Duneau
+  * fix swapoff link (util-linux)
+  * add missing links in glibc
+  * update of most.1, thanks to Stéphane Blondon
+
+  [ Sylvain Cherrier ]
+  * Update nfs-utils and findutils
+
+  [ Florentin Duneau ]
+  * Update glibc.
+
+  [ Nicolas François ]
+  * glibc: add translation of ldd.1
+  * util-linux: add translation of rdev.8
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sat, 12 May 2007 11:57:14 +0200
+
+manpages-fr-extra (20070415) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Sync with packages in unstable
+  * procps: Add translation of top.1, thanks to Philippe Piette
+
+  [ Nicolas François ]
+  * glibc: Add translations of ld.so(8), ldconfig(8), nscd(8), nscd.conf(5),
+    tzselect(1), zdump(1), zic(8)
+  * util-linux: Add translations of mkfs.minix(8), mkswap(8), more(1),
+    mount(8), renice(1), rev(1), setsid(8), sfdisk(8), swapon(8)/swapoff(8),
+    umount(8), wall(1), whereis(1)
+
+  [ Sylvain Cherrier ]
+  * Fix xargs manpages (Closes: #416027)
+  * Update nfs-utils
+
+  [ Florentin Duneau ]
+  * glibc: Add translation of iconv(1)
+  * Update lilo
+  * Update glibc
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sun, 15 Apr 2007 15:56:26 +0200
+
+manpages-fr-extra (20070311) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Fix typo in crontab(5) manpage (Closes: #409793)
+  * Fix typo in updatedb(1) manpage (Closes: #410233)
+  * Fix unbreakable spaces in findutils manpages
+  * Unfuzzy glibc (no update needed: see #220719)
+  * Typo fixes in coreutils
+
+  [ Florentin Duneau ]
+  * nfs(5): remove unexpected dot
+  * fdisk(8): add a lot of forgotten spaces
+  * hwclock(8): fix a typo
+
+  [ Nicolas François ]
+  * lilo.conf(5): fix typos (punctuation. addappened => addappend)
+  * lilo(8): Fix options (-B was -m; -E was -U), fix typo in formatting
+  * mkrescue(8): fix typo in formatting
+  * tar(1): fix typo (missing comma)
+  * setterm(1): Fix typo (-ulcolor instead of -ucolor)
+  * nfs(5): Fix formatting tag (I<...> instead of l<...>)
+  * hwclock(8): Fix typo (space instead of 0xb7)
+  * isosize(8): Fix formatting tag (E<gt> instead of <gt>)
+
+  [ Sylvain Cherrier ]
+  * mountd(8): Fix typo (rpc.mountd instead of rpc.statd)
+  * statd(8): Fix typo (/var/lib/nfs/state instead of /var/lib/nfs/sm/state)
+  * umount.nfs(8): Fix typo (umount instead of mount)
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sun, 11 Mar 2007 11:52:10 +0100
+
+manpages-fr-extra (20070203) unstable; urgency=low
+
+  * Fix non-latin1 char in bash manpage (Closes: #405708)
+  * Miscelleanous fixes of the bash manpage, thanks to Frederic Lehobey
+  * Proofreading of nfs-utils manpages, thanks to Nicolas Francois and
+    Sylvain Cherrier
+  * Update of cron manpage, thanks to Steve Petruzzello
+  * Fix translation of find.1 (status of files vs. files) (Closes: #408356)
+  * Sync util-linux with the version in Etch
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sat,  3 Feb 2007 12:37:42 +0100
+
+manpages-fr-extra (20061210) unstable; urgency=low
+
+  * Fix translation of examples in find.1, thanks to Florentin Duneau
+  * Typo fixes, thanks to various contributors from debian-l10n-french
+  * Improve bash translations, thanks to Frederic Lehobey
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Sun, 10 Dec 2006 22:33:29 +0100
+
+manpages-fr-extra (20061127) unstable; urgency=low
+
+  * Update tar manpages, thanks to Valery Perrin
+  * Fix a typo in lilo.8.conf manpage, thanks to Nicolas Patrois
+     (Closes: #396752)
+  * Add translation of:
+    - nfs.5, thanks to Valery Perrin
+    - nhfsstone.8, thanks to Sylvain Cherrier
+    - fdisk.8, thanks to Jade Alglave
+  * Fix a wrong translation in dd, thanks to Samuel Thibault
+     (Closes: #393648)
+  * Corrections applied to most.1, thanks to Stephane Blondon and Gerard
+    Delafond
+  * Disable {u,}mount.nfs manpages as they are not in Debian (see the
+    nfs-utils changelog)
+  * Add addenda for mdoc manpages, to display headers correctly
+  * Add update of bash manpages, thanks to Frederic Lehobey (Closes: #391107)
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Wed, 22 Nov 2006 22:35:36 +0100
+
+manpages-fr-extra (20061005) unstable; urgency=low
+
+  * New maintainer
+  * Update cron manpages, thanks to Steve Petruzzello
+  * Add translation of lockd.8, mountd.8, nfsd.8, showmount.8, statd.8,
+    thanks to Valery Perrin
+
+ -- Thomas Huriaux <thomas.huriaux@gmail.com>  Fri,  6 Oct 2006 00:18:33 +0200
+
+manpages-fr-extra (20060909) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Add infrastructure for bash manpages
+  * Add new translations:
+    most.1, thanks to Stephane Blondon
+    logger.1, thanks to Nicolas Haller
+    hwclock.8, thanks to Sylvain Archenault
+  * Updated translations:
+    findutils, nfs-utils (including new pages: exportfs.5, idmapd.conf.5,
+    idmapd.8, svcgssd.8), thanks to Sylvain Cherrier
+
+  [ Florentin Duneau ]
+  * Update pthread_*.3
+
+ -- Denis Barbier <barbier@debian.org>  Sun, 10 Sep 2006 00:24:42 +0200
+
+manpages-fr-extra (20060813) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Add new translations:
+    mount.nfs.8, rpcdebug.8, umount.nfs.8, thanks to Sylvain Cherrier
+    ipcrm.8, ipcs.8, thanks to Philippe Piette
+  * Update coreutils
+
+  [ Florentin Duneau ]
+  * Update pthread_*.3
+  * Update procps
+
+ -- Denis Barbier <barbier@debian.org>  Sun, 13 Aug 2006 14:36:52 +0200
+
+manpages-fr-extra (20060713) unstable; urgency=low
+
+  [ Thomas Huriaux ]
+  * Add new translations:
+    losetup.8, thanks to Jean-Baka Domelevo-Entfellner
+    gssd.8, nfsd.7, nfsstat.8, nhfsgraph.8, nhfsnums.8, nhfsrun.8,
+      thanks to Sylvain Cherrier
+    isosize.8, mkfs.8, thanks to Florentin Duneau
+  * Build-Depends on po4a 0.26 and regenerate po files
+
+ -- Denis Barbier <barbier@debian.org>  Fri, 14 Jul 2006 00:46:00 +0200
+
+manpages-fr-extra (20060607) experimental; urgency=low
+
+  [ Denis Barbier ]
+  * Split manpages-fr into two source packages:
+    + manpages-fr:
+      The two binary packages manpages-fr and manpages-fr-dev contain
+      respective translations of manpages and manpages-dev packages.
+    + manpages-fr-extra:
+      All other manual pages which were previously shipped by manpages-fr
+
+  [ Thomas Huriaux ]
+  * Add new translations:
+    find.1, thanks to Sylvain Cherrier
+    lilo.conf.5, lilo.8, thanks to Florentin Duneau
+
+ -- Denis Barbier <barbier@debian.org>  Wed,  7 Jun 2006 23:14:59 +0200
