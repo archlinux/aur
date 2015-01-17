@@ -1,0 +1,15 @@
+pkgbase = man-pages-fr
+	pkgdesc = Pages de manuel Linux francophones de 'Traduc.org'
+	pkgver = 3.70
+	pkgrel = 2
+	url = http://traduc.org/perkamon/
+	install = man-pages-fr.install
+	arch = any
+	license = custom
+	optdepends = manpages-fr-extra: pages complémentaires
+	options = docs
+	source = http://perkamon.alioth.debian.org/archives/3.70/man-pages-fr-3.70-1.tar.xz
+	md5sums = 66a6033fb2ed3641c35b1d53c0fe5deb
+
+pkgname = man-pages-fr
+
