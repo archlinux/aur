@@ -3,13 +3,13 @@
 
 pkgname=python2-pypng
 pkgver=0.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 2 module to decode and encode PNG files"
 arch=('any')
 url="https://github.com/drj11/pypng"
 license=('MIT')
 depends=('python2')
-makedepends=('python2')
+makedepends=('python2' 'python2-setuptools')
 source=(https://github.com/drj11/pypng/archive/pypng-${pkgver}.tar.gz)
 sha1sums=('656da1a46b82689154760b1863d3677472321c39')
 
