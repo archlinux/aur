@@ -12,11 +12,7 @@ url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
 depends=('sqlite3' 'libmp4v2' 'ffmpeg' 'file')
 source=("https://github.com/profusion/lightmediascanner/archive/release_$pkgver.tar.gz")
-sha256sums=('694e73d8c7128f08f3dafbe57f5d1ade9a80337d7ac5b82c4e06d0effb9e5d51')
-
-prepare() {
-  sed -i '/AC_INIT/ s/0\.5,/0.5.0,/' "$srcdir/$pkgname-release_$pkgver/configure.ac"
-}
+sha256sums=('3edf5ac816fc272f84f47abda4148bd2485b0405fe887178b93562cfecc79436')
 
 build() {
   cd "$srcdir/$pkgname-release_$pkgver"
