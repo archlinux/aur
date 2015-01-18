@@ -2,16 +2,16 @@
 # Contributor: Brecht Machiels <brecht at mos6581 dot org>
 
 pkgname=pyprof2calltree
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Help visualize profiling data from cProfile with kcachegrind"
 url="https://pypi.python.org/pypi/pyprof2calltree/"
 arch=('any')
 license=('BSD')
 depends=('python')
-makedepends=('python-distribute')
+makedepends=('python-setuptools')
 source=(http://pypi.python.org/packages/source/p/pyprof2calltree/pyprof2calltree-${pkgver}.tar.gz)
-sha1sums=('6bb428e6001acbe7b7b372f0d54eb54293674705')
+sha1sums=('ef2d80d3da4cf70d8550464fd8d506c37f4e13f3')
 
 build() {
   cd "$srcdir/pyprof2calltree-$pkgver"
