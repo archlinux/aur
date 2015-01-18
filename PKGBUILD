@@ -3,7 +3,7 @@
 
 _pkgname=lightmediascanner
 pkgname=$_pkgname-git
-pkgver=0.5.0.r0.g5c5e896
+pkgver=0.5.0.r0.g2f4dd51
 pkgrel=1
 pkgdesc="Lightweight library to scan media - Development version"
 arch=('i686' 'x86_64')
@@ -20,10 +20,6 @@ pkgver() {
   cd "$srcdir/$_pkgname"
 
   git describe --tags --long | sed 's/^release_//;s/-/.r/;s/-/./g'
-}
-
-prepare() {
-  sed -i '/AC_INIT/ s/0\.5,/0.5.0,/' "$srcdir/$_pkgname/configure.ac"
 }
 
 build() {
