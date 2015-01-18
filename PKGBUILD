@@ -5,12 +5,13 @@
 
 pkgname=dnuos
 pkgver=1.0.11
-pkgrel=4
+pkgrel=5
 pkgdesc='Music library list creator'
 arch=(any)
 url='http://bitheap.org/dnuos'
 license=('GPL')
 depends=('python2')
+makedepends=('python2-setuptools')
 source=("http://bitheap.org/dnuos/files/$pkgname-$pkgver.tar.gz")
 md5sums=('bbd14149547c527086624cf55f852d69')
 
