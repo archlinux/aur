@@ -2,7 +2,7 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.7.ge3ccfa1
+pkgver=1.1.7.1176.g992beca
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
@@ -17,8 +17,7 @@ makedepends=('doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
              'popt')
 conflicts=("$_pkgbase" 'strigi')
 options=('!emptydirs' 'ccache' '!distcc' '!makeflags')
-#source=("$pkgbase::git+file:///u2/git/monavacon.git")
-source=("$pkgbase::git+https://github.com/openss7/openss7.git")
+source=("$pkgbase::git+file:///u2/git/monavacon.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -39,9 +38,9 @@ prepare() {
 build() {
   cd "$srcdir/openss7-git"
 
-  _csite_file=../$CARCH-config.site
-  _mpost_file=../$CARCH-modpost.cache
-  _cache_file=../$CARCH-config.cache
+  _csite_file=../../$CARCH-config.site
+  _mpost_file=../../$CARCH-modpost.cache
+  _cache_file=../../$CARCH-config.cache
 
   ./configure \
       syslibdir=/usr/lib \
@@ -71,9 +70,9 @@ build() {
 
   _kvr="$(pacman -Qi linux|awk '/^Version/{print$3}')-ARCH"
 
-  _csite_file=../$CARCH-config.site
-  _mpost_file=../$CARCH-$_kvr-modpost.cache
-  _cache_file=../$CARCH-$_kvr-config.cache
+  _csite_file=../../$CARCH-config.site
+  _mpost_file=../../$CARCH-$_kvr-modpost.cache
+  _cache_file=../../$CARCH-$_kvr-config.cache
 
   ./configure \
       syslibdir=/usr/lib \
@@ -106,9 +105,9 @@ build() {
 
   _kvr="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')-lts"
 
-  _csite_file=../$CARCH-config.site
-  _mpost_file=../$CARCH-$_kvr-modpost.cache
-  _cache_file=../$CARCH-$_kvr-config.cache
+  _csite_file=../../$CARCH-config.site
+  _mpost_file=../../$CARCH-$_kvr-modpost.cache
+  _cache_file=../../$CARCH-$_kvr-config.cache
 
   ./configure \
       syslibdir=/usr/lib \
@@ -200,9 +199,9 @@ package_openss7-modules-git() {
   install -d "$d"
   b="$pkgdir/boot"
   install -d "$b"
-  install -m644 ../$CARCH-$_kvr-config.cache     "$d"
-  install -m644 ../$CARCH-config.site            "$d"
-  install -m644 ../$CARCH-$_kvr-modpost.cache    "$d"
+  install -m644 ../../$CARCH-$_kvr-config.cache  "$d"
+  install -m644 ../../$CARCH-config.site         "$d"
+  install -m644 ../../$CARCH-$_kvr-modpost.cache "$d"
   install -m644 Module.mkvars                    "$d"
   install -m644 System.symvers                   "$d"
   install -m644 Module.symvers                   "$d"
@@ -218,9 +217,8 @@ package_openss7-modules-git() {
   install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-ARCH
   mv -f "$pkgdir"/usr/lib/modules/${_kvr}/updates/openss7 \
         "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-ARCH
-  install -d "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
   mv -f "$pkgdir"/usr/src/${_pkgbase}-$pkgver-$pkgrel/$_kvr \
-        "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
+        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-ARCH/openss7
 }
 
 package_openss7-modules-lts-git() {
@@ -251,9 +249,9 @@ package_openss7-modules-lts-git() {
   install -d "$d"
   b="$pkgdir/boot"
   install -d "$b"
-  install -m644 ../$CARCH-$_kvr-config.cache     "$d"
-  install -m644 ../$CARCH-config.site            "$d"
-  install -m644 ../$CARCH-$_kvr-modpost.cache    "$d"
+  install -m644 ../../$CARCH-$_kvr-config.cache  "$d"
+  install -m644 ../../$CARCH-config.site         "$d"
+  install -m644 ../../$CARCH-$_kvr-modpost.cache "$d"
   install -m644 Module.mkvars                    "$d"
   install -m644 System.symvers                   "$d"
   install -m644 Module.symvers                   "$d"
@@ -269,15 +267,12 @@ package_openss7-modules-lts-git() {
   install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts
   mv -f "$pkgdir"/usr/lib/modules/${_kvr}/updates/openss7 \
         "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts
-  install -d "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
   mv -f "$pkgdir"/usr/src/${_pkgbase}-$pkgver-$pkgrel/$_kvr \
-        "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
+        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts/openss7
 }
 
 package_openss7-java-git() {
   pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites (Java)"
-  provides=("$_pkgbase-java=$pkgver")
-  conflicts=("$_pkgbase-java")
   depends=("$pkgbase" 'gcc-gcj' 'java-environment')
   install="openss7-java-git.install"
 

@@ -68,8 +68,8 @@ pre_remove() {
   rm -f -- etc/sock2path.d/openss7
   rmdir -p -- etc/sock2path.d >/dev/null 2>&1 || :
   update-sock2path
-  rm -f -- etc/snmp/snmp.d/*openss7
-  rmdir -p -- etc/snmp/snmp.d >/dev/null 2>&1 || :
+  rm -f -- etc/snmp.d/strMIB.conf
+  rmdir -p -- etc/snmp.d >/dev/null 2>&1 || :
   update-snmpconf --remove
   for n in ${manuals[@]} ; do
     for e in '' '.gz' '.bz2' '.lzma' '.xz'; do

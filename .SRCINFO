@@ -1,6 +1,6 @@
 pkgbase = openss7-git
 	pkgdesc = OpenSS7 Fast-STREAMS and Protocol Suites
-	pkgver = 1.1.8.7.ge3ccfa1
+	pkgver = 1.1.7.1176.g992beca
 	pkgrel = 1
 	url = http://www.openss7.org
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = openss7-git
 	options = ccache
 	options = !distcc
 	options = !makeflags
-	source = openss7-git::git+https://github.com/openss7/openss7.git
+	source = openss7-git::git+file:///u2/git/monavacon.git
 	md5sums = SKIP
 
 pkgname = openss7-git
@@ -67,8 +67,8 @@ pkgname = openss7-modules-git
 	install = openss7-modules-git.install
 	depends = openss7-git
 	depends = linux=
-	provides = openss7-kernel=1.1.8.7.ge3ccfa1
-	provides = openss7-modules=1.1.8.7.ge3ccfa1
+	provides = openss7-kernel=1.1.7.1176.g992beca
+	provides = openss7-modules=1.1.7.1176.g992beca
 	conflicts = openss7-modules
 	options = !emptydirs
 	options = !strip
@@ -78,9 +78,9 @@ pkgname = openss7-modules-lts-git
 	install = openss7-modules-lts-git.install
 	depends = openss7-git
 	depends = linux-lts=
-	provides = openss7-modules-git=1.1.8.7.ge3ccfa1
-	provides = openss7-kernel=1.1.8.7.ge3ccfa1
-	provides = openss7-modules-lts=1.1.8.7.ge3ccfa1
+	provides = openss7-modules-git=1.1.7.1176.g992beca
+	provides = openss7-kernel=1.1.7.1176.g992beca
+	provides = openss7-modules-lts=1.1.7.1176.g992beca
 	conflicts = openss7-modules-lts
 	options = !emptydirs
 	options = !strip
@@ -91,6 +91,4 @@ pkgname = openss7-java-git
 	depends = openss7-git
 	depends = gcc-gcj
 	depends = java-environment
-	provides = openss7-java=1.1.8.7.ge3ccfa1
-	conflicts = openss7-java
 
