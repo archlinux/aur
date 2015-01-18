@@ -1,0 +1,48 @@
+From f31b684f0278b7d8cd7fb8a2ad4b67e8aec8fcc8 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sun, 18 Jan 2015 23:43:29 +0000
+Subject: [PATCH] auto_deps: Workaround dep resolution issue
+
+Errors:
+
+    tahoe[5580]: Traceback (most recent call last):
+    tahoe[5580]: File "/usr/bin/tahoe", line 6, in <module>
+    tahoe[5580]: from pkg_resources import load_entry_point
+    tahoe[5580]: File "/usr/lib/python2.7/site-packages/pkg_resources.py", line 2951, in <module>
+    tahoe[5580]: working_set = WorkingSet._build_master()
+    tahoe[5580]: File "/usr/lib/python2.7/site-packages/pkg_resources.py", line 563, in _build_master
+    tahoe[5580]: return cls._build_from_requirements(__requires__)
+    tahoe[5580]: File "/usr/lib/python2.7/site-packages/pkg_resources.py", line 576, in _build_from_requirements
+    tahoe[5580]: dists = ws.resolve(reqs, Environment())
+    tahoe[5580]: File "/usr/lib/python2.7/site-packages/pkg_resources.py", line 755, in resolve
+    tahoe[5580]: raise DistributionNotFound(req)
+    tahoe[5580]: pkg_resources.DistributionNotFound: pycrypto==2.1.0,==2.3,>=2.4.1
+---
+ src/allmydata/_auto_deps.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/allmydata/_auto_deps.py b/src/allmydata/_auto_deps.py
+index 5052ab8..9f698eb 100644
+--- a/src/allmydata/_auto_deps.py
++++ b/src/allmydata/_auto_deps.py
+@@ -16,7 +16,7 @@ install_requires = [
+ 
+     # zope.interface >= 3.6.0 is required for Twisted >= 12.1.0.
+     # zope.interface 3.6.3 and 3.6.4 are incompatible with Nevow (#1435).
+-    "zope.interface == 3.6.0, == 3.6.1, == 3.6.2, >= 3.6.5",
++    "zope.interface >= 3.6.5",
+ 
+     # * foolscap < 0.5.1 had a performance bug which spent O(N**2) CPU for
+     #   transferring large mutable files of size N.
+@@ -28,7 +28,7 @@ install_requires = [
+     # Needed for SFTP.
+     # pycrypto 2.2 doesn't work due to <https://bugs.launchpad.net/pycrypto/+bug/620253>
+     # pycrypto 2.4 doesn't work due to <https://bugs.launchpad.net/pycrypto/+bug/881130>
+-    "pycrypto == 2.1.0, == 2.3, >= 2.4.1",
++    "pycrypto >= 2.4.1",
+ 
+     # <http://www.voidspace.org.uk/python/mock/>, 0.8.0 provides "call"
+     "mock >= 0.8.0",
+-- 
+2.2.2
+
