@@ -10,7 +10,7 @@
 
 pkgname=mono-tools
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
 license=('GPL')
@@ -20,10 +20,12 @@ makedepends=('gconf-sharp' 'git' 'zip')
 install=$pkgname.install
 options=('!makeflags')
 source=(https://github.com/mono/mono-tools/archive/3.10.tar.gz
-	fix-build.patch)
+	fix-build.patch
+	monodoc.xml)
 #source=(http://download.mono-project.com/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('8df1eed41d5ff6dc6d48541f1c593319'
-         '9b4671fbfce76d883abbf779cbc504f3')
+         '9b4671fbfce76d883abbf779cbc504f3'
+         '641a50e8414132c425df2d87edfdaa95')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -42,4 +44,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
+  install -D -m644 "${srcdir}"/monodoc.xml "${pkgdir}"/usr/lib/monodoc/monodoc.xml
  }
