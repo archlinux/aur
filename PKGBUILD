@@ -16,6 +16,7 @@ makedepends=('intltool')
 source=("http://www.cypherpunks.ca/otr/${pkgname}-${pkgver}.tar.gz"{,.asc})
 md5sums=('26aae6c9de423a653812edfe983037e5'
          'SKIP')
+validpgpkeys=(576979E7D0CAB38C7AA3DDBDDED64EBB2BA87C5C) # OTR Dev Team
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
