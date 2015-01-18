@@ -1,12 +1,13 @@
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# URL: https://github.com/trollixx/aur-packages
 
 _pkgbase=quassel
 pkgbase=${_pkgbase}-light
 pkgname=('quassel-client-light' 'quassel-core-light' 'quassel-monolithic-light')
 pkgver=0.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Next-generation distributed IRC client (minimal dependencies)"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -52,7 +53,6 @@ build() {
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=ON \
     -DWANT_MONO=OFF \
-    -DWITH_OXYGEN=OFF \
     -DWITH_WEBKIT=OFF \
     ../quassel-${pkgver}/ \
     -Wno-dev
@@ -68,7 +68,6 @@ build() {
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=OFF \
     -DWANT_MONO=ON \
-    -DWITH_OXYGEN=OFF \
     -DWITH_WEBKIT=OFF \
     ../quassel-${pkgver}/ \
     -Wno-dev
