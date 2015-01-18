@@ -37,7 +37,7 @@ pkgver() {
         set -o pipefail
         git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    ) 2>/dev/null
 }
 
 package() {
