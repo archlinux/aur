@@ -19,13 +19,13 @@ depends=("qt5-declarative" "libxcomposite")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-#if [ -e /var/lib/pacman/local/qt5-base-5* ]; then
+if [ -e /var/lib/pacman/local/qt5-base-5* ]; then
 #  # If you are using repo's qt5
-#  source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#commit=374cb3b2872652317baec299712d7dfde6d9c896")
-#else
+  source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#branch=5.4.1")
+else
 #  # If you are using anything else eg. qt5-base-git
   source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#branch=dev")
-#fi
+fi
 # dev branch should work with last stable in repo
 # last working commit - for repo's qt5-base 5.3.x - 374cb3b2872652317baec299712d7dfde6d9c896
 sha256sums=("SKIP")
@@ -55,7 +55,7 @@ build() {
         ../src/client/qwaylandscreen.cpp
     fi
     # To reproduce FS#38819 remove QMAKE_LIBS_PRIVATE WHICH IS AN UGLY HACK!
-    qmake CONFIG+=wayland-compositor QMAKE_LIBS_PRIVATE+="-lfontconfig -lfreetype -lXrender" ..
+    qmake CONFIG+=wayland-compositor ..
   else
     qmake ..
   fi

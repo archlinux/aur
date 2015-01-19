@@ -12,7 +12,7 @@ pkgbase = qt5-wayland-git
 	depends = libxcomposite
 	provides = qt5-wayland
 	conflicts = qt5-wayland
-	source = qt5-wayland::git://gitorious.org/qt/qtwayland.git#branch=dev
+	source = qt5-wayland::git://gitorious.org/qt/qtwayland.git#branch=5.4.1
 	sha256sums = SKIP
 
 pkgname = qt5-wayland-git
