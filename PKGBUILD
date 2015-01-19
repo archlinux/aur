@@ -2,8 +2,8 @@
 # Contributor (Arch): Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=tahoe-lafs-git
-pkgver=5971.f77f358
-pkgrel=2
+pkgver=5972.f31b684
+pkgrel=1
 pkgdesc="A secure, decentralized, fault-tolerant file store (git version)"
 url="https://tahoe-lafs.org/"
 arch=('any')
