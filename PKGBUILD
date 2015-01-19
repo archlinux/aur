@@ -6,12 +6,12 @@
 
 pkgname=pidgin-otr
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Off-the-Record Messaging plugin for Pidgin.'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.cypherpunks.ca/otr/'
-depends=('libotr>=4.0.0' 'pidgin' 'perlxml')
+depends=('libotr>=4.0.0' 'pidgin' 'perl-xml-parser')
 makedepends=('intltool')
 source=("http://www.cypherpunks.ca/otr/${pkgname}-${pkgver}.tar.gz"{,.asc})
 md5sums=('26aae6c9de423a653812edfe983037e5'
