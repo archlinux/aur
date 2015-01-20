@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-pointcloud-to-laserscan
+	pkgdesc = ROS - Converts a 3D Point Cloud into a 2D laser scan.
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = http://ros.org/wiki/perception_pcl
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf2-ros
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-tf2-sensor-msgs
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-tf2
+	depends = ros-indigo-tf2-ros
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-tf2-sensor-msgs
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-tf2
+	source = pointcloud_to_laserscan::git+https://github.com/ros-gbp/perception_pcl-release.git#tag=release/indigo/pointcloud_to_laserscan/1.2.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pointcloud-to-laserscan
+
