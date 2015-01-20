@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-diagnostic-aggregator
 	pkgdesc = ROS - diagnostic_aggregator.
-	pkgver = 1.8.6
+	pkgver = 1.8.7
 	pkgrel = 1
 	url = http://www.ros.org/wiki/diagnostic_aggregator
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ros-indigo-diagnostic-aggregator
 	depends = ros-indigo-pluginlib
 	depends = ros-indigo-diagnostic-msgs
 	depends = ros-indigo-rospy
-	source = diagnostic_aggregator::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/diagnostic_aggregator/1.8.6-0
+	source = diagnostic_aggregator::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/diagnostic_aggregator/1.8.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-diagnostic-aggregator
