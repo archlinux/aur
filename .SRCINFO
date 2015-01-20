@@ -1,6 +1,6 @@
 pkgbase = gst-bt-git
 	pkgdesc = GStreamer plug-in which provides BitTorrent sources
-	pkgver = 0
+	pkgver = r57.fb2680d
 	pkgrel = 1
 	url = https://github.com/turran/gst-bt
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = gst-bt-git
 	arch = arm
 	license = LGPL
 	depends = gstreamer
-	depends = gst-plugins-base
+	depends = libtorrent-rasterbar
 	provides = gst-bt
 	conflicts = gst-bt
 	options = strip

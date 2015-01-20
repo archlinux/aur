@@ -1,5 +1,5 @@
 pkgname='gst-bt-git'
-pkgver=0
+pkgver=r57.fb2680d
 pkgrel=1
 pkgdesc='GStreamer plug-in which provides BitTorrent sources'
 license='LGPL'
@@ -7,15 +7,18 @@ url='https://github.com/turran/gst-bt'
 source=("${pkgname}::git+${url}.git")
 sha1sums=('SKIP')
 arch=('i686' 'x86_64' 'arm')
-depends=('gstreamer' 'gst-plugins-base')
-builddepends=('automake' 'autoconf')
+depends=('gstreamer' 'libtorrent-rasterbar')
+builddepends=('gst-plugins-base' 'automake' 'autoconf')
 options=('strip')
 provides=('gst-bt')
 conflicts=('gst-bt')
 
 pkgver () {
 	cd "${srcdir}/${pkgname}"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	( set -o pipefail
+	  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build () {
