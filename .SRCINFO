@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-diagnostics
 	pkgdesc = ROS - diagnostics.
-	pkgver = 1.8.6
+	pkgver = 1.8.7
 	pkgrel = 1
 	url = http://www.ros.org/wiki/diagnostics
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-diagnostics
 	depends = ros-indigo-diagnostic-common-diagnostics
 	depends = ros-indigo-diagnostic-analysis
 	depends = ros-indigo-self-test
-	source = diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/diagnostics/1.8.6-0
+	source = diagnostics::git+https://github.com/ros-gbp/diagnostics-release.git#tag=release/indigo/diagnostics/1.8.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-diagnostics
