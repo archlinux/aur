@@ -1,0 +1,24 @@
+pkgbase = ros-indigo-rgbd-launch
+	pkgdesc = ROS - Launch files to open an RGBD device and load all nodelets to convert raw depth/RGB/IR streams to depth images, disparity images, and (registered) point clouds.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rgbd_launch
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-image-proc
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-depth-image-proc
+	depends = ros-indigo-image-proc
+	depends = ros-indigo-tf
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-depth-image-proc
+	source = rgbd_launch::git+https://github.com/ros-gbp/rgbd_launch-release.git#tag=release/indigo/rgbd_launch/2.1.0-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-rgbd-launch
+
