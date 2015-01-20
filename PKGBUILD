@@ -4,7 +4,7 @@
 # Contributor: Igor Scabini <furester at gmail.com>
 
 pkgname=lightmediascanner
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Lightweight library to scan media"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
 depends=('sqlite3' 'libmp4v2' 'ffmpeg' 'file')
 source=("https://github.com/profusion/lightmediascanner/archive/release_$pkgver.tar.gz")
-sha256sums=('3edf5ac816fc272f84f47abda4148bd2485b0405fe887178b93562cfecc79436')
+sha256sums=('d08434b957eb8b4e2d84cb081406ce86af20113a30f9d0d097e32b7a667f1174')
 
 build() {
   cd "$srcdir/$pkgname-release_$pkgver"

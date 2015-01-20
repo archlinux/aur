@@ -1,6 +1,6 @@
 pkgbase = lightmediascanner
 	pkgdesc = Lightweight library to scan media
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/profusion/lightmediascanner
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = lightmediascanner
 	depends = libmp4v2
 	depends = ffmpeg
 	depends = file
-	source = https://github.com/profusion/lightmediascanner/archive/release_0.5.0.tar.gz
-	sha256sums = 3edf5ac816fc272f84f47abda4148bd2485b0405fe887178b93562cfecc79436
+	source = https://github.com/profusion/lightmediascanner/archive/release_0.5.1.tar.gz
+	sha256sums = d08434b957eb8b4e2d84cb081406ce86af20113a30f9d0d097e32b7a667f1174
 
 pkgname = lightmediascanner
 
