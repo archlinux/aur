@@ -1,0 +1,30 @@
+pkgbase = ros-indigo-openni2-camera
+	pkgdesc = ROS - Drivers for the Asus Xtion and Primesense Devices.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-nodelet
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-camera-info-manager
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = openni2
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-camera-info-manager
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-dynamic-reconfigure
+	depends = openni2
+	source = openni2_camera::git+https://github.com/ros-gbp/openni2_camera-release.git#tag=release/indigo/openni2_camera/0.2.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-openni2-camera
+
