@@ -1,0 +1,22 @@
+pkgbase = ros-indigo-openni2-launch
+	pkgdesc = ROS - Launch files to start the openni2_camera drivers using rgbd_launch.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-nodelet
+	depends = ros-indigo-rgbd-launch
+	depends = ros-indigo-depth-image-proc
+	depends = ros-indigo-openni2-camera
+	depends = ros-indigo-image-proc
+	depends = ros-indigo-tf
+	source = openni2_launch::git+https://github.com/ros-gbp/openni2_launch.git#tag=release/indigo/openni2_launch/0.2.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-openni2-launch
+
