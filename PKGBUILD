@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_updater contains tools for easily updating diagnostics
 url='http://www.ros.org/wiki/diagnostic_updater'
 
 pkgname='ros-indigo-diagnostic-updater'
-pkgver='1.8.6'
+pkgver='1.8.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
