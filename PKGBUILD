@@ -4,7 +4,7 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-indigo-perception-pcl'
-pkgver='1.2.2'
+pkgver='1.2.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,6 +16,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-indigo-pcl-conversions
   ros-indigo-pcl-ros
+  ros-indigo-pointcloud-to-laserscan
   ros-indigo-pcl-msgs)
 depends=(${ros_depends[@]})
 
