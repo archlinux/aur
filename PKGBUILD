@@ -4,7 +4,7 @@
 
 _pkgname=libdwarf
 pkgname=${_pkgname}-git
-pkgver=20141210
+pkgver=20150118
 pkgrel=1
 pkgdesc="A library for handling DWARF Debugging Information Format"
 arch=(i686 x86_64)
@@ -43,7 +43,7 @@ package() {
   install README NEWS *.pdf $pkgdir/usr/share/doc/${_pkgname}
 
   # dwarfdump
-  cd "$srcdir"/libdwarf/dwarfdump2
+  cd "$srcdir"/libdwarf/dwarfdump
   install -Dm755 dwarfdump $pkgdir/usr/bin/dwarfdump
   install -Dm644 dwarfdump.1 $pkgdir/usr/share/man/man1/dwarfdump.1
   install -Dm644 dwarfdump.conf $pkgdir/usr/lib/dwarfdump.conf
