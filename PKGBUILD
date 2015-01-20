@@ -2,8 +2,8 @@
 # Contributor: Tom Kuther <gimpel@sonnenkinder.org>
 
 pkgname=snapper
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('i686' 'x86_64')
 url="http://snapper.io"
@@ -12,17 +12,10 @@ depends=('btrfs-progs' 'libxml2' 'dbus' 'boost-libs' 'acl')
 makedepends=('boost' 'lvm2' 'libxslt' 'docbook-xsl' 'pam' 'git' 'systemd')
 optdepends=('pam: pam_snapper')
 backup=('etc/conf.d/snapper')
-source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2"
-        cleanup.timer
-        cleanup.service
-        timeline.timer
-        timeline.service)
+source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # fix for btrfs-progs 3.16
-  sed 's/BTRFS_LIB_VERSION (100)/BTRFS_LIB_VERSION (101)/g' -i snapper/Btrfs.cc
 
   # boost fixlets - Arch doesn't use -mt suffix
   sed -e 's@lboost_thread-mt@lboost_thread@g' \
@@ -68,19 +61,19 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 data/sysconfig.snapper "$pkgdir"/etc/conf.d/snapper
-  install -Dm755 client/.libs/systemd-helper "$pkgdir"/usr/lib/snapper/systemd-helper
+  install -Dm644 data/sysconfig.snapper \
+    "$pkgdir"/etc/conf.d/snapper
+  install -Dm755 client/.libs/systemd-helper \
+    "$pkgdir"/usr/lib/snapper/systemd-helper
 
   rm -f "$pkgdir"/etc/snapper/zypp-plugin.conf
   rm -f "$pkgdir"/usr/share/man/man*/snapper-zypp-plugin.*.gz
 
+  cd data
   for unit in {cleanup,timeline}.{timer,service}; do
-    install -Dm644 "$srcdir"/$unit "$pkgdir"/usr/lib/systemd/system/snapper-$unit
+    install -Dm644 $unit \
+      "$pkgdir"/usr/lib/systemd/system/snapper-$unit
   done
 }
 
-sha256sums=('8fc70b8e7a39dc3249ce9141e2c5f0623bb80f8e4150a543d8ed04d2ad27f399'
-            '7c0a695b4d70b3d6aa25789b478ceca86ac3dab6f678045df4907b2c020341f9'
-            'd2f2571e92ffe612529d69a96bd725b4bd040fc36043d98dc1e09b6efcb65894'
-            'b62f61261e45587a38bcbe6468b8932259740984151db1636d299ddafbe3f7a9'
-            'fb01465a6ba7c202c5b1aecb92b99bfcbcd7cdceb0448d84224a108481805bd5')
+sha256sums=('48bf3c3d409ab58ee06db77390a64889c44593ed824463fbfe707aa31d6831ea')
