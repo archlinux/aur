@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-tf2-sensor-msgs
+	pkgdesc = ROS - Small lib to transform sensor_msgs with tf.
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf2_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-tf2-ros
+	makedepends = ros-indigo-tf2
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = eigen3
+	depends = ros-indigo-cmake-modules
+	depends = ros-indigo-tf2-ros
+	depends = ros-indigo-tf2
+	depends = ros-indigo-sensor-msgs
+	depends = eigen3
+	source = tf2_sensor_msgs::git+https://github.com/ros-gbp/geometry_experimental-release.git#tag=release/indigo/tf2_sensor_msgs/0.5.7-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-tf2-sensor-msgs
+
