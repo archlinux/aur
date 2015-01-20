@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-roslint
 	pkgdesc = ROS - CMake lint commands for ROS packages.
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 0.9.3
+	pkgrel = 1
 	url = http://ros.org/wiki/roslint
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = ros-indigo-roslint
 	makedepends = git
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
-	source = roslint::git+https://github.com/ros-gbp/roslint-release.git#tag=release/indigo/roslint/0.9.2-1
+	source = roslint::git+https://github.com/ros-gbp/roslint-release.git#tag=release/indigo/roslint/0.9.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roslint
