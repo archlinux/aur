@@ -1,6 +1,6 @@
 pkgbase = roboptim-trajectory-git
 	pkgdesc = Trajectory optimization for robotics
-	pkgver = 20130322
+	pkgver = 1.0.r157.gf701a7a
 	pkgrel = 1
 	url = http://roboptim.net/
 	arch = i686
@@ -8,14 +8,17 @@ pkgbase = roboptim-trajectory-git
 	license = (L)GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = doxygen
 	depends = roboptim-core-git
 	depends = roboptim-core-plugin-ipopt-git
 	depends = boost>=1.41
-	depends = doxygen
+	depends = eigen3
 	depends = pkg-config
 	depends = libltdl
 	provides = roboptim-trajectory
 	conflicts = roboptim-trajectory
+	source = roboptim-trajectory::git+https://github.com/roboptim/roboptim-trajectory.git
+	md5sums = SKIP
 
 pkgname = roboptim-trajectory-git
 

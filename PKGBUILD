@@ -1,88 +1,69 @@
-# Maintainer: Benjamin Chretien <chretien@lirmm.fr>
-# Contributor: Thomas Moulard <thomas.moulard@gmail.com>
+# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 
 pkgname=roboptim-trajectory-git
-pkgver=20130322
+pkgver=1.0.r157.gf701a7a
 pkgrel=1
 pkgdesc="Trajectory optimization for robotics"
 arch=('i686' 'x86_64')
 url="http://roboptim.net/"
 license=('(L)GPL2')
 depends=('roboptim-core-git' 'roboptim-core-plugin-ipopt-git' 'boost>=1.41'
-         'doxygen' 'pkg-config' 'libltdl')
-makedepends=('git' 'cmake')
+         'eigen3' 'pkg-config' 'libltdl')
+makedepends=('git' 'cmake' 'doxygen')
+optdepends=()
 provides=('roboptim-trajectory')
 conflicts=('roboptim-trajectory')
-optdepends=()
 
-# Repository location
-_gitroot="git://github.com/roboptim/roboptim-trajectory.git"
-_gitname="roboptim-trajectory"
+_name="roboptim-trajectory"
+source=("${_name}"::"git+https://github.com/roboptim/${_name}.git")
+md5sums=('SKIP')
 
 # Build type
-_buildtype="RELWITHDEBINFO"
+_buildtype="RelWithDebInfo"
 
-# Build directory
-_builddir="${srcdir}/${_gitname}-${pkgver}-build"
+pkgver() {
+  cd "${srcdir}/${_name}"
+  git describe --long --tags | cut -c 2- | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 # Build the project
 build() {
-    msg "Connecting to Git server..."
+  cd "${srcdir}/${_name}"
 
-    if [ -d ${srcdir}/${_gitname} ] ; then
-        # Update local files (including submodules)
-        cd ${srcdir}/${_gitname} && git pull origin && git submodule update || return 1
-        msg "The local files are updated."
-    else
-        # Clone repository and submodules
-        git clone --recursive ${_gitroot} ${srcdir}/${_gitname} || return 1
-    fi
+  # Download submodules
+  git submodule init && git submodule update
 
-    msg "Git checkout done or server timeout"
+  msg "Starting CMake (build type = ${_buildtype})..."
 
-    cd "${srcdir}/${_gitname}" || return 1
+  # Create a build directory
+  mkdir -p build && cd build
 
-    msg "Starting CMake (build type = ${_buildtype})..."
+  # Run CMake in release
+  cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    "${srcdir}/${_name}"
 
-    # Create a build directory
-    if [ -d ${_builddir} ]
-    then
-        cd ${_builddir}
-    else
-        mkdir ${_builddir}
-        cd ${_builddir}
-    fi
+  # Compile the library
+  msg "Building the project..."
+  make --silent
 
-    # Run CMake in release
-    cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
-          -DCMAKE_INSTALL_PREFIX="/usr" \
-          -DIPOPT_SOLVER=1 \
-          "${srcdir}/${_gitname}"
-
-    # Compile the library
-    msg "Building the project..."
-    make --silent || return 1
-
-    # Create the documentation
-    msg "Creating the documentation..."
-    make --silent doc || return 1
+  # Create the documentation
+  msg "Creating the documentation..."
+  make --silent doc
 }
 
 # Run unit tests
 check() {
-    msg "Running unit tests..."
-    cd "${srcdir}/${_gitname}-${pkgver}-build"
+  msg "Running unit tests..."
+  cd "${srcdir}/${_name}/build"
 
-    # Need to update LD_LIBRARY_PATH else tests fail
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${_builddir}/src"
-    make test || return 1
+  make test
 }
 
 # Create the package
 package() {
-    # Install in /opt/roboptim
-    cd "${srcdir}/${_gitname}-${pkgver}-build"
+  cd "${srcdir}/${_name}/build"
 
-    msg "Installing files..."
-    make --silent DESTDIR="${pkgdir}/" install || return 1
+  msg "Installing files..."
+  make --silent DESTDIR="${pkgdir}/" install
 }
