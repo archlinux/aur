@@ -5,6 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
+pkgbase=p7zip-natspec
 pkgname=p7zip-natspec
 _pkgname=p7zip
 pkgver=9.20.1
