@@ -1,7 +1,7 @@
 pkgbase = shadow-selinux
 	pkgdesc = Password and account management tool suite with support for shadow files and PAM - SELinux support
 	pkgver = 4.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pkg-shadow.alioth.debian.org/
 	install = shadow.install
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = shadow-selinux
 	depends = pam-selinux
 	depends = acl
 	depends = libsemanage
-	provides = shadow=4.2.1-2
-	provides = selinux-shadow=4.2.1-2
+	provides = shadow=4.2.1-3
+	provides = selinux-shadow=4.2.1-3
 	conflicts = shadow
 	conflicts = selinux-shadow
 	options = strip
@@ -54,7 +54,7 @@ pkgbase = shadow-selinux
 	sha1sums = 4ad0e059406a305c8640ed30d93c2a1f62c2f4ad
 	sha1sums = 12427b1ca92a9b85ca8202239f0d9f50198b818f
 	sha1sums = 0e56fed7fc93572c6bf0d8f3b099166558bb46f1
-	sha1sums = e92045fb75e0c21a3f294a00de0bd2cd252e9463
+	sha1sums = 5d67d1d499d031598372b856382702ecad4cf7e0
 	sha1sums = 12427b1ca92a9b85ca8202239f0d9f50198b818f
 	sha1sums = 611be25d91c3f8f307c7fe2485d5f781e5dee75f
 	sha1sums = a154a94b47a3d0c6c287253b98c0d10b861226d0

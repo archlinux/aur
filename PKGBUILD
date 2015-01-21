@@ -8,7 +8,7 @@
 
 pkgname=shadow-selinux
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('i686' 'x86_64')
 url='http://pkg-shadow.alioth.debian.org/'
@@ -25,6 +25,7 @@ backup=(etc/login.defs
         etc/default/useradd)
 options=(strip debug)
 install='shadow.install'
+validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')  # Christian Perrier
 source=("http://pkg-shadow.alioth.debian.org/releases/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig}
         LICENSE
         chgpasswd
@@ -44,7 +45,7 @@ sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
           '0e56fed7fc93572c6bf0d8f3b099166558bb46f1'
-          'e92045fb75e0c21a3f294a00de0bd2cd252e9463'
+          '5d67d1d499d031598372b856382702ecad4cf7e0'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
           '611be25d91c3f8f307c7fe2485d5f781e5dee75f'
           'a154a94b47a3d0c6c287253b98c0d10b861226d0'
@@ -53,10 +54,6 @@ sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
           '6010fffeed1fc6673ad9875492e1193b1a847b53'
           '21e12966a6befb25ec123b403cd9b5c492fe5b16'
           'f57ecde3f72b4738fad75c097d19cf46a412350f')
-# List of valid PGP keys in http://pkg-shadow.alioth.debian.org/download.php
-validpgpkeys=('96F7A8CCA87F0EB8349701B25A0A399AEA7CF5AD'
-              'F972A168A2703B34CC23E09FD4E5EDACC0143D2D'
-              'D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')
 
 prepare() {
   cd "${pkgname/-selinux}-$pkgver"
