@@ -1,4 +1,5 @@
 # Maintainer: Tilman Blumenbach <tilman AT ax86 DOT net>
+# $AMOID$=306880
 
 pkgname=keepass-plugin-rpc
 pkgver=1.4.6
