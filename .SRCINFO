@@ -1,0 +1,24 @@
+pkgbase = roboptim-core-plugin-cminpack-git
+	pkgdesc = Trajectory optimization for robotics
+	pkgver = 1.0.r157.gf701a7a
+	pkgrel = 1
+	url = http://roboptim.net/
+	arch = i686
+	arch = x86_64
+	license = (L)GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	depends = roboptim-core-git
+	depends = boost>=1.41
+	depends = eigen3
+	depends = pkg-config
+	depends = libltdl
+	depends = cminpack
+	provides = roboptim-core-plugin-cminpack
+	conflicts = roboptim-core-plugin-cminpack
+	source = roboptim-core-plugin-cminpack::git+https://github.com/roboptim/roboptim-core-plugin-cminpack.git
+	md5sums = SKIP
+
+pkgname = roboptim-core-plugin-cminpack-git
+
