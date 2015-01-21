@@ -5,10 +5,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
+pkgbase=p7zip-natspec
 pkgname=p7zip-natspec
 _pkgname=p7zip
 pkgver=9.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line version of the 7zip compressed file archiver, using libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
