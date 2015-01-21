@@ -1,0 +1,26 @@
+2015-04-07 Peter Spiess-Knafl <psk@autistici.org>
+
+	* 0.5.0-1:
+	New upstream release
+
+2015-02-10 Peter Spiess-Knafl <psk@autistici.org>
+
+	* 0.4.2-2 :
+	Removing patch to fix boost error
+
+2015-01-21 Peter Spiess-Knafl <psk@autistici.org>
+
+	* 0.4.1-1 :
+	Updated to new upstream release.
+	Fix build error with new libjsoncpp 0.7.x
+
+2014-11-21 Peter Spiess-Knafl <psk@autistici.org>
+
+	* 0.4-1 :
+	Updated to new upstream release.
+	See at changelog: https://github.com/cinemast/libjson-rpc-cpp/blob/master/CHANGELOG.md
+
+2014-11-04 Peter Spiess-Knafl <psk@autistici.org>
+
+	* 0.3.2-1 :
+	Initial release and replacement of libjsonrpc-git
