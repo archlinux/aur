@@ -54,12 +54,16 @@ def get_latest_addon_info(addon_id, os):
     if os is not None:
         install_xpath += "[@os='%s']" % os
 
-    version = parsed_resp.find("version")
-    install = parsed_resp.find(install_xpath)
+    install = None
+    for elm in parsed_resp.findall(install_xpath):
+        if elm.get("status") != "Beta":
+            install = elm
+            break
 
     # XXX: Quick and dirty: If the response does not contain
     # the version tag, then we fail horribly here. Should be handled
     # properly.
+    version = parsed_resp.find("version")
     return version.text, install.text if install is not None else None
 
 
