@@ -1,7 +1,6 @@
 # Maintainer: Johannes Dewender   arch at JonnyJD dot net
 pkgname=('python-discid' 'python2-discid')
 _pkgname=discid
-_python=python
 pkgver=1.1.0
 pkgrel=2
 pkgdesc="Python binding of MusicBrainz libdiscid (Picard optdep)"
