@@ -20,14 +20,13 @@ makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 if [ -e /var/lib/pacman/local/qt5-base-5* ]; then
-#  # If you are using repo's qt5
+# If you are using repo's qt5, change to the latest minor version
+#TODO: automate version, perhaps _qt5_userversion?
   source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#branch=5.4.1")
 else
-#  # If you are using anything else eg. qt5-base-git
+  # If you are using anything else eg. qt5-base-git
   source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#branch=dev")
 fi
-# dev branch should work with last stable in repo
-# last working commit - for repo's qt5-base 5.3.x - 374cb3b2872652317baec299712d7dfde6d9c896
 sha256sums=("SKIP")
 
 # Definition with userside version of Qt5
@@ -42,24 +41,13 @@ build() {
   cd "$srcdir/$_pkgname"
   # Replace Qt version to user version (Qt)
   sed -i "3s/.*/MODULE_VERSION = ${_qt5_userversion}/" ./.qmake.conf
+  if [ -d ./build ]; then
+    rm -rf --one-file-system ./build
+  fi
   mkdir build
   cd build
   export QT_SELECT=5
-  if [ -e /var/lib/pacman/local/qt5-base-5* ]; then
-    warning "Enabling hacks due to FS#38819. All packages relying on this one will need simlar one\n    (not needed to just run Qt5 apps in wayland)"
-    # Repair for Qt5.3.2 past 374cb3b2872652317baec299712d7dfde6d9c896 commit
-    if [ ${_qt5_userversion} == "5.3.2" ]
-    then
-      msg "Repair qwaylandscreen.cpp for Qt 5.3.2"
-      sed -i "s/QWindowSystemInterface::handleScreenGeometryChange(screen(), mGeometry, mGeometry);/QWindowSystemInterface::handleScreenGeometryChange(screen(), mGeometry);/" \
-        ../src/client/qwaylandscreen.cpp
-    fi
-    # To reproduce FS#38819 remove QMAKE_LIBS_PRIVATE WHICH IS AN UGLY HACK!
-    qmake CONFIG+=wayland-compositor ..
-  else
-    qmake ..
-  fi
-  make
+  qmake CONFIG+=wayland-compositor ..
 }
 
 package() {
