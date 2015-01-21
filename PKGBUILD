@@ -1,5 +1,4 @@
 # Maintainer: Tilman Blumenbach <tilman AT ax86 DOT net>
-# $AMOID$=306880
 
 pkgname=keepass-plugin-rpc
 pkgver=1.4.6
@@ -26,5 +25,8 @@ package() {
     install -m 644 -D KeePassRPC.plgx "${pkgdir}/usr/share/keepass/plugins/KeePassRPC.plgx"
 }
 
+_amo_id=306880
+_amo_os=Linux
+_amo_url_prefix="keefox.zip::"
 md5sums=('0875496fc1526033e56e4e095ed53cbb')
 sha384sums=('9060c8aeec8af79494043fccd26184f77fff58bc929cfe96e97f9e3c8971c496fff5511588985f508c11d48cd8cd47d7')
