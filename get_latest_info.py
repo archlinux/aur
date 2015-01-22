@@ -74,6 +74,13 @@ except (requests.exceptions.RequestException, ET.ParseError) as e:
     )
     sys.exit(2)
 
+if version is None:
+    print(
+        "E: No version information found in API response. API may be malfunctioning.",
+        file=sys.stderr
+    )
+    sys.exit(2)
+
 if url is None:
     print(
         "E: No match for OS `%s' found." % parsed_args.os,
