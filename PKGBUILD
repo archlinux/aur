@@ -2,14 +2,14 @@
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
 pkgname=('python-ioflo' 'python2-ioflo')
-pkgver=1.0.1
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Flo based programming interface in python'
 arch=('any')
 url='http://ioflo.com'
 license=('APACHE')
 source=("https://pypi.python.org/packages/source/i/ioflo/ioflo-$pkgver.tar.gz")
-md5sums=('16dd420250da24f45ffe0bb786dc6536')
+md5sums=('39741180b1013c39c30c2eb8b10c7890')
 makedepends=(python-setuptools python2-setuptools)
 
 prepare() {
