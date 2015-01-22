@@ -2,7 +2,7 @@
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
 pkgname=('python-raet' 'python2-raet')
-pkgver=0.3.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Asynchronous encrypted transaction based protocol using Ioflo'
 arch=('any')
@@ -10,7 +10,7 @@ url='http://raet.docs.saltstack.com/'
 license=('APACHE')
 makedepends=(python-setuptools python2-setuptools)
 source=("https://pypi.python.org/packages/source/r/raet/raet-$pkgver.tar.gz")
-md5sums=('ed8e90dadd23431412adb4ac1cef727f')
+md5sums=('685f29d16e288ff697de869ff49bd9a3')
 
 prepare() {
   cd $srcdir
