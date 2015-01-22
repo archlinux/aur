@@ -57,14 +57,10 @@ def get_latest_addon_info(addon_id, os):
     install = None
     for elm in parsed_resp.findall(install_xpath):
         if elm.get("status") != "Beta":
-            install = elm
+            install = elm.text
             break
 
-    # XXX: Quick and dirty: If the response does not contain
-    # the version tag, then we fail horribly here. Should be handled
-    # properly.
-    version = parsed_resp.find("version")
-    return version.text, install.text if install is not None else None
+    return parsed_resp.findtext("version"), install
 
 
 parsed_args = setup_argparser().parse_args()
@@ -73,17 +69,18 @@ try:
     version, url = get_latest_addon_info(parsed_args.addon_id, parsed_args.os)
 except (requests.exceptions.RequestException, ET.ParseError) as e:
     print(
-        "Could not retrieve latest information: %s" % e,
+        "E: Could not retrieve latest information: %s" % e,
         file=sys.stderr
     )
     sys.exit(2)
 
 if url is None:
     print(
-        "No matching URL for OS `%s' found." % parsed_args.os,
+        "E: No match for OS `%s' found." % parsed_args.os,
         file=sys.stderr
     )
     sys.exit(3)
+
 
 url = parsed_args.url_prefix + url
 
