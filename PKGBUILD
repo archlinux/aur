@@ -4,8 +4,8 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
-pkgver=4.5.0
-pkgrel=5
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -14,15 +14,9 @@ makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
-	"libkexiv2.patch")
-sha1sums=('ba735f4b7bb0437c1676141ab78ea958e46f135e'
-          '1bcef459bd400a04526aac9adf39d4d0a1c3549c')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha1sums=('ee4241f02e997c7b122166bc845feb885b633f0e')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np0 -i "${srcdir}/libkexiv2.patch" 
-}
 
 build() {
   mkdir build
@@ -33,7 +27,10 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_tests=OFF \
     -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
-    -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON
+    -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON \
+    -DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
+    -DDIGIKAMSC_COMPILE_LIBVKONTAKTE=ON \
+    -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON 
   make
 }
 
