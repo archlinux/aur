@@ -1,8 +1,8 @@
 pkgbase = qt5-wayland-git
 	pkgdesc = A cross-platform application and UI framework (QtWayland)
 	pkgver = a
-	pkgrel = 1
-	url = https://qt-project.org/
+	pkgrel = 2
+	url = https://qt.gitorious.org/qt/qtwayland
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = qt5-wayland-git
 	depends = libxcomposite
 	provides = qt5-wayland
 	conflicts = qt5-wayland
-	source = qt5-wayland::git://gitorious.org/qt/qtwayland.git#branch=5.4.1
+	source = qt5-wayland::git://gitorious.org/qt/qtwayland.git#branch=5.4.2
 	sha256sums = SKIP
 
 pkgname = qt5-wayland-git
