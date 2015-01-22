@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-wayland-git
-pkgver=0.19.99.19125.5172b7f
+pkgver=0.19.99.19348.3e5b2ba
 pkgrel=1
 pkgdesc="Highly expermimental Enlightenment window manager for Wayland - Development version"
 arch=('i686' 'x86_64')
@@ -50,7 +50,6 @@ build() {
     --disable-shot \
     --disable-xkbswitch \
     --disable-conf-randr \
-    --disable-everything \
     --disable-wl-x11
 
   make

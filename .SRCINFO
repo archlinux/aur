@@ -1,6 +1,6 @@
 pkgbase = enlightenment-wayland-git
 	pkgdesc = Highly expermimental Enlightenment window manager for Wayland - Development version
-	pkgver = 0.19.99.19125.5172b7f
+	pkgver = 0.19.99.19348.3e5b2ba
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = enlightenment.install
