@@ -12,6 +12,8 @@ pkgbase = cool-retro-term-git
 	depends = qt5-quickcontrols
 	depends = qt5-graphicaleffects
 	depends = hicolor-icon-theme
+	provides = cool-retro-term=1.0.0RC1.r39.g40eb51e
+	conflicts = cool-retro-term
 	source = git://github.com/Swordfish90/cool-retro-term.git
 	sha256sums = SKIP
 
