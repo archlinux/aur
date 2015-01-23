@@ -1,0 +1,27 @@
+pkgbase = gnustep-libobjc2-clang-svn
+	pkgdesc = The GNUstep Objective-C runtime is designed as a drop-in replacement for the GCC runtime, using Clang
+	pkgver = r38298
+	pkgrel = 1
+	epoch = 1
+	url = http://www.gnustep.org/
+	arch = i686
+	arch = x86_64
+	groups = gnustep-clang-svn
+	license = custom:MIT
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = gnustep-make-clang-svn
+	conflicts = gnustep-libobjc2-git
+	conflicts = gnustep-libobjc2-multilib-clang-svn
+	replaces = gnustep-libobjc2-multilib-clang-svn
+	source = gnustep-libobjc2::svn://svn.gna.org/svn/gnustep/libs/libobjc2/trunk/
+	md5sums = SKIP
+	depends_i686 = gcc-libs
+	optdepends_i686 = libdispatch-clang-git: enable libdispatch at compilation after installing gnustep-libobjc2-clang-svn then libdispatch-clang-git
+	makedepends_i686 = clang
+	depends_x86_64 = gcc-libs-multilib
+	optdepends_x86_64 = lib32-libdispatch-clang-git: enable libdispatch at compilation after installing gnustep-libobjc2-clang-svn then lib32-libdispatch-clang-git
+	makedepends_x86_64 = lib32-clang
+
+pkgname = gnustep-libobjc2-clang-svn
+
