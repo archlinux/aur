@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!arch
+!lib32-arch
