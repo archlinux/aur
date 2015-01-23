@@ -1,0 +1,33 @@
+pkgbase = darling-git
+	pkgdesc = A Wine-like emulation layer that enables you to run Darwin/OS X apps on Linux
+	pkgver = 689.accadce
+	pkgrel = 12
+	url = http://www.darlinghq.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nasm
+	makedepends = libkqueue
+	makedepends = gnustep-gui-clang-svn
+	depends = libbsd
+	depends = libsystemd
+	depends = openssl
+	depends = gnustep-corebase-clang-svn
+	optdepends = dmg2dir-git: extract OS X application from .dmg file
+	replaces = darling-multilib-git
+	backup = etc/darling/dylib.conf
+	source = git://github.com/LubosD/darling.git
+	source = dyld
+	md5sums = SKIP
+	md5sums = 9313524c87a422c9405ece68bd4ff4f2
+	makedepends_i686 = clang
+	makedepends_i686 = libgl
+	depends_x86_64 = lib32-libbsd
+	depends_x86_64 = lib32-systemd
+	depends_x86_64 = lib32-openssl
+	makedepends_x86_64 = lib32-clang
+	makedepends_x86_64 = lib32-libgl
+
+pkgname = darling-git
+
