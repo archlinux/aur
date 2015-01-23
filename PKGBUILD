@@ -4,13 +4,13 @@
 
 pkgname=libpthread_workqueue-git
 pkgver=20140727
-pkgrel=1
+pkgrel=2
 pkgdesc="a portable implementation of the pthread_workqueue API first introduced in Mac OS X."
 url="https://github.com/mheily/libpwq"
 arch=('i686' 'x86_64')
-license=('custom')
-depends=('glibc' 'libkqueue')
-makedepends=('git' 'pkgconfig')
+license=('BSD')
+depends=('glibc')
+makedepends=('git')
 provides=('libpthread_workqueue' 'libpthread_workqueue-libpthread')
 source=("${pkgname}"::'git+https://github.com/mheily/libpwq')
 md5sums=('SKIP')
@@ -32,4 +32,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     make DESTDIR=$pkgdir install
+    install -Dvm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
