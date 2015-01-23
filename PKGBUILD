@@ -4,26 +4,21 @@
 
 pkgname=cool-retro-term-git
 pkgrel=1
-pkgver=1.0.0RC1.r0.g9364aa3
+pkgver=1.0.0RC1.r39.g40eb51e
 pkgdesc='A good looking terminal emulator which mimics the old cathode display'
 arch=('i686' 'x86_64')
 url='https://github.com/Swordfish90/cool-retro-term'
-license=('GPL' 'GPL3')
-depends=('qt5-quickcontrols' 'qt5-graphicaleffects')
+license=('GPL3')
+depends=('qmltermwidget-git' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'hicolor-icon-theme')
 makedepends=('git')
-replaces=('cool-old-term-git')
-conflicts=('cool-old-term-git')
-source=("git://github.com/Swordfish90/cool-retro-term.git"
-        "git://github.com/Swordfish90/qmltermwidget.git")
-md5sums=('SKIP'
-         'SKIP')
+install=${pkgname%-*}.install
+source=("git://github.com/Swordfish90/cool-retro-term.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/${pkgname%-*}"
 
-  git submodule init
-  git config submodule.qmltermwidget.url "$srcdir/qmltermwidget"
-  git submodule update
+  sed -i '/qmltermwidget/d' cool-retro-term.pro
 }
 
 pkgver () {
@@ -43,7 +38,4 @@ package() {
   cd "$srcdir/${pkgname%-*}"
 
   make INSTALL_ROOT="$pkgdir" install
-
-  install -d "$pkgdir/usr/lib/qt/qml/"
-  cp -a qmltermwidget/QMLTermWidget "$pkgdir/usr/lib/qt/qml/"
 }
