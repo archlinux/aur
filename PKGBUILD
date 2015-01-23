@@ -18,16 +18,16 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="0.9.8zb"
+_OPENSSL_VERSION="0.9.8ze"
 ################
 
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=16056
+pkgver=16641
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
-url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=OVMF"
+url="https://tianocore.github.io/ovmf/"
 arch=('x86_64' 'i686')
 license=('BSD')
 
@@ -40,7 +40,7 @@ provides=("ovmf=${pkgver}" "ovmf-tianocore-edk2=${pkgver}" "ovmf-tianocore-edk2-
 
 install="${_pkgname}.install"
 
-source=("http://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
+source=("https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
@@ -50,7 +50,7 @@ for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellP
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
-sha1sums=('4f0079d4d924ab618d5f846cb91f413184bf8dea'
+sha1sums=('cbfbda630b3ad6d89a15a80c0dc15ebce2c1b7b2'
           'SKIP'
           'SKIP'
           'SKIP'
