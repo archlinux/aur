@@ -1,0 +1,22 @@
+pkgbase = lib32-libdispatch-clang-git
+	pkgdesc = Linux port of Apple's open-source concurrency library with blocks support, using Clang (32-bit)
+	pkgver = 274.617a4e1
+	pkgrel = 2
+	url = http://nickhutchinson.me/libdispatch
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = lib32-clang
+	depends = lib32-libkqueue
+	depends = lib32-libpthread_workqueue-git
+	depends = gnustep-libobjc2-clang-svn
+	depends = libdispatch-clang-git
+	conflicts = libdispatch-svn
+	source = git://github.com/nickhutchinson/libdispatch.git
+	source = gnustep-blocks.patch
+	md5sums = SKIP
+	md5sums = fc1577a9275294b421316b268421e52d
+
+pkgname = lib32-libdispatch-clang-git
+

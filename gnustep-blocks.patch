@@ -1,0 +1,43 @@
+--- a/cmake/FindCBlocks.cmake	2014-05-12 19:38:17.623240000 +0200
++++ b/cmake/FindCBlocks.cmake	2014-05-12 19:41:49.747182880 +0200
+@@ -3,7 +3,7 @@
+ include (FindPackageHandleStandardArgs)
+ include (CheckFunctionExists)
+ 
+-find_path(CBLOCKS_PUBLIC_INCLUDE_DIR Block.h
++find_path(CBLOCKS_PUBLIC_INCLUDE_DIR objc/blocks_runtime.h
+   DOC "Path to Block.h"
+ )
+ 
+@@ -11,7 +11,7 @@
+   list (APPEND CBLOCKS_INCLUDE_DIRS ${CBLOCKS_PUBLIC_INCLUDE_DIR})
+ endif ()
+ 
+-find_path(CBLOCKS_PRIVATE_INCLUDE_DIR Block_private.h
++find_path(CBLOCKS_PRIVATE_INCLUDE_DIR objc/blocks_private.h
+   DOC "Path to Block_private.h"
+ )
+ if (CBLOCKS_PRIVATE_INCLUDE_DIR)
+@@ -25,7 +25,7 @@
+ if (CBLOCKS_RUNTIME_IN_LIBC)
+   set (CBLOCKS_LIBRARIES " ")
+ else ()
+-  find_library(CBLOCKS_LIBRARIES "BlocksRuntime")
++  set(CBLOCKS_LIBRARIES "-l:libobjc2.so")
+ endif ()
+ 
+ check_c_compiler_flag("-fblocks" CBLOCKS_COMPILER_SUPPORT_FOUND)
+
+--- a/src/internal.h	2013-06-24 14:30:33.597320691 +0200
++++ b/src/internal.h	2013-06-24 14:30:54.603582226 +0200
+@@ -162,8 +162,8 @@
+ #include <netinet/in.h>
+ 
+ #ifdef __BLOCKS__
+-#include <Block_private.h>
+-#include <Block.h>
++#include <objc/blocks_private.h>
++#include <objc/blocks_runtime.h>
+ #endif /* __BLOCKS__ */
+ 
+ #include <assert.h>
