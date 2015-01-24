@@ -1,0 +1,14 @@
+
+post_install() {
+  echo "Additional setup is needed, as freeablo only searches for resources in the"
+  echo "current directory:"
+  echo "$ mkdir -p ~/.freeablo ; cp -rup /usr/share/freeablo/resources ~/.freeablo"
+  echo "You also need to put the files 'DIABDAT.MPQ' and 'Diablo.exe' there."
+  echo ""
+  echo "To launch it, use this:"
+  echo "$ cd ~/.freeablo && freeablo"
+}
+
+post_upgrade() {
+  post_install
+}
