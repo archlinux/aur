@@ -1,0 +1,16 @@
+pkgbase = xfce4-remmina-plugin
+	pkgdesc = Xfce panel applet for remmina.
+	pkgver = 0.8.1
+	pkgrel = 2
+	url = http://sourceforge.net/projects/remmina/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = remmina
+	depends = xfce4-panel
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/remmina/0.8/remmina-xfce-0.8.1.tar.gz
+	md5sums = 7b95ed26f6518d26166904ef63d1b936
+
+pkgname = xfce4-remmina-plugin
+
