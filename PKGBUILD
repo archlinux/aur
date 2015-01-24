@@ -1,15 +1,15 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=vimb
-pkgver=2.8
-pkgrel=3
+pkgver=2.9
+pkgrel=1
 pkgdesc="The vim like browser"
 arch=('i686' 'x86_64')
 url="http://fanglingsu.github.io/vimb"
 license=('GPL3')
 depends=('libsoup' 'webkitgtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fanglingsu/vimb/archive/$pkgver.tar.gz")
-sha256sums=('d398b0e772e1c3751ef76dc833e84b4abaa19f6b9b5e75afa63ace8b9ff12e12')
+sha256sums=('179024e07c133b049d9fb7c487bed9b9a8512b633e1d857e038b26a01d2e3541')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
