@@ -1,18 +1,23 @@
-2014-06-04 carstene1ns <url/mail: arch carsten-teibes de>
+2015-01-24 carstene1ns <arch carsten-teibes de>
+
+	* 1.3.1-1 :
+	new upstream release.
+
+2014-06-04 carstene1ns <arch carsten-teibes de>
 
 	* 1.3-2 :
 	added optdepend on 'wolf3d-shareware'.
 	change search directory to support it.
 	added ChangeLog.
 
-2014-06-02 carstene1ns <url/mail: arch carsten-teibes de>
+2014-06-02 carstene1ns <arch carsten-teibes de>
 
 	* 1.3-1 :
 	new upstream release.
 	adapted data dir hack.
 	added patchutil to package.
 
-2014-01-27 carstene1ns <url/mail: arch carsten-teibes de>
+2014-01-27 carstene1ns <arch carsten-teibes de>
 
 	* 1.2.3-1 :
 	package submitted.

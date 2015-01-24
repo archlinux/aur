@@ -1,8 +1,8 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=ecwolf
-pkgver=1.3
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL'
 arch=('i686' 'x86_64')
 url="http://maniacsvault.net/ecwolf"
@@ -13,7 +13,7 @@ optdepends=('wolf3d-shareware: Demo version of Wolfenstein 3D')
 install=$pkgname.install
 changelog=$pkgname.ChangeLog
 source=("http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$pkgver-src.7z")
-sha256sums=('d258195dd1d971a256f5c354be764d05e6f076d231d230f61ff258d853c01e66')
+sha256sums=('43dee71b5b32ab2e789d33dcb1f9b6d113c0fb1a73eb4617e627eade6439996e')
 
 prepare() {
   # reset build folder
