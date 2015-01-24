@@ -1,18 +1,23 @@
 pkgbase = ftwin
-	pkgdesc = A tool useful to find duplicate files according to their content on your file system.
-	pkgver = 0.8.5
+	pkgdesc = A tool useful to find duplicate files according to their content on your file system
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = http://freecode.com/projects/ftwin
 	arch = i686
 	arch = x86_64
 	license = APACHE
+	makedepends = git
+	makedepends = autoconf
+	makedepends = patch
 	depends = apr-util
 	depends = check
 	depends = libpuzzle
 	optdepends = doxygen: generating docs
 	optdepends = graphviz: generating graphs
-	source = ftp://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/ftwin-0.8.5.tar.bz2
-	sha256sums = 03dec36503b3c781f287b4427e99d9d1ccc704f1d9e11eadcd630e4c29dea0ce
+	source = git://github.com/fpesce/ftwin.git
+	source = ftwin-make.patch
+	md5sums = SKIP
+	md5sums = ca766ceb9060a98005273e5473b5cfdd
 
 pkgname = ftwin
 

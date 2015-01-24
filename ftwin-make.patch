@@ -1,0 +1,5 @@
+--- Makefile.am	2013-12-25 03:48:59.000000000 +0100
++++ Makefile.am	2015-01-24 14:09:14.876881244 +0100
+@@ -52 +52 @@
+-ftwin_CFLAGS = @APR_CFLAGS@ @PCRE_CFLAGS@ -Wall -Werror -g -ggdb -I$(top_srcdir)/src -O0
++ftwin_CFLAGS = @APR_CFLAGS@ @PCRE_CFLAGS@ -Wall -I$(top_srcdir)/src -O3 -funroll-loops -fomit-frame-pointer -pipe -ffast-math
