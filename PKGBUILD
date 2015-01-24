@@ -10,7 +10,7 @@ pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Management daemon, 32bit libraries"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -52,9 +52,6 @@ build() {
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-udev-dir=/usr/lib/udev \
     --with-resolvconf=/usr/bin/resolvconf \
-    --with-pppd=/usr/bin/pppd \
-    --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
-    --with-pppoe=/usr/bin/pppoe \
     --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-nmtui=no \
     --with-session-tracking=systemd \
@@ -62,6 +59,7 @@ build() {
     --disable-static \
     --enable-more-warnings=no \
     --disable-wimax \
+    --disable-ppp \
     --enable-modify-system \
     --disable-doc \
     --disable-qt # disable qt examples, lib32-qt4 contains wrong include dirs in pkgconfig
