@@ -1,0 +1,19 @@
+pkgbase = podsleuth
+	pkgdesc = Tool to discover detailed information about Apple iPods
+	pkgver = 0.6.7
+	pkgrel = 1
+	url = http://download.banshee-project.org/podsleuth/
+	arch = any
+	license = MIT
+	depends = ndesk-dbus>=0.6.0
+	depends = sg3_utils>=1.26
+	depends = hal>=0.5.11
+	replaces = libipoddevice
+	options = !makeflags
+	source = http://download.banshee.fm/podsleuth/0.6.7/podsleuth-0.6.7.tar.bz2
+	source = sg3_utils-1.26.patch
+	md5sums = 987abf0992193ebc526952f86f64a72c
+	md5sums = de3b52555f18c503392e941faebc37e5
+
+pkgname = podsleuth
+
