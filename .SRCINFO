@@ -1,0 +1,15 @@
+pkgbase = stdoutisatty
+	pkgdesc = A tiny utility to trick the program to believe that its stdout is an interactive tty
+	pkgver = 8.04881d0
+	pkgrel = 1
+	url = https://github.com/lilydjwg/stdoutisatty
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = glibc
+	source = git+https://github.com/lilydjwg/stdoutisatty.git
+	md5sums = SKIP
+
+pkgname = stdoutisatty
+
