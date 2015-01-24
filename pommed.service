@@ -1,0 +1,10 @@
+[Unit]
+Description=Pommed Apple Hotkeys Daemon
+
+[Service]
+User=root
+ExecStart=/usr/bin/pommed -f
+
+[Install]
+WantedBy=multi-user.target
+
