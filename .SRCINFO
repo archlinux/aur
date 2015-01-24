@@ -1,10 +1,11 @@
 pkgbase = gcalcli
 	pkgdesc = Google Calendar Command Line Interface
 	pkgver = 3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/insanum/gcalcli
 	arch = any
 	license = MIT
+	makedepends = hardening-wrapper
 	depends = python2-google-api-python-client
 	depends = python2-dateutil
 	depends = python2-gflags
