@@ -1,0 +1,29 @@
+pkgbase = alacarte-xfce
+	pkgdesc = Menu editor for Xfce
+	pkgver = 3.10.0
+	pkgrel = 2
+	url = http://www.gnome.org
+	install = alacarte.install
+	arch = any
+	groups = xfce4-goodies
+	license = LGPL
+	makedepends = intltool
+	depends = gnome-menus
+	depends = python2-gobject
+	depends = exo
+	depends = hicolor-icon-theme
+	depends = pygtk
+	provides = alacarte=3.10.0
+	conflicts = alacarte
+	conflicts = alacarte-git
+	conflicts = alacarte-xfce-devel
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/alacarte/3.10/alacarte-3.10.0.tar.xz
+	source = toprettyxml-and-unicode-fixes.patch
+	source = alacarte.desktop
+	md5sums = 817b0ebd9bf234d184088c6290f05acd
+	md5sums = 8b427043af9d258da0daaa50fad9337d
+	md5sums = b927a3927560037c87dab73ef2d3d38b
+
+pkgname = alacarte-xfce
+
