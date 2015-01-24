@@ -1,0 +1,17 @@
+pkgbase = java-asm
+	pkgdesc = An all purpose Java bytecode manipulation and analysis framework
+	pkgver = 5.0.3
+	pkgrel = 1
+	url = http://asm.ow2.org/
+	arch = any
+	license = BSD
+	depends = java-runtime
+	source = http://download.forge.objectweb.org/asm/asm-5.0.3-bin.zip
+	source = LICENSE
+	md5sums = 82636e8a1b8eec18ee20e9b71a16441a
+	md5sums = de1a27d7c9e101090ae065f8fc643a0b
+	sha256sums = e50c38c908e4aacedecf49f405937069ce6411bef9806b9a4fc9d335d6bdb36f
+	sha256sums = daa45cc0832746afadb8778c1155bb5ba9079da624803a4a6bc3429ea52e7523
+
+pkgname = java-asm
+
