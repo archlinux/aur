@@ -1,0 +1,23 @@
+pkgbase = tuxpuck
+	pkgdesc = Airhockey with tux (Shufflepuck Cafe clone)
+	pkgver = 0.8.2
+	pkgrel = 6
+	url = http://home.no.net/munsuun/tuxpuck/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = freetype2
+	depends = libjpeg
+	depends = sdl
+	depends = libpng
+	depends = libvorbis
+	options = !makeflags
+	source = http://ftp.de.debian.org/debian/pool/main/t/tuxpuck/tuxpuck_0.8.2.orig.tar.gz
+	source = tuxpuck-0.8.2-ldflags.patch
+	source = tuxpuck-0.8.2-libpng15.patch
+	sha256sums = 62d9604ed69c27b9ca2be1312bc705b36de8ed509c539c6d81193e7846272f18
+	sha256sums = 0a5f8610ef0001b5c98834f850ec9a3ade5437703ea04cb363f7cc6f5b39fec5
+	sha256sums = cf9a3a51876fd00e1b4fd34afe1ca79763facd6b0326628186b342da0fd9b68f
+
+pkgname = tuxpuck
+
