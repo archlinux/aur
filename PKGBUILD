@@ -12,8 +12,8 @@ install=revelation.install
 url="http://revelation.olasagasti.info/"
 source=("https://bitbucket.org/erikg/revelation/downloads/revelation-${pkgver}.tar.bz2"
         'cracklib.patch')
-md5sums=('d1c054b0a5678f884a2365ac54c03b6a'
-         '3502734fb170dd6392b82d36fdf45169')
+sha256sums=('2ab3d1d8bcc2f441feb58122ee6a0fe4070412228194843a180a7b1c9e910019'
+            'f5cebe215115cb5a78f470da9753be3c5ff99095f28ab57ae45d2d03b3a686d6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
