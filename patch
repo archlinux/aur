@@ -1,0 +1,16 @@
+diff --git a/backend/makrod.pro b/tmp/makrod.pro
+index 3708869..255668d 100644
+--- a/backend/makrod.pro
++++ b/tmp/makrod.pro
+@@ -3,9 +3,10 @@
+ ######################################################################
+ 
+ TEMPLATE = app
+-TARGET = 
++TARGET = release
+ DEPENDPATH += .
+ INCLUDEPATH += .
++QT += widgets
+ 
+ # Input
+ SOURCES += main.cpp

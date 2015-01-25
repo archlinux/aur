@@ -1,28 +1,41 @@
+# Maintainer: James An <james@jamesan.ca>
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
+
 pkgname=makro
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple KDE4 frontend for Xnee and Xbindkeys."
 arch=('i686' 'x86_64')
 url="http://www.kde-apps.org/content/show.php/Makro?content=88647"
 license=('GPL')
 depends=('kdelibs' 'xbindkeys')
 makedepends=('cmake' 'automoc4')
-source=(http://www.kde-apps.org/CONTENT/content-files/88647-makro.tar.gz)
-md5sums=('43f286516fd24890b222054b3931d5fa')
+source=(
+    "http://kde-apps.org/CONTENT/content-files/88647-$pkgname.tar.gz"
+    'patch'
+)
+md5sums=(
+    '43f286516fd24890b222054b3931d5fa'
+    '7d51848f46784b1ac768a9ba16dd14ee'
+)
+
+prepare() {
+    cd $pkgname
+
+    mkdir -p build
+    patch -p1 < ../patch
+}
 
 build() {
+    cd $pkgname/backend
+    qmake
+    make
+    cp release ../makrod
+}
 
-cd $startdir/src/makro
-mkdir build
-cd backend
-qmake || return 1
-make || return 1
-cp ./makrod ../
+package() {
+    cd $pkgname
 
-cd ..
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=release ../ || return 1
-make DESTDIR=$startdir/pkg install || return 1
-
+    cmake -D CMAKE_INSTALL_PREFIX=`kde4-config --prefix` -D CMAKE_BUILD_TYPE=release --build build .
+    make DESTDIR=$pkgdir install
 }
