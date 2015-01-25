@@ -1,0 +1,34 @@
+pkgbase = busybox-static
+	pkgdesc = Utilities for rescue and embedded systems
+	pkgver = 1.22.1
+	pkgrel = 1
+	url = http://www.busybox.net
+	install = busybox.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = sed
+	makedepends = ncurses
+	provides = busybox
+	conflicts = busybox
+	source = http://www.busybox.net/downloads/busybox-1.22.1.tar.bz2
+	source = http://www.busybox.net/downloads/fixes-1.22.1/busybox-1.22.1-ash.patch
+	source = http://www.busybox.net/downloads/fixes-1.22.1/busybox-1.22.1-date.patch
+	source = http://www.busybox.net/downloads/fixes-1.22.1/busybox-1.22.1-iplink.patch
+	source = http://www.busybox.net/downloads/fixes-1.22.1/busybox-1.22.1-lzop.patch
+	source = http://www.busybox.net/downloads/fixes-1.22.1/busybox-1.22.1-nc.patch
+	source = http://www.busybox.net/downloads/fixes-1.22.1/busybox-1.22.1-zcat-no-ext.patch
+	source = config
+	md5sums = 337d1a15ab1cb1d4ed423168b1eb7d7e
+	md5sums = 538d8cddbdfc449239b25a40bc8d1575
+	md5sums = bc381f9ceb3824141c968f5bc4353943
+	md5sums = 24686ec2750a8703feb57fc9c6aaed1d
+	md5sums = 14fb3bf7ffaba153b3cad385677b18c3
+	md5sums = 69eecaae5f812d08655dfdf34b60503f
+	md5sums = 158c8c4c73db6d920bdd7d4b9b65b2a5
+	md5sums = 47ae3271f561410d8adf27060780418a
+
+pkgname = busybox-static
+

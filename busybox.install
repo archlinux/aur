@@ -1,0 +1,15 @@
+post_install() {
+  echo "You may want to do setuid on /usr/bin/busybox"
+  echo "  chmod 4555 /usr/bin/busybox"
+}
+
+pre_upgrade() {
+  mkdir tmp/busybox.upgrade || exit 1
+  busybox stat -c %a usr/bin/busybox >tmp/busybox.upgrade/busybox.upgrade.script
+}
+
+post_upgrade() {
+  [ -f tmp/busybox.upgrade.script ] && busybox chmod `busybox cat tmp/busybox.upgrade.script` usr/bin/busybox
+  busybox rm -rf tmp/busybox.upgrade
+  echo "busybox is dynamically linked now."
+}
