@@ -1,0 +1,19 @@
+pkgbase = soundcli
+	pkgdesc = Command line interface to stream/download songs from soundcloud.com
+	pkgver = 0.0.5
+	pkgrel = 2
+	url = http://soundcli.elephly.net
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-gstreamer
+	depends = ruby-curb
+	depends = ruby-json
+	depends = gstreamer0.10-good
+	source = https://github.com/rekado/soundCLI/tarball/0.0.5
+	md5sums = 1422280932a7e30fa3545e0a00947d99
+
+pkgname = soundcli
+
