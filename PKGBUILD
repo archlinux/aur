@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=revelation
 pkgver=0.4.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A password manager for the GNOME desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -32,12 +32,16 @@ build() {
       --disable-mime-update --disable-desktop-update \
       --with-python-include=/usr/include/python2.7
   make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
 
   sed -i "s|#!/usr/bin/\(env \)\?python$|#!/usr/bin/\1python2|" \
     $pkgdir/usr/bin/revelation \
     $pkgdir/usr/lib/python2.7/site-packages/revelation/bundle/PBKDFv2.py
-
 
   install -m755 -d "${pkgdir}/usr/share/gconf/schemas"
   gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain revelation ${pkgdir}/etc/gconf/schemas/*.schemas || return 1

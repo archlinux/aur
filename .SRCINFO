@@ -1,7 +1,7 @@
 pkgbase = revelation
 	pkgdesc = A password manager for the GNOME desktop
 	pkgver = 0.4.14
-	pkgrel = 3
+	pkgrel = 4
 	url = http://revelation.olasagasti.info/
 	install = revelation.install
 	arch = i686
