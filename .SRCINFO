@@ -1,6 +1,6 @@
 pkgbase = kicad-pretty-git
 	pkgdesc = KiCad .pretty repos. Theese are the new footprint library.
-	pkgver = a
+	pkgver = f20f5d1
 	pkgrel = 1
 	url = https://github.com/KiCad
 	install = kicad.install

@@ -14,7 +14,7 @@ if [ -x /usr/bin/curl ]; then
 fi
 
 pkgname=kicad-pretty-git
-pkgver=a # 0 > a    and git revision can start from letter
+pkgver=f20f5d1 # 0 > a    and git revision can start from letter
 pkgrel=1
 pkgdesc="KiCad .pretty repos. Theese are the new footprint library."
 arch=('any')
@@ -49,7 +49,7 @@ package() {
 
   for repo in ${PRETTY_REPOS[@]}; do
     install -d "$pkgdir/usr/share/kicad/footprints/$repo/"
-    cp -r "$srcdir/$repo/"* "$pkgdir/usr/share/kicad/footprints/$repo/" # change to install?
+    cp -r "$srcdir/$repo" "$pkgdir/usr/share/kicad/footprints/" # change to install?
   done
 
   mv $(readlink -f "${srcdir}/fp-lib-table.for-pretty") "$pkgdir/usr/share/kicad/footprints/fp-lib-table" # Check chmods, change to install?
