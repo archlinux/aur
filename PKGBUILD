@@ -14,7 +14,7 @@ if [ -x /usr/bin/curl ]; then
 fi
 
 pkgname=kicad-pretty-git
-pkgver=f20f5d1 # 0 > a    and git revision can start from letter
+pkgver=a # 0 > a    and git revision can start from letter
 pkgrel=1
 pkgdesc="KiCad .pretty repos. Theese are the new footprint library."
 arch=('any')
