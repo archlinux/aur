@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=39.0.2171.99
+pkgver=40.0.2214.91
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -27,11 +27,13 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium.desktop
         chromium.default
-        chromium.sh)
-sha256sums=('6d527003a7dc3256a266d33fa42185c75934efd6de14f51cde345701ba2ae449'
+        chromium.sh
+        chromium-webkit-buffer-overflow.patch)
+sha256sums=('f72fda9ff1ea256ab911610ee532eadf8303137d431f2481d01d3d60e5e64149'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
-            '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9')
+            '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
+            '870ca4516a0a5407b1e2da822a1ca4f201349c8699877f6bd248cd8e08e7f2f1')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -57,6 +59,10 @@ prepare() {
   # the system ones, leading to errors during the final link stage
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+
+  # Fix a buffer overflow in blink::HarfBuzzShaper::resolveCandidateRuns()
+  # https://code.google.com/p/chromium/issues/detail?id=445075#c10
+  patch -d third_party/WebKit -Np1 <../chromium-webkit-buffer-overflow.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
