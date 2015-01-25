@@ -1,0 +1,13 @@
+pkgbase = code2html
+	pkgdesc = Code2HTML converts a program source code to syntax highlighted HTML
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://www.palfrader.org/code2html/
+	arch = any
+	license = custom
+	depends = perl
+	source = http://www.palfrader.org/code/code2html/all/code2html-0.9.1.tar.gz
+	md5sums = 368377696547026c79c51a274571dc39
+
+pkgname = code2html
+
