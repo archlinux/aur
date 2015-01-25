@@ -1,7 +1,7 @@
 pkgbase = networkmanager-consolekit
 	pkgdesc = NetworkManager with ConsoleKit support for non-systemd systems
-	pkgver = 0.9.10.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager.install
 	arch = i686
@@ -13,12 +13,11 @@ pkgbase = networkmanager-consolekit
 	makedepends = iptables
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = git
 	makedepends = ppp=2.4.7
 	makedepends = modemmanager
 	makedepends = rp-pppoe
 	makedepends = vala
-	depends = libnm-glib>=0.9.10.0
+	depends = libnm-glib>=1.0.0
 	depends = iproute2
 	depends = libnl
 	depends = polkit-consolekit
@@ -37,20 +36,18 @@ pkgbase = networkmanager-consolekit
 	optdepends = bluez: bluetooth support
 	optdepends = openresolv: resolvconf support
 	optdepends = ppp: dialup connection support
-	provides = networkmanager=0.9.10.0
+	provides = networkmanager=1.0.0
 	conflicts = networkmanager
 	replaces = networkmanager
 	backup = etc/NetworkManager/NetworkManager.conf
-	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/0.9/NetworkManager-0.9.10.0.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.0/NetworkManager-1.0.0.tar.xz
 	source = NetworkManager.conf
 	source = disable_set_hostname.patch
 	source = networkmanager.rc
-	source = git-fixes.patch
-	sha256sums = 66a88346bb04d4f402540281181340313b2ec433e75aa9d9ea13f31697f9487e
+	sha256sums = 3a66afec670c975edd9832e620b725a5f16ed267a1b9e1b2d51ef27250d85947
 	sha256sums = 759db295ddae7a6dc6b29211fc0ec08695f875584d456dd146d3679e2c33e2e3
 	sha256sums = 25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460
 	sha256sums = e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc
-	sha256sums = 854b5f06fed30cbab2d71544197d53a8aacdeee12ec78a7f48acb9ff31b40889
 
 pkgname = networkmanager-consolekit
 
