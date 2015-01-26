@@ -4,12 +4,12 @@
 
 pkgname=apache-flex-sdk
 pkgver=4.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source framework for building expressive web and mobile applications"
 arch=('any')
 license=('Apache')
 url='http://flex.apache.org/'
-depends=('java-runtime')
+depends=('bash' 'java-runtime')
 optdepends=(
     'adobe-air-sdk: for compiling flex projects into AIR apps'
 )
