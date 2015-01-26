@@ -9,26 +9,25 @@
 pkgname=redshift-minimal
 _name=redshift
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings, with minimal dependencies.."
 arch=('i686' 'x86_64')
 url='http://jonls.dk/redshift/'
 license=('GPL3')
 depends=('libxxf86vm')
-makedepends=('python' 'intltool')
+makedepends=('intltool')
 conflicts=('redshift')
 provides=('redshift')
-source=("https://github.com/jonls/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('f7a1ca1eccf662995737e14f894c2b15193923fbbe378d151e346a8013644f16')
+source=("https://github.com/jonls/${_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.xz")
+sha256sums=('5bc2e70aa414f42dafb45c6e06ea90157d7d4b298af48877144ff442639aeea6')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
 
-  ./bootstrap
-  PYTHON=/usr/bin/python ./configure --disable-gui \
-                                     --disable-geoclue --enable-geoclue2 \
-                                     --disable-ubuntu --disable-drm \
-                                     --prefix=/usr
+  ./configure --disable-gui \
+              --disable-geoclue --disable-geoclue2 \
+              --disable-ubuntu --disable-drm \
+              --prefix=/usr
   make
 }
 
@@ -37,4 +36,3 @@ package() {
   make DESTDIR="${pkgdir}" install
   rm "${pkgdir}/usr/lib/systemd/user/${_name}-gtk.service"
 }
-
