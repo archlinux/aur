@@ -9,7 +9,8 @@ url='https://github.com/Swordfish90/qmltermwidget'
 license=('GPL')
 depends=('qt5-declarative')
 makedepends=('git')
-conflicts=('cool-retro-term-git<1.0.0RC1.r39')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname" 'cool-retro-term-git<1.0.0RC1.r39')
 source=("git://github.com/Swordfish90/qmltermwidget.git")
 sha256sums=('SKIP')
 

@@ -8,6 +8,8 @@ pkgbase = qmltermwidget-git
 	license = GPL
 	makedepends = git
 	depends = qt5-declarative
+	provides = =0.1.0.r2.g4d93f02
+	conflicts = 
 	conflicts = cool-retro-term-git<1.0.0RC1.r39
 	source = git://github.com/Swordfish90/qmltermwidget.git
 	sha256sums = SKIP
