@@ -1,4 +1,5 @@
-# Maintainer: Mateusz Paluszkiewcz <aifam96 at gmail dot com>
+# Maintainer: Ido Rosen <ido@kernel.org>
+# Contributor: Mateusz Paluszkiewcz <aifam96 at gmail dot com>
 
 pkgname=poco
 _pkgver=1.6.0
