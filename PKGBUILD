@@ -1,5 +1,11 @@
+# $Id$
 # Maintainer: Ido Rosen <ido@kernel.org>
 # Contributor: Mateusz Paluszkiewcz <aifam96 at gmail dot com>
+#
+# NOTE: To request changes to this package, please submit a pull request
+#       to the GitHub repository at https://github.com/ido/packages-archlinux
+#       Otherwise, open a GitHub issue.  Thank you! -Ido
+#
 
 pkgname=poco
 _pkgver=1.6.0
