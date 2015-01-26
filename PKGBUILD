@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=python2-freetype-py
-pkgver=0.5.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python2')
 options=(!emptydirs)
 install=
 source=("https://pypi.python.org/packages/source/f/freetype-py/freetype-py-${pkgver}.tar.gz")
-sha1sums=('c550909b4aa9ec407cf5130019d93e415059ddf7')
+sha1sums=('8b83cab2bd42706c3e01c6bd2bf7dc1543f577d1')
 
 package() {
   cd "$srcdir/freetype-py-$pkgver"
