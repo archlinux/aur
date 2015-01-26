@@ -2,11 +2,12 @@
 
 pkgname=dhcptest-git
 pkgver=0.5.r0.g56a8834
-pkgrel=1
+pkgrel=3
 pkgdesc="DHCP test client"
 arch=('i686' 'x86_64')
 url="https://github.com/CyberShadow/dhcptest"
-license=('BSL1.0')
+license=('custom:BSL1.0')
+depends=('glibc')
 makedepends=('dmd' 'git')
 source=("$pkgname"::'git+https://github.com/CyberShadow/dhcptest'
         'http://www.boost.org/LICENSE_1_0.txt')
@@ -29,6 +30,6 @@ package() {
   install -Dm755 "dhcptest" "$pkgdir/usr/bin/dhcptest"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/dhcptest/README.md"
   cd "$srcdir"
-  install -Dm644 "LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/dhcptest/LICENSE.txt"
+  install -Dm644 "LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/dhcptest-git/LICENSE.txt"
 }
 
