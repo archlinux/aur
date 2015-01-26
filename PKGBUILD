@@ -4,12 +4,12 @@
 _pkgname=vsqlite++
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.3.13
-pkgrel=2
+pkgrel=3
 _pkgdesc='SQLite wrapper library for C++'
 pkgdesc="${_pkgdesc} (mingw-w64)"
 arch=('any')
 url='http://sourceforge.net/projects/sqlitepp/'
-license=('custom')
+license=('BSD')
 depends=('mingw-w64-sqlite' 'mingw-w64-crt')
 makedepends=('mingw-w64-boost' 'mingw-w64-configure' 'mingw-w64-gcc')
 options+=('!strip' 'staticlibs' '!buildflags')
@@ -46,9 +46,10 @@ package() {
     do
         cd "${srcdir}/${_pkgname}-$pkgver/build-${_arch}"
         make DESTDIR="${pkgdir}" install
-        install -D -m0644 ../COPYING "${pkgdir}/usr/${_arch}/share/licenses/vsqlite++/COPYING"
         ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
         ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     done
+
+    install -D -m0644 ${srcdir}/${_pkgname}-$pkgver/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
