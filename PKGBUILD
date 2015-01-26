@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.1.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='KSysGuard'
 arch=('i686' 'x86_64')
@@ -11,13 +11,13 @@ license=('LGPL')
 depends=('knewstuff' 'libksysguard' 'lm_sensors' 'xdg-utils' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
-groups=('plasma-next')
+groups=('plasma')
 install="${pkgname}.install"
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
-md5sums=('90ac274e1cc5a078fd8c285cef130a95')
+md5sums=('f3ee0ba2998d7f9b730dbb07bc76aa72')
 
 prepare() {
-  mkdir -p build
+  mkdir build
 }
 
 build() {
