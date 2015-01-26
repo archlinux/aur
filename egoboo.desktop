@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Egoboo
+Exec=egoboo
+Icon=egoboo
+Comment=A 3D OpenGL dungeon-crawl
+Categories=Game;AdventureGame;RolePlaying;
