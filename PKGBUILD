@@ -2,7 +2,7 @@
 
 pkgname=qmltermwidget-git
 pkgrel=1
-pkgver=0.6.0.r37.g4d93f02
+pkgver=0.1.0.r2.g4d93f02
 pkgdesc='QML port of qtermwidget'
 arch=('i686' 'x86_64')
 url='https://github.com/Swordfish90/qmltermwidget'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver () {
   cd "$srcdir/${pkgname%-*}"
 
-  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = qmltermwidget-git
 	pkgdesc = QML port of qtermwidget
-	pkgver = 0.6.0.r37.g4d93f02
+	pkgver = 0.1.0.r2.g4d93f02
 	pkgrel = 1
 	url = https://github.com/Swordfish90/qmltermwidget
 	arch = i686
