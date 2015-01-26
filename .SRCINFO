@@ -1,0 +1,18 @@
+pkgbase = dwgrep
+	pkgdesc = Tool and library for querying Dwarf (debuginfo) graphs.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://pmachata.github.io/dwgrep/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = flex
+	makedepends = bison
+	makedepends = python-sphinx
+	depends = elfutils
+	source = https://github.com/pmachata/dwgrep/archive/0.2.tar.gz
+	sha512sums = 0cef77cded64f437f40e92c87409e43de667f6033dcb7188d9beff97ab3deb1de2ee66043c8a34fac7a9b9a45c325ea92559905a6997c581bdd65099ef052ada
+
+pkgname = dwgrep
+
