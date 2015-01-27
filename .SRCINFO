@@ -1,0 +1,25 @@
+pkgbase = vivaldi
+	pkgdesc = A new browser for our friends
+	pkgver = 1.0.83.38
+	pkgrel = 1
+	url = https://vivaldi.com
+	install = vivaldi.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	options = !zipman
+	source = https://vivaldi.com/download/Vivaldi_TP_1.0.83.38-1_amd64.deb
+	sha256sums = 359eabcc4c9f089f87c43c24dc8d1d4218212642e953c073771a1d863f598906
+
+pkgname = vivaldi
+	depends = gtk2
+	depends = nss
+	depends = libxtst
+	depends = gconf
+	depends = libxss
+	depends = freetype2
+	depends = ttf-font
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	optdepends = ffmpeg: playback of not really open formats
+
