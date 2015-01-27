@@ -1,14 +1,13 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=spice-vdagent
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Spice agent xorg client that enables copy and paste between client and X-session and more"
 arch=('i686' 'x86_64')
 url="http://www.spice-space.org/"
 license=('GPL')
 depends=('libpciaccess' 'libxinerama' 'libxrandr' 'libxfixes' 'spice-protocol')
 optdepends=('dex: start spice-vdagent automatically on login')
-makedepends=('automake-1.13')
 source=("http://www.spice-space.org/download/releases/$pkgname-$pkgver.tar.bz2"
         'spice-vdagentd.conf.d')
 sha256sums=('5bae1747307c2f4195f6de97639391be7c6be6c5673fdcc9febed6faca22bd34'
@@ -29,6 +28,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  autoreconf -fi
   ./configure --prefix=/usr \
     --bindir=/usr/bin --sbindir=/usr/bin --sysconfdir=/etc \
     --localstatedir=/var --libdir=/usr/lib \
