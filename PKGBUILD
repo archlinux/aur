@@ -2,11 +2,25 @@
 
 pkgname=plasma-meta
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://www.archlinux.org/'
 license=('GPL')
-depends=('plasma-workspace' 'plasma-desktop' 'breeze' 'oxygen' 'milou'
-         'kio-extras' 'plasma-nm' 'khelpcenter' 'kdeplasma-addons-frameworks'
-         'bluedevil-frameworks' 'kde-gtk-config-frameworks' 'kscreen-frameworks'
-         'ksshaskpass' 'sddm-kcm' 'oxygen-cursors')
+depends=('bluedevil-frameworks'
+        'kde-gtk-config-frameworks'
+        'kdeplasma-addons-frameworks'
+        'khelpcenter'
+        'kinfocenter'
+        'kio-extras'
+        'ksysguard'
+        'kscreen-frameworks'
+        'ksshaskpass'
+        'kwrited'
+        'milou'
+        'oxygen'
+        'oxygen-cursors'
+        'plasma-desktop'
+        'plasma-nm'
+        'plasma-workspace-wallpapers'
+        'sddm-kcm'
+)
