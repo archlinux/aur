@@ -9,4 +9,4 @@ license=('GPL')
 depends=('plasma-workspace' 'plasma-desktop' 'breeze' 'oxygen' 'milou'
          'kio-extras' 'plasma-nm' 'khelpcenter' 'kdeplasma-addons-frameworks'
          'bluedevil-frameworks' 'kde-gtk-config-frameworks' 'kscreen-frameworks'
-         'ksshaskpass' 'sddm-kcm')
+         'ksshaskpass' 'sddm-kcm' 'oxygen-cursors')
