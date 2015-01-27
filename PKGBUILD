@@ -8,7 +8,8 @@ pkgdesc='KSysGuard'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/ksysguard'
 license=('LGPL')
-depends=('knewstuff' 'libksysguard' 'lm_sensors' 'xdg-utils' 'hicolor-icon-theme')
+depends=('knewstuff' 'libksysguard' 'lm_sensors' 'xdg-utils'
+         'hicolor-icon-theme' 'kdelibs4support')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
