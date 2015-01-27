@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.18
-pkgver=3.18.3
+pkgver=3.18.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,17 +20,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-drm-i915-Disallow-pin-ioctl-completely-for-kms-drive.patch'
         )
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '564eed0dfd7aadeec97566da6d09f8636b6335882139cf6d42e45381276bb2d0'
+            '57c74ba5266bb10be335a89d30480739b3de67b5a72b3e0b0d37a27775b1862a'
             'SKIP'
             'd3794c8b2cd11b71914b41f7a4e861369d4fa3c29fdd9e1d677ff0c2167eeb52'
             'df7886f5d57f8f85e89987066dfa5c316e922dc0b22e6e6ad01331333db52377'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '0bda45a3ef0f2780bbe588f2e53ab2b79814d29e9c6fc7bfff3b0dbdaa9e710d')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -46,9 +44,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # fix #43143
-  patch -p1 -i "${srcdir}/0001-drm-i915-Disallow-pin-ioctl-completely-for-kms-drive.patch"
   
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
