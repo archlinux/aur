@@ -20,9 +20,9 @@ package() {
 
 	tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
 
-    # soname fix for libsystemd (udev)
-    sed -e 's/libudev.so.0/libudev.so.1/g' \
-        -i "$pkgdir/opt/vivaldi/vivaldi-bin"
+	# soname fix for libsystemd (udev)
+	sed -e 's/libudev.so.0/libudev.so.1/g' \
+		-i "$pkgdir/opt/vivaldi/vivaldi-bin"
 
 	# suid sanbox
 	chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"

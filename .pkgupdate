@@ -1,1 +1,1 @@
-update_pkgver=$(curl -sS http://deb.opera.com/opera/dists/testing/non-free/binary-amd64/Packages.gz | gunzip | grep 'opera-beta.*deb' | sed -e 's/.*opera-beta_\(.*\)_.*/\1/')
+update_pkgver=$(curl -sS https://vivaldi.com/ | grep '[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+' | sed -e 's/.*\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/' | uniq)
