@@ -2,7 +2,7 @@
 
 pkgname=vivaldi
 pkgver=1.0.83.38
-pkgrel=1
+pkgrel=2
 pkgdesc='A new browser for our friends'
 url="https://vivaldi.com"
 install=${pkgname}.install
@@ -22,7 +22,7 @@ package() {
 
     # soname fix for libsystemd (udev)
     sed -e 's/libudev.so.0/libudev.so.1/g' \
-        -i "$pkgdir/opt/vivaldi/vivaldi"
+        -i "$pkgdir/opt/vivaldi/vivaldi-bin"
 
 	# suid sanbox
 	chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"

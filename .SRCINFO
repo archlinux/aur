@@ -1,7 +1,7 @@
 pkgbase = vivaldi
 	pkgdesc = A new browser for our friends
 	pkgver = 1.0.83.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	install = vivaldi.install
 	arch = x86_64
