@@ -21,7 +21,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-savu'
          'roccat-tools-tyon')
 pkgbase=roccat-tools
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ optdepends=('kmod-roccat: Adds support for the old kone device.')
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('ee6b0bfe6e59795f1f14d0c688c708f4')
+md5sums=('b241c5f32134d515e8f1d9315cf4b0a6')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
