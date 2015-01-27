@@ -1,15 +1,15 @@
 # Maintainer: Douglas Creager <dcreager@dcreager.net>
 pkgname=fdr
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Refinement checker for CSP"
 arch=('x86_64')
 url="https://www.cs.ox.ac.uk/projects/fdr/"
 license=('custom')
-source=("https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr3-linux-x86_64.tar.gz")
-md5sums=('191d2538a4f5287e7bae4ebe15d0cb01')
-sha1sums=('7cab897ea6612dce5e19497cddbf0ab573172fea')
-sha256sums=('a3646630cafa3c30630ee55c597b3c27ef346eb0d2eee6d2b2d10f1317adeef8')
+source=("https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr3-3236-linux-x86_64.tar.gz")
+md5sums=('1992fe4a357a0a0db3a8aba3f345a1ad')
+sha1sums=('fe603696365080e7c8ba77b0e4de5126b2f28878')
+sha256sums=('64440b16adf3f93fecdd3872f7cd6ea75febd53db1947b493e0952967bdf7865')
 
 package() {
   mkdir -p "${pkgdir}/opt"
