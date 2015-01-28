@@ -2,12 +2,13 @@
 
 pkgname=plasma-meta
 pkgver=5.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Meta package to install KDE Plasma'
 arch=('any')
 url='https://www.archlinux.org/'
 license=('GPL')
 depends=('bluedevil-frameworks'
+        'drkonqi'
         'kde-gtk-config-frameworks'
         'kdeplasma-addons-frameworks'
         'khelpcenter'
