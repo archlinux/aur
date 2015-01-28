@@ -1,6 +1,6 @@
 pkgbase = zdoom-git
 	pkgdesc = An enhanced Doom port with additional support for Heretic, Hexen and Strife (git version).
-	pkgver = 2.8pre.r636.g79d9a57
+	pkgver = 2.8pre.r1130.g72506fa
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = zdoom-git
 	depends = fmodex4.26.36
 	depends = gtk2
 	depends = gxmessage
-	depends = sdl
+	depends = sdl2
 	optdepends = blasphemer: Blasphemer (free Heretic) game data
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data

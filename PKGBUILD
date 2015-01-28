@@ -1,13 +1,13 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=zdoom-git
-pkgver=2.8pre.r636.g79d9a57
+pkgver=2.8pre.r1130.g72506fa
 pkgrel=1
 pkgdesc="An enhanced Doom port with additional support for Heretic, Hexen and Strife (git version)."
 arch=('i686' 'x86_64')
 url="http://www.zdoom.org/"
 license=('custom')
-depends=('fluidsynth' 'fmodex4.26.36' 'gtk2' 'gxmessage' 'sdl')
+depends=('fluidsynth' 'fmodex4.26.36' 'gtk2' 'gxmessage' 'sdl2')
 makedepends=('nasm' 'cmake' 'git' 'imagemagick')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
