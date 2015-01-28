@@ -1,0 +1,14 @@
+pkgbase = lightdm-webkit-theme-nebel
+	pkgdesc = A semitransparent LightDM greeter theme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CQQL/lightdm-webkit-theme-nebel
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = lightdm-webkit-greeter
+	source = lightdm-webkit-theme-nebel::git+https://github.com/CQQL/lightdm-webkit-theme-nebel.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit-theme-nebel
+

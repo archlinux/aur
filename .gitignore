@@ -1,0 +1,6 @@
+# Build artifacts
+src
+pkg
+*.tar.xz
+*.tar.gz
+lightdm-webkit-theme-nebel
