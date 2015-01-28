@@ -7,7 +7,7 @@
 _npmname=yo
 
 pkgname=nodejs-yeoman
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Command line interface for creating, building, maintaining, and shipping Yeoman projects."
 arch=(any)
@@ -24,4 +24,4 @@ package() {
 	rm -rf "$pkgdir"/usr/bin/{grunt,bower}
 }
 
-sha256sums=('58e59292e39d68142f5233827db212722950ab88c2c95f9477acd72d054d73d8')
+sha256sums=('44ecf5819b71aa63e480d91d84a7d080342cbf5fd334a1ccdc231e5a77154a4b')
