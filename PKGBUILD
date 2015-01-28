@@ -5,7 +5,7 @@
 # https://github.com/alerque/aur/tree/master/git-crypt-git
 
 pkgname=git-crypt
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Transparent file encryption in Git"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('git' 'openssl')
 provides=("{$pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/AGWA/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8825200a353ba9fe5f972c67e2ca4f1e7194cd3ad369ba14fddb1ba840dc2140')
+sha256sums=('82c90f1ad1eada67436a12660b10679ec0dc1a707298dd0feb97fea5c2226c51')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
