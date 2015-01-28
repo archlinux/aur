@@ -1,6 +1,6 @@
 pkgbase = gzdoom-git
 	pkgdesc = Doom source port based on ZDoom with an OpenGL renderer (git version).
-	pkgver = 1.9pre.r1026.g48da2f8
+	pkgver = 1.9pre.r1589.ga95edc3
 	pkgrel = 1
 	url = http://www.osnanet.de/c.oelckers/gzdoom/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = gzdoom-git
 	depends = glew
 	depends = gtk2
 	depends = gxmessage
-	depends = sdl
+	depends = sdl2
 	optdepends = blasphemer: Blasphemer (free Heretic) game data
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data

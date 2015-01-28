@@ -1,13 +1,13 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=1.9pre.r1026.g48da2f8
+pkgver=1.9pre.r1589.ga95edc3
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (git version)."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
 license=('custom')
-depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl')
+depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl2')
 makedepends=('nasm' 'cmake' 'git' 'imagemagick' 'mesa')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
