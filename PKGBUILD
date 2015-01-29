@@ -68,7 +68,6 @@ build() {
 		--enable-libbluray \
 		--enable-external-libraries \
 		--with-lirc-device=/run/lirc/lircd
-		#--enable-texturepacker \
 
 	# Now (finally) build
 	make
@@ -123,6 +122,7 @@ package_kodi-git() {
 
 package_kodi-eventclients-git() {
 	pkgdesc="Kodi Event Clients (master branch)"
+	conflicts=('kodi-eventclients')
 
 	depends=('cwiid')
 
@@ -130,7 +130,7 @@ package_kodi-eventclients-git() {
 
 	make DESTDIR="$pkgdir" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
 
-	install -dm755 "$pkgdir/usr/share/$pkgbase/eventclients"
-	mv "$pkgdir/kodi"/* "$pkgdir/usr/share/$pkgbase/eventclients"
+	install -dm755 "$pkgdir/usr/lib/python2.7/kodi"
+	mv "$pkgdir/kodi"/* "$pkgdir/usr/lib/python2.7/kodi"
 	rmdir "$pkgdir/kodi"
 }

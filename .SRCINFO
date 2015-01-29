@@ -107,4 +107,5 @@ pkgname = kodi-git
 pkgname = kodi-eventclients-git
 	pkgdesc = Kodi Event Clients (master branch)
 	depends = cwiid
+	conflicts = kodi-eventclients
 
