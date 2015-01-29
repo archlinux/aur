@@ -4,7 +4,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
-pkgver=3.17.0
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="IP Routing Utilities with SELinux support"
 arch=('i686' 'x86_64')
@@ -20,15 +20,16 @@ replaces=('iproute')
 options=('staticlibs' '!makeflags')
 backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_protos' \
 	'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
+#source=(git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git#tag=v$pkgver
 source=(http://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz
         iproute2-fhs.patch
-	unwanted-link-help.patch)
-sha1sums=('90de527b041fb2e909ee93e8c1d9c52fee55e88c'
+        unwanted-link-help.patch)
+sha1sums=('844676d882386bbe2ceafc1d08bc29f3f909d35e'
           '35b8cf2dc94b73eccad427235c07596146cd6f6c'
           '3b1335f4025f657f388fbf4e5a740871e3129c2a')
 
 prepare() {
-  cd $srcdir/${pkgname/-selinux}-$pkgver
+  cd "$srcdir/${pkgname/-selinux}-$pkgver"
 
   # set correct fhs structure
   patch -Np1 -i "$srcdir/iproute2-fhs.patch"
