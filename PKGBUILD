@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-3.18
-pkgver=3.18.2
+pkgver=3.18.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -26,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         )
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '927a30c152a193d22242de21b99c9765fb0086b0aa3fabd31938ffc6e1b3f37c'
+            '564eed0dfd7aadeec97566da6d09f8636b6335882139cf6d42e45381276bb2d0'
             'SKIP'
             '1c041a377ad790f109da22595ea1a9cf35d86e8a508f71ab16f7ba053349e678'
             '6d40ef42dc4b89fd1eb3656235bfb24d4f8fe16dd5fb6387c2b6240f4256f403'
