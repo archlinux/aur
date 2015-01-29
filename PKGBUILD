@@ -1,13 +1,13 @@
 # Maintainer: Ian D, Scott <ian@perebruin.com>
 pkgname=communitytags-git
-pkgver=r39.cf8b6b1
+pkgver=r61.a83fb00
 pkgrel=1
 pkgdesc="Community provided tags for packages."
 arch=('any')
 url="https://github.com/ids1024/archcommunitytags-tools"
 license=('GPL')
 makedepends=('git')
-depends=('python' 'pyalpm' 'python-pyparsing')
+depends=('python' 'pyalpm' 'python-pyparsing' 'git' 'rsync')
 source=('git://github.com/ids1024/archcommunitytags-tools.git')
 md5sums=('SKIP')
 _gitname="archcommunitytags-tools"

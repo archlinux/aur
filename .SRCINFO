@@ -1,6 +1,6 @@
 pkgbase = communitytags-git
 	pkgdesc = Community provided tags for packages.
-	pkgver = r39.cf8b6b1
+	pkgver = r61.a83fb00
 	pkgrel = 1
 	url = https://github.com/ids1024/archcommunitytags-tools
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = communitytags-git
 	depends = python
 	depends = pyalpm
 	depends = python-pyparsing
+	depends = git
+	depends = rsync
 	source = git://github.com/ids1024/archcommunitytags-tools.git
 	md5sums = SKIP
 
