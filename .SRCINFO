@@ -1,6 +1,6 @@
 pkgbase = libisds
 	pkgdesc = Client library for accessing SOAP services of ISDS (Data Box Information System)
-	pkgver = 0.9
+	pkgver = 0.10
 	pkgrel = 1
 	url = http://xpisar.wz.cz/libisds/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libisds
 	license = LGPL
 	depends = libxml2
 	depends = expat
-	source = http://xpisar.wz.cz/libisds/dist/libisds-0.9.tar.xz
-	md5sums = 541c30b92df7c3f4c309ef140921c88b
+	source = http://xpisar.wz.cz/libisds/dist/libisds-0.10.tar.xz
+	md5sums = 7969a3ce1c60828b7baee483097a1e9a
 
 pkgname = libisds
 
