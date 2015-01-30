@@ -1,0 +1,6 @@
+pkg
+src
+linux.install.pkg
+*.xz
+*.log
+*.part
