@@ -4,7 +4,7 @@
 
 pkgbase=django
 pkgname=('python-django' 'python2-django')
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
 arch=('any')
@@ -12,8 +12,8 @@ license=('BSD')
 url="http://www.djangoproject.com/"
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=("https://www.djangoproject.com/m/releases/${pkgver:0:3}/Django-$pkgver.tar.gz")
-md5sums=('ea9a3fe7eca2280b233938a98c4a35a0')
-sha256sums=('f226fb8aa438456968d403f6739de1cf2dad128db86f66ee2b41dfebe3645c5b')
+md5sums=('f8db10520f0268747d402a47a1a4b191')
+sha256sums=('f33255afbb9ee0977d9095ab0b50fde1f8ddff4220b57e8d19c6620b3e316170')
 
 prepare() {
   cp -a "$srcdir/Django-$pkgver" "$srcdir/Django-$pkgver-python2"
