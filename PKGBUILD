@@ -10,7 +10,7 @@
 
 pkgname=opera
 pkgver=27.0.1689.54
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and secure web browser and Internet suite."
 url="http://www.opera.com/"
 install=${pkgname}.install
@@ -23,6 +23,11 @@ source=(
 	"opera"
 	"default"
 )
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'gcc-libs' 'alsa-lib' 'nss' 'freetype2' 'ttf-font')
+optdepends=(
+	'curl: opera crash reporter and autoupdate checker'
+	'ffmpeg: playback of proprietary formats'
+)
 
 prepare() {
 	sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -31,17 +36,11 @@ prepare() {
 }
 
 package() {
-	depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'gcc-libs' 'alsa-lib' 'nss' 'freetype2' 'ttf-font')
-	optdepends=(
-		'curl: opera crash reporter and autoupdate checker'
-		'ffmpeg: playback of not really open formats'
-	)
-
 	tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
 
-    # soname fix for libsystemd (udev)
-    sed -e 's/libudev.so.0/libudev.so.1/g' \
-        -i "$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/$pkgname"
+	# soname fix for libsystemd (udev)
+	sed -e 's/libudev.so.0/libudev.so.1/g' \
+		-i "$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/$pkgname"
 
 	# suid opera_sandbox
 	chmod 4755 "$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/opera_sandbox"
