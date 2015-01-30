@@ -2,7 +2,7 @@
 pkgname=python-doit-git
 _pyname=doit
 _gitname=doit
-pkgver=0.26.0.r22.g6a945db
+pkgver=0.27.0.r0.g7af7f93
 pkgrel=1
 pkgdesc='Automation Tool (git version)'
 arch=('any')
