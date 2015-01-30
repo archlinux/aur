@@ -2,5 +2,6 @@ pkg
 src
 linux.install.pkg
 *.xz
+*.sign
 *.log
 *.part
