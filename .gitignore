@@ -3,5 +3,6 @@ src
 linux.install.pkg
 *.xz
 *.sign
+*.src.tar.gz
 *.log
 *.part
