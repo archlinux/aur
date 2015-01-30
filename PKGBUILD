@@ -1,5 +1,5 @@
 pkgname='gst-bt-git'
-pkgver=r57.fb2680d
+pkgver=r66.f1085b6
 pkgrel=1
 pkgdesc='GStreamer plug-in which provides BitTorrent sources'
 license='LGPL'
@@ -29,6 +29,6 @@ build () {
 
 package () {
 	cd "${srcdir}/${pkgname}"
-	install -Dm755 src/.libs/libgstbt.so.0.0.0 \
+	install -Dm755 src/.libs/libgstbt.so \
 		"${pkgdir}/usr/lib/gstreamer-1.0/libgstbt.so"
 }

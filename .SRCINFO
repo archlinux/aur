@@ -1,6 +1,6 @@
 pkgbase = gst-bt-git
 	pkgdesc = GStreamer plug-in which provides BitTorrent sources
-	pkgver = r57.fb2680d
+	pkgver = r66.f1085b6
 	pkgrel = 1
 	url = https://github.com/turran/gst-bt
 	arch = i686
