@@ -1,0 +1,156 @@
+diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_dma.c linux-3.17/drivers/gpu/drm/i915/i915_dma.c
+--- linux-3.17.old/drivers/gpu/drm/i915/i915_dma.c	2014-10-05 17:23:04.000000000 -0200
++++ linux-3.17/drivers/gpu/drm/i915/i915_dma.c	2014-10-08 13:25:35.261920170 -0200
+@@ -1316,10 +1316,20 @@ static int i915_load_modeset_init(struct
+ 	 * If we are a secondary display controller (!PCI_DISPLAY_CLASS_VGA),
+ 	 * then we do not take part in VGA arbitration and the
+ 	 * vga_client_register() fails with -ENODEV.
++	 *
++	 * NB.  The set_decode callback here actually only works on GMCH
++	 * devices, on newer HD devices we can only disable VGA MMIO space.
++	 * Disabling VGA I/O space requires disabling I/O in the PCI command
++	 * register.  Nonetheless, we like to pretend that we participate in
++	 * VGA arbitration and can dynamically disable VGA I/O space because
++	 * this makes X happy, even though it's a complete lie.
+ 	 */
+-	ret = vga_client_register(dev->pdev, dev, NULL, i915_vga_set_decode);
+-	if (ret && ret != -ENODEV)
+-		goto out;
++	if (!i915.enable_hd_vgaarb || !HAS_PCH_SPLIT(dev)) {
++		ret = vga_client_register(dev->pdev, dev, NULL,
++					  i915_vga_set_decode);
++		if (ret && ret != -ENODEV)
++			goto out;
++	}
+ 
+ 	intel_register_dsm_handler();
+ 
+@@ -1369,6 +1379,12 @@ static int i915_load_modeset_init(struct
+ 	if (ret)
+ 		goto cleanup_gem;
+ 
++	/*
++	 * Must do this after fbcon init so that
++	 * vgacon_save_screen() works during the handover.
++	 */
++	i915_disable_vga_mem(dev);
++
+ 	/* Only enable hotplug handling once the fbdev is fully set up. */
+ 	intel_hpd_init(dev);
+ 
+diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_drv.h linux-3.17/drivers/gpu/drm/i915/i915_drv.h
+--- linux-3.17.old/drivers/gpu/drm/i915/i915_drv.h	2014-10-05 17:23:04.000000000 -0200
++++ linux-3.17/drivers/gpu/drm/i915/i915_drv.h	2014-10-08 13:26:45.200867353 -0200
+@@ -2147,6 +2147,7 @@ struct i915_params {
+ 	bool reset;
+ 	bool disable_display;
+ 	bool disable_vtd_wa;
++	bool enable_hd_vgaarb;
+ 	int use_mmio_flip;
+ 	bool mmio_debug;
+ };
+diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_params.c linux-3.17/drivers/gpu/drm/i915/i915_params.c
+--- linux-3.17.old/drivers/gpu/drm/i915/i915_params.c	2014-10-05 17:23:04.000000000 -0200
++++ linux-3.17/drivers/gpu/drm/i915/i915_params.c	2014-10-08 13:28:08.960803683 -0200
+@@ -48,6 +48,7 @@ struct i915_params i915 __read_mostly =
+ 	.disable_display = 0,
+ 	.enable_cmd_parser = 1,
+ 	.disable_vtd_wa = 0,
++	.enable_hd_vgaarb = false,
+ 	.use_mmio_flip = 0,
+ 	.mmio_debug = 0,
+ };
+@@ -159,6 +160,10 @@ module_param_named(enable_cmd_parser, i9
+ MODULE_PARM_DESC(enable_cmd_parser,
+ 		 "Enable command parsing (1=enabled [default], 0=disabled)");
+ 
++module_param_named(enable_hd_vgaarb, i915.enable_hd_vgaarb, bool, 0444);
++MODULE_PARM_DESC(enable_hd_vgaarb,
++	"Enable support for VGA arbitration on Intel HD IGD. (default: false)");
++
+ module_param_named(use_mmio_flip, i915.use_mmio_flip, int, 0600);
+ MODULE_PARM_DESC(use_mmio_flip,
+ 		 "use MMIO flips (-1=never, 0=driver discretion [default], 1=always)");
+diff -rupN linux-3.17.old/drivers/gpu/drm/i915/intel_display.c linux-3.17/drivers/gpu/drm/i915/intel_display.c
+--- linux-3.17.old/drivers/gpu/drm/i915/intel_display.c	2014-10-05 17:23:04.000000000 -0200
++++ linux-3.17/drivers/gpu/drm/i915/intel_display.c	2014-10-08 13:25:35.416920053 -0200
+@@ -12554,6 +12554,33 @@ static void i915_disable_vga(struct drm_
+ 	POSTING_READ(vga_reg);
+ }
+ 
++static void i915_enable_vga_mem(struct drm_device *dev)
++{
++	/* Enable VGA memory on Intel HD */
++	if (i915.enable_hd_vgaarb && HAS_PCH_SPLIT(dev)) {
++		vga_get_uninterruptible(dev->pdev, VGA_RSRC_LEGACY_IO);
++		outb(inb(VGA_MSR_READ) | VGA_MSR_MEM_EN, VGA_MSR_WRITE);
++		vga_set_legacy_decoding(dev->pdev, VGA_RSRC_LEGACY_IO |
++						   VGA_RSRC_LEGACY_MEM |
++						   VGA_RSRC_NORMAL_IO |
++						   VGA_RSRC_NORMAL_MEM);
++		vga_put(dev->pdev, VGA_RSRC_LEGACY_IO);
++	}
++}
++
++void i915_disable_vga_mem(struct drm_device *dev)
++{
++	/* Disable VGA memory on Intel HD */
++	if (i915.enable_hd_vgaarb && HAS_PCH_SPLIT(dev)) {
++		vga_get_uninterruptible(dev->pdev, VGA_RSRC_LEGACY_IO);
++		outb(inb(VGA_MSR_READ) & ~VGA_MSR_MEM_EN, VGA_MSR_WRITE);
++		vga_set_legacy_decoding(dev->pdev, VGA_RSRC_LEGACY_IO |
++						   VGA_RSRC_NORMAL_IO |
++						   VGA_RSRC_NORMAL_MEM);
++		vga_put(dev->pdev, VGA_RSRC_LEGACY_IO);
++	}
++}
++
+ void intel_modeset_init_hw(struct drm_device *dev)
+ {
+ 	intel_prepare_ddi(dev);
+@@ -12891,6 +12918,7 @@ void i915_redisable_vga_power_on(struct
+ 	if (!(I915_READ(vga_reg) & VGA_DISP_DISABLE)) {
+ 		DRM_DEBUG_KMS("Something enabled VGA plane, disabling it\n");
+ 		i915_disable_vga(dev);
++		i915_disable_vga_mem(dev);
+ 	}
+ }
+ 
+@@ -13144,6 +13172,8 @@ void intel_modeset_cleanup(struct drm_de
+ 
+ 	intel_disable_fbc(dev);
+ 
++	i915_enable_vga_mem(dev);
++
+ 	intel_disable_gt_powersave(dev);
+ 
+ 	ironlake_teardown_rc6(dev);
+diff -rupN linux-3.17.old/drivers/gpu/drm/i915/intel_drv.h linux-3.17/drivers/gpu/drm/i915/intel_drv.h
+--- linux-3.17.old/drivers/gpu/drm/i915/intel_drv.h	2014-10-05 17:23:04.000000000 -0200
++++ linux-3.17/drivers/gpu/drm/i915/intel_drv.h	2014-10-08 13:25:35.416920053 -0200
+@@ -1102,4 +1102,6 @@ int intel_sprite_get_colorkey(struct drm
+ /* intel_tv.c */
+ void intel_tv_init(struct drm_device *dev);
+ 
++extern void i915_disable_vga_mem(struct drm_device *dev);
++
+ #endif /* __INTEL_DRV_H__ */
+diff -rupN linux-3.17.old/include/linux/vgaarb.h linux-3.17/include/linux/vgaarb.h
+--- linux-3.17.old/include/linux/vgaarb.h	2014-10-05 17:23:04.000000000 -0200
++++ linux-3.17/include/linux/vgaarb.h	2014-10-08 13:25:35.426920046 -0200
+@@ -65,8 +65,15 @@ struct pci_dev;
+  *     out of the arbitration process (and can be safe to take
+  *     interrupts at any time.
+  */
++#if defined(CONFIG_VGA_ARB)
+ extern void vga_set_legacy_decoding(struct pci_dev *pdev,
+ 				    unsigned int decodes);
++#else
++static inline void vga_set_legacy_decoding(struct pci_dev *pdev,
++					   unsigned int decodes)
++{
++}
++#endif
+ 
+ /**
+  *     vga_get         - acquire & locks VGA resources

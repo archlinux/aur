@@ -1,0 +1,147 @@
+diff -rupN linux-3.15.old/Documentation/kernel-parameters.txt linux-3.15/Documentation/kernel-parameters.txt
+--- linux-3.15.old/Documentation/kernel-parameters.txt	2014-06-08 15:19:54.000000000 -0300
++++ linux-3.15/Documentation/kernel-parameters.txt	2014-06-09 18:05:31.744055580 -0300
+@@ -2554,6 +2554,16 @@ bytes respectively. Such letter suffixes
+ 		nomsi	Do not use MSI for native PCIe PME signaling (this makes
+ 			all PCIe root ports use INTx for all services).
+ 
++	pcie_acs_override =
++			[PCIE] Override missing PCIe ACS support for:
++		downstream
++			All downstream ports - full ACS capabilties
++		multifunction
++			All multifunction devices - multifunction ACS subset
++		id:nnnn:nnnn
++			Specfic device - full ACS capabilities
++			Specified as vid:did (vendor/device ID) in hex
++
+ 	pcmv=		[HW,PCMCIA] BadgePAD 4
+ 
+ 	pd_ignore_unused
+diff -rupN linux-3.15.old/drivers/pci/quirks.c linux-3.15/drivers/pci/quirks.c
+--- linux-3.15.old/drivers/pci/quirks.c	2014-06-08 15:19:54.000000000 -0300
++++ linux-3.15/drivers/pci/quirks.c	2014-06-09 18:06:36.688743183 -0300
+@@ -3384,6 +3384,107 @@ struct pci_dev *pci_get_dma_source(struc
+ 	return pci_dev_get(dev);
+ }
+ 
++static bool acs_on_downstream;
++static bool acs_on_multifunction;
++
++#define NUM_ACS_IDS 16
++struct acs_on_id {
++	unsigned short vendor;
++	unsigned short device;
++};
++static struct acs_on_id acs_on_ids[NUM_ACS_IDS];
++static u8 max_acs_id;
++
++static __init int pcie_acs_override_setup(char *p)
++{
++	if (!p)
++		return -EINVAL;
++
++	while (*p) {
++		if (!strncmp(p, "downstream", 10))
++			acs_on_downstream = true;
++		if (!strncmp(p, "multifunction", 13))
++			acs_on_multifunction = true;
++		if (!strncmp(p, "id:", 3)) {
++			char opt[5];
++			int ret;
++			long val;
++
++			if (max_acs_id >= NUM_ACS_IDS - 1) {
++				pr_warn("Out of PCIe ACS override slots (%d)\n",
++					NUM_ACS_IDS);
++				goto next;
++			}
++
++			p += 3;
++			snprintf(opt, 5, "%s", p);
++			ret = kstrtol(opt, 16, &val);
++			if (ret) {
++				pr_warn("PCIe ACS ID parse error %d\n", ret);
++				goto next;
++			}
++			acs_on_ids[max_acs_id].vendor = val;
++
++			p += strcspn(p, ":");
++			if (*p != ':') {
++				pr_warn("PCIe ACS invalid ID\n");
++				goto next;
++			}
++
++			p++;
++			snprintf(opt, 5, "%s", p);
++			ret = kstrtol(opt, 16, &val);
++			if (ret) {
++				pr_warn("PCIe ACS ID parse error %d\n", ret);
++				goto next;
++			}
++			acs_on_ids[max_acs_id].device = val;
++			max_acs_id++;
++		}
++next:
++		p += strcspn(p, ",");
++		if (*p == ',')
++			p++;
++	}
++
++	if (acs_on_downstream || acs_on_multifunction || max_acs_id)
++		pr_warn("Warning: PCIe ACS overrides enabled; This may allow non-IOMMU protected peer-to-peer DMA\n");
++
++	return 0;
++}
++early_param("pcie_acs_override", pcie_acs_override_setup);
++
++static int pcie_acs_overrides(struct pci_dev *dev, u16 acs_flags)
++{
++	int i;
++
++	/* Never override ACS for legacy devices or devices with ACS caps */
++	if (!pci_is_pcie(dev) ||
++	    pci_find_ext_capability(dev, PCI_EXT_CAP_ID_ACS))
++		return -ENOTTY;
++
++	for (i = 0; i < max_acs_id; i++)
++		if (acs_on_ids[i].vendor == dev->vendor &&
++		    acs_on_ids[i].device == dev->device)
++			return 1;
++
++	switch (pci_pcie_type(dev)) {
++	case PCI_EXP_TYPE_DOWNSTREAM:
++	case PCI_EXP_TYPE_ROOT_PORT:
++		if (acs_on_downstream)
++			return 1;
++		break;
++	case PCI_EXP_TYPE_ENDPOINT:
++	case PCI_EXP_TYPE_UPSTREAM:
++	case PCI_EXP_TYPE_LEG_END:
++	case PCI_EXP_TYPE_RC_END:
++		if (acs_on_multifunction && dev->multifunction)
++			return 1;
++	}
++
++	return -ENOTTY;
++}
++
+ /*
+  * AMD has indicated that the devices below do not support peer-to-peer
+  * in any system where they are found in the southbridge with an AMD
+@@ -3483,6 +3584,7 @@ static int pci_quirk_intel_pch_acs(struc
+ 	return acs_flags & ~flags ? 0 : 1;
+ }
+ 
++
+ static const struct pci_dev_acs_enabled {
+ 	u16 vendor;
+ 	u16 device;
+@@ -3495,6 +3597,7 @@ static const struct pci_dev_acs_enabled
+ 	{ PCI_VENDOR_ID_ATI, 0x4384, pci_quirk_amd_sb_acs },
+ 	{ PCI_VENDOR_ID_ATI, 0x4399, pci_quirk_amd_sb_acs },
+ 	{ PCI_VENDOR_ID_INTEL, PCI_ANY_ID, pci_quirk_intel_pch_acs },
++	{ PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
+ 	{ 0 }
+ };
+ 
