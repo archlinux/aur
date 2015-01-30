@@ -97,7 +97,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The Linux kernel and modules with patches to enable GPU passthrough with KVM"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')

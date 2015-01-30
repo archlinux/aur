@@ -33,7 +33,7 @@ pkgbase = linux-vfio
 	sha256sums = f86ce528b63f198b84c4d8d92d35329aa4000d462217dc2db03bac5eb693cf19
 
 pkgname = linux-vfio
-	pkgdesc = The Linux-vfio kernel and modules
+	pkgdesc = The Linux kernel and modules with patches to enable GPU passthrough with KVM
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
