@@ -1,0 +1,14 @@
+pkgbase = snowcrash
+	pkgdesc = API Blueprint Parser
+	pkgver = 0.16.1.r28.gd4b6e17
+	pkgrel = 1
+	url = https://github.com/apiaryio/snowcrash
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/apiaryio/snowcrash
+	md5sums = SKIP
+
+pkgname = snowcrash
+
