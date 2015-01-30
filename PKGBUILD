@@ -1,13 +1,13 @@
 pkgname=spim-svn
 pkgver=643
-pkgrel=2
+pkgrel=3
 pkgdesc="A MIPS32 simulator (SVN version)"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/spimsimulator/"
 license=('custom:BSD')
 groups=('emulators')
 depends=('glibc')
-makedepends=('bison' 'flex' 'subversion')
+makedepends=('subversion')
 conflicts=('spim')
 provides=('spim')
 
