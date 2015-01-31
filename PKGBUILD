@@ -4,7 +4,7 @@
 
 pkgbase=https-everywhere
 pkgname=${pkgbase}-chrome-git
-pkgver=28176.1c311f0
+pkgver=33290.b7098f8
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
