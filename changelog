@@ -1,3 +1,18 @@
+manpages-fr-extra (20150130) unstable; urgency=medium
+
+  [ David Prévot ]
+  * dosfstools: Sync with 3.0.27-1
+  * findutils: tfix (Closes: #776405)
+  * glibc: Sync with 2.19-13
+  * openssl: Sync with 1.0.1k-1
+  * sysvinit: Sync with 2.88dsf-58
+  * util-linux: Sync with 2.25.2-4.1
+
+  [ Vincent Danjean ]
+  * bash: tfix (Closes: #690883)
+
+ -- David Prévot <taffit@debian.org>  Fri, 30 Jan 2015 16:47:59 -0400
+
 manpages-fr-extra (20141109) unstable; urgency=medium
 
   [ David Prévot ]
