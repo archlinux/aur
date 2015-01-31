@@ -1,15 +1,15 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=pep257
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="PEP 257 docstring style checker."
 arch=(any)
 url="https://github.com/GreenSteam/pep257"
 license=('MIT')
 depends=('python')
 source=("https://github.com/GreenSteam/pep257/archive/${pkgver}.tar.gz")
-sha1sums=('363975b48588604e206204e9b41e305029b0f214')
+sha1sums=('bc3142073b2ad99401488302e3ddd9dcfd73ffb1')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
