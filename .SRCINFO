@@ -1,14 +1,16 @@
 pkgbase = python-slugify
 	pkgdesc = A Python slugify application that handles unicode
-	pkgver = 0.0.7
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/un33k/python-slugify
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-unidecode>=0.04.12
-	source = http://pypi.python.org/packages/source/p/python-slugify/python-slugify-0.0.7.tar.gz
-	md5sums = dd9bc613a69a5cab7f18ae1c44848813
+	depends = python
+	depends = python-unidecode>=0.04.16
+	source = http://pypi.python.org/packages/source/p/python-slugify/python-slugify-0.1.0.tar.gz
+	md5sums = bba3b03b746a37625a36bd4987df6009
+	sha256sums = fc0613723a51ae2b6bf69bcf3d214555b1855314a5ef3c79f959c8663695fb56
 
 pkgname = python-slugify
 
