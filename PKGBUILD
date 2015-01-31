@@ -2,7 +2,7 @@
 # Contributor: Mark Pustjens <pustjens@dds.nl>
 
 pkgname=prospector
-pkgver=R195
+pkgver=R197
 pkgrel=1
 pkgdesc="A roguelike in space."
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ makedepends=("unzip")
 source=("http://www.prospector.at/forum/dm_eds/files/linux/${pkgver}prospector_l.zip"
         "prospector.sh")
 noextract=("${pkgver}prospector_linux.zip")
-md5sums=("4d39fd73aaf5c20b60cb85db44ede110"
+md5sums=("acfc8b25d2169e861377517848e28b8f"
          "c94de740aafaca4e77d06d91717fec06")
 
 package() {
