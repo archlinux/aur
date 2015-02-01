@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=simbody
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance C++ multibody dynamics/physics library for simulating articulated biomechanical and mechanical systems like vehicles, robots, and the human skeleton."
 arch=('i686' 'x86_64')
 url="https://simtk.org/home/simbody"
@@ -27,7 +27,7 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib
+        -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
