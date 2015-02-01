@@ -27,13 +27,11 @@ options=('!strip')
 source=("git+https://github.com/dotcloud/docker.git"
         'docker.service'
         'docker.install'
-        docker-nocheck.patch
         docker.conf
         )
 md5sums=('SKIP'
          '3f7ccab915fb1942f06e18946c2811d2'
          '1a8e60447794b3c4f87a2272cc9f144f'
-         '8fc5afb025dcaa716c181307b3be444e'
          '9bce988683771fb8262197f2d8196202')
 install='docker.install'
 # magic harcoded path
@@ -50,7 +48,6 @@ prepare() {
   #ln -sfn "../../../docker" "$_magic/docker"
   #cd "$_magic/docker"
   cd docker
-  [ $arch = i686 ] && patch -p1 -i $srcdir/docker-nocheck.patch
 }
 
 build() {
