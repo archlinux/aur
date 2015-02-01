@@ -4,7 +4,7 @@ url='http://libccd.danfis.cz/'
 pkgname=libccd
 pkgver=2.0
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=3
 license=('BSD')
 makedepends=('cmake')
 depends=()
@@ -21,6 +21,7 @@ build() {
 
   cmake ${srcdir}/${_dir} \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release
 
   make
