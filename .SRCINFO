@@ -1,0 +1,26 @@
+pkgbase = asciiworld-git
+	pkgdesc = ASCII world map and tools
+	pkgver = 15.02
+	pkgrel = 1
+	url = https://github.com/vain/asciiworld
+	arch = i686
+	arch = x86_64
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = gd
+	depends = shapelib
+	optdepends = curl: Retrieving various data
+	optdepends = python: Additional tools, e.g. satellite tracking
+	optdepends = python-pyephem: Calculating satellite positions
+	optdepends = python-pygeoip: Reading GeoIP databases
+	optdepends = geoip-citydata: An actual GeoIP database
+	optdepends = python2: Additional tools, e.g. calculating tracks
+	optdepends = python2-geographiclib: Calculating geodetics
+	optdepends = ncurses: For tput
+	provides = asciiworld
+	conflicts = asciiworld
+	source = git://github.com/vain/asciiworld.git
+	md5sums = SKIP
+
+pkgname = asciiworld-git
+
