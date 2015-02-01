@@ -1,6 +1,6 @@
 pkgname=sdformat
 pkgver=2.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -18,7 +18,8 @@ build() {
   mkdir -p build && cd build
 
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX=/usr
+           -DCMAKE_INSTALL_PREFIX=/usr \
+           -DCMAKE_INSTALL_LIBDIR=lib
 
   make
 }
