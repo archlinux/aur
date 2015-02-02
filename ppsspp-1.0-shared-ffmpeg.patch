@@ -1,7 +1,8 @@
-diff -urN ppsspp-0.9.9/CMakeLists.txt ppsspp-0.9.9-patched/CMakeLists.txt
---- ppsspp-0.9.9/CMakeLists.txt	2014-07-23 01:14:59.000000000 +1100
-+++ ppsspp-0.9.9-patched/CMakeLists.txt	2014-07-23 18:38:20.695717128 +1100
-@@ -374,138 +374,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a1a2543..4d19fa4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -394,145 +394,20 @@ add_library(stb_vorbis STATIC
  	native/ext/stb_vorbis/stb_vorbis.h)
  include_directories(native/ext/stb_vorbis)
  
@@ -21,7 +22,13 @@ diff -urN ppsspp-0.9.9/CMakeLists.txt ppsspp-0.9.9-patched/CMakeLists.txt
 -	elseif(MACOSX)
 -		set(PLATFORM_ARCH "macosx/x86_64")
 -	elseif(LINUX)
--		if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+-		if(ARMV7)
+-			set(PLATFORM_ARCH "linux/armv7")
+-		elseif(ARM)
+-			set(PLATFORM_ARCH "linux/arm")
+-		elseif(MIPS)
+-			set(PLATFORM_ARCH "linux/mips32")
+-		elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
 -			set(PLATFORM_ARCH "linux/x86_64")
 -		else()
 -			set(PLATFORM_ARCH "linux/x86")
@@ -90,8 +97,9 @@ diff -urN ppsspp-0.9.9/CMakeLists.txt ppsspp-0.9.9-patched/CMakeLists.txt
 -		)
 -	endif()
 -
--	if(APPLE OR BLACKBERRY)
--		set(FFMPEG_LIBRARIES ${FFMPEG_LIBRARIES} iconv)
+-	find_library(ICONV_LIBRARY NAMES iconv)
+-	if (ICONV_LIBRARY)
+-		set(FFMPEG_LIBRARIES ${FFMPEG_LIBRARIES} ${ICONV_LIBRARY})
 -	endif()
 -
 -	if(APPLE)
@@ -100,8 +108,6 @@ diff -urN ppsspp-0.9.9/CMakeLists.txt ppsspp-0.9.9-patched/CMakeLists.txt
 -			set(FFMPEG_LIBRARIES ${FFMPEG_LIBRARIES} "-framework VideoDecodeAcceleration")
 -		endif()
 -	endif(APPLE)
--
--	set(LinkCommon ${LinkCommon} ${FFMPEG_LIBRARIES})
 +	SET (FFMPEG_LIBRARIES
 +		avformat
 +		avcodec
@@ -109,6 +115,8 @@ diff -urN ppsspp-0.9.9/CMakeLists.txt ppsspp-0.9.9-patched/CMakeLists.txt
 +		swresample
 +		swscale
 +	)
+ 
+-	set(LinkCommon ${LinkCommon} ${FFMPEG_LIBRARIES})
 +	set(nativeExtraLibs ${nativeExtraLibs} ${FFMPEG_LIBRARIES})
 +	target_link_libraries(Common ${FFMPEG_LIBRARIES})
  	add_definitions(-DUSE_FFMPEG)
@@ -149,23 +157,18 @@ diff -urN ppsspp-0.9.9/CMakeLists.txt ppsspp-0.9.9-patched/CMakeLists.txt
  find_package(ZLIB)
  if(ZLIB_FOUND)
  	include_directories(${ZLIB_INCLUDE_DIR})
-diff -urN ppsspp-0.9.9/Core/HW/MediaEngine.h ppsspp-0.9.9-patched/Core/HW/MediaEngine.h
---- ppsspp-0.9.9/Core/HW/MediaEngine.h	2014-07-23 01:14:59.000000000 +1100
-+++ ppsspp-0.9.9-patched/Core/HW/MediaEngine.h	2014-07-23 18:36:01.267334510 +1100
-@@ -34,9 +34,20 @@
+diff --git a/Core/HW/MediaEngine.h b/Core/HW/MediaEngine.h
+index c384faf..d38993d 100644
+--- a/Core/HW/MediaEngine.h
++++ b/Core/HW/MediaEngine.h
+@@ -34,9 +34,14 @@ class PointerWrap;
  class SimpleAudio;
  
  #ifdef USE_FFMPEG
 +extern "C" {
 +#include <libavformat/avformat.h>
++#include <libavutil/old_pix_fmts.h>
 +}
-+#ifndef AVPixelFormat
-+#define AVPixelFormat PixelFormat
-+#define AV_PIX_FMT_BGR565LE PIX_FMT_BGR565LE
-+#define AV_PIX_FMT_BGR555LE PIX_FMT_BGR555LE
-+#define AV_PIX_FMT_BGR444LE PIX_FMT_BGR444LE
-+#define AV_PIX_FMT_RGBA PIX_FMT_RGBA
-+#endif
 +
  struct SwsContext;
  struct AVFrame;
@@ -174,3 +177,4 @@ diff -urN ppsspp-0.9.9/Core/HW/MediaEngine.h ppsspp-0.9.9-patched/Core/HW/MediaE
  struct AVFormatContext;
  struct AVCodecContext;
  #endif
+
