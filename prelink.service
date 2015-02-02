@@ -1,0 +1,6 @@
+[Unit]
+Description=Update prelinking
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/prelink --all --conserve-memory --random

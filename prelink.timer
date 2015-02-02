@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily prelinking updates
+
+[Timer]
+OnCalendar=daily
+AccuracySec=2h
+Persistent=true
