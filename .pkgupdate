@@ -1,0 +1,1 @@
+update_pkgver=$(curl -sS https://vivaldi.com/snapshots/linux-deb.html | grep '[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+' | sed -e 's/.*\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/' | uniq)
