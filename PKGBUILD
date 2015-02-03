@@ -3,7 +3,7 @@
 
 pkgname=cmake
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -13,8 +13,15 @@ makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 install="${pkgname}.install"
-source=("http://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0ae4f25dbec66697c0c3cec1b9e885ae')
+source=("http://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
+        'fix-openssl.patch')
+md5sums=('0ae4f25dbec66697c0c3cec1b9e885ae'
+         '6e7853ca9d495a06615cb8049d4434ee')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch -p1 -i "${srcdir}"/fix-openssl.patch
+}
 
 build() {
   cd ${pkgname}-${pkgver}
