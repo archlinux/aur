@@ -1,15 +1,15 @@
-# Contributor: Doug Newgard <scimmia22 at outlook dot com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: fancris3 <fancris3 at aol.com>
 
 _pkgname=places
 pkgname=$_pkgname-git
-pkgver=0.19.r183.6d6a3ba
+pkgver=0.20.r212.90b79a4
 pkgrel=1
-pkgdesc="Enlightenment module: Manage the mounting of volumes"
+pkgdesc='Enlightenment module: Manage the mounting of volumes'
 arch=('i686' 'x86_64')
-url="https://phab.enlightenment.org/w/emodules/places/"
+url='https://phab.enlightenment.org/w/emodules/places/'
 license=('MIT')
-depends=('enlightenment>=0.18.99' 'udisks')
+depends=('enlightenment>=0.19.99' 'udisks')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -40,11 +40,10 @@ package() {
   make DESTDIR="$pkgdir" install
 
 # install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 NEWS "$pkgdir/usr/share/doc/$_pkgname/NEWS"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -d "$pkgdir/usr/share/doc/$_pkgname/"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
 
 # install license files
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
