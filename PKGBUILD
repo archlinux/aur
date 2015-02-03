@@ -3,7 +3,7 @@
 # vim: set ts=2 sts=2 et ft=sh tw=79:
 
 pkgname='poppler-minimal'
-pkgver=0.26.5
+pkgver=0.30.0
 pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
@@ -38,3 +38,4 @@ package() {
   cd "${srcdir}/poppler-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
+sha1sums=('6040e46b5f27e2562227232ba956c815cc2878e2')
