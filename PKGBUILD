@@ -5,7 +5,7 @@
 # Contributor: Axper Jan <483ken at gmail dot com>
 
 pkgname=sdl2-hg
-pkgver=2.0.3.r72.0eed6a72e3c1
+pkgver=2.0.3.r706.e29fec41a2c6
 pkgrel=1
 pkgdesc="A library for portable low-level access to video, audio and input (development version)"
 arch=('i686' 'x86_64')
@@ -37,7 +37,8 @@ build() {
   cd build
 
   cmake ../sdl2 -DCMAKE_INSTALL_PREFIX=/usr -DARTS=OFF -DNAS=OFF -DESD=OFF \
-                -DSDL_STATIC=OFF -DRPATH=OFF -DVIDEO_WAYLAND=OFF
+                -DSDL_SHARED=ON -DSDL_DLOPEN=ON -DSDL_STATIC=OFF -DRPATH=OFF \
+                -DVIDEO_WAYLAND=OFF
   make
 }
 
