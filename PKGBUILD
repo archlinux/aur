@@ -9,7 +9,7 @@ arch=('any')
 url="http://www.archlinux.org/"
 license=('CCPL:cc-by-sa')
 optdepends=('slim: login manager providing theme support')
-source=(ftp://ftp.archlinux.org/other/packages/artwork/${pkgname}-${pkgver}.tar.gz)
+source=(https://sources.archlinux.org/other/packages/artwork/${pkgname}-${pkgver}.tar.gz)
 md5sums=('f9b7c231ec26c93fc89ecadfa2d0e250')
 
 package() {
