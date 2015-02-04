@@ -9,8 +9,8 @@ license=('GPL' 'LGPL')
 depends=('gtk2>=2.22.0')
 makedepends=('pkg-config' 'intltool')
 url="http://live.gnome.org/GnomeArt"
-source=(ftp://ftp.archlinux.org/other/gtk-engines/${pkgname}-${pkgver}.tar.gz
-        ftp://ftp.archlinux.org/other/gtk-engines/${pkgname}-${pkgver}.tar.gz.sig)
+source=(https://sources.archlinux.org/other/gtk-engines/${pkgname}-${pkgver}.tar.gz
+        https://sources.archlinux.org/other/gtk-engines/${pkgname}-${pkgver}.tar.gz.sig)
 conflicts=('lighthouse-gtk2' 'clearlooks-gtk2')
 replaces=('lighthouse-gtk2')
 md5sums=('d82ae66d6eb045d83c30b78b13818d41'
