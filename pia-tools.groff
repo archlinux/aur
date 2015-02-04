@@ -2,7 +2,7 @@
 .\" Contact philipp@schmitt.co to correct errors or typos.
 .TH pia-tools 8 "26 November 2013" "1.0" "pia-tools man page"
 .SH NAME
-pia-tools \- OpenVPN hook for privateinternetaccess.com 
+pia-tools \- OpenVPN hook for privateinternetaccess.com
 .SH SYNOPSIS
 pia-tools [\fIOPTIONS\fR]
 .SH DESCRIPTION
