@@ -11,7 +11,7 @@ url="https://github.com/GNOME/gtkimageview"
 license=('LGPL2.1')
 depends=('gtk2')
 makedepends=('pkg-config')
-source=("ftp://ftp.archlinux.org/other/packages/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://sources.archlinux.org/other/packages/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('501367b3f50e69a12208dc9c6ad00b18')
 
 build() {
