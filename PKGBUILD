@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=python-apt
 _python=python
-pkgver=0.9.3.8
+pkgver=0.9.3.11
 pkgrel=1
 pkgdesc="Python binding of libapt-pkg"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=()
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/p/$pkgname/${pkgname}_$pkgver.tar.xz
 fix-pydebug.patch)
-sha256sums=('9997c64dbd60bd01738a4d1ecccf0d950e059d424a6c7f95dc09b9a9c424faff'
+sha256sums=('33d9fd106f0f2bbcdf49711a198d196bf6624ed335eec856c278ff73ca2e5fc9'
             '8a652b45fc4cdb27d672c355858813678908a8b6ab6a8dde8b843193eb960646')
 
 build() {
