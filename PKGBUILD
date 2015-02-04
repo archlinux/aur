@@ -16,7 +16,7 @@ source=('https://raw.github.com/pschmitt/pia-tools/master/pia-tools'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-down'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools.install')
 sha256sums=('a37d8f90c6b6b5a83102adfc618996d5fce4a56cbae3e6fd32b87998df981465'
-            'c944b14543aceaa8210d8971c9080e257041974aee4e89cb5a877137a5b11484'
+            '22a34cb38e02ee1ed32e5697bc507df074629cbf5f1f7290a72e2c947cf611eb'
             '118d961db36fb243e059543215a818d1546ec94e8d52b24c75b7de6fe64ba749'
             'b571a8edbd9cb2a9ad63fadf360f64d4f80e291295f6c851b3a716c291ba3f8d'
             '063ee23a9c98e728168affb8056cda201fb02ede2bd29dfe2b768ce834b35e7c'
