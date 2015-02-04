@@ -1,6 +1,8 @@
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+# Contributor: Malina Salina <bluesilence@hotmail.co.uk>
 pkgname='reop-git'
 pkgrel=1
-pkgver=22.3d924f9
+pkgver=138.81dc1b4
 pkgdesc='Utility to create and verifies cryptographic signatures'
 url='https://github.com/tedu/reop/'
 license=('MIT')
@@ -17,17 +19,19 @@ pkgver () {
 
 build () {
 	cd "${srcdir}/reop"
+	sh ./configure
 	make
 }
 
 check () {
 	cd "${srcdir}/reop/tests"
+	chmod +x test.sh
 	./test.sh
 }
 
 package () {
 	cd "${srcdir}/reop"
-	install -Dm755 reop "${pkgdir}/bin/reop"
+	install -Dm755 reop "${pkgdir}/usr/bin/reop"
 	install -Dm644 reop.1 "${pkgdir}/usr/share/man/man1/reop.1"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
