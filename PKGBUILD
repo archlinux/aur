@@ -1,7 +1,7 @@
 # Maintainer: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=pia-tools-orig
-pkgver=0.9.7.2
+pkgver=0.9.7.3
 pkgrel=1
 pkgdesc='OpenVPN hook for privateinternetaccess.com'
 arch=('any')
@@ -15,7 +15,7 @@ source=('https://raw.github.com/pschmitt/pia-tools/master/pia-tools'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-up'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-down'
         'https://raw.github.com/pschmitt/pia-tools/master/pia-tools.install')
-sha256sums=('a37d8f90c6b6b5a83102adfc618996d5fce4a56cbae3e6fd32b87998df981465'
+sha256sums=('ca54f20f6aaa60ae919a6e41c0b67a6d4a2f0f33c4fec04f827b9d5d77ea2643'
             '22a34cb38e02ee1ed32e5697bc507df074629cbf5f1f7290a72e2c947cf611eb'
             '118d961db36fb243e059543215a818d1546ec94e8d52b24c75b7de6fe64ba749'
             'b571a8edbd9cb2a9ad63fadf360f64d4f80e291295f6c851b3a716c291ba3f8d'

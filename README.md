@@ -14,13 +14,13 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 
 ## Dependencies
 
-* transmission-cli
-* openvpn
-* systemd (**optional**)
-* sudo
+* curl
 * dnsutils (nslookup)
-* wget
+* openvpn
 * sed
+* sudo
+* systemd (**pseudo-optional - required for service start/stopping**)
+* transmission-cli
 * ufw
 
 ## Installation
@@ -29,15 +29,14 @@ OpenVPN hook for privateinternetaccess.com to automate port forwarding, dynamica
 
 ```bash
 mkdir /tmp/pia-tools; cd !$
-wget https://raw.github.com/pschmitt/pia-tools/master/{PKGBUILD,pia-tools.install}
+curl -O https://raw.githubusercontent.com/pschmitt/pia-tools/master/{PKGBUILD,pia-tools.install}
 makepkg -si
 ```
 
 ### Other distros
 
 ```bash
-wget https://raw.github.com/pschmitt/pia-tools/master/pia-tools
-mv pia-tools /usr/bin
+curl https://raw.githubusercontent.com/pschmitt/pia-tools/master/pia-tools > /usr/bin/pia-tools
 ```
 
 #### MANPAGE
@@ -45,8 +44,7 @@ mv pia-tools /usr/bin
 If you also want to have the MANPAGE:
 
 ```bash
-wget -q -O- https://raw.github.com/pschmitt/pia-tools/master/pia-tools.groff | gzip -c - > pia-tools.1.gz
-mv pia-tools.1.gz $MANPATH
+curl https://raw.githubusercontent.com/pschmitt/pia-tools/master/pia-tools.groff | gzip -c - > $MAN_PATH/pia-tools.1.gz
 ```
 
 **Note**: `$MANPATH` may not be defined, so you'll have to find out where to put the obtained file. On ArchLinux, this would be `/usr/share/man/man1/`
@@ -54,8 +52,7 @@ mv pia-tools.1.gz $MANPATH
 #### Systemd service file
 
 ```bash
-wget https://raw.github.com/pschmitt/pia-tools/master/pia@.service
-mv pia@.service /usr/lib/systemd/system
+curl https://raw.githubusercontent.com/pschmitt/pia-tools/master/pia@.service > /usr/lib/systemd/system/pia@.service
 ```
 
 ## Post installation

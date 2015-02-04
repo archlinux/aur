@@ -1,10 +1,10 @@
 #!/bin/bash
 # Description: Script to automate privateinternetacces port forwarding and
 # starting/stopping transmission when connected/disconnected and other stuff
-# Version: 0.9.7.2
+# Version: 0.9.7.3
 # Author: Philipp Schmitt (philipp<at>schmitt.co)
 # Documentation: cf. pia-tools.groff
-# Dependencies: transmission-daemon openvpn systemd sudo wget ufw unzip
+# Dependencies: curl openvpn sudo systemd transmission-daemon unzip
 
 # Source config file
 test "$PIA_CONF" || PIA_CONF='/etc/pia-tools.conf'
@@ -198,7 +198,7 @@ request_port() {
         echo "VPN local IP: $local_vpn_ip"
     fi
     PIA_OPEN_PORT_NEW="$(\
-        wget -q -O- --post-data "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
+        curl -Ld "user=$username&pass=$passwd&client_id=$client_id&local_ip=$local_vpn_ip" \
         https://www.privateinternetaccess.com/vpninfo/port_forward_assignment \
         | grep -oE "[0-9]+" 2>&1)"
     if test "$PIA_OPEN_PORT_NEW"; then
@@ -247,7 +247,7 @@ update_config() {
     rm -f $PIA_CONFIG_DIR/ca.crt $PIA_CONFIG_DIR/*.ovpn
 
     # Fetch server config files
-    wget -N -q --directory-prefix=$PIA_CONFIG_DIR $PIA_CONFIG_URL
+    curl -sL -o $PIA_CONFIG_DIR/openvpn.zip $PIA_CONFIG_URL
     unzip -d $PIA_CONFIG_DIR -q $PIA_CONFIG_DIR/openvpn.zip
 
     # Replace space by underscore in filenames
