@@ -1,0 +1,6 @@
+post_upgrade() {
+  if [ "$(vercmp 2.4 "$2")" -eq 1 ]; then
+    echo "The policy storage location changed in SELinux Userspace Project 2.4 from /etc/selinux to /var/lib/selinux."
+    echo "Run /usr/lib/selinux/semanage_migrate_store to migrate your policy files to the new location."
+  fi
+}
