@@ -16,12 +16,12 @@ backup=(etc/${pkgname}/catalina.policy
         etc/${pkgname}/tomcat-users.xml
         etc/${pkgname}/web.xml)
 install=${pkgname}.install
-source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.zip
+source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
         systemd_${pkgname}.service
         systemd_tmpfiles.d_${pkgname}.conf
         ${pkgname}.install)
 
-sha256sums=('42834da73bdd5e445312d2f6ccaec11ce0b294cb33d2b92c5f1085cc8198c4f7'
+sha256sums=('49f9097073493accb8f8e0827d8f4ee00d2cc115b9188fc3902deb3696554379'
             'd44056248b7cdd6671fd4de08a9453b3bd1a83980343d249a99b74939d46f4d4'
             'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847'
             '32fcb0f44e32cd8901e936ebad4942a399efa8b98fdc42f5345dd8929b6c1887')
