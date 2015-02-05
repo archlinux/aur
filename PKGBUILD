@@ -39,7 +39,7 @@ _dest=/opt/context-minimals
 # This is the only way to get yaourt to store the files in
 # /var/abs/local/yaourtbuild so that rsyncing the next time is efficient
 
-_gitroot="http://dl.contextgarden.net/distribution/git/"
+_gitroot="https://gitorious.org/context"
 _gitname="master"
 
 # Font directories
