@@ -1,5 +1,5 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 
 pkgname=recuerde
 pkgver=0.2.0_rc4
