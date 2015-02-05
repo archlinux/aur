@@ -5,23 +5,22 @@
 # Contributor: angelux/xangelux (xangelux <at> gmail <dot> com)
 
 pkgname=policycoreutils
-pkgver=2.3
-pkgrel=3
+pkgver=2.4
+pkgrel=1
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
-depends=('libsemanage>=2.2' 'libcgroup' 'dbus-glib' 'python2-ipy' 'setools'
-         'sepolgen')
+depends=('libsemanage>=2.4' 'libcgroup' 'dbus-glib' 'pam-selinux' 'python2-ipy'
+         'setools' 'sepolgen')
 optdepends=('hicolor-icon-theme: needed for graphical tools')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz"
-        'restorecond.service')
-sha256sums=('864cfaee58b5d2f15b140c354e59666e57143293c89f2b2e85bc0d0e4beefcd2'
-            '20572c2cc09c8af5239f26cfea3eb2648d87d9927e55791f13572ea2184e857e')
+install=policycoreutils.install
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('b819f876f12473783ccce9f63b9a79cd77177477cd6d46818441f808cc4c3479')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -29,15 +28,36 @@ prepare() {
 #  sed -i -e "s/-Werror -Wall -W/-Werror -Wall -W ${CFLAGS}/" setfiles/Makefile
 #  sed -i -e "s/-Werror -Wall -W/-Werror -Wall -W ${CFLAGS}/" sestatus/Makefile
 
-  # python2 fix
-  sed -i -e "s/shell python -c/shell python2 -c/" semanage/Makefile
-  sed -i -e "s/\/usr\/bin\/python/\/usr\/bin\/python2/" sepolicy/Makefile
-
   # /usr merge fix
   sed -i -e "s/\$(PREFIX)\/sbin/\$(PREFIX)\/bin/g" */Makefile
   sed -i -e "s/\$(DESTDIR)\/sbin/\$(PREFIX)\/bin/g" */Makefile
   sed -i -e "s/\$(PREFIX)\/sbin/\$(PREFIX)\/bin/g" mcstrans/*/Makefile
   sed -i -e "s/\$(DESTDIR)\/sbin/\$(PREFIX)\/bin/g" mcstrans/*/Makefile
+
+  # Fix Python2 scripts
+  sed -i -e "s/python -E/python2 -E/" audit2allow/audit2allow
+  sed -i -e "s/python -E/python2 -E/" audit2allow/audit2why
+  sed -i -e "s/python -E/python2 -E/" audit2allow/sepolgen-ifgen
+  sed -i -e "s/python -E/python2 -E/" gui/polgengui.py
+  sed -i -e "s/python -E/python2 -E/" gui/system-config-selinux.py
+  sed -i -e "s/python -E/python2 -E/" mcstrans/share/util/mlscolor-test
+  sed -i -e "s/python -E/python2 -E/" mcstrans/share/util/mlstrans-test
+  sed -i -e "s/python -E/python2 -E/" sandbox/sandbox
+  sed -i -e "s/python -E/python2 -E/" sandbox/start
+  sed -i -e "s/python -E/python2 -E/" scripts/chcat
+  sed -i -e "s/python -E/python2 -E/" semanage/semanage
+  sed -i -e "s/python -E/python2 -E/" semanage/seobject.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/booleans.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/communicate.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/generate.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/gui.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/interface.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/manpage.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/network.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy.py
+  sed -i -e "s/python -E/python2 -E/" sepolicy/sepolicy/transition.py
+  sed -i -e "s|/usr/bin/python|/usr/bin/python2|" sepolicy/sepolicy/__init__.py
+  sed -i -e "s|/usr/bin/python|/usr/bin/python2|" sepolicy/selinux_server.py
 }
 
 build() {
@@ -49,17 +69,10 @@ build() {
 package(){
   cd "${pkgname}-${pkgver}"
 
-  make PYTHON=python2 DESTDIR="${pkgdir}" LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib SEMODULE_PATH="/usr/bin" install
+  make PYTHON=python2 DESTDIR="${pkgdir}" LIBDIR="${pkgdir}"/usr/lib \
+    LIBEXECDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib SEMODULE_PATH="/usr/bin" install
 
-  install -Dm644 "${srcdir}"/restorecond.service "${pkgdir}/usr/lib/systemd/system/restorecond.service"
-
-  # Fix python2 scripts
-  sed -i -e "s/python -E/python2 -E/" "${pkgdir}/usr/bin/audit2allow"
-  sed -i -e "s/python -E/python2 -E/" "${pkgdir}/usr/bin/audit2why"
-  sed -i -e "s/python -E/python2 -E/" "${pkgdir}/usr/bin/chcat"
-  sed -i -e "s/python -E/python2 -E/" "${pkgdir}/usr/bin/sepolgen"
-  sed -i -e "s/python -E/python2 -E/" "${pkgdir}/usr/bin/sepolgen-ifgen"
-  sed -i -e "s/python -E/python2 -E/" "${pkgdir}/usr/bin/semanage"
-  sed -i -e "s/python -E/python2 -E/" "${pkgdir}/usr/lib/python2.7/site-packages/seobject.py"
+  # Remove init script
+  rm -rf "${pkgdir}/etc/rc.d"
 }
 

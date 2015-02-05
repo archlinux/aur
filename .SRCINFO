@@ -1,26 +1,26 @@
 pkgbase = policycoreutils
 	pkgdesc = SELinux policy core utilities
-	pkgver = 2.3
-	pkgrel = 3
+	pkgver = 2.4
+	pkgrel = 1
 	url = http://userspace.selinuxproject.org
+	install = policycoreutils.install
 	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = GPL
-	depends = libsemanage>=2.2
+	depends = libsemanage>=2.4
 	depends = libcgroup
 	depends = dbus-glib
+	depends = pam-selinux
 	depends = python2-ipy
 	depends = setools
 	depends = sepolgen
 	optdepends = hicolor-icon-theme: needed for graphical tools
-	provides = selinux-usr-policycoreutils=2.3-3
+	provides = selinux-usr-policycoreutils=2.4-1
 	conflicts = selinux-usr-policycoreutils
 	options = !emptydirs
-	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/policycoreutils-2.3.tar.gz
-	source = restorecond.service
-	sha256sums = 864cfaee58b5d2f15b140c354e59666e57143293c89f2b2e85bc0d0e4beefcd2
-	sha256sums = 20572c2cc09c8af5239f26cfea3eb2648d87d9927e55791f13572ea2184e857e
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/policycoreutils-2.4.tar.gz
+	sha256sums = b819f876f12473783ccce9f63b9a79cd77177477cd6d46818441f808cc4c3479
 
 pkgname = policycoreutils
 
