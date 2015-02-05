@@ -1,23 +1,21 @@
 pkgbase = libnotify-id-git
 	pkgdesc = Gnome notification library, including ID patch
-	pkgver = 0.7.5.1.g6982957
+	pkgver = 20130129
 	pkgrel = 1
 	url = http://library.gnome.org/devel/libnotify/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL2.1
 	makedepends = pkgconfig
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = gnome-common
+	makedepends = gnome-common-git
 	provides = libnotify=0.7.5
 	conflicts = libnotify
 	conflicts = libnotify-git
 	options = !libtool
-	source = libnotify-id-git::git://git.gnome.org/libnotify.git
 	source = https://launchpadlibrarian.net/105791133/print-and-replace-id-v3.patch
-	md5sums = SKIP
 	md5sums = f75d23de7ee23e37ac36889ece359587
 
 pkgname = libnotify-id-git

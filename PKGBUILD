@@ -1,38 +1,38 @@
 # Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
 
 pkgname=libnotify-id-git
-pkgver=0.7.5.1.g6982957
+pkgver=20130129
 pkgrel=1
 pkgdesc="Gnome notification library, including ID patch"
 arch=('i686' 'x86_64')
-license=('GPL2')
+license=('GPL2.1')
 url="http://library.gnome.org/devel/libnotify/"
-makedepends=('pkgconfig' 'git' 'gobject-introspection' 'gtk-doc' 'gnome-common')
+depends=()
+makedepends=('pkgconfig' 'git' 'gobject-introspection' 'gtk-doc' 'gnome-common-git')
 options=('!libtool')
 conflicts=('libnotify' 'libnotify-git')
 provides=('libnotify=0.7.5')
-source=('libnotify-id-git::git://git.gnome.org/libnotify.git'
-		'https://launchpadlibrarian.net/105791133/print-and-replace-id-v3.patch')
-md5sums=('SKIP'
-		'f75d23de7ee23e37ac36889ece359587')
+source=('https://launchpadlibrarian.net/105791133/print-and-replace-id-v3.patch')
+md5sums=('f75d23de7ee23e37ac36889ece359587')
 
-pkgver(){
-	cd "${srcdir}/${pkgname}"
-	git describe --always | sed 's|-|.|g'
-}
+_gitroot="git://git.gnome.org/libnotify.git"
+_gitname="libnotify"
 
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	patch -p1 < ../../print-and-replace-id-v3.patch
-}
 
-build(){
-	cd "${srcdir}/${pkgname}"
-	./autogen.sh --prefix=/usr
-	make
-}
+build() {
+  cd ${srcdir}
+  msg "Connecting to git.gnome.org GIT server...."
 
-package(){
-	cd "${srcdir}/${pkgname}"
-	make DESTDIR="${pkgdir}" install
+  if [ -d ${srcdir}/$_gitname ] ; then
+    cd $_gitname && git pull origin
+    msg "The local files are updated."
+    else
+    git clone $_gitroot
+  fi
+
+  cd ${srcdir}/$_gitname
+  patch -p1 < ../../print-and-replace-id-v3.patch
+  ./autogen.sh --prefix=/usr
+  make || return 1
+  make DESTDIR="$pkgdir/" install || return 1
 }
