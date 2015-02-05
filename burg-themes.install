@@ -1,0 +1,15 @@
+post_install() {
+   local red='\033[1;31m'
+   local grn='\033[1;32m'
+   local bld='\033[1;0m'
+   local clr='\033[0m'
+   echo -e "$red==>$bld Run $grn'burg-mkconfig -o /boot/burg/burg.cfg'$bld as root to generate and/or update burg.cfg.$clr"
+}
+
+post_upgrade() {
+   post_install
+}
+
+post_remove() {
+   post_install
+}

@@ -1,0 +1,16 @@
+pkgbase = burg-themes
+	pkgdesc = Themes for Burg Bootloader
+	pkgver = 20100623
+	pkgrel = 2
+	url = https://code.google.com/p/burg/
+	install = burg-themes.install
+	arch = any
+	license = GPL
+	depends = burg-bzr
+	backup = boot/burg/gui.cfg
+	backup = boot/burg/burgenv
+	source = http://burg.googlecode.com/files/burg-theme-20100623.zip
+	sha256sums = 795af1678cbcf0c8a57a2f06c7cafeb11da6892f4c2710777a921274f4767b32
+
+pkgname = burg-themes
+
