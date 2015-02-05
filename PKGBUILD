@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Asparagus Maximus <asparagus.maximus@gmail.com>
 
