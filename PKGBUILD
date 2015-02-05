@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Julien MISCHKOWITZ <wain@archlinux.fr>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: ShadowKyogre <shadowkyogre@aim.com>
