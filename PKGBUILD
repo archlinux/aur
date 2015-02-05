@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.0.94.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A new browser for our friends (weekly snapshot)'
 url="https://vivaldi.com"
 install=vivaldi.install
@@ -11,9 +11,8 @@ options=(!strip !zipman)
 license=('custom')
 arch=('x86_64')
 source=("https://vivaldi.com/download/snapshot/vivaldi.${pkgver}_snapshot.deb")
-#depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info')
-#optdepends=('ffmpeg: playback of proprietary formats')
-provides=('vivaldi')
+depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info')
+optdepends=('ffmpeg: playback of proprietary formats')
 
 package() {
 	tar -xf data.tar.xz --exclude={usr/share/{lintian,menu},etc} -C "$pkgdir/"
@@ -32,5 +31,4 @@ package() {
 	done
 }
 
-sha256sums=('359eabcc4c9f089f87c43c24dc8d1d4218212642e953c073771a1d863f598906')
 sha256sums=('37ae3f105214f25662dead3f8d389b43f6a2f664a98eac684d0fcf779461cce1')
