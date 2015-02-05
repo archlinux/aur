@@ -4,8 +4,8 @@
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
 
 pkgname=libsepol
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -15,8 +15,8 @@ depends=('glibc')
 options=(staticlibs)
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cc8d8642c3b7b95d6928d65dcbca2ab0627abc1c05166637851e63c1a6eae68f')
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('299015d59932404c6b69d365fdecffe5c0e2f9c44e08b47286a4bfc02ee49659')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -24,14 +24,6 @@ build() {
 }
 
 package(){
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib install
-
-  # Those are removed in Fedora
-  rm -r "${pkgdir}"/usr/bin/chkcon "${pkgdir}"/usr/share/man
-
-  # /lib/lisepol.so fix
-  cd "${pkgdir}"/usr/lib
-  rm libsepol.so
-  ln -s libsepol.so.1 libsepol.so
 }
