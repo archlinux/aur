@@ -1,0 +1,24 @@
+pkgbase = compiz-deskmenu
+	pkgdesc = Compiz Fusion deskmenu plugin
+	pkgver = 20130330
+	pkgrel = 1
+	url = http://opencompositing.org
+	install = compiz-deskmenu.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = libwnck
+	depends = dbus-glib
+	depends = python-lxml
+	depends = pyxdg
+	source = git://anongit.compiz.org/users/crdlb/compiz-deskmenu
+	source = huge.patch
+	source = compiz-deskmenu-editor
+	md5sums = SKIP
+	md5sums = 9515713c15f412fb22cd2f735291fc74
+	md5sums = f9b8d902d85f7f690c32e330807d0e86
+
+pkgname = compiz-deskmenu
+

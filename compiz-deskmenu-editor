@@ -1,0 +1,1082 @@
+#!/usr/bin/env python2
+#TODO: upcoming pipemenu stuff
+import gtk, os
+from lxml import etree
+from xdg import BaseDirectory
+import re #This is to autoset file mode for *.desktop icons
+import ConfigParser
+
+try:
+	import dbus
+except ImportError:
+	dbus = None
+
+class DeskmenuEditor(gtk.Window):
+
+	def __init__(self):
+		gtk.Window.__init__(self)
+		
+		self.props.title = 'Compiz Deskmenu Editor'
+		self.props.icon_name = 'gtk-edit'
+		self.props.border_width = 12
+		self.set_size_request(400, 400)
+		self.model = gtk.TreeStore(object)
+		self.add_menu(menu)
+
+		vbox = gtk.VBox(spacing=12)
+
+		scrolled = gtk.ScrolledWindow()
+		scrolled.props.hscrollbar_policy = gtk.POLICY_NEVER
+		scrolled.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC
+		treeview = gtk.TreeView(self.model)
+		treeview.set_reorderable(True)
+		cell = gtk.CellRendererText()
+		elements = gtk.TreeViewColumn('Item', cell)
+		elements.set_cell_data_func(cell, self.get_type)
+		treeview.append_column(elements)
+
+		name = gtk.TreeViewColumn('Name')
+
+		cell = gtk.CellRendererPixbuf()
+		name.pack_start(cell, False)
+		name.set_cell_data_func(cell, self.get_icon)
+
+		cell = gtk.CellRendererText()
+		name.pack_start(cell)
+		name.set_cell_data_func(cell, self.get_name)
+
+		treeview.append_column(name)
+		scrolled.add(treeview)
+		vbox.pack_start(scrolled, True, True)
+		targets = [
+			('deskmenu-element', gtk.TARGET_SAME_WIDGET, 0),
+			('text/uri-list', 0, 1),
+		]
+		treeview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, targets, gtk.gdk.ACTION_DEFAULT|gtk.gdk.ACTION_MOVE)
+		treeview.enable_model_drag_dest(targets, gtk.gdk.ACTION_MOVE)
+
+		treeview.connect('drag-data-get', self.on_drag_data_get)
+		treeview.connect('drag-data-received', self.on_drag_data_received)
+
+		treeview.connect('row-activated', self.on_row_activated)
+
+		treeview.connect('button-press-event', self.on_treeview_button_press_event)
+		treeview.expand_all()
+
+		self.selection = treeview.get_selection()
+		self.selection.connect('changed', self.on_selection_changed)
+
+		buttonbox = gtk.HButtonBox()
+		vbox.pack_end(buttonbox, False, False)
+
+		new = gtk.Button(stock=gtk.STOCK_NEW)
+		new.connect('clicked', self.on_new_clicked)
+		buttonbox.pack_start(new)
+		self.edit = gtk.Button(stock=gtk.STOCK_EDIT)
+		self.edit.connect('clicked', self.on_edit_clicked)
+		buttonbox.pack_start(self.edit)
+		self.delete = gtk.Button(stock=gtk.STOCK_DELETE)
+		self.delete.connect('clicked', self.on_delete_clicked)
+		buttonbox.pack_start(self.delete)
+		close = gtk.Button(stock=gtk.STOCK_CLOSE)
+		close.connect('clicked', self.on_close_clicked)
+		buttonbox.pack_end(close)
+
+		self.add(vbox)
+
+		self.popup = gtk.Menu()
+		self.edit_menu = gtk.ImageMenuItem(stock_id=gtk.STOCK_EDIT)
+		self.edit_menu.connect('activate', self.on_edit_clicked)
+		self.popup.append(self.edit_menu)
+		self.delete_menu = gtk.ImageMenuItem(stock_id=gtk.STOCK_DELETE)
+		self.delete_menu.connect('activate', self.on_delete_clicked)
+		self.popup.append(self.delete_menu)
+		self.popup.show_all()
+
+		self.connect('destroy', self.on_close_clicked)
+
+		self.show_all()
+
+	def add_menu(self, m, parent=None):
+		for item in m.children:
+			iter = self.model.append(parent, [item])
+			if item.node.tag == 'menu':
+				self.add_menu(item, iter)
+
+	def get_name(self, column, cell, model, iter):
+		name = model.get_value(iter, 0).get_name()
+		if name is None:
+			name = ''
+		cell.set_property('text', name)
+
+	def get_type(self, column, cell, model, iter):
+		typ = model.get_value(iter, 0).get_type()
+		if typ is None:
+			typ = ''
+		cell.set_property('text', typ)
+
+	def get_icon(self, column, cell, model, iter):
+		icon = model.get_value(iter, 0).get_icon()
+		icon_mode = model.get_value(iter, 0).get_icon_mode()
+		if icon is not None:
+			if icon_mode is not None:
+				w = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)
+				cell.set_property('pixbuf', gtk.gdk.pixbuf_new_from_file_at_size(icon, w[0], w[0]))
+				cell.set_property('icon-name', None) #possibly reduntant safety measure
+			else:
+				cell.set_property('icon-name', icon)
+				cell.set_property('pixbuf', None) #possibly reduntant safety measure
+		else:
+			cell.set_property('icon-name', None)
+			cell.set_property('pixbuf', None)
+
+	def on_new_clicked(self, widget):
+
+		NewItemDialog(*self.selection.get_selected())
+
+	def on_edit_clicked(self, widget):
+
+		EditItemDialog(*self.selection.get_selected())
+		
+	def on_delete_clicked(self, widget):
+
+		model, row = self.selection.get_selected()
+
+		parent = None
+		if row:
+			current = model[row][0].node
+
+			if current.tag == 'menu' and len(current):
+				warning = gtk.MessageDialog(self, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_NONE, 'Delete menu element with %s children?' %len(current))
+				warning.add_buttons(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_DELETE, gtk.RESPONSE_ACCEPT)
+				if warning.run() != gtk.RESPONSE_ACCEPT:
+					warning.destroy()
+					return
+				warning.destroy()
+
+			parent = model[row].parent
+			if parent is not None:
+				parent = parent[0].node
+			else:
+				parent = menu.node
+			parent.remove(current)
+			model.remove(row)
+
+		write_menu()
+
+	def on_close_clicked(self, widget):
+
+		write_menu()
+		gtk.main_quit()
+
+	def on_drag_data_get(self, treeview, context, selection, target_id,
+						   etime):
+		treeselection = treeview.get_selection()
+		model, iter = treeselection.get_selected()
+		data = model.get_string_from_iter(iter)
+		selection.set(selection.target, 8, data)
+
+	def on_drag_data_received(self, treeview, context, x, y, selection,
+								info, etime):
+		model = treeview.get_model()
+		data = selection.data
+
+		drop_info = treeview.get_dest_row_at_pos(x, y)
+		if selection.type == 'deskmenu-element':
+			source = model[data][0]
+			if drop_info:
+				path, position = drop_info
+				siter = model.get_iter(data)
+				diter = model.get_iter(path)
+
+				if model.get_path(model.get_iter_from_string(data)) == path:
+					return
+
+				dest = model[path][0]
+				if context.action == gtk.gdk.ACTION_MOVE:
+					source.node.getparent().remove(source.node)
+
+				if dest.node.tag == 'menu' and position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE,
+					gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
+					dest.node.append(source.node)
+					fiter = model.append(diter, row=(source,))
+				else:
+					i = dest.node.getparent().index(dest.node)
+					if position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, 
+						gtk.TREE_VIEW_DROP_BEFORE):
+						dest.node.getparent().insert(i, source.node)
+						fiter = model.insert_before(None, diter, row=(source,))
+					else:
+						dest.node.getparent().insert(i+1, source.node)
+						fiter = model.insert_after(None, diter, row=(source,))
+
+				if model.iter_has_child(siter):
+					citer = model.iter_children(siter)
+					while citer is not None:
+						model.append(fiter, row=(model[citer][0],))
+						citer = model.iter_next(citer)
+				if context.action == gtk.gdk.ACTION_MOVE:
+					context.finish(True, True, etime)
+
+		elif selection.type == 'text/uri-list':
+			if drop_info:
+				path, position = drop_info
+				uri = selection.data.replace('file:///', '/').strip()
+				entry = ConfigParser.ConfigParser()
+				entry.read(uri)
+				launcher = Launcher()
+				launcher.name = etree.SubElement(launcher.node, 'name')
+				launcher.icon = etree.SubElement(launcher.node, 'icon')
+				launcher.command = etree.SubElement(launcher.node, 'command')
+				try:
+					launcher.name.text = entry.get('Desktop Entry', 'Name')
+					if re.search("/", entry.get('Desktop Entry', 'Icon')):
+						launcher.icon.attrib['mode1'] = 'file'
+						launcher.icon.text = entry.get('Desktop Entry', 'Icon')
+					#launcher.icon.text = entry.get('Desktop Entry', 'Icon').split('.')[0]
+					launcher.command.text = entry.get('Desktop Entry', 'Exec').split('%')[0]
+				except ConfigParser.Error:
+					return
+				dest = model[path][0]
+				diter = model.get_iter(path)
+				if dest.node.tag == 'menu' and position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE,
+					gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
+					dest.node.append(launcher.node)
+					fiter = model.append(diter, row=(launcher,))
+				else:
+					i = dest.node.getparent().index(dest.node)
+					if position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, 
+						gtk.TREE_VIEW_DROP_BEFORE):
+						dest.node.getparent().insert(i, launcher.node)
+						fiter = model.insert_before(None, diter, row=(launcher,))
+					else:
+						dest.node.getparent().insert(i+1, launcher.node)
+						fiter = model.insert_after(None, diter, row=(launcher,))
+				if context.action == gtk.gdk.ACTION_MOVE:
+					context.finish(True, True, etime)
+
+		write_menu()
+
+		return
+
+	def on_selection_changed(self, selection):
+
+		model, row = selection.get_selected()
+ 
+		sensitive = row and model.get_value(row, 0).editable
+
+		self.edit.props.sensitive = sensitive
+		self.edit_menu.props.sensitive = sensitive
+		self.delete.props.sensitive = row
+		self.delete_menu.props.sensitive = row
+
+	def on_row_activated(self, treeview, path, view_column):
+
+		model = treeview.get_model()
+		EditItemDialog(model, model.get_iter(path))
+		
+	def on_treeview_button_press_event(self, treeview, event):
+		if event.button == 3:
+			pthinfo = treeview.get_path_at_pos(int(event.x), int(event.y))
+			if pthinfo is not None:
+				path, col, cellx, celly = pthinfo
+				treeview.grab_focus()
+				treeview.set_cursor(path, col, 0)
+				self.popup.popup(None, None, None, event.button, event.time)
+			return 1
+
+
+class NewItemDialog(gtk.Dialog):
+
+	elementlist = ['Launcher', 'Menu', 'Separator', 'Windows List',
+		'Viewports List', 'Reload']
+
+	def __init__(self, model, row):
+		gtk.Dialog.__init__(self, 'New Item', None, 0, None)
+
+		self.set_size_request(250, 250)
+
+		self.props.border_width = 6
+		self.vbox.props.spacing = 6
+		self.set_has_separator(False)
+		self.treeview = self.make_treeview()
+
+		scroll = gtk.ScrolledWindow()
+		scroll.add(self.treeview)
+		scroll.props.hscrollbar_policy = gtk.POLICY_NEVER
+		scroll.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC
+		self.vbox.pack_start(scroll, True, True)
+
+		self.add_buttons(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+			gtk.STOCK_NEW, gtk.RESPONSE_ACCEPT)
+
+		self.action_area.props.border_width = 0
+
+		self.show_all()
+
+		element = None
+
+		if self.run() == gtk.RESPONSE_ACCEPT:
+			m, r = self.treeview.get_selection().get_selected()
+			if r:
+				elementname = m[r][0]
+			else:
+				self.destroy()
+				return
+			parent = sibling = None
+			if row:
+				current = model[row][0]
+				if current.node.tag == 'menu':
+					parent = row
+				else:
+					parent = model[row].parent
+					if parent is not None:
+						parent = parent.iter
+					sibling = row 
+			if parent:
+				parentelement = model[parent][0]
+			else:
+				parentelement = menu
+
+			element = elementsbyname[elementname]()
+			if sibling:
+				position = parentelement.node.index(current.node) + 1
+				parentelement.node.insert(position, element.node)
+				model.insert_after(parent, sibling, row=(element,))
+			else:
+				model.append(parent, row=(element,))
+				parentelement.node.append(element.node)
+
+		self.destroy()
+		write_menu()
+
+		if element and element.editable:
+			EditItemDialog(element=element)
+
+	def make_treeview(self):
+		model = gtk.ListStore(str)  
+		for el in self.elementlist:
+			model.append([el])
+
+		treeview = gtk.TreeView(model)
+		column = gtk.TreeViewColumn(None, gtk.CellRendererText(), text=0)
+		treeview.set_headers_visible(False)
+		treeview.append_column(column)
+
+		treeview.connect('row-activated', self.on_row_activated)
+		return treeview
+
+	def on_row_activated(self, treeview, path, view_column):
+		self.response(gtk.RESPONSE_ACCEPT)
+
+
+class EditItemDialog(gtk.Dialog):
+
+	def __init__(self, model=None, row=None, element=None):
+		gtk.Dialog.__init__(self, 'Edit Item', None, 0, None)
+
+		self.set_size_request(300, -1)
+
+		self.props.border_width = 6
+		self.vbox.props.spacing = 6
+		self.set_has_separator(False)
+
+		if element is None:
+			if not row:
+				return
+			element = model.get_value(row, 0)
+
+		if not element.editable:
+			return
+
+		for widget in element.get_options():
+			self.vbox.pack_start(widget, False, False)
+
+		self.add_buttons(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+
+		self.show_all()
+		self.run()
+		self.destroy()
+		write_menu()
+
+
+
+class Item(object):
+	
+	def __init__(self, node=None, parent=None, type=None):
+
+		self.editable = False
+
+		if node is None:
+			self.node = etree.Element('item')
+			if type is not None:
+				self.node.attrib['type'] = type
+		
+		else:
+			self.node = node
+
+	def get_name(self):
+		return None
+
+	def get_type(self):
+		return 'Item'
+
+	def get_icon(self):
+		return None
+
+	def get_icon_mode(self):
+		return None
+
+class Launcher(Item):
+	
+	def __init__(self, node=None):
+
+		Item.__init__(self, node)
+
+		if node is None:
+			self.node = etree.Element('item', type='launcher') 
+		
+		self.editable = True
+
+	def get_name(self):
+
+		subnode = self.node.find('name')
+		if subnode is not None:
+			name = subnode.text
+			if subnode.attrib.get('mode') == 'exec':
+				name = 'exec: %s' %name
+			return name
+		else:
+			return None
+
+	def get_type(self):
+		return 'Launcher'
+
+	def get_icon(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			return iconnode.text
+		else:
+			return None
+
+	def get_icon_mode(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			if iconnode.attrib.get('mode1') == 'file':
+				return iconnode.attrib.get('mode1')
+		else:
+			return None
+
+	def get_options(self):
+
+		retlist = []
+		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Name:</b>')
+		widget = gtk.Entry()
+		
+		namenode = self.node.find('name')
+		if namenode is not None:
+			name = namenode.text
+		else:
+			name = ''
+		widget.props.text = name
+		widget.connect('changed', self.on_subnode_changed, 'name')
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Name mode:</b>')
+		widget = gtk.combo_box_new_text()
+		widget.append_text('Normal')
+		widget.append_text('Execute')
+		widget.props.active = namenode is not None and namenode.attrib.get('mode') == 'exec'
+		widget.connect('changed', self.on_name_mode_changed)
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon:</b>')
+		widget = gtk.Entry()
+		
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			icon = iconnode.text
+		else:
+			icon = ''
+		widget.props.text = icon
+		widget.connect('changed', self.on_subnode_changed, 'icon')
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+		
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon mode:</b>')
+		widget = gtk.combo_box_new_text()
+		widget.append_text('Normal')
+		widget.append_text('File Path')
+		widget.props.active = iconnode is not None and iconnode.attrib.get('mode1') == 'file'
+		widget.connect('changed', self.on_icon_mode_changed)
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Command:</b>')
+		widget = gtk.Entry()
+		commandnode = self.node.find('command')
+		if commandnode is not None:
+			command = commandnode.text
+		else:
+			command = ''
+		widget.props.text = command
+		widget.connect('changed', self.on_subnode_changed, 'command')
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		return retlist
+
+	def on_subnode_changed(self, widget, tag):
+		text = widget.props.text
+		subnode = self.node.find(tag)
+		if text:
+			if subnode is None:
+				subnode = etree.SubElement(self.node, tag)
+			subnode.text = text
+		else:
+			if subnode is not None:
+				self.node.remove(subnode)
+		
+	def on_name_mode_changed(self, widget):
+		namenode = self.node.find('name')
+		if widget.props.active:
+			if namenode is None:
+				namenode = etree.SubElement(self.node, 'name')
+			namenode.attrib['mode'] = 'exec'
+		elif 'mode' in namenode.attrib:
+			del namenode.attrib['mode']
+			
+	def on_icon_mode_changed(self, widget):
+		iconnode = self.node.find('icon')
+		if widget.props.active:
+			if iconnode is None:
+				iconnode = etree.SubElement(self.node, 'icon')
+			iconnode.attrib['mode1'] = 'file'
+		elif 'mode1' in iconnode.attrib:
+			del iconnode.attrib['mode1']
+
+class Windowlist(Item):
+	
+	def __init__(self, node=None):
+		Item.__init__(self, node, type='windowlist')
+		self.editable = True
+	
+	def get_icon(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			return iconnode.text
+		else:
+			return None
+
+	def get_icon_mode(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			if iconnode.attrib.get('mode1') == 'file':
+				return iconnode.attrib.get('mode1')
+		else:
+			return None
+
+	def get_options(self):
+		retlist = []
+		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon:</b>')
+		widget = gtk.Entry()
+		
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			icon = iconnode.text
+		else:
+			icon = ''
+		widget.props.text = icon
+		widget.connect('changed', self.on_subnode_changed, 'icon')
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+		
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon mode:</b>')
+		widget = gtk.combo_box_new_text()
+		widget.append_text('Normal')
+		widget.append_text('File Path')
+		widget.props.active = iconnode is not None and iconnode.attrib.get('mode1') == 'file'
+		widget.connect('changed', self.on_icon_mode_changed)
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		return retlist
+
+	def on_subnode_changed(self, widget, tag):
+		text = widget.props.text
+		subnode = self.node.find(tag)
+		if text:
+			if subnode is None:
+				subnode = etree.SubElement(self.node, tag)
+			subnode.text = text
+		else:
+			if subnode is not None:
+				self.node.remove(subnode)
+
+	def on_icon_mode_changed(self, widget):
+		iconnode = self.node.find('icon')
+		if widget.props.active:
+			if iconnode is None:
+				iconnode = etree.SubElement(self.node, 'icon')
+			iconnode.attrib['mode1'] = 'file'
+		elif 'mode1' in iconnode.attrib:
+			del iconnode.attrib['mode1']
+
+	def get_type(self):
+		return 'Windows list'
+
+class Viewportlist(Item):
+	
+	def __init__(self, node=None): #change to be an attribute of viewportlist
+		Item.__init__(self, node, type='viewportlist')
+		self.editable = True
+		self.wrap = self.node.find('wrap')
+
+	def get_type(self):
+		return 'Viewports list'
+	
+	def get_icon(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			return iconnode.text
+		else:
+			return None
+
+	def get_icon_mode(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			if iconnode.attrib.get('mode1') == 'file':
+				return iconnode.attrib.get('mode1')
+		else:
+			return None
+
+
+	def get_options(self):
+		retlist = []
+		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+		widget = gtk.CheckButton("Wrap Viewports")
+		widget.props.active = self.get_wrap()
+		widget.connect('toggled', self.on_wrap_changed)
+		retlist.append(widget)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon:</b>')
+		widget = gtk.Entry()
+		
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			icon = iconnode.text
+		else:
+			icon = ''
+		widget.props.text = icon
+		widget.connect('changed', self.on_subnode_changed, 'icon')
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+		
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon mode:</b>')
+		widget = gtk.combo_box_new_text()
+		widget.append_text('Normal')
+		widget.append_text('File Path')
+		widget.props.active = iconnode is not None and iconnode.attrib.get('mode1') == 'file'
+		widget.connect('changed', self.on_icon_mode_changed)
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		return retlist
+
+	def get_wrap(self):
+		if self.wrap is not None:
+			return self.wrap.text == 'true'
+		return False
+
+	def on_subnode_changed(self, widget, tag):
+		text = widget.props.text
+		subnode = self.node.find(tag)
+		if text:
+			if subnode is None:
+				subnode = etree.SubElement(self.node, tag)
+			subnode.text = text
+		else:
+			if subnode is not None:
+				self.node.remove(subnode)
+
+	def on_wrap_changed(self, widget):
+		if self.wrap is None:
+			self.wrap = etree.SubElement(self.node, 'wrap')
+		if widget.props.active:
+			text = 'true'
+		else:
+			text = 'false'
+		self.wrap.text = text
+
+	def on_icon_mode_changed(self, widget):
+		iconnode = self.node.find('icon')
+		if widget.props.active:
+			if iconnode is None:
+				iconnode = etree.SubElement(self.node, 'icon')
+			iconnode.attrib['mode1'] = 'file'
+		elif 'mode1' in iconnode.attrib:
+			del iconnode.attrib['mode1']
+
+class Reload(Item):
+	
+	def __init__(self, node=None):
+		Item.__init__(self, node, type='reload')
+		self.editable = True
+
+	def get_type(self):
+		return 'Reload'
+
+	def get_icon(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			return iconnode.text
+		else:
+			return None
+
+	def get_icon_mode(self):
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			if iconnode.attrib.get('mode1') == 'file':
+				return iconnode.attrib.get('mode1')
+		else:
+			return None
+
+
+	def get_options(self):
+		retlist = []
+		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon:</b>')
+		widget = gtk.Entry()
+		
+		iconnode = self.node.find('icon')
+		if iconnode is not None:
+			icon = iconnode.text
+		else:
+			icon = ''
+		widget.props.text = icon
+		widget.connect('changed', self.on_subnode_changed, 'icon')
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+		
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon mode:</b>')
+		widget = gtk.combo_box_new_text()
+		widget.append_text('Normal')
+		widget.append_text('File Path')
+		widget.props.active = iconnode is not None and iconnode.attrib.get('mode1') == 'file'
+		widget.connect('changed', self.on_icon_mode_changed)
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		return retlist
+
+	def on_subnode_changed(self, widget, tag):
+		text = widget.props.text
+		subnode = self.node.find(tag)
+		if text:
+			if subnode is None:
+				subnode = etree.SubElement(self.node, tag)
+			subnode.text = text
+		else:
+			if subnode is not None:
+				self.node.remove(subnode)
+
+	def on_icon_mode_changed(self, widget):
+		iconnode = self.node.find('icon')
+		if widget.props.active:
+			if iconnode is None:
+				iconnode = etree.SubElement(self.node, 'icon')
+			iconnode.attrib['mode1'] = 'file'
+		elif 'mode1' in iconnode.attrib:
+			del iconnode.attrib['mode1']
+
+class Separator(object):
+	
+	def __init__(self, node=None, parent=None):
+		self.node = node
+		self.editable = False
+		if self.node is None:
+			self.node = etree.Element('separator')
+
+	def get_name(self):
+		return '---'
+
+	def get_type(self):
+		return 'Separator'
+
+	def get_icon(self):
+		return None
+		
+	def get_icon_mode(self):
+		return None
+
+class Menu(object):
+
+	def __init__(self, node=None):
+		self.node = node
+		self.children = []
+		self.editable = True
+
+		if node is None:
+			self.node = etree.Element('menu', name='')
+
+		for child in self.node.getchildren():
+			try:
+				self.children.append(self.make_child(child))
+			except KeyError:
+				pass
+		
+
+	def make_child(self, child):
+		return elements[child.tag](child)
+
+	def get_name(self):
+		name = self.node.attrib.get('name', '')
+		if self.node.attrib.get('mode') == 'exec':
+			name = 'exec: %s' %name
+		return name
+
+#TODO: make this say exec: $name when it detects mode
+	def get_icon(self):
+		return self.node.attrib.get('icon', '')
+
+	def get_icon_mode(self):
+		if self.node.attrib.get('mode1') == 'file':
+			return self.node.attrib.get('mode1')
+		else:
+			return None
+
+	def get_type(self):
+		return 'Menu'
+
+	def get_options(self):
+
+		retlist = []
+		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		label.set_markup('<b>Name:</b>')
+		widget = gtk.Entry()
+		widget.props.text = self.node.attrib.get('name', '')
+		widget.connect('changed', self.on_name_changed)
+		
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Name mode:</b>')
+		widget = gtk.combo_box_new_text()
+		widget.append_text('Normal')
+		widget.append_text('Execute')
+		widget.props.active = self.node.attrib.get('name') is not None and self.node.attrib.get('mode') == 'exec'
+		widget.connect('changed', self.on_name_mode_changed)
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		#TODO:Make this actually edit icon
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon:</b>')
+		widget = gtk.Entry()
+		if self.node.attrib.get('icon') is not None:
+			widget.props.text = self.node.attrib.get('icon')
+		else:
+			widget.props.text = ''
+		#widget.props.text = self.node.attrib.get('icon')
+		widget.connect('changed', self.on_icon_changed)
+		
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+		
+		label = gtk.Label()
+		label.set_alignment(0, 0.5)
+		sgroup.add_widget(label)
+		label.set_markup('<b>Icon mode:</b>')
+		widget = gtk.combo_box_new_text()
+		widget.append_text('Normal')
+		widget.append_text('File Path')
+		widget.props.active = self.node.attrib.get('icon') is not None and self.node.attrib.get('mode1') == 'file'
+		widget.connect('changed', self.on_icon_mode_changed)
+
+		hbox = gtk.HBox()
+		hbox.pack_start(label)
+		hbox.pack_start(widget, True, True)
+		retlist.append(hbox)
+
+		return retlist
+
+	def on_name_changed(self, widget):
+		self.node.attrib['name'] = widget.props.text
+	def on_name_mode_changed(self, widget): #EDIT THIS
+		if widget.props.active:
+			self.node.attrib['mode'] = 'exec'
+		elif 'mode' in self.node.attrib:
+			del self.node.attrib['mode']
+	def on_icon_changed(self, widget):
+		if widget.props.text != '':
+			self.node.attrib['icon'] = widget.props.text
+		else:
+			del self.node.attrib['icon']
+	def on_icon_mode_changed(self, widget): #EDIT THIS
+		if widget.props.active:
+			self.node.attrib['mode1'] = 'file'
+		elif 'mode1' in self.node.attrib:
+			del self.node.attrib['mode1']
+
+itemtypes = {
+	'launcher': Launcher,
+	'windowlist': Windowlist,
+	'viewportlist': Viewportlist,
+	'reload': Reload,
+}
+
+
+def make_item(node):
+
+	itemtype = node.attrib.get('type')
+	return itemtypes.get(itemtype, Item)(node)
+
+
+def indent(elem, level=0):
+	i = "\n" + level*"  "
+	if len(elem):
+		if not elem.text or not elem.text.strip():
+			elem.text = i + "  "
+		for e in elem:
+			indent(e, level+1)
+			if not e.tail or not e.tail.strip():
+				e.tail = i + "  "
+		if not e.tail or not e.tail.strip():
+			e.tail = i
+	else:
+		if level and (not elem.tail or not elem.tail.strip()):
+			elem.tail = i
+
+def write_menu():
+
+	indent(menu.node)
+	menufile.write(open(os.path.join(configdir, 'menu.xml'), 'w'))
+
+	if bus is not None:
+		try:
+			bus.get_object('org.compiz_fusion.deskmenu',
+				'/org/compiz_fusion/deskmenu/menu').reload()
+		except dbus.DBusException:
+			return
+
+elements = {'menu': Menu, 'item': make_item, 'separator': Separator}
+
+elementsbyname = {
+	'Launcher': Launcher,
+	'Windows List': Windowlist,
+	'Viewports List': Viewportlist,
+	'Reload': Reload,
+	'Separator': Separator,
+	'Menu': Menu,
+}
+
+
+if __name__ == '__main__':
+
+	if dbus:
+		try:
+			bus = dbus.SessionBus()
+		except dbus.DBusException:
+			bus = None
+	else:
+		bus = None
+
+	filename = BaseDirectory.load_first_config('compiz/deskmenu/menu.xml')
+	menufile = etree.parse(filename)
+	root = menufile.getroot()
+	menu = Menu(root)
+	configdir = BaseDirectory.save_config_path('compiz/deskmenu')
+	DeskmenuEditor()
+	gtk.main()

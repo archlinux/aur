@@ -1,0 +1,3504 @@
+diff -aur compiz-deskmenu/Makefile compiz-deskmenu3/Makefile
+--- compiz-deskmenu/Makefile	2008-03-14 16:25:23.000000000 -0700
++++ compiz-deskmenu3/Makefile	2010-11-15 15:58:20.000000000 -0800
+@@ -1,34 +1,24 @@
+ PREFIX := /usr
+ 
+-CPPFLAGS := `pkg-config --cflags dbus-glib-1 gdk-2.0 gtk+-2.0 libwnck-1.0`
+-CPPFLAGS_CLIENT := `pkg-config --cflags dbus-glib-1`
++CPPFLAGS := `pkg-config --cflags gdk-2.0 gtk+-2.0 libwnck-1.0`
+ WARNINGS := -Wall -Wextra -Wno-unused-parameter
+ CFLAGS := -O2 $(WARNINGS)
+-LDFLAGS := `pkg-config --libs dbus-glib-1 gdk-2.0 gtk+-2.0 libwnck-1.0`
++LDFLAGS := `pkg-config --libs gdk-2.0 gtk+-2.0 libwnck-1.0`
+ LDFLAGS_CLIENT := `pkg-config --libs dbus-glib-1`
+ 
+-all: compiz-deskmenu-menu compiz-deskmenu
++all: compiz-deskmenu
+ 
+-compiz-deskmenu: deskmenu.c deskmenu-common.h
+-	$(CC) $(CPPFLAGS_CLIENT) $(CFLAGS) $(LDFLAGS_CLIENT) -o $@ $<
+-
+-compiz-deskmenu-menu: deskmenu-menu.c deskmenu-wnck.c deskmenu-wnck.h deskmenu-glue.h deskmenu-common.h deskmenu-menu.h
++compiz-deskmenu: deskmenu-menu.c deskmenu-wnck.c deskmenu-wnck.h deskmenu-menu.h
+ 
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ deskmenu-menu.c deskmenu-wnck.c
+ 
+-deskmenu-glue.h: deskmenu-service.xml
+-	dbus-binding-tool --mode=glib-server --prefix=deskmenu --output=$@ $^
+-
+ install: all
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin/
+ 	install compiz-deskmenu $(DESTDIR)$(PREFIX)/bin/
+-	install compiz-deskmenu-menu $(DESTDIR)$(PREFIX)/bin/
+ 	install compiz-deskmenu-editor $(DESTDIR)$(PREFIX)/bin/
+ 	mkdir -p $(DESTDIR)/etc/xdg/compiz/deskmenu/
+ 	install menu.xml $(DESTDIR)/etc/xdg/compiz/deskmenu/
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/dbus-1/services/
+-	install org.compiz_fusion.deskmenu.service $(DESTDIR)$(PREFIX)/share/dbus-1/services/
+ 
+ clean:
+-	rm -f compiz-deskmenu compiz-deskmenu-menu deskmenu-glue.h
++	rm -f compiz-deskmenu
+ 
+diff -aur compiz-deskmenu/README compiz-deskmenu3/README
+--- compiz-deskmenu/README	2008-03-14 16:25:23.000000000 -0700
++++ compiz-deskmenu3/README	2010-11-16 17:55:54.000000000 -0800
+@@ -1,10 +1,11 @@
+                             Compiz Deskmenu
++== Credits ==
++Kudos to Christopher Williams for the excellent program. This new version contains several updates.
+ 
+ === Requirements ===
+ 
+  * A recent version of GLib 2.x and GTK+ 2.x
+  * libwnck (2.20 is probably best, but not strictly required)
+- * dbus (you must have a running session bus) and dbus-glib
+ 
+ It does not strictly require compiz (but it does need a recent version of the
+ vpswitch plugin for 'Initiate on Desktop' to work)
+@@ -48,15 +49,13 @@
+  * separator: a simple GtkSeparatorMenuItem
+  * windowlist: libwnck-based window list menu.
+  * viewportlist: libwnck-based viewport list menu.
+- * reload: reload button (it actually quits the menu)
++ * pipe: dynamically creates any other menu item, as long as the script
++	you make formats your entries properly
+ 
+-Menu editor coming soon.
++Also, you can edit other menu files by doing this:
++compiz-deskmenu-editor /path/to/file
+ 
+ === Implementation ===
+ 
+-It compiles into two binaries, compiz-deskmenu and compiz-deskmenu-menu.
+-compiz-deskmenu is a simple dbus client that connects
+-to org.compiz_fusion.deskmenu and calls the show method. The actual menu is
+-compiz-deskmenu-menu, but you shouldn't ever need to manually launch it; the
+-dbus service file will cause it to be automatically spawned when the name is
+-requested.
++Compiz-deskmenu compiles into one binary, which is what parses and
++displays the menu. If demanded, an apwal-esque version of this will be on its way.
+diff -aur compiz-deskmenu/compiz-deskmenu-editor compiz-deskmenu3/compiz-deskmenu-editor
+--- compiz-deskmenu/compiz-deskmenu-editor	2008-03-14 16:25:23.000000000 -0700
++++ compiz-deskmenu3/compiz-deskmenu-editor	2010-11-16 17:53:13.000000000 -0800
+@@ -1,734 +1,1070 @@
+-#!/usr/bin/env python
+-
++#!/usr/bin/env python2
++#TODO: An actual icon dialog and editing non-default files
++import sys
+ import gtk, os
+ from lxml import etree
+ from xdg import BaseDirectory
++import re #This is to autoset file mode for *.desktop icons
+ import ConfigParser
+ 
+-try:
+-    import dbus
+-except ImportError:
+-    dbus = None
+-
+ class DeskmenuEditor(gtk.Window):
+ 
+-    def __init__(self):
+-        gtk.Window.__init__(self)
+-        
+-        self.props.title = 'Compiz Deskmenu Editor'
+-        self.props.icon_name = 'gtk-edit'
+-        self.props.border_width = 12
+-        self.set_size_request(400, 400)
+-        self.model = gtk.TreeStore(object)
+-        self.add_menu(menu)
+-
+-        vbox = gtk.VBox(spacing=12)
+-
+-        scrolled = gtk.ScrolledWindow()
+-        scrolled.props.hscrollbar_policy = gtk.POLICY_NEVER
+-        scrolled.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC
+-        treeview = gtk.TreeView(self.model)
+-        treeview.set_reorderable(True)
+-        cell = gtk.CellRendererText()
+-        elements = gtk.TreeViewColumn('Item', cell)
+-        elements.set_cell_data_func(cell, self.get_type)
+-        treeview.append_column(elements)
+-
+-        name = gtk.TreeViewColumn('Name')
+-
+-        cell = gtk.CellRendererPixbuf()
+-        name.pack_start(cell, False)
+-        name.set_cell_data_func(cell, self.get_icon)
+-
+-        cell = gtk.CellRendererText()
+-        name.pack_start(cell)
+-        name.set_cell_data_func(cell, self.get_name)
+-
+-        treeview.append_column(name)
+-        scrolled.add(treeview)
+-        vbox.pack_start(scrolled, True, True)
+-        targets = [
+-            ('deskmenu-element', gtk.TARGET_SAME_WIDGET, 0),
+-            ('text/uri-list', 0, 1),
+-        ]
+-        treeview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, targets, gtk.gdk.ACTION_DEFAULT|gtk.gdk.ACTION_MOVE)
+-        treeview.enable_model_drag_dest(targets, gtk.gdk.ACTION_MOVE)
+-
+-        treeview.connect('drag-data-get', self.on_drag_data_get)
+-        treeview.connect('drag-data-received', self.on_drag_data_received)
+-
+-        treeview.connect('row-activated', self.on_row_activated)
+-
+-        treeview.connect('button-press-event', self.on_treeview_button_press_event)
+-        treeview.expand_all()
+-
+-        self.selection = treeview.get_selection()
+-        self.selection.connect('changed', self.on_selection_changed)
+-
+-        buttonbox = gtk.HButtonBox()
+-        vbox.pack_end(buttonbox, False, False)
+-
+-        new = gtk.Button(stock=gtk.STOCK_NEW)
+-        new.connect('clicked', self.on_new_clicked)
+-        buttonbox.pack_start(new)
+-        self.edit = gtk.Button(stock=gtk.STOCK_EDIT)
+-        self.edit.connect('clicked', self.on_edit_clicked)
+-        buttonbox.pack_start(self.edit)
+-        self.delete = gtk.Button(stock=gtk.STOCK_DELETE)
+-        self.delete.connect('clicked', self.on_delete_clicked)
+-        buttonbox.pack_start(self.delete)
+-        close = gtk.Button(stock=gtk.STOCK_CLOSE)
+-        close.connect('clicked', self.on_close_clicked)
+-        buttonbox.pack_end(close)
+-
+-        self.add(vbox)
+-
+-        self.popup = gtk.Menu()
+-        self.edit_menu = gtk.ImageMenuItem(stock_id=gtk.STOCK_EDIT)
+-        self.edit_menu.connect('activate', self.on_edit_clicked)
+-        self.popup.append(self.edit_menu)
+-        self.delete_menu = gtk.ImageMenuItem(stock_id=gtk.STOCK_DELETE)
+-        self.delete_menu.connect('activate', self.on_delete_clicked)
+-        self.popup.append(self.delete_menu)
+-        self.popup.show_all()
+-
+-        self.connect('destroy', self.on_close_clicked)
+-
+-        self.show_all()
+-
+-    def add_menu(self, m, parent=None):
+-        for item in m.children:
+-            iter = self.model.append(parent, [item])
+-            if item.node.tag == 'menu':
+-                self.add_menu(item, iter)
+-
+-    def get_name(self, column, cell, model, iter):
+-        name = model.get_value(iter, 0).get_name()
+-        if name is None:
+-            name = ''
+-        cell.set_property('text', name)
+-
+-    def get_type(self, column, cell, model, iter):
+-        typ = model.get_value(iter, 0).get_type()
+-        if typ is None:
+-            typ = ''
+-        cell.set_property('text', typ)
+-
+-    def get_icon(self, column, cell, model, iter):
+-        icon = model.get_value(iter, 0).get_icon()
+-        if icon is not None:
+-            cell.set_property('icon-name', icon)
+-        else:
+-            cell.set_property('icon-name', None)
+-
+-    def on_new_clicked(self, widget):
+-
+-        NewItemDialog(*self.selection.get_selected())
+-
+-    def on_edit_clicked(self, widget):
+-
+-        EditItemDialog(*self.selection.get_selected())
+-        
+-    def on_delete_clicked(self, widget):
+-
+-        model, row = self.selection.get_selected()
+-
+-        parent = None
+-        if row:
+-            current = model[row][0].node
+-
+-            if current.tag == 'menu' and len(current):
+-                warning = gtk.MessageDialog(self, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_NONE, 'Delete menu element with %s children?' %len(current))
+-                warning.add_buttons(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_DELETE, gtk.RESPONSE_ACCEPT)
+-                if warning.run() != gtk.RESPONSE_ACCEPT:
+-                    warning.destroy()
+-                    return
+-                warning.destroy()
+-
+-            parent = model[row].parent
+-            if parent is not None:
+-                parent = parent[0].node
+-            else:
+-                parent = menu.node
+-            parent.remove(current)
+-            model.remove(row)
+-
+-        write_menu()
+-
+-    def on_close_clicked(self, widget):
+-
+-        write_menu()
+-        gtk.main_quit()
+-
+-    def on_drag_data_get(self, treeview, context, selection, target_id,
+-                           etime):
+-        treeselection = treeview.get_selection()
+-        model, iter = treeselection.get_selected()
+-        data = model.get_string_from_iter(iter)
+-        selection.set(selection.target, 8, data)
+-
+-    def on_drag_data_received(self, treeview, context, x, y, selection,
+-                                info, etime):
+-        model = treeview.get_model()
+-        data = selection.data
+-
+-        drop_info = treeview.get_dest_row_at_pos(x, y)
+-        if selection.type == 'deskmenu-element':
+-            source = model[data][0]
+-            if drop_info:
+-                path, position = drop_info
+-                siter = model.get_iter(data)
+-                diter = model.get_iter(path)
+-
+-                if model.get_path(model.get_iter_from_string(data)) == path:
+-                    return
+-
+-                dest = model[path][0]
+-                if context.action == gtk.gdk.ACTION_MOVE:
+-                    source.node.getparent().remove(source.node)
+-
+-                if dest.node.tag == 'menu' and position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE,
+-                    gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
+-                    dest.node.append(source.node)
+-                    fiter = model.append(diter, row=(source,))
+-                else:
+-                    i = dest.node.getparent().index(dest.node)
+-                    if position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, 
+-                        gtk.TREE_VIEW_DROP_BEFORE):
+-                        dest.node.getparent().insert(i, source.node)
+-                        fiter = model.insert_before(None, diter, row=(source,))
+-                    else:
+-                        dest.node.getparent().insert(i+1, source.node)
+-                        fiter = model.insert_after(None, diter, row=(source,))
+-
+-                if model.iter_has_child(siter):
+-                    citer = model.iter_children(siter)
+-                    while citer is not None:
+-                        model.append(fiter, row=(model[citer][0],))
+-                        citer = model.iter_next(citer)
+-                if context.action == gtk.gdk.ACTION_MOVE:
+-                    context.finish(True, True, etime)
+-
+-        elif selection.type == 'text/uri-list':
+-            if drop_info:
+-                path, position = drop_info
+-                uri = selection.data.replace('file:///', '/').strip()
+-                entry = ConfigParser.ConfigParser()
+-                entry.read(uri)
+-                launcher = Launcher()
+-                launcher.name = etree.SubElement(launcher.node, 'name')
+-                launcher.icon = etree.SubElement(launcher.node, 'icon')
+-                launcher.command = etree.SubElement(launcher.node, 'command')
+-                try:
+-                    launcher.name.text = entry.get('Desktop Entry', 'Name')
+-                    launcher.icon.text = entry.get('Desktop Entry', 'Icon').split('.')[0]
+-                    launcher.command.text = entry.get('Desktop Entry', 'Exec').split('%')[0]
+-                except ConfigParser.Error:
+-                    return
+-                dest = model[path][0]
+-                diter = model.get_iter(path)
+-                if dest.node.tag == 'menu' and position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE,
+-                    gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
+-                    dest.node.append(launcher.node)
+-                    fiter = model.append(diter, row=(launcher,))
+-                else:
+-                    i = dest.node.getparent().index(dest.node)
+-                    if position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, 
+-                        gtk.TREE_VIEW_DROP_BEFORE):
+-                        dest.node.getparent().insert(i, launcher.node)
+-                        fiter = model.insert_before(None, diter, row=(launcher,))
+-                    else:
+-                        dest.node.getparent().insert(i+1, launcher.node)
+-                        fiter = model.insert_after(None, diter, row=(launcher,))
+-                if context.action == gtk.gdk.ACTION_MOVE:
+-                    context.finish(True, True, etime)
++	def __init__(self):
++		gtk.Window.__init__(self)
++		
++		self.props.title = 'Compiz Deskmenu Editor'
++		self.props.icon_name = 'gtk-edit'
++		self.props.border_width = 12
++		self.set_size_request(400, 400)
++		self.model = gtk.TreeStore(object)
++		self.add_menu(menu)
++
++		vbox = gtk.VBox(spacing=12)
++
++		scrolled = gtk.ScrolledWindow()
++		scrolled.props.hscrollbar_policy = gtk.POLICY_NEVER
++		scrolled.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC
++		treeview = gtk.TreeView(self.model)
++		treeview.set_reorderable(True)
++		cell = gtk.CellRendererText()
++		elements = gtk.TreeViewColumn('Item', cell)
++		elements.set_cell_data_func(cell, self.get_type)
++		treeview.append_column(elements)
++
++		name = gtk.TreeViewColumn('Name')
++
++		cell = gtk.CellRendererPixbuf()
++		name.pack_start(cell, False)
++		name.set_cell_data_func(cell, self.get_icon)
++
++		cell = gtk.CellRendererText()
++		name.pack_start(cell)
++		name.set_cell_data_func(cell, self.get_name)
++
++		treeview.append_column(name)
++		scrolled.add(treeview)
++		vbox.pack_start(scrolled, True, True)
++		targets = [
++			('deskmenu-element', gtk.TARGET_SAME_WIDGET, 0),
++			('text/uri-list', 0, 1),
++		]
++		treeview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, targets, gtk.gdk.ACTION_DEFAULT|gtk.gdk.ACTION_MOVE)
++		treeview.enable_model_drag_dest(targets, gtk.gdk.ACTION_MOVE)
++
++		treeview.connect('drag-data-get', self.on_drag_data_get)
++		treeview.connect('drag-data-received', self.on_drag_data_received)
++
++		treeview.connect('row-activated', self.on_row_activated)
++
++		treeview.connect('button-press-event', self.on_treeview_button_press_event)
++		treeview.expand_all()
++
++		self.selection = treeview.get_selection()
++		self.selection.connect('changed', self.on_selection_changed)
++
++		buttonbox = gtk.HButtonBox()
++		vbox.pack_end(buttonbox, False, False)
++
++		new = gtk.Button(stock=gtk.STOCK_NEW)
++		new.connect('clicked', self.on_new_clicked)
++		buttonbox.pack_start(new)
++		self.edit = gtk.Button(stock=gtk.STOCK_EDIT)
++		self.edit.connect('clicked', self.on_edit_clicked)
++		buttonbox.pack_start(self.edit)
++		self.delete = gtk.Button(stock=gtk.STOCK_DELETE)
++		self.delete.connect('clicked', self.on_delete_clicked)
++		buttonbox.pack_start(self.delete)
++		close = gtk.Button(stock=gtk.STOCK_CLOSE)
++		close.connect('clicked', self.on_close_clicked)
++		buttonbox.pack_end(close)
++
++		self.add(vbox)
++
++		self.popup = gtk.Menu()
++		self.edit_menu = gtk.ImageMenuItem(stock_id=gtk.STOCK_EDIT)
++		self.edit_menu.connect('activate', self.on_edit_clicked)
++		self.popup.append(self.edit_menu)
++		self.delete_menu = gtk.ImageMenuItem(stock_id=gtk.STOCK_DELETE)
++		self.delete_menu.connect('activate', self.on_delete_clicked)
++		self.popup.append(self.delete_menu)
++		self.popup.show_all()
++
++		self.connect('destroy', self.on_close_clicked)
++
++		self.show_all()
++
++	def add_menu(self, m, parent=None):
++		for item in m.children:
++			iter = self.model.append(parent, [item])
++			if item.node.tag == 'menu':
++				self.add_menu(item, iter)
++
++	def get_name(self, column, cell, model, iter):
++		name = model.get_value(iter, 0).get_name()
++		if name is None:
++			name = ''
++		cell.set_property('text', name)
++
++	def get_type(self, column, cell, model, iter):
++		typ = model.get_value(iter, 0).get_type()
++		if typ is None:
++			typ = ''
++		cell.set_property('text', typ)
++
++	def get_icon(self, column, cell, model, iter):
++		icon = model.get_value(iter, 0).get_icon()
++		icon_mode = model.get_value(iter, 0).get_icon_mode()
++		if icon is not None:
++			if icon_mode is not None:
++				w = gtk.icon_size_lookup(gtk.ICON_SIZE_MENU)
++				cell.set_property('pixbuf', gtk.gdk.pixbuf_new_from_file_at_size(os.path.expanduser(icon), w[0], w[0]))
++				cell.set_property('icon-name', None) #possibly reduntant safety measure
++			else:
++				cell.set_property('icon-name', icon)
++				cell.set_property('pixbuf', None) #possibly reduntant safety measure
++		else:
++			cell.set_property('icon-name', None)
++			cell.set_property('pixbuf', None)
++
++	def on_new_clicked(self, widget):
++
++		NewItemDialog(*self.selection.get_selected())
++
++	def on_edit_clicked(self, widget):
++
++		EditItemDialog(*self.selection.get_selected())
++		
++	def on_delete_clicked(self, widget):
++
++		model, row = self.selection.get_selected()
++
++		parent = None
++		if row:
++			current = model[row][0].node
++
++			if current.tag == 'menu' and len(current):
++				warning = gtk.MessageDialog(self, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_NONE, 'Delete menu element with %s children?' %len(current))
++				warning.add_buttons(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_DELETE, gtk.RESPONSE_ACCEPT)
++				if warning.run() != gtk.RESPONSE_ACCEPT:
++					warning.destroy()
++					return
++				warning.destroy()
++
++			parent = model[row].parent
++			if parent is not None:
++				parent = parent[0].node
++			else:
++				parent = menu.node
++			parent.remove(current)
++			model.remove(row)
++
++		write_menu()
++
++	def on_close_clicked(self, widget):
++
++		write_menu()
++		gtk.main_quit()
++
++	def on_drag_data_get(self, treeview, context, selection, target_id,
++						   etime):
++		treeselection = treeview.get_selection()
++		model, iter = treeselection.get_selected()
++		data = model.get_string_from_iter(iter)
++		selection.set(selection.target, 8, data)
++
++	def on_drag_data_received(self, treeview, context, x, y, selection,
++								info, etime):
++		model = treeview.get_model()
++		data = selection.data
++
++		drop_info = treeview.get_dest_row_at_pos(x, y)
++		if selection.type == 'deskmenu-element':
++			source = model[data][0]
++			if drop_info:
++				path, position = drop_info
++				siter = model.get_iter(data)
++				diter = model.get_iter(path)
++
++				if model.get_path(model.get_iter_from_string(data)) == path:
++					return
++
++				dest = model[path][0]
++				if context.action == gtk.gdk.ACTION_MOVE:
++					source.node.getparent().remove(source.node)
++
++				if dest.node.tag == 'menu' and position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE,
++					gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
++					dest.node.append(source.node)
++					fiter = model.append(diter, row=(source,))
++				else:
++					i = dest.node.getparent().index(dest.node)
++					if position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, 
++						gtk.TREE_VIEW_DROP_BEFORE):
++						dest.node.getparent().insert(i, source.node)
++						fiter = model.insert_before(None, diter, row=(source,))
++					else:
++						dest.node.getparent().insert(i+1, source.node)
++						fiter = model.insert_after(None, diter, row=(source,))
++
++				if model.iter_has_child(siter):
++					citer = model.iter_children(siter)
++					while citer is not None:
++						model.append(fiter, row=(model[citer][0],))
++						citer = model.iter_next(citer)
++				if context.action == gtk.gdk.ACTION_MOVE:
++					context.finish(True, True, etime)
++
++		elif selection.type == 'text/uri-list':
++			if drop_info:
++				path, position = drop_info
++				uri = selection.data.replace('file:///', '/').strip()
++				entry = ConfigParser.ConfigParser()
++				entry.read(uri)
++				launcher = Launcher()
++				launcher.name = etree.SubElement(launcher.node, 'name')
++				launcher.icon = etree.SubElement(launcher.node, 'icon')
++				launcher.command = etree.SubElement(launcher.node, 'command')
++				try:
++					launcher.name.text = entry.get('Desktop Entry', 'Name')
++					if re.search("/", entry.get('Desktop Entry', 'Icon')):
++						launcher.icon.attrib['mode1'] = 'file'
++					launcher.icon.text = entry.get('Desktop Entry', 'Icon')
++					launcher.command.text = entry.get('Desktop Entry', 'Exec').split('%')[0]
++				except ConfigParser.Error:
++					return
++				dest = model[path][0]
++				diter = model.get_iter(path)
++				if dest.node.tag == 'menu' and position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE,
++					gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
++					dest.node.append(launcher.node)
++					fiter = model.append(diter, row=(launcher,))
++				else:
++					i = dest.node.getparent().index(dest.node)
++					if position in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, 
++						gtk.TREE_VIEW_DROP_BEFORE):
++						dest.node.getparent().insert(i, launcher.node)
++						fiter = model.insert_before(None, diter, row=(launcher,))
++					else:
++						dest.node.getparent().insert(i+1, launcher.node)
++						fiter = model.insert_after(None, diter, row=(launcher,))
++				if context.action == gtk.gdk.ACTION_MOVE:
++					context.finish(True, True, etime)
+ 
+-        write_menu()
++		write_menu()
+ 
+-        return
++		return
+ 
+-    def on_selection_changed(self, selection):
++	def on_selection_changed(self, selection):
+ 
+-        model, row = selection.get_selected()
++		model, row = selection.get_selected()
+  
+-        sensitive = row and model.get_value(row, 0).editable
++		sensitive = row and model.get_value(row, 0).editable
+ 
+-        self.edit.props.sensitive = sensitive
+-        self.edit_menu.props.sensitive = sensitive
+-        self.delete.props.sensitive = row
+-        self.delete_menu.props.sensitive = row
+-
+-    def on_row_activated(self, treeview, path, view_column):
+-
+-        model = treeview.get_model()
+-        EditItemDialog(model, model.get_iter(path))
+-        
+-    def on_treeview_button_press_event(self, treeview, event):
+-        if event.button == 3:
+-            pthinfo = treeview.get_path_at_pos(int(event.x), int(event.y))
+-            if pthinfo is not None:
+-                path, col, cellx, celly = pthinfo
+-                treeview.grab_focus()
+-                treeview.set_cursor(path, col, 0)
+-                self.popup.popup(None, None, None, event.button, event.time)
+-            return 1
++		self.edit.props.sensitive = sensitive
++		self.edit_menu.props.sensitive = sensitive
++		self.delete.props.sensitive = row
++		self.delete_menu.props.sensitive = row
++
++	def on_row_activated(self, treeview, path, view_column):
++
++		model = treeview.get_model()
++		EditItemDialog(model, model.get_iter(path))
++		
++	def on_treeview_button_press_event(self, treeview, event):
++		if event.button == 3:
++			pthinfo = treeview.get_path_at_pos(int(event.x), int(event.y))
++			if pthinfo is not None:
++				path, col, cellx, celly = pthinfo
++				treeview.grab_focus()
++				treeview.set_cursor(path, col, 0)
++				self.popup.popup(None, None, None, event.button, event.time)
++			return 1
+ 
+ 
+ class NewItemDialog(gtk.Dialog):
+ 
+-    elementlist = ['Launcher', 'Menu', 'Separator', 'Windows List',
+-        'Viewports List', 'Reload']
++	elementlist = ['Launcher', 'Menu', 'Separator', 'Windows List',
++		'Viewports List', 'Pipeitem']
+ 
+-    def __init__(self, model, row):
+-        gtk.Dialog.__init__(self, 'New Item', None, 0, None)
++	def __init__(self, model, row):
++		gtk.Dialog.__init__(self, 'New Item', None, 0, None)
+ 
+-        self.set_size_request(250, 250)
++		self.set_size_request(250, 250)
+ 
+-        self.props.border_width = 6
+-        self.vbox.props.spacing = 6
+-        self.set_has_separator(False)
+-        self.treeview = self.make_treeview()
+-
+-        scroll = gtk.ScrolledWindow()
+-        scroll.add(self.treeview)
+-        scroll.props.hscrollbar_policy = gtk.POLICY_NEVER
+-        scroll.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC
+-        self.vbox.pack_start(scroll, True, True)
+-
+-        self.add_buttons(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+-            gtk.STOCK_NEW, gtk.RESPONSE_ACCEPT)
+-
+-        self.action_area.props.border_width = 0
+-
+-        self.show_all()
+-
+-        element = None
+-
+-        if self.run() == gtk.RESPONSE_ACCEPT:
+-            m, r = self.treeview.get_selection().get_selected()
+-            if r:
+-                elementname = m[r][0]
+-            else:
+-                self.destroy()
+-                return
+-            parent = sibling = None
+-            if row:
+-                current = model[row][0]
+-                if current.node.tag == 'menu':
+-                    parent = row
+-                else:
+-                    parent = model[row].parent
+-                    if parent is not None:
+-                        parent = parent.iter
+-                    sibling = row 
+-            if parent:
+-                parentelement = model[parent][0]
+-            else:
+-                parentelement = menu
+-
+-            element = elementsbyname[elementname]()
+-            if sibling:
+-                position = parentelement.node.index(current.node) + 1
+-                parentelement.node.insert(position, element.node)
+-                model.insert_after(parent, sibling, row=(element,))
+-            else:
+-                model.append(parent, row=(element,))
+-                parentelement.node.append(element.node)
+-
+-        self.destroy()
+-        write_menu()
+-
+-        if element and element.editable:
+-            EditItemDialog(element=element)
+-
+-    def make_treeview(self):
+-        model = gtk.ListStore(str)  
+-        for el in self.elementlist:
+-            model.append([el])
+-
+-        treeview = gtk.TreeView(model)
+-        column = gtk.TreeViewColumn(None, gtk.CellRendererText(), text=0)
+-        treeview.set_headers_visible(False)
+-        treeview.append_column(column)
++		self.props.border_width = 6
++		self.vbox.props.spacing = 6
++		self.set_has_separator(False)
++		self.treeview = self.make_treeview()
++
++		scroll = gtk.ScrolledWindow()
++		scroll.add(self.treeview)
++		scroll.props.hscrollbar_policy = gtk.POLICY_NEVER
++		scroll.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC
++		self.vbox.pack_start(scroll, True, True)
++
++		self.add_buttons(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
++			gtk.STOCK_NEW, gtk.RESPONSE_ACCEPT)
++
++		self.action_area.props.border_width = 0
++
++		self.show_all()
++
++		element = None
++
++		if self.run() == gtk.RESPONSE_ACCEPT:
++			m, r = self.treeview.get_selection().get_selected()
++			if r:
++				elementname = m[r][0]
++			else:
++				self.destroy()
++				return
++			parent = sibling = None
++			if row:
++				current = model[row][0]
++				if current.node.tag == 'menu':
++					parent = row
++				else:
++					parent = model[row].parent
++					if parent is not None:
++						parent = parent.iter
++					sibling = row 
++			if parent:
++				parentelement = model[parent][0]
++			else:
++				parentelement = menu
++
++			element = elementsbyname[elementname]()
++			if sibling:
++				position = parentelement.node.index(current.node) + 1
++				parentelement.node.insert(position, element.node)
++				model.insert_after(parent, sibling, row=(element,))
++			else:
++				model.append(parent, row=(element,))
++				parentelement.node.append(element.node)
++
++		self.destroy()
++		write_menu()
++
++		if element and element.editable:
++			EditItemDialog(element=element)
++
++	def make_treeview(self):
++		model = gtk.ListStore(str)  
++		for el in self.elementlist:
++			model.append([el])
++
++		treeview = gtk.TreeView(model)
++		column = gtk.TreeViewColumn(None, gtk.CellRendererText(), text=0)
++		treeview.set_headers_visible(False)
++		treeview.append_column(column)
+ 
+-        treeview.connect('row-activated', self.on_row_activated)
+-        return treeview
++		treeview.connect('row-activated', self.on_row_activated)
++		return treeview
+ 
+-    def on_row_activated(self, treeview, path, view_column):
+-        self.response(gtk.RESPONSE_ACCEPT)
++	def on_row_activated(self, treeview, path, view_column):
++		self.response(gtk.RESPONSE_ACCEPT)
+ 
+ 
+ class EditItemDialog(gtk.Dialog):
+ 
+-    def __init__(self, model=None, row=None, element=None):
+-        gtk.Dialog.__init__(self, 'Edit Item', None, 0, None)
+-
+-        self.set_size_request(300, -1)
++	def __init__(self, model=None, row=None, element=None):
++		gtk.Dialog.__init__(self, 'Edit Item', None, 0, None)
+ 
+-        self.props.border_width = 6
+-        self.vbox.props.spacing = 6
+-        self.set_has_separator(False)
++		self.set_size_request(300, -1)
+ 
+-        if element is None:
+-            if not row:
+-                return
+-            element = model.get_value(row, 0)
++		self.props.border_width = 6
++		self.vbox.props.spacing = 6
++		self.set_has_separator(False)
+ 
+-        if not element.editable:
+-            return
++		if element is None:
++			if not row:
++				return
++			element = model.get_value(row, 0)
+ 
+-        for widget in element.get_options():
+-            self.vbox.pack_start(widget, False, False)
++		if not element.editable:
++			return
+ 
+-        self.add_buttons(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
++		for widget in element.get_options():
++			self.vbox.pack_start(widget, False, False)
+ 
+-        self.show_all()
+-        self.run()
+-        self.destroy()
+-        write_menu()
++		self.add_buttons(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+ 
++		self.show_all()
++		self.run()
++		self.destroy()
++		write_menu()
+ 
+ 
+ class Item(object):
+-    
+-    def __init__(self, node=None, parent=None, type=None):
++	
++	def __init__(self, node=None, parent=None, type=None):
+ 
+-        self.editable = False
++		self.editable = False
+ 
+-        if node is None:
+-            self.node = etree.Element('item')
+-            if type is not None:
+-                self.node.attrib['type'] = type
+-        
+-        else:
+-            self.node = node
++		if node is None:
++			self.node = etree.Element('item')
++			if type is not None:
++				self.node.attrib['type'] = type
++		
++		else:
++			self.node = node
++
++	def get_name(self):
++		return None
+ 
+-    def get_name(self):
+-        return None
++	def get_type(self):
++		return 'Item'
+ 
+-    def get_type(self):
+-        return 'Item'
++	def get_icon(self):
++		return None
+ 
+-    def get_icon(self):
+-        return None
++	def get_icon_mode(self):
++		return None
+ 
+ class Launcher(Item):
+-    
+-    def __init__(self, node=None):
++	
++	def __init__(self, node=None):
+ 
+-        Item.__init__(self, node)
+-
+-        if node is None:
+-            self.node = etree.Element('item', type='launcher')
+-        
+-        self.editable = True
+-
+-    def get_name(self):
+-
+-        subnode = self.node.find('name')
+-        if subnode is not None:
+-            name = subnode.text
+-            if subnode.attrib.get('mode') == 'exec':
+-                name = 'exec: %s' %name
+-            return name
+-        else:
+-            return None
+-
+-    def get_type(self):
+-        return 'Launcher'
+-
+-    def get_icon(self):
+-        iconnode = self.node.find('icon')
+-        if iconnode is not None:
+-            return iconnode.text
+-        else:
+-            return None
+-
+-    def get_options(self):
+-
+-        retlist = []
+-        sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+-
+-        label = gtk.Label()
+-        label.set_alignment(0, 0.5)
+-        sgroup.add_widget(label)
+-        label.set_markup('<b>Name:</b>')
+-        widget = gtk.Entry()
+-        
+-        namenode = self.node.find('name')
+-        if namenode is not None:
+-            name = namenode.text
+-        else:
+-            name = ''
+-        widget.props.text = name
+-        widget.connect('changed', self.on_subnode_changed, 'name')
+-
+-        hbox = gtk.HBox()
+-        hbox.pack_start(label)
+-        hbox.pack_start(widget, True, True)
+-        retlist.append(hbox)
+-
+-        label = gtk.Label()
+-        label.set_alignment(0, 0.5)
+-        sgroup.add_widget(label)
+-        label.set_markup('<b>Name mode:</b>')
+-        widget = gtk.combo_box_new_text()
+-        widget.append_text('Normal')
+-        widget.append_text('Execute')
+-        widget.props.active = namenode is not None and namenode.attrib.get('mode') == 'exec'
+-        widget.connect('changed', self.on_name_mode_changed)
+-
+-        hbox = gtk.HBox()
+-        hbox.pack_start(label)
+-        hbox.pack_start(widget, True, True)
+-        retlist.append(hbox)
+-
+-        label = gtk.Label()
+-        label.set_alignment(0, 0.5)
+-        sgroup.add_widget(label)
+-        label.set_markup('<b>Icon:</b>')
+-        widget = gtk.Entry()
+-        iconnode = self.node.find('icon')
+-        if iconnode is not None:
+-            icon = iconnode.text
+-        else:
+-            icon = ''
+-        widget.props.text = icon
+-        widget.connect('changed', self.on_subnode_changed, 'icon')
+-
+-        hbox = gtk.HBox()
+-        hbox.pack_start(label)
+-        hbox.pack_start(widget, True, True)
+-        retlist.append(hbox)
+-
+-        label = gtk.Label()
+-        label.set_alignment(0, 0.5)
+-        sgroup.add_widget(label)
+-        label.set_markup('<b>Command:</b>')
+-        widget = gtk.Entry()
+-        commandnode = self.node.find('command')
+-        if commandnode is not None:
+-            command = commandnode.text
+-        else:
+-            command = ''
+-        widget.props.text = command
+-        widget.connect('changed', self.on_subnode_changed, 'command')
+-
+-        hbox = gtk.HBox()
+-        hbox.pack_start(label)
+-        hbox.pack_start(widget, True, True)
+-        retlist.append(hbox)
+-
+-        return retlist
+-
+-    def on_subnode_changed(self, widget, tag):
+-        text = widget.props.text
+-        subnode = self.node.find(tag)
+-        if text:
+-            if subnode is None:
+-                subnode = etree.SubElement(self.node, tag)
+-            subnode.text = text
+-        else:
+-            if subnode is not None:
+-                self.node.remove(subnode)
+-        
+-    def on_name_mode_changed(self, widget):
+-        namenode = self.node.find('name')
+-        if widget.props.active:
+-            if namenode is None:
+-                namenode = etree.SubElement(self.node, 'name')
+-            namenode.attrib['mode'] = 'exec'
+-        elif 'mode' in self.name.attrib:
+-            namenode.attrib['mode'] = 'normal'
++		Item.__init__(self, node)
+ 
++		if node is None:
++			self.node = etree.Element('item', type='launcher') 
++		
++		self.editable = True
++
++	def get_name(self):
++
++		subnode = self.node.find('name')
++		if subnode is not None:
++			name = subnode.text
++			if subnode.attrib.get('mode') == 'exec':
++				name = 'exec: %s' %name
++			return name
++		else:
++			return None
++
++	def get_type(self):
++		return 'Launcher'
++
++	def get_icon(self):
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			return iconnode.text
++		else:
++			return None
++
++	def get_icon_mode(self):
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			if iconnode.attrib.get('mode1') == 'file':
++				return iconnode.attrib.get('mode1')
++		else:
++			return None
++
++	def get_options(self):
++
++		retlist = []
++		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Name:</b>')
++		widget = gtk.Entry()
++		
++		namenode = self.node.find('name')
++		if namenode is not None:
++			name = namenode.text
++		else:
++			name = ''
++		widget.props.text = name
++		widget.connect('changed', self.on_subnode_changed, 'name')
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Name mode:</b>')
++		widget = gtk.combo_box_new_text()
++		widget.append_text('Normal')
++		widget.append_text('Execute')
++		widget.props.active = namenode is not None and namenode.attrib.get('mode') == 'exec'
++		widget.connect('changed', self.on_name_mode_changed)
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon:</b>')
++		widget = gtk.Entry()
++		
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			icon = iconnode.text
++		else:
++			icon = ''
++		widget.props.text = icon
++		widget.connect('changed', self.on_subnode_changed, 'icon')
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++		
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon mode:</b>')
++		widget = gtk.combo_box_new_text()
++		widget.append_text('Normal')
++		widget.append_text('File Path')
++		widget.props.active = iconnode is not None and iconnode.attrib.get('mode1') == 'file'
++		widget.connect('changed', self.on_icon_mode_changed)
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Command:</b>')
++		widget = gtk.Entry()
++		commandnode = self.node.find('command')
++		if commandnode is not None:
++			command = commandnode.text
++		else:
++			command = ''
++		widget.props.text = command
++		widget.connect('changed', self.on_subnode_changed, 'command')
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		return retlist
++
++	def on_subnode_changed(self, widget, tag):
++		text = widget.props.text
++		subnode = self.node.find(tag)
++		if text:
++			if subnode is None:
++				subnode = etree.SubElement(self.node, tag)
++			subnode.text = text
++		else:
++			if subnode is not None:
++				self.node.remove(subnode)
++		
++	def on_name_mode_changed(self, widget):
++		namenode = self.node.find('name')
++		if widget.props.active:
++			if namenode is None:
++				namenode = etree.SubElement(self.node, 'name')
++			namenode.attrib['mode'] = 'exec'
++		elif 'mode' in namenode.attrib:
++			del namenode.attrib['mode']
++			
++	def on_icon_mode_changed(self, widget):
++		iconnode = self.node.find('icon')
++		if widget.props.active:
++			if iconnode is None:
++				iconnode = etree.SubElement(self.node, 'icon')
++			iconnode.attrib['mode1'] = 'file'
++		elif 'mode1' in iconnode.attrib:
++			del iconnode.attrib['mode1']
+ 
+ class Windowlist(Item):
+-    
+-    def __init__(self, node=None):
+-        Item.__init__(self, node, type='windowlist')
+-
+-    def get_type(self):
+-        return 'Windows list'
++	
++	def __init__(self, node=None):
++		Item.__init__(self, node, type='windowlist')
++		self.editable = True
++	
++	def get_icon(self):
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			return iconnode.text
++		else:
++			return None
++
++	def get_icon_mode(self):
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			if iconnode.attrib.get('mode1') == 'file':
++				return iconnode.attrib.get('mode1')
++		else:
++			return None
++
++	def get_options(self):
++		retlist = []
++		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon:</b>')
++		widget = gtk.Entry()
++		
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			icon = iconnode.text
++		else:
++			icon = ''
++		widget.props.text = icon
++		widget.connect('changed', self.on_subnode_changed, 'icon')
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++		
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon mode:</b>')
++		widget = gtk.combo_box_new_text()
++		widget.append_text('Normal')
++		widget.append_text('File Path')
++		widget.props.active = iconnode is not None and iconnode.attrib.get('mode1') == 'file'
++		widget.connect('changed', self.on_icon_mode_changed)
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		return retlist
++
++	def on_subnode_changed(self, widget, tag):
++		text = widget.props.text
++		subnode = self.node.find(tag)
++		if text:
++			if subnode is None:
++				subnode = etree.SubElement(self.node, tag)
++			subnode.text = text
++		else:
++			if subnode is not None:
++				self.node.remove(subnode)
++
++	def on_icon_mode_changed(self, widget):
++		iconnode = self.node.find('icon')
++		if widget.props.active:
++			if iconnode is None:
++				iconnode = etree.SubElement(self.node, 'icon')
++			iconnode.attrib['mode1'] = 'file'
++		elif 'mode1' in iconnode.attrib:
++			del iconnode.attrib['mode1']
+ 
++	def get_type(self):
++		return 'Windows list'
+ 
+ class Viewportlist(Item):
+-    
+-    def __init__(self, node=None):
+-        Item.__init__(self, node, type='viewportlist')
+-        self.editable = True
+-        self.wrap = self.node.find('wrap')
+-
+-    def get_type(self):
+-        return 'Viewports list'
+-
+-    def get_options(self):
+-        retlist = []
+-        widget = gtk.CheckButton("Wrap Viewports")
+-        widget.props.active = self.get_wrap()
+-        widget.connect('toggled', self.on_wrap_changed)
+-        retlist.append(widget)
+-
+-        return retlist
+-
+-    def get_wrap(self):
+-        if self.wrap is not None:
+-            return self.wrap.text == 'true'
+-        return False
+-
+-    def on_wrap_changed(self, widget):
+-        if self.wrap is None:
+-            self.wrap = etree.SubElement(self.node, 'wrap')
+-        if widget.props.active:
+-            text = 'true'
+-        else:
+-            text = 'false'
+-        self.wrap.text = text
+-
+-
+-class Reload(Item):
+-    
+-    def __init__(self, node=None):
+-        Item.__init__(self, node, type='reload')
+-
+-    def get_type(self):
+-        return 'Reload'
+-
++	
++	def __init__(self, node=None): #change to be an attribute of viewportlist
++		Item.__init__(self, node, type='viewportlist')
++		self.editable = True
++		self.wrap = self.node.find('wrap')
++
++	def get_type(self):
++		return 'Viewports list'
++	
++	def get_icon(self):
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			return iconnode.text
++		else:
++			return None
++
++	def get_icon_mode(self):
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			if iconnode.attrib.get('mode1') == 'file':
++				return iconnode.attrib.get('mode1')
++		else:
++			return None
++
++
++	def get_options(self):
++		retlist = []
++		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
++		widget = gtk.CheckButton("Wrap Viewports")
++		widget.props.active = self.get_wrap()
++		widget.connect('toggled', self.on_wrap_changed)
++		retlist.append(widget)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon:</b>')
++		widget = gtk.Entry()
++		
++		iconnode = self.node.find('icon')
++		if iconnode is not None:
++			icon = iconnode.text
++		else:
++			icon = ''
++		widget.props.text = icon
++		widget.connect('changed', self.on_subnode_changed, 'icon')
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++		
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon mode:</b>')
++		widget = gtk.combo_box_new_text()
++		widget.append_text('Normal')
++		widget.append_text('File Path')
++		widget.props.active = iconnode is not None and iconnode.attrib.get('mode1') == 'file'
++		widget.connect('changed', self.on_icon_mode_changed)
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Viewport Icon:</b>')
++		widget = gtk.Entry()
++		
++		vpiconnode = self.node.find('vpicon')
++		if vpiconnode is not None:
++			icon = vpiconnode.text
++		else:
++			icon = ''
++		widget.props.text = icon
++		widget.connect('changed', self.on_subnode_changed, 'vpicon')
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++		
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Viewport Icon mode:</b>')
++		widget = gtk.combo_box_new_text()
++		widget.append_text('Normal')
++		widget.append_text('File Path')
++		widget.props.active = vpiconnode is not None and vpiconnode.attrib.get('mode1') == 'file'
++		widget.connect('changed', self.on_vpicon_mode_changed)
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++		
++		return retlist
++
++	def get_wrap(self):
++		if self.wrap is not None:
++			return self.wrap.text == 'true'
++		return False
++
++	def on_subnode_changed(self, widget, tag):
++		text = widget.props.text
++		subnode = self.node.find(tag)
++		if text:
++			if subnode is None:
++				subnode = etree.SubElement(self.node, tag)
++			subnode.text = text
++		else:
++			if subnode is not None:
++				self.node.remove(subnode)
++
++	def on_wrap_changed(self, widget):
++		if self.wrap is None:
++			self.wrap = etree.SubElement(self.node, 'wrap')
++		if widget.props.active:
++			text = 'true'
++		else:
++			text = 'false'
++		self.wrap.text = text
++
++	def on_icon_mode_changed(self, widget):
++		iconnode = self.node.find('icon')
++		if widget.props.active:
++			if iconnode is None:
++				iconnode = etree.SubElement(self.node, 'icon')
++			iconnode.attrib['mode1'] = 'file'
++		elif 'mode1' in iconnode.attrib:
++			del iconnode.attrib['mode1']
++
++	def on_vpicon_mode_changed(self, widget):
++		iconnode = self.node.find('vpicon')
++		if widget.props.active:
++			if iconnode is None:
++				iconnode = etree.SubElement(self.node, 'vpicon')
++			iconnode.attrib['mode1'] = 'file'
++		elif 'mode1' in iconnode.attrib:
++			del iconnode.attrib['mode1']
+ 
+ class Separator(object):
+-    
+-    def __init__(self, node=None, parent=None):
+-        self.node = node
+-        self.editable = False
+-        if self.node is None:
+-            self.node = etree.Element('separator')
+-
+-    def get_name(self):
+-        return '---'
+-
+-    def get_type(self):
+-        return 'Separator'
++	
++	def __init__(self, node=None, parent=None):
++		self.node = node
++		self.editable = False
++		if self.node is None:
++			self.node = etree.Element('separator')
++
++	def get_name(self):
++		return '---'
++
++	def get_type(self):
++		return 'Separator'
++
++	def get_icon(self):
++		return None
++		
++	def get_icon_mode(self):
++		return None
++
++class Pipe(object):
++
++	def __init__(self, node=None):
++		self.node = node
++		self.children = []
++		self.editable = True
++
++		if node is None:
++			self.node = etree.Element('pipe', command='')
++
++		for child in self.node.getchildren():
++			try:
++				self.children.append(self.make_child(child))
++			except KeyError:
++				pass
++		
++
++	def make_child(self, child):
++		return elements[child.tag](child)
++
++	def get_name(self):
++		name = self.node.attrib.get('command', '')
++		return name
++
++	def get_icon(self):
++		return None
++
++	def get_icon_mode(self):
++		return None
++
++	def get_type(self):
++		return 'Pipeitem'
++
++	def get_options(self):
++
++		retlist = []
++		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		label.set_markup('<b>Command:</b>')
++		widget = gtk.Entry()
++		widget.props.text = self.node.attrib.get('command', '')
++		widget.connect('changed', self.on_command_changed)
++		
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
+ 
+-    def get_icon(self):
+-        return None
++		return retlist
+ 
++	def on_command_changed(self, widget):
++		self.node.attrib['command'] = widget.props.text
+ 
+ class Menu(object):
+ 
+-    def __init__(self, node=None):
+-        self.node = node
+-        self.children = []
+-        self.editable = True
+-
+-        if node is None:
+-            self.node = etree.Element('menu', name='')
+-
+-        for child in self.node.getchildren():
+-            try:
+-                self.children.append(self.make_child(child))
+-            except KeyError:
+-                pass
+-        
+-
+-    def make_child(self, child):
+-        return elements[child.tag](child)
+-
+-    def get_name(self):
+-        return self.node.attrib.get('name', '')
+-
+-    def get_type(self):
+-        return 'Menu'
+-
+-    def get_icon(self):
+-        return None
+-
+-    def get_options(self):
+-
+-        retlist = []
+-        label = gtk.Label()
+-        label.set_alignment(0, 0.5)
+-        label.set_markup('<b>Name:</b>')
+-        widget = gtk.Entry()
+-        widget.props.text = self.node.attrib.get('name', '')
+-        widget.connect('changed', self.on_name_changed)
+-        hbox = gtk.HBox()
+-        hbox.pack_start(label)
+-        hbox.pack_start(widget, True, True)
+-        retlist.append(hbox)
+-
+-        return retlist
+-
+-    def on_name_changed(self, widget):
+-        self.node.attrib['name'] = widget.props.text
+-        
++	def __init__(self, node=None):
++		self.node = node
++		self.children = []
++		self.editable = True
++
++		if node is None:
++			self.node = etree.Element('menu', name='')
++
++		for child in self.node.getchildren():
++			try:
++				self.children.append(self.make_child(child))
++			except KeyError:
++				pass
++		
++
++	def make_child(self, child):
++		return elements[child.tag](child)
++
++	def get_name(self):
++		name = self.node.attrib.get('name', '')
++		if self.node.attrib.get('mode') == 'exec':
++			name = 'exec: %s' %name
++		return name
++
++	def get_icon(self):
++		return self.node.attrib.get('icon', '')
++
++	def get_icon_mode(self):
++		if self.node.attrib.get('mode1') == 'file':
++			return self.node.attrib.get('mode1')
++		else:
++			return None
++
++	def get_type(self):
++		return 'Menu'
++
++	def get_options(self):
++
++		retlist = []
++		sgroup = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		label.set_markup('<b>Name:</b>')
++		widget = gtk.Entry()
++		widget.props.text = self.node.attrib.get('name', '')
++		widget.connect('changed', self.on_name_changed)
++		
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Name mode:</b>')
++		widget = gtk.combo_box_new_text()
++		widget.append_text('Normal')
++		widget.append_text('Execute')
++		widget.props.active = self.node.attrib.get('name') is not None and self.node.attrib.get('mode') == 'exec'
++		widget.connect('changed', self.on_name_mode_changed)
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		#TODO:Make this actually edit icon
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon:</b>')
++		widget = gtk.Entry()
++		if self.node.attrib.get('icon') is not None:
++			widget.props.text = self.node.attrib.get('icon')
++		else:
++			widget.props.text = ''
++		#widget.props.text = self.node.attrib.get('icon')
++		widget.connect('changed', self.on_icon_changed)
++		
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++		
++		label = gtk.Label()
++		label.set_alignment(0, 0.5)
++		sgroup.add_widget(label)
++		label.set_markup('<b>Icon mode:</b>')
++		widget = gtk.combo_box_new_text()
++		widget.append_text('Normal')
++		widget.append_text('File Path')
++		widget.props.active = self.node.attrib.get('icon') is not None and self.node.attrib.get('mode1') == 'file'
++		widget.connect('changed', self.on_icon_mode_changed)
++
++		hbox = gtk.HBox()
++		hbox.pack_start(label)
++		hbox.pack_start(widget, True, True)
++		retlist.append(hbox)
++
++		return retlist
++
++	def on_name_changed(self, widget):
++		self.node.attrib['name'] = widget.props.text
++	def on_name_mode_changed(self, widget): #EDIT THIS
++		if widget.props.active:
++			self.node.attrib['mode'] = 'exec'
++		elif 'mode' in self.node.attrib:
++			del self.node.attrib['mode']
++	def on_icon_changed(self, widget):
++		if widget.props.text != '':
++			self.node.attrib['icon'] = widget.props.text
++		else:
++			del self.node.attrib['icon']
++	def on_icon_mode_changed(self, widget): #EDIT THIS
++		if widget.props.active:
++			self.node.attrib['mode1'] = 'file'
++		elif 'mode1' in self.node.attrib:
++			del self.node.attrib['mode1']
+ 
+ itemtypes = {
+-    'launcher': Launcher,
+-    'windowlist': Windowlist,
+-    'viewportlist': Viewportlist,
+-    'reload': Reload,
++	'launcher': Launcher,
++	'windowlist': Windowlist,
++	'viewportlist': Viewportlist,
+ }
+ 
+ 
+ def make_item(node):
+ 
+-    itemtype = node.attrib.get('type')
+-    return itemtypes.get(itemtype, Item)(node)
++	itemtype = node.attrib.get('type')
++	return itemtypes.get(itemtype, Item)(node)
+ 
+ 
+ def indent(elem, level=0):
+-    i = "\n" + level*"  "
+-    if len(elem):
+-        if not elem.text or not elem.text.strip():
+-            elem.text = i + "  "
+-        for e in elem:
+-            indent(e, level+1)
+-            if not e.tail or not e.tail.strip():
+-                e.tail = i + "  "
+-        if not e.tail or not e.tail.strip():
+-            e.tail = i
+-    else:
+-        if level and (not elem.tail or not elem.tail.strip()):
+-            elem.tail = i
++	i = "\n" + level*"  "
++	if len(elem):
++		if not elem.text or not elem.text.strip():
++			elem.text = i + "  "
++		for e in elem:
++			indent(e, level+1)
++			if not e.tail or not e.tail.strip():
++				e.tail = i + "  "
++		if not e.tail or not e.tail.strip():
++			e.tail = i
++	else:
++		if level and (not elem.tail or not elem.tail.strip()):
++			elem.tail = i
+ 
+ def write_menu():
+ 
+-    indent(menu.node)
+-    menufile.write(open(os.path.join(configdir, 'menu.xml'), 'w'))
++	indent(menu.node)
++	menufile.write(open(filename, 'w'))
+ 
+-    if bus is not None:
+-        try:
+-            bus.get_object('org.compiz_fusion.deskmenu',
+-                '/org/compiz_fusion/deskmenu/menu').reload()
+-        except dbus.DBusException:
+-            return
+-
+-elements = {'menu': Menu, 'item': make_item, 'separator': Separator}
++elements = {'menu': Menu, 'item': make_item, 'separator': Separator, 'pipe': Pipe}
+ 
+ elementsbyname = {
+-    'Launcher': Launcher,
+-    'Windows List': Windowlist,
+-    'Viewports List': Viewportlist,
+-    'Reload': Reload,
+-    'Separator': Separator,
+-    'Menu': Menu,
++	'Launcher': Launcher,
++	'Windows List': Windowlist,
++	'Viewports List': Viewportlist,
++	'Separator': Separator,
++	'Menu': Menu,
++	'Pipeitem': Pipe
+ }
+ 
+ 
+ if __name__ == '__main__':
+-
+-    if dbus:
+-        try:
+-            bus = dbus.SessionBus()
+-        except dbus.DBusException:
+-            bus = None
+-    else:
+-        bus = None
+-
+-    filename = BaseDirectory.load_first_config('compiz/deskmenu/menu.xml')
+-    menufile = etree.parse(filename)
+-    root = menufile.getroot()
+-    menu = Menu(root)
+-    configdir = BaseDirectory.save_config_path('compiz/deskmenu')
+-    DeskmenuEditor()
+-    gtk.main()
+-
++	if len(sys.argv) == 2 :
++		if open(sys.argv[1]):
++			filename = sys.argv[1]
++	else:
++		filename = BaseDirectory.load_first_config('compiz/deskmenu/menu.xml')
++	menufile = etree.parse(filename)
++	root = menufile.getroot()
++	menu = Menu(root)
++	DeskmenuEditor()
++	gtk.main()
+diff -aur compiz-deskmenu/deskmenu-menu.c compiz-deskmenu3/deskmenu-menu.c
+--- compiz-deskmenu/deskmenu-menu.c	2008-03-14 16:25:23.000000000 -0700
++++ compiz-deskmenu3/deskmenu-menu.c	2010-11-16 15:41:15.000000000 -0800
+@@ -1,658 +1,774 @@
+-/*
+- * compiz-deskmenu is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation; either version 2 of the License, or
+- * (at your option) any later version.
+- *
+- * compiz-deskmenu is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+- *
+- * Copyright 2008 Christopher Williams <christopherw@verizon.net> 
+- */
+-
+-#include <stdlib.h>
+-#include <string.h>
+-#include <dbus/dbus-glib-lowlevel.h>
+-#include <gtk/gtk.h>
+-
+-#define HAVE_WNCK 1
+-
+-#if HAVE_WNCK
+-#include "deskmenu-wnck.h"
+-#endif
+-
+-#include "deskmenu-menu.h"
+-#include "deskmenu-glue.h"
+-
+-
+-G_DEFINE_TYPE(Deskmenu, deskmenu, G_TYPE_OBJECT)
+-
+-GQuark
+-deskmenu_error_quark (void)
+-{
+-    static GQuark quark = 0;
+-    if (!quark)
+-        quark = g_quark_from_static_string ("deskmenu_error");
+-    return quark;
+-}
+-
+-static void
+-quit (GtkWidget *widget,
+-      gpointer   data)
+-{
+-    gtk_main_quit ();
+-}
+-
+-static void
+-launcher_activated (GtkWidget *widget,
+-                    gchar     *command)
+-{
+-    GError *error = NULL;
+-    Deskmenu *deskmenu;
+-
+-    deskmenu = g_object_get_data (G_OBJECT (widget), "deskmenu");
+-
+-	if (!gdk_spawn_on_screen (gdk_screen_get_default (),
+-                              g_get_home_dir (),
+-                              g_strsplit (command, " ", 0),
+-                              deskmenu->envp, G_SPAWN_SEARCH_PATH,
+-                              NULL, NULL, NULL, &error))
+-    {
+-        GtkWidget *message = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
+-            GTK_BUTTONS_CLOSE, "%s", error->message);
+-        gtk_dialog_run (GTK_DIALOG (message));
+-        gtk_widget_destroy (message);
+-    }
+-        
+-}
+-
+-static void
+-launcher_name_exec_update (GtkWidget *label)
+-{
+-    gchar *exec, *stdout;
+-    exec = g_object_get_data (G_OBJECT (label), "exec");
+-    if (g_spawn_command_line_sync (exec, &stdout, NULL, NULL, NULL))
+-        gtk_label_set_text (GTK_LABEL (label), g_strstrip(stdout));
+-    else
+-        gtk_label_set_text (GTK_LABEL (label), "execution error");
+-    g_free (stdout);
+-}
+-
+-static void
+-deskmenu_construct_item (Deskmenu *deskmenu)
+-{
+-    DeskmenuItem *item = deskmenu->current_item;
+-    GtkWidget *menu_item;
+-    gchar *name, *icon, *command;
+-
+-    switch (item->type)
+-    {
+-        case DESKMENU_ITEM_LAUNCHER:
+-            if (item->name_exec)
+-            {
+-                GtkWidget *label;
+-                GHook *hook;
+-                
+-                name = g_strstrip (item->name->str);
+-
+-                menu_item = gtk_image_menu_item_new ();
+-                label = gtk_label_new_with_mnemonic (NULL);
+-                gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+-
+-                g_object_set_data (G_OBJECT (label), "exec", g_strdup (name));
+-                gtk_container_add (GTK_CONTAINER (menu_item), label);
+-                hook = g_hook_alloc (deskmenu->show_hooks);
+-
+-                hook->data = (gpointer) label;
+-                hook->func = (GHookFunc *) launcher_name_exec_update;
+-                g_hook_append (deskmenu->show_hooks, hook);
+-            }
+-            else
+-            {
+-                if (item->name)
+-                    name = g_strstrip (item->name->str);
+-                else
+-                    name = "";
+-
+-                menu_item = gtk_image_menu_item_new_with_mnemonic (name);
+-
+-            }
+-
+-            if (item->icon)
+-            {
+-                icon = g_strstrip (item->icon->str);
+-                gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), 
+-                    gtk_image_new_from_icon_name (icon, GTK_ICON_SIZE_MENU));
+-            }
+-        
+-            if (item->command)
+-            {
+-                command = g_strstrip (item->command->str);
+-                g_object_set_data (G_OBJECT (menu_item), "deskmenu", deskmenu);
+-                g_signal_connect (G_OBJECT (menu_item), "activate",
+-                    G_CALLBACK (launcher_activated), g_strdup (command));
+-            }
+-
+-            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu), 
+-                menu_item);
+-            break;
+-
+-#if HAVE_WNCK
+-        case DESKMENU_ITEM_WINDOWLIST:
+-            menu_item = gtk_menu_item_new_with_mnemonic ("_Windows");
+-
+-            DeskmenuWindowlist *windowlist = deskmenu_windowlist_new ();
+-
+-            gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
+-                windowlist->menu);
+-            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu),
+-                menu_item);
+-            break;
+-
+-        case DESKMENU_ITEM_VIEWPORTLIST:
+-            menu_item = gtk_menu_item_new_with_mnemonic ("_Viewports");
+-
+-            DeskmenuVplist *vplist = deskmenu_vplist_new ();
+-
+-            if (item->wrap
+-                && strcmp (g_strstrip (item->wrap->str), "true") == 0)
+-                vplist->wrap = TRUE;
+-
+-            gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
+-                vplist->menu);
+-            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu),
+-                menu_item);
+-            break;
+-#endif
+-        case DESKMENU_ITEM_RELOAD:
+-            menu_item = gtk_image_menu_item_new_with_mnemonic ("_Reload");
+-            gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), 
+-                gtk_image_new_from_stock (GTK_STOCK_REFRESH, 
+-                    GTK_ICON_SIZE_MENU));
+-            g_signal_connect (G_OBJECT (menu_item), "activate", 
+-                G_CALLBACK (quit), NULL);    
+-            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu), 
+-                menu_item);
+-            break;
+-
+-        default:
+-            break;
+-    }
+-
+-}
+-/* The handler functions. */
+-
+-static void
+-start_element (GMarkupParseContext *context,
+-               const gchar         *element_name,
+-               const gchar        **attr_names,
+-               const gchar        **attr_values,
+-               gpointer             user_data,
+-               GError             **error)
+-{
+-    Deskmenu *deskmenu = DESKMENU (user_data);
+-    DeskmenuElementType element_type;
+-    const gchar **ncursor = attr_names, **vcursor = attr_values;
+-    GtkWidget *item, *menu;
+-
+-    element_type = GPOINTER_TO_INT (g_hash_table_lookup 
+-        (deskmenu->element_hash, element_name));
+-
+-    if ((deskmenu->menu && !deskmenu->current_menu)
+-       || (!deskmenu->menu && element_type != DESKMENU_ELEMENT_MENU)) 
+-    {
+-        gint line_num, char_num;
+-        g_markup_parse_context_get_position (context, &line_num, &char_num);     
+-        g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+-            "Error on line %d char %d: Element '%s' declared outside of "
+-            "toplevel menu element", line_num, char_num, element_name);
+-        return;
+-    }
+-
+-    switch (element_type)
+-    {
+-        case DESKMENU_ELEMENT_MENU:
+-
+-            if (deskmenu->current_item != NULL)
+-            {
+-                gint line_num, char_num;
+-                g_markup_parse_context_get_position (context, &line_num, 
+-                    &char_num);     
+-                g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+-                    "Error on line %d char %d: Element 'menu' cannot be nested "
+-                    "inside of an item element", line_num, char_num);
+-                return;
+-            }
+-
+-            if (!deskmenu->menu)
+-            {
+-                deskmenu->menu = gtk_menu_new ();
+-                g_object_set_data (G_OBJECT (deskmenu->menu), "parent menu",
+-                    NULL);
+-                deskmenu->current_menu = deskmenu->menu;
+-            }
+-            else
+-            {
+-                gchar *name = NULL;
+-                while (*ncursor)
+-                {
+-                    if (strcmp (*ncursor, "name") == 0)
+-                        name = g_strdup (*vcursor);
+-                    else
+-                        g_set_error (error, G_MARKUP_ERROR,
+-                            G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE, 
+-                            "Unknown attribute: %s", *ncursor);
+-                    ncursor++;
+-                    vcursor++;
+-                }
+-                if (name)
+-                    item = gtk_menu_item_new_with_mnemonic (name);
+-                else
+-                    item = gtk_menu_item_new_with_mnemonic ("");
+-                gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu), 
+-                    item);
+-                menu = gtk_menu_new ();
+-                g_object_set_data (G_OBJECT (menu), "parent menu", 
+-                    deskmenu->current_menu);
+-                deskmenu->current_menu = menu;
+-                gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), 
+-                    deskmenu->current_menu);
+-                g_free (name);
+-            }
+-            break;
+-        
+-        case DESKMENU_ELEMENT_SEPARATOR:
+-            break; /* build it in the end function */
+-
+-        case DESKMENU_ELEMENT_ITEM:
+-
+-            if (deskmenu->current_item != NULL)
+-            {
+-                gint line_num, char_num;
+-                g_markup_parse_context_get_position (context, &line_num, 
+-                    &char_num);     
+-                g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+-                    "Error on line %d char %d: Element 'item' cannot be nested "
+-                    "inside of another item element", line_num, char_num);
+-                return;
+-            }
+-
+-            deskmenu->current_item = g_slice_new0 (DeskmenuItem);
+-                while (*ncursor)
+-                {
+-                    if (strcmp (*ncursor, "type") == 0)
+-                        deskmenu->current_item->type = GPOINTER_TO_INT
+-                        (g_hash_table_lookup (deskmenu->item_hash, *vcursor));
+-                    else
+-                        g_set_error (error, G_MARKUP_ERROR,
+-                            G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE, 
+-                            "Unknown attribute: %s", *ncursor);
+-                    ncursor++;
+-                    vcursor++;
+-                }
+-            break;
+-
+-        case DESKMENU_ELEMENT_NAME:
+-             while (*ncursor)
+-                {
+-                    if ((strcmp (*ncursor, "mode") == 0)
+-                        && (strcmp (*vcursor, "exec") == 0))
+-                        deskmenu->current_item->name_exec = TRUE;
+-                    ncursor++;
+-                    vcursor++;
+-                } /* no break here to let it fall through */
+-        case DESKMENU_ELEMENT_ICON:
+-        case DESKMENU_ELEMENT_COMMAND:
+-        case DESKMENU_ELEMENT_WRAP:
+-            if (deskmenu->current_item)
+-                deskmenu->current_item->current_element = element_type;
+-            break;
+-
+-        default:
+-            g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT, 
+-                "Unknown element: %s", element_name);
+-            break;
+-    }
+-}
+-
+-static void
+-text (GMarkupParseContext *context,
+-      const gchar         *text,
+-      gsize                text_len,
+-      gpointer             user_data,
+-      GError             **error)
+-{
+-    Deskmenu *deskmenu = DESKMENU (user_data);
+-    DeskmenuItem *item = deskmenu->current_item;
+-
+-    if (!(item && item->current_element))
+-        return;
+-
+-    switch (item->current_element)
+-    {
+-        case DESKMENU_ELEMENT_NAME:
+-            if (!item->name)
+-                item->name = g_string_new_len (text, text_len);
+-            else
+-                g_string_append_len (item->name, text, text_len);
+-            break;
+-
+-        case DESKMENU_ELEMENT_ICON:
+-            if (!item->icon)
+-                item->icon = g_string_new_len (text, text_len);
+-            else
+-                g_string_append_len (item->icon, text, text_len);
+-            break;
+-
+-        case DESKMENU_ELEMENT_COMMAND:
+-            if (!item->command)
+-                item->command = g_string_new_len (text, text_len);
+-            else
+-                g_string_append_len (item->command, text, text_len);
+-            break;
+-
+-        case DESKMENU_ELEMENT_WRAP:
+-            if (!item->wrap)
+-                item->wrap = g_string_new_len (text, text_len);
+-            else
+-                g_string_append_len (item->wrap, text, text_len);
+-            break;
+-
+-        default:
+-            break;
+-    }
+-
+-}
+-
+-static void
+-end_element (GMarkupParseContext *context,
+-             const gchar         *element_name,
+-             gpointer             user_data,
+-             GError             **error)
+-{
+-
+-    DeskmenuElementType element_type;
+-    Deskmenu *deskmenu = DESKMENU (user_data);
+-    GtkWidget *parent, *item;
+-    element_type = GPOINTER_TO_INT (g_hash_table_lookup 
+-        (deskmenu->element_hash, element_name));
+-
+-    switch (element_type)
+-    {
+-        case DESKMENU_ELEMENT_MENU:
+-
+-            g_return_if_fail (deskmenu->current_item == NULL);
+-
+-            parent = g_object_get_data (G_OBJECT (deskmenu->current_menu), 
+-                "parent menu");
+-
+-            deskmenu->current_menu = parent;
+-
+-            break;
+-
+-        case DESKMENU_ELEMENT_SEPARATOR:
+-            item = gtk_separator_menu_item_new ();
+-            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu), 
+-                item);
+-            break;
+-
+-        case DESKMENU_ELEMENT_ITEM:
+-
+-            g_return_if_fail (deskmenu->current_item != NULL);
+-
+-            /* finally make the item ^_^ */
+-            deskmenu_construct_item (deskmenu);
+-
+-            /* free data used to make it */
+-            if (deskmenu->current_item->name)
+-                g_string_free (deskmenu->current_item->name, TRUE);
+-            if (deskmenu->current_item->icon)
+-                g_string_free (deskmenu->current_item->icon, TRUE);
+-            if (deskmenu->current_item->command)
+-                g_string_free (deskmenu->current_item->command, TRUE);
+-            if (deskmenu->current_item->wrap)
+-                g_string_free (deskmenu->current_item->wrap, TRUE);
+-            g_slice_free (DeskmenuItem, deskmenu->current_item);
+-            deskmenu->current_item = NULL;
+-            break;
+-
+-        default:
+-            break;
+-    }
+-}
+-
+-/* The list of what handler does what. */
+-static GMarkupParser parser = {
+-    start_element,
+-    end_element,
+-    text,
+-    NULL,
+-    NULL
+-};
+-
+-
+-/* Class init */
+-static void 
+-deskmenu_class_init (DeskmenuClass *deskmenu_class)
+-{
+-    dbus_g_object_type_install_info (G_TYPE_FROM_CLASS (deskmenu_class),
+-        &dbus_glib_deskmenu_object_info);
+-}
+-
+-/* Instance init */
+-static void 
+-deskmenu_init (Deskmenu *deskmenu)
+-{
+-
+-    deskmenu->show_hooks = g_slice_new0 (GHookList);
+-
+-    g_hook_list_init (deskmenu->show_hooks, sizeof (GHook));
+-
+-
+-    deskmenu->menu = NULL;
+-    deskmenu->current_menu = NULL;
+-    deskmenu->current_item = NULL;
+-
+-    deskmenu->envp = NULL;
+-
+-    deskmenu->item_hash = g_hash_table_new (g_str_hash, g_str_equal);
+-
+-    g_hash_table_insert (deskmenu->item_hash, "launcher",
+-        GINT_TO_POINTER (DESKMENU_ITEM_LAUNCHER));
+-#if HAVE_WNCK
+-    g_hash_table_insert (deskmenu->item_hash, "windowlist",
+-        GINT_TO_POINTER (DESKMENU_ITEM_WINDOWLIST));
+-    g_hash_table_insert (deskmenu->item_hash, "viewportlist",
+-        GINT_TO_POINTER (DESKMENU_ITEM_VIEWPORTLIST));
+-#endif
+-    g_hash_table_insert (deskmenu->item_hash, "reload",
+-        GINT_TO_POINTER (DESKMENU_ITEM_RELOAD));
+-
+-    deskmenu->element_hash = g_hash_table_new (g_str_hash, g_str_equal);
+-    
+-    g_hash_table_insert (deskmenu->element_hash, "menu", 
+-        GINT_TO_POINTER (DESKMENU_ELEMENT_MENU));
+-    g_hash_table_insert (deskmenu->element_hash, "separator",
+-        GINT_TO_POINTER (DESKMENU_ELEMENT_SEPARATOR));
+-    g_hash_table_insert (deskmenu->element_hash, "item", 
+-        GINT_TO_POINTER (DESKMENU_ELEMENT_ITEM));
+-    g_hash_table_insert (deskmenu->element_hash, "name", 
+-        GINT_TO_POINTER (DESKMENU_ELEMENT_NAME));
+-    g_hash_table_insert (deskmenu->element_hash, "icon", 
+-        GINT_TO_POINTER (DESKMENU_ELEMENT_ICON));
+-    g_hash_table_insert (deskmenu->element_hash, "command", 
+-        GINT_TO_POINTER (DESKMENU_ELEMENT_COMMAND));
+-    g_hash_table_insert (deskmenu->element_hash, "wrap", 
+-        GINT_TO_POINTER (DESKMENU_ELEMENT_WRAP));
+-
+-}
+-
+-static void
+-deskmenu_parse_file (Deskmenu *deskmenu,
+-                     gchar *configpath)
+-{
+-    GError *error = NULL;
+-    gboolean success = FALSE;
+-    gchar *text;
+-    gsize length;
+-    
+-    if (!configpath)
+-        configpath = g_build_path (G_DIR_SEPARATOR_S,
+-                                   g_get_user_config_dir (),
+-                                   "compiz",
+-                                   "deskmenu",
+-                                   "menu.xml",
+-                                   NULL);
+-
+-    GMarkupParseContext *context = g_markup_parse_context_new (&parser,
+-        0, deskmenu, NULL);
+-
+-    if (!g_file_get_contents (configpath, &text, &length, NULL))
+-    {
+-        const gchar* const *cursor = g_get_system_config_dirs ();
+-        gchar *path = NULL;
+-        while (*cursor)
+-        {
+-            g_free (configpath);
+-            g_free (path);
+-            path = g_strdup (*cursor);
+-            configpath = g_build_path (G_DIR_SEPARATOR_S,
+-                                       path,
+-                                       "compiz",
+-                                       "deskmenu",
+-                                       "menu.xml",
+-                                       NULL);
+-
+-            if (g_file_get_contents (configpath, &text, &length, NULL))
+-            {
+-                success = TRUE;
+-                g_free (path);
+-                break;
+-            }
+-            cursor++;
+-        }
+-    }
+-    else
+-    {
+-        success = TRUE;
+-    }
+-
+-    if (!success)
+-    {
+-        g_printerr ("Couldn't find a menu file\n");
+-        exit (1);
+-    }
+-
+-    if (!g_markup_parse_context_parse (context, text, length, &error)
+-        || !g_markup_parse_context_end_parse (context, &error))
+-    {
+-        g_printerr ("Parse of %s failed with message: %s \n",
+-            configpath, error->message);
+-        g_error_free (error);
+-        exit (1);
+-    }
+-
+-    g_free(text);
+-    g_free (configpath);
+-    g_markup_parse_context_free (context);
+-
+-    gtk_widget_show_all (deskmenu->menu);
+-}
+-
+-/* The show method */
+-gboolean
+-deskmenu_show (Deskmenu *deskmenu,
+-               gchar **env,
+-               GError  **error)
+-{
+-    g_hook_list_invoke (deskmenu->show_hooks, FALSE);
+-
+-    if (deskmenu->envp)
+-        g_strfreev (deskmenu->envp);
+-
+-    deskmenu->envp = g_strdupv (env);
+-
+-    gtk_menu_popup (GTK_MENU (deskmenu->menu), 
+-                    NULL, NULL, NULL, NULL, 
+-                    0, 0);
+-    return TRUE;
+-}
+-
+-/* The reload method */
+-gboolean
+-deskmenu_reload (Deskmenu *deskmenu,
+-               GError  **error)
+-{
+-    gtk_main_quit ();
+-    return TRUE;
+-}
+-
+-int
+-main (int    argc,
+-      char **argv)
+-{
+-    DBusGConnection *connection;
+-    GError *error = NULL;
+-    GObject *deskmenu;
+-
+-    g_type_init ();
+-
+-    gchar *filename = NULL;
+-    GOptionContext *context;
+-    GOptionEntry entries[] =
+-    {
+-        { "menu", 'm', 0, G_OPTION_ARG_FILENAME, &filename,
+-            "Use FILE instead of the default menu file", "FILE" },
+-        { NULL, 0, 0, 0, NULL, NULL, NULL }
+-    };
+-
+-    context = g_option_context_new (NULL);
+-    g_option_context_add_main_entries (context, entries, NULL);
+-    g_option_context_add_group (context, gtk_get_option_group (TRUE));
+-    if (!g_option_context_parse (context, &argc, &argv, &error))
+-    {
+-        g_printerr ("option parsing failed: %s", error->message);
+-        g_error_free (error);
+-        exit (1);
+-    }
+-    g_option_context_free (context);
+-
+-    /* Obtain a connection to the session bus */
+-    connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+-    if (connection == NULL)
+-    {
+-        g_printerr ("Failed to open connection to bus: %s", error->message);
+-        g_error_free (error);
+-        exit (1);
+-    }
+-
+-#if HAVE_WNCK
+-    wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+-#endif
+-
+-    gtk_init (&argc, &argv);
+-
+-    deskmenu = g_object_new (DESKMENU_TYPE, NULL);
+-
+-    deskmenu_parse_file (DESKMENU (deskmenu), filename);
+-
+-    dbus_g_connection_register_g_object (connection,
+-                                         DESKMENU_PATH_DBUS,
+-                                         deskmenu);
+-
+-	if (!dbus_bus_request_name (dbus_g_connection_get_connection (connection),
+-						        DESKMENU_SERVICE_DBUS,
+-                                DBUS_NAME_FLAG_REPLACE_EXISTING,
+-						        NULL))
+-        return 1;
+-
+-    gtk_main ();
+-
+-    return 0;
+-}
+-
++/*
++ * compiz-deskmenu is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * compiz-deskmenu is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ * Copyright 2008 Christopher Williams <christopherw@verizon.net>
++ */
++ 
++ /*
++Roadmap:
++Necessary:
++	TODO: Add a viewport # indicator for the window list for accesiblity reasons difficulty: hard
++	TODO: Add configuration for menu icon size difficulty: easy
++	TODO: Add toggle of tearables difficulty: easy
++	TODO: Add a sane icon dialog difficulty: medium-hard
++	TODO: Make the editor able to edit non-default files
++For fun, might not implement:
++TODO: Add ability to call up menus from the menu.xml file by name, if this is really, really needed or requested
++ */
++
++#include <stdlib.h>
++#include <string.h>
++#include <gtk/gtk.h>
++
++#define HAVE_WNCK 1
++
++#if HAVE_WNCK
++#include "deskmenu-wnck.h"
++#endif
++
++#include "deskmenu-menu.h"
++
++
++G_DEFINE_TYPE(Deskmenu, deskmenu, G_TYPE_OBJECT) //this is calling deskmenu_class_init
++
++GQuark
++deskmenu_error_quark (void)
++{
++    static GQuark quark = 0;
++    if (!quark)
++        quark = g_quark_from_static_string ("deskmenu_error");
++    return quark;
++}
++
++static void
++quit (GtkWidget *widget,
++      gpointer   data)
++{
++    gtk_main_quit ();
++}
++
++//stolen from openbox, possibly move this outside in order to make it a function to parse launchers and icon location
++gchar *parse_expand_tilde(const gchar *f)
++{
++gchar *ret;
++GRegex *regex;
++
++if (!f)
++    return NULL;
++
++regex = g_regex_new("(?:^|(?<=[ \\t]))~(?:(?=[/ \\t])|$)",
++                    G_REGEX_MULTILINE | G_REGEX_RAW, 0, NULL);
++ret = g_regex_replace_literal(regex, f, -1, 0, g_get_home_dir(), 0, NULL);
++g_regex_unref(regex);
++
++return ret;
++}
++//end stolen
++
++//This is how menu command is launched
++static void
++launcher_activated (GtkWidget *widget,
++                    gchar     *command)
++{
++    GError *error = NULL;
++    Deskmenu *deskmenu;
++	
++    deskmenu = g_object_get_data (G_OBJECT (widget), "deskmenu");
++	if (!gdk_spawn_command_line_on_screen (gdk_screen_get_default (), parse_expand_tilde(command), &error))
++    {
++        GtkWidget *message = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
++            GTK_BUTTONS_CLOSE, "%s", error->message);
++        gtk_dialog_run (GTK_DIALOG (message));
++        gtk_widget_destroy (message);
++    }
++
++}
++
++//place & in front of stdout for standard stdout, how a command is launched as an exec
++static void
++launcher_name_exec_update (GtkWidget *label)
++{
++    gchar *exec, *stdout;
++    exec = g_object_get_data (G_OBJECT (label), "exec");
++    if (g_spawn_command_line_sync (parse_expand_tilde(exec), &stdout, NULL, NULL, NULL))
++        gtk_label_set_text (GTK_LABEL (label), g_strstrip(stdout));
++    else
++        gtk_label_set_text (GTK_LABEL (label), "execution error");
++    g_free (stdout);
++}
++
++static void
++deskmenu_construct_item (Deskmenu *deskmenu)
++{
++    DeskmenuItem *item = deskmenu->current_item;
++    GtkWidget *menu_item;
++    gchar *name, *icon, *command, *vpicon;
++    gint w, h;
++//constructs the items in menu
++    switch (item->type)
++    {
++        case DESKMENU_ITEM_LAUNCHER:
++            if (item->name_exec)
++            {
++                GtkWidget *label;
++                GHook *hook;
++
++                name = g_strstrip (item->name->str);
++
++                menu_item = gtk_image_menu_item_new ();
++                label = gtk_label_new_with_mnemonic (NULL);
++                gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
++
++                g_object_set_data (G_OBJECT (label), "exec", g_strdup (name));
++                gtk_container_add (GTK_CONTAINER (menu_item), label);
++                hook = g_hook_alloc (deskmenu->show_hooks);
++
++                hook->data = (gpointer) label;
++                hook->func = (GHookFunc *) launcher_name_exec_update;
++                g_hook_append (deskmenu->show_hooks, hook);
++            }
++            else
++            {
++                if (item->name)
++                    name = g_strstrip (item->name->str);
++                else
++                    name = "";
++
++                menu_item = gtk_image_menu_item_new_with_mnemonic (name);
++
++            }
++            if (item->icon)
++            {
++                icon = g_strstrip (item->icon->str);
++                if (item->icon_file) {
++					gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
++                	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
++					   (menu_item), gtk_image_new_from_pixbuf (gdk_pixbuf_new_from_file_at_size (parse_expand_tilde(icon), w, h, NULL)));
++				   }
++				else {
++					gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item),
++						gtk_image_new_from_icon_name (icon, GTK_ICON_SIZE_MENU));
++					}
++            }
++
++            if (item->command)
++            {
++				
++                command = g_strstrip (item->command->str);
++                g_object_set_data (G_OBJECT (menu_item), "deskmenu", deskmenu);
++                g_signal_connect (G_OBJECT (menu_item), "activate",
++                    G_CALLBACK (launcher_activated), g_strdup (command));
++            }
++
++            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu),
++                menu_item);
++            break;
++#if HAVE_WNCK
++        case DESKMENU_ITEM_WINDOWLIST:
++            menu_item = gtk_image_menu_item_new_with_mnemonic ("_Windows");
++
++            DeskmenuWindowlist *windowlist = deskmenu_windowlist_new ();
++            gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
++                windowlist->menu);
++            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu),
++                menu_item);
++            if (item->icon)
++            {
++				windowlist->images = TRUE;
++                icon = g_strstrip (item->icon->str);
++                if (item->icon_file) {
++					gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
++                	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
++					   (menu_item), gtk_image_new_from_pixbuf (gdk_pixbuf_new_from_file_at_size (parse_expand_tilde(icon), w, h, NULL)));
++				}
++				else {
++					gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item),
++						gtk_image_new_from_icon_name (icon, GTK_ICON_SIZE_MENU));
++				}
++            }
++            break;
++
++        case DESKMENU_ITEM_VIEWPORTLIST:
++            menu_item = gtk_image_menu_item_new_with_mnemonic ("_Viewports");
++
++            DeskmenuVplist *vplist = deskmenu_vplist_new ();
++            if (item->wrap
++                && strcmp (g_strstrip (item->wrap->str), "true") == 0)
++                vplist->wrap = TRUE;
++
++            gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
++                vplist->menu);
++            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu),
++                menu_item);
++            if (item->icon)
++            {
++				vplist->images = TRUE;
++                icon = g_strstrip (item->icon->str);
++                if (item->icon_file) {
++					gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
++                	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
++					   (menu_item), gtk_image_new_from_pixbuf (gdk_pixbuf_new_from_file_at_size (parse_expand_tilde(icon), w, h, NULL)));
++				}
++				else {
++					gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item),
++						gtk_image_new_from_icon_name (icon, GTK_ICON_SIZE_MENU));
++				}
++            }
++            if (item->vpicon)
++            {
++                vpicon = g_strstrip (parse_expand_tilde(item->vpicon->str));
++                if (item->vpicon_file) {
++					vplist->file = TRUE;
++				}
++					vplist->icon = vpicon;
++            }
++            break;
++#endif
++
++        default:
++            break;
++    }
++
++}
++/* The handler functions. */
++
++static void
++start_element (GMarkupParseContext *context,
++               const gchar         *element_name,
++               const gchar        **attr_names,
++               const gchar        **attr_values,
++               gpointer             user_data,
++               GError             **error)
++{
++    Deskmenu *deskmenu = DESKMENU (user_data);
++    DeskmenuElementType element_type;
++    const gchar **ncursor = attr_names, **vcursor = attr_values;
++    GtkWidget *item, *menu;
++
++    element_type = GPOINTER_TO_INT (g_hash_table_lookup
++        (deskmenu->element_hash, element_name));
++
++	//TODO: maybe this could be edited to see the new compiz-deskmenu element, if this is needed in order to make pipes
++    if ((deskmenu->menu && !deskmenu->current_menu)
++       || (!deskmenu->menu && element_type != DESKMENU_ELEMENT_MENU))
++    {
++        gint line_num, char_num;
++        g_markup_parse_context_get_position (context, &line_num, &char_num);
++        g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
++            "Error on line %d char %d: Element '%s' declared outside of "
++            "toplevel menu element", line_num, char_num, element_name);
++        return;
++    }
++
++    switch (element_type)
++    {
++        case DESKMENU_ELEMENT_MENU:
++
++            if (deskmenu->current_item != NULL)
++            {
++                gint line_num, char_num;
++                g_markup_parse_context_get_position (context, &line_num,
++                    &char_num);
++                g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
++                    "Error on line %d char %d: Element 'menu' cannot be nested "
++                    "inside of an item element", line_num, char_num);
++                return;
++            }
++            if (!deskmenu->menu)
++            {
++                deskmenu->menu = gtk_menu_new ();
++                g_object_set_data (G_OBJECT (deskmenu->menu), "parent menu",
++                    NULL);
++                deskmenu->current_menu = deskmenu->menu;
++            }
++            else
++            {
++                gchar *name = NULL;
++                gchar *icon = NULL;
++                gboolean name_exec = FALSE;
++                gboolean icon_file = FALSE;
++                gint w, h;
++                while (*ncursor)
++                {
++                    if (strcmp (*ncursor, "name") == 0)
++                        name = g_strdup (*vcursor);
++                    else if (strcmp (*ncursor, "icon") == 0)
++						icon = g_strdup (*vcursor);
++                    else if ((strcmp (*ncursor, "mode") == 0)
++                        && (strcmp (*vcursor, "exec") == 0))
++                        name_exec = TRUE;
++                    else if ((strcmp (*ncursor, "mode1") == 0)
++                        && (strcmp (*vcursor, "file") == 0))
++                        icon_file = TRUE;
++					else
++                        g_set_error (error, G_MARKUP_ERROR,
++                            G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE,
++                            "Unknown attribute: %s", *ncursor);
++                    ncursor++;
++                    vcursor++;
++                }
++				if (name_exec)
++				{
++					GtkWidget *label;
++					GHook *hook;
++				
++					item = gtk_image_menu_item_new ();
++					label = gtk_label_new_with_mnemonic (NULL);
++					gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
++				
++					g_object_set_data (G_OBJECT (label), "exec", g_strdup (name));
++					gtk_container_add (GTK_CONTAINER (item), label);
++					hook = g_hook_alloc (deskmenu->show_hooks);
++				
++					hook->data = (gpointer) label;
++					hook->func = (GHookFunc *) launcher_name_exec_update;
++					g_hook_append (deskmenu->show_hooks, hook);
++				}
++				else
++				{
++					if (name)
++						item = gtk_image_menu_item_new_with_mnemonic (name); //allow menus to have icons
++				
++					else
++						item = gtk_image_menu_item_new_with_mnemonic ("");
++					gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu),
++						item);
++				}
++                if (icon)
++				{
++					if (icon_file) {
++					gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
++                	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
++					   (item), gtk_image_new_from_pixbuf (gdk_pixbuf_new_from_file_at_size (parse_expand_tilde(icon), w, h, NULL)));
++					}
++					else {
++					gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item),
++						gtk_image_new_from_icon_name (icon, GTK_ICON_SIZE_MENU));
++					}
++				}
++                menu = gtk_menu_new ();
++                g_object_set_data (G_OBJECT (menu), "parent menu",
++                    deskmenu->current_menu);
++                deskmenu->current_menu = menu;
++                gtk_menu_item_set_submenu (GTK_MENU_ITEM (item),
++                    deskmenu->current_menu);
++                g_free (name);
++                g_free (icon);
++            }
++            break;
++
++        case DESKMENU_ELEMENT_SEPARATOR:
++            break; /* build it in the end function */
++
++        case DESKMENU_ELEMENT_ITEM:
++
++            if (deskmenu->current_item != NULL)
++            {
++                gint line_num, char_num;
++                g_markup_parse_context_get_position (context, &line_num,
++                    &char_num);
++                g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
++                    "Error on line %d char %d: Element 'item' cannot be nested "
++                    "inside of another item element", line_num, char_num);
++                return;
++            }
++
++            deskmenu->current_item = g_slice_new0 (DeskmenuItem);
++                while (*ncursor)
++                {
++                    if (strcmp (*ncursor, "type") == 0)
++                        deskmenu->current_item->type = GPOINTER_TO_INT
++                        (g_hash_table_lookup (deskmenu->item_hash, *vcursor));
++                    else
++                        g_set_error (error, G_MARKUP_ERROR,
++                            G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE,
++                            "Unknown attribute: %s", *ncursor);
++                    ncursor++;
++                    vcursor++;
++                }
++            break;
++
++        case DESKMENU_ELEMENT_NAME:
++             while (*ncursor)
++                {
++                    if ((strcmp (*ncursor, "mode") == 0)
++                        && (strcmp (*vcursor, "exec") == 0))
++                        deskmenu->current_item->name_exec = TRUE;
++                    ncursor++;
++                    vcursor++;
++                } /* no break here to let it fall through */
++        case DESKMENU_ELEMENT_ICON:
++                while (*ncursor)
++                {
++                    if ((strcmp (*ncursor, "mode1") == 0)
++                        && (strcmp (*vcursor, "file") == 0))
++                        deskmenu->current_item->icon_file = TRUE;
++                    ncursor++;
++                    vcursor++;
++                } /* no break here to let it fall through */
++        case DESKMENU_ELEMENT_VPICON:
++                while (*ncursor)
++                {
++                    if ((strcmp (*ncursor, "mode1") == 0)
++                        && (strcmp (*vcursor, "file") == 0))
++                        deskmenu->current_item->vpicon_file = TRUE;
++                    ncursor++;
++                    vcursor++;
++                } /* no break here to let it fall through */
++        case DESKMENU_ELEMENT_COMMAND:
++        case DESKMENU_ELEMENT_WRAP:
++            if (deskmenu->current_item)
++                deskmenu->current_item->current_element = element_type;
++            break;
++        default:
++            g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
++                "Unknown element: %s", element_name);
++            break;
++    }
++}
++//dealing with empty attributes
++static void
++text (GMarkupParseContext *context,
++      const gchar         *text,
++      gsize                text_len,
++      gpointer             user_data,
++      GError             **error)
++{
++    Deskmenu *deskmenu = DESKMENU (user_data);
++    DeskmenuItem *item = deskmenu->current_item;
++
++    if (!(item && item->current_element))
++        return;
++
++    switch (item->current_element)
++    {
++        case DESKMENU_ELEMENT_NAME:
++            if (!item->name)
++                item->name = g_string_new_len (text, text_len);
++            else
++                g_string_append_len (item->name, text, text_len);
++            break;
++
++        case DESKMENU_ELEMENT_ICON:
++            if (!item->icon)
++                item->icon = g_string_new_len (text, text_len);
++            else
++                g_string_append_len (item->icon, text, text_len);
++            break;
++
++        case DESKMENU_ELEMENT_VPICON:
++            if (!item->vpicon)
++                item->vpicon = g_string_new_len (text, text_len);
++            else
++                g_string_append_len (item->vpicon, text, text_len);
++            break;
++
++        case DESKMENU_ELEMENT_COMMAND:
++            if (!item->command)
++                item->command = g_string_new_len (text, text_len);
++            else
++                g_string_append_len (item->command, text, text_len);
++            break;
++
++        case DESKMENU_ELEMENT_WRAP:
++            if (!item->wrap)
++                item->wrap = g_string_new_len (text, text_len);
++            else
++                g_string_append_len (item->wrap, text, text_len);
++            break;
++
++        default:
++            break;
++    }
++
++}
++
++static void
++end_element (GMarkupParseContext *context,
++             const gchar         *element_name,
++             gpointer             user_data,
++             GError             **error)
++{
++
++    DeskmenuElementType element_type;
++    Deskmenu *deskmenu = DESKMENU (user_data);
++    GtkWidget *parent, *item;
++    element_type = GPOINTER_TO_INT (g_hash_table_lookup
++        (deskmenu->element_hash, element_name));
++
++    switch (element_type)
++    {
++        case DESKMENU_ELEMENT_MENU:
++
++            g_return_if_fail (deskmenu->current_item == NULL);
++
++            parent = g_object_get_data (G_OBJECT (deskmenu->current_menu),
++                "parent menu");
++
++            deskmenu->current_menu = parent;
++
++            break;
++
++        case DESKMENU_ELEMENT_SEPARATOR:
++            item = gtk_separator_menu_item_new ();
++            gtk_menu_shell_append (GTK_MENU_SHELL (deskmenu->current_menu),
++                item);
++            break;
++
++        case DESKMENU_ELEMENT_ITEM:
++
++            g_return_if_fail (deskmenu->current_item != NULL);
++
++            /* finally make the item ^_^ */
++            deskmenu_construct_item (deskmenu);
++
++            /* free data used to make it */
++            if (deskmenu->current_item->name)
++                g_string_free (deskmenu->current_item->name, TRUE);
++            if (deskmenu->current_item->icon)
++                g_string_free (deskmenu->current_item->icon, TRUE);
++            if (deskmenu->current_item->command)
++                g_string_free (deskmenu->current_item->command, TRUE);
++            if (deskmenu->current_item->wrap)
++                g_string_free (deskmenu->current_item->wrap, TRUE);
++            if (deskmenu->current_item->vpicon)
++                g_string_free (deskmenu->current_item->vpicon, TRUE);
++            g_slice_free (DeskmenuItem, deskmenu->current_item);
++            deskmenu->current_item = NULL;
++            break;
++        default:
++            break;
++    }
++}
++
++/* The list of what handler does what. */
++//this parses menus
++static GMarkupParser parser = {
++    start_element,
++    end_element,
++    text,
++    NULL,
++    NULL
++};
++
++
++// Class init
++static void
++deskmenu_class_init (DeskmenuClass *deskmenu_class)
++{
++    //G_TYPE_FROM_CLASS (deskmenu_class); //I have NO idea what's going on here, but apparently, just initializing this function makes it work
++}
++
++/* Instance init, matches up words to types, note how there's no handler for pipe since it's replaced in its own chunk */
++static void 
++deskmenu_init (Deskmenu *deskmenu)
++{
++
++    deskmenu->show_hooks = g_slice_new0 (GHookList);
++
++    g_hook_list_init (deskmenu->show_hooks, sizeof (GHook));
++
++
++    deskmenu->menu = NULL;
++    deskmenu->current_menu = NULL;
++    deskmenu->current_item = NULL;
++
++    deskmenu->item_hash = g_hash_table_new (g_str_hash, g_str_equal);
++
++    g_hash_table_insert (deskmenu->item_hash, "launcher",
++        GINT_TO_POINTER (DESKMENU_ITEM_LAUNCHER));
++#if HAVE_WNCK
++    g_hash_table_insert (deskmenu->item_hash, "windowlist",
++        GINT_TO_POINTER (DESKMENU_ITEM_WINDOWLIST));
++    g_hash_table_insert (deskmenu->item_hash, "viewportlist",
++        GINT_TO_POINTER (DESKMENU_ITEM_VIEWPORTLIST));
++#endif
++
++    deskmenu->element_hash = g_hash_table_new (g_str_hash, g_str_equal);
++    
++    g_hash_table_insert (deskmenu->element_hash, "menu", 
++        GINT_TO_POINTER (DESKMENU_ELEMENT_MENU));
++    g_hash_table_insert (deskmenu->element_hash, "separator",
++        GINT_TO_POINTER (DESKMENU_ELEMENT_SEPARATOR));
++    g_hash_table_insert (deskmenu->element_hash, "item", 
++        GINT_TO_POINTER (DESKMENU_ELEMENT_ITEM));
++    g_hash_table_insert (deskmenu->element_hash, "name", 
++        GINT_TO_POINTER (DESKMENU_ELEMENT_NAME));
++    g_hash_table_insert (deskmenu->element_hash, "icon", 
++        GINT_TO_POINTER (DESKMENU_ELEMENT_ICON));
++    g_hash_table_insert (deskmenu->element_hash, "vpicon", 
++        GINT_TO_POINTER (DESKMENU_ELEMENT_VPICON));
++    g_hash_table_insert (deskmenu->element_hash, "command", 
++        GINT_TO_POINTER (DESKMENU_ELEMENT_COMMAND));
++    g_hash_table_insert (deskmenu->element_hash, "wrap", 
++        GINT_TO_POINTER (DESKMENU_ELEMENT_WRAP));
++
++}
++
++static void
++deskmenu_parse_file (Deskmenu *deskmenu,
++                     gchar *configpath)
++{
++    GError *error = NULL;
++    gboolean success = FALSE;
++    gchar *text, *exec, *stdout;
++    gsize length;
++	GRegex *regex, *command;
++	int i;
++
++    if (!configpath)
++        configpath = g_build_path (G_DIR_SEPARATOR_S,
++                                   g_get_user_config_dir (),
++                                   "compiz",
++                                   "deskmenu",
++                                   "menu.xml",
++                                   NULL);
++
++    GMarkupParseContext *context = g_markup_parse_context_new (&parser,
++        0, deskmenu, NULL);
++
++    if (!g_file_get_contents (configpath, &text, &length, NULL))
++    {
++        const gchar* const *cursor = g_get_system_config_dirs ();
++        gchar *path = NULL;
++        while (*cursor)
++        {
++            g_free (configpath);
++            g_free (path);
++            path = g_strdup (*cursor);
++            configpath = g_build_path (G_DIR_SEPARATOR_S,
++                                       path,
++                                       "compiz",
++                                       "deskmenu",
++                                       "menu.xml",
++                                       NULL);
++
++            if (g_file_get_contents (configpath, &text, &length, NULL))
++            {
++                success = TRUE;
++                g_free (path);
++                break;
++            }
++            cursor++;
++        }
++    }
++    else
++    {
++        success = TRUE;
++    }
++
++    if (!success)
++    {
++        g_printerr ("Couldn't find a menu file\n");
++        exit (1);
++    }
++    
++	i = 0;
++	regex = g_regex_new("(<pipe command=\".*\"/>)", G_REGEX_MULTILINE | G_REGEX_RAW, 0, NULL);
++	command = g_regex_new("<pipe command=\"|\"/>", G_REGEX_MULTILINE | G_REGEX_RAW, 0, NULL);
++	gchar **menu_chunk = g_regex_split (regex, text, 0); //this splits the menu into parsable chunks, needed for pipe item capabilities
++	
++	g_free(text); //we no longer need the loaded file
++	
++	//this loop will replace the pipeitem chunk with its output, other chunks are let through as is
++	while (menu_chunk[i])
++	{
++		if (g_regex_match (regex,menu_chunk[i],0,0))
++		{
++            exec = parse_expand_tilde(g_strstrip(g_regex_replace_literal(command, menu_chunk[i], -1, 0, "", 0, NULL)));
++            g_spawn_command_line_sync (exec, &stdout, NULL, NULL, NULL);
++            menu_chunk[i] = stdout;
++		}
++		i++;
++	}
++	g_regex_unref(regex); //free the pipeitem chunk checker
++	g_regex_unref(command); //free the pipe command extractor
++	
++	i = 0;
++	while (menu_chunk[i])
++	{
++		g_markup_parse_context_parse (context, menu_chunk[i], strlen(menu_chunk[i]), &error);
++		//fix error reporting here, otherwise, it works fine
++		i++;
++	}
++
++	g_strfreev(menu_chunk); //free the menu chunks and their container
++    g_free (configpath); //free the file path
++    g_markup_parse_context_free (context); //free the parser
++
++    gtk_widget_show_all (deskmenu->menu);
++}
++
++/* The show method */
++gboolean
++deskmenu_show (Deskmenu *deskmenu,
++               GError  **error)
++{
++    g_hook_list_invoke (deskmenu->show_hooks, FALSE);
++
++//sloppy fix until dbus is removed
++	g_signal_connect_swapped (GTK_MENU (deskmenu->menu), "deactivate",
++				  G_CALLBACK (quit), NULL);
++
++    gtk_menu_popup (GTK_MENU (deskmenu->menu),
++                    NULL, NULL, NULL, NULL,
++                    0, 0);
++    return TRUE;
++}
++
++int
++main (int    argc,
++      char **argv)
++{
++    GError *error = NULL;
++    GObject *deskmenu;
++
++    g_type_init ();
++
++    gchar *filename = NULL;
++    GOptionContext *context;
++    GOptionEntry entries[] =
++    {
++        { "menu", 'm', 0, G_OPTION_ARG_FILENAME, &filename,
++            "Use FILE instead of the default menu file", "FILE" },
++        { NULL, 0, 0, 0, NULL, NULL, NULL }
++    };
++
++    context = g_option_context_new (NULL);
++    g_option_context_add_main_entries (context, entries, NULL);
++    g_option_context_add_group (context, gtk_get_option_group (TRUE));
++    if (!g_option_context_parse (context, &argc, &argv, &error))
++    {
++        g_printerr ("option parsing failed: %s", error->message);
++        g_error_free (error);
++        exit (1);
++    }
++    g_option_context_free (context);
++
++#if HAVE_WNCK
++    wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
++#endif
++
++    gtk_init (&argc, &argv);
++	
++    deskmenu = g_object_new (DESKMENU_TYPE, NULL);
++
++    deskmenu_parse_file (DESKMENU (deskmenu), filename);
++
++	deskmenu_show (DESKMENU (deskmenu), &error);
++
++    gtk_main ();
++
++    return 0;
++}
+diff -aur compiz-deskmenu/deskmenu-menu.h compiz-deskmenu3/deskmenu-menu.h
+--- compiz-deskmenu/deskmenu-menu.h	2008-03-14 16:25:23.000000000 -0700
++++ compiz-deskmenu3/deskmenu-menu.h	2010-11-16 15:39:49.000000000 -0800
+@@ -15,8 +15,6 @@
+  * Copyright 2008 Christopher Williams <christopherw@verizon.net> 
+  */
+ 
+-#include "deskmenu-common.h"
+-
+ typedef struct Deskmenu Deskmenu;
+ typedef struct DeskmenuClass DeskmenuClass;
+ typedef struct DeskmenuItem DeskmenuItem;
+@@ -28,8 +26,7 @@
+     DESKMENU_ITEM_NONE = 0,
+     DESKMENU_ITEM_LAUNCHER,
+     DESKMENU_ITEM_WINDOWLIST,
+-    DESKMENU_ITEM_VIEWPORTLIST,
+-    DESKMENU_ITEM_RELOAD
++    DESKMENU_ITEM_VIEWPORTLIST
+ } DeskmenuItemType;
+ 
+ typedef enum
+@@ -41,7 +38,8 @@
+     DESKMENU_ELEMENT_NAME,
+     DESKMENU_ELEMENT_ICON,
+     DESKMENU_ELEMENT_COMMAND,
+-    DESKMENU_ELEMENT_WRAP
++    DESKMENU_ELEMENT_WRAP,
++    DESKMENU_ELEMENT_VPICON
+ } DeskmenuElementType;
+ 
+ 
+@@ -51,12 +49,14 @@
+     DeskmenuElementType current_element;
+     GString *name;
+     gboolean name_exec;
++    gboolean icon_file;
++    gboolean vpicon_file;
+     GString *icon;
++    GString *vpicon;
+     GString *command;
+     GString *wrap;
+ };
+ 
+-
+ struct Deskmenu
+ {
+     GObject parent;
+@@ -69,7 +69,6 @@
+     GHashTable *item_hash;
+     GHashTable *element_hash;
+     GHookList *show_hooks;
+-    gchar **envp;
+ };
+ 
+ struct DeskmenuClass
+@@ -79,8 +78,8 @@
+ 
+ 
+ #define DESKMENU_TYPE              (deskmenu_get_type ())
+-#define DESKMENU(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), DESKMENU_TYPE, Deskmenu))
+-#define DESKMENU_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), DESKMENU_TYPE, DeskmenuClass))
++#define DESKMENU(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), DESKMENU_TYPE, Deskmenu)) //looks to see if it isn't a deskmenu already, if it isn't, make it one
++#define DESKMENU_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), DESKMENU_TYPE, DeskmenuClass)) //looks to see if class cast, if it isn't, cast it
+ #define IS_DESKMENU(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), DESKMENU_TYPE))
+ #define IS_DESKMENU_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), DESKMENU_TYPE))
+ #define DESKMENU_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), DESKMENU_TYPE, DeskMenu))
+@@ -92,9 +91,3 @@
+ 
+ GQuark deskmenu_error_quark (void);
+ #define DESKMENU_ERROR deskmenu_error_quark ()
+-
+-
+-gboolean deskmenu_show (Deskmenu *deskmenu, gchar **env, GError **error);
+-gboolean deskmenu_reload (Deskmenu *deskmenu, GError **error);
+-
+-
+diff -aur compiz-deskmenu/deskmenu-wnck.c compiz-deskmenu3/deskmenu-wnck.c
+--- compiz-deskmenu/deskmenu-wnck.c	2008-03-14 16:25:23.000000000 -0700
++++ compiz-deskmenu3/deskmenu-wnck.c	2010-11-15 18:46:24.000000000 -0800
+@@ -113,18 +113,28 @@
+         mnemonic = "_";
+     else
+         mnemonic = "";
+-
++        //wnck_window_get_workspace (dmwin->window)
++        //TODO: get this to calculate right
++	/*	
++    column = wnck_workspace_get_viewport_x (wnck_window_get_workspace (dmwin->window));
++    width = wnck_workspace_get_width (wnck_screen_get_workspace (wnck_screen_get_default (), 0))/wnck_screen_get_width (wnck_screen_get_default ());
++    row = wnck_workspace_get_viewport_y (wnck_window_get_workspace (dmwin->window));
++	vpidNumber = column + ((row) * width);
++    vpid = g_strdup_printf ("%d %d %d %d :",vpidNumber,width,column,row);
++	g_print(vpid);
++	decorated_name = g_strconcat ("[",vpid, "] ", ante, mnemonic, name->str, post, NULL);
++	*/
+     decorated_name = g_strconcat (ante, mnemonic, name->str, post, NULL);
+ 
+     unescaped = g_strconcat (ante, wnck_window_get_name (dmwin->window),
+         post, NULL);
+-
+     gtk_label_set_text_with_mnemonic (GTK_LABEL (dmwin->label), decorated_name);
+ 
+     gtk_widget_set_size_request (dmwin->label,
+         wnck_selector_get_width (dmwin->windowlist->menu, unescaped), -1);
+ 
+     g_string_free (name, TRUE);
++    //g_free (vpid);
+     g_free (decorated_name);
+     g_free (unescaped);
+ }
+@@ -171,19 +181,18 @@
+ {
+     GdkPixbuf *pixbuf;
+     gboolean free_pixbuf;
+-
+-    pixbuf = wnck_window_get_mini_icon (window); 
+-    free_pixbuf = FALSE;    
+-    if (wnck_window_is_minimized (window))
+-    {
+-        pixbuf = wnck_selector_dimm_icon (pixbuf);
+-        free_pixbuf = TRUE;
+-    }
+-
+-    gtk_image_set_from_pixbuf (GTK_IMAGE (dmwin->image), pixbuf);
+-
+-    if (free_pixbuf)
+-        g_object_unref (pixbuf);
++	pixbuf = wnck_window_get_mini_icon (window); 
++	free_pixbuf = FALSE;    
++	if (wnck_window_is_minimized (window))
++	{
++		pixbuf = wnck_selector_dimm_icon (pixbuf);
++		free_pixbuf = TRUE;
++	}
++	
++	gtk_image_set_from_pixbuf (GTK_IMAGE (dmwin->image), pixbuf);
++	
++	if (free_pixbuf)
++		g_object_unref (pixbuf);
+ }
+ 
+ static void
+@@ -257,10 +266,11 @@
+     gtk_label_set_ellipsize (GTK_LABEL (dmwin->label), PANGO_ELLIPSIZE_END);
+ 
+     dmwin->image = gtk_image_new ();
+-
++	if(windowlist->images) {
+     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (dmwin->item),
+         dmwin->image);
+-
++	}
++	
+     g_signal_connect (G_OBJECT (dmwin->item), "activate", 
+         G_CALLBACK (activate_window), window);
+ 
+@@ -466,8 +476,8 @@
+ {
+     GtkWidget *item;
+     item = gtk_image_menu_item_new_with_mnemonic (name);
+-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item),
+-        gtk_image_new_from_stock (stock_id, GTK_ICON_SIZE_MENU));
++	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item),
++		gtk_image_new_from_stock (stock_id, GTK_ICON_SIZE_MENU));
+     g_object_set_data (G_OBJECT (item), "direction",
+         GINT_TO_POINTER (direction));
+     g_signal_connect (G_OBJECT (item), "activate", 
+@@ -520,6 +530,17 @@
+     gtk_widget_hide (vplist->go_up);
+     gtk_widget_hide (vplist->go_down);
+ 
++	if(!vplist->images) //this rips off those arrows if you don't want images AT ALL
++    {
++	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (vplist->go_left),
++		gtk_image_new_from_stock ("", GTK_ICON_SIZE_MENU));
++	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (vplist->go_right),
++		gtk_image_new_from_stock ("", GTK_ICON_SIZE_MENU));
++	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (vplist->go_up),
++		gtk_image_new_from_stock ("", GTK_ICON_SIZE_MENU));
++	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (vplist->go_up),
++		gtk_image_new_from_stock ("", GTK_ICON_SIZE_MENU));
++	}
+     gtk_widget_set_no_show_all (vplist->go_left,
+         !deskmenu_vplist_can_move (vplist, WNCK_MOTION_LEFT));
+     gtk_widget_set_no_show_all (vplist->go_right,
+@@ -531,15 +552,34 @@
+ 
+     GtkWidget *item;
+     guint i;
++    gint w, h;
++    gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
+ 
+     if (new_count > vplist->old_count)
+     {
+         gchar *text;
+-
++//TODO: edit this section to add thumnbnails for ports, possibly just set the thumbnails to be viewport wallpapers?
+         for (i = vplist->old_count; i < new_count; i++)
+         {
+             text = g_strdup_printf ("Viewport _%i", i + 1);
+-            item = gtk_menu_item_new_with_mnemonic (text);
++            item = gtk_image_menu_item_new_with_mnemonic (text);
++            if (vplist->images) 
++            { //this'll set viewport thumbnail later if I can figure out how
++            	if (vplist->icon){
++	            	if (vplist->file) {
++		            	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
++					  	 (item), gtk_image_new_from_pixbuf (gdk_pixbuf_new_from_file_at_size (vplist->icon, w, h, NULL)));
++	            	}
++	            	else {
++		            	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item),
++							gtk_image_new_from_icon_name (vplist->icon, GTK_ICON_SIZE_MENU));
++					}
++				}
++	            else {
++            	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item),
++						gtk_image_new_from_icon_name ("user-desktop", GTK_ICON_SIZE_MENU));
++				}
++			}
+             g_object_set_data (G_OBJECT (item), "viewport",
+                 GUINT_TO_POINTER (i + 1));
+             g_signal_connect (G_OBJECT (item), "activate",
+@@ -613,4 +653,3 @@
+ 
+     return vplist;
+ }
+-
+diff -aur compiz-deskmenu/deskmenu-wnck.h compiz-deskmenu3/deskmenu-wnck.h
+--- compiz-deskmenu/deskmenu-wnck.h	2008-03-14 16:25:23.000000000 -0700
++++ compiz-deskmenu3/deskmenu-wnck.h	2010-11-15 17:34:36.000000000 -0800
+@@ -8,6 +8,7 @@
+     GtkWidget *menu;
+     GtkWidget *empty_item;
+     GList *windows;
++    gboolean images; //toggles use of icons
+ } DeskmenuWindowlist;
+ 
+ typedef struct DeskmenuWindow
+@@ -30,6 +31,8 @@
+     GtkWidget *go_down;
+     GPtrArray *goto_items;
+     gboolean wrap;
++    gboolean images; //toggles use of icons
++    gboolean file; // whether the icon of choice is from theme or not
+     /* store some calculations */
+     guint hsize; /* 1-indexed horizontal viewport count */
+     guint vsize; 
+@@ -43,6 +46,7 @@
+     guint workspace_height;
+     guint old_count; /* store old hsize * vsize */
+     guint old_vpid; /* store old viewport number */
++    gchar *icon; /* stores viewport icon of choice */
+ } DeskmenuVplist;
+ 
+ DeskmenuWindowlist* deskmenu_windowlist_new (void);

@@ -1,0 +1,26 @@
+post_install() {
+cat <<-EndOfMessage
+==> compiz-deskmenu usage:
+you can run "compiz-deskmenu-autoconfig" or manually set following in ccsm:
+ + General Options > Commands > Commands > Command line 0 to "compiz-deskmenu"
+ + General Options > Commands > Key bindings > Run command 0 to "<Control>space"
+ + Viewport Switcher > Desktop-based Viewport Switching > Plugin for initiate
+   action to "core"
+ + Viewport Switcher > Desktop-based Viewport Switching > Action name for
+   initiate to "run_command0_key"
+EndOfMessage
+cat <<-EndOfMessage
+==> You will also need to delete any reload items you have via a text editor
+(your menu should be in ~/.config/compiz/deskmenu/menu.xml)
+in order to make sure you don't have an excess element floating around.
+The changes that were made to make pipeitems possible make this item obselete.
+EndOfMessage
+cat <<-EndOfMessage
+==> This update removes dbus dependencies, just so you know.
+EndOfMessage
+/bin/true
+}
+
+post_upgrade() {
+	post_install
+}
