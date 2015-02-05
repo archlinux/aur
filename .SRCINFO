@@ -1,0 +1,19 @@
+pkgbase = simple-ccsm
+	pkgdesc = Simple Compizconfig Settings Manager
+	pkgver = 0.8.8
+	pkgrel = 2
+	url = http://www.compiz-fusion.org/
+	install = simple-ccsm.install
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = ccsm>=0.8.4
+	depends = python
+	depends = pygtk>=2.10
+	optdepends = compiz-fusion-kde: Compiz Fusion for KDE
+	optdepends = compiz-fusion-gtk: Compiz Fusion for GTK/GNOME
+	source = http://releases.compiz.org/0.8.8/simple-ccsm-0.8.8.tar.bz2
+	md5sums = 79ca7285fac8bf722f154c67bee1204f
+
+pkgname = simple-ccsm
+
