@@ -3,7 +3,6 @@ pkgbase = recuerde
 	pkgver = 0.2.0_rc4
 	pkgrel = 2
 	url = http://code.google.com/p/recuerde
-	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = GPL
