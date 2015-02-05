@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: nesl247 <nesl247@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
