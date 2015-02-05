@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=20130615
+pkgver=2015.02.03
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -46,6 +46,11 @@ _gitname="master"
 _texlivefontdir="/usr/share/texmf-dist/fonts/"
 _userfontdir="\$HOME/.fonts"
 _osfontdir="/usr/share/fonts"
+
+pkgver() {
+  cd "$scrdir"
+  grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/context.mkiv | sed -n 's/.*{\(.*\) .*}/\1/p'
+}
 
 build() {
  msg "Downloading the latest scripts first"
