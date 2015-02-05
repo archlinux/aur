@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
