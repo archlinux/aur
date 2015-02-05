@@ -1,5 +1,5 @@
 # Contributor: Lara Maia <lara@craft.net.br>
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 
 pkgname=geany-themes-git
 _gitname=geany-themes
