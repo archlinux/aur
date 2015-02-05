@@ -1,0 +1,16 @@
+pkgbase = hdapsicon-git
+	pkgdesc = A standalone GTK applet for HDAPS disk protection status - formerly known as ThinkHDAPS
+	pkgver = 2eec2c7
+	pkgrel = 1
+	url = https://github.com/thpani/thinkhdaps
+	arch = any
+	license = GPL
+	depends = pygtk
+	depends = gnome-python
+	depends = tp_smapi
+	depends = hdapsd
+	source = hdapsicon-git::git+https://github.com/thpani/thinkhdaps
+	md5sums = SKIP
+
+pkgname = hdapsicon-git
+
