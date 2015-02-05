@@ -1,5 +1,5 @@
-# Contributor: Florian Dejonckheere <florian@floriandejonckheere.be>
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Contributor: Florian Dejonckheere <florian at floriandejonckheere dot be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 
 pkgname=jsvm-git
 _gitname=jsvm
