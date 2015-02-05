@@ -1,5 +1,5 @@
 # Contributor: Jose Negron <josenj.arch@mailnull.com>
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 
 pkgname=flip
 pkgver=20130224
