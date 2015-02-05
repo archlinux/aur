@@ -1,0 +1,17 @@
+pkgbase = compiz-indicator
+	pkgdesc = Control the seperate elements of your Window manager and Decorators, all from your Indicator tray.
+	pkgver = 0.2
+	pkgrel = 4
+	url = http://gnome-look.org/content/show.php?content=132352
+	install = compiz-indicator.install
+	arch = any
+	groups = lh
+	groups = ayatana
+	license = GPL
+	depends = python2
+	depends = hicolor-icon-theme
+	source = http://gnome-look.org/CONTENT/content-files/132352-compiz-indicator-v0.2.tar.gz
+	md5sums = 93d45c5e2115c914864275cc15fa24f5
+
+pkgname = compiz-indicator
+

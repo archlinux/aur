@@ -1,0 +1,13 @@
+post_install() {
+  echo "Updating icon cache..."
+  gtk-update-icon-cache -qtf usr/share/icons/hicolor
+  echo "Done!"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
