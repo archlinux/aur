@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Jan Rüegg <rggjan@gmail.com>
 
 pkgname=pacfoster
