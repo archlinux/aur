@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Ian D. Scott <ian@perebruin.com>
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 
