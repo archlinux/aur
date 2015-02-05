@@ -1,0 +1,21 @@
+pkgbase = compizconfig-backend-kconfig4
+	pkgdesc = Compizconfig backend for kconfig4
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = http://www.compiz.org/
+	arch = i686
+	arch = x86_64
+	groups = compiz-fusion-kde
+	groups = compiz-fusion
+	license = GPL2
+	makedepends = cmake
+	makedepends = automoc4
+	depends = libcompizconfig
+	depends = kdelibs
+	depends = libxcomposite
+	depends = libxinerama
+	source = http://releases.compiz.org/0.8.8/compizconfig-backend-kconfig4-0.8.8.tar.bz2
+	sha1sums = d7a29339b47233ad53fe04ca0136fdb511b945ac
+
+pkgname = compizconfig-backend-kconfig4
+
