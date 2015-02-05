@@ -18,13 +18,15 @@ backup=(etc/${pkgname}/catalina.policy
 install=${pkgname}.install
 source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
         systemd_${pkgname}.service
+        systemd_sysusers.d_${pkgname}.conf
         systemd_tmpfiles.d_${pkgname}.conf
         ${pkgname}.install)
 
 sha256sums=('49f9097073493accb8f8e0827d8f4ee00d2cc115b9188fc3902deb3696554379'
             'd44056248b7cdd6671fd4de08a9453b3bd1a83980343d249a99b74939d46f4d4'
+            '3f69c07659509bd1ae9d94cecbbba7c9072f0ede69e0a69d05b67a66aef9f686'
             'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847'
-            '32fcb0f44e32cd8901e936ebad4942a399efa8b98fdc42f5345dd8929b6c1887')
+            '812e658d541f82ec20cf6933816e144e469665ecbf0f65ad0b1864cc3ded129f')
 
 _gid_log=19
 _gid_tomcat=57
@@ -70,6 +72,8 @@ package() {
 
   install -Dm644 "${srcdir}"/systemd_${pkgname}.service \
                  "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
+  install -Dm644 "${srcdir}"/systemd_sysusers.d_${pkgname}.conf \
+                 "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
   install -Dm644 "${srcdir}"/systemd_tmpfiles.d_${pkgname}.conf \
                  "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
