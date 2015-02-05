@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
 pkgname=goattracker
