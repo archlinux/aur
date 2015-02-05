@@ -1,13 +1,13 @@
 # Mantainer: Berseker <berseker86 at gmail.com>
 
 pkgname=viewnior-git
-pkgver=viewnior.0.5.r108.ga045b96
+pkgver=viewnior.1.4.r3.gfc0f5cb
 pkgrel=1
 pkgdesc="Simple, fast, elegant and minimalistic image viewer, written in C(GTK+) with a new GtkImageView library. Git Version"
 arch=('i686' 'x86_64')
 url='http://xsisqox.github.com/Viewnior/'
 license=('GPL')
-depends=('cairo-ubuntu' 'hicolor-icon-theme' 'gtk2' 'desktop-file-utils')
+depends=('exiv2' 'gtk2' 'desktop-file-utils')
 makedepends=('gnome-common' 'intltool')
 provides=('viewnior')
 install="${pkgname}.install"
@@ -30,7 +30,7 @@ build()
 	cd "${srcdir}/${pkgname}"
 	rm -rf "${srcdir}/${pkgname}/build"
 	sed -i 's/AM_PROG_CC_STDC/AC_PROG_CC/g' configure.ac
-#	./autogen.sh
+	./autogen.sh
 
 	LDFLAGS='-lm' ./configure --prefix=/usr
 	make
