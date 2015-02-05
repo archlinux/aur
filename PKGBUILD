@@ -4,20 +4,19 @@
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
 
 pkgname=checkpolicy
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="SELinux policy compiler"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
 depends=('libsepol' 'libselinux')
-#makedepends=('selinux-flex')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('90632d11afecb66997971d4c5c5d70dfb02d3969ec610ee2918ba6df99c8207b')
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('9bbdac28a88de4c405c769730863f3adcd266adbfa45881a5de67e3a4895bcd4')
 
 build() {
   cd "${pkgname}-${pkgver}"
