@@ -5,8 +5,8 @@
 # Contributor: Zezadas
 
 pkgname=libselinux
-pkgver=2.3
-pkgrel=3
+pkgver=2.4
+pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
@@ -20,9 +20,9 @@ optdepends=('python2: python2 bindings'
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${pkgname}-${pkgver}.tar.gz"
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${pkgname}-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d")
-sha256sums=('0b1e0b43ecd84a812713d09564019b08e7c205d89072b5cbcd07b052cd8e77b2'
+sha256sums=('46043091f4c5ba4f43e8d3715f30d665a2d571c9126c1f03945c9ea4ed380f7b'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 prepare() {
@@ -48,12 +48,4 @@ package(){
   make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib install-rubywrap
 
   install -Dm 0644 "${srcdir}"/libselinux.tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/libselinux.conf
-
-  # /usr/lib/libselinux.so is installed as a symlink to ../../lib/libselinux.so.1 instead of directly libselinux.so.1
-  # This issue will be fixed in libselinux 2.4
-  # (patch: https://github.com/SELinuxProject/selinux/commit/71393a181d63c9baae5fe8dcaeb9411d1f253998)
-  # For now, fix the symlink by hand.
-  cd "${pkgdir}"/usr/lib
-  rm libselinux.so
-  ln -s libselinux.so.1 libselinux.so
 }
