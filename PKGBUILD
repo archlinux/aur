@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Ray Griffin <rorgoroth@googlemail.com>
 
 pkgname=coverlovin
