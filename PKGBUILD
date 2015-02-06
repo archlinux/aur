@@ -2,7 +2,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=wireless-regdb
-pkgver=2014.06.02
+pkgver=2015.01.30
 pkgrel=1
 pkgdesc="Central Regulatory Domain Database"
 arch=('any')
@@ -10,11 +10,11 @@ url="http://wireless.kernel.org/en/developers/Regulatory"
 backup=(etc/conf.d/wireless-regdom)
 license=('custom')
 depends=('sh')
-makedepends=('crda')
+makedepends=('crda>=3.18')
 install=wireless-regdb.install
 source=(https://www.kernel.org/pub/software/network/wireless-regdb/${pkgname}-${pkgver}.tar.xz
         crda.conf.d)
-sha256sums=('2d3ef3c6d46ce27e6f43a69db3e5ef582ada73e0dabbe464a370448dfac040cc'
+sha256sums=('438d7f3d62686bc997098d17fe1aff95c6f6ec061aaab90ab7c2c17e8451ce85'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b')
 
 package() {
@@ -30,7 +30,7 @@ package() {
     error "Regulatory database verification failed."
     return 1
   fi
-  install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/linville.key.pub.pem "${pkgdir}"/usr/lib/crda/pubkeys/linville.key.pub.pem
+  install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/sforshee.key.pub.pem "${pkgdir}"/usr/lib/crda/pubkeys/sforshee.key.pub.pem
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/wireless-regdb/LICENSE
   install -D -m644 "${srcdir}"/${pkgname}-${pkgver}/regulatory.bin.5 "${pkgdir}"/usr/share/man/man5/regulatory.bin.5
 
