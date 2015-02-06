@@ -3,7 +3,7 @@
 
 pkgname=cloog
 pkgver=0.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that generates loops for scanning polyhedra"
 arch=('i686' 'x86_64')
 url="http://www.bastoul.net/cloog/"
@@ -19,6 +19,11 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr --with-isl=system
+
+  # There are certain race conditions on running the tests, so we restrict the
+  # compilation to one job (one CPU core).
+  MAKEFLAGS=-j1
+
   make
 }
 
