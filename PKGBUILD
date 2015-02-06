@@ -24,31 +24,31 @@ PKGEXT='.pkg.tar'
 
 package () {
     # Create destination directories
-    install -d ${pkgdir}/{usr/bin,opt/savage-xr}
+    install -d "${pkgdir}"/{usr/bin,opt/savage-xr}
 
     # Make Installer Executable
-    chmod +x ${srcdir}/xr_setup-${pkgver}-cl_lin_prod.bin
+    chmod +x "${srcdir}/xr_setup-${pkgver}-cl_lin_prod.bin"
 
     # Extract game from the installer
-    ${srcdir}/xr_setup-${pkgver}-cl_lin_prod.bin --mode silent --prefix ${pkgdir}/opt/savage-xr
+    "${srcdir}/xr_setup-${pkgver}-cl_lin_prod.bin" --mode silent --prefix "${pkgdir}/opt/savage-xr"
 
     # Install the game launcher
-    ln -s /opt/savage-xr/savage.sh \
-        ${pkgdir}/usr/bin/savage-xr
+    ln -s "/opt/savage-xr/savage.sh" \
+        "${pkgdir}/usr/bin/savage-xr"
 
     # Install desktop file (Game Client)
-    install -D -m 644 ${srcdir}/savage-xr.desktop \
-        ${pkgdir}/usr/share/applications/savage-xr.desktop
+    install -D -m 644 "${srcdir}/savage-xr.desktop" \
+        "${pkgdir}/usr/share/applications/savage-xr.desktop"
 
     # Install desktop file (Map Editor)
-    install -D -m 644 ${srcdir}/savage-xr-editor.desktop \
-        ${pkgdir}/usr/share/applications/savage-xr-editor.desktop
+    install -D -m 644 "${srcdir}/savage-xr-editor.desktop" \
+        "${pkgdir}/usr/share/applications/savage-xr-editor.desktop"
 
     # Install Icon
-    install -D -m 644 ${pkgdir}/opt/savage-xr/icon.xpm \
-        ${pkgdir}/usr/share/pixmaps/savage-xr.xpm
+    install -D -m 644 "${pkgdir}/opt/savage-xr/icon.xpm" \
+        "${pkgdir}/usr/share/pixmaps/savage-xr.xpm"
 
     # Change group of the game folder to 'games'
-    chown -R :games ${pkgdir}/opt/savage-xr
-    chmod -R g+rwX ${pkgdir}/opt/savage-xr
+    chown -R :games "${pkgdir}/opt/savage-xr"
+    chmod -R g+rwX "${pkgdir}/opt/savage-xr"
 }
