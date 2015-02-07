@@ -24,7 +24,7 @@ md5sums=('d049386d1f1fcc262c95275582a0dcd0'
 [ "$CARCH" = "x86_64" ] && md5sums[0]='e126bcfd808a785766a33231f40b066a'
 PKGEXT='.pkg.tar'
 
-build() {
+package() {
     cd $srcdir
 
     # Installer name varies between architectures
