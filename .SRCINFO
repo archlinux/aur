@@ -1,0 +1,15 @@
+pkgbase = libqcow
+	pkgdesc = Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility
+	pkgver = 20120522
+	pkgrel = 1
+	url = http://code.google.com/p/libqcow/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = fuse
+	depends = openssl
+	source = http://libqcow.googlecode.com/files/libqcow-alpha-20120522.tar.gz
+	md5sums = 159703e5c34736d4fc38a509c62de1b9
+
+pkgname = libqcow
+
