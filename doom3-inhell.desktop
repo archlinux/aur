@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=In Hell
+Comment=Doom3 mod inspired by Ultimate Doom
+Icon=doom3-inhell
+Exec=doom3-inhell
+Type=Application
+Categories=Application;Game;ActionGame;

@@ -1,0 +1,22 @@
+pkgbase = doom3-inhell
+	pkgdesc = Doom3 mod inspired by the classic "Ultimate Doom"
+	pkgver = 1.1dc
+	pkgrel = 1
+	url = http://doom3.filefront.com/file/;83607
+	arch = any
+	license = unknown
+	makedepends = tar
+	makedepends = lzma
+	depends = bash
+	depends = doom3
+	source = http://oxygen4.free.fr/dl/in_hell-1.1dc.tar.lzma
+	source = doom3-inhell.sh
+	source = doom3-inhell.png
+	source = doom3-inhell.desktop
+	md5sums = 90d09a5128a11769b78b9e292fe997b8
+	md5sums = 0082fef66d0c35bdf4e1cfa01d65513f
+	md5sums = a2025a0b6f52850fb8403ebe2d953c41
+	md5sums = 1b0b14d74f185a2060de4b7e9cdc43d0
+
+pkgname = doom3-inhell
+
