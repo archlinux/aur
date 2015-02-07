@@ -25,49 +25,50 @@ md5sums=('d049386d1f1fcc262c95275582a0dcd0'
 PKGEXT='.pkg.tar'
 
 package() {
-    cd $srcdir
+    cd "${srcdir}"
 
     # Installer name varies between architectures
     if [ "$CARCH" = "i686" ]; then
-        _installer_name=Savage2-${pkgver}-linux-installer.run
+        _installer_name="Savage2-${pkgver}-linux-installer.run"
     else
-        _installer_name=Savage2-${pkgver}-linux-x64-installer.run
+        _installer_name="Savage2-${pkgver}-linux-x64-installer.run"
     fi
 
     # Create Destination Directory
-    install -d $pkgdir/opt/savage2
+    install -d "${pkgdir}/opt/savage2"
 
     # Make Installer Executable
-    chmod +x $srcdir/$_installer_name
+    chmod +x "${srcdir}/${_installer_name}"
 
     # Run Installer
-    $srcdir/$_installer_name --mode unattended --prefix $pkgdir/opt/savage2/
+    "${srcdir}/${_installer_name}" --mode unattended --prefix "${pkgdir}/opt/savage2/"
 
     # Install Game Script missing from 2.1.0.7
-    install -D -m 755 $srcdir/savage2.sh \
-        $pkgdir/opt/savage2/savage2.sh
+    install -D -m 755 "${srcdir}/savage2.sh" \
+        "${pkgdir}/opt/savage2/savage2.sh"
 
     # Install Game Launcher
-    install -D -m 755 $srcdir/savage2.launcher \
-        $pkgdir/usr/bin/savage2
+    install -D -m 755 "${srcdir}/savage2.launcher" \
+        "${pkgdir}/usr/bin/savage2"
 
     # Install Desktop File (Game Client)
-    install -D -m 644 $srcdir/savage2.desktop \
-        $pkgdir/usr/share/applications/savage2.desktop
+    install -D -m 644 "${srcdir}/savage2.desktop" \
+        "${pkgdir}/usr/share/applications/savage2.desktop"
 
     # Install Desktop File (Map Editor)
-    install -D -m 644 $srcdir/s2editor.desktop \
-        $pkgdir/usr/share/applications/s2editor.desktop
+    install -D -m 644 "${srcdir}/s2editor.desktop" \
+        "${pkgdir}/usr/share/applications/s2editor.desktop"
 
     # Install Desktop File (Model Viewer)
-    install -D -m 644 $srcdir/s2mviewer.desktop \
-        $pkgdir/usr/share/applications/s2mviewer.desktop
+    install -D -m 644 "${srcdir}/s2mviewer.desktop" \
+        "${pkgdir}/usr/share/applications/s2mviewer.desktop"
 
     # Install Icon
-    install -D -m 644 $pkgdir/opt/savage2/s2icon.png \
-        $pkgdir/usr/share/pixmaps/savage2.png
+    install -D -m 644 "${pkgdir}/opt/savage2/s2icon.png" \
+        "${pkgdir}/usr/share/pixmaps/savage2.png"
 
     # Install License
-    install -D -m 644 $pkgdir/opt/savage2/license.txt \
-        $pkgdir/usr/share/licenses/$pkgname/license.txt
+    install -D -m 644 "${pkgdir}/opt/savage2/license.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
+
