@@ -3,7 +3,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=openbor-svn
-pkgver=3.0.r4077
+pkgver=3.0.r4107
 pkgrel=1
 pkgdesc="An open source fighting video game and moddable game engine (aka Beats of Rage)"
 arch=('i686' 'x86_64')
@@ -33,12 +33,12 @@ pkgver() {
 prepare() {
   cd openbor
 
-  # work around broken build system
-  sed 's|$(LNXDEV)/$(PREFIX)||g;s|$(SDKPATH)|/usr|' -i Makefile
   # disable abort on error
   sed 's/-Werror//' -i Makefile
   # disable RPATH
   sed 's/-Wl,-rpath,$(LIBRARIES)//' -i Makefile
+  # verbose output
+  #sed 's/@$(CC)/$(CC)/' -i Makefile
   # fix a locale warning
   sed 's|en_US.UTF-8|C|g' -i version.sh
   # convert icon
@@ -50,11 +50,7 @@ build() {
 
   # work around broken build system
   ./version.sh
-  if [ "$CARCH" = "x86_64" ]; then
-    make BUILD_LINUX=1 TARGET_ARCH=amd64
-  else
-    make BUILD_LINUX=1
-  fi
+  make SDKPATH=/usr LNXDEV=/usr/bin BUILD_LINUX=1 GCC_TARGET=$CARCH
 }
 
 package() {

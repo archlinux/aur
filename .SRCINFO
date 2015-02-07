@@ -1,6 +1,6 @@
 pkgbase = openbor-svn
 	pkgdesc = An open source fighting video game and moddable game engine (aka Beats of Rage)
-	pkgver = 3.0.r4077
+	pkgver = 3.0.r4107
 	pkgrel = 1
 	url = http://www.chronocrash.com
 	install = openbor.install
