@@ -4,12 +4,12 @@
 
 pkgname=unoconv
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Libreoffice-based document converter"
-depends=('python' 'libreoffice-common')
-makedepends=('asciidoc')
-arch=('any')
-license=('GPL2')
+depends=(python libreoffice)
+makedepends=(asciidoc)
+arch=(any)
+license=(GPL2)
 url="http://dag.wieers.com/home-made/unoconv"
 source=("$url/$pkgname-$pkgver.tar.gz" python3.patch)
 sha256sums=('790e614b8615217ef4588b187f0018b526ec2bb480c6b9b2ffb9b82f48da73d4'
