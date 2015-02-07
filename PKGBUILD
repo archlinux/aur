@@ -3,13 +3,13 @@
 
 _pkgname=ephoto
 pkgname=$_pkgname-git
-pkgver=0.1.1.480.f3cff05
+pkgver=0.0.1.r527.8138051
 pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary')
+depends=('elementary' 'desktop-file-utils')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -20,13 +20,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  for _i in v_maj v_min v_mic; do
-    local v_ver=$v_ver.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-  done
+  local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
+  efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  v_ver=$(awk -F , -v v_ver=${v_ver#.} '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
-
-  printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "$efl_version.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {

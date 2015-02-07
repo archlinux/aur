@@ -1,6 +1,6 @@
 pkgbase = ephoto-git
 	pkgdesc = A light image viewer based on EFL
-	pkgver = 0.1.1.480.f3cff05
+	pkgver = 0.0.1.r527.8138051
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = ephoto.install
@@ -9,7 +9,8 @@ pkgbase = ephoto-git
 	license = BSD
 	makedepends = git
 	depends = elementary
-	provides = ephoto=0.1.1.480.f3cff05
+	depends = desktop-file-utils
+	provides = ephoto=0.0.1.r527.8138051
 	conflicts = ephoto
 	source = git://git.enlightenment.org/apps/ephoto.git
 	sha256sums = SKIP
