@@ -1,12 +1,13 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
-pkgver=4.11.14
-_kdever=4.14.3
+pkgver=4.11.16
+_kdever=14.12.2
 pkgrel=1
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -30,11 +31,11 @@ provides=("kdebase-workspace=$pkgver")
 conflicts=('kdebase-workspace')
 install="kdebase-workspace.install"
 backup=('usr/share/config/kdm/kdmrc' 'etc/pam.d/kde' 'etc/pam.d/kde-np' 'etc/pam.d/kscreensaver')
-source=("http://download.kde.org/stable/${_kdever}/src/${_pkgname}-${pkgver}.tar.xz"
+source=("http://download.kde.org/stable/applications/${_kdever}/src/${_pkgname}-${pkgver}.tar.xz"
 	'kdm' 'kde.pam' 'kde-np.pam' 'kscreensaver.pam' 'kdm.service' 'kdm.logrotate'
 	'etc-scripts.patch' 'terminate-server.patch' 'kdm-xinitrd.patch'
 	'khotkeys-qt4.patch')
-sha1sums=('ec79a5d638a93b1abbb99b22a7bea52d9a2c26eb'
+sha1sums=('329561bc68372c654c30f386cc1e232cf5b6622f'
           '5db3a245201bd4a50e65aa2ef583cf5490e4f646'
           '660eae40a707d2711d8d7f32a93214865506b795'
           '6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe'
