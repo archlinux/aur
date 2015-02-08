@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.0.94.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A new browser for our friends (weekly snapshot)'
 url="https://vivaldi.com"
 install=vivaldi.install
@@ -13,6 +13,7 @@ arch=('x86_64')
 source=("https://vivaldi.com/download/snapshot/vivaldi.${pkgver}_snapshot.deb")
 depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info')
 optdepends=('ffmpeg: playback of proprietary formats')
+conflicts=('vivaldi')
 
 package() {
 	tar -xf data.tar.xz --exclude={usr/share/{lintian,menu},etc} -C "$pkgdir/"
@@ -27,7 +28,7 @@ package() {
 	# install icons
 	for res in 16 22 24 32 48 64 128 256; do
 		install -Dm644 "$pkgdir/opt/vivaldi-unstable/product_logo_${res}.png" \
-		"$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi.png"
+		"$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi-unstable.png"
 	done
 }
 

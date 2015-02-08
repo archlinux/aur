@@ -1,7 +1,7 @@
 pkgbase = vivaldi-snapshot
 	pkgdesc = A new browser for our friends (weekly snapshot)
 	pkgver = 1.0.94.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vivaldi.com
 	install = vivaldi.install
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = vivaldi-snapshot
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	optdepends = ffmpeg: playback of proprietary formats
+	conflicts = vivaldi
 	options = !strip
 	options = !zipman
 	source = https://vivaldi.com/download/snapshot/vivaldi.1.0.94.2_snapshot.deb
