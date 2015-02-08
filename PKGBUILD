@@ -1,3 +1,4 @@
+# Maintainer: Slash <demodevil5atyahoodotcom>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Travis Nickles <ryoohki7@yahoo.com>
 
@@ -9,25 +10,35 @@ arch=('any')
 url="http://doom3.filefront.com/file/;83607"
 license=('unknown')
 depends=('bash' 'doom3')
-makedepends=('tar' 'lzma')
-source=(http://oxygen4.free.fr/dl/in_hell-$pkgver.tar.lzma \
-	$pkgname.sh \
-	$pkgname.png \
-	$pkgname.desktop)
-md5sums=('90d09a5128a11769b78b9e292fe997b8'
-         '0082fef66d0c35bdf4e1cfa01d65513f'
-         'a2025a0b6f52850fb8403ebe2d953c41'
-         '1b0b14d74f185a2060de4b7e9cdc43d0')
+source=(
+    "http://oxygen4.free.fr/dl/in_hell-${pkgver}.tar.lzma"
+    "${pkgname}.sh"
+    "${pkgname}.png"
+    "${pkgname}.desktop"
+)
+sha256sums=('4f930d1256716e9b6b57cffcb1cf764837efa10dfc9ac724e9221a51d9987e46'
+            '985a380a774652b4497d1385d89d5db05eef57003074a7683f6d8f6941e4186d'
+            '51e8a9477ae217498a41e5f8c5145d45a214027d7100b529a42e743bcb8f7b6f'
+            'dec1460a8b848c01d0d38006d2b3e1c1cb041bf087043b7c18eca51035420ce6')
+PKGEXT='.pkg.tar'
 
-build() {
-  msg "Extracting in_hell-$pkgver.tar.lzma..."
-  tar --lzma -xf in_hell-$pkgver.tar.lzma || return 1
+package() {
+    # Create destination directory
+    install -d "${pkgdir}/opt/doom3"
 
-  mkdir -p "$pkgdir"/opt/doom3
-  cp -rf in_hell-$pkgver/ "$pkgdir"/opt/doom3/in_hell/
+    # Copy data to destination
+    cp -rf "in_hell-${pkgver}"/ \
+        "${pkgdir}/opt/doom3/in_hell/"
 
-  install -Dm644 $pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+    # Install Icon file
+    install -D -m 0644 "${srcdir}/${pkgname}.png" \
+        "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 
-  install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
+    # Install Desktop file
+    install -D -m 0644 "${pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    # Install Launcher
+    install -D -m 0755 "${srcdir}/${pkgname}.sh" \
+        "${pkgdir}/usr/bin/${pkgname}"
 }
