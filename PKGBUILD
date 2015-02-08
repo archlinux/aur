@@ -4,7 +4,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.6.r192.g796b557
+pkgver=0.95.6.r221.gd309aa6
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ build() {
   cd $pkgname
   [ -z "$LINGUAS" ] && export LINGUAS="`ls po/*.po | sed 's:po/\(.*\)\.po$:\1:'|tr '\n' ' '`"
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
-    --with-nlsdir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
+    --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
     --enable-usermenu --enable-modelock --enable-xrandr
   make V=0
 }
