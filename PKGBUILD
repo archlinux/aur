@@ -3,8 +3,8 @@
 
 pkgname=khal-git
 _gitname=khal
-pkgver=0.4.0.r88.gf53b9c3
-pkgrel=2
+pkgver=0.5.0.r5.g09362ae
+pkgrel=1
 pkgdesc="Command line CalDav client"
 license=("MIT")
 url="http://lostpackets.de/khal/"
