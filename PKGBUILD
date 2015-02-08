@@ -3,7 +3,7 @@
 
 pkgname=kchmviewer
 pkgver=7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
@@ -13,8 +13,8 @@ makedepends=('automoc4' 'cmake')
 options=('libtool')
 install=$pkgname.install
 changelog=$pkgname.changelog
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('124e59490b00e561ffe6719634fb8345e2d578612af68fbc84b292dd082ced7a')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-7.2.1.tar.gz)
+sha256sums=('91c5a74b26956e76400a02285d534d1eebbb51ee478dcaaab7beff7aa870772a')
 
 build() {
   cd $pkgname-$pkgver
