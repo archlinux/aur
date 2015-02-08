@@ -7,7 +7,7 @@ pkgdesc='Library for parsing video download links.'
 arch=('any')
 url='http://quvi.sourceforge.net/'
 license=('AGPL3')
-depends=('lua-socket' 'lua-bitop' 'lua-expat')
+depends=('lua-socket' 'lua-bitop' 'lua-expat' 'lua-luajson')
 source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
 md5sums=('46ddfd887260a515199c2e1ba8c46d8a'
          'SKIP')
