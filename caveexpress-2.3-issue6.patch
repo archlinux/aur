@@ -1,0 +1,48 @@
+From a5555afd7443f155535f11640fee93e20d93692a Mon Sep 17 00:00:00 2001
+From: Martin Gerhardy <martin.gerhardy@gmail.com>
+Date: Tue, 3 Feb 2015 13:53:01 +0100
+Subject: [PATCH] * fixed #6 (Sound doesn't work (Linux/Debian))
+
+---
+ src/engine/client/sound/Sound.cpp              | 3 +++
+ src/engine/client/sound/sdl/SDLSoundEngine.cpp | 4 ++--
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/engine/client/sound/Sound.cpp b/src/engine/client/sound/Sound.cpp
+index fbdf5f2..51f59fa 100644
+--- a/src/engine/client/sound/Sound.cpp
++++ b/src/engine/client/sound/Sound.cpp
+@@ -11,8 +11,11 @@ Sound::Sound () :
+ 		_soundEngine(&_dummy)
+ {
+ 	const String& engine = Config.getSoundEngine();
++	info(LOG_CLIENT, "soundengine: " + engine);
+ 	if (engine == "sdl")
+ 		_soundEngine = new SDLSoundEngine();
++	else
++		info(LOG_CLIENT, "disable sound");
+ }
+ 
+ Sound::~Sound ()
+diff --git a/src/engine/client/sound/sdl/SDLSoundEngine.cpp b/src/engine/client/sound/sdl/SDLSoundEngine.cpp
+index cd12d85..bec5ad5 100644
+--- a/src/engine/client/sound/sdl/SDLSoundEngine.cpp
++++ b/src/engine/client/sound/sdl/SDLSoundEngine.cpp
+@@ -141,7 +141,7 @@ int SDLSoundEngine::playMusic (const std::string& music, bool loop)
+ 	Mix_FreeMusic(_music);
+ 	_music = nullptr;
+ 
+-	SDL_RWops *rwops = FS.createRWops(FS.getSoundsDir() + music + SOUNDTYPE);
++	SDL_RWops *rwops = FS.createRWops(FS.getDataDir() + FS.getSoundsDir() + music + SOUNDTYPE);
+ 	if (rwops == nullptr) {
+ 		error(LOG_CLIENT, "unable to load music file: " + music);
+ 		return -1;
+@@ -226,7 +226,7 @@ Mix_Chunk* SDLSoundEngine::getChunk (const std::string& filename)
+ 		return i->second;
+ 	}
+ 
+-	const std::string& path = FS.getSoundsDir() + filename + SOUNDTYPE;
++	const std::string& path = FS.getDataDir() + FS.getSoundsDir() + filename + SOUNDTYPE;
+ 	SDL_RWops *rwops = FS.createRWops(path);
+ 	Mix_Chunk *sound = Mix_LoadWAV_RW(rwops, 1);
+ 	_map[filename] = sound;
