@@ -4,7 +4,7 @@
 # Contributor: Aline Freitas <aline@alinefreitas.com.br>
 
 pkgname=polkit-git
-pkgver=0.112.r17.g6c992bc
+pkgver=0.112.r18.gf4d71e0
 pkgrel=1
 epoch=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
