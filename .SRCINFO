@@ -1,7 +1,7 @@
 pkgbase = vivaldi
 	pkgdesc = A new browser for our friends
 	pkgver = 1.0.94.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	install = vivaldi.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = vivaldi
 	options = !strip
 	options = !zipman
 	source = https://vivaldi.com/download/Vivaldi_TP2_1.0.94.2_amd64.deb
-	sha256sums = 9fcf99ba06fc74cd01329611cf70765349c1301a2fc6bf8cff8dc84eddb7ea48
+	sha256sums = 37ae3f105214f25662dead3f8d389b43f6a2f664a98eac684d0fcf779461cce1
 
 pkgname = vivaldi
 
