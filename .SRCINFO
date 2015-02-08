@@ -1,0 +1,26 @@
+pkgbase = lincity-ng-git
+	pkgdesc = A city simulation game (development version)
+	pkgver = 2.9.beta.r1832.4900c2e
+	pkgrel = 1
+	url = https://code.google.com/p/lincity-ng/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = ftjam
+	makedepends = mesa
+	makedepends = glu
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_gfx
+	depends = physfs
+	depends = libxml2
+	depends = libgl
+	provides = lincity-ng=2.9.beta
+	conflicts = lincity-ng
+	source = git+https://code.google.com/p/lincity-ng/
+	md5sums = SKIP
+
+pkgname = lincity-ng-git
+
