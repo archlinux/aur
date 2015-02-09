@@ -3,7 +3,7 @@
 
 _pkgname=ephoto
 pkgname=$_pkgname-git
-pkgver=0.0.1.r527.8138051
+pkgver=0.1.1.528.26b2ecf
 pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  printf "$efl_version.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "$efl_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
