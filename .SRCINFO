@@ -1,0 +1,16 @@
+pkgbase = asciiplanets-git
+	pkgdesc = ASCII solar system observer
+	pkgver = f7e3d1f
+	pkgrel = 1
+	url = https://github.com/vain/asciiplanets
+	arch = any
+	license = custom:PIZZA-WARE
+	makedepends = git
+	depends = python-pyephem
+	provides = asciiplanets
+	conflicts = asciiplanets
+	source = git://github.com/vain/asciiplanets.git
+	md5sums = SKIP
+
+pkgname = asciiplanets-git
+
