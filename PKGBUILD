@@ -6,30 +6,25 @@
 
 pkgname=gcalcli
 pkgver=3.2
-pkgrel=4
-pkgdesc="Google Calendar Command Line Interface"
+pkgrel=5
+pkgdesc='Google Calendar Command Line Interface'
 arch=('any')
-url="https://github.com/insanum/gcalcli"
+url=https://github.com/insanum/gcalcli
 license=('MIT')
 depends=('python2-google-api-python-client' 'python2-dateutil' 'python2-gflags')
 makedepends=('hardening-wrapper')
 optdepends=('python2-vobject: for ics/vcal importing'
             'python2-parsedatetime: for fuzzy dates/times like "now", "today",
               "eod tomorrow", etc.')
-source=("https://github.com/insanum/$pkgname/archive/v$pkgver.tar.gz"
-        'LICENSE.gcalcli')
-sha256sums=('9b3465be8e64c291ffe4582f8cb779a7025c700e6a83aae74722d87a3b88d55a'
-            'cb38022bb68ccf91dfaef624df51a45204e67555b3cb6fd6918d952a6a211362')
+source=("gcalcli-$pkgver::https://raw.githubusercontent.com/insanum/gcalcli/v$pkgver/gcalcli")
+sha256sums=('23dc5f924095ec593b5a50b6373e07bde71bfce0d64a750e6ad4d5701f238dcf')
 
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i -e "1s/$/2/" "$pkgname"
+prepare() {
+  sed -i -e "1s/$/2/" gcalcli-$pkgver
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir"/LICENSE.gcalcli \
-    "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm755 gcalcli-$pkgver "$pkgdir"/usr/bin/gcalcli
 }
 
 # vim:set ts=2 sw=2 et:
