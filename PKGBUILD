@@ -3,8 +3,8 @@
 # Contributor: Ryan Lee <ryan@swyro.com>
 
 pkgname=apache-flex-sdk
-pkgver=4.13.0
-pkgrel=3
+pkgver=4.14.0
+pkgrel=1
 pkgdesc="The open-source framework for building expressive web and mobile applications"
 arch=('any')
 license=('Apache')
@@ -15,17 +15,17 @@ optdepends=(
 )
 source=(
     "http://ftp.twaren.net/Unix/Web/apache/flex/$pkgver/binaries/apache-flex-sdk-$pkgver-bin.tar.gz"
-    "http://www.apache.org/dist/flex/4.13.0/binaries/apache-flex-sdk-4.13.0-bin.tar.gz.asc"
+    "http://www.apache.org/dist/flex/$pkgver/binaries/apache-flex-sdk-$pkgver-bin.tar.gz.asc"
     "http://download.macromedia.com/get/flashplayer/updaters/11/playerglobal11_1.swc"
     "apache-flex-sdk.sh"
 )
 sha256sums=(
-    'e24701c1cac6b6c1cf442ee5f8597a77c2bd362fb0060f55aded72f8476511b2'
+    'd745d904f7fd6754277c9eea4ca4a13883d886a5127573b6ae546ab262365c01'
     'SKIP'
     '2bbd5ffff3bb20c117db7206080079479b04c4b55d68dd21ab31b6566c99fb6b'
     '520ae01482825ef28da42c03b3cbadd3d62155ed074d737f3672980f0a97a3fd'
 )
-validpgpkeys=('E7F7B7D4944CAC457A14C0E983E0431CDA9CCFF2')
+validpgpkeys=('17D73FA2308E1C1E8154D51300397EFE935E15AF')
 install=apache-flex-sdk.install
 options=('!strip')
 noextract=('playerglobal11_1.swc')
