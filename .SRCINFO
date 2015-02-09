@@ -1,0 +1,14 @@
+pkgbase = cuda-z
+	pkgdesc = CUDA Information Utility.
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://cuda-z.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	depends = cuda-toolkit
+	depends = qt4
+	source = http://downloads.sourceforge.net/cuda-z/cuda-z-0.9.zip
+	sha1sums = bab558d46765b2e1d763df670c979a3b5033eb6a
+
+pkgname = cuda-z
+
