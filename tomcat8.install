@@ -1,5 +1,6 @@
 post_install() {
     systemd-sysusers tomcat8.conf
+    systemd-tmpfiles --create tomcat8.conf
 
   if [ -f lib/modules/$(uname -r)/kernel/security/capability.ko ]; then
     echo 'It appears that your current kernel has linux security'
@@ -13,6 +14,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-  echo "Leftover files may exist in /var/{lib,tmp,log}/tomcat8"
+  echo "Leftover files may reside in /var/{lib,tmp,log}/tomcat8"
   echo "If you remove them, you may also want to remove user and group 'tomcat8'"
 }

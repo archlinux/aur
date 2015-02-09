@@ -24,7 +24,7 @@ source=(http://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tom
 sha256sums=('49f9097073493accb8f8e0827d8f4ee00d2cc115b9188fc3902deb3696554379'
             'd44056248b7cdd6671fd4de08a9453b3bd1a83980343d249a99b74939d46f4d4'
             '3f69c07659509bd1ae9d94cecbbba7c9072f0ede69e0a69d05b67a66aef9f686'
-            'cd637d5b1a0e816c149c868a72d3d315ea0061efc9e544cadfbc73859dedb847')
+            '0dc1fdb537d3488756755f3fb713a9638597d4c68596f6f94f2707e8363cf5e2')
 
 _gid_log=19
 _gid_tomcat=57
@@ -61,6 +61,7 @@ package() {
   install -dm775 "${pkgdir}"/var/lib/${pkgname}
   cp -r webapps "${pkgdir}"/var/lib/${pkgname}
   chown -R ${_uid_tomcat}:${_gid_tomcat} "${pkgdir}"/var/lib/${pkgname}
+  chmod 775 "${pkgdir}"/var/lib/${pkgname}/webapps
   ln -s /var/lib/${pkgname}/webapps "${pkgdir}"/usr/share/${pkgname}/webapps
 
   install -dm1777 "${pkgdir}"/var/tmp
