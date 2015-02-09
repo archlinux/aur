@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=(pypy-pip pypy3-pip)
