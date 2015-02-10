@@ -4,7 +4,7 @@
 
 pkgname=nrpe
 pkgver=2.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -25,7 +25,7 @@ md5sums=('3921ddc598312983f604541784b35a50'
          'e68e6460f5a2999635254dac64056679')
 
 prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   # fix directory permissions
   sed -i 's/775/755/' Makefile.in src/Makefile.in
@@ -42,7 +42,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   ./configure \
     --prefix=/usr \
@@ -56,9 +56,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
-  make DESTDIR="$pkgdir"/ install
+  make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir"/ install-daemon-config
 
   install -Dm644 sample-config/nrpe.xinetd "$pkgdir"/etc/xinetd.d/nrpe

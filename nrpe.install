@@ -3,7 +3,7 @@ post_install() {
     groupadd -g 31 nrpe
   fi
   if [ -z "$(getent passwd nrpe)" ]; then
-    useradd -u 31 -g nrpe -c "Nagios NRPE" -d /dev/null -s /usr/bin/nologin nrpe
+    useradd -u 31 -g nrpe -c "NRPE" -d /dev/null -s /usr/bin/nologin nrpe
   fi
 
   grep -Pq '^nrpe\s+' /etc/services || \
@@ -14,11 +14,6 @@ post_install() {
 
 post_upgrade() {
   post_install $1
-}
-
-post_remove() {
-  userdel nrpe
-  groupdel nrpe
 }
 
 post_remove() {
