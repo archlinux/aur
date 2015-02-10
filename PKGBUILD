@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=3.18
+_basekernel=3.19
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.5
+pkgver=${_basekernel}.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -14,14 +14,13 @@ makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
+#        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+#        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
         'config'
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('2f0b72466e9bc538a675738aa416573d41bbbd7e3e2ffd5b5b127afde609ebc278cec5a3c37e73479607e957c13f1b4ed9782a3795e0dcc2cf8e550228594009' 'SKIP'
-            '273b5e4917bcd8520d8c81869f41572275a181ae4cb2c3d7309507d47da29903eb2104703e4402f07f6c20477665a82ef57d8a1c34e19ecc10b0e1a4c0f8fd14' 'SKIP'
+sha512sums=('d77bfd9b1cd524ac50bb5a93808955be2f9bcd2ec0badcc8aa6a63401e212f891fd14bd27c6441174ba5d70ab875b9e76c7ebc95f046e31aff1d40790d30351c' 'SKIP'
             '17652104279fdb66e751fe091570fe2f15096994840de6da539d516c457006233790900761b5b54bd2ecb89d42699b29032b44673d00753f303216a75895ded0'
             'd275ecb877ec4e1fcc1fc590e1da58d37a2ef3b81bf74abbcc142a49c4a5702f3b37a04f5449e1d1f4222c0c81cac2ce43d5f51cac39907a1827d95973bca7b1'
             '0ddff435474213f6c6e62576b6b3042aeffd1df84c47ca6195714a92c2655c33c56ce211c14934f4268afdf246077e1ea04e0958efc263c71aabfb497481022c'
@@ -39,7 +38,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+#  patch -p1 -i "${srcdir}/patch-${pkgver}"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
