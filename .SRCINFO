@@ -1,0 +1,16 @@
+pkgbase = cuwire
+	pkgdesc = cli tool for microcontroller firmware
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://apla.github.io/cuwire/
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = gnuplot
+	depends = python
+	noextract = 0.5.6.tar.gz
+	source = https://github.com/apla/cuwire/archive/v/0.5.6.tar.gz
+	md5sums = 6b0dd8a58f80501a65e63f0009074147
+
+pkgname = cuwire
+
