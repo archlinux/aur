@@ -1,64 +1,38 @@
-# Maintainer: Tess 'socketwench' Flynn <tess@deninet.com>
-# Contributor: James An <james@jamesan.ca>
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: Tess 'socketwench' Flynn <tess@deninet.com>
 
-pkgname=drush-git
-pkgver=7.0.0.alpha7.r88.g9dd205d
+_pkgname=drush
+pkgname=$_pkgname-git
+pkgver=7.0.0.alpha8.r91.gcdc7ffd
 pkgrel=1
 pkgdesc="The Drupal command-line shell, git version."
 arch=('any')
-url="https://github.com/drush-ops/drush"
+url="https://github.com/drush-ops/$pkgname"
 license=('GPL')
 depends=('bash' 'php-composer')
-provides=('drush')
-conflicts=('drush5' 'drush')
-install=${pkgname}.install
-source=("$pkgname"::'git://github.com/drush-ops/drush.git')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git://github.com/drush-ops/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    (
+        set -o pipefail
+        git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ) 2>/dev/null
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
-  install -d ${pkgdir}/usr/share/webapps/drush/commands
-  cp -rf ${srcdir}/${pkgname}/commands/* ${pkgdir}/usr/share/webapps/drush/commands/
+  install -d "$pkgdir/usr/share/webapps/$_pkgname"
+  install -d "$pkgdir/usr/bin"
 
-  install -d ${pkgdir}/usr/share/webapps/drush/docs
-  cp -rf ${srcdir}/${pkgname}/docs/* ${pkgdir}/usr/share/webapps/drush/docs/
+  cp -rf * "$pkgdir/usr/share/webapps/$_pkgname"
+  ln -s "/usr/share/webapps/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-  install -d ${pkgdir}/usr/share/webapps/drush/examples
-  cp -rf ${srcdir}/${pkgname}/examples/* ${pkgdir}/usr/share/webapps/drush/examples/
-
-  install -d ${pkgdir}/usr/share/webapps/drush/includes
-  cp -rf ${srcdir}/${pkgname}/includes/* ${pkgdir}/usr/share/webapps/drush/includes/
-
-  install -d ${pkgdir}/usr/share/webapps/drush/lib
-  cp -rf ${srcdir}/${pkgname}/lib/* ${pkgdir}/usr/share/webapps/drush/lib/
-
-  install -d ${pkgdir}/usr/share/webapps/drush/misc
-  cp -rf ${srcdir}/${pkgname}/misc/* ${pkgdir}/usr/share/webapps/drush/misc/
-
-  install -d ${pkgdir}/usr/share/webapps/drush/tests
-  cp -rf ${srcdir}/${pkgname}/tests/* ${pkgdir}/usr/share/webapps/drush/tests/
-
-  install -Dm755 ./composer.json ${pkgdir}/usr/share/webapps/drush/composer.json || return 1
-  install -Dm755 ./drush ${pkgdir}/usr/share/webapps/drush/drush || return 1
-  install -Dm755 ./drush.complete.sh ${pkgdir}/usr/share/webapps/drush/drush.complete.sh || return 1
-  install -Dm644 ./drush.info ${pkgdir}/usr/share/webapps/drush/drush.info || return 1
-  install -Dm755 ./drush.php ${pkgdir}/usr/share/webapps/drush/drush.php || return 1
-  install -Dm644 ./drush_logo-black.png ${pkgdir}/usr/share/webapps/doc/drush/drush_logo-black.png || return 1
-  install -Dm644 ./README.md ${pkgdir}/usr/share/webapps/doc/drush/README.txt || return 1
-  install -Dm644 ./unish.sh ${pkgdir}/usr/share/webapps/doc/drush/unish.sh || return 1
-  install -Dm644 ./examples/example.drushrc.php ${pkgdir}/usr/share/webapps/drush/example.drushrc.php || return 1
-  install -Dm644 ./examples/example.aliases.drushrc.php ${pkgdir}/usr/share/webapps/drush/example.aliases.drushrc.php || return 1
-  install -Dm644 ./examples/example.drush.ini ${pkgdir}/usr/share/webapps/drush/example.drush.ini || return 1
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s /usr/share/webapps/drush/drush ${pkgdir}/usr/bin/drush
-  #Make directory for eventual packaged drush extensions
-  #mkdir -p ${pkgdir}/usr/share/webapps/drush/commands
-
-  composer install -d ${pkgdir}/usr/share/webapps/drush
+  composer install --prefer-source --no-interaction --working-dir "$pkgdir/usr/share/webapps/$_pkgname"
 }
