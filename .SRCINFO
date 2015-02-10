@@ -1,13 +1,13 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
-	pkgver = 2.4.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = libgaminggear=0.5.0
+	depends = libgaminggear=0.6.0
 	depends = libcanberra
 	depends = gtk2
 	depends = libnotify>=0.7.0
@@ -15,8 +15,8 @@ pkgbase = roccat-tools
 	depends = udev
 	depends = hicolor-icon-theme
 	optdepends = kmod-roccat: Adds support for the old kone device.
-	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-2.4.0.tar.bz2
-	md5sums = b241c5f32134d515e8f1d9315cf4b0a6
+	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-3.0.0.tar.bz2
+	md5sums = ff0c95899eb7a0547db7b6ba64adbb6b
 
 pkgname = roccat-tools-common
 	pkgdesc = ROCCAT tools common files
@@ -80,7 +80,7 @@ pkgname = roccat-tools-pyra
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Pyra devices
 	depends = roccat-tools-common
 
-pkgname = roccat-tools-ryos
+pkgname = roccat-tools-ryosmk
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Ryos devices
 	depends = roccat-tools-common
 

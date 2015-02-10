@@ -17,23 +17,23 @@ pkgname=('roccat-tools-common'
          'roccat-tools-kovaplus'
          'roccat-tools-lua'
          'roccat-tools-pyra'
-         'roccat-tools-ryos'
+         'roccat-tools-ryosmk'
          'roccat-tools-savu'
          'roccat-tools-tyon')
 pkgbase=roccat-tools
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear=0.5.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
+depends=('libgaminggear=0.6.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 conflicts=
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('b241c5f32134d515e8f1d9315cf4b0a6')
+md5sums=('ff0c95899eb7a0547db7b6ba64adbb6b')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -181,14 +181,14 @@ package_roccat-tools-pyra() {
   install -Dm644 udev/90-roccat-pyra.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-pyra.rules
 }
 
-package_roccat-tools-ryos() {
+package_roccat-tools-ryosmk() {
   pkgdesc='Userland applications to configure and make extended use of ROCCAT Ryos devices'
   depends=('roccat-tools-common')
 
-  cd "$srcdir/$pkgbase-$pkgver/ryos"
+  cd "$srcdir/$pkgbase-$pkgver/ryosmk"
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm644 udev/90-roccat-ryos.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-ryos.rules
+  install -Dm644 udev/90-roccat-ryosmk.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-ryosmk.rules
 }
 
 package_roccat-tools-savu() {
