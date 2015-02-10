@@ -77,7 +77,6 @@ package_linux-linode() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
 
   emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
   mkdir -p "${pkgdir}/lib/modules/${emdir}"
