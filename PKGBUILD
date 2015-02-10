@@ -1,8 +1,8 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Leewings Ng <osideal@gmail.com>
 
 pkgname=fcitx-table-extra
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie3, Cangjie5'
 arch=('any')
@@ -11,7 +11,10 @@ license=('GPL')
 depends=('fcitx')
 makedepends=('cmake' 'intltool')
 install=fcitx-table-extra.install
-source=("http://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}.tar.xz")
+source=("http://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}.tar.xz"{,.sig})
+sha512sums=('628eb7d2b09a3383ab92460dc8c2bc86771482cc84bdce847a394ee595423642dff29a39ccf31f56ea8de833f25e9d42952b55b754dd234d0831b5de5431d16a'
+            'SKIP')
+validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
 build() {
   cd $pkgname-$pkgver
@@ -24,5 +27,3 @@ package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
-
-sha512sums=('3970fd9fb14afef5bc55fcfb8234c12951cf88a8ead9be1575ba3100d08f83f23c923093722380ca9c066d6a3fa065bd51f176b09815b0c85f13d8351a004304')
