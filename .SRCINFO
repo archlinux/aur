@@ -1,7 +1,7 @@
 pkgbase = vivaldi-snapshot
 	pkgdesc = A new browser for our friends (weekly snapshot)
 	pkgver = 1.0.98.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivaldi.com
 	install = vivaldi.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = vivaldi-snapshot
 	conflicts = vivaldi
 	options = !strip
 	options = !zipman
-	source = https://vivaldi.com/download/snapshot/Vivaldi-snapshot_1.0.98.2-1_amd64.deb
+	source = https://vivaldi.com/download/snapshot/vivaldi-snapshot_1.0.98.2-1_amd64.deb
 	sha256sums = d79a6975c38aa0bbb4c69e77ea1d553e3b6c0584068f7522f22c81727ada3c6b
 
 pkgname = vivaldi-snapshot

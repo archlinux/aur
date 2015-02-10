@@ -3,14 +3,14 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.0.98.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A new browser for our friends (weekly snapshot)'
 url="https://vivaldi.com"
 install=vivaldi.install
 options=(!strip !zipman)
 license=('custom')
 arch=('x86_64')
-source=("https://vivaldi.com/download/snapshot/Vivaldi-snapshot_${pkgver}-1_amd64.deb")
+source=("https://vivaldi.com/download/snapshot/vivaldi-snapshot_${pkgver}-1_amd64.deb")
 depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info')
 optdepends=('ffmpeg: playback of proprietary formats')
 conflicts=('vivaldi')
