@@ -8,6 +8,4 @@ post_install () {
 
 pre_remove() {
   [ -h /var/service/incron ] && rm /var/service/incron
-  userdel incron >& /dev/null
-  groupdel incron >& /dev/null
 }
