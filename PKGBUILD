@@ -3,7 +3,7 @@
 
 pkgname=warzone2100-git
 _gitname=warzone2100
-pkgver=master.SDL.r4078.g8c6dde4
+pkgver=master.SDL.r4090.g758f3b4
 pkgrel=1
 pkgdesc="3D realtime strategy game on a future Earth (Git version)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
-  sed -i 's/-Werror/-Werror -Wno-error=clobbered/g' configure
+ sed -i 's/-Werror//g' configure
   ./configure --prefix=/usr
   make
 }
