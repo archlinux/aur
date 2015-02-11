@@ -1,6 +1,6 @@
 # Maintainer: Christian Neukirchen <chneukirchen@gmail.com>
 pkgname=cwm-git
-pkgver=20150124
+pkgver=20150211
 pkgrel=1
 pkgdesc="OpenBSD fork of calmwm, a clean and lightweight window manager"
 arch=('i686' 'x86_64')
