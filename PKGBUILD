@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.14.7
+pkgver=3.14.8
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
 arch=(any)
@@ -27,7 +27,7 @@ source=(
   "gtk3-aur-remove-gobject-introspection.patch"
   "gtk3-bug-731013-fix-cross-compilation.patch")
 
-sha256sums=('fb9914b04f218c1afb4820ea492f3c6ab6d6993cc6634ecade8303678d05a46e'
+sha256sums=('7a543ea8a85f2c8a7b7374f24fd57df454067858689d8b02ec6c90f24be2b344'
             'ae632ad20c87032c326dbb1cda086e33a5078909f89174b2ba232be1b48c32a3'
             '2dd763d32f7b7de08a325d32b811e87266277edb6055a043632d10c146ffc6d3')
 
