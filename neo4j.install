@@ -63,5 +63,5 @@ warn_about_java_home() {
   echo "(https://wiki.archlinux.org/index.php/Java#Former_.22One_time_setup.22_trick)"
   echo "you shall delete it. Thereupon, enjoy your graphs."
   echo ""
-  echo "This message will self-destruct in 2 s̶e̶c̶o̶n̶d̶s̶ releases..."
+  echo "This message will self-destruct in 1 s̶e̶c̶o̶n̶d̶ release..."
 }
