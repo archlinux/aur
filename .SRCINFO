@@ -1,0 +1,26 @@
+pkgbase = pidgin-mini
+	pkgdesc = A minimal version of Pidgin for sane XMPP / IRC users
+	pkgver = 2.10.11
+	pkgrel = 1
+	url = http://pidgin.im/
+	install = pidgin.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ca-certificates
+	makedepends = python
+	depends = gtk2
+	depends = startup-notification
+	depends = libxss
+	depends = nss
+	depends = hicolor-icon-theme
+	provides = pidgin
+	provides = libpurple
+	conflicts = pidgin
+	conflicts = libpurple
+	options = !libtool
+	source = https://downloads.sourceforge.net/pidgin/pidgin-2.10.11.tar.bz2
+	md5sums = 7c8bb6f997e05e7929104439872c2844
+
+pkgname = pidgin-mini
+
