@@ -1,7 +1,7 @@
 pkgbase = poppler-minimal
 	pkgdesc = PDF rendering library based on xpdf 3.0 (minimal non-X version)
 	pkgver = 0.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://poppler.freedesktop.org/
 	arch = i686
 	arch = x86_64

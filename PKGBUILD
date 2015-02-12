@@ -4,7 +4,7 @@
 
 pkgname='poppler-minimal'
 pkgver=0.30.0
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=('GPL')
 makedepends=('icu')
@@ -30,7 +30,8 @@ build() {
       --disable-poppler-cpp \
       --disable-libpng \
       --enable-cms=none \
-      --disable-cairo-output
+      --disable-cairo-output \
+      --disable-libjpeg
   make
 }
 
