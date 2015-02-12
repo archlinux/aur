@@ -1,0 +1,2 @@
+Defaults:http !requiretty
+http ALL=NOPASSWD: /usr/bin/nginx

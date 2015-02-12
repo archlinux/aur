@@ -1,0 +1,36 @@
+post_install() {
+    post_upgrade
+
+    echo ">>> 1. Ensure this machine's hostname is a FQDN that resolves one of its IP addresses:"
+    echo "         $ ip addr | grep inet | sed --regexp-extended 's/ *inet6? ([^\\/]*).*/\1/' | \\"
+    echo "             grep --quiet $(resolveip $(hostname) | cut --fields=6 --delimiter=' ') && echo Success!"
+    echo ">>> 2. Ensure the http user and group exist (i.e. uid=gid=33):"
+    echo "         $ test \$(id --user http) -eq 33 -a \$(id --group http) -eq 33 && echo Success!"
+    echo ">>> 3. Setup the MySQL instance (by running mysql_secure_installation, or the following shell commands):"
+    echo "         # systemctl start mysqld"
+    echo "         $ mysql --user=root --execute=\""
+    echo "             DELETE FROM mysql.user WHERE User='';"
+    echo "             DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
+    echo "             DROP DATABASE IF EXISTS test;"
+    echo "             DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
+    echo "             FLUSH PRIVILEGES;\""
+    echo ">>> 4. (opt) Create a aegir MySQL user:"
+    echo "          $ mysql --user=root \\"
+    echo "              --execute=\"GRANT ALL PRIVILEGES ON *.* TO 'aegir'@'%' IDENTIFIED BY 'passwd' WITH GRANT OPTION;\""
+    echo ">>> 5. Install hostmaster as the aegir user through its drush provision command:"
+    echo "         # su aegir -c \\"
+    echo "             \"drush hostmaster-install --yes --web_group=http --http_service_type=nginx \\"
+    echo "                --root=/var/lib/aegir/hostmaster --aegir_db_user=aegir --aegir_db_pass=passwd \\"
+    echo "                --aegir_host=\$(hostname) --client_email=aegir@\$(hostname) \$(hostname)\""
+    echo ">>> 6. Connect nginx to the Unix socket used by php-fpm:"
+    echo "         # su aegir -c \"sed -i 's/127.0.0.1:9000/unix:\\/run\\/php-fpm\\/php-fpm.sock/' /var/lib/aegir/config/includes/nginx_vhost_common.conf\""
+    echo ">>> 7. Start the entire web stack:"
+    echo "         # systemctl start mysqld nginx php-fpm"
+    echo ">>> 8. (opt) Enable and start the hosting queue daemon:"
+    echo "         # su aegir -c \"drush @hostmaster pm-enable hosting_queued\" && systemctl start aegir"
+}
+
+post_upgrade() {
+    getent group aegir || groupadd --non-unique --gid $(id --group http) aegir
+    getent passwd aegir || useradd --non-unique --uid $(id --user http) --gid $(id --group http) --home-dir /var/lib/aegir aegir
+}
