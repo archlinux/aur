@@ -15,11 +15,9 @@ depends=('openssl' 'libusb-compat' 'libltdl' 'neon' 'net-snmp')
 makedepends=('asciidoc')
 backup=(etc/ups/{ups.conf,upsd.conf,upsd.users,upsmon.conf,upssched.conf})
 install=nut.install
-source=("http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz"
-        "http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz.sig")
+source=("http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz")
 options=('!emptydirs' '!libtool')
-sha256sums=('4d5365359b059d96dfcb77458f361a114d26c84f1297ffcd0c6c166f7200376d'
-            'SKIP')
+sha256sums=('4d5365359b059d96dfcb77458f361a114d26c84f1297ffcd0c6c166f7200376d')
 
 build() {
   cd "$srcdir/nut-$pkgver"
