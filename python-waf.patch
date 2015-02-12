@@ -1,5 +1,5 @@
---- waflib/extras/process_resources.py	2014-12-10 02:26:56.000000000 +0100
-+++ waflib/extras/process_resources.py.new	2014-12-12 14:26:40.448399388 +0100
+--- waflib/extras/process_resources.py	2015-02-12 00:56:41.000000000 +0100
++++ waflib/extras/process_resources.py.new	2015-02-12 08:59:31.180857657 +0100
 @@ -20,7 +20,7 @@
  	character_regex='--filter "%s"'%entry['characterRegex'].encode('utf8')if'characterRegex'in entry else''
  	character_list='--list "%s"'%entry['characterList']if'characterList'in entry else''
@@ -7,14 +7,9 @@
 -	cmd="python '{}' pfo {} {} {} {} {} {} '{}' '{}'".format(script,extended,height,tracking_adjust,character_regex,character_list,legacy,ttf,pfo)
 +	cmd="'{}' '{}' pfo {} {} {} {} {} {} '{}' '{}'".format(sys.executable, script,extended,height,tracking_adjust,character_regex,character_list,legacy,ttf,pfo)
  	return cmd
- def gen_resource_deps(bld,resources_dict,resources_path_node,output_pack_node,output_id_header_node,resource_header_path,tools_path,is_system=False,pfs_resources_header_node=None,font_key_header_node=None,font_key_table_node=None,font_key_include_path=None,timestamp=None):
+ def gen_resource_deps(bld,resources_dict,resources_path_node,output_pack_node,output_id_header_node,output_version_header_node,resource_header_path,tools_path,is_system=False,pfs_resources_header_node=None,font_key_header_node=None,font_key_table_node=None,font_key_include_path=None,timestamp=None):
  	bitmap_script=tools_path.find_node('bitmapgen.py')
-@@ -45,18 +45,18 @@
- 		elif res_type=="png-color":
- 			output_pbi=resources_path_node.get_bld().make_node(input_file+'.pbi')
- 			pack_entries.append((output_pbi,def_name))
--			bld(rule="python '{}' pbi-color '{}' '{}'".format(bitmap_script.abspath(),input_node.abspath(),output_pbi.abspath()),source=[input_node,bitmap_script],target=output_pbi)
-+			bld(rule="'{}' '{}' pbi-color '{}' '{}'".format(sys.executable, bitmap_script.abspath(),input_node.abspath(),output_pbi.abspath()),source=[input_node,bitmap_script],target=output_pbi)
+@@ -45,14 +45,14 @@
  		elif res_type=="png":
  			output_pbi=resources_path_node.get_bld().make_node(input_file+'.pbi')
  			pack_entries.append((output_pbi,def_name))
@@ -32,23 +27,28 @@
  		elif res_type=="font":
  			output_pfo=resources_path_node.get_bld().make_node(input_file+'.'+str(def_name)+'.pfo')
  			fontgen_cmd=process_font_cmd(font_script.abspath(),input_node.abspath(),output_pfo.abspath(),entry)
-@@ -89,10 +89,10 @@
+@@ -85,10 +85,10 @@
  	md_script=tools_path.find_node('pbpack_meta_data.py')
  	resource_code_script=tools_path.find_node('generate_resource_code.py')
  	data_sources=[]
 -	table_string="python '{}' table '{}'".format(md_script.abspath(),table_node.abspath())
 -	manifest_string="python '{}' manifest {} '{}'".format(md_script.abspath(),manifest_node.abspath(),timestamp)
 -	content_string="python '{}' content '{}'".format(md_script.abspath(),data_node.abspath())
--	resource_header_string="python '{script}' resource_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),version_def_name='--version_def_name=SYSTEM_RESOURCE_VERSION'if is_system else'',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
+-	resource_ids_header_string="python '{script}' resource_id_header ""'{output_header}'  '{resource_include}' ".format(script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),resource_include=resource_header_path)
 +	table_string="'{}' '{}' table '{}'".format(sys.executable, md_script.abspath(),table_node.abspath())
 +	manifest_string="'{}' '{}' manifest {} '{}'".format(sys.executable, md_script.abspath(),manifest_node.abspath(),timestamp)
 +	content_string="'{}' '{}' content '{}'".format(sys.executable, md_script.abspath(),data_node.abspath())
-+	resource_header_string="'{}' '{script}' resource_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(sys.executable, script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),version_def_name='--version_def_name=SYSTEM_RESOURCE_VERSION'if is_system else'',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
++	resource_ids_header_string="'{}' '{script}' resource_id_header ""'{output_header}'  '{resource_include}' ".format(sys.executable, script=resource_code_script.abspath(),output_header=output_id_header_node.abspath(),resource_include=resource_header_path)
  	for entry in pack_entries:
  		data_sources.append(entry[0])
  		table_string+=' "%s" '%entry[0].abspath()
-@@ -110,10 +110,10 @@
- 	bld(rule=resource_header_string,source=data_sources+[resource_code_script,data_node],target=output_id_header_node,before=['c'])
+@@ -105,14 +105,14 @@
+ 	bld(rule="cat '{}' '{}' '{}' > '{}'".format(manifest_node.abspath(),table_node.abspath(),data_node.abspath(),output_pack_node.abspath()),source=[manifest_node,table_node,data_node],target=output_pack_node)
+ 	bld(rule=resource_ids_header_string,source=resource_code_script,target=output_id_header_node,before=['c'])
+ 	if is_system:
+-		resource_version_header_string="python '{script}' resource_version_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(script=resource_code_script.abspath(),output_header=output_version_header_node.abspath(),version_def_name='SYSTEM_RESOURCE_VERSION',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
++		resource_version_header_string="'{}' '{script}' resource_version_header ""{version_def_name} '{output_header}' {timestamp} ""'{resource_include}' '{data_file}'".format(sys.executable, script=resource_code_script.abspath(),output_header=output_version_header_node.abspath(),version_def_name='SYSTEM_RESOURCE_VERSION',timestamp=timestamp,resource_include=resource_header_path,data_file=data_node.abspath())
+ 		bld(rule=resource_version_header_string,source=[resource_code_script,data_node],target=output_version_header_node)
  	if font_key_header_node and font_key_table_node and font_key_include_path:
  		key_list_string=" ".join(font_keys)
 -		bld(rule="python '{script}' font_key_header '{font_key_header}' ""{key_list}".format(script=resource_code_script.abspath(),font_key_header=font_key_header_node.abspath(),key_list=key_list_string),source=resource_code_script,target=font_key_header_node)
