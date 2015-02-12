@@ -3,7 +3,7 @@
 
 pkgname=vivaldi
 pkgver=1.0.94.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A new browser for our friends'
 url="https://vivaldi.com"
 install=${pkgname}.install
@@ -19,16 +19,16 @@ package() {
 
 	# soname fix for libsystemd (udev)
 	sed -e 's/libudev.so.0/libudev.so.1/g' \
-		-i "$pkgdir/opt/vivaldi-unstable/vivaldi-bin"
+		-i "$pkgdir/opt/vivaldi/vivaldi-bin"
 
 	# suid sanbox
-	chmod 4755 "$pkgdir/opt/vivaldi-unstable/vivaldi-sandbox"
+	chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"
 
 	# install icons
 	for res in 16 22 24 32 48 64 128 256; do
-		install -Dm644 "$pkgdir/opt/vivaldi-unstable/product_logo_${res}.png" \
-		"$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi-unstable.png"
+		install -Dm644 "$pkgdir/opt/vivaldi/product_logo_${res}.png" \
+		"$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi.png"
 	done
 }
 
-sha256sums=('37ae3f105214f25662dead3f8d389b43f6a2f664a98eac684d0fcf779461cce1')
+sha256sums=('9fcf99ba06fc74cd01329611cf70765349c1301a2fc6bf8cff8dc84eddb7ea48')
