@@ -1,14 +1,14 @@
 pkgbase = python-apt
 	pkgdesc = Python binding of libapt-pkg
 	pkgver = 0.9.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/sid/python-apt
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = python-distutils-extra
-	depends = python
-	depends = apt>=1.0.4
+	makedepends = python2-distutils-extra
+	depends = apt>=1.0.9.3
 	options = !emptydirs
 	source = http://ftp.debian.org/debian/pool/main/p/python-apt/python-apt_0.9.3.11.tar.xz
 	source = fix-pydebug.patch
@@ -16,4 +16,10 @@ pkgbase = python-apt
 	sha256sums = 8a652b45fc4cdb27d672c355858813678908a8b6ab6a8dde8b843193eb960646
 
 pkgname = python-apt
+	depends = apt>=1.0.9.3
+	depends = python
+
+pkgname = python2-apt
+	depends = apt>=1.0.9.3
+	depends = python2
 
