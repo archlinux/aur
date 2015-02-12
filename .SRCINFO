@@ -1,0 +1,24 @@
+pkgbase = openvpn-obfs
+	pkgdesc = OpenVPN binary with obfs patch
+	pkgver = 2.3.6
+	pkgrel = 2
+	url = https://www.gsea.com.cn/blog/topic/traffic-obsfucate-patch-for-openvpn/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = systemd
+	depends = openssl
+	depends = lzo
+	depends = iproute2
+	depends = openvpn>=2.3.0
+	depends = libsystemd
+	options = !libtool
+	source = http://swupdate.openvpn.net/community/releases/openvpn-2.3.6.tar.gz
+	source = openvpn-2.3.6-obfs.patch
+	source = openvpn-obfs@.service
+	sha256sums = 7baed2ff39c12e1a1a289ec0b46fcc49ff094ca58b8d8d5f29b36ac649ee5b26
+	sha256sums = fef778ed0b4facdb20d65d7d7803ab512f36ed7ae6f295e5664a3c953c23bfcf
+	sha256sums = 0f9830b732160523713cd03be3201ba3c5a5bad79fe8bbedc36776558a9feb90
+
+pkgname = openvpn-obfs
+
