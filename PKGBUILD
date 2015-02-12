@@ -6,7 +6,7 @@
 
 pkgname=slic3r-git
 pkgver=a
-pkgrel=14
+pkgrel=15
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('any')
 url="http://slic3r.org/"
@@ -137,6 +137,13 @@ prepare() {
 
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
+
+  # Dependency check - intended of package maintainer only, for now
+  #TODO: make sure that this if actually works when !check inside makepkg.conf and check inside pkgbuild... find last check and check if it has ! in front?. Is check default?
+  if [[ " ${BUILDENV[*]} " != *" !check "* ]] || [[ " ${BUILDENV[*]} " == *" !check"*" check "* ]]; then
+    msg2 "Checking prerequisites"
+    /usr/bin/perl Build.PL --gui || true #TODO: make enough seds so true is not needed
+  fi
 }
 
 build() {
