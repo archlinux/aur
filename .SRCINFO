@@ -6,11 +6,16 @@ pkgbase = python-elmextensions-git
 	arch = any
 	license = BSD
 	makedepends = git
-	depends = python-efl
-	provides = python-elmextensions=r63.74ed51a
-	conflicts = python-elmextensions
 	source = git://github.com/JeffHoogland/python-elm-extensions.git
 	sha256sums = SKIP
 
 pkgname = python-elmextensions-git
+	depends = python-efl
+	provides = python-elmextensions=r63.74ed51a
+	conflicts = python-elmextensions
+
+pkgname = python2-elmextensions-git
+	depends = python2-efl
+	provides = python2-elmextensions=r63.74ed51a
+	conflicts = python2-elmextensions
 
