@@ -3,7 +3,7 @@
 
 _pkgname=drush
 pkgname=$_pkgname-git
-pkgver=7.0.0.alpha8.r91.gcdc7ffd
+pkgver=7.0.0.alpha8.r97.g56909d5
 pkgrel=1
 pkgdesc="The Drupal command-line shell, git version."
 arch=('any')
@@ -25,6 +25,10 @@ pkgver() {
     ) 2>/dev/null
 }
 
+prepare() {
+    composer install --prefer-source --no-interaction --working-dir "$_pkgname"
+}
+
 package() {
   cd "$_pkgname"
 
@@ -33,6 +37,4 @@ package() {
 
   cp -rf * "$pkgdir/usr/share/webapps/$_pkgname"
   ln -s "/usr/share/webapps/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-
-  composer install --prefer-source --no-interaction --working-dir "$pkgdir/usr/share/webapps/$_pkgname"
 }
