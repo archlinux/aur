@@ -2,7 +2,7 @@
 
 pkgname=python-catkin-pkg
 _name=catkin_pkg
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="catkin package library"
 url="http://wiki.ros.org/catkin_pkg"
@@ -11,7 +11,7 @@ makedepends=('python3')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/c/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('2432483a7f294491d335840194e551d0')
+md5sums=('d1b82c9e3acd873e6a07e2c932f4bea4')
 conflicts=(python2-catkin_pkg)
 
 # This is not ideal, but should not break Groovy/Hydro dependencies for now...
