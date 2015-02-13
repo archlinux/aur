@@ -2,10 +2,11 @@
 # Contributor: Tobias Breitwieser <tobias@breitwieser.biz>
 # Contributor: Stefan Betz <info@stefan-betz.net>
 
+# Version control of PKGBUILD: https://github.com/azrdev/peervpn-archlinux/
 pkgname=peervpn
 pkgver=0.042
 _pkgver=${pkgver//./-}
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source peer-to-peer VPN"
 url="http://www.peervpn.net"
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,7 +20,7 @@ sha1sums=('3901ac75caecdf915847b87e259d9f81dad1acba'
 
 build() {
   cd $srcdir/$pkgname-${_pkgver}
-  ln -s ../../peervpn@.service .
+  ln -s ../peervpn@.service .
   unset LDFLAGS
   make
 }
