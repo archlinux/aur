@@ -1,0 +1,16 @@
+pkgbase = mod_jk
+	pkgdesc = The Apache Tomcat Connector
+	pkgver = 1.2.40
+	pkgrel = 1
+	url = http://tomcat.apache.org/connectors-doc/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = java-environment
+	depends = apache
+	source = http://www.eu.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.40-src.tar.gz
+	md5sums = 7e6f4e4dbf5261f42ddd1fdbb9ac3e32
+	sha256sums = 895e347c4dff74049a848603fb29958e6cf429ea0fc708d514b3a8958236705d
+
+pkgname = mod_jk
+
