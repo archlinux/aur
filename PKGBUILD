@@ -3,7 +3,6 @@
 pkgname=('python-elmextensions-git' 'python2-elmextensions-git')
 pkgver=r63.74ed51a
 pkgrel=1
-pkgdesc='An extension for python elementary library that creates a box object which is a sort-able table'
 arch=('any')
 url='https://github.com/JeffHoogland/python-elm-extensions'
 license=('BSD')
@@ -18,7 +17,8 @@ pkgver() {
 }
 
 package_python-elmextensions-git() {
-  depends=('python-efl')
+  pkgdesc="${pkgname%%-*} library that contains a few more complex elementary objects for easy importing/usage"
+  depends=("${pkgname%%-*}-efl")
   provides=("${pkgname%-*}=$pkgver")
   conflicts=("${pkgname%-*}")
 
@@ -29,15 +29,16 @@ package_python-elmextensions-git() {
   install -m644 elmextensions/*.py "$pkgdir/usr/lib/python$_pyver/site-packages/elmextensions/"
 
 # compile python files
-  python -m compileall -q "$pkgdir"
-  python -O -m compileall -q "$pkgdir"
+  ${pkgname%%-*} -m compileall -q "$pkgdir"
+  ${pkgname%%-*} -O -m compileall -q "$pkgdir"
 
 # install license files
   install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
 
 package_python2-elmextensions-git() {
-  depends=('python2-efl')
+  pkgdesc="${pkgname%%-*} library that contains a few more complex elementary objects for easy importing/usage"
+  depends=("${pkgname%%-*}-efl")
   provides=("${pkgname%-*}=$pkgver")
   conflicts=("${pkgname%-*}")
 
@@ -48,8 +49,8 @@ package_python2-elmextensions-git() {
   install -m644 elmextensions/*.py "$pkgdir/usr/lib/python$_pyver/site-packages/elmextensions/"
 
 # compile python files
-  python2 -m compileall -q "$pkgdir"
-  python2 -O -m compileall -q "$pkgdir"
+  ${pkgname%%-*} -m compileall -q "$pkgdir"
+  ${pkgname%%-*} -O -m compileall -q "$pkgdir"
 
 # install license files
   install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
