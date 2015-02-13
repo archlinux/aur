@@ -3,7 +3,7 @@
 
 pkgname=libical
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
 arch=('i686' 'x86_64')
 url='https://github.com/libical/libical'
@@ -21,6 +21,7 @@ build() {
   cd build
   cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
+    -DSHARED_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
