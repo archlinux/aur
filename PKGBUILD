@@ -7,7 +7,7 @@ pkgname='ros-indigo-gazebo-plugins'
 pkgver='2.4.7'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -37,8 +37,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   gazebo
-  ogre-1.8
-  cegui-0.7-ogre)
+  ogre)
 
 ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-rospy
@@ -65,24 +64,17 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-driver-base)
 depends=(${ros_depends[@]}
   gazebo
-  ogre-1.8)
+  ogre)
 
 _tag=release/indigo/gazebo_plugins/${pkgver}-${_pkgver_patch}
 _dir=gazebo_plugins
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag}
-        "ogre_linker.patch")
-md5sums=('SKIP'
-         '995e16e3e777e9a4542d77654ecb1a54')
+source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
-
-  # Apply patch
-  msg "Patching source code"
-  cd ${srcdir}/${_dir}
-  git apply ${srcdir}/ogre_linker.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
@@ -90,10 +82,6 @@ build() {
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
-
-  # Adapt paths for Ogre 1.8
-  export PKG_CONFIG_PATH="/opt/OGRE-1.8/lib/pkgconfig:$PKG_CONFIG_PATH"
-  export LD_LIBRARY_PATH="/opt/OGRE-1.8/lib:$LD_LIBRARY_PATH"
 
   # Build project
   cmake ${srcdir}/${_dir} \
@@ -104,8 +92,7 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCMAKE_LIBRARY_PATH="/opt/OGRE-1.8/lib"
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
 

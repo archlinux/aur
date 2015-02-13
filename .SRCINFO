@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-gazebo-plugins
 	pkgdesc = ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
 	pkgver = 2.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
 	license = BSD, Apache 2.0
@@ -33,8 +33,7 @@ pkgbase = ros-indigo-gazebo-plugins
 	makedepends = ros-indigo-dynamic-reconfigure
 	makedepends = ros-indigo-driver-base
 	makedepends = gazebo
-	makedepends = ogre-1.8
-	makedepends = cegui-0.7-ogre
+	makedepends = ogre
 	depends = ros-indigo-geometry-msgs
 	depends = ros-indigo-rospy
 	depends = ros-indigo-nav-msgs
@@ -59,11 +58,9 @@ pkgbase = ros-indigo-gazebo-plugins
 	depends = ros-indigo-dynamic-reconfigure
 	depends = ros-indigo-driver-base
 	depends = gazebo
-	depends = ogre-1.8
+	depends = ogre
 	source = gazebo_plugins::git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git#tag=release/indigo/gazebo_plugins/2.4.7-1
-	source = ogre_linker.patch
 	md5sums = SKIP
-	md5sums = 995e16e3e777e9a4542d77654ecb1a54
 
 pkgname = ros-indigo-gazebo-plugins
 
