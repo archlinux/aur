@@ -4,7 +4,7 @@ pkgdesc="ROS - Converts a 3D Point Cloud into a 2D laser scan."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-indigo-pointcloud-to-laserscan'
-pkgver='1.2.5'
+pkgver='1.2.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
