@@ -1,6 +1,6 @@
 pkgbase = bas
 	pkgdesc = A BASIC interpreter
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = http://www.moria.de/~michael/bas/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = bas
 	license = GPL
 	makedepends = gcc
 	depends = glibc
-	source = http://www.moria.de/~michael/bas/bas-2.3.tar.gz
-	md5sums = a6f2752790f5ab4a0fd4e6b633db780d
+	source = http://www.moria.de/~michael/bas/bas-2.4.tar.gz
+	md5sums = f2a0c85e5341ae425959413c7e850517
 
 pkgname = bas
 
