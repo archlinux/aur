@@ -7,7 +7,7 @@ pkgname='ros-indigo-gazebo-ros'
 pkgver='2.4.7'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('Apache 2.0')
 
 ros_makedepends=(ros-indigo-rosgraph-msgs
@@ -67,7 +67,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCMAKE_MODULE_PATH="/usr/lib/OGRE/cmake/"
   make
 }
 
