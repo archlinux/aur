@@ -4,7 +4,7 @@ pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
 url='http://ros.org/wiki/perception_pcl'
 
 pkgname='ros-indigo-pcl-ros'
-pkgver='1.2.5'
+pkgver='1.2.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
