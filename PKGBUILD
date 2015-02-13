@@ -8,7 +8,7 @@ pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
-depends=('drush')
+depends=('drush>=7')
 
 pkgver() {
     drush rl --fields=version --field-labels=0 hostmaster | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' '
