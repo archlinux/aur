@@ -6,10 +6,11 @@
 pkgname=peervpn
 pkgver=0.042
 _pkgver=${pkgver//./-}
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source peer-to-peer VPN"
 url="http://www.peervpn.net"
-arch=('i686' 'x86_64' 'armv7h')
+# please report if you find an architecture this does *not* build and run on
+arch=('any')
 license=('GPL3')
 depends=('openssl')
 backup=('etc/peervpn/peervpn.conf')

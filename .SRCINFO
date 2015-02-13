@@ -1,11 +1,9 @@
 pkgbase = peervpn
 	pkgdesc = An open source peer-to-peer VPN
 	pkgver = 0.042
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.peervpn.net
-	arch = i686
-	arch = x86_64
-	arch = armv7h
+	arch = any
 	license = GPL3
 	depends = openssl
 	backup = etc/peervpn/peervpn.conf
