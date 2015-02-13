@@ -1,0 +1,16 @@
+pkgbase = python-elmextensions-git
+	pkgdesc = An extension for python elementary library that creates a box object which is a sort-able table
+	pkgver = r63.74ed51a
+	pkgrel = 1
+	url = https://github.com/JeffHoogland/python-elm-extensions
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python-efl
+	provides = python-elmextensions=r63.74ed51a
+	conflicts = python-elmextensions
+	source = git://github.com/JeffHoogland/python-elm-extensions.git
+	sha256sums = SKIP
+
+pkgname = python-elmextensions-git
+
