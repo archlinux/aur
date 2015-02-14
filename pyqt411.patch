@@ -33,7 +33,7 @@ index dc2020d..7c0eec7 100644
 +                "pyqt_version_str":   QtCore.PYQT_VERSION_STR,
 +                "pyqt_bin_dir":       PyQt4.__path__[0],
 +                "pyqt_mod_dir":       PyQt4.__path__[0],
-+                "pyqt_sip_dir":       "/usr/share/sip",
++                "pyqt_sip_dir":       "/usr/share/sip/Py2-PyQt4",
 +                "pyqt_modules":       "QtCore QtGui",   #... and many more
 +                "pyqt_sip_flags":     QtCore.PYQT_CONFIGURATION['sip_flags'],
 +                "qt_version":         QtCore.QT_VERSION,
