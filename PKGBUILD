@@ -2,7 +2,7 @@
 
 pkgname=gzdoom1
 pkgver=1.8.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (legacy version)."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
@@ -22,11 +22,13 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
 provides=('gzdoom')
 conflicts=('gzdoom')
 source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
+        gitinfo.h
         config-update-fix.patch \
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
 md5sums=('ddc1dd8aef254312031184be6dec21e6'
+         '6748cc6783450b0538db3cbee3e4c7a1'
          'eed301389f533effbd127681a3ddc2c5'
          '3ee3d6bb1f777445438bc40ae81a95df'
          '4778bb22190c445a4ed764c64432de12'
@@ -38,6 +40,8 @@ _sharedir=/usr/share/games/gzdoom
 
 prepare() {
   cd gzdoom-g$pkgver
+
+  cp "$srcdir"/gitinfo.h src/gitinfo.h
 
   patch -p1 <"$srcdir/config-update-fix.patch"
   patch -p1 <"$srcdir/doom-share-dir.patch"
