@@ -27,7 +27,7 @@ source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgv
 sha1sums=('ae7f483799ca463aa5f0a856491a3410907348ed'
           '8c086db1c7be0d52d2ac971f44adbdccf6dd82de'
           'f2c370d6f1b286b7ce9a2804e22541b755616a40'
-          'e780553323a72a1222aa696c5c6edc1b23a5657b')
+          'd4a39ae62cfa031782fd3c8c25f5e9c45ae64eec')
 
 options=('!makeflags')
 install=install
