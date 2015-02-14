@@ -1,0 +1,11 @@
+--- makefile	2013-03-18 12:58:10.000000000 -0400
++++ makefile.new	2013-09-22 13:55:21.417359011 -0400
+@@ -186,7 +186,7 @@ ifneq (,$(filter runtest_no_fail/%,$(MAK
+ endif
+ 
+ all: build docs
+-build: libstan.a stanc
++build: bin/libstan.a bin/stanc
+ docs: manual doxygen
+ 
+ ##
