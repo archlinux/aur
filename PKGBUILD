@@ -3,7 +3,7 @@
 
 pkgname=gzdoom
 pkgver=2.0.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
@@ -21,11 +21,13 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'strife0-wad: Strife shareware game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
 source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
+        gitinfo.h \
         config-update-fix.patch \
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
 md5sums=('6a97b12b99406c112279485054bf13a6'
+         '6c0e3f9ec915af905f016442f5e0e25d'
          'eed301389f533effbd127681a3ddc2c5'
          '3ee3d6bb1f777445438bc40ae81a95df'
          '4778bb22190c445a4ed764c64432de12'
@@ -37,6 +39,8 @@ _sharedir=/usr/share/games/gzdoom
 
 prepare() {
   cd gzdoom-g$pkgver
+
+  cp "$srcdir"/gitinfo.h src/gitinfo.h
 
   patch -p1 <"$srcdir/config-update-fix.patch"
   patch -p1 <"$srcdir/doom-share-dir.patch"
