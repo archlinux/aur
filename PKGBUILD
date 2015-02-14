@@ -1,22 +1,25 @@
+# Maintainer: James An <james@jamesan.ca>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
-pkgname=libtomcrypt
+
 _pkgname=crypt
+pkgname="libtom$_pkgname"
 pkgver=1.17
-pkgrel=8
-pkgdesc="Comprehensive, modular, and portable cryptographic toolkit/library."
-url="http://libtom.org/?page=features&whatfile=crypt"
-license="public domain"
+pkgrel=9
+pkgdesc="A fairly comprehensive, modular and portable cryptographic toolkit"
+url="http://libtom.net/?page=features&newsitems=5&whatfile=$_pkgname"
+license=('custom:Public Domain' 'custom:WTFPL')
 arch=('i686' 'x86_64')
 depends=('gmp')
-makedepends=('gmp' 'libtommath')
-conflicts=()
-replaces=()
-backup=()
+makedepends=('libtommath')
 options=('!emptydirs')
-source=("http://libtom.org/files/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('cea7e5347979909f458fe7ebb5a44f85')
+source=(
+  "http://libtom.net/files/${_pkgname}-${pkgver}.tar.bz2"
+  "http://libtom.net/files/${_pkgname}-${pkgver}.tar.bz2.sig"
+)
+md5sums=('cea7e5347979909f458fe7ebb5a44f85'
+         'SKIP')
 
-build() {
+package() {
   cd ${srcdir}/$pkgname-$pkgver
   make NODOCS=1 DESTDIR="$pkgdir" install
   make NODOCS=1 DESTDIR="$pkgdir" clean
