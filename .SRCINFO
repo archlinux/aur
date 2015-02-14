@@ -1,0 +1,17 @@
+pkgbase = pnm2ppa
+	pkgdesc = Ghostscript print filter for owners of HP DeskJet 710C, 712C, 720C, 722C, 820Cse, 820Cxi, 1000Cse, or 1000Cxi printers.
+	pkgver = 1.13
+	pkgrel = 1
+	url = http://pnm2ppa.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghostscript
+	depends = cups
+	depends = glibc
+	depends = foomatic-filters
+	source = http://downloads.sourceforge.net/pnm2ppa/pnm2ppa-1.13.tar.gz
+	md5sums = 5354e54ade6de7a35370e5b47030274c
+
+pkgname = pnm2ppa
+

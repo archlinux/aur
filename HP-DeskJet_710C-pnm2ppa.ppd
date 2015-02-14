@@ -1,0 +1,787 @@
+*PPD-Adobe: "4.3"
+*%
+*% For information on using this, and to obtain the required backend
+*% script, consult http://www.openprinting.org/
+*%
+*% This file is published under the GNU General Public License
+*%
+*% PPD-O-MATIC (4.0.0 or newer) generated this PPD file. It is for use with 
+*% all programs and environments which use PPD files for dealing with
+*% printer capability information. The printer must be configured with the
+*% "foomatic-rip" backend filter script of Foomatic 4.0.0 or newer. This 
+*% file and "foomatic-rip" work together to support PPD-controlled printer
+*% driver option access with all supported printer drivers and printing
+*% spoolers.
+*%
+*% To save this file on your disk, wait until the download has completed
+*% (the animation of the browser logo must stop) and then use the
+*% "Save as..." command in the "File" menu of your browser or in the 
+*% pop-up manu when you click on this document with the right mouse button.
+*% DO NOT cut and paste this file into an editor with your mouse. This can
+*% introduce additional line breaks which lead to unexpected results.
+*%
+*% You may save this file as 'HP-DeskJet_710C-pnm2ppa.ppd'
+*%
+*%
+*FormatVersion:	"4.3"
+*FileVersion:	"1.1"
+*LanguageVersion: English 
+*LanguageEncoding: ISOLatin1
+*PCFileName:	"PNM2PPA.PPD"
+*Manufacturer:	"HP"
+*Product:	"(DESKJET 710C)"
+*cupsVersion:	1.0
+*cupsManualCopies: True
+*cupsModelNumber:  2
+*cupsFilter:	"application/vnd.cups-postscript 100 foomatic-rip"
+*cupsFilter:	"application/vnd.cups-pdf 0 foomatic-rip"
+*%pprRIP:        foomatic-rip other
+*ModelName:     "HP DeskJet 710C"
+*ShortNickName: "HP DeskJet 710C pnm2ppa"
+*NickName:      "HP DeskJet 710C Foomatic/pnm2ppa (recommended)"
+*PSVersion:	"(3010.000) 550"
+*PSVersion:	"(3010.000) 651"
+*PSVersion:	"(3010.000) 652"
+*PSVersion:	"(3010.000) 653"
+*PSVersion:	"(3010.000) 704"
+*PSVersion:	"(3010.000) 705"
+*PSVersion:	"(3010.000) 800"
+*PSVersion:	"(3010.000) 815"
+*PSVersion:	"(3010.000) 850"
+*PSVersion:	"(3010.000) 860"
+*PSVersion:	"(3010.000) 861"
+*PSVersion:	"(3010.000) 862"
+*PSVersion:	"(3010.000) 863"
+*PSVersion:	"(3010.000) 864"
+*PSVersion:	"(3010.000) 870"
+*LanguageLevel:	"3"
+*ColorDevice:	True
+*DefaultColorSpace: RGB
+*FileSystem:	False
+*Throughput:	"1"
+*LandscapeOrientation: Plus90
+*TTRasterizer:	Type42
+*1284DeviceID: "MFG:HEWLETT-PACKARD;MDL:DESKJET 710C;CMD:SCP,VLINK;DES:Hewlett-Packard Deskjet 710 Series;DRV:Dpnm2ppa,R1,M0,F1,P0,TF;"
+
+*driverName pnm2ppa: ""
+*driverType F/Filter: ""
+*driverUrl: "http://sourceforge.net/projects/pnm2ppa/"
+*driverObsolete: False
+*driverManufacturerSupplied: False
+*driverFreeSoftware: True
+
+*DefaultResolution: 600dpi
+
+
+
+*HWMargins: 18 36 18 36
+*VariablePaperSize: True
+*MaxMediaWidth: 100000
+*MaxMediaHeight: 100000
+*NonUIOrderDependency: 100 AnySetup *CustomPageSize
+*CustomPageSize True: "pop pop pop pop pop
+%% FoomaticRIPOptionSetting: PageSize=Custom"
+*End
+*FoomaticRIPOptionSetting PageSize=Custom: " -dDEVICEWIDTHPOINTS=0 -dD&&
+EVICEHEIGHTPOINTS=0"
+*End
+*ParamCustomPageSize Width: 1 points 36 100000
+*ParamCustomPageSize Height: 2 points 36 100000
+*ParamCustomPageSize Orientation: 3 int 0 0
+*ParamCustomPageSize WidthOffset: 4 points 0 0
+*ParamCustomPageSize HeightOffset: 5 points 0 0
+
+*FoomaticIDs: HP-DeskJet_710C pnm2ppa
+*FoomaticRIPCommandLine: "gs -q -dNOPAUSE -dPARANOIDSAFER -dBATCH -r60&&
+0%A%Z -sOutputFile=- - | pnm2ppa%C%B -i - -o -"
+*End
+
+*OpenGroup: General/General
+
+*OpenUI *PageSize/Page Size: PickOne
+*FoomaticRIPOption PageSize: enum CmdLine A
+*OrderDependency: 100 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter/US Letter: "%% FoomaticRIPOptionSetting: PageSize=Letter"
+*FoomaticRIPOptionSetting PageSize=Letter: " -dDEVICEWIDTHPOINTS=612 -&&
+dDEVICEHEIGHTPOINTS=792"
+*End
+*PageSize A4/A4: "%% FoomaticRIPOptionSetting: PageSize=A4"
+*FoomaticRIPOptionSetting PageSize=A4: " -dDEVICEWIDTHPOINTS=595 -dDEV&&
+ICEHEIGHTPOINTS=842"
+*End
+*PageSize A5/A5: "%% FoomaticRIPOptionSetting: PageSize=A5"
+*FoomaticRIPOptionSetting PageSize=A5: " -dDEVICEWIDTHPOINTS=421 -dDEV&&
+ICEHEIGHTPOINTS=595"
+*End
+*PageSize B5/B5 (JIS): "%% FoomaticRIPOptionSetting: PageSize=B5"
+*FoomaticRIPOptionSetting PageSize=B5: " -dDEVICEWIDTHPOINTS=516 -dDEV&&
+ICEHEIGHTPOINTS=729"
+*End
+*PageSize Env10/Envelope #10: "%% FoomaticRIPOptionSetting: PageSize=Env10"
+*FoomaticRIPOptionSetting PageSize=Env10: " -dDEVICEWIDTHPOINTS=297 -d&&
+DEVICEHEIGHTPOINTS=684"
+*End
+*PageSize EnvC5/Envelope C5: "%% FoomaticRIPOptionSetting: PageSize=EnvC5"
+*FoomaticRIPOptionSetting PageSize=EnvC5: " -dDEVICEWIDTHPOINTS=459 -d&&
+DEVICEHEIGHTPOINTS=649"
+*End
+*PageSize EnvDL/Envelope DL: "%% FoomaticRIPOptionSetting: PageSize=EnvDL"
+*FoomaticRIPOptionSetting PageSize=EnvDL: " -dDEVICEWIDTHPOINTS=312 -d&&
+DEVICEHEIGHTPOINTS=624"
+*End
+*PageSize EnvISOB5/Envelope B5: "%% FoomaticRIPOptionSetting: PageSize=EnvISOB5"
+*FoomaticRIPOptionSetting PageSize=EnvISOB5: " -dDEVICEWIDTHPOINTS=499&&
+ -dDEVICEHEIGHTPOINTS=709"
+*End
+*PageSize EnvMonarch/Envelope Monarch: "%% FoomaticRIPOptionSetting: PageSize=EnvMonarch"
+*FoomaticRIPOptionSetting PageSize=EnvMonarch: " -dDEVICEWIDTHPOINTS=2&&
+79 -dDEVICEHEIGHTPOINTS=540"
+*End
+*PageSize Executive/Executive: "%% FoomaticRIPOptionSetting: PageSize=Executive"
+*FoomaticRIPOptionSetting PageSize=Executive: " -dDEVICEWIDTHPOINTS=52&&
+2 -dDEVICEHEIGHTPOINTS=756"
+*End
+*PageSize Legal/US Legal: "%% FoomaticRIPOptionSetting: PageSize=Legal"
+*FoomaticRIPOptionSetting PageSize=Legal: " -dDEVICEWIDTHPOINTS=612 -d&&
+DEVICEHEIGHTPOINTS=1008"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 100 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter/US Letter: "%% FoomaticRIPOptionSetting: PageSize=Letter"
+*PageRegion A4/A4: "%% FoomaticRIPOptionSetting: PageSize=A4"
+*PageRegion A5/A5: "%% FoomaticRIPOptionSetting: PageSize=A5"
+*PageRegion B5/B5 (JIS): "%% FoomaticRIPOptionSetting: PageSize=B5"
+*PageRegion Env10/Envelope #10: "%% FoomaticRIPOptionSetting: PageSize=Env10"
+*PageRegion EnvC5/Envelope C5: "%% FoomaticRIPOptionSetting: PageSize=EnvC5"
+*PageRegion EnvDL/Envelope DL: "%% FoomaticRIPOptionSetting: PageSize=EnvDL"
+*PageRegion EnvISOB5/Envelope B5: "%% FoomaticRIPOptionSetting: PageSize=EnvISOB5"
+*PageRegion EnvMonarch/Envelope Monarch: "%% FoomaticRIPOptionSetting: PageSize=EnvMonarch"
+*PageRegion Executive/Executive: "%% FoomaticRIPOptionSetting: PageSize=Executive"
+*PageRegion Legal/US Legal: "%% FoomaticRIPOptionSetting: PageSize=Legal"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: Letter
+*ImageableArea Letter/US Letter: "18 36 594 756"
+*ImageableArea A4/A4: "18 36 577 806"
+*ImageableArea A5/A5: "18 36 403 559"
+*ImageableArea B5/B5 (JIS): "18 36 498 693"
+*ImageableArea Env10/Envelope #10: "18 36 279 648"
+*ImageableArea EnvC5/Envelope C5: "18 36 441 613"
+*ImageableArea EnvDL/Envelope DL: "18 36 294 588"
+*ImageableArea EnvISOB5/Envelope B5: "18 36 481 673"
+*ImageableArea EnvMonarch/Envelope Monarch: "18 36 261 504"
+*ImageableArea Executive/Executive: "18 36 504 720"
+*ImageableArea Legal/US Legal: "18 36 594 972"
+
+*DefaultPaperDimension: Letter
+*PaperDimension Letter/US Letter: "612 792"
+*PaperDimension A4/A4: "595 842"
+*PaperDimension A5/A5: "421 595"
+*PaperDimension B5/B5 (JIS): "516 729"
+*PaperDimension Env10/Envelope #10: "297 684"
+*PaperDimension EnvC5/Envelope C5: "459 649"
+*PaperDimension EnvDL/Envelope DL: "312 624"
+*PaperDimension EnvISOB5/Envelope B5: "499 709"
+*PaperDimension EnvMonarch/Envelope Monarch: "279 540"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension Legal/US Legal: "612 1008"
+
+*OpenUI *ColorMode/Color Mode: PickOne
+*FoomaticRIPOption ColorMode: enum CmdLine B
+*OrderDependency: 110 AnySetup *ColorMode
+*DefaultColorMode: CMYK
+*ColorMode CMY/Color (Color Cartridge, for photos): "%% FoomaticRIPOptionSetting: ColorMode=CMY"
+*FoomaticRIPOptionSetting ColorMode=CMY: "  -p"
+*ColorMode CMYK/Color (both cartridges, for text with images): "%% FoomaticRIPOptionSetting: ColorMode=CMYK"
+*FoomaticRIPOptionSetting ColorMode=CMYK: " "
+*ColorMode Grayscale/Grayscale (black cartridge): "%% FoomaticRIPOptionSetting: ColorMode=Grayscale"
+*FoomaticRIPOptionSetting ColorMode=Grayscale: "  --bw"
+*CloseUI: *ColorMode
+
+*OpenUI *EconoFast/EconoFast Mode: PickOne
+*FoomaticRIPOption EconoFast: enum CmdLine B
+*OrderDependency: 111 AnySetup *EconoFast
+*DefaultEconoFast: Off
+*EconoFast Off/Off: "%% FoomaticRIPOptionSetting: EconoFast=Off"
+*FoomaticRIPOptionSetting EconoFast=Off: ""
+*EconoFast On/On: "%% FoomaticRIPOptionSetting: EconoFast=On"
+*FoomaticRIPOptionSetting EconoFast=On: " --eco"
+*CloseUI: *EconoFast
+
+*OpenUI *Dither/Dithering Algorithm: PickOne
+*FoomaticRIPOption Dither: enum CmdLine B
+*OrderDependency: 112 AnySetup *Dither
+*DefaultDither: FloydSteinberg
+*Dither FloydSteinberg/Floyd Steinberg (higher quality): "%% FoomaticRIPOptionSetting: Dither=FloydSteinberg"
+*FoomaticRIPOptionSetting Dither=FloydSteinberg: ""
+*Dither Ordered/Ordered (faster): "%% FoomaticRIPOptionSetting: Dither=Ordered"
+*FoomaticRIPOptionSetting Dither=Ordered: " --fd"
+*CloseUI: *Dither
+
+*OpenUI *Bidirectional/Bidirectional printing: PickOne
+*FoomaticRIPOption Bidirectional: enum CmdLine B
+*OrderDependency: 135 AnySetup *Bidirectional
+*DefaultBidirectional: Default
+*Bidirectional Default/Default: "%% FoomaticRIPOptionSetting: Bidirectional=Default"
+*FoomaticRIPOptionSetting Bidirectional=Default: ""
+*Bidirectional Off/Off (better quality): "%% FoomaticRIPOptionSetting: Bidirectional=Off"
+*FoomaticRIPOptionSetting Bidirectional=Off: " --uni"
+*Bidirectional On/On (faster): "%% FoomaticRIPOptionSetting: Bidirectional=On"
+*FoomaticRIPOptionSetting Bidirectional=On: " --bi"
+*CloseUI: *Bidirectional
+
+*CloseGroup: General
+
+*OpenGroup: Adjustment/Adjustment
+
+*OpenUI *Blackness/Black ink density adjustment.: PickOne
+*FoomaticRIPOption Blackness: int CmdLine B
+*FoomaticRIPOptionPrototype Blackness: " -B %s"
+*FoomaticRIPOptionRange Blackness: 0 4
+*OrderDependency: 140 AnySetup *Blackness
+*DefaultBlackness: 2
+*FoomaticRIPDefaultBlackness: 2
+*Blackness 0/0: "%% FoomaticRIPOptionSetting: Blackness=0"
+*Blackness 1/1: "%% FoomaticRIPOptionSetting: Blackness=1"
+*Blackness 2/2: "%% FoomaticRIPOptionSetting: Blackness=2"
+*Blackness 3/3: "%% FoomaticRIPOptionSetting: Blackness=3"
+*Blackness 4/4: "%% FoomaticRIPOptionSetting: Blackness=4"
+*CloseUI: *Blackness
+
+*CustomBlackness True: " pop "
+*ParamCustomBlackness Blackness/Black ink density adjustment.: 1 int 0 4
+
+
+*OpenUI *TopMargin/Top Margin: PickOne
+*FoomaticRIPOption TopMargin: int CmdLine B
+*FoomaticRIPOptionPrototype TopMargin: " -t %s"
+*FoomaticRIPOptionRange TopMargin: 0 600
+*OrderDependency: 200 AnySetup *TopMargin
+*DefaultTopMargin: 10
+*FoomaticRIPDefaultTopMargin: 10
+*TopMargin 0/0: "%% FoomaticRIPOptionSetting: TopMargin=0"
+*TopMargin 10/10: "%% FoomaticRIPOptionSetting: TopMargin=10"
+*TopMargin 20/20: "%% FoomaticRIPOptionSetting: TopMargin=20"
+*TopMargin 30/30: "%% FoomaticRIPOptionSetting: TopMargin=30"
+*TopMargin 40/40: "%% FoomaticRIPOptionSetting: TopMargin=40"
+*TopMargin 50/50: "%% FoomaticRIPOptionSetting: TopMargin=50"
+*TopMargin 60/60: "%% FoomaticRIPOptionSetting: TopMargin=60"
+*TopMargin 70/70: "%% FoomaticRIPOptionSetting: TopMargin=70"
+*TopMargin 80/80: "%% FoomaticRIPOptionSetting: TopMargin=80"
+*TopMargin 90/90: "%% FoomaticRIPOptionSetting: TopMargin=90"
+*TopMargin 100/100: "%% FoomaticRIPOptionSetting: TopMargin=100"
+*TopMargin 110/110: "%% FoomaticRIPOptionSetting: TopMargin=110"
+*TopMargin 120/120: "%% FoomaticRIPOptionSetting: TopMargin=120"
+*TopMargin 130/130: "%% FoomaticRIPOptionSetting: TopMargin=130"
+*TopMargin 140/140: "%% FoomaticRIPOptionSetting: TopMargin=140"
+*TopMargin 150/150: "%% FoomaticRIPOptionSetting: TopMargin=150"
+*TopMargin 160/160: "%% FoomaticRIPOptionSetting: TopMargin=160"
+*TopMargin 170/170: "%% FoomaticRIPOptionSetting: TopMargin=170"
+*TopMargin 180/180: "%% FoomaticRIPOptionSetting: TopMargin=180"
+*TopMargin 190/190: "%% FoomaticRIPOptionSetting: TopMargin=190"
+*TopMargin 200/200: "%% FoomaticRIPOptionSetting: TopMargin=200"
+*TopMargin 210/210: "%% FoomaticRIPOptionSetting: TopMargin=210"
+*TopMargin 220/220: "%% FoomaticRIPOptionSetting: TopMargin=220"
+*TopMargin 230/230: "%% FoomaticRIPOptionSetting: TopMargin=230"
+*TopMargin 240/240: "%% FoomaticRIPOptionSetting: TopMargin=240"
+*TopMargin 250/250: "%% FoomaticRIPOptionSetting: TopMargin=250"
+*TopMargin 260/260: "%% FoomaticRIPOptionSetting: TopMargin=260"
+*TopMargin 270/270: "%% FoomaticRIPOptionSetting: TopMargin=270"
+*TopMargin 280/280: "%% FoomaticRIPOptionSetting: TopMargin=280"
+*TopMargin 290/290: "%% FoomaticRIPOptionSetting: TopMargin=290"
+*TopMargin 300/300: "%% FoomaticRIPOptionSetting: TopMargin=300"
+*TopMargin 310/310: "%% FoomaticRIPOptionSetting: TopMargin=310"
+*TopMargin 320/320: "%% FoomaticRIPOptionSetting: TopMargin=320"
+*TopMargin 330/330: "%% FoomaticRIPOptionSetting: TopMargin=330"
+*TopMargin 340/340: "%% FoomaticRIPOptionSetting: TopMargin=340"
+*TopMargin 350/350: "%% FoomaticRIPOptionSetting: TopMargin=350"
+*TopMargin 360/360: "%% FoomaticRIPOptionSetting: TopMargin=360"
+*TopMargin 370/370: "%% FoomaticRIPOptionSetting: TopMargin=370"
+*TopMargin 380/380: "%% FoomaticRIPOptionSetting: TopMargin=380"
+*TopMargin 390/390: "%% FoomaticRIPOptionSetting: TopMargin=390"
+*TopMargin 400/400: "%% FoomaticRIPOptionSetting: TopMargin=400"
+*TopMargin 410/410: "%% FoomaticRIPOptionSetting: TopMargin=410"
+*TopMargin 420/420: "%% FoomaticRIPOptionSetting: TopMargin=420"
+*TopMargin 430/430: "%% FoomaticRIPOptionSetting: TopMargin=430"
+*TopMargin 440/440: "%% FoomaticRIPOptionSetting: TopMargin=440"
+*TopMargin 450/450: "%% FoomaticRIPOptionSetting: TopMargin=450"
+*TopMargin 460/460: "%% FoomaticRIPOptionSetting: TopMargin=460"
+*TopMargin 470/470: "%% FoomaticRIPOptionSetting: TopMargin=470"
+*TopMargin 480/480: "%% FoomaticRIPOptionSetting: TopMargin=480"
+*TopMargin 490/490: "%% FoomaticRIPOptionSetting: TopMargin=490"
+*TopMargin 500/500: "%% FoomaticRIPOptionSetting: TopMargin=500"
+*TopMargin 510/510: "%% FoomaticRIPOptionSetting: TopMargin=510"
+*TopMargin 520/520: "%% FoomaticRIPOptionSetting: TopMargin=520"
+*TopMargin 530/530: "%% FoomaticRIPOptionSetting: TopMargin=530"
+*TopMargin 540/540: "%% FoomaticRIPOptionSetting: TopMargin=540"
+*TopMargin 550/550: "%% FoomaticRIPOptionSetting: TopMargin=550"
+*TopMargin 560/560: "%% FoomaticRIPOptionSetting: TopMargin=560"
+*TopMargin 570/570: "%% FoomaticRIPOptionSetting: TopMargin=570"
+*TopMargin 580/580: "%% FoomaticRIPOptionSetting: TopMargin=580"
+*TopMargin 590/590: "%% FoomaticRIPOptionSetting: TopMargin=590"
+*TopMargin 600/600: "%% FoomaticRIPOptionSetting: TopMargin=600"
+*CloseUI: *TopMargin
+
+*CustomTopMargin True: " pop "
+*ParamCustomTopMargin TopMargin/Top Margin: 1 int 0 600
+
+
+*OpenUI *BottomMargin/Bottom Margin: PickOne
+*FoomaticRIPOption BottomMargin: int CmdLine B
+*FoomaticRIPOptionPrototype BottomMargin: " -b %s"
+*FoomaticRIPOptionRange BottomMargin: 0 600
+*OrderDependency: 210 AnySetup *BottomMargin
+*DefaultBottomMargin: 150
+*FoomaticRIPDefaultBottomMargin: 150
+*BottomMargin 0/0: "%% FoomaticRIPOptionSetting: BottomMargin=0"
+*BottomMargin 10/10: "%% FoomaticRIPOptionSetting: BottomMargin=10"
+*BottomMargin 20/20: "%% FoomaticRIPOptionSetting: BottomMargin=20"
+*BottomMargin 30/30: "%% FoomaticRIPOptionSetting: BottomMargin=30"
+*BottomMargin 40/40: "%% FoomaticRIPOptionSetting: BottomMargin=40"
+*BottomMargin 50/50: "%% FoomaticRIPOptionSetting: BottomMargin=50"
+*BottomMargin 60/60: "%% FoomaticRIPOptionSetting: BottomMargin=60"
+*BottomMargin 70/70: "%% FoomaticRIPOptionSetting: BottomMargin=70"
+*BottomMargin 80/80: "%% FoomaticRIPOptionSetting: BottomMargin=80"
+*BottomMargin 90/90: "%% FoomaticRIPOptionSetting: BottomMargin=90"
+*BottomMargin 100/100: "%% FoomaticRIPOptionSetting: BottomMargin=100"
+*BottomMargin 110/110: "%% FoomaticRIPOptionSetting: BottomMargin=110"
+*BottomMargin 120/120: "%% FoomaticRIPOptionSetting: BottomMargin=120"
+*BottomMargin 130/130: "%% FoomaticRIPOptionSetting: BottomMargin=130"
+*BottomMargin 140/140: "%% FoomaticRIPOptionSetting: BottomMargin=140"
+*BottomMargin 150/150: "%% FoomaticRIPOptionSetting: BottomMargin=150"
+*BottomMargin 160/160: "%% FoomaticRIPOptionSetting: BottomMargin=160"
+*BottomMargin 170/170: "%% FoomaticRIPOptionSetting: BottomMargin=170"
+*BottomMargin 180/180: "%% FoomaticRIPOptionSetting: BottomMargin=180"
+*BottomMargin 190/190: "%% FoomaticRIPOptionSetting: BottomMargin=190"
+*BottomMargin 200/200: "%% FoomaticRIPOptionSetting: BottomMargin=200"
+*BottomMargin 210/210: "%% FoomaticRIPOptionSetting: BottomMargin=210"
+*BottomMargin 220/220: "%% FoomaticRIPOptionSetting: BottomMargin=220"
+*BottomMargin 230/230: "%% FoomaticRIPOptionSetting: BottomMargin=230"
+*BottomMargin 240/240: "%% FoomaticRIPOptionSetting: BottomMargin=240"
+*BottomMargin 250/250: "%% FoomaticRIPOptionSetting: BottomMargin=250"
+*BottomMargin 260/260: "%% FoomaticRIPOptionSetting: BottomMargin=260"
+*BottomMargin 270/270: "%% FoomaticRIPOptionSetting: BottomMargin=270"
+*BottomMargin 280/280: "%% FoomaticRIPOptionSetting: BottomMargin=280"
+*BottomMargin 290/290: "%% FoomaticRIPOptionSetting: BottomMargin=290"
+*BottomMargin 300/300: "%% FoomaticRIPOptionSetting: BottomMargin=300"
+*BottomMargin 310/310: "%% FoomaticRIPOptionSetting: BottomMargin=310"
+*BottomMargin 320/320: "%% FoomaticRIPOptionSetting: BottomMargin=320"
+*BottomMargin 330/330: "%% FoomaticRIPOptionSetting: BottomMargin=330"
+*BottomMargin 340/340: "%% FoomaticRIPOptionSetting: BottomMargin=340"
+*BottomMargin 350/350: "%% FoomaticRIPOptionSetting: BottomMargin=350"
+*BottomMargin 360/360: "%% FoomaticRIPOptionSetting: BottomMargin=360"
+*BottomMargin 370/370: "%% FoomaticRIPOptionSetting: BottomMargin=370"
+*BottomMargin 380/380: "%% FoomaticRIPOptionSetting: BottomMargin=380"
+*BottomMargin 390/390: "%% FoomaticRIPOptionSetting: BottomMargin=390"
+*BottomMargin 400/400: "%% FoomaticRIPOptionSetting: BottomMargin=400"
+*BottomMargin 410/410: "%% FoomaticRIPOptionSetting: BottomMargin=410"
+*BottomMargin 420/420: "%% FoomaticRIPOptionSetting: BottomMargin=420"
+*BottomMargin 430/430: "%% FoomaticRIPOptionSetting: BottomMargin=430"
+*BottomMargin 440/440: "%% FoomaticRIPOptionSetting: BottomMargin=440"
+*BottomMargin 450/450: "%% FoomaticRIPOptionSetting: BottomMargin=450"
+*BottomMargin 460/460: "%% FoomaticRIPOptionSetting: BottomMargin=460"
+*BottomMargin 470/470: "%% FoomaticRIPOptionSetting: BottomMargin=470"
+*BottomMargin 480/480: "%% FoomaticRIPOptionSetting: BottomMargin=480"
+*BottomMargin 490/490: "%% FoomaticRIPOptionSetting: BottomMargin=490"
+*BottomMargin 500/500: "%% FoomaticRIPOptionSetting: BottomMargin=500"
+*BottomMargin 510/510: "%% FoomaticRIPOptionSetting: BottomMargin=510"
+*BottomMargin 520/520: "%% FoomaticRIPOptionSetting: BottomMargin=520"
+*BottomMargin 530/530: "%% FoomaticRIPOptionSetting: BottomMargin=530"
+*BottomMargin 540/540: "%% FoomaticRIPOptionSetting: BottomMargin=540"
+*BottomMargin 550/550: "%% FoomaticRIPOptionSetting: BottomMargin=550"
+*BottomMargin 560/560: "%% FoomaticRIPOptionSetting: BottomMargin=560"
+*BottomMargin 570/570: "%% FoomaticRIPOptionSetting: BottomMargin=570"
+*BottomMargin 580/580: "%% FoomaticRIPOptionSetting: BottomMargin=580"
+*BottomMargin 590/590: "%% FoomaticRIPOptionSetting: BottomMargin=590"
+*BottomMargin 600/600: "%% FoomaticRIPOptionSetting: BottomMargin=600"
+*CloseUI: *BottomMargin
+
+*CustomBottomMargin True: " pop "
+*ParamCustomBottomMargin BottomMargin/Bottom Margin: 1 int 0 600
+
+
+*OpenUI *LeftMargin/Left Margin: PickOne
+*FoomaticRIPOption LeftMargin: int CmdLine B
+*FoomaticRIPOptionPrototype LeftMargin: " -l %s"
+*FoomaticRIPOptionRange LeftMargin: 0 600
+*OrderDependency: 220 AnySetup *LeftMargin
+*DefaultLeftMargin: 10
+*FoomaticRIPDefaultLeftMargin: 10
+*LeftMargin 0/0: "%% FoomaticRIPOptionSetting: LeftMargin=0"
+*LeftMargin 10/10: "%% FoomaticRIPOptionSetting: LeftMargin=10"
+*LeftMargin 20/20: "%% FoomaticRIPOptionSetting: LeftMargin=20"
+*LeftMargin 30/30: "%% FoomaticRIPOptionSetting: LeftMargin=30"
+*LeftMargin 40/40: "%% FoomaticRIPOptionSetting: LeftMargin=40"
+*LeftMargin 50/50: "%% FoomaticRIPOptionSetting: LeftMargin=50"
+*LeftMargin 60/60: "%% FoomaticRIPOptionSetting: LeftMargin=60"
+*LeftMargin 70/70: "%% FoomaticRIPOptionSetting: LeftMargin=70"
+*LeftMargin 80/80: "%% FoomaticRIPOptionSetting: LeftMargin=80"
+*LeftMargin 90/90: "%% FoomaticRIPOptionSetting: LeftMargin=90"
+*LeftMargin 100/100: "%% FoomaticRIPOptionSetting: LeftMargin=100"
+*LeftMargin 110/110: "%% FoomaticRIPOptionSetting: LeftMargin=110"
+*LeftMargin 120/120: "%% FoomaticRIPOptionSetting: LeftMargin=120"
+*LeftMargin 130/130: "%% FoomaticRIPOptionSetting: LeftMargin=130"
+*LeftMargin 140/140: "%% FoomaticRIPOptionSetting: LeftMargin=140"
+*LeftMargin 150/150: "%% FoomaticRIPOptionSetting: LeftMargin=150"
+*LeftMargin 160/160: "%% FoomaticRIPOptionSetting: LeftMargin=160"
+*LeftMargin 170/170: "%% FoomaticRIPOptionSetting: LeftMargin=170"
+*LeftMargin 180/180: "%% FoomaticRIPOptionSetting: LeftMargin=180"
+*LeftMargin 190/190: "%% FoomaticRIPOptionSetting: LeftMargin=190"
+*LeftMargin 200/200: "%% FoomaticRIPOptionSetting: LeftMargin=200"
+*LeftMargin 210/210: "%% FoomaticRIPOptionSetting: LeftMargin=210"
+*LeftMargin 220/220: "%% FoomaticRIPOptionSetting: LeftMargin=220"
+*LeftMargin 230/230: "%% FoomaticRIPOptionSetting: LeftMargin=230"
+*LeftMargin 240/240: "%% FoomaticRIPOptionSetting: LeftMargin=240"
+*LeftMargin 250/250: "%% FoomaticRIPOptionSetting: LeftMargin=250"
+*LeftMargin 260/260: "%% FoomaticRIPOptionSetting: LeftMargin=260"
+*LeftMargin 270/270: "%% FoomaticRIPOptionSetting: LeftMargin=270"
+*LeftMargin 280/280: "%% FoomaticRIPOptionSetting: LeftMargin=280"
+*LeftMargin 290/290: "%% FoomaticRIPOptionSetting: LeftMargin=290"
+*LeftMargin 300/300: "%% FoomaticRIPOptionSetting: LeftMargin=300"
+*LeftMargin 310/310: "%% FoomaticRIPOptionSetting: LeftMargin=310"
+*LeftMargin 320/320: "%% FoomaticRIPOptionSetting: LeftMargin=320"
+*LeftMargin 330/330: "%% FoomaticRIPOptionSetting: LeftMargin=330"
+*LeftMargin 340/340: "%% FoomaticRIPOptionSetting: LeftMargin=340"
+*LeftMargin 350/350: "%% FoomaticRIPOptionSetting: LeftMargin=350"
+*LeftMargin 360/360: "%% FoomaticRIPOptionSetting: LeftMargin=360"
+*LeftMargin 370/370: "%% FoomaticRIPOptionSetting: LeftMargin=370"
+*LeftMargin 380/380: "%% FoomaticRIPOptionSetting: LeftMargin=380"
+*LeftMargin 390/390: "%% FoomaticRIPOptionSetting: LeftMargin=390"
+*LeftMargin 400/400: "%% FoomaticRIPOptionSetting: LeftMargin=400"
+*LeftMargin 410/410: "%% FoomaticRIPOptionSetting: LeftMargin=410"
+*LeftMargin 420/420: "%% FoomaticRIPOptionSetting: LeftMargin=420"
+*LeftMargin 430/430: "%% FoomaticRIPOptionSetting: LeftMargin=430"
+*LeftMargin 440/440: "%% FoomaticRIPOptionSetting: LeftMargin=440"
+*LeftMargin 450/450: "%% FoomaticRIPOptionSetting: LeftMargin=450"
+*LeftMargin 460/460: "%% FoomaticRIPOptionSetting: LeftMargin=460"
+*LeftMargin 470/470: "%% FoomaticRIPOptionSetting: LeftMargin=470"
+*LeftMargin 480/480: "%% FoomaticRIPOptionSetting: LeftMargin=480"
+*LeftMargin 490/490: "%% FoomaticRIPOptionSetting: LeftMargin=490"
+*LeftMargin 500/500: "%% FoomaticRIPOptionSetting: LeftMargin=500"
+*LeftMargin 510/510: "%% FoomaticRIPOptionSetting: LeftMargin=510"
+*LeftMargin 520/520: "%% FoomaticRIPOptionSetting: LeftMargin=520"
+*LeftMargin 530/530: "%% FoomaticRIPOptionSetting: LeftMargin=530"
+*LeftMargin 540/540: "%% FoomaticRIPOptionSetting: LeftMargin=540"
+*LeftMargin 550/550: "%% FoomaticRIPOptionSetting: LeftMargin=550"
+*LeftMargin 560/560: "%% FoomaticRIPOptionSetting: LeftMargin=560"
+*LeftMargin 570/570: "%% FoomaticRIPOptionSetting: LeftMargin=570"
+*LeftMargin 580/580: "%% FoomaticRIPOptionSetting: LeftMargin=580"
+*LeftMargin 590/590: "%% FoomaticRIPOptionSetting: LeftMargin=590"
+*LeftMargin 600/600: "%% FoomaticRIPOptionSetting: LeftMargin=600"
+*CloseUI: *LeftMargin
+
+*CustomLeftMargin True: " pop "
+*ParamCustomLeftMargin LeftMargin/Left Margin: 1 int 0 600
+
+
+*OpenUI *RightMargin/Right Margin: PickOne
+*FoomaticRIPOption RightMargin: int CmdLine B
+*FoomaticRIPOptionPrototype RightMargin: " -r %s"
+*FoomaticRIPOptionRange RightMargin: 0 600
+*OrderDependency: 230 AnySetup *RightMargin
+*DefaultRightMargin: 10
+*FoomaticRIPDefaultRightMargin: 10
+*RightMargin 0/0: "%% FoomaticRIPOptionSetting: RightMargin=0"
+*RightMargin 10/10: "%% FoomaticRIPOptionSetting: RightMargin=10"
+*RightMargin 20/20: "%% FoomaticRIPOptionSetting: RightMargin=20"
+*RightMargin 30/30: "%% FoomaticRIPOptionSetting: RightMargin=30"
+*RightMargin 40/40: "%% FoomaticRIPOptionSetting: RightMargin=40"
+*RightMargin 50/50: "%% FoomaticRIPOptionSetting: RightMargin=50"
+*RightMargin 60/60: "%% FoomaticRIPOptionSetting: RightMargin=60"
+*RightMargin 70/70: "%% FoomaticRIPOptionSetting: RightMargin=70"
+*RightMargin 80/80: "%% FoomaticRIPOptionSetting: RightMargin=80"
+*RightMargin 90/90: "%% FoomaticRIPOptionSetting: RightMargin=90"
+*RightMargin 100/100: "%% FoomaticRIPOptionSetting: RightMargin=100"
+*RightMargin 110/110: "%% FoomaticRIPOptionSetting: RightMargin=110"
+*RightMargin 120/120: "%% FoomaticRIPOptionSetting: RightMargin=120"
+*RightMargin 130/130: "%% FoomaticRIPOptionSetting: RightMargin=130"
+*RightMargin 140/140: "%% FoomaticRIPOptionSetting: RightMargin=140"
+*RightMargin 150/150: "%% FoomaticRIPOptionSetting: RightMargin=150"
+*RightMargin 160/160: "%% FoomaticRIPOptionSetting: RightMargin=160"
+*RightMargin 170/170: "%% FoomaticRIPOptionSetting: RightMargin=170"
+*RightMargin 180/180: "%% FoomaticRIPOptionSetting: RightMargin=180"
+*RightMargin 190/190: "%% FoomaticRIPOptionSetting: RightMargin=190"
+*RightMargin 200/200: "%% FoomaticRIPOptionSetting: RightMargin=200"
+*RightMargin 210/210: "%% FoomaticRIPOptionSetting: RightMargin=210"
+*RightMargin 220/220: "%% FoomaticRIPOptionSetting: RightMargin=220"
+*RightMargin 230/230: "%% FoomaticRIPOptionSetting: RightMargin=230"
+*RightMargin 240/240: "%% FoomaticRIPOptionSetting: RightMargin=240"
+*RightMargin 250/250: "%% FoomaticRIPOptionSetting: RightMargin=250"
+*RightMargin 260/260: "%% FoomaticRIPOptionSetting: RightMargin=260"
+*RightMargin 270/270: "%% FoomaticRIPOptionSetting: RightMargin=270"
+*RightMargin 280/280: "%% FoomaticRIPOptionSetting: RightMargin=280"
+*RightMargin 290/290: "%% FoomaticRIPOptionSetting: RightMargin=290"
+*RightMargin 300/300: "%% FoomaticRIPOptionSetting: RightMargin=300"
+*RightMargin 310/310: "%% FoomaticRIPOptionSetting: RightMargin=310"
+*RightMargin 320/320: "%% FoomaticRIPOptionSetting: RightMargin=320"
+*RightMargin 330/330: "%% FoomaticRIPOptionSetting: RightMargin=330"
+*RightMargin 340/340: "%% FoomaticRIPOptionSetting: RightMargin=340"
+*RightMargin 350/350: "%% FoomaticRIPOptionSetting: RightMargin=350"
+*RightMargin 360/360: "%% FoomaticRIPOptionSetting: RightMargin=360"
+*RightMargin 370/370: "%% FoomaticRIPOptionSetting: RightMargin=370"
+*RightMargin 380/380: "%% FoomaticRIPOptionSetting: RightMargin=380"
+*RightMargin 390/390: "%% FoomaticRIPOptionSetting: RightMargin=390"
+*RightMargin 400/400: "%% FoomaticRIPOptionSetting: RightMargin=400"
+*RightMargin 410/410: "%% FoomaticRIPOptionSetting: RightMargin=410"
+*RightMargin 420/420: "%% FoomaticRIPOptionSetting: RightMargin=420"
+*RightMargin 430/430: "%% FoomaticRIPOptionSetting: RightMargin=430"
+*RightMargin 440/440: "%% FoomaticRIPOptionSetting: RightMargin=440"
+*RightMargin 450/450: "%% FoomaticRIPOptionSetting: RightMargin=450"
+*RightMargin 460/460: "%% FoomaticRIPOptionSetting: RightMargin=460"
+*RightMargin 470/470: "%% FoomaticRIPOptionSetting: RightMargin=470"
+*RightMargin 480/480: "%% FoomaticRIPOptionSetting: RightMargin=480"
+*RightMargin 490/490: "%% FoomaticRIPOptionSetting: RightMargin=490"
+*RightMargin 500/500: "%% FoomaticRIPOptionSetting: RightMargin=500"
+*RightMargin 510/510: "%% FoomaticRIPOptionSetting: RightMargin=510"
+*RightMargin 520/520: "%% FoomaticRIPOptionSetting: RightMargin=520"
+*RightMargin 530/530: "%% FoomaticRIPOptionSetting: RightMargin=530"
+*RightMargin 540/540: "%% FoomaticRIPOptionSetting: RightMargin=540"
+*RightMargin 550/550: "%% FoomaticRIPOptionSetting: RightMargin=550"
+*RightMargin 560/560: "%% FoomaticRIPOptionSetting: RightMargin=560"
+*RightMargin 570/570: "%% FoomaticRIPOptionSetting: RightMargin=570"
+*RightMargin 580/580: "%% FoomaticRIPOptionSetting: RightMargin=580"
+*RightMargin 590/590: "%% FoomaticRIPOptionSetting: RightMargin=590"
+*RightMargin 600/600: "%% FoomaticRIPOptionSetting: RightMargin=600"
+*CloseUI: *RightMargin
+
+*CustomRightMargin True: " pop "
+*ParamCustomRightMargin RightMargin/Right Margin: 1 int 0 600
+
+
+*OpenUI *XOffset/X Offset: PickOne
+*FoomaticRIPOption XOffset: int CmdLine B
+*FoomaticRIPOptionPrototype XOffset: " -x %s"
+*FoomaticRIPOptionRange XOffset: 0 600
+*OrderDependency: 250 AnySetup *XOffset
+*DefaultXOffset: 160
+*FoomaticRIPDefaultXOffset: 160
+*XOffset 0/0: "%% FoomaticRIPOptionSetting: XOffset=0"
+*XOffset 10/10: "%% FoomaticRIPOptionSetting: XOffset=10"
+*XOffset 20/20: "%% FoomaticRIPOptionSetting: XOffset=20"
+*XOffset 30/30: "%% FoomaticRIPOptionSetting: XOffset=30"
+*XOffset 40/40: "%% FoomaticRIPOptionSetting: XOffset=40"
+*XOffset 50/50: "%% FoomaticRIPOptionSetting: XOffset=50"
+*XOffset 60/60: "%% FoomaticRIPOptionSetting: XOffset=60"
+*XOffset 70/70: "%% FoomaticRIPOptionSetting: XOffset=70"
+*XOffset 80/80: "%% FoomaticRIPOptionSetting: XOffset=80"
+*XOffset 90/90: "%% FoomaticRIPOptionSetting: XOffset=90"
+*XOffset 100/100: "%% FoomaticRIPOptionSetting: XOffset=100"
+*XOffset 110/110: "%% FoomaticRIPOptionSetting: XOffset=110"
+*XOffset 120/120: "%% FoomaticRIPOptionSetting: XOffset=120"
+*XOffset 130/130: "%% FoomaticRIPOptionSetting: XOffset=130"
+*XOffset 140/140: "%% FoomaticRIPOptionSetting: XOffset=140"
+*XOffset 150/150: "%% FoomaticRIPOptionSetting: XOffset=150"
+*XOffset 160/160: "%% FoomaticRIPOptionSetting: XOffset=160"
+*XOffset 170/170: "%% FoomaticRIPOptionSetting: XOffset=170"
+*XOffset 180/180: "%% FoomaticRIPOptionSetting: XOffset=180"
+*XOffset 190/190: "%% FoomaticRIPOptionSetting: XOffset=190"
+*XOffset 200/200: "%% FoomaticRIPOptionSetting: XOffset=200"
+*XOffset 210/210: "%% FoomaticRIPOptionSetting: XOffset=210"
+*XOffset 220/220: "%% FoomaticRIPOptionSetting: XOffset=220"
+*XOffset 230/230: "%% FoomaticRIPOptionSetting: XOffset=230"
+*XOffset 240/240: "%% FoomaticRIPOptionSetting: XOffset=240"
+*XOffset 250/250: "%% FoomaticRIPOptionSetting: XOffset=250"
+*XOffset 260/260: "%% FoomaticRIPOptionSetting: XOffset=260"
+*XOffset 270/270: "%% FoomaticRIPOptionSetting: XOffset=270"
+*XOffset 280/280: "%% FoomaticRIPOptionSetting: XOffset=280"
+*XOffset 290/290: "%% FoomaticRIPOptionSetting: XOffset=290"
+*XOffset 300/300: "%% FoomaticRIPOptionSetting: XOffset=300"
+*XOffset 310/310: "%% FoomaticRIPOptionSetting: XOffset=310"
+*XOffset 320/320: "%% FoomaticRIPOptionSetting: XOffset=320"
+*XOffset 330/330: "%% FoomaticRIPOptionSetting: XOffset=330"
+*XOffset 340/340: "%% FoomaticRIPOptionSetting: XOffset=340"
+*XOffset 350/350: "%% FoomaticRIPOptionSetting: XOffset=350"
+*XOffset 360/360: "%% FoomaticRIPOptionSetting: XOffset=360"
+*XOffset 370/370: "%% FoomaticRIPOptionSetting: XOffset=370"
+*XOffset 380/380: "%% FoomaticRIPOptionSetting: XOffset=380"
+*XOffset 390/390: "%% FoomaticRIPOptionSetting: XOffset=390"
+*XOffset 400/400: "%% FoomaticRIPOptionSetting: XOffset=400"
+*XOffset 410/410: "%% FoomaticRIPOptionSetting: XOffset=410"
+*XOffset 420/420: "%% FoomaticRIPOptionSetting: XOffset=420"
+*XOffset 430/430: "%% FoomaticRIPOptionSetting: XOffset=430"
+*XOffset 440/440: "%% FoomaticRIPOptionSetting: XOffset=440"
+*XOffset 450/450: "%% FoomaticRIPOptionSetting: XOffset=450"
+*XOffset 460/460: "%% FoomaticRIPOptionSetting: XOffset=460"
+*XOffset 470/470: "%% FoomaticRIPOptionSetting: XOffset=470"
+*XOffset 480/480: "%% FoomaticRIPOptionSetting: XOffset=480"
+*XOffset 490/490: "%% FoomaticRIPOptionSetting: XOffset=490"
+*XOffset 500/500: "%% FoomaticRIPOptionSetting: XOffset=500"
+*XOffset 510/510: "%% FoomaticRIPOptionSetting: XOffset=510"
+*XOffset 520/520: "%% FoomaticRIPOptionSetting: XOffset=520"
+*XOffset 530/530: "%% FoomaticRIPOptionSetting: XOffset=530"
+*XOffset 540/540: "%% FoomaticRIPOptionSetting: XOffset=540"
+*XOffset 550/550: "%% FoomaticRIPOptionSetting: XOffset=550"
+*XOffset 560/560: "%% FoomaticRIPOptionSetting: XOffset=560"
+*XOffset 570/570: "%% FoomaticRIPOptionSetting: XOffset=570"
+*XOffset 580/580: "%% FoomaticRIPOptionSetting: XOffset=580"
+*XOffset 590/590: "%% FoomaticRIPOptionSetting: XOffset=590"
+*XOffset 600/600: "%% FoomaticRIPOptionSetting: XOffset=600"
+*CloseUI: *XOffset
+
+*CustomXOffset True: " pop "
+*ParamCustomXOffset XOffset/X Offset: 1 int 0 600
+
+
+*OpenUI *YOffset/Y Offset: PickOne
+*FoomaticRIPOption YOffset: int CmdLine B
+*FoomaticRIPOptionPrototype YOffset: " -y %s"
+*FoomaticRIPOptionRange YOffset: 0 600
+*OrderDependency: 260 AnySetup *YOffset
+*DefaultYOffset: 50
+*FoomaticRIPDefaultYOffset: 50
+*YOffset 0/0: "%% FoomaticRIPOptionSetting: YOffset=0"
+*YOffset 10/10: "%% FoomaticRIPOptionSetting: YOffset=10"
+*YOffset 20/20: "%% FoomaticRIPOptionSetting: YOffset=20"
+*YOffset 30/30: "%% FoomaticRIPOptionSetting: YOffset=30"
+*YOffset 40/40: "%% FoomaticRIPOptionSetting: YOffset=40"
+*YOffset 50/50: "%% FoomaticRIPOptionSetting: YOffset=50"
+*YOffset 60/60: "%% FoomaticRIPOptionSetting: YOffset=60"
+*YOffset 70/70: "%% FoomaticRIPOptionSetting: YOffset=70"
+*YOffset 80/80: "%% FoomaticRIPOptionSetting: YOffset=80"
+*YOffset 90/90: "%% FoomaticRIPOptionSetting: YOffset=90"
+*YOffset 100/100: "%% FoomaticRIPOptionSetting: YOffset=100"
+*YOffset 110/110: "%% FoomaticRIPOptionSetting: YOffset=110"
+*YOffset 120/120: "%% FoomaticRIPOptionSetting: YOffset=120"
+*YOffset 130/130: "%% FoomaticRIPOptionSetting: YOffset=130"
+*YOffset 140/140: "%% FoomaticRIPOptionSetting: YOffset=140"
+*YOffset 150/150: "%% FoomaticRIPOptionSetting: YOffset=150"
+*YOffset 160/160: "%% FoomaticRIPOptionSetting: YOffset=160"
+*YOffset 170/170: "%% FoomaticRIPOptionSetting: YOffset=170"
+*YOffset 180/180: "%% FoomaticRIPOptionSetting: YOffset=180"
+*YOffset 190/190: "%% FoomaticRIPOptionSetting: YOffset=190"
+*YOffset 200/200: "%% FoomaticRIPOptionSetting: YOffset=200"
+*YOffset 210/210: "%% FoomaticRIPOptionSetting: YOffset=210"
+*YOffset 220/220: "%% FoomaticRIPOptionSetting: YOffset=220"
+*YOffset 230/230: "%% FoomaticRIPOptionSetting: YOffset=230"
+*YOffset 240/240: "%% FoomaticRIPOptionSetting: YOffset=240"
+*YOffset 250/250: "%% FoomaticRIPOptionSetting: YOffset=250"
+*YOffset 260/260: "%% FoomaticRIPOptionSetting: YOffset=260"
+*YOffset 270/270: "%% FoomaticRIPOptionSetting: YOffset=270"
+*YOffset 280/280: "%% FoomaticRIPOptionSetting: YOffset=280"
+*YOffset 290/290: "%% FoomaticRIPOptionSetting: YOffset=290"
+*YOffset 300/300: "%% FoomaticRIPOptionSetting: YOffset=300"
+*YOffset 310/310: "%% FoomaticRIPOptionSetting: YOffset=310"
+*YOffset 320/320: "%% FoomaticRIPOptionSetting: YOffset=320"
+*YOffset 330/330: "%% FoomaticRIPOptionSetting: YOffset=330"
+*YOffset 340/340: "%% FoomaticRIPOptionSetting: YOffset=340"
+*YOffset 350/350: "%% FoomaticRIPOptionSetting: YOffset=350"
+*YOffset 360/360: "%% FoomaticRIPOptionSetting: YOffset=360"
+*YOffset 370/370: "%% FoomaticRIPOptionSetting: YOffset=370"
+*YOffset 380/380: "%% FoomaticRIPOptionSetting: YOffset=380"
+*YOffset 390/390: "%% FoomaticRIPOptionSetting: YOffset=390"
+*YOffset 400/400: "%% FoomaticRIPOptionSetting: YOffset=400"
+*YOffset 410/410: "%% FoomaticRIPOptionSetting: YOffset=410"
+*YOffset 420/420: "%% FoomaticRIPOptionSetting: YOffset=420"
+*YOffset 430/430: "%% FoomaticRIPOptionSetting: YOffset=430"
+*YOffset 440/440: "%% FoomaticRIPOptionSetting: YOffset=440"
+*YOffset 450/450: "%% FoomaticRIPOptionSetting: YOffset=450"
+*YOffset 460/460: "%% FoomaticRIPOptionSetting: YOffset=460"
+*YOffset 470/470: "%% FoomaticRIPOptionSetting: YOffset=470"
+*YOffset 480/480: "%% FoomaticRIPOptionSetting: YOffset=480"
+*YOffset 490/490: "%% FoomaticRIPOptionSetting: YOffset=490"
+*YOffset 500/500: "%% FoomaticRIPOptionSetting: YOffset=500"
+*YOffset 510/510: "%% FoomaticRIPOptionSetting: YOffset=510"
+*YOffset 520/520: "%% FoomaticRIPOptionSetting: YOffset=520"
+*YOffset 530/530: "%% FoomaticRIPOptionSetting: YOffset=530"
+*YOffset 540/540: "%% FoomaticRIPOptionSetting: YOffset=540"
+*YOffset 550/550: "%% FoomaticRIPOptionSetting: YOffset=550"
+*YOffset 560/560: "%% FoomaticRIPOptionSetting: YOffset=560"
+*YOffset 570/570: "%% FoomaticRIPOptionSetting: YOffset=570"
+*YOffset 580/580: "%% FoomaticRIPOptionSetting: YOffset=580"
+*YOffset 590/590: "%% FoomaticRIPOptionSetting: YOffset=590"
+*YOffset 600/600: "%% FoomaticRIPOptionSetting: YOffset=600"
+*CloseUI: *YOffset
+
+*CustomYOffset True: " pop "
+*ParamCustomYOffset YOffset/Y Offset: 1 int 0 600
+
+
+*FoomaticRIPOption Model: enum CmdLine C 100
+*FoomaticRIPOptionSetting Model=DJ710C: " -v 710"
+
+*CloseGroup: Adjustment
+
+*OpenGroup: Miscellaneous/Miscellaneous
+
+*OpenUI *pnmFormat/Ghostscript Rendering Format: PickOne
+*FoomaticRIPOption pnmFormat: enum CmdLine A
+*OrderDependency: 100 AnySetup *pnmFormat
+*DefaultpnmFormat: PixMap
+*pnmFormat AnyMap/Attempts to choose best PNM format for document; n: "%% FoomaticRIPOptionSetting: pnmFormat=AnyMap"
+*FoomaticRIPOptionSetting pnmFormat=AnyMap: " -sDEVICE=pnmraw "
+*pnmFormat AnyNonColorMap/Attempts to choose best monochrome PNM format for : "%% FoomaticRIPOptionSetting: pnmFormat=AnyNonColorMap"
+*FoomaticRIPOptionSetting pnmFormat=AnyNonColorMap: " -sDEVICE=pgnmraw&&
+ "
+*End
+*pnmFormat BitMap/A fast monochrome format; best for B&W text and li: "%% FoomaticRIPOptionSetting: pnmFormat=BitMap"
+*FoomaticRIPOptionSetting pnmFormat=BitMap: " -sDEVICE=pbmraw "
+*pnmFormat GreyMap/256-shade greyscale format: "%% FoomaticRIPOptionSetting: pnmFormat=GreyMap"
+*FoomaticRIPOptionSetting pnmFormat=GreyMap: " -sDEVICE=pgmraw "
+*pnmFormat PixMap/Format for color images (includes monochrome).: "%% FoomaticRIPOptionSetting: pnmFormat=PixMap"
+*FoomaticRIPOptionSetting pnmFormat=PixMap: " -sDEVICE=ppmraw "
+*CloseUI: *pnmFormat
+
+*OpenUI *GammaFile/Gamma Correction File: PickOne
+*FoomaticRIPOption GammaFile: enum CmdLine B
+*OrderDependency: 113 AnySetup *GammaFile
+*DefaultGammaFile: Default
+*GammaFile Default/Default (/etc/pnm2ppa.gamma): "%% FoomaticRIPOptionSetting: GammaFile=Default"
+*FoomaticRIPOptionSetting GammaFile=Default: ""
+*GammaFile Normal/Normal Quality (/etc/pnm2ppa.gamma_normal): "%% FoomaticRIPOptionSetting: GammaFile=Normal"
+*FoomaticRIPOptionSetting GammaFile=Normal: " -F /etc/pnm2ppa.gamma_no&&
+rmal"
+*End
+*GammaFile Best/Best Quality (/etc/pnm2ppa.gamma_best): "%% FoomaticRIPOptionSetting: GammaFile=Best"
+*FoomaticRIPOptionSetting GammaFile=Best: " -F /etc/pnm2ppa.gamma_best&&
+"
+*End
+*GammaFile None/None: "%% FoomaticRIPOptionSetting: GammaFile=None"
+*FoomaticRIPOptionSetting GammaFile=None: " --noGamma"
+*CloseUI: *GammaFile
+
+*CloseGroup: Miscellaneous
+
+
+*% Generic boilerplate PPD stuff as standard PostScript fonts and so on
+
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.007S)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.007S)" Standard ROM
+*Font Bookman-Demi: Standard "(001.004S)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.004S)" Standard ROM
+*Font Bookman-Light: Standard "(001.004S)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.004S)" Standard ROM
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Courier-Bold: Standard "(002.004S)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.004S)" Standard ROM
+*Font Courier-Oblique: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.009S)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(001.007S)" Standard ROM
+*Font Palatino-Bold: Standard "(001.005S)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Italic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Roman: Standard "(001.005S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font Times-Bold: Standard "(001.007S)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.009S)" Standard ROM
+*Font Times-Italic: Standard "(001.007S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(001.007S)" Standard ROM
+*Font ZapfDingbats: Special "(001.004S)" Standard ROM
+
