@@ -1,0 +1,24 @@
+pkgbase = perl-inline-c
+	pkgdesc = Perl module providing a way to write Perl subroutines in C
+	pkgver = 0.73
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Inline-C
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl>=5.10.1
+	checkdepends = perl-file-copy-recursive
+	checkdepends = perl-io-all
+	checkdepends = perl-test-warn>=0.23
+	checkdepends = perl-yaml-libyaml
+	depends = perl>=5.5.4
+	depends = perl-inline>=0.77
+	depends = perl-parse-recdescent>=1.80
+	depends = perl-extutils-makemaker-aur>=7.00
+	depends = perl-pegex>=0.55
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Inline-C-0.73.tar.gz
+	md5sums = fb9a7dc92b959ab023838357767a5251
+
+pkgname = perl-inline-c
+
