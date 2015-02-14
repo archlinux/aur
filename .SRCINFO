@@ -1,0 +1,18 @@
+pkgbase = python2-websocket-client-pebble
+	pkgdesc = WebSocket client library for Python (v0.11 for Pebble)
+	pkgver = 0.11.0
+	pkgrel = 2
+	url = https://github.com/liris/websocket-client
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-websocket-client
+	conflicts = python2-websocket-client
+	source = https://github.com/liris/websocket-client/archive/v0.11.0.tar.gz
+	sha1sums = 823744fde99e9e2dc7b9ff0390540e6cce499e43
+
+pkgname = python2-websocket-client-pebble
+
