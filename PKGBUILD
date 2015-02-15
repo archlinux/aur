@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=pex
-pkgver=0.8.1
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='A library and tool for generating .pex (Python EXecutable) files'
 arch=('any')
@@ -21,4 +21,4 @@ package() {
     python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
-sha256sums=('55dbbfdc20e4eb4effadab12bba3edc78abee4cf47091ef5fc307200aac22f37')
+sha256sums=('956b1ae60c00c0a60f5ccd3dd06f9db732ec3f34831dce80be64cfaccb78ed9c')
