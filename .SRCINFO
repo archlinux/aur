@@ -1,6 +1,6 @@
 pkgbase = ipython-mathjax
 	pkgdesc = mathjax files for usage in the ipython notebook
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = http://ipython.org/ipython-doc/stable/install/install.html#mathjax
 	arch = any

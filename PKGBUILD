@@ -1,7 +1,7 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh lavabit com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=ipython-mathjax
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="mathjax files for usage in the ipython notebook"
 url='http://ipython.org/ipython-doc/stable/install/install.html#mathjax'
@@ -12,9 +12,9 @@ optdepends=('ipython: for use with ipython'
             'ipython2: for use with ipython2')
 
 package() {
-  install -d "${pkgdir}/usr/lib/python3.3/site-packages/IPython/html/static"
+  install -d "${pkgdir}/usr/lib/python3.4/site-packages/IPython/html/static"
   install -d "${pkgdir}/usr/lib/python2.7/site-packages/IPython/html/static"
 
-  ln -s "/usr/share/mathjax" "${pkgdir}/usr/lib/python3.3/site-packages/IPython/html/static/mathjax"
+  ln -s "/usr/share/mathjax" "${pkgdir}/usr/lib/python3.4/site-packages/IPython/html/static/mathjax"
   ln -s "/usr/share/mathjax" "${pkgdir}/usr/lib/python2.7/site-packages/IPython/html/static/mathjax"
 }
