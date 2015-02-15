@@ -5,11 +5,19 @@ pkgbase = python-markups
 	url = http://launchpad.net/python-markups
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	depends = python
-	optdepends = python-markdown: markdown support
-	optdepends = python-docutils: reST support
 	source = http://pypi.python.org/packages/source/M/Markups/Markups-0.4.tar.gz
 	sha256sums = 3c33a19200a224b9c320e48557ec29e13dbe8094c6670da2851b75d6657950b8
 
 pkgname = python-markups
+	depends = python
+	optdepends = python-markdown: markdown support
+	optdepends = python-docutils: reST support
+
+pkgname = python2-markups
+	depends = python2
+	optdepends = python-markdown2: markdown support
+	optdepends = python-docutils2: reST support
 
