@@ -2,16 +2,16 @@
 
 pkgname=ubuntu-keyring
 pkgver=2012.05.19
-pkgrel=1
+pkgrel=2
 pkgdesc="GnuPG keys of the Ubuntu archive"
 arch=('any')
-url="http://packages.ubuntu.com/quantal/ubuntu-keyring"
+url="http://packages.ubuntu.com/trusty/ubuntu-keyring"
 license=('GPL')
 depends=('gnupg')
 
 source=("http://mirror.netcologne.de/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_${pkgver}_all.deb")
 
-build() {
+package() {
   tar xzvf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
 }
 

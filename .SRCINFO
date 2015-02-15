@@ -1,8 +1,8 @@
 pkgbase = ubuntu-keyring
 	pkgdesc = GnuPG keys of the Ubuntu archive
 	pkgver = 2012.05.19
-	pkgrel = 1
-	url = http://packages.ubuntu.com/quantal/ubuntu-keyring
+	pkgrel = 2
+	url = http://packages.ubuntu.com/trusty/ubuntu-keyring
 	arch = any
 	license = GPL
 	depends = gnupg
