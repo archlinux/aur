@@ -1,28 +1,27 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh@lavabit.com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=taterm
-pkgver=10
+pkgver=11
 pkgrel=1
-pkgdesc="Terminal emulator for tiling window managers"
+pkgdesc='Terminal emulator for tiling window managers'
 arch=('i686' 'x86_64')
-url="https://github.com/t-8ch/taterm"
+url='https://github.com/t-8ch/taterm'
 depends=('vte3' 'dbus')
 makedepends=('vala')
 license=('GPL3')
-source=("${pkgname}-${pkgver}::https://github.com/t-8ch/taterm/tarball/v${pkgver}")
+source=("${pkgname}-${pkgver}::https://github.com/t-8ch/taterm/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd $(ls -1dt ${srcdir}/t-8ch-${pkgname}-* | head -n 1)
-
+  cd "${srcdir}/taterm-${pkgver}"
   make
 }
 
 package() {
-  cd $(ls -1dt ${srcdir}/t-8ch-${pkgname}-* | head -n 1)
+  cd "${srcdir}/taterm-${pkgver}"
 
   install -d ${pkgdir}/usr/bin/
   install -m 755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
 }
-# vim:set ts=2 sw=2 et:
-sha1sums=('e31e52b08e48562837641c788140adc77579bdf0')
+
+sha256sums=('5483f03678c6383291cef0936bcdda7605361171da69656447a131fb281df1f3')
