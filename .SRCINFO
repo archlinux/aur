@@ -1,13 +1,14 @@
 pkgbase = batctl
 	pkgdesc = B.A.T.M.A.N. advanced control and management tool
-	pkgver = 2014.0.0
+	pkgver = 2014.4.0
 	pkgrel = 1
 	url = http://www.open-mesh.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2014.0.0/batctl-2014.0.0.tar.gz
-	sha256sums = fc4b045eff42452ac96d9901f4514a7f20e4c727d12d50ed8b4255d5b2036ddf
+	depends = libnl
+	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2014.4.0/batctl-2014.4.0.tar.gz
+	sha256sums = 77509ed70232ebc0b73e2fa9471ae13b12d6547d167dda0a82f7a7fad7252c36
 
 pkgname = batctl
 
