@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=bumpversion
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Version-bump your software with a single command!'
 arch=('any')
@@ -20,4 +20,5 @@ package() {
     cd "${srcdir}/bumpversion-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
-sha256sums=('030832b9b46848e1c1ac6678dba8242a021e35e908b65565800c9650291117dc')
+
+sha256sums=('82c2805d0b1a678b0d228c200d4fbc1dc727920f83bc6e538309bae742518d94')
