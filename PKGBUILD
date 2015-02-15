@@ -11,16 +11,16 @@
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
 url="http://www.gnome.org/projects/$_pkgname/"
 depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 
-         'wpa_supplicant' 'dhcp-client' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 
+         'wpa_supplicant' 'dhclient' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 
          'libteam')
-makedepends=('intltool' 'dhcpcd' 'iptables' 'gobject-introspection' 'gtk-doc' 
+makedepends=('intltool' 'iptables' 'gobject-introspection' 'gtk-doc' 
              "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala')
 optdepends=('modemmanager: for modem management service'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
@@ -63,7 +63,7 @@ build() {
     --libexecdir=/usr/lib/networkmanager \
     --with-crypto=nss \
     --with-dhclient=/usr/bin/dhclient \
-    --with-dhcpcd=/usr/bin/dhcpcd \
+    --without-dhcpcd \
     --with-dnsmasq=/usr/bin/dnsmasq \
     --with-iptables=/usr/bin/iptables \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
