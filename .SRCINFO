@@ -1,0 +1,13 @@
+pkgbase = python2-dnsq
+	pkgdesc = DNS Query Tool
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/dnsq
+	arch = any
+	license = Apache2
+	depends = python2-expiringdict
+	source = http://pypi.python.org/packages/source/d/dnsq/dnsq-1.1.3.tar.gz
+	sha256sums = c846c2e5d6e69be124fb14f7ccd3f64eba62df7421227afc5fdcfb221d1a1448
+
+pkgname = python2-dnsq
+
