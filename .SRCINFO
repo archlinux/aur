@@ -1,0 +1,17 @@
+pkgbase = khal
+	pkgdesc = CLI calendar application build around CalDAV
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://lostpackets.de/khal/
+	arch = any
+	license = MIT
+	depends = python2-urwid
+	depends = python2-vdirsyncer
+	depends = python2-tzlocal
+	depends = python2-docopt
+	depends = python2-configobj
+	source = http://pypi.python.org/packages/source/k/khal/khal-0.4.0.tar.gz
+	sha256sums = 9762783cfe1343772da7fd5e287ecfbd825f25e29482b3d32834b41837111e84
+
+pkgname = khal
+
