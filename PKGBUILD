@@ -1,7 +1,7 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=python-unp
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Command line tool that can unpack archives easily'
 arch=('any')
@@ -21,4 +21,4 @@ package() {
     python setup.py install --root="${pkgdir}" --optimize=1
 }
 
-sha256sums=('e0f4b4512ff4e4bfa2655a3625f18f7a52ec84f5cc99a2501ba6a981edd35b39')
+sha256sums=('234807c6db6f802cf25509dd495f7978516f1d04eecd6f0acfef0ac76cba6009')

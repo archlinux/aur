@@ -1,13 +1,13 @@
 pkgbase = python-unp
 	pkgdesc = Command line tool that can unpack archives easily
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/mitsuhiko/unp
 	arch = any
 	license = BSD
 	depends = python-click
-	source = http://pypi.python.org/packages/source/u/unp/unp-0.2.tar.gz
-	sha256sums = e0f4b4512ff4e4bfa2655a3625f18f7a52ec84f5cc99a2501ba6a981edd35b39
+	source = http://pypi.python.org/packages/source/u/unp/unp-0.3.tar.gz
+	sha256sums = 234807c6db6f802cf25509dd495f7978516f1d04eecd6f0acfef0ac76cba6009
 
 pkgname = python-unp
 
