@@ -1,7 +1,7 @@
 pkgbase = perl-dbix-dbschema
 	pkgdesc = Perl modile providing database-independent schema objects
 	pkgver = 0.44
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/DBIx-DBSchema
 	arch = any
 	license = PerlArtistic
