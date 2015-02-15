@@ -1,6 +1,6 @@
 pkgbase = python-ggplot
 	pkgdesc = ggplot for python
-	pkgver = 0.5.8
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/yhat/ggplot/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-ggplot
 	depends = python-matplotlib
 	depends = python-statsmodels
 	depends = python-brewer2mpl
-	source = http://pypi.python.org/packages/source/g/ggplot/ggplot-0.5.8.tar.gz
-	sha256sums = 3348596865bdb3d654c0fc3823c43cfaa660a145a6b38428b5d846da84ae3096
+	source = http://pypi.python.org/packages/source/g/ggplot/ggplot-0.6.5.tar.gz
+	sha256sums = 7922152c5986b12da4f663ac6905b6b8ce51a66b9cabf2671a2be3906784ee41
 
 pkgname = python-ggplot
 

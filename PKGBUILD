@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=python-ggplot
-pkgver=0.5.8
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="ggplot for python"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('3348596865bdb3d654c0fc3823c43cfaa660a145a6b38428b5d846da84ae3096')
+sha256sums=('7922152c5986b12da4f663ac6905b6b8ce51a66b9cabf2671a2be3906784ee41')
