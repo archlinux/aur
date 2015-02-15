@@ -1,17 +1,17 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh || lavabit || com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 # Contributor: Zveroy <zy at aafg dot ws>
 # Contributor: Jonas Haag <jonas at lophus dot org>
 # Contributor: Pardi Tommaso <homer.j.simson.bis at gmail dot com>
 
 pkgname=evilvte
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VTE based, highly customizable terminal emulator'
 arch=('i686' 'x86_64')
 provides=('evilvte')
 url='http://www.calno.com/evilvte/'
 license=('GPL2')
-depends=('vte3' 'hicolor-icon-theme')
+depends=('vte290' 'hicolor-icon-theme')
 makedepends=('pkg-config')
 source=("http://www.calno.com/evilvte/evilvte-${pkgver}.tar.xz")
 install=evilvte.install
