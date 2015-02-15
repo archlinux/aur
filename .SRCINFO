@@ -1,0 +1,17 @@
+pkgbase = python2-flanker
+	pkgdesc = Mailgun Parsing Tools
+	pkgver = 0.4.23
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/flanker
+	arch = any
+	license = Apache2
+	depends = python2
+	optdepends = python2-regex: for flanker.mime
+	optdepends = python2-paste: for flanker.mime
+	optdepends = python2-redis: for flanker.mime
+	optdepends = python2-dnsq: for flanker.mime
+	source = http://pypi.python.org/packages/source/f/flanker/flanker-0.4.23.tar.gz
+	sha256sums = 1b3d7ea744d8be02e4b561ad68127b28d63ad89457999caf33fb617abc324002
+
+pkgname = python2-flanker
+
