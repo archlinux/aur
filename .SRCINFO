@@ -1,6 +1,6 @@
 pkgbase = python-markups
 	pkgdesc = Wrapper around various text markups
-	pkgver = 0.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://launchpad.net/python-markups
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-markups
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	depends = python
-	source = http://pypi.python.org/packages/source/M/Markups/Markups-0.4.tar.gz
-	sha256sums = 3c33a19200a224b9c320e48557ec29e13dbe8094c6670da2851b75d6657950b8
+	source = http://pypi.python.org/packages/source/M/Markups/Markups-0.6.0.tar.gz
+	sha256sums = e601e9a9fff58403b4e2de3b8e8c34ce33a8604549c2344c569d815ae0e803f1
 
 pkgname = python-markups
 	depends = python
