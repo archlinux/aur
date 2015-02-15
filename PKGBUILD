@@ -2,12 +2,12 @@
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
 pkgname=findimagedupes
 pkgver=2.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to find visually similar or duplicate images"
 arch=('i686' 'x86_64')
 url="http://www.jhnc.org/findimagedupes/"
 license=('GPL3')
-depends=('perl' 'perl-file-mimeinfo' 'perl-inline' 'graphicsmagick')
+depends=('perl' 'perl-file-mimeinfo' 'perl-inline-c' 'graphicsmagick')
 makedepends=('perl' 'sed')
 source=(http://www.jhnc.org/$pkgname/$pkgname-$pkgver.tar.gz
 	findimagedupes-2.18.patch)

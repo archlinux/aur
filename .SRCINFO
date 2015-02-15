@@ -1,7 +1,7 @@
 pkgbase = findimagedupes
 	pkgdesc = Tool to find visually similar or duplicate images
 	pkgver = 2.18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.jhnc.org/findimagedupes/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = findimagedupes
 	makedepends = sed
 	depends = perl
 	depends = perl-file-mimeinfo
-	depends = perl-inline
+	depends = perl-inline-c
 	depends = graphicsmagick
 	options = zipman
 	source = http://www.jhnc.org/findimagedupes/findimagedupes-2.18.tar.gz
