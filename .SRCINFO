@@ -1,0 +1,13 @@
+pkgbase = drush_make
+	pkgdesc = Drush Makefile extension for building Drupal sites.
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://drupal.org/project/drush_make/
+	arch = any
+	license = GPL
+	depends = drush
+	source = http://ftp.drupal.org/files/projects/drush_make-6.x-2.3.tar.gz
+	md5sums = d6636db943d4f996474b09245060263c
+
+pkgname = drush_make
+
