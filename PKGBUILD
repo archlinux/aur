@@ -2,18 +2,35 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.0.98.2
-pkgrel=2
+pkgver=1.0.105.7
+pkgrel=1
 pkgdesc='A new browser for our friends (weekly snapshot)'
 url="https://vivaldi.com"
 install=vivaldi.install
 options=(!strip !zipman)
 license=('custom')
-arch=('x86_64')
-source=("https://vivaldi.com/download/snapshot/vivaldi-snapshot_${pkgver}-1_amd64.deb")
-depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info')
+arch=('i686' 'x86_64')
+source=(
+"https://vivaldi.com/download/snapshot/vivaldi-snapshot_${pkgver}-1_amd64.deb"
+"https://vivaldi.com/download/snapshot/vivaldi-snapshot_${pkgver}-1_i386.deb"
+)
+noextract=(
+"vivaldi-snapshot_${pkgver}-1_amd64.deb"
+"vivaldi-snapshot_${pkgver}-1_i386.deb"
+)
+depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'alsa-lib')
 optdepends=('ffmpeg: playback of proprietary formats')
 conflicts=('vivaldi')
+
+if [[ "$CARCH" == "x86_64" ]]; then
+	_arch="amd64"
+elif [[ "$CARCH" == "i686" ]]; then
+	_arch="i386"
+fi
+
+prepare() {
+	bsdtar -xf "$srcdir/vivaldi-snapshot_${pkgver}-1_${_arch}.deb"
+}
 
 package() {
 	tar -xf data.tar.xz --exclude={usr/share/{lintian,menu},etc} -C "$pkgdir/"
@@ -32,4 +49,5 @@ package() {
 	done
 }
 
-sha256sums=('d79a6975c38aa0bbb4c69e77ea1d553e3b6c0584068f7522f22c81727ada3c6b')
+sha256sums=('089db6e6f5b7a0b22a617fab0d5a91938349f6f6b94d76f303c4649cea609235'
+            '569a9816baa95b627cb655ca03a4d7dc524200dcb2c2520cfec9f9c720f33a1d')
