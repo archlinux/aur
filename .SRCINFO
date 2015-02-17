@@ -1,13 +1,13 @@
 pkgbase = sauceconnect
 	pkgdesc = Sauce Connect untility for Sauce Labs testing
-	pkgver = 4.3
+	pkgver = 4.3.6
 	pkgrel = 1
-	url = https://saucelabs.com/docs/connect
-	arch = i686
+	url = https://docs.saucelabs.com/reference/sauce-connect/
 	arch = x86_64
 	license = unknown
-	source = https://saucelabs.com/downloads/sc-4.3-linux.tar.gz
-	md5sums = 978dc49aa70d3daf8f8c512366cf5d6e
+	source = https://saucelabs.com/downloads/sc-4.3.6-linux.tar.gz
+	md5sums = 38b1f0067f4785489024bacd13913580
+	sha256sums = 0e1467a7bbe1b687358c321ae68c635fdd510bb7303a0671f90041936745e0b9
 
 pkgname = sauceconnect
 

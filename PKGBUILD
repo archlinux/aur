@@ -1,16 +1,19 @@
 # Maintainer: Jason Staten <jstaten07 gmail>
+# PKGBUILD Source: https://github.com/statianzo/PKGBUILD-sauceconnect
+
 pkgname=sauceconnect
-pkgver=4.3
+pkgver=4.3.6
 pkgrel=1
 pkgdesc='Sauce Connect untility for Sauce Labs testing'
-url='https://saucelabs.com/docs/connect'
+url='https://docs.saucelabs.com/reference/sauce-connect/'
 license=('unknown')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=()
 makedepends=()
 optdepends=()
 source=("https://saucelabs.com/downloads/sc-${pkgver}-linux.tar.gz")
-md5sums=('978dc49aa70d3daf8f8c512366cf5d6e')
+md5sums=('38b1f0067f4785489024bacd13913580')
+sha256sums=('0e1467a7bbe1b687358c321ae68c635fdd510bb7303a0671f90041936745e0b9')
 
 package() {
   cd "${srcdir}/sc-${pkgver}-linux/"
