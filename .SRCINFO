@@ -1,0 +1,14 @@
+pkgbase = plasma-workspace-agent-ssh
+	pkgdesc = Startup and shutdown scripts for ssh-agent in KDE
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	license = GPL
+	source = ssh-agent-startup.sh
+	source = ssh-agent-shutdown.sh
+	sha256sums = e5635bd17c1e66b30d9161162c1c7ece259e5b5de8b93678c28184380cb19726
+	sha256sums = 92937da876224a2fb8a6d54faf85829328419f4f7c70da43f93e0798f70b7fb4
+
+pkgname = plasma-workspace-agent-ssh
+
