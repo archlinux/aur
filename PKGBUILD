@@ -2,7 +2,7 @@
 
 pkgname=gltron
 pkgver=0.70
-pkgrel=4
+pkgrel=5
 pkgdesc="A tron-like lightcycle game with a nice 3D perspective"
 arch=('i686' 'x86_64')
 url="http://www.gltron.org"
@@ -34,6 +34,7 @@ build() {
   fi
 
   ./configure --prefix=/usr --enable-warn=off
+  sed -i 's/#include <ctype.h>/&\n#include <stdint.h>/' lua/src/lib/liolib.c
   make
 }
 
@@ -41,8 +42,8 @@ package() {
   cd "${srcdir}"/$pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
 
-  install -D -m644 "${srcdir}"/120px-GLTron.png \
+  install -Dm644 "${srcdir}"/120px-GLTron.png \
     "${pkgdir}"/usr/share/gltron/pics/gltron.png
-  install -D -m644 "${srcdir}"/gltron.desktop \
+  install -Dm644 "${srcdir}"/gltron.desktop \
     "${pkgdir}"/usr/share/applications/gltron.desktop
 }
