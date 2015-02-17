@@ -3,16 +3,16 @@
 
 pkgname=networkmanager-openswan
 _pkgname=NetworkManager-openswan
-pkgver=0.9.8.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="NetworkManager plugin for IPSec VPN tunnels"
 arch=('i686' 'x86_64' 'mips64el')
 url="http://ftp.acc.umu.se/pub/GNOME/sources/NetworkManager-openswan/"
 license=('GPL')
-depends=('openswan' 'gtk3' 'networkmanager' 'libgnome-keyring')
+depends=('openswan' 'gtk3' 'networkmanager' 'libgnome-keyring' 'libnm-gtk' 'libsecret')
 makedepends=('intltool')
-source=(http://ftp.acc.umu.se/pub/GNOME/sources/$_pkgname/0.9/$_pkgname-$pkgver.tar.xz)
-md5sums=('6a373868f85ac3b7c953f7fd6c76e637')
+source=(http://ftp.acc.umu.se/pub/GNOME/sources/$_pkgname/1.0/$_pkgname-$pkgver.tar.xz)
+sha256sums=('baac8816c95cc8d50aa00cbe8a78d8ddeb0b8ce710367e7e776ef36dd80c97fd')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -28,6 +28,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/networkmanager
 
   sed -e "s/-Werror//g" -i auth-dialog/Makefile
+  sed -e "s/-Werror//g" -i src/Makefile
   make
 }
 
@@ -35,4 +36,3 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
-md5sums=('6cb2b64bc79c4174856613d077667b66')
