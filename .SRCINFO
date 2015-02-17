@@ -1,7 +1,7 @@
 pkgbase = fig2eps
 	pkgdesc = A tool to convert Xfig figures to EPS with embedded LaTeX commands
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.courville.org/mediawiki/index.php/Fig2eps
 	arch = any
 	license = unknown
