@@ -1,4 +1,4 @@
-# Contributor: Leonidas <marek@xivilization.net>
+# Contributor: Marek Kubica <marek@xivilization.net>
 pkgname=homeshick-git
 pkgver=r374.8f752a5
 pkgrel=1
@@ -12,18 +12,21 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  #printf "r%d.%s\n" $(git rev-list HEAD --count) $(git rev-parse --short HEAD)
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )}
+  )
+}
 
 build() {
   # patch the location of the library scripts
-  sed -i 's|homeshick="\$repos/homeshick"|homeshick=/usr/lib/homeshick|' "$srcdir"/$pkgname/bin/homeshick
-  sed -i 's|\$HOME/.homesick/repos/homeshick/bin/homeshick|/usr/bin/homeshick|' "$srcdir"/$pkgname/bin/homeshick.csh
-  sed -i 's|\$HOME/.homesick/repos/homeshick/bin/homeshick|/usr/bin/homeshick|' "$srcdir"/$pkgname/homeshick.sh
-  sed -i 's|\$HOME/.homesick/repos/homeshick/bin/homeshick|/usr/bin/homeshick|' "$srcdir"/$pkgname/homeshick.fish
+  sed -i 's|homeshick="\$repos/homeshick"|homeshick=/usr/lib/homeshick|' \
+    "$srcdir"/$pkgname/bin/homeshick
+  # patch the location of the binary
+  sed -i 's|\$HOME/.homesick/repos/homeshick/bin/homeshick|/usr/bin/homeshick|' \
+    "$srcdir"/$pkgname/bin/homeshick.csh \
+    "$srcdir"/$pkgname/homeshick.sh \
+    "$srcdir"/$pkgname/homeshick.fish
 }
 
 package() {
