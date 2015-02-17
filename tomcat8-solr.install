@@ -1,0 +1,7 @@
+post_install() {
+    _tomver=8
+    echo "After the tomcat$_tomver.service is activated for the first time with this package installed,"
+    echo "configure solr's web.xml with at least a solr/home value at:"
+    echo "  /usr/share/tomcat8/webapps/solr/WEB-INF/web.xml"
+    echo "pointing to /etc/solr."
+}

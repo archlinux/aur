@@ -1,0 +1,14 @@
+pkgbase = tomcat8-solr
+	pkgdesc = Bridging module to set up solr to be served by tomcat.
+	pkgver = 1.0
+	pkgrel = 1
+	install = tomcat8-solr.install
+	arch = any
+	license = GPL
+	depends = java-commons-logging
+	depends = slf4j
+	depends = tomcat8
+	depends = solr
+
+pkgname = tomcat8-solr
+
