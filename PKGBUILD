@@ -18,7 +18,6 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir build
 	cd build
-
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 ../
 	make
 }
