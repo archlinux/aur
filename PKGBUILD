@@ -9,7 +9,8 @@ pkgdesc="Linux Malware Detect"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('lib32-glibc' 'perl')
+depends=('perl')
+depends_x86_64=('lib32-glibc')
 
 source=("http://www.rfxn.com/downloads/maldetect-1.4.2.tar.gz")
 sha256sums=('dd2badb95f75ae90ed94892d799aedadc79498a72ef3502ab87f35509c76c094')
