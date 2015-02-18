@@ -10,8 +10,8 @@
 
 _pkgname=awesome
 pkgname=${_pkgname}-git
-pkgver=3.5.6
-pkgrel=2
+pkgver=3.5.2.315.gc9f08fb
+pkgrel=1
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
 url='http://awesome.naquadah.org/'
@@ -25,8 +25,13 @@ optdepends=('rlwrap: readline support for awesome-client'
             'vicious: widgets for the Awesome window manager')
 provides=('notification-daemon' 'awesome')
 backup=('etc/xdg/awesome/rc.lua')
-source=("${pkgname}-${pkgver}::git://github.com/awesomeWM/awesome.git")
+source=("$pkgname::git://github.com/awesomeWM/awesome.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe | sed 's/^v//;s/-/./g'
+}
 
 prepare() {
   mkdir -p build
@@ -34,7 +39,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
+  cmake ../$pkgname \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSCONFDIR=/etc \
@@ -46,6 +51,6 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir"/$pkgname-$pkgver/awesome.desktop \
+  install -Dm644 "$srcdir"/$pkgname/awesome.desktop \
     "$pkgdir/usr/share/xsessions/awesome.desktop"
 }
