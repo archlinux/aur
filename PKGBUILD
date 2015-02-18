@@ -37,6 +37,11 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	mkdir -p "${pkgdir}/usr/lib/systemd/system/"
 	cp "${srcdir}/mbm-gpsd.service" "${pkgdir}/usr/lib/systemd/system/"
+	mv "${pkgdir}/var/run" "${pkgdir}/run"
+	mv "${pkgdir}/usr/sbin"/* "${pkgdir}/usr/bin/"
+	rmdir "${pkgdir}/var" "${pkgdir}/usr/sbin/"
 }
 md5sums=('SKIP'
 '1c4fd254cd00834f644ab614a76f5c96')
+md5sums=('SKIP'
+         'c436e8bcf6b459f8f939e434aed0b9d4')

@@ -17,7 +17,7 @@ pkgbase = mbm-gpsd-pl4nkton-git
 	source = git+https://github.com/pl4nkton/mbm-gpsd.git/
 	source = mbm-gpsd.service
 	md5sums = SKIP
-	md5sums = 1c4fd254cd00834f644ab614a76f5c96
+	md5sums = c436e8bcf6b459f8f939e434aed0b9d4
 
 pkgname = mbm-gpsd-pl4nkton-git
 
