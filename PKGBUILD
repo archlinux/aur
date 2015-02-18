@@ -1,6 +1,10 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 # Modified from guix-git 20130119 PKGBUILD 
 
+# In order to verify the PGP signature of the source archive, you may need to
+# use this command to download the needed public key:
+#   gpg --recv-keys 090B11993D9AEBB5
+
 pkgname=guix
 pkgver=0.8.1
 pkgrel=1
