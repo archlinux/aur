@@ -1,7 +1,7 @@
 pkgbase = awesome-git
 	pkgdesc = Highly configurable framework window manager
 	pkgver = 3.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://awesome.naquadah.org/
 	arch = i686
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = awesome-git
 	optdepends = dex: autostart your desktop files
 	optdepends = vicious: widgets for the Awesome window manager
 	provides = notification-daemon
+	provides = awesome
 	backup = etc/xdg/awesome/rc.lua
 	source = awesome-git-3.5.6::git://github.com/awesomeWM/awesome.git
 	md5sums = SKIP
