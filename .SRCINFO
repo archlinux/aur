@@ -10,6 +10,7 @@ pkgbase = mbm-gps-control-git
 	depends = networkmanager
 	depends = network-manager-applet
 	depends = intltool
+	depends = gconf
 	provides = mbm-gps-control
 	source = mbm-gps-control::git://mbm.git.sourceforge.net/gitroot/mbm/mbm-gps-control/
 	source = 0001-Remove-call-to-g_type_init.patch
