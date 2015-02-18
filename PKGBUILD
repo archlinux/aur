@@ -7,7 +7,7 @@
 pkgname=automake-1.13
 _realname=automake
 pkgver=1.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNU tool for automatically creating Makefiles"
 arch=('any')
 license=('GPL')
@@ -21,6 +21,7 @@ install=automake.install
 source=(ftp://ftp.gnu.org/gnu/${_realname}/${_realname}-${pkgver}.tar.xz{,.sig})
 md5sums=('71b03c1bc4f587add12604587d9276d1'
          'SKIP')
+validpgpkeys=('A0460631BECA5C1CCD1C8362FC818E17429F96EA')
 
 build() {
   cd ${srcdir}/${_realname}-${pkgver}
