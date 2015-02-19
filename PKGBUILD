@@ -1,16 +1,17 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=voglperf
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="benchmarking tool for OpenGL games (frame info, logs, steam support)"
 arch=('x86_64' 'i686')
 url="https://github.com/ValveSoftware/voglperf"
 license=('custom:MIT', 'BSD')
-depends=('ncurses' 'gcc-libs-multilib')
+depends=('ncurses')
+makedepends=('cmake')
 if [ "$CARCH" = "x86_64" ]; then
-	depends+=('lib32-ncurses')
+	depends+=('lib32-ncurses' 'gcc-libs-multilib')
+	makedepends+=('gcc-multilib')
 fi
-makedepends=('cmake' 'gcc-multilib')
 source=(https://github.com/ValveSoftware/$pkgname/archive/$pkgver.tar.gz)
 sha256sums=('c91ab58aaa69d84312ce67090252f28a104952d4335595bbc728e357bf2ad545')
 
