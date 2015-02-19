@@ -1,0 +1,11 @@
+--- groovebasin-1.5.0/package.json	2015-02-19 08:54:20.585145205 +0200
++++ groovebasin-1.5.0/package.json	2015-02-19 08:54:30.928478224 +0200
+@@ -27,7 +27,7 @@
+     "express": "~4.10.6",
+     "findit2": "~2.2.3",
+     "googleapis": "~1.0.21",
+-    "groove": "~2.2.7",
++    "groove": "~2.3.1",
+     "httpolyglot": "~0.1.0",
+     "keese": "~1.1.1",
+     "lastfm": "~0.9.2",

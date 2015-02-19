@@ -1,0 +1,16 @@
+{
+    "host": "127.0.0.1",
+    "port": 16242,
+    "dbPath": "groovebasin.db",
+    "musicDirectory": "/var/lib/groovebasin/music",
+    "lastFmApiKey": "bb9b81026cd44fd086fa5533420ac9b4",
+    "lastFmApiSecret": "2309a40ae3e271de966bf320498a8f09",
+    "mpdHost": "127.0.0.1",
+    "mpdPort": 6600,
+    "acoustidAppKey": "bgFvC4vW",
+    "encodeQueueDuration": 8,
+    "sslKey": "certs/self-signed-key.pem",
+    "sslCert": "certs/self-signed-cert.pem",
+    "sslCaDir": null,
+    "googleApiKey": "AIzaSyDdTDD8-gu_kp7dXtT-53xKcVbrboNAkpM"
+}
