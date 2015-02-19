@@ -22,6 +22,7 @@ prepare() {
 		src/voglperfrun.cpp
 	# ncurses provides libtinfo functionality
 	# we don't split ncurses into an extra libtinfo on Arch
+	# fixed in voglperf > 0.2 (8ea79efa85b8970295ae834eb2e41c00ba18df82)
 	sed -i -e 's|tinfo|ncurses|' src/CMakeLists.txt
 }
 
