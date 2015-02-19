@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
 sha256sums=('9e1f1a661702217a3fa7bf25a0e70d334a236ca67fadc4bebcfa2e8f7328cd49'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
-            '4999fded897af692f4974f0a3e3bbb215193519918a1fa9b31ed51e74a2dccb9'
+            'db3a2ea59c64f5aa4618a385b9db0ac488e900664126af578676b5f09939f9f6'
             '870ca4516a0a5407b1e2da822a1ca4f201349c8699877f6bd248cd8e08e7f2f1')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
