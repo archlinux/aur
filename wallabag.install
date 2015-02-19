@@ -21,6 +21,6 @@ post_upgrade() {
     echo 'After each upgrade you have to manually:
     - Remove the installation folder (/usr/share/webapps/wallabag/install)
     - Empty the cache folder (/usr/share/webapps/wallabag/cache)
-    
+
     $ sudo -u http rm -rf /usr/share/webapps/wallabag/{install,cache/*}'
 }
