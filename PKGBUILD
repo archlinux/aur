@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Self hostable application for saving web pages'
 arch=('any')
 url='http://www.wallabag.org/'
-license=('WTFPL')
+license=('MIT')
 depends=('php>=5.3' 'php-tidy' 'pcre')
 optdepends=('mariadb: For MySQL storage' 'php-sqlite: For sqlite storage' 'php-pgsql: For postgres storage')
 install="$pkgname.install"

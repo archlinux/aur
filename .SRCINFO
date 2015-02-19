@@ -5,7 +5,7 @@ pkgbase = wallabag
 	url = http://www.wallabag.org/
 	install = wallabag.install
 	arch = any
-	license = WTFPL
+	license = MIT
 	depends = php>=5.3
 	depends = php-tidy
 	depends = pcre
