@@ -7,7 +7,7 @@ pkgdesc='Self hostable application for saving web pages'
 arch=('any')
 url='http://www.wallabag.org/'
 license=('MIT')
-depends=('php>=5.3.3' 'php-tidy' 'pcre')
+depends=('php>=5.3.3' 'php-tidy' 'pcre' 'php-gd')
 optdepends=('mariadb: For MySQL storage' 'php-sqlite: For sqlite storage' 'php-pgsql: For postgres storage')
 install="$pkgname.install"
 options=(!strip)
@@ -21,6 +21,6 @@ package() {
     mkdir -p usr/share/webapps
     mv "${srcdir}/${pkgname}-${pkgver}" usr/share/webapps/${pkgname}
     mv "${srcdir}/vendor" usr/share/webapps/${pkgname}/vendor
-    chown -R http:http "${pkgdir}"
+    chown -R http:http "${pkgdir}/usr/share/webapps/wallabag"
 }
 

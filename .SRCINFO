@@ -9,6 +9,7 @@ pkgbase = wallabag
 	depends = php>=5.3.3
 	depends = php-tidy
 	depends = pcre
+	depends = php-gd
 	optdepends = mariadb: For MySQL storage
 	optdepends = php-sqlite: For sqlite storage
 	optdepends = php-pgsql: For postgres storage
