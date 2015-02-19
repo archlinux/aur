@@ -1,0 +1,15 @@
+pkgbase = python-rosdistro
+	pkgdesc = A tool to work with rosdistro files
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://wiki.ros.org/rosdistro
+	arch = any
+	license = BSD, MIT
+	makedepends = python
+	depends = python
+	conflicts = python2-rosdistro
+	source = https://pypi.python.org/packages/source/r/rosdistro/rosdistro-0.4.1.tar.gz
+	md5sums = 722000b0872edabb55371c5ce964efd5
+
+pkgname = python-rosdistro
+
