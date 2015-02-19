@@ -1,6 +1,6 @@
 pkgbase = python2-rosdep
 	pkgdesc = Command-line tool for installing system dependencies on a variety of platforms.
-	pkgver = 0.10.30
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = http://ros.org/doc/api/rosdep2/html/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = python2-rosdep
 	depends = python2-rospkg
 	depends = python2-rosdistro
 	depends = python2-yaml
-	source = rosdep::git+https://github.com/ros/rosdep.git#tag=0.10.30
-	md5sums = SKIP
+	source = https://pypi.python.org/packages/source/r/rosdep/rosdep-0.11.1.tar.gz
+	md5sums = aa01398a49e05572f5a1d7c1d9a919b8
 
 pkgname = python2-rosdep
 
