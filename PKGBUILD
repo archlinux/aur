@@ -13,14 +13,14 @@ provides=('roboptim-core')
 conflicts=('roboptim-core')
 
 # Repository location
-_gitroot="git://github.com/roboptim/roboptim-core.git"
+_gitroot="git+https://github.com/roboptim/roboptim-core.git#branch=master"
 _gitname="roboptim-core"
 
 source=("${_gitname}"::${_gitroot})
 md5sums=('SKIP')
 
 # Build type
-_buildtype="RELWITHDEBINFO"
+_buildtype="RelWithDebInfo"
 
 # Build directory
 _builddir="${_gitname}-build"

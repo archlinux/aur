@@ -15,7 +15,7 @@ pkgbase = roboptim-core-git
 	depends = log4cxx>=0.10
 	provides = roboptim-core
 	conflicts = roboptim-core
-	source = roboptim-core::git://github.com/roboptim/roboptim-core.git
+	source = roboptim-core::git+https://github.com/roboptim/roboptim-core.git#branch=master
 	md5sums = SKIP
 
 pkgname = roboptim-core-git
