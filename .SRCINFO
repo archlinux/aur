@@ -1,6 +1,6 @@
 pkgbase = spacevecalg-git
 	pkgdesc = Implementation of spatial vector algebra with the Eigen 3 linear algebra library.
-	pkgver = 20140925
+	pkgver = 20150219
 	pkgrel = 1
 	url = https://github.com/jorisv/SpaceVecAlg
 	arch = i686

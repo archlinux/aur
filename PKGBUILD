@@ -2,7 +2,7 @@
 
 pkgname=spacevecalg-git
 _name=spacevecalg
-pkgver=20140925
+pkgver=20150219
 pkgver() {
   date +%Y%m%d
 }
@@ -27,6 +27,7 @@ build()
 
   cmake "${srcdir}/${_name}" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
     -DCMAKE_BUILD_TYPE="Release" \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
