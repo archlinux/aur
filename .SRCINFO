@@ -1,6 +1,6 @@
 pkgbase = roboptim-core-python-git
 	pkgdesc = Python bindings for RobOptim
-	pkgver = 20131219
+	pkgver = 20150218
 	pkgrel = 1
 	url = http://roboptim.net/
 	arch = i686
@@ -11,13 +11,13 @@ pkgbase = roboptim-core-python-git
 	makedepends = doxygen
 	depends = boost>=1.41
 	depends = eigen3
-	depends = libltdl
-	depends = log4cxx>=0.10
 	depends = python2
+	depends = python2-numpy
 	depends = roboptim-core-git
+	optdepends = python2-matplotlib: visualization
 	provides = roboptim-core-python
 	conflicts = roboptim-core-python
-	source = roboptim-core-python::git://github.com/roboptim/roboptim-core-python.git
+	source = roboptim-core-python::git+https://github.com/roboptim/roboptim-core-python.git
 	md5sums = SKIP
 
 pkgname = roboptim-core-python-git

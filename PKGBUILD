@@ -1,26 +1,26 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-python-git
-pkgver=20131219
+pkgver=20150218
 pkgrel=1
 pkgdesc="Python bindings for RobOptim"
 arch=('i686' 'x86_64')
 url="http://roboptim.net/"
 license=('(L)GPL2')
-depends=('boost>=1.41' 'eigen3' 'libltdl' 'log4cxx>=0.10' 'python2' 'roboptim-core-git')
-optdepends=()
+depends=('boost>=1.41' 'eigen3' 'python2' 'python2-numpy' 'roboptim-core-git')
+optdepends=('python2-matplotlib: visualization')
 makedepends=('git' 'cmake>=2.8' 'doxygen')
 provides=('roboptim-core-python')
 conflicts=('roboptim-core-python')
 
 # Repository location
-_gitroot="git://github.com/roboptim/roboptim-core-python.git"
+_gitroot="git+https://github.com/roboptim/roboptim-core-python.git"
 _gitname="roboptim-core-python"
 
 source=("${_gitname}"::${_gitroot})
 md5sums=('SKIP')
 
 # Build type
-_buildtype="RELWITHDEBINFO"
+_buildtype="RelWithDebInfo"
 
 # Build directory
 _builddir="${_gitname}-build"
@@ -49,6 +49,9 @@ build() {
     # Run CMake in release
     cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
           -DCMAKE_INSTALL_PREFIX="/usr" \
+          -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+          -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+          -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
           "${srcdir}/${_gitname}"
 
     # Compile the library
@@ -64,6 +67,7 @@ build() {
 check() {
     msg "Running unit tests"
     cd "${srcdir}/${_builddir}"
+    export PYTHONPATH=$(pwd)/src
     make test
 }
 
