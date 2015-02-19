@@ -16,7 +16,7 @@ pkgbase = ros-indigo-python-qt-binding
 	source = python_qt_binding::git+https://github.com/ros-gbp/python_qt_binding-release.git#tag=release/indigo/python_qt_binding/0.2.14-0
 	source = pyqt411.patch
 	md5sums = SKIP
-	md5sums = c68f7f6f2e652130a0b599da69803758
+	md5sums = 34ae32c51943431a9ef59fa6d4634f5b
 
 pkgname = ros-indigo-python-qt-binding
 

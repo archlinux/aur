@@ -26,7 +26,7 @@ _dir=python_qt_binding
 source=("${_dir}"::"git+https://github.com/ros-gbp/python_qt_binding-release.git"#tag=${_tag}
         "pyqt411.patch")
 md5sums=('SKIP'
-         'c68f7f6f2e652130a0b599da69803758')
+         '34ae32c51943431a9ef59fa6d4634f5b')
 
 build() {
   # Use ROS environment variables
