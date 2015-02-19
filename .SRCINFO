@@ -5,6 +5,7 @@ pkgbase = urlview
 	url = http://packages.qa.debian.org/u/urlview.html
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	depends = bash
 	source = http://ftp.debian.org/debian/pool/main/u/urlview/urlview_0.9.orig.tar.gz
