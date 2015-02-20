@@ -1,7 +1,7 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=firefox-extension-ublock
-pkgver=0.8.7.0
+pkgver=0.8.8.1
 pkgrel=1
 pkgdesc='Finally, an efficient blocker. Easy on CPU and memory.'
 url=https://github.com/gorhill/uBlock
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 depends=('firefox')
 source=("uBlock-$pkgver.xpi::https://github.com/gorhill/uBlock/releases/download/$pkgver/uBlock.firefox.xpi")
-sha256sums=('4fa9f7e7473b6d1fe86997284cfd523c1e71b6f70d662ea00a243c1cd0d90247')
+sha256sums=('240c53946b477c1559aaabe33a53a7551fb56c8c6a3c292cd2dc0dbe958b01f9')
 
 package() {
   local GLOBIGNORE=*.xpi:LICENSE.txt
