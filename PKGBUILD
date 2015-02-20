@@ -7,18 +7,20 @@ pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
-depends=('openssl' 'zlib' )
+depends=('openssl' 'zlib' 'libuv')
 makedepends=('python2' 'git')
 optdepends=('python2: for node-gyp')
 provides=('nodejs')
 conflicts=('nodejs' 'iojs-bin')
 options=('!emptydirs')
-source=("$pkgname::git://github.com/iojs/io.js#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("https://iojs.org/dist/v${pkgver}/iojs-v${pkgver}.tar.gz")
+
+#obtained from https://iojs.org/dist/$pkgver/SHASUMS256.txt
+sha256sums=('33666fce914ca57ef60e2e29d7b02cd64c99a8609287a9227da2087ab9c65d9d')
 
 prepare() {
 
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
 
   msg "preparing python version"
 
@@ -31,24 +33,25 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
 
   export PYTHON=python2
   ./configure \
     --prefix=/usr \
     --shared-openssl \
-    --shared-zlib
+    --shared-zlib \
+    --shared-libuv
 
   make
 }
 
 check() {
-  cd $pkgname
+  cd "${pkgname}-v${pkgver}"
   make test || warning "Tests failed"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-v$pkgver"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/iojs/LICENSE
