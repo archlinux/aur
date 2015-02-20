@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.0_alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration for a dedicated Aegir server."
 arch=('any')
 url='http://aegirproject.org'
