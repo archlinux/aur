@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-wayland-git
-pkgver=0.19.99.19348.3e5b2ba
+pkgver=0.19.99.19518.e50b8e5
 pkgrel=1
 pkgdesc="Highly expermimental Enlightenment window manager for Wayland - Development version"
 arch=('i686' 'x86_64')
@@ -44,7 +44,6 @@ build() {
 
   ./autogen.sh \
     --prefix=/opt/enlightenment-wayland \
-    --enable-wayland-clients \
     --enable-wl-drm \
     --enable-wayland-only \
     --disable-shot \
