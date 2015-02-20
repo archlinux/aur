@@ -1,6 +1,6 @@
-pkgbase = iojs-git
+pkgbase = iojs
 	pkgdesc = Evented I/O for V8 JavaScript - Node.js fork
-	pkgver = 0.10360.e7dec60
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://iojs.org/
 	arch = i686
@@ -9,12 +9,15 @@ pkgbase = iojs-git
 	makedepends = python2
 	makedepends = git
 	depends = openssl
+	depends = zlib
+	depends = libuv
+	optdepends = python2: for node-gyp
 	provides = nodejs
 	conflicts = nodejs
-	conflicts = iojs
+	conflicts = iojs-bin
 	options = !emptydirs
-	source = iojs-git::git://github.com/iojs/io.js
-	md5sums = SKIP
+	source = https://iojs.org/dist/v1.2.0/iojs-v1.2.0.tar.gz
+	sha256sums = 33666fce914ca57ef60e2e29d7b02cd64c99a8609287a9227da2087ab9c65d9d
 
-pkgname = iojs-git
+pkgname = iojs
 
