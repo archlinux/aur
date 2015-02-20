@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=40.0.2214.111
+pkgver=40.0.2214.115
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.default
         chromium.sh
         chromium-webkit-buffer-overflow.patch)
-sha256sums=('9e1f1a661702217a3fa7bf25a0e70d334a236ca67fadc4bebcfa2e8f7328cd49'
+sha256sums=('2261b96dba5747b52512e2391956c54f4e36b9bbaa310b16c7fb0f1e4efba6a5'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
             'db3a2ea59c64f5aa4618a385b9db0ac488e900664126af578676b5f09939f9f6'
