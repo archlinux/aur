@@ -1,7 +1,8 @@
 # Maintainer: Alexandre Ferrando <alferpal@gmail.com>
 
 pkgname=iojs
-pkgver=1.2.0
+pkgver=1.3.0
+_foldername=iojs-v${pkgver}
 pkgrel=1
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
@@ -14,13 +15,11 @@ provides=('nodejs')
 conflicts=('nodejs' 'iojs-bin')
 options=('!emptydirs')
 source=("https://iojs.org/dist/v${pkgver}/iojs-v${pkgver}.tar.gz")
-
-#obtained from https://iojs.org/dist/$pkgver/SHASUMS256.txt
-sha256sums=('33666fce914ca57ef60e2e29d7b02cd64c99a8609287a9227da2087ab9c65d9d')
+sha256sums=('eb652fb854274e04b4a309b1b8cd4d5bb3eb45882e9442bacb129d247e9de021')
 
 prepare() {
 
-  cd "${srcdir}/${pkgname}-v${pkgver}"
+  cd "${srcdir}/${_foldername}"
 
   msg "preparing python version"
 
@@ -33,7 +32,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
+  cd "${srcdir}/${_foldername}"
 
   export PYTHON=python2
   ./configure \
@@ -46,12 +45,12 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-v${pkgver}"
+  cd "${_foldername}"
   make test || warning "Tests failed"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v$pkgver"
+  cd "${srcdir}/${_foldername}"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/iojs/LICENSE
