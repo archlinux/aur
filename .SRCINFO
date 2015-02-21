@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-ublock
 	pkgdesc = Finally, an efficient blocker. Easy on CPU and memory.
-	pkgver = 0.8.8.1
+	pkgver = 0.8.8.2
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
 	license = GPL3
 	depends = firefox
-	source = uBlock-0.8.8.1.xpi::https://github.com/gorhill/uBlock/releases/download/0.8.8.1/uBlock.firefox.xpi
-	sha256sums = 240c53946b477c1559aaabe33a53a7551fb56c8c6a3c292cd2dc0dbe958b01f9
+	source = uBlock-0.8.8.2.xpi::https://github.com/gorhill/uBlock/releases/download/0.8.8.2/uBlock.firefox.xpi
+	sha256sums = 5a01fe8c93d35dc896dfa6c22a025136de2c230e81b906f11e167c271bbdf3ee
 
 pkgname = firefox-extension-ublock
 
