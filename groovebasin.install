@@ -1,0 +1,11 @@
+post_install() {
+	getent group groovebasin &>/dev/null || groupadd -r -g 49 groovebasin >/dev/null
+	getent passwd groovebasin &>/dev/null || useradd -r -u 49 -g groovebasin -d /var/lib/groovebasin -s /bin/false -G audio groovebasin >/dev/null
+	usr/bin/systemd-tmpfiles --create groovebasin.conf || true
+}
+
+post_remove() {
+	getent passwd groovebasin &>/dev/null && userdel groovebasin >/dev/null
+	getent group groovebasin &>/dev/null && groupdel groovebasin >/dev/null
+	true
+}
