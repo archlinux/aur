@@ -1,13 +1,13 @@
 pkgbase = quake3-urbanterror
 	pkgdesc = Urban Terror is a team-based tactical shooter based on the Quake 3 Engine (Quake3 Mod Version)
-	pkgver = 4.2.014
+	pkgver = 4.2.023
 	pkgrel = 1
 	url = http://www.urbanterror.info/
 	arch = any
 	license = custom
 	depends = quake3
-	source = http://cdn.urbanterror.info/urt/42/zips/UrbanTerror42_full014.zip
-	sha256sums = 52618f40223baedf37b0a97fc99fd05d3915d20eaff38c71e4eeb66835c7d169
+	source = http://up.barbatos.fr/urt/UrbanTerror42_full023.zip
+	sha256sums = e287e2a17432b81551f5c16e431d752484ce9be10508e756542f653757a29090
 
 pkgname = quake3-urbanterror
 
