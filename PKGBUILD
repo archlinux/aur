@@ -1,8 +1,8 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Yvan <madridista40@orange.fr>
 
 pkgname=libfat-ogc-git
-pkgver=1.0.11.r3.g7d4e422
+pkgver=1.0.14.r0.g1e06c67
 pkgrel=1
 pkgdesc="Library for acessing FAT filesystems from Nintendo Gamecube/Wii homebrew (development version)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('devkitppc' 'libogc-git')
 makedepends=('git')
 conflicts=('libfat-ogc' 'libfat-ogc-svn') # the -svn is a hack to support transition, can be removed later
 provides=('libfat-ogc')
-source=("git+http://git.code.sf.net/p/devkitpro/libfat")
+source=("git+https://github.com/devkitPro/libfat.git")
 md5sums=('SKIP')
 
 pkgver() {
