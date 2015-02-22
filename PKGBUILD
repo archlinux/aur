@@ -4,7 +4,7 @@
 # Contributor: Gonzalo Lorca <human at vtr.net>
 
 pkgname=default_arm7
-pkgver=0.5.26
+pkgver=0.5.27
 pkgrel=1
 pkgdesc="A very useful library for Nintendo DS homebrew development"
 arch=('any')
@@ -13,7 +13,7 @@ license=('custom')
 depends=('libnds' 'dswifi' 'maxmod')
 options=(!strip)
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pkgver.tar.bz2")
-sha256sums=('f355f8ac617ccc4059e991ae479bc0d1572fe5dac555eea625125c7d07eaaa6d')
+sha256sums=('3cf7bcd50a4c515a51e518a49863bdab64c5aa84ddc5f4573542c1e5de4369be')
 
 build() {
   source /etc/profile.d/devkitarm.sh
