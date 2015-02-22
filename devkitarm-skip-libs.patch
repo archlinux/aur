@@ -1,7 +1,7 @@
-diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
---- buildscripts.old/build-devkit.sh	2014-11-21 18:55:02.000000000 +0100
-+++ buildscripts/build-devkit.sh	2014-11-23 13:31:04.702390386 +0100
-@@ -220,7 +220,7 @@
+diff -Naur buildscripts/build-devkit.sh buildscripts.no-libs/build-devkit.sh
+--- buildscripts/build-devkit.sh	2015-02-16 01:53:37.000000000 +0100
++++ buildscripts.no-libs/build-devkit.sh	2015-02-22 11:19:40.545502408 +0100
+@@ -226,7 +226,7 @@
  fi
  
  cd "$SRCDIR"
@@ -10,7 +10,7 @@ diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
  do
  	echo $archive
  	if [ ! -f $archive ]; then
-@@ -238,15 +238,6 @@
+@@ -244,16 +244,6 @@
  extract_and_patch newlib $NEWLIB_VER gz
  extract_and_patch gdb $GDB_VER bz2
  
@@ -23,16 +23,17 @@ diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
 -		bzip2 -cd "$SRCDIR/$archive" | tar -xf - -C $destdir || { echo "Error extracting "$archive; exit 1; }
 -	fi
 -done
- 
+-
  for archive in $hostarchives
  do
-diff -Naur buildscripts.old/dkarm-eabi/scripts/build-crtls.sh buildscripts/dkarm-eabi/scripts/build-crtls.sh
---- buildscripts.old/dkarm-eabi/scripts/build-crtls.sh	2014-11-21 10:44:39.000000000 +0100
-+++ buildscripts/dkarm-eabi/scripts/build-crtls.sh	2014-11-23 13:35:57.892675791 +0100
+ 	destdir=$(echo $archive | sed -e 's/\(.*\)-src-\(.*\)\.tar\.bz2/\1-\2/' )
+diff -Naur buildscripts/dkarm-eabi/scripts/build-crtls.sh buildscripts.no-libs/dkarm-eabi/scripts/build-crtls.sh
+--- buildscripts/dkarm-eabi/scripts/build-crtls.sh	2015-02-15 17:25:19.000000000 +0100
++++ buildscripts.no-libs/dkarm-eabi/scripts/build-crtls.sh	2015-02-22 11:21:07.943233856 +0100
 @@ -22,40 +22,3 @@
  $MAKE CRT=ds_arm9
  $MAKE CRT=ds_cart
- $MAKE CRT=3dsx
+ $target-gcc -march=armv6k -mfloat-abi=hard -c 3dsx_crt0.s -o armv6k/fpu/3dsx_crt0.o
 -
 -cd $BUILDDIR/libgba-$LIBGBA_VER
 -$MAKE || { echo "error building libgba"; exit 1; }
