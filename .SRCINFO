@@ -1,6 +1,6 @@
 pkgbase = nitrofs
 	pkgdesc = Library for Nintendo DS homebrew development aka 'libfilesystem'
-	pkgver = 0.9.11
+	pkgver = 0.9.12
 	pkgrel = 1
 	url = http://www.devkitpro.org
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nitrofs
 	depends = libfat-nds
 	options = !strip
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libfilesystem-src-0.9.11.tar.bz2
-	sha256sums = b997856bf528230aba4004820f4b320dae659e7532537a4589e7d2f0f6b4e659
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libfilesystem-src-0.9.12.tar.bz2
+	sha256sums = 34870f398905922c4f7f5a55e9a9edce0f3feae3a4b19a43ce8b4f2b76d0cfb6
 
 pkgname = nitrofs
 
