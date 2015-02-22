@@ -1,6 +1,6 @@
 pkgbase = devkitarm-bin
 	pkgdesc = ARM toolchain for GP32, Nintendo DS and GBA homebrew development (precompiled)
-	pkgver = r43
+	pkgver = r44
 	pkgrel = 1
 	url = http://www.devkitpro.org/
 	install = devkitarm.install
@@ -9,6 +9,7 @@ pkgbase = devkitarm-bin
 	license = GPL
 	depends = gcc-libs
 	depends = sh
+	depends = zlib
 	optdepends = libtinfo: for arm-none-eabi-gdb
 	provides = devkitarm
 	conflicts = devkitarm
@@ -16,10 +17,14 @@ pkgbase = devkitarm-bin
 	options = libtool
 	options = staticlibs
 	options = emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/devkitARM_r43--linux.tar.bz2
 	source = devkitarm.sh
-	sha256sums = 7e6a253dc4cf7c97779965b6fc917035e3ad44b17fb60c09212d2696f283d77e
 	sha256sums = fc5489fab5ee4ce5cd53c2e1549fd2958872a6777324920b89e03b88584072db
+	source_i686 = http://downloads.sourceforge.net/sourceforge/devkitpro/devkitARM_r44-i686-linux.tar.bz2
+	sha256sums_i686 = 0c2d0021a9bfd8bf4c81b723b33a783eb6afab02cd54ed5980f57b1e58d73b95
+	source_x86_64 = http://downloads.sourceforge.net/sourceforge/devkitpro/devkitARM_r44-x86_64-linux.tar.bz2
+	optdepends_x86_64 = expat: for arm-none-eabi-gdb
+	optdepends_x86_64 = libudev.so.0: for st-link and dfu-util
+	sha256sums_x86_64 = 147d0faa7f4235dd0ef91e286e0df8c3ac39d4076bbd3a23c8e15c85cf17f953
 
 pkgname = devkitarm-bin
 
