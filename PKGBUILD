@@ -1,23 +1,29 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libctru
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Library for Nintendo 3DS homebrew development"
 arch=('any')
 url="http://www.devkitpro.org"
 license=('custom: zlib')
 depends=('devkitarm')
-source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pkgver.tar.bz2")
-sha256sums=('891030c60bcaa0fea36f51753a8b719276ce17dd855f7f851d8c4e4f2c66fdda')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/smealum/ctrulib/archive/v$pkgver.tar.gz")
+sha256sums=('a16fd5778158eaf02a67f9cd7b1d46b2496dde4e606cfd66929330ae91738ba2')
 options=(!strip staticlibs)
 
 build() {
   source /etc/profile.d/devkitarm.sh
-  make
+  make -C ctrulib-$pkgver/libctru
 }
 
 package() {
+  cd ctrulib-$pkgver
+
   export DEVKITPRO="$pkgdir/opt/devkitpro"
-  make install
+  make -C libctru install
+
+  # license
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  sed '/license/,$!d' README.md > "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
