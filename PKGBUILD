@@ -7,7 +7,7 @@
 
 pkgname=pam-selinux
 pkgver=1.1.8
-pkgrel=5
+pkgrel=6
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -20,7 +20,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/default/passwd etc/environment)
 groups=('selinux')
 source=(https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-$pkgver.tar.bz2
-        ftp://ftp.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
+        https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
         pam_unix2-glibc216.patch
         pam-1.1.8-cve-2013-7041.patch
         pam-1.1.8-cve-2014-2583.patch
