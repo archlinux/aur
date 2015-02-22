@@ -5,7 +5,7 @@
 # Contributor: David El-Saig <daud.ici@gmail.com>
 
 pkgname=libnds
-pkgver=1.5.9
+pkgver=1.5.10
 _pkgverexamples=20140401
 pkgrel=1
 pkgdesc="Library for Nintendo DS homebrew development"
@@ -17,7 +17,7 @@ optdepends=('maxmod: music and sound solution library for NDS and GBA'
             'default_arm7: helper binary to initialize NDS hardware (needed for most examples)')
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pkgver.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/nds-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('7d79462c7cc69c929087a26d0c089648a0cc8a972d8463aa1894b0647204b3e0'
+sha256sums=('85864519e3c28c413ff7d1ca068d5bd432f6e1b9b566317a76eece30c9af6789'
             '51ef0e5a5c278a3fba59e43b8e8d8cb27e2f622f5f82655eb16b0d46bf1f3c77')
 noextract=("nds-examples-$_pkgverexamples.tar.bz2")
 options=(!strip staticlibs)
