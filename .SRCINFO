@@ -1,6 +1,6 @@
 pkgbase = dswifi
 	pkgdesc = Library for using the wireless capabilities of the Nintendo DS for homebrew development
-	pkgver = 0.3.16
+	pkgver = 0.3.17
 	pkgrel = 1
 	url = http://www.akkit.org/dswifi/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = dswifi
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/dswifi-src-0.3.16.tar.bz2
-	sha256sums = 5602a0c2840a95020ff6113ec982bfdbc7c3d4466b94d0c8f9026c7d4b636b33
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/dswifi-src-0.3.17.tar.bz2
+	sha256sums = a39d1cf0ec69e2372f34e9580d85335ee4189a9635862a78c0a0b87cf9c226c9
 
 pkgname = dswifi
 
