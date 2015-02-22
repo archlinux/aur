@@ -1,6 +1,6 @@
 # Maintainer: Ian D, Scott <ian@perebruin.com>
 pkgname=wikicurses
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A simple curses interface for accessing Wikipedia."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-urwid' 'python-beautifulsoup4' 'python-lxml')
 backup=('etc/wikicurses.conf')
 source=("https://github.com/ids1024/wikicurses/archive/v${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('7413a6919f6b3e8e3af8c5e96a443e08')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
