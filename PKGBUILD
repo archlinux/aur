@@ -1,8 +1,8 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Florian Maunier <mail@fmauneko.eu>
 
 pkgname=libogc-git
-pkgver=1.8.11.r10.g3c6f3dd
+pkgver=1.8.12.r6.g62dc3a7
 _pkgverexamples=20110620
 pkgrel=1
 pkgdesc="Library for Nintendo Gamecube/Wii homebrew development (development version)"
@@ -14,7 +14,7 @@ depends=('devkitppc')
 makedepends=('git')
 conflicts=('libogc')
 provides=('libogc')
-source=("git+http://git.code.sf.net/p/devkitpro/libogc"
+source=("git+https://github.com/devkitPro/libogc.git"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/wii-examples-$_pkgverexamples.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-examples-$_pkgverexamples.tar.bz2")
 noextract=("wii-examples-$_pkgverexamples.tar.bz2"

@@ -1,6 +1,6 @@
 pkgbase = libogc-git
 	pkgdesc = Library for Nintendo Gamecube/Wii homebrew development (development version)
-	pkgver = 1.8.11.r10.g3c6f3dd
+	pkgver = 1.8.12.r6.g62dc3a7
 	pkgrel = 1
 	url = http://www.devkitpro.org/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = libogc-git
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = git+http://git.code.sf.net/p/devkitpro/libogc
+	source = git+https://github.com/devkitPro/libogc.git
 	source = http://downloads.sourceforge.net/sourceforge/devkitpro/wii-examples-20110620.tar.bz2
 	source = http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-examples-20110620.tar.bz2
 	sha256sums = SKIP
