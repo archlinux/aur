@@ -13,7 +13,7 @@ depends=('libpcap' 'libunwind')
 source=("https://github.com/pilight/pilight/archive/v${pkgver}.tar.gz"
         'https://raw.github.com/pschmitt/aur-pilight/master/pilight.service')
 sha256sums=('74a2f70ee1a7d0593666e5adc3c830ff2fc4bcd4c4d19a9cabbc4310d0549ec8'
-            'e4ba2f001501fb0bb3592bbbff59bedb9e4788d4e1222ccef18c27f5adf41c17')
+            '0d49982c52805a8004db3c32003b961731eb94af81d003b49c24cdb84607e588')
 conflicts=('pilight-git')
 
 prepare() {
