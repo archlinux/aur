@@ -1,7 +1,7 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
-pkgver=4.2.9
-pkgrel=2
+pkgver=4.3.1
+pkgrel=1
 pkgdesc="RuneScape client for Linux and Unix"
 arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
@@ -20,7 +20,7 @@ optdepends=(
 conflicts=('runescape-client-bin')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v$pkgver.tar.gz")
-md5sums=('91713a6f7328a689445c424a4509dfb7')
+md5sums=('8859e04b426cfbc452a02e9b60296077')
 
 package() {
   local _instdir="$pkgdir"/opt/runescape
