@@ -2,17 +2,17 @@
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
 pkgname=dbus-sharp-glib
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="C# GLib implementation of D-Bus"
 arch=('any')
-url="http://github.com/mono/dbus-sharp/"
+url="http://github.com/mono/dbus-sharp-glib/"
 license=('custom')
-depends=('dbus-sharp>=0.7')
+depends=('dbus-sharp>=0.8')
 makedepends=('pkgconfig')
 options=(!makeflags)
-source=(https://github.com/downloads/mono/dbus-sharp/$pkgname-$pkgver.tar.gz)
-md5sums=('2284293316eb3a89f0f78798b8a24418')
+source=(https://github.com/mono/$pkgname/releases/download/v${pkgver:0:3}/$pkgname-$pkgver.tar.gz)
+md5sums=('398475a4ed7793eb587c4f0eb913bb7f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
