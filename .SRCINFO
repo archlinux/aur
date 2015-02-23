@@ -1,0 +1,16 @@
+pkgbase = mpdproxy-git
+	pkgdesc = Simple MPD TCP proxy
+	pkgver = 8522ed8
+	pkgrel = 1
+	url = https://github.com/floriandejonckheere/mpdproxy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = mpdproxy
+	source = git://github.com/floriandejonckheere/mpdproxy.git
+	md5sums = SKIP
+
+pkgname = mpdproxy-git
+
