@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.0.105.7
+pkgver=1.0.111.2
 pkgrel=1
 pkgdesc='A new browser for our friends (weekly snapshot)'
 url="https://vivaldi.com"
@@ -10,27 +10,11 @@ install=vivaldi.install
 options=(!strip !zipman)
 license=('custom')
 arch=('i686' 'x86_64')
-source=(
-"https://vivaldi.com/download/snapshot/vivaldi-snapshot_${pkgver}-1_amd64.deb"
-"https://vivaldi.com/download/snapshot/vivaldi-snapshot_${pkgver}-1_i386.deb"
-)
-noextract=(
-"vivaldi-snapshot_${pkgver}-1_amd64.deb"
-"vivaldi-snapshot_${pkgver}-1_i386.deb"
-)
+source_i686=("vivaldi-snapshot_${pkgver}-1_i386.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_${pkgver}-1_i386.deb")
+source_x86_64=("vivaldi-snapshot_${pkgver}-1_amd64.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_${pkgver}-1_amd64.deb")
 depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'alsa-lib')
 optdepends=('ffmpeg: playback of proprietary formats')
 conflicts=('vivaldi')
-
-if [[ "$CARCH" == "x86_64" ]]; then
-	_arch="amd64"
-elif [[ "$CARCH" == "i686" ]]; then
-	_arch="i386"
-fi
-
-prepare() {
-	bsdtar -xf "$srcdir/vivaldi-snapshot_${pkgver}-1_${_arch}.deb"
-}
 
 package() {
 	tar -xf data.tar.xz --exclude={usr/share/{lintian,menu},etc} -C "$pkgdir/"
@@ -49,5 +33,5 @@ package() {
 	done
 }
 
-sha256sums=('089db6e6f5b7a0b22a617fab0d5a91938349f6f6b94d76f303c4649cea609235'
-            '569a9816baa95b627cb655ca03a4d7dc524200dcb2c2520cfec9f9c720f33a1d')
+sha256sums_i686=('2c7cf18b46325c238872b7cfd5d7d9d7d7c3223e1890e64e32eb106258eeae8b')
+sha256sums_x86_64=('9cd15afa15a0359c1fe42d447a01b68832b4260a0a0996786089df74994af56f')
