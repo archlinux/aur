@@ -2,7 +2,7 @@
 
 pkgname=firefox-extension-stylish
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Restyle the web with Stylish, a user styles manager.'
 url=https://userstyles.org
 arch=('any')
@@ -16,7 +16,8 @@ package() {
   local dstdir="$pkgdir"/usr/lib/firefox/browser/extensions/"{46551EC9-40F0-4e47-8E18-8E5CF550CFB8}"
 
   install -d "$dstdir"
-  cp -r * "$dstdir"
+  cp -dpr --no-preserve=ownership * "$dstdir"
+  chmod -R 755 "$dstdir"
 }
 
 # vim:set ts=2 sw=2 et:

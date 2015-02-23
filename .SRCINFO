@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-stylish
 	pkgdesc = Restyle the web with Stylish, a user styles manager.
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://userstyles.org
 	arch = any
 	license = GPL3
