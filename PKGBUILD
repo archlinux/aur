@@ -40,6 +40,7 @@ package() {
     ln -s usr/lib/libpilight.so.${pkgver} usr/lib/libpilight.so
     mkdir -p usr/share/webapps/${pkgname}
     mv usr/local/share/${pkgname}/default usr/share/webapps/${pkgname}
+    mv usr/sbin/* usr/bin
 
     # Cleanup
     rm -rf usr/local usr/lib/pilight etc/init.d
