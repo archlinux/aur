@@ -7,7 +7,7 @@
 
 pkgname=tengine-extra
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -35,7 +35,7 @@ source=($url/download/tengine-$pkgver.tar.gz
         logrotate)
 sha256sums=('6d98e217deb6676438f0704eb51736239e390624479fedb8c59ebf7a8a30e7b3'
             '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
-            '9458ffedde9454beb73c7a9b3c297c2e777debafe45ae38eda1e83a6b8933351')
+            '22d7f8f7d8f3c320d3c6af8a76e6cc5b64451670cdeecb9f400000ceea91b4cb')
 
 build() {
     cd tengine-$pkgver
@@ -44,8 +44,8 @@ build() {
         --prefix=/etc/tengine \
         --conf-path=/etc/tengine/tengine.conf \
         --sbin-path=/usr/bin/tengine \
-	--dso-path=/etc/tengine/modules \
-	--dso-tool-path=/sbin/dso_tool \
+        --dso-path=/etc/tengine/modules \
+        --dso-tool-path=/usr/bin/dso_tool \
         --pid-path=/run/tengine.pid \
         --lock-path=/run/lock/tengine.lock \
         --user=http \
@@ -62,22 +62,22 @@ build() {
         --with-ipv6 \
         --with-pcre-jit \
         --with-file-aio \
-	--with-google_perftools_module \
+        --with-google_perftools_module \
         --with-http_dav_module \
-	--with-http_geoip_module=shared \
+        --with-http_geoip_module=shared \
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
-	--with-http_lua_module=shared \
-	--with-http_memcached_module=shared \
+        --with-http_lua_module=shared \
+        --with-http_memcached_module=shared \
         --with-http_realip_module \
-	--with-http_secure_link_module=shared \
+        --with-http_secure_link_module=shared \
         --with-http_spdy_module \
         --with-http_ssl_module \
         --with-http_stub_status_module \
         --with-http_addition_module \
         --with-http_degradation_module \
         --with-http_flv_module=shared \
-        --with-http_mp4_module=shared\
+        --with-http_mp4_module=shared \
         --with-http_sub_module=shared \
         --with-http_sysguard_module=shared
 
@@ -110,6 +110,6 @@ package() {
     rmdir "$pkgdir"/run
 
     install -d "$pkgdir"/usr/share/man/man8/
-    gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
+    gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/tengine.8.gz
 }
 
