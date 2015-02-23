@@ -1,17 +1,19 @@
 # Maintainer: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=pilight
-pkgver=5.0
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 pkgdesc='Modular domotica with the Raspberry Pi'
-arch=('x86_64' 'armv6h')
+arch=('x86_64' 'armv6h' 'armv7h')
 url="http://pilight.org/"
 license=('GPL3')
-makedepends=('cmake' 'git' 'gcc' 'glibc')
+makedepends=('cmake' 'gcc' 'glibc')
+# TODO Are libpcap and libunwind not just build dependencies?
+depends=('libpcap' 'libunwind')
 source=("https://github.com/pilight/pilight/archive/v${pkgver}.tar.gz"
         'https://raw.github.com/pschmitt/aur-pilight/master/pilight.service')
-sha256sums=('386d4fb064d0035739c3941df1bb760962ba09cda8594ec70df78342cbb018a9'
-            '25ffe32693a9a68be4234f63248f6e72e1704cbb74646f77672d02ba19e7f179')
+sha256sums=('74a2f70ee1a7d0593666e5adc3c830ff2fc4bcd4c4d19a9cabbc4310d0549ec8'
+            'e4ba2f001501fb0bb3592bbbff59bedb9e4788d4e1222ccef18c27f5adf41c17')
 conflicts=('pilight-git')
 
 prepare() {
@@ -19,7 +21,7 @@ prepare() {
     # Don't execute ldconfig when running make (requires root)
     sed -i 's/\(^.*COMMAND ldconfig.*\)/# \1/g' CMakeLists.txt
     # Change default webserver location
-    sed -i 's|\("webserver-root"\): "/usr/local/share/pilight/"|\1: "/usr/share/webapps/pilight"|' settings.json-default
+    sed -i 's|\("webserver-root"\): .*|\1: "/usr/share/webapps/pilight",|' config.json-default
 }
 
 build() {
@@ -36,13 +38,13 @@ package() {
 
     # Fix paths
     cd "${pkgdir}"
+    mv usr/sbin/* usr/bin
+    rmdir usr/sbin
     mv usr/lib/pilight/libpilight.so.${pkgver} usr/lib/libpilight.so.${pkgver}
     ln -s usr/lib/libpilight.so.${pkgver} usr/lib/libpilight.so
     mkdir -p usr/share/webapps/${pkgname}
     mv usr/local/share/${pkgname}/default usr/share/webapps/${pkgname}
-    mv usr/sbin/* usr/bin
 
     # Cleanup
     rm -rf usr/local usr/lib/pilight etc/init.d
 }
-
