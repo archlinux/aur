@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-noscript-dev
 	pkgdesc = Allows JavaScript, Java (and other plugins) only for trusted domains of your choice.
 	pkgver = 2.6.9.15rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://noscript.net
 	arch = any
 	license = GPL
