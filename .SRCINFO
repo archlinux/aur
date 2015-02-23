@@ -1,0 +1,17 @@
+pkgbase = python2-pylzma
+	pkgdesc = Platform independent python bindings for the LZMA compression library
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = http://www.joachim-bauch.de/projects/python/pylzma
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python2
+	provides = pylzma=0.4.6
+	conflicts = pylzma
+	replaces = pylzma
+	source = http://pypi.python.org/packages/source/p/pylzma/pylzma-0.4.6.tar.gz
+	md5sums = 140038c8c187770eecfe7041b34ec9b9
+
+pkgname = python2-pylzma
+
