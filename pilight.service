@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/pilight-daemon -D
-# Type=forking
 
 [Install]
 WantedBy=multi-user.target
