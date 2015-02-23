@@ -2,7 +2,7 @@
 
 pkgname=firefox-extension-cookie-controller
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Buttons for managing cookies, cookie permissions, and site cookie exceptions.'
 url=https://addons.mozilla.org/en-US/firefox/addon/cookie-controller
 arch=('any')
@@ -20,7 +20,8 @@ package() {
   local dstdir="$pkgdir"/usr/lib/firefox/browser/extensions/"{ac2cfa60-bc96-11e0-962b-0800200c9a66}"
 
   install -d "$dstdir"
-  cp -r * "$dstdir"
+  cp -dpr --no-preserve=ownership * "$dstdir"
+  chmod -R 755 "$dstdir"
   install -D license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
