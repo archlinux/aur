@@ -1,6 +1,6 @@
 pkgbase = eudev-git
 	pkgdesc = The userspace dev tools (udev) forked by Gentoo
-	pkgver = 20140913
+	pkgver = 20150211
 	pkgrel = 1
 	url = https://github.com/gentoo/eudev
 	install = eudev-git.install
@@ -39,7 +39,7 @@ pkgbase = eudev-git
 	source = 80-net-name-slot.rules
 	md5sums = SKIP
 	md5sums = e99e9189aa2f6084ac28b8ddf605aeb8
-	md5sums = 88849afefcef229b8f79be7bbf05c3a2
+	md5sums = d3a7b1d77e53d401ed37827ad297846a
 	md5sums = d83a59d647b511b815ee0e8c85dcd54a
 
 pkgname = eudev-git

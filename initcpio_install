@@ -5,7 +5,7 @@ build() {
     add_binary /usr/bin/udevd
     add_binary /usr/bin/udevadm
 
-    for rule in 50-udev-default.rules 60-persistent-storage.rules 64-btrfs.rules 80-drivers-modprobe.rules; do
+    for rule in 50-udev-default.rules 60-persistent-storage.rules 64-btrfs.rules 80-drivers.rules; do
         add_file "/usr/lib/udev/rules.d/$rule"
     done
     

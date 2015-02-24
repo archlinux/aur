@@ -2,7 +2,7 @@
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 pkgname='eudev-git'
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
-pkgver=20140913
+pkgver=20150211
 pkgrel=1
 provides=('eudev')
 replaces=('eudev' 'udev' 'systemd' 'libsystemd' 'systemd-tools')
@@ -22,7 +22,7 @@ source=('git://github.com/gentoo/eudev.git'
         '80-net-name-slot.rules')
 md5sums=('SKIP'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
-         '88849afefcef229b8f79be7bbf05c3a2'
+         'd3a7b1d77e53d401ed37827ad297846a'
          'd83a59d647b511b815ee0e8c85dcd54a')
 _gitname="eudev"
 
@@ -52,7 +52,6 @@ build() {
               --sysconfdir=/etc \
               --libdir=/usr/lib \
               --sbindir=/usr/bin \
-              --with-modprobe=/usr/bin/modprobe \
               --enable-gudev \
               --enable-introspection
 
