@@ -1,15 +1,13 @@
 pkgbase = phpcpd
 	pkgdesc = Copy/Paste Detector (CPD) for PHP code.
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sebastianbergmann/phpcpd
 	arch = any
 	license = BSD
 	depends = php>=5.3.3
 	source = https://phar.phpunit.de/phpcpd-2.0.1.phar
 	source = LICENSE
-	sha1sums = f9fb98b688092603adff5ca0f1264fcf77674f90
-	sha1sums = 6e7d5c0718a2559eb09bd1456606cd1d5ac90dc7
 	sha256sums = 3060ec805184c4cc31c45a81d456f74dcca9ca05efa662442ef9bf74ffa86e7c
 	sha256sums = b107a0992a839dfb3eee3844d7d680fa62dcc37a5b496ae987b695ad86976e02
 
