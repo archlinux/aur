@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-visualization-marker-tutorials
 	pkgdesc = ROS - The visulalization_marker_tutorials package.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = http://ros.org/wiki/visualization_marker_tutorials
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-visualization-marker-tutorials
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-visualization-msgs
 	depends = ros-indigo-roscpp
-	source = visualization_marker_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/indigo/visualization_marker_tutorials/0.9.0-0
+	source = visualization_marker_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/indigo/visualization_marker_tutorials/0.9.1-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-visualization-marker-tutorials
