@@ -2,7 +2,7 @@
 
 pkgname=python-elmextensions-git
 pkgdesc="${pkgname%%-*} library that contains a few more complex elementary objects for easy importing/usage"
-pkgver=r63.74ed51a
+pkgver=0.1.0.r0.g74ed51a
 pkgrel=1
 arch=('any')
 url='https://github.com/JeffHoogland/python-elm-extensions'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/python-elm-extensions"
 
-  printf "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
