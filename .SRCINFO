@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-librviz-tutorial
 	pkgdesc = ROS - Tutorial showing how to compile your own C++ program with RViz displays and features.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = http://ros.org/wiki/librviz_tutorial
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-librviz-tutorial
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-rviz
 	depends = ros-indigo-roscpp
-	source = librviz_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/indigo/librviz_tutorial/0.9.0-0
+	source = librviz_tutorial::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/indigo/librviz_tutorial/0.9.1-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-librviz-tutorial
