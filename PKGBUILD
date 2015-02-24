@@ -4,7 +4,7 @@ pkgdesc="ROS - Tutorials showing how to call into rviz internals from python scr
 url='http://ros.org/wiki/rviz_python_tutorial'
 
 pkgname='ros-indigo-rviz-python-tutorial'
-pkgver='0.9.0'
+pkgver='0.9.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -43,6 +43,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
