@@ -1,6 +1,6 @@
 pkgbase = awesome-git
 	pkgdesc = Highly configurable framework window manager
-	pkgver = 3.5.2.315.gc9f08fb
+	pkgver = 3.5.2.344.g2f0a7f9
 	pkgrel = 1
 	url = http://awesome.naquadah.org/
 	arch = i686
@@ -31,6 +31,7 @@ pkgbase = awesome-git
 	optdepends = vicious: widgets for the Awesome window manager
 	provides = notification-daemon
 	provides = awesome
+	conflicts = awesome
 	backup = etc/xdg/awesome/rc.lua
 	source = awesome-git::git://github.com/awesomeWM/awesome.git
 	md5sums = SKIP
