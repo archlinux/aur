@@ -15,6 +15,7 @@ url="http://subsonic.org/"
 license=('GPL')
 depends=('java-runtime-headless')
 conflicts=('subsonic')
+provides=('subsonic')
 source=(http://prdownloads.sourceforge.net/subsonic/subsonic-${pkgver}-standalone.tar.gz      
 	    'subsonic.service')
 backup=('var/lib/subsonic/db'
