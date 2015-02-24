@@ -1,22 +1,16 @@
 pkgbase = python-elmextensions-git
+	pkgdesc = python library that contains a few more complex elementary objects for easy importing/usage
 	pkgver = r63.74ed51a
 	pkgrel = 1
 	url = https://github.com/JeffHoogland/python-elm-extensions
 	arch = any
 	license = BSD
 	makedepends = git
+	depends = python-efl
+	provides = python-elmextensions=r63.74ed51a
+	conflicts = python-elmextensions
 	source = git://github.com/JeffHoogland/python-elm-extensions.git
 	sha256sums = SKIP
 
 pkgname = python-elmextensions-git
-	pkgdesc = python library that contains a few more complex elementary objects for easy importing/usage
-	depends = python-efl
-	provides = python-elmextensions=r63.74ed51a
-	conflicts = python-elmextensions
-
-pkgname = python2-elmextensions-git
-	pkgdesc = python2 library that contains a few more complex elementary objects for easy importing/usage
-	depends = python2-efl
-	provides = python2-elmextensions=r63.74ed51a
-	conflicts = python2-elmextensions
 
