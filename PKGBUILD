@@ -14,10 +14,6 @@ source=(
   "LICENSE"
 )
 install="${pkgname}.install"
-sha1sums=(
-  "f2052a9c143d79057257497e5fcf3c7275ebd065"
-  "11946e2ec7349724cf1cd711cd7fddf2dae82475"
-)
 sha256sums=(
   "28301205d671a6e564e72c5b249ef31600d1fdda6958b35bd2a9b2e0f2f54ede"
   "fc0ec35ca43801ccb61680b806558bae66301750e25046c7b5633c239855a87d"
