@@ -4,7 +4,7 @@
 pkgname=firefox-extension-privacy-badger-git
 _gitname=privacybadgerfirefox
 pkgver=0.2.5.7.g5150b3e
-pkgrel=3
+pkgrel=4
 pkgdesc='Blocks spying ads and invisible trackers.'
 license=('custom:GPLv3+')
 arch=('any')
@@ -39,7 +39,8 @@ package() {
   local dstdir="$pkgdir"/usr/lib/firefox/browser/extensions/jid1-MnnxcxisBPnSXQ@jetpack
 
   install -d "$dstdir"
-  cp -r * "$dstdir"
+  cp -dpr --no-preserve=ownership * "$dstdir"
+  chmod -R 755 "$dstdir"
 }
 
 # vim:set ts=2 sw=2 et:
