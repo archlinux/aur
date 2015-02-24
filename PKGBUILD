@@ -15,9 +15,6 @@ install="${pkgname}.install"
 source=(
   "https://github.com/sensiolabs/${_pkgbase}/archive/v${pkgver}.zip"
 )
-sha1sums=(
-  "f3c884ccd956af4be915718ce1e45711cdae7106"
-)
 sha256sums=(
   "8d50c907a05a384ec4d6ee3f671a3069283f9f88cd2b6cda7245ec94f40e5290"
 )
