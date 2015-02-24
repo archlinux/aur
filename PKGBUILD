@@ -12,7 +12,6 @@ depends=('php')
 makedepends=('git')
 install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/strawbrary/${pkgname}.git")
-sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver () {
