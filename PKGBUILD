@@ -4,10 +4,10 @@ pkgdesc="ROS - Tutorials showing how to write plugins for RViz."
 url='http://ros.org/wiki/rviz_plugin_tutorials'
 
 pkgname='ros-indigo-rviz-plugin-tutorials'
-pkgver='0.9.0'
+pkgver='0.9.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rviz
@@ -43,6 +43,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
