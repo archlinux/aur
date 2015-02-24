@@ -15,10 +15,6 @@ source=(
     "LICENSE"
 )
 noextract=("${pkgname/nodejs-/}-${pkgver}.tgz")
-sha1sums=(
-  'd62b6d0a006befd2b78dd1efc8a84a49005859c6'
-  '855b17174b0193c9fbcaf000327b2bcb3d4c38fd'
-)
 sha256sums=(
   '5db5d486381f2b57799222ee91b98c91e55537467064a1d85035adefd6e02c14'
   'a09bad52fe9deab4338f4f80105f8b8d0c10a2618a8b4517a2cf260b48d968d2'
