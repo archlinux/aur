@@ -1,29 +1,19 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 _python=python
-_pkgname=$_python-elmextensions
-pkgname=$_pkgname-git
+pkgname=$_python-elmextensions
 pkgdesc="${_python^} library that contains a few more complex elementary objects for easy importing/usage"
-pkgver=0.1.0.r0.g74ed51a
+pkgver=0.1.0
 pkgrel=1
 arch=('any')
 url='https://github.com/JeffHoogland/python-elm-extensions'
 license=('BSD')
 depends=("$_python-efl")
-makedepends=('git')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-source=("git://github.com/JeffHoogland/python-elm-extensions.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/python-elm-extensions"
-
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
-}
+source=("https://github.com/JeffHoogland/python-elm-extensions/archive/$pkgver.tar.gz")
+sha256sums=('69d82dd1c2c87be12b4e159366b920d3bfa3d890bc929c7b26f2eb4edc28a6a1')
 
 package() {
-  cd "$srcdir/python-elm-extensions"
+  cd "$srcdir/python-elm-extensions-$pkgver"
 
   [[ "$_python" = "python" ]] && _python=python3
   local _pyver="$(pkg-config --modversion $_python)"
