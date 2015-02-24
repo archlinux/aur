@@ -2,7 +2,7 @@ _gitname="Sonarr"
 _gitver="2.0.0"
 _gitbranch="develop"
 pkgname="sonarr-git"
-pkgver=2.0.0.r6032
+pkgver=2.0.0.r6043
 pkgrel=1
 pkgdesc="Smart PVR for newsgroup and bittorrent users"
 arch=(any)
@@ -28,18 +28,6 @@ pkgver() {
 
   # FIXME May deviate from actual version
   printf "${_gitver}.r%s" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "${_gitname}"
-
-  # XXX Git for some reason complains if identity is not already set
-  git config user.email "you@example.com"
-  git config user.name "Your Name"
-
-  msg2 "Rebasing using pull request (https://github.com/Sonarr/Sonarr/pull/202)"
-  git fetch origin pull/202/head:XBuild-support
-  git rebase --onto XBuild-support "origin/${_gitbranch}" --force-rebase --ignore-whitespace
 }
 
 build() {
