@@ -8,7 +8,7 @@
 pkgname=subsonic-beta
 pkgver=5.2
 epoch=1 # 5.1.beta sorts higher than 5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
@@ -17,7 +17,9 @@ depends=('java-runtime-headless')
 conflicts=('subsonic')
 source=(http://prdownloads.sourceforge.net/subsonic/subsonic-${pkgver}-standalone.tar.gz      
 	    'subsonic.service')
-backup=('var/lib/subsonic/db')
+backup=('var/lib/subsonic/db'
+        'var/lib/subsonic/subsonic.properties'
+        'var/lib/subsonic/subsonic.sh')
 install=$pkgname.install
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = subsonic-beta
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 5.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://subsonic.org/
 	install = subsonic-beta.install
@@ -10,6 +10,8 @@ pkgbase = subsonic-beta
 	depends = java-runtime-headless
 	conflicts = subsonic
 	backup = var/lib/subsonic/db
+	backup = var/lib/subsonic/subsonic.properties
+	backup = var/lib/subsonic/subsonic.sh
 	source = http://prdownloads.sourceforge.net/subsonic/subsonic-5.2-standalone.tar.gz
 	source = subsonic.service
 	md5sums = d7d01599b8317abd9a831f7a38f0cb14
