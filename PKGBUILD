@@ -7,18 +7,18 @@
 pkgbase=dbus-selinux
 pkgname=('dbus-selinux' 'libdbus-selinux')
 pkgver=1.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="http://www.freedesktop.org/Software/dbus"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
 groups=('selinux')
-makedepends=('libx11' 'systemd-selinux' 'xmlto' 'docbook-xsl' 'audit')
+makedepends=('libx11' 'systemd-selinux' 'xmlto' 'docbook-xsl' 'audit' 'libselinux')
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc}
         30-dbus)
 md5sums=('020824a38850501e7d6ba8307a7c5ac3'
          'SKIP'
-         '3314d727fa57fc443fce25b5cbeebbcc')
+         '6683a05bd749929ef9442816c22c3268')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 build() {
@@ -38,7 +38,7 @@ build() {
 }
 
 package_dbus-selinux(){
-  depends=('libdbus' 'expat' 'audit' 'libselinux' 'libsystemd-selinux')
+  depends=('libdbus-selinux' 'expat' 'audit' 'libselinux' 'libsystemd-selinux')
   optdepends=('libx11: dbus-launch support')
   provides=('dbus-core' "${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('dbus-core' "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
@@ -54,7 +54,7 @@ package_dbus-selinux(){
   rm -rf "${pkgdir}/var/run"
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
 
-  install -Dm755 ../30-dbus "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus"
+  install -Dm755 ../30-dbus "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus.sh"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/dbus-selinux/COPYING"
 }
 
