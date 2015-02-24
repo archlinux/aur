@@ -1,0 +1,15 @@
+pkgbase = hex-unifont
+	pkgdesc = GNU Unifont Glyphs, .hex format
+	pkgver = 7.0.06
+	pkgrel = 1
+	url = http://unifoundry.com/unifont.html
+	arch = any
+	license = custom
+	license = GPL2
+	source = http://unifoundry.com/pub/unifont-7.0.06/font-builds/unifont-7.0.06.hex.gz
+	source = LICENSE
+	sha1sums = 30ffff36bfa3a4c9e01e8495fe6c45d0d2f27c21
+	sha1sums = e4ba558b4af9b8ab0f129c1f1788e168e412b9be
+
+pkgname = hex-unifont
+
