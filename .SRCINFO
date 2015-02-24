@@ -1,0 +1,14 @@
+pkgbase = superiotool-svn
+	pkgdesc = Detects the Super I/O of your mainboard and provides information about its register contents
+	pkgver = 6637
+	pkgrel = 1
+	url = http://www.coreboot.org/Superiotool
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	source = svn://coreboot.org/coreboot/trunk/util/superiotool
+	md5sums = SKIP
+
+pkgname = superiotool-svn
+
