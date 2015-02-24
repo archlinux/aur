@@ -4,7 +4,7 @@
 #
 pkgname=dbus-nosystemd
 pkgver=1.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="http://www.freedesktop.org/Software/dbus"
 arch=(i686 x86_64)
@@ -20,9 +20,9 @@ conflicts=('dbus-core' 'dbus' 'dbus-eudev')
 replaces=('dbus-core' 'dbus' 'dbus-eudev')
 install=dbus-nosystemd.install
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz #{,.asc}
-	30-dbus dbus)
+	30-dbus.sh dbus)
 md5sums=('020824a38850501e7d6ba8307a7c5ac3'
-         '3314d727fa57fc443fce25b5cbeebbcc'
+         '6683a05bd749929ef9442816c22c3268'
          '6f116e46adcbe99326ee67e597598d29')
 
 build() {
@@ -58,7 +58,7 @@ package(){
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
 
   install -Dm755 ../dbus "$pkgdir/etc/rc.d/dbus"
-  install -Dm755 ../30-dbus "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus"
+  install -Dm755 ../30-dbus.sh "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus.sh"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/dbus/COPYING"
 }
 
