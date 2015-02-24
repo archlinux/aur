@@ -15,10 +15,6 @@ source=(
   "https://github.com/kherge-archive/Box/releases/download/${pkgver}/box-${pkgver}.phar"
   "https://raw.github.com/box-project/box2/${pkgver}/LICENSE"
 )
-sha1sums=(
-  "803427d5adf9f548501a5906c8258d75558d1562"
-  "75fd1f242e0592ff86b001a9bde433e034703b27"
-)
 sha256sums=(
   "58b0d0b8dcc900103e3e20119921d0d36ef612525f1f1c96ed79646d34d25a92"
   "ba2dfc30b9659262549c839894838d9a1fe78ca533d0338cebc2f4f634b3bb12"
