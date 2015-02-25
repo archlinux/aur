@@ -2,7 +2,7 @@
 
 _pkgbasename=memtest86
 pkgname=$_pkgbasename-efi
-pkgver=5.1.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('i686' 'x86_64')
@@ -10,28 +10,25 @@ url="http://www.memtest86.com"
 license=('GPL2')
 backup=(etc/$pkgname.conf)
 install=$pkgname.install
-source=("$_pkgbasename-$pkgver".iso.gz::"$url/downloads/$_pkgbasename-iso.gz"
-	"$pkgname"
-	"$pkgname.conf")
-md5sums=('483b1066de1f631b3d4222b95bcbfb5e'
-         '786ecb9dd8fb1fe4cebcfebef22cc323'
-         '16cb53c7132214cdd848d83433ef6462')
+source=("$_pkgbasename-$pkgver.iso.tar.gz::http://www.memtest86.com/downloads/$_pkgbasename-iso.tar.gz"
+	"memtest86-efi"
+	"memtest86-efi.conf")
+md5sums=('c07e36cb18147d11eda2dcbf0c0c44a4'
+         '1d2591c66ec002619f236da72d797a30'
+         '6c096df3f55baf3e27c3bd605a418aa2')
 
 prepare() {
-	bsdtar -xf "$_pkgbasename-$pkgver.iso"
-
-	cd "$srcdir/EFI/BOOT/"
-	mv -f MT86.PNG mt86.png
-	[[ "${CARCH}" == "i686" ]]   && rm -f BOOTX64.EFI	&& mv -f BOOTIA32.EFI bootia32.efi
-	[[ "${CARCH}" == "x86_64" ]] && rm -f BOOTIA32.EFI	&& mv -f BOOTX64.EFI bootx64.efi
+	msg2 "Extract ISO..."
+	bsdtar -xf "Memtest86-6.0.0.iso"
 }
 
 package() {
-	install -dv "$pkgdir/etc" "$pkgdir/usr/bin" "$pkgdir/usr/share/$pkgname"
+	msg2 "Move MemTest86 stuff in share directory..."
+	[[ "$CARCH" == "i686" ]]   && install -Dvm755 "$srcdir/EFI/BOOT/BOOTIA32.EFI" "$pkgdir/usr/share/$pkgname/bootia32.efi"
+	[[ "$CARCH" == "x86_64" ]] && install -Dvm755 "$srcdir/EFI/BOOT/BOOTX64.EFI"  "$pkgdir/usr/share/$pkgname/bootx64.efi"
+	install -vm644 "$srcdir/EFI/BOOT/MT86.PNG" "$pkgdir/usr/share/$pkgname/mt86.png"
 
-	install -vm755 "$srcdir/EFI/BOOT/"boot*.efi "$pkgdir/usr/share/$pkgname"
-	install -vm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-	install -vm644 "$srcdir/EFI/BOOT/mt86.png" "$pkgdir/usr/share/$pkgname"
-	install -vm644 "$srcdir/$pkgname.conf" "$pkgdir/etc"
+	msg2 "Install AUR provided script..."
+	install -Dvm755 "$srcdir/memtest86-efi"		"$pkgdir/usr/bin/memtest86-efi"
+	install -Dvm644 "$srcdir/memtest86-efi.conf"	"$pkgdir/etc/memtest86-efi.conf"
 }

@@ -21,26 +21,29 @@ install() {
 	[[ -z $esp ]] && echo -e "\033[1;31mNo ESP mounted found !\033[0m" && exit 1
 
 	echo "Please, how do you want to use $0 ?"
-	echo -e "\033[1m1\033[0m: from \033[1mLaunch EFI Shell\033[0m (in UEFI Setup)"
-	echo -e "\033[1m2\033[0m: add a new boot entry"
+	echo -e "\033[1m1\033[0m: From \033[1mLaunch EFI Shell\033[0m (in UEFI Setup)"
+	echo -e "\033[1m2\033[0m: Add a new boot entry"
 	echo -e "\033[1m3: Cancel\033[0m"
 	choice=0; while [[ $choice < 1 ]] || [[ $choice > 3 ]]; do
-		read -n 1 choice
+		read choice
 		echo
 	done
 
 	if [[ $choice == 1 ]]; then
+		# Install MemTest86 in $esp
 		echo -e "MemTest86 will be installed in \033[1m$esp\033[0m."
-		[[ -f "$esp/shell$ARCH.efi" ]] && mv -v "$esp/shell$ARCH.efi" "$esp/shell$ARCH.efi.bak"
-		cp -v "$MEMTEST86_PATH/"*		"$esp/"
-		mv -v "$esp/"boot*.efi			"$esp/shell$ARCH.efi"
+		[[ -f "$esp/shell$ARCH.efi" ]] && mv -v "$esp/shell$ARCH.efi" "$esp/shell$ARCH.efi.bak" # Backup if exist
+		cp -v "$MEMTEST86_PATH/"*		"$esp/"	# Move files in ESP root
+		mv -v "$esp/boot$ARCH.efi"		"$esp/shell$ARCH.efi"	# Rename .efi file
 	elif [[ $choice == 2 ]]; then
+		# Install MemTest86 in $esp/EFI/memtest86
 		echo -e "MemTest86 will be installed in \033[1m$esp/EFI/memtest86\033[0m."
 		mkdir -pv "$esp/EFI/memtest86"
-		cp -v "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/"
-		mv -v "$esp/EFI/memtest86/"boot*.efi	"$esp/EFI/memtest86/memtest$ARCH.efi"
-		efibootmgr -c -d ${partition:0:8} -p ${partition:8} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi"
+		cp -v "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/" # Move files in memtest ESP directory
+		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
+		efibootmgr -c -d ${partition:0:8} -p ${partition:8} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
 	elif [[ $choice == 3 ]]; then
+		# Do nothing and quit
 		echo -e "Canceled. MemTest86 will not be installed."
 		exit 1
 	fi
@@ -63,11 +66,11 @@ update() {
 	if [[ $choice == 1 ]]; then 
 		echo -e "MemTest86 will be updated in \033[1m$esp\033[0m."
 		cp -fv "$MEMTEST86_PATH/"*		"$esp/"
-		mv -fv "$esp/"boot*.efi			"$esp/shell$ARCH.efi"
+		mv -fv "$esp/boot$ARCH.efi"		"$esp/shell$ARCH.efi"
 	elif [[ $choice == 2 ]]; then
 		echo -e "MemTest86 will be updated in \033[1m$esp/EFI/memtest86\033[0m."
 		cp -fv "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/"
-		mv -fv "$esp/EFI/memtest86/"boot*.efi	"$esp/EFI/memtest86/memtest$ARCH.efi"
+		mv -fv "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi"
 	fi
 
 	echo -e "MemTest86 has been updated in ESP."
