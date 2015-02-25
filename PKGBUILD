@@ -2,8 +2,8 @@
 
 _gitname=libdispatch
 pkgname=$_gitname-clang-git
-pkgver=274.617a4e1
-pkgrel=4
+pkgver=301.4e4b38f
+pkgrel=5
 pkgdesc="Linux port of Apple's open-source concurrency library with blocks support, using Clang"
 arch=('i686' 'x86_64')
 url="http://nickhutchinson.me/libdispatch"
@@ -14,7 +14,7 @@ conflicts=('libdispatch-svn')
 source=("git://github.com/nickhutchinson/$_gitname.git"
 	'gnustep-blocks.patch')
 md5sums=('SKIP'
-         'fc1577a9275294b421316b268421e52d')
+         '6ecc6c24bc53eb9502e5acd3e687523f')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
