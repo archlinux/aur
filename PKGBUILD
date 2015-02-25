@@ -1,8 +1,9 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='KSysGuard'
 arch=('i686' 'x86_64')
@@ -15,7 +16,7 @@ conflicts=('kdebase-workspace')
 groups=('plasma')
 install="${pkgname}.install"
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
-md5sums=('f3ee0ba2998d7f9b730dbb07bc76aa72')
+md5sums=('065e0efe3bd28f8e8565b109dc64f647')
 
 prepare() {
   mkdir build
