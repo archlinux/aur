@@ -1,19 +1,19 @@
 pkgbase = qtcreator-tabbededitor-plugin-git
 	pkgdesc = QtCreator Tabbed Editor Plugin
-	pkgver = v0.0.3.1.g154a0a3
+	pkgver = v0.0.3.24.g9f338d1
 	pkgrel = 1
-	url = http://sourceforge.net/p/tabbededitor/
+	url = https://github.com/trollixx/qtcreator-tabbededitor-plugin
 	arch = i686
 	arch = x86_64
 	groups = qt
 	groups = qt5
-	license = GPL3
 	license = LGPL
 	makedepends = git
 	makedepends = qtcreator-src
 	depends = qtcreator
 	provides = qtcreator-tabbededitor-plugin
-	source = git://github.com/trollixx/qtcreator-tabbededitor-plugin.git
+	conflicts = qtcreator-tabbededitor-plugin
+	source = qtcreator-tabbededitor-plugin-git::git://github.com/trollixx/qtcreator-tabbededitor-plugin.git
 	md5sums = SKIP
 
 pkgname = qtcreator-tabbededitor-plugin-git

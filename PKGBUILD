@@ -1,34 +1,35 @@
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
+# URL: https://github.com/trollixx/aur-packages
 
-pkgname=qtcreator-tabbededitor-plugin-git
-pkgver=v0.0.3.1.g154a0a3
+_pkgname=qtcreator-tabbededitor-plugin
+pkgname=${_pkgname}-git
+pkgver=v0.0.3.24.g9f338d1
 pkgrel=1
 pkgdesc="QtCreator Tabbed Editor Plugin"
 groups=('qt' 'qt5')
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/p/tabbededitor/"
-license=('GPL3' 'LGPL')
+url='https://github.com/trollixx/qtcreator-tabbededitor-plugin'
+license=('LGPL')
 depends=('qtcreator')
 makedepends=('git' 'qtcreator-src')
-replaces=()
 provides=('qtcreator-tabbededitor-plugin')
-conflicts=()
-source=('git://github.com/trollixx/qtcreator-tabbededitor-plugin.git')
+conflicts=('qtcreator-tabbededitor-plugin')
+source=("$pkgname::git://github.com/trollixx/qtcreator-tabbededitor-plugin.git")
 md5sums=('SKIP')
-_gitname="qtcreator-tabbededitor-plugin"
 
 pkgver() {
-	cd ${srcdir}/${_gitname}
+	cd $pkgname
 	git describe --always | sed 's|-|.|g'
 }
 
 build() {
-	cd ${srcdir}/${_gitname}
-	QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build qmake LIBS+="-L/usr/lib/qtcreator/ -L/usr/lib/qtcreator/plugins/QtProject"
+	cd $pkgname
+    # TODO: QTC_BUILD=/usr
+	QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build/usr qmake LIBS+="-L/usr/lib/qtcreator -L/usr/lib/qtcreator/plugins"
 	make
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
+	cd $pkgname
 	cp -r build/* ${pkgdir}
 }
