@@ -1,35 +1,36 @@
---- a/cmake/FindCBlocks.cmake	2014-05-12 19:38:17.623240000 +0200
-+++ b/cmake/FindCBlocks.cmake	2014-05-12 19:41:49.747182880 +0200
-@@ -3,7 +3,7 @@
+--- a/cmake/FindBlocksRuntime.cmake	2015-02-25 17:38:55.953677769 +0100
++++ b/cmake/FindBlocksRuntime.cmake	2015-02-25 17:47:17.764453340 +0100
+@@ -1,7 +1,7 @@
  include (FindPackageHandleStandardArgs)
  include (CheckFunctionExists)
  
--find_path(CBLOCKS_PUBLIC_INCLUDE_DIR Block.h
-+find_path(CBLOCKS_PUBLIC_INCLUDE_DIR objc/blocks_runtime.h
+-find_path(BLOCKS_RUNTIME_PUBLIC_INCLUDE_DIR Block.h
++find_path(BLOCKS_RUNTIME_PUBLIC_INCLUDE_DIR objc/blocks_runtime.h
    DOC "Path to Block.h"
  )
  
-@@ -11,7 +11,7 @@
-   list (APPEND CBLOCKS_INCLUDE_DIRS ${CBLOCKS_PUBLIC_INCLUDE_DIR})
+@@ -9,7 +9,7 @@
+   list (APPEND BLOCKS_RUNTIME_INCLUDE_DIRS ${BLOCKS_RUNTIME_PUBLIC_INCLUDE_DIR})
  endif ()
  
--find_path(CBLOCKS_PRIVATE_INCLUDE_DIR Block_private.h
-+find_path(CBLOCKS_PRIVATE_INCLUDE_DIR objc/blocks_private.h
+-find_path(BLOCKS_RUNTIME_PRIVATE_INCLUDE_DIR Block_private.h
++find_path(BLOCKS_RUNTIME_PRIVATE_INCLUDE_DIR objc/blocks_private.h
    DOC "Path to Block_private.h"
  )
- if (CBLOCKS_PRIVATE_INCLUDE_DIR)
-@@ -25,7 +25,7 @@
- if (CBLOCKS_RUNTIME_IN_LIBC)
-   set (CBLOCKS_LIBRARIES " ")
- else ()
--  find_library(CBLOCKS_LIBRARIES "BlocksRuntime")
-+  set(CBLOCKS_LIBRARIES "-l:libobjc2.so")
+ if (BLOCKS_RUNTIME_PRIVATE_INCLUDE_DIR)
+@@ -19,7 +19,7 @@
+ 
+ check_function_exists(BLOCKS_RUNTIME_RUNTIME_IN_LIBC _Block_copy)
+ if (NOT BLOCKS_RUNTIME_RUNTIME_IN_LIBC)
+-  find_library(BLOCKS_RUNTIME_LIBRARIES "BlocksRuntime")
++  set(CBLOCKS_LIBRARIES "-l:libobjc.so.4.6")
  endif ()
  
- check_c_compiler_flag("-fblocks" CBLOCKS_COMPILER_SUPPORT_FOUND)
+ if (BLOCKS_RUNTIME_LIBRARIES OR BLOCKS_RUNTIME_RUNTIME_IN_LIBC)
 
---- a/src/internal.h	2013-06-24 14:30:33.597320691 +0200
-+++ b/src/internal.h	2013-06-24 14:30:54.603582226 +0200
+
+--- a/src/internal.h	2015-02-25 17:51:35.523266420 +0100
++++ b/src/internal.h	2015-02-25 17:52:24.227605647 +0100
 @@ -162,8 +162,8 @@
  #include <netinet/in.h>
  
