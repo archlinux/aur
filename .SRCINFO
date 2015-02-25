@@ -1,7 +1,8 @@
 pkgbase = superiotool-svn
 	pkgdesc = Detects the Super I/O of your mainboard and provides information about its register contents
-	pkgver = 6637
+	pkgver = r6637
 	pkgrel = 1
+	epoch = 1
 	url = http://www.coreboot.org/Superiotool
 	arch = i686
 	arch = x86_64
