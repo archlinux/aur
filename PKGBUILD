@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=exterminator
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A system process killer written in Python and Elementary'
 arch=('any')
@@ -9,7 +9,7 @@ url='http://jeffhoogland.github.io/Exterminator/'
 license=('BSD')
 depends=('python-elmextensions' 'python-psutil')
 source=("https://github.com/JeffHoogland/Exterminator/archive/$pkgver.tar.gz")
-sha256sums=('bfe9994ad26fa4c9990ea84a565a5502e0e4c85c563583040edfa44500a928dc')
+sha256sums=('eea1c07e1137d3a18f613f5df71ccc6fc94951d9b1382ed0be3f3cece1747584')
 
 package() {
   cd "$srcdir/Exterminator-$pkgver"
