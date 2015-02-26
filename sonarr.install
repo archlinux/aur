@@ -1,18 +1,23 @@
-post_install() {
-	if grep -q "^sonarr" /etc/group &> /dev/null ; then
-		groupmod -n sonarr sonarr &> /dev/null                                                 
-	else
-		groupadd -r sonarr &> /dev/null
-	fi
-	if grep -q "^sonarr:" /etc/passwd 2> /dev/null ; then
-		usermod -s /bin/false -c "Sonarr daemon" -d /var/lib/sonarr -g sonarr sonarr &> /dev/null
-	else
-		useradd -s /bin/false -c "Sonarr daemon user" -d /var/lib/sonarr -g sonarr -r sonarr &> /dev/null
-	fi
+USER="sonarr"
+GROUP="sonarr"
+DATA_DIR="/var/lib/sonarr"
+BIN_DIR="/opt/sonarr"
 
-	chown -R sonarr: /var/lib/sonarr
+post_install() {
+  groupadd ${GROUP} &> /dev/null
+  useradd -g ${GROUP} -d ${DATA_DIR} -s /bin/false ${USER} &> /dev/null
+  chown -R ${USER}:${GROUP} ${DATA_DIR}
+  chown -R ${USER}:${GROUP} ${BIN_DIR}
 }
 
 post_upgrade() {
-	post_install $1
+  usermod -g ${GROUP} -d ${DATA_DIR} -s /bin/false ${USER} &> /dev/null
+  chown -R ${USER}:${GROUP} ${DATA_DIR}
+  chown -R ${USER}:${GROUP} ${BIN_DIR}
 }
+
+post_remove() {
+  userdel ${USER} &> /dev/null
+  groupdel ${GROUP} &> /dev/null || /bin/true
+}
+

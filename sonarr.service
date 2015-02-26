@@ -7,7 +7,8 @@ User=sonarr
 Group=sonarr
 ExecStart=/usr/bin/sonarr
 Type=simple
-TimeoutStopSec=20
+PIDFile=/var/lib/sonarr/sonarr/.config/NzbDrone/nzbdrone.pid
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
