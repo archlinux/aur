@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 _pkgname=lwjgl
 pkgname=${_pkgname}2
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc='Lightweight Java Game Library - for use in game projects in Java. Legacy version.'
 arch=(any)
@@ -10,8 +10,8 @@ license=('BSD')
 changelog=ChangeLog
 options=(!strip)
 source=("https://downloads.sourceforge.net/project/java-game-lib/Official Releases/LWJGL $pkgver/$_pkgname-${pkgver}.zip")
-md5sums=('97e35a2ab8ae88e6ec1b27674209d5bb')
-sha1sums=('5544c0bec56f4920fb4694ae650eb7ace5dfaf19')
+sha1sums=('6cf7522899c48f0295811a6ae88d93b6f8c21cad')
+md5sums=('2318cb02d35c7b7e28b838595aa353ed')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
