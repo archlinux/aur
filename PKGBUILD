@@ -9,19 +9,16 @@
 #
 # Any suggestions welcome; please submit paches via Github:
 # https://github.com/alerque/aur/tree/master/git-annex-bin
-#
-# Warning: some builds not up-to-date: x86_64: 5.20150205, i686: 5.20150205, armv6h: 5.20150130
-
 
 pkgname=git-annex-bin
-pkgver=5.20150205
-pkgrel=3
+pkgver=5.20150219
+pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://git-annex.branchable.com/'
 license=('GPL3')
 provides=('git-annex')
-conflicts=('git-annex' 'git-annex-git')
+conflicts=('git-annex', 'git-annex-git')
 replaces=('git-annex-standalone')
 source=('git-annex' 'runshell.patch')
 sha256sums=('c7d12ba3f3a00736d0d22e18e76721314d461561adcf48cbd102413e5e75be92'
@@ -33,20 +30,20 @@ _rmbin=('cp' 'curl' 'git' 'gpg' 'lsof' 'rsync' 'sh' 'sha1sum' 'sha224sum' \
         'ssh-keygen' 'tar' 'git-shell' 'git-upload-pack' 'git-receive-pack' 'gunzip' )
 
 # all of these can be left out if not deleting $_rmbin binaries
-depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget' 'findutils' 'dnsutils')
+depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget' 'findutils' 'dnsutils' 'aria2')
 
 if [[ $CARCH == "x86_64" ]] ; then
     _file=git-annex-standalone-amd64-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz")
-    sha256sums+=('6598df34cd0381288b609c137c5dbb07d4bd833ed9917d5d961e62b62c1652f8')
+    sha256sums+=('f82e2f600763b0f25a45a96ddf7ed68f26c67122e22cf8833d4c2473475bbce2')
 elif [[ $CARCH == "i686" ]] ; then
     _file=git-annex-standalone-i386-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz")
-    sha256sums+=('c4660ce7ef68138a808c711452f024fd735921b772abfb8a1cf9ae1b045d52b6')
+    sha256sums+=('ff4ff1b62ed6f68cfc096eb04936afb98a1b1fe69616f2e049b1c9dc68f8adac')
 elif [[ $CARCH == "armv6h" ]] ; then
     _file=git-annex-standalone-armel-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz")
-    sha256sums+=('2426cdfc263036f0d7f76f0a00487b5230ebfb3a71ffa0336a34bd4187287947')
+    sha256sums+=('06d5dceb1ee2192963dd9982e1a2a7683b6cb1c54e8044a4c4273f485a1b1331')
 fi
 
 package() {
