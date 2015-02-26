@@ -1,0 +1,14 @@
+pkgbase = exterminator
+	pkgdesc = A system process killer written in Python and Elementary
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://jeffhoogland.github.io/Exterminator/
+	arch = any
+	license = BSD
+	depends = python-elmextensions
+	depends = python-psutil
+	source = https://github.com/JeffHoogland/Exterminator/archive/0.2.1.tar.gz
+	sha256sums = bfe9994ad26fa4c9990ea84a565a5502e0e4c85c563583040edfa44500a928dc
+
+pkgname = exterminator
+
