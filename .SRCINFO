@@ -1,7 +1,7 @@
 pkgbase = libx32-glibc
 	pkgdesc = GNU C Library (x32 ABI)
 	pkgver = 2.21
-	pkgrel = 1.1
+	pkgrel = 2.1
 	url = http://www.gnu.org/software/libc
 	arch = x86_64
 	license = GPL
@@ -14,9 +14,11 @@ pkgbase = libx32-glibc
 	options = !emptydirs
 	source = http://ftp.gnu.org/gnu/libc/glibc-2.21.tar.xz
 	source = http://ftp.gnu.org/gnu/libc/glibc-2.21.tar.xz.sig
+	source = glibc-2.21-roundup.patch
 	source = libx32-glibc.conf
 	md5sums = 9cb398828e8f84f57d1f7d5588cf40cd
 	md5sums = SKIP
+	md5sums = bf9d96b11c76b113606aae102da63d9d
 	md5sums = 34a4169d2bdc5a3eb83676a0831aae57
 
 pkgname = libx32-glibc
