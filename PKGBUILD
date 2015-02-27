@@ -1,7 +1,7 @@
 # Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=ppsspp
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='PSP emulator written in C++'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('zlib' 'sdl2' 'libpng' 'libgl' 'hicolor-icon-theme' 'xdg-utils' 'ffmpeg
 makedepends=('git' 'cmake' 'mesa' 'mesa-libgl' 'glu' 'chrpath' 'zlib' 'sdl')
 install=ppsspp.install
 source=(git://github.com/hrydgard/ppsspp.git#tag=v$pkgver
-        git://github.com/hrydgard/native.git#commit=5becb9a
-        lang::git://github.com/hrydgard/ppsspp-lang.git#commit=f5812ba
+        git://github.com/hrydgard/native.git#commit=52ce9c1
+        lang::git://github.com/hrydgard/ppsspp-lang.git#commit=52c757e
         ffmpeg::git://github.com/hrydgard/ppsspp-ffmpeg.git#commit=04d6e3e
         git://github.com/Kingcom/armips#commit=a0b878f
         ppsspp-1.0-shared-ffmpeg.patch
