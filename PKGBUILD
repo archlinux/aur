@@ -11,13 +11,13 @@ pkgname=tp_smapi-lts
 _pkgname=tp_smapi
 _extramodules=/usr/lib/modules/extramodules-3.14-lts
 pkgver=0.41
-pkgrel=36
+pkgrel=37
 pkgdesc="linux-lts modules for ThinkPad's SMAPI functionality"
 arch=('i686' 'x86_64')
 url='https://github.com/evgeni/tp_smapi'
 license=('GPL')
-depends=('linux-lts>=3.14.21' 'linux-lts<3.15')
-makedepends=('linux-lts-headers>=3.14' 'linux-lts-headers<3.15')
+depends=('linux-lts>=3.14.34' 'linux-lts<3.15')
+makedepends=('linux-lts-headers>=3.14.34' 'linux-lts-headers<3.15')
 install="${pkgname}.install"
 source=("https://github.com/downloads/evgeni/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('63c683415c764568f6bf17c7eabe4752')
