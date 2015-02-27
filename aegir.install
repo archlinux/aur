@@ -6,8 +6,8 @@ post_install() {
     echo "             grep --quiet $(resolveip $(hostname) | cut --fields=6 --delimiter=' ') && echo Success!"
     echo ">>> 2. Ensure the http user and group exist (i.e. uid=gid=33):"
     echo "         $ test \$(id --user http) -eq 33 -a \$(id --group http) -eq 33 && echo Success!"
-    echo ">>> 3. Ensure PHP can successfully send outgoing emails:"
-    echo "         $ php -R 'mail("example@example.com", "Test email from PHP", "Test email body.");
+    echo ">>> 3. Ensure PHP can successfully send outgoing emails (the supplied msmtprc template works for Google accounts):"
+    echo "         $ php -R 'mail(\"example@example.com\", \"Test email from PHP\", \"Test email body.\");"
     echo ">>> 4. Setup the MySQL instance (by running mysql_secure_installation, or the following shell commands):"
     echo "         # systemctl start mysqld"
     echo "         $ mysql --user=root --execute=\""
@@ -33,24 +33,16 @@ post_install() {
 }
 
 post_upgrade() {
-    if ! getent group aegir &>/dev/null; then
-        groupadd --non-unique --gid $(id --group http) aegir
-        # Rearrange group database so aegir group name comes before http
-        cat \
-            <(sed -n '/http:/q;p' /etc/group) \
-            <(tail -n1 /etc/group) \
-            <(sed -n '/http:/{p;q}' /etc/group) \
-            <(head -n-1 /etc/group | sed '1,/http:/d')
-        grpconv
-    fi
+    TEMPFILE="$(mktemp)"
     if ! getent passwd aegir &>/dev/null; then
         useradd --non-unique --uid $(id --user http) --gid $(id --group http) --home-dir /var/lib/aegir aegir
         # Rearrange user database so aegir user name comes before http
-        cat \
+        cat >| $TEMPFILE \
             <(sed -n '/http:/q;p' /etc/passwd) \
             <(tail -n1 /etc/passwd) \
             <(sed -n '/http:/{p;q}' /etc/passwd) \
             <(head -n-1 /etc/passwd | sed '1,/http:/d')
+        cp $TEMPFILE /etc/passwd
         pwconv
     fi
 }

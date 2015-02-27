@@ -1,7 +1,7 @@
 pkgbase = aegir
 	pkgdesc = Configuration for a dedicated Aegir server.
 	pkgver = 7.x_3.0_alpha2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://aegirproject.org
 	install = aegir.install
 	arch = any
@@ -18,18 +18,20 @@ pkgbase = aegir
 	depends = smtp-forwarder
 	depends = unzip
 	options = emptydirs
-	source = aegir.target
-	source = php.ini
+	source = msmtprc
 	source = nginx.conf
 	source = nginx.svc.conf
-	source = service
+	source = php.ini
 	source = sudoers
-	md5sums = 80773e4278e09b14cc6843e346540a9d
-	md5sums = 6c534cc2a9bea282b9895f099c902ca2
-	md5sums = 7edbcc6b449a2f09ed93f88b77f300a5
+	source = systemd.service
+	source = systemd.target
+	md5sums = 1e9dd39b8c305eaab83e41a782e7c3c9
+	md5sums = 3079abdb035783843375b1745d651f8b
 	md5sums = 75535f9870f06c540f513262a9b7b1ab
+	md5sums = 451f623150d84118f6801a63053226f0
+	md5sums = b3bd87cc4571873fd860bf4b6a0e51fa
 	md5sums = 4889b3de48732ec149a71aeb72039455
-	md5sums = 1736705ac5a1c2982ce5b4eee09b0831
+	md5sums = 80773e4278e09b14cc6843e346540a9d
 
 pkgname = aegir
 

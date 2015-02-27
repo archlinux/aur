@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.0_alpha2
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration for a dedicated Aegir server."
 arch=('any')
 url='http://aegirproject.org'
@@ -23,19 +23,21 @@ depends=(
 options=(emptydirs)
 install=$pkgname.install
 source=(
-    'aegir.target'
-    'php.ini'
+    'msmtprc'
     'nginx.conf'
     'nginx.svc.conf'
-    'service'
+    'php.ini'
     'sudoers'
+    'systemd.service'
+    'systemd.target'
 )
-md5sums=('80773e4278e09b14cc6843e346540a9d'
-         '6c534cc2a9bea282b9895f099c902ca2'
-         '7edbcc6b449a2f09ed93f88b77f300a5'
+md5sums=('1e9dd39b8c305eaab83e41a782e7c3c9'
+         '3079abdb035783843375b1745d651f8b'
          '75535f9870f06c540f513262a9b7b1ab'
+         '451f623150d84118f6801a63053226f0'
+         'b3bd87cc4571873fd860bf4b6a0e51fa'
          '4889b3de48732ec149a71aeb72039455'
-         '1736705ac5a1c2982ce5b4eee09b0831')
+         '80773e4278e09b14cc6843e346540a9d')
 
 package() {
     msg2 'Adding config files'
@@ -43,10 +45,11 @@ package() {
     install -Dm440 sudoers          "$pkgdir/etc/sudoers.d/$pkgname"
     install -Dm644 nginx.conf       "$pkgdir/etc/nginx/$pkgname.conf"
     install -Dm644 php.ini          "$pkgdir/etc/php/conf.d/$pkgname.ini"
+    install -Dm644 msmtprc          "$pkgdir/etc/msmtprc.aegir"
 
     msg2 'Adding systemd files'
     install -Dm644 nginx.svc.conf   "$pkgdir/usr/lib/systemd/system/nginx.service.d/$pkgname.conf"
-    install -Dm644 service          "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 systemd.service  "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
     msg2 'Creating aegir directory structure'
     mkdir -pm700 "$pkgdir/var/lib/aegir/config/server_master/nginx/"{platform,post,pre,subdir,platform,vhost}".d"
@@ -57,7 +60,7 @@ package() {
     ln -sr nginx_vhost_common.conf "$pkgdir/var/lib/aegir/config/includes/nginx_simple_include.conf"
 
     install -Dm644 <( ) "$pkgdir/var/spool/cron/http"
-    install -Dm644 aegir.target "$pkgdir/usr/lib/systemd/system/aegir.target"
+    install -Dm644 systemd.target "$pkgdir/usr/lib/systemd/system/$pkgname.target"
 
     chown -R http:http "$pkgdir/var/lib/$pkgname" "$pkgdir/var/spool/cron/http"
 }
