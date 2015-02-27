@@ -1,0 +1,28 @@
+From 17613e50901c50fedcfe3542f0dc93630c9b2884 Mon Sep 17 00:00:00 2001
+From: Iain Lane <iain.lane@canonical.com>
+Date: Wed, 10 Dec 2014 12:05:19 +0000
+Subject: tls/tests: skip test_create_certificate_chain if not running against
+ glib 2.43
+
+https://bugzilla.gnome.org/show_bug.cgi?id=741331
+
+diff --git a/tls/tests/certificate.c b/tls/tests/certificate.c
+index 97c1793..7d3f031 100644
+--- a/tls/tests/certificate.c
++++ b/tls/tests/certificate.c
+@@ -226,6 +226,12 @@ test_create_certificate_chain (void)
+   GTlsCertificate *cert, *intermediate, *root;
+   GError *error = NULL;
+ 
++  if (glib_check_version (2, 43, 0))
++    {
++      g_test_skip ("This test requires glib 2.43");
++      return;
++    }
++
+   cert = g_tls_certificate_new_from_file (tls_test_file_path ("chain.pem"), &error);
+   g_assert_no_error (error);
+   g_assert (G_IS_TLS_CERTIFICATE (cert));
+-- 
+cgit v0.10.2
+
