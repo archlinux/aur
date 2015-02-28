@@ -1,7 +1,7 @@
 # Maintainer: Ian Naval <ianonavy@gmail.com>
 
 pkgname=go-ipfs-git
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="global versioned p2p merkledag file system"
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ source=("$pkgname"::'git://github.com/jbenet/go-ipfs.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/repo/config"
   # Use contents of version.go in the git source as the version number
   # (because they don't tag releases)
-  grep 'Version' cmd/ipfs/version.go | sed -E 's/[^"]*"//;s/".*//'
+  printf "%s" $(grep 'const CurrentVersionNumber' version.go | sed -E 's/[^"]*"//;s/".*//')
 }
 
 build() {
@@ -42,7 +42,7 @@ build() {
 package() {
   cd "$srcdir"
 
-  installDir="$pkgdir/usr/local/bin"
+  installDir="$pkgdir/usr/bin"
 
   install -dm755 "$installDir"
   install -m755 "$srcdir/bin/ipfs" "$installDir/ipfs"
