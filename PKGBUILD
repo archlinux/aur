@@ -2,20 +2,20 @@
 # Contributor: Nathan O <ndowens.aur at gmail dot com>
 
 pkgname=i7z
-pkgver=0.27.2
-pkgrel=3
+pkgver=0.27.2.git1
+pkgrel=1
 pkgdesc="A better i7 (and now i3, i5) reporting tool for Linux"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('ncurses')
-makedepends=('qt4')
+makedepends=('qt4' 'git')
 optdepends=('qt4: for i7z-gui')
-url="http://code.google.com/p/i7z/"
-source=("http://i7z.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7f2c4928146b722d67ecdd0d905a4353')
+url="https://github.com/ajaiantilal/i7z"
+source=(git://github.com/ajaiantilal/i7z.git)
+md5sums=('SKIP')
 
 build() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}
 
     make
 
@@ -25,7 +25,7 @@ build() {
     make
 }
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}
 
     install -Dm 755 i7z ${pkgdir}/usr/bin/i7z
     install -Dm 755 GUI/i7z_GUI ${pkgdir}/usr/bin/i7z-gui
