@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GObject-based multi-platform GUI toolkit (v3) (mingw-w64)
-	pkgver = 3.14.8
+	pkgver = 3.14.9
 	pkgrel = 1
 	url = http://www.gtk.org
 	arch = any
@@ -19,10 +19,10 @@ pkgbase = mingw-w64-gtk3
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.8.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.9.tar.xz
 	source = gtk3-aur-remove-gobject-introspection.patch
 	source = gtk3-bug-731013-fix-cross-compilation.patch
-	sha256sums = 7a543ea8a85f2c8a7b7374f24fd57df454067858689d8b02ec6c90f24be2b344
+	sha256sums = 3be9560e6e99388d7706a168e3353ecd63fc30ec4f7f8bea23889e71ab7b6c64
 	sha256sums = ae632ad20c87032c326dbb1cda086e33a5078909f89174b2ba232be1b48c32a3
 	sha256sums = 2dd763d32f7b7de08a325d32b811e87266277edb6055a043632d10c146ffc6d3
 
