@@ -4,7 +4,9 @@
 	Version bump.
 
 	Upstream changelog:
-	…
+	- Updated for 1.8.3.
+	- Support for custom underlava overlay color via colormap/underlava.png.
+	- Ability to turn off clouds entirely via clouds=none in color.properties.
 
 2014-12-10 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
