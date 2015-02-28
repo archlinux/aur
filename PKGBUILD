@@ -1,6 +1,6 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
@@ -16,7 +16,8 @@ depends=("php"
          "sudo"
          "curl"
          "iksemel"
-         "libssh2")
+         "libssh2"
+         "openipmi")
 optdepends=("mariadb: Fast SQL database server, drop-in replacement for MySQL"
             "apache: A high performance Unix-based HTTP server"
             "php-apache: Apache SAPI for PHP"
@@ -29,10 +30,10 @@ install="${_pkgname}.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
         "${_pkgname}.install")
-md5sums=("e8a0699c4e49999a15c63650a2280600"
-         "385ebe40ac42c777022ccee7543e20ca")
-sha1sums=("2173ef62bd0cd499677eae235d803956f4f72d0c"
-          "4997f1aa087e0de4869234dbacd667faf59b19d5")
+md5sums=("400a3e2ebec80e2f1fe86d1b32bfd2e1"
+         "b2acc80fef16823183b26dc93ec1546b")
+sha1sums=("505b274fe17d83bd5099cf71cd3d38a4d3d8d88b"
+          "efd7dbc0c43f20c8ccfa4478c5980666deb55584")
 
 prepare() {
 cat << EOL > "${srcdir}/${_pkgname}.sudoers"
@@ -96,11 +97,13 @@ build() {
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
     --sysconfdir=/etc/zabbix \
+    --datadir=/usr/share/zabbix \
     --enable-ipv6 \
     --enable-server \
     --enable-agent \
     --with-mysql \
     --with-net-snmp \
+    --with-openipmi \
     --with-jabber \
     --with-libcurl \
     --with-ssh2 \

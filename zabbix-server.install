@@ -6,15 +6,6 @@ post_install() {
                          /etc/zabbix \
                          /usr/share/zabbix \
                          /run/zabbix
-
-cat << EOM
-----------------------------------------------------------------------------------------
-         Read On-line Zabbix documentation is available at
-          https://www.zabbix.com/documentation/2.2/manual/installation/install
-----------------------------------------------------------------------------------------
-          For more information see http://www.zabbix.com/documentation.php
-----------------------------------------------------------------------------------------
-EOM
 }
 
 post_remove() {
@@ -22,15 +13,3 @@ post_remove() {
    groupdel zabbix
    rm -rf /var/lib/zabbix
 }
-
-post_upgrade() {
-cat << EOM
-----------------------------------------------------------------------------------------
-         Read On-line Zabbix documentation is available at
-          https://www.zabbix.com/documentation/2.2/manual/installation/upgrade
-----------------------------------------------------------------------------------------
-          For more information see http://www.zabbix.com/documentation.php
-----------------------------------------------------------------------------------------
-EOM
-}
-

@@ -1,6 +1,6 @@
 pkgbase = zabbix-server-mysql
 	pkgdesc = Zabbix is an enterprise-class open source distributed monitoring solution.
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = http://www.zabbix.com/
 	install = zabbix-server.install
@@ -17,6 +17,7 @@ pkgbase = zabbix-server-mysql
 	depends = curl
 	depends = iksemel
 	depends = libssh2
+	depends = openipmi
 	optdepends = mariadb: Fast SQL database server, drop-in replacement for MySQL
 	optdepends = apache: A high performance Unix-based HTTP server
 	optdepends = php-apache: Apache SAPI for PHP
@@ -26,12 +27,12 @@ pkgbase = zabbix-server-mysql
 	options = emptydirs
 	backup = etc/zabbix/zabbix_server.conf
 	backup = etc/zabbix/zabbix_agentd.conf
-	source = http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-2.4.3.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-2.4.4.tar.gz
 	source = zabbix-server.install
-	md5sums = e8a0699c4e49999a15c63650a2280600
-	md5sums = 385ebe40ac42c777022ccee7543e20ca
-	sha1sums = 2173ef62bd0cd499677eae235d803956f4f72d0c
-	sha1sums = 4997f1aa087e0de4869234dbacd667faf59b19d5
+	md5sums = 400a3e2ebec80e2f1fe86d1b32bfd2e1
+	md5sums = b2acc80fef16823183b26dc93ec1546b
+	sha1sums = 505b274fe17d83bd5099cf71cd3d38a4d3d8d88b
+	sha1sums = efd7dbc0c43f20c8ccfa4478c5980666deb55584
 
 pkgname = zabbix-server-mysql
 
