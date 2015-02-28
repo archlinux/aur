@@ -11,21 +11,21 @@ makedepends=('subversion')
 conflicts=('spim')
 provides=('spim')
 
-_svntrunk='svn.code.sf.net/p/spimsimulator/code'
-source=("svn://${_svntrunk}/spim"
-        "svn://${_svntrunk}/CPU")
+_svntrunk='svn+http://svn.code.sf.net/p/spimsimulator/code'
+source=("${_svntrunk}/spim"
+        "${_svntrunk}/CPU")
 md5sums=("SKIP" "SKIP")
-
-build() { 
-  cd ${srcdir}/spim
-
-  make
-}
 
 pkgver() {
   cd "${srcdir}/spim"
   local ver="$(svnversion)"
   printf "${ver//[[:alpha:]]}"
+}
+
+build() {
+  cd ${srcdir}/spim
+
+  make
 }
 
 package() {
