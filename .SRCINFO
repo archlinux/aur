@@ -1,0 +1,21 @@
+pkgbase = megatools-dev-git
+	pkgdesc = Command line client application for Mega.co.nz (Experimental git dev branch)
+	pkgver = 1.9.94.r78.g796808b
+	pkgrel = 1
+	url = http://megatools.megous.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = re2c
+	makedepends = git
+	depends = curl
+	depends = glib-networking
+	depends = fuse
+	optdepends = gobject-introspection: Bindings support for JavaScript
+	options = !libtool
+	source = git+https://github.com/megous/megatools#branch=dev
+	md5sums = SKIP
+
+pkgname = megatools-dev-git
+
