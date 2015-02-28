@@ -1,15 +1,15 @@
 pkgbase = python-bbcode
 	pkgdesc = A pure python bbcode parser and formatter.
-	pkgver = 1.0.20
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/bbcode
 	arch = any
 	license = BSD
 	depends = python
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/b/bbcode/bbcode-1.0.20.tar.gz
+	source = http://pypi.python.org/packages/source/b/bbcode/bbcode-1.0.21.tar.gz
 	source = LICENSE
-	md5sums = bb6e1147919d2e8f5f2f57d751d6a36c
+	md5sums = ed5725fe323f8acd9197e71717e6ebef
 	md5sums = f013c3769d2db3f0f790d19978c5031d
 
 pkgname = python-bbcode
