@@ -1,21 +1,22 @@
 pkgbase = libx32-glib2
 	pkgdesc = Common C routines used by GTK+ 2.4 and other libs (x32 ABI)
-	pkgver = 2.40.0
-	pkgrel = 1
+	pkgver = 2.42.1
+	pkgrel = 1.1
 	url = http://www.gtk.org/
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc-multilib-x32
 	makedepends = python2
+	depends = libx32-dbus
+	depends = libx32-libffi
 	depends = libx32-pcre
 	depends = libx32-zlib
-	depends = libx32-libdbus
-	depends = libx32-libffi
 	depends = glib2
-	options = !libtool
 	options = !docs
-	source = http://ftp.gnome.org/pub/GNOME/sources/glib/2.40/glib-2.40.0.tar.xz
-	sha256sums = 0d27f195966ecb1995dcce0754129fd66ebe820c7cd29200d264b02af1aa28b5
+	source = http://ftp.gnome.org/pub/GNOME/sources/glib/2.42/glib-2.42.1.tar.xz
+	source = revert-warn-glib-compile-schemas.patch
+	sha256sums = 8f3f0865280e45b8ce840e176ef83bcfd511148918cc8d39df2ee89b67dcf89a
+	sha256sums = 049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97
 
 pkgname = libx32-glib2
 
