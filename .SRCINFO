@@ -1,16 +1,16 @@
 pkgbase = ruby-posix-spawn
 	pkgdesc = posix_spawnp(2) for ruby
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = http://github.com/rtomayko/posix-spawn
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = ruby
-	noextract = posix-spawn-0.3.9.gem
+	noextract = posix-spawn-0.3.10.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/posix-spawn-0.3.9.gem
-	sha1sums = b11506c364806ed12938353690cfab5a2fc3a272
+	source = https://rubygems.org/downloads/posix-spawn-0.3.10.gem
+	sha1sums = a06bdc90f21771cf44e900cdc28e6e1f7e9a525b
 
 pkgname = ruby-posix-spawn
 
