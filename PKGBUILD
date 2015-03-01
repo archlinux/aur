@@ -52,38 +52,41 @@
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=1.15.1917.102
-_utdicver=20141110
-_zipcoderel=201410
+_zipcode_rel=201412
+
+_mozcver=2.16.2037.102
+_utdicver=20150214
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
-_gyp_rev=1987
-_japanese_usage_dictionary_rev=0
-_revision=383
+_gyp_rev=2012
+_jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
+_japanese_usage_dictionary_rev=10
+_mozc_rev=510
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
-#_patchver=${_mozcver}.1
-_patchver=1.15.1834.102.1
+_patchver=${_mozcver}.2
+#_patchver=1.15.1834.102.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
 depends=('qt4' 'fcitx' 'zinnia')
-makedepends=('pkg-config' 'python2' 'gtest' 'curl' 'gtk2' 'mesa' 'svn' 'ninja' 'ruby' 'git')
+makedepends=('pkg-config' 'python2' 'gtest' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'ruby' 'git' 'clang')
 replaces=('mozc-fcitx' 'fcitx-mozc')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc')
-source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=$_revision
+source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=$_mozc_rev
+        jsoncpp::git+https://github.com/open-source-parsers/jsoncpp.git#commit=${_jsoncpp_rev}
         japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=$_japanese_usage_dictionary_rev
         gyp::svn+http://gyp.googlecode.com/svn/trunk#revision=$_gyp_rev
+        git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
         http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-${_utdicver}.tar.bz2
         http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
         EDICT_license.html
         mod-generate-mozc-ut.sh
-        http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcoderel}.zip
-        http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcoderel}.zip
-        git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
+        http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcode_rel}.zip
+        http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcode_rel}.zip
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_patchver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
@@ -110,17 +113,17 @@ prepare() {
   find . -name  \*.py        -type f -exec sed -i -e "1s|python.*$|python2|"  {} +
   find . -regex '.*\.gypi?$' -type f -exec sed -i -e "s|'python'|'python2'|g" {} +
 
-  # Copy japanese_usage_dictionary
-  mkdir third_party/japanese_usage_dictionary
-  cp -a "$srcdir"/japanese_usage_dictionary/* third_party/japanese_usage_dictionary
+  # Generate zip code seed
+  msg "Generating zip code seed..."
+  python2 dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
+  msg "Done."
 
-  # Copy gyp
-  mkdir third_party/gyp
-  cp -a "${srcdir}"/gyp/* third_party/gyp
-
-  # Copy protobuf to be linked statically
-  mkdir third_party/protobuf
-  cp -rf "${srcdir}/protobuf"/* third_party/protobuf
+  # Copy third party deps
+  cd "$srcdir"
+  for dep in jsoncpp gyp protobuf japanese_usage_dictionary
+  do
+    cp -a $dep mozc-ut-${pkgver}/third_party/
+  done
 }
 
 build() {
@@ -130,13 +133,6 @@ build() {
   CXXFLAGS="${CXXFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
 
   cd "${srcdir}/mozc-ut-${pkgver}"
-
-  # Generate zip code seed
-  msg "Generating zip code seed..."
-  python2 dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
-  msg "Done."
-
-  msg "Starting make..."
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc"
 
@@ -186,16 +182,16 @@ package() {
   install -m 644 "$srcdir/fcitx-mozc-icons/mozc-properties.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-properties.png"
   install -m 644 "$srcdir/fcitx-mozc-icons/mozc-tool.png" "${pkgdir}/usr/share/fcitx/mozc/icon/mozc-tool.png"
 }
-
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'c3d75c33205073db45efc2b1e09e2274d84d18bb333d5198d2df4393e36cc5a668f703b5b017469fa41c95b112756645dda7024fe4cab3a202c7c693788d743d'
-            'bc985592dce28f1c2bbb93813b80092a089a1d20b6b1d9e3358db87571af598f18b1edd9ca9e51817001e94a1654a6bc971b15e7d5e78021de1cc81ab2178a9e'
+            'SKIP'
+            'SKIP'
+            '7f21d3761531399e8b05bd307ed425da290c6a3024cbf60534a392c4d5b160ca56d3c2b934becf455808e476a6bbaac1f9b5c7178bc1336fdb88d4d59213e659'
+            '3e1d08de98efff39f8fce81975deec8b0e3a2d66b6eba36c3d9d496b8ed62460147e6b7c845f9359b99da74a38f7f106ea164a96d8d885dedd7c35a255b90e0a'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             'f74d2ddf95706b2925d87b3effa9490aa7cba1f5ce2c20e537f2ac4dfc4c6b6b531f90f8c128bca0f1eafd9197abb6e1f004c11a1ea7a978b2ccad5e85ad0d55'
-            '2befbb40957f9fdd2454af7cbde1c27da4570fd7f8519237d344b014f42504b642f95e31308a1a4b62f2ac327609270015a572dbc7de7a6a5a0a6ade889a39a0'
-            'f5a479fa9f27465acd7fb6b787339d1f6f0f478c6fccf42384c4675d26495c9bc7839233e7b8b0c9a37818af37bc4e2de4d9483e923a067055015d587a009f60'
-            'SKIP'
-            '7a5bcedc8c3174fb65bdfd2126abae0f7432bc5b10dfdce7cd9703bdeac4a5652cc3be59b2a6829184a1b4e0199bf9606db79c2cef7858c2ccc6a5a367b229c6'
+            '6718acd4d44ca8a9f84c4a847bf82d6b7c8ea3b8e67c92f3e404f3d7bc7f90148c09043f7eddec7125418315a006fb223d6c8b92cd1d4896c7803f2dc1a15ae4'
+            '56661cd19f46a1211e7c2c104da61e07b0217c7f296917f0a3d8f62e340c279d3567058f9bb56d64c1c05d2a2c457ce2ffe7c730c790870a75b2c2fdebdbab01'
+            '22b885859588bb8e0efd354d153da461a654203729c723156a419bf33fae473e3f7165964aa3cb3b5c969f97c2727f9d87b0d587330e4eeab67f07d4458542a3'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
