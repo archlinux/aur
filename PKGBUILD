@@ -1,7 +1,7 @@
 pkgname=zabbix-server-mysql
 _pkgname=zabbix-server
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64")
@@ -97,7 +97,6 @@ build() {
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
     --sysconfdir=/etc/zabbix \
-    --datadir=/usr/share/zabbix \
     --enable-ipv6 \
     --enable-server \
     --enable-agent \
@@ -117,7 +116,9 @@ package() {
   make DESTDIR="${pkgdir}" install || return 1
 
   install -dm 0755 "${pkgdir}/usr/share/webapps/zabbix"
-  install -dm 0755 "${pkgdir}/etc/zabbix/database"
+  install -dm 0755 "${pkgdir}/usr/share/zabbix/snmptrap"
+  install -dm 0755 "${pkgdir}/usr/share/zabbix/database"
+  install -dm 0755 "${pkgdir}/usr/share/zabbix/zabbix_agentd"
 
   cp -r ${srcdir}/zabbix-${pkgver}/frontends/php/* ${pkgdir}/usr/share/webapps/zabbix/
   chown -R 33:33 "${pkgdir}/usr/share/webapps/zabbix/"
@@ -126,8 +127,18 @@ package() {
 
   for _SQLFILE in {data,images,schema}.sql
   do
-    install -D -m 0444 "${srcdir}/zabbix-${pkgver}/database/mysql/${_SQLFILE}" \
-                       "${pkgdir}/etc/zabbix/database/${_SQLFILE}"
+    install -D -m 0644 "${srcdir}/zabbix-${pkgver}/database/mysql/${_SQLFILE}" \
+                       "${pkgdir}/usr/share/zabbix/database/${_SQLFILE}"
+  done
+  for _SNMPTRAPFILE in snmptrap.sh zabbix_trap_receiver.pl
+  do
+    install -D -m 0755 "${srcdir}/zabbix-${pkgver}/misc/snmptrap/${_SNMPTRAPFILE}" \
+                       "${pkgdir}/usr/share/zabbix/snmptrap/${_SNMPTRAPFILE}"
+  done
+  for _USERPARAMETERFILE in userparameter_{examples,mysql}.conf
+  do
+    install -D -m 0644 "${srcdir}/zabbix-${pkgver}/conf/zabbix_agentd/${_USERPARAMETERFILE}" \
+                       "${pkgdir}/usr/share/zabbix/zabbix_agentd/${_USERPARAMETERFILE}"
   done
   install -dm 0750                                    "${pkgdir}/etc/sudoers.d"
   install -dm 0755                                    "${pkgdir}/run/zabbix"
