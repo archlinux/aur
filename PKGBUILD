@@ -20,6 +20,7 @@ optdepends=('perl-wx: GUI support'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support'
             'perl-wx-glcanvas: support for opengl preview'
             'perl-opengl: support for opengl preview'
+            'perl-net-bonjour: support for autodiscovery of printers on network (octoprint)'
             'perl-class-xsaccessor: creating faster accessor methods')
 #             'perl-growl-gntp: notifications support via growl'
 provides=('slic3r' 'slic3r-xs' 'slic3r-xs-git')

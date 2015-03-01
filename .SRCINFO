@@ -24,6 +24,7 @@ pkgbase = slic3r-git
 	optdepends = perl-xml-sax: Additive Manufacturing File Format (AMF) support
 	optdepends = perl-wx-glcanvas: support for opengl preview
 	optdepends = perl-opengl: support for opengl preview
+	optdepends = perl-net-bonjour: support for autodiscovery of printers on network (octoprint)
 	optdepends = perl-class-xsaccessor: creating faster accessor methods
 	provides = slic3r
 	provides = slic3r-xs
