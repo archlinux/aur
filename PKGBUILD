@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/ianweller/python-simplemediawiki"
 license=('LGPL')
 depends=('python')
-source=("https://github.com/ianweller/python-simplemediawiki/archive/${pkgver/_/}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ianweller/python-simplemediawiki/archive/${pkgver/_/}.tar.gz")
 md5sums=('7c10122a1a884a902ac7fda5f01f4986')
 
 package() {
