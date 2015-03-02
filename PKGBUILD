@@ -8,7 +8,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-patched
 pkgver=9.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -23,7 +23,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'urxvt-tabbed.desktop'
         'font-width-fix.patch'
         'line-spacing-fix.patch')
-sha1sums=('1612b6859369085a7ab46b282ad89025fb07574a'
+sha1sums=('33297e5303e45d27e07f40060d3655ae019eefdc'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
