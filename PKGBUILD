@@ -7,16 +7,16 @@
 pkgname=libpulse-nosystemd
 _pkgbase=pulseaudio
 pkgdesc="Client library for PulseAudio"
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/PulseAudio"
 license=(LGPL)
 depends=(dbus libasyncns libcap libxtst libsm libsndfile json-c)
-makedepends=(libasyncns libcap attr libxtst libsm libsamplerate libtool rtkit
-             speex tdb dbus avahi bluez bluez-libs gconf intltool jack2-dbus sbc
-             lirc-utils openssl xenstore fftw orc json-c gtk3 webrtc-audio-processing
-             check git)
+makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit
+             speexdsp tdb dbus avahi bluez bluez-libs gconf intltool jack2-dbus sbc
+             lirc openssl xenstore fftw orc json-c gtk3 webrtc-audio-processing
+             check)
 optdepends=('alsa-plugins: ALSA support'
             'avahi: zeroconf support')
 provides=("libpulse=${pkgver}")
@@ -25,7 +25,7 @@ replaces=('libpulse')
 backup=(etc/pulse/client.conf)
 options=(!emptydirs)
 source=(http://freedesktop.org/software/$_pkgbase/releases/$_pkgbase-$pkgver.tar.xz)
-sha256sums=('99c13a8b1249ddbd724f195579df79484e9af6418cecf6a15f003a7f36caf939')
+sha256sums=('b50640e0b80b1607600accfad2e45aabb79d379bf6354c9671efa2065477f6f6')
 
 prepare() {
   cd $_pkgbase-$pkgver
@@ -42,9 +42,12 @@ build() {
     --with-database=tdb \
     --disable-tcpwrap \
     --disable-bluez4 \
+    --disable-samplerate \
     --disable-rpath \
     --disable-default-build-tests \
-    --disable-systemd
+    --disable-systemd-daemon \
+    --disable-systemd-login \
+    --disable-systemd-journal
 
   # fight unused direct deps
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
