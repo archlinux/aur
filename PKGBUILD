@@ -10,7 +10,7 @@ url="http://gqrx.dk/"
 license=('GPL')
 depends=('qt5-svg' 'libpulse' 'gnuradio-osmosdr' 'libxkbcommon-x11')
 makedepends=('boost')
-source=("https://github.com/csete/gqrx/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/csete/gqrx/archive/v$pkgver.tar.gz"
         "$pkgname.png"
         "$pkgname.desktop")
 md5sums=('f77dd4d3ee02bd142be5f17a926c21c7'
