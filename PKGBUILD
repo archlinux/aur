@@ -13,7 +13,7 @@ license=('GPL')
 depends=('linux>=3.19' 'linux<3.20')
 makedepends=('linux-headers>=3.19' 'linux-headers<3.20')
 install=bbswitch.install
-source=("https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
 md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
 
 build() {
