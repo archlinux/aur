@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.0.111.2
+pkgver=1.0.118.2
 pkgrel=1
 pkgdesc='A new browser for our friends (weekly snapshot)'
 url="https://vivaldi.com"
@@ -33,5 +33,5 @@ package() {
 	done
 }
 
-sha256sums_i686=('2c7cf18b46325c238872b7cfd5d7d9d7d7c3223e1890e64e32eb106258eeae8b')
-sha256sums_x86_64=('9cd15afa15a0359c1fe42d447a01b68832b4260a0a0996786089df74994af56f')
+sha256sums_i686=('a56c5bb9121081ffc4079979ddaa41634c57a3036f97e469e79f105d9343d11d')
+sha256sums_x86_64=('639885b6f00ecb4177561d729010134b8dcbc63c6f7282604ecc6a3434f7c724')
