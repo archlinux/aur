@@ -3,7 +3,7 @@
 
 pkgname=janet
 pkgver=0.2.4
-pkgrel=11
+pkgrel=12
 pkgdesc="A Digital life assistant (DLA) that provides a framework allowing various components to communicate, inspired by Iron Man's JARVIS"
 arch=('i686' 'x86_64')
 url="http://sites.google.com/site/projectjanet"
@@ -12,7 +12,7 @@ depends=('monodevelop' 'festival' 'simon')
 optdepends=('htk: For customizing simon')
 install=$pkgname.install
 source=(http://sourceforge.net/projects/project-janet/files/Binaries/Bin.tar.gz)
-sha256sums=('83462b4bd66a21294f574985dc5466190c160e52f4d5988274861d03ed0edd67')
+sha256sums=('9a6375c47ed69f0dbc12b715e7d6eefc6600a6c18abab7150f1cb4bc38a16844')
 
 package() {
   cd "${srcdir}"
