@@ -1,1 +1,1 @@
-update_pkgver=$(curl -sS https://vivaldi.com/ | grep '[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+' | sed -e 's/.*\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/' | uniq)
+update_pkgver=$(curl -sS https://vivaldi.net/en-US/blogs/teamblog | grep -i '#download' | sed -e 's/.*\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/')
