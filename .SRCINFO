@@ -1,7 +1,7 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -81,7 +81,11 @@ pkgname = roccat-tools-pyra
 	depends = roccat-tools-common
 
 pkgname = roccat-tools-ryosmk
-	pkgdesc = Userland applications to configure and make extended use of ROCCAT Ryos devices
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT RyosMK devices
+	depends = roccat-tools-common
+
+pkgname = roccat-tools-ryostkl
+	pkgdesc = Userland applications to configure and make extended use of ROCCAT RyosTKL devices
 	depends = roccat-tools-common
 
 pkgname = roccat-tools-savu

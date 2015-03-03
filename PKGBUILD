@@ -18,11 +18,12 @@ pkgname=('roccat-tools-common'
          'roccat-tools-lua'
          'roccat-tools-pyra'
          'roccat-tools-ryosmk'
+         'roccat-tools-ryostkl'
          'roccat-tools-savu'
          'roccat-tools-tyon')
 pkgbase=roccat-tools
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -182,13 +183,23 @@ package_roccat-tools-pyra() {
 }
 
 package_roccat-tools-ryosmk() {
-  pkgdesc='Userland applications to configure and make extended use of ROCCAT Ryos devices'
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT RyosMK devices'
   depends=('roccat-tools-common')
 
   cd "$srcdir/$pkgbase-$pkgver/ryosmk"
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-ryosmk.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-ryosmk.rules
+}
+
+package_roccat-tools-ryostkl() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT RyosTKL devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/ryostkl"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-ryostkl.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-ryostkl.rules
 }
 
 package_roccat-tools-savu() {
