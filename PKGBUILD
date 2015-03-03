@@ -1,17 +1,17 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.18.2
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
 url="http://www.clutter-project.org/"
 license=('GPL2')
 depends=('mesa' 'libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango' 'libxrandr')
-makedepends=('gobject-introspection')
+makedepends=('gobject-introspection' 'python2')
 options=(!emptydirs)
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('9278e519d5480eb0379efd48db024e8fdbf93f01dff48a7e756b85b508a863aa')
+sha256sums=('729e35495829e7d31fafa3358e47b743ba21a2b08ff9b6cd28fb74c0de91192b')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -27,7 +27,7 @@ build() {
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-  make
+  make -j1
 }
 
 package() {
