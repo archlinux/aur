@@ -24,16 +24,14 @@ sha256sums=('SKIP' 'SKIP' 'SKIP'
 )
 
 prepare() {
-	msg2 "Patching out hardcoded paths"
 	cd "$srcdir/toolkit"
 	git apply "$srcdir/set_app_path_from_env.patch"
 }
 
 build() {
-	msg2 "Ensuring that Java is version 8"
+	# Java needs to be version 8
 	java -version 2>&1 | grep 'version "1.8' >/dev/null
 
-	msg2 "Running ant"
 	cd "$srcdir/apple_stubs"
 	ant
 	cd "$srcdir/toolkit"
@@ -43,7 +41,6 @@ build() {
 }
 
 package() {
-	msg2 "Installing files"
 	# jars
 	install -d "$pkgdir/usr/share/java/gcs"
 	find "$srcdir" -name '*.jar' ! -name '*-src.*' -execdir install -m644 {} "$pkgdir/usr/share/java/gcs" \;
@@ -59,10 +56,10 @@ package() {
 	install -d "$pkgdir/usr/share/applications"
 	install -m644 "$srcdir/gcs.desktop" "$pkgdir/usr/share/applications"
 
-	msg2 "Cleaning jar name"
+	# remove version from filename
 	mv "$pkgdir/usr/share/java/gcs/gcs-${pkgver}.jar" "$pkgdir/usr/share/java/gcs/gcs.jar"
 
-	msg2 "Creating icon"
+	# convert icon
 	install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
 	convert "$srcdir/gcs/src/com/trollworks/gcs/app/images/app_1024.png" -resize 128 "$pkgdir/usr/share/icons/hicolor/128x128/apps/gcs.png"
 }
