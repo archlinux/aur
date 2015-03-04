@@ -1,0 +1,41 @@
+From 852234fb53ecef5aa0d86b581e1d505eb82c5ceb Mon Sep 17 00:00:00 2001
+From: Marcus Karlsson <mk@acc.umu.se>
+Date: Fri, 31 Oct 2014 10:33:52 +0100
+Subject: [PATCH 03/29] build: Do not include removed file gdk-pixbuf-i18n.h
+
+The file gdk-pixbuf-i18n.h was removed in f37f850a but it is still
+included in io-gdip-utils.h. Remove all remaining references to it.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=739441
+---
+ docs/reference/gdk-pixbuf/Makefile.am | 1 -
+ gdk-pixbuf/io-gdip-utils.h            | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/docs/reference/gdk-pixbuf/Makefile.am b/docs/reference/gdk-pixbuf/Makefile.am
+index 71ac69b..652da27 100644
+--- a/docs/reference/gdk-pixbuf/Makefile.am
++++ b/docs/reference/gdk-pixbuf/Makefile.am
+@@ -23,7 +23,6 @@ IGNORE_HFILES=				\
+ 	pixops				\
+ 	gdk-pixbuf-alias.h		\
+ 	gdk-pixbuf-marshal.h		\
+-	gdk-pixbuf-i18n.h 		\
+ 	gdk-pixbuf-private.h		\
+ 	gdk-pixbuf-xlib-private.h	\
+ 	io-gif-animation.h		\
+diff --git a/gdk-pixbuf/io-gdip-utils.h b/gdk-pixbuf/io-gdip-utils.h
+index 84ecd8e..0270873 100644
+--- a/gdk-pixbuf/io-gdip-utils.h
++++ b/gdk-pixbuf/io-gdip-utils.h
+@@ -23,7 +23,6 @@
+ #define _HAVE_IO_GDIP_UTILS_H
+ 
+ #include "gdk-pixbuf.h"
+-#include "gdk-pixbuf-i18n.h"
+ 
+ #include "io-gdip-native.h"
+ 
+-- 
+2.1.0
+
