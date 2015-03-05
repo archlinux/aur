@@ -1,0 +1,17 @@
+pkgbase = kindletool-git
+	pkgdesc = Tool for creating/extracting Kindle updates and more
+	pkgver = 1.6.3.r20.gd054749
+	pkgrel = 1
+	url = https://github.com/NiLuJe/KindleTool
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libarchive
+	depends = nettle
+	provides = kindletool
+	source = git://github.com/NiLuJe/KindleTool.git
+	sha256sums = SKIP
+
+pkgname = kindletool-git
+
