@@ -1,7 +1,7 @@
 pkgbase = alephone-infinity
 	pkgdesc = Marathon Infinity scenario data files for Aleph One
 	pkgver = 20140104
-	pkgrel = 1
+	pkgrel = 2
 	url = http://marathon.sourceforge.net
 	arch = any
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = alephone-infinity
 	sha256sums = 137329e9efdd3c219b48a56322ec5651c606c3e8078dfeaa7c9c14470cf5aa29
 	sha256sums = 593fbb16d2f72de59c7507219f84284fde65ad5f878c468f0ef604b8217b4d85
 	sha256sums = 0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504
-	sha256sums = 18f4458fe6b04e135947ede5ec7578858ea6c99032e434b10b05a281670c79c6
+	sha256sums = e0ebb401ab4cac3404f25762b87e1b9a3bf9d28c3129d6fb47c7a8ccc7163b11
 
 pkgname = alephone-infinity
 
