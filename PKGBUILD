@@ -6,7 +6,7 @@
 
 pkgname=alephone-marathon
 pkgver=20140104
-pkgrel=1
+pkgrel=2
 pkgdesc="Marathon 1 scenario data files for Aleph One"
 arch=('any')
 url="http://marathon.sourceforge.net"
@@ -21,12 +21,13 @@ source=(Marathon-$pkgver-Data.zip::"http://marathon.sourceforge.net/download/dat
 sha256sums=('9cbdcff88c1aa775799a8d52536003aab88f26e3938b694d60ec8543aee830f1'
             '64deb7f505ea1ec29e10037a2dcc297abed787b0ec4790d231bff6d08a0408d0'
             '0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504'
-            '49273db294ee0ba9f4b985a144969bae241877934b23d82a7de1522db705ee88')
+            'a6074d617b51d6674381e3d1940b2c770fb87d5825f15964006c604258796288')
 
 package() {
   # scenario data
   install -d "$pkgdir"/usr/share/alephone/scenarios
   cp -r Marathon "$pkgdir"/usr/share/alephone/scenarios/marathon
+
   # sane permissions
   find "$pkgdir"/usr/share/alephone/scenarios/marathon -type f -exec chmod 644 {} \;
 
