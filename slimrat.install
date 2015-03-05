@@ -1,0 +1,14 @@
+post_install() {
+cat << _EOF
+
+  For system wide configuration refer to "/etc/slimrat.conf".
+  For making custom configuration execute
+    "cp /etc/slimrat.conf $HOME/.slimrat/config"
+  and then edit the config file in your local slimrat directory.
+  
+  Please note that some of the optional dependencies may need
+  to be configured manually.
+
+_EOF
+}
+

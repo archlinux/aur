@@ -1,0 +1,20 @@
+pkgbase = slimrat
+	pkgdesc = Command-line application for automated downloading from file hosters like Rapidshare, Megaupload, Depositfiles and many more
+	pkgver = 1.1_beta2
+	pkgrel = 2
+	url = http://code.google.com/p/slimrat
+	install = slimrat.install
+	arch = any
+	license = MIT
+	depends = perl
+	depends = perl-www-mechanize
+	depends = perl-http-response-encoding
+	depends = perl-json
+	optdepends = slimrat-gui: for GUI
+	optdepends = aview: for CAPTCHA support in command line
+	backup = etc/slimrat.conf
+	source = http://slimrat.googlecode.com/files/slimrat-1.1-beta2.tar.bz2
+	md5sums = ed244022741611f7d587016280e94263
+
+pkgname = slimrat
+
