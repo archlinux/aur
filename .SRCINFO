@@ -1,13 +1,13 @@
 pkgbase = geotoad
 	pkgdesc = A tool to simplify geocaching
-	pkgver = 3.22.1
+	pkgver = 3.22.3
 	pkgrel = 1
 	url = http://geotoad.googlecode.com/
 	arch = any
 	license = custom
 	depends = ruby
-	source = http://geotoad.googlecode.com/svn/branches/downloads/files/geotoad-3.22.1.tar.gz
-	sha256sums = 33b6afc32798faa34066185e3f64e25b293cd9528ecd6d31882b8a8e8e3118d6
+	source = http://geotoad.googlecode.com/svn/branches/downloads/files/geotoad-3.22.3/geotoad-3.22.3.tar.gz
+	sha256sums = 2d3483a1e9de88662167597d3833795d1892dc7c02c165729dfc2d9014b1da7b
 
 pkgname = geotoad
 
