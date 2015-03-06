@@ -1,0 +1,18 @@
+pkgbase = libmocap-git
+	pkgdesc = A simple library to load motion capture data
+	pkgver = r76.99f89be
+	pkgrel = 1
+	url = https://github.com/jrl-umi3218/libmocap
+	arch = i686
+	arch = x86_64
+	license = Modified BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	provides = libmocap
+	conflicts = libmocap
+	source = libmocap::git+https://github.com/jrl-umi3218/libmocap.git#branch=master
+	md5sums = SKIP
+
+pkgname = libmocap-git
+
