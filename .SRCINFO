@@ -1,0 +1,15 @@
+pkgbase = python2-yep
+	pkgdesc = A module for profiling compiled extensions
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/yep
+	arch = any
+	license = Simplified BSD License
+	makedepends = python2
+	depends = python2
+	depends = gperftools
+	source = https://pypi.python.org/packages/source/y//-0.2.tar.gz
+	md5sums = 8924763404d73b30d18f38b44fbd56dd
+
+pkgname = python2-yep
+
