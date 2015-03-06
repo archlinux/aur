@@ -4,8 +4,8 @@
 
 _pkgname=evas_generic_loaders
 pkgname=$_pkgname-git
-pkgver=1.13.99.166.5cf9aa4
-pkgrel=2
+pkgver=1.13.99.167.1e1a1e6
+pkgrel=1
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -21,10 +21,8 @@ optdepends=('gst-plugins-base: Video thumbnails'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('debug')
-source=("git://git.enlightenment.org/core/$_pkgname.git"
-        'poppler-0.31.patch')
-sha256sums=('SKIP'
-            'ad42a31e4a08cd612149bdd2b3f4acc971812e44cee903f359978ea3d8366bd2')
+source=("git://git.enlightenment.org/core/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -36,12 +34,6 @@ pkgver() {
   v_ver=$(awk -F , -v v_ver=$v_ver '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
   printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-
-  patch -Np1 < "$srcdir/poppler-0.31.patch"
 }
 
 build() {

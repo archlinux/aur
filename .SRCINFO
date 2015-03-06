@@ -1,7 +1,7 @@
 pkgbase = evas_generic_loaders-git
 	pkgdesc = Evas external binary executable loaders - Development version
-	pkgver = 1.13.99.166.5cf9aa4
-	pkgrel = 2
+	pkgver = 1.13.99.167.1e1a1e6
+	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
@@ -18,13 +18,11 @@ pkgbase = evas_generic_loaders-git
 	optdepends = gst-plugins-ugly: Video thumbnails
 	optdepends = gst-libav: Video thumbnails
 	optdepends = libreoffice-common: Office document thumbnails
-	provides = evas_generic_loaders=1.13.99.166.5cf9aa4
+	provides = evas_generic_loaders=1.13.99.167.1e1a1e6
 	conflicts = evas_generic_loaders
 	options = debug
 	source = git://git.enlightenment.org/core/evas_generic_loaders.git
-	source = poppler-0.31.patch
 	sha256sums = SKIP
-	sha256sums = ad42a31e4a08cd612149bdd2b3f4acc971812e44cee903f359978ea3d8366bd2
 
 pkgname = evas_generic_loaders-git
 
