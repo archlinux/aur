@@ -1,0 +1,14 @@
+pkgbase = omegat-plugin-yandex
+	pkgdesc = Yandex Translate plugin for OmegaT
+	pkgver = 20150104
+	pkgrel = 1
+	url = https://sourceforge.net/projects/yandextranslatepluginforomegat/
+	arch = any
+	license = GPL2
+	depends = omegat
+	options = !strip
+	source = http://sourceforge.net/projects/yandextranslatepluginforomegat/files/OmegaT-plugins-YandexTranslate.jar
+	sha256sums = 2f10ba58058c03a0990a98abb7e6900c825aba9d37804256ebc57c5302c624c5
+
+pkgname = omegat-plugin-yandex
+
