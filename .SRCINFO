@@ -1,0 +1,19 @@
+pkgbase = nuntius-git
+	pkgdesc = Delivers notifications from your phone or tablet to your computer
+	pkgver = r2.27ac01b
+	pkgrel = 1
+	url = https://github.com/holylobster/nuntius-linux
+	install = nuntius.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = json-glib
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	source = nuntius-git::git://github.com/holylobster/nuntius-linux
+	source = nuntius.install
+	sha512sums = SKIP
+	sha512sums = 6dabcff8c668d4f7585677bc896b06b6eee506765016fbd3220000ab352a90ba49d14bfdc7082278274f99d9b0fbaf1e6921c330ed5cfca7e765ab04b896f2d1
+
+pkgname = nuntius-git
+
