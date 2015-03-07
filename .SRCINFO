@@ -1,0 +1,15 @@
+pkgbase = ruby-net-ssh-gateway
+	pkgdesc = A gateway class for tunneling connections via SSH over a forwarded port
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = https://rubygems.org/gems/net-ssh-gateway
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-net-ssh>=2.6.5
+	noextract = net-ssh-gateway-1.2.0.gem
+	source = http://gems.rubyforge.org/gems/net-ssh-gateway-1.2.0.gem
+	md5sums = 7398dc8b2480c870eea3ccf1969f4913
+
+pkgname = ruby-net-ssh-gateway
+
