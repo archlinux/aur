@@ -1,0 +1,14 @@
+pkgbase = mozjpeg-opt
+	pkgdesc = JPEG image codec with accelerated baseline decoding and superior encoding - installed under /opt
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/mozilla/mozjpeg
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = nasm
+	source = https://github.com/mozilla/mozjpeg/archive/v3.0.tar.gz
+	sha1sums = 4c24eaa28e875cfb61d542a837df869b19a586a8
+
+pkgname = mozjpeg-opt
+
