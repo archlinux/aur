@@ -1,16 +1,16 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=0.0.1.217247
+pkgver=0.0.1.231373
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
 url="http://libclc.llvm.org/"
 license=('MIT')
-makedepends=('clang' 'svn' 'python2')
+makedepends=('clang' 'python2' 'libedit')
 options=('staticlibs')
-source=('libclc::svn+http://llvm.org/svn/llvm-project/libclc/trunk#revision=217247')
-md5sums=(SKIP)
+source=(https://sources.archlinux.org/other/packages/libclc/$pkgname-$pkgver.src.tar.xz)
+md5sums=('e7b0767cd9f6c171ba4990df5d41b2aa')
 
 build() {
   cd libclc
