@@ -11,7 +11,7 @@ license=('GPL')
 depends=('pygtk' 'pygobject' 'python2-configobj' 'pyxdg' 'dbus-python'
 'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
 'python-liblarch-git' 'python-dbus' 'python-cairo')
-makedepends=('bzr' 'python2-gconf')
+makedepends=('git' 'python2-gconf')
 optdepends=(
 'python-bugz: for Bugzilla plugin'
 'python-cheetah: for Export and print plugin'
