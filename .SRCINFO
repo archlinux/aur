@@ -1,0 +1,15 @@
+pkgbase = zenbu-login
+	pkgdesc = Automates login to zenbu.net.nz wifi networks.
+	pkgver = 0.01
+	pkgrel = 0
+	url = http://oberkirch.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = curl
+	depends = bash
+	depends = grep
+	backup = etc/zenbu-login
+
+pkgname = zenbu-login
+
