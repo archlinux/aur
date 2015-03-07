@@ -7,6 +7,7 @@ source /etc/"${__NAME__}"
 if [[ "$username" == "" ]]; then
     echo You need to define username and password in /etc/${__NAME__}.
     exit 1
+fi
 
 function zenbu-login () {
     post_data="form_request=login&gw_address=10.10.24.1&gw_port=2060&gw_id=ZenBu10289&mac=EC%3A0E%3AC4%3A1C%3A8E%3A2F&auth_source=default-network&username=$username&password=$password&form_submit=login"
