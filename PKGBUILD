@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=3.18
+_basekernel=3.19
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.9
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -20,10 +20,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('2f0b72466e9bc538a675738aa416573d41bbbd7e3e2ffd5b5b127afde609ebc278cec5a3c37e73479607e957c13f1b4ed9782a3795e0dcc2cf8e550228594009' 'SKIP'
-            'dd8f8c2a88b41e4907c213d3d7bc646f1291b4358ad5a840b652286ac67023f9cac119714b68cb00b295fe80b7efb5dc2b5b4af35f01bbcaa7357f877dad3a72' 'SKIP'
-            '17652104279fdb66e751fe091570fe2f15096994840de6da539d516c457006233790900761b5b54bd2ecb89d42699b29032b44673d00753f303216a75895ded0'
-            'd275ecb877ec4e1fcc1fc590e1da58d37a2ef3b81bf74abbcc142a49c4a5702f3b37a04f5449e1d1f4222c0c81cac2ce43d5f51cac39907a1827d95973bca7b1'
+sha512sums=('d77bfd9b1cd524ac50bb5a93808955be2f9bcd2ec0badcc8aa6a63401e212f891fd14bd27c6441174ba5d70ab875b9e76c7ebc95f046e31aff1d40790d30351c' 'SKIP'
+            'cfedc5b622fb4c0c9438739e3b0b756963250e2f80090603985c1d8c0a3b1638cb2abc927aafd69f9a611ed1f3f5994672d7fea6cbdfc788411612b2de460c73' 'SKIP'
+            '6735f2aa01e4f3cd0d270b514f87ded2db2ab8315721bb9fddc6079185d7c0bfb94ae9cb01d7a6d2a8690e7aeaa317e0c214ef7bbf086ec304472786a3393069'
+            '8d19284d9e82e7df0612cd589347908ac7ade766d81e3083c1fb4f0560400193a1334bc3f8720ce37e7bf81ca0141595b06ea57578097b186f2cd656c657cdf7'
             '0ddff435474213f6c6e62576b6b3042aeffd1df84c47ca6195714a92c2655c33c56ce211c14934f4268afdf246077e1ea04e0958efc263c71aabfb497481022c'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
 validpgpkeys=(
@@ -78,7 +78,6 @@ package_linux-linode() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
 
   emdir="extramodules-${_basekernel}${_kernelname:--ARCH}"
   mkdir -p "${pkgdir}/lib/modules/${emdir}"
