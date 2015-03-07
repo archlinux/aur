@@ -1,0 +1,21 @@
+pkgbase = umongo
+	pkgdesc = This package provides a GUI app that can browse and administer a MongoDB cluster
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = http://www.edgytech.com/umongo/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	depends = bash
+	provides = umongo
+	source = https://s3.amazonaws.com/edgytech/umongo-linux-all_1-6-2.zip
+	source = umongo.sh
+	source = umongo.png
+	source = umongo.desktop
+	md5sums = 08578467d5ff7851461f184dd68dfdb8
+	md5sums = 9a060f5049875f2c7d174f6490185927
+	md5sums = 4f2e531c9f804dcd389fc356d11d2687
+	md5sums = 0c4db4a65e2455e7a73cc143b342e317
+
+pkgname = umongo
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=umongo
+Comment=UMongo is a GUI app that can browse and administer a MongoDB cluster
+Exec=/usr/bin/umongo.sh
+Icon=/usr/share/pixmaps/umongo.png
+Terminal=false
+Type=Application
+Categories=Application;Database;
