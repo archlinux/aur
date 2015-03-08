@@ -28,12 +28,12 @@ index dc2020d..7c0eec7 100644
 +            qtconfig = dict(x.split(":", 1) for x in qtconfig.splitlines())
 +            
 +            pyqtconfig = {
-+                "pyqt_config_args":   "--confirm-license -v /usr/share/sip/Py2-PyQt4 --qsci-api -q /usr/bin/qmake-qt4",
++                "pyqt_config_args":   "--confirm-license -v /usr/share/sip/PyQt4 --qsci-api -q /usr/bin/qmake-qt4",
 +                "pyqt_version":       QtCore.PYQT_VERSION,
 +                "pyqt_version_str":   QtCore.PYQT_VERSION_STR,
 +                "pyqt_bin_dir":       PyQt4.__path__[0],
 +                "pyqt_mod_dir":       PyQt4.__path__[0],
-+                "pyqt_sip_dir":       "/usr/share/sip/Py2-PyQt4",
++                "pyqt_sip_dir":       "/usr/share/sip/PyQt4",
 +                "pyqt_modules":       "QtCore QtGui",   #... and many more
 +                "pyqt_sip_flags":     QtCore.PYQT_CONFIGURATION['sip_flags'],
 +                "qt_version":         QtCore.QT_VERSION,
