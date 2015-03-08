@@ -1,0 +1,21 @@
+pkgbase = pfff-git
+	pkgdesc = tools and APIs for code analysis, visualization and transformation
+	pkgver = v0.28.1.r459.g7edb85d
+	pkgrel = 1
+	url = https://github.com/facebook/pfff
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = camlp4
+	optdepends = gtk2: required by codegraph and codemap
+	provides = pfff
+	conflicts = pfff
+	options = !makeflags
+	options = staticlibs
+	source = git+https://github.com/facebook/pfff
+	md5sums = SKIP
+
+pkgname = pfff-git
+
