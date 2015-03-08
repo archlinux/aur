@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zelda: Return of the Hylian
+Comment=First Game in a series of fan-made Zelda Games
+Exec=zelda-roth
+Icon=zelda-roth
+Terminal=false
+Categories=Game;AdventureGame;

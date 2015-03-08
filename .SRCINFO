@@ -1,0 +1,22 @@
+pkgbase = zelda-roth
+	pkgdesc = 'Zelda: Return of the Hylian' is a fan-made Zelda Game (english version)
+	pkgver = 6.11
+	pkgrel = 1
+	url = http://www.zeldaroth.fr/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = imagemagick
+	depends = sdl_gfx
+	depends = sdl_mixer
+	depends = sdl_image
+	conflicts = zelda-roth-fr
+	source = http://www.zeldaroth.fr/us/files/ROTH/Linux/ZeldaROTH_US-src-linux.zip
+	source = zelda-roth-datafolders.patch
+	source = zelda-roth.desktop
+	sha256sums = 9919a7fb0d2781f6323bfa27a7929fea68f4b0f26786ba9b6880b1f6a3e6f684
+	sha256sums = db0ece6364fca7f4d6519f7e89182012889524b16be98e1953f4d05e227956f0
+	sha256sums = 1a22a6fdf433cc6272c5375b7e64cda1480dd559883151a2fe868ae43eaf9364
+
+pkgname = zelda-roth
+
