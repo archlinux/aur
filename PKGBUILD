@@ -1,4 +1,4 @@
-# Maintainer: Aaron Mueller <mail@aaron-mueller.de>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 # Contributor: Christopher Marra <christophermarra86@gmail.com>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
