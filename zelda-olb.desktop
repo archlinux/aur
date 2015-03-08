@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zelda: Oni Link Begins
+Comment=Second Game in a series of fan-made Zelda Games
+Exec=zelda-olb
+Icon=zelda-olb
+Terminal=false
+Categories=Game;AdventureGame;

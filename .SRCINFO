@@ -1,0 +1,22 @@
+pkgbase = zelda-olb
+	pkgdesc = 'Zelda: Oni Link Begins' is a fan-made Zelda Game (english version)
+	pkgver = 3.6
+	pkgrel = 1
+	url = http://www.zeldaroth.fr/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = imagemagick
+	depends = sdl_gfx
+	depends = sdl_mixer
+	depends = sdl_image
+	conflicts = zelda-olb-fr
+	source = http://www.zeldaroth.fr/us/files/OLB/Linux/ZeldaOLB_US-src-linux.zip
+	source = zelda-olb-datafolders.patch
+	source = zelda-olb.desktop
+	sha256sums = 57b48f3e9e7432283e71a54f02106f93b859b0012c41b78b5be8e88086ae4bd6
+	sha256sums = 13674437bc0bc659ef28613421e3f02b7a37a606aecd9d684c8c8acbcdc49782
+	sha256sums = bfeb1d7f3b42efa68ed6a89af450294332bdeb7222dd0d972a88221411829967
+
+pkgname = zelda-olb
+
