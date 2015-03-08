@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides ROS specific hooks for stage."
 url='http://ros.org/wiki/stage_ros'
 
 pkgname='ros-indigo-stage-ros'
-pkgver='1.7.3'
+pkgver='1.7.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
