@@ -1,0 +1,40 @@
+From af8f2eb1f25d2ca467fe941aeed111a743fce7cc Mon Sep 17 00:00:00 2001
+From: jjacky <i.am.jack.mail@gmail.com>
+Date: Mon, 6 May 2013 11:00:51 +0200
+Subject: [PATCH 3/3] Fix new window always top-left when screen not full
+
+Totally forgot to account for the case where the screen isn't actually fully
+"used" already, because I always have a couple app fullscreen.
+
+Also, this actually was a memory leak.
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ src/placement.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/placement.c b/src/placement.c
+index f9757cc..f57493f 100644
+--- a/src/placement.c
++++ b/src/placement.c
+@@ -779,6 +779,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+         if (!region_hole)
+             break;
+ 
++has_hole:
+         cairo_region_destroy (region_monitor);
+         cairo_region_destroy (region_used);
+ 
+@@ -864,6 +865,9 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+         return;
+     }
+ 
++    if (region_hole)
++        goto has_hole;
++
+     cairo_region_destroy (region_monitor);
+     cairo_region_destroy (region_used);
+ 
+-- 
+2.3.1
+

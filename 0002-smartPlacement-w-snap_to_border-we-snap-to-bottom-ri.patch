@@ -1,0 +1,102 @@
+From 765202c0b22e39b408338756f709d5aa317a5ab0 Mon Sep 17 00:00:00 2001
+From: jjacky <i.am.jack.mail@gmail.com>
+Date: Fri, 5 Apr 2013 15:22:11 +0200
+Subject: [PATCH 2/3] smartPlacement: w/ snap_to_border we snap to bottom/right
+
+By default we will snap to top/left if possible, since we use that corner as
+position for the window. If option snap_to_border is activated, and we're not
+snapper to the top/left borders, if we can we'll snap to the bottom/right ones.
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ src/placement.c | 33 +++++++++++++++++++++------------
+ 1 file changed, 21 insertions(+), 12 deletions(-)
+
+diff --git a/src/placement.c b/src/placement.c
+index aba284f..f9757cc 100644
+--- a/src/placement.c
++++ b/src/placement.c
+@@ -714,7 +714,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+         Client *c2 = list->data;
+         gint i, n;
+         gboolean done;
+-        gint best_x, best_y;
++        cairo_rectangle_int_t best;
+         gdouble best_surface = 0;
+         gboolean can_window_fit = FALSE;
+ 
+@@ -786,7 +786,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+         for (i = 0; i < n; ++i)
+         {
+             cairo_rectangle_int_t r;
+-            gint exp_x, exp_y;
++            cairo_rectangle_int_t exp;
+             gdouble exp_surface;
+             gboolean exp_can_window_fit;
+             gdouble surface;
+@@ -797,10 +797,9 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+             /* expand horizontally, then vertically */
+             expand_horizontal (region_hole, &rect, full_x, full_y, full_w, full_h);
+             expand_vertical (region_hole, &rect, full_x, full_y, full_w, full_h);
+-            exp_x = rect.x;
+-            exp_y = rect.y;
+-            exp_surface = rect.width * rect.height;
+-            exp_can_window_fit = frame_width <= rect.width && frame_height <= rect.height;
++            exp = rect;
++            exp_surface = exp.width * exp.height;
++            exp_can_window_fit = frame_width <= exp.width && frame_height <= exp.height;
+ 
+             /* expand vertically, then horizontally */
+             expand_vertical (region_hole, &rect, full_x, full_y, full_w, full_h);
+@@ -814,9 +813,8 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+                     || (exp_can_window_fit && can_fit && surface < exp_surface))
+             {
+                 exp_can_window_fit = can_fit;
++                exp = rect;
+                 exp_surface = surface;
+-                exp_x = rect.x;
+-                exp_y = rect.y;
+             }
+ 
+             /* is this the new best result ? (same criteria) */
+@@ -825,15 +823,14 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+                     || (can_window_fit && exp_can_window_fit && exp_surface < best_surface))
+             {
+                 can_window_fit = exp_can_window_fit;
++                best = exp;
+                 best_surface = exp_surface;
+-                best_x = exp_x;
+-                best_y = exp_y;
+             }
+         }
+         cairo_region_destroy (region_hole);
+ 
+-        c->x = best_x;
+-        c->y = best_y;
++        c->x = best.x;
++        c->y = best.y;
+ 
+         /* unless it could fit, make sure it's fully within monitor */
+         if (!can_window_fit)
+@@ -848,6 +845,18 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+                 c->y -= n;
+         }
+ 
++        /* w/ option snap_to_border, we'll try to do just that on the right
++         * & bottom borders if we can & are not on the top/left ones already */
++        if (screen_info->params->snap_to_border)
++        {
++            /* snap right */
++            if (c->x > full_x && best.x + best.width == full_x + full_w)
++                c->x = full_x + full_w - frame_width;
++            /* snap bottom */
++            if (c->y > full_y && best.y + best.height == full_y + full_h)
++                c->y = full_y + full_h - frame_height;
++        }
++
+         /* add frames */
+         c->x += frame_left;
+         c->y += frame_top;
+-- 
+2.3.1
+

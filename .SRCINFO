@@ -1,7 +1,7 @@
 pkgbase = xfwm4-better-smartplacement
 	pkgdesc = Xfce window manager w/ better smart placement of new windows
-	pkgver = 4.10.1
-	pkgrel = 2
+	pkgver = 4.12.0
+	pkgrel = 1
 	url = http://www.xfce.org/
 	install = xfwm4-better-smartplacement.install
 	arch = i686
@@ -13,13 +13,17 @@ pkgbase = xfwm4-better-smartplacement
 	depends = libxfce4ui
 	depends = libwnck
 	depends = hicolor-icon-theme
-	provides = xfwm4=4.10.1
+	provides = xfwm4
 	conflicts = xfwm4
 	options = !libtool
-	source = http://archive.xfce.org/src/xfce/xfwm4/4.10/xfwm4-4.10.1.tar.bz2
+	source = http://archive.xfce.org/src/xfce/xfwm4/4.10/xfwm4-4.12.0.tar.bz2
 	source = 0001-Rewrote-smartPlacement.patch
-	sha1sums = cbfb1beee0e952f133ef851526823b472992de1d
-	sha1sums = 8c0bc28a8ae5d3e9d516c1a3b271eab094b0dd88
+	source = 0002-smartPlacement-w-snap_to_border-we-snap-to-bottom-ri.patch
+	source = 0003-Fix-new-window-always-top-left-when-screen-not-full.patch
+	sha1sums = 5c3ea9faaa9b45a40ca7ecfff447cdca192534f6
+	sha1sums = 14c407c8734add318b7b0f0a9b86bcaf6a210b81
+	sha1sums = 4cb167d59c1ad0776aa9a53cafafd0168ede5cc9
+	sha1sums = 89f5b54d7370db86c7547580a6d1376cb88980fa
 
 pkgname = xfwm4-better-smartplacement
 

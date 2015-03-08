@@ -1,7 +1,7 @@
-From ecbda020850598aaf0c05bc82ba449fb62c2363f Mon Sep 17 00:00:00 2001
-From: jjacky <i.am.jack.mail@gmail.com>
-Date: Fri, 5 Apr 2013 15:33:00 +0200
-Subject: [PATCH] Rewrote smartPlacement()
+From ada426d2da8750421456ba51aa4c60be69a2fc3e Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sun, 8 Mar 2015 13:22:12 +0100
+Subject: [PATCH 1/3] Rewrote smartPlacement()
 
 Instead of trying to find the position with the least overlaps, including all
 stacked windows with the same weight, we now try to determine the place where
@@ -11,20 +11,16 @@ In effect, this means all windows hidden by another one are ignored, only
 windows visible to the user should matter. We put the new window on top of the
 window the lowest on stack, i.e. the last one to be activated/(fully) visible.
 
-By default we will snap to top/left if possible, since we use that corner as
-position for the window. If option snap_to_border is activated, and we're not
-snapper to the top/left borders, if we can we'll snap to the bottom/right ones.
-
-Signed-off-by: jjacky <i.am.jack.mail@gmail.com>
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
- src/placement.c | 349 +++++++++++++++++++++++++++++++++++++++++++++++---------
- 1 file changed, 292 insertions(+), 57 deletions(-)
+ src/placement.c | 418 ++++++++++++++++++++++++++++++++++++--------------------
+ 1 file changed, 272 insertions(+), 146 deletions(-)
 
 diff --git a/src/placement.c b/src/placement.c
-index 01f2590..2831c65 100644
+index cae55ac..aba284f 100644
 --- a/src/placement.c
 +++ b/src/placement.c
-@@ -533,16 +533,139 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
+@@ -555,16 +555,139 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
  }
  
  static void
@@ -162,29 +158,34 @@ index 01f2590..2831c65 100644
 -    guint i;
 -    gint test_x, test_y, xmax, ymax, best_x, best_y;
      gint frame_height, frame_width, frame_left, frame_top;
--    gboolean first;
 -    gint c2_x, c2_y;
+-    gint xmin, ymin;
 +    cairo_region_t *region_monitor, *region_used, *region_hole, *region_tmp;
 +    cairo_rectangle_int_t rect;
 +    GList *list;
  
      g_return_if_fail (c != NULL);
      TRACE ("entering smartPlacement");
-@@ -552,70 +675,182 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
-     frame_width = frameWidth (c);
-     frame_left = frameLeft(c);
-     frame_top = frameTop (c);
--    test_x = 0;
--    test_y = 0;
--    best_overlaps = 0.0;
--    first = TRUE;
+@@ -575,165 +698,168 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+     frame_left = frameExtentLeft(c);
+     frame_top = frameExtentTop (c);
  
--    xmax = full_x + full_w - c->width - frameRight (c);
--    ymax = full_y + full_h - c->height - frameBottom (c);
--    best_x = full_x + frameLeft (c);
--    best_y = full_y + frameTop (c);
+-    /* max coordinates (bottom-right) */
+-    xmax = full_x + full_w - c->width - frameExtentRight (c);
+-    ymax = full_y + full_h - c->height - frameExtentBottom (c);
 -
--    test_y = full_y + frameTop (c);
+-    /* min coordinates (top-left) */
+-    xmin = full_x + frameExtentLeft (c);
+-    ymin = full_y + frameExtentTop (c);
+-
+-    /* start with worst-case position at top-left */
+-    best_overlaps = G_MAXFLOAT;
+-    best_x = xmin;
+-    best_y = ymin;
+-
+-    TRACE ("analyzing %i clients", screen_info->client_count);
+-
+-    test_y = ymin;
 -    do
 +    /* region of the monitor (i.e. where we can/want to put the window) */
 +    rect.x = full_x;
@@ -199,12 +200,17 @@ index 01f2590..2831c65 100644
 +
 +    for (list = g_list_last (screen_info->windows_stack); list; list = g_list_previous (list))
      {
--        test_x = full_x + frameLeft (c);
+-        gint next_test_y = G_MAXINT;
+-        gboolean first_test_x = TRUE;
+-
+-        TRACE ("testing y position %d", test_y);
+-
+-        test_x = xmin;
 -        do
 +        Client *c2 = list->data;
 +        gint i, n;
 +        gboolean done;
-+        cairo_rectangle_int_t best;
++        gint best_x, best_y;
 +        gdouble best_surface = 0;
 +        gboolean can_window_fit = FALSE;
 +
@@ -212,15 +218,22 @@ index 01f2590..2831c65 100644
 +                continue;
 +
 +        /* rectangle for the window */
-+        rect.x = frameX (c2);
-+        rect.y = frameY (c2);
-+        rect.width = frameWidth (c2);
-+        rect.height = frameHeight (c2);
++        rect.x = frameExtentX (c2);
++        rect.y = frameExtentY (c2);
++        rect.width = frameExtentWidth (c2);
++        rect.height = frameExtentHeight (c2);
 +
 +        switch (cairo_region_contains_rectangle (region_monitor, &rect))
          {
 -            gfloat count_overlaps = 0.0;
--            TRACE ("analyzing %i clients", screen_info->client_count);
+-            gint next_test_x = G_MAXINT;
+-            gint c2_next_test_x;
+-            gint c2_next_test_y;
+-            gint c2_frame_height;
+-            gint c2_frame_width;
+-
+-            TRACE ("testing x position %d", test_x);
+-
 -            for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
 -            {
 -                if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
@@ -235,8 +248,23 @@ index 01f2590..2831c65 100644
 +                break;
 +            case CAIRO_REGION_OVERLAP_PART:
                  {
--                    c2_x = frameX (c2);
--                    c2_y = frameY (c2);
+-                    c2_x = frameExtentX (c2);
+-                    c2_frame_width = frameExtentWidth (c2);
+-                    if (c2_x >= full_x + full_w
+-                        || c2_x + c2_frame_width < full_x)
+-                    {
+-                        /* skip clients on right-of or left-of monitor */
+-                        continue;
+-                    }
+-
+-                    c2_y = frameExtentY (c2);
+-                    c2_frame_height = frameExtentHeight (c2);
+-                    if (c2_y >= full_y + full_h
+-                        || c2_y + c2_frame_height < full_y)
+-                    {
+-                        /* skip clients on above-of or below-of monitor */
+-                        continue;
+-                    }
 -
 -                    count_overlaps += overlap (test_x - frame_left,
 -                                               test_y - frame_top,
@@ -244,8 +272,41 @@ index 01f2590..2831c65 100644
 -                                               test_y - frame_top + frame_height,
 -                                               c2_x,
 -                                               c2_y,
--                                               c2_x + frameWidth (c2),
--                                               c2_y + frameHeight (c2));
+-                                               c2_x + c2_frame_width,
+-                                               c2_y + c2_frame_height);
+-
+-                    /* find the next x boundy for the step */
+-                    if (test_x > c2_x)
+-                    {
+-                        /* test location is beyond the x of the window,
+-                         * take the window right corner as next target */
+-                        c2_x += c2_frame_width;
+-                    }
+-                    c2_next_test_x = MIN (c2_x, xmax);
+-                    if (c2_next_test_x < next_test_x
+-                        && c2_next_test_x > test_x)
+-                    {
+-                        /* set new optimal next x step position */
+-                        next_test_x = c2_next_test_x;
+-                    }
+-
+-                    if (first_test_x)
+-                    {
+-                        /* find the next y boundry step */
+-                        if (test_y > c2_y)
+-                        {
+-                            /* test location is beyond the y of the window,
+-                             * take the window bottom corner as next target */
+-                            c2_y += c2_frame_height;
+-                        }
+-                        c2_next_test_y = MIN (c2_y, ymax);
+-                        if (c2_next_test_y < next_test_y
+-                            && c2_next_test_y > test_y)
+-                        {
+-                            /* set new optimal next y step position */
+-                            next_test_y = c2_next_test_y;
+-                        }
+-                    }
 +                    /* get only the part of the window on our monitor */
 +                    region_tmp = cairo_region_copy (region_monitor);
 +                    cairo_region_intersect_rectangle (region_tmp, &rect);
@@ -254,16 +315,10 @@ index 01f2590..2831c65 100644
 +                    cairo_region_destroy (region_tmp);
                  }
 -            }
--            if (count_overlaps < 0.1)
--            {
--                TRACE ("overlaps is 0 so it's the best we can get");
--                c->x = test_x;
--                c->y = test_y;
 +        }
  
--                return;
--            }
--            else if ((count_overlaps < best_overlaps) || (first))
+-            /* don't look for the next y boundry this x row */
+-            first_test_x = FALSE;
 +        /* get a region of the monitor - visible window, i.e. leaving space
 +         * where we can put out window. The goal is to reach a place where there
 +         * isn't such space, and then go back one iteration, so we use the space
@@ -291,20 +346,42 @@ index 01f2590..2831c65 100644
 +            continue;
 +        }
 +        cairo_region_destroy (region_tmp);
-+
+ 
+-            if (count_overlaps < best_overlaps)
+-            {
+-                /* found position with less overlap */
+-                best_x = test_x;
+-                best_y = test_y;
+-                best_overlaps = count_overlaps;
 +        /* got nothing, use defaults */
 +        if (!region_hole)
 +            break;
-+
-+has_hole:
+ 
+-                if (count_overlaps == 0.0f)
+-                {
+-                    /* overlap is ideal, stop searching */
+-                    TRACE ("found position without overlap");
+-                    goto found_best;
+-                }
+-            }
 +        cairo_region_destroy (region_monitor);
 +        cairo_region_destroy (region_used);
-+
+ 
+-            if (G_LIKELY (next_test_x != G_MAXINT))
+-            {
+-                test_x = MAX (next_test_x, next_test_x + frameExtentLeft (c));
+-                if (test_x > xmax)
+-                {
+-                   /* always clamp on the monitor */
+-                   test_x = xmax;
+-                }
+-            }
+-            else
 +        n = cairo_region_num_rectangles (region_hole);
 +        for (i = 0; i < n; ++i)
 +        {
 +            cairo_rectangle_int_t r;
-+            cairo_rectangle_int_t exp;
++            gint exp_x, exp_y;
 +            gdouble exp_surface;
 +            gboolean exp_can_window_fit;
 +            gdouble surface;
@@ -315,9 +392,10 @@ index 01f2590..2831c65 100644
 +            /* expand horizontally, then vertically */
 +            expand_horizontal (region_hole, &rect, full_x, full_y, full_w, full_h);
 +            expand_vertical (region_hole, &rect, full_x, full_y, full_w, full_h);
-+            exp = rect;
-+            exp_surface = exp.width * exp.height;
-+            exp_can_window_fit = frame_width <= exp.width && frame_height <= exp.height;
++            exp_x = rect.x;
++            exp_y = rect.y;
++            exp_surface = rect.width * rect.height;
++            exp_can_window_fit = frame_width <= rect.width && frame_height <= rect.height;
 +
 +            /* expand vertically, then horizontally */
 +            expand_vertical (region_hole, &rect, full_x, full_y, full_w, full_h);
@@ -330,37 +408,42 @@ index 01f2590..2831c65 100644
 +            if ((!exp_can_window_fit && (can_fit || surface > exp_surface))
 +                    || (exp_can_window_fit && can_fit && surface < exp_surface))
              {
--                best_x = test_x;
--                best_y = test_y;
--                best_overlaps = count_overlaps;
+-                test_x++;
 +                exp_can_window_fit = can_fit;
-+                exp = rect;
 +                exp_surface = surface;
++                exp_x = rect.x;
++                exp_y = rect.y;
              }
--            if (first)
-+
+-        }
+-        while (test_x < xmax);
+ 
+-        if (G_LIKELY (next_test_y != G_MAXINT))
+-        {
+-            test_y = MAX (next_test_y, next_test_y + frameExtentTop (c));
+-            if (test_y > ymax)
 +            /* is this the new best result ? (same criteria) */
 +            if (best_surface == 0 /* our first result */
 +                    || (!can_window_fit && (exp_can_window_fit || exp_surface > best_surface))
 +                    || (can_window_fit && exp_can_window_fit && exp_surface < best_surface))
              {
--                first = FALSE;
+-                /* always clamp on the monitor */
+-                test_y = ymax;
 +                can_window_fit = exp_can_window_fit;
-+                best = exp;
 +                best_surface = exp_surface;
++                best_x = exp_x;
++                best_y = exp_y;
              }
--            test_x += 8;
          }
--        while (test_x <= xmax);
--        test_y += 8;
+-        else
 +        cairo_region_destroy (region_hole);
 +
-+        c->x = best.x;
-+        c->y = best.y;
++        c->x = best_x;
++        c->y = best_y;
 +
 +        /* unless it could fit, make sure it's fully within monitor */
 +        if (!can_window_fit)
-+        {
+         {
+-            test_y++;
 +            /* move to the left if needed */
 +            n = c->x + frame_width - full_x - full_w;
 +            if (n > 0)
@@ -369,41 +452,29 @@ index 01f2590..2831c65 100644
 +            n = c->y + frame_height - full_y - full_h;
 +            if (n > 0)
 +                c->y -= n;
-+        }
-+
-+        /* w/ option snap_to_border, we'll try to do just that on the right
-+         * & bottom borders if we can & are not on the top/left ones already */
-+        if (screen_info->params->snap_to_border)
-+        {
-+            /* snap right */
-+            if (c->x > full_x && best.x + best.width == full_x + full_w)
-+                c->x = full_x + full_w - frame_width;
-+            /* snap bottom */
-+            if (c->y > full_y && best.y + best.height == full_y + full_h)
-+                c->y = full_y + full_h - frame_height;
-+        }
-+
+         }
+-    }
+-    while (test_y < ymax);
+ 
+-    found_best:
 +        /* add frames */
 +        c->x += frame_left;
 +        c->y += frame_top;
 +
 +        return;
-     }
--    while (test_y <= ymax);
++    }
+ 
+-    TRACE ("overlaps %f at %d,%d (x,y)", best_overlaps, best_x, best_y);
++    cairo_region_destroy (region_monitor);
++    cairo_region_destroy (region_used);
  
 -    c->x = best_x;
 -    c->y = best_y;
-+    if (region_hole)
-+        goto has_hole;
-+
-+    cairo_region_destroy (region_monitor);
-+    cairo_region_destroy (region_used);
-+
 +    c->x = full_x + frame_left;
 +    c->y = full_y + frame_top;
  }
  
  static void
 -- 
-1.8.2.2
+2.3.1
 
