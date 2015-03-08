@@ -1,4 +1,4 @@
-# Maintainer: Aaron Mueller <mail@aaron-mueller.de>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 
 pkgname=brother-dcp7030
