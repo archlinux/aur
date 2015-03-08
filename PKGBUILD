@@ -7,7 +7,7 @@ pkgname='ros-indigo-rqt-common-plugins'
 pkgver='0.3.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -26,7 +26,7 @@ ros_depends=(ros-indigo-rqt-top
   ros-indigo-rqt-console
   ros-indigo-rqt-logger-level
   ros-indigo-rqt-bag-plugins
-  ros-indigo-rqt-plot
+  #ros-indigo-rqt-plot
   ros-indigo-rqt-service-caller
   ros-indigo-rqt-reconfigure
   ros-indigo-rqt-graph
