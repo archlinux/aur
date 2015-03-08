@@ -1,7 +1,7 @@
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Giorgio Lando <patroclo7@gmail.com>
 # Contributor: falconindy <d@falconindy.com>
-# Maintainer: Aaron Mueller <mail@aaron-mueller.de>
 
 pkgname=weex
 pkgver=2.6.1.5
