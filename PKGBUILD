@@ -1,4 +1,4 @@
-# Maintainer: Aaron Mueller <mail@aaron-mueller.de>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 
 pkgname=libgaminggear
 pkgver=0.6.0
