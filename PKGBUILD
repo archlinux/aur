@@ -13,7 +13,7 @@ depends=('perl')
 depends_x86_64=('lib32-glibc')
 
 source=("http://www.rfxn.com/downloads/maldetect-1.4.2.tar.gz")
-sha256sums=('dd2badb95f75ae90ed94892d799aedadc79498a72ef3502ab87f35509c76c094')
+sha256sums=('79b475e7217e6019289f9c13d5c0e4e39e85db57831e894b36324c77a375a77a')
 
 package() {
   cd "${srcdir}/${pkgname}ect-${pkgver}"
