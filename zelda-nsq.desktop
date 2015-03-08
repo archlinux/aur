@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zelda: Navi's Quest
+Comment=Fourth Game in a series of fan made Zelda Games
+Exec=zelda-nsq
+Icon=zelda-nsq
+Terminal=false
+Categories=Game;AdventureGame;

@@ -1,0 +1,2552 @@
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/config/AudioHelper.cpp ZeldaNSQ_US-src-linux/src/config/AudioHelper.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/config/AudioHelper.cpp	2014-07-26 16:45:22.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/config/AudioHelper.cpp	2015-03-08 22:15:04.295639348 +0100
+@@ -9,46 +9,46 @@
+ 
+ string AudioHelper::getMusicName(int id) {
+     switch (id) {
+-        case 0 : return "data/musics/Titre.it";
+-        case 1 : return "data/musics/Fee.it";
+-        case 2 : return "data/musics/Mort.it";
+-        case 3 : return "data/musics/Plage.it";
+-        case 4 : return "data/musics/Jungle.it";
+-        case 5 : return "data/musics/Coquillages.it";
+-        case 6 : return "data/musics/Opening.it";
+-        case 7 : return "data/musics/Lac.it";
+-        case 8 : return "data/musics/Plaine.it";
+-        case 9 : return "data/musics/Falaises.it";
+-        case 10 : return "data/musics/Gemmes.it";
+-        case 11 : return "data/musics/Marais.it";
+-        case 12 : return "data/musics/Fontaine.it";
+-        case 13 : return "data/musics/Canyon.it";
+-        case 14 : return "data/musics/Desert.it";
+-        case 15 : return "data/musics/VillageO.it";
+-        case 16 : return "data/musics/Cimetiere.it";
+-        case 17 : return "data/musics/Mont.it";
+-        case 18 : return "data/musics/Cave.it";
+-        case 19 : return "data/musics/Boss.it";
+-        case 20 : return "data/musics/Epee.it";
+-        case 21 : return "data/musics/Magasin.it";
+-        case 22 : return "data/musics/Jeu.it";
+-        case 23 : return "data/musics/Maison.it";
+-        case 24 : return "data/musics/Maire.it";
+-        case 25 : return "data/musics/Bar.it";
+-        case 26 : return "data/musics/Colisee.it";
+-        case 27 : return "data/musics/Sorciere.it";
+-        case 28 : return "data/musics/DJungle.it";
+-        case 29 : return "data/musics/DTerre.it";
+-        case 30 : return "data/musics/DPyramide.it";
+-        case 31 : return "data/musics/DEau.it";
+-        case 32 : return "data/musics/DFeu.it";
+-        case 33 : return "data/musics/DOmbre.it";
+-        case 34 : return "data/musics/DGlace.it";
+-        case 35 : return "data/musics/DSecret.it";
+-        case 36 : return "data/musics/DFinal.it";
+-        case 37 : return "data/musics/DFinal2.it";
+-        case 38 : return "data/musics/BossF.it";
+-        case 39 : return "data/musics/End.it";
++        case 0 : return "/usr/share/zelda-nsq/musics/Titre.it";
++        case 1 : return "/usr/share/zelda-nsq/musics/Fee.it";
++        case 2 : return "/usr/share/zelda-nsq/musics/Mort.it";
++        case 3 : return "/usr/share/zelda-nsq/musics/Plage.it";
++        case 4 : return "/usr/share/zelda-nsq/musics/Jungle.it";
++        case 5 : return "/usr/share/zelda-nsq/musics/Coquillages.it";
++        case 6 : return "/usr/share/zelda-nsq/musics/Opening.it";
++        case 7 : return "/usr/share/zelda-nsq/musics/Lac.it";
++        case 8 : return "/usr/share/zelda-nsq/musics/Plaine.it";
++        case 9 : return "/usr/share/zelda-nsq/musics/Falaises.it";
++        case 10 : return "/usr/share/zelda-nsq/musics/Gemmes.it";
++        case 11 : return "/usr/share/zelda-nsq/musics/Marais.it";
++        case 12 : return "/usr/share/zelda-nsq/musics/Fontaine.it";
++        case 13 : return "/usr/share/zelda-nsq/musics/Canyon.it";
++        case 14 : return "/usr/share/zelda-nsq/musics/Desert.it";
++        case 15 : return "/usr/share/zelda-nsq/musics/VillageO.it";
++        case 16 : return "/usr/share/zelda-nsq/musics/Cimetiere.it";
++        case 17 : return "/usr/share/zelda-nsq/musics/Mont.it";
++        case 18 : return "/usr/share/zelda-nsq/musics/Cave.it";
++        case 19 : return "/usr/share/zelda-nsq/musics/Boss.it";
++        case 20 : return "/usr/share/zelda-nsq/musics/Epee.it";
++        case 21 : return "/usr/share/zelda-nsq/musics/Magasin.it";
++        case 22 : return "/usr/share/zelda-nsq/musics/Jeu.it";
++        case 23 : return "/usr/share/zelda-nsq/musics/Maison.it";
++        case 24 : return "/usr/share/zelda-nsq/musics/Maire.it";
++        case 25 : return "/usr/share/zelda-nsq/musics/Bar.it";
++        case 26 : return "/usr/share/zelda-nsq/musics/Colisee.it";
++        case 27 : return "/usr/share/zelda-nsq/musics/Sorciere.it";
++        case 28 : return "/usr/share/zelda-nsq/musics/DJungle.it";
++        case 29 : return "/usr/share/zelda-nsq/musics/DTerre.it";
++        case 30 : return "/usr/share/zelda-nsq/musics/DPyramide.it";
++        case 31 : return "/usr/share/zelda-nsq/musics/DEau.it";
++        case 32 : return "/usr/share/zelda-nsq/musics/DFeu.it";
++        case 33 : return "/usr/share/zelda-nsq/musics/DOmbre.it";
++        case 34 : return "/usr/share/zelda-nsq/musics/DGlace.it";
++        case 35 : return "/usr/share/zelda-nsq/musics/DSecret.it";
++        case 36 : return "/usr/share/zelda-nsq/musics/DFinal.it";
++        case 37 : return "/usr/share/zelda-nsq/musics/DFinal2.it";
++        case 38 : return "/usr/share/zelda-nsq/musics/BossF.it";
++        case 39 : return "/usr/share/zelda-nsq/musics/End.it";
+         default : return "";
+     }
+ }
+@@ -59,98 +59,98 @@
+ 
+ void AudioHelper::loadSounds() {
+     sounds = new WSound*[TS_NB_MAX];
+-    sounds[TS_MENU1] = new WSound("data/sounds/menu/menu1.wav");
+-    sounds[TS_MENU2] = new WSound("data/sounds/menu/menu2.wav");
+-    sounds[TS_MENU3] = new WSound("data/sounds/menu/menu3.wav");
+-
+-    sounds[TS_STEP_GRASS1] = new WSound("data/sounds/steps/Steps_Grass1.wav");
+-    sounds[TS_STEP_GRASS2] = new WSound("data/sounds/steps/Steps_Grass2.wav");
+-    sounds[TS_STEP_DIRT1] = new WSound("data/sounds/steps/Steps_Dirt1.wav");
+-    sounds[TS_STEP_DIRT2] = new WSound("data/sounds/steps/Steps_Dirt2.wav");
+-    sounds[TS_STEP_TALLGRASS1] = new WSound("data/sounds/steps/Steps_TallGrass1.wav");
+-    sounds[TS_STEP_TALLGRASS2] = new WSound("data/sounds/steps/Steps_TallGrass2.wav");
+-    sounds[TS_STEP_ICE1] = new WSound("data/sounds/steps/Steps_Ice1.wav");
+-    sounds[TS_STEP_ICE2] = new WSound("data/sounds/steps/Steps_Ice2.wav");
+-    sounds[TS_STEP_WATER1] = new WSound("data/sounds/steps/Steps_Water1.wav");
+-    sounds[TS_STEP_WATER2] = new WSound("data/sounds/steps/Steps_Water2.wav");
+-    sounds[TS_STEP_SAND1] = new WSound("data/sounds/steps/Steps_Sand1.wav");
+-    sounds[TS_STEP_SAND2] = new WSound("data/sounds/steps/Steps_Sand2.wav");
+-    sounds[TS_STEP_STONE1] = new WSound("data/sounds/steps/Steps_Stone1.wav");
+-    sounds[TS_STEP_STONE2] = new WSound("data/sounds/steps/Steps_Stone2.wav");
+-    sounds[TS_STEP_WOOD1] = new WSound("data/sounds/steps/Steps_Wood1.wav");
+-    sounds[TS_STEP_WOOD2] = new WSound("data/sounds/steps/Steps_Wood2.wav");
+-    sounds[TS_STEP_CARPET1] = new WSound("data/sounds/steps/Steps_Carpet1.wav");
+-    sounds[TS_STEP_CARPET2] = new WSound("data/sounds/steps/Steps_Carpet2.wav");
+-
+-
+-    sounds[TS_JUMP] = new WSound("data/sounds/link/jump.wav");
+-    sounds[TS_NAGE] = new WSound("data/sounds/link/nage.wav");
+-    sounds[TS_ATTACK1] = new WSound("data/sounds/link/attack1.wav");
+-    sounds[TS_ATTACK2] = new WSound("data/sounds/link/attack2.wav");
+-    sounds[TS_ATTACK3] = new WSound("data/sounds/link/attack3.wav");
+-    sounds[TS_ATTACK4] = new WSound("data/sounds/link/attack4.wav");
+-    sounds[TS_HURT] = new WSound("data/sounds/link/hurt.wav");
+-    sounds[TS_DANGER] = new WSound("data/sounds/link/danger.wav");
+-    sounds[TS_HEART] = new WSound("data/sounds/link/heart.wav");
+-    sounds[TS_RUPEE] = new WSound("data/sounds/link/rupee.wav");
+-    sounds[TS_SPIN] = new WSound("data/sounds/link/spin.wav");
+-    sounds[TS_ITEM] = new WSound("data/sounds/link/item.wav");
+-    sounds[TS_FALL] = new WSound("data/sounds/link/fall.wav");
+-    sounds[TS_MAGICCHARGE] = new WSound("data/sounds/link/charge.wav");
+-    sounds[TS_HAPPY] = new WSound("data/sounds/link/happy.wav");
+-    sounds[TS_SHOOT] = new WSound("data/sounds/link/shoot.wav");
+-    sounds[TS_THROW] = new WSound("data/sounds/link/lance.wav");
+-    sounds[TS_PORTE] = new WSound("data/sounds/link/porte.wav");
+-    sounds[TS_GRAPPIN] = new WSound("data/sounds/link/hookshot.wav");
+-    sounds[TS_MAGIC] = new WSound("data/sounds/link/magic.wav");
+-    sounds[TS_MARTEAU] = new WSound("data/sounds/link/hammer.wav");
+-    sounds[TS_PLOT] = new WSound("data/sounds/link/plot.wav");
+-    sounds[TS_CAPE_ON] = new WSound("data/sounds/link/capeon.wav");
+-    sounds[TS_CAPE_OFF] = new WSound("data/sounds/link/capeoff.wav");
+-    sounds[TS_CANE] = new WSound("data/sounds/link/cane.wav");
+-    sounds[TS_BYRNA] = new WSound("data/sounds/link/byrna.wav");
+-    sounds[TS_SHOCK] = new WSound("data/sounds/link/shock.wav");
+-    sounds[TS_BOOMERANG] = new WSound("data/sounds/link/boomerang.wav");
+-    sounds[TS_BAGUETTE_FEU] = new WSound("data/sounds/link/baguetteFeu.wav");
+-    sounds[TS_BAGUETTE_GLACE] = new WSound("data/sounds/link/baguetteGlace.wav");
+-
+-
+-    sounds[TS_NAVY_HEY] = new WSound("data/sounds/link/hey.wav");
+-    sounds[TS_NAVY_LISTEN] = new WSound("data/sounds/link/listen.wav");
+-    sounds[TS_NAVY_HELLO] = new WSound("data/sounds/link/hello.wav");
+-    sounds[TS_NAVY_LOOK] = new WSound("data/sounds/link/look.wav");
+-
+-    sounds[TS_SONG_1] = new WSound("data/sounds/ocarina/zelda.wav");
+-    sounds[TS_SONG_2] = new WSound("data/sounds/ocarina/envol.wav");
+-    sounds[TS_SONG_3] = new WSound("data/sounds/ocarina/vide.wav");
+-
+-    sounds[TS_SWORD] = new WSound("data/sounds/items/sword.wav");
+-    sounds[TS_SWORDCHARGING] = new WSound("data/sounds/items/SwordCharging.wav");
+-
+-    sounds[TS_HITENNEMY] = new WSound("data/sounds/others/hitenemy.wav");
+-    sounds[TS_KILLENNEMY] = new WSound("data/sounds/others/killenemy.wav");
+-    sounds[TS_PLOUF] = new WSound("data/sounds/others/plouf.wav");
+-    sounds[TS_SOL] = new WSound("data/sounds/others/stamp.wav");
+-    sounds[TS_BOOM] = new WSound("data/sounds/others/bomb.wav");
+-    sounds[TS_TOMBE] = new WSound("data/sounds/others/tombe.wav");
+-    sounds[TS_BURN] = new WSound("data/sounds/others/burn.wav");
+-    sounds[TS_BUISSON] = new WSound("data/sounds/others/buisson.wav");
+-    sounds[TS_DOOR] = new WSound("data/sounds/others/door.wav");
+-    sounds[TS_SURPRISE] = new WSound("data/sounds/others/surprise.wav");
+-    sounds[TS_ERROR] = new WSound("data/sounds/others/error.wav");
+-    sounds[TS_ESCALIERS_DOWN] = new WSound("data/sounds/others/descend.wav");
+-    sounds[TS_ESCALIERS_UP] = new WSound("data/sounds/others/monte.wav");
+-    sounds[TS_TELEPORT] = new WSound("data/sounds/others/timewarp.wav");
+-
+-    sounds[TS_PUSH] = new WSound("data/sounds/objects/push.wav");
+-    sounds[TS_BREAK] = new WSound("data/sounds/objects/casse.wav");
+-    sounds[TS_COFFRE] = new WSound("data/sounds/objects/coffre.wav");
+-    sounds[TS_POULE] = new WSound("data/sounds/objects/poule.wav");
+-    sounds[TS_PICS] = new WSound("data/sounds/objects/pics.wav");
+-
+-    sounds[TS_TEXT] = new WSound("data/sounds/texts/text.wav");
+-    sounds[TS_TEXTNEXT] = new WSound("data/sounds/texts/textnext.wav");
+-    sounds[TS_TEXTEND] = new WSound("data/sounds/texts/textend.wav");
++    sounds[TS_MENU1] = new WSound("/usr/share/zelda-nsq/sounds/menu/menu1.wav");
++    sounds[TS_MENU2] = new WSound("/usr/share/zelda-nsq/sounds/menu/menu2.wav");
++    sounds[TS_MENU3] = new WSound("/usr/share/zelda-nsq/sounds/menu/menu3.wav");
++
++    sounds[TS_STEP_GRASS1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Grass1.wav");
++    sounds[TS_STEP_GRASS2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Grass2.wav");
++    sounds[TS_STEP_DIRT1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Dirt1.wav");
++    sounds[TS_STEP_DIRT2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Dirt2.wav");
++    sounds[TS_STEP_TALLGRASS1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_TallGrass1.wav");
++    sounds[TS_STEP_TALLGRASS2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_TallGrass2.wav");
++    sounds[TS_STEP_ICE1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Ice1.wav");
++    sounds[TS_STEP_ICE2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Ice2.wav");
++    sounds[TS_STEP_WATER1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Water1.wav");
++    sounds[TS_STEP_WATER2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Water2.wav");
++    sounds[TS_STEP_SAND1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Sand1.wav");
++    sounds[TS_STEP_SAND2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Sand2.wav");
++    sounds[TS_STEP_STONE1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Stone1.wav");
++    sounds[TS_STEP_STONE2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Stone2.wav");
++    sounds[TS_STEP_WOOD1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Wood1.wav");
++    sounds[TS_STEP_WOOD2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Wood2.wav");
++    sounds[TS_STEP_CARPET1] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Carpet1.wav");
++    sounds[TS_STEP_CARPET2] = new WSound("/usr/share/zelda-nsq/sounds/steps/Steps_Carpet2.wav");
++
++
++    sounds[TS_JUMP] = new WSound("/usr/share/zelda-nsq/sounds/link/jump.wav");
++    sounds[TS_NAGE] = new WSound("/usr/share/zelda-nsq/sounds/link/nage.wav");
++    sounds[TS_ATTACK1] = new WSound("/usr/share/zelda-nsq/sounds/link/attack1.wav");
++    sounds[TS_ATTACK2] = new WSound("/usr/share/zelda-nsq/sounds/link/attack2.wav");
++    sounds[TS_ATTACK3] = new WSound("/usr/share/zelda-nsq/sounds/link/attack3.wav");
++    sounds[TS_ATTACK4] = new WSound("/usr/share/zelda-nsq/sounds/link/attack4.wav");
++    sounds[TS_HURT] = new WSound("/usr/share/zelda-nsq/sounds/link/hurt.wav");
++    sounds[TS_DANGER] = new WSound("/usr/share/zelda-nsq/sounds/link/danger.wav");
++    sounds[TS_HEART] = new WSound("/usr/share/zelda-nsq/sounds/link/heart.wav");
++    sounds[TS_RUPEE] = new WSound("/usr/share/zelda-nsq/sounds/link/rupee.wav");
++    sounds[TS_SPIN] = new WSound("/usr/share/zelda-nsq/sounds/link/spin.wav");
++    sounds[TS_ITEM] = new WSound("/usr/share/zelda-nsq/sounds/link/item.wav");
++    sounds[TS_FALL] = new WSound("/usr/share/zelda-nsq/sounds/link/fall.wav");
++    sounds[TS_MAGICCHARGE] = new WSound("/usr/share/zelda-nsq/sounds/link/charge.wav");
++    sounds[TS_HAPPY] = new WSound("/usr/share/zelda-nsq/sounds/link/happy.wav");
++    sounds[TS_SHOOT] = new WSound("/usr/share/zelda-nsq/sounds/link/shoot.wav");
++    sounds[TS_THROW] = new WSound("/usr/share/zelda-nsq/sounds/link/lance.wav");
++    sounds[TS_PORTE] = new WSound("/usr/share/zelda-nsq/sounds/link/porte.wav");
++    sounds[TS_GRAPPIN] = new WSound("/usr/share/zelda-nsq/sounds/link/hookshot.wav");
++    sounds[TS_MAGIC] = new WSound("/usr/share/zelda-nsq/sounds/link/magic.wav");
++    sounds[TS_MARTEAU] = new WSound("/usr/share/zelda-nsq/sounds/link/hammer.wav");
++    sounds[TS_PLOT] = new WSound("/usr/share/zelda-nsq/sounds/link/plot.wav");
++    sounds[TS_CAPE_ON] = new WSound("/usr/share/zelda-nsq/sounds/link/capeon.wav");
++    sounds[TS_CAPE_OFF] = new WSound("/usr/share/zelda-nsq/sounds/link/capeoff.wav");
++    sounds[TS_CANE] = new WSound("/usr/share/zelda-nsq/sounds/link/cane.wav");
++    sounds[TS_BYRNA] = new WSound("/usr/share/zelda-nsq/sounds/link/byrna.wav");
++    sounds[TS_SHOCK] = new WSound("/usr/share/zelda-nsq/sounds/link/shock.wav");
++    sounds[TS_BOOMERANG] = new WSound("/usr/share/zelda-nsq/sounds/link/boomerang.wav");
++    sounds[TS_BAGUETTE_FEU] = new WSound("/usr/share/zelda-nsq/sounds/link/baguetteFeu.wav");
++    sounds[TS_BAGUETTE_GLACE] = new WSound("/usr/share/zelda-nsq/sounds/link/baguetteGlace.wav");
++
++
++    sounds[TS_NAVY_HEY] = new WSound("/usr/share/zelda-nsq/sounds/link/hey.wav");
++    sounds[TS_NAVY_LISTEN] = new WSound("/usr/share/zelda-nsq/sounds/link/listen.wav");
++    sounds[TS_NAVY_HELLO] = new WSound("/usr/share/zelda-nsq/sounds/link/hello.wav");
++    sounds[TS_NAVY_LOOK] = new WSound("/usr/share/zelda-nsq/sounds/link/look.wav");
++
++    sounds[TS_SONG_1] = new WSound("/usr/share/zelda-nsq/sounds/ocarina/zelda.wav");
++    sounds[TS_SONG_2] = new WSound("/usr/share/zelda-nsq/sounds/ocarina/envol.wav");
++    sounds[TS_SONG_3] = new WSound("/usr/share/zelda-nsq/sounds/ocarina/vide.wav");
++
++    sounds[TS_SWORD] = new WSound("/usr/share/zelda-nsq/sounds/items/sword.wav");
++    sounds[TS_SWORDCHARGING] = new WSound("/usr/share/zelda-nsq/sounds/items/SwordCharging.wav");
++
++    sounds[TS_HITENNEMY] = new WSound("/usr/share/zelda-nsq/sounds/others/hitenemy.wav");
++    sounds[TS_KILLENNEMY] = new WSound("/usr/share/zelda-nsq/sounds/others/killenemy.wav");
++    sounds[TS_PLOUF] = new WSound("/usr/share/zelda-nsq/sounds/others/plouf.wav");
++    sounds[TS_SOL] = new WSound("/usr/share/zelda-nsq/sounds/others/stamp.wav");
++    sounds[TS_BOOM] = new WSound("/usr/share/zelda-nsq/sounds/others/bomb.wav");
++    sounds[TS_TOMBE] = new WSound("/usr/share/zelda-nsq/sounds/others/tombe.wav");
++    sounds[TS_BURN] = new WSound("/usr/share/zelda-nsq/sounds/others/burn.wav");
++    sounds[TS_BUISSON] = new WSound("/usr/share/zelda-nsq/sounds/others/buisson.wav");
++    sounds[TS_DOOR] = new WSound("/usr/share/zelda-nsq/sounds/others/door.wav");
++    sounds[TS_SURPRISE] = new WSound("/usr/share/zelda-nsq/sounds/others/surprise.wav");
++    sounds[TS_ERROR] = new WSound("/usr/share/zelda-nsq/sounds/others/error.wav");
++    sounds[TS_ESCALIERS_DOWN] = new WSound("/usr/share/zelda-nsq/sounds/others/descend.wav");
++    sounds[TS_ESCALIERS_UP] = new WSound("/usr/share/zelda-nsq/sounds/others/monte.wav");
++    sounds[TS_TELEPORT] = new WSound("/usr/share/zelda-nsq/sounds/others/timewarp.wav");
++
++    sounds[TS_PUSH] = new WSound("/usr/share/zelda-nsq/sounds/objects/push.wav");
++    sounds[TS_BREAK] = new WSound("/usr/share/zelda-nsq/sounds/objects/casse.wav");
++    sounds[TS_COFFRE] = new WSound("/usr/share/zelda-nsq/sounds/objects/coffre.wav");
++    sounds[TS_POULE] = new WSound("/usr/share/zelda-nsq/sounds/objects/poule.wav");
++    sounds[TS_PICS] = new WSound("/usr/share/zelda-nsq/sounds/objects/pics.wav");
++
++    sounds[TS_TEXT] = new WSound("/usr/share/zelda-nsq/sounds/texts/text.wav");
++    sounds[TS_TEXTNEXT] = new WSound("/usr/share/zelda-nsq/sounds/texts/textnext.wav");
++    sounds[TS_TEXTEND] = new WSound("/usr/share/zelda-nsq/sounds/texts/textend.wav");
+ 
+ 
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/config/TextHelper.cpp ZeldaNSQ_US-src-linux/src/config/TextHelper.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/config/TextHelper.cpp	2014-08-05 23:02:45.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/config/TextHelper.cpp	2015-03-08 22:15:04.282305844 +0100
+@@ -8,7 +8,7 @@
+     setWSpace(6);
+     setWSize(8);
+     setHSize(16);
+-    image = ResourceManager::getInstance()->loadImage("data/images/texts/font.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/texts/font.png", true);
+     setImage(image);
+ }
+ 
+@@ -18,9 +18,9 @@
+ 
+ void TextHelper::setLanguage(int i) {
+     switch (i) {
+-        case 0 : setTextfile("data/texts/french.txt"); break;
+-        case 1 : setTextfile("data/texts/english.txt"); break;
+-        default : setTextfile("data/texts/english.txt"); break;
++        case 0 : setTextfile("/usr/share/zelda-nsq/texts/french.txt"); break;
++        case 1 : setTextfile("/usr/share/zelda-nsq/texts/english.txt"); break;
++        default : setTextfile("/usr/share/zelda-nsq/texts/english.txt"); break;
+     }
+ }
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Debris.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/Debris.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Debris.cpp	2014-06-04 22:45:29.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/Debris.cpp	2015-03-08 22:15:05.612322897 +0100
+@@ -9,7 +9,7 @@
+ 
+ Debris::Debris(int x, int y, Direction direction, int force, bool ol, bool d, bool t) : x(x), y(y), anim(0), animMax(2), vanim(120),
+         direction(direction), force(force), onLink(ol), degat(d), top(t) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/link/objets.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/objets.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Explosion.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/Explosion.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Explosion.cpp	2014-06-02 20:00:28.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/Explosion.cpp	2015-03-08 22:15:05.598989393 +0100
+@@ -7,7 +7,7 @@
+ #include "../../MainController.h"
+ 
+ Explosion::Explosion(int i, int j) : anim(0), animMax(1), vanim(120) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/bombe.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/bombe.png", true);
+     chrono.reset();
+ 
+     x = i - 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Feuilles.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/Feuilles.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Feuilles.cpp	2013-08-29 23:58:13.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/Feuilles.cpp	2015-03-08 22:15:05.565655632 +0100
+@@ -4,7 +4,7 @@
+ #include "../../../engine/window/WindowManager.h"
+ 
+ Feuilles::Feuilles(int i, int j, int t)  : x(i), y(j), type(t), anim(0), animMax(6), vanim(120) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/effects/buisson.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/effects/buisson.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/FlammeCirculaire.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/FlammeCirculaire.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/FlammeCirculaire.cpp	2014-07-19 17:29:41.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/FlammeCirculaire.cpp	2015-03-08 22:15:05.562322256 +0100
+@@ -6,7 +6,7 @@
+ #include "../../MainController.h"
+ 
+ FlammeCirculaire::FlammeCirculaire(int i, int j, Direction dir)  : x(i), y(j), direction(dir), anim(0), animMax(3), vanim(120) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/effects/feucirculaire.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/effects/feucirculaire.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Flamme.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/Flamme.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Flamme.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/Flamme.cpp	2015-03-08 22:15:05.575655760 +0100
+@@ -6,7 +6,7 @@
+ #include "../../MainController.h"
+ 
+ Flamme::Flamme(int i, int j, Direction dir)  : x(i), y(j), direction(dir), anim(0), animMax(4), vanim(240) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/effects/feu.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/effects/feu.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/FumeeBlanche.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/FumeeBlanche.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/FumeeBlanche.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/FumeeBlanche.cpp	2015-03-08 22:15:05.592322641 +0100
+@@ -4,7 +4,7 @@
+ #include "../../../engine/window/WindowManager.h"
+ 
+ FumeeBlanche::FumeeBlanche(int x, int y, int step) : x(x - 14), y(y - 14), anim(step), animMax(6), vanim(60) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/effects/explo.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/effects/explo.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/FumeeViolette.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/FumeeViolette.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/FumeeViolette.cpp	2014-07-06 13:37:02.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/FumeeViolette.cpp	2015-03-08 22:15:05.552322127 +0100
+@@ -4,7 +4,7 @@
+ #include "../../../engine/window/WindowManager.h"
+ 
+ FumeeViolette::FumeeViolette(int x, int y) : x(x - 14), y(y - 14), anim(0), animMax(2), vanim(60) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/effects/exploOni.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/effects/exploOni.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/NaviMagic.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/NaviMagic.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/NaviMagic.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/NaviMagic.cpp	2015-03-08 22:15:05.585655888 +0100
+@@ -4,7 +4,7 @@
+ #include "../../../engine/window/WindowManager.h"
+ 
+ NaviMagic::NaviMagic(int x, int y) : x(x - 17), y(y - 17), anim(0), animMax(4), vanim(120) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/magie.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/magie.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Plouf.cpp ZeldaNSQ_US-src-linux/src/game/content/effects/Plouf.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/effects/Plouf.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/effects/Plouf.cpp	2015-03-08 22:15:05.605656145 +0100
+@@ -4,7 +4,7 @@
+ #include "../../../engine/window/WindowManager.h"
+ 
+ Plouf::Plouf(int x, int y) : x(x), y(y), anim(0), animMax(3), vanim(40) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/effects/plouf.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/effects/plouf.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi001.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi001.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi001.cpp	2014-07-19 16:16:51.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi001.cpp	2015-03-08 22:15:04.965647939 +0100
+@@ -11,7 +11,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi001::Ennemi001(int i, int j) : anim(0), animMax(1), vanim(180), cooldown(0), jump(false) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi1.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi1.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi004.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi004.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi004.cpp	2014-07-19 16:16:44.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi004.cpp	2015-03-08 22:15:05.205651016 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi004::Ennemi004(int i, int j) : anim(0), animMax(2), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi4.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi4.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi005.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi005.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi005.cpp	2014-07-19 20:13:57.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi005.cpp	2015-03-08 22:15:05.128983366 +0100
+@@ -12,7 +12,7 @@
+ #include "cstdlib"
+ 
+ Ennemi005::Ennemi005(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi5.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi5.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi006.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi006.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi006.cpp	2014-07-19 20:16:52.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi006.cpp	2015-03-08 22:15:05.015648580 +0100
+@@ -12,7 +12,7 @@
+ #include "cstdlib"
+ 
+ Ennemi006::Ennemi006(int i, int j) : anim(0), animMax(9), vanim(80), actif(false) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi6.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi6.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi007.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi007.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi007.cpp	2014-07-20 23:27:25.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi007.cpp	2015-03-08 22:15:05.055649093 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi007::Ennemi007(int i, int j, int ih) : anim(0), animMax(1), vanim(180), initHeight(ih), currentHeight(ih) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi7.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi7.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi008.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi008.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi008.cpp	2014-07-19 18:28:26.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi008.cpp	2015-03-08 22:15:04.942314307 +0100
+@@ -12,7 +12,7 @@
+ #include "cstdlib"
+ 
+ Ennemi008::Ennemi008(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi8.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi8.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi009.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi009.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi009.cpp	2014-07-19 18:09:49.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi009.cpp	2015-03-08 22:15:05.138983495 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi009::Ennemi009(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi9.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi9.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi010.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi010.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi010.cpp	2014-07-20 23:29:03.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi010.cpp	2015-03-08 22:15:05.102316358 +0100
+@@ -11,7 +11,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi010::Ennemi010(int i, int j) : cooldown(63) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi10.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi10.png", true);
+ 
+     x = i;
+     y = j;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi012.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi012.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi012.cpp	2014-07-20 19:17:23.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi012.cpp	2015-03-08 22:15:04.975648067 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi012::Ennemi012(int i, int j) : anim(0), animMax(2), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi12.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi12.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi013.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi013.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi013.cpp	2014-07-20 18:53:02.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi013.cpp	2015-03-08 22:15:05.095649606 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi013::Ennemi013(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi13.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi13.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi014.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi014.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi014.cpp	2014-07-20 23:26:17.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi014.cpp	2015-03-08 22:15:05.315652427 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi014::Ennemi014(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi14.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi14.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi015.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi015.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi015.cpp	2014-07-23 22:21:31.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi015.cpp	2015-03-08 22:15:05.158983751 +0100
+@@ -13,7 +13,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi015::Ennemi015(int i, int j) : anim(0), animMax(1), vanim(180), cooldown(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi15.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi15.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi018.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi018.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi018.cpp	2014-07-19 16:18:58.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi018.cpp	2015-03-08 22:15:05.198984264 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi018::Ennemi018(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi18.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi18.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi022.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi022.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi022.cpp	2014-07-22 21:58:39.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi022.cpp	2015-03-08 22:15:05.115649862 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi022::Ennemi022(int i, int j, int ih) : anim(0), animMax(15), vanim(180), initHeight(ih), currentHeight(ih) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi22.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi22.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi023.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi023.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi023.cpp	2014-07-19 16:16:37.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi023.cpp	2015-03-08 22:15:05.268985161 +0100
+@@ -12,7 +12,7 @@
+ #include "cstdlib"
+ 
+ Ennemi023::Ennemi023(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi23.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi23.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi024.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi024.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi024.cpp	2014-07-22 21:40:04.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi024.cpp	2015-03-08 22:15:04.902313793 +0100
+@@ -12,7 +12,7 @@
+ #include "../effects/FumeeBlanche.h"
+ 
+ Ennemi024::Ennemi024(int i, int j, bool water) : anim(0), animMax(1), vanim(180), cooldown(30), inWater(water) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi24.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi24.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi026.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi026.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi026.cpp	2014-07-26 12:37:42.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi026.cpp	2015-03-08 22:15:05.328985931 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi026::Ennemi026(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi26.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi26.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi029.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi029.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi029.cpp	2014-07-20 23:54:50.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi029.cpp	2015-03-08 22:15:05.288985418 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi029::Ennemi029(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi29.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi29.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi030.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi030.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi030.cpp	2014-07-20 23:58:39.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi030.cpp	2015-03-08 22:15:05.008981828 +0100
+@@ -11,7 +11,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi030::Ennemi030(int i, int j) : cooldown(64) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi30.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi30.png", true);
+ 
+     x = i;
+     y = j;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi037.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi037.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi037.cpp	2014-07-23 23:23:33.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi037.cpp	2015-03-08 22:15:04.985648195 +0100
+@@ -11,7 +11,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi037::Ennemi037(int i, int j) : anim(0), animMax(1), vanim(180), cooldown(0), jump(false) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi37.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi37.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi041.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi041.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi041.cpp	2014-07-25 20:42:23.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi041.cpp	2015-03-08 22:15:04.928980802 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi041::Ennemi041(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi41.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi41.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi042.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi042.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi042.cpp	2014-07-25 20:44:57.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi042.cpp	2015-03-08 22:15:05.255651657 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi042::Ennemi042(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi42.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi42.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi044.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi044.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi044.cpp	2014-07-25 23:56:35.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi044.cpp	2015-03-08 22:15:04.915647298 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi044::Ennemi044(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi44.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi44.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi045.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi045.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi045.cpp	2014-07-23 23:30:37.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi045.cpp	2015-03-08 22:15:05.308985674 +0100
+@@ -15,7 +15,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi045::Ennemi045(int i, int j) : anim(0), animMax(3), vanim(180), mask(0), cooldown(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi45.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi45.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi046.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi046.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi046.cpp	2014-07-25 23:46:03.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi046.cpp	2015-03-08 22:15:05.225651273 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi046::Ennemi046(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi46.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi46.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi047.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi047.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi047.cpp	2014-07-25 23:47:23.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi047.cpp	2015-03-08 22:15:05.045648964 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi047::Ennemi047(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi47.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi47.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi048.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi048.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi048.cpp	2014-07-25 23:48:42.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi048.cpp	2015-03-08 22:15:05.035648836 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi048::Ennemi048(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi48.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi48.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi053.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi053.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi053.cpp	2014-07-19 21:08:07.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi053.cpp	2015-03-08 22:15:05.262318409 +0100
+@@ -11,7 +11,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi053::Ennemi053(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi53.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi53.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi054.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi054.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi054.cpp	2014-07-19 18:25:35.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi054.cpp	2015-03-08 22:15:05.025648708 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi054::Ennemi054(int i, int j, Direction dir) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi54.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi54.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi055.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi055.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi055.cpp	2014-07-23 22:23:31.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi055.cpp	2015-03-08 22:15:05.248984905 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi055::Ennemi055(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi55.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi55.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi056.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi056.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi056.cpp	2014-07-25 00:06:16.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi056.cpp	2015-03-08 22:15:05.302318922 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi056::Ennemi056(int i, int j) : anim(0), animMax(2), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi56.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi56.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi062.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi062.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi062.cpp	2014-07-21 00:00:27.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi062.cpp	2015-03-08 22:15:04.998981700 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi062::Ennemi062(int i, int j) : anim(0), animMax(1), vanim(180), step(0), beforeRegen(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi62.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi62.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi066.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi066.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi066.cpp	2014-07-21 23:08:47.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi066.cpp	2015-03-08 22:15:04.968981315 +0100
+@@ -10,7 +10,7 @@
+ #include "../effects/FumeeBlanche.h"
+ 
+ Ennemi066::Ennemi066(int i, int j, Map* map) : anim(0), animMax(3), vanim(180), animTentacules(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi66.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi66.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi068.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi068.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi068.cpp	2014-07-21 23:07:55.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi068.cpp	2015-03-08 22:15:04.935647554 +0100
+@@ -8,7 +8,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi068::Ennemi068(int i, int j) : anim(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi68.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi68.png", true);
+ 
+     x = i;
+     y = j;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi069.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi069.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi069.cpp	2014-07-21 23:10:06.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi069.cpp	2015-03-08 22:15:05.238984776 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi069::Ennemi069(int i, int j) : anim(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi69.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi69.png", true);
+ 
+     x = i;
+     y = j;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi076.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi076.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi076.cpp	2014-08-06 21:13:47.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi076.cpp	2015-03-08 22:15:05.215651144 +0100
+@@ -15,7 +15,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi076::Ennemi076(int i, int j) : anim(0), animMax(5), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi76.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi76.png", true);
+     chrono.reset();
+ 
+     cooldown = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi084.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi084.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi084.cpp	2014-07-23 22:26:46.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi084.cpp	2015-03-08 22:15:05.168983879 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi084::Ennemi084(int i, int j, Direction dir) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi84.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi84.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi091.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi091.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi091.cpp	2014-07-19 17:22:08.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi091.cpp	2015-03-08 22:15:05.145650247 +0100
+@@ -9,7 +9,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi091::Ennemi091(int i, int j, Map* mp) : anim(0), animMax(1), vanim(180), animDispel(0), cooldown(0), map(mp) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi91.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi91.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi092.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi092.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi092.cpp	2014-07-21 22:23:50.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi092.cpp	2015-03-08 22:15:05.185650759 +0100
+@@ -11,7 +11,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi092::Ennemi092(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi92.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi92.png", true);
+     chrono.reset();
+ 
+     cooldown = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi095.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi095.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi095.cpp	2014-07-23 23:34:45.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi095.cpp	2015-03-08 22:15:05.282318666 +0100
+@@ -11,7 +11,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi095::Ennemi095(int i, int j) : anim(0), animMax(1), vanim(180), step(0), cooldown(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi95.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi95.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi102.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi102.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi102.cpp	2014-07-25 19:08:31.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi102.cpp	2015-03-08 22:15:05.085649478 +0100
+@@ -11,7 +11,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi102::Ennemi102(int i, int j) : anim(0), animMax(1), vanim(180), cooldown(0), nbTorches(0), visible(false) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi102.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi102.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi110.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi110.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi110.cpp	2014-07-25 21:23:07.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi110.cpp	2015-03-08 22:15:05.335652683 +0100
+@@ -15,7 +15,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi110::Ennemi110(int i, int j) : anim(0), animMax(3), vanim(180), step(0), cooldown(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi110.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi110.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi111.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi111.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi111.cpp	2014-07-25 21:25:01.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi111.cpp	2015-03-08 22:15:04.992314947 +0100
+@@ -17,7 +17,7 @@
+ #define PI 3.14159265
+ 
+ Ennemi111::Ennemi111(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi111.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi111.png", true);
+     chrono.reset();
+ 
+     step = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi113.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi113.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi113.cpp	2014-07-23 23:39:59.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi113.cpp	2015-03-08 22:15:05.122316614 +0100
+@@ -8,7 +8,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi113::Ennemi113(int i, int j) : anim(0), animMax(31), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi113.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi113.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi114.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi114.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi114.cpp	2014-07-23 23:38:28.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi114.cpp	2015-03-08 22:15:05.322319179 +0100
+@@ -8,7 +8,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi114::Ennemi114(int i, int j, bool cm) : anim(0), animMax(2), vanim(180), canMove(cm) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi114.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi114.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi118.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi118.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi118.cpp	2014-07-23 23:21:15.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi118.cpp	2015-03-08 22:15:05.345652811 +0100
+@@ -12,7 +12,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi118::Ennemi118(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi118.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi118.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi142.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi142.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi142.cpp	2014-07-23 21:48:58.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi142.cpp	2015-03-08 22:15:05.175650632 +0100
+@@ -13,7 +13,7 @@
+ #include "../effects/FumeeBlanche.h"
+ 
+ Ennemi142::Ennemi142(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi142.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi142.png", true);
+     chrono.reset();
+ 
+     beforeJump = 30;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi143.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi143.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi143.cpp	2014-07-25 19:06:54.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi143.cpp	2015-03-08 22:15:05.232318025 +0100
+@@ -13,7 +13,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi143::Ennemi143(int i, int j) : anim(0), animMax(5), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi143.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi143.png", true);
+     chrono.reset();
+ 
+     beforeJump = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi144.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi144.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi144.cpp	2014-07-19 17:27:24.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi144.cpp	2015-03-08 22:15:05.152316999 +0100
+@@ -15,7 +15,7 @@
+ #define PI 3.14159265
+ 
+ Ennemi144::Ennemi144(int i, int j, Map* mp) : anim(0), animMax(2), vanim(180), cooldown(0), angle(0), radius(40), map(mp) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi144.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi144.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi145.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi145.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi145.cpp	2014-07-19 20:22:46.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi145.cpp	2015-03-08 22:15:05.275651914 +0100
+@@ -9,7 +9,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi145::Ennemi145(int i, int j) : step(1), cooldown(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi145.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi145.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi146.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi146.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi146.cpp	2014-07-19 20:25:12.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi146.cpp	2015-03-08 22:15:05.105649734 +0100
+@@ -15,7 +15,7 @@
+ #define PI 3.14159265
+ 
+ Ennemi146::Ennemi146(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi146.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi146.png", true);
+     chrono.reset();
+ 
+     step = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi147.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi147.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi147.cpp	2014-07-20 23:52:56.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi147.cpp	2015-03-08 22:15:04.955647811 +0100
+@@ -12,7 +12,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi147::Ennemi147(int i, int j) : anim(0), animMax(1), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi147.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi147.png", true);
+     chrono.reset();
+ 
+     step = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi148.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi148.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi148.cpp	2014-07-22 22:32:39.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi148.cpp	2015-03-08 22:15:05.065649221 +0100
+@@ -12,7 +12,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi148::Ennemi148(int i, int j) : anim(0), animMax(2), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi148.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi148.png", true);
+     chrono.reset();
+ 
+     step = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi149.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi149.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi149.cpp	2014-07-22 22:05:37.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi149.cpp	2015-03-08 22:15:04.948981059 +0100
+@@ -12,7 +12,7 @@
+ #define PI 3.14159265
+ 
+ Ennemi149::Ennemi149(int i, int j) : anim(0), animMax(1), vanim(360), cooldown(64), angle(0), radius(0), step(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi149.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi149.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi150.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi150.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi150.cpp	2014-07-25 19:04:43.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi150.cpp	2015-03-08 22:15:05.295652170 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi150::Ennemi150(int i, int j) : anim(0), animMax(1), vanim(180), surPied(true), cooldown(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi150.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi150.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi151.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi151.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi151.cpp	2014-07-25 23:39:54.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi151.cpp	2015-03-08 22:15:04.918980674 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi151::Ennemi151(int i, int j) : anim(0), animMax(3), vanim(180), anim2(0), animMax2(3), vanim2(640) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi151.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi151.png", true);
+     chrono.reset();
+     chrono2.reset();
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi152.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi152.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi152.cpp	2014-07-25 23:40:47.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi152.cpp	2015-03-08 22:15:05.192317512 +0100
+@@ -10,7 +10,7 @@
+ #include "../../MainController.h"
+ 
+ Ennemi152::Ennemi152(int i, int j) : anim(0), animMax(13), vanim(180) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi152.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi152.png", true);
+     chrono.reset();
+ 
+     x = i;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi153.cpp ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi153.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/ennemis/Ennemi153.cpp	2014-07-26 00:32:22.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/ennemis/Ennemi153.cpp	2015-03-08 22:15:05.075649349 +0100
+@@ -13,7 +13,7 @@
+ #include "../helper/ProjectileHelper.h"
+ 
+ Ennemi153::Ennemi153(int i, int j) : anim(0), animMax(3), vanim(180), anim2(0), animMax2(5), vanim2(320), step(0), cooldown(0), debuffUlti(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi153.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi153.png", true);
+     chrono.reset();
+     chrono2.reset();
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/helper/ItemHelper.cpp ZeldaNSQ_US-src-linux/src/game/content/helper/ItemHelper.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/helper/ItemHelper.cpp	2014-06-22 19:14:46.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/helper/ItemHelper.cpp	2015-03-08 22:15:05.895659863 +0100
+@@ -63,13 +63,13 @@
+ 
+ void ItemHelper::drawItem(TypeItem type, int x, int y) {
+     if (image == 0) {
+-        image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++        image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     }
+     if (imageObjects == 0) {
+-        imageObjects = ResourceManager::getInstance()->loadImage("data/images/items/objects.png", true);
++        imageObjects = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/objects.png", true);
+     }
+     if (imageMedaillons == 0) {
+-        imageMedaillons = ResourceManager::getInstance()->loadImage("data/images/status/medaillons.png", true);
++        imageMedaillons = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/medaillons.png", true);
+     }
+ 
+     switch (type) {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/Arrow.cpp ZeldaNSQ_US-src-linux/src/game/content/items/Arrow.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/Arrow.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/Arrow.cpp	2015-03-08 22:15:05.668990290 +0100
+@@ -10,7 +10,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/Bomb.cpp ZeldaNSQ_US-src-linux/src/game/content/items/Bomb.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/Bomb.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/Bomb.cpp	2015-03-08 22:15:05.618989649 +0100
+@@ -10,7 +10,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/Coeur.cpp ZeldaNSQ_US-src-linux/src/game/content/items/Coeur.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/Coeur.cpp	2014-03-19 22:14:10.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/Coeur.cpp	2015-03-08 22:15:05.682323795 +0100
+@@ -9,7 +9,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/GemmeForce.cpp ZeldaNSQ_US-src-linux/src/game/content/items/GemmeForce.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/GemmeForce.cpp	2014-02-26 21:55:04.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/GemmeForce.cpp	2015-03-08 22:15:05.702324051 +0100
+@@ -9,7 +9,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/MagieGrand.cpp ZeldaNSQ_US-src-linux/src/game/content/items/MagieGrand.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/MagieGrand.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/MagieGrand.cpp	2015-03-08 22:15:05.638989905 +0100
+@@ -10,7 +10,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/MagiePetit.cpp ZeldaNSQ_US-src-linux/src/game/content/items/MagiePetit.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/MagiePetit.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/MagiePetit.cpp	2015-03-08 22:15:05.675657042 +0100
+@@ -10,7 +10,7 @@
+     y = j - 3;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/Medaillon.cpp ZeldaNSQ_US-src-linux/src/game/content/items/Medaillon.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/Medaillon.cpp	2014-03-20 15:32:46.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/Medaillon.cpp	2015-03-08 22:15:05.695657299 +0100
+@@ -10,7 +10,7 @@
+     alive = true;
+     ready = true;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/status/medaillons.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/medaillons.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/PetitCoeur.cpp ZeldaNSQ_US-src-linux/src/game/content/items/PetitCoeur.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/PetitCoeur.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/PetitCoeur.cpp	2015-03-08 22:15:05.655656786 +0100
+@@ -10,7 +10,7 @@
+     y = j;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/PetiteCle.cpp ZeldaNSQ_US-src-linux/src/game/content/items/PetiteCle.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/PetiteCle.cpp	2014-03-19 22:12:29.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/PetiteCle.cpp	2015-03-08 22:15:05.625656401 +0100
+@@ -10,7 +10,7 @@
+     alive = true;
+     ready = true;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/QuartCoeur.cpp ZeldaNSQ_US-src-linux/src/game/content/items/QuartCoeur.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/QuartCoeur.cpp	2014-03-19 22:13:37.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/QuartCoeur.cpp	2015-03-08 22:15:05.632323153 +0100
+@@ -10,7 +10,7 @@
+     alive = true;
+     ready = true;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/RubisBleu.cpp ZeldaNSQ_US-src-linux/src/game/content/items/RubisBleu.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/RubisBleu.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/RubisBleu.cpp	2015-03-08 22:15:05.648990034 +0100
+@@ -10,7 +10,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/RubisRouge.cpp ZeldaNSQ_US-src-linux/src/game/content/items/RubisRouge.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/RubisRouge.cpp	2014-02-22 20:08:17.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/RubisRouge.cpp	2015-03-08 22:15:05.688990547 +0100
+@@ -10,7 +10,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/items/RubisVert.cpp ZeldaNSQ_US-src-linux/src/game/content/items/RubisVert.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/items/RubisVert.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/items/RubisVert.cpp	2015-03-08 22:15:05.662323538 +0100
+@@ -10,7 +10,7 @@
+     y = j - 10;
+     persistent = false;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/items/items.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/items.png", true);
+     chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/link/Inventory.cpp ZeldaNSQ_US-src-linux/src/game/content/link/Inventory.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/link/Inventory.cpp	2014-08-06 23:13:44.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/link/Inventory.cpp	2015-03-08 22:15:04.785645631 +0100
+@@ -6,8 +6,8 @@
+ Inventory::Inventory(Save* save) {
+     loadFromSave(save);
+     setCurrent((Equipment)0);
+-    inventaire = ResourceManager::getInstance()->loadImage("data/images/status/inventaire.png");
+-    imageObjects = ResourceManager::getInstance()->loadImage("data/images/items/objects.png", true);
++    inventaire = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/inventaire.png");
++    imageObjects = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/items/objects.png", true);
+ }
+ 
+ Inventory::~Inventory() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/link/Link.cpp ZeldaNSQ_US-src-linux/src/game/content/link/Link.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/link/Link.cpp	2014-08-16 21:27:12.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/link/Link.cpp	2015-03-08 22:15:04.812312639 +0100
+@@ -22,8 +22,8 @@
+ anim(0), animMax(0), vanim(40), imageLink(0), porte(0), elan(2), grappin(0), flamme(0), caisse(0), boomerang(true),
+ byrna(false), animByrna(0), dirByrna(S), lapin(false), fatal(false) {
+ 
+-    imageEffets = ResourceManager::getInstance()->loadImage("data/images/link/effects.png", true);
+-    imageObjets = ResourceManager::getInstance()->loadImage("data/images/link/objets.png", true);
++    imageEffets = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/effects.png", true);
++    imageObjets = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/objets.png", true);
+ 
+     status = new Status(save);
+     inventory = new Inventory(save);
+@@ -214,7 +214,7 @@
+ 
+     if (b) {
+         ResourceManager::getInstance()->free(imageLink);
+-        imageLink = ResourceManager::getInstance()->loadImage("data/images/link/onilink.png", true);
++        imageLink = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/onilink.png", true);
+     } else {
+         setTunique(tunique);
+     }
+@@ -1488,7 +1488,7 @@
+     ResourceManager::getInstance()->free(imageLink);
+     ostringstream os;
+     os << ConfigurationManager::getInstance()->getSkinName() << tunique;
+-    string filename = "data/images/link/link" + os.str() + ".png";
++    string filename = "/usr/share/zelda-nsq/images/link/link" + os.str() + ".png";
+     imageLink = ResourceManager::getInstance()->loadImage(filename, true);
+ }
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/link/Navi.cpp ZeldaNSQ_US-src-linux/src/game/content/link/Navi.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/link/Navi.cpp	2014-07-12 12:49:03.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/link/Navi.cpp	2015-03-08 22:15:04.778978879 +0100
+@@ -13,7 +13,7 @@
+ Navi::Navi(Save* save, int x, int y, Direction direction) : x(x), y(y), magic(0), maxMagic(20),
+     lvlHeal(0), lvlAtt(0), lvlDef(0), bonusForce(0), tmpForce(0), maxTmpForce(0), bonusDef(0), tmpDef(0), maxTmpDef(0), regen(0),
+     anim(0), animMax(2), vanim(120), boxOnLink(true), sayLook(true), followLink(true), direction(direction) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/link/navi.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/navi.png", true);
+     chrono.reset();
+ 
+     magic = save->getNaviMagic();
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/link/Shield.cpp ZeldaNSQ_US-src-linux/src/game/content/link/Shield.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/link/Shield.cpp	2014-07-06 11:49:20.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/link/Shield.cpp	2015-03-08 22:15:04.795645759 +0100
+@@ -5,11 +5,11 @@
+ 
+ Shield::Shield(int i, bool ol) : level(i), onilink(ol) {
+     if (onilink) {
+-        image = ResourceManager::getInstance()->loadImage("data/images/link/bouclierOni.png", true);
++        image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/bouclierOni.png", true);
+     } else {
+         ostringstream os;
+         os << i;
+-        string filename = "data/images/link/bouclier" + os.str() + ".png";
++        string filename = "/usr/share/zelda-nsq/images/link/bouclier" + os.str() + ".png";
+         image = ResourceManager::getInstance()->loadImage(filename, true);
+     }
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/link/Sword.cpp ZeldaNSQ_US-src-linux/src/game/content/link/Sword.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/link/Sword.cpp	2014-08-19 19:29:20.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/link/Sword.cpp	2015-03-08 22:15:04.772312127 +0100
+@@ -8,14 +8,14 @@
+ Sword::Sword(int i, bool o) : onilink(o) {
+     force = i;
+     if (onilink) {
+-        image = ResourceManager::getInstance()->loadImage("data/images/link/epeeOni.png", true);
++        image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/epeeOni.png", true);
+     } else {
+         ostringstream os;
+         os << i;
+-        string filename = "data/images/link/epee" + os.str() + ".png";
++        string filename = "/usr/share/zelda-nsq/images/link/epee" + os.str() + ".png";
+         image = ResourceManager::getInstance()->loadImage(filename, true);
+     }
+-    effects = ResourceManager::getInstance()->loadImage("data/images/link/effects.png", true);
++    effects = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/effects.png", true);
+ }
+ 
+ Sword::~Sword() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Caisse.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Caisse.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Caisse.cpp	2014-04-21 16:58:27.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Caisse.cpp	2015-03-08 22:15:05.785658453 +0100
+@@ -17,7 +17,7 @@
+     y0 = y;
+     type = id;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/caisse.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/caisse.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Cible.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Cible.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Cible.cpp	2014-07-13 01:29:10.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Cible.cpp	2015-03-08 22:15:05.875659607 +0100
+@@ -13,7 +13,7 @@
+     width = 16;
+     height = 16;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/cible.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/cible.png", true);
+ 
+     init();
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Coffre.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Coffre.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Coffre.cpp	2014-08-15 13:22:58.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Coffre.cpp	2015-03-08 22:15:05.715657555 +0100
+@@ -20,7 +20,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/coffres.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/coffres.png", true);
+ 
+     // for quadtree operations:
+     if (type == 0) {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Jarre.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Jarre.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Jarre.cpp	2014-05-10 16:37:26.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Jarre.cpp	2015-03-08 22:15:05.815658837 +0100
+@@ -15,7 +15,7 @@
+     y0 = y;
+     poids = 1;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/link/objets.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/objets.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/ObjBomb.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/ObjBomb.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/ObjBomb.cpp	2014-04-27 15:19:34.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/ObjBomb.cpp	2015-03-08 22:15:05.728991059 +0100
+@@ -12,7 +12,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/bombe.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/bombe.png", true);
+     //chrono.reset();
+ 
+     // for quadtree operations:
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Oeil.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Oeil.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Oeil.cpp	2014-04-26 12:13:55.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Oeil.cpp	2015-03-08 22:15:05.805658709 +0100
+@@ -9,7 +9,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/oeil.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/oeil.png", true);
+ 
+     // for quadtree operations:
+     width = (direction == N || direction == S) ? 24 : 8;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Pancarte.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Pancarte.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Pancarte.cpp	2014-02-25 16:34:05.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Pancarte.cpp	2015-03-08 22:15:05.798991957 +0100
+@@ -14,7 +14,7 @@
+     x0 = x;
+     y0 = y;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/link/objets.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/objets.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegeFeu.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/PiegeFeu.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegeFeu.cpp	2014-06-04 22:55:25.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/PiegeFeu.cpp	2015-03-08 22:15:05.825658966 +0100
+@@ -12,7 +12,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/piegeFeu.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/piegeFeu.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegeLong.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/PiegeLong.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegeLong.cpp	2014-07-19 16:27:33.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/PiegeLong.cpp	2015-03-08 22:15:05.838992470 +0100
+@@ -13,7 +13,7 @@
+     y0 = y;
+     y1 = y;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/piegeLong.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/piegeLong.png", true);
+ 
+     // for quadtree operations:
+     width = 128;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegeMain.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/PiegeMain.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegeMain.cpp	2014-06-16 00:08:32.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/PiegeMain.cpp	2015-03-08 22:15:05.775658324 +0100
+@@ -12,7 +12,7 @@
+     x0 = x;
+     y0 = y;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/piegeMain.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/piegeMain.png", true);
+ 
+     // for quadtree operations:
+     width = 24;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegePics.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/PiegePics.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/PiegePics.cpp	2014-07-19 16:27:55.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/PiegePics.cpp	2015-03-08 22:15:05.742324564 +0100
+@@ -12,7 +12,7 @@
+     x0 = x;
+     y0 = y;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/piegePics.png");
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/piegePics.png");
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Pierre.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Pierre.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Pierre.cpp	2014-04-12 12:47:55.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Pierre.cpp	2015-03-08 22:15:05.795658581 +0100
+@@ -16,7 +16,7 @@
+ 
+     poids = (((type-1) % 2) + 1) * 2; // should be 2 or 4
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/link/objets.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/link/objets.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Pnj.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Pnj.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Pnj.cpp	2014-12-27 15:58:30.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Pnj.cpp	2015-03-08 22:15:05.858992726 +0100
+@@ -15,7 +15,7 @@
+ 
+     ostringstream os;
+     os << type;
+-    image = ResourceManager::getInstance()->loadImage("data/images/npcs/personnage" + os.str() + ".png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/npcs/personnage" + os.str() + ".png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Poule.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Poule.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Poule.cpp	2014-04-26 12:13:45.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Poule.cpp	2015-03-08 22:15:05.845659222 +0100
+@@ -10,7 +10,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/poule.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/poule.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Sphere.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Sphere.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Sphere.cpp	2014-01-31 18:08:40.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Sphere.cpp	2015-03-08 22:15:05.765658197 +0100
+@@ -10,7 +10,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/sphere.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/sphere.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Statue.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Statue.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Statue.cpp	2014-03-19 17:17:16.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Statue.cpp	2015-03-08 22:15:05.755658068 +0100
+@@ -16,7 +16,7 @@
+     x0 = x;
+     y0 = y;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/statue.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/statue.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Stele.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Stele.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Stele.cpp	2014-08-16 21:44:25.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Stele.cpp	2015-03-08 22:15:05.718990931 +0100
+@@ -22,7 +22,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/stele.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/stele.png", true);
+ 
+     width = 32;
+     height = 32;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Switch.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Switch.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Switch.cpp	2014-05-10 15:55:25.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Switch.cpp	2015-03-08 22:15:05.735657812 +0100
+@@ -10,7 +10,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/switch.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/switch.png", true);
+ 
+     // for quadtree operations:
+     width = 16;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Tombe.cpp ZeldaNSQ_US-src-linux/src/game/content/objects/Tombe.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/objects/Tombe.cpp	2014-02-18 15:30:36.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/objects/Tombe.cpp	2015-03-08 22:15:05.748991316 +0100
+@@ -12,7 +12,7 @@
+     x = i;
+     y = j;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/objects/tombe.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/tombe.png", true);
+ 
+     // for quadtree operations:
+     width = 32;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjArcMagique.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjArcMagique.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjArcMagique.cpp	2014-07-20 23:57:40.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjArcMagique.cpp	2015-03-08 22:15:05.535655247 +0100
+@@ -32,7 +32,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/arcmagique.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/arcmagique.png", true);
+ 
+     chrono.reset();
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjArrow.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjArrow.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjArrow.cpp	2014-02-26 21:12:09.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjArrow.cpp	2015-03-08 22:15:05.505654863 +0100
+@@ -37,11 +37,11 @@
+         default :
+         case 1 :
+             force = 2;
+-            image = ResourceManager::getInstance()->loadImage("data/images/projectiles/arrow.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/arrow.png", true);
+             break;
+         case 2 :
+             force = 5;
+-            image = ResourceManager::getInstance()->loadImage("data/images/projectiles/arrow2.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/arrow2.png", true);
+             break;
+     }
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBaguetteFeu.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBaguetteFeu.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBaguetteFeu.cpp	2013-01-13 14:27:22.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBaguetteFeu.cpp	2015-03-08 22:15:05.458987598 +0100
+@@ -29,7 +29,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/magie.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/magie.png", true);
+ }
+ 
+ ProjBaguetteFeu::~ProjBaguetteFeu() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBaguetteGlace.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBaguetteGlace.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBaguetteGlace.cpp	2014-04-26 19:19:44.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBaguetteGlace.cpp	2015-03-08 22:15:05.452320846 +0100
+@@ -29,7 +29,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/magie.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/magie.png", true);
+ }
+ 
+ ProjBaguetteGlace::~ProjBaguetteGlace() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBigFeu.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBigFeu.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBigFeu.cpp	2014-07-23 23:32:33.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBigFeu.cpp	2015-03-08 22:15:05.518988367 +0100
+@@ -48,7 +48,7 @@
+ 
+     force = MainController::getInstance()->getGameController()->getSave()->isExpert() ? 24 : 12;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/magieBig.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/magieBig.png", true);
+ }
+ 
+ ProjBigFeu::~ProjBigFeu() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBigGlace.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBigGlace.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBigGlace.cpp	2014-07-26 12:30:03.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBigGlace.cpp	2015-03-08 22:15:05.445654093 +0100
+@@ -48,7 +48,7 @@
+ 
+     force = MainController::getInstance()->getGameController()->getSave()->isExpert() ? 24 : 12;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/magieBig.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/magieBig.png", true);
+ }
+ 
+ ProjBigGlace::~ProjBigGlace() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBoomerang.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBoomerang.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBoomerang.cpp	2014-07-26 16:41:54.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBoomerang.cpp	2015-03-08 22:15:05.465654349 +0100
+@@ -38,7 +38,7 @@
+ 
+     maxLength = 64 + 48 * (type - 1);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/boomerang.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/boomerang.png", true);
+ 
+ }
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBouleDemi.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBouleDemi.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBouleDemi.cpp	2014-06-15 18:21:47.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBouleDemi.cpp	2015-03-08 22:15:05.472321102 +0100
+@@ -44,7 +44,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/bouleDemi.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/bouleDemi.png", true);
+ }
+ 
+ ProjBouleDemi::~ProjBouleDemi() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBouleFeu.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBouleFeu.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBouleFeu.cpp	2014-07-19 17:35:24.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBouleFeu.cpp	2015-03-08 22:15:05.542322000 +0100
+@@ -44,7 +44,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/bouleFeu.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/bouleFeu.png", true);
+ 
+     force = MainController::getInstance()->getGameController()->getSave()->isExpert() ? 4 : 2;
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBouleMort.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBouleMort.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjBouleMort.cpp	2014-04-26 19:53:39.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjBouleMort.cpp	2015-03-08 22:15:05.485654606 +0100
+@@ -44,7 +44,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/bouleMort.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/bouleMort.png", true);
+ }
+ 
+ ProjBouleMort::~ProjBouleMort() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjFeuLong.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjFeuLong.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjFeuLong.cpp	2014-07-23 22:20:07.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjFeuLong.cpp	2015-03-08 22:15:05.478987854 +0100
+@@ -29,7 +29,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/feu.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/feu.png", true);
+ 
+     if (byLink) {
+         force = 4;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjGrappin.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjGrappin.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjGrappin.cpp	2014-06-15 16:19:32.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjGrappin.cpp	2015-03-08 22:15:05.528988495 +0100
+@@ -37,7 +37,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/grappin.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/grappin.png", true);
+ }
+ 
+ ProjGrappin::~ProjGrappin() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjPierre.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjPierre.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjPierre.cpp	2014-07-19 20:28:09.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjPierre.cpp	2015-03-08 22:15:05.492321358 +0100
+@@ -48,7 +48,7 @@
+     box.setW(width);
+     box.setH(height);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/pierre.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/pierre.png", true);
+ 
+     force = MainController::getInstance()->getGameController()->getSave()->isExpert() ? 4 : 2;
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjSpear.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjSpear.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjSpear.cpp	2014-07-19 17:23:38.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjSpear.cpp	2015-03-08 22:15:05.515654991 +0100
+@@ -32,7 +32,7 @@
+     box.setH(height);
+ 
+     force = MainController::getInstance()->getGameController()->getSave()->isExpert() ? 4 : 2;
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/spear.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/spear.png", true);
+     dist = 0;
+ }
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjUltime.cpp ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjUltime.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/projectiles/ProjUltime.cpp	2014-07-26 12:28:31.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/projectiles/ProjUltime.cpp	2015-03-08 22:15:05.498988110 +0100
+@@ -34,7 +34,7 @@
+     anim = 0;
+     animMax = 1;
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/projectiles/ultime.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/ultime.png", true);
+ 
+     force = MainController::getInstance()->getGameController()->getSave()->isExpert() ? 40 : 20;
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/scene/AnimationInGame.cpp ZeldaNSQ_US-src-linux/src/game/content/scene/AnimationInGame.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/scene/AnimationInGame.cpp	2014-07-12 12:46:26.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/scene/AnimationInGame.cpp	2015-03-08 22:15:05.355652939 +0100
+@@ -140,7 +140,7 @@
+         case 10 :
+             ResourceManager::getInstance()->free(image);
+             map->addObject(new Pnj(39*16, 31*16, 22, 215));
+-            image = ResourceManager::getInstance()->loadImage("data/images/npcs/personnage22.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/npcs/personnage22.png", true);
+             image->setAlpha(0);
+             break;
+         case 11 :
+@@ -154,31 +154,31 @@
+         case 14 :
+             ResourceManager::getInstance()->free(image);
+             map->addObject(new Pnj(9*16, 3*16 + 8, 22, 298));
+-            image = ResourceManager::getInstance()->loadImage("data/images/npcs/personnage22.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/npcs/personnage22.png", true);
+             image->setAlpha(0);
+             break;
+         case 15 :
+             ResourceManager::getInstance()->free(image);
+             map->addObject(new Pnj(9*16 + 4, 5*16 - 3, 29, 310));
+-            image = ResourceManager::getInstance()->loadImage("data/images/npcs/personnage29.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/npcs/personnage29.png", true);
+             image->setAlpha(0);
+             break;
+         case 16 :
+             ResourceManager::getInstance()->free(image);
+             map->addObject(new Pnj(9*16, 3*16 + 8, 22, 316));
+-            image = ResourceManager::getInstance()->loadImage("data/images/npcs/personnage22.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/npcs/personnage22.png", true);
+             image->setAlpha(0);
+             break;
+         case 17 :
+             ResourceManager::getInstance()->free(image);
+             map->addObject(new Pnj(9*16, 3*16 + 8, 31, 326));
+-            image = ResourceManager::getInstance()->loadImage("data/images/npcs/personnage31.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/npcs/personnage31.png", true);
+             image->setAlpha(0);
+             break;
+         case 18 :
+             ResourceManager::getInstance()->free(image);
+             map->addObject(new Pnj(29*16 + 4, 5*16 - 3, 29, 310));
+-            image = ResourceManager::getInstance()->loadImage("data/images/npcs/personnage29.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/npcs/personnage29.png", true);
+             image->setAlpha(0);
+             break;
+         case 20 : case 21 : case 22 : case 23 : case 24 :
+@@ -186,7 +186,7 @@
+             camera->setManuel(true);
+             camera->moveTo(50*16, 29*16+8, 1);
+             ResourceManager::getInstance()->free(image);
+-            image = ResourceManager::getInstance()->loadImage("data/images/objects/dalle.png", false);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/objects/dalle.png", false);
+             image->setAlpha(255);
+             break;
+         case 25 : case 26 : case 27 : case 28 :
+@@ -270,7 +270,7 @@
+             surface = new Surface(320, 240);
+             surface->toImage()->setAlpha(0);
+             ResourceManager::getInstance()->free(image);
+-            image = ResourceManager::getInstance()->loadImage("data/images/projectiles/foudre.png", true);
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/projectiles/foudre.png", true);
+             image->setAlpha(255);
+             transition.start();
+             break;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/scene/Hud.cpp ZeldaNSQ_US-src-linux/src/game/content/scene/Hud.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/scene/Hud.cpp	2014-07-12 11:54:12.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/scene/Hud.cpp	2015-03-08 22:15:05.435653965 +0100
+@@ -9,9 +9,9 @@
+ 
+ Hud::Hud(Status* status, Inventory* inventory, Navi* navi, bool isFrench) : status(status), inventory(inventory), navi(navi), french(isFrench),
+ animNavi(0), animBoss(0), bossLife(0), bossMaxLife(0), removeBoss(false), etage(0), displayEtg(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/status/status.png", true);
+-    chiffres = ResourceManager::getInstance()->loadImage("data/images/status/chiffres.png", true);
+-    level = ResourceManager::getInstance()->loadImage("data/images/status/level.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/status.png", true);
++    chiffres = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/chiffres.png", true);
++    level = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/level.png", true);
+ }
+ 
+ Hud::~Hud() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/scene/Map.cpp ZeldaNSQ_US-src-linux/src/game/content/scene/Map.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/scene/Map.cpp	2014-08-13 20:05:21.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/scene/Map.cpp	2015-03-08 22:15:05.382319948 +0100
+@@ -32,7 +32,7 @@
+     ostringstream os;
+     for (int i = 0; i < NB_IMAGES; i++) {
+         os << (i + 1);
+-        string filename = "data/images/tileset/image" + os.str() + ".png";
++        string filename = "/usr/share/zelda-nsq/images/tileset/image" + os.str() + ".png";
+         images[i] = ResourceManager::getInstance()->loadImage(filename, true);
+         os.str("");
+     }
+@@ -99,7 +99,7 @@
+ void Map::loadFromFile() {
+     ostringstream oss;
+     oss << map;
+-    string result = "data/maps/map" + oss.str() + ".dat";
++    string result = "/usr/share/zelda-nsq/maps/map" + oss.str() + ".dat";
+     ifstream file(result.c_str());
+ 
+     file >> w;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/content/scene/Primes.cpp ZeldaNSQ_US-src-linux/src/game/content/scene/Primes.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/content/scene/Primes.cpp	2014-07-19 18:36:22.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/content/scene/Primes.cpp	2015-03-08 22:15:05.395653452 +0100
+@@ -18,7 +18,7 @@
+     ResourceManager::getInstance()->free(image);
+     ostringstream os;
+     os << current;
+-    image = ResourceManager::getInstance()->loadImage("data/images/ennemis/ennemi" + os.str() + ".png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ennemis/ennemi" + os.str() + ".png", true);
+ }
+ 
+ void Primes::reset() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/ending/credits/Credits.cpp ZeldaNSQ_US-src-linux/src/game/ending/credits/Credits.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/ending/credits/Credits.cpp	2014-08-09 12:49:36.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/ending/credits/Credits.cpp	2015-03-08 22:15:04.335639861 +0100
+@@ -19,11 +19,11 @@
+     delete surface;
+     surface = new Surface(320, 240);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/ending/credits/fond.png");
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/credits/fond.png");
+     surface->put(image, 0, 0, 0, 0, 320, 240);
+     ResourceManager::getInstance()->free(image);
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/ending/credits/photo_1.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/credits/photo_1.png", true);
+     image->setAlpha(0);
+ 
+     over = false;
+@@ -64,7 +64,7 @@
+             } else if (anim == 255) {
+                 delete surface2;
+                 surface2 = 0;
+-                image = ResourceManager::getInstance()->loadImage("data/images/ending/credits/photo_2.png", true);
++                image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/credits/photo_2.png", true);
+                 image->setAlpha(0);
+                 anim = 0;
+                 step = 2;
+@@ -108,7 +108,7 @@
+             } else if (anim == 512) {
+                 delete surface2;
+                 surface2 = 0;
+-                image = ResourceManager::getInstance()->loadImage("data/images/ending/credits/photo_3.png", true);
++                image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/credits/photo_3.png", true);
+                 image->setAlpha(0);
+                 anim = 0;
+                 step = 4;
+@@ -162,7 +162,7 @@
+             } else if (anim == 768) {
+                 delete surface2;
+                 surface2 = 0;
+-                image = ResourceManager::getInstance()->loadImage("data/images/ending/credits/photo_4.png", true);
++                image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/credits/photo_4.png", true);
+                 image->setAlpha(0);
+                 anim = 0;
+                 step = 6;
+@@ -201,7 +201,7 @@
+             } else if (anim == 384) {
+                 delete surface2;
+                 surface2 = 0;
+-                image = ResourceManager::getInstance()->loadImage("data/images/ending/credits/photo_5.png", true);
++                image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/credits/photo_5.png", true);
+                 image->setAlpha(0);
+                 anim = 0;
+                 step = 8;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/ending/final/Final.cpp ZeldaNSQ_US-src-linux/src/game/ending/final/Final.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/ending/final/Final.cpp	2014-07-18 23:07:38.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/ending/final/Final.cpp	2015-03-08 22:15:04.388973878 +0100
+@@ -12,7 +12,7 @@
+     for (int i = 0; i < 32; i++) {
+         if (i < 10) os << "0";
+         os << i;
+-        string filename = "data/images/ending/final/final" + os.str() + ".png";
++        string filename = "/usr/share/zelda-nsq/images/ending/final/final" + os.str() + ".png";
+         images[i] = ResourceManager::getInstance()->loadImage(filename);
+         os.str("");
+     }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/ending/score/Score.cpp ZeldaNSQ_US-src-linux/src/game/ending/score/Score.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/ending/score/Score.cpp	2014-08-05 23:01:20.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/ending/score/Score.cpp	2015-03-08 22:15:04.378973750 +0100
+@@ -17,7 +17,7 @@
+     delete surface;
+     surface = new Surface(320, 240);
+ 
+-    WImage* image = ResourceManager::getInstance()->loadImage("data/images/ending/arbre.png");
++    WImage* image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/arbre.png");
+     for (int j = 0; j < 3; j++) {
+         for (int i = 0; i < 7; i++) {
+             surface->put(image, i * 48, j * 96, 0, 0, 48, 96);
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/ending/story/StoryTextArea.cpp ZeldaNSQ_US-src-linux/src/game/ending/story/StoryTextArea.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/ending/story/StoryTextArea.cpp	2014-07-12 20:20:39.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/ending/story/StoryTextArea.cpp	2015-03-08 22:15:04.408974135 +0100
+@@ -8,7 +8,7 @@
+ #include "../../MainController.h"
+ 
+ StoryTextArea::StoryTextArea() : anim(0), animMax(0), vanim(40), ready(false), text(0), id(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/ending/fin.png");
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/fin.png");
+ }
+ 
+ StoryTextArea::~StoryTextArea() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/ending/unlock/Unlock.cpp ZeldaNSQ_US-src-linux/src/game/ending/unlock/Unlock.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/ending/unlock/Unlock.cpp	2014-07-18 23:37:19.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/ending/unlock/Unlock.cpp	2015-03-08 22:15:04.345639990 +0100
+@@ -21,7 +21,7 @@
+     delete surface;
+     surface = new Surface(320, 240);
+ 
+-    WImage* image = ResourceManager::getInstance()->loadImage("data/images/ending/fin.png");
++    WImage* image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/ending/fin.png");
+     surface->put(image, 0, 0, 0, 0, 320, 240);
+     ResourceManager::getInstance()->free(image);
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/game/help/Help.cpp ZeldaNSQ_US-src-linux/src/game/game/help/Help.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/game/help/Help.cpp	2014-07-19 13:42:11.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/game/help/Help.cpp	2015-03-08 22:15:04.712311357 +0100
+@@ -11,7 +11,7 @@
+ #include "../../GlobalSave.h"
+ 
+ Help::Help() : page(0), surface(0), surfaceTmp(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/menus/cadres.png");
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/cadres.png");
+ }
+ 
+ Help::~Help() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/game/map/MapDonjon.cpp ZeldaNSQ_US-src-linux/src/game/game/map/MapDonjon.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/game/map/MapDonjon.cpp	2014-08-12 19:36:30.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/game/map/MapDonjon.cpp	2015-03-08 22:15:04.578976315 +0100
+@@ -12,17 +12,17 @@
+ MapDonjon::MapDonjon() : anim(0), animMax(1), vanim(480), started(false), xLink(0), yLink(0), offsetSkin(0), surface(0), surface2(0) {
+     wasFrench = ConfigurationManager::getInstance()->isFrench();
+     if (wasFrench) {
+-        imageMap = ResourceManager::getInstance()->loadImage("data/images/maps/donjon.png");
+-        imageLevel = ResourceManager::getInstance()->loadImage("data/images/maps/level.png");
+-        imageLevel2 = ResourceManager::getInstance()->loadImage("data/images/maps/level2.png");
++        imageMap = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/donjon.png");
++        imageLevel = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level.png");
++        imageLevel2 = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level2.png");
+     } else {
+-        imageMap = ResourceManager::getInstance()->loadImage("data/images/maps/donjon_us.png");
+-        imageLevel = ResourceManager::getInstance()->loadImage("data/images/maps/level_us.png");
+-        imageLevel2 = ResourceManager::getInstance()->loadImage("data/images/maps/level2_us.png");
++        imageMap = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/donjon_us.png");
++        imageLevel = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level_us.png");
++        imageLevel2 = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level2_us.png");
+     }
+ 
+-    imageLink = ResourceManager::getInstance()->loadImage("data/images/maps/link.png", true);
+-    imageBoussole = ResourceManager::getInstance()->loadImage("data/images/maps/boussole.png", true);
++    imageLink = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/link.png", true);
++    imageBoussole = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/boussole.png", true);
+ 
+     for (int i = 0; i < 5; i++) imageEtages[i] = 0;
+     for (int i = 0; i < 5; i++) imageEtagesN[i] = 0;
+@@ -119,13 +119,13 @@
+         ResourceManager::getInstance()->free(imageLevel);
+         ResourceManager::getInstance()->free(imageLevel2);
+         if (wasFrench) {
+-            imageMap = ResourceManager::getInstance()->loadImage("data/images/maps/donjon.png");
+-            imageLevel = ResourceManager::getInstance()->loadImage("data/images/maps/level.png");
+-            imageLevel2 = ResourceManager::getInstance()->loadImage("data/images/maps/level2.png");
++            imageMap = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/donjon.png");
++            imageLevel = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level.png");
++            imageLevel2 = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level2.png");
+         } else {
+-            imageMap = ResourceManager::getInstance()->loadImage("data/images/maps/donjon_us.png");
+-            imageLevel = ResourceManager::getInstance()->loadImage("data/images/maps/level_us.png");
+-            imageLevel2 = ResourceManager::getInstance()->loadImage("data/images/maps/level2_us.png");
++            imageMap = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/donjon_us.png");
++            imageLevel = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level_us.png");
++            imageLevel2 = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/level2_us.png");
+         }
+     }
+ 
+@@ -648,78 +648,78 @@
+ 
+         switch (mapId) {
+             case 58 :
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d1e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d1e-1.png");
+-                imageEtages[4] = ResourceManager::getInstance()->loadImage("data/images/maps/d1e-2.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd1e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd1e-1.png");
+-                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("data/images/maps/nd1e-2.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d1e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d1e-1.png");
++                imageEtages[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d1e-2.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd1e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd1e-1.png");
++                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd1e-2.png");
+                 break;
+             case 59 :
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d2e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d2e-1.png");
+-                imageEtages[4] = ResourceManager::getInstance()->loadImage("data/images/maps/d2e-2.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd2e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd2e-1.png");
+-                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("data/images/maps/nd2e-2.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d2e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d2e-1.png");
++                imageEtages[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d2e-2.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd2e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd2e-1.png");
++                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd2e-2.png");
+                 break;
+             case 60 :
+-                imageEtages[0] = ResourceManager::getInstance()->loadImage("data/images/maps/d3e2.png");
+-                imageEtages[1] = ResourceManager::getInstance()->loadImage("data/images/maps/d3e1.png");
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d3e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d3e-1.png");
+-                imageEtagesN[0] = ResourceManager::getInstance()->loadImage("data/images/maps/nd3e2.png");
+-                imageEtagesN[1] = ResourceManager::getInstance()->loadImage("data/images/maps/nd3e1.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd3e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd3e-1.png");
++                imageEtages[0] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d3e2.png");
++                imageEtages[1] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d3e1.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d3e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d3e-1.png");
++                imageEtagesN[0] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd3e2.png");
++                imageEtagesN[1] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd3e1.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd3e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd3e-1.png");
+                 break;
+             case 61 :
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d4e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d4e-1.png");
+-                imageEtages[4] = ResourceManager::getInstance()->loadImage("data/images/maps/d4e-2.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd4e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd4e-1.png");
+-                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("data/images/maps/nd4e-2.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d4e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d4e-1.png");
++                imageEtages[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d4e-2.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd4e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd4e-1.png");
++                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd4e-2.png");
+                 break;
+             case 62 :
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d5e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d5e-1.png");
+-                imageEtages[4] = ResourceManager::getInstance()->loadImage("data/images/maps/d5e-2.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd5e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd5e-1.png");
+-                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("data/images/maps/nd5e-2.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d5e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d5e-1.png");
++                imageEtages[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d5e-2.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd5e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd5e-1.png");
++                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd5e-2.png");
+                 break;
+             case 63 :
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d6e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d6e-1.png");
+-                imageEtages[4] = ResourceManager::getInstance()->loadImage("data/images/maps/d6e-2.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd6e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd6e-1.png");
+-                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("data/images/maps/nd6e-2.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d6e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d6e-1.png");
++                imageEtages[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d6e-2.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd6e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd6e-1.png");
++                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd6e-2.png");
+                 break;
+             case 64 :
+-                imageEtages[1] = ResourceManager::getInstance()->loadImage("data/images/maps/d7e1.png");
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d7e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d7e-1.png");
+-                imageEtages[4] = ResourceManager::getInstance()->loadImage("data/images/maps/d7e-2.png");
+-                imageEtagesN[1] = ResourceManager::getInstance()->loadImage("data/images/maps/nd7e1.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd7e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd7e-1.png");
+-                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("data/images/maps/nd7e-2.png");
++                imageEtages[1] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d7e1.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d7e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d7e-1.png");
++                imageEtages[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d7e-2.png");
++                imageEtagesN[1] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd7e1.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd7e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd7e-1.png");
++                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd7e-2.png");
+                 break;
+             case 65 :
+-                imageEtages[1] = ResourceManager::getInstance()->loadImage("data/images/maps/d8e1.png");
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d8e0.png");
+-                imageEtagesN[1] = ResourceManager::getInstance()->loadImage("data/images/maps/nd8e1.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd8e0.png");
++                imageEtages[1] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d8e1.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d8e0.png");
++                imageEtagesN[1] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd8e1.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd8e0.png");
+                 break;
+             case 66 :
+-                imageEtages[2] = ResourceManager::getInstance()->loadImage("data/images/maps/d9e0.png");
+-                imageEtages[3] = ResourceManager::getInstance()->loadImage("data/images/maps/d9e-1.png");
+-                imageEtages[4] = ResourceManager::getInstance()->loadImage("data/images/maps/d9e-2.png");
+-                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("data/images/maps/nd9e0.png");
+-                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("data/images/maps/nd9e-1.png");
+-                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("data/images/maps/nd9e-2.png");
++                imageEtages[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d9e0.png");
++                imageEtages[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d9e-1.png");
++                imageEtages[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/d9e-2.png");
++                imageEtagesN[2] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd9e0.png");
++                imageEtagesN[3] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd9e-1.png");
++                imageEtagesN[4] = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/nd9e-2.png");
+                 break;
+             default : return;
+         }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/game/map/MapOcarina.cpp ZeldaNSQ_US-src-linux/src/game/game/map/MapOcarina.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/game/map/MapOcarina.cpp	2014-08-12 19:37:02.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/game/map/MapOcarina.cpp	2015-03-08 22:15:04.585643066 +0100
+@@ -10,8 +10,8 @@
+ #include "../../../config/ConfigurationManager.h"
+ 
+ MapOcarina::MapOcarina() : started(false), teleport(false), position(0), offsetSkin(0) {
+-    imageMap = ResourceManager::getInstance()->loadImage("data/images/maps/overworld.png");
+-    imageLink = ResourceManager::getInstance()->loadImage("data/images/maps/link.png", true);
++    imageMap = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/overworld.png");
++    imageLink = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/link.png", true);
+ }
+ 
+ MapOcarina::~MapOcarina() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/game/map/MapOverworld.cpp ZeldaNSQ_US-src-linux/src/game/game/map/MapOverworld.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/game/map/MapOverworld.cpp	2014-08-12 19:37:08.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/game/map/MapOverworld.cpp	2015-03-08 22:15:04.598976571 +0100
+@@ -9,8 +9,8 @@
+ #include "../../../config/ConfigurationManager.h"
+ 
+ MapOverworld::MapOverworld() : anim(0), animMax(1), vanim(480), started(false), xLink(0), yLink(0), offsetSkin(0) {
+-    imageMap = ResourceManager::getInstance()->loadImage("data/images/maps/overworld.png");
+-    imageLink = ResourceManager::getInstance()->loadImage("data/images/maps/link.png", true);
++    imageMap = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/overworld.png");
++    imageLink = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/maps/link.png", true);
+ }
+ 
+ MapOverworld::~MapOverworld() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/game/menu/Menu.cpp ZeldaNSQ_US-src-linux/src/game/game/menu/Menu.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/game/menu/Menu.cpp	2014-06-24 23:38:30.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/game/menu/Menu.cpp	2015-03-08 22:15:04.635643708 +0100
+@@ -11,12 +11,12 @@
+         allGemme(2), displayMedaillons(false), force(0), defense(0), tunique(0), epee(0), bouclier(0),
+         maxRupees(0), coquillages(0), hasCoquillage(0), navi(0), maxFleches(0), fleches(0), recupFleches(0),
+         maxBombes(0), bombes(0), recupBombes(0), naviHeal(0), naviAtt(0), naviDef(0) {
+-    imageMenu = ResourceManager::getInstance()->loadImage("data/images/status/bord.png", true);
+-    imageCoeur = ResourceManager::getInstance()->loadImage("data/images/status/coeur.png", true);
+-    imageChiffres = ResourceManager::getInstance()->loadImage("data/images/status/chiffres.png", true);
+-    imageMedaillons = ResourceManager::getInstance()->loadImage("data/images/status/medaillons.png", true);
+-    imageStuff = ResourceManager::getInstance()->loadImage("data/images/status/stuff.png", true);
+-    imageStatus = ResourceManager::getInstance()->loadImage("data/images/status/status.png", true);
++    imageMenu = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/bord.png", true);
++    imageCoeur = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/coeur.png", true);
++    imageChiffres = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/chiffres.png", true);
++    imageMedaillons = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/medaillons.png", true);
++    imageStuff = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/stuff.png", true);
++    imageStatus = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/status.png", true);
+     metronome = new Metronome(2, ANIM_REFRESH * 3);
+     metronome->reset();
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/game/textes/TextArea.cpp ZeldaNSQ_US-src-linux/src/game/game/textes/TextArea.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/game/textes/TextArea.cpp	2014-08-15 13:20:58.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/game/textes/TextArea.cpp	2015-03-08 22:15:04.615643451 +0100
+@@ -10,8 +10,8 @@
+ #include "../../content/link/Link.h"
+ 
+ TextArea::TextArea() : step(TEXT_OFF), anim(0), animMax(0), vanim(40), ready(false), text(0), id(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/texts/cadre.png", true);
+-    imageCoeur = ResourceManager::getInstance()->loadImage("data/images/status/coeur.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/texts/cadre.png", true);
++    imageCoeur = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/coeur.png", true);
+ }
+ 
+ TextArea::~TextArea() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/game/troc/Troc.cpp ZeldaNSQ_US-src-linux/src/game/game/troc/Troc.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/game/troc/Troc.cpp	2014-08-08 22:05:42.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/game/troc/Troc.cpp	2015-03-08 22:15:04.732311614 +0100
+@@ -9,8 +9,8 @@
+ 
+ 
+ Troc::Troc() : step(MENU_TROC_OFF), anim(0), inventory(0), text(0), blocs(0), offset(0) {
+-    imageMenu = ResourceManager::getInstance()->loadImage("data/images/status/bord.png", true);
+-    imageChiffres = ResourceManager::getInstance()->loadImage("data/images/status/chiffres.png", true);
++    imageMenu = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/bord.png", true);
++    imageChiffres = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/chiffres.png", true);
+ }
+ 
+ Troc::~Troc() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/GlobalSave.cpp ZeldaNSQ_US-src-linux/src/game/GlobalSave.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/GlobalSave.cpp	2014-08-05 23:22:58.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/GlobalSave.cpp	2015-03-08 22:30:20.307399878 +0100
+@@ -30,7 +30,8 @@
+ }
+ 
+ void GlobalSave::load() {
+-    ifstream f("saves/records.dat", ios::in | ios::binary);
++    ifstream f((string(getenv("HOME"))+"/.znsq/records.dat").c_str(), ios::in | ios::binary);
++
+     if(!f.is_open()) {
+         return;
+     }
+@@ -49,7 +50,8 @@
+ }
+ 
+ void GlobalSave::save() {
+-    ofstream f("saves/records.dat", ios::out | ios::binary);
++    ofstream f((string(getenv("HOME"))+"/.znsq/records.dat").c_str(), ios::out | ios::binary);
++
+     f.write((char *)&scoreArc,sizeof(int));
+     f.write((char *)&bestNormalTime,sizeof(int));
+     f.write((char *)&normalFull,sizeof(bool));
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/logo/Logo.cpp ZeldaNSQ_US-src-linux/src/game/logo/Logo.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/logo/Logo.cpp	2014-08-05 23:11:33.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/logo/Logo.cpp	2015-03-08 22:15:04.532309049 +0100
+@@ -10,11 +10,11 @@
+ Logo::Logo() : anim(0), animMax(15), vanim(60), first(true) {
+     wasFrench = ConfigurationManager::getInstance()->isFrench();
+     if (wasFrench) {
+-        image = ResourceManager::getInstance()->loadImage("data/images/logos/logo_fond.png");
++        image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/logos/logo_fond.png");
+     } else {
+-        image = ResourceManager::getInstance()->loadImage("data/images/logos/logo_fond_us.png");
++        image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/logos/logo_fond_us.png");
+     }
+-    imageLogo = ResourceManager::getInstance()->loadImage("data/images/logos/logo.png");
++    imageLogo = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/logos/logo.png");
+ }
+ 
+ Logo::~Logo() {
+@@ -27,9 +27,9 @@
+         wasFrench = !wasFrench;
+         ResourceManager::getInstance()->free(image);
+         if (wasFrench) {
+-            image = ResourceManager::getInstance()->loadImage("data/images/logos/logo_fond.png");
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/logos/logo_fond.png");
+         } else {
+-            image = ResourceManager::getInstance()->loadImage("data/images/logos/logo_fond_us.png");
++            image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/logos/logo_fond_us.png");
+         }
+     }
+     anim = 0;
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/menu/main/MainMenu.cpp ZeldaNSQ_US-src-linux/src/game/menu/main/MainMenu.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/menu/main/MainMenu.cpp	2014-07-18 20:12:51.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/menu/main/MainMenu.cpp	2015-03-08 22:15:04.498975289 +0100
+@@ -10,12 +10,12 @@
+ MainMenu::MainMenu() : line(0), column(0), load(false), confirm(false), expert(false), subLine(0),
+     surface(0), surfaceSave(0), surfaceConfirm(0), surfaceExpert(0), skin(0) {
+ 
+-    image = ResourceManager::getInstance()->loadImage("data/images/menus/cadres.png");
+-    link = ResourceManager::getInstance()->loadImage("data/images/menus/curseur.png", true);
+-    status = ResourceManager::getInstance()->loadImage("data/images/status/status.png", true);
+-    fairy = ResourceManager::getInstance()->loadImage("data/images/menus/fee.png", true);
+-    medaillons = ResourceManager::getInstance()->loadImage("data/images/status/medaillons.png", true);
+-    rangs = ResourceManager::getInstance()->loadImage("data/images/menus/rangs.png");
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/cadres.png");
++    link = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/curseur.png", true);
++    status = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/status.png", true);
++    fairy = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/fee.png", true);
++    medaillons = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/status/medaillons.png", true);
++    rangs = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/rangs.png");
+ 
+     for (int i = 0; i < 3; i++) {
+         saves[i] = new Save(i + 1);
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/menu/options/audio/AudioOptions.cpp ZeldaNSQ_US-src-linux/src/game/menu/options/audio/AudioOptions.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/menu/options/audio/AudioOptions.cpp	2014-07-18 18:59:06.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/menu/options/audio/AudioOptions.cpp	2015-03-08 22:15:04.485641785 +0100
+@@ -11,9 +11,9 @@
+ #include "../../../GlobalSave.h"
+ 
+ AudioOptions::AudioOptions() : line(2), surface(0), skin(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/menus/cadres.png");
+-    link = ResourceManager::getInstance()->loadImage("data/images/menus/curseur.png", true);
+-    niveau = ResourceManager::getInstance()->loadImage("data/images/menus/niveau.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/cadres.png");
++    link = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/curseur.png", true);
++    niveau = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/niveau.png", true);
+ }
+ 
+ AudioOptions::~AudioOptions() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/menu/options/global/GlobalOptions.cpp ZeldaNSQ_US-src-linux/src/game/menu/options/global/GlobalOptions.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/menu/options/global/GlobalOptions.cpp	2014-07-18 18:24:46.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/menu/options/global/GlobalOptions.cpp	2015-03-08 22:15:04.465641528 +0100
+@@ -11,8 +11,8 @@
+ #include "../../../GlobalSave.h"
+ 
+ GlobalOptions::GlobalOptions() : line(3), surface(0), surfaceTmp(0), skin(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/menus/cadres.png");
+-    link = ResourceManager::getInstance()->loadImage("data/images/menus/curseur.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/cadres.png");
++    link = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/curseur.png", true);
+ }
+ 
+ GlobalOptions::~GlobalOptions() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/menu/records/expert/ExpertRecords.cpp ZeldaNSQ_US-src-linux/src/game/menu/records/expert/ExpertRecords.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/menu/records/expert/ExpertRecords.cpp	2014-07-18 18:01:13.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/menu/records/expert/ExpertRecords.cpp	2015-03-08 22:15:04.435641143 +0100
+@@ -8,9 +8,9 @@
+ #include "../../../../config/ConfigurationManager.h"
+ 
+ ExpertRecords::ExpertRecords() : line(3), full(false), ulti(false), rush(false), surface(0), surfaceFull(0), surfaceUlti(0), surfaceRush(0), skin(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/menus/cadres.png");
+-    link = ResourceManager::getInstance()->loadImage("data/images/menus/curseur.png", true);
+-    rang = ResourceManager::getInstance()->loadImage("data/images/menus/rangs.png");
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/cadres.png");
++    link = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/curseur.png", true);
++    rang = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/rangs.png");
+ }
+ 
+ ExpertRecords::~ExpertRecords() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/menu/records/global/GlobalRecords.cpp ZeldaNSQ_US-src-linux/src/game/menu/records/global/GlobalRecords.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/menu/records/global/GlobalRecords.cpp	2014-07-18 18:01:12.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/menu/records/global/GlobalRecords.cpp	2015-03-08 22:15:04.425641015 +0100
+@@ -8,8 +8,8 @@
+ #include "../../../../config/ConfigurationManager.h"
+ 
+ GlobalRecords::GlobalRecords() : line(0), tir(false), surface(0), surfaceArc(0), skin(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/menus/cadres.png");
+-    link = ResourceManager::getInstance()->loadImage("data/images/menus/curseur.png", true);
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/cadres.png");
++    link = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/curseur.png", true);
+ }
+ 
+ GlobalRecords::~GlobalRecords() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/menu/records/normal/NormalRecords.cpp ZeldaNSQ_US-src-linux/src/game/menu/records/normal/NormalRecords.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/menu/records/normal/NormalRecords.cpp	2014-07-18 18:01:10.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/menu/records/normal/NormalRecords.cpp	2015-03-08 22:15:04.448974647 +0100
+@@ -8,9 +8,9 @@
+ #include "../../../../config/ConfigurationManager.h"
+ 
+ NormalRecords::NormalRecords() : line(3), full(false), ulti(false), rush(false), surface(0), surfaceFull(0), surfaceUlti(0), surfaceRush(0), skin(0) {
+-    image = ResourceManager::getInstance()->loadImage("data/images/menus/cadres.png");
+-    link = ResourceManager::getInstance()->loadImage("data/images/menus/curseur.png", true);
+-    rang = ResourceManager::getInstance()->loadImage("data/images/menus/rangs.png");
++    image = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/cadres.png");
++    link = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/curseur.png", true);
++    rang = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/menus/rangs.png");
+ }
+ 
+ NormalRecords::~NormalRecords() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/opening/Opening.cpp ZeldaNSQ_US-src-linux/src/game/opening/Opening.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/opening/Opening.cpp	2014-02-28 00:41:34.000000000 +0100
++++ ZeldaNSQ_US-src-linux/src/game/opening/Opening.cpp	2015-03-08 22:15:05.922326871 +0100
+@@ -7,13 +7,13 @@
+ #include "../../engine/texts/TextManager.h"
+ 
+ Opening::Opening() : etape(0) {
+-    imageFond1 = ResourceManager::getInstance()->loadImage("data/images/logos/fond1.png", true);
+-    imageFond2 = ResourceManager::getInstance()->loadImage("data/images/logos/fond2.png");
++    imageFond1 = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/logos/fond1.png", true);
++    imageFond2 = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/logos/fond2.png");
+ 
+     ostringstream oss;
+     for (int i = 0; i < 6; i++) {
+         oss.str(""); oss << (i + 1);
+-        imageIntro[i] = ResourceManager::getInstance()->loadImage(("data/images/logos/intro" + oss.str() + ".png").c_str());
++        imageIntro[i] = ResourceManager::getInstance()->loadImage(("/usr/share/zelda-nsq/images/logos/intro" + oss.str() + ".png").c_str());
+     }
+ 
+ 
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/Save.cpp ZeldaNSQ_US-src-linux/src/game/Save.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/Save.cpp	2014-07-18 22:36:51.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/Save.cpp	2015-03-08 22:27:55.555539460 +0100
+@@ -99,7 +99,7 @@
+ void Save::load() {
+     ostringstream im;
+     im << id;
+-    ifstream f(("saves/znq" + im.str() + ".dat").c_str(), ios::in | ios::binary);
++    ifstream f((string(getenv("HOME"))+"/.znsq/znq" + im.str() + ".dat").c_str(), ios::in | ios::binary);
+     if(!f.is_open()) {
+         return;
+     }
+@@ -152,7 +152,7 @@
+ void Save::save(bool endGame) {
+     ostringstream im;
+     im << id;
+-    ofstream f(("saves/znq" + im.str() + ".dat").c_str(), ios::out | ios::binary);
++    ofstream f((string(getenv("HOME"))+"/.znsq/znq" + im.str() + ".dat").c_str(), ios::out | ios::binary);
+     f.write((char *)&map,sizeof(int));
+     f.write((char *)&x,sizeof(int));
+     f.write((char *)&y,sizeof(int));
+@@ -203,7 +203,8 @@
+ void Save::erase() {
+     ostringstream im;
+     im << id;
+-    remove(("saves/znq" + im.str() + ".dat").c_str());
++    remove((string(getenv("HOME"))+"/.znsq/znq" + im.str() + ".dat").c_str());
++
+     init();
+     loaded = false;
+ }
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/game/title/Title.cpp ZeldaNSQ_US-src-linux/src/game/title/Title.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/game/title/Title.cpp	2014-08-15 13:31:36.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/game/title/Title.cpp	2015-03-08 22:15:04.748978494 +0100
+@@ -14,20 +14,20 @@
+     for (int i = 0; i < 44; i++) {
+         if (i < 10) os << "0";
+         os << i;
+-        string filename = "data/images/title/fond/ET_" + os.str() + ".png";
++        string filename = "/usr/share/zelda-nsq/images/title/fond/ET_" + os.str() + ".png";
+         images[i] = ResourceManager::getInstance()->loadImage(filename, true);
+         os.str("");
+     }
+     for (int i = 0; i < 23; i++) {
+         if (i < 10) os << "0";
+         os << i;
+-        string filename = "data/images/title/navi/navi_" + os.str() + ".png";
++        string filename = "/usr/share/zelda-nsq/images/title/navi/navi_" + os.str() + ".png";
+         navi[i] = ResourceManager::getInstance()->loadImage(filename, true);
+         os.str("");
+     }
+ 
+-    ciel = ResourceManager::getInstance()->loadImage("data/images/title/ciel.png");
+-    logo = ResourceManager::getInstance()->loadImage("data/images/title/titre.png", true);
++    ciel = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/title/ciel.png");
++    logo = ResourceManager::getInstance()->loadImage("/usr/share/zelda-nsq/images/title/titre.png", true);
+ }
+ 
+ Title::~Title() {
+diff -Naur ZeldaNSQ_US-src-linux.orig/src/main.cpp ZeldaNSQ_US-src-linux/src/main.cpp
+--- ZeldaNSQ_US-src-linux.orig/src/main.cpp	2014-08-09 12:54:48.000000000 +0200
++++ ZeldaNSQ_US-src-linux/src/main.cpp	2015-03-08 22:45:44.059287393 +0100
+@@ -11,6 +11,10 @@
+ #include <iostream>
+ #include <cstdlib>
+ #include <ctime>
++#include <sys/stat.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <sys/errno.h>
+ 
+ #include "engine/window/WindowManager.h"
+ #include "engine/audio/AudioManager.h"
+@@ -26,11 +30,19 @@
+ 
+     std::srand(std::time(NULL));
+ 
+-    if (WindowManager::getInstance()->createWindow("Zelda Navi's Quest", "data/images/logos/navi.ico") < 0) {
++    // create folder for save files
++    string user_home = string(getenv("HOME"));
++    if (access((user_home + "/.znsq/").c_str(), F_OK) != 0) {
++        if (errno == ENOENT) {
++            mkdir((user_home + "/.znsq").c_str(), 0700);
++        }
++    }
++
++    if (WindowManager::getInstance()->createWindow("Zelda Navi's Quest", "/usr/share/zelda-nsq/images/logos/navi.ico") < 0) {
+         exit(-1);
+     }
+ 
+-    ConfigurationManager::getInstance()->init("config/system.dat", "config/keys.dat");
++    ConfigurationManager::getInstance()->init(user_home+"/.znsq/system.dat", user_home+"/.znsq/keys.dat");
+ 
+     MainController* controller = MainController::getInstance();
+ 

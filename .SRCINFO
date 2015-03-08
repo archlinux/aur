@@ -1,0 +1,22 @@
+pkgbase = zelda-nsq
+	pkgdesc = 'Zelda: Navi's Quest is a fan-made Zelda Game (english version)
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://www.zeldaroth.fr/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = imagemagick
+	depends = sdl_gfx
+	depends = sdl_mixer
+	depends = sdl_image
+	conflicts = zelda-nsq-fr
+	source = http://www.zeldaroth.fr/us/files/NSQ/Linux/ZeldaNSQ_US-src-linux.zip
+	source = zelda-nsq-datafolders.patch
+	source = zelda-nsq.desktop
+	sha256sums = e33cf28ad8f160e94e24f4273b1546f64fc8f10f5d46c7ecc9e4b3e5edb2f571
+	sha256sums = 3b445f73fd2be4218b446dc510551d09629932140682682eec599d3a076f84c7
+	sha256sums = b0bb398ba03e2a8bc1d66d720b9ec2d962247c7ef0725b2a60ff716fa9ca8ef0
+
+pkgname = zelda-nsq
+
