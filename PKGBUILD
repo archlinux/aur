@@ -3,8 +3,8 @@
 # Contributor: Arch Haskell Team <arch-haskell@haskell.org>
 _hkgname=syb
 pkgname=haskell-syb
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="A library for client-side HTTP"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
@@ -19,7 +19,8 @@ options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
 options=('staticlibs')
-md5sums=('5dae1c576c3139931574c397c996cf19')
+sha1sums=('93b01feab9b0868e266174f188e618d57af5a347')
+sha256sums=('0610677803931a3355aae00fdd13145f80e26d7dee08e1ba5bc9b2edea4c4c87')
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
