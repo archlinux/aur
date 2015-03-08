@@ -4,7 +4,7 @@ pkgdesc="ROS - Metapackage of geometry tutorials ROS."
 url='http://www.ros.org/wiki/geometry_tutorials'
 
 pkgname='ros-indigo-geometry-tutorials'
-pkgver='0.2.1'
+pkgver='0.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
