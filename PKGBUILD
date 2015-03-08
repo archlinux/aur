@@ -4,7 +4,7 @@ pkgdesc="ROS - turtle_tf2 demonstrates how to write a tf2 broadcaster and listen
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-turtle-tf2'
-pkgver='0.2.1'
+pkgver='0.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
