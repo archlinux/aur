@@ -1,0 +1,22 @@
+pkgbase = zelda-3t
+	pkgdesc = 'Zelda: Time to Triumph' is a fan-made Zelda Game (english version)
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://www.zeldaroth.fr/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = imagemagick
+	depends = sdl_gfx
+	depends = sdl_mixer
+	depends = sdl_image
+	conflicts = zelda-3t-fr
+	source = http://www.zeldaroth.fr/us/files/3T/Linux/Zelda3T_US-src-linux.zip
+	source = zelda-3t-datafolders.patch
+	source = zelda-3t.desktop
+	sha256sums = 2c2b1c8bca4e8b1c362ef2ddfb95cebf0c5526d4aa6917340289db0a5d0096d3
+	sha256sums = d473f1f872cf30578787a085babe4934421a91eaf6354a47d11bb197bed957f9
+	sha256sums = ca00c7555cef168ca3f00cc8e363631b6d2c3b566cc7c07f29de234f564c0d88
+
+pkgname = zelda-3t
+

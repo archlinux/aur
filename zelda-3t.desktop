@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zelda: Time to Triumph
+Comment=Third Game in a series of fan made Zelda Games
+Exec=zelda-3t
+Icon=zelda-3t
+Terminal=false
+Categories=Game;AdventureGame;

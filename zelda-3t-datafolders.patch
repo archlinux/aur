@@ -1,0 +1,1205 @@
+diff -Naur Zelda3T_US-src-linux.orig/src/Audio.cpp Zelda3T_US-src-linux/src/Audio.cpp
+--- Zelda3T_US-src-linux.orig/src/Audio.cpp	2009-09-13 12:00:51.000000000 +0200
++++ Zelda3T_US-src-linux/src/Audio.cpp	2015-03-08 19:49:36.046380529 +0100
+@@ -52,50 +52,50 @@
+ void Audio::loadSounds() {
+     sons = new Mix_Chunk*[44];
+ 
+-    sons[0] = Mix_LoadWAV("data/sound/text.ogg"); // lettres
+-    sons[1] = Mix_LoadWAV("data/sound/menu1.ogg"); // menu 1
+-    sons[2] = Mix_LoadWAV("data/sound/menu2.ogg"); // menu 2
+-    sons[3] = Mix_LoadWAV("data/sound/menu3.ogg"); // menu 3
+-    sons[4] = Mix_LoadWAV("data/sound/menu4.ogg"); // menu 4
+-    sons[5] = Mix_LoadWAV("data/sound/timewarp.ogg"); // time retour
+-    sons[6] = Mix_LoadWAV("data/sound/tombe.ogg"); // tombe (ennemi)
+-    sons[7] = Mix_LoadWAV("data/sound/hitenemy.ogg"); //shot 1
+-    sons[8] = Mix_LoadWAV("data/sound/killenemy.ogg"); // shot 2
+-    sons[9] = Mix_LoadWAV("data/sound/surprise.ogg"); // surprise
+-    sons[10] = Mix_LoadWAV("data/sound/monte.ogg"); // monte
+-    sons[11] = Mix_LoadWAV("data/sound/descend.ogg"); // descend
+-    sons[12] = Mix_LoadWAV("data/sound/chute.ogg"); // chute
+-    sons[13] = Mix_LoadWAV("data/sound/item.ogg"); // item
+-    sons[14] = Mix_LoadWAV("data/sound/rupee.ogg"); // rubis
+-    sons[15] = Mix_LoadWAV("data/sound/heart.ogg"); // coeur
+-    sons[16] = Mix_LoadWAV("data/sound/bomb.ogg"); // bombe
+-    sons[17] = Mix_LoadWAV("data/sound/textnext.ogg"); // suite texte
+-    sons[18] = Mix_LoadWAV("data/sound/textend.ogg"); // fin texte
+-    sons[19] = Mix_LoadWAV("data/sound/happy.ogg"); // trouve objet
+-    sons[20] = Mix_LoadWAV("data/sound/door.ogg"); // ouvre porte
+-    sons[21] = Mix_LoadWAV("data/sound/pics.ogg"); // pics contre mur
+-    sons[22] = Mix_LoadWAV("data/sound/sword.ogg"); // Epée
+-    sons[23] = Mix_LoadWAV("data/sound/SwordCharging.ogg"); // chargée
+-    sons[24] = Mix_LoadWAV("data/sound/Sword360.ogg"); // spin
+-    sons[25] = Mix_LoadWAV("data/sound/shoot.ogg"); // flèche
+-    sons[26] = Mix_LoadWAV("data/sound/hookshot.ogg"); // grappin
+-    sons[27] = Mix_LoadWAV("data/sound/stamp.ogg"); // pose bombe
+-    sons[28] = Mix_LoadWAV("data/sound/magic.ogg"); // magie
+-    sons[29] = Mix_LoadWAV("data/sound/burn.ogg"); // brËšle
+-    sons[30] = Mix_LoadWAV("data/sound/hammer.ogg"); // marteau
+-    sons[31] = Mix_LoadWAV("data/sound/plouf.ogg"); // plouf
+-    sons[32] = Mix_LoadWAV("data/sound/danger.ogg"); // danger
+-    sons[33] = Mix_LoadWAV("data/sound/hurt.ogg"); // link se blesse
+-    sons[34] = Mix_LoadWAV("data/sound/porte.ogg"); // porte objet
+-    sons[35] = Mix_LoadWAV("data/sound/lance.ogg"); // lance objet
+-    sons[36] = Mix_LoadWAV("data/sound/casse.ogg"); // casse objet
+-    sons[37] = Mix_LoadWAV("data/sound/charge.ogg"); // charge magie
+-    sons[38] = Mix_LoadWAV("data/sound/buisson.ogg"); // coupe buisson
+-    sons[39] = Mix_LoadWAV("data/sound/pousse.ogg"); // pousse caisse
+-	sons[40] = Mix_LoadWAV("data/sound/envol.ogg"); // chant envol
+-    sons[41] = Mix_LoadWAV("data/sound/inverse.ogg"); // hymne vide
+-    sons[42] = Mix_LoadWAV("data/sound/accelere.ogg"); // chant esprit
+-    sons[43] = Mix_LoadWAV("data/sound/splash.ogg"); // ...
++    sons[0] = Mix_LoadWAV("/usr/share/zelda-3t/sound/text.ogg"); // lettres
++    sons[1] = Mix_LoadWAV("/usr/share/zelda-3t/sound/menu1.ogg"); // menu 1
++    sons[2] = Mix_LoadWAV("/usr/share/zelda-3t/sound/menu2.ogg"); // menu 2
++    sons[3] = Mix_LoadWAV("/usr/share/zelda-3t/sound/menu3.ogg"); // menu 3
++    sons[4] = Mix_LoadWAV("/usr/share/zelda-3t/sound/menu4.ogg"); // menu 4
++    sons[5] = Mix_LoadWAV("/usr/share/zelda-3t/sound/timewarp.ogg"); // time retour
++    sons[6] = Mix_LoadWAV("/usr/share/zelda-3t/sound/tombe.ogg"); // tombe (ennemi)
++    sons[7] = Mix_LoadWAV("/usr/share/zelda-3t/sound/hitenemy.ogg"); //shot 1
++    sons[8] = Mix_LoadWAV("/usr/share/zelda-3t/sound/killenemy.ogg"); // shot 2
++    sons[9] = Mix_LoadWAV("/usr/share/zelda-3t/sound/surprise.ogg"); // surprise
++    sons[10] = Mix_LoadWAV("/usr/share/zelda-3t/sound/monte.ogg"); // monte
++    sons[11] = Mix_LoadWAV("/usr/share/zelda-3t/sound/descend.ogg"); // descend
++    sons[12] = Mix_LoadWAV("/usr/share/zelda-3t/sound/chute.ogg"); // chute
++    sons[13] = Mix_LoadWAV("/usr/share/zelda-3t/sound/item.ogg"); // item
++    sons[14] = Mix_LoadWAV("/usr/share/zelda-3t/sound/rupee.ogg"); // rubis
++    sons[15] = Mix_LoadWAV("/usr/share/zelda-3t/sound/heart.ogg"); // coeur
++    sons[16] = Mix_LoadWAV("/usr/share/zelda-3t/sound/bomb.ogg"); // bombe
++    sons[17] = Mix_LoadWAV("/usr/share/zelda-3t/sound/textnext.ogg"); // suite texte
++    sons[18] = Mix_LoadWAV("/usr/share/zelda-3t/sound/textend.ogg"); // fin texte
++    sons[19] = Mix_LoadWAV("/usr/share/zelda-3t/sound/happy.ogg"); // trouve objet
++    sons[20] = Mix_LoadWAV("/usr/share/zelda-3t/sound/door.ogg"); // ouvre porte
++    sons[21] = Mix_LoadWAV("/usr/share/zelda-3t/sound/pics.ogg"); // pics contre mur
++    sons[22] = Mix_LoadWAV("/usr/share/zelda-3t/sound/sword.ogg"); // Epée
++    sons[23] = Mix_LoadWAV("/usr/share/zelda-3t/sound/SwordCharging.ogg"); // chargée
++    sons[24] = Mix_LoadWAV("/usr/share/zelda-3t/sound/Sword360.ogg"); // spin
++    sons[25] = Mix_LoadWAV("/usr/share/zelda-3t/sound/shoot.ogg"); // flèche
++    sons[26] = Mix_LoadWAV("/usr/share/zelda-3t/sound/hookshot.ogg"); // grappin
++    sons[27] = Mix_LoadWAV("/usr/share/zelda-3t/sound/stamp.ogg"); // pose bombe
++    sons[28] = Mix_LoadWAV("/usr/share/zelda-3t/sound/magic.ogg"); // magie
++    sons[29] = Mix_LoadWAV("/usr/share/zelda-3t/sound/burn.ogg"); // brËšle
++    sons[30] = Mix_LoadWAV("/usr/share/zelda-3t/sound/hammer.ogg"); // marteau
++    sons[31] = Mix_LoadWAV("/usr/share/zelda-3t/sound/plouf.ogg"); // plouf
++    sons[32] = Mix_LoadWAV("/usr/share/zelda-3t/sound/danger.ogg"); // danger
++    sons[33] = Mix_LoadWAV("/usr/share/zelda-3t/sound/hurt.ogg"); // link se blesse
++    sons[34] = Mix_LoadWAV("/usr/share/zelda-3t/sound/porte.ogg"); // porte objet
++    sons[35] = Mix_LoadWAV("/usr/share/zelda-3t/sound/lance.ogg"); // lance objet
++    sons[36] = Mix_LoadWAV("/usr/share/zelda-3t/sound/casse.ogg"); // casse objet
++    sons[37] = Mix_LoadWAV("/usr/share/zelda-3t/sound/charge.ogg"); // charge magie
++    sons[38] = Mix_LoadWAV("/usr/share/zelda-3t/sound/buisson.ogg"); // coupe buisson
++    sons[39] = Mix_LoadWAV("/usr/share/zelda-3t/sound/pousse.ogg"); // pousse caisse
++	sons[40] = Mix_LoadWAV("/usr/share/zelda-3t/sound/envol.ogg"); // chant envol
++    sons[41] = Mix_LoadWAV("/usr/share/zelda-3t/sound/inverse.ogg"); // hymne vide
++    sons[42] = Mix_LoadWAV("/usr/share/zelda-3t/sound/accelere.ogg"); // chant esprit
++    sons[43] = Mix_LoadWAV("/usr/share/zelda-3t/sound/splash.ogg"); // ...
+ }
+ 
+ void Audio::freeSounds() {
+@@ -153,74 +153,74 @@
+ 
+ Mix_Music* Audio::choixMusique(int id) {
+     switch (id) {
+-	case 1 : case 2 : case 7 : return Mix_LoadMUS("data/music/PlaineP.mid");
+-        case 3 : return Mix_LoadMUS("data/music/VilleCP.mid");
+-        case 4 : return Mix_LoadMUS("data/music/TerresS.mid");
+-        case 6 : return Mix_LoadMUS("data/music/BoisPerdus.mid");
+-        case 8 : return Mix_LoadMUS("data/music/CimetiereP.mid");
+-        case 10 : return Mix_LoadMUS("data/music/VillageMP.mid");
+-        case 11 : return Mix_LoadMUS("data/music/LacP.mid");
+-        case 12 : return Mix_LoadMUS("data/music/DesertP.mid");
+-        case 13 : return Mix_LoadMUS("data/music/Cocorico.mid");
+-        case 15 : return Mix_LoadMUS("data/music/MontP.mid");
+-        case 16 : return Mix_LoadMUS("data/music/Foret.mid");
+-        case 17 : return Mix_LoadMUS("data/music/Plaine.mid");
+-        case 18 : return Mix_LoadMUS("data/music/Cite.mid");
+-        case 19 : return Mix_LoadMUS("data/music/Chateau.mid");
+-        case 21 : return Mix_LoadMUS("data/music/Lanelle.mid");
+-        case 23 : return Mix_LoadMUS("data/music/Cimetiere.mid");
+-        case 25 : return Mix_LoadMUS("data/music/VillageM.mid");
+-        case 26 : return Mix_LoadMUS("data/music/Lac.mid");
+-        case 27 : return Mix_LoadMUS("data/music/Desert.mid");
+-        case 28 : return Mix_LoadMUS("data/music/VillageO.mid");
+-        case 30 : return Mix_LoadMUS("data/music/Mont.mid");
++	case 1 : case 2 : case 7 : return Mix_LoadMUS("/usr/share/zelda-3t/music/PlaineP.mid");
++        case 3 : return Mix_LoadMUS("/usr/share/zelda-3t/music/VilleCP.mid");
++        case 4 : return Mix_LoadMUS("/usr/share/zelda-3t/music/TerresS.mid");
++        case 6 : return Mix_LoadMUS("/usr/share/zelda-3t/music/BoisPerdus.mid");
++        case 8 : return Mix_LoadMUS("/usr/share/zelda-3t/music/CimetiereP.mid");
++        case 10 : return Mix_LoadMUS("/usr/share/zelda-3t/music/VillageMP.mid");
++        case 11 : return Mix_LoadMUS("/usr/share/zelda-3t/music/LacP.mid");
++        case 12 : return Mix_LoadMUS("/usr/share/zelda-3t/music/DesertP.mid");
++        case 13 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Cocorico.mid");
++        case 15 : return Mix_LoadMUS("/usr/share/zelda-3t/music/MontP.mid");
++        case 16 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Foret.mid");
++        case 17 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Plaine.mid");
++        case 18 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Cite.mid");
++        case 19 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Chateau.mid");
++        case 21 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Lanelle.mid");
++        case 23 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Cimetiere.mid");
++        case 25 : return Mix_LoadMUS("/usr/share/zelda-3t/music/VillageM.mid");
++        case 26 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Lac.mid");
++        case 27 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Desert.mid");
++        case 28 : return Mix_LoadMUS("/usr/share/zelda-3t/music/VillageO.mid");
++        case 30 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Mont.mid");
+         case 31 : case 32 : case 34 : case 35 :
+-            return Mix_LoadMUS("data/music/Ombre.mid");
+-        case 33 : return Mix_LoadMUS("data/music/VilleF.mid");
+-        case 36 : return Mix_LoadMUS("data/music/BoisPerdusF.mid");
+-        case 37 : return Mix_LoadMUS("data/music/Cascades.mid");
+-        case 38 : return Mix_LoadMUS("data/music/CimetiereF.mid");
+-        case 40 : return Mix_LoadMUS("data/music/VillageMF.mid");
+-        case 41 : return Mix_LoadMUS("data/music/LacF.mid");
+-        case 42 : return Mix_LoadMUS("data/music/DesertF.mid");
+-        case 43 : return Mix_LoadMUS("data/music/VillageOF.mid");
+-        case 45 : return Mix_LoadMUS("data/music/MontF.mid");
+-        case 46 : return Mix_LoadMUS("data/music/Courage.mid");
+-        case 47 : return Mix_LoadMUS("data/music/Sagesse.mid");
+-        case 48 : return Mix_LoadMUS("data/music/Force.mid");
+-        case 49 : return Mix_LoadMUS("data/music/Abysses.mid");
+-        case 50 : return Mix_LoadMUS("data/music/PyramideF.mid");
+-        case 51 : return Mix_LoadMUS("data/music/PyramideP.mid");
+-        case 52 : return Mix_LoadMUS("data/music/Ordinn.mid");
+-        case 53 : return Mix_LoadMUS("data/music/Air.mid");
+-        case 54 : return Mix_LoadMUS("data/music/Glace.mid");
+-        case 55 : return Mix_LoadMUS("data/music/Feu.mid");
+-        case 56 : return Mix_LoadMUS("data/music/Titre.mid");
+-        case 57 : return Mix_LoadMUS("data/music/DFinal.mid");
+-        case 58 : return Mix_LoadMUS("data/music/Casino.mid");
+-        case 59 : return Mix_LoadMUS("data/music/Gemme.mid");
+-        case 60 : return Mix_LoadMUS("data/music/DestinationF.mid");
+-        case 61 : return Mix_LoadMUS("data/music/Cave.mid");
+-        case 79 : return Mix_LoadMUS("data/music/Home.mid");
+-        case 80 : return Mix_LoadMUS("data/music/Bar.mid");
+-        case 81 : return Mix_LoadMUS("data/music/Magasin.mid");
+-        case 83 : return Mix_LoadMUS("data/music/Maison.mid");
+-        case 85 : return Mix_LoadMUS("data/music/Potion.mid");
+-        case 89 : return Mix_LoadMUS("data/music/Jeu.mid");
+-        case 95 : return Mix_LoadMUS("data/music/Maire.mid");
+-        case 119 : return Mix_LoadMUS("data/music/Cafe.mid");
+-        case 144 : return Mix_LoadMUS("data/music/Sages.mid");
+-        case 150 : return Mix_LoadMUS("data/music/Opera.mid");
+-        case 151 : return Mix_LoadMUS("data/music/Epee.mid");
+-        case 154 : return Mix_LoadMUS("data/music/Prison.mid");
+-        case 155 : return Mix_LoadMUS("data/music/ChateauF.mid");
+-        case 218 : return Mix_LoadMUS("data/music/probleme.mid");
+-        case 219 : return Mix_LoadMUS("data/music/Epee.mid");
+-        case 180 : return Mix_LoadMUS("data/music/Titre.mid");
+-        case 190 : return Mix_LoadMUS("data/music/Selection.mid");
+-        case 199 : return Mix_LoadMUS("data/music/Nuit.mid");
+-        case 200 : return Mix_LoadMUS("data/music/Debut.mid");
+-        default : return Mix_LoadMUS("data/music/Maison.mid");
++            return Mix_LoadMUS("/usr/share/zelda-3t/music/Ombre.mid");
++        case 33 : return Mix_LoadMUS("/usr/share/zelda-3t/music/VilleF.mid");
++        case 36 : return Mix_LoadMUS("/usr/share/zelda-3t/music/BoisPerdusF.mid");
++        case 37 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Cascades.mid");
++        case 38 : return Mix_LoadMUS("/usr/share/zelda-3t/music/CimetiereF.mid");
++        case 40 : return Mix_LoadMUS("/usr/share/zelda-3t/music/VillageMF.mid");
++        case 41 : return Mix_LoadMUS("/usr/share/zelda-3t/music/LacF.mid");
++        case 42 : return Mix_LoadMUS("/usr/share/zelda-3t/music/DesertF.mid");
++        case 43 : return Mix_LoadMUS("/usr/share/zelda-3t/music/VillageOF.mid");
++        case 45 : return Mix_LoadMUS("/usr/share/zelda-3t/music/MontF.mid");
++        case 46 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Courage.mid");
++        case 47 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Sagesse.mid");
++        case 48 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Force.mid");
++        case 49 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Abysses.mid");
++        case 50 : return Mix_LoadMUS("/usr/share/zelda-3t/music/PyramideF.mid");
++        case 51 : return Mix_LoadMUS("/usr/share/zelda-3t/music/PyramideP.mid");
++        case 52 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Ordinn.mid");
++        case 53 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Air.mid");
++        case 54 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Glace.mid");
++        case 55 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Feu.mid");
++        case 56 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Titre.mid");
++        case 57 : return Mix_LoadMUS("/usr/share/zelda-3t/music/DFinal.mid");
++        case 58 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Casino.mid");
++        case 59 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Gemme.mid");
++        case 60 : return Mix_LoadMUS("/usr/share/zelda-3t/music/DestinationF.mid");
++        case 61 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Cave.mid");
++        case 79 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Home.mid");
++        case 80 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Bar.mid");
++        case 81 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Magasin.mid");
++        case 83 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Maison.mid");
++        case 85 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Potion.mid");
++        case 89 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Jeu.mid");
++        case 95 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Maire.mid");
++        case 119 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Cafe.mid");
++        case 144 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Sages.mid");
++        case 150 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Opera.mid");
++        case 151 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Epee.mid");
++        case 154 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Prison.mid");
++        case 155 : return Mix_LoadMUS("/usr/share/zelda-3t/music/ChateauF.mid");
++        case 218 : return Mix_LoadMUS("/usr/share/zelda-3t/music/probleme.mid");
++        case 219 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Epee.mid");
++        case 180 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Titre.mid");
++        case 190 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Selection.mid");
++        case 199 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Nuit.mid");
++        case 200 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Debut.mid");
++        default : return Mix_LoadMUS("/usr/share/zelda-3t/music/Maison.mid");
+     }
+ }
+ 
+@@ -246,36 +246,36 @@
+ 
+ Mix_Music* Audio::choixSpecial(int id) {
+     switch (id) {
+-	case 1 : return Mix_LoadMUS("data/music/Boss.mid");
+-        case 2 : return Mix_LoadMUS("data/music/Mort.mid");
+-        case 3 : return Mix_LoadMUS("data/music/Epee.mid");
+-        case 4 : return Mix_LoadMUS("data/music/BossF.mid");
+-        case 5 : return Mix_LoadMUS("data/music/Fin.mid");
+-        case 6 : return Mix_LoadMUS("data/music/BossM.mid");
+-        case 7 : return Mix_LoadMUS("data/music/Area81.mid");
+-        case 8 : return Mix_LoadMUS("data/music/OniLink.mid");
+-        case 9 : return Mix_LoadMUS("data/music/probleme.mid");
+-        case 10 : return Mix_LoadMUS("data/music/Harpie.mid");
+-        case 11 : return Mix_LoadMUS("data/music/Crabe.mid");
+-        case 12 : return Mix_LoadMUS("data/music/Imp.mid");
+-        case 13 : return Mix_LoadMUS("data/music/Masamune.mid");
+-        case 14 : return Mix_LoadMUS("data/music/ZoraS.mid");
+-        case 15 : return Mix_LoadMUS("data/music/Marlag.mid");
+-        case 16 : return Mix_LoadMUS("data/music/Fantomas.mid");
+-        case 17 : return Mix_LoadMUS("data/music/Vampire.mid");
+-        case 18 : return Mix_LoadMUS("data/music/Araignee.mid");
+-        case 19 : return Mix_LoadMUS("data/music/Plumes.mid");
+-        case 20 : return Mix_LoadMUS("data/music/Garuda.mid");
+-        case 21 : return Mix_LoadMUS("data/music/Heckran.mid");
+-        case 22 : return Mix_LoadMUS("data/music/Sun.mid");
+-        case 23 : return Mix_LoadMUS("data/music/Orcus.mid");
+-        case 24 : return Mix_LoadMUS("data/music/Agahnim.mid");
+-        case 25 : return Mix_LoadMUS("data/music/Zelda.mid");
+-        case 26 : return Mix_LoadMUS("data/music/AgahnimFinal.mid");
+-        case 27 : return Mix_LoadMUS("data/music/GanondorfFinal.mid");
+-        case 28 : return Mix_LoadMUS("data/music/Quizz.mid");
+-        case 29 : return Mix_LoadMUS("data/music/FinalBattle.mid");
+-        default : return Mix_LoadMUS("data/music/Boss.mid");
++	case 1 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Boss.mid");
++        case 2 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Mort.mid");
++        case 3 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Epee.mid");
++        case 4 : return Mix_LoadMUS("/usr/share/zelda-3t/music/BossF.mid");
++        case 5 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Fin.mid");
++        case 6 : return Mix_LoadMUS("/usr/share/zelda-3t/music/BossM.mid");
++        case 7 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Area81.mid");
++        case 8 : return Mix_LoadMUS("/usr/share/zelda-3t/music/OniLink.mid");
++        case 9 : return Mix_LoadMUS("/usr/share/zelda-3t/music/probleme.mid");
++        case 10 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Harpie.mid");
++        case 11 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Crabe.mid");
++        case 12 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Imp.mid");
++        case 13 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Masamune.mid");
++        case 14 : return Mix_LoadMUS("/usr/share/zelda-3t/music/ZoraS.mid");
++        case 15 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Marlag.mid");
++        case 16 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Fantomas.mid");
++        case 17 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Vampire.mid");
++        case 18 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Araignee.mid");
++        case 19 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Plumes.mid");
++        case 20 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Garuda.mid");
++        case 21 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Heckran.mid");
++        case 22 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Sun.mid");
++        case 23 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Orcus.mid");
++        case 24 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Agahnim.mid");
++        case 25 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Zelda.mid");
++        case 26 : return Mix_LoadMUS("/usr/share/zelda-3t/music/AgahnimFinal.mid");
++        case 27 : return Mix_LoadMUS("/usr/share/zelda-3t/music/GanondorfFinal.mid");
++        case 28 : return Mix_LoadMUS("/usr/share/zelda-3t/music/Quizz.mid");
++        case 29 : return Mix_LoadMUS("/usr/share/zelda-3t/music/FinalBattle.mid");
++        default : return Mix_LoadMUS("/usr/share/zelda-3t/music/Boss.mid");
+     }
+ }
+ 
+diff -Naur Zelda3T_US-src-linux.orig/src/Caisse.cpp Zelda3T_US-src-linux/src/Caisse.cpp
+--- Zelda3T_US-src-linux.orig/src/Caisse.cpp	2009-06-21 18:48:28.000000000 +0200
++++ Zelda3T_US-src-linux/src/Caisse.cpp	2015-03-08 19:49:36.049713907 +0100
+@@ -22,7 +22,7 @@
+ Caisse::Caisse(Jeu* jeu, int type, int i, int j, int r, int revie) : gpJeu(jeu), id(type),
+ pousseX(0), pousseY(0), vitesse(1), direction(N), reste(r), reviable(revie), rdep(r) {
+     x=i; y=j; w=16; h=16; xdep=x; ydep=y;
+-    image = IMG_Load("data/images/objet/caisse.png");
++    image = IMG_Load("/usr/share/zelda-3t/images/objet/caisse.png");
+     SDL_SetColorKey(image,SDL_SRCCOLORKEY,SDL_MapRGB(image->format,0,0,255));
+     sx = ((type-1)%3)*w;
+     sy = ((type-1)/3)*h;
+diff -Naur Zelda3T_US-src-linux.orig/src/Carte.cpp Zelda3T_US-src-linux/src/Carte.cpp
+--- Zelda3T_US-src-linux.orig/src/Carte.cpp	2010-01-01 16:16:38.000000000 +0100
++++ Zelda3T_US-src-linux/src/Carte.cpp	2015-03-08 19:49:36.056380663 +0100
+@@ -34,26 +34,26 @@
+         switch (gpJeu->getEpoque()) {
+             case T_PASSE :
+                 if (!gpJoueur->getCoffre(15, 2)) 
+-                    tmp = IMG_Load("data/images/carte/monde1-1.png");
+-                else tmp = IMG_Load("data/images/carte/monde1-2.png");
++                    tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde1-1.png");
++                else tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde1-2.png");
+                 break;
+             case T_PRESENT :
+                 if (gpJoueur->getAvancement()>=PORTAIL_PRE_PRESENT_UTILISE
+                 && gpJoueur->getAvancement()<PORTAIL_PRE_PRESENT_FERME) {
+                     if (gpJoueur->getAvancement()<PONT_CONSTRUIT) 
+-                        tmp = IMG_Load("data/images/carte/monde4-1.png");
+-                    else tmp = IMG_Load("data/images/carte/monde4-2.png");
++                        tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde4-1.png");
++                    else tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde4-2.png");
+                 } else if (gpJoueur->getTroc(M_ROUAGE)!=0) 
+-                    tmp = IMG_Load("data/images/carte/monde2-1.png");
++                    tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde2-1.png");
+                 else if (gpJoueur->getCoffre(15,27)==15)
+-                    tmp = IMG_Load("data/images/carte/monde2-3.png");
+-                else tmp = IMG_Load("data/images/carte/monde2-2.png");
++                    tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde2-3.png");
++                else tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde2-2.png");
+                 break;
+             case T_FUTUR : 
+                 if (!gpJoueur->hasObjet(O_FFEU) || !gpJoueur->hasObjet(O_FGLACE)
+                 || !gpJoueur->hasObjet(O_FLUM) || !gpJoueur->hasBouteille(3))
+-                    tmp = IMG_Load("data/images/carte/monde3-1.png"); 
+-                else tmp = IMG_Load("data/images/carte/monde3-2.png"); 
++                    tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde3-1.png"); 
++                else tmp = IMG_Load("/usr/share/zelda-3t/images/carte/monde3-2.png"); 
+                 break;
+             default :
+                 break;
+@@ -66,7 +66,7 @@
+         if (gpJeu->getKeyboard()->getMode() == 22) {
+             gpJeu->getKeyboard()->setTelep(0); return;}
+         
+-        tmp = IMG_Load("data/images/carte/link.png");
++        tmp = IMG_Load("/usr/share/zelda-3t/images/carte/link.png");
+         SDL_SetColorKey(tmp,SDL_SRCCOLORKEY,SDL_MapRGB(tmp->format,0,0,255));
+         src.w = 14; src.h = 12; src.x = 0; src.y = 0; 
+         if (gpJoueur->isLapin()) {src.w = 16; src.h = 15; src.x = 14;}
+@@ -156,7 +156,7 @@
+     SDL_Rect dst;
+     Joueur* gpJoueur = gpJeu->getJoueur();
+     
+-    SDL_Surface* tmp = IMG_Load("data/images/carte/donjon.png");
++    SDL_Surface* tmp = IMG_Load("/usr/share/zelda-3t/images/carte/donjon.png");
+     src.w = 320; src.h = 240; src.x = 0; src.y = 0; dst.y = 0; dst.x = 0;
+     SDL_BlitSurface(tmp, &src, image, &dst);
+     SDL_FreeSurface(tmp);
+@@ -182,7 +182,7 @@
+         case 14 : src.y=32; src.h=32; break;
+     }
+     
+-    SDL_Surface* tmp = IMG_Load("data/images/carte/level.png");
++    SDL_Surface* tmp = IMG_Load("/usr/share/zelda-3t/images/carte/level.png");
+     SDL_BlitSurface(tmp, &src, image, &dst);
+     SDL_FreeSurface(tmp);
+     
+@@ -199,12 +199,12 @@
+     }
+     src.h = 16; src.w = 32;src.x = 0;src.y=32-levely*16;dst.x = 40; dst.y = 96-levely*16;
+     
+-    tmp = IMG_Load("data/images/carte/level2.png");
++    tmp = IMG_Load("/usr/share/zelda-3t/images/carte/level2.png");
+     SDL_BlitSurface(tmp, &src, image, &dst);
+     SDL_FreeSurface(tmp);
+     
+     //étage de link
+-    tmp = IMG_Load("data/images/carte/link.png");
++    tmp = IMG_Load("/usr/share/zelda-3t/images/carte/link.png");
+     SDL_SetColorKey(tmp,SDL_SRCCOLORKEY,SDL_MapRGB(tmp->format,0,0,255));
+     src.h = 12; src.w = 14;src.x = 0;src.y=0;
+     dst.x = 25; dst.y = 98-gpJeu->getMonde()->etage()*16;
+@@ -242,13 +242,13 @@
+     os << (zone-46+1);
+     os2 << levely;
+     
+-    SDL_Surface* tmp = IMG_Load(("data/images/carte/d"+os.str()+"e"+os2.str()+".png").c_str());
++    SDL_Surface* tmp = IMG_Load(("/usr/share/zelda-3t/images/carte/d"+os.str()+"e"+os2.str()+".png").c_str());
+     src.x=0; src.y=0; src.w=tmp->w; src.h=tmp->h; dst.y = 48+dy*16; dst.x = 128+dx*16;
+     SDL_BlitSurface(tmp, &src, image, &dst);
+     SDL_FreeSurface(tmp);
+     
+     
+-    tmp = IMG_Load(("data/images/carte/nd"+os.str()+"e"+os2.str()+".png").c_str());
++    tmp = IMG_Load(("/usr/share/zelda-3t/images/carte/nd"+os.str()+"e"+os2.str()+".png").c_str());
+     
+     int di=0;
+     int dj=0;
+@@ -286,7 +286,7 @@
+     
+     //étage de link
+     if (gpJeu->getMonde()->etage() == levely/* && ((zone-46)!=11 || levely==0)*/) {
+-        tmp = IMG_Load("data/images/carte/link.png");
++        tmp = IMG_Load("/usr/share/zelda-3t/images/carte/link.png");
+         SDL_SetColorKey(tmp,SDL_SRCCOLORKEY,SDL_MapRGB(tmp->format,0,0,255));
+         src.h = 12; src.w = 14;src.x = 0;src.y=0;
+         dst.x = 128+(dx-di)*16+(gpJoueur->getX()/20)-6; 
+@@ -302,7 +302,7 @@
+     int zone = gpJeu->getZone();
+     Joueur* gpJoueur = gpJeu->getJoueur();
+     
+-    SDL_Surface* tmp = IMG_Load("data/images/carte/boussole.png");
++    SDL_Surface* tmp = IMG_Load("/usr/share/zelda-3t/images/carte/boussole.png");
+     SDL_SetColorKey(tmp,SDL_SRCCOLORKEY,SDL_MapRGB(tmp->format,0,0,255));
+     
+     switch (zone-46) {
+@@ -1098,7 +1098,7 @@
+         
+         
+         
+-        SDL_Surface* tmp = IMG_Load("data/images/carte/link.png");
++        SDL_Surface* tmp = IMG_Load("/usr/share/zelda-3t/images/carte/link.png");
+         SDL_SetColorKey(tmp,SDL_SRCCOLORKEY,SDL_MapRGB(tmp->format,0,0,255));
+         src.w = 14; src.h = 12; src.x = 0; src.y = 0; 
+         
+diff -Naur Zelda3T_US-src-linux.orig/src/Encyclopedie.cpp Zelda3T_US-src-linux/src/Encyclopedie.cpp
+--- Zelda3T_US-src-linux.orig/src/Encyclopedie.cpp	2010-01-01 16:16:38.000000000 +0100
++++ Zelda3T_US-src-linux/src/Encyclopedie.cpp	2015-03-08 19:49:36.056380663 +0100
+@@ -12,7 +12,7 @@
+ 
+ Encyclopedie::Encyclopedie(Jeu* jeu) : gpJeu(jeu), page(0), gpEnnemi(0), gpPnj(0) {
+     image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+-    imageCadre = IMG_Load("data/images/logos/cadres.png");
++    imageCadre = IMG_Load("/usr/share/zelda-3t/images/logos/cadres.png");
+     gpEnnemi = new Ennemi(gpJeu, 0, 0, 0, true);
+     gpPnj = new Pnj(gpJeu, 8, gpJeu->getPhg(0)+128+8+((48-16)/2), 
+         gpJeu->getPhg(1)+112-16+((48-23)/2), 0);
+diff -Naur Zelda3T_US-src-linux.orig/src/Ennemi.cpp Zelda3T_US-src-linux/src/Ennemi.cpp
+--- Zelda3T_US-src-linux.orig/src/Ennemi.cpp	2009-09-10 19:46:34.000000000 +0200
++++ Zelda3T_US-src-linux/src/Ennemi.cpp	2015-03-08 19:49:36.069714175 +0100
+@@ -32,7 +32,7 @@
+         else {
+             ostringstream im;
+             im << id;
+-            image = IMG_Load(("data/images/ennemi/ennemi" + im.str() + ".png").c_str());
++            image = IMG_Load(("/usr/share/zelda-3t/images/ennemi/ennemi" + im.str() + ".png").c_str());
+             if (id != 70) 
+                 SDL_SetColorKey(image,SDL_SRCCOLORKEY,SDL_MapRGB(image->format,0,0,255));
+             chargeIm = true;
+diff -Naur Zelda3T_US-src-linux.orig/src/Generique.cpp Zelda3T_US-src-linux/src/Generique.cpp
+--- Zelda3T_US-src-linux.orig/src/Generique.cpp	2010-01-03 20:44:04.000000000 +0100
++++ Zelda3T_US-src-linux/src/Generique.cpp	2015-03-08 19:49:36.073047554 +0100
+@@ -16,14 +16,14 @@
+     imageFin = NULL;
+     imageArbre = NULL;
+     image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+-    imageTitre = IMG_Load("data/images/logos/titre.png");
++    imageTitre = IMG_Load("/usr/share/zelda-3t/images/logos/titre.png");
+     SDL_SetColorKey(imageTitre,SDL_SRCCOLORKEY,SDL_MapRGB(imageTitre->format,0,0,255));
+-    imageCurseur = IMG_Load("data/images/logos/curseur.png");
++    imageCurseur = IMG_Load("/usr/share/zelda-3t/images/logos/curseur.png");
+     SDL_SetColorKey(imageCurseur,SDL_SRCCOLORKEY,SDL_MapRGB(imageCurseur->format,0,0,255));
+-    imageNiveau = IMG_Load("data/images/logos/niveau.png");
++    imageNiveau = IMG_Load("/usr/share/zelda-3t/images/logos/niveau.png");
+     SDL_SetColorKey(imageNiveau,SDL_SRCCOLORKEY,SDL_MapRGB(imageNiveau->format,0,0,255));
+-    imageFee = IMG_Load("data/images/logos/fee.png");
+-    imageCadre = IMG_Load("data/images/logos/cadres.png");
++    imageFee = IMG_Load("/usr/share/zelda-3t/images/logos/fee.png");
++    imageCadre = IMG_Load("/usr/share/zelda-3t/images/logos/cadres.png");
+     imageFond1 = NULL;
+     imageFond2 = NULL;
+     for (int i = 0; i < 5; i++) imageIntro[i]=NULL;
+@@ -44,7 +44,7 @@
+ }
+ 
+ void Generique::drawFin(SDL_Surface* gpScreen) {
+-    if (!imageFin) imageFin = IMG_Load("data/images/logos/fin.png");
++    if (!imageFin) imageFin = IMG_Load("/usr/share/zelda-3t/images/logos/fin.png");
+     SDL_Rect dst; dst.x = 0; dst.y = 0;
+     SDL_BlitSurface(imageFin, NULL, gpScreen, &dst);
+     gpJeu->getTexte()->draw(gpScreen);
+@@ -52,14 +52,14 @@
+ 
+ void Generique::initLogo() {
+     SDL_Rect dst;
+-    SDL_Surface* logo = IMG_Load("data/images/logos/logo.png");
++    SDL_Surface* logo = IMG_Load("/usr/share/zelda-3t/images/logos/logo.png");
+     dst.x = 0; dst.y = 0; SDL_BlitSurface(logo, NULL, image, &dst);
+     SDL_FreeSurface(logo);
+ }
+ 
+ void Generique::initPresent() {
+     SDL_Rect dst;
+-    SDL_Surface* present = IMG_Load("data/images/motifs/present.png");
++    SDL_Surface* present = IMG_Load("/usr/share/zelda-3t/images/motifs/present.png");
+     dst.x = 0; dst.y = 0; SDL_BlitSurface(present, NULL, image, &dst);
+     SDL_FreeSurface(present);
+ }
+@@ -71,24 +71,24 @@
+ 
+ void Generique::initPasse() {
+     SDL_Rect dst;
+-    SDL_Surface* passe = IMG_Load("data/images/motifs/passe.png");
++    SDL_Surface* passe = IMG_Load("/usr/share/zelda-3t/images/motifs/passe.png");
+     dst.x = 0; dst.y = 0; SDL_BlitSurface(passe, NULL, image, &dst);
+     SDL_FreeSurface(passe);
+ }
+ 
+ void Generique::initImageFin() {
+     SDL_Rect dst;
+-    SDL_Surface* fin = IMG_Load("data/images/motifs/fin.png");
++    SDL_Surface* fin = IMG_Load("/usr/share/zelda-3t/images/motifs/fin.png");
+     dst.x = 0; dst.y = 0; SDL_BlitSurface(fin, NULL, image, &dst);
+     SDL_FreeSurface(fin);
+ }
+ 
+ void Generique::initTitre() {
+     SDL_Rect dst;
+-    SDL_Surface* fond = IMG_Load("data/images/logos/fond.png");
++    SDL_Surface* fond = IMG_Load("/usr/share/zelda-3t/images/logos/fond.png");
+     dst.x = 0; dst.y = 0; SDL_BlitSurface(fond, NULL, image, &dst);
+     SDL_FreeSurface(fond);
+-    SDL_Surface* logo = IMG_Load("data/images/logos/titre.png");
++    SDL_Surface* logo = IMG_Load("/usr/share/zelda-3t/images/logos/titre.png");
+     SDL_SetColorKey(logo,SDL_SRCCOLORKEY,SDL_MapRGB(logo->format,0,0,255));
+     logo = SDL_DisplayFormat(logo);
+     dst.x = 76; dst.y = 53; SDL_BlitSurface(logo, NULL, image, &dst);
+@@ -142,10 +142,10 @@
+     gpJeu->affiche(image, "RECORDS", 215, 200);
+     
+     //stats :
+-    SDL_Surface* imageStat = IMG_Load("data/images/statut/statut.png");
++    SDL_Surface* imageStat = IMG_Load("/usr/share/zelda-3t/images/statut/statut.png");
+     SDL_SetColorKey(imageStat,SDL_SRCCOLORKEY,SDL_MapRGB(imageStat->format,0,0,255));
+-    SDL_Surface* inventaire = IMG_Load("data/images/statut/inventaire.png");
+-    SDL_Surface* objets = IMG_Load("data/images/statut/objets.png");
++    SDL_Surface* inventaire = IMG_Load("/usr/share/zelda-3t/images/statut/inventaire.png");
++    SDL_Surface* objets = IMG_Load("/usr/share/zelda-3t/images/statut/objets.png");
+     
+     for (int i = 0; i < 3; i++) {
+         Joueur* gpJoueur = new Joueur(gpJeu,i+1);
+@@ -345,7 +345,7 @@
+     gpJeu->affiche(image, "RETURN", 63, 200);
+     gpJeu->affiche(image, "ERASE", 215, 200);
+     
+-    SDL_Surface* objets = IMG_Load("data/images/statut/objets.png");
++    SDL_Surface* objets = IMG_Load("/usr/share/zelda-3t/images/statut/objets.png");
+     
+     //triforce
+     src.y=0; src.w=17; src.h=16;
+@@ -390,15 +390,15 @@
+ 
+ void Generique::initIntro() {
+     if (imageFond1==NULL) {
+-        imageFond1 = IMG_Load("data/images/logos/fond1.png");
++        imageFond1 = IMG_Load("/usr/share/zelda-3t/images/logos/fond1.png");
+         SDL_SetColorKey(imageFond1,SDL_SRCCOLORKEY,SDL_MapRGB(imageFond1->format,0,0,255));}
+-    if (imageFond2==NULL) imageFond2 = IMG_Load("data/images/logos/fond2.png");
++    if (imageFond2==NULL) imageFond2 = IMG_Load("/usr/share/zelda-3t/images/logos/fond2.png");
+     
+     ostringstream oss;
+     for (int i = 0; i < 5; i++) {
+         if (imageIntro[i]==NULL) {
+             oss.str(""); oss << (i+1);
+-            imageIntro[i] = IMG_Load(("data/images/logos/intro" + oss.str() + ".png").c_str());
++            imageIntro[i] = IMG_Load(("/usr/share/zelda-3t/images/logos/intro" + oss.str() + ".png").c_str());
+         }
+     }
+     
+@@ -408,7 +408,7 @@
+ 
+ void Generique::initNuit() {
+     SDL_Rect dst;
+-    SDL_Surface* fond = IMG_Load("data/images/logos/nuit.png");
++    SDL_Surface* fond = IMG_Load("/usr/share/zelda-3t/images/logos/nuit.png");
+     dst.x = 0; dst.y = 0; SDL_BlitSurface(fond, NULL, image, &dst);
+     SDL_FreeSurface(fond);
+     //SDL_FillRect(image, NULL, SDL_MapRGB(image->format, 0, 0, 0));
+@@ -665,7 +665,7 @@
+     SDL_Rect src; src.w = 16; src.h = 16;
+     SDL_Rect dst;
+     
+-    SDL_Surface* imageCadreTroc = IMG_Load("data/images/menu/cadrestroc.png");
++    SDL_Surface* imageCadreTroc = IMG_Load("/usr/share/zelda-3t/images/menu/cadrestroc.png");
+     
+     src.x = 16; src.y = 16;
+     for (int j = 0; j < 240; j+=16)
+@@ -907,7 +907,7 @@
+ 
+ void Generique::initScore() {
+     SDL_FreeSurface(imageArbre);
+-    imageArbre = IMG_Load("data/images/logos/arbre.png");
++    imageArbre = IMG_Load("/usr/share/zelda-3t/images/logos/arbre.png");
+     image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+     
+     SDL_Rect dst; 
+diff -Naur Zelda3T_US-src-linux.orig/src/Jeu.cpp Zelda3T_US-src-linux/src/Jeu.cpp
+--- Zelda3T_US-src-linux.orig/src/Jeu.cpp	2009-11-28 12:56:12.000000000 +0100
++++ Zelda3T_US-src-linux/src/Jeu.cpp	2015-03-08 19:49:36.103047957 +0100
+@@ -25,7 +25,7 @@
+     phg[0] = 0;
+     phg[1] = 0;
+     
+-    imageObjets = IMG_Load("data/images/objet/objets.png");
++    imageObjets = IMG_Load("/usr/share/zelda-3t/images/objet/objets.png");
+     SDL_SetColorKey(imageObjets,SDL_SRCCOLORKEY,SDL_MapRGB(imageObjets->format,0,0,255));
+     
+     gpProjectile = NULL; gpObjet = NULL; gpSnipe = NULL; gpCaisse = NULL; gpEnnemi = NULL;
+diff -Naur Zelda3T_US-src-linux.orig/src/Joueur.cpp Zelda3T_US-src-linux/src/Joueur.cpp
+--- Zelda3T_US-src-linux.orig/src/Joueur.cpp	2010-01-16 17:58:24.000000000 +0100
++++ Zelda3T_US-src-linux/src/Joueur.cpp	2015-03-08 20:01:49.002873787 +0100
+@@ -31,9 +31,9 @@
+ tempsVisible(false), compteurVisible(false), ennVisible(false), compteur(0), compteurEnn(0), 
+ cptType(0) {
+     image = NULL;
+-    imageSpin = IMG_Load("data/images/link/spin.png");
++    imageSpin = IMG_Load("/usr/share/zelda-3t/images/link/spin.png");
+     SDL_SetColorKey(imageSpin,SDL_SRCCOLORKEY,SDL_MapRGB(imageSpin->format,0,0,255));
+-    imageObjets = IMG_Load("data/images/link/objets.png");
++    imageObjets = IMG_Load("/usr/share/zelda-3t/images/link/objets.png");
+     SDL_SetColorKey(imageObjets,SDL_SRCCOLORKEY,SDL_MapRGB(imageObjets->format,0,0,255));
+     x=152-32-8;y=72-16;w=16;h=24;viemax=6;vie=viemax;magie=magiemax;
+     for (int i = 0; i < 12; i++) compteurType[i]=0;
+@@ -95,7 +95,7 @@
+     if (tps > 359999) tps = 359999;
+     ostringstream im;
+     im << numSave;
+-    ofstream f(("data/save/3t" + im.str() + ".dat").c_str(),ios::out | ios::binary);
++    ofstream f((string(getenv("HOME"))+"/.z3t/3t" + im.str() + ".dat").c_str(),ios::out | ios::binary);
+     f.write((char *)&tps,sizeof(int));
+     f.write((char *)&zone,sizeof(int));
+     f.write((char *)&xd,sizeof(int));
+@@ -163,7 +163,7 @@
+     int zone;
+     ostringstream im;
+     im << numSave;
+-    ifstream f(("data/save/3t" + im.str() + ".dat").c_str(),ios::in | ios::binary);
++    ifstream f((string(getenv("HOME"))+"/.z3t/3t" + im.str() + ".dat").c_str(),ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&temps,sizeof(int));
+     f.read((char *)&zone,sizeof(int)); gpJeu->setZone(zone);
+@@ -316,7 +316,7 @@
+ void Joueur::draw(SDL_Surface* gpScreen) {
+     
+     /*if (!getOnilink() && getAvancement()==16) {
+-        imageTmp = IMG_Load("data/images/ennemi/ennemi75.png");
++        imageTmp = IMG_Load("/usr/share/zelda-3t/images/ennemi/ennemi75.png");
+         SDL_SetColorKey(imageTmp,SDL_SRCCOLORKEY,SDL_MapRGB(imageTmp->format,0,0,255));
+     }
+     if (getAvancement()>=16 && getAvancement()<62) {
+@@ -857,8 +857,8 @@
+     if (!bouclier) return;
+     std::ostringstream im;
+     im << bouclier;
+-    if (oni) boucl = new Bouclier(IMG_Load("data/images/link/bouclierOni.png"), 10);
+-    else boucl = new Bouclier(IMG_Load(("data/images/link/bouclier" + im.str() + ".png").c_str()), bouclier);
++    if (oni) boucl = new Bouclier(IMG_Load("/usr/share/zelda-3t/images/link/bouclierOni.png"), 10);
++    else boucl = new Bouclier(IMG_Load(("/usr/share/zelda-3t/images/link/bouclier" + im.str() + ".png").c_str()), bouclier);
+ }
+ 
+ void Joueur::setTunique(int t) {
+@@ -866,8 +866,8 @@
+     SDL_FreeSurface(image);
+     std::ostringstream im;
+     im << tunique;
+-    if (oni) image = IMG_Load("data/images/link/onilink.png");
+-    else image = IMG_Load(("data/images/link/link" + im.str() + ".png").c_str());
++    if (oni) image = IMG_Load("/usr/share/zelda-3t/images/link/onilink.png");
++    else image = IMG_Load(("/usr/share/zelda-3t/images/link/link" + im.str() + ".png").c_str());
+     SDL_SetColorKey(image,SDL_SRCCOLORKEY,SDL_MapRGB(image->format,0,0,255));
+ }
+ 
+@@ -878,8 +878,8 @@
+     if (!epee) return;
+     std::ostringstream im;
+     im << epee;
+-    if (oni) imageEpee = IMG_Load("data/images/link/epeeOni.png");
+-    else imageEpee = IMG_Load(("data/images/link/epee" + im.str() + ".png").c_str());
++    if (oni) imageEpee = IMG_Load("/usr/share/zelda-3t/images/link/epeeOni.png");
++    else imageEpee = IMG_Load(("/usr/share/zelda-3t/images/link/epee" + im.str() + ".png").c_str());
+     SDL_SetColorKey(imageEpee,SDL_SRCCOLORKEY,SDL_MapRGB(imageEpee->format,0,0,255));
+ }
+ 
+diff -Naur Zelda3T_US-src-linux.orig/src/Keyboard.cpp Zelda3T_US-src-linux/src/Keyboard.cpp
+--- Zelda3T_US-src-linux.orig/src/Keyboard.cpp	2009-08-14 08:10:58.000000000 +0200
++++ Zelda3T_US-src-linux/src/Keyboard.cpp	2015-03-08 20:00:35.868561834 +0100
+@@ -30,7 +30,7 @@
+ }
+ 
+ void Keyboard::saveP() {
+-    ofstream f("data/save/system.dat",ios::out | ios::binary);
++    ofstream f((string(getenv("HOME")) + "/.z3t/system.dat").c_str(),ios::out | ios::binary);
+     f.write((char *)&volume,sizeof(int));
+     f.write((char *)&volson,sizeof(int));
+     f.write((char *)&temps,sizeof(int));
+@@ -39,7 +39,7 @@
+ }
+ 
+ void Keyboard::loadP() {
+-    ifstream f("data/save/system.dat",ios::in | ios::binary);
++    ifstream f((string(getenv("HOME")) + "/.z3t/system.dat").c_str(),ios::in | ios::binary);
+     if(!f.is_open()) return;
+     f.read((char *)&volume,sizeof(int));
+     f.read((char *)&volson,sizeof(int));
+@@ -49,7 +49,7 @@
+ }
+ 
+ void Keyboard::loadOldP() {
+-    ifstream f("../Zelda Return of the Hylian/data/save/system.dat",ios::in | ios::binary);
++    ifstream f((string(getenv("HOME")) + "/.zroth/system.dat").c_str(),ios::out | ios::binary);
+     if(f.is_open()) {
+         int i;
+         f.read((char *)&i,sizeof(int));
+@@ -59,7 +59,7 @@
+         f.close();
+     }
+     
+-    ifstream f2("../Zelda Oni Link Begins/data/save/system.dat",ios::in | ios::binary);
++    ifstream f2((string(getenv("HOME")) + "/.zolb/system.dat").c_str(),ios::out | ios::binary);
+     if(f2.is_open()) {
+         int i;
+         f2.read((char *)&i,sizeof(int));
+@@ -779,7 +779,7 @@
+             if (keys[SDLK_RETURN] && tmp == 0) {
+                 if (ligneVal==0) {
+                     ostringstream oss; oss << (ligne+1);
+-                    remove(("data/save/3t" + oss.str() + ".dat").c_str());
++                    remove((string(getenv("HOME"))+"/.z3t/3t" + oss.str() + ".dat").c_str());
+                     mode = 4; gpJeu->getGenerique()->initSelection();
+                     gpJeu->getAudio()->playSound(2);
+                 }
+diff -Naur Zelda3T_US-src-linux.orig/src/main.cpp Zelda3T_US-src-linux/src/main.cpp
+--- Zelda3T_US-src-linux.orig/src/main.cpp	2009-08-10 15:31:40.000000000 +0200
++++ Zelda3T_US-src-linux/src/main.cpp	2015-03-08 20:23:49.901097590 +0100
+@@ -14,6 +14,10 @@
+ #include <iostream>
+ #include <cstdlib>
+ #include <ctime>
++#include <sys/stat.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <sys/errno.h>
+ 
+ #include "Keyboard.h"
+ #include "Generique.h"
+@@ -27,7 +31,7 @@
+     //if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1) *SOUND = false;
+ 
+     SDL_WM_SetCaption("Time to Triumph",NULL);
+-    SDL_Surface* icon = SDL_LoadBMP("data/images/logos/ocarina.ico");
++    SDL_Surface* icon = SDL_LoadBMP("/usr/share/zelda-3t/images/logos/ocarina.ico");
+     SDL_SetColorKey(icon,SDL_SRCCOLORKEY,SDL_MapRGB(icon->format,0,0,0));
+     SDL_WM_SetIcon(icon,NULL);
+ 
+@@ -59,7 +63,15 @@
+     if (argc && argv); //pour éviter un warning.....
+     
+     std::srand(std::time(NULL));
+-    
++
++    // create folder for save files
++    string user_home = string(getenv("HOME"));
++    if (access((user_home + "/.z3t/").c_str(), F_OK) != 0) {
++        if (errno == ENOENT) {
++            mkdir((user_home + "/.z3t").c_str(), 0700);
++        }
++    }
++
+     SDL_Rect src;
+     SDL_Rect dst;
+     src.w=640; src.h=480; src.y=0;src.x=0;dst.x=0; dst.y=0;
+diff -Naur Zelda3T_US-src-linux.orig/src/Menu.cpp Zelda3T_US-src-linux/src/Menu.cpp
+--- Zelda3T_US-src-linux.orig/src/Menu.cpp	2010-01-01 16:16:38.000000000 +0100
++++ Zelda3T_US-src-linux/src/Menu.cpp	2015-03-08 19:49:36.126381603 +0100
+@@ -25,11 +25,11 @@
+ Menu::Menu(Jeu* jeu) : gpJeu(jeu), sens(0), val(0), anim(0) {
+     lastAnimTime = SDL_GetTicks();
+     
+-    imageCadre = IMG_Load("data/images/menu/bord.png");
+-    imageCoeur = IMG_Load("data/images/menu/coeur.png");
+-    imageObjets = IMG_Load("data/images/statut/objets.png");
+-    imageInventaire = IMG_Load("data/images/statut/inventaire.png");
+-    imageGemme = IMG_Load("data/images/objet/objets.png");
++    imageCadre = IMG_Load("/usr/share/zelda-3t/images/menu/bord.png");
++    imageCoeur = IMG_Load("/usr/share/zelda-3t/images/menu/coeur.png");
++    imageObjets = IMG_Load("/usr/share/zelda-3t/images/statut/objets.png");
++    imageInventaire = IMG_Load("/usr/share/zelda-3t/images/statut/inventaire.png");
++    imageGemme = IMG_Load("/usr/share/zelda-3t/images/objet/objets.png");
+     
+     SDL_SetColorKey(imageCadre,SDL_SRCCOLORKEY,SDL_MapRGB(imageCadre->format,0,0,255));
+     SDL_SetColorKey(imageCoeur,SDL_SRCCOLORKEY,SDL_MapRGB(imageCoeur->format,0,0,255));
+diff -Naur Zelda3T_US-src-linux.orig/src/Monde.cpp Zelda3T_US-src-linux/src/Monde.cpp
+--- Zelda3T_US-src-linux.orig/src/Monde.cpp	2009-11-28 12:55:52.000000000 +0100
++++ Zelda3T_US-src-linux/src/Monde.cpp	2015-03-08 19:49:36.146381872 +0100
+@@ -32,34 +32,34 @@
+     for (int i = 0; i < 7; i++) {
+         std::ostringstream im;
+         im << (i+1);
+-        image[i] = IMG_Load(("data/images/motifs/image" + im.str() + ".png").c_str());
++        image[i] = IMG_Load(("/usr/share/zelda-3t/images/motifs/image" + im.str() + ".png").c_str());
+         SDL_SetColorKey(image[i],SDL_SRCCOLORKEY,SDL_MapRGB(image[i]->format,0,0,255));
+     }
+     
+     imagetransit = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+     
+-    imagelevel = IMG_Load("data/images/menu/level.png");
++    imagelevel = IMG_Load("/usr/share/zelda-3t/images/menu/level.png");
+     SDL_SetColorKey(imagelevel,SDL_SRCCOLORKEY,SDL_MapRGB(imagelevel->format,0,0,255));
+     
+-    imageSpe[0] = IMG_Load("data/images/motifs/fond.png");
+-    imageSpe[1] = IMG_Load("data/images/motifs/fond2.png");
+-    imageSpe[2] = IMG_Load("data/images/motifs/fond3.png");
+-    imageSpe[3] = IMG_Load("data/images/motifs/eclair.png");
+-    imageSpe[4] = IMG_Load("data/images/motifs/pluie1.png");
+-    imageSpe[5] = IMG_Load("data/images/motifs/pluie2.png");
+-    imageSpe[6] = IMG_Load("data/images/motifs/pluie3.png");
+-    imageSpe[7] = IMG_Load("data/images/motifs/ciel.png");
+-    imageSpe[9] = IMG_Load("data/images/motifs/foret.png");
+-    imageSpe[10] = IMG_Load("data/images/motifs/foret2.png");
+-    imageSpe[11] = IMG_Load("data/images/motifs/foret3.png");
+-    imageSpe[12] = IMG_Load("data/images/motifs/neige1.png");
+-    imageSpe[13] = IMG_Load("data/images/motifs/neige2.png");
+-    imageSpe[14] = IMG_Load("data/images/motifs/neige3.png");
+-    imageSpe[15] = IMG_Load("data/images/motifs/jurassic.png");
+-    imageSpe[16] = IMG_Load("data/images/motifs/apocalypse.png");
++    imageSpe[0] = IMG_Load("/usr/share/zelda-3t/images/motifs/fond.png");
++    imageSpe[1] = IMG_Load("/usr/share/zelda-3t/images/motifs/fond2.png");
++    imageSpe[2] = IMG_Load("/usr/share/zelda-3t/images/motifs/fond3.png");
++    imageSpe[3] = IMG_Load("/usr/share/zelda-3t/images/motifs/eclair.png");
++    imageSpe[4] = IMG_Load("/usr/share/zelda-3t/images/motifs/pluie1.png");
++    imageSpe[5] = IMG_Load("/usr/share/zelda-3t/images/motifs/pluie2.png");
++    imageSpe[6] = IMG_Load("/usr/share/zelda-3t/images/motifs/pluie3.png");
++    imageSpe[7] = IMG_Load("/usr/share/zelda-3t/images/motifs/ciel.png");
++    imageSpe[9] = IMG_Load("/usr/share/zelda-3t/images/motifs/foret.png");
++    imageSpe[10] = IMG_Load("/usr/share/zelda-3t/images/motifs/foret2.png");
++    imageSpe[11] = IMG_Load("/usr/share/zelda-3t/images/motifs/foret3.png");
++    imageSpe[12] = IMG_Load("/usr/share/zelda-3t/images/motifs/neige1.png");
++    imageSpe[13] = IMG_Load("/usr/share/zelda-3t/images/motifs/neige2.png");
++    imageSpe[14] = IMG_Load("/usr/share/zelda-3t/images/motifs/neige3.png");
++    imageSpe[15] = IMG_Load("/usr/share/zelda-3t/images/motifs/jurassic.png");
++    imageSpe[16] = IMG_Load("/usr/share/zelda-3t/images/motifs/apocalypse.png");
+     imageSpe[17] = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+     SDL_FillRect(imageSpe[17], NULL, SDL_MapRGB(imageSpe[17]->format, 0, 0, 255));
+-    imageSpe[18] = IMG_Load("data/images/motifs/deesses.png");
++    imageSpe[18] = IMG_Load("/usr/share/zelda-3t/images/motifs/deesses.png");
+     
+     SDL_SetAlpha(imageSpe[9], SDL_SRCALPHA, 128);
+     SDL_SetAlpha(imageSpe[10], SDL_SRCALPHA, 128);
+@@ -5453,7 +5453,7 @@
+             
+     std::ostringstream oss;
+     oss << zone;
+-    std::string result = "data/map/carte" + oss.str() + ".map";
++    std::string result = "/usr/share/zelda-3t/map/carte" + oss.str() + ".map";
+     std::ifstream file(result.c_str());
+     
+     file >> largeur;
+diff -Naur Zelda3T_US-src-linux.orig/src/Pnj.cpp Zelda3T_US-src-linux/src/Pnj.cpp
+--- Zelda3T_US-src-linux.orig/src/Pnj.cpp	2009-08-12 21:20:26.000000000 +0200
++++ Zelda3T_US-src-linux/src/Pnj.cpp	2015-03-08 19:49:36.149715250 +0100
+@@ -23,7 +23,7 @@
+     if (id) {
+         ostringstream im;
+         im << id;
+-        image = IMG_Load(("data/images/personnage/personnage" + im.str() + ".png").c_str());
++        image = IMG_Load(("/usr/share/zelda-3t/images/personnage/personnage" + im.str() + ".png").c_str());
+         SDL_SetColorKey(image,SDL_SRCCOLORKEY,SDL_MapRGB(image->format,0,0,255));
+         x=i; y=j; saveEmpl(); animmax=1;
+         init();
+@@ -44,7 +44,7 @@
+         if (id == 76 && gpJeu->getJoueur()->hasObjet(O_TROC2)>4) {
+             id = 77;
+             SDL_FreeSurface(image);
+-            image = IMG_Load("data/images/personnage/personnage77.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/personnage/personnage77.png");
+             SDL_SetColorKey(image,SDL_SRCCOLORKEY,SDL_MapRGB(image->format,0,0,255));
+         }
+         
+diff -Naur Zelda3T_US-src-linux.orig/src/Poissons.cpp Zelda3T_US-src-linux/src/Poissons.cpp
+--- Zelda3T_US-src-linux.orig/src/Poissons.cpp	2010-01-16 17:19:36.000000000 +0100
++++ Zelda3T_US-src-linux/src/Poissons.cpp	2015-03-08 19:49:36.149715250 +0100
+@@ -12,7 +12,7 @@
+ 
+ Poissons::Poissons(Jeu* jeu) : gpJeu(jeu), page(0) {
+     image = SDL_CreateRGBSurface(SDL_HWSURFACE, 320, 240, 32, 0, 0, 0, 0);
+-    imageCadre = IMG_Load("data/images/menu/cadres.png");
++    imageCadre = IMG_Load("/usr/share/zelda-3t/images/menu/cadres.png");
+ }
+ 
+ Poissons::~Poissons() {
+diff -Naur Zelda3T_US-src-linux.orig/src/Projectile.cpp Zelda3T_US-src-linux/src/Projectile.cpp
+--- Zelda3T_US-src-linux.orig/src/Projectile.cpp	2009-08-10 14:28:10.000000000 +0200
++++ Zelda3T_US-src-linux/src/Projectile.cpp	2015-03-08 19:49:36.153048628 +0100
+@@ -474,50 +474,50 @@
+         case 32 : //flèche lumière
+         case 33 : //flèche d'or
+             switch (id) {
+-                case 1 : image = IMG_Load("data/images/objet/projectiles.png"); break;
+-                case 2 : image = IMG_Load("data/images/objet/projectilesarg.png"); break;
+-                case 30 : image = IMG_Load("data/images/objet/projectilesfeu.png"); break;
+-                case 31 : image = IMG_Load("data/images/objet/projectilesglace.png"); break;
+-                case 32 : image = IMG_Load("data/images/objet/projectileslum.png"); break;
+-                case 33 : image = IMG_Load("data/images/objet/projectilesor.png"); break;
++                case 1 : image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles.png"); break;
++                case 2 : image = IMG_Load("/usr/share/zelda-3t/images/objet/projectilesarg.png"); break;
++                case 30 : image = IMG_Load("/usr/share/zelda-3t/images/objet/projectilesfeu.png"); break;
++                case 31 : image = IMG_Load("/usr/share/zelda-3t/images/objet/projectilesglace.png"); break;
++                case 32 : image = IMG_Load("/usr/share/zelda-3t/images/objet/projectileslum.png"); break;
++                case 33 : image = IMG_Load("/usr/share/zelda-3t/images/objet/projectilesor.png"); break;
+             }
+             w=16; h=16;
+             if (direction == N || direction == S) {zx=4; zy=0; zw=7; zh=16;} 
+             else {zx=0; zy=4; zw=16; zh=7;}
+             break;
+         case 3 : //grappin
+-            image = IMG_Load("data/images/objet/grappin.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/grappin.png");
+             w=12; h=12;
+             if (direction == N || direction == S) {zx=0; zy=0; zw=12; zh=8;} 
+             else {zx=0; zy=0; zw=8; zh=12;}
+             chmax=208;
+             break;
+         case 4 : //bombe
+-            image = IMG_Load("data/images/objet/bombe.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/bombe.png");
+             w=16; h=16;
+             zx=0; zy=0; zw=16; zh=16;
+             max=30;
+             break;
+         case 140 : //explosion bombe
+-            image = IMG_Load("data/images/objet/bombe.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/bombe.png");
+             w=32; h=32;
+             zx=0; zy=0; zw=32; zh=32;
+             gpJeu->getAudio()->playSound(16);
+             break;
+         case 5 : //baguette de feu
+         case 6 : //baguette de glace
+-            image = IMG_Load("data/images/objet/magie.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/magie.png");
+             w=17; h=17;
+             zx=0; zy=0; zw=17; zh=17;
+             break;
+         case 7 : //flamme
+-            image = IMG_Load("data/images/objet/feu.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/feu.png");
+             w=16; h=16;
+             zx=0; zy=0; zw=16; zh=16;
+             max=5;
+             break;
+         case 8 : //plouf
+-            image = IMG_Load("data/images/objet/plouf.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/plouf.png");
+             w=16; h=16;
+             zx=0; zy=0; zw=16; zh=16;
+             vanim=40;
+@@ -528,38 +528,38 @@
+         case 10 :
+         case 11 :
+         case 12 :
+-            image = IMG_Load("data/images/objet/buisson.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/buisson.png");
+             w=27; h=43;
+             zx=0; zy=0; zw=27; zh=43;
+             max=6;
+             gpJeu->getAudio()->playSound(38);
+             break;
+         case 15 : //explosion fumée blanche
+-            image = IMG_Load("data/images/ennemi/explo.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/ennemi/explo.png");
+             w=28; h=28;
+             zx=0; zy=0; zw=w; zh=h;
+             max=6; vanim=60;
+             break;
+         case 16 : //explosion fumée rose
+-            image = IMG_Load("data/images/link/exploLapin.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/link/exploLapin.png");
+             w=28; h=28;
+             zx=0; zy=0; zw=w; zh=h;
+             max=3; vanim=60;
+             break;
+         case 17 : //explosion fumée violette
+-            image = IMG_Load("data/images/link/exploOni.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/link/exploOni.png");
+             w=28; h=28;
+             zx=0; zy=0; zw=w; zh=h;
+             max=3; vanim=60;
+             break;
+         case 19 : //explosion glace
+-            image = IMG_Load("data/images/link/gel.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/link/gel.png");
+             w=42; h=36;
+             zx=0; zy=0; zw=w; zh=h;
+             max=0; vanim=120;
+             break;
+         case 20 : //explosion sang
+-            image = IMG_Load("data/images/link/splash.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/link/splash.png");
+             w=32; h=32;
+             zx=0; zy=0; zw=w; zh=h;
+             max=4; vanim=120;
+@@ -573,7 +573,7 @@
+         case 27 :
+         case 28 :
+         case 130 :
+-            image = IMG_Load("data/images/link/objets.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/link/objets.png");
+             w=16; h=16;
+             zx=0; zy=0; zw=16; zh=16;
+             chmax=64;
+@@ -581,7 +581,7 @@
+             if(vitesse==0){anim=1;max=4;gpJeu->getAudio()->playSound(36);}
+             break;
+         case 29 :
+-            image = IMG_Load("data/images/link/objets.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/link/objets.png");
+             w=16; h=16;
+             zx=0; zy=0; zw=16; zh=16;
+             chmax=128;
+@@ -590,19 +590,19 @@
+         
+             
+         case 40 : //Zzzz
+-            image = IMG_Load("data/images/objet/Zzzz.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/Zzzz.png");
+             w=8; h=16;
+             zx=0; zy=0; zw=w; zh=h;
+             max=3; vanim=240;
+             break;
+         case 41 : //naufrage
+-            image = IMG_Load("data/images/objet/naufrage.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/naufrage.png");
+             w=32; h=32;
+             zx=0; zy=0; zw=w; zh=h;
+             max=3; vanim=60;
+             break;
+         case 42 : //Wagonnet
+-            image = IMG_Load("data/images/objet/Wagon.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/Wagon.png");
+             w=2; h=26;
+             zx=0; zy=0; zw=w; zh=h;
+             max=0; break;
+diff -Naur Zelda3T_US-src-linux.orig/src/Snipe.cpp Zelda3T_US-src-linux/src/Snipe.cpp
+--- Zelda3T_US-src-linux.orig/src/Snipe.cpp	2009-08-10 14:26:56.000000000 +0200
++++ Zelda3T_US-src-linux/src/Snipe.cpp	2015-03-08 19:49:36.153048628 +0100
+@@ -31,43 +31,43 @@
+         case 1 : // boule de feu petite
+         case 21 : //vise ennemi
+             w=7; h=7; force=2; renvoyable=true;
+-            image = IMG_Load("data/images/objet/projectiles2.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles2.png");
+             break;
+         case 2 : // boule de feu petite droite
+             if (angly!=0) {h=16;w=7;}
+             if (anglx!=0) {h=7;w=16;}
+             force=4; max=1;
+-            image = IMG_Load("data/images/objet/projectiles3.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles3.png");
+             break;
+         case 3 : // arc magique
+             if (angly!=0) {h=8;w=16;}
+             if (anglx!=0) {h=16;w=8;}
+             force=6; max=1; renvoyable=true; element=ENNEMI;
+-            image = IMG_Load("data/images/objet/projectiles4.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles4.png");
+             break;
+         case 4 : // boulet
+             w=8; h=13; force=2; element=PROJECTILE;
+-            image = IMG_Load("data/images/objet/projectiles5.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles5.png");
+             break;
+         case 5 : // boule magique
+             w=16; h=16; force=7; renvoyable=true; element=ENNEMI; max=1;
+-            image = IMG_Load("data/images/objet/projectiles6.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles6.png");
+             break;
+         case 6 : // eclair
+             w=83; h=148; force=15; element=ENNEMI; max=4; anglx=0; angly=0;
+-            image = IMG_Load("data/images/objet/projectiles8.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles8.png");
+             break;
+         case 7 : // lapin
+             w=22; h=22; force=0; element=LAPIN; max=1;
+-            image = IMG_Load("data/images/objet/projectiles7.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles7.png");
+             break;
+         case 8 : // boule de feu violette
+             w=7; h=7; force=0; renvoyable=true; element=DEMI;
+-            image = IMG_Load("data/images/objet/projectiles9.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles9.png");
+             break;
+         case 9 : // boule de feu bleue
+             w=7; h=7; force=0; renvoyable=true; element=COLERE;
+-            image = IMG_Load("data/images/objet/projectiles10.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles10.png");
+             break;
+         case 10 : // boule de feu grosse
+         case 20 : // boule de feu grosse de type ENNEMI
+@@ -76,44 +76,44 @@
+             else if (id==11) {force=6; element=COUP_GLACE;}
+             else {force=8; element=ENNEMI;}
+             w=16; h=16; renvoyable=true; max=1;
+-            image = IMG_Load("data/images/objet/projectiles11.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles11.png");
+             break;
+         case 12 : // boule de feu verte
+             w=7; h=7; force=0; renvoyable=true; element=MORTEL;
+-            image = IMG_Load("data/images/objet/projectiles12.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles12.png");
+             break;
+         case 13 : // saoul
+             w=22; h=22; force=0; element=SAOUL; max=1;
+-            image = IMG_Load("data/images/objet/projectiles13.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles13.png");
+             break;
+         case 14 : // chauve souris de feu
+             w=28; h=16; force=35; renvoyable=false; element=FEU; max=4;
+-            image = IMG_Load("data/images/objet/projectiles14.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles14.png");
+             break;
+         case 15 : // arc de vent
+             angly=2; anglx=0; {h=16;w=64;}
+             force=0; max=0; renvoyable=false; element=ENNEMI;
+-            image = IMG_Load("data/images/objet/projectiles15.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles15.png");
+             break;
+         case 16 : // boule d'ombre petite droite
+             if (angly!=0) {h=16;w=7;}
+             if (anglx!=0) {h=7;w=16;}
+             force=4; max=1; element=OMBRE;
+-            image = IMG_Load("data/images/objet/projectiles16.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles16.png");
+             break;
+         case 17 : // arc magique d'ombre
+             if (angly!=0) {h=8;w=16;}
+             if (anglx!=0) {h=16;w=8;}
+             force=6; max=1; renvoyable=true; element=OMBRE;
+-            image = IMG_Load("data/images/objet/projectiles17.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles17.png");
+             break;
+         case 18 : // boule d'ombre petite
+             w=7; h=7; force=5; renvoyable=true; element=OMBRE;
+-            image = IMG_Load("data/images/objet/projectiles18.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles18.png");
+             break;
+         case 19 : // boule de feu ultime
+             w=31; h=31; force=80; renvoyable=false; element=FEU; max=3;
+-            image = IMG_Load("data/images/objet/projectiles19.png");
++            image = IMG_Load("/usr/share/zelda-3t/images/objet/projectiles19.png");
+             break;
+     }
+     
+diff -Naur Zelda3T_US-src-linux.orig/src/Statut.cpp Zelda3T_US-src-linux/src/Statut.cpp
+--- Zelda3T_US-src-linux.orig/src/Statut.cpp	2009-12-31 22:04:32.000000000 +0100
++++ Zelda3T_US-src-linux/src/Statut.cpp	2015-03-08 19:49:36.153048628 +0100
+@@ -21,11 +21,11 @@
+ Statut::Statut(Jeu* jeu) : gpJeu(jeu), jauge(false), valjauge(0), maxjauge(10), nivjauge(50), 
+ valjauge2(0), maxjauge2(10), nivjauge2(60), dec(0) {
+     
+-    imageStatut = IMG_Load("data/images/statut/statut.png");
+-    imageChiffre = IMG_Load("data/images/statut/chiffres.png");
+-    imageInventaire = IMG_Load("data/images/statut/inventaire.png");
+-    imageTroc = IMG_Load("data/images/objet/troc.png");
+-    imageGemmes = IMG_Load("data/images/objet/gemmes.png");
++    imageStatut = IMG_Load("/usr/share/zelda-3t/images/statut/statut.png");
++    imageChiffre = IMG_Load("/usr/share/zelda-3t/images/statut/chiffres.png");
++    imageInventaire = IMG_Load("/usr/share/zelda-3t/images/statut/inventaire.png");
++    imageTroc = IMG_Load("/usr/share/zelda-3t/images/objet/troc.png");
++    imageGemmes = IMG_Load("/usr/share/zelda-3t/images/objet/gemmes.png");
+     
+     SDL_SetColorKey(imageStatut,SDL_SRCCOLORKEY,SDL_MapRGB(imageStatut->format,0,0,255));
+     SDL_SetColorKey(imageChiffre,SDL_SRCCOLORKEY,SDL_MapRGB(imageChiffre->format,0,0,255));
+diff -Naur Zelda3T_US-src-linux.orig/src/Texte.cpp Zelda3T_US-src-linux/src/Texte.cpp
+--- Zelda3T_US-src-linux.orig/src/Texte.cpp	2010-01-16 19:17:46.000000000 +0100
++++ Zelda3T_US-src-linux/src/Texte.cpp	2015-03-08 19:49:36.163048763 +0100
+@@ -22,9 +22,9 @@
+ Texte::Texte(Jeu* jeu) : gpJeu(jeu), vitesse(40), av(0), x(0), y(0), w(0), h(0),
+ id(0), idsuiv(0), def(false), cadre(false), texte(""), buffer("") {
+     lastAnimTime = SDL_GetTicks();
+-    imageFont = IMG_Load("data/images/texte/font.png");
++    imageFont = IMG_Load("/usr/share/zelda-3t/images/texte/font.png");
+     SDL_SetColorKey(imageFont,SDL_SRCCOLORKEY,SDL_MapRGB(imageFont->format,0,0,255));
+-    imageCoeur = IMG_Load("data/images/menu/coeur.png");
++    imageCoeur = IMG_Load("/usr/share/zelda-3t/images/menu/coeur.png");
+     SDL_SetColorKey(imageCoeur,SDL_SRCCOLORKEY,SDL_MapRGB(imageCoeur->format,0,0,255));
+ }
+ 
