@@ -7,7 +7,7 @@ pkgname='ros-indigo-cv-bridge'
 pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosconsole
@@ -17,6 +17,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   opencv
   boost
+  python2-numpy
   python2)
 
 ros_depends=(ros-indigo-rosconsole
@@ -24,6 +25,7 @@ ros_depends=(ros-indigo-rosconsole
 depends=(${ros_depends[@]}
   opencv
   boost
+  python2-numpy
   python2)
 
 _tag=release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}
