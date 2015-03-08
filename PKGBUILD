@@ -5,9 +5,9 @@ url='http://rtv.github.com/Stage'
 
 pkgname='ros-indigo-stage'
 pkgver='4.1.1'
-_pkgver_patch=2
+_pkgver_patch=3
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('GPL')
 
 ros_makedepends=()
@@ -52,6 +52,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
