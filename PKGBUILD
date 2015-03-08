@@ -4,7 +4,7 @@ pkgdesc="ROS - turtle_tf demonstrates how to write a tf broadcaster and listener
 url='http://ros.org/wiki/turtle_tf'
 
 pkgname='ros-indigo-turtle-tf'
-pkgver='0.2.1'
+pkgver='0.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
