@@ -5,7 +5,7 @@
 
 pkgname=python2-rospkg
 pkgver=1.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="ROS - provides basic utilities for querying information about ROS packages, stacks, and distributions."
 url="http://docs.ros.org/independent/api/rospkg/html/"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python2-distribute')
 conflicts=()
 replaces=()
 backup=()
-source=(http://download.ros.org/downloads/rospkg/rospkg-${pkgver}.tar.gz)
+source=("https://pypi.python.org/packages/source/r/rospkg/rospkg-${pkgver}.tar.gz")
 md5sums=('de31059c920121b691f7bbdf6973e8dc')
 
 build() {
