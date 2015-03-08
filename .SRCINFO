@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-control-msgs
 	pkgdesc = ROS - control_msgs contains base messages and actions useful for controlling robots.
-	pkgver = 1.3.0
-	pkgrel = 3
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = http://ros.org/wiki/control_msgs
 	arch = any
 	license = BSD
@@ -19,7 +19,7 @@ pkgbase = ros-indigo-control-msgs
 	depends = ros-indigo-actionlib-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-geometry-msgs
-	source = control_msgs::git+https://github.com/ros-gbp/control_msgs-release.git#tag=release/indigo/control_msgs/1.3.0-2
+	source = control_msgs::git+https://github.com/ros-gbp/control_msgs-release.git#tag=release/indigo/control_msgs/1.3.1-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-control-msgs
