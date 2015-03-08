@@ -1,4 +1,4 @@
-# Maintainer: Aaron Mueller <mail@aaron-mueller.de>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 # Contributor: Xpander <xpander0@gmail.com>
 # Contributor: Stefan Achatz <erazor_de@users.soruceforge.net>
