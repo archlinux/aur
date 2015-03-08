@@ -1,4 +1,4 @@
-From b1d3fb99c60bc716ec9e648790fd2a0f30b6891c Mon Sep 17 00:00:00 2001
+From f450803bd5dc90b9313c68f3581bb0488d22f296 Mon Sep 17 00:00:00 2001
 From: jjacky <i.am.jack.mail@gmail.com>
 Date: Thu, 4 Apr 2013 16:58:07 +0200
 Subject: [PATCH] Add hover effects for (titlebar's) buttons of inactive
@@ -7,17 +7,17 @@ Subject: [PATCH] Add hover effects for (titlebar's) buttons of inactive
 Importing this old patch from the old mercurial repo (too lazy to convert it,
 and there was no history anyways).
 
-Signed-off-by: jjacky <i.am.jack.mail@gmail.com>
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
  src/client.c | 12 ++++++------
  src/events.c | 21 +++++++++------------
  2 files changed, 15 insertions(+), 18 deletions(-)
 
 diff --git a/src/client.c b/src/client.c
-index 4e86808..bb89029 100644
+index 79de331..3812aac 100644
 --- a/src/client.c
 +++ b/src/client.c
-@@ -3851,6 +3851,12 @@ clientGetButtonPixmap (Client *c, int button, int state)
+@@ -3942,6 +3942,12 @@ clientGetButtonPixmap (Client *c, int button, int state)
  int
  clientGetButtonState (Client *c, int button, int state)
  {
@@ -30,7 +30,7 @@ index 4e86808..bb89029 100644
      if (state == INACTIVE)
      {
          return (state);
-@@ -3862,12 +3868,6 @@ clientGetButtonState (Client *c, int button, int state)
+@@ -3953,12 +3959,6 @@ clientGetButtonState (Client *c, int button, int state)
          return (PRESSED);
      }
  
@@ -44,10 +44,10 @@ index 4e86808..bb89029 100644
  }
  
 diff --git a/src/events.c b/src/events.c
-index 4b49171..f5e782c 100644
+index 561cd5c..51411a8 100644
 --- a/src/events.c
 +++ b/src/events.c
-@@ -1394,23 +1394,20 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
+@@ -1416,23 +1416,20 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
                  clientClearDelayedFocus ();
              }
          }
@@ -81,5 +81,5 @@ index 4b49171..f5e782c 100644
  
          /* No need to process the event any further */
 -- 
-1.8.2.2
+2.3.1
 
