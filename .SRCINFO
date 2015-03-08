@@ -1,14 +1,14 @@
 pkgbase = python2-bloom
 	pkgdesc = Bloom is a release automation tool.
-	pkgver = 0.5.12
+	pkgver = 0.5.16
 	pkgrel = 1
 	url = http://www.ros.org/wiki/bloom
 	arch = any
 	license = BSD
 	makedepends = python2
 	depends = python2
-	source = https://pypi.python.org/packages/source/b/bloom/bloom-0.5.12.tar.gz
-	md5sums = 5f0bb3c0dadd5d415081609a1b1cdfea
+	source = https://pypi.python.org/packages/source/b/bloom/bloom-0.5.16.tar.gz
+	md5sums = c3f460d18c6449aab0ab2794ca49a55e
 
 pkgname = python2-bloom
 
