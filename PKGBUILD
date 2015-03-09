@@ -2,8 +2,8 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=2.0.04
-pkgrel=2
+pkgver=2.0.05
+pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
@@ -21,13 +21,21 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'strife0-wad: Strife shareware game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
 source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
-        gitinfo.h \
-        config-update-fix.patch \
-        doom-share-dir.patch \
-        stack-noexec.patch \
+        gitinfo.h
+        git-c915049.patch
+        git-37321d1.patch
+        git-cab509c.patch
+        git-fb3bf0e.patch
+        config-update-fix.patch
+        doom-share-dir.patch
+        stack-noexec.patch
         gzdoom.desktop)
-md5sums=('6a97b12b99406c112279485054bf13a6'
-         '6c0e3f9ec915af905f016442f5e0e25d'
+md5sums=('9ea9aece6aaf6c31ce7c7f079d86bd80'
+         'e4d8f20a4e97ba6eade49862421a6039'
+         'f293adb5f585ec1d245cc422ebd3a8f3'
+         '25c80530b4540bf805a5b14a22b8ec37'
+         '5536e58fdeb11a7618f39bc5a325dafe'
+         '94d5d45d4fab4896c4c20b9daeacdb46'
          'eed301389f533effbd127681a3ddc2c5'
          '3ee3d6bb1f777445438bc40ae81a95df'
          '4778bb22190c445a4ed764c64432de12'
@@ -41,6 +49,11 @@ prepare() {
   cd gzdoom-g$pkgver
 
   cp "$srcdir"/gitinfo.h src/gitinfo.h
+
+  patch -p1 <"$srcdir"/git-c915049.patch
+  patch -p1 <"$srcdir"/git-37321d1.patch
+  patch -p1 <"$srcdir"/git-cab509c.patch
+  patch -p1 <"$srcdir"/git-fb3bf0e.patch
 
   patch -p1 <"$srcdir/config-update-fix.patch"
   patch -p1 <"$srcdir/doom-share-dir.patch"
