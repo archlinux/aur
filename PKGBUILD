@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python2-schematics
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 _libname=${pkgname/python2-/}
 pkgdesc="Python Data Structures for Humans"
@@ -24,4 +24,4 @@ package() {
 	install -m0644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('0e1cff6f9da38fe7958ba2eaf88e6d295e59ad19ed20d67700459824e22a44bd')
+sha256sums=('91be59d33624aef46694442e97073da092c890bdb7f85462f19a8c355e1469d1')
