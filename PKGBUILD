@@ -3,8 +3,8 @@
 _svnname=gnustep-make
 pkgname=$_svnname-clang-svn
 epoch=1
-pkgver=r38298
-pkgrel=1
+pkgver=r38389
+pkgrel=2
 pkgdesc="The GNUstep make package, using Clang"
 arch=('any')
 url="http://www.gnustep.org/"
@@ -12,8 +12,8 @@ license=('GPL3')
 groups=('gnustep-clang-svn')
 depends=('bash')
 makedepends=('subversion')
-makedepends_i686=('gcc-libs>=4.9.0' 'clang')
-makedepends_x86_64=('gcc-libs-multilib>=4.9.0' 'lib32-clang')
+makedepends_i686=('gcc=4.9.0' 'clang')
+makedepends_x86_64=('gcc-multilib>=4.9.0' 'lib32-clang')
 conflicts=('gnustep-make' 'gnustep-make-multilib-clang-svn')
 replaces=('gnustep-make-multilib-clang-svn')
 options=('!emptydirs')
