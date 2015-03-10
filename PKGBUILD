@@ -1,56 +1,91 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Ben Reedy <thebenj88@gmail.com>
+# Contributor: Clement Guerin <geecko.dev@free.fr>
+# Contributor: Thiago Kenji Okada <thiago.mast3r@gmail.com>
 
-pkgname=ppsspp
+pkgbase=ppsspp
+pkgname=('ppsspp' 'ppsspp-qt')
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='PSP emulator written in C++'
+pkgrel=2
+pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
 url='http://www.ppsspp.org/'
 license=('GPL2')
-depends=('zlib' 'sdl2' 'libpng' 'libgl' 'hicolor-icon-theme' 'xdg-utils' 'ffmpeg')
-makedepends=('git' 'cmake' 'mesa' 'mesa-libgl' 'glu' 'chrpath' 'zlib' 'sdl')
-install=ppsspp.install
-source=(git://github.com/hrydgard/ppsspp.git#tag=v$pkgver
-        git://github.com/hrydgard/native.git#commit=52ce9c1
-        lang::git://github.com/hrydgard/ppsspp-lang.git#commit=52c757e
-        ffmpeg::git://github.com/hrydgard/ppsspp-ffmpeg.git#commit=04d6e3e
-        git://github.com/Kingcom/armips#commit=a0b878f
-        ppsspp-1.0-shared-ffmpeg.patch
-        ppsspp.desktop)
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         '0b6265a0ba7c8b7066adbed210a5a5bb'
-         'b70b8b3913079468db3469abeacaa9f6')
+depends=('ffmpeg' 'sdl2')
+makedepends=('cmake' 'git' 'glu' 'qt5-tools')
+source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
+        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=52c757e'
+        'ppsspp-native::git+https://github.com/hrydgard/native.git#commit=52ce9c1'
+        'ppsspp-armips::git+https://github.com/Kingcom/armips.git#commit=a0b878f'
+        'ppsspp-ffmpeg.patch')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '4d60b99f9e6fe1bb81b2b1b648845f9e76289ba824fcb5e53f2117d0319e086d')
 
 prepare() {
-  mkdir build
-  cd $pkgname
+  cd ppsspp
 
-  git submodule init
-  for submodule in native lang ffmpeg ext/armips; do
-    git config submodule.${submodule}.url "$srcdir"/${submodule#*/}
-    git submodule update $submodule
+  for submodule in native lang ext/armips; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
+    git submodule update ${submodule}
   done
 
-  patch -p1 -i ../ppsspp-1.0-shared-ffmpeg.patch
+  patch -Np1 -i ../ppsspp-ffmpeg.patch
 }
 
 build() {
-  cd build
-  cmake ../$pkgbase -DCMAKE_BUILD_TYPE=Release
+  cd ppsspp
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build && cd build
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_SKIP_RPATH='TRUE'
+  make
+
+  cd ..
+
+  if [[ -d build-qt ]]; then
+    rm -rf build-qt
+  fi
+  mkdir build-qt && cd build-qt
+
+  qmake-qt5 CONFIG+='release' CONFIG+='system_ffmpeg' ../Qt/PPSSPPQt.pro
   make
 }
 
-package() {
-  install -Dm755 build/PPSSPPSDL "$pkgdir"/usr/bin/PPSSPPSDL
-  chrpath -d "$pkgdir"/usr/bin/PPSSPPSDL
+package_ppsspp() {
+  conflicts=('ppsspp-qt')
 
-  install -d "$pkgdir"/usr/share/ppsspp "$pkgdir"/usr/share/icons/
-  cp -r build/assets "$pkgdir"/usr/share/ppsspp/
-  cp -r ppsspp/assets/unix-icons/hicolor "$pkgdir"/usr/share/icons/hicolor
+  cd ppsspp/build
 
-  install -Dm644 ppsspp.desktop "$pkgdir"/usr/share/applications/ppsspp.desktop
+  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,man/man1,pixmaps,ppsspp}}
+  install -m 755 PPSSPPSDL "${pkgdir}"/usr/bin/ppsspp
+  cp -dr --no-preserve='ownership' assets "${pkgdir}"/usr/share/ppsspp/
+  install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
+  install -m 644 ../debian/ppsspp.desktop "${pkgdir}"/usr/share/applications/
+  install -m 644 ../debian/ppsspp.1 "${pkgdir}"/usr/share/man/man1/
 }
+
+package_ppsspp-qt() {
+  depends+=('qt5-base')
+  provides=('ppsspp')
+  conflicts=('ppsspp')
+
+  cd ppsspp/build-qt
+
+  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,man/man1,pixmaps}}
+  install -m 755 ppsspp "${pkgdir}"/usr/bin/
+  install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
+  install -m 644 ../debian/ppsspp.desktop "${pkgdir}"/usr/share/applications/
+  install -m 644 ../debian/ppsspp.1 "${pkgdir}"/usr/share/man/man1/
+}
+
+# vim: ts=2 sw=2 et:
