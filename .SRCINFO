@@ -7,7 +7,7 @@ pkgbase = git-crypt-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = openssl
+	depends = git
 	provides = git-crypt
 	conflicts = git-crypt
 	source = git://github.com/AGWA/git-crypt.git#branch=master
