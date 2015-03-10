@@ -7,7 +7,6 @@ pkgbase = git-crypt
 	arch = x86_64
 	license = GPL3
 	depends = git
-	depends = openssl
 	conflicts = git-crypt-git
 	source = https://github.com/AGWA/git-crypt/archive/0.4.2.tar.gz
 	sha256sums = ac363ded67b1f08d1d460a56782346cbdc6e6171d3390e3f5d3290940eb6ad86
