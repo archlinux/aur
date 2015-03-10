@@ -12,7 +12,6 @@ arch=('i686' 'x86_64')
 url="http://www.agwa.name/projects/${pkgname}/"
 license=('GPL3')
 depends=('git' 'openssl')
-provides=("{$pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/AGWA/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('ac363ded67b1f08d1d460a56782346cbdc6e6171d3390e3f5d3290940eb6ad86')
