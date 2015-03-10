@@ -23,6 +23,7 @@ optdepends=('emacs: to enable Emacs Interface')
 source=(
   "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
   "guix.service")
+install="${pkgname}.install"
 sha256sums=('c54d19e948eae7ed15f63c6ad69bd8193fd1ed8128d3a6a8511f381f64a3058a'
             '932f3d021ae6ea3101961c346cd8caf6aed42db23a515fd70be4c41cb49f301d'
             'd0a014de859c4f5d6f760be84991b88f4855ead933368f3ab815a1deabc361ce')
