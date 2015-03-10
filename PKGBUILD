@@ -27,7 +27,7 @@ ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/sprmindx.sty
 ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/svlnicst.clo
 ftp://ftp.springer.de/pub/tex/latex/lnicst/styles/svmultln.cls)
 
-build() {
+package() {
   for _SVJOUR3 in readme.txt svjour3.cls usrguid3.pdf svglov3.clo template.tex; do
     install -m 0644 -D ${srcdir}/${_SVJOUR3} ${pkgdir}/usr/share/texmf-dist/tex/latex/svjour3/${_SVJOUR3}
   done
