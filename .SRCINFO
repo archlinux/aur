@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-dkms
 	pkgdesc = NVIDIA kernel module sources (DKMS)
 	pkgver = 340.76
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-340xx-dkms.install
 	arch = i686
@@ -17,8 +17,10 @@ pkgbase = nvidia-340xx-dkms
 	conflicts = nvidia-dkms
 	source = http://us.download.nvidia.com/XFree86/Linux-x86/340.76/NVIDIA-Linux-x86-340.76.run
 	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.76/NVIDIA-Linux-x86_64-340.76-no-compat32.run
+	source = nv-drm.patch
 	sha1sums = 1335af174324f5c752388110e65c3c51beea729b
 	sha1sums = 2df59750d9fdeed613e84379108fb2bec67afd14
+	sha1sums = f0798ef2269fa4257a754ecc86fd1632774b188c
 
 pkgname = nvidia-340xx-dkms
 
