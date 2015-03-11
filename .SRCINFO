@@ -1,0 +1,15 @@
+pkgbase = perl-business-isbn-data
+	pkgdesc = Data pack for Business::ISBN
+	pkgver = 20140910.002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Business-ISBN-Data
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Business-ISBN-Data-20140910.002.tar.gz
+	md5sums = 448104360420c530fbd88ad125a6be54
+
+pkgname = perl-business-isbn-data
+
