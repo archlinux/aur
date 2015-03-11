@@ -1,16 +1,16 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=python-twine
 _pyname=twine
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A utility for interacting with PyPI'
 arch=('any')
 url='https://pypi.python.org/pypi/twine'
 license=('APACHE')
-depends=('python' 'python-requests>=2.0' 'python-pkginfo')
+depends=('python' 'python-setuptools' 'python-requests>=2.0' 'python-pkginfo')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('631e1551ac4caf89cd6ede7811d7eaa4')
+md5sums=('12948245aeb59acf32f663e1d81fed34')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
