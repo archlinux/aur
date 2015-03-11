@@ -1,17 +1,17 @@
 pkgbase = perl-business-isbn
 	pkgdesc = Perl package to work with International Standard Book Numbers
-	pkgver = 2.07
+	pkgver = 2.09
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Business-ISBN
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
-	depends = perl-business-isbn-data>=20081208
+	depends = perl-business-isbn-data>=20140910
 	depends = perl-uri
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Business-ISBN-2.07.tar.gz
-	md5sums = c0049fb576b9fc3b2603bf7e9b3e91af
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Business-ISBN-2.09.tar.gz
+	md5sums = 5ebf339c409d99cdfa6f96974ef96780
 
 pkgname = perl-business-isbn
 
