@@ -3,14 +3,14 @@
 _python=python
 pkgname=$_python-elmextensions
 pkgdesc="${_python^} library that contains a few more complex elementary objects for easy importing/usage"
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 arch=('any')
 url='https://github.com/JeffHoogland/python-elm-extensions'
 license=('BSD')
 depends=("$_python-efl")
 source=("https://github.com/JeffHoogland/python-elm-extensions/archive/$pkgver.tar.gz")
-sha256sums=('69d82dd1c2c87be12b4e159366b920d3bfa3d890bc929c7b26f2eb4edc28a6a1')
+sha256sums=('6833db0b4fba63dd5257a4a86a2fe8b34b1506d7fac64ec7a65163479678d15b')
 
 package() {
   cd "$srcdir/python-elm-extensions-$pkgver"
