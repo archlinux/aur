@@ -3,6 +3,7 @@
 # Contributor: Francisco Lopes <chico.lopes@gmail.com>
 
 _pkgname=pfff
+_github_addr=facebook/pfff
 pkgname="$_pkgname-git"
 pkgver=v0.28.1.r459.g7edb85d
 pkgrel=1
@@ -12,7 +13,7 @@ url='https://github.com/facebook/pfff'
 license=('LGPL2.1')
 optdepends=('gtk2: required by codegraph and codemap')
 makedepends=('git' 'ocaml' 'ocaml-findlib' 'camlp4')
-source=('git+https://github.com/facebook/pfff.git')
+source=("git+https://github.com/$_github_addr")
 options=(!makeflags staticlibs) # parallel build fails, need *.a files
 md5sums=('SKIP')
 conflicts=(pfff)
