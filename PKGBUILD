@@ -1,7 +1,7 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 
 pkgname=libgaminggear
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://sourceforge.net/projects/libgaminggear/"
 depends=('libnotify' 'libcanberra' 'gtk2' 'sqlite3>=3.7')
 makedepends=('cmake>=3.0' 'doxygen')
 source=(http://downloads.sourceforge.net/project/libgaminggear/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('fe1d7078993ec96b50ee51eee0d6743b')
+md5sums=('7b511b36545c03c99cc5442a3dabb077')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
