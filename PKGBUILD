@@ -1,6 +1,7 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
 
 pkgname=dhcptest-git
+_github_addr=CyberShadow/dhcptest
 pkgver=0.5.r0.g56a8834
 pkgrel=3
 pkgdesc="DHCP test client"
@@ -9,7 +10,7 @@ url="https://github.com/CyberShadow/dhcptest"
 license=('custom:BSL1.0')
 depends=('glibc')
 makedepends=('dmd' 'git')
-source=("$pkgname"::'git+https://github.com/CyberShadow/dhcptest'
+source=("$pkgname"::"git+https://github.com/$_github_addr"
         'http://www.boost.org/LICENSE_1_0.txt')
 md5sums=('SKIP'
          'e4224ccaecb14d942c71d31bef20d78c')
