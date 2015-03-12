@@ -3,6 +3,7 @@
 # Contributor: Jens Staal <staal1978@gmail.com>
 
 pkgname=libpthread_workqueue-git
+_github_addr=mheily/libpwq
 pkgver=20140727
 pkgrel=2
 pkgdesc="a portable implementation of the pthread_workqueue API first introduced in Mac OS X."
@@ -12,7 +13,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('git')
 provides=('libpthread_workqueue' 'libpthread_workqueue-libpthread')
-source=("${pkgname}"::'git+https://github.com/mheily/libpwq')
+source=("${pkgname}"::"git+https://github.com/$_github_addr")
 md5sums=('SKIP')
 
 pkgver() {
