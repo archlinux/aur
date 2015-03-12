@@ -3,7 +3,7 @@
 
 pkgname=aoetools
 pkgver=36
-pkgrel=1
+pkgrel=2
 pkgdesc="ATA over Ethernet Tools"
 arch=('i686' 'x86_64')
 url="http://aoetools.sourceforge.net/"
@@ -20,5 +20,5 @@ build() {
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" SBINDIR=/usr/bin install
 }
