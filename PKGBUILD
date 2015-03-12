@@ -1,6 +1,7 @@
 # Maintainer: Ondrej Jirman <megous@megous.com>
 
 _pkgname=megatools
+_github_addr=megous/megatools#branch=dev
 pkgname=${_pkgname}-dev-git
 pkgver=1.9.94.r78.g796808b
 pkgrel=1
@@ -11,7 +12,7 @@ license=('GPL')
 depends=('curl' 'glib-networking' 'fuse')
 makedepends=('gobject-introspection' 're2c' 'git')
 optdepends=('gobject-introspection: Bindings support for JavaScript')
-source=("git+https://github.com/megous/megatools#branch=dev")
+source=("git+https://github.com/$_github_addr")
 options=(!libtool)
 md5sums=('SKIP')
 
