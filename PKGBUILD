@@ -1,8 +1,8 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=firefox-extension-stylish
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Restyle the web with Stylish, a user styles manager.'
 url=https://userstyles.org
 arch=('any')
