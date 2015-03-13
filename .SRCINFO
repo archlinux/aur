@@ -1,7 +1,7 @@
 pkgbase = libplist-git
 	pkgdesc = A library to handle Apple Property List format whereas it's binary or XML
-	pkgver = 1.11.1.gf5f2f5e
-	pkgrel = 1
+	pkgver = 1.12.r22.g9ca25d2
+	pkgrel = 2
 	epoch = 1
 	url = http://www.libimobiledevice.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = libplist-git
 	makedepends = swig
 	depends = glib2
 	depends = libxml2
+	depends = python2
 	provides = libplist
 	conflicts = libplist
 	source = git://git.sukimashita.com/libplist.git
