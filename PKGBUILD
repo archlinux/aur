@@ -3,10 +3,10 @@ pkgname='nuntius-git'
 pkgdesc='Delivers notifications from your phone or tablet to your computer'
 url='https://github.com/holylobster/nuntius-linux'
 license=('GPL')
-pkgver=r24.acb1ef9
+pkgver=r30.85c3552
 pkgrel=1
 arch=('x86_64' 'i686')
-makedepends=('vala' 'autoconf' 'automake' 'intltool')
+makedepends=('vala' 'intltool')
 depends=('json-glib' 'desktop-file-utils' 'gtk-update-icon-cache')
 source=("${pkgname}::git://github.com/holylobster/nuntius-linux"
 	nuntius.install)
