@@ -4,7 +4,7 @@
 
 pkgname=lamson
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Pythonic mail server built like a web application server"
 license=("BSD")
 url="http://lamsonproject.org/"
@@ -13,8 +13,14 @@ source=("http://pypi.python.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.
 arch=('any')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python2 setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir"/$pkgname-$pkgver
+	python2 setup.py build
+}
+
+package() {
+	cd "$srcdir"/$pkgname-$pkgver
+	python2 setup.py install --skip-build -O1 --root="$pkgdir"
+	install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 sha256sums=('253edf385ae54606579b6b717adf5edcd9df47f9a1d488aa61b9e9f42587d37d')
