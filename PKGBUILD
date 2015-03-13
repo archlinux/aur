@@ -24,7 +24,7 @@ build() {
   cd "${pkgname}"
   mkdir $srcdir/$pkgname/build_release
   cd $srcdir/$pkgname/build_release
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DREGISTRY=Off ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_BUILD_TYPE=Release -DREGISTRY=Off ..
   make
 }
 
