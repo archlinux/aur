@@ -5,9 +5,9 @@
 pkgname=ksysguard
 pkgver=5.2.1
 pkgrel=2
-pkgdesc='KSysGuard'
+pkgdesc='Track and control the processes running in your system'
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/workspace/ksysguard'
+url='https://userbase.kde.org/KSysGuard'
 license=('LGPL')
 depends=('knewstuff' 'libksysguard' 'lm_sensors' 'xdg-utils'
          'hicolor-icon-theme' 'kdelibs4support')
