@@ -1,8 +1,8 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=omegat
-pkgver=3.1.8
-pkgrel=2
+pkgver=3.1.9
+pkgrel=1
 pkgdesc="Multiplatform CAT tool application, written in Java"
 arch=('any')
 url="http://www.omegat.org/en/omegat.html"
@@ -14,7 +14,7 @@ options=('!strip')
 source=(http://downloads.sourceforge.net/$pkgname/OmegaT_${pkgver}_Without_JRE.zip
         http://www.omegat.org/resources/icons.zip
         $pkgname.desktop)
-sha256sums=('15d4035acbf1538611de380dde7f54bd9417b374997bdd5d27184b97de71c933'
+sha256sums=('90a491686369f2e0014838604dd3a7adfef368d42d11a2c5c86bf87d34ebe4cc'
             'e8b14887f513a505def059903348b5a06c0d016450711cf0f235802213a3dbbb'
             'ac480a8244c1a5171b7f2d5892585360067d78e3113ccb45aad6afe7ed69aec5')
 
