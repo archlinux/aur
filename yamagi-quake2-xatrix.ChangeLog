@@ -1,9 +1,15 @@
-2014-05-09 carstene1ns <url/mail: arch carsten-teibes de>
+2015-03-14 carstene1ns <arch carsten-teibes de>
+
+	* 2.02-1 :
+	new upstream release.
+	cleaned up .desktop file
+
+2014-05-09 carstene1ns <arch carsten-teibes de>
 
 	* 2.01-1 :
 	new upstream release.
 
-2014-01-24 carstene1ns <url/mail: arch carsten-teibes de>
+2014-01-24 carstene1ns <arch carsten-teibes de>
 
 	* 2.00-1 :
 	(package adopted)
