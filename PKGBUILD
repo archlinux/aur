@@ -3,12 +3,12 @@
 
 pkgname=gzdoom
 pkgver=2.0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
 license=('custom')
-depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl')
+depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl2')
 makedepends=('nasm' 'cmake' 'imagemagick' 'mesa')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
