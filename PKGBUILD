@@ -1,8 +1,8 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2
-pkgver=5.23
+pkgver=5.24
 pkgrel=1
 pkgdesc="Enhanced Quake II engine optimized for modern systems"
 url="http://www.yamagi.org/quake2/"
@@ -16,8 +16,8 @@ install=$pkgname.install
 changelog=$pkgname.ChangeLog
 source=("http://deponie.yamagi.org/quake2/quake2-$pkgver.tar.xz"
         "$pkgname.desktop")
-sha256sums=('335f1d8b104453147d74f712b934d71a622fcd304c64afad5550ec85913f446a'
-            '984cba7e43033b5b2339879474854006b0340c55b6c20693df88e983e0f2daf2')
+sha256sums=('8c468b4fdefa3ae0e6239d677571c38c89387ae52df61a60e0f50bbd26dfa78f'
+            '7049a1798e38a263fb2660b94fb70f5154fad1f807259d41649e12cea1a6757c')
 
 build() {
   cd quake2-$pkgver
