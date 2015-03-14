@@ -1,0 +1,14 @@
+pkgbase = govpn
+	pkgdesc = Simple secure free software VPN daemon
+	pkgver = 3.4
+	pkgrel = 1
+	url = http://www.cypherpunks.ru/govpn/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = http://sourceforge.net/projects/govpn/files/govpn-3.4.tar.xz
+	sha256sums = 266612a7f8faa6ceb2955ed611c0c21872776306f4eaad5b785145bbb0390c82
+
+pkgname = govpn
+
