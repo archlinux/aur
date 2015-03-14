@@ -1,9 +1,8 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributors: Frederic Bezies, Ronan Rabouin
 
-_pkgbase=quake2-rogue
-pkgname=yamagi-$_pkgbase
-pkgver=2.00
+pkgname=yamagi-quake2-rogue
+pkgver=2.01
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2"
@@ -12,20 +11,19 @@ license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
 install=$pkgname.install
 changelog=$pkgname.ChangeLog
-source=("http://deponie.yamagi.org/quake2/$_pkgbase-$pkgver.tar.xz"
-        "$pkgname.sh" "$pkgname.desktop")
-sha256sums=('fa3f4ad38a73b6007cf8bd2992318952555ee7d91734bc0a7d1af6016186eac5'
+source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
+        "$pkgname.sh"
+        "$pkgname.desktop")
+sha256sums=('a7117d9a7dfc1ac6bb2f35b312faa72c8b1ed697cc6a25fde0ab37162966647c'
             '7d43bd0ca15a6c82560153deea1df1109d0a448b226e316b6b7b5daae256241a'
-            'b0347a6571748b5c1176e12b7a04f0b10e982c973bc6b7c749861146bf4d05a6')
+            'e7ee884b1e015743659cf668afa521976de64345872acf8e4c1e6932355c2959')
 
 build() {
-  cd $_pkgbase-$pkgver
-
-  make
+  make -C ${pkgname#*-}-$pkgver
 }
 
 package() {
-  cd $_pkgbase-$pkgver
+  cd ${pkgname#*-}-$pkgver
 
   # game launcher
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname

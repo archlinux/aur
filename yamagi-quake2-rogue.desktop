@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
-Name=Quake II - Mission Pack 2 (rogue)
-Comment=Ground Zero (Yamagi Quake II)
+Name=Yamagi Quake II - Mission Pack 2 (rogue)
+Comment=Ground Zero
 Icon=yamagi-quake2
 Exec=yamagi-quake2-rogue
 Categories=Game;Shooter;
