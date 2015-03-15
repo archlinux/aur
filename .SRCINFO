@@ -1,6 +1,6 @@
 pkgbase = xfwm4-hover-inactive
 	pkgdesc = Xfce window manager w/ hover effect for inactive windows
-	pkgver = 4.12.0
+	pkgver = 4.12.1
 	pkgrel = 1
 	url = http://www.xfce.org/
 	install = xfwm4-hover-inactive.install
@@ -16,10 +16,12 @@ pkgbase = xfwm4-hover-inactive
 	provides = xfwm4
 	conflicts = xfwm4
 	options = !libtool
-	source = http://archive.xfce.org/src/xfce/xfwm4/4.12/xfwm4-4.12.0.tar.bz2
+	source = http://archive.xfce.org/src/xfce/xfwm4/4.12/xfwm4-4.12.1.tar.bz2
+	source = 0001-Fix-a-mishmash-between-width-and-height.patch
 	source = 0001-Add-hover-effects-for-titlebar-s-buttons-of-inactive.patch
-	sha1sums = 5c3ea9faaa9b45a40ca7ecfff447cdca192534f6
-	sha1sums = 29ee9bfaa981bfca46afd9a60fbcfad3634cee22
+	sha1sums = e7470b69bba29c9c0e0bcd1471e80b73c6ccfd91
+	sha1sums = 2fc881cf4fbdbd7c6f55eb5d4900dc133516ee14
+	sha1sums = 80e75265a7a4146035b0ba201e1cebb398e75e32
 
 pkgname = xfwm4-hover-inactive
 

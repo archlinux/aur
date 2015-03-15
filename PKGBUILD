@@ -4,7 +4,7 @@
 
 _pkgname=xfwm4
 pkgname=$_pkgname-hover-inactive
-pkgver=4.12.0
+pkgver=4.12.1
 pkgrel=1
 pkgdesc="Xfce window manager w/ hover effect for inactive windows"
 arch=('i686' 'x86_64')
@@ -18,12 +18,15 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 install=${pkgname}.install
 source=(http://archive.xfce.org/src/xfce/${_pkgname}/4.12/${_pkgname}-${pkgver}.tar.bz2
+        0001-Fix-a-mishmash-between-width-and-height.patch
         0001-Add-hover-effects-for-titlebar-s-buttons-of-inactive.patch)
-sha1sums=('5c3ea9faaa9b45a40ca7ecfff447cdca192534f6'
-          '29ee9bfaa981bfca46afd9a60fbcfad3634cee22')
+sha1sums=('e7470b69bba29c9c0e0bcd1471e80b73c6ccfd91'
+          '2fc881cf4fbdbd7c6f55eb5d4900dc133516ee14'
+          '80e75265a7a4146035b0ba201e1cebb398e75e32')
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
+  patch -p1 -i ../0001-Fix-a-mishmash-between-width-and-height.patch
   patch -p1 -i ../0001-Add-hover-effects-for-titlebar-s-buttons-of-inactive.patch
 }
 

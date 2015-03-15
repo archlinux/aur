@@ -1,0 +1,37 @@
+From adcf17fe8a136c89196f952185056c12c3829a01 Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <fourdan@xfce.org>
+Date: Sun, 15 Mar 2015 11:24:15 +0100
+Subject: [PATCH] Fix a mishmash between width and height
+
+Bug: 11700
+
+Duh...
+
+Signed-off-by: Olivier Fourdan <fourdan@xfce.org>
+---
+ src/client.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/client.c b/src/client.c
+index 7fa9e36..38ecc6f 100644
+--- a/src/client.c
++++ b/src/client.c
+@@ -543,12 +543,12 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
+ 
+     if (*mask & CWWidth)
+     {
+-        wc->width = clientCheckHeight (c, wc->width, TRUE);
++        wc->width = clientCheckWidth (c, wc->width, TRUE);
+     }
+ 
+-    if (*mask & CWWidth)
++    if (*mask & CWHeight)
+     {
+-        wc->height = clientCheckWidth (c, wc->height, TRUE);
++        wc->height = clientCheckHeight (c, wc->height, TRUE);
+     }
+ 
+     switch (gravity)
+-- 
+2.3.3
+
