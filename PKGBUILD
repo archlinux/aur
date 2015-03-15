@@ -1,6 +1,6 @@
 pkgname=amavisd-new
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -38,8 +38,8 @@ source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.xz"
         "service"
         "tmpfiles")
 sha256sums=('1d3d3f372d0888018b950ee19704c298b5d02e2c287ca2d5f1a785a078b6038f'
-            'b803ac76501a68775395c7f80aed5633b98ea7a851f926e0edb169e4c2e38b24'
-            'a7ea2c73f2dbdd7d79bcb06aa950410f8e214afa01629a0717e0a81489441e6d')
+            'cdfc26a15049ea8526b552ab1bef9ccf9bc8608ee65897801d9ea87de84a7435'
+            '84bccf5f2b2740b25ea7d15237607f894b7ce7558e1ecba67f2d005497b8bf25')
 install=install
 
 prepare() {
