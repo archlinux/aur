@@ -1,4 +1,5 @@
-# Maintainer: Max Roder <maxroder@web.de>
+# Contributor: Max Roder <maxroder@web.de>
+# Contributor: Yardena Cohen <yardenack@gmail.com>
 
 # To port this PKGBUILD to another language of tor-browser you 
 # have to change $pkgname, $_language, $pkgdesc and $url in PKGBUILD
