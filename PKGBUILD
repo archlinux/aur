@@ -4,8 +4,8 @@
 
 _pkgname=xfwm4
 pkgname=$_pkgname-better-smartplacement
-pkgver=4.12.0
-pkgrel=2
+pkgver=4.12.1
+pkgrel=1
 pkgdesc="Xfce window manager w/ better smart placement of new windows"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -18,16 +18,19 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 install=${pkgname}.install
 source=(http://archive.xfce.org/src/xfce/${_pkgname}/4.12/${_pkgname}-${pkgver}.tar.bz2
+        0001-Fix-a-mishmash-between-width-and-height.patch
         0001-Rewrote-smartPlacement.patch
         0002-smartPlacement-w-snap_to_border-we-snap-to-bottom-ri.patch
         0003-Fix-new-window-always-top-left-when-screen-not-full.patch)
-sha1sums=('5c3ea9faaa9b45a40ca7ecfff447cdca192534f6'
-          '14c407c8734add318b7b0f0a9b86bcaf6a210b81'
-          '4cb167d59c1ad0776aa9a53cafafd0168ede5cc9'
-          '89f5b54d7370db86c7547580a6d1376cb88980fa')
+sha1sums=('e7470b69bba29c9c0e0bcd1471e80b73c6ccfd91'
+          '2fc881cf4fbdbd7c6f55eb5d4900dc133516ee14'
+          'ea46b6b9561bdd2e4f5225b4aeed811b2ed5d890'
+          'e179b132c8da76a6b75e51bb7364e19ba9ecf7de'
+          '9356911cd08c9703f356c0b7993a6392302dbcad')
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
+  patch -p1 -i ../0001-Fix-a-mishmash-between-width-and-height.patch
   patch -p1 -i ../0001-Rewrote-smartPlacement.patch
   patch -p1 -i ../0002-smartPlacement-w-snap_to_border-we-snap-to-bottom-ri.patch
   patch -p1 -i ../0003-Fix-new-window-always-top-left-when-screen-not-full.patch
