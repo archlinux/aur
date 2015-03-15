@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=lincity-ng-git
-pkgver=2.9.beta.r1832.4900c2e
+pkgver=2.9.beta.r1834.3e94c18
 pkgrel=1
 pkgdesc="A city simulation game (development version)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver%.r*}")
 depends=('sdl_mixer' 'sdl_image' 'sdl_ttf' 'sdl_gfx' 'physfs' 'libxml2' 'libgl')
 makedepends=('git' 'ftjam' 'mesa' 'glu')
-source=("git+https://code.google.com/p/lincity-ng/")
+source=("git+https://github.com/lincity-ng/lincity-ng.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,8 +24,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-*}
-  # fix https://code.google.com/p/lincity-ng/issues/detail?id=5 ... yeah it is ugly, better patch proposed
-  rm src/lincity-ng/getBundleSharePath.cpp
+
   # generate CREDITS file
   eval $(grep -m1 CREDITS makerelease.sh)
 }

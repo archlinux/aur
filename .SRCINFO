@@ -1,6 +1,6 @@
 pkgbase = lincity-ng-git
 	pkgdesc = A city simulation game (development version)
-	pkgver = 2.9.beta.r1832.4900c2e
+	pkgver = 2.9.beta.r1834.3e94c18
 	pkgrel = 1
 	url = https://code.google.com/p/lincity-ng/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = lincity-ng-git
 	depends = libgl
 	provides = lincity-ng=2.9.beta
 	conflicts = lincity-ng
-	source = git+https://code.google.com/p/lincity-ng/
+	source = git+https://github.com/lincity-ng/lincity-ng.git
 	md5sums = SKIP
 
 pkgname = lincity-ng-git
