@@ -3,7 +3,7 @@
 # Package Repository: https://github.com/mij-aur-packages/lubuntu-artwork
 
 pkgname=lubuntu-artwork
-pkgver=0.52
+pkgver=0.53
 pkgrel=1
 pkgdesc='artwork of Lubuntu'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('gtk-engine-murrine: gtk2 theme support'
             'elementary-icon-theme: icons support'
             'gtk-engine-unico: gtk3 theme support')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('2d1198abc49d14589795c133ab2c9dc7fd92b28740ee53787dca3269315ebfd8')
+sha256sums=('a981033bad899182b6dddf4d68908852f62b90334f7d9e121c68ec859356ecc0')
 
 package(){
     cp -r "${srcdir}/${pkgname}-${pkgver}/src/usr" "${pkgdir}"
