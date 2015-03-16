@@ -2,8 +2,8 @@
 
 pkgname=xournal-git
 _gitname=xournal
-pkgver=0.4.7.16.g6d4c59e
-pkgrel=2
+pkgver=0.4.8.8.g59f5980
+pkgrel=1
 pkgdesc="Notetaking and sketching application"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/xournal/"
@@ -20,7 +20,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always | sed 's/^Release-//; s/[-_]/./g'
+  git describe --always | sed 's/^Release[-_]//; s/[-_]/./g'
 }
 
 build() {
