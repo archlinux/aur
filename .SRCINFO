@@ -1,6 +1,6 @@
 pkgbase = android-google-apis-armv7a-eabi
 	pkgdesc = Android Google APIs ARM EABI v7a System Image, latest API
-	pkgver = 21_r03
+	pkgver = 22_r01
 	pkgrel = 1
 	url = http://code.google.com/android/add-ons/google-apis
 	arch = any
@@ -9,15 +9,15 @@ pkgbase = android-google-apis-armv7a-eabi
 	depends = android-google-apis
 	optdepends = qemu
 	optdepends = libvirt
-	provides = android-google-apis-armv7a-eabi-21
-	provides = android-google-apis-armv7-eabi-21
-	conflicts = android-google-apis-armv7a-eabi-21
-	conflicts = android-google-apis-armv7-eabi-21
+	provides = android-google-apis-armv7a-eabi-22
+	provides = android-google-apis-armv7-eabi-22
+	conflicts = android-google-apis-armv7a-eabi-22
+	conflicts = android-google-apis-armv7-eabi-22
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_arm-21_r03.zip
+	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_arm-22_r01.zip
 	source = source.properties
-	sha1sums = 8d381a6a29ebef644a5882d23eaaaaa1586edac4
-	sha1sums = 81714b550da98a363ecb5acf701e666f7fb9bb3e
+	sha1sums = 70273783312d4519f8b503cdd8be980180fb1197
+	sha1sums = 3194256dfcb72d41fa3159148aeedf6ed4821640
 
 pkgname = android-google-apis-armv7a-eabi
 
