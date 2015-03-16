@@ -10,6 +10,7 @@ pkgbase = unix-runescape-client
 	depends = perl
 	depends = perl-wx
 	depends = wget
+	depends = libxtst
 	depends = perl-config-inifiles
 	depends = perl-io-stringy
 	depends = perl-archive-extract

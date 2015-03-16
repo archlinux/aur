@@ -7,7 +7,7 @@ arch=(any)
 url="http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html"
 license=(GPL2)
 depends=(
-  'java-runtime' 'perl' 'perl-wx' 'wget'
+  'java-runtime' 'perl' 'perl-wx' 'wget' 'libxtst'
   'perl-config-inifiles' 'perl-io-stringy' 'perl-archive-extract'
 )
 optdepends=(
