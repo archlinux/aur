@@ -2,7 +2,7 @@
 # Package Repository: https://github.com/mij-aur-packages/android-x86-system-image
 
 _rev=r01
-_apilevel=21
+_apilevel=22
 pkgname=android-x86-system-image
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -15,10 +15,10 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86-21_r01.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_x86-22_r01.zip"
         "source.properties")
-sha1sums=('1b5d4228736afc32c7ad1439740abb39b1bc0fae'
-          'f5c8ed5a05b94dac9146e85f1bc262dc5db8d65c')
+sha1sums=('6c7bb51e41a16099bb1f2a3cc81fdb5aa053fc15'
+          '69ca9800cda1b5c027cd40688beb11a2a03bbb07')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
