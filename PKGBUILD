@@ -4,11 +4,11 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Package Repository: https://github.com/mij-aur-packages/android-platform
 
-_rev=r02
-_apilevel=21
+_rev=r01
+_apilevel=22
 pkgname=android-platform
 pkgver=${_apilevel}_${_rev}
-pkgrel=2
+pkgrel=1
 pkgdesc="Android SDK Platform, latest API"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
@@ -17,8 +17,8 @@ depends=('android-sdk' 'android-sdk-platform-tools')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("https://dl-ssl.google.com/android/repository/android-21_r02.zip")
-sha1sums=('53536556059bb29ae82f414fd2e14bc335a4eb4c')
+source=("https://dl-ssl.google.com/android/repository/android-22_r01.zip")
+sha1sums=('6df7006cf184df4e7928d7e28dadf7567503d6f7')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
