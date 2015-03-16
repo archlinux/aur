@@ -5,7 +5,7 @@
 # Package Repository: https://github.com/mij-aur-packages/android-armv7a-eabi-system-image
 
 _rev=r01
-_apilevel=21
+_apilevel=22
 pkgname=android-armv7a-eabi-system-image
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -17,10 +17,10 @@ depends=("android-platform")
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_arm-21_r01.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_arm-22_r01.zip"
         "source.properties")
-sha1sums=('74a74b89a06ffba03448ccdfbb414c49026e660c'
-          '9c4c13781c25cec0c2f57cce5e22a030cd8af687')
+sha1sums=('2aa6a887ee75dcf3ac34627853d561997792fcb8'
+          'be0f8cc96b89bb98764be3108056d3db18c5f730')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
