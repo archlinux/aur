@@ -1,0 +1,15 @@
+pkgbase = texbuild-git
+	pkgdesc = This small script continuously builds a latex file in the background. It only overwrites the target pdf file upon a successful and complete build allowing to continuously watch the PDF in PDF viewer.
+	pkgver = r8.e9e6369
+	pkgrel = 1
+	url = https://github.com/pbiggar/texbuild
+	arch = any
+	license = GPL
+	makedepends = git
+	source = support-synctex.patch
+	source = git+https://github.com/pbiggar/texbuild.git
+	md5sums = 01a5dd8b6bba24d6e0af076e7a8aa981
+	md5sums = SKIP
+
+pkgname = texbuild-git
+

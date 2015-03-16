@@ -1,0 +1,27 @@
+diff --git a/texbuild b/texbuild
+index 5e175f1..c95a7ea 100755
+--- a/texbuild
++++ b/texbuild
+@@ -48,12 +48,13 @@ def msg (message):
+ filename = sys.argv[1]
+ base = os.path.splitext (os.path.basename (filename))[0]
+ final = base + ".pdf"
++synctex = base + ".synctex.gz"
+ logfile = base + ".log"
+ auxfile = base + ".aux"
+ 
+ texbuildlogfile = "texbuild.log"
+ 
+-latex = ["pdflatex", "-recorder", "-interaction=nonstopmode", filename]
++latex = ["pdflatex", "-recorder", "-src-specials", "-synctex=1", "-interaction=nonstopmode", "-shell-escape", "-enable-write18", filename]
+ bibtex = ["bibtex", base]
+ 
+ 
+@@ -167,5 +168,6 @@ while (True):
+ 	debug ("copying log")
+ 	shutil.copy (logfile, "t.log")
+ 	shutil.copy (auxfile, "t.aux") # for bibtex
++	shutil.copy (synctex, "t.synctex.gz") # for synctex
+ 
+ 
+-- 
