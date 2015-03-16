@@ -1,0 +1,15 @@
+pkgbase = python2-fitparse-git
+	pkgdesc = Garmin FIT file parser implementation
+	pkgver = r43.462598c
+	pkgrel = 1
+	url = https://github.com/dtcooper/python-fitparse
+	arch = i686
+	arch = x86_64
+	license = Python
+	license = custom:python2-fitparse
+	depends = python2
+	source = git+https://github.com/dtcooper/python-fitparse.git
+	md5sums = SKIP
+
+pkgname = python2-fitparse-git
+
