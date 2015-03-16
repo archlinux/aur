@@ -1,0 +1,9 @@
+post_install() {
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=usb --attr-match=idVendor=0fcf --action=add
+    echo "udev rules reloaded."
+}
+
+post_upgrade() {
+    post_install $1
+}
