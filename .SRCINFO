@@ -1,6 +1,6 @@
 pkgbase = android-google-apis-x86-64
 	pkgdesc = Android Google APIs x86-64 System Image, latest API
-	pkgver = 21_r03
+	pkgver = 22_r01
 	pkgrel = 1
 	url = http://code.google.com/android/add-ons/google-apis
 	arch = any
@@ -9,15 +9,15 @@ pkgbase = android-google-apis-x86-64
 	depends = android-google-apis
 	optdepends = qemu
 	optdepends = libvirt
-	provides = android-google-apis-x86-64-21
-	provides = android-google-apis-x86_64-21
-	conflicts = android-google-apis-x86-64-21
-	conflicts = android-google-apis-x86_64-21
+	provides = android-google-apis-x86-64-22
+	provides = android-google-apis-x86_64-22
+	conflicts = android-google-apis-x86-64-22
+	conflicts = android-google-apis-x86_64-22
 	options = !strip
-	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86_64-21_r03.zip
+	source = http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_x86_64-22_r01.zip
 	source = source.properties
-	sha1sums = bdce60caddf0ae4523049192fe81da8056a8cc6e
-	sha1sums = 7b4e7d851f7ed2a82707d97609e6630d405606ed
+	sha1sums = 078ecd0dd702db28cb9e15c1b0d1832f944548ca
+	sha1sums = ea1a7e538a0bc5397b618e4219c92b9c12f6bba7
 
 pkgname = android-google-apis-x86-64
 
