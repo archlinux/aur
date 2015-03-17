@@ -1,8 +1,8 @@
 #!/bin/bash
 
 pkgname=p7zip
-pkgver=9.20.1
-pkgrel=9
+pkgver=9.38.1
+pkgrel=1
 arch=x86_64
 mirror=http://mirrors.kernel.org/archlinux
 
