@@ -8,7 +8,7 @@
 pkgbase=p7zip-natspec
 pkgname=p7zip-natspec
 _pkgname=p7zip
-pkgver=9.38
+pkgver=9.38.1
 pkgrel=1
 pkgdesc='Command-line version of the 7zip compressed file archiver, using libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).'
 url='http://p7zip.sourceforge.net/'
@@ -24,7 +24,7 @@ source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgv
         'osversion.patch'
         '7zFM.desktop'
         'natspec.patch')
-sha1sums=('ae7f483799ca463aa5f0a856491a3410907348ed'
+sha1sums=('6b1eccf272d8b141a94758f80727ae633568ba69'
           '8c086db1c7be0d52d2ac971f44adbdccf6dd82de'
           'f2c370d6f1b286b7ce9a2804e22541b755616a40'
           'd4a39ae62cfa031782fd3c8c25f5e9c45ae64eec')
@@ -74,5 +74,5 @@ package() {
 	find GUI/help -type d -exec chmod 755 {} \;
 	cp -r GUI/help "${pkgdir}"/usr/lib/p7zip/
 
-	chmod -R u+w,o+r "${pkgdir}/usr"
+	chmod -R a+r,u+w,a+X "${pkgdir}/usr"
 }
