@@ -1,16 +1,16 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=clutter-gst
-pkgver=2.0.14
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="GStreamer bindings for clutter"
 arch=(i686 x86_64)
 url="http://www.clutter-project.org/"
 license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage)
-makedepends=(gobject-introspection python2)
+makedepends=(gobject-introspection)
 source=(http://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz)
-sha256sums=('5d7d8c1a31748e9039b7ba9dae9f412ec065715008adffdfde332dd34e7d0535')
+sha256sums=('c61011732428c74923a52cc7629903bd910ecad22634d58f7b0c1dc55235162a')
 
 build() {
   cd $pkgname-$pkgver
