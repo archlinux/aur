@@ -2,16 +2,16 @@
 _author=TOMHRR
 _perlmod=Net-IP-XS
 pkgname=perl-net-ip-xs
-pkgver=0.13
+pkgver=0.15
 pkgrel=1
 pkgdesc="XS implementation of Net::IP"
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
+url="https://metacpan.org/release/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-tie-simple' 'perl-math-bigint' 'perl-ip-country' 'perl-io-capture')
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('a427513d578c13ac5d10c4a357934395')
+md5sums=('c54615bcfe14306b8e125529f93baefd')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
