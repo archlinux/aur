@@ -1,5 +1,5 @@
 diff --git a/CPP/7zip/Archive/Zip/ZipIn.cpp b/CPP/7zip/Archive/Zip/ZipIn.cpp
-index b36b61b..3d9bcc3 100644
+index 345fbf5..d170707 100644
 --- a/CPP/7zip/Archive/Zip/ZipIn.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipIn.cpp
 @@ -2,6 +2,9 @@
@@ -9,10 +9,10 @@ index b36b61b..3d9bcc3 100644
 +#include <iconv.h>
 +#include <natspec.h>
 +
- #include "../../../../C/CpuArch.h"
+ // #include <stdio.h>
  
- #include "Common/DynamicBuffer.h"
-@@ -11,13 +14,15 @@
+ #include "../../../Common/DynamicBuffer.h"
+@@ -13,6 +16,8 @@
  
  #include "ZipIn.h"
  
@@ -21,18 +21,10 @@ index b36b61b..3d9bcc3 100644
  #define Get16(p) GetUi16(p)
  #define Get32(p) GetUi32(p)
  #define Get64(p) GetUi64(p)
- 
- namespace NArchive {
- namespace NZip {
-- 
-+  
- HRESULT CInArchive::Open(IInStream *stream, const UInt64 *searchHeaderSizeLimit)
- {
-   _inBufMode = false;
-@@ -27,6 +32,10 @@ HRESULT CInArchive::Open(IInStream *stream, const UInt64 *searchHeaderSizeLimit)
+@@ -91,6 +96,10 @@ HRESULT CInArchive::Open(IInStream *stream, const UInt64 *searchHeaderSizeLimit)
    RINOK(FindAndReadMarker(stream, searchHeaderSizeLimit));
    RINOK(stream->Seek(m_Position, STREAM_SEEK_SET, NULL));
-   m_Stream = stream;
+   Stream = stream;
 +
 +
 +  /* Guess archive filename charset */
@@ -40,35 +32,56 @@ index b36b61b..3d9bcc3 100644
    return S_OK;
  }
  
-@@ -206,6 +215,13 @@ void CInArchive::ReadFileName(UInt32 nameSize, AString &dest)
-   SafeReadBytes(p, nameSize);
-   p[nameSize] = 0;
-   dest.ReleaseBuffer();
-+
-+  /* Convert filename from archive charset to current locale's charset */
-+  p = natspec_convert((const char *)dest, NULL, archive_oem_charset, 0);
-+  if (p) {
-+    dest = p;
-+    free(p);
-+  }
+@@ -445,6 +454,17 @@ void CInArchive::ReadFileName(unsigned size, AString &s)
+   s.ReleaseBuffer();
  }
  
- void CInArchive::ReadExtra(UInt32 extraSize, CExtraBlock &extraBlock,
++void CInArchive::RecodeFileName(CItem &item) {
++  char *p;
++
++  /* Convert filename from archive charset to current locale's charset */
++  p = natspec_convert(item.Name.Ptr(), NULL, archive_oem_charset, 0);
++  if (p) {
++    item.Name = p;
++    free(p);
++  }
++}
++
+ bool CInArchive::ReadExtra(unsigned extraSize, CExtraBlock &extraBlock,
+     UInt64 &unpackSize, UInt64 &packSize, UInt64 &localHeaderOffset, UInt32 &diskStartNumber)
+ {
+@@ -565,6 +585,7 @@ bool CInArchive::ReadLocalItem(CItemEx &item)
+   }
+   if (item.Name.Len() != nameSize)
+     return false;
++  RecodeFileName(item);
+   return item.LocalFullHeaderSize <= ((UInt32)1 << 16);
+ }
+ 
+@@ -738,6 +759,7 @@ HRESULT CInArchive::ReadCdItem(CItemEx &item)
+   item.ExternalAttrib = Get32(p + 34);
+   item.LocalHeaderPos = Get32(p + 38);
+   ReadFileName(nameSize, item.Name);
++  RecodeFileName(item);
+   
+   if (extraSize > 0)
+   {
 diff --git a/CPP/7zip/Archive/Zip/ZipIn.h b/CPP/7zip/Archive/Zip/ZipIn.h
-index 0565339..dadeaeb 100644
+index f6b349b..834d3f5 100644
 --- a/CPP/7zip/Archive/Zip/ZipIn.h
 +++ b/CPP/7zip/Archive/Zip/ZipIn.h
-@@ -117,6 +117,8 @@ public:
-   ISequentialInStream *CreateLimitedStream(UInt64 position, UInt64 size);
-   IInStream* CreateStream();
- 
-+  const char *archive_oem_charset;
+@@ -184,6 +184,9 @@ public:
+       return false;
+     return true;
+   }
 +
-   bool IsOpen() const { return m_Stream != NULL; }
++  const char *archive_oem_charset;
++  void RecodeFileName(CItem &item);
  };
    
+ }}
 diff --git a/CPP/7zip/Archive/Zip/ZipOut.cpp b/CPP/7zip/Archive/Zip/ZipOut.cpp
-index aa82143..37277b0 100644
+index 2a1ba2c..afd1fde 100644
 --- a/CPP/7zip/Archive/Zip/ZipOut.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipOut.cpp
 @@ -2,10 +2,15 @@
@@ -87,35 +100,38 @@ index aa82143..37277b0 100644
  namespace NArchive {
  namespace NZip {
  
-@@ -17,6 +22,20 @@ void COutArchive::Create(IOutStream *outStream)
+@@ -18,9 +23,23 @@ HRESULT COutArchive::Create(IOutStream *outStream)
    m_OutBuffer.SetStream(outStream);
    m_OutBuffer.Init();
-   m_BasePosition = 0;
-+
+ 
 +  /* Guess archive filename charset */
 +  archive_oem_charset = natspec_get_charset_by_locale(NATSPEC_DOSCS, "");
-+}
 +
-+void COutArchive::RecodeFileName(CItem &item) {
-+	char *p;
-+
-+	/* Convert filename from current locale charset to archive charset. */
-+	p = natspec_convert((const char *)item.Name, archive_oem_charset, NULL, 0);
-+	if (p) {
-+		item.Name = p;
-+		free(p);
-+	}
+   return m_Stream->Seek(0, STREAM_SEEK_CUR, &m_Base);
  }
  
- void COutArchive::MoveBasePosition(UInt64 distanceToMove)
++void COutArchive::RecodeFileName(CItem &item) {
++  char *p;
++
++  /* Convert filename from current locale charset to archive charset. */
++  p = natspec_convert(item.Name.Ptr(), archive_oem_charset, NULL, 0);
++  if (p) {
++    item.Name = p;
++    free(p);
++  }
++}
++
+ void COutArchive::MoveCurPos(UInt64 distanceToMove)
+ {
+   m_CurPos += distanceToMove; // test overflow
 diff --git a/CPP/7zip/Archive/Zip/ZipOut.h b/CPP/7zip/Archive/Zip/ZipOut.h
-index 2f6349e..9cf9119 100644
+index eaaa032..d3a7f33 100644
 --- a/CPP/7zip/Archive/Zip/ZipOut.h
 +++ b/CPP/7zip/Archive/Zip/ZipOut.h
-@@ -49,6 +49,9 @@ public:
+@@ -81,6 +81,9 @@ public:
+ 
    void CreateStreamForCompressing(IOutStream **outStream);
    void CreateStreamForCopying(ISequentialOutStream **outStream);
-   void SeekToPackedDataPosition();
 +
 +  const char *archive_oem_charset;
 +  void RecodeFileName(CItem &item);
@@ -123,7 +139,7 @@ index 2f6349e..9cf9119 100644
  
  }}
 diff --git a/CPP/7zip/Archive/Zip/ZipUpdate.cpp b/CPP/7zip/Archive/Zip/ZipUpdate.cpp
-index bd0c822..d0ab99e 100644
+index 38f41b9..09d521a 100644
 --- a/CPP/7zip/Archive/Zip/ZipUpdate.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipUpdate.cpp
 @@ -32,12 +32,12 @@ using namespace NSynchronization;
@@ -143,27 +159,27 @@ index bd0c822..d0ab99e 100644
  
  static const Byte kMadeByHostOS = kHostOS;
  static const Byte kExtractHostOS = kHostOS;
-@@ -89,6 +89,7 @@ static void SetFileHeader(
-     item.NtfsATime = ui.NtfsATime;
-     item.NtfsCTime = ui.NtfsCTime;
+@@ -83,6 +83,7 @@ static void SetFileHeader(
+     item.Ntfs_ATime = ui.Ntfs_ATime;
+     item.Ntfs_CTime = ui.Ntfs_CTime;
      item.NtfsTimeIsDefined = ui.NtfsTimeIsDefined;
 +    archive.RecodeFileName(item);
    }
    else
      isDir = item.IsDir();
-@@ -360,6 +361,7 @@ static HRESULT UpdateItemOldData(COutArchive &archive,
-     item.NtfsATime = ui.NtfsATime;
-     item.NtfsCTime = ui.NtfsCTime;
+@@ -353,6 +354,7 @@ static HRESULT UpdateItemOldData(
+     item.Ntfs_ATime = ui.Ntfs_ATime;
+     item.Ntfs_CTime = ui.Ntfs_CTime;
      item.NtfsTimeIsDefined = ui.NtfsTimeIsDefined;
 +    archive.RecodeFileName(item);
  
      item.CentralExtra.RemoveUnknownSubBlocks();
      item.LocalExtra.RemoveUnknownSubBlocks();
 diff --git a/makefile.linux_amd64_asm b/makefile.linux_amd64_asm
-index 87e0f8d..f56aac7 100644
+index 95ac8ab..7f0c360 100644
 --- a/makefile.linux_amd64_asm
 +++ b/makefile.linux_amd64_asm
-@@ -16,7 +16,7 @@ ASM=yasm -f elf -m amd64
+@@ -19,7 +19,7 @@ ASM=yasm -f elf -m amd64 -Dx64
  
  PRE_COMPILED_HEADER=StdAfx.h.gch
  
@@ -173,10 +189,10 @@ index 87e0f8d..f56aac7 100644
  
  CPU=x64
 diff --git a/makefile.linux_any_cpu_gcc_4.X b/makefile.linux_any_cpu_gcc_4.X
-index 03e69e9..866280c 100644
+index 148cda1..56039bf 100644
 --- a/makefile.linux_any_cpu_gcc_4.X
 +++ b/makefile.linux_any_cpu_gcc_4.X
-@@ -17,7 +17,7 @@ LINK_SHARED=-fPIC -shared
+@@ -19,7 +19,7 @@ LINK_SHARED=-fPIC -shared
  
  PRE_COMPILED_HEADER=StdAfx.h.gch
  
@@ -186,10 +202,10 @@ index 03e69e9..866280c 100644
  
  OBJ_CRC32=$(OBJ_CRC32_C)
 diff --git a/makefile.linux_x86_asm_gcc_4.X b/makefile.linux_x86_asm_gcc_4.X
-index c835d74..c1eee91 100644
+index e783739..591025d 100644
 --- a/makefile.linux_x86_asm_gcc_4.X
 +++ b/makefile.linux_x86_asm_gcc_4.X
-@@ -18,7 +18,7 @@ ASM=nasm -f elf
+@@ -22,7 +22,7 @@ ASM=nasm -f elf
  
  PRE_COMPILED_HEADER=StdAfx.h.gch
  

@@ -8,39 +8,41 @@
 pkgbase=p7zip-natspec
 pkgname=p7zip-natspec
 _pkgname=p7zip
-pkgver=9.20.1
-pkgrel=2
+pkgver=9.38.1
+pkgrel=1
 pkgdesc='Command-line version of the 7zip compressed file archiver, using libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
 arch=('i686' 'x86_64')
 depends=('gcc-libs' 'bash' 'libnatspec')
-optdepends=('wxgtk2.8: GUI'
+optdepends=('wxgtk: GUI'
             'desktop-file-utils: desktop entries')
-makedepends=('yasm' 'nasm' 'wxgtk2.8')
+makedepends=('yasm' 'nasm' 'wxgtk')
 conflicts=('p7zip')
 provides=('p7zip')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${pkgver}_src_all.tar.bz2"
+        'osversion.patch'
         '7zFM.desktop'
         'natspec.patch')
-sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7'
+sha1sums=('6b1eccf272d8b141a94758f80727ae633568ba69'
+          '8c086db1c7be0d52d2ac971f44adbdccf6dd82de'
           'f2c370d6f1b286b7ce9a2804e22541b755616a40'
-          'e780553323a72a1222aa696c5c6edc1b23a5657b')
+          'd4a39ae62cfa031782fd3c8c25f5e9c45ae64eec')
 
 options=('!makeflags')
 install=install
 
 prepare() {
 	cd "${srcdir}/${_pkgname}_${pkgver}"
-	rm GUI/kde4/p7zip_compress.desktop
-    patch -p1 < ../natspec.patch
+	patch -p1 < ../natspec.patch
+	[[ $CARCH = x86_64 ]] &&
+	cp makefile.linux_amd64_asm makefile.machine ||
+	cp makefile.linux_x86_asm_gcc_4.X makefile.machine
 
-	[[ $CARCH = x86_64 ]] \
-	    && cp makefile.linux_amd64_asm makefile.machine \
-	    || cp makefile.linux_x86_asm_gcc_4.X makefile.machine
+	patch -p1 -i ../osversion.patch
+	sed -i 's/x86_64-linux-gnu//g' CPP/7zip/*/*/*.depend
 
-	sed -i 's/wx-config/wx-config-2.8/g' CPP/7zip/TEST/TestUI/makefile \
-		CPP/7zip/UI/{FileManager,GUI,P7ZIP}/makefile
+	rm GUI/kde4/p7zip_compress.desktop # FS#43766
 }
 
 build() {
@@ -55,11 +57,12 @@ package() {
 		DEST_HOME="/usr" \
 		DEST_MAN="/usr/share/man"
 
-	# Licenses
+	# Doc and licenses
+	cp -a DOC/* "${pkgdir}"/usr/share/doc/p7zip
 	install -d "${pkgdir}"/usr/share/licenses/p7zip
 	ln -s -t "${pkgdir}"/usr/share/licenses/p7zip \
-		/usr/share/doc/p7zip/DOCS/License.txt \
-		/usr/share/doc/p7zip/DOCS/unRarLicense.txt
+		/usr/share/doc/p7zip/License.txt \
+		/usr/share/doc/p7zip/unRarLicense.txt
 
 	# Integration with stuff...
 	install -Dm644 GUI/p7zip_32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/p7zip.png
@@ -71,5 +74,5 @@ package() {
 	find GUI/help -type d -exec chmod 755 {} \;
 	cp -r GUI/help "${pkgdir}"/usr/lib/p7zip/
 
-	chmod -R u+w "${pkgdir}/usr"
+	chmod -R a+r,u+w,a+X "${pkgdir}/usr"
 }
