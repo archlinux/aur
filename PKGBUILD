@@ -1,8 +1,8 @@
 # Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=1475.2.100.2_16_gbbb7cf6
-pkgrel=3
+pkgver=1498.2.100.2_39_gd5652b9
+pkgrel=1
 pkgdesc="C++QED is a highly flexible framework for simulating open quantum dynamics."
 arch=('i686' 'x86_64')
 url="http://cppqed.sourceforge.net"
