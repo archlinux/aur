@@ -3,7 +3,7 @@
 
 pkgname=cheese
 pkgver=3.15.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
 license=('GPL')
@@ -22,6 +22,7 @@ sha256sums=('b7239315f898c988a65c2d3b3320cd963be56a1a3e34afa035a45de4ee797b91'
 prepare() {
   cd $pkgname-$pkgver
   patch -Np1 -i ../port-to-clutter-gst-3.patch
+  sed -i -e 's/clutter-gst-2.0/clutter-gst-3.0/g' data/cheese.pc.in
   autoreconf -fi
 }
 
