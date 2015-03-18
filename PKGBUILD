@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=28.0.1750.40
+pkgver=28.0.1750.48
 pkgrel=1
 pkgdesc="A fast and secure web browser and Internet suite."
 url="http://www.opera.com/"
@@ -38,10 +38,6 @@ prepare() {
 package() {
 	tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
 
-	# soname fix for libsystemd (udev)
-	sed -e 's/libudev.so.0/libudev.so.1/g' \
-		-i "$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/$pkgname"
-
 	# suid opera_sandbox
 	chmod 4755 "$pkgdir/usr/lib/x86_64-linux-gnu/$pkgname/opera_sandbox"
 
@@ -62,6 +58,6 @@ package() {
 		"$pkgdir/usr/share/licenses/$pkgname/copyright"
 }
 
-sha256sums=('dcbafa86f3873c22322918a1a34f5592dec8ae271ca3a4a5d5624209f1d05b42'
+sha256sums=('73c39cdbd1d1dd0a7307b1ecb938a1c4d620453d509c3f4dbcd4066c96bea2a0'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
