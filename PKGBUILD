@@ -8,7 +8,7 @@ url="http://www.purescript.org/"
 license=('MIT')
 depends=('glibc' 'gmp' 'gcc-libs' 'libtinfo')
 provides=('purescript')
-source=("https://github.com/purescript/purescript/releases/download/v$pkgver/linux64.tar.gz")
+source=("https://github.com/joneshf/purescript/releases/download/v$pkgver/linux64.tar.gz")
 sha512sums=('5b1c04cb1767b2b09eab207b2f43ed409f90b5d9cb69315e0ab68e97b20d6596683503d92219f148b4bd5534c5135871fae827adacbcc2d3c50563f28e13f7ff')
 
 package() {
