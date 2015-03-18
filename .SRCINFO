@@ -1,0 +1,16 @@
+pkgbase = git-wip-git
+	pkgdesc = Help track git Work In Progress branches
+	pkgver = r55.9655ff9
+	pkgrel = 1
+	url = https://github.com/bartman/git-wip
+	arch = any
+	license = GPL
+	depends = git
+	depends = bash
+	provides = git-wip
+	conflicts = git-wip
+	source = git+https://github.com/bartman/git-wip
+	md5sums = SKIP
+
+pkgname = git-wip-git
+
