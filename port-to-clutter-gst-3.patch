@@ -1,0 +1,297 @@
+From f88706c105dabb9ccc4791cf1df50d8886a7eabd Mon Sep 17 00:00:00 2001
+From: Lionel Landwerlin <llandwerlin@gmail.com>
+Date: Sun, 25 Jan 2015 17:11:45 +0000
+Subject: [PATCH] libcheese: port to clutter-gst 3.0
+
+https://bugzilla.gnome.org/show_bug.cgi?id=743496
+---
+ configure.ac                |  2 +-
+ data/cheese-viewport.json   |  2 +-
+ libcheese/cheese-camera.c   | 56 +++++++++++++++++++++++++++++----------------
+ libcheese/cheese-camera.h   | 14 ++++++------
+ libcheese/cheese-widget.c   |  4 ++--
+ src/cheese-window.vala      |  7 +++---
+ src/vapi/cheese-common.vapi |  4 ++--
+ tests/cheese-test-camera.c  |  4 ++--
+ 8 files changed, 54 insertions(+), 39 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2fa9baf..919ff89 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -67,7 +67,7 @@ GSTREAMER_REQUIRED="gstreamer-pbutils-1.0 gstreamer-plugins-bad-1.0"
+ LIBGNOMEDESKTOP_REQUIRED="gnome-desktop-3.0"
+ CLUTTER_REQUIRED="clutter-1.0 >= 1.13.2"
+ CLUTTERGTK_REQUIRED="clutter-gtk-1.0"
+-CLUTTERGST_REQUIRED="clutter-gst-2.0 >= 1.9.0"
++CLUTTERGST_REQUIRED="clutter-gst-3.0 >= 3.0.0"
+ LIBCANBERRA_REQUIRED="libcanberra-gtk3 >= 0.26"
+ X11_REQUIRED="x11"
+ GNOME_VIDEO_EFFECTS_REQUIRED="gnome-video-effects"
+diff --git a/data/cheese-viewport.json b/data/cheese-viewport.json
+index 03745cd..cba5d8b 100644
+--- a/data/cheese-viewport.json
++++ b/data/cheese-viewport.json
+@@ -1,7 +1,7 @@
+ [
+ {
+   "id": "video_preview",
+-  "type": "ClutterTexture",
++  "type": "ClutterActor",
+   "child::x-align": "CLUTTER_BIN_ALIGNMENT_CENTER",
+   "child::y-align": "CLUTTER_BIN_ALIGNMENT_CENTER"
+ },
+diff --git a/libcheese/cheese-camera.c b/libcheese/cheese-camera.c
+index 1e72965..462c97c 100644
+--- a/libcheese/cheese-camera.c
++++ b/libcheese/cheese-camera.c
+@@ -68,7 +68,7 @@ struct _CheeseCameraPrivate
+   GstElement *audio_enc;
+   GstElement *video_enc;
+ 
+-  ClutterTexture *video_texture;
++  ClutterActor *video_texture;
+ 
+   GstElement *effect_filter, *effects_capsfilter;
+   GstElement *video_balance;
+@@ -151,7 +151,7 @@ cheese_camera_photo_data (CheeseCamera *camera, GstSample *sample)
+   GdkPixbuf          *pixbuf;
+   const gint          bits_per_pixel = 8;
+   guchar             *data = NULL;
+-  
++
+     CheeseCameraPrivate *priv = cheese_camera_get_instance_private (camera);
+   GstMapInfo         mapinfo = {0, };
+ 
+@@ -997,6 +997,12 @@ cheese_camera_toggle_effects_pipeline (CheeseCamera *camera, gboolean active)
+   priv->effect_pipeline_is_playing = active;
+ }
+ 
++static void
++cheese_camera_connected_size_change_cb (ClutterGstContent *content, gint width, gint height, ClutterActor *actor)
++{
++  clutter_actor_set_size (actor, width, height);
++}
++
+ /**
+  * cheese_camera_connect_effect_texture:
+  * @camera: a #CheeseCamera
+@@ -1006,7 +1012,7 @@ cheese_camera_toggle_effects_pipeline (CheeseCamera *camera, gboolean active)
+  * Connect the supplied @texture to the @camera, using @effect.
+  */
+ void
+-cheese_camera_connect_effect_texture (CheeseCamera *camera, CheeseEffect *effect, ClutterTexture *texture)
++cheese_camera_connect_effect_texture (CheeseCamera *camera, CheeseEffect *effect, ClutterActor *texture)
+ {
+   CheeseCameraPrivate *priv;
+   GstElement *effect_filter;
+@@ -1028,14 +1034,15 @@ cheese_camera_connect_effect_texture (CheeseCamera *camera, CheeseEffect *effect
+ 
+   effect_filter = cheese_camera_element_from_effect (camera, effect);
+ 
+-  display_element = gst_element_factory_make ("autocluttersink", NULL);
+-  if (display_element == NULL)
+-  {
+-    g_critical ("Unable to create a Clutter sink");
+-    return;
+-  }
+-  g_object_set (G_OBJECT (display_element), "async-handling", FALSE, "texture",
+-                texture, NULL);
++  display_element = GST_ELEMENT (clutter_gst_video_sink_new ());
++  g_object_set (G_OBJECT (texture),
++                "content", g_object_new (CLUTTER_GST_TYPE_CONTENT,
++                                         "sink", display_element,
++                                         NULL),
++                NULL);
++
++  g_signal_connect (G_OBJECT (clutter_actor_get_content (texture)),
++                    "size-change", G_CALLBACK (cheese_camera_connected_size_change_cb), texture);
+ 
+   gst_bin_add_many (GST_BIN (priv->video_filter_bin), control_valve, effect_filter, display_queue, display_element, NULL);
+ 
+@@ -1490,7 +1497,7 @@ cheese_camera_init (CheeseCamera *camera)
+  * Returns: a new #CheeseCamera
+  */
+ CheeseCamera *
+-cheese_camera_new (ClutterTexture *video_texture, const gchar *camera_device_node,
++cheese_camera_new (ClutterActor *video_texture, const gchar *camera_device_node,
+                    gint x_resolution, gint y_resolution)
+ {
+   CheeseCamera      *camera;
+@@ -1553,6 +1560,14 @@ cheese_camera_set_device_by_dev_uuid (CheeseCamera *camera, const gchar *uuid)
+   }
+ }
+ 
++static void
++cheese_camera_size_change_cb (ClutterGstContent *content, gint width, gint height, CheeseCamera* camera)
++{
++  CheeseCameraPrivate *priv = cheese_camera_get_instance_private (camera);
++
++  clutter_actor_set_size (priv->video_texture, width, height);
++}
++
+ /**
+  * cheese_camera_setup:
+  * @camera: a #CheeseCamera
+@@ -1599,14 +1614,15 @@ cheese_camera_setup (CheeseCamera *camera, const gchar *uuid, GError **error)
+ 
+   /* Create a clutter-gst sink and set it as camerabin sink*/
+ 
+-  if ((video_sink = gst_element_factory_make ("autocluttersink",
+-                                              "cluttersink")) == NULL)
+-  {
+-    cheese_camera_set_error_element_not_found (error, "cluttervideosink");
+-    return;
+-  }
+-  g_object_set (G_OBJECT (video_sink), "texture", priv->video_texture,
+-                "async-handling", FALSE, NULL);
++  video_sink = GST_ELEMENT (clutter_gst_video_sink_new ());
++  g_object_set (G_OBJECT (priv->video_texture),
++                "content", g_object_new (CLUTTER_GST_TYPE_CONTENT,
++                                         "sink", video_sink,
++                                         NULL),
++                NULL);
++  g_signal_connect (G_OBJECT (clutter_actor_get_content (priv->video_texture)),
++                    "size-change", G_CALLBACK(cheese_camera_size_change_cb), camera);
++
+   g_object_set (G_OBJECT (priv->camerabin), "viewfinder-sink", video_sink, NULL);
+ 
+   /* Set flags to enable conversions*/
+diff --git a/libcheese/cheese-camera.h b/libcheese/cheese-camera.h
+index bbad2bd..3a0af24 100644
+--- a/libcheese/cheese-camera.h
++++ b/libcheese/cheese-camera.h
+@@ -95,19 +95,19 @@ typedef enum
+ } CheeseCameraError;
+ 
+ GType         cheese_camera_get_type (void);
+-CheeseCamera *cheese_camera_new (ClutterTexture *video_texture,
+-                                 const gchar    *camera_device_node,
+-                                 gint            x_resolution,
+-                                 gint            y_resolution);
++CheeseCamera *cheese_camera_new (ClutterActor *video_texture,
++                                 const gchar  *camera_device_node,
++                                 gint          x_resolution,
++                                 gint          y_resolution);
+ 
+ const CheeseVideoFormat *cheese_camera_get_current_video_format (CheeseCamera *camera);
+ void                     cheese_camera_setup (CheeseCamera *camera, const gchar *uuid, GError **error);
+ void                     cheese_camera_play (CheeseCamera *camera);
+ void                     cheese_camera_stop (CheeseCamera *camera);
+ void                     cheese_camera_set_effect (CheeseCamera *camera, CheeseEffect *effect);
+-void                     cheese_camera_connect_effect_texture (CheeseCamera   *camera,
+-                                                               CheeseEffect   *effect,
+-                                                               ClutterTexture *texture);
++void                     cheese_camera_connect_effect_texture (CheeseCamera *camera,
++                                                               CheeseEffect *effect,
++                                                               ClutterActor *texture);
+ void                cheese_camera_start_video_recording (CheeseCamera *camera, const gchar *filename);
+ void                cheese_camera_stop_video_recording (CheeseCamera *camera);
+ gboolean            cheese_camera_take_photo (CheeseCamera *camera, const gchar *filename);
+diff --git a/libcheese/cheese-widget.c b/libcheese/cheese-widget.c
+index 23619d6..167b260 100644
+--- a/libcheese/cheese-widget.c
++++ b/libcheese/cheese-widget.c
+@@ -217,7 +217,7 @@ cheese_widget_init (CheeseWidget *widget)
+   clutter_actor_set_background_color (stage, &black);
+   frame = totem_aspect_frame_new ();
+ 
+-  priv->texture = clutter_texture_new ();
++  priv->texture = clutter_actor_new ();
+   totem_aspect_frame_set_child (TOTEM_ASPECT_FRAME (frame), priv->texture);
+ 
+   clutter_actor_set_layout_manager (stage, clutter_bin_layout_new (CLUTTER_BIN_ALIGNMENT_FILL, CLUTTER_BIN_ALIGNMENT_FILL));
+@@ -306,7 +306,7 @@ setup_camera (CheeseWidget *widget)
+     y_resolution = g_settings_get_int (priv->settings, "photo-y-resolution");
+     webcam_device = g_settings_get_string (priv->settings, "camera");
+ 
+-    priv->webcam = cheese_camera_new (CLUTTER_TEXTURE (priv->texture),
++    priv->webcam = cheese_camera_new (priv->texture,
+                                       webcam_device, x_resolution,
+                                       y_resolution);
+ 
+diff --git a/src/cheese-window.vala b/src/cheese-window.vala
+index 4c9dff3..24a876f 100644
+--- a/src/cheese-window.vala
++++ b/src/cheese-window.vala
+@@ -77,7 +77,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+ 
+     private Clutter.Stage viewport;
+     private Clutter.Actor viewport_layout;
+-    private Clutter.Texture video_preview;
++    private Clutter.Actor video_preview;
+     private Clutter.BinLayout viewport_layout_manager;
+     private Clutter.Text countdown_layer;
+     private Clutter.Actor background_layer;
+@@ -1236,7 +1236,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+ 
+         viewport = viewport_widget.get_stage () as Clutter.Stage;
+ 
+-        video_preview = clutter_builder.get_object ("video_preview") as Clutter.Texture;
++        video_preview = clutter_builder.get_object ("video_preview") as Clutter.Actor;
+         viewport_layout = clutter_builder.get_object ("viewport_layout") as Clutter.Actor;
+         viewport_layout_manager = clutter_builder.get_object ("viewport_layout_manager") as Clutter.BinLayout;
+         countdown_layer = clutter_builder.get_object ("countdown_layer") as Clutter.Text;
+@@ -1244,7 +1244,6 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+         error_layer = clutter_builder.get_object ("error_layer") as Clutter.Text;
+         timeout_layer = clutter_builder.get_object ("timeout_layer") as Clutter.Text;
+ 
+-    video_preview.keep_aspect_ratio = true;
+     video_preview.request_mode      = Clutter.RequestMode.HEIGHT_FOR_WIDTH;
+     viewport.add_child (background_layer);
+     viewport_layout.set_layout_manager (viewport_layout_manager);
+@@ -1287,7 +1286,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
+     this.key_release_event.connect (on_key_release);
+   }
+ 
+-    public Clutter.Texture get_video_preview ()
++    public Clutter.Actor get_video_preview ()
+     {
+         return video_preview;
+     }
+diff --git a/src/vapi/cheese-common.vapi b/src/vapi/cheese-common.vapi
+index a926725..4b5b117 100644
+--- a/src/vapi/cheese-common.vapi
++++ b/src/vapi/cheese-common.vapi
+@@ -33,7 +33,7 @@ namespace Cheese
+   public class Camera : GLib.Object
+   {
+     [CCode (has_construct_function = false)]
+-    public Camera (Clutter.Texture video_texture, string camera_device_node, int x_resolution, int y_resolution);
++    public Camera (Clutter.Actor video_texture, string camera_device_node, int x_resolution, int y_resolution);
+     public bool                        get_balance_property_range (string property, double min, double max, double def);
+     public unowned GLib.PtrArray       get_camera_devices ();
+     public unowned Cheese.VideoFormat  get_current_video_format ();
+@@ -47,7 +47,7 @@ namespace Cheese
+     public void                        set_device_by_uuid (string uuid);
+     public void                        set_effect (Cheese.Effect effect);
+     public void                        toggle_effects_pipeline (bool active);
+-    public void                        connect_effect_texture (Cheese.Effect effect, Clutter.Texture texture);
++    public void                        connect_effect_texture (Cheese.Effect effect, Clutter.Actor texture);
+     public void                        set_video_format (Cheese.VideoFormat format);
+     public void                        setup (string udi) throws GLib.Error;
+     public void                        start_video_recording (string filename);
+diff --git a/tests/cheese-test-camera.c b/tests/cheese-test-camera.c
+index e777cba..fd058f0 100644
+--- a/tests/cheese-test-camera.c
++++ b/tests/cheese-test-camera.c
+@@ -54,7 +54,7 @@ main (int argc, char **argv)
+ 
+   screen = gtk_clutter_embed_new ();
+   stage = gtk_clutter_embed_get_stage (GTK_CLUTTER_EMBED (screen));
+-  texture = clutter_texture_new ();
++  texture = clutter_actor_new ();
+ 
+   clutter_actor_set_size (texture, 400, 300);
+   clutter_actor_add_child (stage, texture);
+@@ -62,7 +62,7 @@ main (int argc, char **argv)
+   gtk_widget_show (screen);
+   clutter_actor_show (texture);
+ 
+-  camera = cheese_camera_new (CLUTTER_TEXTURE (texture), NULL, 640, 480);
++  camera = cheese_camera_new (texture, NULL, 640, 480);
+ 
+   cheese_camera_setup (camera, NULL, NULL);
+ 
+-- 
+2.1.4
