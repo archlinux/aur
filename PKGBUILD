@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 gitname=s3fs-c
 pkgname=${gitname}-git
 pkgver=57.9c6d31b
