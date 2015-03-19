@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 gitname=pycollada
 pkgname=${gitname}-git
 pkgver=277.afd44fd
