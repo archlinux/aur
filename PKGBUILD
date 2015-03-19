@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 _hkgname=fclabels
 pkgname=haskell-${_hkgname}
 pkgver=2.0.2.2
