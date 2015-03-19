@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 _hkgname=tagged
 pkgname=haskell-${_hkgname}
 pkgver=0.7.3
