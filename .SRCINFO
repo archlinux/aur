@@ -14,7 +14,6 @@ pkgbase = enlightenment-git
 	depends = desktop-file-utils
 	depends = udisks2
 	depends = ttf-font
-	depends = pixman
 	depends = mesa
 	depends = bluez-libs
 	optdepends = acpid: power events on laptop lid close
