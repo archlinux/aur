@@ -28,7 +28,6 @@ pkgbase = enlightenment-git
 	conflicts = enlightenment
 	options = debug
 	backup = etc/enlightenment/sysactions.conf
-	backup = etc/xdg/menus/enlightenment.menu
 	backup = etc/xdg/menus/e-applications.menu
 	source = git://git.enlightenment.org/core/enlightenment.git
 	sha256sums = SKIP
