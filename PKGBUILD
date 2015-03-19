@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 gitname=htop
 pkgname=${gitname}-git
 pkgver=383.f0e2a0e
