@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 pkgname=https-everywhere-chrome
 pkgver=2014.1.3
 pkgrel=1
