@@ -1,5 +1,6 @@
 # Maintainer: Yardena Cohen <yardenack at gmail com>
 # Based on a PKGBUILD by: Rich Li <rich at dranek com>
+
 pkgname=python-pyshp
 _pkgname=pyshp
 pkgver=1.2.1
