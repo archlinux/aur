@@ -1,3 +1,4 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
 # Based on an older PKGBUILD by: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # quick update check: https://git.wikimedia.org/log/pywikibot%2Fcore/refs%2Fheads%2Fmaster
 
