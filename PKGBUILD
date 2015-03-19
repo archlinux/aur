@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 gitname=moviepy
 pkgname=python2-${gitname}-git
 pkgver=211.3fef00d
