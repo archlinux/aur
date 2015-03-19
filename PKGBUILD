@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 _hkgname=hsemail
 pkgname=haskell-hsemail
 pkgver=1.7.7
