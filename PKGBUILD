@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 pkgname=amavisd-new
 pkgver=2.10.1
 pkgrel=2
