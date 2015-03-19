@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 _pkgname=moviepy
 pkgname=python2-${_pkgname}
 pkgver=0.2.2
