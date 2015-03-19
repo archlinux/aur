@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 pkgname=soqt-hg
 pkgver=1933.e8310fe21c1b
 pkgrel=1
