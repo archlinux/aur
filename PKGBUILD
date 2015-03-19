@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 pkgname=django-storages-hg
 _pkgname=django-storages
 pkgver=1.1.8.r296
