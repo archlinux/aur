@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 pkgname=('ascii-fluid-dynamics-git')
 pkgver=12.9befe51
 pkgrel=7
