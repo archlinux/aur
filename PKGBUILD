@@ -1,4 +1,5 @@
-# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: StephenB <mail4stb at gmail dot com>
 # Contributor: M Rawash <mrawash@gmail.com>
 
