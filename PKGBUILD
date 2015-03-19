@@ -1,3 +1,4 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
 # quick check for commits https://git.php.net/?p=pecl/networking/ssh2.git;a=shortlog
 
 pkgname=php-ssh-git
