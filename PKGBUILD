@@ -1,6 +1,8 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 # check for new commits:
-# https://gitweb.torproject.org/https-everywhere.git/shortlog
-# https://github.com/EFForg/https-everywhere/commits/master
+#   https://gitweb.torproject.org/https-everywhere.git/shortlog
+#   https://github.com/EFForg/https-everywhere/commits/master
 
 pkgbase=https-everywhere
 pkgname=${pkgbase}-chrome-git
