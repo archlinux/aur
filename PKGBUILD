@@ -1,32 +1,31 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-hangul
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="Hangul (Korean) support for fcitx"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/fcitx/"
+url="https://github.com/fcitx/fcitx-hangul"
 license=('GPL2')
-depends=('fcitx>=4.2.7' 'libhangul')
+depends=('fcitx' 'libhangul')
 makedepends=('cmake' 'intltool')
 install=$pkgname.install
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
+sha512sums=('07085508da98c49bcecf75fbfad6681263a735a1efcc4fb7a6fa05cb215dfe0c338e95e26cc55e488501b5abbc1007464b1bbf488f07aaca2d1a0a18c8173074')
+
+prepare() {
+  mkdir build
+}
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+  cd build
 
-    msg "Starting make..."
-
-    mkdir -p build
-    cd build
-
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-    make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ../$pkgname-$pkgver
+  make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver/build"
+   cd build
    make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('07085508da98c49bcecf75fbfad6681263a735a1efcc4fb7a6fa05cb215dfe0c338e95e26cc55e488501b5abbc1007464b1bbf488f07aaca2d1a0a18c8173074')
