@@ -1,4 +1,5 @@
-# Maintainer: Techlive Zheng <techlivezheng [at] gmail [dot] com>
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# Contributor: Techlive Zheng <techlivezheng [at] gmail [dot] com>
 # Contributor: Filip S. Adamsen <fsa [at] fsadev [dot] com>
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
 # Contributor: Piotr Beling <qwak@w8.pl>
