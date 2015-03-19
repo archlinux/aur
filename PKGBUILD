@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 _pkgname=tqdm
 pkgname=python-${_pkgname}
 pkgver=1.0
