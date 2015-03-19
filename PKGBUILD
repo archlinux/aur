@@ -1,5 +1,5 @@
 pkgname=src-git
-pkgver=0.13.r0.g51d7a34
+pkgver=0.16.r1.g312a8b6
 pkgrel=1
 
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
