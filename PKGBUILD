@@ -3,14 +3,14 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-wayland-git
-pkgver=0.19.99.19518.e50b8e5
+pkgver=0.19.99.19711.dbcd030
 pkgrel=1
 pkgdesc="Highly expermimental Enlightenment window manager for Wayland - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('elementary-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
-         'desktop-file-utils' 'udisks2' 'ttf-font' 'pixman' 'mesa')
+         'desktop-file-utils' 'udisks2' 'ttf-font' 'mesa')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'

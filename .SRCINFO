@@ -1,6 +1,6 @@
 pkgbase = enlightenment-wayland-git
 	pkgdesc = Highly expermimental Enlightenment window manager for Wayland - Development version
-	pkgver = 0.19.99.19518.e50b8e5
+	pkgver = 0.19.99.19711.dbcd030
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = enlightenment.install
@@ -14,7 +14,6 @@ pkgbase = enlightenment-wayland-git
 	depends = desktop-file-utils
 	depends = udisks2
 	depends = ttf-font
-	depends = pixman
 	depends = mesa
 	depends = bluez-libs
 	optdepends = acpid: power events on laptop lid close
