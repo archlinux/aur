@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 pkgname=linode-api-python-git
 gitname=linode-python
 pkgver=174.a565abb
