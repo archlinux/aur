@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 _hkgname=mbox-tools
 pkgname=$_hkgname
 pkgver=0.2.0.4
