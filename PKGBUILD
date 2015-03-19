@@ -1,3 +1,5 @@
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+
 pkgname=haskell-largeword
 _hkgname=largeword
 pkgver=1.2.3
