@@ -20,7 +20,7 @@ pkgbase = python2-moviepy-git
 	provides = python2-moviepy
 	conflicts = python2-moviepy
 	source = git+https://github.com/Zulko/moviepy.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = python2-moviepy-git
 

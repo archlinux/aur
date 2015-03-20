@@ -15,7 +15,7 @@ depends=('ffmpeg' 'imagemagick' 'opencv'
 provides=('python2-moviepy')
 conflicts=('python2-moviepy')
 source=("git+https://github.com/Zulko/${gitname}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	 cd "${srcdir}/${gitname}"
