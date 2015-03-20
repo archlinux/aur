@@ -14,7 +14,7 @@ pkgbase = php-ssh-git
 	provides = php-ssh
 	conflicts = php-ssh
 	source = ssh2::git+https://github.com/yardenac/php-ssh2.git#commit=ddaa6a0
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = php-ssh-git
 

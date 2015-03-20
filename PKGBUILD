@@ -14,7 +14,7 @@ provides=('php-ssh')
 conflicts=('php-ssh')
 install=install
 source=("ssh2::git+https://github.com/yardenac/php-ssh2.git#commit=ddaa6a0")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	 cd "${srcdir}/ssh2"
