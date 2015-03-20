@@ -12,7 +12,7 @@ pkgbase = https-everywhere
 	makedepends = vim
 	makedepends = zip
 	source = git+https://github.com/EFForg/https-everywhere.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = https-everywhere-chrome-git
 

@@ -14,7 +14,7 @@ url='https://www.eff.org/https-everywhere'
 license=('GPL')
 makedepends=(git perl python2-lxml libxml2 vim zip)
 source=("git+https://github.com/EFForg/${pkgbase}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgbase}"
