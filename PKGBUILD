@@ -11,7 +11,7 @@ license=('BSD3')
 depends=('python2-django' 'python2-boto')
 makedepends=('mercurial' 'python' 'python2')
 source=('hg+https://bitbucket.org/david/django-storages')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	 cd ${srcdir}/${_pkgname}

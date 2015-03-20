@@ -11,7 +11,7 @@ pkgbase = django-storages-hg
 	depends = python2-django
 	depends = python2-boto
 	source = hg+https://bitbucket.org/david/django-storages
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = django-storages-hg
 
