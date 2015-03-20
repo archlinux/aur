@@ -14,7 +14,7 @@ optdepends=('gnupg: encrypted file storage')
 provides=('s3cmd')
 conflicts=('s3cmd')
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	 cd "${srcdir}/${gitname}"

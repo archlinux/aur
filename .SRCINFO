@@ -12,7 +12,7 @@ pkgbase = s3cmd-git
 	provides = s3cmd
 	conflicts = s3cmd
 	source = git+https://github.com/s3tools/s3cmd.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = s3cmd-git
 
