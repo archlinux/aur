@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('s3fs')
 provides=('s3fs')
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	 cd "${srcdir}/${gitname}"

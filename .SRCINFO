@@ -14,7 +14,7 @@ pkgbase = s3fs-c-git
 	provides = s3fs
 	conflicts = s3fs
 	source = git+https://github.com/tongwang/s3fs-c.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = s3fs-c-git
 
