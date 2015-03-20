@@ -16,7 +16,7 @@ source=("${pkgname}::hg+https://bitbucket.org/Coin3D/soqt"
 	 "hg+https://bitbucket.org/Coin3D/generalmsvcgeneration"
 	 "hg+https://bitbucket.org/Coin3D/soanydata"
 	 "hg+https://bitbucket.org/Coin3D/sogui")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
