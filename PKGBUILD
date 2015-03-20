@@ -11,7 +11,7 @@ license=("BSD3")
 depends=('python2-lxml' 'python2-numpy' 'python2-dateutil' 'python2-distribute')
 makedepends=('git')
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	 cd "${srcdir}/${gitname}"

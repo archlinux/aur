@@ -11,7 +11,7 @@ pkgbase = pycollada-git
 	depends = python2-dateutil
 	depends = python2-distribute
 	source = git+https://github.com/pycollada/pycollada.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = pycollada-git
 
