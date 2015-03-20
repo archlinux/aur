@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 options=()
 source=(https://www.eff.org/files/$pkgname-$pkgver.crx)
-md5sums=('5c26b0ec9bcef054c47d1a035e90b20c')
+sha512sums=('db27cf1de4f82cf58843ce7e37c768100e6ce1bf18dbb632897e600862425cc5c50e63c8ed4c43357c1470636a0550f673641eef2e6614b37e3947ca08b978a9')
 
 package() {
 	 mkdir -p $pkgdir/usr/share/$pkgname
