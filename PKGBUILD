@@ -18,7 +18,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.8.4')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Convert-UUlib-${pkgver}.tar.gz")
-md5sums=('a6486df1d9ce319406fb9d5a610da759')
+sha512sums=('97dae96b173cfdaf35126f70a883b3462977c3bfb281334f2e54c66ba518ce936ae3046d911ed0a39974df47d0b46bc286afb01faa0d934895402049b3f79cfd')
 
 build() {
   cd "${srcdir}"/"${_dist}"-"${pkgver}"
