@@ -13,7 +13,7 @@ makedepends=('python2-setuptools' 'git')
 depends=('python2-httplib2')
 install=install
 source=("${pkgname}::git+https://gerrit.wikimedia.org/r/p/pywikibot/core.git" 'user-config.py')
-md5sums=('SKIP' '0f7c5edb33017b4bbea2f80f13fe4843')
+md5sums=('SKIP' 'f31497751cf290f94c32ada53ffbbf075baf8e205e4313cae1ffc7ba1337eb7e68388cc3fab8c6916b2c4d6252966d9894eb6e13389973a710b663c5c4e48eca')
 
 pkgver() {
 	 cd "${srcdir}/${pkgname}"
