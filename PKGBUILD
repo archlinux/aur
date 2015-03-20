@@ -2,7 +2,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-3.19
-pkgver=3.19.1
+pkgver=3.19.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         )
 sha256sums=('be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c'
             'SKIP'
-            '3dbf80df9a81a285baa5188ea8d768110f24a3e4fe8bd37e1c9d7410d60a680b'
+            'c2e2e745e7bad33f367432280f7a8451e2488b1f851f24e2830f15279fb87b0f'
             'SKIP'
             '704a479de77c9022e5c7a797d2cd7fd0e4ba1f52f9039ec8a80efd57f7e9f0d8'
             '59830f47c1be39f874640d762dca55f972aca549a7a65ba2f1dac184251dabb2'
