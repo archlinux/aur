@@ -1,4 +1,4 @@
-# Maintainer: Thomas Hebb <tommmyhebb@gmail.com>
+# Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=debian-whois-mkpasswd
 pkgver=5.2.5
 _debian_backport=''
