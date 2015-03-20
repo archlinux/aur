@@ -15,7 +15,7 @@ makedepends=('git')
 provides=('urxvt-tabbedex')
 conflicts=('urxvt-tabbedex')
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd urxvt-tabbedex

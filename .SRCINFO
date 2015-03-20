@@ -12,7 +12,7 @@ pkgbase = urxvt-tabbedex-git
 	provides = urxvt-tabbedex
 	conflicts = urxvt-tabbedex
 	source = git+https://github.com/mina86/urxvt-tabbedex.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = urxvt-tabbedex-git
 
