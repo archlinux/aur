@@ -9,7 +9,7 @@ pkgbase = linode-api-python-git
 	depends = python2
 	optdepends = python-pycurl: For verification of SSL keys
 	source = git+https://github.com/tjfontaine/linode-python.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = linode-api-python-git
 

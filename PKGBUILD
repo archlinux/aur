@@ -12,7 +12,7 @@ makedepends=('git')
 depends=('python2')
 optdepends=('python-pycurl: For verification of SSL keys')
 source=("git+https://github.com/tjfontaine/${gitname}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	 cd "${srcdir}/${gitname}"
