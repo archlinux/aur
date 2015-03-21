@@ -1,0 +1,16 @@
+pkgbase = freesynd
+	pkgdesc = A free, cross-platform reimplementation of the classic Bullfrog game 'Syndicate'
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://freesynd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = sdl_mixer
+	depends = sdl_image
+	source = http://sourceforge.net/projects/freesynd/files/freesynd/freesynd-0.7.1/freesynd-0.7.1.tar.gz
+	sha256sums = e55b0b3386cdace81fdcd8e33943535abf19ba0797b78c404689bcdd2c55f7de
+
+pkgname = freesynd
+
