@@ -1,0 +1,19 @@
+pkgbase = freesynd-svn
+	pkgdesc = A free, cross-platform reimplementation of the classic Bullfrog game 'Syndicate' (development version)
+	pkgver = 0.7.1.r972
+	pkgrel = 1
+	url = http://freesynd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = subversion
+	depends = sdl_mixer
+	depends = sdl_image
+	provides = freesynd=0.7.1
+	conflicts = freesynd
+	source = freesynd-svn::svn+http://svn.code.sf.net/p/freesynd/code/freesynd/trunk
+	md5sums = SKIP
+
+pkgname = freesynd-svn
+
