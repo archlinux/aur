@@ -4,8 +4,8 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-3.18
-pkgver=3.18.6
+_srcname=linux-3.19
+pkgver=3.19.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,12 +23,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux-selinux.preset'
         'change-default-console-loglevel.patch'
         )
-sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
+sha256sums=('be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c'
             'SKIP'
-            '84046931be1a0024eb7d2817480efe62e6b5e651257f4ed4114ddcbce92a23bb'
+            'c2e2e745e7bad33f367432280f7a8451e2488b1f851f24e2830f15279fb87b0f'
             'SKIP'
-            '1c041a377ad790f109da22595ea1a9cf35d86e8a508f71ab16f7ba053349e678'
-            '6d40ef42dc4b89fd1eb3656235bfb24d4f8fe16dd5fb6387c2b6240f4256f403'
+            '2b9ccd0a4617d0f7d1d25369e360d46aa0ee3ee679c2582f8df1dbf63ccb2863'
+            'a32270d86a84685345f75167fb6fc77a0ce0ca49cecb3d32d18e4947fff2a7b1'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -142,8 +142,6 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
