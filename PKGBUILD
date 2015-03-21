@@ -1,26 +1,30 @@
-# Maintainer: Jonathan Steel <jsteel@aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Peter Simons <simons@cryp.to>
 
 pkgname=shhmsg
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Library for displaying messages"
 arch=('i686' 'x86_64')
 url="http://shh.thathost.com/pub-unix"
-license=('GPL')
+license=('PerlArtistic')
 options=('staticlibs')
 source=($url/files/$pkgname-$pkgver.tar.gz)
-md5sums=('de300150851786eb19cb9b9ad234d7a2')
+md5sums=('30cab93040d2892539847437b7246b8b')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   make OPTIM="$CFLAGS" dep
   make OPTIM="$CFLAGS"
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   make OPTIM="$CFLAGS" INSTBASEDIR="$pkgdir"/usr/ install
+
+  for i in ChangeLog CREDITS INSTALL README; do
+    install -Dm644 $i "$pkgdir"/usr/share/doc/$pkgname/$i
+  done
 }
