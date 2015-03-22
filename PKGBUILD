@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains messages for defining shapes, such as simpl
 url='http://ros.org/wiki/shape_msgs'
 
 pkgname='ros-indigo-shape-msgs'
-pkgver='1.11.6'
+pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
