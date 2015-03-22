@@ -1,6 +1,6 @@
 pkgbase = datovka-git
 	pkgdesc = GUI application allowing access to a 'Databox' - an electronic communication interface endorsed by the Czech government
-	pkgver = 4.0.2
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://gitlab.labs.nic.cz/labs/qdatovka
 	install = datovka-git.install
@@ -14,7 +14,6 @@ pkgbase = datovka-git
 	depends = openssl
 	depends = hicolor-icon-theme
 	provides = datovka
-	conflicts = qdatovka
 	conflicts = datovka
 	source = git+https://gitlab.labs.nic.cz/labs/qdatovka.git
 	md5sums = SKIP
