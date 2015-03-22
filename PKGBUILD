@@ -4,10 +4,10 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-plugins'
-pkgver='2.4.7'
-_pkgver_patch=1
+pkgver='2.4.8'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -36,8 +36,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-driver-base)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  gazebo
-  ogre)
+  gazebo)
 
 ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-rospy
@@ -63,8 +62,7 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-dynamic-reconfigure
   ros-indigo-driver-base)
 depends=(${ros_depends[@]}
-  gazebo
-  ogre)
+  gazebo)
 
 _tag=release/indigo/gazebo_plugins/${pkgver}-${_pkgver_patch}
 _dir=gazebo_plugins
