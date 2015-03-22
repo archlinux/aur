@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_msgs."
 url='http://www.ros.org/wiki/tf2_msgs'
 
 pkgname='ros-indigo-tf2-msgs'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
