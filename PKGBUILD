@@ -44,9 +44,9 @@ package() {
   install -Dm644 resources/logo/icon_flag.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/openrct2.svg"
 
   # For Wine to find the SDL2.dll and libwinpthread-1.dll files they need to be
-  # in the same directory as openrct2.exe, so we symlink it in place. We don't
+  # in the same directory as openrct2.exe, so we symlink them in place. We don't
   # use $CARCH here because on x86_64 OpenRCT2 is compiled with -m32,
-  # therefore we always want to use the i686 DLL. OpenRCT2 relies on
+  # therefore we always want to use the i686 DLLs. OpenRCT2 relies on
   # Wine's WoW64 support to actually run on x86_64 machines.
   ln -s /usr/i686-w64-mingw32/bin/SDL2.dll "$pkgdir/usr/share/openrct2"
   ln -s /usr/i686-w64-mingw32/bin/libwinpthread-1.dll "$pkgdir/usr/share/openrct2"
