@@ -1,28 +1,28 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=datovka
-pkgver=3.1
-pkgrel=2
-pkgdesc="GUI application allowing access to a 'Databox' - an electronic communication interface endorsed by the Czech government"
-arch=('any')
-url="https://labs.nic.cz/page/969/datovka/"
-license=('GPL2')
-depends=('dslib' 'pygtk' 'python2-pyasn1' 'python2-sqlalchemy' 'sudsds' 'hicolor-icon-theme')
-makedepends=('python2-setuptools')
-optdepends=('python-reportlab: PDF production')
-conflicts=('qdatovka')
+pkgver=4.1.2
+pkgrel=1
+pkgdesc='GUI application allowing access to a 'Databox' - an electronic communication interface endorsed by the Czech government'
+arch=('i686' 'x86_64')
+url='https://labs.nic.cz/cs/datovka.html'
+license=('LGPL')
+depends=('qt5-base' 'libisds' 'openssl' 'hicolor-icon-theme')
+makedepends=('qt5-tools')
 install=$pkgname.install
-source=(http://www.nic.cz/public_media/datove_schranky/releases/src/$pkgname-$pkgver.tar.gz)
-sha256sums=('fe2e1698320c87ef305dbb040827612a9231da90f6411052f8e3d3ca4343e8fb')
+source=(https://secure.nic.cz/files/datove_schranky/$pkgver/$pkgname-$pkgver-src.tar.xz)
+md5sums=('3fc8500cbd2dd69eb7fea1bb819cf1f8')
+
+build() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  qmake-qt5 PREFIX=/usr
+  make
+}
 
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
-#Python2 fix
-  for file in $(find . -name '*.py' -print); do
-    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-  done
-
-  python2 setup.py install --root="${pkgdir}"
+  make INSTALL_ROOT="${pkgdir}" install
 }
+
