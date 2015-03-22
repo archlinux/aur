@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
 pkgver=r2741.fa4c9b3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source clone of RollerCoaster Tycoon 2"
 arch=('i686' 'x86_64')
 url="https://openrct2.com"
@@ -14,7 +14,7 @@ source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
         'openrct2'
         'openrct2.desktop')
 md5sums=('SKIP'
-         '374d76b0e14f2f3d8b8c2f68dcffefd5'
+         'c1be0551ac353a753ea4030edeae62ef'
          '035a407b940492c584c72f4f59f1bd69')
 
 pkgver() {
@@ -30,8 +30,15 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
+
+  # Standard OpenRCT2 distribution files.
   install -Dm644 openrct2.dll "$pkgdir/usr/share/openrct2/openrct2.dll"
   install -Dm755 openrct2.exe "$pkgdir/usr/share/openrct2/openrct2.exe"
+
+  install -dm755 "$pkgdir/usr/share/openrct2/data/language"
+  install -m644 data/language/* "$pkgdir/usr/share/openrct2/data/language/"
+
+  # ArchLinux-specific stuff (launcher, .desktop file and icon).
   install -Dm755 "$srcdir/openrct2" "$pkgdir/usr/bin/openrct2"
   install -Dm644 "$srcdir/openrct2.desktop" "$pkgdir/usr/share/applications/openrct2.desktop"
   install -Dm644 resources/logo/icon_flag.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/openrct2.svg"
