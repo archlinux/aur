@@ -1,6 +1,20 @@
+_update_caches() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+}
+
 post_install() {
+  _update_caches
   cat <<EOF
 For OpenRCT2 to run you must install a retail copy of RollerCoaster Tycoon 2
 with Wine.
 EOF
+}
+
+post_upgrade () {
+  _update_caches
+}
+
+post_remove() {
+  _update_caches
 }

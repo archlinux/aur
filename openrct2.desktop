@@ -4,5 +4,6 @@ Version=1.0
 Name=OpenRCT2
 Comment=Open-source clone of RollerCoaster Tycoon 2
 Exec=openrct2
+Icon=openrct2
 Terminal=false
 Categories=Game;
