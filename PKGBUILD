@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_geometry_msgs."
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-indigo-tf2-geometry-msgs'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
