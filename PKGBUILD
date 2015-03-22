@@ -3,8 +3,8 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.2.1
-pkgrel=2
+pkgver=5.2.2
+pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=('i686' 'x86_64')
 url='https://userbase.kde.org/KSysGuard'
@@ -15,17 +15,11 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
 install="${pkgname}.install"
-source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"
-        a148102e8ed56c7a8d0f790fad2f9366b27882d4.patch)
-md5sums=('065e0efe3bd28f8e8565b109dc64f647'
-         '8c12f14d885c4d59cb35c1b9e0281d5b')
+source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
+md5sums=('7ab17df276ede1a2ced54c0dcdaa6127')
 
 prepare() {
   mkdir build
-
-  # FS#44104
-  cd $pkgname-$pkgver
-  patch -p1 -i ../a148102e8ed56c7a8d0f790fad2f9366b27882d4.patch
 }
 
 build() {
