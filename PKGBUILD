@@ -1,13 +1,13 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom1
-pkgver=1.8.09
-pkgrel=2
+pkgver=1.8.10
+pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (legacy version)."
 arch=('i686' 'x86_64')
 url="http://www.osnanet.de/c.oelckers/gzdoom/"
 license=('custom')
-depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl')
+depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl2')
 makedepends=('nasm' 'cmake' 'imagemagick' 'mesa')
 optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -21,14 +21,22 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
 provides=('gzdoom')
 conflicts=('gzdoom')
-source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
+source=(https://github.com/coelckers/gzdoom/archive/${pkgver}.tar.gz
         gitinfo.h
-        config-update-fix.patch \
-        doom-share-dir.patch \
-        stack-noexec.patch \
+        git-c915049.patch
+        git-37321d1.patch
+        git-cab509c.patch
+        git-fb3bf0e.patch
+        config-update-fix.patch
+        doom-share-dir.patch
+        stack-noexec.patch
         gzdoom.desktop)
-md5sums=('ddc1dd8aef254312031184be6dec21e6'
-         '6748cc6783450b0538db3cbee3e4c7a1'
+md5sums=('96eff26bd5f200002ae9b2a81b19451d'
+         '87e0ce206bdb5481a5af5ca37d2a073e'
+         'bc817312edc685a2823c9579723a43aa'
+         '25c80530b4540bf805a5b14a22b8ec37'
+         '5536e58fdeb11a7618f39bc5a325dafe'
+         '94d5d45d4fab4896c4c20b9daeacdb46'
          'eed301389f533effbd127681a3ddc2c5'
          '3ee3d6bb1f777445438bc40ae81a95df'
          '4778bb22190c445a4ed764c64432de12'
@@ -39,9 +47,14 @@ _libdir=/usr/lib/gzdoom
 _sharedir=/usr/share/games/gzdoom
 
 prepare() {
-  cd gzdoom-g$pkgver
+  cd gzdoom-$pkgver
 
   cp "$srcdir"/gitinfo.h src/gitinfo.h
+
+  patch -p1 <"$srcdir"/git-c915049.patch
+  patch -p1 <"$srcdir"/git-37321d1.patch
+  patch -p1 <"$srcdir"/git-cab509c.patch
+  patch -p1 <"$srcdir"/git-fb3bf0e.patch
 
   patch -p1 <"$srcdir/config-update-fix.patch"
   patch -p1 <"$srcdir/doom-share-dir.patch"
@@ -51,7 +64,7 @@ prepare() {
 }
 
 build() {
-  cd gzdoom-g$pkgver
+  cd gzdoom-$pkgver
 
   cmake -DFMOD_INCLUDE_DIR=/usr/include/fmodex-$_fmodver \
         -DFMOD_LIBRARY=/usr/lib/libfmodex-$_fmodver.so \
@@ -64,7 +77,7 @@ build() {
 }
 
 package() {
-  cd gzdoom-g$pkgver
+  cd gzdoom-$pkgver
 
   install -Dm755 gzdoom "$pkgdir/usr/bin/gzdoom"
   install -Dm755 liboutput_sdl.so "$pkgdir/$_libdir/liboutput_sdl.so"
