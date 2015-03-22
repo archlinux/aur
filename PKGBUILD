@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between KDL and geometry_msgs types."
 url='http://ros.org/wiki/kdl_conversions'
 
 pkgname='ros-indigo-kdl-conversions'
-pkgver='1.11.4'
+pkgver='1.11.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
