@@ -3,7 +3,7 @@
 
 pkgname="cups-nosystemd"
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -37,6 +37,8 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
         cups-no-gzip-man.patch
 	cups-1.6.0-fix-install-perms.patch
 	cups-1.6.2-statedir.patch
+	# bugfix
+	cups-busy-loop.patch
 	)
 md5sums=('6e0ea72dbafcf5baaa1cf4178e71096d'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
@@ -46,7 +48,8 @@ md5sums=('6e0ea72dbafcf5baaa1cf4178e71096d'
          '1beb4896f217bc241bc08a422274ec0c'
          '90c30380d4c8cd48a908cfdadae1ea24'
          '5117f65342fcc69c6a506529e4daca9e'
-         '451609db34f95209d64c38474de27ce1')
+         '451609db34f95209d64c38474de27ce1'
+         '68c70bda07ccb8caaa7a2df485a16092')
 
 prepare() {
   cd cups-${pkgver}
@@ -65,6 +68,9 @@ prepare() {
 
   # fix permissions on some files (by Gentoo)
   patch -Np0 -i "$srcdir"/cups-1.6.0-fix-install-perms.patch
+
+  # Avoid busy loop in cupsd when connection is closed after request Fedora ##1179596 - may solve FS#42666
+  patch -Np1 -i "${srcdir}"/cups-busy-loop.patch
 
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in

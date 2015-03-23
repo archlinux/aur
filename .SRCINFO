@@ -1,7 +1,7 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cups.org/
 	install = cups-nosystemd.install
 	arch = i686
@@ -52,6 +52,7 @@ pkgbase = cups-nosystemd
 	source = cups-no-gzip-man.patch
 	source = cups-1.6.0-fix-install-perms.patch
 	source = cups-1.6.2-statedir.patch
+	source = cups-busy-loop.patch
 	md5sums = 6e0ea72dbafcf5baaa1cf4178e71096d
 	md5sums = 9657daa21760bb0b5fa3d8b51d5e01a1
 	md5sums = fc8286f185e2cc5f7e1f6843bf193e2b
@@ -61,6 +62,7 @@ pkgbase = cups-nosystemd
 	md5sums = 90c30380d4c8cd48a908cfdadae1ea24
 	md5sums = 5117f65342fcc69c6a506529e4daca9e
 	md5sums = 451609db34f95209d64c38474de27ce1
+	md5sums = 68c70bda07ccb8caaa7a2df485a16092
 
 pkgname = cups-nosystemd
 
