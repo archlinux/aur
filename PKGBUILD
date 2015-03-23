@@ -2,7 +2,7 @@
 
 pkgbase=invoke
 pkgname=(invoke python2-invoke)
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Task execution tool & library"
 url="http://pyinvoke.org"
@@ -27,6 +27,7 @@ package_invoke() {
 	depends=(python)
 
 	cd "$srcdir"/$pkgbase-$pkgver
+	rm -rf build/lib/invoke/vendor/yaml2
 	python setup.py install -O1 --skip-build --root="$pkgdir"
 
 	install -Dm644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
@@ -37,14 +38,15 @@ package_python2-invoke() {
 	depends=(python2)
 
 	cd "$srcdir"/$pkgbase-$pkgver-py2
+	rm -rf build/lib/invoke/vendor/yaml3
 	python2 setup.py install -O1 --skip-build --root="$pkgdir"
 
 	install -Dm644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	
+
 	cd "$pkgdir"/usr/bin
 	mv inv inv2
 	mv invoke invoke2
 }
 
-sha256sums=('f97c3b9e6d8f12327f5f0f39af0544b6b68863a182484b16666243667d767a2b')
+sha256sums=('a6f292d5ed75b9cb29ae8e6d5ccb6f74f372cd01d2c49f159f178057f3fd16ef')
