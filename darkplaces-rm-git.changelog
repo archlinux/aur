@@ -1,0 +1,34 @@
+2014-04-22 | J0k3r <moebius282@gmail.com>
+
+	* darkplacesRM-git-1-1:
+		- Initial release
+
+2014-04-23 | J0k3r <moebius282@gmail.com>
+
+	* darkplacesRM-git-1-1:
+		- Added forgotten functions in darkplaces_rm, glx build
+
+2014-04-29 | J0k3r <moebius282@gmail.com>
+
+	* darkplacesRM-git-8935-1:
+		- add irc optdep and additional deps for the glx client to darkplacesRM
+
+2014-06-16 | J0k3r <moebius282@gmail.com>
+
+	* darkplacesRM-git-8943-1:
+		- Remove name-patching (now upstream); make binary name configurable
+		- Add changelog
+
+2014-07-10 | J0k3r <moebius282@gmail.com>
+
+	* darkplacesRM-git-8943-1:
+		- Update the changelog to the state of the git history
+		- Add changelog to the PKGBUILD
+
+2015-01-20 | J0k3r <moebius282@gmail.com>
+
+	* darkplaces-rm-git-r8985.0b519b1:
+		- Changed the name to darkplaces-rm-git
+		- Changed $pkgver style
+		- Added missing makedepends
+		- General Improvements
