@@ -2,7 +2,7 @@
 pkgname=python2-openant-git
 _gitname=openant
 pkgver=r86.4500761
-pkgrel=3
+pkgrel=4
 pkgdesc="A python library to download and upload files from ANT-FS compliant devices (Garmin products)."
 arch=('i686' 'x86_64')
 source=('git+https://github.com/Tigge/openant')
@@ -22,7 +22,7 @@ pkgver() {
 package() {
   cd "$srcdir/${_gitname}"
 
-  install -Dm644 resources/ant-usb-sticks.rules ${pkgdir}/etc/udev/rules.d/71-ant-usb-sticks.rules
+  install -Dm644 resources/ant-usb-sticks.rules ${pkgdir}/usr/lib/udev/rules.d/71-ant-usb-sticks.rules
 
   sed -i 's/install_udev_rules(True)/install_udev_rules(False)/g' setup.py
   sed -i 's/os.geteuid() == 0/False/' setup.py
