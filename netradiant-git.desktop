@@ -1,7 +1,6 @@
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
 Name=NetRadiant
 Comment=A Stabilized Q3 Map Editor
-Exec=netradiant
 Categories=Game;Development;
+Exec=netradiant

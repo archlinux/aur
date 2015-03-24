@@ -1,0 +1,7 @@
+2015-03-22 | J0k3r <moebius282@gmail.com>
+
+	* netradiant-git-1:r1351.e995cc8-1:
+		- Adopted package from IwfY
+		- Redid PKGBUILD
+		- Added Changelog
+		- New pkgver format, set epoch
