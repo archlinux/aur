@@ -1,7 +1,7 @@
 pkgbase = swapspace
 	pkgdesc = A dynamic swap manager
 	pkgver = 1.10
-	pkgrel = 4
+	pkgrel = 5
 	url = http://pqxx.org/development/swapspace
 	arch = i686
 	arch = x86_64
@@ -10,14 +10,10 @@ pkgbase = swapspace
 	backup = etc/swapspace.conf
 	source = http://pqxx.org/download/software/swapspace/swapspace-1.10.tar.gz
 	source = Makefile.patch
-	source = swapspace.confd
-	source = systemd.scripts.swapspace
-	source = systemd.system.swapspace
+	source = swapspace.service
 	sha256sums = 37256d6759be5cefbb50afbeba8bb0f159b3488aecd972898fcc6f4d5e6a3573
-	sha256sums = bc7abed7a240e5b5ebb183cb2d1f2fb65dfb4864fc8c56a2d6f18bec5d5abc8b
-	sha256sums = 233fec29540b5cf7ae3d49d34deac9a9a044665bd942e817d6b98ae3a91b9857
-	sha256sums = c720cc5687cd8277489b2fe4b74d11cdb050540a982614cfbbad4f2d9a609ecf
-	sha256sums = ba2bfba29da4e6423dadff438b57831f75e8a362c2f9526fa1387e9bab6ddc77
+	sha256sums = 7f23fee1563ae1730cd89a3e3994a610d032a53c147178b3b0c9d9b62dfd233a
+	sha256sums = b829b4f4976c715238702da9b5fcebe3cf4f167c761d9a93347610c1d251ba70
 
 pkgname = swapspace
 

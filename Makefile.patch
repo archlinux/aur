@@ -1,5 +1,7 @@
---- swapspace-1.10/Makefile.orig	2006-01-03 20:19:35.000000000 -0800
-+++ swapspace-1.10/Makefile	2011-10-13 11:22:23.950648477 -0700
+diff --git a/Makefile b/Makefile
+index f33eebe..d746403 100644
+--- a/Makefile
++++ b/Makefile
 @@ -3,7 +3,7 @@
  SWAPPARENT=/var/lib
  SWAPDIR=$(SWAPPARENT)/swapspace
@@ -9,17 +11,31 @@
  	+$(MAKE) -C src VERSION="`cat VERSION`" DATE="`cat DATE`"
  	+$(MAKE) -C doc VERSION="`cat VERSION`" DATE="`cat DATE`"
  
-@@ -16,12 +16,11 @@
+@@ -16,18 +16,17 @@ distclean: clean
  install: all
  	install -d $(DESTDIR)/$(SWAPPARENT)
  	install -d -m700 $(DESTDIR)/$(SWAPDIR)
 -	install -d $(DESTDIR)/usr/sbin $(DESTDIR)/etc $(DESTDIR)/etc/init.d
-+	install -d $(DESTDIR)/usr/sbin $(DESTDIR)/etc
++	install -d $(DESTDIR)/usr/bin $(DESTDIR)/etc
  	install -d $(DESTDIR)/usr/share/man/man8
  	strip src/swapspace || true
- 	install -m755 src/swapspace $(DESTDIR)/usr/sbin
+-	install -m755 src/swapspace $(DESTDIR)/usr/sbin
++	install -m755 src/swapspace $(DESTDIR)/usr/bin
  	install -m644 swapspace.conf $(DESTDIR)/etc
 -	install -m744 debian/swapspace.init $(DESTDIR)/etc/init.d/swapspace
  	install -m644 doc/swapspace.8 $(DESTDIR)/usr/share/man/man8
  
  uninstall:
+-	/usr/sbin/swapspace -e
++	/usr/bin/swapspace -e
+ 	$(RM) -r $(SWAPDIR)
+-	$(RM) /usr/sbin/swapspace /etc/swapspace.conf /etc/init.d/swapspace
++	$(RM) /usr/bin/swapspace /etc/swapspace.conf /etc/init.d/swapspace
+ 	$(RM) /usr/share/man/man8/swapspace.8
+ 
+ dist : distclean VERSION
+@@ -48,4 +47,3 @@ DATE: debian/changelog
+ 	grep '^ -- ' $< | sed -e 's/^.*>  \([MTWFS][a-z]\{2\}, \{1,2\}[[:digit:]]\{1,2\} [JFBAMSOND][a-z]* 2[[:digit:]]\{3\}\) .*/\1/' | head -n 1 >$@
+ 
+ .PHONY: all clean install uninstall
+-

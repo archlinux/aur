@@ -1,4 +1,0 @@
-#
-# Parameters passed to swapspace
-#
-SWAPSPACE_ARGS="-q -d -p /var/run/swapspace.pid"

@@ -1,0 +1,11 @@
+[Unit]
+Description=dynamic swap manager
+
+[Service]
+Type=forking
+PIDFile=/run/swapspace.pid
+ExecStart=/usr/bin/swapspace -d -p /run/swapspace.pid
+ExecStop=/usr/bin/swapspace -e
+
+[Install]
+WantedBy=swap.target
