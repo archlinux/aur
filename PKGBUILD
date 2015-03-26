@@ -28,7 +28,6 @@ build() {
   for _arch in ${_architectures}; do
     msg "Building for ${_arch}"
     rm "${srcdir}/gtk+-${pkgver}/gtk/gtk.def"
-    unset LDFLAGS
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
     msg "Starting configure and make"
