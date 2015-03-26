@@ -46,7 +46,7 @@ package() {
   cd "${srcdir}/gtk+-${pkgver}"
   for _arch in ${_architectures}; do
     cd "build-${_arch}"
-    make -j1 DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' -o -name '*.manifest' | xargs -rtl1 rm
     find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip -x
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
