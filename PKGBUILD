@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r2741.fa4c9b3
-pkgrel=3
+pkgver=r2840.796fb81
+pkgrel=1
 pkgdesc="Open source clone of RollerCoaster Tycoon 2"
 arch=('i686' 'x86_64')
 url="https://openrct2.com"
@@ -12,14 +12,21 @@ options=('!buildflags')
 install=openrct2.install
 source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
         'openrct2'
-        'openrct2.desktop')
+        'openrct2.desktop'
+        'mingw-w64-workaround.patch')
 md5sums=('SKIP'
          'b750eaf997a27e981232b21a68fa868e'
-         '035a407b940492c584c72f4f59f1bd69')
+         '035a407b940492c584c72f4f59f1bd69'
+         '6feb2932690f40a8bac895ac4cf81a1a')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch -p0 < "$srcdir/mingw-w64-workaround.patch"
 }
 
 build() {
