@@ -3,6 +3,6 @@ Description=TinySSH Key Generation
 ConditionPathIsDirectory=!/etc/tinyssh/sshkeydir
 
 [Service]
-ExecStart=/usr/sbin/tinysshd-makekey /etc/sshkeydir
+ExecStart=/usr/bin/tinysshd-makekey /etc/tinyssh/sshkeydir
 Type=oneshot
 RemainAfterExit=true

@@ -4,6 +4,6 @@ Documentation=http://tinyssh.org
 After=tinysshgenkeys.service
 
 [Service]
-ExecStart=/usr/sbin/tinysshd /etc/tinyssh/sshkeydir
+ExecStart=/usr/bin/tinysshd /etc/tinyssh/sshkeydir
 StandardInput=socket
 StandardError=journal

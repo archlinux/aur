@@ -16,7 +16,7 @@ post_install () {
 	  systemctl enable tinyssh@22.socket
 	  systemctl start tinyssh@22.socket
 
-  Note that youn can also specify the interface address, and multiple
+  Note that you can also specify the interface address, and multiple
   address/port combinations can be configured at the same time by writing
   the "ipaddress:port" as the unit instance. For example:
 
