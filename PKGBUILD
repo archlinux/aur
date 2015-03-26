@@ -18,7 +18,7 @@ depends=(
   'mingw-w64-libtiff')
 options=(!strip !buildflags staticlibs)
 source=(
-  "http://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
+  "https://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
 sha256sums=('ddd861747bb7c580acce7cfa3ce38c3f52a9516e66a6477988fd100c8fb9eabc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"

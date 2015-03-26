@@ -17,7 +17,7 @@ pkgbase = mingw-w64-gdk-pixbuf2
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.gnome.org/sources/gdk-pixbuf/2.31/gdk-pixbuf-2.31.3.tar.xz
+	source = https://download.gnome.org/sources/gdk-pixbuf/2.31/gdk-pixbuf-2.31.3.tar.xz
 	sha256sums = ddd861747bb7c580acce7cfa3ce38c3f52a9516e66a6477988fd100c8fb9eabc
 
 pkgname = mingw-w64-gdk-pixbuf2
