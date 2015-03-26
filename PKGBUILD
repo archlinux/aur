@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gdk-pixbuf2
 pkgver=2.31.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An image loading library (mingw-w64)'
 arch=(any)
 url='http://www.gtk.org'
@@ -28,8 +28,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
-    ${_arch}-configure \
-      --with-included-loaders=wbmp,png,pnm,ras,ani,xpm,xbm,tga,icns,pcx,qtif,gdip-ico,gdip-wmf,gdip-emf,gdip-bmp,gdip-gif,gdip-jpeg,gdip-tiff
+    ${_arch}-configure --with-included-loaders --with-libjasper
     make
     cd ..
   done
