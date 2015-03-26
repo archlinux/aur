@@ -9,11 +9,11 @@
 
 _pkgname=qt5-wayland
 pkgname=$_pkgname-git
-pkgver=a # If you want to update periodically - use changeling script from aur with cron
+pkgver=a # If you want to update periodically - use changeling script (AUR) from aur with cron
 pkgrel=2
 pkgdesc="A cross-platform application and UI framework (QtWayland)"
 arch=("i686" "x86_64")
-url="https://qt.gitorious.org/qt/qtwayland" # TODO: change this adderess to gitorious?
+url="http://code.qt.io/cgit/qt/qtwayland.git/" # TODO: change this adderess to gitorious?
 license=("GPL3" "LGPL")
 depends=("qt5-declarative" "libxcomposite")
 makedepends=("git")
@@ -25,10 +25,10 @@ _qt5_userversion=`pkg-config --modversion Qt5Core`
 
 if [ -e /var/lib/pacman/local/qt5-base-5* ]; then
 # If you are using repo's qt5, change to the latest minor version
-  source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#branch=${_qt5_userversion}")
+  source=("$_pkgname::git://code.qt.io/qt/qtwayland.git#branch=${_qt5_userversion}")
 else
   # If you are using anything else eg. qt5-base-git
-  source=("$_pkgname::git://gitorious.org/qt/qtwayland.git#branch=dev")
+  source=("$_pkgname::git://code.qt.io/qt/qtwayland.git#branch=dev")
 fi
 sha256sums=("SKIP")
 
