@@ -5,7 +5,7 @@
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
 license=('custom')
