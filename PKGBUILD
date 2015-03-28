@@ -7,7 +7,7 @@ pkgdesc="pacemaker stable package, contains the latest stable version"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/pacemaker/"
 license=('GPLv2')
-makedepends=('autoconf')
+makedepends=('autoconf' 'libxml2' 'libxslt' 'corosync')
 #'rpm-org')
 provides=('pacemaker')
 source=("https://github.com/ClusterLabs/pacemaker/archive/Pacemaker-${pkgver}.tar.gz")
