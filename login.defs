@@ -203,6 +203,6 @@ USERGROUPS_ENAB yes
 MOTD_FILE
 
 #
-# Hash shadow passwords with sha512.
+# Hash shadow passwords with SHA512.
 #
-ENCRYPT_METHOD	sha512
+ENCRYPT_METHOD	SHA512
