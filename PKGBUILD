@@ -8,10 +8,10 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-pkgver=2.25.2
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
-url="http://www.kernel.org/pub/linux/utils/util-linux/"
+url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
 groups=('selinux')
 # SELinux package maintenance note:
@@ -22,10 +22,12 @@ groups=('selinux')
 makedepends=('systemd' 'python' 'libselinux')
 license=('GPL2')
 options=('strip' 'debug')
-source=("ftp://ftp.kernel.org/pub/linux/utils/${pkgname/-selinux}/v2.25/${pkgname/-selinux}-$pkgver.tar.xz"
+validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v2.26/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
         uuidd.tmpfiles
         pam-{login,common,su})
-md5sums=('cab3d7be354000f629bc601238b629b3'
+md5sums=('2308850946766677f3fabe0685e85de8'
+         'SKIP'
          'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
@@ -45,6 +47,7 @@ build() {
               --enable-chfn-chsh \
               --enable-write \
               --enable-mesg \
+              --enable-libmount-force-mountinfo \
               --enable-socket-activation \
               --with-selinux \
               --with-python=3
@@ -53,9 +56,9 @@ build() {
 }
 
 package_util-linux-selinux() {
-  conflicts=('util-linux-ng' 'eject'
+  conflicts=('util-linux-ng' 'eject' 'zramctl'
              "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-  provides=("util-linux-ng=$pkgver" 'eject'
+  provides=("util-linux-ng=$pkgver" 'eject' 'zramctl'
             "${pkgname/-selinux}=${pkgver}-${pkrel}"
             "selinux-${pkgname/-selinux}=${pkgver}-${pkrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
@@ -70,7 +73,7 @@ package_util-linux-selinux() {
 
   cd "${pkgname/-selinux}-$pkgver"
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
   # setuid chfn and chsh
   chmod 4755 "$pkgdir"/usr/bin/{newgrp,ch{sh,fn}}
@@ -79,8 +82,8 @@ package_util-linux-selinux() {
   install -Dm644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
   install -m644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
   install -m644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
-  install -m644 "$srcdir/pam-su" "${pkgdir}/etc/pam.d/su"
-  install -m644 "$srcdir/pam-su" "${pkgdir}/etc/pam.d/su-l"
+  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
+  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
 
   # include tmpfiles fragment for uuidd
   # TODO(dreisner): offer this upstream?
@@ -100,7 +103,7 @@ package_util-linux-selinux() {
 
 package_libutil-linux-selinux() {
   pkgdesc="util-linux-selinux runtime libraries"
-  provides=('libblkid.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so'
+  provides=('libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so'
             "${pkgname/-selinux}=${pkgver}-${pkrel}")
   depends=('libselinux')
   conflicts=("${pkgname/-selinux}")

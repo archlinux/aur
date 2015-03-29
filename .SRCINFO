@@ -1,8 +1,8 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.25.2
+	pkgver = 2.26.1
 	pkgrel = 1
-	url = http://www.kernel.org/pub/linux/utils/util-linux/
+	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
 	arch = x86_64
 	groups = selinux
@@ -12,12 +12,14 @@ pkgbase = util-linux-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = ftp://ftp.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.2.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.1.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.26/util-linux-2.26.1.tar.sign
 	source = uuidd.tmpfiles
 	source = pam-login
 	source = pam-common
 	source = pam-su
-	md5sums = cab3d7be354000f629bc601238b629b3
+	md5sums = 2308850946766677f3fabe0685e85de8
+	md5sums = SKIP
 	md5sums = a39554bfd65cccfd8254bb46922f4a67
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4
@@ -31,12 +33,14 @@ pkgname = util-linux-selinux
 	depends = libsystemd-selinux
 	depends = libutil-linux-selinux
 	optdepends = python: python bindings to libmount
-	provides = util-linux-ng=2.25.2
+	provides = util-linux-ng=2.26.1
 	provides = eject
-	provides = util-linux=2.25.2-
-	provides = selinux-util-linux=2.25.2-
+	provides = zramctl
+	provides = util-linux=2.26.1-
+	provides = selinux-util-linux=2.26.1-
 	conflicts = util-linux-ng
 	conflicts = eject
+	conflicts = zramctl
 	conflicts = util-linux
 	conflicts = selinux-util-linux
 	backup = etc/pam.d/chfn
@@ -49,9 +53,10 @@ pkgname = libutil-linux-selinux
 	pkgdesc = util-linux-selinux runtime libraries
 	depends = libselinux
 	provides = libblkid.so
+	provides = libfdisk.so
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.25.2-
+	provides = libutil-linux=2.26.1-
 	conflicts = libutil-linux
 
