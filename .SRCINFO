@@ -1,0 +1,14 @@
+pkgbase = postgresql-uint
+	pkgdesc = Unsigned integer types extension for PostgreSQL
+	pkgver = 1.20150301
+	pkgrel = 1
+	url = https://github.com/petere/pguint
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = postgresql
+	source = https://github.com/petere/pguint/archive/1.20150301.tar.gz
+	md5sums = b8bb7878c82bf251242f5afdc9a4b6ba
+
+pkgname = postgresql-uint
+
