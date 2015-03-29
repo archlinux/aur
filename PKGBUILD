@@ -1,9 +1,8 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 
-_name=physfs
-pkgname=$_name-hg
-pkgver=2.1.0.r1345.29ab417d9453
+pkgname=physfs-hg
+pkgver=2.1.0.r1355.52a7487e505c
 pkgrel=1
 pkgdesc="A library to provide abstract access to various archives (development version)"
 arch=('i686' 'x86_64')
@@ -11,13 +10,13 @@ url="http://icculus.org/physfs/"
 license=('zlib')
 depends=('zlib')
 makedepends=('cmake' 'doxygen' 'mercurial')
-provides=("$_name")
-conflicts=("$_name")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 source=("hg+http://hg.icculus.org/icculus/physfs")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_name
+  cd ${pkgname%-*}
 
   # get version from cmake
   local _ver="$(grep 'set(PHYSFS_VERSION.*)' CMakeLists.txt | sed 's/[^0-9\.]*//g')"
@@ -25,22 +24,22 @@ pkgver() {
 }
 
 prepare() {
-  cd $_name
+  cd ${pkgname%-*}
 
   # avoid abort in docs target
   sed -i 's/-Werror//' CMakeLists.txt
 }
 
 build() {
-  cd $_name
+  cd ${pkgname%-*}
 
   cmake ./ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPHYSFS_BUILD_TEST=OFF -DPHYSFS_BUILD_STATIC=OFF
+    -DPHYSFS_BUILD_TEST=OFF
   make all docs
 }
 
 package() {
-  cd $_name
+  cd ${pkgname%-*}
 
   make DESTDIR="$pkgdir/" install
 
