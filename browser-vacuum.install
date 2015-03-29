@@ -1,0 +1,5 @@
+post_install() {
+    echo
+    echo ">>> Run with sudo if you wish to clean browser profiles of all users"
+    echo
+}
