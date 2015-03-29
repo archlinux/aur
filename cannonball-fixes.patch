@@ -1,0 +1,43 @@
+diff -Naur cannonball-0.3.orig/src/main/frontend/config.cpp cannonball-0.3/src/main/frontend/config.cpp
+--- cannonball-0.3.orig/src/main/frontend/config.cpp	2014-11-11 22:46:58.000000000 +0100
++++ cannonball-0.3/src/main/frontend/config.cpp	2015-03-14 22:11:36.872872895 +0100
+@@ -239,7 +239,7 @@
+ 
+ 
+     // Tab space 1
+-    boost::property_tree::xml_writer_settings<char> settings('\t', 1);
++    boost::property_tree::xml_writer_settings<std::string> settings = boost::property_tree::xml_writer_make_settings<std::string> ('\t', 1);
+ 
+     try
+     {
+@@ -310,8 +310,8 @@
+     }
+     
+     // Tab space 1
+-    boost::property_tree::xml_writer_settings<char> settings('\t', 1);
+-    
++    boost::property_tree::xml_writer_settings<std::string> settings = boost::property_tree::xml_writer_make_settings<std::string> ('\t', 1);    
++
+     try
+     {
+         write_xml(engine.jap ? filename + "_jap.xml" : filename + ".xml", pt, std::locale(), settings);
+@@ -366,7 +366,7 @@
+     }
+ 
+     // Tab space 1
+-    boost::property_tree::xml_writer_settings<char> settings('\t', 1);
++    boost::property_tree::xml_writer_settings<std::string> settings = boost::property_tree::xml_writer_make_settings<std::string> ('\t', 1);
+     
+     try
+     {
+diff -Naur cannonball-0.3.orig/src/main/hwvideo/hwtiles.cpp cannonball-0.3/src/main/hwvideo/hwtiles.cpp
+--- cannonball-0.3.orig/src/main/hwvideo/hwtiles.cpp	2014-11-11 22:46:58.000000000 +0100
++++ cannonball-0.3/src/main/hwvideo/hwtiles.cpp	2015-03-14 21:29:08.000364828 +0100
+@@ -2,6 +2,7 @@
+ #include "romloader.hpp"
+ #include "hwvideo/hwtiles.hpp"
+ #include "frontend/config.hpp"
++#include <cstring>
+ 
+ /***************************************************************************
+     Video Emulation: OutRun Tilemap Hardware.
