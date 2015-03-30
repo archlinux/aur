@@ -1,5 +1,6 @@
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
+# URL: https://github.com/trollixx/aur-packages
 
 _pkgname=wargus
 pkgname=$_pkgname-bzr
@@ -30,7 +31,7 @@ build() {
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr -DGAMEDIR=/usr/bin
 
-  make 
+  make
 }
 
 package()  {
