@@ -16,7 +16,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./autogen.sh
   ./configure --prefix=/usr
-  make
+  make $MAKEFLAGS
 }
 
 package() {
