@@ -7,7 +7,7 @@
 
 pkgname=nvidia-340xx-dkms
 pkgver=340.76
-pkgrel=2
+pkgrel=3
 pkgdesc='NVIDIA kernel module sources (DKMS)'
 arch=('i686' 'x86_64')
 url='http://www.nvidia.com/'
@@ -33,7 +33,9 @@ prepare() {
   fi
 
   sh ${_pkg}.run --extract-only
+  pushd ${_pkg}
   patch -p0 -i ../nv-drm.patch
+  popd
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-dkms
 	pkgdesc = NVIDIA kernel module sources (DKMS)
 	pkgver = 340.76
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	install = nvidia-340xx-dkms.install
 	arch = i686
