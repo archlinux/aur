@@ -1,0 +1,14 @@
+post_install() {
+    echo "Enabling and starting systemd timer. To disable, run:"
+    echo -e "\tsystemctl disable calibre-upgrade.timer"
+    systemctl enable calibre-upgrade.timer
+    systemctl start calibre-upgrade.timer
+    echo "Also performing initial run of service to ensure calibre is up-to-date..."
+    systemctl start calibre-upgrade.service
+}
+
+pre_remove() {
+    echo "Disabling and removing systemd timer."
+    systemctl stop calibre-upgrade.timer
+    systemctl disable calibre-upgrade.timer
+}
