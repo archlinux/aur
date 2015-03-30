@@ -1,4 +1,5 @@
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
+# URL: https://github.com/trollixx/aur-packages
 
 _appname=quickterminal
 pkgname=$_appname-git
