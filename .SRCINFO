@@ -1,0 +1,67 @@
+pkgbase = linux-surfacepro3
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/matthewwardrop/linux-surfacepro3
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.1.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = 0001-block-loop-convert-to-per-device-workqueue.patch
+	source = 0002-block-loop-avoiding-too-many-pending-per-work-I-O.patch
+	source = change-default-console-loglevel.patch
+	source = cam.patch
+	source = buttons.patch
+	source = multitouch.patch
+	source = surface3-touchpad.conf
+	sha256sums = caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f
+	sha256sums = SKIP
+	sha256sums = 48a813fb6795153f6906759501bea9e290db528894d1c0726667efc8e55dd7ad
+	sha256sums = SKIP
+	sha256sums = 765ac92c574b44c4e15fa6cdb74b0b7294f3d9b67a8b139635a9013ce86fb666
+	sha256sums = 026e9d061c0d9ef72e6b05308e16bd7b842c1ee837996bfe25251a33d33d35c4
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 9e1d3fd95d768a46353593f6678513839cedb98ee66e83d9323233104ec3b23f
+	sha256sums = bbe3631c737ed8329a1b7a9610cc0a07330c14194da5e9afec7705e7f37eeb81
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = a6c5c5dc3fa3e35e9eb762c36c4596f889df7c52be8d0533d697e47786fdef32
+	sha256sums = e149dda8c92feca0fc9bbcbca0d0c3b749246b441ab9f7d34a0f68aeae76504c
+	sha256sums = 4ed061724498d6c7017641caad7c749dad53a20f7c648f23b70c1e402715e002
+	sha256sums = a4f8197e5efd61c04a531cfc7ffc5fc2c000299bdd93480745a992eec16d0580
+
+pkgname = linux-surfacepro3
+	pkgdesc = The Linux-surfacepro3 kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-surfacepro3=4.1.1
+	conflicts = kernel26-surfacepro3
+	replaces = kernel26-surfacepro3
+	backup = etc/mkinitcpio.d/linux-surfacepro3.preset
+
+pkgname = linux-surfacepro3-headers
+	pkgdesc = Header files and scripts for building modules for Linux-surfacepro3 kernel
+	provides = kernel26-surfacepro3-headers=4.1.1
+	conflicts = kernel26-surfacepro3-headers
+	replaces = kernel26-surfacepro3-headers
+
+pkgname = linux-surfacepro3-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-surfacepro3 kernel
+	provides = kernel26-surfacepro3-docs=4.1.1
+	conflicts = kernel26-surfacepro3-docs
+	replaces = kernel26-surfacepro3-docs
+
