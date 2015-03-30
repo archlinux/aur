@@ -1,5 +1,6 @@
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
+# URL: https://github.com/trollixx/aur-packages
 
 _pkgname=stratagus
 pkgname=$_pkgname-bzr
