@@ -1,5 +1,6 @@
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
 # Contributor: Whyme Lyu <callme5long@gmail.com>
+# URL: https://github.com/trollixx/aur-packages
 
 pkgname=zeal-git
 # The author of Zeal hasn't settled on a versioning scheme yet.
