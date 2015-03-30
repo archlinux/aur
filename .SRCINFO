@@ -1,0 +1,13 @@
+pkgbase = newsblurbackgroundtab-git
+	pkgdesc = Chrome/Chromium extension to open background tabs from newsblur
+	pkgver = 32.bf8d36e
+	pkgrel = 1
+	url = https://github.com/Lyrrad/newsblurbackgroundtab
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/Lyrrad/newsblurbackgroundtab.git
+	sha512sums = SKIP
+
+pkgname = newsblurbackgroundtab-git
+
