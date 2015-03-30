@@ -2,7 +2,7 @@
 # Contributor: Thorsten Toepper <atsutane@freethoughts.de>
 
 pkgname=newsbeuter-git
-pkgver=1566.cd97b4a
+pkgver=1710.c085077
 pkgrel=1
 pkgdesc='A RSS feed reader for the text console with special Podcast support.'
 url='http://www.newsbeuter.org'
@@ -16,27 +16,24 @@ conflicts=('newsbeuter')
 source=('git://github.com/akrennmair/newsbeuter.git')
 sha1sums=('SKIP')
 
-_gitname="newsbeuter"
-
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/newsbeuter"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd "$_gitname"
+  cd "$srcdir/newsbeuter"
   ./config.sh
-  sed -i 's+/usr/local+/usr+' Makefile
   make
-  make doc || true
+  make doc
 }
 
 package() {
-  cd "$_gitname"
+  cd "$srcdir/newsbeuter"
 
-  make DESTDIR=${pkgdir} install
+  make prefix=/usr "DESTDIR=${pkgdir}" install
   install -Dm644 LICENSE \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
 

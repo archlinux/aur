@@ -1,6 +1,6 @@
 pkgbase = newsbeuter-git
 	pkgdesc = A RSS feed reader for the text console with special Podcast support.
-	pkgver = 1566.cd97b4a
+	pkgver = 1710.c085077
 	pkgrel = 1
 	url = http://www.newsbeuter.org
 	arch = i686
