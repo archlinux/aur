@@ -7,7 +7,7 @@
 
 pkgname=nvidia-340xx-dkms
 pkgver=340.76
-pkgrel=3
+pkgrel=4
 pkgdesc='NVIDIA kernel module sources (DKMS)'
 arch=('i686' 'x86_64')
 url='http://www.nvidia.com/'
@@ -19,11 +19,9 @@ provides=("nvidia=${pkgver}" "nvidia-dkms")
 conflicts=('nvidia-340xx' 'nvidia-dkms')
 install="${pkgname}.install"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
-        "http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-        "nv-drm.patch")
+        "http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 sha1sums=('1335af174324f5c752388110e65c3c51beea729b'
-          '2df59750d9fdeed613e84379108fb2bec67afd14'
-          'f0798ef2269fa4257a754ecc86fd1632774b188c')
+          '2df59750d9fdeed613e84379108fb2bec67afd14')
 [[ $CARCH == i686 ]] && _pkg=NVIDIA-Linux-x86-${pkgver}
 [[ $CARCH == x86_64 ]] && _pkg=NVIDIA-Linux-x86_64-${pkgver}-no-compat32
 
@@ -33,9 +31,6 @@ prepare() {
   fi
 
   sh ${_pkg}.run --extract-only
-  pushd ${_pkg}
-  patch -p0 -i ../nv-drm.patch
-  popd
 }
 
 package() {
