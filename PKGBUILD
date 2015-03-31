@@ -5,11 +5,11 @@
 _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 
-pkgver=0.7.0.14.gea6dcca
+pkgver=0.11.0.12.gea640b3
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT master branch"
 arch=('x86_64' 'i686')
-url="https://github.com/vathpela/efibootmgr"
+url="https://github.com/rhinstaller/efibootmgr"
 license=('GPL2')
 makedepends=('git')
 depends=('pciutils' 'efivar' 'zlib')
@@ -17,7 +17,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 options=('!strip' 'zipman' 'docs' '!emptydirs')
 
-source=("${_pkgname}::git+https://github.com/vathpela/efibootmgr.git#branch=master")
+source=("${_pkgname}::git+https://github.com/rhinstaller/efibootmgr.git#branch=master")
 sha1sums=('SKIP')
 
 pkgver() {
