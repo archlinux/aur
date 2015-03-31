@@ -33,5 +33,5 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  make install DESTDIR="$pkgdir"
+  make install install-man DESTDIR="$pkgdir"
 }
