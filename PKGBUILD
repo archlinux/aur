@@ -18,13 +18,13 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="0.9.8ze"
+_OPENSSL_VERSION="0.9.8zf"
 ################
 
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=16641
+pkgver=17084
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="https://tianocore.github.io/ovmf/"
@@ -50,7 +50,7 @@ for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellP
 	source+=("${_TIANO_DIR_}_${_DIR_}::svn+${_TIANOCORE_SVN_URL}/${_DIR_}")
 done
 
-sha1sums=('cbfbda630b3ad6d89a15a80c0dc15ebce2c1b7b2'
+sha1sums=('3f2f4ca864b13a237ae063cd34d01bbdbc8f108f'
           'SKIP'
           'SKIP'
           'SKIP'
