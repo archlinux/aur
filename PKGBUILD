@@ -5,10 +5,10 @@ _pkgname="efivar"
 pkgname="${_pkgname}-git"
 
 pkgdesc="Tools and library to manipulate EFI variables - GIT master branch"
-pkgver=0.10.8.g81d0146
+pkgver=0.15.17.gc1d0945
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/vathpela/efivar"
+url="https://github.com/rhinstaller/efivar"
 license=('LGPL2.1')
 makedepends=('git')
 depends=('popt')
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}" 'libefivar' 'libefivar-git')
 provides=("${_pkgname}=${pkgver}" "libefivar=${pkgver}" "libefivar-git=${pkgver}")
 options=('!strip' 'zipman' 'docs')
 
-source=("${_pkgname}::git+https://github.com/vathpela/efivar.git#branch=master")
+source=("${_pkgname}::git+https://github.com/rhinstaller/efivar.git#branch=master")
 sha1sums=('SKIP')
 
 pkgver() {
