@@ -1,19 +1,19 @@
 pkgbase = pesign-git
 	pkgdesc = Tools for manipulating signed PE-COFF binaries - GIT Version
-	pkgver = 0.109.31.gc877f01
+	pkgver = 0.110.7.g3c2374b
 	pkgrel = 1
-	url = https://github.com/vathpela/pesign
+	url = https://github.com/rhinstaller/pesign
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = popt
 	depends = nss
-	provides = pesign=0.109.31.gc877f01
+	provides = pesign=0.110.7.g3c2374b
 	conflicts = pesign
 	options = !strip
 	options = !emptydirs
 	options = docs
-	source = pesign::git+https://github.com/vathpela/pesign.git#branch=master
+	source = pesign::git+https://github.com/rhinstaller/pesign.git#branch=master
 	sha1sums = SKIP
 
 pkgname = pesign-git

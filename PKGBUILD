@@ -1,16 +1,16 @@
 # Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="https://github.com/vathpela/pesign.git"
+_gitroot="https://github.com/rhinstaller/pesign.git"
 _gitname="pesign"
 _gitbranch="master"
 
 _pkgname="pesign"
 pkgname="${_pkgname}-git"
 
-pkgver=0.109.31.gc877f01
+pkgver=0.110.7.g3c2374b
 pkgrel=1
 pkgdesc="Tools for manipulating signed PE-COFF binaries - GIT Version"
-url="https://github.com/vathpela/pesign"
+url="https://github.com/rhinstaller/pesign"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('git')
