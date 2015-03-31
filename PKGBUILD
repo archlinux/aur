@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="High-level C binding for 0MQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"
-license=('LGPL')
+license=('MPL2')
 depends=('zeromq>=4.0')
 sha1sums=('8ceec4058e8176c34c638f5fc33e0bda2c1dad46')
 makedepends=()

@@ -5,7 +5,7 @@ pkgbase = czmq
 	url = http://czmq.zeromq.org
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = MPL2
 	depends = zeromq>=4.0
 	source = https://github.com/zeromq/czmq/archive/v3.0.0.tar.gz
 	sha1sums = 8ceec4058e8176c34c638f5fc33e0bda2c1dad46
