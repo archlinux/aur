@@ -1,16 +1,16 @@
 # Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_gitroot="https://github.com/mjg59/shim.git"
+_gitroot="https://github.com/rhinstaller/shim.git"
 _gitname="shim"
 _gitbranch="master"
 
 _pkgname="shim-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.7.25.g5103c3b
+pkgver=0.8.1.g361716d
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
-url="https://github.com/mjg59/shim"
+url="https://github.com/rhinstaller/shim"
 arch=('x86_64')
 license=('GPL')
 options=('!strip')
