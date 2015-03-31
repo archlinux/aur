@@ -3,7 +3,7 @@
 _pkgname="efitools"
 pkgname="${_pkgname}-git"
 
-pkgver=1.4.2.2.gc33fc28
+pkgver=1.5.3.3.g613cf53
 pkgrel=1
 pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
