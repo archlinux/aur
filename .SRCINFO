@@ -1,6 +1,6 @@
 pkgbase = sudo-selinux
 	pkgdesc = Give certain users the ability to run some commands as root - SELinux support
-	pkgver = 1.8.12
+	pkgver = 1.8.13
 	pkgrel = 1
 	url = http://www.sudo.ws/sudo/
 	install = sudo.install
@@ -12,21 +12,19 @@ pkgbase = sudo-selinux
 	depends = pam-selinux
 	depends = libldap
 	depends = libselinux
-	provides = sudo=1.8.12-1
-	provides = selinux-sudo=1.8.12-1
+	provides = sudo=1.8.13-1
+	provides = selinux-sudo=1.8.13-1
 	conflicts = sudo
 	conflicts = selinux-sudo
 	backup = etc/sudoers
 	backup = etc/pam.d/sudo
-	source = http://www.sudo.ws/sudo/dist/sudo-1.8.12.tar.gz
-	source = http://www.sudo.ws/sudo/dist/sudo-1.8.12.tar.gz.sig
-	source = sudo-1.8.12-move-example-dir-under-the-doc-dir.patch
+	source = http://www.sudo.ws/sudo/dist/sudo-1.8.13.tar.gz
+	source = http://www.sudo.ws/sudo/dist/sudo-1.8.13.tar.gz.sig
 	source = sudo.tmpfiles.conf
 	source = sudo.pam
-	sha256sums = 163b51841de8ad19276581a6782d61f5948f1f72a0a843371a1c167d3dc4f3b0
+	sha256sums = e374e5edf2c11c00d6916a9f51cb0ad15e51c7b028370fa15169b07e61e05a25
 	sha256sums = SKIP
-	sha256sums = a6b3a6066df7fec1bd31cdff33770640bccedb3d57461f61a8b238abea8799b0
-	sha256sums = 080dd97111b3149f8d140ffac68c88acd63da9eacc81fbcc7c43591be13b42fe
+	sha256sums = c1de59f1895373ecb39451372abf9a852518ed6eb3401da864e76a1baf2f20ce
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 
 pkgname = sudo-selinux

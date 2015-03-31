@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=sudo-selinux
-_sudover=1.8.12
+_sudover=1.8.13
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -22,22 +22,13 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
 source=(http://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
-        sudo-1.8.12-move-example-dir-under-the-doc-dir.patch
         sudo.tmpfiles.conf
         sudo.pam)
-sha256sums=('163b51841de8ad19276581a6782d61f5948f1f72a0a843371a1c167d3dc4f3b0'
+sha256sums=('e374e5edf2c11c00d6916a9f51cb0ad15e51c7b028370fa15169b07e61e05a25'
             'SKIP'
-            'a6b3a6066df7fec1bd31cdff33770640bccedb3d57461f61a8b238abea8799b0'
-            '080dd97111b3149f8d140ffac68c88acd63da9eacc81fbcc7c43591be13b42fe'
+            'c1de59f1895373ecb39451372abf9a852518ed6eb3401da864e76a1baf2f20ce'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4')
-
-prepare() {
-  cd "$srcdir/${pkgname/-selinux}-$_sudover"
-
-  # http://bugzilla.sudo.ws/show_bug.cgi?id=682
-  patch -Np1 -i ../sudo-1.8.12-move-example-dir-under-the-doc-dir.patch
-}
 
 build() {
   cd "$srcdir/${pkgname/-selinux}-$_sudover"
@@ -72,6 +63,7 @@ package() {
   rmdir "$pkgdir/run/sudo"
   rmdir "$pkgdir/run"
 
+  # http://bugzilla.sudo.ws/show_bug.cgi?id=689
   install -Dm644 "$srcdir/sudo.tmpfiles.conf" \
     "$pkgdir/usr/lib/tmpfiles.d/sudo.conf"
 
