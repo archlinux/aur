@@ -8,7 +8,7 @@ pkgdesc="WebP library (32 bit)"
 arch=('x86_64')
 url="https://developers.google.com/speed/webp/"
 license=('BSD')
-depends=("${pkgname#*-}=$pkgver" 'lib32-glibc')
+depends=("${pkgname#*-}" 'lib32-glibc')
 makedepends=('gcc-multilib')
 source=("http://downloads.webmproject.org/releases/webp/${pkgname#*-}-$pkgver.tar.gz"{,.asc})
 sha256sums=('efbe0d58fda936f2ed99d0b837ed7087d064d6838931f282c4618d2a3f7390c4'
