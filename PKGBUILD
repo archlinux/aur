@@ -6,7 +6,7 @@
 _pkgname="gummiboot"
 pkgname="${_pkgname}-git"
 
-pkgver=45.1.geb3daf2
+pkgver=48.8.g2bcd919
 pkgrel=1
 pkgdesc="Simple UEFI Boot Manager - GIT Version"
 url="http://freedesktop.org/wiki/Software/gummiboot"
