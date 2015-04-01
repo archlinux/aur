@@ -1,18 +1,13 @@
 pkgbase = raine
 	pkgdesc = A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo
-	pkgver = 0.64.02
+	pkgver = 0.64.4
 	pkgrel = 1
 	url = http://rainemu.swishparty.co.uk
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = nasm
-	depends = sdl_ttf
-	depends = sdl_image
-	depends = sdl_sound
-	depends = muparser
-	depends = glu
-	depends = mesa
+	makedepends = mesa
 	optdepends = raine-artwork: additional background graphics for some games
 	optdepends = raine-emudx: improved graphic and sound files for some classic games
 	optdepends = raine-blend: transparency information for some games
@@ -22,10 +17,21 @@ pkgbase = raine
 	conflicts = neoraine
 	replaces = neoraine
 	options = emptydirs
-	source = raine-0.64.02.tar.gz::http://rainemu.swishparty.co.uk/cgi-bin/gitweb.cgi?p=raine;a=snapshot;h=2629ef6;sf=tgz
-	source = http://rainemu.swishparty.co.uk/html/archive/debian/dists/unstable/main/binary-i386/raine_0.64.02_i386.deb
-	sha256sums = a49fb609741cc55cf3285c04918c10f0d6f282e09a67fd9295130a585fa15a84
-	sha256sums = 085bf8b8d0656c350baec202cdea3aa8362f620e6a0926109b60a42d782b6b57
+	source = raine-0.64.4.tar.gz::http://rainemu.swishparty.co.uk/cgi-bin/gitweb.cgi?p=raine;a=snapshot;h=38ad235;sf=tgz
+	source = http://rainemu.swishparty.co.uk/html/archive/debian/dists/unstable/main/binary-i386/raine_0.64.4_i386.deb
+	sha256sums = 797a444d685a6d268a0814f2c570120a0e2f1765fa98ae0ce14bae90e37f2a06
+	sha256sums = f799bc25f095d9e0685649c280ed28c72ec0d3bb93285c3ed21e7f94e157b7ec
+	depends_i686 = sdl_ttf
+	depends_i686 = sdl_image
+	depends_i686 = sdl_sound
+	depends_i686 = muparser
+	depends_i686 = glu
+	depends_x86_64 = lib32-sdl_ttf
+	depends_x86_64 = lib32-sdl_image
+	depends_x86_64 = lib32-sdl_sound
+	depends_x86_64 = lib32-muparser
+	depends_x86_64 = lib32-glu
+	makedepends_x86_64 = gcc-multilib
 
 pkgname = raine
 
