@@ -5,8 +5,8 @@
 # Contributor: scippio <scippio@berounet.cz>
 
 pkgname=freeimage
-pkgver=3.16.0
-pkgrel=3
+pkgver=3.17.0
+pkgrel=1
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:FIPL')
@@ -14,7 +14,7 @@ url="http://freeimage.sourceforge.net/"
 depends=('gcc-libs')
 makedepends=('dos2unix')
 source=("http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/${pkgver}/FreeImage${pkgver//./}.zip")
-md5sums=('1a2d1fff6204adbd479cc98818892fc1')
+md5sums=('459e15f0ec75d6efa3c7bd63277ead86')
 
 build() {
   cp -r FreeImage FreeImagefip
@@ -35,9 +35,6 @@ package() {
 
   cd ${srcdir}/FreeImagefip
   make -f Makefile.fip DESTDIR=${pkgdir} install
-
-  ln -s libfreeimageplus-${pkgver}.so ${pkgdir}/usr/lib/libfreeimageplus.so
-  ln -s libfreeimageplus-${pkgver}.so ${pkgdir}/usr/lib/libfreeimageplus.so.3
 
   install -D -m644 ${srcdir}/FreeImage/license-fi.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
