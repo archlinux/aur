@@ -3,13 +3,13 @@
 
 pkgname=ewebkit
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'elementary' 'enchant' 'harfbuzz-icu' 'libsoup' 'libxslt')
-makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf' 'chrpath')
+depends=('atk' 'cairo' 'efl' 'enchant' 'harfbuzz-icu' 'libsoup' 'libxslt')
+makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf')
 source=("http://download.enlightenment.org/rel/libs/webkit-efl/$pkgname-$pkgver.tar.xz")
 sha256sums=('d8d21e27f4a21cd77c41914548c184ddb98693ba23851aa66c8e51c0be4b90b7')
 
@@ -21,7 +21,8 @@ build() {
   export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 
   cmake . \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_TOOLS=OFF
 
   make
 }
@@ -30,9 +31,6 @@ package() {
   cd "$srcdir/$pkgname"
 
   make DESTDIR="$pkgdir" install
-
-  chrpath --delete bin/MiniBrowser
-  install -m755 bin/MiniBrowser "$pkgdir/usr/bin/MiniBrowser-ewk"
 
 # install license files
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
