@@ -1,6 +1,6 @@
 pkgbase = vivaldi-snapshot
 	pkgdesc = A new browser for our friends (weekly snapshot)
-	pkgver = 1.0.141.2
+	pkgver = 1.0.142.32
 	pkgrel = 1
 	url = https://vivaldi.com
 	install = vivaldi.install
@@ -21,10 +21,10 @@ pkgbase = vivaldi-snapshot
 	conflicts = vivaldi
 	options = !strip
 	options = !zipman
-	source_i686 = vivaldi-snapshot_1.0.141.2-1_i386.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_1.0.141.2-1_i386.deb
-	sha256sums_i686 = d167f5290a23189c3ec194643f0a1e0dc5d2d40a52971954e08813a6b5ddd140
-	source_x86_64 = vivaldi-snapshot_1.0.141.2-1_amd64.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_1.0.141.2-1_amd64.deb
-	sha256sums_x86_64 = 12ae8f4b2f8713691af1fe2b07d42c7948c6b5fd4b7279f6b3fdfb23d0a31959
+	source_i686 = vivaldi-snapshot_1.0.142.32-1_i386.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_1.0.142.32-1_i386.deb
+	sha256sums_i686 = 3644d97e96d0aa0c515663985f62d97b8419f4e6011f39883e47354b5a90f9b2
+	source_x86_64 = vivaldi-snapshot_1.0.142.32-1_amd64.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_1.0.142.32-1_amd64.deb
+	sha256sums_x86_64 = 8af50525a2c5ce0838d5e52f730b5f0c471a4647621bb4f9e5a0b71d7599dc33
 
 pkgname = vivaldi-snapshot
 
