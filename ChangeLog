@@ -1,8 +1,12 @@
 2014-06-08 FoolEcho <foolecho at gmail dot com>
 
+	* 4.0.0-1 :
+	Update.
+	Dependances use now Qt5 (the binaries should provide all you need).
+
 	* 3.6.0-1 :
 	Moved Copyright to usr/share/licenses/$pkgname/.
-	
+
 	* 3.5.1-1 :
 	Added ChangeLog.
 	End of 32 bits support for Linux.
