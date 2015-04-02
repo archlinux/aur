@@ -1,8 +1,8 @@
 pkgbase = unix-runescape-client
 	pkgdesc = RuneScape client for Linux and Unix
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
-	url = http://hkprojects.weebly.com/runescape-client-for-linux-and-unix.html
+	url = https://github.com/HikariKnight/rsu-client
 	install = unix-runescape-client.install
 	arch = any
 	license = GPL2
@@ -11,6 +11,7 @@ pkgbase = unix-runescape-client
 	depends = perl-wx
 	depends = wget
 	depends = libxtst
+	depends = xdg-utils
 	depends = perl-config-inifiles
 	depends = perl-io-stringy
 	depends = perl-archive-extract
@@ -20,8 +21,8 @@ pkgbase = unix-runescape-client
 	optdepends = p7zip: to extract launcher from .msi
 	optdepends = cairo-nogl: if game crashes during loading/auto-setup
 	conflicts = runescape-client-bin
-	source = unix-runescape-client-4.3.1.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v4.3.1.tar.gz
-	md5sums = 8859e04b426cfbc452a02e9b60296077
+	source = unix-runescape-client-4.3.2.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v4.3.2.tar.gz
+	md5sums = b669c13907161a8a0963f19009c48362
 
 pkgname = unix-runescape-client
 
