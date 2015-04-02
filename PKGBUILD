@@ -1,5 +1,5 @@
 _npmname=jpm
-_npmver=0.0.29
+_npmver=1.0.0
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=$_npmver
 pkgrel=1
@@ -9,7 +9,7 @@ url='https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm'
 license=('custom:MPL2')
 depends=('nodejs')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha1sums=(44dbc9d71ae19a54d3b8d8018e4b996f3261aa43)
+sha1sums=(42c10a9aaabba2b8fc06bfc3c54a8b7bb5eca3f5)
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
