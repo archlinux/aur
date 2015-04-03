@@ -1,0 +1,20 @@
+pkgbase = la-mulana-hib
+	pkgdesc = A "Ruins Exploration Archaeological action game" in which the player seeks the "Anthropo-origin"
+	pkgver = 1.5.5.2
+	pkgrel = 1
+	url = http://la-mulana.com/en/
+	arch = x86_64
+	arch = i686
+	license = custom: commercial
+	depends = sh
+	source = hib://LaMulanaSetup-2015-04-01.sh
+	source = la-mulana-hib.sh
+	sha256sums = e189640c264f4c560faa472d6c26834347c6913cc07c54056852d1ebf5240573
+	sha256sums = a91456f76ff7dccbbd844089e8eac8e8fd85074239954949ad6ec7f421c55dc2
+	depends_x86_64 = lib32-sdl2
+	depends_x86_64 = lib32-openal
+	depends_i686 = sdl2
+	depends_i686 = openal
+
+pkgname = la-mulana-hib
+
