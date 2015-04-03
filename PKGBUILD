@@ -1,10 +1,11 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
+# Contributor: C. Dominik Bódi  dominik.bodi at gmx dot de
 pkgname=debhelper-python
 _pkgname=python3-defaults
 _pkgname2=dh-python
 pkgver=3.4.2
-_pkgver=1.20141111
-pkgrel=4
+_pkgver2=1.20141111
+pkgrel=1
 _pkgrel=2
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -13,18 +14,14 @@ license=('custom:MIT')
 groups=()
 depends=('debhelper' 'python')
 makedepends=()
-checkdepends=()
-optdepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=()
 options=()
-install=
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz
-http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver.orig.tar.xz)
-md5sums=('085af4790d392ee6cba83e65337457b4'
-         '5465c002a76008194172a045b63a8c2c')
+http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver2.orig.tar.xz)
+sha256sums=('96ef5763cae104c181fcf530f84a16537b5727ebc41f1ae6482ce18775556bcf'
+            '726bd70f10d26adb3d2b2b24627ea592ce6508b516dee97319dc303b950a5c1e')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -34,7 +31,7 @@ build() {
   #  sed -i -e '1s|/usr/bin/python3$|/usr/bin/python|' $file
   #done
 
-  cd "$srcdir/$_pkgname2-$_pkgver"
+  cd "$srcdir/$_pkgname2-$_pkgver2"
   make
 }
 
@@ -62,7 +59,7 @@ package() {
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   install -D -m 644 debian/copyright $pkgdir/usr/share/licenses/$pkgname/
 
-  cd "$srcdir/$_pkgname2-$_pkgver"
+  cd "$srcdir/$_pkgname2-$_pkgver2"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
   mkdir -p $pkgdir/usr/share/perl5/vendor_perl
   mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
