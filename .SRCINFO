@@ -1,16 +1,16 @@
 pkgbase = obs-service-source_validator
 	pkgdesc = An OBS source service: running all the osc source-validator checks
-	pkgver = 0.4
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://build.opensuse.org/package/show?package=obs-service-source_validator&project=openSUSE%3AFactory
 	arch = any
 	license = GPL2
 	depends = libxml2
 	depends = perl
-	provides = osc-source_validator=0.4
+	provides = osc-source_validator=0.5
 	conflicts = osc-source_validator<=0.1
-	source = http://download.opensuse.org/source/factory/repo/oss/suse/src/obs-service-source_validator-0.4-2.1.src.rpm
-	sha256sums = 3ca84a4e72472250386ac805a0dde2b30031e169b16e12761a8406c536ccb964
+	source = http://download.opensuse.org/source/factory/repo/oss/suse/src/obs-service-source_validator-0.5-3.1.src.rpm
+	sha256sums = 665857cbbff060c16881e8decb8466270a19c2d1821d34bdadbabd9cce23a6e3
 
 pkgname = obs-service-source_validator
 
