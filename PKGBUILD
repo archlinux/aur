@@ -2,7 +2,7 @@
 
 pkgname=hponcfg
 pkgver=4.3.0_0
-pkgrel=1
+pkgrel=2
 pkgdesc="RILOE II/iLo online configuration utility"
 arch=(i686 x86_64)
 url="http://downloads.linux.hp.com/SDR/downloads/mcp"
@@ -23,4 +23,7 @@ package() {
 	cd "$srcdir"
 	cp -a usr "$pkgdir"
 	cp -a sbin "$pkgdir/usr/bin"
+
+	cd "$pkgdir"/usr
+	[ -d lib64 ] && mv lib64 lib
 }
