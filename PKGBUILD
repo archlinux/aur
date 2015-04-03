@@ -2,10 +2,10 @@
 pkgname=debhelper-python
 _pkgname=python3-defaults
 _pkgname2=dh-python
-pkgver=3.3.2
-_pkgver=1.20131021
+pkgver=3.4.2
+_pkgver=1.20141111
 pkgrel=4
-_pkgrel=17
+_pkgrel=2
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python3"
@@ -23,11 +23,11 @@ options=()
 install=
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz
 http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver.orig.tar.xz)
-md5sums=('abad7f583e166182e3a7b36b82aaf629'
-         '827c911be659b027faf2c9f6d4b668d4')
+md5sums=('085af4790d392ee6cba83e65337457b4'
+         '5465c002a76008194172a045b63a8c2c')
 
 build() {
-  cd "$srcdir/$_pkgname-debian"
+  cd "$srcdir/$_pkgname-$pkgver"
   make
   # python3 works fine as binary
   #for file in {dh_python3,py3clean,py3compile,debian/py3versions.py}; do
@@ -39,7 +39,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_pkgname-debian"
+  cd "$srcdir/$_pkgname-$pkgver"
   sed -i -e 's|/usr/share/python3/debian_defaults|debian/debian_defaults|' \
     debpython/version.py
   make -k check_versions
@@ -48,7 +48,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-debian"
+  cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   mkdir -p $pkgdir/usr/share/python3
