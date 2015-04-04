@@ -1,7 +1,7 @@
 pkgbase = debhelper-python
 	pkgdesc = debhelper scripts for Python 3: py3versions, python3.pm
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/sid/python3
 	arch = any
 	license = custom:MIT

@@ -5,7 +5,7 @@ _pkgname=python3-defaults
 _pkgname2=dh-python
 pkgver=3.4.2
 _pkgver2=1.20141111
-pkgrel=1
+pkgrel=2
 _pkgrel=2
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -61,6 +61,13 @@ package() {
 
   cd "$srcdir/$_pkgname2-$_pkgver2"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
+  
+  # create symlinks to executables in order to make this look like in
+  # debian
+  ln -s -r $pkgdir/usr/share/dh-python/dh_pypy $pkgdir/usr/bin/dh_pypy
+  ln -s -r $pkgdir/usr/share/dh-python/dh_python3 $pkgdir/usr/bin/dh_python3
+  ln -s -r $pkgdir/usr/share/dh-python/pybuild $pkgdir/usr/bin/pybuild
+  
   mkdir -p $pkgdir/usr/share/perl5/vendor_perl
   mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
   # python2.pm is in debhelper-python2
