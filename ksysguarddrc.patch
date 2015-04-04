@@ -1,0 +1,34 @@
+From: David Rosca <nowrep@gmail.com>
+Date: Sun, 29 Mar 2015 17:19:54 +0000
+Subject: Fix opening ksysguarddrc config file
+X-Git-Url: http://quickgit.kde.org/?p=ksysguard.git&a=commitdiff&h=5f045a9f8cb9a859b38862440ed1cd1d6eee3a9b
+---
+Fix opening ksysguarddrc config file
+
+Use KDE_INSTALL_FULL_SYSCONFDIR instead of SYSCONF_INSTALL_DIR and
+remove extra quotes in -DKSYSGUARDDRCFILE definiton.
+
+REVIEW: 123171
+---
+
+
+--- a/example/CMakeLists.txt
++++ b/example/CMakeLists.txt
+@@ -1,3 +1,3 @@
+-install( FILES ksysguarddrc  DESTINATION  ${SYSCONF_INSTALL_DIR} )
++install( FILES ksysguarddrc  DESTINATION  ${KDE_INSTALL_FULL_SYSCONFDIR} )
+ install( FILES ksysguard.notifyrc DESTINATION  ${KNOTIFYRC_INSTALL_DIR} )
+ 
+
+--- a/ksysguardd/CMakeLists.txt
++++ b/ksysguardd/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ # Laurent: Verify that we install it into (kdeprefix)/etc/ and not into /etc
+ # otherwise it's necessary to change it.
+ # into kde 3.x it was installed into /etc/
+-add_definitions( -DKSYSGUARDDRCFILE="\\"${SYSCONF_INSTALL_DIR}/ksysguarddrc\\"" )
++add_definitions( -DKSYSGUARDDRCFILE="${KDE_INSTALL_FULL_SYSCONFDIR}/ksysguarddrc" )
+ 
+ add_definitions(-DOSTYPE_${CMAKE_SYSTEM_NAME})
+ 
+
