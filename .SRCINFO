@@ -1,0 +1,20 @@
+pkgbase = volgarr-the-viking-hib
+	pkgdesc = Hardcore 16-bit style action from the golden era of arcade games, reimagined for today!
+	pkgver = 1.34
+	pkgrel = 1
+	url = http://www.volgarrtheviking.com/
+	arch = x86_64
+	arch = i686
+	license = custom: commercial
+	depends = sh
+	source = hib://VolgarrTheViking_v1.34_Linux32.tar.gz
+	source = volgarr-the-viking-hib.sh
+	sha256sums = e99e42b0dade244080ac17717c1a5caf292b5d2a57d5d3e659eae52e00eca6de
+	sha256sums = 246282e4132b7a8ae25d22aa926ee651164420776b321a69f9a4385a2ec7724a
+	depends_x86_64 = lib32-sdl2
+	depends_x86_64 = lib32-libgl
+	depends_i686 = sdl2
+	depends_i686 = libgl
+
+pkgname = volgarr-the-viking-hib
+
