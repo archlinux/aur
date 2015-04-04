@@ -1,0 +1,19 @@
+pkgbase = unepic-hib
+	pkgdesc = A combination of platforming and role playing games with many hilarious references. It takes place in Harnakon, a huge medieval castle.
+	pkgver = 1.50.5
+	pkgrel = 1
+	url = http://www.unepicgame.com/en/game.html
+	arch = x86_64
+	arch = i686
+	license = custom: commercial
+	depends = sh
+	depends = sdl2_mixer
+	depends = libogg
+	depends = glew
+	source = hib://unepic-15005.run
+	source = unepic-hib.sh
+	sha256sums = 11866de3bfdcac950c5bc29b6b5ff807e64307afef0b7f642378ccfcf2a073c8
+	sha256sums = 2e045f5cf056a3498acaf2dd03811f38a5fc87b10ae55160c53f6634494109ad
+
+pkgname = unepic-hib
+
