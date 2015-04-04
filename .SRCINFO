@@ -1,0 +1,16 @@
+pkgbase = logitech-g710-kmod-git
+	pkgdesc = Linux kernel module to allow use of extra keys on the Logitech g710+ (logitech-g710-linux-driver)
+	pkgver = 20130512
+	pkgrel = 1
+	url = http://github.com/Wattos/logitech-g710-linux-driver
+	install = logitech-g710-kmod.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = linux-headers
+	provides = logitech-g710
+	conflicts = logitech-g710
+
+pkgname = logitech-g710-kmod-git
+
