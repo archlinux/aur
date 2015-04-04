@@ -1,0 +1,26 @@
+pkgbase = super-splatters-hib
+	pkgdesc = Throw a band of semi-suicidal Splatters across the stage, ignite a series of explosions
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://SpikeySnail.com
+	arch = x86_64
+	arch = i686
+	license = custom: commercial
+	depends = sh
+	source = hib://SplattersSetup_linux_1402605762.sh
+	source = super-splatters-hib.sh
+	sha256sums = eb7eb6c3f27197265c66541e9073ff139fda9883f0d3f1f4961d72d6c73fd888
+	sha256sums = 199e369dedf7683b5534dc8140f62a80ea28bdd850a1f43e5d3023193ba434a1
+	depends_x86_64 = lib32-sdl2
+	depends_x86_64 = lib32-openal
+	depends_x86_64 = lib32-zlib
+	depends_x86_64 = lib32-glew
+	depends_x86_64 = lib32-nvidia-cg-toolkit
+	depends_i686 = sdl2
+	depends_i686 = openal
+	depends_i686 = zlib
+	depends_i686 = glew
+	depends_i686 = nvidia-cg-toolkit
+
+pkgname = super-splatters-hib
+
