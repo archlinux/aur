@@ -3,7 +3,7 @@
 
 _pypi_pkgname=PyHamcrest
 pkgbase=${_pypi_pkgname,,}
-pkgname=(python{2,}-hamcrest)
+pkgname=(python{2,}-pyhamcrest)
 pkgver=1.8.2
 pkgrel=1
 pkgdesc='A framework for writing matcher objects, allowing you to declaratively define "match" rules'

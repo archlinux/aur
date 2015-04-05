@@ -10,7 +10,7 @@ pkgbase = pyhamcrest
 	source = https://pypi.python.org/packages/source/P/PyHamcrest/PyHamcrest-1.8.2.tar.gz
 	md5sums = 15606292f56f570302d2db77c8080e21
 
-pkgname = python2-hamcrest
+pkgname = python2-pyhamcrest
 
-pkgname = python-hamcrest
+pkgname = python-pyhamcrest
 
