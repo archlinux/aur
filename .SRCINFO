@@ -9,7 +9,6 @@ pkgbase = pyhamcrest
 	makedepends = python-setuptools
 	source = https://pypi.python.org/packages/source/P/PyHamcrest/PyHamcrest-1.8.2.tar.gz
 	md5sums = 15606292f56f570302d2db77c8080e21
-	sha256sums = 0ffdff8385e2b5efb00e50478e5f41aeecb3b55e934b16817c2536704bbd2a2f
 
 pkgname = python2-hamcrest
 

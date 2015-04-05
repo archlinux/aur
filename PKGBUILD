@@ -13,7 +13,6 @@ license=('BSD')
 makedepends=(python{2,}-setuptools)
 source=("https://pypi.python.org/packages/source/P/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 md5sums=('15606292f56f570302d2db77c8080e21')
-sha256sums=('0ffdff8385e2b5efb00e50478e5f41aeecb3b55e934b16817c2536704bbd2a2f')
 
 build() {
     for pybin in python python2; do
