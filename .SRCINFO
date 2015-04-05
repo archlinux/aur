@@ -1,0 +1,28 @@
+pkgbase = naev-git
+	pkgdesc = 2d action/rpg space game similar to Escape Velocity, development branch
+	pkgver = 0.3.8.r9579.g166f0ed
+	pkgrel = 1
+	url = http://naev.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = libxml2
+	depends = freetype2
+	depends = libpng
+	depends = openal
+	depends = libvorbis
+	depends = binutils
+	depends = libgl
+	depends = libzip
+	provides = naev
+	provides = naev-data
+	conflicts = naev
+	conflicts = naev-data
+	source = git://github.com/naev/naev.git
+	md5sums = SKIP
+
+pkgname = naev-git
+
