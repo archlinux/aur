@@ -1,0 +1,9 @@
+post_install() {
+  echo "Running iscan-registry to register plugins and firmware with iscan"
+  iscan-registry -a interpreter usb 0x04b8 0x012e /usr/lib/iscan/libesint7A /usr/share/iscan/esfw7A.bin
+}
+
+pre_remove() {
+  echo "Unregistering gt-f670 plugins/firmware"
+  iscan-registry -r interpreter usb 0x04b8 0x012e /usr/lib/iscan/libesint7A /usr/share/iscan/esfw7A.bin
+}
