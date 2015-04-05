@@ -1,8 +1,8 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Package Repository: https://github.com/mij-aur-packages/pyhamcrest
 
-_pkgname=PyHamcrest
-pkgbase=${_pkgname,,}
+_pypi_pkgname=PyHamcrest
+pkgbase=${_pypi_pkgname,,}
 pkgname=(python{2,}-hamcrest)
 pkgver=1.8.0
 pkgrel=1
@@ -11,16 +11,16 @@ arch=('any')
 url="https://github.com/hamcrest/PyHamcrest"
 license=('BSD')
 makedepends=(python{2,}-setuptools)
-source=("https://pypi.python.org/packages/source/P/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/P/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 md5sums=('2a999f6909060cb6b81b894b57be7a91')
 sha256sums=('0ffdff8385e2b5efb00e50478e5f41aeecb3b55e934b16817c2536704bbd2a2f')
 
 build() {
     for pybin in python python2; do
-        _dir="${srcdir}/${pybin}-${_pkgname}-${pkgver}"
+        _dir="${srcdir}/${pybin}-${_pypi_pkgname}-${pkgver}"
         mkdir -p "${_dir}"
         cd "${_dir}"
-        cp -r "${srcdir}/${_pkgname}-${pkgver}"/. .
+        cp -r "${srcdir}/${_pypi_pkgname}-${pkgver}"/. .
         ${pybin} setup.py build
     done
 }
@@ -28,7 +28,7 @@ build() {
 _package() {
     pybin=$1
     depends=(${pybin})
-    cd "${srcdir}/${pybin}-${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pybin}-${_pypi_pkgname}-${pkgver}"
     ${pybin} setup.py install --root="${pkgdir}" --optimize=1
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
