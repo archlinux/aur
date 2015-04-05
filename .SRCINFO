@@ -10,7 +10,7 @@ pkgbase = pyhamcrest
 	source = git+https://github.com/hamcrest/PyHamcrest.git
 	md5sums = SKIP
 
-pkgname = python2-hamcrest-git
+pkgname = python2-pyhamcrest-git
 
-pkgname = python-hamcrest-git
+pkgname = python-pyhamcrest-git
 

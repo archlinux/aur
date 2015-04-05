@@ -3,7 +3,7 @@
 
 _pkgname=PyHamcrest
 pkgbase=${_pkgname,,}
-pkgname=(python{2,}-hamcrest-git)
+pkgname=(python{2,}-pyhamcrest-git)
 pkgver=1.8.0.r5.gf2786ca
 pkgrel=1
 pkgdesc='A framework for writing matcher objects, allowing you to declaratively define "match" rules'
