@@ -4,7 +4,7 @@
 _pkgname=PyHamcrest
 pkgbase=${_pkgname,,}
 pkgname=(python{2,}-pyhamcrest-git)
-pkgver=1.8.0.r5.gf2786ca
+pkgver=1.8.2.r18.g6d8389a
 pkgrel=1
 pkgdesc='A framework for writing matcher objects, allowing you to declaratively define "match" rules'
 arch=('any')
@@ -24,7 +24,7 @@ build() {
         _dir="${srcdir}/${pybin}-${_pkgname}-${pkgver}"
         mkdir -p "${_dir}"
         cd "${_dir}"
-        cp -r "${srcdir}/${_pkgname}-${pkgver}"/. .
+        cp -r "${srcdir}/${_pkgname}"/. .
         ${pybin} setup.py build
     done
 }
