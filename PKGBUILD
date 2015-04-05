@@ -3,7 +3,7 @@
 
 pkgname=warzone2100-git
 _gitname=warzone2100
-pkgver=master.SDL.r4090.g758f3b4
+pkgver=master_base.r24.g3176ab1
 pkgrel=1
 pkgdesc="3D realtime strategy game on a future Earth (Git version)"
 arch=('i686' 'x86_64')
