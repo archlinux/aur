@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Ultimate Stunts
+Comment=Remake of the famous DOS-game stunts.
+Exec=ustunts
+Icon=ultimatestunts
+Categories=Game;
+StartupNotify=false

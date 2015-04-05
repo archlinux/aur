@@ -1,0 +1,23 @@
+pkgbase = ultimatestunts
+	pkgdesc = A remake of the famous DOS racing game 'Stunts'/'4D Sports Driving'.
+	pkgver = 0.7.7.1
+	pkgrel = 3
+	url = http://www.ultimatestunts.nl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = freealut
+	depends = libvorbis
+	depends = libgl
+	source = http://downloads.sourceforge.net/sourceforge/ultimatestunts/ultimatestunts-srcdata-0771.tar.gz
+	source = ultimatestunts-metaserver-cpp-add-includes.patch
+	source = ultimatestunts.png
+	source = ultimatestunts.desktop
+	sha256sums = fcc06e4a2ff2c5c1bd937670acdb079140f3ce0efdf00578eb6559a20ebb26d3
+	sha256sums = 29cb962fba6956f87a33744f9a8c593298727738d7b09b7407c8415867a816e5
+	sha256sums = 4ed29f72565e802e7b293e7a7a31cb2ca5fb89380ca2bb29a6f02d0527a86cd1
+	sha256sums = 9787c726c9073564c47b3ef030269fecef778d0f272095b27934f5893f075f87
+
+pkgname = ultimatestunts
+

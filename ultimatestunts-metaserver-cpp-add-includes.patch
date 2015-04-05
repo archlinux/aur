@@ -1,0 +1,13 @@
+--- simulation/metaserver.cpp.bad	2012-09-15 12:52:58.205623553 +0200
++++ simulation/metaserver.cpp	2012-09-15 12:51:26.928953196 +0200
+@@ -14,6 +14,10 @@
+  *   (at your option) any later version.                                   *
+  *                                                                         *
+  ***************************************************************************/
++#include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <string.h>
+ #include <cstdio>
+ #include <cstdlib>
+ #include <sys/types.h>
