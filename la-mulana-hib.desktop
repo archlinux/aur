@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=La-Mulana
+Icon=la-mulana
+Exec=la-mulana
+Categories=Game;
+StartupNotify=false
