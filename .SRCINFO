@@ -1,5 +1,5 @@
 pkgbase = linux-vfio
-	pkgver = 3.19.2
+	pkgver = 3.19.3
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-vfio
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.2.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.2.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.3.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.3.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -23,7 +23,7 @@ pkgbase = linux-vfio
 	source = i915_317.patch
 	sha256sums = be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c
 	sha256sums = SKIP
-	sha256sums = c2e2e745e7bad33f367432280f7a8451e2488b1f851f24e2830f15279fb87b0f
+	sha256sums = cd9474b61b859d68f83ff0b769bafef8489d2090e0a933d2a7e5f76a23cc071a
 	sha256sums = SKIP
 	sha256sums = 704a479de77c9022e5c7a797d2cd7fd0e4ba1f52f9039ec8a80efd57f7e9f0d8
 	sha256sums = 59830f47c1be39f874640d762dca55f972aca549a7a65ba2f1dac184251dabb2
@@ -40,20 +40,20 @@ pkgname = linux-vfio
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-vfio=3.19.2
+	provides = kernel26-vfio=3.19.3
 	conflicts = kernel26-vfio
 	replaces = kernel26-vfio
 	backup = etc/mkinitcpio.d/linux-vfio.preset
 
 pkgname = linux-vfio-headers
 	pkgdesc = Header files and scripts for building modules for Linux-vfio kernel
-	provides = kernel26-vfio-headers=3.19.2
+	provides = kernel26-vfio-headers=3.19.3
 	conflicts = kernel26-vfio-headers
 	replaces = kernel26-vfio-headers
 
 pkgname = linux-vfio-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vfio kernel
-	provides = kernel26-vfio-docs=3.19.2
+	provides = kernel26-vfio-docs=3.19.3
 	conflicts = kernel26-vfio-docs
 	replaces = kernel26-vfio-docs
 
