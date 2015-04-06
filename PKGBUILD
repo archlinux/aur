@@ -1,6 +1,6 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=python-yapsy-hg
-pkgver=306.b04552174a5f
+pkgver=333.25f431f9e003
 pkgrel=1
 pkgdesc='Yet another plugin system  (hg version)'
 arch=('any')
@@ -21,7 +21,7 @@ package() {
 }
 
 pkgver() {
-  cd "${srcdir}/code"
+  cd "${srcdir}/code/package"
   hg identify -ni | awk 'BEGIN{OFS=".";} {print $2,$1}'
 }
 

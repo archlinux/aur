@@ -1,6 +1,6 @@
 pkgbase = python-yapsy-hg
 	pkgdesc = Yet another plugin system (hg version)
-	pkgver = 306.b04552174a5f
+	pkgver = 333.25f431f9e003
 	pkgrel = 1
 	url = http://yapsy.sourceforge.net/
 	arch = any
