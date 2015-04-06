@@ -48,9 +48,7 @@ build() {
 
   ./autogen.sh \
     --prefix=/usr \
-    --sysconfdir=/etc \
-    --enable-wayland-clients \
-    --enable-wayland-egl
+    --sysconfdir=/etc
 
   make
 }
