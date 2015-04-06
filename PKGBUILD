@@ -3,7 +3,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.19.0.18507.1a321b8
+pkgver=0.19.99.19757.7a1163a
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
@@ -18,6 +18,7 @@ optdepends=('acpid: power events on laptop lid close'
             'bluez4: bluetooth module'
             'connman: network module'
             'gdb: create backtraces on crash'
+            'geoclue2: geolocation module'
             'packagekit: packagekit module')
 provides=("$_pkgname=$pkgver" 'notification-daemon')
 conflicts=("$_pkgname")
@@ -29,7 +30,7 @@ source=("git://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   for _i in v_maj v_min v_mic; do
     local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
@@ -41,7 +42,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -55,7 +56,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make DESTDIR="$pkgdir" install
 
