@@ -1,8 +1,8 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=firefox-extension-ublock
-pkgver=0.9.0.0
-pkgrel=1
+pkgver=0.9.3.0
+pkgrel=2
 pkgdesc='Finally, an efficient blocker. Easy on CPU and memory.'
 url=https://github.com/chrisaljoudi/uBlock
 arch=('any')
