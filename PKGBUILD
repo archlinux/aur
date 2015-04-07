@@ -1,4 +1,4 @@
-# Maintainer: Thermi <noel[ at ] familie-kuntze.de>
+## Maintainer: Thermi <noel[ at ] familie-kuntze.de>
 # Submitter: nullie
 pkgname=lsyncd
 pkgver=2.1.5
@@ -27,5 +27,5 @@ build() {
 package() {
   cd $srcdir/$pkgname-release-$pkgver
   make DESTDIR=$pkgdir install
-  install ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/
+  install -D ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/lsyncd.service
 }
