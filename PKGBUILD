@@ -4,21 +4,19 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=(pypy-pip pypy3-pip)
-pkgver=6.0.8
-pkgrel=2
+pkgver=6.1.1
+pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
 arch=('any')
 license=('MIT')
 makedepends=('pypy-setuptools' 'pypy3-setuptools') # pypy included in pypy-setuptools
 source=(http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz)
-md5sums=('2332e6f97e75ded3bddde0ced01dbda3')
-sha256sums=('0d58487a1b7f5be2e5e965c11afbea1dc44ecec8069de03491a4d0d6c85f4551')
+sha256sums=('89f3b626d225e08e7f20d85044afa40f612eb3284484169813dc2d0631f2a556')
 
 executable_files=(
   __init__.py
   _vendor/requests/packages/chardet/chardetect.py
-  _vendor/certifi/core.py
   _vendor/requests/certs.py
 )
 
