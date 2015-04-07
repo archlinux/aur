@@ -9,10 +9,13 @@ url="https://github.com/axkibe/lsyncd"
 license=('GPL2')
 depends=('lua' 'rsync')
 makedepends=('asciidoc')
-source=(https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz
-                configure-a2x-fix.patch)
-sha1sums=('2b8eb169365edc54488a97435bbd39ae4a6731b8'
-          'f76243d96dc7930eadd59a81aea516b666569749')
+source=("https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz"
+	"lsyncd.service"
+        "configure-a2x-fix.patch")
+
+sha256sums=('aa82fd9bf5737395e374650720c02f033d74a7101b57878ac92f5720ae9e7ece'
+            '0d6235f41c878f23d3b07f79a8beda3766ca251e6eaaeb00796b1805fd6ab818'
+            'dff13f88a2fe7103ba4daa22b45c1fb188142571ae064209ec5b956cd6aae6e7')
  
 build() {
   cd $srcdir/$pkgname-release-$pkgver
@@ -25,4 +28,5 @@ build() {
 package() {
   cd $srcdir/$pkgname-release-$pkgver
   make DESTDIR=$pkgdir install
+  install ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/
 }

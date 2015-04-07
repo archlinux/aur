@@ -10,9 +10,11 @@ pkgbase = lsyncd
 	depends = lua
 	depends = rsync
 	source = https://github.com/axkibe/lsyncd/archive/release-2.1.5.tar.gz
+	source = lsyncd.service
 	source = configure-a2x-fix.patch
-	sha1sums = 2b8eb169365edc54488a97435bbd39ae4a6731b8
-	sha1sums = f76243d96dc7930eadd59a81aea516b666569749
+	sha256sums = aa82fd9bf5737395e374650720c02f033d74a7101b57878ac92f5720ae9e7ece
+	sha256sums = 0d6235f41c878f23d3b07f79a8beda3766ca251e6eaaeb00796b1805fd6ab818
+	sha256sums = dff13f88a2fe7103ba4daa22b45c1fb188142571ae064209ec5b956cd6aae6e7
 
 pkgname = lsyncd
 
