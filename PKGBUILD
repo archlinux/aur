@@ -14,9 +14,8 @@ source=("https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz"
         "configure-a2x-fix.patch")
 
 sha256sums=('aa82fd9bf5737395e374650720c02f033d74a7101b57878ac92f5720ae9e7ece'
-            '0d6235f41c878f23d3b07f79a8beda3766ca251e6eaaeb00796b1805fd6ab818'
-            'dff13f88a2fe7103ba4daa22b45c1fb188142571ae064209ec5b956cd6aae6e7')
- 
+            '538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57'
+            'dff13f88a2fe7103ba4daa22b45c1fb188142571ae064209ec5b956cd6aae6e7') 
 build() {
   cd $srcdir/$pkgname-release-$pkgver
   patch -Np1 -i ../configure-a2x-fix.patch

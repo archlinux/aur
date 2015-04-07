@@ -13,7 +13,7 @@ pkgbase = lsyncd
 	source = lsyncd.service
 	source = configure-a2x-fix.patch
 	sha256sums = aa82fd9bf5737395e374650720c02f033d74a7101b57878ac92f5720ae9e7ece
-	sha256sums = 0d6235f41c878f23d3b07f79a8beda3766ca251e6eaaeb00796b1805fd6ab818
+	sha256sums = 538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57
 	sha256sums = dff13f88a2fe7103ba4daa22b45c1fb188142571ae064209ec5b956cd6aae6e7
 
 pkgname = lsyncd
