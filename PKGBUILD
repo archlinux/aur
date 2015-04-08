@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=28.0.1750.48
+pkgver=28.0.1750.51
 pkgrel=1
 pkgdesc="A fast and secure web browser and Internet suite."
 url="http://www.opera.com/"
@@ -58,6 +58,6 @@ package() {
 		"$pkgdir/usr/share/licenses/$pkgname/copyright"
 }
 
-sha256sums=('73c39cdbd1d1dd0a7307b1ecb938a1c4d620453d509c3f4dbcd4066c96bea2a0'
+sha256sums=('2c73cf04b70fe95e674a16c98727ba2a9a6b1fbd8bfb5df3a3ba911330c69543'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
