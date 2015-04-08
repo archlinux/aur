@@ -1,0 +1,18 @@
+pkgbase = spdylay
+	pkgdesc = The experimental SPDY protocol version 2, 3 and 3.1 implementation in C
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://tatsuhiro-t.github.io/spdylay/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libevent
+	depends = libxml2
+	depends = openssl
+	depends = zlib
+	backup = etc/shrpx/shrpx.conf
+	source = https://github.com/tatsuhiro-t/spdylay/releases/download/v1.3.2/spdylay-1.3.2.tar.gz
+	sha256sums = 7b435d477ed5ecf74959e9c0ef357212bb75e7b97cdbaceba8d1d64c3c4c6e90
+
+pkgname = spdylay
+
