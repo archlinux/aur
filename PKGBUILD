@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.19
 pkgver=3.19.3
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,7 +20,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-fix-btrfs-mount-deadlock.patch')
+        '0001-fix-btrfs-mount-deadlock.patch'
+        '0001-fixup-drm.patch')
 sha256sums=('be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c'
             'SKIP'
             'cd9474b61b859d68f83ff0b769bafef8489d2090e0a933d2a7e5f76a23cc071a'
@@ -54,6 +55,9 @@ prepare() {
   # fix #44495 and #44385 deadlock on btrfs mount
   # https://btrfs.wiki.kernel.org/index.php/Gotchas
   patch -Np1 -i "${srcdir}/0001-fix-btrfs-mount-deadlock.patch"
+
+  # fix #44491
+  patch -Np1 -i "${srcdir}/0001-fixup-drm.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -301,3 +305,13 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+sha256sums=('be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c'
+            'SKIP'
+            'cd9474b61b859d68f83ff0b769bafef8489d2090e0a933d2a7e5f76a23cc071a'
+            'SKIP'
+            '704a479de77c9022e5c7a797d2cd7fd0e4ba1f52f9039ec8a80efd57f7e9f0d8'
+            '59830f47c1be39f874640d762dca55f972aca549a7a65ba2f1dac184251dabb2'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '5967cf53cb9db9f070e8f346c3d7045748e4823a7fe2ee330acd18c9d02bbb77'
+            '911872ef7000af471e649aaeb3490094a0b4c1514ca1024757ca2e90ac1d2a3d')
