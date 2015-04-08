@@ -1,0 +1,13 @@
+[Unit]
+Description=Confluence
+After=network.target
+
+[Service]
+Type=forking
+User=confluence
+EnvironmentFile=-/etc/conf.d/confluence
+ExecStart=/opt/atlassian-confluence/bin/startup.sh
+ExecStop=/opt/atlassian-confluence/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
