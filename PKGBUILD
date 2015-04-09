@@ -25,24 +25,6 @@ options=(!strip)
 source=("http://downloads.bitwig.com/bitwig-studio-${pkgver}.deb")
 md5sums=('09258a0707d71311d28e72b87ed4436e')
 
-_archive=("bitwig-studio-${pkgver}.deb")
-_archive_md5="${md5sums[0]}"
-
-build() {
-  cd $srcdir
-
-  if [ ! -f ${_archive} ]
-  then
-     wget -r -np -nd -H "http://packs.bitwig.com/downloads/${_archive}"
-  fi
-
-  if ! echo "${_archive_md5}  ${_archive}" | md5sum -c --quiet
-  then
-    echo "Invalid checksum for ${_archive}"
-    return 1
-  fi
-}
-
 package() {
   cd $srcdir
 
