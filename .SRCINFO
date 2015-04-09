@@ -7,7 +7,7 @@ pkgbase = eml2mbox
 	license = LGPL2.1
 	depends = ruby>=2.0.0_p0-1
 	source = https://raw.github.com/yardenac/eml2mbox/master/eml2mbox.rb
-	md5sums = 0449ec5a9a6be1459a98354c64c2f9d8
+	sha512sums = 21687b7c099346627819c1ce9ad28ee0ca62abfc288b7553f4d59e45067deedfedeabbcfba58ac5b4619542632e0f01b42d54cab732fe83c9787c9b15473bea2
 
 pkgname = eml2mbox
 
