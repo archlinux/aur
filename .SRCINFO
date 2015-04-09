@@ -1,0 +1,17 @@
+pkgbase = epulse-git
+	pkgdesc = Audio control written for EFL based off of pavucontrol
+	pkgver = 0.1.r16.ba82669
+	pkgrel = 1
+	url = http://www.enlightenment.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = elementary-git
+	provides = epulse=0.1.r16.ba82669
+	conflicts = epulse
+	source = git://git.enlightenment.org/devs/ceolin/epulse.git
+	md5sums = SKIP
+
+pkgname = epulse-git
+
