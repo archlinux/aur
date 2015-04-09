@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.16.0
+pkgver=3.16.1
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
 arch=(any)
@@ -23,7 +23,7 @@ depends=(
   'mingw-w64-pango>=1.36.7')
 options=(!strip !buildflags staticlibs)
 source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
-sha256sums=('ce617318fe18092383cf6ed5d8c688a95a97f2d4c68481317a6a531e288c26ea')
+sha256sums=('9f9716a8c7f8dc149f767718e25fed41984b504a00fd0919b1a4969ca2e4db31')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
