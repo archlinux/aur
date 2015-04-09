@@ -1,0 +1,15 @@
+pkgbase = qpakman
+	pkgdesc = A command-line tool for managing PAK and WAD files from QuakeI/II & Hexen II
+	pkgver = 0.67
+	pkgrel = 1
+	url = https://github.com/bunder/qpakman
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = libpng
+	source = qpakman-0.67.tar.gz::https://github.com/bunder/qpakman/archive/v0.67.tar.gz
+	md5sums = 7ca54ad88b80b5f00d0eb0bd61ca27c0
+
+pkgname = qpakman
+
