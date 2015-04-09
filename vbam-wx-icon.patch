@@ -1,0 +1,18 @@
+diff -rupN vbam.orig/src/wx/CMakeLists.txt vbam/src/wx/CMakeLists.txt
+--- vbam.orig/src/wx/CMakeLists.txt	2015-04-09 10:39:02.684326894 +0200
++++ vbam/src/wx/CMakeLists.txt	2015-04-09 10:39:28.696831250 +0200
+@@ -76,6 +76,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/ic
+ ADD_CUSTOM_COMMAND(OUTPUT wxvbam.xrs
+                    # doing this in its own dir prevents name prefixes
+ 		   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/wxvbam.xrc wxvbam.xrc
++		   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/vbam.png vbam.png
+                    COMMAND wxrc wxvbam.xrc -o wxvbam.xrs
+                    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+ 		   DEPENDS wxvbam.xrc)
+@@ -184,4 +185,4 @@ if(APPLE)
+     SET_SOURCE_FILES_PROPERTIES(wxvbam.icns PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+ endif(APPLE)
+     
+-SET(WX_EXE_NAME wxvbam${CMAKE_EXECUTABLE_SUFFIX})
+\ No newline at end of file
++SET(WX_EXE_NAME wxvbam${CMAKE_EXECUTABLE_SUFFIX})
