@@ -1,6 +1,6 @@
 pkgbase = https-everywhere
 	pkgdesc = Chrome/Chromium extension to use HTTPS whenever possible - git/dev
-	pkgver = 35361.aac5f85
+	pkgver = 36554.d8f6b8e
 	pkgrel = 1
 	url = https://www.eff.org/https-everywhere
 	arch = any
