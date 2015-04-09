@@ -4,20 +4,25 @@
 
 pkgname=clutter
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GObject based library for creating fast, visually rich graphical user interfaces"
 arch=('i686' 'x86_64')
 url="http://clutter-project.org/"
 license=('LGPL')
-depends=('cogl' 'mesa' 'json-glib' 'atk' 'libxi' 'libxkbcommon' 'libinput')
-makedepends=('gobject-introspection')
+depends=('gtk3' 'cogl' 'libinput')
+makedepends=('gobject-introspection' 'gtk-doc')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
 sha256sums=('5225fef91f717118654a5b98e24f2018d09ca3c37d61ecff84f77069de0fbf54')
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr --enable-introspection \
-    --enable-wayland-backend --enable-egl-backend --enable-evdev-input \
+  ./configure --prefix=/usr \
+    --enable-introspection \
+    --enable-egl-backend \
+    --enable-gdk-backend \
+    --enable-wayland-backend \
+    --enable-x11-backend \
+    --enable-evdev-input \
     --enable-wayland-compositor
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
