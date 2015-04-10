@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gtk3
 pkgver=3.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
 arch=(any)
 url='http://www.gtk.org'
@@ -16,6 +16,7 @@ makedepends=(
   'python2') # python2 is required to run gdbus-codegen
 depends=(
   'mingw-w64-crt'
+  'mingw-w64-adwaita-icon-theme'
   'mingw-w64-atk>=2.15.1'
   'mingw-w64-cairo>=1.14.0'
   'mingw-w64-gdk-pixbuf2>=2.30.0'
