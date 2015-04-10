@@ -4,7 +4,7 @@
 # Contributor: Magnus Therning <magnus@therning.org>
 
 pkgname=ocaml-oasis
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Architecture for building OCaml libraries and applications.'
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ makedepends=('ocaml'
              'ocaml-ocamlmod'
              'ocaml-pcre'
              'ocaml-expect>=0.0.3')
-source=("http://forge.ocamlcore.org/frs/download.php/1391/oasis-${pkgver}.tar.gz")
-sha512sums=('1abb6e01f93029c5d9af3422a0e93b215182577225ad949442a4b69d0904620c20547941bad96fb27ad0034a0a4b472b586aac2614e89f5faae3084b751ed3c8')
+source=("http://forge.ocamlcore.org/frs/download.php/1475/oasis-${pkgver}.tar.gz")
+sha512sums=('97d5401762ffda6bf4d7a239d9c77f8647d58da1728925e6de6e8fdfded6f8e7bb69652a838b86ab7203cd68436b06f76921c76840b97db56a94bb87d74450d7')
 options=(!strip)
 
 build() {
