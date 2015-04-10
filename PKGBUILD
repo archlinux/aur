@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.12.99.28371.513d6f3
+pkgver=1.14.0alpha1.30061.dea4bcf
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -11,8 +11,7 @@ url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
          'libgl' 'libinput' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama'
-         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'shared-mime-info' 'wayland')
-  [[ ! $(pacman -T "openjpeg") ]] && depends+=('openjpeg') #jpeg2k loader is autodetected at build time
+         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'openjpeg' 'shared-mime-info' 'wayland')
 makedepends=('git' 'python2')
 optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
             'geoclue: For elocation'

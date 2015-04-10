@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.12.99.28371.513d6f3
+	pkgver = 1.14.0alpha1.30061.dea4bcf
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -31,9 +31,9 @@ pkgbase = efl-git
 	depends = libxp
 	depends = libxrandr
 	depends = libxss
+	depends = openjpeg
 	depends = shared-mime-info
 	depends = wayland
-	depends = openjpeg
 	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
 	optdepends = geoclue: For elocation
 	optdepends = gst-plugins-base: Access more types of video in Emotion
@@ -42,7 +42,7 @@ pkgbase = efl-git
 	optdepends = gst-plugins-ugly: Access more types of video in Emotion
 	optdepends = gst-libav: Access video with ffmpeg/libav in Emotion
 	optdepends = python2: Compare Eina benchmarks
-	provides = efl=1.12.99.28371.513d6f3
+	provides = efl=1.14.0alpha1.30061.dea4bcf
 	provides = elocation-git
 	conflicts = efl
 	conflicts = elocation-git
