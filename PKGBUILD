@@ -3,9 +3,9 @@
 # Contributor: Andreas Wagner <a.wagner@stud.uni-frankfurt.de>
 
 pkgname=lockdev
-pkgver=1.0.3_1.5
+pkgver=1.0.3_1.6
 _pkgver=1.0.3
-pkgrel=4
+pkgrel=1
 pkgdesc='Run-time shared library for locking devices, using _both_ FSSTND and SVr4 methods.'
 url='http://packages.qa.debian.org/l/lockdev.html'
 license=("GPL")
@@ -16,7 +16,7 @@ source=("http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${_pkgve
 	'build.patch'
 	'gcc-4.7.patch')
 md5sums=('64b9c1b87b125fc348e892e24625524a'
-         'c4e8a5a2e46b76b48339c232b358f579'
+         '5ef6267c42fca9145e0af006ccb6aff7'
          '2db93cadf6670ddcd01de4bfc22a35e1'
          'e16faebfa2d162d40830ef6f2700b7ba')
 
