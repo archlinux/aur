@@ -15,7 +15,6 @@ pkgbase = mingw-w64-gtk2
 	depends = mingw-w64-glib2>=2.28.0
 	depends = mingw-w64-cairo>=1.6
 	depends = mingw-w64-gdk-pixbuf2>=2.21.0
-	options = !libtool
 	options = !strip
 	options = !buildflags
 	options = staticlibs

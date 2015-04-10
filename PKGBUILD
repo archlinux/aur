@@ -17,7 +17,7 @@ depends=(
   'mingw-w64-glib2>=2.28.0'
   'mingw-w64-cairo>=1.6'
   'mingw-w64-gdk-pixbuf2>=2.21.0')
-options=(!libtool !strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs)
 source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
 sha256sums=("20cb10cae43999732a9af2e9aac4d1adebf2a9c2e1ba147050976abca5cd24f4")
 
