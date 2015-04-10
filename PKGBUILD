@@ -2,7 +2,7 @@
 # Contributor: Aurélien Wailly <aurelien.wailly@gmail.com>
 
 pkgname=netcf
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A library for configuring network interfaces"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://fedorahosted.org/netcf/"
 depends=('augeas>=0.7.4' 'netctl' 'libxslt' 'libxml2' 'libnl')
 makedepends=('gcc')
 source=("https://fedorahosted.org/released/netcf/$pkgname-$pkgver.tar.gz")
-md5sums=('042f1c67f0d63d612d7481492eb91b54')
+md5sums=('8edfc9a5856468ae4f8ee97415a3dbf3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
