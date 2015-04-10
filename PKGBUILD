@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gdk-pixbuf2
 pkgver=2.31.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An image loading library (mingw-w64)'
 arch=(any)
 url='http://www.gtk.org'
@@ -40,9 +40,8 @@ package() {
     cd "build-${_arch}"
     make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip -x
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
+    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
+    find "$pkgdir/usr/${_arch}" -name '*.a' | xargs -rtl1 ${_arch}-strip -g
     cd ..
   done
 }
