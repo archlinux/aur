@@ -2,10 +2,11 @@
 
 pkgname=mingw-w64-gtk3
 pkgver=3.16.1
-pkgrel=2
+pkgrel=3
 pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
 arch=(any)
 url='http://www.gtk.org'
+install="${pkgname}.install"
 license=('LGPL')
 makedepends=(
   'mingw-w64-gcc'
