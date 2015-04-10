@@ -4,7 +4,7 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
-pkgver=4.7.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}-1.tar.bz2")
-sha1sums=('66faf7f08929b6c4c06ea665d195856aa43a3ee5')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha1sums=('d44ab133f152b84599507dd6a02aef4b22033dd4')
 
 build() {
   mkdir build
@@ -50,7 +50,7 @@ package_digikam() {
 
   # Put these in the relevant splitted packages
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/kipiplugin*.mo
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
+  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
 }
@@ -64,11 +64,16 @@ package_libkgeomap() {
 
   cd ../../../build/po
   make DESTDIR="${pkgdir}" install
-  # Put these in the relevant splitted packages
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/kipiplugin*.mo
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
-  # Fix conflicts with kde-l10n-* (FS#33762)
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
+
+  # No (localized) documentation for libkgeomap in 4.9.0
+  rm -rf "${pkgdir}"/usr/share/locale
+
+  ## Put these in the relevant splitted packages
+  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/kipiplugin*.mo
+  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
+  ## Fix conflicts with kde-l10n-* (FS#33762)
+  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
+
 }
 
 package_libkvkontakte() {
@@ -106,7 +111,7 @@ package_kipi-plugins() {
   cd ../../../build/po
   make DESTDIR="${pkgdir}" install
   # Put these in the relevant splitted packages
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap.mo
+  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap.mo
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
