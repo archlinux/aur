@@ -17,7 +17,7 @@ pkgbase = evas_generic_loaders-git
 	optdepends = gst-plugins-bad: Video thumbnails
 	optdepends = gst-plugins-ugly: Video thumbnails
 	optdepends = gst-libav: Video thumbnails
-	optdepends = libreoffice-common: Office document thumbnails
+	optdepends = libreoffice: Office document thumbnails
 	provides = evas_generic_loaders=1.14.0alpha1.168.5116cfd
 	conflicts = evas_generic_loaders
 	options = debug

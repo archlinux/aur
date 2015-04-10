@@ -17,7 +17,7 @@ optdepends=('gst-plugins-base: Video thumbnails'
             'gst-plugins-bad: Video thumbnails'
             'gst-plugins-ugly: Video thumbnails'
             'gst-libav: Video thumbnails'
-            'libreoffice-common: Office document thumbnails')
+            'libreoffice: Office document thumbnails')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('debug')
