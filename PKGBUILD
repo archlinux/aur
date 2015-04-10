@@ -1,7 +1,7 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _plugin_name=https-everywhere
-_plugin_version=5.0.1
+_plugin_version=5.0.2
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
 pkgrel=1
@@ -13,7 +13,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://www.eff.org/files/https-everywhere-${_plugin_version}.xpi")
 noextract=("https://www.eff.org/files/https-everywhere-${_plugin_version}.xpi")
-sha256sums=('6cd9b9d9a2a7d02a3d3285d15e824189e931f97feecde77be015d80f8cb8d927')
+sha256sums=('a600ad019c982c8c90b8c5022dbf56722974bc1143f49c0db77704986f1b2ced')
 
 prepare() {
   cd $srcdir
