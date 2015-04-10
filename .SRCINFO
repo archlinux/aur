@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-hicolor-icon-theme
+	pkgdesc = Freedesktop.org Hicolor icon theme (mingw-w64)
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://icon-theme.freedesktop.org/wiki/HicolorTheme
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-configure
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.15.tar.xz
+	sha256sums = 9cc45ac3318c31212ea2d8cb99e64020732393ee7630fa6c1810af5f987033cc
+
+pkgname = mingw-w64-hicolor-icon-theme
+
