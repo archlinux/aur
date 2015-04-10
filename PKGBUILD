@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.0.142.32
+pkgver=1.0.151.7
 pkgrel=1
 pkgdesc='A new browser for our friends (weekly snapshot)'
 url="https://vivaldi.com"
@@ -15,8 +15,8 @@ optdepends=('ffmpeg: playback of proprietary formats')
 conflicts=('vivaldi')
 source_i686=("vivaldi-snapshot_${pkgver}-1_i386.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_${pkgver}-1_i386.deb")
 source_x86_64=("vivaldi-snapshot_${pkgver}-1_amd64.deb::https://vivaldi.com/download/download.php?f=vivaldi-snapshot_${pkgver}-1_amd64.deb")
-sha256sums_i686=('3644d97e96d0aa0c515663985f62d97b8419f4e6011f39883e47354b5a90f9b2')
-sha256sums_x86_64=('8af50525a2c5ce0838d5e52f730b5f0c471a4647621bb4f9e5a0b71d7599dc33')
+sha256sums_i686=('9dcd45ff60bc2dfc92a173459fe757f9b645d49cdf64baadb6cd6f769d7ecfc7')
+sha256sums_x86_64=('d2e0ab75735ebf6545269b7841789d739de975a96d0cdcd3436745a84472a99c')
 
 package() {
 	tar -xf data.tar.xz --exclude={usr/share/{lintian,menu},etc} -C "$pkgdir/"
