@@ -1,8 +1,8 @@
 # Maintainer: Slash <demodevil5 [at] yahoo [dot] com>
 
 pkgname=maraschinoproject-git
-pkgver=v0.3.0.r230.gf16c775
-pkgrel=2
+pkgver=0.3.0.r282.gebd9222
+pkgrel=1
 pkgdesc="Web-based frontend for XBMC, Sickbeard, Sabnzbd, and more."
 arch=('any')
 url="http://www.maraschinoproject.com/"
@@ -21,7 +21,7 @@ sha256sums=('b711e56f3275aa2e600a737471e2f3d8adc0eb7452e7fbf0937cb4584f939e48'
 
 pkgver() {
     cd "${srcdir}/maraschino"
-    git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -E 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
