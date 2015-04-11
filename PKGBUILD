@@ -3,9 +3,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
-pkgname=('digikam' 'kipi-plugins' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
+pkgname=('digikam' 'kipi-plugins' 'libkvkontakte' 'libmediawiki')
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
-	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface')
+	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('d44ab133f152b84599507dd6a02aef4b22033dd4')
 
@@ -25,9 +25,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_tests=OFF \
-    -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
-    -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON \
-    -DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
     -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON \
     -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON 
   make
@@ -43,9 +40,11 @@ package_digikam() {
 
   cd build/core
   make DESTDIR="${pkgdir}" install
-  cd ../../build/doc
+  cd ../../build/doc/digikam/digikam
   make DESTDIR="${pkgdir}" install
-  cd ../../build/po
+  cd ../showfoto
+  make DESTDIR="${pkgdir}" install
+  cd ../../../../build/po
   make DESTDIR="${pkgdir}" install
 
   # Put these in the relevant splitted packages
@@ -53,27 +52,6 @@ package_digikam() {
   #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
-}
-
-package_libkgeomap() {
-  pkgdesc="A wrapper around world map components for browsing and arranging photos on a map"
-  depends=('kdelibs' 'kdeedu-marble')
-
-  cd build/extra/libkgeomap
-  make DESTDIR="${pkgdir}" install
-
-  cd ../../../build/po
-  make DESTDIR="${pkgdir}" install
-
-  # No (localized) documentation for libkgeomap in 4.9.0
-  rm -rf "${pkgdir}"/usr/share/locale
-
-  ## Put these in the relevant splitted packages
-  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/kipiplugin*.mo
-  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
-  ## Fix conflicts with kde-l10n-* (FS#33762)
-  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
-
 }
 
 package_libkvkontakte() {
@@ -115,4 +93,7 @@ package_kipi-plugins() {
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
+
+  cd ../../build/doc/kipi-plugins
+  make DESTDIR="${pkgdir}" install
 }
