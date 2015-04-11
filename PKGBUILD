@@ -2,7 +2,7 @@
 
 gitname=moviepy
 pkgname=python2-${gitname}-git
-pkgver=211.3fef00d
+pkgver=257.7a4b32d
 pkgrel=1
 pkgdesc="Script-based movie editing with python2 (git version)"
 arch=('any')
