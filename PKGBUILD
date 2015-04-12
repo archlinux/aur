@@ -2,7 +2,7 @@
 
 pkgname=glib-networking
 pkgver=2.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network-related giomodules for glib"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
