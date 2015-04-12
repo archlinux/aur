@@ -4,7 +4,7 @@
 _pypi_pkgname=PyHamcrest
 pkgbase=${_pypi_pkgname,,}
 pkgname=(python{2,}-pyhamcrest)
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='A framework for writing matcher objects, allowing you to declaratively define "match" rules'
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/hamcrest/PyHamcrest"
 license=('BSD')
 makedepends=(python{2,}-setuptools)
 source=("https://pypi.python.org/packages/source/P/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-md5sums=('15606292f56f570302d2db77c8080e21')
+md5sums=('5ba6963490c91cd3081611f2d63dd142')
 
 build() {
     for pybin in python python2; do
