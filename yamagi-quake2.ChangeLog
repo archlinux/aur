@@ -1,3 +1,10 @@
+2015-04-12 carstene1ns <arch carsten-teibes de>
+
+	* 5.25-1 :
+	new upstream release.
+	disabled rpath
+	removed unnecessary dependencies
+
 2015-03-14 carstene1ns <arch carsten-teibes de>
 
 	* 5.24-1 :
