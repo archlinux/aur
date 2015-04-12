@@ -1,0 +1,12 @@
+pkgbase = zd1201-firmware
+	pkgdesc = Non-free firmware for zd1201 devices.
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://linux-lc100020.sourceforge.net
+	arch = any
+	license = unknown
+	source = http://prdownloads.sourceforge.net/linux-lc100020/zd1201-0.14-fw.tar.gz
+	md5sums = 07a4febc365121f975e2c5e59791d55d
+
+pkgname = zd1201-firmware
+
