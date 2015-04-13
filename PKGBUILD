@@ -1,6 +1,5 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
-
 pkgname=lighthouse-bitcoin
 pkgver=25
 pkgrel=1
