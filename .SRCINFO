@@ -1,6 +1,6 @@
 pkgbase = linux-vfio
-	pkgver = 3.19.3
-	pkgrel = 3
+	pkgver = 4.0
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -11,28 +11,20 @@ pkgbase = linux-vfio
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.3.xz
-	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.3.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	source = change-default-console-loglevel.patch
-	source = 0001-fix-btrfs-mount-deadlock.patch
-	source = 0001-fixup-drm.patch
 	source = override_for_missing_acs_capabilities.patch
 	source = i915_317.patch
-	sha256sums = be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
 	sha256sums = SKIP
-	sha256sums = cd9474b61b859d68f83ff0b769bafef8489d2090e0a933d2a7e5f76a23cc071a
-	sha256sums = SKIP
-	sha256sums = 704a479de77c9022e5c7a797d2cd7fd0e4ba1f52f9039ec8a80efd57f7e9f0d8
-	sha256sums = 59830f47c1be39f874640d762dca55f972aca549a7a65ba2f1dac184251dabb2
+	sha256sums = b4017f3a0192679639769b9903e7195deaf29a9f6033e2c8abc4cb4fa0e350b0
+	sha256sums = 52b577ea1de80fa2ed419e5333d4b3756d91e268764a729ea2f02cd87bb223c5
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 5967cf53cb9db9f070e8f346c3d7045748e4823a7fe2ee330acd18c9d02bbb77
-	sha256sums = 911872ef7000af471e649aaeb3490094a0b4c1514ca1024757ca2e90ac1d2a3d
 	sha256sums = 7320b4abc2918cfb0cb084330a7470887e9a9cfb6496381460bcf4085eb62e0f
 	sha256sums = f86ce528b63f198b84c4d8d92d35329aa4000d462217dc2db03bac5eb693cf19
 
@@ -44,20 +36,20 @@ pkgname = linux-vfio
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-vfio=3.19.3
+	provides = kernel26-vfio=4.0
 	conflicts = kernel26-vfio
 	replaces = kernel26-vfio
 	backup = etc/mkinitcpio.d/linux-vfio.preset
 
 pkgname = linux-vfio-headers
 	pkgdesc = Header files and scripts for building modules for Linux-vfio kernel
-	provides = kernel26-vfio-headers=3.19.3
+	provides = kernel26-vfio-headers=4.0
 	conflicts = kernel26-vfio-headers
 	replaces = kernel26-vfio-headers
 
 pkgname = linux-vfio-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vfio kernel
-	provides = kernel26-vfio-docs=3.19.3
+	provides = kernel26-vfio-docs=4.0
 	conflicts = kernel26-vfio-docs
 	replaces = kernel26-vfio-docs
 
