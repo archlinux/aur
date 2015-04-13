@@ -2,26 +2,25 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=3.19
+_basekernel=4.0
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.3
+pkgver=${_basekernel}.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         'config'
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('d77bfd9b1cd524ac50bb5a93808955be2f9bcd2ec0badcc8aa6a63401e212f891fd14bd27c6441174ba5d70ab875b9e76c7ebc95f046e31aff1d40790d30351c' 'SKIP'
-            '5e7b1bfc57b04386cd581d76afd341d0276ed0142b6f5f17c7d2b534e9807a0d21508edfecc670ee51e3353d7985bbe04cc10a22ad557f072fac15df4234cf0a' 'SKIP'
+sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995' 'SKIP'
             '6735f2aa01e4f3cd0d270b514f87ded2db2ab8315721bb9fddc6079185d7c0bfb94ae9cb01d7a6d2a8690e7aeaa317e0c214ef7bbf086ec304472786a3393069'
             '8d19284d9e82e7df0612cd589347908ac7ade766d81e3083c1fb4f0560400193a1334bc3f8720ce37e7bf81ca0141595b06ea57578097b186f2cd656c657cdf7'
             '0ddff435474213f6c6e62576b6b3042aeffd1df84c47ca6195714a92c2655c33c56ce211c14934f4268afdf246077e1ea04e0958efc263c71aabfb497481022c'
@@ -39,7 +38,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+#  patch -p1 -i "${srcdir}/patch-${pkgver}"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
