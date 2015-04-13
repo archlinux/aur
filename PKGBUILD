@@ -1,6 +1,6 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
-pkgver=s1040
+pkgver=s1077
 pkgrel=1
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
