@@ -8,7 +8,7 @@ pkgbase = checkpolicy
 	groups = selinux
 	license = GPL
 	depends = libsepol
-	depends = libselinux
+	depends = libselinux>=2.4
 	provides = selinux-usr-checkpolicy=2.4-1
 	conflicts = selinux-usr-checkpolicy
 	options = !emptydirs

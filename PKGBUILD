@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
-depends=('libsepol' 'libselinux')
+depends=('libsepol' 'libselinux>=2.4')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
