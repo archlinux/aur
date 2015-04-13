@@ -3,9 +3,9 @@
 
 pkgname=nodejs-pageres
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Get screenshots of websites in different resolutions"
-arch=(any)
+arch=('i686' 'x86_64')
 url="https://github.com/sindresorhus/pageres"
 license=("MIT")
 depends=('nodejs')
